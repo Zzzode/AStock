@@ -3,3 +3,4 @@
  */
 
 export { handleQuote } from './quote-handler.js';
+export { handleAnalyze } from './analyze-handler.js';
