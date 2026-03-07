@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "A股交易策略分析工具 - 基于 Agent Skills 的多 Agent 架构",
   "type": "module",
+  "bin": {
+    "astock": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
