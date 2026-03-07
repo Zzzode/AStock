@@ -2,25 +2,34 @@
 
 import asyncio
 from datetime import datetime, time
+from pathlib import Path
 from typing import Optional
 
 from ..storage import Database, WatchItem, AlertRecord
 from ..quote import QuoteService
 from .scanner import SignalScanner
+from .alert_engine import AlertEngine
 
 
 class MonitorService:
     """股票监控服务"""
 
-    def __init__(self, db: Database, quote_service: QuoteService):
+    def __init__(
+        self,
+        db: Database,
+        quote_service: QuoteService,
+        config_path: Optional[Path] = None
+    ):
         """
         Args:
             db: 数据库实例
             quote_service: 行情服务实例
+            config_path: 告警配置文件路径
         """
         self.db = db
         self.quote_service = quote_service
         self.scanner = SignalScanner(quote_service)
+        self.alert_engine = AlertEngine(config_path)
         self._running = False
         self._task: Optional[asyncio.Task] = None
         self._scan_interval = 60  # 扫描间隔(秒)
@@ -148,35 +157,15 @@ class MonitorService:
             record: 告警记录
             item: 监控项
         """
-        # 构建告警消息
-        level_names = {1: "紧急", 2: "重要", 3: "一般"}
-        level_name = level_names.get(record.level, "未知")
+        # 使用 AlertEngine 发送告警
+        results = await self.alert_engine.send(record, record.channels)
 
-        message = (
-            f"[{level_name}] {item.code} {item.name or ''}\n"
-            f"信号: {record.signal_name}\n"
-            f"详情: {record.message}\n"
-            f"时间: {record.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}"
-        )
-
-        # 根据 channels 发送提醒
-        for channel in record.channels:
-            if channel == "terminal":
-                # 终端提醒
-                print(f"\n{'='*50}")
-                print(f"[告警提醒] {message}")
-                print(f"{'='*50}\n")
-
-            elif channel == "wechat":
-                # TODO: 微信提醒
-                print(f"[MonitorService] 微信提醒待实现: {message}")
-
-            elif channel == "email":
-                # TODO: 邮件提醒
-                print(f"[MonitorService] 邮件提醒待实现: {message}")
+        # 检查发送结果
+        success = all(results.values())
+        status = "sent" if success else "failed"
 
         # 更新告警状态
-        await self.db.update_alert_status(record.id, "sent")
+        await self.db.update_alert_status(record.id, status)
 
     def set_scan_interval(self, seconds: int) -> None:
         """设置扫描间隔
