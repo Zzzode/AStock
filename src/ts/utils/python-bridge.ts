@@ -88,3 +88,101 @@ export async function analyzeStock(
 export async function initDatabase(): Promise<void> {
   await callPython('init-db');
 }
+
+// ============ Alert 相关接口 ============
+
+export interface AlertStatus {
+  running: boolean;
+  interval: number;
+  watch_count: number;
+  today_alerts: number;
+}
+
+export interface AlertRecord {
+  id: number;
+  code: string;
+  signal_type: string;
+  signal_name: string;
+  message: string;
+  level: number;
+  triggered_at: string;
+  status: string;
+}
+
+export interface AlertHistory {
+  alerts: AlertRecord[];
+}
+
+/**
+ * 启动监控服务
+ */
+export async function startAlertMonitor(interval: number = 60): Promise<{
+  status: string;
+  interval: number;
+  watch_count: number;
+}> {
+  const result = await execa(
+    'python',
+    ['-m', 'astock.cli', 'alert', 'start', '--interval', String(interval), '--json'],
+    {
+      cwd: PYTHON_DIR,
+      reject: true,
+    }
+  );
+  return JSON.parse(result.stdout);
+}
+
+/**
+ * 停止监控服务
+ */
+export async function stopAlertMonitor(): Promise<{
+  status: string;
+}> {
+  const result = await execa(
+    'python',
+    ['-m', 'astock.cli', 'alert', 'stop', '--json'],
+    {
+      cwd: PYTHON_DIR,
+      reject: true,
+    }
+  );
+  return JSON.parse(result.stdout);
+}
+
+/**
+ * 获取监控服务状态
+ */
+export async function getAlertStatus(): Promise<AlertStatus> {
+  const result = await execa(
+    'python',
+    ['-m', 'astock.cli', 'alert', 'status', '--json'],
+    {
+      cwd: PYTHON_DIR,
+      reject: true,
+    }
+  );
+  return JSON.parse(result.stdout);
+}
+
+/**
+ * 获取历史告警
+ */
+export async function getAlertHistory(
+  code?: string,
+  limit: number = 10
+): Promise<AlertHistory> {
+  const args = ['alert', 'history', '--limit', String(limit), '--json'];
+  if (code) {
+    args.splice(2, 0, code);
+  }
+
+  const result = await execa(
+    'python',
+    ['-m', 'astock.cli', ...args],
+    {
+      cwd: PYTHON_DIR,
+      reject: true,
+    }
+  );
+  return JSON.parse(result.stdout);
+}
