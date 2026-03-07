@@ -11,3 +11,8 @@ export {
   handleAlertStatus,
   handleAlertHistory,
 } from './alert-handler.js';
+export {
+  handleWatchAdd,
+  handleWatchRemove,
+  handleWatchList,
+} from './watch-handler.js';
