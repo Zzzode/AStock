@@ -48,3 +48,28 @@ class Trade(BaseModel):
     quantity: float
     traded_at: datetime
     source: str  # broker/ths/eastmoney
+
+
+class WatchItem(BaseModel):
+    """监控项"""
+
+    code: str
+    name: Optional[str] = None
+    conditions: dict = {}  # 监控条件配置
+    alert_channels: list[str] = ["terminal"]  # 提醒渠道
+    enabled: bool = True
+    created_at: Optional[datetime] = None
+
+
+class AlertRecord(BaseModel):
+    """告警记录"""
+
+    id: Optional[int] = None
+    code: str
+    signal_type: str
+    signal_name: str
+    message: str
+    level: int = 3  # 1=紧急, 2=重要, 3=一般
+    triggered_at: datetime
+    status: str = "pending"  # pending, sent, failed
+    channels: list[str] = []
