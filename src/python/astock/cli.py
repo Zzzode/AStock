@@ -2,6 +2,7 @@
 
 import asyncio
 import json
+from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
@@ -13,6 +14,7 @@ from rich.panel import Panel
 from .storage import Database
 from .quote import QuoteService
 from .analysis import TechnicalAnalyzer
+from .monitor import MonitorService
 
 
 app = typer.Typer(name="astock")
@@ -20,6 +22,9 @@ console = Console()
 
 # 默认数据库路径
 DB_PATH = Path(__file__).parent.parent.parent.parent / "data" / "stocks.db"
+
+# 全局监控服务实例
+_monitor_service: Optional[MonitorService] = None
 
 
 @app.command()
@@ -141,6 +146,199 @@ def init_db():
 
     count = asyncio.run(_init())
     console.print(f"[green]数据库初始化完成，已加载 {count} 只股票[/green]")
+
+
+# ============ Alert 命令组 ============
+
+alert_app = typer.Typer(name="alert", help="监控告警管理")
+app.add_typer(alert_app, name="alert")
+
+
+@alert_app.callback(invoke_without_command=True)
+def alert_callback(ctx: typer.Context):
+    """监控告警管理"""
+    if ctx.invoked_subcommand is None:
+        ctx.invoke(alert_status)
+
+
+@alert_app.command("start")
+def alert_start(
+    interval: int = typer.Option(60, "--interval", "-i", help="扫描间隔(秒)"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """启动监控服务"""
+    async def _start():
+        global _monitor_service
+
+        db = Database(str(DB_PATH))
+        await db.connect()
+        try:
+            quote_service = QuoteService(db)
+            _monitor_service = MonitorService(db, quote_service)
+            _monitor_service.set_scan_interval(interval)
+            await _monitor_service.start()
+
+            # 获取监控股票数量
+            watch_items = await db.get_watch_items(enabled_only=True)
+
+            return {
+                "status": "started",
+                "interval": interval,
+                "watch_count": len(watch_items)
+            }
+        finally:
+            # 注意: 不关闭 db，因为监控服务需要持续使用
+            pass
+
+    result = asyncio.run(_start())
+
+    if json_output:
+        console.print_json(data=result)
+    else:
+        console.print(f"[green]监控服务已启动[/green]")
+        console.print(f"扫描间隔: {result['interval']}秒")
+        console.print(f"监控股票: {result['watch_count']}只")
+
+
+@alert_app.command("stop")
+def alert_stop(
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """停止监控服务"""
+    async def _stop():
+        global _monitor_service
+
+        if _monitor_service:
+            await _monitor_service.stop()
+            _monitor_service = None
+            return {"status": "stopped"}
+        return {"status": "not_running"}
+
+    result = asyncio.run(_stop())
+
+    if json_output:
+        console.print_json(data=result)
+    else:
+        if result["status"] == "stopped":
+            console.print("[yellow]监控服务已停止[/yellow]")
+        else:
+            console.print("[dim]监控服务未运行[/dim]")
+
+
+@alert_app.command("status")
+def alert_status(
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """查看监控状态"""
+    async def _status():
+        global _monitor_service
+
+        db = Database(str(DB_PATH))
+        await db.connect()
+        try:
+            # 获取监控股票数量
+            watch_items = await db.get_watch_items(enabled_only=True)
+
+            # 获取今日告警数量
+            today = datetime.now().date()
+            alerts = await db.get_alert_records(limit=100)
+            today_alerts = [
+                a for a in alerts
+                if a.triggered_at.date() == today
+            ]
+
+            return {
+                "running": _monitor_service is not None and _monitor_service._running,
+                "interval": _monitor_service._scan_interval if _monitor_service else 60,
+                "watch_count": len(watch_items),
+                "today_alerts": len(today_alerts),
+                "start_time": None  # TODO: 记录启动时间
+            }
+        finally:
+            await db.close()
+
+    result = asyncio.run(_status())
+
+    if json_output:
+        console.print_json(data=result)
+    else:
+        status_text = "[green]运行中[/green]" if result["running"] else "[dim]已停止[/dim]"
+        panel_content = f"""
+状态: {status_text}
+扫描间隔: {result['interval']}秒
+监控股票: {result['watch_count']}只
+今日告警: {result['today_alerts']}条
+"""
+        console.print(Panel(panel_content.strip(), title="监控服务状态"))
+
+
+@alert_app.command("history")
+def alert_history(
+    code: Optional[str] = typer.Argument(None, help="股票代码(可选)"),
+    limit: int = typer.Option(10, "--limit", "-n", help="显示数量"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """查看历史告警"""
+    async def _history():
+        db = Database(str(DB_PATH))
+        await db.connect()
+        try:
+            alerts = await db.get_alert_records(limit=limit)
+
+            # 按股票代码过滤
+            if code:
+                alerts = [a for a in alerts if a.code == code]
+
+            return {
+                "alerts": [
+                    {
+                        "id": a.id,
+                        "code": a.code,
+                        "signal_type": a.signal_type,
+                        "signal_name": a.signal_name,
+                        "message": a.message,
+                        "level": a.level,
+                        "triggered_at": a.triggered_at.isoformat(),
+                        "status": a.status
+                    }
+                    for a in alerts
+                ]
+            }
+        finally:
+            await db.close()
+
+    result = asyncio.run(_history())
+
+    if json_output:
+        console.print_json(data=result)
+    else:
+        alerts = result["alerts"]
+
+        if not alerts:
+            console.print("[dim]暂无告警记录[/dim]")
+            return
+
+        title = f"历史告警记录 ({code})" if code else "历史告警记录"
+        table = Table(title=title)
+        table.add_column("时间", style="cyan")
+        table.add_column("股票", style="white")
+        table.add_column("信号类型", style="yellow")
+        table.add_column("描述", style="green")
+        table.add_column("状态", style="dim")
+
+        for alert in alerts:
+            triggered_at = datetime.fromisoformat(alert["triggered_at"])
+            time_str = triggered_at.strftime("%m-%d %H:%M")
+            status_color = "green" if alert["status"] == "sent" else "yellow"
+            table.add_row(
+                time_str,
+                alert["code"],
+                alert["signal_name"],
+                alert["message"][:20] + "..." if len(alert["message"]) > 20 else alert["message"],
+                f"[{status_color}]{alert['status']}[/{status_color}]"
+            )
+
+        console.print(table)
 
 
 if __name__ == "__main__":
