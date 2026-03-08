@@ -16,6 +16,9 @@ from .quote import QuoteService
 from .analysis import TechnicalAnalyzer
 from .monitor import MonitorService
 from .stock_picker import StockScreener
+from .recommend import Recommender
+from .config import ConfigManager, TradingStyle, RiskLevel
+from .learning import StyleAnalyzer
 
 
 app = typer.Typer(name="astock")
@@ -409,6 +412,380 @@ def screen(
             )
 
         console.print(table)
+
+
+# ============ Recommend 命令组 ============
+
+recommend_app = typer.Typer(name="recommend", help="个性化推荐")
+app.add_typer(recommend_app, name="recommend")
+
+
+@recommend_app.callback(invoke_without_command=True)
+def recommend_callback(ctx: typer.Context):
+    """个性化推荐"""
+    if ctx.invoked_subcommand is None:
+        ctx.invoke(recommend_generate)
+
+
+@recommend_app.command("generate")
+def recommend_generate(
+    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
+    limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
+    style: Optional[str] = typer.Option(None, "--style", "-s", help="交易风格覆盖"),
+    risk: Optional[str] = typer.Option(None, "--risk", "-r", help="风险等级覆盖"),
+    min_price: Optional[float] = typer.Option(None, "--min-price", help="最低价格"),
+    max_price: Optional[float] = typer.Option(None, "--max-price", help="最高价格"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """生成个性化推荐"""
+    async def _recommend():
+        db = Database(str(DB_PATH))
+        await db.connect()
+        try:
+            quote_service = QuoteService(db)
+            screener = StockScreener(quote_service)
+            recommender = Recommender(screener)
+
+            # 构建选项
+            options = {}
+            if style:
+                options["trading_style"] = style
+            if risk:
+                options["risk_level"] = risk
+            if min_price is not None:
+                options["min_price"] = min_price
+            if max_price is not None:
+                options["max_price"] = max_price
+
+            result = await recommender.handle_recommend(
+                user_id=user_id,
+                limit=limit,
+                options=options if options else None
+            )
+
+            return result
+        finally:
+            await db.close()
+
+    result = asyncio.run(_recommend())
+
+    if json_output:
+        console.print_json(data={
+            "success": result.success,
+            "total": result.total,
+            "error": result.error,
+            "config_used": result.config_used,
+            "recommendations": [
+                {
+                    "code": r.code,
+                    "name": r.name,
+                    "score": r.score,
+                    "matched_factors": r.matched_factors,
+                    "suggested_strategies": r.suggested_strategies,
+                    "risk_level": r.risk_level,
+                    "style_match": r.style_match,
+                    "recommended_at": r.recommended_at.isoformat()
+                }
+                for r in result.recommendations
+            ]
+        })
+    else:
+        if not result.success:
+            console.print(f"[red]推荐生成失败: {result.error}[/red]")
+            return
+
+        if not result.recommendations:
+            console.print("[dim]未找到符合条件的股票推荐[/dim]")
+            return
+
+        # 显示配置信息
+        if result.config_used:
+            config_panel = f"""
+用户: {result.config_used.get('user_id', 'default')}
+交易风格: {result.config_used.get('trading_style', 'swing')}
+风险等级: {result.config_used.get('risk_level', 'moderate')}
+价格范围: {result.config_used.get('min_price') or '-'} ~ {result.config_used.get('max_price') or '-'}
+"""
+            console.print(Panel(config_panel.strip(), title="推荐配置"))
+
+        # 显示推荐结果
+        table = Table(title=f"个性化推荐 (共 {result.total} 只)")
+        table.add_column("排名", style="dim", width=4)
+        table.add_column("代码", style="cyan", width=8)
+        table.add_column("名称", style="white", width=10)
+        table.add_column("得分", style="yellow", width=6)
+        table.add_column("风格匹配", style="green", width=8)
+        table.add_column("推荐策略", style="magenta")
+
+        for i, r in enumerate(result.recommendations, 1):
+            strategies_str = ",".join(r.suggested_strategies[:2])
+            if len(r.suggested_strategies) > 2:
+                strategies_str += "..."
+            table.add_row(
+                str(i),
+                r.code,
+                r.name or "-",
+                f"{r.score:.1f}",
+                f"{r.style_match:.0%}",
+                strategies_str
+            )
+
+        console.print(table)
+
+
+@recommend_app.command("config")
+def recommend_config(
+    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
+    style: Optional[str] = typer.Option(None, "--style", "-s", help="交易风格"),
+    risk: Optional[str] = typer.Option(None, "--risk", "-r", help="风险等级"),
+    min_price: Optional[float] = typer.Option(None, "--min-price", help="最低价格"),
+    max_price: Optional[float] = typer.Option(None, "--max-price", help="最高价格"),
+    reset: bool = typer.Option(False, "--reset", help="重置为默认配置"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """管理推荐配置"""
+    config_manager = ConfigManager()
+
+    if reset:
+        config = config_manager.reset(user_id)
+        if json_output:
+            console.print_json(data=config.model_dump())
+        else:
+            console.print(f"[green]已重置用户 {user_id} 的配置为默认值[/green]")
+        return
+
+    # 加载当前配置
+    config = config_manager.load(user_id)
+
+    # 更新配置
+    updates = {}
+    if style:
+        for s in TradingStyle:
+            if s.value == style:
+                updates["trading_style"] = s
+                break
+    if risk:
+        for r in RiskLevel:
+            if r.value == risk:
+                updates["risk_level"] = r
+                break
+    if min_price is not None:
+        updates["min_price"] = min_price
+    if max_price is not None:
+        updates["max_price"] = max_price
+
+    if updates:
+        config = config_manager.update(user_id, **updates)
+
+    if json_output:
+        # 转换为可序列化的字典
+        config_data = config.model_dump()
+        config_data["alert_time_start"] = config.alert_time_start.isoformat()
+        config_data["alert_time_end"] = config.alert_time_end.isoformat()
+        config_data["trading_style"] = config.trading_style.value
+        config_data["risk_level"] = config.risk_level.value
+        console.print_json(data=config_data)
+    else:
+        panel_content = f"""
+用户ID: {config.user_id}
+交易风格: {config.trading_style.value}
+风险等级: {config.risk_level.value}
+最大持仓: {config.max_positions}
+单只仓位: {config.position_size:.0%}
+价格范围: {config.min_price or '-'} ~ {config.max_price or '-'}
+偏好行业: {', '.join(config.preferred_sectors) or '-'}
+排除行业: {', '.join(config.excluded_sectors) or '-'}
+"""
+        console.print(Panel(panel_content.strip(), title=f"用户配置: {user_id}"))
+
+        # 显示可选项
+        console.print("\n[bold]可选交易风格:[/bold]")
+        for s in TradingStyle:
+            marker = "*" if s == config.trading_style else " "
+            console.print(f"  {marker} {s.value}")
+
+        console.print("\n[bold]可选风险等级:[/bold]")
+        for r in RiskLevel:
+            marker = "*" if r == config.risk_level else " "
+            console.print(f"  {marker} {r.value}")
+
+
+# ============ Config 命令组 ============
+
+config_app = typer.Typer(name="config", help="配置管理")
+app.add_typer(config_app, name="config")
+
+
+@config_app.callback(invoke_without_command=True)
+def config_callback(ctx: typer.Context):
+    """配置管理"""
+    if ctx.invoked_subcommand is None:
+        ctx.invoke(config_show)
+
+
+@config_app.command("show")
+def config_show(
+    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """显示当前配置"""
+    config_manager = ConfigManager()
+    config = config_manager.load(user_id)
+
+    if json_output:
+        config_data = config.model_dump()
+        config_data["alert_time_start"] = config.alert_time_start.isoformat()
+        config_data["alert_time_end"] = config.alert_time_end.isoformat()
+        config_data["trading_style"] = config.trading_style.value
+        config_data["risk_level"] = config.risk_level.value
+        console.print_json(data=config_data)
+    else:
+        panel_content = f"""
+用户ID: {config.user_id}
+交易风格: {config.trading_style.value}
+风险等级: {config.risk_level.value}
+最大持仓: {config.max_positions}
+单只仓位: {config.position_size:.0%}
+价格范围: {config.min_price or '-'} ~ {config.max_price or '-'}
+偏好行业: {', '.join(config.preferred_sectors) or '-'}
+排除行业: {', '.join(config.excluded_sectors) or '-'}
+提醒渠道: {', '.join(config.alert_channels)}
+默认资金: {config.default_capital:,.0f}
+默认策略: {config.default_strategy}
+"""
+        console.print(Panel(panel_content.strip(), title=f"用户配置: {user_id}"))
+
+
+@config_app.command("set")
+def config_set(
+    key: str = typer.Argument(..., help="配置项名称"),
+    value: str = typer.Argument(..., help="配置值"),
+    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """设置配置项"""
+    config_manager = ConfigManager()
+
+    # 解析配置值
+    parsed_value = _parse_config_value(key, value)
+    if parsed_value is None:
+        console.print(f"[red]未知的配置项: {key}[/red]")
+        raise typer.Exit(1)
+
+    config = config_manager.update(user_id, **{key: parsed_value})
+
+    if json_output:
+        config_data = config.model_dump()
+        config_data["alert_time_start"] = config.alert_time_start.isoformat()
+        config_data["alert_time_end"] = config.alert_time_end.isoformat()
+        config_data["trading_style"] = config.trading_style.value
+        config_data["risk_level"] = config.risk_level.value
+        console.print_json(data=config_data)
+    else:
+        console.print(f"[green]已更新配置: {key} = {value}[/green]")
+
+
+def _parse_config_value(key: str, value: str):
+    """解析配置值"""
+    # 风险等级
+    if key == "risk_level":
+        for r in RiskLevel:
+            if r.value == value:
+                return r
+        return None
+
+    # 交易风格
+    if key == "trading_style":
+        for s in TradingStyle:
+            if s.value == value:
+                return s
+        return None
+
+    # 数值类型
+    if key in ["max_positions", "position_size", "min_price", "max_price", "default_capital"]:
+        try:
+            if key in ["max_positions"]:
+                return int(value)
+            return float(value)
+        except ValueError:
+            return None
+
+    # 字符串列表类型
+    if key in ["alert_channels", "preferred_sectors", "excluded_sectors"]:
+        return [v.strip() for v in value.split(",")]
+
+    # 字符串类型
+    if key in ["default_strategy"]:
+        return value
+
+    return None
+
+
+@config_app.command("style")
+def config_style(
+    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """分析并学习交易风格"""
+    config_manager = ConfigManager()
+    analyzer = StyleAnalyzer()
+
+    # 执行分析并更新配置
+    analysis = analyzer.update_user_config(user_id, config_manager)
+
+    if json_output:
+        console.print_json(data={
+            "user_id": analysis.user_id,
+            "trading_style": analysis.trading_style.value,
+            "risk_level": analysis.risk_level.value,
+            "trade_frequency": analysis.trade_frequency,
+            "avg_holding_days": analysis.avg_holding_days,
+            "total_trades": analysis.total_trades,
+            "win_rate": analysis.win_rate,
+            "profit_loss_ratio": analysis.profit_loss_ratio,
+            "total_profit": analysis.total_profit,
+            "preferred_sectors": analysis.preferred_sectors,
+            "confidence": analysis.confidence,
+        })
+    else:
+        panel_content = f"""
+交易风格: {analysis.trading_style.value}
+风险等级: {analysis.risk_level.value}
+交易频率: {analysis.trade_frequency:.1f} 次/月
+平均持仓: {analysis.avg_holding_days:.1f} 天
+总交易数: {analysis.total_trades}
+胜率: {analysis.win_rate:.1%}
+盈亏比: {analysis.profit_loss_ratio:.2f}
+总盈亏: {analysis.total_profit:,.2f}
+偏好行业: {', '.join(analysis.preferred_sectors) or '-'}
+置信度: {analysis.confidence:.0%}
+"""
+        console.print(Panel(panel_content.strip(), title=f"风格分析: {user_id}"))
+
+        if analysis.confidence > 0.5:
+            console.print("[green]配置已根据分析结果自动更新[/green]")
+        else:
+            console.print("[yellow]数据不足，未更新配置（需要更多交易记录）[/yellow]")
+
+
+@config_app.command("reset")
+def config_reset(
+    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """重置为默认配置"""
+    config_manager = ConfigManager()
+    config = config_manager.reset(user_id)
+
+    if json_output:
+        config_data = config.model_dump()
+        config_data["alert_time_start"] = config.alert_time_start.isoformat()
+        config_data["alert_time_end"] = config.alert_time_end.isoformat()
+        config_data["trading_style"] = config.trading_style.value
+        config_data["risk_level"] = config.risk_level.value
+        console.print_json(data=config_data)
+    else:
+        console.print(f"[yellow]已重置用户 {user_id} 的配置为默认值[/yellow]")
 
 
 # ============ Backtest 命令组 ============

@@ -18,3 +18,10 @@ export {
 } from './watch-handler.js';
 export { handleScreen } from './screen-handler.js';
 export { handleBacktest } from './backtest-handler.js';
+export {
+  handleConfig,
+  handleConfigShow,
+  handleConfigSet,
+  handleConfigStyle,
+  handleConfigReset,
+} from './config-handler.js';
