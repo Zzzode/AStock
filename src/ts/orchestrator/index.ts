@@ -17,3 +17,4 @@ export {
   handleWatchList,
 } from './watch-handler.js';
 export { handleScreen } from './screen-handler.js';
+export { handleBacktest } from './backtest-handler.js';
