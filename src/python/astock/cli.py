@@ -15,6 +15,7 @@ from .storage import Database
 from .quote import QuoteService
 from .analysis import TechnicalAnalyzer
 from .monitor import MonitorService
+from .stock_picker import StockScreener
 
 
 app = typer.Typer(name="astock")
@@ -336,6 +337,75 @@ def alert_history(
                 alert["signal_name"],
                 alert["message"][:20] + "..." if len(alert["message"]) > 20 else alert["message"],
                 f"[{status_color}]{alert['status']}[/{status_color}]"
+            )
+
+        console.print(table)
+
+
+@app.command()
+def screen(
+    factors: Optional[str] = typer.Argument(None, help="因子列表，逗号分隔"),
+    limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+):
+    """股票选股"""
+    async def _screen():
+        db = Database(str(DB_PATH))
+        await db.connect()
+        try:
+            quote_service = QuoteService(db)
+            screener = StockScreener(quote_service)
+
+            # 解析因子列表
+            factor_list = None
+            if factors:
+                factor_list = [f.strip() for f in factors.split(",")]
+
+            results = await screener.screen(factors=factor_list, limit=limit)
+
+            return {
+                "total": len(results),
+                "results": [
+                    {
+                        "code": r.code,
+                        "name": r.name,
+                        "score": r.score,
+                        "matched_factors": r.matched_factors,
+                        "factor_scores": r.factor_scores,
+                        "screened_at": r.screened_at.isoformat()
+                    }
+                    for r in results
+                ]
+            }
+        finally:
+            await db.close()
+
+    result = asyncio.run(_screen())
+
+    if json_output:
+        console.print_json(data=result)
+    else:
+        if not result["results"]:
+            console.print("[dim]未找到符合条件的股票[/dim]")
+            return
+
+        table = Table(title=f"选股结果 (共 {result['total']} 只)")
+        table.add_column("排名", style="dim", width=4)
+        table.add_column("代码", style="cyan", width=8)
+        table.add_column("名称", style="white", width=10)
+        table.add_column("得分", style="yellow", width=6)
+        table.add_column("匹配因子", style="green")
+
+        for i, r in enumerate(result["results"], 1):
+            factors_str = ",".join(r["matched_factors"][:3])
+            if len(r["matched_factors"]) > 3:
+                factors_str += "..."
+            table.add_row(
+                str(i),
+                r["code"],
+                r["name"] or "-",
+                f"{r['score']:.1f}",
+                factors_str
             )
 
         console.print(table)
