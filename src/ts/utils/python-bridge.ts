@@ -186,3 +186,47 @@ export async function getAlertHistory(
   );
   return JSON.parse(result.stdout);
 }
+
+
+// ============ Screen 选股相关接口 ============
+
+export interface ScreenResult {
+  code: string;
+  name: string;
+  score: number;
+  matched_factors: string[];
+  factor_scores: Record<string, number>;
+  screened_at: string;
+}
+
+export interface ScreenOutput {
+  total: number;
+  results: ScreenResult[];
+}
+
+/**
+ * 执行选股
+ */
+export async function screenStocks(
+  factors?: string[],
+  limit: number = 10
+): Promise<ScreenOutput> {
+  const args = ['screen'];
+
+  if (factors && factors.length > 0) {
+    args.push(factors.join(','));
+  }
+
+  args.push('--limit', String(limit));
+  args.push('--json');
+
+  const result = await execa(
+    'python',
+    ['-m', 'astock.cli', ...args],
+    {
+      cwd: PYTHON_DIR,
+      reject: true,
+    }
+  );
+  return JSON.parse(result.stdout);
+}

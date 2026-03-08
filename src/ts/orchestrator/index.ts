@@ -16,3 +16,4 @@ export {
   handleWatchRemove,
   handleWatchList,
 } from './watch-handler.js';
+export { handleScreen } from './screen-handler.js';
