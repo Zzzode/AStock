@@ -97,10 +97,12 @@ class ConfigManager:
                 data = json.load(f)
                 # 转换时间字符串为 time 对象
                 if "alert_time_start" in data and isinstance(data["alert_time_start"], str):
-                    h, m = map(int, data["alert_time_start"].split(":"))
+                    parts = data["alert_time_start"].split(":")
+                    h, m = int(parts[0]), int(parts[1])
                     data["alert_time_start"] = time(h, m)
                 if "alert_time_end" in data and isinstance(data["alert_time_end"], str):
-                    h, m = map(int, data["alert_time_end"].split(":"))
+                    parts = data["alert_time_end"].split(":")
+                    h, m = int(parts[0]), int(parts[1])
                     data["alert_time_end"] = time(h, m)
                 config = UserConfig(**data)
         else:

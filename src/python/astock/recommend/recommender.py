@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 from datetime import datetime
 from typing import Any, Optional
 
-from ..config import UserConfig, TradingStyle, RiskLevel
+from ..config import UserConfig, TradingStyle, RiskLevel, ConfigManager
 from ..stock_picker import StockScreener, ScreenResult, FactorType
 
 
@@ -21,6 +21,17 @@ class Recommendation:
     style_match: float                  # 风格匹配度 (0-1)
     data: dict[str, Any]                # 原始数据
     recommended_at: datetime            # 推荐时间
+
+
+@dataclass
+class RecommendResult:
+    """推荐请求结果"""
+    success: bool
+    recommendations: list[Recommendation] = field(default_factory=list)
+    total: int = 0
+    config_used: Optional[dict] = None
+    error: Optional[str] = None
+    generated_at: datetime = field(default_factory=datetime.now)
 
 
 class Recommender:
@@ -349,3 +360,101 @@ class Recommender:
             return 0.5
 
         return min(1.0, matched_weight / total_weight)
+
+    async def handle_recommend(
+        self,
+        config: Optional[UserConfig] = None,
+        user_id: str = "default",
+        limit: int = 10,
+        options: Optional[dict] = None
+    ) -> RecommendResult:
+        """处理推荐请求并返回结果
+
+        这是推荐服务的主要入口，整合配置加载、推荐生成和结果处理。
+
+        Args:
+            config: 用户配置，如果为 None 则从 user_id 加载
+            user_id: 用户 ID，用于加载配置
+            limit: 返回数量限制
+            options: 额外选项，可覆盖配置
+                - trading_style: 覆盖交易风格
+                - risk_level: 覆盖风险等级
+                - min_price: 最低价格
+                - max_price: 最高价格
+                - sectors: 行业列表
+
+        Returns:
+            推荐请求结果
+        """
+        try:
+            # 加载或使用提供的配置
+            if config is None:
+                config_manager = ConfigManager()
+                config = config_manager.load(user_id)
+
+            # 应用选项覆盖
+            if options:
+                config = self._apply_options(config, options)
+
+            # 生成推荐
+            recommendations = await self.recommend(config, limit)
+
+            return RecommendResult(
+                success=True,
+                recommendations=recommendations,
+                total=len(recommendations),
+                config_used={
+                    "user_id": config.user_id,
+                    "trading_style": config.trading_style.value,
+                    "risk_level": config.risk_level.value,
+                    "min_price": config.min_price,
+                    "max_price": config.max_price,
+                }
+            )
+
+        except Exception as e:
+            return RecommendResult(
+                success=False,
+                error=str(e)
+            )
+
+    def _apply_options(self, config: UserConfig, options: dict) -> UserConfig:
+        """应用选项覆盖到配置
+
+        Args:
+            config: 原始配置
+            options: 选项字典
+
+        Returns:
+            更新后的配置
+        """
+        # 创建配置副本
+        config_data = config.model_dump()
+
+        # 应用交易风格覆盖
+        if "trading_style" in options:
+            style_str = options["trading_style"]
+            for style in TradingStyle:
+                if style.value == style_str:
+                    config_data["trading_style"] = style
+                    break
+
+        # 应用风险等级覆盖
+        if "risk_level" in options:
+            risk_str = options["risk_level"]
+            for risk in RiskLevel:
+                if risk.value == risk_str:
+                    config_data["risk_level"] = risk
+                    break
+
+        # 应用价格范围覆盖
+        if "min_price" in options:
+            config_data["min_price"] = options["min_price"]
+        if "max_price" in options:
+            config_data["max_price"] = options["max_price"]
+
+        # 应用行业覆盖
+        if "sectors" in options:
+            config_data["preferred_sectors"] = options["sectors"]
+
+        return UserConfig(**config_data)
