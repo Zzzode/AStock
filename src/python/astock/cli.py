@@ -411,5 +411,11 @@ def screen(
         console.print(table)
 
 
+# ============ Backtest 命令组 ============
+
+from .backtest.backtest_cli import app as backtest_app
+app.add_typer(backtest_app, name="backtest")
+
+
 if __name__ == "__main__":
     app()
