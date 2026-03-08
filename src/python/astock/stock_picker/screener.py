@@ -1,46 +1,54 @@
-"""选股器"""
+"""选股器 - 支持并行处理和错误处理"""
 
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Optional
+import asyncio
 import pandas as pd
 import numpy as np
 
 from .factors import Factor, FactorType, FACTORS, get_factor
 from ..quote import QuoteService
 from ..analysis import TechnicalAnalyzer
+from ..utils import get_logger, DataSourceError, ValidationError
+
+logger = get_logger("screener")
 
 
 @dataclass
 class ScreenResult:
     """选股结果"""
-    code: str                    # 股票代码
-    name: Optional[str]          # 股票名称
-    score: float                 # 综合得分
-    matched_factors: list[str]   # 匹配的因子列表
+
+    code: str  # 股票代码
+    name: Optional[str]  # 股票名称
+    score: float  # 综合得分
+    matched_factors: list[str]  # 匹配的因子列表
     factor_scores: dict[str, float]  # 各因子得分
-    data: dict[str, Any]         # 原始数据
-    screened_at: datetime        # 选股时间
+    data: dict[str, Any]  # 原始数据
+    screened_at: datetime  # 选股时间
 
 
 class StockScreener:
-    """股票选股器"""
+    """股票选股器 - 支持并行处理"""
 
-    def __init__(self, quote_service: QuoteService):
+    def __init__(self, quote_service: QuoteService, max_concurrent: int = 10):
         """
         Args:
             quote_service: 行情服务实例
+            max_concurrent: 最大并发数
         """
         self.quote_service = quote_service
+        self.max_concurrent = max_concurrent
+        logger.debug(f"选股器初始化完成，最大并发数: {max_concurrent}")
 
     async def screen(
         self,
         factors: Optional[list[str]] = None,
         codes: Optional[list[str]] = None,
         limit: int = 50,
-        min_score: float = 0.0
+        min_score: float = 0.0,
     ) -> list[ScreenResult]:
-        """执行选股
+        """执行选股（并行处理）
 
         Args:
             factors: 因子键名列表，为空则使用所有因子
@@ -55,27 +63,43 @@ class StockScreener:
         factor_list = self._get_factor_list(factors)
 
         if not factor_list:
+            logger.warning("没有可用的因子")
             return []
 
         # 获取股票列表
         stock_codes = codes or await self._get_all_codes()
+        logger.info(
+            f"开始选股，股票数量: {len(stock_codes)}, 因子数量: {len(factor_list)}"
+        )
 
-        # 执行选股
-        results = []
-        for code in stock_codes:
-            result = await self._screen_stock(code, factor_list)
-            if result and result.score >= min_score:
-                results.append(result)
+        # 并行执行选股
+        semaphore = asyncio.Semaphore(self.max_concurrent)
+
+        async def limited_screen(code: str) -> Optional[ScreenResult]:
+            async with semaphore:
+                return await self._screen_stock(code, factor_list)
+
+        tasks = [limited_screen(code) for code in stock_codes]
+        results = await asyncio.gather(*tasks, return_exceptions=True)
+
+        # 过滤有效结果
+        valid_results = [
+            r for r in results if isinstance(r, ScreenResult) and r.score >= min_score
+        ]
+
+        # 记录错误
+        errors = [r for r in results if isinstance(r, Exception)]
+        if errors:
+            logger.warning(f"选股过程中有 {len(errors)} 个错误")
 
         # 按得分排序
-        results.sort(key=lambda x: x.score, reverse=True)
+        valid_results.sort(key=lambda x: x.score, reverse=True)
 
-        return results[:limit]
+        logger.info(f"选股完成，有效结果: {len(valid_results)}")
+        return valid_results[:limit]
 
     async def _screen_stock(
-        self,
-        code: str,
-        factors: list[Factor]
+        self, code: str, factors: list[Factor]
     ) -> Optional[ScreenResult]:
         """对单只股票执行选股
 
@@ -105,10 +129,14 @@ class StockScreener:
                 matched_factors=matched_factors,
                 factor_scores=factor_scores,
                 data=data,
-                screened_at=datetime.now()
+                screened_at=datetime.now(),
             )
 
-        except Exception:
+        except DataSourceError as e:
+            logger.debug(f"获取 {code} 数据失败: {e}")
+            return None
+        except Exception as e:
+            logger.debug(f"选股 {code} 失败: {e}")
             return None
 
     async def _get_stock_data(self, code: str) -> Optional[dict[str, Any]]:
@@ -125,6 +153,7 @@ class StockScreener:
             df = await self.quote_service.get_daily(code, save=False)
 
             if df.empty or len(df) < 30:
+                logger.debug(f"股票 {code} 数据不足")
                 return None
 
             # 计算技术指标
@@ -133,11 +162,15 @@ class StockScreener:
 
             # 获取最新数据
             latest = df_with_indicators.iloc[-1]
-            prev = df_with_indicators.iloc[-2] if len(df_with_indicators) > 1 else latest
+            prev = (
+                df_with_indicators.iloc[-2] if len(df_with_indicators) > 1 else latest
+            )
 
             # 计算额外指标
             vol_ma5 = df_with_indicators["volume"].rolling(5).mean().iloc[-1]
-            volatility_20 = df_with_indicators["close"].pct_change().rolling(20).std().iloc[-1]
+            volatility_20 = (
+                df_with_indicators["close"].pct_change().rolling(20).std().iloc[-1]
+            )
 
             # 获取实时行情中的 PE、PB
             realtime = await self.quote_service.get_realtime(code)
@@ -171,23 +204,14 @@ class StockScreener:
                 "volatility_20": float(volatility_20),
             }
 
-        except Exception:
+        except Exception as e:
+            logger.debug(f"获取 {code} 数据失败: {e}")
             return None
 
     def _calculate_factor_scores(
-        self,
-        data: dict[str, Any],
-        factors: list[Factor]
+        self, data: dict[str, Any], factors: list[Factor]
     ) -> dict[str, float]:
-        """计算因子得分
-
-        Args:
-            data: 股票数据
-            factors: 因子列表
-
-        Returns:
-            各因子得分字典
-        """
+        """计算因子得分"""
         scores = {}
 
         for factor in factors:
@@ -199,15 +223,7 @@ class StockScreener:
         return scores
 
     def _check_condition(self, data: dict[str, Any], factor: Factor) -> bool:
-        """检查条件是否满足
-
-        Args:
-            data: 股票数据
-            factor: 因子定义
-
-        Returns:
-            条件是否满足
-        """
+        """检查条件是否满足"""
         # 获取字段值
         value = data.get(factor.field)
         if value is None:
@@ -224,10 +240,15 @@ class StockScreener:
 
         # 处理特殊操作符
         if factor.operator == "cross_up":
-            # 金叉：当前值大于阈值，前一个值小于等于阈值
             prev_value = data.get(f"prev_{factor.field}")
-            prev_threshold_key = f"prev_{factor.threshold}" if isinstance(factor.threshold, str) else None
-            prev_threshold = data.get(prev_threshold_key) if prev_threshold_key else threshold
+            prev_threshold_key = (
+                f"prev_{factor.threshold}"
+                if isinstance(factor.threshold, str)
+                else None
+            )
+            prev_threshold = (
+                data.get(prev_threshold_key) if prev_threshold_key else threshold
+            )
 
             if prev_value is None or prev_threshold is None:
                 return False
@@ -235,10 +256,15 @@ class StockScreener:
             return value > threshold and prev_value <= prev_threshold
 
         if factor.operator == "cross_down":
-            # 死叉：当前值小于阈值，前一个值大于等于阈值
             prev_value = data.get(f"prev_{factor.field}")
-            prev_threshold_key = f"prev_{factor.threshold}" if isinstance(factor.threshold, str) else None
-            prev_threshold = data.get(prev_threshold_key) if prev_threshold_key else threshold
+            prev_threshold_key = (
+                f"prev_{factor.threshold}"
+                if isinstance(factor.threshold, str)
+                else None
+            )
+            prev_threshold = (
+                data.get(prev_threshold_key) if prev_threshold_key else threshold
+            )
 
             if prev_value is None or prev_threshold is None:
                 return False
@@ -249,16 +275,7 @@ class StockScreener:
         return self._compare_values(value, factor.operator, threshold)
 
     def _compare_values(self, value: Any, operator: str, threshold: Any) -> bool:
-        """比较值
-
-        Args:
-            value: 值
-            operator: 操作符
-            threshold: 阈值
-
-        Returns:
-            比较结果
-        """
+        """比较值"""
         try:
             if operator == "lt":
                 return value < threshold
@@ -276,34 +293,13 @@ class StockScreener:
             return False
 
     def _get_matched_factors(
-        self,
-        data: dict[str, Any],
-        factors: list[Factor]
+        self, data: dict[str, Any], factors: list[Factor]
     ) -> list[str]:
-        """获取匹配的因子列表
-
-        Args:
-            data: 股票数据
-            factors: 因子列表
-
-        Returns:
-            匹配的因子键名列表
-        """
-        return [
-            factor.key
-            for factor in factors
-            if self._check_condition(data, factor)
-        ]
+        """获取匹配的因子列表"""
+        return [factor.key for factor in factors if self._check_condition(data, factor)]
 
     def _get_factor_list(self, factor_keys: Optional[list[str]]) -> list[Factor]:
-        """获取因子列表
-
-        Args:
-            factor_keys: 因子键名列表
-
-        Returns:
-            因子对象列表
-        """
+        """获取因子列表"""
         if not factor_keys:
             return list(FACTORS.values())
 
@@ -316,15 +312,12 @@ class StockScreener:
         return factors
 
     async def _get_all_codes(self) -> list[str]:
-        """获取所有A股代码
-
-        Returns:
-            股票代码列表
-        """
+        """获取所有A股代码"""
         try:
-            # 从数据库获取股票列表
             df = await self.quote_service.client.get_stock_list()
-            return df["code"].tolist()[:100]  # 限制前100只用于测试
-        except Exception:
-            # 返回一些示例代码
+            codes = df["code"].tolist()
+            # 限制前500只用于性能
+            return codes[:500] if len(codes) > 500 else codes
+        except Exception as e:
+            logger.warning(f"获取股票列表失败: {e}，使用默认列表")
             return ["000001", "000002", "600000", "600036", "600519"]
