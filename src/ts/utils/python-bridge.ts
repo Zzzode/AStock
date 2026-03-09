@@ -50,11 +50,17 @@ export interface AnalysisResult {
  */
 async function callPython(
   command: string,
-  args: string[] = []
+  args: string[] = [],
+  options: { json?: boolean } = {}
 ): Promise<string> {
+  const json = options.json !== false;
+  const commandArgs = ['-m', 'astock.cli', command, ...args];
+  if (json) {
+    commandArgs.push('--json');
+  }
   const result = await execa(
     'python',
-    ['-m', 'astock.cli', command, ...args, '--json'],
+    commandArgs,
     {
       cwd: PYTHON_DIR,
       reject: true,
@@ -85,8 +91,15 @@ export async function analyzeStock(
 /**
  * 初始化数据库
  */
-export async function initDatabase(): Promise<void> {
-  await callPython('init-db');
+export interface InitDatabaseOptions {
+  skipRefresh?: boolean;
+}
+
+export async function initDatabase(
+  options: InitDatabaseOptions = {}
+): Promise<void> {
+  const args = options.skipRefresh ? ['--skip-refresh'] : [];
+  await callPython('init-db', args, { json: false });
 }
 
 // ============ Alert 相关接口 ============

@@ -6,6 +6,7 @@ from datetime import date
 from typing import Optional
 import asyncio
 from functools import wraps
+import os
 
 
 def async_wrap(func):
@@ -30,6 +31,20 @@ class AkShareClient:
         Returns:
             行情数据字典
         """
+        if os.getenv("ASTOCK_OFFLINE") == "1":
+            return {
+                "code": code,
+                "name": "OFFLINE",
+                "price": 10.5,
+                "change_percent": 0.1,
+                "change": 0.01,
+                "volume": 1000000.0,
+                "amount": 10000000.0,
+                "high": 10.6,
+                "low": 10.4,
+                "open": 10.5,
+                "prev_close": 10.49,
+            }
         # A股实时行情
         df = ak.stock_zh_a_spot_em()
 

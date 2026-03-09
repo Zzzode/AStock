@@ -8,7 +8,8 @@ import { initDatabase, getQuote, analyzeStock } from '../python-bridge.js';
 describe('Python Bridge', () => {
   beforeAll(async () => {
     // 初始化数据库
-    await initDatabase();
+    process.env.ASTOCK_OFFLINE = '1';
+    await initDatabase({ skipRefresh: true });
   }, 30000);
 
   it('should get quote', async () => {

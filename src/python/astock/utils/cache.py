@@ -89,6 +89,8 @@ class DataCache:
                 value = await factory()
             else:
                 value = factory()
+                if asyncio.iscoroutine(value):
+                    value = await value
 
             # 存入缓存
             cache[key] = value

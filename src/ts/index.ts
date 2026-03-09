@@ -6,6 +6,7 @@
 import { Command } from 'commander';
 import { handleQuote } from './orchestrator/quote-handler.js';
 import { handleAnalyze } from './orchestrator/analyze-handler.js';
+import { handleStyle } from './orchestrator/style-handler.js';
 import { initDatabase } from './utils/python-bridge.js';
 
 const program = new Command();
@@ -45,6 +46,17 @@ program
     console.log('正在初始化数据库...');
     await initDatabase();
     console.log('数据库初始化完成');
+  });
+
+program
+  .command('style')
+  .description('分析并学习交易风格')
+  .action(async () => {
+    const result = await handleStyle();
+    if (!result.success) {
+      console.error(result.error);
+      process.exit(1);
+    }
   });
 
 program.parse();

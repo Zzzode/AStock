@@ -134,7 +134,9 @@ RSI6: {latest.get('rsi6', 0):.2f}
 
 
 @app.command()
-def init_db():
+def init_db(
+    skip_refresh: bool = typer.Option(False, "--skip-refresh", help="跳过刷新股票数据")
+):
     """初始化数据库"""
     async def _init():
         DB_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -142,8 +144,10 @@ def init_db():
         await db.connect()
         await db.init_tables()
 
-        service = QuoteService(db)
-        count = await service.refresh_stocks()
+        count = 0
+        if not skip_refresh:
+            service = QuoteService(db)
+            count = await service.refresh_stocks()
 
         await db.close()
         return count

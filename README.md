@@ -30,6 +30,12 @@ npm run init-db
 
 ## 🎯 快速开始
 
+### Claude Code 运行方式
+
+1) 打开 Claude Code
+2) 通过斜杠命令调用 Skills
+3) 关注输出中的多 Agent 观点与综合结论
+
 ### CLI 命令
 
 ```bash
@@ -51,17 +57,19 @@ astock recommend --user default
 # 配置管理
 astock config show
 astock config set trading_style swing
+
+# 交易风格学习
+astock style
 ```
 
 ### Agent Skills
 
-```bash
-/quote 000001      # 查询行情
-/analyze 000001    # 技术分析
-/screen            # 智能选股
-/backtest 000001   # 策略回测
-/recommend         # 个性化推荐
-```
+- `/quote 000001`
+- `/analyze 000001`
+- `/screen`
+- `/backtest 000001 --strategy ma_cross`
+- `/recommend`
+- `/style`
 
 ### REST API
 
