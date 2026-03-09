@@ -1,3 +1,8 @@
+---
+name: watch
+description: Use when user needs to add, remove, or view stock monitoring items with price or volume conditions
+---
+
 # /watch - 股票监控管理
 
 管理股票监控列表，支持添加、移除和查看监控项。

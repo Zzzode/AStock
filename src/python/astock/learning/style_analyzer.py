@@ -176,10 +176,10 @@ class StyleAnalyzer:
         days = (max_date - min_date).days
         if days == 0:
             # 单日交易
-            return len(df)
+            return float(len(df))
 
         months = days / 30.0
-        return round(len(df) / months, 2)
+        return float(round(len(df) / months, 2))
 
     def _estimate_holding_days(self, df: pd.DataFrame) -> float:
         """估算平均持仓天数
@@ -227,7 +227,7 @@ class StyleAnalyzer:
         if len(holding_days_list) == 0:
             return 0.0
 
-        return round(sum(holding_days_list) / len(holding_days_list), 1)
+        return float(round(sum(holding_days_list) / len(holding_days_list), 1))
 
     def _calculate_profit_metrics(
         self, df: pd.DataFrame

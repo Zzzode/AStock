@@ -1,3 +1,8 @@
+---
+name: analyze
+description: Use when user needs technical analysis for stocks including MA, MACD, KDJ, RSI indicators, or detecting trading signals like golden cross and death cross
+---
+
 # /analyze - 技术分析
 
 对股票进行技术分析，包括均线、MACD、KDJ、RSI 等指标。

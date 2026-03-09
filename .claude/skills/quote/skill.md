@@ -1,3 +1,8 @@
+---
+name: quote
+description: Use when user needs to query real-time stock prices, market data, or current trading information for A-shares
+---
+
 # /quote - 实时行情查询
 
 获取 A股股票的实时行情数据。

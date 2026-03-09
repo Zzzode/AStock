@@ -1,3 +1,8 @@
+---
+name: screen
+description: Use when user needs to screen or filter stocks based on technical indicators, valuation factors, or custom criteria
+---
+
 # /screen - 股票选股
 
 根据技术指标因子筛选符合条件的股票。

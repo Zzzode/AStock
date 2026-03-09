@@ -41,7 +41,7 @@ class TerminalChannel(AlertChannel):
 
     name = "terminal"
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.colors = {
             1: "\033[91m",  # 红色 - 紧急
             2: "\033[93m",  # 黄色 - 重要
@@ -69,7 +69,7 @@ class WeChatWorkChannel(AlertChannel):
 
     name = "wechat_work"
 
-    def __init__(self, webhook_url: Optional[str] = None):
+    def __init__(self, webhook_url: Optional[str] = None) -> None:
         self.webhook_url = webhook_url
 
     async def send(self, message: AlertMessage) -> bool:
@@ -107,7 +107,7 @@ class DingTalkChannel(AlertChannel):
 
     name = "dingtalk"
 
-    def __init__(self, webhook_url: Optional[str] = None, secret: Optional[str] = None):
+    def __init__(self, webhook_url: Optional[str] = None, secret: Optional[str] = None) -> None:
         self.webhook_url = webhook_url
         self.secret = secret
 
@@ -118,9 +118,12 @@ class DingTalkChannel(AlertChannel):
         import base64
         import urllib.parse
 
-        string_to_sign = f"{timestamp}\n{self.secret}"
+        secret = self.secret
+        if secret is None:
+            raise ValueError("钉钉 secret 未配置")
+        string_to_sign = f"{timestamp}\n{secret}"
         hmac_code = hmac.new(
-            self.secret.encode("utf-8"),
+            secret.encode("utf-8"),
             string_to_sign.encode("utf-8"),
             digestmod=hashlib.sha256,
         ).digest()
@@ -220,7 +223,7 @@ class EmailChannel(AlertChannel):
         smtp_password: Optional[str] = None,
         from_addr: Optional[str] = None,
         to_addrs: Optional[list[str]] = None,
-    ):
+    ) -> None:
         self.smtp_server = smtp_server
         self.smtp_port = smtp_port
         self.smtp_user = smtp_user
@@ -229,17 +232,21 @@ class EmailChannel(AlertChannel):
         self.to_addrs = to_addrs or []
 
     async def send(self, message: AlertMessage) -> bool:
-        if not all(
-            [self.smtp_server, self.smtp_user, self.smtp_password, self.to_addrs]
-        ):
+        smtp_server = self.smtp_server
+        smtp_user = self.smtp_user
+        smtp_password = self.smtp_password
+        to_addrs = self.to_addrs
+
+        if smtp_server is None or smtp_user is None or smtp_password is None or not to_addrs:
             logger.warning("邮件配置不完整")
             return False
+        from_addr = self.from_addr or smtp_user
 
         try:
             # 创建邮件
             msg = MIMEMultipart()
-            msg["From"] = self.from_addr
-            msg["To"] = ", ".join(self.to_addrs)
+            msg["From"] = from_addr
+            msg["To"] = ", ".join(to_addrs)
             msg["Subject"] = f"[A股告警] {message.title}"
 
             body = f"""
@@ -266,9 +273,16 @@ class EmailChannel(AlertChannel):
 
     def _send_email_sync(self, msg: MIMEMultipart) -> None:
         """同步发送邮件"""
-        with smtplib.SMTP_SSL(self.smtp_server, self.smtp_port) as server:
-            server.login(self.smtp_user, self.smtp_password)
-            server.sendmail(self.from_addr, self.to_addrs, msg.as_string())
+        smtp_server = self.smtp_server
+        smtp_user = self.smtp_user
+        smtp_password = self.smtp_password
+        from_addr = self.from_addr or smtp_user
+        to_addrs = self.to_addrs
+        if smtp_server is None or smtp_user is None or smtp_password is None or from_addr is None:
+            raise RuntimeError("邮件配置不完整")
+        with smtplib.SMTP_SSL(smtp_server, self.smtp_port) as server:
+            server.login(smtp_user, smtp_password)
+            server.sendmail(from_addr, to_addrs, msg.as_string())
 
 
 class PushPlusChannel(AlertChannel):
@@ -276,7 +290,7 @@ class PushPlusChannel(AlertChannel):
 
     name = "pushplus"
 
-    def __init__(self, token: Optional[str] = None):
+    def __init__(self, token: Optional[str] = None) -> None:
         self.token = token
 
     async def send(self, message: AlertMessage) -> bool:
@@ -322,7 +336,7 @@ CHANNEL_REGISTRY: dict[str, type[AlertChannel]] = {
 }
 
 
-def get_channel(name: str, **config) -> AlertChannel:
+def get_channel(name: str, **config: object) -> AlertChannel:
     """获取告警渠道实例"""
     if name not in CHANNEL_REGISTRY:
         raise AlertError(f"未知告警渠道: {name}", channel=name)

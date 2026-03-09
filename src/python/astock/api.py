@@ -2,7 +2,7 @@
 
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List
+from typing import Optional, List, Any, AsyncIterator
 import json
 
 from fastapi import FastAPI, HTTPException, Query, Depends, BackgroundTasks
@@ -10,14 +10,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
-from ..storage import Database
-from ..quote import QuoteService
-from ..analysis import TechnicalAnalyzer
-from ..stock_picker import StockScreener
-from ..backtest import BacktestEngine
-from ..recommend import Recommender
-from ..config import ConfigManager
-from ..utils import get_logger, setup_logging
+from .storage import Database
+from .quote import QuoteService
+from .analysis import TechnicalAnalyzer
+from .stock_picker import StockScreener
+from .backtest import BacktestEngine
+from .recommend import Recommender
+from .config import ConfigManager
+from .utils import get_logger, setup_logging
 
 # 配置日志
 setup_logging(level="INFO")
@@ -46,7 +46,7 @@ DB_PATH = Path(__file__).parent.parent.parent.parent.parent / "data" / "stocks.d
 # ============ 依赖注入 ============
 
 
-async def get_db():
+async def get_db() -> AsyncIterator[Database]:
     """获取数据库连接"""
     db = Database(str(DB_PATH))
     await db.connect()
@@ -56,7 +56,7 @@ async def get_db():
         await db.close()
 
 
-async def get_quote_service(db: Database = Depends(get_db)):
+async def get_quote_service(db: Database = Depends(get_db)) -> QuoteService:
     """获取行情服务"""
     return QuoteService(db)
 
@@ -84,8 +84,8 @@ class AnalysisResponse(BaseModel):
     """分析响应"""
 
     code: str
-    signals: List[dict]
-    latest: dict
+    signals: list[dict[str, Any]]
+    latest: dict[str, Any]
 
 
 class ScreenResult(BaseModel):
@@ -94,8 +94,8 @@ class ScreenResult(BaseModel):
     code: str
     name: Optional[str]
     score: float
-    matched_factors: List[str]
-    factor_scores: dict
+    matched_factors: list[str]
+    factor_scores: dict[str, float]
     screened_at: str
 
 
@@ -103,7 +103,7 @@ class ScreenResponse(BaseModel):
     """选股响应"""
 
     total: int
-    results: List[ScreenResult]
+    results: list[ScreenResult]
 
 
 class BacktestResponse(BaseModel):
@@ -120,8 +120,8 @@ class BacktestResponse(BaseModel):
     max_drawdown: float
     sharpe_ratio: float
     win_rate: float
-    trades: List[dict]
-    equity_curve: List[dict]
+    trades: list[dict[str, Any]]
+    equity_curve: list[dict[str, Any]]
 
 
 class ErrorResponse(BaseModel):
@@ -136,7 +136,7 @@ class ErrorResponse(BaseModel):
 
 
 @app.get("/")
-async def root():
+async def root() -> dict[str, Any]:
     """API 根路径"""
     return {
         "name": "A股交易策略分析工具 API",
@@ -161,7 +161,7 @@ async def root():
 async def get_quote(
     code: str,
     quote_service: QuoteService = Depends(get_quote_service),
-):
+) -> QuoteResponse:
     """获取股票实时行情"""
     try:
         result = await quote_service.get_realtime(code)
@@ -183,10 +183,10 @@ async def analyze_stock(
     days: int = Query(100, ge=30, le=500, description="分析天数"),
     db: Database = Depends(get_db),
     quote_service: QuoteService = Depends(get_quote_service),
-):
+) -> AnalysisResponse:
     """技术分析"""
     try:
-        df = await quote_service.get_daily(code)
+        df = await quote_service.get_daily(code, limit=days)
 
         if df.empty:
             raise HTTPException(status_code=404, detail=f"无数据: {code}")
@@ -208,7 +208,7 @@ async def screen_stocks(
     factors: Optional[str] = Query(None, description="因子列表，逗号分隔"),
     limit: int = Query(10, ge=1, le=100, description="返回数量"),
     quote_service: QuoteService = Depends(get_quote_service),
-):
+) -> ScreenResponse:
     """选股"""
     try:
         screener = StockScreener(quote_service)
@@ -244,7 +244,7 @@ async def backtest_stock(
     strategy: str = Query("ma_cross", description="策略名称"),
     capital: float = Query(100000, ge=10000, description="初始资金"),
     quote_service: QuoteService = Depends(get_quote_service),
-):
+) -> BacktestResponse:
     """回测"""
     try:
         df = await quote_service.get_daily(code, save=False)
@@ -260,7 +260,22 @@ async def backtest_stock(
         )
         result.code = code
 
-        return BacktestResponse(**result.to_dict())
+        trades = [trade.to_dict() for trade in result.trades]
+        return BacktestResponse(
+            code=code,
+            strategy=result.strategy,
+            start_date=result.start_date.isoformat(),
+            end_date=result.end_date.isoformat(),
+            initial_capital=result.initial_capital,
+            final_capital=result.final_capital,
+            total_return=result.total_return,
+            annual_return=result.annual_return,
+            max_drawdown=result.max_drawdown,
+            sharpe_ratio=result.sharpe_ratio,
+            win_rate=result.win_rate,
+            trades=trades,
+            equity_curve=result.equity_curve,
+        )
     except HTTPException:
         raise
     except Exception as e:
@@ -275,16 +290,16 @@ async def get_recommendations(
     style: Optional[str] = Query(None, description="交易风格覆盖"),
     risk: Optional[str] = Query(None, description="风险等级覆盖"),
     quote_service: QuoteService = Depends(get_quote_service),
-):
+) -> Any:
     """个性化推荐"""
     try:
-        from ..recommend import Recommender
-        from ..stock_picker import StockScreener
+        from .recommend import Recommender
+        from .stock_picker import StockScreener
 
         screener = StockScreener(quote_service)
         recommender = Recommender(screener)
 
-        options = {}
+        options: dict[str, str] = {}
         if style:
             options["trading_style"] = style
         if risk:
@@ -305,7 +320,7 @@ async def get_recommendations(
 @app.get("/config")
 async def get_config(
     user_id: str = Query("default", description="用户ID"),
-):
+) -> dict[str, Any]:
     """获取用户配置"""
     try:
         config_manager = ConfigManager()
@@ -334,14 +349,14 @@ async def update_config(
     risk_level: Optional[str] = Query(None, description="风险等级"),
     max_positions: Optional[int] = Query(None, description="最大持仓数"),
     position_size: Optional[float] = Query(None, description="单只仓位比例"),
-):
+) -> dict[str, Any]:
     """更新用户配置"""
     try:
-        from ..config import TradingStyle, RiskLevel
+        from .config import TradingStyle, RiskLevel
 
         config_manager = ConfigManager()
 
-        updates = {}
+        updates: dict[str, object] = {}
         if trading_style:
             for s in TradingStyle:
                 if s.value == trading_style:
@@ -369,19 +384,19 @@ async def update_config(
 
 
 @app.get("/strategies")
-async def list_strategies():
+async def list_strategies() -> dict[str, Any]:
     """列出所有可用策略"""
-    from ..backtest.strategies import list_strategies
+    from .backtest.strategies import list_strategies
 
     return {"strategies": list_strategies()}
 
 
 @app.get("/factors")
-async def list_factors():
+async def list_factors() -> dict[str, Any]:
     """列出所有可用因子"""
-    from ..stock_picker.factors import FACTORS, FactorType
+    from .stock_picker.factors import FACTORS, FactorType
 
-    factors_by_type = {}
+    factors_by_type: dict[str, list[dict[str, Any]]] = {}
     for key, factor in FACTORS.items():
         type_name = factor.type.value
         if type_name not in factors_by_type:
@@ -399,7 +414,7 @@ async def list_factors():
 
 
 @app.get("/health")
-async def health_check():
+async def health_check() -> dict[str, str]:
     """健康检查"""
     return {
         "status": "healthy",

@@ -19,7 +19,7 @@ class PortfolioStats:
     max_position_ratio: float = 0.0  # 最大仓位比例
     updated_at: Optional[datetime] = None
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, object]:
         return {
             "total_value": self.total_value,
             "cash": self.cash,
@@ -74,7 +74,7 @@ class Portfolio:
     def get_stats(self) -> PortfolioStats:
         """获取组合统计"""
         positions = self.position_manager.get_all_positions()
-        max_position_value = 0
+        max_position_value = 0.0
         total_value = self.total_value
 
         for pos in positions:
@@ -98,7 +98,7 @@ class Portfolio:
 class PortfolioManager:
     """组合管理器"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._portfolios: dict[str, Portfolio] = {}
 
     def create_portfolio(

@@ -36,7 +36,7 @@ class AlertEngine:
         self.config_path = config_path or Path("data/config.json")
         self.config = self._load_config()
 
-    def _load_config(self) -> dict:
+    def _load_config(self) -> dict[str, Any]:
         """加载配置文件
 
         Returns:
@@ -50,7 +50,9 @@ class AlertEngine:
             with open(self.config_path, "r", encoding="utf-8") as f:
                 config = json.load(f)
                 print(f"[AlertEngine] 已加载配置文件")
-                return config
+                if isinstance(config, dict):
+                    return config
+                return {}
         except Exception as e:
             print(f"[AlertEngine] 加载配置失败: {e}")
             return {}
@@ -66,7 +68,7 @@ class AlertEngine:
             各渠道发送结果 {channel: success}
         """
         channels = channels or alert.channels or ["terminal"]
-        results = {}
+        results: dict[str, bool] = {}
 
         for channel in channels:
             try:

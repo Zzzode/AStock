@@ -1,3 +1,8 @@
+---
+name: config
+description: Use when user needs to manage preferences, set trading style, risk level, or analyze and learn trading patterns from history
+---
+
 # /config - 配置管理
 
 管理用户偏好配置。

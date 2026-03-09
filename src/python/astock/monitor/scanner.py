@@ -1,7 +1,7 @@
 """信号扫描器"""
 
 from datetime import datetime
-from typing import Optional
+from typing import Optional, Any
 
 import pandas as pd
 
@@ -19,7 +19,7 @@ class SignalScanner:
         """
         self.quote_service = quote_service
 
-    async def scan_stock(self, code: str) -> dict:
+    async def scan_stock(self, code: str) -> dict[str, Any]:
         """扫描单只股票的技术信号
 
         Args:
@@ -67,7 +67,7 @@ class SignalScanner:
                 "error": str(e)
             }
 
-    async def scan_all(self, codes: list[str]) -> list[dict]:
+    async def scan_all(self, codes: list[str]) -> list[dict[str, Any]]:
         """扫描多只股票
 
         Args:
@@ -82,7 +82,7 @@ class SignalScanner:
             results.append(result)
         return results
 
-    def _get_signal_level(self, signals: list[dict]) -> int:
+    def _get_signal_level(self, signals: list[dict[str, Any]]) -> int:
         """判断信号级别
 
         信号级别规则：

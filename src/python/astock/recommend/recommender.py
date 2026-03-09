@@ -29,7 +29,7 @@ class RecommendResult:
     success: bool
     recommendations: list[Recommendation] = field(default_factory=list)
     total: int = 0
-    config_used: Optional[dict] = None
+    config_used: Optional[dict[str, Any]] = None
     error: Optional[str] = None
     generated_at: datetime = field(default_factory=datetime.now)
 
@@ -366,7 +366,7 @@ class Recommender:
         config: Optional[UserConfig] = None,
         user_id: str = "default",
         limit: int = 10,
-        options: Optional[dict] = None
+        options: Optional[dict[str, Any]] = None
     ) -> RecommendResult:
         """处理推荐请求并返回结果
 
@@ -418,7 +418,7 @@ class Recommender:
                 error=str(e)
             )
 
-    def _apply_options(self, config: UserConfig, options: dict) -> UserConfig:
+    def _apply_options(self, config: UserConfig, options: dict[str, Any]) -> UserConfig:
         """应用选项覆盖到配置
 
         Args:

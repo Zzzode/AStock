@@ -1,3 +1,8 @@
+---
+name: recommend
+description: Use when user needs personalized stock recommendations based on trading style, risk preference, or investment strategy
+---
+
 # /recommend - 个性化推荐
 
 根据用户风格生成个性化股票推荐。

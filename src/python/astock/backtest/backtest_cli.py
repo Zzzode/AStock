@@ -4,7 +4,7 @@ import asyncio
 import json
 from datetime import date, datetime, timedelta
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
 
 import typer
 from rich.console import Console
@@ -32,7 +32,7 @@ def run_backtest(
     end_date: Optional[str] = typer.Option(None, "--end-date", help="结束日期 (YYYY-MM-DD)"),
     capital: float = typer.Option(100000.0, "--capital", "-c", help="初始资金"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
-):
+) -> None:
     """运行策略回测"""
     # 验证策略名称
     if strategy not in STRATEGIES:
@@ -51,7 +51,7 @@ def run_backtest(
     else:
         start_dt = end_dt - timedelta(days=365)
 
-    async def _run():
+    async def _run() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
         try:
@@ -104,7 +104,7 @@ def run_backtest(
 @app.command("list")
 def list_strategies(
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
-):
+) -> None:
     """列出可用策略"""
     strategies = [
         {"name": name, "description": cls.description}
@@ -124,7 +124,7 @@ def list_strategies(
         console.print(table)
 
 
-def _display_result(result: dict):
+def _display_result(result: dict[str, Any]) -> None:
     """显示回测结果"""
     # 收益指标面板
     total_return = result["total_return"]

@@ -3,26 +3,76 @@
 import akshare as ak
 import pandas as pd
 from datetime import date
-from typing import Optional
+from typing import Optional, Any, Callable, Awaitable, TypeVar, ParamSpec, cast
 import asyncio
 from functools import wraps
 import os
 
 
-def async_wrap(func):
+P = ParamSpec("P")
+T = TypeVar("T")
+
+
+def async_wrap(func: Callable[P, T]) -> Callable[P, Awaitable[T]]:
     """将同步函数包装为异步"""
     @wraps(func)
-    async def wrapper(*args, **kwargs):
+    async def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
         loop = asyncio.get_event_loop()
-        return await loop.run_in_executor(None, lambda: func(*args, **kwargs))
+        return cast(T, await loop.run_in_executor(None, lambda: func(*args, **kwargs)))
     return wrapper
 
 
 class AkShareClient:
     """AkShare 行情数据客户端"""
 
+    def _load_realtime_dataframe(self) -> pd.DataFrame:
+        try:
+            return ak.stock_zh_a_spot_em()
+        except Exception:
+            return ak.stock_zh_a_spot()
+
+    def _normalize_code(self, value: object) -> str:
+        text = str(value)
+        digits = "".join(ch for ch in text if ch.isdigit())
+        if len(digits) >= 6:
+            return digits[-6:]
+        return digits
+
+    def _daily_symbol(self, code: str) -> str:
+        if code.startswith("6"):
+            return f"sh{code}"
+        if code.startswith(("8", "4")):
+            return f"bj{code}"
+        return f"sz{code}"
+
+    def _normalize_daily_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
+        column_map = {}
+        if "日期" in df.columns:
+            column_map["日期"] = "date"
+        if "开盘" in df.columns:
+            column_map["开盘"] = "open"
+        if "最高" in df.columns:
+            column_map["最高"] = "high"
+        if "最低" in df.columns:
+            column_map["最低"] = "low"
+        if "收盘" in df.columns:
+            column_map["收盘"] = "close"
+        if "成交量" in df.columns:
+            column_map["成交量"] = "volume"
+        if "成交额" in df.columns:
+            column_map["成交额"] = "amount"
+
+        if column_map:
+            df = df.rename(columns=column_map)
+
+        required = ["date", "open", "high", "low", "close", "volume", "amount"]
+        missing = [col for col in required if col not in df.columns]
+        if missing:
+            raise ValueError(f"日线数据缺少列: {missing}")
+        return df[required]
+
     @async_wrap
-    def get_realtime_quote(self, code: str) -> dict:
+    def get_realtime_quote(self, code: str) -> dict[str, Any]:
         """获取实时行情
 
         Args:
@@ -45,11 +95,13 @@ class AkShareClient:
                 "open": 10.5,
                 "prev_close": 10.49,
             }
-        # A股实时行情
-        df = ak.stock_zh_a_spot_em()
+        df = self._load_realtime_dataframe()
+        if "代码" not in df.columns:
+            raise ValueError("实时行情数据缺少 代码 列")
 
-        # 查找对应股票
-        result = df[df["代码"] == code]
+        normalized_codes = df["代码"].apply(self._normalize_code)
+        result = df[normalized_codes == code]
+
         if result.empty:
             raise ValueError(f"股票代码 {code} 不存在")
 
@@ -85,33 +137,31 @@ class AkShareClient:
         Returns:
             DataFrame，包含 OHLCV 数据
         """
-        period = "daily"
-        adjust = "qfq"  # 前复权
+        try:
+            df = ak.stock_zh_a_hist(
+                symbol=code,
+                period="daily",
+                adjust="qfq"
+            )
+        except Exception:
+            symbol = self._daily_symbol(code)
+            kwargs = {"symbol": symbol, "adjust": "qfq"}
+            if start_date:
+                kwargs["start_date"] = start_date.strftime("%Y%m%d")
+            if end_date:
+                kwargs["end_date"] = end_date.strftime("%Y%m%d")
+            df = ak.stock_zh_a_daily(**kwargs)
 
-        df = ak.stock_zh_a_hist(
-            symbol=code,
-            period=period,
-            adjust=adjust
-        )
-
-        # 日期过滤
-        if start_date:
+        if start_date and "date" in df.columns:
+            df = df[df["date"] >= start_date.strftime("%Y-%m-%d")]
+        if end_date and "date" in df.columns:
+            df = df[df["date"] <= end_date.strftime("%Y-%m-%d")]
+        if start_date and "日期" in df.columns:
             df = df[df["日期"] >= start_date.strftime("%Y-%m-%d")]
-        if end_date:
+        if end_date and "日期" in df.columns:
             df = df[df["日期"] <= end_date.strftime("%Y-%m-%d")]
 
-        # 重命名列
-        df = df.rename(columns={
-            "日期": "date",
-            "开盘": "open",
-            "最高": "high",
-            "最低": "low",
-            "收盘": "close",
-            "成交量": "volume",
-            "成交额": "amount",
-        })
-
-        return df[["date", "open", "high", "low", "close", "volume", "amount"]]
+        return self._normalize_daily_dataframe(df)
 
     @async_wrap
     def get_stock_list(self) -> pd.DataFrame:

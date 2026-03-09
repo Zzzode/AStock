@@ -5,6 +5,7 @@ from datetime import date
 from typing import Optional
 
 import numpy as np
+from typing import cast
 import pandas as pd
 
 from .strategies import Signal, Strategy, Trade, get_strategy
@@ -25,9 +26,9 @@ class BacktestResult:
     sharpe_ratio: float  # 夏普比率
     win_rate: float  # 胜率
     trades: list[Trade] = field(default_factory=list)
-    equity_curve: list[dict] = field(default_factory=list)
+    equity_curve: list[dict[str, float | str]] = field(default_factory=list)
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, object]:
         return {
             "code": self.code,
             "strategy": self.strategy,
@@ -48,11 +49,11 @@ class BacktestResult:
 class BacktestEngine:
     """回测引擎"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.position = 0  # 当前持仓数量
         self.capital = 0.0  # 当前资金
         self.trades: list[Trade] = []
-        self.equity_curve: list[dict] = []
+        self.equity_curve: list[dict[str, float | str]] = []
 
     def run(
         self,
@@ -60,7 +61,7 @@ class BacktestEngine:
         strategy_name: str,
         initial_capital: float = 100000.0,
         commission_rate: float = 0.0003,
-        strategy_params: Optional[dict] = None,
+        strategy_params: Optional[dict[str, object]] = None,
     ) -> BacktestResult:
         """运行回测
 
@@ -182,16 +183,16 @@ class BacktestEngine:
     def _get_start_date(self, df: pd.DataFrame) -> date:
         """获取开始日期"""
         d = df.iloc[0]["date"]
-        if isinstance(d, str):
-            return date.fromisoformat(d)
-        return d
+        if isinstance(d, date):
+            return d
+        return cast(date, pd.to_datetime(d).date())
 
     def _get_end_date(self, df: pd.DataFrame) -> date:
         """获取结束日期"""
         d = df.iloc[-1]["date"]
-        if isinstance(d, str):
-            return date.fromisoformat(d)
-        return d
+        if isinstance(d, date):
+            return d
+        return cast(date, pd.to_datetime(d).date())
 
     def _calc_total_return(self, initial: float, final: float) -> float:
         """计算总收益率"""
@@ -217,14 +218,14 @@ class BacktestEngine:
 
         # 年化收益率 = (最终价值 / 初始价值)^(1/年数) - 1
         annual_return = (final / initial) ** (1 / years) - 1
-        return annual_return * 100
+        return float(annual_return * 100)
 
     def _calc_max_drawdown(self) -> float:
         """计算最大回撤"""
         if not self.equity_curve:
             return 0.0
 
-        equities = [e["equity"] for e in self.equity_curve]
+        equities = [float(e["equity"]) for e in self.equity_curve]
         peak = equities[0]
         max_dd = 0.0
 
@@ -242,7 +243,7 @@ class BacktestEngine:
         if len(self.equity_curve) < 2:
             return 0.0
 
-        equities = [e["equity"] for e in self.equity_curve]
+        equities = [float(e["equity"]) for e in self.equity_curve]
         returns = []
 
         for i in range(1, len(equities)):
@@ -253,9 +254,9 @@ class BacktestEngine:
         if not returns:
             return 0.0
 
-        returns = np.array(returns)
-        mean_return = np.mean(returns)
-        std_return = np.std(returns)
+        returns_array = np.array(returns)
+        mean_return = np.mean(returns_array)
+        std_return = np.std(returns_array)
 
         if std_return == 0:
             return 0.0
@@ -264,7 +265,7 @@ class BacktestEngine:
         risk_free_rate = 0.03 / 252  # 年化无风险利率约3%
         sharpe = (mean_return - risk_free_rate) / std_return * np.sqrt(252)
 
-        return sharpe
+        return float(sharpe)
 
     def _calc_win_rate(self) -> float:
         """计算胜率"""
