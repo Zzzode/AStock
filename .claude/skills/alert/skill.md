@@ -1,3 +1,8 @@
+---
+name: alert
+description: Use when user needs to start or stop monitoring service, check monitoring status, or view historical alert records
+---
+
 # /alert - 监控告警管理
 
 管理股票监控服务，支持启动、停止监控，查看历史告警记录。

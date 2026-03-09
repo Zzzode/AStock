@@ -3,7 +3,7 @@
 import asyncio
 from datetime import datetime, time
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
 
 from ..storage import Database, WatchItem, AlertRecord
 from ..quote import QuoteService
@@ -34,7 +34,7 @@ class MonitorService:
         self.scanner = SignalScanner(quote_service)
         self.alert_engine = AlertEngine(config_path)
         self._running = False
-        self._task: Optional[asyncio.Task] = None
+        self._task: Optional[asyncio.Task[None]] = None
         self._scan_interval = 60  # 扫描间隔(秒)
         self._start_time: Optional[datetime] = None
         logger.debug("监控服务初始化完成")
@@ -134,7 +134,7 @@ class MonitorService:
             f"扫描完成: 成功={success_count}, 错误={error_count}, 发现信号={signal_count}"
         )
 
-    async def _scan_single_item(self, item: WatchItem) -> Optional[bool]:
+    async def _scan_single_item(self, item: WatchItem) -> bool | None | Exception:
         """扫描单个监控项
 
         Args:
@@ -159,7 +159,7 @@ class MonitorService:
             logger.error(f"扫描 {item.code} 失败: {e}", exc_info=True)
             return e
 
-    async def _handle_signal(self, item: WatchItem, scan_result: dict) -> None:
+    async def _handle_signal(self, item: WatchItem, scan_result: dict[str, Any]) -> None:
         """处理检测到的信号
 
         Args:
@@ -238,7 +238,7 @@ class MonitorService:
         self._scan_interval = max(10, seconds)  # 最小10秒
         logger.info(f"扫描间隔已设置为: {self._scan_interval}秒")
 
-    def get_status(self) -> dict:
+    def get_status(self) -> dict[str, Any]:
         """获取服务状态"""
         return {
             "running": self._running,

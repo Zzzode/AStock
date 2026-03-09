@@ -36,7 +36,7 @@ class AstockError(Exception):
 class DataSourceError(AstockError):
     """数据源异常"""
 
-    def __init__(self, message: str, source: Optional[str] = None, **kwargs):
+    def __init__(self, message: str, source: Optional[str] = None, **kwargs: Any):
         self.source = source
         details = kwargs.pop("details", {})
         if source:
@@ -52,7 +52,7 @@ class ValidationError(AstockError):
         message: str,
         field: Optional[str] = None,
         value: Optional[Any] = None,
-        **kwargs,
+        **kwargs: Any,
     ):
         details = kwargs.pop("details", {})
         if field:
@@ -70,7 +70,7 @@ class DatabaseError(AstockError):
         message: str,
         operation: Optional[str] = None,
         table: Optional[str] = None,
-        **kwargs,
+        **kwargs: Any,
     ):
         details = kwargs.pop("details", {})
         if operation:
@@ -83,7 +83,7 @@ class DatabaseError(AstockError):
 class ConfigError(AstockError):
     """配置异常"""
 
-    def __init__(self, message: str, config_key: Optional[str] = None, **kwargs):
+    def __init__(self, message: str, config_key: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})
         if config_key:
             details["config_key"] = config_key
@@ -93,7 +93,7 @@ class ConfigError(AstockError):
 class StrategyError(AstockError):
     """策略异常"""
 
-    def __init__(self, message: str, strategy: Optional[str] = None, **kwargs):
+    def __init__(self, message: str, strategy: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})
         if strategy:
             details["strategy"] = strategy
@@ -103,7 +103,7 @@ class StrategyError(AstockError):
 class BacktestError(AstockError):
     """回测异常"""
 
-    def __init__(self, message: str, backtest_id: Optional[str] = None, **kwargs):
+    def __init__(self, message: str, backtest_id: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})
         if backtest_id:
             details["backtest_id"] = backtest_id
@@ -113,7 +113,7 @@ class BacktestError(AstockError):
 class AlertError(AstockError):
     """告警异常"""
 
-    def __init__(self, message: str, channel: Optional[str] = None, **kwargs):
+    def __init__(self, message: str, channel: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})
         if channel:
             details["channel"] = channel

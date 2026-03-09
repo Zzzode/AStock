@@ -49,7 +49,7 @@ class Position:
         """是否空仓"""
         return self.shares == 0
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, object]:
         return {
             "code": self.code,
             "name": self.name,
@@ -69,7 +69,7 @@ class Position:
 class PositionManager:
     """持仓管理器"""
 
-    def __init__(self):
+    def __init__(self) -> None:
         self._positions: dict[str, Position] = {}
 
     def get_position(self, code: str) -> Optional[Position]:

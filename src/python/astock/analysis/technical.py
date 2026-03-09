@@ -2,7 +2,7 @@
 
 import pandas as pd
 import numpy as np
-from typing import Optional
+from typing import Optional, Any
 import talib
 
 
@@ -15,10 +15,10 @@ class TechnicalAnalyzer:
             df: 包含 open, high, low, close, volume 的 DataFrame
         """
         self.df = df.copy()
-        self.close = df["close"].values
-        self.high = df["high"].values
-        self.low = df["low"].values
-        self.volume = df["volume"].values
+        self.close = np.asarray(df["close"].astype(float), dtype=float)
+        self.high = np.asarray(df["high"].astype(float), dtype=float)
+        self.low = np.asarray(df["low"].astype(float), dtype=float)
+        self.volume = np.asarray(df["volume"].astype(float), dtype=float)
 
     def add_ma(self, periods: list[int] = [5, 10, 20, 60]) -> pd.DataFrame:
         """添加均线指标
@@ -118,13 +118,13 @@ class TechnicalAnalyzer:
         self.add_rsi()
         return self.df
 
-    def get_signals(self) -> dict:
+    def get_signals(self) -> dict[str, Any]:
         """获取技术信号
 
         Returns:
             信号字典
         """
-        signals = []
+        signals: list[dict[str, Any]] = []
 
         # 获取最新数据
         latest = self.df.iloc[-1]

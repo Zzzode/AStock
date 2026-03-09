@@ -17,7 +17,7 @@ from astock.backtest.strategies import (
 
 
 @pytest.fixture
-def sample_df():
+def sample_df() -> pd.DataFrame:
     """示例 DataFrame"""
     dates = pd.date_range(start="2024-01-01", periods=200, freq="D")
     np.random.seed(42)
@@ -44,13 +44,13 @@ def sample_df():
 class TestBacktestEngine:
     """回测引擎测试"""
 
-    def test_engine_creation(self):
+    def test_engine_creation(self) -> None:
         """引擎创建测试"""
         engine = BacktestEngine()
         assert engine.position == 0
         assert engine.capital == 0
 
-    def test_run_ma_cross_strategy(self, sample_df):
+    def test_run_ma_cross_strategy(self, sample_df: pd.DataFrame) -> None:
         """均线交叉策略回测"""
         engine = BacktestEngine()
         result = engine.run(
@@ -64,7 +64,7 @@ class TestBacktestEngine:
         assert result.strategy == "ma_cross"
         assert result.total_return != 0 or len(result.trades) == 0
 
-    def test_run_macd_strategy(self, sample_df):
+    def test_run_macd_strategy(self, sample_df: pd.DataFrame) -> None:
         """MACD 策略回测"""
         engine = BacktestEngine()
         result = engine.run(
@@ -76,7 +76,7 @@ class TestBacktestEngine:
         assert isinstance(result, BacktestResult)
         assert result.strategy == "macd"
 
-    def test_run_rsi_strategy(self, sample_df):
+    def test_run_rsi_strategy(self, sample_df: pd.DataFrame) -> None:
         """RSI 策略回测"""
         engine = BacktestEngine()
         result = engine.run(
@@ -88,7 +88,7 @@ class TestBacktestEngine:
         assert isinstance(result, BacktestResult)
         assert result.strategy == "rsi"
 
-    def test_result_to_dict(self, sample_df):
+    def test_result_to_dict(self, sample_df: pd.DataFrame) -> None:
         """结果转字典测试"""
         engine = BacktestEngine()
         result = engine.run(sample_df, "ma_cross", 100000)
@@ -101,7 +101,7 @@ class TestBacktestEngine:
         assert "sharpe_ratio" in result_dict
         assert "max_drawdown" in result_dict
 
-    def test_calc_max_drawdown(self, sample_df):
+    def test_calc_max_drawdown(self, sample_df: pd.DataFrame) -> None:
         """最大回撤计算测试"""
         engine = BacktestEngine()
         engine.run(sample_df, "ma_cross", 100000)
@@ -109,7 +109,7 @@ class TestBacktestEngine:
         # 手动测试最大回撤计算
         equities = [100, 110, 105, 115, 100, 120]
         peak = equities[0]
-        max_dd = 0
+        max_dd = 0.0
 
         for e in equities:
             if e > peak:
@@ -125,7 +125,7 @@ class TestStrategies:
     """策略测试"""
 
     @pytest.fixture
-    def sample_df(self):
+    def sample_df(self) -> pd.DataFrame:
         """示例数据"""
         dates = pd.date_range(start="2024-01-01", periods=100, freq="D")
         np.random.seed(42)
@@ -142,7 +142,7 @@ class TestStrategies:
             }
         )
 
-    def test_ma_cross_strategy(self, sample_df):
+    def test_ma_cross_strategy(self, sample_df: pd.DataFrame) -> None:
         """均线交叉策略测试"""
         strategy = MACrossStrategy(fast_period=5, slow_period=20)
         df = strategy.generate_signals(sample_df)
@@ -151,7 +151,7 @@ class TestStrategies:
         assert "ma_fast" in df.columns
         assert "ma_slow" in df.columns
 
-    def test_macd_strategy(self, sample_df):
+    def test_macd_strategy(self, sample_df: pd.DataFrame) -> None:
         """MACD 策略测试"""
         strategy = MACDStrategy()
         df = strategy.generate_signals(sample_df)
@@ -160,7 +160,7 @@ class TestStrategies:
         assert "macd" in df.columns
         assert "macd_signal" in df.columns
 
-    def test_rsi_strategy(self, sample_df):
+    def test_rsi_strategy(self, sample_df: pd.DataFrame) -> None:
         """RSI 策略测试"""
         strategy = RSIStrategy()
         df = strategy.generate_signals(sample_df)
@@ -168,7 +168,7 @@ class TestStrategies:
         assert "signal" in df.columns
         assert "rsi" in df.columns
 
-    def test_get_strategy(self):
+    def test_get_strategy(self) -> None:
         """获取策略测试"""
         strategy = get_strategy("ma_cross")
         assert strategy.name == "ma_cross"
@@ -176,7 +176,7 @@ class TestStrategies:
         with pytest.raises(ValueError):
             get_strategy("unknown_strategy")
 
-    def test_list_strategies(self):
+    def test_list_strategies(self) -> None:
         """列出策略测试"""
         strategies = list_strategies()
         assert isinstance(strategies, list)
@@ -187,7 +187,7 @@ class TestStrategies:
 class TestSignal:
     """信号测试"""
 
-    def test_signal_values(self):
+    def test_signal_values(self) -> None:
         """信号值测试"""
         assert Signal.BUY.value == "buy"
         assert Signal.SELL.value == "sell"

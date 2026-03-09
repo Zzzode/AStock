@@ -3,7 +3,7 @@
 from datetime import date, datetime
 from typing import Optional
 
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class Stock(BaseModel):
@@ -55,8 +55,8 @@ class WatchItem(BaseModel):
 
     code: str
     name: Optional[str] = None
-    conditions: dict = {}  # 监控条件配置
-    alert_channels: list[str] = ["terminal"]  # 提醒渠道
+    conditions: dict[str, object] = Field(default_factory=dict)
+    alert_channels: list[str] = Field(default_factory=lambda: ["terminal"])
     enabled: bool = True
     created_at: Optional[datetime] = None
 
@@ -72,4 +72,4 @@ class AlertRecord(BaseModel):
     level: int = 3  # 1=紧急, 2=重要, 3=一般
     triggered_at: datetime
     status: str = "pending"  # pending, sent, failed
-    channels: list[str] = []
+    channels: list[str] = Field(default_factory=list)

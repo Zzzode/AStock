@@ -4,7 +4,7 @@ import aiosqlite
 from pathlib import Path
 from typing import Optional
 
-from .models import Stock, DailyQuote, WatchItem, AlertRecord
+from .models import Stock, DailyQuote, WatchItem, AlertRecord, Trade
 
 
 class Database:
@@ -153,6 +153,9 @@ class Database:
             for row in rows
         ]
 
+    def get_trades(self, user_id: str) -> list[Trade]:
+        return []
+
     # ==================== 监控项相关方法 ====================
 
     async def save_watch_item(self, item: WatchItem) -> None:
@@ -243,7 +246,7 @@ class Database:
             )
         )
         await self._conn.commit()
-        return cursor.lastrowid
+        return int(cursor.lastrowid or 0)
 
     async def get_alert_records(
         self,
@@ -256,8 +259,8 @@ class Database:
             raise RuntimeError("Database not connected")
 
         import json
-        conditions = []
-        params = []
+        conditions: list[str] = []
+        params: list[object] = []
 
         if code:
             conditions.append("code = ?")

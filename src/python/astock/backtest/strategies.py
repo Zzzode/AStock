@@ -27,7 +27,7 @@ class Trade:
     value: float
     commission: float
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, object]:
         return {
             "date": self.date.isoformat() if isinstance(self.date, date) else self.date,
             "signal": self.signal.value,
@@ -77,22 +77,30 @@ class MACrossStrategy(Strategy):
     name = "ma_cross"
     description = "MA均线交叉策略"
 
-    def __init__(self, short_period: int = 5, long_period: int = 20):
+    def __init__(
+        self,
+        short_period: int = 5,
+        long_period: int = 20,
+        fast_period: Optional[int] = None,
+        slow_period: Optional[int] = None,
+    ):
         """
         Args:
             short_period: 短期均线周期
             long_period: 长期均线周期
         """
-        self.short_period = short_period
-        self.long_period = long_period
+        self.short_period = fast_period if fast_period is not None else short_period
+        self.long_period = slow_period if slow_period is not None else long_period
 
     def prepare_data(self, df: pd.DataFrame) -> pd.DataFrame:
         df = super().prepare_data(df)
-        close = df["close"].values
+        close = np.asarray(df["close"].astype(float), dtype=float)
 
         # 计算均线
         df[f"ma{self.short_period}"] = self._sma(close, self.short_period)
         df[f"ma{self.long_period}"] = self._sma(close, self.long_period)
+        df["ma_fast"] = df[f"ma{self.short_period}"]
+        df["ma_slow"] = df[f"ma{self.long_period}"]
 
         return df
 
@@ -151,7 +159,7 @@ class MACDStrategy(Strategy):
 
     def prepare_data(self, df: pd.DataFrame) -> pd.DataFrame:
         df = super().prepare_data(df)
-        close = df["close"].values
+        close = np.asarray(df["close"].astype(float), dtype=float)
 
         # 计算 MACD
         macd, signal_line, hist = self._macd(
@@ -226,14 +234,51 @@ class MACDStrategy(Strategy):
         return df
 
 
+class RSIStrategy(Strategy):
+    """RSI 超买超卖策略"""
+
+    name = "rsi"
+    description = "RSI超买超卖策略"
+
+    def __init__(self, period: int = 14, overbought: float = 70, oversold: float = 30):
+        self.period = period
+        self.overbought = overbought
+        self.oversold = oversold
+
+    def generate_signals(self, df: pd.DataFrame) -> pd.DataFrame:
+        df = self.prepare_data(df)
+        close = df["close"].astype(float)
+        delta = close.diff()
+        gain = delta.where(delta > 0, 0.0)
+        loss = -delta.where(delta < 0, 0.0)
+        avg_gain = gain.rolling(self.period, min_periods=self.period).mean()
+        avg_loss = loss.rolling(self.period, min_periods=self.period).mean()
+        rs = avg_gain / avg_loss.replace(0, np.nan)
+        rsi = 100 - (100 / (1 + rs))
+        df["rsi"] = rsi
+
+        signals = np.full(len(df), Signal.HOLD, dtype=object)
+        for i in range(1, len(df)):
+            if np.isnan(rsi.iloc[i]) or np.isnan(rsi.iloc[i - 1]):
+                continue
+            if rsi.iloc[i - 1] >= self.overbought and rsi.iloc[i] < self.overbought:
+                signals[i] = Signal.SELL
+            elif rsi.iloc[i - 1] <= self.oversold and rsi.iloc[i] > self.oversold:
+                signals[i] = Signal.BUY
+
+        df["signal"] = signals
+        return df
+
+
 # 策略注册表
 STRATEGIES: dict[str, type[Strategy]] = {
     "ma_cross": MACrossStrategy,
     "macd": MACDStrategy,
+    "rsi": RSIStrategy,
 }
 
 
-def get_strategy(name: str, **kwargs) -> Strategy:
+def get_strategy(name: str, **kwargs: object) -> Strategy:
     """获取策略实例
 
     Args:
@@ -250,3 +295,10 @@ def get_strategy(name: str, **kwargs) -> Strategy:
         raise ValueError(f"Unknown strategy: {name}. Available: {list(STRATEGIES.keys())}")
 
     return STRATEGIES[name](**kwargs)
+
+
+def list_strategies() -> list[dict[str, str]]:
+    return [
+        {"name": name, "description": cls.description}
+        for name, cls in STRATEGIES.items()
+    ]

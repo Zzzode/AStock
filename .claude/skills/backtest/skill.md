@@ -1,3 +1,8 @@
+---
+name: backtest
+description: Use when user needs to backtest trading strategies, evaluate strategy performance, or analyze historical trading results
+---
+
 # /backtest - 策略回测
 
 对交易策略进行历史回测，评估策略表现。

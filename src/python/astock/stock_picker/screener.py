@@ -253,7 +253,7 @@ class StockScreener:
             if prev_value is None or prev_threshold is None:
                 return False
 
-            return value > threshold and prev_value <= prev_threshold
+            return bool(value > threshold and prev_value <= prev_threshold)
 
         if factor.operator == "cross_down":
             prev_value = data.get(f"prev_{factor.field}")
@@ -269,7 +269,7 @@ class StockScreener:
             if prev_value is None or prev_threshold is None:
                 return False
 
-            return value < threshold and prev_value >= prev_threshold
+            return bool(value < threshold and prev_value >= prev_threshold)
 
         # 处理常规操作符
         return self._compare_values(value, factor.operator, threshold)
@@ -278,15 +278,15 @@ class StockScreener:
         """比较值"""
         try:
             if operator == "lt":
-                return value < threshold
+                return bool(value < threshold)
             elif operator == "le":
-                return value <= threshold
+                return bool(value <= threshold)
             elif operator == "gt":
-                return value > threshold
+                return bool(value > threshold)
             elif operator == "ge":
-                return value >= threshold
+                return bool(value >= threshold)
             elif operator == "eq":
-                return value == threshold
+                return bool(value == threshold)
             else:
                 return False
         except (TypeError, ValueError):
@@ -315,7 +315,7 @@ class StockScreener:
         """获取所有A股代码"""
         try:
             df = await self.quote_service.client.get_stock_list()
-            codes = df["code"].tolist()
+            codes = [str(code) for code in df["code"].tolist()]
             # 限制前500只用于性能
             return codes[:500] if len(codes) > 500 else codes
         except Exception as e:

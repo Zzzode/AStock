@@ -4,13 +4,14 @@ import pytest
 import pytest_asyncio
 from pathlib import Path
 import tempfile
+from typing import AsyncIterator
 
 from astock.storage import Database, Stock, DailyQuote, WatchItem, AlertRecord
 from datetime import date, datetime
 
 
 @pytest_asyncio.fixture
-async def db():
+async def db() -> AsyncIterator[Database]:
     """创建临时数据库"""
     with tempfile.TemporaryDirectory() as tmpdir:
         db_path = Path(tmpdir) / "test.db"
@@ -22,14 +23,14 @@ async def db():
 
 
 @pytest.mark.asyncio
-async def test_init_tables(db: Database):
+async def test_init_tables(db: Database) -> None:
     """测试表初始化"""
     # 应该不会抛出异常
     await db.init_tables()
 
 
 @pytest.mark.asyncio
-async def test_save_and_get_stock(db: Database):
+async def test_save_and_get_stock(db: Database) -> None:
     """测试保存和获取股票信息"""
     stock = Stock(
         code="000001",
@@ -44,7 +45,7 @@ async def test_save_and_get_stock(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_save_and_get_daily_quotes(db: Database):
+async def test_save_and_get_daily_quotes(db: Database) -> None:
     """测试保存和获取日线行情"""
     quotes = [
         DailyQuote(
@@ -76,7 +77,7 @@ async def test_save_and_get_daily_quotes(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_save_and_get_watch_items(db: Database):
+async def test_save_and_get_watch_items(db: Database) -> None:
     """测试保存和获取监控项"""
     item = WatchItem(
         code="000001",
@@ -102,7 +103,7 @@ async def test_save_and_get_watch_items(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_update_watch_item(db: Database):
+async def test_update_watch_item(db: Database) -> None:
     """测试更新监控项"""
     item = WatchItem(code="000001", name="平安银行")
     await db.save_watch_item(item)
@@ -124,7 +125,7 @@ async def test_update_watch_item(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_delete_watch_item(db: Database):
+async def test_delete_watch_item(db: Database) -> None:
     """测试删除监控项"""
     item = WatchItem(code="000001", name="平安银行")
     await db.save_watch_item(item)
@@ -136,7 +137,7 @@ async def test_delete_watch_item(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_save_and_get_alert_records(db: Database):
+async def test_save_and_get_alert_records(db: Database) -> None:
     """测试保存和获取告警记录"""
     record = AlertRecord(
         code="000001",
@@ -162,7 +163,7 @@ async def test_save_and_get_alert_records(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_get_alert_records_by_code(db: Database):
+async def test_get_alert_records_by_code(db: Database) -> None:
     """测试按股票代码获取告警记录"""
     record1 = AlertRecord(
         code="000001",
@@ -188,7 +189,7 @@ async def test_get_alert_records_by_code(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_get_alert_records_by_status(db: Database):
+async def test_get_alert_records_by_status(db: Database) -> None:
     """测试按状态获取告警记录"""
     record1 = AlertRecord(
         code="000001",
@@ -216,7 +217,7 @@ async def test_get_alert_records_by_status(db: Database):
 
 
 @pytest.mark.asyncio
-async def test_update_alert_status(db: Database):
+async def test_update_alert_status(db: Database) -> None:
     """测试更新告警记录状态"""
     record = AlertRecord(
         code="000001",

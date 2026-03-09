@@ -4,7 +4,7 @@ import asyncio
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
 
 import typer
 from rich.console import Console
@@ -19,6 +19,7 @@ from .stock_picker import StockScreener
 from .recommend import Recommender
 from .config import ConfigManager, TradingStyle, RiskLevel
 from .learning import StyleAnalyzer
+from .utils import DataSourceError, ValidationError
 
 
 app = typer.Typer(name="astock")
@@ -35,9 +36,9 @@ _monitor_service: Optional[MonitorService] = None
 def quote(
     code: str = typer.Argument(..., help="股票代码"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """获取实时行情"""
-    async def _get_quote():
+    async def _get_quote() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
         try:
@@ -47,7 +48,20 @@ def quote(
         finally:
             await db.close()
 
-    result = asyncio.run(_get_quote())
+    try:
+        result = asyncio.run(_get_quote())
+    except (ValidationError, DataSourceError) as e:
+        if json_output:
+            console.print_json(data={"error": str(e)})
+        else:
+            console.print(f"[red]错误: {e}[/red]")
+        raise typer.Exit(1)
+    except Exception as e:
+        if json_output:
+            console.print_json(data={"error": f"获取实时行情失败: {e}"})
+        else:
+            console.print(f"[red]错误: 获取实时行情失败: {e}[/red]")
+        raise typer.Exit(1)
 
     if json_output:
         console.print_json(data=result)
@@ -74,14 +88,14 @@ def analyze(
     code: str = typer.Argument(..., help="股票代码"),
     days: int = typer.Option(100, "--days", "-d", help="分析天数"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """技术分析"""
-    async def _analyze():
+    async def _analyze() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
         try:
             service = QuoteService(db)
-            df = await service.get_daily(code)
+            df = await service.get_daily(code, limit=days)
 
             if df.empty:
                 return {"error": "无数据"}
@@ -92,7 +106,20 @@ def analyze(
         finally:
             await db.close()
 
-    result = asyncio.run(_analyze())
+    try:
+        result = asyncio.run(_analyze())
+    except (ValidationError, DataSourceError) as e:
+        if json_output:
+            console.print_json(data={"error": str(e)})
+        else:
+            console.print(f"[red]错误: {e}[/red]")
+        raise typer.Exit(1)
+    except Exception as e:
+        if json_output:
+            console.print_json(data={"error": f"技术分析失败: {e}"})
+        else:
+            console.print(f"[red]错误: 技术分析失败: {e}[/red]")
+        raise typer.Exit(1)
 
     if json_output:
         console.print_json(data=result)
@@ -136,9 +163,9 @@ RSI6: {latest.get('rsi6', 0):.2f}
 @app.command()
 def init_db(
     skip_refresh: bool = typer.Option(False, "--skip-refresh", help="跳过刷新股票数据")
-):
+) -> None:
     """初始化数据库"""
-    async def _init():
+    async def _init() -> int:
         DB_PATH.parent.mkdir(parents=True, exist_ok=True)
         db = Database(str(DB_PATH))
         await db.connect()
@@ -163,7 +190,7 @@ app.add_typer(alert_app, name="alert")
 
 
 @alert_app.callback(invoke_without_command=True)
-def alert_callback(ctx: typer.Context):
+def alert_callback(ctx: typer.Context) -> None:
     """监控告警管理"""
     if ctx.invoked_subcommand is None:
         ctx.invoke(alert_status)
@@ -173,9 +200,9 @@ def alert_callback(ctx: typer.Context):
 def alert_start(
     interval: int = typer.Option(60, "--interval", "-i", help="扫描间隔(秒)"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """启动监控服务"""
-    async def _start():
+    async def _start() -> dict[str, Any]:
         global _monitor_service
 
         db = Database(str(DB_PATH))
@@ -211,9 +238,9 @@ def alert_start(
 @alert_app.command("stop")
 def alert_stop(
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """停止监控服务"""
-    async def _stop():
+    async def _stop() -> dict[str, str]:
         global _monitor_service
 
         if _monitor_service:
@@ -236,9 +263,9 @@ def alert_stop(
 @alert_app.command("status")
 def alert_status(
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """查看监控状态"""
-    async def _status():
+    async def _status() -> dict[str, Any]:
         global _monitor_service
 
         db = Database(str(DB_PATH))
@@ -285,9 +312,9 @@ def alert_history(
     code: Optional[str] = typer.Argument(None, help="股票代码(可选)"),
     limit: int = typer.Option(10, "--limit", "-n", help="显示数量"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """查看历史告警"""
-    async def _history():
+    async def _history() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
         try:
@@ -354,9 +381,9 @@ def screen(
     factors: Optional[str] = typer.Argument(None, help="因子列表，逗号分隔"),
     limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """股票选股"""
-    async def _screen():
+    async def _screen() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
         try:
@@ -425,7 +452,7 @@ app.add_typer(recommend_app, name="recommend")
 
 
 @recommend_app.callback(invoke_without_command=True)
-def recommend_callback(ctx: typer.Context):
+def recommend_callback(ctx: typer.Context) -> None:
     """个性化推荐"""
     if ctx.invoked_subcommand is None:
         ctx.invoke(recommend_generate)
@@ -440,9 +467,9 @@ def recommend_generate(
     min_price: Optional[float] = typer.Option(None, "--min-price", help="最低价格"),
     max_price: Optional[float] = typer.Option(None, "--max-price", help="最高价格"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """生成个性化推荐"""
-    async def _recommend():
+    async def _recommend() -> Any:
         db = Database(str(DB_PATH))
         await db.connect()
         try:
@@ -451,7 +478,7 @@ def recommend_generate(
             recommender = Recommender(screener)
 
             # 构建选项
-            options = {}
+            options: dict[str, object] = {}
             if style:
                 options["trading_style"] = style
             if risk:
@@ -546,7 +573,7 @@ def recommend_config(
     max_price: Optional[float] = typer.Option(None, "--max-price", help="最高价格"),
     reset: bool = typer.Option(False, "--reset", help="重置为默认配置"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """管理推荐配置"""
     config_manager = ConfigManager()
 
@@ -562,7 +589,7 @@ def recommend_config(
     config = config_manager.load(user_id)
 
     # 更新配置
-    updates = {}
+    updates: dict[str, object] = {}
     if style:
         for s in TradingStyle:
             if s.value == style:
@@ -621,7 +648,7 @@ app.add_typer(config_app, name="config")
 
 
 @config_app.callback(invoke_without_command=True)
-def config_callback(ctx: typer.Context):
+def config_callback(ctx: typer.Context) -> None:
     """配置管理"""
     if ctx.invoked_subcommand is None:
         ctx.invoke(config_show)
@@ -631,7 +658,7 @@ def config_callback(ctx: typer.Context):
 def config_show(
     user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """显示当前配置"""
     config_manager = ConfigManager()
     config = config_manager.load(user_id)
@@ -666,7 +693,7 @@ def config_set(
     value: str = typer.Argument(..., help="配置值"),
     user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """设置配置项"""
     config_manager = ConfigManager()
 
@@ -689,7 +716,7 @@ def config_set(
         console.print(f"[green]已更新配置: {key} = {value}[/green]")
 
 
-def _parse_config_value(key: str, value: str):
+def _parse_config_value(key: str, value: str) -> Optional[object]:
     """解析配置值"""
     # 风险等级
     if key == "risk_level":
@@ -729,7 +756,7 @@ def _parse_config_value(key: str, value: str):
 def config_style(
     user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """分析并学习交易风格"""
     config_manager = ConfigManager()
     analyzer = StyleAnalyzer()
@@ -776,7 +803,7 @@ def config_style(
 def config_reset(
     user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """重置为默认配置"""
     config_manager = ConfigManager()
     config = config_manager.reset(user_id)

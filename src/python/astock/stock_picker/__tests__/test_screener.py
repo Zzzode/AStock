@@ -10,7 +10,7 @@ from astock.stock_picker.factors import Factor, FactorType
 
 
 @pytest.fixture
-def mock_quote_service():
+def mock_quote_service() -> AsyncMock:
     """Mock 行情服务"""
     service = AsyncMock()
 
@@ -42,7 +42,7 @@ def mock_quote_service():
 
 
 @pytest.fixture
-def screener(mock_quote_service):
+def screener(mock_quote_service: AsyncMock) -> StockScreener:
     """选股器实例"""
     return StockScreener(mock_quote_service, max_concurrent=5)
 
@@ -51,7 +51,7 @@ class TestStockScreener:
     """选股器测试"""
 
     @pytest.mark.asyncio
-    async def test_screen_basic(self, screener, mock_quote_service):
+    async def test_screen_basic(self, screener: StockScreener, mock_quote_service: AsyncMock) -> None:
         """基础选股测试"""
         results = await screener.screen(codes=["000001"], limit=10)
 
@@ -60,7 +60,7 @@ class TestStockScreener:
         mock_quote_service.get_daily.assert_called()
 
     @pytest.mark.asyncio
-    async def test_screen_with_factors(self, screener, mock_quote_service):
+    async def test_screen_with_factors(self, screener: StockScreener, mock_quote_service: AsyncMock) -> None:
         """带因子选股测试"""
         results = await screener.screen(
             factors=["pe_low", "pb_low"], codes=["000001"], limit=10
@@ -68,7 +68,7 @@ class TestStockScreener:
 
         assert isinstance(results, list)
 
-    def test_get_factor_list(self, screener):
+    def test_get_factor_list(self, screener: StockScreener) -> None:
         """获取因子列表测试"""
         from astock.stock_picker.factors import FACTORS
 
@@ -80,7 +80,7 @@ class TestStockScreener:
         factors = screener._get_factor_list(["pe_low", "pb_low"])
         assert len(factors) == 2
 
-    def test_check_condition(self, screener):
+    def test_check_condition(self, screener: StockScreener) -> None:
         """条件检查测试"""
         from astock.stock_picker.factors import FACTORS
 
@@ -99,7 +99,7 @@ class TestStockScreener:
         factor = FACTORS["pb_low"]
         assert screener._check_condition(data, factor) == True
 
-    def test_compare_values(self, screener):
+    def test_compare_values(self, screener: StockScreener) -> None:
         """值比较测试"""
         assert screener._compare_values(10, "lt", 20) == True
         assert screener._compare_values(10, "gt", 20) == False
@@ -111,7 +111,7 @@ class TestStockScreener:
 class TestScreenResult:
     """选股结果测试"""
 
-    def test_result_creation(self):
+    def test_result_creation(self) -> None:
         """结果创建测试"""
         from datetime import datetime
 

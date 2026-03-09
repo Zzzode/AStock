@@ -3,6 +3,7 @@
 from dataclasses import dataclass, field
 from datetime import time
 from enum import Enum
+from pathlib import Path
 from typing import Optional
 
 from pydantic import BaseModel
@@ -66,7 +67,6 @@ class ConfigManager:
         Args:
             config_dir: 配置文件目录
         """
-        from pathlib import Path
         self.config_dir = Path(config_dir)
         self.config_dir.mkdir(parents=True, exist_ok=True)
         self._cache: dict[str, UserConfig] = {}
@@ -136,7 +136,7 @@ class ConfigManager:
         # 更新缓存
         self._cache[config.user_id] = config
 
-    def update(self, user_id: str, **kwargs) -> UserConfig:
+    def update(self, user_id: str, **kwargs: object) -> UserConfig:
         """更新用户配置
 
         Args:

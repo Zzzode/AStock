@@ -1,7 +1,7 @@
 """数据缓存层"""
 
 from datetime import timedelta
-from typing import Optional, Any, Callable, TypeVar, ParamSpec
+from typing import Optional, Any, Callable, TypeVar, ParamSpec, cast, Awaitable
 from functools import wraps
 import asyncio
 
@@ -33,10 +33,10 @@ class DataCache:
             stock_list_ttl: 股票列表缓存过期时间（秒）
             maxsize: 最大缓存条目数
         """
-        self._realtime_cache = TTLCache(maxsize=maxsize, ttl=realtime_ttl)
-        self._daily_cache = TTLCache(maxsize=maxsize // 10, ttl=daily_ttl)
-        self._stock_list_cache = TTLCache(maxsize=10, ttl=stock_list_ttl)
-        self._general_cache = TTLCache(maxsize=maxsize, ttl=60)
+        self._realtime_cache: TTLCache[str, Any] = TTLCache(maxsize=maxsize, ttl=realtime_ttl)
+        self._daily_cache: TTLCache[str, Any] = TTLCache(maxsize=maxsize // 10, ttl=daily_ttl)
+        self._stock_list_cache: TTLCache[str, Any] = TTLCache(maxsize=10, ttl=stock_list_ttl)
+        self._general_cache: TTLCache[str, Any] = TTLCache(maxsize=maxsize, ttl=60)
 
         self._locks: dict[str, asyncio.Lock] = {}
 
@@ -50,7 +50,7 @@ class DataCache:
         self,
         cache_type: str,
         key: str,
-        factory: Callable[[], T],
+        factory: Callable[[], T] | Callable[[], Awaitable[T]],
     ) -> T:
         """获取缓存或执行工厂函数生成并缓存
 
@@ -74,27 +74,29 @@ class DataCache:
         # 检查缓存
         if key in cache:
             logger.debug(f"缓存命中: {cache_type}/{key}")
-            return cache[key]
+            return cast(T, cache[key])
 
         # 获取锁，防止缓存击穿
         lock = self._get_lock(key)
         async with lock:
             # 双重检查
             if key in cache:
-                return cache[key]
+                return cast(T, cache[key])
 
             # 生成数据
             logger.debug(f"缓存未命中，生成数据: {cache_type}/{key}")
             if asyncio.iscoroutinefunction(factory):
-                value = await factory()
+                async_factory = cast(Callable[[], Awaitable[T]], factory)
+                result = await async_factory()
             else:
-                value = factory()
-                if asyncio.iscoroutine(value):
-                    value = await value
+                sync_factory = cast(Callable[[], T], factory)
+                result = sync_factory()
+                if asyncio.iscoroutine(result):
+                    result = await cast(Awaitable[T], result)
 
             # 存入缓存
-            cache[key] = value
-            return value
+            cache[key] = result
+            return result
 
     def invalidate(self, cache_type: str, key: Optional[str] = None) -> None:
         """使缓存失效
@@ -145,7 +147,7 @@ class DataCache:
 def cached(
     cache_type: str = "general",
     key_builder: Optional[Callable[..., str]] = None,
-):
+) -> Callable[[Callable[P, Any]], Callable[P, Any]]:
     """缓存装饰器
 
     Args:
@@ -161,11 +163,11 @@ def cached(
             ...
     """
 
-    def decorator(func: Callable[P, T]) -> Callable[P, T]:
-        _cache: TTLCache = TTLCache(maxsize=1000, ttl=60)
+    def decorator(func: Callable[P, Any]) -> Callable[P, Any]:
+        _cache: TTLCache[str, Any] = TTLCache(maxsize=1000, ttl=60)
 
         @wraps(func)
-        async def async_wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
+        async def async_wrapper(*args: P.args, **kwargs: P.kwargs) -> Any:
             # 构建缓存键
             if key_builder:
                 key = key_builder(*args, **kwargs)
@@ -181,7 +183,7 @@ def cached(
             return result
 
         @wraps(func)
-        def sync_wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
+        def sync_wrapper(*args: P.args, **kwargs: P.kwargs) -> Any:
             if key_builder:
                 key = key_builder(*args, **kwargs)
             else:

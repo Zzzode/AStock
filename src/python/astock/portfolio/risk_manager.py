@@ -28,7 +28,7 @@ class RiskMetrics:
     risk_level: RiskLevel = RiskLevel.MEDIUM
     updated_at: Optional[datetime] = None
 
-    def to_dict(self) -> dict:
+    def to_dict(self) -> dict[str, object]:
         return {
             "max_drawdown": self.max_drawdown,
             "volatility": self.volatility,
@@ -57,7 +57,7 @@ class RiskManager:
 
     def __init__(self, limits: Optional[RiskLimits] = None):
         self.limits = limits or RiskLimits()
-        self._equity_history: list[dict] = []
+        self._equity_history: list[dict[str, float]] = []
 
     def check_position_limit(
         self,
@@ -166,7 +166,7 @@ class RiskManager:
             return 0
 
         peak = equity_curve[0]
-        max_dd = 0
+        max_dd = 0.0
 
         for value in equity_curve:
             if value > peak:
@@ -201,7 +201,7 @@ class RiskManager:
 
     def assess_risk(
         self,
-        positions: list[dict],
+        positions: list[dict[str, float]],
         equity_curve: list[float],
         returns: list[float],
     ) -> RiskMetrics:
@@ -219,7 +219,7 @@ class RiskManager:
         max_drawdown = self.calculate_max_drawdown(equity_curve)
 
         # 计算波动率
-        volatility = 0
+        volatility = 0.0
         if returns and len(returns) > 1:
             mean_return = sum(returns) / len(returns)
             variance = sum((r - mean_return) ** 2 for r in returns) / len(returns)
@@ -232,8 +232,10 @@ class RiskManager:
         var_95 = self.calculate_var(returns, 0.95)
 
         # 计算集中度风险
-        total_value = sum(p.get("market_value", 0) for p in positions)
-        max_position = max((p.get("market_value", 0) for p in positions), default=0)
+        total_value = sum(p.get("market_value", 0.0) for p in positions)
+        max_position = max(
+            (p.get("market_value", 0.0) for p in positions), default=0.0
+        )
         concentration_risk = max_position / total_value if total_value > 0 else 0
 
         # 确定风险等级

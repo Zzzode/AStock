@@ -4,7 +4,7 @@ import asyncio
 import json
 from datetime import datetime
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Any
 
 import typer
 from rich.console import Console
@@ -24,13 +24,13 @@ def add_watch(
     signals: Optional[str] = typer.Option(None, "--signals", "-s", help="监控的信号类型"),
     channels: str = typer.Option("terminal", "--channels", "-c", help="提醒渠道"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """添加监控"""
-    async def _add():
+    async def _add() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
 
-        conditions = {}
+        conditions: dict[str, object] = {}
         if signals:
             conditions["signal_types"] = signals.split(",")
 
@@ -56,15 +56,18 @@ def add_watch(
 def remove_watch(
     code: str = typer.Argument(..., help="股票代码"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
-):
+) -> None:
     """移除监控"""
-    async def _remove():
+    async def _remove() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
-        await db._conn.execute(
+        conn = db._conn
+        if conn is None:
+            raise RuntimeError("Database not connected")
+        await conn.execute(
             "UPDATE watch_items SET enabled = 0 WHERE code = ?", (code,)
         )
-        await db._conn.commit()
+        await conn.commit()
         await db.close()
         return {"code": code, "removed": True}
 
@@ -77,9 +80,9 @@ def remove_watch(
 
 
 @app.command("list")
-def list_watch(json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")):
+def list_watch(json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")) -> None:
     """查看监控列表"""
-    async def _list():
+    async def _list() -> list[dict[str, Any]]:
         db = Database(str(DB_PATH))
         await db.connect()
         items = await db.get_watch_items(enabled_only=False)

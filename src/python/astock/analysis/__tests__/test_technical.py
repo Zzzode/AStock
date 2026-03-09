@@ -9,7 +9,7 @@ from astock.analysis import TechnicalAnalyzer
 
 
 @pytest.fixture
-def sample_df():
+def sample_df() -> pd.DataFrame:
     """创建示例数据"""
     dates = [date(2024, 1, 1) + timedelta(days=i) for i in range(100)]
     np.random.seed(42)
@@ -31,7 +31,7 @@ def sample_df():
     })
 
 
-def test_add_ma(sample_df: pd.DataFrame):
+def test_add_ma(sample_df: pd.DataFrame) -> None:
     """测试均线计算"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_ma([5, 10, 20])
@@ -41,7 +41,7 @@ def test_add_ma(sample_df: pd.DataFrame):
     assert "ma20" in result.columns
 
 
-def test_add_macd(sample_df: pd.DataFrame):
+def test_add_macd(sample_df: pd.DataFrame) -> None:
     """测试 MACD 计算"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_macd()
@@ -51,7 +51,7 @@ def test_add_macd(sample_df: pd.DataFrame):
     assert "macd_hist" in result.columns
 
 
-def test_add_kdj(sample_df: pd.DataFrame):
+def test_add_kdj(sample_df: pd.DataFrame) -> None:
     """测试 KDJ 计算"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_kdj()
@@ -61,7 +61,7 @@ def test_add_kdj(sample_df: pd.DataFrame):
     assert "kdj_j" in result.columns
 
 
-def test_add_rsi(sample_df: pd.DataFrame):
+def test_add_rsi(sample_df: pd.DataFrame) -> None:
     """测试 RSI 计算"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_rsi([6, 12, 24])
@@ -71,7 +71,7 @@ def test_add_rsi(sample_df: pd.DataFrame):
     assert "rsi24" in result.columns
 
 
-def test_get_signals(sample_df: pd.DataFrame):
+def test_get_signals(sample_df: pd.DataFrame) -> None:
     """测试信号获取"""
     analyzer = TechnicalAnalyzer(sample_df)
     analyzer.add_all()
@@ -82,7 +82,7 @@ def test_get_signals(sample_df: pd.DataFrame):
     assert isinstance(signals["signals"], list)
 
 
-def test_add_all(sample_df: pd.DataFrame):
+def test_add_all(sample_df: pd.DataFrame) -> None:
     """测试添加所有指标"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_all()
