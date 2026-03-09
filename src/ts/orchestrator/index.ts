@@ -26,3 +26,4 @@ export {
   handleConfigReset,
 } from './config-handler.js';
 export { handleRecommend } from './recommend-handler.js';
+export { handleStyle } from './style-handler.js';

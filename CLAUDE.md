@@ -15,7 +15,14 @@ npm run init-db
 # 使用 Skills
 /quote 000001      # 查询平安银行行情
 /analyze 000001    # 分析技术指标
+/style
 ```
+
+## Claude Code 运行方式
+
+1) 打开 Claude Code
+2) 通过斜杠命令调用 Skills
+3) 关注输出中的多 Agent 观点与综合结论
 
 ## Skills
 
@@ -23,6 +30,13 @@ npm run init-db
 |-------|------|------|
 | /quote | 实时行情查询 | `/quote 000001` |
 | /analyze | 技术分析 | `/analyze 000001` |
+| /screen | 智能选股 | `/screen --limit 10` |
+| /backtest | 策略回测 | `/backtest 000001 --strategy ma_cross` |
+| /recommend | 个性化推荐 | `/recommend` |
+| /watch | 监控管理 | `/watch list` |
+| /alert | 监控告警 | `/alert status` |
+| /config | 配置管理 | `/config show` |
+| /style | 交易风格学习 | `/style` |
 
 ## 项目结构
 

@@ -7,6 +7,9 @@ from .exceptions import (
     ValidationError,
     DatabaseError,
     ConfigError,
+    StrategyError,
+    BacktestError,
+    AlertError,
 )
 
 __all__ = [
@@ -17,4 +20,7 @@ __all__ = [
     "ValidationError",
     "DatabaseError",
     "ConfigError",
+    "StrategyError",
+    "BacktestError",
+    "AlertError",
 ]

@@ -13,7 +13,7 @@ import {
 
 export interface AlertOutput {
   success: boolean;
-  data?: Record<string, unknown>;
+  data?: AlertStatus | AlertHistory | { status: string; interval?: number; watch_count?: number };
   error?: string;
 }
 
