@@ -2,20 +2,31 @@ import path from 'path';
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { execa } from 'execa';
 import { runPython } from '../python-exec.js';
+import { resolvePythonBinaries } from '../python-runtime.js';
 
 vi.mock('execa', () => ({
   execa: vi.fn(),
 }));
+vi.mock('../python-runtime.js', () => ({
+  resolvePythonBinaries: vi.fn(),
+}));
 
 const mockExeca = vi.mocked(execa);
+const mockResolvePythonBinaries = vi.mocked(resolvePythonBinaries);
 
 describe('runPython', () => {
   beforeEach(() => {
     mockExeca.mockReset();
+    mockResolvePythonBinaries.mockReset();
     delete process.env.ASTOCK_PYTHON_BIN;
   });
 
   it('falls back to python3 when python is unavailable', async () => {
+    mockResolvePythonBinaries.mockReturnValue([
+      path.resolve(process.cwd(), '.venv/bin/python'),
+      'python',
+      'python3',
+    ]);
     mockExeca
       .mockRejectedValueOnce({ code: 'ENOENT', message: 'venv python not found' })
       .mockRejectedValueOnce({ code: 'ENOENT', message: 'python not found' })
@@ -50,6 +61,7 @@ describe('runPython', () => {
 
   it('uses ASTOCK_PYTHON_BIN when provided', async () => {
     process.env.ASTOCK_PYTHON_BIN = 'python3';
+    mockResolvePythonBinaries.mockReturnValue([process.env.ASTOCK_PYTHON_BIN]);
     mockExeca.mockResolvedValueOnce({ stdout: 'ok', failed: false } as any);
 
     await runPython(['-m', 'astock.cli', 'quote', '000001'], {
