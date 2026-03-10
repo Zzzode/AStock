@@ -1,7 +1,7 @@
 // src/ts/config/loader.ts
 import fs from 'fs';
 import path from 'path';
-import { AstockConfigSchema } from './schema.js';
+import { AstockConfigSchema, type AstockConfig } from './schema.js';
 
 export const CONFIG_PATHS = [
   path.join(process.env.HOME || '', '.astock', 'config.json'),
@@ -10,12 +10,12 @@ export const CONFIG_PATHS = [
 ];
 
 // Default config values
-const DEFAULT_CONFIG = {
+const DEFAULT_CONFIG: Partial<AstockConfig> = {
   llm: {
-    provider: 'kimi' as const,
+    provider: 'kimi',
     temperature: 0.7,
     maxTokens: 4096,
-    mode: 'single' as const,
+    mode: 'single',
   },
   agent: {
     verbose: false,
@@ -29,13 +29,13 @@ const DEFAULT_CONFIG = {
 };
 
 export async function loadConfig() {
-  let fileConfig: Record<string, unknown> = {};
+  let fileConfig: Partial<AstockConfig> = {};
 
   for (const configPath of CONFIG_PATHS) {
     if (fs.existsSync(configPath)) {
       try {
         const content = fs.readFileSync(configPath, 'utf-8');
-        fileConfig = JSON.parse(resolveEnvVars(content));
+        fileConfig = JSON.parse(resolveEnvVars(content)) as Partial<AstockConfig>;
         break;
       } catch (error) {
         console.warn(`Failed to load config from ${configPath}:`, error);
@@ -43,11 +43,11 @@ export async function loadConfig() {
     }
   }
 
-  const envConfig = {
+  const envConfig: Partial<AstockConfig> = {
     apiKeys: {
-      openai: process.env.OPENAI_API_KEY || fileConfig.apiKeys?.openai as string | undefined,
-      kimi: process.env.KIMI_API_KEY || process.env.MOONSHOT_API_KEY || fileConfig.apiKeys?.kimi as string | undefined,
-      glm: process.env.GLM_API_KEY || process.env.ZHIPU_API_KEY || fileConfig.apiKeys?.glm as string | undefined,
+      openai: process.env.OPENAI_API_KEY || fileConfig.apiKeys?.openai,
+      kimi: process.env.KIMI_API_KEY || process.env.MOONSHOT_API_KEY || fileConfig.apiKeys?.kimi,
+      glm: process.env.GLM_API_KEY || process.env.ZHIPU_API_KEY || fileConfig.apiKeys?.glm,
     },
   };
 

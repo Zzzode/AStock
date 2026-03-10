@@ -1,0 +1,151 @@
+{
+  "id": "3b781b75-823b-459e-8100-b17a18d14a2e",
+  "stockCode": "000001",
+  "query": "要不要继续持有？",
+  "createdAt": "2026-03-10T11:25:15.304Z",
+  "taskTree": [
+    {
+      "id": "f4a46b16-4523-4a1c-ba07-f8b7acab12e3",
+      "agent": "Market Agent",
+      "task": "获取实时行情数据",
+      "status": "completed",
+      "result": "涨跌幅 -2.80%"
+    },
+    {
+      "id": "6d6a8ab5-3792-4f75-a738-3dbdfe6c14d0",
+      "agent": "Analysis Agent",
+      "task": "技术指标分析",
+      "status": "completed",
+      "result": "识别 1 个信号"
+    },
+    {
+      "id": "2ca45118-7866-4b41-b743-6724d9d5d4d2",
+      "agent": "Strategy Agent",
+      "task": "策略筛选评估",
+      "status": "completed",
+      "result": "筛选 0 只"
+    },
+    {
+      "id": "5aeb7288-2ac0-4542-b235-373a62de7535",
+      "agent": "Style Agent",
+      "task": "加载用户反馈画像",
+      "status": "completed",
+      "result": "样本 0"
+    },
+    {
+      "id": "61e3b11f-40c4-43f8-8e7d-6e397e4b3422",
+      "agent": "Risk Agent",
+      "task": "风险评估",
+      "status": "completed",
+      "result": "风险等级: high"
+    },
+    {
+      "id": "5f86bcbd-f4ee-476d-adef-ae271f94f703",
+      "agent": "Orchestrator",
+      "task": "汇总多专家结论",
+      "status": "completed",
+      "result": "建议观望或减仓控制风险（置信度 95%）"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ab1858d1-185a-4ef0-adb6-3a3e09e92f04",
+      "source": "quote",
+      "type": "market",
+      "content": "价格: 10.5, 涨跌幅: -2.80%",
+      "confidence": 0.5599999999999999,
+      "timestamp": "2026-03-10T11:25:15.304Z"
+    },
+    {
+      "id": "1fb87998-2bbc-4a64-b405-f46ff0b96861",
+      "source": "analysis",
+      "type": "analysis",
+      "content": "RSI6: 78.0, KDJ-J: 95.0",
+      "confidence": 0.7,
+      "timestamp": "2026-03-10T11:25:15.304Z"
+    },
+    {
+      "id": "53198fa7-6e52-4db6-8dd4-33419f5f988d",
+      "source": "feedback",
+      "type": "style",
+      "content": "风险偏好: 0.00",
+      "confidence": 0,
+      "timestamp": "2026-03-10T11:25:15.304Z"
+    },
+    {
+      "id": "d824c86a-4cbc-4811-b6ca-003b66248a91",
+      "source": "risk",
+      "type": "risk",
+      "content": "风险等级: high, RSI6: 78.0",
+      "confidence": 0.8,
+      "timestamp": "2026-03-10T11:25:15.304Z"
+    }
+  ],
+  "conclusion": {
+    "action": "hold_or_reduce",
+    "confidence": 0.95,
+    "rationale": [
+      "市场动能转弱，涨跌幅 -2.80%",
+      "技术信号偏空（多头 0，空头 1）",
+      "未进入当前策略候选池",
+      "风险偏高（RSI6 78.0，KDJ-J 95.0）"
+    ],
+    "counterpoints": [
+      "短期波动风险较高，追涨需谨慎",
+      "风格学习模块暂以稳健偏好为默认假设"
+    ],
+    "influence": {
+      "base_score": -0.7942386831275721,
+      "risk_penalty": 0.5,
+      "style_bias": 0,
+      "risk_appetite": 0,
+      "strategy_weight": 0,
+      "final_score": -1.294238683127572
+    }
+  },
+  "finalAction": "hold_or_reduce",
+  "experts": {
+    "market": {
+      "stance": "bearish",
+      "confidence": 0.73,
+      "summary": "市场动能转弱，涨跌幅 -2.80%",
+      "evidence": [
+        "短期动量为负",
+        "价格压力增加"
+      ]
+    },
+    "analysis": {
+      "stance": "bearish",
+      "confidence": 0.65,
+      "summary": "技术信号偏空（多头 0，空头 1）",
+      "evidence": [
+        "趋势和动量指标出现走弱迹象"
+      ]
+    },
+    "strategy": {
+      "stance": "bearish",
+      "confidence": 0.55,
+      "summary": "未进入当前策略候选池",
+      "evidence": [
+        "策略侧缺乏正向筛选证据"
+      ]
+    },
+    "risk": {
+      "level": "high",
+      "stance": "bearish",
+      "confidence": 0.8,
+      "summary": "风险偏高（RSI6 78.0，KDJ-J 95.0）",
+      "evidence": [
+        "波动与超买/超卖指标提示回撤风险"
+      ]
+    },
+    "style": {
+      "stance": "neutral",
+      "confidence": 0.5,
+      "summary": "风格学习模块暂以稳健偏好为默认假设",
+      "evidence": [
+        "待接入用户反馈闭环后可动态更新"
+      ]
+    }
+  }
+}

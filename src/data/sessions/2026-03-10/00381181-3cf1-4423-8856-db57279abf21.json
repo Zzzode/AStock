@@ -1,0 +1,150 @@
+{
+  "id": "00381181-3cf1-4423-8856-db57279abf21",
+  "stockCode": "000001",
+  "query": "是否可以买入？",
+  "createdAt": "2026-03-10T11:24:01.124Z",
+  "taskTree": [
+    {
+      "id": "22256a6b-ba57-4e1f-9e72-dcec83a7e55b",
+      "agent": "Market Agent",
+      "task": "获取实时行情数据",
+      "status": "completed",
+      "result": "涨跌幅 0.60%"
+    },
+    {
+      "id": "e9f13bcf-574c-4b1d-ae43-ed3ba131b085",
+      "agent": "Analysis Agent",
+      "task": "技术指标分析",
+      "status": "completed",
+      "result": "识别 1 个信号"
+    },
+    {
+      "id": "252fa5b2-462d-4b62-9041-da98a9f50688",
+      "agent": "Strategy Agent",
+      "task": "策略筛选评估",
+      "status": "completed",
+      "result": "筛选 1 只"
+    },
+    {
+      "id": "6636f9fb-5b87-422b-aeeb-ceb9b71a454e",
+      "agent": "Style Agent",
+      "task": "加载用户反馈画像",
+      "status": "completed",
+      "result": "样本 8"
+    },
+    {
+      "id": "43e9074a-a725-403a-9708-ec54cd2c929d",
+      "agent": "Risk Agent",
+      "task": "风险评估",
+      "status": "completed",
+      "result": "风险等级: medium"
+    },
+    {
+      "id": "bb94dae1-aba1-41de-bac3-fa752efc4463",
+      "agent": "Orchestrator",
+      "task": "汇总多专家结论",
+      "status": "completed",
+      "result": "建议关注并分批试探（置信度 79%）"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ec847e92-2858-4800-9073-6b638b9e4f0a",
+      "source": "quote",
+      "type": "market",
+      "content": "价格: 10.5, 涨跌幅: 0.60%",
+      "confidence": 0.12,
+      "timestamp": "2026-03-10T11:24:01.124Z"
+    },
+    {
+      "id": "b49f183d-d913-4caa-a2d6-2ac326851a75",
+      "source": "analysis",
+      "type": "analysis",
+      "content": "RSI6: 54.0, KDJ-J: 56.0",
+      "confidence": 0.7,
+      "timestamp": "2026-03-10T11:24:01.124Z"
+    },
+    {
+      "id": "ae9e9caf-af89-41f1-a878-4f08ed6aa567",
+      "source": "feedback",
+      "type": "style",
+      "content": "风险偏好: 0.00",
+      "confidence": 0,
+      "timestamp": "2026-03-10T11:24:01.124Z"
+    },
+    {
+      "id": "de1b5bb4-d827-4a8b-8166-8dda2dbf6572",
+      "source": "risk",
+      "type": "risk",
+      "content": "风险等级: medium, RSI6: 54.0",
+      "confidence": 0.6,
+      "timestamp": "2026-03-10T11:24:01.124Z"
+    }
+  ],
+  "conclusion": {
+    "action": "watch_buy",
+    "confidence": 0.791625,
+    "rationale": [
+      "市场动能中性，涨跌幅 0.60%",
+      "技术信号偏多（多头 1，空头 0）",
+      "策略筛选通过，综合得分 73.0",
+      "风险中性（RSI6 54.0，KDJ-J 56.0）"
+    ],
+    "counterpoints": [
+      "风险未显著放大",
+      "历史反馈偏积极（样本 8，进攻偏好 60%）"
+    ],
+    "influence": {
+      "base_score": 0.7916666666666666,
+      "risk_penalty": 0.2,
+      "style_bias": 0.1675,
+      "risk_appetite": 0,
+      "strategy_weight": 0,
+      "final_score": 0.7591666666666665
+    }
+  },
+  "finalAction": "watch_buy",
+  "experts": {
+    "market": {
+      "stance": "neutral",
+      "confidence": 0.5,
+      "summary": "市场动能中性，涨跌幅 0.60%",
+      "evidence": [
+        "短期波动有限"
+      ]
+    },
+    "analysis": {
+      "stance": "bullish",
+      "confidence": 0.65,
+      "summary": "技术信号偏多（多头 1，空头 0）",
+      "evidence": [
+        "均线与动量指标整体偏多"
+      ]
+    },
+    "strategy": {
+      "stance": "bullish",
+      "confidence": 0.5800000000000001,
+      "summary": "策略筛选通过，综合得分 73.0",
+      "evidence": [
+        "符合当前因子过滤条件"
+      ]
+    },
+    "risk": {
+      "level": "medium",
+      "stance": "neutral",
+      "confidence": 0.55,
+      "summary": "风险中性（RSI6 54.0，KDJ-J 56.0）",
+      "evidence": [
+        "当前处于常规波动区间"
+      ]
+    },
+    "style": {
+      "stance": "bullish",
+      "confidence": 0.67,
+      "summary": "历史反馈偏积极（样本 8，进攻偏好 60%）",
+      "evidence": [
+        "用户过往对买入建议反馈更正向"
+      ]
+    }
+  }
+}

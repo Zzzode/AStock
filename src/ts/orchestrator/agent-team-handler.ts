@@ -3,6 +3,22 @@ import {
   loadGlobalFeedbackProfile,
   loadTeamFeedbackProfile,
 } from './team-feedback-store.js';
+import {
+  addEvidence,
+  addTaskNode,
+  createSession,
+  saveSession,
+  Session,
+  setConclusion,
+  setArbitration,
+  updateTaskNode,
+} from './session-store.js';
+import {
+  arbitrate,
+  ConflictArbiter,
+  ExpertOpinions,
+  formatArbitrationResult,
+} from './conflict-arbiter.js';
 
 type Stance = 'bullish' | 'bearish' | 'neutral';
 type RiskLevel = 'low' | 'medium' | 'high';
@@ -70,6 +86,7 @@ export interface AgentTeamOutput {
   success: boolean;
   data?: AgentTeamOutputData;
   error?: string;
+  sessionId?: string;
 }
 
 function clamp(value: number, min: number, max: number): number {
@@ -268,7 +285,37 @@ function aggregateDecision(
   experts: AgentTeamOutputData['experts'],
   globalProfile: GlobalFeedbackProfile,
   matchedFactors: string[]
-): AgentTeamOutputData['decision'] {
+): { decision: AgentTeamOutputData['decision']; arbitration: ReturnType<typeof arbitrate> } {
+  // 使用仲裁器进行冲突仲裁
+  const expertOpinions: ExpertOpinions = {
+    market: experts.market,
+    analysis: experts.analysis,
+    strategy: experts.strategy,
+    risk: experts.risk,
+    style: experts.style,
+  };
+
+  const arbitration = arbitrate(expertOpinions, globalProfile);
+
+  // 构建决策说明
+  const rationale: string[] = [
+    experts.market.summary,
+    experts.analysis.summary,
+    experts.strategy.summary,
+    experts.risk.summary,
+  ];
+
+  // 如果有冲突，添加冲突信息到推理
+  if (arbitration.conflictInfo) {
+    rationale.push(`[仲裁] ${arbitration.conflictInfo.description}`);
+  }
+
+  const counterpoints = [
+    experts.risk.level === 'high' ? '短期波动风险较高，追涨需谨慎' : '风险未显著放大',
+    experts.style.summary,
+  ];
+
+  // 计算影响因素
   const opinions: ExpertOpinion[] = [
     experts.market,
     experts.analysis,
@@ -287,28 +334,9 @@ function aggregateDecision(
   const strategyWeight = getStrategyWeight(globalProfile, matchedFactors) * 0.2;
   const score = baseScore + styleBias + riskAppetiteBoost + strategyWeight - riskPenalty;
 
-  let action: DecisionAction = 'wait';
-  if (score >= 0.5 && experts.risk.level !== 'high') {
-    action = 'watch_buy';
-  } else if (score <= -0.2 || experts.risk.level === 'high') {
-    action = 'hold_or_reduce';
-  }
-
-  const rationale: string[] = [
-    experts.market.summary,
-    experts.analysis.summary,
-    experts.strategy.summary,
-    experts.risk.summary,
-  ];
-
-  const counterpoints = [
-    experts.risk.level === 'high' ? '短期波动风险较高，追涨需谨慎' : '风险未显著放大',
-    experts.style.summary,
-  ];
-
-  return {
-    action,
-    confidence: clamp(0.45 + Math.abs(score) * 0.45, 0.45, 0.95),
+  const decision: AgentTeamOutputData['decision'] = {
+    action: arbitration.finalDecision,
+    confidence: arbitration.confidence,
     rationale,
     counterpoints,
     influence: {
@@ -320,6 +348,8 @@ function aggregateDecision(
       final_score: score,
     },
   };
+
+  return { decision, arbitration };
 }
 
 function formatAction(action: DecisionAction): string {
@@ -332,13 +362,14 @@ function formatAction(action: DecisionAction): string {
   return '建议等待更清晰信号';
 }
 
-function formatTeamOutput(data: AgentTeamOutputData): string {
+function formatTeamOutput(data: AgentTeamOutputData, arbitration?: ReturnType<typeof arbitrate>): string {
   const influence = data.decision.influence;
   const formatSigned = (value: number): string => (value >= 0 ? `+${value.toFixed(3)}` : value.toFixed(3));
   const trace1 = (data.decision.rationale[0] || '').slice(0, 50).padEnd(50);
   const trace2 = (data.decision.rationale[1] || '').slice(0, 50).padEnd(50);
   const trace3 = (data.decision.rationale[2] || '').slice(0, 50).padEnd(50);
-  return `
+
+  let output = `
 ┌──────────────────────────────────────────────────────────────┐
 │ Agent Team 综合结论                                           │
 ├──────────────────────────────────────────────────────────────┤
@@ -362,12 +393,30 @@ function formatTeamOutput(data: AgentTeamOutputData): string {
 │ 推理轨迹:                                                     │
 │ 1) ${trace1} │
 │ 2) ${trace2} │
-│ 3) ${trace3} │
+│ 3) ${trace3} │`;
+
+  // 添加冲突仲裁信息
+  if (arbitration?.conflictInfo) {
+    output += `
+├──────────────────────────────────────────────────────────────┤
+│ 冲突仲裁:                                                     │
+│ 类型: ${arbitration.conflictInfo.type.padEnd(52)} │
+│ 严重程度: ${arbitration.conflictInfo.severity.padEnd(47)} │
+│ 描述: ${arbitration.conflictInfo.description.slice(0, 52).padEnd(52)} │`;
+  }
+
+  output += `
 └──────────────────────────────────────────────────────────────┘
 `;
+
+  return output;
 }
 
 export async function handleAgentTeam(input: AgentTeamInput): Promise<AgentTeamOutput> {
+  // 创建会话
+  const question = input.question || '当前是否适合介入？';
+  const session: Session = createSession(input.code, question);
+
   try {
     if (!/^\d{6}$/.test(input.code)) {
       return {
@@ -376,15 +425,43 @@ export async function handleAgentTeam(input: AgentTeamInput): Promise<AgentTeamO
       };
     }
 
-    const question = input.question || '当前是否适合介入？';
     const days = input.days ?? 100;
 
+    // 任务: 获取行情数据
+    const quoteTask = addTaskNode(session, '获取实时行情数据', 'Market Agent');
+    updateTaskNode(session, quoteTask.id, 'running');
     console.log('正在获取行情数据...');
     const quote = await getQuote(input.code);
+    updateTaskNode(session, quoteTask.id, 'completed', `涨跌幅 ${quote.change_percent.toFixed(2)}%`);
 
+    // 添加行情证据
+    addEvidence(
+      session,
+      'quote',
+      'market',
+      `价格: ${quote.price}, 涨跌幅: ${quote.change_percent.toFixed(2)}%`,
+      Math.abs(quote.change_percent) / 5
+    );
+
+    // 任务: 技术分析
+    const analysisTask = addTaskNode(session, '技术指标分析', 'Analysis Agent');
+    updateTaskNode(session, analysisTask.id, 'running');
     console.log('正在进行技术分析...');
     const analysis = await analyzeStock(input.code, days);
+    updateTaskNode(session, analysisTask.id, 'completed', `识别 ${analysis.signals.length} 个信号`);
 
+    // 添加分析证据
+    addEvidence(
+      session,
+      'analysis',
+      'analysis',
+      `RSI6: ${analysis.latest.rsi6.toFixed(1)}, KDJ-J: ${analysis.latest.kdj_j.toFixed(1)}`,
+      0.7
+    );
+
+    // 任务: 策略筛选
+    const strategyTask = addTaskNode(session, '策略筛选评估', 'Strategy Agent');
+    updateTaskNode(session, strategyTask.id, 'running');
     console.log('正在进行策略筛选...');
     let strategyTimedOut = false;
     const screenPromise = screenStocks(undefined, 1, [input.code]);
@@ -399,10 +476,24 @@ export async function handleAgentTeam(input: AgentTeamInput): Promise<AgentTeamO
       }
       throw error;
     });
+    updateTaskNode(session, strategyTask.id, 'completed', strategyTimedOut ? '超时降级' : `筛选 ${screen.total} 只`);
 
+    // 任务: 加载反馈画像
+    const styleTask = addTaskNode(session, '加载用户反馈画像', 'Style Agent');
+    updateTaskNode(session, styleTask.id, 'running');
     console.log('正在加载用户反馈画像...');
     const feedbackProfile = await loadTeamFeedbackProfile(input.code);
     const globalProfile = await loadGlobalFeedbackProfile();
+    updateTaskNode(session, styleTask.id, 'completed', `样本 ${feedbackProfile.sample_count}`);
+
+    // 添加风格证据
+    addEvidence(
+      session,
+      'feedback',
+      'style',
+      `风险偏好: ${globalProfile.risk_appetite.toFixed(2)}`,
+      Math.abs(globalProfile.risk_appetite)
+    );
 
     const screenMatched = screen.results.find((item) => item.code === input.code);
 
@@ -415,6 +506,8 @@ export async function handleAgentTeam(input: AgentTeamInput): Promise<AgentTeamO
         }
       : getStrategyOpinion(Boolean(screenMatched), screenMatched?.score);
 
+    // 任务: 风险评估
+    const riskTask = addTaskNode(session, '风险评估', 'Risk Agent');
     const experts: AgentTeamOutputData['experts'] = {
       market: getMarketOpinion(quote.change_percent),
       analysis: getAnalysisOpinion(analysis.signals),
@@ -422,11 +515,32 @@ export async function handleAgentTeam(input: AgentTeamInput): Promise<AgentTeamO
       risk: getRiskOpinion(analysis.latest.rsi6, analysis.latest.kdj_j, quote.change_percent),
       style: getStyleOpinion(feedbackProfile),
     };
+    updateTaskNode(session, riskTask.id, 'completed', `风险等级: ${experts.risk.level}`);
 
+    // 添加风险证据
+    addEvidence(
+      session,
+      'risk',
+      'risk',
+      `风险等级: ${experts.risk.level}, RSI6: ${analysis.latest.rsi6.toFixed(1)}`,
+      experts.risk.level === 'high' ? 0.8 : experts.risk.level === 'low' ? 0.4 : 0.6
+    );
+
+    // 任务: 汇总决策
+    const decisionTask = addTaskNode(session, '汇总多专家结论', 'Orchestrator');
+    updateTaskNode(session, decisionTask.id, 'running');
     console.log('正在汇总多专家结论...');
     const matchedFactors = screenMatched?.matched_factors ?? [];
-    const decision = aggregateDecision(experts, globalProfile, matchedFactors);
+    const { decision, arbitration } = aggregateDecision(experts, globalProfile, matchedFactors);
     const summary = `${formatAction(decision.action)}（置信度 ${(decision.confidence * 100).toFixed(0)}%）`;
+    updateTaskNode(session, decisionTask.id, 'completed', summary);
+
+    // 任务: 冲突仲裁
+    if (arbitration.conflictInfo) {
+      const arbitrationTask = addTaskNode(session, '冲突仲裁', 'Conflict Arbiter');
+      updateTaskNode(session, arbitrationTask.id, 'completed', arbitration.conflictInfo.description);
+      console.log(formatArbitrationResult(arbitration));
+    }
 
     const data: AgentTeamOutputData = {
       code: input.code,
@@ -436,17 +550,58 @@ export async function handleAgentTeam(input: AgentTeamInput): Promise<AgentTeamO
       decision,
     };
 
-    console.log(formatTeamOutput(data));
+    // 设置会话结论
+    setConclusion(session, data);
+
+    // 设置仲裁结果
+    setArbitration(session, arbitration);
+
+    // 保存会话
+    const sessionPath = await saveSession(session);
+    console.log(`会话已保存: ${sessionPath}`);
+
+    console.log(formatTeamOutput(data, arbitration));
 
     return {
       success: true,
       data,
+      sessionId: session.id,
     };
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
+    // 即使失败也保存会话记录
+    setConclusion(session, {
+      code: input.code,
+      question,
+      summary: '分析失败',
+      experts: {
+        market: { stance: 'neutral', confidence: 0.5, summary: '获取失败', evidence: [] },
+        analysis: { stance: 'neutral', confidence: 0.5, summary: '获取失败', evidence: [] },
+        strategy: { stance: 'neutral', confidence: 0.5, summary: '获取失败', evidence: [] },
+        risk: { level: 'medium', stance: 'neutral', confidence: 0.5, summary: '获取失败', evidence: [] },
+        style: { stance: 'neutral', confidence: 0.5, summary: '获取失败', evidence: [] },
+      },
+      decision: {
+        action: 'wait',
+        confidence: 0,
+        rationale: [message],
+        counterpoints: [],
+        influence: {
+          base_score: 0,
+          risk_penalty: 0,
+          style_bias: 0,
+          risk_appetite: 0,
+          strategy_weight: 0,
+          final_score: 0,
+        },
+      },
+    });
+    await saveSession(session).catch(() => {});
+
     return {
       success: false,
       error: `Agent Team 分析失败: ${message}`,
+      sessionId: session.id,
     };
   }
 }
