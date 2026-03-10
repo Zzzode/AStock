@@ -4,12 +4,13 @@
  * 根据用户风格生成个性化股票推荐
  */
 
-import { execa } from 'execa';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { runPython } from '../utils/python-exec.js';
+import { resolvePythonDir } from '../utils/python-runtime.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PYTHON_DIR = path.resolve(__dirname, '../../python');
+const PYTHON_DIR = resolvePythonDir(__dirname);
 
 export interface RecommendOutput {
   success: boolean;
@@ -47,8 +48,7 @@ async function callRecommend(options: {
   }
   args.push('--json');
 
-  const result = await execa(
-    'python',
+  const result = await runPython(
     ['-m', 'astock.cli', ...args],
     { cwd: PYTHON_DIR, reject: false }
   );

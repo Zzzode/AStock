@@ -2,12 +2,13 @@
  * Python 调用桥接
  */
 
-import { execa } from 'execa';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { runPython } from './python-exec.js';
+import { resolvePythonDir } from './python-runtime.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PYTHON_DIR = path.resolve(__dirname, '../../python');
+const PYTHON_DIR = resolvePythonDir(__dirname);
 
 export interface QuoteResult {
   code: string;
@@ -58,14 +59,10 @@ async function callPython(
   if (json) {
     commandArgs.push('--json');
   }
-  const result = await execa(
-    'python',
-    commandArgs,
-    {
-      cwd: PYTHON_DIR,
-      reject: true,
-    }
-  );
+  const result = await runPython(commandArgs, {
+    cwd: PYTHON_DIR,
+    reject: true,
+  });
   return result.stdout;
 }
 
@@ -98,7 +95,8 @@ export interface InitDatabaseOptions {
 export async function initDatabase(
   options: InitDatabaseOptions = {}
 ): Promise<void> {
-  const args = options.skipRefresh ? ['--skip-refresh'] : [];
+  const skipRefresh = options.skipRefresh ?? true;
+  const args = skipRefresh ? ['--skip-refresh'] : [];
   await callPython('init-db', args, { json: false });
 }
 
@@ -134,8 +132,7 @@ export async function startAlertMonitor(interval: number = 60): Promise<{
   interval: number;
   watch_count: number;
 }> {
-  const result = await execa(
-    'python',
+  const result = await runPython(
     ['-m', 'astock.cli', 'alert', 'start', '--interval', String(interval), '--json'],
     {
       cwd: PYTHON_DIR,
@@ -151,8 +148,7 @@ export async function startAlertMonitor(interval: number = 60): Promise<{
 export async function stopAlertMonitor(): Promise<{
   status: string;
 }> {
-  const result = await execa(
-    'python',
+  const result = await runPython(
     ['-m', 'astock.cli', 'alert', 'stop', '--json'],
     {
       cwd: PYTHON_DIR,
@@ -166,8 +162,7 @@ export async function stopAlertMonitor(): Promise<{
  * 获取监控服务状态
  */
 export async function getAlertStatus(): Promise<AlertStatus> {
-  const result = await execa(
-    'python',
+  const result = await runPython(
     ['-m', 'astock.cli', 'alert', 'status', '--json'],
     {
       cwd: PYTHON_DIR,
@@ -189,8 +184,7 @@ export async function getAlertHistory(
     args.splice(2, 0, code);
   }
 
-  const result = await execa(
-    'python',
+  const result = await runPython(
     ['-m', 'astock.cli', ...args],
     {
       cwd: PYTHON_DIR,
@@ -222,7 +216,8 @@ export interface ScreenOutput {
  */
 export async function screenStocks(
   factors?: string[],
-  limit: number = 10
+  limit: number = 10,
+  codes?: string[]
 ): Promise<ScreenOutput> {
   const args = ['screen'];
 
@@ -231,10 +226,12 @@ export async function screenStocks(
   }
 
   args.push('--limit', String(limit));
+  if (codes && codes.length > 0) {
+    args.push('--codes', codes.join(','));
+  }
   args.push('--json');
 
-  const result = await execa(
-    'python',
+  const result = await runPython(
     ['-m', 'astock.cli', ...args],
     {
       cwd: PYTHON_DIR,

@@ -379,6 +379,7 @@ def alert_history(
 @app.command()
 def screen(
     factors: Optional[str] = typer.Argument(None, help="因子列表，逗号分隔"),
+    codes: Optional[str] = typer.Option(None, "--codes", "-c", help="指定股票代码，逗号分隔"),
     limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
 ) -> None:
@@ -395,7 +396,11 @@ def screen(
             if factors:
                 factor_list = [f.strip() for f in factors.split(",")]
 
-            results = await screener.screen(factors=factor_list, limit=limit)
+            code_list = None
+            if codes:
+                code_list = [item.strip() for item in codes.split(",") if item.strip()]
+
+            results = await screener.screen(factors=factor_list, codes=code_list, limit=limit)
 
             return {
                 "total": len(results),

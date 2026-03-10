@@ -2,12 +2,13 @@
  * /backtest 命令处理器
  */
 
-import { execa } from 'execa';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { runPython } from '../utils/python-exec.js';
+import { resolvePythonDir } from '../utils/python-runtime.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PYTHON_DIR = path.resolve(__dirname, '../../python');
+const PYTHON_DIR = resolvePythonDir(__dirname);
 
 export interface BacktestResult {
   code: string;
@@ -137,7 +138,7 @@ export async function handleBacktest(
     args.push('--json');
 
     // 调用 Python CLI
-    const result = await execa('python', args, {
+    const result = await runPython(args, {
       cwd: PYTHON_DIR,
       reject: true,
     });
