@@ -4,12 +4,13 @@
  * 管理用户偏好配置
  */
 
-import { execa } from 'execa';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { runPython } from '../utils/python-exec.js';
+import { resolvePythonDir } from '../utils/python-runtime.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-const PYTHON_DIR = path.resolve(__dirname, '../../python');
+const PYTHON_DIR = resolvePythonDir(__dirname);
 
 export interface ConfigOutput {
   success: boolean;
@@ -21,8 +22,7 @@ export interface ConfigOutput {
  * 调用 Python CLI config 命令
  */
 async function callConfig(args: string[]): Promise<string> {
-  const result = await execa(
-    'python',
+  const result = await runPython(
     ['-m', 'astock.cli', 'config', ...args, '--json'],
     { cwd: PYTHON_DIR, reject: false }
   );
