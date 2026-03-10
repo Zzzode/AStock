@@ -9,6 +9,7 @@ import { handleWatchList } from '../watch-handler.js';
 import { handleAlertStatus } from '../alert-handler.js';
 import { handleConfigShow, handleConfigStyle } from '../config-handler.js';
 import { handleStyle } from '../style-handler.js';
+import { handleAgentTeam } from '../agent-team-handler.js';
 import {
   getQuote,
   analyzeStock,
@@ -201,5 +202,62 @@ describe('skill acceptance', () => {
 
     expect(validateSkillOutput('style', configResult)).toBe(true);
     expect(validateSkillOutput('style', styleResult)).toBe(true);
+  });
+
+  it('validates team output', async () => {
+    mockGetQuote.mockResolvedValue({
+      code: '000001',
+      name: '平安银行',
+      price: 10.5,
+      change_percent: 1.2,
+      change: 0.12,
+      volume: 1000000,
+      amount: 10000000,
+      high: 10.6,
+      low: 10.4,
+      open: 10.5,
+      prev_close: 10.38,
+    });
+
+    mockAnalyzeStock.mockResolvedValue({
+      signals: [
+        { type: 'trend', name: '均线多头', description: '趋势向上', bias: 'bullish' },
+      ],
+      latest: {
+        close: 10.5,
+        ma5: 10.3,
+        ma10: 10.2,
+        ma20: 10.0,
+        macd: 0.2,
+        macd_signal: 0.1,
+        macd_hist: 0.1,
+        kdj_k: 62,
+        kdj_d: 55,
+        kdj_j: 76,
+        rsi6: 58,
+      },
+    });
+
+    mockScreenStocks.mockResolvedValue({
+      total: 1,
+      results: [
+        {
+          code: '000001',
+          name: '平安银行',
+          score: 81,
+          matched_factors: ['ma_cross'],
+          factor_scores: { ma_cross: 81 },
+          screened_at: '2026-03-10',
+        },
+      ],
+    });
+
+    const result = await handleAgentTeam({
+      code: '000001',
+      question: '现在是否适合介入？',
+      days: 100,
+    });
+
+    expect(validateSkillOutput('team', result)).toBe(true);
   });
 });

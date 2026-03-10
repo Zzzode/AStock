@@ -7,7 +7,8 @@ type SkillName =
   | 'watch'
   | 'alert'
   | 'config'
-  | 'style';
+  | 'style'
+  | 'team';
 
 type OutputShape = {
   success: boolean;
@@ -53,6 +54,11 @@ export function validateSkillOutput(skill: SkillName, output: OutputShape): bool
     case 'config':
     case 'style':
       return hasFields(output.data, ['trading_style', 'risk_level']);
+    case 'team':
+      if (!hasFields(output.data, ['summary', 'experts', 'decision'])) {
+        return false;
+      }
+      return hasFields((output.data as Record<string, unknown>).decision, ['influence']);
     default:
       return false;
   }
