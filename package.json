@@ -9,7 +9,8 @@
   "scripts": {
     "build": "tsc",
     "dev": "tsc --watch",
-    "test": "vitest"
+    "test": "vitest --run",
+    "dev:team": "node scripts/dev-team.mjs"
   },
   "dependencies": {
     "commander": "^12.0.0",
@@ -22,5 +23,6 @@
   },
   "engines": {
     "node": ">=18.0.0"
-  }
+  },
+  "packageManager": "pnpm@10.15.0"
 }
