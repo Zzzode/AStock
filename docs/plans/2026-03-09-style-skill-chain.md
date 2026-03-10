@@ -35,7 +35,7 @@ describe('style handler', () => {
 
 **Step 2: Run test to verify it fails**
 
-Run: `npm test src/ts/orchestrator/__tests__/style-handler.test.ts`
+Run: `pnpm test src/ts/orchestrator/__tests__/style-handler.test.ts`
 Expected: FAIL with "handleStyle is not defined"
 
 **Step 3: Write minimal implementation**
@@ -55,7 +55,7 @@ export async function handleStyle() {
 
 **Step 5: Run tests**
 
-Run: `npm test src/ts/orchestrator/__tests__/style-handler.test.ts`
+Run: `pnpm test src/ts/orchestrator/__tests__/style-handler.test.ts`
 Expected: PASS
 
 ---
@@ -72,10 +72,10 @@ Expected: PASS
 
 **Step 2: 验证**
 
-Run: `npm run build`
+Run: `pnpm run build`
 Expected: PASS
 
-Run: `npm test`
+Run: `pnpm test`
 Expected: PASS
 
 ---

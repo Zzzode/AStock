@@ -1,53 +1,62 @@
-# Claude Code 运行形态设计 - 多 Agent 技能架构
+# Claude Code 运行形态设计 - Agent Team 主导架构
 
 ## 项目概述
 
-本设计将仓库运行形态明确为 **Claude Code 内运行**，用户通过 Claude Code 启动并调用 Skills 来完成行情查询、技术分析、策略回测、监控告警与风格学习。Python 层只提供确定性能力服务，Agent 协作与决策由 Claude Code Skill 体系驱动。
+本设计文档更新为当前仓库实现快照。项目以 **Agent Team 协作** 为核心：用户面向的是专家团队，不是单个命令。Skill、CLI 与 API 仅作为 Agent Team 可调用的能力入口。TypeScript 层负责 Agent 编排，Python 层提供确定性能力与可验证计算。
 
 ## 目标与边界
 
 ### 目标
 
-- Claude Code 是唯一交互入口
-- Skill 驱动多 Agent 协作输出
-- Python 层作为能力插件，可被 Skills 调用
-- 风格画像持续学习并影响最终决策
+- Agent Team 主导交互、推理和建议生成
+- Orchestrator 统一调度多专家 Agent 并整合冲突观点
+- Python 能力层提供行情、分析、选股、回测、监控、推荐等确定性结果
+- 风格画像持续学习并反哺推荐、参数和风险偏好
 
 ### 非目标
 
-- 不提供额外 Web UI/本地 UI
-- 不要求 Python 层实现 Agent 自身协作
+- 不把 CLI 命令集合当作最终产品形态
+- 不在 Python 层实现复杂自然语言推理
 
 ## 运行形态
 
 ```
-用户进入 Claude Code
-  └─ /quote /analyze /backtest /style 等 Skills
-      ├─ Market Agent / Analysis Agent / Style Agent / Orchestrator
-      └─ 调用 Python 能力层（CLI / API）
+用户自然语言请求 / 技能触发
+  └─ Orchestrator Agent（意图解析、任务拆解、专家调度）
+      └─ Expert Agents（行情/技术/风控/策略/风格）
+          └─ TypeScript Orchestrator（调用编排、结果归一化）
+              └─ Python 能力层（CLI/API + 领域模块）
+                  └─ SQLite 与本地配置持久化
 ```
 
 ## 架构方案
 
-采用 **Skill 中心化架构**，Skill 作为唯一入口，Agent 协作由 Skill 内协议与提示词定义，Python 层只负责能力输出。
+采用 **Agent Team 主导 + 多入口复用架构**：Agent Team 是核心产品层，Skill/CLI/API 是入口适配层，底层能力统一复用 Python 模块，TypeScript 作为协作编排与输出归一化层。
 
 ```
 ┌─────────────────────────────────────────────────────────┐
-│                    Claude Code Skills                   │
+│  入口层                                                   │
 ├─────────────────────────────────────────────────────────┤
-│  /quote  /analyze  /screen  /backtest  /style  /alert    │
+│  Claude Skills | TypeScript CLI | Python CLI | REST API  │
 └───────────────┬─────────────────────────────────────────┘
                 │
                 ▼
 ┌─────────────────────────────────────────────────────────┐
-│                Multi-Agent 协作层                       │
-│  Market Agent | Analysis Agent | Style Agent | Orchestrator
+│              Agent Team Orchestrator                    │
+│  意图拆解 | 专家调度 | 观点辩论 | 结论整合 | 学习反馈闭环   │
+└───────────────┬─────────────────────────────────────────┘
+                │
+                ▼
+┌─────────────────────────────────────────────────────────┐
+│                TypeScript 编排层                         │
+│      handlers + python bridge + 输出结构统一             │
 └───────────────┬─────────────────────────────────────────┘
                 │
                 ▼
 ┌─────────────────────────────────────────────────────────┐
 │                Python 能力层（确定性）                  │
-│  行情获取 | 技术指标 | 选股 | 回测 | 风格统计            │
+│  quote | analysis | stock_picker | backtest | monitor   │
+│  recommend | config | learning | storage | api          │
 └─────────────────────────────────────────────────────────┘
 ```
 
@@ -55,33 +64,37 @@
 
 ### 组件
 
-- Skill 层：定义输入输出协议与 agent 角色分工
-- Agent 协作层：协调多视角输出并综合结论
+- Agent Team 层：面向用户请求进行任务拆解、专家协作与结论生成
+- Skill 层：为 Agent Team 暴露标准能力入口与参数协议
+- TypeScript Orchestrator：负责能力调用编排与输出标准化
 - Python 能力层：提供结构化数据与可验证计算
 - 本地存储：用于缓存与风格画像长期学习
 
 ### 数据流
 
-1. 用户输入 `/analyze 000001`
-2. Claude Code Skill 解析意图并分发给 Analysis Agent
-3. Analysis Agent 调用 Python 技术分析能力
-4. Python 返回结构化指标与信号
-5. Orchestrator 汇总多 agent 观点并输出建议
+1. 用户输入“这只股票现在是否值得介入”
+2. Orchestrator Agent 拆解为行情、技术、风险、策略等子任务
+3. 各专家 Agent 通过 Skill/handler 调用 Python 能力层获取结构化结果
+4. Orchestrator 执行冲突消解与置信度加权，输出结论与行动建议
+5. 用户反馈写入风格学习链路，更新后续推荐与风险偏好
+
+当前实现补充：支持 `team-feedback` 命令将决策结果回写本地反馈存储，供 Team 编排层读取个股偏好、全局风险偏好与策略权重。
 
 ## Skill 协议规范
 
-每个 Skill 需满足：
+当前协议实践：
 
-- 输入参数标准化
-- 输出结构包含：结论、信号、置信度、建议
-- 对错误场景给出可操作提示
+- 输入参数标准化（代码、策略、时间窗口、用户参数）
+- 输出统一采用 `{ success, data, error }` 风格（Orchestrator 层）
+- 为 Agent 整合层保留结构化字段，支持多专家汇总与解释生成
+- 错误场景输出可读原因并返回非成功状态
 
 ## 错误处理与可靠性
 
-- Python 层统一返回结构化错误（code/message/context）
-- Skill 输出必须包含可解释失败原因与可替代建议
-- 多 agent 输出冲突时必须标明矛盾点与置信度
-- 风格学习样本不足时必须提示“置信度低”
+- Python CLI/API 以异常捕获 + JSON 错误输出为主
+- Orchestrator 统一错误语义并降级输出“可解释失败原因”
+- 专家结论冲突时执行置信度加权与保守策略
+- 风格学习样本不足时输出低置信度提示并避免过度个性化
 
 ## 测试与验收标准
 
@@ -90,27 +103,25 @@
 - /quote、/analyze、/backtest 返回结构化结果
 - 风格画像能更新并持久化
 
-### Skill 验收
+### Agent 协作验收
 
-- 输入错误可被优雅处理
-- 输出包含统一结构与 agent 角色标记
-
-### 协作验收
-
-- Orchestrator 能综合多 agent 结论
+- 多专家结论可追踪、可解释、可聚合
+- 输入错误可被优雅处理并反馈到调度层
+- TypeScript 与 Python 调用链路稳定
 - 风格画像对推荐策略产生可见影响
 
 ## 落地步骤
 
-1. 统一 Skill 输入输出协议与角色提示词
-2. 固化 Python 能力输出格式与错误结构
-3. 建立风格画像的持久化与更新机制
-4. 为每个 Skill 编写协作验收用例
+1. 增加 Agent Team 会话协议（任务树、专家结论、聚合结论）
+2. 扩展 TypeScript 编排层对全量 handler 的直连能力
+3. 统一 Python CLI/API 的错误结构字段与置信度字段
+4. 为 watch/alert/backtest/recommend 增补跨层集成测试
+5. 对齐 Skills 清单与 Agent 角色映射文档
 
 ## 验收示例
 
-- `/quote 000001` → 行情数据
-- `/analyze 000001` → 技术信号与结论
-- `/backtest 000001 --strategy ma_cross` → 回测结果
-- `/style` → 风格画像更新摘要
-- Orchestrator 输出综合建议
+- 用户自然语言提问 → 返回“多专家观点 + 综合建议 + 风险提示”
+- `/quote 000001` → 行情专家可用结构化数据
+- `/analyze 000001` → 技术专家可用信号与结论
+- `/backtest 000001 --strategy ma_cross` → 策略专家可用回测依据
+- `/config style` 或 `style` → 风格专家更新画像摘要

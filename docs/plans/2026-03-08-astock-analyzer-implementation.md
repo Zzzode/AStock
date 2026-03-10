@@ -125,11 +125,11 @@ coverage/
 
 ```bash
 # 安装依赖
-npm install
+pnpm install
 pip install -e src/python
 
 # 初始化数据库
-npm run init-db
+pnpm run init-db
 
 # 使用 Skills
 /quote 000001      # 查询平安银行行情
@@ -1550,7 +1550,7 @@ describe('Python Bridge', () => {
 **Step 4: 运行测试**
 
 ```bash
-npm test src/ts/utils/__tests__/python-bridge.test.ts
+pnpm test src/ts/utils/__tests__/python-bridge.test.ts
 ```
 
 **Step 5: 提交桥接模块**
@@ -2033,15 +2033,15 @@ describe('Integration Tests', () => {
 
 ```bash
 # 安装依赖
-npm install
+pnpm install
 cd src/python && pip install -e ".[dev]" && cd ../..
 
 # 初始化数据库
-npm run build
+pnpm run build
 node dist/index.js init
 
 # 测试
-npm test
+pnpm test
 
 # 测试 Skill
 node dist/index.js quote 000001
