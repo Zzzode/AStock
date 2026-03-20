@@ -1,6 +1,6 @@
 ---
 name: analyze
-description: Use when user needs technical analysis for stocks including MA, MACD, KDJ, RSI indicators, detecting trading signals like golden cross and death cross, or understanding technical trends. Triggers on patterns like "分析一下XX股票", "XX技术指标怎么样", "000001技术分析", "茅台MACD" or when user asks about buy/sell signals.
+description: Use when user asks for technical analysis of a stock, including MA, MACD, KDJ, RSI, golden cross, death cross, trend strength, support/resistance, or technical entry/exit signals from a chart perspective. Trigger on phrases like "技术分析", "分析一下XX", "均线", "MACD", "RSI", "金叉", "死叉", or "趋势怎么看". Do not use for simple price lookup or broader buy/sell decision advice involving position sizing or multi-factor judgment.
 ---
 
 <SUBAGENT-STOP>

@@ -1,6 +1,6 @@
 ---
 name: quote
-description: Use when user needs to query real-time stock prices, market data, current trading information, or check how a stock is performing today. Triggers on patterns like "XX股票现在多少钱", "平安银行行情", "查一下茅台价格", "000001现在怎么样" or when user mentions a stock with price/market context.
+description: Use when user asks for a stock's latest price, intraday change, volume, turnover, today's performance, or a current market snapshot. Trigger on phrases like "现在多少钱", "最新价", "今日涨跌", "行情", "成交额", or "今天涨了吗". Do not use for technical analysis, indicator interpretation, or buy/sell decision questions.
 ---
 
 <SUBAGENT-STOP>
@@ -53,7 +53,7 @@ If you were dispatched as a subagent to execute a specific task, skip this skill
 
 ### Step 4: 补充解读（可选）
 
-如果用户问的是"涨了吗"或"现在怎么样"，提供简短解读：
+如果用户问的是"涨了吗"或"今日表现如何"，提供简短解读：
 - 涨跌幅 > 2%: "今日表现较强，上涨 X%"
 - 涨跌幅 < -2%: "今日承压，下跌 X%"
 - 其他: "今日波动较小，涨跌幅 X%"

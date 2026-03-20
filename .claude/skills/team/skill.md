@@ -1,6 +1,6 @@
 ---
 name: team
-description: Use when user asks about stock trading decisions, buy/sell timing, investment analysis, or needs multi-expert comprehensive analysis for A-shares. Triggers on patterns like "XX股票适合买吗", "分析一下XX", "XX现在怎么样", or when user mentions a 6-digit stock code with a question.
+description: Use when user asks whether a stock is worth buying, selling, holding, or entering now, wants timing or position advice, or needs a multi-factor A-share decision with bull/bear arguments and risk assessment. Trigger on phrases like "适合买吗", "现在能不能买", "要不要卖", "怎么看仓位", or "综合分析下值不值得参与". Do not use for simple quote requests or pure technical-indicator interpretation when the user is not asking for a broader decision.
 ---
 
 <SUBAGENT-STOP>
@@ -11,6 +11,8 @@ If you were dispatched as a subagent to execute a specific task, skip this skill
 
 多专家 Agent 协作分析，综合市场、技术、策略、风险、风格五个维度，为用户生成交易决策建议。
 
+> 边界说明：价格与行情快照问题优先使用 `/quote`，纯技术指标与走势研判优先使用 `/analyze`，本技能只用于买卖时机、持有判断、仓位建议和多维度综合决策。
+
 ## 自动触发模式
 
 当用户输入匹配以下模式时，Claude Code 会自动识别并触发此 skill：
@@ -19,8 +21,8 @@ If you were dispatched as a subagent to execute a specific task, skip this skill
 |-------------|---------|
 | "平安银行现在适合买吗" | 包含股票名称/代码 + 交易决策问题 |
 | "000001怎么操作" | 6位股票代码 + 操作建议请求 |
-| "分析一下贵州茅台" | 分析请求 + 股票名称/代码 |
-| "茅台这只股票怎么样" | 股票名称 + 评价请求 |
+| "贵州茅台现在值得买入吗" | 买入时机判断 + 股票名称 |
+| "茅台这只股票要不要止盈" | 卖出/止盈时机判断 |
 | "现在能买平安银行吗" | 买入时机判断 |
 
 ## 执行流程
