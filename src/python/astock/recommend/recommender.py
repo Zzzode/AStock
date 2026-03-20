@@ -151,12 +151,12 @@ class Recommender:
         )
 
         # 4. 根据用户偏好过滤
-        filtered_results = self._filter_by_preferences(screen_results, config)
+        filtered_results = await self._filter_by_preferences(screen_results, config)
 
         # 5. 生成推荐
         recommendations = []
         for result in filtered_results[:limit]:
-            recommendation = self._create_recommendation(
+            recommendation = await self._create_recommendation(
                 result,
                 config.trading_style,
                 config.risk_level
@@ -241,7 +241,7 @@ class Recommender:
 
         return adjusted
 
-    def _filter_by_preferences(
+    async def _filter_by_preferences(
         self,
         results: list[ScreenResult],
         config: UserConfig
@@ -267,7 +267,7 @@ class Recommender:
 
             # 行业过滤
             if self.industry_service and (config.preferred_sectors or config.excluded_sectors):
-                stock_industry = self._get_stock_industry_sync(result.code)
+                stock_industry = await self._get_stock_industry(result.code)
                 if stock_industry:
                     # 白名单筛选
                     if config.preferred_sectors and stock_industry.industry not in config.preferred_sectors:
@@ -280,8 +280,8 @@ class Recommender:
 
         return filtered
 
-    def _get_stock_industry_sync(self, code: str) -> Optional[StockIndustry]:
-        """同步获取股票行业信息（使用缓存）
+    async def _get_stock_industry(self, code: str) -> Optional[StockIndustry]:
+        """异步获取股票行业信息
 
         Args:
             code: 股票代码
@@ -291,18 +291,7 @@ class Recommender:
         """
         if not self.industry_service:
             return None
-
-        import asyncio
-        try:
-            loop = asyncio.get_event_loop()
-            if loop.is_running():
-                # 如果事件循环正在运行，使用 run_until_complete 会报错
-                # 这里直接返回 None，行业信息稍后填充
-                return None
-            return loop.run_until_complete(self.industry_service.get_stock_industry(code))
-        except RuntimeError:
-            # 没有事件循环，创建新的
-            return asyncio.run(self.industry_service.get_stock_industry(code))
+        return await self.industry_service.get_stock_industry(code)
 
     def _suggest_strategies(
         self,
@@ -320,7 +309,7 @@ class Recommender:
         """
         return self.STYLE_STRATEGIES.get(style, ["趋势跟踪"])
 
-    def _create_recommendation(
+    async def _create_recommendation(
         self,
         result: ScreenResult,
         style: TradingStyle,
@@ -346,7 +335,7 @@ class Recommender:
         industry = None
         industry_change = None
         if self.industry_service:
-            stock_industry = self._get_stock_industry_sync(result.code)
+            stock_industry = await self._get_stock_industry(result.code)
             if stock_industry:
                 industry = stock_industry.industry
                 industry_change = stock_industry.industry_change

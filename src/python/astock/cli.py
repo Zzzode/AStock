@@ -91,21 +91,16 @@ def analyze(
     days: int = typer.Option(100, "--days", "-d", help="分析天数"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
 ) -> None:
-    """技术分析"""
+    """技术分析 - 输出原始数据和信号，由 LLM 进行推理分析"""
 
     async def _analyze() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
         try:
-            service = QuoteService(db)
-            df = await service.get_daily(code, limit=days)
-
-            if df.empty:
-                return {"error": "无数据"}
-
-            analyzer = TechnicalAnalyzer(df)
-            analyzer.add_all()
-            return analyzer.get_signals()
+            from .services import AnalysisService
+            service = AnalysisService(db)
+            result = await service.analyze(code, days=days)
+            return service.to_dict(result)
         finally:
             await db.close()
 
@@ -124,45 +119,80 @@ def analyze(
             console.print(f"[red]错误: 技术分析失败: {e}[/red]")
         raise typer.Exit(1)
 
+    # 检查错误
+    if result.get("error"):
+        if json_output:
+            console.print_json(data=result)
+        else:
+            console.print(f"[red]错误: {result['error']}[/red]")
+        raise typer.Exit(1)
+
     if json_output:
         console.print_json(data=result)
     else:
+        # 显示股票名称
+        name = result.get("name")
+        title = f"技术分析 - {name} ({code})" if name else f"技术分析 - {code}"
+
         # 显示技术指标
-        latest = result.get("latest", {})
+        indicators = result.get("indicators", {})
+        prev_indicators = result.get("prev_indicators", {})
 
         panel_content = f"""
 [bold cyan]价格指标[/bold cyan]
-收盘价: {latest.get("close", 0):.2f}
-MA5: {latest.get("ma5", 0):.2f}
-MA10: {latest.get("ma10", 0):.2f}
-MA20: {latest.get("ma20", 0):.2f}
+收盘价: {indicators.get("close", 0):.2f}  (前日: {prev_indicators.get("close", 0):.2f})
+MA5: {indicators.get("ma5", 0):.2f}
+MA10: {indicators.get("ma10", 0):.2f}
+MA20: {indicators.get("ma20", 0):.2f}
 
 [bold cyan]MACD[/bold cyan]
-DIF: {latest.get("macd", 0):.4f}
-DEA: {latest.get("macd_signal", 0):.4f}
-柱: {latest.get("macd_hist", 0):.4f}
+DIF: {indicators.get("macd", 0):.4f}
+DEA: {indicators.get("macd_signal", 0):.4f}
+柱: {indicators.get("macd_hist", 0):.4f}
 
 [bold cyan]KDJ[/bold cyan]
-K: {latest.get("kdj_k", 0):.2f}
-D: {latest.get("kdj_d", 0):.2f}
-J: {latest.get("kdj_j", 0):.2f}
+K: {indicators.get("kdj_k", 0):.2f}
+D: {indicators.get("kdj_d", 0):.2f}
+J: {indicators.get("kdj_j", 0):.2f}
 
 [bold cyan]RSI[/bold cyan]
-RSI6: {latest.get("rsi6", 0):.2f}
+RSI6: {indicators.get("rsi6", 0):.2f}
 """
-        console.print(Panel(panel_content, title=f"技术分析 - {code}"))
+        console.print(Panel(panel_content, title=title))
 
         # 显示信号
         signals = result.get("signals", [])
+        signal_stats = result.get("signal_stats", {})
+
         if signals:
-            console.print("\n[bold yellow]检测到的信号:[/bold yellow]")
+            console.print(f"\n[bold yellow]检测到的信号 ({signal_stats.get('bullish_count', 0)}多/{signal_stats.get('bearish_count', 0)}空):[/bold yellow]")
             for signal in signals:
-                color = "green" if signal["bias"] == "bullish" else "red"
-                console.print(
-                    f"  [{color}]●[/{color}] {signal['name']}: {signal['description']}"
-                )
-        else:
-            console.print("\n[dim]暂无明显信号[/dim]")
+                bias_color = "green" if signal.get("bias") == "bullish" else "red"
+                current = signal.get("current", {})
+                current_str = ", ".join(f"{k}={v:.2f}" if isinstance(v, float) else f"{k}={v}" for k, v in current.items())
+                console.print(f"  [{bias_color}]●[/{bias_color}] {signal.get('name', signal.get('type'))}: {current_str}")
+
+        # 显示历史上下文
+        history = result.get("history", {})
+        if history.get("recent_analyses"):
+            console.print(f"\n[bold dim]近期分析历史:[/bold dim]")
+            for h in history["recent_analyses"][:3]:
+                signals_str = ", ".join(h.get("signals", []))
+                console.print(f"  {h.get('date', '')}: {signals_str}")
+
+        # 显示反馈统计
+        feedback_stats = result.get("feedback_stats", {})
+        if feedback_stats.get("overall"):
+            overall = feedback_stats["overall"]
+            console.print(f"\n[bold dim]用户反馈统计:[/bold dim]")
+            console.print(f"  总样本: {overall.get('total', 0)}, 成功率: {overall.get('success_rate', 0):.0%}")
+
+        # 显示行情
+        quote = result.get("quote", {})
+        if quote:
+            console.print(f"\n[bold cyan]实时行情:[/bold cyan]")
+            console.print(f"  最新价: {quote.get('price', 0):.2f}  涨跌幅: {quote.get('change_percent', 0):+.2f}%")
+            console.print(f"  成交额: {quote.get('amount', 0) / 100000000:.2f}亿")
 
 
 @app.command()
@@ -1201,19 +1231,39 @@ app.add_typer(watch_app, name="watch")
 
 # ============ Team Feedback 命令 ============
 
-FEEDBACK_FILE = Path(__file__).parent.parent.parent.parent / "data" / "team-feedback.json"
-
-
 @app.command("team-feedback")
 def team_feedback(
     code: str = typer.Argument(..., help="股票代码"),
     action: str = typer.Option(..., "--action", "-a", help="建议动作: watch_buy/wait/hold_or_reduce"),
     outcome: str = typer.Option(..., "--outcome", "-o", help="反馈结果: good/bad"),
     strategy: Optional[str] = typer.Option(None, "--strategy", "-s", help="关联策略/因子"),
+    signals: Optional[str] = typer.Option(None, "--signals", help="关联信号，逗号分隔"),
     note: Optional[str] = typer.Option(None, "--note", "-n", help="补充说明"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
 ) -> None:
     """记录 Agent Team 建议反馈，用于后续偏好学习"""
+
+    async def _record() -> dict[str, Any]:
+        from .memory import FeedbackLearner
+        learner = FeedbackLearner()
+        signals_list = [s.strip() for s in signals.split(",")] if signals else None
+        record = await learner.record_feedback(
+            code=code,
+            action=action,
+            outcome=outcome,
+            strategy=strategy,
+            note=note,
+            signals=signals_list,
+        )
+        return {
+            "code": record.code,
+            "action": record.action,
+            "outcome": record.outcome,
+            "strategy": record.strategy,
+            "signals": record.signals,
+            "note": record.note,
+            "created_at": record.created_at.isoformat(),
+        }
 
     # 验证参数
     if action not in ["watch_buy", "wait", "hold_or_reduce"]:
@@ -1226,35 +1276,10 @@ def team_feedback(
         console.print("可用选项: good, bad")
         raise typer.Exit(1)
 
-    # 确保数据目录存在
-    FEEDBACK_FILE.parent.mkdir(parents=True, exist_ok=True)
-
-    # 加载现有反馈
-    feedback_data = {"records": []}
-    if FEEDBACK_FILE.exists():
-        try:
-            with open(FEEDBACK_FILE, "r", encoding="utf-8") as f:
-                feedback_data = json.load(f)
-        except Exception:
-            feedback_data = {"records": []}
-
-    # 添加新记录
-    record = {
-        "code": code,
-        "action": action,
-        "outcome": outcome,
-        "strategy": strategy,
-        "note": note,
-        "created_at": datetime.now().isoformat(),
-    }
-    feedback_data["records"].append(record)
-
-    # 保存
-    with open(FEEDBACK_FILE, "w", encoding="utf-8") as f:
-        json.dump(feedback_data, f, ensure_ascii=False, indent=2)
+    result = asyncio.run(_record())
 
     if json_output:
-        console.print_json(data=record)
+        console.print_json(data=result)
     else:
         console.print(f"[green]反馈已记录: {code} {action} {outcome}[/green]")
 
@@ -1266,75 +1291,193 @@ def feedback_show(
 ) -> None:
     """查看用户反馈画像"""
 
-    if not FEEDBACK_FILE.exists():
-        if json_output:
-            console.print_json(data={"records": [], "profile": None})
-        else:
-            console.print("[dim]暂无反馈记录[/dim]")
-        return
+    async def _show() -> dict[str, Any]:
+        from .memory import FeedbackLearner
+        learner = FeedbackLearner()
+        summary = await learner.get_feedback_summary()
+        return summary
 
-    try:
-        with open(FEEDBACK_FILE, "r", encoding="utf-8") as f:
-            feedback_data = json.load(f)
-    except Exception:
-        feedback_data = {"records": []}
-
-    records = feedback_data.get("records", [])
-
-    # 按股票代码过滤
-    if code:
-        records = [r for r in records if r.get("code") == code]
-
-    # 计算画像
-    if records:
-        total = len(records)
-        good_count = sum(1 for r in records if r.get("outcome") == "good")
-        buy_count = sum(1 for r in records if r.get("action") == "watch_buy")
-
-        profile = {
-            "sample_count": total,
-            "success_rate": good_count / total if total > 0 else 0,
-            "buy_ratio": buy_count / total if total > 0 else 0,
-        }
-    else:
-        profile = None
+    result = asyncio.run(_show())
 
     if json_output:
-        console.print_json(data={"records": records[-10:], "profile": profile})
+        console.print_json(data=result)
     else:
-        if not records:
+        if result.get("total", 0) == 0:
             console.print("[dim]暂无反馈记录[/dim]")
             return
 
         # 显示画像
-        if profile:
-            console.print(Panel(
-                f"样本数: {profile['sample_count']}\n"
-                f"成功率: {profile['success_rate']:.0%}\n"
-                f"买入比例: {profile['buy_ratio']:.0%}",
-                title=f"用户画像 {'- ' + code if code else ''}"
-            ))
+        console.print(Panel(
+            f"样本数: {result['total']}\n"
+            f"成功率: {result['success_rate']:.0%}\n"
+            f"好评数: {result.get('good_count', 0)}\n"
+            f"差评数: {result.get('bad_count', 0)}",
+            title=f"用户画像 {'- ' + code if code else ''}"
+        ))
 
-        # 显示最近记录
-        table = Table(title="最近反馈记录")
-        table.add_column("日期", style="cyan", width=12)
-        table.add_column("代码", style="white", width=8)
-        table.add_column("动作", style="yellow", width=15)
-        table.add_column("结果", style="green", width=6)
-        table.add_column("策略", style="dim")
+        # 显示策略表现
+        strategy_perf = result.get("strategy_performance", {})
+        if strategy_perf:
+            console.print("\n[bold]策略表现:[/bold]")
+            for strategy, perf in strategy_perf.items():
+                rate = perf.get("success_rate", 0)
+                color = "green" if rate >= 0.5 else "red"
+                console.print(f"  {strategy}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)}次)")
 
-        for r in records[-10:]:
-            date_str = r.get("created_at", "")[:10]
-            outcome_color = "green" if r.get("outcome") == "good" else "red"
+        # 显示信号表现
+        signal_perf = result.get("signal_performance", {})
+        if signal_perf:
+            console.print("\n[bold]信号表现:[/bold]")
+            for signal, perf in list(signal_perf.items())[:5]:
+                rate = perf.get("success_rate", 0)
+                color = "green" if rate >= 0.5 else "red"
+                console.print(f"  {signal}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)}次)")
+
+
+# ============ Memory 命令组 ============
+
+memory_app = typer.Typer(name="memory", help="Agent 记忆管理")
+app.add_typer(memory_app, name="memory")
+
+
+@memory_app.command("store")
+def memory_store(
+    agent: str = typer.Option(..., "--agent", "-a", help="Agent 名称"),
+    key: str = typer.Option(..., "--key", "-k", help="键"),
+    value: str = typer.Option(..., "--value", "-v", help="值"),
+    session: str = typer.Option("default", "--session", "-s", help="会话 ID"),
+    user: str = typer.Option("default", "--user", "-u", help="用户 ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+) -> None:
+    """存储 Agent 记忆"""
+
+    async def _store() -> dict[str, Any]:
+        from .memory import MemoryStore
+        store = MemoryStore()
+        await store.store(
+            agent_name=agent,
+            session_id=session,
+            user_id=user,
+            key=key,
+            value=value,
+        )
+        return {"status": "stored", "agent": agent, "key": key, "value": value}
+
+    result = asyncio.run(_store())
+
+    if json_output:
+        console.print_json(data=result)
+    else:
+        console.print(f"[green]记忆已存储: {agent}/{key}[/green]")
+
+
+@memory_app.command("recall")
+def memory_recall(
+    agent: str = typer.Option(..., "--agent", "-a", help="Agent 名称"),
+    key: str = typer.Option(..., "--key", "-k", help="键"),
+    user: str = typer.Option("default", "--user", "-u", help="用户 ID"),
+    limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+) -> None:
+    """回忆 Agent 记忆"""
+
+    async def _recall() -> list[dict[str, Any]]:
+        from .memory import MemoryStore
+        store = MemoryStore()
+        entries = await store.recall(
+            agent_name=agent,
+            user_id=user,
+            key=key,
+            limit=limit,
+        )
+        return entries
+
+    entries = asyncio.run(_recall())
+
+    if json_output:
+        console.print_json(data={"entries": entries})
+    else:
+        if not entries:
+            console.print("[dim]暂无记忆[/dim]")
+            return
+
+        console.print(f"[bold]{agent}/{key} 记忆:[/bold]")
+        for entry in entries:
+            created = entry.get("created_at", "")[:19]
+            console.print(f"  [{created}] {entry.get('value')}")
+
+
+@memory_app.command("history")
+def memory_history(
+    agent: Optional[str] = typer.Option(None, "--agent", "-a", help="Agent 名称(可选)"),
+    user: str = typer.Option("default", "--user", "-u", help="用户 ID"),
+    limit: int = typer.Option(20, "--limit", "-n", help="返回数量"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+) -> None:
+    """查看会话历史"""
+
+    async def _history() -> list[dict[str, Any]]:
+        from .memory import MemoryStore
+        store = MemoryStore()
+        entries = await store.get_session_history(
+            user_id=user,
+            agent_name=agent,
+            limit=limit,
+        )
+        return entries
+
+    entries = asyncio.run(_history())
+
+    if json_output:
+        console.print_json(data={"entries": entries})
+    else:
+        if not entries:
+            console.print("[dim]暂无历史记录[/dim]")
+            return
+
+        table = Table(title=f"会话历史 ({agent or '所有Agent'})")
+        table.add_column("时间", style="cyan", width=19)
+        table.add_column("Agent", style="white", width=15)
+        table.add_column("键", style="yellow", width=15)
+        table.add_column("值", style="green")
+
+        for entry in entries:
+            created = entry.get("created_at", "")[:19]
             table.add_row(
-                date_str,
-                r.get("code", ""),
-                r.get("action", ""),
-                f"[{outcome_color}]{r.get('outcome', '')}[/{outcome_color}]",
-                r.get("strategy") or "-",
+                created,
+                entry.get("agent_name", ""),
+                entry.get("key", ""),
+                str(entry.get("value", ""))[:50],
             )
 
         console.print(table)
+
+
+@memory_app.command("clear")
+def memory_clear(
+    agent: Optional[str] = typer.Option(None, "--agent", "-a", help="Agent 名称"),
+    user: Optional[str] = typer.Option(None, "--user", "-u", help="用户 ID"),
+    key: Optional[str] = typer.Option(None, "--key", "-k", help="键"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+) -> None:
+    """清除记忆"""
+
+    async def _clear() -> int:
+        from .memory import MemoryStore
+        store = MemoryStore()
+        count = await store.clear(
+            agent_name=agent,
+            user_id=user,
+            key=key,
+        )
+        return count
+
+    count = asyncio.run(_clear())
+
+    if json_output:
+        console.print_json(data={"cleared": count})
+    else:
+        console.print(f"[yellow]已清除 {count} 条记忆[/yellow]")
 
 
 if __name__ == "__main__":
