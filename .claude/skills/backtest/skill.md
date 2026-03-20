@@ -1,25 +1,93 @@
 ---
 name: backtest
-description: Use when user needs to backtest trading strategies, evaluate strategy performance, or analyze historical trading results
+description: Use when user needs to backtest trading strategies, evaluate strategy performance, analyze historical trading results, or compare different strategies. Triggers on patterns like "回测一下XX策略", "这个策略效果怎么样", "MA策略历史表现", "帮我测试XX策略在XX股票上的效果" or when user asks about strategy effectiveness.
 ---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, skip this skill.
+</SUBAGENT-STOP>
 
 # /backtest - 策略回测
 
-对交易策略进行历史回测，评估策略表现。
+对交易策略进行历史回测，评估策略表现，包括收益率、最大回撤、夏普比率等关键指标。
 
-## 使用方式
+## 自动触发模式
+
+| 用户输入模式 | 触发条件 |
+|-------------|---------|
+| "回测一下MA策略" | 回测请求 + 策略名称 |
+| "均线策略效果怎么样" | 策略效果评估 |
+| "MACD策略在茅台上表现如何" | 策略 + 股票 + 表现评估 |
+| "帮我测试平安银行MA策略" | 明确的回测请求 |
+
+## 执行流程
+
+### Step 1: 解析参数
+
+从用户输入中提取：
+- **股票代码**: 6位数字或股票名称（默认可使用用户关注股票）
+- **策略名称**: ma_cross, macd 等
+- **时间范围**: 默认一年，用户可指定
+- **初始资金**: 默认 10 万
+
+如果缺少必要参数，使用 AskUserQuestion 询问。
+
+### Step 2: 调用 Python 执行回测
+
+使用 Bash 工具执行：
+
+```bash
+.venv/bin/python -m astock.cli backtest 000001 --strategy ma_cross --start-date 2025-03-20 --end-date 2026-03-20 --capital 100000
+```
+
+### Step 3: 解析回测结果
+
+从输出中提取关键指标：
+
+| 指标 | 说明 | 参考标准 |
+|------|------|---------|
+| 总收益率 | 策略总收益 | >10% 较好 |
+| 年化收益 | 年化收益率 | >15% 优秀 |
+| 最大回撤 | 最大亏损幅度 | <10% 较好 |
+| 夏普比率 | 风险调整收益 | >1 较好 |
+| 胜率 | 盈利交易占比 | >50% 较好 |
+| 盈亏比 | 平均盈利/亏损 | >1.5 较好 |
+
+### Step 4: 输出回测结果
 
 ```
-/backtest <股票代码> --strategy <策略> [--start-date <日期>] [--end-date <日期>] [--capital <金额>]
+回测结果 - 平安银行 (000001)
+
+策略: MA均线交叉
+回测区间: 2025-03-20 ~ 2026-03-20
+初始资金: 100,000 元
+
+收益指标
+总收益率: +15.2%
+年化收益: +16.8%
+最大回撤: -8.3%
+夏普比率: 1.25
+
+交易统计
+交易次数: 12 次
+胜率: 58.3%
+盈亏比: 2.1
+手续费: 356.80 元
+
+最近交易记录
+2026-03-15  买入  1000股  @10.50元
+2026-03-18  卖出  1000股  @11.20元
 ```
 
-## 示例
+### Step 5: 策略解读（可选）
+
+提供策略优劣势分析：
 
 ```
-/backtest 000001 --strategy ma_cross                    # 使用 MA 均线交叉策略回测
-/backtest 000001 --strategy macd                        # 使用 MACD 策略回测
-/backtest 000001 --strategy ma_cross --start-date 2024-01-01 --end-date 2024-12-31
-/backtest 000001 --strategy ma_cross --capital 100000   # 指定初始资金 10 万
+策略评估:
+- 优势：在趋势行情中表现较好，胜率尚可
+- 劣势：震荡市容易假信号，最大回撤偏高
+- 建议：可考虑增加趋势过滤条件
 ```
 
 ## 可用策略
@@ -29,48 +97,35 @@ description: Use when user needs to backtest trading strategies, evaluate strate
 | ma_cross | MA均线交叉 | 短期均线上穿长期均线买入，下穿卖出 |
 | macd | MACD金叉死叉 | MACD柱状线由负转正买入，由正转负卖出 |
 
-## 参数说明
+## 使用示例
 
-| 参数 | 默认值 | 说明 |
-|------|--------|------|
-| --strategy | 必填 | 策略名称 |
-| --start-date | 一年前 | 回测开始日期 |
-| --end-date | 今天 | 回测结束日期 |
-| --capital | 100000 | 初始资金（元） |
-
-## 输出格式
+### 示例 1: 自然语言触发
 
 ```
-┌─────────────────────────────────────────┐
-│        回测结果 - 平安银行 (000001)      │
-├─────────────────────────────────────────┤
-│  策略: MA均线交叉                        │
-│  回测区间: 2024-01-01 ~ 2024-12-31      │
-│                                         │
-│  收益指标                               │
-│  总收益率: +15.2%                       │
-│  年化收益: +16.8%                       │
-│  最大回撤: -8.3%                        │
-│  夏普比率: 1.25                         │
-│                                         │
-│  交易统计                               │
-│  交易次数: 12 次                        │
-│  胜率: 58.3%                            │
-│  盈亏比: 2.1                            │
-│  手续费: 356.80 元                      │
-├─────────────────────────────────────────┤
-│  最近交易记录                           │
-│  2024-12-15  买入  1000股  @10.50元     │
-│  2024-12-20  卖出  1000股  @11.20元     │
-└─────────────────────────────────────────┘
+用户: 回测一下MA均线策略在平安银行上的效果
+
+Claude: 我来回测 MA 均线策略在平安银行(000001)上的表现。
+[调用 backtest CLI]
+
+回测结果：
+- 总收益率 +15.2%，年化 +16.8%
+- 最大回撤 -8.3%，夏普比率 1.25
+- 胜率 58.3%，盈亏比 2.1
+
+策略整体表现良好，适合趋势行情使用。
 ```
 
-## 实现说明
+### 示例 2: 斜杠命令
 
-调用 TypeScript 层的 `runBacktest()` 函数，该函数通过 Python 桥接获取历史数据并执行回测。
+```
+用户: /backtest 600519 --strategy macd --start-date 2024-01-01
+
+Claude:
+回测结果 - 贵州茅台 (600519)
+[结果...]
+```
 
 ## 相关文件
 
-- `src/ts/orchestrator/backtest-handler.ts` - 处理逻辑
-- `src/ts/utils/python-bridge.ts` - Python 调用桥接
+- `src/python/astock/cli.py` - Python CLI 入口
 - `src/python/astock/backtest/` - Python 回测服务

@@ -12,9 +12,13 @@ dist/
 
 # Data
 data/*.db
+data/*.json
+!data/team-feedback.json
 data/imports/*
 !data/imports/.gitkeep
 data/logs/
+data/sessions/
+src/data/
 
 # IDE
 .idea/

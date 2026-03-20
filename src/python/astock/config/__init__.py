@@ -6,10 +6,12 @@ from .user_config import (
     TradingStyle,
     UserConfig,
 )
+from .email_config import EmailConfig
 
 __all__ = [
     "UserConfig",
     "ConfigManager",
     "RiskLevel",
     "TradingStyle",
+    "EmailConfig",
 ]

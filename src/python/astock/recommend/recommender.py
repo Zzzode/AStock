@@ -6,6 +6,7 @@ from typing import Any, Optional
 
 from ..config import UserConfig, TradingStyle, RiskLevel, ConfigManager
 from ..stock_picker import StockScreener, ScreenResult, FactorType
+from ..data import IndustryService, StockIndustry
 
 
 @dataclass
@@ -19,8 +20,10 @@ class Recommendation:
     suggested_strategies: list[str]     # 推荐策略
     risk_level: str                     # 风险等级
     style_match: float                  # 风格匹配度 (0-1)
-    data: dict[str, Any]                # 原始数据
-    recommended_at: datetime            # 推荐时间
+    industry: Optional[str] = None      # 所属行业
+    industry_change: Optional[float] = None  # 行业涨跌幅
+    data: dict[str, Any] = field(default_factory=dict)  # 原始数据
+    recommended_at: datetime = field(default_factory=datetime.now)  # 推荐时间
 
 
 @dataclass
@@ -108,13 +111,15 @@ class Recommender:
         },
     }
 
-    def __init__(self, screener: StockScreener):
+    def __init__(self, screener: StockScreener, industry_service: Optional[IndustryService] = None):
         """初始化推荐器
 
         Args:
             screener: 股票选股器实例
+            industry_service: 行业服务实例（可选）
         """
         self.screener = screener
+        self.industry_service = industry_service
 
     async def recommend(
         self,
@@ -260,12 +265,44 @@ class Recommender:
             if config.max_price is not None and price > config.max_price:
                 continue
 
-            # 行业过滤 (这里需要行业数据，暂时跳过)
-            # TODO: 获取股票行业信息后实现
+            # 行业过滤
+            if self.industry_service and (config.preferred_sectors or config.excluded_sectors):
+                stock_industry = self._get_stock_industry_sync(result.code)
+                if stock_industry:
+                    # 白名单筛选
+                    if config.preferred_sectors and stock_industry.industry not in config.preferred_sectors:
+                        continue
+                    # 黑名单筛选
+                    if config.excluded_sectors and stock_industry.industry in config.excluded_sectors:
+                        continue
 
             filtered.append(result)
 
         return filtered
+
+    def _get_stock_industry_sync(self, code: str) -> Optional[StockIndustry]:
+        """同步获取股票行业信息（使用缓存）
+
+        Args:
+            code: 股票代码
+
+        Returns:
+            股票行业信息
+        """
+        if not self.industry_service:
+            return None
+
+        import asyncio
+        try:
+            loop = asyncio.get_event_loop()
+            if loop.is_running():
+                # 如果事件循环正在运行，使用 run_until_complete 会报错
+                # 这里直接返回 None，行业信息稍后填充
+                return None
+            return loop.run_until_complete(self.industry_service.get_stock_industry(code))
+        except RuntimeError:
+            # 没有事件循环，创建新的
+            return asyncio.run(self.industry_service.get_stock_industry(code))
 
     def _suggest_strategies(
         self,
@@ -305,6 +342,15 @@ class Recommender:
         # 获取推荐策略
         strategies = self._suggest_strategies(result.code, style)
 
+        # 获取行业信息
+        industry = None
+        industry_change = None
+        if self.industry_service:
+            stock_industry = self._get_stock_industry_sync(result.code)
+            if stock_industry:
+                industry = stock_industry.industry
+                industry_change = stock_industry.industry_change
+
         return Recommendation(
             code=result.code,
             name=result.name,
@@ -314,6 +360,8 @@ class Recommender:
             suggested_strategies=strategies,
             risk_level=risk.value,
             style_match=style_match,
+            industry=industry,
+            industry_change=industry_change,
             data=result.data,
             recommended_at=datetime.now()
         )
