@@ -1,6 +1,6 @@
 ---
 name: backtest
-description: Use when user needs to backtest trading strategies, evaluate strategy performance, analyze historical trading results, or compare different strategies. Triggers on patterns like "回测一下XX策略", "这个策略效果怎么样", "MA策略历史表现", "帮我测试XX策略在XX股票上的效果" or when user asks about strategy effectiveness.
+description: Use when user needs to backtest trading strategies, evaluate strategy performance, analyze historical trading results, or compare different strategies. Triggers on "回测一下XX策略", "这个策略效果怎么样", "MA策略历史表现", "帮我测试XX策略在XX股票上的效果", "策略回测".
 ---
 
 <SUBAGENT-STOP>
@@ -129,3 +129,12 @@ Claude:
 
 - `src/python/astock/cli.py` - Python CLI 入口
 - `src/python/astock/backtest/` - Python 回测服务
+
+## 错误处理
+
+| 错误场景 | 处理方式 |
+|---------|---------|
+| 策略名称无效 | 列出可用策略，提示用户选择 |
+| 时间范围无效 | 使用默认时间范围（最近一年） |
+| 数据不足 | 缩短回测时间范围或提示用户 |
+| CLI 执行超时 | 减少回测天数后重试 |

@@ -3,6 +3,7 @@
 import asyncio
 import os
 import sys
+import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from functools import partial
@@ -135,44 +136,94 @@ class AkShareClient:
 
         return "unknown"
 
+    # 类级别缓存，避免频繁请求导致 mini-racer 崩溃
+    _realtime_cache: Optional[pd.DataFrame] = None
+    _realtime_cache_time: float = 0.0
+    _cache_ttl: float = 60.0  # 缓存有效期 60 秒
+
     def _load_realtime_dataframe(self) -> pd.DataFrame:
-        """加载实时行情数据（带错误分类）"""
-        primary_error: Optional[Exception] = None
+        """加载实时行情数据
 
+        优先级：
+        1. 使用缓存（60秒内有效）
+        2. 新浪数据源 stock_zh_a_spot()（更稳定，不需要 mini-racer）
+        3. 东方财富数据源 stock_zh_a_spot_em()（数据更全，但可能触发 mini-racer）
+
+        Returns:
+            实时行情 DataFrame
+        """
+        # 检查缓存
+        current_time = time.time()
+        if (
+            self._realtime_cache is not None
+            and current_time - self._realtime_cache_time < self._cache_ttl
+        ):
+            logger.debug("使用缓存的实时行情数据")
+            return self._realtime_cache
+
+        errors: list[str] = []
+
+        # 优先使用新浪数据源（不需要 mini-racer，更稳定）
         try:
-            df = ak.stock_zh_a_spot_em()
-            self._validate_realtime_columns(df, "stock_zh_a_spot_em")
-            return df
-        except Exception as e:
-            primary_error = e
-            error_type = self._classify_error(e)
-            logger.warning(
-                f"主数据源 stock_zh_a_spot_em 失败: {e} (type={error_type})"
-            )
-
-            # 只有网络错误才尝试备用数据源
-            if error_type != "retryable":
-                raise DataSourceError(
-                    f"主数据源错误: {e}",
-                    source="akshare",
-                    details={"error_type": error_type, "api": "stock_zh_a_spot_em"},
-                ) from e
-
-        try:
+            logger.info("尝试新浪数据源 stock_zh_a_spot...")
             df = ak.stock_zh_a_spot()
             self._validate_realtime_columns(df, "stock_zh_a_spot")
+            self._realtime_cache = df
+            self._realtime_cache_time = current_time
+            logger.info(f"新浪数据源成功，获取 {len(df)} 条数据")
             return df
         except Exception as e:
             error_type = self._classify_error(e)
-            logger.error(f"备用数据源 stock_zh_a_spot 也失败: {e} (type={error_type})")
-            raise DataSourceError(
-                f"所有数据源均失败: 主源={primary_error}, 备源={e}",
-                source="akshare",
-                details={
-                    "primary_error": str(primary_error),
-                    "fallback_error": str(e),
-                },
-            ) from e
+            errors.append(f"新浪: {type(e).__name__}: {e} (type={error_type})")
+            logger.warning(f"新浪数据源失败: {e} (type={error_type})")
+
+        # 备用：东方财富数据源
+        try:
+            logger.info("尝试东方财富数据源 stock_zh_a_spot_em...")
+            df = ak.stock_zh_a_spot_em()
+            self._validate_realtime_columns(df, "stock_zh_a_spot_em")
+            self._realtime_cache = df
+            self._realtime_cache_time = current_time
+            logger.info(f"东方财富数据源成功，获取 {len(df)} 条数据")
+            return df
+        except Exception as e:
+            error_type = self._classify_error(e)
+            errors.append(f"东方财富: {type(e).__name__}: {e} (type={error_type})")
+            logger.error(f"东方财富数据源也失败: {e}")
+
+        # 第三备用：使用股票列表 + 百度估值
+        try:
+            logger.info("尝试使用股票列表（估值数据将按需获取）...")
+            df_list = ak.stock_info_a_code_name()
+            # 构建最小可用的数据集
+            df = df_list.rename(columns={"code": "代码", "name": "名称"})
+            # 添加必要的列（估值数据将在 _extract_realtime_data 中补充）
+            df["最新价"] = 0.0
+            df["涨跌幅"] = 0.0
+            df["涨跌额"] = 0.0
+            df["成交量"] = 0.0
+            df["成交额"] = 0.0
+            df["最高"] = 0.0
+            df["最低"] = 0.0
+            df["今开"] = 0.0
+            df["昨收"] = 0.0
+            df["市盈率-动态"] = None
+            df["市净率"] = None
+            self._realtime_cache = df
+            self._realtime_cache_time = current_time
+            logger.info(f"使用最小数据集，获取 {len(df)} 条数据")
+            return df
+        except Exception as e:
+            error_type = self._classify_error(e)
+            errors.append(f"股票列表: {type(e).__name__}: {e}")
+            logger.error(f"股票列表接口也失败: {e}")
+
+        # 所有数据源都失败
+        raise DataSourceError(
+            f"所有数据源均失败: {'; '.join(errors)}",
+            source="akshare",
+            details={"errors": errors},
+        )
 
     def _validate_realtime_columns(
         self, df: pd.DataFrame, source: str
@@ -278,7 +329,7 @@ class AkShareClient:
 
     def _extract_realtime_data(self, row: pd.Series) -> dict[str, Any]:
         """从 DataFrame 行提取实时行情数据"""
-        return {
+        data = {
             "code": str(row["代码"]),
             "name": str(row["名称"]),
             "price": self._safe_float(row.get("最新价")),
@@ -290,8 +341,8 @@ class AkShareClient:
             "low": self._safe_float(row.get("最低")),
             "open": self._safe_float(row.get("今开")),
             "prev_close": self._safe_float(row.get("昨收")),
-            # 估值数据
-            "pe": self._safe_float(row.get("市盈率-动态")),
+            # 估值数据（尝试多种列名）
+            "pe": self._safe_float(row.get("市盈率-动态") or row.get("市盈率")),
             "pb": self._safe_float(row.get("市净率")),
             "pe_ttm": self._safe_float(row.get("市盈率-TTM")),
             "total_market_value": self._safe_float(row.get("总市值")),
@@ -301,6 +352,68 @@ class AkShareClient:
             "bid_price": self._safe_float(row.get("买一")),
             "ask_price": self._safe_float(row.get("卖一")),
         }
+
+        # 如果缺少估值数据，尝试从百度获取
+        if data["pe"] == 0 or data["pb"] == 0:
+            valuation = self._get_valuation_from_baidu(data["code"])
+            if data["pe"] == 0 and valuation.get("pe"):
+                data["pe"] = valuation["pe"]
+            if data["pb"] == 0 and valuation.get("pb"):
+                data["pb"] = valuation["pb"]
+            if valuation.get("pe_ttm"):
+                data["pe_ttm"] = valuation["pe_ttm"]
+
+        return data
+
+    # 估值数据缓存
+    _valuation_cache: dict[str, tuple[float, dict[str, float]]] = {}
+
+    def _get_valuation_from_baidu(self, code: str) -> dict[str, float]:
+        """从百度股市通获取估值数据
+
+        Args:
+            code: 股票代码
+
+        Returns:
+            估值数据字典 {"pe": x, "pb": y, "pe_ttm": z}
+        """
+        import time
+
+        # 检查缓存（5分钟有效期）
+        current_time = time.time()
+        if code in self._valuation_cache:
+            cache_time, cache_data = self._valuation_cache[code]
+            if current_time - cache_time < 300:
+                return cache_data
+
+        result: dict[str, float] = {}
+
+        try:
+            # 获取市盈率(TTM)
+            try:
+                df = ak.stock_zh_valuation_baidu(symbol=code, indicator="市盈率(TTM)")
+                if not df.empty:
+                    result["pe_ttm"] = self._safe_float(df.iloc[-1]["value"])
+                    result["pe"] = result["pe_ttm"]
+            except Exception:
+                pass
+
+            # 获取市净率
+            try:
+                df = ak.stock_zh_valuation_baidu(symbol=code, indicator="市净率")
+                if not df.empty:
+                    result["pb"] = self._safe_float(df.iloc[-1]["value"])
+            except Exception:
+                pass
+
+            # 更新缓存
+            if result:
+                self._valuation_cache[code] = (current_time, result)
+
+        except Exception as e:
+            logger.debug(f"获取 {code} 估值数据失败: {e}")
+
+        return result
 
     def _safe_float(self, value: Any) -> float:
         """安全转换为浮点数"""
@@ -320,6 +433,10 @@ class AkShareClient:
     ) -> pd.DataFrame:
         """获取日线行情
 
+        优先级：
+        1. 新浪数据源 stock_zh_a_daily（更稳定，不需要 mini-racer）
+        2. 东方财富数据源 stock_zh_a_hist（数据更全，但可能触发 mini-racer）
+
         Args:
             code: 股票代码
             start_date: 开始日期
@@ -331,32 +448,9 @@ class AkShareClient:
         Raises:
             DataSourceError: 数据获取失败
         """
-        primary_error: Optional[Exception] = None
+        errors: list[str] = []
 
-        # 尝试主数据源
-        try:
-            df = ak.stock_zh_a_hist(
-                symbol=code,
-                period="daily",
-                adjust="qfq",
-            )
-            df = self._filter_by_date(df, start_date, end_date)
-            return self._normalize_daily_dataframe(df)
-        except Exception as e:
-            primary_error = e
-            error_type = self._classify_error(e)
-            logger.warning(f"主数据源 stock_zh_a_hist 失败: {e} (type={error_type})")
-
-            if error_type == "data":
-                # 数据格式错误，不要重试
-                raise DataSourceError(
-                    f"日线数据格式错误: {e}",
-                    source="akshare",
-                    code=code,
-                    details={"api": "stock_zh_a_hist", "error_type": error_type},
-                ) from e
-
-        # 尝试备用数据源
+        # 优先使用新浪数据源（更稳定）
         try:
             symbol = self._daily_symbol(code)
             kwargs: dict[str, Any] = {"symbol": symbol, "adjust": "qfq"}
@@ -371,17 +465,29 @@ class AkShareClient:
             return self._normalize_daily_dataframe(df)
         except Exception as e:
             error_type = self._classify_error(e)
-            logger.error(f"备用数据源 stock_zh_a_daily 也失败: {e} (type={error_type})")
-            raise DataSourceError(
-                f"获取日线数据失败: 主源={primary_error}, 备源={e}",
-                source="akshare",
-                code=code,
-                details={
-                    "primary_error": str(primary_error),
-                    "fallback_error": str(e),
-                    "code": code,
-                },
-            ) from e
+            errors.append(f"新浪: {type(e).__name__}: {e} (type={error_type})")
+            logger.warning(f"新浪数据源 stock_zh_a_daily 失败: {e} (type={error_type})")
+
+        # 备用：东方财富数据源
+        try:
+            df = ak.stock_zh_a_hist(
+                symbol=code,
+                period="daily",
+                adjust="qfq",
+            )
+            df = self._filter_by_date(df, start_date, end_date)
+            return self._normalize_daily_dataframe(df)
+        except Exception as e:
+            error_type = self._classify_error(e)
+            errors.append(f"东方财富: {type(e).__name__}: {e} (type={error_type})")
+            logger.error(f"东方财富数据源 stock_zh_a_hist 也失败: {e}")
+
+        raise DataSourceError(
+            f"获取日线数据失败: {'; '.join(errors)}",
+            source="akshare",
+            code=code,
+            details={"errors": errors, "code": code},
+        )
 
     def _filter_by_date(
         self,
@@ -414,12 +520,34 @@ class AkShareClient:
 
     @async_wrap
     def get_stock_list(self) -> pd.DataFrame:
-        """获取 A股股票列表"""
+        """获取 A股股票列表
+
+        优先级：
+        1. 新浪数据源 stock_info_a_code_name（更稳定）
+        2. 东方财富数据源 stock_zh_a_spot_em（数据更全）
+        """
+        errors: list[str] = []
+
+        # 优先使用新浪数据源
+        try:
+            df = ak.stock_info_a_code_name()
+            return df.rename(columns={"code": "code", "name": "name"})
+        except Exception as e:
+            error_type = self._classify_error(e)
+            errors.append(f"新浪: {type(e).__name__}: {e}")
+            logger.warning(f"新浪数据源 stock_info_a_code_name 失败: {e}")
+
+        # 备用：东方财富数据源
         try:
             df = ak.stock_zh_a_spot_em()
             return df[["代码", "名称"]].rename(columns={"代码": "code", "名称": "name"})
         except Exception as e:
-            raise DataSourceError(
-                f"获取股票列表失败: {e}",
-                source="akshare",
-            ) from e
+            error_type = self._classify_error(e)
+            errors.append(f"东方财富: {type(e).__name__}: {e}")
+            logger.error(f"东方财富数据源也失败: {e}")
+
+        raise DataSourceError(
+            f"获取股票列表失败: {'; '.join(errors)}",
+            source="akshare",
+            details={"errors": errors},
+        )

@@ -1,6 +1,6 @@
 ---
 name: recommend
-description: Use when user needs personalized stock recommendations based on trading style, risk preference, investment strategy, or asks "推荐几只股票". Triggers on patterns like "给我推荐几只股票", "有什么好票推荐", "适合我的股票", "根据我的风格推荐" or when user wants personalized investment suggestions.
+description: Use when user needs personalized stock recommendations based on trading style, risk preference, investment strategy, or asks "推荐几只股票", "给我推荐几只股票", "有什么好票推荐", "适合我的股票", "根据我的风格推荐". Triggers when user wants personalized investment suggestions.
 ---
 
 <SUBAGENT-STOP>
@@ -142,3 +142,12 @@ Claude: 我来为您生成股票推荐。
 
 - `src/python/astock/cli.py` - Python CLI 入口
 - `src/python/astock/recommend/recommender.py` - 推荐算法
+
+## 错误处理
+
+| 错误场景 | 处理方式 |
+|---------|---------|
+| 无用户画像 | 使用默认风格（稳健型）并提示用户 |
+| CLI 执行失败 | 重试1次，失败则使用热门股票作为备选 |
+| 无推荐结果 | 扩大筛选范围或降低匹配阈值 |
+| 风格参数无效 | 列出可用风格，提示用户选择 |

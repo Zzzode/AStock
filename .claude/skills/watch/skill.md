@@ -1,7 +1,11 @@
 ---
 name: watch
-description: Use when user needs to add, remove, or view stock monitoring items with price or volume conditions
+description: Use when user needs to add, remove, or view stock monitoring items with price or volume conditions. Triggers on "添加监控", "监控XX股票", "关注这只股票", "设置提醒", "价格到XX提醒我", "取消监控", "查看监控列表".
 ---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, skip this skill.
+</SUBAGENT-STOP>
 
 # /watch - 股票监控管理
 
@@ -106,3 +110,12 @@ description: Use when user needs to add, remove, or view stock monitoring items 
 - `src/ts/utils/python-bridge.ts` - Python 调用桥接
 - `src/python/astock/monitor/watch_cli.py` - Python 监控管理 CLI
 - `src/python/astock/storage/models.py` - 数据模型 (WatchItem)
+
+## 错误处理
+
+| 错误场景 | 处理方式 |
+|---------|---------|
+| 股票代码无效 | 提示用户确认代码 |
+| 条件语法错误 | 显示正确语法示例 |
+| 监控项已存在 | 提示用户是否覆盖 |
+| 数据库写入失败 | 重试1次，失败则提示稍后再试 |

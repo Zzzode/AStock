@@ -1,12 +1,18 @@
-"""行情服务 - 支持缓存和错误处理"""
+"""行情服务 - 支持多数据源、缓存和错误处理
+
+数据源优先级：
+1. Baostock：稳定可靠，适合历史数据和估值数据（T+1）
+2. AkShare：实时行情补充（不稳定时降级处理）
+"""
 
 import asyncio
-from datetime import date, datetime, time as datetime_time
-from typing import Any, Optional, cast
+from datetime import date, datetime, time as datetime_time, timedelta
+from typing import Any, Optional, Union, cast
 
 import pandas as pd
 
 from .akshare_client import AkShareClient
+from .baostock_client import BaostockClient
 from ..storage import Database, DailyQuote, Stock
 from ..utils import DataSourceError, ValidationError, get_logger
 from ..utils.cache import get_cache
@@ -56,12 +62,34 @@ def get_dynamic_ttl(cache_type: str) -> int:
 
 
 class QuoteService:
-    """行情服务 - 支持缓存、重试、动态 TTL"""
+    """行情服务 - 支持多数据源、缓存、重试、动态 TTL
 
-    def __init__(self, db: Database, client: Optional[AkShareClient] = None):
-        self.client = client or AkShareClient()
+    数据源策略：
+    - 日线数据：优先 Baostock（稳定，含估值数据）
+    - 实时行情：优先 Baostock（最近交易日），失败则 AkShare
+    """
+
+    def __init__(
+        self,
+        db: Database,
+        primary_client: Optional[Union[BaostockClient, AkShareClient]] = None,
+        fallback_client: Optional[AkShareClient] = None,
+    ):
         self.db = db
         self._cache = get_cache()
+
+        # 主数据源（默认 Baostock）
+        if primary_client is None:
+            self.primary_client = BaostockClient()
+        else:
+            self.primary_client = primary_client
+
+        # 备用数据源（AkShare）
+        self.fallback_client = fallback_client or AkShareClient()
+
+        # 兼容旧代码
+        self.client = self.primary_client
+
         self._realtime_retry_attempts = 3
         self._realtime_retry_delays = (1.0, 2.0)
         self._daily_retry_attempts = 3
@@ -148,6 +176,10 @@ class QuoteService:
     async def get_realtime(self, code: str) -> dict[str, Any]:
         """获取实时行情（带缓存和动态 TTL）
 
+        数据源优先级：
+        1. Baostock（最近交易日数据，含估值）
+        2. AkShare（实时数据，不稳定时降级）
+
         Args:
             code: 股票代码
 
@@ -163,7 +195,23 @@ class QuoteService:
         ttl = get_dynamic_ttl("realtime")
 
         async def _fetch_realtime() -> dict[str, Any]:
-            return await self.client.get_realtime_quote(code)
+            # 优先使用主数据源
+            if isinstance(self.primary_client, BaostockClient):
+                try:
+                    result = await self.primary_client.get_realtime_quote(code)
+                    logger.debug(f"Baostock 获取行情成功: {code}")
+                    return result
+                except Exception as e:
+                    logger.warning(f"Baostock 获取行情失败，切换到 AkShare: {e}")
+
+            # 降级到 AkShare
+            try:
+                result = await self.fallback_client.get_realtime_quote(code)
+                logger.debug(f"AkShare 获取行情成功: {code}")
+                return result
+            except Exception as e:
+                logger.error(f"所有数据源获取行情失败: {e}")
+                raise
 
         last_error: Optional[Exception] = None
 
@@ -178,13 +226,12 @@ class QuoteService:
                 return result
 
             except DataSourceError:
-                # 数据源错误直接抛出
                 raise
             except ValueError as e:
                 logger.warning(f"股票代码不存在: {code}")
                 raise DataSourceError(
                     f"股票代码 {code} 不存在",
-                    source="akshare",
+                    source="multi",
                     code=code,
                     details={"original_error": str(e)},
                 ) from e
@@ -208,15 +255,14 @@ class QuoteService:
                 logger.error(f"获取实时行情失败: {code}, error={e}")
                 raise DataSourceError(
                     f"获取实时行情失败: {e}",
-                    source="akshare",
+                    source="multi",
                     code=code,
                     details={"attempts": attempt + 1, "last_error": str(e)},
                 ) from e
 
-        # 理论上不会到达这里
         raise DataSourceError(
             f"获取实时行情失败（已达最大重试次数）",
-            source="akshare",
+            source="multi",
             code=code,
             details={"last_error": str(last_error) if last_error else None},
         )
@@ -231,28 +277,58 @@ class QuoteService:
     ) -> pd.DataFrame:
         """获取日线数据（带缓存和优化）
 
+        数据源优先级：
+        1. Baostock（稳定，含 PE/PB 估值数据）
+        2. AkShare（备用）
+        3. 本地数据库（最后降级）
+
         Args:
             code: 股票代码
             start_date: 开始日期
             end_date: 结束日期
             save: 是否保存到数据库
-            limit: 返回数据条数限制
+            limit: 返回数据条数限制，如果指定则会计算 start_date
 
         Returns:
-            日线 DataFrame
+            日线 DataFrame（含 pe, pb 列）
 
         Raises:
             ValidationError: 参数验证失败
             DataSourceError: 数据获取失败
         """
         code = self._validate_stock_code(code)
+
+        # 如果指定了 limit 但没有 start_date，计算 start_date
+        if limit is not None and start_date is None:
+            if end_date is None:
+                end_date = date.today()
+            # 考虑周末和节假日，按 limit * 1.5 天计算
+            start_date = end_date - timedelta(days=int(limit * 1.5))
+
         cache_key = self._build_cache_key("daily", code, start_date, end_date)
         ttl = get_dynamic_ttl("daily")
 
-        last_error: Optional[Exception] = None
-
         async def _fetch_daily() -> pd.DataFrame:
-            return await self.client.get_daily_quotes(code, start_date, end_date)
+            # 优先使用 Baostock
+            if isinstance(self.primary_client, BaostockClient):
+                try:
+                    df = await self.primary_client.get_daily_quotes(code, start_date, end_date)
+                    if not df.empty:
+                        logger.debug(f"Baostock 获取日线成功: {code}, {len(df)} 条")
+                        return df
+                except Exception as e:
+                    logger.warning(f"Baostock 获取日线失败，切换到 AkShare: {e}")
+
+            # 降级到 AkShare
+            try:
+                df = await self.fallback_client.get_daily_quotes(code, start_date, end_date)
+                logger.debug(f"AkShare 获取日线成功: {code}, {len(df)} 条")
+                return df
+            except Exception as e:
+                logger.error(f"所有数据源获取日线失败: {e}")
+                raise
+
+        last_error: Optional[Exception] = None
 
         for attempt in range(self._daily_retry_attempts):
             try:
@@ -297,7 +373,7 @@ class QuoteService:
         except Exception as e:
             raise DataSourceError(
                 f"获取日线数据失败（本地回退也失败）: {e}",
-                source="akshare",
+                source="multi",
                 code=code,
                 details={"fallback_error": str(e)},
             ) from e

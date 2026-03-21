@@ -76,13 +76,18 @@ class TechnicalAnalyzer:
         Returns:
             添加 KDJ 后的 DataFrame
         """
-        rsv = (
-            (self.close - talib.MIN(self.low, n)) /
-            (talib.MAX(self.high, n) - talib.MIN(self.low, n))
-        ) * 100
+        # 计算最高最低价差
+        high_n = talib.MAX(self.high, n)
+        low_n = talib.MIN(self.low, n)
+        price_range = high_n - low_n
 
-        # 处理除零情况
-        rsv = np.nan_to_num(rsv, nan=50.0)
+        # 计算 RSV，处理除零情况
+        with np.errstate(divide='ignore', invalid='ignore'):
+            rsv = np.where(
+                price_range > 0,
+                (self.close - low_n) / price_range * 100,
+                50.0  # 当 price_range 为 0 时，RSV 取中性值 50
+            )
 
         k = talib.EMA(rsv, timeperiod=m1)
         d = talib.EMA(k, timeperiod=m2)

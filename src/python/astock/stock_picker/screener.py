@@ -31,14 +31,15 @@ class ScreenResult:
 class StockScreener:
     """股票选股器 - 支持并行处理"""
 
-    def __init__(self, quote_service: QuoteService, max_concurrent: int = 10):
+    def __init__(self, quote_service: QuoteService, max_concurrent: int = 3):
         """
         Args:
             quote_service: 行情服务实例
-            max_concurrent: 最大并发数
+            max_concurrent: 最大并发数（默认3，避免触发 mini-racer 崩溃）
         """
         self.quote_service = quote_service
         self.max_concurrent = max_concurrent
+        self._stock_names: dict[str, str] = {}  # 股票名称缓存
         logger.debug(f"选股器初始化完成，最大并发数: {max_concurrent}")
 
     async def screen(
@@ -72,25 +73,35 @@ class StockScreener:
             f"开始选股，股票数量: {len(stock_codes)}, 因子数量: {len(factor_list)}"
         )
 
-        # 并行执行选股
-        semaphore = asyncio.Semaphore(self.max_concurrent)
+        # 预加载股票名称缓存
+        try:
+            stock_list = await self.quote_service.client.get_stock_list()
+            for _, row in stock_list.iterrows():
+                self._stock_names[row["code"]] = row.get("name", "")
+        except Exception as e:
+            logger.warning(f"加载股票名称失败: {e}")
 
-        async def limited_screen(code: str) -> Optional[ScreenResult]:
-            async with semaphore:
-                return await self._screen_stock(code, factor_list)
+        # 串行执行选股（避免 mini-racer 并发崩溃）
+        # 注意：akshare 内部使用 mini-racer（V8引擎），并发初始化会导致崩溃
+        # 这是 Python 3.14 + mini-racer 的已知问题
+        valid_results: list[ScreenResult] = []
+        errors = 0
 
-        tasks = [limited_screen(code) for code in stock_codes]
-        results = await asyncio.gather(*tasks, return_exceptions=True)
+        for i, code in enumerate(stock_codes):
+            try:
+                result = await self._screen_stock(code, factor_list)
+                if result and result.score >= min_score:
+                    valid_results.append(result)
+            except Exception as e:
+                errors += 1
+                logger.debug(f"选股 {code} 失败: {e}")
 
-        # 过滤有效结果
-        valid_results = [
-            r for r in results if isinstance(r, ScreenResult) and r.score >= min_score
-        ]
+            # 进度提示（每200只股票）
+            if (i + 1) % 200 == 0:
+                logger.info(f"已处理 {i + 1}/{len(stock_codes)} 只股票，有效: {len(valid_results)}")
 
-        # 记录错误
-        errors = [r for r in results if isinstance(r, Exception)]
         if errors:
-            logger.warning(f"选股过程中有 {len(errors)} 个错误")
+            logger.warning(f"选股过程中有 {errors} 个错误")
 
         # 按得分排序
         valid_results.sort(key=lambda x: x.score, reverse=True)
@@ -149,8 +160,8 @@ class StockScreener:
             股票数据字典
         """
         try:
-            # 获取日线数据
-            df = await self.quote_service.get_daily(code, save=False)
+            # 获取日线数据 - 只获取最近90天，减少数据量
+            df = await self.quote_service.get_daily(code, save=False, limit=90)
 
             if df.empty or len(df) < 30:
                 logger.debug(f"股票 {code} 数据不足")
@@ -172,16 +183,16 @@ class StockScreener:
                 df_with_indicators["close"].pct_change().rolling(20).std().iloc[-1]
             )
 
-            # 获取实时行情中的 PE、PB
-            realtime = await self.quote_service.get_realtime(code)
+            # 从日线数据获取 PE、PB（Baostock 支持）
+            pe_value = latest.get("pe") if "pe" in latest else None
+            pb_value = latest.get("pb") if "pb" in latest else None
 
-            # 安全获取估值数据
-            pe_value = realtime.get("pe")
-            pb_value = realtime.get("pb")
+            # 使用缓存的股票名称
+            name = self._stock_names.get(code, "")
 
             return {
                 "code": code,
-                "name": realtime.get("name", ""),
+                "name": name,
                 "close": float(latest["close"]),
                 "open": float(latest["open"]),
                 "high": float(latest["high"]),
@@ -190,7 +201,7 @@ class StockScreener:
                 "amount": float(latest["amount"]) if "amount" in latest else 0,
                 "pe": float(pe_value) if pe_value is not None and pe_value != 0 else None,
                 "pb": float(pb_value) if pb_value is not None and pb_value != 0 else None,
-                "turnover_rate": float(realtime.get("turnover_rate", 0)) if realtime.get("turnover_rate") else None,
+                "turnover_rate": float(latest.get("turn", 0)) if latest.get("turn") else None,
                 "ma5": float(latest.get("ma5", 0)),
                 "ma10": float(latest.get("ma10", 0)),
                 "ma20": float(latest.get("ma20", 0)),

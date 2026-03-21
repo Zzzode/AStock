@@ -1,6 +1,6 @@
 ---
 name: screen
-description: Use when user needs to screen or filter stocks based on technical indicators, valuation factors, or custom criteria. Triggers on patterns like "帮我选股", "筛选一下股票", "找一些低估值的股票", "哪些股票符合MA金叉" or when user asks for stock recommendations based on specific conditions.
+description: Use when user needs to screen or filter stocks based on technical indicators, valuation factors, or custom criteria. Triggers on patterns like "帮我选股", "筛选一下股票", "找一些低估值的股票", "哪些股票符合MA金叉", "选几只股票" or when user asks for stock recommendations based on specific conditions.
 ---
 
 <SUBAGENT-STOP>
@@ -126,3 +126,12 @@ Claude:
 - `src/python/astock/cli.py` - Python CLI 入口
 - `src/python/astock/stock_picker/screener.py` - 选股器实现
 - `src/python/astock/stock_picker/factors.py` - 因子定义
+
+## 错误处理
+
+| 错误场景 | 处理方式 |
+|---------|---------|
+| CLI 执行失败 | 重试1次，失败则减少因子数量重试 |
+| 无匹配结果 | 扩大筛选范围或提示用户放宽条件 |
+| 因子名称无效 | 列出可用因子，提示用户选择 |
+| 数据源超时 | 使用缓存数据并标注 |

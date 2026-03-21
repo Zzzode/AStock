@@ -1,7 +1,11 @@
 ---
 name: config
-description: Use when user needs to manage preferences, set trading style, risk level, or analyze and learn trading patterns from history
+description: Use when user needs to manage preferences, set trading style, risk level, or analyze and learn trading patterns from history. Triggers on "设置风格", "修改配置", "查看配置", "学习我的交易风格", "风险偏好设置".
 ---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, skip this skill.
+</SUBAGENT-STOP>
 
 # /config - 配置管理
 
@@ -51,3 +55,12 @@ description: Use when user needs to manage preferences, set trading style, risk 
 - `src/ts/orchestrator/config-handler.ts`
 - `src/python/astock/config/`
 - `src/python/astock/learning/style_analyzer.py`
+
+## 错误处理
+
+| 错误场景 | 处理方式 |
+|---------|---------|
+| 配置项不存在 | 列出可配置项，提示用户选择 |
+| 配置值无效 | 显示有效值范围 |
+| 历史数据不足 | 提示用户积累更多交易记录 |
+| 配置文件损坏 | 使用默认配置并提示 |

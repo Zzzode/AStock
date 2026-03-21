@@ -1,7 +1,11 @@
 ---
 name: alert
-description: Use when user needs to start or stop monitoring service, check monitoring status, or view historical alert records
+description: Use when user needs to start or stop monitoring service, check monitoring status, or view historical alert records. Triggers on "启动监控", "停止监控", "监控状态", "查看告警", "历史提醒", "收到过哪些提醒".
 ---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, skip this skill.
+</SUBAGENT-STOP>
 
 # /alert - 监控告警管理
 
@@ -117,3 +121,12 @@ description: Use when user needs to start or stop monitoring service, check moni
 - `src/python/astock/monitor/monitor_service.py` - 监控服务
 - `src/python/astock/monitor/scanner.py` - 信号扫描器
 - `src/python/astock/monitor/alert_engine.py` - 告警引擎
+
+## 错误处理
+
+| 错误场景 | 处理方式 |
+|---------|---------|
+| 监控服务启动失败 | 检查端口占用，提示用户 |
+| 无历史告警记录 | 提示暂无告警记录 |
+| 服务已运行中 | 提示服务状态，不重复启动 |
+| 数据库读取失败 | 使用内存数据并提示 |
