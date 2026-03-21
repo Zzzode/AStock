@@ -32,7 +32,10 @@ def async_wrap(func: Callable[P, T]) -> Callable[P, Awaitable[T]]:
     """将同步函数包装为异步"""
     @wraps(func)
     async def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
-        loop = asyncio.get_event_loop()
+        try:
+            loop = asyncio.get_running_loop()
+        except RuntimeError:
+            loop = asyncio.get_event_loop()
         return cast(T, await loop.run_in_executor(None, lambda: func(*args, **kwargs)))
     return wrapper
 

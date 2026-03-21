@@ -261,7 +261,10 @@ class EmailChannel(AlertChannel):
             msg.attach(MIMEText(body, "plain", "utf-8"))
 
             # 发送邮件（在后台线程中执行）
-            loop = asyncio.get_event_loop()
+            try:
+                loop = asyncio.get_running_loop()
+            except RuntimeError:
+                loop = asyncio.get_event_loop()
             await loop.run_in_executor(None, self._send_email_sync, msg)
 
             logger.info(f"邮件告警发送成功: {message.title}")

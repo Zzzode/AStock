@@ -152,7 +152,10 @@ async def send_email_notification(alert: AlertRecord, email_config: EmailConfig)
     subject = f"{email_config.subject_prefix} [{level_name}] {alert.code} - {alert.signal_name}"
 
     # 在线程池中执行同步的 SMTP 操作
-    loop = asyncio.get_event_loop()
+    try:
+        loop = asyncio.get_running_loop()
+    except RuntimeError:
+        loop = asyncio.get_event_loop()
     await loop.run_in_executor(
         None,
         _send_email_sync,

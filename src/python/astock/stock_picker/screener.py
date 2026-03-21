@@ -175,6 +175,10 @@ class StockScreener:
             # 获取实时行情中的 PE、PB
             realtime = await self.quote_service.get_realtime(code)
 
+            # 安全获取估值数据
+            pe_value = realtime.get("pe")
+            pb_value = realtime.get("pb")
+
             return {
                 "code": code,
                 "name": realtime.get("name", ""),
@@ -184,8 +188,9 @@ class StockScreener:
                 "low": float(latest["low"]),
                 "volume": float(latest["volume"]),
                 "amount": float(latest["amount"]) if "amount" in latest else 0,
-                "pe": float(realtime.get("pe", 0)) if realtime.get("pe") else None,
-                "pb": float(realtime.get("pb", 0)) if realtime.get("pb") else None,
+                "pe": float(pe_value) if pe_value is not None and pe_value != 0 else None,
+                "pb": float(pb_value) if pb_value is not None and pb_value != 0 else None,
+                "turnover_rate": float(realtime.get("turnover_rate", 0)) if realtime.get("turnover_rate") else None,
                 "ma5": float(latest.get("ma5", 0)),
                 "ma10": float(latest.get("ma10", 0)),
                 "ma20": float(latest.get("ma20", 0)),
@@ -316,8 +321,33 @@ class StockScreener:
         try:
             df = await self.quote_service.client.get_stock_list()
             codes = [str(code) for code in df["code"].tolist()]
-            # 限制前500只用于性能
-            return codes[:500] if len(codes) > 500 else codes
+            # 过滤掉非主板股票（北交所、科创板等可根据需要调整）
+            # 保留主板、创业板、科创板
+            valid_codes = [
+                c for c in codes
+                if c.startswith(('0', '3', '6'))
+            ]
+            return valid_codes
         except Exception as e:
             logger.warning(f"获取股票列表失败: {e}，使用默认列表")
-            return ["000001", "000002", "600000", "600036", "600519"]
+            # 返回更完整的默认列表（沪深300成分股部分）
+            return [
+                # 银行
+                "600036", "601166", "601398", "601288", "601988", "600000", "601328",
+                # 保险
+                "601318", "601601", "601628",
+                # 证券
+                "600030", "601211", "600837",
+                # 能源
+                "600028", "601088", "600019", "601857",
+                # 消费
+                "600519", "000858", "000568", "600887",
+                # 科技
+                "000063", "002415", "300750", "600900",
+                # 医药
+                "000661", "600276", "300760",
+                # 地产
+                "000002", "600048",
+                # 其他蓝筹
+                "600585", "600033", "601668", "600309",
+            ]

@@ -66,6 +66,37 @@ FACTORS: dict[str, Factor] = {
         threshold=10,
         weight=0.8,
     ),
+    # 高股息估值因子
+    "pe_very_low": Factor(
+        key="pe_very_low",
+        name="超低市盈率",
+        type=FactorType.VALUATION,
+        description="市盈率小于15倍（高股息特征）",
+        field="pe",
+        operator="lt",
+        threshold=15,
+        weight=1.5,
+    ),
+    "pb_very_low": Factor(
+        key="pb_very_low",
+        name="超低市净率",
+        type=FactorType.VALUATION,
+        description="市净率小于1.5倍（高股息特征）",
+        field="pb",
+        operator="lt",
+        threshold=1.5,
+        weight=1.2,
+    ),
+    "pe_positive": Factor(
+        key="pe_positive",
+        name="市盈率为正",
+        type=FactorType.VALUATION,
+        description="市盈率大于0（盈利公司）",
+        field="pe",
+        operator="gt",
+        threshold=0,
+        weight=0.5,
+    ),
     # ============ 动量因子 ============
     "ma20_above": Factor(
         key="ma20_above",
@@ -384,3 +415,50 @@ def get_all_factor_types() -> list[FactorType]:
 def get_factor_keys_by_type(factor_type: FactorType) -> list[str]:
     """按类型获取因子键名列表"""
     return [k for k, f in FACTORS.items() if f.type == factor_type]
+
+
+# ============ 预设因子组合 ============
+
+# 高股息筛选因子组合（估值合理+成长性）
+HIGH_DIVIDEND_FACTORS = [
+    "pe_positive",      # 盈利公司
+    "pe_very_low",      # PE < 15，估值低
+    "pb_very_low",      # PB < 1.5，估值低
+    "ma20_above",       # 站上20日线，趋势向上
+    "macd_above_zero",  # MACD零轴上方
+    "volume_steady",    # 量能稳定
+]
+
+# 价值投资因子组合
+VALUE_INVEST_FACTORS = [
+    "pe_positive",
+    "pe_very_low",
+    "pb_very_low",
+    "low_volatility",
+    "ma_trend_up",
+]
+
+# 成长动量因子组合
+GROWTH_MOMENTUM_FACTORS = [
+    "ma5_cross_ma20",
+    "macd_golden_cross",
+    "high_volume",
+    "ma_trend_up",
+]
+
+
+def get_preset_factors(preset_name: str) -> list[str]:
+    """获取预设因子组合
+
+    Args:
+        preset_name: 预设名称 (high_dividend, value, growth)
+
+    Returns:
+        因子键名列表
+    """
+    presets = {
+        "high_dividend": HIGH_DIVIDEND_FACTORS,
+        "value": VALUE_INVEST_FACTORS,
+        "growth": GROWTH_MOMENTUM_FACTORS,
+    }
+    return presets.get(preset_name, [])
