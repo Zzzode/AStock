@@ -1,4 +1,4 @@
-"""回测引擎"""
+"""Backtest engine"""
 
 from dataclasses import dataclass, field
 from datetime import date
@@ -13,18 +13,18 @@ from .strategies import Signal, Strategy, Trade, get_strategy
 
 @dataclass
 class BacktestResult:
-    """回测结果"""
+    """Backtest result"""
     code: str
     strategy: str
     start_date: date
     end_date: date
     initial_capital: float
     final_capital: float
-    total_return: float  # 总收益率
-    annual_return: float  # 年化收益
-    max_drawdown: float  # 最大回撤
-    sharpe_ratio: float  # 夏普比率
-    win_rate: float  # 胜率
+    total_return: float  # Total return
+    annual_return: float  # Annualized return
+    max_drawdown: float  # Max drawdown
+    sharpe_ratio: float  # Sharpe ratio
+    win_rate: float  # Win rate
     trades: list[Trade] = field(default_factory=list)
     equity_curve: list[dict[str, float | str]] = field(default_factory=list)
 
@@ -47,11 +47,11 @@ class BacktestResult:
 
 
 class BacktestEngine:
-    """回测引擎"""
+    """Backtest engine"""
 
     def __init__(self) -> None:
-        self.position = 0  # 当前持仓数量
-        self.capital = 0.0  # 当前资金
+        self.position = 0  # Current position quantity
+        self.capital = 0.0  # Current capital
         self.trades: list[Trade] = []
         self.equity_curve: list[dict[str, float | str]] = []
 
@@ -63,36 +63,36 @@ class BacktestEngine:
         commission_rate: float = 0.0003,
         strategy_params: Optional[dict[str, object]] = None,
     ) -> BacktestResult:
-        """运行回测
+        """Run backtest
 
         Args:
-            df: 包含 OHLCV 数据的 DataFrame，需要有 date, open, high, low, close, volume 列
-            strategy_name: 策略名称
-            initial_capital: 初始资金
-            commission_rate: 手续费率
-            strategy_params: 策略参数
+            df: DataFrame with OHLCV data, requires date, open, high, low, close, volume columns
+            strategy_name: Strategy name
+            initial_capital: Initial capital
+            commission_rate: Commission rate
+            strategy_params: Strategy parameters
 
         Returns:
-            回测结果
+            Backtest result
         """
-        # 重置状态
+        # Reset state
         self.position = 0
         self.capital = initial_capital
         self.trades = []
         self.equity_curve = []
 
-        # 获取策略
+        # Get strategy
         params = strategy_params or {}
         strategy = get_strategy(strategy_name, **params)
 
-        # 生成信号
+        # Generate signals
         df = strategy.generate_signals(df)
 
-        # 确保 date 列存在且格式正确
+        # Ensure date column exists and is in correct format
         if "date" not in df.columns:
             df["date"] = df.index
 
-        # 按日期遍历执行交易
+        # Iterate through dates and execute trades
         for i, row in df.iterrows():
             current_date = row["date"]
             if isinstance(current_date, str):
@@ -100,10 +100,10 @@ class BacktestEngine:
             signal = row.get("signal", Signal.HOLD)
             close_price = row["close"]
 
-            # 执行交易
+            # Execute trade
             if signal == Signal.BUY and self.position == 0:
-                # 全仓买入
-                shares = int(self.capital / close_price / 100) * 100  # A股一手100股
+                # Buy with full position
+                shares = int(self.capital / close_price / 100) * 100  # A-share lot size: 100 shares
                 if shares > 0:
                     trade_value = shares * close_price
                     commission = trade_value * commission_rate
@@ -120,7 +120,7 @@ class BacktestEngine:
                     ))
 
             elif signal == Signal.SELL and self.position > 0:
-                # 全仓卖出
+                # Sell entire position
                 trade_value = self.position * close_price
                 commission = trade_value * commission_rate
                 self.capital += (trade_value - commission)
@@ -136,7 +136,7 @@ class BacktestEngine:
 
                 self.position = 0
 
-            # 记录权益曲线
+            # Record equity curve
             equity = self.capital + self.position * close_price
             self.equity_curve.append({
                 "date": current_date.isoformat() if isinstance(current_date, date) else current_date,
@@ -146,11 +146,11 @@ class BacktestEngine:
                 "price": close_price,
             })
 
-        # 计算最终权益
+        # Calculate final equity
         final_price = df.iloc[-1]["close"]
         final_capital = self.capital + self.position * final_price
 
-        # 如果最后还持仓，添加一个虚拟卖出用于计算
+        # If still holding at the end, add a virtual sell for calculation
         if self.position > 0:
             self.trades.append(Trade(
                 date=current_date,
@@ -161,9 +161,9 @@ class BacktestEngine:
                 commission=0,
             ))
 
-        # 计算回测指标
+        # Calculate backtest metrics
         result = BacktestResult(
-            code="",  # 由调用者设置
+            code="",  # Set by caller
             strategy=strategy_name,
             start_date=self._get_start_date(df),
             end_date=self._get_end_date(df),
@@ -174,28 +174,28 @@ class BacktestEngine:
             max_drawdown=self._calc_max_drawdown(),
             sharpe_ratio=self._calc_sharpe_ratio(),
             win_rate=self._calc_win_rate(),
-            trades=self.trades[:-1] if self.position > 0 else self.trades,  # 排除虚拟卖出
+            trades=self.trades[:-1] if self.position > 0 else self.trades,  # Exclude virtual sell
             equity_curve=self.equity_curve,
         )
 
         return result
 
     def _get_start_date(self, df: pd.DataFrame) -> date:
-        """获取开始日期"""
+        """Get start date"""
         d = df.iloc[0]["date"]
         if isinstance(d, date):
             return d
         return cast(date, pd.to_datetime(d).date())
 
     def _get_end_date(self, df: pd.DataFrame) -> date:
-        """获取结束日期"""
+        """Get end date"""
         d = df.iloc[-1]["date"]
         if isinstance(d, date):
             return d
         return cast(date, pd.to_datetime(d).date())
 
     def _calc_total_return(self, initial: float, final: float) -> float:
-        """计算总收益率"""
+        """Calculate total return"""
         return (final - initial) / initial * 100
 
     def _calc_annual_return(
@@ -204,7 +204,7 @@ class BacktestEngine:
         final: float,
         df: pd.DataFrame
     ) -> float:
-        """计算年化收益率"""
+        """Calculate annualized return"""
         start = self._get_start_date(df)
         end = self._get_end_date(df)
         days = (end - start).days
@@ -216,12 +216,12 @@ class BacktestEngine:
         if years <= 0:
             return 0.0
 
-        # 年化收益率 = (最终价值 / 初始价值)^(1/年数) - 1
+        # Annualized return = (final value / initial value)^(1/years) - 1
         annual_return = (final / initial) ** (1 / years) - 1
         return float(annual_return * 100)
 
     def _calc_max_drawdown(self) -> float:
-        """计算最大回撤"""
+        """Calculate max drawdown"""
         if not self.equity_curve:
             return 0.0
 
@@ -239,7 +239,7 @@ class BacktestEngine:
         return max_dd
 
     def _calc_sharpe_ratio(self) -> float:
-        """计算夏普比率"""
+        """Calculate Sharpe ratio"""
         if len(self.equity_curve) < 2:
             return 0.0
 
@@ -261,15 +261,15 @@ class BacktestEngine:
         if std_return == 0:
             return 0.0
 
-        # 年化夏普比率（假设每年252个交易日）
-        risk_free_rate = 0.03 / 252  # 年化无风险利率约3%
+        # Annualized Sharpe ratio (assuming 252 trading days per year)
+        risk_free_rate = 0.03 / 252  # Annualized risk-free rate ~3%
         sharpe = (mean_return - risk_free_rate) / std_return * np.sqrt(252)
 
         return float(sharpe)
 
     def _calc_win_rate(self) -> float:
-        """计算胜率"""
-        # 配对买卖交易
+        """Calculate win rate"""
+        # Pair buy-sell trades
         buy_sell_pairs = []
         buy_trade = None
 

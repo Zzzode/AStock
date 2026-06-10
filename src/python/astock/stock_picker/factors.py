@@ -1,4 +1,4 @@
-"""扩展因子定义 - 财务/情绪/资金流向/技术因子"""
+"""Extended factor definitions - financial/sentiment/capital flow/technical factors"""
 
 from dataclasses import dataclass
 from enum import Enum
@@ -6,41 +6,41 @@ from typing import Any, Optional
 
 
 class FactorType(Enum):
-    """因子类型"""
+    """Factor type"""
 
-    VALUATION = "valuation"  # 估值因子
-    MOMENTUM = "momentum"  # 动量因子
-    QUALITY = "quality"  # 质量因子
-    VOLATILITY = "volatility"  # 波动因子
-    FINANCIAL = "financial"  # 财务因子
-    SENTIMENT = "sentiment"  # 情绪因子
-    CAPITAL_FLOW = "capital_flow"  # 资金流向因子
-    TECHNICAL = "technical"  # 技术因子
+    VALUATION = "valuation"  # Valuation factors
+    MOMENTUM = "momentum"  # Momentum factors
+    QUALITY = "quality"  # Quality factors
+    VOLATILITY = "volatility"  # Volatility factors
+    FINANCIAL = "financial"  # Financial factors
+    SENTIMENT = "sentiment"  # Sentiment factors
+    CAPITAL_FLOW = "capital_flow"  # Capital flow factors
+    TECHNICAL = "technical"  # Technical factors
 
 
 @dataclass
 class Factor:
-    """因子定义"""
+    """Factor definition"""
 
-    key: str  # 因子键名
-    name: str  # 因子名称
-    type: FactorType  # 因子类型
-    description: str  # 因子描述
-    field: str  # 数据字段
-    operator: str  # 比较操作符 (lt, le, gt, ge, eq, cross_up, cross_down)
-    threshold: Any  # 阈值
-    weight: float = 1.0  # 权重
-    value_extractor: Optional[str] = None  # 值提取器
+    key: str  # Factor key
+    name: str  # Factor name
+    type: FactorType  # Factor type
+    description: str  # Factor description
+    field: str  # Data field
+    operator: str  # Comparison operator (lt, le, gt, ge, eq, cross_up, cross_down)
+    threshold: Any  # Threshold value
+    weight: float = 1.0  # Weight
+    value_extractor: Optional[str] = None  # Value extractor
 
 
-# 预定义因子
+# Predefined factors
 FACTORS: dict[str, Factor] = {
-    # ============ 估值因子 ============
+    # ============ Valuation factors ============
     "pe_low": Factor(
         key="pe_low",
-        name="低市盈率",
+        name="Low PE",
         type=FactorType.VALUATION,
-        description="市盈率小于30倍",
+        description="PE ratio below 30x",
         field="pe",
         operator="lt",
         threshold=30,
@@ -48,9 +48,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "pb_low": Factor(
         key="pb_low",
-        name="低市净率",
+        name="Low PB",
         type=FactorType.VALUATION,
-        description="市净率小于3倍",
+        description="PB ratio below 3x",
         field="pb",
         operator="lt",
         threshold=3,
@@ -58,20 +58,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "pe_reasonable": Factor(
         key="pe_reasonable",
-        name="合理市盈率",
+        name="Reasonable PE",
         type=FactorType.VALUATION,
-        description="市盈率在10-30倍之间",
+        description="PE ratio between 10-30x",
         field="pe",
         operator="ge",
         threshold=10,
         weight=0.8,
     ),
-    # 高股息估值因子
+    # High dividend valuation factor
     "pe_very_low": Factor(
         key="pe_very_low",
-        name="超低市盈率",
+        name="Very Low PE",
         type=FactorType.VALUATION,
-        description="市盈率小于15倍（高股息特征）",
+        description="PE ratio below 15x (high dividend characteristic)",
         field="pe",
         operator="lt",
         threshold=15,
@@ -79,9 +79,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "pb_very_low": Factor(
         key="pb_very_low",
-        name="超低市净率",
+        name="Very Low PB",
         type=FactorType.VALUATION,
-        description="市净率小于1.5倍（高股息特征）",
+        description="PB ratio below 1.5x (high dividend characteristic)",
         field="pb",
         operator="lt",
         threshold=1.5,
@@ -89,20 +89,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "pe_positive": Factor(
         key="pe_positive",
-        name="市盈率为正",
+        name="Positive PE",
         type=FactorType.VALUATION,
-        description="市盈率大于0（盈利公司）",
+        description="PE ratio above 0 (profitable company)",
         field="pe",
         operator="gt",
         threshold=0,
         weight=0.5,
     ),
-    # ============ 动量因子 ============
+    # ============ Momentum factors ============
     "ma20_above": Factor(
         key="ma20_above",
-        name="站上20日线",
+        name="Above MA20",
         type=FactorType.MOMENTUM,
-        description="收盘价站上20日均线",
+        description="Close price above 20-day moving average",
         field="close",
         operator="gt",
         threshold="ma20",
@@ -110,9 +110,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "ma5_cross_ma20": Factor(
         key="ma5_cross_ma20",
-        name="MA5金叉MA20",
+        name="MA5 Golden Cross MA20",
         type=FactorType.MOMENTUM,
-        description="5日均线上穿20日均线",
+        description="5-day MA crosses above 20-day MA",
         field="ma5",
         operator="cross_up",
         threshold="ma20",
@@ -120,9 +120,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "ma10_cross_ma30": Factor(
         key="ma10_cross_ma30",
-        name="MA10金叉MA30",
+        name="MA10 Golden Cross MA30",
         type=FactorType.MOMENTUM,
-        description="10日均线上穿30日均线",
+        description="10-day MA crosses above 30-day MA",
         field="ma10",
         operator="cross_up",
         threshold="ma30",
@@ -130,9 +130,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "price_above_ma5": Factor(
         key="price_above_ma5",
-        name="站上5日线",
+        name="Above MA5",
         type=FactorType.MOMENTUM,
-        description="收盘价站上5日均线",
+        description="Close price above 5-day moving average",
         field="close",
         operator="gt",
         threshold="ma5",
@@ -140,20 +140,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "ma_trend_up": Factor(
         key="ma_trend_up",
-        name="均线多头排列",
+        name="Bullish MA Alignment",
         type=FactorType.MOMENTUM,
-        description="MA5>MA10>MA20 多头排列",
+        description="MA5 > MA10 > MA20 bullish alignment",
         field="ma5",
         operator="gt",
         threshold="ma10",
         weight=2.5,
     ),
-    # ============ 质量因子 ============
+    # ============ Quality factors ============
     "high_volume": Factor(
         key="high_volume",
-        name="放量",
+        name="High Volume",
         type=FactorType.QUALITY,
-        description="成交量大于5日均量2倍",
+        description="Volume greater than 2x of 5-day average volume",
         field="volume",
         operator="gt",
         threshold="vol_ma5_2x",
@@ -161,20 +161,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "volume_steady": Factor(
         key="volume_steady",
-        name="量能稳定",
+        name="Steady Volume",
         type=FactorType.QUALITY,
-        description="成交量在5日均量附近",
+        description="Volume near 5-day average volume",
         field="volume",
         operator="ge",
         threshold="vol_ma5",
         weight=0.8,
     ),
-    # ============ 波动因子 ============
+    # ============ Volatility factors ============
     "low_volatility": Factor(
         key="low_volatility",
-        name="低波动",
+        name="Low Volatility",
         type=FactorType.VOLATILITY,
-        description="20日波动率小于3%",
+        description="20-day volatility below 3%",
         field="volatility_20",
         operator="lt",
         threshold=0.03,
@@ -182,20 +182,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "medium_volatility": Factor(
         key="medium_volatility",
-        name="适中波动",
+        name="Medium Volatility",
         type=FactorType.VOLATILITY,
-        description="20日波动率在3%-5%之间",
+        description="20-day volatility between 3%-5%",
         field="volatility_20",
         operator="ge",
         threshold=0.03,
         weight=0.7,
     ),
-    # ============ 财务因子 ============
+    # ============ Financial factors ============
     "roe_high": Factor(
         key="roe_high",
-        name="高ROE",
+        name="High ROE",
         type=FactorType.FINANCIAL,
-        description="净资产收益率大于15%",
+        description="Return on equity above 15%",
         field="roe",
         operator="gt",
         threshold=0.15,
@@ -203,9 +203,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "profit_growth": Factor(
         key="profit_growth",
-        name="利润增长",
+        name="Profit Growth",
         type=FactorType.FINANCIAL,
-        description="净利润增长率大于20%",
+        description="Net profit growth rate above 20%",
         field="profit_growth_rate",
         operator="gt",
         threshold=0.20,
@@ -213,9 +213,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "revenue_growth": Factor(
         key="revenue_growth",
-        name="营收增长",
+        name="Revenue Growth",
         type=FactorType.FINANCIAL,
-        description="营收增长率大于15%",
+        description="Revenue growth rate above 15%",
         field="revenue_growth_rate",
         operator="gt",
         threshold=0.15,
@@ -223,9 +223,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "debt_ratio_low": Factor(
         key="debt_ratio_low",
-        name="低负债率",
+        name="Low Debt Ratio",
         type=FactorType.FINANCIAL,
-        description="资产负债率小于50%",
+        description="Debt-to-asset ratio below 50%",
         field="debt_ratio",
         operator="lt",
         threshold=0.50,
@@ -233,20 +233,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "current_ratio_good": Factor(
         key="current_ratio_good",
-        name="流动比率健康",
+        name="Healthy Current Ratio",
         type=FactorType.FINANCIAL,
-        description="流动比率大于1.5",
+        description="Current ratio above 1.5",
         field="current_ratio",
         operator="gt",
         threshold=1.5,
         weight=1.0,
     ),
-    # ============ 情绪因子 ============
+    # ============ Sentiment factors ============
     "rsi_oversold": Factor(
         key="rsi_oversold",
-        name="RSI超卖",
+        name="RSI Oversold",
         type=FactorType.SENTIMENT,
-        description="RSI6小于30，超卖区域",
+        description="RSI6 below 30, oversold zone",
         field="rsi6",
         operator="lt",
         threshold=30,
@@ -254,19 +254,19 @@ FACTORS: dict[str, Factor] = {
     ),
     "rsi_overbought": Factor(
         key="rsi_overbought",
-        name="RSI超买",
+        name="RSI Overbought",
         type=FactorType.SENTIMENT,
-        description="RSI6大于70，超买区域",
+        description="RSI6 above 70, overbought zone",
         field="rsi6",
         operator="gt",
         threshold=70,
-        weight=-1.0,  # 负权重，表示风险
+        weight=-1.0,  # Negative weight indicates risk
     ),
     "rsi_neutral": Factor(
         key="rsi_neutral",
-        name="RSI中性",
+        name="RSI Neutral",
         type=FactorType.SENTIMENT,
-        description="RSI在30-70之间，情绪中性",
+        description="RSI between 30-70, neutral sentiment",
         field="rsi6",
         operator="ge",
         threshold=30,
@@ -274,9 +274,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "kdj_oversold": Factor(
         key="kdj_oversold",
-        name="KDJ超卖",
+        name="KDJ Oversold",
         type=FactorType.SENTIMENT,
-        description="KDJ的J值小于20，超卖区域",
+        description="KDJ J-value below 20, oversold zone",
         field="kdj_j",
         operator="lt",
         threshold=20,
@@ -284,20 +284,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "kdj_overbought": Factor(
         key="kdj_overbought",
-        name="KDJ超买",
+        name="KDJ Overbought",
         type=FactorType.SENTIMENT,
-        description="KDJ的J值大于80，超买区域",
+        description="KDJ J-value above 80, overbought zone",
         field="kdj_j",
         operator="gt",
         threshold=80,
         weight=-1.0,
     ),
-    # ============ 资金流向因子 ============
+    # ============ Capital flow factors ============
     "net_inflow": Factor(
         key="net_inflow",
-        name="主力净流入",
+        name="Main Force Net Inflow",
         type=FactorType.CAPITAL_FLOW,
-        description="主力资金净流入",
+        description="Main force capital net inflow",
         field="main_net_inflow",
         operator="gt",
         threshold=0,
@@ -305,9 +305,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "large_inflow": Factor(
         key="large_inflow",
-        name="大单净流入",
+        name="Large Order Net Inflow",
         type=FactorType.CAPITAL_FLOW,
-        description="大单净流入大于0",
+        description="Large order net inflow above 0",
         field="large_net_inflow",
         operator="gt",
         threshold=0,
@@ -315,20 +315,20 @@ FACTORS: dict[str, Factor] = {
     ),
     "north_inflow": Factor(
         key="north_inflow",
-        name="北向资金流入",
+        name="Northbound Capital Inflow",
         type=FactorType.CAPITAL_FLOW,
-        description="北向资金净流入",
+        description="Northbound capital net inflow",
         field="north_net_inflow",
         operator="gt",
         threshold=0,
         weight=1.8,
     ),
-    # ============ 技术因子 ============
+    # ============ Technical factors ============
     "macd_golden_cross": Factor(
         key="macd_golden_cross",
-        name="MACD金叉",
+        name="MACD Golden Cross",
         type=FactorType.TECHNICAL,
-        description="MACD柱状线由负转正",
+        description="MACD histogram turns from negative to positive",
         field="macd_hist",
         operator="gt",
         threshold=0,
@@ -336,9 +336,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "macd_dead_cross": Factor(
         key="macd_dead_cross",
-        name="MACD死叉",
+        name="MACD Death Cross",
         type=FactorType.TECHNICAL,
-        description="MACD柱状线由正转负",
+        description="MACD histogram turns from positive to negative",
         field="macd_hist",
         operator="lt",
         threshold=0,
@@ -346,9 +346,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "macd_above_zero": Factor(
         key="macd_above_zero",
-        name="MACD零轴上方",
+        name="MACD Above Zero",
         type=FactorType.TECHNICAL,
-        description="MACD在零轴上方运行",
+        description="MACD running above zero line",
         field="macd",
         operator="gt",
         threshold=0,
@@ -356,9 +356,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "kdj_golden_cross": Factor(
         key="kdj_golden_cross",
-        name="KDJ金叉",
+        name="KDJ Golden Cross",
         type=FactorType.TECHNICAL,
-        description="K线上穿D线",
+        description="K line crosses above D line",
         field="kdj_k",
         operator="cross_up",
         threshold="kdj_d",
@@ -366,9 +366,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "boll_lower_support": Factor(
         key="boll_lower_support",
-        name="布林下轨支撑",
+        name="Bollinger Lower Band Support",
         type=FactorType.TECHNICAL,
-        description="股价触及布林下轨",
+        description="Price touches Bollinger lower band",
         field="close",
         operator="le",
         threshold="boll_lower",
@@ -376,9 +376,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "boll_upper_pressure": Factor(
         key="boll_upper_pressure",
-        name="布林上轨压力",
+        name="Bollinger Upper Band Resistance",
         type=FactorType.TECHNICAL,
-        description="股价触及布林上轨",
+        description="Price touches Bollinger upper band",
         field="close",
         operator="ge",
         threshold="boll_upper",
@@ -386,9 +386,9 @@ FACTORS: dict[str, Factor] = {
     ),
     "breakout_high": Factor(
         key="breakout_high",
-        name="突破前高",
+        name="Breakout High",
         type=FactorType.TECHNICAL,
-        description="股价突破20日新高",
+        description="Price breaks 20-day high",
         field="close",
         operator="ge",
         threshold="high_20d",
@@ -398,38 +398,38 @@ FACTORS: dict[str, Factor] = {
 
 
 def get_factor(key: str) -> Optional[Factor]:
-    """获取因子"""
+    """Get a factor by key"""
     return FACTORS.get(key)
 
 
 def get_factors_by_type(factor_type: FactorType) -> list[Factor]:
-    """按类型获取因子"""
+    """Get factors by type"""
     return [f for f in FACTORS.values() if f.type == factor_type]
 
 
 def get_all_factor_types() -> list[FactorType]:
-    """获取所有因子类型"""
+    """Get all factor types"""
     return list(FactorType)
 
 
 def get_factor_keys_by_type(factor_type: FactorType) -> list[str]:
-    """按类型获取因子键名列表"""
+    """Get factor key list by type"""
     return [k for k, f in FACTORS.items() if f.type == factor_type]
 
 
-# ============ 预设因子组合 ============
+# ============ Preset factor combinations ============
 
-# 高股息筛选因子组合（估值合理+成长性）
+# High dividend screening factor combination (reasonable valuation + growth)
 HIGH_DIVIDEND_FACTORS = [
-    "pe_positive",      # 盈利公司
-    "pe_very_low",      # PE < 15，估值低
-    "pb_very_low",      # PB < 1.5，估值低
-    "ma20_above",       # 站上20日线，趋势向上
-    "macd_above_zero",  # MACD零轴上方
-    "volume_steady",    # 量能稳定
+    "pe_positive",      # Profitable company
+    "pe_very_low",      # PE < 15, low valuation
+    "pb_very_low",      # PB < 1.5, low valuation
+    "ma20_above",       # Above 20-day MA, uptrend
+    "macd_above_zero",  # MACD above zero line
+    "volume_steady",    # Steady volume
 ]
 
-# 价值投资因子组合
+# Value investing factor combination
 VALUE_INVEST_FACTORS = [
     "pe_positive",
     "pe_very_low",
@@ -438,7 +438,7 @@ VALUE_INVEST_FACTORS = [
     "ma_trend_up",
 ]
 
-# 成长动量因子组合
+# Growth momentum factor combination
 GROWTH_MOMENTUM_FACTORS = [
     "ma5_cross_ma20",
     "macd_golden_cross",
@@ -448,13 +448,13 @@ GROWTH_MOMENTUM_FACTORS = [
 
 
 def get_preset_factors(preset_name: str) -> list[str]:
-    """获取预设因子组合
+    """Get preset factor combination
 
     Args:
-        preset_name: 预设名称 (high_dividend, value, growth)
+        preset_name: Preset name (high_dividend, value, growth)
 
     Returns:
-        因子键名列表
+        List of factor keys
     """
     presets = {
         "high_dividend": HIGH_DIVIDEND_FACTORS,

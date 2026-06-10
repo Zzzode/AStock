@@ -1,8 +1,8 @@
-"""行情服务 - 支持多数据源、缓存和错误处理
+"""Quote service - supports multiple data sources, caching, and error handling
 
-数据源优先级：
-1. Baostock：稳定可靠，适合历史数据和估值数据（T+1）
-2. AkShare：实时行情补充（不稳定时降级处理）
+Data source priority:
+1. Baostock: stable and reliable, suitable for historical and valuation data (T+1)
+2. AkShare: real-time quote supplement (degrades gracefully when unstable)
 """
 
 import asyncio
@@ -20,7 +20,7 @@ from ..utils.cache import get_cache
 logger = get_logger("quote_service")
 
 
-# 交易时段定义（北京时间）
+# Trading session definitions (Beijing time)
 MORNING_OPEN = datetime_time(9, 30)
 MORNING_CLOSE = datetime_time(11, 30)
 AFTERNOON_OPEN = datetime_time(13, 0)
@@ -28,12 +28,12 @@ AFTERNOON_CLOSE = datetime_time(15, 0)
 
 
 def is_trading_hours() -> bool:
-    """判断当前是否在交易时段"""
+    """Check whether the current time is within trading hours"""
     now = datetime.now().time()
-    # 周末不交易
+    # No trading on weekends
     if datetime.now().weekday() >= 5:
         return False
-    # 交易时段判断
+    # Trading session check
     return (
         (MORNING_OPEN <= now <= MORNING_CLOSE)
         or (AFTERNOON_OPEN <= now <= AFTERNOON_CLOSE)
@@ -41,10 +41,10 @@ def is_trading_hours() -> bool:
 
 
 def get_dynamic_ttl(cache_type: str) -> int:
-    """根据交易时段动态调整 TTL
+    """Dynamically adjust TTL based on trading session
 
-    交易时段：实时行情缓存更短
-    非交易时段：可以缓存更长时间
+    During trading hours: shorter cache for real-time quotes
+    Outside trading hours: longer cache duration
     """
     base_ttls = {
         "realtime": 3,
@@ -55,18 +55,18 @@ def get_dynamic_ttl(cache_type: str) -> int:
         return 60
 
     if not is_trading_hours():
-        # 非交易时段，缓存时间延长 10 倍
+        # Outside trading hours, extend cache duration by 10x
         return base_ttls[cache_type] * 10
 
     return base_ttls[cache_type]
 
 
 class QuoteService:
-    """行情服务 - 支持多数据源、缓存、重试、动态 TTL
+    """Quote service - supports multiple data sources, caching, retry, and dynamic TTL
 
-    数据源策略：
-    - 日线数据：优先 Baostock（稳定，含估值数据）
-    - 实时行情：优先 Baostock（最近交易日），失败则 AkShare
+    Data source strategy:
+    - Daily data: prefer Baostock (stable, includes valuation data)
+    - Real-time quotes: prefer Baostock (latest trading day), fallback to AkShare on failure
     """
 
     def __init__(
@@ -78,16 +78,16 @@ class QuoteService:
         self.db = db
         self._cache = get_cache()
 
-        # 主数据源（默认 Baostock）
+        # Primary data source (default: Baostock)
         if primary_client is None:
             self.primary_client = BaostockClient()
         else:
             self.primary_client = primary_client
 
-        # 备用数据源（AkShare）
+        # Fallback data source (AkShare)
         self.fallback_client = fallback_client or AkShareClient()
 
-        # 兼容旧代码
+        # Backward compatibility
         self.client = self.primary_client
 
         self._realtime_retry_attempts = 3
@@ -96,7 +96,7 @@ class QuoteService:
         self._daily_retry_delays = (1.0, 2.0)
 
     def _is_retryable_error(self, error: Exception) -> bool:
-        """判断是否为可重试错误"""
+        """Determine whether the error is retryable"""
         current: Optional[BaseException] = error
         retryable_name_tokens = (
             "Connection",
@@ -118,54 +118,54 @@ class QuoteService:
         return False
 
     def _validate_stock_code(self, code: str) -> str:
-        """验证并规范化股票代码
+        """Validate and normalize a stock code
 
         Args:
-            code: 股票代码
+            code: Stock code
 
         Returns:
-            规范化后的 6 位代码
+            Normalized 6-digit code
 
         Raises:
-            ValidationError: 代码格式错误
+            ValidationError: Invalid code format
         """
         if not code or not isinstance(code, str):
             raise ValidationError(
-                "股票代码不能为空", field="code", value=repr(code)
+                "Stock code cannot be empty", field="code", value=repr(code)
             )
 
         code = code.strip()
 
-        # 提取数字部分
+        # Extract digit portion
         digits = "".join(ch for ch in code if ch.isdigit())
 
         if len(digits) != 6:
             raise ValidationError(
-                f"股票代码格式错误: {code}，应为 6 位数字",
+                f"Invalid stock code format: {code}, expected 6 digits",
                 field="code",
                 value=code,
                 details={"extracted_digits": digits, "length": len(digits)},
             )
 
-        # 验证市场前缀
+        # Validate market prefix
         first_digit = digits[0]
         market_info = {
-            "0": "深市主板",
-            "3": "创业板",
-            "6": "沪市",
-            "8": "北交所",
-            "4": "北交所",
+            "0": "Shenzhen Main Board",
+            "3": "ChiNext",
+            "6": "Shanghai",
+            "8": "BSE (Beijing Stock Exchange)",
+            "4": "BSE (Beijing Stock Exchange)",
         }
 
-        market = market_info.get(first_digit, "未知市场")
-        logger.debug(f"股票代码验证通过: {digits} ({market})")
+        market = market_info.get(first_digit, "Unknown market")
+        logger.debug(f"Stock code validated: {digits} ({market})")
 
         return digits
 
     def _build_cache_key(self, prefix: str, *parts: Any) -> str:
-        """构建缓存键
+        """Build a cache key
 
-        将 None 转换为 "all" 以保持语义一致性
+        Converts None to "all" for semantic consistency
         """
         normalized_parts = [
             "all" if p is None else str(p)
@@ -173,44 +173,72 @@ class QuoteService:
         ]
         return f"{prefix}:{':'.join(normalized_parts)}"
 
-    async def get_realtime(self, code: str) -> dict[str, Any]:
-        """获取实时行情（带缓存和动态 TTL）
+    def _classify_quote_data_quality(self, quote: dict[str, Any]) -> str:
+        """Classify the quality level of quote data"""
+        if not quote:
+            return "unavailable"
 
-        数据源优先级：
-        1. Baostock（最近交易日数据，含估值）
-        2. AkShare（实时数据，不稳定时降级）
+        if quote.get("is_realtime") is False:
+            return "daily_only"
+
+        core_fields = (
+            quote.get("price", 0),
+            quote.get("open", 0),
+            quote.get("high", 0),
+            quote.get("low", 0),
+            quote.get("volume", 0),
+            quote.get("amount", 0),
+        )
+        has_live_like_fields = any(bool(v) for v in core_fields)
+        has_snapshot_only_fields = any(
+            quote.get(key) not in (None, 0, 0.0, "")
+            for key in ("name", "pe", "pb", "pe_ttm")
+        )
+
+        if has_live_like_fields:
+            return "full_realtime"
+        if has_snapshot_only_fields:
+            return "snapshot_degraded"
+        return "unavailable"
+
+    async def get_realtime(self, code: str) -> dict[str, Any]:
+        """Get real-time quote (with caching and dynamic TTL)
+
+        Data source priority:
+        1. Baostock (latest trading day data, includes valuation)
+        2. AkShare (real-time data, degrades gracefully when unstable)
 
         Args:
-            code: 股票代码
+            code: Stock code
 
         Returns:
-            实时行情数据
+            Real-time quote data
 
         Raises:
-            ValidationError: 股票代码格式错误
-            DataSourceError: 数据获取失败
+            ValidationError: Invalid stock code format
+            DataSourceError: Failed to fetch data
         """
         code = self._validate_stock_code(code)
         cache_key = self._build_cache_key("quote", code)
         ttl = get_dynamic_ttl("realtime")
 
         async def _fetch_realtime() -> dict[str, Any]:
-            # 优先使用主数据源
+            # Prefer primary data source
             if isinstance(self.primary_client, BaostockClient):
                 try:
                     result = await self.primary_client.get_realtime_quote(code)
-                    logger.debug(f"Baostock 获取行情成功: {code}")
+                    logger.debug(f"Baostock quote fetched successfully: {code}")
                     return result
                 except Exception as e:
-                    logger.warning(f"Baostock 获取行情失败，切换到 AkShare: {e}")
+                    logger.warning(f"Baostock quote fetch failed, switching to AkShare: {e}")
 
-            # 降级到 AkShare
+            # Fallback to AkShare
             try:
                 result = await self.fallback_client.get_realtime_quote(code)
-                logger.debug(f"AkShare 获取行情成功: {code}")
+                logger.debug(f"AkShare quote fetched successfully: {code}")
                 return result
             except Exception as e:
-                logger.error(f"所有数据源获取行情失败: {e}")
+                logger.error(f"All data sources failed to fetch quote: {e}")
                 raise
 
         last_error: Optional[Exception] = None
@@ -223,14 +251,19 @@ class QuoteService:
                     _fetch_realtime,
                     ttl=ttl,
                 )
+                if not result.get("name"):
+                    stock_info = await self.get_stock_info(code)
+                    if stock_info and stock_info.get("name"):
+                        result["name"] = stock_info["name"]
+                result["data_quality"] = self._classify_quote_data_quality(result)
                 return result
 
             except DataSourceError:
                 raise
             except ValueError as e:
-                logger.warning(f"股票代码不存在: {code}")
+                logger.warning(f"Stock code does not exist: {code}")
                 raise DataSourceError(
-                    f"股票代码 {code} 不存在",
+                    f"Stock code {code} does not exist",
                     source="multi",
                     code=code,
                     details={"original_error": str(e)},
@@ -245,23 +278,23 @@ class QuoteService:
                         min(attempt, len(self._realtime_retry_delays) - 1)
                     ]
                     logger.warning(
-                        f"获取实时行情失败，准备重试: {code}, "
+                        f"Failed to fetch real-time quote, retrying: {code}, "
                         f"attempt={attempt + 1}, error={e}"
                     )
                     self._cache.invalidate("realtime", cache_key)
                     await asyncio.sleep(delay)
                     continue
 
-                logger.error(f"获取实时行情失败: {code}, error={e}")
+                logger.error(f"Failed to fetch real-time quote: {code}, error={e}")
                 raise DataSourceError(
-                    f"获取实时行情失败: {e}",
+                    f"Failed to fetch real-time quote: {e}",
                     source="multi",
                     code=code,
                     details={"attempts": attempt + 1, "last_error": str(e)},
                 ) from e
 
         raise DataSourceError(
-            f"获取实时行情失败（已达最大重试次数）",
+            f"Failed to fetch real-time quote (max retries reached)",
             source="multi",
             code=code,
             details={"last_error": str(last_error) if last_error else None},
@@ -275,57 +308,57 @@ class QuoteService:
         save: bool = True,
         limit: Optional[int] = None,
     ) -> pd.DataFrame:
-        """获取日线数据（带缓存和优化）
+        """Get daily candlestick data (with caching and optimization)
 
-        数据源优先级：
-        1. Baostock（稳定，含 PE/PB 估值数据）
-        2. AkShare（备用）
-        3. 本地数据库（最后降级）
+        Data source priority:
+        1. Baostock (stable, includes PE/PB valuation data)
+        2. AkShare (fallback)
+        3. Local database (last resort)
 
         Args:
-            code: 股票代码
-            start_date: 开始日期
-            end_date: 结束日期
-            save: 是否保存到数据库
-            limit: 返回数据条数限制，如果指定则会计算 start_date
+            code: Stock code
+            start_date: Start date
+            end_date: End date
+            save: Whether to save to database
+            limit: Limit on number of records returned; if specified, start_date is calculated accordingly
 
         Returns:
-            日线 DataFrame（含 pe, pb 列）
+            Daily DataFrame (includes pe, pb columns)
 
         Raises:
-            ValidationError: 参数验证失败
-            DataSourceError: 数据获取失败
+            ValidationError: Parameter validation failed
+            DataSourceError: Failed to fetch data
         """
         code = self._validate_stock_code(code)
 
-        # 如果指定了 limit 但没有 start_date，计算 start_date
+        # If limit is specified but start_date is not, calculate start_date
         if limit is not None and start_date is None:
             if end_date is None:
                 end_date = date.today()
-            # 考虑周末和节假日，按 limit * 1.5 天计算
+            # Account for weekends and holidays, use limit * 1.5 days
             start_date = end_date - timedelta(days=int(limit * 1.5))
 
         cache_key = self._build_cache_key("daily", code, start_date, end_date)
         ttl = get_dynamic_ttl("daily")
 
         async def _fetch_daily() -> pd.DataFrame:
-            # 优先使用 Baostock
+            # Prefer Baostock
             if isinstance(self.primary_client, BaostockClient):
                 try:
                     df = await self.primary_client.get_daily_quotes(code, start_date, end_date)
                     if not df.empty:
-                        logger.debug(f"Baostock 获取日线成功: {code}, {len(df)} 条")
+                        logger.debug(f"Baostock daily data fetched successfully: {code}, {len(df)} records")
                         return df
                 except Exception as e:
-                    logger.warning(f"Baostock 获取日线失败，切换到 AkShare: {e}")
+                    logger.warning(f"Baostock daily data fetch failed, switching to AkShare: {e}")
 
-            # 降级到 AkShare
+            # Fallback to AkShare
             try:
                 df = await self.fallback_client.get_daily_quotes(code, start_date, end_date)
-                logger.debug(f"AkShare 获取日线成功: {code}, {len(df)} 条")
+                logger.debug(f"AkShare daily data fetched successfully: {code}, {len(df)} records")
                 return df
             except Exception as e:
-                logger.error(f"所有数据源获取日线失败: {e}")
+                logger.error(f"All data sources failed to fetch daily data: {e}")
                 raise
 
         last_error: Optional[Exception] = None
@@ -356,32 +389,32 @@ class QuoteService:
                         min(attempt, len(self._daily_retry_delays) - 1)
                     ]
                     logger.warning(
-                        f"获取日线数据失败，准备重试: {code}, "
+                        f"Failed to fetch daily data, retrying: {code}, "
                         f"attempt={attempt + 1}, error={e}"
                     )
                     self._cache.invalidate("daily", cache_key)
                     await asyncio.sleep(delay)
                     continue
 
-                logger.error(f"获取日线数据失败: {code}, error={e}")
+                logger.error(f"Failed to fetch daily data: {code}, error={e}")
                 break
 
-        # 网络失败，尝试从本地数据库读取
+        # Network failure, try reading from local database
         fallback_limit = limit or 100
         try:
             quotes = await self.db.get_daily_quotes(code, limit=fallback_limit)
         except Exception as e:
             raise DataSourceError(
-                f"获取日线数据失败（本地回退也失败）: {e}",
+                f"Failed to fetch daily data (local fallback also failed): {e}",
                 source="multi",
                 code=code,
                 details={"fallback_error": str(e)},
             ) from e
 
         if not quotes:
-            error_msg = str(last_error) if last_error else "未知错误"
+            error_msg = str(last_error) if last_error else "Unknown error"
             raise DataSourceError(
-                f"获取日线数据失败，且本地无历史数据: {error_msg}",
+                f"Failed to fetch daily data, and no local historical data available: {error_msg}",
                 source="akshare",
                 code=code,
                 details={
@@ -405,13 +438,13 @@ class QuoteService:
             ]
         )
         df = df.sort_values("date").reset_index(drop=True)
-        logger.warning(f"日线数据回退到本地缓存: {code}, count={len(df)}")
+        logger.warning(f"Daily data fell back to local cache: {code}, count={len(df)}")
         return df
 
     async def _save_daily_quotes(self, code: str, df: pd.DataFrame) -> None:
-        """保存日线数据到数据库（优化版）
+        """Save daily quotes to database (optimized version)
 
-        使用 itertuples 替代 iterrows 提升性能
+        Uses itertuples instead of iterrows for better performance
         """
         if df.empty:
             return
@@ -436,21 +469,21 @@ class QuoteService:
                     )
                 )
             except (AttributeError, ValueError, TypeError) as e:
-                logger.warning(f"跳过无效数据行: {row}, error={e}")
+                logger.warning(f"Skipping invalid data row: {row}, error={e}")
                 continue
 
         if quotes:
             await self.db.save_daily_quotes(quotes)
-            logger.debug(f"保存日线数据: {code}, {len(quotes)} 条")
+            logger.debug(f"Saved daily data: {code}, {len(quotes)} records")
 
     async def refresh_stocks(self) -> int:
-        """刷新股票列表
+        """Refresh the stock list
 
         Returns:
-            更新的股票数量
+            Number of stocks updated
 
         Raises:
-            DataSourceError: 数据获取失败
+            DataSourceError: Failed to fetch data
         """
         try:
 
@@ -467,22 +500,76 @@ class QuoteService:
                 await self.db.save_stock(stock)
                 count += 1
 
-            logger.info(f"刷新股票列表完成: {count} 只")
+            logger.info(f"Stock list refresh completed: {count} stocks")
             return count
 
         except Exception as e:
-            logger.error("刷新股票列表失败", exc_info=True)
+            logger.error("Failed to refresh stock list", exc_info=True)
             raise DataSourceError(
-                f"刷新股票列表失败: {e}",
+                f"Failed to refresh stock list: {e}",
                 source="akshare",
                 details={"error": str(e)},
             ) from e
 
+    async def get_stock_info(
+        self,
+        code: str,
+        allow_remote: bool = True,
+    ) -> Optional[dict[str, Any]]:
+        """Get basic stock information
+
+        Prefers local database; falls back to stock list API when missing.
+        """
+        code = self._validate_stock_code(code)
+
+        try:
+            stock = await self.db.get_stock(code)
+            if stock is not None:
+                return {
+                    "code": stock.code,
+                    "name": stock.name,
+                    "industry": stock.industry,
+                    "list_date": stock.list_date,
+                }
+        except Exception as e:
+            logger.debug(f"Failed to read stock info locally: {code}, error={e}")
+
+        if not allow_remote:
+            return None
+
+        try:
+            stock_list = await self.client.get_stock_list()
+            result = stock_list[stock_list["code"].astype(str) == code]
+            if result.empty:
+                return None
+
+            row = result.iloc[0]
+            stock = Stock(
+                code=code,
+                name=str(row.get("name", "")),
+                industry=None,
+                list_date=None,
+            )
+            try:
+                await self.db.save_stock(stock)
+            except Exception as e:
+                logger.debug(f"Failed to cache stock info: {code}, error={e}")
+
+            return {
+                "code": stock.code,
+                "name": stock.name,
+                "industry": stock.industry,
+                "list_date": stock.list_date,
+            }
+        except Exception as e:
+            logger.debug(f"Failed to read stock info from remote: {code}, error={e}")
+            return None
+
     def invalidate_cache(self, code: Optional[str] = None) -> None:
-        """使缓存失效
+        """Invalidate cache
 
         Args:
-            code: 股票代码，None 表示清除所有
+            code: Stock code; None means clear all
         """
         if code:
             self._cache.invalidate("realtime", f"quote:{code}")

@@ -1,4 +1,4 @@
-"""行情服务模块"""
+"""Quote service module"""
 
 from .quote_service import QuoteService
 from .akshare_client import AkShareClient

@@ -1,4 +1,4 @@
-"""选股模块"""
+"""Stock screening module"""
 
 from .factors import Factor, FactorType, FACTORS, get_factor, get_factors_by_type
 from .screener import StockScreener, ScreenResult

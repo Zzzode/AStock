@@ -1,4 +1,4 @@
-"""行情服务测试"""
+"""Quote service tests"""
 
 import pytest
 import pytest_asyncio
@@ -15,33 +15,33 @@ from astock.storage import DailyQuote
 
 @pytest_asyncio.fixture
 async def mock_db() -> AsyncMock:
-    """模拟数据库"""
+    """Mock database"""
     db = AsyncMock()
     return db
 
 
 @pytest.fixture
 def client() -> AkShareClient:
-    """创建客户端"""
+    """Create client"""
     return AkShareClient()
 
 
 @pytest.mark.asyncio
 async def test_get_realtime_quote(client: AkShareClient) -> None:
-    """测试获取实时行情"""
-    # 这是一个集成测试，需要网络连接
+    """Test getting realtime quote"""
+    # This is an integration test that requires network connection
     try:
         result = await client.get_realtime_quote("000001")
         assert "code" in result
         assert "name" in result
         assert "price" in result
     except Exception as e:
-        pytest.skip(f"网络不可用: {e}")
+        pytest.skip(f"Network unavailable: {e}")
 
 
 @pytest.mark.asyncio
 async def test_quote_service_get_realtime(mock_db: AsyncMock) -> None:
-    """测试行情服务获取实时数据"""
+    """Test quote service getting realtime data"""
     service = QuoteService(mock_db)
 
     with patch.object(
@@ -56,7 +56,7 @@ async def test_quote_service_get_realtime(mock_db: AsyncMock) -> None:
 
 @pytest.mark.asyncio
 async def test_quote_service_get_realtime_retry_on_transient_error(mock_db: AsyncMock) -> None:
-    """测试临时网络错误会重试"""
+    """Test that transient network errors trigger retry"""
     service = QuoteService(mock_db)
     mock_get_or_set = AsyncMock(
         side_effect=[
@@ -73,7 +73,7 @@ async def test_quote_service_get_realtime_retry_on_transient_error(mock_db: Asyn
 
 @pytest.mark.asyncio
 async def test_get_realtime_quote_fallback_to_alternate_source(client: AkShareClient) -> None:
-    """测试主数据源失败时回退备用数据源"""
+    """Test fallback to alternate data source when primary fails"""
     fallback_df = pd.DataFrame([
         {
             "代码": "000001",
@@ -102,7 +102,7 @@ async def test_get_realtime_quote_fallback_to_alternate_source(client: AkShareCl
 
 
 def test_quote_cli_handles_data_source_error_without_traceback() -> None:
-    """测试 quote 命令遇到数据源异常时返回可读错误"""
+    """Test quote command returns readable error on data source exception"""
     runner = CliRunner()
 
     with patch(
@@ -118,7 +118,7 @@ def test_quote_cli_handles_data_source_error_without_traceback() -> None:
 
 @pytest.mark.asyncio
 async def test_quote_service_get_daily_retry_on_transient_error(mock_db: AsyncMock) -> None:
-    """测试获取日线遇到临时网络错误会重试"""
+    """Test that transient network errors trigger retry when getting daily data"""
     service = QuoteService(mock_db)
     fallback_df = pd.DataFrame([
         {
@@ -140,7 +140,7 @@ async def test_quote_service_get_daily_retry_on_transient_error(mock_db: AsyncMo
 
 
 def test_analyze_cli_handles_data_source_error_without_traceback() -> None:
-    """测试 analyze 命令遇到数据源异常时返回可读错误"""
+    """Test analyze command returns readable error on data source exception"""
     runner = CliRunner()
 
     with patch(

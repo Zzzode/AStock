@@ -1,6 +1,6 @@
-"""服务状态管理模块
+"""Service status management module
 
-管理监控服务的启动时间、运行状态等信息。
+Manages monitor service startup time, running status, and other information.
 """
 
 import json
@@ -15,53 +15,53 @@ from ..utils import get_logger
 
 logger = get_logger("service_status")
 
-# 默认状态文件路径 - 项目根目录下的 data 目录
+# Default status file path - data directory under project root
 DEFAULT_STATUS_PATH = Path(__file__).parent.parent.parent.parent.parent / "data" / "service_status.json"
 
 
 @dataclass
 class ServiceInstance:
-    """单个服务实例状态"""
-    instance_id: str  # 实例标识
-    pid: int  # 进程ID
-    start_time: str  # ISO 格式时间
-    stop_time: Optional[str] = None  # ISO 格式时间
+    """Single service instance status"""
+    instance_id: str  # Instance identifier
+    pid: int  # Process ID
+    start_time: str  # ISO format time
+    stop_time: Optional[str] = None  # ISO format time
     status: str = "running"  # running, stopped
-    interval: int = 60  # 扫描间隔(秒)
+    interval: int = 60  # Scan interval (seconds)
 
     def to_dict(self) -> dict[str, Any]:
-        """转换为字典"""
+        """Convert to dictionary"""
         return asdict(self)
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "ServiceInstance":
-        """从字典创建"""
+        """Create from dictionary"""
         return cls(**data)
 
 
 @dataclass
 class ServiceHistory:
-    """服务历史记录"""
+    """Service history record"""
     instance_id: str
     pid: int
     start_time: str
     stop_time: str
-    duration_seconds: float  # 运行时长(秒)
+    duration_seconds: float  # Running duration (seconds)
 
     def to_dict(self) -> dict[str, Any]:
-        """转换为字典"""
+        """Convert to dictionary"""
         return asdict(self)
 
 
 @dataclass
 class ServiceStatus:
-    """服务状态汇总"""
+    """Service status summary"""
     instances: list[ServiceInstance] = field(default_factory=list)
     history: list[ServiceHistory] = field(default_factory=list)
-    max_history: int = 100  # 最大历史记录数
+    max_history: int = 100  # Maximum history records
 
     def to_dict(self) -> dict[str, Any]:
-        """转换为字典"""
+        """Convert to dictionary"""
         return {
             "instances": [i.to_dict() for i in self.instances],
             "history": [h.to_dict() for h in self.history],
@@ -70,7 +70,7 @@ class ServiceStatus:
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "ServiceStatus":
-        """从字典创建"""
+        """Create from dictionary"""
         instances = [ServiceInstance.from_dict(i) for i in data.get("instances", [])]
         history = [ServiceHistory(**h) for h in data.get("history", [])]
         status = cls(instances=instances, history=history)
@@ -79,30 +79,30 @@ class ServiceStatus:
 
 
 class ServiceStatusManager:
-    """服务状态管理器
+    """Service status manager
 
-    负责管理监控服务的启动/停止状态，支持持久化存储。
-    支持多实例管理，使用文件锁保证并发安全。
+    Manages monitor service start/stop status with persistent storage support.
+    Supports multi-instance management with file locking for concurrency safety.
     """
 
     def __init__(self, status_path: Optional[Path] = None):
-        """初始化状态管理器
+        """Initialize status manager
 
         Args:
-            status_path: 状态文件路径，默认为 data/service_status.json
+            status_path: Status file path, defaults to data/service_status.json
         """
         self.status_path = status_path or DEFAULT_STATUS_PATH
         self._ensure_data_dir()
 
     def _ensure_data_dir(self) -> None:
-        """确保数据目录存在"""
+        """Ensure data directory exists"""
         self.status_path.parent.mkdir(parents=True, exist_ok=True)
 
     def _load_status(self) -> ServiceStatus:
-        """加载服务状态
+        """Load service status
 
         Returns:
-            服务状态对象
+            Service status object
         """
         if not self.status_path.exists():
             return ServiceStatus()
@@ -112,45 +112,45 @@ class ServiceStatusManager:
                 data = json.load(f)
             return ServiceStatus.from_dict(data)
         except (json.JSONDecodeError, KeyError) as e:
-            logger.warning(f"加载服务状态失败，使用空状态: {e}")
+            logger.warning(f"Failed to load service status, using empty status: {e}")
             return ServiceStatus()
 
     def _save_status(self, status: ServiceStatus) -> None:
-        """保存服务状态
+        """Save service status
 
         Args:
-            status: 服务状态对象
+            status: Service status object
         """
-        # 使用文件锁保证并发安全
+        # Use file lock for concurrency safety
         with open(self.status_path, "w", encoding="utf-8") as f:
             fcntl.flock(f.fileno(), fcntl.LOCK_EX)
             try:
                 json.dump(status.to_dict(), f, ensure_ascii=False, indent=2)
             finally:
                 fcntl.flock(f.fileno(), fcntl.LOCK_UN)
-        logger.debug(f"服务状态已保存到 {self.status_path}")
+        logger.debug(f"Service status saved to {self.status_path}")
 
     def record_start(
         self, instance_id: str, interval: int = 60
     ) -> ServiceInstance:
-        """记录服务启动
+        """Record service start
 
         Args:
-            instance_id: 实例标识
-            interval: 扫描间隔(秒)
+            instance_id: Instance identifier
+            interval: Scan interval (seconds)
 
         Returns:
-            新创建的服务实例
+            Newly created service instance
         """
         status = self._load_status()
 
-        # 检查是否已存在运行中的实例
+        # Check if a running instance already exists
         for instance in status.instances:
             if instance.instance_id == instance_id and instance.status == "running":
-                logger.warning(f"实例 {instance_id} 已在运行中")
+                logger.warning(f"Instance {instance_id} is already running")
                 return instance
 
-        # 创建新实例
+        # Create new instance
         now = datetime.now()
         instance = ServiceInstance(
             instance_id=instance_id,
@@ -163,21 +163,21 @@ class ServiceStatusManager:
         status.instances.append(instance)
         self._save_status(status)
 
-        logger.info(f"记录服务启动: {instance_id}, PID: {instance.pid}")
+        logger.info(f"Service start recorded: {instance_id}, PID: {instance.pid}")
         return instance
 
     def record_stop(self, instance_id: str) -> Optional[ServiceHistory]:
-        """记录服务停止
+        """Record service stop
 
         Args:
-            instance_id: 实例标识
+            instance_id: Instance identifier
 
         Returns:
-            服务历史记录，如果实例不存在则返回 None
+            Service history record, or None if instance not found
         """
         status = self._load_status()
 
-        # 查找运行中的实例
+        # Find running instance
         instance = None
         for i, inst in enumerate(status.instances):
             if inst.instance_id == instance_id and inst.status == "running":
@@ -185,19 +185,19 @@ class ServiceStatusManager:
                 break
 
         if not instance:
-            logger.warning(f"未找到运行中的实例: {instance_id}")
+            logger.warning(f"Running instance not found: {instance_id}")
             return None
 
-        # 更新实例状态
+        # Update instance status
         now = datetime.now()
         instance.stop_time = now.isoformat()
         instance.status = "stopped"
 
-        # 计算运行时长
+        # Calculate running duration
         start_time = datetime.fromisoformat(instance.start_time)
         duration = (now - start_time).total_seconds()
 
-        # 添加到历史记录
+        # Add to history
         history = ServiceHistory(
             instance_id=instance.instance_id,
             pid=instance.pid,
@@ -206,33 +206,33 @@ class ServiceStatusManager:
             duration_seconds=duration,
         )
 
-        # 限制历史记录数量
+        # Limit history record count
         status.history.insert(0, history)
         if len(status.history) > status.max_history:
             status.history = status.history[:status.max_history]
 
         self._save_status(status)
 
-        logger.info(f"记录服务停止: {instance_id}, 运行时长: {format_duration(duration)}")
+        logger.info(f"Service stop recorded: {instance_id}, uptime: {format_duration(duration)}")
         return history
 
     def get_running_instances(self) -> list[ServiceInstance]:
-        """获取所有运行中的实例
+        """Get all running instances
 
         Returns:
-            运行中的实例列表
+            List of running instances
         """
         status = self._load_status()
         return [i for i in status.instances if i.status == "running"]
 
     def get_instance(self, instance_id: str) -> Optional[ServiceInstance]:
-        """获取指定实例
+        """Get specified instance
 
         Args:
-            instance_id: 实例标识
+            instance_id: Instance identifier
 
         Returns:
-            服务实例，如果不存在则返回 None
+            Service instance, or None if not found
         """
         status = self._load_status()
         for instance in status.instances:
@@ -241,50 +241,50 @@ class ServiceStatusManager:
         return None
 
     def get_history(self, limit: int = 20) -> list[ServiceHistory]:
-        """获取历史记录
+        """Get history records
 
         Args:
-            limit: 返回数量限制
+            limit: Return count limit
 
         Returns:
-            历史记录列表
+            List of history records
         """
         status = self._load_status()
         return status.history[:limit]
 
     def cleanup_stale_instances(self) -> int:
-        """清理已停止的实例记录
+        """Clean up stopped instance records
 
         Returns:
-            清理的实例数量
+            Number of instances cleaned up
         """
         status = self._load_status()
         original_count = len(status.instances)
 
-        # 移除已停止的实例
+        # Remove stopped instances
         status.instances = [i for i in status.instances if i.status == "running"]
 
         cleaned = original_count - len(status.instances)
         if cleaned > 0:
             self._save_status(status)
-            logger.info(f"清理了 {cleaned} 个已停止的实例记录")
+            logger.info(f"Cleaned up {cleaned} stopped instance records")
 
         return cleaned
 
 
 def format_duration(seconds: float) -> str:
-    """格式化运行时长
+    """Format running duration
 
-    将秒数转换为 X天X小时X分钟 格式
+    Converts seconds to X days X hours X minutes format
 
     Args:
-        seconds: 秒数
+        seconds: Number of seconds
 
     Returns:
-        格式化的时长字符串
+        Formatted duration string
     """
     if seconds < 0:
-        return "0分钟"
+        return "0 minutes"
 
     delta = timedelta(seconds=seconds)
     days = delta.days
@@ -293,23 +293,23 @@ def format_duration(seconds: float) -> str:
 
     parts = []
     if days > 0:
-        parts.append(f"{days}天")
+        parts.append(f"{days} days")
     if hours > 0:
-        parts.append(f"{hours}小时")
+        parts.append(f"{hours} hours")
     if minutes > 0 or not parts:
-        parts.append(f"{minutes}分钟")
+        parts.append(f"{minutes} minutes")
 
-    return "".join(parts)
+    return " ".join(parts)
 
 
 def get_uptime_info(instance: ServiceInstance) -> dict[str, Any]:
-    """获取实例运行时长信息
+    """Get instance uptime information
 
     Args:
-        instance: 服务实例
+        instance: Service instance
 
     Returns:
-        包含运行时长信息的字典
+        Dictionary containing uptime information
     """
     start_time = datetime.fromisoformat(instance.start_time)
     now = datetime.now()

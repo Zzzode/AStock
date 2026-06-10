@@ -1,4 +1,4 @@
-"""SQLite 数据库管理"""
+"""SQLite database management"""
 
 import aiosqlite
 from pathlib import Path
@@ -8,31 +8,31 @@ from .models import Stock, DailyQuote, WatchItem, AlertRecord, Trade
 
 
 class Database:
-    """异步 SQLite 数据库管理器"""
+    """Async SQLite database manager"""
 
     def __init__(self, db_path: str = "data/stocks.db"):
         self.db_path = Path(db_path)
         self._conn: Optional[aiosqlite.Connection] = None
 
     async def connect(self) -> None:
-        """连接数据库"""
+        """Connect to database"""
         self.db_path.parent.mkdir(parents=True, exist_ok=True)
         self._conn = await aiosqlite.connect(self.db_path)
         self._conn.row_factory = aiosqlite.Row
 
     async def close(self) -> None:
-        """关闭数据库连接"""
+        """Close database connection"""
         if self._conn:
             await self._conn.close()
             self._conn = None
 
     async def init_tables(self) -> None:
-        """初始化数据表"""
+        """Initialize database tables"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
         await self._conn.executescript("""
-            -- 股票基础信息
+            -- Stock basic information
             CREATE TABLE IF NOT EXISTS stocks (
                 code TEXT PRIMARY KEY,
                 name TEXT NOT NULL,
@@ -40,7 +40,7 @@ class Database:
                 list_date DATE
             );
 
-            -- 日线行情
+            -- Daily quotes
             CREATE TABLE IF NOT EXISTS daily_quotes (
                 code TEXT NOT NULL,
                 date DATE NOT NULL,
@@ -53,11 +53,11 @@ class Database:
                 PRIMARY KEY (code, date)
             );
 
-            -- 创建索引
+            -- Create index
             CREATE INDEX IF NOT EXISTS idx_daily_quotes_date
                 ON daily_quotes(date);
 
-            -- 监控项
+            -- Watch items
             CREATE TABLE IF NOT EXISTS watch_items (
                 code TEXT PRIMARY KEY,
                 name TEXT,
@@ -67,7 +67,7 @@ class Database:
                 created_at DATETIME
             );
 
-            -- 告警记录
+            -- Alert records
             CREATE TABLE IF NOT EXISTS alert_records (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 code TEXT NOT NULL,
@@ -80,7 +80,7 @@ class Database:
                 channels TEXT NOT NULL DEFAULT '[]'
             );
 
-            -- 创建告警记录索引
+            -- Create alert record indexes
             CREATE INDEX IF NOT EXISTS idx_alert_records_code
                 ON alert_records(code);
             CREATE INDEX IF NOT EXISTS idx_alert_records_triggered_at
@@ -89,7 +89,7 @@ class Database:
         await self._conn.commit()
 
     async def save_stock(self, stock: Stock) -> None:
-        """保存股票信息"""
+        """Save stock information"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -102,8 +102,33 @@ class Database:
         )
         await self._conn.commit()
 
+    async def get_stock(self, code: str) -> Optional[Stock]:
+        """Get single stock basic information"""
+        if not self._conn:
+            raise RuntimeError("Database not connected")
+
+        cursor = await self._conn.execute(
+            """
+            SELECT code, name, industry, list_date
+            FROM stocks
+            WHERE code = ?
+            LIMIT 1
+            """,
+            (code,)
+        )
+        row = await cursor.fetchone()
+        if row is None:
+            return None
+
+        return Stock(
+            code=row["code"],
+            name=row["name"],
+            industry=row["industry"],
+            list_date=row["list_date"],
+        )
+
     async def save_daily_quotes(self, quotes: list[DailyQuote]) -> None:
-        """批量保存日线行情"""
+        """Batch save daily quotes"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -123,7 +148,7 @@ class Database:
     async def get_daily_quotes(
         self, code: str, limit: int = 100
     ) -> list[DailyQuote]:
-        """获取日线行情"""
+        """Get daily quotes"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -156,10 +181,10 @@ class Database:
     def get_trades(self, user_id: str) -> list[Trade]:
         return []
 
-    # ==================== 监控项相关方法 ====================
+    # ==================== Watch item methods ====================
 
     async def save_watch_item(self, item: WatchItem) -> None:
-        """保存监控项"""
+        """Save watch item"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -182,7 +207,7 @@ class Database:
         await self._conn.commit()
 
     async def get_watch_items(self, enabled_only: bool = True) -> list[WatchItem]:
-        """获取所有监控项"""
+        """Get all watch items"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -210,7 +235,7 @@ class Database:
         ]
 
     async def delete_watch_item(self, code: str) -> None:
-        """删除监控项"""
+        """Delete watch item"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -220,10 +245,10 @@ class Database:
         )
         await self._conn.commit()
 
-    # ==================== 告警记录相关方法 ====================
+    # ==================== Alert record methods ====================
 
     async def save_alert_record(self, record: AlertRecord) -> int:
-        """保存告警记录，返回记录ID"""
+        """Save alert record, returns record ID"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -254,7 +279,7 @@ class Database:
         status: Optional[str] = None,
         limit: int = 100
     ) -> list[AlertRecord]:
-        """获取告警记录"""
+        """Get alert records"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
@@ -299,7 +324,7 @@ class Database:
         ]
 
     async def update_alert_status(self, record_id: int, status: str) -> None:
-        """更新告警记录状态"""
+        """Update alert record status"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 

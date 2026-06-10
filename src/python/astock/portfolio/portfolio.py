@@ -1,4 +1,4 @@
-"""组合管理"""
+"""Portfolio management"""
 
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -8,15 +8,15 @@ from .position import Position, PositionManager
 
 @dataclass
 class PortfolioStats:
-    """组合统计"""
+    """Portfolio statistics"""
 
-    total_value: float = 0.0  # 总资产
-    cash: float = 0.0  # 现金
-    market_value: float = 0.0  # 市值
-    profit_loss: float = 0.0  # 总盈亏
-    profit_loss_percent: float = 0.0  # 收益率
-    position_count: int = 0  # 持仓数量
-    max_position_ratio: float = 0.0  # 最大仓位比例
+    total_value: float = 0.0  # Total assets
+    cash: float = 0.0  # Cash
+    market_value: float = 0.0  # Market value
+    profit_loss: float = 0.0  # Total profit/loss
+    profit_loss_percent: float = 0.0  # Return rate
+    position_count: int = 0  # Number of positions
+    max_position_ratio: float = 0.0  # Largest position ratio
     updated_at: Optional[datetime] = None
 
     def to_dict(self) -> dict[str, object]:
@@ -34,7 +34,7 @@ class PortfolioStats:
 
 @dataclass
 class Portfolio:
-    """投资组合"""
+    """Investment portfolio"""
 
     name: str = "default"
     initial_capital: float = 100000.0
@@ -44,35 +44,35 @@ class Portfolio:
 
     @property
     def market_value(self) -> float:
-        """市值"""
+        """Market value"""
         return self.position_manager.get_total_value()
 
     @property
     def total_value(self) -> float:
-        """总资产"""
+        """Total assets"""
         return self.cash + self.market_value
 
     @property
     def profit_loss(self) -> float:
-        """总盈亏"""
+        """Total profit/loss"""
         return self.total_value - self.initial_capital
 
     @property
     def profit_loss_percent(self) -> float:
-        """收益率"""
+        """Return rate"""
         if self.initial_capital == 0:
             return 0
         return (self.total_value - self.initial_capital) / self.initial_capital * 100
 
     @property
     def position_count(self) -> int:
-        """持仓数量"""
+        """Number of positions"""
         return len(
             [p for p in self.position_manager.get_all_positions() if not p.is_empty]
         )
 
     def get_stats(self) -> PortfolioStats:
-        """获取组合统计"""
+        """Get portfolio statistics"""
         positions = self.position_manager.get_all_positions()
         max_position_value = 0.0
         total_value = self.total_value
@@ -96,7 +96,7 @@ class Portfolio:
 
 
 class PortfolioManager:
-    """组合管理器"""
+    """Portfolio manager"""
 
     def __init__(self) -> None:
         self._portfolios: dict[str, Portfolio] = {}
@@ -106,7 +106,7 @@ class PortfolioManager:
         name: str = "default",
         initial_capital: float = 100000.0,
     ) -> Portfolio:
-        """创建组合"""
+        """Create portfolio"""
         portfolio = Portfolio(
             name=name,
             initial_capital=initial_capital,
@@ -116,13 +116,13 @@ class PortfolioManager:
         return portfolio
 
     def get_portfolio(self, name: str = "default") -> Optional[Portfolio]:
-        """获取组合"""
+        """Get portfolio"""
         return self._portfolios.get(name)
 
     def get_or_create(
         self, name: str = "default", initial_capital: float = 100000.0
     ) -> Portfolio:
-        """获取或创建组合"""
+        """Get or create portfolio"""
         if name not in self._portfolios:
             return self.create_portfolio(name, initial_capital)
         return self._portfolios[name]
@@ -135,24 +135,24 @@ class PortfolioManager:
         price: float,
         name: Optional[str] = None,
     ) -> Optional[Position]:
-        """买入"""
+        """Buy"""
         portfolio = self.get_portfolio(portfolio_name)
         if not portfolio:
             return None
 
-        # 计算所需资金
+        # Calculate required funds
         required = shares * price
         if required > portfolio.cash:
-            # 资金不足，按可用资金调整
-            shares = int(portfolio.cash / price / 100) * 100  # A股一手100股
+            # Insufficient funds, adjust by available funds
+            shares = int(portfolio.cash / price / 100) * 100  # A-share lot size: 100 shares
             if shares <= 0:
                 return None
             required = shares * price
 
-        # 扣除资金
+        # Deduct funds
         portfolio.cash -= required
 
-        # 添加持仓
+        # Add position
         return portfolio.position_manager.add_position(code, shares, price, name)
 
     def sell(
@@ -162,28 +162,28 @@ class PortfolioManager:
         shares: float,
         price: float,
     ) -> Optional[Position]:
-        """卖出"""
+        """Sell"""
         portfolio = self.get_portfolio(portfolio_name)
         if not portfolio:
             return None
 
-        # 减少持仓
+        # Reduce position
         pos = portfolio.position_manager.reduce_position(code, shares, price)
         if pos is None:
-            # 完全卖出，返还资金
+            # Fully sold, return funds
             portfolio.cash += shares * price
         else:
-            # 部分卖出，返还资金
+            # Partially sold, return funds
             portfolio.cash += shares * price
 
         return pos
 
     def update_prices(self, portfolio_name: str, prices: dict[str, float]) -> None:
-        """更新价格"""
+        """Update prices"""
         portfolio = self.get_portfolio(portfolio_name)
         if portfolio:
             portfolio.position_manager.update_prices(prices)
 
     def get_all_portfolios(self) -> list[Portfolio]:
-        """获取所有组合"""
+        """Get all portfolios"""
         return list(self._portfolios.values())

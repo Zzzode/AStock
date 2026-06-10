@@ -1,4 +1,4 @@
-"""回测策略模块"""
+"""Backtest strategies module"""
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
@@ -11,7 +11,7 @@ import numpy as np
 
 
 class Signal(Enum):
-    """交易信号"""
+    """Trading signal"""
     BUY = "buy"
     SELL = "sell"
     HOLD = "hold"
@@ -19,7 +19,7 @@ class Signal(Enum):
 
 @dataclass
 class Trade:
-    """交易记录"""
+    """Trade record"""
     date: date
     signal: Signal
     price: float
@@ -39,43 +39,43 @@ class Trade:
 
 
 class Strategy(ABC):
-    """策略抽象基类"""
+    """Strategy abstract base class"""
 
     name: str = "base"
-    description: str = "基础策略"
+    description: str = "Base Strategy"
 
     @abstractmethod
     def generate_signals(self, df: pd.DataFrame) -> pd.DataFrame:
-        """生成交易信号
+        """Generate trading signals
 
         Args:
-            df: 包含 OHLCV 数据的 DataFrame
+            df: DataFrame with OHLCV data
 
         Returns:
-            添加 signal 列的 DataFrame
+            DataFrame with added signal column
         """
         pass
 
     def prepare_data(self, df: pd.DataFrame) -> pd.DataFrame:
-        """准备数据（添加必要的技术指标）
+        """Prepare data (add necessary technical indicators)
 
         Args:
-            df: 原始数据
+            df: Raw data
 
         Returns:
-            处理后的数据
+            Processed data
         """
         return df.copy()
 
 
 class MACrossStrategy(Strategy):
-    """MA均线交叉策略
+    """MA Crossover Strategy
 
-    当短期均线上穿长期均线时买入，下穿时卖出。
+    Buy when short-term MA crosses above long-term MA; sell when it crosses below.
     """
 
     name = "ma_cross"
-    description = "MA均线交叉策略"
+    description = "MA Crossover Strategy"
 
     def __init__(
         self,
@@ -86,8 +86,8 @@ class MACrossStrategy(Strategy):
     ):
         """
         Args:
-            short_period: 短期均线周期
-            long_period: 长期均线周期
+            short_period: Short-term MA period
+            long_period: Long-term MA period
         """
         self.short_period = fast_period if fast_period is not None else short_period
         self.long_period = slow_period if slow_period is not None else long_period
@@ -96,7 +96,7 @@ class MACrossStrategy(Strategy):
         df = super().prepare_data(df)
         close = np.asarray(df["close"].astype(float), dtype=float)
 
-        # 计算均线
+        # Calculate moving averages
         df[f"ma{self.short_period}"] = self._sma(close, self.short_period)
         df[f"ma{self.long_period}"] = self._sma(close, self.long_period)
         df["ma_fast"] = df[f"ma{self.short_period}"]
@@ -105,7 +105,7 @@ class MACrossStrategy(Strategy):
         return df
 
     def _sma(self, data: np.ndarray, period: int) -> np.ndarray:
-        """简单移动平均"""
+        """Simple moving average"""
         result = np.full(len(data), np.nan)
         for i in range(period - 1, len(data)):
             result[i] = np.mean(data[i - period + 1:i + 1])
@@ -119,17 +119,17 @@ class MACrossStrategy(Strategy):
 
         signals = np.full(len(df), Signal.HOLD, dtype=object)
 
-        # 寻找交叉点
+        # Find crossover points
         for i in range(1, len(df)):
             if np.isnan(short_ma[i]) or np.isnan(long_ma[i]):
                 continue
             if np.isnan(short_ma[i-1]) or np.isnan(long_ma[i-1]):
                 continue
 
-            # 短期均线上穿长期均线 -> 买入
+            # Short-term MA crosses above long-term MA -> Buy
             if short_ma[i-1] <= long_ma[i-1] and short_ma[i] > long_ma[i]:
                 signals[i] = Signal.BUY
-            # 短期均线下穿长期均线 -> 卖出
+            # Short-term MA crosses below long-term MA -> Sell
             elif short_ma[i-1] >= long_ma[i-1] and short_ma[i] < long_ma[i]:
                 signals[i] = Signal.SELL
 
@@ -138,20 +138,20 @@ class MACrossStrategy(Strategy):
 
 
 class MACDStrategy(Strategy):
-    """MACD金叉死叉策略
+    """MACD Cross Strategy
 
-    当MACD柱状线由负转正时买入，由正转负时卖出。
+    Buy when MACD histogram turns from negative to positive; sell when it turns from positive to negative.
     """
 
     name = "macd"
-    description = "MACD金叉死叉策略"
+    description = "MACD Cross Strategy"
 
     def __init__(self, fast: int = 12, slow: int = 26, signal: int = 9):
         """
         Args:
-            fast: 快线周期
-            slow: 慢线周期
-            signal: 信号线周期
+            fast: Fast line period
+            slow: Slow line period
+            signal: Signal line period
         """
         self.fast = fast
         self.slow = slow
@@ -161,7 +161,7 @@ class MACDStrategy(Strategy):
         df = super().prepare_data(df)
         close = np.asarray(df["close"].astype(float), dtype=float)
 
-        # 计算 MACD
+        # Calculate MACD
         macd, signal_line, hist = self._macd(
             close, self.fast, self.slow, self.signal_period
         )
@@ -172,11 +172,11 @@ class MACDStrategy(Strategy):
         return df
 
     def _ema(self, data: np.ndarray, period: int) -> np.ndarray:
-        """指数移动平均"""
+        """Exponential moving average"""
         result = np.full(len(data), np.nan)
         multiplier = 2 / (period + 1)
 
-        # 找到第一个非 NaN 值
+        # Find the first non-NaN value
         first_valid = 0
         for i in range(len(data)):
             if not np.isnan(data[i]):
@@ -186,7 +186,7 @@ class MACDStrategy(Strategy):
         if first_valid >= len(data):
             return result
 
-        # 初始值为第一个有效值
+        # Initial value is the first valid value
         result[first_valid] = data[first_valid]
 
         for i in range(first_valid + 1, len(data)):
@@ -204,12 +204,12 @@ class MACDStrategy(Strategy):
         slow: int,
         signal: int
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
-        """计算 MACD"""
+        """Calculate MACD"""
         ema_fast = self._ema(data, fast)
         ema_slow = self._ema(data, slow)
         macd_line = ema_fast - ema_slow
         signal_line = self._ema(macd_line, signal)
-        histogram = (macd_line - signal_line) * 2  # 柱状线
+        histogram = (macd_line - signal_line) * 2  # Histogram
         return macd_line, signal_line, histogram
 
     def generate_signals(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -218,15 +218,15 @@ class MACDStrategy(Strategy):
         hist = df["macd_hist"].values
         signals = np.full(len(df), Signal.HOLD, dtype=object)
 
-        # 寻找柱状线交叉点
+        # Find histogram crossover points
         for i in range(1, len(df)):
             if np.isnan(hist[i]) or np.isnan(hist[i-1]):
                 continue
 
-            # 柱状线由负转正 -> 买入
+            # Histogram turns from negative to positive -> Buy
             if hist[i-1] <= 0 and hist[i] > 0:
                 signals[i] = Signal.BUY
-            # 柱状线由正转负 -> 卖出
+            # Histogram turns from positive to negative -> Sell
             elif hist[i-1] >= 0 and hist[i] < 0:
                 signals[i] = Signal.SELL
 
@@ -235,10 +235,10 @@ class MACDStrategy(Strategy):
 
 
 class RSIStrategy(Strategy):
-    """RSI 超买超卖策略"""
+    """RSI Overbought/Oversold Strategy"""
 
     name = "rsi"
-    description = "RSI超买超卖策略"
+    description = "RSI Overbought/Oversold Strategy"
 
     def __init__(self, period: int = 14, overbought: float = 70, oversold: float = 30):
         self.period = period
@@ -270,7 +270,7 @@ class RSIStrategy(Strategy):
         return df
 
 
-# 策略注册表
+# Strategy registry
 STRATEGIES: dict[str, type[Strategy]] = {
     "ma_cross": MACrossStrategy,
     "macd": MACDStrategy,
@@ -279,17 +279,17 @@ STRATEGIES: dict[str, type[Strategy]] = {
 
 
 def get_strategy(name: str, **kwargs: object) -> Strategy:
-    """获取策略实例
+    """Get strategy instance
 
     Args:
-        name: 策略名称
-        **kwargs: 策略参数
+        name: Strategy name
+        **kwargs: Strategy parameters
 
     Returns:
-        策略实例
+        Strategy instance
 
     Raises:
-        ValueError: 策略名称无效
+        ValueError: Invalid strategy name
     """
     if name not in STRATEGIES:
         raise ValueError(f"Unknown strategy: {name}. Available: {list(STRATEGIES.keys())}")

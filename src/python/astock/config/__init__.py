@@ -1,4 +1,4 @@
-"""配置管理模块"""
+"""Configuration management module"""
 
 from .user_config import (
     ConfigManager,

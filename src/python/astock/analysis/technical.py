@@ -1,4 +1,4 @@
-"""技术指标分析"""
+"""Technical indicator analysis"""
 
 import pandas as pd
 import numpy as np
@@ -7,12 +7,12 @@ import talib
 
 
 class TechnicalAnalyzer:
-    """技术指标分析器"""
+    """Technical indicator analyzer"""
 
     def __init__(self, df: pd.DataFrame):
         """
         Args:
-            df: 包含 open, high, low, close, volume 的 DataFrame
+            df: DataFrame containing open, high, low, close, volume columns
         """
         self.df = df.copy()
         self.close = np.asarray(df["close"].astype(float), dtype=float)
@@ -21,13 +21,13 @@ class TechnicalAnalyzer:
         self.volume = np.asarray(df["volume"].astype(float), dtype=float)
 
     def add_ma(self, periods: list[int] = [5, 10, 20, 60]) -> pd.DataFrame:
-        """添加均线指标
+        """Add moving average indicators
 
         Args:
-            periods: 均线周期列表
+            periods: List of MA periods
 
         Returns:
-            添加均线后的 DataFrame
+            DataFrame with MA columns added
         """
         for period in periods:
             self.df[f"ma{period}"] = talib.MA(self.close, timeperiod=period)
@@ -39,15 +39,15 @@ class TechnicalAnalyzer:
         slow: int = 26,
         signal: int = 9
     ) -> pd.DataFrame:
-        """添加 MACD 指标
+        """Add MACD indicator
 
         Args:
-            fast: 快线周期
-            slow: 慢线周期
-            signal: 信号线周期
+            fast: Fast line period
+            slow: Slow line period
+            signal: Signal line period
 
         Returns:
-            添加 MACD 后的 DataFrame
+            DataFrame with MACD columns added
         """
         macd, signal_line, hist = talib.MACD(
             self.close,
@@ -66,27 +66,27 @@ class TechnicalAnalyzer:
         m1: int = 3,
         m2: int = 3
     ) -> pd.DataFrame:
-        """添加 KDJ 指标
+        """Add KDJ indicator
 
         Args:
-            n: RSV 周期
-            m1: K 值平滑周期
-            m2: D 值平滑周期
+            n: RSV period
+            m1: K value smoothing period
+            m2: D value smoothing period
 
         Returns:
-            添加 KDJ 后的 DataFrame
+            DataFrame with KDJ columns added
         """
-        # 计算最高最低价差
+        # Calculate highest high and lowest low range
         high_n = talib.MAX(self.high, n)
         low_n = talib.MIN(self.low, n)
         price_range = high_n - low_n
 
-        # 计算 RSV，处理除零情况
+        # Calculate RSV, handle division by zero
         with np.errstate(divide='ignore', invalid='ignore'):
             rsv = np.where(
                 price_range > 0,
                 (self.close - low_n) / price_range * 100,
-                50.0  # 当 price_range 为 0 时，RSV 取中性值 50
+                50.0  # When price_range is 0, RSV defaults to neutral value 50
             )
 
         k = talib.EMA(rsv, timeperiod=m1)
@@ -99,23 +99,23 @@ class TechnicalAnalyzer:
         return self.df
 
     def add_rsi(self, periods: list[int] = [6, 12, 24]) -> pd.DataFrame:
-        """添加 RSI 指标
+        """Add RSI indicator
 
         Args:
-            periods: RSI 周期列表
+            periods: List of RSI periods
 
         Returns:
-            添加 RSI 后的 DataFrame
+            DataFrame with RSI columns added
         """
         for period in periods:
             self.df[f"rsi{period}"] = talib.RSI(self.close, timeperiod=period)
         return self.df
 
     def add_all(self) -> pd.DataFrame:
-        """添加所有常用指标
+        """Add all common indicators
 
         Returns:
-            添加所有指标后的 DataFrame
+            DataFrame with all indicators added
         """
         self.add_ma()
         self.add_macd()
@@ -124,83 +124,83 @@ class TechnicalAnalyzer:
         return self.df
 
     def get_signals(self) -> dict[str, Any]:
-        """获取技术信号
+        """Get technical signals
 
         Returns:
-            信号字典
+            Signal dictionary
         """
         signals: list[dict[str, Any]] = []
 
-        # 获取最新数据
+        # Get latest data
         latest = self.df.iloc[-1]
         prev = self.df.iloc[-2] if len(self.df) > 1 else latest
 
-        # MA 信号
+        # MA signals
         if "ma5" in self.df.columns and "ma20" in self.df.columns:
             if prev["ma5"] <= prev["ma20"] and latest["ma5"] > latest["ma20"]:
                 signals.append({
                     "type": "ma_cross_up",
-                    "name": "金叉",
-                    "description": "MA5 上穿 MA20",
+                    "name": "Golden Cross",
+                    "description": "MA5 crossed above MA20",
                     "bias": "bullish"
                 })
             elif prev["ma5"] >= prev["ma20"] and latest["ma5"] < latest["ma20"]:
                 signals.append({
                     "type": "ma_cross_down",
-                    "name": "死叉",
-                    "description": "MA5 下穿 MA20",
+                    "name": "Death Cross",
+                    "description": "MA5 crossed below MA20",
                     "bias": "bearish"
                 })
 
-        # MACD 信号
+        # MACD signals
         if "macd" in self.df.columns:
             if prev["macd_hist"] <= 0 and latest["macd_hist"] > 0:
                 signals.append({
                     "type": "macd_cross_up",
-                    "name": "MACD金叉",
-                    "description": "MACD 柱状线由负转正",
+                    "name": "MACD Golden Cross",
+                    "description": "MACD histogram turned from negative to positive",
                     "bias": "bullish"
                 })
             elif prev["macd_hist"] >= 0 and latest["macd_hist"] < 0:
                 signals.append({
                     "type": "macd_cross_down",
-                    "name": "MACD死叉",
-                    "description": "MACD 柱状线由正转负",
+                    "name": "MACD Death Cross",
+                    "description": "MACD histogram turned from positive to negative",
                     "bias": "bearish"
                 })
 
-        # KDJ 信号
+        # KDJ signals
         if "kdj_k" in self.df.columns:
-            # 超买超卖
+            # Overbought/Oversold
             if latest["kdj_j"] < 20:
                 signals.append({
                     "type": "kdj_oversold",
-                    "name": "KDJ超卖",
-                    "description": f"J值={latest['kdj_j']:.1f}，超卖区域",
+                    "name": "KDJ Oversold",
+                    "description": f"J value={latest['kdj_j']:.1f}, in oversold zone",
                     "bias": "bullish"
                 })
             elif latest["kdj_j"] > 80:
                 signals.append({
                     "type": "kdj_overbought",
-                    "name": "KDJ超买",
-                    "description": f"J值={latest['kdj_j']:.1f}，超买区域",
+                    "name": "KDJ Overbought",
+                    "description": f"J value={latest['kdj_j']:.1f}, in overbought zone",
                     "bias": "bearish"
                 })
 
-        # RSI 信号
+        # RSI signals
         if "rsi6" in self.df.columns:
             if latest["rsi6"] < 30:
                 signals.append({
                     "type": "rsi_oversold",
-                    "name": "RSI超卖",
-                    "description": f"RSI6={latest['rsi6']:.1f}，超卖区域",
+                    "name": "RSI Oversold",
+                    "description": f"RSI6={latest['rsi6']:.1f}, in oversold zone",
                     "bias": "bullish"
                 })
             elif latest["rsi6"] > 70:
                 signals.append({
                     "type": "rsi_overbought",
-                    "name": "RSI超买",
-                    "description": f"RSI6={latest['rsi6']:.1f}，超买区域",
+                    "name": "RSI Overbought",
+                    "description": f"RSI6={latest['rsi6']:.1f}, in overbought zone",
                     "bias": "bearish"
                 })
 

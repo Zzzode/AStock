@@ -1,4 +1,4 @@
-"""行业数据服务测试"""
+"""Industry data service tests"""
 
 import pytest
 import asyncio
@@ -18,7 +18,7 @@ from ..industry import (
 
 @pytest.fixture
 def temp_cache_dir(tmp_path: Path) -> Path:
-    """创建临时缓存目录"""
+    """Create temporary cache directory"""
     cache_dir = tmp_path / "cache"
     cache_dir.mkdir()
     return cache_dir
@@ -26,15 +26,15 @@ def temp_cache_dir(tmp_path: Path) -> Path:
 
 @pytest.fixture
 def industry_service(temp_cache_dir: Path) -> IndustryService:
-    """创建行业服务实例"""
+    """Create industry service instance"""
     return IndustryService(cache_dir=temp_cache_dir)
 
 
 class TestIndustryInfo:
-    """测试 IndustryInfo 数据类"""
+    """Test IndustryInfo data class"""
 
     def test_to_dict(self):
-        """测试转换为字典"""
+        """Test conversion to dictionary"""
         info = IndustryInfo(
             name="银行",
             code="BK0477",
@@ -49,7 +49,7 @@ class TestIndustryInfo:
         assert result["stock_count"] == 42
 
     def test_from_dict(self):
-        """测试从字典创建"""
+        """Test creation from dictionary"""
         data = {
             "name": "证券",
             "code": "BK0478",
@@ -64,10 +64,10 @@ class TestIndustryInfo:
 
 
 class TestStockIndustry:
-    """测试 StockIndustry 数据类"""
+    """Test StockIndustry data class"""
 
     def test_to_dict(self):
-        """测试转换为字典"""
+        """Test conversion to dictionary"""
         stock = StockIndustry(
             code="000001",
             name="平安银行",
@@ -81,7 +81,7 @@ class TestStockIndustry:
         assert result["industry"] == "银行"
 
     def test_from_dict(self):
-        """测试从字典创建"""
+        """Test creation from dictionary"""
         data = {
             "code": "600519",
             "name": "贵州茅台",
@@ -95,29 +95,29 @@ class TestStockIndustry:
 
 
 class TestIndustryCache:
-    """测试行业缓存"""
+    """Test industry cache"""
 
     def test_is_expired_with_empty_cache(self):
-        """测试空缓存是否过期"""
+        """Test whether empty cache is expired"""
         cache = IndustryCache()
         assert cache.is_expired() is True
 
     def test_is_expired_with_old_cache(self):
-        """测试过期缓存"""
+        """Test expired cache"""
         cache = IndustryCache(
             cached_at=(datetime.now() - timedelta(hours=25)).isoformat()
         )
         assert cache.is_expired() is True
 
     def test_is_expired_with_fresh_cache(self):
-        """测试新鲜缓存"""
+        """Test fresh cache"""
         cache = IndustryCache(
             cached_at=datetime.now().isoformat()
         )
         assert cache.is_expired() is False
 
     def test_to_dict_and_from_dict(self):
-        """测试序列化和反序列化"""
+        """Test serialization and deserialization"""
         cache = IndustryCache(
             industries={
                 "银行": IndustryInfo(name="银行", code="BK0477"),
@@ -132,13 +132,13 @@ class TestIndustryCache:
             cached_at=datetime.now().isoformat(),
         )
 
-        # 序列化
+        # Serialize
         data = cache.to_dict()
         assert "industries" in data
         assert "stock_industries" in data
         assert "industry_stocks" in data
 
-        # 反序列化
+        # Deserialize
         restored = IndustryCache.from_dict(data)
         assert len(restored.industries) == 2
         assert "银行" in restored.industries
@@ -146,17 +146,17 @@ class TestIndustryCache:
 
 
 class TestIndustryService:
-    """测试行业服务"""
+    """Test industry service"""
 
     def test_initialization(self, industry_service: IndustryService):
-        """测试服务初始化"""
+        """Test service initialization"""
         assert industry_service.cache_dir.exists()
         assert industry_service._cache is None
         assert industry_service._initialized is False
 
     @pytest.mark.asyncio
     async def test_initialize_offline(self, industry_service: IndustryService):
-        """测试离线初始化"""
+        """Test offline initialization"""
         os.environ["ASTOCK_OFFLINE"] = "1"
         try:
             await industry_service.initialize()
@@ -168,7 +168,7 @@ class TestIndustryService:
 
     @pytest.mark.asyncio
     async def test_get_industry_names_offline(self, industry_service: IndustryService):
-        """测试获取行业名称列表（离线）"""
+        """Test getting industry name list (offline)"""
         os.environ["ASTOCK_OFFLINE"] = "1"
         try:
             names = await industry_service.get_industry_names()
@@ -179,7 +179,7 @@ class TestIndustryService:
 
     @pytest.mark.asyncio
     async def test_get_stock_industry_offline(self, industry_service: IndustryService):
-        """测试获取股票行业（离线）"""
+        """Test getting stock industry (offline)"""
         os.environ["ASTOCK_OFFLINE"] = "1"
         try:
             stock_industry = await industry_service.get_stock_industry("000001")
@@ -191,14 +191,14 @@ class TestIndustryService:
 
     @pytest.mark.asyncio
     async def test_get_stock_industry_cache(self, industry_service: IndustryService):
-        """测试股票行业缓存"""
+        """Test stock industry caching"""
         os.environ["ASTOCK_OFFLINE"] = "1"
         try:
-            # 第一次获取
+            # First retrieval
             result1 = await industry_service.get_stock_industry("000001")
             assert result1 is not None
 
-            # 第二次应该从缓存获取
+            # Second retrieval should come from cache
             result2 = await industry_service.get_stock_industry("000001")
             assert result2 is not None
             assert result1.industry == result2.industry
@@ -207,19 +207,19 @@ class TestIndustryService:
 
     @pytest.mark.asyncio
     async def test_filter_by_industry_offline(self, industry_service: IndustryService):
-        """测试按行业筛选（离线）"""
+        """Test filtering by industry (offline)"""
         os.environ["ASTOCK_OFFLINE"] = "1"
         try:
             codes = ["000001", "000002", "600519"]
 
-            # 只选银行
+            # Select only banking
             filtered = await industry_service.filter_by_industry(
                 codes, include_industries=["银行"]
             )
             assert "000001" in filtered
             assert "600519" not in filtered
 
-            # 排除银行
+            # Exclude banking
             excluded = await industry_service.filter_by_industry(
                 codes, exclude_industries=["银行"]
             )
@@ -229,18 +229,18 @@ class TestIndustryService:
 
     @pytest.mark.asyncio
     async def test_cache_persistence(self, industry_service: IndustryService):
-        """测试缓存持久化"""
+        """Test cache persistence"""
         os.environ["ASTOCK_OFFLINE"] = "1"
         try:
-            # 初始化并获取数据
+            # Initialize and get data
             await industry_service.initialize()
             await industry_service.get_stock_industry("000001")
 
-            # 创建新实例
+            # Create new instance
             new_service = IndustryService(cache_dir=industry_service.cache_dir)
             await new_service.initialize()
 
-            # 应该从缓存加载
+            # Should load from cache
             assert new_service._cache is not None
             assert not new_service._cache.is_expired()
         finally:
@@ -248,10 +248,10 @@ class TestIndustryService:
 
 
 class TestGetIndustryService:
-    """测试全局服务实例"""
+    """Test global service instance"""
 
     def test_singleton(self):
-        """测试单例模式"""
+        """Test singleton pattern"""
         service1 = get_industry_service()
         service2 = get_industry_service()
         assert service1 is service2

@@ -1,4 +1,4 @@
-"""邮件配置模型"""
+"""Email configuration model"""
 
 import os
 from typing import Optional
@@ -7,50 +7,50 @@ from pydantic import BaseModel, Field
 
 
 class EmailConfig(BaseModel):
-    """邮件配置"""
+    """Email configuration"""
 
-    # SMTP 服务器设置
-    smtp_host: str = Field(default="smtp.qq.com", description="SMTP服务器地址")
-    smtp_port: int = Field(default=465, description="SMTP端口")
-    use_ssl: bool = Field(default=True, description="是否使用SSL加密")
-    use_tls: bool = Field(default=False, description="是否使用TLS加密")
+    # SMTP server settings
+    smtp_host: str = Field(default="smtp.qq.com", description="SMTP server address")
+    smtp_port: int = Field(default=465, description="SMTP port")
+    use_ssl: bool = Field(default=True, description="Whether to use SSL encryption")
+    use_tls: bool = Field(default=False, description="Whether to use TLS encryption")
 
-    # 发件人信息
-    sender_email: str = Field(default="", description="发件人邮箱地址")
-    sender_password: str = Field(default="", description="发件人密码/授权码")
-    sender_name: str = Field(default="A股交易告警系统", description="发件人显示名称")
+    # Sender information
+    sender_email: str = Field(default="", description="Sender email address")
+    sender_password: str = Field(default="", description="Sender password/auth code")
+    sender_name: str = Field(default="A股交易告警系统", description="Sender display name")
 
-    # 收件人列表
-    recipients: list[str] = Field(default_factory=list, description="收件人邮箱列表")
+    # Recipient list
+    recipients: list[str] = Field(default_factory=list, description="Recipient email list")
 
-    # 邮件内容设置
-    subject_prefix: str = Field(default="[A股告警]", description="邮件主题前缀")
+    # Email content settings
+    subject_prefix: str = Field(default="[A股告警]", description="Email subject prefix")
 
     def is_configured(self) -> bool:
-        """检查邮件是否已配置完整
+        """Check whether email is fully configured
 
         Returns:
-            是否已配置
+            Whether configured
         """
         return bool(self.sender_email and self.sender_password and self.recipients)
 
     @classmethod
     def from_env(cls) -> "EmailConfig":
-        """从环境变量加载邮件配置
+        """Load email configuration from environment variables
 
-        环境变量:
-            EMAIL_SMTP_HOST: SMTP服务器地址
-            EMAIL_SMTP_PORT: SMTP端口
-            EMAIL_USE_SSL: 是否使用SSL
-            EMAIL_USE_TLS: 是否使用TLS
-            EMAIL_SENDER: 发件人邮箱
-            EMAIL_PASSWORD: 发件人密码/授权码
-            EMAIL_SENDER_NAME: 发件人显示名称
-            EMAIL_RECIPIENTS: 收件人列表(逗号分隔)
-            EMAIL_SUBJECT_PREFIX: 邮件主题前缀
+        Environment variables:
+            EMAIL_SMTP_HOST: SMTP server address
+            EMAIL_SMTP_PORT: SMTP port
+            EMAIL_USE_SSL: Whether to use SSL
+            EMAIL_USE_TLS: Whether to use TLS
+            EMAIL_SENDER: Sender email
+            EMAIL_PASSWORD: Sender password/auth code
+            EMAIL_SENDER_NAME: Sender display name
+            EMAIL_RECIPIENTS: Recipient list (comma-separated)
+            EMAIL_SUBJECT_PREFIX: Email subject prefix
 
         Returns:
-            EmailConfig 实例
+            EmailConfig instance
         """
         recipients_str = os.getenv("EMAIL_RECIPIENTS", "")
         recipients = [r.strip() for r in recipients_str.split(",") if r.strip()]
@@ -68,10 +68,10 @@ class EmailConfig(BaseModel):
         )
 
     def to_dict(self) -> dict:
-        """转换为字典格式
+        """Convert to dictionary format
 
         Returns:
-            配置字典
+            Configuration dictionary
         """
         return {
             "smtp_host": self.smtp_host,
@@ -79,7 +79,7 @@ class EmailConfig(BaseModel):
             "use_ssl": self.use_ssl,
             "use_tls": self.use_tls,
             "sender_email": self.sender_email,
-            "sender_password": "***",  # 隐藏密码
+            "sender_password": "***",  # Hide password
             "sender_name": self.sender_name,
             "recipients": self.recipients,
             "subject_prefix": self.subject_prefix,

@@ -1,4 +1,4 @@
-"""数据获取模块"""
+"""Data fetching module"""
 
 from .industry import IndustryService, IndustryInfo, StockIndustry, get_industry_service
 

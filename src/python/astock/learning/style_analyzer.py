@@ -1,6 +1,6 @@
-"""交易风格分析器
+"""Trading style analyzer
 
-基于用户历史交易数据分析交易风格和风险偏好。
+Analyzes trading style and risk preferences based on user historical trading data.
 """
 
 from dataclasses import dataclass, field
@@ -14,87 +14,87 @@ from astock.config import ConfigManager, RiskLevel, TradingStyle
 
 @dataclass
 class StyleAnalysis:
-    """风格分析结果"""
+    """Style analysis result"""
 
     user_id: str
 
-    # 交易频率分析
-    trade_frequency: float = 0.0  # 月均交易次数
-    avg_holding_days: float = 0.0  # 平均持仓天数
-    total_trades: int = 0  # 总交易次数
+    # Trade frequency analysis
+    trade_frequency: float = 0.0  # Average monthly trades
+    avg_holding_days: float = 0.0  # Average holding period in days
+    total_trades: int = 0  # Total number of trades
 
-    # 盈亏分析
-    win_rate: float = 0.0  # 胜率
-    profit_loss_ratio: float = 0.0  # 盈亏比
-    total_profit: float = 0.0  # 总盈亏
+    # Profit/loss analysis
+    win_rate: float = 0.0  # Win rate
+    profit_loss_ratio: float = 0.0  # Profit/loss ratio
+    total_profit: float = 0.0  # Total profit/loss
 
-    # 推断结果
+    # Inferred results
     trading_style: TradingStyle = TradingStyle.SWING
     risk_level: RiskLevel = RiskLevel.MODERATE
 
-    # 分析时间
+    # Analysis timestamp
     analyzed_at: datetime = field(default_factory=datetime.now)
 
-    # 行业偏好
+    # Sector preferences
     preferred_sectors: list[str] = field(default_factory=list)
 
-    # 置信度
-    confidence: float = 0.0  # 分析置信度 (0-1)
+    # Confidence
+    confidence: float = 0.0  # Analysis confidence (0-1)
 
 
 class StyleAnalyzer:
-    """交易风格分析器
+    """Trading style analyzer
 
-    分析用户历史交易数据，推断交易风格和风险偏好。
+    Analyzes user historical trading data to infer trading style and risk preferences.
     """
 
     def __init__(self, data_source: Optional[object] = None):
-        """初始化风格分析器
+        """Initialize style analyzer
 
         Args:
-            data_source: 数据源，用于获取交易记录
+            data_source: Data source for fetching trade records
         """
         self.data_source = data_source
-        self.min_trades_for_analysis = 5  # 最少交易次数要求
+        self.min_trades_for_analysis = 5  # Minimum trade count required
 
     def analyze(self, user_id: str) -> StyleAnalysis:
-        """分析用户交易风格
+        """Analyze user trading style
 
         Args:
-            user_id: 用户ID
+            user_id: User ID
 
         Returns:
-            风格分析结果
+            Style analysis result
         """
-        # 获取用户交易数据
+        # Get user trade data
         df = self._get_trade_data(user_id)
 
         if df is None or len(df) < self.min_trades_for_analysis:
-            # 数据不足，返回默认值
+            # Insufficient data, return defaults
             return StyleAnalysis(
                 user_id=user_id,
                 confidence=0.0,
             )
 
-        # 计算交易频率
+        # Calculate trade frequency
         frequency = self._calculate_trade_frequency(df)
 
-        # 计算持仓天数
+        # Calculate holding days
         holding_days = self._estimate_holding_days(df)
 
-        # 计算盈亏数据
+        # Calculate profit/loss metrics
         win_rate, profit_loss_ratio, total_profit = self._calculate_profit_metrics(df)
 
-        # 推断交易风格
+        # Infer trading style
         trading_style = self._infer_trading_style(frequency, holding_days)
 
-        # 推断风险偏好
+        # Infer risk preference
         risk_level = self._infer_risk_level(frequency, win_rate)
 
-        # 分析行业偏好
+        # Analyze sector preference
         preferred_sectors = self._analyze_sector_preference(df)
 
-        # 计算置信度
+        # Calculate confidence
         confidence = self._calculate_confidence(df)
 
         return StyleAnalysis(
@@ -112,28 +112,28 @@ class StyleAnalyzer:
         )
 
     def _get_trade_data(self, user_id: str) -> Optional[pd.DataFrame]:
-        """获取用户交易数据
+        """Get user trade data
 
         Args:
-            user_id: 用户ID
+            user_id: User ID
 
         Returns:
-            交易数据 DataFrame，包含列:
-            - code: 股票代码
-            - direction: 买卖方向 (buy/sell)
-            - price: 成交价格
-            - quantity: 成交数量
-            - traded_at: 交易时间
-            - sector: 行业 (可选)
+            Trade data DataFrame with columns:
+            - code: Stock code
+            - direction: Trade direction (buy/sell)
+            - price: Execution price
+            - quantity: Execution quantity
+            - traded_at: Trade timestamp
+            - sector: Industry sector (optional)
         """
         if self.data_source is not None:
-            # 使用数据源获取数据
+            # Use data source to get data
             if hasattr(self.data_source, "get_trades"):
                 trades = self.data_source.get_trades(user_id)
                 if trades:
                     return pd.DataFrame([t.model_dump() for t in trades])
 
-        # 尝试从数据库获取
+        # Try to fetch from database
         try:
             from astock.storage.database import Database
 
@@ -144,29 +144,29 @@ class StyleAnalyzer:
         except Exception:
             pass
 
-        # 返回空 DataFrame 用于测试
+        # Return empty DataFrame for testing
         return pd.DataFrame()
 
     def _calculate_trade_frequency(self, df: pd.DataFrame) -> float:
-        """计算交易频率 (月均交易次数)
+        """Calculate trade frequency (average monthly trades)
 
         Args:
-            df: 交易数据 DataFrame
+            df: Trade data DataFrame
 
         Returns:
-            月均交易次数
+            Average monthly trade count
         """
         if len(df) == 0:
             return 0.0
 
-        # 确保 traded_at 是 datetime 类型
+        # Ensure traded_at is datetime type
         if "traded_at" not in df.columns:
             return 0.0
 
         df = df.copy()
         df["traded_at"] = pd.to_datetime(df["traded_at"])
 
-        # 计算时间跨度
+        # Calculate time span
         min_date = df["traded_at"].min()
         max_date = df["traded_at"].max()
 
@@ -175,22 +175,22 @@ class StyleAnalyzer:
 
         days = (max_date - min_date).days
         if days == 0:
-            # 单日交易
+            # Single day trading
             return float(len(df))
 
         months = days / 30.0
         return float(round(len(df) / months, 2))
 
     def _estimate_holding_days(self, df: pd.DataFrame) -> float:
-        """估算平均持仓天数
+        """Estimate average holding days
 
-        通过配对买卖记录估算持仓时间。
+        Estimates holding period by matching buy/sell records.
 
         Args:
-            df: 交易数据 DataFrame
+            df: Trade data DataFrame
 
         Returns:
-            平均持仓天数
+            Average holding days
         """
         if len(df) == 0:
             return 0.0
@@ -205,7 +205,7 @@ class StyleAnalyzer:
 
         holding_days_list = []
 
-        # 按 code 分组，配对买卖记录
+        # Group by code, match buy/sell records
         for code, group in df.groupby("code"):
             buys = group[group["direction"] == "buy"].copy()
             sells = group[group["direction"] == "sell"].copy()
@@ -213,9 +213,9 @@ class StyleAnalyzer:
             if len(buys) == 0 or len(sells) == 0:
                 continue
 
-            # 简单 FIFO 配对
+            # Simple FIFO matching
             for _, sell in sells.iterrows():
-                # 找到最近的买入记录
+                # Find the most recent buy record
                 buy = buys[buys["traded_at"] < sell["traded_at"]]
                 if len(buy) > 0:
                     buy_date = buy.iloc[-1]["traded_at"]
@@ -232,13 +232,13 @@ class StyleAnalyzer:
     def _calculate_profit_metrics(
         self, df: pd.DataFrame
     ) -> tuple[float, float, float]:
-        """计算盈亏指标
+        """Calculate profit/loss metrics
 
         Args:
-            df: 交易数据 DataFrame
+            df: Trade data DataFrame
 
         Returns:
-            (胜率, 盈亏比, 总盈亏)
+            (win_rate, profit_loss_ratio, total_profit)
         """
         if len(df) == 0:
             return 0.0, 0.0, 0.0
@@ -253,7 +253,7 @@ class StyleAnalyzer:
 
         profits = []
 
-        # 按 code 分组计算盈亏
+        # Group by code to calculate profit/loss
         for code, group in df.groupby("code"):
             buys = group[group["direction"] == "buy"].copy()
             sells = group[group["direction"] == "sell"].copy()
@@ -261,7 +261,7 @@ class StyleAnalyzer:
             if len(buys) == 0 or len(sells) == 0:
                 continue
 
-            # 简单 FIFO 配对计算盈亏
+            # Simple FIFO matching for profit/loss calculation
             buy_queue = []
             for _, trade in group.iterrows():
                 if trade["direction"] == "buy":
@@ -291,17 +291,17 @@ class StyleAnalyzer:
         if len(profits) == 0:
             return 0.0, 0.0, 0.0
 
-        # 计算胜率
+        # Calculate win rate
         wins = [p for p in profits if p > 0]
         losses = [p for p in profits if p < 0]
         win_rate = len(wins) / len(profits) if profits else 0.0
 
-        # 计算盈亏比
+        # Calculate profit/loss ratio
         avg_win = sum(wins) / len(wins) if wins else 0.0
         avg_loss = abs(sum(losses) / len(losses)) if losses else 1.0
         profit_loss_ratio = avg_win / avg_loss if avg_loss > 0 else 0.0
 
-        # 总盈亏
+        # Total profit/loss
         total_profit = sum(profits)
 
         return round(win_rate, 2), round(profit_loss_ratio, 2), round(total_profit, 2)
@@ -309,95 +309,95 @@ class StyleAnalyzer:
     def _infer_trading_style(
         self, frequency: float, holding_days: float
     ) -> TradingStyle:
-        """推断交易风格
+        """Infer trading style
 
         Args:
-            frequency: 月均交易次数
-            holding_days: 平均持仓天数
+            frequency: Average monthly trade count
+            holding_days: Average holding days
 
         Returns:
-            交易风格
+            Trading style
         """
-        # 日内交易: 高频 + 短持仓
+        # Day Trading: high frequency + short holding
         if frequency > 20 and holding_days <= 1:
             return TradingStyle.DAY_TRADING
 
-        # 波段交易: 中频 + 中等持仓
+        # Swing Trading: medium frequency + medium holding
         if frequency >= 5 and holding_days <= 30:
             return TradingStyle.SWING
 
-        # 趋势跟踪: 中低频 + 较长持仓
+        # Trend Following: medium-low frequency + longer holding
         if frequency >= 2 and holding_days <= 90:
             return TradingStyle.TREND_FOLLOWING
 
-        # 价值投资: 低频 + 长期持仓
+        # Value Investing: low frequency + long-term holding
         return TradingStyle.VALUE_INVESTING
 
     def _infer_risk_level(self, frequency: float, win_rate: float) -> RiskLevel:
-        """推断风险偏好
+        """Infer risk preference
 
         Args:
-            frequency: 月均交易次数
-            win_rate: 胜率
+            frequency: Average monthly trade count
+            win_rate: Win rate
 
         Returns:
-            风险等级
+            Risk level
         """
-        # 激进型: 高频交易 或 胜率较低但仍在交易
+        # Aggressive: high-frequency trading or low win rate but still trading
         if frequency > 15 or (frequency > 5 and win_rate < 0.4):
             return RiskLevel.AGGRESSIVE
 
-        # 保守型: 低频 且 高胜率
+        # Conservative: low frequency and high win rate
         if frequency < 5 and win_rate > 0.6:
             return RiskLevel.CONSERVATIVE
 
-        # 稳健型
+        # Moderate
         return RiskLevel.MODERATE
 
     def _analyze_sector_preference(self, df: pd.DataFrame) -> list[str]:
-        """分析行业偏好
+        """Analyze sector preference
 
         Args:
-            df: 交易数据 DataFrame
+            df: Trade data DataFrame
 
         Returns:
-            偏好行业列表
+            Preferred sector list
         """
         if len(df) == 0 or "sector" not in df.columns:
             return []
 
-        # 统计各行业交易次数
+        # Count trades per sector
         sector_counts = df["sector"].value_counts()
 
-        # 返回交易次数最多的前 3 个行业
+        # Return top 3 sectors by trade count
         return list(sector_counts.head(3).index)
 
     def _calculate_confidence(self, df: pd.DataFrame) -> float:
-        """计算分析置信度
+        """Calculate analysis confidence
 
-        数据越多，置信度越高。
+        More data leads to higher confidence.
 
         Args:
-            df: 交易数据 DataFrame
+            df: Trade data DataFrame
 
         Returns:
-            置信度 (0-1)
+            Confidence (0-1)
         """
         trade_count = len(df)
 
         if trade_count < self.min_trades_for_analysis:
             return 0.0
 
-        # 基础置信度
+        # Base confidence
         confidence = min(1.0, trade_count / 50.0)
 
-        # 时间跨度加成
+        # Time span bonus
         if "traded_at" in df.columns:
             df = df.copy()
             df["traded_at"] = pd.to_datetime(df["traded_at"])
             days = (df["traded_at"].max() - df["traded_at"].min()).days
 
-            # 跨度 3 个月以上加成
+            # Bonus for span over 3 months
             if days > 90:
                 confidence = min(1.0, confidence * 1.2)
             elif days > 30:
@@ -408,24 +408,24 @@ class StyleAnalyzer:
     def update_user_config(
         self, user_id: str, config_manager: Optional[ConfigManager] = None
     ) -> StyleAnalysis:
-        """分析并更新用户配置
+        """Analyze and update user configuration
 
-        根据交易风格分析结果更新用户配置。
+        Updates user configuration based on trading style analysis results.
 
         Args:
-            user_id: 用户ID
-            config_manager: 配置管理器，如果为 None 则创建新的
+            user_id: User ID
+            config_manager: Configuration manager, creates a new one if None
 
         Returns:
-            风格分析结果
+            Style analysis result
         """
         if config_manager is None:
             config_manager = ConfigManager()
 
-        # 分析交易风格
+        # Analyze trading style
         analysis = self.analyze(user_id)
 
-        # 仅在有足够数据时更新配置
+        # Only update config when sufficient data is available
         if analysis.confidence > 0.5:
             config_manager.update(
                 user_id,

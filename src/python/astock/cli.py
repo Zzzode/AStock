@@ -1,7 +1,9 @@
-"""CLI 入口"""
+"""CLI Entry Point"""
 
 import asyncio
+from contextlib import nullcontext, redirect_stdout
 import json
+import sys
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, Any
@@ -26,19 +28,36 @@ from .utils import DataSourceError, ValidationError
 app = typer.Typer(name="astock")
 console = Console()
 
-# 默认数据库路径
+# Default database path
 DB_PATH = Path(__file__).parent.parent.parent.parent / "data" / "stocks.db"
 
-# 全局监控服务实例
+# Global monitor service instance
 _monitor_service: Optional[MonitorService] = None
+
+
+def _print_json(data: Any) -> None:
+    """Output clean JSON to stdout, avoiding Rich or log pollution."""
+    sys.stdout.write(json.dumps(data, ensure_ascii=False, indent=2))
+    sys.stdout.write("\n")
+
+
+def _json_stdout_guard(enabled: bool):
+    """In JSON mode, redirect third-party stdout noise to stderr."""
+    return redirect_stdout(sys.stderr) if enabled else nullcontext()
+
+
+def _run_async(coro: Any, json_output: bool) -> Any:
+    """Run async task; isolate stdout noise in JSON mode."""
+    with _json_stdout_guard(json_output):
+        return asyncio.run(coro)
 
 
 @app.command()
 def quote(
-    code: str = typer.Argument(..., help="股票代码"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    code: str = typer.Argument(..., help="Stock code"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """获取实时行情"""
+    """Get real-time quote"""
 
     async def _get_quote() -> dict[str, Any]:
         db = Database(str(DB_PATH))
@@ -51,47 +70,49 @@ def quote(
             await db.close()
 
     try:
-        result = asyncio.run(_get_quote())
+        result = _run_async(_get_quote(), json_output)
     except (ValidationError, DataSourceError) as e:
         if json_output:
-            console.print_json(data={"error": str(e)})
+            _print_json({"error": str(e)})
         else:
-            console.print(f"[red]错误: {e}[/red]")
+            console.print(f"[red]Error: {e}[/red]")
         raise typer.Exit(1)
     except Exception as e:
         if json_output:
-            console.print_json(data={"error": f"获取实时行情失败: {e}"})
+            _print_json({"error": f"Failed to get real-time quote: {e}"})
         else:
-            console.print(f"[red]错误: 获取实时行情失败: {e}[/red]")
+            console.print(f"[red]Error: Failed to get real-time quote: {e}[/red]")
         raise typer.Exit(1)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
         table = Table(title=f"{result['name']} ({result['code']})")
-        table.add_column("指标", style="cyan")
-        table.add_column("数值", style="green")
+        table.add_column("Metric", style="cyan")
+        table.add_column("Value", style="green")
 
-        table.add_row("最新价", f"{result['price']:.2f}")
-        table.add_row("涨跌幅", f"{result['change_percent']:.2f}%")
-        table.add_row("涨跌额", f"{result['change']:.2f}")
-        table.add_row("今开", f"{result['open']:.2f}")
-        table.add_row("最高", f"{result['high']:.2f}")
-        table.add_row("最低", f"{result['low']:.2f}")
-        table.add_row("昨收", f"{result['prev_close']:.2f}")
-        table.add_row("成交量", f"{result['volume'] / 10000:.0f}万手")
-        table.add_row("成交额", f"{result['amount'] / 100000000:.2f}亿")
+        table.add_row("Latest Price", f"{result['price']:.2f}")
+        table.add_row("Change %", f"{result['change_percent']:.2f}%")
+        table.add_row("Change", f"{result['change']:.2f}")
+        table.add_row("Open", f"{result['open']:.2f}")
+        table.add_row("High", f"{result['high']:.2f}")
+        table.add_row("Low", f"{result['low']:.2f}")
+        table.add_row("Prev Close", f"{result['prev_close']:.2f}")
+        table.add_row("Volume", f"{result['volume'] / 10000:.0f}0k lots")
+        table.add_row("Turnover", f"{result['amount'] / 100000000:.2f}B")
 
         console.print(table)
+        if result.get("data_quality"):
+            console.print(f"[dim]Data quality: {result['data_quality']}[/dim]")
 
 
 @app.command()
 def analyze(
-    code: str = typer.Argument(..., help="股票代码"),
-    days: int = typer.Option(100, "--days", "-d", help="分析天数"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    code: str = typer.Argument(..., help="Stock code"),
+    days: int = typer.Option(100, "--days", "-d", help="Number of days to analyze"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """技术分析 - 输出原始数据和信号，由 LLM 进行推理分析"""
+    """Technical analysis - outputs raw data and signals for LLM reasoning"""
 
     async def _analyze() -> dict[str, Any]:
         db = Database(str(DB_PATH))
@@ -105,42 +126,42 @@ def analyze(
             await db.close()
 
     try:
-        result = asyncio.run(_analyze())
+        result = _run_async(_analyze(), json_output)
     except (ValidationError, DataSourceError) as e:
         if json_output:
-            console.print_json(data={"error": str(e)})
+            _print_json({"error": str(e)})
         else:
-            console.print(f"[red]错误: {e}[/red]")
+            console.print(f"[red]Error: {e}[/red]")
         raise typer.Exit(1)
     except Exception as e:
         if json_output:
-            console.print_json(data={"error": f"技术分析失败: {e}"})
+            _print_json({"error": f"Technical analysis failed: {e}"})
         else:
-            console.print(f"[red]错误: 技术分析失败: {e}[/red]")
+            console.print(f"[red]Error: Technical analysis failed: {e}[/red]")
         raise typer.Exit(1)
 
-    # 检查错误
+    # Check for errors
     if result.get("error"):
         if json_output:
-            console.print_json(data=result)
+            _print_json(result)
         else:
-            console.print(f"[red]错误: {result['error']}[/red]")
+            console.print(f"[red]Error: {result['error']}[/red]")
         raise typer.Exit(1)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
-        # 显示股票名称
+        # Display stock name
         name = result.get("name")
-        title = f"技术分析 - {name} ({code})" if name else f"技术分析 - {code}"
+        title = f"Technical Analysis - {name} ({code})" if name else f"Technical Analysis - {code}"
 
-        # 显示技术指标
+        # Display technical indicators
         indicators = result.get("indicators", {})
         prev_indicators = result.get("prev_indicators", {})
 
         panel_content = f"""
-[bold cyan]价格指标[/bold cyan]
-收盘价: {indicators.get("close", 0):.2f}  (前日: {prev_indicators.get("close", 0):.2f})
+[bold cyan]Price Indicators[/bold cyan]
+Close: {indicators.get("close", 0):.2f}  (Previous: {prev_indicators.get("close", 0):.2f})
 MA5: {indicators.get("ma5", 0):.2f}
 MA10: {indicators.get("ma10", 0):.2f}
 MA20: {indicators.get("ma20", 0):.2f}
@@ -148,7 +169,7 @@ MA20: {indicators.get("ma20", 0):.2f}
 [bold cyan]MACD[/bold cyan]
 DIF: {indicators.get("macd", 0):.4f}
 DEA: {indicators.get("macd_signal", 0):.4f}
-柱: {indicators.get("macd_hist", 0):.4f}
+Histogram: {indicators.get("macd_hist", 0):.4f}
 
 [bold cyan]KDJ[/bold cyan]
 K: {indicators.get("kdj_k", 0):.2f}
@@ -160,46 +181,161 @@ RSI6: {indicators.get("rsi6", 0):.2f}
 """
         console.print(Panel(panel_content, title=title))
 
-        # 显示信号
+        # Display signals
         signals = result.get("signals", [])
         signal_stats = result.get("signal_stats", {})
 
         if signals:
-            console.print(f"\n[bold yellow]检测到的信号 ({signal_stats.get('bullish_count', 0)}多/{signal_stats.get('bearish_count', 0)}空):[/bold yellow]")
+            console.print(f"\n[bold yellow]Detected Signals ({signal_stats.get('bullish_count', 0)} bullish/{signal_stats.get('bearish_count', 0)} bearish):[/bold yellow]")
             for signal in signals:
                 bias_color = "green" if signal.get("bias") == "bullish" else "red"
                 current = signal.get("current", {})
                 current_str = ", ".join(f"{k}={v:.2f}" if isinstance(v, float) else f"{k}={v}" for k, v in current.items())
                 console.print(f"  [{bias_color}]●[/{bias_color}] {signal.get('name', signal.get('type'))}: {current_str}")
 
-        # 显示历史上下文
+        # Display historical context
         history = result.get("history", {})
         if history.get("recent_analyses"):
-            console.print(f"\n[bold dim]近期分析历史:[/bold dim]")
+            console.print(f"\n[bold dim]Recent Analysis History:[/bold dim]")
             for h in history["recent_analyses"][:3]:
                 signals_str = ", ".join(h.get("signals", []))
                 console.print(f"  {h.get('date', '')}: {signals_str}")
 
-        # 显示反馈统计
+        # Display feedback statistics
         feedback_stats = result.get("feedback_stats", {})
         if feedback_stats.get("overall"):
             overall = feedback_stats["overall"]
-            console.print(f"\n[bold dim]用户反馈统计:[/bold dim]")
-            console.print(f"  总样本: {overall.get('total', 0)}, 成功率: {overall.get('success_rate', 0):.0%}")
+            console.print(f"\n[bold dim]User Feedback Statistics:[/bold dim]")
+            console.print(f"  Total samples: {overall.get('total', 0)}, Success rate: {overall.get('success_rate', 0):.0%}")
 
-        # 显示行情
+        # Display quote
         quote = result.get("quote", {})
         if quote:
-            console.print(f"\n[bold cyan]实时行情:[/bold cyan]")
-            console.print(f"  最新价: {quote.get('price', 0):.2f}  涨跌幅: {quote.get('change_percent', 0):+.2f}%")
-            console.print(f"  成交额: {quote.get('amount', 0) / 100000000:.2f}亿")
+            console.print(f"\n[bold cyan]Real-time Quote:[/bold cyan]")
+            console.print(f"  Latest price: {quote.get('price', 0):.2f}  Change: {quote.get('change_percent', 0):+.2f}%")
+            console.print(f"  Turnover: {quote.get('amount', 0) / 100000000:.2f}B")
+            if quote.get("data_quality"):
+                console.print(f"  Data quality: {quote.get('data_quality')}")
+
+        data_quality = result.get("data_quality", {})
+        if data_quality:
+            console.print(f"\n[bold dim]Data Quality:[/bold dim]")
+            console.print(f"  Daily: {data_quality.get('daily', 'unknown')}")
+            console.print(f"  Quote: {data_quality.get('quote', 'unknown')}")
+
+
+@app.command()
+def team(
+    code: str = typer.Argument(..., help="Stock code"),
+    question: str = typer.Option("Is now a good time to enter?", "--question", "-q", help="Analysis question"),
+    days: int = typer.Option(100, "--days", "-d", help="Number of days to analyze"),
+    user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Team comprehensive analysis"""
+
+    async def _team() -> dict[str, Any]:
+        db = Database(str(DB_PATH))
+        await db.connect()
+        try:
+            from .services import TeamAnalysisService
+
+            service = TeamAnalysisService(db)
+            result = await service.analyze(
+                code,
+                question=question,
+                days=days,
+                user_id=user_id,
+            )
+            return service.to_dict(result)
+        finally:
+            await db.close()
+
+    try:
+        result = _run_async(_team(), json_output)
+    except (ValidationError, DataSourceError) as e:
+        if json_output:
+            _print_json({"error": str(e)})
+        else:
+            console.print(f"[red]Error: {e}[/red]")
+        raise typer.Exit(1)
+    except Exception as e:
+        if json_output:
+            _print_json({"error": f"Team analysis failed: {e}"})
+        else:
+            console.print(f"[red]Error: Team analysis failed: {e}[/red]")
+        raise typer.Exit(1)
+
+    if result.get("error"):
+        if json_output:
+            _print_json(result)
+        else:
+            console.print(f"[red]Error: {result['error']}[/red]")
+        raise typer.Exit(1)
+
+    if json_output:
+        _print_json(result)
+        return
+
+    orchestration = result.get("orchestration", {})
+    active_agents = orchestration.get("active_agent_ids", [])
+    summary_panel = (
+        f"Target: {result.get('name') or code} ({result['code']})\n"
+        f"Question: {result['question']}\n"
+        f"Status: {result['summary']}\n"
+        f"Recommended expansion: {', '.join(result.get('recommended_roles', ['core']))}\n"
+        f"Active roles: {', '.join(active_agents) if active_agents else 'core'}"
+    )
+    console.print(Panel(summary_panel, title="Agent Team Data Packet"))
+
+    packet = result.get("packet", {})
+    packet_table = Table(title="Data Packet Status")
+    packet_table.add_column("Module", style="cyan")
+    packet_table.add_column("Available", style="green", width=8)
+    packet_table.add_column("Note", style="white")
+
+    for module in ["quote", "analysis", "screen", "config", "profiles"]:
+        exists = module in packet
+        packet_table.add_row(
+            module,
+            "yes" if exists else "no",
+            "-" if exists else "missing",
+        )
+
+    console.print(packet_table)
+
+    warnings = result.get("warnings", [])
+    if warnings:
+        console.print("\n[bold red]Risk Warnings:[/bold red]")
+        for item in warnings:
+            console.print(f"  - {item}")
+
+    data_quality = result.get("data_quality", {})
+    if data_quality:
+        console.print("\n[bold dim]Data Quality:[/bold dim]")
+        console.print(f"  Quote: {data_quality.get('quote', 'unknown')}")
+        analysis_quality = data_quality.get("analysis", {})
+        if analysis_quality:
+            console.print(f"  Daily: {analysis_quality.get('daily', 'unknown')}")
+        screen_quality = data_quality.get("screen", {})
+        if screen_quality:
+            console.print(f"  Strategy: {screen_quality.get('data_quality', 'unknown')}")
+
+    lead_rules = orchestration.get("lead_rules", [])
+    if lead_rules:
+        console.print("\n[bold cyan]Execution Principles:[/bold cyan]")
+        for item in lead_rules:
+            console.print(f"  - {item}")
+
+    if result.get("session_path"):
+        console.print(f"\n[dim]Session saved: {result['session_path']}[/dim]")
 
 
 @app.command()
 def init_db(
-    skip_refresh: bool = typer.Option(False, "--skip-refresh", help="跳过刷新股票数据"),
+    skip_refresh: bool = typer.Option(False, "--skip-refresh", help="Skip refreshing stock data"),
 ) -> None:
-    """初始化数据库"""
+    """Initialize database"""
 
     async def _init() -> int:
         DB_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -216,28 +352,28 @@ def init_db(
         return count
 
     count = asyncio.run(_init())
-    console.print(f"[green]数据库初始化完成，已加载 {count} 只股票[/green]")
+    console.print(f"[green]Database initialized, loaded {count} stocks[/green]")
 
 
-# ============ Alert 命令组 ============
+# ============ Alert Command Group ============
 
-alert_app = typer.Typer(name="alert", help="监控告警管理")
+alert_app = typer.Typer(name="alert", help="Monitor alert management")
 app.add_typer(alert_app, name="alert")
 
 
 @alert_app.callback(invoke_without_command=True)
 def alert_callback(ctx: typer.Context) -> None:
-    """监控告警管理"""
+    """Monitor alert management"""
     if ctx.invoked_subcommand is None:
         ctx.invoke(alert_status)
 
 
 @alert_app.command("start")
 def alert_start(
-    interval: int = typer.Option(60, "--interval", "-i", help="扫描间隔(秒)"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    interval: int = typer.Option(60, "--interval", "-i", help="Scan interval (seconds)"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """启动监控服务"""
+    """Start monitor service"""
 
     async def _start() -> dict[str, Any]:
         global _monitor_service
@@ -250,11 +386,11 @@ def alert_start(
             _monitor_service.set_scan_interval(interval)
             await _monitor_service.start()
 
-            # 记录启动时间
+            # Record start time
             status_manager = ServiceStatusManager()
             instance = status_manager.record_start("default", interval=interval)
 
-            # 获取监控股票数量
+            # Get monitored stock count
             watch_items = await db.get_watch_items(enabled_only=True)
 
             return {
@@ -266,27 +402,27 @@ def alert_start(
                 "start_time": instance.start_time,
             }
         finally:
-            # 注意: 不关闭 db，因为监控服务需要持续使用
+            # Note: do not close db because monitor service needs continuous access
             pass
 
-    result = asyncio.run(_start())
+    result = _run_async(_start(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
-        console.print(f"[green]监控服务已启动[/green]")
-        console.print(f"扫描间隔: {result['interval']}秒")
-        console.print(f"监控股票: {result['watch_count']}只")
-        console.print(f"服务PID: {result['pid']}")
+        console.print(f"[green]Monitor service started[/green]")
+        console.print(f"Scan interval: {result['interval']}s")
+        console.print(f"Monitored stocks: {result['watch_count']}")
+        console.print(f"Service PID: {result['pid']}")
         start_dt = datetime.fromisoformat(result['start_time'])
-        console.print(f"启动时间: {start_dt.strftime('%Y-%m-%d %H:%M:%S')}")
+        console.print(f"Start time: {start_dt.strftime('%Y-%m-%d %H:%M:%S')}")
 
 
 @alert_app.command("stop")
 def alert_stop(
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """停止监控服务"""
+    """Stop monitor service"""
 
     async def _stop() -> dict[str, Any]:
         global _monitor_service
@@ -295,7 +431,7 @@ def alert_stop(
             await _monitor_service.stop()
             _monitor_service = None
 
-            # 记录停止时间
+            # Record stop time
             status_manager = ServiceStatusManager()
             history = status_manager.record_stop("default")
 
@@ -308,24 +444,24 @@ def alert_stop(
             return {"status": "stopped", "duration": None}
         return {"status": "not_running"}
 
-    result = asyncio.run(_stop())
+    result = _run_async(_stop(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
         if result["status"] == "stopped":
-            console.print("[yellow]监控服务已停止[/yellow]")
+            console.print("[yellow]Monitor service stopped[/yellow]")
             if result.get("duration"):
-                console.print(f"运行时长: {result['duration']}")
+                console.print(f"Uptime: {result['duration']}")
         else:
-            console.print("[dim]监控服务未运行[/dim]")
+            console.print("[dim]Monitor service not running[/dim]")
 
 
 @alert_app.command("status")
 def alert_status(
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """查看监控状态"""
+    """View monitor status"""
 
     async def _status() -> dict[str, Any]:
         global _monitor_service
@@ -333,15 +469,15 @@ def alert_status(
         db = Database(str(DB_PATH))
         await db.connect()
         try:
-            # 获取监控股票数量
+            # Get monitored stock count
             watch_items = await db.get_watch_items(enabled_only=True)
 
-            # 获取今日告警数量
+            # Get today's alert count
             today = datetime.now().date()
             alerts = await db.get_alert_records(limit=100)
             today_alerts = [a for a in alerts if a.triggered_at.date() == today]
 
-            # 获取服务状态信息
+            # Get service status info
             status_manager = ServiceStatusManager()
             instance = status_manager.get_instance("default")
 
@@ -359,40 +495,40 @@ def alert_status(
         finally:
             await db.close()
 
-    result = asyncio.run(_status())
+    result = _run_async(_status(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
         status_text = (
-            "[green]运行中[/green]" if result["running"] else "[dim]已停止[/dim]"
+            "[green]Running[/green]" if result["running"] else "[dim]Stopped[/dim]"
         )
 
-        # 构建状态面板内容
+        # Build status panel content
         panel_lines = [
-            f"状态: {status_text}",
-            f"扫描间隔: {result['interval']}秒",
-            f"监控股票: {result['watch_count']}只",
-            f"今日告警: {result['today_alerts']}条",
+            f"Status: {status_text}",
+            f"Scan interval: {result['interval']}s",
+            f"Monitored stocks: {result['watch_count']}",
+            f"Today's alerts: {result['today_alerts']}",
         ]
 
-        # 添加运行时长信息
+        # Add uptime info
         if result.get("uptime"):
             uptime = result["uptime"]
-            panel_lines.append(f"启动时间: {uptime['start_time_formatted']}")
-            panel_lines.append(f"运行时长: {uptime['uptime_formatted']}")
-            panel_lines.append(f"服务PID: {uptime['pid']}")
+            panel_lines.append(f"Start time: {uptime['start_time_formatted']}")
+            panel_lines.append(f"Uptime: {uptime['uptime_formatted']}")
+            panel_lines.append(f"Service PID: {uptime['pid']}")
 
-        console.print(Panel("\n".join(panel_lines), title="监控服务状态"))
+        console.print(Panel("\n".join(panel_lines), title="Monitor Service Status"))
 
 
 @alert_app.command("history")
 def alert_history(
-    code: Optional[str] = typer.Argument(None, help="股票代码(可选)"),
-    limit: int = typer.Option(10, "--limit", "-n", help="显示数量"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    code: Optional[str] = typer.Argument(None, help="Stock code (optional)"),
+    limit: int = typer.Option(10, "--limit", "-n", help="Number to display"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """查看历史告警"""
+    """View alert history"""
 
     async def _history() -> dict[str, Any]:
         db = Database(str(DB_PATH))
@@ -400,7 +536,7 @@ def alert_history(
         try:
             alerts = await db.get_alert_records(limit=limit)
 
-            # 按股票代码过滤
+            # Filter by stock code
             if code:
                 alerts = [a for a in alerts if a.code == code]
 
@@ -422,24 +558,24 @@ def alert_history(
         finally:
             await db.close()
 
-    result = asyncio.run(_history())
+    result = _run_async(_history(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
         alerts = result["alerts"]
 
         if not alerts:
-            console.print("[dim]暂无告警记录[/dim]")
+            console.print("[dim]No alert records[/dim]")
             return
 
-        title = f"历史告警记录 ({code})" if code else "历史告警记录"
+        title = f"Alert History ({code})" if code else "Alert History"
         table = Table(title=title)
-        table.add_column("时间", style="cyan")
-        table.add_column("股票", style="white")
-        table.add_column("信号类型", style="yellow")
-        table.add_column("描述", style="green")
-        table.add_column("状态", style="dim")
+        table.add_column("Time", style="cyan")
+        table.add_column("Stock", style="white")
+        table.add_column("Signal Type", style="yellow")
+        table.add_column("Description", style="green")
+        table.add_column("Status", style="dim")
 
         for alert in alerts:
             triggered_at = datetime.fromisoformat(alert["triggered_at"])
@@ -460,41 +596,39 @@ def alert_history(
 
 @alert_app.command("service-history")
 def alert_service_history(
-    limit: int = typer.Option(10, "--limit", "-n", help="显示数量"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    limit: int = typer.Option(10, "--limit", "-n", help="Number to display"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """查看服务启动/停止历史"""
+    """View service start/stop history"""
 
     status_manager = ServiceStatusManager()
     history = status_manager.get_history(limit=limit)
 
     if json_output:
-        console.print_json(
-            data={
-                "history": [
-                    {
-                        "instance_id": h.instance_id,
-                        "pid": h.pid,
-                        "start_time": h.start_time,
-                        "stop_time": h.stop_time,
-                        "duration_seconds": h.duration_seconds,
-                        "duration_formatted": format_duration(h.duration_seconds),
-                    }
-                    for h in history
-                ]
-            }
-        )
+        _print_json({
+            "history": [
+                {
+                    "instance_id": h.instance_id,
+                    "pid": h.pid,
+                    "start_time": h.start_time,
+                    "stop_time": h.stop_time,
+                    "duration_seconds": h.duration_seconds,
+                    "duration_formatted": format_duration(h.duration_seconds),
+                }
+                for h in history
+            ]
+        })
     else:
         if not history:
-            console.print("[dim]暂无服务历史记录[/dim]")
+            console.print("[dim]No service history records[/dim]")
             return
 
-        table = Table(title="服务启动/停止历史")
-        table.add_column("实例ID", style="cyan", width=12)
+        table = Table(title="Service Start/Stop History")
+        table.add_column("Instance ID", style="cyan", width=12)
         table.add_column("PID", style="white", width=8)
-        table.add_column("启动时间", style="green", width=20)
-        table.add_column("停止时间", style="yellow", width=20)
-        table.add_column("运行时长", style="magenta")
+        table.add_column("Start Time", style="green", width=20)
+        table.add_column("Stop Time", style="yellow", width=20)
+        table.add_column("Duration", style="magenta")
 
         for h in history:
             start_dt = datetime.fromisoformat(h.start_time)
@@ -512,20 +646,20 @@ def alert_service_history(
 
 @app.command()
 def screen(
-    factors: Optional[str] = typer.Argument(None, help="因子列表，逗号分隔"),
+    factors: Optional[str] = typer.Argument(None, help="Factor list, comma-separated"),
     codes: Optional[str] = typer.Option(
-        None, "--codes", "-c", help="指定股票代码，逗号分隔"
+        None, "--codes", "-c", help="Specify stock codes, comma-separated"
     ),
     industry: Optional[str] = typer.Option(
-        None, "--industry", "-i", help="按行业筛选，支持多个行业用逗号分隔"
+        None, "--industry", "-i", help="Filter by industry, multiple industries comma-separated"
     ),
     exclude_industry: Optional[str] = typer.Option(
-        None, "--exclude-industry", help="排除指定行业，支持多个行业用逗号分隔"
+        None, "--exclude-industry", help="Exclude industries, multiple industries comma-separated"
     ),
-    limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    limit: int = typer.Option(10, "--limit", "-n", help="Number of results"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """股票选股"""
+    """Stock screening"""
 
     async def _screen() -> dict[str, Any]:
         db = Database(str(DB_PATH))
@@ -534,7 +668,7 @@ def screen(
             quote_service = QuoteService(db)
             screener = StockScreener(quote_service)
 
-            # 解析因子列表
+            # Parse factor list
             factor_list = None
             if factors:
                 factor_list = [f.strip() for f in factors.split(",")]
@@ -547,29 +681,29 @@ def screen(
                 factors=factor_list, codes=code_list, limit=limit
             )
 
-            # 行业筛选
+            # Industry filtering
             if industry or exclude_industry:
                 from .data import get_industry_service
                 industry_service = get_industry_service()
-                await industry_service.initialize()
+                await industry_service.initialize(allow_stale_cache=bool(code_list))
 
                 include_industries = [i.strip() for i in industry.split(",")] if industry else None
                 exclude_industries = [i.strip() for i in exclude_industry.split(",")] if exclude_industry else None
 
-                # 获取所有结果的股票代码
+                # Get stock codes from all results
                 result_codes = [r.code for r in results]
                 filtered_codes = await industry_service.filter_by_industry(
                     result_codes,
                     include_industries=include_industries,
                     exclude_industries=exclude_industries,
                 )
-                # 过滤结果
+                # Filter results
                 results = [r for r in results if r.code in filtered_codes]
 
-            # 获取行业信息
+            # Get industry information
             from .data import get_industry_service
             industry_service = get_industry_service()
-            await industry_service.initialize()
+            await industry_service.initialize(allow_stale_cache=bool(code_list))
 
             enriched_results = []
             for r in results:
@@ -577,9 +711,10 @@ def screen(
                 enriched_results.append({
                     "code": r.code,
                     "name": r.name,
-                    "score": r.score,
                     "matched_factors": r.matched_factors,
-                    "factor_scores": r.factor_scores,
+                    "matched_factor_count": r.matched_factor_count,
+                    "factor_checks": r.factor_checks,
+                    "data": r.data,
                     "industry": stock_industry.industry if stock_industry else None,
                     "industry_change": stock_industry.industry_change if stock_industry else None,
                     "screened_at": r.screened_at.isoformat(),
@@ -587,27 +722,35 @@ def screen(
 
             return {
                 "total": len(enriched_results),
+                "mode": "single_stock" if code_list else "market_scan",
+                "data_quality": "daily_only",
+                "requested_factors": factor_list or [],
                 "results": enriched_results,
             }
         finally:
             await db.close()
 
-    result = asyncio.run(_screen())
+    result = _run_async(_screen(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
         if not result["results"]:
-            console.print("[dim]未找到符合条件的股票[/dim]")
+            console.print("[dim]No stocks matching criteria found[/dim]")
             return
 
-        table = Table(title=f"选股结果 (共 {result['total']} 只)")
-        table.add_column("排名", style="dim", width=4)
-        table.add_column("代码", style="cyan", width=8)
-        table.add_column("名称", style="white", width=10)
-        table.add_column("行业", style="magenta", width=8)
-        table.add_column("得分", style="yellow", width=6)
-        table.add_column("匹配因子", style="green")
+        if result.get("mode") == "single_stock":
+            console.print("[dim]Mode: single stock evaluation (daily factors)[/dim]")
+        if result.get("data_quality"):
+            console.print(f"[dim]Data quality: {result['data_quality']}[/dim]")
+
+        table = Table(title=f"Screening Results (total {result['total']})")
+        table.add_column("Rank", style="dim", width=4)
+        table.add_column("Code", style="cyan", width=8)
+        table.add_column("Name", style="white", width=10)
+        table.add_column("Industry", style="magenta", width=8)
+        table.add_column("Hits", style="yellow", width=6)
+        table.add_column("Matched Factors", style="green")
 
         for i, r in enumerate(result["results"], 1):
             factors_str = ",".join(r["matched_factors"][:3])
@@ -615,36 +758,41 @@ def screen(
                 factors_str += "..."
             industry = r.get("industry") or "-"
             table.add_row(
-                str(i), r["code"], r["name"] or "-", industry, f"{r['score']:.1f}", factors_str
+                str(i),
+                r["code"],
+                r["name"] or "-",
+                industry,
+                str(r.get("matched_factor_count", len(r["matched_factors"]))),
+                factors_str or "-",
             )
 
         console.print(table)
 
 
-# ============ Recommend 命令组 ============
+# ============ Recommend Command Group ============
 
-recommend_app = typer.Typer(name="recommend", help="个性化推荐")
+recommend_app = typer.Typer(name="recommend", help="Personalized recommendations")
 app.add_typer(recommend_app, name="recommend")
 
 
 @recommend_app.callback(invoke_without_command=True)
 def recommend_callback(ctx: typer.Context) -> None:
-    """个性化推荐"""
+    """Personalized recommendations"""
     if ctx.invoked_subcommand is None:
         ctx.invoke(recommend_generate)
 
 
 @recommend_app.command("generate")
 def recommend_generate(
-    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
-    limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
-    style: Optional[str] = typer.Option(None, "--style", "-s", help="交易风格覆盖"),
-    risk: Optional[str] = typer.Option(None, "--risk", "-r", help="风险等级覆盖"),
-    min_price: Optional[float] = typer.Option(None, "--min-price", help="最低价格"),
-    max_price: Optional[float] = typer.Option(None, "--max-price", help="最高价格"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
+    limit: int = typer.Option(10, "--limit", "-n", help="Number of results"),
+    style: Optional[str] = typer.Option(None, "--style", "-s", help="Trading style override"),
+    risk: Optional[str] = typer.Option(None, "--risk", "-r", help="Risk level override"),
+    min_price: Optional[float] = typer.Option(None, "--min-price", help="Minimum price"),
+    max_price: Optional[float] = typer.Option(None, "--max-price", help="Maximum price"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """生成个性化推荐"""
+    """Generate personalized recommendations"""
 
     async def _recommend() -> Any:
         db = Database(str(DB_PATH))
@@ -653,14 +801,14 @@ def recommend_generate(
             quote_service = QuoteService(db)
             screener = StockScreener(quote_service)
 
-            # 初始化行业服务
+            # Initialize industry service
             from .data import get_industry_service
             industry_service = get_industry_service()
             await industry_service.initialize()
 
             recommender = Recommender(screener, industry_service)
 
-            # 构建选项
+            # Build options
             options: dict[str, object] = {}
             if style:
                 options["trading_style"] = style
@@ -679,73 +827,69 @@ def recommend_generate(
         finally:
             await db.close()
 
-    result = asyncio.run(_recommend())
+    result = _run_async(_recommend(), json_output)
 
     if json_output:
-        console.print_json(
-            data={
-                "success": result.success,
-                "total": result.total,
-                "error": result.error,
-                "config_used": result.config_used,
-                "recommendations": [
-                    {
-                        "code": r.code,
-                        "name": r.name,
-                        "score": r.score,
-                        "matched_factors": r.matched_factors,
-                        "suggested_strategies": r.suggested_strategies,
-                        "risk_level": r.risk_level,
-                        "style_match": r.style_match,
-                        "industry": r.industry,
-                        "industry_change": r.industry_change,
-                        "recommended_at": r.recommended_at.isoformat(),
-                    }
-                    for r in result.recommendations
-                ],
-            }
-        )
+        _print_json({
+            "success": result.success,
+            "total": result.total,
+            "error": result.error,
+            "config_used": result.config_used,
+            "selection_context": result.selection_context,
+            "candidates": [
+                {
+                    "code": r.code,
+                    "name": r.name,
+                    "matched_factors": r.matched_factors,
+                    "matched_factor_count": r.matched_factor_count,
+                    "factor_checks": r.factor_checks,
+                    "industry": r.industry,
+                    "industry_change": r.industry_change,
+                    "data": r.data,
+                    "collected_at": r.collected_at.isoformat(),
+                }
+                for r in result.candidates
+            ],
+        })
     else:
         if not result.success:
-            console.print(f"[red]推荐生成失败: {result.error}[/red]")
+            console.print(f"[red]Recommendation generation failed: {result.error}[/red]")
             return
 
-        if not result.recommendations:
-            console.print("[dim]未找到符合条件的股票推荐[/dim]")
+        if not result.candidates:
+            console.print("[dim]No candidate stocks matching criteria found[/dim]")
             return
 
-        # 显示配置信息
+        # Display config info
         if result.config_used:
             config_panel = f"""
-用户: {result.config_used.get("user_id", "default")}
-交易风格: {result.config_used.get("trading_style", "swing")}
-风险等级: {result.config_used.get("risk_level", "moderate")}
-价格范围: {result.config_used.get("min_price") or "-"} ~ {result.config_used.get("max_price") or "-"}
+User: {result.config_used.get("user_id", "default")}
+Trading style: {result.config_used.get("trading_style", "swing")}
+Risk level: {result.config_used.get("risk_level", "moderate")}
+Price range: {result.config_used.get("min_price") or "-"} ~ {result.config_used.get("max_price") or "-"}
 """
-            console.print(Panel(config_panel.strip(), title="推荐配置"))
+            console.print(Panel(config_panel.strip(), title="Recommendation Config"))
 
-        # 显示推荐结果
-        table = Table(title=f"个性化推荐 (共 {result.total} 只)")
-        table.add_column("排名", style="dim", width=4)
-        table.add_column("代码", style="cyan", width=8)
-        table.add_column("名称", style="white", width=10)
-        table.add_column("行业", style="magenta", width=8)
-        table.add_column("得分", style="yellow", width=6)
-        table.add_column("风格匹配", style="green", width=8)
-        table.add_column("推荐策略", style="dim")
+        # Display recommendation results
+        table = Table(title=f"Candidate Stock Pool (total {result.total})")
+        table.add_column("Rank", style="dim", width=4)
+        table.add_column("Code", style="cyan", width=8)
+        table.add_column("Name", style="white", width=10)
+        table.add_column("Industry", style="magenta", width=8)
+        table.add_column("Hits", style="yellow", width=6)
+        table.add_column("Matched Factors", style="green")
 
-        for i, r in enumerate(result.recommendations, 1):
-            strategies_str = ",".join(r.suggested_strategies[:2])
-            if len(r.suggested_strategies) > 2:
-                strategies_str += "..."
+        for i, r in enumerate(result.candidates, 1):
+            factors_str = ",".join(r.matched_factors[:2])
+            if len(r.matched_factors) > 2:
+                factors_str += "..."
             table.add_row(
                 str(i),
                 r.code,
                 r.name or "-",
                 r.industry or "-",
-                f"{r.score:.1f}",
-                f"{r.style_match:.0%}",
-                strategies_str,
+                str(r.matched_factor_count),
+                factors_str or "-",
             )
 
         console.print(table)
@@ -753,29 +897,29 @@ def recommend_generate(
 
 @recommend_app.command("config")
 def recommend_config(
-    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
-    style: Optional[str] = typer.Option(None, "--style", "-s", help="交易风格"),
-    risk: Optional[str] = typer.Option(None, "--risk", "-r", help="风险等级"),
-    min_price: Optional[float] = typer.Option(None, "--min-price", help="最低价格"),
-    max_price: Optional[float] = typer.Option(None, "--max-price", help="最高价格"),
-    reset: bool = typer.Option(False, "--reset", help="重置为默认配置"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
+    style: Optional[str] = typer.Option(None, "--style", "-s", help="Trading style"),
+    risk: Optional[str] = typer.Option(None, "--risk", "-r", help="Risk level"),
+    min_price: Optional[float] = typer.Option(None, "--min-price", help="Minimum price"),
+    max_price: Optional[float] = typer.Option(None, "--max-price", help="Maximum price"),
+    reset: bool = typer.Option(False, "--reset", help="Reset to default config"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """管理推荐配置"""
+    """Manage recommendation config"""
     config_manager = ConfigManager()
 
     if reset:
         config = config_manager.reset(user_id)
         if json_output:
-            console.print_json(data=config.model_dump())
+            _print_json(config.model_dump())
         else:
-            console.print(f"[green]已重置用户 {user_id} 的配置为默认值[/green]")
+            console.print(f"[green]Reset user {user_id} config to defaults[/green]")
         return
 
-    # 加载当前配置
+    # Load current config
     config = config_manager.load(user_id)
 
-    # 更新配置
+    # Update config
     updates: dict[str, object] = {}
     if style:
         for s in TradingStyle:
@@ -796,57 +940,57 @@ def recommend_config(
         config = config_manager.update(user_id, **updates)
 
     if json_output:
-        # 转换为可序列化的字典
+        # Convert to serializable dict
         config_data = config.model_dump()
         config_data["alert_time_start"] = config.alert_time_start.isoformat()
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
         config_data["risk_level"] = config.risk_level.value
-        console.print_json(data=config_data)
+        _print_json(config_data)
     else:
         panel_content = f"""
-用户ID: {config.user_id}
-交易风格: {config.trading_style.value}
-风险等级: {config.risk_level.value}
-最大持仓: {config.max_positions}
-单只仓位: {config.position_size:.0%}
-价格范围: {config.min_price or "-"} ~ {config.max_price or "-"}
-偏好行业: {", ".join(config.preferred_sectors) or "-"}
-排除行业: {", ".join(config.excluded_sectors) or "-"}
+User ID: {config.user_id}
+Trading style: {config.trading_style.value}
+Risk level: {config.risk_level.value}
+Max positions: {config.max_positions}
+Position size: {config.position_size:.0%}
+Price range: {config.min_price or "-"} ~ {config.max_price or "-"}
+Preferred sectors: {", ".join(config.preferred_sectors) or "-"}
+Excluded sectors: {", ".join(config.excluded_sectors) or "-"}
 """
-        console.print(Panel(panel_content.strip(), title=f"用户配置: {user_id}"))
+        console.print(Panel(panel_content.strip(), title=f"User Config: {user_id}"))
 
-        # 显示可选项
-        console.print("\n[bold]可选交易风格:[/bold]")
+        # Display available options
+        console.print("\n[bold]Available trading styles:[/bold]")
         for s in TradingStyle:
             marker = "*" if s == config.trading_style else " "
             console.print(f"  {marker} {s.value}")
 
-        console.print("\n[bold]可选风险等级:[/bold]")
+        console.print("\n[bold]Available risk levels:[/bold]")
         for r in RiskLevel:
             marker = "*" if r == config.risk_level else " "
             console.print(f"  {marker} {r.value}")
 
 
-# ============ Config 命令组 ============
+# ============ Config Command Group ============
 
-config_app = typer.Typer(name="config", help="配置管理")
+config_app = typer.Typer(name="config", help="Configuration management")
 app.add_typer(config_app, name="config")
 
 
 @config_app.callback(invoke_without_command=True)
 def config_callback(ctx: typer.Context) -> None:
-    """配置管理"""
+    """Configuration management"""
     if ctx.invoked_subcommand is None:
         ctx.invoke(config_show)
 
 
 @config_app.command("show")
 def config_show(
-    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """显示当前配置"""
+    """Show current configuration"""
     config_manager = ConfigManager()
     config = config_manager.load(user_id)
 
@@ -856,38 +1000,38 @@ def config_show(
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
         config_data["risk_level"] = config.risk_level.value
-        console.print_json(data=config_data)
+        _print_json(config_data)
     else:
         panel_content = f"""
-用户ID: {config.user_id}
-交易风格: {config.trading_style.value}
-风险等级: {config.risk_level.value}
-最大持仓: {config.max_positions}
-单只仓位: {config.position_size:.0%}
-价格范围: {config.min_price or "-"} ~ {config.max_price or "-"}
-偏好行业: {", ".join(config.preferred_sectors) or "-"}
-排除行业: {", ".join(config.excluded_sectors) or "-"}
-提醒渠道: {", ".join(config.alert_channels)}
-默认资金: {config.default_capital:,.0f}
-默认策略: {config.default_strategy}
+User ID: {config.user_id}
+Trading style: {config.trading_style.value}
+Risk level: {config.risk_level.value}
+Max positions: {config.max_positions}
+Position size: {config.position_size:.0%}
+Price range: {config.min_price or "-"} ~ {config.max_price or "-"}
+Preferred sectors: {", ".join(config.preferred_sectors) or "-"}
+Excluded sectors: {", ".join(config.excluded_sectors) or "-"}
+Alert channels: {", ".join(config.alert_channels)}
+Default capital: {config.default_capital:,.0f}
+Default strategy: {config.default_strategy}
 """
-        console.print(Panel(panel_content.strip(), title=f"用户配置: {user_id}"))
+        console.print(Panel(panel_content.strip(), title=f"User Config: {user_id}"))
 
 
 @config_app.command("set")
 def config_set(
-    key: str = typer.Argument(..., help="配置项名称"),
-    value: str = typer.Argument(..., help="配置值"),
-    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    key: str = typer.Argument(..., help="Configuration key"),
+    value: str = typer.Argument(..., help="Configuration value"),
+    user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """设置配置项"""
+    """Set a configuration item"""
     config_manager = ConfigManager()
 
-    # 解析配置值
+    # Parse config value
     parsed_value = _parse_config_value(key, value)
     if parsed_value is None:
-        console.print(f"[red]未知的配置项: {key}[/red]")
+        console.print(f"[red]Unknown configuration key: {key}[/red]")
         raise typer.Exit(1)
 
     config = config_manager.update(user_id, **{key: parsed_value})
@@ -898,28 +1042,28 @@ def config_set(
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
         config_data["risk_level"] = config.risk_level.value
-        console.print_json(data=config_data)
+        _print_json(config_data)
     else:
-        console.print(f"[green]已更新配置: {key} = {value}[/green]")
+        console.print(f"[green]Configuration updated: {key} = {value}[/green]")
 
 
 def _parse_config_value(key: str, value: str) -> Optional[object]:
-    """解析配置值"""
-    # 风险等级
+    """Parse configuration value"""
+    # Risk level
     if key == "risk_level":
         for r in RiskLevel:
             if r.value == value:
                 return r
         return None
 
-    # 交易风格
+    # Trading style
     if key == "trading_style":
         for s in TradingStyle:
             if s.value == value:
                 return s
         return None
 
-    # 数值类型
+    # Numeric types
     if key in [
         "max_positions",
         "position_size",
@@ -934,11 +1078,11 @@ def _parse_config_value(key: str, value: str) -> Optional[object]:
         except ValueError:
             return None
 
-    # 字符串列表类型
+    # String list types
     if key in ["alert_channels", "preferred_sectors", "excluded_sectors"]:
         return [v.strip() for v in value.split(",")]
 
-    # 字符串类型
+    # String types
     if key in ["default_strategy"]:
         return value
 
@@ -947,59 +1091,57 @@ def _parse_config_value(key: str, value: str) -> Optional[object]:
 
 @config_app.command("style")
 def config_style(
-    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """分析并学习交易风格"""
+    """Analyze and learn trading style"""
     config_manager = ConfigManager()
     analyzer = StyleAnalyzer()
 
-    # 执行分析并更新配置
+    # Perform analysis and update config
     analysis = analyzer.update_user_config(user_id, config_manager)
 
     if json_output:
-        console.print_json(
-            data={
-                "user_id": analysis.user_id,
-                "trading_style": analysis.trading_style.value,
-                "risk_level": analysis.risk_level.value,
-                "trade_frequency": analysis.trade_frequency,
-                "avg_holding_days": analysis.avg_holding_days,
-                "total_trades": analysis.total_trades,
-                "win_rate": analysis.win_rate,
-                "profit_loss_ratio": analysis.profit_loss_ratio,
-                "total_profit": analysis.total_profit,
-                "preferred_sectors": analysis.preferred_sectors,
-                "confidence": analysis.confidence,
-            }
-        )
+        _print_json({
+            "user_id": analysis.user_id,
+            "trading_style": analysis.trading_style.value,
+            "risk_level": analysis.risk_level.value,
+            "trade_frequency": analysis.trade_frequency,
+            "avg_holding_days": analysis.avg_holding_days,
+            "total_trades": analysis.total_trades,
+            "win_rate": analysis.win_rate,
+            "profit_loss_ratio": analysis.profit_loss_ratio,
+            "total_profit": analysis.total_profit,
+            "preferred_sectors": analysis.preferred_sectors,
+            "confidence": analysis.confidence,
+        })
     else:
         panel_content = f"""
-交易风格: {analysis.trading_style.value}
-风险等级: {analysis.risk_level.value}
-交易频率: {analysis.trade_frequency:.1f} 次/月
-平均持仓: {analysis.avg_holding_days:.1f} 天
-总交易数: {analysis.total_trades}
-胜率: {analysis.win_rate:.1%}
-盈亏比: {analysis.profit_loss_ratio:.2f}
-总盈亏: {analysis.total_profit:,.2f}
-偏好行业: {", ".join(analysis.preferred_sectors) or "-"}
-置信度: {analysis.confidence:.0%}
+Trading style: {analysis.trading_style.value}
+Risk level: {analysis.risk_level.value}
+Trade frequency: {analysis.trade_frequency:.1f} trades/month
+Avg holding period: {analysis.avg_holding_days:.1f} days
+Total trades: {analysis.total_trades}
+Win rate: {analysis.win_rate:.1%}
+Profit/loss ratio: {analysis.profit_loss_ratio:.2f}
+Total P&L: {analysis.total_profit:,.2f}
+Preferred sectors: {", ".join(analysis.preferred_sectors) or "-"}
+Confidence: {analysis.confidence:.0%}
 """
-        console.print(Panel(panel_content.strip(), title=f"风格分析: {user_id}"))
+        console.print(Panel(panel_content.strip(), title=f"Style Analysis: {user_id}"))
 
         if analysis.confidence > 0.5:
-            console.print("[green]配置已根据分析结果自动更新[/green]")
+            console.print("[green]Configuration automatically updated based on analysis[/green]")
         else:
-            console.print("[yellow]数据不足，未更新配置（需要更多交易记录）[/yellow]")
+            console.print("[yellow]Insufficient data, config not updated (more trade records needed)[/yellow]")
 
 
 @config_app.command("reset")
 def config_reset(
-    user_id: str = typer.Option("default", "--user", "-u", help="用户ID"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """重置为默认配置"""
+    """Reset to default configuration"""
     config_manager = ConfigManager()
     config = config_manager.reset(user_id)
 
@@ -1009,77 +1151,77 @@ def config_reset(
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
         config_data["risk_level"] = config.risk_level.value
-        console.print_json(data=config_data)
+        _print_json(config_data)
     else:
-        console.print(f"[yellow]已重置用户 {user_id} 的配置为默认值[/yellow]")
+        console.print(f"[yellow]Reset user {user_id} configuration to defaults[/yellow]")
 
 
-# ============ Email 配置命令 ============
+# ============ Email Configuration Commands ============
 
-email_app = typer.Typer(name="email", help="邮件配置管理")
+email_app = typer.Typer(name="email", help="Email configuration management")
 config_app.add_typer(email_app, name="email")
 
 
 @email_app.callback(invoke_without_command=True)
 def email_callback(ctx: typer.Context) -> None:
-    """邮件配置管理"""
+    """Email configuration management"""
     if ctx.invoked_subcommand is None:
         ctx.invoke(email_show)
 
 
 @email_app.command("show")
 def email_show(
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """显示邮件配置"""
+    """Show email configuration"""
     email_config = EmailConfig.from_env()
 
     if json_output:
-        console.print_json(data=email_config.to_dict())
+        _print_json(email_config.to_dict())
     else:
         if email_config.is_configured():
             panel_content = f"""
-SMTP服务器: {email_config.smtp_host}:{email_config.smtp_port}
-加密方式: {"SSL" if email_config.use_ssl else "TLS" if email_config.use_tls else "无"}
-发件人: {email_config.sender_name} <{email_config.sender_email}>
-收件人: {", ".join(email_config.recipients)}
-主题前缀: {email_config.subject_prefix}
+SMTP server: {email_config.smtp_host}:{email_config.smtp_port}
+Encryption: {"SSL" if email_config.use_ssl else "TLS" if email_config.use_tls else "None"}
+Sender: {email_config.sender_name} <{email_config.sender_email}>
+Recipients: {", ".join(email_config.recipients)}
+Subject prefix: {email_config.subject_prefix}
 """
-            console.print(Panel(panel_content.strip(), title="邮件配置"))
+            console.print(Panel(panel_content.strip(), title="Email Configuration"))
         else:
-            console.print("[yellow]邮件未配置[/yellow]")
-            console.print("请设置以下环境变量或使用 'config email set' 命令配置:")
-            console.print("  EMAIL_SMTP_HOST     - SMTP服务器地址 (默认: smtp.qq.com)")
-            console.print("  EMAIL_SMTP_PORT     - SMTP端口 (默认: 465)")
-            console.print("  EMAIL_USE_SSL       - 使用SSL (默认: true)")
-            console.print("  EMAIL_SENDER        - 发件人邮箱")
-            console.print("  EMAIL_PASSWORD      - 发件人密码/授权码")
-            console.print("  EMAIL_RECIPIENTS    - 收件人列表(逗号分隔)")
+            console.print("[yellow]Email not configured[/yellow]")
+            console.print("Please set the following environment variables or use 'config email set' command:")
+            console.print("  EMAIL_SMTP_HOST     - SMTP server address (default: smtp.qq.com)")
+            console.print("  EMAIL_SMTP_PORT     - SMTP port (default: 465)")
+            console.print("  EMAIL_USE_SSL       - Use SSL (default: true)")
+            console.print("  EMAIL_SENDER        - Sender email address")
+            console.print("  EMAIL_PASSWORD      - Sender password/auth code")
+            console.print("  EMAIL_RECIPIENTS    - Recipient list (comma-separated)")
 
 
 @email_app.command("set")
 def email_set(
-    key: str = typer.Argument(..., help="配置项名称"),
-    value: str = typer.Argument(..., help="配置值"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    key: str = typer.Argument(..., help="Configuration key"),
+    value: str = typer.Argument(..., help="Configuration value"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """设置邮件配置项
+    """Set email configuration item
 
-    配置项保存到 data/config.json 文件中的 email 部分。
-    注意: 敏感信息(如密码)建议使用环境变量 EMAIL_PASSWORD 设置。
+    Configuration is saved to data/config.json under the email section.
+    Note: Sensitive information (e.g., passwords) should be set via EMAIL_PASSWORD env var.
 
-    可用配置项:
-        smtp_host      - SMTP服务器地址
-        smtp_port      - SMTP端口
-        use_ssl        - 使用SSL (true/false)
-        use_tls        - 使用TLS (true/false)
-        sender_email   - 发件人邮箱
-        sender_password - 发件人密码/授权码
-        sender_name    - 发件人显示名称
-        recipients     - 收件人列表(逗号分隔)
-        subject_prefix - 邮件主题前缀
+    Available keys:
+        smtp_host      - SMTP server address
+        smtp_port      - SMTP port
+        use_ssl        - Use SSL (true/false)
+        use_tls        - Use TLS (true/false)
+        sender_email   - Sender email address
+        sender_password - Sender password/auth code
+        sender_name    - Sender display name
+        recipients     - Recipient list (comma-separated)
+        subject_prefix - Email subject prefix
     """
-    # 加载现有配置
+    # Load existing config
     config_path = Path("data/config.json")
     config_data = {}
 
@@ -1088,14 +1230,14 @@ def email_set(
             with open(config_path, "r", encoding="utf-8") as f:
                 config_data = json.load(f)
         except Exception as e:
-            console.print(f"[red]加载配置文件失败: {e}[/red]")
+            console.print(f"[red]Failed to load config file: {e}[/red]")
             raise typer.Exit(1)
 
-    # 确保 email 配置存在
+    # Ensure email config section exists
     if "email" not in config_data:
         config_data["email"] = {}
 
-    # 解析并设置配置值
+    # Parse and set config value
     email_key_map = {
         "smtp_host": "smtp_host",
         "smtp_port": "smtp_port",
@@ -1109,16 +1251,16 @@ def email_set(
     }
 
     if key not in email_key_map:
-        console.print(f"[red]未知的邮件配置项: {key}[/red]")
-        console.print(f"可用配置项: {', '.join(email_key_map.keys())}")
+        console.print(f"[red]Unknown email configuration key: {key}[/red]")
+        console.print(f"Available keys: {', '.join(email_key_map.keys())}")
         raise typer.Exit(1)
 
-    # 类型转换
+    # Type conversion
     if key in ["smtp_port"]:
         try:
             config_data["email"][email_key_map[key]] = int(value)
         except ValueError:
-            console.print(f"[red]无效的端口号: {value}[/red]")
+            console.print(f"[red]Invalid port number: {value}[/red]")
             raise typer.Exit(1)
     elif key in ["use_ssl", "use_tls"]:
         config_data["email"][email_key_map[key]] = value.lower() == "true"
@@ -1127,45 +1269,45 @@ def email_set(
     else:
         config_data["email"][email_key_map[key]] = value
 
-    # 保存配置
+    # Save config
     config_path.parent.mkdir(parents=True, exist_ok=True)
     try:
         with open(config_path, "w", encoding="utf-8") as f:
             json.dump(config_data, f, ensure_ascii=False, indent=2)
-        console.print(f"[green]已更新邮件配置: {key}[/green]")
+        console.print(f"[green]Email configuration updated: {key}[/green]")
     except Exception as e:
-        console.print(f"[red]保存配置失败: {e}[/red]")
+        console.print(f"[red]Failed to save config: {e}[/red]")
         raise typer.Exit(1)
 
 
 @email_app.command("test")
 def email_test(
-    recipient: Optional[str] = typer.Option(None, "--to", "-t", help="测试收件人"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    recipient: Optional[str] = typer.Option(None, "--to", "-t", help="Test recipient"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """发送测试邮件"""
+    """Send test email"""
     from .storage import AlertRecord
     from .monitor.alert_engine import send_email_notification
 
-    # 加载邮件配置
+    # Load email config
     email_config = EmailConfig.from_env()
 
-    # 如果指定了测试收件人，临时使用该收件人
+    # If test recipient specified, temporarily use that recipient
     if recipient:
         email_config.recipients = [recipient]
 
     if not email_config.is_configured():
-        console.print("[red]邮件未配置，请先设置邮箱信息[/red]")
-        console.print("使用 'config email set' 命令或设置环境变量进行配置")
+        console.print("[red]Email not configured, please set up email info first[/red]")
+        console.print("Use 'config email set' command or set environment variables to configure")
         raise typer.Exit(1)
 
-    # 创建测试告警记录
+    # Create test alert record
     test_alert = AlertRecord(
         id=0,
         code="TEST",
         signal_type="test",
-        signal_name="测试信号",
-        message="这是一封测试邮件，用于验证邮件推送功能是否正常工作。",
+        signal_name="Test Signal",
+        message="This is a test email to verify the email notification feature is working correctly.",
         level=3,
         triggered_at=datetime.now(),
         status="pending",
@@ -1175,23 +1317,23 @@ def email_test(
     try:
         asyncio.run(send_email_notification(test_alert, email_config))
         if json_output:
-            console.print_json(data={"success": True, "recipients": email_config.recipients})
+            _print_json({"success": True, "recipients": email_config.recipients})
         else:
-            console.print(f"[green]测试邮件发送成功[/green]")
-            console.print(f"收件人: {', '.join(email_config.recipients)}")
+            console.print(f"[green]Test email sent successfully[/green]")
+            console.print(f"Recipients: {', '.join(email_config.recipients)}")
     except Exception as e:
         if json_output:
-            console.print_json(data={"success": False, "error": str(e)})
+            _print_json({"success": False, "error": str(e)})
         else:
-            console.print(f"[red]测试邮件发送失败: {e}[/red]")
+            console.print(f"[red]Failed to send test email: {e}[/red]")
         raise typer.Exit(1)
 
 
 @email_app.command("reset")
 def email_reset(
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """重置邮件配置"""
+    """Reset email configuration"""
     config_path = Path("data/config.json")
 
     if config_path.exists():
@@ -1205,43 +1347,43 @@ def email_reset(
                 with open(config_path, "w", encoding="utf-8") as f:
                     json.dump(config_data, f, ensure_ascii=False, indent=2)
 
-                console.print("[yellow]已重置邮件配置[/yellow]")
+                console.print("[yellow]Email configuration reset[/yellow]")
             else:
-                console.print("[dim]邮件配置不存在[/dim]")
+                console.print("[dim]Email configuration does not exist[/dim]")
         except Exception as e:
-            console.print(f"[red]重置配置失败: {e}[/red]")
+            console.print(f"[red]Failed to reset config: {e}[/red]")
             raise typer.Exit(1)
     else:
-        console.print("[dim]配置文件不存在[/dim]")
+        console.print("[dim]Config file does not exist[/dim]")
 
 
-# ============ Backtest 命令组 ============
+# ============ Backtest Command Group ============
 
 from .backtest.backtest_cli import app as backtest_app
 
 app.add_typer(backtest_app, name="backtest")
 
 
-# ============ Watch 命令组 ============
+# ============ Watch Command Group ============
 
 from .monitor.watch_cli import app as watch_app
 
 app.add_typer(watch_app, name="watch")
 
 
-# ============ Team Feedback 命令 ============
+# ============ Team Feedback Command ============
 
 @app.command("team-feedback")
 def team_feedback(
-    code: str = typer.Argument(..., help="股票代码"),
-    action: str = typer.Option(..., "--action", "-a", help="建议动作: watch_buy/wait/hold_or_reduce"),
-    outcome: str = typer.Option(..., "--outcome", "-o", help="反馈结果: good/bad"),
-    strategy: Optional[str] = typer.Option(None, "--strategy", "-s", help="关联策略/因子"),
-    signals: Optional[str] = typer.Option(None, "--signals", help="关联信号，逗号分隔"),
-    note: Optional[str] = typer.Option(None, "--note", "-n", help="补充说明"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    code: str = typer.Argument(..., help="Stock code"),
+    action: str = typer.Option(..., "--action", "-a", help="Suggested action: watch_buy/wait/hold_or_reduce"),
+    outcome: str = typer.Option(..., "--outcome", "-o", help="Feedback outcome: good/bad"),
+    strategy: Optional[str] = typer.Option(None, "--strategy", "-s", help="Associated strategy/factor"),
+    signals: Optional[str] = typer.Option(None, "--signals", help="Associated signals, comma-separated"),
+    note: Optional[str] = typer.Option(None, "--note", "-n", help="Additional notes"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """记录 Agent Team 建议反馈，用于后续偏好学习"""
+    """Record Agent Team recommendation feedback for preference learning"""
 
     async def _record() -> dict[str, Any]:
         from .memory import FeedbackLearner
@@ -1265,31 +1407,31 @@ def team_feedback(
             "created_at": record.created_at.isoformat(),
         }
 
-    # 验证参数
+    # Validate parameters
     if action not in ["watch_buy", "wait", "hold_or_reduce"]:
-        console.print(f"[red]无效的 action: {action}[/red]")
-        console.print("可用选项: watch_buy, wait, hold_or_reduce")
+        console.print(f"[red]Invalid action: {action}[/red]")
+        console.print("Available options: watch_buy, wait, hold_or_reduce")
         raise typer.Exit(1)
 
     if outcome not in ["good", "bad"]:
-        console.print(f"[red]无效的 outcome: {outcome}[/red]")
-        console.print("可用选项: good, bad")
+        console.print(f"[red]Invalid outcome: {outcome}[/red]")
+        console.print("Available options: good, bad")
         raise typer.Exit(1)
 
-    result = asyncio.run(_record())
+    result = _run_async(_record(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
-        console.print(f"[green]反馈已记录: {code} {action} {outcome}[/green]")
+        console.print(f"[green]Feedback recorded: {code} {action} {outcome}[/green]")
 
 
 @app.command("feedback")
 def feedback_show(
-    code: Optional[str] = typer.Argument(None, help="股票代码(可选)"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    code: Optional[str] = typer.Argument(None, help="Stock code (optional)"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """查看用户反馈画像"""
+    """View user feedback profile"""
 
     async def _show() -> dict[str, Any]:
         from .memory import FeedbackLearner
@@ -1297,59 +1439,59 @@ def feedback_show(
         summary = await learner.get_feedback_summary()
         return summary
 
-    result = asyncio.run(_show())
+    result = _run_async(_show(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
         if result.get("total", 0) == 0:
-            console.print("[dim]暂无反馈记录[/dim]")
+            console.print("[dim]No feedback records[/dim]")
             return
 
-        # 显示画像
+        # Display profile
         console.print(Panel(
-            f"样本数: {result['total']}\n"
-            f"成功率: {result['success_rate']:.0%}\n"
-            f"好评数: {result.get('good_count', 0)}\n"
-            f"差评数: {result.get('bad_count', 0)}",
-            title=f"用户画像 {'- ' + code if code else ''}"
+            f"Samples: {result['total']}\n"
+            f"Success rate: {result['success_rate']:.0%}\n"
+            f"Positive: {result.get('good_count', 0)}\n"
+            f"Negative: {result.get('bad_count', 0)}",
+            title=f"User Profile {'- ' + code if code else ''}"
         ))
 
-        # 显示策略表现
+        # Display strategy performance
         strategy_perf = result.get("strategy_performance", {})
         if strategy_perf:
-            console.print("\n[bold]策略表现:[/bold]")
+            console.print("\n[bold]Strategy Performance:[/bold]")
             for strategy, perf in strategy_perf.items():
                 rate = perf.get("success_rate", 0)
                 color = "green" if rate >= 0.5 else "red"
-                console.print(f"  {strategy}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)}次)")
+                console.print(f"  {strategy}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)} times)")
 
-        # 显示信号表现
+        # Display signal performance
         signal_perf = result.get("signal_performance", {})
         if signal_perf:
-            console.print("\n[bold]信号表现:[/bold]")
+            console.print("\n[bold]Signal Performance:[/bold]")
             for signal, perf in list(signal_perf.items())[:5]:
                 rate = perf.get("success_rate", 0)
                 color = "green" if rate >= 0.5 else "red"
-                console.print(f"  {signal}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)}次)")
+                console.print(f"  {signal}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)} times)")
 
 
-# ============ Memory 命令组 ============
+# ============ Memory Command Group ============
 
-memory_app = typer.Typer(name="memory", help="Agent 记忆管理")
+memory_app = typer.Typer(name="memory", help="Agent memory management")
 app.add_typer(memory_app, name="memory")
 
 
 @memory_app.command("store")
 def memory_store(
-    agent: str = typer.Option(..., "--agent", "-a", help="Agent 名称"),
-    key: str = typer.Option(..., "--key", "-k", help="键"),
-    value: str = typer.Option(..., "--value", "-v", help="值"),
-    session: str = typer.Option("default", "--session", "-s", help="会话 ID"),
-    user: str = typer.Option("default", "--user", "-u", help="用户 ID"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    agent: str = typer.Option(..., "--agent", "-a", help="Agent name"),
+    key: str = typer.Option(..., "--key", "-k", help="Key"),
+    value: str = typer.Option(..., "--value", "-v", help="Value"),
+    session: str = typer.Option("default", "--session", "-s", help="Session ID"),
+    user: str = typer.Option("default", "--user", "-u", help="User ID"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """存储 Agent 记忆"""
+    """Store agent memory"""
 
     async def _store() -> dict[str, Any]:
         from .memory import MemoryStore
@@ -1363,23 +1505,23 @@ def memory_store(
         )
         return {"status": "stored", "agent": agent, "key": key, "value": value}
 
-    result = asyncio.run(_store())
+    result = _run_async(_store(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
-        console.print(f"[green]记忆已存储: {agent}/{key}[/green]")
+        console.print(f"[green]Memory stored: {agent}/{key}[/green]")
 
 
 @memory_app.command("recall")
 def memory_recall(
-    agent: str = typer.Option(..., "--agent", "-a", help="Agent 名称"),
-    key: str = typer.Option(..., "--key", "-k", help="键"),
-    user: str = typer.Option("default", "--user", "-u", help="用户 ID"),
-    limit: int = typer.Option(10, "--limit", "-n", help="返回数量"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    agent: str = typer.Option(..., "--agent", "-a", help="Agent name"),
+    key: str = typer.Option(..., "--key", "-k", help="Key"),
+    user: str = typer.Option("default", "--user", "-u", help="User ID"),
+    limit: int = typer.Option(10, "--limit", "-n", help="Number of results"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """回忆 Agent 记忆"""
+    """Recall agent memory"""
 
     async def _recall() -> list[dict[str, Any]]:
         from .memory import MemoryStore
@@ -1392,16 +1534,16 @@ def memory_recall(
         )
         return entries
 
-    entries = asyncio.run(_recall())
+    entries = _run_async(_recall(), json_output)
 
     if json_output:
-        console.print_json(data={"entries": entries})
+        _print_json({"entries": entries})
     else:
         if not entries:
-            console.print("[dim]暂无记忆[/dim]")
+            console.print("[dim]No memories found[/dim]")
             return
 
-        console.print(f"[bold]{agent}/{key} 记忆:[/bold]")
+        console.print(f"[bold]{agent}/{key} memories:[/bold]")
         for entry in entries:
             created = entry.get("created_at", "")[:19]
             console.print(f"  [{created}] {entry.get('value')}")
@@ -1409,12 +1551,12 @@ def memory_recall(
 
 @memory_app.command("history")
 def memory_history(
-    agent: Optional[str] = typer.Option(None, "--agent", "-a", help="Agent 名称(可选)"),
-    user: str = typer.Option("default", "--user", "-u", help="用户 ID"),
-    limit: int = typer.Option(20, "--limit", "-n", help="返回数量"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    agent: Optional[str] = typer.Option(None, "--agent", "-a", help="Agent name (optional)"),
+    user: str = typer.Option("default", "--user", "-u", help="User ID"),
+    limit: int = typer.Option(20, "--limit", "-n", help="Number of results"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """查看会话历史"""
+    """View session history"""
 
     async def _history() -> list[dict[str, Any]]:
         from .memory import MemoryStore
@@ -1426,20 +1568,20 @@ def memory_history(
         )
         return entries
 
-    entries = asyncio.run(_history())
+    entries = _run_async(_history(), json_output)
 
     if json_output:
-        console.print_json(data={"entries": entries})
+        _print_json({"entries": entries})
     else:
         if not entries:
-            console.print("[dim]暂无历史记录[/dim]")
+            console.print("[dim]No history records[/dim]")
             return
 
-        table = Table(title=f"会话历史 ({agent or '所有Agent'})")
-        table.add_column("时间", style="cyan", width=19)
+        table = Table(title=f"Session History ({agent or 'All Agents'})")
+        table.add_column("Time", style="cyan", width=19)
         table.add_column("Agent", style="white", width=15)
-        table.add_column("键", style="yellow", width=15)
-        table.add_column("值", style="green")
+        table.add_column("Key", style="yellow", width=15)
+        table.add_column("Value", style="green")
 
         for entry in entries:
             created = entry.get("created_at", "")[:19]
@@ -1455,12 +1597,12 @@ def memory_history(
 
 @memory_app.command("clear")
 def memory_clear(
-    agent: Optional[str] = typer.Option(None, "--agent", "-a", help="Agent 名称"),
-    user: Optional[str] = typer.Option(None, "--user", "-u", help="用户 ID"),
-    key: Optional[str] = typer.Option(None, "--key", "-k", help="键"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    agent: Optional[str] = typer.Option(None, "--agent", "-a", help="Agent name"),
+    user: Optional[str] = typer.Option(None, "--user", "-u", help="User ID"),
+    key: Optional[str] = typer.Option(None, "--key", "-k", help="Key"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """清除记忆"""
+    """Clear memories"""
 
     async def _clear() -> int:
         from .memory import MemoryStore
@@ -1472,12 +1614,12 @@ def memory_clear(
         )
         return count
 
-    count = asyncio.run(_clear())
+    count = _run_async(_clear(), json_output)
 
     if json_output:
-        console.print_json(data={"cleared": count})
+        _print_json({"cleared": count})
     else:
-        console.print(f"[yellow]已清除 {count} 条记忆[/yellow]")
+        console.print(f"[yellow]Cleared {count} memories[/yellow]")
 
 
 if __name__ == "__main__":

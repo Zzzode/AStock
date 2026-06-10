@@ -1,178 +1,161 @@
-# A股 Agent Team 交易分析系统
+# A-Share Agent Team Trading Analysis System
 
-这是一个以 **Agent Team 为产品核心** 的 A 股分析与决策项目。  
-用户只需提出自然语言问题，系统就会自动组织多个专家 Agent 协作：获取数据、分工分析、交叉讨论、输出建议，并持续学习用户习惯。
+An **Agent Team-first** A-share analysis and decision-making project.  
+Users ask natural language questions and the system automatically orchestrates multiple expert agents: fetching data, dividing analysis, cross-discussing, outputting recommendations, and continuously learning user preferences.
 
-Skills 与代码不是产品终点，而是 Agent 团队的执行基础设施。
+Skills and code are not the end product — they are the execution infrastructure for the Agent Team.
 
-## 🎯 产品目标
+## Product Goals
 
-- Agent 主导：由 Orchestrator Agent 统一调度专家团队
-- 多专家协作：行情、技术、风控、策略、风格学习并行分析
-- 讨论后给建议：先生成多视角结论，再汇总可执行建议
-- 持续个性化：根据用户历史行为更新风格画像与推荐参数
-- 多入口一致：Claude Skills、TS CLI、Python CLI、REST API 共用同一能力内核
+- Agent-led: Orchestrator Agent coordinates the expert team
+- Multi-expert collaboration: market, technical, risk, strategy, and style learning run in parallel
+- Discussion before recommendations: generate multi-perspective conclusions first, then synthesize actionable advice
+- Continuous personalization: update style profiles and recommendation parameters from user history
+- Multi-entry: Agent Skills, Python CLI, and REST API share the same capability kernel
 
-## 🚀 当前能力版图
+## Current Capabilities
 
-- 行情查询：实时行情 + 基础指标
-- 技术分析：MA / MACD / KDJ / RSI 信号
-- 智能选股：多因子评分与排序
-- 策略回测：策略执行与绩效指标输出
-- 监控告警：自选池 + 告警状态/历史查询
-- 配置与风格：用户偏好管理、风格学习、个性化推荐
+- Quote lookup: real-time quotes + basic indicators
+- Team analysis: shared data packet + agent-side reasoning and aggregated decisions
+- Technical analysis: MA / MACD / KDJ / RSI signals
+- Smart screening: candidate snapshots and factor hit details
+- Strategy backtesting: strategy execution and performance metrics
+- Monitoring & alerts: watch list + alert status/history
+- Config & style: user preference management, style learning, personalized recommendations
 
-## 🧠 Agent Team 架构
+## Agent Team Architecture
 
-### 核心原则
+### Core Principles
 
-1. **Agent 优先**：用户面向的是专家团队，不是单个命令
-2. **能力解耦**：TS 编排协作流程，Python 提供确定性能力
-3. **统一协议**：跨模块统一结构化输出，便于 Agent 汇总推理
-4. **可演进**：可从单 Agent 升级到并行评审和辩论机制
+1. **Agent first**: Users face an expert team, not individual commands
+2. **Capability decoupling**: Agent orchestrates collaboration; Python provides deterministic capabilities
+3. **Unified protocol**: structured output across modules for agent reasoning
+4. **Evolvable**: can upgrade from single-agent to parallel review and debate mechanisms
 
-### 分层结构
+### Layered Structure
 
-1. **交互入口层**（Claude Skills / TS CLI / Python CLI / REST API）  
-2. **Agent 编排层**（`src/ts/orchestrator/*`）  
-3. **能力执行层**（`src/python/astock/*`）  
-4. **数据与画像层**（`data/*` + SQLite + 用户配置）
+1. **Interaction layer** (Agent Skills / Python CLI / REST API)  
+2. **Agent orchestration layer** (Skills + subagent dispatch)  
+3. **Capability execution layer** (`src/python/astock/*`)  
+4. **Data & profile layer** (`data/*` + SQLite + user config)
 
-### 入口现状
+### Entry Points
 
-- **Claude Skills**：8 个能力入口 `quote/analyze/screen/backtest/recommend/watch/alert/config`
-- **TypeScript CLI**：接入 `quote`、`analyze`、`init`、`style`
-- **Python CLI**：完整命令组（`screen/backtest/recommend/watch/alert/config` 等）
-- **REST API**：提供 `/quote`、`/analyze`、`/screen`、`/backtest`、`/recommend`、`/config`
+- **Agent Skills**: 8 capability entries `quote/analyze/screen/backtest/recommend/watch/alert/config`
+- **Python CLI**: full command set (`team/quote/analyze/screen/backtest/recommend/watch/alert/config`)
+- **REST API**: `/quote`, `/analyze`, `/screen`, `/backtest`, `/recommend`, `/config`
 
-## 📦 安装
+## Installation
 
 ```bash
-pnpm install
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e src/python
 ```
 
-## 🎯 快速开始
+## Quick Start
 
-完整用户文档见：[docs/user-guide.md](docs/user-guide.md)
+Full user documentation: [docs/user-guide.md](docs/user-guide.md)
 
-### 1) 初始化
+### 1) Initialize
 
 ```bash
-# TypeScript CLI 方式
-pnpm run build
-node dist/index.js init
-node dist/index.js init --refresh-stocks
-
-# Python CLI 方式
 .venv/bin/python -m astock.cli init-db
 ```
 
-### 2) 常用命令
+### 2) Common Commands
 
 ```bash
-# 一键构建 + 初始化 + 启动 Agent Team（可传 code/question/days）
-pnpm run dev:team -- 000001 "现在是否适合介入？" 120
+# Team analysis
+.venv/bin/python -m astock.cli team 000001 -q "Is now a good entry?" -d 120
 
-# 连续调试时可跳过初始化，避免等待
-pnpm run dev:team -- 000001 "现在是否适合介入？" 120 --skip-init
-
-# 设置 team 分析阶段提醒阈值（秒），超过后会提示但不会中断
-pnpm run dev:team -- 000001 "现在是否适合介入？" 120 --timeout 45
-
-# TypeScript CLI（当前接入命令）
-node dist/index.js quote 000001
-node dist/index.js analyze 000001 -d 100
-node dist/index.js style
-node dist/index.js team 000001 -q "现在是否适合介入？" -d 120
-node dist/index.js team-feedback 000001 -a watch_buy -o good -s ma_cross -n "回撤后反弹，节奏合适"
-
-# Python CLI（完整能力）
+# Quote
 .venv/bin/python -m astock.cli quote 000001
+
+# Technical analysis
+.venv/bin/python -m astock.cli analyze 000001 -d 100
+
+# Team feedback
+.venv/bin/python -m astock.cli team-feedback 000001 -a watch_buy -o good -s ma_cross -n "Bounced after pullback, good timing"
+
+# Stock screening
 .venv/bin/python -m astock.cli screen --limit 10
+
+# Backtesting
 .venv/bin/python -m astock.cli backtest run 000001 --strategy ma_cross
+
+# Recommendations
 .venv/bin/python -m astock.cli recommend generate --user default
+
+# Config & style
 .venv/bin/python -m astock.cli config style
+
+# Alert status
 .venv/bin/python -m astock.cli alert status
 ```
 
-`pnpm run dev:team -- 000001 "现在是否适合介入？" 120` 中最后的 `120` 表示技术分析回看天数（days）。
-如果运行器自动传入额外的 `--` 分隔符，脚本会自动忽略，不影响参数解析。
-支持参数：`--skip-init`（跳过初始化）与 `--timeout <秒>`（仅 team 分析阶段耗时提醒阈值，默认 120 秒，不会强制中断）。
-`team` 分析会输出阶段进度：行情获取、技术分析、策略筛选、反馈画像加载、结论汇总。
-结果面板包含“推理轨迹”三条可解释依据；若策略筛选超时会自动降级为中性而不是整次失败。
+`team` analysis outputs stage progress: quote fetch, technical analysis, strategy screening, feedback profile loading, conclusion aggregation.
+Result panel includes three "reasoning trace" explainable evidence items; if strategy screening times out, it auto-degrades to neutral rather than failing the entire run.
 
-### 3) Claude Code Skills
+### 3) Agent Skills
 
-| Skill | 功能 | 示例 |
-|------|------|------|
-| `/quote` | 实时行情查询 | `/quote 000001` |
-| `/analyze` | 技术分析 | `/analyze 000001` |
-| `/screen` | 智能选股 | `/screen --limit 10` |
-| `/backtest` | 策略回测 | `/backtest 000001 --strategy ma_cross` |
-| `/recommend` | 个性化推荐 | `/recommend` |
-| `/watch` | 监控列表管理 | `/watch add 000001` |
-| `/alert` | 监控告警管理 | `/alert status` |
-| `/config` | 配置管理与风格学习 | `/config style` |
+| Skill | Function | Example |
+|-------|----------|---------|
+| `/quote` | Real-time quote lookup | `/quote 000001` |
+| `/analyze` | Technical analysis | `/analyze 000001` |
+| `/screen` | Smart stock screening | `/screen --limit 10` |
+| `/backtest` | Strategy backtesting | `/backtest 000001 --strategy ma_cross` |
+| `/recommend` | Personalized recommendations | `/recommend` |
+| `/watch` | Watch list management | `/watch add 000001` |
+| `/alert` | Monitoring & alert management | `/alert status` |
+| `/config` | Config & style learning | `/config style` |
 
-## 🔄 典型协作流程
+## Typical Collaboration Flow
 
-1. 用户提问（如“现在平安银行是否适合介入？”）
-2. Orchestrator Agent 拆解任务并调度相关专家
-3. 行情/技术/风控/策略 Agent 并行产出结论
-4. Orchestrator 聚合冲突观点并给出最终建议
-5. 学习模块记录用户反馈，更新风格画像与配置
+1. User asks a question (e.g., "Is Ping An Bank a good entry now?")
+2. Python `team --json` generates a unified shared data packet (no trading conclusions)
+3. Orchestrator Agent decomposes tasks and dispatches relevant experts based on the packet
+4. Experts provide bull/bear arguments, position sizing, and risk advice from the data packet
+5. Orchestrator aggregates conflicting views and delivers the final recommendation
+6. Learning module records user feedback, updates style profile and config
 
-## 🧪 Agent Team MVP
+## Agent Team MVP
 
-- 当前新增 `team` 命令：单次请求触发多专家协作分析
-- 专家视角覆盖：Market / Analysis / Strategy / Risk / Style
-- 输出结构包含：`summary`、`experts`、`decision`、`counterpoints`
-- 决策动作当前支持：`watch_buy`、`wait`、`hold_or_reduce`
-- 支持反馈回写：通过 `team-feedback` 记录建议结果，影响风险偏好与策略权重
-- 决策解释增强：输出 `decision.influence` 展示权重影响来源
-- CLI 面板增强：`team` 命令直接展示基础分、风险扣分、风格偏置、策略权重和最终分
+- `team` command: single request triggers multi-expert collaborative analysis
+- Python `team` output protocol: `summary`, `packet`, `data_quality`, `warnings`, `orchestration`
+- Python does NOT output `experts/decision` — agent side owns reasoning and decision-making
+- Python `screen/recommend` output candidate data packets only — no scoring, ranking, or recommendation conclusions
+- Skill side consumes `team --json` first, then scales via Team API / subagent expansion
+- Feedback write-back: `team-feedback` records recommendation outcomes, influencing risk preferences and strategy weights
 
-## 🌐 REST API
+## REST API
 
 ```bash
 uvicorn astock.api:app --reload --port 8000
 ```
 
-启动后访问 `http://localhost:8000/docs` 查看 OpenAPI 文档。
+After starting, visit `http://localhost:8000/docs` for OpenAPI documentation.
 
-## 📊 项目结构
+## Project Structure
 
 ```
 .
-├── .claude/skills/               # Agent 团队调用协议与能力入口
-├── src/ts/
-│   ├── index.ts                  # TypeScript CLI 入口
-│   ├── orchestrator/             # Agent 编排、调用聚合、结果统一
-│   └── utils/python-bridge.ts    # Python 能力桥接
+├── .agents/skills/               # Agent team protocols and capability entries
 ├── src/python/astock/
-│   ├── cli.py                    # Python CLI 能力入口
-│   ├── api.py                    # FastAPI 能力服务入口
+│   ├── cli.py                    # Python CLI capability entry
+│   ├── api.py                    # FastAPI capability service entry
 │   ├── quote/ analysis/ storage/
 │   ├── stock_picker/ backtest/
 │   ├── monitor/ recommend/
 │   ├── config/ learning/ portfolio/
 │   └── utils/
-├── data/                         # SQLite、配置、风格学习数据
-└── docs/plans/                   # 架构与实现设计文档
+├── data/                         # SQLite, config, style learning data
+└── docs/plans/                   # Architecture and implementation design docs
 ```
 
-## 🧪 测试与检查
+## Testing
 
 ```bash
-# TypeScript
-pnpm run build
-pnpm test
-pnpm test -- --run src/ts/orchestrator/__tests__/skill-acceptance.test.ts
-
-# Python
 source .venv/bin/activate
 cd src/python
 pytest astock/ -v --cov=astock
@@ -181,11 +164,11 @@ black --check astock/
 mypy astock/
 ```
 
-## 📈 策略说明
+## Strategy Notes
 
-- TypeScript 编排层当前对回测策略名做了显式校验：`ma_cross`、`macd`
-- Python 能力层可通过 API `/strategies` 查看可用策略集合
+- Available strategies: `ma_cross`, `macd`
+- Python capability layer exposes available strategies via API `/strategies`
 
-## 📄 License
+## License
 
 MIT License

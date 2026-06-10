@@ -1,9 +1,9 @@
-"""个性化推荐模块"""
+"""Personalized recommendation module"""
 
-from .recommender import Recommender, Recommendation, RecommendResult
+from .recommender import Recommender, RecommendCandidate, RecommendResult
 
 __all__ = [
     "Recommender",
-    "Recommendation",
+    "RecommendCandidate",
     "RecommendResult",
 ]

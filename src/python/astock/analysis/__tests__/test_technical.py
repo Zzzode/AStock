@@ -1,4 +1,4 @@
-"""技术分析测试"""
+"""Technical analysis tests"""
 
 import pytest
 import pandas as pd
@@ -10,11 +10,11 @@ from astock.analysis import TechnicalAnalyzer
 
 @pytest.fixture
 def sample_df() -> pd.DataFrame:
-    """创建示例数据"""
+    """Create sample data"""
     dates = [date(2024, 1, 1) + timedelta(days=i) for i in range(100)]
     np.random.seed(42)
 
-    # 生成模拟价格数据
+    # Generate simulated price data
     close = 10 + np.cumsum(np.random.randn(100) * 0.1)
     high = close + np.random.rand(100) * 0.5
     low = close - np.random.rand(100) * 0.5
@@ -32,7 +32,7 @@ def sample_df() -> pd.DataFrame:
 
 
 def test_add_ma(sample_df: pd.DataFrame) -> None:
-    """测试均线计算"""
+    """Test moving average calculation"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_ma([5, 10, 20])
 
@@ -42,7 +42,7 @@ def test_add_ma(sample_df: pd.DataFrame) -> None:
 
 
 def test_add_macd(sample_df: pd.DataFrame) -> None:
-    """测试 MACD 计算"""
+    """Test MACD calculation"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_macd()
 
@@ -52,7 +52,7 @@ def test_add_macd(sample_df: pd.DataFrame) -> None:
 
 
 def test_add_kdj(sample_df: pd.DataFrame) -> None:
-    """测试 KDJ 计算"""
+    """Test KDJ calculation"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_kdj()
 
@@ -62,7 +62,7 @@ def test_add_kdj(sample_df: pd.DataFrame) -> None:
 
 
 def test_add_rsi(sample_df: pd.DataFrame) -> None:
-    """测试 RSI 计算"""
+    """Test RSI calculation"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_rsi([6, 12, 24])
 
@@ -72,7 +72,7 @@ def test_add_rsi(sample_df: pd.DataFrame) -> None:
 
 
 def test_get_signals(sample_df: pd.DataFrame) -> None:
-    """测试信号获取"""
+    """Test signal retrieval"""
     analyzer = TechnicalAnalyzer(sample_df)
     analyzer.add_all()
     signals = analyzer.get_signals()
@@ -83,7 +83,7 @@ def test_get_signals(sample_df: pd.DataFrame) -> None:
 
 
 def test_add_all(sample_df: pd.DataFrame) -> None:
-    """测试添加所有指标"""
+    """Test adding all indicators"""
     analyzer = TechnicalAnalyzer(sample_df)
     result = analyzer.add_all()
 

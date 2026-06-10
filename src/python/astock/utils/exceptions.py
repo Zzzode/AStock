@@ -1,10 +1,10 @@
-"""自定义异常类型"""
+"""Custom exception types"""
 
 from typing import Optional, Any
 
 
 class AstockError(Exception):
-    """A股分析工具基础异常"""
+    """A-share analysis tool base exception"""
 
     def __init__(
         self,
@@ -24,7 +24,7 @@ class AstockError(Exception):
         return " ".join(parts)
 
     def to_dict(self) -> dict[str, Any]:
-        """转换为字典，用于 API 响应"""
+        """Convert to dictionary for API response"""
         return {
             "error": self.__class__.__name__,
             "message": self.message,
@@ -34,7 +34,7 @@ class AstockError(Exception):
 
 
 class DataSourceError(AstockError):
-    """数据源异常"""
+    """Data source exception"""
 
     def __init__(self, message: str, source: Optional[str] = None, **kwargs: Any):
         self.source = source
@@ -45,7 +45,7 @@ class DataSourceError(AstockError):
 
 
 class ValidationError(AstockError):
-    """验证异常"""
+    """Validation exception"""
 
     def __init__(
         self,
@@ -63,7 +63,7 @@ class ValidationError(AstockError):
 
 
 class DatabaseError(AstockError):
-    """数据库异常"""
+    """Database exception"""
 
     def __init__(
         self,
@@ -81,7 +81,7 @@ class DatabaseError(AstockError):
 
 
 class ConfigError(AstockError):
-    """配置异常"""
+    """Configuration exception"""
 
     def __init__(self, message: str, config_key: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})
@@ -91,7 +91,7 @@ class ConfigError(AstockError):
 
 
 class StrategyError(AstockError):
-    """策略异常"""
+    """Strategy exception"""
 
     def __init__(self, message: str, strategy: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})
@@ -101,7 +101,7 @@ class StrategyError(AstockError):
 
 
 class BacktestError(AstockError):
-    """回测异常"""
+    """Backtest exception"""
 
     def __init__(self, message: str, backtest_id: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})
@@ -111,7 +111,7 @@ class BacktestError(AstockError):
 
 
 class AlertError(AstockError):
-    """告警异常"""
+    """Alert exception"""
 
     def __init__(self, message: str, channel: Optional[str] = None, **kwargs: Any):
         details = kwargs.pop("details", {})

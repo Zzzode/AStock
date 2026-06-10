@@ -1,7 +1,9 @@
-"""回测 CLI 命令"""
+"""Backtest CLI commands"""
 
 import asyncio
+from contextlib import nullcontext, redirect_stdout
 import json
+import sys
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Optional, Any
@@ -17,30 +19,44 @@ from .engine import BacktestEngine
 from .strategies import STRATEGIES
 
 
-app = typer.Typer(name="backtest", help="策略回测")
+app = typer.Typer(name="backtest", help="Strategy backtesting")
 console = Console()
 
-# 默认数据库路径
+# Default database path
 DB_PATH = Path(__file__).parent.parent.parent.parent.parent / "data" / "stocks.db"
+
+
+def _print_json(data: Any) -> None:
+    sys.stdout.write(json.dumps(data, ensure_ascii=False, indent=2))
+    sys.stdout.write("\n")
+
+
+def _json_stdout_guard(enabled: bool):
+    return redirect_stdout(sys.stderr) if enabled else nullcontext()
+
+
+def _run_async(coro: Any, json_output: bool) -> Any:
+    with _json_stdout_guard(json_output):
+        return asyncio.run(coro)
 
 
 @app.command("run")
 def run_backtest(
-    code: str = typer.Argument(..., help="股票代码"),
-    strategy: str = typer.Option(..., "--strategy", "-s", help="策略名称"),
-    start_date: Optional[str] = typer.Option(None, "--start-date", help="开始日期 (YYYY-MM-DD)"),
-    end_date: Optional[str] = typer.Option(None, "--end-date", help="结束日期 (YYYY-MM-DD)"),
-    capital: float = typer.Option(100000.0, "--capital", "-c", help="初始资金"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    code: str = typer.Argument(..., help="Stock code"),
+    strategy: str = typer.Option(..., "--strategy", "-s", help="Strategy name"),
+    start_date: Optional[str] = typer.Option(None, "--start-date", help="Start date (YYYY-MM-DD)"),
+    end_date: Optional[str] = typer.Option(None, "--end-date", help="End date (YYYY-MM-DD)"),
+    capital: float = typer.Option(100000.0, "--capital", "-c", help="Initial capital"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """运行策略回测"""
-    # 验证策略名称
+    """Run strategy backtest"""
+    # Validate strategy name
     if strategy not in STRATEGIES:
-        console.print(f"[red]错误: 未知的策略名称 '{strategy}'[/red]")
-        console.print(f"可用策略: {', '.join(STRATEGIES.keys())}")
+        console.print(f"[red]Error: Unknown strategy name '{strategy}'[/red]")
+        console.print(f"Available strategies: {', '.join(STRATEGIES.keys())}")
         raise typer.Exit(1)
 
-    # 解析日期
+    # Parse dates
     if end_date:
         end_dt = datetime.strptime(end_date, "%Y-%m-%d").date()
     else:
@@ -55,14 +71,14 @@ def run_backtest(
         db = Database(str(DB_PATH))
         await db.connect()
         try:
-            # 获取历史数据
+            # Get historical data
             service = QuoteService(db)
             df = await service.get_daily(code)
 
             if df.empty:
-                return {"error": "无数据"}
+                return {"error": "No data"}
 
-            # 过滤日期范围
+            # Filter date range
             if "date" in df.columns:
                 df["date"] = df["date"].apply(
                     lambda x: datetime.strptime(x, "%Y-%m-%d").date()
@@ -70,13 +86,13 @@ def run_backtest(
                 )
                 df = df[(df["date"] >= start_dt) & (df["date"] <= end_dt)]
             else:
-                # 使用索引作为日期
+                # Use index as date
                 df = df.iloc[-365:]
 
             if df.empty:
-                return {"error": "指定日期范围内无数据"}
+                return {"error": "No data in the specified date range"}
 
-            # 运行回测
+            # Run backtest
             engine = BacktestEngine()
             result = engine.run(
                 df,
@@ -89,13 +105,13 @@ def run_backtest(
         finally:
             await db.close()
 
-    result = asyncio.run(_run())
+    result = _run_async(_run(), json_output)
 
     if json_output:
-        console.print_json(data=result)
+        _print_json(result)
     else:
         if "error" in result:
-            console.print(f"[red]错误: {result['error']}[/red]")
+            console.print(f"[red]Error: {result['error']}[/red]")
             raise typer.Exit(1)
 
         _display_result(result)
@@ -103,20 +119,20 @@ def run_backtest(
 
 @app.command("list")
 def list_strategies(
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """列出可用策略"""
+    """List available strategies"""
     strategies = [
         {"name": name, "description": cls.description}
         for name, cls in STRATEGIES.items()
     ]
 
     if json_output:
-        console.print_json(data=strategies)
+        _print_json(strategies)
     else:
-        table = Table(title="可用策略")
-        table.add_column("名称", style="cyan")
-        table.add_column("描述", style="green")
+        table = Table(title="Available Strategies")
+        table.add_column("Name", style="cyan")
+        table.add_column("Description", style="green")
 
         for s in strategies:
             table.add_row(s["name"], s["description"])
@@ -125,8 +141,8 @@ def list_strategies(
 
 
 def _display_result(result: dict[str, Any]) -> None:
-    """显示回测结果"""
-    # 收益指标面板
+    """Display backtest result"""
+    # Return metrics panel
     total_return = result["total_return"]
     return_color = "green" if total_return >= 0 else "red"
     return_sign = "+" if total_return >= 0 else ""
@@ -135,36 +151,36 @@ def _display_result(result: dict[str, Any]) -> None:
     annual_color = "green" if annual_return >= 0 else "red"
     annual_sign = "+" if annual_return >= 0 else ""
 
-    panel_content = f"""[bold cyan]策略:[/bold cyan] {result['strategy']}
-[bold cyan]回测区间:[/bold cyan] {result['start_date']} ~ {result['end_date']}
+    panel_content = f"""[bold cyan]Strategy:[/bold cyan] {result['strategy']}
+[bold cyan]Backtest period:[/bold cyan] {result['start_date']} ~ {result['end_date']}
 
-[bold yellow]收益指标[/bold yellow]
-总收益率: [{return_color}]{return_sign}{total_return:.2f}%[/{return_color}]
-年化收益: [{annual_color}]{annual_sign}{annual_return:.2f}%[/{annual_color}]
-最大回撤: [red]-{result['max_drawdown']:.2f}%[/red]
-夏普比率: {result['sharpe_ratio']:.2f}
+[bold yellow]Return Metrics[/bold yellow]
+Total return: [{return_color}]{return_sign}{total_return:.2f}%[/{return_color}]
+Annualized return: [{annual_color}]{annual_sign}{annual_return:.2f}%[/{annual_color}]
+Max drawdown: [red]-{result['max_drawdown']:.2f}%[/red]
+Sharpe ratio: {result['sharpe_ratio']:.2f}
 
-[bold yellow]交易统计[/bold yellow]
-初始资金: {result['initial_capital']:,.0f} 元
-最终资金: {result['final_capital']:,.0f} 元
-交易次数: {len(result['trades'])} 次
-胜率: {result['win_rate']:.1f}%"""
+[bold yellow]Trade Statistics[/bold yellow]
+Initial capital: {result['initial_capital']:,.0f} CNY
+Final capital: {result['final_capital']:,.0f} CNY
+Trade count: {len(result['trades'])}
+Win rate: {result['win_rate']:.1f}%"""
 
-    console.print(Panel(panel_content, title=f"回测结果 - {result['code']}"))
+    console.print(Panel(panel_content, title=f"Backtest Result - {result['code']}"))
 
-    # 交易记录表格
+    # Trade records table
     trades = result["trades"]
     if trades:
-        console.print("\n[bold yellow]交易记录:[/bold yellow]")
+        console.print("\n[bold yellow]Trade Records:[/bold yellow]")
         table = Table()
-        table.add_column("日期", style="cyan")
-        table.add_column("信号", style="yellow")
-        table.add_column("价格", style="white")
-        table.add_column("股数", style="white")
-        table.add_column("金额", style="green")
-        table.add_column("手续费", style="dim")
+        table.add_column("Date", style="cyan")
+        table.add_column("Signal", style="yellow")
+        table.add_column("Price", style="white")
+        table.add_column("Shares", style="white")
+        table.add_column("Amount", style="green")
+        table.add_column("Commission", style="dim")
 
-        # 只显示最近 10 条记录
+        # Show only the last 10 records
         for trade in trades[-10:]:
             signal_color = "green" if trade["signal"] == "buy" else "red"
             table.add_row(
@@ -179,7 +195,7 @@ def _display_result(result: dict[str, Any]) -> None:
         console.print(table)
 
         if len(trades) > 10:
-            console.print(f"[dim]... 共 {len(trades)} 条交易记录[/dim]")
+            console.print(f"[dim]... {len(trades)} trade records in total[/dim]")
 
 
 if __name__ == "__main__":

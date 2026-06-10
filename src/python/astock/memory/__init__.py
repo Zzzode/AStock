@@ -1,6 +1,6 @@
-"""Agent Memory 模块
+"""Agent Memory module
 
-提供跨 session 持久化的记忆存储和反馈学习功能。
+Provides cross-session persistent memory storage and feedback learning capabilities.
 """
 
 from .memory_store import MemoryStore, MemoryEntry

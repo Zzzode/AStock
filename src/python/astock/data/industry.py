@@ -1,6 +1,6 @@
-"""行业数据获取服务
+"""Industry data fetching service
 
-使用 AkShare 获取 A 股行业分类数据，支持缓存机制。
+Uses AkShare to fetch A-share industry classification data with caching support.
 """
 
 import json
@@ -22,14 +22,14 @@ logger = get_logger("industry")
 P = ParamSpec("P")
 T = TypeVar("T")
 
-# 默认缓存路径
+# Default cache path
 DEFAULT_CACHE_DIR = Path(__file__).parent.parent.parent.parent.parent / "data"
 CACHE_FILE = "industry_cache.json"
-CACHE_TTL_HOURS = 24  # 缓存有效期 1 天
+CACHE_TTL_HOURS = 24  # Cache validity period: 1 day
 
 
 def async_wrap(func: Callable[P, T]) -> Callable[P, Awaitable[T]]:
-    """将同步函数包装为异步"""
+    """Wrap a synchronous function as async"""
     @wraps(func)
     async def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
         try:
@@ -42,12 +42,12 @@ def async_wrap(func: Callable[P, T]) -> Callable[P, Awaitable[T]]:
 
 @dataclass
 class IndustryInfo:
-    """行业信息"""
-    name: str                           # 行业名称
-    code: Optional[str] = None          # 行业代码
-    change_percent: Optional[float] = None  # 行业涨跌幅
-    stock_count: int = 0                # 行业内股票数量
-    updated_at: str = ""                # 更新时间
+    """Industry information"""
+    name: str                           # Industry name
+    code: Optional[str] = None          # Industry code
+    change_percent: Optional[float] = None  # Industry change percentage
+    stock_count: int = 0                # Number of stocks in the industry
+    updated_at: str = ""                # Update timestamp
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -65,12 +65,12 @@ class IndustryInfo:
 
 @dataclass
 class StockIndustry:
-    """股票行业信息"""
-    code: str                           # 股票代码
-    name: str                           # 股票名称
-    industry: str                       # 所属行业名称
-    industry_code: Optional[str] = None  # 行业代码
-    industry_change: Optional[float] = None  # 行业涨跌幅
+    """Stock industry information"""
+    code: str                           # Stock code
+    name: str                           # Stock name
+    industry: str                       # Industry name
+    industry_code: Optional[str] = None  # Industry code
+    industry_change: Optional[float] = None  # Industry change percentage
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -88,10 +88,10 @@ class StockIndustry:
 
 @dataclass
 class IndustryCache:
-    """行业数据缓存结构"""
-    industries: dict[str, IndustryInfo] = field(default_factory=dict)  # 行业名 -> 行业信息
-    stock_industries: dict[str, StockIndustry] = field(default_factory=dict)  # 股票代码 -> 股票行业
-    industry_stocks: dict[str, list[str]] = field(default_factory=dict)  # 行业名 -> 股票代码列表
+    """Industry data cache structure"""
+    industries: dict[str, IndustryInfo] = field(default_factory=dict)  # Industry name -> industry info
+    stock_industries: dict[str, StockIndustry] = field(default_factory=dict)  # Stock code -> stock industry
+    industry_stocks: dict[str, list[str]] = field(default_factory=dict)  # Industry name -> stock code list
     cached_at: str = ""
 
     def to_dict(self) -> dict[str, Any]:
@@ -112,7 +112,7 @@ class IndustryCache:
         )
 
     def is_expired(self, ttl_hours: int = CACHE_TTL_HOURS) -> bool:
-        """检查缓存是否过期"""
+        """Check whether cache is expired"""
         if not self.cached_at:
             return True
         try:
@@ -123,30 +123,30 @@ class IndustryCache:
 
 
 class IndustryService:
-    """行业数据服务
+    """Industry data service
 
-    使用 AkShare 获取 A 股行业分类数据，支持缓存机制。
-    主要接口:
-    - stock_board_industry_name_em(): 获取行业板块名称列表
-    - stock_individual_info_em(): 获取个股信息（包含行业）
+    Uses AkShare to fetch A-share industry classification data with caching support.
+    Main interfaces:
+    - stock_board_industry_name_em(): Get industry sector name list
+    - stock_individual_info_em(): Get individual stock info (including industry)
     """
 
     def __init__(self, cache_dir: Optional[Path] = None):
-        """初始化行业服务
+        """Initialize industry service
 
         Args:
-            cache_dir: 缓存目录，默认为 data/
+            cache_dir: Cache directory, defaults to data/
         """
         self.cache_dir = cache_dir or DEFAULT_CACHE_DIR
         self.cache_file = self.cache_dir / CACHE_FILE
         self._cache: Optional[IndustryCache] = None
         self._initialized = False
 
-        # 确保缓存目录存在
+        # Ensure cache directory exists
         self.cache_dir.mkdir(parents=True, exist_ok=True)
 
     async def _load_cache(self) -> IndustryCache:
-        """加载缓存"""
+        """Load cache"""
         if not self.cache_file.exists():
             return IndustryCache()
 
@@ -155,28 +155,28 @@ class IndustryService:
                 data = json.load(f)
             return IndustryCache.from_dict(data)
         except Exception as e:
-            logger.warning(f"加载行业缓存失败: {e}")
+            logger.warning(f"Failed to load industry cache: {e}")
             return IndustryCache()
 
     async def _save_cache(self, cache: IndustryCache) -> None:
-        """保存缓存"""
+        """Save cache"""
         try:
             cache.cached_at = datetime.now().isoformat()
             with open(self.cache_file, "w", encoding="utf-8") as f:
                 json.dump(cache.to_dict(), f, ensure_ascii=False, indent=2)
-            logger.info(f"行业缓存已保存: {self.cache_file}")
+            logger.info(f"Industry cache saved: {self.cache_file}")
         except Exception as e:
-            logger.error(f"保存行业缓存失败: {e}")
+            logger.error(f"Failed to save industry cache: {e}")
 
     @async_wrap
     def _fetch_industry_list(self) -> pd.DataFrame:
-        """获取行业板块列表（同步）
+        """Fetch industry sector list (synchronous)
 
         Returns:
-            DataFrame: 行业数据
+            DataFrame: Industry data
         """
         if os.getenv("ASTOCK_OFFLINE") == "1":
-            # 离线模式返回模拟数据
+            # Offline mode returns mock data
             return pd.DataFrame({
                 "板块名称": ["银行", "证券", "保险", "房地产", "汽车"],
                 "板块代码": ["BK0477", "BK0478", "BK0479", "BK0480", "BK0481"],
@@ -185,25 +185,25 @@ class IndustryService:
             })
 
         try:
-            # 获取行业板块行情数据
+            # Fetch industry sector market data
             df = ak.stock_board_industry_name_em()
             return df
         except Exception as e:
-            logger.error(f"获取行业板块列表失败: {e}")
+            logger.error(f"Failed to fetch industry sector list: {e}")
             raise
 
     @async_wrap
     def _fetch_stock_industry(self, code: str) -> Optional[dict[str, Any]]:
-        """获取个股行业信息（同步）
+        """Fetch individual stock industry info (synchronous)
 
         Args:
-            code: 股票代码
+            code: Stock code
 
         Returns:
-            行业信息字典
+            Industry info dictionary
         """
         if os.getenv("ASTOCK_OFFLINE") == "1":
-            # 离线模式返回模拟数据
+            # Offline mode returns mock data
             offline_industries = {
                 "000001": "银行",
                 "000002": "房地产",
@@ -217,12 +217,12 @@ class IndustryService:
             }
 
         try:
-            # 获取个股信息
+            # Fetch individual stock info
             df = ak.stock_individual_info_em(symbol=code)
             if df.empty:
                 return None
 
-            # 转换为字典
+            # Convert to dictionary
             info = dict(zip(df["item"], df["value"]))
             return {
                 "code": code,
@@ -230,21 +230,21 @@ class IndustryService:
                 "industry": info.get("行业", ""),
             }
         except Exception as e:
-            logger.debug(f"获取股票 {code} 行业信息失败: {e}")
+            logger.debug(f"Failed to fetch industry info for stock {code}: {e}")
             return None
 
     @async_wrap
     def _fetch_industry_stocks(self, industry_name: str) -> pd.DataFrame:
-        """获取行业内股票列表（同步）
+        """Fetch stock list within an industry (synchronous)
 
         Args:
-            industry_name: 行业名称
+            industry_name: Industry name
 
         Returns:
-            DataFrame: 行业内股票数据
+            DataFrame: Stock data within the industry
         """
         if os.getenv("ASTOCK_OFFLINE") == "1":
-            # 离线模式返回模拟数据
+            # Offline mode returns mock data
             offline_stocks = {
                 "银行": [("000001", "平安银行"), ("600000", "浦发银行"), ("600036", "招商银行")],
                 "房地产": [("000002", "万科A"), ("600048", "保利发展")],
@@ -254,39 +254,50 @@ class IndustryService:
             return pd.DataFrame(stocks, columns=["代码", "名称"])
 
         try:
-            # 获取行业内股票
+            # Fetch stocks within industry
             df = ak.stock_board_industry_cons_em(symbol=industry_name)
             return df
         except Exception as e:
-            logger.error(f"获取行业 {industry_name} 股票列表失败: {e}")
+            logger.error(f"Failed to fetch stock list for industry {industry_name}: {e}")
             return pd.DataFrame()
 
-    async def initialize(self, force_refresh: bool = False) -> None:
-        """初始化行业数据
+    async def initialize(
+        self,
+        force_refresh: bool = False,
+        allow_stale_cache: bool = False,
+    ) -> None:
+        """Initialize industry data
 
         Args:
-            force_refresh: 是否强制刷新
+            force_refresh: Whether to force refresh
+            allow_stale_cache: Whether to allow using expired cache directly
         """
         if self._initialized and not force_refresh:
             return
 
-        # 加载缓存
+        # Load cache
         cache = await self._load_cache()
 
-        # 检查缓存是否过期
+        # Check if cache is expired
         if not force_refresh and not cache.is_expired():
-            logger.info("使用缓存的行业数据")
+            logger.info("Using cached industry data")
             self._cache = cache
             self._initialized = True
             return
 
-        logger.info("开始刷新行业数据...")
+        if not force_refresh and allow_stale_cache and cache.industries:
+            logger.info("Using expired industry cache data")
+            self._cache = cache
+            self._initialized = True
+            return
+
+        logger.info("Starting industry data refresh...")
 
         try:
-            # 获取行业列表
+            # Fetch industry list
             industry_df = await self._fetch_industry_list()
 
-            # 构建行业信息
+            # Build industry information
             for _, row in industry_df.iterrows():
                 name = str(row.get("板块名称", ""))
                 if not name:
@@ -301,25 +312,25 @@ class IndustryService:
                 )
                 cache.industries[name] = industry_info
 
-            # 保存缓存
+            # Save cache
             await self._save_cache(cache)
 
             self._cache = cache
             self._initialized = True
-            logger.info(f"行业数据初始化完成，共 {len(cache.industries)} 个行业")
+            logger.info(f"Industry data initialization complete, {len(cache.industries)} industries total")
 
         except Exception as e:
-            logger.error(f"初始化行业数据失败: {e}")
-            # 使用已有缓存
+            logger.error(f"Failed to initialize industry data: {e}")
+            # Use existing cache
             if cache.industries:
                 self._cache = cache
                 self._initialized = True
 
     async def get_all_industries(self) -> list[IndustryInfo]:
-        """获取所有行业列表
+        """Get all industry list
 
         Returns:
-            行业信息列表
+            Industry info list
         """
         if not self._initialized:
             await self.initialize()
@@ -330,10 +341,10 @@ class IndustryService:
         return list(self._cache.industries.values())
 
     async def get_industry_names(self) -> list[str]:
-        """获取所有行业名称列表
+        """Get all industry name list
 
         Returns:
-            行业名称列表
+            Industry name list
         """
         if not self._initialized:
             await self.initialize()
@@ -344,13 +355,13 @@ class IndustryService:
         return list(self._cache.industries.keys())
 
     async def get_industry_info(self, industry_name: str) -> Optional[IndustryInfo]:
-        """获取行业详情
+        """Get industry details
 
         Args:
-            industry_name: 行业名称
+            industry_name: Industry name
 
         Returns:
-            行业信息
+            Industry information
         """
         if not self._initialized:
             await self.initialize()
@@ -361,27 +372,27 @@ class IndustryService:
         return self._cache.industries.get(industry_name)
 
     async def get_stock_industry(self, code: str) -> Optional[StockIndustry]:
-        """获取股票所属行业
+        """Get stock's industry
 
         Args:
-            code: 股票代码
+            code: Stock code
 
         Returns:
-            股票行业信息
+            Stock industry information
         """
         if not self._initialized:
             await self.initialize()
 
-        # 标准化股票代码（6位数字）
+        # Normalize stock code (6 digits)
         normalized_code = "".join(ch for ch in str(code) if ch.isdigit())
         if len(normalized_code) >= 6:
             normalized_code = normalized_code[-6:]
 
-        # 先检查缓存
+        # Check cache first
         if self._cache and normalized_code in self._cache.stock_industries:
             return self._cache.stock_industries[normalized_code]
 
-        # 缓存中没有，从接口获取
+        # Not in cache, fetch from API
         info = await self._fetch_stock_industry(normalized_code)
         if not info:
             return None
@@ -390,7 +401,7 @@ class IndustryService:
         if not industry_name:
             return None
 
-        # 获取行业信息
+        # Get industry info
         industry_info = await self.get_industry_info(industry_name)
 
         stock_industry = StockIndustry(
@@ -401,7 +412,7 @@ class IndustryService:
             industry_change=industry_info.change_percent if industry_info else None,
         )
 
-        # 更新缓存
+        # Update cache
         if self._cache:
             self._cache.stock_industries[normalized_code] = stock_industry
             await self._save_cache(self._cache)
@@ -409,28 +420,28 @@ class IndustryService:
         return stock_industry
 
     async def get_industry_stocks(self, industry_name: str) -> list[str]:
-        """获取行业内股票代码列表
+        """Get stock code list within an industry
 
         Args:
-            industry_name: 行业名称
+            industry_name: Industry name
 
         Returns:
-            股票代码列表
+            Stock code list
         """
-        # 检查缓存
+        # Check cache
         if self._cache and industry_name in self._cache.industry_stocks:
             return self._cache.industry_stocks[industry_name]
 
-        # 从接口获取
+        # Fetch from API
         df = await self._fetch_industry_stocks(industry_name)
         if df.empty:
             return []
 
-        # 提取股票代码
+        # Extract stock codes
         code_col = "代码" if "代码" in df.columns else "code"
         codes = [str(code).zfill(6) for code in df[code_col].tolist()]
 
-        # 更新缓存
+        # Update cache
         if self._cache:
             self._cache.industry_stocks[industry_name] = codes
             await self._save_cache(self._cache)
@@ -443,15 +454,15 @@ class IndustryService:
         include_industries: Optional[list[str]] = None,
         exclude_industries: Optional[list[str]] = None,
     ) -> list[str]:
-        """按行业筛选股票
+        """Filter stocks by industry
 
         Args:
-            codes: 待筛选的股票代码列表
-            include_industries: 包含的行业列表（白名单）
-            exclude_industries: 排除的行业列表（黑名单）
+            codes: Stock code list to filter
+            include_industries: Industries to include (whitelist)
+            exclude_industries: Industries to exclude (blacklist)
 
         Returns:
-            筛选后的股票代码列表
+            Filtered stock code list
         """
         if not include_industries and not exclude_industries:
             return codes
@@ -467,11 +478,11 @@ class IndustryService:
 
             industry = stock_industry.industry
 
-            # 白名单筛选
+            # Whitelist filtering
             if include_industries and industry not in include_industries:
                 continue
 
-            # 黑名单筛选
+            # Blacklist filtering
             if exclude_industries and industry in exclude_industries:
                 continue
 
@@ -480,13 +491,13 @@ class IndustryService:
         return result
 
     async def get_industry_change(self, industry_name: str) -> Optional[float]:
-        """获取行业涨跌幅
+        """Get industry change percentage
 
         Args:
-            industry_name: 行业名称
+            industry_name: Industry name
 
         Returns:
-            涨跌幅百分比
+            Change percentage
         """
         industry_info = await self.get_industry_info(industry_name)
         if industry_info:
@@ -494,25 +505,25 @@ class IndustryService:
         return None
 
     async def refresh(self) -> bool:
-        """强制刷新行业数据
+        """Force refresh industry data
 
         Returns:
-            是否成功
+            Whether successful
         """
         try:
             await self.initialize(force_refresh=True)
             return True
         except Exception as e:
-            logger.error(f"刷新行业数据失败: {e}")
+            logger.error(f"Failed to refresh industry data: {e}")
             return False
 
 
-# 全局行业服务实例
+# Global industry service instance
 _industry_service: Optional[IndustryService] = None
 
 
 def get_industry_service() -> IndustryService:
-    """获取全局行业服务实例"""
+    """Get global industry service instance"""
     global _industry_service
     if _industry_service is None:
         _industry_service = IndustryService()

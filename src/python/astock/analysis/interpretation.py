@@ -1,7 +1,7 @@
-"""信号上下文模块
+"""Signal context module
 
-提供历史对比和反馈统计等上下文信息，供 LLM 进行推理分析。
-不包含任何预定义的解读文字。
+Provides historical comparison and feedback statistics as context for LLM reasoning.
+Does not contain any predefined interpretation text.
 """
 
 from dataclasses import dataclass
@@ -10,37 +10,37 @@ from typing import Optional
 
 @dataclass
 class SignalContext:
-    """信号上下文信息"""
+    """Signal context information"""
 
-    signal_type: str           # 信号类型标识
-    current_value: float       # 当前值
-    prev_value: Optional[float] = None   # 上一个值
-    prev_signal_date: Optional[str] = None  # 上次出现该信号的日期
-    signal_count_30d: int = 0  # 30天内出现次数
+    signal_type: str           # Signal type identifier
+    current_value: float       # Current value
+    prev_value: Optional[float] = None   # Previous value
+    prev_signal_date: Optional[str] = None  # Date of last occurrence of this signal
+    signal_count_30d: int = 0  # Number of occurrences in last 30 days
 
-    # 用户反馈统计
-    feedback_total: int = 0    # 该信号的总反馈数
-    feedback_good: int = 0     # 好评数
-    feedback_bad: int = 0      # 差评数
-    success_rate: Optional[float] = None  # 成功率
+    # User feedback statistics
+    feedback_total: int = 0    # Total feedback count for this signal
+    feedback_good: int = 0     # Positive feedback count
+    feedback_bad: int = 0      # Negative feedback count
+    success_rate: Optional[float] = None  # Success rate
 
 
 def detect_signals(
     latest: dict,
     prev: dict,
 ) -> list[dict]:
-    """检测技术信号
+    """Detect technical signals
 
     Args:
-        latest: 最新数据
-        prev: 前一日数据
+        latest: Latest data point
+        prev: Previous day's data point
 
     Returns:
-        信号列表，每个信号包含类型、当前值、倾向
+        List of signals, each containing type, current value, and bias
     """
     signals = []
 
-    # MA 信号
+    # MA signals
     if "ma5" in latest and "ma20" in latest:
         ma5, ma20 = latest["ma5"], latest["ma20"]
         prev_ma5, prev_ma20 = prev.get("ma5", 0), prev.get("ma20", 0)
@@ -48,37 +48,37 @@ def detect_signals(
         if prev_ma5 <= prev_ma20 and ma5 > ma20:
             signals.append({
                 "type": "ma_cross_up",
-                "name": "MA金叉",
+                "name": "MA Golden Cross",
                 "current": {"ma5": ma5, "ma20": ma20},
                 "bias": "bullish",
             })
         elif prev_ma5 >= prev_ma20 and ma5 < ma20:
             signals.append({
                 "type": "ma_cross_down",
-                "name": "MA死叉",
+                "name": "MA Death Cross",
                 "current": {"ma5": ma5, "ma20": ma20},
                 "bias": "bearish",
             })
 
-        # MA 排列
+        # MA arrangement
         ma10 = latest.get("ma10", 0)
         close = latest.get("close", 0)
         if ma5 > ma10 > ma20 and close > ma5:
             signals.append({
                 "type": "ma_bullish_arrangement",
-                "name": "多头排列",
+                "name": "Bullish Alignment",
                 "current": {"ma5": ma5, "ma10": ma10, "ma20": ma20, "close": close},
                 "bias": "bullish",
             })
         elif ma5 < ma10 < ma20 and close < ma5:
             signals.append({
                 "type": "ma_bearish_arrangement",
-                "name": "空头排列",
+                "name": "Bearish Alignment",
                 "current": {"ma5": ma5, "ma10": ma10, "ma20": ma20, "close": close},
                 "bias": "bearish",
             })
 
-    # MACD 信号
+    # MACD signals
     if "macd_hist" in latest:
         hist = latest["macd_hist"]
         prev_hist = prev.get("macd_hist", 0)
@@ -86,19 +86,19 @@ def detect_signals(
         if prev_hist <= 0 and hist > 0:
             signals.append({
                 "type": "macd_cross_up",
-                "name": "MACD金叉",
+                "name": "MACD Golden Cross",
                 "current": {"hist": hist, "macd": latest.get("macd"), "signal": latest.get("macd_signal")},
                 "bias": "bullish",
             })
         elif prev_hist >= 0 and hist < 0:
             signals.append({
                 "type": "macd_cross_down",
-                "name": "MACD死叉",
+                "name": "MACD Death Cross",
                 "current": {"hist": hist, "macd": latest.get("macd"), "signal": latest.get("macd_signal")},
                 "bias": "bearish",
             })
 
-    # KDJ 信号
+    # KDJ signals
     if "kdj_j" in latest:
         j = latest["kdj_j"]
         k = latest.get("kdj_k", 0)
@@ -107,33 +107,33 @@ def detect_signals(
         if j < 20:
             signals.append({
                 "type": "kdj_oversold",
-                "name": "KDJ超卖",
+                "name": "KDJ Oversold",
                 "current": {"j": j, "k": k, "d": d},
                 "bias": "bullish",
             })
         elif j > 80:
             signals.append({
                 "type": "kdj_overbought",
-                "name": "KDJ超买",
+                "name": "KDJ Overbought",
                 "current": {"j": j, "k": k, "d": d},
                 "bias": "bearish",
             })
 
-    # RSI 信号
+    # RSI signals
     if "rsi6" in latest:
         rsi = latest["rsi6"]
 
         if rsi < 30:
             signals.append({
                 "type": "rsi_oversold",
-                "name": "RSI超卖",
+                "name": "RSI Oversold",
                 "current": {"rsi6": rsi},
                 "bias": "bullish",
             })
         elif rsi > 70:
             signals.append({
                 "type": "rsi_overbought",
-                "name": "RSI超买",
+                "name": "RSI Overbought",
                 "current": {"rsi6": rsi},
                 "bias": "bearish",
             })
@@ -142,13 +142,13 @@ def detect_signals(
 
 
 def calculate_statistics(signals: list[dict]) -> dict:
-    """计算信号统计
+    """Calculate signal statistics
 
     Args:
-        signals: 信号列表
+        signals: List of signals
 
     Returns:
-        统计信息
+        Statistics summary
     """
     bullish_count = sum(1 for s in signals if s.get("bias") == "bullish")
     bearish_count = sum(1 for s in signals if s.get("bias") == "bearish")

@@ -1,4 +1,4 @@
-"""数据库模块测试"""
+"""Database module tests"""
 
 import pytest
 import pytest_asyncio
@@ -12,7 +12,7 @@ from datetime import date, datetime
 
 @pytest_asyncio.fixture
 async def db() -> AsyncIterator[Database]:
-    """创建临时数据库"""
+    """Create temporary database"""
     with tempfile.TemporaryDirectory() as tmpdir:
         db_path = Path(tmpdir) / "test.db"
         database = Database(str(db_path))
@@ -24,14 +24,14 @@ async def db() -> AsyncIterator[Database]:
 
 @pytest.mark.asyncio
 async def test_init_tables(db: Database) -> None:
-    """测试表初始化"""
-    # 应该不会抛出异常
+    """Test table initialization"""
+    # Should not raise any exceptions
     await db.init_tables()
 
 
 @pytest.mark.asyncio
 async def test_save_and_get_stock(db: Database) -> None:
-    """测试保存和获取股票信息"""
+    """Test saving and retrieving stock info"""
     stock = Stock(
         code="000001",
         name="平安银行",
@@ -39,14 +39,19 @@ async def test_save_and_get_stock(db: Database) -> None:
     )
     await db.save_stock(stock)
 
-    # 验证可以重复保存
+    # Verify that saving again works (upsert)
     stock2 = Stock(code="000001", name="平安银行", industry="银行")
     await db.save_stock(stock2)
+
+    saved = await db.get_stock("000001")
+    assert saved is not None
+    assert saved.code == "000001"
+    assert saved.name == "平安银行"
 
 
 @pytest.mark.asyncio
 async def test_save_and_get_daily_quotes(db: Database) -> None:
-    """测试保存和获取日线行情"""
+    """Test saving and retrieving daily quotes"""
     quotes = [
         DailyQuote(
             code="000001",
@@ -73,12 +78,12 @@ async def test_save_and_get_daily_quotes(db: Database) -> None:
 
     result = await db.get_daily_quotes("000001", limit=10)
     assert len(result) == 2
-    assert result[0].date == date(2024, 1, 2)  # 最新的在前
+    assert result[0].date == date(2024, 1, 2)  # Most recent first
 
 
 @pytest.mark.asyncio
 async def test_save_and_get_watch_items(db: Database) -> None:
-    """测试保存和获取监控项"""
+    """Test saving and retrieving watch items"""
     item = WatchItem(
         code="000001",
         name="平安银行",
@@ -89,7 +94,7 @@ async def test_save_and_get_watch_items(db: Database) -> None:
     )
     await db.save_watch_item(item)
 
-    # 获取所有启用的监控项
+    # Get all enabled watch items
     items = await db.get_watch_items(enabled_only=True)
     assert len(items) == 1
     assert items[0].code == "000001"
@@ -97,18 +102,18 @@ async def test_save_and_get_watch_items(db: Database) -> None:
     assert items[0].alert_channels == ["terminal", "email"]
     assert items[0].enabled is True
 
-    # 获取所有监控项（包括禁用的）
+    # Get all watch items (including disabled)
     all_items = await db.get_watch_items(enabled_only=False)
     assert len(all_items) == 1
 
 
 @pytest.mark.asyncio
 async def test_update_watch_item(db: Database) -> None:
-    """测试更新监控项"""
+    """Test updating watch items"""
     item = WatchItem(code="000001", name="平安银行")
     await db.save_watch_item(item)
 
-    # 更新监控项
+    # Update watch item
     updated_item = WatchItem(
         code="000001",
         name="平安银行(更新)",
@@ -126,7 +131,7 @@ async def test_update_watch_item(db: Database) -> None:
 
 @pytest.mark.asyncio
 async def test_delete_watch_item(db: Database) -> None:
-    """测试删除监控项"""
+    """Test deleting watch items"""
     item = WatchItem(code="000001", name="平安银行")
     await db.save_watch_item(item)
 
@@ -138,7 +143,7 @@ async def test_delete_watch_item(db: Database) -> None:
 
 @pytest.mark.asyncio
 async def test_save_and_get_alert_records(db: Database) -> None:
-    """测试保存和获取告警记录"""
+    """Test saving and retrieving alert records"""
     record = AlertRecord(
         code="000001",
         signal_type="technical",
@@ -152,7 +157,7 @@ async def test_save_and_get_alert_records(db: Database) -> None:
     record_id = await db.save_alert_record(record)
     assert record_id is not None
 
-    # 获取告警记录
+    # Get alert records
     records = await db.get_alert_records()
     assert len(records) == 1
     assert records[0].code == "000001"
@@ -164,7 +169,7 @@ async def test_save_and_get_alert_records(db: Database) -> None:
 
 @pytest.mark.asyncio
 async def test_get_alert_records_by_code(db: Database) -> None:
-    """测试按股票代码获取告警记录"""
+    """Test retrieving alert records by stock code"""
     record1 = AlertRecord(
         code="000001",
         signal_type="technical",
@@ -182,7 +187,7 @@ async def test_get_alert_records_by_code(db: Database) -> None:
     await db.save_alert_record(record1)
     await db.save_alert_record(record2)
 
-    # 按代码筛选
+    # Filter by code
     records = await db.get_alert_records(code="000001")
     assert len(records) == 1
     assert records[0].code == "000001"
@@ -190,7 +195,7 @@ async def test_get_alert_records_by_code(db: Database) -> None:
 
 @pytest.mark.asyncio
 async def test_get_alert_records_by_status(db: Database) -> None:
-    """测试按状态获取告警记录"""
+    """Test retrieving alert records by status"""
     record1 = AlertRecord(
         code="000001",
         signal_type="technical",
@@ -210,7 +215,7 @@ async def test_get_alert_records_by_status(db: Database) -> None:
     await db.save_alert_record(record1)
     await db.save_alert_record(record2)
 
-    # 按状态筛选
+    # Filter by status
     pending_records = await db.get_alert_records(status="pending")
     assert len(pending_records) == 1
     assert pending_records[0].status == "pending"
@@ -218,7 +223,7 @@ async def test_get_alert_records_by_status(db: Database) -> None:
 
 @pytest.mark.asyncio
 async def test_update_alert_status(db: Database) -> None:
-    """测试更新告警记录状态"""
+    """Test updating alert record status"""
     record = AlertRecord(
         code="000001",
         signal_type="technical",
@@ -229,10 +234,10 @@ async def test_update_alert_status(db: Database) -> None:
     )
     record_id = await db.save_alert_record(record)
 
-    # 更新状态
+    # Update status
     await db.update_alert_status(record_id, "sent")
 
-    # 验证更新
+    # Verify update
     records = await db.get_alert_records(code="000001")
     assert len(records) == 1
     assert records[0].status == "sent"

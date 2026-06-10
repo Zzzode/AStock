@@ -1,6 +1,6 @@
-"""回测模块
+"""Backtest module
 
-提供策略回测功能，包含策略基类、回测引擎等。
+Provides strategy backtesting functionality, including strategy base class and backtest engine.
 """
 
 from .strategies import (
@@ -15,7 +15,7 @@ from .strategies import (
 from .engine import BacktestEngine, BacktestResult
 
 __all__ = [
-    # 策略相关
+    # Strategy related
     "Signal",
     "Trade",
     "Strategy",
@@ -23,7 +23,7 @@ __all__ = [
     "MACDStrategy",
     "STRATEGIES",
     "get_strategy",
-    # 引擎相关
+    # Engine related
     "BacktestEngine",
     "BacktestResult",
 ]

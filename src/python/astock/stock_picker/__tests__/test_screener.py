@@ -1,4 +1,4 @@
-"""选股器测试"""
+"""Stock screener tests"""
 
 import pytest
 from unittest.mock import AsyncMock, MagicMock, patch
@@ -11,10 +11,10 @@ from astock.stock_picker.factors import Factor, FactorType
 
 @pytest.fixture
 def mock_quote_service() -> AsyncMock:
-    """Mock 行情服务"""
+    """Mock quote service"""
     service = AsyncMock()
 
-    # Mock 日线数据
+    # Mock daily data
     dates = pd.date_range(start="2024-01-01", periods=100, freq="D")
     df = pd.DataFrame(
         {
@@ -29,7 +29,7 @@ def mock_quote_service() -> AsyncMock:
     )
     service.get_daily.return_value = df
 
-    # Mock 实时行情
+    # Mock realtime quote
     service.get_realtime.return_value = {
         "code": "000001",
         "name": "平安银行",
@@ -37,31 +37,36 @@ def mock_quote_service() -> AsyncMock:
         "pe": 8.5,
         "pb": 0.9,
     }
+    service.get_stock_info.return_value = {
+        "code": "000001",
+        "name": "平安银行",
+    }
 
     return service
 
 
 @pytest.fixture
 def screener(mock_quote_service: AsyncMock) -> StockScreener:
-    """选股器实例"""
+    """Screener instance"""
     return StockScreener(mock_quote_service, max_concurrent=5)
 
 
 class TestStockScreener:
-    """选股器测试"""
+    """Stock screener tests"""
 
     @pytest.mark.asyncio
     async def test_screen_basic(self, screener: StockScreener, mock_quote_service: AsyncMock) -> None:
-        """基础选股测试"""
+        """Basic screening test"""
         results = await screener.screen(codes=["000001"], limit=10)
 
         assert isinstance(results, list)
-        # 验证调用
+        # Verify calls
         mock_quote_service.get_daily.assert_called()
+        mock_quote_service.get_stock_info.assert_called_with("000001", allow_remote=False)
 
     @pytest.mark.asyncio
     async def test_screen_with_factors(self, screener: StockScreener, mock_quote_service: AsyncMock) -> None:
-        """带因子选股测试"""
+        """Screening with factors test"""
         results = await screener.screen(
             factors=["pe_low", "pb_low"], codes=["000001"], limit=10
         )
@@ -69,19 +74,19 @@ class TestStockScreener:
         assert isinstance(results, list)
 
     def test_get_factor_list(self, screener: StockScreener) -> None:
-        """获取因子列表测试"""
+        """Get factor list test"""
         from astock.stock_picker.factors import FACTORS
 
-        # 无参数时返回所有因子
+        # Returns all factors when no argument provided
         factors = screener._get_factor_list(None)
         assert len(factors) == len(FACTORS)
 
-        # 指定因子
+        # Specified factors
         factors = screener._get_factor_list(["pe_low", "pb_low"])
         assert len(factors) == 2
 
     def test_check_condition(self, screener: StockScreener) -> None:
-        """条件检查测试"""
+        """Condition check test"""
         from astock.stock_picker.factors import FACTORS
 
         data = {
@@ -91,16 +96,16 @@ class TestStockScreener:
             "ma20": 14,
         }
 
-        # 测试 PE < 30
+        # Test PE < 30
         factor = FACTORS["pe_low"]
         assert screener._check_condition(data, factor) == True
 
-        # 测试 PB < 3
+        # Test PB < 3
         factor = FACTORS["pb_low"]
         assert screener._check_condition(data, factor) == True
 
     def test_compare_values(self, screener: StockScreener) -> None:
-        """值比较测试"""
+        """Value comparison test"""
         assert screener._compare_values(10, "lt", 20) == True
         assert screener._compare_values(10, "gt", 20) == False
         assert screener._compare_values(10, "eq", 10) == True
@@ -109,22 +114,25 @@ class TestStockScreener:
 
 
 class TestScreenResult:
-    """选股结果测试"""
+    """Screen result tests"""
 
     def test_result_creation(self) -> None:
-        """结果创建测试"""
+        """Result creation test"""
         from datetime import datetime
 
         result = ScreenResult(
             code="000001",
             name="平安银行",
-            score=5.5,
             matched_factors=["pe_low", "pb_low"],
-            factor_scores={"pe_low": 1.0, "pb_low": 1.0},
+            matched_factor_count=2,
+            factor_checks={
+                "pe_low": {"matched": True},
+                "pb_low": {"matched": True},
+            },
             data={},
             screened_at=datetime.now(),
         )
 
         assert result.code == "000001"
-        assert result.score == 5.5
+        assert result.matched_factor_count == 2
         assert len(result.matched_factors) == 2

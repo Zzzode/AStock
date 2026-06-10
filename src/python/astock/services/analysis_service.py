@@ -1,7 +1,7 @@
-"""分析服务
+"""Analysis service
 
-提供原始技术指标数据和上下文信息，不进行任何解读。
-解读由 LLM 进行动态推理。
+Provides raw technical indicator data and context information without any interpretation.
+Interpretation is performed by the LLM via dynamic reasoning.
 """
 
 from dataclasses import dataclass, field
@@ -17,40 +17,43 @@ from ..memory import MemoryStore, FeedbackLearner
 
 @dataclass
 class FullAnalysisResult:
-    """完整分析结果 - 原始数据 + 上下文"""
+    """Full analysis result - raw data + context"""
 
     code: str
     name: Optional[str] = None
 
-    # 原始指标数据
+    # Raw indicator data
     indicators: dict[str, Any] = field(default_factory=dict)
 
-    # 前一日指标（用于对比）
+    # Previous day's indicators (for comparison)
     prev_indicators: dict[str, Any] = field(default_factory=dict)
 
-    # 检测到的信号（只含类型和数值，不含解读）
+    # Detected signals (type and values only, no interpretation)
     signals: list[dict[str, Any]] = field(default_factory=list)
 
-    # 信号统计
+    # Signal statistics
     signal_stats: dict[str, Any] = field(default_factory=dict)
 
-    # 历史上下文
+    # Historical context
     history: dict[str, Any] = field(default_factory=dict)
 
-    # 用户反馈统计
+    # User feedback statistics
     feedback_stats: dict[str, Any] = field(default_factory=dict)
 
-    # 行情数据
+    # Quote data
     quote: dict[str, Any] = field(default_factory=dict)
 
-    # 元数据
+    # Data quality
+    data_quality: dict[str, Any] = field(default_factory=dict)
+
+    # Metadata
     analyzed_at: datetime = field(default_factory=datetime.now)
     days: int = 100
     error: Optional[str] = None
 
 
 class AnalysisService:
-    """分析服务 - 提供原始数据和上下文"""
+    """Analysis service - provides raw data and context"""
 
     def __init__(
         self,
@@ -88,47 +91,47 @@ class AnalysisService:
         days: int = 100,
         include_context: bool = True,
     ) -> FullAnalysisResult:
-        """执行技术分析，输出原始数据 + 上下文
+        """Perform technical analysis, output raw data + context
 
         Args:
-            code: 股票代码
-            days: 分析天数
-            include_context: 是否包含历史和反馈上下文
+            code: Stock code
+            days: Number of days to analyze
+            include_context: Whether to include historical and feedback context
 
         Returns:
-            原始数据 + 上下文
+            Raw data + context
         """
         try:
-            # 获取历史数据
+            # Fetch historical data
             df = await self.quote_service.get_daily(code, limit=days)
 
             if df.empty:
                 return FullAnalysisResult(
                     code=code,
-                    error="无数据",
+                    error="No data available",
                     days=days,
                 )
 
-            # 计算技术指标
+            # Calculate technical indicators
             analyzer = TechnicalAnalyzer(df)
             analyzer.add_all()
             df_with_indicators = analyzer.df
 
-            # 获取最新和前一日数据
+            # Get latest and previous day's data
             latest = df_with_indicators.iloc[-1]
             prev = df_with_indicators.iloc[-2] if len(df_with_indicators) > 1 else latest
 
-            # 转换为字典
+            # Convert to dictionary
             latest_dict = self._series_to_dict(latest)
             prev_dict = self._series_to_dict(prev)
 
-            # 检测信号
+            # Detect signals
             signals = detect_signals(latest_dict, prev_dict)
 
-            # 计算信号统计
+            # Calculate signal statistics
             signal_stats = calculate_statistics(signals)
 
-            # 获取股票名称
+            # Get stock name
             name = None
             try:
                 stock_info = await self.quote_service.get_stock_info(code)
@@ -136,19 +139,24 @@ class AnalysisService:
             except Exception:
                 pass
 
-            # 获取实时行情
+            # Get real-time quote
             quote = {}
             try:
                 quote = await self.quote_service.get_realtime(code)
             except Exception:
                 pass
 
-            # 获取上下文
+            data_quality = {
+                "daily": "daily_only",
+                "quote": quote.get("data_quality", "unavailable") if quote else "unavailable",
+            }
+
+            # Get context
             history = {}
             feedback_stats = {}
 
             if include_context:
-                # 获取历史分析记录
+                # Get historical analysis records
                 try:
                     history_entries = await self.memory_store.recall(
                         agent_name="technical-analyst",
@@ -167,7 +175,7 @@ class AnalysisService:
                 except Exception:
                     pass
 
-                # 获取信号反馈统计
+                # Get signal feedback statistics
                 try:
                     feedback_summary = await self.feedback_learner.get_feedback_summary()
                     if feedback_summary.get("total", 0) > 0:
@@ -176,14 +184,14 @@ class AnalysisService:
                             "success_rate": feedback_summary.get("success_rate"),
                         }
 
-                    # 各信号的成功率
+                    # Success rate per signal type
                     signal_perf = feedback_summary.get("signal_performance", {})
                     if signal_perf:
                         feedback_stats["signals"] = signal_perf
                 except Exception:
                     pass
 
-            # 存储本次分析
+            # Store this analysis
             try:
                 await self.memory_store.store(
                     agent_name="technical-analyst",
@@ -209,6 +217,7 @@ class AnalysisService:
                 history=history,
                 feedback_stats=feedback_stats,
                 quote=quote,
+                data_quality=data_quality,
                 days=days,
             )
 
@@ -220,7 +229,7 @@ class AnalysisService:
             )
 
     def _series_to_dict(self, series) -> dict[str, Any]:
-        """将 pandas Series 转换为字典，处理 NaN 和特殊类型"""
+        """Convert pandas Series to dict, handling NaN and special types"""
         import math
         import numpy as np
         from datetime import date, datetime
@@ -245,14 +254,14 @@ class AnalysisService:
                 result[key] = value
             else:
                 try:
-                    # 尝试转换为字符串
+                    # Attempt to convert to string
                     result[key] = str(value)
                 except Exception:
                     result[key] = None
         return result
 
     def _clean_for_json(self, obj: Any) -> Any:
-        """清理数据使其可 JSON 序列化"""
+        """Clean data to make it JSON-serializable"""
         import math
         import numpy as np
         from datetime import date, datetime
@@ -277,7 +286,7 @@ class AnalysisService:
             return obj
 
     def to_dict(self, result: FullAnalysisResult) -> dict[str, Any]:
-        """转换为可序列化字典"""
+        """Convert to serializable dictionary"""
         raw = {
             "code": result.code,
             "name": result.name,
@@ -288,6 +297,7 @@ class AnalysisService:
             "history": result.history,
             "feedback_stats": result.feedback_stats,
             "quote": result.quote,
+            "data_quality": result.data_quality,
             "analyzed_at": result.analyzed_at.isoformat(),
             "days": result.days,
             "error": result.error,

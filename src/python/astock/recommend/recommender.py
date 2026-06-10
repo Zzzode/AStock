@@ -1,4 +1,8 @@
-"""个性化推荐服务"""
+"""Personalized candidate pool service
+
+Python only collects candidate data based on user configuration; it does not output
+recommendation conclusions. Final ranking, selection, and suggestions are handled by the Agent.
+"""
 
 from dataclasses import dataclass, field
 from datetime import datetime
@@ -7,273 +11,175 @@ from typing import Any, Optional
 from ..config import UserConfig, TradingStyle, RiskLevel, ConfigManager
 from ..stock_picker import StockScreener, ScreenResult, FactorType
 from ..data import IndustryService, StockIndustry
+from ..stock_picker.factors import get_factors_by_type
 
 
 @dataclass
-class Recommendation:
-    """推荐结果"""
-    code: str                           # 股票代码
-    name: Optional[str]                 # 股票名称
-    score: float                        # 综合得分
-    matched_factors: list[str]          # 匹配的因子列表
-    factor_scores: dict[str, float]     # 各因子得分
-    suggested_strategies: list[str]     # 推荐策略
-    risk_level: str                     # 风险等级
-    style_match: float                  # 风格匹配度 (0-1)
-    industry: Optional[str] = None      # 所属行业
-    industry_change: Optional[float] = None  # 行业涨跌幅
-    data: dict[str, Any] = field(default_factory=dict)  # 原始数据
-    recommended_at: datetime = field(default_factory=datetime.now)  # 推荐时间
+class RecommendCandidate:
+    """Recommendation candidate data"""
+
+    code: str
+    name: Optional[str]
+    matched_factors: list[str]
+    matched_factor_count: int
+    factor_checks: dict[str, dict[str, Any]]
+    industry: Optional[str]
+    industry_change: Optional[float]
+    data: dict[str, Any] = field(default_factory=dict)
+    collected_at: datetime = field(default_factory=datetime.now)
 
 
 @dataclass
 class RecommendResult:
-    """推荐请求结果"""
+    """Recommendation request result"""
+
     success: bool
-    recommendations: list[Recommendation] = field(default_factory=list)
+    candidates: list[RecommendCandidate] = field(default_factory=list)
     total: int = 0
     config_used: Optional[dict[str, Any]] = None
+    selection_context: dict[str, Any] = field(default_factory=dict)
     error: Optional[str] = None
     generated_at: datetime = field(default_factory=datetime.now)
 
 
 class Recommender:
-    """个性化推荐器"""
+    """Personalized candidate pool builder"""
 
-    # 交易风格对应的因子类型权重
-    STYLE_FACTOR_WEIGHTS: dict[TradingStyle, dict[FactorType, float]] = {
-        TradingStyle.DAY_TRADING: {
-            FactorType.MOMENTUM: 2.0,
-            FactorType.VOLATILITY: 1.5,
-            FactorType.QUALITY: 1.0,
-            FactorType.VALUATION: 0.5,
-        },
-        TradingStyle.SWING: {
-            FactorType.MOMENTUM: 1.5,
-            FactorType.QUALITY: 1.5,
-            FactorType.VOLATILITY: 1.0,
-            FactorType.VALUATION: 1.0,
-        },
-        TradingStyle.TREND_FOLLOWING: {
-            FactorType.MOMENTUM: 2.0,
-            FactorType.QUALITY: 1.5,
-            FactorType.VALUATION: 1.0,
-            FactorType.VOLATILITY: 0.8,
-        },
-        TradingStyle.VALUE_INVESTING: {
-            FactorType.VALUATION: 2.0,
-            FactorType.QUALITY: 1.5,
-            FactorType.VOLATILITY: 0.5,
-            FactorType.MOMENTUM: 0.5,
-        },
-    }
-
-    # 交易风格对应的推荐策略
-    STYLE_STRATEGIES: dict[TradingStyle, list[str]] = {
+    STYLE_FACTOR_ORDER: dict[TradingStyle, list[FactorType]] = {
         TradingStyle.DAY_TRADING: [
-            "突破策略",
-            "量价配合",
-            "短线波段",
+            FactorType.MOMENTUM,
+            FactorType.VOLATILITY,
+            FactorType.QUALITY,
+            FactorType.VALUATION,
         ],
         TradingStyle.SWING: [
-            "波段交易",
-            "回调买入",
-            "趋势跟随",
+            FactorType.MOMENTUM,
+            FactorType.QUALITY,
+            FactorType.VOLATILITY,
+            FactorType.VALUATION,
         ],
         TradingStyle.TREND_FOLLOWING: [
-            "趋势跟踪",
-            "均线策略",
-            "动量策略",
+            FactorType.MOMENTUM,
+            FactorType.QUALITY,
+            FactorType.VALUATION,
+            FactorType.VOLATILITY,
         ],
         TradingStyle.VALUE_INVESTING: [
-            "价值投资",
-            "定投策略",
-            "分红策略",
+            FactorType.VALUATION,
+            FactorType.QUALITY,
+            FactorType.VOLATILITY,
+            FactorType.MOMENTUM,
         ],
     }
 
-    # 风险等级对应的因子调整
-    RISK_FACTOR_ADJUSTMENTS: dict[RiskLevel, dict[str, float]] = {
-        RiskLevel.CONSERVATIVE: {
-            "volatility_penalty": 0.5,      # 高波动惩罚
-            "valuation_bonus": 0.3,         # 估值奖励
-            "min_score_multiplier": 0.8,    # 最低得分倍率
-        },
-        RiskLevel.MODERATE: {
-            "volatility_penalty": 0.2,
-            "valuation_bonus": 0.1,
-            "min_score_multiplier": 1.0,
-        },
-        RiskLevel.AGGRESSIVE: {
-            "volatility_penalty": 0.0,
-            "valuation_bonus": 0.0,
-            "min_score_multiplier": 1.2,
-        },
+    RISK_FACTOR_OVERLAY: dict[RiskLevel, list[FactorType]] = {
+        RiskLevel.CONSERVATIVE: [FactorType.VALUATION, FactorType.QUALITY],
+        RiskLevel.MODERATE: [],
+        RiskLevel.AGGRESSIVE: [FactorType.MOMENTUM, FactorType.VOLATILITY],
     }
 
-    def __init__(self, screener: StockScreener, industry_service: Optional[IndustryService] = None):
-        """初始化推荐器
-
-        Args:
-            screener: 股票选股器实例
-            industry_service: 行业服务实例（可选）
-        """
+    def __init__(
+        self,
+        screener: StockScreener,
+        industry_service: Optional[IndustryService] = None,
+    ):
         self.screener = screener
         self.industry_service = industry_service
 
-    async def recommend(
+    async def build_candidate_pool(
         self,
         config: UserConfig,
-        limit: int = 10
-    ) -> list[Recommendation]:
-        """生成个性化推荐
-
-        Args:
-            config: 用户配置
-            limit: 返回数量限制
-
-        Returns:
-            推荐结果列表，按得分降序排列
-        """
-        # 1. 根据交易风格获取因子
+        limit: int = 10,
+    ) -> tuple[list[RecommendCandidate], dict[str, Any]]:
+        """Build candidate pool without recommendation ranking"""
         factors = self._get_factors_for_style(config.trading_style)
+        adjusted_factors = self._adjust_factors_for_risk(factors, config.risk_level)
 
-        # 2. 根据风险偏好调整因子
-        adjusted_factors = self._adjust_factors_for_risk(
-            factors,
-            config.risk_level
-        )
-
-        # 3. 执行选股
         screen_results = await self.screener.screen(
             factors=adjusted_factors,
-            limit=limit * 3,  # 获取更多结果以便过滤
+            limit=max(limit * 5, limit),
         )
 
-        # 4. 根据用户偏好过滤
         filtered_results = await self._filter_by_preferences(screen_results, config)
-
-        # 5. 生成推荐
-        recommendations = []
+        candidates = []
         for result in filtered_results[:limit]:
-            recommendation = await self._create_recommendation(
-                result,
-                config.trading_style,
-                config.risk_level
-            )
-            recommendations.append(recommendation)
+            candidates.append(await self._create_candidate(result))
 
-        return recommendations
+        context = {
+            "style": config.trading_style.value,
+            "risk": config.risk_level.value,
+            "screen_factor_keys": adjusted_factors,
+            "price_range": {
+                "min": config.min_price,
+                "max": config.max_price,
+            },
+            "preferred_sectors": list(config.preferred_sectors or []),
+            "excluded_sectors": list(config.excluded_sectors or []),
+            "prefilter_candidate_count": len(screen_results),
+            "postfilter_candidate_count": len(filtered_results),
+            "returned_candidate_count": len(candidates),
+        }
+        return candidates, context
 
     def _get_factors_for_style(self, style: TradingStyle) -> list[str]:
-        """根据交易风格获取因子
+        """Get factor list based on trading style"""
+        factor_types = self.STYLE_FACTOR_ORDER.get(style, [])
+        factor_keys: list[str] = []
 
-        Args:
-            style: 交易风格
+        for factor_type in factor_types:
+            factor_keys.extend(f.key for f in get_factors_by_type(factor_type))
 
-        Returns:
-            因子键名列表
-        """
-        # 获取该风格的因子类型权重
-        weights = self.STYLE_FACTOR_WEIGHTS.get(style, {})
-
-        # 获取所有因子并按权重排序
-        from ..stock_picker.factors import FACTORS, get_factors_by_type
-
-        factor_keys = []
-        for factor_type, weight in sorted(
-            weights.items(),
-            key=lambda x: x[1],
-            reverse=True
-        ):
-            factors = get_factors_by_type(factor_type)
-            factor_keys.extend([f.key for f in factors])
-
-        # 如果没有匹配的因子，返回所有因子
-        return factor_keys if factor_keys else list(FACTORS.keys())
+        return factor_keys
 
     def _adjust_factors_for_risk(
         self,
         factors: list[str],
-        risk: RiskLevel
+        risk: RiskLevel,
     ) -> list[str]:
-        """根据风险偏好调整因子
+        """Reorder factor list based on risk preference without scoring adjustment"""
+        overlays = self.RISK_FACTOR_OVERLAY.get(risk, [])
+        if not overlays:
+            return factors
 
-        Args:
-            factors: 因子键名列表
-            risk: 风险等级
+        overlay_keys: list[str] = []
+        for factor_type in overlays:
+            overlay_keys.extend(f.key for f in get_factors_by_type(factor_type))
 
-        Returns:
-            调整后的因子键名列表
-        """
-        adjustments = self.RISK_FACTOR_ADJUSTMENTS.get(risk, {})
-
-        # 根据风险等级调整因子列表
-        # 保守型：增加估值因子，减少波动因子
-        # 激进型：增加动量因子，减少估值因子
-        from ..stock_picker.factors import FACTORS
-
-        adjusted = list(factors)
-
-        if risk == RiskLevel.CONSERVATIVE:
-            # 保守型：优先估值和质量因子
-            valuation_factors = [k for k, f in FACTORS.items()
-                               if f.type == FactorType.VALUATION]
-            quality_factors = [k for k, f in FACTORS.items()
-                              if f.type == FactorType.QUALITY]
-            # 将估值和质量因子放在前面
-            for f in valuation_factors + quality_factors:
-                if f in adjusted:
-                    adjusted.remove(f)
-                    adjusted.insert(0, f)
-
-        elif risk == RiskLevel.AGGRESSIVE:
-            # 激进型：优先动量和波动因子
-            momentum_factors = [k for k, f in FACTORS.items()
-                               if f.type == FactorType.MOMENTUM]
-            volatility_factors = [k for k, f in FACTORS.items()
-                                  if f.type == FactorType.VOLATILITY]
-            # 将动量和波动因子放在前面
-            for f in momentum_factors + volatility_factors:
-                if f in adjusted:
-                    adjusted.remove(f)
-                    adjusted.insert(0, f)
-
+        adjusted: list[str] = []
+        for key in overlay_keys + factors:
+            if key not in adjusted:
+                adjusted.append(key)
         return adjusted
 
     async def _filter_by_preferences(
         self,
         results: list[ScreenResult],
-        config: UserConfig
+        config: UserConfig,
     ) -> list[ScreenResult]:
-        """根据用户偏好过滤
-
-        Args:
-            results: 选股结果列表
-            config: 用户配置
-
-        Returns:
-            过滤后的结果列表
-        """
+        """Apply deterministic filtering based on user explicit preferences"""
         filtered = []
 
         for result in results:
-            # 价格过滤
             price = result.data.get("close", 0)
             if config.min_price is not None and price < config.min_price:
                 continue
             if config.max_price is not None and price > config.max_price:
                 continue
 
-            # 行业过滤
-            if self.industry_service and (config.preferred_sectors or config.excluded_sectors):
+            if self.industry_service and (
+                config.preferred_sectors or config.excluded_sectors
+            ):
                 stock_industry = await self._get_stock_industry(result.code)
                 if stock_industry:
-                    # 白名单筛选
-                    if config.preferred_sectors and stock_industry.industry not in config.preferred_sectors:
+                    if (
+                        config.preferred_sectors
+                        and stock_industry.industry not in config.preferred_sectors
+                    ):
                         continue
-                    # 黑名单筛选
-                    if config.excluded_sectors and stock_industry.industry in config.excluded_sectors:
+                    if (
+                        config.excluded_sectors
+                        and stock_industry.industry in config.excluded_sectors
+                    ):
                         continue
 
             filtered.append(result)
@@ -281,57 +187,12 @@ class Recommender:
         return filtered
 
     async def _get_stock_industry(self, code: str) -> Optional[StockIndustry]:
-        """异步获取股票行业信息
-
-        Args:
-            code: 股票代码
-
-        Returns:
-            股票行业信息
-        """
         if not self.industry_service:
             return None
         return await self.industry_service.get_stock_industry(code)
 
-    def _suggest_strategies(
-        self,
-        code: str,
-        style: TradingStyle
-    ) -> list[str]:
-        """推荐策略
-
-        Args:
-            code: 股票代码
-            style: 交易风格
-
-        Returns:
-            推荐策略列表
-        """
-        return self.STYLE_STRATEGIES.get(style, ["趋势跟踪"])
-
-    async def _create_recommendation(
-        self,
-        result: ScreenResult,
-        style: TradingStyle,
-        risk: RiskLevel
-    ) -> Recommendation:
-        """创建推荐结果
-
-        Args:
-            result: 选股结果
-            style: 交易风格
-            risk: 风险等级
-
-        Returns:
-            推荐结果
-        """
-        # 计算风格匹配度
-        style_match = self._calculate_style_match(result, style)
-
-        # 获取推荐策略
-        strategies = self._suggest_strategies(result.code, style)
-
-        # 获取行业信息
+    async def _create_candidate(self, result: ScreenResult) -> RecommendCandidate:
+        """Create candidate data object"""
         industry = None
         industry_change = None
         if self.industry_service:
@@ -340,135 +201,59 @@ class Recommender:
                 industry = stock_industry.industry
                 industry_change = stock_industry.industry_change
 
-        return Recommendation(
+        return RecommendCandidate(
             code=result.code,
             name=result.name,
-            score=result.score,
             matched_factors=result.matched_factors,
-            factor_scores=result.factor_scores,
-            suggested_strategies=strategies,
-            risk_level=risk.value,
-            style_match=style_match,
+            matched_factor_count=result.matched_factor_count,
+            factor_checks=result.factor_checks,
             industry=industry,
             industry_change=industry_change,
             data=result.data,
-            recommended_at=datetime.now()
+            collected_at=datetime.now(),
         )
-
-    def _calculate_style_match(
-        self,
-        result: ScreenResult,
-        style: TradingStyle
-    ) -> float:
-        """计算风格匹配度
-
-        Args:
-            result: 选股结果
-            style: 交易风格
-
-        Returns:
-            匹配度 (0-1)
-        """
-        from ..stock_picker.factors import FACTORS
-
-        # 获取该风格对应的因子类型权重
-        weights = self.STYLE_FACTOR_WEIGHTS.get(style, {})
-
-        if not weights:
-            return 0.5  # 默认中等匹配度
-
-        # 计算匹配度
-        total_weight = 0.0
-        matched_weight = 0.0
-
-        for factor_key in result.matched_factors:
-            factor = FACTORS.get(factor_key)
-            if factor:
-                type_weight = weights.get(factor.type, 1.0)
-                total_weight += type_weight
-                matched_weight += type_weight
-
-        # 考虑所有因子的权重
-        for factor in FACTORS.values():
-            type_weight = weights.get(factor.type, 1.0)
-            total_weight += type_weight * 0.5  # 未匹配因子也计入总权重
-
-        if total_weight == 0:
-            return 0.5
-
-        return min(1.0, matched_weight / total_weight)
 
     async def handle_recommend(
         self,
         config: Optional[UserConfig] = None,
         user_id: str = "default",
         limit: int = 10,
-        options: Optional[dict[str, Any]] = None
+        options: Optional[dict[str, Any]] = None,
     ) -> RecommendResult:
-        """处理推荐请求并返回结果
-
-        这是推荐服务的主要入口，整合配置加载、推荐生成和结果处理。
-
-        Args:
-            config: 用户配置，如果为 None 则从 user_id 加载
-            user_id: 用户 ID，用于加载配置
-            limit: 返回数量限制
-            options: 额外选项，可覆盖配置
-                - trading_style: 覆盖交易风格
-                - risk_level: 覆盖风险等级
-                - min_price: 最低价格
-                - max_price: 最高价格
-                - sectors: 行业列表
-
-        Returns:
-            推荐请求结果
-        """
+        """Handle recommendation request and return candidate pool data packet"""
         try:
-            # 加载或使用提供的配置
             if config is None:
                 config_manager = ConfigManager()
                 config = config_manager.load(user_id)
 
-            # 应用选项覆盖
             if options:
                 config = self._apply_options(config, options)
 
-            # 生成推荐
-            recommendations = await self.recommend(config, limit)
+            candidates, selection_context = await self.build_candidate_pool(config, limit)
 
             return RecommendResult(
                 success=True,
-                recommendations=recommendations,
-                total=len(recommendations),
+                candidates=candidates,
+                total=len(candidates),
                 config_used={
                     "user_id": config.user_id,
                     "trading_style": config.trading_style.value,
                     "risk_level": config.risk_level.value,
                     "min_price": config.min_price,
                     "max_price": config.max_price,
-                }
+                    "preferred_sectors": list(config.preferred_sectors or []),
+                    "excluded_sectors": list(config.excluded_sectors or []),
+                },
+                selection_context=selection_context,
             )
 
         except Exception as e:
-            return RecommendResult(
-                success=False,
-                error=str(e)
-            )
+            return RecommendResult(success=False, error=str(e))
 
     def _apply_options(self, config: UserConfig, options: dict[str, Any]) -> UserConfig:
-        """应用选项覆盖到配置
-
-        Args:
-            config: 原始配置
-            options: 选项字典
-
-        Returns:
-            更新后的配置
-        """
-        # 创建配置副本
+        """Apply option overrides to configuration"""
         config_data = config.model_dump()
 
-        # 应用交易风格覆盖
         if "trading_style" in options:
             style_str = options["trading_style"]
             for style in TradingStyle:
@@ -476,7 +261,6 @@ class Recommender:
                     config_data["trading_style"] = style
                     break
 
-        # 应用风险等级覆盖
         if "risk_level" in options:
             risk_str = options["risk_level"]
             for risk in RiskLevel:
@@ -484,13 +268,11 @@ class Recommender:
                     config_data["risk_level"] = risk
                     break
 
-        # 应用价格范围覆盖
         if "min_price" in options:
             config_data["min_price"] = options["min_price"]
         if "max_price" in options:
             config_data["max_price"] = options["max_price"]
 
-        # 应用行业覆盖
         if "sectors" in options:
             config_data["preferred_sectors"] = options["sectors"]
 

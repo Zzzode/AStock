@@ -1,4 +1,4 @@
-"""FastAPI REST API 服务"""
+"""FastAPI REST API Service"""
 
 from datetime import datetime
 from pathlib import Path
@@ -19,18 +19,18 @@ from .recommend import Recommender
 from .config import ConfigManager
 from .utils import get_logger, setup_logging
 
-# 配置日志
+# Configure logging
 setup_logging(level="INFO")
 logger = get_logger("api")
 
-# 创建应用
+# Create application
 app = FastAPI(
-    title="A股交易策略分析工具 API",
-    description="基于 Agent Skills 的多 Agent A股交易策略分析工具 REST API",
+    title="A-Share Trading Strategy Analysis Tool API",
+    description="Multi-agent A-share trading strategy analysis tool REST API based on Agent Skills",
     version="0.1.0",
 )
 
-# 跨域支持
+# CORS support
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -39,15 +39,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# 数据库路径
+# Database path
 DB_PATH = Path(__file__).parent.parent.parent.parent.parent / "data" / "stocks.db"
 
 
-# ============ 依赖注入 ============
+# ============ Dependency Injection ============
 
 
 async def get_db() -> AsyncIterator[Database]:
-    """获取数据库连接"""
+    """Get database connection"""
     db = Database(str(DB_PATH))
     await db.connect()
     try:
@@ -57,15 +57,15 @@ async def get_db() -> AsyncIterator[Database]:
 
 
 async def get_quote_service(db: Database = Depends(get_db)) -> QuoteService:
-    """获取行情服务"""
+    """Get quote service"""
     return QuoteService(db)
 
 
-# ============ 响应模型 ============
+# ============ Response Models ============
 
 
 class QuoteResponse(BaseModel):
-    """行情响应"""
+    """Quote response"""
 
     code: str
     name: str
@@ -81,7 +81,7 @@ class QuoteResponse(BaseModel):
 
 
 class AnalysisResponse(BaseModel):
-    """分析响应"""
+    """Analysis response"""
 
     code: str
     signals: list[dict[str, Any]]
@@ -89,25 +89,27 @@ class AnalysisResponse(BaseModel):
 
 
 class ScreenResult(BaseModel):
-    """选股结果"""
+    """Screening result"""
 
     code: str
     name: Optional[str]
-    score: float
     matched_factors: list[str]
-    factor_scores: dict[str, float]
+    matched_factor_count: int
+    factor_checks: dict[str, dict[str, Any]]
+    data: dict[str, Any] = Field(default_factory=dict)
     screened_at: str
 
 
 class ScreenResponse(BaseModel):
-    """选股响应"""
+    """Screening response"""
 
     total: int
+    requested_factors: list[str] = Field(default_factory=list)
     results: list[ScreenResult]
 
 
 class BacktestResponse(BaseModel):
-    """回测响应"""
+    """Backtest response"""
 
     code: str
     strategy: str
@@ -125,21 +127,21 @@ class BacktestResponse(BaseModel):
 
 
 class ErrorResponse(BaseModel):
-    """错误响应"""
+    """Error response"""
 
     error: str
     message: str
     code: Optional[str] = None
 
 
-# ============ API 路由 ============
+# ============ API Routes ============
 
 
 @app.get("/")
 async def root() -> dict[str, Any]:
-    """API 根路径"""
+    """API root endpoint"""
     return {
-        "name": "A股交易策略分析工具 API",
+        "name": "A-Share Trading Strategy Analysis Tool API",
         "version": "0.1.0",
         "docs": "/docs",
         "endpoints": [
@@ -162,15 +164,15 @@ async def get_quote(
     code: str,
     quote_service: QuoteService = Depends(get_quote_service),
 ) -> QuoteResponse:
-    """获取股票实时行情"""
+    """Get real-time stock quote"""
     try:
         result = await quote_service.get_realtime(code)
         return QuoteResponse(**result)
     except ValueError as e:
-        raise HTTPException(status_code=404, detail=f"股票代码不存在: {code}")
+        raise HTTPException(status_code=404, detail=f"Stock code not found: {code}")
     except Exception as e:
-        logger.error(f"获取行情失败: {code}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"获取行情失败: {str(e)}")
+        logger.error(f"Failed to get quote: {code}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Failed to get quote: {str(e)}")
 
 
 @app.get(
@@ -180,16 +182,16 @@ async def get_quote(
 )
 async def analyze_stock(
     code: str,
-    days: int = Query(100, ge=30, le=500, description="分析天数"),
+    days: int = Query(100, ge=30, le=500, description="Number of days to analyze"),
     db: Database = Depends(get_db),
     quote_service: QuoteService = Depends(get_quote_service),
 ) -> AnalysisResponse:
-    """技术分析"""
+    """Technical analysis"""
     try:
         df = await quote_service.get_daily(code, limit=days)
 
         if df.empty:
-            raise HTTPException(status_code=404, detail=f"无数据: {code}")
+            raise HTTPException(status_code=404, detail=f"No data: {code}")
 
         analyzer = TechnicalAnalyzer(df)
         analyzer.add_all()
@@ -199,17 +201,17 @@ async def analyze_stock(
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"技术分析失败: {code}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"技术分析失败: {str(e)}")
+        logger.error(f"Technical analysis failed: {code}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Technical analysis failed: {str(e)}")
 
 
 @app.get("/screen", response_model=ScreenResponse)
 async def screen_stocks(
-    factors: Optional[str] = Query(None, description="因子列表，逗号分隔"),
-    limit: int = Query(10, ge=1, le=100, description="返回数量"),
+    factors: Optional[str] = Query(None, description="Factor list, comma-separated"),
+    limit: int = Query(10, ge=1, le=100, description="Number of results to return"),
     quote_service: QuoteService = Depends(get_quote_service),
 ) -> ScreenResponse:
-    """选股"""
+    """Stock screening"""
     try:
         screener = StockScreener(quote_service)
 
@@ -221,36 +223,38 @@ async def screen_stocks(
 
         return ScreenResponse(
             total=len(results),
+            requested_factors=factor_list or [],
             results=[
                 ScreenResult(
                     code=r.code,
                     name=r.name,
-                    score=r.score,
                     matched_factors=r.matched_factors,
-                    factor_scores=r.factor_scores,
+                    matched_factor_count=r.matched_factor_count,
+                    factor_checks=r.factor_checks,
+                    data=r.data,
                     screened_at=r.screened_at.isoformat(),
                 )
                 for r in results
             ],
         )
     except Exception as e:
-        logger.error("选股失败", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"选股失败: {str(e)}")
+        logger.error("Stock screening failed", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Stock screening failed: {str(e)}")
 
 
 @app.get("/backtest/{code}", response_model=BacktestResponse)
 async def backtest_stock(
     code: str,
-    strategy: str = Query("ma_cross", description="策略名称"),
-    capital: float = Query(100000, ge=10000, description="初始资金"),
+    strategy: str = Query("ma_cross", description="Strategy name"),
+    capital: float = Query(100000, ge=10000, description="Initial capital"),
     quote_service: QuoteService = Depends(get_quote_service),
 ) -> BacktestResponse:
-    """回测"""
+    """Backtest"""
     try:
         df = await quote_service.get_daily(code, save=False)
 
         if df.empty:
-            raise HTTPException(status_code=404, detail=f"无数据: {code}")
+            raise HTTPException(status_code=404, detail=f"No data: {code}")
 
         engine = BacktestEngine()
         result = engine.run(
@@ -279,19 +283,19 @@ async def backtest_stock(
     except HTTPException:
         raise
     except Exception as e:
-        logger.error(f"回测失败: {code}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"回测失败: {str(e)}")
+        logger.error(f"Backtest failed: {code}", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Backtest failed: {str(e)}")
 
 
 @app.get("/recommend")
 async def get_recommendations(
-    user_id: str = Query("default", description="用户ID"),
-    limit: int = Query(10, ge=1, le=50, description="返回数量"),
-    style: Optional[str] = Query(None, description="交易风格覆盖"),
-    risk: Optional[str] = Query(None, description="风险等级覆盖"),
+    user_id: str = Query("default", description="User ID"),
+    limit: int = Query(10, ge=1, le=50, description="Number of results to return"),
+    style: Optional[str] = Query(None, description="Trading style override"),
+    risk: Optional[str] = Query(None, description="Risk level override"),
     quote_service: QuoteService = Depends(get_quote_service),
 ) -> Any:
-    """个性化推荐"""
+    """Personalized recommendations"""
     try:
         from .recommend import Recommender
         from .stock_picker import StockScreener
@@ -311,17 +315,37 @@ async def get_recommendations(
             options=options if options else None,
         )
 
-        return result
+        return {
+            "success": result.success,
+            "total": result.total,
+            "error": result.error,
+            "config_used": result.config_used,
+            "selection_context": result.selection_context,
+            "candidates": [
+                {
+                    "code": candidate.code,
+                    "name": candidate.name,
+                    "matched_factors": candidate.matched_factors,
+                    "matched_factor_count": candidate.matched_factor_count,
+                    "factor_checks": candidate.factor_checks,
+                    "industry": candidate.industry,
+                    "industry_change": candidate.industry_change,
+                    "data": candidate.data,
+                    "collected_at": candidate.collected_at.isoformat(),
+                }
+                for candidate in result.candidates
+            ],
+        }
     except Exception as e:
-        logger.error("推荐失败", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"推荐失败: {str(e)}")
+        logger.error("Recommendation failed", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Recommendation failed: {str(e)}")
 
 
 @app.get("/config")
 async def get_config(
-    user_id: str = Query("default", description="用户ID"),
+    user_id: str = Query("default", description="User ID"),
 ) -> dict[str, Any]:
-    """获取用户配置"""
+    """Get user configuration"""
     try:
         config_manager = ConfigManager()
         config = config_manager.load(user_id)
@@ -338,19 +362,19 @@ async def get_config(
             "excluded_sectors": config.excluded_sectors,
         }
     except Exception as e:
-        logger.error("获取配置失败", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"获取配置失败: {str(e)}")
+        logger.error("Failed to get config", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Failed to get config: {str(e)}")
 
 
 @app.put("/config")
 async def update_config(
-    user_id: str = Query("default", description="用户ID"),
-    trading_style: Optional[str] = Query(None, description="交易风格"),
-    risk_level: Optional[str] = Query(None, description="风险等级"),
-    max_positions: Optional[int] = Query(None, description="最大持仓数"),
-    position_size: Optional[float] = Query(None, description="单只仓位比例"),
+    user_id: str = Query("default", description="User ID"),
+    trading_style: Optional[str] = Query(None, description="Trading style"),
+    risk_level: Optional[str] = Query(None, description="Risk level"),
+    max_positions: Optional[int] = Query(None, description="Maximum positions"),
+    position_size: Optional[float] = Query(None, description="Position size ratio"),
 ) -> dict[str, Any]:
-    """更新用户配置"""
+    """Update user configuration"""
     try:
         from .config import TradingStyle, RiskLevel
 
@@ -379,13 +403,13 @@ async def update_config(
 
         return {"success": True, "config": config.model_dump()}
     except Exception as e:
-        logger.error("更新配置失败", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"更新配置失败: {str(e)}")
+        logger.error("Failed to update config", exc_info=True)
+        raise HTTPException(status_code=500, detail=f"Failed to update config: {str(e)}")
 
 
 @app.get("/strategies")
 async def list_strategies() -> dict[str, Any]:
-    """列出所有可用策略"""
+    """List all available strategies"""
     from .backtest.strategies import list_strategies
 
     return {"strategies": list_strategies()}
@@ -393,7 +417,7 @@ async def list_strategies() -> dict[str, Any]:
 
 @app.get("/factors")
 async def list_factors() -> dict[str, Any]:
-    """列出所有可用因子"""
+    """List all available factors"""
     from .stock_picker.factors import FACTORS, FactorType
 
     factors_by_type: dict[str, list[dict[str, Any]]] = {}
@@ -415,14 +439,14 @@ async def list_factors() -> dict[str, Any]:
 
 @app.get("/health")
 async def health_check() -> dict[str, str]:
-    """健康检查"""
+    """Health check"""
     return {
         "status": "healthy",
         "timestamp": datetime.now().isoformat(),
     }
 
 
-# 启动命令: uvicorn astock.api:app --reload --port 8000
+# Start command: uvicorn astock.api:app --reload --port 8000
 if __name__ == "__main__":
     import uvicorn
 

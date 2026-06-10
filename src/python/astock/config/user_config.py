@@ -1,4 +1,4 @@
-"""用户配置管理"""
+"""User configuration management"""
 
 from dataclasses import dataclass, field
 from datetime import time
@@ -10,83 +10,83 @@ from pydantic import BaseModel
 
 
 class RiskLevel(str, Enum):
-    """风险等级"""
-    CONSERVATIVE = "conservative"  # 保守型
-    MODERATE = "moderate"  # 稳健型
-    AGGRESSIVE = "aggressive"  # 激进型
+    """Risk level"""
+    CONSERVATIVE = "conservative"  # Conservative
+    MODERATE = "moderate"  # Moderate
+    AGGRESSIVE = "aggressive"  # Aggressive
 
 
 class TradingStyle(str, Enum):
-    """交易风格"""
-    DAY_TRADING = "day_trading"  # 日内交易
-    SWING = "swing"  # 波段交易
-    TREND_FOLLOWING = "trend_following"  # 趋势跟踪
-    VALUE_INVESTING = "value_investing"  # 价值投资
+    """Trading style"""
+    DAY_TRADING = "day_trading"  # Day Trading
+    SWING = "swing"  # Swing Trading
+    TREND_FOLLOWING = "trend_following"  # Trend Following
+    VALUE_INVESTING = "value_investing"  # Value Investing
 
 
 class UserConfig(BaseModel):
-    """用户配置"""
+    """User configuration"""
 
     user_id: str = "default"
 
-    # 风险偏好
+    # Risk preference
     risk_level: RiskLevel = RiskLevel.MODERATE
     trading_style: TradingStyle = TradingStyle.SWING
 
-    # 仓位控制
-    max_positions: int = 10  # 最大持仓数量
-    position_size: float = 0.1  # 单只股票仓位比例 (10%)
+    # Position control
+    max_positions: int = 10  # Maximum number of positions
+    position_size: float = 0.1  # Single stock position ratio (10%)
 
-    # 行业偏好
-    preferred_sectors: list[str] = []  # 偏好行业
-    excluded_sectors: list[str] = []  # 排除行业
+    # Sector preference
+    preferred_sectors: list[str] = []  # Preferred sectors
+    excluded_sectors: list[str] = []  # Excluded sectors
 
-    # 价格范围
-    min_price: Optional[float] = None  # 最低价格
-    max_price: Optional[float] = None  # 最高价格
+    # Price range
+    min_price: Optional[float] = None  # Minimum price
+    max_price: Optional[float] = None  # Maximum price
 
-    # 告警设置
-    alert_channels: list[str] = ["terminal"]  # 告警渠道
-    alert_time_start: time = time(9, 30)  # 告警开始时间
-    alert_time_end: time = time(15, 0)  # 告警结束时间
+    # Alert settings
+    alert_channels: list[str] = ["terminal"]  # Alert channels
+    alert_time_start: time = time(9, 30)  # Alert start time
+    alert_time_end: time = time(15, 0)  # Alert end time
 
-    # 默认设置
-    default_capital: float = 100000.0  # 默认资金
-    default_strategy: str = "ma_cross"  # 默认策略
+    # Default settings
+    default_capital: float = 100000.0  # Default capital
+    default_strategy: str = "ma_cross"  # Default strategy
 
     class Config:
-        use_enum_values = False  # 保持枚举类型
+        use_enum_values = False  # Keep enum types
 
 
 class ConfigManager:
-    """配置管理器"""
+    """Configuration manager"""
 
     def __init__(self, config_dir: str = "data/config"):
-        """初始化配置管理器
+        """Initialize configuration manager
 
         Args:
-            config_dir: 配置文件目录
+            config_dir: Configuration file directory
         """
         self.config_dir = Path(config_dir)
         self.config_dir.mkdir(parents=True, exist_ok=True)
         self._cache: dict[str, UserConfig] = {}
 
     def _get_config_path(self, user_id: str) -> "Path":
-        """获取配置文件路径"""
+        """Get configuration file path"""
         return self.config_dir / f"{user_id}.json"
 
     def load(self, user_id: str = "default") -> UserConfig:
-        """加载用户配置
+        """Load user configuration
 
         Args:
-            user_id: 用户ID
+            user_id: User ID
 
         Returns:
-            用户配置对象
+            User configuration object
         """
         import json
 
-        # 检查缓存
+        # Check cache
         if user_id in self._cache:
             return self._cache[user_id]
 
@@ -95,7 +95,7 @@ class ConfigManager:
         if config_path.exists():
             with open(config_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-                # 转换时间字符串为 time 对象
+                # Convert time strings to time objects
                 if "alert_time_start" in data and isinstance(data["alert_time_start"], str):
                     parts = data["alert_time_start"].split(":")
                     h, m = int(parts[0]), int(parts[1])
@@ -106,7 +106,7 @@ class ConfigManager:
                     data["alert_time_end"] = time(h, m)
                 config = UserConfig(**data)
         else:
-            # 创建默认配置
+            # Create default configuration
             config = UserConfig(user_id=user_id)
             self.save(config)
 
@@ -114,16 +114,16 @@ class ConfigManager:
         return config
 
     def save(self, config: UserConfig) -> None:
-        """保存用户配置
+        """Save user configuration
 
         Args:
-            config: 用户配置对象
+            config: User configuration object
         """
         import json
 
         config_path = self._get_config_path(config.user_id)
 
-        # 转换为字典并处理特殊类型
+        # Convert to dict and handle special types
         data = config.model_dump()
         data["alert_time_start"] = config.alert_time_start.isoformat()
         data["alert_time_end"] = config.alert_time_end.isoformat()
@@ -133,18 +133,18 @@ class ConfigManager:
         with open(config_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)
 
-        # 更新缓存
+        # Update cache
         self._cache[config.user_id] = config
 
     def update(self, user_id: str, **kwargs: object) -> UserConfig:
-        """更新用户配置
+        """Update user configuration
 
         Args:
-            user_id: 用户ID
-            **kwargs: 要更新的配置项
+            user_id: User ID
+            **kwargs: Configuration fields to update
 
         Returns:
-            更新后的配置对象
+            Updated configuration object
         """
         config = self.load(user_id)
 
@@ -156,13 +156,13 @@ class ConfigManager:
         return config
 
     def reset(self, user_id: str) -> UserConfig:
-        """重置用户配置为默认值
+        """Reset user configuration to defaults
 
         Args:
-            user_id: 用户ID
+            user_id: User ID
 
         Returns:
-            重置后的配置对象
+            Reset configuration object
         """
         config = UserConfig(user_id=user_id)
         self.save(config)

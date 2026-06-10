@@ -1,4 +1,4 @@
-"""监控管理 CLI"""
+"""Watch management CLI"""
 
 import asyncio
 import json
@@ -20,12 +20,12 @@ DB_PATH = Path(__file__).parent.parent.parent.parent / "data" / "stocks.db"
 
 @app.command("add")
 def add_watch(
-    code: str = typer.Argument(..., help="股票代码"),
-    signals: Optional[str] = typer.Option(None, "--signals", "-s", help="监控的信号类型"),
-    channels: str = typer.Option("terminal", "--channels", "-c", help="提醒渠道"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+    code: str = typer.Argument(..., help="Stock code"),
+    signals: Optional[str] = typer.Option(None, "--signals", "-s", help="Signal types to monitor"),
+    channels: str = typer.Option("terminal", "--channels", "-c", help="Alert channels"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")
 ) -> None:
-    """添加监控"""
+    """Add a watch item"""
     async def _add() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
@@ -49,15 +49,15 @@ def add_watch(
     if json_output:
         console.print_json(data=result)
     else:
-        console.print(f"[green]已添加监控: {code}[/green]")
+        console.print(f"[green]Watch added: {code}[/green]")
 
 
 @app.command("remove")
 def remove_watch(
-    code: str = typer.Argument(..., help="股票代码"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")
+    code: str = typer.Argument(..., help="Stock code"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")
 ) -> None:
-    """移除监控"""
+    """Remove a watch item"""
     async def _remove() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
@@ -76,12 +76,12 @@ def remove_watch(
     if json_output:
         console.print_json(data=result)
     else:
-        console.print(f"[yellow]已移除监控: {code}[/yellow]")
+        console.print(f"[yellow]Watch removed: {code}[/yellow]")
 
 
 @app.command("list")
-def list_watch(json_output: bool = typer.Option(False, "--json", "-j", help="JSON 输出")) -> None:
-    """查看监控列表"""
+def list_watch(json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")) -> None:
+    """View watch list"""
     async def _list() -> list[dict[str, Any]]:
         db = Database(str(DB_PATH))
         await db.connect()
@@ -95,17 +95,17 @@ def list_watch(json_output: bool = typer.Option(False, "--json", "-j", help="JSO
         console.print_json(data=items)
     else:
         if not items:
-            console.print("[dim]暂无监控项[/dim]")
+            console.print("[dim]No watch items[/dim]")
             return
 
-        table = Table(title=f"监控列表 ({len(items)}项)")
-        table.add_column("代码", style="cyan")
-        table.add_column("名称")
-        table.add_column("状态")
-        table.add_column("渠道")
+        table = Table(title=f"Watch List ({len(items)} items)")
+        table.add_column("Code", style="cyan")
+        table.add_column("Name")
+        table.add_column("Status")
+        table.add_column("Channels")
 
         for item in items:
-            status = "[green]启用[/green]" if item.get("enabled") else "[red]禁用[/red]"
+            status = "[green]Enabled[/green]" if item.get("enabled") else "[red]Disabled[/red]"
             table.add_row(
                 item["code"],
                 item.get("name") or "-",

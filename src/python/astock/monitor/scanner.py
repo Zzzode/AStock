@@ -1,4 +1,4 @@
-"""信号扫描器"""
+"""Signal scanner"""
 
 from datetime import datetime
 from typing import Optional, Any
@@ -10,26 +10,26 @@ from ..analysis import TechnicalAnalyzer
 
 
 class SignalScanner:
-    """技术信号扫描器"""
+    """Technical signal scanner"""
 
     def __init__(self, quote_service: QuoteService):
         """
         Args:
-            quote_service: 行情服务实例
+            quote_service: Quote service instance
         """
         self.quote_service = quote_service
 
     async def scan_stock(self, code: str) -> dict[str, Any]:
-        """扫描单只股票的技术信号
+        """Scan technical signals for a single stock
 
         Args:
-            code: 股票代码
+            code: Stock code
 
         Returns:
-            扫描结果，包含信号列表和级别
+            Scan result containing signal list and level
         """
         try:
-            # 获取日线数据
+            # Get daily data
             df = await self.quote_service.get_daily(code, save=False)
 
             if df.empty or len(df) < 30:
@@ -37,18 +37,18 @@ class SignalScanner:
                     "code": code,
                     "signals": [],
                     "level": 0,
-                    "error": "数据不足"
+                    "error": "Insufficient data"
                 }
 
-            # 计算技术指标
+            # Calculate technical indicators
             analyzer = TechnicalAnalyzer(df)
             analyzer.add_all()
 
-            # 获取信号
+            # Get signals
             result = analyzer.get_signals()
             signals = result.get("signals", [])
 
-            # 判断信号级别
+            # Determine signal level
             level = self._get_signal_level(signals)
 
             return {
@@ -68,13 +68,13 @@ class SignalScanner:
             }
 
     async def scan_all(self, codes: list[str]) -> list[dict[str, Any]]:
-        """扫描多只股票
+        """Scan multiple stocks
 
         Args:
-            codes: 股票代码列表
+            codes: List of stock codes
 
         Returns:
-            扫描结果列表
+            List of scan results
         """
         results = []
         for code in codes:
@@ -83,31 +83,31 @@ class SignalScanner:
         return results
 
     def _get_signal_level(self, signals: list[dict[str, Any]]) -> int:
-        """判断信号级别
+        """Determine signal level
 
-        信号级别规则：
-        - 1 (紧急): 出现多个强烈买入/卖出信号
-        - 2 (重要): 出现金叉/死叉等趋势信号
-        - 3 (一般): 超买超卖等参考信号
+        Signal level rules:
+        - 1 (Critical): Multiple strong buy/sell signals detected
+        - 2 (Important): Trend signals such as golden cross/death cross detected
+        - 3 (Normal): Reference signals such as overbought/oversold
 
         Args:
-            signals: 信号列表
+            signals: List of signals
 
         Returns:
-            信号级别 (1=紧急, 2=重要, 3=一般, 0=无信号)
+            Signal level (1=Critical, 2=Important, 3=Normal, 0=No signal)
         """
         if not signals:
             return 0
 
-        # 按信号类型分组
+        # Group by signal type
         bullish_signals = [s for s in signals if s.get("bias") == "bullish"]
         bearish_signals = [s for s in signals if s.get("bias") == "bearish"]
 
-        # 紧急级别：同时出现多个同向信号
+        # Critical level: multiple signals in the same direction
         if len(bullish_signals) >= 2 or len(bearish_signals) >= 2:
             return 1
 
-        # 重要级别：出现交叉信号
+        # Important level: crossover signals detected
         cross_signals = [
             s for s in signals
             if "cross" in s.get("type", "")
@@ -115,5 +115,5 @@ class SignalScanner:
         if cross_signals:
             return 2
 
-        # 一般级别：其他信号
+        # Normal level: other signals
         return 3

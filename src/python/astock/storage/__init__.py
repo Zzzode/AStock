@@ -1,4 +1,4 @@
-"""存储层模块"""
+"""Storage layer module"""
 
 from .database import Database
 from .models import Stock, DailyQuote, WatchItem, AlertRecord

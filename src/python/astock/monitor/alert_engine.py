@@ -1,4 +1,4 @@
-"""多渠道告警引擎"""
+"""Multi-channel alert engine"""
 
 import asyncio
 import json
@@ -13,7 +13,7 @@ from typing import Any, Optional
 from ..storage import AlertRecord
 from ..config import EmailConfig
 
-# 尝试导入 aiohttp，如果不存在则使用 placeholder
+# Try to import aiohttp, use placeholder if not available
 try:
     import aiohttp
     HAS_AIOHTTP = True
@@ -22,27 +22,27 @@ except ImportError:
 
 
 async def send_email_notification(alert: AlertRecord, email_config: EmailConfig) -> None:
-    """发送邮件告警通知
+    """Send email alert notification
 
-    使用 Python 标准库 smtplib 发送 HTML 格式的邮件通知
+    Uses Python standard library smtplib to send HTML-formatted email notifications
 
     Args:
-        alert: 告警记录
-        email_config: 邮件配置
+        alert: Alert record
+        email_config: Email configuration
 
     Raises:
-        RuntimeError: 邮件发送失败
+        RuntimeError: Email sending failed
     """
     if not email_config.is_configured():
-        raise RuntimeError("邮件配置不完整")
+        raise RuntimeError("Email configuration is incomplete")
 
-    # 构建邮件内容
-    level_names = {1: "紧急", 2: "重要", 3: "一般"}
-    level_name = level_names.get(alert.level, "未知")
+    # Build email content
+    level_names = {1: "Critical", 2: "Important", 3: "Normal"}
+    level_name = level_names.get(alert.level, "Unknown")
     level_colors = {1: "#FF0000", 2: "#FFA500", 3: "#008000"}
     level_color = level_colors.get(alert.level, "#808080")
 
-    # HTML 邮件模板
+    # HTML email template
     html_content = f"""
 <!DOCTYPE html>
 <html>
@@ -120,38 +120,38 @@ async def send_email_notification(alert: AlertRecord, email_config: EmailConfig)
     <div class="container">
         <div class="header">
             <span class="level-badge">{level_name}</span>
-            <h2 style="margin: 12px 0 0 0;">股票告警通知</h2>
+            <h2 style="margin: 12px 0 0 0;">Stock Alert Notification</h2>
         </div>
         <table class="info-table">
             <tr>
-                <td>股票代码</td>
+                <td>Stock Code</td>
                 <td><span class="code">{alert.code}</span></td>
             </tr>
             <tr>
-                <td>信号类型</td>
+                <td>Signal Type</td>
                 <td>{alert.signal_name}</td>
             </tr>
             <tr>
-                <td>触发时间</td>
+                <td>Trigger Time</td>
                 <td>{alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}</td>
             </tr>
         </table>
         <div class="message">
-            <strong>告警详情:</strong><br>
+            <strong>Alert Details:</strong><br>
             {alert.message}
         </div>
         <div class="footer">
-            此邮件由 A股交易告警系统自动发送，请勿回复。
+            This email is automatically sent by the A-Share Trading Alert System. Please do not reply.
         </div>
     </div>
 </body>
 </html>
 """
 
-    # 构建邮件主题
+    # Build email subject
     subject = f"{email_config.subject_prefix} [{level_name}] {alert.code} - {alert.signal_name}"
 
-    # 在线程池中执行同步的 SMTP 操作
+    # Execute synchronous SMTP operations in thread pool
     try:
         loop = asyncio.get_running_loop()
     except RuntimeError:
@@ -166,30 +166,30 @@ async def send_email_notification(alert: AlertRecord, email_config: EmailConfig)
 
 
 def _send_email_sync(email_config: EmailConfig, subject: str, html_content: str) -> None:
-    """同步发送邮件
+    """Send email synchronously
 
     Args:
-        email_config: 邮件配置
-        subject: 邮件主题
-        html_content: HTML 邮件内容
+        email_config: Email configuration
+        subject: Email subject
+        html_content: HTML email content
 
     Raises:
-        RuntimeError: 邮件发送失败
+        RuntimeError: Email sending failed
     """
     try:
-        # 创建邮件对象
+        # Create email object
         msg = MIMEMultipart("alternative")
         msg["Subject"] = subject
         msg["From"] = f"{email_config.sender_name} <{email_config.sender_email}>"
         msg["To"] = ", ".join(email_config.recipients)
 
-        # 添加 HTML 内容
+        # Add HTML content
         html_part = MIMEText(html_content, "html", "utf-8")
         msg.attach(html_part)
 
-        # 连接 SMTP 服务器并发送
+        # Connect to SMTP server and send
         if email_config.use_ssl:
-            # SSL 连接
+            # SSL connection
             with smtplib.SMTP_SSL(email_config.smtp_host, email_config.smtp_port) as server:
                 server.login(email_config.sender_email, email_config.sender_password)
                 server.sendmail(
@@ -198,7 +198,7 @@ def _send_email_sync(email_config: EmailConfig, subject: str, html_content: str)
                     msg.as_string()
                 )
         else:
-            # TLS 或普通连接
+            # TLS or plain connection
             with smtplib.SMTP(email_config.smtp_host, email_config.smtp_port) as server:
                 if email_config.use_tls:
                     server.starttls()
@@ -209,97 +209,97 @@ def _send_email_sync(email_config: EmailConfig, subject: str, html_content: str)
                     msg.as_string()
                 )
 
-        print(f"[AlertEngine] 邮件发送成功: {', '.join(email_config.recipients)}")
+        print(f"[AlertEngine] Email sent successfully: {', '.join(email_config.recipients)}")
 
     except smtplib.SMTPAuthenticationError as e:
-        raise RuntimeError(f"邮件认证失败，请检查邮箱和密码/授权码: {e}")
+        raise RuntimeError(f"Email authentication failed, please check email and password/auth code: {e}")
     except smtplib.SMTPConnectError as e:
-        raise RuntimeError(f"SMTP 服务器连接失败: {e}")
+        raise RuntimeError(f"SMTP server connection failed: {e}")
     except smtplib.SMTPException as e:
-        raise RuntimeError(f"邮件发送失败: {e}")
+        raise RuntimeError(f"Email sending failed: {e}")
     except Exception as e:
-        raise RuntimeError(f"邮件发送异常: {e}")
+        raise RuntimeError(f"Email sending exception: {e}")
 
 
 class AlertEngine:
-    """多渠道告警引擎
+    """Multi-channel alert engine
 
-    支持的告警渠道:
-    - terminal: 终端输出
-    - system: 系统通知 (macOS)
-    - wechat: 微信推送 (Server酱)
-    - dingtalk: 钉钉推送
-    - email: 邮件推送
+    Supported alert channels:
+    - terminal: Terminal output
+    - system: System notification (macOS)
+    - wechat: WeChat push (ServerChan)
+    - dingtalk: DingTalk push
+    - email: Email push
     """
 
     def __init__(self, config_path: Optional[Path] = None):
-        """初始化告警引擎
+        """Initialize alert engine
 
         Args:
-            config_path: 配置文件路径，默认为 data/config.json
+            config_path: Configuration file path, defaults to data/config.json
         """
         self.config_path = config_path or Path("data/config.json")
         self.config = self._load_config()
         self.email_config = self._load_email_config()
 
     def _load_config(self) -> dict[str, Any]:
-        """加载配置文件
+        """Load configuration file
 
         Returns:
-            配置字典
+            Configuration dictionary
         """
         if not self.config_path.exists():
-            print(f"[AlertEngine] 配置文件不存在: {self.config_path}")
+            print(f"[AlertEngine] Configuration file not found: {self.config_path}")
             return {}
 
         try:
             with open(self.config_path, "r", encoding="utf-8") as f:
                 config = json.load(f)
-                print(f"[AlertEngine] 已加载配置文件")
+                print(f"[AlertEngine] Configuration file loaded")
                 if isinstance(config, dict):
                     return config
                 return {}
         except Exception as e:
-            print(f"[AlertEngine] 加载配置失败: {e}")
+            print(f"[AlertEngine] Failed to load configuration: {e}")
             return {}
 
     def _load_email_config(self) -> EmailConfig:
-        """加载邮件配置
+        """Load email configuration
 
-        优先从环境变量加载，其次从配置文件加载
+        Prioritizes loading from environment variables, then from configuration file
 
         Returns:
-            EmailConfig 实例
+            EmailConfig instance
         """
-        # 首先尝试从环境变量加载
+        # First try to load from environment variables
         email_config = EmailConfig.from_env()
         if email_config.is_configured():
-            print(f"[AlertEngine] 已从环境变量加载邮件配置")
+            print(f"[AlertEngine] Email configuration loaded from environment variables")
             return email_config
 
-        # 从配置文件加载
+        # Load from configuration file
         email_config_data = self.config.get("email", {})
         if email_config_data:
             try:
                 email_config = EmailConfig(**email_config_data)
                 if email_config.is_configured():
-                    print(f"[AlertEngine] 已从配置文件加载邮件配置")
+                    print(f"[AlertEngine] Email configuration loaded from config file")
                     return email_config
             except Exception as e:
-                print(f"[AlertEngine] 加载邮件配置失败: {e}")
+                print(f"[AlertEngine] Failed to load email configuration: {e}")
 
-        # 返回空配置
+        # Return empty configuration
         return EmailConfig()
 
     async def send(self, alert: AlertRecord, channels: Optional[list[str]] = None) -> dict[str, bool]:
-        """发送告警到多个渠道
+        """Send alert to multiple channels
 
         Args:
-            alert: 告警记录
-            channels: 指定渠道列表，默认使用 alert.channels
+            alert: Alert record
+            channels: Specified channel list, defaults to alert.channels
 
         Returns:
-            各渠道发送结果 {channel: success}
+            Send results per channel {channel: success}
         """
         channels = channels or alert.channels or ["terminal"]
         results: dict[str, bool] = {}
@@ -311,53 +311,53 @@ class AlertEngine:
                     method = getattr(self, method_name)
                     await method(alert)
                     results[channel] = True
-                    print(f"[AlertEngine] {channel} 发送成功")
+                    print(f"[AlertEngine] {channel} sent successfully")
                 else:
-                    print(f"[AlertEngine] 不支持的渠道: {channel}")
+                    print(f"[AlertEngine] Unsupported channel: {channel}")
                     results[channel] = False
             except Exception as e:
-                print(f"[AlertEngine] {channel} 发送失败: {e}")
+                print(f"[AlertEngine] {channel} send failed: {e}")
                 results[channel] = False
 
         return results
 
     async def _send_terminal(self, alert: AlertRecord) -> None:
-        """终端输出告警
+        """Terminal alert output
 
         Args:
-            alert: 告警记录
+            alert: Alert record
         """
-        level_names = {1: "紧急", 2: "重要", 3: "一般"}
-        level_name = level_names.get(alert.level, "未知")
+        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
+        level_name = level_names.get(alert.level, "Unknown")
 
         border = "=" * 60
         output = f"""
 {border}
-[{level_name}] 告警通知
+[{level_name}] Alert Notification
 {border}
-股票代码: {alert.code}
-信号类型: {alert.signal_name}
-告警详情: {alert.message}
-触发时间: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
+Stock Code: {alert.code}
+Signal Type: {alert.signal_name}
+Alert Details: {alert.message}
+Trigger Time: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
 {border}
 """
         print(output)
 
     async def _send_system(self, alert: AlertRecord) -> None:
-        """系统通知 (macOS)
+        """System notification (macOS)
 
-        使用 osascript 发送 macOS 系统通知
+        Uses osascript to send macOS system notifications
 
         Args:
-            alert: 告警记录
+            alert: Alert record
         """
-        level_names = {1: "紧急", 2: "重要", 3: "一般"}
-        level_name = level_names.get(alert.level, "未知")
+        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
+        level_name = level_names.get(alert.level, "Unknown")
 
         title = f"[{level_name}] {alert.code}"
         message = f"{alert.signal_name}: {alert.message}"
 
-        # 使用 osascript 发送通知
+        # Use osascript to send notification
         script = f'''
         display notification "{message}" with title "{title}"
         '''
@@ -370,40 +370,40 @@ class AlertEngine:
                 text=True
             )
         except subprocess.CalledProcessError as e:
-            raise RuntimeError(f"系统通知发送失败: {e.stderr}")
+            raise RuntimeError(f"System notification send failed: {e.stderr}")
         except FileNotFoundError:
-            raise RuntimeError("osascript 不可用，系统通知仅支持 macOS")
+            raise RuntimeError("osascript not available, system notifications only supported on macOS")
 
     async def _send_wechat(self, alert: AlertRecord) -> None:
-        """微信推送 (Server酱)
+        """WeChat push (ServerChan)
 
-        需要在配置文件中设置 wechat.webhook_url
+        Requires wechat.webhook_url to be set in configuration file
 
         Args:
-            alert: 告警记录
+            alert: Alert record
         """
         if not HAS_AIOHTTP:
-            raise RuntimeError("aiohttp 未安装，请运行: pip install aiohttp")
+            raise RuntimeError("aiohttp not installed, please run: pip install aiohttp")
 
         wechat_config = self.config.get("wechat", {})
         webhook_url = wechat_config.get("webhook_url")
 
         if not webhook_url:
-            raise RuntimeError("未配置微信 webhook_url")
+            raise RuntimeError("WeChat webhook_url not configured")
 
-        level_names = {1: "紧急", 2: "重要", 3: "一般"}
-        level_name = level_names.get(alert.level, "未知")
+        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
+        level_name = level_names.get(alert.level, "Unknown")
 
-        # Server酱 API 格式
+        # ServerChan API format
         title = f"[{level_name}] {alert.code} {alert.signal_name}"
         desp = f"""
-**股票代码**: {alert.code}
+**Stock Code**: {alert.code}
 
-**信号类型**: {alert.signal_name}
+**Signal Type**: {alert.signal_name}
 
-**告警详情**: {alert.message}
+**Alert Details**: {alert.message}
 
-**触发时间**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
+**Trigger Time**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
 """
 
         payload = {
@@ -415,29 +415,29 @@ class AlertEngine:
             async with session.post(webhook_url, json=payload) as response:
                 if response.status != 200:
                     text = await response.text()
-                    raise RuntimeError(f"微信推送失败: {response.status} - {text}")
+                    raise RuntimeError(f"WeChat push failed: {response.status} - {text}")
 
     async def _send_dingtalk(self, alert: AlertRecord) -> None:
-        """钉钉推送
+        """DingTalk push
 
-        需要在配置文件中设置 dingtalk.webhook_url
+        Requires dingtalk.webhook_url to be set in configuration file
 
         Args:
-            alert: 告警记录
+            alert: Alert record
         """
         if not HAS_AIOHTTP:
-            raise RuntimeError("aiohttp 未安装，请运行: pip install aiohttp")
+            raise RuntimeError("aiohttp not installed, please run: pip install aiohttp")
 
         dingtalk_config = self.config.get("dingtalk", {})
         webhook_url = dingtalk_config.get("webhook_url")
 
         if not webhook_url:
-            raise RuntimeError("未配置钉钉 webhook_url")
+            raise RuntimeError("DingTalk webhook_url not configured")
 
-        level_names = {1: "紧急", 2: "重要", 3: "一般"}
-        level_name = level_names.get(alert.level, "未知")
+        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
+        level_name = level_names.get(alert.level, "Unknown")
 
-        # 钉钉消息格式
+        # DingTalk message format
         payload = {
             "msgtype": "markdown",
             "markdown": {
@@ -445,11 +445,11 @@ class AlertEngine:
                 "text": f"""
 ### [{level_name}] {alert.code}
 
-**信号类型**: {alert.signal_name}
+**Signal Type**: {alert.signal_name}
 
-**告警详情**: {alert.message}
+**Alert Details**: {alert.message}
 
-**触发时间**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
+**Trigger Time**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
 """
             }
         }
@@ -458,15 +458,15 @@ class AlertEngine:
             async with session.post(webhook_url, json=payload) as response:
                 if response.status != 200:
                     text = await response.text()
-                    raise RuntimeError(f"钉钉推送失败: {response.status} - {text}")
+                    raise RuntimeError(f"DingTalk push failed: {response.status} - {text}")
 
     async def _send_email(self, alert: AlertRecord) -> None:
-        """邮件推送
+        """Email push
 
         Args:
-            alert: 告警记录
+            alert: Alert record
         """
         if not self.email_config.is_configured():
-            raise RuntimeError("邮件推送未配置，请设置邮箱信息")
+            raise RuntimeError("Email push not configured, please set email information")
 
         await send_email_notification(alert, self.email_config)

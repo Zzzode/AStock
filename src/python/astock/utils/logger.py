@@ -1,4 +1,4 @@
-"""统一日志配置"""
+"""Unified logging configuration"""
 
 import logging
 import sys
@@ -6,7 +6,7 @@ from pathlib import Path
 from typing import Optional
 
 
-# 日志格式
+# Log format
 LOG_FORMAT = "%(asctime)s | %(levelname)-8s | %(name)s:%(lineno)d | %(message)s"
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
@@ -17,32 +17,32 @@ def setup_logging(
     log_dir: str = "logs",
     console: bool = True,
 ) -> None:
-    """配置日志系统
+    """Configure logging system
 
     Args:
-        level: 日志级别 (DEBUG, INFO, WARNING, ERROR, CRITICAL)
-        log_file: 日志文件名，None 表示不写入文件
-        log_dir: 日志文件目录
-        console: 是否输出到控制台
+        level: Log level (DEBUG, INFO, WARNING, ERROR, CRITICAL)
+        log_file: Log file name, None means no file output
+        log_dir: Log file directory
+        console: Whether to output to console
     """
-    # 获取根日志器
+    # Get root logger
     root_logger = logging.getLogger("astock")
     root_logger.setLevel(getattr(logging, level.upper(), logging.INFO))
 
-    # 清除已有处理器
+    # Clear existing handlers
     root_logger.handlers.clear()
 
-    # 创建格式器
+    # Create formatter
     formatter = logging.Formatter(LOG_FORMAT, DATE_FORMAT)
 
-    # 控制台处理器
+    # Console handler
     if console:
-        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler = logging.StreamHandler(sys.stderr)
         console_handler.setLevel(logging.DEBUG)
         console_handler.setFormatter(formatter)
         root_logger.addHandler(console_handler)
 
-    # 文件处理器
+    # File handler
     if log_file:
         log_path = Path(log_dir) / log_file
         log_path.parent.mkdir(parents=True, exist_ok=True)
@@ -54,19 +54,19 @@ def setup_logging(
 
 
 def get_logger(name: str = "astock") -> logging.Logger:
-    """获取日志器
+    """Get logger
 
     Args:
-        name: 日志器名称
+        name: Logger name
 
     Returns:
-        配置好的日志器实例
+        Configured logger instance
     """
-    # 确保以 astock 为前缀
+    # Ensure astock prefix
     if not name.startswith("astock"):
         name = f"astock.{name}"
     return logging.getLogger(name)
 
 
-# 默认配置
+# Default configuration
 setup_logging()

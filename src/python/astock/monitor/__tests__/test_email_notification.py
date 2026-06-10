@@ -1,4 +1,4 @@
-"""邮件推送功能测试"""
+"""Email notification feature tests"""
 
 import pytest
 from datetime import datetime
@@ -10,10 +10,10 @@ from astock.monitor.alert_engine import send_email_notification, _send_email_syn
 
 
 class TestEmailConfig:
-    """EmailConfig 测试"""
+    """EmailConfig tests"""
 
     def test_default_config(self):
-        """测试默认配置"""
+        """Test default configuration"""
         config = EmailConfig()
         assert config.smtp_host == "smtp.qq.com"
         assert config.smtp_port == 465
@@ -25,12 +25,12 @@ class TestEmailConfig:
         assert config.is_configured() is False
 
     def test_is_configured(self):
-        """测试配置完整性检查"""
-        # 未配置
+        """Test configuration completeness check"""
+        # Not configured
         config = EmailConfig()
         assert config.is_configured() is False
 
-        # 部分配置
+        # Partially configured
         config = EmailConfig(sender_email="test@example.com")
         assert config.is_configured() is False
 
@@ -40,7 +40,7 @@ class TestEmailConfig:
         )
         assert config.is_configured() is False
 
-        # 完整配置
+        # Fully configured
         config = EmailConfig(
             sender_email="test@example.com",
             sender_password="password",
@@ -49,7 +49,7 @@ class TestEmailConfig:
         assert config.is_configured() is True
 
     def test_from_env(self, monkeypatch):
-        """测试从环境变量加载配置"""
+        """Test loading configuration from environment variables"""
         monkeypatch.setenv("EMAIL_SMTP_HOST", "smtp.test.com")
         monkeypatch.setenv("EMAIL_SMTP_PORT", "587")
         monkeypatch.setenv("EMAIL_USE_SSL", "false")
@@ -72,7 +72,7 @@ class TestEmailConfig:
         assert config.subject_prefix == "[测试]"
 
     def test_to_dict(self):
-        """测试转换为字典"""
+        """Test conversion to dictionary"""
         config = EmailConfig(
             smtp_host="smtp.test.com",
             smtp_port=465,
@@ -84,16 +84,16 @@ class TestEmailConfig:
         assert d["smtp_host"] == "smtp.test.com"
         assert d["smtp_port"] == 465
         assert d["sender_email"] == "test@example.com"
-        assert d["sender_password"] == "***"  # 密码应该被隐藏
+        assert d["sender_password"] == "***"  # Password should be masked
         assert d["recipients"] == ["recipient@example.com"]
 
 
 class TestSendEmailNotification:
-    """send_email_notification 测试"""
+    """send_email_notification tests"""
 
     @pytest.fixture
     def sample_alert(self):
-        """创建测试告警记录"""
+        """Create test alert record"""
         return AlertRecord(
             id=1,
             code="000001",
@@ -108,7 +108,7 @@ class TestSendEmailNotification:
 
     @pytest.fixture
     def sample_email_config(self):
-        """创建测试邮件配置"""
+        """Create test email configuration"""
         return EmailConfig(
             smtp_host="smtp.test.com",
             smtp_port=465,
@@ -122,18 +122,18 @@ class TestSendEmailNotification:
 
     @pytest.mark.asyncio
     async def test_send_email_notification_not_configured(self, sample_alert):
-        """测试未配置时发送邮件"""
-        config = EmailConfig()  # 未配置
-        with pytest.raises(RuntimeError, match="邮件配置不完整"):
+        """Test sending email when not configured"""
+        config = EmailConfig()  # Not configured
+        with pytest.raises(RuntimeError, match="Email configuration is incomplete"):
             await send_email_notification(sample_alert, config)
 
     @pytest.mark.asyncio
     async def test_send_email_notification_ssl(self, sample_alert, sample_email_config):
-        """测试使用SSL发送邮件"""
+        """Test sending email using SSL"""
         with patch("astock.monitor.alert_engine._send_email_sync") as mock_send:
             await send_email_notification(sample_alert, sample_email_config)
             mock_send.assert_called_once()
-            # 检查参数
+            # Check arguments
             call_args = mock_send.call_args
             assert call_args[0][0] == sample_email_config
             assert "[测试]" in call_args[0][1]
@@ -142,7 +142,7 @@ class TestSendEmailNotification:
 
     @pytest.mark.asyncio
     async def test_send_email_notification_tls(self, sample_alert):
-        """测试使用TLS发送邮件"""
+        """Test sending email using TLS"""
         config = EmailConfig(
             smtp_host="smtp.test.com",
             smtp_port=587,
@@ -157,7 +157,7 @@ class TestSendEmailNotification:
             mock_send.assert_called_once()
 
     def test_send_email_sync_ssl(self, sample_email_config):
-        """测试同步发送邮件(SSL)"""
+        """Test synchronous email sending (SSL)"""
         with patch("smtplib.SMTP_SSL") as mock_smtp:
             mock_server = MagicMock()
             mock_smtp.return_value.__enter__.return_value = mock_server
@@ -178,7 +178,7 @@ class TestSendEmailNotification:
             mock_server.sendmail.assert_called_once()
 
     def test_send_email_sync_tls(self):
-        """测试同步发送邮件(TLS)"""
+        """Test synchronous email sending (TLS)"""
         config = EmailConfig(
             smtp_host="smtp.test.com",
             smtp_port=587,
@@ -206,7 +206,7 @@ class TestSendEmailNotification:
             mock_server.login.assert_called_once()
 
     def test_send_email_sync_auth_error(self, sample_email_config):
-        """测试邮件认证失败"""
+        """Test email authentication failure"""
         import smtplib
 
         with patch("smtplib.SMTP_SSL") as mock_smtp:
@@ -214,16 +214,16 @@ class TestSendEmailNotification:
             mock_server.login.side_effect = smtplib.SMTPAuthenticationError(535, b"Authentication failed")
             mock_smtp.return_value.__enter__.return_value = mock_server
 
-            with pytest.raises(RuntimeError, match="邮件认证失败"):
+            with pytest.raises(RuntimeError, match="Email authentication failed"):
                 _send_email_sync(sample_email_config, "测试", "<html></html>")
 
 
 class TestAlertEngineEmailIntegration:
-    """AlertEngine 邮件集成测试"""
+    """AlertEngine email integration tests"""
 
     @pytest.fixture
     def email_config(self):
-        """创建测试邮件配置"""
+        """Create test email configuration"""
         return EmailConfig(
             smtp_host="smtp.test.com",
             smtp_port=465,
@@ -235,10 +235,10 @@ class TestAlertEngineEmailIntegration:
 
     @pytest.mark.asyncio
     async def test_send_email_via_alert_engine(self, email_config, tmp_path):
-        """测试通过AlertEngine发送邮件"""
+        """Test sending email via AlertEngine"""
         from astock.monitor.alert_engine import AlertEngine
 
-        # 创建测试配置文件
+        # Create test config file
         config_file = tmp_path / "config.json"
         config_file.write_text('{}')
 

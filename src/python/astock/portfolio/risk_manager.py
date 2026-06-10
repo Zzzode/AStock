@@ -1,4 +1,4 @@
-"""风险管理"""
+"""Risk management"""
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -8,7 +8,7 @@ import math
 
 
 class RiskLevel(str, Enum):
-    """风险等级"""
+    """Risk level"""
 
     LOW = "low"
     MEDIUM = "medium"
@@ -18,13 +18,13 @@ class RiskLevel(str, Enum):
 
 @dataclass
 class RiskMetrics:
-    """风险指标"""
+    """Risk metrics"""
 
-    max_drawdown: float = 0.0  # 最大回撤
-    volatility: float = 0.0  # 波动率
-    sharpe_ratio: float = 0.0  # 夏普比率
+    max_drawdown: float = 0.0  # Max drawdown
+    volatility: float = 0.0  # Volatility
+    sharpe_ratio: float = 0.0  # Sharpe ratio
     var_95: float = 0.0  # 95% VaR
-    concentration_risk: float = 0.0  # 集中度风险
+    concentration_risk: float = 0.0  # Concentration risk
     risk_level: RiskLevel = RiskLevel.MEDIUM
     updated_at: Optional[datetime] = None
 
@@ -42,18 +42,18 @@ class RiskMetrics:
 
 @dataclass
 class RiskLimits:
-    """风控限制"""
+    """Risk control limits"""
 
-    max_position_size: float = 0.2  # 单只股票最大仓位
-    max_sector_exposure: float = 0.4  # 单行业最大敞口
-    max_drawdown_limit: float = 0.2  # 最大回撤限制
-    max_positions: int = 10  # 最大持仓数量
-    stop_loss_percent: float = 0.08  # 止损比例
-    take_profit_percent: float = 0.15  # 止盈比例
+    max_position_size: float = 0.2  # Max single stock position size
+    max_sector_exposure: float = 0.4  # Max single sector exposure
+    max_drawdown_limit: float = 0.2  # Max drawdown limit
+    max_positions: int = 10  # Max number of positions
+    stop_loss_percent: float = 0.08  # Stop-loss ratio
+    take_profit_percent: float = 0.15  # Take-profit ratio
 
 
 class RiskManager:
-    """风险管理器"""
+    """Risk manager"""
 
     def __init__(self, limits: Optional[RiskLimits] = None):
         self.limits = limits or RiskLimits()
@@ -65,10 +65,10 @@ class RiskManager:
         position_value: float,
         new_position_value: float,
     ) -> tuple[bool, str]:
-        """检查仓位限制
+        """Check position limit
 
         Returns:
-            (是否通过, 原因)
+            (passed, reason)
         """
         total_value = current_value + new_position_value
         if total_value == 0:
@@ -77,17 +77,17 @@ class RiskManager:
         position_ratio = (position_value + new_position_value) / total_value
 
         if position_ratio > self.limits.max_position_size:
-            return False, f"单只股票仓位超过限制 {self.limits.max_position_size:.0%}"
+            return False, f"Single stock position exceeds limit {self.limits.max_position_size:.0%}"
 
         return True, ""
 
     def check_drawdown(
         self, peak_value: float, current_value: float
     ) -> tuple[bool, float]:
-        """检查回撤
+        """Check drawdown
 
         Returns:
-            (是否超过限制, 当前回撤)
+            (exceeded_limit, current_drawdown)
         """
         if peak_value == 0:
             return False, 0
@@ -104,10 +104,10 @@ class RiskManager:
         cost_price: float,
         current_price: float,
     ) -> tuple[bool, float]:
-        """检查止损
+        """Check stop-loss
 
         Returns:
-            (是否触发止损, 亏损比例)
+            (triggered, loss_percent)
         """
         if cost_price == 0:
             return False, 0
@@ -124,10 +124,10 @@ class RiskManager:
         cost_price: float,
         current_price: float,
     ) -> tuple[bool, float]:
-        """检查止盈
+        """Check take-profit
 
         Returns:
-            (是否触发止盈, 盈利比例)
+            (triggered, profit_percent)
         """
         if cost_price == 0:
             return False, 0
@@ -144,14 +144,14 @@ class RiskManager:
         returns: list[float],
         confidence: float = 0.95,
     ) -> float:
-        """计算 VaR (Value at Risk)
+        """Calculate VaR (Value at Risk)
 
         Args:
-            returns: 收益率序列
-            confidence: 置信度
+            returns: Return series
+            confidence: Confidence level
 
         Returns:
-            VaR 值
+            VaR value
         """
         if not returns:
             return 0
@@ -161,7 +161,7 @@ class RiskManager:
         return abs(sorted_returns[index])
 
     def calculate_max_drawdown(self, equity_curve: list[float]) -> float:
-        """计算最大回撤"""
+        """Calculate max drawdown"""
         if not equity_curve:
             return 0
 
@@ -182,7 +182,7 @@ class RiskManager:
         returns: list[float],
         risk_free_rate: float = 0.03,
     ) -> float:
-        """计算夏普比率"""
+        """Calculate Sharpe ratio"""
         if not returns or len(returns) < 2:
             return 0
 
@@ -193,7 +193,7 @@ class RiskManager:
         if std == 0:
             return 0
 
-        # 年化
+        # Annualize
         annual_return = mean_return * 252
         annual_std = std * math.sqrt(252)
 
@@ -205,40 +205,40 @@ class RiskManager:
         equity_curve: list[float],
         returns: list[float],
     ) -> RiskMetrics:
-        """评估风险
+        """Assess risk
 
         Args:
-            positions: 持仓列表
-            equity_curve: 权益曲线
-            returns: 收益率序列
+            positions: Position list
+            equity_curve: Equity curve
+            returns: Return series
 
         Returns:
-            风险指标
+            Risk metrics
         """
-        # 计算最大回撤
+        # Calculate max drawdown
         max_drawdown = self.calculate_max_drawdown(equity_curve)
 
-        # 计算波动率
+        # Calculate volatility
         volatility = 0.0
         if returns and len(returns) > 1:
             mean_return = sum(returns) / len(returns)
             variance = sum((r - mean_return) ** 2 for r in returns) / len(returns)
             volatility = math.sqrt(variance) * math.sqrt(252)
 
-        # 计算夏普比率
+        # Calculate Sharpe ratio
         sharpe_ratio = self.calculate_sharpe_ratio(returns)
 
-        # 计算 VaR
+        # Calculate VaR
         var_95 = self.calculate_var(returns, 0.95)
 
-        # 计算集中度风险
+        # Calculate concentration risk
         total_value = sum(p.get("market_value", 0.0) for p in positions)
         max_position = max(
             (p.get("market_value", 0.0) for p in positions), default=0.0
         )
         concentration_risk = max_position / total_value if total_value > 0 else 0
 
-        # 确定风险等级
+        # Determine risk level
         risk_level = RiskLevel.LOW
         if max_drawdown > 0.2 or volatility > 0.3:
             risk_level = RiskLevel.CRITICAL
@@ -263,20 +263,20 @@ class RiskManager:
         stock_volatility: float,
         target_risk: float = 0.02,
     ) -> float:
-        """建议仓位大小
+        """Suggest position size
 
         Args:
-            total_capital: 总资金
-            stock_volatility: 股票波动率
-            target_risk: 目标风险（每日）
+            total_capital: Total capital
+            stock_volatility: Stock volatility
+            target_risk: Target risk (daily)
 
         Returns:
-            建议仓位金额
+            Suggested position amount
         """
         if stock_volatility == 0:
             return total_capital * self.limits.max_position_size
 
-        # 简化的凯利公式
+        # Simplified Kelly formula
         position_ratio = min(
             target_risk / stock_volatility, self.limits.max_position_size
         )

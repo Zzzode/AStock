@@ -1,4 +1,4 @@
-"""监控服务模块"""
+"""Monitor service module"""
 
 from .monitor_service import MonitorService
 from .scanner import SignalScanner

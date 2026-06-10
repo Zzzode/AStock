@@ -1,4 +1,4 @@
-"""持仓管理模块"""
+"""Portfolio management module"""
 
 from .position import Position, PositionManager
 from .portfolio import Portfolio, PortfolioManager

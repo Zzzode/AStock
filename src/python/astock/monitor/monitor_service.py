@@ -1,4 +1,4 @@
-"""监控服务 - 带日志和错误处理"""
+"""Monitor service - with logging and error handling"""
 
 import asyncio
 from datetime import datetime, time
@@ -15,7 +15,7 @@ logger = get_logger("monitor_service")
 
 
 class MonitorService:
-    """股票监控服务"""
+    """Stock monitoring service"""
 
     def __init__(
         self,
@@ -25,9 +25,9 @@ class MonitorService:
     ):
         """
         Args:
-            db: 数据库实例
-            quote_service: 行情服务实例
-            config_path: 告警配置文件路径
+            db: Database instance
+            quote_service: Quote service instance
+            config_path: Alert configuration file path
         """
         self.db = db
         self.quote_service = quote_service
@@ -35,23 +35,23 @@ class MonitorService:
         self.alert_engine = AlertEngine(config_path)
         self._running = False
         self._task: Optional[asyncio.Task[None]] = None
-        self._scan_interval = 60  # 扫描间隔(秒)
+        self._scan_interval = 60  # Scan interval (seconds)
         self._start_time: Optional[datetime] = None
-        logger.debug("监控服务初始化完成")
+        logger.debug("Monitor service initialization complete")
 
     async def start(self) -> None:
-        """启动监控服务"""
+        """Start the monitor service"""
         if self._running:
-            logger.warning("监控服务已在运行中")
+            logger.warning("Monitor service is already running")
             return
 
         self._running = True
         self._start_time = datetime.now()
         self._task = asyncio.create_task(self._monitor_loop())
-        logger.info(f"监控服务已启动，扫描间隔: {self._scan_interval}秒")
+        logger.info(f"Monitor service started, scan interval: {self._scan_interval}s")
 
     async def stop(self) -> None:
-        """停止监控服务"""
+        """Stop the monitor service"""
         self._running = False
         if self._task:
             self._task.cancel()
@@ -59,46 +59,46 @@ class MonitorService:
                 await self._task
             except asyncio.CancelledError:
                 pass
-        logger.info("监控服务已停止")
+        logger.info("Monitor service stopped")
 
     async def _monitor_loop(self) -> None:
-        """监控循环"""
+        """Monitor loop"""
         while self._running:
             try:
-                # 检查是否在交易时间
+                # Check if within trading hours
                 if self._is_trading_time():
                     await self._scan_watch_list()
                 else:
-                    logger.debug("非交易时间，等待...")
+                    logger.debug("Outside trading hours, waiting...")
 
-                # 等待下一次扫描
+                # Wait for next scan
                 await asyncio.sleep(self._scan_interval)
 
             except asyncio.CancelledError:
-                logger.debug("监控循环被取消")
+                logger.debug("Monitor loop cancelled")
                 break
             except Exception as e:
-                logger.error(f"监控循环错误: {e}", exc_info=True)
+                logger.error(f"Monitor loop error: {e}", exc_info=True)
                 await asyncio.sleep(self._scan_interval)
 
     def _is_trading_time(self) -> bool:
-        """检查当前是否在交易时间
+        """Check if current time is within trading hours
 
-        A股交易时间：
-        - 上午: 9:30 - 11:30
-        - 下午: 13:00 - 15:00
+        A-share trading hours:
+        - Morning: 9:30 - 11:30
+        - Afternoon: 13:00 - 15:00
 
         Returns:
-            是否在交易时间
+            Whether it is within trading hours
         """
         now = datetime.now()
         current_time = now.time()
 
-        # 上午交易时间
+        # Morning trading hours
         morning_start = time(9, 30)
         morning_end = time(11, 30)
 
-        # 下午交易时间
+        # Afternoon trading hours
         afternoon_start = time(13, 0)
         afternoon_end = time(15, 0)
 
@@ -107,75 +107,75 @@ class MonitorService:
         )
 
     async def _scan_watch_list(self) -> None:
-        """扫描监控列表"""
-        # 获取启用的监控项
+        """Scan the watch list"""
+        # Get enabled watch items
         try:
             watch_items = await self.db.get_watch_items(enabled_only=True)
         except Exception as e:
-            logger.error(f"获取监控列表失败: {e}", exc_info=True)
+            logger.error(f"Failed to get watch list: {e}", exc_info=True)
             return
 
         if not watch_items:
-            logger.debug("监控列表为空")
+            logger.debug("Watch list is empty")
             return
 
-        logger.info(f"扫描 {len(watch_items)} 只股票...")
+        logger.info(f"Scanning {len(watch_items)} stocks...")
 
-        # 并行扫描
+        # Parallel scan
         tasks = [self._scan_single_item(item) for item in watch_items]
         results = await asyncio.gather(*tasks, return_exceptions=True)
 
-        # 统计结果
+        # Summarize results
         success_count = sum(1 for r in results if r is None or r is True)
         error_count = sum(1 for r in results if isinstance(r, Exception))
         signal_count = sum(1 for r in results if r is True)
 
         logger.info(
-            f"扫描完成: 成功={success_count}, 错误={error_count}, 发现信号={signal_count}"
+            f"Scan complete: success={success_count}, errors={error_count}, signals found={signal_count}"
         )
 
     async def _scan_single_item(self, item: WatchItem) -> bool | None | Exception:
-        """扫描单个监控项
+        """Scan a single watch item
 
         Args:
-            item: 监控项
+            item: Watch item
 
         Returns:
-            True 如果发现信号，None 如果没有，Exception 如果出错
+            True if signal found, None if not, Exception if error
         """
         try:
             result = await self.scanner.scan_stock(item.code)
 
-            # 处理检测到的信号
+            # Handle detected signals
             if result.get("signals"):
                 await self._handle_signal(item, result)
                 return True
             return None
 
         except DataSourceError as e:
-            logger.warning(f"扫描 {item.code} 数据错误: {e}")
+            logger.warning(f"Scan {item.code} data error: {e}")
             return e
         except Exception as e:
-            logger.error(f"扫描 {item.code} 失败: {e}", exc_info=True)
+            logger.error(f"Scan {item.code} failed: {e}", exc_info=True)
             return e
 
     async def _handle_signal(self, item: WatchItem, scan_result: dict[str, Any]) -> None:
-        """处理检测到的信号
+        """Handle detected signals
 
         Args:
-            item: 监控项
-            scan_result: 扫描结果
+            item: Watch item
+            scan_result: Scan result
         """
         signals = scan_result.get("signals", [])
         level = scan_result.get("level", 3)
 
         for signal in signals:
             try:
-                # 创建告警记录
+                # Create alert record
                 record = AlertRecord(
                     code=item.code,
                     signal_type=signal.get("type", "unknown"),
-                    signal_name=signal.get("name", "未知信号"),
+                    signal_name=signal.get("name", "Unknown signal"),
                     message=signal.get("description", ""),
                     level=level,
                     triggered_at=datetime.now(),
@@ -183,63 +183,63 @@ class MonitorService:
                     channels=item.alert_channels,
                 )
 
-                # 保存到数据库
+                # Save to database
                 record_id = await self.db.save_alert_record(record)
                 record.id = record_id
 
-                logger.info(f"发现信号: {item.code} - {signal.get('name', 'unknown')}")
+                logger.info(f"Signal found: {item.code} - {signal.get('name', 'unknown')}")
 
-                # 发送提醒
+                # Send alert
                 await self._send_alert(record, item)
 
             except Exception as e:
                 logger.error(
-                    f"处理信号失败: {item.code} - {signal.get('name')}: {e}",
+                    f"Failed to handle signal: {item.code} - {signal.get('name')}: {e}",
                     exc_info=True,
                 )
 
     async def _send_alert(self, record: AlertRecord, item: WatchItem) -> None:
-        """发送告警提醒
+        """Send alert notification
 
         Args:
-            record: 告警记录
-            item: 监控项
+            record: Alert record
+            item: Watch item
         """
         try:
-            # 使用 AlertEngine 发送告警
+            # Use AlertEngine to send alert
             results = await self.alert_engine.send(record, record.channels)
 
-            # 检查发送结果
+            # Check send results
             success = all(results.values())
             status = "sent" if success else "failed"
 
-            # 更新告警状态
+            # Update alert status
             if record.id is not None:
                 await self.db.update_alert_status(record.id, status)
 
             if success:
-                logger.info(f"告警发送成功: {record.code} - {record.signal_name}")
+                logger.info(f"Alert sent successfully: {record.code} - {record.signal_name}")
             else:
                 failed_channels = [k for k, v in results.items() if not v]
                 logger.warning(
-                    f"告警发送部分失败: {record.code}, 失败渠道: {failed_channels}"
+                    f"Alert partially failed: {record.code}, failed channels: {failed_channels}"
                 )
 
         except Exception as e:
-            logger.error(f"发送告警失败: {e}", exc_info=True)
-            raise AlertError(f"发送告警失败: {e}") from e
+            logger.error(f"Failed to send alert: {e}", exc_info=True)
+            raise AlertError(f"Failed to send alert: {e}") from e
 
     def set_scan_interval(self, seconds: int) -> None:
-        """设置扫描间隔
+        """Set scan interval
 
         Args:
-            seconds: 扫描间隔(秒)
+            seconds: Scan interval (seconds)
         """
-        self._scan_interval = max(10, seconds)  # 最小10秒
-        logger.info(f"扫描间隔已设置为: {self._scan_interval}秒")
+        self._scan_interval = max(10, seconds)  # Minimum 10 seconds
+        logger.info(f"Scan interval set to: {self._scan_interval}s")
 
     def get_status(self) -> dict[str, Any]:
-        """获取服务状态"""
+        """Get service status"""
         return {
             "running": self._running,
             "scan_interval": self._scan_interval,

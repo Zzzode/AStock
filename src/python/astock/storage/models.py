@@ -1,4 +1,4 @@
-"""数据模型定义"""
+"""Data model definitions"""
 
 from datetime import date, datetime
 from typing import Optional
@@ -7,7 +7,7 @@ from pydantic import BaseModel, Field
 
 
 class Stock(BaseModel):
-    """股票基础信息"""
+    """Stock basic information"""
 
     code: str
     name: str
@@ -16,7 +16,7 @@ class Stock(BaseModel):
 
 
 class DailyQuote(BaseModel):
-    """日线行情"""
+    """Daily quote"""
 
     code: str
     date: date
@@ -29,7 +29,7 @@ class DailyQuote(BaseModel):
 
 
 class IntradayQuote(BaseModel):
-    """分时行情"""
+    """Intraday quote"""
 
     code: str
     datetime: datetime
@@ -39,7 +39,7 @@ class IntradayQuote(BaseModel):
 
 
 class Trade(BaseModel):
-    """交易记录"""
+    """Trade record"""
 
     id: Optional[int] = None
     code: str
@@ -51,7 +51,7 @@ class Trade(BaseModel):
 
 
 class WatchItem(BaseModel):
-    """监控项"""
+    """Watch item"""
 
     code: str
     name: Optional[str] = None
@@ -62,14 +62,14 @@ class WatchItem(BaseModel):
 
 
 class AlertRecord(BaseModel):
-    """告警记录"""
+    """Alert record"""
 
     id: Optional[int] = None
     code: str
     signal_type: str
     signal_name: str
     message: str
-    level: int = 3  # 1=紧急, 2=重要, 3=一般
+    level: int = 3  # 1=urgent, 2=important, 3=normal
     triggered_at: datetime
     status: str = "pending"  # pending, sent, failed
     channels: list[str] = Field(default_factory=list)

@@ -1,4 +1,4 @@
-"""选股器 - 支持并行处理和错误处理"""
+"""Stock screener - supports parallel processing and error handling"""
 
 from dataclasses import dataclass
 from datetime import datetime
@@ -17,177 +17,207 @@ logger = get_logger("screener")
 
 @dataclass
 class ScreenResult:
-    """选股结果"""
+    """Stock screening data snapshot"""
 
-    code: str  # 股票代码
-    name: Optional[str]  # 股票名称
-    score: float  # 综合得分
-    matched_factors: list[str]  # 匹配的因子列表
-    factor_scores: dict[str, float]  # 各因子得分
-    data: dict[str, Any]  # 原始数据
-    screened_at: datetime  # 选股时间
+    code: str  # Stock code
+    name: Optional[str]  # Stock name
+    matched_factors: list[str]  # List of matched factors
+    matched_factor_count: int  # Number of matched factors
+    factor_checks: dict[str, dict[str, Any]]  # Factor match details
+    data: dict[str, Any]  # Raw data
+    screened_at: datetime  # Screening timestamp
 
 
 class StockScreener:
-    """股票选股器 - 支持并行处理"""
+    """Stock screener - supports parallel processing"""
 
     def __init__(self, quote_service: QuoteService, max_concurrent: int = 3):
         """
         Args:
-            quote_service: 行情服务实例
-            max_concurrent: 最大并发数（默认3，避免触发 mini-racer 崩溃）
+            quote_service: Quote service instance
+            max_concurrent: Max concurrency (default 3, to avoid mini-racer crashes)
         """
         self.quote_service = quote_service
         self.max_concurrent = max_concurrent
-        self._stock_names: dict[str, str] = {}  # 股票名称缓存
-        logger.debug(f"选股器初始化完成，最大并发数: {max_concurrent}")
+        self._stock_names: dict[str, str] = {}  # Stock name cache
+        logger.debug(f"Screener initialized, max concurrency: {max_concurrent}")
 
     async def screen(
         self,
         factors: Optional[list[str]] = None,
         codes: Optional[list[str]] = None,
         limit: int = 50,
-        min_score: float = 0.0,
     ) -> list[ScreenResult]:
-        """执行选股（并行处理）
+        """Execute stock screening data collection (parallel processing)
 
         Args:
-            factors: 因子键名列表，为空则使用所有因子
-            codes: 股票代码列表，为空则使用全部A股
-            limit: 返回数量限制
-            min_score: 最低得分阈值
+            factors: List of factor keys; uses all factors if empty
+            codes: List of stock codes; uses all A-shares if empty
+            limit: Result count limit
 
         Returns:
-            选股结果列表，按得分降序排列
+            Screening results list, in scan order, containing only stocks matching at least one factor
         """
-        # 获取因子列表
+        # Get factor list
         factor_list = self._get_factor_list(factors)
 
         if not factor_list:
-            logger.warning("没有可用的因子")
+            logger.warning("No available factors")
             return []
 
-        # 获取股票列表
-        stock_codes = codes or await self._get_all_codes()
+        # Get stock list
+        stock_codes = self._normalize_codes(codes) if codes else await self._get_all_codes()
         logger.info(
-            f"开始选股，股票数量: {len(stock_codes)}, 因子数量: {len(factor_list)}"
+            f"Starting screening, stock count: {len(stock_codes)}, factor count: {len(factor_list)}"
         )
 
-        # 预加载股票名称缓存
-        try:
-            stock_list = await self.quote_service.client.get_stock_list()
-            for _, row in stock_list.iterrows():
-                self._stock_names[row["code"]] = row.get("name", "")
-        except Exception as e:
-            logger.warning(f"加载股票名称失败: {e}")
+        await self._prime_stock_names(stock_codes, preload_all=not bool(codes))
 
-        # 串行执行选股（避免 mini-racer 并发崩溃）
-        # 注意：akshare 内部使用 mini-racer（V8引擎），并发初始化会导致崩溃
-        # 这是 Python 3.14 + mini-racer 的已知问题
+        # Execute screening sequentially (to avoid mini-racer concurrency crashes)
+        # Note: akshare internally uses mini-racer (V8 engine); concurrent initialization causes crashes
+        # This is a known issue with Python 3.14 + mini-racer
         valid_results: list[ScreenResult] = []
         errors = 0
 
         for i, code in enumerate(stock_codes):
             try:
                 result = await self._screen_stock(code, factor_list)
-                if result and result.score >= min_score:
+                if result and result.matched_factor_count > 0:
                     valid_results.append(result)
             except Exception as e:
                 errors += 1
-                logger.debug(f"选股 {code} 失败: {e}")
+                logger.debug(f"Screening {code} failed: {e}")
 
-            # 进度提示（每200只股票）
+            # Progress update (every 200 stocks)
             if (i + 1) % 200 == 0:
-                logger.info(f"已处理 {i + 1}/{len(stock_codes)} 只股票，有效: {len(valid_results)}")
+                logger.info(f"Processed {i + 1}/{len(stock_codes)} stocks, valid: {len(valid_results)}")
 
         if errors:
-            logger.warning(f"选股过程中有 {errors} 个错误")
+            logger.warning(f"Encountered {errors} errors during screening")
 
-        # 按得分排序
-        valid_results.sort(key=lambda x: x.score, reverse=True)
-
-        logger.info(f"选股完成，有效结果: {len(valid_results)}")
+        logger.info(f"Screening complete, valid results: {len(valid_results)}")
         return valid_results[:limit]
+
+    def _normalize_codes(self, codes: Optional[list[str]]) -> list[str]:
+        """Deduplicate and normalize stock code list"""
+        if not codes:
+            return []
+
+        normalized: list[str] = []
+        seen: set[str] = set()
+        for code in codes:
+            digits = "".join(ch for ch in str(code) if ch.isdigit())
+            if len(digits) != 6 or digits in seen:
+                continue
+            normalized.append(digits)
+            seen.add(digits)
+        return normalized
+
+    async def _prime_stock_names(self, codes: list[str], preload_all: bool) -> None:
+        """Prime stock name cache
+
+        Preloads the full stock list for market-wide screening; queries only needed codes for small sets.
+        """
+        if preload_all:
+            try:
+                stock_list = await self.quote_service.client.get_stock_list()
+                for _, row in stock_list.iterrows():
+                    self._stock_names[str(row["code"])] = row.get("name", "")
+                return
+            except Exception as e:
+                logger.warning(f"Failed to load stock names: {e}")
+                return
+
+        for code in codes:
+            try:
+                info = await self.quote_service.get_stock_info(code, allow_remote=False)
+                if isinstance(info, dict) and info.get("name"):
+                    self._stock_names[code] = str(info["name"])
+            except Exception as e:
+                logger.debug(f"Failed to load name for stock {code}: {e}")
 
     async def _screen_stock(
         self, code: str, factors: list[Factor]
     ) -> Optional[ScreenResult]:
-        """对单只股票执行选股
+        """Screen a single stock
 
         Args:
-            code: 股票代码
-            factors: 因子列表
+            code: Stock code
+            factors: Factor list
 
         Returns:
-            选股结果
+            Screening result
         """
         try:
-            # 获取股票数据
+            # Get stock data
             data = await self._get_stock_data(code)
 
             if not data:
                 return None
 
-            # 计算匹配的因子和得分
-            matched_factors = self._get_matched_factors(data, factors)
-            factor_scores = self._calculate_factor_scores(data, factors)
-            score = sum(factor_scores.values())
+            # Only compute deterministic factor match details; no composite scoring or ranking decisions
+            factor_checks = self._evaluate_factors(data, factors)
+            matched_factors = [
+                factor.key
+                for factor in factors
+                if factor_checks.get(factor.key, {}).get("matched")
+            ]
 
             return ScreenResult(
                 code=code,
                 name=data.get("name"),
-                score=score,
                 matched_factors=matched_factors,
-                factor_scores=factor_scores,
+                matched_factor_count=len(matched_factors),
+                factor_checks=factor_checks,
                 data=data,
                 screened_at=datetime.now(),
             )
 
         except DataSourceError as e:
-            logger.debug(f"获取 {code} 数据失败: {e}")
+            logger.debug(f"Failed to fetch data for {code}: {e}")
             return None
         except Exception as e:
-            logger.debug(f"选股 {code} 失败: {e}")
+            logger.debug(f"Screening {code} failed: {e}")
             return None
 
     async def _get_stock_data(self, code: str) -> Optional[dict[str, Any]]:
-        """获取股票数据
+        """Get stock data
 
         Args:
-            code: 股票代码
+            code: Stock code
 
         Returns:
-            股票数据字典
+            Stock data dictionary
         """
         try:
-            # 获取日线数据 - 只获取最近90天，减少数据量
+            # Get daily data - only fetch last 90 days to reduce data volume
             df = await self.quote_service.get_daily(code, save=False, limit=90)
 
             if df.empty or len(df) < 30:
-                logger.debug(f"股票 {code} 数据不足")
+                logger.debug(f"Stock {code} has insufficient data")
                 return None
 
-            # 计算技术指标
+            # Compute technical indicators
             analyzer = TechnicalAnalyzer(df)
             df_with_indicators = analyzer.add_all()
 
-            # 获取最新数据
+            # Get latest data
             latest = df_with_indicators.iloc[-1]
             prev = (
                 df_with_indicators.iloc[-2] if len(df_with_indicators) > 1 else latest
             )
 
-            # 计算额外指标
+            # Compute additional indicators
             vol_ma5 = df_with_indicators["volume"].rolling(5).mean().iloc[-1]
             volatility_20 = (
                 df_with_indicators["close"].pct_change().rolling(20).std().iloc[-1]
             )
 
-            # 从日线数据获取 PE、PB（Baostock 支持）
+            # Get PE, PB from daily data (supported by Baostock)
             pe_value = latest.get("pe") if "pe" in latest else None
             pb_value = latest.get("pb") if "pb" in latest else None
 
-            # 使用缓存的股票名称
+            # Use cached stock name
             name = self._stock_names.get(code, "")
 
             return {
@@ -221,40 +251,60 @@ class StockScreener:
             }
 
         except Exception as e:
-            logger.debug(f"获取 {code} 数据失败: {e}")
+            logger.debug(f"Failed to fetch data for {code}: {e}")
             return None
 
-    def _calculate_factor_scores(
+    def _evaluate_factors(
         self, data: dict[str, Any], factors: list[Factor]
-    ) -> dict[str, float]:
-        """计算因子得分"""
-        scores = {}
+    ) -> dict[str, dict[str, Any]]:
+        """Generate factor match details"""
+        evaluations: dict[str, dict[str, Any]] = {}
 
         for factor in factors:
-            if self._check_condition(data, factor):
-                scores[factor.key] = factor.weight
-            else:
-                scores[factor.key] = 0.0
+            value = data.get(factor.field)
+            reference_value = (
+                data.get(factor.threshold) if isinstance(factor.threshold, str) else factor.threshold
+            )
+            previous_value = data.get(f"prev_{factor.field}")
+            previous_reference_value = (
+                data.get(f"prev_{factor.threshold}")
+                if isinstance(factor.threshold, str)
+                else factor.threshold
+            )
+            evaluations[factor.key] = {
+                "name": factor.name,
+                "type": factor.type.value,
+                "description": factor.description,
+                "field": factor.field,
+                "operator": factor.operator,
+                "threshold": factor.threshold,
+                "value": value,
+                "reference_value": reference_value,
+                "previous_value": previous_value,
+                "previous_reference_value": previous_reference_value,
+                "weight": factor.weight,
+                "matched": self._check_condition(data, factor),
+            }
 
-        return scores
+        return evaluations
 
     def _check_condition(self, data: dict[str, Any], factor: Factor) -> bool:
-        """检查条件是否满足"""
-        # 获取字段值
+        """Check whether a condition is satisfied"""
+        # Get field value
         value = data.get(factor.field)
         if value is None:
             return False
 
-        # 获取阈值
+        # Get threshold
         threshold = factor.threshold
 
-        # 如果阈值是字符串，说明是引用其他字段
+        # If threshold is a string, it references another field
         if isinstance(threshold, str):
             threshold = data.get(threshold)
             if threshold is None:
                 return False
 
-        # 处理特殊操作符
+        # Handle special operators
         if factor.operator == "cross_up":
             prev_value = data.get(f"prev_{factor.field}")
             prev_threshold_key = (
@@ -287,11 +337,11 @@ class StockScreener:
 
             return bool(value < threshold and prev_value >= prev_threshold)
 
-        # 处理常规操作符
+        # Handle regular operators
         return self._compare_values(value, factor.operator, threshold)
 
     def _compare_values(self, value: Any, operator: str, threshold: Any) -> bool:
-        """比较值"""
+        """Compare values"""
         try:
             if operator == "lt":
                 return bool(value < threshold)
@@ -308,14 +358,8 @@ class StockScreener:
         except (TypeError, ValueError):
             return False
 
-    def _get_matched_factors(
-        self, data: dict[str, Any], factors: list[Factor]
-    ) -> list[str]:
-        """获取匹配的因子列表"""
-        return [factor.key for factor in factors if self._check_condition(data, factor)]
-
     def _get_factor_list(self, factor_keys: Optional[list[str]]) -> list[Factor]:
-        """获取因子列表"""
+        """Get factor list"""
         if not factor_keys:
             return list(FACTORS.values())
 
@@ -328,37 +372,37 @@ class StockScreener:
         return factors
 
     async def _get_all_codes(self) -> list[str]:
-        """获取所有A股代码"""
+        """Get all A-share stock codes"""
         try:
             df = await self.quote_service.client.get_stock_list()
             codes = [str(code) for code in df["code"].tolist()]
-            # 过滤掉非主板股票（北交所、科创板等可根据需要调整）
-            # 保留主板、创业板、科创板
+            # Filter out non-main-board stocks (NEEQ, STAR market, etc. can be adjusted as needed)
+            # Keep main board, ChiNext, and STAR market
             valid_codes = [
                 c for c in codes
                 if c.startswith(('0', '3', '6'))
             ]
             return valid_codes
         except Exception as e:
-            logger.warning(f"获取股票列表失败: {e}，使用默认列表")
-            # 返回更完整的默认列表（沪深300成分股部分）
+            logger.warning(f"Failed to get stock list: {e}, using default list")
+            # Return a more complete default list (partial CSI 300 constituents)
             return [
-                # 银行
+                # Banks
                 "600036", "601166", "601398", "601288", "601988", "600000", "601328",
-                # 保险
+                # Insurance
                 "601318", "601601", "601628",
-                # 证券
+                # Securities
                 "600030", "601211", "600837",
-                # 能源
+                # Energy
                 "600028", "601088", "600019", "601857",
-                # 消费
+                # Consumer
                 "600519", "000858", "000568", "600887",
-                # 科技
+                # Technology
                 "000063", "002415", "300750", "600900",
-                # 医药
+                # Pharmaceuticals
                 "000661", "600276", "300760",
-                # 地产
+                # Real Estate
                 "000002", "600048",
-                # 其他蓝筹
+                # Other blue chips
                 "600585", "600033", "601668", "600309",
             ]

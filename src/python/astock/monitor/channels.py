@@ -1,4 +1,4 @@
-"""告警渠道 - 企业微信/钉钉/Telegram/Email/终端"""
+"""Alert channels - WeCom/DingTalk/Telegram/Email/Terminal"""
 
 import asyncio
 import smtplib
@@ -16,46 +16,46 @@ logger = get_logger("alert_channel")
 
 @dataclass
 class AlertMessage:
-    """告警消息"""
+    """Alert message"""
 
     title: str
     content: str
-    level: int = 3  # 1=紧急, 2=重要, 3=一般
+    level: int = 3  # 1=Critical, 2=Important, 3=Normal
     code: Optional[str] = None
     signal_name: Optional[str] = None
 
 
 class AlertChannel(ABC):
-    """告警渠道基类"""
+    """Alert channel base class"""
 
     name: str = "base"
 
     @abstractmethod
     async def send(self, message: AlertMessage) -> bool:
-        """发送告警"""
+        """Send alert"""
         pass
 
 
 class TerminalChannel(AlertChannel):
-    """终端输出渠道"""
+    """Terminal output channel"""
 
     name = "terminal"
 
     def __init__(self) -> None:
         self.colors = {
-            1: "\033[91m",  # 红色 - 紧急
-            2: "\033[93m",  # 黄色 - 重要
-            3: "\033[92m",  # 绿色 - 一般
+            1: "\033[91m",  # Red - Critical
+            2: "\033[93m",  # Yellow - Important
+            3: "\033[92m",  # Green - Normal
         }
         self.reset = "\033[0m"
 
     async def send(self, message: AlertMessage) -> bool:
         color = self.colors.get(message.level, self.reset)
-        level_text = {1: "紧急", 2: "重要", 3: "一般"}.get(message.level, "未知")
+        level_text = {1: "Critical", 2: "Important", 3: "Normal"}.get(message.level, "Unknown")
 
         output = f"""
 {color}{"=" * 50}{self.reset}
-{color}【{level_text}告警】{message.title}{self.reset}
+{color}[{level_text} Alert] {message.title}{self.reset}
 {color}{"=" * 50}{self.reset}
 {message.content}
 {color}{"=" * 50}{self.reset}
@@ -65,7 +65,7 @@ class TerminalChannel(AlertChannel):
 
 
 class WeChatWorkChannel(AlertChannel):
-    """企业微信渠道"""
+    """WeCom (WeChat Work) channel"""
 
     name = "wechat_work"
 
@@ -74,7 +74,7 @@ class WeChatWorkChannel(AlertChannel):
 
     async def send(self, message: AlertMessage) -> bool:
         if not self.webhook_url:
-            logger.warning("企业微信 webhook 未配置")
+            logger.warning("WeCom webhook not configured")
             return False
 
         try:
@@ -89,21 +89,21 @@ class WeChatWorkChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("errcode") == 0:
-                            logger.info(f"企业微信告警发送成功: {message.title}")
+                            logger.info(f"WeCom alert sent successfully: {message.title}")
                             return True
                         else:
-                            logger.error(f"企业微信告警失败: {result}")
+                            logger.error(f"WeCom alert failed: {result}")
                             return False
                     else:
-                        logger.error(f"企业微信请求失败: {resp.status}")
+                        logger.error(f"WeCom request failed: {resp.status}")
                         return False
         except Exception as e:
-            logger.error(f"企业微信发送错误: {e}", exc_info=True)
+            logger.error(f"WeCom send error: {e}", exc_info=True)
             return False
 
 
 class DingTalkChannel(AlertChannel):
-    """钉钉渠道"""
+    """DingTalk channel"""
 
     name = "dingtalk"
 
@@ -112,7 +112,7 @@ class DingTalkChannel(AlertChannel):
         self.secret = secret
 
     def _sign(self, timestamp: int) -> str:
-        """生成签名"""
+        """Generate signature"""
         import hmac
         import hashlib
         import base64
@@ -120,7 +120,7 @@ class DingTalkChannel(AlertChannel):
 
         secret = self.secret
         if secret is None:
-            raise ValueError("钉钉 secret 未配置")
+            raise ValueError("DingTalk secret not configured")
         string_to_sign = f"{timestamp}\n{secret}"
         hmac_code = hmac.new(
             secret.encode("utf-8"),
@@ -132,7 +132,7 @@ class DingTalkChannel(AlertChannel):
 
     async def send(self, message: AlertMessage) -> bool:
         if not self.webhook_url:
-            logger.warning("钉钉 webhook 未配置")
+            logger.warning("DingTalk webhook not configured")
             return False
 
         try:
@@ -157,21 +157,21 @@ class DingTalkChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("errcode") == 0:
-                            logger.info(f"钉钉告警发送成功: {message.title}")
+                            logger.info(f"DingTalk alert sent successfully: {message.title}")
                             return True
                         else:
-                            logger.error(f"钉钉告警失败: {result}")
+                            logger.error(f"DingTalk alert failed: {result}")
                             return False
                     else:
-                        logger.error(f"钉钉请求失败: {resp.status}")
+                        logger.error(f"DingTalk request failed: {resp.status}")
                         return False
         except Exception as e:
-            logger.error(f"钉钉发送错误: {e}", exc_info=True)
+            logger.error(f"DingTalk send error: {e}", exc_info=True)
             return False
 
 
 class TelegramChannel(AlertChannel):
-    """Telegram渠道"""
+    """Telegram channel"""
 
     name = "telegram"
 
@@ -181,7 +181,7 @@ class TelegramChannel(AlertChannel):
 
     async def send(self, message: AlertMessage) -> bool:
         if not self.bot_token or not self.chat_id:
-            logger.warning("Telegram 配置不完整")
+            logger.warning("Telegram configuration incomplete")
             return False
 
         try:
@@ -197,21 +197,21 @@ class TelegramChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("ok"):
-                            logger.info(f"Telegram告警发送成功: {message.title}")
+                            logger.info(f"Telegram alert sent successfully: {message.title}")
                             return True
                         else:
-                            logger.error(f"Telegram告警失败: {result}")
+                            logger.error(f"Telegram alert failed: {result}")
                             return False
                     else:
-                        logger.error(f"Telegram请求失败: {resp.status}")
+                        logger.error(f"Telegram request failed: {resp.status}")
                         return False
         except Exception as e:
-            logger.error(f"Telegram发送错误: {e}", exc_info=True)
+            logger.error(f"Telegram send error: {e}", exc_info=True)
             return False
 
 
 class EmailChannel(AlertChannel):
-    """邮件渠道"""
+    """Email channel"""
 
     name = "email"
 
@@ -238,58 +238,58 @@ class EmailChannel(AlertChannel):
         to_addrs = self.to_addrs
 
         if smtp_server is None or smtp_user is None or smtp_password is None or not to_addrs:
-            logger.warning("邮件配置不完整")
+            logger.warning("Email configuration incomplete")
             return False
         from_addr = self.from_addr or smtp_user
 
         try:
-            # 创建邮件
+            # Create email
             msg = MIMEMultipart()
             msg["From"] = from_addr
             msg["To"] = ", ".join(to_addrs)
-            msg["Subject"] = f"[A股告警] {message.title}"
+            msg["Subject"] = f"[A-Share Alert] {message.title}"
 
             body = f"""
-告警标题: {message.title}
-告警级别: {message.level}
-股票代码: {message.code or "无"}
-信号名称: {message.signal_name or "无"}
+Alert Title: {message.title}
+Alert Level: {message.level}
+Stock Code: {message.code or "N/A"}
+Signal Name: {message.signal_name or "N/A"}
 
-详细内容:
+Details:
 {message.content}
 """
             msg.attach(MIMEText(body, "plain", "utf-8"))
 
-            # 发送邮件（在后台线程中执行）
+            # Send email (executed in background thread)
             try:
                 loop = asyncio.get_running_loop()
             except RuntimeError:
                 loop = asyncio.get_event_loop()
             await loop.run_in_executor(None, self._send_email_sync, msg)
 
-            logger.info(f"邮件告警发送成功: {message.title}")
+            logger.info(f"Email alert sent successfully: {message.title}")
             return True
 
         except Exception as e:
-            logger.error(f"邮件发送错误: {e}", exc_info=True)
+            logger.error(f"Email send error: {e}", exc_info=True)
             return False
 
     def _send_email_sync(self, msg: MIMEMultipart) -> None:
-        """同步发送邮件"""
+        """Send email synchronously"""
         smtp_server = self.smtp_server
         smtp_user = self.smtp_user
         smtp_password = self.smtp_password
         from_addr = self.from_addr or smtp_user
         to_addrs = self.to_addrs
         if smtp_server is None or smtp_user is None or smtp_password is None or from_addr is None:
-            raise RuntimeError("邮件配置不完整")
+            raise RuntimeError("Email configuration incomplete")
         with smtplib.SMTP_SSL(smtp_server, self.smtp_port) as server:
             server.login(smtp_user, smtp_password)
             server.sendmail(from_addr, to_addrs, msg.as_string())
 
 
 class PushPlusChannel(AlertChannel):
-    """PushPlus渠道 (微信推送)"""
+    """PushPlus channel (WeChat push)"""
 
     name = "pushplus"
 
@@ -298,7 +298,7 @@ class PushPlusChannel(AlertChannel):
 
     async def send(self, message: AlertMessage) -> bool:
         if not self.token:
-            logger.warning("PushPlus token 未配置")
+            logger.warning("PushPlus token not configured")
             return False
 
         try:
@@ -315,20 +315,20 @@ class PushPlusChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("code") == 200:
-                            logger.info(f"PushPlus告警发送成功: {message.title}")
+                            logger.info(f"PushPlus alert sent successfully: {message.title}")
                             return True
                         else:
-                            logger.error(f"PushPlus告警失败: {result}")
+                            logger.error(f"PushPlus alert failed: {result}")
                             return False
                     else:
-                        logger.error(f"PushPlus请求失败: {resp.status}")
+                        logger.error(f"PushPlus request failed: {resp.status}")
                         return False
         except Exception as e:
-            logger.error(f"PushPlus发送错误: {e}", exc_info=True)
+            logger.error(f"PushPlus send error: {e}", exc_info=True)
             return False
 
 
-# 渠道注册表
+# Channel registry
 CHANNEL_REGISTRY: dict[str, type[AlertChannel]] = {
     "terminal": TerminalChannel,
     "wechat_work": WeChatWorkChannel,
@@ -340,12 +340,12 @@ CHANNEL_REGISTRY: dict[str, type[AlertChannel]] = {
 
 
 def get_channel(name: str, **config: object) -> AlertChannel:
-    """获取告警渠道实例"""
+    """Get alert channel instance"""
     if name not in CHANNEL_REGISTRY:
-        raise AlertError(f"未知告警渠道: {name}", channel=name)
+        raise AlertError(f"Unknown alert channel: {name}", channel=name)
     return CHANNEL_REGISTRY[name](**config)
 
 
 def list_channels() -> list[str]:
-    """列出所有可用渠道"""
+    """List all available channels"""
     return list(CHANNEL_REGISTRY.keys())

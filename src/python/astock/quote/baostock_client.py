@@ -1,17 +1,17 @@
-"""Baostock 行情客户端 - 稳定可靠的 A 股数据源
+"""Baostock quote client - stable and reliable A-share data source
 
-Baostock 特点：
-- 证券宝官方维护，数据稳定可靠
-- 支持日线、周线、月线
-- 支持 PE、PB 等估值数据
-- T+1 更新（当日数据次日可见）
+Baostock features:
+- Officially maintained by Baostock, stable and reliable data
+- Supports daily, weekly, and monthly candlestick data
+- Supports PE, PB and other valuation data
+- T+1 updates (today's data available next day)
 """
 
 import asyncio
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date, datetime, timedelta
-from functools import partial
+from functools import partial, wraps
 from typing import Any, Callable, Optional, TypeVar, ParamSpec
 
 import baostock as bs
@@ -25,12 +25,12 @@ logger = get_logger("baostock_client")
 P = ParamSpec("P")
 T = TypeVar("T")
 
-# 专用线程池
+# Dedicated thread pool
 _executor: Optional[ThreadPoolExecutor] = None
 
 
 def _get_executor() -> ThreadPoolExecutor:
-    """获取专用线程池"""
+    """Get dedicated thread pool"""
     global _executor
     if _executor is None:
         _executor = ThreadPoolExecutor(max_workers=2, thread_name_prefix="baostock_")
@@ -38,8 +38,9 @@ def _get_executor() -> ThreadPoolExecutor:
 
 
 def async_wrap(func: Callable[P, T]) -> Callable[P, "asyncio.Future[T]"]:
-    """将同步函数包装为异步"""
+    """Wrap a synchronous function as async"""
 
+    @wraps(func)
     async def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
         loop = asyncio.get_running_loop()
         func_partial = partial(func, *args, **kwargs)
@@ -49,16 +50,16 @@ def async_wrap(func: Callable[P, T]) -> Callable[P, "asyncio.Future[T]"]:
 
 
 class BaostockClient:
-    """Baostock 行情数据客户端
+    """Baostock quote data client
 
-    优势：
-    - 数据稳定可靠，证券宝官方维护
-    - 支持 PE、PB、市值等估值数据
-    - API 简单稳定
+    Advantages:
+    - Stable and reliable data, officially maintained by Baostock
+    - Supports PE, PB, market cap and other valuation data
+    - Simple and stable API
 
-    限制：
-    - 当日数据 T+1 更新
-    - 无实时行情（需要结合其他数据源）
+    Limitations:
+    - Data updated T+1 (today's data available next day)
+    - No real-time quotes (needs to be combined with other data sources)
     """
 
     def __init__(self):
@@ -66,7 +67,7 @@ class BaostockClient:
         self._login_lock = asyncio.Lock()
 
     def _ensure_login(self) -> None:
-        """确保已登录（同步版本）"""
+        """Ensure logged in (synchronous version)"""
         if self._logged_in:
             return
 
@@ -74,31 +75,31 @@ class BaostockClient:
             lg = bs.login()
             if lg.error_code != "0":
                 raise DataSourceError(
-                    f"Baostock 登录失败: {lg.error_msg}",
+                    f"Baostock login failed: {lg.error_msg}",
                     source="baostock",
                 )
             self._logged_in = True
-            logger.info("Baostock 登录成功")
+            logger.info("Baostock login successful")
         except Exception as e:
             raise DataSourceError(
-                f"Baostock 登录异常: {e}",
+                f"Baostock login error: {e}",
                 source="baostock",
             ) from e
 
     async def ensure_login(self) -> None:
-        """确保已登录（异步版本）"""
+        """Ensure logged in (async version)"""
         async with self._login_lock:
             if not self._logged_in:
                 await async_wrap(self._ensure_login)()
 
     def _baostock_code(self, code: str) -> str:
-        """转换为 baostock 格式的股票代码
+        """Convert to Baostock format stock code
 
         Args:
-            code: 6位股票代码，如 "600036"
+            code: 6-digit stock code, e.g. "600036"
 
         Returns:
-            baostock 格式代码，如 "sh.600036"
+            Baostock format code, e.g. "sh.600036"
         """
         code = code.zfill(6)
         if code.startswith("6"):
@@ -107,19 +108,19 @@ class BaostockClient:
             return f"sz.{code}"
 
     def _normalize_code(self, bs_code: str) -> str:
-        """从 baostock 代码提取纯代码
+        """Extract plain code from Baostock code
 
         Args:
-            bs_code: baostock 格式代码，如 "sh.600036"
+            bs_code: Baostock format code, e.g. "sh.600036"
 
         Returns:
-            6位代码，如 "600036"
+            6-digit code, e.g. "600036"
         """
         return bs_code.split(".")[-1]
 
     @async_wrap
     def get_stock_list(self) -> pd.DataFrame:
-        """获取 A 股股票列表
+        """Get A-share stock list
 
         Returns:
             DataFrame with columns: code, name
@@ -127,11 +128,11 @@ class BaostockClient:
         self._ensure_login()
 
         try:
-            # 尝试最近几个交易日的数据
+            # Try data from the most recent trading days
             today = date.today()
             data_list = []
 
-            for i in range(7):  # 尝试最近7天
+            for i in range(7):  # Try last 7 days
                 query_date = today - timedelta(days=i)
                 rs = bs.query_all_stock(day=query_date.strftime("%Y-%m-%d"))
 
@@ -142,33 +143,33 @@ class BaostockClient:
                     data_list.append(rs.get_row_data())
 
                 if data_list:
-                    logger.debug(f"使用 {query_date} 的股票列表数据")
+                    logger.debug(f"Using stock list data from {query_date}")
                     break
 
             if not data_list:
                 raise DataSourceError(
-                    "获取股票列表失败: 最近7天无数据",
+                    "Failed to fetch stock list: no data available in the last 7 days",
                     source="baostock",
                 )
 
             # fields: code, tradeStatus, code_name
             df = pd.DataFrame(data_list, columns=["bs_code", "trade_status", "name"])
 
-            # 过滤主板、创业板、科创板（排除指数）
-            # sh.6xxxxx 沪市主板, sz.0xxxxx 深市主板, sz.3xxxxx 创业板
+            # Filter main board, ChiNext, and STAR Market (exclude indices)
+            # sh.6xxxxx Shanghai Main Board, sz.0xxxxx Shenzhen Main Board, sz.3xxxxx ChiNext
             df = df[df["bs_code"].str.match(r"^(sh\.6\d{5}|sz\.0\d{5}|sz\.3\d{5})$")]
 
-            # 标准化代码
+            # Standardize codes
             df["code"] = df["bs_code"].str.replace(r"^(sh|sz)\.", "", regex=True)
 
-            logger.info(f"获取股票列表成功: {len(df)} 只")
+            logger.info(f"Stock list fetched successfully: {len(df)} stocks")
             return df[["code", "name"]]
 
         except DataSourceError:
             raise
         except Exception as e:
             raise DataSourceError(
-                f"获取股票列表异常: {e}",
+                f"Stock list fetch error: {e}",
                 source="baostock",
             ) from e
 
@@ -178,22 +179,22 @@ class BaostockClient:
         code: str,
         start_date: Optional[date] = None,
         end_date: Optional[date] = None,
-        days: int = 120,  # 默认获取120天数据，减少网络传输
+        days: int = 120,  # Default: fetch 120 days of data to reduce network transfer
     ) -> pd.DataFrame:
-        """获取日线行情（含估值数据）
+        """Get daily candlestick data (including valuation data)
 
         Args:
-            code: 股票代码，如 "600036"
-            start_date: 开始日期
-            end_date: 结束日期
-            days: 如果未指定 start_date，默认获取的天数
+            code: Stock code, e.g. "600036"
+            start_date: Start date
+            end_date: End date
+            days: Default number of days to fetch if start_date is not specified
 
         Returns:
             DataFrame with columns: date, open, high, low, close, volume, amount, pe, pb
         """
         self._ensure_login()
 
-        # 默认日期范围
+        # Default date range
         if end_date is None:
             end_date = date.today()
         if start_date is None:
@@ -202,19 +203,19 @@ class BaostockClient:
         bs_code = self._baostock_code(code)
 
         try:
-            # 查询日线数据，包含估值指标
+            # Query daily data including valuation indicators
             rs = bs.query_history_k_data_plus(
                 bs_code,
                 "date,code,open,high,low,close,volume,amount,turn,peTTM,pbMRQ,psTTM,pcfNcfTTM",
                 start_date=start_date.strftime("%Y-%m-%d"),
                 end_date=end_date.strftime("%Y-%m-%d"),
                 frequency="d",
-                adjustflag="2",  # 前复权
+                adjustflag="2",  # Forward-adjusted
             )
 
             if rs.error_code != "0":
                 raise DataSourceError(
-                    f"获取日线数据失败: {rs.error_msg}",
+                    f"Failed to fetch daily data: {rs.error_msg}",
                     source="baostock",
                     code=code,
                 )
@@ -224,54 +225,54 @@ class BaostockClient:
                 data_list.append(rs.get_row_data())
 
             if not data_list:
-                logger.warning(f"股票 {code} 无数据")
+                logger.warning(f"No data available for stock {code}")
                 return pd.DataFrame()
 
             df = pd.DataFrame(data_list, columns=rs.fields)
 
-            # 类型转换
+            # Type conversion
             df["date"] = pd.to_datetime(df["date"])
             for col in ["open", "high", "low", "close", "volume", "amount"]:
                 df[col] = pd.to_numeric(df[col], errors="coerce")
 
-            # 估值数据
+            # Valuation data
             df["pe"] = pd.to_numeric(df.get("peTTM"), errors="coerce")
             df["pb"] = pd.to_numeric(df.get("pbMRQ"), errors="coerce")
             df["ps"] = pd.to_numeric(df.get("psTTM"), errors="coerce")
             df["pcf"] = pd.to_numeric(df.get("pcfNcfTTM"), errors="coerce")
 
-            # 成交额（单位：千元 -> 元）
+            # Amount (unit: thousands -> yuan)
             if "amount" in df.columns:
                 df["amount"] = df["amount"] * 1000
 
-            logger.debug(f"获取 {code} 日线数据: {len(df)} 条")
+            logger.debug(f"Fetched daily data for {code}: {len(df)} records")
             return df[["date", "open", "high", "low", "close", "volume", "amount", "pe", "pb", "ps", "pcf"]]
 
         except DataSourceError:
             raise
         except Exception as e:
             raise DataSourceError(
-                f"获取日线数据异常: {e}",
+                f"Daily data fetch error: {e}",
                 source="baostock",
                 code=code,
             ) from e
 
     @async_wrap
     def get_realtime_quote(self, code: str) -> dict[str, Any]:
-        """获取"实时"行情（实际上是最近交易日的数据）
+        """Get "real-time" quote (actually the latest trading day's data)
 
-        Baostock 不支持实时行情，返回最近交易日的日线数据
+        Baostock does not support real-time quotes; returns the latest trading day's daily data
 
         Args:
-            code: 股票代码
+            code: Stock code
 
         Returns:
-            行情数据字典
+            Quote data dictionary
         """
         self._ensure_login()
 
         try:
-            # 获取最近 5 个交易日的数据
+            # Get data from the last 5 trading days
             end_date = date.today()
             start_date = end_date - timedelta(days=10)
 
@@ -279,22 +280,22 @@ class BaostockClient:
 
             if df.empty:
                 raise DataSourceError(
-                    f"股票 {code} 无数据",
+                    f"No data available for stock {code}",
                     source="baostock",
                     code=code,
                 )
 
-            # 取最新一条
+            # Take the latest record
             latest = df.iloc[-1]
 
-            # 计算涨跌幅
+            # Calculate price change
             prev_close = df.iloc[-2]["close"] if len(df) > 1 else latest["close"]
             change = latest["close"] - prev_close
             change_percent = (change / prev_close * 100) if prev_close > 0 else 0
 
             return {
                 "code": code,
-                "name": "",  # Baostock 日线数据不含名称
+                "name": "",  # Baostock daily data does not include stock name
                 "price": float(latest["close"]),
                 "open": float(latest["open"]),
                 "high": float(latest["high"]),
@@ -307,14 +308,14 @@ class BaostockClient:
                 "pe": float(latest["pe"]) if pd.notna(latest.get("pe")) else None,
                 "pb": float(latest["pb"]) if pd.notna(latest.get("pb")) else None,
                 "date": latest["date"].strftime("%Y-%m-%d"),
-                "is_realtime": False,  # 标记非实时数据
+                "is_realtime": False,  # Marked as non-real-time data
             }
 
         except DataSourceError:
             raise
         except Exception as e:
             raise DataSourceError(
-                f"获取行情数据异常: {e}",
+                f"Quote data fetch error: {e}",
                 source="baostock",
                 code=code,
             ) from e
@@ -326,12 +327,12 @@ class BaostockClient:
         start_date: Optional[date] = None,
         end_date: Optional[date] = None,
     ) -> pd.DataFrame:
-        """批量获取多只股票的日线数据
+        """Batch fetch daily data for multiple stocks
 
         Args:
-            codes: 股票代码列表
-            start_date: 开始日期
-            end_date: 结束日期
+            codes: List of stock codes
+            start_date: Start date
+            end_date: End date
 
         Returns:
             DataFrame with multi-index (code, date)
@@ -352,19 +353,19 @@ class BaostockClient:
                     df["code"] = code
                     all_data.append(df)
             except Exception as e:
-                logger.warning(f"获取 {code} 数据失败: {e}")
+                logger.warning(f"Failed to fetch data for {code}: {e}")
                 continue
 
         if not all_data:
             return pd.DataFrame()
 
         result = pd.concat(all_data, ignore_index=True)
-        logger.info(f"批量获取日线数据: {len(codes)} 只股票, {len(result)} 条记录")
+        logger.info(f"Batch daily data fetched: {len(codes)} stocks, {len(result)} records")
         return result
 
     def logout(self) -> None:
-        """登出"""
+        """Logout"""
         if self._logged_in:
             bs.logout()
             self._logged_in = False
-            logger.info("Baostock 已登出")
+            logger.info("Baostock logged out")

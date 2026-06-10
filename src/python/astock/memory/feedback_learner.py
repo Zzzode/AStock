@@ -1,6 +1,6 @@
-"""反馈学习器
+"""Feedback learner
 
-从用户反馈中学习，调整分析权重和置信度。
+Learns from user feedback to adjust analysis weights and confidence levels.
 """
 
 import json
@@ -9,24 +9,32 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
+TEAM_FEEDBACK_FILE = Path("data/team-feedback.json")
+LEGACY_FEEDBACK_FILE = Path("data/feedback.json")
+
+
+def clamp(value: float, min_value: float, max_value: float) -> float:
+    """Clamp value to a given range"""
+    return min(max_value, max(min_value, value))
+
 
 @dataclass
 class FeedbackRecord:
-    """反馈记录"""
+    """Feedback record"""
 
-    code: str                               # 股票代码
-    action: str                             # 建议动作
-    outcome: str                            # 反馈结果: good/bad
-    strategy: Optional[str] = None          # 关联策略/因子
-    note: Optional[str] = None              # 补充说明
-    signals: Optional[list[str]] = None     # 关联信号
-    confidence: Optional[float] = None      # 当时的置信度
+    code: str                               # Stock code
+    action: str                             # Suggested action
+    outcome: str                            # Feedback result: good/bad
+    strategy: Optional[str] = None          # Associated strategy/factor
+    note: Optional[str] = None              # Additional notes
+    signals: Optional[list[str]] = None     # Associated signals
+    confidence: Optional[float] = None      # Confidence at the time
     created_at: datetime = field(default_factory=datetime.now)
 
 
 @dataclass
 class StrategyPerformance:
-    """策略表现"""
+    """Strategy performance"""
 
     strategy: str
     total_count: int = 0
@@ -36,7 +44,7 @@ class StrategyPerformance:
     last_updated: datetime = field(default_factory=datetime.now)
 
     def update(self, outcome: str) -> None:
-        """更新统计"""
+        """Update statistics"""
         self.total_count += 1
         if outcome == "good":
             self.good_count += 1
@@ -48,7 +56,7 @@ class StrategyPerformance:
 
 @dataclass
 class SignalPerformance:
-    """信号表现"""
+    """Signal performance"""
 
     signal_type: str
     total_count: int = 0
@@ -58,7 +66,7 @@ class SignalPerformance:
     last_updated: datetime = field(default_factory=datetime.now)
 
     def update(self, outcome: str) -> None:
-        """更新统计"""
+        """Update statistics"""
         self.total_count += 1
         if outcome == "good":
             self.good_count += 1
@@ -69,36 +77,47 @@ class SignalPerformance:
 
 
 class FeedbackLearner:
-    """从用户反馈中学习"""
+    """Learn from user feedback"""
 
     def __init__(self, data_path: Optional[Path] = None):
-        """初始化反馈学习器
+        """Initialize feedback learner
 
         Args:
-            data_path: 数据存储路径，默认为 data/feedback.json
+            data_path: Data storage path, defaults to data/team-feedback.json
         """
-        self.data_path = data_path or Path("data/feedback.json")
+        self.data_path = data_path or TEAM_FEEDBACK_FILE
         self._records: list[FeedbackRecord] = []
         self._strategy_performance: dict[str, StrategyPerformance] = {}
         self._signal_performance: dict[str, SignalPerformance] = {}
         self._loaded = False
 
+    def _get_load_path(self) -> Path:
+        """Get actual load path, compatible with legacy feedback.json"""
+        if self.data_path.exists():
+            return self.data_path
+
+        if self.data_path == TEAM_FEEDBACK_FILE and LEGACY_FEEDBACK_FILE.exists():
+            return LEGACY_FEEDBACK_FILE
+
+        return self.data_path
+
     def _ensure_loaded(self) -> None:
-        """确保数据已加载"""
+        """Ensure data is loaded"""
         if not self._loaded:
             self._load()
             self._loaded = True
 
     def _load(self) -> None:
-        """从文件加载数据"""
-        if not self.data_path.exists():
+        """Load data from file"""
+        load_path = self._get_load_path()
+        if not load_path.exists():
             return
 
         try:
-            with open(self.data_path, "r", encoding="utf-8") as f:
+            with open(load_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
-            # 加载记录
+            # Load records
             for record_data in data.get("records", []):
                 record = FeedbackRecord(
                     code=record_data["code"],
@@ -113,7 +132,7 @@ class FeedbackLearner:
                 )
                 self._records.append(record)
 
-            # 加载策略表现
+            # Load strategy performance
             for strategy, perf_data in data.get("strategy_performance", {}).items():
                 self._strategy_performance[strategy] = StrategyPerformance(
                     strategy=strategy,
@@ -125,7 +144,7 @@ class FeedbackLearner:
                     if perf_data.get("last_updated") else datetime.now(),
                 )
 
-            # 加载信号表现
+            # Load signal performance
             for signal, perf_data in data.get("signal_performance", {}).items():
                 self._signal_performance[signal] = SignalPerformance(
                     signal_type=signal,
@@ -141,7 +160,7 @@ class FeedbackLearner:
             pass
 
     def _save(self) -> None:
-        """保存数据到文件"""
+        """Save data to file"""
         self.data_path.parent.mkdir(parents=True, exist_ok=True)
 
         data = {
@@ -193,19 +212,19 @@ class FeedbackLearner:
         signals: Optional[list[str]] = None,
         confidence: Optional[float] = None,
     ) -> FeedbackRecord:
-        """记录反馈
+        """Record feedback
 
         Args:
-            code: 股票代码
-            action: 建议动作
-            outcome: 反馈结果
-            strategy: 关联策略
-            note: 补充说明
-            signals: 关联信号
-            confidence: 当时的置信度
+            code: Stock code
+            action: Suggested action
+            outcome: Feedback result
+            strategy: Associated strategy
+            note: Additional notes
+            signals: Associated signals
+            confidence: Confidence at the time
 
         Returns:
-            反馈记录
+            Feedback record
         """
         self._ensure_loaded()
 
@@ -221,13 +240,13 @@ class FeedbackLearner:
 
         self._records.append(record)
 
-        # 更新策略表现
+        # Update strategy performance
         if strategy:
             if strategy not in self._strategy_performance:
                 self._strategy_performance[strategy] = StrategyPerformance(strategy=strategy)
             self._strategy_performance[strategy].update(outcome)
 
-        # 更新信号表现
+        # Update signal performance
         if signals:
             for signal in signals:
                 if signal not in self._signal_performance:
@@ -238,38 +257,120 @@ class FeedbackLearner:
         return record
 
     async def get_strategy_weights(self, user_id: str = "default") -> dict[str, float]:
-        """获取策略权重
+        """Get strategy weights
 
-        根据历史反馈计算策略权重，用于调整分析置信度。
+        Calculate strategy weights based on historical feedback to adjust analysis confidence.
 
         Args:
-            user_id: 用户 ID
+            user_id: User ID
 
         Returns:
-            策略权重字典
+            Strategy weights dictionary
         """
         self._ensure_loaded()
 
         weights = {}
         for strategy, perf in self._strategy_performance.items():
-            if perf.total_count >= 3:  # 至少 3 次反馈才计算权重
-                # 权重基于成功率，范围 0.5-1.5
+            if perf.total_count >= 3:  # Require at least 3 feedback records to calculate weight
+                # Weight based on success rate, range 0.5-1.5
                 base_weight = 1.0
-                adjustment = (perf.success_rate - 0.5) * 0.5  # -0.25 到 +0.25
+                adjustment = (perf.success_rate - 0.5) * 0.5  # -0.25 to +0.25
                 weights[strategy] = base_weight + adjustment
             else:
                 weights[strategy] = 1.0
 
         return weights
 
+    async def get_team_feedback_profile(self, code: str) -> dict[str, Any]:
+        """Get team feedback profile for a single stock"""
+        self._ensure_loaded()
+
+        records = [record for record in self._records if record.code == code]
+        if not records:
+            return {
+                "sample_count": 0,
+                "aggressiveness": 0.0,
+                "caution": 0.0,
+            }
+
+        positive_buy = sum(
+            1
+            for record in records
+            if record.action == "watch_buy" and record.outcome == "good"
+        )
+        negative_buy = sum(
+            1
+            for record in records
+            if record.action == "watch_buy" and record.outcome == "bad"
+        )
+        positive_reduce = sum(
+            1
+            for record in records
+            if record.action == "hold_or_reduce" and record.outcome == "good"
+        )
+        negative_reduce = sum(
+            1
+            for record in records
+            if record.action == "hold_or_reduce" and record.outcome == "bad"
+        )
+
+        total = len(records)
+        buy_signal = (positive_buy - negative_buy) / total if total > 0 else 0.0
+        reduce_signal = (positive_reduce - negative_reduce) / total if total > 0 else 0.0
+
+        return {
+            "sample_count": total,
+            "aggressiveness": clamp(buy_signal, -1.0, 1.0),
+            "caution": clamp(reduce_signal, -1.0, 1.0),
+        }
+
+    async def get_global_profile(self, user_id: str = "default") -> dict[str, Any]:
+        """Get global team feedback profile"""
+        self._ensure_loaded()
+
+        records = self._records
+        if not records:
+            return {
+                "sample_count": 0,
+                "risk_appetite": 0.0,
+                "strategy_weights": {},
+            }
+
+        risk_signal = 0
+        strategy_score: dict[str, int] = {}
+        strategy_count: dict[str, int] = {}
+
+        for record in records:
+            if record.action == "watch_buy":
+                risk_signal += 1 if record.outcome == "good" else -1
+            elif record.action == "hold_or_reduce":
+                risk_signal += -1 if record.outcome == "good" else 1
+
+            if record.strategy and record.strategy.strip():
+                strategy_score[record.strategy] = strategy_score.get(record.strategy, 0) + (
+                    1 if record.outcome == "good" else -1
+                )
+                strategy_count[record.strategy] = strategy_count.get(record.strategy, 0) + 1
+
+        strategy_weights: dict[str, float] = {}
+        for strategy, score in strategy_score.items():
+            count = strategy_count.get(strategy, 1)
+            strategy_weights[strategy] = clamp(score / count, -1.0, 1.0)
+
+        return {
+            "sample_count": len(records),
+            "risk_appetite": clamp(risk_signal / len(records), -1.0, 1.0),
+            "strategy_weights": strategy_weights,
+        }
+
     async def get_signal_accuracy(self, signal_type: str) -> Optional[float]:
-        """获取信号准确率
+        """Get signal accuracy
 
         Args:
-            signal_type: 信号类型
+            signal_type: Signal type
 
         Returns:
-            准确率，如果没有数据则返回 None
+            Accuracy rate, or None if no data available
         """
         self._ensure_loaded()
 
@@ -284,47 +385,47 @@ class FeedbackLearner:
         signals: list[str],
         strategy: Optional[str] = None,
     ) -> float:
-        """调整置信度
+        """Adjust confidence
 
-        根据历史反馈调整置信度。
+        Adjust confidence based on historical feedback.
 
         Args:
-            base_confidence: 基础置信度
-            signals: 信号列表
-            strategy: 策略名称
+            base_confidence: Base confidence
+            signals: Signal list
+            strategy: Strategy name
 
         Returns:
-            调整后的置信度
+            Adjusted confidence
         """
         self._ensure_loaded()
 
         adjustment = 0.0
 
-        # 根据信号准确率调整
+        # Adjust based on signal accuracy
         for signal in signals:
             accuracy = await self.get_signal_accuracy(signal)
             if accuracy is not None:
-                # 准确率高于 50% 提升置信度，低于则降低
+                # Accuracy above 50% increases confidence, below decreases
                 adjustment += (accuracy - 0.5) * 0.1
 
-        # 根据策略成功率调整
+        # Adjust based on strategy success rate
         if strategy:
             weights = await self.get_strategy_weights()
             strategy_weight = weights.get(strategy, 1.0)
             adjustment += (strategy_weight - 1.0) * 0.1
 
-        # 应用调整，限制在 0-1 范围
+        # Apply adjustment, clamp to 0-1 range
         adjusted = base_confidence + adjustment
         return max(0.0, min(1.0, adjusted))
 
     async def get_feedback_summary(self, user_id: str = "default") -> dict[str, Any]:
-        """获取反馈摘要
+        """Get feedback summary
 
         Args:
-            user_id: 用户 ID
+            user_id: User ID
 
         Returns:
-            反馈摘要
+            Feedback summary
         """
         self._ensure_loaded()
 
