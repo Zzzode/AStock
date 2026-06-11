@@ -186,6 +186,33 @@ class ResearchEntry:
         self.updated_at = max(datetime.now(), observation.observed_at)
 
 
+@dataclass(frozen=True)
+class ResearchLedgerIndex:
+    """Lightweight query index and lifecycle summary for the research ledger."""
+
+    generated_at: datetime
+    entry_count: int
+    status_counts: dict[str, int]
+    target_counts: dict[str, int]
+    tag_counts: dict[str, int]
+    target_type_counts: dict[str, int]
+    observation_type_counts: dict[str, int]
+    entries: list[dict[str, Any]]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "schema_version": "research-ledger-index.v1",
+            "generated_at": self.generated_at.isoformat(),
+            "entry_count": self.entry_count,
+            "status_counts": self.status_counts,
+            "target_counts": self.target_counts,
+            "tag_counts": self.tag_counts,
+            "target_type_counts": self.target_type_counts,
+            "observation_type_counts": self.observation_type_counts,
+            "entries": self.entries,
+        }
+
+
 class ResearchLedger:
     """JSON-backed research opportunity ledger."""
 
@@ -267,6 +294,131 @@ class ResearchLedger:
         entries.sort(key=lambda entry: entry.updated_at, reverse=True)
         return entries[:limit]
 
+    def query_entries(
+        self,
+        *,
+        statuses: Optional[list[ResearchStatus]] = None,
+        targets: Optional[list[str]] = None,
+        tags: Optional[list[str]] = None,
+        text: Optional[str] = None,
+        limit: int = 50,
+    ) -> list[ResearchEntry]:
+        """Query entries using lightweight in-memory indexes and text matching."""
+        self._ensure_loaded()
+        entries = list(self._entries.values())
+        status_filter = set(statuses or [])
+        target_filter = {_normalize_text(target) for target in targets or []}
+        tag_filter = {_normalize_text(tag) for tag in tags or []}
+        text_filter = _normalize_text(text)
+
+        matched: list[ResearchEntry] = []
+        for entry in entries:
+            if status_filter and entry.status not in status_filter:
+                continue
+            entry_targets = {_normalize_text(target) for target in entry.targets}
+            if target_filter and not target_filter.intersection(entry_targets):
+                continue
+            entry_tags = {_normalize_text(tag) for tag in entry.tags}
+            if tag_filter and not tag_filter.issubset(entry_tags):
+                continue
+            if text_filter and text_filter not in _entry_search_text(entry):
+                continue
+            matched.append(entry)
+
+        matched.sort(key=lambda entry: entry.updated_at, reverse=True)
+        return matched[:limit]
+
+    def build_index(self) -> ResearchLedgerIndex:
+        """Build a JSON-ready lightweight index for agent planning."""
+        self._ensure_loaded()
+        entries = sorted(
+            self._entries.values(),
+            key=lambda entry: entry.updated_at,
+            reverse=True,
+        )
+        status_counts: dict[str, int] = {}
+        target_counts: dict[str, int] = {}
+        tag_counts: dict[str, int] = {}
+        target_type_counts: dict[str, int] = {}
+        observation_type_counts: dict[str, int] = {}
+
+        cards: list[dict[str, Any]] = []
+        for entry in entries:
+            _increment(status_counts, entry.status.value)
+            _increment(target_type_counts, entry.target_type)
+            for target in entry.targets:
+                _increment(target_counts, target)
+            for tag in entry.tags:
+                _increment(tag_counts, tag)
+            for observation in entry.observations:
+                _increment(observation_type_counts, observation.observation_type)
+            cards.append(_entry_index_card(entry))
+
+        return ResearchLedgerIndex(
+            generated_at=datetime.now(),
+            entry_count=len(entries),
+            status_counts=status_counts,
+            target_counts=target_counts,
+            tag_counts=tag_counts,
+            target_type_counts=target_type_counts,
+            observation_type_counts=observation_type_counts,
+            entries=cards,
+        )
+
+    def find_duplicate_candidates(
+        self,
+        *,
+        targets: list[str],
+        title: Optional[str] = None,
+        tags: Optional[list[str]] = None,
+        limit: int = 10,
+    ) -> list[dict[str, Any]]:
+        """Find likely duplicate or overlapping research entries."""
+        self._ensure_loaded()
+        target_set = {_normalize_text(target) for target in targets}
+        tag_set = {_normalize_text(tag) for tag in tags or []}
+        normalized_title = _normalize_text(title)
+        candidates: list[dict[str, Any]] = []
+
+        for entry in self._entries.values():
+            entry_targets = {_normalize_text(target) for target in entry.targets}
+            target_overlap = sorted(target_set.intersection(entry_targets))
+            entry_tags = {_normalize_text(tag) for tag in entry.tags}
+            tag_overlap = sorted(tag_set.intersection(entry_tags))
+            title_match = bool(
+                normalized_title and normalized_title == _normalize_text(entry.title)
+            )
+            title_token_overlap = _title_token_overlap(normalized_title, entry.title)
+            score = (
+                len(target_overlap) * 3
+                + len(tag_overlap)
+                + (3 if title_match else 0)
+                + title_token_overlap
+            )
+            if score <= 0:
+                continue
+            candidates.append(
+                {
+                    "score": score,
+                    "entry": _entry_index_card(entry),
+                    "overlap": {
+                        "targets": target_overlap,
+                        "tags": tag_overlap,
+                        "title_match": title_match,
+                        "title_token_overlap": title_token_overlap,
+                    },
+                }
+            )
+
+        candidates.sort(
+            key=lambda item: (
+                int(item["score"]),
+                str(item["entry"]["updated_at"]),
+            ),
+            reverse=True,
+        )
+        return candidates[:limit]
+
     def record_observation(
         self,
         entry_id: str,
@@ -303,3 +455,55 @@ def make_research_id(
     seed = "|".join(sorted(targets)) + "|" + title + "|" + created_at.isoformat()
     digest = hashlib.sha1(seed.encode("utf-8")).hexdigest()[:12]
     return f"research-{created_at.strftime('%Y%m%d')}-{digest}"
+
+
+def _entry_index_card(entry: ResearchEntry) -> dict[str, Any]:
+    return {
+        "entry_id": entry.entry_id,
+        "title": entry.title,
+        "targets": list(entry.targets),
+        "target_type": entry.target_type,
+        "status": entry.status.value,
+        "tags": list(entry.tags),
+        "catalyst_count": len(entry.catalysts),
+        "risk_count": len(entry.risks),
+        "trigger_count": len(entry.monitoring_triggers),
+        "observation_count": len(entry.observations),
+        "created_at": entry.created_at.isoformat(),
+        "updated_at": entry.updated_at.isoformat(),
+    }
+
+
+def _entry_search_text(entry: ResearchEntry) -> str:
+    parts = [
+        entry.title,
+        entry.thesis,
+        entry.target_type,
+        *entry.targets,
+        *entry.catalysts,
+        *entry.risks,
+        *entry.invalidation_conditions,
+        *entry.tags,
+    ]
+    return " ".join(_normalize_text(part) for part in parts)
+
+
+def _normalize_text(value: object) -> str:
+    return str(value or "").strip().lower()
+
+
+def _increment(counter: dict[str, int], key: str) -> None:
+    normalized = str(key or "").strip()
+    if not normalized:
+        return
+    counter[normalized] = counter.get(normalized, 0) + 1
+
+
+def _title_token_overlap(query_title: str, existing_title: str) -> int:
+    if not query_title:
+        return 0
+    query_tokens = {token for token in query_title.split() if len(token) >= 3}
+    existing_tokens = {
+        token for token in _normalize_text(existing_title).split() if len(token) >= 3
+    }
+    return len(query_tokens.intersection(existing_tokens))

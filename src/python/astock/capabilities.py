@@ -47,6 +47,7 @@ from .research import (
     EvidenceStance,
     ResearchEntry,
     ResearchLedger,
+    ResearchLedgerIndex,
     ResearchObservation,
     ResearchStatus,
     ResearchTrigger,
@@ -100,6 +101,16 @@ def _parse_research_status(value: str | ResearchStatus) -> ResearchStatus:
     if isinstance(value, ResearchStatus):
         return value
     return ResearchStatus(value)
+
+
+def _parse_research_statuses(
+    values: Optional[Sequence[str | ResearchStatus] | str | ResearchStatus],
+) -> list[ResearchStatus] | None:
+    if values is None:
+        return None
+    if isinstance(values, (str, ResearchStatus)):
+        return [_parse_research_status(values)]
+    return [_parse_research_status(value) for value in values]
 
 
 def _serialize_events(events: Sequence[MarketEvent]) -> list[dict[str, Any]]:
@@ -1020,6 +1031,74 @@ def list_research_entries(
         "ledger_path": str(resolved_path),
         "total": len(entries),
         "entries": [entry.to_dict() for entry in entries],
+    }
+
+
+def _serialize_research_index(index: ResearchLedgerIndex) -> dict[str, Any]:
+    return cast(dict[str, Any], index.to_dict())
+
+
+def get_research_ledger_index(
+    *,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Return a lightweight research-ledger index for planning and review."""
+    resolved_path = _resolve_research_ledger_path(ledger_path)
+    index = ResearchLedger(resolved_path).build_index()
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "index": _serialize_research_index(index),
+    }
+
+
+def query_research_entries(
+    *,
+    statuses: Optional[Sequence[str | ResearchStatus] | str | ResearchStatus] = None,
+    targets: Optional[Sequence[str] | str] = None,
+    tags: Optional[Sequence[str] | str] = None,
+    text: Optional[str] = None,
+    limit: int = 50,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Query research ledger entries by lifecycle, target, tags, or text."""
+    resolved_path = _resolve_research_ledger_path(ledger_path)
+    entries = ResearchLedger(resolved_path).query_entries(
+        statuses=_parse_research_statuses(statuses),
+        targets=_as_string_list(targets),
+        tags=_as_string_list(tags),
+        text=text,
+        limit=limit,
+    )
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "total": len(entries),
+        "entries": [entry.to_dict() for entry in entries],
+    }
+
+
+def find_research_duplicate_candidates(
+    *,
+    targets: Sequence[str] | str,
+    title: Optional[str] = None,
+    tags: Optional[Sequence[str] | str] = None,
+    limit: int = 10,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Find overlapping research entries before creating a new thesis."""
+    resolved_path = _resolve_research_ledger_path(ledger_path)
+    candidates = ResearchLedger(resolved_path).find_duplicate_candidates(
+        targets=_as_string_list(targets),
+        title=title,
+        tags=_as_string_list(tags),
+        limit=limit,
+    )
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "total": len(candidates),
+        "candidates": candidates,
     }
 
 

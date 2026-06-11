@@ -81,6 +81,59 @@ def test_ledger_create_list_and_observe(tmp_path: Path) -> None:
     assert entries[0].observations[0].note.startswith("Volume confirmation failed")
 
 
+def test_ledger_index_query_and_duplicate_candidates(tmp_path: Path) -> None:
+    ledger = ResearchLedger(tmp_path / "ledger.json")
+    bank_entry = ledger.create(
+        ResearchEntry(
+            title="Bank sector re-rating",
+            thesis="Low valuation plus credit impulse recovery.",
+            targets=["000001", "600000"],
+            tags=["bank", "value"],
+            catalysts=["credit data rebound"],
+            risks=["NIM compression"],
+        )
+    )
+    ledger.record_observation(
+        bank_entry.entry_id or "",
+        ResearchObservation(
+            observation_type="evidence_update",
+            note="Credit impulse improved.",
+            status_after=ResearchStatus.MONITORING,
+        ),
+    )
+    ledger.create(
+        ResearchEntry(
+            title="AI hardware pullback watch",
+            thesis="Track compute leaders after pullback.",
+            targets=["300001"],
+            tags=["ai", "hardware"],
+        )
+    )
+
+    index = ledger.build_index()
+    queried = ledger.query_entries(
+        statuses=[ResearchStatus.MONITORING],
+        targets=["000001"],
+        tags=["bank"],
+        text="credit impulse",
+    )
+    duplicates = ledger.find_duplicate_candidates(
+        targets=["600000"],
+        title="Bank sector re-rating",
+        tags=["bank"],
+    )
+
+    assert index.entry_count == 2
+    assert index.status_counts["monitoring"] == 1
+    assert index.target_counts["000001"] == 1
+    assert index.tag_counts["bank"] == 1
+    assert index.observation_type_counts["evidence_update"] == 1
+    assert queried[0].entry_id == bank_entry.entry_id
+    assert duplicates[0]["entry"]["entry_id"] == bank_entry.entry_id
+    assert duplicates[0]["overlap"]["targets"] == ["600000"]
+    assert duplicates[0]["score"] >= 7
+
+
 def test_ledger_rejects_duplicate_entry(tmp_path: Path) -> None:
     created_at = datetime(2026, 6, 12, 9, 0)
     entry = ResearchEntry(

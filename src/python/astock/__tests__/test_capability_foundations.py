@@ -356,6 +356,48 @@ def test_capability_research_ledger_round_trip(tmp_path: Path) -> None:
     assert listed["entries"][0]["entry_id"] == entry_id
 
 
+def test_capability_research_index_query_and_duplicates(tmp_path: Path) -> None:
+    ledger_path = tmp_path / "research-ledger.json"
+    created = capabilities.create_research_entry(
+        title="Bank sector re-rating",
+        thesis="Low valuation plus credit impulse recovery.",
+        targets=["000001", "600000"],
+        tags=["bank", "value"],
+        catalysts=["credit data rebound"],
+        ledger_path=ledger_path,
+    )
+    entry_id = created["entry"]["entry_id"]
+    capabilities.record_research_observation(
+        entry_id,
+        observation_type="evidence_update",
+        note="Credit impulse improved.",
+        status_after="monitoring",
+        ledger_path=ledger_path,
+    )
+
+    index = capabilities.get_research_ledger_index(ledger_path=ledger_path)
+    queried = capabilities.query_research_entries(
+        statuses=["monitoring"],
+        targets=["000001"],
+        tags=["bank"],
+        text="credit impulse",
+        ledger_path=ledger_path,
+    )
+    duplicates = capabilities.find_research_duplicate_candidates(
+        targets=["600000"],
+        title="Bank sector re-rating",
+        tags=["bank"],
+        ledger_path=ledger_path,
+    )
+
+    assert index["index"]["entry_count"] == 1
+    assert index["index"]["status_counts"]["monitoring"] == 1
+    assert queried["total"] == 1
+    assert queried["entries"][0]["entry_id"] == entry_id
+    assert duplicates["total"] == 1
+    assert duplicates["candidates"][0]["overlap"]["targets"] == ["600000"]
+
+
 def test_capability_evidence_packet_and_review_updates_status(tmp_path: Path) -> None:
     ledger_path = tmp_path / "research-ledger.json"
     created = capabilities.create_research_entry(

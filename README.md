@@ -18,7 +18,7 @@ This is **not** an automated trading, broker order-routing, OMS, or EMS system. 
 - Canonical market event packets and event storage for quote, signal, sector, fund-flow, alert, news, and policy data
 - Market relationship mapping for stock, industry, sector, theme, concept, and industry-chain context
 - Fund-flow snapshot normalization and anomaly detection for board monitoring
-- Research opportunity ledger, evidence packets, thesis review, monitoring triggers, invalidation, and follow-up observations
+- Research opportunity ledger with lightweight indexing, evidence packets, thesis review, monitoring triggers, invalidation, and follow-up observations
 - Multi-expert opportunity analysis via Agent Skills
 - Technical analysis: MA, MACD, KDJ, RSI, support/resistance context
 - Stock screening and personalized candidate pools

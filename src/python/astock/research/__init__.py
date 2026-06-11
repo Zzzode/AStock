@@ -10,6 +10,7 @@ from .evidence import (
 from .ledger import (
     ResearchEntry,
     ResearchLedger,
+    ResearchLedgerIndex,
     ResearchObservation,
     ResearchStatus,
     ResearchTrigger,
@@ -23,6 +24,7 @@ __all__ = [
     "EvidenceStance",
     "ResearchEntry",
     "ResearchLedger",
+    "ResearchLedgerIndex",
     "ResearchObservation",
     "ResearchStatus",
     "ResearchTrigger",

@@ -310,6 +310,7 @@ Reports should be concise and actionable — avoid empty platitudes.
 
 If the final conclusion identifies a material investment opportunity, watchlist candidate, or invalidated thesis, update the research ledger through `astock.capabilities`:
 
+- `get_research_ledger_index()`, `query_research_entries()`, or `find_research_duplicate_candidates()` before creating a new thesis.
 - `create_research_entry()` for a new thesis with targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
 - `record_research_observation()` when a follow-up trigger fires or evidence changes.
 - `update_research_status()` when the thesis moves to `monitoring`, `invalidated`, `closed`, or `archived`.
@@ -319,6 +320,11 @@ Minimal ledger example:
 ```python
 from astock import capabilities
 
+duplicates = capabilities.find_research_duplicate_candidates(
+    targets=["000001"],
+    title="000001 watchlist thesis",
+    tags=["watchlist"],
+)
 ledger_result = capabilities.create_research_entry(
     title="000001 watchlist thesis",
     thesis="Opportunity thesis based on team evidence, catalysts, and risks.",
@@ -329,6 +335,7 @@ ledger_result = capabilities.create_research_entry(
         {"name": "breakout confirmation", "condition": "price holds above resistance"}
     ],
     invalidation_conditions=["Thesis fails if key support breaks on volume"],
+    tags=["watchlist"],
     data_quality=packet_provenance,
     source_refs=[{"source": "team.shared_packet", "path": session_path}],
 )
