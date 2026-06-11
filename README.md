@@ -27,6 +27,7 @@ This is **not** an automated trading, broker order-routing, OMS, or EMS system. 
 - Paper portfolio and position tracking
 - Broker-report collection and institutional-style equity research reports
 - LaTeX/PDF report generation
+- Quality checks for data-source health, prompt drift, skill boundaries, and report completeness
 
 ## Quick Start
 

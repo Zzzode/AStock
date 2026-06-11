@@ -31,6 +31,24 @@ If unclear, ask user which mode they want.
 
 ## Step 2: Gather Audit Data
 
+### Foundation Quality Checks
+
+Use `astock.capabilities` for deterministic checks before dispatching the
+internal-control agent:
+
+```python
+from astock import capabilities
+
+prompt_drift = capabilities.check_system_prompt_drift()
+source_health = capabilities.evaluate_data_source_health(provenance_records)
+skill_eval = capabilities.evaluate_skill_boundary_cases(eval_cases)
+report_quality = capabilities.evaluate_research_report_quality(report_text)
+```
+
+Attach these packets to the internal-control prompt when available. If a packet
+cannot be built because the required inputs are unavailable, record the missing
+input and continue with the remaining checks.
+
 ### For `feedback_analysis`:
 
 ```bash

@@ -435,3 +435,45 @@ def test_capability_evidence_packet_and_review_updates_status(tmp_path: Path) ->
     assert review["entry"]["status"] == "invalidated"
     assert evidence_packet["all_source_refs"] == []
     assert evidence_packet["packet"]["items"][0]["stance"] == "contradicts"
+
+
+def test_capability_quality_checks(tmp_path: Path) -> None:
+    left = tmp_path / ".agents" / "skills" / "team" / "skill.md"
+    right = tmp_path / ".codex" / "skills" / "team" / "SKILL.md"
+    left.parent.mkdir(parents=True)
+    right.parent.mkdir(parents=True)
+    left.write_text("same prompt\n", encoding="utf-8")
+    right.write_text("same prompt\n", encoding="utf-8")
+
+    health = capabilities.evaluate_data_source_health(
+        [
+            {"source": "akshare.quote", "quality_tier": "realtime"},
+            {
+                "source": "eastmoney.flow",
+                "quality_tier": "unavailable",
+                "errors": ["timeout"],
+            },
+        ]
+    )
+    drift = capabilities.check_system_prompt_drift(root_path=tmp_path)
+    report = capabilities.evaluate_research_report_quality("""
+        Evidence source and data quality are stated.
+        Risk and downside are covered.
+        Contrarian bear case is included.
+        Monitoring trigger and invalidation are explicit.
+        """)
+    skill_eval = capabilities.evaluate_skill_boundary_cases(
+        [
+            {
+                "name": "boundary",
+                "response": "Python returns data packets; agents explain risks.",
+                "required_terms": ["data packets"],
+            }
+        ]
+    )
+
+    assert health["health"]["overall_status"] == "failing"
+    assert drift["drift"]["status"] == "ok"
+    assert drift["drift"]["pair_count"] == 1
+    assert report["quality"]["status"] in {"pass", "excellent"}
+    assert skill_eval["evaluation"]["passed_count"] == 1

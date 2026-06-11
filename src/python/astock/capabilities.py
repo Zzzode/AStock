@@ -40,6 +40,12 @@ from .market_event import (
 )
 from .memory import FeedbackLearner
 from .quote import QuoteService
+from .quality import (
+    check_prompt_drift as _check_prompt_drift,
+    evaluate_report_quality as _evaluate_report_quality,
+    evaluate_skill_response_cases as _evaluate_skill_response_cases,
+    evaluate_source_health as _evaluate_source_health,
+)
 from .recommend import Recommender, RecommendResult
 from .research import (
     EvidenceItem,
@@ -78,6 +84,46 @@ def _resolve_market_event_store_path(event_store_path: Optional[Path] = None) ->
 
 def _resolve_market_map_path(market_map_path: Optional[Path] = None) -> Path:
     return market_map_path or DEFAULT_MARKET_MAP_PATH
+
+
+def _default_prompt_drift_pairs(
+    root_path: Optional[Path] = None,
+) -> list[dict[str, Any]]:
+    root = root_path or PROJECT_ROOT
+    agents_root = root / ".agents" / "skills"
+    codex_root = root / ".codex" / "skills"
+    if not agents_root.exists():
+        return []
+
+    pairs: list[dict[str, Any]] = []
+    for skill_dir in sorted(agents_root.iterdir()):
+        if not skill_dir.is_dir():
+            continue
+        agents_file = _first_existing_path(
+            skill_dir / "skill.md",
+            skill_dir / "SKILL.md",
+        )
+        codex_file = _first_existing_path(
+            codex_root / skill_dir.name / "SKILL.md",
+            codex_root / skill_dir.name / "skill.md",
+        )
+        if agents_file is None and codex_file is None:
+            continue
+        pairs.append(
+            {
+                "name": skill_dir.name,
+                "left": str(agents_file or skill_dir / "skill.md"),
+                "right": str(codex_file or codex_root / skill_dir.name / "SKILL.md"),
+            }
+        )
+    return pairs
+
+
+def _first_existing_path(*paths: Path) -> Path | None:
+    for path in paths:
+        if path.exists():
+            return path
+    return None
 
 
 def _parse_date(value: Optional[str | date], default: date) -> date:
@@ -1191,6 +1237,55 @@ def review_research_entry(
         "review": review.to_dict(),
         "entry": updated_entry or entry.to_dict(),
         "status_updated": updated_entry is not None,
+    }
+
+
+def evaluate_data_source_health(
+    records: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Evaluate source latency, degradation, warning, and failure patterns."""
+    return {
+        "success": True,
+        "health": _evaluate_source_health(records),
+    }
+
+
+def check_system_prompt_drift(
+    *,
+    file_pairs: Optional[Sequence[Mapping[str, Any]]] = None,
+    root_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Compare duplicated prompt files for drift."""
+    pairs = (
+        list(file_pairs)
+        if file_pairs is not None
+        else _default_prompt_drift_pairs(root_path)
+    )
+    return {
+        "success": True,
+        "drift": _check_prompt_drift(pairs, root_path=root_path),
+    }
+
+
+def evaluate_research_report_quality(
+    report_text: str,
+    *,
+    checks: Optional[Mapping[str, Sequence[str]]] = None,
+) -> dict[str, Any]:
+    """Evaluate whether a report includes core research-quality elements."""
+    return {
+        "success": True,
+        "quality": _evaluate_report_quality(report_text, checks=checks),
+    }
+
+
+def evaluate_skill_boundary_cases(
+    cases: Sequence[Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Run deterministic skill-boundary eval cases."""
+    return {
+        "success": True,
+        "evaluation": _evaluate_skill_response_cases(cases),
     }
 
 

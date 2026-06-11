@@ -86,6 +86,12 @@ Top-level agents and skills should use the following foundation capabilities whe
    - Material conclusions should include thesis, targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
    - Follow-up observations should update the ledger when triggers fire, evidence changes, or a thesis is invalidated.
 
+5. **Quality and evolution checks**
+   - Use `evaluate_data_source_health()` to summarize source latency, degradation, warning, and failure patterns.
+   - Use `check_system_prompt_drift()` to compare duplicated `.agents/skills` and `.codex/skills` prompts.
+   - Use `evaluate_skill_boundary_cases()` to test whether skills respect project boundaries such as "no order execution" and "Python returns data only".
+   - Use `evaluate_research_report_quality()` to check whether reports include evidence, risk, contrarian view, monitoring triggers, invalidation, and data-quality context.
+
 ## Language Policy
 
 - **English first**: All code, comments, commit messages, skill definitions, and internal documentation must be in English.
@@ -206,6 +212,7 @@ src/python/astock/          # Python capability layer (core)
 ├── data/                   # Industry data and market relationship maps
 ├── data_provenance/        # Source, freshness, quality, fallback metadata
 ├── market_event/           # Market events, JSONL store, fund-flow anomaly detection
+├── quality/                # Source health, prompt drift, skill eval, report checks
 ├── research/               # Research opportunity ledger, evidence packets, thesis review
 ├── quote/                  # Quote service
 ├── analysis/               # Technical analysis
