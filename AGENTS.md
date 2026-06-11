@@ -69,11 +69,13 @@ Top-level agents and skills should use the following foundation capabilities whe
 
 2. **Market event normalization**
    - Use `astock.capabilities.build_market_event_packet()` to convert quote, screen, signal, sector, fund-flow, alert, news, or policy payloads into canonical market events.
+   - Use `record_market_events()`, `list_market_events()`, `aggregate_market_events()`, and `replay_market_subject_events()` when events need persistence, de-duplication, market-board aggregation, or stock/sector/theme replay.
    - Agents should reason over event type, subject, severity, direction, metrics, context, tags, and quality instead of parsing ad hoc strings.
    - Market monitoring should distinguish observation from conclusion: Python emits events; agents explain why they matter.
 
 3. **Research opportunity ledger**
    - Use `create_research_entry()`, `list_research_entries()`, `record_research_observation()`, and `update_research_status()` for investment opportunity lifecycle tracking.
+   - Use `create_evidence_item()`, `create_evidence_packet()`, and `review_research_entry()` when new evidence should strengthen, weaken, invalidate, or require review of an existing thesis.
    - Material conclusions should include thesis, targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
    - Follow-up observations should update the ledger when triggers fire, evidence changes, or a thesis is invalidated.
 
@@ -195,8 +197,8 @@ src/python/astock/          # Python capability layer (core)
 ├── capabilities.py         # Agent/skill capability kernel
 ├── cli.py                  # Machine adapter for JSON subprocess calls
 ├── data_provenance/        # Source, freshness, quality, fallback metadata
-├── market_event/           # Canonical market-monitoring event model
-├── research/               # Research opportunity lifecycle ledger
+├── market_event/           # Canonical market-monitoring event model and JSONL store
+├── research/               # Research opportunity ledger, evidence packets, thesis review
 ├── quote/                  # Quote service
 ├── analysis/               # Technical analysis
 ├── stock_picker/           # Stock screener

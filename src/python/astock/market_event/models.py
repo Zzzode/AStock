@@ -39,6 +39,7 @@ class SubjectType(StrEnum):
 
     STOCK = "stock"
     SECTOR = "sector"
+    THEME = "theme"
     INDEX = "index"
     MARKET = "market"
     POLICY = "policy"

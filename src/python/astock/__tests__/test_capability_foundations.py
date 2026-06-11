@@ -65,6 +65,53 @@ def test_capability_market_event_packet_from_quote() -> None:
     assert event_types == {"price_move", "volume_spike", "fund_flow_move"}
 
 
+def test_capability_market_event_store_round_trip(tmp_path: Path) -> None:
+    store_path = tmp_path / "market-events.jsonl"
+    packet = capabilities.build_market_event_packet(
+        {
+            "code": "000001",
+            "name": "Ping An Bank",
+            "price": 15.5,
+            "prev_close": 15.0,
+            "volume_ratio": 3.0,
+            "timestamp": "2026-06-12T10:30:00+08:00",
+        },
+        payload_type="quote",
+        source="unit-test",
+    )
+    events = packet["events"]
+
+    first_write = capabilities.record_market_events(
+        events,
+        event_store_path=store_path,
+    )
+    second_write = capabilities.record_market_events(
+        events,
+        event_store_path=store_path,
+    )
+    listed = capabilities.list_market_events(
+        subject_code="000001",
+        event_store_path=store_path,
+    )
+    replay = capabilities.replay_market_subject_events(
+        subject_code="000001",
+        event_store_path=store_path,
+    )
+    aggregate = capabilities.aggregate_market_events(event_store_path=store_path)
+
+    assert first_write["inserted"] == 2
+    assert second_write["duplicate"] == 2
+    assert listed["total"] == 2
+    assert {event["event_type"] for event in replay["events"]} == {
+        "price_move",
+        "volume_spike",
+    }
+    assert aggregate["aggregate"]["event_type"] == {
+        "price_move": 1,
+        "volume_spike": 1,
+    }
+
+
 @pytest.mark.asyncio  # type: ignore[untyped-decorator]
 async def test_get_quote_attaches_provenance_and_market_events(
     monkeypatch: pytest.MonkeyPatch,
@@ -242,3 +289,42 @@ def test_capability_research_ledger_round_trip(tmp_path: Path) -> None:
     assert observed["entry"]["status"] == "monitoring"
     assert listed["total"] == 1
     assert listed["entries"][0]["entry_id"] == entry_id
+
+
+def test_capability_evidence_packet_and_review_updates_status(tmp_path: Path) -> None:
+    ledger_path = tmp_path / "research-ledger.json"
+    created = capabilities.create_research_entry(
+        title="Bank sector re-rating",
+        thesis="Low valuation plus improving credit impulse may support re-rating.",
+        targets=["000001"],
+        invalidation_conditions=["credit spread widens above 120bp"],
+        ledger_path=ledger_path,
+    )
+    entry_id = created["entry"]["entry_id"]
+    evidence_item = capabilities.create_evidence_item(
+        title="Credit spread breach",
+        stance="contradicts",
+        notes="credit spread widens above 120bp after weak macro data",
+        payload={"invalidation_triggered": True},
+        collected_at="2026-06-12T10:30:00+08:00",
+    )
+    evidence_packet = capabilities.create_evidence_packet(
+        title="Daily thesis review packet",
+        targets=["000001"],
+        items=[evidence_item["item"]],
+        collected_at="2026-06-12T10:30:00+08:00",
+    )
+
+    review = capabilities.review_research_entry(
+        entry_id,
+        evidence_packets=[evidence_packet["packet"]],
+        apply_suggested_status=True,
+        ledger_path=ledger_path,
+    )
+
+    assert review["success"] is True
+    assert review["review"]["classification"] == "invalidated"
+    assert review["status_updated"] is True
+    assert review["entry"]["status"] == "invalidated"
+    assert evidence_packet["all_source_refs"] == []
+    assert evidence_packet["packet"]["items"][0]["stance"] == "contradicts"

@@ -18,6 +18,7 @@ from .config import ConfigManager
 from .data import get_industry_service
 from .data_provenance import DataProvenance, combine_provenance
 from .market_event import (
+    EventStore,
     MarketEvent,
     build_alert_trigger_event,
     build_events_from_quote_payload,
@@ -31,11 +32,15 @@ from .memory import FeedbackLearner
 from .quote import QuoteService
 from .recommend import Recommender, RecommendResult
 from .research import (
+    EvidenceItem,
+    EvidencePacket,
+    EvidenceStance,
     ResearchEntry,
     ResearchLedger,
     ResearchObservation,
     ResearchStatus,
     ResearchTrigger,
+    review_thesis,
 )
 from .services import AnalysisService, TeamAnalysisService
 from .stock_picker import ScreenResult, StockScreener
@@ -44,6 +49,7 @@ from .storage import Database
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DB_PATH = PROJECT_ROOT / "data" / "stocks.db"
 DEFAULT_RESEARCH_LEDGER_PATH = PROJECT_ROOT / "data" / "research-ledger.json"
+DEFAULT_MARKET_EVENT_STORE_PATH = PROJECT_ROOT / "data" / "market-events.jsonl"
 
 
 def _resolve_db_path(db_path: Optional[Path] = None) -> Path:
@@ -52,6 +58,10 @@ def _resolve_db_path(db_path: Optional[Path] = None) -> Path:
 
 def _resolve_research_ledger_path(ledger_path: Optional[Path] = None) -> Path:
     return ledger_path or DEFAULT_RESEARCH_LEDGER_PATH
+
+
+def _resolve_market_event_store_path(event_store_path: Optional[Path] = None) -> Path:
+    return event_store_path or DEFAULT_MARKET_EVENT_STORE_PATH
 
 
 def _parse_date(value: Optional[str | date], default: date) -> date:
@@ -509,6 +519,196 @@ def build_market_event_packet(
     }
 
 
+def record_market_events(
+    events: Sequence[Mapping[str, Any] | MarketEvent],
+    *,
+    event_store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Persist canonical market events with ID de-duplication."""
+    resolved_path = _resolve_market_event_store_path(event_store_path)
+    result = EventStore(resolved_path).add_many(events)
+    return {
+        "success": True,
+        "event_store_path": str(resolved_path),
+        **result,
+    }
+
+
+def list_market_events(
+    *,
+    subject_code: Optional[str] = None,
+    subject_name: Optional[str] = None,
+    subject_type: Optional[str] = None,
+    event_type: Optional[str] = None,
+    tag: Optional[str] = None,
+    severity: Optional[str | int] = None,
+    direction: Optional[str] = None,
+    start_at: Optional[str | datetime] = None,
+    end_at: Optional[str | datetime] = None,
+    limit: Optional[int] = 100,
+    reverse: bool = False,
+    event_store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """List stored market events for board replay and agent context."""
+    resolved_path = _resolve_market_event_store_path(event_store_path)
+    events = EventStore(resolved_path).list_events(
+        subject_code=subject_code,
+        subject_name=subject_name,
+        subject_type=subject_type,
+        event_type=event_type,
+        tag=tag,
+        severity=severity,
+        direction=direction,
+        start_at=start_at,
+        end_at=end_at,
+        limit=limit,
+        reverse=reverse,
+    )
+    return {
+        "success": True,
+        "event_store_path": str(resolved_path),
+        "total": len(events),
+        "events": events,
+    }
+
+
+def aggregate_market_events(
+    *,
+    subject_code: Optional[str] = None,
+    subject_name: Optional[str] = None,
+    subject_type: Optional[str] = None,
+    event_type: Optional[str] = None,
+    tag: Optional[str] = None,
+    severity: Optional[str | int] = None,
+    direction: Optional[str] = None,
+    start_at: Optional[str | datetime] = None,
+    end_at: Optional[str | datetime] = None,
+    limit: Optional[int] = None,
+    event_store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Aggregate stored market events for market-board summaries."""
+    resolved_path = _resolve_market_event_store_path(event_store_path)
+    aggregate = EventStore(resolved_path).aggregate(
+        subject_code=subject_code,
+        subject_name=subject_name,
+        subject_type=subject_type,
+        event_type=event_type,
+        tag=tag,
+        severity=severity,
+        direction=direction,
+        start_at=start_at,
+        end_at=end_at,
+        limit=limit,
+    )
+    return {
+        "success": True,
+        "event_store_path": str(resolved_path),
+        "aggregate": aggregate,
+    }
+
+
+def replay_market_subject_events(
+    *,
+    subject_code: Optional[str] = None,
+    subject_name: Optional[str] = None,
+    subject_type: Optional[str] = None,
+    start_at: Optional[str | datetime] = None,
+    end_at: Optional[str | datetime] = None,
+    limit: Optional[int] = None,
+    event_store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Replay chronological events for one stock, sector, theme, or market subject."""
+    resolved_path = _resolve_market_event_store_path(event_store_path)
+    events = EventStore(resolved_path).replay_subject(
+        subject_code=subject_code,
+        subject_name=subject_name,
+        subject_type=subject_type,
+        start_at=start_at,
+        end_at=end_at,
+        limit=limit,
+    )
+    return {
+        "success": True,
+        "event_store_path": str(resolved_path),
+        "total": len(events),
+        "events": events,
+    }
+
+
+def create_evidence_packet(
+    *,
+    title: str,
+    targets: Optional[str | Sequence[str]] = None,
+    source_refs: Optional[Mapping[str, object] | Sequence[Mapping[str, object]]] = None,
+    data_quality: Optional[Mapping[str, object]] = None,
+    provenance: Optional[Mapping[str, object] | Sequence[Mapping[str, object]]] = None,
+    market_events: Optional[
+        Mapping[str, object] | Sequence[Mapping[str, object]]
+    ] = None,
+    notes: Optional[str | Sequence[str]] = None,
+    tags: Optional[str | Sequence[str]] = None,
+    items: Optional[Sequence[Mapping[str, object] | EvidenceItem]] = None,
+    metadata: Optional[Mapping[str, object]] = None,
+    collected_at: Optional[str | datetime] = None,
+) -> dict[str, Any]:
+    """Build a JSON-ready evidence packet for research review workflows."""
+    packet = EvidencePacket(
+        title=title,
+        targets=targets or (),
+        collected_at=collected_at,
+        source_refs=source_refs or (),
+        data_quality=data_quality,
+        provenance=provenance or (),
+        market_events=market_events or (),
+        notes=notes or (),
+        tags=tags or (),
+        items=items or (),
+        metadata=metadata,
+    )
+    return {
+        "success": True,
+        "packet": packet.to_dict(),
+        "all_source_refs": list(packet.all_source_refs),
+        "all_market_events": list(packet.all_market_events),
+    }
+
+
+def create_evidence_item(
+    *,
+    title: str,
+    source_refs: Optional[Mapping[str, object] | Sequence[Mapping[str, object]]] = None,
+    data_quality: Optional[Mapping[str, object]] = None,
+    provenance: Optional[Mapping[str, object] | Sequence[Mapping[str, object]]] = None,
+    market_events: Optional[
+        Mapping[str, object] | Sequence[Mapping[str, object]]
+    ] = None,
+    notes: Optional[str | Sequence[str]] = None,
+    tags: Optional[str | Sequence[str]] = None,
+    stance: str | EvidenceStance | None = EvidenceStance.NEUTRAL,
+    item_type: str = "generic",
+    payload: Optional[Mapping[str, object]] = None,
+    collected_at: Optional[str | datetime] = None,
+) -> dict[str, Any]:
+    """Build one JSON-ready evidence item for a research packet."""
+    item = EvidenceItem(
+        title=title,
+        source_refs=source_refs or (),
+        collected_at=collected_at,
+        data_quality=data_quality,
+        provenance=provenance or (),
+        market_events=market_events or (),
+        notes=notes or (),
+        tags=tags or (),
+        stance=stance,
+        item_type=item_type,
+        payload=payload,
+    )
+    return {
+        "success": True,
+        "item": item.to_dict(),
+    }
+
+
 def create_research_entry(
     *,
     title: str,
@@ -640,6 +840,50 @@ def update_research_status(
         "success": True,
         "ledger_path": str(resolved_path),
         "entry": entry.to_dict(),
+    }
+
+
+def review_research_entry(
+    entry_id: str,
+    *,
+    evidence_packets: Optional[Sequence[Mapping[str, object] | EvidencePacket]] = None,
+    evidence_items: Optional[Sequence[Mapping[str, object] | EvidenceItem]] = None,
+    observations: Optional[Sequence[Mapping[str, object] | ResearchObservation]] = None,
+    reviewed_at: Optional[str | datetime] = None,
+    apply_suggested_status: bool = False,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Review one research thesis against structured evidence."""
+    resolved_path = _resolve_research_ledger_path(ledger_path)
+    ledger = ResearchLedger(resolved_path)
+    entry = ledger.get(entry_id)
+    if entry is None:
+        return {
+            "success": False,
+            "ledger_path": str(resolved_path),
+            "error": f"Research entry not found: {entry_id}",
+            "review": None,
+        }
+
+    review = review_thesis(
+        entry,
+        evidence_packets=evidence_packets or (),
+        evidence_items=evidence_items or (),
+        observations=observations,
+        reviewed_at=reviewed_at,
+    )
+    updated_entry: dict[str, Any] | None = None
+    if apply_suggested_status and review.suggested_status is not None:
+        updated_entry = ledger.update_status(
+            entry_id, review.suggested_status
+        ).to_dict()
+
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "review": review.to_dict(),
+        "entry": updated_entry or entry.to_dict(),
+        "status_updated": updated_entry is not None,
     }
 
 

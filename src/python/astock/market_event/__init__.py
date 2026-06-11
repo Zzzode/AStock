@@ -35,13 +35,23 @@ from .models import (
     severity_from_volume_ratio,
     severity_rank,
 )
+from .store import (
+    EventQuery,
+    EventStore,
+    EventWriteResult,
+    event_matches,
+    normalize_event_record,
+)
 
 __all__ = [
     "DataQualityLevel",
     "EventDirection",
     "EventQuality",
+    "EventQuery",
     "EventSeverity",
+    "EventStore",
     "EventSubject",
+    "EventWriteResult",
     "MarketEvent",
     "MarketEventType",
     "SubjectType",
@@ -57,8 +67,10 @@ __all__ = [
     "build_volume_spike_event",
     "create_event_id",
     "direction_from_signed_value",
+    "event_matches",
     "max_severity",
     "normalize_direction",
+    "normalize_event_record",
     "normalize_quality_level",
     "normalize_severity",
     "payload_to_dict",
