@@ -398,6 +398,37 @@ def test_capability_research_index_query_and_duplicates(tmp_path: Path) -> None:
     assert duplicates["candidates"][0]["overlap"]["targets"] == ["600000"]
 
 
+def test_capability_research_postmortem_records_observation(tmp_path: Path) -> None:
+    ledger_path = tmp_path / "research-ledger.json"
+    created = capabilities.create_research_entry(
+        title="AI hardware thesis",
+        thesis="Track AI hardware after pullback.",
+        targets=["300001"],
+        ledger_path=ledger_path,
+    )
+    entry_id = created["entry"]["entry_id"]
+
+    result = capabilities.record_research_postmortem(
+        entry_id,
+        outcome="Thesis invalidated after demand signal weakened.",
+        root_cause="timing",
+        expected="Demand recovery would appear before earnings.",
+        actual="Demand recovery lagged and price broke support.",
+        error_analysis="Timing assumption was early.",
+        lessons=["Require demand confirmation before upgrade"],
+        status_after="invalidated",
+        reviewed_at="2026-06-12T15:30:00+08:00",
+        ledger_path=ledger_path,
+    )
+
+    assert result["postmortem"]["root_cause"] == "timing"
+    assert result["entry"]["status"] == "invalidated"
+    assert result["entry"]["observations"][0]["observation_type"] == "postmortem"
+    assert result["entry"]["observations"][0]["evidence"]["postmortem"]["lessons"] == [
+        "Require demand confirmation before upgrade"
+    ]
+
+
 def test_capability_evidence_packet_and_review_updates_status(tmp_path: Path) -> None:
     ledger_path = tmp_path / "research-ledger.json"
     created = capabilities.create_research_entry(

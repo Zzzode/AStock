@@ -83,6 +83,7 @@ Top-level agents and skills should use the following foundation capabilities whe
    - Use `create_research_entry()`, `list_research_entries()`, `record_research_observation()`, and `update_research_status()` for investment opportunity lifecycle tracking.
    - Use `get_research_ledger_index()`, `query_research_entries()`, and `find_research_duplicate_candidates()` before creating or updating theses so agents can avoid duplicate entries and understand lifecycle distribution.
    - Use `create_evidence_item()`, `create_evidence_packet()`, and `review_research_entry()` when new evidence should strengthen, weaken, invalidate, or require review of an existing thesis.
+   - Use `record_research_postmortem()` when a thesis was wrong or completed and the agent can classify the issue as data quality, logic error, timing, risk assumption, catalyst miss, or unknown.
    - Material conclusions should include thesis, targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
    - Follow-up observations should update the ledger when triggers fire, evidence changes, or a thesis is invalidated.
 

@@ -313,6 +313,7 @@ If the final conclusion identifies a material investment opportunity, watchlist 
 - `get_research_ledger_index()`, `query_research_entries()`, or `find_research_duplicate_candidates()` before creating a new thesis.
 - `create_research_entry()` for a new thesis with targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
 - `record_research_observation()` when a follow-up trigger fires or evidence changes.
+- `record_research_postmortem()` when a thesis was wrong or completed and needs counterfactual review.
 - `update_research_status()` when the thesis moves to `monitoring`, `invalidated`, `closed`, or `archived`.
 
 Minimal ledger example:

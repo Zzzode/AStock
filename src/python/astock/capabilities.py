@@ -51,10 +51,12 @@ from .research import (
     EvidenceItem,
     EvidencePacket,
     EvidenceStance,
+    PostmortemRootCause,
     ResearchEntry,
     ResearchLedger,
     ResearchLedgerIndex,
     ResearchObservation,
+    ResearchPostmortem,
     ResearchStatus,
     ResearchTrigger,
     review_thesis,
@@ -1173,6 +1175,51 @@ def record_research_observation(
     return {
         "success": True,
         "ledger_path": str(resolved_path),
+        "entry": entry.to_dict(),
+    }
+
+
+def record_research_postmortem(
+    entry_id: str,
+    *,
+    outcome: str,
+    root_cause: str | PostmortemRootCause = PostmortemRootCause.UNKNOWN,
+    expected: str = "",
+    actual: str = "",
+    error_analysis: str = "",
+    lessons: Optional[Sequence[str]] = None,
+    evidence: Optional[Mapping[str, Any]] = None,
+    status_after: Optional[str | ResearchStatus] = None,
+    reviewed_at: Optional[str | datetime] = None,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Record a structured counterfactual/postmortem review on a thesis."""
+    resolved_path = _resolve_research_ledger_path(ledger_path)
+    postmortem = ResearchPostmortem(
+        entry_id=entry_id,
+        outcome=outcome,
+        root_cause=root_cause,
+        expected=expected,
+        actual=actual,
+        error_analysis=error_analysis,
+        lessons=tuple(lessons or ()),
+        evidence=dict(evidence or {}),
+        reviewed_at=_parse_datetime(reviewed_at, datetime.now()),
+    )
+    observation = ResearchObservation(
+        observation_type="postmortem",
+        note=f"Postmortem recorded: {postmortem.outcome}",
+        observed_at=postmortem.reviewed_at,
+        evidence={"postmortem": postmortem.to_dict()},
+        status_after=(
+            _parse_research_status(status_after) if status_after is not None else None
+        ),
+    )
+    entry = ResearchLedger(resolved_path).record_observation(entry_id, observation)
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "postmortem": postmortem.to_dict(),
         "entry": entry.to_dict(),
     }
 

@@ -183,7 +183,12 @@ class ResearchEntry:
         self.observations.append(observation)
         if observation.status_after is not None:
             self.status = observation.status_after
-        self.updated_at = max(datetime.now(), observation.observed_at)
+        now = (
+            datetime.now(observation.observed_at.tzinfo)
+            if observation.observed_at.tzinfo
+            else datetime.now()
+        )
+        self.updated_at = max(now, observation.observed_at)
 
 
 @dataclass(frozen=True)
