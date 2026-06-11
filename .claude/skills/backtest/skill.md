@@ -53,6 +53,23 @@ Don't just paste numbers. Add at minimum:
 - Whether the drawdown is acceptable
 - Any obvious flaws
 
+## Saving Results
+
+When producing a formal backtest report:
+
+```text
+workspace/backtest/<CODE>-<strategy>-<YYYYMMDD>/
+├── report.tex        # LaTeX source (use report-brief.tex template)
+├── report.pdf        # Compiled PDF
+└── result.json       # Raw backtest output from Python
+```
+
+Use template: `.agents/templates/report-brief.tex`
+Include: strategy parameters table, metrics table, trade log summary, commentary.
+Compile: `.venv/bin/python -m astock.cli build-pdf workspace/backtest/<CODE>-<strategy>-<YYYYMMDD>/ --file report.tex`
+
+For quick interactive replies: respond in conversation directly.
+
 ## Error Handling
 
 | Scenario | Action |

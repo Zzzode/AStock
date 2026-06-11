@@ -1,0 +1,52 @@
+{
+  "market-analyst": {
+    "description": "Market structure, volume-price dynamics, momentum, and position assessment for A-share equities",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  },
+  "fundamental-analyst": {
+    "description": "Valuation, earnings quality, operations, and catalyst identification for A-share equities",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "industry-analyst": {
+    "description": "TAM sizing, competitive landscape, supply chain, policy and macro environment analysis",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "risk-analyst": {
+    "description": "Risk matrix, ESG/compliance screening, position sizing, stop-loss, stress tests, and Devil's Advocate",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "contrarian-analyst": {
+    "description": "Constructs strongest counter-arguments against prevailing thesis, identifies failure scenarios and consensus risk",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  },
+  "data-collector": {
+    "description": "Structured financial and market data gathering from official filings and exchanges",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "data-verifier": {
+    "description": "Cross-verify every data point against official sources, catch errors before they reach analysis",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "valuation-modeler": {
+    "description": "PE/PEG/PS/DCF valuation models, three-tier target prices, seasonality calibration, sell-side bias detection",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  },
+  "latex-writer": {
+    "description": "Professional IB-style LaTeX/PDF report production using XeLaTeX, Goldman Sachs / Morgan Stanley aesthetic",
+    "tools": ["Read", "Write", "Edit", "Bash", "Glob"],
+    "sandbox_mode": "full-access"
+  },
+  "reviewer": {
+    "description": "Senior research director quality gate - S/A/B severity review with publication blocking authority",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  }
+}

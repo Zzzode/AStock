@@ -1,0 +1,108 @@
+% Chapter 5: 确定性与业绩兑现度分析
+\section{四象限定位}
+
+横轴=业绩兑现程度（越右→2026Q1 已兑现越多）；纵轴=与英伟达/Cosmos 3 绑定深度（越上→授权层级越高）。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{axis}[
+  width=14cm, height=10cm,
+  xlabel={业绩兑现度},
+  ylabel={NVIDIA绑定深度},
+  xmin=0, xmax=1, ymin=0.2, ymax=1,
+  grid=both, grid style={lightgrey},
+  xtick={0.25,0.5,0.75},
+  xticklabels={待兑现, 部分兑现, 已兑现},
+  ytick={0.4,0.6,0.8},
+  yticklabels={间接关联, 有合作, 直接绑定},
+  scatter/classes={
+    core={mark=*,draw=riskgreen,fill=riskgreen!60,mark size=4pt},
+    wait={mark=*,draw=riskamber,fill=riskamber!60,mark size=3.5pt},
+    perf={mark=square*,draw=blue!60,fill=blue!30,mark size=3.5pt},
+    avoid={mark=triangle*,draw=riskred,fill=riskred!40,mark size=3pt}
+  },
+  legend style={at={(0.02,0.98)}, anchor=north west, font=\tiny}
+]
+  % 核心首选
+  \addplot[scatter, only marks, scatter src=explicit symbolic]
+  coordinates {
+    (0.82, 0.95) [core]
+    (0.60, 0.90) [core]
+    (0.62, 0.88) [core]
+    (0.70, 0.80) [core]
+  };
+  \addlegendentry{核心首选区}
+
+  % 高确定待兑现
+  \addplot[scatter, only marks, scatter src=explicit symbolic]
+  coordinates {
+    (0.40, 0.93) [wait]
+    (0.32, 0.85) [wait]
+    (0.55, 0.82) [wait]
+    (0.28, 0.58) [wait]
+  };
+  \addlegendentry{高确定待兑现}
+
+  % 业绩驱动
+  \addplot[scatter, only marks, scatter src=explicit symbolic]
+  coordinates {
+    (0.95, 0.55) [perf]
+    (0.78, 0.62) [perf]
+    (0.80, 0.40) [perf]
+    (0.72, 0.38) [perf]
+    (0.55, 0.48) [perf]
+    (0.58, 0.42) [perf]
+    (0.60, 0.35) [perf]
+    (0.48, 0.72) [perf]
+  };
+  \addlegendentry{业绩驱动区}
+
+  % 观察区
+  \addplot[scatter, only marks, scatter src=explicit symbolic]
+  coordinates {
+    (0.18, 0.28) [avoid]
+  };
+  \addlegendentry{关注观察区}
+
+  % 标注
+  \node[font=\tiny, anchor=south] at (axis cs:0.82,0.95) {协创数据};
+  \node[font=\tiny, anchor=south] at (axis cs:0.60,0.90) {奥比中光};
+  \node[font=\tiny, anchor=south] at (axis cs:0.62,0.88) {天准科技};
+  \node[font=\tiny, anchor=south] at (axis cs:0.70,0.80) {智微智能};
+  \node[font=\tiny, anchor=south] at (axis cs:0.40,0.93) {五一世界};
+  \node[font=\tiny, anchor=south] at (axis cs:0.32,0.85) {索辰科技};
+  \node[font=\tiny, anchor=south] at (axis cs:0.55,0.82) {德赛西威};
+  \node[font=\tiny, anchor=south] at (axis cs:0.28,0.58) {中大力德};
+  \node[font=\tiny, anchor=south] at (axis cs:0.95,0.55) {工业富联};
+  \node[font=\tiny, anchor=south] at (axis cs:0.78,0.62) {绿的谐波};
+  \node[font=\tiny, anchor=south] at (axis cs:0.80,0.40) {中际旭创};
+  \node[font=\tiny, anchor=south] at (axis cs:0.72,0.38) {新易盛};
+  \node[font=\tiny, anchor=south] at (axis cs:0.18,0.28) {天娱数科};
+  \node[font=\tiny, anchor=west] at (axis cs:0.55,0.48) {柯力传感};
+  \node[font=\tiny, anchor=west] at (axis cs:0.58,0.42) {鸣志电器};
+  \node[font=\tiny, anchor=west] at (axis cs:0.60,0.35) {沪电股份};
+  \node[font=\tiny, anchor=south] at (axis cs:0.48,0.72) {中科创达};
+\end{axis}
+\end{tikzpicture}
+\caption{确定性 $\times$ 业绩兑现度 四象限（2026Q1）}
+\end{figure}
+
+\section{四象限投资策略}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{c l X l}
+\toprule
+\textbf{象限} & \textbf{含义} & \textbf{对应企业} & \textbf{策略} \\
+\midrule
+\gmark{} 右上 & 直接绑定+已兑现 & 协创、天准、奥比、智微 & 底仓长期跟踪 \\
+\amark{} 左上 & 官方绑定+待转化 & 五一、索辰、德赛、中科创达、中大力德 & 盯催化加仓 \\
+蓝 右下 & 间接受益+已兑现 & 工业富联、绿的谐波、中际旭创、新易盛、鸣志、柯力、沪电 & 防御型仓位 \\
+\rmark{} 左下 & 间接+待验证 & 天娱数科 & 观望/规避 \\
+\bottomrule
+\end{tabularx}
+\caption{四象限投资策略}
+\end{table}

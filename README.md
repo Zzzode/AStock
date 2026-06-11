@@ -41,7 +41,7 @@ Skills and code are not the end product — they are the execution infrastructur
 
 ### Entry Points
 
-- **Agent Skills**: 8 capability entries `quote/analyze/screen/backtest/recommend/watch/alert/config`
+- **Agent Skills**: 10 skills — `team/equity-research/quote/analyze/screen/backtest/recommend/monitor/config/agent-resilience`
 - **Python CLI**: full command set (`team/quote/analyze/screen/backtest/recommend/watch/alert/config`)
 - **REST API**: `/quote`, `/analyze`, `/screen`, `/backtest`, `/recommend`, `/config`
 
@@ -101,13 +101,14 @@ Result panel includes three "reasoning trace" explainable evidence items; if str
 
 | Skill | Function | Example |
 |-------|----------|---------|
+| `/team` | Multi-expert collaborative analysis | `/team 000001` |
+| `/equity-research` | Institutional research reports | "Write a research report on X" |
 | `/quote` | Real-time quote lookup | `/quote 000001` |
 | `/analyze` | Technical analysis | `/analyze 000001` |
 | `/screen` | Smart stock screening | `/screen --limit 10` |
 | `/backtest` | Strategy backtesting | `/backtest 000001 --strategy ma_cross` |
 | `/recommend` | Personalized recommendations | `/recommend` |
-| `/watch` | Watch list management | `/watch add 000001` |
-| `/alert` | Monitoring & alert management | `/alert status` |
+| `/monitor` | Stock monitoring & alerts | `/monitor watch add 000001` |
 | `/config` | Config & style learning | `/config style` |
 
 ## Typical Collaboration Flow
@@ -141,6 +142,8 @@ After starting, visit `http://localhost:8000/docs` for OpenAPI documentation.
 ```
 .
 ├── .agents/skills/               # Agent team protocols and capability entries
+│   └── equity-research/          # Deep research (prompts, templates, checklists)
+│       └── templates/            # Shared LaTeX templates (preamble, brief, full)
 ├── src/python/astock/
 │   ├── cli.py                    # Python CLI capability entry
 │   ├── api.py                    # FastAPI capability service entry
@@ -149,8 +152,13 @@ After starting, visit `http://localhost:8000/docs` for OpenAPI documentation.
 │   ├── monitor/ recommend/
 │   ├── config/ learning/ portfolio/
 │   └── utils/
-├── data/                         # SQLite, config, style learning data
-└── docs/plans/                   # Architecture and implementation design docs
+├── workspace/                    # All research outputs (LaTeX → PDF)
+│   ├── team/                     # Quick decision reports
+│   ├── research/                 # Deep equity research (git-tracked)
+│   ├── backtest/                 # Backtest reports
+│   └── recommend/                # Recommendation reports
+├── data/                         # Runtime data (SQLite, config)
+└── docs/                         # Design docs
 ```
 
 ## Testing

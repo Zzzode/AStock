@@ -1,0 +1,59 @@
+% Chapter 2: 英伟达技术栈内部逻辑
+\section{技术栈全景}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=1.2cm and 2cm,
+  box/.style={rectangle, rounded corners=4pt, draw=navy, fill=navy!8, text width=5.5cm, minimum height=1.4cm, align=center, font=\small},
+  arrow/.style={-{Stealth[length=6pt]}, thick, navy!70}
+]
+  % 节点
+  \node[box, fill=nvgreen!15, draw=nvgreen] (cosmos) {\textbf{Cosmos 3 世界模型}\\\scriptsize Nano 16B / Super 64B 全模态物理基础模型};
+  \node[box, below left=1.5cm and -0.5cm of cosmos] (omni) {\textbf{Omniverse 仿真平台}\\\scriptsize 数字孪生 | 3D场景 | OpenUSD};
+  \node[box, below right=1.5cm and -0.5cm of cosmos] (drive) {\textbf{DRIVE 自动驾驶软件栈}\\\scriptsize 场景理解/预测 | 路测仿真};
+  \node[box, below=1.5cm of omni] (isaac) {\textbf{Isaac Sim 机器人仿真}\\\scriptsize 基于Omniverse | 合成数据};
+  \node[box, below=1.5cm of isaac] (groot) {\textbf{GR00T 具身智能模型}\\\scriptsize 人形机器人专用基础模型};
+  \node[box, below=1.5cm of groot, fill=nvgreen!20] (jetson) {\textbf{Jetson Thor}\\\scriptsize 机器人端侧算力};
+  \node[box, below=1.5cm of drive, fill=nvgreen!20] (drivethor) {\textbf{DRIVE Thor}\\\scriptsize 车载端算力};
+
+  % 箭头
+  \draw[arrow] (cosmos) -- node[left, font=\tiny, text=steelgrey]{物理世界理解} (omni);
+  \draw[arrow] (cosmos) -- node[right, font=\tiny, text=steelgrey]{场景预测} (drive);
+  \draw[arrow] (omni) -- node[left, font=\tiny, text=steelgrey]{承载运行} (isaac);
+  \draw[arrow] (isaac) -- node[left, font=\tiny, text=steelgrey]{训练产出} (groot);
+  \draw[arrow] (groot) -- node[left, font=\tiny, text=steelgrey]{模型部署} (jetson);
+  \draw[arrow] (drive) -- node[right, font=\tiny, text=steelgrey]{模型部署} (drivethor);
+\end{tikzpicture}
+\caption{NVIDIA 物理AI技术栈内部关系}
+\end{figure}
+
+\section{核心理解}
+
+Cosmos 3 是底层物理世界理解引擎，不直接落地，通过两条路径变现：
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{机器人路径}：Cosmos 3 → Isaac Sim训练 → GR00T模型 → Jetson Thor → 人形机器人
+  \item \textbf{智驾路径}：Cosmos 3 → Omniverse仿真 → DRIVE软件栈 → DRIVE Thor → 智能汽车
+\end{itemize}
+
+\section{技术组件与A股映射}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\textwidth}{l l X l}
+\toprule
+\textbf{技术组件} & \textbf{本质角色} & \textbf{与其他组件关系} & \textbf{A股映射} \\
+\midrule
+Cosmos 3 & 世界理解引擎 & 为所有下游提供底层能力 & 索辰/协创 \\
+Omniverse & 仿真运行平台 & Cosmos 3的仿真容器 & 五一世界/索辰\footnote{NuRec(纽瑞克斯)是另一家独立公司，非51WORLD旗下} \\
+Isaac Sim & 机器人仿真 & 运行在Omniverse上 & 智微/天准 \\
+GR00T & 机器人大模型 & Isaac训练→部署Jetson & 天准/宇树 \\
+Jetson Thor & 机器人芯片 & GR00T部署硬件 & 天准/智微/协创 \\
+DRIVE Thor & 车载芯片 & 智驾部署硬件 & 德赛西威/协创 \\
+\bottomrule
+\end{tabularx}
+\caption{技术组件角色与A股企业映射}
+\end{table}

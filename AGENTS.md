@@ -58,11 +58,13 @@ Agent: Running MA crossover backtest...
 | Skill | Function | Natural Language Trigger Examples |
 |-------|----------|----------------------------------|
 | /team | Multi-expert collaborative analysis | "Should I buy X?" / "Is X a good entry?" |
+| /equity-research | Institutional research report production | "Write a research report" / "Industry chain analysis" |
 | /quote | Real-time quote lookup | "What's the price of X?" / "Latest quote" |
 | /analyze | Technical analysis | "Analyze X technicals" / "Any signals on X?" |
 | /screen | Smart stock screening | "Find me some stocks" / "Screen for value" |
 | /backtest | Strategy backtesting | "Backtest MA strategy" |
 | /recommend | Personalized recommendations | "Recommend some stocks for me" |
+| /monitor | Stock monitoring & alerts | "Watch this stock" / "Start monitoring" / "Alert history" |
 | /config | Configuration management | `/config style` |
 
 ## Agent Team Workflow
@@ -112,7 +114,7 @@ Record feedback:
 
 ```
 src/python/astock/          # Python capability layer (core)
-├── cli.py                  # CLI entry point
+├── cli.py                  # CLI entry point (includes build-pdf)
 ├── quote/                  # Quote service
 ├── analysis/               # Technical analysis
 ├── stock_picker/           # Stock screener
@@ -120,18 +122,49 @@ src/python/astock/          # Python capability layer (core)
 ├── recommend/              # Recommendation system
 └── monitor/                # Monitoring service
 
-.agents/skills/             # Skill definition files
-├── team/skill.md           # Multi-expert collaboration
-├── quote/skill.md          # Quote lookup
-├── analyze/skill.md        # Technical analysis
-├── screen/skill.md         # Smart screening
-├── backtest/skill.md       # Strategy backtesting
-└── recommend/skill.md      # Personalized recommendations
+.agents/
+├── team/                   # Shared subagent role definitions (reusable across skills)
+│   ├── README.md           # Roster overview + usage guide
+│   ├── market-analyst.md
+│   ├── fundamental-analyst.md
+│   ├── industry-analyst.md
+│   ├── risk-analyst.md
+│   ├── contrarian-analyst.md
+│   ├── data-collector.md
+│   ├── data-verifier.md
+│   ├── valuation-modeler.md
+│   ├── latex-writer.md
+│   └── reviewer.md
+├── templates/              # Shared LaTeX templates
+│   ├── preamble.tex        # IB-style formatting (all reports)
+│   ├── report-brief.tex    # Lightweight (team/analyze/backtest/recommend)
+│   └── report-main.tex     # Full research report (equity-research)
+└── skills/                 # Skill = orchestration logic (which roles, what order)
+    ├── team/skill.md
+    ├── equity-research/    # Deep research orchestration
+    │   ├── skill.md
+    │   ├── checklists/
+    │   └── references/
+    ├── quote/skill.md
+    ├── analyze/skill.md
+    ├── screen/skill.md
+    ├── backtest/skill.md
+    ├── recommend/skill.md
+    ├── monitor/skill.md
+    ├── config/skill.md
+    └── agent-resilience/skill.md
 
-data/                       # Data storage
-├── team-feedback.json      # User feedback
-└── sessions/               # Session records
+workspace/                  # All research outputs (LaTeX → PDF)
+├── team/<CODE>-<YYYYMMDD>/          # Quick decision reports
+├── research/<topic>-<YYYYMMDD>/     # Deep equity research
+├── backtest/<CODE>-<strat>-<YYYYMMDD>/ # Backtest reports
+└── recommend/<YYYYMMDD>/            # Recommendation reports
+
+data/                       # Runtime data (mostly gitignored)
+├── config/default.json     # User preferences
+└── stocks.db               # SQLite database
 ```
+
 
 ## Skill File Conventions
 
@@ -139,6 +172,22 @@ Each skill is an executable instruction file:
 - `description` field is used for natural language intent matching
 - `<SUBAGENT-STOP>` directive prevents nested invocation
 - Clear execution flow and Python CLI invocation patterns
+
+## Document Format Policy
+
+All persistent reports and analysis documents MUST be written in LaTeX and compiled to PDF.
+
+- **Engine**: XeLaTeX (for CJK support)
+- **Shared preamble**: `.agents/templates/preamble.tex`
+- **Brief template**: `.agents/templates/report-brief.tex` (for team/analyze/backtest/recommend)
+- **Full template**: `.agents/templates/report-main.tex` (for equity-research deep reports)
+- **Compile**: `.venv/bin/python -m astock.cli build-pdf <directory-or-tex-file>`
+
+Scope:
+- Final deliverables (team reports, analysis reports, backtest summaries, recommendations) → `.tex` → `.pdf`
+- Quick terminal outputs (quote, screen, monitor) remain JSON — they are not documents
+- Intermediate data files (data packets, verified tables) stay as `.md` or `.json`
+- Interactive conversational replies go directly to terminal — no LaTeX for chat
 
 ## Development Guidelines
 

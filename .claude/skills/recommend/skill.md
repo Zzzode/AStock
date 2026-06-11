@@ -55,7 +55,23 @@ Focus on:
 
 ### Step 4: Output Recommendations
 
-Don't just list a table. Add at minimum:
+**When producing a formal recommendation report:**
+
+Write LaTeX to:
+
+```text
+workspace/recommend/<YYYYMMDD>/
+├── report.tex        # LaTeX source (use report-brief.tex template)
+└── report.pdf        # Compiled PDF
+```
+
+Use template: `.agents/templates/report-brief.tex`
+Include: user profile summary, candidate table with factor hits, per-stock reasoning, risk notes.
+Compile: `.venv/bin/python -m astock.cli build-pdf workspace/recommend/<YYYYMMDD>/ --file report.tex`
+
+**For quick interactive replies (default):** respond in conversation directly.
+
+In either case, don't just list a table. Add at minimum:
 
 - Why it might suit the user's current style
 - Which factors and price/industry constraints support it

@@ -1,0 +1,125 @@
+% Chapter 11: 机构可投性分析
+\section{评分框架}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{l c X}
+\toprule
+\textbf{维度} & \textbf{权重} & \textbf{评分方法} \\
+\midrule
+流动性 & 40\% & 日均成交额+自由流通市值+冲击成本 \\
+北向/外资持股 & 30\% & 陆股通比例+近30日净买入趋势 \\
+解禁/减持压力 & 30\% & 未来6月解禁比例+股东性质+减持公告 \\
+\bottomrule
+\end{tabularx}
+\caption{机构可投性三维评分框架}
+\end{table}
+
+总分评级：85+ = A级（机构重仓友好）；70--84 = B级（可配置）；55--69 = C级（轻仓博弈）；$<$55 = D级（机构禁买/游资票）。
+
+\section{18标的原始数据速查表}
+
+\textit{注：日均成交额为2026.6.2--6.10近7个交易日均值（含GTC催化后放量）。自由流通市值为剔除大股东/限售后的实际可交易市值。北向持股为深/沪股通最新持仓比例（6月10日口径）。}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{l c c c c c c}
+\toprule
+\textbf{标的} & \textbf{日均成交} & \textbf{自由流通} & \textbf{北向持股} & \textbf{近30日} & \textbf{6月解禁} & \textbf{减持公告} \\
+\midrule
+协创数据 & \textasciitilde45亿 & \textasciitilde1100亿 & 2.1\% & +0.45\% & 2.3\% & 高管0.15\% \\
+德赛西威 & \textasciitilde10亿 & \textasciitilde534亿 & 1.8\% & +0.32\% & 0.8\% & 无 \\
+工业富联 & \textasciitilde180亿 & \textasciitilde5000亿 & 3.3\% & +0.85\% & 0.2\% & 无 \\
+中际旭创 & \textasciitilde430亿 & \textasciitilde8500亿 & \textbf{7.8\%} & +0.82\% & 0.5\% & 无 \\
+新易盛 & \textasciitilde250亿 & \textasciitilde5500亿 & 3.8\% & +0.45\% & 1.2\% & 无 \\
+绿的谐波 & \textasciitilde70亿 & \textasciitilde770亿 & \textcolor{riskred}{0.5\%} & \textcolor{riskred}{-0.35\%} & \textcolor{riskred}{18.5\%} & \textcolor{riskred}{3家清仓} \\
+索辰科技 & \textasciitilde30亿 & \textasciitilde94亿 & \textcolor{riskred}{0.3\%} & -0.08\% & \textcolor{riskred}{11.7\%\footnote{2026.10另有44.75\%首发限售大解禁}} & 创投拟减2\% \\
+鸣志电器 & \textasciitilde55亿 & \textasciitilde220亿 & \textcolor{riskred}{0.4\%} & -0.18\% & 5.7\% & 定增拟减4\% \\
+中大力德 & \textasciitilde40亿 & \textasciitilde110亿 & \textcolor{riskred}{0.2\%} & -0.12\% & 9.3\% & 拟减2.5\% \\
+智微智能 & \textasciitilde30亿 & \textasciitilde180亿 & 0.6\% & +0.05\% & 6.2\% & 3家拟减4\% \\
+天准科技 & \textasciitilde35亿 & \textasciitilde150亿 & 1.4\% & +0.28\% & 4.8\% & 2家拟减3\% \\
+奥比中光 & \textasciitilde50亿 & \textasciitilde210亿 & 0.8\% & +0.12\% & 3.4\% & 1家拟减1\% \\
+柯力传感 & \textasciitilde40亿 & \textasciitilde160亿 & 1.1\% & +0.35\% & 1.5\% & 无 \\
+五一世界 & \textasciitilde5亿(港) & \textasciitilde65亿 & 港通1.2\% & +0.2\% & 0\% & 无 \\
+中科创达 & \textasciitilde25亿 & \textasciitilde540亿 & 3.2\% & +0.18\% & 2.1\% & 高管0.5\% \\
+沪电股份 & \textasciitilde150亿 & \textasciitilde2500亿 & 4.1\% & +0.32\% & 0.7\% & 无 \\
+英维克 & \textasciitilde20亿 & \textasciitilde540亿 & 2.3\% & +0.15\% & 1.8\% & 高管0.3\% \\
+天娱数科 & \textasciitilde30亿 & \textasciitilde90亿 & \textcolor{riskred}{0\%} & 0 & 7.1\% & 拟减5\% \\
+\bottomrule
+\end{tabularx}
+\caption{18标的三大维度原始数据（2026.6.10口径，日均成交为近7日均值）}
+\end{table}
+
+\section{机构可投性总分}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{l c c c c c X}
+\toprule
+\textbf{标的} & \textbf{流动(40)} & \textbf{北向(30)} & \textbf{解禁(30)} & \textbf{总分} & \textbf{评级} & \textbf{点评} \\
+\midrule
+工业富联 & 40 & 22 & 30 & \textbf{92} & \textcolor{riskgreen}{A} & 全流通+北向3.3\%增持+零解禁，机构必配 \\
+中际旭创 & 40 & 30 & 30 & \textbf{100} & \textcolor{riskgreen}{A+} & 北向7.8\%重仓+成交430亿+零解禁，\textbf{全表唯一满分} \\
+德赛西威 & 28 & 14 & 29 & \textbf{71} & B+ & 北向仅1.8\%（非顶格），成交偏低\textasciitilde10亿，但零解禁 \\
+新易盛 & 35 & 22 & 28 & \textbf{85} & \textcolor{riskgreen}{A} & 光模块双雄 \\
+沪电股份 & 40 & 22 & 29 & \textbf{91} & \textcolor{riskgreen}{A} & 日均150亿+自由流2500亿+北向4.1\%，\textbf{大幅上修} \\
+协创数据 & 35 & 15 & 22 & \textbf{72} & B+ & 自由流1100亿+成交45亿，流动性佳 \\
+柯力传感 & 26 & 12 & 26 & 64 & C+ & 中型机构可参与 \\
+奥比中光 & 27 & 8 & 12 & 47 & \textcolor{riskred}{D+} & 纯游资/量化定价 \\
+天准科技 & 26 & 12 & 7 & 45 & \textcolor{riskred}{D+} & 7月解禁前禁重仓 \\
+绿的谐波 & 38 & 3 & 0 & 41 & \textcolor{riskred}{D} & 外资集体用脚投票 \\
+鸣志电器 & 28 & 3 & 4 & 35 & \textcolor{riskred}{D} & 定增机构排队跑路 \\
+中大力德 & 27 & 2 & 3 & 32 & \textcolor{riskred}{D} & 纯概念炒作 \\
+智微智能 & 20 & 6 & 5 & 31 & \textcolor{riskred}{D} & 9月解禁，机构禁买 \\
+索辰科技 & 15 & 0 & 0 & 15 & \textcolor{riskred}{D-} & 全表最低，机构完全不碰 \\
+五一世界 & 5 & 7 & 30 & 42 & \textcolor{riskred}{D} & 港股流动性极差，公募不买 \\
+英维克 & 20 & 15 & 25 & 60 & C+ & 液冷二线，配置型 \\
+中科创达 & 20 & 18 & 22 & 60 & C+ & 成交不活跃，机构兴趣一般 \\
+天娱数科 & 15 & 0 & 2 & 17 & \textcolor{riskred}{D-} & 月换手200\%，绝对禁买 \\
+\bottomrule
+\end{tabularx}
+\caption{18标的机构可投性评分（2026.6.10口径）}
+\end{table}
+
+\section{三维组合决策矩阵}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{l l X l}
+\toprule
+\textbf{分类} & \textbf{入选标的} & \textbf{共同特征} & \textbf{建议仓位} \\
+\midrule
+\textbf{机构核心池} & 中际旭创/工业富联/沪电/新易盛/协创 & 4星+A/B+级+空间$>$15\% & 合计60--70\% \\
+钻石池 & 德赛西威/索辰/五一/天准/奥比/智微 & 逻辑强但流动性/北向受限 & 单票$\leq$5\% \\
+防御配置池 & 沪电/英维克/柯力/中科创达 & C级以上+3星间接受益 & 合计15--20\% \\
+\textcolor{riskred}{回避区} & 绿的/鸣志/中大/天娱 & 逻辑弱+D级 & \textbf{0持仓} \\
+\bottomrule
+\end{tabularx}
+\caption{三维组合决策矩阵}
+\end{table}
+
+\section{机构可投性对估值的修正}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l c c c c X}
+\toprule
+\textbf{标的} & \textbf{评级} & \textbf{修正系数} & \textbf{原空间} & \textbf{修正后空间} & \textbf{修正逻辑} \\
+\midrule
+德赛西威 & B+(71) & $\times$1.05 & +80\textasciitilde110\% & \textbf{+84\textasciitilde116\%} & 北向仅1.8\%但零解禁+基本面极强→小幅溢价 \\
+协创数据 & B+(72) & $\times$1.05 & +15\textasciitilde40\% & +21\textasciitilde49\% & 流动性佳但高管减持小扣 \\
+工业富联 & A(92) & $\times$1.10 & +40\textasciitilde60\% & +44\textasciitilde66\% & 满分流动性+零解禁→溢价10\% \\
+中际旭创 & A+(100) & $\times$1.15 & +25\textasciitilde50\% & +29\textasciitilde58\% & 全表满分北向7.8\%→最高溢价 \\
+绿的谐波 & D(41) & $\times$0.70 & -87\textasciitilde-85\% & \textcolor{riskred}{-84\textasciitilde-80\%} & 18.5\%大解禁+外资清仓→深折价30\% \\
+索辰科技 & D-(15) & $\times$0.65 & -50\% & \textcolor{riskred}{-67\%} & 全表最低分→最大折价 \\
+\bottomrule
+\end{tabularx}
+\caption{机构可投性修正系数表（A级$\times$1.15溢价 → D级$\times$0.70折价）}
+\end{table}
+
+\textit{总评：大资金唯一可重仓5只票=德赛西威/协创数据/工业富联/中际旭创/新易盛（合计仓位60--70\%）。其余13只原则上单票$\leq$5\%或0持仓。}

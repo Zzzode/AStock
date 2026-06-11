@@ -1,0 +1,173 @@
+% Chapter 10: 竞争格局与传导量化
+\section{四大阵营竞争格局}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{l l l l X}
+\toprule
+\textbf{阵营} & \textbf{代表} & \textbf{策略} & \textbf{差异} & \textbf{A股影响} \\
+\midrule
+\textcolor{riskgreen}{NVIDIA开放} & Cosmos 3 & 完全开源 & 横跨机器人+智驾 & 本报告全部标的 \\
+\textcolor{riskamber}{Google封闭} & DeepMind/Waymo & 半封闭 & 学术领先商业化慢 & 无A股映射 \\
+\textcolor{riskred}{Tesla垂直} & Dojo+Optimus+FSD & 完全封闭 & 数据量最大不开放 & 绿的谐波（零重叠NVIDIA） \\
+华为替代 & 昇腾+盘古+ADS & 半开放 & 国内信创 & 利空协创/德赛 \\
+\bottomrule
+\end{tabularx}
+\caption{全球物理AI基础模型四阵营}
+\end{table}
+
+\section{英伟达 vs 华为：智驾份额争夺}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{l X X}
+\toprule
+\textbf{维度} & \textbf{德赛西威 $\times$ DRIVE Thor} & \textbf{华为ADS $\times$ MDC 810} \\
+\midrule
+算力规格 & 2000TOPS（双Thor可达4000） & 1280TOPS \\
+生态开放性 & 开放（车企可深度定制） & 半开放（华为把控核心） \\
+合作车企 & 极氪/小鹏/理想/80+家 & 问界/智界/享界/15+家 \\
+2026Q1市占 & \textbf{33.6\%}（第一） & \textasciitilde18\%（快速爬升） \\
+国产化 & 美系芯片，无国产标签 & 100\%国产（信创鼓励） \\
+潜在冲击 & — & 2026H2起20万以下A级车转华为域控 \\
+\bottomrule
+\end{tabularx}
+\caption{英伟达 vs 华为智驾域控对比}
+\end{table}
+
+\section{A股内部竞争格局（同层PK）}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l l l X l}
+\toprule
+\textbf{层级} & \textbf{赛道} & \textbf{PK组合} & \textbf{核心区分} & \textbf{胜者} \\
+\midrule
+L0枢纽 & 方案集成 & 协创 vs 中科创达 & 协创=三重授权+生态运营（总代理）；中科创达=工程外包 & 协创完胜 \\
+L2仿真 & 智驾/机器人 & 五一世界 vs 索辰 & 五一=智驾赛道龙头；索辰=机器人赛道接入推理 & 不竞争（赛道互不重叠） \\
+L3感知 & 视觉 vs 力控 & 奥比 vs 柯力 & 奥比=视觉"眼睛"；柯力=力觉"触觉" & 互补（机器人同时需要） \\
+L4域控 & 双路径 & 天准 vs 德赛 & 天准=Jetson Thor（机器人）；德赛=DRIVE Thor（车） & 不竞争（各自市占第一） \\
+L4减速器 & 跨阵营 & 绿的谐波 vs 中大力德 & 绿的=Optimus（Tesla封闭）；中大=宇树（NVIDIA阵营） & 客户不重叠，资金分流 \\
+\bottomrule
+\end{tabularx}
+\caption{A股产业链内部同层竞争格局}
+\end{table}
+
+\section{开放生态双刃剑}
+
+\subsection{正面：三重红利}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X l c}
+\toprule
+\textbf{红利类型} & \textbf{传导逻辑} & \textbf{最受益标的} & \textbf{弹性} \\
+\midrule
+规模红利 & 封闭生态只能自供1家，开放可服务100家→TAM从百亿跃升万亿 & 协创（总代理）、算力底座 & 高 \\
+标准红利 & 先发+开放→成为事实标准（类比USB/Android） & 五一世界、奥比中光 & 高 \\
+数据红利 & 多场景真实数据回流→模型迭代加速→正向飞轮 & 索辰科技、L5终端方 & 中 \\
+\bottomrule
+\end{tabularx}
+\caption{开放生态正面三重红利}
+\end{table}
+
+\subsection{负面：五大风险（市场尚未price-in）}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X l c}
+\toprule
+\textbf{风险类型} & \textbf{传导逻辑} & \textbf{最受影响标的} & \textbf{冲击} \\
+\midrule
+授权降级 & "独家/首批"→多家获同级授权→稀缺性消失→估值杀 & 协创数据 & PE杀-29\% \\
+生态碎片化 & 100家各自定制→兼容差→客户转华为交钥匙 & 德赛西威 & 利润-5\textasciitilde8\% \\
+去英伟达化 & 开放=可深定制后替换→华为API兼容→无痛切换 & 全部绑定标的 & 收入归零风险 \\
+数据合规 & 全球数据闭环→路测数据出境违法→需国内私有化 & 协创、五一世界 & 净利率-2\textasciitilde3pct \\
+华为替代加速 & 英伟达不掌握客户→华为以信创+补贴撬单 & 德赛、天准 & 中低端收入-30\% \\
+\bottomrule
+\end{tabularx}
+\caption{开放生态五大风险（尚未被市场定价）}
+\end{table}
+
+\section{传导量化表}
+
+传导系数 $\kappa$：Cosmos 3 每达成1个关键里程碑，对应标的全年营收增量 / 该标的2025A全年营收的比值。$\kappa > 0.3$ = 高弹性；$0.1$--$0.3$ = 中等；$< 0.1$ = 低弹性。
+
+\subsection{里程碑$\times$各层传导系数}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{X c c c c c c}
+\toprule
+\textbf{里程碑事件} & \textbf{时间} & \textbf{L0} $\kappa$ & \textbf{L1} $\kappa$ & \textbf{L2} $\kappa$ & \textbf{L3} $\kappa$ & \textbf{L4} $\kappa$ \\
+\midrule
+GTC 2026发布（已完成） & 2026.6 & 0.08 & 0.02 & 0.25 & 0.05 & 0.03 \\
+Coalition新增20家 & Q3 & \textbf{0.35} & 0.05 & \textbf{0.40} & 0.10 & 0.08 \\
+Isaac Sim大单$\times$3 & Q3--Q4 & 0.12 & 0.03 & \textbf{0.50} & 0.08 & 0.02 \\
+NuRec智驾仿真定点$\times$5车企 & Q4 & 0.05 & 0.01 & \textbf{0.45} & — & 0.05 \\
+Jetson Thor量产 & H2 & 0.20 & 0.05 & 0.10 & \textbf{0.35} & \textbf{0.50} \\
+DRIVE Thor量产10万辆 & Q4+ & 0.08 & 0.03 & 0.05 & — & \textbf{0.60} \\
+宇树H2+量产1万台 & Q4 & 0.05 & 0.01 & 0.02 & \textbf{0.30} & 0.10 \\
+Optimus量产10万台 & 2027H1 & — & 0.02 & 0.03 & 0.20 & — \\
+\bottomrule
+\end{tabularx}
+\caption{Cosmos 3关键里程碑$\times$各层传导系数}
+\end{table}
+
+\subsection{关键标的「单里程碑→营收增量」绝对值测算}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l c c c c c c c}
+\toprule
+\textbf{标的} & \textbf{2025A营收} & \textbf{Coalition} & \textbf{Jetson量产} & \textbf{Thor量产} & \textbf{宇树1万台} & \textbf{Optimus} & \textbf{合计增量} \\
+\midrule
+协创数据 & \textasciitilde150亿 & \textbf{+52.5亿} & +30亿 & +12亿 & — & — & \textbf{+94.5亿} \\
+德赛西威 & \textasciitilde400亿 & — & — & \textbf{+240亿} & — & — & \textbf{+240亿} \\
+五一世界 & \textasciitilde20亿 & +8亿 & — & — & — & — & +8亿 \\
+索辰科技 & \textasciitilde3亿 & +1.2亿 & +0.3亿 & — & — & — & +1.5亿 \\
+天准科技 & \textasciitilde12亿 & — & \textbf{+6亿} & — & +1.2亿 & — & \textbf{+7.2亿} \\
+奥比中光 & \textasciitilde18亿 & +1.8亿 & \textbf{+6.3亿} & — & +5.4亿 & +3.6亿 & \textbf{+17.1亿} \\
+智微智能 & \textasciitilde35亿 & — & +3.5亿 & — & — & — & +3.5亿 \\
+绿的谐波 & \textasciitilde5亿 & — & — & — & — & \textbf{+21亿} & \textbf{+21亿} \\
+工业富联 & \textasciitilde8000亿 & +400亿 & +400亿 & +240亿 & — & +160亿 & +1200亿(15\%) \\
+\bottomrule
+\end{tabularx}
+\caption{关键标的单里程碑营收增量测算（里程碑全部达成假设下）}
+\end{table}
+
+\textit{注：多个里程碑叠加存在边际递减和交叉增益，合计并非简单相加。Coalition新增成员会放大后续Jetson量产的$\kappa$约20--30\%。}
+
+\subsection{传导量化四大洞察（修正估值）}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{c X X}
+\toprule
+\textbf{\#} & \textbf{结论} & \textbf{对估值的修正} \\
+\midrule
+1 & L4域控是绝对业绩弹性之王：德赛单里程碑+240亿=协创3个之和 & 德赛空间上调至+80\textasciitilde110\% \\
+2 & L0/L1传导滞后但量级大：需等L2--L4放量后兑现 & 协创长持+Coalition催化；工业富联PEG低估 \\
+3 & 感知层跨阵营受益最佳：奥比同时受益三条路径 & 奥比"泡沫"评级小幅上修 \\
+4 & Optimus与NVIDIA阵营完全脱钩：对绿的以外标的传导$\approx$0 & 绿的谐波应独立估值，与本报告其他标的不同叙事 \\
+\bottomrule
+\end{tabularx}
+\caption{传导量化四大洞察}
+\end{table}
+
+\section{核心洞察}
+
+\begin{enumerate}[leftmargin=2em]
+  \item \textbf{L4域控是业绩弹性之王}：德赛西威单里程碑增量=240亿=协创3个里程碑之和
+  \item \textbf{感知层（L3）跨阵营受益}：奥比中光同时受益NVIDIA+Tesla+宇树三条路径
+  \item \textbf{Optimus与NVIDIA阵营完全脱钩}：绿的谐波与本报告其他标的不是同一叙事
+  \item \textbf{开放生态双刃剑}：协创/德赛既是核心受益者，也是华为替代第一风险承担者
+\end{enumerate}

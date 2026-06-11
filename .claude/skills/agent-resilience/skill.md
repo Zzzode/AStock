@@ -1,13 +1,39 @@
 ---
 name: agent-resilience
-description: Core resilience capabilities for all agents - retry strategies, self-healing, skill creation initiative, and graceful degradation. Automatically included in all agent prompts.
+description: Core resilience capabilities for all agents - pre-execution checks, retry strategies, self-healing, and graceful degradation. Automatically included in all agent prompts. Also covers environment/data-source preflight checks before quote, analyze, screen, team, or recommend.
 ---
 
 # Agent Resilience Protocol
 
 This is an execution checklist, not a conceptual manifesto. All agents handle problems in this order.
 
-## 1. Classify the Error First
+## 0. Pre-execution Check (Preflight)
+
+Before depending on live quotes or external data, run a quick check:
+
+```bash
+ls -la .venv/bin/python data data/stocks.db
+```
+
+Also assess:
+
+- Does `data/config/default.json` exist?
+- Does the command likely need network access?
+- Is the request time-sensitive ("latest", "now", "today")?
+
+**Decision rules:**
+
+- Local environment complete, no fresh external data needed → proceed directly
+- Local environment complete, request depends on live market data → prepare for network execution
+- Data source clearly unavailable → prepare degradation path
+
+**Recommended degradation paths:**
+
+- `quote` fails → switch to daily data and valuation snapshot from `analyze`
+- `screen` fails → switch to single-stock evaluation or reduce factors
+- `team` fails → keep multi-agent but share a single degraded data packet
+
+## 1. Classify the Error
 
 Categorize failures into four types:
 
@@ -25,7 +51,7 @@ Categorize failures into four types:
 | Parameter error | Fix parameter and retry immediately |
 | Permission / sandbox error | Do NOT blindly retry; request network access or elevated permissions per environment |
 
-## 3. Degradation Priority Order (This Repository)
+## 3. Degradation Priority Order
 
 1. Complete real-time quotes
 2. Degraded snapshot
@@ -62,6 +88,7 @@ Do NOT auto-expand skills just because of one ordinary failure.
 
 ## 7. Pre-completion Checklist
 
+- Did I run the preflight check?
 - Did I classify the error type?
 - Did I retry a reasonable number of times?
 - Did I request elevation when appropriate?

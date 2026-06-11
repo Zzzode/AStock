@@ -1622,5 +1622,189 @@ def memory_clear(
         console.print(f"[yellow]Cleared {count} memories[/yellow]")
 
 
+
+
+@app.command("build-pdf")
+def build_pdf(
+    path: str = typer.Argument(..., help="Directory containing .tex file, or path to a .tex file"),
+    tex_file: Optional[str] = typer.Option(None, "--file", "-f", help="Specific .tex filename (default: main.tex)"),
+    clean: bool = typer.Option(True, "--clean/--no-clean", help="Remove build artifacts after compilation"),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Compile LaTeX to PDF using XeLaTeX (two passes for TOC/refs)"""
+    import shutil
+    import subprocess
+
+    target = Path(path)
+    if target.is_file() and target.suffix == ".tex":
+        work_dir = target.parent
+        tex_name = target.name
+    elif target.is_dir():
+        work_dir = target
+        tex_name = tex_file or "main.tex"
+    else:
+        console.print(f"[red]Error: '{path}' is not a valid directory or .tex file[/red]")
+        raise typer.Exit(1)
+
+    tex_path = work_dir / tex_name
+    if not tex_path.exists():
+        console.print(f"[red]Error: {tex_path} not found[/red]")
+        raise typer.Exit(1)
+
+    xelatex = shutil.which("xelatex")
+    if not xelatex:
+        msg = "xelatex not found. Install TeX Live: brew install --cask mactex-no-gui"
+        if json_output:
+            _print_json({"success": False, "error": msg})
+        else:
+            console.print(f"[red]{msg}[/red]")
+        raise typer.Exit(1)
+
+    cmd = [xelatex, "-interaction=nonstopmode", "-halt-on-error", tex_name]
+    pdf_name = tex_name.replace(".tex", ".pdf")
+    artifacts = [".aux", ".log", ".out", ".toc", ".fls", ".fdb_latexmk", ".synctex.gz"]
+
+    if not json_output:
+        console.print(f"[blue]Compiling {tex_path}...[/blue]")
+
+    success = True
+    error_msg = ""
+
+    for pass_num in (1, 2):
+        result = subprocess.run(
+            cmd,
+            cwd=str(work_dir),
+            capture_output=True,
+            text=True,
+            timeout=120,
+        )
+        if result.returncode != 0:
+            success = False
+            log_path = work_dir / tex_name.replace(".tex", ".log")
+            if log_path.exists():
+                log_content = log_path.read_text(errors="replace")
+                errors = [l for l in log_content.splitlines() if l.startswith("!")]
+                error_msg = "\n".join(errors[:10]) if errors else result.stderr[-500:]
+            else:
+                error_msg = result.stderr[-500:]
+            break
+
+    pdf_path = work_dir / pdf_name
+    page_count = 0
+    if success and pdf_path.exists():
+        try:
+            content = pdf_path.read_bytes()
+            page_count = content.count(b"/Type /Page") - content.count(b"/Type /Pages")
+        except Exception:
+            pass
+
+    if clean and success:
+        stem = tex_name.replace(".tex", "")
+        for ext in artifacts:
+            artifact = work_dir / (stem + ext)
+            if artifact.exists():
+                artifact.unlink()
+
+    if json_output:
+        _print_json({
+            "success": success,
+            "pdf": str(pdf_path) if success else None,
+            "pages": page_count,
+            "error": error_msg if not success else None,
+        })
+    else:
+        if success:
+            console.print(f"[green]✓ Built: {pdf_path} ({page_count} pages)[/green]")
+        else:
+            console.print(f"[red]✗ Build failed[/red]")
+            if error_msg:
+                console.print(f"[dim]{error_msg}[/dim]")
+
+
+
+
+@app.command("sync-agents")
+def sync_agents(
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Sync .agents/ source of truth to .claude/ and .codex/ discovery directories"""
+    import shutil
+
+    project_root = Path(__file__).parent.parent.parent.parent
+    agents_dir = project_root / ".agents"
+    claude_dir = project_root / ".claude"
+    codex_dir = project_root / ".codex"
+
+    team_dir = agents_dir / "team"
+    skills_dir = agents_dir / "skills"
+    config_path = team_dir / "agents.json"
+
+    if not config_path.exists():
+        console.print(f"[red]Error: {config_path} not found[/red]")
+        raise typer.Exit(1)
+
+    config = json.loads(config_path.read_text())
+    changes = {"claude_agents": 0, "codex_agents": 0, "skills_synced": 0}
+
+    # --- Generate .claude/agents/*.md ---
+    claude_agents_dir = claude_dir / "agents"
+    if claude_agents_dir.exists():
+        shutil.rmtree(claude_agents_dir)
+    claude_agents_dir.mkdir(parents=True)
+
+    for name, meta in config.items():
+        prompt_file = team_dir / f"{name}.md"
+        if not prompt_file.exists():
+            continue
+        content = prompt_file.read_text()
+        tools_str = ", ".join(meta["tools"])
+        output = f"""---
+name: {name}
+description: {meta['description']}
+tools: {tools_str}
+model: sonnet
+---
+
+{content}"""
+        (claude_agents_dir / f"{name}.md").write_text(output)
+        changes["claude_agents"] += 1
+
+    # --- Generate .codex/agents/*.toml ---
+    codex_agents_dir = codex_dir / "agents"
+    if codex_agents_dir.exists():
+        shutil.rmtree(codex_agents_dir)
+    codex_agents_dir.mkdir(parents=True)
+
+    for name, meta in config.items():
+        prompt_file = team_dir / f"{name}.md"
+        if not prompt_file.exists():
+            continue
+        content = prompt_file.read_text()
+        sandbox = meta.get("sandbox_mode", "read-only")
+        output = f'''name = "{name}"
+description = "{meta['description']}"
+sandbox_mode = "{sandbox}"
+developer_instructions = """
+{content}
+"""
+'''
+        (codex_agents_dir / f"{name}.toml").write_text(output)
+        changes["codex_agents"] += 1
+
+    # --- Sync skills ---
+    for target in [claude_dir / "skills", codex_dir / "skills"]:
+        if target.exists():
+            shutil.rmtree(target)
+        shutil.copytree(skills_dir, target)
+    changes["skills_synced"] = len(list(skills_dir.glob("*/SKILL.md")))
+
+    if json_output:
+        _print_json({"success": True, **changes})
+    else:
+        console.print(f"[green]✓ Synced {changes['claude_agents']} agents to .claude/agents/[/green]")
+        console.print(f"[green]✓ Synced {changes['codex_agents']} agents to .codex/agents/[/green]")
+        console.print(f"[green]✓ Synced {changes['skills_synced']} skills to .claude/skills/ and .codex/skills/[/green]")
+
+
 if __name__ == "__main__":
     app()

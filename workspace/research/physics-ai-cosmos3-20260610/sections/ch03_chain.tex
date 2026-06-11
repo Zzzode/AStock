@@ -1,0 +1,52 @@
+% Chapter 3: 完整产业链架构
+\section{六层架构总览}
+
+产业链共 L0--L5 六层，按"授权 → 算力 → 仿真 → 感知 → 执行 → 应用"顺序单向传导；L5 真实数据反向回流 L2 形成闭环。
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=0.8cm,
+  layer/.style={rectangle, rounded corners=3pt, minimum width=14cm, minimum height=1.6cm, align=center, font=\small},
+  arrow/.style={-{Stealth[length=5pt]}, thick, navy!60}
+]
+  % 层级
+  \node[layer, fill=nvgreen!20, draw=nvgreen] (nv) {\textbf{NVIDIA 物理AI技术栈}\\{\scriptsize Cosmos 3 | Omniverse | Isaac Sim | GR00T | DRIVE Thor | Jetson Thor}};
+
+  \node[layer, fill=yellow!15, draw=yellow!60!black, below=0.6cm of nv] (l0) {\textbf{L0 · 核心生态枢纽}\\{\scriptsize \starfive{} 协创数据 300857（三重授权+Coalition国内独家）| 中科创达 300496}};
+
+  \node[layer, fill=blue!8, draw=blue!40, below=0.6cm of l0] (l1) {\textbf{L1 · 算力底座（双路径共享）}\\{\scriptsize 工业富联 601138 | 中际旭创 300308 | 新易盛 300502 | 沪电/英维克}};
+
+  \node[layer, fill=navy!8, draw=navy!40, below=0.6cm of l1] (l2) {\textbf{L2 · 物理仿真与合成数据}\\{\scriptsize \starfive{} 索辰科技 688507 | \starfive{} 五一世界 06651.HK | 智微智能 001339}};
+
+  \node[layer, fill=green!8, draw=green!40, below=0.6cm of l2] (l3) {\textbf{L3 · 感知硬件（眼睛与触觉）}\\{\scriptsize \starfive{} 奥比中光 688322（3D视觉）| 柯力传感 603662（六维力）}};
+
+  \node[layer, fill=navy!8, draw=navy!40, below=0.6cm of l3] (l4) {\textbf{L4 · 执行终端（大脑+关节+域控）}\\{\scriptsize \starfive{} 天准科技 688003 | \starfive{} 德赛西威 002920 | 绿的谐波/中大力德/鸣志}};
+
+  \node[layer, fill=green!8, draw=green!40, below=0.6cm of l4] (l5) {\textbf{L5 · 终端应用场景}\\{\scriptsize 人形机器人（宇树H2+/智元）| 高阶智驾（理想/极氪/小鹏）| 工业数字孪生}};
+
+  % 箭头
+  \draw[arrow] (nv) -- (l0);
+  \draw[arrow] (l0) -- (l1);
+  \draw[arrow] (l1) -- (l2);
+  \draw[arrow] (l2) -- (l3);
+  \draw[arrow] (l3) -- (l4);
+  \draw[arrow] (l4) -- (l5);
+
+  % 回流虚线
+  \draw[dashed, thick, riskgreen, -{Stealth[length=5pt]}]
+    ([xshift=6.5cm]l5.north) -- ([xshift=6.5cm]l2.south)
+    node[midway, right, font=\tiny, text=riskgreen]{数据回流闭环};
+
+\end{tikzpicture}
+\caption{L0--L5 六层产业链架构（\starfive{} = 5星核心标的）}
+\end{figure}
+
+\section{传导逻辑说明}
+
+\begin{itemize}[leftmargin=2em]
+  \item \textbf{NVIDIA → L0/L1}：英伟达分别授权生态伙伴与算力代工厂
+  \item \textbf{L0 → L2/L4}：生态枢纽向下游输出方案集成能力
+  \item \textbf{L1 → L2 → L3 → L4 → L5}：严格的硬件与数据流单向传导
+  \item \textbf{L5 → L2}：终端真实运行数据回流仿真层，形成迭代闭环
+\end{itemize}

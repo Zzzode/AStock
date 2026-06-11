@@ -10,15 +10,21 @@ dist/
 *.egg-info/
 .eggs/
 
-# Data
+# Data (runtime)
 data/*.db
 data/*.json
-!data/team-feedback.json
+!data/config.example.json
 data/imports/*
 !data/imports/.gitkeep
 data/logs/
-data/sessions/
 src/data/
+
+# Workspace (research outputs)
+workspace/team/*/
+workspace/backtest/*/
+workspace/recommend/*/
+!workspace/**/.gitkeep
+# workspace/research/ is tracked (valuable long-lived artifacts)
 
 # IDE
 .idea/
@@ -43,4 +49,11 @@ coverage/
 # Worktrees
 .worktrees/
 
-reports
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz

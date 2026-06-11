@@ -47,9 +47,24 @@ Analysis points:
 
 ### Step 4: Output Analysis Report
 
-Output a professional, detailed analysis report. Format is flexible but must include:
+**When the user requests a saved report or the analysis feeds into a larger research flow:**
+
+Write LaTeX to:
+
+```text
+workspace/analyze/<CODE>-<YYYYMMDD>/
+├── report.tex        # LaTeX source (use report-brief.tex template)
+└── report.pdf        # Compiled PDF
+```
+
+Use template: `.agents/templates/report-brief.tex`
+Compile: `.venv/bin/python -m astock.cli build-pdf workspace/analyze/<CODE>-<YYYYMMDD>/ --file report.tex`
+
+**For quick interactive replies (default):** respond in conversation directly, no file output.
+
+Report must include:
 - Market overview
-- Technical indicator analysis
+- Technical indicator analysis (with tables)
 - Signal interpretation (your reasoning, not predefined text)
 - Comprehensive assessment
 - Action recommendations

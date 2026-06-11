@@ -1,0 +1,230 @@
+% Chapter 12: 风险框架
+\section{22因子风险分级（A--F六大类）}
+
+\begin{figure}[H]
+\centering
+\begin{forest}
+    for tree={
+        grow'=0,
+        parent anchor=east,
+        child anchor=west,
+        edge={steelgrey!60, thick},
+        l sep=10pt,
+        s sep=2pt,
+        font=\scriptsize,
+        minimum height=0.4cm,
+        inner xsep=3pt,
+    },
+    where level=0{font=\small\bfseries, fill=navy!10, draw=navy!40, rounded corners=2pt}{},
+    where level=1{font=\scriptsize\bfseries, fill=lightgrey, draw=steelgrey!30, rounded corners=2pt, text width=5.5em, align=center}{},
+    where level=2{font=\tiny}{},
+    [22因子风险体系
+        [A 技术商业化{,}4项
+            [A1 落地节奏慢]
+            [A2 模型幻觉]
+            [A3 Sim2Real差距]
+            [A4 产能爬坡延迟]
+        ]
+        [B 竞争格局{,}4项
+            [B1 华为ADS抢占]
+            [B2 Tesla完全封闭]
+            [B3 国产替代过快]
+            [B4 开源竞品跟进]
+        ]
+        [C 宏观政策{,}4项
+            [C1 中美禁售(L4)]
+            [C2 国产采购加速]
+            [C3 流动性收缩]
+            [C4 监管问询潮]
+        ]
+        [D 业绩估值{,}4项
+            [D1 Q2不及预期]
+            [D2 全年不及]
+            [D3 情绪PE回归(L4)]
+            [D4 订单落地慢]
+        ]
+        [E 资金面{,}4项
+            [E1 解禁潮(L4)]
+            [E2 北向净卖出]
+            [E3 机构调仓]
+            [E4 大宗折价恐慌]
+        ]
+        [F 执行层{,}4项
+            [F1 单票过重]
+            [F2 追高泡沫(L4)]
+            [F3 止损不及时]
+            [F4 催化时间误判]
+        ]
+    ]
+\end{forest}
+\caption{22因子风险层级结构（L4=极高风险）}
+\end{figure}
+
+\begin{table}[H]
+\centering\scriptsize
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{c l c c X X}
+\toprule
+\textbf{\#} & \textbf{风险因子} & \textbf{等级} & \textbf{概率} & \textbf{最直接标的} & \textbf{对冲/监测} \\
+\midrule
+\multicolumn{6}{l}{\textbf{A类：技术与商业化风险}} \\
+A1 & Cosmos 3落地节奏慢于预期 & L3 & 40\% & 索辰/五一/协创 & 跟踪Coalition新增成员数 \\
+A2 & 模型幻觉/物理准确性不足 & L3 & 30\% & 索辰/智微 & GR00T任务成功率 \\
+A3 & Sim2Real差距超预期 & L2 & 20\% & 全部L2标的 & 宇树实机测试报告 \\
+A4 & Jetson/Thor产能爬坡延迟 & L3 & 35\% & 天准/德赛 & NVIDIA官方产能指引 \\
+\midrule
+\multicolumn{6}{l}{\textbf{B类：竞争格局风险}} \\
+B1 & 华为ADS抢占20万以下车型 & L3 & 50\% & 德赛西威 & 高工市占率季报 \\
+B2 & Tesla完全封闭不外溢 & L2 & 60\% & 绿的谐波（利空） & Optimus拆机报告 \\
+B3 & 国产减速器替代过快 & L2 & 25\% & 绿的谐波 & 华经情报网份额 \\
+B4 & Cosmos 3开源后竞品跟进 & L2 & 40\% & 索辰/五一（被替代） & GitHub star/论文引用 \\
+\midrule
+\multicolumn{6}{l}{\textbf{C类：宏观与政策风险}} \\
+C1 & 中美Jetson/DRIVE禁售 & \textcolor{riskred}{L4} & 10\% & 全部NVIDIA绑定 & 保留20--30\%无关敞口 \\
+C2 & 国产采购政策加速 & L2 & 30\% & 协创/德赛 & 信创招标占比 \\
+C3 & A股流动性收缩 & L3 & 25\% & D级标的先跌 & DR007/北向周净额 \\
+C4 & 板块监管问询潮 & L3 & 40\% & 绿的/鸣志/天娱 & 交易所问询函数量 \\
+\midrule
+\multicolumn{6}{l}{\textbf{D类：业绩与估值风险}} \\
+D1 & Q2核心票不及预期 & L3 & 35\% & 协创/德赛 & 中报预告 \\
+D2 & 全年利润不及一致预期 & L3 & 30\% & 天准/柯力 & Q2环比斜率 \\
+D3 & 情绪PE回归均值（杀估值） & \textcolor{riskred}{L4} & 80\% & 绿的/鸣志/奥比 & PE分位数$>$95\%触发 \\
+D4 & 订单落地慢于PPT节奏 & L2 & 45\% & 中大力德/索辰 & 公告vs时间表 \\
+\midrule
+\multicolumn{6}{l}{\textbf{E类：资金面风险}} \\
+E1 & 7--9月解禁潮集中砸盘 & \textcolor{riskred}{L4} & 90\% & 绿的/索辰/智微/鸣志/中大 & 解禁前30天减仓50\% \\
+E2 & 北向连续净卖出 & L3 & 30\% & A级标的先缩量 & 5日累计$>$100亿触发 \\
+E3 & 机构调仓（换科创板打新） & L2 & 25\% & 全部小盘票 & 基金季报前十大 \\
+E4 & 大宗交易折价恐慌 & L3 & 45\% & 解禁标的 & 大宗折价率$>$15\% \\
+\midrule
+\multicolumn{6}{l}{\textbf{F类：执行层风险（投资者自身可控）}} \\
+F1 & 单票仓位$>$20\%遭黑天鹅 & L3 & — & 满仓单票者 & 严格执行仓位上限 \\
+F2 & 追高进场（在泡沫区建仓） & \textcolor{riskred}{L4} & 80\% & 绿的420买入者 & 只在中性档附近建仓 \\
+F3 & 止损不及时（叙事破裂不认输） & L3 & 60\% & 所有概念票 & 跌破悲观档10\%清仓 \\
+F4 & 催化剂时间预期误判 & L2 & 50\% & 天准/五一/索辰 & 分离催化仓与底仓 \\
+\bottomrule
+\end{tabularx}
+\caption{22因子风险完整清单（A--F六大类）}
+\end{table}
+
+\subsection{风险分级统计}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{c c X X}
+\toprule
+\textbf{等级} & \textbf{数量} & \textbf{代表} & \textbf{组合管理含义} \\
+\midrule
+\textcolor{riskred}{L4 极高} & 4项 & C1禁售/D3杀估值/E1解禁/F2追高 & C1不可控靠分散；其余3项\textbf{完全可控}，严格执行规则可规避80\%亏损 \\
+\textcolor{riskamber}{L3 高} & 11项 & A1/A2/A4/B1/C3/C4/D1/D2/E2/E4/F1/F3 & 年内至少3--4项实际发生；须动态调仓+催化驱动 \\
+L2 中 & 7项 & A3/B2/B3/B4/C2/D4/E3/F4 & 不致命但放大波动；应对靠分散+按九¾选票 \\
+\bottomrule
+\end{tabularx}
+\caption{22因子按L4/L3/L2分级统计}
+\end{table}
+
+\section{组合风险全景雷达图}
+
+\textbf{本图目的}：将22个因子压缩为6个可操作维度，一眼识别组合的\textbf{最薄弱环节}在哪里——薄弱环节=最容易亏钱的方向=应优先加固的防线。三条线对比回答一个问题：\textit{按机构推荐配置调整后，风险敞口能改善多少？}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}
+\begin{polaraxis}[
+    width=9cm, height=9cm,
+    xtick={0, 60, 120, 180, 240, 300},
+    xticklabels={技术商业化, 竞争格局, 宏观政策, 基本面估值, 资金解禁, 执行层风控},
+    xticklabel style={font=\footnotesize, anchor=center, yshift=6pt},
+    ymin=0, ymax=100,
+    ytick={20, 40, 60, 80},
+    yticklabel style={font=\tiny, color=steelgrey},
+    grid=both,
+    major grid style={thin, lightgrey},
+    legend style={at={(1.35,1)}, anchor=north west, font=\scriptsize, draw=none, fill=none},
+    axis line style={steelgrey!50},
+]
+    \addplot[navy, thick, fill=navy, fill opacity=0.12, mark=*, mark size=1.5pt] coordinates {
+        (0,45) (60,55) (120,50) (180,40) (240,35) (300,70) (360,45)
+    };
+    \addplot[steelgrey, thick, dashed, fill=steelgrey, fill opacity=0.08, mark=square*, mark size=1.5pt] coordinates {
+        (0,75) (60,70) (120,60) (180,75) (240,80) (300,85) (360,75)
+    };
+    \addplot[riskgreen, thick, dotted, fill=riskgreen, fill opacity=0.10, mark=triangle*, mark size=1.5pt] coordinates {
+        (0,60) (60,65) (120,55) (180,60) (240,65) (300,85) (360,60)
+    };
+    \legend{物理AI当前组合, 沪深300基准, 机构推荐配置后}
+\end{polaraxis}
+\end{tikzpicture}
+\caption{组合风险六维雷达图（100分=最安全，分数越低=风险敞口越大）}
+\end{figure}
+
+\textbf{决策含义}：
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{l c c c X}
+\toprule
+\textbf{维度} & \textbf{当前} & \textbf{配置后} & \textbf{改善} & \textbf{具体操作} \\
+\midrule
+\textcolor{riskred}{资金解禁} & 35 & 65 & \textbf{+30} & 砍掉8只D级解禁票（绿的/索辰/智微/鸣志/中大等）→解禁风险基本消除 \\
+\textcolor{riskred}{基本面估值} & 40 & 60 & +20 & 剔除PE$>$100$\times$的泡沫票→组合加权PE从85$\times$降至28$\times$ \\
+\textcolor{riskamber}{技术商业化} & 45 & 60 & +15 & 提高L0/L1近端占比至70\%→降低远端传导不达预期的敞口 \\
+竞争格局 & 55 & 65 & +10 & 保留德赛+华为链对冲仓位5\%→竞争风险双向覆盖 \\
+执行层风控 & 70 & 85 & +15 & 严格执行三档防护线（见下节）→由投资者自身控制 \\
+\bottomrule
+\end{tabularx}
+\caption{雷达图各维度的具体加固操作}
+\end{table}
+
+\textit{结论：按机构推荐配置调整后，最薄弱的"资金解禁"维度从35→65（+30分），是改善幅度最大的单一操作——本质就是"把解禁票全砍了"。}
+
+\section{组合应急风控矩阵}
+
+\begin{riskbox}[触发信号与应急动作]
+\scriptsize
+\begin{tabularx}{\textwidth}{X l X X}
+\toprule
+\textbf{触发信号} & \textbf{等级} & \textbf{立即执行} & \textbf{恢复条件} \\
+\midrule
+BIS将Jetson/DRIVE纳入管制 & L4 & NVIDIA绑定标的减仓70\%，现金升至40\% & 管制解除或国内替代6月内验证可用 \\
+板块单日回撤$>$8\%+放量2$\times$ & L4 & 高PE票清仓，核心池减30\% & 连续3日企稳+北向恢复净流入 \\
+绿的谐波解禁+大宗折价$>$15\% & L3 & 绿的清仓，关联票减50\% & 解禁冲击消化10日+折价回落$<$5\% \\
+北向连续5日净卖出$>$100亿 & L3 & A级减20\%，防御比例升至30\% & 北向转连续3日净流入 \\
+交易所3+份概念炒作问询函 & L3 & 情绪票清仓，高PE减30\% & 监管基调放松（约1月周期） \\
+Q2季报2+核心票不及预期 & L3 & 不及预期票减50\%，同层预防减15\% & 公司给出改善时间表+渠道验证 \\
+关键催化剂失败（Optimus延期） & L2 & 相关路径标的减仓40\% & 新催化剂确认+一致预期未大幅下修 \\
+德赛华为替代市占单季+5pct & L2 & 德赛减仓20\%，切换华为链对冲 & 下季市占不再扩大+德赛拿下新定点 \\
+\bottomrule
+\end{tabularx}
+\end{riskbox}
+
+\section{仓位管理「三档防护线」}
+
+\begin{table}[H]
+\centering\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{l l X l}
+\toprule
+\textbf{防护线} & \textbf{触发} & \textbf{执行} & \textbf{意图} \\
+\midrule
+\textcolor{riskgreen}{第一档} & 跌破中性档$\times$0.95 & 该票减30\%，转移同路径 & 正常调仓 \\
+\textcolor{riskamber}{第二档} & 跌破悲观档 & 该票\textbf{清仓}，转现金/国债 & 止损保本 \\
+\textcolor{riskred}{第三档} & 组合回撤$>$15\% & 仓位降至50\%上限，仅保留A级 & 熔断防爆仓 \\
+\bottomrule
+\end{tabularx}
+\caption{三档防护线规则}
+\end{table}
+
+\section{风险总评}
+
+\begin{keyinsight}[一句话风控结论]
+本板块长期叙事确定性高，但中短期波动率将是沪深300的2.5--3倍。最容易亏钱的三件事：
+\begin{enumerate}[leftmargin=1.5em]
+  \item 解禁前买入绿的谐波/索辰
+  \item 在泡沫区（$>$乐观档）追高
+  \item 黑天鹅发生时仓位$>$80\%
+\end{enumerate}
+避开这三件事，长期胜率从30\%提升到70\%以上。
+\end{keyinsight}

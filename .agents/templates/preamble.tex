@@ -1,0 +1,110 @@
+% Reusable IB-style preamble for XeLaTeX equity research reports
+% Usage: \input{preamble} after \documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+% ============ 页面布局 ============
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\setlength{\parskip}{0.3em}
+\setlength{\parindent}{2em}
+\renewcommand{\baselinestretch}{1.15}
+
+% ============ 字体（macOS） ============
+\setCJKmainfont[BoldFont={Heiti SC}]{STSong}
+\setCJKsansfont{Heiti SC}
+\setCJKmonofont{Heiti SC}
+\setmainfont{Times New Roman}
+
+% ============ 颜色（IB Navy/Grey palette） ============
+\usepackage{xcolor}
+\definecolor{navy}{HTML}{003366}
+\definecolor{steelgrey}{HTML}{4A5568}
+\definecolor{lightgrey}{HTML}{F7FAFC}
+\definecolor{riskred}{HTML}{C53030}
+\definecolor{riskamber}{HTML}{D69E2E}
+\definecolor{riskgreen}{HTML}{38A169}
+\definecolor{nvgreen}{HTML}{76B900}
+
+% ============ 表格 ============
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% ============ 图形 ============
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,positioning,calc,backgrounds,fit}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=1.18}
+\usepackage[edges]{forest}
+
+% ============ 页眉页脚（报告标题和日期需在main.tex中覆盖） ============
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{steelgrey} \reporttitle}
+\fancyhead[R]{\small\color{steelgrey} \reportdate}
+\fancyfoot[C]{\small\color{steelgrey} \thepage}
+\fancyfoot[R]{\tiny\color{steelgrey} 本报告不构成任何投资建议}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.2pt}
+
+% ============ 章节格式 ============
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{navy}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{navy}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{steelgrey}}
+  {\thesubsection}{1em}{}
+
+% ============ 超链接 ============
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  urlcolor=navy,
+  citecolor=navy,
+}
+
+% ============ 其他工具 ============
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=2em}
+\usepackage{fontawesome5}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{caption}
+\captionsetup{font=small, skip=4pt}
+\usepackage{float}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+
+% ============ 自定义命令 ============
+\newcommand{\rmark}{\textcolor{riskred}{\ding{108}}}
+\newcommand{\amark}{\textcolor{riskamber}{\ding{108}}}
+\newcommand{\gmark}{\textcolor{riskgreen}{\ding{108}}}
+\newcommand{\starfive}{$\bigstar\bigstar\bigstar\bigstar\bigstar$}
+\newcommand{\starfour}{$\bigstar\bigstar\bigstar\bigstar$}
+\newcommand{\starthree}{$\bigstar\bigstar\bigstar$}
+
+% 信息框
+\newtcolorbox{keyinsight}[1][]{
+  colback=lightgrey, colframe=navy,
+  fonttitle=\bfseries, title={#1}, breakable
+}
+\newtcolorbox{riskbox}[1][]{
+  colback=red!5, colframe=riskred,
+  fonttitle=\bfseries, title={#1}, breakable
+}

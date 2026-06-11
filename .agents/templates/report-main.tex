@@ -1,0 +1,265 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+% ============ 页面布局 ============
+\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\setlength{\parskip}{0.3em}
+\setlength{\parindent}{2em}
+\renewcommand{\baselinestretch}{1.15}
+
+% ============ 字体 ============
+\setCJKmainfont[BoldFont={Heiti SC}]{STSong}
+\setCJKsansfont{Heiti SC}
+\setCJKmonofont{Heiti SC}
+\setmainfont{Times New Roman}
+
+% ============ 颜色 ============
+\usepackage{xcolor}
+\definecolor{navy}{HTML}{003366}
+\definecolor{steelgrey}{HTML}{4A5568}
+\definecolor{lightgrey}{HTML}{F7FAFC}
+\definecolor{riskred}{HTML}{C53030}
+\definecolor{riskamber}{HTML}{D69E2E}
+\definecolor{riskgreen}{HTML}{38A169}
+\definecolor{nvgreen}{HTML}{76B900}
+
+% ============ 表格 ============
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{array}
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
+
+% ============ 图形 ============
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows.meta,positioning,calc,backgrounds,fit}
+\usepackage{pgfplots}
+\usepgfplotslibrary{polar}
+\pgfplotsset{compat=1.18}
+\usepackage[edges]{forest}
+
+% ============ 页眉页脚 ============
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\color{steelgrey} NVIDIA Cosmos 3 物理AI产业链投资调研报告}
+\fancyhead[R]{\small\color{steelgrey} 2026年6月10日}
+\fancyfoot[C]{\small\color{steelgrey} \thepage}
+\fancyfoot[R]{\tiny\color{steelgrey} 本报告不构成任何投资建议}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.2pt}
+
+% ============ 章节格式 ============
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries\color{navy}}
+  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{navy}}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\normalfont\large\bfseries\color{steelgrey}}
+  {\thesubsection}{1em}{}
+
+% ============ 超链接 ============
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=navy,
+  urlcolor=navy,
+  citecolor=navy,
+  pdfauthor={Institutional Research},
+  pdftitle={NVIDIA Cosmos 3 Physical AI Industry Chain Investment Research Report}
+}
+
+% ============ 其他 ============
+\usepackage{enumitem}
+\setlist{nosep, leftmargin=2em}
+\usepackage{fontawesome5}
+\usepackage{amssymb}
+\usepackage{pifont}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{caption}
+\captionsetup{font=small, skip=4pt}
+\usepackage{float}
+\setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\abovecaptionskip}{4pt}
+\setlength{\belowcaptionskip}{2pt}
+
+% 自定义命令
+\newcommand{\rmark}{\textcolor{riskred}{\ding{108}}}
+\newcommand{\amark}{\textcolor{riskamber}{\ding{108}}}
+\newcommand{\gmark}{\textcolor{riskgreen}{\ding{108}}}
+\newcommand{\starfive}{$\bigstar\bigstar\bigstar\bigstar\bigstar$}
+\newcommand{\starfour}{$\bigstar\bigstar\bigstar\bigstar$}
+\newcommand{\starthree}{$\bigstar\bigstar\bigstar$}
+
+% 信息框
+\newtcolorbox{keyinsight}[1][]{
+  colback=lightgrey,
+  colframe=navy,
+  fonttitle=\bfseries,
+  title={#1},
+  breakable
+}
+
+\newtcolorbox{riskbox}[1][]{
+  colback=red!5,
+  colframe=riskred,
+  fonttitle=\bfseries,
+  title={#1},
+  breakable
+}
+
+% ============ 文档开始 ============
+\begin{document}
+
+% ============ 封面 ============
+\begin{titlepage}
+\begin{tikzpicture}[remember picture, overlay]
+  % 顶部色条
+  \fill[navy] (current page.north west) rectangle ([yshift=-3cm]current page.north east);
+  % 底部色条
+  \fill[navy] (current page.south west) rectangle ([yshift=2cm]current page.south east);
+  % NVIDIA绿色装饰线
+  \fill[nvgreen] ([yshift=-3cm]current page.north west) rectangle ([yshift=-3.15cm]current page.north east);
+\end{tikzpicture}
+
+\vspace*{1.5cm}
+
+\begin{center}
+  {\color{white}\fontsize{11}{13}\selectfont INSTITUTIONAL EQUITY RESEARCH}\\[0.3cm]
+  {\color{white}\fontsize{9}{11}\selectfont CHINA A-SHARES \quad|\quad TECHNOLOGY \quad|\quad PHYSICAL AI}
+\end{center}
+
+\vspace{3.5cm}
+
+\begin{center}
+  {\fontsize{28}{34}\selectfont\bfseries\color{navy} NVIDIA Cosmos 3}\\[0.6cm]
+  {\fontsize{22}{26}\selectfont\bfseries\color{navy} 物理AI产业链投资调研报告}\\[1.2cm]
+  {\fontsize{12}{16}\selectfont\color{steelgrey} Physical AI Industry Chain --- From World Models to Monetization}\\[0.4cm]
+  {\fontsize{11}{14}\selectfont\color{steelgrey} L0--L5 Six-Layer Framework $\cdot$ Robotics \& Autonomous Driving Dual Pathways}
+\end{center}
+
+\vspace{2cm}
+
+\begin{center}
+\begin{tcolorbox}[
+  width=14cm,
+  colback=lightgrey,
+  colframe=navy,
+  boxrule=0.5pt,
+  arc=3pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt
+]
+\small
+\textbf{Executive Summary:} NVIDIA's Cosmos 3, unveiled at GTC Taipei on June 4, 2026, marks the transition from generative AI to physical AI at scale, addressing a \$50 trillion manufacturing \& logistics TAM. We identify 18 A-share beneficiaries across six layers (L0--L5), with \textbf{6 core picks} (5-star rated) offering institutional-grade risk-reward. Top conviction: \textbf{Desay SV} (+107--142\% upside, DRIVE Thor first-mover) and \textbf{Xiechuang Data} (PEG 0.2, ecosystem hub). Key risk: Jul--Sep lock-up expiry wave affecting 5 names.
+\end{tcolorbox}
+\end{center}
+
+\vspace{1.5cm}
+
+\begin{center}
+\begin{tabular}{ll}
+\textbf{调研日期} & 2026年6月8日 \\
+\textbf{数据更新} & 2026年6月10日 \\
+\textbf{数据基准} & 2026Q1一季报 + GTC 2026 公开信息 \\
+\textbf{报告版本} & v2.1（附录全部核验完成） \\
+\end{tabular}
+\end{center}
+
+\vfill
+
+\begin{tikzpicture}[remember picture, overlay]
+  \node[anchor=south, yshift=0.6cm] at (current page.south) {
+    \color{white}\footnotesize 本报告基于公开信息梳理，不构成任何投资建议
+  };
+\end{tikzpicture}
+
+\end{titlepage}
+
+% ============ 目录 ============
+\tableofcontents
+\clearpage
+
+% ============ 正文占位（后续分段添加） ============
+\chapter{执行摘要}
+\input{sections/ch01_summary}
+
+\chapter{英伟达技术栈内部逻辑}
+\input{sections/ch02_techstack}
+
+\chapter{完整产业链架构}
+\input{sections/ch03_chain}
+
+\chapter{两条落地路径与A股标的映射}
+\input{sections/ch04_pathways}
+
+\chapter{确定性与业绩兑现度分析}
+\input{sections/ch05_quadrant}
+
+\chapter{全部标的一览}
+\input{sections/ch06_overview}
+
+\chapter{逐企深度拆解}
+\input{sections/ch07_deepdive}
+
+\chapter{Cosmos Coalition 全球联盟}
+\input{sections/ch08_coalition}
+
+\chapter{估值模型}
+\input{sections/ch09_valuation}
+
+\chapter{竞争格局与传导量化}
+\input{sections/ch10_competition}
+
+\chapter{机构可投性分析}
+\input{sections/ch11_institutional}
+
+\chapter{风险框架}
+\input{sections/ch12_risk}
+
+\chapter{反方论点（Devil's Advocate）}
+\input{sections/ch13_devils_advocate}
+
+\chapter{PEG校准与季节性利润校准}
+\input{sections/ch14_peg_seasonality}
+
+\appendix
+\chapter{核心数据来源清单}
+\input{sections/appA_sources}
+
+\chapter{ESG合规核查汇总}
+\input{sections/appB_esg}
+
+\chapter{术语表}
+\input{sections/appC_glossary}
+
+% ============ 免责声明 ============
+\clearpage
+\thispagestyle{empty}
+\vspace*{5cm}
+\begin{center}
+\begin{tcolorbox}[
+  width=14cm,
+  colback=lightgrey,
+  colframe=steelgrey,
+  boxrule=0.3pt,
+  arc=2pt
+]
+\small\color{steelgrey}
+\textbf{免责声明}\\[6pt]
+本报告基于公开信息、官方公告、2026Q1一季报及券商研报梳理，不构成任何投资建议。物理AI属前沿叙事，落地节奏受技术收敛速度、板块情绪拥挤度、外部政策与全球流动性多重因子影响。本报告风险因子不构成完整清单，实际投资请结合自身风控制度与专业顾问意见。\\[6pt]
+\textbf{Disclaimer}\\[6pt]
+This report is prepared based on publicly available information and does not constitute investment advice. Physical AI is an emerging narrative subject to technology convergence timing, sentiment crowding, policy changes, and global liquidity conditions. Investors should consult their own risk management frameworks and professional advisors.
+\end{tcolorbox}
+\end{center}
+
+\end{document}

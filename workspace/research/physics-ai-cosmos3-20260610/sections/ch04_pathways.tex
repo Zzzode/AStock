@@ -1,0 +1,55 @@
+% Chapter 4: 两条落地路径与A股标的映射
+\section{双路径架构}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+  node distance=0.9cm,
+  step/.style={rectangle, rounded corners=3pt, draw=#1, fill=#1!8, minimum width=5.8cm, minimum height=0.9cm, align=center, font=\small},
+  arrow/.style={-{Stealth[length=5pt]}, thick, #1!60}
+]
+  % 机器人路径
+  \begin{scope}[xshift=-4cm]
+    \node[step=nvgreen] (r1) {Cosmos 3 理解物理世界};
+    \node[step=nvgreen, below=of r1] (r2) {Isaac Sim 虚拟训练千万次};
+    \node[step=nvgreen, below=of r2] (r3) {GR00T 人形机器人大模型};
+    \node[step=nvgreen, below=of r3] (r4) {Jetson Thor 机器人大脑};
+    \node[step=nvgreen, below=of r4] (r5) {宇树H2+/智元 整机量产};
+    \draw[arrow=nvgreen] (r1)--(r2); \draw[arrow=nvgreen] (r2)--(r3);
+    \draw[arrow=nvgreen] (r3)--(r4); \draw[arrow=nvgreen] (r4)--(r5);
+    \node[above=0.3cm of r1, font=\bfseries\color{nvgreen}] {具身智能路径};
+  \end{scope}
+
+  % 智驾路径
+  \begin{scope}[xshift=4cm]
+    \node[step=navy] (d1) {Cosmos 3 场景理解预测};
+    \node[step=navy, below=of d1] (d2) {Omniverse NuRec 路测仿真};
+    \node[step=navy, below=of d2] (d3) {DRIVE 软件栈 自动驾驶模型};
+    \node[step=navy, below=of d3] (d4) {DRIVE Thor 车载大脑};
+    \node[step=navy, below=of d4] (d5) {理想/极氪/小鹏 L3+量产};
+    \draw[arrow=navy] (d1)--(d2); \draw[arrow=navy] (d2)--(d3);
+    \draw[arrow=navy] (d3)--(d4); \draw[arrow=navy] (d4)--(d5);
+    \node[above=0.3cm of d1, font=\bfseries\color{navy}] {自动驾驶路径};
+  \end{scope}
+\end{tikzpicture}
+\caption{Cosmos 3 双路径落地架构}
+\end{figure}
+
+\section{A股标的按路径归类}
+
+\begin{table}[H]
+\centering
+\small
+\renewcommand{\arraystretch}{1.3}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{分类} & \textbf{标的} \\
+\midrule
+双路径横跨 & 协创数据、中科创达 \\
+机器人链 & 索辰科技 → 智微智能 → 奥比中光/柯力传感 → 天准科技/绿的谐波/中大力德/鸣志电器 \\
+智驾链 & 五一世界(06651.HK) → 德赛西威 \\
+算力底座（共享） & 工业富联/中际旭创/新易盛/沪电股份/英维克 \\
+\bottomrule
+\end{tabularx}
+\caption{A股标的按路径归类}
+\end{table}

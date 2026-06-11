@@ -140,15 +140,15 @@ Read `recommended_roles` first:
 - If Python backend suggests `short_term` / `swing` / `long_term` / `sentiment`, expand accordingly
 - If user question is more specific than the data packet, prioritize user intent
 
-Core roles default to 4 high-value supplementary positions:
+Core team (prompt files in `.agents/team/`):
 
-| Role | Responsibility |
-|------|---------------|
-| `market-analyst` | Interpret market structure, volume-price, and position from shared packet |
-| `fundamental-analyst` | Supplement with valuation, earnings, operations, and order flow |
-| `policy-analyst` | Supplement with industry policy, macro, and regulatory impact |
-| `risk-manager` | Risk level, position sizing, stop-loss / take-profit |
-| `contrarian-analyst` | Counterarguments, challenges, and failure scenarios |
+| Role | Prompt |
+|------|--------|
+| `market-analyst` | `.agents/team/market-analyst.md` |
+| `fundamental-analyst` | `.agents/team/fundamental-analyst.md` |
+| `industry-analyst` | `.agents/team/industry-analyst.md` |
+| `risk-analyst` | `.agents/team/risk-analyst.md` |
+| `contrarian-analyst` | `.agents/team/contrarian-analyst.md` |
 
 ## Step 5: Dynamic Expansion
 
@@ -233,16 +233,23 @@ When role opinions conflict:
 
 ## Step 9: Save Report
 
-Save final report to:
+Save final report as LaTeX to:
 
 ```text
-data/sessions/team-<CODE>-<YYYYMMDD>.md
+workspace/team/<CODE>-<YYYYMMDD>/
+├── report.tex        # LaTeX source (use report-brief.tex template)
+├── report.pdf        # Compiled PDF
+└── packet.json       # Raw data packet from Python
 ```
 
-If Python `team` already generated `session_path`:
+Use the shared brief template: `.agents/templates/report-brief.tex`
 
-- Append multi-agent conclusions to that file
-- Do NOT create a second file with the same name but disconnected content
+- Set `\reporttitle` to the stock name + code
+- Set `\reportdate` to today's date
+- Keep report concise (3-5 pages)
+- Compile: `.venv/bin/python -m astock.cli build-pdf workspace/team/<CODE>-<YYYYMMDD>/ --file report.tex`
+
+If Python `team` already generated `session_path`, save `packet.json` from that data.
 
 Reports should be concise and actionable — avoid empty platitudes.
 
