@@ -2,6 +2,8 @@
 
 Agent Team-first infrastructure for A-share investment opportunity research, market-board monitoring, technical analysis, capital-flow analysis, alerts, and research report production.
 
+This project runs inside AI agent environments such as Claude Code or Codex. The agent conversation is the user interface; Python is the capability kernel used by agents and skills.
+
 The system is designed for two workflows:
 
 - **Investment opportunity research**: stocks, sectors, concepts, industry chains, catalysts, valuation, risks, broker reports, and research deliverables.
@@ -31,9 +33,9 @@ python -m pip install -e src/python
 .venv/bin/python -m astock.cli init-db
 ```
 
-Use natural language in Claude Code / Codex, or call the Python CLI directly.
+Use natural language in Claude Code / Codex. Python commands are machine adapters for agents and skills, not a human-facing UI.
 
-## Common Commands
+## Machine Adapter Examples
 
 ```bash
 # Opportunity analysis data packet
@@ -80,27 +82,31 @@ Agent behavior, system boundaries, and report policies are defined in [AGENTS.md
 ## Architecture
 
 ```text
-Natural language / CLI / REST API
+Claude Code / Codex conversation
   -> Agent Skills and orchestration
-  -> Python capability layer
+  -> astock.capabilities
+  -> Optional JSON adapters: CLI / REST API
   -> SQLite, config, workspace outputs
 ```
 
 Core Python modules live in `src/python/astock/`:
 
+- `capabilities.py` - stable agent/skill capability kernel
 - `quote/`, `analysis/`, `stock_picker/`, `backtest/`
 - `monitor/`, `recommend/`, `portfolio/`, `memory/`
 - `services/`, `storage/`, `config/`, `utils/`
 
 Persistent outputs are written under `workspace/`. Runtime data lives under `data/`.
 
-## REST API
+## Optional REST Adapter
 
 ```bash
 uvicorn astock.api:app --reload --port 8000
 ```
 
 OpenAPI docs: `http://localhost:8000/docs`
+
+The REST API is an adapter over the Python capability layer, not the primary product interface.
 
 ## Development
 

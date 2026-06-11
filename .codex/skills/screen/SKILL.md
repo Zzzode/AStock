@@ -29,7 +29,7 @@ Common mappings:
 
 Do NOT use factor names that don't exist in this repository.
 
-### Step 2: Call CLI
+### Step 2: Call Python Capability Adapter
 
 ```bash
 .venv/bin/python -m astock.cli screen --json --limit 10
@@ -77,6 +77,7 @@ If screening a single stock, frame it as a "condition hit snapshot" — not a "s
 
 ## Related Files
 
-- `src/python/astock/cli.py`
+- `src/python/astock/capabilities.py`
+- `src/python/astock/cli.py` — JSON subprocess adapter
 - `src/python/astock/stock_picker/screener.py`
 - `src/python/astock/stock_picker/factors.py`

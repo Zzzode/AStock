@@ -16,7 +16,7 @@ Python returns only user preferences, screening context, and candidate stock dat
 
 ### Step 1: Read User Profile
 
-Use the repository's real entry points:
+Use the repository's real capability adapters:
 
 ```bash
 cat data/config/default.json
@@ -28,9 +28,9 @@ If no historical feedback exists:
 - Continue with default config
 - Explicitly tell user: "No historical feedback available — recommendations are based on default style and current market data"
 
-### Step 2: Call Recommendation Command
+### Step 2: Call Recommendation Capability Adapter
 
-Use the explicit subcommand:
+Use the current JSON subprocess adapter:
 
 ```bash
 .venv/bin/python -m astock.cli recommend generate --json --limit 5
@@ -82,12 +82,13 @@ In either case, don't just list a table. Add at minimum:
 | Scenario | Action |
 |----------|--------|
 | No feedback profile | Continue with default config |
-| Recommend command fails | Retry once; on failure, explain the failure reason |
+| Recommend capability adapter fails | Retry once; on failure, explain the failure reason |
 | No results | Relax price or style constraints and retry |
 | Config file missing | Fall back to CLI default config |
 
 ## Related Files
 
-- `src/python/astock/cli.py`
+- `src/python/astock/capabilities.py`
+- `src/python/astock/cli.py` — JSON subprocess adapter
 - `src/python/astock/recommend/recommender.py`
 - `data/config/default.json`

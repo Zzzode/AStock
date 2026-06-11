@@ -74,7 +74,7 @@ Report must include:
 
 | Scenario | Action |
 |----------|--------|
-| CLI execution fails | Retry once; on failure, degrade with `--days 60` |
+| Capability adapter fails | Retry once; on failure, degrade with `--days 60` |
 | JSON parse fails | Try regex extraction of key indicators |
 | Invalid stock code | Prompt user to confirm code |
 | Insufficient data | Note data gaps; continue analysis on available portion |

@@ -1,12 +1,12 @@
 """Dependency Injection Container
 
 Centrally manages creation and dependencies of all services,
-avoiding duplicated instantiation logic across CLI/API.
+avoiding duplicated instantiation logic across capability adapters.
 """
 
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any, Optional
+from typing import Optional
 
 from .storage import Database
 from .quote import QuoteService
@@ -83,7 +83,9 @@ class ServiceContainer:
     def feedback_learner(self) -> FeedbackLearner:
         """Get feedback learner instance"""
         if not self._feedback_learner:
-            self._feedback_learner = FeedbackLearner(self.data_path / "team-feedback.json")
+            self._feedback_learner = FeedbackLearner(
+                self.data_path / "team-feedback.json"
+            )
         return self._feedback_learner
 
     @property

@@ -1,4 +1,8 @@
-"""CLI Entry Point"""
+"""Machine-readable CLI adapter for agent capabilities.
+
+This module exists for skills that need a subprocess boundary.
+Reusable logic belongs in astock.capabilities or service/domain modules.
+"""
 
 import asyncio
 from contextlib import nullcontext, redirect_stdout
@@ -13,17 +17,21 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 
+from . import capabilities
+from .backtest.backtest_cli import app as backtest_app
+from .portfolio.portfolio_cli import app as portfolio_app
+from .monitor.watch_cli import app as watch_app
 from .storage import Database
 from .quote import QuoteService
-from .analysis import TechnicalAnalyzer
 from .monitor import MonitorService
-from .monitor.service_status import ServiceStatusManager, get_uptime_info, format_duration
-from .stock_picker import StockScreener
-from .recommend import Recommender
+from .monitor.service_status import (
+    ServiceStatusManager,
+    get_uptime_info,
+    format_duration,
+)
 from .config import ConfigManager, TradingStyle, RiskLevel, EmailConfig
 from .learning import StyleAnalyzer
 from .utils import DataSourceError, ValidationError
-
 
 app = typer.Typer(name="astock")
 console = Console()
@@ -60,14 +68,7 @@ def quote(
     """Get real-time quote"""
 
     async def _get_quote() -> dict[str, Any]:
-        db = Database(str(DB_PATH))
-        await db.connect()
-        try:
-            service = QuoteService(db)
-            result = await service.get_realtime(code)
-            return result
-        finally:
-            await db.close()
+        return await capabilities.get_quote(code, db_path=DB_PATH)
 
     try:
         result = _run_async(_get_quote(), json_output)
@@ -115,15 +116,7 @@ def analyze(
     """Technical analysis - outputs raw data and signals for LLM reasoning"""
 
     async def _analyze() -> dict[str, Any]:
-        db = Database(str(DB_PATH))
-        await db.connect()
-        try:
-            from .services import AnalysisService
-            service = AnalysisService(db)
-            result = await service.analyze(code, days=days)
-            return service.to_dict(result)
-        finally:
-            await db.close()
+        return await capabilities.analyze_stock(code, days=days, db_path=DB_PATH)
 
     try:
         result = _run_async(_analyze(), json_output)
@@ -153,7 +146,11 @@ def analyze(
     else:
         # Display stock name
         name = result.get("name")
-        title = f"Technical Analysis - {name} ({code})" if name else f"Technical Analysis - {code}"
+        title = (
+            f"Technical Analysis - {name} ({code})"
+            if name
+            else f"Technical Analysis - {code}"
+        )
 
         # Display technical indicators
         indicators = result.get("indicators", {})
@@ -186,17 +183,24 @@ RSI6: {indicators.get("rsi6", 0):.2f}
         signal_stats = result.get("signal_stats", {})
 
         if signals:
-            console.print(f"\n[bold yellow]Detected Signals ({signal_stats.get('bullish_count', 0)} bullish/{signal_stats.get('bearish_count', 0)} bearish):[/bold yellow]")
+            console.print(
+                f"\n[bold yellow]Detected Signals ({signal_stats.get('bullish_count', 0)} bullish/{signal_stats.get('bearish_count', 0)} bearish):[/bold yellow]"
+            )
             for signal in signals:
                 bias_color = "green" if signal.get("bias") == "bullish" else "red"
                 current = signal.get("current", {})
-                current_str = ", ".join(f"{k}={v:.2f}" if isinstance(v, float) else f"{k}={v}" for k, v in current.items())
-                console.print(f"  [{bias_color}]●[/{bias_color}] {signal.get('name', signal.get('type'))}: {current_str}")
+                current_str = ", ".join(
+                    f"{k}={v:.2f}" if isinstance(v, float) else f"{k}={v}"
+                    for k, v in current.items()
+                )
+                console.print(
+                    f"  [{bias_color}]●[/{bias_color}] {signal.get('name', signal.get('type'))}: {current_str}"
+                )
 
         # Display historical context
         history = result.get("history", {})
         if history.get("recent_analyses"):
-            console.print(f"\n[bold dim]Recent Analysis History:[/bold dim]")
+            console.print("\n[bold dim]Recent Analysis History:[/bold dim]")
             for h in history["recent_analyses"][:3]:
                 signals_str = ", ".join(h.get("signals", []))
                 console.print(f"  {h.get('date', '')}: {signals_str}")
@@ -205,21 +209,25 @@ RSI6: {indicators.get("rsi6", 0):.2f}
         feedback_stats = result.get("feedback_stats", {})
         if feedback_stats.get("overall"):
             overall = feedback_stats["overall"]
-            console.print(f"\n[bold dim]User Feedback Statistics:[/bold dim]")
-            console.print(f"  Total samples: {overall.get('total', 0)}, Success rate: {overall.get('success_rate', 0):.0%}")
+            console.print("\n[bold dim]User Feedback Statistics:[/bold dim]")
+            console.print(
+                f"  Total samples: {overall.get('total', 0)}, Success rate: {overall.get('success_rate', 0):.0%}"
+            )
 
         # Display quote
         quote = result.get("quote", {})
         if quote:
-            console.print(f"\n[bold cyan]Real-time Quote:[/bold cyan]")
-            console.print(f"  Latest price: {quote.get('price', 0):.2f}  Change: {quote.get('change_percent', 0):+.2f}%")
+            console.print("\n[bold cyan]Real-time Quote:[/bold cyan]")
+            console.print(
+                f"  Latest price: {quote.get('price', 0):.2f}  Change: {quote.get('change_percent', 0):+.2f}%"
+            )
             console.print(f"  Turnover: {quote.get('amount', 0) / 100000000:.2f}B")
             if quote.get("data_quality"):
                 console.print(f"  Data quality: {quote.get('data_quality')}")
 
         data_quality = result.get("data_quality", {})
         if data_quality:
-            console.print(f"\n[bold dim]Data Quality:[/bold dim]")
+            console.print("\n[bold dim]Data Quality:[/bold dim]")
             console.print(f"  Daily: {data_quality.get('daily', 'unknown')}")
             console.print(f"  Quote: {data_quality.get('quote', 'unknown')}")
 
@@ -227,7 +235,9 @@ RSI6: {indicators.get("rsi6", 0):.2f}
 @app.command()
 def team(
     code: str = typer.Argument(..., help="Stock code"),
-    question: str = typer.Option("Is now a good time to enter?", "--question", "-q", help="Analysis question"),
+    question: str = typer.Option(
+        "Is now a good time to enter?", "--question", "-q", help="Analysis question"
+    ),
     days: int = typer.Option(100, "--days", "-d", help="Number of days to analyze"),
     user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
@@ -235,21 +245,13 @@ def team(
     """Team comprehensive analysis"""
 
     async def _team() -> dict[str, Any]:
-        db = Database(str(DB_PATH))
-        await db.connect()
-        try:
-            from .services import TeamAnalysisService
-
-            service = TeamAnalysisService(db)
-            result = await service.analyze(
-                code,
-                question=question,
-                days=days,
-                user_id=user_id,
-            )
-            return service.to_dict(result)
-        finally:
-            await db.close()
+        return await capabilities.build_team_packet(
+            code,
+            question=question,
+            days=days,
+            user_id=user_id,
+            db_path=DB_PATH,
+        )
 
     try:
         result = _run_async(_team(), json_output)
@@ -319,7 +321,9 @@ def team(
             console.print(f"  Daily: {analysis_quality.get('daily', 'unknown')}")
         screen_quality = data_quality.get("screen", {})
         if screen_quality:
-            console.print(f"  Strategy: {screen_quality.get('data_quality', 'unknown')}")
+            console.print(
+                f"  Strategy: {screen_quality.get('data_quality', 'unknown')}"
+            )
 
     lead_rules = orchestration.get("lead_rules", [])
     if lead_rules:
@@ -333,23 +337,18 @@ def team(
 
 @app.command()
 def init_db(
-    skip_refresh: bool = typer.Option(False, "--skip-refresh", help="Skip refreshing stock data"),
+    skip_refresh: bool = typer.Option(
+        False, "--skip-refresh", help="Skip refreshing stock data"
+    ),
 ) -> None:
     """Initialize database"""
 
     async def _init() -> int:
-        DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-        db = Database(str(DB_PATH))
-        await db.connect()
-        await db.init_tables()
-
-        count = 0
-        if not skip_refresh:
-            service = QuoteService(db)
-            count = await service.refresh_stocks()
-
-        await db.close()
-        return count
+        result = await capabilities.initialize_database(
+            skip_refresh=skip_refresh,
+            db_path=DB_PATH,
+        )
+        return int(result["loaded_count"])
 
     count = asyncio.run(_init())
     console.print(f"[green]Database initialized, loaded {count} stocks[/green]")
@@ -370,7 +369,9 @@ def alert_callback(ctx: typer.Context) -> None:
 
 @alert_app.command("start")
 def alert_start(
-    interval: int = typer.Option(60, "--interval", "-i", help="Scan interval (seconds)"),
+    interval: int = typer.Option(
+        60, "--interval", "-i", help="Scan interval (seconds)"
+    ),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Start monitor service"""
@@ -410,11 +411,11 @@ def alert_start(
     if json_output:
         _print_json(result)
     else:
-        console.print(f"[green]Monitor service started[/green]")
+        console.print("[green]Monitor service started[/green]")
         console.print(f"Scan interval: {result['interval']}s")
         console.print(f"Monitored stocks: {result['watch_count']}")
         console.print(f"Service PID: {result['pid']}")
-        start_dt = datetime.fromisoformat(result['start_time'])
+        start_dt = datetime.fromisoformat(result["start_time"])
         console.print(f"Start time: {start_dt.strftime('%Y-%m-%d %H:%M:%S')}")
 
 
@@ -585,9 +586,11 @@ def alert_history(
                 time_str,
                 alert["code"],
                 alert["signal_name"],
-                alert["message"][:20] + "..."
-                if len(alert["message"]) > 20
-                else alert["message"],
+                (
+                    alert["message"][:20] + "..."
+                    if len(alert["message"]) > 20
+                    else alert["message"]
+                ),
                 f"[{status_color}]{alert['status']}[/{status_color}]",
             )
 
@@ -605,19 +608,21 @@ def alert_service_history(
     history = status_manager.get_history(limit=limit)
 
     if json_output:
-        _print_json({
-            "history": [
-                {
-                    "instance_id": h.instance_id,
-                    "pid": h.pid,
-                    "start_time": h.start_time,
-                    "stop_time": h.stop_time,
-                    "duration_seconds": h.duration_seconds,
-                    "duration_formatted": format_duration(h.duration_seconds),
-                }
-                for h in history
-            ]
-        })
+        _print_json(
+            {
+                "history": [
+                    {
+                        "instance_id": h.instance_id,
+                        "pid": h.pid,
+                        "start_time": h.start_time,
+                        "stop_time": h.stop_time,
+                        "duration_seconds": h.duration_seconds,
+                        "duration_formatted": format_duration(h.duration_seconds),
+                    }
+                    for h in history
+                ]
+            }
+        )
     else:
         if not history:
             console.print("[dim]No service history records[/dim]")
@@ -651,10 +656,15 @@ def screen(
         None, "--codes", "-c", help="Specify stock codes, comma-separated"
     ),
     industry: Optional[str] = typer.Option(
-        None, "--industry", "-i", help="Filter by industry, multiple industries comma-separated"
+        None,
+        "--industry",
+        "-i",
+        help="Filter by industry, multiple industries comma-separated",
     ),
     exclude_industry: Optional[str] = typer.Option(
-        None, "--exclude-industry", help="Exclude industries, multiple industries comma-separated"
+        None,
+        "--exclude-industry",
+        help="Exclude industries, multiple industries comma-separated",
     ),
     limit: int = typer.Option(10, "--limit", "-n", help="Number of results"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
@@ -662,73 +672,28 @@ def screen(
     """Stock screening"""
 
     async def _screen() -> dict[str, Any]:
-        db = Database(str(DB_PATH))
-        await db.connect()
-        try:
-            quote_service = QuoteService(db)
-            screener = StockScreener(quote_service)
-
-            # Parse factor list
-            factor_list = None
-            if factors:
-                factor_list = [f.strip() for f in factors.split(",")]
-
-            code_list = None
-            if codes:
-                code_list = [item.strip() for item in codes.split(",") if item.strip()]
-
-            results = await screener.screen(
-                factors=factor_list, codes=code_list, limit=limit
-            )
-
-            # Industry filtering
-            if industry or exclude_industry:
-                from .data import get_industry_service
-                industry_service = get_industry_service()
-                await industry_service.initialize(allow_stale_cache=bool(code_list))
-
-                include_industries = [i.strip() for i in industry.split(",")] if industry else None
-                exclude_industries = [i.strip() for i in exclude_industry.split(",")] if exclude_industry else None
-
-                # Get stock codes from all results
-                result_codes = [r.code for r in results]
-                filtered_codes = await industry_service.filter_by_industry(
-                    result_codes,
-                    include_industries=include_industries,
-                    exclude_industries=exclude_industries,
-                )
-                # Filter results
-                results = [r for r in results if r.code in filtered_codes]
-
-            # Get industry information
-            from .data import get_industry_service
-            industry_service = get_industry_service()
-            await industry_service.initialize(allow_stale_cache=bool(code_list))
-
-            enriched_results = []
-            for r in results:
-                stock_industry = await industry_service.get_stock_industry(r.code)
-                enriched_results.append({
-                    "code": r.code,
-                    "name": r.name,
-                    "matched_factors": r.matched_factors,
-                    "matched_factor_count": r.matched_factor_count,
-                    "factor_checks": r.factor_checks,
-                    "data": r.data,
-                    "industry": stock_industry.industry if stock_industry else None,
-                    "industry_change": stock_industry.industry_change if stock_industry else None,
-                    "screened_at": r.screened_at.isoformat(),
-                })
-
-            return {
-                "total": len(enriched_results),
-                "mode": "single_stock" if code_list else "market_scan",
-                "data_quality": "daily_only",
-                "requested_factors": factor_list or [],
-                "results": enriched_results,
-            }
-        finally:
-            await db.close()
+        factor_list = [item.strip() for item in factors.split(",")] if factors else None
+        code_list = (
+            [item.strip() for item in codes.split(",") if item.strip()]
+            if codes
+            else None
+        )
+        include_industries = (
+            [item.strip() for item in industry.split(",")] if industry else None
+        )
+        exclude_industries = (
+            [item.strip() for item in exclude_industry.split(",")]
+            if exclude_industry
+            else None
+        )
+        return await capabilities.screen_stocks(
+            factors=factor_list,
+            codes=code_list,
+            include_industries=include_industries,
+            exclude_industries=exclude_industries,
+            limit=limit,
+            db_path=DB_PATH,
+        )
 
     result = _run_async(_screen(), json_output)
 
@@ -786,92 +751,68 @@ def recommend_callback(ctx: typer.Context) -> None:
 def recommend_generate(
     user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
     limit: int = typer.Option(10, "--limit", "-n", help="Number of results"),
-    style: Optional[str] = typer.Option(None, "--style", "-s", help="Trading style override"),
-    risk: Optional[str] = typer.Option(None, "--risk", "-r", help="Risk level override"),
-    min_price: Optional[float] = typer.Option(None, "--min-price", help="Minimum price"),
-    max_price: Optional[float] = typer.Option(None, "--max-price", help="Maximum price"),
+    style: Optional[str] = typer.Option(
+        None, "--style", "-s", help="Trading style override"
+    ),
+    risk: Optional[str] = typer.Option(
+        None, "--risk", "-r", help="Risk level override"
+    ),
+    min_price: Optional[float] = typer.Option(
+        None, "--min-price", help="Minimum price"
+    ),
+    max_price: Optional[float] = typer.Option(
+        None, "--max-price", help="Maximum price"
+    ),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Generate personalized recommendations"""
 
-    async def _recommend() -> Any:
-        db = Database(str(DB_PATH))
-        await db.connect()
-        try:
-            quote_service = QuoteService(db)
-            screener = StockScreener(quote_service)
+    async def _recommend() -> dict[str, Any]:
+        options: dict[str, object] = {}
+        if style:
+            options["trading_style"] = style
+        if risk:
+            options["risk_level"] = risk
+        if min_price is not None:
+            options["min_price"] = min_price
+        if max_price is not None:
+            options["max_price"] = max_price
 
-            # Initialize industry service
-            from .data import get_industry_service
-            industry_service = get_industry_service()
-            await industry_service.initialize()
-
-            recommender = Recommender(screener, industry_service)
-
-            # Build options
-            options: dict[str, object] = {}
-            if style:
-                options["trading_style"] = style
-            if risk:
-                options["risk_level"] = risk
-            if min_price is not None:
-                options["min_price"] = min_price
-            if max_price is not None:
-                options["max_price"] = max_price
-
-            result = await recommender.handle_recommend(
-                user_id=user_id, limit=limit, options=options if options else None
-            )
-
-            return result
-        finally:
-            await db.close()
+        return await capabilities.build_recommendation_pool(
+            user_id=user_id,
+            limit=limit,
+            options=options if options else None,
+            db_path=DB_PATH,
+        )
 
     result = _run_async(_recommend(), json_output)
 
     if json_output:
-        _print_json({
-            "success": result.success,
-            "total": result.total,
-            "error": result.error,
-            "config_used": result.config_used,
-            "selection_context": result.selection_context,
-            "candidates": [
-                {
-                    "code": r.code,
-                    "name": r.name,
-                    "matched_factors": r.matched_factors,
-                    "matched_factor_count": r.matched_factor_count,
-                    "factor_checks": r.factor_checks,
-                    "industry": r.industry,
-                    "industry_change": r.industry_change,
-                    "data": r.data,
-                    "collected_at": r.collected_at.isoformat(),
-                }
-                for r in result.candidates
-            ],
-        })
+        _print_json(result)
     else:
-        if not result.success:
-            console.print(f"[red]Recommendation generation failed: {result.error}[/red]")
+        if not result["success"]:
+            console.print(
+                f"[red]Recommendation generation failed: {result['error']}[/red]"
+            )
             return
 
-        if not result.candidates:
+        if not result["candidates"]:
             console.print("[dim]No candidate stocks matching criteria found[/dim]")
             return
 
         # Display config info
-        if result.config_used:
+        if result["config_used"]:
+            config_used = result["config_used"]
             config_panel = f"""
-User: {result.config_used.get("user_id", "default")}
-Trading style: {result.config_used.get("trading_style", "swing")}
-Risk level: {result.config_used.get("risk_level", "moderate")}
-Price range: {result.config_used.get("min_price") or "-"} ~ {result.config_used.get("max_price") or "-"}
+User: {config_used.get("user_id", "default")}
+Trading style: {config_used.get("trading_style", "swing")}
+Risk level: {config_used.get("risk_level", "moderate")}
+Price range: {config_used.get("min_price") or "-"} ~ {config_used.get("max_price") or "-"}
 """
             console.print(Panel(config_panel.strip(), title="Recommendation Config"))
 
         # Display recommendation results
-        table = Table(title=f"Candidate Stock Pool (total {result.total})")
+        table = Table(title=f"Candidate Stock Pool (total {result['total']})")
         table.add_column("Rank", style="dim", width=4)
         table.add_column("Code", style="cyan", width=8)
         table.add_column("Name", style="white", width=10)
@@ -879,16 +820,16 @@ Price range: {result.config_used.get("min_price") or "-"} ~ {result.config_used.
         table.add_column("Hits", style="yellow", width=6)
         table.add_column("Matched Factors", style="green")
 
-        for i, r in enumerate(result.candidates, 1):
-            factors_str = ",".join(r.matched_factors[:2])
-            if len(r.matched_factors) > 2:
+        for i, candidate in enumerate(result["candidates"], 1):
+            factors_str = ",".join(candidate["matched_factors"][:2])
+            if len(candidate["matched_factors"]) > 2:
                 factors_str += "..."
             table.add_row(
                 str(i),
-                r.code,
-                r.name or "-",
-                r.industry or "-",
-                str(r.matched_factor_count),
+                candidate["code"],
+                candidate["name"] or "-",
+                candidate["industry"] or "-",
+                str(candidate["matched_factor_count"]),
                 factors_str or "-",
             )
 
@@ -900,8 +841,12 @@ def recommend_config(
     user_id: str = typer.Option("default", "--user", "-u", help="User ID"),
     style: Optional[str] = typer.Option(None, "--style", "-s", help="Trading style"),
     risk: Optional[str] = typer.Option(None, "--risk", "-r", help="Risk level"),
-    min_price: Optional[float] = typer.Option(None, "--min-price", help="Minimum price"),
-    max_price: Optional[float] = typer.Option(None, "--max-price", help="Maximum price"),
+    min_price: Optional[float] = typer.Option(
+        None, "--min-price", help="Minimum price"
+    ),
+    max_price: Optional[float] = typer.Option(
+        None, "--max-price", help="Maximum price"
+    ),
     reset: bool = typer.Option(False, "--reset", help="Reset to default config"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
@@ -1102,19 +1047,21 @@ def config_style(
     analysis = analyzer.update_user_config(user_id, config_manager)
 
     if json_output:
-        _print_json({
-            "user_id": analysis.user_id,
-            "trading_style": analysis.trading_style.value,
-            "risk_level": analysis.risk_level.value,
-            "trade_frequency": analysis.trade_frequency,
-            "avg_holding_days": analysis.avg_holding_days,
-            "total_trades": analysis.total_trades,
-            "win_rate": analysis.win_rate,
-            "profit_loss_ratio": analysis.profit_loss_ratio,
-            "total_profit": analysis.total_profit,
-            "preferred_sectors": analysis.preferred_sectors,
-            "confidence": analysis.confidence,
-        })
+        _print_json(
+            {
+                "user_id": analysis.user_id,
+                "trading_style": analysis.trading_style.value,
+                "risk_level": analysis.risk_level.value,
+                "trade_frequency": analysis.trade_frequency,
+                "avg_holding_days": analysis.avg_holding_days,
+                "total_trades": analysis.total_trades,
+                "win_rate": analysis.win_rate,
+                "profit_loss_ratio": analysis.profit_loss_ratio,
+                "total_profit": analysis.total_profit,
+                "preferred_sectors": analysis.preferred_sectors,
+                "confidence": analysis.confidence,
+            }
+        )
     else:
         panel_content = f"""
 Trading style: {analysis.trading_style.value}
@@ -1131,9 +1078,13 @@ Confidence: {analysis.confidence:.0%}
         console.print(Panel(panel_content.strip(), title=f"Style Analysis: {user_id}"))
 
         if analysis.confidence > 0.5:
-            console.print("[green]Configuration automatically updated based on analysis[/green]")
+            console.print(
+                "[green]Configuration automatically updated based on analysis[/green]"
+            )
         else:
-            console.print("[yellow]Insufficient data, config not updated (more trade records needed)[/yellow]")
+            console.print(
+                "[yellow]Insufficient data, config not updated (more trade records needed)[/yellow]"
+            )
 
 
 @config_app.command("reset")
@@ -1153,7 +1104,9 @@ def config_reset(
         config_data["risk_level"] = config.risk_level.value
         _print_json(config_data)
     else:
-        console.print(f"[yellow]Reset user {user_id} configuration to defaults[/yellow]")
+        console.print(
+            f"[yellow]Reset user {user_id} configuration to defaults[/yellow]"
+        )
 
 
 # ============ Email Configuration Commands ============
@@ -1190,8 +1143,12 @@ Subject prefix: {email_config.subject_prefix}
             console.print(Panel(panel_content.strip(), title="Email Configuration"))
         else:
             console.print("[yellow]Email not configured[/yellow]")
-            console.print("Please set the following environment variables or use 'config email set' command:")
-            console.print("  EMAIL_SMTP_HOST     - SMTP server address (default: smtp.qq.com)")
+            console.print(
+                "Please set the following environment variables or use 'config email set' command:"
+            )
+            console.print(
+                "  EMAIL_SMTP_HOST     - SMTP server address (default: smtp.qq.com)"
+            )
             console.print("  EMAIL_SMTP_PORT     - SMTP port (default: 465)")
             console.print("  EMAIL_USE_SSL       - Use SSL (default: true)")
             console.print("  EMAIL_SENDER        - Sender email address")
@@ -1298,7 +1255,9 @@ def email_test(
 
     if not email_config.is_configured():
         console.print("[red]Email not configured, please set up email info first[/red]")
-        console.print("Use 'config email set' command or set environment variables to configure")
+        console.print(
+            "Use 'config email set' command or set environment variables to configure"
+        )
         raise typer.Exit(1)
 
     # Create test alert record
@@ -1319,7 +1278,7 @@ def email_test(
         if json_output:
             _print_json({"success": True, "recipients": email_config.recipients})
         else:
-            console.print(f"[green]Test email sent successfully[/green]")
+            console.print("[green]Test email sent successfully[/green]")
             console.print(f"Recipients: {', '.join(email_config.recipients)}")
     except Exception as e:
         if json_output:
@@ -1357,36 +1316,33 @@ def email_reset(
         console.print("[dim]Config file does not exist[/dim]")
 
 
-# ============ Backtest Command Group ============
-
-from .backtest.backtest_cli import app as backtest_app
-
 app.add_typer(backtest_app, name="backtest")
 
 
-# ============ Portfolio Command Group ============
-
-from .portfolio.portfolio_cli import app as portfolio_app
-
 app.add_typer(portfolio_app, name="portfolio")
 
-
-# ============ Watch Command Group ============
-
-from .monitor.watch_cli import app as watch_app
 
 app.add_typer(watch_app, name="watch")
 
 
 # ============ Team Feedback Command ============
 
+
 @app.command("team-feedback")
 def team_feedback(
     code: str = typer.Argument(..., help="Stock code"),
-    action: str = typer.Option(..., "--action", "-a", help="Suggested action: watch_buy/wait/hold_or_reduce"),
-    outcome: str = typer.Option(..., "--outcome", "-o", help="Feedback outcome: good/bad"),
-    strategy: Optional[str] = typer.Option(None, "--strategy", "-s", help="Associated strategy/factor"),
-    signals: Optional[str] = typer.Option(None, "--signals", help="Associated signals, comma-separated"),
+    action: str = typer.Option(
+        ..., "--action", "-a", help="Suggested action: watch_buy/wait/hold_or_reduce"
+    ),
+    outcome: str = typer.Option(
+        ..., "--outcome", "-o", help="Feedback outcome: good/bad"
+    ),
+    strategy: Optional[str] = typer.Option(
+        None, "--strategy", "-s", help="Associated strategy/factor"
+    ),
+    signals: Optional[str] = typer.Option(
+        None, "--signals", help="Associated signals, comma-separated"
+    ),
     note: Optional[str] = typer.Option(None, "--note", "-n", help="Additional notes"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
@@ -1394,6 +1350,7 @@ def team_feedback(
 
     async def _record() -> dict[str, Any]:
         from .memory import FeedbackLearner
+
         learner = FeedbackLearner()
         signals_list = [s.strip() for s in signals.split(",")] if signals else None
         record = await learner.record_feedback(
@@ -1442,6 +1399,7 @@ def feedback_show(
 
     async def _show() -> dict[str, Any]:
         from .memory import FeedbackLearner
+
         learner = FeedbackLearner()
         summary = await learner.get_feedback_summary()
         return summary
@@ -1456,13 +1414,15 @@ def feedback_show(
             return
 
         # Display profile
-        console.print(Panel(
-            f"Samples: {result['total']}\n"
-            f"Success rate: {result['success_rate']:.0%}\n"
-            f"Positive: {result.get('good_count', 0)}\n"
-            f"Negative: {result.get('bad_count', 0)}",
-            title=f"User Profile {'- ' + code if code else ''}"
-        ))
+        console.print(
+            Panel(
+                f"Samples: {result['total']}\n"
+                f"Success rate: {result['success_rate']:.0%}\n"
+                f"Positive: {result.get('good_count', 0)}\n"
+                f"Negative: {result.get('bad_count', 0)}",
+                title=f"User Profile {'- ' + code if code else ''}",
+            )
+        )
 
         # Display strategy performance
         strategy_perf = result.get("strategy_performance", {})
@@ -1471,7 +1431,9 @@ def feedback_show(
             for strategy, perf in strategy_perf.items():
                 rate = perf.get("success_rate", 0)
                 color = "green" if rate >= 0.5 else "red"
-                console.print(f"  {strategy}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)} times)")
+                console.print(
+                    f"  {strategy}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)} times)"
+                )
 
         # Display signal performance
         signal_perf = result.get("signal_performance", {})
@@ -1480,7 +1442,9 @@ def feedback_show(
             for signal, perf in list(signal_perf.items())[:5]:
                 rate = perf.get("success_rate", 0)
                 color = "green" if rate >= 0.5 else "red"
-                console.print(f"  {signal}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)} times)")
+                console.print(
+                    f"  {signal}: [{color}]{rate:.0%}[/{color}] ({perf.get('total_count', 0)} times)"
+                )
 
 
 # ============ Memory Command Group ============
@@ -1502,6 +1466,7 @@ def memory_store(
 
     async def _store() -> dict[str, Any]:
         from .memory import MemoryStore
+
         store = MemoryStore()
         await store.store(
             agent_name=agent,
@@ -1532,6 +1497,7 @@ def memory_recall(
 
     async def _recall() -> list[dict[str, Any]]:
         from .memory import MemoryStore
+
         store = MemoryStore()
         entries = await store.recall(
             agent_name=agent,
@@ -1558,7 +1524,9 @@ def memory_recall(
 
 @memory_app.command("history")
 def memory_history(
-    agent: Optional[str] = typer.Option(None, "--agent", "-a", help="Agent name (optional)"),
+    agent: Optional[str] = typer.Option(
+        None, "--agent", "-a", help="Agent name (optional)"
+    ),
     user: str = typer.Option("default", "--user", "-u", help="User ID"),
     limit: int = typer.Option(20, "--limit", "-n", help="Number of results"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
@@ -1567,6 +1535,7 @@ def memory_history(
 
     async def _history() -> list[dict[str, Any]]:
         from .memory import MemoryStore
+
         store = MemoryStore()
         entries = await store.get_session_history(
             user_id=user,
@@ -1613,6 +1582,7 @@ def memory_clear(
 
     async def _clear() -> int:
         from .memory import MemoryStore
+
         store = MemoryStore()
         count = await store.clear(
             agent_name=agent,
@@ -1629,13 +1599,17 @@ def memory_clear(
         console.print(f"[yellow]Cleared {count} memories[/yellow]")
 
 
-
-
 @app.command("build-pdf")
 def build_pdf(
-    path: str = typer.Argument(..., help="Directory containing .tex file, or path to a .tex file"),
-    tex_file: Optional[str] = typer.Option(None, "--file", "-f", help="Specific .tex filename (default: main.tex)"),
-    clean: bool = typer.Option(True, "--clean/--no-clean", help="Remove build artifacts after compilation"),
+    path: str = typer.Argument(
+        ..., help="Directory containing .tex file, or path to a .tex file"
+    ),
+    tex_file: Optional[str] = typer.Option(
+        None, "--file", "-f", help="Specific .tex filename (default: main.tex)"
+    ),
+    clean: bool = typer.Option(
+        True, "--clean/--no-clean", help="Remove build artifacts after compilation"
+    ),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Compile LaTeX to PDF using XeLaTeX (two passes for TOC/refs)"""
@@ -1650,7 +1624,9 @@ def build_pdf(
         work_dir = target
         tex_name = tex_file or "main.tex"
     else:
-        console.print(f"[red]Error: '{path}' is not a valid directory or .tex file[/red]")
+        console.print(
+            f"[red]Error: '{path}' is not a valid directory or .tex file[/red]"
+        )
         raise typer.Exit(1)
 
     tex_path = work_dir / tex_name
@@ -1690,7 +1666,9 @@ def build_pdf(
             log_path = work_dir / tex_name.replace(".tex", ".log")
             if log_path.exists():
                 log_content = log_path.read_text(errors="replace")
-                errors = [l for l in log_content.splitlines() if l.startswith("!")]
+                errors = [
+                    line for line in log_content.splitlines() if line.startswith("!")
+                ]
                 error_msg = "\n".join(errors[:10]) if errors else result.stderr[-500:]
             else:
                 error_msg = result.stderr[-500:]
@@ -1713,21 +1691,21 @@ def build_pdf(
                 artifact.unlink()
 
     if json_output:
-        _print_json({
-            "success": success,
-            "pdf": str(pdf_path) if success else None,
-            "pages": page_count,
-            "error": error_msg if not success else None,
-        })
+        _print_json(
+            {
+                "success": success,
+                "pdf": str(pdf_path) if success else None,
+                "pages": page_count,
+                "error": error_msg if not success else None,
+            }
+        )
     else:
         if success:
             console.print(f"[green]✓ Built: {pdf_path} ({page_count} pages)[/green]")
         else:
-            console.print(f"[red]✗ Build failed[/red]")
+            console.print("[red]✗ Build failed[/red]")
             if error_msg:
                 console.print(f"[dim]{error_msg}[/dim]")
-
-
 
 
 @app.command("sync-agents")
@@ -1808,9 +1786,15 @@ developer_instructions = """
     if json_output:
         _print_json({"success": True, **changes})
     else:
-        console.print(f"[green]✓ Synced {changes['claude_agents']} agents to .claude/agents/[/green]")
-        console.print(f"[green]✓ Synced {changes['codex_agents']} agents to .codex/agents/[/green]")
-        console.print(f"[green]✓ Synced {changes['skills_synced']} skills to .claude/skills/ and .codex/skills/[/green]")
+        console.print(
+            f"[green]✓ Synced {changes['claude_agents']} agents to .claude/agents/[/green]"
+        )
+        console.print(
+            f"[green]✓ Synced {changes['codex_agents']} agents to .codex/agents/[/green]"
+        )
+        console.print(
+            f"[green]✓ Synced {changes['skills_synced']} skills to .claude/skills/ and .codex/skills/[/green]"
+        )
 
 
 if __name__ == "__main__":

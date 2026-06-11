@@ -100,14 +100,16 @@ Example:
 
 ## Related Files
 
-- `src/python/astock/cli.py` — CLI entry (alert + watch commands)
+- `src/python/astock/capabilities.py` — Agent capability kernel
+- `src/python/astock/cli.py` — JSON subprocess adapter (alert + watch commands)
 - `src/python/astock/monitor/monitor_service.py` — Monitoring service
 - `src/python/astock/monitor/watch_cli.py` — Watch management CLI
 - `src/python/astock/monitor/scanner.py` — Signal scanner
 - `src/python/astock/monitor/alert_engine.py` — Alert engine
 s
 
-- `src/python/astock/cli.py` — CLI entry (alert + watch commands)
+- `src/python/astock/capabilities.py` — Agent capability kernel
+- `src/python/astock/cli.py` — JSON subprocess adapter (alert + watch commands)
 - `src/python/astock/monitor/monitor_service.py` — Monitoring service
 - `src/python/astock/monitor/watch_cli.py` — Watch management CLI
 - `src/python/astock/monitor/scanner.py` — Signal scanner

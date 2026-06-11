@@ -23,6 +23,40 @@ This project has two primary objectives:
 - Trading-related terms in user questions are interpreted as investment research, opportunity evaluation, market monitoring, paper portfolio tracking, or risk analysis unless the user explicitly asks for external actions.
 - "Order" and "order flow" in market-analysis contexts refer to market-side data such as order book, quote depth, large trades, active buy/sell flow, and capital-flow signals, not user brokerage orders.
 
+## Runtime Model and Python Boundary
+
+This repository is designed to run **inside an AI agent environment** such as Claude Code or Codex.
+
+- The AI agent conversation is the user interface.
+- Skills and agent role files are the orchestration layer.
+- Python is a capability kernel for agents and skills, not a human-facing application.
+
+### Python Capability Contract
+
+Python must provide deterministic, structured capabilities only:
+
+- Fetch market, research, configuration, memory, and monitoring data.
+- Compute indicators, screen factors, backtest technical signals, build data packets, and compile PDFs.
+- Return JSON-serializable dictionaries or data objects suitable for agent reasoning.
+- Never be the final analysis voice for the user; the AI agent performs interpretation, synthesis, and final communication.
+
+Preferred Python integration path:
+
+```python
+from astock import capabilities
+```
+
+Current shell commands such as `.venv/bin/python -m astock.cli quote 000001 --json` are **machine adapters** for skills that need a subprocess boundary. They are not the product UI and should remain thin wrappers over `astock.capabilities`.
+
+### Engineering Rules
+
+- Put reusable business logic in `src/python/astock/services/`, domain modules, or `src/python/astock/capabilities.py`.
+- Keep `src/python/astock/cli.py`, `api.py`, and subcommand files as thin adapters only.
+- Do not add interactive Python prompts, terminal menus, dashboards, or human-facing UI flows.
+- Do not duplicate orchestration logic in CLI/API adapters.
+- New skills should call the capability kernel directly when possible; when shell execution is simpler, call CLI adapters with `--json`.
+- Python output should be data packets with explicit `data_quality`, `warnings`, and `error` fields where applicable.
+
 ## Language Policy
 
 - **English first**: All code, comments, commit messages, skill definitions, and internal documentation must be in English.
@@ -40,7 +74,7 @@ python -m pip install -e src/python
 .venv/bin/python -m astock.cli init-db
 
 # Use natural language directly in Claude Code / Codex
-# No separate CLI needed — the AI agent IS the user interface
+# No separate Python UI is needed — the AI agent IS the user interface
 ```
 
 ## Usage
@@ -58,11 +92,11 @@ Agent: Let me run a multi-expert collaborative analysis...
 
 User: Find me some undervalued stocks with golden cross signals
 Agent: Screening stocks with your criteria...
-[Calls Python screen command]
+[Calls Python capability adapter]
 
 User: Backtest the MA signal on Ping An Bank
 Agent: Running MA crossover backtest...
-[Calls Python backtest command]
+[Calls Python capability adapter]
 ```
 
 ### Slash Commands
@@ -100,7 +134,7 @@ User input: "Is Ping An Bank worth tracking as an investment opportunity?"
     ↓
 Agent parses intent, identifies stock code and question type
     ↓
-Calls Python script to fetch data:
+Calls Python capability adapter to fetch data:
 └── .venv/bin/python -m astock.cli team 000001 --json --question "..."
     ↓
 Agent reasons over shared data packet:
@@ -138,7 +172,8 @@ Record feedback:
 
 ```
 src/python/astock/          # Python capability layer (core)
-├── cli.py                  # CLI entry point (includes build-pdf)
+├── capabilities.py         # Agent/skill capability kernel
+├── cli.py                  # Machine adapter for JSON subprocess calls
 ├── quote/                  # Quote service
 ├── analysis/               # Technical analysis
 ├── stock_picker/           # Stock screener
@@ -202,7 +237,7 @@ data/                       # Runtime data (mostly gitignored)
 Each skill is an executable instruction file:
 - `description` field is used for natural language intent matching
 - `<SUBAGENT-STOP>` directive prevents nested invocation
-- Clear execution flow and Python CLI invocation patterns
+- Clear execution flow and Python capability invocation patterns
 
 ## Document Format Policy
 
@@ -223,6 +258,8 @@ Scope:
 ## Development Guidelines
 
 - Python code goes in `src/python/astock/`
+- Python code is a capability layer for agents and skills; it is not a standalone user interface.
+- Expose reusable operations through `astock.capabilities`; keep CLI/API wrappers thin and machine-readable.
 - Skills are instruction files guiding agent behavior
-- All operations are done through the AI agent — no separate CLI needed
+- All user-facing operations are done through the AI agent — no separate Python UI is needed
 - **English first** for all code and internal docs; Chinese OK for user-facing output

@@ -84,4 +84,4 @@ For quick interactive replies: respond in conversation directly.
 | Invalid strategy name | List available strategies |
 | Invalid date range | Fall back to most recent year |
 | Insufficient data | Shorten range and explain |
-| CLI timeout | Shorten range and retry once |
+| Capability adapter timeout | Shorten range and retry once |

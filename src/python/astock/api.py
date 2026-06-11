@@ -1,13 +1,11 @@
-"""FastAPI REST API Service"""
+"""Optional REST adapter for agent capabilities."""
 
 from datetime import datetime
 from pathlib import Path
-from typing import Optional, List, Any, AsyncIterator
-import json
+from typing import Optional, Any, AsyncIterator
 
-from fastapi import FastAPI, HTTPException, Query, Depends, BackgroundTasks
+from fastapi import FastAPI, HTTPException, Query, Depends
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field
 
 from .storage import Database
@@ -15,7 +13,6 @@ from .quote import QuoteService
 from .analysis import TechnicalAnalyzer
 from .stock_picker import StockScreener
 from .backtest import BacktestEngine
-from .recommend import Recommender
 from .config import ConfigManager
 from .utils import get_logger, setup_logging
 
@@ -25,8 +22,8 @@ logger = get_logger("api")
 
 # Create application
 app = FastAPI(
-    title="A-Share Trading Strategy Analysis Tool API",
-    description="Multi-agent A-share trading strategy analysis tool REST API based on Agent Skills",
+    title="A-Share Agent Capability API",
+    description="Optional REST adapter over the A-share agent capability layer",
     version="0.1.0",
 )
 
@@ -141,7 +138,7 @@ class ErrorResponse(BaseModel):
 async def root() -> dict[str, Any]:
     """API root endpoint"""
     return {
-        "name": "A-Share Trading Strategy Analysis Tool API",
+        "name": "A-Share Agent Capability API",
         "version": "0.1.0",
         "docs": "/docs",
         "endpoints": [
@@ -168,7 +165,7 @@ async def get_quote(
     try:
         result = await quote_service.get_realtime(code)
         return QuoteResponse(**result)
-    except ValueError as e:
+    except ValueError:
         raise HTTPException(status_code=404, detail=f"Stock code not found: {code}")
     except Exception as e:
         logger.error(f"Failed to get quote: {code}", exc_info=True)
@@ -202,7 +199,9 @@ async def analyze_stock(
         raise
     except Exception as e:
         logger.error(f"Technical analysis failed: {code}", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Technical analysis failed: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Technical analysis failed: {str(e)}"
+        )
 
 
 @app.get("/screen", response_model=ScreenResponse)
@@ -404,7 +403,9 @@ async def update_config(
         return {"success": True, "config": config.model_dump()}
     except Exception as e:
         logger.error("Failed to update config", exc_info=True)
-        raise HTTPException(status_code=500, detail=f"Failed to update config: {str(e)}")
+        raise HTTPException(
+            status_code=500, detail=f"Failed to update config: {str(e)}"
+        )
 
 
 @app.get("/strategies")
@@ -418,7 +419,7 @@ async def list_strategies() -> dict[str, Any]:
 @app.get("/factors")
 async def list_factors() -> dict[str, Any]:
     """List all available factors"""
-    from .stock_picker.factors import FACTORS, FactorType
+    from .stock_picker.factors import FACTORS
 
     factors_by_type: dict[str, list[dict[str, Any]]] = {}
     for key, factor in FACTORS.items():

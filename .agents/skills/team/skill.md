@@ -1,15 +1,15 @@
 ---
 name: team
-description: Use when user asks whether a stock is worth buying, selling, holding, or entering now, wants timing or position advice, or needs a multi-factor A-share decision with bull/bear arguments and risk assessment. Trigger on phrases like "should I buy", "good entry?", "hold or sell?", "position sizing", or "comprehensive analysis". Do not use for simple quote requests or pure technical-indicator interpretation when the user is not asking for a broader decision.
+description: Use when user asks whether an A-share target is worth researching, tracking, adding to a watchlist, or monitoring as an investment opportunity, or needs multi-factor opportunity analysis with bull/bear arguments and risk assessment. Trigger on phrases like "worth tracking", "investment opportunity", "comprehensive analysis", "monitoring triggers", or "watchlist candidate". Do not use for simple quote requests or pure technical-indicator interpretation when the user is not asking for broader opportunity analysis.
 ---
 
 <SUBAGENT-STOP>
 If you were dispatched as a subagent to execute a specific task, skip this skill.
 </SUBAGENT-STOP>
 
-# /team - Multi-Agent Collaborative Decision
+# /team - Multi-Agent Opportunity Analysis
 
-Perform multi-role collaborative analysis on a single stock. Output actionable trading conclusions, contrarian arguments, and risk warnings. Save results to `data/sessions/`.
+Perform multi-role collaborative analysis on a single stock. Output research conclusions, opportunity rating, monitoring triggers, contrarian arguments, and risk warnings. Save results to `data/sessions/`.
 
 ## Goal
 
@@ -40,11 +40,11 @@ If native Team API is unavailable, fails, or is unstable:
 
 ## Core Principles
 
-1. Call Python `team` backend first to generate the shared data packet, then dispatch role tasks
+1. Call the Python capability adapter first to generate the shared data packet, then dispatch role tasks
 2. Subagents consume shared data first — avoid redundant data fetching
 3. Only allow a role to fetch additional data when it genuinely lacks critical information
 4. Each role must explicitly state whether it used a degraded path
-5. Final report must include bull/bear arguments, key price levels, position sizing, and risk warnings
+5. Final report must include bull/bear arguments, key price levels, monitoring triggers, and risk warnings
 6. Multi-agent adds perspectives and arbitrates conflicts — it does NOT repeat base data fetching
 
 ## Step 1: Parse Task
@@ -52,7 +52,7 @@ If native Team API is unavailable, fails, or is unstable:
 Extract from user input:
 
 - Stock code or stock name
-- Question type: buy / sell / hold / position / scalp / swing / long-term / comprehensive
+- Question type: opportunity research / watchlist tracking / monitoring trigger / short-term board read / swing context / long-term research / comprehensive
 
 If the stock code cannot be determined, ask the user a brief clarifying question directly.
 
@@ -62,7 +62,7 @@ Check first:
 
 - Does `.venv/bin/python` exist?
 - Does `data/stocks.db` exist?
-- Can `astock.cli team` execute?
+- Can the Python capability adapter execute?
 - Does the request need network access for live quotes?
 - Does the request need official filings / policy information?
 
@@ -74,15 +74,15 @@ If local data pipeline is broken:
 
 ## Step 3: Generate Shared Data Packet
 
-Use the unified entry point:
+Use the unified Python capability adapter:
 
 ```bash
 .venv/bin/python -m astock.cli team <CODE> --json --days 120 --question "<USER_QUESTION>"
 ```
 
-This is Team's single data entry point. It returns:
+This is Team's single capability adapter. It returns:
 
-- `summary` (packet status only — NOT a trading conclusion)
+- `summary` (packet status only — NOT a final research conclusion)
 - `recommended_roles`
 - `orchestration`
 - `packet`
@@ -94,8 +94,8 @@ On success:
 
 1. Read `orchestration.active_agent_ids` and `orchestration.merge_order`
 2. Use `packet` as shared input for all roles
-3. Note: Python provides no buy/sell advice; `summary` is not a decision
-4. Multi-agent is responsible for full conclusion generation (bull/bear, position, risk, contrarian)
+3. Note: Python provides no final recommendation; `summary` is not a conclusion
+4. Multi-agent is responsible for full conclusion generation (bull/bear, monitoring triggers, risk, contrarian)
 
 On failure with structured JSON:
 
@@ -103,7 +103,7 @@ On failure with structured JSON:
 2. Determine if limited conclusions can be drawn from degraded data
 3. If error is network/sandbox, request elevation per `agent-resilience` rules
 
-Only fall back to split commands if `astock.cli team` is unavailable or returns a clearly incomplete packet:
+Only fall back to split capability adapters if `astock.cli team` is unavailable or returns a clearly incomplete packet:
 
 Team-Lead fetches base data first to reduce redundant requests:
 
@@ -169,7 +169,7 @@ Expand by user intent — do NOT launch all roles by default:
 |---------------|-----------------|
 | Scalp, day trade, ultra-short | `scalper`, `momentum-trader` |
 | Swing, 3-10 days | `swing-trader` |
-| Long-term, value, buy-and-hold | `value-investor` |
+| Long-term, value, research tracking | `value-investor` |
 | Sentiment, hot topics, fund flow | `sentiment-analyst` |
 
 Only expand when the question genuinely requires it — avoid unnecessary data requests and wait time.
@@ -297,7 +297,7 @@ cat data/config/default.json
 
 - Do NOT assume native Team API is always available
 - Do NOT bypass `astock.cli team --json` by having all roles redundantly fetch data
-- Do NOT let all roles call the same data commands repeatedly
+- Do NOT let all roles call the same data adapters repeatedly
 - Do NOT give one-sided conclusions without contrarian arguments
 - Do NOT treat degraded data as if it were complete real-time market data
 - Do NOT reference team-specific syntax that does not exist in the current repository

@@ -19,9 +19,9 @@ Query the latest quote for a single stock, with explicit data quality disclosure
 - Stock name: try common name-to-code mapping first
 - If uncertain: ask user a brief clarifying question
 
-### Step 2: Call CLI
+### Step 2: Call Python Capability Adapter
 
-Use JSON output:
+Use the current JSON subprocess adapter:
 
 ```bash
 .venv/bin/python -m astock.cli quote <CODE> --json

@@ -155,7 +155,7 @@ async def test_team_service_generates_packet_and_report(
     result = await service.analyze("000001", question="短线适合介入吗？")
 
     assert result.error is None
-    assert result.summary == "数据包已就绪，等待 Agent 团队推理"
+    assert result.summary == "Data packet ready, awaiting Agent team reasoning"
     assert result.recommended_roles == ["core", "short_term"]
     assert result.packet["screen"]["mode"] == "single_stock"
     assert result.packet["orchestration"]["strategy"] == "packet_only_agent_reasoning"
@@ -166,13 +166,13 @@ async def test_team_service_generates_packet_and_report(
 
 
 def test_team_cli_json_output() -> None:
-    """CLI team command should output structured JSON"""
+    """CLI adapter should output structured JSON from capability kernel"""
     runner = CliRunner()
     team_result = TeamAnalysisResult(
         code="000001",
         question="当前是否适合介入？",
         name="平安银行",
-        summary="数据包已就绪，等待 Agent 团队推理",
+        summary="Data packet ready, awaiting Agent team reasoning",
         recommended_roles=["core", "swing"],
         data_quality={"quote": "daily_only"},
         warnings=["实时行情已降级到最近交易日日线快照。"],
@@ -184,18 +184,16 @@ def test_team_cli_json_output() -> None:
         session_path="data/sessions/team-000001-20260327.md",
     )
 
-    with (
-        patch("astock.cli.Database.connect", new=AsyncMock(return_value=None)),
-        patch("astock.cli.Database.close", new=AsyncMock(return_value=None)),
-        patch(
-            "astock.services.TeamAnalysisService.analyze",
-            new=AsyncMock(return_value=team_result),
-        ),
+    payload_dict = TeamAnalysisService(AsyncMock()).to_dict(team_result)
+
+    with patch(
+        "astock.cli.capabilities.build_team_packet",
+        new=AsyncMock(return_value=payload_dict),
     ):
         result = runner.invoke(cli.app, ["team", "000001", "--json"])
 
     assert result.exit_code == 0
     payload = json.loads(result.stdout)
-    assert payload["summary"] == "数据包已就绪，等待 Agent 团队推理"
+    assert payload["summary"] == "Data packet ready, awaiting Agent team reasoning"
     assert payload["recommended_roles"] == ["core", "swing"]
     assert payload["orchestration"]["strategy"] == "packet_only_agent_reasoning"

@@ -47,7 +47,7 @@ async def test_quote_service_get_realtime(mock_db: AsyncMock) -> None:
     with patch.object(
         service.client,
         "get_realtime_quote",
-        return_value={"code": "000001", "name": "平安银行", "price": 10.5}
+        return_value={"code": "000001", "name": "平安银行", "price": 10.5},
     ):
         result = await service.get_realtime("000001")
         assert result["code"] == "000001"
@@ -55,7 +55,9 @@ async def test_quote_service_get_realtime(mock_db: AsyncMock) -> None:
 
 
 @pytest.mark.asyncio
-async def test_quote_service_get_realtime_retry_on_transient_error(mock_db: AsyncMock) -> None:
+async def test_quote_service_get_realtime_retry_on_transient_error(
+    mock_db: AsyncMock,
+) -> None:
     """Test that transient network errors trigger retry"""
     service = QuoteService(mock_db)
     mock_get_or_set = AsyncMock(
@@ -72,27 +74,36 @@ async def test_quote_service_get_realtime_retry_on_transient_error(mock_db: Asyn
 
 
 @pytest.mark.asyncio
-async def test_get_realtime_quote_fallback_to_alternate_source(client: AkShareClient) -> None:
+async def test_get_realtime_quote_fallback_to_alternate_source(
+    client: AkShareClient,
+) -> None:
     """Test fallback to alternate data source when primary fails"""
-    fallback_df = pd.DataFrame([
-        {
-            "代码": "000001",
-            "名称": "平安银行",
-            "最新价": 10.5,
-            "涨跌幅": 1.2,
-            "涨跌额": 0.12,
-            "成交量": 1000000,
-            "成交额": 10000000,
-            "最高": 10.8,
-            "最低": 10.2,
-            "今开": 10.3,
-            "昨收": 10.38,
-        }
-    ])
+    fallback_df = pd.DataFrame(
+        [
+            {
+                "代码": "000001",
+                "名称": "平安银行",
+                "最新价": 10.5,
+                "涨跌幅": 1.2,
+                "涨跌额": 0.12,
+                "成交量": 1000000,
+                "成交额": 10000000,
+                "最高": 10.8,
+                "最低": 10.2,
+                "今开": 10.3,
+                "昨收": 10.38,
+            }
+        ]
+    )
 
     with (
-        patch("astock.quote.akshare_client.ak.stock_zh_a_spot_em", side_effect=ConnectionError("em down")),
-        patch("astock.quote.akshare_client.ak.stock_zh_a_spot", return_value=fallback_df),
+        patch(
+            "astock.quote.akshare_client.ak.stock_zh_a_spot_em",
+            side_effect=ConnectionError("em down"),
+        ),
+        patch(
+            "astock.quote.akshare_client.ak.stock_zh_a_spot", return_value=fallback_df
+        ),
     ):
         result = await client.get_realtime_quote("000001")
 
@@ -106,8 +117,12 @@ def test_quote_cli_handles_data_source_error_without_traceback() -> None:
     runner = CliRunner()
 
     with patch(
-        "astock.cli.QuoteService.get_realtime",
-        new=AsyncMock(side_effect=DataSourceError("获取实时行情失败: 网络错误", source="akshare", code="000001")),
+        "astock.cli.capabilities.get_quote",
+        new=AsyncMock(
+            side_effect=DataSourceError(
+                "获取实时行情失败: 网络错误", source="akshare", code="000001"
+            )
+        ),
     ):
         result = runner.invoke(cli.app, ["quote", "000001", "--json"])
 
@@ -117,21 +132,27 @@ def test_quote_cli_handles_data_source_error_without_traceback() -> None:
 
 
 @pytest.mark.asyncio
-async def test_quote_service_get_daily_retry_on_transient_error(mock_db: AsyncMock) -> None:
+async def test_quote_service_get_daily_retry_on_transient_error(
+    mock_db: AsyncMock,
+) -> None:
     """Test that transient network errors trigger retry when getting daily data"""
     service = QuoteService(mock_db)
-    fallback_df = pd.DataFrame([
-        {
-            "date": "2026-03-06",
-            "open": 10.1,
-            "high": 10.3,
-            "low": 9.9,
-            "close": 10.2,
-            "volume": 1000000,
-            "amount": 10000000,
-        }
-    ])
-    mock_get_or_set = AsyncMock(side_effect=[ConnectionError("daily down"), fallback_df])
+    fallback_df = pd.DataFrame(
+        [
+            {
+                "date": "2026-03-06",
+                "open": 10.1,
+                "high": 10.3,
+                "low": 9.9,
+                "close": 10.2,
+                "volume": 1000000,
+                "amount": 10000000,
+            }
+        ]
+    )
+    mock_get_or_set = AsyncMock(
+        side_effect=[ConnectionError("daily down"), fallback_df]
+    )
     with patch.object(service._cache, "get_or_set", new=mock_get_or_set):
         result = await service.get_daily("000001", save=False)
 
@@ -144,8 +165,12 @@ def test_analyze_cli_handles_data_source_error_without_traceback() -> None:
     runner = CliRunner()
 
     with patch(
-        "astock.cli.QuoteService.get_daily",
-        new=AsyncMock(side_effect=DataSourceError("获取日线数据失败: 网络错误", source="akshare", code="000001")),
+        "astock.cli.capabilities.analyze_stock",
+        new=AsyncMock(
+            side_effect=DataSourceError(
+                "获取日线数据失败: 网络错误", source="akshare", code="000001"
+            )
+        ),
     ):
         result = runner.invoke(cli.app, ["analyze", "000001", "--json"])
 
@@ -155,7 +180,9 @@ def test_analyze_cli_handles_data_source_error_without_traceback() -> None:
 
 
 @pytest.mark.asyncio
-async def test_quote_service_get_daily_fallback_to_db_when_network_fails(mock_db: AsyncMock) -> None:
+async def test_quote_service_get_daily_fallback_to_db_when_network_fails(
+    mock_db: AsyncMock,
+) -> None:
     service = QuoteService(mock_db)
     mock_db.get_daily_quotes = AsyncMock(
         return_value=[
@@ -209,10 +236,23 @@ async def test_get_daily_quotes_fallback_to_daily_source(client: AkShareClient) 
     )
 
     with (
-        patch("astock.quote.akshare_client.ak.stock_zh_a_hist", side_effect=ConnectionError("em down")),
-        patch("astock.quote.akshare_client.ak.stock_zh_a_daily", return_value=fallback_df),
+        patch(
+            "astock.quote.akshare_client.ak.stock_zh_a_hist",
+            side_effect=ConnectionError("em down"),
+        ),
+        patch(
+            "astock.quote.akshare_client.ak.stock_zh_a_daily", return_value=fallback_df
+        ),
     ):
         result = await client.get_daily_quotes("600589")
 
     assert not result.empty
-    assert list(result.columns) == ["date", "open", "high", "low", "close", "volume", "amount"]
+    assert list(result.columns) == [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "amount",
+    ]

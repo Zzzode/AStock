@@ -1,10 +1,9 @@
-"""Backtest CLI commands"""
+"""Backtest subprocess adapter commands."""
 
 import asyncio
 from contextlib import nullcontext, redirect_stdout
 import json
 import sys
-from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Optional, Any
 
@@ -13,11 +12,7 @@ from rich.console import Console
 from rich.table import Table
 from rich.panel import Panel
 
-from ..storage import Database
-from ..quote import QuoteService
-from .engine import BacktestEngine
-from .strategies import STRATEGIES
-
+from .. import capabilities
 
 app = typer.Typer(name="backtest", help="Strategy backtesting")
 console = Console()
@@ -44,66 +39,26 @@ def _run_async(coro: Any, json_output: bool) -> Any:
 def run_backtest(
     code: str = typer.Argument(..., help="Stock code"),
     strategy: str = typer.Option(..., "--strategy", "-s", help="Strategy name"),
-    start_date: Optional[str] = typer.Option(None, "--start-date", help="Start date (YYYY-MM-DD)"),
-    end_date: Optional[str] = typer.Option(None, "--end-date", help="End date (YYYY-MM-DD)"),
+    start_date: Optional[str] = typer.Option(
+        None, "--start-date", help="Start date (YYYY-MM-DD)"
+    ),
+    end_date: Optional[str] = typer.Option(
+        None, "--end-date", help="End date (YYYY-MM-DD)"
+    ),
     capital: float = typer.Option(100000.0, "--capital", "-c", help="Initial capital"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Run strategy backtest"""
-    # Validate strategy name
-    if strategy not in STRATEGIES:
-        console.print(f"[red]Error: Unknown strategy name '{strategy}'[/red]")
-        console.print(f"Available strategies: {', '.join(STRATEGIES.keys())}")
-        raise typer.Exit(1)
-
-    # Parse dates
-    if end_date:
-        end_dt = datetime.strptime(end_date, "%Y-%m-%d").date()
-    else:
-        end_dt = date.today()
-
-    if start_date:
-        start_dt = datetime.strptime(start_date, "%Y-%m-%d").date()
-    else:
-        start_dt = end_dt - timedelta(days=365)
 
     async def _run() -> dict[str, Any]:
-        db = Database(str(DB_PATH))
-        await db.connect()
-        try:
-            # Get historical data
-            service = QuoteService(db)
-            df = await service.get_daily(code)
-
-            if df.empty:
-                return {"error": "No data"}
-
-            # Filter date range
-            if "date" in df.columns:
-                df["date"] = df["date"].apply(
-                    lambda x: datetime.strptime(x, "%Y-%m-%d").date()
-                    if isinstance(x, str) else x
-                )
-                df = df[(df["date"] >= start_dt) & (df["date"] <= end_dt)]
-            else:
-                # Use index as date
-                df = df.iloc[-365:]
-
-            if df.empty:
-                return {"error": "No data in the specified date range"}
-
-            # Run backtest
-            engine = BacktestEngine()
-            result = engine.run(
-                df,
-                strategy_name=strategy,
-                initial_capital=capital,
-            )
-            result.code = code
-
-            return result.to_dict()
-        finally:
-            await db.close()
+        return await capabilities.run_signal_backtest(
+            code,
+            strategy=strategy,
+            start_date=start_date,
+            end_date=end_date,
+            capital=capital,
+            db_path=DB_PATH,
+        )
 
     result = _run_async(_run(), json_output)
 
@@ -122,10 +77,7 @@ def list_strategies(
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """List available strategies"""
-    strategies = [
-        {"name": name, "description": cls.description}
-        for name, cls in STRATEGIES.items()
-    ]
+    strategies = capabilities.list_signal_strategies()
 
     if json_output:
         _print_json(strategies)
