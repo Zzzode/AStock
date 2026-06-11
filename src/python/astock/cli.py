@@ -1364,6 +1364,13 @@ from .backtest.backtest_cli import app as backtest_app
 app.add_typer(backtest_app, name="backtest")
 
 
+# ============ Portfolio Command Group ============
+
+from .portfolio.portfolio_cli import app as portfolio_app
+
+app.add_typer(portfolio_app, name="portfolio")
+
+
 # ============ Watch Command Group ============
 
 from .monitor.watch_cli import app as watch_app

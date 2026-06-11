@@ -13,19 +13,24 @@ This directory contains reusable subagent role definitions. Skills in `.agents/s
 | Contrarian Analyst | `contrarian-analyst.md` | Counterarguments, failure scenarios, bear case construction |
 | Data Collector | `data-collector.md` | Structured financial and market data gathering |
 | Data Verifier | `data-verifier.md` | Cross-verify all data against official sources |
+| Report Collector | `report-collector.md` | Collect sell-side broker research reports, output structured catalog |
+| Report Analyzer | `report-analyzer.md` | Synthesize broker reports into consensus matrix, divergences, blind spots |
 | Valuation Modeler | `valuation-modeler.md` | PE/PEG/PS/DCF models, three-tier targets, scenario analysis |
 | LaTeX Writer | `latex-writer.md` | Professional IB-style LaTeX/PDF report production |
 | Reviewer | `reviewer.md` | Quality gate with S/A/B severity, publication blocking authority |
+| Internal Control | `internal-control.md` | System quality audit, prompt review, feedback patterns, sync verification |
 
 ## Usage by Skills
 
 | Skill | Roles Used |
 |-------|-----------|
-| `/team` | market-analyst, fundamental-analyst, risk-analyst, contrarian-analyst (+ expansion pool) |
-| `/equity-research` | data-collector, data-verifier, industry-analyst, valuation-modeler, risk-analyst, latex-writer, reviewer |
+| `/team` | market-analyst, fundamental-analyst, risk-analyst, contrarian-analyst, report-collector, report-analyzer (+ expansion pool) |
+| `/equity-research` | report-collector, report-analyzer, data-collector, data-verifier, industry-analyst, valuation-modeler, risk-analyst, latex-writer, reviewer |
 | `/analyze` | market-analyst (when producing formal report) |
 | `/backtest` | latex-writer (when producing formal report) |
-| `/recommend` | fundamental-analyst, risk-analyst (subset for candidate evaluation) |
+| `/recommend` | fundamental-analyst, risk-analyst, report-analyzer (subset for candidate evaluation) |
+| `/reports` | report-collector (discovery + full-text download orchestration) |
+| `/evolve` | internal-control (+ reads all other role files for audit) |
 
 ## Role File Format
 

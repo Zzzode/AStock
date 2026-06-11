@@ -66,6 +66,9 @@ Agent: Running MA crossover backtest...
 | /recommend | Personalized recommendations | "Recommend some stocks for me" |
 | /monitor | Stock monitoring & alerts | "Watch this stock" / "Start monitoring" / "Alert history" |
 | /config | Configuration management | `/config style` |
+| /portfolio | Portfolio management | "My positions" / "Buy X shares" / "Portfolio risk" |
+| /reports | Research report collection & archiving | "Collect reports on X" / "Download research reports" / "收集研报" |
+| /evolve | Internal control & system evolution | "Audit agents" / "System health check" / "What's not working?" |
 
 ## Agent Team Workflow
 
@@ -132,9 +135,12 @@ src/python/astock/          # Python capability layer (core)
 │   ├── contrarian-analyst.md
 │   ├── data-collector.md
 │   ├── data-verifier.md
+│   ├── report-collector.md
+│   ├── report-analyzer.md
 │   ├── valuation-modeler.md
 │   ├── latex-writer.md
-│   └── reviewer.md
+│   ├── reviewer.md
+│   └── internal-control.md
 ├── templates/              # Shared LaTeX templates
 │   ├── preamble.tex        # IB-style formatting (all reports)
 │   ├── report-brief.tex    # Lightweight (team/analyze/backtest/recommend)
@@ -152,11 +158,15 @@ src/python/astock/          # Python capability layer (core)
     ├── recommend/skill.md
     ├── monitor/skill.md
     ├── config/skill.md
+    ├── portfolio/skill.md
+    ├── reports/skill.md
+    ├── evolve/skill.md
     └── agent-resilience/skill.md
 
 workspace/                  # All research outputs (LaTeX → PDF)
 ├── team/<CODE>-<YYYYMMDD>/          # Quick decision reports
 ├── research/<topic>-<YYYYMMDD>/     # Deep equity research
+├── reports/<sector>/<YYYYMMDD>/     # Archived broker research reports
 ├── backtest/<CODE>-<strat>-<YYYYMMDD>/ # Backtest reports
 └── recommend/<YYYYMMDD>/            # Recommendation reports
 

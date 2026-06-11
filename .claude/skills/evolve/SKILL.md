@@ -1,0 +1,128 @@
+---
+name: evolve
+description: Use when user wants to audit agent quality, review system integrity, improve prompts based on feedback patterns, detect drift or anti-patterns, or trigger the internal control process. Triggers on "audit agents", "evolve the system", "check agent quality", "review feedback patterns", "system health check", "are agents in sync", "improve prompts", "what's not working", or after substantial tasks when user asks for a retrospective.
+---
+
+<SUBAGENT-STOP>
+If you were dispatched as a subagent to execute a specific task, skip this skill.
+</SUBAGENT-STOP>
+
+# /evolve - Internal Control & System Evolution
+
+Orchestrate the internal-control agent to audit system quality, detect drift, and propose improvements. All agent capabilities live in `.agents/team/internal-control.md` — this skill only defines the pipeline.
+
+## When to Trigger
+
+| Condition | Scope | Priority |
+|-----------|-------|----------|
+| User explicitly requests audit | As specified by user | Immediate |
+| After substantial task with negative feedback | `feedback_analysis` | Suggest to user |
+| Recurring errors in same dimension | `single_role` or `single_skill` | Suggest to user |
+| Periodic (user asks "system health") | `full_system` | On demand |
+
+## Step 1: Determine Audit Scope
+
+Parse user intent to determine:
+- **Scope**: `full_system` | `single_role:<name>` | `single_skill:<name>` | `feedback_analysis` | `sync_check`
+- **Trigger**: what prompted this audit
+- **Depth**: quick scan | thorough audit
+
+If unclear, ask user which mode they want.
+
+## Step 2: Gather Audit Data
+
+### For `feedback_analysis`:
+
+```bash
+.venv/bin/python -m astock.cli feedback --json
+.venv/bin/python -m astock.cli memory history --limit 50 --json
+```
+
+### For `sync_check`:
+
+Read and cross-reference:
+- `.agents/team/agents.json` (registered roles)
+- `.agents/team/README.md` (documented roster)
+- `.agents/team/*.md` (actual role files that exist on disk)
+- `.agents/skills/*/SKILL.md` (skill files referencing roles)
+- `AGENTS.md` (root documentation)
+
+### For `single_role:<name>`:
+
+Read the role file + grep workspace/ for recent outputs from that role + check memory.
+
+### For `full_system`:
+
+Combine all of the above.
+
+## Step 3: Dispatch Internal Control Agent
+
+Dispatch with prompt from: `.agents/team/internal-control.md`
+
+Provide:
+- Trigger context and scope
+- All gathered audit data from Step 2
+- Relevant role/skill file contents
+- Feedback summary (if applicable)
+
+The agent produces its structured Audit Report per its Output Contract.
+
+## Step 4: Present Findings
+
+Display the Audit Report:
+1. Executive summary (1-2 sentences)
+2. S-level findings — highlighted prominently
+3. A-level findings
+4. B-level findings
+5. Proposed changes (with diffs)
+6. Anti-patterns detected
+7. Metrics dashboard
+
+## Step 5: Human Approval Gate
+
+**CRITICAL: Never auto-apply changes.**
+
+For each proposed change, present the diff and ask the user whether to apply. Only after explicit approval:
+- Apply the approved diff to the target file
+- Update `.agents/skills/evolve/anti-patterns.md` if new patterns detected
+- Store audit results in memory:
+
+```bash
+.venv/bin/python -m astock.cli memory store --agent internal-control --session <YYYYMMDD> --key "audit:latest" --value '<JSON summary>' --json
+```
+
+## Step 6: Record Audit History
+
+After completion, store summary for trend tracking:
+
+```bash
+.venv/bin/python -m astock.cli memory store --agent internal-control --session <YYYYMMDD> --key "audit:<scope>" --value '{"scope":"<scope>","s_count":<n>,"a_count":<n>,"b_count":<n>,"changes_applied":<n>,"date":"<YYYY-MM-DD>"}' --json
+```
+
+## Quick Audit Mode
+
+For a fast post-task check (suggested after team/equity-research with negative feedback):
+
+1. Run only `feedback_analysis` scope
+2. Identify if the same strategy/signal has failed 3+ times
+3. If pattern detected, suggest specific prompt adjustment
+4. Present one-liner suggestion (no full report)
+
+## Command Reference
+
+```bash
+.venv/bin/python -m astock.cli feedback --json
+.venv/bin/python -m astock.cli memory recall --agent internal-control --key "audit:latest" --json
+.venv/bin/python -m astock.cli memory history --limit 50 --json
+.venv/bin/python -m astock.cli memory store --agent internal-control --session <DATE> --key <KEY> --value '<JSON>' --json
+```
+
+## Prohibitions
+
+- Do NOT auto-apply any changes without explicit user approval
+- Do NOT audit trading conclusions or financial data (other roles' domain)
+- Do NOT run full_system audit unless user explicitly requests it (expensive)
+- Do NOT suggest changes to files outside .agents/, AGENTS.md, or data/config/
+- Do NOT inflate severity to make findings seem more important
+- Do NOT propose changes that contradict the project's Language Policy or Document Format Policy
+- Do NOT trigger automatically in the background — always require user initiation or consent

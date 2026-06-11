@@ -37,6 +37,16 @@ Do NOT use factor names that don't exist in this repository.
 .venv/bin/python -m astock.cli screen --codes 000001 --json
 ```
 
+#### Industry Filtering
+
+```bash
+# Screen only within banking sector
+.venv/bin/python -m astock.cli screen pe_low,pb_low --industry 银行 --json --limit 10
+
+# Exclude a sector
+.venv/bin/python -m astock.cli screen ma5_cross_ma20 --exclude-industry 房地产 --json --limit 10
+```
+
 ### Step 3: Parse Results and Complete Agent Reasoning
 
 Key Python output fields:

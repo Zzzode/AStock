@@ -34,6 +34,16 @@
     "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
     "sandbox_mode": "read-only"
   },
+  "report-collector": {
+    "description": "Collect sell-side broker research reports for a sector or ticker from public sources, output structured catalog with metadata and key excerpts",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "report-analyzer": {
+    "description": "Synthesize multiple broker reports into consensus matrix, identify divergences, blind spots, and crowded-trade risks",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
   "valuation-modeler": {
     "description": "PE/PEG/PS/DCF valuation models, three-tier target prices, seasonality calibration, sell-side bias detection",
     "tools": ["Read", "Grep", "Glob", "Bash"],
@@ -46,6 +56,11 @@
   },
   "reviewer": {
     "description": "Senior research director quality gate - S/A/B severity review with publication blocking authority",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  },
+  "internal-control": {
+    "description": "System quality audit, prompt review, feedback pattern analysis, sync verification, and improvement proposals",
     "tools": ["Read", "Grep", "Glob", "Bash"],
     "sandbox_mode": "read-only"
   }

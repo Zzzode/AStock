@@ -29,13 +29,20 @@ If key parameters are missing, ask the user a brief clarifying question directly
 ## Invocation
 
 ```bash
-.venv/bin/python -m astock.cli backtest 000001 --strategy ma_cross --start-date 2025-03-20 --end-date 2026-03-20 --capital 100000
+.venv/bin/python -m astock.cli backtest run 000001 --strategy ma_cross --start-date 2025-03-20 --end-date 2026-03-20 --capital 100000
+```
+
+### List Available Strategies
+
+```bash
+.venv/bin/python -m astock.cli backtest list --json
 ```
 
 ## Available Strategies
 
-- `ma_cross`
-- `macd`
+- `ma_cross` — MA Crossover (golden cross buy, death cross sell)
+- `macd` — MACD Cross (histogram sign change)
+- `rsi` — RSI Overbought/Oversold
 
 ## Key Output Metrics
 

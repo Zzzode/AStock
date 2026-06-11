@@ -31,22 +31,19 @@ Unified skill for managing stock watch lists, running the monitoring service, an
 .venv/bin/python -m astock.cli watch list --json
 ```
 
-### Condition Syntax
+### Signal Types
 
-Supported conditions (`--cond` parameter):
+The `--signals` parameter accepts comma-separated technical signal types to monitor:
 
-| Condition | Description | Example |
-|-----------|------------|---------|
-| `price>X` | Price above X | `--cond "price>100"` |
-| `price<X` | Price below X | `--cond "price<50"` |
-| `change_percent>X` | Gain exceeds X% | `--cond "change_percent>5"` |
-| `change_percent<X` | Loss exceeds X% | `--cond "change_percent<-3"` |
-| `volume>X` | Volume exceeds X | `--cond "volume>1000000"` |
+- `macd` — MACD golden/death cross
+- `rsi` — RSI overbought/oversold
+- `kdj` — KDJ overbought/oversold
+- `ma` — MA golden/death cross
 
-Multiple conditions (comma-separated):
+Example:
 
 ```bash
-.venv/bin/python -m astock.cli watch add 000001 --cond "price>10,change_percent>3"
+.venv/bin/python -m astock.cli watch add 000001 --signals "macd,rsi" --channels terminal
 ```
 
 ## Service Lifecycle
@@ -102,6 +99,13 @@ Multiple conditions (comma-separated):
 | Database read/write fails | Retry once; on failure, notify user |
 
 ## Related Files
+
+- `src/python/astock/cli.py` — CLI entry (alert + watch commands)
+- `src/python/astock/monitor/monitor_service.py` — Monitoring service
+- `src/python/astock/monitor/watch_cli.py` — Watch management CLI
+- `src/python/astock/monitor/scanner.py` — Signal scanner
+- `src/python/astock/monitor/alert_engine.py` — Alert engine
+s
 
 - `src/python/astock/cli.py` — CLI entry (alert + watch commands)
 - `src/python/astock/monitor/monitor_service.py` — Monitoring service

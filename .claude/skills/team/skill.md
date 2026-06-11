@@ -149,6 +149,17 @@ Core team (prompt files in `.agents/team/`):
 | `industry-analyst` | `.agents/team/industry-analyst.md` |
 | `risk-analyst` | `.agents/team/risk-analyst.md` |
 | `contrarian-analyst` | `.agents/team/contrarian-analyst.md` |
+| `report-collector` | `.agents/team/report-collector.md` |
+| `report-analyzer` | `.agents/team/report-analyzer.md` |
+
+### Report Collection Integration
+
+After shared data packet is ready, dispatch `report-collector` in parallel with other core roles:
+- Input: stock code/name + sector + last 90 days
+- Once catalog returns, feed it to `report-analyzer`
+- Report Analyzer output feeds into the final merge: Street consensus view, divergence points, and blind spots supplement the team's own analysis
+
+If report collection fails (no reports found, network error), degrade gracefully — note "no sell-side coverage" and proceed with internal analysis only.
 
 ## Step 5: Dynamic Expansion
 
@@ -219,11 +230,12 @@ Final output must include:
 3. Bear arguments
 4. Technical assessment
 5. Fundamental / policy assessment
-6. Key price levels
-7. Position sizing recommendation
-8. Risk warnings
-9. Degradation notes
-10. Consistency / conflict points with data packet quality constraints
+6. Street consensus (from report-analyzer: broker ratings, target prices, divergences, blind spots)
+7. Key price levels
+8. Position sizing recommendation
+9. Risk warnings
+10. Degradation notes
+11. Consistency / conflict points with data packet quality constraints
 
 When role opinions conflict:
 
