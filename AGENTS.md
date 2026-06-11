@@ -69,11 +69,17 @@ Top-level agents and skills should use the following foundation capabilities whe
 
 2. **Market event normalization**
    - Use `astock.capabilities.build_market_event_packet()` to convert quote, screen, signal, sector, fund-flow, alert, news, or policy payloads into canonical market events.
+   - Use `astock.capabilities.build_fund_flow_anomaly_packet()` or `astock.capabilities.detect_market_anomalies()` for board-monitoring snapshots that may contain price breakout, volume spike, fund-flow surge/outflow, flow-price divergence, sector rotation, or risk-release signals.
    - Use `record_market_events()`, `list_market_events()`, `aggregate_market_events()`, and `replay_market_subject_events()` when events need persistence, de-duplication, market-board aggregation, or stock/sector/theme replay.
    - Agents should reason over event type, subject, severity, direction, metrics, context, tags, and quality instead of parsing ad hoc strings.
    - Market monitoring should distinguish observation from conclusion: Python emits events; agents explain why they matter.
 
-3. **Research opportunity ledger**
+3. **Market relationship mapping**
+   - Use `resolve_market_subject_context()` when stock-level analysis needs industry, sector, theme, concept, or industry-chain context.
+   - Use `upsert_market_subject_mapping()` and `list_market_subject_mappings()` to maintain and query persistent stock-to-theme/chain relationships.
+   - Do not hard-code sector, theme, or industry-chain assumptions inside skill prompts when a capability packet can provide the relationship context.
+
+4. **Research opportunity ledger**
    - Use `create_research_entry()`, `list_research_entries()`, `record_research_observation()`, and `update_research_status()` for investment opportunity lifecycle tracking.
    - Use `create_evidence_item()`, `create_evidence_packet()`, and `review_research_entry()` when new evidence should strengthen, weaken, invalidate, or require review of an existing thesis.
    - Material conclusions should include thesis, targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
@@ -196,8 +202,9 @@ Record feedback:
 src/python/astock/          # Python capability layer (core)
 ├── capabilities.py         # Agent/skill capability kernel
 ├── cli.py                  # Machine adapter for JSON subprocess calls
+├── data/                   # Industry data and market relationship maps
 ├── data_provenance/        # Source, freshness, quality, fallback metadata
-├── market_event/           # Canonical market-monitoring event model and JSONL store
+├── market_event/           # Market events, JSONL store, fund-flow anomaly detection
 ├── research/               # Research opportunity ledger, evidence packets, thesis review
 ├── quote/                  # Quote service
 ├── analysis/               # Technical analysis

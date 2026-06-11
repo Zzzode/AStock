@@ -112,6 +112,71 @@ def test_capability_market_event_store_round_trip(tmp_path: Path) -> None:
     }
 
 
+def test_capability_market_subject_mapping_round_trip(tmp_path: Path) -> None:
+    market_map_path = tmp_path / "market-map.json"
+    node = capabilities.create_industry_chain_node(
+        chain="AI infrastructure",
+        stage="Compute hardware",
+        role="Server supplier",
+        downstream=["Cloud capex"],
+    )
+    saved = capabilities.upsert_market_subject_mapping(
+        {
+            "code": "1",
+            "name": "Ping An Bank",
+            "industry": "Banking",
+            "industry_code": "BK0477",
+            "sectors": ["Finance"],
+            "themes": ["High dividend"],
+            "concepts": ["Retail banking"],
+            "industry_chain": [node["node"]],
+            "source_refs": ["manual_seed"],
+        },
+        market_map_path=market_map_path,
+    )
+    resolved = capabilities.resolve_market_subject_context(
+        "SZ000001",
+        market_map_path=market_map_path,
+    )
+    listed = capabilities.list_market_subject_mappings(
+        theme="High dividend",
+        market_map_path=market_map_path,
+    )
+
+    assert saved["mapping"]["code"] == "000001"
+    assert resolved["found"] is True
+    assert resolved["relationships"]["industry"]["name"] == "Banking"
+    assert listed["total"] == 1
+    assert listed["mappings"][0]["themes"] == ["High dividend"]
+
+
+def test_capability_fund_flow_anomaly_packet() -> None:
+    packet = capabilities.build_fund_flow_anomaly_packet(
+        {
+            "code": "000001",
+            "name": "Ping An Bank",
+            "industry": "Banking",
+            "theme": "High dividend",
+            "change_pct": -1.5,
+            "net_flow": 220_000_000,
+            "timestamp": "2026-06-12T10:30:00+08:00",
+        },
+        source="unit-test",
+    )
+    event_types = {event["event_type"] for event in packet["market_events"]}
+    divergence = next(
+        event
+        for event in packet["market_events"]
+        if event["context"]["anomaly_type"] == "flow_price_divergence"
+    )
+
+    assert packet["success"] is True
+    assert "fund_flow_move" in event_types
+    assert packet["snapshot"]["subject"]["type"] == "stock"
+    assert divergence["direction"] == "mixed"
+    assert divergence["subject"]["code"] == "000001"
+
+
 @pytest.mark.asyncio  # type: ignore[untyped-decorator]
 async def test_get_quote_attaches_provenance_and_market_events(
     monkeypatch: pytest.MonkeyPatch,

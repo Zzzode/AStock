@@ -134,6 +134,8 @@ Foundation post-processing:
 
 - Preserve or create data provenance records for material quote, technical, screen, report, and policy inputs.
 - Normalize abnormal price, volume, sector, fund-flow, technical-signal, alert, news, and policy observations through `astock.capabilities.build_market_event_packet()`.
+- Resolve stock-to-sector/theme/industry-chain context through `astock.capabilities.resolve_market_subject_context()` when relationship context affects the thesis.
+- Detect board-monitoring anomalies through `astock.capabilities.build_fund_flow_anomaly_packet()` when the packet includes fund-flow, volume, rotation, or risk-release fields.
 - Use canonical market events as shared evidence for role agents; do not ask each role to parse raw strings independently.
 
 Minimal foundation example:
@@ -156,6 +158,15 @@ packet_provenance = capabilities.combine_data_provenance_records(
 quote_events = capabilities.build_market_event_packet(
     packet.get("quote", {}),
     payload_type="quote",
+    source="team.shared_packet",
+)
+market_context = (
+    capabilities.resolve_market_subject_context(packet["code"])
+    if packet.get("code")
+    else {"found": False, "warnings": ["missing_code"]}
+)
+anomaly_packet = capabilities.build_fund_flow_anomaly_packet(
+    packet.get("fund_flow") or packet.get("quote", {}),
     source="team.shared_packet",
 )
 ```

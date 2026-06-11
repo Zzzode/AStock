@@ -8,6 +8,7 @@ CLI and API entry points should stay thin adapters over these functions.
 from __future__ import annotations
 
 from collections.abc import Mapping, Sequence
+from dataclasses import fields
 from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Any, Optional, cast
@@ -15,18 +16,27 @@ from typing import Any, Optional, cast
 from .backtest.engine import BacktestEngine
 from .backtest.strategies import STRATEGIES
 from .config import ConfigManager
-from .data import get_industry_service
+from .data import (
+    IndustryChainNode,
+    MarketMapStore,
+    MarketSubjectMapping,
+    get_industry_service,
+)
 from .data_provenance import DataProvenance, combine_provenance
 from .market_event import (
     EventStore,
+    FundFlowThresholds,
     MarketEvent,
     build_alert_trigger_event,
     build_events_from_quote_payload,
     build_events_from_screen_payload,
     build_events_from_signal_payload,
+    build_fund_flow_anomaly_packet as _build_fund_flow_anomaly_packet,
     build_fund_flow_event,
     build_news_policy_event,
     build_sector_move_event,
+    detect_market_anomalies as _detect_market_anomalies,
+    normalize_fund_flow_snapshot as _normalize_fund_flow_snapshot,
 )
 from .memory import FeedbackLearner
 from .quote import QuoteService
@@ -50,6 +60,7 @@ PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DB_PATH = PROJECT_ROOT / "data" / "stocks.db"
 DEFAULT_RESEARCH_LEDGER_PATH = PROJECT_ROOT / "data" / "research-ledger.json"
 DEFAULT_MARKET_EVENT_STORE_PATH = PROJECT_ROOT / "data" / "market-events.jsonl"
+DEFAULT_MARKET_MAP_PATH = PROJECT_ROOT / "data" / "market-map.json"
 
 
 def _resolve_db_path(db_path: Optional[Path] = None) -> Path:
@@ -62,6 +73,10 @@ def _resolve_research_ledger_path(ledger_path: Optional[Path] = None) -> Path:
 
 def _resolve_market_event_store_path(event_store_path: Optional[Path] = None) -> Path:
     return event_store_path or DEFAULT_MARKET_EVENT_STORE_PATH
+
+
+def _resolve_market_map_path(market_map_path: Optional[Path] = None) -> Path:
+    return market_map_path or DEFAULT_MARKET_MAP_PATH
 
 
 def _parse_date(value: Optional[str | date], default: date) -> date:
@@ -425,6 +440,136 @@ def combine_data_provenance_records(
     return cast(dict[str, Any], combined.to_dict())
 
 
+def create_industry_chain_node(
+    *,
+    chain: str,
+    stage: str,
+    role: str = "",
+    upstream: Optional[Sequence[str]] = None,
+    downstream: Optional[Sequence[str]] = None,
+    related_industries: Optional[Sequence[str]] = None,
+    weight: Optional[float] = None,
+    source_refs: Optional[Sequence[str]] = None,
+) -> dict[str, Any]:
+    """Build one JSON-ready industry-chain relationship node."""
+    node = IndustryChainNode(
+        chain=chain,
+        stage=stage,
+        role=role,
+        upstream=list(upstream or []),
+        downstream=list(downstream or []),
+        related_industries=list(related_industries or []),
+        weight=weight,
+        source_refs=list(source_refs or []),
+    )
+    return {"success": True, "node": node.to_dict()}
+
+
+def create_market_subject_mapping(
+    mapping: Mapping[str, Any] | MarketSubjectMapping,
+    *,
+    market_map_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Create a persistent stock-to-market-relationship mapping."""
+    resolved_path = _resolve_market_map_path(market_map_path)
+    saved = MarketMapStore(resolved_path).create(mapping)
+    return {
+        "success": True,
+        "market_map_path": str(resolved_path),
+        "mapping": saved.to_dict(),
+        "packet": saved.to_packet(),
+    }
+
+
+def upsert_market_subject_mapping(
+    mapping: Mapping[str, Any] | MarketSubjectMapping,
+    *,
+    market_map_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Create or replace one stock-to-market-relationship mapping."""
+    resolved_path = _resolve_market_map_path(market_map_path)
+    saved = MarketMapStore(resolved_path).upsert(mapping)
+    return {
+        "success": True,
+        "market_map_path": str(resolved_path),
+        "mapping": saved.to_dict(),
+        "packet": saved.to_packet(),
+    }
+
+
+def get_market_subject_mapping(
+    code: str | int,
+    *,
+    market_map_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Return one stored market relationship mapping by stock code."""
+    resolved_path = _resolve_market_map_path(market_map_path)
+    store = MarketMapStore(resolved_path)
+    mapping = store.get(code)
+    return {
+        "success": mapping is not None,
+        "market_map_path": str(resolved_path),
+        "mapping": mapping.to_dict() if mapping else None,
+        "packet": mapping.to_packet() if mapping else store.resolve(code),
+    }
+
+
+def list_market_subject_mappings(
+    *,
+    industry: Optional[str] = None,
+    sector: Optional[str] = None,
+    theme: Optional[str] = None,
+    concept: Optional[str] = None,
+    chain: Optional[str] = None,
+    stage: Optional[str] = None,
+    limit: Optional[int] = 100,
+    market_map_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """List stock relationship mappings by industry, sector, theme, concept, or chain."""
+    resolved_path = _resolve_market_map_path(market_map_path)
+    store = MarketMapStore(resolved_path)
+    has_filter = any([industry, sector, theme, concept, chain, stage])
+    mappings = (
+        store.filter(
+            industry=industry,
+            sector=sector,
+            theme=theme,
+            concept=concept,
+            chain=chain,
+            stage=stage,
+        )
+        if has_filter
+        else store.list_mappings()
+    )
+    total = len(mappings)
+    if limit is not None:
+        mappings = mappings[: max(limit, 0)]
+
+    return {
+        "success": True,
+        "market_map_path": str(resolved_path),
+        "total": total,
+        "returned": len(mappings),
+        "mappings": [mapping.to_dict() for mapping in mappings],
+        "packets": [mapping.to_packet() for mapping in mappings],
+    }
+
+
+def resolve_market_subject_context(
+    code: str | int,
+    *,
+    market_map_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Return an agent-facing relationship packet for one stock code."""
+    resolved_path = _resolve_market_map_path(market_map_path)
+    packet = MarketMapStore(resolved_path).resolve(code)
+    return {
+        "success": True,
+        "market_map_path": str(resolved_path),
+        **packet,
+    }
+
+
 def build_market_event_packet(
     payload: Mapping[str, Any] | Any,
     *,
@@ -516,6 +661,89 @@ def build_market_event_packet(
         "payload_type": normalized_type,
         "event_count": len(events),
         "events": _serialize_events(events),
+    }
+
+
+def _parse_fund_flow_thresholds(
+    thresholds: Optional[Mapping[str, Any] | FundFlowThresholds],
+) -> FundFlowThresholds | None:
+    if thresholds is None or isinstance(thresholds, FundFlowThresholds):
+        return thresholds
+
+    allowed_fields = {field.name for field in fields(FundFlowThresholds)}
+    kwargs: dict[str, float] = {}
+    for key, value in thresholds.items():
+        if key not in allowed_fields or value is None:
+            continue
+        try:
+            kwargs[key] = float(value)
+        except (TypeError, ValueError) as exc:
+            msg = f"fund-flow threshold must be numeric: {key}"
+            raise ValueError(msg) from exc
+    return FundFlowThresholds(**kwargs)
+
+
+def normalize_fund_flow_snapshot_packet(
+    payload: Mapping[str, Any] | Any,
+    *,
+    source: Optional[str] = None,
+    observed_at: Optional[str | datetime] = None,
+) -> dict[str, Any]:
+    """Normalize a fund-flow payload into an agent-facing snapshot packet."""
+    snapshot = _normalize_fund_flow_snapshot(
+        payload,
+        source=source,
+        observed_at=observed_at,
+    )
+    return {
+        "success": True,
+        "schema_version": "fund_flow.snapshot.v1",
+        "snapshot": snapshot.to_dict(),
+    }
+
+
+def build_fund_flow_anomaly_packet(
+    payload: Mapping[str, Any] | Any,
+    *,
+    thresholds: Optional[Mapping[str, Any] | FundFlowThresholds] = None,
+    source: Optional[str] = None,
+    observed_at: Optional[str | datetime] = None,
+) -> dict[str, Any]:
+    """Detect market-board anomalies and return canonical event packets."""
+    packet = _build_fund_flow_anomaly_packet(
+        payload,
+        thresholds=_parse_fund_flow_thresholds(thresholds),
+        source=source,
+        observed_at=observed_at,
+    )
+    return {
+        "success": True,
+        "schema_version": "fund_flow.anomaly_packet.v1",
+        "payload_type": "fund_flow_anomaly",
+        **dict(packet),
+    }
+
+
+def detect_market_anomalies(
+    payload: Mapping[str, Any] | Any,
+    *,
+    thresholds: Optional[Mapping[str, Any] | FundFlowThresholds] = None,
+    source: Optional[str] = None,
+    observed_at: Optional[str | datetime] = None,
+) -> dict[str, Any]:
+    """Alias for fund-flow anomaly detection through the capability kernel."""
+    events = _detect_market_anomalies(
+        payload,
+        thresholds=_parse_fund_flow_thresholds(thresholds),
+        source=source,
+        observed_at=observed_at,
+    )
+    return {
+        "success": True,
+        "schema_version": "fund_flow.anomaly_packet.v1",
+        "payload_type": "fund_flow_anomaly",
+        "event_count": len(events),
+        "market_events": _serialize_events(events),
     }
 
 

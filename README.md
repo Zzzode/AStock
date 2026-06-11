@@ -16,6 +16,8 @@ This is **not** an automated trading, broker order-routing, OMS, or EMS system. 
 - Quote lookup with data-quality handling
 - Data provenance records for source, freshness, fallback, warnings, and errors
 - Canonical market event packets and event storage for quote, signal, sector, fund-flow, alert, news, and policy data
+- Market relationship mapping for stock, industry, sector, theme, concept, and industry-chain context
+- Fund-flow snapshot normalization and anomaly detection for board monitoring
 - Research opportunity ledger, evidence packets, thesis review, monitoring triggers, invalidation, and follow-up observations
 - Multi-expert opportunity analysis via Agent Skills
 - Technical analysis: MA, MACD, KDJ, RSI, support/resistance context
@@ -96,7 +98,8 @@ Claude Code / Codex conversation
 Core Python modules live in `src/python/astock/`:
 
 - `capabilities.py` - stable agent/skill capability kernel
-- `data_provenance/`, `market_event/`, `research/` - foundation packets, event store, evidence, and ledgers
+- `data_provenance/`, `market_event/`, `research/` - foundation packets, event store, anomaly detection, evidence, and ledgers
+- `data/` - industry data and market relationship maps
 - `quote/`, `analysis/`, `stock_picker/`, `backtest/`
 - `monitor/`, `recommend/`, `portfolio/`, `memory/`
 - `services/`, `storage/`, `config/`, `utils/`
