@@ -37,6 +37,28 @@ Do NOT use factor names that don't exist in this repository.
 .venv/bin/python -m astock.cli screen --codes 000001 --json
 ```
 
+### Step 2b: Foundation Capability Example
+
+When screening results become a candidate list or research input, keep screen
+provenance and normalize each matched candidate into events:
+
+```python
+from astock import capabilities
+
+screen_provenance = capabilities.create_data_provenance_record(
+    source="astock.cli screen",
+    quality_tier="snapshot",
+)
+screen_events = [
+    capabilities.build_market_event_packet(
+        candidate,
+        payload_type="screen",
+        source="astock.cli screen",
+    )
+    for candidate in screen_payload.get("results", [])
+]
+```
+
 #### Industry Filtering
 
 ```bash

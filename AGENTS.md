@@ -39,6 +39,7 @@ Python must provide deterministic, structured capabilities only:
 - Compute indicators, screen factors, backtest technical signals, build data packets, and compile PDFs.
 - Return JSON-serializable dictionaries or data objects suitable for agent reasoning.
 - Never be the final analysis voice for the user; the AI agent performs interpretation, synthesis, and final communication.
+- Preserve source, timestamp, quality, warning, and fallback metadata for data used in user-facing conclusions.
 
 Preferred Python integration path:
 
@@ -56,6 +57,25 @@ Current shell commands such as `.venv/bin/python -m astock.cli quote 000001 --js
 - Do not duplicate orchestration logic in CLI/API adapters.
 - New skills should call the capability kernel directly when possible; when shell execution is simpler, call CLI adapters with `--json`.
 - Python output should be data packets with explicit `data_quality`, `warnings`, and `error` fields where applicable.
+
+## Foundation Capability Rules
+
+Top-level agents and skills should use the following foundation capabilities when they produce research or market-monitoring conclusions:
+
+1. **Data provenance**
+   - Use `astock.capabilities.create_data_provenance_record()` for source records and `combine_data_provenance_records()` for derived packets.
+   - Every material market, fundamental, report, or monitoring data packet should expose `source`, `timestamp`, `quality_tier`, `fallback_path`, `warnings`, and `errors`.
+   - If live data degrades to delayed, cached, or partial data, disclose that quality tier in the agent conclusion.
+
+2. **Market event normalization**
+   - Use `astock.capabilities.build_market_event_packet()` to convert quote, screen, signal, sector, fund-flow, alert, news, or policy payloads into canonical market events.
+   - Agents should reason over event type, subject, severity, direction, metrics, context, tags, and quality instead of parsing ad hoc strings.
+   - Market monitoring should distinguish observation from conclusion: Python emits events; agents explain why they matter.
+
+3. **Research opportunity ledger**
+   - Use `create_research_entry()`, `list_research_entries()`, `record_research_observation()`, and `update_research_status()` for investment opportunity lifecycle tracking.
+   - Material conclusions should include thesis, targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
+   - Follow-up observations should update the ledger when triggers fire, evidence changes, or a thesis is invalidated.
 
 ## Language Policy
 
@@ -174,6 +194,9 @@ Record feedback:
 src/python/astock/          # Python capability layer (core)
 ├── capabilities.py         # Agent/skill capability kernel
 ├── cli.py                  # Machine adapter for JSON subprocess calls
+├── data_provenance/        # Source, freshness, quality, fallback metadata
+├── market_event/           # Canonical market-monitoring event model
+├── research/               # Research opportunity lifecycle ledger
 ├── quote/                  # Quote service
 ├── analysis/               # Technical analysis
 ├── stock_picker/           # Stock screener
@@ -238,6 +261,28 @@ Each skill is an executable instruction file:
 - `description` field is used for natural language intent matching
 - `<SUBAGENT-STOP>` directive prevents nested invocation
 - Clear execution flow and Python capability invocation patterns
+
+### Skill Copy Synchronization Policy
+
+The repository keeps two runtime skill trees:
+
+- `.agents/skills/` is the shared agent prompt source for Claude-style runtimes.
+- `.codex/skills/` is the Codex runtime mirror.
+
+For any behavior, workflow, command, or foundation-capability change:
+
+- Update both copies in the same change set.
+- Keep paired skill files byte-identical except for required path/name casing differences.
+- Prefer concise examples in `SKILL.md` / `skill.md`; do not create separate skill README files.
+- Verify drift before finishing:
+
+```bash
+cmp -s .agents/skills/quote/skill.md .codex/skills/quote/SKILL.md
+cmp -s .agents/skills/analyze/skill.md .codex/skills/analyze/SKILL.md
+cmp -s .agents/skills/screen/skill.md .codex/skills/screen/SKILL.md
+cmp -s .agents/skills/team/skill.md .codex/skills/team/SKILL.md
+cmp -s .agents/skills/monitor/SKILL.md .codex/skills/monitor/SKILL.md
+```
 
 ## Document Format Policy
 

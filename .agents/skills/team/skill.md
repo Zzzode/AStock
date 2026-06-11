@@ -130,6 +130,36 @@ Shared data packet must contain at minimum:
 - Data quality tier: `full_realtime` / `snapshot_degraded` / `daily_only` / `cache_only`
 - Known gaps
 
+Foundation post-processing:
+
+- Preserve or create data provenance records for material quote, technical, screen, report, and policy inputs.
+- Normalize abnormal price, volume, sector, fund-flow, technical-signal, alert, news, and policy observations through `astock.capabilities.build_market_event_packet()`.
+- Use canonical market events as shared evidence for role agents; do not ask each role to parse raw strings independently.
+
+Minimal foundation example:
+
+```python
+from astock import capabilities
+
+quote_provenance = capabilities.create_data_provenance_record(
+    source="astock.cli team.packet.quote",
+    quality_tier="realtime",
+)
+technical_provenance = capabilities.create_data_provenance_record(
+    source="astock.cli team.packet.analysis",
+    quality_tier="snapshot",
+)
+packet_provenance = capabilities.combine_data_provenance_records(
+    [quote_provenance, technical_provenance],
+    source="team.shared_packet",
+)
+quote_events = capabilities.build_market_event_packet(
+    packet.get("quote", {}),
+    payload_type="quote",
+    source="team.shared_packet",
+)
+```
+
 ## Step 4: Launch Core Team
 
 Do NOT have all roles redundantly analyze base data from the start.
@@ -264,6 +294,36 @@ Use the shared brief template: `.agents/templates/report-brief.tex`
 If Python `team` already generated `session_path`, save `packet.json` from that data.
 
 Reports should be concise and actionable — avoid empty platitudes.
+
+## Step 10: Persist Research Ledger When Material
+
+If the final conclusion identifies a material investment opportunity, watchlist candidate, or invalidated thesis, update the research ledger through `astock.capabilities`:
+
+- `create_research_entry()` for a new thesis with targets, catalysts, risks, monitoring triggers, invalidation conditions, source references, and data quality.
+- `record_research_observation()` when a follow-up trigger fires or evidence changes.
+- `update_research_status()` when the thesis moves to `monitoring`, `invalidated`, `closed`, or `archived`.
+
+Minimal ledger example:
+
+```python
+from astock import capabilities
+
+ledger_result = capabilities.create_research_entry(
+    title="000001 watchlist thesis",
+    thesis="Opportunity thesis based on team evidence, catalysts, and risks.",
+    targets=["000001"],
+    catalysts=["Catalyst observed in shared packet"],
+    risks=["Risk identified by risk and contrarian roles"],
+    monitoring_triggers=[
+        {"name": "breakout confirmation", "condition": "price holds above resistance"}
+    ],
+    invalidation_conditions=["Thesis fails if key support breaks on volume"],
+    data_quality=packet_provenance,
+    source_refs=[{"source": "team.shared_packet", "path": session_path}],
+)
+```
+
+Do not store casual one-off quote lookups. Persist only conclusions that need follow-up tracking.
 
 ## Confidence & Degradation
 

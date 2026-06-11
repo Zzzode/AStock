@@ -3,13 +3,14 @@
 import asyncio
 from datetime import datetime, time
 from pathlib import Path
-from typing import Optional, Any
+from typing import Optional, Any, cast
 
 from ..storage import Database, WatchItem, AlertRecord
 from ..quote import QuoteService
 from ..utils import get_logger, DataSourceError, AlertError
 from .scanner import SignalScanner
 from .alert_engine import AlertEngine
+from .alert_events import build_alert_market_event, encode_alert_message
 
 logger = get_logger("monitor_service")
 
@@ -154,12 +155,14 @@ class MonitorService:
 
         except DataSourceError as e:
             logger.warning(f"Scan {item.code} data error: {e}")
-            return e
+            return cast(Exception, e)
         except Exception as e:
             logger.error(f"Scan {item.code} failed: {e}", exc_info=True)
             return e
 
-    async def _handle_signal(self, item: WatchItem, scan_result: dict[str, Any]) -> None:
+    async def _handle_signal(
+        self, item: WatchItem, scan_result: dict[str, Any]
+    ) -> None:
         """Handle detected signals
 
         Args:
@@ -171,14 +174,37 @@ class MonitorService:
 
         for signal in signals:
             try:
+                triggered_at = datetime.now()
+                message_text = str(signal.get("description", ""))
+                signal_type = str(signal.get("type", "unknown"))
+                signal_name = str(signal.get("name", "Unknown signal"))
+                alert_payload = {
+                    "code": item.code,
+                    "name": item.name,
+                    "signal_type": signal_type,
+                    "signal_name": signal_name,
+                    "message": message_text,
+                    "level": level,
+                    "triggered_at": triggered_at,
+                    "status": "pending",
+                    "channels": item.alert_channels,
+                    "direction": signal.get("bias"),
+                    "metrics": scan_result.get("latest", {}),
+                    "data_quality": scan_result.get("data_quality", "partial"),
+                }
+                market_event = build_alert_market_event(
+                    alert_payload,
+                    source="monitor.signal_scanner",
+                )
+
                 # Create alert record
                 record = AlertRecord(
                     code=item.code,
-                    signal_type=signal.get("type", "unknown"),
-                    signal_name=signal.get("name", "Unknown signal"),
-                    message=signal.get("description", ""),
+                    signal_type=signal_type,
+                    signal_name=signal_name,
+                    message=encode_alert_message(message_text, market_event),
                     level=level,
-                    triggered_at=datetime.now(),
+                    triggered_at=triggered_at,
                     status="pending",
                     channels=item.alert_channels,
                 )
@@ -187,7 +213,9 @@ class MonitorService:
                 record_id = await self.db.save_alert_record(record)
                 record.id = record_id
 
-                logger.info(f"Signal found: {item.code} - {signal.get('name', 'unknown')}")
+                logger.info(
+                    f"Signal found: {item.code} - {signal.get('name', 'unknown')}"
+                )
 
                 # Send alert
                 await self._send_alert(record, item)
@@ -218,7 +246,9 @@ class MonitorService:
                 await self.db.update_alert_status(record.id, status)
 
             if success:
-                logger.info(f"Alert sent successfully: {record.code} - {record.signal_name}")
+                logger.info(
+                    f"Alert sent successfully: {record.code} - {record.signal_name}"
+                )
             else:
                 failed_channels = [k for k, v in results.items() if not v]
                 logger.warning(

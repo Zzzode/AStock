@@ -1,10 +1,10 @@
 """Multi-channel alert engine"""
 
 import asyncio
+import html
 import json
 import subprocess
 import smtplib
-from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pathlib import Path
@@ -12,16 +12,81 @@ from typing import Any, Optional
 
 from ..storage import AlertRecord
 from ..config import EmailConfig
+from .alert_events import format_market_event_json, get_alert_message_text
 
 # Try to import aiohttp, use placeholder if not available
 try:
     import aiohttp
+
     HAS_AIOHTTP = True
 except ImportError:
     HAS_AIOHTTP = False
 
 
-async def send_email_notification(alert: AlertRecord, email_config: EmailConfig) -> None:
+def _format_alert_details(alert: AlertRecord, *, style: str = "plain") -> str:
+    """Format alert details while preserving embedded market-event payloads."""
+
+    text = get_alert_message_text(alert.message)
+    event_json = format_market_event_json(alert.message, indent=2)
+    if event_json is None:
+        return html.escape(text) if style == "html" else text
+
+    if style == "html":
+        return (
+            f"{html.escape(text)}"
+            "<br><br><strong>Market Event:</strong>"
+            f"<pre>{html.escape(event_json)}</pre>"
+        )
+    if style == "markdown":
+        return f"{text}\n\n**Market Event:**\n```json\n{event_json}\n```"
+    return f"{text}\n\nMarket Event:\n{event_json}"
+
+
+def _build_wechat_payload(alert: AlertRecord) -> dict[str, str]:
+    """Build a WeChat/ServerChan payload for an alert."""
+
+    level_name = _level_name(alert.level)
+    title = f"[{level_name}] {alert.code} {alert.signal_name}"
+    desp = f"""
+**Stock Code**: {alert.code}
+
+**Signal Type**: {alert.signal_name}
+
+**Alert Details**: {_format_alert_details(alert, style="markdown")}
+
+**Trigger Time**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
+"""
+    return {"title": title, "desp": desp}
+
+
+def _build_dingtalk_payload(alert: AlertRecord) -> dict[str, Any]:
+    """Build a DingTalk markdown payload for an alert."""
+
+    level_name = _level_name(alert.level)
+    return {
+        "msgtype": "markdown",
+        "markdown": {
+            "title": f"[{level_name}] {alert.code}",
+            "text": f"""
+### [{level_name}] {alert.code}
+
+**Signal Type**: {alert.signal_name}
+
+**Alert Details**: {_format_alert_details(alert, style="markdown")}
+
+**Trigger Time**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
+""",
+        },
+    }
+
+
+def _level_name(level: int) -> str:
+    return {1: "Critical", 2: "Important", 3: "Normal"}.get(level, "Unknown")
+
+
+async def send_email_notification(
+    alert: AlertRecord, email_config: EmailConfig
+) -> None:
     """Send email alert notification
 
     Uses Python standard library smtplib to send HTML-formatted email notifications
@@ -37,8 +102,7 @@ async def send_email_notification(alert: AlertRecord, email_config: EmailConfig)
         raise RuntimeError("Email configuration is incomplete")
 
     # Build email content
-    level_names = {1: "Critical", 2: "Important", 3: "Normal"}
-    level_name = level_names.get(alert.level, "Unknown")
+    level_name = _level_name(alert.level)
     level_colors = {1: "#FF0000", 2: "#FFA500", 3: "#008000"}
     level_color = level_colors.get(alert.level, "#808080")
 
@@ -138,7 +202,7 @@ async def send_email_notification(alert: AlertRecord, email_config: EmailConfig)
         </table>
         <div class="message">
             <strong>Alert Details:</strong><br>
-            {alert.message}
+            {_format_alert_details(alert, style="html")}
         </div>
         <div class="footer">
             This email is automatically sent by the A-Share Trading Alert System. Please do not reply.
@@ -165,7 +229,9 @@ async def send_email_notification(alert: AlertRecord, email_config: EmailConfig)
     )
 
 
-def _send_email_sync(email_config: EmailConfig, subject: str, html_content: str) -> None:
+def _send_email_sync(
+    email_config: EmailConfig, subject: str, html_content: str
+) -> None:
     """Send email synchronously
 
     Args:
@@ -190,12 +256,12 @@ def _send_email_sync(email_config: EmailConfig, subject: str, html_content: str)
         # Connect to SMTP server and send
         if email_config.use_ssl:
             # SSL connection
-            with smtplib.SMTP_SSL(email_config.smtp_host, email_config.smtp_port) as server:
+            with smtplib.SMTP_SSL(
+                email_config.smtp_host, email_config.smtp_port
+            ) as server:
                 server.login(email_config.sender_email, email_config.sender_password)
                 server.sendmail(
-                    email_config.sender_email,
-                    email_config.recipients,
-                    msg.as_string()
+                    email_config.sender_email, email_config.recipients, msg.as_string()
                 )
         else:
             # TLS or plain connection
@@ -204,15 +270,17 @@ def _send_email_sync(email_config: EmailConfig, subject: str, html_content: str)
                     server.starttls()
                 server.login(email_config.sender_email, email_config.sender_password)
                 server.sendmail(
-                    email_config.sender_email,
-                    email_config.recipients,
-                    msg.as_string()
+                    email_config.sender_email, email_config.recipients, msg.as_string()
                 )
 
-        print(f"[AlertEngine] Email sent successfully: {', '.join(email_config.recipients)}")
+        print(
+            f"[AlertEngine] Email sent successfully: {', '.join(email_config.recipients)}"
+        )
 
     except smtplib.SMTPAuthenticationError as e:
-        raise RuntimeError(f"Email authentication failed, please check email and password/auth code: {e}")
+        raise RuntimeError(
+            f"Email authentication failed, please check email and password/auth code: {e}"
+        )
     except smtplib.SMTPConnectError as e:
         raise RuntimeError(f"SMTP server connection failed: {e}")
     except smtplib.SMTPException as e:
@@ -255,7 +323,7 @@ class AlertEngine:
         try:
             with open(self.config_path, "r", encoding="utf-8") as f:
                 config = json.load(f)
-                print(f"[AlertEngine] Configuration file loaded")
+                print("[AlertEngine] Configuration file loaded")
                 if isinstance(config, dict):
                     return config
                 return {}
@@ -274,7 +342,7 @@ class AlertEngine:
         # First try to load from environment variables
         email_config = EmailConfig.from_env()
         if email_config.is_configured():
-            print(f"[AlertEngine] Email configuration loaded from environment variables")
+            print("[AlertEngine] Email configuration loaded from environment variables")
             return email_config
 
         # Load from configuration file
@@ -283,7 +351,7 @@ class AlertEngine:
             try:
                 email_config = EmailConfig(**email_config_data)
                 if email_config.is_configured():
-                    print(f"[AlertEngine] Email configuration loaded from config file")
+                    print("[AlertEngine] Email configuration loaded from config file")
                     return email_config
             except Exception as e:
                 print(f"[AlertEngine] Failed to load email configuration: {e}")
@@ -291,7 +359,9 @@ class AlertEngine:
         # Return empty configuration
         return EmailConfig()
 
-    async def send(self, alert: AlertRecord, channels: Optional[list[str]] = None) -> dict[str, bool]:
+    async def send(
+        self, alert: AlertRecord, channels: Optional[list[str]] = None
+    ) -> dict[str, bool]:
         """Send alert to multiple channels
 
         Args:
@@ -327,8 +397,7 @@ class AlertEngine:
         Args:
             alert: Alert record
         """
-        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
-        level_name = level_names.get(alert.level, "Unknown")
+        level_name = _level_name(alert.level)
 
         border = "=" * 60
         output = f"""
@@ -337,7 +406,7 @@ class AlertEngine:
 {border}
 Stock Code: {alert.code}
 Signal Type: {alert.signal_name}
-Alert Details: {alert.message}
+Alert Details: {_format_alert_details(alert)}
 Trigger Time: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
 {border}
 """
@@ -351,28 +420,26 @@ Trigger Time: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
         Args:
             alert: Alert record
         """
-        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
-        level_name = level_names.get(alert.level, "Unknown")
+        level_name = _level_name(alert.level)
 
         title = f"[{level_name}] {alert.code}"
-        message = f"{alert.signal_name}: {alert.message}"
+        message = f"{alert.signal_name}: {get_alert_message_text(alert.message)}"
 
         # Use osascript to send notification
-        script = f'''
+        script = f"""
         display notification "{message}" with title "{title}"
-        '''
+        """
 
         try:
             subprocess.run(
-                ["osascript", "-e", script],
-                check=True,
-                capture_output=True,
-                text=True
+                ["osascript", "-e", script], check=True, capture_output=True, text=True
             )
         except subprocess.CalledProcessError as e:
             raise RuntimeError(f"System notification send failed: {e.stderr}")
         except FileNotFoundError:
-            raise RuntimeError("osascript not available, system notifications only supported on macOS")
+            raise RuntimeError(
+                "osascript not available, system notifications only supported on macOS"
+            )
 
     async def _send_wechat(self, alert: AlertRecord) -> None:
         """WeChat push (ServerChan)
@@ -391,31 +458,15 @@ Trigger Time: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
         if not webhook_url:
             raise RuntimeError("WeChat webhook_url not configured")
 
-        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
-        level_name = level_names.get(alert.level, "Unknown")
-
-        # ServerChan API format
-        title = f"[{level_name}] {alert.code} {alert.signal_name}"
-        desp = f"""
-**Stock Code**: {alert.code}
-
-**Signal Type**: {alert.signal_name}
-
-**Alert Details**: {alert.message}
-
-**Trigger Time**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
-"""
-
-        payload = {
-            "title": title,
-            "desp": desp
-        }
+        payload = _build_wechat_payload(alert)
 
         async with aiohttp.ClientSession() as session:
             async with session.post(webhook_url, json=payload) as response:
                 if response.status != 200:
                     text = await response.text()
-                    raise RuntimeError(f"WeChat push failed: {response.status} - {text}")
+                    raise RuntimeError(
+                        f"WeChat push failed: {response.status} - {text}"
+                    )
 
     async def _send_dingtalk(self, alert: AlertRecord) -> None:
         """DingTalk push
@@ -434,31 +485,15 @@ Trigger Time: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
         if not webhook_url:
             raise RuntimeError("DingTalk webhook_url not configured")
 
-        level_names = {1: "Critical", 2: "Important", 3: "Normal"}
-        level_name = level_names.get(alert.level, "Unknown")
-
-        # DingTalk message format
-        payload = {
-            "msgtype": "markdown",
-            "markdown": {
-                "title": f"[{level_name}] {alert.code}",
-                "text": f"""
-### [{level_name}] {alert.code}
-
-**Signal Type**: {alert.signal_name}
-
-**Alert Details**: {alert.message}
-
-**Trigger Time**: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
-"""
-            }
-        }
+        payload = _build_dingtalk_payload(alert)
 
         async with aiohttp.ClientSession() as session:
             async with session.post(webhook_url, json=payload) as response:
                 if response.status != 200:
                     text = await response.text()
-                    raise RuntimeError(f"DingTalk push failed: {response.status} - {text}")
+                    raise RuntimeError(
+                        f"DingTalk push failed: {response.status} - {text}"
+                    )
 
     async def _send_email(self, alert: AlertRecord) -> None:
         """Email push
@@ -467,6 +502,8 @@ Trigger Time: {alert.triggered_at.strftime('%Y-%m-%d %H:%M:%S')}
             alert: Alert record
         """
         if not self.email_config.is_configured():
-            raise RuntimeError("Email push not configured, please set email information")
+            raise RuntimeError(
+                "Email push not configured, please set email information"
+            )
 
         await send_email_notification(alert, self.email_config)

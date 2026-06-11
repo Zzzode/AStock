@@ -33,6 +33,25 @@ Python output contains:
 | `feedback_stats` | User feedback statistics (success rate) |
 | `quote` | Real-time quote |
 
+### Step 2b: Foundation Capability Example
+
+When technical signals feed a conclusion or report, attach provenance and convert
+signals into canonical market events:
+
+```python
+from astock import capabilities
+
+analysis_provenance = capabilities.create_data_provenance_record(
+    source="astock.cli analyze",
+    quality_tier="snapshot",
+)
+signal_events = capabilities.build_market_event_packet(
+    analysis_payload,
+    payload_type="signal",
+    source="astock.cli analyze",
+)
+```
+
 ### Step 3: Perform Reasoning Analysis
 
 **You are responsible for genuine analysis reasoning — not template filling.**

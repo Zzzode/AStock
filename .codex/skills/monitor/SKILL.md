@@ -73,6 +73,28 @@ Example:
 .venv/bin/python -m astock.cli alert history 000001 --json
 ```
 
+### Foundation Capability Example
+
+When an alert fires, normalize it as a market event. If it relates to an active
+research thesis, append the event as a ledger observation:
+
+```python
+from astock import capabilities
+
+alert_event_packet = capabilities.build_market_event_packet(
+    alert_payload,
+    payload_type="alert",
+    source="astock.cli alert",
+)
+capabilities.record_research_observation(
+    entry_id,
+    observation_type="alert_trigger",
+    note="Monitoring alert fired for tracked thesis.",
+    evidence=alert_event_packet,
+    status_after="monitoring",
+)
+```
+
 ## Alert Channels
 
 - `terminal` — Terminal output (default)
@@ -99,14 +121,6 @@ Example:
 | Database read/write fails | Retry once; on failure, notify user |
 
 ## Related Files
-
-- `src/python/astock/capabilities.py` — Agent capability kernel
-- `src/python/astock/cli.py` — JSON subprocess adapter (alert + watch commands)
-- `src/python/astock/monitor/monitor_service.py` — Monitoring service
-- `src/python/astock/monitor/watch_cli.py` — Watch management CLI
-- `src/python/astock/monitor/scanner.py` — Signal scanner
-- `src/python/astock/monitor/alert_engine.py` — Alert engine
-s
 
 - `src/python/astock/capabilities.py` — Agent capability kernel
 - `src/python/astock/cli.py` — JSON subprocess adapter (alert + watch commands)

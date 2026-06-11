@@ -14,6 +14,9 @@ This is **not** an automated trading, broker order-routing, OMS, or EMS system. 
 ## Capabilities
 
 - Quote lookup with data-quality handling
+- Data provenance records for source, freshness, fallback, warnings, and errors
+- Canonical market event packets for quote, signal, sector, fund-flow, alert, news, and policy data
+- Research opportunity ledger for thesis tracking, monitoring triggers, invalidation, and follow-up observations
 - Multi-expert opportunity analysis via Agent Skills
 - Technical analysis: MA, MACD, KDJ, RSI, support/resistance context
 - Stock screening and personalized candidate pools
@@ -78,6 +81,7 @@ Use natural language in Claude Code / Codex. Python commands are machine adapter
 | `/evolve` | Agent and prompt quality audit |
 
 Agent behavior, system boundaries, and report policies are defined in [AGENTS.md](AGENTS.md).
+When editing duplicated skill prompts, update both `.agents/skills/` and `.codex/skills/`; the drift policy is in [AGENTS.md](AGENTS.md).
 
 ## Architecture
 
@@ -92,6 +96,7 @@ Claude Code / Codex conversation
 Core Python modules live in `src/python/astock/`:
 
 - `capabilities.py` - stable agent/skill capability kernel
+- `data_provenance/`, `market_event/`, `research/` - foundation packets and ledgers
 - `quote/`, `analysis/`, `stock_picker/`, `backtest/`
 - `monitor/`, `recommend/`, `portfolio/`, `memory/`
 - `services/`, `storage/`, `config/`, `utils/`
