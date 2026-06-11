@@ -1,6 +1,27 @@
-# A-Share Agent Team Trading Analysis System
+# A-Share Investment Research and Market Intelligence System
 
-An intelligent stock analysis system powered by AI agents. Skills trigger automatically via natural language. Python handles data fetching and deterministic computation; the AI agent handles analysis, reasoning, and conclusion generation.
+An intelligent A-share investment research and market intelligence system powered by AI agents. Skills trigger automatically via natural language. Python handles market data fetching and deterministic computation; the AI agent handles research analysis, market interpretation, monitoring conclusions, and report generation.
+
+## Design Purpose
+
+This project has two primary objectives:
+
+1. **Investment opportunity research and analysis for A-share market targets**
+   - Identify and evaluate potential investment opportunities across individual stocks, sectors, concepts, and industry chains.
+   - Support fundamental research, industry-chain research, policy/catalyst analysis, broker-report synthesis, valuation discussion, risk review, and opportunity tracking.
+   - Produce structured research conclusions, watchlist candidates, monitoring points, and persistent LaTeX/PDF research deliverables.
+
+2. **Market intelligence, board monitoring, and market analysis**
+   - Monitor real-time and near-real-time market conditions, including prices, technical signals, turnover, volume-price behavior, sector/concept movement, fund flows, and market breadth.
+   - Analyze market-board conditions through technical analysis, capital-flow analysis, sector rotation, abnormal movement detection, and alert rules.
+   - Help users understand what is moving, why it may be moving, and which research opportunities should be tracked further.
+
+### System Boundary
+
+- This is **not** an automated trading, order execution, or brokerage integration system.
+- The system does **not** place orders, route orders, manage broker execution, or operate as an OMS/EMS.
+- Trading-related terms in user questions are interpreted as investment research, opportunity evaluation, market monitoring, paper portfolio tracking, or risk analysis unless the user explicitly asks for external actions.
+- "Order" and "order flow" in market-analysis contexts refer to market-side data such as order book, quote depth, large trades, active buy/sell flow, and capital-flow signals, not user brokerage orders.
 
 ## Language Policy
 
@@ -29,7 +50,7 @@ python -m pip install -e src/python
 Talk to the agent naturally — skills trigger automatically:
 
 ```
-User: Is Ping An Bank a good buy right now?
+User: Is Ping An Bank worth tracking as an investment opportunity?
 Agent: Let me run a multi-expert collaborative analysis...
 [Calls Python to fetch data]
 - Python returns shared data packet
@@ -39,7 +60,7 @@ User: Find me some undervalued stocks with golden cross signals
 Agent: Screening stocks with your criteria...
 [Calls Python screen command]
 
-User: Backtest the MA strategy on Ping An Bank
+User: Backtest the MA signal on Ping An Bank
 Agent: Running MA crossover backtest...
 [Calls Python backtest command]
 ```
@@ -57,7 +78,7 @@ Agent: Running MA crossover backtest...
 
 | Skill | Function | Natural Language Trigger Examples |
 |-------|----------|----------------------------------|
-| /team | Multi-expert collaborative analysis | "Should I buy X?" / "Is X a good entry?" |
+| /team | Multi-expert collaborative analysis | "Is X worth tracking?" / "Is X a good opportunity?" |
 | /equity-research | Institutional research report production | "Write a research report" / "Industry chain analysis" |
 | /quote | Real-time quote lookup | "What's the price of X?" / "Latest quote" |
 | /analyze | Technical analysis | "Analyze X technicals" / "Any signals on X?" |
@@ -66,16 +87,16 @@ Agent: Running MA crossover backtest...
 | /recommend | Personalized recommendations | "Recommend some stocks for me" |
 | /monitor | Stock monitoring & alerts | "Watch this stock" / "Start monitoring" / "Alert history" |
 | /config | Configuration management | `/config style` |
-| /portfolio | Portfolio management | "My positions" / "Buy X shares" / "Portfolio risk" |
+| /portfolio | Paper portfolio and position tracking | "My positions" / "Record X shares" / "Portfolio risk" |
 | /reports | Research report collection & archiving | "Collect reports on X" / "Download research reports" / "收集研报" |
 | /evolve | Internal control & system evolution | "Audit agents" / "System health check" / "What's not working?" |
 
 ## Agent Team Workflow
 
-When you ask about stock trading decisions, the system collaborates automatically:
+When you ask about investment opportunities or market-monitoring conclusions, the system collaborates automatically:
 
 ```
-User input: "Is Ping An Bank a good buy right now?"
+User input: "Is Ping An Bank worth tracking as an investment opportunity?"
     ↓
 Agent parses intent, identifies stock code and question type
     ↓
@@ -86,15 +107,15 @@ Agent reasons over shared data packet:
 ├── Reads summary / packet / data_quality / warnings directly
 ├── Market Agent: Interprets market momentum and position
 ├── Fundamental/Policy Agent: Supplements with filings, earnings, policy info
-├── Risk Agent: Adjusts position sizing and stop-loss/take-profit
+├── Risk Agent: Reviews downside scenarios, invalidation points, and monitoring triggers
 └── Contrarian Agent: Provides counterarguments
     ↓
-Outputs: decision recommendation, risk warnings, contrarian arguments
+Outputs: research conclusion, opportunity rating, tracking triggers, risk warnings, contrarian arguments
 ```
 
 Constraints:
 
-- `team` returns the shared data packet only — does not output trading conclusions directly
+- `team` returns the shared data packet only — does not output final research conclusions directly
 - `screen` returns candidate snapshots and factor hit details only
 - `recommend` returns user preferences and candidate pool data — agent makes final selection
 
@@ -104,13 +125,13 @@ After analysis, you can provide feedback on results:
 
 ```
 Agent: Was this analysis helpful? You can provide feedback:
-- "Worked out well" — reinforces this type of recommendation
+- "Worked out well" — reinforces this type of research conclusion or monitoring trigger
 - "Not accurate" — adjusts future analysis weights
 ```
 
 Record feedback:
 ```bash
-.venv/bin/python -m astock.cli team-feedback 000001 --action watch_buy --outcome good --strategy ma_cross --note "Executed, returns met expectations"
+.venv/bin/python -m astock.cli team-feedback 000001 --action watch_buy --outcome good --strategy ma_cross --note "Tracked after signal, follow-up result met expectations"
 ```
 
 ## Project Structure
