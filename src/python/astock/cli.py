@@ -1797,5 +1797,452 @@ developer_instructions = """
         )
 
 
+
+
+# ---------------------------------------------------------------------------
+# New capability CLI commands
+# ---------------------------------------------------------------------------
+
+@app.command()
+def financials(
+    code: str = typer.Argument(..., help="Stock code"),
+    periods: int = typer.Option(8, help="Number of reporting periods"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Fetch structured financial statements with growth rates."""
+    async def _run():
+        return await capabilities.get_financial_statements(code, periods=periods)
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        if result.get("data_quality") == "unavailable":
+            console.print(f"[red]No financial data available for {code}[/red]")
+            return
+        console.print(f"[bold]Financial Statements: {code}[/bold]")
+        latest = result.get("periods", [{}])[0] if result.get("periods") else {}
+        if latest:
+            console.print(f"  Period: {latest.get('period', 'N/A')}")
+            metrics = latest.get("metrics", {})
+            for key, val in list(metrics.items())[:10]:
+                if val is not None:
+                    console.print(f"  {key}: {val:,.2f}")
+        yoy = result.get("yoy_growth", {})
+        if yoy:
+            console.print("\n[bold]YoY Growth:[/bold]")
+            for key, val in yoy.items():
+                if val is not None:
+                    console.print(f"  {key}: {val:+.2f}%")
+
+
+@app.command()
+def news(
+    code: str = typer.Argument(..., help="Stock code"),
+    days: int = typer.Option(90, help="Lookback days"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Fetch corporate events (news, earnings, dividends)."""
+    async def _run():
+        return await capabilities.get_corporate_events(code, days=days)
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        events = result.get("events", [])
+        console.print(f"[bold]Corporate Events for {code} ({len(events)} events)[/bold]")
+        for event in events[:15]:
+            severity = event.get("severity", "")
+            color = "red" if severity == "high" else "yellow" if severity == "medium" else "white"
+            date_str = (event.get("published_at") or "")[:10]
+            console.print(
+                f"  [{color}]{date_str} [{event.get('event_type')}] {event.get('title', '')[:60]}[/{color}]"
+            )
+
+
+@app.command()
+def predict(
+    code: str = typer.Argument(..., help="Stock code"),
+    direction: str = typer.Argument(..., help="bullish/bearish/neutral"),
+    entry_price: float = typer.Argument(..., help="Entry price"),
+    target_price: Optional[float] = typer.Option(None, help="Target price"),
+    stop_loss: Optional[float] = typer.Option(None, help="Stop loss price"),
+    horizon: int = typer.Option(30, help="Horizon in days"),
+    confidence: float = typer.Option(0.5, help="Confidence 0-1"),
+    thesis: str = typer.Option("", help="Thesis summary"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Record a structured price prediction."""
+    result = capabilities.create_prediction(
+        code=code,
+        direction=direction,
+        entry_price=entry_price,
+        target_price=target_price,
+        stop_loss=stop_loss,
+        horizon_days=horizon,
+        confidence=confidence,
+        thesis_summary=thesis,
+    )
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(f"[green]✓ Prediction recorded: {result['prediction_id']}[/green]")
+        console.print(f"  {code} {direction} @ {entry_price}")
+        if target_price:
+            console.print(f"  Target: {target_price}")
+        console.print(f"  Deadline: {result['deadline']}")
+
+
+@app.command()
+def verify_predictions(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Run auto-verification on all pending predictions."""
+    async def _run():
+        return await capabilities.run_prediction_verification()
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        verified = result.get("verified_count", 0)
+        errors = result.get("error_count", 0)
+        console.print(f"[green]✓ Verified {verified} predictions[/green]")
+        if errors:
+            console.print(f"[yellow]  {errors} errors[/yellow]")
+
+
+@app.command()
+def prediction_stats(
+    code: Optional[str] = typer.Option(None, help="Filter by stock code"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Show prediction accuracy statistics."""
+    result = capabilities.get_prediction_accuracy(code=code)
+    if json_output:
+        _print_json(result)
+    else:
+        console.print("[bold]Prediction Accuracy[/bold]")
+        console.print(f"  Total verified: {result['total_verified']}")
+        console.print(f"  Pending: {result['pending']}")
+        console.print(f"  Correct: {result['correct']}")
+        console.print(f"  Partially correct: {result['partially_correct']}")
+        console.print(f"  Incorrect: {result['incorrect']}")
+        console.print(f"  Accuracy: {result['accuracy']:.1%}")
+        console.print(f"  Hit rate: {result['hit_rate']:.1%}")
+
+
+@app.command()
+def search_report(
+    query: str = typer.Argument(..., help="Search query"),
+    top_k: int = typer.Option(5, help="Number of results"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Semantic search over indexed research reports."""
+    result = capabilities.search_reports(query, top_k=top_k)
+    if json_output:
+        _print_json(result)
+    else:
+        results = result.get("results", [])
+        console.print(f"[bold]Search: '{query}' ({len(results)} results)[/bold]")
+        for r in results:
+            console.print(f"\n  [cyan]{r['doc_id']}[/cyan] (score: {r['score']:.3f})")
+            console.print(f"  {r['text'][:120]}...")
+
+
+@app.command()
+def index_report(
+    file_path: str = typer.Argument(..., help="Path to report text file"),
+    doc_id: Optional[str] = typer.Option(None, help="Document ID (default: filename)"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Index a research report text file for semantic search."""
+    path = Path(file_path)
+    if not path.exists():
+        console.print(f"[red]File not found: {file_path}[/red]")
+        raise typer.Exit(1)
+
+    text = path.read_text(encoding="utf-8")
+    actual_doc_id = doc_id or path.stem
+    result = capabilities.index_report_document(
+        actual_doc_id, text, metadata={"source_file": str(path)}
+    )
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(
+            f"[green]✓ Indexed '{actual_doc_id}': {result['chunks_indexed']} chunks[/green]"
+        )
+
+
+@app.command()
+def migrate(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Run pending database migrations."""
+    async def _run():
+        return await capabilities.run_migrations()
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        applied = result.get("applied", [])
+        if applied:
+            console.print(f"[green]✓ Applied {len(applied)} migrations:[/green]")
+            for name in applied:
+                console.print(f"  - {name}")
+        else:
+            console.print("[green]✓ Database is up to date[/green]")
+
+
+@app.command()
+def migration_status(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Check database migration status."""
+    async def _run():
+        return await capabilities.get_migration_status()
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        pending = result.get("pending", [])
+        applied = result.get("applied", [])
+        console.print(f"[bold]Migration Status[/bold]")
+        console.print(f"  Applied: {len(applied)}")
+        if pending:
+            console.print(f"  [yellow]Pending: {len(pending)}[/yellow]")
+            for name in pending:
+                console.print(f"    - {name}")
+        else:
+            console.print(f"  [green]No pending migrations[/green]")
+
+
+@app.command()
+def scheduler_status(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Show task scheduler status."""
+    result = capabilities.get_scheduler_status()
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(f"[bold]Scheduler Status[/bold]")
+        console.print(f"  Running: {result['running']}")
+        console.print(f"  Jobs: {result['job_count']}")
+        for name, job in result.get("jobs", {}).items():
+            status_color = "green" if job["status"] == "idle" else "red"
+            console.print(
+                f"  [{status_color}]{name}[/{status_color}]: "
+                f"{job['frequency']} (runs: {job['run_count']}, errors: {job['error_count']})"
+            )
+
+
+@app.command()
+def sync_monitor(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Sync research entries to watch items."""
+    async def _run():
+        return await capabilities.sync_research_monitor()
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(f"[green]✓ Research-Monitor sync complete[/green]")
+        console.print(f"  Added: {len(result.get('added', []))}")
+        console.print(f"  Updated: {len(result.get('updated', []))}")
+        console.print(f"  Removed: {len(result.get('removed', []))}")
+        console.print(f"  Total watching: {result.get('total_watching', 0)}")
+
+
+@app.command()
+def consistency_check(
+    code: str = typer.Argument(..., help="Stock code"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Run data consistency check across sources."""
+    async def _run():
+        return await capabilities.check_data_consistency(code)
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        conflicts = result.get("conflicts", [])
+        quality = result.get("data_quality", "unknown")
+        color = "green" if quality == "consistent" else "yellow" if quality == "partial" else "red"
+        console.print(f"[bold]Consistency Check: {code}[/bold]")
+        console.print(f"  Quality: [{color}]{quality}[/{color}]")
+        console.print(f"  Conflicts: {len(conflicts)}")
+        for c in conflicts:
+            console.print(f"    [{c['severity']}] {c['description']}")
+        console.print(f"  Freshness:")
+        for f in result.get("freshness", []):
+            console.print(f"    {f['source']}: {f['status']}")
+
+
+@app.command()
+def market_snapshot(
+    codes: str = typer.Argument(..., help="Comma-separated stock codes"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Get real-time market snapshot via Sina stream."""
+    code_list = [c.strip() for c in codes.split(",")]
+
+    async def _run():
+        return await capabilities.get_market_snapshot(code_list)
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(f"[bold]Market Snapshot ({result['count']} ticks)[/bold]")
+        for tick in result.get("ticks", []):
+            chg = tick["change_pct"]
+            color = "red" if chg < 0 else "green" if chg > 0 else "white"
+            console.print(
+                f"  {tick['code']} {tick['name']}: [{color}]{tick['price']:.2f} ({chg:+.2f}%)[/{color}]"
+            )
+
+
+@app.command()
+def quality_stats(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Show aggregate research quality statistics."""
+    result = capabilities.get_quality_stats()
+    if json_output:
+        _print_json(result)
+    else:
+        console.print("[bold]Research Quality Stats[/bold]")
+        console.print(f"  Total assessed: {result['total_assessed']}")
+        if result['total_assessed'] > 0:
+            console.print(f"  Avg catalyst realization: {result['avg_catalyst_realization_rate']:.0%}")
+            console.print(f"  Avg risk foresight: {result['avg_risk_foresight_rate']:.0%}")
+            for role, score in result.get("agent_role_scores", {}).items():
+                console.print(f"  {role}: {score['accuracy']:.0%} ({score['correct_calls']}/{score['total_calls']})")
+
+
+
+# ============ Scheduler Command Group ============
+
+scheduler_app = typer.Typer(name="scheduler", help="Task scheduler management")
+app.add_typer(scheduler_app, name="scheduler")
+
+
+@scheduler_app.command("start")
+def scheduler_start(
+    foreground: bool = typer.Option(True, "--foreground/--background", help="Run in foreground"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON on start"),
+) -> None:
+    """Start the task scheduler daemon."""
+    from .scheduler import TaskScheduler, ScheduledJob, JobFrequency, create_default_jobs
+    from .scheduler.bridge import sync_research_to_monitor
+
+    async def _run():
+        scheduler = TaskScheduler()
+        for job in create_default_jobs():
+            scheduler.register(job)
+
+        async def _sync_bridge():
+            return await sync_research_to_monitor()
+
+        scheduler.register(ScheduledJob(
+            name="sync_research_to_monitor",
+            frequency=JobFrequency.EVERY_30_MIN,
+            handler=_sync_bridge,
+        ))
+
+        await scheduler.start()
+
+        if json_output:
+            _print_json(scheduler.get_status())
+
+        if foreground:
+            console.print("[green]Scheduler running (Ctrl+C to stop)[/green]")
+            try:
+                while True:
+                    await asyncio.sleep(1)
+            except (KeyboardInterrupt, asyncio.CancelledError):
+                pass
+            finally:
+                await scheduler.stop()
+                console.print("[yellow]Scheduler stopped[/yellow]")
+        else:
+            return scheduler.get_status()
+
+    if foreground:
+        try:
+            asyncio.run(_run())
+        except KeyboardInterrupt:
+            pass
+    else:
+        result = asyncio.run(_run())
+        if json_output and result:
+            _print_json(result)
+        else:
+            console.print("[green]Scheduler started in background[/green]")
+
+
+@scheduler_app.command("status")
+def scheduler_show_status(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Show scheduler status from saved state."""
+    from .scheduler import TaskScheduler
+    scheduler = TaskScheduler()
+    # Load persisted state to show last known status
+    scheduler._load_state()
+    status = scheduler.get_status()
+    if json_output:
+        _print_json(status)
+    else:
+        console.print("[bold]Scheduler Status[/bold]")
+        console.print(f"  Running: {status['running']}")
+        console.print(f"  Registered jobs: {status['job_count']}")
+        for name, job in status.get("jobs", {}).items():
+            last = job.get("last_run") or "never"
+            console.print(f"  • {name}: runs={job['run_count']}, errors={job['error_count']}, last={last}")
+
+
+@scheduler_app.command("run-job")
+def scheduler_run_job(
+    job_name: str = typer.Argument(..., help="Job name to run"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Manually trigger a single scheduler job."""
+    from .scheduler import TaskScheduler, create_default_jobs
+    from .scheduler.bridge import sync_research_to_monitor
+
+    async def _run():
+        scheduler = TaskScheduler()
+        for job in create_default_jobs():
+            scheduler.register(job)
+
+        from .scheduler import ScheduledJob, JobFrequency
+        async def _sync_bridge():
+            return await sync_research_to_monitor()
+        scheduler.register(ScheduledJob(
+            name="sync_research_to_monitor",
+            frequency=JobFrequency.EVERY_30_MIN,
+            handler=_sync_bridge,
+        ))
+
+        return await scheduler.run_once(job_name)
+
+    result = asyncio.run(_run())
+    if json_output:
+        _print_json(result)
+    else:
+        if "error" in result:
+            console.print(f"[red]Error: {result['error']}[/red]")
+        else:
+            console.print(f"[green]✓ Job '{job_name}' completed[/green]")
+
 if __name__ == "__main__":
     app()

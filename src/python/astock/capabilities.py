@@ -1344,10 +1344,14 @@ async def initialize_database(
     """Initialize local storage for agent capabilities."""
     resolved_db_path = _resolve_db_path(db_path)
     resolved_db_path.parent.mkdir(parents=True, exist_ok=True)
+
+    from .migrations import MigrationRunner
+    runner = MigrationRunner(resolved_db_path)
+    migration_result = await runner.run_pending()
+
     db = Database(str(resolved_db_path))
     await db.connect()
     try:
-        await db.init_tables()
         loaded_count = 0
         if not skip_refresh:
             loaded_count = await QuoteService(db).refresh_stocks()
@@ -1355,6 +1359,7 @@ async def initialize_database(
             "success": True,
             "loaded_count": loaded_count,
             "db_path": str(resolved_db_path),
+            "migrations_applied": migration_result.get("applied", []),
         }
     finally:
         await db.close()
@@ -1596,3 +1601,434 @@ def load_user_config(user_id: str = "default") -> dict[str, Any]:
     data["trading_style"] = config.trading_style.value
     data["risk_level"] = config.risk_level.value
     return cast(dict[str, Any], data)
+
+
+# ---------------------------------------------------------------------------
+# Prediction Ledger capabilities
+# ---------------------------------------------------------------------------
+
+DEFAULT_PREDICTION_LEDGER_PATH = PROJECT_ROOT / "data" / "prediction-ledger.json"
+
+
+def _resolve_prediction_ledger_path(path: Optional[Path] = None) -> Path:
+    return path or DEFAULT_PREDICTION_LEDGER_PATH
+
+
+def create_prediction(
+    *,
+    code: str,
+    direction: str,
+    entry_price: float,
+    target_price: Optional[float] = None,
+    stop_loss: Optional[float] = None,
+    horizon_days: int = 30,
+    confidence: float = 0.5,
+    thesis_summary: str = "",
+    research_entry_id: Optional[str] = None,
+    tags: Optional[list[str]] = None,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Create a structured prediction in the prediction ledger."""
+    from .research.prediction import (
+        PredictionDirection,
+        PredictionLedger,
+        PricePrediction,
+    )
+
+    ledger = PredictionLedger(_resolve_prediction_ledger_path(ledger_path))
+    prediction = PricePrediction(
+        code=code,
+        direction=PredictionDirection(direction),
+        entry_price=entry_price,
+        target_price=target_price,
+        stop_loss=stop_loss,
+        horizon_days=horizon_days,
+        confidence=confidence,
+        thesis_summary=thesis_summary,
+        research_entry_id=research_entry_id,
+        tags=tags or [],
+    )
+    ledger.create(prediction)
+    return prediction.to_dict()
+
+
+def list_predictions(
+    *,
+    code: Optional[str] = None,
+    outcome: Optional[str] = None,
+    limit: int = 50,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """List predictions with optional filters."""
+    from .research.prediction import PredictionLedger, PredictionOutcome
+
+    ledger = PredictionLedger(_resolve_prediction_ledger_path(ledger_path))
+    outcome_enum = PredictionOutcome(outcome) if outcome else None
+    items = ledger.list_all(code=code, outcome=outcome_enum, limit=limit)
+    return {"predictions": items, "count": len(items)}
+
+
+def get_prediction_accuracy(
+    *,
+    code: Optional[str] = None,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Get prediction accuracy statistics."""
+    from .research.prediction import PredictionLedger
+
+    ledger = PredictionLedger(_resolve_prediction_ledger_path(ledger_path))
+    return ledger.get_accuracy_stats(code=code)
+
+
+async def run_prediction_verification(
+    *,
+    db_path: Optional[Path] = None,
+    ledger_path: Optional[Path] = None,
+    research_ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Run auto-verification sweep on all pending predictions."""
+    from .research.prediction_verifier import run_verification_sweep
+
+    return await run_verification_sweep(
+        db_path=db_path or DEFAULT_DB_PATH,
+        prediction_ledger_path=_resolve_prediction_ledger_path(ledger_path),
+        research_ledger_path=research_ledger_path,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Financial Statements capabilities
+# ---------------------------------------------------------------------------
+
+
+async def get_financial_statements(
+    code: str,
+    *,
+    periods: int = 8,
+) -> dict[str, Any]:
+    """Fetch structured financial statements with YoY/QoQ growth."""
+    from .financial import FinancialStatementService
+
+    service = FinancialStatementService()
+    result = await service.get_statements(code, periods=periods)
+    return result.to_dict()
+
+
+# ---------------------------------------------------------------------------
+# News/Announcement Pipeline capabilities
+# ---------------------------------------------------------------------------
+
+
+async def get_corporate_events(
+    code: str,
+    *,
+    days: int = 90,
+    include_news: bool = True,
+    include_earnings: bool = True,
+    include_dividends: bool = True,
+) -> dict[str, Any]:
+    """Fetch all corporate events (news, earnings, dividends) for a stock."""
+    from .news import NewsPipeline
+
+    pipeline = NewsPipeline()
+    return await pipeline.get_all_events(
+        code,
+        days=days,
+        include_news=include_news,
+        include_earnings=include_earnings,
+        include_dividends=include_dividends,
+    )
+
+
+async def get_stock_news(
+    code: str,
+    *,
+    limit: int = 20,
+) -> dict[str, Any]:
+    """Fetch recent news for a stock."""
+    from .news import NewsPipeline
+
+    pipeline = NewsPipeline()
+    events = await pipeline.get_stock_news(code, limit=limit)
+    return {
+        "code": code,
+        "events": [e.to_dict() for e in events],
+        "count": len(events),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Report Vector Store capabilities
+# ---------------------------------------------------------------------------
+
+
+DEFAULT_REPORT_VECTOR_STORE_PATH = PROJECT_ROOT / "data" / "report-vectors.json"
+
+
+def index_report_document(
+    doc_id: str,
+    text: str,
+    *,
+    metadata: Optional[dict[str, Any]] = None,
+    chunk_size: int = 500,
+    store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Index a research report for semantic search."""
+    from .report_search import ReportVectorStore
+
+    store = ReportVectorStore(store_path or DEFAULT_REPORT_VECTOR_STORE_PATH)
+    chunk_count = store.index_document(
+        doc_id, text, metadata=metadata, chunk_size=chunk_size
+    )
+    return {"doc_id": doc_id, "chunks_indexed": chunk_count}
+
+
+def search_reports(
+    query: str,
+    *,
+    top_k: int = 5,
+    doc_filter: Optional[str] = None,
+    store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Semantic search over indexed research reports."""
+    from .report_search import ReportVectorStore
+
+    store = ReportVectorStore(store_path or DEFAULT_REPORT_VECTOR_STORE_PATH)
+    results = store.search(query, top_k=top_k, doc_filter=doc_filter)
+    return {
+        "query": query,
+        "results": [r.to_dict() for r in results],
+        "count": len(results),
+    }
+
+
+def get_report_store_stats(
+    *,
+    store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Get vector store statistics."""
+    from .report_search import ReportVectorStore
+
+    store = ReportVectorStore(store_path or DEFAULT_REPORT_VECTOR_STORE_PATH)
+    return store.get_stats()
+
+
+# ---------------------------------------------------------------------------
+# Migration capabilities
+# ---------------------------------------------------------------------------
+
+
+async def run_migrations(
+    *,
+    db_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Run pending database migrations."""
+    from .migrations import MigrationRunner
+
+    runner = MigrationRunner(db_path or DEFAULT_DB_PATH)
+    return await runner.run_pending()
+
+
+async def get_migration_status(
+    *,
+    db_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Check migration status."""
+    from .migrations import MigrationRunner
+
+    runner = MigrationRunner(db_path or DEFAULT_DB_PATH)
+    return await runner.get_status()
+
+
+# ---------------------------------------------------------------------------
+# Task Scheduler capabilities
+# ---------------------------------------------------------------------------
+
+
+async def start_scheduler() -> dict[str, Any]:
+    """Start the task scheduler with default jobs."""
+    from .scheduler import TaskScheduler, create_default_jobs
+    from .scheduler.bridge import sync_research_to_monitor
+
+    scheduler = TaskScheduler()
+    for job in create_default_jobs():
+        scheduler.register(job)
+
+    from .scheduler import ScheduledJob, JobFrequency
+
+    async def _sync_bridge() -> dict[str, Any]:
+        return await sync_research_to_monitor()
+
+    scheduler.register(ScheduledJob(
+        name="sync_research_to_monitor",
+        frequency=JobFrequency.EVERY_30_MIN,
+        handler=_sync_bridge,
+    ))
+
+    await scheduler.start()
+    return scheduler.get_status()
+
+
+def get_scheduler_status() -> dict[str, Any]:
+    """Get scheduler status (for CLI)."""
+    from .scheduler import TaskScheduler
+    scheduler = TaskScheduler()
+    return scheduler.get_status()
+
+
+# ---------------------------------------------------------------------------
+# Research-Monitor Bridge capabilities
+# ---------------------------------------------------------------------------
+
+
+async def sync_research_monitor(
+    *,
+    db_path: Optional[Path] = None,
+    ledger_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Sync research entries to watch items."""
+    from .scheduler.bridge import sync_research_to_monitor
+    return await sync_research_to_monitor(
+        db_path=db_path or DEFAULT_DB_PATH,
+        ledger_path=ledger_path,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Data Consistency capabilities
+# ---------------------------------------------------------------------------
+
+
+async def check_data_consistency(
+    code: str,
+    *,
+    db_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Run cross-source data consistency check for a stock."""
+    from .quality.consistency import check_data_consistency as _check
+
+    quote_data = None
+    financial_data = None
+    news_data = None
+
+    try:
+        quote_data = await get_quote(code, db_path=db_path or DEFAULT_DB_PATH)
+    except Exception:
+        pass
+
+    try:
+        financial_data = await get_financial_statements(code, periods=4)
+    except Exception:
+        pass
+
+    try:
+        news_data = await get_corporate_events(code, days=90)
+    except Exception:
+        pass
+
+    return await _check(
+        code,
+        quote_data=quote_data,
+        financial_data=financial_data,
+        news_data=news_data,
+    )
+
+
+# ---------------------------------------------------------------------------
+# Market Stream capabilities
+# ---------------------------------------------------------------------------
+
+
+async def get_market_snapshot(codes: list[str]) -> dict[str, Any]:
+    """Get real-time snapshot for multiple stocks via Sina stream."""
+    from .quote.market_stream import MarketStream
+
+    stream = MarketStream()
+    ticks = await stream.get_snapshot(codes)
+    return {
+        "ticks": [t.to_dict() for t in ticks],
+        "count": len(ticks),
+        "fetched_at": datetime.now().isoformat(),
+    }
+
+
+# ---------------------------------------------------------------------------
+# Research Quality Feedback capabilities
+# ---------------------------------------------------------------------------
+
+
+def record_quality_feedback(
+    *,
+    entry_id: str,
+    catalyst_outcomes: Optional[list[dict[str, Any]]] = None,
+    risk_outcomes: Optional[list[dict[str, Any]]] = None,
+    unpredicted_risks: Optional[list[dict[str, Any]]] = None,
+    agent_scores: Optional[list[dict[str, Any]]] = None,
+    notes: str = "",
+    store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Record a research quality assessment."""
+    from .quality.feedback import (
+        AgentRoleScore,
+        CatalystOutcome,
+        QualityFeedbackStore,
+        ResearchQualityReport,
+        RiskOutcome,
+    )
+
+    store = QualityFeedbackStore(
+        store_path or (PROJECT_ROOT / "data" / "quality-feedback.json")
+    )
+    report = ResearchQualityReport(
+        entry_id=entry_id,
+        catalyst_outcomes=[
+            CatalystOutcome.from_dict(c) for c in (catalyst_outcomes or [])
+        ],
+        risk_outcomes=[
+            RiskOutcome.from_dict(r) for r in (risk_outcomes or [])
+        ],
+        unpredicted_risks=[
+            RiskOutcome.from_dict(r) for r in (unpredicted_risks or [])
+        ],
+        agent_scores=[
+            AgentRoleScore.from_dict(a) for a in (agent_scores or [])
+        ],
+        notes=notes,
+    )
+    store.record_quality_report(report)
+    return report.to_dict()
+
+
+def get_quality_stats(
+    *,
+    store_path: Optional[Path] = None,
+) -> dict[str, Any]:
+    """Get aggregate research quality statistics."""
+    from .quality.feedback import QualityFeedbackStore
+
+    store = QualityFeedbackStore(
+        store_path or (PROJECT_ROOT / "data" / "quality-feedback.json")
+    )
+    return store.get_aggregate_stats()
+
+
+# ---------------------------------------------------------------------------
+# Earnings Calendar capabilities
+# ---------------------------------------------------------------------------
+
+
+async def get_earnings_calendar(
+    *,
+    period: str = "2025年报",
+    codes: Optional[list[str]] = None,
+    upcoming_only: bool = False,
+    days_ahead: int = 30,
+) -> dict[str, Any]:
+    """Fetch earnings disclosure calendar."""
+    from .financial.earnings_calendar import get_earnings_calendar as _get_cal
+    return await _get_cal(
+        period=period,
+        codes=codes,
+        upcoming_only=upcoming_only,
+        days_ahead=days_ahead,
+    )

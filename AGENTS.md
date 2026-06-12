@@ -58,6 +58,37 @@ Current shell commands such as `.venv/bin/python -m astock.cli quote 000001 --js
 - New skills should call the capability kernel directly when possible; when shell execution is simpler, call CLI adapters with `--json`.
 - Python output should be data packets with explicit `data_quality`, `warnings`, and `error` fields where applicable.
 
+### Agent-Native vs Python-Required Boundary
+
+Many "missing capabilities" are already covered by the AI agent runtime itself and should NOT be implemented in Python. The rule: if an agent can accomplish it within a single conversation by combining existing capabilities, it belongs to the agent, not to Python.
+
+**Agent does this natively (do NOT build Python code for these):**
+
+| Task | How the Agent Handles It |
+|------|---------------------------|
+| Industry-chain relationship extraction | Agent reads reports/news, reasons about relationships, calls `upsert_market_subject_mapping()` |
+| Multi-stock comparative analysis | Agent fetches multiple quote/analysis packets in one conversation and synthesizes |
+| Research report PDF parsing + indexing | Agent reads PDF content, calls `index_report_document()` to store in vector store |
+| User-profile-driven output personalization | Agent reads `load_user_config()` and adjusts tone/depth naturally |
+| Backtest → Prediction pipeline | Agent runs backtest, interprets signals, calls `create_prediction()` if warranted |
+| Cross-session context / memory | Agent runtime memory system handles this |
+| Structured output validation | Agent reasoning ensures correct formats |
+| Retry / error recovery in workflows | Agent naturally retries or adjusts approach |
+| Multi-tenant / multi-user isolation | Single-user agent environment; not needed |
+
+**Python code IS required for these (cannot be agent-native):**
+
+| Task | Why Python Is Needed |
+|------|----------------------|
+| Task scheduler / background daemon | Must run independently without an active agent session |
+| Database schema migrations | Must apply reliably before any code runs |
+| Vector store performance at scale | TF-IDF rebuild on 10k+ chunks needs optimized data structures |
+| Market stream → Monitor integration | Real-time event loop replacing polling cannot be an agent conversation |
+| Earnings calendar data source | Structured data fetch that scheduler uses to plan ahead |
+
+When evaluating whether to add new Python code, ask: "Can the agent do this by calling existing capabilities in sequence?" If yes, write a skill instruction instead of Python code.
+
+
 ## Foundation Capability Rules
 
 Top-level agents and skills should use the following foundation capabilities when they produce research or market-monitoring conclusions:

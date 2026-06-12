@@ -7,6 +7,7 @@ from typing import Optional, Any, cast
 
 from ..storage import Database, WatchItem, AlertRecord
 from ..quote import QuoteService
+from ..quote.market_stream import MarketStream, MarketTick
 from ..utils import get_logger, DataSourceError, AlertError
 from .scanner import SignalScanner
 from .alert_engine import AlertEngine
@@ -38,6 +39,8 @@ class MonitorService:
         self._task: Optional[asyncio.Task[None]] = None
         self._scan_interval = 60  # Scan interval (seconds)
         self._start_time: Optional[datetime] = None
+        self._market_stream = MarketStream()
+        self._stream_mode = True  # Use push-based stream when possible
         logger.debug("Monitor service initialization complete")
 
     async def start(self) -> None:
@@ -63,16 +66,18 @@ class MonitorService:
         logger.info("Monitor service stopped")
 
     async def _monitor_loop(self) -> None:
-        """Monitor loop"""
+        """Monitor loop — uses MarketStream for push-based updates during trading hours,
+        falls back to interval polling outside trading hours or on stream failure."""
         while self._running:
             try:
-                # Check if within trading hours
                 if self._is_trading_time():
-                    await self._scan_watch_list()
+                    if self._stream_mode:
+                        await self._stream_scan_cycle()
+                    else:
+                        await self._scan_watch_list()
                 else:
                     logger.debug("Outside trading hours, waiting...")
 
-                # Wait for next scan
                 await asyncio.sleep(self._scan_interval)
 
             except asyncio.CancelledError:
@@ -81,6 +86,43 @@ class MonitorService:
             except Exception as e:
                 logger.error(f"Monitor loop error: {e}", exc_info=True)
                 await asyncio.sleep(self._scan_interval)
+
+    async def _stream_scan_cycle(self) -> None:
+        """Use MarketStream to fetch real-time snapshots for all watched codes."""
+        try:
+            watch_items = await self.db.get_watch_items(enabled_only=True)
+        except Exception as e:
+            logger.error(f"Failed to get watch list: {e}")
+            return
+
+        if not watch_items:
+            return
+
+        codes = [item.code for item in watch_items]
+        ticks = await self._market_stream.get_snapshot(codes)
+
+        if not ticks:
+            logger.debug("Stream returned no ticks, falling back to scanner")
+            await self._scan_watch_list()
+            return
+
+        tick_map = {tick.code: tick for tick in ticks}
+        signal_count = 0
+
+        for item in watch_items:
+            tick = tick_map.get(item.code)
+            if tick is None:
+                continue
+            try:
+                result = await self.scanner.scan_stock(item.code)
+                if result.get("signals"):
+                    await self._handle_signal(item, result)
+                    signal_count += 1
+            except Exception as e:
+                logger.warning(f"Stream scan error for {item.code}: {e}")
+
+        if signal_count:
+            logger.info(f"Stream cycle: {len(watch_items)} items, {signal_count} signals")
 
     def _is_trading_time(self) -> bool:
         """Check if current time is within trading hours
