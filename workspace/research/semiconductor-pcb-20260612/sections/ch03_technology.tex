@@ -1,0 +1,113 @@
+\section{Architecture Thesis}
+
+\begin{houseviewbox}[Technology view]
+AI服务器的变化不是单纯多用几块PCB，而是把板级互联推向半导体级约束：更高速率、更高功率密度、更短链路、更复杂的封装到板级连接，以及更严格的良率和可靠性要求。投资含义是，价值从通用制造迁移到``材料 + 工艺 + 认证''。
+\end{houseviewbox}
+
+\section{Architecture Chain Exhibit}
+
+\begin{exhibitbox}[Exhibit 5: From chip package to board-level bottleneck]
+\centering
+\begin{tikzpicture}[
+  node distance=0.8cm,
+  box/.style={rectangle, rounded corners=2pt, draw=navy, fill=lightgrey, align=center, minimum width=3.0cm, minimum height=0.9cm},
+  arrow/.style={-{Stealth[length=2mm]}, thick, color=navy}
+]
+\node[box] (chip) {GPU / ASIC\\HBM / Compute Die};
+\node[box, right=of chip] (package) {Advanced Package\\ABF / BT / CoWoP};
+\node[box, right=of package] (board) {High-Speed PCB\\HDI / Backplane};
+\node[box, below=of package] (material) {M7--M10 CCL\\Low-Loss Materials};
+\node[box, below=of board] (equipment) {Drill / LDI\\Plating / Tools};
+\draw[arrow] (chip) -- (package);
+\draw[arrow] (package) -- (board);
+\draw[arrow] (material) -- (package);
+\draw[arrow] (material) -- (board);
+\draw[arrow] (equipment) -- (board);
+\draw[arrow] (equipment) -- (package);
+\end{tikzpicture}
+\sourcenote{AStock industry landscape; broker-stated claims from S01/S03/S06/S07}
+\end{exhibitbox}
+
+\section{Old-vs-New Technology Map}
+
+\begin{exhibitbox}[Exhibit 6: Technology migration and investable consequence]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X X L{2.5cm}}
+\toprule
+\textbf{Old layer} & \textbf{New bottleneck} & \textbf{Economic consequence} & \textbf{Evidence} \\
+\midrule
+通用多层板 & 高层数、高速、低损耗AI板 & 认证产能和良率成为稀缺资源，龙头获得订单和ASP杠杆。 & \evidencetag{broker-stated} \\
+中低等级CCL & M7/M8/M9/M10高频高速覆铜板 & CCL从成本项转为性能瓶颈，材料龙头获得议价窗口。 & \evidencetag{broker-stated} \\
+板级互联 & 板级+载板+封装类互联 & IC载板、ABF/BT、玻璃基板和CoWoP相关结构获得期权价值。 & \evidencetag{broker-stated} \\
+通用设备扩产 & 精密钻孔、LDI、电镀、层压和检测 & 设备和耗材享受扩产与制程升级的二阶弹性。 & \evidencetag{inferred} \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{Key Bottlenecks}
+
+\begin{dashboardbox}[Technical bottleneck checklist]
+\begin{tabularx}{\textwidth}{L{3cm}X L{3.3cm}}
+\toprule
+\textbf{Bottleneck} & \textbf{What to verify} & \textbf{Beneficiary layer} \\
+\midrule
+信号完整性 & 低损耗介质、铜箔稳定性、阻抗控制。 & 高频高速CCL、AI PCB \\
+层数和密度 & 高层板、HDI、背板/中板良率。 & PCB制造、设备耗材 \\
+封装边界 & ABF/BT、FC-BGA、玻璃基板、CoWoP类结构。 & IC载板、材料 \\
+工艺装备 & 钻孔、曝光、电镀、层压、检测和钻针耗材。 & 设备、耗材 \\
+\bottomrule
+\end{tabularx}
+\end{dashboardbox}
+
+\section{Technical Parameter Gap}
+
+\begin{sourcequalitybox}[What a top-tier hardware report would quantify]
+当前语料能够支持技术方向，但不足以完成工程级参数表。下一轮需要补齐Dk/Df、线宽线距、层数、背板/中板结构、ABF/BT/玻璃基板良率、M7/M8/M9/M10材料差异和单位BOM价值量。
+\end{sourcequalitybox}
+
+\begin{exhibitbox}[Exhibit 7: Required technical parameters for next upgrade]
+\small
+\begin{tabularx}{\textwidth}{L{3cm}X X}
+\toprule
+\textbf{Parameter} & \textbf{Why it matters} & \textbf{Current corpus status} \\
+\midrule
+CCL Dk / Df & 决定高速信号损耗和M7--M10材料代际差异。 & 缺具体数值，仅有方向性描述。 \\
+Layer count / aspect ratio & 决定高层板难度、钻孔和良率瓶颈。 & 缺公司级产品参数。 \\
+Line width / spacing & 决定HDI、mSAP和精细线路能力。 & 缺可比较数据。 \\
+Backplane / midplane structure & 决定Rubin/ASIC平台PCB价值量。 & 缺平台拆解图和单机价值量。 \\
+ABF / BT / FC-BGA yield & 决定载板收入能否转利润。 & 只知道方向，缺良率和折旧桥。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 8: Official technology parameters now covered]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2.0cm}X X}
+\toprule
+\textbf{Company} & \textbf{Disclosed capability evidence} & \textbf{Still missing} \\
+\midrule
+沪电股份 & 官方年报提到224G SerDes传输需求、HLC/高频高速/HDI/高通流PCB要求。 & 产品级Dk/Df、线宽线距、客户BOM。 \\
+胜宏科技 & 100层以上高多层PCB；10阶30层HDI；16层任意互联HDI；14阶36层HDI研发认证。 & 客户/项目收入拆分。 \\
+深南电路 & 数据中心交换机、光模块、服务器/存储对应背板、高速多层、HDI、高速材料和细密线路工艺。 & 客户级规格和订单金额。 \\
+华正新材 & 112Gbps/224Gbps交换机材料、AI服务器/算力芯片极低损耗基板、BT/CBF-RCC材料。 & 认证客户名称和收入贡献。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_technology\_parameter\_summary.md}; official annual reports}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 9: AI server CCL unit-value bridge]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{3.2cm}X}
+\toprule
+\textbf{Item} & \textbf{Extracted assumption} \\
+\midrule
+AI server CCL value & 约4000--5000元/台。 \\
+GPU board group & 约3000元/台，主要来自OAM、NvSwitch和高速背板。 \\
+CPU motherboard group & 约1300元/台。 \\
+OAM & 假设5阶20层工艺，约1745元/台。 \\
+UBB & 假设20层通孔板，约1364元/台。 \\
+Material generation & H100 GPU板组高速CCL需求在M6/M7级别以上。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{西南证券高速CCL报告；\texttt{workspace/reports/semiconductor-pcb-extra-20260615/600183-xinan-high-speed-ccl.pdf}}
+\end{exhibitbox}

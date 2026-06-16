@@ -1,0 +1,98 @@
+<div style="font-size:16px;font-family:宋体,SimSun,sans-serif; margin: 0px auto; padding:0px 8px 0px 0px; width:950px; line-height: 23px; text-align: left;border:solid 1px darkred;">
+
+<div style="margin:0px 20px 0px 20px;">
+
+# 华正新材(603186)：护航国产算力 锐利涨价品种
+
+<table width="100%" style="margin:0 0px 0 0px">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<tbody>
+<tr>
+<td width="40%"><div
+style="font-size:0pt;background-color:rgb(100,100,100);width:100%;height:1px">
+&#10;</div></td>
+<td width="20%"
+style="text-align: center; font-size: 9pt; white-space: nowrap; padding: 3px 0px 5px 3px;">时间：2026年04月03日 中财网</td>
+<td width="40%"><div
+style="font-size:0pt;background-color:rgb(100,100,100);width:100%;height:1px">
+&#10;</div></td>
+</tr>
+</tbody>
+</table>
+
+<div style="width:100%; font-size:16px; text-align:left; border-bottom:none; word-break:break-all;">
+
+华正新材：国产高端CCL 核心供应商，布局CBF/BT
+半导体封装材料。公司成立于2003 年，2017
+年上市。公司是国内外产品类别最齐全的覆铜板厂商之一，涵盖高频、高速、金属基高导热、普通FR-4
+及HDI 等类别。2025 年覆铜板收入34 亿元，销量超3800 万张。公司在2024
+年全球CCL 市场份额约2.8%，排名第11 位。\
+\
+\
+　　CCL：受益AI 基建，高端放量和普品提价预计驱动毛利率恢复。CCL
+业务毛利率从历史高位（2016-2021）15%-20%滑落至（2022-2024）6%-8%水平，单位毛利从14-20
+元/张压缩至5-6
+元/张，主因产业链去库存、铜箔价格维持高位、价格竞争与折旧压力。2025
+年单张CCL毛利为7.9 元，YoY+36%；CCL 业务量价和盈利能力已迎来增长拐点。\
+\
+\
+　　一方面，高速CCL：国产算力带动上游配套需求，M7 材料批量中。AI
+服务器、交换机、光模块需求扩容升规，有望加速高速CCL
+份额突破，带动产品附加值提高。M6 材料自2022 年进入订单交付阶段；M7
+材料已完成国内大型通讯公司认证，可应用于56Gbps
+交换机、400G光模块以及高阶AI 服务器领域，2024 年实现小批量销售，25
+年上半年实现批量销售；M7(Low-CTE)材料自2023
+年开始在国内主要终端客户开展验证，25 年实现小批量订单；M8
+材料面向112Gbps 交换机和800G 光模块，正积极参与海外客户测试认证。\
+\
+\
+　　另一方面，FR-4：三大主材具有充分涨价动能，高集中度赋予CCL
+厂商主动权。1）铜价：\
+\
+\
+　　供需紧平衡下或维持高位。2）电子布：AI
+特种布抢占产能，供给约束下普通布涨价动能或持续。3）环氧树脂：地缘冲突升级，上游石化供给受冲击，环氧树脂成本存在上行空间。\
+\
+\
+　　半导体先进封装材料是增长期权。1）CBF
+增层膜：有望突破日本味之素垄断。封装载板技术向“高密度+大尺寸/高层数+复杂集成”三大趋势演进。高端封装载板使用ABF
+作为介电材料进行增层，以实现多层结构与高密度互联。ABF 远期空间超10
+亿美金，日本味之素垄断95%份额。公司对标的CBF
+已经在算力芯片等应用场景形成系列产品，并已在国内主要IC载板厂家开展验证。2）BT
+封装材料：日商26Q1
+启动涨价，公司有望受益。高端封装基板材料领军已采取转嫁策略，封装基板用CCL/PP
+涨价幅度达到30%。\
+\
+\
+　　短期，国产算力需求与AI 驱动的成本传导将带动CCL
+的量价和盈利提升。预计华正新材2026-2028 实现营业收入63.9/78.4/90.7
+亿元，同比+46%/+23%/+16%；归母净利润4.7 亿/7.7 亿/9.7
+亿元，同比+71%/+63%/+26%；净利率7.4%/9.8%/10.7%。截至2026 年4
+月2日收盘，26E PE
+为20x，可比公司按市值加权平均为29x，首次覆盖，给予“买入”评级。\
+\
+\
+　　风险提示：国产算力景气度不及预期；公司产品研发、客户导入进展不及预期；CCL
+紧缺缓解。
+
+</div>
+
+<div style="width:100%; font-size:16px; text-align:right; padding-top:0;border-top:none; word-break:break-all;">
+
+□.杨.海.晏./.袁.航./.杨.紫.璇./.姜.安.然    .上.海.申.银.万.国.证.券.研.究.所.有.限.公.司
+
+</div>
+
+</div>
+
+</div>
+
+<div style="width:950px; text-align:center;font-size:9pt;margin:20px auto;">
+
+中财网版权所有(C) HTTP://WWW.CFi.CN
+
+</div>

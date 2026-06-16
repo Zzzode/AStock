@@ -1,67 +1,213 @@
 {
   "market-analyst": {
     "description": "Market structure, volume-price dynamics, momentum, and position assessment for A-share equities",
-    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
     "sandbox_mode": "read-only"
   },
   "fundamental-analyst": {
     "description": "Valuation, earnings quality, operations, and catalyst identification for A-share equities",
-    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "industry-analyst": {
     "description": "TAM sizing, competitive landscape, supply chain, policy and macro environment analysis",
-    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "risk-analyst": {
     "description": "Risk matrix, ESG/compliance screening, position sizing, stop-loss, stress tests, and Devil's Advocate",
-    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "contrarian-analyst": {
     "description": "Constructs strongest counter-arguments against prevailing thesis, identifies failure scenarios and consensus risk",
-    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
     "sandbox_mode": "read-only"
   },
   "data-collector": {
     "description": "Structured financial and market data gathering from official filings and exchanges",
-    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "data-verifier": {
     "description": "Cross-verify every data point against official sources, catch errors before they reach analysis",
-    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "report-collector": {
     "description": "Collect sell-side broker research reports for a sector or ticker from public sources, output structured catalog with metadata and key excerpts",
-    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "report-analyzer": {
     "description": "Synthesize multiple broker reports into consensus matrix, identify divergences, blind spots, and crowded-trade risks",
-    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "valuation-modeler": {
     "description": "PE/PEG/PS/DCF valuation models, three-tier target prices, seasonality calibration, sell-side bias detection",
-    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
     "sandbox_mode": "read-only"
   },
   "latex-writer": {
     "description": "Professional IB-style LaTeX/PDF report production using XeLaTeX, Goldman Sachs / Morgan Stanley aesthetic",
-    "tools": ["Read", "Write", "Edit", "Bash", "Glob"],
+    "tools": [
+      "Read",
+      "Write",
+      "Edit",
+      "Bash",
+      "Glob"
+    ],
     "sandbox_mode": "workspace-write"
   },
   "reviewer": {
     "description": "Senior research director quality gate - S/A/B severity review with publication blocking authority",
-    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "research-report-reviewer": {
+    "description": "Global top-tier equity research report reviewer for investment thesis, evidence, valuation, risk, compliance, and publishability",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
     "sandbox_mode": "read-only"
   },
   "internal-control": {
     "description": "System quality audit, prompt review, feedback pattern analysis, sync verification, and improvement proposals",
-    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "template-benchmark-analyst": {
+    "description": "Selects global institutional report archetype and writes template brief before research drafting",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "exhibit-architect": {
+    "description": "Plans visual exhibits and converts strong conclusions into chart, heatmap, timeline, bridge, scorecard, or network map requirements",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "source-governance-analyst": {
+    "description": "Controls source hierarchy, source registry, claim audit, and whether claims may enter valuation",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "house-view-analyst": {
+    "description": "Forms AStock house view and separates our thesis from broker views",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "valuation-auditor": {
+    "description": "Audits valuation arithmetic, target comparability, forecast availability, and fake precision",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "visual-layout-reviewer": {
+    "description": "Reviews rendered PDF pages for visual quality, clipping, overlap, chart readability, and exhibit professionalism",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash"
+    ],
     "sandbox_mode": "read-only"
   }
 }

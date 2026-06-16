@@ -1,0 +1,84 @@
+\section{Value Chain Heatmap}
+
+\begin{exhibitbox}[Exhibit 8: Segment heatmap by bottleneck and investability]
+\small
+\begin{tabularx}{\textwidth}{L{2.4cm}C{1.8cm}C{1.8cm}C{1.8cm}C{1.8cm}X}
+\toprule
+\textbf{Layer} & \textbf{AI demand} & \textbf{Pricing} & \textbf{Cert. moat} & \textbf{Evidence} & \textbf{Representative names} \\
+\midrule
+上游材料 & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Inferred & 中国巨石、中材科技、国际复材、宏和科技 \\
+高频高速CCL & \cellcolor{green!18}High & \cellcolor{green!18}High & \cellcolor{green!18}High & \cellcolor{green!18}Q2 & 生益科技、华正新材、南亚新材 \\
+PCB制造 & \cellcolor{green!18}High & \cellcolor{yellow!18}Med & \cellcolor{green!18}High & \cellcolor{green!18}Q2 & 沪电股份、胜宏科技、深南电路、鹏鼎控股 \\
+IC载板 & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Med & \cellcolor{green!18}High & \cellcolor{yellow!18}Q2/Q3 & 深南电路、兴森科技、华正新材 \\
+设备 & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Q2 & 大族数控、芯碁微装、东威科技（非本报告覆盖ticker）、凯格精机 \\
+耗材 & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Med & \cellcolor{yellow!18}Q3 & 鼎泰高科、中钨高新 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/report\_catalog.md}; \texttt{data/source\_registry.md}}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 8b: Sector structure cross-check from CMBI/Prismark]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2.6cm}X X}
+\toprule
+\textbf{Dimension} & \textbf{Institutional evidence} & \textbf{Report implication} \\
+\midrule
+Global PCB cycle & CMBI cites Prismark 2025E global PCB growth of 12.8\%, revised from 7.6\%; 2024 sales about US\$74bn. & AI infrastructure is a cyclical and structural demand driver, but growth assumptions still require order verification. \\
+High-end mix & 18L+ multilayer PCB, HDI and substrates are expected to be standout segments; China accounted for about 56\% of 2024 global PCB production value. & Supports focusing on high-end A-share suppliers rather than broad low-end PCB exposure. \\
+CCL concentration & Global CCL top 10 suppliers held about 77\% share in 2024; high-speed specialty CCL grew about 50\% YoY. & Explains why CCL leaders may retain pricing power when materials inflate. \\
+Cost pass-through & Copper is cited as 60\%--70\% of PCB raw-material cost, while high-end AI HDI margins are materially above standard PCB. & Reinforces the report's split between high-end mix winners and commodity-margin risk. \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/cmbi\_sector\_global\_evidence.md}; CMBI sector update is Q2 broker evidence and does not disclose named customer revenue}
+\end{exhibitbox}
+
+\section{Platform-Chain Map}
+
+\begin{exhibitbox}[Exhibit 9: Demand platform to A-share exposure]
+\small
+\begin{tabularx}{\textwidth}{L{3cm}X X L{2.5cm}}
+\toprule
+\textbf{Demand node} & \textbf{Required PCB/CCL capability} & \textbf{Likely A-share exposure} & \textbf{Confidence} \\
+\midrule
+NVIDIA GB300/Rubin & 高层高速PCB、背板、中板、M9材料、CoWoP相关结构 & 沪电股份、胜宏科技、深南电路、生益科技 & \evidencetag{broker-stated} \\
+North American ASIC & HDI、高速CCL、服务器板、交换机板 & 胜宏科技、沪电股份、生益科技 & \evidencetag{broker-stated} \\
+Domestic compute & 国产高端CCL、CBF/BT材料、PCB与载板认证 & 华正新材、深南电路、生益科技、兴森科技 & \evidencetag{broker-stated} \\
+Optical/networking & 光模块PCB、交换机PCB、高速材料 & 沪电股份、深南电路、景旺电子等 & \evidencetag{inferred} \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{Relationship Matrix}
+
+\begin{dashboardbox}[Company relationship confidence]
+\small
+\begin{tabularx}{\textwidth}{L{2.3cm}L{3.0cm}X L{2.5cm}}
+\toprule
+\textbf{Name} & \textbf{Role} & \textbf{Investment meaning} & \textbf{Label} \\
+\midrule
+沪电股份 & AI PCB / backplane & 直接受益规格升级，估值受订单节奏影响。 & \evidencetag{broker-stated} \\
+胜宏科技 & AI PCB / HDI & 弹性高，客户集中度和H/A可比性需验证。 & \evidencetag{broker-stated} \\
+深南电路 & PCB + IC载板 & 财务交付证据较强，双轮驱动。 & \evidencetag{broker-stated} \\
+生益科技 & 高频高速CCL & 材料涨价和结构升级主线。 & \evidencetag{broker-stated} \\
+华正新材 & 高速CCL / CBF / BT & 国产算力和材料期权，估值对兑现敏感。 & \evidencetag{broker-stated} \\
+设备耗材组 & 钻孔/LDI/电镀/钻针 & 扩产二阶弹性，订单波动高。 & \evidencetag{inferred} \\
+\bottomrule
+\end{tabularx}
+\end{dashboardbox}
+
+\section{Supplier Economics}
+
+\begin{exhibitbox}[Exhibit 9b: H-share supplier concentration and material-cost bridge]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}X X}
+\toprule
+\textbf{Name} & \textbf{Supplier evidence} & \textbf{Model implication} \\
+\midrule
+沪电股份 & 原材料成本占销售成本比例从2023年55.8\%升至2026Q1的62.3\%；五大供应商采购占比约41\%--42\%，最大供应商约21\%。 & 铜箔、覆铜板、半固化片成本传导是毛利率关键。 \\
+沪电股份 & 主要供应商多为覆铜板及半固化片供应商，信用期60--150天；设备供应商信用期约30天。 & 供应商信用期支持DPO和现金转换假设。 \\
+胜宏科技 & 原材料成本占销售成本比例从2023年58.6\%升至2025年65.9\%；五大供应商采购占比从29.3\%升至45.2\%。 & 高端HDI/MLPCB放量伴随材料和设备集中度提升。 \\
+胜宏科技 & 供应商A为韩国电子材料供应商，供应商B为广东高端CCL开发商，供应商H为激光智能装备公司。 & 上游材料和设备能力影响产能爬坡与毛利率。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/hshare\_supplier\_economics\_evidence.md}}
+\end{exhibitbox}

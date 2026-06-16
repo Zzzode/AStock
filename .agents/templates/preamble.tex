@@ -1,11 +1,26 @@
-% Reusable IB-style preamble for XeLaTeX equity research reports
-% Usage: \input{preamble} after \documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+% Reusable institutional-style preamble for XeLaTeX AStock research reports.
+% Usage: define \reporttitle and \reportdate, then \input{.agents/templates/preamble.tex}.
+% Design benchmark: JPM first-page dashboard, BlackRock house-view framing,
+% Vanguard scenario discipline, and AB/JPM chartbook exhibit structure.
+
+\providecommand{\reporttitle}{AStock Research Report}
+\providecommand{\reportsubtitle}{House View, Evidence, Valuation and Risk}
+\providecommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
+\providecommand{\reportscope}{CHINA A-SHARES}
+\providecommand{\reportdate}{\today}
+\providecommand{\reportdatacutoff}{Data cutoff not specified}
+\providecommand{\reporttype}{Research note}
+\providecommand{\reportauthor}{AStock Research Agent}
+\providecommand{\reporthouseview}{State the house view in one decision-useful paragraph.}
+\providecommand{\reportquality}{Source quality not specified.}
+\providecommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。}
 
 % ============ 页面布局 ============
-\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[top=1.8cm, bottom=1.9cm, left=1.8cm, right=1.8cm]{geometry}
 \setlength{\parskip}{0.3em}
 \setlength{\parindent}{2em}
-\renewcommand{\baselinestretch}{1.15}
+\renewcommand{\baselinestretch}{1.12}
+\raggedbottom
 
 % ============ 字体（macOS） ============
 \setCJKmainfont[BoldFont={Heiti SC}]{STSong}
@@ -16,12 +31,17 @@
 % ============ 颜色（IB Navy/Grey palette） ============
 \usepackage{xcolor}
 \definecolor{navy}{HTML}{003366}
+\definecolor{deepnavy}{HTML}{0B1F33}
 \definecolor{steelgrey}{HTML}{4A5568}
+\definecolor{mutedgrey}{HTML}{718096}
 \definecolor{lightgrey}{HTML}{F7FAFC}
+\definecolor{panelgrey}{HTML}{EDF2F7}
 \definecolor{riskred}{HTML}{C53030}
 \definecolor{riskamber}{HTML}{D69E2E}
 \definecolor{riskgreen}{HTML}{38A169}
+\definecolor{accentblue}{HTML}{2B6CB0}
 \definecolor{nvgreen}{HTML}{76B900}
+\definecolor{rulegrey}{HTML}{CBD5E0}
 
 % ============ 表格 ============
 \usepackage{booktabs}
@@ -29,12 +49,16 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 \usepackage{array}
+\usepackage{makecell}
+\usepackage{colortbl}
+\renewcommand{\arraystretch}{1.12}
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}
 
 % ============ 图形 ============
+\usepackage{graphicx}
 \usepackage{tikz}
 \usetikzlibrary{shapes,arrows.meta,positioning,calc,backgrounds,fit}
 \usepackage{pgfplots}
@@ -46,23 +70,24 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\color{steelgrey} \reporttitle}
-\fancyhead[R]{\small\color{steelgrey} \reportdate}
+\fancyhead[L]{\scriptsize\color{steelgrey} \reporttitle}
+\fancyhead[R]{\scriptsize\color{steelgrey} \reportdate}
 \fancyfoot[C]{\small\color{steelgrey} \thepage}
-\fancyfoot[R]{\tiny\color{steelgrey} 本报告不构成任何投资建议}
+\fancyfoot[R]{\tiny\color{steelgrey} \reportdisclaimer}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0.2pt}
 
 % ============ 章节格式 ============
 \usepackage{titlesec}
-\titleformat{\chapter}[display]
-  {\normalfont\huge\bfseries\color{navy}}
-  {\chaptertitlename\ \thechapter}{20pt}{\Huge}
+\titleformat{\chapter}[block]
+  {\normalfont\LARGE\bfseries\color{navy}}
+  {\thechapter}{0.9em}{}
+\titlespacing*{\chapter}{0pt}{0.4em}{1.0em}
 \titleformat{\section}
-  {\normalfont\Large\bfseries\color{navy}}
+  {\normalfont\large\bfseries\color{navy}}
   {\thesection}{1em}{}
 \titleformat{\subsection}
-  {\normalfont\large\bfseries\color{steelgrey}}
+  {\normalfont\normalsize\bfseries\color{steelgrey}}
   {\thesubsection}{1em}{}
 
 % ============ 超链接 ============
@@ -85,6 +110,7 @@
 \usepackage{caption}
 \captionsetup{font=small, skip=4pt}
 \usepackage{float}
+\usepackage{needspace}
 \setlength{\textfloatsep}{8pt plus 2pt minus 2pt}
 \setlength{\floatsep}{6pt plus 2pt minus 2pt}
 \setlength{\intextsep}{6pt plus 2pt minus 2pt}
@@ -98,13 +124,101 @@
 \newcommand{\starfive}{$\bigstar\bigstar\bigstar\bigstar\bigstar$}
 \newcommand{\starfour}{$\bigstar\bigstar\bigstar\bigstar$}
 \newcommand{\starthree}{$\bigstar\bigstar\bigstar$}
+\newcommand{\sourcenote}[1]{\par{\scriptsize\color{mutedgrey}\textit{Source: #1}}\vspace{0.2em}}
+\newcommand{\qualitynote}[1]{\par{\scriptsize\color{mutedgrey}\textit{Data quality: #1}}\vspace{0.2em}}
+\newcommand{\evidencetag}[1]{%
+  \tikz[baseline=(x.base)]\node[
+    xshift=0pt,
+    inner xsep=3.5pt,
+    inner ysep=1.2pt,
+    rounded corners=1.5pt,
+    fill=panelgrey,
+    draw=rulegrey,
+    text=steelgrey,
+    font=\scriptsize
+  ] (x) {#1};%
+}
+\newcommand{\stance}[2]{\textbf{\textcolor{#1}{#2}}}
 
 % 信息框
 \newtcolorbox{keyinsight}[1][]{
   colback=lightgrey, colframe=navy,
-  fonttitle=\bfseries, title={#1}, breakable
+  fonttitle=\bfseries, title={#1}, breakable,
+  arc=2pt, boxrule=0.5pt, left=8pt, right=8pt, top=6pt, bottom=6pt
 }
 \newtcolorbox{riskbox}[1][]{
   colback=red!5, colframe=riskred,
-  fonttitle=\bfseries, title={#1}, breakable
+  fonttitle=\bfseries, title={#1}, breakable,
+  arc=2pt, boxrule=0.5pt, left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{dashboardbox}[1][]{
+  enhanced, breakable,
+  colback=white, colframe=navy,
+  boxrule=0.7pt, arc=2pt,
+  fonttitle=\bfseries\color{white},
+  coltitle=white, colbacktitle=navy,
+  title={#1},
+  left=9pt, right=9pt, top=7pt, bottom=7pt
+}
+\newtcolorbox{houseviewbox}[1][]{
+  enhanced, breakable,
+  colback=lightgrey, colframe=deepnavy,
+  borderline west={3pt}{0pt}{accentblue},
+  boxrule=0.4pt, arc=2pt,
+  fonttitle=\bfseries, title={#1},
+  left=9pt, right=9pt, top=7pt, bottom=7pt
+}
+\newtcolorbox{sourcequalitybox}[1][]{
+  enhanced, breakable,
+  colback=yellow!6, colframe=riskamber,
+  boxrule=0.45pt, arc=2pt,
+  fonttitle=\bfseries, title={#1},
+  left=9pt, right=9pt, top=7pt, bottom=7pt
+}
+\newtcolorbox{exhibitbox}[1][]{
+  enhanced, breakable,
+  colback=white, colframe=rulegrey,
+  borderline north={1.2pt}{0pt}{navy},
+  boxrule=0.35pt, arc=1pt,
+  fonttitle=\bfseries\color{navy}, title={#1},
+  left=7pt, right=7pt, top=6pt, bottom=6pt
+}
+\newtcolorbox{disclosurebox}[1][]{
+  enhanced, breakable,
+  colback=lightgrey, colframe=steelgrey,
+  boxrule=0.35pt, arc=1pt,
+  fonttitle=\bfseries, title={#1},
+  left=8pt, right=8pt, top=6pt, bottom=6pt
+}
+
+% ============ First-page dashboard cover ============
+\newcommand{\astockcover}{%
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[deepnavy] (current page.north west) rectangle ([yshift=-2.55cm]current page.north east);
+  \fill[accentblue] ([yshift=-2.55cm]current page.north west) rectangle ([yshift=-2.66cm]current page.north east);
+  \fill[deepnavy] (current page.south west) rectangle ([yshift=1.2cm]current page.south east);
+\end{tikzpicture}
+\vspace*{0.62cm}
+{\color{white}\sffamily\bfseries\small \reportkicker}\\[0.18cm]
+{\color{white}\sffamily\scriptsize \reportscope \quad|\quad \reporttype \quad|\quad \reportdate}\\[1.0cm]
+{\fontsize{25}{30}\selectfont\bfseries\color{navy}\reporttitle}\\[0.25cm]
+{\fontsize{13}{17}\selectfont\color{steelgrey}\reportsubtitle}\\[0.75cm]
+\begin{dashboardbox}[Decision Dashboard]
+\begin{tabularx}{\textwidth}{L{3.0cm}X L{3.0cm}X}
+\textbf{Report type} & \reporttype & \textbf{Data cutoff} & \reportdatacutoff \\
+\textbf{Scope} & \reportscope & \textbf{Author} & \reportauthor \\
+\end{tabularx}
+\vspace{0.45em}
+\begin{houseviewbox}[House View]
+\reporthouseview
+\end{houseviewbox}
+\begin{sourcequalitybox}[Evidence Quality]
+\reportquality
+\end{sourcequalitybox}
+\end{dashboardbox}
+\vfill
+{\scriptsize\color{white}\reportdisclaimer}
+\end{titlepage}
 }

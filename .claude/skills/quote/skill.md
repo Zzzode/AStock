@@ -19,12 +19,31 @@ Query the latest quote for a single stock, with explicit data quality disclosure
 - Stock name: try common name-to-code mapping first
 - If uncertain: ask user a brief clarifying question
 
-### Step 2: Call CLI
+### Step 2: Call Python Capability Adapter
 
-Use JSON output:
+Use the current JSON subprocess adapter:
 
 ```bash
 .venv/bin/python -m astock.cli quote <CODE> --json
+```
+
+### Step 2b: Foundation Capability Example
+
+When the quote is used as evidence in a user-facing conclusion, wrap it with
+provenance and normalize any abnormal quote move into events:
+
+```python
+from astock import capabilities
+
+quote_provenance = capabilities.create_data_provenance_record(
+    source="astock.cli quote",
+    quality_tier="realtime",  # map degraded snapshots to "snapshot"/"degraded"
+)
+quote_events = capabilities.build_market_event_packet(
+    quote_payload,
+    payload_type="quote",
+    source="astock.cli quote",
+)
 ```
 
 ### Step 3: Assess Data Quality

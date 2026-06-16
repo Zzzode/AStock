@@ -1,0 +1,318 @@
+\section{Valuation Dashboard}
+
+\begin{sourcequalitybox}[Valuation boundary]
+本报告不发布AStock目标价。东方财富实时 \texttt{ulist} 接口本轮仍返回502，但腾讯 \texttt{qt.gtimg.cn} quote feed 已在2026年6月16日12:55--12:56 CST刷新12/12标的价格、总市值、PE和PB。该快照是盘中公开行情，不是Wind/Choice标准化估值库；多数公司仍缺完整预测区间，部分目标价存在上市地、币种和证券类型不可比问题。因此估值页只用于判断``市场已定价多少兑现''。
+\end{sourcequalitybox}
+
+\begin{exhibitbox}[Exhibit 18: Broker target and comparability audit]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2cm}L{2.1cm}L{1.8cm}L{1.7cm}X}
+\toprule
+\textbf{Name} & \textbf{Source} & \textbf{Date} & \textbf{Rating} & \textbf{Target / comparability} \\
+\midrule
+沪电股份 & 高盛/新浪转载；中泰PDF & 2026-05/03 & 买入 & 高盛转载目标价142元；中泰PDF给出2026--2028E净利57.45/90.67/130.91亿元作为第二模型。 \\
+胜宏科技 & JPM/新浪转载 & 2026-06-09 & 超配 & H股目标价600港元；不能直接与A股人民币价格比较。 \\
+生益科技 & 高盛/快照引用 & 2026-05-22 & 买入 & 目标价127.4/146.3元被引用；需原文验证目标基础。 \\
+深南电路 & CMBI PDF；国海摘要 & 2026-03/05 & 买入 & CMBI目标价288元，基于PCB 33x 2026E PE和载板42x 2026E PE平均；国海给出2026--2028年PE和盈利预测。 \\
+华正新材 & 浙商PDF；申万/中财网 & 2026-01/04 & 买入 & 浙商深度给出2025--2027E收入/净利/EPS/PE；报告日27E PE 12.58x，快照估值仍需重新审计。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{Indicative PE Scorecard}
+
+\begin{exhibitbox}[Exhibit 19: Refreshed valuation scorecard]
+\small
+\begin{tabularx}{\textwidth}{L{2.3cm}R{2.4cm}C{1.6cm}C{1.6cm}C{1.6cm}X}
+\toprule
+\textbf{Name} & \textbf{Market cap} & \textbf{26E PE} & \textbf{27E PE} & \textbf{28E PE} & \textbf{Read-through} \\
+\midrule
+深南电路 & 2699.39亿元 & 48.6x & 35.8x & 27.8x & 最新盘中市值较6月12日抬升，消化预测需要更高兑现。 \\
+华正新材 & 323.08亿元 & 56.4x & 40.2x & N/A & 高端CCL/CBF预期继续被抬价，官方项目经济性仍未量化。 \\
+胜宏科技 & 3032.08亿元 & 33.2x & 19.6x & 13.6x & 高弹性仍有估值吸引力，但客户拆分和预测分歧仍是核心风险。 \\
+鹏鼎控股 & 2488.82亿元 & 43.5x & 35.5x & N/A & 华泰模型下PE上行，仍是theme-reserve而非核心仓位。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/tencent\_realtime\_market\_snapshot\_20260616.md}; \texttt{valuation\_audit.md}; 2026-06-16 intraday Tencent quote, not standardized terminal valuation}
+\end{exhibitbox}
+
+\section{Full-Report Forecast Table}
+
+\begin{exhibitbox}[Exhibit 20: Broker model forecasts extracted from downloaded PDFs]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}L{1.8cm}R{1.7cm}R{1.7cm}R{1.7cm}R{1.5cm}R{1.5cm}R{1.5cm}}
+\toprule
+\textbf{Ticker} & \textbf{Broker} & \textbf{26E NPP} & \textbf{27E NPP} & \textbf{28E NPP} & \textbf{26E EPS} & \textbf{27E EPS} & \textbf{28E EPS} \\
+\midrule
+002463 & 中邮 & 58亿 & 89亿 & 129亿 & 2.99 & 4.61 & 6.72 \\
+300476 & 开源 & 91.19亿 & 154.41亿 & 222.88亿 & 9.28 & 15.71 & 22.68 \\
+002916 & 太平洋 & 55.46亿 & 75.45亿 & 97.25亿 & 8.14 & 11.08 & 14.28 \\
+600183 & 太平洋 & 55.70亿 & 78.56亿 & 101.69亿 & 2.29 & 3.23 & 4.19 \\
+603186 & 浙商 & 5.73亿 & 8.02/8.03亿 & 10.54亿 & 3.65/4.04 & 5.12/5.65 & 6.72 \\
+002938 & 华泰/浙商 & 57.22/55.76亿 & 70.17/72.44亿 & N/A & 2.47/2.40 & 3.03/3.12 & N/A \\
+\bottomrule
+\end{tabularx}
+\vspace{0.4em}
+\begin{tabularx}{\textwidth}{L{1.8cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Model evidence from full report} \\
+\midrule
+002463 & 高速交换机和AI服务器/HPC收入已有拆分。 \\
+300476 & 高多层、HDI能力和AI Data Center UBB/交换机逻辑更强。 \\
+002916 & PCB+载板双轮驱动，有分部收入和毛利数据。 \\
+600183 & 材料毛利率改善，但M9收入占比仍缺。 \\
+603186 & 已补充浙商深度和2026年报点评，覆盖2025E--2028E；仍缺客户/平台底层拆分和完整可编辑经营线。 \\
+002938 & 已补华泰和浙商两套预测线，覆盖AI服务器、光模块、高阶HDI/mSAP和产能扩张；仍缺具名平台收入和完整经营线。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/full\_report\_model\_summary.md}; \texttt{data/pengding\_forecast\_model\_evidence.md}}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 20b: Multi-source forecast range from downloaded PDFs]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}L{1.8cm}R{1.8cm}R{1.8cm}R{1.8cm}R{1.8cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Metric} & \textbf{26E low} & \textbf{26E high} & \textbf{27E low} & \textbf{27E high} & \textbf{Read-through} \\
+\midrule
+002463 & NPP & 51.98亿 & 58.00亿 & 67.78亿 & 90.67亿 & 新增信达/天风后低端预测下移，模型分歧高于此前两源口径。 \\
+300476 & NPP & 91.19亿 & 120.05亿 & 154.41亿 & 197.43亿 & 分歧最大，反映GPU/ASIC客户放量假设弹性。 \\
+002916 & NPP & 50.48亿 & 55.46亿 & 68.38亿 & 75.45亿 & 双来源区间相对可控，载板爬坡仍是变量。 \\
+600183 & NPP & 30.83亿 & 55.70亿 & 78.56亿 & 78.56亿 & 模型日期差异大，体现CCL涨价和AI材料预期上修。 \\
+603186 & NPP & 5.73亿 & 5.73亿 & 8.02亿 & 8.03亿 & 年报点评补到2028E，但仍是预测线模型。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/forecast\_range\_analysis.md}; local public-source range, not Wind/Choice consensus}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 20c: Eastmoney public forecast consensus cross-check]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}R{1.2cm}L{2.0cm}R{1.4cm}R{1.4cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Orgs} & \textbf{Buy/Add/Neutral} & \textbf{26E EPS} & \textbf{27E EPS} & \textbf{Target range / treatment} \\
+\midrule
+002463 & 19 & 14/5/0 & 2.97 & 4.52 & 101--115.03元；公开一致预期交叉验证。 \\
+002916 & 18 & 15/3/0 & 7.95 & 10.94 & 288--373.12元；高覆盖度但仍非原始PDF。 \\
+688630 & 16 & 11/5/0 & 3.94 & 5.49 & 243--326.82元；设备观察名单高覆盖。 \\
+002938 & 15 & 11/4/0 & 2.35 & 3.29 & 60--105.91元；与华泰/浙商预测线交叉验证。 \\
+300476 & 13 & 10/3/0 & 9.89 & 16.63 & 360--417元；弹性高但客户拆分仍缺。 \\
+600183 & 9 & 7/2/0 & 2.33 & 3.30 & 83--103.5元；低于部分转载目标价，需原文核验。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/eastmoney\_forecast\_consensus\_evidence.md}; Eastmoney public aggregate forecast summary, not original broker PDFs, not AStock target prices and not customer/platform bottom-up EPS}
+\end{exhibitbox}
+
+\section{Valuation History Percentile}
+
+\begin{exhibitbox}[Exhibit 21: One-year PE/PB percentile from public valuation history]
+\small
+\begin{tabularx}{\textwidth}{L{1.8cm}R{1.8cm}R{1.8cm}R{1.8cm}R{1.8cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Latest PE} & \textbf{Latest PB} & \textbf{PE pctile} & \textbf{PB pctile} & \textbf{Read-through} \\
+\midrule
+002463 & 56.01 & 15.33 & 95.62\% & 99.18\% & 估值接近一年高位，要求AI订单持续兑现。 \\
+300476 & 68.72 & 18.48 & 40.82\% & 65.75\% & PE分位不极端但PB偏高，需验证高增长预测。 \\
+002916 & 71.12 & 14.29 & 95.07\% & 96.44\% & 财务兑现强，但估值分位已高。 \\
+600183 & 93.54 & 20.50 & 100.00\% & 100.00\% & 材料主线估值处于近一年顶端。 \\
+603186 & 92.32 & 11.40 & 98.80\% & 99.73\% & 国产材料期权已被显著定价。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/external\_source\_evidence.md}; Baidu valuation API via AkShare; one-year percentile}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 21b: Three-year valuation percentile check]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}R{1.6cm}R{1.6cm}R{1.6cm}R{1.6cm}X}
+\toprule
+\textbf{Ticker} & \textbf{PE latest} & \textbf{PE pctile} & \textbf{PB latest} & \textbf{PB pctile} & \textbf{Read-through} \\
+\midrule
+002463 & 59.83 & 99.73\% & 15.33 & 99.73\% & 估值处于三年顶部，需订单和毛利持续兑现。 \\
+300476 & 72.35 & 86.78\% & 19.45 & 91.70\% & 相对核心组不在绝对顶端，但仍处高分位。 \\
+002916 & 74.93 & 99.54\% & 15.05 & 99.54\% & 三年高位，载板爬坡容错率低。 \\
+600183 & 102.90 & 100.00\% & 22.55 & 100.00\% & 材料主线已被充分定价。 \\
+603186 & 101.55 & 100.00\% & 12.54 & 100.00\% & 小利润基数下三年估值分位极高。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/long\_horizon\_valuation\_history.md}; Baidu three-year public valuation series}
+\end{exhibitbox}
+
+\section{Scenario Band}
+
+\begin{dashboardbox}[Valuation discipline by scenario]
+\small
+\begin{tabularx}{\textwidth}{L{2.2cm}X X}
+\toprule
+\textbf{Scenario} & \textbf{What must happen} & \textbf{Valuation action} \\
+\midrule
+Bull & AI capex/Rubin/ASIC放量按期推进，M9 CCL紧缺延续，高端产能仍稀缺。 & 允许核心公司维持较高估值，但要求订单和毛利同步验证。 \\
+Base & AI需求增长，但供应扩张和估值重估吸收部分上行。 & 偏好核心公司，避免为未验证弹性支付过高溢价。 \\
+Bear & 资本开支暂停、架构迁移改变价值池或CCL价格反转。 & 下调高beta PCB/设备暴露，仅保留非AI业绩支撑。 \\
+\bottomrule
+\end{tabularx}
+\end{dashboardbox}
+
+\section{Sensitivity Framework}
+
+\begin{exhibitbox}[Exhibit 22: Sensitivity variables needed for a full valuation model]
+\small
+\begin{tabularx}{\textwidth}{L{3cm}X X}
+\toprule
+\textbf{Variable} & \textbf{Model effect} & \textbf{Current status} \\
+\midrule
+AI PCB revenue share & Drives revenue mix and gross margin expansion. & Missing for most companies. \\
+M8/M9 CCL ASP uplift & Drives material leader revenue and gross margin. & Directional only; no ASP series. \\
+Utilization after capex & Determines whether capacity expansion is accretive or dilutive. & Missing. \\
+Substrate yield and depreciation & Determines whether IC substrate growth converts to profit. & Missing. \\
+Customer concentration & Determines durability and discount rate / multiple. & Broker-stated but not quantified. \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 23: Directional net-profit sensitivity checkpoint]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}R{1.7cm}R{2.0cm}R{1.6cm}R{1.6cm}R{1.6cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Latest NPP} & \textbf{Mkt cap} & \textbf{Base} & \textbf{+10\% NPP} & \textbf{-10\% NPP} & \textbf{Interpretation} \\
+\midrule
+002463 & 12.42亿 & 2407.36亿 & 193.8x & 176.2x & 215.4x & 单季利润口径，显示估值对利润兑现敏感。 \\
+300476 & 12.88亿 & 2831.00亿 & 219.7x & 199.8x & 244.1x & 弹性高，但客户链和预测仍需验证。 \\
+002916 & 8.50亿 & 2522.95亿 & 296.7x & 269.8x & 329.7x & 需要持续季度兑现来消化估值。 \\
+600183 & 11.58亿 & 3622.40亿 & 312.8x & 284.3x & 347.5x & 材料龙头估值高度依赖M9价格/毛利。 \\
+603186 & 0.31亿 & 267.01亿 & 863.5x & 785.0x & 959.5x & 小利润基数下估值弹性和风险都被放大。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/eps\_sensitivity.md}; latest-period P/NPP, not annualized PE}
+\end{exhibitbox}
+
+\begin{sourcequalitybox}[Valuation gap versus top-tier reports]
+顶级研报会把上述变量转成EPS敏感性，例如毛利率下降、CCL价格回落、AI订单延期、产能利用率下降对净利润和目标价的影响。本报告已基于公开券商经营线建立年度敏感性矩阵，并从H股文件补充产品收入、销量、ASP和毛利率证据；生益电子官方问询回复还补充了AI HDI/高多层算力板项目级收入、毛利率、折旧和净利测算。但除生益电子项目级桥以外，仍不能输出完整客户/平台 bottom-up EPS 桥。
+\end{sourcequalitybox}
+
+\begin{exhibitbox}[Exhibit 23b: Product economics bridge from H-share documents]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2.2cm}X X}
+\toprule
+\textbf{Name} & \textbf{Product economics evidence} & \textbf{EPS implication} \\
+\midrule
+沪电股份 & 32层及以上PCB收入从2023年7.61亿元升至2025年42.50亿元，2026Q1占收入32.1\%；32层及以上销量2026Q1为30,233平方米。 & 高层数 mix 是毛利和收入弹性的核心，但仍缺客户平台单价。 \\
+沪电股份 & AI服务器/HPC收入2023/2024/2025/2026Q1为12.40/29.75/30.06/7.34亿元。 & 可作为AI应用收入桥，不等于NVIDIA/ASIC拆分。 \\
+胜宏科技 & HDI收入2023/2024/2025为9.30/15.21/74.25亿元；HDI ASP从2024年2,351元/平方米升至2025年13,475元/平方米。 & 高阶HDI ASP跃升解释盈利弹性和预测分歧。 \\
+胜宏科技 & MLPCB收入2025年83.16亿元，ASP从2024年1,026元/平方米升至2025年1,394元/平方米。 & MLPCB是规模底座，HDI是弹性来源。 \\
+胜宏科技 & HDI毛利率从2024年22.5\%升至2025年43.5\%；MLPCB毛利率从15.2\%升至24.4\%。 & 高阶HDI不仅ASP上行，也贡献利润率扩张。 \\
+沪电股份 & 数据通讯PCB毛利率2026Q1达39.6\%，显著高于智能汽车PCB的19.6\%。 & 应用mix变化直接影响EPS弹性。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/hshare\_product\_economics\_evidence.md}; \texttt{data/hshare\_gross\_margin\_bridge\_evidence.md}; product revenue, volume, ASP and gross margin from HKEX documents}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 23c: Shengyi Electronics official project-level EPS bridge]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2.4cm}R{1.7cm}R{1.8cm}R{1.8cm}X}
+\toprule
+\textbf{Project} & \textbf{Price} & \textbf{Full volume} & \textbf{GM} & \textbf{EPS read-through} \\
+\midrule
+AI computing HDI & 13,253元/平方米 & 16.72万平方米 & 26.95\% & 第三年40\%产能、第四年70\%、第五年满负荷；高阶HDI单价显著高于普通PCB。 \\
+High-layer compute PCB & 2,854元/平方米 & 70.00万平方米 & 22.49\% & 分两阶段建设；第一阶段第二年Q2满负荷，第二阶段第三年Q2满负荷。 \\
+Combined ramp & N/A & 86.72万平方米 & N/A & T+5新增收入43.21亿元、新增净利6.06亿元；T+6--T+13新增净利5.94--6.27亿元。 \\
+Depreciation / project cost & N/A & N/A & N/A & T+5折旧摊销及项目建设成本2.36亿元，达产后最高占收入2.62\%、占净利润24.60\%。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_shengyi\_refresh\_evidence.md}; official refinancing inquiry response, project-level economics, not named-customer EPS}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 23d: Shengyi Electronics application mix and margin bridge]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2.4cm}R{1.5cm}R{1.5cm}R{1.5cm}R{1.7cm}X}
+\toprule
+\textbf{Application} & \textbf{2022} & \textbf{2023} & \textbf{2024} & \textbf{2025 1-9M} & \textbf{EPS read-through} \\
+\midrule
+Server / computer board & 17.92\% & 24.39\% & 48.96\% & 68.01\% & AI服务器高附加值PCB成为第一大收入来源。 \\
+Communication network board & 60.92\% & 48.60\% & 28.81\% & 19.86\% & 传统通信网络权重下降。 \\
+Automotive electronics board & 11.18\% & 17.22\% & 13.25\% & 6.82\% & 2023年对冲通信需求下滑，后续权重下降。 \\
+Other board & 9.98\% & 9.79\% & 8.98\% & 5.31\% & 利润贡献较小。 \\
+Main-business gross margin & 21.24\% & 11.13\% & 19.42\% & 29.60\% & 服务器/计算机板mix和售价提升驱动毛利率修复。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_shengyi\_refresh\_evidence.md}; official application-mix and margin explanation, individual application margins exempted from disclosure}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 23e: Shennan official AI compute PCB capex and dilution bridge]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2.5cm}R{1.8cm}R{1.8cm}X}
+\toprule
+\textbf{Item} & \textbf{Amount / scope} & \textbf{Timing} & \textbf{EPS relevance} \\
+\midrule
+Wuxi AI compute PCB project & 总投资45.36亿元；拟用募集资金36.00亿元 & 建设期1年 & 高速高密高多层PCB扩产，面向AI服务器和交换机。 \\
+Production equipment & 28.00亿元，占项目61.72\% & N/A & 设备投入为最大成本项，影响折旧和爬坡压力。 \\
+Engineering / construction & 14.08亿元，占31.03\% & N/A & 固定资产形成后短期摊薄ROE/EPS。 \\
+2026 EPS scenario & 4.83 / 5.31 / 5.79元 & 2026E & 对应2026归母净利持平/+10\%/+20\%情景；公告未计入募投项目经营贡献。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_shennan\_refinancing\_evidence.md}; official refinancing plan and dilution announcement, not detailed project margin model}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 23f: Huazheng official high-grade CCL project boundary]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{3.0cm}L{3.0cm}X}
+\toprule
+\textbf{Official item} & \textbf{Disclosure} & \textbf{EPS implication} \\
+\midrule
+Project investment & 10.04亿元总投资；拟用募集资金10.00亿元 & 确认高端CCL扩产规模，但未披露折旧节奏或项目利润。 \\
+New capacity & 年产1200万张高等级覆铜板 & 提供产能分母，但缺产品ASP和利用率爬坡。 \\
+Product scope & 高速/高频/高导热金属基板/HDI覆铜板 & 确认AI服务器、交换机和光模块材料方向。 \\
+Economic benefit & 仅表述项目顺利实施后预计具有``良好的经济效益'' & 未量化收入、毛利、净利、IRR、回收期、单位成本或客户订单。 \\
+Dilution scenario & 发行后总股本假设升至177,441,008股；2026净利持平/+10\%/-10\%情景下发行后EPS为1.73/1.91/1.56元。 & 官方补充EPS摊薄敏感性，但未计入募投经营贡献。 \\
+Model treatment & 仍使用浙商预测线作为外部模型 & 官方文件不能支撑项目级bottom-up EPS，华正仍属预测线代理。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_huazheng\_refinancing\_evidence.md}; official feasibility report and dilution announcement confirm project scope, qualitative economic benefit and EPS dilution scenarios only}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 24: 2026E annual EPS sensitivity matrix]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}R{1.7cm}R{1.8cm}R{1.8cm}R{1.8cm}R{1.8cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Base NPP} & \textbf{GM -1pct} & \textbf{GM -2pct} & \textbf{Rev -5pct} & \textbf{Combined} & \textbf{Read-through} \\
+\midrule
+002463 & 57.52亿 & 55.18亿 & 52.84亿 & 53.30亿 & 50.95亿 & 订单和毛利均敏感，但经营线较完整。 \\
+300476 & 91.19亿 & 88.30亿 & 85.42亿 & 85.55亿 & 82.66亿 & 高净利率下，收入/毛利假设对估值影响大。 \\
+002916 & 55.46亿 & 52.53亿 & 49.60亿 & 50.83亿 & 47.90亿 & 载板爬坡和折旧会放大下行情景。 \\
+600183 & 55.70亿 & 52.53亿 & 49.36亿 & 51.18亿 & 48.01亿 & CCL材料价格/毛利是关键敏感变量。 \\
+603186 & 5.73亿 & N/A & N/A & 5.44亿 & N/A & 仅预测线代理，缺完整经营费用结构。 \\
+002938 & 57.22亿 & 52.95亿 & 48.67亿 & 52.15亿 & 47.88亿 & 华泰经营线可转敏感性，但仍缺客户/平台底层。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/eps\_sensitivity\_matrix.md}; \texttt{data/pengding\_operating\_sensitivity\_evidence.md}; Combined = revenue -5\% plus gross margin -1pct proxy where operating-line data exists}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 24b: Watchlist forecast-line EPS stress test]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.7cm}R{1.6cm}R{1.6cm}R{1.6cm}R{1.3cm}R{1.3cm}R{1.3cm}X}
+\toprule
+\textbf{Ticker} & \textbf{26E NPP} & \textbf{NPP +10\%} & \textbf{NPP -10\%} & \textbf{26E EPS} & \textbf{EPS +10\%} & \textbf{EPS -10\%} & \textbf{Model treatment} \\
+\midrule
+688519 & 4.90亿 & 5.39亿 & 4.41亿 & 2.09 & 2.30 & 1.88 & 覆铜板/高速材料预测线可做净利和EPS压力测试。 \\
+301200 & 15.36亿 & 16.90亿 & 13.82亿 & 3.18 & 3.50 & 2.86 & 钻孔设备需求预测线可压力测试，但缺收入线。 \\
+688630 & 5.09亿 & 5.60亿 & 4.58亿 & 3.86 & 4.25 & 3.47 & PCB/先进封装设备预测线可压力测试。 \\
+300400 & 2.61亿 & 2.87亿 & 2.35亿 & 1.07 & 1.18 & 0.96 & PCBA装联设备预测线，链条相关度低于PCB设备/材料。 \\
+301377 & 9.04亿 & 9.94亿 & 8.14亿 & 2.20 & 2.42 & 1.98 & 精密刀具/耗材预测线可压力测试，但缺收入线。 \\
+002436 & 4.38亿 & 4.82亿 & 3.94亿 & 0.26 & 0.29 & 0.23 & 华鑫/开源PDF补齐净利与EPS预测线，FCBGA爬坡仍是关键风险。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/watchlist\_eps\_sensitivity\_bridge.md}; forecast-line stress test from downloaded broker PDFs, not operating-line or customer/platform bottom-up EPS}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 25: Editable operating EPS model status]
+\small
+\begin{tabularx}{\textwidth}{L{3cm}X}
+\toprule
+\textbf{Item} & \textbf{Status} \\
+\midrule
+Operating-line model & 已建立 `editable\_eps\_model.json`，包含收入、成本、费用、营业利润、所得税、归母净利、毛利率、净利率、经营现金流及部分资本开支。 \\
+Sensitivity & 已包含+/-10\%净利压力测试、毛利率下降、收入下降和费用率上升的年度敏感性矩阵；鹏鼎已由预测线代理升级为华泰经营线敏感性代理；观察名单已补充预测线EPS/NPP压力测试。 \\
+Segment/customer model & 仍未完成；缺客户链收入、分业务毛利、平台单机价值量、折旧明细和营运资本底层假设。 \\
+Best covered names & 沪电股份、胜宏科技、深南电路、生益科技。 \\
+Weakest model coverage & 华正新材已由浙商年报点评补到2028E预测线和三表附录，但尚缺客户/平台底层拆分及完整可编辑经营线；兴森科技已从EPS-only升级为预测线净利/EPS压力测试，但仍缺FCBGA客户/平台底层拆分；鹏鼎仍缺客户/平台底层拆分。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/editable\_operating\_model.md}; \texttt{data/editable\_eps\_model.json}}
+\end{exhibitbox}

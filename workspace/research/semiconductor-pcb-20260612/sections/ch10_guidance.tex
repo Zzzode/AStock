@@ -1,0 +1,54 @@
+\section{Investment Playbook}
+
+\begin{exhibitbox}[Exhibit 33: Trigger-based investment stance]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X X}
+\toprule
+\textbf{Bucket} & \textbf{Names} & \textbf{Execution condition} \\
+\midrule
+\stance{riskgreen}{Core tracking} & 沪电股份、深南电路、生益科技 & 订单、毛利率、客户平台和材料价格验证持续；估值不脱离业绩兑现。 \\
+\stance{riskamber}{Aggressive watch} & 胜宏科技、华正新材 & 证据增强或估值回落时重点跟踪；避免只因高增长叙事追价。 \\
+\stance{accentblue}{Theme reserve} & 南亚新材、兴森科技、大族数控、芯碁微装、劲拓股份、鼎泰高科、鹏鼎控股 & 等待官方财务、订单、认证和CAPEX证据；鹏鼎已有HKEX业务片段和公开PDF增强，但原UBS全文仍缺。 \\
+\stance{riskred}{Excluded for now} & 无新增标的 & 未取得原始正文或官方证据的全球投行观点仍不进入结论。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{Catalyst Timeline}
+
+\begin{exhibitbox}[Exhibit 34: Catalyst and verification calendar]
+\centering
+\begin{tikzpicture}[
+  milestone/.style={circle, draw=navy, fill=white, minimum size=0.65cm, font=\scriptsize\bfseries},
+  label/.style={align=center, font=\scriptsize, text width=3.2cm}
+]
+\draw[thick, color=navy] (0,0) -- (12,0);
+\foreach \x/\n/\txt in {
+0/1/{行情快照\\估值拥挤确认},
+3/2/{中报/季报\\收入与毛利验证},
+6/3/{Rubin/ASIC\\平台节奏验证},
+9/4/{M8/M9 CCL\\价格与交期},
+12/5/{CAPEX/订单\\过剩风险复核}
+}{
+  \node[milestone] at (\x,0) {\n};
+  \node[label, below=0.35cm] at (\x,0) {\txt};
+}
+\end{tikzpicture}
+\end{exhibitbox}
+
+\section{Follow-Up Evidence}
+
+\begin{dashboardbox}[Evidence needed before upgrading conviction]
+\small
+\begin{tabularx}{\textwidth}{L{3.2cm}X}
+\toprule
+\textbf{Evidence type} & \textbf{What to collect next} \\
+\midrule
+Company delivery & 分业务收入、毛利率、CAPEX、在手订单、经营现金流、折旧压力。 \\
+Customer chain & NVIDIA/Rubin、ASIC、国产算力、光模块/交换机平台真实放量节奏。 \\
+Material pricing & M8/M9 CCL价格、交期、国产替代认证、原材料成本传导。 \\
+Source quality & 原始完整券商PDF、公司公告、投资者交流纪要和官方财务数据。 \\
+Capacity ramp & 泰国、南通、广州、珠海等项目的利用率、良率、折旧和现金流兑现。 \\
+\bottomrule
+\end{tabularx}
+\end{dashboardbox}

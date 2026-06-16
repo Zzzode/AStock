@@ -1,0 +1,2039 @@
+{
+  "source": "ak.fund_name_em + top visible funds from fund_holding_enhanced_evidence.json",
+  "collected_at": "2026-06-16",
+  "boundary": "Eastmoney fund type mapping for top visible funds only; full visible holdings still use rule-based style proxy. Not Wind/Choice official active/passive ownership database.",
+  "stock_summary": {
+    "002463": {
+      "name": "沪电股份",
+      "bucket": "core",
+      "mapped_top_funds": [
+        {
+          "fund_code": "022364",
+          "fund_name": "永赢科技智选混合发起A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 1539340000.0
+        },
+        {
+          "fund_code": "004746",
+          "fund_name": "易方达上证50增强C",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 1262690000.0
+        },
+        {
+          "fund_code": "110003",
+          "fund_name": "易方达上证50增强A",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 1262690000.0
+        },
+        {
+          "fund_code": "022933",
+          "fund_name": "易方达上证50增强Y",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 1262690000.0
+        },
+        {
+          "fund_code": "001323",
+          "fund_name": "东吴移动互联混合A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 752103000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "混合型-偏股": {
+          "market_value_yuan": 1539340000.0,
+          "fund_count": 1,
+          "examples": [
+            "永赢科技智选混合发起A"
+          ]
+        },
+        "指数型-股票": {
+          "market_value_yuan": 3788070000.0,
+          "fund_count": 3,
+          "examples": [
+            "易方达上证50增强C",
+            "易方达上证50增强A",
+            "易方达上证50增强Y"
+          ]
+        },
+        "混合型-灵活": {
+          "market_value_yuan": 752103000.0,
+          "fund_count": 1,
+          "examples": [
+            "东吴移动互联混合A"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "002463",
+        "name": "沪电股份",
+        "bucket": "core",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 998,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 465,
+            "market_value_yuan": 26017598507.0,
+            "market_value_pct": 82.70117564947932,
+            "shares": 342471983.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 31,
+            "market_value_yuan": 269047460.0,
+            "market_value_pct": 0.855211184903164,
+            "shares": 3541500.0
+          },
+          "index_enhanced": {
+            "fund_rows": 26,
+            "market_value_yuan": 5040691781.0,
+            "market_value_pct": 16.02266005693066,
+            "shares": 66351061.0
+          },
+          "passive_etf": {
+            "fund_rows": 6,
+            "market_value_yuan": 114006620.0,
+            "market_value_pct": 0.36238861566284536,
+            "shares": 1500680.0
+          },
+          "passive_linked": {
+            "fund_rows": 6,
+            "market_value_yuan": 167134.0,
+            "market_value_pct": 0.0005312626485215858,
+            "shares": 2200.0
+          },
+          "passive_or_index": {
+            "fund_rows": 6,
+            "market_value_yuan": 18257120.0,
+            "market_value_pct": 0.05803323037548563,
+            "shares": 240320.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "永赢科技智选混合发起A",
+              "fund_code": "022364",
+              "market_value_yuan": 1539340000.0,
+              "nav_pct": 8.8
+            },
+            {
+              "fund_name": "东吴移动互联混合A",
+              "fund_code": "001323",
+              "market_value_yuan": 752103000.0,
+              "nav_pct": 9.32
+            },
+            {
+              "fund_name": "东吴移动互联混合C",
+              "fund_code": "002170",
+              "market_value_yuan": 752103000.0,
+              "nav_pct": 9.32
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "宏利集利债券C",
+              "fund_code": "162299",
+              "market_value_yuan": 42452000.0,
+              "nav_pct": 1.43
+            },
+            {
+              "fund_name": "宏利集利债券A",
+              "fund_code": "162210",
+              "market_value_yuan": 42452000.0,
+              "nav_pct": 1.43
+            },
+            {
+              "fund_name": "华夏鼎清债券C",
+              "fund_code": "010015",
+              "market_value_yuan": 40165300.0,
+              "nav_pct": 0.89
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "易方达上证50增强A",
+              "fund_code": "110003",
+              "market_value_yuan": 1262690000.0,
+              "nav_pct": 8.86
+            },
+            {
+              "fund_name": "易方达上证50增强C",
+              "fund_code": "004746",
+              "market_value_yuan": 1262690000.0,
+              "nav_pct": 8.86
+            },
+            {
+              "fund_name": "易方达上证50增强Y",
+              "fund_code": "022933",
+              "market_value_yuan": 1262690000.0,
+              "nav_pct": 8.86
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "5GETF",
+              "fund_code": "159994",
+              "market_value_yuan": 68877800.0,
+              "nav_pct": 3.38
+            },
+            {
+              "fund_name": "深证TMT50ETF",
+              "fund_code": "159909",
+              "market_value_yuan": 16386700.0,
+              "nav_pct": 3.22
+            },
+            {
+              "fund_name": "华夏中小企业100ETF",
+              "fund_code": "159902",
+              "market_value_yuan": 14323400.0,
+              "nav_pct": 2.44
+            }
+          ],
+          "passive_linked": [
+            {
+              "fund_name": "嘉实新兴科技100ETF联接C",
+              "fund_code": "007816",
+              "market_value_yuan": 60776.0,
+              "nav_pct": 0.06
+            },
+            {
+              "fund_name": "嘉实新兴科技100ETF联接A",
+              "fund_code": "007815",
+              "market_value_yuan": 60776.0,
+              "nav_pct": 0.06
+            },
+            {
+              "fund_name": "富国沪深300ETF发起式联接C",
+              "fund_code": "021833",
+              "market_value_yuan": 15194.0,
+              "nav_pct": 0.02
+            }
+          ],
+          "passive_or_index": [
+            {
+              "fund_name": "易方达中小企业100指数(LOF)A",
+              "fund_code": "161118",
+              "market_value_yuan": 4101620.0,
+              "nav_pct": 2.31
+            },
+            {
+              "fund_name": "易方达中小企业100指数(LOF)C",
+              "fund_code": "012872",
+              "market_value_yuan": 4101620.0,
+              "nav_pct": 2.31
+            },
+            {
+              "fund_name": "南方中证全指电子行业指数C",
+              "fund_code": "025108",
+              "market_value_yuan": 3676950.0,
+              "nav_pct": 3.34
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 31459768622.0,
+        "latest_fund_rows": 540
+      }
+    },
+    "300476": {
+      "name": "胜宏科技",
+      "bucket": "core",
+      "mapped_top_funds": [
+        {
+          "fund_code": "007119",
+          "fund_name": "睿远成长价值混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 1558990000.0
+        },
+        {
+          "fund_code": "159915",
+          "fund_name": "易方达创业板ETF",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 1491300000.0
+        },
+        {
+          "fund_code": "002112",
+          "fund_name": "德邦鑫星价值C",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 820368000.0
+        },
+        {
+          "fund_code": "001412",
+          "fund_name": "德邦鑫星价值A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 820368000.0
+        },
+        {
+          "fund_code": "159949",
+          "fund_name": "华安创业板50ETF",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 729619000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "混合型-偏股": {
+          "market_value_yuan": 1558990000.0,
+          "fund_count": 1,
+          "examples": [
+            "睿远成长价值混合A"
+          ]
+        },
+        "指数型-股票": {
+          "market_value_yuan": 2220919000.0,
+          "fund_count": 2,
+          "examples": [
+            "易方达创业板ETF",
+            "华安创业板50ETF"
+          ]
+        },
+        "混合型-灵活": {
+          "market_value_yuan": 1640736000.0,
+          "fund_count": 2,
+          "examples": [
+            "德邦鑫星价值C",
+            "德邦鑫星价值A"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "300476",
+        "name": "胜宏科技",
+        "bucket": "core",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 993,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 173,
+            "market_value_yuan": 10876917720.0,
+            "market_value_pct": 63.83695878188354,
+            "shares": 43354211.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 17,
+            "market_value_yuan": 47991200.0,
+            "market_value_pct": 0.28166180301795357,
+            "shares": 191200.0
+          },
+          "index_enhanced": {
+            "fund_rows": 37,
+            "market_value_yuan": 372443320.0,
+            "market_value_pct": 2.1858810997264633,
+            "shares": 1483838.0
+          },
+          "passive_etf": {
+            "fund_rows": 70,
+            "market_value_yuan": 5122931450.0,
+            "market_value_pct": 30.066639486913836,
+            "shares": 20410074.0
+          },
+          "passive_linked": {
+            "fund_rows": 33,
+            "market_value_yuan": 35725840.0,
+            "market_value_pct": 0.2096760345382263,
+            "shares": 142334.0
+          },
+          "passive_or_index": {
+            "fund_rows": 43,
+            "market_value_yuan": 582580540.0,
+            "market_value_pct": 3.41918279391999,
+            "shares": 2321038.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "睿远成长价值混合A",
+              "fund_code": "007119",
+              "market_value_yuan": 1558990000.0,
+              "nav_pct": 8.59
+            },
+            {
+              "fund_name": "德邦鑫星价值A",
+              "fund_code": "001412",
+              "market_value_yuan": 820368000.0,
+              "nav_pct": 9.41
+            },
+            {
+              "fund_name": "德邦鑫星价值C",
+              "fund_code": "002112",
+              "market_value_yuan": 820368000.0,
+              "nav_pct": 9.41
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "华夏鼎清债券C",
+              "fund_code": "010015",
+              "market_value_yuan": 15838100.0,
+              "nav_pct": 0.35
+            },
+            {
+              "fund_name": "华夏鼎清债券A",
+              "fund_code": "010014",
+              "market_value_yuan": 15838100.0,
+              "nav_pct": 0.35
+            },
+            {
+              "fund_name": "中欧稳健添悦债券C",
+              "fund_code": "024967",
+              "market_value_yuan": 4216800.0,
+              "nav_pct": 0.23
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "天弘创业板指数增强C",
+              "fund_code": "015795",
+              "market_value_yuan": 40737300.0,
+              "nav_pct": 2.81
+            },
+            {
+              "fund_name": "天弘创业板指数增强A",
+              "fund_code": "015794",
+              "market_value_yuan": 40737300.0,
+              "nav_pct": 2.81
+            },
+            {
+              "fund_name": "汇添富中证科创创业50指数增强发起式C",
+              "fund_code": "014219",
+              "market_value_yuan": 22590000.0,
+              "nav_pct": 6.19
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "易方达创业板ETF",
+              "fund_code": "159915",
+              "market_value_yuan": 1491300000.0,
+              "nav_pct": 2.92
+            },
+            {
+              "fund_name": "华安创业板50ETF",
+              "fund_code": "159949",
+              "market_value_yuan": 729619000.0,
+              "nav_pct": 3.53
+            },
+            {
+              "fund_name": "易方达中证科创创业50ETF",
+              "fund_code": "159781",
+              "market_value_yuan": 381411000.0,
+              "nav_pct": 3.68
+            }
+          ],
+          "passive_linked": [
+            {
+              "fund_name": "天弘中证科创创业50ETF联接Y",
+              "fund_code": "022981",
+              "market_value_yuan": 4562680.0,
+              "nav_pct": 0.14
+            },
+            {
+              "fund_name": "天弘中证科创创业50ETF联接A",
+              "fund_code": "012894",
+              "market_value_yuan": 4562680.0,
+              "nav_pct": 0.14
+            },
+            {
+              "fund_name": "天弘中证科创创业50ETF联接C",
+              "fund_code": "012895",
+              "market_value_yuan": 4562680.0,
+              "nav_pct": 0.14
+            }
+          ],
+          "passive_or_index": [
+            {
+              "fund_name": "交银创业板50指数Y",
+              "fund_code": "022934",
+              "market_value_yuan": 77182500.0,
+              "nav_pct": 3.31
+            },
+            {
+              "fund_name": "交银创业板50指数A",
+              "fund_code": "007464",
+              "market_value_yuan": 77182500.0,
+              "nav_pct": 3.31
+            },
+            {
+              "fund_name": "交银创业板50指数C",
+              "fund_code": "007465",
+              "market_value_yuan": 77182500.0,
+              "nav_pct": 3.31
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 17038590070.0,
+        "latest_fund_rows": 373
+      }
+    },
+    "002916": {
+      "name": "深南电路",
+      "bucket": "core",
+      "mapped_top_funds": [
+        {
+          "fund_code": "022364",
+          "fund_name": "永赢科技智选混合发起A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 1289490000.0
+        },
+        {
+          "fund_code": "017102",
+          "fund_name": "大摩数字经济混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 490761000.0
+        },
+        {
+          "fund_code": "017103",
+          "fund_name": "大摩数字经济混合C",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 490761000.0
+        },
+        {
+          "fund_code": "015686",
+          "fund_name": "富国新兴产业股票C",
+          "fund_type": "股票型",
+          "market_value_yuan": 413202000.0
+        },
+        {
+          "fund_code": "001048",
+          "fund_name": "富国新兴产业股票A",
+          "fund_type": "股票型",
+          "market_value_yuan": 413202000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "混合型-偏股": {
+          "market_value_yuan": 2271012000.0,
+          "fund_count": 3,
+          "examples": [
+            "永赢科技智选混合发起A",
+            "大摩数字经济混合A",
+            "大摩数字经济混合C"
+          ]
+        },
+        "股票型": {
+          "market_value_yuan": 826404000.0,
+          "fund_count": 2,
+          "examples": [
+            "富国新兴产业股票C",
+            "富国新兴产业股票A"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "002916",
+        "name": "深南电路",
+        "bucket": "core",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 998,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 172,
+            "market_value_yuan": 11946323741.0,
+            "market_value_pct": 92.62941584741091,
+            "shares": 54422688.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 13,
+            "market_value_yuan": 285813648.0,
+            "market_value_pct": 2.2161421228353033,
+            "shares": 1302052.0
+          },
+          "index_enhanced": {
+            "fund_rows": 6,
+            "market_value_yuan": 579102579.0,
+            "market_value_pct": 4.490246101769286,
+            "shares": 2638163.0
+          },
+          "passive_etf": {
+            "fund_rows": 8,
+            "market_value_yuan": 85660689.0,
+            "market_value_pct": 0.6641959279844982,
+            "shares": 390236.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "永赢科技智选混合发起A",
+              "fund_code": "022364",
+              "market_value_yuan": 1289490000.0,
+              "nav_pct": 7.37
+            },
+            {
+              "fund_name": "大摩数字经济混合A",
+              "fund_code": "017102",
+              "market_value_yuan": 490761000.0,
+              "nav_pct": 6.37
+            },
+            {
+              "fund_name": "大摩数字经济混合C",
+              "fund_code": "017103",
+              "market_value_yuan": 490761000.0,
+              "nav_pct": 6.37
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "富国稳健添辰债券E",
+              "fund_code": "024970",
+              "market_value_yuan": 57574000.0,
+              "nav_pct": 0.38
+            },
+            {
+              "fund_name": "富国稳健添辰债券C",
+              "fund_code": "019584",
+              "market_value_yuan": 57574000.0,
+              "nav_pct": 0.38
+            },
+            {
+              "fund_name": "富国稳健添辰债券A",
+              "fund_code": "019583",
+              "market_value_yuan": 57574000.0,
+              "nav_pct": 0.38
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "易方达沪深300精选增强Y",
+              "fund_code": "022914",
+              "market_value_yuan": 135385000.0,
+              "nav_pct": 3.98
+            },
+            {
+              "fund_name": "易方达沪深300精选增强C",
+              "fund_code": "010737",
+              "market_value_yuan": 135385000.0,
+              "nav_pct": 3.98
+            },
+            {
+              "fund_name": "易方达沪深300精选增强A",
+              "fund_code": "010736",
+              "market_value_yuan": 135385000.0,
+              "nav_pct": 3.98
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "易方达国证成长100ETF",
+              "fund_code": "159259",
+              "market_value_yuan": 38287800.0,
+              "nav_pct": 3.14
+            },
+            {
+              "fund_name": "南方中证国新央企科技引领ETF",
+              "fund_code": "560170",
+              "market_value_yuan": 24138200.0,
+              "nav_pct": 6.67
+            },
+            {
+              "fund_name": "易方达中证国新央企科技引领ETF",
+              "fund_code": "563050",
+              "market_value_yuan": 9390200.0,
+              "nav_pct": 6.62
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 12896900657.0,
+        "latest_fund_rows": 199
+      }
+    },
+    "600183": {
+      "name": "生益科技",
+      "bucket": "core",
+      "mapped_top_funds": [
+        {
+          "fund_code": "017102",
+          "fund_name": "大摩数字经济混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 334710000.0
+        },
+        {
+          "fund_code": "010902",
+          "fund_name": "博时成长领航混合A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 232584000.0
+        },
+        {
+          "fund_code": "010903",
+          "fund_name": "博时成长领航混合C",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 232584000.0
+        },
+        {
+          "fund_code": "021528",
+          "fund_name": "财通成长优选混合C",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 205007000.0
+        },
+        {
+          "fund_code": "001480",
+          "fund_name": "财通成长优选混合A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 205007000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "混合型-偏股": {
+          "market_value_yuan": 334710000.0,
+          "fund_count": 1,
+          "examples": [
+            "大摩数字经济混合A"
+          ]
+        },
+        "混合型-灵活": {
+          "market_value_yuan": 875182000.0,
+          "fund_count": 4,
+          "examples": [
+            "博时成长领航混合A",
+            "博时成长领航混合C",
+            "财通成长优选混合C"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "600183",
+        "name": "生益科技",
+        "bucket": "core",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 998,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 244,
+            "market_value_yuan": 6095496234.0,
+            "market_value_pct": 97.5852258002265,
+            "shares": 112525351.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 11,
+            "market_value_yuan": 77473890.0,
+            "market_value_pct": 1.2403103470233248,
+            "shares": 1430200.0
+          },
+          "index_enhanced": {
+            "fund_rows": 24,
+            "market_value_yuan": 53037840.0,
+            "market_value_pct": 0.8491038946897798,
+            "shares": 979100.0
+          },
+          "passive_etf": {
+            "fund_rows": 5,
+            "market_value_yuan": 20160550.0,
+            "market_value_pct": 0.32275827077588454,
+            "shares": 372172.0
+          },
+          "passive_linked": {
+            "fund_rows": 2,
+            "market_value_yuan": 162510.0,
+            "market_value_pct": 0.0026016872845130213,
+            "shares": 3000.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "大摩数字经济混合A",
+              "fund_code": "017102",
+              "market_value_yuan": 334710000.0,
+              "nav_pct": 4.35
+            },
+            {
+              "fund_name": "博时成长领航混合A",
+              "fund_code": "010902",
+              "market_value_yuan": 232584000.0,
+              "nav_pct": 7.52
+            },
+            {
+              "fund_name": "博时成长领航混合C",
+              "fund_code": "010903",
+              "market_value_yuan": 232584000.0,
+              "nav_pct": 7.52
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "工银产业债券B",
+              "fund_code": "000046",
+              "market_value_yuan": 32637400.0,
+              "nav_pct": 0.36
+            },
+            {
+              "fund_name": "工银产业债券A",
+              "fund_code": "000045",
+              "market_value_yuan": 32637400.0,
+              "nav_pct": 0.36
+            },
+            {
+              "fund_name": "浦银安盛稳健双利债券C",
+              "fund_code": "025271",
+              "market_value_yuan": 2681420.0,
+              "nav_pct": 0.26
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "招商沪深300指数增强Y",
+              "fund_code": "025010",
+              "market_value_yuan": 9057220.0,
+              "nav_pct": 1.38
+            },
+            {
+              "fund_name": "招商沪深300指数增强C",
+              "fund_code": "004191",
+              "market_value_yuan": 9057220.0,
+              "nav_pct": 1.38
+            },
+            {
+              "fund_name": "招商沪深300指数增强A",
+              "fund_code": "004190",
+              "market_value_yuan": 9057220.0,
+              "nav_pct": 1.38
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "嘉实新兴科技100ETF",
+              "fund_code": "515860",
+              "market_value_yuan": 5790770.0,
+              "nav_pct": 3.18
+            },
+            {
+              "fund_name": "嘉实中证诚通国企数字经济ETF",
+              "fund_code": "159389",
+              "market_value_yuan": 4983640.0,
+              "nav_pct": 2.99
+            },
+            {
+              "fund_name": "交银中证智选沪深港科技50ETF",
+              "fund_code": "517950",
+              "market_value_yuan": 4008580.0,
+              "nav_pct": 3.47
+            }
+          ],
+          "passive_linked": [
+            {
+              "fund_name": "嘉实新兴科技100ETF联接C",
+              "fund_code": "007816",
+              "market_value_yuan": 81255.0,
+              "nav_pct": 0.09
+            },
+            {
+              "fund_name": "嘉实新兴科技100ETF联接A",
+              "fund_code": "007815",
+              "market_value_yuan": 81255.0,
+              "nav_pct": 0.09
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 6246331024.0,
+        "latest_fund_rows": 286
+      }
+    },
+    "603186": {
+      "name": "华正新材",
+      "bucket": "core",
+      "mapped_top_funds": [
+        {
+          "fund_code": "000047",
+          "fund_name": "华夏双债债券A",
+          "fund_type": "债券型-混合一级",
+          "market_value_yuan": 60456800.0
+        },
+        {
+          "fund_code": "110015",
+          "fund_name": "易方达行业领先混合",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 33859400.0
+        },
+        {
+          "fund_code": "010390",
+          "fund_name": "易方达科益混合C",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 17435600.0
+        },
+        {
+          "fund_code": "010389",
+          "fund_name": "易方达科益混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 17435600.0
+        },
+        {
+          "fund_code": "019924",
+          "fund_name": "华泰柏瑞中证2000指数增强C",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 11318400.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "债券型-混合一级": {
+          "market_value_yuan": 60456800.0,
+          "fund_count": 1,
+          "examples": [
+            "华夏双债债券A"
+          ]
+        },
+        "混合型-偏股": {
+          "market_value_yuan": 68730600.0,
+          "fund_count": 3,
+          "examples": [
+            "易方达行业领先混合",
+            "易方达科益混合C",
+            "易方达科益混合A"
+          ]
+        },
+        "指数型-股票": {
+          "market_value_yuan": 11318400.0,
+          "fund_count": 1,
+          "examples": [
+            "华泰柏瑞中证2000指数增强C"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "603186",
+        "name": "华正新材",
+        "bucket": "core",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 980,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 12,
+            "market_value_yuan": 83400110.0,
+            "market_value_pct": 50.075834166828685,
+            "shares": 1392321.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 4,
+            "market_value_yuan": 60510710.0,
+            "market_value_pct": 36.332377490593984,
+            "shares": 1010196.0
+          },
+          "index_enhanced": {
+            "fund_rows": 2,
+            "market_value_yuan": 22636800.0,
+            "market_value_pct": 13.591788342577335,
+            "shares": 377910.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "易方达行业领先混合",
+              "fund_code": "110015",
+              "market_value_yuan": 33859400.0,
+              "nav_pct": 3.21
+            },
+            {
+              "fund_name": "易方达科益混合C",
+              "fund_code": "010390",
+              "market_value_yuan": 17435600.0,
+              "nav_pct": 5.41
+            },
+            {
+              "fund_name": "易方达科益混合A",
+              "fund_code": "010389",
+              "market_value_yuan": 17435600.0,
+              "nav_pct": 5.41
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "华夏双债债券A",
+              "fund_code": "000047",
+              "market_value_yuan": 60456800.0,
+              "nav_pct": 1.63
+            },
+            {
+              "fund_name": "创金合信怡久回报债券E",
+              "fund_code": "023168",
+              "market_value_yuan": 17970.0,
+              "nav_pct": 0.01
+            },
+            {
+              "fund_name": "创金合信怡久回报债券C",
+              "fund_code": "016802",
+              "market_value_yuan": 17970.0,
+              "nav_pct": 0.01
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "华泰柏瑞中证2000指数增强C",
+              "fund_code": "019924",
+              "market_value_yuan": 11318400.0,
+              "nav_pct": 0.55
+            },
+            {
+              "fund_name": "华泰柏瑞中证2000指数增强A",
+              "fund_code": "019923",
+              "market_value_yuan": 11318400.0,
+              "nav_pct": 0.55
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 166547620.0,
+        "latest_fund_rows": 18
+      }
+    },
+    "688519": {
+      "name": "南亚新材",
+      "bucket": "watchlist",
+      "mapped_top_funds": [
+        {
+          "fund_code": "010391",
+          "fund_name": "易方达战略新兴产业股票A",
+          "fund_type": "股票型",
+          "market_value_yuan": 289351000.0
+        },
+        {
+          "fund_code": "023101",
+          "fund_name": "国寿安保智慧生活股票C",
+          "fund_type": "股票型",
+          "market_value_yuan": 266158000.0
+        },
+        {
+          "fund_code": "001672",
+          "fund_name": "国寿安保智慧生活股票A",
+          "fund_type": "股票型",
+          "market_value_yuan": 266158000.0
+        },
+        {
+          "fund_code": "001184",
+          "fund_name": "易方达新常态混合",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 149040000.0
+        },
+        {
+          "fund_code": "017974",
+          "fund_name": "易方达港股通优质增长混合C",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 124283000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "股票型": {
+          "market_value_yuan": 821667000.0,
+          "fund_count": 3,
+          "examples": [
+            "易方达战略新兴产业股票A",
+            "国寿安保智慧生活股票C",
+            "国寿安保智慧生活股票A"
+          ]
+        },
+        "混合型-灵活": {
+          "market_value_yuan": 149040000.0,
+          "fund_count": 1,
+          "examples": [
+            "易方达新常态混合"
+          ]
+        },
+        "混合型-偏股": {
+          "market_value_yuan": 124283000.0,
+          "fund_count": 1,
+          "examples": [
+            "易方达港股通优质增长混合C"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "688519",
+        "name": "南亚新材",
+        "bucket": "watchlist",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 996,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 58,
+            "market_value_yuan": 2113635768.0,
+            "market_value_pct": 94.41919811006983,
+            "shares": 16286296.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 4,
+            "market_value_yuan": 120751000.0,
+            "market_value_pct": 5.394123606158165,
+            "shares": 930428.0
+          },
+          "index_enhanced": {
+            "fund_rows": 2,
+            "market_value_yuan": 1453536.0,
+            "market_value_pct": 0.06493157696417186,
+            "shares": 11200.0
+          },
+          "passive_or_index": {
+            "fund_rows": 3,
+            "market_value_yuan": 2725380.0,
+            "market_value_pct": 0.12174670680782222,
+            "shares": 21000.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "易方达战略新兴产业股票A",
+              "fund_code": "010391",
+              "market_value_yuan": 289351000.0,
+              "nav_pct": 4.47
+            },
+            {
+              "fund_name": "国寿安保智慧生活股票C",
+              "fund_code": "023101",
+              "market_value_yuan": 266158000.0,
+              "nav_pct": 8.14
+            },
+            {
+              "fund_name": "国寿安保智慧生活股票A",
+              "fund_code": "001672",
+              "market_value_yuan": 266158000.0,
+              "nav_pct": 8.14
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "易方达丰和债券C",
+              "fund_code": "016699",
+              "market_value_yuan": 59077700.0,
+              "nav_pct": 1.36
+            },
+            {
+              "fund_name": "易方达丰和债券A",
+              "fund_code": "002969",
+              "market_value_yuan": 59077700.0,
+              "nav_pct": 1.36
+            },
+            {
+              "fund_name": "国泰可转债债券D",
+              "fund_code": "025464",
+              "market_value_yuan": 1297800.0,
+              "nav_pct": 1.2
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "申万菱信中证1000指数增强C",
+              "fund_code": "017068",
+              "market_value_yuan": 726768.0,
+              "nav_pct": 1.12
+            },
+            {
+              "fund_name": "申万菱信中证1000指数增强A",
+              "fund_code": "017067",
+              "market_value_yuan": 726768.0,
+              "nav_pct": 1.12
+            }
+          ],
+          "passive_or_index": [
+            {
+              "fund_name": "中信保诚中证智能家居指数(LOF)A",
+              "fund_code": "165524",
+              "market_value_yuan": 908460.0,
+              "nav_pct": 1.8
+            },
+            {
+              "fund_name": "中信保诚中证智能家居指数(LOF)E",
+              "fund_code": "023595",
+              "market_value_yuan": 908460.0,
+              "nav_pct": 1.8
+            },
+            {
+              "fund_name": "中信保诚中证智能家居指数(LOF)C",
+              "fund_code": "013084",
+              "market_value_yuan": 908460.0,
+              "nav_pct": 1.8
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 2238565684.0,
+        "latest_fund_rows": 67
+      }
+    },
+    "002436": {
+      "name": "兴森科技",
+      "bucket": "watchlist",
+      "mapped_top_funds": [
+        {
+          "fund_code": "360013",
+          "fund_name": "光大保德信信用添益债券A类",
+          "fund_type": "债券型-混合二级",
+          "market_value_yuan": 93633500.0
+        },
+        {
+          "fund_code": "519008",
+          "fund_name": "汇添富优势精选混合",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 60150000.0
+        },
+        {
+          "fund_code": "015180",
+          "fund_name": "汇添富美丽30混合D",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 30075000.0
+        },
+        {
+          "fund_code": "015179",
+          "fund_name": "汇添富美丽30混合C",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 30075000.0
+        },
+        {
+          "fund_code": "000173",
+          "fund_name": "汇添富美丽30混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 30075000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "债券型-混合二级": {
+          "market_value_yuan": 93633500.0,
+          "fund_count": 1,
+          "examples": [
+            "光大保德信信用添益债券A类"
+          ]
+        },
+        "混合型-灵活": {
+          "market_value_yuan": 60150000.0,
+          "fund_count": 1,
+          "examples": [
+            "汇添富优势精选混合"
+          ]
+        },
+        "混合型-偏股": {
+          "market_value_yuan": 90225000.0,
+          "fund_count": 3,
+          "examples": [
+            "汇添富美丽30混合D",
+            "汇添富美丽30混合C",
+            "汇添富美丽30混合A"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "002436",
+        "name": "兴森科技",
+        "bucket": "watchlist",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 995,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 10,
+            "market_value_yuan": 188486040.0,
+            "market_value_pct": 45.071931521937195,
+            "shares": 9400800.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 5,
+            "market_value_yuan": 101681570.0,
+            "market_value_pct": 24.31471720708368,
+            "shares": 5071400.0
+          },
+          "index_enhanced": {
+            "fund_rows": 17,
+            "market_value_yuan": 128021790.0,
+            "market_value_pct": 30.613351270979127,
+            "shares": 6385132.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "汇添富优势精选混合",
+              "fund_code": "519008",
+              "market_value_yuan": 60150000.0,
+              "nav_pct": 2.77
+            },
+            {
+              "fund_name": "汇添富美丽30混合D",
+              "fund_code": "015180",
+              "market_value_yuan": 30075000.0,
+              "nav_pct": 2.81
+            },
+            {
+              "fund_name": "汇添富美丽30混合C",
+              "fund_code": "015179",
+              "market_value_yuan": 30075000.0,
+              "nav_pct": 2.81
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "光大保德信信用添益债券A类",
+              "fund_code": "360013",
+              "market_value_yuan": 93633500.0,
+              "nav_pct": 1.27
+            },
+            {
+              "fund_name": "光大保德信安祺债券C",
+              "fund_code": "003108",
+              "market_value_yuan": 4010000.0,
+              "nav_pct": 0.62
+            },
+            {
+              "fund_name": "光大保德信安祺债券A",
+              "fund_code": "003107",
+              "market_value_yuan": 4010000.0,
+              "nav_pct": 0.62
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "嘉实中证半导体指数增强发起式C",
+              "fund_code": "014855",
+              "market_value_yuan": 20400900.0,
+              "nav_pct": 0.38
+            },
+            {
+              "fund_name": "嘉实中证半导体指数增强发起式A",
+              "fund_code": "014854",
+              "market_value_yuan": 20400900.0,
+              "nav_pct": 0.38
+            },
+            {
+              "fund_name": "中金中证500指数增强B",
+              "fund_code": "025111",
+              "market_value_yuan": 14937200.0,
+              "nav_pct": 1.17
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 418189400.0,
+        "latest_fund_rows": 32
+      }
+    },
+    "301200": {
+      "name": "大族数控",
+      "bucket": "watchlist",
+      "mapped_top_funds": [
+        {
+          "fund_code": "001480",
+          "fund_name": "财通成长优选混合A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 323070000.0
+        },
+        {
+          "fund_code": "021523",
+          "fund_name": "财通价值动量混合C",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 289452000.0
+        },
+        {
+          "fund_code": "720001",
+          "fund_name": "财通价值动量混合A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 289452000.0
+        },
+        {
+          "fund_code": "006503",
+          "fund_name": "财通集成电路产业股票C",
+          "fund_type": "股票型",
+          "market_value_yuan": 128414000.0
+        },
+        {
+          "fund_code": "006502",
+          "fund_name": "财通集成电路产业股票A",
+          "fund_type": "股票型",
+          "market_value_yuan": 128414000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "混合型-灵活": {
+          "market_value_yuan": 901974000.0,
+          "fund_count": 3,
+          "examples": [
+            "财通成长优选混合A",
+            "财通价值动量混合C",
+            "财通价值动量混合A"
+          ]
+        },
+        "股票型": {
+          "market_value_yuan": 256828000.0,
+          "fund_count": 2,
+          "examples": [
+            "财通集成电路产业股票C",
+            "财通集成电路产业股票A"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "301200",
+        "name": "大族数控",
+        "bucket": "watchlist",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 992,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 55,
+            "market_value_yuan": 1673358380.0,
+            "market_value_pct": 90.5919343768491,
+            "shares": 10316630.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 19,
+            "market_value_yuan": 99719150.0,
+            "market_value_pct": 5.398574986020133,
+            "shares": 614791.0
+          },
+          "index_enhanced": {
+            "fund_rows": 18,
+            "market_value_yuan": 44053840.0,
+            "market_value_pct": 2.384977796763542,
+            "shares": 271602.0
+          },
+          "passive_etf": {
+            "fund_rows": 2,
+            "market_value_yuan": 1622000.0,
+            "market_value_pct": 0.08781150488471527,
+            "shares": 10000.0
+          },
+          "passive_or_index": {
+            "fund_rows": 2,
+            "market_value_yuan": 28385000.0,
+            "market_value_pct": 1.5367013354825172,
+            "shares": 175000.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "财通成长优选混合A",
+              "fund_code": "001480",
+              "market_value_yuan": 323070000.0,
+              "nav_pct": 9.77
+            },
+            {
+              "fund_name": "财通价值动量混合C",
+              "fund_code": "021523",
+              "market_value_yuan": 289452000.0,
+              "nav_pct": 9.21
+            },
+            {
+              "fund_name": "财通价值动量混合A",
+              "fund_code": "720001",
+              "market_value_yuan": 289452000.0,
+              "nav_pct": 9.21
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "汇添富多元收益债券C",
+              "fund_code": "470011",
+              "market_value_yuan": 16933700.0,
+              "nav_pct": 0.88
+            },
+            {
+              "fund_name": "汇添富多元收益债券A",
+              "fund_code": "470010",
+              "market_value_yuan": 16933700.0,
+              "nav_pct": 0.88
+            },
+            {
+              "fund_name": "汇添富多元收益债券D",
+              "fund_code": "025644",
+              "market_value_yuan": 16933700.0,
+              "nav_pct": 0.88
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "华泰柏瑞中证500指数增强C",
+              "fund_code": "014306",
+              "market_value_yuan": 4460660.0,
+              "nav_pct": 0.75
+            },
+            {
+              "fund_name": "华泰柏瑞中证500指数增强A",
+              "fund_code": "014305",
+              "market_value_yuan": 4460660.0,
+              "nav_pct": 0.75
+            },
+            {
+              "fund_name": "广发沪深300指数增强Y",
+              "fund_code": "025882",
+              "market_value_yuan": 3827920.0,
+              "nav_pct": 0.52
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "南方上证科创板50成份增强策略ETF",
+              "fund_code": "588370",
+              "market_value_yuan": 859660.0,
+              "nav_pct": 0.96
+            },
+            {
+              "fund_name": "华夏中证智选500成长创新策略ETF",
+              "fund_code": "159620",
+              "market_value_yuan": 762340.0,
+              "nav_pct": 2.23
+            }
+          ],
+          "passive_or_index": [
+            {
+              "fund_name": "南方大数据100指数C",
+              "fund_code": "004344",
+              "market_value_yuan": 14192500.0,
+              "nav_pct": 1.12
+            },
+            {
+              "fund_name": "南方大数据100指数A",
+              "fund_code": "001113",
+              "market_value_yuan": 14192500.0,
+              "nav_pct": 1.12
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 1847138370.0,
+        "latest_fund_rows": 96
+      }
+    },
+    "688630": {
+      "name": "芯碁微装",
+      "bucket": "watchlist",
+      "mapped_top_funds": [
+        {
+          "fund_code": "021875",
+          "fund_name": "路博迈资源精选股票发起A",
+          "fund_type": "股票型",
+          "market_value_yuan": 133229000.0
+        },
+        {
+          "fund_code": "010363",
+          "fund_name": "信澳匠心臻选两年持有期混合",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 89562200.0
+        },
+        {
+          "fund_code": "025129",
+          "fund_name": "金信深圳成长混合E",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 86904700.0
+        },
+        {
+          "fund_code": "020180",
+          "fund_name": "金信深圳成长混合C",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 86904700.0
+        },
+        {
+          "fund_code": "002863",
+          "fund_name": "金信深圳成长混合A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 86904700.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "股票型": {
+          "market_value_yuan": 133229000.0,
+          "fund_count": 1,
+          "examples": [
+            "路博迈资源精选股票发起A"
+          ]
+        },
+        "混合型-偏股": {
+          "market_value_yuan": 89562200.0,
+          "fund_count": 1,
+          "examples": [
+            "信澳匠心臻选两年持有期混合"
+          ]
+        },
+        "混合型-灵活": {
+          "market_value_yuan": 260714100.0,
+          "fund_count": 3,
+          "examples": [
+            "金信深圳成长混合E",
+            "金信深圳成长混合C",
+            "金信深圳成长混合A"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "688630",
+        "name": "芯碁微装",
+        "bucket": "watchlist",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 992,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 143,
+            "market_value_yuan": 2176219192.0,
+            "market_value_pct": 95.38727506882714,
+            "shares": 11252427.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 3,
+            "market_value_yuan": 116040.0,
+            "market_value_pct": 0.005086224512529113,
+            "shares": 600.0
+          },
+          "index_enhanced": {
+            "fund_rows": 9,
+            "market_value_yuan": 102233040.0,
+            "market_value_pct": 4.481042692505769,
+            "shares": 528609.0
+          },
+          "passive_etf": {
+            "fund_rows": 3,
+            "market_value_yuan": 2888233.0,
+            "market_value_pct": 0.12659601415456306,
+            "shares": 14934.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "路博迈资源精选股票发起A",
+              "fund_code": "021875",
+              "market_value_yuan": 133229000.0,
+              "nav_pct": 5.7
+            },
+            {
+              "fund_name": "信澳匠心臻选两年持有期混合",
+              "fund_code": "010363",
+              "market_value_yuan": 89562200.0,
+              "nav_pct": 7.39
+            },
+            {
+              "fund_name": "金信深圳成长混合E",
+              "fund_code": "025129",
+              "market_value_yuan": 86904700.0,
+              "nav_pct": 8.56
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "人保鑫利债券E",
+              "fund_code": "024588",
+              "market_value_yuan": 38680.0,
+              "nav_pct": 0.31
+            },
+            {
+              "fund_name": "人保鑫利债券C",
+              "fund_code": "006115",
+              "market_value_yuan": 38680.0,
+              "nav_pct": 0.31
+            },
+            {
+              "fund_name": "人保鑫利债券A",
+              "fund_code": "006114",
+              "market_value_yuan": 38680.0,
+              "nav_pct": 0.31
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "永赢上证科创板100指数增强发起C",
+              "fund_code": "021279",
+              "market_value_yuan": 31076500.0,
+              "nav_pct": 8.51
+            },
+            {
+              "fund_name": "永赢上证科创板100指数增强发起A",
+              "fund_code": "021278",
+              "market_value_yuan": 31076500.0,
+              "nav_pct": 8.51
+            },
+            {
+              "fund_name": "嘉实成长增强混合",
+              "fund_code": "001759",
+              "market_value_yuan": 15955700.0,
+              "nav_pct": 4.23
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "嘉实上证科创板工业机械ETF",
+              "fund_code": "588850",
+              "market_value_yuan": 2713980.0,
+              "nav_pct": 4.39
+            },
+            {
+              "fund_name": "博时国证2000ETF",
+              "fund_code": "159505",
+              "market_value_yuan": 135573.0,
+              "nav_pct": 0.52
+            },
+            {
+              "fund_name": "800增强ETF",
+              "fund_code": "159517",
+              "market_value_yuan": 38680.0,
+              "nav_pct": 0.25
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 2281456505.0,
+        "latest_fund_rows": 158
+      }
+    },
+    "300400": {
+      "name": "劲拓股份",
+      "bucket": "watchlist",
+      "mapped_top_funds": [
+        {
+          "fund_code": "010894",
+          "fund_name": "鹏华汇智优选混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 12250300.0
+        },
+        {
+          "fund_code": "011956",
+          "fund_name": "鹏华新能源精选混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 7278480.0
+        },
+        {
+          "fund_code": "011957",
+          "fund_name": "鹏华新能源精选混合C",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 7278480.0
+        },
+        {
+          "fund_code": "563300",
+          "fund_name": "华泰柏瑞中证2000ETF",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 4611420.0
+        },
+        {
+          "fund_code": "019919",
+          "fund_name": "招商中证2000指数增强C",
+          "fund_type": "指数型-股票",
+          "market_value_yuan": 4219380.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "混合型-偏股": {
+          "market_value_yuan": 26807260.0,
+          "fund_count": 3,
+          "examples": [
+            "鹏华汇智优选混合A",
+            "鹏华新能源精选混合A",
+            "鹏华新能源精选混合C"
+          ]
+        },
+        "指数型-股票": {
+          "market_value_yuan": 8830800.0,
+          "fund_count": 2,
+          "examples": [
+            "华泰柏瑞中证2000ETF",
+            "招商中证2000指数增强C"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "300400",
+        "name": "劲拓股份",
+        "bucket": "watchlist",
+        "status": "ok",
+        "latest_period": "2025-12-31",
+        "total_rows": 789,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 70,
+            "market_value_yuan": 70706320.0,
+            "market_value_pct": 64.26724348709253,
+            "shares": 3571024.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 13,
+            "market_value_yuan": 520740.0,
+            "market_value_pct": 0.47331729855928806,
+            "shares": 26300.0
+          },
+          "index_enhanced": {
+            "fund_rows": 44,
+            "market_value_yuan": 31618620.0,
+            "market_value_pct": 28.739178481723464,
+            "shares": 1596900.0
+          },
+          "passive_etf": {
+            "fund_rows": 14,
+            "market_value_yuan": 6662700.0,
+            "market_value_pct": 6.055941861794693,
+            "shares": 336500.0
+          },
+          "passive_or_index": {
+            "fund_rows": 4,
+            "market_value_yuan": 510840.0,
+            "market_value_pct": 0.4643188708300241,
+            "shares": 25800.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "鹏华汇智优选混合A",
+              "fund_code": "010894",
+              "market_value_yuan": 12250300.0,
+              "nav_pct": 0.34
+            },
+            {
+              "fund_name": "鹏华新能源精选混合C",
+              "fund_code": "011957",
+              "market_value_yuan": 7278480.0,
+              "nav_pct": 0.58
+            },
+            {
+              "fund_name": "鹏华新能源精选混合A",
+              "fund_code": "011956",
+              "market_value_yuan": 7278480.0,
+              "nav_pct": 0.58
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "国泰海通君得盈债券C",
+              "fund_code": "952320",
+              "market_value_yuan": 120780.0,
+              "nav_pct": 0.01
+            },
+            {
+              "fund_name": "国泰海通君得盈债券A",
+              "fund_code": "952020",
+              "market_value_yuan": 120780.0,
+              "nav_pct": 0.01
+            },
+            {
+              "fund_name": "国泰海通君得盈债券D",
+              "fund_code": "023210",
+              "market_value_yuan": 120780.0,
+              "nav_pct": 0.01
+            }
+          ],
+          "index_enhanced": [
+            {
+              "fund_name": "招商中证2000指数增强C",
+              "fund_code": "019919",
+              "market_value_yuan": 4219380.0,
+              "nav_pct": 0.27
+            },
+            {
+              "fund_name": "招商中证2000指数增强A",
+              "fund_code": "019918",
+              "market_value_yuan": 4219380.0,
+              "nav_pct": 0.27
+            },
+            {
+              "fund_name": "景顺长城创业板综指增强C",
+              "fund_code": "019239",
+              "market_value_yuan": 4187700.0,
+              "nav_pct": 0.49
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "华泰柏瑞中证2000ETF",
+              "fund_code": "563300",
+              "market_value_yuan": 4611420.0,
+              "nav_pct": 0.17
+            },
+            {
+              "fund_name": "华夏中证2000ETF",
+              "fund_code": "562660",
+              "market_value_yuan": 698940.0,
+              "nav_pct": 0.23
+            },
+            {
+              "fund_name": "创业板综ETF银华",
+              "fund_code": "159288",
+              "market_value_yuan": 399960.0,
+              "nav_pct": 0.09
+            }
+          ],
+          "passive_or_index": [
+            {
+              "fund_name": "国泰海通中证1000优选股票发起C",
+              "fund_code": "019506",
+              "market_value_yuan": 227700.0,
+              "nav_pct": 0.02
+            },
+            {
+              "fund_name": "国泰海通中证1000优选股票发起A",
+              "fund_code": "019505",
+              "market_value_yuan": 227700.0,
+              "nav_pct": 0.02
+            },
+            {
+              "fund_name": "富国中证1000优选股票C",
+              "fund_code": "017039",
+              "market_value_yuan": 27720.0,
+              "nav_pct": 0.09
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 110019220.0,
+        "latest_fund_rows": 145
+      }
+    },
+    "301377": {
+      "name": "鼎泰高科",
+      "bucket": "watchlist",
+      "mapped_top_funds": [
+        {
+          "fund_code": "022364",
+          "fund_name": "永赢科技智选混合发起A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 466924000.0
+        },
+        {
+          "fund_code": "001480",
+          "fund_name": "财通成长优选混合A",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 324899000.0
+        },
+        {
+          "fund_code": "021528",
+          "fund_name": "财通成长优选混合C",
+          "fund_type": "混合型-灵活",
+          "market_value_yuan": 324899000.0
+        },
+        {
+          "fund_code": "019018",
+          "fund_name": "易方达信息产业混合C",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 311604000.0
+        },
+        {
+          "fund_code": "001513",
+          "fund_name": "易方达信息产业混合A",
+          "fund_type": "混合型-偏股",
+          "market_value_yuan": 311604000.0
+        }
+      ],
+      "type_summary_top_visible": {
+        "混合型-偏股": {
+          "market_value_yuan": 1090132000.0,
+          "fund_count": 3,
+          "examples": [
+            "永赢科技智选混合发起A",
+            "易方达信息产业混合C",
+            "易方达信息产业混合A"
+          ]
+        },
+        "混合型-灵活": {
+          "market_value_yuan": 649798000.0,
+          "fund_count": 2,
+          "examples": [
+            "财通成长优选混合A",
+            "财通成长优选混合C"
+          ]
+        }
+      },
+      "rule_based_full_visible_summary": {
+        "code": "301377",
+        "name": "鼎泰高科",
+        "bucket": "watchlist",
+        "status": "ok",
+        "latest_period": "2026-03-31",
+        "total_rows": 991,
+        "style_summary": {
+          "active_like": {
+            "fund_rows": 57,
+            "market_value_yuan": 4509825610.0,
+            "market_value_pct": 85.3956518941901,
+            "shares": 23371818.0
+          },
+          "bond_or_hybrid_fixed_income": {
+            "fund_rows": 9,
+            "market_value_yuan": 715847396.0,
+            "market_value_pct": 13.554904407529508,
+            "shares": 3709821.0
+          },
+          "passive_etf": {
+            "fund_rows": 4,
+            "market_value_yuan": 48977260.0,
+            "market_value_pct": 0.927407267460003,
+            "shares": 253821.0
+          },
+          "passive_or_index": {
+            "fund_rows": 2,
+            "market_value_yuan": 6444860.0,
+            "market_value_pct": 0.12203643082039041,
+            "shares": 33400.0
+          }
+        },
+        "top_by_style": {
+          "active_like": [
+            {
+              "fund_name": "永赢科技智选混合发起A",
+              "fund_code": "022364",
+              "market_value_yuan": 466924000.0,
+              "nav_pct": 2.67
+            },
+            {
+              "fund_name": "财通成长优选混合A",
+              "fund_code": "001480",
+              "market_value_yuan": 324899000.0,
+              "nav_pct": 9.83
+            },
+            {
+              "fund_name": "财通成长优选混合C",
+              "fund_code": "021528",
+              "market_value_yuan": 324899000.0,
+              "nav_pct": 9.83
+            }
+          ],
+          "bond_or_hybrid_fixed_income": [
+            {
+              "fund_name": "景顺长城景颐丰利债券F类",
+              "fund_code": "023512",
+              "market_value_yuan": 237651000.0,
+              "nav_pct": 0.74
+            },
+            {
+              "fund_name": "景顺长城景颐丰利债券C类",
+              "fund_code": "003505",
+              "market_value_yuan": 237651000.0,
+              "nav_pct": 0.74
+            },
+            {
+              "fund_name": "景顺长城景颐丰利债券A类",
+              "fund_code": "003504",
+              "market_value_yuan": 237651000.0,
+              "nav_pct": 0.74
+            }
+          ],
+          "passive_etf": [
+            {
+              "fund_name": "国泰中证机床ETF",
+              "fund_code": "159667",
+              "market_value_yuan": 40583500.0,
+              "nav_pct": 2.69
+            },
+            {
+              "fund_name": "华夏中证机床ETF",
+              "fund_code": "159663",
+              "market_value_yuan": 7043040.0,
+              "nav_pct": 2.73
+            },
+            {
+              "fund_name": "华夏中证智选1000成长创新策略ETF",
+              "fund_code": "562520",
+              "market_value_yuan": 675360.0,
+              "nav_pct": 1.2
+            }
+          ],
+          "passive_or_index": [
+            {
+              "fund_name": "广发百发100指数E",
+              "fund_code": "000827",
+              "market_value_yuan": 3222430.0,
+              "nav_pct": 1.03
+            },
+            {
+              "fund_name": "广发百发100指数A",
+              "fund_code": "000826",
+              "market_value_yuan": 3222430.0,
+              "nav_pct": 1.03
+            }
+          ]
+        },
+        "latest_total_market_value_yuan": 5281095126.0,
+        "latest_fund_rows": 72
+      }
+    }
+  }
+}

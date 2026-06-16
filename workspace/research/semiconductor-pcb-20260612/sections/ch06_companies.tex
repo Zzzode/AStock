@@ -1,0 +1,280 @@
+\section{Company Evidence Cards}
+
+\begin{exhibitbox}[Exhibit 13: Core company evidence cards]
+\small
+\begin{tabularx}{\textwidth}{L{2.2cm}X X L{2.2cm}}
+\toprule
+\textbf{Name} & \textbf{Delivery evidence} & \textbf{Forward test} & \textbf{Bucket} \\
+\midrule
+深南电路 & 2025收入236.47亿元，归母净利32.76亿元；2026Q1收入65.96亿元，归母净利8.50亿元。 & 2026--2028E归母净利56.78/78.14/106.25亿元能否兑现。 & \stance{riskgreen}{Core} \\
+沪电股份 & 转载正文称2026年CAPEX预计60亿元，2025年为30亿元；目标价142元。 & 新产能能否转化为高端AI PCB收入和毛利。 & \stance{riskgreen}{Core} \\
+生益科技 & AI CCL涨价、M9升级逻辑明确；目标价127.4/146.3元被快照引用。 & M8/M9涨价和高端材料占比能否持续。 & \stance{riskgreen}{Core} \\
+胜宏科技 & 摩根大通转载正文称受益NVIDIA升级和Google ASIC；H股目标价600港元。 & 客户集中度、A/H估值可比性和预测明细验证。 & \stance{riskamber}{Aggressive} \\
+华正新材 & 申万宏源正文预测2026--2028E归母净利4.7/7.7/9.7亿元。 & 国产算力链、CBF/BT材料认证和估值兑现。 & \stance{riskamber}{Aggressive} \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{verified\_financials.md}; \texttt{valuation\_model.md}; \texttt{analysis/company\_one\_pagers.md}}
+\end{exhibitbox}
+
+\section{Structured Financial Checkpoint}
+
+\begin{exhibitbox}[Exhibit 14: Latest structured financial snapshot]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.7cm}R{1.8cm}R{1.8cm}R{1.6cm}R{1.4cm}R{1.6cm}R{1.6cm}L{1.4cm}}
+\toprule
+\textbf{Ticker} & \textbf{Revenue} & \textbf{NPP} & \textbf{GM} & \textbf{ROE} & \textbf{Rev growth} & \textbf{NPP growth} & \textbf{Quality} \\
+\midrule
+002463 & 62.14亿 & 12.42亿 & 35.63\% & 7.81\% & 53.91\% & 62.90\% & full \\
+300476 & 55.19亿 & 12.88亿 & 34.46\% & 7.62\% & 27.99\% & 39.95\% & full \\
+002916 & 65.96亿 & 8.50亿 & 29.17\% & 4.83\% & 37.90\% & 73.01\% & full \\
+600183 & 81.41亿 & 11.58亿 & 28.10\% & 6.68\% & 45.09\% & 105.47\% & full \\
+603186 & 12.34亿 & 0.31亿 & 12.02\% & 1.59\% & 19.84\% & 68.04\% & full \\
+002938 & 79.86亿 & 4.63亿 & 22.96\% & N/A & -1.25\% & -5.21\% & manual \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_financials\_summary.md}; \texttt{data/pengding\_official\_filing\_evidence.md}; latest period 20260331; NPP = net profit parent}
+\end{exhibitbox}
+
+\begin{sourcequalitybox}[Official data caveat]
+该表来自本地能力 \texttt{get\_financial\_statements()} 的结构化财务摘要，并已归档11个覆盖标的的2026Q1官方季报原文用于审计；外部发布前仍需逐项人工复核公告表格与口径。
+\end{sourcequalitybox}
+
+\begin{exhibitbox}[Exhibit 14a-2: Official quarterly delivery bridge]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}L{1.8cm}R{1.7cm}R{1.7cm}R{1.7cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Period} & \textbf{Revenue} & \textbf{NPP} & \textbf{OCF} & \textbf{Read-through} \\
+\midrule
+002463 & 2025H1 & 84.94亿 & 16.83亿 & 20.97亿 & 高速网络和AI需求驱动，现金转换较强。 \\
+002463 & 2025Q3 YTD & 135.12亿 & 27.18亿 & 28.95亿 & 前三季度收入+49.96\%、净利+47.03\%。 \\
+300476 & 2025H1 & 90.31亿 & 21.43亿 & 11.90亿 & 利润弹性已在H1兑现。 \\
+300476 & 2025Q3 YTD & 141.17亿 & 32.45亿 & 23.83亿 & 前三季度净利+324.38\%，OCF同步改善。 \\
+002916 & 2025H1 & 104.53亿 & 13.60亿 & 14.96亿 & PCB与封装基板均增长。 \\
+002916 & 2025Q3 YTD & 167.54亿 & 23.26亿 & 23.14亿 & 前三季度净利+56.30\%，交付稳健。 \\
+600183 & 2025H1 & 126.80亿 & 14.26亿 & 19.44亿 & 覆铜板销量和产品结构改善。 \\
+600183 & 2025Q3 YTD & 206.14亿 & 24.43亿 & 31.76亿 & 高附加值产品和生益电子贡献改善。 \\
+603186 & 2025H1 & 20.95亿 & 0.43亿 & 1.59亿 & 小利润基数恢复，OCF转正。 \\
+603186 & 2025Q3 YTD & 31.96亿 & 0.63亿 & 1.52亿 & 恢复仍在早期，绝对利润较小。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_quarterly\_bridge\_evidence.md}; official 2025H1 and 2025Q3 filings, NPP = parent net profit, OCF = operating cash flow}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 14a-3: Watchlist official quarterly delivery bridge]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}L{1.8cm}R{1.7cm}R{1.6cm}R{1.7cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Period} & \textbf{Revenue} & \textbf{NPP} & \textbf{OCF} & \textbf{Read-through} \\
+\midrule
+688519 & 2025Q3 YTD & 36.63亿 & 1.58亿 & -0.28亿 & 高速材料修复，但OCF仍负。 \\
+002436 & 2025Q3 YTD & 53.73亿 & 1.31亿 & -1.22亿 & 盈利修复明显，现金流仍弱。 \\
+301200 & 2025Q3 YTD & 39.03亿 & 4.92亿 & -6.96亿 & 设备利润强，营运资本占用高。 \\
+688630 & 2025Q3 YTD & 9.34亿 & 1.99亿 & -0.36亿 & 设备增长稳健，OCF仍需修复。 \\
+300400 & 2025Q3 YTD & 5.96亿 & 0.86亿 & 1.39亿 & 规模小但现金流质量较好。 \\
+301377 & 2025Q3 YTD & 14.57亿 & 2.82亿 & 0.22亿 & 耗材链利润弹性强，OCF转正但偏弱。 \\
+002938 & 2025H1 & 163.75亿 & 12.33亿 & 42.77亿 & AI服务器和光模块认证推进，现金流强。 \\
+002938 & 2025Q3 YTD & 268.55亿 & 24.08亿 & 42.59亿 & 官方前三季度收入+14.34\%，净利+21.95\%。 \\
+002938 & 2026Q1 & 79.86亿 & 4.63亿 & 30.97亿 & 收入/利润同比小幅回落，但OCF同比+23.63\%。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_quarterly\_bridge\_evidence.md}; \texttt{data/pengding\_official\_filing\_evidence.md}; official 2025Q3 filings for watchlist names and Pengding official filings}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 14b: Cash conversion and working-capital quality]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}R{1.7cm}R{1.7cm}R{1.8cm}R{1.6cm}X}
+\toprule
+\textbf{Ticker} & \textbf{NPP} & \textbf{OCF} & \textbf{OCF/NPP} & \textbf{Quick ratio} & \textbf{Read-through} \\
+\midrule
+002463 & 12.42亿 & 5.11亿 & 41.1\% & 1.10 & 利润兑现强，但现金转换低于利润。 \\
+300476 & 12.88亿 & 21.17亿 & 164.3\% & 0.68 & OCF显著高于净利，但速动比率偏低。 \\
+002916 & 8.50亿 & 2.47亿 & 29.1\% & 0.73 & 现金转换偏弱，匹配材料采购和爬坡压力。 \\
+600183 & 11.58亿 & 5.72亿 & 49.4\% & 1.28 & 现金转换中等，材料链营运资本仍需跟踪。 \\
+603186 & 0.31亿 & 0.56亿 & 182.6\% & 0.82 & 小利润基数下OCF/NPP参考意义有限。 \\
+002938 & 4.63亿 & 30.97亿 & 668.8\% & 1.39 & 回款驱动OCF显著高于净利，现金转换强但需看持续性。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/working\_capital\_cash\_conversion.md}; \texttt{data/pengding\_official\_filing\_evidence.md}; OCF = operating cash flow}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 14c: Working-capital days approximation]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}R{1.5cm}R{1.5cm}R{1.5cm}R{1.6cm}X}
+\toprule
+\textbf{Ticker} & \textbf{DSO} & \textbf{DIO} & \textbf{DPO} & \textbf{CCC} & \textbf{Read-through} \\
+\midrule
+002463 & 93.8 & 90.5 & 117.4 & 66.9 & Payables partly fund growth; cash cycle controlled. \\
+300476 & 90.6 & 86.2 & 166.7 & 10.1 & Supplier credit and strong OCF support ramp. \\
+002916 & 79.8 & 104.9 & 82.2 & 102.5 & Inventory/ramp pressure visible. \\
+600183 & 108.6 & 88.7 & 69.4 & 127.9 & Materials chain has longer cash cycle. \\
+603186 & 137.0 & 44.3 & 89.9 & 91.4 & AR days high; monitor collection. \\
+002938 & 41.9 & 64.5 & 72.6 & 33.8 & 回款改善，现金周期较短。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/working\_capital\_days\_analysis.md}; \texttt{data/pengding\_official\_filing\_evidence.md}; DSO/DIO/DPO/CCC approximated from Q1 balance sheet and quarterly revenue/cost}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 14c-2: H-share official turnover days cross-check]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}L{1.6cm}R{1.5cm}R{1.5cm}R{1.5cm}X}
+\toprule
+\textbf{Ticker} & \textbf{Period} & \textbf{AR days} & \textbf{Inv. days} & \textbf{AP days} & \textbf{Read-through} \\
+\midrule
+002463 & 2025 & 91 & 91 & 96 & 收款周期稳定，库存和应付天数较2024拉长。 \\
+002463 & 2026Q1 & 87 & 100 & 99 & 官方口径确认回款改善，但高端材料备货占用仍上升。 \\
+300476 & 2024 & 122.1 & 75.3 & 101.7 & 回款天数仍高，但库存周转保持稳定。 \\
+300476 & 2025 & 93.3 & 76.1 & 144.6 & 回款显著改善，应付账款周期大幅拉长，解释强OCF的一部分来源。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/hshare\_official\_turnover\_days.md}; issuer-disclosed trade receivable, inventory and trade payable turnover days from HKEX H-share documents}
+\end{exhibitbox}
+
+\section{Capex, Capacity and Ramp}
+
+\begin{exhibitbox}[Exhibit 14d: H-share capacity utilization and expansion]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}X X}
+\toprule
+\textbf{Ticker} & \textbf{Capacity / utilization evidence} & \textbf{EPS relevance} \\
+\midrule
+002463 & H股文件披露2026Q1整体利用率99.1\%；昆山沪士99.9\%，昆山沪利99.6\%，黄石99.7\%，金坛92.5\%，泰国99.7\%。 & 几乎满产，支持高端产能瓶颈和扩产必要性。 \\
+300476 & 2025年HDI产能利用率97.7\%；全面投产后越南北宁预计年产能150千平方米，泰国大城府预计1500千平方米。 & HDI高利用率与ASP跃升匹配，产能释放决定后续收入兑现。 \\
+300476 & 扩建规划披露惠州高层MLPCB年产能增约1020千平方米；长/益项目增单双层1392千平方米、HDI 72千平方米、MLPCB 360千平方米；惠州线改新增高层MLPCB 150千平方米和高阶HDI 100千平方米。 & 提供产能增量底层假设，但不是客户订单或收入承诺。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/hshare\_capacity\_utilization\_evidence.md}}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 14e: Official capex and capacity checkpoints]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}X X}
+\toprule
+\textbf{Ticker} & \textbf{Official / direct evidence} & \textbf{EPS relevance} \\
+\midrule
+002463 & 2026年6月IR披露泰国基地2025收入约2.89亿元，2026Q1约2.95亿元；数通事业部海外客户认证超70\%，2026Q1产能利用率超90\%，升级扩容预计2026Q2有序释放，AI服务器与高速网络产品加速导入。 & 高利用率支持收入兑现，但需跟踪扩产后毛利和订单。 \\
+300476 & 2026年6月IR披露泰国A1一期升级改造于2025年3月完成，A1二期高端产能已通过多个客户审厂并开始生产AI产品验证板；惠州mSAP产线用于1.6T光模块，在手订单饱满、产能利用率良好。 & 海外高端产能和mSAP光模块订单提高AI链条可验证性。 \\
+002916 & 2026年6月IR披露南通四期和泰国项目2025H2连线投产，仍处爬坡早期；广州BT封装基板产能爬坡，FC-BGA 22层及以下量产、24层以上研发推进；2026资本开支聚焦PCB和封装基板。 & 直接进入EPS敏感性：爬坡速度、良率和折旧决定利润转换。 \\
+002916 & 2026定增预案披露无锡深南AI算力电子电路产品项目总投资45.36亿元，拟使用募集资金36.00亿元，建设期1年；产品为高速高密高多层PCB，应用于AI服务器和交换机。 & 官方capex桥补强AI算力PCB扩产底稿，但未披露单价/毛利率/客户订单金额。 \\
+600183 & 生益电子再融资问询回复披露AI计算HDI项目总投资20.32亿元，规划高阶HDI年产能16.72万平方米；高多层算力板项目总投资19.37亿元，规划年产能70万平方米。 & 为生益电子AI PCB扩产提供官方产能和投资底稿。 \\
+600183 & 2025年1--9月PCB产能利用率93.64\%；截至2026年2月在手订单34.95亿元，其中HDI 7.32亿元、多层板26.84亿元。 & 高利用率和订单储备支持扩产必要性，但订单执行周期仍短。 \\
+603186 & 泰国覆铜板基地计划投资不超过6000万美元；固定资产账面价值25.90亿元、在建工程1.41亿元；华正能源产线利用率远低于设计水平并出现减值迹象。 & 海外扩产和资产减值并存，解释华正模型风险。 \\
+603186 & 2026再融资可行性报告披露年产1200万张高等级覆铜板项目，总投资10.04亿元，拟使用募集资金10.00亿元，重点布局高速/高频/高导热金属基板/HDI覆铜板，应用于AI服务器、交换机和光模块。 & 官方补强高端CCL扩产底稿，但仍未披露M8/M9收入、CBF/BT项目经济性或具名客户订单。 \\
+603186 & 浙商深度称珠海高等级覆铜板项目满产后年产2400万张，可实现年销售收入约30亿元。 & 提供高端CCL产能到收入的公开桥，但仍非公司业绩指引。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/official\_capex\_capacity\_evidence.md}; \texttt{data/official\_shengyi\_refresh\_evidence.md}; \texttt{data/official\_ir\_refresh\_20260616.md}; \texttt{data/official\_shennan\_refinancing\_evidence.md}; \texttt{data/official\_huazheng\_refinancing\_evidence.md}}
+\end{exhibitbox}
+
+\section{Core Company One-Pagers}
+
+\begin{exhibitbox}[Exhibit 15A: 沪电股份 one-pager]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X}
+\toprule
+Role & 高速/高层AI PCB、backplane、data center PCB。 \\
+Evidence & 高盛转载正文称AI PCB需求、背板和CoWoP相关需求；2026年CAPEX或达60亿元，2025年为30亿元；目标价142元。 \\
+Upside driver & AI平台升级和产品结构改善。 \\
+Verify next & AI PCB收入占比、2027E EPS明细、CAPEX后利用率和毛利率。 \\
+Risk & 客户波动、CAPEX消化、估值敏感。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 15B: 胜宏科技 one-pager]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X}
+\toprule
+Role & AI PCB、高层板/HDI、高beta平台暴露。 \\
+Evidence & 摩根大通转载正文称其受益NVIDIA升级周期、Google ASIC/TPU机会，H股目标价600港元，2025--2028净利CAGR 81\%。 \\
+Upside driver & 若AI PCB/ASIC预测被验证，盈利弹性最高。 \\
+Verify next & 原始报告、A/H可比性、客户份额、产能爬坡、客户集中度。 \\
+Risk & 预期过高、预测验证不足、证券类别不可比。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 15C: 深南电路 one-pager]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X}
+\toprule
+Role & PCB + IC载板双轮驱动。 \\
+Evidence & 2025收入236.47亿元、归母净利32.76亿元；2026Q1收入65.96亿元、归母净利8.50亿元；PCB业务收入143.59亿元，封装基板收入41.48亿元；2026--2028净利预测56.78/78.14/106.25亿元。 \\
+Upside driver & AI算力PCB和封装基板同步增长。 \\
+Verify next & 客户平台拆分、FC-BGA/BT良率、载板产能利用率和折旧压力。 \\
+Risk & 新产能爬坡、载板认证、材料成本压力。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 15D: 生益科技 one-pager]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X}
+\toprule
+Role & 高频高速CCL龙头。 \\
+Evidence & 2025H1官方分部披露覆铜板外部收入84.67亿元、PCB外部收入37.53亿元；2025Q3年初至报告期末收入206.14亿元、归母净利24.43亿元；生益电子官方披露AI HDI和高多层算力板扩产。 \\
+Upside driver & 材料价格/结构升级、高端高速覆铜板稀缺，以及生益电子AI PCB产能爬坡。 \\
+Verify next & M8/M9收入占比、具名客户认证、涨价持续性、HDI/高多层算力板投产节奏。 \\
+Risk & 价格反转、原材料成本、客户份额变化、扩产后利用率。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 15E: 华正新材 one-pager]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X}
+\toprule
+Role & 高速CCL、CBF/BT载板材料、国产算力链。 \\
+Evidence & 浙商模型补充2025E--2027E；2026再融资可行性报告披露年产1200万张高等级覆铜板项目；P5W/上交所互动显示CBF部分单品小批量订单销售、其他单品推进终端验证，类BT/BT板材已在内存封装等领域应用。 \\
+Upside driver & 高等级CCL扩产、国产算力材料验证和高端材料放量。 \\
+Verify next & M8/M9收入占比、CBF/BT客户验证、产品良率、订单转化。 \\
+Risk & 小利润基数、估值波动、验证周期、扩产后利用率。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{Financial Delivery Bridge}
+
+\begin{exhibitbox}[Exhibit 16: From reported delivery to next verification point]
+\small
+\begin{tabularx}{\textwidth}{L{2.6cm}X X X}
+\toprule
+\textbf{Layer} & \textbf{Beat} & \textbf{In line} & \textbf{Miss} \\
+\midrule
+高端PCB & AI订单、ASP和毛利率同步上行，新产能快速转收入。 & 收入增长但毛利率平稳，CAPEX按计划推进。 & 订单延期、利用率低于预期或价格竞争。 \\
+CCL材料 & M8/M9涨价延续，普品毛利修复，高端料验证加速。 & 高端放量抵消普品压力。 & 涨价反转或原料成本挤压毛利。 \\
+载板/封装 & FC-BGA/ABF/BT客户验证和量产快于预期。 & 研发和打样按期推进。 & 认证延迟、折旧上升、良率不足。 \\
+设备耗材 & 新订单和在手订单持续增长，耗材复购验证景气。 & CAPEX周期带来阶段性订单。 & 下游扩产放缓或价格竞争。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\begin{exhibitbox}[Exhibit 16b: Pengding official monthly revenue tracker]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.8cm}R{2.0cm}R{1.5cm}X}
+\toprule
+\textbf{Month} & \textbf{Revenue} & \textbf{YoY} & \textbf{Read-through} \\
+\midrule
+2026-01 & 27.01亿元 & -0.07\% & 年初基本持平。 \\
+2026-02 & 23.24亿元 & -5.65\% & 淡季和需求压力延续，解释Q1收入承压。 \\
+2026-03 & 29.61亿元 & +1.38\% & 重新转正，Q1整体趋稳。 \\
+2026-04 & 29.45亿元 & +5.09\% & Q2开局改善。 \\
+2026-05 & 31.05亿元 & +19.51\% & 明显加速；公开互动称服务器及光模块用板增长相对突出。 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.4em}
+\begin{tabularx}{\textwidth}{L{1.8cm}R{2.0cm}R{1.5cm}X}
+\toprule
+\textbf{Parent month} & \textbf{ZDT revenue} & \textbf{YoY} & \textbf{Read-through} \\
+\midrule
+2026-05 & NT\$16.20bn & +37.40\% & 臻鼎母公司增速更强，支持Server/Optical和IC载板高端AI应用read-through。 \\
+2026 YTD & NT\$72.13bn & N/A & 官方财务页披露的1--5月累计合并营收。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/pengding\_monthly\_revenue\_evidence.md}; \texttt{data/zhen\_ding\_monthly\_revenue\_evidence.md}; official monthly revenue briefs, preliminary unaudited data}
+\end{exhibitbox}
+
+\section{Ranking Logic}
+
+\begin{houseviewbox}[How to use the buckets]
+核心组并不等于无条件买入。沪电股份、深南电路、生益科技的优势在于证据密度和链条位置；胜宏科技和华正新材的优势在于弹性，但估值和来源验证要求更高；观察组需要更多订单、认证、财务和官方披露才能进入核心组合。
+\end{houseviewbox}

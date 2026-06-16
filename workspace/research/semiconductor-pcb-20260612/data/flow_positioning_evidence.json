@@ -1,0 +1,9 @@
+{
+  "attempt_date": "2026-06-15",
+  "results": [
+    {"source": "Eastmoney northbound holding detail via AkShare", "function": "stock_hsgt_individual_em", "ticker": "002463", "result": "TimeoutError after 12s"},
+    {"source": "Eastmoney individual fund-flow via AkShare", "function": "stock_individual_fund_flow", "ticker": "002463", "result": "ConnectionError / remote disconnected"},
+    {"source": "Eastmoney holder-category data via AkShare", "function": "stock_report_fund_hold", "ticker": "multiple", "result": "TypeError in current environment"}
+  ],
+  "conclusion": "Complete institutional positioning and fund-flow coverage unavailable from tested public sources."
+}

@@ -1,0 +1,99 @@
+{
+  "success": true,
+  "quality": {
+    "schema_version": "quality.report_quality.v1",
+    "score": 100.0,
+    "passed_count": 6,
+    "check_count": 6,
+    "status": "excellent",
+    "checks": [
+      {
+        "name": "evidence",
+        "passed": true,
+        "hits": [
+          "evidence",
+          "source",
+          "data"
+        ],
+        "expected_terms": [
+          "evidence",
+          "source",
+          "provenance",
+          "data"
+        ]
+      },
+      {
+        "name": "risk",
+        "passed": true,
+        "hits": [
+          "risk",
+          "drawdown"
+        ],
+        "expected_terms": [
+          "risk",
+          "downside",
+          "drawdown"
+        ]
+      },
+      {
+        "name": "contrarian",
+        "passed": true,
+        "hits": [
+          "bear case"
+        ],
+        "expected_terms": [
+          "contrarian",
+          "bear case",
+          "counterargument"
+        ]
+      },
+      {
+        "name": "monitoring_trigger",
+        "passed": true,
+        "hits": [
+          "trigger",
+          "monitor",
+          "watch"
+        ],
+        "expected_terms": [
+          "trigger",
+          "monitor",
+          "watch"
+        ]
+      },
+      {
+        "name": "invalidation",
+        "passed": true,
+        "hits": [
+          "invalidation"
+        ],
+        "expected_terms": [
+          "invalidation",
+          "invalidate",
+          "fails if"
+        ]
+      },
+      {
+        "name": "data_quality",
+        "passed": true,
+        "hits": [
+          "data quality"
+        ],
+        "expected_terms": [
+          "data quality",
+          "quality_tier",
+          "degraded"
+        ]
+      }
+    ]
+  },
+  "pdf_metadata": {
+    "Pages": "55",
+    "File size": "575557 bytes",
+    "CreationDate": "Tue Jun 16 19:51:05 2026 CST",
+    "Page size": "595.28 x 841.89 pts (A4)",
+    "PDF version": "1.7"
+  },
+  "evaluated_file": "workspace/research/semiconductor-pcb-20260612/main.pdf",
+  "evaluated_text": "workspace/research/semiconductor-pcb-20260612/main_current_text.txt"
+}

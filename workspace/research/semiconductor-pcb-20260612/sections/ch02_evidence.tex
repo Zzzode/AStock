@@ -1,0 +1,45 @@
+\section{Evidence Pyramid}
+
+\begin{exhibitbox}[Exhibit 3: Source hierarchy used in this report]
+\centering
+\begin{tikzpicture}[
+  level/.style={rectangle, draw=white, minimum width=12.8cm, minimum height=0.78cm, text=white, align=center, font=\small\bfseries},
+  note/.style={font=\scriptsize\color{steelgrey}, align=center}
+]
+\node[level, fill=riskgreen] (q1) {Q1 Confirmed: official filings / company disclosures};
+\node[level, fill=accentblue, below=0.12cm of q1, minimum width=11.0cm] (q2) {Q2 Broker-stated: broker abstracts / public previews / attributed reposts};
+\node[level, fill=riskamber, below=0.12cm of q2, minimum width=9.0cm] (q3) {Q3 Inferred: cross-source industry logic};
+\node[level, fill=riskred, below=0.12cm of q3, minimum width=7.0cm] (q4) {Q4 Unverified: unavailable body / rumor / weak secondary mention};
+\node[note, below=0.2cm of q4] {Only Q1--Q2 claims can support main tables. Q3 must be labeled. Q4 is isolated from conclusions.};
+\end{tikzpicture}
+\end{exhibitbox}
+
+\section{Corpus Dashboard}
+
+\begin{dashboardbox}[Source and data status]
+\small
+\begin{tabularx}{\textwidth}{L{3.6cm}X L{3.6cm}X}
+\toprule
+\textbf{Source cutoff} & 初始语料2026年6月12日；持续刷新至2026年6月16日 & \textbf{Rebuild date} & 2026年6月15--16日 \\
+\textbf{Identified materials} & 138份半导体PCB相关PDF归档 & \textbf{Usable materials} & 官方公告、IR、券商PDF、H股文件和公开数据代理均已入库 \\
+\textbf{Full original PDFs} & 核心/观察名单/补充/回退PDF已覆盖公开可得语料 & \textbf{Market data} & 腾讯quote刷新12/12价格、市值、PE和PB \\
+\textbf{Consensus label} & 公开研究情绪 + 东方财富预测交叉验证 & \textbf{Main limitation} & 无具名客户收入、终端级持仓流和客户/平台bottom-up EPS \\
+\bottomrule
+\end{tabularx}
+\end{dashboardbox}
+
+\section{Claim Controls}
+
+\begin{exhibitbox}[Exhibit 4: Claims explicitly blocked or restricted]
+\small
+\begin{tabularx}{\textwidth}{X L{4cm}}
+\toprule
+\textbf{Potential claim} & \textbf{Treatment} \\
+\midrule
+把胜宏科技H股600港元目标价直接对比A股人民币价格。 & Blocked: 不同上市地/币种/证券类型。 \\
+为没有券商目标价的公司生成AStock目标价。 & Blocked: 使用情景框架，不造目标价。 \\
+把公开摘要、预览和转载正文视为完整Street Consensus。 & Restricted: 改称公开可得研究情绪。 \\
+把2026年6月12日行情快照表述为当前实时行情。 & Fixed: 估值章节已改用2026年6月16日腾讯quote feed盘中快照，并保留标准化终端估值库边界。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}

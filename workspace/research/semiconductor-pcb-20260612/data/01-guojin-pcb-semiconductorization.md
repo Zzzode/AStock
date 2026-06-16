@@ -1,0 +1,168 @@
+<div class="header">
+
+<a href="/" class="left"><img src="/Res/Img/logo.png"
+class="logo" /></a>
+
+<div class="mid">
+
+<div class="search">
+
+</div>
+
+</div>
+
+<a href="/Common/AppDownload" class="right"><img
+src="/Res/Img/download.png" /></a>
+
+</div>
+
+<div class="separator">
+
+</div>
+
+<div class="doc-title">
+
+国金证券-计算机行业专题研究报告：再谈PCB的半导体化-260517
+
+</div>
+
+<div class="doc-info">
+
+2026-05-17 16:54:33  刘高畅，郑元昊
+
+</div>
+
+<div class="doc-label">
+
+<div class="label-right">
+
+研报摘要
+
+</div>
+
+</div>
+
+------------------------------------------------------------------------
+
+<div class="doc-content">
+
+行业观点
+
+<div style="height: 1em;">
+
+</div>
+
+当前AI推理瓶颈迭代与架构演进，正推动PCB价值定位实现根本性跃升。Transformer架构下大模型推理存在算力与带宽极端错配，英伟达解耦式推理架构对PCB提出高密度封装、高速互联、高功率供电散热等更高要求，PCB技术门槛与认证周期对标半导体封装。Rubin系列开启AI硬件密度时代，2026-2027年量产的Vera Rubin、Rubin Ultra平台大幅提升算力，正交背板以78层PCB替代铜缆，拉动PCB价量齐升，单台服务器PCB价值提升超两倍，高端PCB供需失衡延续至2027年。CoWoP方案打破PCB与封装基板边界，使PCB承担封装基板功能，单GPU配套PCB价值达600美元，M9级材料体系升级叠加上游供给紧张，推动PCB工艺精度逼近半导体级，行业完成从承载平台到核心互联介质的价值跃迁。
+
+<div style="height: 1em;">
+
+</div>
+
+Rubin、ASIC、LPU等多元需求爆发，持续拓宽PCB行业成长空间。英伟达Rubin Ultra NVL576机柜2027年量产，算力为GB300的14倍，配套超高带宽与高密度互联需求，催生高层数、高阶HDI及高频高速PCB刚需，单机柜PCB价值大幅提升。北美CSP自研ASIC加速放量，2026年ASICAI服务器份额预计达27.8%，单机PCB价值倍数级提升，对PCB设计灵活性、定制化能力提出更高要求，形成GPU与ASIC双引擎驱动格局。LPU等推理专用芯片逐步商用，侧重时延与功耗优化，拓展PCB在云端、边缘、设备端推理场景的应用边界。多场景需求共振下，AI服务器出货量持续高增，为高端PCB提供长期成长支撑，头部厂商迎来增量红利。
+
+<div style="height: 1em;">
+
+</div>
+
+AI需求爆发与工艺迭代，驱动PCB行业资本开支高增，头部厂商前瞻布局高端产能。2025-2026年一季度，胜宏科技、沪电股份、鹏鼎控股等六家头部企业资本开支大幅增长，胜宏科技2025年同比增693.41%，2026年Q1增速389.59%，行业进入成长性扩张周期。头部企业密集落地大额扩产计划，胜宏科技2026年投资不超200亿元，鹏鼎控股累计扩产233亿元，沪电股份四项投资合计逾180亿元，聚焦mSAP、CoWoP、高阶HDI等高端工艺，同时推进海外产能布局。重资本投入、长扩产周期、高客户认证壁垒下，头部厂商通过提前卡位高端产能，构筑技术与规模护城河，锁定北美CSP等大客户供应链先发优势，行业集中度持续提升。
+
+<div style="height: 1em;">
+
+</div>
+
+AIPCB扩产推高设备精度与投入强度，钻孔、压机、钻针、镭射电镀等关键环节壁垒加深。2026年中国PCB设备市场规模预计达347.09亿元，钻孔、曝光、检测设备合计占比近半，高端AIPCB对设备精度、自动化水平要求升级，单台价值显著提升。钻孔设备领域，国产大族数控机械钻孔机市占率领先，高端激光钻孔机依赖海外厂商，国产加速追赶；压机设备由德国Bürkle主导，适配高多层板量产需求，是产能释放核心瓶颈。钻针市场量价齐升，全球CR4达70.5%，鼎泰高科、金洲精工合计市占近50%，高端加长径、涂层钻针需求旺盛。镭射与电镀工艺决定PCB良率，激光钻孔适配微盲孔加工，电镀均匀性影响信号完整性，国产设备加速国产替代，关键设备投入与技术升级成为厂商量产能力核心变量。
+
+<div style="height: 1em;">
+
+</div>
+
+相关标的
+
+<div style="height: 1em;">
+
+</div>
+
+海外算力：胜宏科技、鹏鼎控股、沪电股份、广合科技、生益科技、景旺电子、东山精密、世运电路
+
+<div style="height: 1em;">
+
+</div>
+
+其他海外算力：东山精密、工业富联、中际旭创、天孚通信、中钨高新、天岳先进、新易盛、兆易创新、沪电股份、大普微、源杰科技、欧科亿、英维克、唯科科技、领益智造等；Intel、SK海力士、Lumentum、闪迪、高通、博通、marvell、铠侠、美光、中微公司、北方华创、拓荆科技、长川科技。
+
+<div style="height: 1em;">
+
+</div>
+
+风险提示
+
+<div style="height: 1em;">
+
+</div>
+
+AI服务器出货及PCB升级不及预期的风险；CoWoP、正交背板等新工艺商业化进度不及预期的风险；原材料供应紧张及价格波动的风险；行业扩产节奏过快导致竞争加剧与价格战的风险；大客户订单波动及客户集中度过高的风险
+
+</div>
+
+<div class="open-app-box">
+
+<div class="bg-layer">
+
+<div class="open-more-btn">
+
+![](Res/Img/packup_arrow.gif)
+
+</div>
+
+</div>
+
+<div class="open-app-btn">
+
+[打开APP阅读全文](/Common/AppDownload)
+
+</div>
+
+<div class="type-btn">
+
+[![](/Res/Img/DocType/pdf.png)](/Common/AppDownload)
+
+</div>
+
+</div>
+
+<div id="recommendLoading">
+
+</div>
+
+<div class="recommend-wrap">
+
+</div>
+
+<div id="shareTip">
+
+<div class="bg">
+
+<div class="info">
+
+### 操作成功<img src="/Res/Img/close_tip.png"
+onclick="$(&#39;#shareTip&#39;).hide();" />
+
+本研报来自"慧博投资分析终端"，想要查看更多研报，您可以下载慧博APP。
+
+[立即下载](/Common/AppDownload)
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer">
+
+</div>
+
+<div class="back-to-top" title="返回顶部">
+
+返回顶部
+
+</div>
