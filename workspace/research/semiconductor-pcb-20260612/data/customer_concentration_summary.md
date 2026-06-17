@@ -1,6 +1,6 @@
 # Customer Concentration Summary
 
-**Source:** Official 2025 annual reports from CNInfo, extracted text under `workspace/reports/semiconductor-pcb-official-filings-20260615/`.
+**Source:** Official 2025 annual reports from CNInfo, extracted text under `workspace/research/semiconductor-pcb-20260612/sources/official-annual-core-20260615/`.
 
 | Ticker | Top-5 customer sales | Top-5 customer sales ratio | Notes |
 |---|---:|---:|---|

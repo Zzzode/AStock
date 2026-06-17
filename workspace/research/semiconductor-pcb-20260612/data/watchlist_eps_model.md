@@ -1,6 +1,6 @@
 # Watchlist EPS Model Summary
 
-**Source:** downloaded broker PDFs in `workspace/reports/semiconductor-pcb-watchlist-20260615/`.
+**Source:** downloaded broker PDFs in `workspace/research/semiconductor-pcb-20260612/sources/broker-watchlist-20260615/`.
 
 | Ticker | Broker | Key forecast evidence | 2026E revenue | 2027E revenue | 2028E revenue | 2026E NPP | 2027E NPP | 2028E NPP | 2026E EPS | 2027E EPS | 2028E EPS | 2026E PE | 2027E PE | 2028E PE |
 |---|---|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|

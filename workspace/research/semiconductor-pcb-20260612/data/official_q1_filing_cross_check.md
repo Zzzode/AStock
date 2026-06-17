@@ -2,7 +2,7 @@
 
 **Purpose:** Map the normalized 2026Q1 financial checkpoint to archived official Q1 report text/PDF evidence. This is an audit layer over `official_financials_summary.md`.
 
-**Source directory:** `workspace/reports/semiconductor-pcb-q1-official-20260615/`
+**Source directory:** `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/`
 
 | Ticker | Name | Revenue evidence | NPP evidence | OCF evidence | EPS | ROE | Source lines / caveat |
 |---|---|---:|---:|---:|---:|---:|---|

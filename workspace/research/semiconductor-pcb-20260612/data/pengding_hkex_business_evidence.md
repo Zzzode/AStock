@@ -1,8 +1,8 @@
 # Pengding HKEX Business Overview Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/05-002938-hkex-prospectus-business-overview.pdf`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/05-002938-hkex-prospectus-business-overview.pdf`
 
-**Extracted text:** `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/05-002938-hkex-prospectus-business-overview.md`
+**Extracted text:** `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/05-002938-hkex-prospectus-business-overview.md`
 
 **Source type:** HKEX draft filing excerpt / business overview. This is stronger than a media repost, but it is not the missing UBS sell-side report and it is not a final full prospectus.
 

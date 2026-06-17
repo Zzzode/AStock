@@ -8,8 +8,8 @@
 
 | Source | Local file | Date | Pages | Rating | Boundary |
 |---|---|---|---:|---|---|
-| 信达证券 | `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/07-xinda-hudian-2025h1-ai-server-switch-20250822.pdf` | 2025-08-22 | 5 | 买入 | Domestic broker update; not Goldman original PDF. |
-| 天风证券 | `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/08-tianfeng-hudian-quarterly-growth-20260308.pdf` | 2026-03-08 | 4 | 增持 | Domestic broker update based on preliminary 2025 results; not Goldman original PDF. |
+| 信达证券 | `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/07-xinda-hudian-2025h1-ai-server-switch-20250822.pdf` | 2025-08-22 | 5 | 买入 | Domestic broker update; not Goldman original PDF. |
+| 天风证券 | `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/08-tianfeng-hudian-quarterly-growth-20260308.pdf` | 2026-03-08 | 4 | 增持 | Domestic broker update based on preliminary 2025 results; not Goldman original PDF. |
 
 ## Extracted Forecast Lines
 

@@ -1,6 +1,6 @@
 # Official Q1 Filing Archive Summary
 
-**Source directory:** `workspace/reports/semiconductor-pcb-q1-official-20260615/`
+**Source directory:** `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/`
 
 | Ticker | Name | PDF archived | Text extracted | Use |
 |---|---|---|---|---|
@@ -15,7 +15,7 @@
 | 603186 | 华正新材 | yes | yes | Filing-level support for 2026Q1 revenue, NPP, margins and cash-flow checkpoint. |
 | 688519 | 南亚新材 | yes | yes | Filing-level support for 2026Q1 revenue, NPP, margins and cash-flow checkpoint. |
 | 688630 | 芯碁微装 | yes | yes | Filing-level support for 2026Q1 revenue, NPP, margins and cash-flow checkpoint. |
-| 002938 | 鹏鼎控股 | yes | yes | Archived separately in `workspace/reports/semiconductor-pcb-pengding-official-20260616/`; supports 2026Q1 revenue, NPP, EPS and cash-flow checkpoint. |
+| 002938 | 鹏鼎控股 | yes | yes | Archived separately in `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-20260616/`; supports 2026Q1 revenue, NPP, EPS and cash-flow checkpoint. |
 
 ## Interpretation
 

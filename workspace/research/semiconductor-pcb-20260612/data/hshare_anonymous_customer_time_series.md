@@ -1,6 +1,6 @@
 # H-Share Anonymous Customer Time Series
 
-**Source:** HKEX H-share application/global-offering documents in `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616/`.
+**Source:** HKEX H-share application/global-offering documents in `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616/`.
 
 **Purpose:** Build the closest available public customer-revenue bridge. Customers remain anonymized, but the H-share documents disclose customer-level sales, revenue share, products/services and relationship start years for major customers.
 

@@ -1,6 +1,6 @@
 # Working Capital and Cash Conversion Evidence
 
-**Source:** `official_financials.json` plus archived official 2026Q1 filing PDFs in `workspace/reports/semiconductor-pcb-q1-official-20260615/`.
+**Source:** `official_financials.json` plus archived official 2026Q1 filing PDFs in `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/`.
 
 **Purpose:** Add cash-conversion and working-capital quality checks to the EPS discussion. This supports model discipline but does not provide customer/platform revenue assumptions.
 

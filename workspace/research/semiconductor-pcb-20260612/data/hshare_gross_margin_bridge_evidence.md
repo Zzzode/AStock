@@ -1,6 +1,6 @@
 # H-Share Gross Margin Bridge Evidence
 
-**Source:** HKEX H-share application/global-offering documents in `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616/`.
+**Source:** HKEX H-share application/global-offering documents in `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616/`.
 
 **Purpose:** Add gross-profit and gross-margin bridge to product revenue/volume/ASP evidence.
 

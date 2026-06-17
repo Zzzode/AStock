@@ -35,9 +35,9 @@
 
 ## Source Anchors
 
-- `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/688519-光大证券股份有限公司关于南亚新材料科技股份有限公司2025年年度报告的信息披露监管问询函的核查意见.md`
-- `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/002436-2025年年度报告.md`
-- `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/301200-2025年年度报告.md`
-- `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/688630-2025年年度报告.md`
-- `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/300400-2025年年度报告.md`
-- `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/301377-2025年年度报告.md`
+- `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/688519-光大证券股份有限公司关于南亚新材料科技股份有限公司2025年年度报告的信息披露监管问询函的核查意见.md`
+- `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/002436-2025年年度报告.md`
+- `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/301200-2025年年度报告.md`
+- `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/688630-2025年年度报告.md`
+- `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/300400-2025年年度报告.md`
+- `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/301377-2025年年度报告.md`

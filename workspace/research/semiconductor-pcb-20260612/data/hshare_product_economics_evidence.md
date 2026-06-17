@@ -1,6 +1,6 @@
 # H-Share Prospectus Product Economics Evidence
 
-**Source:** HKEX H-share application/global-offering documents in `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616/`.
+**Source:** HKEX H-share application/global-offering documents in `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616/`.
 
 **Purpose:** Extract product revenue, volume and ASP evidence that can support bottom-up EPS discipline without inventing customer-specific assumptions.
 

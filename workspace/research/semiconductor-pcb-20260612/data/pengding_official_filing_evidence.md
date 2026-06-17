@@ -1,6 +1,6 @@
 # Pengding Official Filing Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-pengding-official-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-20260616/`
 
 **Source type:** Official A-share periodic reports: 2025 annual report, 2025 interim report, 2025 Q3 report and 2026 Q1 report.
 

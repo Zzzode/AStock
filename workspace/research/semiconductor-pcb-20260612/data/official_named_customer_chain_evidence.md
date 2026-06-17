@@ -22,5 +22,5 @@
 
 ## Source Pointers
 
-- `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/688519-2025年年度报告.md`
+- `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/688519-2025年年度报告.md`
 - Relevant annual-report lines include customer definitions around the glossary, commercial-secret disclosure boundary, high-speed CCL generation discussion, certification advantages, and core-technology progress.

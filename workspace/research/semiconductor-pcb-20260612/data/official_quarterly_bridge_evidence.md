@@ -1,6 +1,6 @@
 # Official Quarterly Bridge Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-quarterly-official-20260616/` and `workspace/reports/semiconductor-pcb-q1-official-20260615/`.
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/official-quarterly-20260616/` and `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/`.
 
 **Scope:** Five core companies, six original watchlist names and Pengding theme-reserve. This file links official 2025H1 filings, 2025Q3 filings and 2026Q1 structured official financials.
 

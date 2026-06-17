@@ -1,6 +1,6 @@
 # Official Huazheng Refinancing Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-huazheng-official-refresh-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/official-huazheng-refresh-20260616/`
 
 **Primary document:** 华正新材 2026年度向特定对象发行A股股票募集资金使用的可行性分析报告.
 
@@ -31,7 +31,7 @@
 
 ## Dilution / EPS scenario evidence
 
-**Source:** `workspace/reports/semiconductor-pcb-huazheng-official-refresh-20260616/04-603186-华正新材-摊薄即期回报公告.pdf`.
+**Source:** `workspace/research/semiconductor-pcb-20260612/sources/official-huazheng-refresh-20260616/04-603186-华正新材-摊薄即期回报公告.pdf`.
 
 | Scenario | 2026 parent NPP | Pre-issue basic EPS | Post-issue basic EPS | Pre-issue diluted EPS | Post-issue diluted EPS | Read-through |
 |---|---:|---:|---:|---:|---:|---|

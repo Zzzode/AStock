@@ -1,6 +1,6 @@
 # CMBI / Citi / HSBC Probe Evidence
 
-**Source directory:** `workspace/reports/semiconductor-pcb-cmbi-citi-hsbc-probe-20260616/`
+**Source directory:** `workspace/research/semiconductor-pcb-20260612/sources/broker-cmbi-citi-hsbc-probe-20260616/`
 
 **Purpose:** Test non-Hibor global/foreign broker paths for additional full original PDFs.
 

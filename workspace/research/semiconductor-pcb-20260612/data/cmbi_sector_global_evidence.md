@@ -2,7 +2,7 @@
 
 **Source:** CMBI / 招银国际, *Semiconductors PCB/CCL sector - AI-driven upcycle: structural growth with diverging dynamics*, 2025-11-10.
 
-**Local archive:** `workspace/reports/semiconductor-pcb-sector-global-20260616/01-cmbi-semiconductor-pcb-ccl-sector-ai-driven-upcycle.pdf`
+**Local archive:** `workspace/research/semiconductor-pcb-20260612/sources/broker-sector-global-20260616/01-cmbi-semiconductor-pcb-ccl-sector-ai-driven-upcycle.pdf`
 
 ## Evidence extracted for report
 

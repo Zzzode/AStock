@@ -1,6 +1,6 @@
 # Official Filing Segment Summary
 
-**Source:** Official 2025 annual report PDFs downloaded from CNInfo and extracted to `workspace/reports/semiconductor-pcb-official-filings-20260615/`.
+**Source:** Official 2025 annual report PDFs downloaded from CNInfo and extracted to `workspace/research/semiconductor-pcb-20260612/sources/official-annual-core-20260615/`.
 
 | Ticker | Official filing evidence | Remaining customer-chain gap |
 |---|---|---|

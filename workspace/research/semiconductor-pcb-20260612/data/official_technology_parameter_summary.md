@@ -23,7 +23,7 @@ The technical gap is now reduced from pure concept to disclosed capability param
 
 ## Extra broker technical report: Shengyi high-speed CCL
 
-**Source:** `workspace/reports/semiconductor-pcb-extra-20260615/600183-xinan-high-speed-ccl.pdf`.
+**Source:** `workspace/research/semiconductor-pcb-20260612/sources/broker-extra-20260615/600183-xinan-high-speed-ccl.pdf`.
 
 Key extracted evidence:
 - High-frequency boards focus on Dk stability; high-speed boards focus on lower Df.

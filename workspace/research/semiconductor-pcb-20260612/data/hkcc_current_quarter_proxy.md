@@ -1,6 +1,6 @@
 # HKCC Current Quarter Proxy
 
-**Source:** Official 2026Q1 reports archived in `workspace/reports/semiconductor-pcb-q1-official-20260615/`.
+**Source:** Official 2026Q1 reports archived in `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/`.
 
 **Purpose:** Use Hong Kong Securities Clearing Company (香港中央结算有限公司, HKCC) in official top-shareholder tables as a current-quarter public proxy for Stock Connect/northbound ownership. This is not beneficial-owner or institution-level northbound data.
 

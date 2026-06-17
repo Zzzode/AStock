@@ -41,13 +41,17 @@ Dispatch `report-collector` agent (`.agents/team/report-collector.md`):
 - Input: scope, target, date_range, min_reports
 - Output: structured catalog with `source_url` and `pdf_url` per report
 
-## Step 3: Create Output Directory
+## Step 3: Create Case-Scoped Output Directory
+
+All collected reports belong under a research case. Do not write new material to the deprecated global `workspace/reports/` directory.
+
+If the user is collecting sources for an existing research case, use that case directory. If no case exists, create one:
 
 ```bash
-mkdir -p workspace/reports/<sector-slug>/<YYYY-MM-DD>/
+mkdir -p workspace/research/<topic-slug>-<YYYYMMDD>/sources/broker-reports/<YYYY-MM-DD>/
 ```
 
-Sector slug: lowercase, hyphens for spaces (e.g., `物理AI` → `physical-ai`).
+Topic slug: lowercase, hyphens for spaces (e.g., `物理AI` → `physical-ai`). The date suffix is the research case date, not necessarily the report publication date.
 
 ## Step 4: Download Full Reports
 
@@ -58,7 +62,7 @@ For each report in the catalog, attempt in priority order:
 If `pdf_url` is available:
 
 ```bash
-curl -L -o "workspace/reports/<sector>/<date>/NN-<broker>-<short-title>.pdf" "<pdf_url>"
+curl -L -o "workspace/research/<topic-slug>-<YYYYMMDD>/sources/broker-reports/<YYYY-MM-DD>/NN-<broker>-<short-title>.pdf" "<pdf_url>"
 ```
 
 ### Priority 2: WebFetch PDF link extraction
@@ -83,7 +87,7 @@ For each successfully downloaded PDF:
 
 ```
 Read the PDF file using the Read tool (supports PDF reading)
-Save extracted text to: workspace/reports/<sector>/<date>/NN-<broker>-<short-title>.md
+Save extracted text to: workspace/research/<topic-slug>-<YYYYMMDD>/sources/broker-reports/<YYYY-MM-DD>/NN-<broker>-<short-title>.md
 ```
 
 The .md file should preserve:
@@ -94,7 +98,7 @@ The .md file should preserve:
 
 ## Step 6: Generate Index
 
-Create `workspace/reports/<sector>/<date>/index.md`:
+Create `workspace/research/<topic-slug>-<YYYYMMDD>/sources/broker-reports/<YYYY-MM-DD>/index.md`:
 
 ```markdown
 # Report Collection: <Sector>
@@ -150,15 +154,15 @@ NN-<broker-slug>-<short-title-slug>.md
 
 ## Integration
 
-- Output directory can be directly referenced by `/equity-research` Phase 1
+- Output directory is directly inside the research case and can be referenced by `/equity-research` Phase 1
 - `report-analyzer` agent can consume the .md files for consensus analysis
-- `/team` skill can reference stored reports via `workspace/reports/` paths
+- `/team` skill can reference stored reports via case-scoped `workspace/research/<topic-slug>-<YYYYMMDD>/sources/` paths
 
 ## Command Reference
 
 ```bash
 # Directory creation
-mkdir -p workspace/reports/<sector>/<date>/
+mkdir -p workspace/research/<topic-slug>-<YYYYMMDD>/sources/broker-reports/<YYYY-MM-DD>/
 
 # PDF download
 curl -L -s -o <output-path> <url>

@@ -1,6 +1,6 @@
 # H-Share Prospectus Customer Evidence
 
-**Source directory:** `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616/`.
+**Source directory:** `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616/`.
 
 **Purpose:** Use H-share application/global-offering documents to improve customer-chain revenue evidence. These documents are official exchange filings and can disclose richer customer concentration and application revenue than A-share annual reports.
 

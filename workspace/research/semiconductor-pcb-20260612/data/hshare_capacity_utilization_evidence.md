@@ -1,6 +1,6 @@
 # H-Share Capacity Utilization Evidence
 
-**Source:** HKEX H-share application/global-offering documents in `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616/`.
+**Source:** HKEX H-share application/global-offering documents in `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616/`.
 
 **Purpose:** Extract capacity, output and utilization evidence that supports bottom-up EPS assumptions through utilization and ramp rather than named customer revenue.
 

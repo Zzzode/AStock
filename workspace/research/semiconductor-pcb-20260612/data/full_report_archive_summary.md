@@ -15,4 +15,4 @@
 
 - This archive downloads one latest report per core company where an Eastmoney PDF link is available.
 - These PDFs improve source depth but do not replace company filings or customer-chain verification.
-- Additional supplemental PDFs and official IR records were later archived in `workspace/reports/semiconductor-pcb-supplemental-20260615/` and summarized in `data/supplemental_report_archive_summary.md`. The most important upgrade is the 41-page 603186 Zheshang deep report, which replaces the older Huazheng model gap with 2025E-2027E forecast coverage.
+- Additional supplemental PDFs and official IR records were later archived in `workspace/research/semiconductor-pcb-20260612/sources/broker-supplemental-20260615/` and summarized in `data/supplemental_report_archive_summary.md`. The most important upgrade is the 41-page 603186 Zheshang deep report, which replaces the older Huazheng model gap with 2025E-2027E forecast coverage.

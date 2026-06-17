@@ -1,6 +1,6 @@
 # Pengding Forecast Model Evidence
 
-**Sources:** Huatai original PDF in `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/`; Zheshang fallback original PDF in `workspace/reports/semiconductor-pcb-global-gap-fallback-20260615/`.
+**Sources:** Huatai original PDF in `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/`; Zheshang fallback original PDF in `workspace/research/semiconductor-pcb-20260612/sources/broker-global-fallback-20260615/`.
 
 **Boundary:** Forecast-line model only. This is not a full operating-line model and not a customer/platform bottom-up EPS model.
 

@@ -2,7 +2,7 @@
 
 **Source:** `astock.capabilities.get_financial_statements()` backed by AkShare financial abstract data.
 **Fetched at:** see `official_financials.json` per ticker.
-**Use:** official/structured financial checkpoint for report update. The original 2026Q1 filing PDFs are now archived in `workspace/reports/semiconductor-pcb-q1-official-20260615/` for audit.
+**Use:** official/structured financial checkpoint for report update. The original 2026Q1 filing PDFs are now archived in `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/` for audit.
 
 | Ticker | Latest period | Revenue | Net profit parent | Gross margin | ROE | Revenue growth | Profit growth | Data quality |
 |---|---:|---:|---:|---:|---:|---:|---:|---|
@@ -23,4 +23,4 @@
 
 - Values are extracted from structured financial abstracts and normalized by the local capability kernel.
 - The table uses the latest available reporting period per ticker.
-- Original Q1 filing PDFs have been archived for the 11 original names, and Pengding's 2026Q1 filing is archived separately in `workspace/reports/semiconductor-pcb-pengding-official-20260616/`. External publication still requires manual line-by-line table audit.
+- Original Q1 filing PDFs have been archived for the 11 original names, and Pengding's 2026Q1 filing is archived separately in `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-20260616/`. External publication still requires manual line-by-line table audit.

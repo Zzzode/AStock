@@ -1,6 +1,6 @@
 # Zhen Ding Parent Official Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-zhen-ding-official-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/official-zhen-ding-20260616/`
 
 **Source type:** Official Zhen Ding Technology Holding investor presentations and annual report, downloaded from `zdtco.com`.
 

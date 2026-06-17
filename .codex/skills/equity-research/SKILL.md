@@ -68,7 +68,7 @@ Dispatch **in parallel** — no dependencies between them:
 | Data Collector (financials) | `.agents/team/data-collector.md` | ticker list + data cutoff date, mode=financials | `data/raw_financials.md` |
 | Data Collector (market) | `.agents/team/data-collector.md` | ticker list + today's date, mode=market | `data/raw_market_data.md` |
 | Industry Analyst | `.agents/team/industry-analyst.md` | sector theme + competitive questions | `analysis/industry_landscape.md` |
-| Report Collector | `.agents/team/report-collector.md` | sector/ticker + date_range=last_90d + min_reports=10 | `data/report_catalog.md` |
+| Report Collector | `.agents/team/report-collector.md` | sector/ticker + date_range=last_90d + min_reports=10 + output_dir=`sources/broker-reports/<YYYY-MM-DD>/` | `data/report_catalog.md` + `sources/broker-reports/<YYYY-MM-DD>/` |
 | Source Governance Analyst | `.agents/team/source-governance-analyst.md` | all collected sources | `data/source_registry.md` + `data/claim_audit.md` |
 
 **Quality gate:** All tickers have data. If any ticker is missing, re-run collector for that ticker.
@@ -193,6 +193,22 @@ PATH="/Library/TeX/texbin:$PATH" .venv/bin/python -m astock.cli build-pdf worksp
 
 Verify PDF opens and Chinese renders. Report file location and page count to user.
 
+## Case-Scoped Directory Standard
+
+Every deep research case owns its report, analysis outputs, evidence packets, and raw source archive. Do not use the deprecated global `workspace/reports/` directory for new research-source downloads. Put broker PDFs, official filings, IR records, web pages, probes, and failed-source evidence under the current case's `sources/` tree.
+
+Recommended `sources/` subdirectories:
+
+| Directory | Purpose |
+|---|---|
+| `sources/broker-reports/<YYYY-MM-DD>/` | Initial or ad hoc broker report collection from `/reports`. |
+| `sources/broker-core-*`, `sources/broker-watchlist-*`, `sources/broker-original-refresh-*` | Curated sell-side PDFs and extracted text used by the report. |
+| `sources/official-*` | Company filings, exchange documents, refinancing documents, monthly revenue, HKEX filing excerpts. |
+| `sources/ir-*` | Investor-relations records and official Q&A documents. |
+| `sources/probe-*` | Failed source probes, customer-side pages, customs/BOL pages, global-broker access attempts. |
+
+`data/` is for normalized evidence packets, extracted tables, quality gates, and audit manifests. Raw downloaded documents belong in `sources/`, not `data/`.
+
 ## File Outputs
 
 ```
@@ -202,6 +218,8 @@ workspace/research/<topic-slug>-<YYYYMMDD>/
 │   ├── raw_financials.md
 │   ├── raw_market_data.md
 │   ├── report_catalog.md
+│   ├── source_registry.md
+│   ├── claim_audit.md
 │   ├── verified_financials.md
 │   ├── verified_market_data.md
 │   └── consensus_analysis.md
@@ -209,6 +227,11 @@ workspace/research/<topic-slug>-<YYYYMMDD>/
 │   ├── industry_landscape.md
 │   ├── valuation_model.md
 │   └── risk_framework.md
+├── sources/
+│   ├── broker-reports/<YYYY-MM-DD>/
+│   ├── official-*/
+│   ├── ir-*/
+│   └── probe-*/
 ├── main.tex
 ├── sections/
 │   ├── ch01_summary.tex

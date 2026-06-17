@@ -291,12 +291,24 @@ src/python/astock/          # Python capability layer (core)
     ├── evolve/skill.md
     └── agent-resilience/skill.md
 
-workspace/                  # All research outputs (LaTeX → PDF)
+workspace/                  # All report outputs and case-scoped evidence
 ├── team/<CODE>-<YYYYMMDD>/          # Quick decision reports
-├── research/<topic>-<YYYYMMDD>/     # Deep equity research
-├── reports/<sector>/<YYYYMMDD>/     # Archived broker research reports
+├── research/<topic>-<YYYYMMDD>/     # Deep equity research case
+│   ├── main.tex / main.pdf          # Final report deliverable
+│   ├── sections/                    # LaTeX chapters
+│   ├── analysis/                    # House view, valuation, risk, exhibit plan
+│   ├── data/                        # Normalized evidence packets and audit manifests
+│   ├── sources/                     # Raw source archive for this case
+│   │   ├── broker-reports/<date>/   # Ad hoc /reports collections
+│   │   ├── broker-*                 # Curated broker PDFs and extracted text
+│   │   ├── official-*               # Filings, exchange docs, HKEX docs
+│   │   ├── ir-*                     # Investor relations records and Q&A
+│   │   └── probe-*                  # Failed probes, customer-side pages, BOL/customs
+│   └── rendered/                    # Rendered PDF pages for visual review
 ├── backtest/<CODE>-<strat>-<YYYYMMDD>/ # Backtest reports
 └── recommend/<YYYYMMDD>/            # Recommendation reports
+
+`workspace/reports/` is deprecated. New broker PDFs, official filings, raw HTML pages, and probe evidence must be stored under the relevant `workspace/research/<topic>-<YYYYMMDD>/sources/` tree.
 
 data/                       # Runtime data (mostly gitignored)
 ├── config/default.json     # User preferences

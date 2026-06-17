@@ -1,6 +1,6 @@
 # IR Platform-Chain Summary
 
-**Source:** Investor relations record PDFs downloaded from Eastmoney notice pages into `workspace/reports/semiconductor-pcb-ir-20260615/`.
+**Source:** Investor relations record PDFs downloaded from Eastmoney notice pages into `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/`.
 
 | Ticker | IR record | Platform-chain evidence | Remaining gap |
 |---|---|---|---|
@@ -15,7 +15,7 @@ IR records materially improve platform-chain evidence. They still do not provide
 
 ## Additional official SSE source for Shengyi
 
-**Source:** `workspace/reports/semiconductor-pcb-ir-20260615/600183-sse-202505-ir.pdf`, downloaded from `sns.sseinfo.com`.
+**Source:** `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/600183-sse-202505-ir.pdf`, downloaded from `sns.sseinfo.com`.
 
 Key evidence:
 - Shengyi states AI server hardware upgrades require lower-loss CCL materials.

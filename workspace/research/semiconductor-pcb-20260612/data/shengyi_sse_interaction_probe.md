@@ -10,7 +10,7 @@
 | SSE company feed, type 10 | `data/raw_shengyi_sse_userfeeds_type_10_page1.html` | Recent investor question feed; includes an investor question about M8/M9 stocking and drilling-process concerns, but no issuer reply in the captured item. |
 | SSE company feed, type 11 | `data/raw_shengyi_sse_userfeeds_company_q_page1.html`; `page2`; `page3` | Reply feed returned "近1个月暂无回复"; no recent issuer reply body recovered. |
 | SSE full-text searches | `data/raw_sse_search_shengyi_m9.html`; `data/raw_sse_search_600183_m9.html`; `data/raw_sse_search_shengyi_gpu.html` | Full-text search pages were archived, but did not expose a stronger issuer Q&A body for M8/M9/GPU customer certification beyond the already archived official IR PDF. |
-| SSE official IR PDF | `workspace/reports/semiconductor-pcb-ir-20260615/600183-sse-202505-ir.pdf`; `.md` | Strongest current official source. Confirms AI server demand requires lower-loss CCL, Shengyi is working with domestic and overseas terminals around GPU and AI project development, some products are in batch supply, and Thailand CCL/prepreg base investment is about CNY 1.4bn. |
+| SSE official IR PDF | `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/600183-sse-202505-ir.pdf`; `.md` | Strongest current official source. Confirms AI server demand requires lower-loss CCL, Shengyi is working with domestic and overseas terminals around GPU and AI project development, some products are in batch supply, and Thailand CCL/prepreg base investment is about CNY 1.4bn. |
 
 ## Evidence recovered
 

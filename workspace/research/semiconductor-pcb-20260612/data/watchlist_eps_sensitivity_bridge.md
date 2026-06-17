@@ -2,7 +2,7 @@
 
 **Purpose:** Convert watchlist broker forecast-line evidence into a transparent sensitivity bridge. This improves the EPS-sensitivity layer for watchlist names, while preserving the boundary that this is not a customer/platform bottom-up EPS model.
 
-**Source:** `data/watchlist_eps_model.md`, based on downloaded broker PDFs in `workspace/reports/semiconductor-pcb-watchlist-20260615/`.
+**Source:** `data/watchlist_eps_model.md`, based on downloaded broker PDFs in `workspace/research/semiconductor-pcb-20260612/sources/broker-watchlist-20260615/`.
 
 ## 2026E NPP / EPS Stress
 

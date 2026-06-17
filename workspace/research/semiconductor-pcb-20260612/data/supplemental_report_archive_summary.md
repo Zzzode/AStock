@@ -1,7 +1,7 @@
 # Supplemental Report Archive Summary
 
 **Collection date:** 2026-06-15
-**Directory:** `workspace/reports/semiconductor-pcb-supplemental-20260615/`
+**Directory:** `workspace/research/semiconductor-pcb-20260612/sources/broker-supplemental-20260615/`
 **Purpose:** Additional full-PDF and official-IR evidence collected after the first completion audit. These sources were added because the active goal still required stronger original reports, official company data, EPS/model support and customer-chain evidence.
 
 ## Archived Sources

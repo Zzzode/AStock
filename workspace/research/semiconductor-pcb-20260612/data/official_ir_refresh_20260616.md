@@ -1,6 +1,6 @@
 # Official IR Refresh Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-ir-refresh-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/ir-core-refresh-20260616/`
 
 **Documents:**
 

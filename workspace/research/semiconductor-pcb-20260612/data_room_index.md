@@ -177,36 +177,36 @@ This index maps every collected evidence artifact to its role in the research re
 | `workspace/research/semiconductor-pcb-20260612/data/source_registry.md` | True | Source hierarchy registry |
 | `workspace/research/semiconductor-pcb-20260612/data/claim_audit.md` | True | High-impact claim treatment |
 
-## Report Directories
+## Source Directories
 
 | Directory | PDF count | MD count | Purpose |
 |---|---:|---:|---|
-| `workspace/reports/semiconductor-pcb-core-20260615` | 5 | 6 | Core company broker reports |
-| `workspace/reports/semiconductor-pcb-watchlist-20260615` | 6 | 7 | Watchlist broker reports |
-| `workspace/reports/semiconductor-pcb-official-filings-20260615` | 5 | 6 | Official annual reports |
-| `workspace/reports/semiconductor-pcb-ir-20260615` | 6 | 7 | Investor-relations records |
-| `workspace/reports/semiconductor-pcb-ir-refresh-20260616` | 3 | 4 | Latest June 2026 official IR records |
-| `workspace/reports/semiconductor-pcb-watchlist-ir-refresh-20260616` | 3 | 4 | Watchlist investor-relations records |
-| `workspace/reports/semiconductor-pcb-shennan-refinancing-20260616` | 2 | 4 | Shennan 2026 refinancing / AI compute PCB project documents |
-| `workspace/reports/semiconductor-pcb-huazheng-official-refresh-20260616` | 2 | 3 | Huazheng 2026 high-grade CCL refinancing feasibility document and EPS dilution announcement |
-| `workspace/reports/semiconductor-pcb-extra-20260615` | 2 | 3 | Extra technical/deep reports |
-| `workspace/reports/semiconductor-pcb-supplemental-20260615` | 8 | 8 | Supplemental broker PDFs and official IR records |
-| `workspace/reports/semiconductor-pcb-q1-official-20260615` | 11 | 12 | Official 2026Q1 reports |
-| `workspace/reports/semiconductor-pcb-quarterly-official-20260616` | 22 | 23 | Official 2025H1 and 2025Q3 reports for all core/watchlist names |
-| `workspace/reports/semiconductor-pcb-official-refresh-20260616` | 3 | 4 | Official Shengyi 2025H1/2025Q3 and Shengyi Electronics refinancing inquiry response |
-| `workspace/reports/semiconductor-pcb-pengding-official-20260616` | 4 | 5 | Official Pengding 2025 annual, 2025 interim, 2025 Q3 and 2026 Q1 filings |
-| `workspace/reports/semiconductor-pcb-pengding-ir-20260616` | 4 | 5 | Official Pengding investor-relations records |
-| `workspace/reports/semiconductor-pcb-pengding-monthly-revenue-20260616` | 5 | 6 | Official Pengding 2026 monthly revenue briefs through May |
-| `workspace/reports/semiconductor-pcb-zhen-ding-official-20260616` | 6 | 7 | Official Zhen Ding 2026Q1 and 2025Q3 presentations, 2025 English and Chinese annual reports, 2025H1 and 2025 full-year consolidated financial statements |
-| `workspace/reports/semiconductor-pcb-global-gap-fallback-20260615` | 5 | 6 | Fallback original PDFs for missing global-broker gaps |
-| `workspace/reports/semiconductor-pcb-global-broker-probe-20260616` | 6 | 8 | Additional original-PDF probe for missing UBS/JPM/Goldman gaps; includes new Guohai Pengding full PDF, but no named global-broker original PDF found |
-| `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616` | 11 | 13 | Additional public original-PDF refresh for Shengyi, Pengding, Hudian and Huazheng, including the 2023 Huazheng CBF deep report and Haitong International high-speed CCL / CBF report, plus failed Hibor/Sina probes for missing UBS/JPM/Goldman originals |
-| `workspace/reports/semiconductor-pcb-xingsen-eps-refresh-20260616` | 2 | 4 | Xingsen EPS/NPP forecast refresh using Huaxin and Kaiyuan original PDFs plus Tonghuashun snapshot |
-| `workspace/reports/semiconductor-pcb-customs-bol-probe-20260616` | 0 | 5 | Customs / bill-of-lading public-page probe; archived HTML pages and index, no usable named-platform revenue split recovered |
-| `workspace/reports/semiconductor-pcb-cmbi-citi-hsbc-probe-20260616` | 2 | 5 | Non-Hibor CMBI/Citi/HSBC probe; two CMBI official-hosted historical PDFs plus article-page HTML |
-| `workspace/reports/semiconductor-pcb-customer-side-official-probe-20260616` | 0 | 5 | Apple official supply-chain / Newsroom clean-energy pages and third-party supplier-list mirror probe; Avary clean-energy program signal found, no auditable revenue split recovered |
-| `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616` | 2 | 3 | H-share prospectus / global offering documents |
-| `workspace/reports/semiconductor-pcb-sector-global-20260616` | 1 | 2 | CMBI sector-level global PCB/CCL report |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-core-20260615` | 5 | 6 | Core company broker reports |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-watchlist-20260615` | 6 | 7 | Watchlist broker reports |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-annual-core-20260615` | 5 | 6 | Official annual reports |
+| `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615` | 6 | 7 | Investor-relations records |
+| `workspace/research/semiconductor-pcb-20260612/sources/ir-core-refresh-20260616` | 3 | 4 | Latest June 2026 official IR records |
+| `workspace/research/semiconductor-pcb-20260612/sources/ir-watchlist-refresh-20260616` | 3 | 4 | Watchlist investor-relations records |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-shennan-refinancing-20260616` | 2 | 4 | Shennan 2026 refinancing / AI compute PCB project documents |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-huazheng-refresh-20260616` | 2 | 3 | Huazheng 2026 high-grade CCL refinancing feasibility document and EPS dilution announcement |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-extra-20260615` | 2 | 3 | Extra technical/deep reports |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-supplemental-20260615` | 8 | 8 | Supplemental broker PDFs and official IR records |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615` | 11 | 12 | Official 2026Q1 reports |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-quarterly-20260616` | 22 | 23 | Official 2025H1 and 2025Q3 reports for all core/watchlist names |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-shengyi-refresh-20260616` | 3 | 4 | Official Shengyi 2025H1/2025Q3 and Shengyi Electronics refinancing inquiry response |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-20260616` | 4 | 5 | Official Pengding 2025 annual, 2025 interim, 2025 Q3 and 2026 Q1 filings |
+| `workspace/research/semiconductor-pcb-20260612/sources/ir-pengding-20260616` | 4 | 5 | Official Pengding investor-relations records |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-monthly-20260616` | 5 | 6 | Official Pengding 2026 monthly revenue briefs through May |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-zhen-ding-20260616` | 6 | 7 | Official Zhen Ding 2026Q1 and 2025Q3 presentations, 2025 English and Chinese annual reports, 2025H1 and 2025 full-year consolidated financial statements |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-global-fallback-20260615` | 5 | 6 | Fallback original PDFs for missing global-broker gaps |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616` | 6 | 8 | Additional original-PDF probe for missing UBS/JPM/Goldman gaps; includes new Guohai Pengding full PDF, but no named global-broker original PDF found |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616` | 11 | 13 | Additional public original-PDF refresh for Shengyi, Pengding, Hudian and Huazheng, including the 2023 Huazheng CBF deep report and Haitong International high-speed CCL / CBF report, plus failed Hibor/Sina probes for missing UBS/JPM/Goldman originals |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-xingsen-eps-refresh-20260616` | 2 | 4 | Xingsen EPS/NPP forecast refresh using Huaxin and Kaiyuan original PDFs plus Tonghuashun snapshot |
+| `workspace/research/semiconductor-pcb-20260612/sources/probe-customs-bol-20260616` | 0 | 5 | Customs / bill-of-lading public-page probe; archived HTML pages and index, no usable named-platform revenue split recovered |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-cmbi-citi-hsbc-probe-20260616` | 2 | 5 | Non-Hibor CMBI/Citi/HSBC probe; two CMBI official-hosted historical PDFs plus article-page HTML |
+| `workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616` | 0 | 5 | Apple official supply-chain / Newsroom clean-energy pages and third-party supplier-list mirror probe; Avary clean-energy program signal found, no auditable revenue split recovered |
+| `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616` | 2 | 3 | H-share prospectus / global offering documents |
+| `workspace/research/semiconductor-pcb-20260612/sources/broker-sector-global-20260616` | 1 | 2 | CMBI sector-level global PCB/CCL report |
 
 ## Completion Boundary
 

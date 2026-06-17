@@ -8,7 +8,7 @@
 
 | Source | Local file | Date | Pages | Rating | Boundary |
 |---|---|---|---:|---|---|
-| 浙商证券 | `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/09-zheshang-huazheng-annual-review-20260323.pdf` | 2026-03-23 | 4 | 买入 | Domestic broker annual-review PDF; forecast-line and three-statement appendix, not customer/platform bottom-up model. |
+| 浙商证券 | `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/09-zheshang-huazheng-annual-review-20260323.pdf` | 2026-03-23 | 4 | 买入 | Domestic broker annual-review PDF; forecast-line and three-statement appendix, not customer/platform bottom-up model. |
 
 ## Extracted Forecast Lines
 

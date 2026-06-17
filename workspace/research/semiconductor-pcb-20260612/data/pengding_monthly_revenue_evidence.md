@@ -1,6 +1,6 @@
 # Pengding Monthly Revenue Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-pengding-monthly-revenue-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-monthly-20260616/`
 
 **Source type:** Official monthly revenue briefings disclosed because indirect controlling shareholder Zhen Ding Technology reports monthly revenue in Taiwan.
 

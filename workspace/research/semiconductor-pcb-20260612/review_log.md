@@ -41,7 +41,7 @@ Previously fixed during rebuild:
 3. LaTeX compile alignment errors in Chapter 5 were fixed by replacing a fragile high-density table with company-level entries.
 4. Full style retrofit completed: old decorative cover replaced by decision dashboard; dense chapter tables replaced with evidence pyramid, segment scorecard, value-chain heatmap, platform-chain map, valuation dashboard, catalyst timeline and risk heatmap.
 5. Content-depth retrofit completed: added `analysis/customer_chain_bridge.md`, `analysis/company_one_pagers.md`, `analysis/secondary_market.md`, new Customer-Chain Earnings Bridge chapter, company one-pagers, secondary-market chapter, technical parameter gap and valuation sensitivity framework.
-6. Data-source retrofit completed where available: added `data/official_financials.json`, `data/official_financials_summary.md`, `data/historical_market_data.json`, `data/historical_market_summary.md`, `data/eps_sensitivity.json`, `data/eps_sensitivity.md`, `data/external_source_evidence.json`, `data/external_source_evidence.md`, `data/filings_holders_evidence.json`, `data/filings_holders_evidence.md`, `data/full_report_model_summary.md`, `data/official_filing_segment_summary.md`, `data/customer_concentration_summary.md`, `data/editable_eps_model.json`, `data/editable_eps_model.md`, the broker full-report archive under `workspace/reports/semiconductor-pcb-core-20260615/`, and official filing archive under `workspace/reports/semiconductor-pcb-official-filings-20260615/`.
+6. Data-source retrofit completed where available: added `data/official_financials.json`, `data/official_financials_summary.md`, `data/historical_market_data.json`, `data/historical_market_summary.md`, `data/eps_sensitivity.json`, `data/eps_sensitivity.md`, `data/external_source_evidence.json`, `data/external_source_evidence.md`, `data/filings_holders_evidence.json`, `data/filings_holders_evidence.md`, `data/full_report_model_summary.md`, `data/official_filing_segment_summary.md`, `data/customer_concentration_summary.md`, `data/editable_eps_model.json`, `data/editable_eps_model.md`, the broker full-report archive under `workspace/research/semiconductor-pcb-20260612/sources/broker-core-20260615/`, and official filing archive under `workspace/research/semiconductor-pcb-20260612/sources/official-annual-core-20260615/`.
 
 ## A-Level Issues
 
@@ -82,7 +82,7 @@ Previously fixed during rebuild:
 
 10. Investor-relations activity tables inspected.
    - Status: official annual reports contain IR activity tables for Hudian and Shennan with topics including company revenue structure, 800G switch, Thailand capacity, capital expenditure, AI server and basic company updates.
-   - Upgrade: Eastmoney notice PDF URLs were resolved and downloaded into `workspace/reports/semiconductor-pcb-ir-20260615/`; extracted IR records now provide Q&A evidence for Hudian 800G/CPO/Thailand/revenue structure, Shenghong ASIC/AI PCB/CPO/Thailand, Shennan AI accelerator/high-speed switch/optical module/capex, and Shengyi AI server CCL/GPU/Thailand.
+   - Upgrade: Eastmoney notice PDF URLs were resolved and downloaded into `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/`; extracted IR records now provide Q&A evidence for Hudian 800G/CPO/Thailand/revenue structure, Shenghong ASIC/AI PCB/CPO/Thailand, Shennan AI accelerator/high-speed switch/optical module/capex, and Shengyi AI server CCL/GPU/Thailand.
    - Boundary: IR records still avoid naming specific end customers or disclosing exact platform revenue split.
 
 11. Official technology parameters added.
@@ -94,23 +94,23 @@ Previously fixed during rebuild:
    - Boundary: the model is built from broker forecast tables, not company internal assumptions; platform/customer revenue drivers remain incomplete.
 
 13. IR platform-chain evidence added.
-   - Status: `data/ir_platform_chain_summary.md` and `workspace/reports/semiconductor-pcb-ir-20260615/` archive five IR PDFs and extracted text.
+   - Status: `data/ir_platform_chain_summary.md` and `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/` archive five IR PDFs and extracted text.
    - Boundary: improves qualitative customer-chain evidence but still does not provide named-customer revenue.
 
 13a. Official SSE IR source added for Shengyi.
-   - Status: `workspace/reports/semiconductor-pcb-ir-20260615/600183-sse-202505-ir.pdf` confirms, from an SSE-hosted IR PDF, that Shengyi is working with domestic and overseas terminals on GPU and AI projects and already has products in batch supply.
+   - Status: `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/600183-sse-202505-ir.pdf` confirms, from an SSE-hosted IR PDF, that Shengyi is working with domestic and overseas terminals on GPU and AI projects and already has products in batch supply.
    - Boundary: the official IR record still does not name customers or quantify M8/M9/M10 revenue share.
 
 14. AI server CCL unit-value bridge added.
-   - Status: `workspace/reports/semiconductor-pcb-extra-20260615/600183-xinan-high-speed-ccl.pdf` and extracted text provide a broker model for AI server CCL value: CNY 4,000-5,000 per server, GPU board group about CNY 3,000, CPU motherboard about CNY 1,300, OAM about CNY 1,745, UBB about CNY 1,364, with H100 GPU board group using M6/M7+ high-speed CCL.
+   - Status: `workspace/research/semiconductor-pcb-20260612/sources/broker-extra-20260615/600183-xinan-high-speed-ccl.pdf` and extracted text provide a broker model for AI server CCL value: CNY 4,000-5,000 per server, GPU board group about CNY 3,000, CPU motherboard about CNY 1,300, OAM about CNY 1,745, UBB about CNY 1,364, with H100 GPU board group using M6/M7+ high-speed CCL.
    - Boundary: this is a 2024 broker framework and should not be treated as current confirmed GB300/Rubin pricing.
 
 14a. Additional Shenghong and Huazheng report sources added.
-   - Status: `workspace/reports/semiconductor-pcb-extra-20260615/300476-dazhihui-ai-pcb-depth.pdf` adds Shenghong deep-report evidence on AI PCB, HDI, UBB/switch, capacity and peer comparison. `workspace/reports/semiconductor-pcb-extra-20260615/603186-book118-huazheng-2026.md` adds a limited Huazheng 2026 preview confirming high-end CCL and CBF/BT positioning.
+   - Status: `workspace/research/semiconductor-pcb-20260612/sources/broker-extra-20260615/300476-dazhihui-ai-pcb-depth.pdf` adds Shenghong deep-report evidence on AI PCB, HDI, UBB/switch, capacity and peer comparison. `workspace/research/semiconductor-pcb-20260612/sources/broker-extra-20260615/603186-book118-huazheng-2026.md` adds a limited Huazheng 2026 preview confirming high-end CCL and CBF/BT positioning.
    - Boundary: Huazheng preview is too limited to replace a full current model; named customer revenue remains undisclosed.
 
 14b. Watchlist broker PDFs added.
-   - Status: `workspace/reports/semiconductor-pcb-watchlist-20260615/` contains one downloaded broker PDF and extracted text for each watchlist name: 688519, 002436, 301200, 688630, 300400 and 301377.
+   - Status: `workspace/research/semiconductor-pcb-20260612/sources/broker-watchlist-20260615/` contains one downloaded broker PDF and extracted text for each watchlist name: 688519, 002436, 301200, 688630, 300400 and 301377.
    - Boundary: these improve watchlist evidence depth but do not close named customer/platform revenue gaps.
 
 14d. Watchlist EPS model added.
@@ -118,7 +118,7 @@ Previously fixed during rebuild:
    - Boundary: watchlist model is forecast-line level, not full operating-line for every watchlist name.
 
 14c. Watchlist official filings added.
-   - Status: `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/` contains official annual report PDFs/extracted text for watchlist names, including a supplemental corrected 688519 annual report body after the first match was an inquiry-response verification document.
+   - Status: `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/` contains official annual report PDFs/extracted text for watchlist names, including a supplemental corrected 688519 annual report body after the first match was an inquiry-response verification document.
    - Boundary: official filing coverage improves reported data depth but does not disclose named customer/platform revenue split.
 
 15. Advanced public holder proxies added.
@@ -204,7 +204,7 @@ Data room index: `data_room_index.md`.
 
 | Requirement | Evidence | Status |
 |---|---|---|
-| Original/full broker reports | `workspace/reports/semiconductor-pcb-core-20260615/` contains 5 core PDFs and extracted text; `workspace/reports/semiconductor-pcb-watchlist-20260615/` contains 6 watchlist PDFs and extracted text; extra CCL/Shenghong PDFs archived; `workspace/reports/semiconductor-pcb-supplemental-20260615/` adds 5 more broker PDFs including 41-page Huazheng and 51-page Shengyi deep reports. | Covered for current public-source universe; no longer an "original PDF missing" blocker |
+| Original/full broker reports | `workspace/research/semiconductor-pcb-20260612/sources/broker-core-20260615/` contains 5 core PDFs and extracted text; `workspace/research/semiconductor-pcb-20260612/sources/broker-watchlist-20260615/` contains 6 watchlist PDFs and extracted text; extra CCL/Shenghong PDFs archived; `workspace/research/semiconductor-pcb-20260612/sources/broker-supplemental-20260615/` adds 5 more broker PDFs including 41-page Huazheng and 51-page Shengyi deep reports. | Covered for current public-source universe; no longer an "original PDF missing" blocker |
 | Official company data | `data/official_financials.json`, `data/official_financials_summary.md`, core/watchlist/Pengding official filing archives; latest structured financial snapshot including 002938; 3 new official CNInfo IR PDFs for Hudian, Shenghong and Shennan. | Covered for the 12-name report universe via structured public financial abstracts, manual Pengding official bridge, official filings and latest official IR checkpoints |
 | Customer-chain revenue split | `data/full_report_model_summary.md`, `data/supplemental_report_archive_summary.md`, `data/official_filing_segment_summary.md`, `data/customer_concentration_summary.md`, `data/top_customer_supplier_detail.md`, `data/ir_platform_chain_summary.md`, `data/customer_disclosure_boundary_evidence.md`; report includes Hudian data-center PCB split/application mix, Hudian AI server/HPC revenue, Shennan PCB/substrate split plus AI data-center proxy, official top-5 customer concentration, anonymous customer/supplier row detail, official IR platform-chain comments, AI server CCL unit-value bridge, and issuer disclosure-boundary evidence. | Substantially covered by segment/platform/customer-concentration proxies; complete named NVIDIA/ASIC/domestic/optical customer revenue split unavailable in public filings/reports and issuers cite commercial confidentiality |
 | Real EPS sensitivity | `data/eps_sensitivity.md`, `data/editable_eps_model.json`, `data/editable_eps_model.md`, `data/editable_operating_model.md`, `data/watchlist_eps_model.md`; full-report forecast table, operating-line editable model and watchlist forecast-line model added; Huazheng now has 2025E-2027E forecast-line model from Zheshang. | Substantially covered from broker models; still lacks customer-chain bottom-up assumptions |
@@ -216,8 +216,8 @@ Additional evidence collected after the first audit:
 
 | Additional requirement pressure point | Evidence | Status |
 |---|---|---|
-| IR Q&A / platform comments | `workspace/reports/semiconductor-pcb-ir-20260615/` contains five IR PDFs and extracted text; `data/ir_platform_chain_summary.md` summarizes 800G, CPO, ASIC, UBB, AI server, Thailand and CCL comments. | Covered for public IR records found |
-| AI server CCL unit economics | `workspace/reports/semiconductor-pcb-extra-20260615/600183-xinan-high-speed-ccl.pdf` and `data/full_report_model_summary.md` add OAM/UBB/CPU board CCL value bridge. | Covered as broker framework |
+| IR Q&A / platform comments | `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/` contains five IR PDFs and extracted text; `data/ir_platform_chain_summary.md` summarizes 800G, CPO, ASIC, UBB, AI server, Thailand and CCL comments. | Covered for public IR records found |
+| AI server CCL unit economics | `workspace/research/semiconductor-pcb-20260612/sources/broker-extra-20260615/600183-xinan-high-speed-ccl.pdf` and `data/full_report_model_summary.md` add OAM/UBB/CPU board CCL value bridge. | Covered as broker framework |
 | Official technology parameters | `data/official_technology_parameter_summary.md` now covers the 12-name universe, adding watchlist and Pengding official/filing/IR technical evidence such as Nanya M6-M10/PCIe, Xingsen mSAP/FCBGA, Han's CNC AI-server drilling certification, Circuit Fabology WLP2000/4um capability, Dingtai micro-drill mix and Pengding 70+ layer MLPCB/24-28 layer HDI capability. | Covered where publicly disclosed; exact Dk/Df, platform BOM and named platform revenue remain unavailable |
 | Official holder/supplier proxy | `data/official_holder_supplier_summary.md` adds official top-ten holder proxies and top-five supplier concentration. | Covered as official point-in-time proxy |
 | Operating-line EPS model | `data/editable_eps_model.json` and `data/editable_operating_model.md` include revenue, COGS, expenses, operating profit, tax, NPP, margins, OCF and partial capex for four core names. | Covered from broker models |
@@ -239,23 +239,23 @@ Additional evidence collected after the first audit:
 | Official capex/capacity evidence | `data/official_capex_capacity_evidence.md` adds official utilization, capex, ramp, depreciation and impairment evidence for Hudian, Shennan and Huazheng. | Covered as official company-data upgrade; still not project-level full D&A schedule |
 | H-share capacity utilization evidence | `data/hshare_capacity_utilization_evidence.md` adds Hudian base-level utilization and Shenghong product-category capacity/utilization/expansion data. | Covered as product-capacity support for bottom-up EPS assumptions |
 | Long-horizon valuation history | `data/long_horizon_valuation_history.md` adds three-year and five-year PE/PB/PCF public valuation series for core and watchlist names. | Covered as public valuation band evidence, not paid-terminal standardized history |
-| Official Q1 filing archive | `workspace/reports/semiconductor-pcb-q1-official-20260615/`, `data/official_q1_filing_archive_summary.md`, and `data/official_q1_filing_cross_check.md` archive 11 official 2026Q1 report PDFs/text and map key financial metrics to filing evidence. | Covered as filing-level support for latest financial checkpoint; manual PDF review still recommended for external publication |
+| Official Q1 filing archive | `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/`, `data/official_q1_filing_archive_summary.md`, and `data/official_q1_filing_cross_check.md` archive 11 official 2026Q1 report PDFs/text and map key financial metrics to filing evidence. | Covered as filing-level support for latest financial checkpoint; manual PDF review still recommended for external publication |
 | Working-capital and cash conversion | `data/working_capital_cash_conversion.md` adds OCF/NPP, OCF/revenue, current ratio and quick ratio checks for all 12 names including Pengding. | Covered as EPS-quality evidence, not customer/platform bottom-up model |
 | Working-capital days | `data/working_capital_days_analysis.md` adds DSO, DIO, DPO and CCC approximations from official Q1 balance-sheet lines, now including Pengding. | Covered as public-source working-capital assumption support, not full model schedule |
-| Global-broker gap fallback archive | `data/global_broker_gap_fallback_summary.md` and `workspace/reports/semiconductor-pcb-global-gap-fallback-20260615/` add fallback original PDFs for Pengding, Hudian and Shengyi where UBS/JPM/Goldman originals remain unavailable. | Covered as fallback original-PDF depth; does not replace missing global-broker originals |
-| Original PDF refresh | `data/original_pdf_refresh_20260616.md` and `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/` add nine more public original PDFs: two CMBI Shengyi updates, four Pengding reports from Tianfeng, Kaiyuan, Minsheng and Xingye, two Hudian reports from Xinda and Tianfeng, and one Huazheng annual-review report from Zheshang, including a 30-page Pengding deep report, a 14-page Xingye historical forecast report, Hudian 2025H1 / 2025 preliminary-result update reports and Huazheng 2026E-2028E model update. New Hibor probes for UBS/Pengding and JPM/Shenghong still returned terminal download pages; Sina Goldman/Shengyi is a repost. | Improves public original-PDF corpus for Shengyi, Pengding, Hudian and Huazheng; still does not close UBS/JPM/Goldman original-PDF gap |
+| Global-broker gap fallback archive | `data/global_broker_gap_fallback_summary.md` and `workspace/research/semiconductor-pcb-20260612/sources/broker-global-fallback-20260615/` add fallback original PDFs for Pengding, Hudian and Shengyi where UBS/JPM/Goldman originals remain unavailable. | Covered as fallback original-PDF depth; does not replace missing global-broker originals |
+| Original PDF refresh | `data/original_pdf_refresh_20260616.md` and `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/` add nine more public original PDFs: two CMBI Shengyi updates, four Pengding reports from Tianfeng, Kaiyuan, Minsheng and Xingye, two Hudian reports from Xinda and Tianfeng, and one Huazheng annual-review report from Zheshang, including a 30-page Pengding deep report, a 14-page Xingye historical forecast report, Hudian 2025H1 / 2025 preliminary-result update reports and Huazheng 2026E-2028E model update. New Hibor probes for UBS/Pengding and JPM/Shenghong still returned terminal download pages; Sina Goldman/Shengyi is a repost. | Improves public original-PDF corpus for Shengyi, Pengding, Hudian and Huazheng; still does not close UBS/JPM/Goldman original-PDF gap |
 | Hudian forecast range refresh | `data/forecast_range_analysis.md` and `sections/ch08_valuation.tex` incorporate the newly archived Xinda and Tianfeng Hudian PDFs. Hudian 2026E NPP range widens to 51.98--58.00亿元 and 2027E to 67.78--90.67亿元. | Improves EPS forecast-risk disclosure; still not a customer/platform bottom-up EPS bridge |
 | Huazheng forecast range refresh | `data/huazheng_forecast_refresh_20260616.md`, `data/forecast_range_analysis.md` and `sections/ch08_valuation.tex` incorporate the newly archived Zheshang annual-review PDF. Huazheng now has 2028E revenue/NPP/EPS coverage and a three-statement appendix. | Improves forecast-line coverage; still not a customer/platform bottom-up EPS bridge |
 | Huazheng dilution scenario refresh | `data/official_huazheng_refinancing_evidence.md` and `sections/ch08_valuation.tex` incorporate the official dilution announcement. Under 2026 NPP flat/+10%/-10% assumptions, post-issue basic EPS is 1.73/1.91/1.56 yuan. | Improves official EPS dilution sensitivity; still not project operating economics or customer/platform bottom-up EPS |
-| CMBI / Citi / HSBC non-Hibor probe | `data/cmbi_citi_hsbc_probe_20260616.md` and `workspace/reports/semiconductor-pcb-cmbi-citi-hsbc-probe-20260616/` add two official CMBI-hosted historical Shengyi PDFs from 2023 and 2021. Current Citi/HSBC/CMBI query paths did not expose usable 2026 original PDFs. | Improves official-hosted historical broker evidence; still does not close current global-broker original-PDF or named customer/platform gap |
+| CMBI / Citi / HSBC non-Hibor probe | `data/cmbi_citi_hsbc_probe_20260616.md` and `workspace/research/semiconductor-pcb-20260612/sources/broker-cmbi-citi-hsbc-probe-20260616/` add two official CMBI-hosted historical Shengyi PDFs from 2023 and 2021. Current Citi/HSBC/CMBI query paths did not expose usable 2026 original PDFs. | Improves official-hosted historical broker evidence; still does not close current global-broker original-PDF or named customer/platform gap |
 | Latest market refresh audit | `data/latest_market_refresh_audit.md` and `data/tencent_realtime_market_snapshot_20260616.md` record 2026-06-15 close proxy availability, Eastmoney realtime failure and Tencent quote success for 12/12 market cap/PE/PB | Covered as market freshness audit; valuation anchors upgraded to Tencent public quote proxy |
 | Northbound / Stock Connect history | `data/northbound_individual_history_evidence.md` adds public Stock Connect single-stock historical total holding baseline for 9/11 names. | Covered as historical total-holding baseline, not current beneficial-owner positioning |
 | HKCC current-quarter proxy | `data/hkcc_current_quarter_proxy.md` extracts Hong Kong Securities Clearing Company holdings from official 2026Q1 top-shareholder tables. | Covered as quarterly nominee-holder proxy, not beneficial-owner positioning |
 | Watchlist positioning coverage audit | `data/watchlist_positioning_coverage_audit.md` reconciles the coverage matrix with archived public proxies: watchlist fund holders and circulating holders cover 6/6, Eastmoney 30-row fund-flow covers 6/6, margin/block trades cover 5/6, Dragon-Tiger List and lock-up expiry cover 6/6. | Matrix fund_flow corrected to True for six original watchlist tickers; important_institution remains False because no visible public important-institution row was returned for those names |
 | Watchlist important-institution gap audit | `data/watchlist_important_institution_gap_audit.md` inspects archived Eastmoney important-institution JSON and confirms `stock_holdings` has no original watchlist single-stock rows; a Nanya-related social-security basket row is not attributable to Nanya alone. | Keep important_institution=False for 688519, 002436, 301200, 688630, 300400 and 301377; do not backfill this field with fund-holder, circulating-holder or fund-flow proxies |
 | Customer-side public source probe | `data/customer_side_public_source_probe_20260616.md` tests NVIDIA / Google TPU / Microsoft Azure / AWS Trainium public supplier-list paths. Results were generic supplier-quality pages, SEO lists, blogs and reposts, not official named PCB/CCL supplier revenue disclosures. | Reinforces named platform/customer revenue split as non-public; do not use customer-side blogs or marketing lists as confirmed evidence |
-| Apple official supply-chain probe | `data/apple_customer_side_official_probe_20260616.md` and `workspace/reports/semiconductor-pcb-customer-side-official-probe-20260616/` archive Apple official supply-chain page, legacy supplier-list path tests and Newsroom clean-energy articles. Apple Newsroom confirms Avary Holding joined Apple Supplier Clean Energy Program in 2020, while the current supply-chain page and legacy supplier-list paths did not expose Pengding / Zhen Ding / Avary product, revenue or order details; third-party supplier-list mirror returned a security-check HTML page rather than an auditable PDF. | Adds an Apple-side official relationship/program signal for Avary, but still does not close named platform/customer revenue split |
-| Customs / BOL public probe | `data/customs_bol_probe_20260616.md` and `workspace/reports/semiconductor-pcb-customs-bol-probe-20260616/` archive ImportGenius, ImportYeti and Panjiva public-page probes for WUS, Victory Giant and Nvidia. | Public pages show generic shipment profiles, non-AI counterparties, paywalls or bot blocks; no attributable NVIDIA/Google/AWS/Microsoft PCB/CCL revenue split recovered |
+| Apple official supply-chain probe | `data/apple_customer_side_official_probe_20260616.md` and `workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616/` archive Apple official supply-chain page, legacy supplier-list path tests and Newsroom clean-energy articles. Apple Newsroom confirms Avary Holding joined Apple Supplier Clean Energy Program in 2020, while the current supply-chain page and legacy supplier-list paths did not expose Pengding / Zhen Ding / Avary product, revenue or order details; third-party supplier-list mirror returned a security-check HTML page rather than an auditable PDF. | Adds an Apple-side official relationship/program signal for Avary, but still does not close named platform/customer revenue split |
+| Customs / BOL public probe | `data/customs_bol_probe_20260616.md` and `workspace/research/semiconductor-pcb-20260612/sources/probe-customs-bol-20260616/` archive ImportGenius, ImportYeti and Panjiva public-page probes for WUS, Victory Giant and Nvidia. | Public pages show generic shipment profiles, non-AI counterparties, paywalls or bot blocks; no attributable NVIDIA/Google/AWS/Microsoft PCB/CCL revenue split recovered |
 | 300400 name audit | Corrected stale references that mapped `300400` to 东威科技. The covered ticker is 劲拓股份; broad industry-chain mentions of 东威科技 are now marked as non-covered ticker context where retained. | Fixes watchlist universe consistency and prevents ticker/name mismatch in market, guidance and catalog files |
 | Pengding coverage-matrix audit | `ticker_evidence_coverage_matrix.md` now includes `002938` as `theme-reserve`, reflecting the expanded universe after Pengding was added to the report. | 002938 has broker PDF, official filing, structured financial, segment/customer, historical price, valuation, fund-holder, circulating-holder, important-institution, fund-flow and EPS-model coverage; remaining boundary is named platform/customer revenue split |
 | Missing data request pack refresh | `missing_data_request_pack.md` was updated to reflect the latest public-source coverage: Tencent valuation refresh, watchlist EPS stress tests, customer-side public-source probe, customs/BOL probe, and public holder/flow proxies. | Remaining request list now focuses on non-public / paid-terminal items rather than already completed public-source work |
@@ -266,7 +266,7 @@ Final conclusion: the public-source data upgrade is complete to the practical li
 
 ## 2026-06-15 Supplemental Public-Source Pass
 
-Additional original PDFs and official records were downloaded into `workspace/reports/semiconductor-pcb-supplemental-20260615/`:
+Additional original PDFs and official records were downloaded into `workspace/research/semiconductor-pcb-20260612/sources/broker-supplemental-20260615/`:
 
 - 5 broker PDFs: Huazheng Zheshang 41-page deep report, Shennan CMBI English update, Hudian Zhongtai update, Shenghong Guosheng GPU+ASIC update, Shengyi Guohai 51-page CCL deep report.
 - 3 official CNInfo IR PDFs: Hudian 2026-05-13, Shenghong 2026-05-08 and Shennan 2026-05-07.
@@ -396,7 +396,7 @@ Report update: `sections/ch05_customer_bridge.tex` now includes Exhibit 12c. Thi
 
 ## 2026-06-15 Official Q1 Filing Archive Pass
 
-CNInfo disclosure search was used to locate and download official 2026Q1 reports for all 11 current report-universe names. The PDFs and extracted text are archived in `workspace/reports/semiconductor-pcb-q1-official-20260615/`.
+CNInfo disclosure search was used to locate and download official 2026Q1 reports for all 11 current report-universe names. The PDFs and extracted text are archived in `workspace/research/semiconductor-pcb-20260612/sources/official-q1-20260615/`.
 
 Evidence added:
 
@@ -455,7 +455,7 @@ Report update: `sections/ch09_secondary_market.tex` now includes Exhibit 27c. Th
 
 ## 2026-06-16 Global-Broker Gap Fallback Pass
 
-Web search for missing UBS/JPM/Goldman original PDFs did not locate the target global-broker originals. Valid fallback original PDFs were downloaded into `workspace/reports/semiconductor-pcb-global-gap-fallback-20260615/`:
+Web search for missing UBS/JPM/Goldman original PDFs did not locate the target global-broker originals. Valid fallback original PDFs were downloaded into `workspace/research/semiconductor-pcb-20260612/sources/broker-global-fallback-20260615/`:
 
 - Pengding Zheshang update report.
 - Hudian Dongguan deep report.
@@ -481,7 +481,7 @@ Report update: `sections/ch08_valuation.tex` now states that latest public close
 
 ## 2026-06-16 H-Share Prospectus Customer Evidence Pass
 
-HKEX application/global-offering documents were downloaded for Hudian and Shenghong into `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616/`.
+HKEX application/global-offering documents were downloaded for Hudian and Shenghong into `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616/`.
 
 Evidence added:
 
@@ -573,7 +573,7 @@ Report update: `sections/ch06_companies.tex` now includes Exhibit 14c-2. This st
 
 ## 2026-06-16 CMBI Sector Global Report Pass
 
-A CMBI sector-level PCB/CCL PDF was downloaded from the broker site and text-extracted into `workspace/reports/semiconductor-pcb-sector-global-20260616/`.
+A CMBI sector-level PCB/CCL PDF was downloaded from the broker site and text-extracted into `workspace/research/semiconductor-pcb-20260612/sources/broker-sector-global-20260616/`.
 
 Evidence added:
 
@@ -611,7 +611,7 @@ Report update: Exhibit 27b-2 now shows both current-quarter holding and QoQ chan
 
 ## 2026-06-16 Shengyi Official Refresh Pass
 
-Three official documents were downloaded and text-extracted into `workspace/reports/semiconductor-pcb-official-refresh-20260616/`: Shengyi Technology 2025H1 report, Shengyi Technology 2025Q3 report and Shengyi Electronics 2025 refinancing inquiry response.
+Three official documents were downloaded and text-extracted into `workspace/research/semiconductor-pcb-20260612/sources/official-shengyi-refresh-20260616/`: Shengyi Technology 2025H1 report, Shengyi Technology 2025Q3 report and Shengyi Electronics 2025 refinancing inquiry response.
 
 Evidence added:
 
@@ -664,7 +664,7 @@ Report update: `sections/ch08_valuation.tex` now includes Exhibit 23d. This impr
 
 ## 2026-06-16 Official Quarterly Bridge Pass
 
-CNInfo static attachments and issuer/stock-exchange mirrors were used to download official 2025H1 and 2025Q3 filings for the five core companies. The archive is stored in `workspace/reports/semiconductor-pcb-quarterly-official-20260616/`, and extracted bridge data is stored in `data/official_quarterly_bridge_evidence.md`.
+CNInfo static attachments and issuer/stock-exchange mirrors were used to download official 2025H1 and 2025Q3 filings for the five core companies. The archive is stored in `workspace/research/semiconductor-pcb-20260612/sources/official-quarterly-20260616/`, and extracted bridge data is stored in `data/official_quarterly_bridge_evidence.md`.
 
 Evidence added:
 
@@ -690,7 +690,7 @@ Report update: `sections/ch06_companies.tex` now includes Exhibit 14a-3. This im
 
 ## 2026-06-16 Goldman China PCB/CCL Repost Check
 
-Targeted search found a visible Xueqiu repost titled "高盛：中国PCB行业进入加速模式（原文完整）". The visible text was archived as `data/goldman_china_pcb_xueqiu_summary.md` and mirrored under `workspace/reports/semiconductor-pcb-global-gap-fallback-20260615/`.
+Targeted search found a visible Xueqiu repost titled "高盛：中国PCB行业进入加速模式（原文完整）". The visible text was archived as `data/goldman_china_pcb_xueqiu_summary.md` and mirrored under `workspace/research/semiconductor-pcb-20260612/sources/broker-global-fallback-20260615/`.
 
 Evidence added:
 
@@ -725,7 +725,7 @@ Report update: `sections/ch09_secondary_market.tex` now includes Exhibit 25b-3. 
 
 ## 2026-06-16 Official IR Refresh Pass
 
-Latest official June 2026 IR records were downloaded for Hudian, Shenghong and Shennan into `workspace/reports/semiconductor-pcb-ir-refresh-20260616/`, with extracted text and an index. The evidence summary is stored in `data/official_ir_refresh_20260616.md`.
+Latest official June 2026 IR records were downloaded for Hudian, Shenghong and Shennan into `workspace/research/semiconductor-pcb-20260612/sources/ir-core-refresh-20260616/`, with extracted text and an index. The evidence summary is stored in `data/official_ir_refresh_20260616.md`.
 
 Evidence added:
 
@@ -737,7 +737,7 @@ Report update: `sections/ch05_customer_bridge.tex` and `sections/ch06_companies.
 
 ## 2026-06-16 Shennan Refinancing / AI Compute PCB Capex Bridge Pass
 
-Official Shennan 2026 refinancing documents were downloaded or archived under `workspace/reports/semiconductor-pcb-shennan-refinancing-20260616/`. The extracted evidence is stored in `data/official_shennan_refinancing_evidence.md`.
+Official Shennan 2026 refinancing documents were downloaded or archived under `workspace/research/semiconductor-pcb-20260612/sources/official-shennan-refinancing-20260616/`. The extracted evidence is stored in `data/official_shennan_refinancing_evidence.md`.
 
 Evidence added:
 
@@ -761,11 +761,11 @@ Evidence added:
 - It states Shennan has mastered high-speed signal-integrity design, high-precision multilayer lamination and laser micro-blind/buried-via processes, and has achieved batch delivery.
 - It states Shennan has deep strategic cooperation with leading AI server manufacturers, switch manufacturers, cloud-service providers and chip companies.
 
-Report source update: `data/official_shennan_refinancing_evidence.md` and `workspace/reports/semiconductor-pcb-shennan-refinancing-20260616/index.md` now reflect the clean official PDF. Main report text already captured the key project capex bridge, so no new exhibit was required in this pass.
+Report source update: `data/official_shennan_refinancing_evidence.md` and `workspace/research/semiconductor-pcb-20260612/sources/official-shennan-refinancing-20260616/index.md` now reflect the clean official PDF. Main report text already captured the key project capex bridge, so no new exhibit was required in this pass.
 
 ## 2026-06-16 Watchlist IR Refresh Pass
 
-Issuer/official-mirror IR records were downloaded for Nanya New Material, Circuit Fabology and Han's CNC into `workspace/reports/semiconductor-pcb-watchlist-ir-refresh-20260616/`. The evidence summary is stored in `data/watchlist_ir_refresh_evidence.md`.
+Issuer/official-mirror IR records were downloaded for Nanya New Material, Circuit Fabology and Han's CNC into `workspace/research/semiconductor-pcb-20260612/sources/ir-watchlist-refresh-20260616/`. The evidence summary is stored in `data/watchlist_ir_refresh_evidence.md`.
 
 Evidence added:
 
@@ -836,7 +836,7 @@ Report update: `sections/ch09_secondary_market.tex` now upgrades Exhibit 27b-3 f
 
 ## 2026-06-16 Global Broker Original PDF Probe Pass
 
-A targeted public-search probe was run for the missing UBS / JPMorgan / Goldman original-report gaps using exact-title and filetype queries. No original UBS, JPMorgan or Goldman PDF was found. Five valid public PDFs were downloaded into `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/`, text-extracted and indexed.
+A targeted public-search probe was run for the missing UBS / JPMorgan / Goldman original-report gaps using exact-title and filetype queries. No original UBS, JPMorgan or Goldman PDF was found. Five valid public PDFs were downloaded into `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/`, text-extracted and indexed.
 
 Evidence added:
 
@@ -850,7 +850,7 @@ Report update: `sections/ch12_appendix.tex` now expands Appendix Exhibit C to in
 
 ## 2026-06-16 Pengding HKEX Business Evidence Pass
 
-The Pengding HKEX draft filing business-overview excerpt archived in `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/05-002938-hkex-prospectus-business-overview.pdf` was reviewed for official-style customer-chain, technology and capacity evidence. The evidence summary is stored in `data/pengding_hkex_business_evidence.md`.
+The Pengding HKEX draft filing business-overview excerpt archived in `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/05-002938-hkex-prospectus-business-overview.pdf` was reviewed for official-style customer-chain, technology and capacity evidence. The evidence summary is stored in `data/pengding_hkex_business_evidence.md`.
 
 Evidence added:
 
@@ -863,7 +863,7 @@ Report update: `sections/ch05_customer_bridge.tex` now includes Exhibit 12g, and
 
 ## 2026-06-16 Pengding Official Filing Pass
 
-Official Pengding A-share filings were collected into `workspace/reports/semiconductor-pcb-pengding-official-20260616/`: 2025 annual report, 2025 interim report, 2025 Q3 report and 2026 Q1 report. Text extraction succeeded for all four PDFs. The evidence summary is stored in `data/pengding_official_filing_evidence.md`.
+Official Pengding A-share filings were collected into `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-20260616/`: 2025 annual report, 2025 interim report, 2025 Q3 report and 2026 Q1 report. Text extraction succeeded for all four PDFs. The evidence summary is stored in `data/pengding_official_filing_evidence.md`.
 
 Evidence added:
 
@@ -936,7 +936,7 @@ Report update: `sections/ch08_valuation.tex` now adds Pengding to Exhibit 20 bro
 
 ## 2026-06-16 Pengding IR Evidence Pass
 
-Four official Pengding investor-relations PDFs were downloaded into `workspace/reports/semiconductor-pcb-pengding-ir-20260616/` and text-extracted. The evidence summary is stored in `data/pengding_ir_evidence.md`.
+Four official Pengding investor-relations PDFs were downloaded into `workspace/research/semiconductor-pcb-20260612/sources/ir-pengding-20260616/` and text-extracted. The evidence summary is stored in `data/pengding_ir_evidence.md`.
 
 Evidence added:
 
@@ -949,7 +949,7 @@ Report update: `sections/ch05_customer_bridge.tex` now adds Pengding IR validati
 
 ## 2026-06-16 Pengding Monthly Revenue Tracker Pass
 
-Official Pengding monthly revenue briefings were downloaded into `workspace/reports/semiconductor-pcb-pengding-monthly-revenue-20260616/` and text-extracted. The evidence summary is stored in `data/pengding_monthly_revenue_evidence.md`.
+Official Pengding monthly revenue briefings were downloaded into `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-monthly-20260616/` and text-extracted. The evidence summary is stored in `data/pengding_monthly_revenue_evidence.md`.
 
 Evidence added:
 
@@ -1012,7 +1012,7 @@ Report update: `sections/ch05_customer_bridge.tex` now adds P5W/SZSE interaction
 
 ## 2026-06-16 Zhen Ding Parent Official Evidence Pass
 
-Zhen Ding Technology Holding's official 2026Q1 investor presentation was downloaded from `zdtco.com` into `workspace/reports/semiconductor-pcb-zhen-ding-official-20260616/` and text-extracted. Evidence is summarized in `data/zhen_ding_parent_official_evidence.md`.
+Zhen Ding Technology Holding's official 2026Q1 investor presentation was downloaded from `zdtco.com` into `workspace/research/semiconductor-pcb-20260612/sources/official-zhen-ding-20260616/` and text-extracted. Evidence is summarized in `data/zhen_ding_parent_official_evidence.md`.
 
 Evidence added:
 
@@ -1052,7 +1052,7 @@ Report update: `sections/ch09_secondary_market.tex` now adds Pengding to Exhibit
 
 ## 2026-06-16 Zhen Ding 2025Q3 Outlook Evidence Pass
 
-Zhen Ding's official 2025Q3 investor presentation was downloaded into `workspace/reports/semiconductor-pcb-zhen-ding-official-20260616/` and text-extracted. The existing `data/zhen_ding_parent_official_evidence.md` was updated with the new outlook evidence.
+Zhen Ding's official 2025Q3 investor presentation was downloaded into `workspace/research/semiconductor-pcb-20260612/sources/official-zhen-ding-20260616/` and text-extracted. The existing `data/zhen_ding_parent_official_evidence.md` was updated with the new outlook evidence.
 
 Evidence added:
 
@@ -1112,7 +1112,7 @@ Evidence added:
 - The official SSE company page confirms Shengyi Technology `600183` and interaction `uid=183`.
 - The recent type-10 question feed contains an investor question about M8/M9 stocking/ramp and drilling-process bottlenecks, but the captured item is question-only.
 - The type-11 reply feed for pages 1-3 returned "近1个月暂无回复"; no issuer reply was recovered for M8/M9/M10 revenue share, named customer certification, ASP, shipment, margin or platform EPS.
-- The strongest usable public source remains the SSE-hosted IR PDF already archived as `workspace/reports/semiconductor-pcb-ir-20260615/600183-sse-202505-ir.pdf`, which confirms lower-loss CCL demand, GPU/AI project cooperation with domestic and overseas terminals, batch supply, diversified customer structure and Thailand CCL/prepreg investment.
+- The strongest usable public source remains the SSE-hosted IR PDF already archived as `workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/600183-sse-202505-ir.pdf`, which confirms lower-loss CCL demand, GPU/AI project cooperation with domestic and overseas terminals, batch supply, diversified customer structure and Thailand CCL/prepreg investment.
 
 Report update: `data/source_registry.md`, `data_room_index.md`, `source_exhaustion_log.md`, `data/shengyi_sse_interaction_probe.md` and `sections/ch05_customer_bridge.tex` now record this probe. It improves source-exhaustion evidence and prevents treating an unanswered interaction question as proof, but it does not close M8/M9/M10 revenue share, named certification, ASP, shipment, margin or customer/platform EPS gaps.
 
@@ -1122,10 +1122,10 @@ Targeted public probes were re-run for the remaining missing original global-bro
 
 Evidence added:
 
-- JPMorgan / Shenghong Hibor probe archived as `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/jpm-shenghong-probe/hibor-5123096.html`. Decoding shows title `慧博智能策略终端_下载`; no report body, PDF link, JPMorgan, Shenghong or report-summary text was recovered.
-- Goldman / Hudian Hibor probe archived as `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/goldman-hudian-probe/hibor-db73893e91c90fd2ba6982293ef4feb2.html`. It also returned the Hibor intelligent terminal download page, not a usable report.
-- Goldman / Shengyi visible Sina repost archived as `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/goldman-shengyi-probe/sina-goldman-shengyi-20260522.html`; it is visible repost text, not an original Goldman PDF.
-- Guohai / Pengding 50-page original PDF was downloaded and text-extracted as `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/pengding-extra-probe/guohai-pengding-ai-edge.pdf` and `.txt`. It adds a full original fallback PDF for Pengding, covering end-side AI, automotive/server expansion, Thailand server/automotive capacity, 2024E-2026E revenue/NPP/EPS forecasts and buy rating.
+- JPMorgan / Shenghong Hibor probe archived as `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/jpm-shenghong-probe/hibor-5123096.html`. Decoding shows title `慧博智能策略终端_下载`; no report body, PDF link, JPMorgan, Shenghong or report-summary text was recovered.
+- Goldman / Hudian Hibor probe archived as `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/goldman-hudian-probe/hibor-db73893e91c90fd2ba6982293ef4feb2.html`. It also returned the Hibor intelligent terminal download page, not a usable report.
+- Goldman / Shengyi visible Sina repost archived as `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/goldman-shengyi-probe/sina-goldman-shengyi-20260522.html`; it is visible repost text, not an original Goldman PDF.
+- Guohai / Pengding 50-page original PDF was downloaded and text-extracted as `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/pengding-extra-probe/guohai-pengding-ai-edge.pdf` and `.txt`. It adds a full original fallback PDF for Pengding, covering end-side AI, automotive/server expansion, Thailand server/automotive capacity, 2024E-2026E revenue/NPP/EPS forecasts and buy rating.
 
 Report/data update: `data/global_broker_original_pdf_probe_20260616.md`, `data/source_registry.md`, `data_room_index.md`, `completion_audit_manifest.md` and `source_exhaustion_log.md` now record this pass. This improves fallback original-PDF depth for Pengding, but it still does not close the missing UBS/JPM/Goldman original-PDF requirement and does not disclose named platform revenue or customer/platform EPS assumptions.
 
@@ -1222,7 +1222,7 @@ Report update: `sections/ch08_valuation.tex` now includes Exhibit 23f. This impr
 
 ## 2026-06-16 Huazheng Historical CBF Deep Report Refresh
 
-A public DZH static PDF for Zheshang's 2023-12-20 Huazheng deep report, `CBF膜国产化主力军`, was downloaded and text-extracted as `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/10-zheshang-huazheng-cbf-deep-20231220.pdf` and `.md`.
+A public DZH static PDF for Zheshang's 2023-12-20 Huazheng deep report, `CBF膜国产化主力军`, was downloaded and text-extracted as `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/10-zheshang-huazheng-cbf-deep-20231220.pdf` and `.md`.
 
 Evidence added:
 
@@ -1236,7 +1236,7 @@ Report/data update: `data/huazheng_cbf_deep_refresh_20260616.md`, `data/original
 
 ## 2026-06-16 Huazheng Haitong International Report Refresh
 
-An Eastmoney static PDF for Haitong International's 2023-08-16 Huazheng report, `算力侧材料国产替代进行时`, was downloaded and text-extracted as `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/11-haitong-intl-huazheng-ccl-cbf-20230816.pdf` and `.md`.
+An Eastmoney static PDF for Haitong International's 2023-08-16 Huazheng report, `算力侧材料国产替代进行时`, was downloaded and text-extracted as `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/11-haitong-intl-huazheng-ccl-cbf-20230816.pdf` and `.md`.
 
 Evidence added:
 

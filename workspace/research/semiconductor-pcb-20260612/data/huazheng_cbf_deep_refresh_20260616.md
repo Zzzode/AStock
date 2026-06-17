@@ -2,7 +2,7 @@
 
 ## Source
 
-- Source directory: `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/`
+- Source directory: `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/`
 - PDF: `10-zheshang-huazheng-cbf-deep-20231220.pdf`
 - Extracted text: `10-zheshang-huazheng-cbf-deep-20231220.md`
 - Broker: 浙商证券

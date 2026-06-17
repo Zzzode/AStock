@@ -1,6 +1,6 @@
 # Official Shengyi / Shengyi Electronics Refresh Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-official-refresh-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/official-shengyi-refresh-20260616/`
 
 **Documents:**
 

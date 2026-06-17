@@ -35,8 +35,9 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 
 ## Review Procedure
 
-1. Inspect `main.tex`, section files, `data/report_catalog.md`, `review_log.md`, and generated `main.pdf` metadata if present.
-   Also inspect `analysis/template_brief.md`, `analysis/house_view.md`, `analysis/exhibit_plan.md`, `data/source_registry.md`, and `data/claim_audit.md` if present.
+1. Inspect `main.tex`, section files, `data/report_catalog.md`, `review_log.md`, `sources/`, and generated `main.pdf` metadata if present.
+   Also inspect `analysis/template_brief.md`, `analysis/house_view.md`, `analysis/exhibit_plan.md`, `data/source_registry.md`, `data/claim_audit.md`, and `data_room_index.md` if present.
+   Raw PDFs, filings, IR records, web captures and failed-source probes should live under the case-scoped `sources/` tree, not under the deprecated global `workspace/reports/` directory.
 2. Split chapters by lens:
    - Lens 1: summary, industry logic, technology, supply chain.
    - Lens 2: valuation, broker targets, market data, secondary-market sections.

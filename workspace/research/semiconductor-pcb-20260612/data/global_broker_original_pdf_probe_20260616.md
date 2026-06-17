@@ -1,6 +1,6 @@
 # Global Broker Original PDF Probe Evidence
 
-**Directory:** `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/`
+**Directory:** `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/`
 
 **Purpose:** Re-tested whether public web search can close the missing UBS / JPMorgan / Goldman original-report gap. Exact-title and filetype queries were run for the previously identified Goldman-Hudian, JPMorgan-Shenghong, Goldman-Shengyi and UBS-Pengding report references.
 
@@ -21,9 +21,9 @@ No original UBS, JPMorgan or Goldman PDF was found in this pass. Six valid publi
 
 | Target missing source | Public URL probed | Local archive | Result |
 |---|---|---|---|
-| JPMorgan / Shenghong 2476.HK 2026-06-08 | `http://m.hibor.com.cn/wap_detail.aspx?id=5123096` | `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/jpm-shenghong-probe/hibor-5123096.html` | Returned Hibor intelligent terminal download page (`慧博智能策略终端_下载`), with no report body or PDF link. |
-| Goldman / Hudian 002463 2026-05-10 | `http://m.hibor.com.cn/wap_detail.aspx?id=db73893e91c90fd2ba6982293ef4feb2` | `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/goldman-hudian-probe/hibor-db73893e91c90fd2ba6982293ef4feb2.html` | Returned Hibor intelligent terminal download page, with no report body or PDF link. |
-| Goldman / Shengyi 600183 2026-05-22 | Sina visible repost URL | `workspace/reports/semiconductor-pcb-global-broker-probe-20260616/goldman-shengyi-probe/sina-goldman-shengyi-20260522.html` | Visible repost text only; not original Goldman PDF and no downloadable original report found. |
+| JPMorgan / Shenghong 2476.HK 2026-06-08 | `http://m.hibor.com.cn/wap_detail.aspx?id=5123096` | `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/jpm-shenghong-probe/hibor-5123096.html` | Returned Hibor intelligent terminal download page (`慧博智能策略终端_下载`), with no report body or PDF link. |
+| Goldman / Hudian 002463 2026-05-10 | `http://m.hibor.com.cn/wap_detail.aspx?id=db73893e91c90fd2ba6982293ef4feb2` | `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/goldman-hudian-probe/hibor-db73893e91c90fd2ba6982293ef4feb2.html` | Returned Hibor intelligent terminal download page, with no report body or PDF link. |
+| Goldman / Shengyi 600183 2026-05-22 | Sina visible repost URL | `workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/goldman-shengyi-probe/sina-goldman-shengyi-20260522.html` | Visible repost text only; not original Goldman PDF and no downloadable original report found. |
 
 ## Treatment
 

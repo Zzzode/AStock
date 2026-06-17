@@ -1,6 +1,6 @@
 # Watchlist IR Refresh Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-watchlist-ir-refresh-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/ir-watchlist-refresh-20260616/`
 
 **Documents:**
 

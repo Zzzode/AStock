@@ -1,6 +1,6 @@
 # Customs / Bill-of-Lading Probe Evidence
 
-**Source directory:** `workspace/reports/semiconductor-pcb-customs-bol-probe-20260616/`
+**Source directory:** `workspace/research/semiconductor-pcb-20260612/sources/probe-customs-bol-20260616/`
 
 **Purpose:** Check whether public customs or bill-of-lading pages can provide customer-level evidence for AI PCB / CCL relationships that issuer filings and public broker reports do not disclose.
 

@@ -2,7 +2,7 @@
 
 ## Source
 
-- Source directory: `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/`
+- Source directory: `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/`
 - PDF: `11-haitong-intl-huazheng-ccl-cbf-20230816.pdf`
 - Extracted text: `11-haitong-intl-huazheng-ccl-cbf-20230816.md`
 - Broker: 海通国际

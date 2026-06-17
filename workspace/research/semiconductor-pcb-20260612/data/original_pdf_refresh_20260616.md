@@ -1,6 +1,6 @@
 # Original PDF Refresh Evidence
 
-**Source directory:** `workspace/reports/semiconductor-pcb-original-pdf-refresh-20260616/`
+**Source directory:** `workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/`
 
 **Purpose:** Add newly found public original PDFs to the report corpus and record that renewed UBS / JPMorgan / Goldman probes still did not recover original PDFs.
 

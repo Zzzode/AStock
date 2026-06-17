@@ -38,7 +38,15 @@ optional:
   - min_reports: int  # minimum number to collect, default: 10
   - broker_filter: list[string]  # e.g., ["中信证券", "华泰证券"]
   - report_type: list[string]  # e.g., ["industry", "initiation", "earnings"]
+  - output_dir: string  # case-scoped source directory, e.g., "workspace/research/<topic>-<YYYYMMDD>/sources/broker-reports/<YYYY-MM-DD>/"
 ```
+
+## Directory Rules
+
+- Raw downloaded reports, visible abstracts, source HTML, failed-download pages and extracted report text belong under the current research case's `sources/` tree.
+- Use `workspace/research/<topic-slug>-<YYYYMMDD>/sources/broker-reports/<YYYY-MM-DD>/` unless the orchestrator provides a more specific case-scoped `output_dir`.
+- Do not create or write new files under the deprecated global `workspace/reports/` directory.
+- The normalized catalog that later agents consume belongs in the case's `data/report_catalog.md`; raw PDFs and web captures stay in `sources/`.
 
 ## Output Contract
 
@@ -64,6 +72,8 @@ report_catalog:
       risk_flags: ["地缘制裁升级", "库存去化不及预期"]
       source_url: "https://..."
       pdf_url: "https://..."  # direct PDF download link if visible on page, null otherwise
+      local_pdf: "sources/broker-reports/2026-06-17/01-xxx.pdf"  # if downloaded
+      local_text: "sources/broker-reports/2026-06-17/01-xxx.md"  # if extracted
       confidence: "high"  # high/medium/low based on source reliability
 
   consensus_snapshot:
@@ -96,4 +106,6 @@ report_catalog:
 - If a source is paywalled, note "paywalled" and extract only the freely visible abstract
 - If WebSearch returns no results for a query, try alternative keywords before reporting "not found"
 - Always include `source_url` — traceability is non-negotiable
+- Always include `local_pdf` / `local_text` when files are downloaded or extracted
+- Never write source files outside the active research case directory
 - Do NOT rate or rank the reports — that's the Report Analyzer's job

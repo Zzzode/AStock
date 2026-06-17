@@ -1,6 +1,6 @@
 # Full Report Model Summary
 
-**Source:** PDFs downloaded to `workspace/reports/semiconductor-pcb-core-20260615/`, `workspace/reports/semiconductor-pcb-extra-20260615/`, and `workspace/reports/semiconductor-pcb-supplemental-20260615/`; extracted with `pdftotext`.
+**Source:** PDFs downloaded to `workspace/research/semiconductor-pcb-20260612/sources/broker-core-20260615/`, `workspace/research/semiconductor-pcb-20260612/sources/broker-extra-20260615/`, and `workspace/research/semiconductor-pcb-20260612/sources/broker-supplemental-20260615/`; extracted with `pdftotext`.
 **Use:** Replace weak public-summary evidence with full-report model evidence where available.
 
 | Ticker | Broker | Report date | Key operating evidence | 2026E revenue | 2027E revenue | 2028E revenue | 2026E NPP | 2027E NPP | 2028E NPP | 2026E EPS | 2027E EPS | 2028E EPS | 2026E PE | 2027E PE | 2028E PE |
@@ -36,7 +36,7 @@ This is one of the strongest public bridges from AI server platform structure to
 
 ## Extra Huazheng 2026 deep report
 
-**Source:** `workspace/reports/semiconductor-pcb-supplemental-20260615/01-603186-浙商证券-二十余载躬耕不辍-AI时代厚积薄发.pdf`.
+**Source:** `workspace/research/semiconductor-pcb-20260612/sources/broker-supplemental-20260615/01-603186-浙商证券-二十余载躬耕不辍-AI时代厚积薄发.pdf`.
 
 The 41-page Zheshang deep report replaces the earlier limited preview for model purposes. It forecasts 2025E/2026E/2027E revenue of 42.19/73.43/95.53亿元, NPP of 3.00/5.73/8.03亿元, EPS of 2.12/4.04/5.65, and PE of 33.60/17.61/12.58. It improves Huazheng model coverage but still does not disclose named customer/platform revenue or a 2028E line.
 

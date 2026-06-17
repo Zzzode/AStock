@@ -1,6 +1,6 @@
 # Pengding Investor Relations Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-pengding-ir-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/ir-pengding-20260616/`
 
 **Source type:** Official investor-relations records / issuer Q&A.
 

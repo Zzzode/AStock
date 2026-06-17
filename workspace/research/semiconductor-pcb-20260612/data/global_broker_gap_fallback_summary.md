@@ -1,6 +1,6 @@
 # Global-Broker Gap Fallback Report Archive
 
-**Directory:** `workspace/reports/semiconductor-pcb-global-gap-fallback-20260615/`
+**Directory:** `workspace/research/semiconductor-pcb-20260612/sources/broker-global-fallback-20260615/`
 
 **Purpose:** Attempted to close missing global-broker/original-report gaps. No original UBS/JPM/Goldman PDF was found in this pass, but valid alternative original PDFs were archived to improve source depth and reduce insufficient-evidence gaps.
 

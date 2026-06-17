@@ -1,6 +1,6 @@
 # Official Shennan Refinancing Evidence
 
-**Source archive:** `workspace/reports/semiconductor-pcb-shennan-refinancing-20260616/`
+**Source archive:** `workspace/research/semiconductor-pcb-20260612/sources/official-shennan-refinancing-20260616/`
 
 **Documents:**
 

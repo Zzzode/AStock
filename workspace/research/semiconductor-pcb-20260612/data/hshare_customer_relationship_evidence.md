@@ -1,6 +1,6 @@
 # H-Share Prospectus Customer Relationship Evidence
 
-**Source:** HKEX H-share application/global-offering documents in `workspace/reports/semiconductor-pcb-hshare-prospectus-20260616/`.
+**Source:** HKEX H-share application/global-offering documents in `workspace/research/semiconductor-pcb-20260612/sources/official-hshare-prospectus-20260616/`.
 
 **Purpose:** Extract customer relationship quality variables beyond concentration: products/services sold, credit terms, customer type, relationship start year and customer concentration drivers.
 

@@ -1,6 +1,6 @@
 # Watchlist Customer and Supplier Concentration
 
-**Source:** Official 2025 annual reports and inquiry-response materials in `workspace/reports/semiconductor-pcb-watchlist-official-filings-20260615/`.
+**Source:** Official 2025 annual reports and inquiry-response materials in `workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/`.
 
 **Purpose:** Extend official customer/supplier concentration evidence beyond the five core names. This improves customer-chain and supply-chain risk analysis but still does not provide NVIDIA / Google ASIC / platform revenue split.
 
