@@ -38,3 +38,16 @@ Use these subdirectory patterns:
 | `sources/probe-*` | Failed source probes, customer-side pages, customs/BOL pages and access-boundary evidence. |
 
 `workspace/reports/` is deprecated. Do not create new files there.
+
+## Quick Research Reports
+
+Short `/team` decision reports belong under:
+
+```text
+workspace/research/quick/<CODE>-<YYYYMMDD>/
+├── report.tex or report.md
+├── report.pdf
+└── packet.json
+```
+
+`workspace/team/` is deprecated. Do not create new files there.

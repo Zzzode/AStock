@@ -292,7 +292,6 @@ src/python/astock/          # Python capability layer (core)
     └── agent-resilience/skill.md
 
 workspace/                  # All report outputs and case-scoped evidence
-├── team/<CODE>-<YYYYMMDD>/          # Quick decision reports
 ├── research/<topic>-<YYYYMMDD>/     # Deep equity research case
 │   ├── main.tex / main.pdf          # Final report deliverable
 │   ├── sections/                    # LaTeX chapters
@@ -305,6 +304,7 @@ workspace/                  # All report outputs and case-scoped evidence
 │   │   ├── ir-*                     # Investor relations records and Q&A
 │   │   └── probe-*                  # Failed probes, customer-side pages, BOL/customs
 │   └── rendered/                    # Rendered PDF pages for visual review
+├── research/quick/<CODE>-<YYYYMMDD>/ # Quick decision reports from /team
 ├── backtest/<CODE>-<strat>-<YYYYMMDD>/ # Backtest reports
 └── recommend/<YYYYMMDD>/            # Recommendation reports
 

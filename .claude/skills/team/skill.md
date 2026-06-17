@@ -289,7 +289,7 @@ When role opinions conflict:
 Save final report as LaTeX to:
 
 ```text
-workspace/team/<CODE>-<YYYYMMDD>/
+workspace/research/quick/<CODE>-<YYYYMMDD>/
 ├── report.tex        # LaTeX source (use report-brief.tex template)
 ├── report.pdf        # Compiled PDF
 └── packet.json       # Raw data packet from Python
@@ -300,7 +300,7 @@ Use the shared brief template: `.agents/templates/report-brief.tex`
 - Set `\reporttitle` to the stock name + code
 - Set `\reportdate` to today's date
 - Keep report concise (3-5 pages)
-- Compile: `.venv/bin/python -m astock.cli build-pdf workspace/team/<CODE>-<YYYYMMDD>/ --file report.tex`
+- Compile: `.venv/bin/python -m astock.cli build-pdf workspace/research/quick/<CODE>-<YYYYMMDD>/ --file report.tex`
 
 If Python `team` already generated `session_path`, save `packet.json` from that data.
 
