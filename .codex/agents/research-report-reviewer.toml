@@ -96,6 +96,15 @@ Review the assigned chapters through these lenses:
 - Clipped core diagrams, overlapping evidence tables, absence of required visual exhibits for valuation/risk/customer-chain conclusions, or table-only treatment of core valuation/recommendation logic is S-Level for institutional presentation quality.
 - **B-Level:** wording, formatting, chart clarity, duplicated claims, table readability.
 
+## Publish Gate
+
+No report is publishable until the workspace verifier passes. Treat `tools/verify_research_workspace.py` as the only gate, per workspace/research/RESEARCH_WORKSPACE_CONVENTIONS.md sections 6-7:
+
+- **Mandatory verifier run.** After ANY change to a research case — PDF rebuild, governance-file edit, new evidence landed, audit-artifact refresh — the reviewer MUST run `python3 tools/verify_research_workspace.py` from the case directory and require **39 PASS / 0 FAIL** before sign-off. The Publishability status cannot move to PASS (or even CONDITIONAL) while any verifier FAIL is open.
+- **No bypass, ever.** Any FAIL must be fixed at the underlying artifact — checksum manifest, inventory, render, or text — following the section 6 refresh-dependency checklist. Never hand-edit the verifier, suppress a check, or accept a partial pass as "good enough." The verifier is read-only and authoritative by design.
+- **Refresh-dependency checklist.** Before re-running the verifier, confirm every upstream refresh in sections 6-7 is complete: after a PDF rebuild, ensure `latexmk -c` cleanup, `report_quality_eval` (pdf_creation_date / pages / size), `completion_audit_manifest`, `core_artifact_checksums`, the self-referential `top_level_data_artifact_inventory` iterated to its fixed point, and `root_artifact_inventory` where a root file size changed. After a governance `.md` edit, ensure its `.json` mirror, `core_artifact_checksums`, `data_room_index`, and inventory sizes are synced. A verifier FAIL caused by a skipped refresh step is itself an A-Level finding.
+- **Verifier result is part of the review.** Record the PASS/FAIL count and any FAIL detail in the Publishability section of the output. A clean chapter review with a failing verifier is still BLOCKED.
+
 ## Constraints
 
 - Do not edit files.

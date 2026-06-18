@@ -92,6 +92,15 @@ optional:
 - Prompt quality issues: <count>
 ```
 
+## Audit Process
+
+When auditing a research case, follow every applicable refresh dependency in workspace/research/RESEARCH_WORKSPACE_CONVENTIONS.md sections 6-7 (PDF rebuild cleanup, governance `.md` → `.json` sync, core-artifact checksum recompute, inventory fixed-point refresh) before reaching for a verdict. The verifier is the only gate:
+
+- **Mandatory verifier run.** After ANY change to a research case — PDF rebuild, governance-file edit, new evidence landed, audit-artifact refresh — the agent MUST run `python3 tools/verify_research_workspace.py` from the case directory and require **39 PASS / 0 FAIL** before sign-off. This holds for internal-control's own proposed fixes just as it does for writer/reviewer changes.
+- **No sign-off without 39/39.** A case is not audit-clean while a single FAIL is outstanding. Do not mark a finding resolved, do not endorse a refresh, and do not close an audit cycle until the verifier returns 39 PASS / 0 FAIL.
+- **Fix at the underlying artifact — never bypass.** Any FAIL must be repaired at its root cause (checksum manifest, inventory, render, or text artifact) following the section 6 refresh-dependency checklist. Never hand-edit the verifier, never suppress a check, and never accept a partial pass as "good enough." The verifier is read-only and authoritative by design.
+- **Refresh-dependency discipline.** Before re-running the verifier, confirm the upstream refresh chain (sections 6-7) is complete — e.g., after a PDF rebuild, ensure `latexmk -c` cleanup, `report_quality_eval`, `completion_audit_manifest`, `core_artifact_checksums`, and the self-referential `top_level_data_artifact_inventory` (iterated to its fixed point) are all current. A verifier FAIL that traces to a skipped refresh step is itself an A-Level process finding.
+
 ## Constraints
 
 - NEVER auto-apply changes — all proposed modifications require human approval

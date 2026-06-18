@@ -60,6 +60,35 @@ def _run_async(coro: Any, json_output: bool) -> Any:
         return asyncio.run(coro)
 
 
+def _count_pdf_pages(pdf_path: Path) -> int:
+    """Count PDF pages.
+
+    Prefer pdfinfo (robust for XeLaTeX/xdvipdfmx output where page objects
+    are compressed inside object streams). Fall back to a byte scan of the
+    unstructured ``/Type /Page`` markers only if pdfinfo is unavailable.
+    """
+    import shutil
+    import subprocess
+
+    pdfinfo = shutil.which("pdfinfo")
+    if pdfinfo:
+        try:
+            result = subprocess.run(
+                [pdfinfo, str(pdf_path)],
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            for line in result.stdout.splitlines():
+                if line.strip().startswith("Pages:"):
+                    return int(line.split(":", 1)[1].strip())
+        except Exception:
+            pass
+
+    content = pdf_path.read_bytes()
+    return content.count(b"/Type /Page") - content.count(b"/Type /Pages")
+
+
 @app.command()
 def quote(
     code: str = typer.Argument(..., help="Stock code"),
@@ -1678,8 +1707,7 @@ def build_pdf(
     page_count = 0
     if success and pdf_path.exists():
         try:
-            content = pdf_path.read_bytes()
-            page_count = content.count(b"/Type /Page") - content.count(b"/Type /Pages")
+            page_count = _count_pdf_pages(pdf_path)
         except Exception:
             pass
 
