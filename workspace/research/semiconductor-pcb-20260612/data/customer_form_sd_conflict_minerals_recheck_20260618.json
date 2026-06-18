@@ -1,0 +1,120 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Recheck latest SEC Form SD / Conflict Minerals Report routes for key customer-side companies.",
+  "raw_archive": "sources/probe-customer-form-sd-20260618/",
+  "boundary": "Form SD filings provide 3TG responsible-minerals due-diligence evidence, supplier survey mechanics and smelter/refiner lists, but not named PCB/CCL/substrate supplier revenue or customer-platform EPS model variables.",
+  "sources": [
+    {
+      "issuer": "Apple",
+      "filing": "sources/probe-customer-form-sd-20260618/apple-2025-form-sd.html",
+      "text": "sources/probe-customer-form-sd-20260618/apple-2025-form-sd.txt",
+      "incremental_fields": [
+        "100% of identified 3TG smelters/refiners required to participate in annual third-party audit",
+        "CMRT collection across Apple product categories"
+      ],
+      "remaining_gap": "No named PCB/CCL/substrate supplier, platform revenue or model fields."
+    },
+    {
+      "issuer": "Amazon",
+      "filing": "sources/probe-customer-form-sd-20260618/amazon-2025-form-sd.html",
+      "exhibit": "sources/probe-customer-form-sd-20260618/amazon-2025-form-sd-ex101.html",
+      "text": "sources/probe-customer-form-sd-20260618/amazon-2025-form-sd-ex101.txt",
+      "incremental_fields": [
+        "supplier analysis for electronic devices, fashion/apparel and other consumer products",
+        "RMI CMRT process",
+        "known smelter/refiner list",
+        "no identified suppliers sourcing minerals through armed-group-benefiting chain"
+      ],
+      "remaining_gap": "No named PCB/CCL/substrate supplier, AWS/AI platform allocation or model fields."
+    },
+    {
+      "issuer": "Alphabet / Google",
+      "filing": "sources/probe-customer-form-sd-20260618/alphabet-2025-form-sd.html",
+      "text": "sources/probe-customer-form-sd-20260618/alphabet-2025-form-sd.txt",
+      "incremental_fields": [
+        "SEC Form SD cover route",
+        "reference to Exhibit 1.01 Conflict Minerals Report"
+      ],
+      "remaining_gap": "SEC cover and external-page probe do not disclose named PCB/CCL/substrate supplier or model fields.",
+      "external_page_probe": "sources/probe-customer-form-sd-20260618/alphabet-conflict-minerals-page.html",
+      "external_page_result": "HTTP 403 from abc.xyz investor ESG conflict-minerals page; no direct public page recovered via search."
+    },
+    {
+      "issuer": "Meta",
+      "filing": "sources/probe-customer-form-sd-20260618/meta-2025-form-sd.html",
+      "exhibit": "sources/probe-customer-form-sd-20260618/meta-2025-form-sd-ex101.html",
+      "text": "sources/probe-customer-form-sd-20260618/meta-2025-form-sd-ex101.txt",
+      "incremental_fields": [
+        "SEC Form SD and Exhibit 1.01 route archived"
+      ],
+      "remaining_gap": "No named PCB/CCL/substrate supplier or model fields."
+    },
+    {
+      "issuer": "Microsoft",
+      "filing": "sources/probe-customer-form-sd-20260618/microsoft-2025-form-sd.html",
+      "exhibit": "sources/probe-customer-form-sd-20260618/microsoft-2025-form-sd-ex101-own.html",
+      "text": "sources/probe-customer-form-sd-20260618/microsoft-2025-form-sd-ex101-own.txt",
+      "incremental_fields": [
+        "79 Microsoft Devices direct suppliers surveyed",
+        "100% supplier CMRT response rate",
+        "266 eligible 3TG SORs",
+        "31 SORs sourced from Covered Countries and all were conformant"
+      ],
+      "remaining_gap": "No named PCB/CCL/substrate supplier, server/device supplier revenue split or EPS inputs."
+    },
+    {
+      "issuer": "Dell Technologies",
+      "filing": "sources/probe-customer-form-sd-20260618/dell-2025-form-sd.html",
+      "exhibit": "sources/probe-customer-form-sd-20260618/dell-2025-form-sd-ex101-own.html",
+      "text": "sources/probe-customer-form-sd-20260618/dell-2025-form-sd-ex101-own.txt",
+      "incremental_fields": [
+        "covered products include branded hardware, peripherals, server, storage and networking products",
+        "100% in-scope supplier CMRT response rate",
+        "245 unique 3TG smelter/refiner facilities",
+        "219 conformant smelters/refiners",
+        "31 known DRC/adjoining-country source SORs all conformant"
+      ],
+      "remaining_gap": "No named PCB/CCL/substrate supplier, product allocation, revenue split, ASP, shipment, order value, margin or EPS input."
+    },
+    {
+      "issuer": "NVIDIA",
+      "submissions_json": "sources/probe-customer-form-sd-20260618/nvidia-submissions-CIK0001045810.json",
+      "filing": "sources/probe-customer-form-sd-20260618/nvidia-2025-form-sd.html",
+      "exhibit": "sources/probe-customer-form-sd-20260618/nvidia-2025-form-sd-ex101.html",
+      "text": "sources/probe-customer-form-sd-20260618/nvidia-2025-form-sd-ex101.txt",
+      "incremental_fields": [
+        "164 direct suppliers surveyed",
+        "100% in-scope supplier responses",
+        "246 processing facilities",
+        "31 Covered-Country smelters/refiners",
+        "206 RMAP compliant facilities",
+        "fabless and contract manufacturing strategy; memory, substrates and components noted"
+      ],
+      "remaining_gap": "No named PCB/CCL/substrate supplier, NVIDIA platform revenue split, ASP, shipment, order value, margin or EPS input."
+    }
+  ],
+  "excluded_artifacts": [
+    {
+      "path": "sources/probe-customer-form-sd-20260618/microsoft-2025-form-sd-ex101.html",
+      "reason": "Downloaded from search result but is an Intel filing, not Microsoft; retained as raw misroute artifact and excluded from conclusions."
+    }
+  ],
+  "targeted_absence_checks": {
+    "supplier_names": [
+      "Victory Giant",
+      "Avary",
+      "Tripod",
+      "Unimicron",
+      "Dongshan",
+      "HannStar",
+      "Gold Circuit",
+      "Delton",
+      "Meiko",
+      "Mektec",
+      "Shennan",
+      "WUS"
+    ],
+    "result": "No customer Form SD route discloses target PCB supplier names, PCB/substrate product allocation, revenue split, ASP, shipment, order value, margin or EPS assumptions."
+  },
+  "remaining_gap": "Form SD / Conflict Minerals Report routes, including NVIDIA, do not close named platform/customer revenue split, terminal-grade positioning/order flow, or customer/platform EPS model requirements."
+}

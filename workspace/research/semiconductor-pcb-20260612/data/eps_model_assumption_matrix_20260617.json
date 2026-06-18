@@ -1,0 +1,476 @@
+{
+  "run_date": "2026-06-17",
+  "purpose": "Unify public EPS model assumption base from official Q1 metrics, working-capital approximation and broker operating/forecast lines.",
+  "boundary": "This is a public-source model assumption matrix. It improves tax/share-count/cash-conversion/working-capital/forecast-line assumptions but does not provide named customer/platform revenue, ASP, shipments or platform margins.",
+  "rows": [
+    {
+      "code": "002463",
+      "name": "沪电股份",
+      "q1_revenue_yuan": 6214156406.0,
+      "q1_npp_yuan": 1242081367.0,
+      "q1_eps_basic": 0.6455,
+      "q1_implied_share_count": 1924215905.4996128,
+      "q1_gross_margin_pct": 35.632417,
+      "q1_net_margin_pct": 19.977606,
+      "q1_ocf_yuan": 511016585.0,
+      "q1_ocf_to_revenue_pct": 8.2234,
+      "q1_ocf_to_npp_pct": 41.14195724828066,
+      "q1_current_ratio": 1.484546,
+      "q1_quick_ratio": 1.095779,
+      "working_capital_days": {
+        "dso_days": 93.8,
+        "dio_days": 90.5,
+        "dpo_days": 117.4,
+        "ccc_days": 66.9,
+        "contract_liability_to_revenue": "1.3%"
+      },
+      "forecast_model": {
+        "broker": "中邮证券",
+        "forecast_years": [
+          "2026E",
+          "2027E",
+          "2028E"
+        ],
+        "implied_share_count_yi": {
+          "2026E": 19.398,
+          "2027E": 19.306,
+          "2028E": 19.196
+        },
+        "coverage": "operating_line",
+        "operating_line_source": "中邮证券 full PDF",
+        "tax_rate_pct": {
+          "2025A": 13.15,
+          "2026E": 12.94,
+          "2027E": 13.04,
+          "2028E": 13.05
+        },
+        "forecast_ocf_to_npp_pct": {
+          "2025A": 101.31,
+          "2026E": 145.6,
+          "2027E": 108.94,
+          "2028E": 104.67
+        },
+        "forecast_fcf_after_capex_rmb_mn": {
+          "2025A": 690,
+          "2026E": 8348,
+          "2027E": 9642,
+          "2028E": 13486
+        },
+        "gross_margin_pct": {
+          "2025A": 35.5,
+          "2026E": 36.1,
+          "2027E": 37.4,
+          "2028E": 38.3
+        },
+        "net_margin_pct": {
+          "2025A": 20.2,
+          "2026E": 21.6,
+          "2027E": 23.5,
+          "2028E": 24.6
+        }
+      }
+    },
+    {
+      "code": "300476",
+      "name": "胜宏科技",
+      "q1_revenue_yuan": 5519485066.85,
+      "q1_npp_yuan": 1288427592.46,
+      "q1_eps_basic": 1.48,
+      "q1_implied_share_count": 870559184.0945946,
+      "q1_gross_margin_pct": 34.458493,
+      "q1_net_margin_pct": 23.343257,
+      "q1_ocf_yuan": 2116658463.16,
+      "q1_ocf_to_revenue_pct": 38.3488,
+      "q1_ocf_to_npp_pct": 164.28229848125616,
+      "q1_current_ratio": 0.921351,
+      "q1_quick_ratio": 0.677308,
+      "working_capital_days": {
+        "dso_days": 90.6,
+        "dio_days": 86.2,
+        "dpo_days": 166.7,
+        "ccc_days": 10.1,
+        "contract_liability_to_revenue": "0.1%"
+      },
+      "forecast_model": {
+        "broker": "开源证券",
+        "forecast_years": [
+          "2026E",
+          "2027E",
+          "2028E"
+        ],
+        "implied_share_count_yi": {
+          "2026E": 9.827,
+          "2027E": 9.829,
+          "2028E": 9.827
+        },
+        "coverage": "operating_line",
+        "operating_line_source": "开源证券 full PDF",
+        "tax_rate_pct": {
+          "2024A": 12.19,
+          "2025A": 14.04,
+          "2026E": 11.99,
+          "2027E": 12.0,
+          "2028E": 12.0
+        },
+        "forecast_ocf_to_npp_pct": {
+          "2024A": 117.68,
+          "2025A": 106.75,
+          "2026E": 12.29,
+          "2027E": 130.97,
+          "2028E": 73.07
+        },
+        "forecast_fcf_after_capex_rmb_mn": {
+          "2024A": 524,
+          "2025A": -2014,
+          "2026E": -1637,
+          "2027E": 15618,
+          "2028E": 11316
+        },
+        "gross_margin_pct": {
+          "2024A": 22.7,
+          "2025A": 35.2,
+          "2026E": 39.1,
+          "2027E": 38.5,
+          "2028E": 39.3
+        },
+        "net_margin_pct": {
+          "2024A": 10.8,
+          "2025A": 22.4,
+          "2026E": 27.8,
+          "2027E": 28.1,
+          "2028E": 29.0
+        }
+      }
+    },
+    {
+      "code": "002916",
+      "name": "深南电路",
+      "q1_revenue_yuan": 6595587902.38,
+      "q1_npp_yuan": 850230796.58,
+      "q1_eps_basic": 1.28,
+      "q1_implied_share_count": 664242809.828125,
+      "q1_gross_margin_pct": 29.169011,
+      "q1_net_margin_pct": 12.906989,
+      "q1_ocf_yuan": 247409844.58,
+      "q1_ocf_to_revenue_pct": 3.7511,
+      "q1_ocf_to_npp_pct": 29.099139383705058,
+      "q1_current_ratio": 1.25169,
+      "q1_quick_ratio": 0.728824,
+      "working_capital_days": {
+        "dso_days": 79.8,
+        "dio_days": 104.9,
+        "dpo_days": 82.2,
+        "ccc_days": 102.5,
+        "contract_liability_to_revenue": "5.4%"
+      },
+      "forecast_model": {
+        "broker": "太平洋",
+        "forecast_years": [
+          "2026E",
+          "2027E",
+          "2028E"
+        ],
+        "implied_share_count_yi": {
+          "2026E": 6.813,
+          "2027E": 6.81,
+          "2028E": 6.81
+        },
+        "coverage": "operating_line",
+        "operating_line_source": "太平洋证券 full PDF",
+        "tax_rate_pct": {
+          "2024A": 7.15,
+          "2025A": 9.49,
+          "2026E": 7.15,
+          "2027E": 7.94,
+          "2028E": 7.94
+        },
+        "forecast_ocf_to_npp_pct": {
+          "2024A": 158.79,
+          "2025A": 117.16,
+          "2026E": 129.03,
+          "2027E": 120.52,
+          "2028E": 118.26
+        },
+        "forecast_fcf_after_capex_rmb_mn": {},
+        "gross_margin_pct": {
+          "2024A": 24.83,
+          "2025A": 28.32,
+          "2026E": 31.65,
+          "2027E": 32.62,
+          "2028E": 33.13
+        },
+        "net_margin_pct": {
+          "2024A": 10.48,
+          "2025A": 13.85,
+          "2026E": 17.55,
+          "2027E": 18.73,
+          "2028E": 19.39
+        }
+      }
+    },
+    {
+      "code": "600183",
+      "name": "生益科技",
+      "q1_revenue_yuan": 8141455910.4,
+      "q1_npp_yuan": 1158139324.56,
+      "q1_eps_basic": 0.48,
+      "q1_implied_share_count": 2412790259.5,
+      "q1_gross_margin_pct": 28.10132,
+      "q1_net_margin_pct": 16.364488,
+      "q1_ocf_yuan": 571567196.77,
+      "q1_ocf_to_revenue_pct": 7.0204,
+      "q1_ocf_to_npp_pct": 49.3521966355084,
+      "q1_current_ratio": 1.817058,
+      "q1_quick_ratio": 1.279169,
+      "working_capital_days": {
+        "dso_days": 108.6,
+        "dio_days": 88.7,
+        "dpo_days": 69.4,
+        "ccc_days": 127.9,
+        "contract_liability_to_revenue": "0.8%"
+      },
+      "forecast_model": {
+        "broker": "太平洋",
+        "forecast_years": [
+          "2026E",
+          "2027E",
+          "2028E"
+        ],
+        "implied_share_count_yi": {
+          "2026E": 24.323,
+          "2027E": 24.322,
+          "2028E": 24.27
+        },
+        "coverage": "operating_line",
+        "operating_line_source": "太平洋证券 full PDF",
+        "tax_rate_pct": {
+          "2024A": 9.65,
+          "2025A": 11.82,
+          "2026E": 10.78,
+          "2027E": 10.96,
+          "2028E": 11.05
+        },
+        "forecast_ocf_to_npp_pct": {
+          "2024A": 83.73,
+          "2025A": 158.19,
+          "2026E": 110.81,
+          "2027E": 101.87,
+          "2028E": 97.58
+        },
+        "forecast_fcf_after_capex_rmb_mn": {},
+        "gross_margin_pct": {
+          "2024A": 22.04,
+          "2025A": 26.47,
+          "2026E": 28.49,
+          "2027E": 30.16,
+          "2028E": 31.06
+        },
+        "net_margin_pct": {
+          "2024A": 8.53,
+          "2025A": 11.73,
+          "2026E": 14.23,
+          "2027E": 15.26,
+          "2028E": 16.15
+        }
+      }
+    },
+    {
+      "code": "603186",
+      "name": "华正新材",
+      "q1_revenue_yuan": 1234291571.69,
+      "q1_npp_yuan": 30920963.67,
+      "q1_eps_basic": 0.21,
+      "q1_implied_share_count": 147242684.14285716,
+      "q1_gross_margin_pct": 12.020629,
+      "q1_net_margin_pct": 2.521507,
+      "q1_ocf_yuan": 56462565.34,
+      "q1_ocf_to_revenue_pct": 4.5744,
+      "q1_ocf_to_npp_pct": 182.602864330457,
+      "q1_current_ratio": 0.977851,
+      "q1_quick_ratio": 0.816837,
+      "working_capital_days": {
+        "dso_days": 137.0,
+        "dio_days": 44.3,
+        "dpo_days": 89.9,
+        "ccc_days": 91.4,
+        "contract_liability_to_revenue": "0.9%"
+      },
+      "forecast_model": {
+        "broker": "浙商证券",
+        "forecast_years": [
+          "2025E",
+          "2026E",
+          "2027E",
+          "2028E"
+        ],
+        "implied_share_count_yi": {
+          "2025E": 1.415,
+          "2026E": 1.418,
+          "2027E": 1.421
+        },
+        "coverage": "forecast_line"
+      }
+    },
+    {
+      "code": "688519",
+      "name": "南亚新材",
+      "q1_revenue_yuan": 1832161085.0,
+      "q1_npp_yuan": 150132663.11,
+      "q1_eps_basic": 0.66,
+      "q1_implied_share_count": 227473731.9848485,
+      "q1_gross_margin_pct": 15.196543,
+      "q1_net_margin_pct": 8.194293,
+      "q1_ocf_yuan": -66130126.72,
+      "q1_ocf_to_revenue_pct": -3.6094,
+      "q1_ocf_to_npp_pct": -44.047794364073475,
+      "q1_current_ratio": 1.346513,
+      "q1_quick_ratio": 1.149264,
+      "working_capital_days": {
+        "dso_days": 143.0,
+        "dio_days": 39.3,
+        "dpo_days": 81.2,
+        "ccc_days": 101.1,
+        "contract_liability_to_revenue": "0.8%"
+      },
+      "forecast_model": null
+    },
+    {
+      "code": "002436",
+      "name": "兴森科技",
+      "q1_revenue_yuan": 1818166949.77,
+      "q1_npp_yuan": 18744694.13,
+      "q1_eps_basic": 0.01,
+      "q1_implied_share_count": 1874469412.9999998,
+      "q1_gross_margin_pct": 19.174825,
+      "q1_net_margin_pct": -2.515865,
+      "q1_ocf_yuan": -247107316.08,
+      "q1_ocf_to_revenue_pct": -13.591000000000001,
+      "q1_ocf_to_npp_pct": -1318.278731924019,
+      "q1_current_ratio": 1.379509,
+      "q1_quick_ratio": 1.113584,
+      "working_capital_days": {
+        "dso_days": 111.8,
+        "dio_days": 56.6,
+        "dpo_days": 83.2,
+        "ccc_days": 85.2,
+        "contract_liability_to_revenue": "2.1%"
+      },
+      "forecast_model": null
+    },
+    {
+      "code": "301200",
+      "name": "大族数控",
+      "q1_revenue_yuan": 1955152850.95,
+      "q1_npp_yuan": 322917809.55,
+      "q1_eps_basic": 0.73,
+      "q1_implied_share_count": 442353163.76712334,
+      "q1_gross_margin_pct": 33.12201,
+      "q1_net_margin_pct": 16.642146,
+      "q1_ocf_yuan": -645629809.3,
+      "q1_ocf_to_revenue_pct": -33.021899999999995,
+      "q1_ocf_to_npp_pct": -199.9362655778302,
+      "q1_current_ratio": 2.940661,
+      "q1_quick_ratio": 2.419495,
+      "working_capital_days": {
+        "dso_days": 155.3,
+        "dio_days": 135.3,
+        "dpo_days": 115.8,
+        "ccc_days": 174.9,
+        "contract_liability_to_revenue": "10.5%"
+      },
+      "forecast_model": null
+    },
+    {
+      "code": "688630",
+      "name": "芯碁微装",
+      "q1_revenue_yuan": 514721784.95,
+      "q1_npp_yuan": 108392641.7,
+      "q1_eps_basic": 0.83,
+      "q1_implied_share_count": 130593544.21686748,
+      "q1_gross_margin_pct": 40.944174,
+      "q1_net_margin_pct": 21.058491,
+      "q1_ocf_yuan": 164561893.24,
+      "q1_ocf_to_revenue_pct": 31.971,
+      "q1_ocf_to_npp_pct": 151.8201703169672,
+      "q1_current_ratio": 3.164375,
+      "q1_quick_ratio": 2.327704,
+      "working_capital_days": {
+        "dso_days": 180.6,
+        "dio_days": 179.5,
+        "dpo_days": 102.4,
+        "ccc_days": 257.6,
+        "contract_liability_to_revenue": "23.0%"
+      },
+      "forecast_model": null
+    },
+    {
+      "code": "300400",
+      "name": "劲拓股份",
+      "q1_revenue_yuan": 168818040.83,
+      "q1_npp_yuan": 25599300.97,
+      "q1_eps_basic": 0.11,
+      "q1_implied_share_count": 232720917.9090909,
+      "q1_gross_margin_pct": 39.664927,
+      "q1_net_margin_pct": 15.163841,
+      "q1_ocf_yuan": 11235303.93,
+      "q1_ocf_to_revenue_pct": 6.6552,
+      "q1_ocf_to_npp_pct": 43.889104406275514,
+      "q1_current_ratio": 2.04013,
+      "q1_quick_ratio": 1.522224,
+      "working_capital_days": {
+        "dso_days": 93.7,
+        "dio_days": 126.3,
+        "dpo_days": 101.4,
+        "ccc_days": 118.6,
+        "contract_liability_to_revenue": "38.1%"
+      },
+      "forecast_model": null
+    },
+    {
+      "code": "301377",
+      "name": "鼎泰高科",
+      "q1_revenue_yuan": 814116509.93,
+      "q1_npp_yuan": 260575088.03,
+      "q1_eps_basic": 0.64,
+      "q1_implied_share_count": 407148575.046875,
+      "q1_gross_margin_pct": 53.254364,
+      "q1_net_margin_pct": 31.960185,
+      "q1_ocf_yuan": -47761070.73,
+      "q1_ocf_to_revenue_pct": -5.8666,
+      "q1_ocf_to_npp_pct": -18.329100871109087,
+      "q1_current_ratio": 1.524152,
+      "q1_quick_ratio": 1.149129,
+      "working_capital_days": {
+        "dso_days": 115.9,
+        "dio_days": 143.0,
+        "dpo_days": 143.7,
+        "ccc_days": 115.2,
+        "contract_liability_to_revenue": "2.5%"
+      },
+      "forecast_model": null
+    },
+    {
+      "code": "002938",
+      "name": "鹏鼎控股",
+      "q1_revenue_yuan": 7986000000.0,
+      "q1_npp_yuan": 463000000.0,
+      "q1_eps_basic": 0.2,
+      "q1_implied_share_count": 2315000000.0,
+      "q1_gross_margin_pct": 22.962103,
+      "q1_net_margin_pct": 5.797646,
+      "q1_ocf_yuan": 3096604206.54,
+      "q1_ocf_to_revenue_pct": 38.775409548459805,
+      "q1_ocf_to_npp_pct": 668.8130035723542,
+      "q1_current_ratio": 1.7202625557856954,
+      "q1_quick_ratio": 1.3896774542151116,
+      "working_capital_days": {
+        "dso_days": 41.9,
+        "dio_days": 64.5,
+        "dpo_days": 72.6,
+        "ccc_days": 33.8,
+        "contract_liability_to_revenue": "0.5%"
+      },
+      "forecast_model": null
+    }
+  ]
+}

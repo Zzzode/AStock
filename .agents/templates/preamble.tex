@@ -60,7 +60,7 @@
 % ============ 图形 ============
 \usepackage{graphicx}
 \usepackage{tikz}
-\usetikzlibrary{shapes,arrows.meta,positioning,calc,backgrounds,fit}
+\usetikzlibrary{shapes,arrows.meta,positioning,calc,backgrounds,fit,decorations.pathreplacing}
 \usepackage{pgfplots}
 \usepgfplotslibrary{polar}
 \pgfplotsset{compat=1.18}
@@ -124,8 +124,8 @@
 \newcommand{\starfive}{$\bigstar\bigstar\bigstar\bigstar\bigstar$}
 \newcommand{\starfour}{$\bigstar\bigstar\bigstar\bigstar$}
 \newcommand{\starthree}{$\bigstar\bigstar\bigstar$}
-\newcommand{\sourcenote}[1]{\par{\scriptsize\color{mutedgrey}\textit{Source: #1}}\vspace{0.2em}}
-\newcommand{\qualitynote}[1]{\par{\scriptsize\color{mutedgrey}\textit{Data quality: #1}}\vspace{0.2em}}
+\newcommand{\sourcenote}[1]{\par{\scriptsize\color{mutedgrey}\textit{资料来源：#1}}\vspace{0.2em}}
+\newcommand{\qualitynote}[1]{\par{\scriptsize\color{mutedgrey}\textit{数据质量：#1}}\vspace{0.2em}}
 \newcommand{\evidencetag}[1]{%
   \tikz[baseline=(x.base)]\node[
     xshift=0pt,
@@ -205,16 +205,16 @@
 {\color{white}\sffamily\scriptsize \reportscope \quad|\quad \reporttype \quad|\quad \reportdate}\\[1.0cm]
 {\fontsize{25}{30}\selectfont\bfseries\color{navy}\reporttitle}\\[0.25cm]
 {\fontsize{13}{17}\selectfont\color{steelgrey}\reportsubtitle}\\[0.75cm]
-\begin{dashboardbox}[Decision Dashboard]
+\begin{dashboardbox}[决策摘要]
 \begin{tabularx}{\textwidth}{L{3.0cm}X L{3.0cm}X}
-\textbf{Report type} & \reporttype & \textbf{Data cutoff} & \reportdatacutoff \\
-\textbf{Scope} & \reportscope & \textbf{Author} & \reportauthor \\
+\textbf{报告类型} & \reporttype & \textbf{数据截至} & \reportdatacutoff \\
+\textbf{覆盖范围} & \reportscope & \textbf{作者} & \reportauthor \\
 \end{tabularx}
 \vspace{0.45em}
-\begin{houseviewbox}[House View]
+\begin{houseviewbox}[本机构观点]
 \reporthouseview
 \end{houseviewbox}
-\begin{sourcequalitybox}[Evidence Quality]
+\begin{sourcequalitybox}[证据质量]
 \reportquality
 \end{sourcequalitybox}
 \end{dashboardbox}

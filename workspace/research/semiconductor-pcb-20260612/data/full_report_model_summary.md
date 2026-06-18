@@ -15,7 +15,7 @@
 
 - Full company model is available in downloaded PDFs for all five core names. 603186 has now been upgraded with a 2026-01-27 Zheshang deep report covering 2025E-2027E, though it still lacks 2028E.
 - Customer-chain revenue split is still partial: Hudian has AI server/HPC, high-speed switch/router and 2025 application mix; Shennan has PCB/substrate and broker-stated AI data-center exposure; Shenghong has official ASIC/GPU/TPU progress language but not exact customer revenue split; Shengyi has material direction but not M8/M9/M10 revenue share.
-- Full EPS sensitivity still requires editable model assumptions, not only broker forecast tables.
+- Full customer/platform EPS sensitivity is not available from public broker forecast tables alone because customer revenue, platform unit content and operating assumptions are not publicly disclosed.
 
 ## Extra technical valuation bridge: high-speed CCL
 

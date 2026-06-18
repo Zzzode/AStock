@@ -1,12 +1,22 @@
-\section{Why This Bridge Matters}
+\section{为什么需要这座桥}
+
+本章把产业链逻辑转成盈利逻辑。AI平台升级本身不是投资结论，只有当平台需求能落到公司收入、毛利率、订单持续性和EPS弹性上，才构成可投资判断。
 
 \begin{houseviewbox}[Research upgrade required]
 顶级半导体硬件研报不会停留在``AI平台升级带来PCB需求''，而会把平台链条转成公司收入、毛利和EPS弹性。本章明确给出当前可用的客户链桥，并把缺失变量标为 corpus gap。
 \end{houseviewbox}
 
-\section{Platform-to-Earnings Bridge}
+客户链是本报告最重要的分析轴。AI服务器带来的不是均匀增长，而是订单向少数能通过客户认证、能承接高层数和低损耗材料要求的供应商集中。因此，判断一家公司是否真正受益，不能只看“是否在AI PCB概念里”，而要看三件事：是否有可验证的应用收入，是否有客户或终端认证线索，是否能把收入增长转成毛利率和现金流。
 
-\begin{exhibitbox}[Exhibit 10: Platform-chain bridge and corpus gaps]
+这也是为什么同样处在PCB产业链中，沪电股份、胜宏科技、深南电路、生益科技、华正新材的投资含义完全不同。沪电股份更接近高端数通PCB的确定性资产；胜宏科技更像高弹性客户链资产；深南电路有PCB和载板双轮驱动，但载板良率与折旧是利润转换变量；生益科技的核心不是PCB产能，而是M8/M9高频高速材料的价格和认证；华正新材则更多是国产材料期权，必须用订单和利润修复来验证。
+
+\section{平台到盈利桥}
+
+先看平台到盈利的路径。NVIDIA/Rubin、ASIC/TPU、国产算力、光模块和先进封装都会带来PCB/CCL需求，但每一条链条对应的缺口不同：有的缺客户份额，有的缺单机价值量，有的缺良率和折旧桥。表格的作用是说明“哪些链条能进入模型，哪些仍然只能作为情景变量”。
+
+需求侧公开证据继续强化。Alphabet 2026Q1公告显示 Google Cloud 收入同比增长63\%至200亿美元，增长由企业AI解决方案和AI基础设施拉动，且Q1购置物业和设备356.74亿美元；Amazon 2026Q1官方稿显示AWS收入同比增长28\%至376亿美元，自由现金流下降主要来自物业和设备购置同比增加593亿美元，且主要反映AI投资，并披露Trainium、NVIDIA GPU和AI芯片部署；Meta 2026Q1电话会披露资本开支198亿美元，由服务器、数据中心和网络基础设施驱动，并将2026全年资本开支指引上调至1250--1450亿美元。上述证据可以证明AI基础设施CAPEX仍是需求驱动，但不能映射为任何PCB/CCL公司的具名客户收入、订单、ASP或EPS贡献。
+
+\begin{exhibitbox}[图表10: Platform-chain bridge and corpus gaps]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{2.6cm}X X X}
 \toprule
@@ -19,16 +29,38 @@ Networking / optical & 光模块PCB、交换机PCB、高速材料。 & 沪电股
 Advanced packaging / substrate & FC-BGA、ABF/BT、玻璃基板、CoWoP-like convergence。 & 深南电路、兴森科技、华正新材 & 良率、产能、折旧、客户认证。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{analysis/customer\_chain\_bridge.md}}
+\sourcenote{\texttt{analysis/customer\_chain\_bridge.md}; \texttt{data/hyperscaler\_capex\_ai\_infrastructure\_evidence\_20260618.md}; hyperscaler capex supports demand bridge only, not supplier revenue allocation}
 \end{exhibitbox}
 
-\section{Company Bridge}
+表中最关键的结论是：目前公开材料能够证明AI平台是需求来源，但不能完整证明每个平台对每家公司EPS的贡献。因此，对核心公司可以给更高跟踪优先级，但对具名NVIDIA、Google ASIC、Apple或国产算力平台的收入拆分，仍必须保持证据边界，不能把市场传闻直接写进估值模型。
 
-\begin{exhibitbox}[Exhibit 11: Company bridge from chain exposure to verification]
+\begin{exhibitbox}[图表10b: Named platform revenue split confirmation pack]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.7cm}X X X}
+\toprule
+\textbf{公司} & \textbf{已有公开收入基线} & \textbf{需要直接确认的拆分} & \textbf{当前披露边界} \\
+\midrule
+沪电股份 & 2025 PCB收入约181.43亿元；数通PCB约146.56亿元；高速交换机/路由81.69亿元；AI服务器/HPC 30.06亿元。 & NVIDIA/Rubin/GB系列、Google TPU/ASIC、AMD/海外云、国产算力、高速交换机/光模块平台收入。 & 互动易回复称具体厂商和客户合作受商业政策限制，不便讨论。 \\
+胜宏科技 & 2025收入192.92亿元；官方材料确认高密度PCB、100层以上高多层板、HDI和AI Data Center UBB/交换机能力；互动易确认ASIC业务推进和1.6T光模块mSAP订单饱满。 & NVIDIA/Blackwell/Rubin/GB200/GB300、Google TPU/ASIC、Microsoft/Amazon ASIC、UBB/OAM/midplane/正交背板、1.6T光模块mSAP收入。 & 互动易回复称客户名称和业务细节未经许可不能讨论。 \\
+深南电路 & 2025 PCB收入143.59亿元、载板收入41.48亿元；IR确认高速交换机、光模块、AI加速卡和服务器需求。 & AI加速卡PCB、高速交换机、光模块PCB、服务器/存储PCB、FC-BGA/ABF/BT载板客户或认证状态。 & P5W/深交所回复称涉及具体企业合作的问题基于商业保密不便回复。 \\
+生益科技 & 官方与IR证据支持高频高速材料、封装基板材料，以及国内外终端GPU/AI项目合作。 & M8/M9/M10收入、GPU AI服务器材料、ASIC AI服务器材料、国产算力、交换机/光模块材料收入和具名认证状态。 & 上证e互动IR不披露具体客户或M8/M9/M10收入占比；问询材料对客户名称和信用政策豁免披露。 \\
+华正新材 & 2025收入43.69亿元，CCL收入33.75亿元；官方文本指向AI服务器、交换机、光模块、天线及CBF/BT/高等级CCL。 & 高速CCL按AI服务器/交换机/光模块/天线拆分，BT/类BT、CBF/CBF-RCC按客户/应用拆分，国产算力验证和爬坡收入。 & 官方文件和互动平台只有产品/应用进度，不披露具名客户收入、ASP、出货或订单金额。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/named\_platform\_customer\_revenue\_split\_confirmation\_pack\_20260618.md}; \texttt{data/official\_filing\_segment\_summary.md}; \texttt{data/customer\_disclosure\_boundary\_evidence.md}; direct confirmation pack, not completed revenue evidence}
+\end{exhibitbox}
+
+这个确认包把剩余工作从“继续泛泛找客户链线索”改成“向公司IR、客户/供应商确认或付费数据库索取指定字段”。只有当可归因来源给出客户/平台收入拆分，或公司/客户/供应商明确确认该颗粒度不可披露时，具名平台收入拆分这一项才能关闭。
+
+\section{公司桥}
+
+把平台链条落到公司层面后，差异更明显。沪电股份已有AI服务器/HPC和高速交换机收入线索，说明它不是纯概念；胜宏科技的能力和客户弹性更强，但对客户集中度和A/H估值可比性更敏感；深南电路的优势是财务交付稳健，但IC载板和FC-BGA的盈利质量仍需持续验证；生益科技要看高端CCL价格和材料代际；华正新材要看CBF/BT小批量订单能否形成可重复收入。
+
+\begin{exhibitbox}[图表11: Company bridge from chain exposure to verification]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{2.2cm}X X X}
 \toprule
-\textbf{Name} & \textbf{Observable exposure} & \textbf{Direct financial evidence} & \textbf{Upgrade evidence needed} \\
+\textbf{公司} & \textbf{Observable exposure} & \textbf{Direct financial evidence} & \textbf{Upgrade evidence needed} \\
 \midrule
 沪电股份 & AI PCB、backplane、CoWoP相关需求。 & CAPEX估计、目标价和管理层调研转载。 & AI收入占比、平台 mix、ASP/毛利、EPS明细。 \\
 胜宏科技 & NVIDIA升级周期、Google ASIC/TPU。 & 2025--2028净利CAGR和H股目标价转载。 & 原始报告、客户集中度、产能爬坡、A/H可比性。 \\
@@ -39,21 +71,25 @@ Advanced packaging / substrate & FC-BGA、ABF/BT、玻璃基板、CoWoP-like con
 \end{tabularx}
 \end{exhibitbox}
 
-\section{Quantified Bridge From Full Reports}
+\section{完整报告中的量化桥}
 
-\begin{exhibitbox}[Exhibit 12: Quantified platform-to-company bridge from downloaded PDFs]
+进一步看量化桥，报告能直接使用的硬证据主要来自年报、H股申请资料、IR记录和已归档券商模型。这里的重点不是简单罗列每家公司有什么资料，而是识别哪些资料能够进入盈利模型。收入分部、毛利率、产能利用率和订单储备可以进入模型；具体客户名称、单机价值量和平台份额如果没有公开披露，只能作为待验证变量。
+
+\begin{exhibitbox}[图表12: Quantified platform-to-company bridge from downloaded PDFs]
 \footnotesize
 \begin{description}
-  \item[沪电股份] 2025数通PCB收入146.56亿元，高速交换机81.69亿元，AI服务器/HPC 30.06亿元；2026Q1收入62.14亿元、净利12.42亿元；2025高速交换机和AI服务器相关产品约占收入59\%。2026年6月IR补充泰国数通事业部海外客户认证超70\%、产能利用率超90\%，并加速AI服务器与高速网络产品导入交付。CNInfo/深交所互动易原始接口显示，公司对Rubin、谷歌、NVIDIA/AMD/海外云厂商供货比例、LPU/LPX和国产算力客户等具体厂商问题，均以商业政策限制为由不予讨论。缺口：AI客户份额和单机价值量仍未披露。
-  \item[胜宏科技] 2026Q1收入55.19亿元、归母净利12.88亿元；2026年6月IR披露具备100层以上高多层PCB、10阶30层HDI、16层任意互联HDI能力，下一代14阶36层HDI推进研发认证；CNInfo/深交所互动易原始接口确认ASIC相关客户业务进展顺利、1.6T光模块mSAP产能用于满足订单且在手订单饱满，同时对NVIDIA Spark、midplane、mSAP/正交背板、CB300、国内芯片、Tesla AI5、GB200/GB300和CoWoP等具体客户/项目问题以商业政策限制为由不披露。缺口：AI Data Center UBB/交换机客户收入占比未披露。
+  \item[沪电股份] 2025数通PCB收入146.56亿元，高速交换机81.69亿元，AI服务器/HPC 30.06亿元；2026Q1收入62.14亿元、净利12.42亿元；2025高速交换机和AI服务器相关产品约占收入59\%。2026年6月IR补充泰国数通事业部海外客户认证超70\%、产能利用率超90\%，并加速AI服务器与高速网络产品导入交付。CNInfo/深交所互动易原始接口显示，公司对Rubin、谷歌、NVIDIA/AMD/海外云厂商供货比例、LPU/LPX和国产算力客户等具体厂商问题，均以商业政策限制为由不予讨论；2026年6月18日互动易局部刷新进一步补充高端PCB定价随技术价值、质量溢价和供需动态调整，CoWoP/mSAP/光铜融合/M10仍有研发周期和商业化风险，泰国基地正从爬坡期迈入规模化运营期。缺口：AI客户份额和单机价值量仍未披露。
+  \item[胜宏科技] 2026Q1收入55.19亿元、归母净利12.88亿元；2026年6月IR披露具备100层以上高多层PCB、10阶30层HDI、16层任意互联HDI能力，下一代14阶36层HDI推进研发认证；CNInfo/深交所互动易原始接口确认ASIC相关客户业务进展顺利、1.6T光模块mSAP产能用于满足订单且在手订单饱满，同时对NVIDIA Spark、midplane、mSAP/正交背板、CB300、国内芯片、Tesla AI5、GB200/GB300和CoWoP等具体客户/项目问题以商业政策限制为由不披露；局部刷新确认惠州厂房四分阶段投产、厂房十/十一及泰国工厂建设按计划推进。缺口：AI数据中心UBB/交换机客户收入占比未披露。
   \item[深南电路] 2025 PCB收入143.59亿元、毛利率35.53%；封装基板收入41.48亿元、毛利率22.58%；CMBI称AI data center约占PCB收入25\%；2026年6月IR确认PCB业务受AI算力基础设施硬件需求拉动、产能利用率维持高位，FC-BGA 22层及以下量产、24层以上研发打样推进。P5W/深交所互动易原始接口进一步确认，公司承认高速通信网络、数据中心交换机、AI加速卡、存储等领域需求受AI趋势影响，但对具体企业合作问题以商业保密原则不予回复。缺口：AI服务器订单金额和FC-BGA客户结构未披露。
   \item[生益科技] 2026Q1毛利率28.10%，同比+3.50pct、环比+2.32pct；2025H1官方分部披露覆铜板外部收入84.67亿元、PCB外部收入37.53亿元；生益电子问询回复披露5--6阶HDI已获境内外知名客户认证并小批量销售；上证e互动探测显示近期M8/M9相关提问存在，但回复流未给出新的发行人答复，官方IR PDF仍是有效证据边界。缺口：M8/M9收入占比、涨价幅度、具名客户和客户收入仍缺。
   \item[华正新材] 海通国际2023年13页原始报告补充高速CCL由M6向M7/M8升级、56Gbps数通交换机小批量、400G光模块/高阶AI服务器新序列开发和43元历史目标价；浙商2023年17页CBF深度报告补充FC-BGA等先进封装材料原理、日企约96\%份额和2023E--2025E分产品收入/毛利率模型；浙商41页深度报告及年报点评补充高端CCL、CBF膜、BT封装材料和2025E--2028E模型；官方可行性报告补充1200万张高等级覆铜板项目；P5W/上交所互动显示CBF部分单品小批量订单销售、其他单品终端验证推进，类BT/BT板材已在内存封装等领域应用。缺口：具名客户、CBF/BT收入和客户/平台收入拆分仍缺。
 \end{description}
-\sourcenote{\texttt{data/full\_report\_model\_summary.md}; \texttt{data/supplemental\_report\_archive\_summary.md}; \texttt{data/official\_ir\_refresh\_20260616.md}; \texttt{data/customer\_disclosure\_boundary\_evidence.md}; \texttt{data/shengyi\_sse\_interaction\_probe.md}; company filings / IR records / issuer interaction evidence / full reports; customer-specific revenue remains unavailable}
+\sourcenote{\texttt{data/full\_report\_model\_summary.md}; \texttt{data/supplemental\_report\_archive\_summary.md}; \texttt{data/official\_ir\_refresh\_20260616.md}; \texttt{data/customer\_disclosure\_boundary\_evidence.md}; \texttt{data/current\_cninfo\_interaction\_sweep\_20260618.md}; \texttt{data/shengyi\_sse\_interaction\_probe.md}; company filings / IR records / issuer interaction evidence / full reports; customer-specific revenue remains unavailable}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12d: H-share prospectus customer evidence]
+量化桥给出的结论是偏谨慎的。沪电股份和胜宏科技已经有足够多的高端PCB应用证据，但仍无法拆分具体平台收入；深南电路的财务兑现更稳，但载板的利润转换还没有完全证明；生益科技的材料逻辑强，但M8/M9收入占比和涨价幅度仍是关键空白；华正新材最需要从“材料期权”转向“订单和利润证明”。这决定了后续估值不能一刀切地套用AI硬件高倍数。
+
+\begin{exhibitbox}[图表12d: H-share prospectus customer evidence]
 \footnotesize
 \begin{description}
   \item[沪电股份] H股申请资料披露AI服务器/HPC收入：2023年12.40亿元/13.9\%，2024年29.75亿元/22.3\%，2025年30.06亿元/15.9\%，2026Q1为7.34亿元/18.2\%；前五大客户收入占比从2023年的46.0\%升至2026Q1的58.4\%，最大客户占比升至19.5\%。
@@ -64,11 +100,13 @@ Advanced packaging / substrate & FC-BGA、ABF/BT、玻璃基板、CoWoP-like con
 \sourcenote{\texttt{data/hshare\_prospectus\_customer\_evidence.md}; \texttt{data/hshare\_customer\_relationship\_evidence.md}; \texttt{data/hshare\_anonymous\_customer\_time\_series.md}; HKEX application / global offering documents}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12e: Shengyi Electronics anonymized AI-server customer bridge]
+H股文件强化了客户集中度判断：AI订单越强，客户集中度往往越高，这既是增长来源，也是估值折扣来源。对胜宏科技和鹏鼎控股尤其如此，客户集中度可以解释盈利弹性，也意味着一旦大客户节奏变化，利润和估值会同步受压。
+
+\begin{exhibitbox}[图表12e: Shengyi Electronics anonymized AI-server customer bridge]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{1.6cm}R{1.7cm}R{1.8cm}R{1.9cm}X}
 \toprule
-\textbf{Customer} & \textbf{2022 sales} & \textbf{2023 sales} & \textbf{2024 sales} & \textbf{2025 1-9M} & \textbf{Read-through} \\
+\textbf{客户} & \textbf{2022 sales} & \textbf{2023 sales} & \textbf{2024 sales} & \textbf{2025 1-9M} & \textbf{解读} \\
 \midrule
 R客户 & 2.65亿元 & 2.65亿元 & 10.20亿元 & 29.37亿元 & X终端客户指定EMS；AI服务器高附加值PCB量产订单增长。 \\
 B客户 & 7.96亿元 & 6.06亿元 & 6.94亿元 & 7.82亿元 & 通信网络设备板、服务器/计算机板。 \\
@@ -81,7 +119,7 @@ P客户 & N/A & N/A & N/A & 1.14亿元 & 服务器/计算机板，市场需求�
 \vspace{0.3em}
 \begin{tabularx}{\textwidth}{L{2.4cm}R{1.7cm}R{1.7cm}R{1.7cm}R{1.7cm}X}
 \toprule
-\textbf{Metric} & \textbf{2022} & \textbf{2023} & \textbf{2024} & \textbf{2025 1-9M} & \textbf{Use} \\
+\textbf{指标} & \textbf{2022} & \textbf{2023} & \textbf{2024} & \textbf{2025 1-9M} & \textbf{用途} \\
 \midrule
 外销收入占比 & 41.13\% & 45.51\% & 51.03\% & 63.34\% & 外销和AI服务器客户链权重上升。 \\
 服务器/计算机板收入占比 & N/A & N/A & 48.96\% & 68.01\% & 服务器/计算机板成为第一大应用领域。 \\
@@ -91,63 +129,63 @@ P客户 & N/A & N/A & N/A & 1.14亿元 & 服务器/计算机板，市场需求�
 \sourcenote{\texttt{data/official\_shengyi\_refresh\_evidence.md}; official refinancing inquiry response; customer names exempted, not named NVIDIA/Google revenue}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12b: Official named customer-chain evidence from watchlist filings]
+\begin{exhibitbox}[图表12b: Official named customer-chain evidence from watchlist filings]
 \footnotesize
 \begin{description}
   \item[南亚新材] 官方年报具名PCB客户包括健鼎科技、奥士康、景旺电子、深南电路、瀚宇博德、生益电子、方正科技、沪电股份、胜宏科技、广东骏亚；终端重点客户认证包括华为、中兴通讯、浪潮、曙光、新华三、HPE、微软。
   \item[高速材料代际] M6--M8产品已批量应用于国内头部算力客户，M9处于NPI导入，M10于2025Q4推出并处于海外核心算力终端认证；NOUYA8U完成华为核心客户准入并规模化量产。
   \item[边界] 年报同时说明因商业秘密，对前五名供应商及客户名称豁免披露。因此该证据能确认客户链和认证，不等于客户/平台收入拆分。
 \end{description}
-\sourcenote{\texttt{data/official\_named\_customer\_chain\_evidence.md}; official 2025 annual report of 688519}
+\sourcenote{\texttt{data/official\_named\_customer\_chain\_evidence.md}; official 2025 annual report of 南亚新材（688519）}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12c: Watchlist customer and supplier concentration]
+\begin{exhibitbox}[图表12c: Watchlist customer and supplier concentration]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{2.0cm}R{1.6cm}R{2.0cm}R{1.6cm}X}
 \toprule
-\textbf{Ticker} & \textbf{Top-5 sales} & \textbf{Sales ratio} & \textbf{Top-5 purchase} & \textbf{Purchase ratio} & \textbf{Read-through} \\
+\textbf{公司（代码）} & \textbf{Top-5 sales} & \textbf{Sales ratio} & \textbf{Top-5 purchase} & \textbf{Purchase ratio} & \textbf{解读} \\
 \midrule
-688519 & 18.27亿元 & 34.96\% & 25.99亿元 & 55.34\% & 供应商集中度高，且问询函披露奥士康、方正、深南、景旺等客户。 \\
-002436 & 19.64亿元 & 27.29\% & 11.53亿元 & 20.27\% & 客户集中度中等，匿名披露。 \\
-301200 & 21.74亿元 & 37.65\% & 12.51亿元 & 28.23\% & 第一大客户占27.24\%，设备订单节奏敏感。 \\
-688630 & 5.86亿元 & 41.59\% & 4.22亿元 & 42.24\% & 具名客户含鹏鼎、胜宏、景旺、深南，客户链证据强。 \\
-300400 & 1.47亿元 & 18.72\% & 0.84亿元 & 17.53\% & 集中度较低，订单分散。 \\
-301377 & 6.44亿元 & 30.04\% & 4.94亿元 & 36.79\% & 耗材链客户/供应商均有集中度风险。 \\
-002938 & 350.17亿元 & 89.45\% & 67.29亿元 & 21.28\% & 2025年报口径客户高度集中，第一大客户A占79.65\%，但匿名披露。 \\
+南亚新材（688519） & 18.27亿元 & 34.96\% & 25.99亿元 & 55.34\% & 供应商集中度高，且问询函披露奥士康、方正、深南、景旺等客户。 \\
+兴森科技（002436） & 19.64亿元 & 27.29\% & 11.53亿元 & 20.27\% & 客户集中度中等，匿名披露。 \\
+大族数控（301200） & 21.74亿元 & 37.65\% & 12.51亿元 & 28.23\% & 第一大客户占27.24\%，设备订单节奏敏感。 \\
+芯碁微装（688630） & 5.86亿元 & 41.59\% & 4.22亿元 & 42.24\% & 具名客户含鹏鼎、胜宏、景旺、深南，客户链证据强。 \\
+劲拓股份（300400） & 1.47亿元 & 18.72\% & 0.84亿元 & 17.53\% & 集中度较低，订单分散。 \\
+鼎泰高科（301377） & 6.44亿元 & 30.04\% & 4.94亿元 & 36.79\% & 耗材链客户/供应商均有集中度风险。 \\
+鹏鼎控股（002938） & 350.17亿元 & 89.45\% & 67.29亿元 & 21.28\% & 2025年报口径客户高度集中，第一大客户A占79.65\%，但匿名披露。 \\
 \bottomrule
 \end{tabularx}
 \sourcenote{\texttt{data/watchlist\_customer\_supplier\_concentration.md}; \texttt{data/pengding\_official\_filing\_evidence.md}; official 2025 annual reports and inquiry responses}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12c-2: Watchlist product-customer bridge from official filings]
+\begin{exhibitbox}[图表12c-2: Watchlist product-customer bridge from official filings]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}X X X}
 \toprule
-\textbf{Ticker} & \textbf{Product economics} & \textbf{Named customer / validation evidence} & \textbf{Remaining gap} \\
+\textbf{公司（代码）} & \textbf{Product economics} & \textbf{Named customer / validation evidence} & \textbf{Remaining gap} \\
 \midrule
-688519 & 2025覆铜板收入40.55亿元、毛利率6.96\%；粘结片收入10.72亿元、毛利率31.05\%；高频高速及IC载板材料收入9.25亿元、同比+80.60\%。 & 问询回复列示覆铜板客户奥士康5.86亿元、方正科技2.19亿元、深南电路2.12亿元、江西旭昇1.85亿元、景旺电子1.64亿元；粘结片客户奥士康1.54亿元、方正科技1.39亿元、深南电路1.05亿元、特创集团0.57亿元、景旺电子0.47亿元。M6/M7已稳定量产交付，M8及以下通过部分海外终端认证。 & PCB客户收入强于终端平台收入；无法拆出NVIDIA/Google/海外AI平台贡献。 \\
-688630 & 2025收入14.08亿元、同比+47.61\%；PCB系列收入10.80亿元、毛利率35.59\%；泛半导体系列收入2.33亿元、毛利率54.57\%、同比+112.50\%。 & 年报列示前五客户：鹏鼎1.93亿元/13.68\%、胜宏1.89亿元/13.40\%、景旺1.00亿元/7.07\%、V-Technology 0.57亿元/4.01\%、深南0.48亿元/3.43\%。2026规划聚焦高端PCB、HDI/类载板、WLP/PLP、IC载板曝光设备、4um线宽和CoWoS-L爬坡支持。 & 设备收入不是下游AI平台收入；年报亦披露无重大销售合同。 \\
+南亚新材（688519） & 2025覆铜板收入40.55亿元、毛利率6.96\%；粘结片收入10.72亿元、毛利率31.05\%；高频高速及IC载板材料收入9.25亿元、同比+80.60\%。 & 问询回复列示覆铜板客户奥士康5.86亿元、方正科技2.19亿元、深南电路2.12亿元、江西旭昇1.85亿元、景旺电子1.64亿元；粘结片客户奥士康1.54亿元、方正科技1.39亿元、深南电路1.05亿元、特创集团0.57亿元、景旺电子0.47亿元。M6/M7已稳定量产交付，M8及以下通过部分海外终端认证。 & PCB客户收入强于终端平台收入；无法拆出NVIDIA/Google/海外AI平台贡献。 \\
+芯碁微装（688630） & 2025收入14.08亿元、同比+47.61\%；PCB系列收入10.80亿元、毛利率35.59\%；泛半导体系列收入2.33亿元、毛利率54.57\%、同比+112.50\%。 & 年报列示前五客户：鹏鼎1.93亿元/13.68\%、胜宏1.89亿元/13.40\%、景旺1.00亿元/7.07\%、V-Technology 0.57亿元/4.01\%、深南0.48亿元/3.43\%。2026规划聚焦高端PCB、HDI/类载板、WLP/PLP、IC载板曝光设备、4um线宽和CoWoS-L爬坡支持。 & 设备收入不是下游AI平台收入；年报亦披露无重大销售合同。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/watchlist\_product\_customer\_bridge.md}; official 2025 annual report inquiry response for 688519; official 2025 annual report for 688630}
+\sourcenote{\texttt{data/watchlist\_product\_customer\_bridge.md}; official 2025 annual report inquiry response for 南亚新材（688519）; official 2025 annual report for 芯碁微装（688630）}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12c-3: Additional watchlist segment-customer evidence]
+\begin{exhibitbox}[图表12c-3: Additional watchlist segment-customer evidence]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}X X X}
 \toprule
-\textbf{Ticker} & \textbf{Official product economics} & \textbf{AI-chain / customer evidence} & \textbf{Boundary} \\
+\textbf{公司（代码）} & \textbf{Official product economics} & \textbf{AI-chain / customer evidence} & \textbf{边界} \\
 \midrule
-002436 & 2025收入71.95亿元；PCB收入48.97亿元、毛利率25.26\%；半导体业务收入19.10亿元，其中IC封装基板16.70亿元、毛利率-16.06\%，半导体测试板2.39亿元、毛利率38.03\%。 & FCBGA项目已完成技术、产能和良率量产准备，样品订单同比大幅增长；但人工、折旧、能源和材料等投入6.62亿元，显著拖累净利。前五客户19.64亿元/27.29\%。 & 客户匿名；IC载板增长不等于AI平台放量，EPS要扣除FCBGA爬坡成本。 \\
-301200 & 2025 PCB专用设备收入57.73亿元、毛利率35.12\%；钻孔类设备收入41.67亿元、毛利率33.45\%、同比+98.38\%。 & CCD六轴独立机械钻孔机完成下一代AI服务器PCB加工认证，并在多家高多层板龙头企业量产；前五客户21.74亿元/37.65\%，第一大客户15.72亿元/27.24\%。 & 客户匿名，且公司披露无重大销售合同；设备收入不是下游AI PCB收入。 \\
-300400 & 2025收入7.85亿元；电子装联设备收入7.27亿元、毛利率31.68\%、占收入92.59\%；内销占93.02\%，直销占86.41\%。 & 终端应用覆盖消费电子、通信、汽车电子、算力服务器等；AI服务器增长被列为PCBA产业链结构性机会。前五客户1.47亿元/18.72\%。 & 主题相关但链条较远，属于PCBA装联设备代理，不是PCB制造/材料直接收入。 \\
-301377 & 2025收入21.44亿元；精密刀具收入17.40亿元、毛利率41.67\%；研磨抛光材料1.92亿元、毛利率58.86\%。0.20mm及以下微钻销量占比29.65\%，涂层钻针销量占比39.40\%。 & 高端微钻、高长径比钻针和涂层钻针匹配AI服务器、高端光模块和封装载板加工需求；前五客户6.44亿元/30.04\%。 & 耗材链能验证需求方向，但不能拆分终端AI平台客户或订单金额。 \\
+兴森科技（002436） & 2025收入71.95亿元；PCB收入48.97亿元、毛利率25.26\%；半导体业务收入19.10亿元，其中IC封装基板16.70亿元、毛利率-16.06\%，半导体测试板2.39亿元、毛利率38.03\%。 & FCBGA项目已完成技术、产能和良率量产准备，样品订单同比大幅增长；但人工、折旧、能源和材料等投入6.62亿元，显著拖累净利。前五客户19.64亿元/27.29\%。 & 客户匿名；IC载板增长不等于AI平台放量，EPS要扣除FCBGA爬坡成本。 \\
+大族数控（301200） & 2025 PCB专用设备收入57.73亿元、毛利率35.12\%；钻孔类设备收入41.67亿元、毛利率33.45\%、同比+98.38\%。 & CCD六轴独立机械钻孔机完成下一代AI服务器PCB加工认证，并在多家高多层板龙头企业量产；前五客户21.74亿元/37.65\%，第一大客户15.72亿元/27.24\%。 & 客户匿名，且公司披露无重大销售合同；设备收入不是下游AI PCB收入。 \\
+劲拓股份（300400） & 2025收入7.85亿元；电子装联设备收入7.27亿元、毛利率31.68\%、占收入92.59\%；内销占93.02\%，直销占86.41\%。 & 终端应用覆盖消费电子、通信、汽车电子、算力服务器等；AI服务器增长被列为PCBA产业链结构性机会。前五客户1.47亿元/18.72\%。 & 主题相关但链条较远，属于PCBA装联设备代理，不是PCB制造/材料直接收入。 \\
+鼎泰高科（301377） & 2025收入21.44亿元；精密刀具收入17.40亿元、毛利率41.67\%；研磨抛光材料1.92亿元、毛利率58.86\%。0.20mm及以下微钻销量占比29.65\%，涂层钻针销量占比39.40\%。 & 高端微钻、高长径比钻针和涂层钻针匹配AI服务器、高端光模块和封装载板加工需求；前五客户6.44亿元/30.04\%。 & 耗材链能验证需求方向，但不能拆分终端AI平台客户或订单金额。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/watchlist\_product\_customer\_bridge.md}; official 2025 annual reports for 002436, 301200, 300400 and 301377}
+\sourcenote{\texttt{data/watchlist\_product\_customer\_bridge.md}; official 2025 annual reports for 兴森科技（002436）, 大族数控（301200）, 劲拓股份（300400） and 鼎泰高科（301377）}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12f: Watchlist IR technology and customer-validation refresh]
+\begin{exhibitbox}[图表12f: Watchlist IR technology and customer-validation refresh]
 \footnotesize
 \begin{description}
   \item[南亚新材] IR记录显示NY6300S进入多客户PCIe Gen5服务器量产，PCIe Gen6完成头部客户测评；AI服务器突破多客户国产GPU方案，材料覆盖M6--M8U并适配UBB/OAM/AI系统；M8材料已获多家国内重要终端认证并小批量生产，M9材料在多家PCB客户测试并推进国内外终端认证。
@@ -158,7 +196,7 @@ P客户 & N/A & N/A & N/A & 1.14亿元 & 服务器/计算机板，市场需求�
 \sourcenote{\texttt{data/watchlist\_ir\_refresh\_evidence.md}; watchlist official / issuer IR records}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 12g: Pengding HKEX filing customer and technology evidence]
+\begin{exhibitbox}[图表12g: Pengding HKEX filing customer and technology evidence]
 \footnotesize
 \begin{description}
   \item[Market position] HKEX draft filing excerpt cites Frost \& Sullivan: Pengding ranked No. 1 globally by sales revenue in AI and high-performance computing PCB in 1H2025, and No. 1 in high-build-up HDI PCB and 14+ layer high-layer-count MLPCB categories.
@@ -168,14 +206,31 @@ P客户 & N/A & N/A & N/A & 1.14亿元 & 服务器/计算机板，市场需求�
   \item[Official delivery] 2025年汽车/服务器用板及其他用板收入21.19亿元、同比+106.67\%；年报称AI服务器类产品收入较2024年增长超1倍，2026年预计继续保持强劲增长；1.6T光模块业务快速增长，3.2T产品进入研发设计。
   \item[IR validation] 2026年IR记录显示算力客户认证进度顺利，预计2026年是算力直接客户订单导入元年；高阶HDI和HLC产品已打入AI服务器并逐步量产，SLP切入800G/1.6T光模块并将量产出货，3.2T产品进入研发。公司对“英伟达高端板订单”问题明确表示不方便评价单一客户。
   \item[P5W interaction] 深交所互动易/全景问答显示，公司1.6T光模块相关产品已批量供货，3.2T产品与客户开发中；对于Rubin/英伟达、苹果折叠屏等具体客户/产品问题，公司均以商业保密为由不披露。
-  \item[Parent read-through] 臻鼎2025年报披露营收1,825.22亿新台币、归母净利67.91亿新台币、EPS 6.91元；AI cloud / network / terminal application相关产品收入已接近2025收入70\%。年报还披露Customer X 2025销售1,360.68亿新台币、占74.55\%，但客户匿名，不能映射为Apple/NVIDIA等具名客户。臻鼎官方简报显示，2026Q1 Server/Optical \& Others收入占比10.1\%、IC Substrate占比9.6\%，合计19.7\%；Server/Optical收入同比翻倍以上，全年预计翻倍，IC载板全年目标+70\%以上。2025Q3简报进一步称AI服务器收入预计2026年逐步放量、2027年翻倍，淮安iHDI/HLC产能预计2026年底翻倍。
+  \item[母公司映射] 臻鼎2025年报披露营收1,825.22亿新台币、归母净利67.91亿新台币、EPS 6.91元；AI云端、网络与终端应用相关产品收入已接近2025收入70\%。年报还披露Customer X 2025销售1,360.68亿新台币、占74.55\%，但客户匿名，不能映射为Apple/NVIDIA等具名客户。臻鼎官方简报显示，2026Q1 服务器/光模块及其他收入占比10.1\%、IC载板占比9.6\%，合计19.7\%；服务器/光模块收入同比翻倍以上，全年预计翻倍，IC载板全年目标+70\%以上。2025Q3简报进一步称AI服务器收入预计2026年逐步放量、2027年翻倍，淮安iHDI/HLC产能预计2026年底翻倍。
   \item[Apple-side official signal] Apple 2023年官方Newsroom清洁能源公告写明 Avary Holding 于2020年加入 Apple Supplier Clean Energy Program，并启动自身供应商可再生能源倡议。这是客户侧官方供应链项目参与信号，不披露PCB产品、订单、收入、ASP、出货量或平台分配。
   \item[Boundary] 客户代码仍为匿名披露，不能映射为具名NVIDIA/Google/Meta/Microsoft/Apple收入；该证据增强鹏鼎观察名单地位，但不替代缺失的UBS原始研报。
 \end{description}
 \sourcenote{\texttt{data/pengding\_hkex\_business\_evidence.md}; \texttt{data/pengding\_official\_filing\_evidence.md}; \texttt{data/pengding\_ir\_evidence.md}; \texttt{data/pengding\_p5w\_interaction\_evidence.md}; \texttt{data/zhen\_ding\_parent\_official\_evidence.md}; \texttt{data/apple\_customer\_side\_official\_probe\_20260616.md}; HKEX draft filing excerpt, official A-share filings, IR records, P5W/SZSE interaction, Apple Newsroom and parent-company official read-through, not named platform revenue split}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 13: Official filing segment evidence]
+\begin{exhibitbox}[图表12h: Customer-side official supplier-list evidence]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{2.7cm}X X}
+\toprule
+\textbf{客户侧来源} & \textbf{命中供应商} & \textbf{证据边界} \\
+\midrule
+Microsoft Top 100 Production Suppliers FY24 & AVARY HOLDING (SHENZHEN), VICTORY GIANT TECHNOLOGY (HUIZHOU), HANNSTAR BOARD, TRIPOD TECHNOLOGY, UNIMICRON TECHNOLOGY (KUNSHAN), SUZHOU DONGSHAN PRECISION, SAMSUNG ELECTRO MECHANICS, MEKTEC。 & Microsoft官方商用硬件Top 100供应商清单，能确认客户侧具名供应商关系；不披露具体产品、PCB收入、AI/云平台归属、ASP、出货或订单金额。 \\
+Amazon 2024 Sustainability Report & 报告称供应商清单含近2,300个成品与组件供应商，并共享至Open Supply Hub。 & 当前报告正文未列出PCB供应商行；OS Hub匿名API需要认证。 \\
+Open Supply Hub facility API / front-end & Victory Giant、Avary 初始设施页显示 Amazon 贡献者；扩展检索新增 Tripod 3个相关设施（Amazon/Apple/Dell/Samsung/AWS，含 Parts/Components、Other direct material suppliers、Semiconductor Manufacturing、Finished goods 等粗粒度字段）、Unimicron 6个设施（Apple/AWS）、Dongshan 3个设施（Apple）、Meiko 5个设施（Amazon/Samsung/gBizINFO）、Mektec 1个设施（Amazon/Apple）、Shennan Circuits USA 1个SBA行。 & 客户侧网络贡献者和设施元数据证据；不披露具体产品、PCB收入、AWS/AI平台归属、ASP、出货、订单金额、毛利或EPS底层假设。 \\
+Upstream supplier-list files & Apple 2018/FY2020名单命中 Dongshan、Tripod、Unimicron、Samsung Electro-Mechanics、Zhen Ding；Dell FY2025名单命中 Tripod、HannStar/Gold Circuit类零组件行，Tripod为 Parts / Components、Other direct material suppliers；Samsung供应商名单命中 Meiko、Samsung Electro-Mechanics、Tripod、Korea Circuit、Ibiden、Daeduck；AWS认证站点命中Avary/宏启胜、Qing Ding/臻鼎系、Tripod和Victory Giant。 & 上游客户/认证清单能回溯部分OSH贡献者来源并提高关系可信度；仍不披露具体客户平台产品、收入、ASP、出货、订单金额、毛利或EPS假设。 \\
+Customer annual reports / Form SD & Apple披露制造采购义务562亿美元；Alphabet披露1491亿美元承诺，主要为技术基础设施和库存订单；Microsoft披露1099.53亿美元采购承诺，主要与数据中心相关；Dell披露188亿美元采购义务、AI-optimized servers收入246.83亿美元；NVIDIA Form SD披露fabless/contract manufacturing、memory/substrates/components、164个direct suppliers和246个3TG processing facilities。 & 这些一手文件强化AI基础设施和硬件供应链需求、采购承诺和供应商尽调边界，但仍不披露Victory Giant/Avary/Tripod等PCB/CCL/载板供应商的客户平台收入、ASP、出货、订单金额、毛利或EPS变量。 \\
+NVIDIA Q2 FY2026 IR release & 未命中Victory Giant / PCB / substrate / ODM qualified相关具名表述。 & NVIDIA官方发布未确认社媒中的具名供应商说法。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{\texttt{data/microsoft\_top100\_supplier\_pcb\_evidence\_20260617.md}; \texttt{data/opensupplyhub\_customer\_network\_evidence\_20260617.md}; \texttt{data/opensupplyhub\_expanded\_supplier\_evidence\_20260618.md}; \texttt{data/upstream\_supplier\_list\_evidence\_20260618.md}; \texttt{data/customer\_annual\_risk\_disclosure\_recheck\_20260618.md}; \texttt{data/customer\_form\_sd\_conflict\_minerals\_recheck\_20260618.md}; \texttt{data/customer\_purchase\_commitment\_matrix\_20260618.md}; customer-side official / supply-chain network evidence, not revenue split}
+\end{exhibitbox}
+
+\begin{exhibitbox}[图表13: Official filing segment evidence]
 \footnotesize
 \begin{description}
   \item[沪电股份] 官方年报披露2025年PCB收入约181.43亿元，毛利率约36.91%；数通PCB收入约146.56亿元，高速交换机/路由81.69亿元，AI服务器/HPC 30.06亿元。缺口：未披露客户名称、NVIDIA/ASIC拆分、单机价值量和平台订单。
@@ -186,70 +241,72 @@ P客户 & N/A & N/A & N/A & 1.14亿元 & 服务器/计算机板，市场需求�
 \sourcenote{\texttt{data/official\_filing\_segment\_summary.md}; official annual reports in \texttt{workspace/research/semiconductor-pcb-20260612/sources/official-annual-core-20260615/}}
 \end{exhibitbox}
 
-\section{Gap Versus Top-Tier Research}
+\section{与顶级研究的差距}
 
 \begin{sourcequalitybox}[Main content gap]
 当前报告能证明``平台链条是主要需求来源''，但尚不能证明``每条平台链条对每家公司EPS贡献多少''。这是与顶级全球硬件研报相比最大的内容差距，也是下一轮调研的最高优先级。
 \end{sourcequalitybox}
 
-\section{Investor Relations Platform Evidence}
+因此，本报告的投资建议不应被理解为“AI PCB全链条买入”。更准确的理解是：对证据密度高、收入和毛利已经开始兑现的公司，维持核心跟踪；对客户和产品弹性更大的公司，等待Q2/中报验证；对设备、耗材和材料期权，要求更高的安全边际和更明确的订单证据。
 
-\begin{exhibitbox}[Exhibit 15: IR records improve platform-chain evidence]
+\section{投资者交流平台证据}
+
+\begin{exhibitbox}[图表15: IR records improve platform-chain evidence]
 \footnotesize
 \begin{description}
-  \item[002463] 2026年6月IR称AI训练/推理和CSP资本开支推动AI服务器、高速网络交换机部署；泰国数据通讯事业部已有超70\%海外客户认证，2026Q1产能利用率超90\%，加速AI服务器与高速网络中高端产品批量导入。缺口：未披露终端客户名称或NVIDIA/ASIC收入。
-  \item[300476] 2026年6月IR称AI服务器PCB 2024--2029 CAGR 18.7\%，AI服务器HDI CAGR 29.6\%；具备100层以上高多层PCB、10阶30层HDI、16层任意互联HDI；ASIC客户进展顺利，GPU加速卡和TPU配套板供应规模扩大；1.6T光模块mSAP产线在手订单饱满。缺口：未披露具体客户或ASIC/NVIDIA平台收入。
-  \item[002916] 2026年6月IR称PCB业务受益于AI算力基础设施硬件需求增长，综合产能利用率处于高位；封装基板因处理器芯片和存储类需求拉动；FC-BGA 22层及以下产品量产、24层以上研发推进；2026资本开支聚焦PCB和封装基板。缺口：未披露平台/客户订单金额。
-  \item[600183] 上证e互动官方IR记录显示，AI服务器对低损耗CCL材料提出更高要求；公司正同国内外终端围绕GPU和AI项目开发合作，并已有产品批量供应；泰国CCL/prepreg基地投资约14亿元。缺口：未披露M8/M9收入占比或具名客户认证。
+  \item[沪电股份（002463）] 2026年6月IR称AI训练/推理和CSP资本开支推动AI服务器、高速网络交换机部署；泰国数据通讯事业部已有超70\%海外客户认证，2026Q1产能利用率超90\%，加速AI服务器与高速网络中高端产品批量导入。缺口：未披露终端客户名称或NVIDIA/ASIC收入。
+  \item[胜宏科技（300476）] 2026年6月IR称AI服务器PCB 2024--2029 CAGR 18.7\%，AI服务器HDI CAGR 29.6\%；具备100层以上高多层PCB、10阶30层HDI、16层任意互联HDI；ASIC客户进展顺利，GPU加速卡和TPU配套板供应规模扩大；1.6T光模块mSAP产线在手订单饱满。缺口：未披露具体客户或ASIC/NVIDIA平台收入。
+  \item[深南电路（002916）] 2026年6月IR称PCB业务受益于AI算力基础设施硬件需求增长，综合产能利用率处于高位；封装基板因处理器芯片和存储类需求拉动；FC-BGA 22层及以下产品量产、24层以上研发推进；2026资本开支聚焦PCB和封装基板。缺口：未披露平台/客户订单金额。
+  \item[生益科技（600183）] 上证e互动官方IR记录显示，AI服务器对低损耗CCL材料提出更高要求；公司正同国内外终端围绕GPU和AI项目开发合作，并已有产品批量供应；泰国CCL/prepreg基地投资约14亿元。缺口：未披露M8/M9收入占比或具名客户认证。
 \end{description}
 \sourcenote{\texttt{data/ir\_platform\_chain\_summary.md}; \texttt{data/official\_ir\_refresh\_20260616.md}; IR PDFs in \texttt{workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/} and \texttt{workspace/research/semiconductor-pcb-20260612/sources/ir-core-refresh-20260616/}}
 \end{exhibitbox}
 
-\section{Customer Concentration}
+\section{客户集中度}
 
-\begin{exhibitbox}[Exhibit 14: Official top-5 customer concentration]
+\begin{exhibitbox}[图表14: Official top-5 customer concentration]
 \small
 \begin{tabularx}{\textwidth}{L{1.8cm}R{2.4cm}R{2.0cm}X}
 \toprule
-\textbf{Ticker} & \textbf{Top-5 sales} & \textbf{Ratio} & \textbf{Read-through} \\
+\textbf{公司（代码）} & \textbf{Top-5 sales} & \textbf{比例} & \textbf{解读} \\
 \midrule
-002463 & 101.03亿元 & 53.32\% & 客户集中度高；按终端客户口径约53.89\%。 \\
-300476 & 80.98亿元 & 41.98\% & 高集中度，解释其对国际头部客户订单节奏敏感。 \\
-002916 & 43.56亿元 & 18.42\% & 客户集中度相对较低，组合更分散。 \\
-600183 & 82.80亿元 & 29.71\% & 材料龙头客户集中度中等偏高。 \\
-603186 & 11.54亿元 & 26.42\% & 客户集中度中等，客户名称未披露。 \\
+沪电股份（002463） & 101.03亿元 & 53.32\% & 客户集中度高；按终端客户口径约53.89\%。 \\
+胜宏科技（300476） & 80.98亿元 & 41.98\% & 高集中度，解释其对国际头部客户订单节奏敏感。 \\
+深南电路（002916） & 43.56亿元 & 18.42\% & 客户集中度相对较低，组合更分散。 \\
+生益科技（600183） & 82.80亿元 & 29.71\% & 材料龙头客户集中度中等偏高。 \\
+华正新材（603186） & 11.54亿元 & 26.42\% & 客户集中度中等，客户名称未披露。 \\
 \bottomrule
 \end{tabularx}
 \sourcenote{\texttt{data/customer\_concentration\_summary.md}; official annual reports}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 15: Anonymous top-customer detail from filings]
+\begin{exhibitbox}[图表15: Anonymous top-customer detail from filings]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}X X}
 \toprule
-\textbf{Ticker} & \textbf{Top customer rows} & \textbf{Interpretation} \\
+\textbf{公司（代码）} & \textbf{Top customer rows} & \textbf{解释} \\
 \midrule
-002463 & 客户一27.02亿元/14.26\%；客户二21.54亿元/11.37\%；客户三20.68亿元/10.92\%；客户四18.04亿元/9.52\%；客户五13.74亿元/7.25\%。 & 高度集中，且发行人按匿名客户披露。 \\
-300476 & 第一名28.87亿元/14.97\%；第二名24.23亿元/12.56\%；第三名18.37亿元/9.52\%；第四名5.20亿元/2.70\%；第五名4.31亿元/2.23\%。 & 前三客户贡献明显，订单节奏敏感。 \\
-002916 & 第一名17.65亿元/7.46\%；第二名7.28亿元/3.08\%；第三名6.92亿元/2.93\%；第四名5.95亿元/2.52\%；第五名5.76亿元/2.43\%。 & 客户集中度相对较低。 \\
-600183 & 前五客户合计82.80亿元/29.71\%。 & 抽取文本未可靠给出逐行客户明细。 \\
-603186 & 前五客户合计11.54亿元/26.42\%。 & 原文存在分组单位，逐行结构不稳定。 \\
+沪电股份（002463） & 客户一27.02亿元/14.26\%；客户二21.54亿元/11.37\%；客户三20.68亿元/10.92\%；客户四18.04亿元/9.52\%；客户五13.74亿元/7.25\%。 & 高度集中，且发行人按匿名客户披露。 \\
+胜宏科技（300476） & 第一名28.87亿元/14.97\%；第二名24.23亿元/12.56\%；第三名18.37亿元/9.52\%；第四名5.20亿元/2.70\%；第五名4.31亿元/2.23\%。 & 前三客户贡献明显，订单节奏敏感。 \\
+深南电路（002916） & 第一名17.65亿元/7.46\%；第二名7.28亿元/3.08\%；第三名6.92亿元/2.93\%；第四名5.95亿元/2.52\%；第五名5.76亿元/2.43\%。 & 客户集中度相对较低。 \\
+生益科技（600183） & 前五客户合计82.80亿元/29.71\%。 & 抽取文本未可靠给出逐行客户明细。 \\
+华正新材（603186） & 前五客户合计11.54亿元/26.42\%。 & 原文存在分组单位，逐行结构不稳定。 \\
 \bottomrule
 \end{tabularx}
 \sourcenote{\texttt{data/top\_customer\_supplier\_detail.md}; official annual reports}
 \end{exhibitbox}
 
-\begin{exhibitbox}[Exhibit 16: Anonymous top-supplier detail from filings]
+\begin{exhibitbox}[图表16: Anonymous top-supplier detail from filings]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}X X}
 \toprule
-\textbf{Ticker} & \textbf{Top supplier rows} & \textbf{Interpretation} \\
+\textbf{公司（代码）} & \textbf{Top supplier rows} & \textbf{解释} \\
 \midrule
-002463 & 供应商一31.56亿元/22.28\%；供应商二9.72亿元/6.86\%；供应商三7.23亿元/5.11\%；供应商四5.93亿元/4.18\%。 & 上游集中度高，材料供应风险重要。 \\
-300476 & 第一名16.50亿元/9.60\%；第二名12.56亿元/7.31\%；第三名11.65亿元/6.77\%；第四名6.93亿元/4.03\%；第五名6.55亿元/3.81\%。 & 上游集中度中等偏高。 \\
-002916 & 第一名12.25亿元/8.69\%；第二名9.97亿元/7.08\%；第三名7.70亿元/5.46\%；第四名7.19亿元/5.10\%；第五名5.29亿元/3.75\%。 & 材料供应链稳定性影响PCB/载板交付。 \\
-600183 & 前五供应商合计50.88亿元/27.45\%。 & 材料企业仍有供应集中风险。 \\
-603186 & 前五供应商合计16.20亿元/46.12\%。 & 供应商集中度高。 \\
+沪电股份（002463） & 供应商一31.56亿元/22.28\%；供应商二9.72亿元/6.86\%；供应商三7.23亿元/5.11\%；供应商四5.93亿元/4.18\%。 & 上游集中度高，材料供应风险重要。 \\
+胜宏科技（300476） & 第一名16.50亿元/9.60\%；第二名12.56亿元/7.31\%；第三名11.65亿元/6.77\%；第四名6.93亿元/4.03\%；第五名6.55亿元/3.81\%。 & 上游集中度中等偏高。 \\
+深南电路（002916） & 第一名12.25亿元/8.69\%；第二名9.97亿元/7.08\%；第三名7.70亿元/5.46\%；第四名7.19亿元/5.10\%；第五名5.29亿元/3.75\%。 & 材料供应链稳定性影响PCB/载板交付。 \\
+生益科技（600183） & 前五供应商合计50.88亿元/27.45\%。 & 材料企业仍有供应集中风险。 \\
+华正新材（603186） & 前五供应商合计16.20亿元/46.12\%。 & 供应商集中度高。 \\
 \bottomrule
 \end{tabularx}
 \sourcenote{\texttt{data/top\_customer\_supplier\_detail.md}; official annual reports}

@@ -7,7 +7,7 @@
 | AI capex slowdown | Most bullish theses assume continued cloud capex, NVIDIA platform upgrades, and ASIC server expansion. | North American CSP capex guide-down, AI server order pushout, lower PCB backlog commentary. | Downgrade high-beta PCB names from aggressive/core to watchlist. |
 | Technology route migration | CoWoP, glass substrate, optical interconnect, copper cable, mSAP, and midplane/backplane architecture can shift value among PCB, substrate, packaging, and optical suppliers. | New platform architecture reduces board count or changes material spec; glass substrate wins material share faster than expected. | Re-underwrite each segment's value pool rather than extrapolating PCB content. |
 | Capacity overbuild | Leaders are entering high capex. If demand ramps slower than expected, scarcity can turn into price competition. | Capex continues rising while utilization/order visibility weakens; CCL lead time shortens sharply. | Cut scenario multiples and require backlog evidence. |
-| Valuation crowding | Tencent 2026-06-16 quote snapshot implies several names already price in strong delivery. | Price rises without forecast upgrades; implied PE exceeds growth-adjusted support. | Prefer waitlist/trigger-based entry rather than unconditional bullish stance. |
+| Valuation crowding | Tencent 2026-06-18 quote refetch implies several names already price in strong delivery. | Price rises without forecast upgrades; implied PE exceeds growth-adjusted support. | Prefer waitlist/trigger-based entry rather than unconditional bullish stance. |
 
 ## A-Level Risks
 

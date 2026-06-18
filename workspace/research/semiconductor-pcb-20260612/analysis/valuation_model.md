@@ -2,11 +2,11 @@
 
 ## Method
 
-Because Eastmoney realtime quotes failed but Tencent quote feed refreshed all current-universe tickers on 2026-06-16, this report uses refreshed public quote anchors plus a scenario framework and local public-source forecast range rather than publishing new target prices.
+Because Eastmoney realtime quotes failed but Tencent quote feed refreshed all current-universe tickers again on 2026-06-18, this report uses the latest public quote anchors plus a scenario framework and local public-source forecast range rather than publishing new target prices.
 
 Inputs:
 
-- Tencent 2026-06-16 quote feed snapshot for price, total market capitalization, PE and PB.
+- Tencent 2026-06-18 quote refetch / 2026-06-17 embedded timestamp snapshot for price, total market capitalization, PE and PB.
 - Broker-stated net profit forecasts where directly present in downloaded PDFs or local text.
 - Broker-stated target prices where directly present in local text.
 - Local forecast range table in `data/forecast_range_analysis.md`.

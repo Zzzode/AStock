@@ -15,4 +15,4 @@
 - This is not a target-price model.
 - Latest-period P/NPP is not annualized and must not be compared directly to annual PE.
 - The margin -2pct proxy subtracts 2% of latest-period revenue from latest-period net profit parent, approximating gross-margin sensitivity before tax/expense effects.
-- A full top-tier model still requires segment revenue, annual EPS forecasts, share count and customer-chain revenue exposure.
+- A full customer/platform model is not available from public sources without segment revenue, annual EPS forecasts, share count and customer-chain revenue exposure.

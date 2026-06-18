@@ -1,0 +1,85 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Recheck current customer-owned supplier-list and responsible-sourcing pages for Amazon, Dell, Microsoft and Apple.",
+  "raw_archive": "sources/probe-current-customer-supplier-lists-20260618/",
+  "boundary": "Current customer-side supplier-list pages improve public-route coverage but do not disclose product-platform revenue, ASP, shipments, order value, margin, depreciation, tax or EPS assumptions.",
+  "sources": [
+    {
+      "customer": "Amazon",
+      "source": "Supply-chain page",
+      "archive": "sources/probe-current-customer-supplier-lists-20260618/amazon-supply-chain-20260618.html",
+      "incremental_fields": [
+        "Open Supply Hub contributor id 1078",
+        "Open Supply Hub list id 3316",
+        "March 2026 review date",
+        "finished-product supplier and consumer-electronics scope"
+      ],
+      "remaining_gap": "No product, PCB/CCL revenue, platform allocation, ASP, shipment, order value, margin or EPS assumptions."
+    },
+    {
+      "customer": "Amazon",
+      "source": "2024 Sustainability Report",
+      "archive": "sources/probe-current-customer-supplier-lists-20260618/amazon-2024-sustainability-report.pdf",
+      "text": "sources/probe-current-customer-supplier-lists-20260618/amazon-2024-sustainability-report.txt",
+      "incremental_fields": [
+        "nearly 2300 finished-product suppliers in the 2024 supplier list",
+        "supplier list shared to Open Supply Hub"
+      ],
+      "remaining_gap": "No supplier product or revenue allocation."
+    },
+    {
+      "customer": "Amazon",
+      "source": "Open Supply Hub public route",
+      "archive": "sources/probe-current-customer-supplier-lists-20260618/amazon-osh-list-3316-20260618.html",
+      "incremental_fields": [
+        "current public map entry point archived"
+      ],
+      "remaining_gap": "Static HTML route does not expose product or revenue fields."
+    },
+    {
+      "customer": "Dell",
+      "source": "Public supplier list",
+      "archive": "sources/probe-current-customer-supplier-lists-20260618/dell-public-supplier-list-20260618.pdf",
+      "text": "sources/probe-current-customer-supplier-lists-20260618/dell-public-supplier-list-20260618.txt",
+      "incremental_fields": [
+        "procurement category",
+        "supplier type",
+        "PCBA category rows",
+        "Networking category rows",
+        "Parts / Components category rows"
+      ],
+      "representative_hits": [
+        "Tripod",
+        "Gold Circuit",
+        "Hannstar",
+        "Delton Technology",
+        "Broadcom",
+        "Marvell",
+        "Nvidia International"
+      ],
+      "remaining_gap": "No specific Dell product/platform, AI server allocation, PCB revenue, order value, ASP, shipment or margin."
+    },
+    {
+      "customer": "Microsoft",
+      "source": "Reports hub",
+      "archive": "sources/probe-current-customer-supplier-lists-20260618/microsoft-reports-hub-20260618.html",
+      "incremental_fields": [
+        "2025 sustainability and responsible-sourcing report hub links rechecked"
+      ],
+      "remaining_gap": "No newer Top 100 Production Suppliers link was exposed in static HTML; no product/platform/revenue fields beyond existing FY24 supplier-list evidence."
+    },
+    {
+      "customer": "Apple",
+      "source": "Supply-chain page and Supplier Code of Conduct / Standards",
+      "archive": "sources/probe-current-customer-supplier-lists-20260618/apple-supply-chain-20260618.html",
+      "standards_pdf": "sources/probe-current-customer-supplier-lists-20260618/apple-supplier-code-standards-20260618.pdf",
+      "standards_text": "sources/probe-current-customer-supplier-lists-20260618/apple-supplier-code-standards-20260618.txt",
+      "incremental_fields": [
+        "general Apple-designed printed circuit board materials reference",
+        "current supplier standards document"
+      ],
+      "remaining_gap": "No supplier list, supplier product, revenue, order, ASP, shipment, platform allocation or EPS input."
+    }
+  ],
+  "remaining_gap": "No current customer-side supplier-list route discloses named platform/customer revenue split, terminal-grade positioning/order flow, or customer/platform EPS model inputs."
+}

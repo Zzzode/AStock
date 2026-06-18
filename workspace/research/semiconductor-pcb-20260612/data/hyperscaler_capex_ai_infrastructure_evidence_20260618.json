@@ -1,0 +1,58 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Primary-source demand-side evidence for AI infrastructure capex and compute build-out.",
+  "raw_archive": "sources/probe-hyperscaler-capex-20260618/",
+  "boundary": "Supports platform-demand bridge and risk framework only; does not identify PCB suppliers or customer/platform revenue split.",
+  "items": [
+    {
+      "company": "Alphabet",
+      "sources": [
+        "sources/probe-hyperscaler-capex-20260618/alphabet-2026-q1-earnings-release.pdf",
+        "sources/probe-hyperscaler-capex-20260618/alphabet-2026-q1-earnings-release.txt"
+      ],
+      "evidence": [
+        "Google Cloud revenue +63% to USD 20.0bn, led by enterprise AI solutions and AI infrastructure",
+        "Q1 2026 purchases of property and equipment USD 35.674bn",
+        "TTM purchases of property and equipment USD 109.924bn"
+      ],
+      "treatment": "official demand/capex evidence, not supplier allocation"
+    },
+    {
+      "company": "Amazon",
+      "sources": [
+        "sources/probe-hyperscaler-capex-20260618/amazon-q1-2026-aboutamazon.html",
+        "sources/probe-hyperscaler-capex-20260618/amazon-q1-2026-aboutamazon.txt"
+      ],
+      "evidence": [
+        "AWS sales +28% to USD 37.6bn",
+        "Free cash flow decline driven by USD 59.3bn YoY increase in purchases of property and equipment, primarily AI investments",
+        "Chips business above USD 20bn annual revenue run rate",
+        "OpenAI about 2GW Trainium capacity commitment; Anthropic up to 5GW Trainium chips; 2.1mn+ AI chips landed; 1mn+ NVIDIA GPUs announced from 2026"
+      ],
+      "treatment": "official demand/accelerated-compute evidence, not supplier allocation"
+    },
+    {
+      "company": "Meta",
+      "sources": [
+        "sources/probe-hyperscaler-capex-20260618/meta-q1-2026-earnings-call-transcript.pdf",
+        "sources/probe-hyperscaler-capex-20260618/meta-q1-2026-earnings-call-transcript.txt"
+      ],
+      "evidence": [
+        "Q1 2026 capex including finance leases USD 19.8bn driven by servers, data centers and network infrastructure",
+        "2026 capex guidance raised to USD 125-145bn",
+        "Higher component pricing and data-center costs cited; >1GW custom silicon with Broadcom; AMD and Nvidia systems; USD 107bn increase in contractual commitments"
+      ],
+      "treatment": "official capex/component-cost evidence, not supplier allocation"
+    },
+    {
+      "company": "Microsoft",
+      "sources": [
+        "sources/probe-hyperscaler-capex-20260618/microsoft-fy2026-q3-press-release-webcast.html"
+      ],
+      "evidence": [
+        "archived page was thin/noindex shell without useful capex text"
+      ],
+      "treatment": "failed/thin primary-source route, not used for capex numbers"
+    }
+  ]
+}

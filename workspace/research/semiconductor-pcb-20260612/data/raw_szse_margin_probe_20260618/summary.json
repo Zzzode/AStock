@@ -1,0 +1,56 @@
+{
+  "run_date": "2026-06-18",
+  "source": "SZSE official ShowReport endpoint and AkShare SZSE official wrappers",
+  "status": "failed_connection_reset_or_timeout",
+  "akshare_source_archived": "data/raw_szse_margin_probe_20260618/akshare_stock_margin_szse_source.txt",
+  "akshare_wrapper_results": [
+    {
+      "function": "stock_margin_detail_szse",
+      "date": "20260617",
+      "result": "ConnectionResetError(54, connection reset by peer)"
+    },
+    {
+      "function": "stock_margin_szse",
+      "date": "20260617",
+      "result": "ConnectionResetError(54, connection reset by peer)"
+    },
+    {
+      "function": "stock_margin_underlying_info_szse",
+      "date": "20260617",
+      "result": "ConnectionResetError(54, connection reset by peer)"
+    }
+  ],
+  "direct_endpoint_results": [
+    {
+      "catalogid": "1837_xxpl",
+      "tabkey": "tab1",
+      "dates": [
+        "2026-06-17",
+        "2026-06-16",
+        "2026-06-13"
+      ],
+      "result": "curl Recv failure: Connection reset by peer; http_code 000"
+    },
+    {
+      "catalogid": "1837_xxpl",
+      "tabkey": "tab2",
+      "dates": [
+        "2026-06-17",
+        "2026-06-16",
+        "2026-06-13"
+      ],
+      "result": "curl Recv failure: Connection reset by peer; http_code 000"
+    },
+    {
+      "catalogid": "1834_xxpl",
+      "tabkey": "tab1",
+      "dates": [
+        "2026-06-17",
+        "2026-06-16",
+        "2026-06-13"
+      ],
+      "result": "curl timeout or connection reset; http_code 000"
+    }
+  ],
+  "boundary": "No durable SZSE official margin detail/summary/underlying data was retrieved in this environment. Existing Eastmoney public proxy remains the usable Shenzhen-listed margin-financing source; this does not provide terminal-grade order flow or institutional ownership."
+}

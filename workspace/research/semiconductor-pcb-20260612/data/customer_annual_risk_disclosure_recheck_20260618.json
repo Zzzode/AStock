@@ -1,0 +1,105 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Recheck latest customer annual-report / SEC-style risk disclosures for primary supplier-risk, contract-manufacturer and technical-infrastructure evidence.",
+  "raw_archive": "sources/probe-customer-annual-risk-disclosures-20260618/",
+  "boundary": "Annual reports provide primary-source supply-chain risk and purchase-commitment evidence, but do not disclose named PCB/CCL/substrate supplier revenue, ASP, shipments, order value, margin or EPS assumptions.",
+  "sources": [
+    {
+      "issuer": "Apple",
+      "filing": "sources/probe-customer-annual-risk-disclosures-20260618/apple-2025-10k.html",
+      "text": "sources/probe-customer-annual-risk-disclosures-20260618/apple-2025-10k.txt",
+      "excerpt": "sources/probe-customer-annual-risk-disclosures-20260618/apple-2025-10k-supplier-risk-excerpts.txt",
+      "incremental_fields": [
+        "single or limited source component risk",
+        "outsourcing partners by region",
+        "manufacturing purchase obligations"
+      ],
+      "remaining_gap": "No named PCB/substrate supplier, customer-platform revenue, ASP, shipment, order value, margin or EPS input."
+    },
+    {
+      "issuer": "Amazon",
+      "filing": "sources/probe-customer-annual-risk-disclosures-20260618/amazon-2025-10k.html",
+      "text": "sources/probe-customer-annual-risk-disclosures-20260618/amazon-2025-10k.txt",
+      "excerpt": "sources/probe-customer-annual-risk-disclosures-20260618/amazon-2025-10k-supplier-risk-excerpts.txt",
+      "incremental_fields": [
+        "limited or single-source supply risk",
+        "electronic device component suppliers",
+        "contract manufacturers",
+        "non-cancellable device component purchase commitments"
+      ],
+      "remaining_gap": "No named PCB/substrate supplier, AWS/AI platform allocation or supplier revenue."
+    },
+    {
+      "issuer": "Alphabet / Google",
+      "filing": "sources/probe-customer-annual-risk-disclosures-20260618/alphabet-2025-10k.html",
+      "text": "sources/probe-customer-annual-risk-disclosures-20260618/alphabet-2025-10k.txt",
+      "excerpt": "sources/probe-customer-annual-risk-disclosures-20260618/alphabet-2025-10k-supplier-risk-excerpts.txt",
+      "incremental_fields": [
+        "GPU and TPU technical infrastructure",
+        "servers and network equipment",
+        "technical infrastructure and inventory purchase commitments",
+        "contract manufacturers for technical infrastructure and devices"
+      ],
+      "remaining_gap": "No named TPU/server PCB supplier, revenue split or model variables."
+    },
+    {
+      "issuer": "Meta",
+      "filing": "sources/probe-customer-annual-risk-disclosures-20260618/meta-2025-10k.html",
+      "text": "sources/probe-customer-annual-risk-disclosures-20260618/meta-2025-10k.txt",
+      "excerpt": "sources/probe-customer-annual-risk-disclosures-20260618/meta-2025-10k-supplier-risk-excerpts.txt",
+      "incremental_fields": [
+        "third-party technical infrastructure providers",
+        "supply-chain challenges",
+        "components, equipment and services procurement risk",
+        "small-number third-party equipment/component manufacturing risk"
+      ],
+      "remaining_gap": "No named PCB/substrate supplier or platform revenue/model fields."
+    },
+    {
+      "issuer": "Microsoft",
+      "filing": "sources/probe-customer-annual-risk-disclosures-20260618/microsoft-2025-annual-report.html",
+      "text": "sources/probe-customer-annual-risk-disclosures-20260618/microsoft-2025-annual-report.txt",
+      "excerpt": "sources/probe-customer-annual-risk-disclosures-20260618/microsoft-2025-annual-report-supplier-risk-excerpts.txt",
+      "incremental_fields": [
+        "datacenter dependence on networking supplies, servers, GPUs and components",
+        "few qualified suppliers for certain server/device components",
+        "third-party contract manufacturers",
+        "datacenter purchase commitments"
+      ],
+      "remaining_gap": "No named server/device PCB supplier, revenue split or EPS input."
+    },
+    {
+      "issuer": "Dell Technologies",
+      "submissions_json": "sources/probe-customer-annual-risk-disclosures-20260618/dell-submissions-CIK0001571996.json",
+      "filing": "sources/probe-customer-annual-risk-disclosures-20260618/dell-fy2026-10k-sec.html",
+      "text": "sources/probe-customer-annual-risk-disclosures-20260618/dell-fy2026-10k-sec.txt",
+      "directory_probe": "sources/probe-customer-annual-risk-disclosures-20260618/dell-fy2026-10k-alt.html",
+      "incremental_fields": [
+        "FY2026 10-K accession 0001571996-26-000008",
+        "AI-optimized server revenue disaggregation",
+        "purchase obligations",
+        "contract manufacturer receivables",
+        "supplier finance program"
+      ],
+      "remaining_gap": "No named PCB/substrate supplier, customer/platform allocation, ASP, shipment, order value, margin or EPS input."
+    }
+  ],
+  "targeted_absence_checks": {
+    "supplier_names": [
+      "Victory Giant",
+      "Avary",
+      "Tripod",
+      "Unimicron",
+      "Dongshan",
+      "HannStar",
+      "Gold Circuit",
+      "Delton",
+      "Meiko",
+      "Mektec",
+      "Shennan",
+      "WUS"
+    ],
+    "result": "No material annual-report text hits for target PCB supplier names or PCB/substrate supplier disclosure."
+  },
+  "remaining_gap": "Latest annual-report / SEC-style routes do not close named platform/customer revenue split, terminal-grade positioning/order flow, or customer/platform EPS model requirements."
+}

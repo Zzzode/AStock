@@ -39,9 +39,9 @@ The required institutional depth sections are:
 
 ## Data Cutoff and Quality
 
-Public source corpus cutoff: 2026-06-12. The rebuild was performed on 2026-06-15.
+Public source corpus started from the 2026-06-12 seed set and was progressively refreshed through 2026-06-18. The rebuild began on 2026-06-15 and the current evidence state reflects later public-source refresh passes.
 
-The report now uses archived broker abstracts, downloaded broker PDFs, official annual reports, official IR records, public valuation history, holder proxies, and public article reproductions. It still does not cover a complete Wind/Choice-style consensus database, named platform/customer revenue split, or full real-time fund-flow positioning. Quote refresh through the local `astock.cli quote` adapter was attempted during the rebuild, but the adapter remained slow/unresponsive and was stopped. Therefore valuation uses the archived Tencent/Sina quote snapshot in `data/current_market_snapshot.md`; all valuation outputs are marked as indicative and time-sensitive.
+The report now uses archived broker abstracts, downloaded broker PDFs, official annual reports, official IR records, public valuation history, holder proxies, public article reproductions, Tencent 2026-06-18 quote refetch evidence, supplier-list/source-lineage probes, issuer-interaction probes, hyperscaler capex evidence, and reverse valuation checks. It still does not cover a complete Wind/Choice-style consensus database, named platform/customer revenue split, customer/platform bottom-up EPS assumptions, or terminal-grade real-time fund-flow positioning. Valuation uses `data/tencent_realtime_market_snapshot_20260618.md` as the latest public quote anchor and keeps older quote snapshots as historical baselines only; all valuation outputs remain indicative and time-sensitive.
 
 ## Deliverables
 

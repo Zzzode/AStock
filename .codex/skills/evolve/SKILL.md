@@ -1,6 +1,6 @@
 ---
 name: evolve
-description: Use when user wants to audit agent quality, review system integrity, improve prompts based on feedback patterns, detect drift or anti-patterns, or trigger the internal control process. Triggers on "audit agents", "evolve the system", "check agent quality", "review feedback patterns", "system health check", "are agents in sync", "improve prompts", "what's not working", or after substantial tasks when user asks for a retrospective.
+description: Use when user reports repeated quality problems, negative feedback, bad report structure, prompt/agent failures, asks why behavior was not automatic, or wants to audit agents, improve prompts, review feedback patterns, check system health, detect drift, sync agents, or trigger internal control.
 ---
 
 <SUBAGENT-STOP>
@@ -16,8 +16,9 @@ Orchestrate the internal-control agent to audit system quality, detect drift, an
 | Condition | Scope | Priority |
 |-----------|-------|----------|
 | User explicitly requests audit | As specified by user | Immediate |
-| After substantial task with negative feedback | `feedback_analysis` | Suggest to user |
-| Recurring errors in same dimension | `single_role` or `single_skill` | Suggest to user |
+| User reports report/agent quality problems after a substantial task | `feedback_analysis` + likely `single_skill` / `single_role` | Immediate |
+| User asks why a quality-control behavior did not trigger automatically | `single_skill:evolve` + `sync_check` | Immediate |
+| Repeated corrections in the same dimension during a report/research workflow | `feedback_analysis` + relevant `single_role` / `single_skill` | Immediate |
 | Periodic (user asks "system health") | `full_system` | On demand |
 
 ## Step 1: Determine Audit Scope
@@ -27,7 +28,7 @@ Parse user intent to determine:
 - **Trigger**: what prompted this audit
 - **Depth**: quick scan | thorough audit
 
-If unclear, ask user which mode they want.
+If unclear, default to `feedback_analysis` for negative feedback and add the most relevant `single_skill` / `single_role` based on the failure. Do not ask unless the scope would be destructive or expensive.
 
 ## Step 2: Gather Audit Data
 
@@ -98,9 +99,9 @@ Display the Audit Report:
 
 ## Step 5: Human Approval Gate
 
-**CRITICAL: Never auto-apply changes.**
+**CRITICAL: Never auto-apply changes unless the user explicitly asked to update skills/prompts/agents in the same turn.**
 
-For each proposed change, present the diff and ask the user whether to apply. Only after explicit approval:
+For each proposed change, present the diff and ask the user whether to apply. If the user explicitly asked to update skills/prompts/agents, apply the focused change directly and report it. Otherwise, only after explicit approval:
 - Apply the approved diff to the target file
 - Update `.agents/skills/evolve/anti-patterns.md` if new patterns detected
 - Store audit results in memory:
@@ -143,4 +144,4 @@ For a fast post-task check (suggested after team/equity-research with negative f
 - Do NOT suggest changes to files outside .agents/, AGENTS.md, or data/config/
 - Do NOT inflate severity to make findings seem more important
 - Do NOT propose changes that contradict the project's Language Policy or Document Format Policy
-- Do NOT trigger automatically in the background — always require user initiation or consent
+- Do NOT run as a background daemon. In interactive agent work, negative user feedback and repeated correction requests are user initiation and should route to this skill.

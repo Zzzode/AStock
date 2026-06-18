@@ -10,7 +10,13 @@
 - `data/tencent_realtime_market_snapshot_20260616.json`
 - `data/tencent_realtime_market_snapshot_20260616.md`
 
-The older table below is retained as the 2026-06-15 close proxy audit; valuation anchors should now prefer the Tencent 2026-06-16 quote snapshot where applicable.
+**Updated 2026-06-18:** Tencent `qt.gtimg.cn` quote feed was refetched for all 12 current-universe tickers. The HTTP fetch succeeded for 12/12 tickers, with embedded quote timestamps around 2026-06-17 16:14 CST. The refreshed evidence is stored in:
+
+- `data/raw_tencent_quote/quote_20260618.txt`
+- `data/tencent_realtime_market_snapshot_20260618.json`
+- `data/tencent_realtime_market_snapshot_20260618.md`
+
+The older table below is retained as the 2026-06-15 close proxy audit; valuation anchors should now prefer the Tencent 2026-06-18 fetched / 2026-06-17 embedded timestamp quote snapshot where applicable.
 
 | Ticker | Name | Latest public close | Close date | Source | Market cap status |
 |---|---|---:|---:|---|---|
@@ -34,6 +40,6 @@ The older table below is retained as the 2026-06-15 close proxy audit; valuation
 
 ## Use in report
 
-- Use Tencent 2026-06-16 quote snapshot as the latest public price / market-cap / PE / PB proxy in valuation tables.
+- Use Tencent 2026-06-18 fetched / 2026-06-17 embedded timestamp quote snapshot as the latest public price / market-cap / PE / PB proxy in valuation tables.
 - Keep archived 2026-06-12 market cap only as a historical baseline, not as the latest valuation anchor.
-- Tencent 2026-06-16 quote fields can be used as a refreshed public intraday valuation snapshot. Do not call it a Wind/Choice standardized valuation database or audited closing valuation.
+- Tencent quote fields can be used as a refreshed public valuation snapshot. Do not call it a Wind/Choice standardized valuation database, audited closing valuation, beneficial-owner positioning, or terminal-grade order-flow evidence.

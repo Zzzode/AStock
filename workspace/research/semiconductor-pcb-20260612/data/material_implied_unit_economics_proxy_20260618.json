@@ -1,0 +1,67 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Build implied unit-economics proxies from official revenue and shipment/volume fields where product-level ASP is unavailable.",
+  "status": "proxy_evidence_collected_not_product_asp",
+  "records": [
+    {
+      "company": "Nanya New Material",
+      "ticker": "688519",
+      "period": "2025A vs 2024A",
+      "metric": "Official unit selling price and unit cost from inquiry response",
+      "unit_economics": {
+        "ccl_unit_selling_price_2025": 113.13,
+        "ccl_unit_selling_price_2024": 104.97,
+        "ccl_unit_cost_2025": 105.26,
+        "ccl_unit_cost_2024": 101.74,
+        "prepreg_unit_selling_price_2025": 14.90,
+        "prepreg_unit_selling_price_2024": 13.90,
+        "prepreg_unit_cost_2025": 10.27,
+        "prepreg_unit_cost_2024": 9.70
+      },
+      "interpretation": "Nanya provides the cleanest official unit-price proxy. It is still company-wide CCL/prepreg, not M8/M9/M10 ASP.",
+      "evidence_refs": [
+        "sources/official-annual-watchlist-20260615/688519-光大证券股份有限公司关于南亚新材料科技股份有限公司2025年年度报告的信息披露监管问询函的核查意见.md"
+      ]
+    },
+    {
+      "company": "Shengyi Technology",
+      "ticker": "600183",
+      "period": "2025A",
+      "metric": "Segment revenue divided by reported CCL / prepreg sales volume",
+      "unit_economics": {
+        "ccl_and_prepreg_segment_revenue_cny": 17774100611.83,
+        "ccl_sales_volume_m2": 160627900,
+        "prepreg_sales_volume_m": 222545100,
+        "segment_revenue_per_ccl_m2_cny": 110.65,
+        "segment_revenue_per_prepreg_meter_cny": 79.87
+      },
+      "interpretation": "This is a crude scale proxy because the segment combines CCL and prepreg. It should not be interpreted as product ASP.",
+      "evidence_refs": [
+        "sources/official-annual-core-20260615/600183-生益科技2025年年度报告.md"
+      ]
+    },
+    {
+      "company": "Huazheng Materials",
+      "ticker": "603186",
+      "period": "2025A",
+      "metric": "CCL revenue divided by reported CCL sales volume",
+      "unit_economics": {
+        "ccl_revenue_mn_cny": 3375.0,
+        "ccl_sales_volume_wan_sheets": 3886.83,
+        "implied_revenue_per_sheet_cny": 86.83
+      },
+      "interpretation": "This is an implied company-wide CCL revenue-per-sheet proxy. It is not HSD8/M9-equivalent ASP.",
+      "evidence_refs": [
+        "sources/official-annual-core-20260615/603186-浙江华正新材料股份有限公司2025年年度报告-修订版.md",
+        "data/official_filing_segment_summary.md"
+      ]
+    }
+  ],
+  "remaining_gap": [
+    "No product-level ASP by M8/M9/M10 or HSD7/HSD8/M9-equivalent product",
+    "No customer-level pricing",
+    "No delivery-time sequence",
+    "No product gross margin by material generation"
+  ],
+  "boundary": "These are official or derived unit-economics proxies. They should not be used as product-level ASP or customer/platform EPS assumptions."
+}

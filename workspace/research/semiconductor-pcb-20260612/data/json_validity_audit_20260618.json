@@ -1,0 +1,97 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Parse-check JSON files and classify known raw failed-route captures.",
+  "json_files_checked": 548,
+  "invalid_json_files": 14,
+  "invalid_by_classification": {
+    "html_error_capture_with_json_extension": 13,
+    "truncated_or_incomplete_json_capture": 1
+  },
+  "invalid_files": [
+    {
+      "path": "data/raw_cninfo_search_api_002463.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_eastmoney_pledge/002436_ratio.json",
+      "error_type": "JSONDecodeError",
+      "error": "Unterminated string starting at: line 1 column 99083 (char 99082)",
+      "classification": "truncated_or_incomplete_json_capture"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_get.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_get_camel.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_page1.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_page1_camel.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_params_camel.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_params_lower.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_params_pagenum.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_params_secid.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_rubin.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_company_question_rubin_keyword.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_domestic_gpu_question_detail_ircs.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    },
+    {
+      "path": "data/raw_hudian_cninfo_domestic_gpu_question_detail_root.json",
+      "error_type": "JSONDecodeError",
+      "error": "Expecting value: line 1 column 1 (char 0)",
+      "classification": "html_error_capture_with_json_extension"
+    }
+  ],
+  "boundary": "JSON validity audit only; invalid raw captures are preserved as failed-route evidence and do not satisfy paid/non-public data requirements."
+}

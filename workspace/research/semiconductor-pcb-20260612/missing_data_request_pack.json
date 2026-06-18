@@ -1,0 +1,160 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Machine-readable request pack for external paid/non-public data required to close remaining hard blockers.",
+  "status": "external_data_required",
+  "public_sources_exhausted_through": "2026-06-18",
+  "requirements": [
+    {
+      "id": "named_platform_customer_revenue_split",
+      "title": "Named customer / platform revenue split",
+      "targets": [
+        "002463 Hudian",
+        "300476 Victory Giant",
+        "002916 Shennan Circuits",
+        "600183 Shengyi Technology",
+        "603186 Huazheng Materials"
+      ],
+      "required_fields": [
+        "revenue by named customer/platform",
+        "AI server/HPC revenue by customer",
+        "customer gross margin or ASP where available",
+        "project/order backlog by platform",
+        "certification/customer validation state"
+      ],
+      "periods": [
+        "2024A",
+        "2025A",
+        "2026Q1",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "preferred_sources": [
+        "company IR confirmation",
+        "customer/supplier confirmation",
+        "Wind/Choice supply-chain database",
+        "sell-side channel checks",
+        "original global broker reports"
+      ],
+      "current_public_status": "Public filings, IR, H-share documents, Microsoft supplier list, Open Supply Hub, upstream supplier lists, current customer supplier-list routes, customer annual-risk disclosures, customer Form SD/conflict-minerals filings including NVIDIA, public BOL pages and issuer Q&A provide relationship/disclosure-boundary/supplier-risk evidence but not named platform/customer revenue split.",
+      "completion_test": "Attributable source provides customer/platform revenue split, or direct company/customer/supplier confirmation explicitly states unavailable at required granularity."
+    },
+    {
+      "id": "bottom_up_customer_platform_eps_model",
+      "title": "Bottom-up customer/platform EPS model assumptions",
+      "targets": [
+        "core names",
+        "watchlist names where model exposure is used"
+      ],
+            "required_fields": [
+                "customer/platform revenue by year",
+                "product ASP or server unit content",
+                "M8/M9/M10 or equivalent CCL ASP by material generation",
+                "material revenue share by generation",
+                "product gross margin by material generation",
+                "customer certification list and certification dates by material generation",
+                "delivery lead time, backlog, allocation and shipment volume by material generation",
+                "shipment/order backlog by platform",
+                "segment gross margin by product/platform",
+                "capex and depreciation schedule",
+        "tax rate",
+        "minority interest",
+        "share count and dilution",
+        "working-capital assumptions"
+      ],
+      "periods": [
+        "2024A",
+        "2025A",
+        "2026Q1",
+        "2026E",
+        "2027E",
+        "2028E"
+      ],
+      "preferred_sources": [
+        "company IR",
+        "full broker operating models",
+        "paid terminal model databases",
+        "direct industry-chain checks"
+      ],
+            "current_public_status": "Public operating-line models, EPS sensitivity, official project EPS bridges, broker forecast lines, EPS assumption matrix, reverse valuation matrix, customer annual-risk disclosures, Form SD due-diligence evidence, customer purchase-commitment matrix, material Dk/Df TDS/Line-up evidence, material revenue/margin proxy, implied unit-economics proxy, certification timeline and lead-time/supply-tightness proxy are available, but customer/platform and material-generation bottom-up assumptions are not publicly disclosed.",
+      "completion_test": "Model includes segment/customer revenue, margin, capex/depreciation, tax, share count and working-capital assumptions by platform/customer bucket."
+    },
+    {
+      "id": "complete_terminal_grade_positioning_and_order_flow",
+      "title": "Terminal-grade positioning and order-flow data",
+      "targets": [
+        "12-name report universe"
+      ],
+      "required_fields": [
+        "northbound shares and market cap",
+        "daily change",
+        "beneficial-owner identity",
+        "fund name/shares/value/%NAV",
+        "official active/passive tag",
+        "QFII/social-security/insurance/broker holder categories",
+        "terminal-grade main/super-large/large/medium/small net flow",
+        "tick-level or realtime methodology where available"
+      ],
+      "periods": [
+        "latest terminal-supported period",
+        "2024Q4",
+        "2025Q1-Q4",
+        "2026Q1",
+        "last 3-12 months where daily/intraday"
+      ],
+      "preferred_sources": [
+        "Wind",
+        "Choice",
+        "Eastmoney terminal",
+        "fund filings database",
+        "HKEX/HKCC where official public granularity exists"
+      ],
+      "current_public_status": "HKEX quarterly aggregate, Eastmoney participant/custodian bridge, Sina/CNInfo fund proxies, rule-based style mapping, shareholder-count proxies, public daily/minute Eastmoney fund-flow proxies, Tencent public Level-1 quote-depth snapshot and failed current Stock Connect/SZSE probes are archived. Beneficial-owner, official active/passive and terminal-grade realtime flow remain unavailable publicly.",
+      "completion_test": "Coverage includes beneficial-owner northbound, funds with official active/passive labels and category institutions for all core names at current/latest terminal-supported periods."
+    }
+  ],
+  "source_documents_needed": [
+    {
+      "document": "Original JPM Shenghong report",
+      "target": "300476 Victory Giant",
+      "why": "Verify H-share target, NVIDIA/Google ASIC assumptions and 2026-2028 forecast basis."
+    },
+    {
+      "document": "Latest Goldman/Hudian report",
+      "target": "002463 Hudian",
+      "why": "Verify target/EPS and platform-chain assumptions."
+    },
+    {
+      "document": "Latest Goldman or Citi Shengyi report",
+      "target": "600183 Shengyi",
+      "why": "Verify M9/M10 certification and material revenue share."
+    },
+    {
+      "document": "Latest Shennan global broker report",
+      "target": "002916 Shennan",
+      "why": "Verify AI PCB and substrate customer-chain bridge beyond existing CMBI/Guohai/official evidence."
+    },
+        {
+            "document": "Current Huazheng 2026 deep report with full model",
+            "target": "603186 Huazheng",
+            "why": "Improve beyond existing Zheshang 2025E-2027E model and official high-grade CCL project-boundary file."
+        },
+        {
+            "document": "Material-generation ASP / margin / certification dataset",
+            "target": "600183 Shengyi ; 688519 Nanya ; 603186 Huazheng",
+            "why": "Close M8/M9/M10 or equivalent CCL ASP, revenue-share, product-margin, certification-date and lead-time gaps after public TDS/Line-up collection."
+        },
+        {
+            "document": "Full customs/BOL dataset",
+            "target": "core platform chains",
+      "why": "Public BOL pages are insufficient; complete shipper/consignee/product/quantity/value/date fields are needed for shipment-based customer mapping."
+    }
+  ],
+  "completion_criteria": [
+    "Customer/platform revenue split available from attributable sources or explicit direct confirmation of unavailability at required granularity.",
+    "EPS model includes segment/customer revenue, margin, capex/depreciation, tax, share count and working-capital assumptions for core names by platform/customer bucket.",
+    "Holding/flow data covers northbound beneficial owners, funds with official active/passive labels and category institutions for all core names at current/latest terminal-supported periods.",
+    "Report PDF is rebuilt and review log maps every requirement to evidence."
+  ],
+  "boundary": "This JSON is a request specification for external data. It does not itself close the paid/non-public requirements."
+}

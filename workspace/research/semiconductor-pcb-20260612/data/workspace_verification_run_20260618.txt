@@ -1,0 +1,35 @@
+PASS: exists row count matches audit (actual=263 audit=263)
+PASS: exists row mismatches zero (actual=0 audit=0)
+PASS: root files count (18)
+PASS: root inventory sizes (files=18 problems=0)
+PASS: top-level data files count (354)
+FAIL: top-level data inventory sizes (files=354 problems=1)
+PASS: source files count (601)
+PASS: source inventory sizes (files=601 problems=0)
+PASS: raw data files count (358)
+PASS: raw data inventory sizes (files=358 problems=0)
+PASS: rendered files count (184)
+PASS: rendered inventory sizes (files=184 problems=0)
+PASS: inventory mismatch fields zero (problem_total=0 details=0)
+PASS: current full render valid (rendered/full-20260618-0913 pages=71 valid=True)
+PASS: completion decision (do_not_mark_complete)
+PASS: unresolved status (blocked_by_unavailable_paid_or_non_public_data)
+PASS: evidence reference problems (0)
+PASS: blocker request pack aligned (True)
+PASS: request pack CSV mirrors JSON (rows=3 problems=0)
+PASS: handoff registry/template terms (problems=0)
+PASS: blocker evidence coverage (0)
+PASS: source exhaustion consistency (True)
+PASS: pdf text hygiene (pass matches=0)
+PASS: pdf path leakage (0)
+PASS: core checksum manifest (files=14 problems=0)
+PASS: report quality pages (71)
+PASS: json validity audit (invalid=14)
+PASS: pdfinfo pages (Pages: 71)
+PASS: pdfinfo creation date (CreationDate 2026-06-18 09:13:57)
+
+Failures:
+- top-level data inventory sizes: files=354 problems=1
+
+Top-level data inventory problems:
+- workspace_verification_run_20260618.txt: size 0!=1473

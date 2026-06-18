@@ -1,0 +1,86 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Follow OSH public-list contributors back to retrievable upstream customer/certification source files.",
+  "raw_archive": "sources/probe-upstream-supplier-lists-20260618/",
+  "boundary": "Supplier/certified-site lists identify relationships and coarse categories only; no product-platform revenue, ASP, shipments, order value, margin, depreciation, tax or EPS assumptions.",
+  "sources": [
+    {
+      "source": "Apple Supplier List 2018",
+      "pdf": "sources/probe-upstream-supplier-lists-20260618/apple-supplier-list-g.pdf",
+      "text": "sources/probe-upstream-supplier-lists-20260618/apple-supplier-list-g.txt",
+      "hits": [
+        "Suzhou Dongshan Precision Manufacturing",
+        "Tripod Technology Corp.",
+        "Unimicron Technology Corp."
+      ],
+      "incremental_fields": [
+        "facility addresses"
+      ]
+    },
+    {
+      "source": "Apple Supplier List FY2020",
+      "pdf": "sources/probe-upstream-supplier-lists-20260618/apple-supplier-list-k.pdf",
+      "text": "sources/probe-upstream-supplier-lists-20260618/apple-supplier-list-k.txt",
+      "hits": [
+        "Suzhou Dongshan Precision Manufacturing",
+        "Tripod Technology Corporation",
+        "Unimicron Technology Corporation",
+        "Samsung Electro-Mechanics Company Limited",
+        "Zhen Ding Technology Holding Limited"
+      ],
+      "incremental_fields": [
+        "primary manufacturing locations for Apple"
+      ]
+    },
+    {
+      "source": "Dell Public Supplier List FY2025",
+      "pdf": "sources/probe-upstream-supplier-lists-20260618/dell-public-supplier-list-official-retry.pdf",
+      "text": "sources/probe-upstream-supplier-lists-20260618/dell-public-supplier-list-official-retry.txt",
+      "hits": [
+        "Tripod",
+        "Gold Circuit",
+        "Hannstar"
+      ],
+      "incremental_fields": [
+        "Dell products / procurement category",
+        "supplier type",
+        "sustainability site flag"
+      ]
+    },
+    {
+      "source": "Samsung Electronics Supplier List",
+      "pdf": "sources/probe-upstream-supplier-lists-20260618/samsung-supplier-list.pdf",
+      "text": "sources/probe-upstream-supplier-lists-20260618/samsung-supplier-list.txt",
+      "hits": [
+        "Meiko Electronics",
+        "Samsung Electro-Mechanics",
+        "Tripod Technology",
+        "Korea Circuit",
+        "Ibiden",
+        "Daeduck Electronics"
+      ],
+      "incremental_fields": [
+        "component / outsourcing supplier list context",
+        "facility addresses"
+      ]
+    },
+    {
+      "source": "Alliance for Water Stewardship certified sites",
+      "html": "sources/probe-upstream-supplier-lists-20260618/aws-certified-sites.html",
+      "hits": [
+        "Avary Holding / Hongqisheng Precision Electronics",
+        "Qing Ding / Zhen Ding group",
+        "Tripod Wuxi",
+        "Victory Giant Huizhou"
+      ],
+      "incremental_fields": [
+        "certification id",
+        "site address",
+        "certification level",
+        "certification and expiry dates",
+        "sector"
+      ]
+    }
+  ],
+  "remaining_gap": "No archived upstream list discloses customer product, PCB/CCL revenue, AI/cloud platform allocation, ASP, shipment, order value, margin or EPS assumptions."
+}

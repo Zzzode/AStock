@@ -1,16 +1,18 @@
-\section{Risk Heatmap}
+\section{风险热力图}
 
-\begin{exhibitbox}[Exhibit 35: Probability-impact heatmap]
+风险章节的作用是定义“什么会让本报告错”。对半导体PCB链条而言，最大的风险不是某个单季度波动，而是AI资本开支节奏、技术路线、材料价格和产能周期同时改变盈利曲线。风险必须落到触发条件和投资动作，否则只是免责声明。
+
+\begin{exhibitbox}[图表35：概率-影响热力图]
 \centering
 \begin{tikzpicture}[scale=0.95]
-\foreach \x/\xlabel in {0/Low,1/Medium,2/High} {
+\foreach \x/\xlabel in {0/低,1/中,2/高} {
   \node[font=\scriptsize] at (\x*2.2+1.1,-0.35) {\xlabel};
 }
-\foreach \y/\ylabel in {0/Low,1/Medium,2/High} {
+\foreach \y/\ylabel in {0/低,1/中,2/高} {
   \node[font=\scriptsize, rotate=90] at (-0.45,\y*1.45+0.72) {\ylabel};
 }
-\node[font=\scriptsize\bfseries] at (3.3,-0.85) {Probability};
-\node[font=\scriptsize\bfseries, rotate=90] at (-0.95,2.2) {Impact};
+\node[font=\scriptsize\bfseries] at (3.3,-0.85) {概率};
+\node[font=\scriptsize\bfseries, rotate=90] at (-0.95,2.2) {影响};
 \foreach \x in {0,1,2} {
   \foreach \y in {0,1,2} {
     \pgfmathtruncatemacro{\score}{\x+\y}
@@ -18,24 +20,28 @@
     \draw[fill=\fillc, draw=white] (\x*2.2,\y*1.45) rectangle ++(2.2,1.45);
   }
 }
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,3.6) {AI capex\\slowdown};
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,2.18) {Valuation\\crowding};
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,3.6) {Technology\\route shift};
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,2.18) {Capacity\\overbuild};
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (1.1,2.18) {Source\\quality};
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,3.6) {AI资本开支\\放缓};
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,2.18) {估值\\拥挤};
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,3.6) {技术路线\\迁移};
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,2.18) {产能\\过剩};
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (1.1,2.18) {来源\\质量};
 \end{tikzpicture}
 \sourcenote{\texttt{risk\_framework.md}}
 \end{exhibitbox}
 
-\section{Risk Trigger Matrix}
+风险热力图显示，资本开支放缓和估值拥挤是最直接的组合风险，技术路线迁移和产能过剩是中期风险，来源质量则决定报告本身能否支持强结论。后续若出现多个风险同时触发，应优先降低高弹性标的暴露，而不是只调整个别假设。
 
-\begin{exhibitbox}[Exhibit 36: What would make us change the view]
+\section{风险触发矩阵}
+
+下面的矩阵把风险转成可跟踪信号。这里的重点是“可观察”：云厂商CAPEX、在手订单、利用率、材料价格、交期、融资盘和股东结构，都比笼统的市场情绪更有决策价值。
+
+\begin{exhibitbox}[图表36：会改变观点的触发条件]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{2.4cm}X X X}
 \toprule
-\textbf{Risk} & \textbf{Why it matters} & \textbf{Observable trigger} & \textbf{Action} \\
+\textbf{风险} & \textbf{为何重要} & \textbf{可观察触发器} & \textbf{动作} \\
 \midrule
-AI资本开支放缓 & 多数多头逻辑依赖云厂商CAPEX、NVIDIA升级和ASIC服务器扩张。 & CSP下修CAPEX、AI服务器订单延期、PCB在手订单走弱。 & 高弹性PCB从核心/进攻降为观察。 \\
+AI资本开支放缓 & 多数多头逻辑依赖云厂商CAPEX、NVIDIA升级和ASIC服务器扩张；Alphabet、Amazon、Meta 2026Q1官方资料均显示AI基础设施/服务器/数据中心CAPEX仍处高位。 & CSP下修CAPEX、AI服务器订单延期、PCB在手订单走弱；若Meta/Alphabet/Amazon后续降低CAPEX指引或推迟数据中心/加速芯片部署，应下修需求弹性。 & 高弹性PCB从核心/进攻降为观察。 \\
 技术路线迁移 & CoWoP、玻璃基板、光互联、铜缆、mSAP会重新分配价值池。 & 新平台减少板级价值或材料规格变化。 & 重新拆分PCB/载板/封装/光互联价值量。 \\
 产能过剩 & 高CAPEX若遇需求放缓，将带来价格竞争。 & 利用率下降、交期缩短、价格松动但CAPEX继续上升。 & 下调情景倍数，要求订单验证。 \\
 估值拥挤 & 若干标的已反映强兑现预期。 & 股价上涨快于盈利预测上修，PE超过增长支撑。 & 触发器跟踪，避免无条件乐观。 \\
@@ -43,26 +49,32 @@ AI资本开支放缓 & 多数多头逻辑依赖云厂商CAPEX、NVIDIA升级和A
 \end{tabularx}
 \end{exhibitbox}
 
-\section{Monitoring Checklist}
+如果AI资本开支或订单节奏放缓，优先影响胜宏、鹏鼎等高弹性客户链标的；如果M8/M9价格和交期反转，优先影响生益、南亚、华正等材料链；如果产能过剩迹象出现，设备耗材和高CAPEX公司需要更严格的折旧和现金流压力测试。
 
-\begin{dashboardbox}[Monitoring dashboard]
+\section{监控清单}
+
+监控清单用于把风险管理变成后续工作流。月度跟踪平台节奏和材料价格，季度跟踪收入、毛利、现金流和折旧，事件驱动跟踪技术替代和客户认证变化。每一次更新都应该回答：原来的投资假设是增强、削弱，还是失效。
+
+\begin{dashboardbox}[监控看板]
 \small
 \begin{tabularx}{\textwidth}{L{3cm}X L{3cm}}
 \toprule
-\textbf{Monitor} & \textbf{Signal} & \textbf{Frequency} \\
+\textbf{监控项} & \textbf{信号} & \textbf{频率} \\
 \midrule
-AI平台节奏 & Rubin/Rubin Ultra、ASIC服务器、交换机和光模块放量时间表。 & Monthly / event-driven \\
-订单与CAPEX & PCB龙头在手订单、利用率、扩产计划、设备订单。 & Quarterly \\
-材料价格 & M8/M9 CCL价格、交期、客户认证和原材料成本。 & Monthly \\
-财务兑现 & 收入增速、毛利率、费用率、经营现金流和折旧压力。 & Quarterly \\
-技术替代 & 玻璃基板、光互联、铜缆和新背板架构是否改变PCB价值池。 & Event-driven \\
+AI平台节奏 & Rubin/Rubin Ultra、ASIC服务器、交换机和光模块放量时间表。 & 月度/事件驱动 \\
+订单与CAPEX & PCB龙头在手订单、利用率、扩产计划、设备订单。 & 季度 \\
+材料价格 & M8/M9 CCL价格、交期、客户认证和原材料成本。 & 月度 \\
+财务兑现 & 收入增速、毛利率、费用率、经营现金流和折旧压力。 & 季度 \\
+技术替代 & 玻璃基板、光互联、铜缆和新背板架构是否改变PCB价值池。 & 事件驱动 \\
 \bottomrule
 \end{tabularx}
 \end{dashboardbox}
 
-\section{Invalidation Conditions}
+\section{失效条件 / Invalidation}
 
-\begin{riskbox}[Invalidation conditions / 失效条件]
+失效条件是投资纪律。只要出现以下任一情况，本报告不能继续沿用原来的核心结论，而应重新评估目标估值和标的分组。
+
+\begin{riskbox}[失效条件]
 若出现以下任一情况，本报告的核心跟踪框架需要下修或重做：
 \begin{itemize}
   \item AI服务器、ASIC或高速交换机资本开支连续两个季度低于预期，同时核心公司订单/产能利用率转弱。

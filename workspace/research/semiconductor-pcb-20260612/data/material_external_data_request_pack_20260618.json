@@ -1,0 +1,89 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Define external data fields needed to close the remaining CCL material ASP, revenue-share, certification and lead-time gaps after public-source collection.",
+  "status": "external_data_required",
+  "public_sources_exhausted_through": "2026-06-18",
+  "targets": [
+    {
+      "company": "Shengyi Technology",
+      "ticker": "600183",
+      "products": [
+        "Synamic8GN",
+        "Synamic9GN",
+        "M8/M9/M10-equivalent CCL"
+      ],
+      "required_fields": [
+        "quarterly ASP by product/generation",
+        "quarterly revenue by product/generation",
+        "product gross margin by generation",
+        "delivery lead time / backlog / allocation by generation",
+        "customer certification list and dates",
+        "batch-supply start date and shipment volume"
+      ],
+      "current_public_baseline": "Official TDS/Line Up provides Synamic8GN and Synamic9GN Dk/Df; filings provide segment revenue/margin and certification direction; public data lacks product ASP, revenue share and customer list.",
+      "preferred_sources": [
+        "company IR",
+        "sell-side material-chain channel check",
+        "Wind/Choice supply-chain or model database",
+        "original Goldman/Citi/Shengyi full report"
+      ]
+    },
+    {
+      "company": "Nanya New Material",
+      "ticker": "688519",
+      "products": [
+        "NY6300S",
+        "NOUYA8U",
+        "M8/M9/M10 high-speed CCL",
+        "NYHP-7300 / NYHP-7003C / NY6600 support specs"
+      ],
+      "required_fields": [
+        "ASP by M6/M7/M8/M9/M10 generation",
+        "revenue by generation and application",
+        "product gross margin by generation",
+        "customer certification list and dates",
+        "lead time / allocation / backlog by generation",
+        "shipment volume by generation"
+      ],
+      "current_public_baseline": "Official specs provide NYHP Dk/Df; inquiry response provides unit price/cost, high-speed material revenue and order-support proxy; IR provides certification/ramp evidence; public data lacks generation-level ASP and revenue.",
+      "preferred_sources": [
+        "company IR",
+        "inquiry-response follow-up",
+        "terminal/customer confirmation",
+        "sell-side material-chain channel check"
+      ]
+    },
+    {
+      "company": "Huazheng Materials",
+      "ticker": "603186",
+      "products": [
+        "HSD7/HSD8/HSD8(K)",
+        "M9-equivalent high-speed CCL",
+        "BT materials",
+        "CBF / CBF-RCC"
+      ],
+      "required_fields": [
+        "ASP by HSD7/HSD8/M9-equivalent product",
+        "revenue by product and application",
+        "product gross margin",
+        "customer certification list and dates",
+        "lead time / backlog / allocation by product",
+        "shipment volume and batch-order conversion"
+      ],
+      "current_public_baseline": "Official high-speed materials list and Line-up provide HSD8/HSD8(K) Dk/Df; filings provide Ultra/Extreme low-loss and CBF/BT certification/small-batch status; public data lacks ASP, revenue and customer list.",
+      "preferred_sources": [
+        "company IR",
+        "customer/supplier confirmation",
+        "current Huazheng deep-model report",
+        "sell-side channel checks"
+      ]
+    }
+  ],
+  "completion_test": [
+    "At least one attributable source provides product-level ASP or directly confirms it cannot be disclosed.",
+    "At least one attributable source provides revenue share by material generation or directly confirms it cannot be disclosed.",
+    "Certification list or explicit disclosure boundary is available by product generation.",
+    "Delivery lead-time / backlog / allocation is available or explicitly confirmed unavailable."
+  ],
+  "boundary": "This request pack is not evidence by itself. It defines external fields needed after public material-parameter collection."
+}

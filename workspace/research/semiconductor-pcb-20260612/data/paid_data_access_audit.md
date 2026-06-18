@@ -20,6 +20,10 @@
 
 **2026-06-16 refresh:** The SDK check was run against the project `.venv`. `akshare` and `baostock` are available in `.venv`; paid-terminal SDKs and credentials are not. A broad environment-variable scan found only non-market credentials (`COCO_PROXY_API_KEY`, code repository token). A home-directory config scan found no market-data or customs/BOL credential files.
 
+**2026-06-17 refresh:** The project `.venv` was rechecked with `importlib.util.find_spec`. `akshare` remains available at version `1.18.41` and `baostock` at version `00.8.90`. Tushare, WindPy, iFinD, Choice, JQData, RQData, Datayes, xbbg, blpapi and Eikon remain unavailable. Environment variable scan found no keys containing Tushare, Wind, iFinD, Choice, JQData, RQData, Datayes, Bloomberg, Refinitiv, Eikon, Panjiva, ImportGenius or Volza. See `data/current_public_source_recheck_20260617.md`.
+
+**2026-06-18 refresh:** The project `.venv` was rechecked again. `akshare` remains available at version `1.18.41` and `baostock` at version `00.8.90`. Tushare, WindPy, iFinD, Choice, JQData, RQData, Datayes, xbbg, blpapi, Eikon and Refinitiv remain unavailable. Environment variable scan found no market-data or paid customs/BOL keys. Home-directory config search found no market-data or customs/BOL credential files; matches were false positives such as `WindowManager`, `tailwind`, `unwind` and theme files. See `data/paid_access_recheck_20260618.md`.
+
 ## Environment Variables
 
 No Tushare/Wind/Choice/iFinD financial data token was found in the environment. A code repository private token exists, but it is not a market-data credential.

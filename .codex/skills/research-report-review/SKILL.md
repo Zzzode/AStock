@@ -30,6 +30,14 @@ Run independent read-only reviews across these lenses:
    - Source hierarchy, data quality, rumor isolation, recommendation boundary, geopolitical/policy risk, publishability.
 4. **Visual exhibit quality**
    - Inspect rendered PDF pages when available. Core conclusions should be supported by readable figures, heatmaps, timelines, scorecards, or diagrams rather than dense longtables only.
+5. **Narrative flow and prose-led structure**
+   - Check whether each main-body chapter opens with analytical prose before tables appear.
+   - Check whether each major table/exhibit cluster is embedded in text and followed by a synthesis paragraph.
+   - Flag any chapter that reads like PPT/chartbook pages, a source digest, or a table stack rather than institutional equity research prose.
+6. **First-chapter investment committee quality**
+   - Check whether Chapter 1 gives current price, value range, upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
+   - Check whether ranking methodology and action labels are explicit.
+   - Flag meta-language written for the author rather than the investor, such as "this chapter rewrites", "this report defines", "table should be read as", or "closer to institutional process".
 
 Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this runtime supports subagents, dispatch one reviewer per lens in parallel. If it does not, simulate the same three-lens review sequentially and say subagents were not actually invoked.
 
@@ -53,7 +61,10 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 - **S-Level:** also includes missing customer-chain matrix, missing customer-chain earnings bridge, or missing claim-audit appendix in platform-driven hardware reports.
 - **S-Level:** also includes clipped core diagrams, overlapping tables, unreadable evidence appendices, or missing visual exhibits for valuation/risk/customer-chain conclusions.
 - **S-Level:** also includes missing template benchmark, missing house view, missing exhibit plan, or a report that mechanically repeats broker views without AStock's own thesis.
+- **S-Level:** also includes table-only treatment of core investment recommendation, valuation, risk, or customer-chain conclusions.
 - **A-Level:** must fix before serious use. Examples: generic supply chain, weak technical parameters, no quarterly bridge, no geopolitical path.
+- **A-Level:** includes main-body chapters that are table-led rather than prose-led, have consecutive exhibits without analytical text, or lack post-exhibit "so what" synthesis.
+- **A-Level:** includes a first chapter that lacks price anchors, ranking methodology, next-quarter bridge, or actionable investment behavior.
 - **B-Level:** polish. Examples: wording, table readability, diagram clarity.
 
 ## Output Format
@@ -87,4 +98,5 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 - Do not treat media reposts, previews, or search snippets as full broker evidence.
 - Do not call something undervalued/overvalued without current price, market cap, and forecast bridge.
 - Do not pass a report whose main body is a source digest rather than a house view supported by exhibits.
+- Do not pass a report whose main body reads like a PPT deck or chartbook. Appendices may be dense; main chapters must be prose-led.
 - Preserve project policy: research deliverables are LaTeX/PDF compiled with MacTeX XeLaTeX on macOS.

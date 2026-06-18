@@ -1,0 +1,393 @@
+{
+  "run_date": "2026-06-17",
+  "source": "Eastmoney push2 stock fflow intraday kline",
+  "fields": "f51=time,f52=main_net,f53=small_net,f54=medium_net,f55=large_net,f56=super_large_net",
+  "boundary": "Public minute-level fund-flow proxy. It gives cumulative main/super-large/large/medium/small net-flow buckets, but not exchange-verified tick data, order book depth, beneficial owners or terminal-grade order flow.",
+  "raw_dir": "workspace/research/semiconductor-pcb-20260612/data/raw_eastmoney_intraday_fund_flow_20260617",
+  "summary": [
+    {
+      "code": "002463",
+      "name": "沪电股份",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": 383135902.0,
+        "small_net": -2553791.0,
+        "medium_net": -380582082.0,
+        "large_net": 39015439.0,
+        "super_large_net": 344120463.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 11:10",
+        "main_net": 584972258.0,
+        "small_net": -251002481.0,
+        "medium_net": -333969769.0,
+        "large_net": 154430363.0,
+        "super_large_net": 430541895.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 09:40",
+        "main_net": -71874562.0,
+        "small_net": 15544265.0,
+        "medium_net": 56330296.0,
+        "large_net": 124526888.0,
+        "super_large_net": -196401450.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.002463&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "300476",
+      "name": "胜宏科技",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": 117226059.0,
+        "small_net": -192228176.0,
+        "medium_net": 75002165.0,
+        "large_net": -26611615.0,
+        "super_large_net": 143837674.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 10:51",
+        "main_net": 443005199.0,
+        "small_net": -349590826.0,
+        "medium_net": -93414355.0,
+        "large_net": 11183510.0,
+        "super_large_net": 431821689.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 09:42",
+        "main_net": -216044449.0,
+        "small_net": 82936002.0,
+        "medium_net": 133108447.0,
+        "large_net": 1833059.0,
+        "super_large_net": -217877508.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.300476&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "002916",
+      "name": "深南电路",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": 723849409.0,
+        "small_net": -602343.0,
+        "medium_net": -723247079.0,
+        "large_net": -166424506.0,
+        "super_large_net": 890273915.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 14:57",
+        "main_net": 723849409.0,
+        "small_net": -602343.0,
+        "medium_net": -723247079.0,
+        "large_net": -166424506.0,
+        "super_large_net": 890273915.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 09:31",
+        "main_net": 70782798.0,
+        "small_net": 0.0,
+        "medium_net": -70782798.0,
+        "large_net": -12083478.0,
+        "super_large_net": 82866276.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.002916&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "600183",
+      "name": "生益科技",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": -2082977332.0,
+        "small_net": 1131223347.0,
+        "medium_net": 951754020.0,
+        "large_net": -189284039.0,
+        "super_large_net": -1893693293.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 09:31",
+        "main_net": 96011726.0,
+        "small_net": -43373902.0,
+        "medium_net": -52619486.0,
+        "large_net": 29765883.0,
+        "super_large_net": 66245843.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 14:53",
+        "main_net": -2090122416.0,
+        "small_net": 1114019093.0,
+        "medium_net": 976121299.0,
+        "large_net": -164290975.0,
+        "super_large_net": -1925831441.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=1.600183&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "603186",
+      "name": "华正新材",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": -222160136.0,
+        "small_net": 63246198.0,
+        "medium_net": 158913926.0,
+        "large_net": 98499577.0,
+        "super_large_net": -320659713.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 11:30",
+        "main_net": 121234260.0,
+        "small_net": -60583338.0,
+        "medium_net": -60650942.0,
+        "large_net": 17903738.0,
+        "super_large_net": 103330522.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 14:10",
+        "main_net": -235465665.0,
+        "small_net": 69003616.0,
+        "medium_net": 166462037.0,
+        "large_net": 101242284.0,
+        "super_large_net": -336707949.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=1.603186&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "002938",
+      "name": "鹏鼎控股",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": 946862246.0,
+        "small_net": -341149398.0,
+        "medium_net": -605712846.0,
+        "large_net": -137348054.0,
+        "super_large_net": 1084210300.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 14:57",
+        "main_net": 946862246.0,
+        "small_net": -341149398.0,
+        "medium_net": -605712846.0,
+        "large_net": -137348054.0,
+        "super_large_net": 1084210300.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 09:34",
+        "main_net": -13813718.0,
+        "small_net": 5708430.0,
+        "medium_net": 8105290.0,
+        "large_net": 9526536.0,
+        "super_large_net": -23340254.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.002938&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "688519",
+      "name": "南亚新材",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": 4295802.0,
+        "small_net": -7998074.0,
+        "medium_net": 3702326.0,
+        "large_net": 42541374.0,
+        "super_large_net": -38245572.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 10:20",
+        "main_net": 140497013.0,
+        "small_net": -3918727.0,
+        "medium_net": -136578276.0,
+        "large_net": 33996829.0,
+        "super_large_net": 106500184.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 14:54",
+        "main_net": -688266.0,
+        "small_net": -7744367.0,
+        "medium_net": 8432683.0,
+        "large_net": 40194521.0,
+        "super_large_net": -40882787.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=1.688519&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "002436",
+      "name": "兴森科技",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": -854853179.0,
+        "small_net": 907282734.0,
+        "medium_net": -52429540.0,
+        "large_net": -685808927.0,
+        "super_large_net": -169044252.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 11:11",
+        "main_net": 82113961.0,
+        "small_net": 103222159.0,
+        "medium_net": -185336118.0,
+        "large_net": -230954923.0,
+        "super_large_net": 313068884.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 14:57",
+        "main_net": -854853179.0,
+        "small_net": 907282734.0,
+        "medium_net": -52429540.0,
+        "large_net": -685808927.0,
+        "super_large_net": -169044252.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.002436&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "301200",
+      "name": "大族数控",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": -129688370.0,
+        "small_net": 128244800.0,
+        "medium_net": 1443575.0,
+        "large_net": -141150200.0,
+        "super_large_net": 11461830.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 09:38",
+        "main_net": 7711261.0,
+        "small_net": -253404.0,
+        "medium_net": -7457854.0,
+        "large_net": -6790353.0,
+        "super_large_net": 14501614.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 14:57",
+        "main_net": -129688370.0,
+        "small_net": 128244800.0,
+        "medium_net": 1443575.0,
+        "large_net": -141150200.0,
+        "super_large_net": 11461830.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.301200&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "688630",
+      "name": "芯碁微装",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": -228163647.0,
+        "small_net": -3255287.0,
+        "medium_net": 231419017.0,
+        "large_net": 30742716.0,
+        "super_large_net": -258906363.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 09:42",
+        "main_net": 25414876.0,
+        "small_net": -789061.0,
+        "medium_net": -24735488.0,
+        "large_net": 13648639.0,
+        "super_large_net": 11766237.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 14:57",
+        "main_net": -228163647.0,
+        "small_net": -3255287.0,
+        "medium_net": 231419017.0,
+        "large_net": 30742716.0,
+        "super_large_net": -258906363.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=1.688630&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "300400",
+      "name": "劲拓股份",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": -137641687.0,
+        "small_net": 150488572.0,
+        "medium_net": -12846883.0,
+        "large_net": -93145022.0,
+        "super_large_net": -44496665.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 09:31",
+        "main_net": -2555345.0,
+        "small_net": -426530.0,
+        "medium_net": 2981875.0,
+        "large_net": -989338.0,
+        "super_large_net": -1566007.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 14:57",
+        "main_net": -137641687.0,
+        "small_net": 150488572.0,
+        "medium_net": -12846883.0,
+        "large_net": -93145022.0,
+        "super_large_net": -44496665.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.300400&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    },
+    {
+      "code": "301377",
+      "name": "鼎泰高科",
+      "status": "ok",
+      "records": 240,
+      "window": "2026-06-17 09:31 to 2026-06-17 15:00",
+      "latest": {
+        "time": "2026-06-17 15:00",
+        "main_net": 66318576.0,
+        "small_net": -349079.0,
+        "medium_net": -65969500.0,
+        "large_net": 41520076.0,
+        "super_large_net": 24798500.0
+      },
+      "max_main_net": {
+        "time": "2026-06-17 11:30",
+        "main_net": 97230051.0,
+        "small_net": -172627.0,
+        "medium_net": -97057424.0,
+        "large_net": 43553537.0,
+        "super_large_net": 53676514.0
+      },
+      "min_main_net": {
+        "time": "2026-06-17 10:08",
+        "main_net": -37815393.0,
+        "small_net": -59297.0,
+        "medium_net": 37874692.0,
+        "large_net": -23538281.0,
+        "super_large_net": -14277112.0
+      },
+      "url": "https://push2.eastmoney.com/api/qt/stock/fflow/kline/get?secid=0.301377&klt=1&lmt=0&fields1=f1%2Cf2%2Cf3%2Cf7&fields2=f51%2Cf52%2Cf53%2Cf54%2Cf55%2Cf56&ut=b2884a393a59ad64002292a3e90d46a5"
+    }
+  ]
+}

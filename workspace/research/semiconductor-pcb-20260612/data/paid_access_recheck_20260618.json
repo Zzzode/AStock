@@ -1,0 +1,93 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Refresh local paid/semi-paid market data SDK, environment variable and home-config availability.",
+  "modules": [
+    {
+      "module": "akshare",
+      "available": true,
+      "version": "1.18.41",
+      "origin": ".venv/lib/python3.14/site-packages/akshare/__init__.py"
+    },
+    {
+      "module": "baostock",
+      "available": true,
+      "version": "00.8.90",
+      "origin": ".venv/lib/python3.14/site-packages/baostock/__init__.py"
+    },
+    {
+      "module": "tushare",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "WindPy",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "iFinDPy",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "choice",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "jqdatasdk",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "rqdatac",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "datayes",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "xbbg",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "blpapi",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "eikon",
+      "available": false,
+      "version": null,
+      "origin": null
+    },
+    {
+      "module": "refinitiv",
+      "available": false,
+      "version": null,
+      "origin": null
+    }
+  ],
+  "env_hit_keys": [],
+  "home_config_search": "No market-data credential files found; only false positives for wind/window/tailwind/unwind paths.",
+  "false_positive_examples": [
+    "/Users/bytedance/Softwares/xcode-themes/Morrowind.dvtcolortheme",
+    "/Users/bytedance/Develop/moon/tailwind.config.js",
+    "/Users/bytedance/Library/Preferences/com.apple.WindowManager.plist",
+    "/Users/bytedance/LLVM-20.1.8-Linux-ARM64/bin/llvm-windres"
+  ],
+  "boundary": "AkShare and Baostock remain available public-data libraries. Paid terminal SDKs/credentials for Tushare, Wind/iFinD/Choice/JQData/RQData/Datayes/Bloomberg/Refinitiv/Eikon and paid BOL/customs providers remain unavailable in the current environment."
+}

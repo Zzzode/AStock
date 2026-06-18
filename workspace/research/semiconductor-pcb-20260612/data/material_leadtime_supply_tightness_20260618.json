@@ -1,0 +1,70 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Collect public lead-time, stocking-cycle, order-support and supply-tightness evidence for CCL material names.",
+  "status": "partial_public_evidence_collected",
+  "records": [
+    {
+      "company": "Nanya New Material",
+      "ticker": "688519",
+      "period": "2025A",
+      "metric_scope": "Production cycle, raw-material stocking cycle, inventory/order support",
+      "leadtime_or_supply_evidence": {
+        "production_cycle_days": "5-7",
+        "normal_raw_material_stocking_cycle_days": "15-20",
+        "raw_material_stocking_days_2025": 28.39,
+        "raw_material_stocking_days_2024": 20.75,
+        "inventory_goods_balance_2025_mn_cny": 225.0689,
+        "inventory_goods_balance_2024_mn_cny": 181.2601,
+        "work_in_process_balance_2025_mn_cny": 49.4217,
+        "work_in_process_balance_2024_mn_cny": 26.1562,
+        "ending_orders_2025_mn_cny": 377.4839,
+        "ending_orders_2024_mn_cny": 168.2212,
+        "order_support_rate_2025_pct": 137.52,
+        "order_support_rate_2024_pct": 81.10
+      },
+      "interpretation": "Strongest official lead-time and order-support evidence. It shows raw-material stocking stretched, inventory/WIP rose and order support improved materially under demand and input-cost pressure.",
+      "evidence_refs": [
+        "sources/official-annual-watchlist-20260615/688519-光大证券股份有限公司关于南亚新材料科技股份有限公司2025年年度报告的信息披露监管问询函的核查意见.md"
+      ],
+      "remaining_gap": "No M8/M9/M10 delivery-time sequence or customer allocation."
+    },
+    {
+      "company": "Shengyi Technology",
+      "ticker": "600183",
+      "period": "2025 annual report",
+      "metric_scope": "Delivery capability and raw-material tightness",
+      "leadtime_or_supply_evidence": {
+        "delivery_comment": "Important-project market/R&D/process linkage teams are used to meet new-product delivery requirements and prepare for later mass production.",
+        "raw_material_tightness_comment": "From 2025Q4, AI demand attracted copper-foil and glass-cloth suppliers to high-end copper foil and Low DK cloth; Low DK cloth demand squeezed thin glass-cloth capacity, and copper foil prices rose sharply."
+      },
+      "interpretation": "Official qualitative evidence for delivery readiness and input tightness; no numeric lead-time sequence.",
+      "evidence_refs": [
+        "sources/official-annual-core-20260615/600183-生益科技2025年年度报告.md"
+      ],
+      "remaining_gap": "No product delivery-time, backlog, M8/M9 allocation or shipment schedule."
+    },
+    {
+      "company": "Huazheng Materials",
+      "ticker": "603186",
+      "period": "2025 annual report",
+      "metric_scope": "Supply-chain and delivery capability",
+      "leadtime_or_supply_evidence": {
+        "supply_chain_comment": "The company builds resilient supplier relationships and uses SRM for transparent procurement; high-speed CCL and semiconductor packaging materials involve deep strategic cooperation and joint development with upstream leading suppliers.",
+        "delivery_comment": "Production upgrades support multi-series, multi-level precise delivery and full-process connection from order to delivery."
+      },
+      "interpretation": "Official qualitative evidence for supply-chain and delivery capability; no numeric lead-time sequence.",
+      "evidence_refs": [
+        "sources/official-annual-core-20260615/603186-浙江华正新材料股份有限公司2025年年度报告-修订版.md"
+      ],
+      "remaining_gap": "No HSD8/CBF delivery-time, order backlog, allocation or customer shipment data."
+    }
+  ],
+  "not_used_as_confirmed": [
+    {
+      "source_type": "third-party web posts / wealth-account style pages",
+      "claim": "M8/M9 CCL lead times of 12-30 weeks, quota allocation or orders locked to 2027",
+      "reason": "Not company filing, official IR, customer disclosure or archived original broker PDF; retained only as market rumor / channel-check target."
+    }
+  ],
+  "boundary": "This packet captures public lead-time and supply-tightness proxies. It does not provide product-level delivery-time sequence, ASP, shipment or customer allocation."
+}

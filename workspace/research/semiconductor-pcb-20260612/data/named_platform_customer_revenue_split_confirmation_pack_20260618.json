@@ -1,0 +1,145 @@
+{
+  "run_date": "2026-06-18",
+  "blocker": "named_platform_customer_revenue_split",
+  "status": "direct_confirmation_or_paid_data_required",
+  "purpose": "Convert the named customer/platform revenue split blocker into company-by-company confirmation requests with current public evidence boundaries.",
+  "completion_test": "Attributable source provides revenue split by named customer/platform and period, or direct company/customer/supplier confirmation explicitly states unavailable at the requested granularity.",
+  "periods": [
+    "2024A",
+    "2025A",
+    "2026Q1",
+    "2026E",
+    "2027E",
+    "2028E"
+  ],
+  "targets": [
+    {
+      "ticker": "002463",
+      "company": "Hudian",
+      "contact": {
+        "phone": "0512-57356148 / 0512-57356136",
+        "email": "Mike@wustec.com / Yuanjun_Qian@wustec.com",
+        "address": "No. 8 Heilongjiang North Road, Kunshan, Jiangsu"
+      },
+      "public_baseline": "2025 PCB revenue about CNY18.143bn; data-communication PCB revenue about CNY14.656bn; high-speed switch/router CNY8.169bn; AI server and HPC CNY3.006bn; general server CNY2.540bn.",
+      "requested_split": [
+        "NVIDIA / Rubin / GB-series platform revenue",
+        "Google TPU / ASIC platform revenue",
+        "AMD / overseas cloud customer revenue",
+        "domestic compute customer revenue",
+        "high-speed switch / optical-module related platform revenue"
+      ],
+      "public_boundary": "CNInfo/SZSE issuer replies repeatedly state that specific vendors and customer cooperation cannot be discussed due to commercial-policy restrictions.",
+      "evidence_refs": [
+        "data/official_filing_segment_summary.md",
+        "data/ir_platform_chain_summary.md",
+        "data/customer_disclosure_boundary_evidence.md",
+        "data/current_cninfo_interaction_sweep_20260618.md"
+      ]
+    },
+    {
+      "ticker": "300476",
+      "company": "Victory Giant",
+      "contact": {
+        "phone": "0752-3761918",
+        "email": "zqb@shpcb.com",
+        "address": "Huizhou, Guangdong; annual report contact table"
+      },
+      "public_baseline": "2025 revenue CNY19.292bn; annual report confirms high-density PCB focus and high-end multilayer/HDI capabilities; current CNInfo rows confirm ASIC progress and mSAP capacity for 1.6T optical modules.",
+      "requested_split": [
+        "NVIDIA / Blackwell / Rubin / GB200 / GB300 platform revenue",
+        "Google TPU / ASIC platform revenue",
+        "Microsoft / Amazon ASIC or AI data-center platform revenue",
+        "AI Data Center UBB / OAM / midplane / orthogonal backplane revenue",
+        "1.6T optical-module mSAP revenue by customer/platform"
+      ],
+      "public_boundary": "CNInfo/SZSE issuer replies state ASIC-related customer business is progressing but specific customer names and business details cannot be discussed without permission.",
+      "evidence_refs": [
+        "data/official_filing_segment_summary.md",
+        "data/ir_platform_chain_summary.md",
+        "data/customer_disclosure_boundary_evidence.md",
+        "data/current_cninfo_interaction_sweep_20260618.md"
+      ]
+    },
+    {
+      "ticker": "002916",
+      "company": "Shennan Circuits",
+      "contact": {
+        "phone": "0755-86095188",
+        "email": "stock@scc.com.cn",
+        "address": "5F, No. 99 Qiaocheng East Road, Nanshan District, Shenzhen"
+      },
+      "public_baseline": "Public evidence supports PCB, electronic assembly and substrate exposure; broker model gives 2025 PCB revenue CNY14.359bn and substrate revenue CNY4.148bn; IR records discuss high-speed switch, optical module, AI accelerator card and server demand.",
+      "requested_split": [
+        "AI accelerator card PCB revenue by customer/platform",
+        "high-speed switch revenue by customer/platform",
+        "optical-module PCB revenue by customer/platform",
+        "server/storage PCB revenue by customer/platform",
+        "FC-BGA / ABF / BT substrate revenue by customer or certification state"
+      ],
+      "public_boundary": "P5W/SZSE issuer reply states questions involving cooperation with specific enterprises are not convenient to answer under commercial confidentiality.",
+      "evidence_refs": [
+        "data/official_filing_segment_summary.md",
+        "data/ir_platform_chain_summary.md",
+        "data/customer_disclosure_boundary_evidence.md",
+        "data/current_cninfo_interaction_sweep_20260618.md"
+      ]
+    },
+    {
+      "ticker": "600183",
+      "company": "Shengyi Technology",
+      "contact": {
+        "phone": "0769-22271828-8225",
+        "email": "tzzgx@syst.com.cn",
+        "address": "No. 5 Gongye West Road, Songshan Lake, Dongguan, Guangdong"
+      },
+      "public_baseline": "Official and IR evidence supports high-frequency/high-speed products, packaging-substrate materials and cooperation with domestic and overseas terminals around GPU and AI projects.",
+      "requested_split": [
+        "M8 / M9 / M10 high-speed CCL revenue by generation",
+        "GPU AI server material revenue",
+        "ASIC AI server material revenue",
+        "domestic compute customer material revenue",
+        "switch / optical-module material revenue",
+        "named customer certification and batch-supply status"
+      ],
+      "public_boundary": "Official SSE IR record does not name specific customers or quantify M8/M9/M10 revenue share; customer names and credit policies are exempted in official inquiry materials.",
+      "evidence_refs": [
+        "data/official_filing_segment_summary.md",
+        "data/ir_platform_chain_summary.md",
+        "data/official_shengyi_refresh_evidence.md",
+        "data/current_cninfo_interaction_sweep_20260618.md"
+      ]
+    },
+    {
+      "ticker": "603186",
+      "company": "Huazheng Materials",
+      "contact": {
+        "phone": "0571-88650709",
+        "email": "hzxc@hzccl.com",
+        "address": "Huazheng annual report contact table"
+      },
+      "public_baseline": "2025 revenue CNY4.369bn; CCL revenue CNY3.375bn; official text states high-speed CCL focus on AI server, switch, optical module and antenna markets and ongoing CBF / BT / high-grade CCL development.",
+      "requested_split": [
+        "high-speed CCL revenue by AI server / switch / optical-module / antenna application",
+        "BT / class-BT material revenue by customer/application",
+        "CBF / CBF-RCC revenue by packaging or compute-platform customer",
+        "domestic compute customer validation and ramp revenue"
+      ],
+      "public_boundary": "Official filings and P5W/SSE interaction evidence provide product/application progress but not named customer revenue, customer validation detail, ASP, shipment or order amount.",
+      "evidence_refs": [
+        "data/official_filing_segment_summary.md",
+        "data/official_huazheng_refinancing_evidence.md",
+        "data/huazheng_p5w_interaction_evidence.md",
+        "data/current_cninfo_interaction_sweep_20260618.md"
+      ]
+    }
+  ],
+  "common_questions": [
+    "Can the company disclose revenue by named customer or platform for the requested periods?",
+    "If named customer disclosure is not permitted, can the company disclose the highest approved granularity, such as GPU / ASIC / domestic compute / optical-module / switch / AI server buckets?",
+    "Can the company confirm whether revenue is already included in reported segment/application categories and identify the relevant category?",
+    "Can the company provide certification, batch-supply, order backlog, ASP, shipment, gross margin or product-generation mix by platform bucket?",
+    "If none of the above can be disclosed, can the company explicitly confirm the disclosure boundary?"
+  ],
+  "boundary": "This confirmation pack is a request and evidence-boundary artifact. It does not itself satisfy the named platform/customer revenue split requirement."
+}

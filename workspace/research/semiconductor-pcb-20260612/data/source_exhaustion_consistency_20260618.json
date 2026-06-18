@@ -1,0 +1,17 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Verify source_exhaustion_log.json matches source_exhaustion_log.md table structure.",
+  "checks": {
+    "section_count_match": true,
+    "row_count_match": true,
+    "unique_refs_match": true
+  },
+  "md_section_count": 5,
+  "json_section_count": 5,
+  "md_row_count": 61,
+  "json_row_count": 61,
+  "md_unique_evidence_refs": 130,
+  "json_unique_evidence_refs": 130,
+  "aligned": true,
+  "boundary": "Consistency audit only; does not satisfy paid/non-public data requirements."
+}

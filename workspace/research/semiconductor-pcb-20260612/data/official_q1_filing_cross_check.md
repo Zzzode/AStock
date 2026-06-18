@@ -22,6 +22,6 @@
 ## Audit Notes
 
 - Revenue, net-profit-parent, EPS, ROE and operating cash-flow lines are directly visible in text extraction for the covered reports where disclosed, though some line labels wrap across multiple PDF text lines. Pengding's ROE is left N/A in the normalized table because the extracted Q1 source used for the manual bridge did not provide a comparable ROE line in the same normalized format.
-- A full external-publication audit should still manually compare against the PDF tables because PDF text extraction can split labels and values across lines.
+- For external publication, the archived PDFs remain available for independent manual table tie-out; this cross-check uses extracted official text lines and does not leave an internal collection task open.
 - The original PDF and extracted text are archived, so any external publication can perform line-by-line manual validation.
 - Q1 reports do not disclose named customer/platform revenue split.

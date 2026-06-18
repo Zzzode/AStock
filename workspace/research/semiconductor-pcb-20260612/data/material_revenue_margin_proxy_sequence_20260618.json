@@ -1,0 +1,122 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Build an auditable revenue and margin proxy sequence for CCL material names where product-level ASP is unavailable.",
+  "status": "proxy_evidence_collected_not_product_asp",
+  "records": [
+    {
+      "company": "Nanya New Material",
+      "ticker": "688519",
+      "period": "2025A vs 2024A",
+      "metric_scope": "CCL / prepreg / high-frequency high-speed and IC substrate materials",
+      "revenue_margin_proxy": {
+        "ccl_revenue_2025_mn_cny": 4054.913,
+        "ccl_revenue_yoy_pct": 55.76,
+        "ccl_gross_margin_2025_pct": 6.96,
+        "ccl_gross_margin_change_pct_points": 3.89,
+        "prepreg_revenue_2025_mn_cny": 1072.0163,
+        "prepreg_revenue_yoy_pct": 53.89,
+        "prepreg_gross_margin_2025_pct": 31.05,
+        "prepreg_gross_margin_change_pct_points": 0.83,
+        "high_speed_ic_substrate_material_revenue_2025_mn_cny": 925.1034,
+        "high_speed_ic_substrate_material_revenue_yoy_pct": 80.60
+      },
+      "input_cost_proxy": {
+        "resin_purchase_price_yoy_pct": 1.80,
+        "copper_foil_purchase_price_yoy_pct": 4.82,
+        "glass_fabric_purchase_price_yoy_pct": 16.67,
+        "ccl_unit_selling_price_2025": 113.13,
+        "ccl_unit_selling_price_2024": 104.97,
+        "ccl_unit_cost_2025": 105.26,
+        "ccl_unit_cost_2024": 101.74,
+        "prepreg_unit_selling_price_2025": 14.90,
+        "prepreg_unit_selling_price_2024": 13.90,
+        "prepreg_unit_cost_2025": 10.27,
+        "prepreg_unit_cost_2024": 9.70,
+        "high_speed_ic_substrate_ccl_margin_contribution_2025_pct": 3.06,
+        "high_speed_ic_substrate_ccl_margin_contribution_change_pct_points": 1.29,
+        "high_speed_ic_substrate_prepreg_margin_contribution_2025_pct": 10.58,
+        "high_speed_ic_substrate_prepreg_margin_contribution_change_pct_points": 3.82,
+        "raw_material_stocking_days_2025": 28.39,
+        "raw_material_stocking_days_2024": 20.75
+      },
+      "interpretation": "Nanya is the strongest official public proxy for price/mix pass-through because inquiry response discloses revenue, cost, gross margin, unit selling price, unit cost, margin contribution and raw-material price changes. It still does not disclose M8/M9/M10 ASP or revenue split.",
+      "evidence_refs": [
+        "sources/official-annual-watchlist-20260615/688519-光大证券股份有限公司关于南亚新材料科技股份有限公司2025年年度报告的信息披露监管问询函的核查意见.md",
+        "data/material_parameter_price_sequence_20260618.md"
+      ]
+    },
+    {
+      "company": "Shengyi Technology",
+      "ticker": "600183",
+      "period": "2025A and 2025H1",
+      "metric_scope": "CCL and prepreg segment",
+      "revenue_margin_proxy": {
+        "ccl_prepreg_revenue_2025_mn_cny": 17774.1006,
+        "ccl_prepreg_revenue_yoy_pct": 20.17,
+        "ccl_prepreg_gross_margin_2025_pct": 23.91,
+        "ccl_prepreg_gross_margin_change_pct_points": 2.39,
+        "ccl_prepreg_revenue_2025h1_mn_cny": 8364.1642,
+        "ccl_prepreg_revenue_2025h1_yoy_pct": 15.84,
+        "ccl_prepreg_gross_margin_2025h1_pct": 23.69,
+        "ccl_prepreg_gross_margin_change_2025h1_pct_points": 1.99
+      },
+      "input_cost_proxy": {
+        "annual_report_comment": "From 2025Q4, AI demand drew copper foil and glass-cloth suppliers toward high-end copper foil and Low DK cloth; Low DK cloth demand squeezed thin glass-cloth capacity and prices rose 10%-20% per month; copper foil prices rose sharply."
+      },
+      "interpretation": "Shengyi has segment-level revenue and gross-margin improvement plus official raw-material tightness commentary, but no public product-level ASP or M8/M9/M10 revenue share.",
+      "evidence_refs": [
+        "sources/official-annual-core-20260615/600183-生益科技2025年年度报告.md",
+        "sources/official-quarterly-20260616/600183-生益科技-2025年半年度报告.md",
+        "data/material_parameter_price_sequence_20260618.md"
+      ]
+    },
+    {
+      "company": "Huazheng Materials",
+      "ticker": "603186",
+      "period": "2025A and 2025H1 narrative",
+      "metric_scope": "CCL segment and high-speed CCL product mix",
+      "revenue_margin_proxy": {
+        "ccl_revenue_2025_mn_cny": 3375.0,
+        "ccl_cost_2025_mn_cny": 3069.0,
+        "ccl_gross_margin_2025_pct": 9.07,
+        "thermal_material_revenue_2025_mn_cny": 293.71,
+        "thermal_material_gross_margin_2025_pct": 27.27
+      },
+      "input_cost_proxy": {
+        "official_comment": "Official annual/interim filings state high-speed CCL focuses on AI server, switch and optical-module applications, with Ultra low loss and Extreme low loss certification/batch-order progress."
+      },
+      "interpretation": "Huazheng has CCL segment revenue and gross margin plus product certification narrative, but no official HSD7/HSD8/M9-equivalent ASP, revenue share, delivery time or product gross margin.",
+      "evidence_refs": [
+        "sources/official-annual-core-20260615/603186-浙江华正新材料股份有限公司2025年年度报告-修订版.md",
+        "sources/official-quarterly-20260616/603186-华正新材-2025年半年度报告.md",
+        "data/material_parameter_price_sequence_20260618.md"
+      ]
+    },
+    {
+      "company": "Sector / input cost",
+      "ticker": "N/A",
+      "period": "2026 public repost / OCR clue",
+      "metric_scope": "E-glass fabric ASP",
+      "revenue_margin_proxy": {
+        "e_glass_1080_ytd_asp_change_pct": 95,
+        "e_glass_2116_ytd_asp_change_pct": 91,
+        "e_glass_7628_ytd_asp_change_pct": 60
+      },
+      "input_cost_proxy": {
+        "source_type": "Citi repost image OCR"
+      },
+      "interpretation": "Useful input-cost clue only. It is not company-specific CCL ASP and should not be used as a product price series without confirmation.",
+      "evidence_refs": [
+        "data/global_broker_image_ocr_evidence_20260617.md"
+      ]
+    }
+  ],
+  "remaining_gap": [
+    "No product-level M8/M9/M10 ASP sequence",
+    "No delivery-time sequence by material generation",
+    "No revenue share by material generation",
+    "No product gross margin by material generation",
+    "No customer certification date list by material generation"
+  ],
+  "boundary": "This is a proxy sequence based on official segment data, inquiry responses and archived broker/OCR clues. It does not replace product-level ASP or customer/platform EPS data."
+}

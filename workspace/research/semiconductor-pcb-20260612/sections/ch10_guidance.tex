@@ -1,22 +1,28 @@
-\section{Investment Playbook}
+\section{投资打法}
 
-\begin{exhibitbox}[Exhibit 33: Trigger-based investment stance]
+投资指引的重点不是给一个静态买入清单，而是把研究结论转成后续动作。半导体PCB链条目前处在“高景气已被市场交易、业绩验证还在继续”的阶段，因此更适合用触发器框架：核心跟踪组等待业绩质量确认，进攻观察组等待证据增强或估值回落，主题储备组等待官方财务和订单证据。
+
+\begin{exhibitbox}[图表36：基于触发器的投资立场]
 \small
 \begin{tabularx}{\textwidth}{L{2.6cm}X X}
 \toprule
-\textbf{Bucket} & \textbf{Names} & \textbf{Execution condition} \\
+\textbf{分组} & \textbf{公司} & \textbf{执行条件} \\
 \midrule
-\stance{riskgreen}{Core tracking} & 沪电股份、深南电路、生益科技 & 订单、毛利率、客户平台和材料价格验证持续；估值不脱离业绩兑现。 \\
-\stance{riskamber}{Aggressive watch} & 胜宏科技、华正新材 & 证据增强或估值回落时重点跟踪；避免只因高增长叙事追价。 \\
-\stance{accentblue}{Theme reserve} & 南亚新材、兴森科技、大族数控、芯碁微装、劲拓股份、鼎泰高科、鹏鼎控股 & 等待官方财务、订单、认证和CAPEX证据；鹏鼎已有HKEX业务片段和公开PDF增强，但原UBS全文仍缺。 \\
-\stance{riskred}{Excluded for now} & 无新增标的 & 未取得原始正文或官方证据的全球投行观点仍不进入结论。 \\
+\stance{riskgreen}{核心跟踪} & 沪电股份、深南电路、生益科技 & 订单、毛利率、客户平台和材料价格验证持续；估值不脱离业绩兑现。 \\
+\stance{riskamber}{进攻观察} & 胜宏科技、华正新材 & 证据增强或估值回落时重点跟踪；避免只因高增长叙事追价。 \\
+\stance{accentblue}{主题储备} & 南亚新材、兴森科技、大族数控、芯碁微装、劲拓股份、鼎泰高科、鹏鼎控股 & 等待官方财务、订单、认证和CAPEX证据；鹏鼎已有HKEX业务片段和公开PDF增强，但原UBS全文仍缺。 \\
+\stance{riskred}{暂不纳入} & 无新增标的 & 未取得原始正文或官方证据的全球投行观点仍不进入结论。 \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
 
-\section{Catalyst Timeline}
+执行上，核心跟踪并不等同于马上加仓。若Q2收入、毛利率和现金流同步兑现，可以维持核心权重；若只有收入增长而利润质量走弱，应降低目标估值。进攻观察组的机会来自预期差，但必须有客户链或订单证据配合，否则高估值会放大回撤。
 
-\begin{exhibitbox}[Exhibit 34: Catalyst and verification calendar]
+\section{催化剂时间线}
+
+催化剂日历把未来验证点按时间排序。短期先看中报和Q2业绩，随后看Rubin/ASIC平台节奏、M8/M9材料价格与交期，以及2027年前后的CAPEX过剩风险。这个时间线能帮助区分“现在该行动的变量”和“需要长期跟踪的变量”。
+
+\begin{exhibitbox}[图表37：催化剂与验证日历]
 \centering
 \begin{tikzpicture}[
   milestone/.style={circle, draw=navy, fill=white, minimum size=0.65cm, font=\scriptsize\bfseries},
@@ -36,19 +42,25 @@
 \end{tikzpicture}
 \end{exhibitbox}
 
-\section{Follow-Up Evidence}
+时间线上最重要的是中报。如果中报验证毛利率和现金流，估值可以继续承受较高倍数；如果中报只验证收入不验证利润，后续Rubin/ASIC叙事也难以完全支撑当前估值。
 
-\begin{dashboardbox}[Evidence needed before upgrading conviction]
+\section{后续证据}
+
+下一轮研究要优先补三类证据：第一，分业务收入和毛利率，用来判断AI订单是否真正高附加值；第二，客户链和平台节奏，用来判断增长是否可持续；第三，产能爬坡和现金流，用来判断扩产是增厚还是摊薄EPS。没有这些证据，任何目标价都只能是宽区间。
+
+\begin{dashboardbox}[提升置信度前需要补充的证据]
 \small
 \begin{tabularx}{\textwidth}{L{3.2cm}X}
 \toprule
-\textbf{Evidence type} & \textbf{What to collect next} \\
+\textbf{证据类型} & \textbf{下一步收集内容} \\
 \midrule
-Company delivery & 分业务收入、毛利率、CAPEX、在手订单、经营现金流、折旧压力。 \\
-Customer chain & NVIDIA/Rubin、ASIC、国产算力、光模块/交换机平台真实放量节奏。 \\
-Material pricing & M8/M9 CCL价格、交期、国产替代认证、原材料成本传导。 \\
-Source quality & 原始完整券商PDF、公司公告、投资者交流纪要和官方财务数据。 \\
-Capacity ramp & 泰国、南通、广州、珠海等项目的利用率、良率、折旧和现金流兑现。 \\
+公司交付 & 分业务收入、毛利率、CAPEX、在手订单、经营现金流、折旧压力。 \\
+客户链 & NVIDIA/Rubin、ASIC、国产算力、光模块/交换机平台真实放量节奏。 \\
+材料价格 & M8/M9 CCL价格、交期、国产替代认证、原材料成本传导。 \\
+来源质量 & 原始完整券商PDF、公司公告、投资者交流纪要和官方财务数据。 \\
+产能爬坡 & 泰国、南通、广州、珠海等项目的利用率、良率、折旧和现金流兑现。 \\
 \bottomrule
 \end{tabularx}
 \end{dashboardbox}
+
+如果后续只能补到券商摘要，而补不到公司公告、IR记录或原始模型表，结论强度不应上调。真正能改变评级的证据，应当直接改变收入、毛利率、订单可见度或现金流假设。

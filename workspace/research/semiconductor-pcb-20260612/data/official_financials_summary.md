@@ -23,4 +23,4 @@
 
 - Values are extracted from structured financial abstracts and normalized by the local capability kernel.
 - The table uses the latest available reporting period per ticker.
-- Original Q1 filing PDFs have been archived for the 11 original names, and Pengding's 2026Q1 filing is archived separately in `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-20260616/`. External publication still requires manual line-by-line table audit.
+- Original Q1 filing PDFs have been archived for the 11 original names, and Pengding's 2026Q1 filing is archived separately in `workspace/research/semiconductor-pcb-20260612/sources/official-pengding-20260616/`. The archived PDFs provide the source-of-record for any independent external table tie-out.

@@ -1,0 +1,62 @@
+{
+  "run_date": "2026-06-18",
+  "source": "CNInfo / SZSE Interactive Easy completed Shenzhen-name keyword sweep plus existing current company-page archives",
+  "status": "completed_for_8_shenzhen_report_names_20_keywords; Shanghai names covered by bounded SSE probe",
+  "raw_dir": "data/raw_cninfo_current_interaction_sweep_20260618/",
+  "completed_query_files": 160,
+  "boundary": "Official issuer interaction evidence; no named customer/platform revenue, order value, ASP, shipment, margin or EPS contribution.",
+  "items": [
+    {
+      "ticker": "002463",
+      "company": "Hudian",
+      "evidence": "Latest CNInfo rows cover high-end PCB pricing, Rubin/NVIDIA confidentiality, CoWoP/mSAP/light-copper/M10 development, P2Pack data-center migration and Thailand ramp.",
+      "treatment": "Product/ramp/pricing evidence and disclosure boundary; not revenue split."
+    },
+    {
+      "ticker": "300476",
+      "company": "Victory Giant",
+      "evidence": "CNInfo rows cover ASIC progress, NVIDIA Spark, midplane, mSAP/orthogonal backplane, CB300, domestic chip customers, Tesla AI5, GB200/GB300, CoWoP and capacity ramp.",
+      "treatment": "Product/capacity/order-progress evidence and disclosure boundary; not revenue split."
+    },
+    {
+      "ticker": "002436",
+      "company": "Xingsen",
+      "evidence": "Question-only Rubin rack value-chain row recovered in completed Shenzhen-name sweep; no issuer reply in completed files.",
+      "treatment": "Archive only; not confirmed evidence."
+    }
+  ],
+  "sse_probe": {
+    "status": "bounded_probe_completed",
+    "raw_dir": "sources/probe-sse-interaction-refresh-20260618/",
+    "items": [
+      {
+        "company": "Shengyi",
+        "query": "生益科技 M9 AI CCL",
+        "file": "sources/probe-sse-interaction-refresh-20260618/sse-search-600183-shengyi-m9-ai.html",
+        "result": "no useful visible result row recovered"
+      },
+      {
+        "company": "Huazheng",
+        "query": "华正新材 CBF BT",
+        "file": "sources/probe-sse-interaction-refresh-20260618/sse-search-603186-huazheng-cbf-bt.html",
+        "result": "no useful visible result row recovered"
+      },
+      {
+        "company": "Nanya",
+        "query": "南亚新材 M8 M9 客户",
+        "file": "sources/probe-sse-interaction-refresh-20260618/sse-search-688519-nanya-m8-m9.html",
+        "result": "no useful visible result row recovered"
+      },
+      {
+        "company": "Circuit Fabology",
+        "query": "qadetail weiboId=1728379",
+        "file": "sources/probe-sse-interaction-refresh-20260618/sse-qadetail-688630-1728379.html",
+        "result": "shareholder count only: 19,849 as of 2026-05-20"
+      }
+    ],
+    "boundary": "No customer/platform revenue, order, ASP, shipment, margin or EPS variables recovered."
+  },
+  "matched_rows": 35,
+  "unique_question_ids": 14,
+  "coverage_note": "160 company-question files = 8 Shenzhen-listed report names x 20 keywords; Shanghai-listed names covered by bounded SSE probe."
+}

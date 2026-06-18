@@ -13,4 +13,4 @@
 ## Remaining Gaps
 
 - This model is editable at operating-line level for four core names and forecast-line level for 603186, but it is still not a full bottom-up customer-chain model.
-- Segment revenue and margin, customer-chain revenue, platform unit content, depreciation schedules and working capital assumptions remain incomplete unless disclosed by broker/company.
+- Segment revenue and margin, customer-chain revenue, platform unit content, depreciation schedules and working-capital assumptions are not fully disclosed in public broker/company sources.

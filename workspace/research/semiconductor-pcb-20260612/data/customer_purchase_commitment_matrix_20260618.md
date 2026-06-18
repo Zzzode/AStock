@@ -1,0 +1,27 @@
+# Customer Purchase Commitment Matrix
+
+**Run date:** 2026-06-18
+
+**Purpose:** Normalize the customer annual-report and Form SD evidence into model-input fields: purchase commitments, technical-infrastructure dependency, supplier concentration language and whether the filing provides customer/platform EPS variables.
+
+**Source archive:** `sources/probe-customer-annual-risk-disclosures-20260618/`; `sources/probe-customer-form-sd-20260618/`
+
+**Boundary:** This matrix improves demand-side and supply-chain-risk evidence. It is not a customer/platform bottom-up EPS model because the filings still do not disclose named PCB/CCL/substrate revenue, ASP, shipments, order value, segment margin, depreciation, working capital or supplier-specific EPS assumptions.
+
+## Matrix
+
+| Customer | Primary source | Quantified commitment / infrastructure field | Supplier / manufacturing language | Model-use value | Missing model fields |
+|---|---|---:|---|---|---|
+| Apple | `apple-2025-10k.txt`; `apple-2025-form-sd.txt` | Manufacturing purchase obligations USD56.2bn; USD55.4bn payable within 12 months | Single/limited-source components; outsourcing partners in China mainland, India, Japan, South Korea, Taiwan and Vietnam; single-source partners for many components; CMRT collection across Apple product categories | Strong broad hardware demand and single-source risk context | No named PCB supplier, platform revenue, ASP, shipments, order value, margin or EPS input |
+| Amazon | `amazon-2025-10k.txt`; `amazon-2025-form-sd-ex101.txt` | Non-cancellable purchase commitments for certain electronic-device components, not quantified in extracted annual-report text | Significant suppliers; limited/single-source supply; electronic-device component suppliers; several contract manufacturers; RMI CMRT process for in-scope products | Confirms Amazon device/component supplier-dependency route and Form SD supplier survey boundary | No AWS/AI PCB supplier, platform allocation, revenue, ASP, shipment, order value or margin |
+| Alphabet / Google | `alphabet-2025-10k.txt`; `alphabet-2025-form-sd.txt`; `alphabet-conflict-minerals-page.html` | Total material commitments USD149.1bn, including USD113.0bn short-term, mostly technical infrastructure and inventory orders; 2025 capex USD91.4bn | GPUs and custom TPUs; servers and network equipment; contract manufacturers for technical infrastructure and device assembly; external conflict-minerals page returned HTTP 403 | Strong AI infrastructure demand and TPU/GPU capex context | No named TPU/server PCB supplier, platform revenue, ASP, shipment, margin or EPS input |
+| Meta | `meta-2025-10k.txt`; `meta-2025-form-sd-ex101.txt` | No total supplier purchase-commitment amount extracted; RL inventory non-cancellable commitments and technical-infrastructure expansion disclosed qualitatively | Third-party technical-infrastructure providers; supply-chain challenges; components/equipment/services procurement risk; small-number third-party equipment/component manufacturing risk | Supports AI infrastructure risk and demand context | No named supplier, revenue split, ASP, shipment, order value, margin or EPS input |
+| Microsoft | `microsoft-2025-annual-report.txt`; `microsoft-2025-form-sd-ex101-own.txt` | Purchase commitments USD109.953bn, mostly datacenters; current portion USD103.940bn | Datacenters depend on networking supplies, servers, GPUs and other components; few qualified suppliers for certain server/device components; devices made by third-party contract manufacturers; 79 Devices direct suppliers surveyed with 100% CMRT response | Strong datacenter demand and few-qualified-supplier boundary evidence | No named server/device PCB supplier, revenue split, ASP, shipment, order value, margin or EPS input |
+| Dell Technologies | `dell-fy2026-10k-sec.txt`; `dell-2025-form-sd-ex101-own.txt` | Purchase obligations USD18.8bn; USD16.8bn payable within 12 months; AI-optimized server revenue USD24.683bn; traditional servers/networking USD19.512bn | Several suppliers manufacture sub-assemblies; limited number of contract manufacturers; receivables from three largest contract manufacturers USD13.2bn; 100% in-scope supplier CMRT response | Strongest recovered public customer-side hardware category and contract-manufacturer evidence | No named PCB supplier, customer/platform allocation, ASP, shipment, order value, margin or EPS input |
+| NVIDIA | `nvidia-2025-form-sd-ex101.txt`; `nvidia-2026-10k-sec-retry.txt` | No purchase-commitment amount recovered in this route | Fabless and contract-manufacturing strategy; memory, substrates and components noted; 164 direct suppliers surveyed; 246 3TG processing facilities; 31 Covered-Country SORs; 206 RMAP-compliant facilities | Strong primary-source boundary for NVIDIA supplier-chain due diligence and substrate/component language | No Victory Giant / PCB / substrate supplier identity, revenue, ASP, shipment, order value, margin or EPS input |
+
+## Interpretation
+
+- The filings support a demand-side thesis for AI infrastructure, datacenter and hardware supply-chain exposure.
+- They are useful for risk framing, reverse-valuation guardrails and identifying which variables must be requested from paid/non-public channels.
+- They do not convert the report into a bottom-up customer/platform EPS model because none of the filings expose the missing revenue, ASP, shipment, margin, depreciation or working-capital variables by supplier/platform bucket.

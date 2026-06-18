@@ -1,0 +1,95 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Reverse valuation requirement matrix from latest public market cap and public forecast ranges.",
+  "source_files": [
+    "data/tencent_realtime_market_snapshot_20260618.json",
+    "data/forecast_range_analysis.md"
+  ],
+  "boundary": "This is a reverse valuation discipline check, not a customer/platform bottom-up EPS model. It does not provide customer revenue, ASP, shipments, margin or working-capital assumptions.",
+  "items": [
+    {
+      "ticker": "002463",
+      "name": "沪电股份",
+      "market_cap_cny_100m": 2817.88,
+      "target_pe_low": 45,
+      "target_pe_high": 55,
+      "required_npp_for_current_mcap_low_cny_100m": 51.23,
+      "required_npp_for_current_mcap_high_cny_100m": 62.62,
+      "comparison_forecast_year": "2028E",
+      "public_forecast_high_npp_cny_100m": 130.91,
+      "required_vs_public_high_low_pct": -60.9,
+      "required_vs_public_high_high_pct": -52.2,
+      "interpretation": "current market cap is below public high-end forecast at target PE range"
+    },
+    {
+      "ticker": "300476",
+      "name": "胜宏科技",
+      "market_cap_cny_100m": 3129.41,
+      "target_pe_low": 30,
+      "target_pe_high": 34,
+      "required_npp_for_current_mcap_low_cny_100m": 92.04,
+      "required_npp_for_current_mcap_high_cny_100m": 104.31,
+      "comparison_forecast_year": "2028E",
+      "public_forecast_high_npp_cny_100m": 222.88,
+      "required_vs_public_high_low_pct": -58.7,
+      "required_vs_public_high_high_pct": -53.2,
+      "interpretation": "current market cap is below public high-end forecast at target PE range"
+    },
+    {
+      "ticker": "002916",
+      "name": "深南电路",
+      "market_cap_cny_100m": 2953.55,
+      "target_pe_low": 45,
+      "target_pe_high": 55,
+      "required_npp_for_current_mcap_low_cny_100m": 53.7,
+      "required_npp_for_current_mcap_high_cny_100m": 65.63,
+      "comparison_forecast_year": "2028E",
+      "public_forecast_high_npp_cny_100m": 97.25,
+      "required_vs_public_high_low_pct": -44.8,
+      "required_vs_public_high_high_pct": -32.5,
+      "interpretation": "current market cap is below public high-end forecast at target PE range"
+    },
+    {
+      "ticker": "600183",
+      "name": "生益科技",
+      "market_cap_cny_100m": 4313.69,
+      "target_pe_low": 45,
+      "target_pe_high": 60,
+      "required_npp_for_current_mcap_low_cny_100m": 71.89,
+      "required_npp_for_current_mcap_high_cny_100m": 95.86,
+      "comparison_forecast_year": "2028E",
+      "public_forecast_high_npp_cny_100m": 101.69,
+      "required_vs_public_high_low_pct": -29.3,
+      "required_vs_public_high_high_pct": -5.7,
+      "interpretation": "current market cap is below public high-end forecast at target PE range"
+    },
+    {
+      "ticker": "603186",
+      "name": "华正新材",
+      "market_cap_cny_100m": 355.4,
+      "target_pe_low": 45,
+      "target_pe_high": 60,
+      "required_npp_for_current_mcap_low_cny_100m": 5.92,
+      "required_npp_for_current_mcap_high_cny_100m": 7.9,
+      "comparison_forecast_year": "2028E",
+      "public_forecast_high_npp_cny_100m": 10.54,
+      "required_vs_public_high_low_pct": -43.8,
+      "required_vs_public_high_high_pct": -25.1,
+      "interpretation": "current market cap is below public high-end forecast at target PE range"
+    },
+    {
+      "ticker": "002938",
+      "name": "鹏鼎控股",
+      "market_cap_cny_100m": 2748.4,
+      "target_pe_low": 40,
+      "target_pe_high": 50,
+      "required_npp_for_current_mcap_low_cny_100m": 54.97,
+      "required_npp_for_current_mcap_high_cny_100m": 68.71,
+      "comparison_forecast_year": "2027E",
+      "public_forecast_high_npp_cny_100m": 72.44,
+      "required_vs_public_high_low_pct": -24.1,
+      "required_vs_public_high_high_pct": -5.1,
+      "interpretation": "current market cap is below public high-end forecast at target PE range"
+    }
+  ]
+}

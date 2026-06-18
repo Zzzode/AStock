@@ -47,4 +47,4 @@
 - Use ranges to discuss forecast uncertainty and valuation discipline.
 - Do not average ranges into an AStock target price.
 - Do not treat single-source lines as consensus.
-- Keep customer/platform EPS bridge marked as incomplete until revenue by customer/platform is disclosed.
+- Keep customer/platform EPS bridge marked as publicly unavailable unless revenue by customer/platform is disclosed.

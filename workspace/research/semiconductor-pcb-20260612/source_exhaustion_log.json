@@ -1,0 +1,739 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Machine-readable index of source-exhaustion attempts, failed routes and support/integrity checks recorded in source_exhaustion_log.md.",
+  "sections": [
+    {
+      "section": "Named Customer / Platform Revenue Split",
+      "rows": [
+        {
+          "attempt": "Official annual reports",
+          "evidence_refs": [
+            "workspace/research/semiconductor-pcb-20260612/sources/official-annual-core-20260615/",
+            "workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/"
+          ],
+          "result": "Segment/application revenue and anonymous top customers are disclosed; named customers are not.",
+          "conclusion": "Cannot derive NVIDIA/Google/ASIC named revenue split."
+        },
+        {
+          "attempt": "Official/near-official Q&A",
+          "evidence_refs": [
+            "data/customer_disclosure_boundary_evidence.md"
+          ],
+          "result": "Issuers cite commercial confidentiality and do not discuss specific customer names/business details.",
+          "conclusion": "Named-customer gap is a disclosure boundary."
+        },
+        {
+          "attempt": "IR records",
+          "evidence_refs": [
+            "workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/",
+            "data/ir_platform_chain_summary.md"
+          ],
+          "result": "Platform comments are available; exact customer revenue not disclosed.",
+          "conclusion": "Useful for platform evidence, insufficient for named revenue split."
+        },
+        {
+          "attempt": "Shengyi SSE interaction probe",
+          "evidence_refs": [
+            "data/shengyi_sse_interaction_probe.md",
+            "data/raw_sse_company_600183.html",
+            "data/raw_shengyi_sse_userfeeds_type_10_page1.html",
+            "data/raw_shengyi_sse_userfeeds_company_q_page1.html"
+          ],
+          "result": "SSE company page and recent question feed were archived. The feed contains an M8/M9 investor question, but reply pages returned \"近1个月暂无回复\"; no issuer reply body was recovered beyond the official SSE IR PDF.",
+          "conclusion": "Does not close M8/M9/M10 revenue-share, named customer certification or customer-platform EPS gaps."
+        },
+        {
+          "attempt": "Public web/social claims",
+          "evidence_refs": [
+            "data/named_customer_rumor_registry.md"
+          ],
+          "result": "Many claims exist about NVIDIA/Google/ASIC/M9, but sources are unverified or non-official.",
+          "conclusion": "Keep isolated as rumor, do not use as confirmed evidence."
+        },
+        {
+          "attempt": "Re-probe for missing global-broker originals",
+          "evidence_refs": [
+            "data/global_broker_original_pdf_probe_20260616.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/jpm-shenghong-probe/",
+            "goldman-hudian-probe/",
+            "goldman-shengyi-probe/"
+          ],
+          "result": "JPM/Shenghong and Goldman/Hudian Hibor detail URLs returned Hibor intelligent-terminal download pages, not reports or PDFs. Goldman/Shengyi public URL was a Sina visible repost, not original PDF. Guohai/Pengding 50-page original PDF was downloaded as fallback evidence.",
+          "conclusion": "Does not close UBS/JPM/Goldman original-PDF gap; improves fallback original-PDF depth for Pengding only."
+        },
+        {
+          "attempt": "Second original-PDF refresh",
+          "evidence_refs": [
+            "data/original_pdf_refresh_20260616.md",
+            "data/huazheng_cbf_deep_refresh_20260616.md",
+            "data/huazheng_haitong_intl_refresh_20260616.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/"
+          ],
+          "result": "New Hibor exact-title IDs for UBS/Pengding and JPM/Shenghong again returned terminal download pages. Sina Goldman/Shengyi markdown is a repost. Eleven valid supplemental original PDFs were downloaded: two CMBI Shengyi updates, four Pengding reports from Tianfeng, Kaiyuan, Minsheng and Xingye, two Hudian reports from Xinda and Tianfeng, one Huazheng annual-review report from Zheshang, one 17-page Huazheng CBF deep report from Zheshang, and one 13-page Haitong International Huazheng high-speed CCL / CBF report.",
+          "conclusion": "Still does not close UBS/JPM/Goldman original-PDF gap; improves public original-PDF corpus for Shengyi, Pengding, Hudian and Huazheng."
+        },
+        {
+          "attempt": "Non-Hibor CMBI / Citi / HSBC probe",
+          "evidence_refs": [
+            "data/cmbi_citi_hsbc_probe_20260616.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/broker-cmbi-citi-hsbc-probe-20260616/"
+          ],
+          "result": "Current Citi/HSBC/CMBI query paths did not expose 2026 original PDFs. CMBI official article pages exposed two historical Shengyi-related official PDFs from 2023 and 2021, which were downloaded and extracted.",
+          "conclusion": "Improves official-hosted historical source depth for Shengyi, but does not close current global-broker original-PDF or named-customer gap."
+        },
+        {
+          "attempt": "Current global-broker public text recheck",
+          "evidence_refs": [
+            "data/global_broker_current_recheck_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/broker-global-current-recheck-20260617/"
+          ],
+          "result": "Public search and fetch recovered visible text for JPM/Shenghong via Reportify and Sina, plus Goldman/Shengyi and Citi/Shengyi via Sina markdown/HTML. These pages add target-price and forecast details: JPM Shenghong HKD600 target and 2026--2028 revenue/NPP scenarios; Goldman Shengyi RMB217.6 target and 2026--2028 EPS / CCL capex assumptions; Citi Shengyi RMB195 target and AI CCL share / gross-margin assumptions.",
+          "conclusion": "Improves visible public global-broker scenario evidence, but these are repost/transcript pages, not original JPM/Goldman/Citi PDFs; still cannot validate original tables or convert named platform claims into revenue split."
+        },
+        {
+          "attempt": "Repost image OCR probe",
+          "evidence_refs": [
+            "data/global_broker_image_ocr_evidence_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/broker-global-current-recheck-20260617/images/"
+          ],
+          "result": "Embedded repost images were downloaded and OCRed with local Tesseract `chi_sim`. Useful OCR was recovered for JPM/Shenghong financial highlights and revenue assumptions, including MLPCB/HDI/product-line revenue forecasts, and for Citi/Shengyi e-glass fabric ASP / gross-margin chart labels.",
+          "conclusion": "Adds supplemental machine-readable table evidence from repost images. Still OCR-derived, not original PDF; does not recover named customer/platform revenue split."
+        },
+        {
+          "attempt": "Customer-side public source probe",
+          "evidence_refs": [
+            "data/customer_side_public_source_probe_20260616.md",
+            "data/apple_customer_side_official_probe_20260616.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616/"
+          ],
+          "result": "Searched NVIDIA / Google TPU / Microsoft Azure / AWS Trainium supplier-list style public sources and Apple official supply-chain / legacy supplier-list / Newsroom clean-energy paths. Results were official generic supplier-quality or supply-chain responsibility pages, SEO/marketing lists, blogs, reposts and inaccessible third-party mirrors. Apple legacy supplier-list PDF paths redirected to the current supply-chain page. Apple 2023 Newsroom clean-energy article confirms Avary Holding joined Apple Supplier Clean Energy Program in 2020, but no official page discloses PCB product, order value, ASP, shipment, platform allocation or revenue split.",
+          "conclusion": "Does not close named platform/customer revenue split; confirms customer-side public pages provide at most relationship/program signals, not the needed revenue model data."
+        },
+        {
+          "attempt": "Victory Giant customer-side / company-side refresh",
+          "evidence_refs": [
+            "data/customer_side_victory_giant_probe_20260616.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616/google-envicool-victory-giant-reuters-repost.html",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616/victory-giant-en-about.html"
+          ],
+          "result": "Victory Giant official English page states global top-AI-client cooperation and AI computing-power PCB leadership, but does not name NVIDIA/Google or quantify revenue. A Communications Today article citing Reuters states Victory Giant counts Nvidia and Google as clients, but this is a repost/article, not customer official disclosure or original Reuters page.",
+          "conclusion": "Improves qualitative source-exhaustion evidence only; no named customer revenue, product allocation, ASP, shipment or EPS input."
+        },
+        {
+          "attempt": "Customer-side Victory Giant / NVIDIA recheck",
+          "evidence_refs": [
+            "data/customer_side_victory_giant_recheck_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260617/"
+          ],
+          "result": "NVIDIA Q2 FY2026 investor-relations release was archived and searched for Victory/Giant/PCB/substrate/NVL72/ODM/qualified/supplier; no Victory Giant named supplier statement was found. Asia Business Outlook and Winappnet/MEXC articles state or imply NVIDIA supplier status, but they are secondary media pages.",
+          "conclusion": "Does not confirm named customer revenue or customer-official supplier disclosure. Keep NVIDIA/Google/Rubin claims as broker-stated or secondary until original customer disclosure or paid supply-chain data is available."
+        },
+        {
+          "attempt": "NVIDIA earnings-call transcript / exact-quote recheck",
+          "evidence_refs": [
+            "data/customer_side_victory_giant_recheck_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260618/"
+          ],
+          "result": "Official NVIDIA Q2 FY2026 earnings-call transcript PDF was downloaded from Q4CDN and searched for Victory/Giant/PCB/printed circuit/substrate/NVL72/ODM/qualified/supplier/China. It discusses GB200 / GB300 NVL72 and China/H20, but does not name Victory Giant or disclose PCB/substrate supplier relationships. Exact phrase searches for the social quote `two additional substrate vendors including Victory Giant` and related variants returned no public results.",
+          "conclusion": "Does not confirm the social-media claim that NVIDIA named Victory Giant as an NVL72/PCB/substrate supplier. Keep the claim out of confirmed evidence unless an original NVIDIA/Reuters/licensed source or direct customer/company confirmation is obtained."
+        },
+        {
+          "attempt": "NVIDIA FY2026 10-K SEC route",
+          "evidence_refs": [
+            "data/customer_side_victory_giant_recheck_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260618/nvidia-2026-10k.html",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260618/nvidia-2026-10k-sec-retry.html",
+            ".txt"
+          ],
+          "result": "Initial SEC fetch returned an automated-access notice, but a declared-user-agent retry recovered the FY2026 10-K iXBRL HTML and extracted text. The filing discloses TSMC/Samsung foundry use, SK Hynix/Micron/Samsung memory purchases, CoWoS packaging, Hon Hai/Wistron/Fabrinet subcontractors and generic memory/substrates/components procurement. It does not name Victory Giant, PCB or printed-circuit-board suppliers.",
+          "conclusion": "NVIDIA 10-K does not confirm Victory Giant / Shenghong PCB or substrate supplier status, product allocation, order value, ASP, shipment or revenue split."
+        },
+        {
+          "attempt": "Cloud customer supplier disclosure recheck",
+          "evidence_refs": [
+            "data/cloud_customer_supplier_disclosure_recheck_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/"
+          ],
+          "result": "Amazon 2024 Sustainability Report and AWS summary were archived; Amazon states its 2024 supplier list includes nearly 2,300 finished-product and component suppliers and is shared to Open Supply Hub, but the report itself does not expose PCB supplier rows. Amazon supplier-list guessed URLs returned 404. Open Supply Hub anonymous API calls returned authentication required. Microsoft responsible sourcing pages returned access-denied shells. Google official search did not expose supplier-list data.",
+          "conclusion": "No named cloud-customer PCB/CCL supplier revenue or platform allocation recovered. Strongest path is authenticated Open Supply Hub or paid supply-chain data."
+        },
+        {
+          "attempt": "Microsoft Top 100 Production Suppliers FY24",
+          "evidence_refs": [
+            "data/microsoft_top100_supplier_pcb_evidence_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/Microsoft-Top-100-Production-Suppliers-FY24.pdf"
+          ],
+          "result": "`https://aka.ms/Top100Suppliers` resolved to Microsoft FY24 Top 100 Production Suppliers PDF. The official Microsoft supplier list names AVARY HOLDING (SHENZHEN), VICTORY GIANT TECHNOLOGY (HUIZHOU), HANNSTAR BOARD, TRIPOD TECHNOLOGY, UNIMICRON TECHNOLOGY (KUNSHAN), SUZHOU DONGSHAN PRECISION, SAMSUNG ELECTRO MECHANICS and MEKTEC among top production suppliers for commercially available hardware products.",
+          "conclusion": "Strong customer-side official supplier-list evidence. Still does not disclose product category, PCB revenue, AI/cloud platform allocation, ASP, shipment or order value."
+        },
+        {
+          "attempt": "Open Supply Hub front-end and facility API search",
+          "evidence_refs": [
+            "data/opensupplyhub_customer_network_evidence_20260617.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/osh-CN2022297DRGCBN.json",
+            "osh-CN2022306H1D256.json",
+            "opensupplyhub-victory-giant-detail.png",
+            "opensupplyhub-avary-detail.png"
+          ],
+          "result": "After installing Chrome for `agent-browser`, the Open Supply Hub web UI was searched and browser API headers were reused. Victory Giant Technology (Huizhou) Co., Ltd. facility `CN2022297DRGCBN` has Amazon.com, Inc. contributor rows from Amazon Facility List 2022, 2023 and 2024; sector is Electronics and Amazon-contributed facility/processing type is Finished goods. Avary Holding (Shenzhen) Co. Ltd facility `CN2022306H1D256` has Amazon.com, Inc. contributor row from Amazon Facility List 2023 and sector Electronics.",
+          "conclusion": "Strong customer-network evidence from OSH facility API and screenshots. Still does not disclose products, PCB revenue, AWS/AI platform allocation, ASP, shipment or order value."
+        },
+        {
+          "attempt": "Open Supply Hub expanded supplier search",
+          "evidence_refs": [
+            "data/opensupplyhub_expanded_supplier_evidence_20260618.md",
+            "data/opensupplyhub_expanded_supplier_evidence_20260618.json",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/osh-expanded-20260618/"
+          ],
+          "result": "Expanded OSH search covered Tripod / Tripod Technology, Unimicron Technology, Suzhou Dongshan Precision / Dongshan Precision, Shennan Circuits, Meiko Electronics, MEKTEC, HannStar Board, Samsung Electro Mechanics and WUS Printed Circuit. Raw search and facility-detail JSONs were archived. Material hits: Tripod facilities with Amazon/Apple/Dell/Samsung/AWS public-list rows and coarse product/facility metadata; Unimicron with Apple/AWS rows; Dongshan with Apple rows; Meiko with Amazon/Samsung/gBizINFO rows; Mektec with Amazon/Apple rows; Shennan USA with SBA row. HannStar, Samsung Electro Mechanics and WUS exact searched forms had no material OSH hit.",
+          "conclusion": "Further improves customer-side public-list network evidence. Still does not disclose customer product, PCB/CCL revenue, AI/cloud platform allocation, ASP, shipment, order value, margin or EPS assumptions."
+        },
+        {
+          "attempt": "Upstream supplier-list source files",
+          "evidence_refs": [
+            "data/upstream_supplier_list_evidence_20260618.md",
+            "data/upstream_supplier_list_evidence_20260618.json",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-upstream-supplier-lists-20260618/"
+          ],
+          "result": "Public upstream files were archived and text-extracted where possible: Apple Supplier List 2018, Apple Supplier List FY2020, Dell Public Supplier List FY2025, Samsung Electronics Supplier List, and Alliance for Water Stewardship certified-sites page. Apple lists identify Dongshan, Tripod, Unimicron, Samsung Electro-Mechanics and Zhen Ding / Avary group locations; Dell lists Tripod as `Parts / Components` and `Other direct material suppliers` and includes HannStar / Gold Circuit-style component rows; Samsung lists Meiko, Samsung Electro-Mechanics, Tripod, Korea Circuit, Ibiden and Daeduck as component / outsourcing suppliers; AWS certified-sites list identifies Avary/Hongqisheng, Qing Ding / Zhen Ding group, Tripod Wuxi and Victory Giant Huizhou as `Electronics & Semiconductor Manufacturing` certified sites.",
+          "conclusion": "Confirms part of the OSH public-list source lineage and adds customer-owned supplier-list evidence. Still does not disclose customer product, PCB/CCL revenue, AI/cloud platform allocation, ASP, shipment, order value, margin or EPS assumptions."
+        },
+        {
+          "attempt": "Current customer supplier-list recheck",
+          "evidence_refs": [
+            "data/current_customer_supplier_list_recheck_20260618.md",
+            "data/current_customer_supplier_list_recheck_20260618.json",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-current-customer-supplier-lists-20260618/"
+          ],
+          "result": "Current customer-owned supplier-list/reporting pages were archived and searched. Amazon's current supply-chain page points to Open Supply Hub contributor `1078` / list `3316` and states the map was last reviewed in March 2026; Amazon's 2024 Sustainability Report says its 2024 supplier list included nearly 2,300 finished-product suppliers and is shared to OSH. Dell's current public supplier list was downloaded and text-extracted; it exposes coarse `PCBA`, `Networking` and `Parts / Components` category rows, including relevant supplier names such as Tripod, Gold Circuit, Hannstar and Delton. Microsoft's current reports hub exposes responsible-sourcing and 2025 reporting links, but no newer Top 100 Production Suppliers link was found in static HTML. Apple's current supply-chain page and 2025 supplier standards were archived; they do not provide supplier identities or revenue allocation.",
+          "conclusion": "Improves current customer-side source coverage and confirms Amazon/Dell current public routes. Still no customer product, PCB/CCL revenue, AI/cloud platform allocation, ASP, shipment, order value, margin or EPS assumptions."
+        },
+        {
+          "attempt": "Customer annual-risk disclosure recheck",
+          "evidence_refs": [
+            "data/customer_annual_risk_disclosure_recheck_20260618.md",
+            "data/customer_annual_risk_disclosure_recheck_20260618.json",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-annual-risk-disclosures-20260618/"
+          ],
+          "result": "Latest annual-report / SEC-style filings were archived and searched for Apple, Amazon, Alphabet, Meta, Microsoft and Dell. Apple discloses single/limited-source component risk, outsourcing partners and USD56.2bn manufacturing purchase obligations; Amazon discloses significant suppliers, limited/single-source supply and contract manufacturers for electronic devices; Alphabet discloses GPUs/TPUs, technical infrastructure and USD149.1bn purchase commitments mostly for infrastructure/inventory; Meta discloses technical-infrastructure supply-chain challenges and small-number third-party component/manufacturer risk; Microsoft discloses datacenter dependence on networking supplies, servers, GPUs and components, few qualified suppliers for certain server/device components and USD109.953bn purchase commitments mostly related to datacenters; Dell FY2026 10-K was recovered through SEC submissions and discloses AI-optimized server revenue disaggregation, supplier/contract-manufacturer structure, USD18.8bn purchase obligations and receivables from the three largest contract manufacturers.",
+          "conclusion": "Adds primary customer annual-report supply-chain risk and purchase-commitment evidence. No filing names target PCB/CCL/substrate suppliers or discloses customer/platform revenue, ASP, shipment, order value, margin or EPS assumptions."
+        },
+        {
+          "attempt": "Customer purchase-commitment matrix",
+          "evidence_refs": [
+            "data/customer_purchase_commitment_matrix_20260618.md",
+            "data/customer_purchase_commitment_matrix_20260618.json",
+            "data/customer_annual_risk_disclosure_recheck_20260618.md",
+            "data/customer_form_sd_conflict_minerals_recheck_20260618.md"
+          ],
+          "result": "Normalized public customer annual-report and Form SD evidence into demand-side commitment and supplier-risk fields for Apple, Amazon, Alphabet, Meta, Microsoft, Dell and NVIDIA. The matrix captures Apple USD56.2bn manufacturing purchase obligations, Alphabet USD149.1bn commitments, Microsoft USD109.953bn purchase commitments, Dell USD18.8bn purchase obligations and AI-optimized server revenue, plus NVIDIA supplier-survey/substrate/component language.",
+          "conclusion": "Improves model-input boundary discipline. Still no named PCB/CCL/substrate supplier revenue, ASP, shipment, order value, margin, depreciation, working capital or EPS assumptions."
+        },
+        {
+          "attempt": "Customer Form SD / conflict-minerals recheck",
+          "evidence_refs": [
+            "data/customer_form_sd_conflict_minerals_recheck_20260618.md",
+            "data/customer_form_sd_conflict_minerals_recheck_20260618.json",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-form-sd-20260618/"
+          ],
+          "result": "Latest SEC Form SD / Conflict Minerals Report routes were archived and searched for Apple, Amazon, Alphabet, Meta, Microsoft and Dell. Apple discloses annual third-party audit requirements for identified 3TG smelters/refiners and CMRT collection across Apple product categories. Amazon discloses in-scope supplier analysis for electronic devices and other products, RMI CMRT use and known smelter/refiner lists. Microsoft discloses 79 Devices direct suppliers surveyed, 100% CMRT response, 266 eligible 3TG SORs and no reasonable basis that any SOR financed armed groups. Dell discloses 100% in-scope supplier CMRT response, 245 unique 3TG smelter/refiner facilities, 219 conformant and 31 known DRC/adjoining-country source SORs all conformant. Alphabet and Meta Form SD routes were archived as SEC cover/exhibit evidence; Alphabet external conflict-minerals page returned HTTP 403. NVIDIA Form SD / Conflict Minerals Report was also archived and discloses fabless/contract manufacturing, memory/substrates/components, 164 direct suppliers surveyed, 100% in-scope responses and 246 processing facilities.",
+          "conclusion": "Adds primary responsible-minerals due-diligence evidence and supplier-survey mechanics. Form SD operates at 3TG smelter/refiner level and does not disclose target PCB/CCL/substrate supplier names, customer/platform revenue, ASP, shipment, order value, margin or EPS assumptions."
+        },
+        {
+          "attempt": "Customs / bill-of-lading public probe",
+          "evidence_refs": [
+            "data/customs_bol_probe_20260616.md",
+            "workspace/research/semiconductor-pcb-20260612/sources/probe-customs-bol-20260616/"
+          ],
+          "result": "ImportGenius pages for WUS and Victory Giant show generic shipment profiles and non-AI or non-platform counterparties; Panjiva Nvidia buyer page exposes only high-level/public profile and gates detailed suppliers; ImportYeti was blocked by Cloudflare.",
+          "conclusion": "Does not close named platform/customer revenue split; full BOL data would require paid customs database access and manual entity mapping."
+        },
+        {
+          "attempt": "Eastmoney / AkShare current Stock Connect API probe",
+          "evidence_refs": [
+            "data/eastmoney_hsgt_public_api_probe_20260618.md",
+            "data/raw_eastmoney_hsgt_public_api_probe_20260618/",
+            "data/raw_eastmoney_hsgtcg_list_20260618.html"
+          ],
+          "result": "Tested AkShare wrappers and underlying Eastmoney reports for current daily holding-rank, institution-statistics and stock-statistics paths: `RPT_MUTUAL_STOCK_NORTHSTA`, `RPT_MUTUAL_HOLD_DET`, `PRT_MUTUAL_ORG_STA`, `RPT_MUTUAL_STOCK_HOLDRANKS`, plus aggregate `stock_hsgt_hist_em`. The page shell shows `个股排行（2024-08-16）`; `RPT_MUTUAL_STOCK_NORTHSTA` returned `服务器繁忙` for tested dates/intervals; current detail/statistics reports returned empty data; aggregate northbound flow rows continue but recent buy/sell/net fields are null.",
+          "conclusion": "Closes another public Stock Connect route. Does not recover daily post-rule-change northbound changes, beneficial-owner positioning, active/passive institutional ownership or terminal-grade order flow."
+        },
+        {
+          "attempt": "SZSE official margin-financing refresh",
+          "evidence_refs": [
+            "data/szse_margin_financing_probe_20260618.md",
+            "data/raw_szse_margin_probe_20260618/"
+          ],
+          "result": "Retried AkShare SZSE official wrappers and direct `www.szse.cn/api/report/ShowReport/data` routes for margin detail, summary and underlying-security information over 2026-06-17, 2026-06-16 and 2026-06-13. AkShare wrappers returned `ConnectionResetError(54)`; direct routes returned HTTP 000 with connection reset or timeout.",
+          "conclusion": "Confirms the official SZSE route remains unavailable in this environment. Does not improve Shenzhen margin data and does not provide terminal-grade order flow or institutional ownership."
+        },
+        {
+          "attempt": "Current CNInfo / SZSE / SSE interaction sweep",
+          "evidence_refs": [
+            "data/current_cninfo_interaction_sweep_20260618.md",
+            "data/current_cninfo_interaction_sweep_20260618.json",
+            "data/raw_cninfo_current_interaction_sweep_20260618/",
+            "data/raw_cninfo_keyboard_301377.json",
+            "sources/probe-sse-interaction-refresh-20260618/"
+          ],
+          "result": "Current CNInfo / SZSE Interactive Easy sweep is complete for the 8 Shenzhen-listed report names: 160 completed company-question files cover 20 keywords for each Shenzhen-listed name, with 35 matched rows and 14 unique question IDs. The refreshed pass added the two previously missing DingTai keywords (`数据中心`, `服务器`) using official `secid=9900047405`; both returned zero rows. The sweep adds Hudian issuer-side rows on high-end PCB pricing, CoWoP/mSAP/light-copper/M10 development risk, P2Pack data-center migration, Thailand ramp and AI PCB price pass-through; and Victory Giant rows on ASIC progress, mSAP/orthogonal backplane, 1.6T optical module orders/utilization, CoWoP development, Huizhou/Thailand ramp and repeated commercial-policy restrictions. Xingsen had one question-only Rubin rack value-chain row without issuer reply. Bounded SSE refresh for Shengyi/Huazheng/Nanya recovered no useful visible customer/model result rows; Circuit Fabology detail only disclosed shareholder count of 19,849 as of 2026-05-20.",
+          "conclusion": "Improves official issuer-side product/ramp/pricing/disclosure-boundary evidence and records Shanghai-name SSE boundary. Still does not disclose named customer/platform revenue, order value, ASP, shipment, margin or EPS contribution."
+        },
+        {
+          "attempt": "Hyperscaler capex / AI infrastructure demand evidence",
+          "evidence_refs": [
+            "data/hyperscaler_capex_ai_infrastructure_evidence_20260618.md",
+            "data/hyperscaler_capex_ai_infrastructure_evidence_20260618.json",
+            "sources/probe-hyperscaler-capex-20260618/"
+          ],
+          "result": "Archived primary/official demand-side sources. Alphabet 2026Q1 release: Google Cloud revenue +63% to USD20.0bn, AI infrastructure cited, Q1 PPE purchases USD35.674bn. Amazon official Q1 release: AWS sales +28% to USD37.6bn, FCF decline driven by USD59.3bn YoY increase in PPE purchases primarily reflecting AI investments, chips business above USD20bn run-rate, 2GW OpenAI Trainium commitment, up to 5GW Anthropic Trainium, 2.1mn+ AI chips and 1mn+ NVIDIA GPUs from 2026. Meta Q1 transcript: capex USD19.8bn, 2026 capex guide USD125--145bn, higher component pricing and data-center costs, USD107bn commitment increase. Microsoft page archived but static route was thin/noindex and not used for numbers.",
+          "conclusion": "Strong demand-side evidence for AI infrastructure capex. Still does not identify PCB/CCL suppliers or disclose customer/platform revenue split, ASP, shipment, order value, margin or EPS contribution."
+        },
+        {
+          "attempt": "Final targeted public web sweep",
+          "evidence_refs": [
+            "data/final_public_source_sweep.md"
+          ],
+          "result": "Re-tested Hudian, Shenghong, Shennan, Shengyi and Huazheng named-customer/model queries. Results were broker abstracts, reposts, social-media claims, old PDFs or limited previews, not reliable public evidence for named customer revenue.",
+          "conclusion": "Does not close the named-customer or bottom-up EPS gap."
+        },
+        {
+          "attempt": "Current public-source recheck",
+          "evidence_refs": [
+            "data/current_public_source_recheck_20260617.md"
+          ],
+          "result": "Reran targeted searches for Hudian, Shenghong and Shengyi named-customer / platform-revenue claims. Results again came from Eastmoney wealth-account pages, stock-board posts, Xueqiu, Toutiao, Securities Star, Weibo or similar secondary material. None were issuer filings, original broker PDFs, official customer disclosures or auditable terminal datasets.",
+          "conclusion": "Confirms that specific NVIDIA / Google TPU / ASIC / M9 / Rubin / Apple revenue-share claims should remain isolated as unverified unless an attributable primary or paid source is obtained."
+        }
+      ]
+    },
+    {
+      "section": "Institutional Holdings / Flow",
+      "rows": [
+        {
+          "attempt": "Official annual-report holders",
+          "evidence_refs": [
+            "data/official_holder_supplier_summary.md"
+          ],
+          "result": "Top-ten holder proxies available.",
+          "conclusion": "Covered as official point-in-time proxy."
+        },
+        {
+          "attempt": "Sina fund holders / circulating holders",
+          "evidence_refs": [
+            "data/advanced_holder_evidence.md",
+            "data/watchlist_holder_evidence.md"
+          ],
+          "result": "Fund holder and circulating holder data available for core/watchlist names.",
+          "conclusion": "Covered as public holder proxy."
+        },
+        {
+          "attempt": "CNInfo holder concentration",
+          "evidence_refs": [
+            "data/advanced_holder_evidence.md"
+          ],
+          "result": "Holder count and per-holder share concentration available for multiple periods.",
+          "conclusion": "Covered as ownership concentration proxy."
+        },
+        {
+          "attempt": "Eastmoney important institution holdings",
+          "evidence_refs": [
+            "data/important_institution_holding_evidence.md",
+            "data/important_institution_detail_evidence.md"
+          ],
+          "result": "Important institution aggregate and detail rows available where disclosed.",
+          "conclusion": "Covered as quarterly institution proxy."
+        },
+        {
+          "attempt": "AkShare category holder endpoint",
+          "evidence_refs": [
+            "data/institutional_holding_evidence.md"
+          ],
+          "result": "`stock_report_fund_hold` returned TypeError in current environment.",
+          "conclusion": "Unusable."
+        },
+        {
+          "attempt": "Eastmoney northbound detail",
+          "evidence_refs": [
+            "data/advanced_holder_evidence.md",
+            "data/northbound_ranking_evidence.md"
+          ],
+          "result": "Direct API returned stale 2024 window; current periods empty. HKEX changed disclosure to quarterly from 2024-08-19.",
+          "conclusion": "Daily northbound is not a current public-source requirement."
+        },
+        {
+          "attempt": "Eastmoney individual fund-flow daykline",
+          "evidence_refs": [
+            "data/eastmoney_fund_flow_evidence.md"
+          ],
+          "result": "Retry through `curl` with browser user-agent succeeded for all 5 core and 6 watchlist tickers, each with 30 rows through 2026-06-15.",
+          "conclusion": "Public dayline flow proxy covered; not terminal-grade institutional positioning."
+        },
+        {
+          "attempt": "SSE official margin-financing detail",
+          "evidence_refs": [
+            "data/sse_margin_financing_official_evidence.md",
+            "data/raw_sse_margin/"
+          ],
+          "result": "Shanghai Stock Exchange `RZRQ_MX_INFO` official interface returned 300 rows each for 600183, 688519 and 688630 from 2025-03-20 to 2026-06-15; 603186 returned zero rows.",
+          "conclusion": "Improves official financing/leverage proxy for Shanghai-listed names and confirms Huazheng empty detail on the official interface, but still not institutional ownership or order flow."
+        },
+        {
+          "attempt": "SZSE official margin-financing probe",
+          "evidence_refs": [
+            "data/szse_margin_financing_probe_20260616.md"
+          ],
+          "result": "AkShare source identified official SZSE wrappers and endpoint parameters for detail, summary and underlying-info downloads. Direct page, xlsx and repeated JSON archival calls to `www.szse.cn` failed with empty responses or `Connection reset by peer` in this local environment.",
+          "conclusion": "Does not close Shenzhen-listed margin-financing gaps such as 300400; retry from a stable SZSE-access network or use paid terminal data."
+        },
+        {
+          "attempt": "Sina margin-financing page for Huazheng",
+          "evidence_refs": [
+            "data/huazheng_haitong_intl_refresh_20260616.md"
+          ],
+          "result": "`vip.stock.finance.sina.com.cn/q/go.php/vInvestConsult/kind/rzrq/index.phtml?symbol=sh603186&edate=2026-06-16` returned the financing/securities-lending table shell but no detail rows for Huazheng in this request.",
+          "conclusion": "Not used as valid financing, holding or flow evidence."
+        },
+        {
+          "attempt": "Eastmoney market-wide clist fund-flow",
+          "evidence_refs": [
+            "data/eastmoney_fund_flow_evidence.md",
+            "data/main_fund_flow_ranking_evidence.md"
+          ],
+          "result": "HTTP 502 across all tested market universes.",
+          "conclusion": "Unusable in current environment."
+        },
+        {
+          "attempt": "Eastmoney targeted ulist fund-flow",
+          "evidence_refs": [
+            "data/eastmoney_fund_flow_evidence.md"
+          ],
+          "result": "HTTP 502 / remote disconnected across tested hosts.",
+          "conclusion": "Unusable in current environment."
+        },
+        {
+          "attempt": "Eastmoney Stock Connect top-10 deal API recheck",
+          "evidence_refs": [
+            "data/current_public_source_recheck_20260617.md"
+          ],
+          "result": "`RPT_MUTUAL_TOP10DEAL` returned public top-10 deal rows for a subset of tickers, including 002463 and 600183 on 2026-06-17, but buy/sell/net-buy fields were null in observed rows and many watchlist tickers returned empty or stale data. `RPT_MUTUAL_BOARD_HOLDRANK_WEB` direct sort test returned `HOLD_DATE排序列不存在`.",
+          "conclusion": "Adds partial public Stock Connect deal-rank context only; it does not close beneficial-owner positioning, daily post-rule-change northbound holding or terminal-grade order-flow gaps."
+        },
+        {
+          "attempt": "Eastmoney Stock Connect holding-stat/detail recheck",
+          "evidence_refs": [
+            "data/eastmoney_hsgt_holding_recheck_20260617.md",
+            "data/eastmoney_hsgt_holding_recheck_20260617.json",
+            "data/raw_eastmoney_hsgt_holding_recheck_20260617/"
+          ],
+          "result": "`RPT_MUTUAL_HOLDSTOCKNDATE_STA_NEW` and `RPT_MUTUAL_HOLDNDATE_DET_NEW` returned 2026Q1 holding statistics and participant/custodian detail for 12/12 report-universe tickers. Fields include holding shares, QoQ change, participant count, holding market cap, top participant and top-5 market-value concentration.",
+          "conclusion": "Substantially improves public Stock Connect participant/custodian coverage. Still does not identify beneficial owners, active/passive fund classification, daily post-rule-change changes or terminal-grade realtime order flow."
+        },
+        {
+          "attempt": "Eastmoney intraday fund-flow proxy",
+          "evidence_refs": [
+            "data/eastmoney_intraday_fund_flow_20260617.md",
+            "data/eastmoney_intraday_fund_flow_20260617.json",
+            "data/raw_eastmoney_intraday_fund_flow_20260617/"
+          ],
+          "result": "`push2.eastmoney.com/api/qt/stock/fflow/kline/get` with `klt=1` returned 240 one-minute cumulative fund-flow rows for 12/12 tickers. Fields include main, super-large, large, medium and small net-flow buckets.",
+          "conclusion": "Improves public intraday flow granularity beyond daily dayline proxy. Still not exchange tick/order-book data, not beneficial-owner positioning and not terminal-grade order flow."
+        },
+        {
+          "attempt": "Full visible fund-holder type recheck",
+          "evidence_refs": [
+            "data/fund_holder_full_type_recheck_20260617.md",
+            "data/fund_holder_full_type_recheck_20260617.json",
+            "data/raw_fund_holder_full_type_recheck_20260617/"
+          ],
+          "result": "AkShare `stock_fund_stock_holder` was rerun for 11 tickers with visible fund-holder rows, and AkShare `fund_name_em` mapped latest-period rows to Eastmoney public fund types where available. The recheck covers 1,986 latest-period visible fund-holder rows; type mapping coverage is 97.01%--100% by ticker.",
+          "conclusion": "Improves public fund-style classification from top examples to full visible rows. Still not a paid terminal official active/passive ownership database and does not cover funds absent from the public endpoint."
+        }
+      ]
+    },
+    {
+      "section": "Paid / Terminal Data",
+      "rows": [
+        {
+          "attempt": "Tushare SDK/token",
+          "evidence_refs": [
+            "data/paid_data_access_audit.md"
+          ],
+          "result": "SDK not installed; no token found.",
+          "conclusion": "Unavailable."
+        },
+        {
+          "attempt": "WindPy",
+          "evidence_refs": [
+            "data/paid_data_access_audit.md"
+          ],
+          "result": "SDK not installed.",
+          "conclusion": "Unavailable."
+        },
+        {
+          "attempt": "iFinD / 同花顺",
+          "evidence_refs": [
+            "data/paid_data_access_audit.md"
+          ],
+          "result": "SDK not installed.",
+          "conclusion": "Unavailable."
+        },
+        {
+          "attempt": "Choice",
+          "evidence_refs": [
+            "data/paid_data_access_audit.md"
+          ],
+          "result": "SDK not installed.",
+          "conclusion": "Unavailable."
+        },
+        {
+          "attempt": "2026-06-17 SDK/env recheck",
+          "evidence_refs": [
+            "data/current_public_source_recheck_20260617.md",
+            "data/paid_data_access_audit.md"
+          ],
+          "result": "`importlib.util.find_spec` found AkShare 1.18.41 and Baostock 00.8.90 only. Tushare, WindPy, iFinD, Choice, JQData, RQData, Datayes, xbbg, blpapi and Eikon were unavailable; no market-data or paid BOL env keys were found.",
+          "conclusion": "Remaining terminal-grade and non-public data gaps cannot be closed locally without new credentials or direct source access."
+        },
+        {
+          "attempt": "2026-06-18 paid access refresh",
+          "evidence_refs": [
+            "data/paid_access_recheck_20260618.md",
+            "data/paid_access_recheck_20260618.json",
+            "data/paid_data_access_audit.md"
+          ],
+          "result": "Refreshed SDK, environment-variable and configuration-file scan again found only AkShare 1.18.41 and Baostock 00.8.90 available. Tushare, WindPy, iFinDPy, Choice, JQData, RQData, Datayes, xbbg, blpapi, Eikon, Refinitiv and paid customs/BOL provider credentials were not found.",
+          "conclusion": "Confirms through 2026-06-18 that the remaining terminal-grade flow, beneficial-owner, named customer revenue and BOL/customer-chain gaps require new paid credentials, company/customer disclosure or direct channel checks."
+        }
+      ]
+    },
+    {
+      "section": "Support / Integrity Checks",
+      "rows": [
+        {
+          "attempt": "Tencent Level-1 order-book snapshot",
+          "evidence_refs": [
+            "data/tencent_level1_order_book_snapshot_20260618.md",
+            "data/tencent_level1_order_book_snapshot_20260618.json",
+            "data/raw_tencent_quote/quote_20260618.txt"
+          ],
+          "result": "Extracted five bid and five ask levels from the archived Tencent quote feed for 12/12 report-universe tickers, including best bid/ask, spread, five-level bid/ask volume and imbalance.",
+          "conclusion": "Improves public quote-depth context. Still delayed/post-close public Level-1 data, not exchange tick/order-book history, active/passive trade classification, beneficial-owner positioning or terminal-grade order flow."
+        },
+        {
+          "attempt": "Tencent quote refresh",
+          "evidence_refs": [
+            "data/tencent_realtime_market_snapshot_20260618.md",
+            "data/tencent_realtime_market_snapshot_20260618.json",
+            "data/raw_tencent_quote/quote_20260618.txt"
+          ],
+          "result": "Refetched 12/12 report-universe tickers from Tencent on 2026-06-18, with embedded quote timestamps around 2026-06-17 16:14 CST. Current price, total market capitalization, PE and PB anchors were available for all 12 names.",
+          "conclusion": "Closes stale current-market-anchor risk for public quote and valuation text. It remains a public quote snapshot, not a paid terminal valuation or order-flow dataset."
+        },
+        {
+          "attempt": "Reverse valuation requirement matrix",
+          "evidence_refs": [
+            "data/reverse_valuation_requirement_matrix_20260618.md",
+            "data/reverse_valuation_requirement_matrix_20260618.json"
+          ],
+          "result": "Latest market caps and public forecast ranges were translated into net-profit delivery hurdles for Hudian, Victory Giant, Shennan, Shengyi, Huazheng and Pengding.",
+          "conclusion": "Adds valuation discipline and current delivery thresholds, but does not create customer/platform revenue, ASP, shipment, platform margin, depreciation or working-capital assumptions."
+        },
+        {
+          "attempt": "Evidence reference integrity",
+          "evidence_refs": [
+            "data/evidence_reference_integrity_audit_20260618.md",
+            "data/evidence_reference_integrity_audit_20260618.json"
+          ],
+          "result": "Checked 423 artifact references across `unresolved_requirements.json`, `completion_audit_manifest.json` and `completion_audit_manifest.md` after the latest evidence and report-render refresh; all artifact paths existed or glob references matched existing files. Inline API paths, field names and descriptive labels were excluded from filesystem validation.",
+          "conclusion": "Confirms audit artifact references are not pointing to missing local files. It does not prove non-public data availability or substantive closure of blocked requirements."
+        },
+        {
+          "attempt": "Data-room index integrity",
+          "evidence_refs": [
+            "data/data_room_index_integrity_audit_20260618.md",
+            "data/data_room_index_integrity_audit_20260618.json",
+            "data/top_level_data_artifact_inventory_20260618.md",
+            "data/top_level_data_artifact_inventory_20260618.json",
+            "data/source_artifact_inventory_20260618.md",
+            "data/source_artifact_inventory_20260618.json",
+            "data/rendered_artifact_inventory_20260618.md",
+            "data/rendered_artifact_inventory_20260618.json",
+            "data/raw_data_artifact_inventory_20260618.md",
+            "data/raw_data_artifact_inventory_20260618.json",
+            "data/core_artifact_checksums_20260618.json"
+          ],
+          "result": "Checked 263 explicit `Exists` rows in `data_room_index.md` after the latest customer evidence, Level-1 quote-depth, report rebuild and full-render refresh; mismatch count was zero. Also checked 18 top-level report/governance artifacts, 358 raw data files, 184 rendered files, 601 source files and 354 top-level data files. The enhanced verifier now also checks all inventory mismatch fields, current full-render validity for `rendered/full-20260618-0913`, request-pack CSV/JSON mirroring, required source-registry/template handoff terms, ticker coverage matrix alignment, audit Markdown summaries, consistency Markdown summaries, customer recheck Markdown summaries, and the 14-file core checksum manifest including Markdown/JSON checksum alignment.",
+          "conclusion": "Confirms the indexed evidence room is internally consistent. It does not prove external data availability or close paid/non-public data gaps."
+        },
+        {
+          "attempt": "JSON validity audit",
+          "evidence_refs": [
+            "data/json_validity_audit_20260618.md",
+            "data/json_validity_audit_20260618.json"
+          ],
+          "result": "Parsed 541 `.json` files. Fourteen raw captures are invalid JSON by design or failed route: 13 HTML error captures with `.json` extensions and 1 truncated/incomplete raw Eastmoney pledge capture.",
+          "conclusion": "Confirms invalid JSON files are classified as raw failed-route evidence, not hidden unverified machine-readable packets. It does not prove external data availability or close paid/non-public data gaps."
+        },
+        {
+          "attempt": "Reader-facing PDF path leakage",
+          "evidence_refs": [
+            "data/pdf_path_leakage_check_20260618.md",
+            "data/pdf_path_leakage_check_20260618.json",
+            "main_current_text.txt"
+          ],
+          "result": "Scanned current extracted PDF text for repository/workflow path leakage patterns including local paths, workspace paths, section/source/data filenames and workflow markers; match count was zero.",
+          "conclusion": "Confirms reader-facing text hygiene for path leakage. It does not address the remaining unavailable data requirements."
+        },
+        {
+          "attempt": "Reader-facing unfinished-marker hygiene",
+          "evidence_refs": [
+            "data/pdf_text_hygiene_check_20260618.md",
+            "data/pdf_text_hygiene_check_20260618.json",
+            "main_current_text.txt"
+          ],
+          "result": "Scanned current extracted PDF text for `TODO`, `TBD`, `未完成`, `待补`, `待完善`, local paths and raw artifact markers; total match count was zero.",
+          "conclusion": "Confirms the reader-facing PDF does not present internal unfinished-work markers. It does not address the remaining unavailable data requirements."
+        }
+      ]
+    },
+    {
+      "section": "Final Boundary",
+      "rows": []
+    }
+  ],
+  "row_count": 61,
+  "unique_evidence_refs": [
+    ".txt",
+    "data/advanced_holder_evidence.md",
+    "data/apple_customer_side_official_probe_20260616.md",
+    "data/cloud_customer_supplier_disclosure_recheck_20260617.md",
+    "data/cmbi_citi_hsbc_probe_20260616.md",
+    "data/core_artifact_checksums_20260618.json",
+    "data/current_cninfo_interaction_sweep_20260618.json",
+    "data/current_cninfo_interaction_sweep_20260618.md",
+    "data/current_customer_supplier_list_recheck_20260618.json",
+    "data/current_customer_supplier_list_recheck_20260618.md",
+    "data/current_public_source_recheck_20260617.md",
+    "data/customer_annual_risk_disclosure_recheck_20260618.json",
+    "data/customer_annual_risk_disclosure_recheck_20260618.md",
+    "data/customer_disclosure_boundary_evidence.md",
+    "data/customer_form_sd_conflict_minerals_recheck_20260618.json",
+    "data/customer_form_sd_conflict_minerals_recheck_20260618.md",
+    "data/customer_purchase_commitment_matrix_20260618.json",
+    "data/customer_purchase_commitment_matrix_20260618.md",
+    "data/customer_side_public_source_probe_20260616.md",
+    "data/customer_side_victory_giant_probe_20260616.md",
+    "data/customer_side_victory_giant_recheck_20260617.md",
+    "data/customs_bol_probe_20260616.md",
+    "data/data_room_index_integrity_audit_20260618.json",
+    "data/data_room_index_integrity_audit_20260618.md",
+    "data/eastmoney_fund_flow_evidence.md",
+    "data/eastmoney_hsgt_holding_recheck_20260617.json",
+    "data/eastmoney_hsgt_holding_recheck_20260617.md",
+    "data/eastmoney_hsgt_public_api_probe_20260618.md",
+    "data/eastmoney_intraday_fund_flow_20260617.json",
+    "data/eastmoney_intraday_fund_flow_20260617.md",
+    "data/evidence_reference_integrity_audit_20260618.json",
+    "data/evidence_reference_integrity_audit_20260618.md",
+    "data/final_public_source_sweep.md",
+    "data/fund_holder_full_type_recheck_20260617.json",
+    "data/fund_holder_full_type_recheck_20260617.md",
+    "data/global_broker_current_recheck_20260617.md",
+    "data/global_broker_image_ocr_evidence_20260617.md",
+    "data/global_broker_original_pdf_probe_20260616.md",
+    "data/huazheng_cbf_deep_refresh_20260616.md",
+    "data/huazheng_haitong_intl_refresh_20260616.md",
+    "data/hyperscaler_capex_ai_infrastructure_evidence_20260618.json",
+    "data/hyperscaler_capex_ai_infrastructure_evidence_20260618.md",
+    "data/important_institution_detail_evidence.md",
+    "data/important_institution_holding_evidence.md",
+    "data/institutional_holding_evidence.md",
+    "data/ir_platform_chain_summary.md",
+    "data/json_validity_audit_20260618.json",
+    "data/json_validity_audit_20260618.md",
+    "data/main_fund_flow_ranking_evidence.md",
+    "data/microsoft_top100_supplier_pcb_evidence_20260617.md",
+    "data/named_customer_rumor_registry.md",
+    "data/northbound_ranking_evidence.md",
+    "data/official_holder_supplier_summary.md",
+    "data/opensupplyhub_customer_network_evidence_20260617.md",
+    "data/opensupplyhub_expanded_supplier_evidence_20260618.json",
+    "data/opensupplyhub_expanded_supplier_evidence_20260618.md",
+    "data/original_pdf_refresh_20260616.md",
+    "data/paid_access_recheck_20260618.json",
+    "data/paid_access_recheck_20260618.md",
+    "data/paid_data_access_audit.md",
+    "data/pdf_path_leakage_check_20260618.json",
+    "data/pdf_path_leakage_check_20260618.md",
+    "data/pdf_text_hygiene_check_20260618.json",
+    "data/pdf_text_hygiene_check_20260618.md",
+    "data/raw_cninfo_current_interaction_sweep_20260618/",
+    "data/raw_cninfo_keyboard_301377.json",
+    "data/raw_data_artifact_inventory_20260618.json",
+    "data/raw_data_artifact_inventory_20260618.md",
+    "data/raw_eastmoney_hsgt_holding_recheck_20260617/",
+    "data/raw_eastmoney_hsgt_public_api_probe_20260618/",
+    "data/raw_eastmoney_hsgtcg_list_20260618.html",
+    "data/raw_eastmoney_intraday_fund_flow_20260617/",
+    "data/raw_fund_holder_full_type_recheck_20260617/",
+    "data/raw_shengyi_sse_userfeeds_company_q_page1.html",
+    "data/raw_shengyi_sse_userfeeds_type_10_page1.html",
+    "data/raw_sse_company_600183.html",
+    "data/raw_sse_margin/",
+    "data/raw_szse_margin_probe_20260618/",
+    "data/raw_tencent_quote/quote_20260618.txt",
+    "data/rendered_artifact_inventory_20260618.json",
+    "data/rendered_artifact_inventory_20260618.md",
+    "data/reverse_valuation_requirement_matrix_20260618.json",
+    "data/reverse_valuation_requirement_matrix_20260618.md",
+    "data/shengyi_sse_interaction_probe.md",
+    "data/source_artifact_inventory_20260618.json",
+    "data/source_artifact_inventory_20260618.md",
+    "data/sse_margin_financing_official_evidence.md",
+    "data/szse_margin_financing_probe_20260616.md",
+    "data/szse_margin_financing_probe_20260618.md",
+    "data/tencent_level1_order_book_snapshot_20260618.json",
+    "data/tencent_level1_order_book_snapshot_20260618.md",
+    "data/tencent_realtime_market_snapshot_20260618.json",
+    "data/tencent_realtime_market_snapshot_20260618.md",
+    "data/top_level_data_artifact_inventory_20260618.json",
+    "data/top_level_data_artifact_inventory_20260618.md",
+    "data/upstream_supplier_list_evidence_20260618.json",
+    "data/upstream_supplier_list_evidence_20260618.md",
+    "data/watchlist_holder_evidence.md",
+    "goldman-hudian-probe/",
+    "goldman-shengyi-probe/",
+    "main_current_text.txt",
+    "opensupplyhub-avary-detail.png",
+    "opensupplyhub-victory-giant-detail.png",
+    "osh-CN2022306H1D256.json",
+    "sources/probe-hyperscaler-capex-20260618/",
+    "sources/probe-sse-interaction-refresh-20260618/",
+    "workspace/research/semiconductor-pcb-20260612/sources/broker-cmbi-citi-hsbc-probe-20260616/",
+    "workspace/research/semiconductor-pcb-20260612/sources/broker-global-current-recheck-20260617/",
+    "workspace/research/semiconductor-pcb-20260612/sources/broker-global-current-recheck-20260617/images/",
+    "workspace/research/semiconductor-pcb-20260612/sources/broker-global-probe-20260616/jpm-shenghong-probe/",
+    "workspace/research/semiconductor-pcb-20260612/sources/broker-original-refresh-20260616/",
+    "workspace/research/semiconductor-pcb-20260612/sources/ir-core-20260615/",
+    "workspace/research/semiconductor-pcb-20260612/sources/official-annual-core-20260615/",
+    "workspace/research/semiconductor-pcb-20260612/sources/official-annual-watchlist-20260615/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/Microsoft-Top-100-Production-Suppliers-FY24.pdf",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/osh-CN2022297DRGCBN.json",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-cloud-customer-side-20260617/osh-expanded-20260618/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-current-customer-supplier-lists-20260618/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-annual-risk-disclosures-20260618/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-form-sd-20260618/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616/google-envicool-victory-giant-reuters-repost.html",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260616/victory-giant-en-about.html",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260617/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260618/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260618/nvidia-2026-10k-sec-retry.html",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customer-side-20260618/nvidia-2026-10k.html",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-customs-bol-20260616/",
+    "workspace/research/semiconductor-pcb-20260612/sources/probe-upstream-supplier-lists-20260618/"
+  ],
+  "boundary": "Source exhaustion index only; it records public-source and access boundaries and does not satisfy paid/non-public data requirements."
+}

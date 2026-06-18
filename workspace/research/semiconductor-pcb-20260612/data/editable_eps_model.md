@@ -15,4 +15,4 @@
 - For each forecast year with NPP, the JSON includes plus/minus 10% NPP stress.
 - Where revenue is available, the JSON also includes a net-margin-minus-2pct proxy.
 - Supplemental broker PDFs add second-source model checks for 002463, 300476 and 002916, and a current 2025E-2027E model for 603186.
-- The model remains incomplete until segment revenue, customer-chain revenue exposure, tax, share count, depreciation, capex and working-capital assumptions are available.
+- Public sources do not disclose the full segment revenue, customer-chain revenue exposure, tax, share count, depreciation, capex and working-capital assumptions required for a customer/platform bottom-up EPS model.

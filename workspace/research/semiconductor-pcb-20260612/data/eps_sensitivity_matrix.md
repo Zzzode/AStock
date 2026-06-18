@@ -44,4 +44,4 @@
 - 600183 is highly sensitive to gross-margin assumptions because the CCL thesis is primarily a material-price/mix thesis.
 - 603186 remains forecast-line only, although 2028E is now covered by the Zheshang annual-review PDF; the sensitivity is therefore still weaker than for the operating-line names.
 - 002938 is upgraded to an operating-line proxy using Huatai's public forecast table, but it still lacks customer/platform bottom-up inputs.
-- A top-tier bottom-up model still requires platform/customer revenue, ASP, shipment, segment margins, depreciation, tax and working-capital assumptions.
+- A top-tier customer/platform bottom-up model is not available from public sources without platform/customer revenue, ASP, shipment, segment margins, depreciation, tax and working-capital assumptions.

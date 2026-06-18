@@ -1,0 +1,587 @@
+
+
+
+
+
+
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>上证e互动</title>	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" /> 
+	<meta http-equiv="X-Content-Type-Options" content="nosniff" />   
+	<meta http-equiv="pragma" content="no-cache">  
+	<meta property="wb:webmaster" content="6983a1253ca799d0" />
+	<meta name="keywords" content="上证e互动,e互动,易访谈,观点"></meta>
+	<meta name="description" content="上证e互动是由上海证券交易所建立、上海证券市场所有参与主体无偿使用的沟通平台，旨在引导和促进上市公司、投资者等各市场参与主体之间的信息沟通，构建集中、便捷的互动渠道。"></meta>
+	<meta http-equiv="imagetoolbar" content="no" />
+	<meta name="baidu-site-verification" content="codeva-ssQL4VgA6K" />
+	<script>
+	var _PUBLIC_ = ('https:' == document.location.protocol ? 'https://sns.sseinfo.com/' : 'http://sns.sseinfo.com/');
+	var _IMAGES_ = 'https://sns.sseinfo.com/';
+	var isAtPermit = '1';
+	var isMsgPermit = '1';
+	var isFacePermit = '1';
+	document.write('<base href="' + _PUBLIC_ + '"/>');
+	
+	if(!-[1,] && !window.XMLHttpRequest) {
+		window.location.href = 'ietip.do';
+	}
+	</script>
+	<link rel="shortcut icon" href="https://sns.sseinfo.com/resources/images/favicon.ico" type="image/x-icon" />
+	<link rel="stylesheet" href="https://sns.sseinfo.com/resources/css/easy.css?v=1.1" media="screen" />
+	<link rel="stylesheet" href="https://sns.sseinfo.com/resources/css/main.css?v=1.0" media="screen" />
+	<script type="text/javascript" src="https://sns.sseinfo.com/resources/js/jquery.min.js?v=1.0"></script>
+	<script type="text/javascript" src="https://sns.sseinfo.com/resources/js/jquery-migrate-1.4.1.min.js"></script>
+	<script type="text/javascript" src="https://sns.sseinfo.com/resources/js/jquery.validate.min.js"></script>
+	<!-- popup -->
+	<script type="text/javascript" src="https://sns.sseinfo.com/resources/js/jBox/jquery.jBox-2.3.min.js"></script>
+	<link rel="stylesheet" href="https://sns.sseinfo.com/resources/js/jBox/Skins/Blue/jbox.css" type="text/css"/>
+	<!-- date pick -->
+	<script type="text/javascript" src="//sns.sseinfo.com/resources/js/datepicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="https://sns.sseinfo.com/resources/js/main.js?v=3.16.0"></script>
+	<!-- infinite scroll -->
+	<script type="text/javascript" src="https://sns.sseinfo.com/resources/js/jquery.infinitescroll.dev.js"></script>
+	<script src="https://sns.sseinfo.com/resources/js/jquery/jquery-message-select.js"></script>	
+	<!-- emoticons -->
+	<link rel="stylesheet" href="https://sns.sseinfo.com/resources/css/emoticon.css" media="screen" />
+	<script src="https://sns.sseinfo.com/resources/js/jquery/jquery.emoticons.js"></script>
+	<!-- atwho -->
+	<script src="https://sns.sseinfo.com/resources/js/jquery/at/jquery.caret.min.js"></script>
+	<script src="https://sns.sseinfo.com/resources/js/jquery/at/jquery.atwho.js"></script>
+	<link rel="stylesheet" href="https://sns.sseinfo.com/resources/css/atwho.css" media="screen" />
+	<!-- layer -->
+	<script src="https://sns.sseinfo.com/resources/js/layer/layer.js"></script>
+	<script>
+	$(function(){
+		$(".navclose").click(function(){
+			$.ajax({
+				type: "post",
+				url : _PUBLIC_+"company/agreeTip.do",
+				data: {},
+				beforeSend: function(XMLHttpRequest){                        
+				},                
+				success: function(data){
+					if(data.status==0){
+						alert("登录信息已过期，请重新登录");
+					}else if(data.status==1){
+						$("#tipalert").css({"display":"none"});
+					}
+				},
+				error: function(){
+					alert("Network Error！");
+				}
+			});
+		});
+	});
+	</script>
+	
+	<style>
+		pre{
+			white-space: pre-wrap !important;
+    		word-wrap: break-word !important;
+    		font-size: 14px !important;
+    		font-family: -apple-system,Helvetica,Arial,Microsoft Yahei,Hiragino Sans GB,sans-serif !important;
+    		font: none !important;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="header">
+		<div class="inner">
+			<h1 id="logo"><a href="index.do" title="上证e互动"></a></h1>
+		<input type="hidden" value="" id="curUser"></input>
+			<ul id="nav">
+				<li class="active" ><a href="index.do">首页</a></li>
+				<li  ><a href="qa.do">问答</a>	</li>
+				<li ><a target="_blank" href="https://sns.sseinfo.com/vote/">投票</a></li>
+				<li  ><a href="point.do">观点</a></li>
+				<li  ><a href="talkIndex.do">访谈</a></li>
+				<li  ><a href="list/company.do">公司</a></li>
+			</ul> 
+			<!-- 搜索 -->
+			<div class="search-top">
+				<input type="text" placeholder="搜索&nbsp;公司/问答/观点/用户" id="top_search_txt"/>
+				<button id="top_search"><i></i></button>
+			</div>
+			<!-- 搜索 end --> 
+			<ul id="rnav">
+				
+					
+					
+						<li class="moon">
+							<a href="javascript:;">登录</a>
+							<div class="layer_topmenu_list hidden">
+								<div node-type="noticeContent">
+									<ul>
+										<li>
+											<a href="javascript:void(0);" onclick="oauthLogin();" target="_top">投资者登录 </a>
+										</li>
+										<li>
+											<a href="javascript:void(0);" onclick="companyLogin()">主板公司登录</a> 
+										</li>
+										<li>
+											<a href="javascript:void(0);" onclick="kcCompanyLogin()">科创板公司登录</a> 
+										</li>
+									</ul>
+								</div>
+								<div class="clear" style="display: none;"></div>
+							</div>
+						</li>
+						<li><a href="https://sns.sseinfo.com/en/index.do" style="color:#fff;font-size: 20px;">EN</a></li>
+					
+				
+			</ul>
+		</div>
+		<div class="clear" style="display: none;"></div>
+		<script type="text/javascript">
+			/*提示Tip*/
+			$(document).ready(function() {
+				$('#top_search_txt').placeholder({isUseSpan:true,addHeight:10});
+			});
+			
+			function oauthLogin() {
+				window.location.href = "https://sns.sseinfo.com/oauthLogin.do"
+			}
+			
+			function oauthLogout() {
+				window.location.href = "https://sns.sseinfo.com/oauthLogout.do"
+			}
+			
+			function winxinClose(){
+				$('.W_weixin').css("display","none");
+			}
+			function winxinHover(){			
+				$('#wxHover').attr("src","https://sns.sseinfo.com/resources/images/close_hover.png");
+			}		
+			function winxinOut(){
+				$('#wxHover').attr("src","https://sns.sseinfo.com/resources/images/close.png");
+			};
+			
+			function companyLogin(){
+				plUrl = "https://list.sseinfo.com";
+				var submit = function (v, h, f) {
+				    if (v == true)
+				    	window.parent.location.href = plUrl;
+				    return true;
+				};  
+				   $.jBox.confirm("上市公司e互动后台已迁至上证e服务平台</br>（https://list.sseinfo.com），点击确认后将自动跳转。使用ekey登录上证e服务平台，请在左侧菜单中选择投资者关系服务-e互动。", 
+				"提示",submit, { buttons: { '确认': true, '取消': false} }); 
+			} 
+			function kcCompanyLogin(){ 
+				var kcbUrl = "https://kcb.sseinfo.com";
+				var submit = function (v, h, f) {
+				    if (v == true)
+				    	window.parent.location.href = kcbUrl;
+				    return true;
+				};  
+				   $.jBox.confirm("科创板公司e互动后台已迁至上证e服务科创专版</br>（https://kcb.sseinfo.com）,点击确认后将自动跳转。请使用ekey登录科创专版平台，在首页上方菜单中选择“IR”，然后选择左侧的“上证e互动”进入后台。", 
+				"提示",submit, { buttons: { '确认': true, '取消': false} }); 
+			}
+		</script>
+	</div>
+</body>
+</html>
+<script src="https://sns.sseinfo.com/resources/js/jquery/jquery.pagination.js"></script>
+<style>
+<!--
+form div{margin:0;clear:none;overflow:hidden;}
+.m_qa .q_tit{
+	margin: -18px 565px 0;
+}
+.m_question .q_tit{
+	margin: -18px 565px 0;
+}
+.q_tit{
+	margin: -18px 565px 0;
+}
+.l_p{
+	margin: -18px 500px 0!important;
+}
+.l_f{
+	margin: -18px 530px 0!important;
+}
+-->
+</style>
+<div id="container">
+
+	<div class="content">
+		<div class="top_cur"></div>
+		<div class="rank_middle">
+			<div class="searchmain">
+					<div class="searchbox clearfix">
+					<form action="searchFullText.do" method="get" id="searchForm">
+						<div class="pdiv">关键词：<input maxlength="50" type="text" class="keyword" id="keyword" name="keyword" value="南亚新材 M8 M9 客户"/>
+												<input type="hidden" name="keywordEnd" id="keywordEnd">
+							<select name="type" id="type">
+								<option value="1" >问答</option>
+								<option value="2" >观点</option>
+								<option value="3" >访谈</option>
+								<option value="4" >公司</option>
+								<option value="5" >用户</option>
+							</select>
+						</div>
+						<div class="pdiv2">
+						<div class="left">
+						时间：<input type="text" class="time1" id="sdate" value="" 
+						name="sdate" style="cursor: pointer;"  readonly="readonly"/>至<input type="text" class="time2" 
+						id="edate" name="edate" value="" style="cursor: pointer;" readonly="readonly"/>
+						</div><div class="searchBut" id="searchBut">搜&nbsp;索</div>
+						</div>
+						</form>
+					</div>
+					
+					<div class="searchContentBox clearfix">
+						<div class="ptitle">
+							<ul>
+								<li value="1" onclick="listClick(this, 1);" >问答(2168)</li>
+								<li value="2" onclick="listClick(this, 2);" >观点(0)</li>
+								<li value="3" onclick="listClick(this, 3);" >访谈(0)</li>
+								<li value="4" onclick="listClick(this, 4);" >公司(1)</li>
+								<li value="5" onclick="listClick(this, 5);" >用户(0)</li>
+							</ul>
+						</div>
+						<div class="presult">
+							<div id="qaBox" class="hidden">
+							</div>
+							<div id="pagination1" class="right pagination hidden"></div>  
+							<div id="viewBox" class="hidden">
+							</div>
+							<div id="pagination2" class="right pagination  hidden"></div>  
+							<div id="easyTalkBox" class="hidden">
+							</div>
+							<div id="pagination3" class="right pagination  hidden"></div>  
+							<div id="companyBox" class="hidden">
+							</div>
+							<div id="pagination4" class="right pagination  hidden"></div>  
+							<div id="investorBox" class="hidden">
+							</div>
+							<div id="pagination5" class="right pagination  hidden"></div>  
+						</div>
+		</div>
+	</div>	
+	
+</div>
+<div class="bot_cur"></div>
+</div>
+</div>
+</body>
+<script type="text/javascript">
+
+var url = 'searchFullText.do?ssesns';
+var keywordLong = $('#keyword').val().replace(/[\?\`\~\!\@#$\%\^\&\*\(\)\+\=\|\{\}\'\:\;\'\,\/\[\]\<\>\？\~\！\《\》\@#\￥\%\…\…\&\*\）\—\—\+\|\{\}\【\】\‘\；\：\”\“\’\。\，\、]/g,"").replace(/(^\s*)|(\s*$)/g, "");;
+var keyword = keywordLong.length > 50 ? keywordLong.substring(0, 50) : keywordLong
+var sdate = '';
+var edate = '';
+var type = '';
+var pageSize = '10';
+var apage = 0;
+var cpage = 0;
+var epage = 0;
+var vpage = 0;
+var qpage = 0;
+type = type == null || type==''? 1:parseInt(type);
+$(function(){
+	switchList(type);
+});
+
+function listClick(list, listIndex){
+	$(list).parent().find('li').removeClass('active');
+	$(list).addClass('active');
+	switchList(listIndex);	
+}
+
+/* $('li').click(function(){
+	var index = $(this).parent().find('li').index($(this))+1;
+	$(this).parent().find('li').removeClass('active');
+	$(this).addClass('active');
+	switchList(index);
+}); */
+
+$('#searchBut').click(function(){
+	formSub();
+});
+
+$('#keyword').keypress(function(e){
+	if(e.keyCode == 13){
+		formSub();
+	}
+});
+
+$('#sdate').click(function () {
+	var edate = $('#edate').val();
+	if (edate) {
+		WdatePicker({minDate: '%y-%M-{%d-30}', maxDate: edate})
+	} else {
+		WdatePicker({minDate: '%y-%M-{%d-30}'})
+	}
+});
+$('#edate').click(function () {
+	var sdate = $('#sdate').val();
+	if (sdate) {
+		WdatePicker({minDate: sdate})
+	} else {
+		WdatePicker({minDate: '%y-%M-{%d-30}'})
+	}
+});
+function hideAll(){
+	$('#qaBox').hide();
+	$('#viewBox').hide();
+	$('#easyTalkBox').hide();
+	$('#companyBox').hide();
+	$('#investorBox').hide();
+	$('#pagination1').hide();
+	$('#pagination2').hide();
+	$('#pagination3').hide();
+	$('#pagination4').hide();
+	$('#pagination5').hide();
+}
+
+function formSub(){
+	var word=$('#keyword').val().replace(/[\?\`\~\!\@#$\%\^\&\*\(\)\+\=\|\{\}\'\:\;\'\,\/\[\]\<\>\？\~\！\《\》\@#\￥\%\…\…\&\*\）\—\—\+\|\{\}\【\】\‘\；\：\”\“\’\。\，\、]/g,"").replace(/(^\s*)|(\s*$)/g, "");
+	var startDate=$('#sdate').val();
+	var endDate=$('#edate').val();
+	if(word ==''){
+		showAlert("检索条件不能全为空！");
+	}else{
+		if (word.length>50){
+			word = word.substring(0,50)
+		}
+		$("#keyword").val(word);
+		$("#keywordEnd").val(word);
+		$('#searchForm').submit();
+	}
+}
+
+function switchList(listIndex){
+	switch(listIndex){
+	case 1:
+		hideAll();
+		loadPagination1();
+		break;
+	case 2:
+		hideAll();
+		loadPagination2();
+		break;
+	case 3:
+		hideAll();
+		loadPagination3();
+		break;
+	case 4:
+		hideAll();
+		loadPagination4();
+		break;
+	case 5:
+		hideAll();
+		loadPagination5();
+		break;
+	}
+}
+
+function loadPagination1(){
+   	$("#pagination1").pagination('2168'==0?1:'2168', {
+        callback: PageCallback1,  
+        prev_text: '<i></i>',      
+        next_text: '<i></i>',    
+        items_per_page: pageSize,
+        num_display_entries: 6,   
+        current_page: qpage, 
+        num_edge_entries: 2    
+    });
+}
+ 
+function loadPagination2(){
+	$("#pagination2").pagination('0'==0?1:'0', {
+	    callback: PageCallback2,  
+	    prev_text: '<i></i>',      
+	    next_text: '<i></i>',    
+	    items_per_page: pageSize,
+	    num_display_entries: 6,   
+	    current_page: vpage, 
+	    num_edge_entries: 2    
+	});
+}
+ 
+function loadPagination3(){
+	$("#pagination3").pagination('0'==0?1:'0', {
+	    callback: PageCallback3,  
+	    prev_text: '<i></i>',      
+	    next_text: '<i></i>',    
+	    items_per_page: pageSize,
+	    num_display_entries: 6,   
+	    current_page: epage, 
+	    num_edge_entries: 2    
+	});
+}
+ 
+function loadPagination4(){
+	$("#pagination4").pagination('1'==0?1:'1', {
+	    callback: PageCallback4,  
+	    prev_text: '<i></i>',      
+	    next_text: '<i></i>',    
+	    items_per_page: pageSize,
+	    num_display_entries: 6,   
+	    current_page: cpage, 
+	    num_edge_entries: 2    
+	}); 
+}
+
+function loadPagination5(){
+ $("#pagination5").pagination('0'==0?1:'0', {
+        callback: PageCallback5,  
+        prev_text: '<i></i>',      
+        next_text: '<i></i>',    
+        items_per_page: pageSize,
+        num_display_entries: 6,   
+        current_page: cpage, 
+        num_edge_entries: 2    
+    });
+}
+
+//获取问答
+function PageCallback1(pageIndex) {
+	$.ajax({
+		type: "post",
+		url : "qasearchFullText.do",
+		data: {page:(pageIndex + 1),keyword:keyword,sdate:sdate,edate:edate},
+		beforeSend: function(XMLHttpRequest){
+		},
+		success: function(data){
+			if(data.replace(/(^\s*)|(\s*$)/g, "") != '') {
+				$("#qaBox").html(data);
+   				window.$("html,body").animate({scrollTop:0}, 0);
+   					$('#qaBox').show();
+   					$('#pagination1').show();
+			}
+		},
+		error: function(){
+			showError("加载数据失败！");
+			closeLoading();
+		}
+	});
+}  
+ 
+//获取观点
+function PageCallback2(pageIndex) {
+	$.ajax({
+		type: "post",
+		url : "vsearchFullText.do",
+		data: {page:(pageIndex + 1),keyword:keyword,sdate:sdate,edate:edate},
+		beforeSend: function(XMLHttpRequest){
+		},
+		success: function(data){
+			if(data.replace(/(^\s*)|(\s*$)/g, "") != '') {
+				$("#viewBox").html(data);
+   				window.$("html,body").animate({scrollTop:0}, 0);
+   					$('#viewBox').show();
+   					$('#pagination2').show();
+			}
+		},
+		error: function(){
+			showError("加载数据失败！");
+			closeLoading();
+		}
+	});
+}  
+
+//获取易访谈
+function PageCallback3(pageIndex) {
+	$.ajax({
+		type: "post",
+		url : "esearch.do",
+		data: {page:(pageIndex + 1),keyword:keyword,sdate:sdate,edate:edate},
+		beforeSend: function(XMLHttpRequest){
+		},
+		success: function(data){
+			if(data.replace(/(^\s*)|(\s*$)/g, "") != '') {
+				$("#easyTalkBox").html(data);
+   				window.$("html,body").animate({scrollTop:0}, 0);
+   					$('#easyTalkBox').show();
+   					$('#pagination3').show();
+			}
+		},
+		error: function(){
+			showError("加载数据失败！");
+			closeLoading();
+		}
+	});
+}  
+
+//获取上市公司
+function PageCallback4(pageIndex) {
+	$.ajax({
+		type: "post",
+		url : "csearch.do",
+		data: {page:(pageIndex + 1),keyword:keyword,sdate:sdate,edate:edate},
+		beforeSend: function(XMLHttpRequest){
+		},
+		success: function(data){
+			if(data.replace(/(^\s*)|(\s*$)/g, "") != '') {
+				$("#companyBox").html(data);
+   				window.$("html,body").animate({scrollTop:0}, 0);
+   					$('#companyBox').show();
+   					$('#pagination4').show();
+			}
+		},
+		error: function(){
+			showError("加载数据失败！");
+			closeLoading();
+		}
+	});
+}  
+
+//获取投资者
+function PageCallback5(pageIndex) {
+	$.ajax({
+		type: "post",
+		url : "isearch.do",
+		data: {page:(pageIndex + 1),keyword:keyword,sdate:sdate,edate:edate},
+		beforeSend: function(XMLHttpRequest){
+		},
+		success: function(data){
+			if(data.replace(/(^\s*)|(\s*$)/g, "") != '') {
+				$("#investorBox").html(data);
+   				window.$("html,body").animate({scrollTop:0}, 0);
+   					$('#investorBox').show();
+   					$('#pagination5').show();
+			}
+		},
+		error: function(){
+			showError("加载数据失败！");
+			closeLoading();
+		}
+	});
+}
+//-->
+</script>
+
+
+<script src="https://sns.sseinfo.com/resources/js/gio/gioEventAutoTracking.js"></script>
+<script src="https://sns.sseinfo.com/resources/js/gio/gioCompress.js"></script>
+<script type="text/javascript">
+	!(function (e, n, t, c, i) {
+	    (e[i] =
+	      e[i] ||
+	      function () {
+	        (e[i].q = e[i].q || []).push(arguments);
+	      }),
+	      (t = n.createElement('script'));
+	    s = n.getElementsByTagName('script')[0];
+	    (t.async = 1), (t.src = c), s.parentNode.insertBefore(t, s);
+	  })(window, document, 'script', 'https://sns.sseinfo.com/resources/js/gio/gdp-es5.js', 'gdp');
+
+	gdp('registerPlugins', [gioEventAutoTracking,gioCompress]);
+	gdp('init', 'ba17301551dcbaf9', '99aa294a783e4303', {
+		host: 'prod-ua.sseinfo.com',
+		version: '1.0.0',
+		compress: 'true',
+		scheme: 'https',
+		debug: true,
+		dataCollect: true
+	});
+</script>
+</html>

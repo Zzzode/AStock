@@ -158,7 +158,23 @@ Templates:
 Report must include a dedicated "Street Consensus" section from `data/consensus_analysis.md` and all sections listed in "Institutional Depth Requirements".
 If source quality is weak, title the section "Publicly Available Research Sentiment" instead of "Street Consensus".
 
-**Quality gate:** XeLaTeX compiles without errors.
+**Narrative quality gate:** The main body must read as institutional equity research, not a PPT deck, chartbook, source digest, or table stack. Each main-body chapter must:
+
+- Open with prose that states the investment question and causal logic before the first table.
+- Embed tables and diagrams inside the argument rather than using tables as the argument.
+- Include synthesis after every major exhibit cluster explaining the investment implication, valuation consequence, risk, or monitoring action.
+- Avoid consecutive table-heavy pages without explanatory prose.
+- Keep appendices for source registries and dense audits; do not expose workflow files or repository paths in the reader-facing PDF.
+
+**First-chapter gate:** Chapter 1 must be an investment committee summary. It must include:
+
+- Direct investment conclusion with no meta-writing language.
+- Current price, reasonable value range, implied upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
+- A clear ranking methodology or weights.
+- Definitions of action labels and risk labels in investment-behavior terms.
+- Compact tables only; long triggers belong in prose.
+
+**Quality gate:** XeLaTeX compiles without errors, and a text extraction review confirms prose-led chapters with no table-only main-body sections.
 
 **macOS compiler rule:** Use MacTeX's XeLaTeX toolchain only. If `xelatex` is not on `PATH`, check `/Library/TeX/texbin/xelatex` and run compile commands with `PATH="/Library/TeX/texbin:$PATH"`. Do not try `tectonic`, `typst`, `pdflatex`, `lualatex`, or any other non-MacTeX substitute for project research reports.
 
@@ -170,7 +186,7 @@ After first compile, render or inspect actual PDF pages. Do not rely only on TeX
 |-------|-----------|-------|--------|
 | Visual Layout Reviewer | `.agents/team/visual-layout-reviewer.md` | `main.pdf` + rendered page images + source | `visual_review.md` |
 
-**Quality gate:** Clipped diagrams, overlapping tables, unreadable appendices, or missing exhibits for core conclusions block publication.
+**Quality gate:** Clipped diagrams, overlapping tables, unreadable appendices, table-only main-body chapters, or missing exhibits for core conclusions block publication.
 
 ## Phase 5: REVIEW (Parallel per chapter, iterative)
 
@@ -181,7 +197,7 @@ After first compile, render or inspect actual PDF pages. Do not rely only on TeX
 
 After review, feed issues back to LaTeX Writer for fixes. **Repeat until zero S-level issues.**
 
-**Quality gate:** Zero S-level issues before publish.
+**Quality gate:** Zero S-level issues before publish. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish.
 
 ## Phase 6: PUBLISH
 

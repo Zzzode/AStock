@@ -1,0 +1,61 @@
+{
+  "run_date": "2026-06-18",
+  "purpose": "Normalize customer annual-report and Form SD evidence into purchase-commitment and model-input fields.",
+  "source_archives": [
+    "sources/probe-customer-annual-risk-disclosures-20260618/",
+    "sources/probe-customer-form-sd-20260618/"
+  ],
+  "boundary": "Demand-side and supply-chain-risk matrix only; not a customer/platform bottom-up EPS model.",
+  "rows": [
+    {
+      "customer": "Apple",
+      "quantified_commitment": "Manufacturing purchase obligations USD56.2bn; USD55.4bn payable within 12 months",
+      "supplier_language": "Single/limited-source components; outsourcing partners; single-source partners for many components; CMRT collection across Apple product categories",
+      "model_use": "Broad hardware demand and single-source risk context",
+      "missing_fields": ["named PCB supplier", "platform revenue", "ASP", "shipments", "order value", "margin", "EPS input"]
+    },
+    {
+      "customer": "Amazon",
+      "quantified_commitment": "Non-cancellable purchase commitments for certain electronic-device components, not quantified in extracted annual-report text",
+      "supplier_language": "Significant suppliers; limited/single-source supply; electronic-device component suppliers; several contract manufacturers; RMI CMRT process",
+      "model_use": "Device/component supplier-dependency context",
+      "missing_fields": ["AWS/AI PCB supplier", "platform allocation", "revenue", "ASP", "shipment", "order value", "margin"]
+    },
+    {
+      "customer": "Alphabet / Google",
+      "quantified_commitment": "Total commitments USD149.1bn; USD113.0bn short-term, mostly technical infrastructure and inventory orders; 2025 capex USD91.4bn",
+      "supplier_language": "GPUs and custom TPUs; servers and network equipment; contract manufacturers for technical infrastructure and device assembly; external conflict-minerals page HTTP 403",
+      "model_use": "AI infrastructure demand and TPU/GPU capex context",
+      "missing_fields": ["named TPU/server PCB supplier", "platform revenue", "ASP", "shipment", "margin", "EPS input"]
+    },
+    {
+      "customer": "Meta",
+      "quantified_commitment": "No total supplier purchase-commitment amount extracted; RL inventory non-cancellable commitments and technical-infrastructure expansion disclosed qualitatively",
+      "supplier_language": "Third-party technical-infrastructure providers; supply-chain challenges; components/equipment/services procurement risk; small-number third-party manufacturing risk",
+      "model_use": "AI infrastructure risk and demand context",
+      "missing_fields": ["named supplier", "revenue split", "ASP", "shipment", "order value", "margin", "EPS input"]
+    },
+    {
+      "customer": "Microsoft",
+      "quantified_commitment": "Purchase commitments USD109.953bn, mostly datacenters; current portion USD103.940bn",
+      "supplier_language": "Datacenters depend on networking supplies, servers, GPUs and components; few qualified suppliers for certain server/device components; devices made by third-party contract manufacturers; 79 Devices direct suppliers surveyed with 100% CMRT response",
+      "model_use": "Datacenter demand and few-qualified-supplier boundary evidence",
+      "missing_fields": ["named server/device PCB supplier", "revenue split", "ASP", "shipment", "order value", "margin", "EPS input"]
+    },
+    {
+      "customer": "Dell Technologies",
+      "quantified_commitment": "Purchase obligations USD18.8bn; USD16.8bn payable within 12 months; AI-optimized server revenue USD24.683bn; traditional servers/networking USD19.512bn",
+      "supplier_language": "Several suppliers manufacture sub-assemblies; limited number of contract manufacturers; receivables from three largest contract manufacturers USD13.2bn; 100% in-scope supplier CMRT response",
+      "model_use": "Hardware category and contract-manufacturer evidence",
+      "missing_fields": ["named PCB supplier", "customer/platform allocation", "ASP", "shipment", "order value", "margin", "EPS input"]
+    },
+    {
+      "customer": "NVIDIA",
+      "quantified_commitment": "No purchase-commitment amount recovered in this route",
+      "supplier_language": "Fabless and contract-manufacturing strategy; memory, substrates and components noted; 164 direct suppliers surveyed; 246 3TG processing facilities; 31 Covered-Country SORs; 206 RMAP-compliant facilities",
+      "model_use": "NVIDIA supplier-chain due-diligence and substrate/component boundary evidence",
+      "missing_fields": ["Victory Giant supplier identity", "PCB/substrate supplier identity", "revenue", "ASP", "shipment", "order value", "margin", "EPS input"]
+    }
+  ],
+  "remaining_gap": "No row provides the customer/platform revenue, ASP, shipment, margin, depreciation, working-capital or EPS variables required to close the bottom-up model blocker."
+}
