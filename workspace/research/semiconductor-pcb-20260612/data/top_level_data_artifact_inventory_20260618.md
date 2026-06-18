@@ -327,7 +327,7 @@
 | `report_quality_eval.md` | `md` | True | evidence summary | 290 |
 | `reverse_valuation_requirement_matrix_20260618.json` | `json` | True | machine-readable companion | 3891 |
 | `reverse_valuation_requirement_matrix_20260618.md` | `md` | True | evidence summary | 2290 |
-| `root_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 2183 |
+| `root_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 2182 |
 | `root_artifact_inventory_20260618.md` | `md` | True | evidence summary | 1256 |
 | `shareholder_count_quarterly_bridge.md` | `md` | True | evidence summary | 1929 |
 | `shengyi_sse_interaction_probe.md` | `md` | True | evidence summary | 3117 |

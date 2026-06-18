@@ -209,6 +209,16 @@ PATH="/Library/TeX/texbin:$PATH" .venv/bin/python -m astock.cli build-pdf worksp
 
 Verify PDF opens and Chinese renders. Report file location and page count to user.
 
+## Workspace Conventions (authoritative)
+
+The canonical directory structure, file-class semantics (PRIMARY / DERIVED / TEMP), file-naming and file-format rules (incl. Markdown+JSON twins, date/currency conventions, evidence-boundary discipline), `.gitignore` and rendered-PNG version-control policy, audit-artifact refresh dependencies, and the verifier gate are defined in [`workspace/research/RESEARCH_WORKSPACE_CONVENTIONS.md`](../../workspace/research/RESEARCH_WORKSPACE_CONVENTIONS.md). All research-producing agents (data-collector, source-governance-analyst, latex-writer, etc.) MUST follow it. It prevails on any conflict with the quick-reference layout below.
+
+Key rules the orchestrator must enforce:
+- `sources/` and `data/raw_*` are PRIMARY non-regenerable evidence — always tracked, never hand-edited.
+- LaTeX intermediates (`*.aux .log .out .toc .fls .fdb_latexmk .synctex.gz .xdv .bcf .run.xml`) are TEMP — gitignored, delete after each rebuild.
+- Markdown governance files have `.json` twins that MUST stay in sync; after editing either, update the other.
+- After any PDF rebuild or governance edit, run `python3 tools/verify_research_workspace.py` — 39 PASS / 0 FAIL is the only acceptable state. See the conventions doc for the full refresh-dependency checklist.
+
 ## Case-Scoped Directory Standard
 
 Every deep research case owns its report, analysis outputs, evidence packets, and raw source archive. Do not use the deprecated global `workspace/reports/` directory for new research-source downloads. Put broker PDFs, official filings, IR records, web pages, probes, and failed-source evidence under the current case's `sources/` tree.

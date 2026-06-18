@@ -235,6 +235,10 @@ Record feedback:
 .venv/bin/python -m astock.cli team-feedback 000001 --action watch_buy --outcome good --strategy ma_cross --note "Tracked after signal, follow-up result met expectations"
 ```
 
+## Research Workspace Conventions
+
+Research cases under `workspace/research/` follow a canonical directory structure, file-class semantics (PRIMARY non-regenerable / DERIVED / TEMP), file-naming and format rules, version-control policy (what to gitignore, how to handle `rendered/` PNG growth and LaTeX intermediates), audit-artifact refresh dependencies, and the verifier gate. These are defined authoritatively in [`workspace/research/RESEARCH_WORKSPACE_CONVENTIONS.md`](workspace/research/RESEARCH_WORKSPACE_CONVENTIONS.md). All research-producing agents and the equity-research skill MUST follow it. The workspace verifier (`tools/verify_research_workspace.py`) is the only acceptance gate — 39 PASS / 0 FAIL is required after any change.
+
 ## Project Structure
 
 ```

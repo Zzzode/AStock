@@ -21,8 +21,8 @@
 | `missing_data_request_pack.json` | `json` | 8023 |
 | `missing_data_request_pack.md` | `md` | 14725 |
 | `research_brief.md` | `md` | 3504 |
-| `review_log.md` | `md` | 200906 |
-| `source_exhaustion_log.json` | `json` | 57437 |
+| `review_log.md` | `md` | 203503 |
+| `source_exhaustion_log.json` | `json` | 65201 |
 | `source_exhaustion_log.md` | `md` | 46326 |
 | `ticker_evidence_coverage_matrix.json` | `json` | 4476 |
 | `ticker_evidence_coverage_matrix.md` | `md` | 1789 |

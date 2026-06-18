@@ -2306,3 +2306,22 @@ Current completion boundary:
 - `unresolved_requirements.json` remains `blocked_by_unavailable_paid_or_non_public_data`.
 - Remaining hard blockers are named platform/customer revenue split, terminal-grade positioning/order flow, and bottom-up customer/platform EPS model assumptions.
 - The latest public-source work reduces uncollected public evidence and audit drift, but does not supply the paid/non-public or directly confirmed data required to close those blockers.
+
+## 2026-06-18 Material-Line Governance Registration & PDF Rebuild Addendum
+
+This addendum records two steps performed after the earlier `Current Final-State Addendum` (which described the 71-page 09:13 PDF). It supersedes that addendum's page-count and render-directory statements.
+
+Material-line governance registration:
+
+- Registered six `material_*_20260618` evidence files (parameter/price sequence, revenue/margin proxy, customer-certification timeline, lead-time/supply-tightness, implied unit-economics proxy, external data request pack) into `source_exhaustion_log.md` and `source_exhaustion_log.json` (Named Customer / Platform Revenue Split section), and added one consolidated material-line row to `completion_audit_manifest.md` after the Customer-chain revenue split row.
+- All six files are PROXY/derived evidence (public TDS/Line-up Dk/Df + filing/inquiry-response proxies). They do NOT close the hard data gaps (product-level ASP, M8/M9/M10 generation revenue split/gross margin, complete dated customer certification list, lead-time/allocation/shipment sequence). Completion decision remains `do_not_mark_complete` / `blocked_by_unavailable_paid_or_non_public_data`.
+
+PDF rebuild and artifact refresh:
+
+- Rebuilt `main.pdf` with XeLaTeX/latexmk: 76 pages, A4, file size 848301 bytes, CreationDate `Thu Jun 18 19:22:23 2026 CST`. Content is identical to the prior 16:52 build (same page count and byte size); only the CreationDate changed.
+- Cleaned LaTeX intermediate files (main.aux/log/toc/out/xdv/fls/fdb_latexmk); root files count back to 18.
+- Refreshed dependent audit artifacts: `report_quality_eval.pdf_creation_date`, `completion_audit_manifest.verifier_summary.pdf_creation_date`, `core_artifact_checksums` (main.pdf sha), `top_level_data_artifact_inventory` (self-referential size converged by iteration), and synced the `source_exhaustion_log.json` mirror.
+- Current full render: `rendered/full-20260618-1652/` (76 PNGs; retained as current because the 19:22 rebuild is byte-identical in page count and file size, so the 16:52 raster remains visually accurate). No new render directory was created, to avoid repository bloat from duplicate full-page PNG sets; the render-current pointer in `rendered_artifact_inventory_20260618.json` therefore still points at `full-20260618-1652`.
+- Workspace verifier: 39 PASS / 0 FAIL.
+
+Completion boundary unchanged: hard blockers (named platform/customer revenue split, terminal-grade positioning/order flow, bottom-up customer/platform EPS assumptions) still require paid/non-public data or direct company/customer confirmation.
