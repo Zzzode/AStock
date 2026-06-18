@@ -44,8 +44,9 @@ async def test_quote_service_get_realtime(mock_db: AsyncMock) -> None:
     """Test quote service getting realtime data"""
     service = QuoteService(mock_db)
 
+    # AkShare (fallback_client) is now the preferred realtime source
     with patch.object(
-        service.client,
+        service.fallback_client,
         "get_realtime_quote",
         return_value={"code": "000001", "name": "平安银行", "price": 10.5},
     ):
@@ -96,7 +97,11 @@ async def test_get_realtime_quote_fallback_to_alternate_source(
         ]
     )
 
+    # Single-stock Tencent/East Money endpoints return None so the test
+    # exercises the full-market spot dataframe fallback path.
     with (
+        patch.object(client, "_get_realtime_quote_tencent", return_value=None),
+        patch.object(client, "_get_realtime_quote_eastmoney", return_value=None),
         patch(
             "astock.quote.akshare_client.ak.stock_zh_a_spot_em",
             side_effect=ConnectionError("em down"),

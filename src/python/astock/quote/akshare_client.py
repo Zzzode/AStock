@@ -280,6 +280,140 @@ class AkShareClient:
 
         return df[required]
 
+    def _get_realtime_quote_eastmoney(self, code: str) -> Optional[dict[str, Any]]:
+        """Fetch a single-stock realtime quote from the East Money push2 endpoint.
+
+        This is a lightweight single-stock call (~0.2s, one HTTP request) used
+        as the PREFERRED realtime source, before falling back to the full-market
+        spot dataframe (``stock_zh_a_spot``), which pulls 5000+ symbols, is slow,
+        and is frequently unreachable in restricted networks.
+
+        East Money f-codes: prices in 分 (cents, /100); percentage fields
+        (f170 change%, f168 turnover%) also /100; volume in 手, amount/market
+        cap in 元.
+
+        Returns None on any failure so callers can fall back. Never raises.
+        """
+        import json as _json
+        import urllib.request
+
+        market = "1" if code.startswith("6") else "0"  # 1=Shanghai, 0=Shenzhen/BSE
+        fields = "f43,f44,f45,f46,f47,f48,f57,f58,f60,f162,f163,f164,f167,f168,f170"
+        url = (
+            "https://push2.eastmoney.com/api/qt/stock/get"
+            f"?secid={market}.{code}&fields={fields}"
+        )
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                payload = _json.loads(resp.read().decode("utf-8", errors="replace"))
+        except Exception as e:
+            logger.debug(f"East Money single-stock quote failed for {code}: {e}")
+            return None
+
+        data = payload.get("data") or {}
+        if not data or data.get("f43") in (None, "", "-"):
+            return None
+
+        def _div100(v: Any) -> float:
+            try:
+                return float(v) / 100.0
+            except (TypeError, ValueError):
+                return 0.0
+
+        return {
+            "code": str(data.get("f57") or code),
+            "name": str(data.get("f58") or ""),
+            "price": _div100(data.get("f43")),
+            "change_percent": _div100(data.get("f170")),
+            "change": _div100(data.get("f167")),
+            "volume": self._safe_float(data.get("f47")),
+            "amount": self._safe_float(data.get("f48")),
+            "high": _div100(data.get("f44")),
+            "low": _div100(data.get("f45")),
+            "open": _div100(data.get("f46")),
+            "prev_close": _div100(data.get("f60")),
+            "pe": _div100(data.get("f162")),
+            "pb": _div100(data.get("f163")),
+            "total_market_value": self._safe_float(data.get("f164")),
+            "circulating_market_value": 0.0,
+            "turnover_rate": _div100(data.get("f168")),
+            "volume_ratio": 0.0,
+            "bid_price": 0.0,
+            "ask_price": 0.0,
+            "pe_ttm": 0.0,
+        }
+
+    def _get_realtime_quote_tencent(self, code: str) -> Optional[dict[str, Any]]:
+        """Fetch a single-stock realtime quote from Tencent (qt.gtimg.cn).
+
+        Preferred single-stock source: reachable from python in restricted
+        networks where East Money push2 (IPv4) is blocked. Returns core market
+        data (price/OHLC/volume/amount/change/bid/ask) but NOT valuation
+        (pe/pb/market cap) — those default to 0 and are filled by East Money
+        if reachable.
+
+        Returns None on any failure. Never raises.
+        """
+        import re
+        import urllib.request
+
+        if code.startswith("6"):
+            sym = f"sh{code}"
+        elif code.startswith(("8", "4")):
+            sym = f"bj{code}"
+        else:
+            sym = f"sz{code}"
+        try:
+            req = urllib.request.Request(
+                f"https://qt.gtimg.cn/q={sym}",
+                headers={"User-Agent": "Mozilla/5.0"},
+            )
+            with urllib.request.urlopen(req, timeout=5) as resp:
+                body = resp.read().decode("gbk", errors="replace")
+        except Exception as e:
+            logger.debug(f"Tencent single-stock quote failed for {code}: {e}")
+            return None
+
+        m = re.search(r'="([^"]*)"', body)
+        if not m:
+            return None
+        parts = m.group(1).split("~")
+        if len(parts) < 35:
+            return None
+        try:
+            amount = 0.0
+            if "/" in parts[35]:
+                amt_tokens = parts[35].split("/")[2:]
+                if amt_tokens:
+                    amount = self._safe_float(amt_tokens[0])
+            return {
+                "code": str(parts[2] or code),
+                "name": str(parts[1] or ""),
+                "price": self._safe_float(parts[3]),
+                "prev_close": self._safe_float(parts[4]),
+                "open": self._safe_float(parts[5]),
+                "volume": self._safe_float(parts[6]),
+                "change": self._safe_float(parts[31]),
+                "change_percent": self._safe_float(parts[32]),
+                "high": self._safe_float(parts[33]),
+                "low": self._safe_float(parts[34]),
+                "amount": amount,
+                "bid_price": self._safe_float(parts[9]),
+                "ask_price": self._safe_float(parts[19]),
+                # Not provided by Tencent; East Money fills these where reachable
+                "pe": 0.0,
+                "pb": 0.0,
+                "pe_ttm": 0.0,
+                "total_market_value": 0.0,
+                "circulating_market_value": 0.0,
+                "turnover_rate": 0.0,
+                "volume_ratio": 0.0,
+            }
+        except Exception as e:
+            logger.debug(f"Tencent quote parse failed for {code}: {e}")
+            return None
+
     @async_wrap
     def get_realtime_quote(self, code: str) -> dict[str, Any]:
         """Get real-time quote
@@ -295,6 +429,20 @@ class AkShareClient:
         """
         if os.getenv("ASTOCK_OFFLINE") == "1":
             return self._get_offline_quote(code)
+
+        # Prefer lightweight single-stock endpoints before the full-market spot
+        # dataframe (which pulls 5000+ symbols and is often unreachable).
+        # Tencent (qt.gtimg.cn) is reachable from python in restricted networks
+        # where East Money push2 over IPv4 is blocked; East Money adds valuation
+        # fields (pe/pb/market cap) where reachable.
+        for _fetch in (
+            self._get_realtime_quote_tencent,
+            self._get_realtime_quote_eastmoney,
+        ):
+            single = _fetch(code)
+            if single:
+                logger.debug(f"Single-stock quote fetched via {_fetch.__name__}: {code}")
+                return single
 
         df = self._load_realtime_dataframe()
 

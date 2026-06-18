@@ -66,7 +66,7 @@ class QuoteService:
 
     Data source strategy:
     - Daily data: prefer Baostock (stable, includes valuation data)
-    - Real-time quotes: prefer Baostock (latest trading day), fallback to AkShare on failure
+    - Real-time quotes: prefer AkShare (Tencent/East Money single-stock, fast and reachable), fallback to Baostock
     """
 
     def __init__(
@@ -205,8 +205,9 @@ class QuoteService:
         """Get real-time quote (with caching and dynamic TTL)
 
         Data source priority:
-        1. Baostock (latest trading day data, includes valuation)
-        2. AkShare (real-time data, degrades gracefully when unstable)
+        1. AkShare (lightweight single-stock via Tencent/East Money — fast and
+           reachable in restricted networks; provides core market data)
+        2. Baostock (fallback; adds valuation fields where reachable)
 
         Args:
             code: Stock code
@@ -223,19 +224,20 @@ class QuoteService:
         ttl = get_dynamic_ttl("realtime")
 
         async def _fetch_realtime() -> dict[str, Any]:
-            # Prefer primary data source
-            if isinstance(self.primary_client, BaostockClient):
-                try:
-                    result = await self.primary_client.get_realtime_quote(code)
-                    logger.debug(f"Baostock quote fetched successfully: {code}")
-                    return result
-                except Exception as e:
-                    logger.warning(f"Baostock quote fetch failed, switching to AkShare: {e}")
-
-            # Fallback to AkShare
+            # Prefer AkShare (lightweight single-stock via Tencent/East Money) —
+            # fast and reachable in restricted networks. Baostock's realtime
+            # login/query can block in thread pools and is only a fallback.
             try:
                 result = await self.fallback_client.get_realtime_quote(code)
                 logger.debug(f"AkShare quote fetched successfully: {code}")
+                return result
+            except Exception as e:
+                logger.warning(f"AkShare quote fetch failed, switching to primary client: {e}")
+
+            # Fallback to primary client (Baostock by default)
+            try:
+                result = await self.primary_client.get_realtime_quote(code)
+                logger.debug(f"Primary client quote fetched successfully: {code}")
                 return result
             except Exception as e:
                 logger.error(f"All data sources failed to fetch quote: {e}")
