@@ -1,6 +1,6 @@
 ---
 name: monitor
-description: Use when user needs to manage stock monitoring — add/remove watch items, set price or signal conditions, start/stop the monitoring service, check status, or view historical alerts. Triggers on "watch this stock", "add monitor", "set alert for", "notify me when price hits X", "start monitoring", "stop monitoring", "alert history", "what alerts fired", "view watch list".
+description: Use when user needs to manage stock monitoring — add/remove watch items, set price or signal conditions, start/stop the monitoring service, check status, or view historical alerts. Also covers scheduled/periodic patrols via the task scheduler (scheduler health, start daemon, run jobs). Triggers on "watch this stock", "add monitor", "set alert for", "notify me when price hits X", "start monitoring", "stop monitoring", "alert history", "what alerts fired", "view watch list", "scheduler status", "scheduled patrol", "run scheduler job".
 ---
 
 <SUBAGENT-STOP>
@@ -65,6 +65,46 @@ Example:
 ```bash
 .venv/bin/python -m astock.cli alert status --json
 ```
+
+## Scheduled Patrols
+
+monitor supports scheduled/periodic market patrols via the task scheduler. The scheduler runs registered jobs on a recurring schedule — e.g. periodic watch-list scans or market patrols during trading hours — so monitoring continues without a foreground terminal.
+
+### Check Scheduler Health
+
+```bash
+.venv/bin/python -m astock.cli scheduler-status           # human-readable
+.venv/bin/python -m astock.cli scheduler-status --json    # machine-readable
+```
+
+The same status is also reachable through the `scheduler` group:
+
+```bash
+.venv/bin/python -m astock.cli scheduler status --json
+```
+
+Output reports whether the daemon is `Running` and the number of registered jobs. `Running: False` with `Jobs: 0` means no patrols are scheduled.
+
+### Manage the Scheduler Daemon
+
+`scheduler` is a command group with three subcommands:
+
+| Subcommand | Purpose |
+|------------|---------|
+| `scheduler start` | Start the scheduler daemon (`--foreground` default, or `--background`; `--json` for structured output) |
+| `scheduler status` | Show scheduler status from saved state (`--json`) |
+| `scheduler run-job <JOB_NAME>` | Manually trigger a single registered job by name (`--json`) |
+
+Exact forms:
+
+```bash
+.venv/bin/python -m astock.cli scheduler start --foreground --json
+.venv/bin/python -m astock.cli scheduler start --background --json
+.venv/bin/python -m astock.cli scheduler status --json
+.venv/bin/python -m astock.cli scheduler run-job <JOB_NAME> --json
+```
+
+Note: this version of the CLI exposes `start` / `status` / `run-job` only — there is no `list` / `add` / `remove` subcommand for managing job registrations; jobs are registered in code (see `src/python/astock/scheduler/`).
 
 ## Alert History
 

@@ -90,6 +90,18 @@ report_catalog:
       - "华为链受益程度存在分歧"
 ```
 
+## Tools
+
+After you have collected and archived reports (downloaded PDFs, extracted text under `sources/`, written `data/report_catalog.md`), index every extracted report text so downstream agents can retrieve prior research semantically. For each report's text file run:
+
+```bash
+.venv/bin/python -m astock.cli index-report <file_path>
+# optional: pin the document ID explicitly
+.venv/bin/python -m astock.cli index-report <file_path> --doc-id <stable_id>
+```
+
+This builds the semantic search index that `search-report` queries. It is the indexing prerequisite for `search-report`, which `data-collector` consumes to recall prior research and avoid re-fetching or contradicting already-collected reports. Use the extracted `.md`/`.txt` path recorded in each catalog entry's `local_text`; skip entries where `local_text` is null. Index after archiving, not before — the indexed document must reflect the file as it will be queried.
+
 ## Execution Protocol
 
 1. **Search broadly** — cast a wide net using multiple keywords for the target
