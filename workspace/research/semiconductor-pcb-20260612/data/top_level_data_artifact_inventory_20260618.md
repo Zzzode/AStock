@@ -320,10 +320,10 @@
 | `raw_sse_search_shengyi_m9.html` | `html` | False | raw singleton | 18146 |
 | `raw_zhen_ding_finance_en.html` | `html` | False | raw singleton | 129457 |
 | `raw_zhen_ding_finance_tw.html` | `html` | False | raw singleton | 129496 |
-| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 166555 |
-| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 88503 |
+| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 178565 |
+| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 94956 |
 | `report_catalog.md` | `md` | True | evidence summary | 14074 |
-| `report_quality_eval.json` | `json` | False | machine-readable companion | 267 |
+| `report_quality_eval.json` | `json` | False | machine-readable companion | 268 |
 | `report_quality_eval.md` | `md` | True | evidence summary | 286 |
 | `reverse_valuation_requirement_matrix_20260618.json` | `json` | True | machine-readable companion | 3891 |
 | `reverse_valuation_requirement_matrix_20260618.md` | `md` | True | evidence summary | 2290 |
@@ -348,8 +348,8 @@
 | `tencent_realtime_market_snapshot_20260618.md` | `md` | True | evidence summary | 2500 |
 | `top_customer_supplier_detail.json` | `json` | False | machine-readable companion | 3915 |
 | `top_customer_supplier_detail.md` | `md` | False | evidence summary | 1156 |
-| `top_level_data_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 70878 |
-| `top_level_data_artifact_inventory_20260618.md` | `md` | True | evidence summary | 33907 |
+| `top_level_data_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 71220 |
+| `top_level_data_artifact_inventory_20260618.md` | `md` | True | evidence summary | 34055 |
 | `upstream_supplier_list_evidence_20260618.json` | `json` | True | machine-readable companion | 3260 |
 | `upstream_supplier_list_evidence_20260618.md` | `md` | True | evidence summary | 4857 |
 | `verified_financials.md` | `md` | False | evidence summary | 2310 |
@@ -390,3 +390,5 @@
 | `tongguan_301217_evidence.md` | `md` | True | evidence summary | 13528 |
 | `rongda_300576_evidence.md` | `md` | True | evidence summary | 14213 |
 | `jinan_002636_evidence.md` | `md` | True | evidence summary | 14738 |
+| `jushi_600176_evidence.md` | `md` | True | evidence summary | 18303 |
+| `hongchang_603002_evidence.md` | `md` | True | evidence summary | 14326 |

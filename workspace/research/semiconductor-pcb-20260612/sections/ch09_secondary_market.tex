@@ -673,6 +673,62 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Mkt-cap anchor as of 2026-06-17 Tencent quote snapshot (沪电2817.88亿/胜宏3129.41亿/深南2953.55亿/生益4313.69亿/华正355.40亿); implied-PE inputs from house-view broker net-profit forecasts; Goldman 生益 TP 217.6元 from later Sina repost (45x 2027E PE); earlier 127.4元 (35x 2027E PE) superseded.}
 \end{dashboardbox}
 
+\section{扩充覆盖标的的二级市场画像}
+
+第一批与第二批共12个扩充调研标的（东山精密、工业富联、宏和科技、东材科技、芯碁微装、景旺电子、中际旭创、中材科技、铜冠铜箔、容大感光、金安国纪、建滔积层板）目前**仅有证据卡（evidence card）级别的产业定位与财务画像**，尚无与核心12标的同等口径的北向季度持股、基金重仓、融资盘、龙虎榜、大宗交易等持仓/资金流/拥挤度数据。本节给出这12个标的的二级市场画像与证据边界，明确哪些字段已公开、哪些仍需终端访问，避免与核心标的的拥挤度排序混用。
+
+\begin{sourcequalitybox}[Expanded-coverage data boundary]
+扩充覆盖标的的持仓/资金流/拥挤度证据**未覆盖**。其证据卡仅包含：CLI quote 快照（价格、涨跌、成交额，均为公开延迟/盘后代理）、CLI financials（AkShare 结构化财报摘要，最新期 2026-03-31）、CLI news 60 日事件流、公开年报/研报转载。下列字段在本批次中**不可用**，与核心12标的"需求指标股"工业富联、中际旭创的处理范式一致：基金重仓季度市值与家数（CNInfo/Sina）、股东户数季度桥、可见基金风格（active-like/passive/index）、融资融券明细（SSE/SZSE official + Eastmoney 300 行）、大宗交易笔数/折价、龙虎榜净买卖、限售解禁、股东增减持代理、东方财富 30 日资金流代理、HKEX 北向季度持股、Tencent 五档 Level-1。完整终端级持仓穿透（beneficial-owner、日度北向、机构主动/被动分类）与逐笔订单流同样缺失。因此本批扩充标的**不纳入本章拥挤度排序（胜宏$>$沪电$>$生益$\approx$深南$>$华正），仅作画像与证据边界披露**；待终端补抓后按与本章一致的口径回填。
+\end{sourcequalitybox}
+
+\begin{exhibitbox}[图表9-36: Expanded-coverage secondary-market profile]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.5cm}L{1.7cm}R{1.3cm}R{1.8cm}R{1.8cm}X}
+\toprule
+\textbf{代码} & \textbf{名称} & \textbf{最新价} & \textbf{PE TTM} & \textbf{总市值} & \textbf{角色与证据边界} \\
+\midrule
+002384 & 东山精密 & 273.00 & 约110--230$\times$ & 未结构化返回 & PCB百强第2 + 索尔思光模块一体化；naïve 年化 PE 约112$\times$，若按2025净利$\sim$22亿则TTM约227$\times$（推算，非CLI直发）。可投资标的，持仓/资金流未覆盖。 \\
+601138 & 工业富联 & 78.08 & 不适用 & 未结构化返回 & \textbf{需求指标股}，非PCB-CCL链投资标的；下游AI服务器/800G交换机需求锚。2026Q1营收+56.52\%/归母+102.55\%。\textbf{demand indicator, excluded from holdings/crowding analysis}——与中际旭创同范式，不进拥挤度排序、不进估值目标价表。 \\
+603256 & 宏和科技 & 257.80 & 约749--759$\times$ & 约230--240亿 & A股纯度最高的电子布标的；TTM PE 数百倍、PB约84$\times$，估值极度拥挤；公司6/17主动提示情绪过热+扩产不确定，董事长/董秘高位减持。可投资但持仓/资金流未覆盖。 \\
+601208 & 东材科技 & 74.83 & 约200$\times$ & 未结构化返回 & 上游高速树脂国产替代（BMI/苯并噁嗪/M10）；PE深度定价AI/Rubin预期，董事长拟减持0.29\%。可投资标的，持仓/资金流未覆盖。 \\
+688630 & 芯碁微装 & 502.00 & 约127$\times$（26E） & 未结构化返回 & PCB直写光刻设备全球\#3、份额18.8\%；由watchlist升格Core Candidate。现价已超卖方目标价上限（243--326.82）约54\%。可投资标的，北向/基金/龙虎榜详细持仓未补抓。 \\
+603228 & 景旺电子 & 81.06 & 约69$\times$ & 约786亿 & 二线AI-PCB核心（FPC+1.6T光模块PCB已出货+泰国2026）；2026Q1增收不增利（归母$-$28\%），估值与业绩存在张力。可投资标的，持仓/资金流未覆盖。 \\
+300308 & 中际旭创 & 1367.88 & 约102$\times$ & 约1.53万亿 & \textbf{需求指标股}，下游光模块龙头（800G/1.6T）；非PCB制造标的。2026Q1营收+192\%/归母+262\%。现价超11家平均目标价（1062.50）约29\%。\textbf{demand indicator, excluded from holdings/crowding analysis}。 \\
+002080 & 中材科技 & 80.55 & 约94$\times$（Q1年化） & 约1914亿 & 多元玻纤平台（泰山玻纤）；AI电子布2025收入占比仅2.08\%，现金流$-$20.14亿（同比$-$598\%）。可投资标的，持仓/资金流未覆盖。 \\
+301217 & 铜冠铜箔 & 200.00 & 约287$\times$（TTM）/约180$\times$（26E） & 约1636亿 & A股PCB铜箔纯标的（HVLP4已批量供生益/胜宏）；当日涨停+10.08\%，PE基数扭曲属"故事期"定价（HVLP5 2027量产+载体铜箔未验证）。可投资标的，持仓/资金流未覆盖。 \\
+300576 & 容大感光 & 49.77 & 约165$\times$ & 未结构化返回 & PCB光刻胶国产替代（湿膜约50\%份额）；PE处3年分位96.83\%，增收不增利（2026Q1归母$-$22\%），5/15深交所监管函。可投资标的，持仓/资金流未覆盖。 \\
+002636 & 金安国纪 & 104.41 & 约107$\times$（动态） & 约760亿 & CCL第二梯队涨价弹性标的；\textbf{公司两次澄清无AI/英伟达/华为/Rubin敞口}，年内涨幅+511\%，PE/涨幅与基本面严重背离。可投资标的，持仓/资金流未覆盖；典型"伪AI概念"估值风险反例。 \\
+01888.HK & 建滔积层板 & 港股 & n/a & 半年市值暴涨约2200亿港元 & 港股全球CCL龙头，A股CCL（生益/华正/南亚）的A/H锚；CLI不支持港股financials，财务数据为公开转载（E2/E3）；\textbf{非A股持仓}，仅作全球CCL量价风向标 + 估值信号灯 + watchlist参照，与胜宏H股桥同范式。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Quote via \texttt{astock.cli quote} snapshot 2026-06-20 (all full\_realtime, A-share codes only); CLI did not return structured \texttt{pe\_ttm}/\texttt{total\_market\_value} for this batch (all 0.0), so PE TTM and 总市值 are evidence-card-derived (推算) values from each card, not exchange-direct fields. 港股01888.HK financials unsupported by CLI; data from public annual report / broker repost only. None of the 12 expanded names have holdings / fund-flow / crowding rows; detailed northbound / fund-flow / holdings data requires terminal access (same boundary as core names) and was not fabricated.}
+\end{exhibitbox}
+
+\begin{exhibitbox}[图表9-37: Expanded-coverage role and crowding-status summary]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.7cm}L{2.6cm}L{2.2cm}X}
+\toprule
+\textbf{代码} & \textbf{角色分类} & \textbf{持仓/拥挤度状态} & \textbf{是否纳入本章拥挤度排序} \\
+\midrule
+601138 工业富联 & 下游需求指标股 & excluded & \textbf{否}（demand indicator, excluded from holdings/crowding analysis） \\
+300308 中际旭创 & 下游需求指标股 & excluded & \textbf{否}（demand indicator, excluded from holdings/crowding analysis） \\
+002384 东山精密 & 可投资（PCB+光模块） & 未覆盖 & 否（待终端补抓后回填） \\
+603256 宏和科技 & 可投资（电子布） & 未覆盖 & 否（待终端补抓后回填） \\
+601208 东材科技 & 可投资（高速树脂） & 未覆盖 & 否（待终端补抓后回填） \\
+688630 芯碁微装 & Core Candidate（设备） & 未覆盖 & 否（待终端补抓后回填） \\
+603228 景旺电子 & 可投资（二线PCB） & 未覆盖 & 否（待终端补抓后回填） \\
+002080 中材科技 & 可投资（多元玻纤） & 未覆盖 & 否（待终端补抓后回填） \\
+301217 铜冠铜箔 & 可投资（PCB铜箔） & 未覆盖 & 否（待终端补抓后回填） \\
+300576 容大感光 & watchlist（光刻胶） & 未覆盖 & 否（待终端补抓后回填） \\
+002636 金安国纪 & watchlist + 风险反例（CCL） & 未覆盖 & 否（待终端补抓后回填） \\
+01888.HK 建滔积层板 & 港股锚/参照系（非A股持仓） & excluded & \textbf{否}（港股，非A股持仓，仅作A/H锚与全球CCL风向标） \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Role classification per evidence cards. Holdings/fund-flow/crowding evidence is uniformly absent for all 12 expanded names; detailed northbound / fund-flow / holdings data requires terminal access (same boundary as the original 12 core names) and was not fabricated.}
+\end{exhibitbox}
+
+两个需求指标股（工业富联601138、中际旭创300308）在画像表中仅作价格/估值与业绩锚披露，明确标注"demand indicator, excluded from holdings/crowding analysis"，不参与本章拥挤度排序，也不进入ch08目标价表；这一处理范式与证据卡中"需求侧拉货锚标，非PCB制造标的"的定位一致。其余9个可投资A股标的（含688630 Core Candidate）与1个港股锚（01888.HK）目前均仅有CLI quote快照 + 证据卡财务画像，其北向/基金/龙虎榜/融资盘等持仓与资金流证据**统一缺失**，需终端访问补抓后方可与核心12标的同等口径回填至图表9-2至9-34系列；在终端数据落地前，不得将这些扩充标的与核心标的的拥挤度直接横比，也不得在投资建议中赋予其与核心标的等同的弹性权重。
+
 \section{催化剂日历}
 
 拥挤度高意味着对催化方向高度不对称：在当前估值分位（多家标的处于一年PE/PB 95--100\%分位）和筹码结构（胜宏、沪电融资盘拥挤，重仓回落但户数扩散）下，下一个催化如果超预期，估值扩张空间已被前期涨幅和卖方目标价透支，边际买盘有限；而一旦中报收入/毛利或Rubin规格细节低于市场已经定价的乐观假设，回撤会被融资盘和分散筹码放大。因此下一阶段的核心不是“是否继续上涨”，而是“哪些催化可以证伪当前定价、并在什么价位重新建立拥挤度更低的仓位”。
