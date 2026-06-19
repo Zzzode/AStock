@@ -40,7 +40,7 @@ CPO/光互联 & 把光互联更靠近芯片或交换芯片，减少部分板级�
 \end{tabularx}
 \end{exhibitbox}
 
-从整机服务器看，芯片/HBM是价值最高的核心；封装/载板是芯片和系统之间的高密度连接；OAM、UBB、背板和交换机板是服务器内部和柜内高速互联；PCB、CCL、设备和耗材则是承接这些高速互联的制造与材料底座。公开券商框架曾估算AI服务器CCL价值约4000--5000元/台，但这只是历史框架，不是当前GB300/Rubin平台的确认值。
+从整机服务器看，芯片/HBM是价值最高的核心；封装/载板是芯片和系统之间的高密度连接；OAM、UBB、背板和交换机板是服务器内部和柜内高速互联；PCB、CCL、设备和耗材则是承接这些高速互联的制造与材料底座。公开券商框架曾估算AI服务器CCL价值约4000--5000元/台，但这只是历史框架——该框架来自西南证券2024年基于H100平台的报告（其中OAM约1745元、UBB约1364元、GPU板组约3000元、CPU主板约1300元），不是当前GB300/Rubin平台的确认值。GB300/Rubin因CoWoP、正交背板（如78层PCB替代铜缆）等架构变化，单位CCL/PCB价值可能与H100代际显著不同，当前并无公开确认值。注意单位口径：此处“元/台”指整机组装单台CCL总价值，与后续图表3-9e“元/平方米/元/米/元/张”（CCL出厂单位售价）是不同口径，不可直接换算或混用。
 
 \begin{exhibitbox}[图表3-1c：技术差异与整机价值链位置]
 \footnotesize
@@ -93,7 +93,7 @@ CPO/光互联 & 把部分高速互联从电信号转向光信号。 & 可能减�
 \sourcenote{公开券商报告、公司公告和AStock产业链整理}
 \end{exhibitbox}
 
-这张图的投资含义是：算力芯片升级不会平均分配价值。芯片和HBM价值最高，但A股PCB链条主要承接的是芯片之后的连接价值：封装载板负责芯片到系统板的高密度连接，OAM/UBB/背板/交换机板负责服务器内部和柜内高速互联，低损耗CCL、高层PCB、钻孔/曝光设备和微钻刀具共同支撑这些连接。只有当公司披露收入、认证、产能利用率和良率时，这些技术节点才可以进入估值模型。
+这张图的投资含义是：算力芯片升级不会平均分配价值。芯片和HBM价值最高，但A股PCB链条主要承接的是芯片之后的连接价值。其中封装载板负责芯片到系统板的高密度连接；OAM/UBB/背板/交换机板负责服务器内部和柜内高速互联；低损耗CCL、高层PCB、钻孔/曝光设备和微钻刀具则共同支撑这些连接。只有当公司披露收入、认证、产能利用率和良率时，这些技术节点才可以进入估值模型。
 
 \begin{exhibitbox}[图表3-3：HDI与高多层板层叠示意]
 \centering
@@ -148,10 +148,10 @@ CPO/光互联 & 把部分高速互联从电信号转向光信号。 & 可能减�
 \toprule
 \textbf{板级位置} & \textbf{单位经济性/技术特征} & \textbf{盈利变量} \\
 \midrule
-OAM/GPU模组板 & 高阶HDI/高层板，材料等级高；公开券商框架中GPU板组是AI服务器CCL价值的重要部分。 & 高端HDI良率、低损耗材料等级、客户认证。 \\
-UBB统一基板 & 面积大、层数高，承担多GPU互联；公开框架中UBB价值量约千元级。 & 层数、孔结构、良率和产能利用率。 \\
+OAM/GPU模组板 & 高阶HDI/高层板，材料等级高；西南证券H100框架中OAM的CCL价值约1745元。 & 高端HDI良率、低损耗材料等级、客户认证。 \\
+UBB统一基板 & 面积大、层数高，承担多GPU互联；西南证券H100框架中UBB的CCL价值约1364元（千元级）。 & 层数、孔结构、良率和产能利用率。 \\
 交换机/背板 & 高速低损耗材料要求高，对M7--M10 CCL和阻抗控制敏感。 & CCL价格、交期、背板/中板结构。 \\
-CCL单机价值 & 公开券商历史框架估算AI服务器CCL价值约4000--5000元/台。 & 该数值为历史框架，不能直接视为当前GB300/Rubin确认值。 \\
+CCL单机价值 & 公开券商历史框架估算AI服务器CCL价值约4000--5000元/台（西南证券2024年H100平台报告，含OAM约1745元、UBB约1364元、GPU板组约3000元、CPU主板约1300元）。 & 该数值为H100代际历史框架，不能直接视为当前GB300/Rubin确认值；GB300/Rubin因CoWoP、正交背板等架构变化单位价值可能显著不同。 \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
@@ -186,11 +186,13 @@ OAM、UBB、交换机板和背板把材料、加工和验证绑定在一起。�
 \textbf{公司} & \textbf{当前公开材料/技术代际} & \textbf{证据等级} & \textbf{投资含义} \\
 \midrule
 生益科技 & 官方IR显示AI服务器低损耗CCL需求提升，国内外终端GPU/AI项目有批量供应。 & E1/E2 & 材料龙头，估值取决于M8/M9收入占比、涨价持续性和生益电子AI板兑现。 \\
-南亚新材 & 官方材料显示M6/M7稳定量产，M8及以下通过部分海外终端认证，M9/M10推进认证。 & E1 & 高速材料储备明确，但需区分PCB客户收入和终端平台收入。 \\
+南亚新材 & 问询函披露M6/M7稳定量产及高频高速/IC载板材料收入；IR补充M8多家国内重要终端认证/小批量、M9推进认证、NOUYA8U完成华为核心客户准入、PCIe Gen5量产。 & E1/E2 & 高速材料储备明确，但需区分PCB客户收入和终端平台收入；IR认证叙事归E2，仅作情景/交叉验证。 \\
 华正新材 & 公开资料显示112/224Gbps材料、CBF/BT材料和高等级CCL项目，但具名客户和收入拆分仍缺。 & E1/E2 & 国产材料期权，需用订单和利润修复验证。 \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
+
+材料代际之上，先进封装进一步重构芯片到板级的互联层级。
 
 \begin{exhibitbox}[图表3-7：先进封装与载板材料关系]
 \centering
@@ -222,7 +224,7 @@ OAM、UBB、交换机板和背板把材料、加工和验证绑定在一起。�
 
 先进封装的核心变化，是把一部分原来由PCB完成的高速互联前移到封装和载板环节。计算芯片和HBM先通过中介层、ABF/BT/FC-BGA载板完成高密度互联，再连接到高速PCB、HDI和背板。对A股公司而言，机会在于载板、BT/CBF材料和高等级低损耗材料的国产替代：深南电路和兴森科技受益于FC-BGA/BT载板良率提升，华正新材受益于CBF/BT材料从验证走向批量订单。
 
-替代风险来自两个方向。第一，玻璃基板如果在高端封装中扩大应用，可能吸收部分原本属于有机载板或高端材料的价值；第二，光互联/CPO如果减少板级电信号传输距离，可能降低部分背板、交换机板和低损耗CCL的单机用量。换句话说，先进封装既能增加载板和材料机会，也可能把部分传统PCB/CCL价值转移到封装侧或光互联侧。因此，后续估值不能只按“AI服务器单机PCB价值持续上升”外推，还要跟踪玻璃基板、CPO和CoWoP类结构的采用节奏。
+替代风险与结构性上修来自不同方向，需要分开跟踪。真正的价值侵蚀风险有两条：其一，玻璃基板如果在高端封装中扩大应用，可能吸收部分原本属于有机载板或高端材料的价值；其二，光互联/CPO如果减少板级电信号传输距离，可能降低部分背板、交换机板和低损耗CCL的单机用量。与之方向相反的是CoWoP类结构：根据国金证券产业框架（E2/E3，未独立验证），CoWoP方案打破PCB与封装基板边界、使PCB承担封装基板功能，单GPU配套PCB价值可达约600美元，这是高端PCB的结构性上修机会而非替代风险。但CoWoP同时与IC载板/玻璃基板竞争，并依赖公司工艺能力门槛，落地节奏尚不确定。换句话说，先进封装既增加载板、材料和高端PCB的机会，也可能把部分传统PCB/CCL价值转移到封装侧或光互联侧。因此，后续估值不能只按“AI服务器单机PCB价值持续上升”外推，要分别跟踪玻璃基板/CPO的替代节奏和CoWoP类结构的上修节奏。
 
 \begin{exhibitbox}[图表3-8：PCB制造流程与材料/设备/耗材映射]
 \centering
@@ -284,10 +286,10 @@ ABF/BT/FC-BGA良率 & AI加速器、国产算力、封装载板 & 深南电路�
 行业成本 & 电子布/铜箔 & 不适用。 & 花旗转载图片OCR显示电子布1080/2116/7628年内ASP分别+95\%/+91\%/+60\%；生益年报称Low DK布需求挤压薄型玻纤布产能、价格每月跳升10\%--20\%，铜箔价格急升。 & 供应商级采购价、CCL ASP传导时滞和公司级采购成本序列。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/material\_parameter\_price\_sequence\_20260618.md}; \texttt{sources/probe-material-parameters-20260618/}; company websites / official filings / IR records / archived broker text; repost and OCR price signals are clues, not company-level ASP series}
+\sourcenote{公司官网产品页与官方TDS/Line Up；公司2025年年度报告/半年报与问询函回复；存档原始券商报告与OCR价格线索——转载与OCR价格信号仅为线索，非公司级ASP序列}
 \end{exhibitbox}
 
-新增材料序列把“材料方向正确”推进到“部分参数可验证”：生益已取得官网详情页、TDS和Line Up多频点Dk/Df表，南亚取得官网和PDF规格书Dk/Df点，华正取得官网高速材料表和HSD8/HSD8(K) Line-up多频点Dk/Df表。但是它还不能替代价格序列或收入模型。对材料股估值，当前应使用“参数确认 + 认证进展 + 毛利率验证”的三段式触发，而不是直接把M9/M10叙事转成收入占比。
+新增材料序列把“材料方向正确”推进到“部分参数可验证”：生益已取得官网详情页、TDS和Line Up多频点Dk/Df表，南亚取得官网和PDF规格书Dk/Df点，华正取得官网高速材料表和HSD8/HSD8(K) Line-up多频点Dk/Df表。但它仍不能替代价格序列或收入模型——以南亚为例，官方问询函披露覆铜板单位售价由104.97元升至113.13元、在手订单支持率由81.10\%升至137.52\%，是最接近“价格传导验证”的公开代理，但仍不是M8/M9/M10 ASP。对材料股估值，统一采用“参数确认 + 认证进展 + 毛利率验证”的三段式触发（见本章图表3-9g外部数据请求清单及估值章对应折价参数），而不是直接把M9/M10叙事转成收入占比。
 
 \begin{exhibitbox}[图表3-9c：材料收入和毛利代理序列]
 \scriptsize
@@ -301,12 +303,12 @@ ABF/BT/FC-BGA良率 & AI加速器、国产算力、封装载板 & 深南电路�
 行业成本 & 不适用。 & 花旗转载图片OCR显示电子布1080/2116/7628年内ASP分别+95\%/+91\%/+60\%。 & 这是投入品价格线索，不是公司CCL ASP；还缺采购价、传导时滞和公司级报价序列。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/material\_revenue\_margin\_proxy\_sequence\_20260618.md}; official filings / inquiry responses / archived OCR clues; proxy evidence only, not product ASP}
+\sourcenote{公司年度报告/半年报与问询函回复；存档OCR价格线索；代理证据（proxy only），非产品级ASP}
 \end{exhibitbox}
 
-材料股的判断因此可以分成两层：第一层是Dk/Df和认证，证明产品能不能进入高端应用；第二层是收入、毛利率和原材料/售价传导，证明技术升级是否已经转为盈利。南亚的数据最接近“价格传导验证”，生益的数据最适合观察材料龙头的利润弹性，华正的数据仍偏产品验证和小批量订单，估值折价应最高。
+材料股的判断因此可以分成两层：第一层是Dk/Df和认证，证明产品能不能进入高端应用；第二层是收入、毛利率和原材料/售价传导，证明技术升级是否已经转为盈利。三家公司中，南亚的收入/单位售价/订单支持率代理最接近“价格传导验证”，生益的数据最适合观察材料龙头的利润弹性，华正仍偏产品验证和小批量订单。建议的估值处理差异：生益作为基准、南亚可进基准毛利率上修区间、华正作为上修触发器并维持最高折价（具体折价参数见估值章与eps\_sensitivity对应行）。
 
-\begin{exhibitbox}[图表3-9e：隐含单位经济性代理]
+\begin{exhibitbox}[图表3-9e：隐含单位经济性代理（公司级CCL出厂单位售价代理，非单机价值）]
 \scriptsize
 \begin{tabularx}{\textwidth}{L{1.8cm}X X}
 \toprule
@@ -317,7 +319,7 @@ ABF/BT/FC-BGA良率 & AI加速器、国产算力、封装载板 & 深南电路�
 华正新材 & 2025年CCL收入约33.75亿元，除以覆铜板销量3886.83万张，得到约86.83元/张。 & 公司级CCL收入/销量代理，不是HSD8或M9等效材料ASP。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/material\_implied\_unit\_economics\_proxy\_20260618.md}; official revenue and shipment/volume fields; proxy only}
+\sourcenote{公司年度报告/问询函中的收入与销量字段；代理证据（proxy only），非产品级ASP}
 \end{exhibitbox}
 
 隐含单位经济性把材料链从“毛利率变好”推进到“单位收入/单位成本已有可观察代理”。不过，除了南亚直接披露单位售价和单位成本外，生益和华正仍是分部收入除以销量的粗代理，不能进入产品级ASP模型。真正关闭价格序列缺口，仍需要M8/M9/M10或HSD8等效产品的报价、订单、交期和客户认证明细。
@@ -334,10 +336,10 @@ ABF/BT/FC-BGA良率 & AI加速器、国产算力、封装载板 & 深南电路�
 第三方交期说法 & 市场帖子中存在M8/M9交期12--30周、配额制和订单锁定至2027年的说法。 & 未采用为确认事实；只能作为后续channel check问题，不能进估值模型。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/material\_leadtime\_supply\_tightness\_20260618.md}; official filings / inquiry responses; third-party lead-time claims excluded from confirmed evidence}
+\sourcenote{公司年度报告/问询函回复；第三方交期说法未纳入确认证据}
 \end{exhibitbox}
 
-交期和供应紧张证据决定材料价格能否持续。南亚已经有官方订单支持率和备货周期证据，说明景气并非只停留在叙事；生益和华正仍主要是管理层对交付和供应链能力的定性描述。后续如果不能取得分材料代际交期、配额或排产数据，M8/M9/M10的估值贡献仍应保持折价。
+交期和供应紧张证据决定材料价格能否持续。南亚已有官方订单支持率（81.10\%升至137.52\%）和备货周期（20.75天升至28.39天）证据，说明景气并非只停留在叙事；生益和华正仍主要是管理层对交付和供应链能力的定性描述。后续若不能取得分材料代际交期、配额或排产数据，材料股的估值处理口径与本章末统一结论一致。
 
 \begin{exhibitbox}[图表3-9g：材料线外部数据请求清单]
 \scriptsize
@@ -350,7 +352,7 @@ ABF/BT/FC-BGA良率 & AI加速器、国产算力、封装载板 & 深南电路�
 华正新材 & HSD7/HSD8/HSD8(K)、M9等效材料、BT、CBF/CBF-RCC的ASP、产品收入、产品毛利率、客户认证清单、交期/订单、批量订单转化。 & 已有HSD8/HSD8(K)官网参数、Ultra/Extreme low loss认证和CBF小批量线索，但缺产品经济性。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/material\_external\_data\_request\_pack\_20260618.md}; request checklist only, not evidence}
+\sourcenote{外部数据请求清单（house-view proxy），非证据}
 \end{exhibitbox}
 
 这张请求清单定义了材料线下一步的外部工作。只要这些字段仍未取得，材料股只能用公开参数、认证、收入/毛利代理和交付代理来定性跟踪，不能把M8/M9/M10直接写成可建模的客户/平台EPS贡献。
@@ -366,7 +368,7 @@ ABF/BT/FC-BGA良率 & AI加速器、国产算力、封装载板 & 深南电路�
 华正新材 & Ultra / Extreme low loss / CBF & 年报/半年报称有卤Ultra low loss已产品化/批量销售，无卤Ultra low loss获国际知名芯片终端认可，Ultra low loss Low CTE通过国内头部终端认证并有小批量订单，Extreme low loss参与国际知名芯片终端测试认证并推进台欧美认证；CBF进入IC载板、封测和芯片终端验证，部分项目小批量订单销售，CBF-RCC在VCM小批量交付。 & 未披露终端名单、认证结果日期、HSD8/M9等效收入、ASP、出货、毛利和CBF客户收入。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/material\_customer\_certification\_timeline\_20260618.md}; official filings / IR / issuer interaction; certification timeline only, not revenue or ASP}
+\sourcenote{公司年度报告/问询函/官方IR（互动易、路演）；认证时间线，非收入或ASP}
 \end{exhibitbox}
 
 认证时间线把材料股的跟踪节奏前移：参数表证明材料性能，认证表证明客户导入，收入/毛利表证明商业化兑现。三者都具备时，材料股才可以从“技术期权”升级为“盈利兑现”；目前南亚的公开证据最接近这一链条，生益强在参数和龙头利润弹性，华正仍处验证和小批量订单占比较高的阶段。
@@ -384,5 +386,5 @@ ABF/BT/FC-BGA良率 & AI加速器、国产算力、封装载板 & 深南电路�
 华正新材 & 112Gbps/224Gbps交换机材料、AI服务器/算力芯片极低损耗基板、BT/CBF-RCC材料。 & 认证客户名称和收入贡献。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/official\_technology\_parameter\_summary.md}; \texttt{data/official\_filing\_segment\_summary.md}; \texttt{data/official\_ir\_refresh\_20260616.md}; \texttt{data/current\_cninfo\_interaction\_sweep\_20260618.md}}
+\sourcenote{公司年度报告/半年报；分部财务披露；官方IR（互动易刷新）；官方技术能力披露}
 \end{exhibitbox}

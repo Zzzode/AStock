@@ -56,7 +56,7 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 华正新材（603186） & 20 & 8 & 可核验主要股东和修订版年报目录。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/filings\_holders\_evidence.md}; public metadata only, not full fund-flow data}
+\sourcenote{Official filing / holder metadata (CNInfo + exchange disclosure index); public metadata only, not full fund-flow data}
 \end{exhibitbox}
 
 基金和股东结构更能解释为什么高景气资产也可能出现回撤。沪电、胜宏、深南、生益在2025Q4已经出现较高重仓市值，2026Q1公开基金重仓普遍回落，说明市场并非刚开始交易这个主题。若后续Q2业绩只是符合预期而非超预期，股价可能不再享受同样的估值扩张。
@@ -74,7 +74,7 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 华正新材（603186） & 1067 & 10 & 1.29亿元 & 覆盖明显偏低，反映小市值/材料期权属性。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/fund\_holding\_enhanced\_evidence.md}; CNInfo 2026Q1 fund heavy holdings and Sina latest fund holders}
+\sourcenote{CNInfo 2026Q1 fund heavy holdings and Sina latest fund holders; public fund-holder proxy, not full institutional positioning}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表25b-2: Fund heavy-holding quarterly bridge]
@@ -95,7 +95,7 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 鹏鼎控股（002938） & 16.04亿 & 71.79亿 & 13.02亿 & -58.77亿 & 2025Q4基金重仓拥挤，2026Q1明显回落。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/fund\_holding\_quarterly\_bridge.md}; \texttt{data/pengding\_holding\_proxy\_evidence.md}; CNInfo public fund heavy-holding market value, not full institutional positioning}
+\sourcenote{CNInfo fund heavy-holding quarterly bridge (core names + 鹏鼎 watchlist proxy); public fund heavy-holding market value, not full institutional positioning}
 \end{exhibitbox}
 
 重仓回落不等于基本面恶化，但它改变了赔率。对核心资产而言，后续需要更强的业绩证据来重新吸引机构增配；对高弹性资产而言，若融资盘和主题资金仍在推升价格，任何低于预期的订单或毛利率信息都可能放大波动。
@@ -114,7 +114,7 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 鹏鼎控股（002938） & 7.55万 & 8.84万 & 9.40万 & 24,701 & 股东户数连续扩张，HKCC同期下降，筹码更分散。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/shareholder\_count\_quarterly\_bridge.md}; \texttt{data/pengding\_shareholder\_count\_bridge.md}; CNInfo / official public shareholder-count proxy, not institutional ownership}
+\sourcenote{CNInfo / official public shareholder-count quarterly bridge (core names + 鹏鼎 watchlist proxy); shareholder-count proxy, not institutional ownership. 单位：股东户数为“万户”，人均持股为“股”。}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表25c: Fund holder style proxy]
@@ -131,7 +131,7 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 鹏鼎控股（002938） & 16.29亿元 & 0.75亿元 & 3.01亿元 & 鹏鼎可见基金以active-like为主，但债券/固收产品也有一定占比。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/fund\_holder\_style\_proxy.md}; \texttt{data/fund\_type\_mapping\_evidence.md}; \texttt{data/pengding\_fund\_style\_proxy.md}; style proxy from fund names and Eastmoney fund-type mapping, not Wind/Choice official active/passive classification}
+\sourcenote{Fund-name style proxy with Eastmoney fund-type mapping (core names + 鹏鼎 watchlist proxy); not Wind/Choice official active/passive classification}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表25c-2: Full visible fund type recheck]
@@ -150,24 +150,24 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 鼎泰高科（301377） & 72 & 100.0\% & 85.40\% & 1.05\% & 13.55\% & 耗材链有一定固收类配置，但仍由权益类主导。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/fund\_holder\_full\_type\_recheck\_20260617.md}; AkShare \texttt{stock\_fund\_stock\_holder} + \texttt{fund\_name\_em}. Covers 1,986 latest-period visible fund-holder rows across 11 tickers. Eastmoney public fund type improves classification, but it is still not a Wind/Choice official active/passive ownership database and does not cover non-public or absent holders.}
+\sourcenote{AkShare \texttt{stock\_fund\_stock\_holder} + Eastmoney \texttt{fund\_name\_em} full-type recheck (1,986 latest-period visible fund-holder rows across 11 tickers). Eastmoney public fund type improves classification, but it is still not a Wind/Choice official active/passive ownership database and does not cover non-public or absent holders.}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表26: Official holder and supplier proxies]
 \footnotesize
 \begin{description}
-  \item[沪电股份（002463）] 香港中央结算持股7.44%；社保109组合和多只ETF/基金在前十。前五供应商采购59.73亿元，占比42.16\%。
+  \item[沪电股份（002463）] 香港中央结算持股10.07\%（19388.13万股，as of 2026/03/31 per HKEX quarterly Stock Connect；2025/12/31 为7.44\%/14320.99万股）；社保109组合和多只ETF/基金在前十。前五供应商采购59.73亿元，占比42.16\%。
   \item[胜宏科技（300476）] 香港中央结算和多只ETF/基金/私募产品在前十流通股东。前五供应商采购54.18亿元，占比31.52\%。
   \item[深南电路（002916）] 香港中央结算、永赢科技智选、社保2101组合等在前十。前五供应商采购42.40亿元，占比30.08\%。
   \item[生益科技（600183）] 香港中央结算持股5.15%；多只ETF/基金在前十；伟华电子QFII账户另持270.57万股。前五供应商采购50.88亿元，占比27.45\%。
   \item[华正新材（603186）] 香港金融管理局、香港中央结算和多只基金产品在前十。前五供应商采购16.20亿元，占比46.12\%。
 \end{description}
-\sourcenote{\texttt{data/official\_holder\_supplier\_summary.md}; official annual reports}
+\sourcenote{Official annual reports (holder + supplier proxies)}
 \end{exhibitbox}
 
 \begin{sourcequalitybox}[Institutional positioning gap]
 已尝试通过 AkShare `stock\_report\_fund\_hold` 获取基金、QFII、社保、券商、保险持仓，但接口在当前环境返回 TypeError。港交所官方季度北向持股已经覆盖当前核心和观察名单；东方财富 `RPT\_MUTUAL\_HOLDSTOCKNDATE\_STA\_NEW` 与 `RPT\_MUTUAL\_HOLDNDATE\_DET\_NEW` 又补齐了12/12标的2026Q1参与者/托管行明细。但日度北向变化、beneficial-owner穿透、主动/被动基金分类和终端级订单流仍不可用。东方财富30日资金流日线代理已经覆盖当前核心和观察名单，但它不是完整机构持仓、北向明细或终端级订单流。2026年6月17日进一步复查东方财富沪深港通成交榜接口，能补充部分上榜日成交额和排名，但无法补出受益所有人、全量买卖盘或实时订单流。
-\sourcenote{\texttt{data/flow\_positioning\_evidence.md}; \texttt{data/hkex\_stock\_connect\_quarterly\_evidence.md}; \texttt{data/eastmoney\_hsgt\_holding\_recheck\_20260617.md}; \texttt{data/eastmoney\_fund\_flow\_evidence.md}; \texttt{data/current\_public\_source\_recheck\_20260617.md}}
+\sourcenote{Flow / positioning evidence pack: HKEX official Stock Connect quarterly + Eastmoney HSGT holding recheck + Eastmoney fund-flow + current public-source recheck. Public proxy aggregation only, not terminal-grade positioning.}
 \end{sourcequalitybox}
 
 \begin{exhibitbox}[图表27: Additional public holder proxies]
@@ -186,7 +186,7 @@ HKCC quarterly proxy & 官方2026Q1前十大股东表可提取香港中央结算
 Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，最新公开日线停在2024-08-16；用于规则变化前历史基线。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/advanced\_holder\_evidence.md}}
+\sourcenote{Advanced public holder proxies (Sina fund/circulating holders, CNInfo heavy holdings/concentration, HKEX Stock Connect quarterly, HKCC proxy, Stock Connect history)}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表27b: Stock Connect historical holding baseline]
@@ -202,7 +202,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 华正新材（603186） & N/A & N/A & N/A & 接口未返回。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/northbound\_individual\_history\_evidence.md}; public Stock Connect total holding history, not current beneficial-owner positioning}
+\sourcenote{Eastmoney / AkShare Stock Connect total holding history; public holding history, not current beneficial-owner positioning}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表27b-2: HKEX official Stock Connect quarterly holding]
@@ -225,7 +225,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 鹏鼎控股（002938） & 5707.02万股 & 2.46\% & -566.38万股 & -0.24 & 鹏鼎补入观察名单后，HKEX季度表显示Q1北向回落。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/hkex\_stock\_connect\_quarterly\_evidence.md}; \texttt{data/pengding\_holding\_proxy\_evidence.md}; HKEX official 2025/12/31 and 2026/03/31 quarterly Stock Connect northbound shareholding, aggregate CCASS Participants only}
+\sourcenote{HKEX official 2025/12/31 and 2026/03/31 quarterly Stock Connect northbound shareholding + 鹏鼎 watchlist holder proxy; aggregate CCASS Participants only}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表27b-3: Northbound participant / custodian quarterly bridge]
@@ -248,7 +248,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 鹏鼎控股（002938） & 4780.62万股 & 6273.41万股 & 5707.02万股 & +926.41万股 & 香港上海汇丰银行 & Q1环比下降，前五MV占95.8\%，托管集中。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_northbound\_participant\_quarterly\_bridge\_20250630\_20260331.md}; \texttt{data/pengding\_northbound\_participant\_quarterly\_bridge.md}; Eastmoney public participant/custodian detail across 2025Q2-2026Q1, not beneficial-owner data}
+\sourcenote{Eastmoney public participant/custodian detail across 2025Q2-2026Q1 (core names + 鹏鼎 watchlist proxy); not beneficial-owner data}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表27b-4: 2026Q1 participant detail recheck]
@@ -266,7 +266,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 芯碁微装（688630） & 538.19万股 & +1149.85\% & 15 & 美国花旗银行 & 94.69\% & 低基数跳升，需避免过度解读。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_hsgt\_holding\_recheck\_20260617.md}; Eastmoney public \texttt{RPT\_MUTUAL\_HOLDSTOCKNDATE\_STA\_NEW} and \texttt{RPT\_MUTUAL\_HOLDNDATE\_DET\_NEW}; 12/12 tickers have 2026Q1 statistics and participant detail. This is participant/custodian-level public data, not beneficial-owner or terminal order-flow data.}
+\sourcenote{Eastmoney public \texttt{RPT\_MUTUAL\_HOLDSTOCKNDATE\_STA\_NEW} and \texttt{RPT\_MUTUAL\_HOLDNDATE\_DET\_NEW}; 12/12 tickers have 2026Q1 statistics and participant detail. This is participant/custodian-level public data, not beneficial-owner or terminal order-flow data.}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表27c: HKCC current-quarter proxy]
@@ -282,7 +282,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 华正新材（603186） & 443.98万股 & 2.83\% & 官方表补足此前接口缺失。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/hkcc\_current\_quarter\_proxy.md}; HKCC is nominee/clearing holder, not beneficial-owner data}
+\sourcenote{Official 2026Q1 top-shareholder tables (HKCC current-quarter proxy); HKCC is nominee/clearing holder, not beneficial-owner data}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表28: Important institution holding evidence]
@@ -299,7 +299,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 鹏鼎控股（002938） & 2 & 25.36亿元 & 2.10\% & 社保组合公开专题命中，环比小幅增加。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/important\_institution\_holding\_evidence.md}; \texttt{data/pengding\_important\_institution\_evidence.md}; Eastmoney RPT\_NATIONAL\_STATISTICS}
+\sourcenote{Eastmoney \texttt{RPT\_NATIONAL\_STATISTICS} important-institution holding evidence (core names + 鹏鼎 watchlist proxy)}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表28b: Important institution category bridge]
@@ -314,7 +314,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 生益科技（600183） & 社保基金 & 1 & 4.29亿元 & 社保502组合新进；材料龙头仍有可见长期资金。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/important\_institution\_category\_history\_bridge.md}; Eastmoney RPT\_STOCK\_DETAILS\_CHANGE aggregation. Visible important-institution category proxy only, not full institution database or active/passive classification}
+\sourcenote{Eastmoney \texttt{RPT\_STOCK\_DETAILS\_CHANGE} category aggregation. Visible important-institution category proxy only, not full institution database or active/passive classification}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表28c: Historical important-institution category coverage]
@@ -331,7 +331,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 华正新材（603186） & 社保基金 & 2017Q2--2025Q3 & 15 & 华正有历史社保行，但当前季度未命中。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/important\_institution\_category\_history\_bridge.md}; absence of a category row does not prove no holding, only that the public endpoint returned no visible row}
+\sourcenote{Eastmoney \texttt{RPT\_STOCK\_DETAILS\_CHANGE} history; absence of a category row does not prove no holding, only that the public endpoint returned no visible row}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29: Important institution holder details]
@@ -348,7 +348,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 鹏鼎控股（002938） & 2026Q1 & 全国社保基金一零三组合；全国社保基金四一六组合。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/important\_institution\_detail\_evidence.md}; \texttt{data/pengding\_important\_institution\_evidence.md}; Eastmoney RPT\_STOCK\_DETAILS\_CHANGE}
+\sourcenote{Eastmoney \texttt{RPT\_STOCK\_DETAILS\_CHANGE} important-institution detail (core names + 鹏鼎 watchlist proxy)}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29b: Liquidity and turnover proxy]
@@ -365,7 +365,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 华正新材（603186） & 6.79亿元 & 4.65亿元 & 37.91亿元 & 东方财富日K成功；华正成交额较低，仓位容量和滑点风险更高。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_liquidity\_turnover\_evidence.md}; \texttt{data/liquidity\_turnover\_proxy.md}; Eastmoney daily amount / turnover used where endpoint succeeded, Yahoo close $\times$ volume proxy used for failed tickers. Neither source provides order-book depth or terminal-grade liquidity}
+\sourcenote{Eastmoney daily amount / turnover where endpoint succeeded, Yahoo close $\times$ volume proxy for failed tickers. Neither source provides order-book depth or terminal-grade liquidity}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29c: Margin financing and leverage proxy]
@@ -382,7 +382,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 深南电路（002916） & 17.73亿元 & 0.66\% & -2.64亿元 & 深南融资压力较低，近30行净流出。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_margin\_financing\_evidence.md}; Eastmoney RPTA\_WEB\_RZRQ\_GGMX, 300 rows per successful ticker. Public leverage proxy only; not institutional ownership or terminal-grade order flow}
+\sourcenote{Eastmoney \texttt{RPTA\_WEB\_RZRQ\_GGMX}, 300 rows per successful ticker. Public leverage proxy only; not institutional ownership or terminal-grade order flow}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29c-2: Margin financing long-window crowding]
@@ -399,7 +399,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 深南电路（002916） & 17.60亿元 & +5.39亿元 & 0.66\% & +5.96亿元 & 深南融资扩张较温和。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_margin\_financing\_long\_window.md}; 300 public rows from 2025-03-20 to 2026-06-15 for successful tickers. Public leverage proxy only; not institutional ownership, beneficial-owner data or terminal-grade order flow}
+\sourcenote{Eastmoney margin-financing long window (300 public rows from 2025-03-20 to 2026-06-15 for successful tickers). Public leverage proxy only; not institutional ownership, beneficial-owner data or terminal-grade order flow}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29c-3: SSE official margin-financing cross-check]
@@ -414,7 +414,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 芯碁微装（688630） & 芯碁微装 & 300 & 2025-03-20--2026-06-15 & 9.72亿元 & +7.02亿元 & 官方明细确认设备股融资盘，但仍非机构持仓。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/sse\_margin\_financing\_official\_evidence.md}; SSE \texttt{RZRQ\_MX\_INFO}. Exchange official margin-financing detail; still not beneficial-owner positioning or terminal-grade order flow.}
+\sourcenote{SSE official \texttt{RZRQ\_MX\_INFO}. Exchange official margin-financing detail; still not beneficial-owner positioning or terminal-grade order flow.}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29d: Block trade proxy]
@@ -431,7 +431,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 沪电股份（002463） & 6 & 1.13亿元 & 4 & 沪电大宗交易规模低于二级市场成交额体量。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_block\_trade\_evidence.md}; Eastmoney RPT\_DATA\_BLOCKTRADE, 2025-04-21 to 2026-06-15. Public block-trade trace only, not beneficial-owner or full order-flow data}
+\sourcenote{Eastmoney \texttt{RPT\_DATA\_BLOCKTRADE}, 2025-04-21 to 2026-06-15. Public block-trade trace only, not beneficial-owner or full order-flow data}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29e: Share pledge risk proxy]
@@ -448,7 +448,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 兴森科技（002436） & N/A & N/A & N/A & 兴森比例接口本轮损坏，但明细未解押市值约15.20亿元，需后续复核。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_share\_pledge\_evidence.md}; Eastmoney RPT\_CSDC\_LIST and RPTA\_APP\_ACCUMDETAILS. Pledge shares in ratio table are 10k shares and pledge market cap is 10k CNY. Warning/liquidation lines are Eastmoney estimates, not contract terms}
+\sourcenote{Eastmoney \texttt{RPT\_CSDC\_LIST} and \texttt{RPTA\_APP\_ACCUMDETAILS}. Pledge shares in ratio table are 10k shares and pledge market cap is 10k CNY. Warning/liquidation lines are Eastmoney estimates, not contract terms}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29f: Dragon-Tiger List abnormal-trading proxy]
@@ -465,7 +465,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 鼎泰高科（301377） & 5 & -5.75亿元 & 69.47亿元 & 鼎泰高科异常交易净卖出，交易弹性和分歧并存。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_lhb\_evidence.md}; Eastmoney RPT\_DAILYBILLBOARD\_DETAILS, abnormal-trading disclosure only. Does not identify ultimate beneficial owners or normal-day order flow}
+\sourcenote{Eastmoney \texttt{RPT\_DAILYBILLBOARD\_DETAILS}, abnormal-trading disclosure only. Does not identify ultimate beneficial owners or normal-day order flow}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29g: Lock-up expiry supply pressure]
@@ -482,7 +482,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 深南电路（002916） & 0 & 0.00亿元 & 0.00\% & 深南未来一年未见解禁批次。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_lockup\_expiry\_evidence.md}; Eastmoney RPT\_LIFT\_STAGE, future window 2026-06-16 to 2027-06-16. Unlock mcap is a public supply-pressure proxy, not actual selling intent}
+\sourcenote{Eastmoney \texttt{RPT\_LIFT\_STAGE}, future window 2026-06-16 to 2027-06-16. Unlock mcap is a public supply-pressure proxy, not actual selling intent}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表29h: Shareholder increase / decrease proxy]
@@ -499,7 +499,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 胜宏科技（300476） & 0 & 0.00亿元 & 本窗口未见公开增减持记录。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_holder\_change\_evidence.md}; Eastmoney RPT\_SHARE\_HOLDER\_INCREASE, 2025-04-21 to 2026-06-15. Net amount is approximate using disclosed average/real/close prices}
+\sourcenote{Eastmoney \texttt{RPT\_SHARE\_HOLDER\_INCREASE}, 2025-04-21 to 2026-06-15. Net amount is approximate using disclosed average/real/close prices}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表30: Eastmoney fund-flow proxy]
@@ -515,7 +515,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 华正新材（603186） & 2026-06-15 & 1.41亿元 & 7.37亿元 & 30日代理覆盖，弹性较高。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_fund\_flow\_evidence.md}; public fund-flow proxy, not complete institutional positioning}
+\sourcenote{Eastmoney public fund-flow proxy, not complete institutional positioning}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表30a: Eastmoney fund-flow long-window proxy]
@@ -531,7 +531,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 胜宏科技（300476） & 121 & 2025-12-12--2026-06-16 & -336.91亿元 & 胜宏交易拥挤度高，长窗口资金流压力最大。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_fund\_flow\_long\_window.md}; `lmt=300` public endpoint returned 121 rows in this environment. This is not institutional ownership or terminal-grade order flow}
+\sourcenote{Eastmoney long-window fund-flow proxy (\texttt{lmt=300} public endpoint returned 121 rows in this environment). This is not institutional ownership or terminal-grade order flow}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表30b: Eastmoney intraday fund-flow proxy]
@@ -548,7 +548,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 兴森科技（002436） & -8.55亿元 & -1.69亿元 & -6.86亿元 & -0.52亿元 & +9.07亿元 & 主力流出，小单承接。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_intraday\_fund\_flow\_20260617.md}; Eastmoney minute-level cumulative fund-flow proxy, 240 rows per ticker. Public proxy only; not exchange tick data, beneficial-owner positioning or terminal-grade order flow.}
+\sourcenote{Eastmoney minute-level cumulative fund-flow proxy (240 rows per ticker, snapshot 2026-06-17). Public proxy only; not exchange tick data, beneficial-owner positioning or terminal-grade order flow.}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表30c: Tencent Level-1 quote-depth proxy]
@@ -571,10 +571,10 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 002938 & 119.01 & 119.01 & 0.00 & -- & 12112 & 0 & 1.000 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/tencent\_level1\_order\_book\_snapshot\_20260618.md}; Tencent archived quote feed five-level bid/ask extraction. Public delayed/post-close Level-1 proxy only; zero ask levels likely reflect limit-up/no-offer state in the archived snapshot and do not substitute for exchange order-book history or terminal order flow.}
+\sourcenote{Tencent archived quote feed five-level bid/ask extraction (snapshot 2026-06-18). Public delayed/post-close Level-1 proxy only; zero ask levels likely reflect limit-up/no-offer state in the archived snapshot and do not substitute for exchange order-book history or terminal order flow.}
 \end{exhibitbox}
 
-\begin{exhibitbox}[图表30c: Watchlist fund-flow proxy]
+\begin{exhibitbox}[图表30d: Watchlist fund-flow proxy]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{2.0cm}R{2.2cm}R{2.0cm}X}
 \toprule
@@ -589,7 +589,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 鹏鼎控股（002938） & 2026-06-15 & -5.56亿元 & -10.14亿元 & 鹏鼎补入观察名单后，公开资金流代理显示近30日偏流出。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/eastmoney\_fund\_flow\_evidence.md}; \texttt{data/pengding\_market\_positioning\_evidence.md}}
+\sourcenote{Eastmoney fund-flow proxy (core names + 鹏鼎 watchlist market-positioning proxy)}
 \end{exhibitbox}
 
 \section{历史价格表现}
@@ -607,7 +607,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 华正新材（603186） & 279 & 23.44 & 187.33 & 699.15\% & -28.94\% & 小市值/小利润基数下弹性与风险并存。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/historical\_market\_summary.md}; Yahoo Finance adjusted daily chart}
+\sourcenote{Yahoo Finance adjusted daily chart}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表31b: Watchlist price performance and valuation crowding]
@@ -625,26 +625,33 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 鹏鼎控股（002938） & 279 & 278.76\% & -33.32\% & 65.32 & 95.34\% & 鹏鼎补入观察名单后估值分位已补齐，三年PE分位约98.45\%。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/watchlist\_historical\_market\_summary.md}; \texttt{data/watchlist\_valuation\_history.md}; \texttt{data/pengding\_market\_positioning\_evidence.md}; \texttt{data/pengding\_valuation\_history.md}}
+\sourcenote{Watchlist historical price + valuation-history proxy (core watchlist + 鹏鼎 market-positioning / valuation-history proxy)}
 \end{exhibitbox}
 
 \section{拥挤度解读}
 
-\begin{dashboardbox}[What valuation already prices]
+本节把三类信号交叉，得到可复核的拥挤度排序，而不是单凭一张表下判断。第一类是基金重仓的季度变化（图表25b-2）：2026Q1五家核心标的的重仓市值普遍较2025Q4显著回落，其中胜宏科技（-259.84亿）、生益科技（-235.46亿）、沪电股份（-166.98亿）降幅最大，说明上一轮主题拥挤的机构资金已经在主动或被动减仓；第二类是股东户数扩散（图表25b-3）：胜宏、沪电、深南、生益的26Q1股东户数较25Q4继续扩张、人均持股下降，筹码由集中转向更分散的交易盘，这与重仓回落方向一致，但分散本身会放大主题退潮时的波动；第三类是融资盘拥挤（图表29c/29c-2）：胜宏融资余额231.73亿、占流通市值7.77\%，且长窗口净流入188.25亿，杠杆拥挤度最高，兴森（5.35\%）、沪电（2.58\%）次之。
+
+把三类信号叠加，拥挤度从高到低可排序为胜宏 $>$ 沪电 $>$ 生益 $\approx$ 深南 $>$ 华正。胜宏在三类信号上同时最拥挤：重仓回落最深、户数扩散、融资占比最高，因此对订单/毛利率不及预期最敏感；沪电杠杆和估值拥挤较高，但北向季度（图表27b-2）Q1仍在增持，筹码结构相对胜宏更稳；生益材料主线重仓回落明显、估值分位最高之一，但融资占比仅1.06\%；深南融资占比最低（0.66\%）且近期净流出，拥挤度偏温和；华正可见基金覆盖极低（图表25b仅1.29亿），拥挤度更多体现在小市值估值而非筹码结构。这一排序是下行风险折扣和触发器权重的主要依据，而非买卖信号本身。
+
+\begin{dashboardbox}[What valuation already prices (as of 2026-06-17 Tencent snapshot)]
 \small
 \begin{tabularx}{\textwidth}{L{2.5cm}X X}
 \toprule
 \textbf{公司} & \textbf{市场解读} & \textbf{含义} \\
 \midrule
-华正新材 & 浙商模型下快照市值隐含2026E/2027E PE约46.6x/33.3x；旧公开文本口径更高。 & 估值仍要求CBF/高端CCL兑现，且模型来源需持续刷新。 \\
+华正新材 & 按浙商2026E/2027E净利预测5.73/8.03亿元与2026-06-17快照市值355.40亿元反推的隐含PE约62x/44x（注意：浙商报告本身的目标PE为17.61x/12.58x，隐含PE反映市场已远超卖方目标估值）；旧公开文本口径更高。 & 估值仍要求CBF/高端CCL兑现，且模型来源需持续刷新。 \\
 胜宏科技 & 若2026--2028预测真实，PE下行很快；但多来源预测区间分歧较大且H股目标不可直接比较。 & 弹性高，但证据风险也高。 \\
-深南电路 & 2026E/2027E/2028E PE约44.4/32.3/23.7x。 & 典型的业绩兑现驱动型去估值。 \\
-生益科技 & 目标价引用低于或接近归档价格。 & 部分公开目标价上行空间可能已被市场吸收。 \\
+深南电路 & 本章采用国海2026E/2027E/2028E净利56.78/78.14/106.25亿元口径，与2026-06-17快照市值2953.55亿元反推的隐含PE约52.0/37.8/27.8x。注：ch08估值章使用另一套市值基准，对应53.3/39.1/30.4x，两章口径差异源于市值快照与净利来源不同，已在跨章节统一工作中跟踪。 & 典型的业绩兑现驱动型去估值。 \\
+生益科技 & 公开目标价以较晚的高盛/新浪转载217.6元（45x 2027E PE）为上限，较早的127.4元（35x 2027E PE）已被替代（见情绪章脚注）；当前价180.15元距217.6元仍有约21\%名义上行空间，但该目标价属公开情绪天花板参照而非可执行目标，且当前PE TTM约111x处历史高位，上行依赖2027E EPS兑现至4.83与卖方持续上修，而非价格发现。 & 名义空间存在但属天花板参照；兑现需上修，当前估值已计入乐观假设。 \\
 \bottomrule
 \end{tabularx}
+\sourcenote{Mkt-cap anchor as of 2026-06-17 Tencent quote snapshot (沪电2817.88亿/胜宏3129.41亿/深南2953.55亿/生益4313.69亿/华正355.40亿); implied-PE inputs from house-view broker net-profit forecasts; Goldman 生益 TP 217.6元 from later Sina repost (45x 2027E PE); earlier 127.4元 (35x 2027E PE) superseded.}
 \end{dashboardbox}
 
 \section{催化剂日历}
+
+拥挤度高意味着对催化方向高度不对称：在当前估值分位（多家标的处于一年PE/PB 95--100\%分位）和筹码结构（胜宏、沪电融资盘拥挤，重仓回落但户数扩散）下，下一个催化如果超预期，估值扩张空间已被前期涨幅和卖方目标价透支，边际买盘有限；而一旦中报收入/毛利或Rubin规格细节低于市场已经定价的乐观假设，回撤会被融资盘和分散筹码放大。因此下一阶段的核心不是“是否继续上涨”，而是“哪些催化可以证伪当前定价、并在什么价位重新建立拥挤度更低的仓位”。
 
 \begin{exhibitbox}[图表32: Secondary-market catalyst checklist]
 \small

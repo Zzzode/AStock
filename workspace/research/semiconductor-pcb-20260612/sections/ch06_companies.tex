@@ -8,14 +8,15 @@
 \toprule
 \textbf{公司} & \textbf{交付证据} & \textbf{前瞻验证} & \textbf{分组} \\
 \midrule
-深南电路 & 2025收入236.47亿元，归母净利32.76亿元；2026Q1收入65.96亿元，归母净利8.50亿元。 & 2026--2028E归母净利56.78/78.14/106.25亿元能否兑现。 & \stance{riskgreen}{Core} \\
-沪电股份 & 转载正文称2026年CAPEX预计60亿元，2025年为30亿元；目标价142元。 & 新产能能否转化为高端AI PCB收入和毛利。 & \stance{riskgreen}{Core} \\
-生益科技 & AI CCL涨价、M9升级逻辑明确；目标价127.4/146.3元被快照引用。 & M8/M9涨价和高端材料占比能否持续。 & \stance{riskgreen}{Core} \\
-胜宏科技 & 摩根大通转载正文称受益NVIDIA升级和Google ASIC；H股目标价600港元。 & 客户集中度、A/H估值可比性和预测明细验证。 & \stance{riskamber}{Aggressive} \\
+深南电路 & 2025收入236.47亿元，归母净利32.76亿元；2026Q1收入65.96亿元，归母净利8.50亿元。 & 2026--2028E归母净利区间约50.5--56.8/68.4--78.1/97.3--106.3亿元（国海/CMBI双源）能否兑现；当前市值隐含2026E PE约44--48x。 & \stance{riskgreen}{Core} \\
+沪电股份 & 转载正文称2026年CAPEX预计60亿元，2025年为30亿元；Goldman目标价142元（23x 2027E EPS，Sina转载非原始PDF），对当前价125.20元隐含+13.4\%。 & 新产能能否转化为高端AI PCB收入和毛利。 & \stance{riskgreen}{Core} \\
+% Reconciled: 生益 Goldman TP headline = 217.6 (later Sina repost, 45x 2027E PE); 127.4/146.3 superseded — see sentiment chapter footnote.
+生益科技 & AI CCL涨价、M9升级逻辑明确；目标价127.4/146.3元为截至2026-05-22快照引用，已被2026-06-17 Goldman上调至217.6元取代（Sina转载非原始PDF，2027E 45x PE），仅在目标基准/日期可核时才可比。 & M8/M9涨价和高端材料占比能否持续。 & \stance{riskgreen}{Core} \\
+胜宏科技 & 摩根大通转载正文称受益NVIDIA升级和Google ASIC；H股目标价600港元（Sina/Reportify转载非原始PDF，证券类别与A股不可比，不作A股隐含上行/下行）。 & 客户集中度、A/H估值可比性和预测明细验证。 & \stance{riskamber}{Aggressive} \\
 华正新材 & 申万宏源正文预测2026--2028E归母净利4.7/7.7/9.7亿元。 & 国产算力链、CBF/BT材料认证和估值兑现。 & \stance{riskamber}{Aggressive} \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{verified\_financials.md}; \texttt{valuation\_model.md}; \texttt{analysis/company\_one\_pagers.md}}
+\sourcenote{\texttt{data/verified\_financials.md}; \texttt{analysis/valuation\_model.md}; \texttt{analysis/company\_one\_pagers.md}; broker targets sourced as Sina/Reportify reposts, not original PDFs}
 \end{exhibitbox}
 
 证据卡给出的排序是：深南和沪电更适合作为核心跟踪底仓候选，生益科技取决于材料价格和M8/M9代际兑现，胜宏科技适合在客户订单和估值回落时提高进攻权重，华正新材则必须等小利润基数修复和CBF/BT订单真正落地。
@@ -115,16 +116,18 @@
 \toprule
 \textbf{公司（代码）} & \textbf{DSO} & \textbf{DIO} & \textbf{DPO} & \textbf{CCC} & \textbf{解读} \\
 \midrule
-沪电股份（002463） & 93.8 & 90.5 & 117.4 & 66.9 & Payables partly fund growth; cash cycle controlled. \\
-胜宏科技（300476） & 90.6 & 86.2 & 166.7 & 10.1 & Supplier credit and strong OCF support ramp. \\
-深南电路（002916） & 79.8 & 104.9 & 82.2 & 102.5 & Inventory/ramp pressure visible. \\
-生益科技（600183） & 108.6 & 88.7 & 69.4 & 127.9 & Materials chain has longer cash cycle. \\
-华正新材（603186） & 137.0 & 44.3 & 89.9 & 91.4 & AR days high; monitor collection. \\
+沪电股份（002463） & 93.8 & 90.5 & 117.4 & 66.9 & 应付账款部分支撑扩张，现金周期可控。 \\
+胜宏科技（300476） & 90.6 & 86.2 & 166.7 & 10.1 & 供应商账期和强OCF支持产能爬坡。 \\
+深南电路（002916） & 79.8 & 104.9 & 82.2 & 102.5 & 库存和爬坡压力可见。 \\
+生益科技（600183） & 108.6 & 88.7 & 69.4 & 127.9 & 材料链现金周期更长。 \\
+华正新材（603186） & 137.0 & 44.3 & 89.9 & 91.4 & 应收天数偏高，需跟踪回款。 \\
 鹏鼎控股（002938） & 41.9 & 64.5 & 72.6 & 33.8 & 回款改善，现金周期较短。 \\
 \bottomrule
 \end{tabularx}
 \sourcenote{\texttt{data/working\_capital\_days\_analysis.md}; \texttt{data/pengding\_official\_filing\_evidence.md}; DSO/DIO/DPO/CCC approximated from Q1 balance sheet and quarterly revenue/cost}
 \end{exhibitbox}
+
+上述为Q1资产负债表近似值；H股招股文件披露的官方周转天数为更强的口径，见下表交叉检查。
 
 \begin{exhibitbox}[图表14c-2：H股官方周转天数交叉检查]
 \footnotesize
@@ -216,7 +219,7 @@
 \begin{tabularx}{\textwidth}{L{2.6cm}X}
 \toprule
 角色 & PCB + IC载板双轮驱动。 \\
-证据 & 2025收入236.47亿元、归母净利32.76亿元；2026Q1收入65.96亿元、归母净利8.50亿元；PCB业务收入143.59亿元，封装基板收入41.48亿元；2026--2028净利预测56.78/78.14/106.25亿元。 \\
+证据 & 2025收入236.47亿元、归母净利32.76亿元；2026Q1收入65.96亿元、归母净利8.50亿元；PCB业务收入143.59亿元，封装基板收入41.48亿元；2026--2028E归母净利区间约50.5--56.8/68.4--78.1/97.3--106.3亿元（国海/CMBI双源），当前市值隐含2026E PE约44--48x。 \\
 上行驱动 & AI算力PCB和封装基板同步增长。 \\
 下一步验证 & 客户平台拆分、FC-BGA/BT良率、载板产能利用率和折旧压力。 \\
 风险 & 新产能爬坡、载板认证、材料成本压力。 \\
@@ -266,6 +269,7 @@ CCL材料 & M8/M9涨价延续，普品毛利修复，高端料验证加速。 & 
 设备耗材 & 新订单和在手订单持续增长，耗材复购验证景气。 & CAPEX周期带来阶段性订单。 & 下游扩产放缓或价格竞争。 \\
 \bottomrule
 \end{tabularx}
+\sourcenote{本表为定性判定框架，半量化阈值（如高端PCB Beat取收入增速$>$40\%、毛利率环比$+$1pp、OCF/NPP$>$60\%）见中报跟踪章节}
 \end{exhibitbox}
 
 如果Q2出现“收入高增但毛利率不升、现金流不跟、折旧压力增加”，应视为质量一般，而不是简单视为AI主线兑现。反过来，如果收入、毛利率、订单和现金流同时改善，才说明高端产品结构开始真正进入利润表。

@@ -320,10 +320,10 @@
 | `raw_sse_search_shengyi_m9.html` | `html` | False | raw singleton | 18146 |
 | `raw_zhen_ding_finance_en.html` | `html` | False | raw singleton | 129457 |
 | `raw_zhen_ding_finance_tw.html` | `html` | False | raw singleton | 129496 |
-| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 134839 |
-| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 71581 |
+| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 144743 |
+| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 76866 |
 | `report_catalog.md` | `md` | True | evidence summary | 14074 |
-| `report_quality_eval.json` | `json` | False | machine-readable companion | 267 |
+| `report_quality_eval.json` | `json` | False | machine-readable companion | 266 |
 | `report_quality_eval.md` | `md` | True | evidence summary | 290 |
 | `reverse_valuation_requirement_matrix_20260618.json` | `json` | True | machine-readable companion | 3891 |
 | `reverse_valuation_requirement_matrix_20260618.md` | `md` | True | evidence summary | 2290 |

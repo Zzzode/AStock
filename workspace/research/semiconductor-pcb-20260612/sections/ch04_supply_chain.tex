@@ -10,15 +10,15 @@
 \toprule
 \textbf{环节} & \textbf{AI需求} & \textbf{定价} & \textbf{认证壁垒} & \textbf{证据} & \textbf{代表公司} \\
 \midrule
-上游材料 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}推断 & 中国巨石、中材科技、国际复材、宏和科技 \\
-高频高速CCL & \cellcolor{green!18}高 & \cellcolor{green!18}高 & \cellcolor{green!18}高 & \cellcolor{green!18}Q2 & 生益科技、华正新材、南亚新材 \\
-PCB制造 & \cellcolor{green!18}高 & \cellcolor{yellow!18}中 & \cellcolor{green!18}高 & \cellcolor{green!18}Q2 & 沪电股份、胜宏科技、深南电路、鹏鼎控股 \\
-IC载板 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{green!18}高 & \cellcolor{yellow!18}Q2/Q3 & 深南电路、兴森科技、华正新材 \\
-设备 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}Q2 & 大族数控、芯碁微装、东威科技（非本报告覆盖标的）、凯格精机 \\
-耗材 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}Q3 & 鼎泰高科、中钨高新 \\
+上游材料 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}E3 & 中国巨石、中材科技、国际复材、宏和科技 \\
+高频高速CCL & \cellcolor{green!18}高 & \cellcolor{green!18}高 & \cellcolor{green!18}高 & \cellcolor{green!18}E2 & 生益科技、华正新材、南亚新材 \\
+PCB制造 & \cellcolor{green!18}高 & \cellcolor{yellow!18}中 & \cellcolor{green!18}高 & \cellcolor{green!18}E2 & 沪电股份、胜宏科技、深南电路、鹏鼎控股 \\
+IC载板 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{green!18}高 & \cellcolor{yellow!18}E2/E3 & 深南电路、兴森科技、华正新材 \\
+设备 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}E3 & 大族数控、芯碁微装、东威科技$^\dagger$、凯格精机 \\
+耗材 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}中 & \cellcolor{yellow!18}E3 & 鼎泰高科、中钨高新 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/report\_catalog.md}; \texttt{data/source\_registry.md}}
+\sourcenote{证据等级对应 ch02 图表2-1 的 E1--E4 体系：E2=原始券商报告/明确归因转载；E2/E3=部分券商加部分跨来源推断；E3=跨来源产业逻辑。高频高速CCL行：CMBI行业结构证据 + 材料/价格序列；PCB制造行：H股官方申请资料环节摘要；IC载板行：券商封装基板报告 + 跨来源推断；上游材料/设备/耗材行：跨来源产业逻辑。$\dagger$ 东威科技非本报告覆盖标的。}
 \end{exhibitbox}
 
 从热力图看，需求强并不自动等于投资价值高。高端PCB和CCL的需求确定性最高，但估值也最拥挤；设备耗材有较强二阶弹性，但订单节奏滞后且波动更大；IC载板需要看良率、折旧和客户认证，不能只按AI算力主题给估值。
@@ -35,7 +35,7 @@ CCL集中度 & 全球CCL前十大供应商2024年占比约77\%；高速专用CCL
 成本传导 & 铜被引用为PCB原材料成本的60\%--70\%，高端AI HDI毛利显著高于标准PCB。 & 强化本报告对高端结构赢家和大宗成本风险的区分。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/cmbi\_sector\_global\_evidence.md}; CMBI sector update is Q2 broker evidence and does not disclose named customer revenue}
+\sourcenote{CMBI行业结构证据；券商二季度行业更新口径，不披露具名客户收入}
 \end{exhibitbox}
 
 行业结构数据进一步支持“高端优先”的判断。全球PCB增长被AI基础设施上修，但普通PCB和高端AI PCB的盈利含义完全不同：前者更多体现周期修复，后者体现材料等级、客户认证和良率壁垒。报告后续给沪电、胜宏、深南、生益更高关注度，正是因为它们更接近这些瓶颈。
@@ -50,12 +50,13 @@ CCL集中度 & 全球CCL前十大供应商2024年占比约77\%；高速专用CCL
 \toprule
 \textbf{需求节点} & \textbf{所需PCB/CCL能力} & \textbf{可能受益A股} & \textbf{置信度} \\
 \midrule
-NVIDIA GB300/Rubin & 高层高速PCB、背板、中板、M9材料、CoWoP相关结构 & 沪电股份、胜宏科技、深南电路、生益科技 & \evidencetag{broker-stated} \\
+NVIDIA GB300/Rubin & 高层高速PCB、背板、中板、M9材料、CoWoP相关结构 & 沪电股份、胜宏科技、深南电路、生益科技 & \evidencetag{券商陈述} \\
 北美ASIC & HDI、高速CCL、服务器板、交换机板 & 胜宏科技、沪电股份、生益科技 & \evidencetag{券商陈述} \\
 国产算力 & 国产高端CCL、CBF/BT材料、PCB与载板认证 & 华正新材、深南电路、生益科技、兴森科技 & \evidencetag{券商陈述} \\
 光模块/网络 & 光模块PCB、交换机PCB、高速材料 & 沪电股份、深南电路、景旺电子等 & \evidencetag{推断} \\
 \bottomrule
 \end{tabularx}
+\sourcenote{券商陈述：平台-公司映射来自归档券商报告（高盛沪电AI PCB、JPM胜宏AI PCB、CMBI行业结构证据）；非官方客户收入拆分，具名平台份额未经官方披露}
 \end{exhibitbox}
 
 这里最需要警惕的是证据强弱差异。平台链条可以解释为什么某些公司进入观察范围，但除非有官方披露或原始报告支持，不能把具体客户收入写成确定事实。后续估值表对胜宏、鹏鼎和华正保留更宽区间，就是因为平台链条的收入拆分仍不完整。
@@ -84,7 +85,7 @@ NVIDIA GB300/Rubin & 高层高速PCB、背板、中板、M9材料、CoWoP相关�
 
 供应商经济性解释毛利率能否持续。AI产品放量通常伴随更高等级铜箔、覆铜板、半固化片和设备投入，短期可能推高收入和ASP，但也会提高材料采购集中度和营运资本占用。只有当客户认证、价格传导和供应链稳定同时成立，高端产品结构才会真正转化为利润率。
 
-\begin{exhibitbox}[图表9b：H股文件供应商集中度和材料成本桥]
+\begin{exhibitbox}[图表9b：H股文件供应商集中度与材料成本占比]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}X X}
 \toprule
@@ -92,11 +93,11 @@ NVIDIA GB300/Rubin & 高层高速PCB、背板、中板、M9材料、CoWoP相关�
 \midrule
 沪电股份 & 原材料成本占销售成本比例从2023年55.8\%升至2026Q1的62.3\%；五大供应商采购占比约41\%--42\%，最大供应商约21\%。 & 铜箔、覆铜板、半固化片成本传导是毛利率关键。 \\
 沪电股份 & 主要供应商多为覆铜板及半固化片供应商，信用期60--150天；设备供应商信用期约30天。 & 供应商信用期支持DPO和现金转换假设。 \\
-胜宏科技 & 原材料成本占销售成本比例从2023年58.6\%升至2025年65.9\%；五大供应商采购占比从29.3\%升至45.2\%。 & 高端HDI/MLPCB放量伴随材料和设备集中度提升。 \\
+胜宏科技 & 原材料成本占销售成本比例从2023年58.6\%升至2025年65.9\%；五大供应商采购占比2023年31.4\%、2024年降至29.3\%、2025年跃升至45.2\%。 & 2025年集中度大幅跃升，与高端HDI/MLPCB放量伴随的材料和设备集中度提升一致。 \\
 胜宏科技 & 供应商A为韩国电子材料供应商，供应商B为广东高端CCL开发商，供应商H为激光智能装备公司。 & 上游材料和设备能力影响产能爬坡与毛利率。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{\texttt{data/hshare\_supplier\_economics\_evidence.md}}
+\sourcenote{官方文件：H股申请资料供应商与原材料披露}
 \end{exhibitbox}
 
-供应商数据对投资判断的含义是：不要只看收入增速。胜宏科技这类高弹性公司如果材料成本和设备投入同步上升，利润率能否保持才是关键；沪电股份的供应链信用期和客户结构更稳定，因此估值可以给更高确定性权重。
+供应商数据对投资判断的含义是：不要只看收入增速。胜宏科技这类高弹性公司如果材料成本和设备投入同步上升，利润率能否保持才是关键；沪电股份的供应商信用期更长、供应商集中度结构更稳定，毛利率可持续性证据更强。该判断在 ch08 估值中体现为沪电采用更窄的合理价值区间，胜宏、鹏鼎与华正保留更宽区间（见本章平台链条图后的边界说明）。
