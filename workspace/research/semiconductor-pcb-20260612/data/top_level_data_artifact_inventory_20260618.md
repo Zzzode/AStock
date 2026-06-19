@@ -252,8 +252,8 @@
 | `raw_cninfo_search_api_002463_query_post.json` | `json` | False | raw singleton | 17934 |
 | `raw_cninfo_search_api_hudian_post.json` | `json` | False | raw singleton | 17905 |
 | `raw_cninfo_shennan_companydetail.html` | `html` | False | raw singleton | 7254 |
-| `raw_data_artifact_inventory_20260618.json` | `json` | True | raw singleton | 52379 |
-| `raw_data_artifact_inventory_20260618.md` | `md` | True | raw singleton | 33004 |
+| `raw_data_artifact_inventory_20260618.json` | `json` | True | raw singleton | 58897 |
+| `raw_data_artifact_inventory_20260618.md` | `md` | True | raw singleton | 36717 |
 | `raw_eastmoney_hsgtcg_list_20260618.html` | `html` | False | raw singleton | 178325 |
 | `raw_eastmoney_zjlx_002463.html` | `html` | False | raw singleton | 188669 |
 | `raw_financials.md` | `md` | False | raw singleton | 2315 |
@@ -320,8 +320,8 @@
 | `raw_sse_search_shengyi_m9.html` | `html` | False | raw singleton | 18146 |
 | `raw_zhen_ding_finance_en.html` | `html` | False | raw singleton | 129457 |
 | `raw_zhen_ding_finance_tw.html` | `html` | False | raw singleton | 129496 |
-| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 178565 |
-| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 94956 |
+| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 190810 |
+| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 101536 |
 | `report_catalog.md` | `md` | True | evidence summary | 14074 |
 | `report_quality_eval.json` | `json` | False | machine-readable companion | 268 |
 | `report_quality_eval.md` | `md` | True | evidence summary | 286 |
@@ -348,8 +348,8 @@
 | `tencent_realtime_market_snapshot_20260618.md` | `md` | True | evidence summary | 2500 |
 | `top_customer_supplier_detail.json` | `json` | False | machine-readable companion | 3915 |
 | `top_customer_supplier_detail.md` | `md` | False | evidence summary | 1156 |
-| `top_level_data_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 71220 |
-| `top_level_data_artifact_inventory_20260618.md` | `md` | True | evidence summary | 34055 |
+| `top_level_data_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 71586 |
+| `top_level_data_artifact_inventory_20260618.md` | `md` | True | evidence summary | 34226 |
 | `upstream_supplier_list_evidence_20260618.json` | `json` | True | machine-readable companion | 3260 |
 | `upstream_supplier_list_evidence_20260618.md` | `md` | True | evidence summary | 4857 |
 | `verified_financials.md` | `md` | False | evidence summary | 2310 |
@@ -392,3 +392,5 @@
 | `jinan_002636_evidence.md` | `md` | True | evidence summary | 14738 |
 | `jushi_600176_evidence.md` | `md` | True | evidence summary | 18303 |
 | `hongchang_603002_evidence.md` | `md` | True | evidence summary | 14326 |
+| `new_names_holdings_proxy_20260620.md` | `md` | True | evidence summary | 10209 |
+| `new_names_holdings_proxy_20260620.json` | `json` | True | evidence summary | 6148 |

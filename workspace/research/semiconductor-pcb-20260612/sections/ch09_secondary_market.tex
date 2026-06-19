@@ -701,7 +701,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 01888.HK & 建滔积层板 & 港股 & n/a & 半年市值暴涨约2200亿港元 & 港股全球CCL龙头，A股CCL（生益/华正/南亚）的A/H锚；CLI不支持港股financials，财务数据为公开转载（E2/E3）；\textbf{非A股持仓}，仅作全球CCL量价风向标 + 估值信号灯 + watchlist参照，与胜宏H股桥同范式。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{Quote via \texttt{astock.cli quote} snapshot 2026-06-20 (all full\_realtime, A-share codes only); CLI did not return structured \texttt{pe\_ttm}/\texttt{total\_market\_value} for this batch (all 0.0), so PE TTM and 总市值 are evidence-card-derived (推算) values from each card, not exchange-direct fields. 港股01888.HK financials unsupported by CLI; data from public annual report / broker repost only. None of the 12 expanded names have holdings / fund-flow / crowding rows; detailed northbound / fund-flow / holdings data requires terminal access (same boundary as core names) and was not fabricated.}
+\sourcenote{Quote via \texttt{astock.cli quote} snapshot 2026-06-20 (all full\_realtime, A-share codes only); CLI did not return structured \texttt{pe\_ttm}/\texttt{total\_market\_value} for this batch (all 0.0), so PE TTM and 总市值 are evidence-card-derived (推算) values from each card, not exchange-direct fields. 港股01888.HK financials unsupported by CLI; data from public annual report / broker repost only. Holdings / fund-flow / crowding proxy rows for the 13 A-share expanded names are added in 图表9-38（2026-06-20补抓，与核心12标的同源公开代理）；北向个股当前持仓仍受页面壳冻结gating，01888.HK为港股不适用A股端点。}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表9-37: Expanded-coverage role and crowding-status summary]
@@ -724,10 +724,37 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 01888.HK 建滔积层板 & 港股锚/参照系（非A股持仓） & excluded & \textbf{否}（港股，非A股持仓，仅作A/H锚与全球CCL风向标） \\
 \bottomrule
 \end{tabularx}
-\sourcenote{Role classification per evidence cards. Holdings/fund-flow/crowding evidence is uniformly absent for all 12 expanded names; detailed northbound / fund-flow / holdings data requires terminal access (same boundary as the original 12 core names) and was not fabricated.}
+\sourcenote{Role classification per evidence cards. Holdings/fund-flow proxy coverage for the 13 A-share expanded names was subsequently added in 图表9-38（与核心12标的同口径的公开代理）；北向个股当前持仓仍受页面壳冻结gating，详见9-38。01888.HK为港股锚，A股端点不适用。}
 \end{exhibitbox}
 
-两个需求指标股（工业富联601138、中际旭创300308）在画像表中仅作价格/估值与业绩锚披露，明确标注"demand indicator, excluded from holdings/crowding analysis"，不参与本章拥挤度排序，也不进入ch08目标价表；这一处理范式与证据卡中"需求侧拉货锚标，非PCB制造标的"的定位一致。其余9个可投资A股标的（含688630 Core Candidate）与1个港股锚（01888.HK）目前均仅有CLI quote快照 + 证据卡财务画像，其北向/基金/龙虎榜/融资盘等持仓与资金流证据**统一缺失**，需终端访问补抓后方可与核心12标的同等口径回填至图表9-2至9-34系列；在终端数据落地前，不得将这些扩充标的与核心标的的拥挤度直接横比，也不得在投资建议中赋予其与核心标的等同的弹性权重。
+\begin{exhibitbox}[图表9-38: New-name holdings / fund-flow proxy matrix]
+\footnotesize
+\begin{tabularx}{\textwidth}{L{1.4cm}L{1.5cm}X X X X X}
+\toprule
+\textbf{代码} & \textbf{名称} & \textbf{资金流(30d)} & \textbf{北向(个股)} & \textbf{基金持仓(公开行)} & \textbf{融资融券} & \textbf{龙虎榜(近90d)} \\
+\midrule
+002384 & 东山精密 & obtained 30行主力净流-100.88亿，最新-0.47亿 & gated 2024-08-16冻结 & obtained 996行，26Q1，合计1016.54亿 & obtained 06-17融资141.39亿/3.97\% & obtained 7次 \\
+601138 & 工业富联 & obtained 30行主力净流-43.55亿，最新+45.68亿 & gated 2024-08-16冻结 & obtained 995行，26Q1，合计697.91亿 & obtained 06-18融资105.07亿/0.68\% & obtained 0次 \\
+603256 & 宏和科技 & obtained 30行主力净流+1.62亿，最新-2.62亿 & gated 2024-08-16冻结 & obtained 865行，26Q1，合计40.76亿 & gated 非两融标的 & obtained 5次 \\
+601208 & 东材科技 & obtained 30行主力净流-22.53亿，最新-2.11亿 & gated 2024-08-16冻结 & obtained 992行，26Q1，合计84.43亿 & obtained 06-18融资31.88亿/4.22\% & obtained 1次 \\
+688630 & 芯碁微装 & obtained 30行主力净流-0.16亿，最新+0.20亿 & gated 2024-08-16冻结 & obtained 992行，26Q1，合计88.88亿 & obtained 06-18融资10.94亿/1.65\% & obtained 2次 \\
+603228 & 景旺电子 & obtained 30行主力净流-13.22亿，最新-0.74亿 & gated 2024-08-16冻结 & obtained 998行，26Q1，合计179.12亿 & obtained 06-18融资26.25亿/3.32\% & obtained 0次 \\
+300308 & 中际旭创 & obtained 30行主力净流-50.84亿，最新+24.12亿 & gated 2024-08-16冻结 & obtained 994行，26Q1，合计1832.77亿 & obtained 06-17融资430.27亿/3.04\% & obtained 0次 \\
+002080 & 中材科技 & obtained 30行主力净流-10.85亿，最新-4.48亿 & gated 2024-08-16冻结 & obtained 998行，26Q1，合计121.98亿 & obtained 06-17融资20.96亿/1.52\% & obtained 5次 \\
+301217 & 铜冠铜箔 & obtained 30行主力净流-11.38亿，最新+3.29亿 & gated 2024-08-16冻结 & obtained 990行，26Q1，合计21.77亿 & obtained 06-17融资13.98亿/0.93\% & obtained 6次 \\
+300576 & 容大感光 & obtained 30行主力净流-3.10亿，最新-0.94亿 & gated 2024-08-16冻结 & obtained 249行，25Q4，合计5.47亿 & obtained 06-17融资6.31亿/4.87\% & obtained 1次 \\
+002636 & 金安国纪 & obtained 30行主力净流-9.05亿，最新-0.48亿 & gated 2024-08-16冻结 & obtained 976行，25Q4，合计14.30亿 & obtained 06-17融资18.77亿/2.71\% & obtained 9次 \\
+600176 & 中国巨石 & obtained 30行主力净流-19.14亿，最新-12.05亿 & gated 2024-08-16冻结 & obtained 998行，26Q1，合计123.76亿 & obtained 06-18融资34.77亿/1.62\% & obtained 1次 \\
+603002 & 宏昌电子 & obtained 30行主力净流-2.20亿，最新-3.31亿 & gated 2024-08-16冻结 & obtained 473行，26Q1，合计24.20亿 & gated 非两融标的 & obtained 3次 \\
+01888.HK & 建滔积层板 & gated 港股，A股端点不适用 & gated 港股 & gated 港股 & gated 港股 & gated 港股 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Public proxy fetch 2026-06-20（与核心12标的同源端点）：资金流=东方财富\texttt{fflow/daykline}（lmt=30）；北向=\texttt{stock\_hsgt\_individual\_em}（个股系列，页面壳统一冻结于2024-08-16，同核心标的边界，非当前持仓）；基金持仓=\texttt{stock\_fund\_stock\_holder}（个股公开持有人行，最新披露多为2026-03-31，300576/002636为2025-12-31）；融资融券=\texttt{RPTA\_WEB\_RZRQ\_GGMX}（603256/603002返回空数据，非两融标的）；龙虎榜=\texttt{stock\_lhb\_detail\_em}（2026-03-22至2026-06-20窗口）。Raw JSON归档于\texttt{data/raw\_eastmoney\_*\_newnames/}；汇总见\texttt{data/new\_names\_holdings\_proxy\_20260620.md}。均为公开代理，不等于终端级订单流/北向穿透/完整机构仓位；北向个股为历史基线而非当前持仓。}
+\end{exhibitbox}
+
+\textbf{代理覆盖升级说明（图表9-38）。}在初始CLI quote快照基础上，本章于2026-06-20对13只A股扩充标的补抓了与核心12标的同口径的五个公开代理维度：资金流（13/13 obtained）、基金公开持有人行（13/13 obtained）、融资融券（11/13 obtained，603256/603002非两融标的）、龙虎榜（13/13 queried，9只有上榜）、以及北向个股系列（13/13历史行obtained但**统一冻结于2024-08-16**，与核心标的的页面壳冻结边界一致，非当前持仓）。01888.HK为港股锚，五个A股端点均不适用。这组代理使扩充标的首次具备与核心标的可横比的"持仓/资金流/杠杆"信号，但仍有三点边界须明示：第一，北向个股当前持仓**仍受gating**（页面壳冻结），无法与核心标的的港交所官方季度持股（图表9-11）同口径比较；第二，基金持仓为公开持有人行而非CNInfo重仓排名，未做主动/被动分类，不能等同于核心标的的图表9-3/9-4重仓代理；第三，融资为单日余额而非核心标的的300行长窗口拥挤度桥（图表9-21）。因此扩充标的可纳入"方向性拥挤度观察"，但在北向/重仓分类/长窗口杠杆三项补齐前，不赋予与核心标的等同的弹性权重，也不得在投资建议中作为同等置信度的排序输入。
+
+两个需求指标股（工业富联601138、中际旭创300308）在画像表中仅作价格/估值与业绩锚披露，明确标注"demand indicator, excluded from holdings/crowding analysis"，不参与本章拥挤度排序，也不进入ch08目标价表；这一处理范式与证据卡中"需求侧拉货锚标，非PCB制造标的"的定位一致。其余9个可投资A股标的（含688630 Core Candidate）与1个港股锚（01888.HK）的持仓/资金流公开代理已在图表9-38补抓到位（13只A股五维代理，北向个股因页面壳冻结仍gated），但北向当前持仓、CNInfo重仓排名口径与300行融资长窗口桥仍需终端/官方源补齐后方可与核心12标的完全同等口径回填至图表9-2至9-34系列；在三项补齐前，扩充标的可作为方向性拥挤度观察纳入，但不得与核心标的直接横比排序、也不得在投资建议中赋予等权弹性。
 
 \section{催化剂日历}
 
