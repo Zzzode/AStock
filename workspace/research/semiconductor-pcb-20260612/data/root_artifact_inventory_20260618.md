@@ -10,13 +10,13 @@
 
 | File | Type | Size bytes |
 |---|---|---:|
-| `completion_audit_manifest.json` | `json` | 3548 |
+| `completion_audit_manifest.json` | `json` | 3553 |
 | `completion_audit_manifest.md` | `md` | 61703 |
-| `data_room_index.md` | `md` | 65139 |
+| `data_room_index.md` | `md` | 65303 |
 | `external_data_request_templates.md` | `md` | 7252 |
-| `main.pdf` | `pdf` | 953341 |
+| `main.pdf` | `pdf` | 1022302 |
 | `main.tex` | `tex` | 3510 |
-| `main_current_text.txt` | `txt` | 261672 |
+| `main_current_text.txt` | `txt` | 285170 |
 | `missing_data_request_pack.csv` | `csv` | 4039 |
 | `missing_data_request_pack.json` | `json` | 8023 |
 | `missing_data_request_pack.md` | `md` | 14725 |

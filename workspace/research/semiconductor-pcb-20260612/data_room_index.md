@@ -348,7 +348,8 @@ This index maps every collected evidence artifact to its role in the research re
 | `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1634` | 75 | Historical full 75-page PDF raster render after the 2026-06-18 16:34 rebuild |
 | `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1652` | 76 | Historical full 76-page PDF raster render after the 2026-06-18 16:52 rebuild |
 | `workspace/research/semiconductor-pcb-20260612/rendered/full-20260619-2138` | 84 | Historical full 84-page PDF raster render after the 2026-06-19 21:43 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0115` | 89 | Current full 89-page PDF raster render after the 2026-06-20 01:15 rebuild |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0115` | 89 | Historical full 89-page PDF raster render after the 2026-06-20 01:15 rebuild |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0224` | 96 | Current full 96-page PDF raster render after the 2026-06-20 02:24 rebuild |
 
 ## Auxiliary Tool Artifacts
 
