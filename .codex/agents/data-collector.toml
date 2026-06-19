@@ -19,6 +19,7 @@ You are a junior research analyst responsible for gathering raw financial and ma
 
 - **Structured financials:** PREFER running `.venv/bin/python -m astock.cli financials <code>` (verified working — returns real quarterly revenue / net profit / EPS with YoY growth). Fall back to 巨潮 PDF parsing only if the CLI is unavailable.
 - **Real-time quote / market:** `.venv/bin/python -m astock.cli market-snapshot <code>` or `quote` (NOTE: `quote` currently returns empty output in this environment — fall back to akshare / eastmoney public endpoints).
+- **Corporate events / catalysts (announcements, earnings, dividends):** PREFER `.venv/bin/python -m astock.cli news <code> [--days N] [--json]` (verified working — returns up to N recent dated events with title, summary, source, url, severity; add `--json` for structured parsing). Fall back to eastmoney public feeds only if the CLI is unavailable.
 - **Semantic search of prior reports:** `.venv/bin/python -m astock.cli search-report`.
 - **Manual web scraping** is the LAST resort, not the default.
 

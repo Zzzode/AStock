@@ -105,6 +105,14 @@ When auditing a research case, follow every applicable refresh dependency in wor
 - **Fix at the underlying artifact — never bypass.** Any FAIL must be repaired at its root cause (checksum manifest, inventory, render, or text artifact) following the section 6 refresh-dependency checklist. Never hand-edit the verifier, never suppress a check, and never accept a partial pass as "good enough." The verifier is read-only and authoritative by design.
 - **Refresh-dependency discipline.** Before re-running the verifier, confirm the upstream refresh chain (sections 6-7) is complete — e.g., after a PDF rebuild, ensure `latexmk -c` cleanup, `report_quality_eval`, `completion_audit_manifest`, `core_artifact_checksums`, and the self-referential `top_level_data_artifact_inventory` (iterated to its fixed point) are all current. A verifier FAIL that traces to a skipped refresh step is itself an A-Level process finding.
 
+### Tools — Aggregate Quality Stats (complements the per-case verifier)
+
+The verifier gate above is per-case (one research workspace at a time). For an AGGREGATE, cross-case view of research quality, the agent SHOULD also consult the `quality-stats` CLI, which rolls up the recorded quality assessments across every research case. This complements — it does not replace — the per-case verifier: a case can pass 39/39 and still belong to a population whose aggregate quality is drifting, and `quality-stats` is the only signal that surfaces that.
+
+- **Exact command (from repo root):** `.venv/bin/python -m astock.cli quality-stats`
+- **Machine-readable variant:** `.venv/bin/python -m astock.cli quality-stats --json` — use this when feeding the numbers into the Metrics Summary or a trend comparison, so the agent is not parsing the human-readable table.
+- **When to consult it:** at the start of any `periodic_audit` / `full_system` scope, and whenever a single-case FAIL pattern (e.g., repeated checksum or render FAILs) might be systemic rather than local. An aggregate population of "0 assessed" or a degraded success rate is itself a finding even if every individual case currently passes the verifier.
+
 ## Constraints
 
 - NEVER auto-apply changes — all proposed modifications require human approval

@@ -46,6 +46,25 @@ Expects:
 |------|-------|----------------|
 ```
 
+## Tools
+
+### consistency-check (cross-source consistency)
+
+In addition to per-field web verification, cross-check a ticker's data across the local sources by running the bundled CLI from the repo root:
+
+```bash
+.venv/bin/python -m astock.cli consistency-check <CODE>
+.venv/bin/python -m astock.cli consistency-check <CODE> --json   # structured output for parsing
+```
+
+`<CODE>` is the stock ticker (e.g. `002463`). The command reconciles the quote, financial, and news caches against each other and reports:
+
+- `Quality: consistent | inconsistent` (overall `data_quality`)
+- `Conflicts: <n>` — count of cross-source disagreements (`conflict_count`). Each conflict names the field, the source values that disagree, and the affected source(s). Surface any non-zero result as a verification finding; do not let conflicting numbers pass into the report.
+- `Freshness:` per source (`quote` / `financial` / `news`) with a `status` of `fresh | stale | unknown` and, where known, `last_updated` / age. A `stale` or `unknown` quote source corroborates the stale-market-data error pattern below; treat per the 7-day freshness rule.
+
+Run this as a first-pass screen on every ticker before diving into per-field web verification. Non-zero `conflicts` map directly into the Output Contract's S/A/B correction tables; a `stale`/`unknown` freshness flag should be escalated to the freshness assessment in the verification report. If the tool errors or returns empty, fall back to manual per-field verification and flag that the automated cross-check was unavailable.
+
 ## Known Error Patterns
 
 | Error Type | Example | How to Catch |
