@@ -100,6 +100,10 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 
 重仓回落不等于基本面恶化，但它改变了赔率。对核心资产而言，后续需要更强的业绩证据来重新吸引机构增配；对高弹性资产而言，若融资盘和主题资金仍在推升价格，任何低于预期的订单或毛利率信息都可能放大波动。
 
+\subsection*{持仓与筹码}
+
+筹码结构用三条证据交叉验证——基金重仓季度回落（图表25b-2）、股东户数扩散（图表25b-3）、可见基金风格（图表25c/25c-2）。三者方向一致即指向主题拥挤的筹码松动：基金重仓2026Q1较2025Q4普遍回落（胜宏-259.84亿、生益-235.46亿、沪电-166.98亿），同期股东户数继续扩张、人均持股下降，意味着筹码由机构集中转向更分散的交易盘；但风格表揭示了一条不对称线索——胜宏ETF/指数占比高达36\%（图表25c-2），说明其拥挤退潮时被动资金可能被ETF赎回机制被动减持，放大下行斜率，而沪电、深南、生益仍以主动型为主，退潮节奏更可控。投资含义是：筹码松动已成方向性事实，但松动的方式（主动减仓 vs 被动减持）决定了不同标的对催化证伪的敏感度排序。
+
 \begin{exhibitbox}[图表25b-3: Shareholder-count concentration bridge]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{1.7cm}R{1.7cm}R{1.7cm}R{1.7cm}X}
@@ -169,6 +173,10 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 已尝试通过 AkShare `stock\_report\_fund\_hold` 获取基金、QFII、社保、券商、保险持仓，但接口在当前环境返回 TypeError。港交所官方季度北向持股已经覆盖当前核心和观察名单；东方财富 `RPT\_MUTUAL\_HOLDSTOCKNDATE\_STA\_NEW` 与 `RPT\_MUTUAL\_HOLDNDATE\_DET\_NEW` 又补齐了12/12标的2026Q1参与者/托管行明细。但日度北向变化、beneficial-owner穿透、主动/被动基金分类和终端级订单流仍不可用。东方财富30日资金流日线代理已经覆盖当前核心和观察名单，但它不是完整机构持仓、北向明细或终端级订单流。2026年6月17日进一步复查东方财富沪深港通成交榜接口，能补充部分上榜日成交额和排名，但无法补出受益所有人、全量买卖盘或实时订单流。
 \sourcenote{Flow / positioning evidence pack: HKEX official Stock Connect quarterly + Eastmoney HSGT holding recheck + Eastmoney fund-flow + current public-source recheck. Public proxy aggregation only, not terminal-grade positioning.}
 \end{sourcequalitybox}
+
+\subsection*{北向与长期资金}
+
+北向季度数据与基金重仓出现背离：2026Q1港交所官方季度持股显示沪电（+5067.14万股，占比升至10.07\%）、生益（+2583.95万股）、芯碁（+495.13万股，+3.76个百分点）获北向增持（图表27b-2），而同期公募基金重仓普遍回落（图表25b-2）。这种背离说明长期/被动属性的资金在主题退潮期反向承接，是拥挤度排序中沪电被评为"相对胜宏更稳"、生益虽估值分位最高但筹码结构不算最差的关键依据；同时社保可见持仓序列最长出现在生益（2004Q2–2026Q1，48行，图表28c），佐证材料龙头的长期资金粘性最高。但需要明确这层判断的边界：北向增持可能滞后于重仓回落，或仅反映ETF再平衡而非主动配置，因此它降低的是排序下行斜率，而非消除拥挤风险本身。
 
 \begin{exhibitbox}[图表27: Additional public holder proxies]
 \small
@@ -334,6 +342,8 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Eastmoney \texttt{RPT\_STOCK\_DETAILS\_CHANGE} history; absence of a category row does not prove no holding, only that the public endpoint returned no visible row}
 \end{exhibitbox}
 
+生益的社保可见持仓序列长达22年且当前仍有2026Q1行，说明长期资金对材料龙头的粘性最高，这与其北向季度增持（图表27b-2）方向一致，是拥挤度排序中生益虽估值分位高但筹码结构不算最差的依据之一；相反胜宏2026Q1公开重要机构专题未命中（图表28），长期资金线索最弱，筹码结构主要靠短期杠杆资金支撑。
+
 \begin{exhibitbox}[图表29: Important institution holder details]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}L{2.2cm}X}
@@ -367,6 +377,10 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \end{tabularx}
 \sourcenote{Eastmoney daily amount / turnover where endpoint succeeded, Yahoo close $\times$ volume proxy for failed tickers. Neither source provides order-book depth or terminal-grade liquidity}
 \end{exhibitbox}
+
+\subsection*{杠杆与短期资金}
+
+融资盘、大宗交易、龙虎榜构成短期交易强度三角。胜宏在三项同时最高——融资余额231.73亿元、占流通市值7.77\%（图表29c-2），大宗交易136笔/37.47亿元且120笔折价（图表29d），龙虎榜虽仅上榜2日但单日净买33.32亿元（图表29f）——三者共振指向其是对订单不及预期最敏感的标的：一旦基本面证伪，融资盘平仓与折价大宗转让会同步放大回撤。与之对照，深南融资占比仅0.66\%且近30行净流出-2.64亿元，杠杆拥挤度最低；生益融资余额虽高（42.72亿元）但占流通市值仅1.06\%，杠杆压力温和。这一组证据把拥挤度排序从"持仓结构"延伸到"交易结构"，是后续把胜宏列为最拥挤、深南列为相对温和的第二根支柱。
 
 \begin{exhibitbox}[图表29c: Margin financing and leverage proxy]
 \footnotesize
@@ -451,6 +465,8 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Eastmoney \texttt{RPT\_CSDC\_LIST} and \texttt{RPTA\_APP\_ACCUMDETAILS}. Pledge shares in ratio table are 10k shares and pledge market cap is 10k CNY. Warning/liquidation lines are Eastmoney estimates, not contract terms}
 \end{exhibitbox}
 
+本篮子质押比例普遍低于3\%且多为2020–2021年历史值，治理性质押压力不构成主线风险；与融资盘拥挤（图表29c/29c-2）不同，质押不是当前下行触发器，报告在风险折扣中不给予权重。
+
 \begin{exhibitbox}[图表29f: Dragon-Tiger List abnormal-trading proxy]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{1.2cm}R{1.8cm}R{1.8cm}X}
@@ -501,6 +517,8 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \end{tabularx}
 \sourcenote{Eastmoney \texttt{RPT\_SHARE\_HOLDER\_INCREASE}, 2025-04-21 to 2026-06-15. Net amount is approximate using disclosed average/real/close prices}
 \end{exhibitbox}
+
+公开减持集中在控股股东/大股东——鹏鼎美港实业、生益广新控股、沪电沪士集团均在窗口内净减持，合计净减持代理约64亿元，与基金重仓回落（图表25b-2）方向一致，共同指向核心资产的筹码供给在主题高位松动，是下行风险的微观证据而非短期信号。
 
 \begin{exhibitbox}[图表30: Eastmoney fund-flow proxy]
 \small
@@ -574,6 +592,8 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Tencent archived quote feed five-level bid/ask extraction (snapshot 2026-06-18). Public delayed/post-close Level-1 proxy only; zero ask levels likely reflect limit-up/no-offer state in the archived snapshot and do not substitute for exchange order-book history or terminal order flow.}
 \end{exhibitbox}
 
+多只标的五档卖盘为零、失衡接近1.0（002916/603186/002938均为1.000），在盘后快照中通常对应涨停/无卖盘状态，是当前主题情绪极端的微观证据；但Level-1代理非交易所order-book，仅作情绪温度计，不作为方向信号。
+
 \begin{exhibitbox}[图表30d: Watchlist fund-flow proxy]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{2.0cm}R{2.2cm}R{2.0cm}X}
@@ -594,6 +614,8 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 
 \section{历史价格表现}
 
+过去一年PCB/CCL链条完成了一次教科书式的主题重估——核心五家平均涨幅约+480\%，观察名单多在+200\%至+2000\%（鼎泰高科+2071\%、南亚+865\%、大族数控+730\%），但最大回撤集中在-24\%至-35\%区间（图表31/31b），说明重估过程伴随高波动而非单边上涨。结合多家标的处于一年PE/PB 95–100\%分位（图表31b），当前价格已把AI PCB订单兑现定价为基准情形而非上行情形，因此后续上行需要的是盈利超预期，而下行只需兑现——这是把价格数据翻译成仓位含义的核心so-what。
+
 \begin{exhibitbox}[图表31: Core-name price performance and drawdown]
 \small
 \begin{tabularx}{\textwidth}{L{1.8cm}R{1.6cm}R{1.7cm}R{1.9cm}R{1.9cm}R{1.8cm}X}
@@ -609,6 +631,8 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \end{tabularx}
 \sourcenote{Yahoo Finance adjusted daily chart}
 \end{exhibitbox}
+
+观察名单估值分位更高（多家PE分位100\%、鹏鼎三年PE分位约98.45\%），意味着同样的主题逻辑在弹性标的上已被定价得更满，安全边际低于核心标的——这是后续在拥挤度排序中将弹性观察名单与核心持仓区别对待的价格证据。
 
 \begin{exhibitbox}[图表31b: Watchlist price performance and valuation crowding]
 \footnotesize
@@ -667,3 +691,5 @@ M8/M9价格和交期 & 检验材料瓶颈。 & ASP持续性、成本传导、毛
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
+
+把拥挤度排序与催化日历叠加，得到一个不对称的行动框架：对最拥挤的胜宏与沪电，2026中报收入/毛利和Rubin规格细节是下行触发器——一旦低于已定价的乐观假设，融资盘与分散筹码会放大回撤，应在中报前降低弹性暴露或设置回落加仓价位；对拥挤度温和的深南，融资占比最低（0.66\%）且近期净流出，回撤空间相对可控，可作为基本兑现驱动的核心持仓；对生益（材料主线估值分位最高但融资占比低、北向与社保仍在增持），上行依赖2027E EPS兑现至4.83与卖方上修，需要触发器验证而非现在追高。整章的二级市场结论不是"买卖"，而是：当前价位是风险折扣的来源，仓位弹性应与拥挤度反向，催化证伪后才在更低位重建仓位。需补充说明，拥挤度排序承认了北向季度增持（沪电/生益/芯碁）与基金重仓回落的背离，这层背离使排序确信度存在不确定性——北向增持可能只是滞后反应或ETF再平衡而非主动配置，若后续北向也转向减持，沪电与生益的排序需向下修正；当前排序的有效性以"北向仍在增持"为前提，下一份季度数据是关键验证窗口。
