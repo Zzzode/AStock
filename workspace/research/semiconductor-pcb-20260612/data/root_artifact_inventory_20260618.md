@@ -12,11 +12,11 @@
 |---|---|---:|
 | `completion_audit_manifest.json` | `json` | 3554 |
 | `completion_audit_manifest.md` | `md` | 61703 |
-| `data_room_index.md` | `md` | 65635 |
+| `data_room_index.md` | `md` | 65801 |
 | `external_data_request_templates.md` | `md` | 7252 |
-| `main.pdf` | `pdf` | 1069084 |
-| `main.tex` | `tex` | 3510 |
-| `main_current_text.txt` | `txt` | 306549 |
+| `main.pdf` | `pdf` | 1107223 |
+| `main.tex` | `tex` | 3395 |
+| `main_current_text.txt` | `txt` | 316554 |
 | `missing_data_request_pack.csv` | `csv` | 4039 |
 | `missing_data_request_pack.json` | `json` | 8023 |
 | `missing_data_request_pack.md` | `md` | 14725 |
