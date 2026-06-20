@@ -190,7 +190,7 @@
 | `northbound_ranking_evidence.md` | `md` | True | evidence summary | 1029 |
 | `official_capex_capacity_evidence.md` | `md` | True | evidence summary | 3986 |
 | `official_filing_archive_summary.md` | `md` | True | evidence summary | 1870 |
-| `official_filing_segment_summary.md` | `md` | True | evidence summary | 2768 |
+| `official_filing_segment_summary.md` | `md` | True | evidence summary | 3177 |
 | `official_financials.json` | `json` | False | machine-readable companion | 95874 |
 | `official_financials_summary.md` | `md` | True | evidence summary | 2197 |
 | `official_holder_supplier_summary.md` | `md` | True | evidence summary | 2505 |
@@ -320,8 +320,8 @@
 | `raw_sse_search_shengyi_m9.html` | `html` | False | raw singleton | 18146 |
 | `raw_zhen_ding_finance_en.html` | `html` | False | raw singleton | 129457 |
 | `raw_zhen_ding_finance_tw.html` | `html` | False | raw singleton | 129496 |
-| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 203415 |
-| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 108311 |
+| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 216615 |
+| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 115406 |
 | `report_catalog.md` | `md` | True | evidence summary | 14074 |
 | `report_quality_eval.json` | `json` | False | machine-readable companion | 268 |
 | `report_quality_eval.md` | `md` | True | evidence summary | 286 |
