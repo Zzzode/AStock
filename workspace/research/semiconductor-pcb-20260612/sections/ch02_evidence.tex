@@ -5,19 +5,19 @@
 \begin{exhibitbox}[图表2-1：本报告使用的证据等级与对应语料规模]
 \centering
 \begin{tikzpicture}[
-  level/.style={rectangle, draw=white, minimum width=12.8cm, minimum height=0.82cm, text=white, align=center, font=\small\bfseries},
+  level/.style={rectangle, draw=white, minimum width=7.0cm, minimum height=0.82cm, text=white, align=center, font=\small\bfseries},
   note/.style={font=\scriptsize\color{steelgrey}, align=center}
 ]
-\node[level, fill=riskgreen] (e1) {E1 已确认：公司公告 / 官方披露 \quad（\textbf{168份原始PDF}：官方公告+IR+年报+券商原文）};
-\node[level, fill=accentblue, below=0.12cm of e1, minimum width=11.0cm] (e2) {E2 可引用：原始券商报告 / 明确归因转载 \quad（E2a 国内券商PDF；E2b 海外5家仅Reportify/新浪转载）};
-\node[level, fill=riskamber, below=0.12cm of e2, minimum width=9.0cm] (e3) {E3 可推断：跨来源产业逻辑 \quad（无独立原文支撑的产业框架推断）};
-\node[level, fill=riskred, below=0.12cm of e3, minimum width=7.0cm] (e4) {E4 不可验证：正文不可得 / 传闻 / 弱二手信息 \quad（具名客户传闻登记项）};
-\node[note, below=0.2cm of e4] {E1可进入估值和核心结论；E2用于情景和交叉验证；E3只解释产业逻辑；E4进入传闻隔离和风险提示。};
+\node[level, fill=riskgreen] (e1) {E1 已确认：公司公告 / 官方披露 \quad（\textbf{168份原始PDF}）};
+\node[level, fill=accentblue, below=0.12cm of e1, minimum width=9.0cm] (e2) {E2 可引用：原始券商报告 / 明确归因转载 \quad（E2a 国内券商PDF；E2b 海外5家仅Reportify/新浪转载）};
+\node[level, fill=riskamber, below=0.12cm of e2, minimum width=11.0cm] (e3) {E3 可推断：跨来源产业逻辑 \quad（无独立原文支撑的产业框架推断）};
+\node[level, fill=riskred, below=0.12cm of e3, minimum width=12.8cm] (e4) {E4 不可验证：正文不可得 / 传闻 / 弱二手信息 \quad（具名客户传闻登记项）};
+\node[note, below=0.2cm of e4, text width=13cm] {E1可进入估值和核心结论；E2用于情景和交叉验证；E3只解释产业逻辑；E4进入传闻隔离和风险提示。金字塔自上而下发散，代表证据强度递减、数量与传播噪音递增。};
 \end{tikzpicture}
 \sourcenote{source\_artifact\_inventory\_20260618.md（语料计数）与 named\_customer\_rumor\_registry.md（E4登记项）。}
 \end{exhibitbox}
 
-证据等级直接决定信息用途。比如“沪电股份数通PCB收入”“生益电子项目投资”和“鹏鼎月度收入”属于可审计事实，可以进入财务桥；“Rubin（英伟达下一代AI加速卡平台）供应份额”“Google ASIC订单”如果只有市场传闻或弱二手信息，只能列入待验证线索，不能支撑目标估值。
+证据等级直接决定信息用途。比如”沪电股份数通PCB收入””生益电子项目投资”和”鹏鼎月度收入”属于可审计事实，可以进入财务桥；”Rubin（英伟达下一代AI加速卡平台）供应份额””Google ASIC订单”如果只有市场传闻或弱二手信息，只能列入待验证线索，不能支撑目标估值。
 
 \begin{exhibitbox}[图表2-2：证据等级与投资用途映射]
 \small
@@ -35,6 +35,8 @@ E4 & 传闻隔离、风险提示、后续调研清单。 & 不能支撑推荐、
 \sourcenote{证据治理规则与 ch01/ch12 一致；E2a/E2b 划分依据 global\_broker\_gap\_fallback 与附录来源审计。}
 \end{exhibitbox}
 
+四档分级的核心意义，是把”有没有证据”和”证据能支持什么结论”分开。市场讨论中常见的错误，是用E3级别的产业逻辑直接推导目标价，或者把E4级别的传闻当作已确认催化。本报告的估值、推荐和风险结论全部按上述映射规则产出，读者可以据此反向追溯每一个结论背后的证据强度。接下来的语料看板具体说明本报告实际掌握了哪些材料，以及这些材料的边界在哪里。
+
 \section{语料看板：能支持什么、不能支持什么}
 
 语料覆盖已经能支持一份公开资料口径的行业深度，但还不足以支持付费终端级一致预期或客户平台拆分。下表说明本报告到底拥有哪类材料，以及哪些空白会影响后续结论强度。
@@ -45,7 +47,7 @@ E4 & 传闻隔离、风险提示、后续调研清单。 & 不能支撑推荐、
 \toprule
 \textbf{资料更新至} & 初始语料2026年6月12日；持续刷新至2026年6月18日 & \textbf{资料整理日期} & 2026年6月15--18日 \\
 \textbf{已识别材料} & \textbf{168份原始PDF}（官方公告/IR/年报/券商PDF/H股文件）+ \textbf{466份配套转写文件}（md/txt/json/html，共634份源文件），归档清单见附录；数量不等于证据强度 & \textbf{可用材料} & 官方公告、IR、券商PDF、H股文件和公开数据代理均已入库 \\
-\textbf{完整原文PDF} & 国内券商与公司官方原文PDF已基本覆盖；海外券商（UBS/JPM/Goldman/Citi/HSBC）仅有Reportify/新浪等公开转载/转写正文，原始PDF未取得，详见附录来源审计与global\_broker\_gap\_fallback & \textbf{行情数据} & 腾讯行情刷新12/12价格、市值、PE和PB \\
+\textbf{完整原文PDF} & 国内券商与公司官方原文PDF已基本覆盖核心标的；海外券商（UBS/JPM/Goldman/Citi/HSBC）仅有Reportify/新浪等公开转载/转写正文，原始PDF未取得，详见附录来源审计与global\_broker\_gap\_fallback & \textbf{行情数据} & 腾讯行情刷新12/12核心证据标的价格、市值、PE和PB；扩充观察标的价格取自公开行情快照 \\
 \textbf{一致预期标签} & 公开研究情绪 + 东方财富预测交叉验证 & \textbf{主要限制} & 无具名客户收入、终端级持仓流和客户/平台自下而上EPS \\
 \bottomrule
 \end{tabularx}

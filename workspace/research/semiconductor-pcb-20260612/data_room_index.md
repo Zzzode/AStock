@@ -331,31 +331,34 @@ This index maps every collected evidence artifact to its role in the research re
 
 | Directory | File count | Purpose |
 |---|---:|---|
-| `workspace/research/semiconductor-pcb-20260612/rendered/current-20260618` | 8 | Current rendered PDF page samples for visual review refresh |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-0323` | 71 | Historical full 71-page PDF raster render after the 2026-06-18 03:23 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-0913` | 71 | Historical full 71-page PDF raster render after the 2026-06-18 09:13 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1219` | 72 | Historical full 72-page PDF raster render after the 2026-06-18 12:19 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1315` | 73 | Historical full 73-page PDF raster render after the 2026-06-18 13:15 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1424` | 73 | Historical full 73-page PDF raster render after the 2026-06-18 14:24 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1438` | 73 | Historical full 73-page PDF raster render after the 2026-06-18 14:38 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1448` | 73 | Historical full 73-page PDF raster render after the 2026-06-18 14:48 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1459` | 74 | Historical full 74-page PDF raster render after the 2026-06-18 14:59 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1513` | 74 | Historical full 74-page PDF raster render after the 2026-06-18 15:13 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1526` | 74 | Historical full 74-page PDF raster render after the 2026-06-18 15:26 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1540` | 74 | Historical full 74-page PDF raster render after the 2026-06-18 15:40 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1605` | 74 | Historical full 74-page PDF raster render after the 2026-06-18 16:05 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1618` | 75 | Historical full 75-page PDF raster render after the 2026-06-18 16:18 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1634` | 75 | Historical full 75-page PDF raster render after the 2026-06-18 16:34 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1652` | 76 | Historical full 76-page PDF raster render after the 2026-06-18 16:52 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260619-2138` | 84 | Historical full 84-page PDF raster render after the 2026-06-19 21:43 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0115` | 89 | Historical full 89-page PDF raster render after the 2026-06-20 01:15 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0224` | 96 | Historical full 96-page PDF raster render after the 2026-06-20 02:24 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0244` | 101 | Historical full 101-page PDF raster render after the 2026-06-20 02:44 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0346` | 103 | Historical full 103-page PDF raster render after the 2026-06-20 03:46 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1301` | 106 | Historical full 106-page PDF raster render after the 2026-06-20 13:01 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1419` | 111 | Historical full 111-page PDF raster render after the 2026-06-20 14:19 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1515` | 114 | Historical full 114-page PDF raster render after the 2026-06-20 15:15 rebuild |
-| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1532` | 118 | Current full 118-page PDF raster render after the 2026-06-20 15:32 rebuild |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-2334` | 118 | Current full 118-page PDF raster render
+`workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-2144` | 130 | Historical full 130-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1819` | 128 | Historical full 128-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1532` | 118 | Historical full 118-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1515` | 114 | Historical full 114-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1419` | 111 | Historical full 111-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-1301` | 106 | Historical full 106-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0346` | 103 | Historical full 103-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0244` | 101 | Historical full 101-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0224` | 96 | Historical full 96-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260620-0115` | 89 | Historical full 89-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260619-2138` | 84 | Historical full 84-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1652` | 76 | Historical full 76-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1634` | 75 | Historical full 75-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1618` | 75 | Historical full 75-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1605` | 74 | Historical full 74-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1540` | 74 | Historical full 74-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1526` | 74 | Historical full 74-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1513` | 74 | Historical full 74-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1459` | 74 | Historical full 74-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1448` | 73 | Historical full 73-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1438` | 73 | Historical full 73-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1424` | 73 | Historical full 73-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1315` | 73 | Historical full 73-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-1219` | 72 | Historical full 72-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-0913` | 71 | Historical full 71-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/full-20260618-0323` | 71 | Historical full 71-page PDF raster render |
+| `workspace/research/semiconductor-pcb-20260612/rendered/current-20260618` | 8 | Current rendered PDF page samples for visual review |
 
 ## Auxiliary Tool Artifacts
 

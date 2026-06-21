@@ -2,11 +2,24 @@
 
 **Run date:** 2026-06-18
 
-**Purpose:** Account for every top-level file under `data/`.
-
-**Total top-level data files:** 368
+**Top-level data files:** 384
 
 **Individually referenced in data-room index:** 232
+
+**Accounted by inventory:** 368
+
+**Purpose:** Account for every top-level file under data/.
+
+**Boundary:** File accounting only; not substantive completion of non-public data requirements.
+
+## By Type
+
+- **html:** 27
+- **json:** 147
+- **md:** 209
+- **txt:** 1
+
+## Files
 
 | File | Type | Main index row | Category | Size bytes |
 |---|---|---|---|---:|
@@ -34,7 +47,8 @@
 | `cmbi_citi_hsbc_probe_20260616.md` | `md` | True | evidence summary | 1281 |
 | `cmbi_sector_global_evidence.md` | `md` | True | evidence summary | 2342 |
 | `core_artifact_checksums_20260618.json` | `json` | True | machine-readable companion | 2623 |
-| `core_artifact_checksums_20260618.md` | `md` | True | evidence summary | 1858 |
+| `core_artifact_checksums_20260618.md` | `md` | True | evidence summary | 1886 |
+| `coresource_688630_evidence.md` | `md` | True | evidence summary | 13110 |
 | `current_cninfo_interaction_sweep_20260618.json` | `json` | True | machine-readable companion | 2991 |
 | `current_cninfo_interaction_sweep_20260618.md` | `md` | True | evidence summary | 5764 |
 | `current_customer_supplier_list_recheck_20260618.json` | `json` | True | machine-readable companion | 4210 |
@@ -53,8 +67,10 @@
 | `customer_side_victory_giant_probe_20260616.md` | `md` | True | evidence summary | 3144 |
 | `customer_side_victory_giant_recheck_20260617.md` | `md` | True | evidence summary | 4422 |
 | `customs_bol_probe_20260616.md` | `md` | True | evidence summary | 2063 |
-| `data_room_index_integrity_audit_20260618.json` | `json` | True | machine-readable companion | 1598 |
+| `data_room_index_integrity_audit_20260618.json` | `json` | True | machine-readable companion | 1597 |
 | `data_room_index_integrity_audit_20260618.md` | `md` | True | evidence summary | 1696 |
+| `dongcai_601208_evidence.md` | `md` | True | evidence summary | 10922 |
+| `dongshan_002384_evidence.md` | `md` | True | evidence summary | 8211 |
 | `eastmoney_block_trade_evidence.json` | `json` | False | machine-readable companion | 6816 |
 | `eastmoney_block_trade_evidence.md` | `md` | True | evidence summary | 1793 |
 | `eastmoney_forecast_consensus_evidence.json` | `json` | False | machine-readable companion | 6593 |
@@ -105,6 +121,7 @@
 | `flow_positioning_evidence.json` | `json` | False | machine-readable companion | 677 |
 | `flow_positioning_evidence.md` | `md` | True | evidence summary | 1482 |
 | `forecast_range_analysis.md` | `md` | True | evidence summary | 4163 |
+| `foxconn_industrial_601138_evidence.md` | `md` | True | evidence summary | 7951 |
 | `full_report_archive_summary.md` | `md` | True | evidence summary | 3222 |
 | `full_report_model_summary.md` | `md` | True | evidence summary | 5347 |
 | `fund_holder_full_type_recheck_20260617.json` | `json` | True | machine-readable companion | 44575 |
@@ -129,6 +146,8 @@
 | `historical_market_summary.md` | `md` | True | evidence summary | 1199 |
 | `hkcc_current_quarter_proxy.md` | `md` | True | evidence summary | 1825 |
 | `hkex_stock_connect_quarterly_evidence.md` | `md` | True | evidence summary | 4025 |
+| `hongchang_603002_evidence.md` | `md` | True | evidence summary | 14326 |
+| `honghe_603256_evidence.md` | `md` | True | evidence summary | 11394 |
 | `hshare_anonymous_customer_time_series.md` | `md` | True | evidence summary | 3895 |
 | `hshare_capacity_utilization_evidence.md` | `md` | True | evidence summary | 3037 |
 | `hshare_customer_relationship_evidence.md` | `md` | True | evidence summary | 3077 |
@@ -156,10 +175,14 @@
 | `ir_activity_catalog.md` | `md` | False | evidence summary | 852 |
 | `ir_platform_chain_summary.md` | `md` | True | evidence summary | 2774 |
 | `ir_record_archive_summary.md` | `md` | True | evidence summary | 1164 |
+| `jinan_002636_evidence.md` | `md` | True | evidence summary | 14738 |
+| `jingwang_603228_evidence.md` | `md` | True | evidence summary | 11470 |
 | `jpm_shenghong_ocr_product_model_20260617.json` | `json` | True | machine-readable companion | 2751 |
 | `jpm_shenghong_ocr_product_model_20260617.md` | `md` | True | evidence summary | 2272 |
 | `json_validity_audit_20260618.json` | `json` | True | machine-readable companion | 3990 |
 | `json_validity_audit_20260618.md` | `md` | True | evidence summary | 354 |
+| `jushi_600176_evidence.md` | `md` | True | evidence summary | 18303 |
+| `kingboard_01888_evidence.md` | `md` | True | evidence summary | 10228 |
 | `latest_market_refresh_audit.md` | `md` | True | evidence summary | 3862 |
 | `liquidity_turnover_proxy.json` | `json` | False | machine-readable companion | 5839 |
 | `liquidity_turnover_proxy.md` | `md` | True | evidence summary | 2168 |
@@ -184,6 +207,8 @@
 | `named_customer_rumor_registry.md` | `md` | True | evidence summary | 2016 |
 | `named_platform_customer_revenue_split_confirmation_pack_20260618.json` | `json` | True | machine-readable companion | 7842 |
 | `named_platform_customer_revenue_split_confirmation_pack_20260618.md` | `md` | True | evidence summary | 6012 |
+| `new_names_holdings_proxy_20260620.json` | `json` | True | evidence summary | 6148 |
+| `new_names_holdings_proxy_20260620.md` | `md` | True | evidence summary | 10209 |
 | `northbound_individual_history_evidence.json` | `json` | False | machine-readable companion | 22345 |
 | `northbound_individual_history_evidence.md` | `md` | True | evidence summary | 2144 |
 | `northbound_ranking_evidence.json` | `json` | False | machine-readable companion | 646 |
@@ -320,15 +345,16 @@
 | `raw_sse_search_shengyi_m9.html` | `html` | False | raw singleton | 18146 |
 | `raw_zhen_ding_finance_en.html` | `html` | False | raw singleton | 129457 |
 | `raw_zhen_ding_finance_tw.html` | `html` | False | raw singleton | 129496 |
-| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 244201 |
-| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 130232 |
+| `rendered_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 330500 |
+| `rendered_artifact_inventory_20260618.md` | `md` | True | evidence summary | 182964 |
 | `report_catalog.md` | `md` | True | evidence summary | 14074 |
 | `report_quality_eval.json` | `json` | False | machine-readable companion | 268 |
 | `report_quality_eval.md` | `md` | True | evidence summary | 286 |
 | `reverse_valuation_requirement_matrix_20260618.json` | `json` | True | machine-readable companion | 3891 |
 | `reverse_valuation_requirement_matrix_20260618.md` | `md` | True | evidence summary | 2290 |
+| `rongda_300576_evidence.md` | `md` | True | evidence summary | 14213 |
 | `root_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 2183 |
-| `root_artifact_inventory_20260618.md` | `md` | True | evidence summary | 1257 |
+| `root_artifact_inventory_20260618.md` | `md` | True | evidence summary | 1237 |
 | `shareholder_count_quarterly_bridge.md` | `md` | True | evidence summary | 1929 |
 | `shengyi_sse_interaction_probe.md` | `md` | True | evidence summary | 3117 |
 | `source_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 99898 |
@@ -346,10 +372,11 @@
 | `tencent_realtime_market_snapshot_20260616.md` | `md` | True | evidence summary | 2368 |
 | `tencent_realtime_market_snapshot_20260618.json` | `json` | True | machine-readable companion | 8093 |
 | `tencent_realtime_market_snapshot_20260618.md` | `md` | True | evidence summary | 2500 |
+| `tongguan_301217_evidence.md` | `md` | True | evidence summary | 13528 |
 | `top_customer_supplier_detail.json` | `json` | False | machine-readable companion | 3915 |
 | `top_customer_supplier_detail.md` | `md` | False | evidence summary | 1156 |
 | `top_level_data_artifact_inventory_20260618.json` | `json` | True | machine-readable companion | 71586 |
-| `top_level_data_artifact_inventory_20260618.md` | `md` | True | evidence summary | 34226 |
+| `top_level_data_artifact_inventory_20260618.md` | `md` | True | evidence summary | 34430 |
 | `upstream_supplier_list_evidence_20260618.json` | `json` | True | machine-readable companion | 3260 |
 | `upstream_supplier_list_evidence_20260618.md` | `md` | True | evidence summary | 4857 |
 | `verified_financials.md` | `md` | False | evidence summary | 2310 |
@@ -378,19 +405,5 @@
 | `xingsen_eps_refresh_20260616.md` | `md` | True | evidence summary | 1953 |
 | `zhen_ding_monthly_revenue_evidence.md` | `md` | True | evidence summary | 1381 |
 | `zhen_ding_parent_official_evidence.md` | `md` | True | evidence summary | 5468 |
-| `dongshan_002384_evidence.md` | `md` | True | evidence summary | 8211 |
-| `foxconn_industrial_601138_evidence.md` | `md` | True | evidence summary | 7951 |
-| `honghe_603256_evidence.md` | `md` | True | evidence summary | 11394 |
-| `dongcai_601208_evidence.md` | `md` | True | evidence summary | 10922 |
-| `coresource_688630_evidence.md` | `md` | True | evidence summary | 13110 |
-| `jingwang_603228_evidence.md` | `md` | True | evidence summary | 11470 |
-| `zhongji_300308_evidence.md` | `md` | True | evidence summary | 12663 |
 | `zhongcai_002080_evidence.md` | `md` | True | evidence summary | 16958 |
-| `kingboard_01888_evidence.md` | `md` | True | evidence summary | 10228 |
-| `tongguan_301217_evidence.md` | `md` | True | evidence summary | 13528 |
-| `rongda_300576_evidence.md` | `md` | True | evidence summary | 14213 |
-| `jinan_002636_evidence.md` | `md` | True | evidence summary | 14738 |
-| `jushi_600176_evidence.md` | `md` | True | evidence summary | 18303 |
-| `hongchang_603002_evidence.md` | `md` | True | evidence summary | 14326 |
-| `new_names_holdings_proxy_20260620.md` | `md` | True | evidence summary | 10209 |
-| `new_names_holdings_proxy_20260620.json` | `json` | True | evidence summary | 6148 |
+| `zhongji_300308_evidence.md` | `md` | True | evidence summary | 12663 |

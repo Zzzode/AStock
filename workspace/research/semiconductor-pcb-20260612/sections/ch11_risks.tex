@@ -20,17 +20,24 @@
     \draw[fill=\fillc, draw=white] (\x*2.2,\y*1.45) rectangle ++(2.2,1.45);
   }
 }
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,3.6) {AI资本开支\\放缓};
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,2.18) {估值\\拥挤};
+% 高概率/高影响
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,3.95) {AI资本开支\\放缓};
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (5.5,3.25) {估值\\拥挤};
+% 中概率/高影响
 \node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,3.6) {技术路线\\迁移};
-\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,2.18) {产能\\过剩};
+% 中概率/中影响
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,2.5) {产能\\过剩};
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (3.3,1.85) {客户\\集中度};
+% 低概率/高影响
+\node[align=center, font=\scriptsize\bfseries, text width=2cm] at (1.1,3.6) {地缘政治\\与出口管制};
+% 低概率/中影响
 \node[align=center, font=\scriptsize\bfseries, text width=2cm] at (1.1,2.18) {来源\\质量};
 \end{tikzpicture}
 \sourcenote{\texttt{risk\_framework.md}}
-\qualitynote{风险定位基于风险框架的 S/A 级分类与触发概率判断：AI资本开支放缓与估值拥挤落在高概率/高影响，技术路线迁移与产能过剩落在中概率/中高影响，来源质量落在低概率/中影响。本图风险集合与图表11-2触发矩阵口径一致（均覆盖AI资本开支、技术路线、产能过剩、估值拥挤、客户集中度、地缘政治与来源质量七项）。}
+\qualitynote{风险定位基于风险框架的 S/A 级分类与触发概率判断：AI资本开支放缓与估值拥挤落在高概率/高影响（S级，同格2项），技术路线迁移落在中概率/高影响（S级），产能过剩与客户集中度落在中概率/中影响（S/A级，同格2项），地缘政治与出口管制落在低概率/高影响（A级），来源质量落在低概率/中影响（A级）。热力图在5个象限格中共呈现7项风险，与图表11-2触发矩阵口径完全一致（均覆盖AI资本开支、估值拥挤、技术路线、产能过剩、客户集中度、地缘政治、来源质量七项），读者不应以象限格数推断风险项数。} % FIX: 明确7项风险分布于5个象限格中，澄清"5格≠5项风险"的视觉误解，与触发矩阵7项口径一致
 \end{exhibitbox}
 
-风险热力图显示，资本开支放缓和估值拥挤是最直接的组合风险，技术路线迁移和产能过剩是中期风险，来源质量则决定报告本身能否支持强结论。多风险同时触发时，优先降低高弹性标的暴露，再调整单点假设。
+风险热力图显示，资本开支放缓和估值拥挤是最直接的组合风险（高概率/高影响，S级），技术路线迁移是中期结构性风险（中概率/高影响，S级），产能过剩与客户集中度是产业链层的运营风险（中概率/中影响，S/A级），地缘政治与出口管制是尾部风险（低概率/高影响，A级），来源质量则决定报告本身能否支持强结论（低概率/中影响，A级）。多风险同时触发时，优先降低高弹性标的暴露，再调整单点假设。
 
 \section{风险触发矩阵}
 
