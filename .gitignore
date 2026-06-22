@@ -61,6 +61,16 @@ coverage/
 *.bcf
 *.run.xml
 
+# LaTeX debug probes (临时编译探针，非报告源码)
+test_*.tex
+test_*.pdf
+textwidth_check.*
+
+# Runtime / scratch (运行时产物与临时数据，不入库)
+.claude/worktrees/
+data/sessions/
+workspace/.agents
+
 # Research rendered PDF rasters: only the current full render is tracked.
 # Historical full-* dirs stay on disk for audit but are gitignored to bound repo growth.
 workspace/research/*/rendered/full-*/
