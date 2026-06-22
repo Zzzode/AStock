@@ -1,0 +1,764 @@
+% 第八章 投资配置建议
+
+\chapter{投资配置建议}
+
+本章基于"业绩验证—产业映射—政策加持—估值持仓"四维度交叉验证框架的研究结论，结合板块景气度、预期差幅度、估值安全边际和催化剂可见性，构建\textbf{三层配置体系（核心组合60\% + 卫星组合30\% + 观察池10\%）}，明确各层级标的名单、板块权重与个股仓位建议，并给出行业偏离度与调仓触发条件，为投资者提供可直接落地的配置方案。
+
+\textbf{三层配置架构总览}：核心组合聚焦高确定性预期差标的（3大板块、9只标的、占权益仓位60\%），卫星组合布局景气边际改善赛道（3大板块、7只标的、占权益仓位30\%），观察池跟踪潜力反转与前沿主题标的（10大方向、30+只标的、占权益仓位10\%）。三层之间可根据景气度变化动态调仓，浮动区间$\pm{}10\%$。
+
+\begin{keyinsight}[仓位换算方法]
+本章表格中"建议仓位"均为\textbf{对应层级内部的权重}。换算为权益总仓位的方法为：
+核心组合标的：总仓位 = 建议仓位 $\times$ 60\%（核心系数）
+卫星组合标的：总仓位 = 建议仓位 $\times$ 30\%（卫星系数）
+观察池标的：总仓位 = 建议仓位 $\times$ 10\%（观察系数）
+
+\noindent 示例：核心组合中某标的建议仓位为4--5\%，则其占权益总仓位的比例为 2.4--3.0\%。
+\end{keyinsight}
+
+\section{资产配置矩阵：按风险收益特征划分的三层配置策略}
+
+基于本报告对A股120+细分板块的景气度扫描与预期差识别结果，我们按照"确定性—弹性—催化时点"三维度将标的划分为三个配置层级，形成"核心+卫星+观察"的三层配置矩阵。该矩阵的核心逻辑是\textbf{将仓位权重与业绩确定性成正比、与估值拥挤度成反比}，在控制组合波动率的前提下最大化预期差收益。
+
+\begin{exhibitbox}[表8-1：三层资产配置矩阵]
+\centering
+\small
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.0cm} L{1.6cm} X L{2.0cm} L{2.2cm}}
+\toprule
+\textbf{配置层级} & \textbf{仓位占比} & \textbf{核心特征} & \textbf{预期年化收益} & \textbf{最大回撤容忍} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{核心组合} & \textbf{60\%} & 高景气度已验证、预期差显著、估值合理或偏低、业绩确定性强、下行风险可控 & 25--35\% & 15--20\% \\
+\rowcolor{accentblue!8}
+\textbf{卫星组合} & \textbf{30\%} & 景气度边际改善、中周期拐点临近、左侧布局窗口、估值具备安全边际 & 30--50\% & 25--30\% \\
+\rowcolor{riskamber!8}
+\textbf{观察池} & \textbf{10\%} & 长期逻辑清晰但短期催化未现、需等待验证信号、潜在弹性大但不确定性高 & 40--80\%* & 35--40\% \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。*观察池预期收益为乐观情景下的弹性估算，不构成盈利预测；实际收益高度依赖催化兑现时点与幅度}
+\end{exhibitbox}
+
+三层配置体系的设计遵循以下原则：
+
+\vspace{0.2em}
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{确定性原则}：核心组合标的必须同时满足"业绩验证+产业映射+政策加持+估值合理"四维共振，任意一维存在明显瑕疵的标的不得进入核心组合。
+\item \textbf{分散化原则}：单一板块在核心组合中的占比不超过25%，单一个股在组合中的占比不超过8%，避免过度集中风险。
+\item \textbf{动态再平衡原则}：每季度根据景气度变化与估值偏离度调整三层仓位比例，核心组合与卫星组合之间可灵活切换，$\pm{}10\%$ 的浮动区间。
+\item \textbf{左侧布局原则}：卫星组合重点配置处于景气周期底部、边际改善信号初现的板块，以时间换空间，获取周期反转的超额收益。
+\end{enumerate}
+
+\begin{exhibitbox}[图8-1：三层配置矩阵——"拥挤度—兑现度"二维视角]
+\centering
+\vspace{0.2cm}
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[scale=1.7]
+% 坐标范围
+\def\xmax{8}
+\def\ymax{6}
+
+% 四象限背景
+\fill[riskgreen!12] (0, \ymax/2) rectangle (\xmax/2, \ymax); % 低拥挤+高兑现：核心
+\fill[accentblue!8] (\xmax/2, \ymax/2) rectangle (\xmax, \ymax); % 高拥挤+高兑现：卫星
+\fill[riskamber!8] (0, 0) rectangle (\xmax/2, \ymax/2); % 低拥挤+低兑现：观察
+\fill[riskred!10] (\xmax/2, 0) rectangle (\xmax, \ymax/2); % 高拥挤+低兑现：陷阱
+
+% 坐标轴
+\draw[thick, navy, ->] (0,0) -- (\xmax+0.5, 0) node[right, font=\small] {拥挤度 $\rightarrow$};
+\draw[thick, navy, ->] (0,0) -- (0, \ymax+0.5) node[above, font=\small] {景气兑现度 $\rightarrow$};
+
+% 中轴虚线
+\draw[dashed, steelgrey] (\xmax/2, 0) -- (\xmax/2, \ymax);
+\draw[dashed, steelgrey] (0, \ymax/2) -- (\xmax, \ymax/2);
+
+% 象限标签
+\node[font=\small\bfseries, color=riskgreen] at (\xmax/4, \ymax*0.82) {明星型·核心配置};
+\node[font=\tiny, color=steelgrey, align=center, text width=4.8cm] at (\xmax/4, \ymax*0.68) {功率半导体\\电力公用事业\\智驾链零部件};
+\node[font=\tiny, color=riskgreen] at (\xmax/4, \ymax*0.55) {仓位 60\%};
+
+\node[font=\small\bfseries, color=accentblue] at (\xmax*0.75, \ymax*0.82) {博弈型·卫星配置};
+\node[font=\tiny, color=steelgrey, align=center, text width=4.8cm] at (\xmax*0.75, \ymax*0.68) {半导体设备\\医疗器械（高值）\\储能};
+\node[font=\tiny, color=accentblue] at (\xmax*0.75, \ymax*0.55) {仓位 30\%};
+
+\node[font=\small\bfseries, color=riskamber] at (\xmax/4, \ymax*0.32) {潜力型·观察池};
+\node[font=\tiny, color=steelgrey, align=center, text width=4.8cm] at (\xmax/4, \ymax*0.18) {动力电池龙头\\创新药与CXO\\人形机器人\\核心板块延伸标的};
+\node[font=\tiny, color=riskamber] at (\xmax/4, \ymax*0.06) {仓位 10\%};
+
+\node[font=\small\bfseries, color=riskred] at (\xmax*0.75, \ymax*0.32) {陷阱型·建议回避};
+\node[font=\tiny, color=steelgrey, align=center, text width=4.8cm] at (\xmax*0.75, \ymax*0.18) {6G、低空经济\\卫星互联网\\纯主题概念股};
+
+% 坐标轴刻度
+\node[below, font=\tiny, color=steelgrey] at (0,0) {低};
+\node[below, font=\tiny, color=steelgrey] at (\xmax/2, 0) {中};
+\node[below, font=\tiny, color=steelgrey] at (\xmax, 0) {高};
+\node[left, font=\tiny, color=steelgrey] at (0,0) {低};
+\node[left, font=\tiny, color=steelgrey] at (0, \ymax/2) {中};
+\node[left, font=\tiny, color=steelgrey] at (0, \ymax) {高};
+
+\end{tikzpicture}%
+}
+\vspace{0.2cm}
+\sourcenote{本研究团队构建（示意图）。拥挤度综合估值分位、基金持仓、交易拥挤度；景气兑现度综合业绩验证、产业映射、政策加持三维度评分}
+\end{exhibitbox}
+
+从"拥挤度—兑现度"二维矩阵看，\textbf{明星型象限}（高兑现+低拥挤）是配置价值最高的区域，构成核心组合的主体；\textbf{博弈型象限}（高兑现+高拥挤）需精选个股、控制仓位，纳入卫星组合；\textbf{潜力型象限}（低兑现+低拥挤）适合左侧布局但需严格控制仓位，纳入观察池；\textbf{陷阱型象限}（低兑现+高拥挤）是价值陷阱高发区，建议回避。
+
+\begin{keyinsight}[三层配置的核心逻辑]
+三层配置体系的本质是"用确定性换仓位、用时间换弹性"。核心组合赚的是业绩兑现的钱，胜率高、赔率适中；卫星组合赚的是预期修复的钱，胜率中等、赔率较高；观察池赚的是认知差的钱，胜率低、赔率高。三者组合可以在不同市场环境下都保持收益来源的多样性，避免单一风格暴露导致的大幅回撤。
+\end{keyinsight}
+
+\section{核心组合（60\%）：高确定性预期差标的}
+
+核心组合是整个配置的压舱石，占权益仓位的60\%。入选标的需同时满足以下条件：（1）景气度评分$\geq{}$80分（满分100）；（2）预期差幅度$\geq{}20\%$（市场一致预期 vs 产业实际）；（3）估值处于历史50\%分位以下；（4）未来12个月内有明确可验证的催化因素；（5）下行风险$\leq{}20\%$。
+
+我们从7大预期差板块中筛选出3个高确定性板块作为核心配置方向，合计覆盖9只标的。三大板块内部权重：功率半导体20--25\%、电力公用事业15--20\%、智驾链零部件15--20\%。核心组合坚持"少而精"原则——\textbf{单一板块仅保留2--3只最具确定性的龙头，避免同赛道beta重复稀释alpha}，使首推标的的单只总仓位可达4--5\%，真正以重仓表达研究信念。被剔除的同赛道标的（如华润微、新洁能、华电国际、保隆科技）并非不看好，而是转入观察池跟踪，待业绩验证或估值更具安全边际时再行升级。
+
+\subsection{超配方向一：功率半导体（核心权重20--25\%）}
+
+功率半导体是本报告最看好的板块，同时具备AI算力革命和能源转型两大长期成长逻辑，叠加国产替代纵深推进和行业周期复苏，四重共振下业绩确定性和预期差幅度均居各板块之首。
+
+\textbf{核心逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item AI服务器电源功率半导体价值量3--6倍提升，GaN VRM加速渗透，2026年AI功率半导体市场增速预计达45--55%
+\item 新能源车销量回暖+车规级国产替代加速，IGBT/SiC车规级需求增速预计达25--30%
+\item 行业库存去化接近尾声，2026Q3有望确认周期底部，2026H2进入复苏通道
+\item 当前板块估值处于历史35--40%分位，相对于半导体设备/设计等其他细分赛道估值折价明显
+\end{itemize}
+
+\textbf{核心标的}：时代电气（IDM+车规IGBT/SiC，估值洼地，首推）、扬杰科技（分立器件IDM龙头，盈利稳健）、斯达半导（IGBT国产龙头，车规弹性）。
+
+\textbf{未纳入核心组合的同赛道标的}（转入观察池）：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{华润微}（688396）：全品类IDM平台，但盈利能力偏弱（ROE仅2.9\%、PE 117x），估值消化压力大；与时代电气（车规IGBT）、扬杰科技（分立器件IDM）业务高度重叠，同板块第三只以后边际贡献递减，故核心仓位仅保留两只"买入"+一只弹性标的。
+\item \textbf{新洁能}（605111）：MOS设计龙头，但Fabless模式依赖代工、周期弹性大而确定性弱；AI服务器弹性已由斯达半导（IGBT）部分覆盖，核心仓位聚焦IDM与车规龙头更具确定性，待AI功率器件订单兑现再升级。
+\end{itemize}
+
+\subsection{超配方向二：电力公用事业（核心权重15--20\%）}
+
+电力公用事业是市场认知偏差最大的板块之一。市场普遍将其视为低增长、高股息的防御性板块，但实际上AI用电增量和电价机制改革正在从根本上改变行业的盈利模式和增长曲线。
+
+\textbf{核心逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item AI数据中心用电需求爆发，2026年国内算力用电增量预计达500--800亿千瓦时，占全社会用电增量的30%以上
+\item 电价机制改革持续推进，容量电价+现货市场+需求侧响应多维发力，火电盈利中枢系统性抬升
+\item 煤炭价格中枢下移，火电成本端持续改善，2026年火电板块业绩增速预计达15--20%
+\item 当前板块股息率普遍在4--6%，估值处于历史30%分位以下，具备较高安全边际
+\end{itemize}
+
+\textbf{核心标的}：华能国际（火电龙头+AI区位优势，首推）、国电电力（煤电一体+新能源转型）、长江电力（水电压舱石+低波动）。
+
+\textbf{未纳入核心组合的同赛道标的}（转入观察池）：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{华电国际}（600027）：与华能国际同为火电龙头，煤价下行+电价改革逻辑高度同质；保留华能国际（装机规模更大、AI数据中心区位更优、弹性更强）即可代表火电重估逻辑，第二只火电标的构成冗余，待其新能源转型或盈利弹性显著超预期再升级。
+\end{itemize}
+
+\subsection{超配方向三：智驾链零部件（核心权重15--20\%）}
+
+智驾链零部件是汽车电子领域景气度最高、预期差最大的细分赛道。L3/L4渗透率拐点临近，产业链各环节价值量显著提升，而市场对智能化的认知仍停留在"概念"阶段，业绩兑现的预期差显著。
+
+\textbf{核心逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item L2+向L3/L4跨越，单车智驾硬件价值量从3,000--5,000元提升至10,000--20,000元，增长2--4倍
+\item 2026年L3级智驾渗透率预计从2025年的8%提升至18%，进入S型曲线加速期
+\item 国产智驾方案（华为、小鹏、理想等）竞争力持续提升，带动本土供应链放量
+\item 板块经过2025年调整，估值回落至历史40%分位左右，业绩增长与估值匹配度改善
+\end{itemize}
+
+\textbf{核心标的}：德赛西威（智能座舱+智驾域控制器龙头，首推）、伯特利（线控制动龙头）、经纬恒润（智驾算法+域控制器）。
+
+\textbf{未纳入核心组合的同赛道标的}（转入观察池）：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{保隆科技}（603197）：传感器+空气悬架受益智驾，但智驾核心alpha集中在域控（德赛西威）与线控执行（伯特利）；保隆更偏零部件弹性、客户结构分散，护城河与业绩确定性弱于前三，待空气悬架放量兑现再升级。
+\end{itemize}
+
+\begin{exhibitbox}[表8-2：核心组合推荐标的一览]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.8cm} L{1.7cm} C{1.4cm} C{1.2cm} C{1.5cm} X}
+\toprule
+\textbf{板块} & \textbf{公司} & \textbf{代码} & \textbf{评级} & \textbf{建议仓位} & \textbf{核心逻辑} \\
+\midrule
+\rowcolor{riskgreen!5}
+& 时代电气 & 688187 & \textbf{买入} & 5--6\% & IDM+车规IGBT/SiC，估值洼地，盈亏比最优 \\
+\rowcolor{riskgreen!5}
+& 扬杰科技 & 300373 & \textbf{买入} & 4--5\% & 分立器件IDM龙头，盈利稳健，SiC弹性大 \\
+\rowcolor{riskgreen!5}
+\multirow{-3}{=}{\textbf{功率半导体}} & 斯达半导 & 603290 & 增持 & 4--5\% & IGBT国产龙头，车规级领先 \\
+\midrule
+\rowcolor{riskgreen!5}
+& 华能国际 & 600011 & \textbf{买入} & 5--6\% & 火电龙头，AI区位优势显著 \\
+\rowcolor{riskgreen!5}
+& 国电电力 & 600795 & 增持 & 4--5\% & 煤电一体，新能源转型加速 \\
+\rowcolor{riskgreen!5}
+\multirow{-3}{=}{\textbf{电力公用事业}} & 长江电力 & 600900 & 增持 & 3--4\% & 水电压舱石，股息率稳定 \\
+\midrule
+\rowcolor{riskgreen!5}
+& 德赛西威 & 002920 & \textbf{买入} & 5--6\% & 智能座舱+智驾域控双龙头 \\
+\rowcolor{riskgreen!5}
+& 伯特利 & 603596 & 增持 & 4--5\% & 线控制动龙头，智驾增量明确 \\
+\rowcolor{riskgreen!5}
+\multirow{-3}{=}{\textbf{智驾链零部件}} & 经纬恒润 & 688326 & 增持 & 3--4\% & 智驾算法+域控全栈能力 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.3em}
+\sourcenote{本研究团队整理。\textbf{仓位说明}：表中"建议仓位"为核心组合内部权重，换算为权益总仓位需乘以60\%核心系数。示例：5--6\%核心仓位 $\approx$ 3.0--3.6\%总仓位。核心组合精简至9只标的，首推标的（时代电气/华能国际/德赛西威）单只总仓位达3--3.6\%，以重仓表达研究信念。评级依据：业绩确定性、估值安全边际、催化剂可见度三维综合评分。华润微、新洁能、华电国际、保隆科技转入观察池，理由详见各方向正文}
+\end{exhibitbox}
+
+\section{卫星组合（30\%）：景气边际改善标的}
+
+卫星组合占权益仓位的30\%，聚焦于景气度边际改善、处于周期底部但拐点临近的板块。入选标准：（1）景气度评分60--80分且环比改善；（2）预期差幅度10--20\%；（3）估值处于历史30--50\%分位；（4）未来6--12个月可能出现催化验证。\textbf{卫星组合仅纳入"增持"及以上评级标的}，"中性"评级标的（芯源微、南微医学、科华数据）因信念强度不足转入观察池，以保证卫星仓位的弹性与确定性。
+
+卫星组合包含3大板块共7只标的，内部权重：半导体设备30--35\%、医疗器械25--30\%、储能20--25\%。
+
+\subsection{配置方向一：半导体设备（卫星权重30--35\%）}
+
+半导体设备处于国产替代深化与周期复苏共振的关键节点。设备国产化率已从2023年的15--20\%提升至28--32\%，但与70\%+的长期目标相比仍有2--3倍替代空间。大基金三期落地为板块提供重要催化。
+
+\textbf{核心逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 国产替代进入深水区，大基金三期落地，设备需求持续高增
+\item 存储厂新一轮扩产启动，前道设备订单能见度提升
+\item 板块经过2025年估值消化，PEG回落至1--1.3倍，成长性价比改善
+\item 多品类先进制程设备集中通过验证，平台型企业增长确定性增强
+\end{itemize}
+
+\textbf{核心标的}：北方华创（平台型设备龙头）、中微公司（刻蚀设备龙头）、拓荆科技（薄膜沉积设备龙头）。
+
+\textbf{未纳入卫星组合的同赛道标的}（转入观察池）：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{芯源微}（688037）：涂胶显影设备国产龙头，但规模小、品类单一，弹性与确定性弱于北方华创（平台型）、中微（刻蚀）、拓荆（薄膜）三大龙头；中性评级不符合卫星组合"增持+"的信念要求，待涂胶显影设备在先进制程验证突破再升级。
+\end{itemize}
+
+\subsection{配置方向二：医疗器械（卫星权重25--30\%）}
+
+医疗器械板块当前处于估值底部区域，2026Q1是业绩压力最大的季度。随着医疗设备更新改造政策落地、国产替代加速以及消费医疗需求逐季复苏，行业景气度有望自Q2起触底回升。
+
+\textbf{核心逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 医疗设备更新改造政策加速落地，财政贴息+专项再贷款支持设备更新
+\item 后集采时代政策预期趋于明朗，板块估值压制因素逐步缓解
+\item 国产替代加速，高端影像、IVD等领域进口替代空间广阔
+\item 当前板块估值处于历史20--30\%分位，机构持仓处于历史低位
+\end{itemize}
+
+\textbf{核心标的}：迈瑞医疗（器械平台龙头）、联影医疗（高端影像设备龙头）。
+
+\textbf{未纳入卫星组合的同赛道标的}（转入观察池）：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{南微医学}（688029）：内镜耗材龙头、海外收入占比高，但集采风险与单一品类限制其确定性；迈瑞（平台型）+联影（高端影像）已代表器械两大主线，中性评级转观察池，待海外收入持续高增与集采落地明朗再升级。
+\end{itemize}
+
+\subsection{配置方向三：储能（卫星权重20--25\%）}
+
+储能是新能源产业链中景气度相对确定的细分赛道。全球储能装机持续高增，大储和户储双轮驱动，而市场对储能板块的预期仍偏谨慎，存在预期差修复空间。
+
+\textbf{核心逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 全球储能装机持续高增，2026年国内储能装机预计增长40--50\%
+\item 大储招标量超预期，独立储能商业模式逐步成熟
+\item 储能逆变器、储能系统集成商海外收入占比提升，全球化布局兑现
+\item 板块经历深度调整后估值处于历史低位，安全边际较高
+\end{itemize}
+
+\textbf{核心标的}：阳光电源（储能逆变器龙头）、南网储能（储能运营龙头）。
+
+\textbf{未纳入卫星组合的同赛道标的}（转入观察池）：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{科华数据}（002335）：储能集成+数据中心电源双轮驱动，但集成环节竞争激烈、毛利薄，确定性弱于阳光电源（逆变器龙头，全球竞争力强）与南网储能（运营端，商业模式清晰）；中性评级转观察池，待储能集成订单放量与盈利改善再升级。
+\end{itemize}
+
+\begin{exhibitbox}[表8-3：卫星组合推荐标的一览]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.8cm} L{1.7cm} C{1.4cm} C{1.2cm} C{1.5cm} X}
+\toprule
+\textbf{板块} & \textbf{公司} & \textbf{代码} & \textbf{评级} & \textbf{建议仓位} & \textbf{核心逻辑} \\
+\midrule
+\rowcolor{accentblue!5}
+& 北方华创 & 002371 & 增持 & 4--5\% & 平台型设备龙头，国产替代核心受益 \\
+\rowcolor{accentblue!5}
+& 中微公司 & 688012 & 增持 & 3--4\% & 刻蚀设备龙头，技术壁垒高 \\
+\rowcolor{accentblue!5}
+\multirow{-3}{=}{\textbf{半导体设备}} & 拓荆科技 & 688072 & 增持 & 3--4\% & 薄膜沉积设备龙头，成长性强 \\
+\midrule
+\rowcolor{accentblue!5}
+& 迈瑞医疗 & 300760 & 增持 & 4--5\% & 器械平台龙头，全球化加速 \\
+\rowcolor{accentblue!5}
+\multirow{-2}{=}{\textbf{医疗器械}} & 联影医疗 & 688271 & 增持 & 3--4\% & 高端影像设备龙头，国产替代先锋 \\
+\midrule
+\rowcolor{accentblue!5}
+& 阳光电源 & 300274 & 增持 & 3--4\% & 储能逆变器龙头，全球竞争力强 \\
+\rowcolor{accentblue!5}
+\multirow{-2}{=}{\textbf{储能}} & 南网储能 & 600995 & 增持 & 2--3\% & 储能运营龙头，商业模式清晰 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.3em}
+\sourcenote{本研究团队整理。\textbf{仓位说明}：表中"建议仓位"为卫星组合内部权重，换算为权益总仓位需乘以30\%卫星系数。示例：4--5\%卫星仓位 $\approx$ 1.2--1.5\%总仓位。卫星组合精简至7只标的（均为"增持"评级），剔除原"中性"评级标的（芯源微、南微医学、科华数据），以体现卫星组合"增持+"的信念要求；被剔除标的转入观察池，理由详见各方向正文}
+\end{exhibitbox}
+
+\section{观察池（10\%）：需等待催化验证的潜力标的}
+
+观察池占权益仓位的10\%，聚焦于长期成长逻辑清晰、但短期业绩能见度较低或催化剂尚不明确的板块与标的。观察池的定位是"期权式配置"——用有限的仓位暴露，换取长期逻辑兑现时的高弹性收益。
+
+观察池标的的核心特征是\textbf{"三有一无"}：有长期空间、有政策支持、有产业趋势，但\textbf{无短期业绩验证}。投资上需采取"小仓位、广覆盖、密切跟踪、验证加仓"的策略。
+
+观察池涵盖10大方向，内部权重分配：动力电池（20--25\%）、创新药与CXO（15--20\%）、半导体材料与弹性标的（15--20\%）、核心/卫星延伸标的（15--20\%，承接核心与卫星组合中未纳入的同赛道标的）、智驾链二线标的（8--12\%）、医疗器械二线标的（8\%）、电力二线与绿电（5--8\%）、人形机器人供应链（5--8\%）。\textbf{其中"核心/卫星延伸标的"方向专门承接核心、卫星组合中因同赛道beta重复或信念强度不足而暂未纳入的标的}（华润微、新洁能、华电国际、保隆科技、芯源微、南微医学、科华数据），这些标的本身具备投资价值，仅因组合集中度要求暂列观察池，待催化兑现即可升级。
+
+\subsection{观察方向一：动力电池龙头（观察权重25--30\%）}
+
+动力电池龙头经过近两年的深度调整，估值已回落至历史低位，但行业产能过剩、价格战等担忧仍压制市场情绪。左侧布局的时间窗口正在临近，但需等待明确的出清信号。
+
+\textbf{关注逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 行业产能出清加速，二三线企业陆续退出，头部企业市场份额持续提升
+\item 海外产能布局稳步推进，全球化竞争优势巩固
+\item 固态电池、M3P等新技术逐步落地，产品升级带来价值量提升
+\item 当前估值处于历史5--10\%分位，已充分反映行业悲观预期
+\end{itemize}
+
+\textbf{观察标的}：宁德时代（全球动力电池龙头）、亿纬锂能（多元化布局领先）、比亚迪（垂直整合优势）、国轩高科（大众供应链+海外布局）。
+
+\textbf{加仓触发条件}：行业价格战缓和（动力电池价格连续两月环比止跌）、头部企业毛利率环比回升、海外订单超预期。
+
+\subsection{观察方向二：创新药与CXO（观察权重20--25\%）}
+
+创新药板块受医保谈判、投融资周期等因素影响，经历了较长时间的调整。随着国产创新药"出海"加速和创新生态改善，板块有望迎来估值修复，但需等待业绩验证。CXO板块随全球药企研发预算回升确认复苏。
+
+\textbf{关注逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 国产创新药"出海"加速，2026年预计有10--15个品种获得FDA/EMA批准，海外收入占比持续提升
+\item CXO板块受益于GLP-1等大品种外包浪潮，多肽类药物外包需求爆发
+\item 医保谈判规则趋于温和，创新药支付环境改善
+\item 板块估值处于历史10--15\%分位，基金持仓处于历史低位
+\end{itemize}
+
+\textbf{观察标的}：凯莱英（CDMO龙头，GLP-1弹性）、恒瑞医药（创新药龙头，管线深厚）、百济神州（全球化创新药企）、康龙化成（全流程CXO）、信达生物（生物药龙头）。
+
+\textbf{加仓触发条件}：创新药海外授权（License-out）金额创新高、医保谈判结果好于预期、核心品种销售数据超预期。
+
+\subsection{观察方向三：半导体材料与弹性标的（观察权重15--20\%）}
+
+半导体材料正处于验证收获期前夜，国产替代空间大但业绩兑现节奏尚待观察。功率半导体弹性标的（设计环节、IDM二线）受益于行业周期复苏但波动较大，适合作为弹性配置。
+
+\textbf{关注逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 半导体材料国产替代加速，光刻胶、电子特气等领域陆续取得突破
+\item 功率半导体周期复苏背景下，二线标的业绩弹性更大
+\item AI带动射频前端、IP授权等细分领域需求爆发
+\item 部分标的估值已回落至合理区间，具备左侧布局价值
+\end{itemize}
+
+\textbf{观察标的}：晶瑞电材（半导体材料龙头）、士兰微（IDM弹性标的）、卓胜微（射频前端龙头）、芯原股份（IP授权龙头）、苏博特（减水剂龙头，半导体新材料布局）。
+
+\textbf{加仓触发条件}：材料国产验证通过率提升、功率半导体价格环比上涨、AI相关芯片需求超预期。
+
+\subsection{观察方向四：智驾链二线标的（观察权重10--15\%）}
+
+智驾链核心标的之外，算法软件、地图定位、线控底盘执行层等细分领域也具备较强的成长潜力。这些标的或细分赛道地位突出、或客户结构优质，待智驾渗透率进一步提升后有望兑现业绩。
+
+\textbf{关注逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item L3渗透率提升带动产业链各环节全面受益，二线标的弹性更大
+\item 智驾算法、高精地图、线控执行器等细分赛道国产替代加速
+\item 部分标的经历调整后估值吸引力提升
+\item 头部Tier1供应链持续开放，本土供应商切入机会增多
+\end{itemize}
+
+\textbf{观察标的}：中科创达（智能座舱OS龙头）、科博达（车灯控制器龙头）、四维图新（高精地图龙头）、亚太股份（线控底盘标的）。
+
+\textbf{加仓触发条件}：智驾渗透率超预期提升、核心客户定点突破、单季度业绩超预期。
+
+\subsection{观察方向五：医疗器械二线标的（观察权重10\%）}
+
+医疗器械二线标的涵盖IVD、家用医疗、心血管等细分领域龙头。这些标的经过调整后估值吸引力提升，随着行业景气度复苏有望实现戴维斯双击。
+
+\textbf{关注逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 细分赛道龙头具备差异化竞争优势，受集采影响相对有限
+\item 消费医疗需求逐季复苏，家用医疗器械受益
+\item 部分标的估值处于历史低位，安全边际较高
+\item 海外市场拓展提供新增长极
+\end{itemize}
+
+\textbf{观察标的}：艾德生物（伴随诊断龙头）、鱼跃医疗（家用医疗器械龙头）、乐普医疗（心血管器械龙头）。
+
+\textbf{加仓触发条件}：集采结果好于预期、消费医疗复苏超预期、海外收入高增。
+
+\subsection{观察方向六：电力二线与绿电（观察权重5--10\%）}
+
+电力板块核心标的之外，绿电运营商、区域性电力公司等二线标的也具备一定配置价值。这些标的或受益于新能源转型、或具备盈利弹性，但确定性弱于核心标的。
+
+\textbf{关注逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item 绿电运营商受益于绿电交易溢价和装机增长
+\item 区域性电力公司盈利弹性大，估值低
+\item AI用电需求外溢至周边区域，二线电力企业间接受益
+\end{itemize}
+
+\textbf{观察标的}：三峡能源（新能源运营商）、国投电力（水火平衡）、宝新能源（区域火电弹性）。
+
+\textbf{加仓触发条件}：绿电交易溢价持续扩大、煤价超预期下跌、电价改革政策超预期。
+
+\subsection{观察方向七：人形机器人供应链（观察权重5--10\%）}
+
+人形机器人是AI产业的重要延伸方向，长期空间巨大，但当前仍处于产业化早期，业绩贡献有限，适合纳入观察池跟踪。
+
+\textbf{关注逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item Optimus、Figure等产品迭代加速，人形机器人商业化进程快于市场预期
+\item 国产供应链（减速器、电机、传感器、控制器）逐步成熟，成本下降推动量产
+\item AI大模型与人形机器人的结合，加速通用智能落地
+\end{itemize}
+
+\textbf{观察标的}：绿的谐波（谐波减速器龙头）、拓普集团（机器人执行器）、三花智控（热管理+执行器）。
+
+\textbf{加仓触发条件}：头部企业发布量产计划、核心零部件订单超预期、产业链调研确认量产时间节点。
+
+\subsection{观察方向八：核心/卫星延伸标的（观察权重15--20\%）}
+
+本方向承接核心组合与卫星组合中\textbf{因组合集中度要求暂未纳入的同赛道标的}。这些标的本身具备投资价值、基本面无重大瑕疵，仅因同赛道beta重复或信念强度略逊于入选标的而转入观察池跟踪。一旦催化兑现或估值更具安全边际，即可按升级触发条件升至核心或卫星组合。该方向是组合的"预备队"，确保研究覆盖不丢失、组合调整有梯队。
+
+\textbf{观察标的}（按原所属层级与板块归类）：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{华润微}（688396，原核心·功率半导体）：全品类IDM平台，制造优势显著。ROE 2.9\%、PE 117x，估值消化中；待盈利能力回升（ROE修复至5\%+）与估值回落至历史中位以下升级。
+\item \textbf{新洁能}（605111，原核心·功率半导体）：MOS设计龙头，AI服务器弹性大。Fabless模式周期弹性大；待AI功率器件订单兑现、季度营收增速超30\%升级。
+\item \textbf{华电国际}（600027，原核心·电力公用事业）：盈利弹性大、估值低。与华能同质；待新能源转型装机超预期或火电盈利弹性显著领先华能升级。
+\item \textbf{保隆科技}（603197，原核心·智驾链零部件）：传感器+空气悬架龙头。待空气悬架车型放量、智驾传感器订单确认升级。
+\item \textbf{芯源微}（688037，原卫星·半导体设备）：涂胶显影设备国产龙头。待先进制程涂胶显影验证通过、市占率提升升级。
+\item \textbf{南微医学}（688029，原卫星·医疗器械）：内镜耗材龙头，海外收入占比高。待海外收入持续高增、国内集采落地明朗升级。
+\item \textbf{科华数据}（002335，原卫星·储能）：储能集成+数据中心电源双轮驱动。待储能集成订单放量、毛利率企稳回升升级。
+\end{itemize}
+
+\textbf{加仓触发条件}：上述标的的板块龙头（核心/卫星入选标的）出现估值泡沫化时，延伸标的可作为同板块性价比替代加仓；或延伸标的自身催化兑现（详见各标的升级条件）。
+
+\begin{exhibitbox}[表8-4：观察池标的与升级/降级触发条件]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.2cm} L{1.8cm} C{1.0cm} X X}
+\toprule
+\textbf{板块} & \textbf{公司} & \textbf{仓位} & \textbf{升级（加仓）触发条件} & \textbf{降级（剔除）触发条件} \\
+\midrule
+\rowcolor{riskamber!5}
+& 宁德时代 & 2--3\% & 动力电池价格连续两月止跌回升、海外订单超预期、毛利率环比改善 & 价格战加剧、市占率持续下滑、新技术路线落后 \\
+\rowcolor{riskamber!5}
+& 亿纬锂能 & 1--2\% & 储能电池出货超预期、海外产能落地进展顺利 & 大客户流失、盈利持续低于预期 \\
+\rowcolor{riskamber!5}
+\multirow{-3}{=}{\textbf{动力电池}} & 比亚迪 & 1--2\% & 高端车型放量、海外销量超预期 & 价格战加剧、毛利率持续下滑 \\
+\midrule
+\rowcolor{riskamber!5}
+& 凯莱英 & 1--2\% & GLP-1大单落地、美国工厂产能释放 & 大客户订单波动、行业竞争加剧 \\
+\rowcolor{riskamber!5}
+& 恒瑞医药 & 1--2\% & 核心品种海外获批、医保谈判结果超预期 & 核心专利到期、研发管线受挫 \\
+\rowcolor{riskamber!5}
+\multirow{-3}{=}{\textbf{创新药/CXO}} & 百济神州 & 1--2\% & 泽布替尼海外销售超预期、新适应症获批 & 核心品种销售不及预期、研发投入效率下降 \\
+\midrule
+\rowcolor{riskamber!5}
+& 晶瑞电材 & 1--2\% & 高端光刻胶验证通过、半导体材料国产替代加速 & 技术验证不及预期、行业竞争加剧 \\
+\rowcolor{riskamber!5}
+& 士兰微 & 1--2\% & 功率半导体价格上涨、IDM产能释放 & 价格战加剧、产能利用率下滑 \\
+\rowcolor{riskamber!5}
+\multirow{-3}{=}{\textbf{半导体材/弹性}} & 卓胜微 & 1\% & AI射频需求爆发、新产品导入 & 行业竞争加剧、客户集中度风险 \\
+\midrule
+\rowcolor{riskamber!5}
+& 中科创达 & 1\% & 智驾OS市占率提升、大模型落地车载 & 价格战加剧、客户拓展不及预期 \\
+\rowcolor{riskamber!5}
+\multirow{-2}{=}{\textbf{智驾链二线}} & 科博达 & 1\% & 智能大灯/域控新品放量、海外客户拓展 & 汽车销量不及预期、新品落地慢于预期 \\
+\midrule
+\rowcolor{riskamber!5}
+& 三峡能源 & 1--2\% & 绿电溢价扩大、装机超预期 & 电价下调、新能源消纳不及预期 \\
+\rowcolor{riskamber!5}
+\multirow{-2}{=}{\textbf{电力二线/绿电}} & 国投电力 & 1\% & 水火协同效应释放、煤价持续下行 & 来水偏枯、煤价反弹 \\
+\midrule
+\rowcolor{riskamber!5}
+& 绿的谐波 & 0.5--1\% & 人形机器人量产订单落地、减速器出货量超预期 & 技术路线变更、竞争格局恶化 \\
+\rowcolor{riskamber!5}
+\multirow{-2}{=}{\textbf{人形机器人}} & 三花智控 & 0.5--1\% & 热管理+执行器双轮驱动兑现、人形机器人订单确认 & 汽车业务下滑、机器人进展低于预期 \\
+\midrule
+\rowcolor{riskamber!5}
+& 华润微 & 1--2\% & ROE修复至5\%+、估值回落至历史中位以下 & 盈利持续低于预期、产能利用率下滑 \\
+\rowcolor{riskamber!5}
+& 新洁能 & 1\% & AI功率器件订单兑现、季度营收增速超30\% & AI服务器需求不及预期、价格战加剧 \\
+\rowcolor{riskamber!5}
+& 华电国际 & 1--2\% & 新能源装机超预期、火电盈利弹性领先华能 & 煤价反弹、电价下调 \\
+\rowcolor{riskamber!5}
+& 保隆科技 & 1\% & 空气悬架车型放量、智驾传感器订单确认 & 汽车销量不及预期、客户拓展慢于预期 \\
+\rowcolor{riskamber!5}
+& 芯源微 & 1\% & 先进制程涂胶显影验证通过、市占率提升 & 技术验证不及预期、行业竞争加剧 \\
+\rowcolor{riskamber!5}
+& 南微医学 & 1\% & 海外收入持续高增、国内集采落地明朗 & 集采降价超预期、海外业务受阻 \\
+\rowcolor{riskamber!5}
+\multirow{-7}{=}{\textbf{核心/卫星延伸}} & 科华数据 & 1\% & 储能集成订单放量、毛利率企稳回升 & 集成竞争加剧、毛利持续下滑 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队整理。\textbf{仓位说明}：表中"仓位"为观察池内部权重，换算为权益总仓位需乘以10\%观察系数。示例：2--3\%观察仓位 $\approx$ 0.2--0.3\%总仓位。"核心/卫星延伸"方向承接核心/卫星组合中因同赛道beta重复或信念强度不足暂未纳入的7只标的，详见观察方向八正文}
+\end{exhibitbox}
+
+\subsection{三层配置标的总览：从组合内权重到权益总仓位}
+
+为便于投资者直接落地配置，下表汇总核心组合与卫星组合\textbf{全部16只标的}（核心9+卫星7）的最终仓位建议，将"组合内权重"统一换算为"占权益总仓位比例"。观察池标的因仓位极小（单只$\leq$0.3\%），不单独列示，详见上表8-4与本章节各观察方向正文。
+
+\begin{exhibitbox}[表8-4B：核心+卫星组合标的最终仓位映射总览]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.8cm} L{1.8cm} C{1.5cm} C{1.3cm} C{1.8cm} X}
+\toprule
+\textbf{板块} & \textbf{公司} & \textbf{代码} & \textbf{评级} & \textbf{组合内仓位} & \textbf{占权益总仓位} \\
+\midrule
+\rowcolor{riskgreen!5}
+& 时代电气 & 688187 & \textbf{买入} & 5--6\% & 3.0--3.6\% \\
+\rowcolor{riskgreen!5}
+& 扬杰科技 & 300373 & \textbf{买入} & 4--5\% & 2.4--3.0\% \\
+\rowcolor{riskgreen!5}
+\multirow{-3}{=}{\textbf{功率半导体}} & 斯达半导 & 603290 & 增持 & 4--5\% & 2.4--3.0\% \\
+\rowcolor{riskgreen!5}
+& 华能国际 & 600011 & \textbf{买入} & 5--6\% & 3.0--3.6\% \\
+\rowcolor{riskgreen!5}
+& 国电电力 & 600795 & 增持 & 4--5\% & 2.4--3.0\% \\
+\rowcolor{riskgreen!5}
+\multirow{-3}{=}{\textbf{电力公用事业}} & 长江电力 & 600900 & 增持 & 3--4\% & 1.8--2.4\% \\
+\rowcolor{riskgreen!5}
+& 德赛西威 & 002920 & \textbf{买入} & 5--6\% & 3.0--3.6\% \\
+\rowcolor{riskgreen!5}
+& 伯特利 & 603596 & 增持 & 4--5\% & 2.4--3.0\% \\
+\rowcolor{riskgreen!5}
+\multirow{-3}{=}{\textbf{智驾链零部件}} & 经纬恒润 & 688326 & 增持 & 3--4\% & 1.8--2.4\% \\
+\midrule
+\rowcolor{accentblue!5}
+& 北方华创 & 002371 & 增持 & 4--5\% & 1.2--1.5\% \\
+\rowcolor{accentblue!5}
+& 中微公司 & 688012 & 增持 & 3--4\% & 0.9--1.2\% \\
+\rowcolor{accentblue!5}
+\multirow{-3}{=}{\textbf{半导体设备}} & 拓荆科技 & 688072 & 增持 & 3--4\% & 0.9--1.2\% \\
+\rowcolor{accentblue!5}
+& 迈瑞医疗 & 300760 & 增持 & 4--5\% & 1.2--1.5\% \\
+\rowcolor{accentblue!5}
+\multirow{-2}{=}{\textbf{医疗器械}} & 联影医疗 & 688271 & 增持 & 3--4\% & 0.9--1.2\% \\
+\rowcolor{accentblue!5}
+& 阳光电源 & 300274 & 增持 & 3--4\% & 0.9--1.2\% \\
+\rowcolor{accentblue!5}
+\multirow{-2}{=}{\textbf{储能}} & 南网储能 & 600995 & 增持 & 2--3\% & 0.6--0.9\% \\
+\bottomrule
+\end{tabularx}
+\vspace{0.3em}
+\sourcenote{本研究团队整理。\textbf{本表为最终配置落地依据}，标的名单、评级、仓位与第九章（核心标的选股逻辑）表8B-19完全一致。核心组合9只（绿底，乘60\%核心系数）+ 卫星组合7只（蓝底，乘30\%卫星系数），合计16只。板块合计：功率半导体占权益总仓位12--15\%、电力公用事业9--12\%、智驾链零部件9--12\%（核心合计约60\%）；半导体设备9--10.5\%、医疗器械7.5--9\%、储能6--7.5\%（卫星合计约30\%）。被精简的7只标的转入观察池"核心/卫星延伸"方向，详见观察方向八}
+\end{exhibitbox}
+
+\section{行业配置权重建议：相对沪深300的偏离度}
+
+基于本报告的研究结论，我们给出相对沪深300指数的行业配置建议。整体思路是：\textbf{超配高景气预期差板块、标配景气边际改善板块、低配景气下行或估值透支板块、回避价值陷阱板块}。
+
+\begin{exhibitbox}[表8-5：行业配置权重建议——相对沪深300偏离度]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{3.2cm} R{1.5cm} R{1.7cm} C{3.0cm} X}
+\toprule
+\textbf{行业} & \textbf{沪深300权重} & \textbf{建议配置权重} & \textbf{偏离方向} & \textbf{配置逻辑} \\
+\midrule
+\rowcolor{riskgreen!5}
+电力公用事业 & 约3.2\% & 7--9\% & \textcolor{riskgreen}{\textbf{超配 +400--600bp}} & AI用电增量+电价改革+高股息，预期差最大的防御成长板块 \\
+\rowcolor{riskgreen!5}
+半导体（功率） & 约2.8\% & 6--8\% & \textcolor{riskgreen}{\textbf{超配 +300--500bp}} & AI+能源双轮驱动+国产替代+周期复苏，四重共振 \\
+\rowcolor{riskgreen!5}
+汽车零部件 & 约3.5\% & 6--7\% & \textcolor{riskgreen}{\textbf{超配 +250--350bp}} & 智驾链渗透率拐点+国产替代加速，业绩预期差显著 \\
+\midrule
+\rowcolor{accentblue!5}
+半导体（设备材料） & 约1.8\% & 3--4\% & \textcolor{accentblue}{超配 +100--200bp} & 国产替代空间大+政策支持+周期触底，但短期业绩波动大 \\
+\rowcolor{accentblue!5}
+医疗器械 & 约2.1\% & 3--4\% & \textcolor{accentblue}{超配 +100--200bp} & 后集采时代+设备更新周期+估值低位，左侧布局价值 \\
+\rowcolor{accentblue!5}
+储能/新能源运营 & 约2.5\% & 3--4\% & \textcolor{accentblue}{标配 +0--100bp} & 装机高增但竞争格局待改善，精选龙头 \\
+\midrule
+\rowcolor{steelgrey!8}
+银行 & 约11.5\% & 10--11\% & \textcolor{steelgrey}{标配 -50--150bp} & 息差压力边际缓解，但成长性有限，维持底仓配置 \\
+\rowcolor{steelgrey!8}
+食品饮料 & 约8.2\% & 7--8\% & \textcolor{steelgrey}{标配 -20--120bp} & 弱复苏格局下增长平稳，估值合理，缺乏弹性 \\
+\rowcolor{steelgrey!8}
+医药（创新药） & 约4.5\% & 4--5\% & \textcolor{steelgrey}{标配 $\pm{}0$bp} & 分化格局，精选创新药龙头，回避仿制药和集采压力大的品种 \\
+\rowcolor{steelgrey!8}
+新能源（电池/光伏） & 约5.8\% & 4--5\% & \textcolor{steelgrey}{低配 -80--180bp} & 产能过剩压力仍存，等待出清信号，仅龙头可配置 \\
+\midrule
+\rowcolor{riskred!5}
+通信（6G/卫星） & 约1.2\% & 0.5--0.8\% & \textcolor{riskred}{\textbf{低配 -40--70bp}} & 6G/卫星互联网为价值陷阱高风险区，景气度未验证 \\
+\rowcolor{riskred!5}
+军工（低空经济） & 约1.0\% & 0.5--0.7\% & \textcolor{riskred}{\textbf{低配 -30--50bp}} & 低空经济政策预期透支，商业模式模糊，建议回避 \\
+\rowcolor{riskred!5}
+纯主题概念股 & — & 0\% & \textcolor{riskred}{\textbf{回避}} & 无业绩支撑、纯主题炒作标的，建议完全回避 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算。沪深300权重基于2026年6月最新成分股权重，为近似值。建议配置权重基于三层配置体系的整体行业分布测算}
+\end{exhibitbox}
+
+整体而言，我们建议的组合相对于沪深300呈现出以下风格特征：
+
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{成长风格偏强}：科技（半导体+智驾+AI链）配置比例显著高于基准，反映我们对科技成长赛道景气度的看好
+\item \textbf{防御属性兼备}：电力公用事业超配比例最高，高股息+业绩确定性提供组合稳定性
+\item \textbf{周期左侧布局}：半导体设备、医疗器械等处于周期底部的板块适度超配，把握周期反转机会
+\item \textbf{低配价值陷阱}：6G、低空经济、卫星互联网等景气度未验证、政策预期透支的板块显著低配
+\end{itemize}
+
+\begin{keyinsight}[行业配置的核心思路]
+当前市场环境下，行业配置的核心矛盾不是"成长 vs 价值"的风格选择，而是"真实景气 vs 预期透支"的真伪鉴别。我们的配置思路是"抓两头、控中间"：一头抓业绩已验证、预期差显著的高景气板块（核心组合），一头抓估值低位、边际改善的左侧布局板块（卫星+观察池），同时控制景气度一般、估值合理但缺乏弹性的中间地带仓位。这种配置结构在震荡市和结构市中都有望获得较好的相对收益。
+\end{keyinsight}
+
+\section{调仓触发条件：景气度、估值、政策三维度监控指标}
+
+投资配置不是静态的，需要根据市场环境和基本面变化动态调整。我们建立"景气度—估值—政策"三维度监控体系，明确调仓触发条件，确保组合配置始终与基本面和市场环境相匹配。
+
+\subsection{景气度维度监控}
+
+景气度是决定板块配置价值的核心因素。当景气度趋势发生变化时，需要及时调整配置权重。
+
+\begin{exhibitbox}[表8-6：景气度维度监控指标与触发条件]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.6cm} L{3.4cm} L{2.4cm} X}
+\toprule
+\textbf{监控指标} & \textbf{判断标准} & \textbf{数据来源/频率} & \textbf{调仓动作} \\
+\midrule
+\rowcolor{riskgreen!5}
+业绩超预期比例 & 板块内超预期公司占比 $\geq 60\%$ & 财报季/季度 & 上调配置权重 10--20\% \\
+\rowcolor{riskgreen!5}
+行业增速拐点确认 & 连续两季营收增速环比回升 & 行业数据/月度 & 从观察池调入卫星组合 \\
+\rowcolor{riskgreen!5}
+产业链订单能见度 & 订单能见度提升至 6 个月以上 & 产业链调研/月度 & 加仓核心标的 \\
+\midrule
+\rowcolor{riskred!5}
+业绩低于预期比例 & 板块内低于预期公司占比 $\geq 40\%$ & 财报季/季度 & 下调配置权重 10--20\% \\
+\rowcolor{riskred!5}
+行业景气度转弱 & 连续两季营收增速环比下滑 & 行业数据/月度 & 从核心组合降至卫星组合 \\
+\rowcolor{riskred!5}
+库存积压预警 & 渠道库存周转天数环比上升 > 15\% & 产业数据/月度 & 降低弹性仓位，转向防御 \\
+\midrule
+\rowcolor{riskamber!5}
+需求结构变化 & 高增长细分领域占比提升 & 行业数据/季度 & 内部结构调整，加大高景气细分配置 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。具体指标阈值需根据行业特性调整，以上为通用标准}
+\end{exhibitbox}
+
+\subsection{估值维度监控}
+
+估值决定了投资的安全边际和潜在收益空间。当估值偏离合理区间时，需要进行再平衡操作。
+
+\begin{exhibitbox}[表8-7：估值维度监控指标与触发条件]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.6cm} L{3.4cm} L{2.4cm} X}
+\toprule
+\textbf{监控指标} & \textbf{判断标准} & \textbf{数据来源/频率} & \textbf{调仓动作} \\
+\midrule
+\rowcolor{riskgreen!5}
+估值触及历史低位 & PE/PB 处于近 5 年 20\% 分位以下 & Wind/日度 & 纳入观察或左侧加仓 \\
+\rowcolor{riskgreen!5}
+估值业绩匹配度 & PEG < 0.8 且业绩增速确定性强 & 财报季/季度 & 上调配置评级 \\
+\rowcolor{riskgreen!5}
+相对估值折价 & 相对可比板块估值折价 > 30\% & Wind/周度 & 配置价值提升，可加仓 \\
+\midrule
+\rowcolor{riskred!5}
+估值过度透支 & PE 突破近 5 年 90\% 分位 且 缺乏新增催化 & Wind/日度 & 分批止盈，降低仓位 \\
+\rowcolor{riskred!5}
+估值泡沫信号 & PEG > 2.0 且 业绩增速有放缓迹象 & 财报季/季度 & 大幅减仓，降至观察仓位 \\
+\rowcolor{riskred!5}
+拥挤度过高 & 基金持仓超配比例 > 历史均值 + 2 个标准差 & 基金季报/季度 & 减仓兑现，回避拥挤交易 \\
+\midrule
+\rowcolor{riskamber!5}
+估值合理区间 & 估值处于历史 40--60\% 分位 & Wind/周度 & 维持现有配置，精选个股 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。估值指标需结合行业特性，周期行业宜用PB/PE分位，成长行业宜用PEG/PS分位}
+\end{exhibitbox}
+
+\subsection{政策维度监控}
+
+政策是影响A股板块表现的重要变量，尤其是在产业政策、监管政策和宏观政策层面。政策超预期或低于预期都会对板块配置价值产生显著影响。
+
+\begin{exhibitbox}[表8-8：政策维度监控指标与触发条件]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+\begin{tabularx}{\linewidth}{L{2.6cm} L{3.4cm} L{2.4cm} X}
+\toprule
+\textbf{监控指标} & \textbf{判断标准} & \textbf{数据来源/频率} & \textbf{调仓动作} \\
+\midrule
+\rowcolor{riskgreen!5}
+产业政策超预期 & 出台支持力度超预期的产业政策 & 政策文件/实时 & 上调配置评级，加仓核心标的 \\
+\rowcolor{riskgreen!5}
+财政政策加码 & 专项债、补贴等财政支持力度加大 & 部委公告/月度 & 提升周期成长板块配置 \\
+\rowcolor{riskgreen!5}
+监管政策边际放松 & 行业监管趋严的预期得到缓解 & 政策文件/事件驱动 & 估值修复，可加仓 \\
+\midrule
+\rowcolor{riskred!5}
+政策低于预期 & 市场期待的政策未落地或力度不足 & 重要会议/事件驱动 & 降低预期，下调配置权重 \\
+\rowcolor{riskred!5}
+监管政策趋严 & 出台限制性政策或监管收紧 & 政策文件/实时 & 减仓或回避，控制风险敞口 \\
+\rowcolor{riskred!5}
+宏观政策转向 & 货币政策收紧或财政政策退坡 & 央行/财政部/季度 & 降低整体仓位，转向防御 \\
+\midrule
+\rowcolor{riskamber!5}
+政策预期平稳 & 政策方向符合预期，无重大变化 & 常规跟踪/月度 & 维持现有配置 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。政策影响需结合行业基本面判断，避免过度放大政策短期效应}
+\end{exhibitbox}
+
+\subsection{三维度综合调仓框架}
+
+实际调仓决策需要综合三维度信号，避免单一指标误判。我们建立以下综合调仓规则：
+
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{加仓信号}：至少两个维度同时发出正面信号（如景气度向上+估值合理、政策利好+估值低位），且无任何维度发出负面信号
+\item \textbf{减仓信号}：至少两个维度同时发出负面信号（如景气度转弱+估值偏高、政策收紧+拥挤度过高），或单一维度发出强烈负面信号（如重大监管政策出台）
+\item \textbf{持有/观望信号}：各维度信号方向不一致、或仅有单一维度弱信号，维持现有配置，密切跟踪
+\item \textbf{强制减仓}：组合单行业仓位超25\%或单一个股仓位超8\%时，强制再平衡至目标区间
+\end{itemize}
+
+\begin{keyinsight}[调仓纪律比调仓判断更重要]
+投资实践中，调仓的最大敌人不是判断错误，而是情绪干扰——涨时贪婪、跌时恐惧。建立明确的调仓触发条件并严格执行，是避免情绪化交易、获取长期超额收益的关键。建议将调仓规则写入投资决策流程，每季度对照检查，确保组合配置始终基于基本面和估值，而非市场情绪。
+\end{keyinsight}

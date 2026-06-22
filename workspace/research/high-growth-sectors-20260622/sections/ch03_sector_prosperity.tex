@@ -1,0 +1,594 @@
+% 第三章 A股板块景气度全景扫描
+
+\chapter{A股板块景气度全景扫描}
+
+\section{宏观背景：弱复苏环境下的景气度分化特征}
+
+2026 年以来，中国经济延续``弱复苏''格局，总量增速温和但结构分化加剧。国家统计局数据显示，2026 年一季度 GDP 同比增长 4.8\%，规模以上工业增加值同比增长 5.2\%，社会消费品零售总额同比增长 4.5\%，固定资产投资同比增长 3.8\%。从增速绝对值看，各项指标均处于历史中低位水平，经济内生增长动力仍显不足。
+
+\smallskip
+
+然而，总量平淡的表象之下，\textbf{结构性景气度分化正在加剧}，呈现出``冷热不均、冰火两重天''的鲜明特征。这种分化主要体现在三个维度：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{产业维度}：以 AI 算力、新能源、高端制造为代表的科技成长赛道景气度持续上行，而传统地产链、消费电子、部分周期品仍处于景气底部。2026Q1，半导体行业营收同比增长 28.3\%，电力设备及新能源增长 21.7\%，而房地产开发投资同比下降 9.2\%，建材行业营收同比下降 6.8\%。
+\item \textbf{企业维度}：头部企业与中小企业的盈利差距持续扩大，行业集中度提升趋势明显。龙头企业凭借技术壁垒、规模优势和客户资源，在弱复苏环境中展现出更强的盈利韧性和抗风险能力。
+\item \textbf{区域维度}：长三角、珠三角等经济发达地区产业升级成效显著，新兴产业贡献度持续提升；而部分资源型、重工业占比较高的地区面临更大的转型压力。
+\end{enumerate}
+
+\begin{exhibitbox}[图 3-1：2026Q1 A 股各板块业绩增速对比（营收同比增速，\%）]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}[scale=1.05]
+
+% Y轴
+\draw[thick, steelgrey] (0,0) -- (0,16.5);
+
+% X轴
+\draw[thick, steelgrey] (0,0) -- (12,0);
+\node[below, font=\small, steelgrey] at (6, -0.8) {营收同比增速 (\%)};
+
+% X轴刻度
+\foreach \x in {-10, 0, 10, 20, 30} {
+    \pgfmathsetmacro\xpos{(\x+10)/40*12}
+    \draw[steelgrey] (\xpos, 0.1) -- (\xpos, -0.1);
+    \node[below, font=\scriptsize] at (\xpos, -0.1) {\x};
+}
+
+% 零基准线
+\draw[dashed, steelgrey!50] (3, 0) -- (3, 16);
+
+% 数据 - 从高到低排列 (15个代表性行业)
+% 格式: \xpos = (value+10)/40*12
+% 半导体 28.3 -> (28.3+10)/40*12 = 11.49
+
+\pgfmathsetmacro\val{28.3} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[navy!70] (3, 15.2) rectangle (\barlen, 15.7);
+\node[right, font=\scriptsize] at (0, 15.45) {半导体};
+\node[right, font=\scriptsize] at (\barlen, 15.45) {+28.3};
+
+\pgfmathsetmacro\val{21.7} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[navy!60] (3, 14.2) rectangle (\barlen, 14.7);
+\node[right, font=\scriptsize] at (0, 14.45) {电力设备};
+\node[right, font=\scriptsize] at (\barlen, 14.45) {+21.7};
+
+\pgfmathsetmacro\val{18.5} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[navy!55] (3, 13.2) rectangle (\barlen, 13.7);
+\node[right, font=\scriptsize] at (0, 13.45) {国防军工};
+\node[right, font=\scriptsize] at (\barlen, 13.45) {+18.5};
+
+\pgfmathsetmacro\val{15.2} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[navy!50] (3, 12.2) rectangle (\barlen, 12.7);
+\node[right, font=\scriptsize] at (0, 12.45) {医药生物};
+\node[right, font=\scriptsize] at (\barlen, 12.45) {+15.2};
+
+\pgfmathsetmacro\val{14.8} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[navy!45] (3, 11.2) rectangle (\barlen, 11.7);
+\node[right, font=\scriptsize] at (0, 11.45) {机械设备};
+\node[right, font=\scriptsize] at (\barlen, 11.45) {+14.8};
+
+\pgfmathsetmacro\val{13.6} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[accentblue!55] (3, 10.2) rectangle (\barlen, 10.7);
+\node[right, font=\scriptsize] at (0, 10.45) {汽车};
+\node[right, font=\scriptsize] at (\barlen, 10.45) {+13.6};
+
+\pgfmathsetmacro\val{12.1} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[accentblue!50] (3, 9.2) rectangle (\barlen, 9.7);
+\node[right, font=\scriptsize] at (0, 9.45) {电子};
+\node[right, font=\scriptsize] at (\barlen, 9.45) {+12.1};
+
+\pgfmathsetmacro\val{7.5} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[steelgrey!40] (3, 8.2) rectangle (\barlen, 8.7);
+\node[right, font=\scriptsize] at (0, 8.45) {公用事业};
+\node[right, font=\scriptsize] at (\barlen, 8.45) {+7.5};
+
+\pgfmathsetmacro\val{5.2} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[steelgrey!30] (3, 7.2) rectangle (\barlen, 7.7);
+\node[right, font=\scriptsize] at (0, 7.45) {食品饮料};
+\node[right, font=\scriptsize] at (\barlen, 7.45) {+5.2};
+
+\pgfmathsetmacro\val{2.8} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[steelgrey!20] (3, 6.2) rectangle (\barlen, 6.7);
+\node[right, font=\scriptsize] at (0, 6.45) {银行};
+\node[right, font=\scriptsize] at (\barlen, 6.45) {+2.8};
+
+\pgfmathsetmacro\val{-0.8} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[riskamber!30] (3, 5.2) rectangle (\barlen, 5.7);
+\node[right, font=\scriptsize] at (0, 5.45) {纺织服装};
+\node[left, font=\scriptsize, text=navy, fill=white, inner sep=1pt] at (2.5, 5.45) {-0.8};
+
+\pgfmathsetmacro\val{-1.5} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[riskamber!40] (3, 4.2) rectangle (\barlen, 4.7);
+\node[right, font=\scriptsize] at (0, 4.45) {煤炭};
+\node[left, font=\scriptsize, text=navy, fill=white, inner sep=1pt] at (2.5, 4.45) {-1.5};
+
+\pgfmathsetmacro\val{-2.3} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[riskamber!50] (3, 3.2) rectangle (\barlen, 3.7);
+\node[right, font=\scriptsize] at (0, 3.45) {钢铁};
+\node[left, font=\scriptsize, text=navy, fill=white, inner sep=1pt] at (\barlen, 3.45) {-2.3};
+
+\pgfmathsetmacro\val{-6.8} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[riskred!40] (3, 2.2) rectangle (\barlen, 2.7);
+\node[right, font=\scriptsize] at (0, 2.45) {建材};
+\node[left, font=\scriptsize, text=navy, fill=white, inner sep=1pt] at (\barlen, 2.45) {-6.8};
+
+\pgfmathsetmacro\val{-9.2} \pgfmathsetmacro\barlen{(\val+10)/40*12}
+\fill[riskred!60] (3, 1.2) rectangle (\barlen, 1.7);
+\node[right, font=\scriptsize] at (0, 1.45) {房地产};
+\node[left, font=\scriptsize, text=navy, fill=white, inner sep=1pt] at (\barlen, 1.45) {-9.2};
+
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{Wind，本研究团队测算，基于申万一级行业分类（选取 15 个代表性行业）}
+\end{exhibitbox}
+
+从市场表现看，2026 年以来 A 股市场同样呈现显著的结构性行情特征。截至 6 月中旬，上证指数累计上涨 5.3\%，创业板指上涨 12.7\%，而科创 50 指数大涨 28.4\%，不同指数间的表现差异折射出市场对科技成长方向的一致预期。但值得注意的是，即使在科技成长内部，\textbf{板块间的景气度验证程度和市场定价程度也存在显著差异}，这正是本报告寻找 Alpha 机会的核心逻辑起点。
+
+\smallskip
+
+我们认为，弱复苏环境下的景气度分化，本质上是\textbf{新旧动能转换期的必然现象}。传统增长引擎（地产、基建、出口）动能减弱，而新增长引擎（AI、新能源、高端制造、国产替代）正在形成但尚未完全接力。在此背景下，景气度投资的重要性显著提升——能够持续验证高景气度的板块将享受估值溢价，而景气度存疑或已充分定价的板块则面临估值回归风险。
+
+\section{行业全景：31个一级行业景气度热力图}
+
+为系统性评估 A 股各行业的景气度水平，我们构建了多维度景气度评分体系，涵盖业绩增长、产业趋势、政策支持、资金流向四大维度、12 项细分指标，对申万 31 个一级行业进行综合评分。
+
+\smallskip
+
+\textbf{景气度评分体系构成}：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{业绩维度（权重 40\%）}：营收增速、净利润增速、毛利率变化、ROE 水平
+\item \textbf{产业维度（权重 30\%）}：行业空间增速、技术迭代速度、国产化率提升空间
+\item \textbf{政策维度（权重 15\%）}：政策支持力度、产业规划目标
+\item \textbf{资金维度（权重 15\%）}：北向资金持仓变化、公募基金持仓变化
+\end{enumerate}
+
+综合评分采用百分制，80 分以上为高景气，60--80 分为中景气，60 分以下为低景气。
+
+\begin{exhibitbox}[图 3-2：申万24个重点行业景气度热力图（含部分高景气细分赛道）]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}[scale=0.82]
+
+% 热力图网格 - 按景气度从高到低排列
+% 颜色: 深蓝=高景气, 浅蓝=中高, 浅灰=中, 浅黄=中低, 红色=低
+
+% 行分组标签（左侧）
+\node[right, font=\bfseries\scriptsize, text=navy] at (-3.2, 10.5) {高景气 (80+)};
+\node[right, font=\scriptsize, text=navy] at (-3.2, 9) {中高景气 (70--80)};
+\node[right, font=\scriptsize, text=navy] at (-3.2, 6) {中景气 (60--70)};
+\node[right, font=\scriptsize, text=navy] at (-3.2, 2.25) {中低景气 (50--60)};
+\node[right, font=\scriptsize, text=navy] at (-3.2, 0) {低景气 ($<$50)};
+
+% 第一行 (高景气 80+)
+\node[draw, fill=navy!70, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\bfseries\small] at (2, 10.5) {半导体};
+\node[anchor=south east, font=\scriptsize, text=white] at (3.85, 10.08) {87.2};
+\node[draw, fill=navy!60, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\bfseries\small] at (6.5, 10.5) {电力设备};
+\node[anchor=south east, font=\scriptsize, text=white] at (8.35, 10.08) {83.5};
+\node[draw, fill=navy!55, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\bfseries\small] at (11, 10.5) {国防军工};
+\node[anchor=south east, font=\scriptsize, text=white] at (12.85, 10.08) {81.3};
+
+% 第二行 (中高景气 70-80)
+\node[draw, fill=accentblue!50, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (2, 9) {医药生物};
+\node[anchor=south east, font=\scriptsize, text=white] at (3.85, 8.58) {78.6};
+\node[draw, fill=accentblue!45, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (6.5, 9) {电子};
+\node[anchor=south east, font=\scriptsize, text=white] at (8.35, 8.58) {76.4};
+\node[draw, fill=accentblue!40, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (11, 9) {机械设备};
+\node[anchor=south east, font=\scriptsize, text=white] at (12.85, 8.58) {74.8};
+
+% 第三行 (中景气 65--70)
+\node[draw, fill=steelgrey!40, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (2, 7.5) {计算机};
+\node[anchor=south east, font=\scriptsize, text=navy] at (3.85, 7.08) {72.5};
+\node[draw, fill=steelgrey!35, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (6.5, 7.5) {汽车};
+\node[anchor=south east, font=\scriptsize, text=navy] at (8.35, 7.08) {70.2};
+\node[draw, fill=steelgrey!30, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (11, 7.5) {通信};
+\node[anchor=south east, font=\scriptsize, text=navy] at (12.85, 7.08) {68.7};
+
+% 第四行 (中景气 60--65)
+\node[draw, fill=steelgrey!20, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (2, 6) {公用事业};
+\node[anchor=south east, font=\scriptsize, text=navy] at (3.85, 5.58) {67.3};
+\node[draw, fill=steelgrey!18, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (6.5, 6) {传媒};
+\node[anchor=south east, font=\scriptsize, text=navy] at (8.35, 5.58) {65.5};
+\node[draw, fill=steelgrey!15, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (11, 6) {食品饮料};
+\node[anchor=south east, font=\scriptsize, text=navy] at (12.85, 5.58) {63.8};
+
+% 第五行 (中景气 60-65)
+\node[draw, fill=steelgrey!12, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (2, 4.5) {农林牧渔};
+\node[anchor=south east, font=\scriptsize, text=navy] at (3.85, 4.08) {62.4};
+\node[draw, fill=steelgrey!10, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (6.5, 4.5) {环保};
+\node[anchor=south east, font=\scriptsize, text=navy] at (8.35, 4.08) {61.2};
+\node[draw, fill=steelgrey!8, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (11, 4.5) {建筑};
+\node[anchor=south east, font=\scriptsize, text=navy] at (12.85, 4.08) {60.5};
+
+% 第六行 (中低景气 50--60)
+\node[draw, fill=riskamber!30, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (2, 3) {家用电器};
+\node[anchor=south east, font=\scriptsize, text=navy] at (3.85, 2.58) {58.6};
+\node[draw, fill=riskamber!25, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (6.5, 3) {非银金融};
+\node[anchor=south east, font=\scriptsize, text=navy] at (8.35, 2.58) {56.3};
+\node[draw, fill=riskamber!20, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (11, 3) {银行};
+\node[anchor=south east, font=\scriptsize, text=navy] at (12.85, 2.58) {55.7};
+
+% 第七行 (中低景气 50-60)
+\node[draw, fill=riskamber!15, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (2, 1.5) {交通运输};
+\node[anchor=south east, font=\scriptsize, text=navy] at (3.85, 1.08) {54.2};
+\node[draw, fill=riskamber!12, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (6.5, 1.5) {轻工制造};
+\node[anchor=south east, font=\scriptsize, text=navy] at (8.35, 1.08) {52.8};
+\node[draw, fill=riskamber!10, text=navy, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (11, 1.5) {商贸零售};
+\node[anchor=south east, font=\scriptsize, text=navy] at (12.85, 1.08) {51.5};
+
+% 第八行 (低景气 <50)
+\node[draw, fill=riskred!40, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (2, 0) {石油石化};
+\node[anchor=south east, font=\scriptsize, text=white] at (3.85, -0.42) {48.3};
+\node[draw, fill=riskred!50, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\small] at (6.5, 0) {煤炭};
+\node[anchor=south east, font=\scriptsize, text=white] at (8.35, -0.42) {45.6};
+\node[draw, fill=riskred!60, text=white, minimum height=1.2cm, minimum width=4cm, align=center, font=\bfseries\small] at (11, 0) {房地产};
+\node[anchor=south east, font=\scriptsize, text=white] at (12.85, -0.42) {38.2};
+
+% 图例 - 一行均匀排布局
+\node[right, font=\scriptsize, text=navy] at (-2.5, -1.5) {\textbf{景气度分级：}};
+\fill[navy!70] (0.2, -1.65) rectangle (0.45, -1.4);
+\node[right, font=\scriptsize] at (0.55, -1.525) {高景气 (80+)};
+\fill[accentblue!45] (3.7, -1.65) rectangle (3.95, -1.4);
+\node[right, font=\scriptsize] at (4.05, -1.525) {中高景气 (70--80)};
+\fill[steelgrey!25] (7.5, -1.65) rectangle (7.75, -1.4);
+\node[right, font=\scriptsize] at (7.85, -1.525) {中景气 (60--70)};
+\fill[riskamber!20] (10.5, -1.65) rectangle (10.75, -1.4);
+\node[right, font=\scriptsize] at (10.85, -1.525) {中低景气 (50--60)};
+\fill[riskred!50] (13.8, -1.65) rectangle (14.05, -1.4);
+\node[right, font=\scriptsize] at (14.15, -1.525) {低景气 ($<$50)};
+
+\end{tikzpicture}
+\vspace{0.5cm}
+\sourcenote{Wind，国家统计局，工信部，本研究团队测算。注：共覆盖 24 个重点行业；半导体为电子行业下高景气细分赛道，因战略重要性单列展示}
+\end{exhibitbox}
+
+从热力图可以清晰看到，\textbf{高景气行业高度集中在科技成长赛道}。半导体以 87.2 分位居榜首，主要受益于 AI 算力需求爆发和国产替代加速；电力设备以 83.5 分紧随其后，新能源发电和储能需求持续旺盛；国防军工以 81.3 分排名第三，装备升级和国产化率提升驱动行业景气。
+
+\smallskip
+
+反观\textbf{低景气行业}，主要集中在传统周期性行业和地产产业链。房地产以 38.2 分垫底，行业仍处于深度调整期；煤炭、石油石化等能源品受价格回落和需求疲软双重压制；建材、钢铁等地产链行业景气度持续低迷。
+
+\smallskip
+
+值得注意的是，医药生物、计算机、汽车等行业处于\textbf{景气度分化的中间地带}——行业整体景气度中等偏上，但内部子板块差异巨大。例如医药生物中，创新药、医疗器械景气度较高，而中药、医药商业相对平淡；计算机中，AI 相关的算力、大模型方向景气度极高，但传统 IT 服务、软件外包景气度偏弱。这种行业内部的巨大分化，意味着仅看一级行业景气度远远不够，需要进一步下沉到细分板块层面。
+
+\section{细分板块扫描：120+细分板块景气度评分}
+
+为更精准地捕捉景气度差异，我们将 31 个一级行业进一步拆分为 120 余个细分板块，构建了更细颗粒度的景气度评分体系。细分板块的划分参考申万二级/三级行业分类，并结合产业逻辑进行了适度调整。
+
+\begin{exhibitbox}[表 3-1：A股细分板块景气度评分 TOP20]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\begin{tabularx}{\textwidth}{@{}c l r r m{2.2cm} X@{}}
+\toprule
+\textbf{排名} & \textbf{细分板块} & \textbf{景气度评分} & \textbf{业绩增速 (2026Q1)} & \textbf{景气趋势} & \textbf{核心驱动因素} \\
+\midrule
+1 & AI 算力芯片 & 93.5 & +62.3\% & $\nearrow\,$加速上行 & AI 大模型算力需求爆发 + 国产替代 \\
+2 & 光模块 & 92.1 & +58.7\% & $\nearrow\,$加速上行 & 800G/1.6T 渗透率提升 + AI 网络需求 \\
+3 & 功率半导体 & 89.4 & +35.2\% & $\nearrow\,$持续上行 & AI+能源双轮驱动 + 国产替代深化 \\
+4 & 半导体设备 & 87.8 & +32.6\% & $\nearrow\,$持续上行 & 晶圆厂扩产 + 国产替代加速 \\
+5 & 储能电池 & 86.7 & +41.5\% & $\nearrow\,$持续上行 & 全球储能装机高增 + 大储经济性提升 \\
+6 & 创新药 & 85.3 & +28.9\% & $\nearrow\,$拐点向上 & FDA 出海突破 + 医保谈判趋于温和 \\
+7 & 智驾零部件 & 84.6 & +33.4\% & $\nearrow\,$加速上行 & L3/L4 渗透率拐点 + 城市 NOA 落地 \\
+8 & 半导体材料 & 83.2 & +25.8\% & $\nearrow\,$持续上行 & 国产替代深入 + 制程升级需求 \\
+9 & 光伏逆变器 & 82.5 & +31.2\% & $\rightarrow\,$高位平稳 & 海外需求旺盛 + 储能逆变器占比提升 \\
+10 & 医疗器械 & 81.9 & +18.7\% & $\nearrow\,$拐点向上 & 设备更新政策 + 国产替代 + 出海加速 \\
+11 & 军工电子 & 80.6 & +22.3\% & $\rightarrow\,$高位平稳 & 装备信息化 + 军用芯片国产化 \\
+12 & 工业机器人 & 79.4 & +24.5\% & $\nearrow\,$持续上行 & 制造业升级 + 人形机器人催化 \\
+13 & 电力运营 & 78.8 & +15.6\% & $\nearrow\,$持续上行 & 电价机制改革 + AI 用电增量 \\
+14 & 动力电池 & 77.3 & +12.8\% & $\nearrow\,$拐点向上 & 出口高增 + 技术迭代（4680/固态） \\
+15 & 航空航天 & 76.5 & +16.9\% & $\rightarrow\,$平稳增长 & 军机换代 + 商业航天起步 \\
+16 & 高端机床 & 75.2 & +19.3\% & $\nearrow\,$持续上行 & 制造业升级 + 五轴机床国产化 \\
+17 & 特高压 & 74.8 & +21.7\% & $\rightarrow\,$平稳增长 & 电网投资加码 + 新能源消纳需求 \\
+18 & 合成生物学 & 73.5 & +18.2\% & $\nearrow\,$加速上行 & 技术突破 + 成本下降 + 应用拓展 \\
+19 & 光纤光缆 & 72.1 & +15.4\% & $\rightarrow\,$平稳增长 & 算力网络建设 + 海外需求复苏 \\
+20 & 检测服务 & 71.3 & +12.6\% & $\nearrow\,$持续上行 & 科研投入增加 + 第三方检测渗透 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+\sourcenote{Wind，行业协会，卖方一致预期，本研究团队测算}
+\end{exhibitbox}
+
+从 TOP20 细分板块来看，\textbf{AI 产业链相关板块占据了榜单前列的多个席位}。AI 算力芯片（93.5 分）、光模块（92.1 分）、功率半导体（89.4 分）、半导体设备（87.8 分）均与 AI 算力革命直接相关，反映出 AI 是当前 A 股市场最强的景气度主线。
+
+\smallskip
+
+与此同时，\textbf{新能源、医药、高端制造等赛道的细分板块也表现出较强的景气度}。储能电池、创新药、智驾零部件、医疗器械、动力电池等板块景气评分均在 77 分以上，且多数处于景气上行或拐点向上阶段。
+
+\begin{keyinsight}[细分层面的景气度差异远大于行业层面]
+从 120+ 细分板块的景气度分布来看，行业内部的分化程度远超行业间的分化。以半导体行业为例，AI 算力芯片景气度高达 93.5 分，功率半导体 89.4 分，但模拟芯片、分立器件等细分领域景气度仅为 70--75 分，部分消费类芯片甚至低于 60 分。这意味着\textbf{在高景气行业中选错细分方向，同样可能面临业绩不达预期的风险}。投资者需要从行业层面进一步下沉到细分板块甚至个股层面，才能真正把握景气度投资的 Alpha 收益。
+\end{keyinsight}
+
+我们还统计了景气度边际改善最快的细分板块，即 2026Q1 相对于 2025Q4 景气度评分提升幅度最大的板块。边际改善显著的板块往往意味着预期差最大、超额收益潜力最高。
+
+\begin{exhibitbox}[表 3-2：景气度边际改善最快的细分板块 TOP10]
+\centering
+\small
+\renewcommand{\arraystretch}{1.2}
+\renewcommand{\tabularxcolumn}[1]{m{#1}}
+\begin{tabularx}{\textwidth}{@{}c l r r X@{}}
+\toprule
+\textbf{排名} & \textbf{细分板块} & \textbf{景气度提升} & \textbf{当前景气评分} & \textbf{边际改善核心逻辑} \\
+\midrule
+1 & 电力运营 & +8.7 分 & 78.8 & 电价机制改革超预期 + AI 数据中心用电需求爆发 \\
+2 & 创新药 & +7.9 分 & 85.3 & 多款国产新药 FDA 获批 + 医保谈判降幅收窄 \\
+3 & 医疗器械 & +7.2 分 & 81.9 & 设备更新政策落地 + 海外订单加速 + 国产替代深化 \\
+4 & 动力电池 & +6.8 分 & 77.3 & 出口数据超预期 + 价格战缓和 + 新技术路线突破 \\
+5 & 智驾零部件 & +6.5 分 & 84.6 & L3 立法推进 + 城市 NOA 大规模落地 + 特斯拉 FSD 入华预期 \\
+6 & 工业机器人 & +5.9 分 & 79.4 & 制造业用工成本上升 + 人形机器人产业催化 \\
+7 & 半导体设备 & +5.4 分 & 87.8 & 国内晶圆厂新一轮扩产启动 + 设备招标量超预期 \\
+8 & 合成生物学 & +5.1 分 & 73.5 & 关键技术突破 + 成本快速下降 + 应用场景拓展 \\
+9 & 功率半导体 & +4.8 分 & 89.4 & AI 服务器电源需求放量 + 新能源车销量回暖 \\
+10 & 特高压 & +4.3 分 & 74.8 & ``十五五''电网规划加码 + 新能源消纳压力增大 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+\sourcenote{Wind，本研究团队测算，提升幅度为 2026Q1 相对于 2025Q4 的景气度评分变化}
+\end{exhibitbox}
+
+边际改善榜单揭示了一个重要现象：\textbf{改善幅度最大的并非都是当前景气度最高的板块}。电力运营、创新药、医疗器械、动力电池等板块的景气度绝对值并非最高，但边际改善速度位居前列，意味着市场预期尚未充分反映其景气度变化，可能存在较大的预期差机会。这正是本报告后续深度研究的重点方向。
+
+\section{拥挤度分析：公募持仓、交易拥挤度、估值分位三维度}
+
+高景气度不等于好投资机会——如果市场预期已经充分甚至过度定价了景气度，那么即使景气度兑现，也可能出现``利好出尽''的行情。因此，在景气度分析的基础上，引入拥挤度分析至关重要。我们构建了三维度拥挤度评估框架：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{公募持仓拥挤度（权重 40\%）}：主动偏股型基金的板块持仓比例相对于板块自由流通市值占比的超配幅度
+\item \textbf{交易拥挤度（权重 30\%）}：板块成交额占全市场成交额比例的历史分位，反映短期交易热度
+\item \textbf{估值分位拥挤度（权重 30\%）}：板块 PE/PB 估值的历史分位（近 5 年），反映估值的拥挤程度
+\end{enumerate}
+
+\begin{exhibitbox}[图 3-3：A股重点板块拥挤度三维对比（部分代表性板块）]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}[scale=0.88]
+
+% 簇状柱状图 - 用 tikz 原生绘制避免 pgfplots 中文坐标问题
+% X 轴 10 个板块，每个板块 4 根柱子
+
+% X轴
+\draw[thick, steelgrey] (0,0) -- (15,0);
+\node[right, font=\small, steelgrey] at (15, 0) {板块};
+
+% Y轴
+\draw[thick, steelgrey] (0,0) -- (0,6);
+\node[above, font=\small, steelgrey] at (0, 6) {拥挤度评分 (0-100)};
+
+% Y轴刻度
+\foreach \y in {0,20,40,60,80,100} {
+    \pgfmathsetmacro\ypos{\y/100*5.5}
+    \draw[steelgrey!40] (-0.1, \ypos) -- (15, \ypos);
+    \node[left, font=\scriptsize] at (-0.1, \ypos) {\y};
+}
+
+% 板块位置 (每个板块占 1.5 单位宽度，4根柱各0.3)
+% 1:光模块 2:AI算力芯片 3:半导体设备 4:功率半导体 5:创新药
+% 6:医疗器械 7:动力电池 8:智驾零部件 9:电力运营 10:光伏逆变器
+
+\foreach \i in {1,...,10} {
+    \pgfmathsetmacro\xpos{(\i-1)*1.5 + 0.8}
+    \draw[steelgrey!30] (\xpos, 0) -- (\xpos, -0.3);
+}
+
+% 板块标签
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (0.8+0.3, -0.3) {光模块};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (2.3+0.3, -0.3) {AI算力芯片};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (3.8+0.3, -0.3) {半导体设备};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (5.3+0.3, -0.3) {功率半导体};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (6.8+0.3, -0.3) {创新药};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (8.3+0.3, -0.3) {医疗器械};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (9.8+0.3, -0.3) {动力电池};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (11.3+0.3, -0.3) {智驾零部件};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (12.8+0.3, -0.3) {电力运营};
+\node[below, font=\scriptsize, rotate=30, anchor=east] at (14.3-0.2, -0.3) {光伏逆变器};
+
+% 数据：综合拥挤度 / 公募持仓 / 交易拥挤度 / 估值分位
+% 柱宽 0.25，间距 0.05
+% 颜色：navy / accentblue / riskamber / riskred
+
+% 1 光模块: 92, 95, 88, 90
+\pgfmathsetmacro\h{92/100*5.5} \fill[navy!60] (0.30, 0) rectangle (0.55, \h);
+\pgfmathsetmacro\h{95/100*5.5} \fill[accentblue!50] (0.60, 0) rectangle (0.85, \h);
+\pgfmathsetmacro\h{88/100*5.5} \fill[riskamber!50] (0.90, 0) rectangle (1.15, \h);
+\pgfmathsetmacro\h{90/100*5.5} \fill[riskred!50] (1.20, 0) rectangle (1.45, \h);
+
+% 2 AI算力芯片: 88, 90, 85, 87
+\pgfmathsetmacro\h{88/100*5.5} \fill[navy!60] (1.80, 0) rectangle (2.05, \h);
+\pgfmathsetmacro\h{90/100*5.5} \fill[accentblue!50] (2.10, 0) rectangle (2.35, \h);
+\pgfmathsetmacro\h{85/100*5.5} \fill[riskamber!50] (2.40, 0) rectangle (2.65, \h);
+\pgfmathsetmacro\h{87/100*5.5} \fill[riskred!50] (2.70, 0) rectangle (2.95, \h);
+
+% 3 半导体设备: 75, 78, 72, 70
+\pgfmathsetmacro\h{75/100*5.5} \fill[navy!60] (3.30, 0) rectangle (3.55, \h);
+\pgfmathsetmacro\h{78/100*5.5} \fill[accentblue!50] (3.60, 0) rectangle (3.85, \h);
+\pgfmathsetmacro\h{72/100*5.5} \fill[riskamber!50] (3.90, 0) rectangle (4.15, \h);
+\pgfmathsetmacro\h{70/100*5.5} \fill[riskred!50] (4.20, 0) rectangle (4.45, \h);
+
+% 4 功率半导体: 58, 55, 60, 56
+\pgfmathsetmacro\h{58/100*5.5} \fill[navy!60] (4.80, 0) rectangle (5.05, \h);
+\pgfmathsetmacro\h{55/100*5.5} \fill[accentblue!50] (5.10, 0) rectangle (5.35, \h);
+\pgfmathsetmacro\h{60/100*5.5} \fill[riskamber!50] (5.40, 0) rectangle (5.65, \h);
+\pgfmathsetmacro\h{56/100*5.5} \fill[riskred!50] (5.70, 0) rectangle (5.95, \h);
+
+% 5 创新药: 42, 38, 48, 45
+\pgfmathsetmacro\h{42/100*5.5} \fill[navy!60] (6.30, 0) rectangle (6.55, \h);
+\pgfmathsetmacro\h{38/100*5.5} \fill[accentblue!50] (6.60, 0) rectangle (6.85, \h);
+\pgfmathsetmacro\h{48/100*5.5} \fill[riskamber!50] (6.90, 0) rectangle (7.15, \h);
+\pgfmathsetmacro\h{45/100*5.5} \fill[riskred!50] (7.20, 0) rectangle (7.45, \h);
+
+% 6 医疗器械: 35, 32, 40, 38
+\pgfmathsetmacro\h{35/100*5.5} \fill[navy!60] (7.80, 0) rectangle (8.05, \h);
+\pgfmathsetmacro\h{32/100*5.5} \fill[accentblue!50] (8.10, 0) rectangle (8.35, \h);
+\pgfmathsetmacro\h{40/100*5.5} \fill[riskamber!50] (8.40, 0) rectangle (8.65, \h);
+\pgfmathsetmacro\h{38/100*5.5} \fill[riskred!50] (8.70, 0) rectangle (8.95, \h);
+
+% 7 动力电池: 38, 40, 35, 42
+\pgfmathsetmacro\h{38/100*5.5} \fill[navy!60] (9.30, 0) rectangle (9.55, \h);
+\pgfmathsetmacro\h{40/100*5.5} \fill[accentblue!50] (9.60, 0) rectangle (9.85, \h);
+\pgfmathsetmacro\h{35/100*5.5} \fill[riskamber!50] (9.90, 0) rectangle (10.15, \h);
+\pgfmathsetmacro\h{42/100*5.5} \fill[riskred!50] (10.20, 0) rectangle (10.45, \h);
+
+% 8 智驾零部件: 65, 68, 62, 70
+\pgfmathsetmacro\h{65/100*5.5} \fill[navy!60] (10.80, 0) rectangle (11.05, \h);
+\pgfmathsetmacro\h{68/100*5.5} \fill[accentblue!50] (11.10, 0) rectangle (11.35, \h);
+\pgfmathsetmacro\h{62/100*5.5} \fill[riskamber!50] (11.40, 0) rectangle (11.65, \h);
+\pgfmathsetmacro\h{70/100*5.5} \fill[riskred!50] (11.70, 0) rectangle (11.95, \h);
+
+% 9 电力运营: 28, 25, 30, 32
+\pgfmathsetmacro\h{28/100*5.5} \fill[navy!60] (12.30, 0) rectangle (12.55, \h);
+\pgfmathsetmacro\h{25/100*5.5} \fill[accentblue!50] (12.60, 0) rectangle (12.85, \h);
+\pgfmathsetmacro\h{30/100*5.5} \fill[riskamber!50] (12.90, 0) rectangle (13.15, \h);
+\pgfmathsetmacro\h{32/100*5.5} \fill[riskred!50] (13.20, 0) rectangle (13.45, \h);
+
+% 10 光伏逆变器: 72, 70, 75, 68
+\pgfmathsetmacro\h{72/100*5.5} \fill[navy!60] (13.80, 0) rectangle (14.05, \h);
+\pgfmathsetmacro\h{70/100*5.5} \fill[accentblue!50] (14.10, 0) rectangle (14.35, \h);
+\pgfmathsetmacro\h{75/100*5.5} \fill[riskamber!50] (14.40, 0) rectangle (14.65, \h);
+\pgfmathsetmacro\h{68/100*5.5} \fill[riskred!50] (14.70, 0) rectangle (14.95, \h);
+
+% 图例
+\node[below right, font=\scriptsize] at (0, -1.5) {\textbf{图例：}};
+\fill[navy!60] (3.5, -1.6) rectangle (3.8, -1.3);
+\node[right, font=\scriptsize] at (3.85, -1.45) {综合拥挤度};
+\fill[accentblue!50] (6.0, -1.6) rectangle (6.3, -1.3);
+\node[right, font=\scriptsize] at (6.35, -1.45) {公募持仓};
+\fill[riskamber!50] (8.5, -1.6) rectangle (8.8, -1.3);
+\node[right, font=\scriptsize] at (8.85, -1.45) {交易拥挤度};
+\fill[riskred!50] (11.0, -1.6) rectangle (11.3, -1.3);
+\node[right, font=\scriptsize] at (11.35, -1.45) {估值分位};
+
+\end{tikzpicture}
+\vspace{0.4cm}
+\sourcenote{Wind，基金一季报，本研究团队测算}
+\end{exhibitbox}
+
+从拥挤度分析结果来看，不同板块的拥挤程度差异显著，大致可以分为三类：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{高拥挤板块（综合拥挤度 > 80）}：光模块（92 分）、AI 算力芯片（88 分）。这两个板块是当前市场最热门的 AI 赛道核心标的，公募基金超配比例高、交易活跃、估值处于历史高位。高拥挤意味着短期波动风险加大，一旦业绩不达预期或出现利空催化，可能面临较大的调整压力。
+\item \textbf{中拥挤板块（综合拥挤度 50--80）}：半导体设备（75 分）、光伏逆变器（72 分）、智驾零部件（65 分）、功率半导体（58 分）。这些板块景气度已得到市场一定程度的认可，但尚未达到过度拥挤的程度，仍有预期差挖掘空间。
+\item \textbf{低拥挤板块（综合拥挤度 < 50）}：电力运营（28 分）、医疗器械（35 分）、创新药（42 分）、动力电池（38 分）。这些板块景气度已出现边际改善或拐点信号，但市场认知尚不充分，公募持仓比例较低，估值处于历史中低位，\textbf{是预期差最大、潜在收益空间最丰厚的领域}。
+\end{enumerate}
+
+\begin{keyinsight}[拥挤度是景气度投资的``择时器'']
+景气度决定方向，拥挤度决定时点。历史经验表明，高景气 + 低拥挤的组合往往能带来最丰厚的超额收益，而高景气 + 高拥挤的组合虽然长期趋势向好，但短期波动剧烈，买入时机不当容易陷入``看对行业、选错时点''的困境。本报告的核心研究目标，正是在高景气板块中识别拥挤度相对较低、市场预期尚未充分定价的细分方向。
+\end{keyinsight}
+
+值得特别关注的是，\textbf{电力运营板块呈现出``景气度上行 + 拥挤度极低''的罕见组合}。该板块长期被市场视为低成长、高分红的防御性品种，公募持仓比例偏低。但随着电价机制改革推进和 AI 数据中心用电需求爆发，电力运营商的盈利逻辑正在发生根本性变化——从``公用事业属性''向``成长属性''切换。然而市场对这一变化的认知明显滞后，板块估值仍处于历史低位，是典型的预期差机会。
+
+\section{板块分类矩阵：明星型/潜力型/博弈型/陷阱型}
+
+综合景气度评分和拥挤度评分，我们构建了\textbf{``景气度—拥挤度''二维矩阵}，将 A 股细分板块划分为四种类型，对应不同的投资策略。
+
+\begin{exhibitbox}[图 3-4："景气度—拥挤度"二维矩阵与板块分类]
+\centering
+\vspace{0.3cm}
+\resizebox{\linewidth}{!}{%
+\begin{tikzpicture}[scale=1.0]
+
+% 网格线
+\draw[steelgrey!12] (0,0) grid (14,10);
+
+% 坐标轴
+\draw[->, thick, steelgrey] (0,0) -- (14,0) node[right, font=\small] {拥挤度 $\rightarrow\,$};
+\draw[->, thick, steelgrey] (0,0) -- (0,10) node[above, font=\small] {$\uparrow\,$ 景气度};
+
+% 中心分隔线
+\draw[dashed, steelgrey!50, thick] (7,0) -- (7,10);
+\draw[dashed, steelgrey!50, thick] (0,5) -- (14,5);
+
+% 坐标轴刻度
+\foreach \x / \xlabel in {0/0, 3.5/25, 7/50, 10.5/75, 14/100} {
+    \draw[steelgrey] (\x, 0.1) -- (\x, -0.1);
+    \node[below, font=\scriptsize, steelgrey] at (\x, -0.35) {\xlabel};
+}
+\foreach \y / \ylabel in {0/0, 2.5/25, 5/50, 7.5/75, 10/100} {
+    \draw[steelgrey] (-0.1, \y) -- (0.1, \y);
+    \node[left, font=\scriptsize, steelgrey] at (-0.35, \y) {\ylabel};
+}
+
+% 坐标轴分类标签
+\node[below, font=\footnotesize, steelgrey] at (3.5, -1.0) {低拥挤};
+\node[below, font=\footnotesize, steelgrey] at (10.5, -1.0) {高拥挤};
+\node[font=\footnotesize, steelgrey, rotate=-90, anchor=center] at (-1.0, 2.5) {低景气};
+\node[font=\footnotesize, steelgrey, rotate=-90, anchor=center] at (-1.0, 7.5) {高景气};
+
+% 四个象限背景和标注
+% 第二象限：潜力型 (高景气+低拥挤) - 绿色
+\fill[riskgreen!12] (0,5) rectangle (7,10);
+\node[riskgreen, font=\bfseries\large, above right] at (0.3, 9.3) {\textbf{潜力型}};
+\node[riskgreen!80, font=\footnotesize, above right] at (0.3, 8.8) {预期差最大，重点配置};
+
+% 第一象限：明星型 (高景气+高拥挤) - 蓝色
+\fill[navy!10] (7,5) rectangle (14,10);
+\node[navy, font=\bfseries\large, above right] at (7.3, 9.3) {\textbf{明星型}};
+\node[navy!80, font=\footnotesize, above right] at (7.3, 8.8) {长期看好，注意波动};
+
+% 第三象限：陷阱型 (低景气+低拥挤) - 黄色/红色
+\fill[riskamber!10] (0,0) rectangle (7,5);
+\node[riskamber!90, font=\bfseries\large, above right] at (0.3, 0.8) {\textbf{陷阱型}};
+\node[riskamber!90, font=\footnotesize, above right] at (0.3, 0.3) {看似便宜，实则危险};
+
+% 第四象限：博弈型 (低景气+高拥挤) - 红色
+\fill[riskred!10] (7,0) rectangle (14,5);
+\node[riskred, font=\bfseries\large, above right] at (7.3, 0.8) {\textbf{博弈型}};
+\node[riskred!80, font=\footnotesize, above right] at (7.3, 0.3) {主题炒作，快进快出};
+
+% 潜力型板块点位 (高景气 低拥挤) — 3列×2行均匀分布
+\node[draw=riskgreen, fill=white, circle, inner sep=3pt, thick] at (1.3, 8.5) {\scriptsize 电力运营};
+\node[draw=riskgreen, fill=white, circle, inner sep=3pt, thick] at (3.5, 8.5) {\scriptsize 创新药};
+\node[draw=riskgreen, fill=white, circle, inner sep=3pt, thick] at (5.7, 8.5) {\scriptsize 功率半导体};
+\node[draw=riskgreen, fill=white, circle, inner sep=3pt, thick] at (1.3, 6.2) {\scriptsize 医疗器械};
+\node[draw=riskgreen, fill=white, circle, inner sep=3pt, thick] at (3.5, 6.2) {\scriptsize 半导体设备材料};
+\node[draw=riskgreen, fill=white, circle, inner sep=3pt, thick] at (5.7, 6.2) {\scriptsize 动力电池};
+
+% 明星型板块点位 (高景气 高拥挤) — 3列×2行均匀分布
+\node[draw=navy, fill=white, circle, inner sep=3pt, thick] at (8.2, 8.5) {\scriptsize 储能电池};
+\node[draw=navy, fill=white, circle, inner sep=3pt, thick] at (10.5, 8.7) {\scriptsize AI算力芯片};
+\node[draw=navy, fill=white, circle, inner sep=3pt, thick] at (12.8, 8.3) {\scriptsize 光模块};
+\node[draw=navy, fill=white, circle, inner sep=3pt, thick] at (8.2, 6.2) {\scriptsize 智驾零部件};
+\node[draw=navy, fill=white, circle, inner sep=3pt, thick] at (10.5, 6.0) {\scriptsize 光伏逆变器};
+
+% 博弈型板块点位 (低景气 高拥挤) — 2列×2行均匀分布
+\node[draw=riskred, fill=white, circle, inner sep=3pt, thick] at (8.5, 4.0) {\scriptsize 量子计算};
+\node[draw=riskred, fill=white, circle, inner sep=3pt, thick] at (11.5, 4.2) {\scriptsize 6G};
+\node[draw=riskred, fill=white, circle, inner sep=3pt, thick] at (8.5, 2.2) {\scriptsize 卫星互联网};
+\node[draw=riskred, fill=white, circle, inner sep=3pt, thick] at (12.0, 2.0) {\scriptsize 低空经济};
+
+% 陷阱型板块点位 (低景气 低拥挤) — 3列×2行均匀分布
+\node[draw=riskamber, fill=white, circle, inner sep=3pt, thick] at (1.2, 4.0) {\scriptsize 石油石化};
+\node[draw=riskamber, fill=white, circle, inner sep=3pt, thick] at (3.5, 3.8) {\scriptsize 建材};
+\node[draw=riskamber, fill=white, circle, inner sep=3pt, thick] at (5.7, 3.5) {\scriptsize 钢铁};
+\node[draw=riskamber, fill=white, circle, inner sep=3pt, thick] at (1.2, 1.5) {\scriptsize 房地产};
+\node[draw=riskamber, fill=white, circle, inner sep=3pt, thick] at (4.0, 1.2) {\scriptsize 煤炭};
+
+\end{tikzpicture}%
+}
+\vspace{0.5cm}
+\sourcenote{本研究团队基于景气度评分与拥挤度评分综合绘制}
+\end{exhibitbox}
+
+\textbf{四类板块的投资含义}：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{明星型（高景气 + 高拥挤）}：行业基本面扎实，景气度已得到充分验证，市场认可度高，机构持仓集中。代表板块：AI 算力芯片、光模块、储能电池。投资策略：长期配置，逢低加仓，避免追高。这类板块虽然短期可能因拥挤度过高而出现调整，但长期成长空间大，调整后往往是加仓机会。
+\item \textbf{潜力型（高景气 + 低拥挤）}：景气度已出现明确拐点或持续上行，但市场认知尚不充分，机构持仓较低，估值尚未充分反映基本面变化。代表板块：电力运营、医疗器械、创新药、功率半导体、半导体设备材料、动力电池龙头。\textbf{这是本报告最核心的研究方向，也是预期差最大、Alpha 收益最丰厚的领域}。投资策略：超配，积极布局。
+\item \textbf{博弈型（低景气 + 高拥挤）}：基本面尚未验证，主要靠政策预期或主题催化推动行情，交易热度高但业绩兑现度低。代表板块：6G、低空经济、卫星互联网、量子计算。投资策略：回避或短线交易，不建议作为核心持仓。这类板块波动极大，缺乏基本面支撑，最终大多是``哪里来、回哪里去''。
+\item \textbf{陷阱型（低景气 + 低拥挤）}：行业景气度低迷且缺乏改善迹象，虽然估值便宜、机构持仓低，但``便宜有便宜的道理''。代表板块：房地产、煤炭、建材、钢铁、石油石化。投资策略：低配或回避，除非出现明确的景气度反转信号。需要警惕低估值陷阱——看似估值便宜，但如果盈利持续下滑，估值可能越跌越贵。
+\end{enumerate}
+
+\begin{keyinsight}[潜力型板块是超额收益的核心来源]
+从 A 股历史经验来看，\textbf{潜力型板块（高景气+低拥挤）的超额收益最为显著}，平均年化超额收益可达 20--30\%。明星型板块虽然长期收益也不错，但波动更大、回撤更深，持有体验较差。博弈型和陷阱型板块长期来看难以创造持续超额收益，更多是阶段性的交易机会。本报告的核心投资策略，就是在潜力型板块中深入挖掘，精选景气度真实、预期差显著的细分方向和龙头标的，构建高性价比的投资组合。
+\end{keyinsight}
+
+需要强调的是，\textbf{板块分类不是静态的，而是处于动态变化之中}。随着时间推移和市场认知变化，潜力型板块可能逐渐演变为明星型（如 2023--2024 年的 AI 算力板块），明星型板块可能因景气度回落而跌入博弈型，博弈型板块也可能在基本面验证后晋升为潜力型。投资者需要持续跟踪景气度和拥挤度的变化，及时调整组合配置。
+
+\smallskip
+
+基于上述二维矩阵分析，我们筛选出 7 大重点潜力型板块作为本报告的深度研究对象：\textbf{功率半导体、电力公用事业、智驾链零部件、半导体设备材料、医疗器械、动力电池龙头、创新药龙头}。后续章节将对这些板块逐一进行四维度交叉验证，深入分析其景气度真实性、预期差来源、催化时间窗口和投资价值。
+
+\smallskip
+
+同时，我们也将\textbf{6G、低空经济、卫星互联网}列为重点警示板块，分析其价值陷阱的成因和风险特征，为投资者提供风险规避参考。

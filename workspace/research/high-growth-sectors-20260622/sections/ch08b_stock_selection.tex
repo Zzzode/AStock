@@ -1,0 +1,824 @@
+% 第九章：核心标的选股逻辑
+
+\chapter{核心标的选股逻辑}
+
+\section{个股选择方法论：五维评分框架（PMQVC）}
+
+在完成板块层面的景气度扫描与配置决策后，个股选择是将板块配置逻辑转化为具体投资标的的关键环节。我们构建了"高景气板块个股五维评分框架"（Prosperity-Moat-Quality-Value-Catalyst, PMQVC），从景气度匹配度、竞争格局、财务质量、估值性价比、催化剂强度五个维度对个股进行系统评估，确保推荐标的既符合板块景气方向，又具备个股层面的阿尔法收益来源。
+
+该框架的核心设计原则是：\textbf{以景气度为前提、以竞争格局为护城河、以财务质量为底线、以估值为安全边际、以催化剂为时间效率}。五维度层层递进、互为补充，形成一个完整的选股闭环。
+
+所有标的的评级结果与第八章三层配置体系完全对应：\textbf{买入}对应核心组合最高推荐标的，\textbf{增持}对应核心/卫星组合标配标的，\textbf{中性}对应卫星/观察池低配标的。
+
+\subsection{五维选股框架与权重体系}
+
+五维评分框架的基准权重基于2018--2025年A股高景气板块个股超额收益归因分析。回测结果显示，五维度对超额收益的解释力排序为：景气度$>$竞争格局$>$财务质量$>$估值$>$催化剂，与基准权重分布一致。
+
+\begin{exhibitbox}[表8B-1：五维选股框架（PMQVC）基准权重与核心因子]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\linewidth}{L{2.2cm} C{1.0cm} L{3.2cm} X}
+\toprule
+\textbf{维度} & \textbf{基准权重} & \textbf{核心子因子} & \textbf{选股逻辑} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{景气度匹配度} & \textbf{25\%} & 核心业务收入占比、高景气业务增速、业绩弹性系数、订单能见度、下游客户结构 & 高景气是选股第一性标准，只有业务与景气度高度绑定的标的才能充分享受行业增长红利 \\
+\hline
+\rowcolor{accentblue!8}
+\textbf{竞争格局} & \textbf{22\%} & 行业地位与市占率、技术壁垒与研发强度、品牌与客户粘性、成本与供应链优势、管理层治理 & 高景气赛道必然吸引竞争者，只有具备护城河的公司才能持续分享行业增长，避免"增收不增利" \\
+\hline
+\rowcolor{riskamber!8}
+\textbf{财务质量} & \textbf{20\%} & 盈利能力（ROE/毛利率）、成长性（营收/净利增速）、现金流质量、资产负债表稳健性、盈利可持续性 & 盈利质量和现金流健康度是穿越周期的基础，财务质量不达标即使景气度再高也需谨慎 \\
+\hline
+\rowcolor{nvgreen!8}
+\textbf{估值性价比} & \textbf{18\%} & PE历史分位、PEG（未来2年）、PS/PCF相对行业折价、PB与ROE匹配度、DCF隐含回报率 & 好公司不等于好投资，必须在合理估值甚至低估时买入，平衡成长空间与安全边际 \\
+\hline
+\rowcolor{riskblue!8}
+\textbf{催化剂强度} & \textbf{15\%} & 近期催化密度、催化事件确定性、业绩弹性影响幅度、市场预期差空间、催化剂验证节点 & 未来6--12个月的明确催化是股价上行的直接驱动力，催化剂强度决定收益兑现的时间效率 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。基准权重可根据板块特性在$\pm$5pct范围内动态调整，详见板块差异化标准}
+\end{exhibitbox}
+
+基准权重的设计遵循以下逻辑：
+
+\vspace{0.2em}
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{景气度优先（25\%，最高）}：高景气是选股的前提条件，没有景气度支撑的个股缺乏贝塔收益，其他维度再优秀也难以创造超额收益。
+\item \textbf{护城河筛选（22\%，次高）}：决定公司能否持续受益于行业景气，避免"行业好但公司不赚钱"的成长陷阱。
+\item \textbf{财务底线（20\%）}：控制下行风险，确保公司在景气波动中能够生存并穿越周期。
+\item \textbf{估值安全边际（18\%）}：决定投资赔率，高估值会侵蚀未来收益空间。
+\item \textbf{催化剂效率（15\%）}：决定收益兑现的时间成本，缺乏催化的低估标的可能长期横盘。
+\end{enumerate}
+
+\subsection{评分体系与评级标准}
+
+评分采用1--5分制，每个子因子独立打分后按权重合成维度得分，再按维度权重加权得到综合评分。
+
+\vspace{0.2em}
+\textbf{评分换算公式}：
+$$\text{综合评分（百分制）} = \frac{\sum_{i=1}^{5} (\text{维度得分}_i \times \text{维度权重}_i)}{5} \times 100$$
+
+最终评分呈现为0--100分制，对应三档投资评级，与第八章三层配置体系完全对应：
+
+\begin{exhibitbox}[表8B-2：综合评分与投资评级对应表]
+\centering
+\small
+\begin{tabularx}{\linewidth}{C{2.5cm} C{2.0cm} C{2.0cm} X}
+\toprule
+\textbf{综合评分（百分制）} & \textbf{1--5分制对应} & \textbf{投资评级} & \textbf{配置建议} \\
+\midrule
+\rowcolor{riskgreen!8}
+$\geq$ 80分 & 4.0分以上 & \textcolor{riskgreen}{\textbf{买入}} & 核心组合最高推荐，建议超配，权重可超配至板块上限 \\
+\hline
+\rowcolor{accentblue!8}
+70--80分 & 3.5--4.0分 & \textcolor{accentblue}{\textbf{增持}} & 核心/卫星组合标配，建议维持板块平均权重 \\
+\hline
+\rowcolor{riskamber!8}
+60--70分 & 3.0--3.5分 & \textcolor{riskamber}{\textbf{中性}} & 卫星组合低配或观察池配置，建议控制仓位密切跟踪 \\
+\hline
+\rowcolor{riskred!8}
+$<$ 60分 & 3.0分以下 & \textcolor{riskred}{\textbf{回避}} & 不纳入推荐组合，建议回避或卖出 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。评级与第八章三层配置体系完全对应：买入=核心组合首推，增持=核心/卫星标配，中性=卫星低配或观察池}
+\end{exhibitbox}
+
+评分采用\textbf{半量化方式}：财务数据、估值数据为定量硬指标（如ROE、PE分位、增速等有明确阈值），竞争格局、催化剂等维度结合定性分析，由研究团队集体评议确定。各维度内部子因子按等权重或按重要性加权（如景气度匹配度中核心业务收入占比权重最高）。
+
+\subsection{风险调整机制}
+
+基础评分完成后，需通过六项风险折价因子进行调整，对存在特定风险的标的进行评分扣减，确保评级充分反映下行风险。
+
+\begin{exhibitbox}[表8B-3：六大风险调整因子与调整方法]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{L{2.6cm} L{3.8cm} X}
+\toprule
+\textbf{风险类型} & \textbf{触发阈值} & \textbf{调整方法} \\
+\midrule
+\rowcolor{riskred!8}
+\textbf{高估值折价} & PE分位$>$85\% 且 PEG$>$2.0 & 综合评分扣减5--10分；若PE分位$>$95\%且PEG$>$2.5，直接降级一档（买入→增持，增持→中性） \\
+\hline
+\rowcolor{riskred!8}
+\textbf{高负债折价} & 资产负债率$>$70\% 或 有息负债率$>$40\% & 财务质量维度下调1档，综合评分扣减3--5分；若资产负债率$>$80\%且现金流为负，扣减8--10分 \\
+\hline
+\rowcolor{riskred!8}
+\textbf{合规风险折价} & 立案调查、监管处罚、财务造假嫌疑、商誉占比$>$30\% & 直接扣减10--15分；重大合规风险直接评为中性以下，不纳入推荐组合 \\
+\hline
+\rowcolor{riskamber!8}
+\textbf{减持/解禁风险} & 未来6个月解禁占流通股$>$20\% 或 大股东减持$>$5\% & 催化剂维度下调1档，综合评分扣减2--4分 \\
+\hline
+\rowcolor{riskamber!8}
+\textbf{商誉减值风险} & 商誉占净资产$>$20\% 且 存在未完成业绩承诺 & 财务质量维度下调0.5--1档，综合评分扣减3--5分 \\
+\hline
+\rowcolor{riskamber!8}
+\textbf{流动性风险} & 日均成交额$<$5000万 或 市值$<$50亿 且 基金持仓$<$1\% & 综合评分扣减2--3分，不进入核心组合，仅可纳入卫星或观察池 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。风险调整为加分制（只扣不加），确保风险因素充分反映在最终评级中}
+\end{exhibitbox}
+
+\subsection{板块差异化校准}
+
+不同板块的商业模式和驱动因素差异较大，统一权重可能导致评分偏差。我们根据板块特性对基准权重进行动态调整（$\pm$5pct范围内），同时明确各板块的特殊评分标准。
+
+\begin{exhibitbox}[表8B-4：六大板块差异化权重调整与特殊标准]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{L{2.2cm} L{3.8cm} X}
+\toprule
+\textbf{板块类型} & \textbf{权重调整} & \textbf{特殊评分标准} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{科技成长} \endgraf（功率半导体/设备） & 景气度+3\%、竞争格局+2\%、催化剂+2\% \endgraf 财务质量-5\% & 技术壁垒为核心考量，研发投入占比$\geq$10\%为优；估值可适当放宽（PE分位阈值+10pct），重点看PS和PEG；允许阶段性投入期盈利承压 \\
+\hline
+\rowcolor{accentblue!8}
+\textbf{价值防御} \endgraf（电力公用事业） & 财务质量+5\%、估值+3\%、竞争格局+2\% \endgraf 景气度-5\%、催化剂-5\% & 现金流为王，经营现金流/净利润$\geq$1.2为标配；估值重点看PB、股息率、DCF；资产负债率门槛提高至60\%以下为优；成长性要求降低（$\geq$8\%即可） \\
+\hline
+\rowcolor{nvgreen!8}
+\textbf{制造成长} \endgraf（智驾链零部件） & 竞争格局+3\%、景气度+2\%、催化剂+2\% \endgraf 财务质量-3\%、估值-4\% & 客户结构为核心，进入头部车企/Tier1供应链是核心壁垒；毛利率稳定在20\%以上为合格；成长股给予估值容忍度 \\
+\hline
+\rowcolor{riskamber!8}
+\textbf{消费医疗} \endgraf（医疗器械） & 竞争格局+4\%、财务质量+2\%、估值+2\% & 产品壁垒（注册证、技术）和销售渠道是核心竞争力；集采政策是重大风险变量，未集采品种需计入政策风险折价；应收账款周转率为关键指标 \\
+\hline
+\rowcolor{steelgrey!8}
+\textbf{周期成长} \endgraf（动力电池/储能） & 财务质量+5\%、竞争格局+3\%、估值+2\% \endgraf 景气度-5\%、催化剂-5\% & 产能周期与价格周期是核心，重点关注产能利用率、毛利率环比、库存周期位置；估值看PB和周期底部盈利，PE在周期顶部易失真 \\
+\hline
+\rowcolor{riskblue!8}
+\textbf{研发驱动} \endgraf（创新药） & 竞争格局+5\%、催化剂+5\%、景气度+2\% \endgraf 财务质量-8\% & 管线价值是核心，品种竞争格局（first-in-class/best-in-class/me-too）决定长期价值；催化剂密度极高，临床数据读出、审批节点都是关键催化；研发投入期亏损可接受，看现金流消耗速率 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建。权重调整基于板块特性，任一维度权重不得低于10\%或高于35\%，以保持框架统一性和可比性}
+\end{exhibitbox}
+
+\begin{keyinsight}[五维框架的核心价值]
+PMQVC五维评分框架的价值不在于精确的数字，而在于系统的选股思维：它强迫研究人员从五个独立维度全面审视一只股票，避免单一维度偏见（如只看景气度忽略估值、只看护城河忽略价格）。通过半量化的方式将定性判断结构化，既保留了研究的灵活性，又确保了分析的全面性和一致性。
+\end{keyinsight}
+
+\section{核心组合标的选股逻辑详解}
+
+以下按照板块逐一展开核心组合标的的选股分析，包括评分拆解、财务验证、催化剂跟踪和风险提示。所有标的均经过五维框架评分和风险调整，评级结果与第八章核心组合完全一致。核心组合标的占权益总仓位的60\%。
+
+\subsection{功率半导体板块（核心权重20--25\%）}
+
+功率半导体正处于周期底部复苏与结构性成长的双重逻辑交汇点。AI算力爆发带来的电源升级是本轮周期最大的边际增量，AI服务器功率半导体价值量约为传统服务器的6--8倍，新能源车和光伏储能提供坚实基本盘，国产替代是长期主线。当前板块PE约55--65倍，处于近三年65\%--75\%分位，估值中偏高但未到泡沫区间。
+
+\textbf{配置策略}：少而精的龙头集中。核心仓位仅保留3只标的——低估值高确定性标的（时代电气、扬杰科技，均为"买入"）+ 周期复苏弹性标的（斯达半导，IGBT国产龙头）。华润微（盈利能力偏弱、估值贵）、新洁能（Fabless模式确定性弱）因同赛道beta重复转入观察池"核心/卫星延伸"方向跟踪。整体维持超配评级，建议板块权重20--25\%（核心组合内权重），单只标的组合内权重提升至4--6\%以表达信念。
+
+\begin{exhibitbox}[表8B-5：功率半导体板块（核心组合）五维评分对比]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.6cm}}
+\toprule
+\textbf{公司} & \textbf{\makecell[c]{景气度\\(28\%)}} & \textbf{\makecell[c]{竞争格局\\(24\%)}} & \textbf{\makecell[c]{财务质量\\(15\%)}} & \textbf{\makecell[c]{估值性价比\\(18\%)}} & \textbf{\makecell[c]{催化剂\\(17\%)}} & \textbf{综合得分} & \textbf{投资评级} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{时代电气} & 4.5 & 4.5 & 4.0 & 4.5 & 4.5 & \textbf{4.37} & \textcolor{riskgreen}{\textbf{买入}} \\
+\rowcolor{riskgreen!8}
+\textbf{扬杰科技} & 4.0 & 4.0 & 5.0 & 3.0 & 4.0 & \textbf{4.00} & \textcolor{riskgreen}{\textbf{买入}} \\
+\hline
+\rowcolor{accentblue!8}
+斯达半导 & 5.0 & 5.0 & 3.0 & 2.0 & 5.0 & \textbf{4.01} & 增持 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算。综合得分为1--5分制加权平均。评分已考虑科技成长板块权重调整（景气度+3\%、竞争格局+2\%、催化剂+2\%、财务质量-5\%）}
+\end{exhibitbox}
+
+\begin{exhibitbox}[表8B-6：功率半导体板块（核心组合）核心财务指标]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.2cm} C{1.0cm} C{1.1cm} C{1.0cm} C{1.0cm}}
+\toprule
+\textbf{公司} & \textbf{营收增速} & \textbf{净利增速} & \textbf{毛利率} & \textbf{ROE} & \textbf{PE (TTM)} & \textbf{PB} & \textbf{PEG} \\
+\midrule
+时代电气 & +18.2\% & +28.5\% & 36.8\% & 11.2\% & 28x & 3.2x & 1.0x \\
+扬杰科技 & +22.4\% & +35.6\% & 35.2\% & 13.7\% & 55x & 6.75x & 1.6x \\
+斯达半导 & +18.5\% & -15.0\% & 30.2\% & 7.8\% & 96x & 4.5x & 1.8x \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind、公司财报，本研究团队整理。财务数据为2025年全年或最新报告期}
+\end{exhibitbox}
+
+\subsubsection*{重点标的：时代电气（688187）—— 买入}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度高匹配（4.5分）}：车规级IGBT国产龙头，直接受益于新能源车销量回暖+国产替代加速，车规IGBT市占率位居国内厂商第二，2025年功率半导体业务收入增长超30\%。
+\item \textbf{竞争格局领先（4.5分）}：IDM模式优势显著，8英寸产线满产，12英寸产线规划推进，车规级认证进度领先。SiC器件布局完善，是少数具备SiC全产业链能力的国内厂商。
+\item \textbf{财务质量良好（4分）}：毛利率36.8\%、ROE 11.2\%，盈利能力在功率半导体板块中位居前列。轨道交通业务提供稳定现金流，支撑功率半导体业务持续投入。
+\item \textbf{估值优势突出（4.5分）}：PE仅28倍，显著低于同业平均水平，估值折价明显。PEG约1.0倍，成长与估值匹配度极佳，是板块内估值洼地。
+\item \textbf{催化剂充足（4.5分）}：SiC器件量产加速、车规IGBT市占率持续提升、AI电源功率器件突破、轨交业务复苏。
+\end{itemize}
+
+\textbf{核心风险}：SiC技术进度不及预期；新能源车销量低于预期；估值修复节奏受板块情绪影响。
+
+\subsubsection*{重点标的：扬杰科技（300373）—— 买入}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度高匹配（4分）}：分立器件IDM龙头，光伏和储能领域收入占比持续提升，2025年营收增长22.4\%、净利润增长35.6\%，在行业周期底部仍保持高质量增长。
+\item \textbf{竞争格局领先（4分）}：SiC二极管国内市占率领先，MOSFET产品线快速丰富，8英寸产线满产，12英寸产线规划稳步推进，产品结构持续升级。
+\item \textbf{财务质量优异（5分）}：财务质量行业最佳——毛利率35.2\%、净利率17.5\%、ROE 13.7\%，三项指标均位居板块前列，盈利能力显著优于同业。
+\item \textbf{估值合理（3分）}：PE 55倍处于自身历史中高位，PEG约1.6倍，在高成长标的中估值相对合理，但上行空间受估值约束。
+\item \textbf{催化剂充足（4分）}：光伏和储能用功率器件需求超预期，Q2--Q3订单可见度高；SiC MOSFET研发取得突破，预计下半年送样验证。
+\end{itemize}
+
+\textbf{核心风险}：下游光伏储能需求不及预期；SiC MOSFET研发进度慢于预期；估值相对板块不便宜，上行空间受限。
+
+\subsubsection*{重点标的：斯达半导（603290）—— 增持}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度极高（5分）}：国内IGBT模块绝对龙头，直接受益于新能源车销量回暖和光伏需求恢复，周期复苏弹性最大标的之一。
+\item \textbf{竞争格局最优（5分）}：技术实力最强、客户结构最优，车规级IGBT市占率位居国内厂商第一，是国产替代最核心的受益者。SiC模块布局领先。
+\item \textbf{财务质量中等（3分）}：毛利率30.2\%、ROE 7.8\%，盈利能力尚可，但2025年净利润同比下滑15\%，处于周期底部盈利承压阶段。
+\item \textbf{估值偏高（2分）}：PE接近100倍，显著高于国际同业，估值消化压力较大，高估值构成主要风险。
+\item \textbf{催化剂强劲（5分）}：新能源车Q3旺季来临，车规级IGBT出货量环比+30\%以上；SiC模块在800V平台车型上实现量产，单车价值量提升2--3倍。
+\end{itemize}
+
+\textbf{核心风险}：估值偏高，对业绩增速要求高；价格战风险；SiC进度不及预期。
+
+\subsection{电力公用事业板块（核心权重15--20\%）}
+
+电力公用事业板块正处于历史性估值重估的起点：从传统防御资产（赚股息、低增长）转向AI基础设施（成长属性、重定价）。核心逻辑有三：一是AI算力中心用电爆发，2026年数据中心用电量预计达2700亿千瓦时；二是煤价进入下行周期，火电企业盈利弹性持续释放；三是电价市场化改革深化，优质电力资产价值重估。
+
+\textbf{配置策略}："核心+稳健"框架。核心仓位配置华能国际（火电龙头，三重催化共振），稳健配置国电电力（煤电一体）、长江电力（水电压舱石）。华电国际因与华能逻辑同质转入观察池跟踪。板块核心权重15--20\%，单只标的组合内权重3--6\%。
+
+\begin{exhibitbox}[表8B-7：电力公用事业板块（核心组合）五维评分对比]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.6cm}}
+\toprule
+\textbf{公司} & \textbf{\makecell[c]{景气度\\(20\%)}} & \textbf{\makecell[c]{竞争格局\\(24\%)}} & \textbf{\makecell[c]{财务质量\\(25\%)}} & \textbf{\makecell[c]{估值性价比\\(21\%)}} & \textbf{\makecell[c]{催化剂\\(10\%)}} & \textbf{综合得分} & \textbf{投资评级} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{华能国际} & 5.0 & 4.0 & 4.0 & 5.0 & 5.0 & \textbf{4.55} & \textcolor{riskgreen}{\textbf{买入}} \\
+\hline
+\rowcolor{accentblue!8}
+国电电力 & 4.5 & 4.0 & 4.0 & 4.5 & 4.0 & \textbf{4.20} & 增持 \\
+\rowcolor{accentblue!8}
+长江电力 & 3.0 & 5.0 & 5.0 & 3.0 & 4.0 & \textbf{4.05} & 增持 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算。评分已考虑价值防御板块权重调整（财务质量+5\%、估值+3\%、竞争格局+2\%、景气度-5\%、催化剂-5\%）}
+\end{exhibitbox}
+
+\begin{exhibitbox}[表8B-8：电力公用事业板块（核心组合）核心财务指标]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.2cm} C{1.0cm} C{1.1cm} C{1.0cm} C{1.0cm}}
+\toprule
+\textbf{公司} & \textbf{营收增速} & \textbf{净利增速} & \textbf{毛利率} & \textbf{ROE} & \textbf{PE} & \textbf{PB} & \textbf{PEG} \\
+\midrule
+华能国际 & 9.5\% & 38.2\% & 22.4\% & 9.8\% & 10.5x & 1.3x & 0.27 \\
+国电电力 & 8.2\% & 25.6\% & 19.8\% & 8.5\% & 9.8x & 1.1x & 0.38 \\
+长江电力 & 7.2\% & 12.8\% & 61.5\% & 13.6\% & 19.2x & 2.6x & 1.50 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind、公司财报，本研究团队整理}
+\end{exhibitbox}
+
+\subsubsection*{重点标的：华能国际（600011）—— 买入}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度高（5分）}：国内最大火电上市公司，AI数据中心用电增量的最直接受益者，京津冀、长三角、粤港澳大湾区装机布局与AI算力中心高度重合。
+\item \textbf{竞争格局强（4分）}：可控装机超1.2亿千瓦，市占率约8\%，在全国电力供需紧平衡背景下，行业地位和议价能力持续提升。
+\item \textbf{财务质量好（4分）}：煤价下行周期中盈利弹性最大，毛利率从14\%回升至22.4\%，净利润增速超38\%。
+\item \textbf{估值极低（5分）}：PE仅10.5倍、PB 1.3倍，PEG仅0.27，估值处于历史底部区域，安全边际极高。
+\item \textbf{催化剂密集（5分）}：煤价继续下行（动力煤有望跌破700元/吨）、电价市场化改革突破（现货电价上浮比例扩大）、新能源转型加速三重催化共振。
+\end{itemize}
+
+\textbf{核心风险}：煤价反弹风险；利用小时下降风险；政策调控风险。
+
+\subsubsection*{重点标的：国电电力（600795）—— 增持}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度较高（4.5分）}：煤电一体化优势显著，在煤价下行周期中盈利弹性充足。新能源装机快速增长，转型进度领先同业。
+\item \textbf{竞争格局良好（4分）}：全国性电力龙头，火电装机规模行业前列，煤炭自给率高，成本控制能力强。
+\item \textbf{财务质量稳健（4分）}：毛利率19.8\%、ROE 8.5\%，盈利能力稳健，经营现金流充裕，资产负债结构持续优化。
+\item \textbf{估值偏低（4.5分）}：PE仅9.8倍、PB 1.1倍，估值处于历史低位，股息率约4.5\%，具备较高安全边际。
+\item \textbf{催化积极（4分）}：煤价下行、新能源装机超预期、电价改革持续推进。
+\end{itemize}
+
+\textbf{核心风险}：煤价反弹风险；新能源消纳风险；来水波动风险（水电部分）。
+
+\subsection{智驾链零部件板块（核心权重15--20\%）}
+
+智驾链零部件板块正处于L3/L4渗透率拐点+国产替代加速+单车价值量提升的三重共振期，是汽车电动化之后下一个十年维度的产业大趋势。城市NOA车型占比从2025年的12\%跃升至28\%，产业从"技术验证期"进入"商业化普及期"。
+
+\textbf{配置策略}：超配（15--20\%），龙头集中策略。投资优先级：决策层（域控制器/OS）优于执行层（线控底盘）优于感知层。核心配置德赛西威（域控龙头），稳健配置伯特利（线控制动）、经纬恒润（智驾算法）。保隆科技因偏零部件弹性、护城河弱于前三转入观察池跟踪。
+
+\begin{exhibitbox}[表8B-9：智驾链零部件板块（核心组合）五维评分对比]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.6cm}}
+\toprule
+\textbf{公司} & \textbf{\makecell[c]{景气度\\(27\%)}} & \textbf{\makecell[c]{竞争格局\\(25\%)}} & \textbf{\makecell[c]{财务质量\\(17\%)}} & \textbf{\makecell[c]{估值性价比\\(14\%)}} & \textbf{\makecell[c]{催化剂\\(17\%)}} & \textbf{综合得分} & \textbf{投资评级} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{德赛西威} & 5.0 & 5.0 & 4.0 & 3.5 & 4.5 & \textbf{4.50} & \textcolor{riskgreen}{\textbf{买入}} \\
+\hline
+\rowcolor{accentblue!8}
+伯特利 & 4.5 & 4.5 & 4.0 & 3.0 & 4.0 & \textbf{4.06} & 增持 \\
+\rowcolor{accentblue!8}
+经纬恒润 & 4.0 & 4.0 & 3.0 & 3.0 & 4.0 & \textbf{3.68} & 增持 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算。评分已考虑制造成长板块权重调整（竞争格局+3\%、景气度+2\%、催化剂+2\%、财务质量-3\%、估值-4\%）}
+\end{exhibitbox}
+
+\begin{exhibitbox}[表8B-10：智驾链零部件板块（核心组合）核心财务指标]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.2cm} C{1.0cm} C{1.1cm} C{1.0cm} C{1.0cm}}
+\toprule
+\textbf{公司} & \textbf{营收增速} & \textbf{净利增速} & \textbf{毛利率} & \textbf{ROE} & \textbf{PE} & \textbf{PB} & \textbf{PEG} \\
+\midrule
+德赛西威 & +28\% & +35\% & 23.5\% & 16\% & 31x & 5.2x & 0.9x \\
+伯特利 & +32\% & +45\% & 26.8\% & 14.5\% & 28x & 4.1x & 0.6x \\
+经纬恒润 & +25\% & +30\% & 22.0\% & 8.5\% & 45x & 4.8x & 1.5x \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind、公司财报，本研究团队整理。德赛西威智驾业务增速达58\%，显著高于整体}
+\end{exhibitbox}
+
+\subsubsection*{重点标的：德赛西威（002920）—— 买入}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度极高（5分）}：国内智驾域控制器绝对龙头，直接受益于域控制器环节42\%的行业增速，智驾业务收入同比+58\%、新签订单+65\%，显著跑赢行业。
+\item \textbf{竞争格局最优（5分）}：英伟达深度合作伙伴，Orin/Xavier/Thor全系列芯片域控制器布局，技术卡位优势明显，客户覆盖比亚迪、理想、小鹏、广汽等主流新能源车企。
+\item \textbf{财务质量良好（4分）}：ROE 16\%、毛利率23.5\%，盈利质量在智驾标的中位居前列，规模效应持续显现。
+\item \textbf{估值合理偏高（3.5分）}：PE 31倍，考虑到智驾业务50\%+的增速和龙头地位，估值与成长匹配度较好。
+\item \textbf{催化剂强劲（4.5分）}：L3级自动驾驶试点城市扩大、城市NOA大规模推送、英伟达Thor下一代域控制器定点落地。
+\end{itemize}
+
+\textbf{核心风险}：域控制器价格战加剧；华为智驾方案强势扩张；智驾渗透率提升不及预期。
+
+\subsubsection*{重点标的：伯特利（603596）—— 增持}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度高（4.5分）}：线控制动国产龙头，直接受益于智驾渗透率提升，线控制动是L3级智驾的必备执行端，单车价值量从传统制动的500元提升至1500--2000元。
+\item \textbf{竞争格局领先（4.5分）}：国内线控制动技术最成熟的厂商之一，One-Box方案量产进度领先，客户覆盖奇瑞、吉利、比亚迪等主流车企，市占率持续提升。
+\item \textbf{财务质量良好（4分）}：毛利率26.8\%、ROE 14.5\%，盈利能力在汽车零部件企业中位居前列，财务质量扎实。
+\item \textbf{估值合理（3分）}：PE 28倍，PEG约0.6倍，业绩增速快于估值扩张，成长性价比突出。
+\item \textbf{催化剂充足（4分）}：线控制动渗透率加速提升、新定点项目量产、WCBS 2.0新一代产品落地。
+\end{itemize}
+
+\textbf{核心风险}：价格战风险；新客户拓展不及预期；技术路线变更风险。
+
+\section{卫星组合标的选股逻辑详解}
+
+卫星组合标的占权益总仓位的30\%，聚焦景气度边际改善、周期触底回升的赛道。以下展开卫星组合三大板块的选股分析。
+
+\subsection{半导体设备板块（卫星权重30--35\%）}
+
+半导体设备板块处于国产替代深化与周期复苏共振的关键节点。设备国产化率已从2023年的15--20\%提升至28--32\%，但与70\%+的长期目标相比仍有2--3倍替代空间。
+
+\textbf{配置策略}：标配偏超配（30--35\%卫星内权重）。设备优于材料（业绩兑现节奏更快）、前道优于后道（价值量更大）、平台型优于单一品类（抗周期能力更强）。
+
+\begin{exhibitbox}[表8B-11：半导体设备板块（卫星组合）五维评分对比]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.6cm}}
+\toprule
+\textbf{公司} & \textbf{\makecell[c]{景气度\\(28\%)}} & \textbf{\makecell[c]{竞争格局\\(24\%)}} & \textbf{\makecell[c]{财务质量\\(15\%)}} & \textbf{\makecell[c]{估值性价比\\(18\%)}} & \textbf{\makecell[c]{催化剂\\(17\%)}} & \textbf{综合得分} & \textbf{投资评级} \\
+\midrule
+\rowcolor{accentblue!8}
+\textbf{北方华创} & 5.0 & 5.0 & 4.0 & 3.0 & 5.0 & \textbf{4.35} & 增持 \\
+\rowcolor{accentblue!8}
+\textbf{中微公司} & 5.0 & 5.0 & 4.0 & 3.0 & 4.0 & \textbf{4.19} & 增持 \\
+\rowcolor{accentblue!8}
+拓荆科技 & 5.0 & 4.0 & 4.0 & 2.0 & 5.0 & \textbf{3.97} & 增持 \\
+\hline
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算。评分已考虑科技成长板块权重调整}
+\end{exhibitbox}
+
+\begin{exhibitbox}[表8B-12：半导体设备板块（卫星组合）核心财务指标]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.2cm} C{1.0cm} C{1.1cm} C{1.0cm} C{1.0cm}}
+\toprule
+\textbf{公司} & \textbf{营收增速} & \textbf{净利增速} & \textbf{毛利率} & \textbf{ROE} & \textbf{PE} & \textbf{PB} & \textbf{PEG} \\
+\midrule
+北方华创 & +45.0\% & +53.0\% & 40.8\% & 14.5\% & 43.8x & 9.6x & 1.1x \\
+中微公司 & +38.0\% & +47.0\% & 42.5\% & 12.8\% & 40.5x & 8.5x & 1.2x \\
+拓荆科技 & +52.0\% & +68.0\% & 45.2\% & 10.6\% & 48.5x & 10.8x & 1.0x \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind、公司财报，本研究团队整理}
+\end{exhibitbox}
+
+\subsubsection*{重点标的：北方华创（002371）—— 增持}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度高（5分）}：国产替代进入深水区，大基金三期落地，设备需求持续高增，2026Q1营收+45\%、净利+53\%，连续6个季度30\%+增速。
+\item \textbf{竞争格局最强（5分）}：国内产品线最全的半导体设备平台，覆盖刻蚀、薄膜沉积、氧化扩散、清洗等多个品类，唯一能提供一站式解决方案的国产设备厂商。
+\item \textbf{财务质量好（4分）}：ROE 14.5\%、毛利率40.8\%，规模效应持续显现，营收从百亿向两百亿跨越过程中费用率持续下降。
+\item \textbf{估值偏高（3分）}：PE 43.8倍、PB 9.6倍，处于历史中高位，但PEG仅1.1倍，高增长消化估值能力强。
+\item \textbf{催化剂密集（5分）}：大基金三期落地、多品类先进制程设备集中通过验证、存储厂新一轮扩产启动。
+\end{itemize}
+
+\textbf{核心风险}：部分品类竞争加剧；关键零部件进口受限；外延并购整合不及预期。
+
+\subsection{医疗器械板块（卫星权重25--30\%）}
+
+医疗器械板块当前处于估值底部区域，2026Q1是业绩压力最大的季度，随着医疗设备更新改造政策落地、国产替代加速以及消费医疗需求逐季复苏，行业景气度有望自Q2起触底回升。
+
+\textbf{配置策略}：标配（25--30\%卫星内权重）。"龙头打底"结构：迈瑞+联影作为卫星底仓，均维持"增持"评级。南微医学因集采风险与单一品类限制、中性评级，转入观察池跟踪。
+
+\begin{exhibitbox}[表8B-13：医疗器械板块（卫星组合）五维评分对比]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.6cm}}
+\toprule
+\textbf{公司} & \textbf{\makecell[c]{景气度\\(25\%)}} & \textbf{\makecell[c]{竞争格局\\(26\%)}} & \textbf{\makecell[c]{财务质量\\(22\%)}} & \textbf{\makecell[c]{估值性价比\\(20\%)}} & \textbf{\makecell[c]{催化剂\\(17\%)}} & \textbf{综合得分} & \textbf{投资评级} \\
+\midrule
+\rowcolor{accentblue!8}
+\textbf{联影医疗} & 5.0 & 4.0 & 3.0 & 3.0 & 4.0 & \textbf{3.90} & 增持 \\
+\rowcolor{accentblue!8}
+\textbf{迈瑞医疗} & 3.0 & 5.0 & 4.0 & 4.0 & 3.0 & \textbf{3.85} & 增持 \\
+\hline
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算。评分已考虑消费医疗板块权重调整（竞争格局+4\%、财务质量+2\%、估值+2\%）}
+\end{exhibitbox}
+
+\begin{exhibitbox}[表8B-14：医疗器械板块（卫星组合）核心财务指标]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.2cm} C{1.0cm} C{1.1cm} C{1.0cm} C{1.0cm}}
+\toprule
+\textbf{公司} & \textbf{营收增速} & \textbf{净利增速} & \textbf{毛利率} & \textbf{ROE*} & \textbf{PE} & \textbf{PB} & \textbf{PEG} \\
+\midrule
+联影医疗 & +17.3\% & +7.8\% & 47.2\% & 9.0\% & 45.1x & 3.91x & 约2.5x \\
+迈瑞医疗 & +1.4\% & -11.4\% & 61.9\% & 21.6\% & 21.9x & 4.29x & 约2.5x \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind、公司财报，本研究团队整理。*ROE为2025全年数据。2026Q1为行业业绩低点，PEG基于正常化增速估算}
+\end{exhibitbox}
+
+\subsubsection*{重点标的：迈瑞医疗（300760）—— 增持}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度温和复苏（3分）}：2026Q1是业绩压力最大季度，随着医疗设备更新改造政策落地，行业景气度有望自Q2起触底回升。
+\item \textbf{竞争格局领先（5分）}：国内唯一覆盖三大黄金赛道的器械平台，多品类协同分散风险，是机构配置医疗器械板块的首选标的，全球化能力领先。
+\item \textbf{财务质量极佳（4分）}：毛利率61.9\%、ROE 21.6\%、经营现金流/净利润常年大于1，现金流质量在板块内最扎实。
+\item \textbf{估值合理（4分）}：PE约22倍，处于历史低位，考虑平台型龙头的稀缺性，估值具备吸引力。
+\item \textbf{催化剂逐步兑现（3分）}：医疗设备更新改造政策加速落地、海外新兴市场收入高增、高端产品渗透率提升。
+\end{itemize}
+
+\textbf{核心风险}：设备集采降价超预期；海外地缘政治风险；商誉减值风险。
+
+\subsection{储能板块（卫星权重20--25\%）}
+
+储能是新能源产业链中景气度相对确定的细分赛道。全球储能装机持续高增，大储和户储双轮驱动，储能逆变器和系统集成商全球竞争力持续提升。板块经历深度调整后估值处于历史低位，具备左侧布局价值。
+
+\textbf{配置策略}：标配（20--25\%卫星内权重）。储能逆变器龙头为核心配置，储能运营和储能集成为弹性配置。
+
+\begin{exhibitbox}[表8B-15：储能板块（卫星组合）五维评分对比]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.4cm} C{1.6cm}}
+\toprule
+\textbf{公司} & \textbf{\makecell[c]{景气度\\(20\%)}} & \textbf{\makecell[c]{竞争格局\\(25\%)}} & \textbf{\makecell[c]{财务质量\\(25\%)}} & \textbf{\makecell[c]{估值性价比\\(20\%)}} & \textbf{\makecell[c]{催化剂\\(10\%)}} & \textbf{综合得分} & \textbf{投资评级} \\
+\midrule
+\rowcolor{accentblue!8}
+\textbf{阳光电源} & 4.5 & 4.5 & 3.5 & 3.0 & 4.0 & \textbf{3.93} & 增持 \\
+\hline
+\rowcolor{riskamber!8}
+南网储能 & 3.5 & 4.0 & 4.0 & 3.5 & 3.0 & \textbf{3.63} & 中性 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算。评分已考虑周期成长板块权重调整（财务质量+5\%、竞争格局+3\%、估值+2\%、景气度-5\%、催化剂-5\%）}
+\end{exhibitbox}
+
+\begin{exhibitbox}[表8B-16：储能板块（卫星组合）核心财务指标]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{X C{1.4cm} C{1.4cm} C{1.2cm} C{1.0cm} C{1.1cm} C{1.0cm} C{1.0cm}}
+\toprule
+\textbf{公司} & \textbf{营收增速} & \textbf{净利增速} & \textbf{毛利率} & \textbf{ROE} & \textbf{PE} & \textbf{PB} & \textbf{PEG} \\
+\midrule
+阳光电源 & +35.0\% & +48.0\% & 28.5\% & 16.5\% & 22x & 4.0x & 0.45x \\
+南网储能 & +12.0\% & +18.0\% & 45.0\% & 7.5\% & 25x & 1.8x & 1.4x \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind、公司财报，本研究团队整理。ROE为2025全年数据}
+\end{exhibitbox}
+
+\subsubsection*{重点标的：阳光电源（300274）—— 增持}
+
+\textbf{选股逻辑}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{景气度高（4.5分）}：全球储能逆变器龙头，直接受益于全球储能装机高增（2026年预计+40--50\%），储能业务收入占比持续提升。
+\item \textbf{竞争格局领先（4.5分）}：储能逆变器全球市占率第一，技术和规模优势显著，品牌认可度高，海外渠道布局完善。
+\item \textbf{财务质量良好（3.5分）}：毛利率28.5\%、ROE 16.5\%，盈利能力在新能源板块中位居前列，经营现金流良好。
+\item \textbf{估值偏低（3分）}：PE约22倍，PEG仅0.45倍，考虑到储能业务高增速，估值具备较高吸引力。
+\item \textbf{催化剂充足（4分）}：大储招标超预期、储能政策支持加码、海外市场持续高增。
+\end{itemize}
+
+\textbf{核心风险}：行业竞争加剧导致价格战；海外政策风险；储能装机不及预期。
+
+\section{未纳入核心/卫星组合的标的说明}
+
+为贯彻"少而精、集中表达信念"的组合构建原则，我们将核心组合从13只精简至9只、卫星组合从10只精简至7只，共有7只标的因同赛道beta重复或信念强度不足暂未纳入核心/卫星组合，转入观察池"核心/卫星延伸"方向跟踪。本节集中说明\textbf{每只标的未纳入的具体原因与升级路径}，确保研究覆盖不丢失、组合调整有梯队。
+
+\subsection{未纳入核心组合的标的（4只）}
+
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{华润微}（688396，原核心·功率半导体，评分3.57/增持）：全品类IDM平台、制造优势显著，但\textbf{未纳入核心组合的核心原因有二}——其一，盈利能力偏弱，ROE仅2.9\%（时代电气11.2\%、扬杰科技13.7\%），PE高达117x（时代电气28x），估值消化压力大；其二，与时代电气（车规IGBT）、扬杰科技（分立器件IDM）业务高度重叠，同板块第三只以后边际贡献递减、beta重复。\textbf{升级路径}：ROE修复至5\%+、估值回落至历史中位以下，或SiC制造产能释放带来业绩弹性时升级。
+\item \textbf{新洁能}（605111，原核心·功率半导体，评分3.65/增持）：MOS设计龙头，AI服务器弹性大，但\textbf{未纳入核心组合的核心原因}是Fabless模式依赖代工、周期弹性大而确定性弱于IDM标的；AI服务器弹性已由斯达半导（IGBT）部分覆盖，核心仓位聚焦IDM与车规龙头更具确定性。\textbf{升级路径}：AI功率器件订单兑现、季度营收增速超30\%时升级。
+\item \textbf{华电国际}（600027，原核心·电力公用事业，增持）：盈利弹性大、估值低，但\textbf{未纳入核心组合的核心原因}是与华能国际同为火电龙头，煤价下行+电价改革逻辑高度同质；保留华能国际（装机规模更大、AI数据中心区位更优、弹性更强）即可代表火电重估逻辑，第二只火电标的构成冗余。\textbf{升级路径}：新能源转型装机超预期、或火电盈利弹性显著领先华能时升级。
+\item \textbf{保隆科技}（603197，原核心·智驾链零部件，增持）：传感器+空气悬架龙头，但\textbf{未纳入核心组合的核心原因}是智驾核心alpha集中在域控（德赛西威）与线控执行（伯特利），保隆更偏零部件弹性、客户结构分散，护城河与业绩确定性弱于前三。\textbf{升级路径}：空气悬架车型放量、智驾传感器订单确认时升级。
+\end{itemize}
+
+\subsection{未纳入卫星组合的标的（3只）}
+
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{芯源微}（688037，原卫星·半导体设备，评分76.1/中性）：涂胶显影设备国产龙头，但\textbf{未纳入卫星组合的核心原因有二}——其一，规模小、品类单一，弹性与确定性弱于北方华创（平台型）、中微（刻蚀）、拓荆（薄膜）三大龙头；其二，中性评级不符合卫星组合"增持+"的信念要求。\textbf{升级路径}：先进制程涂胶显影验证通过、市占率提升至评级上调为增持时升级。
+\item \textbf{南微医学}（688029，原卫星·医疗器械，评分69.5/中性）：内镜耗材龙头、海外收入占比高，但\textbf{未纳入卫星组合的核心原因}是集采风险与单一品类限制其确定性；迈瑞（平台型）+联影（高端影像）已代表器械两大主线，中性评级不符合卫星信念要求。\textbf{升级路径}：海外收入持续高增、国内集采落地明朗、评级上调时升级。
+\item \textbf{科华数据}（002335，原卫星·储能，评分67.5/中性）：储能集成+数据中心电源双轮驱动，但\textbf{未纳入卫星组合的核心原因}是集成环节竞争激烈、毛利薄，确定性弱于阳光电源（逆变器龙头）与南网储能（运营端）；中性评级不符合卫星信念要求。\textbf{升级路径}：储能集成订单放量、毛利率企稳回升、评级上调时升级。
+\end{itemize}
+
+\begin{keyinsight}[精简组合的核心理念]
+将核心+卫星组合从23只精简至16只，并非降低研究覆盖广度，而是\textbf{提升研究信念的表达强度}。主动管理的超额收益来源于"高信念+高仓位"，而非"广覆盖+低仓位"。被精简的7只标的全部转入观察池"核心/卫星延伸"方向继续跟踪，其升级路径明确、触发条件量化，既保留了研究积累，又为核心/卫星组合腾出了重仓空间——首推标的的单只总仓位从2.4--3.0\%提升至3.0--3.6\%，真正以重仓兑现研究结论。
+\end{keyinsight}
+
+\section{观察池标的简析}
+
+观察池标的占权益总仓位的10\%，主要包括困境反转赛道、核心板块延伸标的和前沿主题三大类。本节对观察池重点标的进行简要分析，更详细的跟踪分析请参考后续专题报告。观察池标的评级均为中性或以下，不构成核心推荐。
+
+\subsection{动力电池（观察权重25--30\%）}
+
+动力电池行业正处于"量增价稳、盈利触底回升"的景气拐点。行业产能出清加速，CR5市占率从70\%提升至78\%；碳酸锂价格企稳；储能电池成为第二增长曲线。
+
+\textbf{重点标的}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{宁德时代}：全球动力电池绝对龙头，市占率约37\%稳居第一，储能业务爆发式增长，第二成长曲线清晰。PE仅26倍、PEG 0.54，处于历史低位。催化剂：凝聚态/半固态电池量产、海外产能与订单突破。
+\item \textbf{亿纬锂能}：多元化布局领先，储能电池和动力电池双轮驱动，海外产能稳步推进。H1预告净利润增速95--110\%，业绩弹性大。
+\item \textbf{比亚迪}：垂直整合优势显著，动力电池自供+外供双模式，海外市场加速拓展。但整车业务波动较大，估值受多重因素影响。
+\item \textbf{国轩高科}：大众供应链核心标的，海外布局积极，技术路线多元化。但规模和盈利能力弱于头部。
+\end{itemize}
+
+\subsection{创新药与CXO（观察权重20--25\%）}
+
+创新药板块处于明确的复苏周期：经历2023--2025年集采阵痛和估值消化后，创新药龙头产品管线进入集中收获期，License-out国际化加速兑现；CXO板块随全球药企研发预算回升确认复苏。
+
+\textbf{重点标的}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{凯莱英}：全球小分子CDMO龙头，受益于GLP-1等大品种外包浪潮，多肽类药物外包需求爆发。连续反应、生物酶催化等技术平台全球领先。PE 30倍、PEG 1.3倍，估值性价比突出。
+\item \textbf{恒瑞医药}：创新药绝对龙头，管线深厚，产品矩阵完善。医保谈判压力边际缓解，创新药收入占比持续提升。
+\item \textbf{百济神州}：全球化创新药企，泽布替尼海外销售超预期，新适应症持续拓展。研发投入大但管线价值高。
+\item \textbf{康龙化成}：全流程CXO服务商，实验室业务稳固，临床和CDMO业务快速增长。估值处于历史低位。
+\item \textbf{信达生物}：生物药龙头，PD-1等核心品种销售稳步增长，创新药出海取得突破。
+\end{itemize}
+
+\subsection{半导体材料与弹性标的（观察权重15--20\%）}
+
+半导体材料正处于国产替代加速期，光刻胶、电子特气等领域陆续取得突破。功率半导体弹性标的受益于行业周期复苏但波动较大。AI带动射频前端、IP授权等细分领域需求爆发。
+
+\textbf{重点标的}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{晶瑞电材}：半导体材料龙头，光刻胶、超净高纯试剂等产品持续突破，国产验证通过率提升。
+\item \textbf{士兰微}：IDM弹性标的，功率半导体+MEMS+化合物半导体多线布局，周期复苏弹性大。但盈利能力波动较大。
+\item \textbf{卓胜微}：射频前端龙头，受益于AI手机和卫星通信射频需求增长，滤波器产品快速放量。
+\item \textbf{芯原股份}：IP授权龙头，Chiplet和AI芯片IP需求爆发，商业模式轻资产高毛利。
+\item \textbf{苏博特}：减水剂龙头，半导体新材料领域布局，CMP抛光液等产品研发推进。
+\end{itemize}
+
+\subsection{智驾链二线标的（观察权重10--15\%）}
+
+智驾链核心标的之外，算法软件、地图定位、线控底盘执行层等细分领域也具备较强成长潜力，待渗透率进一步提升后有望兑现业绩。
+
+\textbf{重点标的}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{中科创达}：智能座舱OS龙头，智驾OS和大模型车载落地推进，客户覆盖广泛。
+\item \textbf{科博达}：车灯控制器龙头，智能大灯和域控新品放量，海外客户拓展顺利。
+\item \textbf{四维图新}：高精地图龙头，受益于L3智驾对高精地图的需求提升，但商业化模式尚在探索。
+\item \textbf{亚太股份}：线控底盘标的，线控制动和线控转向产品推进，客户拓展有进展。
+\end{itemize}
+
+\subsection{医疗器械二线标的（观察权重10\%）}
+
+医疗器械二线标的涵盖IVD、家用医疗、心血管等细分领域龙头，经过调整后估值吸引力提升。
+
+\textbf{重点标的}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{艾德生物}：伴随诊断龙头，产品管线丰富，海外市场拓展顺利。集采压力相对有限。
+\item \textbf{鱼跃医疗}：家用医疗器械龙头，渠道优势显著，消费医疗需求复苏受益。
+\item \textbf{乐普医疗}：心血管器械龙头，估值极低，安全边际高，但集采和商誉减值风险需关注。
+\end{itemize}
+
+\subsection{电力二线与绿电（观察权重5--10\%）}
+
+绿电运营商和区域性电力公司具备一定配置价值，但确定性弱于核心标的。
+
+\textbf{重点标的}：
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{三峡能源}：新能源运营商龙头，装机增长快，绿电交易溢价扩大。但估值高于火电，弹性相对有限。
+\item \textbf{国投电力}：水火平衡标的，水电+火电结构稳健，雅砻江水电提供稳定现金流。
+\item \textbf{宝新能源}：区域火电弹性标的，估值低，煤价下行受益弹性大。但规模较小，区域集中度高。
+\end{itemize}
+
+\subsection{人形机器人供应链（观察权重5--10\%）}
+
+人形机器人是AI产业的重要延伸方向，长期空间巨大，但当前仍处于产业化早期，业绩贡献有限。
+
+\textbf{重点标的}：绿的谐波（谐波减速器龙头）、拓普集团（机器人执行器）、三花智控（热管理+执行器）。
+
+\section{标的综合评分与排序}
+
+本节汇总所有覆盖标的的综合评分，按得分从高到低排序，并明确推荐等级、配置层级和板块内权重建议，为投资者提供一站式选股参考。所有标的的评级与配置层级与第八章完全一致。
+
+\subsection{全标的综合评分总表}
+
+下表汇总了核心+卫星组合共16只标的（核心9+卫星7）的五维评分结果，按综合得分（百分制）从高到低排序。评分已考虑各板块的差异化权重调整，但未计入个股层面的风险折价因子（详见各板块分析中的风险提示）。观察池标的详见本章第四节简析。
+
+\Needspace{18\baselineskip}
+\Needspace{18\baselineskip}
+\begin{exhibitbox}[表8B-19：核心+卫星组合标的五维评分与配置总览]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{2pt}
+\begin{tabularx}{\linewidth}{X C{0.7cm} C{0.7cm} C{0.7cm} C{0.7cm} C{0.7cm} C{1.0cm} C{1.1cm} C{1.4cm} C{1.4cm}}
+\toprule
+\textbf{公司} & \textbf{景气} & \textbf{格局} & \textbf{财务} & \textbf{估值} & \textbf{催化} & \textbf{综合(百)} & \textbf{评级} & \textbf{组合内仓位} & \textbf{总仓位(约)} \\
+\midrule
+\rowcolor{riskgreen!15}
+\multicolumn{10}{l}{\textbf{【核心组合 · 占权益总仓位 60\%】}} \\
+\rowcolor{riskgreen!5}
+\multicolumn{10}{l}{\textit{功率半导体板块（核心权重 20--25\%）}} \\
+\rowcolor{riskgreen!5}
+\textbf{时代电气} & 4.5 & 4.5 & 4.0 & 4.5 & 4.5 & \textbf{87.4} & \textcolor{riskgreen}{\textbf{买入}} & 5--6\% & 3.0--3.6\% \\
+\rowcolor{riskgreen!5}
+斯达半导 & 5.0 & 5.0 & 3.0 & 2.0 & 5.0 & \textbf{80.2} & 增持 & 4--5\% & 2.4--3.0\% \\
+\rowcolor{riskgreen!5}
+\textbf{扬杰科技} & 4.0 & 4.0 & 5.0 & 3.0 & 4.0 & \textbf{80.0} & \textcolor{riskgreen}{\textbf{买入}} & 4--5\% & 2.4--3.0\% \\
+\hline
+\rowcolor{riskgreen!5}
+\multicolumn{10}{l}{\textit{电力公用事业板块（核心权重 15--20\%）}} \\
+\rowcolor{riskgreen!5}
+\textbf{华能国际} & 5.0 & 4.0 & 4.0 & 5.0 & 5.0 & \textbf{91.0} & \textcolor{riskgreen}{\textbf{买入}} & 5--6\% & 3.0--3.6\% \\
+\rowcolor{riskgreen!5}
+国电电力 & 4.5 & 4.0 & 4.0 & 4.5 & 4.0 & \textbf{84.0} & 增持 & 4--5\% & 2.4--3.0\% \\
+\rowcolor{riskgreen!5}
+长江电力 & 3.0 & 5.0 & 5.0 & 3.0 & 4.0 & \textbf{81.0} & 增持 & 3--4\% & 1.8--2.4\% \\
+\hline
+\rowcolor{riskgreen!5}
+\multicolumn{10}{l}{\textit{智驾链零部件板块（核心权重 15--20\%）}} \\
+\rowcolor{riskgreen!5}
+\textbf{德赛西威} & 5.0 & 5.0 & 4.0 & 3.5 & 4.5 & \textbf{90.0} & \textcolor{riskgreen}{\textbf{买入}} & 5--6\% & 3.0--3.6\% \\
+\rowcolor{riskgreen!5}
+伯特利 & 4.5 & 4.5 & 4.0 & 3.0 & 4.0 & \textbf{81.1} & 增持 & 4--5\% & 2.4--3.0\% \\
+\rowcolor{riskgreen!5}
+经纬恒润 & 4.0 & 4.0 & 3.0 & 3.0 & 4.0 & \textbf{73.5} & 增持 & 3--4\% & 1.8--2.4\% \\
+\midrule
+\rowcolor{accentblue!15}
+\multicolumn{10}{l}{\textbf{【卫星组合 · 占权益总仓位 30\%】}} \\
+\rowcolor{accentblue!5}
+\multicolumn{10}{l}{\textit{半导体设备板块（卫星权重 30--35\%）}} \\
+\rowcolor{accentblue!5}
+北方华创 & 5.0 & 5.0 & 4.0 & 3.0 & 5.0 & \textbf{87.0} & 增持 & 4--5\% & 1.2--1.5\% \\
+\rowcolor{accentblue!5}
+中微公司 & 5.0 & 5.0 & 4.0 & 3.0 & 4.0 & \textbf{83.5} & 增持 & 3--4\% & 0.9--1.2\% \\
+\rowcolor{accentblue!5}
+拓荆科技 & 5.0 & 4.0 & 4.0 & 2.0 & 5.0 & \textbf{79.4} & 增持 & 3--4\% & 0.9--1.2\% \\
+\hline
+\rowcolor{accentblue!5}
+\multicolumn{10}{l}{\textit{医疗器械板块（卫星权重 25--30\%）}} \\
+\rowcolor{accentblue!5}
+联影医疗 & 5.0 & 4.0 & 3.0 & 3.0 & 4.0 & \textbf{78.0} & 增持 & 3--4\% & 0.9--1.2\% \\
+\rowcolor{accentblue!5}
+迈瑞医疗 & 3.0 & 5.0 & 4.0 & 4.0 & 3.0 & \textbf{77.0} & 增持 & 4--5\% & 1.2--1.5\% \\
+\hline
+\rowcolor{accentblue!5}
+\multicolumn{10}{l}{\textit{储能板块（卫星权重 20--25\%）}} \\
+\rowcolor{accentblue!5}
+阳光电源 & 4.5 & 4.5 & 3.5 & 3.0 & 4.0 & \textbf{78.5} & 增持 & 3--4\% & 0.9--1.2\% \\
+\rowcolor{accentblue!5}
+南网储能 & 3.5 & 4.0 & 4.0 & 3.5 & 3.0 & \textbf{72.5} & 增持 & 2--3\% & 0.6--0.9\% \\
+\bottomrule
+\end{tabularx}
+\vspace{0.3em}
+\sourcenote{本研究团队测算。综合得分为百分制，基于各板块差异化权重调整后的五维加权得分（详见表8B-4）。\textbf{评级与仓位建议与第八章完全一致}。核心+卫星合计16只标的（核心9+卫星7），卫星组合仅含"增持"评级标的。板块内按综合得分降序排列；跨板块分数因权重体系不同不可直接比较，投资评级以第八章配置建议为准。总仓位=组合内仓位×层级系数（核心60\% / 卫星30\%）。被精简的7只标的转入观察池，详见"未纳入核心/卫星组合的标的说明"小节}
+\end{exhibitbox}
+
+\subsection{板块配置与权重总览}
+
+下表汇总各板块的配置层级、标的名单、板块权重和标的数量，与第八章三层配置体系完全对应，方便投资者直接落地配置。
+
+\begin{exhibitbox}[表8B-20：各板块配置层级与权重建议总览]
+\centering
+\small
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\linewidth}{L{2.4cm} C{1.6cm} X C{1.4cm} C{1.2cm}}
+\toprule
+\textbf{板块} & \textbf{配置层级} & \textbf{标的（按权重从高到低）} & \textbf{板块内权重} & \textbf{标的数} \\
+\midrule
+\rowcolor{riskgreen!8}
+\multicolumn{5}{l}{\textbf{【核心组合 60\% · 9只标的】}} \\
+\rowcolor{riskgreen!5}
+功率半导体 & 核心组合 & 时代电气、扬杰科技、斯达半导 & 20--25\% & 3 \\
+\rowcolor{riskgreen!5}
+电力公用事业 & 核心组合 & 华能国际、国电电力、长江电力 & 15--20\% & 3 \\
+\rowcolor{riskgreen!5}
+智驾链零部件 & 核心组合 & 德赛西威、伯特利、经纬恒润 & 15--20\% & 3 \\
+\midrule
+\rowcolor{accentblue!8}
+\multicolumn{5}{l}{\textbf{【卫星组合 30\% · 7只标的】}} \\
+\rowcolor{accentblue!5}
+半导体设备 & 卫星组合 & 北方华创、中微公司、拓荆科技 & 30--35\% & 3 \\
+\rowcolor{accentblue!5}
+医疗器械 & 卫星组合 & 迈瑞医疗、联影医疗 & 25--30\% & 2 \\
+\rowcolor{accentblue!5}
+储能 & 卫星组合 & 阳光电源、南网储能 & 20--25\% & 2 \\
+\midrule
+\rowcolor{riskamber!8}
+\multicolumn{5}{l}{\textbf{【观察池 10\% · 30+只标的】}} \\
+\rowcolor{riskamber!5}
+核心/卫星延伸 & 观察池 & 华润微、新洁能、华电国际、保隆科技、芯源微、南微医学、科华数据 & 15--20\% & 7 \\
+\rowcolor{riskamber!5}
+动力电池 & 观察池 & 宁德时代、亿纬锂能、比亚迪、国轩高科 & 20--25\% & 4 \\
+\rowcolor{riskamber!5}
+创新药/CXO & 观察池 & 凯莱英、恒瑞医药、百济神州、康龙化成、信达生物 & 15--20\% & 5 \\
+\rowcolor{riskamber!5}
+半导体材/弹性 & 观察池 & 晶瑞电材、士兰微、卓胜微、芯原股份、苏博特 & 15--20\% & 5 \\
+\rowcolor{riskamber!5}
+智驾链二线 & 观察池 & 中科创达、科博达、四维图新、亚太股份 & 8--12\% & 4 \\
+\rowcolor{riskamber!5}
+医疗器械二线 & 观察池 & 艾德生物、鱼跃医疗、乐普医疗 & 8\% & 3 \\
+\rowcolor{riskamber!5}
+电力二线/绿电 & 观察池 & 三峡能源、国投电力、宝新能源 & 5--8\% & 3 \\
+\rowcolor{riskamber!5}
+人形机器人 & 观察池 & 绿的谐波、拓普集团、三花智控 & 5--8\% & 3 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队整理。板块内权重为对应配置层级中的权重。总仓位换算方法：总仓位 = 板块内权重 $\times$ 层级系数（核心60\%/卫星30\%/观察10\%）。示例：功率半导体占核心20--25\% $\times$ 60\%核心系数 = 占权益总仓位12--15\%。"核心/卫星延伸"方向承接核心/卫星组合中因同赛道beta重复或信念强度不足暂未纳入的7只标的，详见"未纳入核心/卫星组合的标的说明"小节}
+\end{exhibitbox}
+
+\subsection{选股结论与组合构建要点}
+
+综合五维评分结果，我们得出以下选股结论：
+
+\vspace{0.2em}
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{核心组合聚焦龙头+低估值}：核心组合9只标的均为各细分领域龙头或具备显著估值优势的公司。华能国际、时代电气、德赛西威三大首推标的分别代表了价值重估、成长低估、科技成长三种不同风格，组合搭配均衡。
+\item \textbf{少而精、重仓表达信念}：核心+卫星组合从23只精简至16只，首推标的单只总仓位提升至3--3.6\%。被精简的7只标的转入观察池"核心/卫星延伸"方向跟踪，升级路径明确，既保留研究积累又为核心仓位腾出重仓空间。
+\item \textbf{电力公用事业性价比最高}：华能国际以91分居首，核心驱动是极低的估值（PE 10.5x）和密集的催化剂（煤价下行+电价改革+AI用电），是当前市场预期差最大的标的之一。
+\item \textbf{科技成长标的高景气但估值约束明显}：功率半导体和半导体设备标的景气度评分普遍在4--5分，但估值评分普遍偏低（2--3分），高估值是压制评级的主要因素。选股时需重点关注估值与成长的匹配度。
+\item \textbf{卫星组合把握周期拐点}：半导体设备、医疗器械、储能三大卫星板块均处于周期底部或复苏初期，左侧布局价值突出。卫星组合仅纳入"增持"评级标的，确保弹性与确定性。随着行业景气度确认回升，有望从卫星组合升级至核心组合。
+\item \textbf{观察池储备充足弹药}：观察池涵盖10大方向30+只标的（含7只核心/卫星延伸标的），为组合提供丰富的后备选项。一旦行业景气度确认回升或个股基本面超预期，可按调仓规则升级至卫星或核心组合。
+\item \textbf{风险调整不可忽视}：部分标的基础评分不低，但受高估值、高负债、合规风险等因素制约，实际投资评级需下调。投资者在参考评分时应结合个股风险因素综合判断。
+\end{enumerate}
+
+\begin{keyinsight}[选股的本质是"概率×赔率×效率"的三维决策]
+五维评分框架本质上是一个三维决策模型：景气度+竞争格局决定胜率（概率），估值性价比决定赔率，催化剂强度决定时间效率（兑现速度）。财务质量是下行保护，相当于投资的"安全气囊"。优秀的投资组合需要在这三个维度之间找到平衡，而不是追求单一维度的极致。高胜率+合理赔率+明确催化的标的，才是最值得重仓的核心资产。
+\end{keyinsight}

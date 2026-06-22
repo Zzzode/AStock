@@ -28,6 +28,11 @@
 \setCJKmonofont{Heiti SC}
 \setmainfont{Times New Roman}
 
+% CJK 字体别名（兼容 ctex 风格命令）
+\newcommand{\kaishu}{\CJKfontspec{STKaiti}}
+\newcommand{\heiti}{\CJKfontspec{Heiti SC}}
+\newcommand{\songti}{\CJKfontspec{STSong}}
+
 % ============ 颜色（IB Navy/Grey palette） ============
 \usepackage{xcolor}
 \definecolor{navy}{HTML}{003366}
@@ -125,8 +130,9 @@
 \newcommand{\starfive}{$\bigstar\bigstar\bigstar\bigstar\bigstar$}
 \newcommand{\starfour}{$\bigstar\bigstar\bigstar\bigstar$}
 \newcommand{\starthree}{$\bigstar\bigstar\bigstar$}
-\newcommand{\sourcenote}[1]{\par{\scriptsize\color{mutedgrey}\textit{资料来源：#1}}\vspace{0.2em}}
-\newcommand{\qualitynote}[1]{\par{\scriptsize\color{mutedgrey}\textit{数据质量：#1}}\vspace{0.2em}}
+% 资料来源注：使用楷体（STKaiti）而非斜体，避免中文无斜体字形导致的字体回退警告
+\newcommand{\sourcenote}[1]{\par{\scriptsize\color{mutedgrey}\kaishu 资料来源：#1}\vspace{0.2em}}
+\newcommand{\qualitynote}[1]{\par{\scriptsize\color{mutedgrey}数据质量：#1}\vspace{0.2em}}
 \newcommand{\evidencetag}[1]{%
   \tikz[baseline=(x.base)]\node[
     xshift=0pt,

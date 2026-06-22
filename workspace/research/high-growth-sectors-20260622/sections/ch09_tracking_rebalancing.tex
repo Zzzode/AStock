@@ -1,0 +1,1680 @@
+% 第九章 动态跟踪与组合再平衡
+
+\chapter{动态跟踪与组合再平衡}
+
+投资的胜负往往不在买入那一刻，而在于持仓过程中的持续跟踪与动态调整。本报告覆盖的七大高景气板块均处于快速变化的产业环境中，技术迭代、政策变动、供需格局转换等因素随时可能改变投资逻辑。本章构建一套"日度监控—周度扫描—月度诊断—季度复盘"的四层跟踪体系，明确预警阈值、调仓触发条件、仓位管理规则与决策纪律，帮助投资者在波动的市场中保持理性、把握主动。
+
+\section{跟踪体系总览}
+
+\subsection{三层监控体系框架}
+
+我们构建\textbf{宏观—行业—个股}三层联动监控体系，自上而下把握市场脉络、自下而上验证投资逻辑。三层体系既相互独立又互为印证：宏观层决定仓位总基调，行业层决定板块配置方向，个股层决定具体标的买卖时点。
+
+\begin{exhibitbox}[图9-1：三层跟踪监控体系架构]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}[
+    level1/.style={rectangle, draw=navy, fill=navy!8, text width=3.6cm, align=center, minimum height=1.0cm, font=\small\bfseries, rounded corners=2pt},
+    level2/.style={rectangle, draw=accentblue, fill=accentblue!6, text width=2.8cm, align=center, minimum height=0.9cm, font=\footnotesize\bfseries, rounded corners=2pt},
+    level3/.style={rectangle, draw=steelgrey, fill=lightgrey, text width=2.4cm, align=center, minimum height=0.8cm, font=\scriptsize, rounded corners=2pt},
+    >=Stealth, thick
+]
+
+% 第一层：宏观
+\node[level1] (macro) at (0, 6.5) {宏观层\\Macro};
+\node[level2, below=0.8cm of macro, xshift=-4.0cm] (m1) {货币政策};
+\node[level2, below=0.8cm of macro] (m2) {经济景气};
+\node[level2, below=0.8cm of macro, xshift=4.0cm] (m3) {市场情绪};
+
+% 第二层：行业
+\node[level1] (sector) at (0, 3.2) {行业层\\Sector};
+\node[level2, below=0.8cm of sector, xshift=-4.0cm] (s1) {景气度指标};
+\node[level2, below=0.8cm of sector] (s2) {供需格局};
+\node[level2, below=0.8cm of sector, xshift=4.0cm] (s3) {竞争格局};
+
+% 第三层：个股
+\node[level1] (stock) at (0, -0.1) {个股层\\Stock};
+\node[level2, below=0.8cm of stock, xshift=-4.0cm] (k1) {业绩与估值};
+\node[level2, below=0.8cm of stock] (k2) {催化剂跟踪};
+\node[level2, below=0.8cm of stock, xshift=4.0cm] (k3) {资金与技术面};
+
+% 连接线
+\draw[->, navy] (macro) -- (sector);
+\draw[->, navy] (sector) -- (stock);
+\draw[->, steelgrey!60, dashed] (m1.south) -- (s1.north);
+\draw[->, steelgrey!60, dashed] (m2.south) -- (s2.north);
+\draw[->, steelgrey!60, dashed] (m3.south) -- (s3.north);
+\draw[->, steelgrey!60, dashed] (s1.south) -- (k1.north);
+\draw[->, steelgrey!60, dashed] (s2.south) -- (k2.north);
+\draw[->, steelgrey!60, dashed] (s3.south) -- (k3.north);
+
+% 右侧说明
+\node[right=3.0cm of macro, font=\tiny, text width=3.6cm, align=left, text=steelgrey] {
+    \textbf{决定仓位总基调}\\
+    货币松紧、风险偏好\\
+    市场风格、流动性
+};
+\node[right=3.0cm of sector, font=\tiny, text width=3.6cm, align=left, text=steelgrey] {
+    \textbf{决定板块配置方向}\\
+    景气周期、行业beta\\
+    政策导向、产业趋势
+};
+\node[right=3.0cm of stock, font=\tiny, text width=3.6cm, align=left, text=steelgrey] {
+    \textbf{决定个股买卖时点}\\
+    业绩验证、alpha来源\\
+    估值匹配、催化剂
+};
+
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{AStock研究团队整理。三层体系自上而下传导、自下而上验证，形成闭环监控。}
+\end{exhibitbox}
+
+三层监控体系的具体指标维度如下表所示，合计覆盖超过60项核心跟踪指标。
+
+\begin{exhibitbox}[表9-1：三层监控体系核心指标维度]
+\scriptsize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X l}
+\toprule
+\textbf{监控层级} & \textbf{核心指标维度} & \textbf{典型指标举例} \\
+\midrule
+\rowcolor{navy!6}
+& 货币政策 & MLF利率、LPR、DR007、M2增速、社融规模、超储率 \\
+\rowcolor{navy!6}
+& 财政政策 & 赤字率、专项债发行进度、基建投资增速、留抵退税 \\
+\rowcolor{navy!6}
+& 流动性 & 北向资金累计净流入、两融余额、新基金发行份额、ETF申赎净额 \\
+\rowcolor{navy!6}
+& 经济景气 & 制造业PMI（官方+财新）、工业增加值、发电量、非制造业PMI \\
+\rowcolor{navy!6}
+& 通胀水平 & CPI、PPI、核心CPI、PMI出厂价格指数、大宗商品价格指数 \\
+\rowcolor{navy!6}
+& 汇率与外部 & 人民币汇率（在岸/离岸）、美元指数、美联储联邦基金利率、10年期美债收益率 \\
+\rowcolor{navy!6}
+& 市场情绪 & A股成交额、涨跌停家数比、换手率、融资买入占比、股指期货基差 \\
+\rowcolor{navy!6}
+\multirow{-8}{*}{\textbf{宏观层}} & 政策风向 & 国务院常务会议、中央政治局会议、部委重磅文件、监管政策动向 \\
+\midrule
+\rowcolor{accentblue!6}
+& 景气度指标 & 行业营收/利润增速、产能利用率、出货量同比、在手订单同比 \\
+\rowcolor{accentblue!6}
+& 供需格局 & 新增产能投放、开工率、进口量、出口量、库存水平及周转天数 \\
+\rowcolor{accentblue!6}
+& 价格体系 & 产品均价、原材料成本、毛利率走势、价差分析（利润空间） \\
+\rowcolor{accentblue!6}
+& 竞争格局 & CR5/CR10集中度、价格战烈度、新进入者威胁、技术路线迭代 \\
+\rowcolor{accentblue!6}
+& 政策环境 & 产业政策、补贴与退坡、准入标准、政府采购、税收优惠 \\
+\rowcolor{accentblue!6}
+& 资本开支 & 行业扩产计划、固定资产投资增速、研发投入强度、专利申请数 \\
+\rowcolor{accentblue!6}
+\multirow{-7}{*}{\textbf{行业层}} & 库存周期 & 原材料库存、产成品库存、渠道库存、库存同比增速、库销比 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 业绩指标 & 营收增速、归母净利润增速、扣非增速、毛利率、净利率、ROE/ROIC \\
+\rowcolor{riskgreen!6}
+& 估值指标 & PE(TTM/动态)、PB、PS、PEG、EV/EBITDA、估值历史分位 \\
+\rowcolor{riskgreen!6}
+& 成长质量 & 经营现金流/净利润、应收账款增速、存货周转天数、三费费率 \\
+\rowcolor{riskgreen!6}
+& 催化剂 & 新品发布、重大合同、产能投产、技术突破、股权激励、股东增减持 \\
+\rowcolor{riskgreen!6}
+& 事件驱动 & 财报披露、业绩预告、机构调研纪要、分析师评级调整、监管问询 \\
+\rowcolor{riskgreen!6}
+& 资金面 & 北向持股比例变动、基金持仓变动、融资余额变动、大宗交易折价率 \\
+\rowcolor{riskgreen!6}
+\multirow{-7}{*}{\textbf{个股层}} & 技术面 & 均线系统（5/20/60/250日）、成交量、相对强弱（RSI）、筹码集中度 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。核心指标合计超过60项，形成完整的监控网络。}
+\end{exhibitbox}
+
+\subsection{跟踪频率与节奏}
+
+跟踪体系按照频率分为四个层级，不同频率的指标承担不同的功能定位：日度监控捕捉异动信号，周度扫描把握边际变化，月度诊断验证景气趋势，季度复盘调整战略配置。
+
+\begin{exhibitbox}[表9-2：四级跟踪频率与核心内容]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{频率} & \textbf{核心跟踪内容} & \textbf{功能定位} & \textbf{产出物} \\
+\midrule
+\rowcolor{riskred!8}
+\textbf{日度} & 组合净值与涨跌幅、核心标的价格异动（涨跌幅超5\%、成交量异常放大）、北向资金当日净流入/流出、大盘与板块指数表现、重要公告速览（业绩预告、重大合同、定增、减持、监管问询）、隔夜外盘与大宗商品、重大政策与事件突发 & 捕捉异动信号、预警触发 & 日度监控简报 \\
+\midrule
+\rowcolor{riskamber!8}
+\textbf{周度} & 板块资金流向监测（北向资金周度变动、融资余额变动、主力资金净流入）、行业高频数据更新（工业金属价格、光伏装机、新能源车销量等周度/旬度数据）、组合结构诊断（仓位分布、行业偏离度、前十大重仓占比、换手率估算）、估值分位周度扫描、交易拥挤度监测、周度要闻回顾与下周展望 & 把握边际变化、战术调整 & 周度景气扫描 \\
+\midrule
+\rowcolor{nvgreen!8}
+\textbf{月度} & 月度景气度评分卡（7大板块各5--8项核心指标打分，综合景气指数）、宏观经济数据跟踪（PMI、工业增加值、社融、CPI/PPI、进出口、房地产销售）、行业月度数据验证、组合业绩归因（Brinson模型）、盈利预期调整（一致预期EPS变动、上调/下调家数比、目标价变动）、月度事件复盘与下月日历 & 验证景气趋势、板块调仓 & 月度深度跟踪 \\
+\midrule
+\rowcolor{navy!8}
+\textbf{季度} & 季度深度复盘报告（收益率、波动率、最大回撤、夏普比率、信息比率）、持仓全体检（每只标的的投资逻辑验证、基本面变化、估值匹配度）、板块景气度深度评估（供需格局、竞争格局、价格周期、库存周期四维分析）、宏观政策框架评估、组合再平衡决策、投资逻辑刷新 & 调整战略配置、逻辑再验证 & 季度复盘报告 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。四级频率层层递进，形成"信号捕捉—边际验证—趋势确认—战略调整"的完整闭环。}
+\end{exhibitbox}
+
+\subsection{数据来源与工具平台}
+
+跟踪体系的有效性取决于数据质量与更新及时性。我们整合了以下八大类数据来源，建议投资者根据自身条件选择主力数据源，并设置至少1--2个备用数据源进行交叉验证。
+
+\begin{exhibitbox}[表9-3：核心数据来源一览]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{数据类别} & \textbf{主要来源} \\
+\midrule
+行情数据 & 东方财富、同花顺iFind、Wind、Tushare、AkShare（开源替代） \\
+宏观数据 & 国家统计局、央行、海关总署、财政部、Wind、CEIC \\
+行业数据 & 中汽协、中电联、SEMI、WSTS、乘联会、SMM、上海钢联、卓创资讯、产业在线 \\
+公司数据 & 巨潮资讯网（公告）、上交所/深交所官网、公司IR页面 \\
+资金流向 & 北向资金（港交所）、融资融券（沪深交易所）、主力资金（东方财富） \\
+研报与一致预期 & Wind一致预期、朝阳永续、卖方研报汇总（慧博、发现报告） \\
+政策法规 & 国务院、各部委官网、中国政府网、各省政务服务网 \\
+海外数据 & 美联储、Bloomberg、Yahoo Finance、TradingView、Seeking Alpha \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。建议优先选择官方和权威机构数据，第三方数据需交叉验证。}
+\end{exhibitbox}
+
+\begin{keyinsight}[跟踪管理工具建议]
+建议采用飞书多维表格或Notion数据库管理跟踪数据，设置以下核心视图：
+\begin{enumerate}[leftmargin=1.8em]
+\item \textbf{日度监控仪表盘}：价格异动+资金流向+要闻速览
+\item \textbf{周度景气度扫描}：7大板块横向对比，红绿灯展示
+\item \textbf{月度深度跟踪表}：全指标更新+归因分析
+\item \textbf{事件日历视图}：未来30/60/90天催化剂一览
+\item \textbf{预警记录台账}：预警时间、标的、原因、处置措施、后续验证
+\end{enumerate}
+跟踪表标准字段：指标名称、所属板块、指标分类（领先/同步/滞后）、数据频率、数据来源、上期值、本期值、环比变动、同比变动、趋势判断、景气度评分（1--5分）、备注与链接、更新日期。
+\end{keyinsight}
+
+\section{分板块核心跟踪指标}
+
+不同板块的景气驱动因素差异显著，跟踪指标也各有侧重。我们按照\textbf{领先指标—同步指标—滞后指标}的分类框架，为7大核心板块分别构建了指标体系。领先指标用于预判拐点，同步指标用于验证趋势，滞后指标用于确认周期。
+
+\subsection{功率半导体板块}
+
+功率半导体的景气周期由下游需求（新能源车、光伏、AI服务器）与产能供给共同决定。领先指标侧重需求端前瞻性数据，同步指标反映行业即时景气度，滞后指标验证盈利兑现程度。
+
+\begin{exhibitbox}[表9-4：功率半导体板块核心跟踪指标]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{指标分类} & \textbf{核心指标} & \textbf{数据来源/频率} & \textbf{领先性} \\
+\midrule
+\rowcolor{navy!6}
+& 新能源车销量与渗透率 & 中汽协/乘联会，月度 & 领先1--2月 \\
+\rowcolor{navy!6}
+& 光伏装机量 & 能源局，月度 & 领先1--2月 \\
+\rowcolor{navy!6}
+& AI服务器出货量预测 & IDC/Gartner，季度 & 领先1季 \\
+\rowcolor{navy!6}
+& 半导体行业销售额环比 & SEMI/WSTS，月度 & 领先1--2月 \\
+\rowcolor{navy!6}
+\multirow{-5}{*}{\textbf{领先指标}} & 晶圆厂资本开支计划 & 各公司公告，季度 & 领先2季 \\
+\midrule
+\rowcolor{accentblue!6}
+& IGBT/MOSFET价格指数 & 产业在线，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 晶圆厂产能利用率 & 产业链调研，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 行业库存周转天数 & 财报，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 头部企业营收增速 & 财报，季度 & 同步 \\
+\rowcolor{accentblue!6}
+\multirow{-5}{*}{\textbf{同步指标}} & 国产化率进度 & 产业链调研，季度 & 同步 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 行业毛利率变动 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 企业盈利兑现度（财报vs一致预期） & 财报+一致预期，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 产能投产进度 & 公司公告，事件驱动 & 滞后确认 \\
+\rowcolor{riskgreen!6}
+& 应收账款周转天数 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+\multirow{-5}{*}{\textbf{滞后指标}} & 设备招标中标量 & 政府采购网，月度 & 滞后验证 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。领先性为指标相对行业景气拐点的时间差估算值。}
+\end{exhibitbox}
+
+\subsection{电力公用事业板块}
+
+电力公用事业的核心驱动因素是煤价（成本端）、用电量（需求端）和电价政策（盈利端）。煤价作为最重要的领先指标，对盈利的领先期约1个月。
+
+\begin{exhibitbox}[表9-5：电力公用事业板块核心跟踪指标]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{指标分类} & \textbf{核心指标} & \textbf{数据来源/频率} & \textbf{领先性} \\
+\midrule
+\rowcolor{navy!6}
+& 煤炭价格指数（CCI5500） & Wind/卓创资讯，日度 & 领先1月 \\
+\rowcolor{navy!6}
+& 工业增加值 & 统计局，月度 & 领先1月 \\
+\rowcolor{navy!6}
+& 空调开机率/家电排产 & 产业在线，旬度 & 领先1月 \\
+\rowcolor{navy!6}
+& 地产新开工面积 & 统计局，月度 & 领先1--2月 \\
+\rowcolor{navy!6}
+\multirow{-5}{*}{\textbf{领先指标}} & 电价政策动向 & 发改委，事件驱动 & 领先1--2季 \\
+\midrule
+\rowcolor{accentblue!6}
+& 全社会用电量 & 中电联，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 火电发电量 & 中电联/统计局，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 机组利用小时数 & 中电联，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 电力现货价格 & 各交易中心，日度 & 同步 \\
+\rowcolor{accentblue!6}
+\multirow{-5}{*}{\textbf{同步指标}} & 工商业用电增速 & 中电联，月度 & 同步 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 公司营收与利润 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 煤电联动结算价 & 月度，滞后1月 & 滞后1月 \\
+\rowcolor{riskgreen!6}
+& 火电毛利率 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& ROE/ROIC变动 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+\multirow{-5}{*}{\textbf{滞后指标}} & 分红率与股息率 & 年报，年度 & 滞后确认 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。煤价是电力板块最重要的领先指标，敏感度最高。}
+\end{exhibitbox}
+
+\subsection{智驾链零部件板块}
+
+智驾链的核心驱动力是新能源车渗透率提升与智驾功能升级，政策准入标准与技术路线变化是重要的外部变量。
+
+\begin{exhibitbox}[表9-6：智驾链零部件板块核心跟踪指标]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{指标分类} & \textbf{核心指标} & \textbf{数据来源/频率} & \textbf{领先性} \\
+\midrule
+\rowcolor{navy!6}
+& 新能源车销量与智驾版占比 & 乘联会/交强险，月度 & 领先1月 \\
+\rowcolor{navy!6}
+& L3/L4政策落地进度 & 工信部/地方政府，事件驱动 & 领先1--2季 \\
+\rowcolor{navy!6}
+& 激光雷达/域控制器出货预测 & Yole/Canalys，季度 & 领先1季 \\
+\rowcolor{navy!6}
+& 车企智驾车型规划 & 车企发布会，事件驱动 & 领先1--2季 \\
+\rowcolor{navy!6}
+\multirow{-5}{*}{\textbf{领先指标}} & 芯片缺货缓解进度 & 产业链调研，月度 & 领先1月 \\
+\midrule
+\rowcolor{accentblue!6}
+& 域控制器出货量 & 公司公告，月度/季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 激光雷达装车量 & 乘联会调研，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 行业ASP变动 & 产业链调研，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 头部企业订单能见度 & 公司交流，季度 & 同步 \\
+\rowcolor{accentblue!6}
+\multirow{-5}{*}{\textbf{同步指标}} & 智驾渗透率分级别（L2+/L3） & 月度 & 同步 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 企业营收与毛利率 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 单车价值量验证 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 客户拓展进度 & 公司公告，事件驱动 & 滞后确认 \\
+\rowcolor{riskgreen!6}
+& 研发投入产出比 & 财报，年度 & 滞后确认 \\
+\rowcolor{riskgreen!6}
+\multirow{-5}{*}{\textbf{滞后指标}} & 质量/召回事件 & 行业新闻，事件驱动 & 滞后确认 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。智驾链属于高速成长板块，渗透率数据是最核心的跟踪变量。}
+\end{exhibitbox}
+
+\subsection{半导体设备材料板块}
+
+半导体设备材料的景气周期由晶圆厂扩产节奏和国产替代进度双重驱动，设备招标数据是最重要的前瞻性指标。
+
+\begin{exhibitbox}[表9-7：半导体设备材料板块核心跟踪指标]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{指标分类} & \textbf{核心指标} & \textbf{数据来源/频率} & \textbf{领先性} \\
+\midrule
+\rowcolor{navy!6}
+& 晶圆厂扩产计划 & 公司公告，季度 & 领先2--3季 \\
+\rowcolor{navy!6}
+& 大基金三期投资进度 & 事件驱动 & 领先1--2季 \\
+\rowcolor{navy!6}
+& 设备招标公告 & 政府采购网/公司公告，月度 & 领先1--2季 \\
+\rowcolor{navy!6}
+& 国产化率提升目标 & 政策文件，事件驱动 & 领先1季 \\
+\rowcolor{navy!6}
+\multirow{-5}{*}{\textbf{领先指标}} & 下游晶圆厂产能利用率 & SEMI，季度 & 领先1季 \\
+\midrule
+\rowcolor{accentblue!6}
+& 设备中标金额与台数 & 公司公告/招标网，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 在手订单/合同负债 & 财报，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 行业营收增速 & SEMI/财报，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 材料进口替代进度 & 海关数据，月度 & 同步 \\
+\rowcolor{accentblue!6}
+\multirow{-5}{*}{\textbf{同步指标}} & 关键设备验证进度 & 公司公告，事件驱动 & 同步 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 毛利率与净利率 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 研发投入产出比 & 财报，年度 & 滞后确认 \\
+\rowcolor{riskgreen!6}
+& 客户结构变化 & 财报披露，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 存货周转与交付周期 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+\multirow{-5}{*}{\textbf{滞后指标}} & 应收账款账龄结构 & 财报，季度 & 滞后1季 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。设备招标数据领先企业营收约1--2个季度，是最重要的前瞻指标。}
+\end{exhibitbox}
+
+\subsection{医疗器械板块}
+
+医疗器械的景气驱动因素包括医保政策、医院采购周期、设备更新改造政策和海外出口需求。集采政策是最大的不确定性来源。
+
+\begin{exhibitbox}[表9-8：医疗器械板块核心跟踪指标]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{指标分类} & \textbf{核心指标} & \textbf{数据来源/频率} & \textbf{领先性} \\
+\midrule
+\rowcolor{navy!6}
+& 医保基金支出增速 & 医保局，季度 & 领先1季 \\
+\rowcolor{navy!6}
+& 设备更新改造政策 & 卫健委，事件驱动 & 领先1--2季 \\
+\rowcolor{navy!6}
+& 医疗机构诊疗量恢复 & 卫健委，月度 & 领先1月 \\
+\rowcolor{navy!6}
+& 创新医疗器械特别审批 & NMPA，事件驱动 & 领先1季 \\
+\rowcolor{navy!6}
+\multirow{-5}{*}{\textbf{领先指标}} & 海外订单增速 & 海关/公司交流，月度 & 领先1月 \\
+\midrule
+\rowcolor{accentblue!6}
+& 高值耗材集采中标结果 & 各省医保局，事件驱动 & 同步 \\
+\rowcolor{accentblue!6}
+& 医疗设备招标量 & 政府采购网，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 行业营收增速 & 财报，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 出口金额与增速 & 海关总署，月度 & 同步 \\
+\rowcolor{accentblue!6}
+\multirow{-5}{*}{\textbf{同步指标}} & 住院人次/手术量 & 卫健委，季度 & 同步 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 毛利率与净利率 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 集采对实际收入影响 & 财报，季度 & 滞后1--2季 \\
+\rowcolor{riskgreen!6}
+& 应收账款周转 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 研发管线进展 & 公司公告，事件驱动 & 滞后确认 \\
+\rowcolor{riskgreen!6}
+\multirow{-5}{*}{\textbf{滞后指标}} & FDA/CE认证进度 & 公告，事件驱动 & 滞后确认 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。集采政策对板块估值影响深远，需作为头等大事跟踪。}
+\end{exhibitbox}
+
+\subsection{动力电池龙头板块}
+
+动力电池的景气周期由新能源车需求和储能需求共同驱动，碳酸锂价格是影响行业盈利的核心变量。
+
+\begin{exhibitbox}[表9-9：动力电池龙头板块核心跟踪指标]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{指标分类} & \textbf{核心指标} & \textbf{数据来源/频率} & \textbf{领先性} \\
+\midrule
+\rowcolor{navy!6}
+& 碳酸锂价格走势 & SMM/上海钢联，日度 & 领先1--2月 \\
+\rowcolor{navy!6}
+& 新能源车销量预测 & 中汽协/乘联会，月度 & 领先1月 \\
+\rowcolor{navy!6}
+& 储能装机量 & 能源局，月度 & 领先1月 \\
+\rowcolor{navy!6}
+& 上游锂矿扩产进度 & 公司公告，季度 & 领先2--3季 \\
+\rowcolor{navy!6}
+\multirow{-5}{*}{\textbf{领先指标}} & 新车型发布与预售 & 车企，事件驱动 & 领先1月 \\
+\midrule
+\rowcolor{accentblue!6}
+& 动力电池装车量 & 中汽协/SNE，月度 & 同步 \\
+\rowcolor{accentblue!6}
+& 动力电池价格指数 & 鑫椤资讯/SMM，周度 & 同步 \\
+\rowcolor{accentblue!6}
+& 行业产能利用率 & 产业链调研，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 企业出货量 & 公司公告，月度 & 同步 \\
+\rowcolor{accentblue!6}
+\multirow{-5}{*}{\textbf{同步指标}} & 库存天数 & 产业链调研，月度 & 同步 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 毛利率与净利率 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 单位盈利（元/Wh） & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 客户结构变化 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 海外收入占比 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+\multirow{-5}{*}{\textbf{滞后指标}} & 产能出清进度 & 行业新闻/公告，事件驱动 & 滞后确认 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。碳酸锂价格是动力电池板块盈利的核心变量，领先盈利拐点约1--2个月。}
+\end{exhibitbox}
+
+\subsection{创新药龙头板块}
+
+创新药的投资逻辑由研发管线进展、医保政策、海外授权三大因素驱动，研发周期长、不确定性高是板块的典型特征。
+
+\begin{exhibitbox}[表9-10：创新药龙头板块核心跟踪指标]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l l}
+\toprule
+\textbf{指标分类} & \textbf{核心指标} & \textbf{数据来源/频率} & \textbf{领先性} \\
+\midrule
+\rowcolor{navy!6}
+& IND申报数量 & NMPA，月度 & 领先1--2年 \\
+\rowcolor{navy!6}
+& 一级市场融资金额 & 医药魔方，季度 & 领先1--2年 \\
+\rowcolor{navy!6}
+& License-out交易 & 公开信息，事件驱动 & 领先1--2季 \\
+\rowcolor{navy!6}
+& 医保谈判政策预期 & 医保局，事件驱动 & 领先1季 \\
+\rowcolor{navy!6}
+\multirow{-5}{*}{\textbf{领先指标}} & FDA审批趋势 & FDA，月度 & 领先1季 \\
+\midrule
+\rowcolor{accentblue!6}
+& NDA/BLA获批数量 & NMPA/FDA，事件驱动 & 同步 \\
+\rowcolor{accentblue!6}
+& 临床三期数据读出 & 公司公告，事件驱动 & 同步 \\
+\rowcolor{accentblue!6}
+& 重点品种销售额 & 财报/PDB，季度 & 同步 \\
+\rowcolor{accentblue!6}
+& 研发投入金额 & 财报，季度 & 同步 \\
+\rowcolor{accentblue!6}
+\multirow{-5}{*}{\textbf{同步指标}} & 海外授权首付款 & 公告，事件驱动 & 同步 \\
+\midrule
+\rowcolor{riskgreen!6}
+& 医保谈判结果与降价幅度 & 医保局，事件驱动 & 滞后1月执行 \\
+\rowcolor{riskgreen!6}
+& 商业化品种放量进度 & 财报，季度 & 滞后1--2季 \\
+\rowcolor{riskgreen!6}
+& 毛利率与销售费用率 & 财报，季度 & 滞后1季 \\
+\rowcolor{riskgreen!6}
+& 专利到期与仿制药威胁 & 公开信息，事件驱动 & 滞后确认 \\
+\rowcolor{riskgreen!6}
+\multirow{-5}{*}{\textbf{滞后指标}} & 研发投入产出比（管线成功率） & 年度 & 滞后确认 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。创新药板块研发周期长，IND数据领先商业化可达1--2年，适合长期布局。}
+\end{exhibitbox}
+
+\section{预警体系与阈值设定}
+
+跟踪的目的是及时发现风险、捕捉机会。我们建立三级预警体系——红色预警、橙色预警、黄色预警，针对不同类型的风险设定明确的量化阈值和应对措施，避免情绪化决策。
+
+\subsection{三级预警机制概述}
+
+\begin{exhibitbox}[表9-11：三级预警等级定义与响应机制]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{c l X l}
+\toprule
+\textbf{预警等级} & \textbf{颜色标识} & \textbf{触发条件} & \textbf{响应要求} \\
+\midrule
+\rowcolor{riskred!15}
+\textbf{红色} & \textbf{立即行动} & 核心逻辑可能受损、基本面发生重大变化、风险敞口较大 & 24小时内做出决策，立即执行 \\
+\rowcolor{riskamber!15}
+\textbf{橙色} & \textbf{高度关注} & 出现明确的负面信号，需要启动深度评估 & 48小时内完成评估，决定是否调整 \\
+\rowcolor{riskgreen!15}
+\textbf{黄色} & \textbf{持续观察} & 出现异常波动或边际变化，尚不足以改变投资结论 & 纳入重点观察清单，持续跟踪验证 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。三级预警体系旨在以制度化方式应对市场波动，避免情绪化决策。}
+\end{exhibitbox}
+
+\subsection{核心预警阈值与应对措施}
+
+我们从价格风险、基本面风险、政策风险、市场风险、估值风险、资金面风险、公司治理风险、逻辑风险、组合风险、集中度风险十个维度设定了12项核心预警指标。
+
+\begin{exhibitbox}[表9-12：核心预警指标与阈值设定]
+\scriptsize
+\setlength{\tabcolsep}{2.5pt}
+\renewcommand{\arraystretch}{1.08}
+\begin{tabularx}{\linewidth}{l l l >{\centering\arraybackslash}p{2.5em} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{预警指标} & \textbf{风险类别} & \textbf{触发阈值} & \textbf{预警级别} & \textbf{应对措施} \\
+\midrule
+\rowcolor{riskred!6}
+个股单日跌幅 & 价格风险 & 单日跌幅超7\% 或 3日累计跌幅超15\% & \cellcolor{riskred!25}\textbf{红色} & 立即排查原因，评估基本面是否变化，判断是系统性回调还是个股风险 \\
+\rowcolor{riskamber!6}
+个股月跌幅 & 价格风险 & 单月跌幅超20\% 或 相对板块超额收益为负超10\% & \cellcolor{riskamber!25}\textbf{橙色} & 启动深度复盘，评估核心逻辑是否受损，决定是否减仓或止损 \\
+\rowcolor{riskred!6}
+业绩低于预期 & 基本面风险 & 单季度净利润低于一致预期15\%以上 & \cellcolor{riskred!25}\textbf{红色} & 立即下修盈利预测，重新评估估值，考虑减仓或调出组合 \\
+\rowcolor{riskgreen!6}
+业绩低于预期（轻度） & 基本面风险 & 单季度净利润低于一致预期5\%--15\% & \cellcolor{riskgreen!25}\textbf{黄色} & 关注下季度指引，评估是一次性因素还是趋势性变化 \\
+\rowcolor{riskred!6}
+行业政策重大变化 & 政策风险 & 对行业盈利模式产生根本性影响的政策（如集采超预期降价、管制升级） & \cellcolor{riskred!25}\textbf{红色} & 重新评估板块投资逻辑，调整配置比例，必要时大幅减仓 \\
+\rowcolor{riskamber!6}
+交易拥挤度 & 市场风险 & 板块换手率历史分位超80\% 或 基金持仓超配幅度超历史均值+2倍标准差 & \cellcolor{riskamber!25}\textbf{橙色} & 降低板块配置比例，分批止盈，警惕回调风险 \\
+\rowcolor{riskamber!6}
+估值分位过高 & 估值风险 & 板块PE/PB处于历史90\%分位以上 或 PEG大于2.0 & \cellcolor{riskamber!25}\textbf{橙色} & 评估业绩增速能否消化估值，考虑逐步降低仓位 \\
+\rowcolor{riskgreen!6}
+北向资金大幅流出 & 资金面风险 & 北向资金单周净流出超板块流通市值的1\% & \cellcolor{riskgreen!25}\textbf{黄色} & 观察流出持续性，判断是外资整体减持还是个股原因 \\
+\rowcolor{riskamber!6}
+大股东减持 & 公司治理风险 & 控股股东/实控人/核心股东减持比例超总股本3\% & \cellcolor{riskamber!25}\textbf{橙色} & 评估减持原因，结合估值判断是股价信号还是正常套现 \\
+\rowcolor{riskred!6}
+核心逻辑证伪 & 逻辑风险 & 投资核心假设被推翻（如技术路线被颠覆、市占率趋势性下滑） & \cellcolor{riskred!25}\textbf{红色} & 立即调出组合或大幅减仓，不可恋战 \\
+\rowcolor{riskamber!6}
+组合最大回撤 & 组合风险 & 组合净值从高点回撤超15\% & \cellcolor{riskamber!25}\textbf{橙色} & 检查持仓结构，评估是否需要降仓位或调整结构 \\
+\rowcolor{riskgreen!6}
+单一个股仓位超标 & 集中度风险 & 单一个股市值占组合比例超10\%（因股价上涨导致） & \cellcolor{riskgreen!25}\textbf{黄色} & 评估是否需要止盈减仓，将仓位控制在目标范围内 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。阈值可根据市场环境和个人风险偏好适当调整，但需保持纪律性。}
+\end{exhibitbox}
+
+\subsection{预警响应与验证机制}
+
+预警触发后必须有明确的响应流程，否则预警体系就失去了意义。我们建议建立"预警触发—原因排查—影响评估—决策执行—后续验证"的五步法响应机制。
+
+\begin{keyinsight}[预警响应五步法]
+\begin{enumerate}[leftmargin=1.8em]
+\item \textbf{预警触发}：监控体系自动或人工发现预警信号，第一时间记录预警时间、标的、触发指标、阈值偏离度
+\item \textbf{原因排查}：在规定时间内完成原因排查，区分"基本面驱动"还是"情绪/资金面驱动"，至少2个信息源交叉验证
+\item \textbf{影响评估}：评估影响程度（轻微/中度/严重）和影响周期（短期/中期/长期），更新盈利预测和目标价
+\item \textbf{决策执行}：根据评估结果决定操作方向（持有/减仓/清仓/加仓）和幅度，严格按照调仓规则执行
+\item \textbf{后续验证}：预警处理后持续跟踪至少2周，验证当初的判断是否正确，记录到预警台账中用于复盘改进
+\end{enumerate}
+\end{keyinsight}
+
+\section{组合再平衡机制}
+
+再平衡是投资纪律的核心体现。我们将再平衡分为三种类型——定期再平衡、事件驱动调仓和战术性调整，三者在触发条件、调整幅度和决策流程上各有不同，不可混淆使用。
+
+\subsection{三种再平衡类型对比}
+
+\begin{exhibitbox}[表9-13：三种再平衡类型对比]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X X X}
+\toprule
+\textbf{维度} & \textbf{定期再平衡} & \textbf{事件驱动调仓} & \textbf{战术性调整} \\
+\midrule
+\textbf{触发方式} & 固定时间窗口触发 & 重大事件发生时即时触发 & 中观景气度边际变化触发 \\
+\textbf{频率} & 季度（每年4次）+ 半年度深度评估（每年2次） & 不定期，按需触发 & 月度评估，季度内可调整1--2次 \\
+\textbf{调整幅度} & 偏离阈值内的微调，单次5个百分点以内 & 灵活，可大可小，取决于事件影响 & 单次不超过5个百分点，季度累计不超过10个百分点 \\
+\textbf{决策依据} & 仓位偏离度、估值偏离度、景气度变化 & 事件对基本面的量化影响 & 景气度边际变化、估值相对吸引力、风格切换 \\
+\textbf{可逆性} & 机械性调整，不涉及方向性判断 & 根据事件性质判断，可能是永久也可能是暂时 & 明确可逆，设有期限和回归条件 \\
+\textbf{执行节奏} & 3--5个交易日分批完成 & 迅速果断，48小时内完成决策 & 温和渐进，1--2周内完成 \\
+\textbf{典型场景} & 季度末检查板块仓位偏离 & 业绩大超预期/黑天鹅事件/重大政策 & 风格切换预判、板块轮动、流动性环境变化 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。三种再平衡类型各有适用场景，决策依据和执行方式不同，不宜混用。}
+\end{exhibitbox}
+
+\subsection{定期再平衡规则}
+
+定期再平衡的核心目的是控制风险暴露，避免单一板块或个股仓位过度偏离目标配置。它不是为了追求收益最大化，而是为了确保组合风险特征与投资者风险承受能力匹配。
+
+\begin{exhibitbox}[表9-14：定期再平衡触发条件与操作规则]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l l X}
+\toprule
+\textbf{触发条件} & \textbf{阈值} & \textbf{操作规则} \\
+\midrule
+板块仓位偏离目标配置 & 偏离超过 $\pm 5\%$ & 调整回目标配置的 $\pm 2\%$ 以内，分批执行 \\
+单一个股占组合比例 & 触及上限（8\%--10\%）或下限 & 触及上限则减仓至上限以内，触及下限视情况补仓或清仓 \\
+现金仓位占比 & 超出5\%--15\%目标区间 & 现金过高则配置到低估板块，现金过低则减持高估标的补充现金 \\
+半年度深度评估 & 每年6月/12月 & 重新审视各板块中长期景气度，调整目标配置比例，可做较大幅度调整 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.3cm}
+\textcolor{navy}{\textbf{再平衡执行原则：}}
+\begin{enumerate}[leftmargin=1.8em, font=\scriptsize]
+\item \scriptsize 再平衡操作分批执行，3--5个交易日内完成，避免集中冲击成本
+\item \scriptsize 优先使用新增资金/分红资金进行再平衡，减少卖出摩擦
+\item \scriptsize 若偏离未超过阈值，可暂不调整，等待下一个评估窗口，避免过度交易
+\item \scriptsize 再平衡时同步完成持仓全体检，更新投资备忘录
+\end{enumerate}
+\sourcenote{AStock研究团队构建。定期再平衡的核心是"纪律优先、顺势微调"。}
+\end{exhibitbox}
+
+\subsection{事件驱动调仓触发条件}
+
+当发生可能对投资标的基本面产生实质性影响的重大事件时，应立即启动事件驱动调仓流程，不必等待定期再平衡窗口。
+
+\begin{exhibitbox}[表9-15：事件驱动调仓触发条件]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{事件类型} & \textbf{触发条件} \\
+\midrule
+业绩超预期/不及预期 & 单季度归母净利润偏离一致预期20\%以上；营收或毛利率显著偏离预期且影响全年业绩；公司上调/下调全年业绩指引 \\
+公司重大公告 & 并购重组、定增募资、实控人变更、核心技术人员变动、重大合同签订、股权激励方案 \\
+行业政策重大调整 & 产业政策变化、监管政策收紧或放松、补贴政策调整、准入标准变化、集采结果公布 \\
+宏观经济数据异常 & GDP、CPI、社融、进出口等核心宏观数据显著偏离市场预期（偏离幅度超30\%） \\
+黑天鹅事件 & 财务造假、产品质量事故、实控人被调查、核心技术失效、重大诉讼仲裁 \\
+估值极端化 & 单标的PE/PB触及历史5\%或95\%分位数；板块整体估值触及历史10\%或90\%分位 \\
+股价剧烈波动 & 单周涨跌幅超过20\%且无明确基本面原因；成交量异常放大3倍以上 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。事件驱动调仓要求快速响应，但决策过程仍需遵循三步法流程，不可草率。}
+\end{exhibitbox}
+
+\subsection{战术性调整原则}
+
+战术性调整是基于中观层面的景气度边际变化和估值相对吸引力变化，在战略配置框架内进行的灵活调整。它具有可逆性，设定期限和回归条件。
+
+\begin{exhibitbox}[表9-16：战术性调整的触发条件与约束]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{调整方向} & \textbf{触发条件与操作规则} \\
+\midrule
+板块间轮动 & 某板块景气度出现边际改善（连续2个月数据向上），上调配置比例2--3个百分点；反之则下调。总仓位不变，板块间腾挪。 \\
+估值再平衡 & 板块间估值差异极端化（相对估值分位差超60个百分点），超配低估板块、低配高估板块。需有景气度配合，不可仅因估值便宜而买入。 \\
+风格切换应对 & 市场风格从成长转向价值（或反之）时，适度调整组合风格暴露。判断依据：经济预期变化、利率走势、流动性环境、政策导向。 \\
+流动性环境应对 & 货币宽松周期中适度提升仓位和久期，增加成长板块配置；货币收紧周期中降低仓位、增加防御性配置。 \\
+\midrule
+\textbf{约束条件} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 战术调整总幅度不超过组合净值的15\%，保持战略配置的稳定性
+\item 单次调整幅度不超过5个百分点
+\item 设定期限（通常1--3个月）和回归条件，到期或条件触发后回归战略配置
+\item 同一方向上季度内最多调整2次，避免频繁切换
+\end{itemize}
+\\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。战术性调整的核心是"可逆、有限、有据"，不可演变为频繁交易。}
+\end{exhibitbox}
+
+\section{五大调仓场景与操作指南}
+
+不同场景下的调仓逻辑和操作方法差异显著。本节详细阐述五大高频调仓场景的触发条件、评估要点、操作策略和仓位调整幅度，并附典型案例说明。
+
+\subsection{场景A：业绩超预期/不及预期}
+
+业绩披露是调仓最常见的触发因素。财报数据是验证投资逻辑最直接的证据，超预期或不及预期都需要及时评估和应对。
+
+\begin{exhibitbox}[表9-17：业绩超预期/不及预期调仓指南]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{维度} & \textbf{内容} \\
+\midrule
+\textbf{触发条件} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 单季度归母净利润偏离一致预期20\%以上
+\item 营收或毛利率显著偏离预期且影响全年业绩
+\item 公司上调/下调全年业绩指引
+\item 连续两个季度业绩超预期/不及预期（趋势性确认）
+\end{itemize}
+\\
+\midrule
+\textbf{评估要点} & 
+量化业绩超预期幅度：轻度（偏离20\%--30\%）、中度（偏离30\%--50\%）、重度（偏离50\%以上）
+
+判断超预期性质：收入端驱动（更可持续）vs 费用端驱动（一次性因素）
+
+区分趋势性 vs 一次性：判断超预期/不及预期是否会延续到后续季度
+
+更新未来2年盈利预测，重估目标价
+\\
+\midrule
+\textbf{操作策略} & 
+\textbf{超预期时}：开盘先观察30分钟，确认市场反应方向后分批执行，避免追高买入。若开盘涨幅已超过超预期幅度对应的合理涨幅，则等待回调再介入。
+
+\textbf{不及预期时}：尽快执行减仓，优先卖出确定性低的仓位。若低开幅度已充分反映利空（如低开10\%以上且业绩下修15\%），可不必恐慌割肉，分批减仓。
+\\
+\midrule
+\textbf{仓位调整} & 
+\textbf{超预期加仓}：轻度超预期 +20\%仓位；中度超预期 +30\%--40\%仓位；重度超预期且估值仍合理 +50\%--60\%仓位
+
+\textbf{不及预期减仓}：轻度不及预期 -20\%仓位；中度不及预期 -40\%仓位；重度不及预期或基本面恶化 -60\%至-100\%仓位
+
+\textbf{关键原则}：若估值已提前price in（如财报前已连续上涨），则调整幅度减半
+\\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+
+\textbf{典型案例：}某半导体公司Q2净利润超预期40\%，且收入增长50\%为内生驱动，全年上修指引30\%。当前PE为历史60\%分位。评估结果：中度加仓 +40\%，分2笔在后续3个交易日执行。
+\sourcenote{AStock研究团队构建。业绩调仓需结合估值水平和预期差幅度综合判断。}
+\end{exhibitbox}
+
+\subsection{场景B：估值触及极端水平}
+
+估值是安全边际的核心。当估值触及历史极端水平时，无论基本面是否变化，都应启动调仓评估。
+
+\begin{exhibitbox}[表9-18：估值极端水平调仓指南]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{维度} & \textbf{内容} \\
+\midrule
+\textbf{触发条件} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 单标的PE/PB触及历史5\%分位（极度低估）或95\%分位（极度高估）
+\item 板块整体估值触及历史10\%或90\%分位
+\item 股价较目标价偏离度超过正负30\%
+\item 关键估值指标（PS、EV/EBITDA、PEG）同时出现极端信号
+\end{itemize}
+\\
+\midrule
+\textbf{评估要点} & 
+判断估值极端的原因：是基本面变化导致的合理重估，还是市场情绪推动的误定价
+
+对比同行业公司估值水平，判断是个股问题还是板块问题
+
+结合业绩增速判断PEG合理性，区分"贵得有道理"和"泡沫化"
+
+考察估值极端状态的可持续性：高估值是否有持续的业绩高增长支撑，低估值是否有基本面改善的催化剂
+\\
+\midrule
+\textbf{操作策略} & 
+\textbf{估值高估时}：分批减仓，每上涨一定比例卖出一部分，不追求卖在最高点。保留底仓观察，避免完全踏空。
+
+\textbf{估值低估时}：分批建仓，设置建仓区间和时间窗口。左侧布局需有耐心，不可一次性满仓，为可能的进一步下跌预留弹药。
+\\
+\midrule
+\textbf{仓位调整} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 极度高估（95\%分位以上）：减仓50\%--70\%，保留底仓观察
+\item 高度高估（90\%--95\%分位）：减仓20\%--30\%
+\item 极度低估（5\%分位以下）且基本面无恶化：加仓20\%--40\%
+\item 中度低估（5\%--15\%分位）：加仓10\%--20\%
+\end{itemize}
+\vspace{0.3em}
+\textbf{关键原则}：估值回归需要催化剂，不可仅凭估值指标交易，需结合景气度判断。"低估"可能变成"更低估"，"高估"可能继续上涨。
+\\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+
+\textbf{典型案例：}某新能源标的PE触及历史98\%分位，PEG超过2.5，行业渗透率已达60\%增速放缓。评估结果：估值泡沫化，减仓60\%，分3笔在2周内执行，保留20\%底仓观察。
+\sourcenote{AStock研究团队构建。估值调仓需谨慎，估值极端可能是市场错配，也可能是基本面变化的合理反映。}
+\end{exhibitbox}
+
+\subsection{场景C：行业景气度拐点}
+
+行业景气度拐点是调仓最重要的时机之一，往往对应着板块的重大配置机会或风险。正确识别拐点、果断行动，可以获得显著的超额收益。
+
+\begin{exhibitbox}[表9-19：行业景气度拐点调仓指南]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{维度} & \textbf{内容} \\
+\midrule
+\textbf{触发条件} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 行业月度/季度数据出现趋势性反转（销量、价格、开工率等）
+\item 行业龙头公司财报集体反映景气度变化（3家以上印证）
+\item 产业链上下游数据交叉验证（上游订单、中游出货、下游需求）
+\item 库存周期出现拐点（主动补库/去库向被动补库/去库转变）
+\end{itemize}
+\\
+\midrule
+\textbf{评估要点} & 
+判断景气周期位置：复苏期/繁荣期/衰退期/萧条期
+
+判断拐点性质：短期扰动还是中期趋势反转（持续3个季度以上）
+
+测算景气度变化对板块盈利的影响幅度：营收增速变化、毛利率变化、利润弹性
+
+识别板块内弹性最大的标的和最稳健的标的，区分进攻型和防御型配置
+
+\textbf{拐点确认要求}：至少2--3个数据点验证，不可仅凭单月数据下结论
+\\
+\midrule
+\textbf{操作策略} & 
+\textbf{景气向上拐点}：先加仓龙头（确定性高），再逐步扩散到弹性标的。拐点初期仓位可不必太重，随着验证数据增加逐步加仓。
+
+\textbf{景气向下拐点}：先减仓弹性标的（跌幅大），再逐步减持龙头。景气下行初期要果断，不要心存侥幸。
+\\
+\midrule
+\textbf{仓位调整} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 景气向上拐点确认：板块配置比例上调3--5个百分点，板块内加仓弹性标的+30\%至+50\%
+\item 景气向下拐点确认：板块配置比例下调3--5个百分点，整体减仓30\%--50\%，保留龙头底仓
+\item 拐点存疑、数据反复：保持现有仓位，增加跟踪频率，待信号明确后再行动
+\end{itemize}
+\vspace{0.3em}
+\textbf{关键原则}：拐点确认需要至少2--3个数据点验证，不可仅凭单月数据下结论。宁可错过开头，不可判断错误。
+\\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+
+\textbf{典型案例：}PCB行业连续3个月出货量环比增长，CCL价格止跌回升，上游铜价稳定，下游消费电子+AI服务器需求共振。评估结果：行业景气底部向上拐点确认，PCB板块配置比例从8\%上调至12\%，核心标的平均加仓40\%。
+\sourcenote{AStock研究团队构建。景气度拐点调仓的核心是"确认信号、分批操作、龙头先行"。}
+\end{exhibitbox}
+
+\subsection{场景D：政策重大变化}
+
+政策是A股市场的重要驱动力，重大政策变化往往带来板块性的投资机会或风险。政策调仓的关键是评估政策级别、力度和持续性。
+
+\begin{exhibitbox}[表9-20：政策重大变化调仓指南]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{维度} & \textbf{内容} \\
+\midrule
+\textbf{触发条件} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 国家层面出台产业扶持政策（如补贴、税收优惠、发展规划）
+\item 监管政策重大收紧（如反垄断、限价、准入限制）
+\item 货币政策重大转向（降息/加息、降准/升准）
+\item 资本市场制度性变化（注册制、退市制度、交易规则改变）
+\end{itemize}
+\\
+\midrule
+\textbf{评估要点} & 
+评估政策级别：国家级/部委级/地方级，级别越高影响越大
+
+评估政策力度：强/中/弱，力度越大影响越显著
+
+判断政策影响：直接受益/间接受益/不受影响/受损
+
+测算政策对业绩的量化影响：补贴金额、税收减免、需求增量、成本变化
+
+评估政策持续性：短期刺激还是长期制度性变化，持续性决定操作策略
+
+\textbf{核心判断}：政策是"改变基本面"还是"改变情绪"？前者影响长期估值，后者只是短期波动
+\\
+\midrule
+\textbf{操作策略} & 
+\textbf{政策利好}：第一时间评估，若市场尚未充分反应则快速建仓；若已大涨则等待回调再介入。政策利好通常有"预期—兑现—回调"的节奏，注意把握买点。
+
+\textbf{政策利空}：果断减仓，不抱有侥幸心理。政策利空对板块估值的压制往往是中长期的，不要轻易抄底。
+\\
+\midrule
+\textbf{仓位调整} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 直接且长期受益的政策：受益板块配置上调2--4个百分点，核心标的加仓20\%--40\%
+\item 短期刺激政策：只做短期交易性操作，1--2周内兑现，不改变长期配置
+\item 政策利空的板块：减仓30\%--60\%，严重利空的直接清仓
+\end{itemize}
+\vspace{0.3em}
+\textbf{关键原则}：政策底不等于市场底，政策利好兑现后往往有回调，注意买入节奏。政策利空则要果断，不要等反弹再卖。
+\\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+
+\textbf{典型案例：}国家出台AI算力产业支持政策，对国产GPU厂商提供税收减免和政府采购支持。评估结果：政策力度大、持续性强，算力板块配置上调4个百分点，国产GPU标的加仓30\%--40\%。
+\sourcenote{AStock研究团队构建。政策调仓需区分政策级别和持续性，避免过度解读短期政策。}
+\end{exhibitbox}
+
+\subsection{场景E：个股黑天鹅事件}
+
+黑天鹅事件是指突发的、对公司基本面可能造成重大负面影响的事件。应对黑天鹅的第一原则是保障资金安全，宁可错杀不可深套。
+
+\begin{exhibitbox}[表9-21：个股黑天鹅事件调仓指南]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{维度} & \textbf{内容} \\
+\midrule
+\textbf{触发条件} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 财务造假或信息披露违规被立案调查
+\item 重大产品质量问题或安全事故
+\item 实控人/核心高管被调查或突然离职
+\item 重要诉讼、仲裁或行政处罚
+\item 核心技术人员集体离职或核心专利失效
+\end{itemize}
+\\
+\midrule
+\textbf{评估要点} & 
+快速判断事件性质：经营层面/法律层面/道德层面，性质越恶劣影响越深远
+
+评估影响程度：短期冲击/长期基本面受损/致命打击
+
+评估可恢复性：事件是否可逆，公司是否有修复能力，历史上是否有类似事件的恢复案例
+
+同行业其他公司是否受波及：行业系统性风险还是个股风险，若为系统性风险需评估整个板块
+
+\textbf{黄金24小时}：黑天鹅事件发生后的24小时是信息最混乱但也是决策最关键的时期，先按最坏情况处理，后续再修正
+\\
+\midrule
+\textbf{操作策略} & 
+第一时间减仓或清仓，不必等开盘，可在集合竞价阶段就下单
+
+事件初期信息不透明时，先按最坏情况处理，后续根据事态发展逐步修正
+
+如果是行业系统性风险（如集采政策），整个板块都要减仓，不要心存侥幸认为自己持有的标的能幸免
+
+若事后证实是虚惊一场或影响远小于预期，可以再买回来，但必须重新走完整的研究流程
+\\
+\midrule
+\textbf{仓位调整} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 致命打击（财务造假、实控人重大违法）：立即清仓，不计成本
+\item 严重影响（产品质量事故、核心团队流失）：第一时间减仓50\%--70\%，后续根据事态发展决定是否清仓
+\item 短期冲击（一次性罚款、非核心高管变动）：减仓20\%或观望，基本面未受损的可在情绪释放后补回
+\item 行业系统性黑天鹅：整个板块减仓30\%--60\%，保留最优质龙头底仓
+\end{itemize}
+\vspace{0.3em}
+\textbf{关键原则}：黑天鹅事件发生时，优先保证资金安全，宁可错杀不可深套。止损后至少2周内不得买回，需重新走完整研究流程。
+\\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+
+\textbf{典型案例：}某医药公司核心产品被曝出严重副作用，已有患者出现不良反应。评估结果：产品生命周期可能终结，对公司利润影响超过50\%。第一时间减仓70\%，若后续确认产品停产则清仓剩余仓位。
+\sourcenote{AStock研究团队构建。黑天鹅事件应对的核心是"先行动、后研究"，安全第一，纠错成本远低于套牢成本。}
+\end{exhibitbox}
+
+\section{仓位管理与风险控制规则}
+
+仓位管理是投资风险管理的核心。科学的仓位管理不能保证盈利最大化，但可以控制最大回撤、延长投资寿命、在市场波动中保持主动。
+
+\subsection{仓位限制规则汇总}
+
+\begin{exhibitbox}[表9-22：组合仓位限制规则汇总]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l}
+\toprule
+\textbf{限制类别} & \textbf{规则内容} & \textbf{说明} \\
+\midrule
+\textbf{板块仓位上限} & 单一板块最大仓位不超过组合净值的25\% & 防止单一板块过度暴露 \\
+\textbf{板块仓位下限} & 单一板块最小仓位不低于5\%（保持研究跟踪的最低底仓） & 维持研究覆盖，避免完全踏空 \\
+\textbf{核心板块配置} & 高景气确定性强的核心板块可配置15\%--25\% & 超配首选板块 \\
+\textbf{卫星板块配置} & 确定性次之或拐点临近的板块配置5\%--10\% & 适度参与，控制风险 \\
+\textbf{板块调整幅度} & 单次调整不超过5个百分点，季度内累计不超过10个百分点 & 避免大进大出 \\
+\midrule
+\textbf{个股仓位上限} & 单只个股最大仓位不超过组合净值的8\%，核心标的经深度研究后最高可到10\%（需单独审批记录） & 分散个股风险 \\
+\textbf{个股仓位下限} & 单只个股最小仓位为0（可清仓） & 不强制持有 \\
+\textbf{板块内集中度} & 同一板块内前两大重仓股权重之和不超过板块仓位的60\% & 保持板块内部分散度 \\
+\textbf{组合个股总数} & 保持在25--35只区间 & 兼顾分散度和研究深度 \\
+\midrule
+\textbf{现金仓位目标} & 目标区间为5\%--15\% & 保持灵活性和缓冲 \\
+\textbf{现金仓位上限} & 市场极度高估或系统性风险较大时，可提高至20\%--30\% & 防御模式 \\
+\textbf{现金仓位下限} & 市场极度低估时，可降低至3\%--5\% & 进攻模式 \\
+\midrule
+\textbf{调仓幅度限制} & 单次调仓幅度不超过该标的目标仓位的正负50\% & 避免一步到位 \\
+\textbf{建仓节奏} & 单标的从建仓到满仓至少经历2次以上调仓且间隔不少于2周 & 分批建仓原则 \\
+\textbf{调仓频率} & 同一标的7天内最多调仓1次 & 防止过度交易 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。仓位限制是纪律而非束缚，在极端行情下可以有弹性但需有明确理由。}
+\end{exhibitbox}
+
+\subsection{止损规则}
+
+止损是控制亏损的最后一道防线，也是最难执行的纪律。我们设定了个股、板块、组合三级止损机制。
+
+\begin{exhibitbox}[表9-23：三级止损规则]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{p{2.6cm} >{\hsize=0.85\hsize}X >{\hsize=1.15\hsize}X}
+\toprule
+\textbf{止损级别} & \textbf{触发条件} & \textbf{处置措施} \\
+\midrule
+\textbf{个股止损（一级）} & 单只个股从买入成本价下跌20\%，触发止损评估 & 
+\begin{itemize}[leftmargin=1.2em]
+\item 若基本面未恶化且估值合理，可持有观察，列入重点跟踪
+\item 若基本面恶化或核心逻辑受损，立即止损（减仓50\%--100\%）
+\item 从最高点回撤30\%，强制减仓50\%（无论基本面如何）
+\end{itemize}
+\\
+\midrule
+\textbf{板块止损（二级）} & 单板块从高点回撤20\%，触发板块评估 & 
+\begin{itemize}[leftmargin=1.2em]
+\item 评估景气度是否发生变化，若基本面未变可继续持有
+\item 若景气度向下拐点确认，板块配置比例下调3--5个百分点
+\item 板块内减仓弹性标的，保留龙头底仓
+\end{itemize}
+\\
+\midrule
+\textbf{组合止损（三级）} & 组合净值从高点回撤15\%，触发整体风险评估 & 
+\begin{itemize}[leftmargin=1.2em]
+\item 检查持仓结构，评估风险来源
+\item 考虑降低总仓位5--10个百分点，提高现金比例
+\item 分析回撤是系统性风险还是配置问题，针对性调整
+\item 回撤超过20\%时，强制总仓位降至60\%以下
+\end{itemize}
+\\
+\midrule
+\textbf{止损纪律} & \multicolumn{2}{>{\hsize=\dimexpr0.85\hsize+1.15\hsize\relax}X}{
+\begin{itemize}[leftmargin=1.2em]
+\item 止损后至少2周内不得买回该股，需重新走完整研究流程
+\item 亏损股严禁加仓摊薄成本，只能减仓或止损
+\item 止损决策必须有书面记录，包括止损原因、点位、后续验证计划
+\item 止损不是失败，而是风险管理的正常操作，避免情绪化自责
+\end{itemize}
+} \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。止损的核心是"截断亏损、保存实力"，为下一次机会保留弹药。}
+\end{exhibitbox}
+
+\subsection{止盈规则}
+
+止盈比止损更难，因为它考验的是人性中的贪婪。我们采用阶梯式止盈策略，既避免过早卖出错失大行情，又防止盈利回吐变成亏损。
+
+\begin{exhibitbox}[表9-24：阶梯式止盈规则]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l >{\hsize=1.25\hsize}X >{\hsize=0.75\hsize}X}
+\toprule
+\textbf{止盈阶段} & \textbf{触发条件} & \textbf{操作与比例} \\
+\midrule
+\textbf{第一目标价} & 达到第一目标价（通常对应合理估值中枢） & 减仓20\%，锁定部分利润，降低持仓成本 \\
+\textbf{第二目标价} & 达到第二目标价（通常对应乐观估值） & 再减仓30\%，收回大部分本金或利润 \\
+\textbf{第三目标价/估值顶} & 达到第三目标价 或 估值触及90\%历史分位 或 PEG大于2.0 & 再减仓30\%，只留底仓 \\
+\textbf{长期底仓} & 基本面持续优秀、长期逻辑未破 & 保留20\%底仓长期持有，享受复利增长 \\
+\midrule
+\textbf{动态调整} & \multicolumn{2}{>{\hsize=2.0\hsize}X}{
+\begin{itemize}[leftmargin=1.2em]
+\item 若基本面持续超预期，可上移目标价，但需有新的研究支撑（不可拍脑袋上移）
+\item 若出现基本面恶化信号，即使未到止盈位也应减仓
+\item 止盈后资金优先配置到估值更合理、景气度向上的标的
+\item 止盈后可设置"回补条件"，如股价回调到合理估值区间且基本面未变，可重新建仓
+\end{itemize}
+} \\
+\bottomrule
+\end{tabularx}
+\vspace{0.3cm}
+\textcolor{navy}{\textbf{止盈与持有决策框架：}}
+\begin{itemize}[leftmargin=1.8em, font=\scriptsize]
+\item \scriptsize \textbf{继续持有的条件}：景气度仍在上行、估值未到极端、核心逻辑未变、有新的催化剂
+\item \scriptsize \textbf{考虑止盈的信号}：估值进入历史高位、景气度边际减弱、利好出尽、交易过度拥挤、核心逻辑部分证伪
+\item \scriptsize \textbf{必须止盈的条件}：估值极度高估、景气度确认向下、核心逻辑证伪、出现更优的配置机会
+\end{itemize}
+\sourcenote{AStock研究团队构建。阶梯式止盈的核心是"让利润奔跑、分批落袋为安"，平衡收益与风险。}
+\end{exhibitbox}
+
+\begin{keyinsight}[仓位管理的核心原则]
+\begin{enumerate}[leftmargin=1.8em]
+\item \textbf{仓位与信心匹配}：研究越深入、逻辑越强的标的，仓位可以越重；反之则轻仓试探
+\item \textbf{不满仓、不空仓}：市场极端情况下仍保留仓位弹性，现金仓位5\%--30\%区间运行
+\item \textbf{分批操作}：建仓和减仓都分2--3笔执行，接受买不到最低、卖不到最高
+\item \textbf{亏损不加仓}：基本面恶化导致的亏损股严禁加仓摊薄成本
+\item \textbf{买入谨慎、卖出果断}：建仓需要多重验证，止损止盈要坚决执行
+\end{enumerate}
+\end{keyinsight}
+
+\section{调仓决策流程与纪律}
+
+科学的决策流程是保证调仓质量的关键。我们设计了三步决策法（信号验证—影响评估—仓位调整），并配套决策日志模板和行为纪律，以制度化的方式克服人性弱点。
+
+\subsection{三步决策法}
+
+每一次调仓决策都必须严格遵循三步决策法，不可跳过任何环节。这三步分别对应"做不做"、"做多少"、"怎么做"三个核心问题。
+
+\begin{exhibitbox}[图9-2：调仓三步决策法流程图]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}[
+    stepnode/.style={rectangle, draw=navy, fill=navy!8, text width=4.0cm, align=center, minimum height=0.9cm, font=\bfseries, rounded corners=3pt},
+    actionnode/.style={rectangle, draw=steelgrey, fill=white, text width=4.8cm, align=left, minimum height=0.45cm, font=\scriptsize, rounded corners=2pt, inner sep=2pt},
+    iobox/.style={rectangle, draw=nvgreen, fill=nvgreen!8, text width=2.8cm, align=left, font=\scriptsize, rounded corners=2pt, inner sep=3pt},
+    >=Stealth, thick
+]
+
+% ===== 第一步：信号验证 =====
+\node[stepnode] (s1) at (0, 4.6) {第一步：信号验证\\Signal Verification};
+\node[actionnode, below=0.15cm of s1] (s1a1) {$\bullet$ 确认信号来源可靠性（财报原文/官方公告/政策文件/行业权威数据）};
+\node[actionnode, below=0.02cm of s1a1] (s1a2) {$\bullet$ 交叉验证：至少2个独立信息源相互印证};
+\node[actionnode, below=0.02cm of s1a2] (s1a3) {$\bullet$ 区分信号与噪声：判断是否对基本面产生实质性、持续性影响（$>1$季度）};
+\node[actionnode, below=0.02cm of s1a3] (s1a4) {$\bullet$ 量化信号强度：超预期幅度/估值偏离度/政策力度分级（1--5分）};
+
+% 输入框（左侧）
+\node[iobox, left=1.2cm of s1, text width=2.6cm, align=center] (in1) {\textbf{输入}\\[2pt]\scriptsize 市场信号与资讯\\（新闻/公告/财报/政策）};
+
+% 输出框（右侧）
+\node[iobox, right=1.2cm of s1, text width=3.0cm] (out1) {\textbf{输出：}信号评级表\\[2pt]\scriptsize 信号类型、来源、强度评分（1--5分）、可信度评级、是否进入下一步};
+
+% 水平箭头：输入 → 步骤 → 输出
+\draw[->, nvgreen] (in1.east) -- (s1.west);
+\draw[->, nvgreen] (s1.east) -- (out1.west);
+
+% ===== 第二步：影响评估 =====
+\node[stepnode, below=1.5cm of s1a4] (s2) {第二步：影响评估\\Impact Assessment};
+\node[actionnode, below=0.15cm of s2] (s2a1) {$\bullet$ 基本面影响：对未来1--2年营收、利润、毛利率的定量影响测算};
+\node[actionnode, below=0.02cm of s2a1] (s2a2) {$\bullet$ 估值影响：当前估值历史分位、业绩修正后的目标价重估};
+\node[actionnode, below=0.02cm of s2a2] (s2a3) {$\bullet$ 板块联动：对同板块其他标的的溢出效应判断};
+\node[actionnode, below=0.02cm of s2a3] (s2a4) {$\bullet$ 时间维度：短期（$<1$月）/中期（1--3月）/长期（$>3$月）影响区分};
+\node[actionnode, below=0.02cm of s2a4] (s2a5) {$\bullet$ 风险评估：反向逻辑与最大下行风险测算};
+
+% 输入框（左侧）
+\node[iobox, left=1.2cm of s2, text width=2.6cm] (in2) {\textbf{输入：}信号评级结果\\[2pt]\scriptsize 第一步输出的已验证信号及强度评分};
+
+% 输出框（右侧）
+\node[iobox, right=1.2cm of s2, text width=3.0cm] (out2) {\textbf{输出：}影响评估报告\\[2pt]\scriptsize 业绩修正幅度、目标价调整、影响周期、置信度、风险等级};
+
+% 水平箭头：输入 → 步骤 → 输出
+\draw[->, nvgreen] (in2.east) -- (s2.west);
+\draw[->, nvgreen] (s2.east) -- (out2.west);
+
+% 垂直箭头：第一步输出 → 第二步输入（沿右侧绕行）
+\draw[->, navy] (out1.south) -- ++(0.6, 0) |- (in2.north);
+
+% ===== 第三步：仓位调整 =====
+\node[stepnode, below=1.5cm of s2a5] (s3) {第三步：仓位调整\\Position Adjustment};
+\node[actionnode, below=0.15cm of s3] (s3a1) {$\bullet$ 对照仓位规则检查调整空间（是否触及单票/板块上下限）};
+\node[actionnode, below=0.02cm of s3a1] (s3a2) {$\bullet$ 确定调仓方向与幅度（依据调仓幅度量化规则）};
+\node[actionnode, below=0.02cm of s3a2] (s3a3) {$\bullet$ 制定执行计划：分笔节奏、价格区间、时间窗口};
+\node[actionnode, below=0.02cm of s3a3] (s3a4) {$\bullet$ 预设再评估触发点：什么情况下需要重新决策};
+
+% 输入框（左侧）
+\node[iobox, left=1.2cm of s3, text width=2.6cm] (in3) {\textbf{输入：}影响评估结论\\[2pt]\scriptsize 第二步输出的影响评级与风险等级};
+
+% 输出框（右侧）
+\node[iobox, right=1.2cm of s3, text width=3.0cm] (out3) {\textbf{输出：}调仓指令单\\[2pt]\scriptsize 标的、方向、幅度、执行节奏、价格区间、止盈止损线、复盘节点};
+
+% 水平箭头：输入 → 步骤 → 输出
+\draw[->, nvgreen] (in3.east) -- (s3.west);
+\draw[->, nvgreen] (s3.east) -- (out3.west);
+
+% 垂直箭头：第二步输出 → 第三步输入（沿右侧绕行）
+\draw[->, navy] (out2.south) -- ++(0.6, 0) |- (in3.north);
+
+\end{tikzpicture}
+\vspace{0.3cm}
+\sourcenote{AStock研究团队构建。三步决策法的核心是"先验证、再评估、后行动"，避免冲动交易。}
+\end{exhibitbox}
+
+\subsection{调仓幅度量化规则}
+
+调仓幅度遵循三级梯度原则，根据信号强度和影响评估结果确定调整幅度，避免一步到位式的极端操作。
+
+\begin{exhibitbox}[表9-25：调仓幅度三级梯度规则]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l c c X}
+\toprule
+\textbf{梯度等级} & \textbf{信号强度} & \textbf{加仓幅度} & \textbf{减仓幅度} \\
+\midrule
+轻度 & 2--3分 & +20\% & -20\% \\
+中度 & 3--4分 & +40\% & -40\%至-50\% \\
+重度 & 5分 & +60\%至+100\%（单次最高不超过仓位翻倍） & -70\%至-100\%（清仓） \\
+\midrule
+\textbf{约束条件} & \multicolumn{3}{X}{
+\begin{itemize}[leftmargin=1.2em]
+\item 单次调仓幅度不超过该标的目标仓位的正负50\%
+\item 单标的从建仓到满仓至少经历2次以上调仓且间隔不少于2周
+\item 同一标的7天内最多调仓1次
+\item 调仓后不得违反仓位上下限规则
+\item 加仓时需检查现金是否充足，减仓时需检查是否触及最低持仓要求
+\end{itemize}
+} \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。三级梯度规则旨在防止过度反应，保持操作的平稳性。}
+\end{exhibitbox}
+
+\subsection{调仓决策日志模板}
+
+所有调仓决策必须有书面记录，这不仅是合规要求，更是事后复盘和持续改进的基础。以下是标准的调仓决策日志模板。
+
+\begin{exhibitbox}[表9-26：调仓决策日志模板]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{栏目} & \textbf{内容要求} \\
+\midrule
+1. 基本信息 & 决策日期、决策人、调仓类型（定期再平衡/事件驱动/战术调整） \\
+\midrule
+2. 触发信号 & 信号来源（具体公告/数据/政策文件名称和链接）、信号内容摘要、信号强度评分（1--5）、可信度评级（高/中/低） \\
+\midrule
+3. 影响评估 & 
+\begin{itemize}[leftmargin=1.2em]
+\item 基本面影响：对公司/板块营收、利润、毛利率的定量影响测算
+\item 估值影响：当前估值分位、业绩修正后的目标价调整
+\item 影响周期：短期/中期/长期
+\item 风险点：主要风险与最大下行空间
+\end{itemize}
+\\
+\midrule
+4. 调仓方案 & 标的代码/名称、调仓方向（买/卖）、调仓幅度（股数/金额）、目标仓位、调仓类型（轻/中/重） \\
+\midrule
+5. 执行计划 & 分笔安排（几笔、每笔比例）、时间窗口（几天内完成）、价格区间、执行优先级 \\
+\midrule
+6. 预期目标 & 预期收益、预期时间、目标价、止盈止损位 \\
+\midrule
+7. 风险提示 & 主要风险点、最大可能损失、再评估触发条件（什么情况下需要推翻本决策） \\
+\midrule
+8. 事后复盘 & 实际结果、决策质量评分、经验教训（每次调仓后30天内填写） \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。决策日志是投资体系迭代的基础数据，务必认真填写、定期复盘。}
+\end{exhibitbox}
+
+\subsection{调仓执行流程}
+
+调仓执行分为四个阶段，从研究识别到事后复盘形成完整闭环。
+
+\begin{exhibitbox}[表9-27：调仓执行四阶段流程]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{阶段} & \textbf{主要工作} \\
+\midrule
+\textbf{第一阶段：研究与信号识别} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 日常监控：股价异动、新闻公告、行业数据、政策动态
+\item 定期跟踪：财报季、行业月度数据、宏观数据发布
+\item 研究更新：持续跟踪持仓标的的基本面变化
+\end{itemize}
+\\
+\midrule
+\textbf{第二阶段：决策与审批} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 信号初筛：判断是否需要启动调仓评估流程
+\item 深度分析：三步决策法的完整执行
+\item 方案制定：形成调仓方案（标的、方向、幅度、节奏）
+\item 规则检查：仓位限制、交易频率、现金余额等合规检查
+\item 决策记录：填写调仓决策日志
+\end{itemize}
+\\
+\midrule
+\textbf{第三阶段：执行与交易} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 交易计划：确定每日交易量、价格区间、执行方式
+\item 分批执行：通常分2--5笔执行，分散在3--5个交易日
+\item 执行记录：每笔交易的时间、价格、数量、成本记录
+\item 异常处理：执行中若市场出现重大变化，暂停执行并重新评估
+\end{itemize}
+\\
+\midrule
+\textbf{第四阶段：复盘与评估} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 调仓后1周评估：短期市场反应是否符合预期
+\item 调仓后1月评估：基本面变化是否验证决策逻辑
+\item 季度总复盘：所有调仓决策的效果归因与经验总结
+\end{itemize}
+\\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。四阶段流程确保每一次调仓都有研究支撑、有决策记录、有执行纪律、有事后复盘。}
+\end{exhibitbox}
+
+\subsection{调仓效果归因与复盘}
+
+调仓复盘不是简单的"赚了就是对、亏了就是错"，而是要区分正确的决策和正确的结果——逻辑对但结果不好、逻辑错但结果好，这四种组合需要不同的改进方向。
+
+\begin{exhibitbox}[表9-28：调仓效果归因框架]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{归因维度} & \textbf{评估方法} \\
+\midrule
+择时贡献 & 买入/卖出时机选择带来的超额收益（与基准期持有相比） \\
+选股贡献 & 标的选择的正确性带来的超额收益（与板块指数相比） \\
+仓位贡献 & 仓位大小对收益的放大/缩小作用（同样的方向选择，仓位轻重影响结果） \\
+行业配置贡献 & 板块配置比例调整的贡献（与基准配置相比） \\
+\midrule
+\textbf{评估指标} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 对比调仓前后标的的相对收益（vs板块指数、vs沪深300）
+\item 计算调仓决策的胜率（盈利次数/总次数）和盈亏比
+\item 区分正确的决策和正确的结果（逻辑对但结果不好 vs 逻辑错但结果好）
+\end{itemize}
+\\
+\midrule
+\textbf{复盘频率} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 月度：当月所有调仓决策的快速复盘
+\item 季度：系统性复盘，更新调仓规则和决策模型
+\item 年度：全年投资总结，调仓体系的迭代升级
+\end{itemize}
+\\
+\midrule
+\textbf{改进机制} & 
+\begin{itemize}[leftmargin=1.2em]
+\item 每次复盘记录至少3条经验教训
+\item 错误决策要写post-mortem（事后检讨），分析根本原因（信息不足/逻辑错误/执行偏差/心态问题）
+\item 定期更新信号清单和权重，淘汰无效信号
+\item 优秀的决策也要复盘，提炼可复制的模式
+\end{itemize}
+\\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。复盘的目的是迭代提升决策质量，而非自责或炫耀。}
+\end{exhibitbox}
+
+\subsection{常见错误与纪律原则}
+
+投资中的大多数亏损不是因为分析错误，而是因为纪律缺失。我们总结了A股投资者最常犯的8大错误，并提出8条纪律原则。
+
+\begin{exhibitbox}[表9-29：常见调仓错误与纪律原则]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{X X}
+\toprule
+\textbf{常见错误} & \textbf{纪律原则} \\
+\midrule
+\textbf{过度交易}：频繁买卖增加摩擦成本，年换手率建议控制在2--4倍以内 & \textbf{计划交易，交易计划}：所有调仓必须有书面决策记录，禁止临时情绪化下单 \\
+\midrule
+\textbf{锚定成本价}：买卖决策基于持仓成本价，而非当前基本面和估值 & \textbf{不满仓、不空仓}：市场极端情况下仍保留仓位弹性，现金仓位5\%--30\%区间运行 \\
+\midrule
+\textbf{盈利快跑、亏损死扛}：急于锁定利润、不愿承认亏损，结果赚小钱亏大钱 & \textbf{分批操作，不追求极致}：建仓/减仓至少分2--3笔执行，接受买不到最低、卖不到最高 \\
+\midrule
+\textbf{情绪化追涨杀跌}：大涨后乐观加仓、大跌后恐慌割肉，是散户亏损首要原因 & \textbf{先有逻辑，后有仓位}：仓位大小必须与研究深度和逻辑强度匹配 \\
+\midrule
+\textbf{消息驱动决策}：听消息、看研报标题、跟大V操作，缺乏独立研究 & \textbf{亏损不加仓}：基本面恶化导致的亏损股严禁加仓摊薄成本 \\
+\midrule
+\textbf{调仓理由漂移}：买入时看长期价值，被套后变成做波段，再亏变价值投资 & \textbf{买入谨慎，卖出果断}：建仓需要多重验证，止损止盈要坚决执行 \\
+\midrule
+\textbf{仓位与信心不匹配}：研究深入的标的不敢重仓，听来的消息却敢all-in & \textbf{不同类型调仓分离管理}：定期再平衡、事件驱动、战术调整的决策依据和流程分开 \\
+\midrule
+\textbf{忽视交易成本}：A股印花税+佣金+滑点，单次交易成本约0.3\%--0.5\% & \textbf{定期复盘，迭代优化}：每月复盘调仓决策质量，每季度优化调仓规则 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。纪律是投资的生命线，知易行难，需要反复提醒和刻意练习。}
+\end{exhibitbox}
+
+\subsection{行为偏误与应对策略}
+
+行为金融学研究表明，投资决策受到多种认知偏误的影响。了解这些偏误并制定应对策略，可以有效提升决策质量。
+
+\begin{exhibitbox}[表9-30：常见行为偏误与应对策略]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X X}
+\toprule
+\textbf{行为偏误} & \textbf{表现形式} & \textbf{应对策略} \\
+\midrule
+确认偏误 & 只找支持自己观点的信息，忽视反面证据 & 主动寻找空方逻辑，每笔交易至少列出3个看空理由 \\
+损失厌恶 & 亏损的痛苦是盈利快乐的2倍，导致死扛亏损股 & 预设止损线，机械执行，到点就卖不犹豫 \\
+处置效应 & 急于卖出盈利股票、不愿卖出亏损股票 & 按基本面和估值决策，而非盈亏状态。盈利的股票如果基本面更好反而应该加仓 \\
+锚定效应 & 被买入价或历史高点/低点锚定 & 忘记成本价，只看当前价值。定期以旁观者视角重新评估持仓 \\
+羊群效应 & 随大流，别人买什么我也买什么 & 独立研究，逆向思考。市场一致预期的观点尤其要警惕 \\
+过度自信 & 高估自己的判断能力和信息优势 & 保持谦逊，分批操作，为错误预留空间。定期复盘错误决策 \\
+近因效应 & 最近的经历和记忆对决策影响过大 & 拉长时间维度，看3年以上的历史数据。不要因最近一次成功/失败而改变体系 \\
+禀赋效应 & 持有某只股票后就觉得它特别好 & 定期以旁观者视角重新评估持仓。假设现在没有这只股票，你会买吗？ \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。行为偏误是人性的固有弱点，无法完全消除，但可以通过制度设计来约束和对冲。}
+\end{exhibitbox}
+
+\section{2026年下半年关键事件日历}
+
+重大事件往往是股价波动的催化剂，提前做好事件日历规划，可以把握时间窗口、规避信息冲击。以下是2026年下半年需要重点关注的关键事件与时间节点。
+
+\subsection{宏观政策与经济数据日历}
+
+\begin{exhibitbox}[表9-31：2026年下半年宏观政策与经济数据日历]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l}
+\toprule
+\textbf{时间} & \textbf{事件} & \textbf{影响板块/重点关注} \\
+\midrule
+\rowcolor{navy!5}
+\textbf{7月} & \multicolumn{2}{l}{\textit{上半年经济数据发布 · 政治局会议定调下半年}} \\
+\rowcolor{navy!5}
+7月初 & 6月PMI数据发布（制造业/非制造业） & 全部板块，判断经济景气度 \\
+\rowcolor{navy!5}
+7月中旬 & 6月经济数据：工业增加值、社零、固定资产投资、CPI/PPI、进出口 & 宏观判断，电力公用事业、制造业板块 \\
+\rowcolor{navy!5}
+7月中下旬 & 中央政治局会议（分析上半年经济、定调下半年政策） & \textbf{全局性影响}，政策方向定调的最关键会议 \\
+\rowcolor{navy!5}
+7月下旬 & 美联储FOMC议息会议 & 全球流动性、北向资金流向 \\
+\midrule
+\rowcolor{accentblue!5}
+\textbf{8月} & \multicolumn{2}{l}{\textit{经济复苏强度验证期}} \\
+\rowcolor{accentblue!5}
+8月初 & 7月PMI数据发布 & 景气度月度跟踪 \\
+\rowcolor{accentblue!5}
+8月中旬 & 7月经济数据 + 7月社融数据 & 经济复苏强度验证 \\
+\rowcolor{accentblue!5}
+8月中下旬 & 央行货币政策委员会二季度例会（通常季度末月后） & 货币政策方向 \\
+\midrule
+\rowcolor{riskgreen!5}
+\textbf{9月} & \multicolumn{2}{l}{\textit{月度数据验证 · 海外政策观察期}} \\
+\rowcolor{riskgreen!5}
+9月初 & 8月PMI数据 & 月度景气跟踪 \\
+\rowcolor{riskgreen!5}
+9月中旬 & 8月经济数据、社融、CPI/PPI & 宏观数据验证 \\
+\rowcolor{riskgreen!5}
+9月下旬 & 美联储FOMC议息会议 & 海外流动性 \\
+\midrule
+\rowcolor{riskamber!5}
+\textbf{10月} & \multicolumn{2}{l}{\textit{三季度经济全貌 · 季度数据确认}} \\
+\rowcolor{riskamber!5}
+10月初 & 9月PMI数据 + 三季度经济数据预告 & 季度数据起点 \\
+\rowcolor{riskamber!5}
+10月中旬 & 三季度GDP、9月经济数据、社融、CPI/PPI & \textbf{季度经济全貌}，判断全年走势 \\
+\midrule
+\rowcolor{riskred!5}
+\textbf{11月} & \multicolumn{2}{l}{\textit{月度数据验证 · 海外政策窗口}} \\
+\rowcolor{riskred!5}
+11月初 & 10月PMI数据 & 月度景气跟踪 \\
+\rowcolor{riskred!5}
+11月中旬 & 10月经济数据、社融、CPI/PPI & 月度数据验证 \\
+\rowcolor{riskred!5}
+11月下旬 & 美联储FOMC议息会议 & 海外流动性 \\
+\midrule
+\rowcolor{nvgreen!5}
+\textbf{12月} & \multicolumn{2}{l}{\textit{全年经济收官 · 次年政策定调}} \\
+\rowcolor{nvgreen!5}
+12月初 & 11月PMI数据 & 年末经济势头 \\
+\rowcolor{nvgreen!5}
+12月中旬 & 11月经济数据、社融、CPI/PPI & 年度数据拼图 \\
+\rowcolor{nvgreen!5}
+12月中下旬 & 中央经济工作会议 & \textbf{全年最重要政策会议}，定调次年经济工作总基调 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。具体日期以官方发布为准，部分日期为历史规律推算。}
+\end{exhibitbox}
+
+\subsection{财报与行业事件日历}
+
+\begin{exhibitbox}[表9-32：2026年下半年财报与行业重点事件日历]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{l X l}
+\toprule
+\textbf{时间} & \textbf{事件} & \textbf{影响板块/重点关注} \\
+\midrule
+\rowcolor{navy!5}
+\textbf{7月} & \multicolumn{2}{l}{\textit{中报业绩预告密集期}} \\
+\rowcolor{navy!5}
+7月1--15日 & 创业板/科创板中报业绩预告密集披露 & \textbf{全部板块}，业绩预期调整的关键期 \\
+\rowcolor{navy!5}
+7月 & 世界动力电池大会 & 动力电池、储能 \\
+\rowcolor{navy!5}
+7月 & 新能源车6月/上半年销量数据 & 智驾链零部件、动力电池 \\
+\rowcolor{navy!5}
+7月 & 光伏6月装机数据 & 功率半导体 \\
+\midrule
+\rowcolor{accentblue!5}
+\textbf{8月} & \multicolumn{2}{l}{\textit{中报披露高峰 · 行业会议密集}} \\
+\rowcolor{accentblue!5}
+8月中下旬 & A股中报（半年报）密集披露 & \textbf{全部板块}，业绩验证的核心窗口 \\
+\rowcolor{accentblue!5}
+8月 & 世界半导体大会（南京） & 半导体设备材料、功率半导体 \\
+\rowcolor{accentblue!5}
+8月 & PCB行业产值月度数据 & PCB/半导体产业链 \\
+\rowcolor{accentblue!5}
+8月 & 中电联7月电力数据 & 电力公用事业 \\
+\midrule
+\rowcolor{riskgreen!5}
+\textbf{9月} & \multicolumn{2}{l}{\textit{科技板块催化密集期}} \\
+\rowcolor{riskgreen!5}
+9月 & 世界人工智能大会（上海） & AI算力、智驾链、半导体 \\
+\rowcolor{riskgreen!5}
+9月 & CMEF医博会（秋季，深圳） & 医疗器械 \\
+\rowcolor{riskgreen!5}
+9月 & 苹果秋季新品发布会 & 消费电子、半导体 \\
+\rowcolor{riskgreen!5}
+9月 & 新能源车8月销量数据 & 智驾链、动力电池 \\
+\midrule
+\rowcolor{riskamber!5}
+\textbf{10月} & \multicolumn{2}{l}{\textit{三季报验证期 · 季度业绩确认}} \\
+\rowcolor{riskamber!5}
+10月1--15日 & 三季度业绩预告（创业板/科创板） & \textbf{全部板块}，三季度业绩前瞻 \\
+\rowcolor{riskamber!5}
+10月中下旬 & 三季报密集披露 & \textbf{全部板块}，三季度业绩验证 \\
+\rowcolor{riskamber!5}
+10月 & 国庆节后开工率数据 & 制造业整体景气度 \\
+\midrule
+\rowcolor{riskred!5}
+\textbf{11月} & \multicolumn{2}{l}{\textit{医保谈判 · 年末核心催化}} \\
+\rowcolor{riskred!5}
+11月 & 广州车展 & 智驾链零部件、新能源车 \\
+\rowcolor{riskred!5}
+11月 & APEC生物药峰会 & 创新药 \\
+\rowcolor{riskred!5}
+11月 & 医保谈判（通常11月） & \textbf{创新药、医疗器械}，板块核心催化 \\
+\rowcolor{riskred!5}
+11月 & 双11电商数据 & 消费电子、可选消费 \\
+\midrule
+\rowcolor{nvgreen!5}
+\textbf{12月} & \multicolumn{2}{l}{\textit{政策定调 · 跨年布局窗口}} \\
+\rowcolor{nvgreen!5}
+12月 & 中央经济工作会议 & \textbf{全局性}，次年政策定调 \\
+\rowcolor{nvgreen!5}
+12月 & 大基金三期落地预期 & \textbf{半导体设备材料}，板块核心催化 \\
+\rowcolor{nvgreen!5}
+12月 & 中央农村工作会议 & 农业、农机 \\
+\rowcolor{nvgreen!5}
+12月 & 年末机构排名战（净值博弈） & 高持仓板块波动加剧 \\
+\rowcolor{nvgreen!5}
+12月底 & 年度经济数据预告 & 全年经济收官 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队整理。部分展会/会议日期为历史规律推算，具体以官方公告为准。}
+\end{exhibitbox}
+
+\subsection{重点月份关注事项}
+
+根据事件密集度和重要性，我们将2026年下半年分为三个关键窗口期，每个窗口期有不同的操作重点。
+
+\begin{exhibitbox}[表9-33：2026年下半年三大关键窗口期]
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{l X}
+\toprule
+\textbf{窗口期} & \textbf{操作重点} \\
+\midrule
+\textbf{7--8月：中报验证期} & 
+\textbf{核心事件}：中报业绩预告、中报正式披露、中央政治局会议
+
+\textbf{操作策略}：
+\begin{itemize}[leftmargin=1.2em]
+\item 密切跟踪中报业绩预告，对超预期/不及预期的标的及时反应
+\item 中央政治局会议是下半年政策方向的定盘星，决定仓位总基调
+\item 验证半年度景气度判断，调整板块配置比例
+\item 利用财报季业绩验证的机会，优化持仓结构，汰弱留强
+\end{itemize}
+\\
+\midrule
+\textbf{9--10月：秋季催化期} & 
+\textbf{核心事件}：世界人工智能大会、三季报预告、三季报披露、三季度经济数据
+
+\textbf{操作策略}：
+\begin{itemize}[leftmargin=1.2em]
+\item 9月是AI、半导体等科技板块的催化密集期，注意事件性机会
+\item 三季报是全年业绩的关键验证期，决定全年盈利预期的最终走向
+\item 三季度GDP数据验证经济复苏强度，影响宏观敏感板块
+\item 国庆假期前后注意控制仓位，规避假期海外风险
+\end{itemize}
+\\
+\midrule
+\textbf{11--12月：年终布局期} & 
+\textbf{核心事件}：医保谈判、中央经济工作会议、大基金三期落地预期、年底排名战
+
+\textbf{操作策略}：
+\begin{itemize}[leftmargin=1.2em]
+\item 医保谈判是创新药和医疗器械板块的核心催化，提前布局、兑现要快
+\item 中央经济工作会议定调次年政策方向，是布局跨年行情的重要依据
+\item 大基金三期若落地，将显著催化半导体设备材料板块
+\item 12月机构排名战可能导致高持仓板块波动加剧，注意短期风险
+\item 年底是布局次年春季躁动的窗口期，可逢低布局高景气板块
+\end{itemize}
+\\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock研究团队构建。三大窗口期各有侧重，结合定期再平衡节奏，形成有节奏的全年操作框架。}
+\end{exhibitbox}
+
+\begin{keyinsight}[本章小结：动态跟踪与再平衡的核心要义]
+\vspace{-0.3em}
+\begin{enumerate}[leftmargin=1.8em]
+\item \textbf{跟踪是前提}：建立"宏观—行业—个股"三层监控体系，日度/周度/月度/季度四级频率跟踪，是所有调仓决策的基础。没有跟踪就没有发言权。
+
+\item \textbf{预警是保障}：设定明确的预警阈值和分级响应机制，以制度化方式应对市场波动，避免情绪化决策。预警不是预测，而是准备。
+
+\item \textbf{规则是纪律}：仓位限制、止损止盈、调仓幅度、频率约束，这些规则看似束缚，实则是保护资金安全的生命线。
+
+\item \textbf{流程是质量}：三步决策法（信号验证—影响评估—仓位调整）+ 决策日志 + 事后复盘，构成完整的决策闭环，持续提升决策质量。
+
+\item \textbf{进化是目标}：定期复盘调仓决策，区分正确的逻辑和正确的结果，不断迭代优化跟踪指标、预警阈值和调仓规则，让投资体系像有机体一样进化。
+\end{enumerate}
+
+投资是一场长跑，比的不是谁跑得快，而是谁跑得远、跑得稳。动态跟踪与再平衡体系的核心价值，就是让投资决策从"凭感觉"变为"靠体系"，从"情绪化"变为"纪律化"，从"单次输赢"变为"长期复利"。
+\end{keyinsight}
