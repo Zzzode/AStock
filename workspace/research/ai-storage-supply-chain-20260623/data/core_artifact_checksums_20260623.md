@@ -39,7 +39,7 @@
 | `source_exhaustion_log.md` | 848 | `acb901cf2d9afffc6dd976e9a7ed62ec1267fb490a8cb51d0d10e3e44fd55822` |
 | `tools/verify_research_workspace.py` | 47,812 | `164c90f1a609556992aad65eb45c64c17390f86bf0488e5ae795a9797beebb6e` |
 | `unresolved_requirements.json` | 863 | `91e393fbf8d41894b29d427a836622b281bcd49155f5c33f700e656b1570f4b8` |
-| `data/source_registry.json` | 28,926 | `b46ac762bddd88976db85788af741f6bca08b1c490c6ea635c21e0f75f6f902e` |
+| `data/source_registry.json` | 27,795 | `688d207383f543a8e7dad9145de38d8c9ee9b36e03b267e2b68cd5f6fdf4a722` |
 | `data/claim_audit.md` | 29,093 | `d8ce74670ea73901bf82baadf4952fca198137be0d3c0051c0585f67f10d761a` |
 | `data/source_registry.md` | 18,721 | `822b65e70cc481bfd344882060c7c82d6b5ee42e966d437d31fc2278842a366d` |
 | `tools/verify_ai_storage.py` | 13,070 | `18a91104dc4a0dd7ff0954a8c00bca2c9e966c2cf3b0804ec0df0c146a18790c` |
