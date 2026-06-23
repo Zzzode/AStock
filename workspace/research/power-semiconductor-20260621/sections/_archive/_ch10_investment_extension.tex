@@ -1,0 +1,411 @@
+% 投资框架扩展 — 评级体系、情景分析、触发条件、仓位管理、催化时钟
+% 纯 LaTeX 片段，不含 \chapter，用于扩展投资建议章节
+
+\section{投资评级体系与配置标准}
+
+为确保投资决策的可执行性与一致性，我们建立明确的评级体系与分层配置标准。每一档评级对应不同的研究深度要求、仓位区间与跟踪频率，投资团队可直接据此执行。
+
+\begin{exhibitbox}[表 10-1：投资评级体系与配置标准]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{1.6cm} L{1.8cm} L{5.2cm} L{2.0cm} L{2.5cm}}
+\toprule
+\textbf{评级} & \textbf{配置类型} & \textbf{入选标准} & \textbf{建议仓位} & \textbf{跟踪频率} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{买入} & 核心底仓 & \vspace{-0.8em}\begin{itemize}[leftmargin=1.2em, topsep=0pt, partopsep=0pt]
+  \item 业绩确定性强，未来 2 年复合增速 ≥ 25\%
+  \item 估值处于历史 40\% 分位以下，安全边际充足
+  \item 行业地位稳固，竞争壁垒清晰
+  \item 至少 2 个以上催化因素可验证
+  \item 财务质量优良，无重大治理风险
+\end{itemize}\vspace{-0.8em} & 15–25\% & 周度跟踪 \\
+\rowcolor{accentblue!8}
+\textbf{增持} & 成长配置 & \vspace{-0.8em}\begin{itemize}[leftmargin=1.2em, topsep=0pt, partopsep=0pt]
+  \item 成长逻辑清晰，行业景气向上
+  \item 估值合理，PEG ≤ 1.5
+  \item 细分领域龙头，具备差异化优势
+  \item 有明确催化，但时点或幅度存在不确定性
+\end{itemize}\vspace{-0.8em} & 8–15\% & 双周跟踪 \\
+\rowcolor{riskamber!8}
+\textbf{中性} & 观察跟踪 & \vspace{-0.8em}\begin{itemize}[leftmargin=1.2em, topsep=0pt, partopsep=0pt]
+  \item 长期有看点，但短期缺乏催化
+  \item 估值偏高或业绩能见度低
+  \item 主题性机会，基本面支撑不足
+  \item 处于业绩拐点观察期，方向不明
+\end{itemize}\vspace{-0.8em} & 3–8\% & 月度跟踪 \\
+\rowcolor{steelgrey!12}
+\textbf{回避} & 不建议配置 & \vspace{-0.8em}\begin{itemize}[leftmargin=1.2em, topsep=0pt, partopsep=0pt]
+  \item 基本面恶化或存在重大治理问题
+  \item 估值严重透支未来成长
+  \item 行业趋势向下，缺乏竞争优势
+  \item 存在财务造假或监管风险
+\end{itemize}\vspace{-0.8em} & 0\% & 季度观察 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队制定，仓位建议基于单一行业组合基准}
+\end{exhibitbox}
+
+评级体系的核心原则是"确定性与仓位成正比，波动性与仓位成反比"。核心底仓品种要求业绩可预测性强、估值安全边际充足，即使在市场回调时也具备扛跌性；弹性品种则严格控制仓位，以组合整体收益风险比最优为目标。
+
+\begin{keyinsight}[评级体系执行要点]
+投资评级不是静态标签，而是动态决策工具。当标的从"增持"上调至"买入"时，必须同步更新业绩预测与估值模型，确认安全边际确实扩大；当标的从"中性"下调至"回避"时，应果断清仓，避免"越跌越买"的价值陷阱。功率半导体行业周期性强，评级切换的速度往往快于消费或医药行业，需保持决策灵活性。
+\end{keyinsight}
+
+\section{情景分析与目标价区间}
+
+基于行业景气度、需求弹性、国产替代进度三大核心变量，我们构建乐观、中性、悲观三种情景，测算主要标的的目标价区间，为投资决策提供完整的概率分布参考。
+
+\subsection{情景假设与触发条件}
+
+三种情景的核心假设差异集中在 AI 需求兑现程度、新能源车销量、行业库存去化节奏以及国际大厂定价策略四个维度。
+
+\begin{exhibitbox}[表 10-2：三情景核心假设对比]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{2.8cm} L{3.8cm} L{3.8cm} L{3.8cm}}
+\toprule
+\textbf{核心变量} & \textbf{乐观情景} & \textbf{中性情景} & \textbf{悲观情景} \\
+\midrule
+发生概率 & 25\% & 55\% & 20\% \\
+\midrule
+AI 服务器功率半导体增速 & +60–80\%/年 & +35–50\%/年 & +15–25\%/年 \\
+新能源车销量增速 & +25–30\% & +15–20\% & +5–10\% \\
+行业库存去化周期 & 2026Q3 完成 & 2026Q4 完成 & 2027H1 完成 \\
+国际大厂涨价幅度 & 10–15\% & 5–8\% & 0–3\% \\
+SiC 渗透率（车规） & 18–20\% & 12–15\% & 8–10\% \\
+国产替代速度 & 加速（3 年超预期） & 稳步推进 & 低于预期 \\
+\midrule
+行业指数空间 & +40–60\% & +15–30\% & -15\% 至 -25\% \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算，概率为主观判断，仅供参考}
+\end{exhibitbox}
+
+在三种情景下，核心标的的目标价区间差异显著。投资者需根据自身风险偏好和情景判断，决定仓位水平和建仓节奏。
+
+\begin{exhibitbox}[表 10-3：核心标的三情景目标价区间]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c c}
+\toprule
+\textbf{公司} & \textbf{当前股价} & \textbf{悲观情景} & \textbf{中性情景} & \textbf{乐观情景} & \textbf{盈亏比} \\
+& (元) & 目标价 (元) & 目标价 (元) & 目标价 (元) & (乐观/悲观) \\
+\midrule
+\rowcolor{riskgreen!5}
+时代电气 & \multirow{2}{*}{~103.5} & \multirow{2}{*}{80–85} & \multirow{2}{*}{130–145} & \multirow{2}{*}{170–190} & \multirow{2}{*}{~2.4×} \\
+\rowcolor{riskgreen!5}
+(688187) & & & & & \\
+\rowcolor{riskgreen!5}
+扬杰科技 & \multirow{2}{*}{~136.0} & \multirow{2}{*}{95–105} & \multirow{2}{*}{165–185} & \multirow{2}{*}{220–250} & \multirow{2}{*}{~2.2×} \\
+\rowcolor{riskgreen!5}
+(300373) & & & & & \\
+\rowcolor{accentblue!5}
+斯达半导 & \multirow{2}{*}{~186.5} & \multirow{2}{*}{110–125} & \multirow{2}{*}{200–230} & \multirow{2}{*}{300–350} & \multirow{2}{*}{~2.7×} \\
+\rowcolor{accentblue!5}
+(603290) & & & & & \\
+\rowcolor{accentblue!5}
+华润微 & \multirow{2}{*}{~80.2} & \multirow{2}{*}{52–58} & \multirow{2}{*}{85–95} & \multirow{2}{*}{120–135} & \multirow{2}{*}{~2.0×} \\
+\rowcolor{accentblue!5}
+(688396) & & & & & \\
+\rowcolor{accentblue!5}
+新洁能 & \multirow{2}{*}{~159.0} & \multirow{2}{*}{90–100} & \multirow{2}{*}{170–190} & \multirow{2}{*}{250–280} & \multirow{2}{*}{~2.6×} \\
+\rowcolor{accentblue!5}
+(605111) & & & & & \\
+\rowcolor{riskamber!5}
+天岳先进 & \multirow{2}{*}{~78.5} & \multirow{2}{*}{35–45} & \multirow{2}{*}{75–85} & \multirow{2}{*}{130–150} & \multirow{2}{*}{~3.1×} \\
+\rowcolor{riskamber!5}
+(688234) & & & & & \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算，当前股价为 2026 年 6 月中旬收盘价估算。目标价基于 PE/PS 估值法，悲观情景取历史估值下限，中性情景取行业合理中枢，乐观情景取景气上行期估值上限}
+\end{exhibitbox}
+
+从盈亏比角度看，\textbf{天岳先进} 的弹性最大但下行风险也最高，适合高风险偏好的进取型投资者；\textbf{时代电气} 和 \textbf{扬杰科技} 下行空间有限且上行空间可观，风险收益比最优，是稳健型投资者的首选；\textbf{斯达半导} 和 \textbf{新洁能} 兼具弹性与基本面支撑，适合平衡型组合。
+
+\subsection{情景切换的识别信号}
+
+市场不会按照预设情景线性发展，投资者需持续跟踪关键指标，及时判断情景切换。以下信号可帮助识别当前所处情景：
+
+\vspace{0.2em}
+\begin{description}[leftmargin=5.5em, style=nextline, font=\bfseries\color{navy}]
+\item[乐观信号] AI 服务器出货量连续两季超预期、国际大厂交期延长至 20 周以上、头部代工厂产能利用率回升至 90\% 以上、车规 SiC 定点项目密集公布
+\item[中性信号] 行业库存逐步回落、价格指数止跌企稳、头部公司毛利率环比改善、AI 需求按季释放但无超预期跳升
+\item[悲观信号] 渠道库存反弹、价格战再度加剧、AI 资本开支增速放缓、新能源车销量连续两月低于预期、国际大厂降价抢单
+\end{description}
+
+\section{买入触发条件与失效条件清单}
+
+每一笔投资决策都应具备明确的触发条件与失效条件，避免情绪化交易与锚定效应。以下清单适用于功率半导体行业的标的选择与头寸管理。
+
+\subsection{买入触发条件}
+
+买入触发条件分为基本面触发与估值面触发两大类，满足其中一类即可进入建仓观察期，两类同时满足时为最佳买点。
+
+\begin{exhibitbox}[表 10-4：买入触发条件清单]
+\centering
+\small
+\begin{tabularx}{\textwidth}{c L{2.0cm} L{4.5cm} L{5.5cm}}
+\toprule
+\textbf{类别} & \textbf{触发项} & \textbf{判断标准} & \textbf{验证方式} \\
+\midrule
+\multirow{4}{*}{\rotatebox{0}{\textbf{\color{navy}基本面}}} & 行业拐点确认 & 渠道库存降至 120 天以下，价格指数环比转正 & 产业调研、分销商数据、行业价格指数 \\
+& 公司业绩加速 & 单季营收/利润增速环比提升 10pct 以上 & 季报/业绩预告、产业链订单验证 \\
+& 重大客户突破 & 进入海外大客户或车规级供应链 & 公司公告、客户验证报告、产业链调研 \\
+& 产能利用率回升 & 月度稼动率从低位回升至 80\% 以上 & 产业链调研、设备利用率数据 \\
+\midrule
+\multirow{4}{*}{\rotatebox{0}{\textbf{\color{navy}估值面}}} & 估值触及历史低位 & PE/PB 处于近 3 年 20\% 分位以下 & 历史估值区间对比、横向可比公司比较 \\
+& 深度回调 & 较年内高点回撤 30\% 以上，基本面无恶化 & 股价回撤幅度测算、基本面再验证 \\
+& 隐含悲观预期 & 当前股价已隐含业绩下滑 20\% 以上假设 & 倒推估值法、情景分析验证 \\
+& 分红收益率吸引 & 股息率高于 3\% 且分红政策稳定 & 历史分红记录、未来分红能力评估 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队总结，实际操作需结合具体标的调整}
+\end{exhibitbox}
+
+\subsection{失效条件与止损纪律}
+
+失效条件用于检验投资逻辑是否仍然成立。当失效条件触发时，无论盈亏都应重新评估持仓，必要时果断减仓或止损。
+
+\begin{exhibitbox}[表 10-5：失效条件与止损纪律]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{2.2cm} L{5.0cm} L{3.0cm} L{2.8cm}}
+\toprule
+\textbf{失效条件类型} & \textbf{具体表现} & \textbf{应对动作} & \textbf{时间窗口} \\
+\midrule
+核心逻辑破坏 & 产品技术路线被颠覆、核心客户流失、 & 立即减仓至观察仓位 & 7 个交易日内 \\
+& 行业竞争格局出现不可逆恶化 & 以下，重新评估 & \\
+\midrule
+业绩低于预期 & 连续两季业绩低于一致预期 10\% 以上， & 减仓 50\%，评级从增持 & 业绩公布后 \\
+& 且无合理解释或改善迹象 & 下调至中性 & 10 个交易日内 \\
+\midrule
+估值过度透支 & PE 突破历史 90\% 分位，且缺乏新增 & 分批止盈，逐步降低仓位 & 4–8 周内完成 \\
+& 催化支撑，或 PEG > 2.5 且增速放缓 & 至中性仓位 & 减仓 \\
+\midrule
+价格止损 & 核心底仓从高点回撤 20\%、弹性品种 & 触发即执行机械止损 & 触发当日 \\
+& 回撤 30\%，且基本面无重大利好 & 或减仓至 1/3 & 收盘前 \\
+\midrule
+时间止损 & 建仓后 6 个月内无任何催化兑现， & 减仓或换股，资金重新 & 每季度末评估， \\
+& 股价跑输行业指数 15\% 以上 & 配置至更优标的 & 半年必评估 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队制定，止损纪律需严格执行，避免侥幸心理}
+\end{exhibitbox}
+
+\begin{keyinsight}[失效条件比买入条件更重要]
+投资决策中，"什么时候卖"比"什么时候买"更能决定长期收益。功率半导体行业波动大、周期性强，设立明确的失效条件并严格执行，是控制回撤、保住收益的关键。建议将失效条件写入投委会决议，作为硬性纪律执行，避免个股情结与沉没成本谬误。
+\end{keyinsight}
+
+\section{仓位管理与风险控制框架}
+
+功率半导体行业兼具成长属性与周期属性，β 系数显著高于市场平均水平，仓位管理是组合收益风险比的决定性因素。我们建议采用"三层仓位 + 动态调整"的框架。
+
+\subsection{三层仓位结构}
+
+组合按照"核心底仓—成长配置—弹性主题"三层结构构建，各层承担不同的收益与风险角色。
+
+\begin{exhibitbox}[表 10-6：三层仓位结构与配置原则]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{2.0cm} c L{3.5cm} L{3.0cm} L{3.5cm}}
+\toprule
+\textbf{仓位层级} & \textbf{占比} & \textbf{标的特征} & \textbf{代表公司} & \textbf{管理原则} \\
+\midrule
+\rowcolor{riskgreen!5}
+核心底仓 & 50–60\% & 业绩确定性强、估值安全边际高、 & 时代电气、扬杰科技 & 长期持有，逢低加仓， \\
+& & 竞争壁垒清晰、下行风险可控 & & 换手率 ≤ 20\%/半年 \\
+\midrule
+\rowcolor{accentblue!5}
+成长配置 & 25–35\% & 行业景气向上、成长逻辑清晰、 & 斯达半导、华润微、 & 波段操作，动态再平衡， \\
+& & 细分领域龙头、估值合理 & 新洁能、东微半导 & 换手率 30–50\%/半年 \\
+\midrule
+\rowcolor{riskamber!5}
+弹性主题 & 10–15\% & 高弹性、高波动、主题催化驱动、 & 天岳先进、晶丰明源、 & 严格控仓，止盈止损， \\
+& & 业绩能见度较低 & 三安光电（SiC 部分） & 单只不超过 8\% \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队构建，仓位比例基于行业组合基准，实际配置需根据投资者风险偏好调整}
+\end{exhibitbox}
+
+核心底仓是组合的压舱石，提供基础收益与稳定性；成长配置是收益增强层，捕捉行业景气上行期的超额收益；弹性主题是期权仓位，用有限的风险暴露博取主题催化带来的高收益。三层结构确保组合在不同市场环境下都具备适应能力。
+
+\subsection{动态调整机制}
+
+仓位不是一成不变的，需根据行业周期位置与估值水平动态调整。我们建立"周期位置 + 估值水平"二维调整矩阵：
+
+\vspace{0.3em}
+\begin{exhibitbox}[图 10-1：仓位动态调整矩阵]
+\centering
+\begin{tikzpicture}
+% 坐标
+\def\xmax{7}
+\def\ymax{5}
+
+% 四象限背景
+\fill[riskgreen!12] (0, \ymax/2) rectangle (\xmax/2, \ymax); % 低估值+上行期：加仓
+\fill[accentblue!8] (\xmax/2, \ymax/2) rectangle (\xmax, \ymax); % 高估值+上行期：持有
+\fill[riskamber!8] (0, 0) rectangle (\xmax/2, \ymax/2); % 低估值+下行期：分批建仓
+\fill[riskred!10] (\xmax/2, 0) rectangle (\xmax, \ymax/2); % 高估值+下行期：减仓
+
+% 坐标轴
+\draw[thick, navy, ->] (0,0) -- (\xmax+0.5, 0) node[right, font=\small] {行业景气度 →};
+\draw[thick, navy, ->] (0,0) -- (0, \ymax+0.5) node[above, font=\small] {估值水平 →};
+
+% 中轴虚线
+\draw[dashed, steelgrey] (\xmax/2, 0) -- (\xmax/2, \ymax);
+\draw[dashed, steelgrey] (0, \ymax/2) -- (\xmax, \ymax/2);
+
+% 象限标签
+\node[font=\small\bfseries, color=riskgreen] at (\xmax/4, \ymax*0.75) {左侧进攻区};
+\node[font=\small, color=riskgreen, align=center, text width=3cm] at (\xmax/4, \ymax*0.58) {加仓至上限\\提升弹性仓位};
+
+\node[font=\small\bfseries, color=accentblue] at (\xmax*0.75, \ymax*0.75) {右侧持有区};
+\node[font=\small, color=accentblue, align=center, text width=3cm] at (\xmax*0.75, \ymax*0.58) {持有核心底仓\\逐步止盈弹性};
+
+\node[font=\small\bfseries, color=riskamber] at (\xmax/4, \ymax*0.25) {左侧布局区};
+\node[font=\small, color=riskamber, align=center, text width=3cm] at (\xmax/4, \ymax*0.08) {分批建仓\\偏好高质量标的};
+
+\node[font=\small\bfseries, color=riskred] at (\xmax*0.75, \ymax*0.25) {风险释放区};
+\node[font=\small, color=riskred, align=center, text width=3cm] at (\xmax*0.75, \ymax*0.08) {降低总仓位\\回避高估值品种};
+
+% 当前位置标记
+\filldraw[riskred] (2.1, 3.2) circle (3pt) node[above right, font=\scriptsize, color=riskred] {当前位置};
+
+% 坐标刻度标签
+\node[below, font=\tiny, color=steelgrey] at (0,0) {衰退};
+\node[below, font=\tiny, color=steelgrey] at (\xmax/2, 0) {复苏初期};
+\node[below, font=\tiny, color=steelgrey] at (\xmax, 0) {繁荣};
+\node[left, font=\tiny, color=steelgrey] at (0,0) {低估};
+\node[left, font=\tiny, color=steelgrey] at (0, \ymax/2) {合理};
+\node[left, font=\tiny, color=steelgrey] at (0, \ymax) {高估};
+
+\end{tikzpicture}
+\sourcenote{本研究团队构建（示意图）}
+\end{exhibitbox}
+
+当前我们判断行业处于复苏初期、估值略高于合理中枢，对应矩阵中偏左上的"左侧进攻区/持有区"交界位置。策略上应保持核心底仓配置，成长仓位适度灵活，弹性仓位严格控制上限。
+
+\subsection{风险控制指标体系}
+
+为确保组合风险敞口可控，建议设置以下硬性风控指标：
+
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{行业总仓位上限}：单一行业配置不超过组合总资产的 25\%，避免行业集中度风险
+\item \textbf{单一个股上限}：单只股票不超过行业配置的 25\%（即组合总仓位的 6\% 以内）
+\item \textbf{流动性要求}：日均成交额低于 5000 万元的品种，仓位不超过 5\%
+\item \textbf{回撤控制}：行业组合从高点回撤 15\% 强制降仓 1/3，回撤 25\% 强制降仓至半仓
+\item \textbf{相关性分散}：同一细分赛道（如 SiC 衬底）的标的合计仓位不超过 15\%
+\end{itemize}
+
+\section{催化日历与投资时钟}
+
+功率半导体行业的股价表现与产业节奏高度相关，把握催化时点是获取超额收益的关键。我们从年度日历与周期时钟两个维度构建催化跟踪框架。
+
+\subsection{年度催化日历}
+
+一年中行业有多个相对固定的信息披露与事件窗口，投资者可据此提前布局或兑现收益。
+
+\begin{exhibitbox}[表 10-7：年度催化日历与策略建议]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{1.5cm} L{3.0cm} L{4.5cm} L{4.0cm}}
+\toprule
+\textbf{时间窗口} & \textbf{关键事件} & \textbf{催化逻辑} & \textbf{策略建议} \\
+\midrule
+\rowcolor{riskgreen!5}
+Q1（1–3月） & CES/SEMICON 展会、 & 年初订单展望、技术路线、 & 布局全年主线，关注年报 & \\
+& 年报预告、春节备货 & 新年度资本开支规划 & 行情与春季躁动机会 \\
+\midrule
+\rowcolor{accentblue!5}
+Q2（4–6月） & 一季报披露、业绩说明会、 & 一季度业绩验证、 & 业绩验证期，汰弱留强， \\
+& 中期策略会密集召开 & 全年指引调整 & 调整组合结构与仓位 \\
+\midrule
+\rowcolor{riskamber!5}
+Q3（7–9月） & 中报披露、PCIM 展会、 & 旺季景气度验证、 & 关注旺季成色，逢高兑现 & \\
+& 新能源车金九银十备货 & 第三代半导体进展 & 弹性品种，锁定上半年收益 \\
+\midrule
+\rowcolor{steelgrey!8}
+Q4（10–12月） & 三季报、年度展望、 & 年度业绩确认、 & 布局来年，低吸优质标的， & \\
+& 国际大厂资本开支指引 & 下一年行业景气判断 & 关注估值切换行情 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队总结，具体事件时间可能因公司而异}
+\end{exhibitbox}
+
+从季节性规律看，功率半导体板块在 Q1 和 Q4 往往表现较好——Q1 有春季躁动和全年预期抬升，Q4 有估值切换和来年布局行情；Q2 是业绩验证期，走势分化；Q3 则需警惕旺季不旺带来的预期下修风险。
+
+\subsection{投资时钟与周期轮动}
+
+将行业周期划分为四个阶段，每个阶段对应不同的配置偏好与标的选择：
+
+\begin{exhibitbox}[图 10-2：功率半导体投资时钟]
+\centering
+\begin{tikzpicture}[scale=0.95]
+% 圆形背景
+\fill[lightgrey] (0,0) circle (4.8);
+
+% 四个象限
+\fill[riskgreen!15] (0,0) -- (0,4.8) arc (90:0:4.8) -- cycle; % 复苏期
+\fill[accentblue!12] (0,0) -- (4.8,0) arc (0:-90:4.8) -- cycle; % 繁荣期
+\fill[riskamber!12] (0,0) -- (0,-4.8) arc (-90:-180:4.8) -- cycle; % 衰退前期
+\fill[riskred!12] (0,0) -- (-4.8,0) arc (180:90:4.8) -- cycle; % 衰退后期
+
+% 分隔线
+\draw[thick, navy] (0,-4.8) -- (0,4.8);
+\draw[thick, navy] (-4.8,0) -- (4.8,0);
+
+% 中心圆
+\fill[white] (0,0) circle (1.8);
+\node[font=\small\bfseries, color=navy, align=center] at (0,0.2) {功率半导体\\投资时钟};
+\node[font=\tiny, color=steelgrey] at (0,-0.6) {顺时针轮转};
+
+% 四个阶段标签
+\node[font=\small\bfseries, color=riskgreen] at (2.5, 2.5) {复苏期};
+\node[font=\tiny, color=steelgrey, align=center, text width=2.8cm] at (2.5, 1.5) {库存去化\\价格企稳\\稼动回升};
+\node[font=\tiny, color=riskgreen, align=center, text width=2.8cm] at (2.5, 0.5) {优先：IDM 龙头\\+ 车规标的};
+
+\node[font=\small\bfseries, color=accentblue] at (2.5, -2.5) {繁荣期};
+\node[font=\tiny, color=steelgrey, align=center, text width=2.8cm] at (2.5, -1.5) {量价齐升\\盈利释放\\扩产加速};
+\node[font=\tiny, color=accentblue, align=center, text width=2.8cm] at (2.5, -0.5) {优先：弹性品种\\+ 第三代半导体};
+
+\node[font=\small\bfseries, color=riskamber] at (-2.5, -2.5) {衰退前期};
+\node[font=\tiny, color=steelgrey, align=center, text width=2.8cm] at (-2.5, -1.5) {需求见顶\\库存累积\\价格松动};
+\node[font=\tiny, color=riskamber, align=center, text width=2.8cm] at (-2.5, -0.5) {优先：防御性\\+ 高质量标的};
+
+\node[font=\small\bfseries, color=riskred] at (-2.5, 2.5) {衰退后期};
+\node[font=\tiny, color=steelgrey, align=center, text width=2.8cm] at (-2.5, 1.5) {价格大跌\\产能收缩\\盈利底部};
+\node[font=\tiny, color=riskred, align=center, text width=2.8cm] at (-2.5, 0.5) {优先：左侧布局\\龙头+超跌};
+
+% 箭头指示顺时针
+\draw[->, thick, navy, bend right=20] (1.5, 3.5) to (3.5, 1.5);
+\draw[->, thick, navy, bend right=20] (3.5, -1.5) to (1.5, -3.5);
+\draw[->, thick, navy, bend right=20] (-1.5, -3.5) to (-3.5, -1.5);
+\draw[->, thick, navy, bend right=20] (-3.5, 1.5) to (-1.5, 3.5);
+
+% 当前位置标记
+\filldraw[riskred] (0.5, 3.5) circle (4pt) node[above right, font=\scriptsize, color=riskred, align=left] {当前\\位置};
+
+\end{tikzpicture}
+\sourcenote{本研究团队构建（示意图），周期长度通常为 2–4 年}
+\end{exhibitbox}
+
+当前我们判断行业处于\textbf{复苏初期}（衰退后期向复苏期过渡阶段），配置策略上应优先布局 IDM 龙头与车规级标的，逐步增加弹性品种仓位；待行业确认进入繁荣期后，再加大第三代半导体等高弹性赛道的配置比例。
+
+\begin{keyinsight}[投资时钟的实操要点]
+投资时钟的价值不在于精确预测拐点，而在于提供决策框架——提醒投资者在不同阶段关注不同的核心矛盾。复苏期看库存和稼动率，繁荣期看毛利率和价格，衰退前期看订单和需求，衰退后期看估值和供给出清。用错核心指标（例如在衰退后期看盈利）会导致决策偏差。建议每月对照时钟检查一次组合配置与当前阶段是否匹配。
+\end{keyinsight}
+
+\subsection{重点跟踪指标清单}
+
+为及时捕捉催化信号和周期拐点，建议建立以下高频跟踪指标体系，按月度更新评估：
+
+\vspace{0.2em}
+\begin{itemize}[leftmargin=2em]
+\item \textbf{需求端}：AI 服务器出货量、新能源车销量、光伏装机量、智能手机出货量、工业自动化指数
+\item \textbf{价格端}：国际大厂交期数据、分销商价格指数、主流型号现货价格、代工厂报价走势
+\item \textbf{供给端}：晶圆厂稼动率、行业资本开支增速、新增产能投放节奏、库存周转天数
+\item \textbf{公司端}：订单能见度、毛利率趋势、新产品研发进展、客户认证状态
+\item \textbf{估值端}：板块 PE/PB 历史分位、A/H 溢价率、内资与外资持仓变动、龙虎榜机构动向
+\end{itemize}

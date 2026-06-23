@@ -1,0 +1,110 @@
+% ============================================================
+% Exhibit 1: 板块景气度—拥挤度二维矩阵
+% ============================================================
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[scale=0.92,
+      >=stealth,
+      sector/.style={circle, inner sep=0pt, opacity=0.35, draw opacity=0.8},
+      highlight/.style={circle, inner sep=0pt, fill=red!90, draw=red!60, opacity=0.9, text=white, font=\bfseries},
+      trap/.style={circle, inner sep=0pt, fill=red!80!black!80, draw=red!80!black, opacity=0.9, text=white, font=\bfseries},
+      quadlabel/.style={font=\bfseries\large, opacity=0.85}
+    ]
+
+    % 坐标轴
+    \draw[->, thick] (0,0) -- (11,0) node[right, font=\small] {景气度评分 $\longrightarrow$};
+    \draw[->, thick] (0,0) -- (0,11) node[above, font=\small, rotate=90, anchor=south] {拥挤度评分 $\longrightarrow$};
+
+    % 坐标轴刻度
+    \foreach \x in {0,20,40,60,80,100} {
+      \draw (\x/10, 0.1) -- (\x/10, -0.1) node[below, font=\scriptsize] {\x};
+    }
+    \foreach \y in {0,20,40,60,80,100} {
+      \draw (0.1, \y/10) -- (-0.1, \y/10) node[left, font=\scriptsize] {\y};
+    }
+
+    % 象限分割线
+    \draw[dashed, gray!60] (5,0) -- (5,10);
+    \draw[dashed, gray!60] (0,5) -- (10,5);
+
+    % 象限背景
+    \fill[green!10, opacity=0.5] (5,5) rectangle (10,10);
+    \fill[lime!10, opacity=0.5] (0,5) rectangle (5,10);
+    \fill[orange!10, opacity=0.5] (5,0) rectangle (10,5);
+    \fill[red!10, opacity=0.5] (0,0) rectangle (5,5);
+
+    % 象限标签
+    \node[quadlabel, red!70] at (2.5, 9.2) {\parbox{3cm}{\centering 陷阱型\\[-0.3em]\scriptsize 低景气·高拥挤}};
+    \node[quadlabel, orange!70] at (7.5, 9.2) {\parbox{3cm}{\centering 博弈型\\[-0.3em]\scriptsize 高景气·高拥挤}};
+    \node[quadlabel, teal!70] at (2.5, 0.8) {\parbox{3cm}{\centering 潜力型\\[-0.3em]\scriptsize 中景气·低拥挤}};
+    \node[quadlabel, green!70!black] at (7.5, 0.8) {\parbox{3cm}{\centering 明星型\\[-0.3em]\scriptsize 高景气·低拥挤}};
+
+    % 120+ 细分板块散点（抽样代表性分布）
+    \pgfmathsetseed{42}
+    \foreach \i in {1,...,85} {
+      \pgfmathsetmacro\x{rand*3.5+5.5}     % 右侧聚集
+      \pgfmathsetmacro\y{rand*3.5+5.5}
+      \ifdim\x pt>100pt \pgfmathsetmacro\x{9.5}\fi
+      \ifdim\y pt>100pt \pgfmathsetmacro\y{9.5}\fi
+      \fill[teal!60, opacity=0.4] (\x,\y) circle (0.08);
+    }
+    \foreach \i in {1,...,25} {
+      \pgfmathsetmacro\x{rand*2+3.5}
+      \pgfmathsetmacro\y{rand*2+3.5}
+      \fill[orange!60, opacity=0.4] (\x,\y) circle (0.08);
+    }
+    \foreach \i in {1,...,15} {
+      \pgfmathsetmacro\x{rand*2.5+1}
+      \pgfmathsetmacro\y{rand*2.5+7}
+      \fill[red!60, opacity=0.5] (\x,\y) circle (0.08);
+    }
+
+    % ===== 7大预期差板块（重点标注）=====
+    \node[highlight, minimum size=14pt] (s1) at (8.8, 2.2) {\scriptsize 1};
+    \node[right, font=\footnotesize, align=left, text=red!80] at (s1.east) {AI算力\\\scriptsize 景气88 / 拥挤22};
+
+    \node[highlight, minimum size=14pt] (s2) at (9.2, 3.5) {\scriptsize 2};
+    \node[right, font=\footnotesize, align=left, text=red!80] at (s2.east) {功率半导\\\scriptsize 景气92 / 拥挤35};
+
+    \node[highlight, minimum size=14pt] (s3) at (7.8, 1.8) {\scriptsize 3};
+    \node[below right, font=\footnotesize, align=left, text=red!80] at (s3.south east) {电力公用\\\scriptsize 景气78 / 拥挤18};
+
+    \node[highlight, minimum size=14pt] (s4) at (8.2, 4.2) {\scriptsize 4};
+    \node[right, font=\footnotesize, align=left, text=red!80] at (s4.east) {智能驾驶\\\scriptsize 景气82 / 拥挤42};
+
+    \node[highlight, minimum size=14pt] (s5) at (7.2, 3.0) {\scriptsize 5};
+    \node[above left, font=\footnotesize, align=right, text=red!80] at (s5.west) {人形机器人\\\scriptsize 景气72 / 拥挤30};
+
+    \node[highlight, minimum size=14pt] (s6) at (6.8, 1.5) {\scriptsize 6};
+    \node[below, font=\footnotesize, align=left, text=red!80] at (s6.south) {光伏储能\\\scriptsize 景气68 / 拥挤15};
+
+    \node[highlight, minimum size=14pt] (s7) at (7.5, 4.8) {\scriptsize 7};
+    \node[above left, font=\footnotesize, align=right, text=red!80] at (s7.west) {创新药\\\scriptsize 景气75 / 拥挤48};
+
+    % ===== 3大价值陷阱板块 =====
+    \node[trap, minimum size=14pt] (t1) at (2.8, 8.5) {\scriptsize T1};
+    \node[above right, font=\footnotesize, align=left, text=red!80!black] at (t1.north east) {6G\\\scriptsize 景气28 / 拥挤85};
+
+    \node[trap, minimum size=14pt] (t2) at (3.2, 7.8) {\scriptsize T2};
+    \node[below right, font=\footnotesize, align=left, text=red!80!black] at (t2.south east) {低空经济\\\scriptsize 景气32 / 拥挤78};
+
+    \node[trap, minimum size=14pt] (t3) at (3.8, 8.2) {\scriptsize T3};
+    \node[above, font=\footnotesize, align=left, text=red!80!black] at (t3.north) {卫星互联网\\\scriptsize 景气38 / 拥挤82};
+
+    % 图例
+    \matrix [draw, below right, font=\scriptsize, row sep=0.4em, column sep=0.6em,
+             fill=white, fill opacity=0.9, draw opacity=0.6]
+    at (0.3, 4.5) {
+      \node[highlight, minimum size=10pt] {}; & \node{预期差板块(7)}; \\
+      \node[trap, minimum size=10pt] {}; & \node{价值陷阱(3)}; \\
+      \node[sector, fill=teal!60, minimum size=10pt] {}; & \node{其他细分板块}; \\
+    };
+
+  \end{tikzpicture}
+  \caption{板块景气度—拥挤度二维矩阵：120+细分板块全景扫描}
+  \label{ex:matrix_prosperity_crowding}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}Wind、申万宏源研究、中信建投研究测算（2026年6月）。
+  \footnotesize 景气度评分基于业绩增速（40\%）、产业验证（35\%）、政策支持（25\%）三因子加权；
+  \footnotesize 拥挤度评分基于持仓分位（40\%）、交易拥挤度（30\%）、估值分位（30\%）三因子加权。
+\end{figure}

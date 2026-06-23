@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{threeparttable}
+\usepackage[table]{xcolor}
+\usepackage{geometry}
+\geometry{a4paper, margin=1in}
+
+\begin{document}
+
+\begin{table}[htbp]
+  \centering
+  \scriptsize
+  \setlength{\tabcolsep}{4pt}
+  \begin{threeparttable}
+  \caption{七大重点板块估值对比表（截至2026年6月22日）}
+  \label{tab:sector_valuation}
+  \begin{tabular}{lcccccccc}
+    \toprule
+    \textbf{板块名称} & \textbf{当前PE(TTM)} & \textbf{近5年PE分位} & \textbf{当前PB} & \textbf{近5年PB分位} & \textbf{2026E PEG} & \textbf{年初至今涨跌幅} & \textbf{机构持仓评级} & \textbf{交易拥挤度} \\
+    \midrule
+    功率半导体 & 38.7x & 42.6\% & 4.85x & 35.1\% & 0.87 & +12.4\% & 超配 & 中 \\
+    电力/公用事业 & 16.2x & 68.3\% & 1.52x & 71.5\% & 1.94 & +8.7\% & 标配 & 低 \\
+    汽车零部件(智驾链) & 32.5x & 31.8\% & 3.46x & 28.4\% & 0.65 & +18.9\% & 超配 & 高 \\
+    半导体设备材料 & 47.8x & 55.2\% & 6.12x & 48.7\% & 0.93 & -5.3\% & 超配 & 中 \\
+    医疗器械 & 27.4x & 23.5\% & 3.08x & 19.6\% & 0.72 & -2.1\% & 标配 & 低 \\
+    动力电池(龙头) & 21.6x & 15.8\% & 2.35x & 12.4\% & 0.58 & -8.6\% & 低配 & 低 \\
+    创新药(龙头) & 34.2x & 38.9\% & 3.94x & 42.3\% & 1.15 & +6.2\% & 标配 & 中 \\
+    \bottomrule
+  \end{tabular}
+  \begin{tablenotes}
+    \scriptsize
+    \item \textit{数据来源：}Wind、东方财富Choice、中信建投证券研究发展部；PEG基于2026年一致预期净利润增速计算；机构持仓评级基于公募基金重仓股配置比例相对沪深300基准权重的偏离度；交易拥挤度综合换手率、融资交易占比、北向资金净流入斜率等指标测算。
+    \item \textit{统计口径：}板块指数采用中信一级/二级行业指数，PE(TTM)为整体法（剔除负值），PB为整体法（MRQ），分位数统计区间为2021年6月至2026年6月。
+  \end{tablenotes}
+  \end{threeparttable}
+\end{table}
+
+\end{document}

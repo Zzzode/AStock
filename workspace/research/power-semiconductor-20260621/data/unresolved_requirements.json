@@ -1,0 +1,205 @@
+{
+  "title": "Unresolved Research Requirements",
+  "lastUpdated": "2026-06-21",
+  "totalUnresolved": 12,
+  "breakdownByImpact": {
+    "high": 3,
+    "medium": 3,
+    "low": 6
+  },
+  "breakdownByBlockerType": {
+    "paid_paywall": 6,
+    "disclosure_boundary": 5,
+    "regulatory_change": 2,
+    "data_fragmentation": 3
+  },
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "researchGoal": "产业全景与市场规模",
+      "requirement": "全球市场规模及增速验证",
+      "status": "partial",
+      "gapDescription": "缺少权威第三方独立数据验证",
+      "blockerType": "paid_paywall",
+      "alternative": "国内券商研报引用 Yole/TrendForce + WSTS 公开数据",
+      "impactLevel": "medium",
+      "confidence": "moderate"
+    },
+    {
+      "id": "REQ-002",
+      "researchGoal": "产业全景与市场规模",
+      "requirement": "分产品细分市场规模",
+      "status": "partial",
+      "gapDescription": "细分数据颗粒度不足，各机构数据差异大",
+      "blockerType": "paid_paywall + data_fragmentation",
+      "alternative": "取多家券商预测的共识区间",
+      "impactLevel": "medium-high",
+      "confidence": "low-moderate"
+    },
+    {
+      "id": "REQ-003",
+      "researchGoal": "AI 需求增量与价值量",
+      "requirement": "AI服务器功率半导体价值量验证",
+      "status": "partial",
+      "gapDescription": "基于拆解和分析师估计，缺乏验证数据",
+      "blockerType": "disclosure_boundary",
+      "alternative": "公开拆解报告 + 券商分析 + 产业链调研",
+      "impactLevel": "high",
+      "confidence": "low-moderate"
+    },
+    {
+      "id": "REQ-004",
+      "researchGoal": "AI 需求增量与价值量",
+      "requirement": "GaN VRM 在AI服务器中的渗透率",
+      "status": "partial",
+      "gapDescription": "各机构预测差异大（10-30%）",
+      "blockerType": "data_fragmentation + paid_paywall",
+      "alternative": "取多机构区间，说明不确定性",
+      "impactLevel": "high",
+      "confidence": "low"
+    },
+    {
+      "id": "REQ-005",
+      "researchGoal": "AI 需求增量与价值量",
+      "requirement": "云厂商功率半导体采购额",
+      "status": "unmet",
+      "gapDescription": "云厂商不披露元件级采购支出",
+      "blockerType": "disclosure_boundary",
+      "alternative": "从总capex和AI投入比例间接估算",
+      "impactLevel": "medium-high",
+      "confidence": "low"
+    },
+    {
+      "id": "REQ-006",
+      "researchGoal": "技术路线演进",
+      "requirement": "SiC 衬底/器件良率数据",
+      "status": "partial",
+      "gapDescription": "公司不披露精确良率数据",
+      "blockerType": "disclosure_boundary",
+      "alternative": "从产能利用率、毛利率等间接推断",
+      "impactLevel": "medium",
+      "confidence": "low-moderate"
+    },
+    {
+      "id": "REQ-007",
+      "researchGoal": "技术路线演进",
+      "requirement": "SiC 价格下降曲线",
+      "status": "partial",
+      "gapDescription": "价格数据分散，不同渠道差异大",
+      "blockerType": "paid_paywall + data_fragmentation",
+      "alternative": "券商渠道调研数据 + 公开价格指数",
+      "impactLevel": "medium",
+      "confidence": "moderate"
+    },
+    {
+      "id": "REQ-008",
+      "researchGoal": "竞争格局与国产替代",
+      "requirement": "各环节国产替代率精确数据",
+      "status": "partial",
+      "gapDescription": "定义不统一，数据来源多样",
+      "blockerType": "data_fragmentation + paid_paywall",
+      "alternative": "行业协会 + 券商估计 + 公司财报交叉验证",
+      "impactLevel": "medium",
+      "confidence": "moderate"
+    },
+    {
+      "id": "REQ-009",
+      "researchGoal": "公司基本面分析",
+      "requirement": "客户收入结构（客户级）",
+      "status": "unmet",
+      "gapDescription": "只有分行业/产品数据，无客户级数据",
+      "blockerType": "disclosure_boundary",
+      "alternative": "前五大客户占比 + 定性描述 + 行业调研",
+      "impactLevel": "medium",
+      "confidence": "low"
+    },
+    {
+      "id": "REQ-010",
+      "researchGoal": "公司基本面分析",
+      "requirement": "渠道库存与订单能见度",
+      "status": "unmet",
+      "gapDescription": "公司不详细披露渠道库存和订单情况",
+      "blockerType": "disclosure_boundary",
+      "alternative": "从营收增速、毛利率、存货周转间接判断",
+      "impactLevel": "high",
+      "confidence": "low-moderate"
+    },
+    {
+      "id": "REQ-011",
+      "researchGoal": "估值与投资建议",
+      "requirement": "卖方一致预期数据库",
+      "status": "partial",
+      "gapDescription": "需手动汇总研报，覆盖券商有限",
+      "blockerType": "paid_paywall",
+      "alternative": "手动汇总 8-12 家主流券商研报",
+      "impactLevel": "medium",
+      "confidence": "moderate"
+    },
+    {
+      "id": "REQ-012",
+      "researchGoal": "估值与投资建议",
+      "requirement": "国际可比公司估值深度分析",
+      "status": "partial",
+      "gapDescription": "国际投行研报不可得，估值参考有限",
+      "blockerType": "paid_paywall",
+      "alternative": "海外公司公开财报估值 + 国内券商对比",
+      "impactLevel": "medium",
+      "confidence": "moderate"
+    }
+  ],
+  "acquisitionPriority": [
+    {
+      "priority": "P0",
+      "dataType": "Wind/Choice 金融终端",
+      "estimatedCost": "3-8万元/年",
+      "expectedBenefit": "极高（全数据类型覆盖）",
+      "roi": "极高"
+    },
+    {
+      "priority": "P1",
+      "dataType": "Yole/TrendForce 行业报告",
+      "estimatedCost": "数千-数万美元",
+      "expectedBenefit": "高（行业数据深度提升）",
+      "roi": "高"
+    },
+    {
+      "priority": "P1",
+      "dataType": "渠道价格数据订阅",
+      "estimatedCost": "数千美元/年",
+      "expectedBenefit": "高（周期判断精度提升）",
+      "roi": "中高"
+    },
+    {
+      "priority": "P2",
+      "dataType": "Bloomberg 终端",
+      "estimatedCost": "约2万美元/年",
+      "expectedBenefit": "中（国际视野提升）",
+      "roi": "中低"
+    },
+    {
+      "priority": "P2",
+      "dataType": "详细海关数据",
+      "estimatedCost": "数千元/年",
+      "expectedBenefit": "中低",
+      "roi": "低"
+    }
+  ],
+  "overallAssessment": {
+    "coreDataQuality": "good",
+    "coreDataNote": "公司财务、行业基本格局等核心数据扎实",
+    "keyGapAreas": [
+      "周期判断精度",
+      "国际比较深度",
+      "部分细分领域量化精度"
+    ],
+    "reportRecommendations": [
+      "明确标注数据局限性",
+      "使用区间估计而非点估计",
+      "多维度交叉验证重要结论",
+      "对关键假设做敏感性分析",
+      "为核心结论标注置信度"
+    ],
+    "conclusionFeasibility": "feasible_with_caveats",
+    "conclusionNote": "核心研究结论可以支撑，但需明确数据局限性，避免过度自信表述"
+  }
+}

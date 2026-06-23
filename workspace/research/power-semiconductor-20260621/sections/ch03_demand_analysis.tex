@@ -1,0 +1,240 @@
+% 第三章 需求分析
+
+\section{AI/数据中心：边际增量最大的赛道}
+
+AI 算力革命正在深刻改变数据中心的电源架构，也为功率半导体带来了历史性的增量机遇。从传统 CPU 服务器到 AI GPU 服务器，单机架功耗呈指数级增长，功率半导体的价值量提升了一个数量级。我们认为，AI 数据中心是功率半导体未来 3–5 年边际增量最大、弹性最高的下游赛道。
+
+\subsection{AI 服务器功耗演进：从 300W 到 10kW+}
+
+传统 x86 CPU 服务器的单机功率通常在 300–500W，而 AI 训练服务器的单机功率已飙升至 5–10kW 级别，提升了 10–20 倍。下一代 Rubin Ultra 架构的 GB200 NVL72 整机柜功率更是达到了惊人的 70–80kW。
+
+\begin{exhibitbox}[表 3-1：服务器演进与功率半导体价值量对比]
+\centering
+\small
+\begin{tabularx}{\textwidth}{X c c c c}
+\toprule
+\textbf{服务器类型} & \textbf{代表产品} & \textbf{单机架功率} & \textbf{功率半导体价值量} & \textbf{倍数} \\
+\midrule
+传统机架式服务器 & Intel Xeon 双路 & 0.3–0.5 kW & \$2,000–5,000 & 1× \\
+AI 训练服务器（4-GPU） & H100 4-GPU & 5–7 kW & \$15,000–20,000 & 5–7× \\
+AI 训练服务器（8-GPU） & H100/H200 8-GPU & 10–12 kW & \$30,000–40,000 & 8–12× \\
+下一代 AI 服务器 & B100/Rubin 8-GPU & 15–20 kW & \$50,000–60,000 & 12–20× \\
+超高密度整机柜 & GB200 NVL72 & 70–80 kW & \$70,000–80,000 & 15–25× \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Nvidia，本研究团队测算（按整机柜功率半导体价值估算）}
+\end{exhibitbox}
+
+功耗的大幅增长源于三方面：一是 GPU 本身功耗大幅提升（单颗 H100 功耗约 700W，B100 预计超过 1,000W）；二是单机架 GPU 数量增加（从 1 颗到 8 颗甚至 72 颗）；三是配套的内存、网络、存储等部件功耗同步提升。
+
+\subsection{BOM 拆解：VRM/DC-DC/PFC/保护}
+
+AI 服务器功率半导体 BOM 可分为四大类：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{DC-DC / VRM（50–60\%）}：为 CPU/GPU、内存等核心芯片提供精准电压调节，是价值量最大的部分。AI 服务器 VRM 相数从传统的 8–12 相增加到 20–30 相甚至更多，每相都需要 MOSFET 或 GaN 器件 + 驱动 IC。
+\item \textbf{AC-DC / PSU（22–28\%）}：将交流电转换为直流电的电源模块，包括 PFC 和 DC-DC 两级。AI 服务器电源功率从 1–2kW 提升到 3–5kW 甚至更高。
+\item \textbf{PFC（13–17\%）}：功率因数校正电路，提高电能利用效率。高功率服务器对 PFC 要求更高，通常采用图腾柱 PFC 架构。
+\item \textbf{保护器件（5–8\%）}：包括保险丝、TVS、ESD 等保护器件。
+\end{enumerate}
+
+\begin{exhibitbox}[图 3-1：AI 服务器功率半导体 BOM 结构]
+\centering
+\begin{tikzpicture}[scale=1.1]
+% 饼图 - 用 TikZ 原生绘制
+% DC-DC/VRM: 55% = 198度
+\fill[navy] (0,0) -- (0:2.5) arc (0:198:2.5) -- cycle;
+% AC-DC/PSU: 25% = 90度
+\fill[accentblue!70] (0,0) -- (198:2.5) arc (198:288:2.5) -- cycle;
+% PFC: 15% = 54度
+\fill[steelgrey] (0,0) -- (288:2.5) arc (288:342:2.5) -- cycle;
+% 保护器件: 5% = 18度
+\fill[riskamber] (0,0) -- (342:2.5) arc (342:360:2.5) -- cycle;
+
+% 标注
+\node[white, font=\bfseries\small] at (99:1.5) {55\%};
+\node[white, font=\bfseries\small] at (243:1.5) {25\%};
+\node[white, font=\bfseries\small] at (315:1.6) {15\%};
+\node[white, font=\bfseries\tiny] at (351:2.0) {5\%};
+
+% 图例
+\draw[fill=navy, draw=none] (3.0, 1.4) rectangle (3.3, 1.65);
+\node[right, font=\small, inner sep=0pt] at (3.4, 1.525) {DC-DC/VRM（55\%）};
+\draw[fill=accentblue!70, draw=none] (3.0, 0.8) rectangle (3.3, 1.05);
+\node[right, font=\small, inner sep=0pt] at (3.4, 0.925) {AC-DC/PSU（25\%）};
+\draw[fill=steelgrey, draw=none] (3.0, 0.2) rectangle (3.3, 0.45);
+\node[right, font=\small, inner sep=0pt] at (3.4, 0.325) {PFC（15\%）};
+\draw[fill=riskamber, draw=none] (3.0, -0.4) rectangle (3.3, -0.15);
+\node[right, font=\small, inner sep=0pt] at (3.4, -0.275) {保护器件（5\%）};
+
+\end{tikzpicture}
+\sourcenote{本研究团队测算}
+\end{exhibitbox}
+
+\subsection{三大技术趋势：48V 母线、GaN VRM、高压化}
+
+AI 服务器电源架构正在经历深刻的技术变革，三大趋势值得重点关注：
+
+\vspace{0.3em}
+
+\textbf{趋势一：12V 向 48V 母线架构演进}
+
+传统服务器采用 12V 母线供电，但随着功耗攀升，12V 架构下传输电流过大，线损和散热问题日益突出。48V 母线架构可将传输电流降低 75\%，显著提升供电效率和功率密度，已成为 AI 服务器的必然选择。
+
+\begin{exhibitbox}[表 3-2：12V vs 48V 母线架构对比]
+\centering
+\small
+\begin{tabularx}{\textwidth}{X c c c}
+\toprule
+\textbf{对比维度} & \textbf{12V 架构} & \textbf{48V 架构} & \textbf{提升幅度} \\
+\midrule
+母线电流（同等功率） & 高 & 低 & 电流降低 ~75\% \\
+线缆损耗 & 高 & 低 & 损耗降低 ~90\% \\
+供电效率 & ~85-88\% & ~90-93\% & 提升 5-8pct \\
+功率密度 & 低 & 高 & 提升 2-3× \\
+物料成本 & 低 & 高 & 增加约 30-50\% \\
+适合场景 & 低功耗服务器 & 高功耗 AI 服务器 & — \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队整理}
+\end{exhibitbox}
+
+48V 架构在 AI 服务器中的渗透率快速提升：从 2023 年的约 40\% 提升至 2025 年的约 50\%，预计 2027 年将达到约 80\%。48V 架构的普及直接带动了高压 MOSFET、GaN 器件、变压器等元件需求的增长。
+
+\vspace{0.3em}
+
+\textbf{趋势二：GaN VRM 加速渗透}
+
+传统 VRM 采用硅基 MOSFET，但随着开关频率提升，硅基器件的开关损耗成为效率提升的瓶颈。GaN 器件具有零反向恢复、开关速度快的特点，可显著提升 VRM 的效率和功率密度。
+
+GaN VRM 的渗透率正处于快速爬升期：2024 年约 5–10\%，2025 年预计 12–18\%，2026 年有望达到 22–30\%。预计到 2028–2029 年，GaN 将占据数据中心 VRM 市场的半壁江山。
+
+\vspace{0.3em}
+
+\textbf{趋势三：电源侧高压化}
+
+除了板级供电的 48V 化，数据中心整体供电架构也在向高压化方向演进。240V 直流供电、380V 高压直流甚至液冷高压架构正在探索中，进一步提升供电效率，减少能量转换环节损耗。
+
+\subsection{市场规模预测}
+
+综合 AI 服务器出货量增长和单机价值量提升两大因素，我们预测全球 AI 服务器功率半导体市场将从 2024 年的约 39 亿美元增长至 2029 年的约 98 亿美元，CAGR 约 20\%，显著高于整体功率半导体市场 5–6\%的增速。
+
+\begin{exhibitbox}[图 3-2：AI 服务器功率半导体市场规模预测（亿美元）]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm, height=6cm,
+    ybar,
+    bar width=0.5cm,
+    ylabel={市场规模（亿美元）},
+    xlabel={年份},
+    xtick={2022,2023,2024,2025,2026,2027,2028,2029},
+    x tick label style={font=\scriptsize},
+    ymin=0, ymax=110,
+    ymajorgrids=true,
+    grid style={dashed, gray!30},
+    nodes near coords,
+    nodes near coords style={font=\scriptsize, /pgf/number format/.cd, fixed, fixed zerofill, precision=0},
+    symbolic x coords={2022,2023,2024,2025,2026,2027,2028,2029},
+    enlarge x limits=0.08,
+    legend pos=north west,
+    legend style={font=\footnotesize},
+]
+\addplot[fill=navy!60, draw=navy] coordinates {
+    (2022, 18) (2023, 28) (2024, 39) (2025, 50)
+    (2026, 63) (2027, 76) (2028, 88) (2029, 98)
+};
+\legend{AI 服务器功率半导体市场}
+\end{axis}
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{IDC, TrendForce，本研究团队测算}
+\end{exhibitbox}
+
+\section{新能源车：第一大下游}
+
+新能源汽车是功率半导体第一大下游应用，占整体功率半导体市场的约 35–40\%。一辆新能源汽车的功率半导体用量约为传统燃油车的 5–10 倍，是功率半导体需求增长最核心的驱动因素之一。
+
+\vspace{0.3em}
+
+新能源车功率半导体主要应用于：
+\begin{itemize}[leftmargin=2em]
+\item \textbf{主驱逆变器}：价值量最大，通常采用 IGBT 模块或 SiC MOSFET 模块
+\item \textbf{车载充电机（OBC）}：高压快充趋势下价值量提升
+\item \textbf{DC-DC 转换器}：高压电池向低压系统供电
+\item \textbf{BMS 电源管理}：电池管理系统中的电源芯片
+\item \textbf{PTC 加热器 / 空调压缩机}：热管理系统中的功率器件
+\end{itemize}
+
+\begin{exhibitbox}[表 3-3：不同车型功率半导体价值量对比]
+\centering
+\small
+\begin{tabularx}{\textwidth}{X c c c}
+\toprule
+\textbf{车型类型} & \textbf{代表技术路线} & \textbf{单车价值量(美元)} & \textbf{主要器件类型} \\
+\midrule
+传统燃油车 & 12V 系统 & 50–80 & 低压MOS、二极管 \\
+混动（HEV） & 400V IGBT & 200–300 & IGBT、高压MOS \\
+纯电（400V平台） & IGBT主驱 & 350–500 & IGBT模块、MOSFET \\
+纯电（800V平台） & SiC主驱 + SiC OBC & 600–900 & SiC MOSFET模块 \\
+高端 800V 车型 & 全SiC方案 & 800–1,200 & SiC MOS、SiC二极管 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{英飞凌、各公司公告，本研究团队测算}
+\end{exhibitbox}
+
+我们判断，新能源车功率半导体需求将继续保持 15–20\% 的年复合增长，驱动因素包括：全球新能源车渗透率持续提升、单车功率半导体价值量随高压化和智能化不断增加、SiC 器件渗透率提升带动 ASP 上行。
+
+\section{光伏储能：第三增长极}
+
+光伏和储能是功率半导体的第三大增长极。在"双碳"目标驱动下，全球光伏新增装机量持续高速增长，储能装机量更是呈现爆发式增长态势。
+
+\vspace{0.3em}
+
+光伏场景中，功率半导体主要用于：
+\begin{itemize}[leftmargin=2em]
+\item \textbf{组串式逆变器}：IGBT 或 SiC MOSFET，是光伏逆变器核心器件
+\item \textbf{集中式逆变器}：高压 IGBT 模块
+\item \textbf{微型逆变器}：低压 MOSFET、驱动 IC
+\item \textbf{MPPT 控制器}：DC-DC 转换用功率器件
+\end{itemize}
+
+储能场景中，功率半导体主要用于 PCS（储能变流器）和 BMS 系统。随着储能向高压、大容量方向发展，对 SiC 器件的需求也在快速增长。
+
+光伏逆变器中 IGBT/SiC 的价值占比约为 10–15\%，随着 1500V 系统普及和 SiC 器件渗透，单位功率价值量持续提升。
+
+\section{工业与电网：基本盘稳健}
+
+工业控制和电网是功率半导体的传统基本盘，需求相对稳定，增速与 GDP 和固定资产投资增速高度相关。
+
+\vspace{0.3em}
+
+工业领域应用包括：
+\begin{itemize}[leftmargin=2em]
+\item \textbf{变频器}：电机调速节能，IGBT 模块核心应用场景
+\item \textbf{伺服系统}：高精度运动控制
+\item \textbf{电焊机 / 感应加热}：高频大功率电源
+\item \textbf{UPS 不间断电源}：数据中心、工厂备用电源
+\end{itemize}
+
+电网领域应用包括：
+\begin{itemize}[leftmargin=2em]
+\item \textbf{柔性直流输电（HVDC）}：高压 IGBT、晶闸管
+\item \textbf{智能电网}：配网自动化中的功率器件
+\item \textbf{特高压输电}：大功率晶闸管、IGBT
+\end{itemize}
+
+工业与电网需求整体保持平稳增长，增速约为 3–5\%，但高压大功率器件壁垒高、认证周期长，竞争格局相对稳定，龙头公司盈利质量高。
+
+\section{消费电子：成熟市场结构性机会}
+
+消费电子是功率半导体的传统成熟市场，整体增速较慢（约 2–3\%），但存在显著的结构性机会：
+
+\begin{itemize}[leftmargin=2em]
+\item \textbf{快充}：GaN 快充快速渗透，从手机到笔记本电脑再到显示器，功率等级不断提升
+\item \textbf{Mini/Micro LED 驱动}：新型显示技术带来驱动 IC 需求增量
+\item \textbf{无线充电}：接收端和发射端功率器件需求
+\end{itemize}
+
+消费电子市场规模大、价格敏感度高，是国内厂商最先突破的领域，国产化率最高（低压 MOSFET 达 50–70\%）。但随着国内厂商向车规级、工业级升级，消费电子的战略重要性相对下降。

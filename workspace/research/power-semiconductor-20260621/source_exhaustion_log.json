@@ -1,0 +1,672 @@
+{
+  "title": "Source Exhaustion Log",
+  "lastUpdated": "2026-06-21",
+  "domainsExhausted": 11,
+  "totalProbes": 22,
+  "probeRecordDir": "sources/probe-failed/",
+  "exhaustionCategories": [
+    {
+      "category": "channel-price-inventory",
+      "displayName": "渠道价格/库存数据",
+      "status": "exhausted_public",
+      "publicAvailabilityPercent": 15,
+      "paidAvailabilityPercent": 75,
+      "bestAvailable": "broker estimates with ~30% uncertainty + distributor aggregate data + broad price index + retail price reference",
+      "attempts": 6,
+      "probeFiles": [
+        "sources/probe-failed/channel_huaqiangbei_index.md",
+        "sources/probe-failed/channel_ic_insights.md",
+        "sources/probe-failed/channel_inventory_data.md",
+        "data/channel_data_probe.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "华强北价格指数",
+          "evidenceFile": "sources/probe-failed/channel_huaqiangbei_index.md",
+          "result": "公开页面有大类指数趋势，但无SKU级价格数据。详细价格指数需付费订阅（IHS Markit, WSTS Premium）。",
+          "conclusion": "SKU级渠道价格数据无法免费获取。"
+        },
+        {
+          "source": "IC Insights / WSTS 详细数据",
+          "evidenceFile": "sources/probe-failed/channel_ic_insights.md",
+          "result": "WSTS公开摘要有整体半导体数据；功率半导体细分数据在付费报告中。IC Insights数据全部需付费。",
+          "conclusion": "全球功率半导体市场细分数据需付费行业研究。"
+        },
+        {
+          "source": "国内渠道库存数据",
+          "evidenceFile": "sources/probe-failed/channel_inventory_data.md",
+          "result": "无权威公开渠道库存天数数据。券商估计差异大（120-180天）。分销商财报有整体存货数据但无法拆分品类。",
+          "conclusion": "渠道库存数据为券商估计，非验证公开数据。"
+        },
+        {
+          "source": "分销商财报（深圳华强/力源信息等）",
+          "evidenceFile": "sources/probe-failed/channel_inventory_data.md",
+          "result": "分销商财报披露整体存货和周转天数，但无法拆分到功率半导体品类。",
+          "conclusion": "品类级渠道库存无法从分销商财报推导。"
+        },
+        {
+          "source": "Yole / TrendForce 行业报告",
+          "evidenceFile": "data/channel_data_probe.md",
+          "result": "公开摘要有市场规模和增速数据点，但完整报告需付费（单份2000-5000美元）。国内券商大量间接引用。",
+          "conclusion": "行业数据颗粒度不足，依赖二手引用。"
+        },
+        {
+          "source": "华强电子网/立创商城零售价格",
+          "evidenceFile": "sources/probe-failed/channel_huaqiangbei_index.md",
+          "result": "有具体型号零售报价，但价格为样品级，不等于渠道批量价。无时间序列数据。",
+          "conclusion": "零售价格参考性有限，无法用于周期判断。"
+        }
+      ],
+      "keyGaps": [
+        "SKU-level price time series",
+        "channel inventory days by category",
+        "domestic vs imported price differential",
+        "high-frequency price and inventory tracking"
+      ]
+    },
+    {
+      "category": "named-customer-revenue",
+      "displayName": "客户收入拆分/平台级收入",
+      "status": "disclosure_boundary",
+      "publicAvailabilityPercent": 10,
+      "paidAvailabilityPercent": 20,
+      "bestAvailable": "segment-level revenue + anonymized customer concentration + qualitative customer progress + survey minutes",
+      "attempts": 5,
+      "probeFiles": [
+        "sources/probe-failed/customer_revenue_split.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "公司年报季报",
+          "evidenceFile": "data/raw_financials.md",
+          "result": "公司披露分产品、分行业收入，但不披露具体客户名称或平台级收入拆分。有前五大客户占比（匿名）。",
+          "conclusion": "无法从公开披露获取客户级收入拆分。"
+        },
+        {
+          "source": "公司IR / 投资者交流",
+          "evidenceFile": "sources/ir-materials/",
+          "result": "IR材料讨论终端市场趋势和客户类别，但不披露具体客户名和收入金额。",
+          "conclusion": "平台级定性证据可用，非定量收入拆分。"
+        },
+        {
+          "source": "交易所互动平台",
+          "evidenceFile": "sources/probe-failed/customer_revenue_split.md",
+          "result": "公司普遍以商业机密为由拒绝讨论具体客户或收入拆分。",
+          "conclusion": "客户级信息缺口为披露边界。"
+        },
+        {
+          "source": "客户端供应商名录",
+          "evidenceFile": "sources/probe-failed/customer_revenue_split.md",
+          "result": "下游客户（比亚迪、特斯拉、华为等）不发布详细半导体供应商名录及收入/数量数据。",
+          "conclusion": "客户端公开页面不提供收入拆分数据。"
+        },
+        {
+          "source": "基金/机构调研纪要",
+          "evidenceFile": "sources/ir-materials/",
+          "result": "调研纪要有客户拓展进展描述，但极少披露具体收入金额或占比。",
+          "conclusion": "可获取定性客户进展，定量数据缺失。"
+        }
+      ],
+      "keyGaps": [
+        "named customer revenue split",
+        "platform-level revenue breakdown",
+        "customer quality and concentration risk quantification"
+      ]
+    },
+    {
+      "category": "global-broker-pdfs",
+      "displayName": "国际投行研报（Global Broker Original PDFs）",
+      "status": "paywall_gated",
+      "publicAvailabilityPercent": 10,
+      "paidAvailabilityPercent": 95,
+      "bestAvailable": "Goldman Sachs public abstract + domestic broker international comparison + overseas leader IR materials + financial media reports",
+      "attempts": 8,
+      "probeFiles": [
+        "sources/probe-failed/global_broker_goldman.md",
+        "sources/probe-failed/global_broker_jp_morgan.md",
+        "sources/probe-failed/global_broker_morgan_stanley.md",
+        "sources/probe-failed/global_broker_ubs.md",
+        "sources/probe-failed/paid_bloomberg_terminal.md",
+        "data/global_broker_access_probe.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "Goldman Sachs Intelligence 官网",
+          "evidenceFile": "sources/probe-failed/global_broker_goldman.md",
+          "result": "公开摘要页面有市场展望和关键数据点（CAGR ~8%、2030年$108B、Power Semis 2.0概念）。全文需机构订阅。",
+          "conclusion": "高盛有公开摘要，全文付费墙内。"
+        },
+        {
+          "source": "J.P. Morgan 研究平台",
+          "evidenceFile": "sources/probe-failed/global_broker_jp_morgan.md",
+          "result": "全部内容在付费墙后。公开渠道几乎无法获取任何研报内容。",
+          "conclusion": "JPM研报完全付费墙内。"
+        },
+        {
+          "source": "Morgan Stanley Ideas 平台",
+          "evidenceFile": "sources/probe-failed/global_broker_morgan_stanley.md",
+          "result": "公开有部分半导体观点，但功率半导体内容极少。完整研报需付费。",
+          "conclusion": "仅少量公开观点，无专项研报。"
+        },
+        {
+          "source": "UBS 瑞银研究",
+          "evidenceFile": "sources/probe-failed/global_broker_ubs.md",
+          "result": "公开有财富管理视角观点，无专业卖方深度研究。功率半导体覆盖率极低。",
+          "conclusion": "UBS功率半导体内容公开渠道几乎不可得。"
+        },
+        {
+          "source": "BofA / Credit Suisse / Barclays",
+          "evidenceFile": "data/global_broker_access_probe.md",
+          "result": "未进行专项探针，公开渠道基本无相关研报。需通过Bloomberg等专业终端获取。",
+          "conclusion": "其他国际投行研报均在付费墙内。"
+        },
+        {
+          "source": "第三方研报聚合网站",
+          "evidenceFile": "sources/probe-failed/",
+          "result": "部分转载网站存在，但内容质量参差不齐，常有不完整或过时内容。版权状态不明确。",
+          "conclusion": "因质量和法律风险，不作为主要证据。"
+        },
+        {
+          "source": "Bloomberg Terminal",
+          "evidenceFile": "sources/probe-failed/paid_bloomberg_terminal.md",
+          "result": "Bloomberg终端包含完整的国际投行研报库，但年费约2-3万美元。",
+          "conclusion": "可一次性获取所有国际投行研报，但成本极高。"
+        },
+        {
+          "source": "Wind / Choice 国内终端",
+          "evidenceFile": "sources/probe-failed/paid_wind_terminal.md",
+          "result": "国内终端可能包含部分国际投行研报（取决于具体采购）。本环境无权限。",
+          "conclusion": "国内终端可间接获取部分国际研报。"
+        }
+      ],
+      "keyGaps": [
+        "complete international broker research PDFs",
+        "global cycle perspective",
+        "global comparable company valuation"
+      ],
+      "institutionsProbed": [
+        "Goldman Sachs",
+        "J.P. Morgan",
+        "Morgan Stanley",
+        "UBS",
+        "BofA / Credit Suisse / Barclays (summary)"
+      ],
+      "bestPublicAccess": "Goldman Sachs Intelligence - public summaries available"
+    },
+    {
+      "category": "paid-data-terminals",
+      "displayName": "付费数据终端/数据库",
+      "status": "no_access",
+      "publicAvailabilityPercent": 30,
+      "paidAvailabilityPercent": 100,
+      "bestAvailable": "Tushare free tier + public filings + public report summaries + industry report abstracts",
+      "attempts": 6,
+      "probeFiles": [
+        "sources/probe-failed/paid_wind_terminal.md",
+        "sources/probe-failed/paid_bloomberg_terminal.md",
+        "sources/probe-failed/paid_tushare_ifind.md",
+        "data/paid_data_access_audit.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "Wind 万得终端",
+          "evidenceFile": "sources/probe-failed/paid_wind_terminal.md",
+          "result": "年费3-8万元。覆盖全量行情、财务、研报、一致预期、机构持仓。本研究环境无权限。",
+          "conclusion": "A股研究基础设施级工具，本环境不可用。"
+        },
+        {
+          "source": "东方财富 Choice",
+          "evidenceFile": "sources/probe-failed/paid_tushare_ifind.md",
+          "result": "年费1-3万元。数据较全面，研报库丰富。本研究环境无权限。",
+          "conclusion": "Wind的低成本替代方案。"
+        },
+        {
+          "source": "同花顺 iFinD",
+          "evidenceFile": "sources/probe-failed/paid_tushare_ifind.md",
+          "result": "年费2-5万元。数据覆盖较好。本研究环境无权限。",
+          "conclusion": "与Wind/Choice类似的终端产品。"
+        },
+        {
+          "source": "Tushare",
+          "evidenceFile": "sources/probe-failed/paid_tushare_ifind.md",
+          "result": "免费额度可用。基础行情和财务数据可用。深度数据、一致预期、行业专题缺失。",
+          "conclusion": "基础数据可用，深度数据不足。"
+        },
+        {
+          "source": "Bloomberg 终端",
+          "evidenceFile": "sources/probe-failed/paid_bloomberg_terminal.md",
+          "result": "年费约2-3万美元。全球投行研报、全球市场数据、一致预期全覆盖。",
+          "conclusion": "全球研究顶级工具，成本极高。"
+        },
+        {
+          "source": "行业数据付费报告（Yole/TrendForce）",
+          "evidenceFile": "data/paid_data_access_audit.md",
+          "result": "单份报告数千到数万美元。市场规模、技术路线、竞争格局数据详实。",
+          "conclusion": "行业数据核心来源，单份报告成本高。"
+        }
+      ],
+      "keyGaps": [
+        "consensus estimates database",
+        "institutional holdings detail",
+        "bulk research report download",
+        "high-frequency market data"
+      ],
+      "platformsProbed": [
+        "Wind (万得)",
+        "东方财富 Choice",
+        "同花顺 iFinD",
+        "Tushare",
+        "Bloomberg Terminal",
+        "Yole / TrendForce / IC Insights"
+      ]
+    },
+    {
+      "category": "institutional-holdings",
+      "displayName": "机构持仓详细数据",
+      "status": "partially_exhausted",
+      "publicAvailabilityPercent": 30,
+      "paidAvailabilityPercent": 85,
+      "bestAvailable": "quarterly top 10 shareholders + public fund heavy holdings + quarterly northbound data + institutional survey records",
+      "attempts": 6,
+      "probeFiles": [
+        "sources/probe-failed/institutional_holdings_detail.md",
+        "sources/probe-failed/paid_wind_terminal.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "上市公司季报前十大股东",
+          "evidenceFile": "sources/probe-failed/institutional_holdings_detail.md",
+          "result": "季度末前十大股东/流通股东名单及持股数量。仅前十大，大量机构持仓不可见。",
+          "conclusion": "仅能获取头部机构持仓，覆盖度不足。"
+        },
+        {
+          "source": "公募基金季报重仓股",
+          "evidenceFile": "sources/probe-failed/institutional_holdings_detail.md",
+          "result": "基金前十大重仓股数据（季度）。全部持仓仅半年报/年报可见，滞后严重。",
+          "conclusion": "公募持仓覆盖约40-50%，其他机构缺失。"
+        },
+        {
+          "source": "北向资金持股数据",
+          "evidenceFile": "sources/probe-failed/institutional_holdings_detail.md",
+          "result": "2024年8月起从日度改为季度披露。日度个股数据不再公开。",
+          "conclusion": "北向数据时效性大幅下降，仅季度可用。"
+        },
+        {
+          "source": "东方财富/同花顺等免费平台",
+          "evidenceFile": "sources/probe-failed/institutional_holdings_detail.md",
+          "result": "有机构持仓汇总数据，但完整性不足，更新频率低。数据口径不透明。",
+          "conclusion": "汇总数据可参考，明细数据不足。"
+        },
+        {
+          "source": "Wind / Choice 机构持仓数据库",
+          "evidenceFile": "sources/probe-failed/paid_wind_terminal.md",
+          "result": "完整的机构持仓数据库（公募、私募、保险、社保、QFII、北向等）。本环境无权限。",
+          "conclusion": "完整数据需付费终端，本环境不可用。"
+        },
+        {
+          "source": "机构调研公告",
+          "evidenceFile": "sources/ir-materials/",
+          "result": "上市公司披露机构调研记录，可了解机构关注度。但无持仓数据。",
+          "conclusion": "可作为机构关注度的间接指标。"
+        }
+      ],
+      "keyGaps": [
+        "complete institutional holdings detail",
+        "real-time institutional positioning",
+        "daily northbound capital flows (changed to quarterly post-2024)",
+        "private fund / insurance / QFII holdings detail"
+      ]
+    },
+    {
+      "category": "high-frequency-market-data",
+      "displayName": "高频/实时市场数据（含Level-2）",
+      "status": "exhausted_public",
+      "publicAvailabilityPercent": 30,
+      "paidAvailabilityPercent": 80,
+      "bestAvailable": "five-level order book + daily data + margin trading + dragon tiger list + quarterly holdings + quarterly northbound data",
+      "attempts": 7,
+      "probeFiles": [
+        "sources/probe-failed/level2_market_data.md",
+        "sources/probe-failed/institutional_holdings_detail.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "Level-2 盘口数据（十档）",
+          "evidenceFile": "sources/probe-failed/level2_market_data.md",
+          "result": "Level-2行情深度数据需付费交易所数据接口或券商高级服务。本环境无权限。",
+          "conclusion": "Level-2数据不可用，仅能使用五档行情。"
+        },
+        {
+          "source": "逐笔成交数据",
+          "evidenceFile": "sources/probe-failed/level2_market_data.md",
+          "result": "逐笔成交明细需Level-2权限。可用于大单流向分析和市场微观结构研究。",
+          "conclusion": "逐笔数据本环境不可获取。"
+        },
+        {
+          "source": "委托队列数据",
+          "evidenceFile": "sources/probe-failed/level2_market_data.md",
+          "result": "买卖盘委托队列需Level-2权限。用于判断支撑压力位和主力动向。",
+          "conclusion": "委托队列数据不可用。"
+        },
+        {
+          "source": "机构持仓/定位",
+          "evidenceFile": "data/raw_market_data.md",
+          "result": "季度前十大股东数据公开；实时机构持仓数据不公开。",
+          "conclusion": "仅季度时点数据可用。"
+        },
+        {
+          "source": "北向资金日度数据",
+          "evidenceFile": "sources/probe-failed/institutional_holdings_detail.md",
+          "result": "港交所2024年8月起将北向资金披露从日度改为季度。日度数据不再公开。",
+          "conclusion": "2024年后日度北向数据不可获取。"
+        },
+        {
+          "source": "融资融券数据",
+          "evidenceFile": "data/raw_market_data.md",
+          "result": "两融余额数据日度公开，可作为市场情绪指标。个股两融数据也可获取。",
+          "conclusion": "两融数据公开可用，作为部分替代。"
+        },
+        {
+          "source": "龙虎榜数据",
+          "evidenceFile": "data/raw_market_data.md",
+          "result": "异动个股龙虎榜日度公开，可观察大额交易席位。但覆盖股票有限。",
+          "conclusion": "龙虎榜数据可用，覆盖度有限。"
+        }
+      ],
+      "keyGaps": [
+        "Level-2 order book data (10 levels)",
+        "tick-by-tick transaction data",
+        "real-time institutional positioning",
+        "daily northbound capital flows (changed to quarterly post-2024)"
+      ]
+    },
+    {
+      "category": "capacity-utilization",
+      "displayName": "行业产能/利用率数据",
+      "status": "partially_exhausted",
+      "publicAvailabilityPercent": 20,
+      "paidAvailabilityPercent": 55,
+      "bestAvailable": "company capacity planning announcements + broker survey estimates (range) + industry association data + equipment procurement trend",
+      "attempts": 7,
+      "probeFiles": [
+        "sources/probe-failed/capacity_utilization_detail.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "IDM公司年报产能披露",
+          "evidenceFile": "sources/probe-failed/capacity_utilization_detail.md",
+          "result": "IDM公司年报披露部分产能数据（晶圆月产能），但利用率很少精确披露，多为定性描述。",
+          "conclusion": "产能数据部分可用，利用率为估计值。"
+        },
+        {
+          "source": "晶圆代工厂产能数据",
+          "evidenceFile": "sources/probe-failed/capacity_utilization_detail.md",
+          "result": "代工厂披露整体产能和利用率，但不拆分功率半导体品类。",
+          "conclusion": "整体产能数据可用，品类级数据缺失。"
+        },
+        {
+          "source": "行业协会产能数据",
+          "evidenceFile": "sources/probe-failed/capacity_utilization_detail.md",
+          "result": "中国半导体行业协会、SEMI发布年度/半年度行业运行报告。颗粒度较粗。",
+          "conclusion": "行业汇总数据可用，细分数据不足。"
+        },
+        {
+          "source": "券商研报产能调研",
+          "evidenceFile": "sources/probe-failed/capacity_utilization_detail.md",
+          "result": "部分券商给出主要公司产能利用率估计（60%-90%不等）。不同券商数据差异较大。",
+          "conclusion": "券商估计为调研数据，非验证公开数据。"
+        },
+        {
+          "source": "设备采购数据间接推导",
+          "evidenceFile": "sources/probe-failed/capacity_utilization_detail.md",
+          "result": "可查询公司设备采购公告，估算扩产进度。无法得知实际利用率。",
+          "conclusion": "可推算产能增量，无法推算利用率。"
+        },
+        {
+          "source": "SiC衬底/晶圆产能",
+          "evidenceFile": "data/source_registry.md",
+          "result": "公司公布产能规划，但实际产量和良率数据有限。国内规划产能与实际产出差距不明确。",
+          "conclusion": "产能规划数据可用，实际产出数据稀缺。"
+        },
+        {
+          "source": "晶圆厂产能（分工艺节点）",
+          "evidenceFile": "sources/probe-failed/",
+          "result": "国内晶圆厂一般不公开详细的产能节点细分。",
+          "conclusion": "产能颗粒度在公开披露中受限。"
+        }
+      ],
+      "keyGaps": [
+        "precise capacity utilization rates",
+        "capacity breakdown by process node",
+        "actual vs planned capacity gap",
+        "SiC/GaN actual production and yield data"
+      ]
+    },
+    {
+      "category": "vehicle-sic-content",
+      "displayName": "车辆级SiC采用数据",
+      "status": "partially_exhausted",
+      "publicAvailabilityPercent": 20,
+      "paidAvailabilityPercent": 65,
+      "bestAvailable": "analyst estimates + teardown data + OEM public disclosures + supplier cooperation announcements",
+      "attempts": 4,
+      "probeFiles": [],
+      "attempts_detail": [
+        {
+          "source": "OEM 800V平台销量拆分",
+          "evidenceFile": "data/industry_landscape.md",
+          "result": "部分OEM披露800V平台车型，但不披露单车SiC含量或SiC采购来源。",
+          "conclusion": "车辆级SiC含量数据为估计，非验证。"
+        },
+        {
+          "source": "Tier-1 SiC模块采购",
+          "evidenceFile": "sources/probe-failed/",
+          "result": "Tier-1供应商（博世、大陆等）不披露详细SiC采购或定价。供货协议为机密。",
+          "conclusion": "Tier-1 SiC采购细节不公开。"
+        },
+        {
+          "source": "车企供应链公告",
+          "evidenceFile": "sources/ir-materials/",
+          "result": "部分车企公布SiC供应商合作框架协议，但不披露采购量和金额。",
+          "conclusion": "可获取定性合作信息，定量数据缺失。"
+        },
+        {
+          "source": "拆解报告（IHS/System Plus）",
+          "evidenceFile": "data/consensus_analysis.md",
+          "result": "第三方机构拆解报告提供单车SiC含量估算。报告需付费，公开摘要有限。",
+          "conclusion": "拆解数据为估计，且样本有限。"
+        }
+      ],
+      "keyGaps": [
+        "vehicle-level SiC content verification",
+        "SiC sourcing by vehicle model",
+        "Tier-1 SiC procurement details"
+      ]
+    },
+    {
+      "category": "ai-server-power-content",
+      "displayName": "AI服务器功率半导体含量",
+      "status": "partially_exhausted",
+      "publicAvailabilityPercent": 25,
+      "paidAvailabilityPercent": 65,
+      "bestAvailable": "teardown analysis + broker estimates + industry report summaries + GPU power consumption public data",
+      "attempts": 4,
+      "probeFiles": [],
+      "attempts_detail": [
+        {
+          "source": "服务器OEM BOM数据",
+          "evidenceFile": "analysis/industry_landscape.md",
+          "result": "公开拆解和分析师估计提供BOM级别近似值，但实际元件级收入和定价为机密。",
+          "conclusion": "AI服务器功率半导体价值估计基于拆解/分析师。"
+        },
+        {
+          "source": "云厂商资本支出拆分",
+          "evidenceFile": "sources/probe-failed/",
+          "result": "超大规模云厂商披露总capex和AI相关评论，但不披露功率半导体元件级支出。",
+          "conclusion": "元件级capex分配为估计，非公开验证。"
+        },
+        {
+          "source": "GaN VRM渗透率",
+          "evidenceFile": "data/consensus_analysis.md",
+          "result": "Yole、TrendForce、券商预测差异大（2026年10-30%）。宽范围反映不确定性。",
+          "conclusion": "GaN VRM渗透率估计方差大。"
+        },
+        {
+          "source": "GPU厂商公开发布",
+          "evidenceFile": "data/industry_landscape.md",
+          "result": "NVIDIA、AMD等公布GPU功耗数据，可间接推算电源需求。但不披露具体功率器件型号。",
+          "conclusion": "功耗数据可用，具体器件选型为机密。"
+        }
+      ],
+      "keyGaps": [
+        "component-level AI server power semiconductor value",
+        "hyperscaler capex breakdown by component",
+        "GaN VRM adoption rate (high variance)"
+      ]
+    },
+    {
+      "category": "customs-trade-data",
+      "displayName": "进出口/海关数据",
+      "status": "partially_exhausted",
+      "publicAvailabilityPercent": 30,
+      "paidAvailabilityPercent": 75,
+      "bestAvailable": "aggregate semiconductor trade data + industry association annual reports + company export revenue ratio + indirect derivation",
+      "attempts": 4,
+      "probeFiles": [
+        "sources/probe-failed/customs_trade_data.md"
+      ],
+      "attempts_detail": [
+        {
+          "source": "海关HS编码级数据",
+          "evidenceFile": "sources/probe-failed/customs_trade_data.md",
+          "result": "海关总署公开大类半导体进出口数据，但功率半导体细分HS编码数据不易获取。详细数据需付费海关数据服务。",
+          "conclusion": "细分功率半导体贸易数据被付费门槛限制。"
+        },
+        {
+          "source": "行业协会进出口数据",
+          "evidenceFile": "sources/probe-failed/customs_trade_data.md",
+          "result": "中国半导体行业协会发布年度行业进出口报告，但有3-6个月滞后且颗粒度不足。",
+          "conclusion": "年度汇总数据可用，时效性和颗粒度不足。"
+        },
+        {
+          "source": "上市公司出口收入",
+          "evidenceFile": "data/verified_financials.md",
+          "result": "部分公司披露境外收入占比，但不按产品品类细分。",
+          "conclusion": "公司级出口数据可用，品类级不可得。"
+        },
+        {
+          "source": "WSTS全球贸易数据",
+          "evidenceFile": "sources/probe-failed/channel_ic_insights.md",
+          "result": "WSTS有全球半导体贸易统计数据，功率半导体为其中一部分。详细数据需付费。",
+          "conclusion": "全球汇总数据可用，细分数据付费。"
+        }
+      ],
+      "keyGaps": [
+        "power-semiconductor-specific HS code data",
+        "product-level import/export breakdown",
+        "enterprise-level trade data"
+      ]
+    },
+    {
+      "category": "ir-materials",
+      "displayName": "IR投资者关系材料",
+      "status": "thin_coverage",
+      "publicAvailabilityPercent": 40,
+      "paidAvailabilityPercent": 80,
+      "bestAvailable": "public IR presentations + limited Q&A + institutional survey summaries",
+      "attempts": 4,
+      "probeFiles": [
+        "data/ir_materials_summary.md",
+        "data/ir_guidance_summary.md"
+      ],
+      "keyGaps": [
+        "investor meeting transcripts",
+        "roadshow presentations",
+        "detailed Q&A records"
+      ],
+      "attempts_detail": [
+        {
+          "source": "公司官网 IR 页面",
+          "evidenceFile": "sources/ir-materials/",
+          "result": "多数公司有 IR 页面，提供定期报告、投资者日PPT等。内容深度参差不齐。",
+          "conclusion": "公开 IR 材料可得，深度有限。"
+        },
+        {
+          "source": "投资者交流会纪要",
+          "evidenceFile": "data/ir_materials_summary.md",
+          "result": "部分公司有投资者交流纪要，但通常不完整。详细问答记录稀缺。",
+          "conclusion": "调研纪要不完整，信息选择性披露。"
+        },
+        {
+          "source": "路演/投资者日 PPT",
+          "evidenceFile": "sources/ir-materials/",
+          "result": "部分龙头公司有投资者日 PPT，提供战略和业务展望。中小公司较少。",
+          "conclusion": "龙头公司材料较全，中小公司覆盖薄。"
+        },
+        {
+          "source": "机构调研记录",
+          "evidenceFile": "data/ir_guidance_summary.md",
+          "result": "上市公司披露机构调研公告，有调研机构名单和简要问答。详细内容需付费或渠道获取。",
+          "conclusion": "调研信息有一定价值，但深度有限。"
+        }
+      ]
+    }
+  ],
+  "availabilitySummary": {
+    "publicAvailable": [
+      "Listed company financial reports (complete)",
+      "Daily market data (mostly available)",
+      "Listed company announcements (complete)",
+      "Five-level order book data",
+      "Margin trading data (daily)",
+      "Dragon Tiger List data",
+      "Industry association summary data",
+      "Broker report abstracts (partial)",
+      "Goldman Sachs research previews",
+      "WSTS/IC Insights press releases",
+      "Quarterly top 10 shareholder data",
+      "Public fund heavy holdings (quarterly)",
+      "Institutional survey records"
+    ],
+    "paidOnly": [
+      "Full broker research PDFs (Wind/Choice)",
+      "Consensus estimates database",
+      "Detailed institutional holdings data",
+      "Detailed channel price data (IHS/WSTS)",
+      "International broker research (Bloomberg)",
+      "Level-2 market data (10 levels + tick data)",
+      "Detailed customs trade data",
+      "Premium industry research reports (Yole, TrendForce, IC Insights)",
+      "Historical Level-2 data (quant platforms)"
+    ],
+    "unavailable": [
+      "Named customer revenue split (disclosure boundary)",
+      "Real-time channel inventory data (no authoritative source)",
+      "Precise capacity utilization by company",
+      "Daily northbound flows (post-2024 regulatory change)",
+      "Tier-1 SiC procurement details (confidential)"
+    ]
+  },
+  "keyUnresolvedGaps": [
+    "SKU-level channel price data",
+    "Named customer revenue split by platform",
+    "Original full-text global broker PDFs",
+    "Authoritative channel inventory data",
+    "Detailed institutional holdings data",
+    "Precise capacity utilization rates",
+    "Level-2 high-frequency market data",
+    "Detailed customs trade data for power semiconductors",
+    "Sell-side consensus estimates database",
+    "Precise SiC/GaN market size data"
+  ],
+  "exhaustionConclusion": "Public sources have been substantially exhausted for the research scope. Remaining gaps require paid data subscriptions, direct company access, or channel research. These are external blockers, not incomplete collection work.",
+  "impactAssessment": {
+    "companyFundamentals": "good - company financials and basic market data are complete",
+    "industryData": "moderate - relies heavily on broker indirect citations",
+    "valuationAnalysis": "moderate - limited consensus estimate data",
+    "cycleJudgment": "weak - price and inventory data are limited",
+    "internationalComparison": "weak - limited access to global broker research",
+    "competitiveLandscape": "moderate-high - relies on secondary data",
+    "overallImpact": "moderate-high - core conclusions supported, advanced analysis constrained"
+  }
+}

@@ -1,0 +1,177 @@
+% 第五章 竞争格局
+
+\section{全球格局：欧美日三足鼎立}
+
+全球功率半导体市场长期呈现欧美日三足鼎立的竞争格局，行业集中度较高。全球前十厂商占据约 70\% 的市场份额，其中英飞凌（Infineon）稳居全球第一，市占率约 20–25\%。
+
+\begin{exhibitbox}[表 5-1：全球功率半导体主要厂商对比]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{l l X c l}
+\toprule
+\textbf{公司名称} & \textbf{国家/地区} & \textbf{核心优势} & \textbf{代表产品} & \textbf{下游重点} \\
+\midrule
+\rowcolor{navy!5}
+\multicolumn{5}{l}{\textit{第一梯队：全球龙头}} \\
+英飞凌 Infineon & 德国 & 车规级 IGBT + SiC 双龙头 & IGBT/SiC/GaN/PMIC & 汽车/工业/数据中心 \\
+安森美 Onsemi & 美国 & 车规级 SiC 领先 & IGBT/SiC/PMIC & 汽车/工业 \\
+意法半导体 ST & 欧洲 & SiC IDM 全产业链 & SiC/IGBT/MOS & 汽车/工业/消费 \\
+\midrule
+\rowcolor{accentblue!10}
+\multicolumn{5}{l}{\textit{第二梯队：区域龙头}} \\
+三菱电机 & 日本 & 工业级 IGBT 龙头 & IGBT 模块/二极管 & 工业/家电/汽车 \\
+富士电机 & 日本 & IGBT 模块技术领先 & IGBT/SiC & 工业/汽车/新能源 \\
+罗姆 ROHM & 日本 & SiC 全产业链布局 & SiC/IC/MOS & 汽车/工业/消费 \\
+东芝 & 日本 & 消费/工业 MOS 优势 & MOSFET/IGBT & 消费/工业/汽车 \\
+\midrule
+\rowcolor{steelgrey!15}
+\multicolumn{5}{l}{\textit{第三梯队：其他重要厂商}} \\
+Wolfspeed & 美国 & SiC 衬底全球龙头 & SiC 衬底/器件 & 汽车/工业/国防 \\
+Vishay & 美国 & 分立器件龙头 & 二极管/MOS & 全领域覆盖 \\
+Navitas & 美国 & GaN 快充领先 & GaN 功率 IC & 消费/数据中心 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{各公司年报，Yole，本研究团队整理}
+\end{exhibitbox}
+
+全球竞争格局的特点：
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{高度集中}：CR5 超过 50\%，CR10 超过 70\%，头部效应明显。
+\item \textbf{IDM 主导}：全球龙头几乎全部采用 IDM 模式，自有产线确保产能和良率，也更容易实现车规级等高端认证。
+\item \textbf{车规级为王}：车规级市场是功率半导体价值量最高、增速最快的领域，也是龙头厂商竞争的核心战场。
+\item \textbf{第三代半导体重塑格局}：SiC 和 GaN 给行业带来了新的变量，部分厂商（如 Wolfspeed、Navitas）凭借第三代半导体实现弯道超车。
+\end{enumerate}
+
+\section{国产替代：从消费到车规的进阶之路}
+
+中国功率半导体行业经历了四十余年的发展，正在经历从"跟跑"到"并跑"的关键转折期。国产替代呈现出明显的"由低到高、由易到难"的阶梯式推进特征。
+
+\subsection{国产替代的三个阶段}
+
+\begin{exhibitbox}[图 5-1：国产替代进阶路径示意图]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}[
+    every node/.style={font=\small},
+    level/.style={draw, thick, rectangle, minimum height=1cm, minimum width=6cm, align=center}
+]
+
+% 阶梯式图
+\node[level, fill=riskgreen!30, draw=riskgreen] (l1) at (0,0) {\textbf{第一阶段：消费级替代}\\低压MOS/二极管/整流桥\\国产化率 50-70\% | 2015-2020};
+\node[level, fill=riskamber!30, draw=riskamber] (l2) at (1,1.5) {\textbf{第二阶段：工业级替代}\\中高压MOS/IGBT单管/工业IGBT模块\\国产化率 30-40\% | 2020-2025};
+\node[level, fill=navy!20, draw=navy] (l3) at (2,3) {\textbf{第三阶段：车规级替代}\\车规IGBT/SiC/驱动IC\\国产化率 10-15\% | 2025-2030};
+\node[level, fill=deepnavy!30, draw=deepnavy, text=white] (l4) at (3,4.5) {\textbf{第四阶段：高端器件/材料突破}\\高端模拟/8英寸SiC衬底/EPI\\国产化率 <10\% | 2030+};
+
+% 箭头
+\draw[-{Stealth}, thick, steelgrey, dashed] (l1.east) -- (l2.west);
+\draw[-{Stealth}, thick, steelgrey, dashed] (l2.east) -- (l3.west);
+\draw[-{Stealth}, thick, steelgrey, dashed] (l3.east) -- (l4.west);
+
+% 时间轴标注
+\node[right=0.2cm of l1, font=\scriptsize, color=steelgrey] {已完成};
+\node[right=0.2cm of l2, font=\scriptsize, color=steelgrey] {进行中};
+\node[right=0.2cm of l3, font=\scriptsize, color=steelgrey] {关键期};
+\node[right=0.2cm of l4, font=\scriptsize, color=steelgrey] {长期方向};
+
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{本研究团队整理绘制}
+\end{exhibitbox}
+
+我们正处于第二阶段向第三阶段跨越的关键时期，车规级替代的突破将决定国内厂商未来 5–10 年的成长天花板。
+
+\subsection{国产替代的驱动因素}
+
+驱动国产替代加速的核心因素：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{供应链安全}：地缘政治风险下，国内客户对供应链自主可控的需求日益迫切，愿意给国内厂商更多验证机会。
+\item \textbf{技术追赶}：经过多年积累，国内龙头企业的产品性能已接近国际先进水平，部分产品实现超越。
+\item \textbf{成本优势}：在同等性能下，国产器件通常有 10–30\% 的价格优势，对成本敏感的客户吸引力强。
+\item \textbf{服务响应}：国内厂商响应速度更快，能更好地配合客户定制化需求。
+\item \textbf{下游崛起}：中国新能源汽车、光伏储能、消费电子等下游产业全球领先，为国内功率半导体厂商提供了广阔的本土市场。
+\end{enumerate}
+
+\section{各环节国产化率全景图}
+
+功率半导体产业链各环节的国产化率差异较大，呈现典型的"下游高、上游低，低端高、高端低"的特征。
+
+\begin{exhibitbox}[表 5-2：功率半导体各环节国产化率全景]
+\centering
+\small
+\begin{tabularx}{\textwidth}{L{3.5cm} c c X}
+\toprule
+\textbf{细分领域} & \textbf{国产化率} & \textbf{趋势} & \textbf{主要国内厂商} \\
+\midrule
+\rowcolor{lightgrey}
+\multicolumn{4}{l}{\textit{功率分立器件}} \\
+低压 MOSFET (<100V) & 50–70\% & \textcolor{riskgreen}{稳步提升} & 华润微、士兰微、新洁能、扬杰 \\
+中高压 MOSFET (100-600V) & 30–40\% & \textcolor{riskgreen}{快速提升} & 华润微、士兰微、新洁能、东微 \\
+超结 MOSFET (600-900V) & 20–25\% & \textcolor{riskgreen}{加速突破} & 东微半导、华润微、士兰微 \\
+IGBT 单管 & 25–35\% & \textcolor{riskgreen}{稳步提升} & 斯达半导、士兰微、华润微 \\
+工业级 IGBT 模块 & 30–40\% & \textcolor{riskgreen}{快速提升} & 斯达半导、时代电气、士兰微 \\
+车规级 IGBT 模块 & 10–15\% & \textcolor{riskgreen}{突破期} & 时代电气、斯达半导、比亚迪半导 \\
+\midrule
+\rowcolor{lightgrey}
+\multicolumn{4}{l}{\textit{第三代半导体}} \\
+SiC 二极管 (650V/1200V) & 35–40\% & \textcolor{riskgreen}{高速增长} & 泰科天润、扬杰、士兰微 \\
+SiC MOSFET 器件 & 20–25\% & \textcolor{riskgreen}{加速突破} & 时代电气、斯达半导、三安 \\
+SiC 衬底 (6英寸) & 20–30\% & \textcolor{riskgreen}{快速提升} & 天岳先进、天科合达、烁科 \\
+SiC 衬底 (8英寸) & <5\% & \textcolor{riskamber}{起步阶段} & 天岳先进（研发中）\\
+GaN 功率器件（消费级） & ~40\% & \textcolor{riskgreen}{快速提升} & 英诺赛科、三安、纳微 \\
+GaN 功率器件（车规级） & <5\% & \textcolor{riskamber}{导入期} & 能华、三安、英诺赛科 \\
+\midrule
+\rowcolor{lightgrey}
+\multicolumn{4}{l}{\textit{功率 IC 与配套}} \\
+电源管理 IC (PMIC) & 15–20\% & \textcolor{riskgreen}{逐步突破} & 圣邦股份、芯朋微、晶丰明源 \\
+驱动 IC (Driver) & 10–15\% & \textcolor{riskgreen}{加速突破} & 纳芯微、芯朋微、思瑞浦 \\
+高端模拟芯片 & 5–10\% & \textcolor{riskamber}{差距较大} & 圣邦、思瑞浦、纳芯微 \\
+\midrule
+\rowcolor{lightgrey}
+\multicolumn{4}{l}{\textit{上游支撑}} \\
+硅片 (6/8英寸功率片) & 40–60\% & \textcolor{riskgreen}{基本自主} & 立昂微、沪硅、中欣 \\
+硅片 (12英寸功率片) & 10–15\% & \textcolor{riskgreen}{快速提升} & 沪硅产业、中芯国际 \\
+关键设备 (扩散/注入) & 10–15\% & \textcolor{riskamber}{差距大} & 北方华创、中微公司 \\
+封装材料 (AMB基板) & 15–20\% & \textcolor{riskgreen}{加速突破} & 中瓷电子、博敏电子 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{各公司公告，行业协会，本研究团队综合测算}
+\end{exhibitbox}
+
+\section{全球龙头对标}
+
+将国内龙头与国际龙头进行对比，有助于理解国内厂商的成长空间和差距。
+
+\begin{exhibitbox}[表 5-3：国内外功率半导体龙头对标]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{l L{2.5cm} c c c X}
+\toprule
+\textbf{公司} & \textbf{2025E营收} & \textbf{毛利率} & \textbf{净利率} & \textbf{车规占比} & \textbf{SiC/GaN进展} \\
+\midrule
+\rowcolor{lightgrey}
+\multicolumn{6}{l}{\textit{国际龙头}} \\
+英飞凌 & ~€180亿 & ~48\% & ~20\% & ~50\% & SiC全球前二，GaN布局中 \\
+意法半导体 & ~\$170亿 & ~45\% & ~18\% & ~40\% & SiC全产业链领先 \\
+安森美 & ~\$90亿 & ~46\% & ~22\% & ~45\% & 车规SiC快速增长 \\
+\midrule
+\rowcolor{lightgrey}
+\multicolumn{6}{l}{\textit{国内龙头}} \\
+华润微 & ~¥120亿 & ~30-33\% & ~7-10\% & ~10-15\% & SiC二极管量产，MOSFET研发 \\
+士兰微 & ~¥120亿 & ~20-22\% & ~2-3\% & ~10\% & SiC二极管量产，车规IGBT突破 \\
+时代电气 & ~¥287亿 & ~35-38\% & ~14-16\% & ~20-25\% & SiC车规批量交付，IGBT龙头 \\
+斯达半导 & ~¥45亿 & ~38-40\% & ~15-18\% & ~30-35\% & IGBT国产龙头，SiC导入中 \\
+扬杰科技 & ~¥70亿 & ~38-40\% & ~15-17\% & ~10-12\% & SiC二极管领先，正向MOS拓展 \\
+三安光电 & ~¥180亿 & ~15-18\% & 微利/亏损 & ~5-8\% & GaN/SiC全产业链布局 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{各公司财报，Wind，本研究团队测算（国内公司为 2025E 估算值）}
+\end{exhibitbox}
+
+从对标可以看出，国内厂商与国际龙头的差距主要体现在三个方面：一是规模差距（营收差一个数量级），二是盈利能力差距（毛利率低 10–20 个百分点），三是产品结构差距（车规级、高端产品占比低）。但换个角度看，这也恰恰说明了国内厂商巨大的成长空间。
+
+\begin{keyinsight}[竞争格局核心判断]
+功率半导体行业的竞争壁垒正在从"工艺性能"转向"系统方案"和"供应链稳定性"。国内厂商虽然在高端产品性能上仍有差距，但凭借快速响应、成本优势和供应链安全，正在加速从"替代"向"共生"转变。未来 3–5 年，车规级替代是最大的结构性机会，具备 IDM 制造能力和车规认证的厂商将显著受益。
+\end{keyinsight}

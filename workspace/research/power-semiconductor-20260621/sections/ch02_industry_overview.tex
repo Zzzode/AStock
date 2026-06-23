@@ -1,0 +1,483 @@
+% 第二章 行业概览
+
+\section{什么是功率半导体}
+
+功率半导体是电子装置中电能转换与电路控制的核心器件，主要用于实现电压、电流、频率、相位的变换和控制，是电力电子系统的"心脏"。与数字芯片追求"更小、更快、更省电"不同，功率半导体追求的是"更高效地处理更大功率"，其性能直接决定了电力电子系统的能量转换效率、可靠性和成本。
+
+\vspace{0.3em}
+
+功率半导体器件按技术代际可分为三代：
+
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{第一代（硅基）}：以硅（Si）为材料，包括二极管、晶闸管、MOSFET、IGBT 等，是当前市场的绝对主流，占整体市场份额约 90\%以上。
+\item \textbf{第二代（化合物）}：以砷化镓（GaAs）为代表，主要用于射频领域。
+\item \textbf{第三代（宽禁带）}：以碳化硅（SiC）和氮化镓（GaN）为代表，具有击穿电场高、热导率高、电子饱和速率高、抗辐射能力强等优势，是高压、高频、高温场景的理想选择。
+\end{enumerate}
+
+按器件类型划分，功率半导体主要包括功率分立器件（二极管、MOSFET、IGBT 等）、功率 IC（电源管理 IC、驱动 IC 等）和功率模块三大类。
+
+\begin{exhibitbox}[图 2-1：功率半导体器件分类与电压/功率范围]
+\centering
+\vspace{0.2cm}
+\begin{tikzpicture}[scale=0.85]
+% 坐标轴
+\draw[->, thick] (0,0) -- (13.5,0) node[right] {\small 功率 (W)};
+\draw[->, thick] (0,0) -- (0,5.8) node[above] {\small 电压 (V)};
+
+% 电压刻度
+\node[left, font=\scriptsize] at (0,0.5) {5V};
+\node[left, font=\scriptsize] at (0,1.5) {100V};
+\node[left, font=\scriptsize] at (0,2.5) {600V};
+\node[left, font=\scriptsize] at (0,3.5) {1200V};
+\node[left, font=\scriptsize] at (0,4.5) {3.3kV};
+\node[left, font=\scriptsize] at (0,5.3) {10kV};
+
+% 功率刻度
+\node[below, font=\scriptsize] at (2,0) {1W};
+\node[below, font=\scriptsize] at (5,0) {1kW};
+\node[below, font=\scriptsize] at (8,0) {1MW};
+\node[below, font=\scriptsize] at (11.5,0) {1GW};
+
+% 低压MOS区域
+\fill[navy!20, draw=navy, thick] (0.5,0.2) rectangle (4.5,1.3);
+\node[navy, font=\bfseries\small] at (2.5,0.85) {低压MOSFET};
+\node[navy, font=\scriptsize] at (2.5,0.5) {消费电子/快充};
+
+% 中压MOS/IGBT区域
+\fill[accentblue!25, draw=accentblue, thick] (3,1.2) rectangle (7,2.8);
+\node[accentblue, font=\bfseries\small] at (5,2.2) {中高压MOS / 超结};
+\node[accentblue, font=\scriptsize] at (5,1.7) {工业/电源/光伏};
+
+% IGBT区域
+\fill[steelgrey!30, draw=steelgrey, thick] (5,2.2) rectangle (10,3.8);
+\node[steelgrey, font=\bfseries\small] at (7.5,3.2) {IGBT 模块};
+\node[steelgrey, font=\scriptsize] at (7.5,2.7) {新能源车/工控/电网};
+
+% SiC区域
+\fill[riskgreen!25, draw=riskgreen, thick] (6,2.8) rectangle (11,4.5);
+\node[riskgreen, font=\bfseries\small] at (8.5,3.9) {SiC MOSFET};
+\node[riskgreen, font=\scriptsize] at (8.5,3.4) {800V EV/光伏/储能};
+
+% GaN区域
+\fill[riskamber!30, draw=riskamber, thick] (1,1.0) rectangle (6.5,2.3);
+\node[riskamber, font=\bfseries\small] at (3.75,1.8) {GaN HEMT};
+\node[riskamber, font=\scriptsize] at (3.75,1.4) {快充/数据中心/车载};
+
+% 高压晶闸管区域
+\fill[deepnavy!30, draw=deepnavy, thick] (8.5,4.0) rectangle (12.5,5.3);
+\node[deepnavy, font=\bfseries\small, text=white] at (10.5,4.85) {高压IGBT/晶闸管};
+\node[deepnavy, font=\scriptsize, text=white] at (10.5,4.4) {高压电网/轨道交通};
+
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{本研究团队整理}
+\end{exhibitbox}
+
+\section{产业链结构：上游-中游-下游}
+
+功率半导体产业链可划分为上游支撑层、中游制造层和下游应用层三个环节，整体呈现"上游材料设备高壁垒、中游制造重资产、下游应用分散"的特点。
+
+\begin{exhibitbox}[图 2-2：功率半导体产业链全景图]
+\centering
+\vspace{0.4cm}
+\begin{tikzpicture}[node distance=0.6cm, every node/.style={font=\small}]
+
+% 上游节点
+\node[draw, fill=navy!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center] (wafer) at (0,0) {\textbf{硅片/衬底}\\ 沪硅产业、立昂微};
+\node[draw, fill=navy!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, right=of wafer] (material) {\textbf{化合物材料}\\ 天岳先进、天科合达};
+\node[draw, fill=navy!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, right=of material] (equipment) {\textbf{制造设备}\\ 中微公司、北方华创};
+
+\node[above=0.2cm of material, font=\bfseries\color{navy}] {上游：材料与设备};
+
+% 中游节点
+\node[draw, fill=accentblue!25, rectangle, rounded corners=2pt, minimum height=1.0cm, minimum width=3cm, align=center, below=1.2cm of wafer] (design) {\textbf{设计 (Fabless)}\\ 斯达半导、新洁能\\ 东微半导、芯朋微};
+\node[draw, fill=accentblue!25, rectangle, rounded corners=2pt, minimum height=1.0cm, minimum width=3cm, align=center, right=1.2cm of design] (idm) {\textbf{IDM 模式}\\ 华润微、士兰微\\ 时代电气、扬杰科技};
+\node[draw, fill=accentblue!25, rectangle, rounded corners=2pt, minimum height=1.0cm, minimum width=3cm, align=center, right=1.2cm of idm] (foundry) {\textbf{代工制造}\\ 华虹半导体\\ 中芯国际、三安光电};
+
+\node[above=0.2cm of idm, font=\bfseries\color{accentblue}] {中游：芯片制造};
+
+% 下游节点
+\node[draw, fill=riskgreen!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, below=1.2cm of design] (auto) {\textbf{新能源车}\\ 特斯拉、比亚迪};
+\node[draw, fill=riskgreen!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, right=of auto] (ai) {\textbf{AI/数据中心}\\ 英伟达、服务器厂};
+\node[draw, fill=riskgreen!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, right=of ai] (pv) {\textbf{光伏储能}\\ 阳光电源、宁德时代};
+\node[draw, fill=riskgreen!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, below=0.7cm of auto] (ind) {\textbf{工业控制}\\ 汇川技术};
+\node[draw, fill=riskgreen!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, right=of ind] (consume) {\textbf{消费电子}\\ 苹果、安卓品牌};
+\node[draw, fill=riskgreen!20, rectangle, rounded corners=2pt, minimum height=0.9cm, minimum width=2.2cm, align=center, right=of consume] (grid) {\textbf{电网/轨交}\\ 国家电网、中车};
+
+\node[above=0.2cm of ai, font=\bfseries\color{riskgreen}] {下游：应用领域};
+
+% 箭头
+\draw[-{Stealth}, thick, steelgrey] (wafer.south) -- (design.north);
+\draw[-{Stealth}, thick, steelgrey] (material.south) -- (idm.north);
+\draw[-{Stealth}, thick, steelgrey] (equipment.south) -- (foundry.north);
+\draw[-{Stealth}, thick, steelgrey] (design.south) -- (auto.north);
+\draw[-{Stealth}, thick, steelgrey] (idm.south) -- (pv.north);
+\draw[-{Stealth}, thick, steelgrey] (foundry.south) -- (ai.north);
+
+% 标注
+\node[below=0.4cm of consume, font=\scriptsize\color{steelgrey}] {图 2-2 功率半导体产业链全景示意图};
+
+\end{tikzpicture}
+\vspace{0.3cm}
+\sourcenote{本研究团队整理绘制}
+\end{exhibitbox}
+
+产业链各环节的价值分布呈现典型的"微笑曲线"特征：上游设备和材料技术壁垒最高、利润率最高；下游高端应用（如车规级、数据中心）客户认证周期长、附加值高；中游制造环节重资产、规模效应显著。
+
+\section{全球市场规模与增速}
+
+根据 Yole、Omdia 等第三方机构数据，2025 年全球功率半导体市场规模约为 540–560 亿美元，预计 2030 年将达到 700–750 亿美元，2025–2030 年 CAGR 约为 5–6\%。增速看似不高，但需注意两点：一是这是在庞大基数上的增长，绝对增量可观；二是结构性机会远大于总量机会，第三代半导体、车规级、AI 数据中心等细分赛道增速远超行业平均。
+
+\begin{exhibitbox}[图 2-3：全球功率半导体市场规模及预测（亿美元）]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}
+\begin{axis}[
+    width=12cm, height=6cm,
+    ybar,
+    bar width=0.6cm,
+    ylabel={市场规模（亿美元）},
+    xlabel={年份},
+    xtick={2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030},
+    xticklabels={2020,2021,2022,2023,2024,2025E,2026E,2027E,2028E,2029E,2030E},
+    x tick label style={rotate=45, anchor=east, font=\scriptsize},
+    ymin=0, ymax=800,
+    ymajorgrids=true,
+    grid style={dashed, gray!30},
+    nodes near coords,
+    nodes near coords style={font=\scriptsize, /pgf/number format/.cd, fixed, fixed zerofill, precision=0},
+    symbolic x coords={2020,2021,2022,2023,2024,2025,2026,2027,2028,2029,2030},
+    enlarge x limits=0.05,
+    legend pos=north west,
+    legend style={font=\footnotesize},
+]
+\addplot[fill=navy!60, draw=navy] coordinates {
+    (2020, 420) (2021, 480) (2022, 530) (2023, 505) (2024, 520)
+    (2025, 550) (2026, 585) (2027, 620) (2028, 655) (2029, 690) (2030, 725)
+};
+\legend{全球功率半导体市场规模}
+\end{axis}
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{Yole, Omdia，本研究团队综合测算}
+\end{exhibitbox}
+
+从应用结构看，汽车电子已超越工业控制成为功率半导体第一大下游应用，占比约 35–40\%；工业控制占比约 25–30\%；消费电子占比约 15–20\%；通信（含数据中心）占比约 10–15\%，且增速最快。
+
+\section{中国市场：全球最大消费国}
+
+中国是全球最大的功率半导体消费国，约占全球市场的 35–40\%。2025 年中国功率半导体市场规模约为 1,900–2,000 亿元人民币，预计 2030 年将达到 3,000–3,200 亿元，CAGR 约 10–12\%，显著高于全球平均增速。
+
+中国市场增速更快的原因有三：
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{需求端}：中国是全球最大的新能源汽车生产国和消费国，也是最大的光伏储能市场，下游需求旺盛。
+\item \textbf{供给端}：国产替代持续推进，国内厂商市场份额逐步提升。
+\item \textbf{价格端}：高端产品占比提升，产品结构升级带动 ASP 提升。
+\end{enumerate}
+
+\section{行业周期属性：成长 + 周期双重属性}
+
+功率半导体行业兼具成长属性和周期属性，但我们认为当前阶段成长属性显著强于周期属性。
+
+\vspace{0.3em}
+
+\textbf{周期属性}主要源于：
+\begin{itemize}[leftmargin=2em]
+\item 下游需求受宏观经济影响，具有明显的周期性波动
+\item 产能建设周期长（通常 2–3 年），供需错配导致价格周期
+\item 库存周期：渠道库存变化放大了行业波动
+\end{itemize}
+
+\textbf{成长属性}主要源于：
+\begin{itemize}[leftmargin=2em]
+\item 新能源汽车、光伏储能、AI 数据中心等新兴需求快速增长
+\item 第三代半导体技术迭代带来产品价值量提升
+\item 国产替代持续深化，国内厂商份额不断提升
+\item 电气化、智能化趋势推动单机功率半导体用量持续增加
+\end{itemize}
+
+\begin{keyinsight}[周期视角下的行业判断]
+我们判断功率半导体行业自 2024 年 Q4 起已进入新一轮上行周期，本轮周期的驱动因素与以往不同——不是单纯的补库存周期，而是由 AI 算力革命和能源转型共同驱动的成长性周期，持续时间和增长空间有望超越历史上任何一轮周期。
+\end{keyinsight}
+% 第二章新增第5、6节：产业链价值分配 + 供应链关系矩阵
+% 纯LaTeX片段，可被 ch02_industry_overview.tex 包含
+
+\section{产业链结构与价值分配}
+
+功率半导体产业链呈现典型的"微笑曲线"价值分布特征——上游设备与材料技术壁垒最高、利润率最丰厚；下游高端应用（车规级、数据中心）客户认证周期长、产品溢价显著；中游制造环节重资产投入大、规模效应显著，利润率相对偏低。理解各环节的价值分配与国产替代进度，是把握行业投资机会的基础。
+
+\begin{exhibitbox}[图 2-4：功率半导体产业链价值分配图谱]
+\centering
+\vspace{0.2cm}
+\begin{tikzpicture}[scale=0.86]
+
+% 微笑曲线背景
+\draw[thick, navy!40, fill=navy!8] plot[smooth] coordinates {
+    (0.8, 3.8) (1.8, 3.2) (2.8, 2.6) (3.8, 2.2) (4.8, 2.0)
+    (5.8, 2.2) (6.8, 2.7) (7.8, 3.3) (8.8, 3.9) (9.8, 4.3)
+};
+\node[navy, font=\bfseries\small] at (5.3, 1.2) {产业链环节};
+\node[navy, font=\bfseries\small, rotate=90] at (0.3, 3) {附加值 / 毛利率};
+
+% 上游环节
+\fill[navy!25, draw=navy, thick] (0.6, 3.6) rectangle (2.0, 4.6);
+\node[font=\bfseries\small, align=center] at (1.3, 4.25) {设备};
+\node[font=\scriptsize, align=center] at (1.3, 3.85) {40--45\%};
+
+\fill[navy!20, draw=navy, thick] (2.1, 3.2) rectangle (3.5, 4.2);
+\node[font=\bfseries\small, align=center] at (2.8, 3.9) {衬底/材料};
+\node[font=\scriptsize, align=center] at (2.8, 3.5) {25--40\%};
+
+% 中游环节
+\fill[accentblue!25, draw=accentblue, thick] (3.6, 2.3) rectangle (5.0, 3.3);
+\node[font=\bfseries\small, align=center] at (4.3, 3.0) {制造/代工};
+\node[font=\scriptsize, align=center] at (4.3, 2.6) {20--30\%};
+
+\fill[accentblue!30, draw=accentblue, thick] (5.1, 2.0) rectangle (6.5, 3.0);
+\node[font=\bfseries\small, align=center] at (5.8, 2.7) {封测};
+\node[font=\scriptsize, align=center] at (5.8, 2.3) {15--25\%};
+
+% 下游环节
+\fill[riskgreen!25, draw=riskgreen, thick] (6.6, 2.8) rectangle (8.0, 3.8);
+\node[font=\bfseries\small, align=center] at (7.3, 3.5) {设计 (Fabless)};
+\node[font=\scriptsize, align=center] at (7.3, 3.1) {30--40\%};
+
+\fill[riskgreen!30, draw=riskgreen, thick] (8.1, 3.4) rectangle (9.5, 4.4);
+\node[font=\bfseries\small, align=center] at (8.8, 4.05) {车规/AI 应用};
+\node[font=\scriptsize, align=center] at (8.8, 3.7) {溢价 30--100\%};
+
+% 底部说明
+\node[below=0.2cm of current bounding box.south, font=\scriptsize\color{steelgrey}]
+    {图 2-4 功率半导体产业链微笑曲线与价值分配示意图};
+
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{本研究团队根据各公司年报及行业数据整理绘制}
+\end{exhibitbox}
+
+从毛利率水平看，功率半导体设备环节毛利率最高（北方华创 40--45\%），其次是功率 IC 设计（35--50\%）和 SiC 衬底（景气周期可达 40\%+）；封测环节毛利率最低（15--25\%），属于重资产、劳动密集型环节。值得注意的是，SiC 产业链的价值高度集中在上游——衬底加外延占 SiC 器件 BOM 成本的 50--60\%，这与硅基产业链价值相对分散的格局形成鲜明对比。
+
+\begin{exhibitbox}[表 2-3：功率半导体各环节价值分配与国产替代进度]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}l X c c X c c@{}}
+\toprule
+\textbf{产业链环节} & \textbf{代表公司} & \textbf{毛利率 (2025A)} & \textbf{典型区间} & \textbf{价值占比} & \textbf{国产化率} & \textbf{替代阶段} \\
+\midrule
+\rowcolor{navy!5}
+\multicolumn{7}{l}{\textit{上游：材料与设备}} \\
+设备 & 北方华创 & 40--45\% & 35--45\% & 资本开支项 & 10--15\% & 差距较大 \\
+SiC 衬底 & 天岳先进 & 13.1\% & 15--40\% & 30--40\% (SiC BOM) & 20--30\% (6英寸) & 技术追赶 \\
+硅片 (功率级) & 立昂微 & 25--30\% & 20--35\% & 15--20\% (硅基 BOM) & 30--40\% & 快速追赶 \\
+封装材料 (AMB) & 中瓷电子 & 35--40\% & 30--45\% & 5--10\% (模块 BOM) & 15--20\% & 加速突破 \\
+\midrule
+\rowcolor{accentblue!5}
+\multicolumn{7}{l}{\textit{中游：设计与制造}} \\
+功率 IC/PMIC & 晶丰明源 & 30--35\% & 35--50\% & 20--30\% & 15--20\% & 逐步突破 \\
+器件设计 (Fabless) & 斯达半导 / 新洁能 & 31.6\% / 32.9\% & 30--40\% & 25--35\% & 25--40\% & 快速提升 \\
+IDM (综合) & 时代电气 / 华润微 & 33.4\% / 26.4\% & 25--38\% & 40--50\% & 20--35\% & 规模替代 \\
+封装测试 & 长电科技 / 通富微电 & 15--20\% & 15--25\% & 10--15\% & 40--50\% & 规模替代 \\
+\midrule
+\rowcolor{riskgreen!5}
+\multicolumn{7}{l}{\textit{下游应用端 (产品溢价)}} \\
+车规级模块 & 时代电气 / 斯达 & 溢价 30--50\% & — & — & 10--15\% & 导入验证 \\
+工业级模块 & 斯达半导 / 士兰微 & 溢价 15--25\% & — & — & 30--40\% & 快速提升 \\
+消费级器件 & 扬杰 / 华润微 & 基准水平 & — & — & 50--70\% & 规模替代 \\
+AI/数据中心 & 士兰微 / 晶丰明源 & 溢价 20--40\% & — & — & 10--20\% & 加速突破 \\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+\sourcenote{各公司 2025 年年报、卖方一致预期，本研究团队整理}
+\end{exhibitbox}
+
+表 2-3 揭示了一个重要的投资规律：\textbf{国产化率越低的环节，未来成长空间越大，但短期兑现难度也越高。} 设备、SiC 衬底、车规级模块、功率 IC 等环节国产化率均低于 30\%，是国产替代的"深水区"，也是长期成长空间最大的方向。而低压 MOSFET、二极管、封测等环节国产化率已较高，增长更多依赖行业整体需求和份额的稳步提升。
+
+\begin{keyinsight}[价值分配视角下的投资排序]
+从"成长空间 + 盈利质量 + 竞争格局"三维度综合评估，我们对功率半导体各环节的投资优先级排序为：
+\vspace{0.3em}
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{第一梯队（高成长+高壁垒）}：SiC 衬底、车规 IGBT/SiC 模块、功率 IC/PMIC——国产化率低、技术壁垒高、客户粘性强，是皇冠上的明珠
+\item \textbf{第二梯队（稳健成长）}：中高压 MOSFET、超结 MOS、工业级 IGBT、AMB 基板——国产替代加速，业绩兑现确定性高
+\item \textbf{第三梯队（周期+主题）}：低压 MOS、二极管、封测——国产化率高，更多是周期波动和主题性机会
+\end{enumerate}
+\vspace{0.3em}
+投资者应根据自身风险偏好和投资周期，在不同梯队间进行配置平衡。第一梯队标的弹性大但波动也大，适合长期布局；第二梯队标的业绩确定性高，适合作为核心持仓。
+\end{keyinsight}
+
+\section{供应链关系矩阵}
+
+供应链关系是功率半导体公司竞争力的"隐性资产"——客户认证壁垒、供应商稳定性、上下游协同深度，直接决定了公司的成长天花板和盈利韧性。我们构建了覆盖上游材料设备至下游应用的全产业链供应链关系矩阵，并采用四级可信度标注体系，为投资决策提供更精细的依据。
+
+\vspace{0.3em}
+
+\textbf{可信度标注体系说明}：
+\begin{itemize}[leftmargin=2em]
+\item \textbf{\textcolor{navy}{Confirmed (C)}}：年报/公告/监管文件直接披露，或公司 IR 会议官方确认，可靠性极高
+\item \textbf{\textcolor{riskgreen}{Broker-Stated (B)}}：主流卖方研报明确表述，或行业协会/咨询机构数据，可靠性较高（注意卖方偏差）
+\item \textbf{\textcolor{riskamber}{Inferred (I)}}：基于行业逻辑、产业链关系的合理推断，需持续验证，可靠性中等
+\item \textbf{\textcolor{riskred}{Market-Rumor (M)}}：市场传闻、自媒体报道，不可作为决策依据，可靠性低
+\end{itemize}
+
+\begin{exhibitbox}[表 2-4：功率半导体核心公司供应链关系矩阵]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{@{}ll>{\hsize=1.25\hsize}X cc >{\hsize=0.75\hsize}X@{}}
+\toprule
+\textbf{环节} & \textbf{公司} & \textbf{供应链关系} & \textbf{方向} & \textbf{可信度} & \textbf{核心依据} \\
+\midrule
+\rowcolor{navy!5}
+\multicolumn{6}{l}{\textit{上游材料设备 $\rightarrow$ 中游制造}} \\
+SiC 衬底 & 天岳先进 & 博世 (Bosch) & 下游 & \textcolor{navy}{\textbf{C}} & 年报 + 卓越供应商奖 \\
+& & 意法半导体 (ST) & 下游 & \textcolor{riskgreen}{\textbf{B}} & 华泰/华源研报 \\
+& & 富士康 (鸿海) & 下游 & \textcolor{navy}{\textbf{C}} & 2026Q1 业绩说明会 \\
+& & 时代电气 / 士兰微 / 三安 & 下游 & \textcolor{riskgreen}{\textbf{B}} & 招商/华泰研报 \\
+硅片 & 立昂微 & 华润微 / 士兰微 / 斯达 & 下游 & \textcolor{riskgreen}{\textbf{B}} & 海通研报 \\
+& 沪硅产业 & 中芯国际 / 华虹 / 华润微 & 下游 & \textcolor{riskgreen}{\textbf{B}} & 海通研报 \\
+设备 & 北方华创 & 华润微 / 士兰微 / 时代电气 & 下游 & \textcolor{riskgreen}{\textbf{B}} & 海通研报 \\
+& 中微公司 & 三安光电 / 华润微 & 下游 & \textcolor{riskgreen}{\textbf{B}} & 海通研报 \\
+封装材料 & 中瓷电子 & 时代电气 / 斯达 / 比亚迪半导 & 下游 & \textcolor{riskgreen}{\textbf{B}} & 广发研报 \\
+\midrule
+\rowcolor{accentblue!5}
+\multicolumn{6}{l}{\textit{中游制造 $\rightarrow$ 下游应用 (IDM 模式)}} \\
+\multirow{3}{*}{IGBT+SiC IDM} & \multirow{3}{*}{时代电气} & 大众 / 丰田 / 通用 / 小米 / 奇瑞 & 汽车 & \textcolor{navy}{\textbf{C}} & 年报 + IR 交流会 \\
+& & 中国中车 / 国铁集团 & 轨交 & \textcolor{navy}{\textbf{C}} & 年报 \\
+& & 阳光电源 / 华为数字能源 & 光储 & \textcolor{riskgreen}{\textbf{B}} & 中信建投研报 \\
+\multirow{3}{*}{全品类 IDM} & \multirow{3}{*}{华润微} & 国内一线消费品牌 & 消费 & \textcolor{navy}{\textbf{C}} & 年报 \\
+& & 光模块头部客户 / 服务器电源厂 & AI & \textcolor{navy}{\textbf{C}} & 2026.4 业绩说明会 \\
+& & 车规级验证中 & 汽车 & \textcolor{riskgreen}{\textbf{B}} & 国信研报 \\
+\multirow{2}{*}{IDM 扩产} & \multirow{2}{*}{士兰微} & 美的 / 格力 / 海尔 & 消费 & \textcolor{riskgreen}{\textbf{B}} & 国信研报 \\
+& & AI 大客户 (Dr.MOS/eFuse) & AI & \textcolor{navy}{\textbf{C}} & 2025.11 业绩说明会 \\
+\multirow{3}{*}{分立 IDM} & \multirow{3}{*}{扬杰科技} & 博世 / 大陆集团 (Tier1) & 汽车 & \textcolor{navy}{\textbf{C}} & 年报 + 2026.5 电话会 \\
+& & AI 头部企业 (联合开发) & AI & \textcolor{navy}{\textbf{C}} & 2026.5 电话会 \\
+& & 光伏 / 储能 / 充电桩 & 能源 & \textcolor{riskgreen}{\textbf{B}} & 国金研报 \\
+化合物 IDM & 三安光电 & 手机 PA 厂商 / 全球照明厂 & RF/LED & \textcolor{navy}{\textbf{C}} & 年报 \\
+\midrule
+\rowcolor{accentblue!5}
+\multicolumn{6}{l}{\textit{中游设计 $\rightarrow$ 下游应用 (Fabless 模式)}} \\
+IGBT 设计 & 斯达半导 & 多家头部车企 (主驱/OBC) & 汽车 & \textcolor{navy}{\textbf{C}} & 年报 \\
+& & 汇川技术 / 英威腾 & 工控 & \textcolor{riskgreen}{\textbf{B}} & 申万/国泰君安研报 \\
+MOS 设计 & 新洁能 & 消费电子 / 工业电源 & 多领域 & \textcolor{riskgreen}{\textbf{B}} & 中信/中金研报 \\
+超结 MOS & 东微半导 & 充电桩 / 光伏 / 服务器 PSU & 能源+AI & \textcolor{riskgreen}{\textbf{B}} & 中信/中金研报 \\
+电源管理 IC & 晶丰明源 & 照明龙头 / 家电品牌 & 消费 & \textcolor{navy}{\textbf{C}} & 年报 \\
+\midrule
+\rowcolor{riskgreen!5}
+\multicolumn{6}{l}{\textit{下游应用领域国产化率一览}} \\
+\multicolumn{2}{l}{新能源车主驱 (IGBT/SiC)} & 时代电气 / 斯达 / 比亚迪半导 & — & \multicolumn{2}{c}{国产化率 10--15\%} \\
+\multicolumn{2}{l}{光伏逆变器 (IGBT/MOS)} & 斯达 / 时代 / 扬杰 & — & \multicolumn{2}{c}{国产化率 30--40\%} \\
+\multicolumn{2}{l}{AI 服务器 (Dr.MOS/PMIC)} & 士兰微 / 华润微 / 晶丰明源 & — & \multicolumn{2}{c}{国产化率 10--20\%} \\
+\multicolumn{2}{l}{工业控制 (变频器/伺服)} & 斯达 / 时代 / 士兰微 & — & \multicolumn{2}{c}{国产化率 30--40\%} \\
+\multicolumn{2}{l}{消费电子快充 (GaN/MOS)} & 三安 / 晶丰明源 / 英诺赛科 & — & \multicolumn{2}{c}{国产化率 35--45\%} \\
+\bottomrule
+\end{tabularx}
+\vspace{0.2cm}
+\sourcenote{各公司年报、业绩说明会、卖方研报（中信/华泰/海通/中金等），本研究团队整理}
+\end{exhibitbox}
+
+表 2-4 呈现的供应链关系矩阵，核心价值在于两个维度的洞察。第一，\textbf{客户质量决定成长天花板}——进入博世、大众、华为等头部客户供应链的公司，其成长确定性远高于服务中小客户的公司。例如时代电气凭借大众、丰田、通用三大海外车企定点，车规业务的长期成长路径最为清晰；扬杰科技进入博世、大陆等国际 Tier1 供应链，海外收入占比持续提升。第二，\textbf{供应链多元化决定抗风险能力}——单一客户或单一领域依赖度高的公司，面临更大的业绩波动风险。天岳先进、东微半导等公司客户集中度相对较高，需持续关注客户结构的多元化进展。
+
+\begin{exhibitbox}[图 2-5：核心功率半导体公司供应链定位图谱]
+\centering
+\vspace{0.3cm}
+\begin{tikzpicture}[scale=0.95]
+
+% 坐标轴
+\draw[->, thick, steelgrey] (0,0) -- (12,0) node[right, font=\small] {下游客户覆盖广度 $\rightarrow$};
+\draw[->, thick, steelgrey] (0,0) -- (0,7) node[above, font=\small] {$\uparrow$ 客户质量/认证等级};
+
+% 网格线
+\draw[dashed, gray!20] (0,2) -- (12,2);
+\draw[dashed, gray!20] (0,4) -- (12,4);
+\draw[dashed, gray!20] (0,6) -- (12,6);
+\draw[dashed, gray!20] (3,0) -- (3,7);
+\draw[dashed, gray!20] (6,0) -- (6,7);
+\draw[dashed, gray!20] (9,0) -- (9,7);
+
+% Y轴标签
+\node[left, font=\scriptsize, steelgrey] at (0,1) {消费级};
+\node[left, font=\scriptsize, steelgrey] at (0,3) {工业级};
+\node[left, font=\scriptsize, steelgrey] at (0,5) {车规级};
+\node[left, font=\scriptsize, steelgrey] at (0,6.5) {国际 Tier1};
+
+% X轴标签
+\node[below, font=\scriptsize, steelgrey] at (1.5,0) {单一领域};
+\node[below, font=\scriptsize, steelgrey] at (4.5,0) {2--3个领域};
+\node[below, font=\scriptsize, steelgrey] at (7.5,0) {多领域覆盖};
+\node[below, font=\scriptsize, steelgrey] at (10.5,0) {全领域布局};
+
+% 象限标注
+\node[navy, font=\bfseries\footnotesize, above right] at (6.2, 5.8) {黄金象限：车规级 + 广覆盖};
+\node[steelgrey, font=\footnotesize, above right] at (0.2, 5.8) {专精型};
+\node[steelgrey, font=\footnotesize, above right] at (0.2, 0.8) {细分赛道型};
+\node[steelgrey, font=\footnotesize, above right] at (9.2, 0.8) {平台型 (消费为主)};
+
+% 公司点位 - 第一梯队（黄金象限附近）
+\node[draw=navy, fill=navy!20, circle, minimum size=12pt, inner sep=0pt] (sddz) at (5, 6.1) {};
+\node[below=2pt of sddz, font=\scriptsize, navy] {\textbf{时代电气}};
+
+\node[draw=navy, fill=navy!15, circle, minimum size=10pt, inner sep=0pt] (std) at (4, 5.2) {};
+\node[below=2pt of std, font=\scriptsize] {斯达半导};
+
+\node[draw=navy, fill=navy!15, circle, minimum size=10pt, inner sep=0pt] (yj) at (7, 5.0) {};
+\node[below=2pt of yj, font=\scriptsize] {扬杰科技};
+
+% 第二梯队
+\node[draw=accentblue, fill=accentblue!20, circle, minimum size=12pt, inner sep=0pt] (hrw) at (8, 4.2) {};
+\node[below=2pt of hrw, font=\scriptsize, accentblue] {\textbf{华润微}};
+
+\node[draw=accentblue, fill=accentblue!20, circle, minimum size=12pt, inner sep=0pt] (slw) at (7, 3.8) {};
+\node[below=2pt of slw, font=\scriptsize, accentblue] {\textbf{士兰微}};
+
+\node[draw=accentblue, fill=accentblue!15, circle, minimum size=10pt, inner sep=0pt] (xjn) at (5, 3.0) {};
+\node[below=2pt of xjn, font=\scriptsize] {新洁能};
+
+\node[draw=accentblue, fill=accentblue!15, circle, minimum size=10pt, inner sep=0pt] (dw) at (4, 2.6) {};
+\node[below=2pt of dw, font=\scriptsize] {东微半导};
+
+% 材料设备公司
+\node[draw=riskamber, fill=riskamber!20, circle, minimum size=10pt, inner sep=0pt] (ty) at (2.5, 5.8) {};
+\node[below=2pt of ty, font=\scriptsize, riskamber] {天岳先进};
+
+\node[draw=riskamber, fill=riskamber!15, circle, minimum size=10pt, inner sep=0pt] (san) at (9, 3.0) {};
+\node[below=2pt of san, font=\scriptsize] {三安光电};
+
+% 设计公司
+\node[draw=riskgreen, fill=riskgreen!15, circle, minimum size=9pt, inner sep=0pt] (jf) at (6, 1.8) {};
+\node[below=2pt of jf, font=\scriptsize] {晶丰明源};
+
+% 图例
+\node[below right, font=\scriptsize] at (0.5, 0.5) {\textbf{图例：}};
+\node[draw=navy, fill=navy!20, circle, minimum size=8pt, inner sep=0pt] at (2, 0.5) {};
+\node[right, font=\scriptsize] at (2.5, 0.5) {IDM 龙头};
+\node[draw=accentblue, fill=accentblue!20, circle, minimum size=8pt, inner sep=0pt] at (4, 0.5) {};
+\node[right, font=\scriptsize] at (4.5, 0.5) {多品类厂商};
+\node[draw=riskamber, fill=riskamber!20, circle, minimum size=8pt, inner sep=0pt] at (6.5, 0.5) {};
+\node[right, font=\scriptsize] at (7, 0.5) {材料/化合物};
+\node[draw=riskgreen, fill=riskgreen!20, circle, minimum size=8pt, inner sep=0pt] at (9.5, 0.5) {};
+\node[right, font=\scriptsize] at (10, 0.5) {设计公司};
+
+\node[below=0.5cm of current bounding box.south, font=\scriptsize\color{steelgrey}]
+    {图 2-5 核心公司供应链定位示意（基于客户质量与覆盖广度二维评估）};
+
+\end{tikzpicture}
+\vspace{0.2cm}
+\sourcenote{本研究团队基于供应链关系矩阵综合评估绘制}
+\end{exhibitbox}
+
+图 2-5 将核心公司置于"客户质量"与"覆盖广度"的二维坐标系中，直观呈现了各公司的供应链定位。\textbf{时代电气}凭借车规级客户（大众、丰田、通用等）和轨交领域的深厚积累，位于图谱的"黄金象限"——客户质量最高且覆盖多领域。\textbf{华润微}和\textbf{士兰微}作为 IDM 平台型公司，客户覆盖广度领先，但车规级客户的突破仍在进行中。\textbf{天岳先进}客户质量很高（博世、意法等国际一线），但下游应用领域相对集中（以 SiC 衬底间接下游为主）。
+
+\begin{keyinsight}[供应链视角下的选股逻辑]
+从供应链关系质量出发，我们提炼出三条选股准则：
+\vspace{0.3em}
+\begin{enumerate}[leftmargin=2em]
+\item \textbf{优先选择已进入国际 Tier1/头部车企供应链的公司}——客户认证是最高门槛，进入意味着长期成长确定性。时代电气（大众/丰田/通用）、扬杰科技（博世/大陆）、天岳先进（博世/意法）是典型代表
+\item \textbf{关注客户结构多元化的平台型公司}——单一领域依赖度低，抗周期能力更强。华润微、士兰微在消费、工业、汽车、AI 多领域布局，业绩平滑能力优于单一赛道公司
+\item \textbf{警惕"故事型"供应链标的}——仅停留在"研发中""验证中"阶段、缺乏 confirmed 级别客户关系的公司，业绩兑现风险较高。应以 L1/L2 级数据为决策依据，L3 级以下仅作参考
+\end{enumerate}
+\vspace{0.3em}
+我们建议将供应链关系质量作为功率半导体选股的"一票否决"指标之一——缺乏高质量客户验证的公司，即使技术故事再动听，也应谨慎参与。
+\end{keyinsight}
+
+\vspace{0.3em}
+
+\textbf{数据局限性提示}：本供应链关系矩阵基于公开信息整理，存在三方面局限。其一，A 股上市公司不强制披露具体客户名称和收入金额，客户占比数据多基于券商研报估算，精确性有限；其二，供应链关系处于动态变化中，客户认证、定点进展随时间持续更新，本矩阵仅反映 2026 年 6 月时点的大致格局；其三，部分公司（如斯达半导、新洁能）公开 IR 信息透明度较低，相关分析更多依赖卖方研报，信息颗粒度较粗。投资者在使用本矩阵时，应结合最新公告和调研信息持续验证。

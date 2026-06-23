@@ -1,0 +1,82 @@
+% ============================================================
+% Exhibit 10: 景气度跟踪指标体系与监控频率
+% ============================================================
+\begin{table}[htbp]
+  \centering
+  \scriptsize
+  \renewcommand{\arraystretch}{1.5}
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}ll>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.6cm}>{\raggedright\arraybackslash}p{2.6cm}l@{}}
+    \toprule
+    \textbf{板块名称} & \textbf{高频指标} & \textbf{中频指标} & \textbf{低频指标} & \textbf{领先指标} & \textbf{数据来源} \\
+    & \textbf{(周度/月度)} & \textbf{(季度)} & \textbf{(半年度/年度)} & \textbf{(前瞻3-6个月)} & \\
+    \midrule
+
+    \multirow{3}{*}{\textbf{AI算力}}
+      & \textbf{GPU出货量}\textsuperscript{★} & GPU服务器出货量 & 大模型迭代节奏 & 云厂商资本开支指引 & Gartner、IDC \\
+      & 光模块价格指数 & 互联网巨头AI capex & AI算力利用率 & GPU采购订单 & LightCounting \\
+      & 算力租赁价格 & 算力中心PUE & 国产芯片生态 & AI服务器招标 & 中国信通院 \\
+    \addlinespace
+
+    \multirow{3}{*}{\textbf{功率半导体}}
+      & \textbf{IGBT现货价}\textsuperscript{★} & 新能源车销量 & 产能投放进度 & 新能源车企排产 & WSTS、集邦咨询 \\
+      & MOSFET价格指数 & 光伏装机量 & 技术路线迭代 & IGBT新订单能见度 & 中汽协、光伏协会 \\
+      & 8寸晶圆代工报价 & 工业机器人产量 & 海外厂商扩产 & AI服务器功率需求 & SEMI、Digitimes \\
+    \addlinespace
+
+    \multirow{3}{*}{\textbf{电力公用}}
+      & \textbf{日度用电增速}\textsuperscript{★} & 火电利用小时数 & 电力体制改革政策 & 数据中心签约量 & 国家能源局 \\
+      & 动力煤期货价格 & 水电发电量 & 跨省跨区输电规划 & 绿电交易溢价 & 中电联、CCTD \\
+      & 风电光伏利用小时 & 电网投资完成额 & 电价调整周期 & 特高压项目开工 & 国家电网 \\
+    \addlinespace
+
+    \multirow{3}{*}{\textbf{智能驾驶}}
+      & \textbf{周度上险量}\textsuperscript{★} & 新车智驾渗透率 & 智驾法规落地 & L3/L4法规进展 & 乘联会、高工智能 \\
+      & 激光雷达出货量 & 域控制器出货量 & 自动驾驶标准 & 车企年度智驾规划 & Yole、佐思汽研 \\
+      & 芯片库存周转 & 线控制动渗透率 & 技术路线演进 & 城市NOA开通进度 & 各公司公告 \\
+    \addlinespace
+
+    \multirow{3}{*}{\textbf{人形机器人}}
+      & \textbf{核心零部件价格}\textsuperscript{★} & 机器人产量 & 人形机器人量产节点 & 核心零部件新订单 & GGII、MIR \\
+      & 减速器开工率 & 工业机器人销量 & 技术路线迭代 & 特斯拉Optimus进展 & 国家统计局 \\
+      & 伺服电机价格 & 系统集成订单 & 行业标准制定 & 机器人招标 & IFR、高工机器人 \\
+    \addlinespace
+
+    \multirow{3}{*}{\textbf{光伏储能}}
+      & \textbf{光伏组件周价}\textsuperscript{★} & 全球装机量 & 中美欧能源政策 & 储能逆变器排产 & PV InfoLink、EnergyTrend \\
+      & 储能电池价格 & 逆变器出货量 & 产能投放周期 & 海外储能招标 &  CNESA、BNEF \\
+      & 硅料价格指数 & 储能装机量 & 技术迭代周期 & 碳酸锂价格走势 & SMM、Solarzoom \\
+    \addlinespace
+
+    \multirow{3}{*}{\textbf{创新药}}
+      & \textbf{在研管线进度}\textsuperscript{★} & 药品销售额 & 医保谈判结果 & 临床III期数据读出 & 药智网、医药魔方 \\
+      & 投融资活跃度 & BD授权交易金额 & 审评审批政策 & FDA/NMPA审评进展 & 动脉网、CDE \\
+      & 创新药指数换手率 & 研发投入增速 & 技术平台迭代 & 海外临床获批 & Wind、各家公告 \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.3em}
+  \caption{七大重点板块景气度跟踪指标体系与监控频率}
+  \label{tab:monitoring_metrics}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}各行业协会、第三方研究机构、国家统计局、Wind、本研究整理。
+  \vspace{0.2em}
+  \begin{tcolorbox}[colback=blue!5, colframe=blue!30, boxrule=0.5pt,
+      left=6pt, right=6pt, top=3pt, bottom=3pt]
+    \textbf{\scriptsize 跟踪频率说明：}
+    \scriptsize
+    \begin{columns}[T]
+      \begin{column}{0.24\textwidth}
+        \textcolor{blue!80}{$\bullet$ 高频(周/月)}：价格、出货量、开工率等\\
+        \textcolor{blue!80}{$\bullet$ 中频(季度)}：营收、利润、产能利用率等
+      \end{column}
+      \begin{column}{0.24\textwidth}
+        \textcolor{blue!80}{$\bullet$ 低频(半年/年)}：政策、技术迭代、产能投放\\
+        \textcolor{blue!80}{$\bullet$ 领先(前瞻3-6月)}：新订单、招标量、库存变化
+      \end{column}
+      \begin{column}{0.48\textwidth}
+        \textcolor{red!80}{★} \textbf{重点关注指标：}每板块核心锚定指标，对景气度变化敏感度最高，
+        为预期差验证的第一观测变量。\textcolor{red!80}{★}标为每月必跟踪核心指标。
+      \end{column}
+    \end{columns}
+  \end{tcolorbox}
+\end{table}

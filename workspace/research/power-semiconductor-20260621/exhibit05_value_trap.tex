@@ -1,0 +1,249 @@
+% ============================================================
+% Exhibit 5: 价值陷阱识别框架与三大陷阱板块剖析
+% ============================================================
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+
+    % ============ 左侧：价值陷阱六大识别信号雷达图 ============
+    \begin{scope}[xshift=-4.5cm, yshift=0.5cm]
+
+      \node[font=\bfseries, below=4pt] at (0, 3.8) {价值陷阱六大识别信号（6G板块示意）};
+
+      % 雷达图参数
+      \def\radius{3.0cm}
+      \def\n{6}
+      \pgfmathsetmacro\angstep{360/\n}
+
+      % 网格线（同心圆）
+      \foreach \r in {0.2, 0.4, 0.6, 0.8, 1.0} {
+        \draw[gray!30, thin] (0,0) circle (\r * \radius);
+      }
+
+      % 辐射线 + 标签
+      % 6个维度角度: 90, 150, 210, 270, 330, 30 度
+      \node[above, font=\small\bfseries, text=red!80!black] at (90:\radius + 0.3cm) {景气度未验证};
+      \node[above left, font=\small\bfseries, text=red!80!black] at (150:\radius + 0.3cm) {技术路线未定};
+      \node[below left, font=\small\bfseries, text=red!80!black] at (210:\radius + 0.3cm) {炒作痕迹明显};
+      \node[below, font=\small\bfseries, text=red!80!black] at (270:\radius + 0.3cm) {估值严重透支};
+      \node[below right, font=\small\bfseries, text=red!80!black] at (330:\radius + 0.3cm) {商业模式模糊};
+      \node[above right, font=\small\bfseries, text=red!80!black] at (30:\radius + 0.3cm) {政策依赖过高};
+
+      \foreach \ang in {90, 150, 210, 270, 330, 30} {
+        \draw[gray!40, thin] (0,0) -- (\ang:\radius);
+      }
+
+      % 6G雷达数据：(角度:比例)
+      % 景气未验0.85, 技术未定0.95, 炒作痕迹0.88, 估值透支0.92, 商业模式0.75, 政策依赖0.90
+      \fill[red!25, opacity=0.7]
+        (90:0.85*\radius) --
+        (150:0.95*\radius) --
+        (210:0.88*\radius) --
+        (270:0.92*\radius) --
+        (330:0.75*\radius) --
+        (30:0.90*\radius) -- cycle;
+      \draw[red!80, thick]
+        (90:0.85*\radius) --
+        (150:0.95*\radius) --
+        (210:0.88*\radius) --
+        (270:0.92*\radius) --
+        (330:0.75*\radius) --
+        (30:0.90*\radius) -- cycle;
+
+      % 数值点
+      \fill[red!90] (90:0.85*\radius) circle (2pt);
+      \fill[red!90] (150:0.95*\radius) circle (2pt);
+      \fill[red!90] (210:0.88*\radius) circle (2pt);
+      \fill[red!90] (270:0.92*\radius) circle (2pt);
+      \fill[red!90] (330:0.75*\radius) circle (2pt);
+      \fill[red!90] (30:0.90*\radius) circle (2pt);
+
+      % 图例
+      \node[draw=none, fill=none, below=6pt, font=\small, text=red!80!black] at (0, -3.5)
+        {\raisebox{2pt}{\tikz{\fill[red!30, draw=red!70] (0,0) rectangle (0.5,0.25);}} \enspace \textbf{6G 板块}};
+
+    \end{scope}
+
+    % ============ 右侧：三大陷阱板块六维度得分柱状对比 ============
+    \begin{scope}[xshift=4.8cm]
+
+      \node[font=\bfseries] at (0, 3.8) {三大价值陷阱板块六维度得分对比};
+
+      % Y 轴
+      \draw[->, thick] (-4, -3.5) -- (-4, 3.2);
+      \node[above, font=\scriptsize] at (-4, 3.3) {风险得分(0-100)};
+
+      % Y 刻度
+      \foreach \y in {0,20,40,60,80,100} {
+        \pgfmathsetmacro\yy{-3.5 + (\y / 100) * 6.7}
+        \draw[gray!30, thin] (-4, \yy) -- (4, \yy);
+        \node[left, font=\tiny] at (-4.1, \yy) {\y};
+      }
+
+      % 柱状图参数
+      \def\barw{0.22}
+      \def\gap{0.08}
+      \def\xstep{1.35}
+
+      % 第1组：景气未验证
+      \pgfmathsetmacro\xpos{-3.5}
+      \pgfmathsetmacro\hbot{-3.5}
+      % 6G: 85
+      \fill[red!70, draw=red!90, thin]
+        (\xpos - 1.5*\barw - \gap, \hbot) rectangle
+        (\xpos - 0.5*\barw - \gap, \hbot + 85/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos - \barw - \gap, \hbot + 85/100*6.7/2) {85};
+      % 低空经济: 70
+      \fill[orange!70, draw=orange!90, thin]
+        (\xpos - 0.5*\barw, \hbot) rectangle
+        (\xpos + 0.5*\barw, \hbot + 70/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos, \hbot + 70/100*6.7/2) {70};
+      % 卫星互联网: 78
+      \fill[purple!70, draw=purple!90, thin]
+        (\xpos + 0.5*\barw + \gap, \hbot) rectangle
+        (\xpos + 1.5*\barw + \gap, \hbot + 78/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos + \barw + \gap, \hbot + 78/100*6.7/2) {78};
+      \node[below, font=\tiny, align=center, text width=1.3cm]
+        at (\xpos, -3.75) {景气未验证};
+
+      % 第2组：政策依赖高
+      \pgfmathsetmacro\xpos{-3.5 + \xstep}
+      % 6G: 90
+      \fill[red!70, draw=red!90, thin]
+        (\xpos - 1.5*\barw - \gap, \hbot) rectangle
+        (\xpos - 0.5*\barw - \gap, \hbot + 90/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos - \barw - \gap, \hbot + 90/100*6.7/2) {90};
+      % 低空经济: 82
+      \fill[orange!70, draw=orange!90, thin]
+        (\xpos - 0.5*\barw, \hbot) rectangle
+        (\xpos + 0.5*\barw, \hbot + 82/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos, \hbot + 82/100*6.7/2) {82};
+      % 卫星互联网: 75
+      \fill[purple!70, draw=purple!90, thin]
+        (\xpos + 0.5*\barw + \gap, \hbot) rectangle
+        (\xpos + 1.5*\barw + \gap, \hbot + 75/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos + \barw + \gap, \hbot + 75/100*6.7/2) {75};
+      \node[below, font=\tiny, align=center, text width=1.3cm]
+        at (\xpos, -3.75) {政策依赖高};
+
+      % 第3组：商业模式模糊
+      \pgfmathsetmacro\xpos{-3.5 + 2*\xstep}
+      % 6G: 75
+      \fill[red!70, draw=red!90, thin]
+        (\xpos - 1.5*\barw - \gap, \hbot) rectangle
+        (\xpos - 0.5*\barw - \gap, \hbot + 75/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos - \barw - \gap, \hbot + 75/100*6.7/2) {75};
+      % 低空经济: 85
+      \fill[orange!70, draw=orange!90, thin]
+        (\xpos - 0.5*\barw, \hbot) rectangle
+        (\xpos + 0.5*\barw, \hbot + 85/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos, \hbot + 85/100*6.7/2) {85};
+      % 卫星互联网: 70
+      \fill[purple!70, draw=purple!90, thin]
+        (\xpos + 0.5*\barw + \gap, \hbot) rectangle
+        (\xpos + 1.5*\barw + \gap, \hbot + 70/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos + \barw + \gap, \hbot + 70/100*6.7/2) {70};
+      \node[below, font=\tiny, align=center, text width=1.3cm]
+        at (\xpos, -3.75) {商业模式\\模糊};
+
+      % 第4组：估值透支
+      \pgfmathsetmacro\xpos{-3.5 + 3*\xstep}
+      % 6G: 92
+      \fill[red!70, draw=red!90, thin]
+        (\xpos - 1.5*\barw - \gap, \hbot) rectangle
+        (\xpos - 0.5*\barw - \gap, \hbot + 92/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos - \barw - \gap, \hbot + 92/100*6.7/2) {92};
+      % 低空经济: 88
+      \fill[orange!70, draw=orange!90, thin]
+        (\xpos - 0.5*\barw, \hbot) rectangle
+        (\xpos + 0.5*\barw, \hbot + 88/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos, \hbot + 88/100*6.7/2) {88};
+      % 卫星互联网: 85
+      \fill[purple!70, draw=purple!90, thin]
+        (\xpos + 0.5*\barw + \gap, \hbot) rectangle
+        (\xpos + 1.5*\barw + \gap, \hbot + 85/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos + \barw + \gap, \hbot + 85/100*6.7/2) {85};
+      \node[below, font=\tiny, align=center, text width=1.3cm]
+        at (\xpos, -3.75) {估值透支};
+
+      % 第5组：炒作痕迹
+      \pgfmathsetmacro\xpos{-3.5 + 4*\xstep}
+      % 6G: 88
+      \fill[red!70, draw=red!90, thin]
+        (\xpos - 1.5*\barw - \gap, \hbot) rectangle
+        (\xpos - 0.5*\barw - \gap, \hbot + 88/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos - \barw - \gap, \hbot + 88/100*6.7/2) {88};
+      % 低空经济: 90
+      \fill[orange!70, draw=orange!90, thin]
+        (\xpos - 0.5*\barw, \hbot) rectangle
+        (\xpos + 0.5*\barw, \hbot + 90/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos, \hbot + 90/100*6.7/2) {90};
+      % 卫星互联网: 82
+      \fill[purple!70, draw=purple!90, thin]
+        (\xpos + 0.5*\barw + \gap, \hbot) rectangle
+        (\xpos + 1.5*\barw + \gap, \hbot + 82/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos + \barw + \gap, \hbot + 82/100*6.7/2) {82};
+      \node[below, font=\tiny, align=center, text width=1.3cm]
+        at (\xpos, -3.75) {炒作痕迹};
+
+      % 第6组：技术未定
+      \pgfmathsetmacro\xpos{-3.5 + 5*\xstep}
+      % 6G: 95
+      \fill[red!70, draw=red!90, thin]
+        (\xpos - 1.5*\barw - \gap, \hbot) rectangle
+        (\xpos - 0.5*\barw - \gap, \hbot + 95/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos - \barw - \gap, \hbot + 95/100*6.7/2) {95};
+      % 低空经济: 75
+      \fill[orange!70, draw=orange!90, thin]
+        (\xpos - 0.5*\barw, \hbot) rectangle
+        (\xpos + 0.5*\barw, \hbot + 75/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos, \hbot + 75/100*6.7/2) {75};
+      % 卫星互联网: 88
+      \fill[purple!70, draw=purple!90, thin]
+        (\xpos + 0.5*\barw + \gap, \hbot) rectangle
+        (\xpos + 1.5*\barw + \gap, \hbot + 88/100*6.7);
+      \node[font=\tiny, text=white, rotate=90, anchor=east, inner sep=1pt]
+        at (\xpos + \barw + \gap, \hbot + 88/100*6.7/2) {88};
+      \node[below, font=\tiny, align=center, text width=1.3cm]
+        at (\xpos, -3.75) {技术路线\\未定};
+
+      % 图例
+      \matrix [draw=none, below=0.2cm, font=\scriptsize, row sep=0.2em, column sep=0.4em,
+               nodes={inner sep=1pt, anchor=west}]
+      at (0, -4.6) {
+        \tikz{\fill[red!70] (0,0) rectangle (0.4,0.2);} & \node{6G}; \\
+        \tikz{\fill[orange!70] (0,0) rectangle (0.4,0.2);} & \node{低空经济}; \\
+        \tikz{\fill[purple!70] (0,0) rectangle (0.4,0.2);} & \node{卫星互联网}; \\
+      };
+
+      % 警示阈值线
+      \draw[dashed, red!80!black, thick] (-4, {-3.5 + 0.7*6.7}) -- (4, {-3.5 + 0.7*6.7})
+        node[pos=0.95, above, font=\tiny, red!80!black] {70分警戒线};
+
+    \end{scope}
+
+  \end{tikzpicture}
+  \caption{价值陷阱识别框架：六大信号与三大陷阱板块剖析}
+  \label{ex:value_trap_framework}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}Wind、本研究整理测算。
+  \footnotesize 风险得分越高代表价值陷阱特征越显著；70分以上为高风险区域。
+  \footnotesize 三大板块在"估值透支""政策依赖""技术路线未定"三个维度均显著高于警戒线。
+\end{figure}

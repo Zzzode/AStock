@@ -1,0 +1,224 @@
+% ============================================================
+% Exhibit 7: 智驾产业链价值重构与国产替代空间
+% 桑基图 + 渗透率预测折线图
+% ============================================================
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+
+    % ===== 主图：智驾产业链桑基图 =====
+    \node[font=\bfseries] at (5, 5.3) {智能驾驶产业链价值分布与国产替代空间（2026E）};
+
+    % 桑基图参数
+    \def\toppos{4.8}
+    \def\botpos{-2.2}
+    \def\leftx{0}
+    \def\midx{5}
+    \def\rightx{10}
+
+    % ========= 左侧：上游核心部件 =========
+    \node[font=\bfseries\small, above] at (\leftx, \toppos) {上游核心部件};
+
+    % 部件名称、价值量（亿元）、国产率
+    % 1. 芯片: 250亿, 国产率10%
+    % 2. 传感器: 300亿, 国产率20%
+    % 3. 域控制器: 200亿, 国产率40%
+    % 4. 执行器: 280亿, 国产率30%
+    % 5. 软件算法: 120亿, 国产率55%
+
+    \def\uplabels{芯片,传感器,域控制器,执行器,软件算法}
+    \def\upvalues{250, 300, 200, 280, 120}  % 总价值 1150亿
+    \def\updomestic{0.10, 0.20, 0.40, 0.30, 0.55}  % 国产率
+
+    % 左侧矩形高度比例
+    \pgfmathsetmacro\uptotal{0}
+    \foreach \v in \upvalues {\pgfmathsetmacro\uptotal{\uptotal + \v}}
+    \pgfmathsetmacro\upheight{\toppos - \botpos}
+    \pgfmathsetmacro\upscale{\upheight / \uptotal}
+
+    % 绘制左侧各部件块
+    \pgfmathsetmacro\currenttop{\toppos}
+    \foreach \lbl/\val/\dom [count=\i from 0] in {芯片/250/0.10, 传感器/300/0.20, 域控制器/200/0.40, 执行器/280/0.30, 软件算法/120/0.55} {
+      \pgfmathsetmacro\h{\val * \upscale}
+      \pgfmathsetmacro\bottom{\currenttop - \h}
+      \pgfmathsetmacro\midpoint{(\currenttop + \bottom) / 2}
+
+      % 国产部分（左半边，绿色系）
+      \fill[teal!60, opacity=0.85] (\leftx, \bottom) rectangle +(0.6 * \h * \dom);
+      % 外资部分（右半边，灰色系）
+      \fill[gray!50, opacity=0.85] (\leftx + 0.6, \bottom) rectangle +(0.6, \h);
+
+      % 标签
+      \node[left, font=\small, align=right, text width=1.8cm]
+        at (\leftx - 0.1, \midpoint) {\lbl\\\scriptsize \val\ 亿元};
+
+      % 国产率标签
+      \node[right, font=\tiny, teal!80] at (\leftx + 1.3, \midpoint)
+        {国产 \pgfmathparse{int(\dom*100)}\pgfmathresult\%};
+
+      \pgfmathsetmacro\currenttop{\bottom}
+    }
+
+    % ========= 中间：Tier1供应商 =========
+    \node[font=\bfseries\small, above] at (\midx, \toppos) {Tier1供应商};
+
+    \def\tierlabels{外资Tier1,国产Tier1}
+    \def\tiervalues{720, 430}  % 1150亿总价值，约63%外资/37%国产
+
+    \pgfmathsetmacro\tierheight{\upheight}
+    \pgfmathsetmacro\tiertotal{0}
+    \foreach \v in \tiervalues {\pgfmathsetmacro\tiertotal{\tiertotal + \v}}
+    \pgfmathsetmacro\tierscale{\tierheight / \tiertotal}
+
+    % 绘制中间Tier1块
+    \pgfmathsetmacro\currenttop{\toppos}
+    \foreach \lbl/\val [count=\i from 0] in {外资Tier1/720, 国产Tier1/430} {
+      \pgfmathsetmacro\h{\val * \tierscale}
+      \pgfmathsetmacro\bottom{\currenttop - \h}
+      \pgfmathsetmacro\midpoint{(\currenttop + \bottom) / 2}
+
+      \ifnum\i=0
+        \fill[gray!50, opacity=0.85] (\midx-0.3, \bottom) rectangle +(0.6, \h);
+      \else
+        \fill[teal!60, opacity=0.85] (\midx-0.3, \bottom) rectangle +(0.6, \h);
+      \fi
+
+      \node[left, font=\small] at (\midx - 0.5, \midpoint) {\lbl};
+      \node[right, font=\scriptsize] at (\midx + 0.5, \midpoint) {\val\ 亿};
+
+      \pgfmathsetmacro\currenttop{\bottom}
+    }
+
+    % ========= 右侧：整车厂 =========
+    \node[font=\bfseries\small, above] at (\rightx, \toppos) {整车厂};
+
+    % 简单归类，三档
+    \def\oemlabels{豪华品牌, 合资品牌, 自主品牌, 新势力}
+    \def\oemvalues{280, 320, 280, 270}
+
+    \pgfmathsetmacro\oemheight{\upheight}
+    \pgfmathsetmacro\oemtotal{0}
+    \foreach \v in \oemvalues {\pgfmathsetmacro\oemtotal{\oemtotal + \v}}
+    \pgfmathsetmacro\oemscale{\oemheight / \oemtotal}
+
+    % 绘制右侧整车厂块
+    \pgfmathsetmacro\currenttop{\toppos}
+    \foreach \lbl/\val [count=\i from 0] in {豪华品牌/280, 合资品牌/320, 自主品牌/280, 新势力/270} {
+      \pgfmathsetmacro\h{\val * \oemscale}
+      \pgfmathsetmacro\bottom{\currenttop - \h}
+      \pgfmathsetmacro\midpoint{(\currenttop + \bottom) / 2}
+
+      \fill[blue!40, opacity=0.8] (\rightx-0.4, \bottom) rectangle +(0.8, \h);
+
+      \node[right, font=\small, align=left] at (\rightx + 0.5, \midpoint)
+        {\lbl\\\scriptsize \val\ 亿元};
+
+      \pgfmathsetmacro\currenttop{\bottom}
+    }
+
+    % ========= 连接线（简化版丝带） =========
+    % 左侧 -> 中间
+    \draw[gray!40, line width=8pt, opacity=0.5]
+      (\leftx+0.6, 4.0) .. controls (2.5, 4.0) and (3.5, 4.0) .. (\midx-0.3, 4.0);
+
+    \draw[gray!40, line width=10pt, opacity=0.5]
+      (\leftx+0.6, 2.5) .. controls (2.5, 2.5) and (3.5, 2.5) .. (\midx-0.3, 2.5);
+
+    \draw[gray!40, line width=5pt, opacity=0.5]
+      (\leftx+0.6, 1.2) .. controls (2.5, 1.2) and (3.5, 1.2) .. (\midx-0.3, 1.2);
+
+    \draw[gray!40, line width=7pt, opacity=0.5]
+      (\leftx+0.6, -0.2) .. controls (2.5, -0.2) and (3.5, -0.2) .. (\midx-0.3, -0.2);
+
+    \draw[gray!40, line width=3pt, opacity=0.5]
+      (\leftx+0.6, -1.5) .. controls (2.5, -1.5) and (3.5, -1.5) .. (\midx-0.3, -1.5);
+
+    % 中间 -> 右侧
+    \draw[gray!40, line width=7pt, opacity=0.5]
+      (\midx+0.3, 3.5) .. controls (6.5, 3.5) and (8, 3.5) .. (\rightx-0.4, 3.5);
+
+    \draw[gray!40, line width=8pt, opacity=0.5]
+      (\midx+0.3, 2.0) .. controls (6.5, 2.0) and (8, 2.0) .. (\rightx-0.4, 2.0);
+
+    \draw[gray!40, line width=7pt, opacity=0.5]
+      (\midx+0.3, 0.5) .. controls (6.5, 0.5) and (8, 0.5) .. (\rightx-0.4, 0.5);
+
+    \draw[gray!40, line width=6pt, opacity=0.5]
+      (\midx+0.3, -1.2) .. controls (6.5, -1.2) and (8, -1.2) .. (\rightx-0.4, -1.2);
+
+    % 国产替代空间高亮标注
+    \node[fill=red!10, draw=red!60, thick, rounded corners=3pt,
+          font=\bfseries\small, text=red!80, align=center, inner sep=4pt]
+      at (\midx, -3.0)
+      {国产替代空间最大环节：\\\small
+        域控制器(40\%) $\rightarrow$ 60\%提升空间
+        \quad|\quad
+        毫米波雷达(20\%) $\rightarrow$ 50\%提升空间
+        \quad|\quad
+        线控制动(25\%) $\rightarrow$ 55\%提升空间
+      };
+
+    % 图例
+    \matrix [draw=gray!40, right=0.2cm, font=\scriptsize, row sep=0.3em, column sep=0.4em,
+             fill=white, fill opacity=0.9]
+    at (\rightx + 1.5, 4.5) {
+      \tikz{\fill[teal!60] (0,0) rectangle (0.4,0.2);} & \node{国产供应商}; \\
+      \tikz{\fill[gray!50] (0,0) rectangle (0.4,0.2);} & \node{外资供应商}; \\
+      \tikz{\fill[blue!40] (0,0) rectangle (0.4,0.2);} & \node{整车厂}; \\
+    };
+
+    % ===== 附图：L2-L4渗透率预测 =====
+    \node[font=\bfseries\small] at (5, -4.8) {中国乘用车智能驾驶渗透率预测（2024-2030E）};
+
+    \begin{axis}[
+        width=9cm, height=2.8cm,
+        xshift=5cm, yshift=-6.4cm,
+        axis lines=left,
+        ymajorgrids=true,
+        grid style={gray!20, very thin},
+        ylabel={渗透率(\%)},
+        ylabel style={font=\small},
+        xlabel={年份},
+        xlabel style={font=\small, yshift=-2pt},
+        ymin=0, ymax=100,
+        ytick={0, 20, 40, 60, 80, 100},
+        xtick={2024, 2026, 2028, 2030},
+        xticklabels={2024, 2026, 2028, 2030},
+        tick label style={font=\scriptsize},
+        legend style={
+          at={(0.98, 0.05)}, anchor=south east, font=\scriptsize,
+          draw=gray!40, fill=white, fill opacity=0.9
+        },
+        legend cell align=left,
+        no marks,
+        thick,
+      ]
+      \addplot+[red!80, thick] coordinates {
+        (2024, 42) (2025, 52) (2026, 60) (2027, 68) (2028, 75) (2029, 82) (2030, 88)
+      };
+      \addlegendentry{L2+ 渗透率}
+
+      \addplot+[orange!80, thick, dashed] coordinates {
+        (2024, 5) (2025, 12) (2026, 22) (2027, 35) (2028, 50) (2029, 62) (2030, 72)
+      };
+      \addlegendentry{L2+ 城市NOA}
+
+      \addplot+[teal!80, thick, dashdotted] coordinates {
+        (2024, 0.5) (2025, 2) (2026, 5) (2027, 12) (2028, 22) (2029, 35) (2030, 50)
+      };
+      \addlegendentry{L3 渗透率}
+
+      \addplot+[blue!80, thick, dotted] coordinates {
+        (2024, 0) (2025, 0) (2026, 0.5) (2027, 1.5) (2028, 4) (2029, 10) (2030, 18)
+      };
+      \addlegendentry{L4 渗透率}
+
+    \end{axis}
+
+  \end{tikzpicture}
+  \caption{智能驾驶产业链价值重构与国产替代空间}
+  \label{ex:adas_sankey}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}高工智能汽车、乘联会、各公司公告、本研究测算。
+  \footnotesize 价值量为2026E中国市场智驾产业链总价值；国产替代空间为预计2030年提升空间。
+\end{figure}

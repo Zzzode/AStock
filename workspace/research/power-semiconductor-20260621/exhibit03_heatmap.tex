@@ -1,0 +1,162 @@
+% ============================================================
+% Exhibit 3: 31个一级行业景气度热力图
+% ============================================================
+\begin{figure}[htbp]
+  \centering
+  % 预先定义6级景气度颜色（xcolor 标准语法）
+  \definecolor{heat1}{rgb}{0.78, 0.24, 0.24}   % 低景气 红色
+  \definecolor{heat2}{rgb}{0.86, 0.55, 0.24}   % 橙
+  \definecolor{heat3}{rgb}{0.86, 0.78, 0.24}   % 黄
+  \definecolor{heat4}{rgb}{0.63, 0.75, 0.31}   % 黄绿
+  \definecolor{heat5}{rgb}{0.24, 0.63, 0.35}   % 绿
+  \definecolor{heat6}{rgb}{0.00, 0.47, 0.24}   % 深绿（高景气）
+  \begin{tikzpicture}[
+      heatcell/.style={rectangle, minimum width=2.0cm, minimum height=0.55cm,
+                       draw=white, thick, align=center, font=\scriptsize},
+      arrowup/.style={green!70!black, font=\bfseries\scriptsize},
+      arrowdown/.style={red!70, font=\bfseries\scriptsize},
+      arrowflat/.style={gray!60, font=\bfseries\scriptsize}
+    ]
+
+    % 辅助命令：根据分数设置 \heatcolor 宏
+    \newcommand{\setheatcolor}[1]{
+      \ifnum#1>80 \def\heatcolor{heat6}
+      \else\ifnum#1>70 \def\heatcolor{heat5}
+      \else\ifnum#1>60 \def\heatcolor{heat4}
+      \else\ifnum#1>50 \def\heatcolor{heat3}
+      \else\ifnum#1>40 \def\heatcolor{heat2}
+      \else \def\heatcolor{heat1}
+      \fi\fi\fi\fi\fi
+    }
+
+    % ---- 主热力图 (左侧，4列 x 8行 共31个行业) ----
+    \node[font=\bfseries\small, anchor=west] at (0, 0.2) {申万一级行业景气度综合评分（2026年中）};
+    \draw (0, -0.1) -- (10.2, -0.1);
+
+    % 第1列 (索引 0-7)
+    \foreach \name/\score/\trend [count=\i from 0] in {
+      电子/92/up, 计算机/88/up, 通信/85/up, 电力设备/82/up,
+      国防军工/78/up, 机械设备/75/up, 汽车/72/up, 医药生物/70/flat
+    } {
+      \pgfmathsetmacro\y{-0.55*\i - 0.7}
+      \setheatcolor{\score}
+      \node[heatcell, fill=\heatcolor, text=white, anchor=west] at (0, \y) {\name};
+      \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, font=\bfseries\scriptsize] at (2.0, \y) {\score\ 分};
+      \if\trend up
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowup] at (3.5, \y) {$\nearrow$ 上升};
+      \else\if\trend down
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowdown] at (3.5, \y) {$\searrow$ 下降};
+      \else
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowflat] at (3.5, \y) {$\rightarrow$ 持平};
+      \fi\fi
+    }
+
+    % 第2列 (索引 8-15)
+    \foreach \name/\score/\trend [count=\i from 0] in {
+      有色金属/68/flat, 石油石化/65/flat, 煤炭/62/down, 钢铁/58/down,
+      基础化工/55/flat, 建材/52/down, 轻工制造/48/down, 家用电器/56/up
+    } {
+      \pgfmathsetmacro\y{-0.55*\i - 0.7}
+      \setheatcolor{\score}
+      \node[heatcell, fill=\heatcolor, text=white, anchor=west] at (4.7, \y) {\name};
+      \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, font=\bfseries\scriptsize] at (6.7, \y) {\score\ 分};
+      \if\trend up
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowup] at (8.2, \y) {$\nearrow$ 上升};
+      \else\if\trend down
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowdown] at (8.2, \y) {$\searrow$ 下降};
+      \else
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowflat] at (8.2, \y) {$\rightarrow$ 持平};
+      \fi\fi
+    }
+
+    % 第3列 (索引 16-23)
+    \foreach \name/\score/\trend [count=\i from 0] in {
+      食品饮料/54/flat, 纺织服饰/45/down, 商贸零售/42/down, 社会服务/46/up,
+      农林牧渔/38/down, 公用事业/64/up, 交通运输/50/flat, 房地产/32/down
+    } {
+      \pgfmathsetmacro\y{-0.55*\i - 5.1}
+      \setheatcolor{\score}
+      \node[heatcell, fill=\heatcolor, text=white, anchor=west] at (0, \y) {\name};
+      \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, font=\bfseries\scriptsize] at (2.0, \y) {\score\ 分};
+      \if\trend up
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowup] at (3.5, \y) {$\nearrow$ 上升};
+      \else\if\trend down
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowdown] at (3.5, \y) {$\searrow$ 下降};
+      \else
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowflat] at (3.5, \y) {$\rightarrow$ 持平};
+      \fi\fi
+    }
+
+    % 第4列 (索引 24-30)
+    \foreach \name/\score/\trend [count=\i from 0] in {
+      银行/48/flat, 非银金融/44/up, 综合/36/flat, 建筑装饰/40/down,
+      美容护理/50/up, 环保/55/up, 传媒/66/up
+    } {
+      \pgfmathsetmacro\y{-0.55*\i - 5.1}
+      \setheatcolor{\score}
+      \node[heatcell, fill=\heatcolor, text=white, anchor=west] at (4.7, \y) {\name};
+      \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, font=\bfseries\scriptsize] at (6.7, \y) {\score\ 分};
+      \if\trend up
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowup] at (8.2, \y) {$\nearrow$ 上升};
+      \else\if\trend down
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowdown] at (8.2, \y) {$\searrow$ 下降};
+      \else
+        \node[heatcell, fill=\heatcolor!80, text=white, anchor=west, arrowflat] at (8.2, \y) {$\rightarrow$ 持平};
+      \fi\fi
+    }
+
+    % ---- 右侧 Top10 / Bottom10 条形图 ----
+    \node[font=\bfseries\small, anchor=west] at (10.8, 0.2) {景气度 Top 10};
+
+    % Top10 水平条形图（按分数降序）
+    \foreach \name/\score [count=\i from 0] in {
+      电子/92, 计算机/88, 通信/85, 电力设备/82,
+      国防军工/78, 机械设备/75, 汽车/72, 医药生物/70,
+      有色金属/68, 传媒/66
+    } {
+      \pgfmathsetmacro\y{-0.45*\i - 0.7}
+      \pgfmathsetmacro\bw{\score * 0.035}
+      \setheatcolor{\score}
+      \fill[\heatcolor, rounded corners=1pt] (10.8, \y-0.18) rectangle +(\bw, 0.36);
+      \node[font=\tiny, anchor=west, inner sep=1pt] at (10.8, \y) {\name};
+      \node[font=\tiny\bfseries, anchor=east, inner sep=1pt, text=white]
+        at (10.8 + \bw - 1pt, \y) {\score};
+    }
+
+    \node[font=\bfseries\small, anchor=west] at (10.8, -5.3) {景气度 Bottom 10};
+
+    % Bottom10 水平条形图（低景气，分数升序）
+    \foreach \name/\score [count=\i from 0] in {
+      房地产/32, 农林牧渔/38, 综合/36, 建筑装饰/40,
+      商贸零售/42, 非银金融/44, 纺织服饰/45, 社会服务/46,
+      银行/48, 交通运输/50
+    } {
+      \pgfmathsetmacro\y{-0.45*\i - 6.2}
+      \pgfmathsetmacro\bw{\score * 0.035}
+      \setheatcolor{\score}
+      \fill[\heatcolor, rounded corners=1pt] (10.8, \y-0.18) rectangle +(\bw, 0.36);
+      \node[font=\tiny, anchor=west, inner sep=1pt] at (10.8, \y) {\name};
+      \node[font=\tiny\bfseries, anchor=east, inner sep=1pt, text=white]
+        at (10.8 + \bw - 1pt, \y) {\score};
+    }
+
+    % 色阶条
+    \node[font=\scriptsize, anchor=west] at (0, -9.0) {色阶：};
+    \fill[heat1] (0.8, -9.15) rectangle (1.8, -8.95);
+    \fill[heat2] (1.8, -9.15) rectangle (2.8, -8.95);
+    \fill[heat3] (2.8, -9.15) rectangle (3.8, -8.95);
+    \fill[heat4] (3.8, -9.15) rectangle (4.8, -8.95);
+    \fill[heat5] (4.8, -9.15) rectangle (5.8, -8.95);
+    \fill[heat6] (5.8, -9.15) rectangle (6.8, -8.95);
+    \node[font=\tiny, anchor=west] at (0.8, -9.35) {30};
+    \node[font=\tiny, anchor=east] at (6.8, -9.35) {95};
+    \node[font=\tiny, anchor=west, gray] at (7.0, -9.25) {\textit{低景气} $\longrightarrow$ \textit{高景气}};
+
+  \end{tikzpicture}
+  \caption{31个申万一级行业景气度热力图（2026年中）}
+  \label{ex:heatmap_industry}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}Wind、申万宏源行业分类、本研究测算。
+  \footnotesize 景气度综合评分 = 业绩增速(30\%) + 产业景气(30\%) + 政策支持(20\%) + 估值吸引力(20\%)。
+  \footnotesize 趋势箭头反映2026Q1$\to$2026Q2环比变化方向。
+\end{figure}

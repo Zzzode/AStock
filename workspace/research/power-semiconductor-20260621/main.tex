@@ -1,0 +1,86 @@
+% !TEX program = xelatex
+% 功率半导体产业链深度研究报告 — 主文件
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{功率半导体产业链深度研究}
+\newcommand{\reportsubtitle}{AI + 新能源双轮驱动，第三代半导体进入加速渗透期}
+\newcommand{\reportkicker}{行业深度研究}
+\newcommand{\reportscope}{中国 A 股 | 半导体 | 功率器件}
+\newcommand{\reportdate}{2026 年 6 月 21 日}
+\newcommand{\reportdatacutoff}{2026年Q1财务数据，市场数据截至2026年6月}
+\newcommand{\reporttype}{行业深度报告}
+\newcommand{\reportauthor}{半导体研究团队}
+\newcommand{\reporthouseview}{功率半导体行业正处于AI算力革命与能源革命的交汇点。AI 数据中心功耗指数级攀升带来边际增量最大、新能源车渗透率持续提升、光伏储能装机量高增长，三大需求共振驱动行业进入新一轮上行周期。第三代半导体（SiC/GaN）在高压、高频场景加速渗透，成为行业技术迭代节奏加快。我们给予行业"增持"评级，首推具备 IDM 模式 + 车规级 + 第三代半导体三条主线的核心标的。}
+\newcommand{\reportquality}{数据来源：公司年报、Wind、Yole、Omida、SEMI、TrendForce、券商一致预期及本团队测算。核心市场规模、国产化率数据基于公开信息综合判断，部分细分领域数据存在统计口径差异，已在正文中注明。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。投资有风险，入市需谨慎。}
+
+\input{../../.agents/templates/preamble.tex}
+\usepackage{amsmath}
+
+\hypersetup{
+  pdfauthor={\reportauthor},
+  pdftitle={\reporttitle}
+}
+
+\begin{document}
+
+\astockcover
+
+\tableofcontents
+\clearpage
+
+% 英文摘要
+\chapter*{Abstract}
+\addcontentsline{toc}{chapter}{Abstract}
+\input{sections/ch00_abstract}
+\clearpage
+
+\chapter{投资概要}
+\input{sections/ch01_executive_summary}
+
+\chapter{行业概览：功率半导体产业全景}
+\input{sections/ch02_industry_overview}
+
+\chapter{需求分析：AI + 新能源双轮驱动}
+\input{sections/ch03_demand_analysis}
+
+\chapter{技术路线深度对比}
+\input{sections/ch04_technology}
+
+\chapter{竞争格局：全球龙头与中国力量}
+\input{sections/ch05_competition}
+
+\chapter{重点公司分析}
+\input{sections/ch06_companies}
+
+\chapter{估值分析}
+\input{sections/ch07_valuation}
+
+\chapter{政策与地缘政治分析}
+\input{sections/ch08_policy_geopolitical}
+
+\chapter{二级市场行为分析}
+\input{sections/ch09_secondary_market}
+
+\chapter{催化剂与风险}
+\input{sections/ch08_catalysts_risks}
+
+\chapter{投资建议与配置策略}
+\input{sections/ch09_investment_advice}
+
+\appendix
+\chapter{数据附录}
+\input{sections/appA_data}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[免责声明]
+\small
+\reportdisclaimer\par
+本报告由研究团队撰写，报告所载资料的信息均来源于公开资料，本公司对这些信息的准确性和完整性不作任何保证。报告中的内容和意见仅供参考，并不构成对所述证券买卖的出价或询价。\par
+在任何情况下，本报告中的信息或所表述的意见并不构成对任何人的投资建议。在任何情况下，本公司不对任何人因使用本报告中的任何内容所引致的任何损失负任何责任。\par
+本报告版权仅为本公司所有，未经书面许可，任何机构和个人不得以任何形式翻版、复制、发布。如引用、刊发，需注明出处，且不得对本报告进行有悖原意的引用、删节和修改。
+\end{disclosurebox}
+
+\end{document}

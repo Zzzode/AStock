@@ -1,0 +1,96 @@
+% ============================================================
+% Exhibit 2: 四维度交叉验证框架示意图
+% ============================================================
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+      node distance=2.8cm and 2.5cm,
+      center/.style={circle, draw=blue!80, fill=blue!10, thick,
+                     minimum width=2.8cm, minimum height=2.8cm,
+                     text centered, font=\bfseries\large, text=blue!90,
+                     align=center, inner sep=2pt},
+      dimen/.style={rectangle, rounded corners=6pt, draw=teal!80,
+                    fill=teal!8, thick, minimum width=2.6cm,
+                    minimum height=1.2cm, text centered, font=\bfseries,
+                    text=teal!90, align=center, inner sep=4pt},
+      sub/.style={rectangle, draw=gray!60, fill=gray!5, thin,
+                  minimum width=2.2cm, minimum height=0.7cm,
+                  text centered, font=\scriptsize, align=center,
+                  inner sep=2pt},
+      arrow/.style={->, thick, teal!60, shorten >=2pt, shorten <=2pt},
+      arrowback/.style={<->, thick, gray!40, dashed, shorten >=2pt, shorten <=2pt}
+    ]
+
+    % 中心：预期差识别
+    \node[center] (center) {预期差\\识别};
+
+    % 四大维度
+    \node[dimen, above=of center] (d1) {业绩验证维度};
+    \node[dimen, right=of center] (d2) {产业验证维度};
+    \node[dimen, below=of center] (d3) {政策验证维度};
+    \node[dimen, left=of center] (d4) {估值持仓维度};
+
+    % 业绩验证 - 子指标
+    \node[sub, above=0.6 of d1, xshift=-1.2cm] (d1s1) {营收增速};
+    \node[sub, above=0.6 of d1, xshift=1.2cm]  (d1s2) {利润增速};
+    \node[sub, above=1.5 of d1, xshift=-1.2cm] (d1s3) {毛利率变化};
+    \node[sub, above=1.5 of d1, xshift=1.2cm]  (d1s4) {订单能见度};
+
+    % 产业验证 - 子指标
+    \node[sub, right=0.6 of d2, yshift=1.0cm] (d2s1) {产业链调研};
+    \node[sub, right=0.6 of d2, yshift=0.3cm] (d2s2) {产能利用率};
+    \node[sub, right=0.6 of d2, yshift=-0.3cm] (d2s3) {价格趋势};
+    \node[sub, right=0.6 of d2, yshift=-1.0cm] (d2s4) {技术迭代};
+
+    % 政策验证 - 子指标
+    \node[sub, below=0.6 of d3, xshift=-1.2cm] (d3s1) {产业政策};
+    \node[sub, below=0.6 of d3, xshift=1.2cm]  (d3s2) {财政补贴};
+    \node[sub, below=1.5 of d3, xshift=-1.2cm] (d3s3) {监管态度};
+    \node[sub, below=1.5 of d3, xshift=1.2cm]  (d3s4) {中长期规划};
+
+    % 估值持仓 - 子指标
+    \node[sub, left=0.6 of d4, yshift=1.0cm] (d4s1) {PE/PB历史分位};
+    \node[sub, left=0.6 of d4, yshift=0.3cm] (d4s2) {公募持仓比例};
+    \node[sub, left=0.6 of d4, yshift=-0.3cm] (d4s3) {交易换手率};
+    \node[sub, left=0.6 of d4, yshift=-1.0cm] (d4s4) {北向资金动向};
+
+    % 主连线：中心 -> 四大维度
+    \draw[arrow] (center) -- (d1);
+    \draw[arrow] (center) -- (d2);
+    \draw[arrow] (center) -- (d3);
+    \draw[arrow] (center) -- (d4);
+
+    % 子指标 -> 维度
+    \foreach \i in {1,...,4} {
+      \draw[thin, gray!60, ->, shorten >=1pt, shorten <=1pt] (d1s\i) -- (d1);
+      \draw[thin, gray!60, ->, shorten >=1pt, shorten <=1pt] (d3s\i) -- (d3);
+    }
+    \foreach \i in {1,...,4} {
+      \draw[thin, gray!60, ->, shorten >=1pt, shorten <=1pt] (d2s\i) -- (d2);
+      \draw[thin, gray!60, ->, shorten >=1pt, shorten <=1pt] (d4s\i) -- (d4);
+    }
+
+    % 交叉验证连线（维度之间）
+    \draw[arrowback] (d1) to[bend left=15] (d2);
+    \draw[arrowback] (d2) to[bend left=15] (d3);
+    \draw[arrowback] (d3) to[bend left=15] (d4);
+    \draw[arrowback] (d4) to[bend left=15] (d1);
+
+    % 评分与交叉验证标签
+    \node[font=\tiny, teal!70, above=0.2 of d1] {独立评分 (0-100)};
+    \node[font=\tiny, teal!70, right=0.2 of d2, rotate=90, anchor=south] {独立评分 (0-100)};
+    \node[font=\tiny, teal!70, below=0.2 of d3] {独立评分 (0-100)};
+    \node[font=\tiny, teal!70, left=0.2 of d4, rotate=-90, anchor=south] {独立评分 (0-100)};
+
+    % 底部说明
+    \node[below=2.0 of center, font=\small\itshape, text=gray!70, align=center, text width=9cm]
+      {四维度独立评分后交叉验证，任一维度低于阈值即否决，\\降低单一维度误判风险，提高预期差识别准确率。};
+
+  \end{tikzpicture}
+  \caption{四维度交叉验证框架：预期差识别方法论}
+  \label{ex:framework_cross_validation}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}本研究整理。
+  \footnotesize 四大维度权重各占25\%，单一维度评分低于40分触发否决机制；
+  \footnotesize 三维度及以上达70分以上确认为"高预期差"标的。
+\end{figure}

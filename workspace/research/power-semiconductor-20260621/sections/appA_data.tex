@@ -1,0 +1,148 @@
+% 附录A 数据附录
+
+\section{核心数据汇总表}
+
+\begin{exhibitbox}[表 A-1：全球功率半导体市场规模预测]
+\centering
+\small
+\begin{tabularx}{\textwidth}{X c c c c}
+\toprule
+\textbf{细分市场} & \textbf{2023} & \textbf{2025E} & \textbf{2030E} & \textbf{25-30 CAGR} \\
+\midrule
+整体功率半导体（亿美元） & 505 & 550 & 725 & 5.7\% \\
+SiC 器件（亿美元） & 18 & 32 & 92 & 23.5\% \\
+GaN 功率器件（亿美元） & 5 & 8.5 & 39 & 35.6\% \\
+AI 服务器功率半导体（亿美元） & 28 & 50 & ~98 & 20.0\% \\
+\midrule
+中国功率半导体（亿元） & 1,750 & 1,950 & 3,100 & 9.7\% \\
+中国占全球比例 & ~37\% & ~36\% & ~39\% & — \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Yole, Omdia, TrendForce，本研究团队综合测算}
+\end{exhibitbox}
+
+\begin{exhibitbox}[表 A-2：各应用领域市场规模与增速对比]
+\centering
+\small
+\begin{tabularx}{\textwidth}{X c c c}
+\toprule
+\textbf{下游应用} & \textbf{市场占比} & \textbf{增速(CAGR)} & \textbf{核心驱动因素} \\
+\midrule
+汽车电子 & 35-40\% & 8-10\% & 电动化、智能化、高压化 \\
+工业控制 & 25-30\% & 3-5\% & 自动化、节能改造 \\
+消费电子 & 15-20\% & 2-3\% & 快充、新型显示 \\
+通信/数据中心 & 10-15\% & 15-20\% & AI 算力革命、48V 架构 \\
+新能源发电 & 5-10\% & 15-20\% & 光伏、储能装机增长 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Yole，本研究团队测算}
+\end{exhibitbox}
+
+\section{国产化率详细数据}
+
+\begin{exhibitbox}[表 A-3：各细分产品国产化率]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c X}
+\toprule
+\textbf{产品类别} & \textbf{当前国产化率} & \textbf{2030E 目标} & \textbf\textbf{主要国内厂商} \\
+\midrule
+低压 MOSFET (<100V) & 50-70\% & 65-80\% & 华润微、士兰微、新洁能 \\
+中压 MOS (100-200V) & 40-50\% & 55-65\% & 新洁能、华润微、扬杰 \\
+高压 MOS / 超结 & 20-25\% & 40-50\% & 东微半导、华润微、士兰微 \\
+IGBT 单管 & 25-35\% & 45-55\% & 斯达、士兰微、华润微 \\
+工业 IGBT 模块 & 30-40\% & 50-60\% & 斯达、时代电气、士兰微 \\
+车规 IGBT 模块 & 10-15\% & 25-35\% & 时代电气、斯达、比亚迪半导 \\
+\midrule
+SiC 二极管 & 35-40\% & 55-65\% & 泰科天润、扬杰、士兰微 \\
+SiC MOSFET 器件 & 20-25\% & 45-55\% & 时代电气、斯达、三安 \\
+SiC 衬底（6英寸） & 20-30\% & 40-50\% & 天岳先进、天科合达 \\
+SiC 衬底（8英寸） & <5\% & 15-25\% & 天岳先进、天科合达（研发） \\
+\midrule
+GaN 功率器件（消费） & ~40\% & 60-70\% & 英诺赛科、三安、纳微 \\
+GaN 功率器件（工业） & 5-10\% & 25-35\% & 能华、英诺赛科 \\
+GaN 功率器件（车规） & <5\% & 10-20\% & 三安、能华（导入期） \\
+\midrule
+PMIC (消费级) & 20-25\% & 35-45\% & 芯朋微、晶丰明源、圣邦 \\
+PMIC (车规级) & 5-10\% & 15-25\% & 纳芯微、思瑞浦 \\
+驱动芯片 (Driver) & 10-15\% & 25-35\% & 纳芯微、芯朋微 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{行业协会，各公司公告，本研究团队综合测算}
+\end{exhibitbox}
+
+\section{AI 服务器价值量详细拆解}
+
+\begin{exhibitbox}[表 A-4：不同架构 AI 服务器功率半导体价值量拆解]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{X c c c c}
+\toprule
+\textbf{BOM 构成} & \textbf{传统服务器} & \textbf{Hopper 8-GPU} & \textbf{Blackwell/Rubin} & \textbf{GB200 NVL72} \\
+\midrule
+整机架功率 & ~0.5 kW & ~10 kW & ~15-20 kW & ~70-80 kW \\
+功率半导体总价值 & \$2,000-5,000 & \$30,000-40,000 & \$50,000-60,000 & \$70,000-80,000 \\
+\midrule
+DC-DC / VRM & 40-50\% & 50-55\% & 55-60\% & ~60\% \\
+AC-DC / PSU & 25-30\% & 22-28\% & 20-25\% & ~20\% \\
+PFC & 15-20\% & 13-17\% & 12-15\% & ~12\% \\
+保护器件 & 5-8\% & 5-8\% & 5-7\% & ~6\% \\
+其他 & 2-3\% & 2-3\% & 2-3\% & ~2\% \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Nvidia，供应链调研，本研究团队测算（估算值）}
+\end{exhibitbox}
+
+\section{估值对照表}
+
+\begin{exhibitbox}[表 A-5：重点公司估值对照表]
+\centering
+\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{X c c c c c}
+\toprule
+\textbf{公司} & \textbf{市值(亿元)} & \textbf{PE(TTM)} & \textbf{PE 2025E} & \textbf{PS(TTM)} & \textbf{PB} \\
+\midrule
+时代电气 & 804 & 19.6 & ~19x & 2.8 & 2.3 \\
+斯达半导 & 314 & 95.0 & ~48x & 9.3 & 7.5 \\
+华润微 & 1,065 & 117.0 & ~100x & 10.5 & 5.0 \\
+士兰微 & 753 & 164.0 & ~80x & 6.7 & 3.5 \\
+扬杰科技 & 692 & 55.0 & ~45x & 11.5 & 8.0 \\
+三安光电 & 878 & 亏损 & — & 4.9 & 1.8 \\
+天岳先进 & 724 & 亏损 & — & 50.0 & 6.5 \\
+新洁能 & 315 & 83.0 & ~55x & 10.0 & 8.5 \\
+东微半导 & 75 & 35.0 & ~28x & 6.5 & — \\
+晶丰明源 & 195 & 247.0 & ~60x & 10.0 & 7.0 \\
+\midrule
+\rowcolor{lightgrey}
+\textit{板块平均} & — & ~90x & ~55x & ~9x & ~5.5x \\
+\midrule
+英飞凌（海外） & ~3,400 & 18-22x & — & 3.5-4.0x & 3.0-3.5x \\
+意法半导体 & ~2,900 & 16-20x & — & 2.8-3.2x & 2.5-3.0x \\
+Wolfspeed & ~750 & 亏损 & — & 2.5-3.5x & 2.0-2.5x \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind, Bloomberg，截至 2026 年 6 月 20 日，2025E 为本研究团队预测}
+\end{exhibitbox}
+
+\section{术语表}
+
+\vspace{0.3em}
+
+\begin{description}[leftmargin=3cm, style=sameline]
+\item[IGBT] 绝缘栅双极型晶体管，中高压大功率主流器件
+\item[MOSFET] 金属氧化物半导体场效应管，中低压主流器件
+\item[SiC] 碳化硅，第三代半导体材料，适用于高压大功率
+\item[GaN] 氮化镓，第三代半导体材料，适用于高频高效场景
+\item[IDM] 整合元件制造商，即设计+制造+封测全产业链模式
+\item[Fabless] 无晶圆厂模式，只做设计，制造外包
+\item[VRM] 电压调节模块，为 CPU/GPU 提供精准供电
+\item[PFC] 功率因数校正，提高电源效率的电路
+\item[PSU] 电源供应单元，服务器电源
+\item[OBC] 车载充电机
+\item[HEMT] 高电子迁移率晶体管，GaN 器件的主要结构
+\item[衬底] 半导体晶圆的基础材料
+\item[外延] 在衬底上生长的半导体薄层，决定器件性能
+\item[AEC-Q100/Q101] 汽车电子委员会制定的车规级器件可靠性标准
+\end{description}

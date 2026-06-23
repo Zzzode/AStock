@@ -1,0 +1,283 @@
+% ============================================================
+% Exhibit 6: 功率半导体：AI+新能源双轮驱动需求预测
+% 纯 tikz 绘制堆叠面积图 + 柱状图
+% ============================================================
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+
+    % ===== 主图：堆叠面积图 =====
+    \node[font=\bfseries] at (5, 4.5) {全球功率半导体市场规模（按下游应用拆分，2022--2030E）};
+
+    % 坐标参数
+    \def\xzero{0.5}        % X轴原点
+    \def\yzero{0.5}        % Y轴原点
+    \def\xstep{1.0}        % 每年x增量
+    \def\yscale{0.06}      % y比例：10亿美元 = 0.6cm
+    \def\nine{9}           % 9个年份
+
+    % 各层数据（十亿美元）
+    % 年份:        2022   2023   2024   2025   2026   2027   2028   2029   2030
+    % 消费电子      12     13     14     15     16     17     18    18.5    19
+    % 工业控制       8      9     10     11     12     13     14     15     16
+    % 新能源车       5      7      9     12     15     18     21     24     27
+    % 光伏储能       3    4.5      6      8     10   12.5     15   17.5     20
+    % AI数据中心   0.5      1      2      4      7     11     16     22     28
+    % 其他           4    4.2    4.5    4.8      5    5.2    5.5    5.7      6
+
+    % 累计值（十亿美元）
+    % L0=0
+    % L1=消费电子:    12  13   14   15   16   17   18  18.5  19
+    % L2=L1+工业:     20  22   24   26   28   30   32  33.5  35
+    % L3=L2+新能源:   25  29   33   38   43   48   53  57.5  62
+    % L4=L3+光伏:     28 33.5  39   46   53 60.5  68    75  82
+    % L5=L4+AI:     28.5 34.5  41   50   60 71.5  84    97  110
+    % L6=L5+其他:   32.5 38.7 45.5 54.8   65 76.7 89.5 102.7  116
+
+    % 颜色
+    \colorlet{col0}{purple!40!blue!40}  % 消费电子（底）
+    \colorlet{col1}{blue!50}            % 工业控制
+    \colorlet{col2}{teal!60}            % 新能源车
+    \colorlet{col3}{orange!60}          % 光伏储能
+    \colorlet{col4}{red!70}             % AI数据中心
+    \colorlet{col5}{gray!40}            % 其他（顶）
+
+    % 辅助：定义每层上、下边界的y坐标宏
+    % 第 i 年 (0-8) 的 L_k 层 y 坐标 = yzero + L_k[i] * yscale
+    % 为简洁，我们直接写数值坐标（cm）
+
+    % 第1层：消费电子 (底)
+    \fill[col0]
+      (\xzero + 0*\xstep, \yzero + 12*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 13*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 14*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 15*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 16*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 17*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 18*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 18.5*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 19*\yscale) --
+      (\xzero + 8*\xstep, \yzero) --
+      (\xzero + 0*\xstep, \yzero) -- cycle;
+
+    % 第2层：工业控制
+    \fill[col1]
+      (\xzero + 0*\xstep, \yzero + 20*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 22*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 24*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 26*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 28*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 30*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 32*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 33.5*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 35*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 19*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 18.5*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 18*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 17*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 16*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 15*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 14*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 13*\yscale) --
+      (\xzero + 0*\xstep, \yzero + 12*\yscale) -- cycle;
+
+    % 第3层：新能源车
+    \fill[col2]
+      (\xzero + 0*\xstep, \yzero + 25*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 29*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 33*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 38*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 43*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 48*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 53*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 57.5*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 62*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 35*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 33.5*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 32*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 30*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 28*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 26*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 24*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 22*\yscale) --
+      (\xzero + 0*\xstep, \yzero + 20*\yscale) -- cycle;
+
+    % 第4层：光伏储能
+    \fill[col3]
+      (\xzero + 0*\xstep, \yzero + 28*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 33.5*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 39*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 46*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 53*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 60.5*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 68*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 75*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 82*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 62*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 57.5*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 53*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 48*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 43*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 38*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 33*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 29*\yscale) --
+      (\xzero + 0*\xstep, \yzero + 25*\yscale) -- cycle;
+
+    % 第5层：AI数据中心
+    \fill[col4]
+      (\xzero + 0*\xstep, \yzero + 28.5*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 34.5*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 41*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 50*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 60*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 71.5*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 84*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 97*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 110*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 82*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 75*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 68*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 60.5*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 53*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 46*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 39*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 33.5*\yscale) --
+      (\xzero + 0*\xstep, \yzero + 28*\yscale) -- cycle;
+
+    % 第6层：其他（最顶层）
+    \fill[col5]
+      (\xzero + 0*\xstep, \yzero + 32.5*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 38.7*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 45.5*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 54.8*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 65*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 76.7*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 89.5*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 102.7*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 116*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 110*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 97*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 84*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 71.5*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 60*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 50*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 41*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 34.5*\yscale) --
+      (\xzero + 0*\xstep, \yzero + 28.5*\yscale) -- cycle;
+
+    % 顶部轮廓线
+    \draw[very thick, red!80!black]
+      (\xzero + 0*\xstep, \yzero + 32.5*\yscale) --
+      (\xzero + 1*\xstep, \yzero + 38.7*\yscale) --
+      (\xzero + 2*\xstep, \yzero + 45.5*\yscale) --
+      (\xzero + 3*\xstep, \yzero + 54.8*\yscale) --
+      (\xzero + 4*\xstep, \yzero + 65*\yscale) --
+      (\xzero + 5*\xstep, \yzero + 76.7*\yscale) --
+      (\xzero + 6*\xstep, \yzero + 89.5*\yscale) --
+      (\xzero + 7*\xstep, \yzero + 102.7*\yscale) --
+      (\xzero + 8*\xstep, \yzero + 116*\yscale);
+
+    % 坐标轴
+    \draw[->, thick] (\xzero, \yzero) -- (\xzero + 8.7*\xstep, \yzero)
+      node[right, font=\small] {年份};
+    \draw[->, thick] (\xzero, \yzero) -- (\xzero, \yzero + 7.5)
+      node[above, font=\small, rotate=90, anchor=south] {市场规模（十亿美元）};
+
+    % X 轴刻度
+    \foreach \yr / \idx in {2022/0, 2024/2, 2026/4, 2028/6, 2030/8} {
+      \draw (\xzero + \idx*\xstep, \yzero - 0.05) -- (\xzero + \idx*\xstep, \yzero + 0.05);
+      \node[below, font=\scriptsize] at (\xzero + \idx*\xstep, \yzero - 0.15) {\yr};
+    }
+
+    % Y 轴刻度 + 网格
+    \foreach \val in {0, 20, 40, 60, 80, 100, 120} {
+      \pgfmathsetmacro\ypos{\yzero + \val*\yscale}
+      \ifdim\ypos pt > 7.4cm \else
+        \draw[gray!20, thin] (\xzero, \ypos) -- (\xzero + 8*\xstep, \ypos);
+        \draw (\xzero - 0.05, \ypos) -- (\xzero + 0.05, \ypos);
+        \node[left, font=\scriptsize] at (\xzero - 0.12, \ypos) {\val};
+      \fi
+    }
+
+    % 2026年标注
+    \pgfmathsetmacro\ySixtyFive{\yzero + 65*\yscale}
+    \draw[dashed, gray!70, thick] (\xzero + 4*\xstep, \yzero) -- (\xzero + 4*\xstep, \ySixtyFive);
+    \node[above, font=\scriptsize\bfseries, fill=white, inner sep=1pt]
+      at (\xzero + 4*\xstep, \ySixtyFive + 0.1) {~65 \$B};
+
+    % 2030年标注 + CAGR
+    \pgfmathsetmacro\yOneSixteen{\yzero + 116*\yscale}
+    \node[above, font=\scriptsize\bfseries, red!80!black, fill=white, inner sep=1pt]
+      at (\xzero + 8*\xstep, \yOneSixteen + 0.1) {116 \$B};
+    \node[above right, font=\tiny, red!80!black]
+      at (\xzero + 7*\xstep, \yzero + 110*\yscale) {CAGR: 15.8\%};
+
+    % AI增长最快标注
+    \pgfmathsetmacro\yEightyTwo{\yzero + 82*\yscale}
+    \pgfmathsetmacro\yOneTen{\yzero + 110*\yscale}
+    \draw[<->, thick, red!80]
+      (\xzero + 7.6*\xstep, \yEightyTwo) -- (\xzero + 7.6*\xstep, \yOneTen)
+      node[pos=0.5, right, font=\tiny, text=red!80, align=left, fill=white, inner sep=1pt]
+      {AI数据中心\\CAGR: 65\%+};
+
+    % 图例
+    \matrix [draw=gray!40, right=0.3cm, font=\scriptsize, row sep=0.4em, column sep=0.5em,
+             fill=white, fill opacity=0.9, draw opacity=0.5,
+             nodes={inner sep=1pt, anchor=west}]
+    at (\xzero + 9*\xstep, \yzero + 50*\yscale) {
+      \tikz{\fill[col5] (0,0) rectangle (0.4,0.2);} & \node{其他}; \\
+      \tikz{\fill[col4] (0,0) rectangle (0.4,0.2);} & \node{AI数据中心}; \\
+      \tikz{\fill[col3] (0,0) rectangle (0.4,0.2);} & \node{光伏储能}; \\
+      \tikz{\fill[col2] (0,0) rectangle (0.4,0.2);} & \node{新能源车}; \\
+      \tikz{\fill[col1] (0,0) rectangle (0.4,0.2);} & \node{工业控制}; \\
+      \tikz{\fill[col0] (0,0) rectangle (0.4,0.2);} & \node{消费电子}; \\
+    };
+
+    % ===== 附图：单车/单机价值量对比 =====
+    \node[font=\bfseries\small] at (5, -4.3) {功率半导体单车/单机价值量对比};
+
+    \begin{scope}[xshift=1.5cm, yshift=-7.0cm]
+      \def\barw{0.6}
+      \def\bscale{0.004}     % 美元 -> cm
+      \def\bx{-2.8}
+
+      % Y 轴
+      \draw[->] (\bx - 0.2, 0) -- (\bx - 0.2, 3.2);
+      \node[left, font=\tiny, rotate=90, anchor=south] at (\bx - 0.4, 1.6) {价值量（美元）};
+      \foreach \y in {0, 200, 400, 600, 800} {
+        \pgfmathsetmacro\yy{\y * \bscale}
+        \ifdim\yy pt < 3.2cm
+          \draw (\bx - 0.25, \yy) -- (\bx - 0.15, \yy);
+          \node[left, font=\tiny] at (\bx - 0.3, \yy) {\y};
+        \fi
+      }
+
+      % 传统燃油车: $100
+      \fill[gray!50, draw=gray!70] (\bx + 0, 0) rectangle +(\barw, 100*\bscale);
+      \node[below, font=\tiny, align=center, text width=1.4cm] at (\bx + 0.3, -0.2) {传统\\燃油车};
+      \node[above, font=\tiny\bfseries] at (\bx + 0.3, 100*\bscale) {\$100};
+
+      % 新能源车: $650
+      \fill[teal!60, draw=teal!80] (\bx + 1.4, 0) rectangle +(\barw, 650*\bscale);
+      \node[below, font=\tiny, align=center, text width=1.4cm] at (\bx + 1.7, -0.2) {新能源\\汽车};
+      \node[above, font=\tiny\bfseries] at (\bx + 1.7, 650*\bscale) {\$650};
+
+      % 传统服务器: $80
+      \fill[blue!40, draw=blue!60] (\bx + 3.0, 0) rectangle +(\barw, 80*\bscale);
+      \node[below, font=\tiny, align=center, text width=1.4cm] at (\bx + 3.3, -0.2) {传统\\服务器};
+      \node[above, font=\tiny\bfseries] at (\bx + 3.3, 80*\bscale) {\$80};
+
+      % AI服务器: $700
+      \fill[red!60, draw=red!80] (\bx + 4.6, 0) rectangle +(\barw, 700*\bscale);
+      \node[below, font=\tiny, align=center, text width=1.4cm] at (\bx + 4.9, -0.2) {AI\\服务器};
+      \node[above, font=\tiny\bfseries] at (\bx + 4.9, 700*\bscale) {\$700};
+
+    \end{scope}
+
+  \end{tikzpicture}
+  \caption{功率半导体：AI+新能源双轮驱动，全球市场规模2030年突破1100亿美元}
+  \label{ex:power_semiconductor_forecast}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}Yole D\'eveloppement、OMDIA、各公司公告、本研究测算。
+  \footnotesize AI数据中心功率半导体需求CAGR超65\%，为增长最快下游；新能源车为第一大下游应用。
+\end{figure}

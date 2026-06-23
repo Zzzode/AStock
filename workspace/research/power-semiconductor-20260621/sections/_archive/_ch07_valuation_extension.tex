@@ -1,0 +1,374 @@
+% 第七章估值分析扩展：机构目标价、业绩兑现与估值审计
+% 本文件为 ch07_valuation.tex 的补充章节，需在 \section{估值水平判断} 之后引入
+
+\section{机构一致预期与目标价历史}
+
+卖方机构的盈利预测与目标价是市场预期的集中体现，也是估值分析的重要参照。我们梳理了覆盖八家重点功率半导体公司的主要券商研报，从评级分布、目标价区间、盈利预测分歧三个维度进行分析。需要强调的是，卖方目标价存在系统性向上偏差（通常高估 20\%–40\%），实际投资决策中建议打 7–8 折作为参考。
+
+\begin{exhibitbox}[表 7-3：卖方评级分布与覆盖度统计]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c c c}
+\toprule
+\textbf{公司} & \textbf{买入} & \textbf{增持/优于大市} & \textbf{中性} & \textbf{一致评级} & \textbf{覆盖机构数} & \textbf{近3月上调次数} \\
+\midrule
+时代电气 & 8 & 2 & 0 & 买入 & 10 & 1 \\
+扬杰科技 & 6 & 3 & 1 & 买入 & 10 & 2 \\
+斯达半导 & 5 & 4 & 1 & 买入/增持 & 10 & 0 \\
+新洁能 & 3 & 5 & 2 & 增持 & 10 & 0 \\
+华润微 & 3 & 5 & 2 & 增持 & 10 & 1 \\
+士兰微 & 2 & 6 & 2 & 增持 & 10 & 2 \\
+天岳先进 & 2 & 3 & 5 & 中性/增持 & 10 & 0 \\
+三安光电 & 1 & 4 & 5 & 中性 & 10 & 0 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Wind 一致预期、各券商研报统计（近 90 天，截至 2026 年 6 月）}
+\end{exhibitbox}
+
+从评级分布看，板块内部分化明显。时代电气与扬杰科技获得最多"买入"评级，反映机构对其业绩确定性的认可；而天岳先进与三安光电的评级分歧较大，中性评级占比过半，体现市场对其盈利前景的疑虑。近三个月的评级上调集中在行业涨价受益的 IDM 龙头（士兰微、扬杰科技、华润微），显示机构对行业复苏方向的共识正在形成。
+
+\begin{exhibitbox}[表 7-4：一致目标价区间与隐含涨跌空间]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c c}
+\toprule
+\textbf{公司} & \textbf{当前股价(元)} & \textbf{一致目标价区间(元)} & \textbf{目标价区间(元)} & \textbf{隐含涨幅} & \textbf{分歧度*} \\
+\midrule
+\rowcolor{riskgreen!10}
+时代电气 & ~58.7 & 75–85 & 68–95 & +27\%~+44\% & 低 \\
+\rowcolor{riskgreen!10}
+士兰微 & ~41.8 & 50–55 & 45–65 & +20\%~+31\% & 中低 \\
+\rowcolor{riskamber!10}
+扬杰科技 & ~123.1 & 150–170 & 130–200 & +22\%~+38\% & 中低 \\
+\rowcolor{riskamber!10}
+斯达半导 & ~130.9 & 150–180 & 120–220 & +15\%~+37\% & 中 \\
+\rowcolor{riskamber!10}
+华润微 & ~73.6 & 85–100 & 70–120 & +15\%~+35\% & 中 \\
+\rowcolor{riskamber!10}
+新洁能 & ~74.3 & 90–110 & 75–130 & +22\%~+49\% & 中高 \\
+\rowcolor{riskred!10}
+天岳先进 & ~149.2 & 180–220 & 120–300 & +21\%~+47\% & \textbf{高} \\
+\rowcolor{riskred!10}
+三安光电 & ~17.5 & 20–25 & 15–30 & +14\%~+43\% & \textbf{高} \\
+\bottomrule
+\end{tabularx}
+\sourcenote{各券商目标价汇总，Wind 一致预期（截至 2026 年 6 月 21 日）\\
+*分歧度 = (最高目标价 - 最低目标价) / 一致目标价中位数；低：<20\%，中低：20–30\%，中：30–50\%，中高：50–70\%，高：>70\%}
+\end{exhibitbox}
+
+目标价的分歧度与公司的业绩确定性高度相关。时代电气分歧度最低，因为轨交基本盘稳健，盈利可预测性强；天岳先进和三安光电分歧度最高，反映市场对 SiC 周期拐点和 LED 复苏节奏的巨大认知差异。值得注意的是，若按卖方目标价打 7 折后的"实际可实现目标价"计算，天岳和三安的上涨空间将显著收窄，甚至可能与当前股价持平，这是高分歧标的需要警惕的风险。
+
+接下来我们考察盈利预测的一致性。
+
+\begin{exhibitbox}[表 7-5：2026E 盈利预测对比与机构分歧]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c c c}
+\toprule
+\textbf{公司} & \textbf{最高(亿元)} & \textbf{最低(亿元)} & \textbf{中位数(亿元)} & \textbf{最高/最低} & \textbf{调整方向(近3月)} & \textbf{数据来源数} \\
+\midrule
+\rowcolor{riskgreen!10}
+时代电气 & ~47.0 & ~45.8 & ~46.5 & 1.03x & 上调(小幅) & 2+ \\
+\rowcolor{riskgreen!10}
+扬杰科技 & 16.68 & 15.91 & 16.0 & 1.05x & 上调 & 3 \\
+\rowcolor{riskamber!10}
+士兰微 & 9.48 & 8.09 & 8.4 & 1.17x & 上调 & 3 \\
+\rowcolor{riskamber!10}
+新洁能 & ~5.5 & ~4.5 & ~5.0 & 1.22x & 上调 & 1+ \\
+\rowcolor{riskamber!10}
+华润微 & 12.00 & 9.70 & 10.85 & 1.24x & 上调(小幅) & 2 \\
+\rowcolor{riskamber!10}
+斯达半导 & ~6.0 & ~4.5 & ~5.5 & 1.33x & 不确定 & 1+ \\
+\rowcolor{riskred!10}
+天岳先进 & 0.63 & 0.38 & 0.51 & 1.66x & \textbf{下调(大幅)} & 2 \\
+\rowcolor{steelgrey!10}
+三安光电 & 微利 & 亏损 & ~0 & — & 减亏 & 1+ \\
+\bottomrule
+\end{tabularx}
+\sourcenote{国信证券、华源证券、华鑫证券、东海证券、国金证券、群益证券等公开研报及 Wind 一致预期}
+\end{exhibitbox}
+
+盈利预测的分歧度验证了前述判断：时代电气和扬杰科技的预测高度一致（最高/最低比低于 1.1x），而天岳先进的分歧超过 1.6x。近三个月的预测调整方向呈现明显的"IDM 上调、设计/第三代分化"格局——华润微、士兰微、扬杰科技等 IDM 厂商因 AI 需求驱动和行业涨价周期获得盈利预测上调，而斯达半导、天岳先进等或因价格战、或因周期位置不明朗面临下调压力。
+
+\begin{keyinsight}[机构预期的投资含义]
+综合评级分布、目标价分歧度和盈利预测调整方向，我们得出以下投资启示：
+
+1. \textbf{低分歧+上调趋势}的公司（时代电气、扬杰科技）盈利确定性最高，适合作为核心配置，预期收益虽不夸张但胜率高。
+2. \textbf{高分歧但方向正在上修}的公司（士兰微、华润微）存在预期差修复机会，适合弹性配置，但需警惕周期波动。
+3. \textbf{高分歧+下调趋势}的公司（天岳先进、斯达半导）左侧抄底风险大，建议等待业绩拐点明确后再介入。
+4. 卖方目标价整体存在 20\%–40\% 的系统性高估，实际操作中建议打 7–8 折作为合理估值上限。
+\end{keyinsight}
+
+\section{业绩预期与兑现追踪}
+
+估值分析不能脱离业绩兑现能力。我们追踪了九家重点公司近四个季度的业绩表现，对比市场一致预期，构建 Beat/Miss 矩阵，以评估各家公司的业绩兑现质量和预期管理能力。业绩兑现的持续性是支撑估值的核心因素——持续超预期的公司往往享受估值溢价，而频繁低于预期的公司则面临估值下杀。
+
+\subsection{近四季度 Beat/Miss 矩阵}
+
+我们以归母净利润偏离一致预期 ±5\% 为界，将业绩表现分为 Beat（超预期）、In-line（符合预期）、Miss（不及预期）三档。对于亏损公司，则以营收和毛利率为主要判断依据。
+
+\begin{exhibitbox}[表 7-6：近四季度业绩 Beat/Miss 矩阵]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c c}
+\toprule
+\textbf{公司} & \textbf{2025全年} & \textbf{2025Q4} & \textbf{2026Q1} & \textbf{趋势} & \textbf{近4季综合判断} \\
+\midrule
+\rowcolor{riskgreen!10}
+晶丰明源 & Beat（扭亏超预期） & Beat & Beat（大幅） & \textcolor{riskgreen}{\textbf{持续↑}} & \textbf{持续 Beat} \\
+\rowcolor{riskgreen!10}
+扬杰科技 & In-line（稳健增长） & Miss（Q4单季） & Beat（小幅） & \textcolor{riskgreen}{\textbf{改善↑}} & \textbf{偏 Beat} \\
+\rowcolor{riskamber!10}
+华润微 & In-line（周期底部） & In-line & Beat（大幅） & \textcolor{riskgreen}{\textbf{改善↑}} & \textbf{明显改善，转 Beat} \\
+\rowcolor{riskamber!10}
+士兰微 & In-line（减亏改善） & — & In-line~Beat & \textcolor{riskgreen}{\textbf{改善↑}} & \textbf{温和改善} \\
+\rowcolor{riskamber!10}
+天岳先进 & Miss（大幅，价格战） & Miss & Beat（毛利率改善） & \textcolor{riskgreen}{\textbf{反转↑}} & \textbf{底部反转，从 Miss 转 Beat} \\
+\rowcolor{riskamber!10}
+时代电气 & In-line（稳健） & In-line & Miss（半导体板块） & \textcolor{riskred}{\textbf{承压↓}} & \textbf{分化，整体 In-line} \\
+\rowcolor{riskred!10}
+新洁能 & In-line（增速放缓） & — & In-line~Miss & \textcolor{riskred}{\textbf{偏弱→}} & \textbf{偏弱，接近 Miss} \\
+\rowcolor{riskred!10}
+斯达半导 & Miss（增收不增利） & — & Miss（显著） & \textcolor{riskred}{\textbf{持续↓}} & \textbf{持续 Miss} \\
+\rowcolor{riskred!10}
+三安光电 & Miss（大幅，由盈转亏） & Miss & Miss（显著） & \textcolor{riskred}{\textbf{持续↓}} & \textbf{持续 Miss} \\
+\bottomrule
+\end{tabularx}
+\sourcenote{公司定期报告、各券商财报点评、Wind 一致预期（数据区间：2025Q2–2026Q1）}
+\end{exhibitbox}
+
+Beat/Miss 矩阵清晰地揭示了板块内部的业绩分化格局。\textbf{持续 Beat}型公司仅有晶丰明源一家，AI 电源芯片的爆发式增长持续超出市场预期；\textbf{改善型}公司（扬杰科技、华润微、士兰微）占据主流，反映行业整体处于复苏通道；\textbf{持续 Miss}型公司（斯达半导、三安光电）则面临各自的结构性问题——IGBT 价格战和 LED 业务拖累。
+
+\subsection{业绩质量与兑现能力分析}
+
+业绩兑现不仅要看"有没有达到预期"，更要看"用什么方式达到预期"。我们从收入利润匹配度、毛利率趋势、现金流质量三个维度评估业绩质量。
+
+\begin{exhibitbox}[表 7-7：业绩质量多维度对比]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c}
+\toprule
+\textbf{公司} & \textbf{营收利润匹配度} & \textbf{毛利率趋势} & \textbf{现金流质量} & \textbf{综合质量评价} \\
+\midrule
+\rowcolor{riskgreen!10}
+扬杰科技 & 利润>收入，良性 & 持续上升（36.8\%） & 优秀（净现比 1.35） & \textbf{高质量} \\
+\rowcolor{riskgreen!10}
+华润微 & 低基数下利润弹性大 & 底部企稳（25.5\%） & 优秀（净现比 3.15） & \textbf{改善中} \\
+\rowcolor{riskamber!10}
+士兰微 & 利润>收入 & 触底回升（19.8\%） & 良好（净现比 3.75） & \textbf{改善中} \\
+\rowcolor{riskamber!10}
+晶丰明源 & 扭亏阶段，利润弹性大 & 高位稳定（37.4\%） & 波动大（净现比 5.0） & \textbf{改善中} \\
+\rowcolor{riskamber!10}
+时代电气 & 收入>利润，略有背离 & 基本稳定（33.3\%） & 良好（净现比 0.97） & \textbf{有压力} \\
+\rowcolor{riskred!10}
+新洁能 & 收入微增利润降 & 持续下滑（28.8\%） & 良好（净现比 0.98） & \textbf{偏弱} \\
+\rowcolor{riskred!10}
+斯达半导 & 严重背离（双降） & 持续大幅下滑（21.1\%） & 一般 & \textbf{差} \\
+\rowcolor{riskred!10}
+三安光电 & 严重背离 & 低位改善（18.5\%） & 良好 & \textbf{差} \\
+\rowcolor{riskred!10}
+天岳先进 & 双降（2025），边际改善 & V型反转（19.1\%） & 一般 & \textbf{底部} \\
+\bottomrule
+\end{tabularx}
+\sourcenote{公司定期报告，本研究团队整理（毛利率为 2026Q1 数据）}
+\end{exhibitbox}
+
+从业绩质量看，\textbf{扬杰科技}是唯一实现"营收利润双增+毛利率持续上升+现金流优秀"的高质量增长公司，这与其 IDM 模式+产品结构升级的战略直接相关。华润微和士兰微虽然当前毛利率仍处于低位，但边际改善趋势明确，且 IDM 模式下的现金流质量显著优于账面利润，属于典型的周期复苏型标的。
+
+值得警惕的是斯达半导和三安光电，营收和利润双降、毛利率持续下滑，业绩质量处于恶化通道，即使估值看起来"便宜"也可能是价值陷阱。
+
+\subsection{一致预期修正与业绩指引}
+
+近三个月的盈利预测调整是市场对业绩兑现结果的直接反馈。我们观察到一个重要的模式：\textbf{业绩超预期的公司，预测上调幅度往往大于超预期幅度本身}——即市场倾向于"外推"好业绩，这会带来估值和盈利的"戴维斯双击"；反之，业绩低于预期的公司，预测下调也会超调。
+
+\begin{exhibitbox}[表 7-8：近 3 个月 2026E 盈利预测调整汇总]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c}
+\toprule
+\textbf{公司} & \textbf{3个月前预测(亿元)} & \textbf{当前预测(亿元)} & \textbf{变化幅度} & \textbf{主要驱动因素} \\
+\midrule
+\rowcolor{riskgreen!10}
+晶丰明源 & ~0.8–1.0 & ~1.5–2.0 & \textbf{+80\%}（大幅上调） & AI 电源芯片需求爆发 \\
+\rowcolor{riskgreen!10}
+天岳先进 & 亏损~1.0 & 0.38（扭亏） & \textbf{大幅上调} & 毛利率大幅改善、价格触底 \\
+\rowcolor{riskgreen!10}
+华润微 & ~9.7 & ~12.0 & +24\% & Q1 超预期、AI 需求确定 \\
+\rowcolor{riskgreen!10}
+士兰微 & ~8.0–8.4 & ~9.5 & +15\% & 涨价周期确认、业绩弹性显现 \\
+\rowcolor{riskgreen!10}
+扬杰科技 & ~14.5 & ~15.9–16.0 & +10\% & 汽车电子超预期、SiC 放量 \\
+\rowcolor{riskamber!10}
+时代电气 & ~43 & ~45 & +5\%（基本持平） & 稳健增长，预期变化小 \\
+\rowcolor{riskred!10}
+新洁能 & ~4.5 & ~4.0–4.2 & -10\% & 毛利率下滑、价格竞争 \\
+\rowcolor{riskred!10}
+斯达半导 & ~5.5–6.0 & ~4.5–5.0 & -15\% & Q1 低于预期、价格战持续 \\
+\rowcolor{riskred!10}
+三安光电 & 盈利~2.0 & 盈亏平衡~微利 & 大幅下调 & LED 拖累超预期 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{各券商研报盈利预测对比（2026 年 3 月 vs 2026 年 6 月）}
+\end{exhibitbox}
+
+预期调整的方向与幅度验证了我们的业绩质量判断——晶丰明源和天岳先进的盈利预测上调幅度最大（均超过 50\%），分别代表"AI 成长"和"周期反转"两种超预期模式；而三安光电和斯达半导的预测持续下调，反映基本面压力尚未释放完毕。
+
+\begin{keyinsight}[业绩兑现将成为估值分化的核心驱动力]
+当前板块估值分化已经较为显著，但我们认为\textbf{业绩兑现能力的差异将进一步拉大估值差距}：
+1. 持续 Beat + 高质量增长的公司（如扬杰科技），将享受"业绩+估值"双升的戴维斯双击，估值中枢有望上移。
+2. 周期反转型公司（如华润微、天岳先进），一旦业绩连续超预期形成趋势，估值修复空间最大，但波动也最大。
+3. 持续 Miss 的公司（如斯达半导、三安光电），即使当前估值看似不贵，仍可能面临"业绩下修+估值压缩"的双杀，建议规避或轻仓试探。
+4. 稳健型公司（如时代电气），业绩波动小，估值相对稳定，适合作为板块底仓配置。
+\end{keyinsight}
+
+\section{估值审计与业绩匹配度分析}
+
+前述估值分析建立在多重假设之上，其可靠性需要通过独立的审计视角进行验证。本节从数学校验、估值方法合理性、可比公司选择、业绩--估值匹配度四个维度对估值体系进行系统性审计，并提出风险调整后的修正估值框架。
+
+\subsection{估值数学校验}
+
+我们对各公司的核心估值指标进行了独立复算，验证数据准确性。
+
+\begin{exhibitbox}[表 7-9：核心估值指标数学校验结果]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c}
+\toprule
+\textbf{公司} & \textbf{校验指标} & \textbf{标注值} & \textbf{复算值} & \textbf{差异及说明} \\
+\midrule
+\rowcolor{riskgreen!10}
+时代电气 & PE(TTM) & ~19.6x & 19.6x & 0.0\%，准确 \\
+\rowcolor{riskgreen!10}
+扬杰科技 & PE(TTM) & ~55x & 51.2x & -7.4\%，TTM 计算时点差异 \\
+\rowcolor{riskamber!10}
+华润微 & PE(TTM) & ~117x & 117.4x & +0.3\%，准确（TTM 口径） \\
+\rowcolor{riskamber!10}
+华润微 & 2026E PE & ~74x & 81.9x & +10.7\%，隐含更乐观的盈利预测 \\
+\rowcolor{riskamber!10}
+士兰微 & PE(TTM) & ~164x & 188.2x & +14.8\%，2025A 口径差异 \\
+\rowcolor{riskred!10}
+斯达半导 & PE(TTM) & ~95.7x & — & 2025 年财务数据缺失，无法独立验证 \\
+\rowcolor{riskgreen!10}
+新洁能 & PE(TTM) & ~82.8x & 83.9x & +1.3\%，接近 \\
+\rowcolor{riskgreen!10}
+全样本 & PS(TTM) & — & — & 全部 < ±0.5\%，准确 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队根据公司财报、市值数据独立复算}
+\end{exhibitbox}
+
+总体来看，PS 指标全部准确，PE 指标大部分在可接受误差范围内（±10\% 以内）。需要注意两个问题：一是\textbf{华润微 2026E PE 标注值低于复算值约 11\%}，可能隐含了比公开一致预期更乐观的盈利预测；二是\textbf{斯达半导 PE 数据缺乏 2025 年财务支撑}，其估值参考性需要打折扣。
+
+\subsection{估值方法合理性审计}
+
+不同估值方法适用于不同类型的公司，方法选择不当会导致估值结论失真。
+
+\begin{exhibitbox}[表 7-10：各公司估值方法适用性评估]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c c}
+\toprule
+\textbf{公司} & \textbf{PE 适用性} & \textbf{PS 适用性} & \textbf{PB 适用性} & \textbf{PEG 适用性} & \textbf{推荐估值方法} \\
+\midrule
+\rowcolor{riskgreen!10}
+时代电气 & 高（盈利稳定） & 中 & 高（重资产） & 中 & \textbf{PE + PB} \\
+\rowcolor{riskgreen!10}
+扬杰科技 & 高（成长确定） & 中 & 中 & 高（成长期） & \textbf{PE + PEG} \\
+\rowcolor{riskamber!10}
+华润微 & 中（周期底部） & 中 & 高（IDM） & 低（周期干扰） & \textbf{PB + EV/EBITDA} \\
+\rowcolor{riskamber!10}
+士兰微 & 低（周期底部PE高） & 中 & 高（IDM） & 中 & \textbf{PB + EV/EBITDA} \\
+\rowcolor{riskamber!10}
+斯达半导 & 中（盈利下滑） & 中 & 中 & 低（增速为负） & \textbf{PS + PB} \\
+\rowcolor{riskred!10}
+天岳先进 & 极低（微利/亏损） & 高 & 中 & 极低 & \textbf{PS + SOTP} \\
+\rowcolor{riskred!10}
+三安光电 & 极低（亏损） & 高 & 高（重资产） & 极低 & \textbf{PB + SOTP} \\
+\rowcolor{riskamber!10}
+晶丰明源 & 中（高增长） & 中 & 低 & 高（成长期） & \textbf{PE + PEG} \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队评估}
+\end{exhibitbox}
+
+我们的核心发现是：\textbf{当前板块处于周期底部，PE 估值法的参考性显著下降}。对于周期底部的 IDM 公司（华润微、士兰微），PB 和 EV/EBITDA 比 PE 更能反映真实估值水平，因为 PE 在周期底部会因分母变小而被动抬升，造成"贵"的假象。反过来，周期顶部 PE 低但实际估值贵——这是周期股估值的经典陷阱。
+
+\subsection{业绩--估值匹配矩阵}
+
+估值是否合理，最终要回答的问题是：\textbf{业绩增长能否支撑当前估值}？我们构建业绩--估值匹配矩阵，从"业绩兑现质量"和"估值水平"两个维度对公司进行定位。
+
+\begin{exhibitbox}[表 7-11：业绩--估值匹配矩阵]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c}
+\toprule
+\textbf{公司} & \textbf{2026E PE} & \textbf{2026E 增速} & \textbf{PEG(2026E)} & \textbf{估值--业绩匹配判断} \\
+\midrule
+\rowcolor{riskgreen!10}
+时代电气 & ~17x & 15–20\% & 0.97–1.13 & \textbf{低估}（PEG < 1） \\
+\rowcolor{riskgreen!10}
+扬杰科技 & ~42x & 25–30\% & 1.40–1.68 & \textbf{合理}（在合理区间内） \\
+\rowcolor{riskamber!10}
+士兰微 & ~82x & 130\%+（低基数） & ~0.6 & 看似便宜，但低基数下 PEG 失效 \\
+\rowcolor{riskamber!10}
+华润微 & ~82x & 60–70\%（低基数） & ~1.1–1.4 & 周期底部，需结合 PB 判断 \\
+\rowcolor{riskred!10}
+新洁能 & ~55x & 20–30\% & 1.8–2.8 & \textbf{偏高}（PEG 超合理区间） \\
+\rowcolor{riskred!10}
+斯达半导 & ~57x & 10–20\%（困境反转） & 2.9–5.7 & \textbf{偏高}（反转确定性不足） \\
+\rowcolor{riskred!10}
+天岳先进 & ~1356x & 扭亏 & 失效 & \textbf{主题投资}，PS ~50x 远高于海外可比 \\
+\rowcolor{riskred!10}
+三安光电 & 亏损 & 扭亏 & 失效 & \textbf{困境反转}，PB ~2.5x 不算贵但不盈利 \\
+\rowcolor{riskamber!10}
+晶丰明源 & — & ~100\%+（低基数） & — & 高增长支撑高估值，但可持续性存疑 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队测算，增速为 2026E 归母净利润同比增速，PEG 合理区间取 1.2–1.8}
+\end{exhibitbox}
+
+按 PEG 框架衡量，板块中\textbf{仅时代电气明确低估，扬杰科技处于合理区间}，其余公司普遍偏贵。但需要注意两个限定条件：一是周期底部 PE 高并不代表估值贵，对于华润微和士兰微这类周期复苏型公司，用正常化盈利计算的 PE 会显著降低；二是天岳先进、三安光电等亏损公司 PE 估值失效，需要用 PS、PB 和 SOTP 等方法评估。
+
+\subsection{风险调整后的估值修正}
+
+前述估值均未考虑风险折价。我们识别出技术路线风险、周期波动风险、地缘政治风险三大核心风险因子，并据此对估值进行风险调整。
+
+\begin{exhibitbox}[表 7-12：风险因子评估与估值折价修正]
+\centering
+\small
+\begin{tabularx}{\textwidth}{l c c c c c}
+\toprule
+\textbf{公司} & \textbf{技术路线风险} & \textbf{周期波动风险} & \textbf{地缘竞争风险} & \textbf{综合折价率} & \textbf{风险调整后估值} \\
+\midrule
+\rowcolor{riskgreen!10}
+时代电气 & 低 & 低 & 低 & 5–10\% & 基本不变 \\
+\rowcolor{riskgreen!10}
+扬杰科技 & 低 & 中 & 低 & 10–15\% & 下调 10–15\% \\
+\rowcolor{riskamber!10}
+华润微 & 低 & 高 & 中 & 20–25\% & 下调 20–25\% \\
+\rowcolor{riskamber!10}
+士兰微 & 中 & 高 & 中 & 25–35\% & 下调 25–35\% \\
+\rowcolor{riskamber!10}
+斯达半导 & 中 & 高 & 中 & 20–30\% & 下调 20–30\% \\
+\rowcolor{riskred!10}
+天岳先进 & 高 & 高 & 高 & 40–50\% & 下调 40–50\% \\
+\rowcolor{riskred!10}
+三安光电 & 中高 & 中 & 中 & 25–35\% & 下调 25–35\% \\
+\rowcolor{riskamber!10}
+新洁能 & 低 & 高 & 低 & 15–25\% & 下调 15–25\% \\
+\bottomrule
+\end{tabularx}
+\sourcenote{本研究团队评估，折价率为相对于当前估值的风险调整幅度}
+\end{exhibitbox}
+
+经过风险调整后，估值排序发生了显著变化：时代电气的低估优势更加突出（风险最低），而天岳先进的估值吸引力大幅下降（40–50\% 的风险折价后，当前股价已不便宜）。这印证了一个核心原则——\textbf{高风险标的的"高增长预期"需要更大的安全边际来补偿}。
+
+\begin{keyinsight}[估值审计核心结论]
+经过系统性审计，我们对初始估值框架做以下修正：
+
+1. \textbf{时代电气}估值最低且风险最低，经风险调整后仍是板块内最具性价比的标的，维持"核心配置"判断。
+2. \textbf{扬杰科技}业绩质量最高，估值处于合理区间，经风险调整后仍具配置价值，维持"增持"。
+3. \textbf{华润微、士兰微}当前 PE 看似很高，但属于周期底部效应，用 PB 和 EV/EBITDA 衡量估值更合理。经周期调整后估值并不极端，但需警惕复苏不及预期风险。
+4. \textbf{天岳先进、三安光电}属于主题/困境投资范畴，PE 估值失效，PS/PB 估值缺乏可比锚点，经风险调整后安全边际不足，建议维持"高风险/关注"评级，仅适合风险承受能力强的投资者小仓位参与。
+5. \textbf{斯达半导、新洁能}业绩兑现能力偏弱但估值不低，PEG 偏高，建议谨慎，等待业绩拐点或估值回调后的介入机会。
+\end{keyinsight}

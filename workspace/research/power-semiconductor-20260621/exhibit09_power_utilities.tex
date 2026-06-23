@@ -1,0 +1,144 @@
+% ============================================================
+% Exhibit 9: 电力公用事业：AI数据中心用电增量测算
+% 双轴组合图 + 估值重估逻辑示意图
+% ============================================================
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}
+
+    % ===== 上图：数据中心用电量双轴图 =====
+    \node[font=\bfseries] at (5, 4.6) {中国数据中心用电量及占全社会用电量比重（2022--2030E）};
+
+    \begin{axis}[
+        name=mainaxis,
+        width=10cm, height=3.8cm,
+        xshift=0cm, yshift=2.5cm,
+        ybar stacked,
+        bar width=10pt,
+        ymajorgrids=true,
+        grid style={gray!20, very thin},
+        axis lines=left,
+        ylabel={用电量（百亿千瓦时）},
+        ylabel style={font=\small, text=teal!80},
+        ymin=0, ymax=40,
+        ytick={0, 10, 20, 30, 40},
+        xtick={2022, 2024, 2026, 2028, 2030},
+        xticklabels={2022, 2024, 2026, 2028, 2030},
+        tick label style={font=\scriptsize},
+        yticklabel style={font=\scriptsize, text=teal!80},
+        legend style={
+          at={(0.02, 0.98)}, anchor=north west, font=\scriptsize,
+          draw=gray!40, fill=white, fill opacity=0.9
+        },
+        legend cell align=left,
+        enlarge x limits=0.15,
+      ]
+      % 传统IDC
+      \addplot+[fill=blue!50, draw=blue!70] coordinates {
+        (2022, 12) (2023, 14) (2024, 16) (2025, 17.5) (2026, 19)
+        (2027, 20) (2028, 21) (2029, 21.5) (2030, 22)
+      };
+      \addlegendentry{传统IDC}
+
+      % AI算力中心
+      \addplot+[fill=red!60, draw=red!80] coordinates {
+        (2022, 0.5) (2023, 1.2) (2024, 2.8) (2025, 5) (2026, 8)
+        (2027, 12) (2028, 16) (2029, 20) (2030, 25)
+      };
+      \addlegendentry{AI算力中心}
+
+    \end{axis}
+
+    % 右侧Y轴：占全社会用电量比重
+    \begin{axis}[
+        width=10cm, height=3.8cm,
+        xshift=0cm, yshift=2.5cm,
+        axis y line*=right,
+        axis x line=none,
+        ylabel={占全社会用电比重(\%)},
+        ylabel style={font=\small, text=purple!80},
+        ymin=0, ymax=8,
+        ytick={0, 2, 4, 6, 8},
+        yticklabel style={font=\scriptsize, text=purple!80},
+        tick label style={font=\scriptsize},
+        no marks,
+        thick,
+        enlarge x limits=0.15,
+      ]
+      % 总占比折线
+      \addplot[purple!80, thick] coordinates {
+        (2022, 1.5) (2023, 1.8) (2024, 2.2) (2025, 2.7) (2026, 3.2)
+        (2027, 3.9) (2028, 4.6) (2029, 5.3) (2030, 6.2)
+      };
+      \addlegendimage{purple!80, thick, no marks}
+      \addlegendentry{占比（右轴）}
+
+      % AI占比单独虚线
+      \addplot[red!70, dashed, thick] coordinates {
+        (2022, 0.05) (2023, 0.13) (2024, 0.35) (2025, 0.65) (2026, 1.2)
+        (2027, 1.9) (2028, 2.7) (2029, 3.5) (2030, 4.5)
+      };
+      \addlegendimage{red!70, dashed, thick, no marks}
+      \addlegendentry{AI占比（右轴）}
+
+    \end{axis}
+
+    % 2026年标注
+    \draw[dashed, red!80!black] (5.0, 2.5) -- (5.0, 6.2);
+    \node[font=\scriptsize\bfseries, red!80!black, fill=white, inner sep=1pt] at (5.2, 6.0)
+      {2026E: 2,700亿kWh\\占比3.2\%};
+
+    % ===== 下图：估值重估逻辑示意图 =====
+    \node[font=\bfseries] at (5, -2.2) {电力公用事业估值重估逻辑：从防御资产到AI基础设施};
+
+    \begin{scope}[xshift=0.5cm, yshift=-4.8cm]
+
+      % 时间轴
+      \draw[->, thick, gray!60] (0, 0) -- (9, 0) node[right, font=\scriptsize] {时间/发展阶段};
+
+      % 估值中枢带（初始：防御资产阶段）
+      \fill[gray!20, opacity=0.6] (0, 0.8) rectangle (3.5, 1.5);
+      \draw[gray!50, thick] (0, 1.15) -- (3.5, 1.15);
+      \node[below, font=\scriptsize, gray!70] at (1.75, 0.75) {10--15x PE};
+      \node[above, font=\scriptsize\bfseries, gray!70] at (1.75, 1.6) {防御资产\\\scriptsize 赚股息·低增长};
+
+      % 过渡区
+      \fill[orange!15, opacity=0.6] (3.5, 0.8) rectangle (6, 2.2);
+      \draw[orange!60, thick, dashed] (3.5, 1.15) -- (6, 2.0);
+      \node[below, font=\scriptsize, orange!80] at (4.75, 0.7) {估值重估期};
+      \node[above, font=\tiny, orange!80, align=center] at (4.75, 2.35) {AI用电\\需求验证};
+
+      % 新估值中枢（AI基础设施阶段）
+      \fill[teal!20, opacity=0.6] (6, 1.5) rectangle (9, 2.5);
+      \draw[teal!60, thick] (6, 2.0) -- (9, 2.0);
+      \node[below, font=\scriptsize, teal!80] at (7.5, 1.45) {15--20x PE};
+      \node[above, font=\scriptsize\bfseries, teal!80] at (7.5, 2.6) {AI基础设施\\\scriptsize 成长属性·重定价};
+
+      % 触发条件标注
+      \node[draw=teal!50, fill=teal!5, rounded corners=3pt,
+            font=\tiny, align=left, inner sep=4pt, text width=3.5cm]
+      at (7.5, 3.3) {
+        \textbf{估值上移触发条件：}\\[-0.3em]
+        \textcolor{teal!80}{$\bullet$} AI数据中心用电量占比$>$3\%\\[-0.3em]
+        \textcolor{teal!80}{$\bullet$} 单企业AI相关营收占比$>$15\%\\[-0.3em]
+        \textcolor{teal!80}{$\bullet$} 电价机制市场化改革落地\\[-0.3em]
+        \textcolor{teal!80}{$\bullet$} 绿电交易溢价持续扩大
+      };
+
+      % 起点/终点标签
+      \node[left, font=\tiny, gray!60, align=right] at (-0.1, 1.15) {传统估值中枢\\~12.5x PE};
+      \node[right, font=\tiny, teal!80, align=left] at (9.1, 2.0) {目标估值中枢\\~17.5x PE};
+
+      % 估值提升幅度标注
+      \draw[<->, thick, teal!70] (8.5, 1.15) -- (8.5, 2.0)
+        node[pos=0.5, right, font=\tiny\bfseries, teal!80] {+40--60\%};
+
+    \end{scope}
+
+  \end{tikzpicture}
+  \caption{AI数据中心用电增量测算与电力公用事业估值重估逻辑}
+  \label{ex:power_utilities_ai}
+  \vspace{-0.5em}
+  \footnotesize\textit{数据来源：}国家能源局、中国电力企业联合会、IDC、本研究测算。
+  \footnotesize 2030E AI算力中心用电占数据中心总用电比例将从2022年的4\%提升至53\%。
+\end{figure}
