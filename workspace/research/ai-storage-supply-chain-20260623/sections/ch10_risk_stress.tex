@@ -1,0 +1,104 @@
+% 第 10 章 风险矩阵与压力测试
+
+\section{风险矩阵：两红三橙三中的非对称结构}
+
+基于「概率 × 影响程度 × 可监测性」三维度，本报告识别出 8 项核心风险。\textbf{红色高风险两项：HBM ASP 大幅下行 (供过于求) 与 BIS 出口管制升级 (设备/HBM 断供)}，这两项一旦触发会直接侵蚀本报告核心盈利假设；橙色中高风险三项；绿色低风险三项。风险结构的核心特征是「非对称」——上行情景（概率 80\%）的幅度显著大于下行情景（概率 20\%），且设备/材料层在下行情景中具有「国产化加速」的反向对冲属性，这与 2018 年和 2022 年两轮纯周期下行有本质区别。
+
+从风险对冲矩阵看，8 项核心风险中仅 2 项（R1 价格战、R3 NAND 价格战）对全链产生系统性负面冲击，其余 6 项风险均具备明确的「对冲标的」——BIS 管制升级 (R2) 反而将加速长存/长鑫设备国产化率从 20\%→35\%，北方华创/拓荆/盛美在 R2 触发情景下短期订单反而暴增；Hyperscaler capex 下修 (R4) 对设备层影响约 1 个季度传导滞后，可通过订单监控提前减仓；澜起份额抢占 (R5) 仅影响单标的可直接调仓；汇率/渗透节奏 (R7/R8) 对组合影响在 ±3\% 以内可控。\textbf{组合回报的非对称性（上行概率 80\% vs 下行 20\%）是本报告推荐 60\% 高仓位的核心量化依据}。
+
+\needspace{42\baselineskip}
+\begin{exhibitbox}[图 10-1 \quad 风险矩阵热力图 / Risk Matrix Heatmap]
+\centering
+\resizebox{0.88\linewidth}{!}{%
+\begin{tikzpicture}[
+  riskR/.style={circle, draw=riskred, fill=riskred!18, minimum size=2.2cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
+  riskA/.style={circle, draw=riskamber, fill=riskamber!18, minimum size=1.8cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
+  riskG/.style={circle, draw=riskgreen, fill=riskgreen!18, minimum size=1.5cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
+  riskAs/.style={circle, draw=riskamber, fill=riskamber!18, minimum size=1.6cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
+  riskGs/.style={circle, draw=riskgreen, fill=riskgreen!18, minimum size=1.3cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
+  riskGss/.style={circle, draw=riskgreen, fill=riskgreen!18, minimum size=1.1cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
+  axis/.style={draw=steelgrey, line width=0.8pt},
+  grid/.style={draw=rulegrey!40, dashed}
+]
+% Grid & quadrants
+\draw[axis, ->] (0,0) -- (11, 0) node[below right, font=\bfseries, text=steelgrey] {\large 发生概率 (\%) →};
+\draw[axis, ->] (0,0) -- (0, 11) node[above left, font=\bfseries, text=steelgrey] {\large 影响程度 →};
+\draw[grid] (3.5,0) -- (3.5,11);
+\draw[grid] (7,0) -- (7,11);
+\draw[grid] (0,3.5) -- (11,3.5);
+\draw[grid] (0,7) -- (11,7);
+
+% Quadrant labels
+\node[font=\bfseries, color=riskgreen, above left] at (3.5,3.5) {低风险区};
+\node[font=\bfseries, color=riskamber, above left] at (7,3.5) {};
+\node[font=\bfseries, color=riskamber, above left] at (3.5,7) {中风险区};
+\node[font=\bfseries, color=riskred, above left] at (7,7) {\textbf{高风险区 RED}};
+
+% Axis ticks
+\foreach \x/\v in {1.75/25, 5.25/55, 8.75/80} \node[below, font=\tiny, text=steelgrey] at (\x,0) {\v\%};
+\foreach \y/\v in {1.75/低, 5.25/中, 8.75/高} \node[left, font=\tiny, text=steelgrey] at (0,\y) {\v};
+
+% Risk bubbles (X=概率, Y=影响程度, size=可监测性权重, color=风险等级)
+% 红区
+\node[riskR] (R1) at (7.2, 9.0) {R1\\HBM ASP -30\%\\供过于求};
+\node[riskR] (R2) at (8.0, 7.6) {R2\\BIS管制升级\\HBM/DUV禁售};
+
+% 橙区
+\node[riskA] (R3) at (6.5, 6.8) {R3\\NAND价格战\\QoQ -10\%};
+\node[riskA] (R4) at (4.8, 7.3) {R4\\Hyperscaler\\capex下修>15\%};
+\node[riskAs] (R5) at (5.8, 4.8) {R5\\澜起RCD份额\\Rambus抢占至<50\%};
+
+% 绿区
+\node[riskGs] (R6) at (2.8, 5.2) {R6\\长存扩产\\设备延迟};
+\node[riskGss] (R7) at (3.0, 2.5) {R7\\人民币升值5\%\\汇率扰动};
+\node[riskGss] (R8) at (2.0, 1.8) {R8\\DDR5渗透\\节奏推迟1季};
+
+% Legend
+\node[draw=rulegrey, fill=white, rounded corners=3pt, font=\scriptsize, inner sep=4pt, align=left, anchor=north east] at (10.8, 10.6) {
+\begin{tabular}{l l}
+\cellcolor{riskred!30} RED & HBM ASP / BIS 管制\\
+\cellcolor{riskamber!30} AMBER & NAND战/capex/份额\\
+\cellcolor{riskgreen!30} GREEN & 扩产/汇率/渗透节奏\\
+\end{tabular}
+};
+
+\end{tikzpicture}
+}
+\end{exhibitbox}
+\sourcenote{风险概率/影响程度为 AStock Research Agent 基于 2024-2026 历史同类事件数据库 + 地缘政治模型综合评估，非市场共识数据。气泡大小=可监测性指标 (越大可监测性越高，越便于及时对冲)。}
+
+\section{压力测试情景表}
+
+基于风险矩阵核心风险项，构建基准/乐观/悲观三情景压力测试，评估组合 EPS 影响与估值调整幅度。压力测试的设计原则是「情景基于可观测触发条件 + 传导路径可量化」——每一情景均包含明确的触发因子（如 Rubin 提前量产、BIS 管制升级、Hyperscaler capex 连续下修）、从触发因子→原厂 capex/HBM ASP→设备订单/模组 ASP→单标的 EPS 的全链路传导，以及对应的估值倍数压缩或扩张系数。参考 2018 年（ZTE 禁运 + 存储周期下行）和 2022 年（美联储紧缩 + A 股半导体熊市）两轮历史下行周期中各标的的估值压缩极值，将深度悲观情景（情景 D）的估值底部设定为历史下沿的 1.1x，以反映「国产化替代刚性」这一本轮独有的对冲因子。
+
+机构投资者在使用压力测试表时应结合自身组合约束分层应用：对合规风控要求严格的保险/银行理财资金，以情景 C（温和悲观）作为组合压力测试的基准情景，确保在 8-10\% 回撤下整体净值波动仍满足产品合同条款；对追求绝对收益的私募/自营盘，可将情景 B（基准）的 65\% 概率权重折算为目标置信度，在核心组合 60\% 底仓基础上附加 10-15\% 的弹性仓位（长电/江波龙）；对考核超额收益的公募基金经理，可参考乐观情景 A（15\% 概率）设定上限风控，在组合回报突破+35\%时执行纪律性减仓，避免过度乐观导致的回撤。
+
+\begin{exhibitbox}[表 10-1 \quad 压力测试情景表 / Stress-Test Scenario Table]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\linewidth}{>{\bfseries}p{1.6cm} >{\raggedright\arraybackslash}p{3.8cm} >{\centering\arraybackslash}p{1.2cm} >{\raggedleft\arraybackslash}p{1.6cm} >{\raggedleft\arraybackslash}p{1.6cm} >{\raggedleft\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{情景} & \textbf{触发条件组合} & \textbf{概率} & \textbf{组合 EPS 影响} & \textbf{估值调整} & \textbf{上/下修} & \textbf{操作建议} \\
+\midrule
+\rowcolor{riskgreen!6}
+情景A 乐观 & Rubin 提前量产 + 良率 >60\%；DDR5 合约价 Q3 QoQ +12\%+；BIS 放宽 DUV 审批；澜起 CXL 3.1 获三星 HVM 订单 & 15\% & 约+12\% & PE 40x 升至约48x & +30--45\% & 超配：设备权重+5pct；加仓拓荆/盛美弹性层；现金比例降至<5\% \\
+\midrule
+情景B 基准 & 本报告核心假设：HBM ASP Q3 +8--10\%；DDR5 合约价+10\% QoQ；CXL H2 渗透 8--10\%；长存/长鑫按计划扩产；BIS 小幅收紧但非全面 & 65\% & 约+42\% YoY & PE 40x (近3年中位) & +25--40\% & 按基准配置 (表1-1 权重)；逢回调加仓 Tier 1；季度再平衡 \\
+\midrule
+\rowcolor{riskamber!6}
+情景C 温和悲观 & HBM ASP 2027H1 下滑>15\%；Hyperscaler capex 单季下修 8--10\%；长存/长鑫设备交付延迟 6 个月 & 15\% & 约-8\% (相对基准) & PE 40x 降至约34x & -10--15\% & 降仓至 80\% 基准；切换防御性 (北华创+澜起高确定性标的)；现金增至 10--15\%；规避江波龙/兆易周期层 \\
+\midrule
+\rowcolor{riskred!6}
+情景D 深度悲观 & HBM ASP 2027H1 -30\%+；BIS 2026Q3 全面禁售 HBM3E/HBM4 + ASML DUV 断供长存/长鑫；美经济衰退至 Hyperscaler capex 连续2季下修>15\% & 5\% & 约-15--25\% (相对基准) & PE 40x 降至约28x & -25--40\% & 组合风险敞口降至<60\%；仅保留北华创/中微国产替代对冲层；增持设备、减持设计/模组；CXL/先进封装长线维持底仓 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{EPS 影响：AStock 自模型 (按各标的 AI 敞口×BIS 管制系数×价格弹性矩阵)。估值调整：参考 2018/2022 年两轮下行周期中 A 股半导体板块的估值压缩路径。压力测试非精确预测，仅用于极端情景下的风险敞口管理。}
+
+\vspace{0.4em}
+\noindent\textbf{投资含义}：压力测试揭示了组合的「非对称性回报分布」——\textbf{基准+乐观情景概率 80\%，下行情景 (C+D) 仅 20\%，且深度悲观 (D) 仅 5\%}。从赔率结构看，当前组合正期望收益显著。更重要的是，北华创/中微/澜起的「二阶 Beta + 一阶 Alpha」组合在下行情景中仍具防御性 (国产替代在管制升级情景中反而受益于「国产化强制加速」)。核心组合的下行保护主要来自设备层的结构性对冲属性。
+
+\section{风险监控指标体系}
+
+为实现对 8 大风险的实时监测，构建领先/同步/滞后三级指标体系，每季度更新一次。核心领先指标包括三大原厂月度出货量数据 (TrendForce)、长存设备中标公告 (中国国际招标网)、BIS Federal Register 每日更新、澜起 CXL 订单信息、ASML quarterly order log。同步指标：A 股半导体板块资金流入/北向持仓变动、存储合约价月度数据 (DRAMeXchange)。滞后指标：各公司季报业绩、毛利率变化。

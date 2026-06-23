@@ -1,0 +1,116 @@
+% 第 3 章 全球存储产业链图谱
+% 含 mermaid 产业链架构图 (tikz 等效实现) + 环节价值/毛利/对标表
+
+\section{产业链七层架构与价值分布}
+
+全球存储产业链从上游到下游可划分为七层：上游设备与材料、存储设计、晶圆制造、封装 (先进+传统)、模组与主控、整机集成、下游应用 (AI/云/终端)。A 股映射的核心机会集中在设备材料 (二阶 Beta)、接口芯片设计 (澜起 CXL 一阶 Alpha) 与先进封装 (长电/通富 弹性) 三层。
+
+\needspace{52\baselineskip}
+\begin{exhibitbox}[图 3-1 \quad 全球存储产业链全景图谱 / Global Memory Supply-Chain Architecture]
+\centering
+\resizebox{0.88\linewidth}{!}{%
+\begin{tikzpicture}[
+  >=Stealth,
+  node distance=0.55cm,
+  layer/.style={rectangle, rounded corners=3pt, draw=#1, fill=#1!8, text width=13cm, align=center, inner sep=3pt, font=\bfseries\small, minimum height=0.55cm},
+  node/.style={rectangle, rounded corners=2pt, draw=steelgrey, fill=white, text width=2.35cm, align=center, minimum height=0.95cm, font=\scriptsize, inner sep=2pt},
+  ashar/.style={rectangle, rounded corners=2pt, draw=riskamber, fill=riskamber!8, text width=2.35cm, align=center, minimum height=0.95cm, font=\scriptsize\bfseries, color=navy, inner sep=2pt, line width=0.7pt},
+  gap/.style={text width=0.3cm}
+]
+% Layer 1
+\node[layer=accentblue] (L1) {\faIndustry\enspace L1 · 上游 · 设备与材料 \quad[\;设备 10--12\% \;|\; 材料 7--9\%\;]};
+\node[node, below=of L1.west, anchor=north west, xshift=0.25cm] (U1) {EUV/光刻\\ASML · Nikon\\\textcolor{mutedgrey}{国产化 <1\%}};
+\node[node, right=of U1] (U2) {刻蚀/薄膜/ALD\\Lam · AMAT · TEL\\\textcolor{mutedgrey}{国产化 10--15\%}};
+\node[node, right=of U2] (U3) {测试设备\\Advantest · Teradyne\\\textcolor{mutedgrey}{国产化 5--8\%}};
+\node[node, right=of U3] (U4) {硅片/光刻胶/特气\\ShinEtsu · JSR · Entegris\\\textcolor{mutedgrey}{国产化 8--12\%}};
+\node[ashar, right=of U4] (A1) {\faStar\enspace A 股 · 设备\\北方华创 · 中微\\拓荆 · 沪硅 · 南大};
+
+% Layer 2
+\node[layer=nvgreen, below=1.1cm of L1] (L2) {\faCogs\enspace L2 · 存储设计 \quad[\;8--10\%\;]};
+\node[node, below=of L2.west, anchor=north west, xshift=0.25cm] (D1) {DRAM 设计\\Samsung · SK · Micron\\\textcolor{mutedgrey}{国产 <1\%}};
+\node[node, right=of D1] (D2) {NAND 设计\\Samsung · Kioxia · YMTC\\\textcolor{mutedgrey}{国产 1--3\%}};
+\node[node, right=of D2] (D3) {接口/主控/RCD\\Rambus · Marvell\\\textcolor{mutedgrey}{澜起领先}};
+\node[ashar, right=of D3] (A2) {\faStar\enspace A 股 · 设计\\澜起科技 (RCD 70\%)\\兆易 · 芯原 · 北京君正};
+
+% Layer 3
+\node[layer=riskamber, below=1.1cm of L2] (L3) {\faMicrochip\enspace L3 · 晶圆制造 \quad[\;38--42\%\;] \textcolor{riskred}{—— 价值最大环节}};
+\node[node, below=of L3.west, anchor=north west, xshift=0.25cm] (M1) {DRAM FAB\\SK · Samsung · Micron\\CXMT (长鑫, 未上市)};
+\node[node, right=of M1] (M2) {NAND FAB\\Samsung · Kioxia · Micron\\YMTC (长存, 未上市)};
+\node[ashar, right=of M2] (A3) {\faStar\enspace A 股间接\\\small A 股无直接原厂\\北方华创等为供应商};
+
+% Layer 4
+\node[layer=riskred, below=1.1cm of L3] (L4) {\faLayerGroup\enspace L4 · 封装 \quad[\;先进 12--15\% \;|\; 传统 5--7\%\;]};
+\node[node, below=of L4.west, anchor=north west, xshift=0.25cm] (P1) {CoWoS/TSV 先进\\TSMC (约80\%) · Samsung\\ASE · Amkor};
+\node[node, right=of P1] (P2) {传统 FBGA/LGA\\ASE · Amkor · SPIL\\\textcolor{mutedgrey}{国产 约30\%}};
+\node[ashar, right=of P2] (A4) {\faStar\enspace A 股 · 封测\\长电 (XDFOI)\\通富 (AMD 绑定) · 华天};
+
+% Layer 5
+\node[layer=deepnavy, below=1.1cm of L4] (L5) {\faMemory\enspace L5 · 模组/主控 \quad[\;8--10\%\;]};
+\node[node, below=of L5.west, anchor=north west, xshift=0.25cm] (MO1) {企业级模组/SSD\\Smart Global · Dell\\Samsung OEM};
+\node[node, right=of MO1] (MO2) {消费级模组\\Apacer · G.Skill\\Kingston (深科技代工)};
+\node[ashar, right=of MO2] (A5) {\faStar\enspace A 股 · 模组\\江波龙 (Foresee/Lexar)\\深科技 (沛顿) · 佰维存储};
+
+% Layer 6
+\node[layer=navy, below=1.1cm of L5] (L6) {\faServer\enspace L6 · 整机集成 \quad[\;-\;]};
+\node[node, below=of L6.west, anchor=north west, xshift=0.25cm] (S1) {AI 服务器\\NVIDIA DGX · Dell\\联想 · 浪潮 · 华为};
+\node[node, right=of S1] (S2) {PC/手机/汽车\\Apple · Dell · HP\\比亚迪 · 小米};
+\node[ashar, right=of S2] (A6) {\faStar\enspace A 股 · 系统\\(本报告不覆盖)\\浪潮 · 联想 · 华为};
+
+% Layer 7
+\node[layer=steelgrey, below=1.1cm of L6] (L7) {\faGlobe\enspace L7 · 下游应用 (Capex 来源)};
+\node[node, fill=steelgrey!10, below=of L7.west, anchor=north west, xshift=0.25cm, text width=4.1cm] (C1) {AI 训练集群\\MSFT · Meta · Google · AWS\\字节 · 腾讯 · 阿里 (\$2500 亿+)};
+\node[node, fill=steelgrey!10, right=of C1, text width=4.1cm] (C2) {云厂商数据中心\\AWS · Azure · GCP\\阿里云 · 腾讯云 · 火山};
+\node[node, fill=steelgrey!10, right=of C2, text width=4.1cm] (C3) {消费电子 + 汽车\\\(> \$10000 亿/年\) TAM\\PC 复苏 + AI PC + 新能源};
+
+% Main arrows
+\foreach \i in {1,...,6} {
+  \pgfmathsetmacro\j{int(\i+1)};
+  \draw[->, thick, navy] (L\i.south) -- node[midway, right=1pt, font=\tiny\color{steelgrey}] {价值传导} (L\j.north);
+}
+
+% Key stat
+\node[draw=navy, fill=white, rounded corners=3pt, font=\scriptsize\bfseries, text=navy, right=0.2cm of U2, yshift=-0.55cm] {aExclamationTriangle A 股无原厂 · 配置聚焦上游/接口/封测};
+\end{tikzpicture}
+}
+\end{exhibitbox}
+\sourcenote{产业链架构设计参考 Industry Landscape §1.3 mermaid 原版；价值占比来自中金 2026Q1 半导体深度报告 + AStock 交叉验证。}
+
+\vspace{0.4em}
+\noindent\textbf{投资含义}：产业链七层价值分布呈现显著的「哑铃型」——晶圆制造 (38-42\%) 和设备材料 (17-21\%) 合计占据近六成价值。A 股恰恰在晶圆制造层缺失 (YMTC/CXMT 未上市)，但在设备材料和先进封装两个高价值增量层拥有全球竞争力的标的。这一结构决定了 A 股存储链投资必须走「上游二阶 Beta + 接口芯片一阶 Alpha」的路径，而非追逐不存在的「国产 HBM 原厂」概念。
+
+\section{环节价值量、毛利率、A 股对标与国产化率四维总表}
+
+\begin{exhibitbox}[表 3-1 \quad 产业链各环节价值量 / 毛利率 / A 股对标 / 国产化率 / 技术代差 五维总表]
+\centering
+\footnotesize
+\begin{tabularx}{\linewidth}{>{\raggedright}p{1.6cm} >{\raggedleft}p{0.9cm} >{\raggedleft}p{0.9cm} >{\raggedright}p{2.2cm} >{\raggedleft}p{0.9cm} >{\raggedleft}p{1.2cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{环节} & \textbf{价值占比(\%)} & \textbf{全球龙头毛利率(\%)} & \textbf{全球龙头} & \textbf{国产化率(\%)} & \textbf{A 股核心标的} & \textbf{A 股卡位与代差评估} \\
+\midrule
+\rowcolor{accentblue!5}
+\textbf{半导体设备} & 10--12 & 45--60 & Lam · AMAT · ASML & {\faExclamationTriangle} 10--15 & \textbf{北方华创 (002371)\\中微公司 (688012)\\拓荆科技 (688072)} & 刻蚀/薄膜/ALD 在成熟制程全面突破，<16nm 验证中；\textbf{二阶 Beta 首选层}，国产化率仍有翻倍空间。代差 1--2 代。 \\
+\midrule
+\rowcolor{accentblue!5}
+\textbf{半导体材料} & 7--9 & 35--50 & ShinEtsu · JSR & {\faExclamationTriangle} 8--12 & \textbf{沪硅产业 (688126)\\南大光电 (300346)} & 12 寸硅片 28nm 批量供应；ArF 光刻胶 2026 目标突破；KrF/特气已破。代差 1--3 代 (按品类)。 \\
+\midrule
+\rowcolor{nvgreen!5}
+\textbf{存储设计·接口} & 8--10 & 55--70 & Rambus · Marvell & 约3--5 & \textbf{澜起科技 (688008)★} & \textbf{全球领先无代差}——RCD 全球 70\% 份额，CXL 首发；A 股唯一「一阶 Alpha」。兆易 NOR 前三，DRAM 追赶中。代差 0。 \\
+\midrule
+\textbf{存储设计·原厂} & 8--10 & 40--60 & SK · Samsung · Micron & <1 & \textbf{无直接标的} & YMTC/CXMT 未上市；兆易自研 DRAM 试产；A 股原厂层缺失是最大结构缺口。代差 3--4 代 (HBM)。 \\
+\midrule
+\textbf{晶圆制造} & 38--42 & 30--50 & Samsung · SK · YMTC & {\faExclamationTriangle} 8--15 & \textbf{无直接标的} & 长存/长鑫未上市，A 股仅通过设备供应商间接映射；DRAM 代差 1.5--2 代，NAND 代差 1 代。 \\
+\midrule
+\rowcolor{riskred!5}
+\textbf{先进封装 (CoWoS)} & 12--15 & 25--35 & TSMC (约80\%) & {\faExclamationTriangle} 5--8 & \textbf{长电科技 (600584)\\通富微电 (002156)} & TSMC 垄断 HBM 封装产能；长电 XDFOI/通富 CoWoS 2027 前难撼份额；\textbf{弹性标的}，但 AI 实际贡献 <3\%。代差 1--2 代。 \\
+\midrule
+\textbf{传统封测} & 5--7 & 15--22 & ASE · Amkor & 约25--30 & \textbf{长电 / 通富 / 华天} & 华天等传统封装国产替代较充分，毛利率低。代差 <1 代。 \\
+\midrule
+\rowcolor{deepnavy!5}
+\textbf{存储模组/SSD} & 8--10 & 10--20 & Smart Global · ATP & {\faExclamationTriangle} 10--20 & \textbf{江波龙 (301308)\\深科技 (000021)} & 深科技 Kingston 代工模式确定性高；江波龙 Foresee 企业级 SSD 导入头部云厂。代差 0--1 代 (技术门槛相对低)。 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{龙头毛利率来自各公司 FY2025 年报 (海外原厂/设备)；国产化率综合中国国际招标网公开数据 + {\faExclamationTriangle} 行业推断；价值占比参考中金半导体深度 [L3]。}
+
+\vspace{0.4em}
+\noindent\textbf{投资含义}：五维对比揭示三个关键投资洞察。\textbf{(1) 最佳配置层：设备材料 + 接口芯片。}设备层国产化率 10-15\% (翻倍空间) + 全球 capex 上行周期的「双重 Beta」叠加上升；接口层 (澜起) 是 A 股唯一全球领先无代差的环节。\textbf{(2) 需规避的结构性缺失层：原厂设计 + 晶圆制造。}A 股真正的原厂缺失意味着国产 HBM 主题标的本质上是「映射的映射」，估值弹性大但基本面脆弱。\textbf{(3) 先进封装是「远期弹性层」而非「当前基本面层」。}长电/通富当前 AI 收入实际贡献 <3\%，需 2027H2+ 方能体现 CoWoS 产能贡献，当前估值已部分反映远期预期，需警惕节奏误判。

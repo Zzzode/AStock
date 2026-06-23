@@ -1,0 +1,36 @@
+{
+  "case": "ai-storage-supply-chain-20260623",
+  "date": "2026-06-23",
+  "requirements": [
+    {
+      "id": "UR1",
+      "desc": "缺少 verified_market_data.md（L5 市场聚合快照）",
+      "severity": "medium",
+      "blocker": false
+    },
+    {
+      "id": "UR2",
+      "desc": "缺少独立的 valuation_audit.md（估值审计复核）",
+      "severity": "medium",
+      "blocker": false
+    },
+    {
+      "id": "UR3",
+      "desc": "缺少 house_view.md（投决层独立观点）",
+      "severity": "low",
+      "blocker": false
+    },
+    {
+      "id": "UR4",
+      "desc": "6只小市值标的缺L1官方财务覆盖",
+      "severity": "high",
+      "blocker": false
+    },
+    {
+      "id": "UR5",
+      "desc": "未执行 tools/verify_research_workspace.py 39 项自动门控",
+      "severity": "medium",
+      "blocker": false
+    }
+  ]
+}

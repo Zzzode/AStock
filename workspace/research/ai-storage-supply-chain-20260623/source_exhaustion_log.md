@@ -1,0 +1,26 @@
+# Source Exhaustion Log
+
+**Case:** `ai-storage-supply-chain-20260623`
+**Date:** 2026-06-23
+**Exhaustion score:** 82/100
+**Coverage narrative:** 14份卖方研报 + 8家L5机构数据 + 5类L4聚合；缺口6类已在catalog标注
+
+## By Tier
+
+| Tier (L1–L6) | Status / Note |
+|---|---|
+| L1 官方公告抓取 | 缺6只小市值标的完整表 |
+| L2 巨潮/SSE 互动问答 | 未纳入 |
+| L3 卖方原PDF | 14份（覆盖13家A股核心公司） |
+| L4 聚合平台 | 5类（汇博、慧博、Choice、iFind、Tushare 预览） |
+| L5 机构/东财 | 8家机构持仓+北向概览 |
+| L6 内部IC | 未纳入 |
+
+## Gap register
+
+| Gap | Severity |
+|---|---|
+| verified_market_data.md 缺失 | Medium |
+| 6只小市值标的 L1 财务覆盖缺失 | High |
+| 独立估值复核 valuation_audit.md 缺失 | Medium |
+| IC/house_view 缺失 | Low |

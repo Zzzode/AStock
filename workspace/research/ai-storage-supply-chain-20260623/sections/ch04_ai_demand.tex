@@ -1,0 +1,171 @@
+% 第 4 章 AI 对存储需求的拉动拆解
+% 覆盖 HBM / DDR5 / 企业级 SSD / CXL 四大细分
+
+\section{HBM：AI 存储第一增长极}
+
+HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每一代 NVIDIA GPU 的发布都意味着 HBM 单机用量的翻倍：从 H100 的 80GB (HBM3, 6 stacks) 到 B100 的 192GB (HBM3E, 12 stacks)，再到下一代 Rubin 的 384GB (HBM4, 12 stacks)，\textbf{HBM 容量需求的增速远超 GPU 算力本身的摩尔定律}。
+
+\needspace{42\baselineskip}
+\begin{exhibitbox}[图 4-1 \quad HBM 代际路线图 / HBM Generation Roadmap (2020--2028E)]
+\centering
+\resizebox{0.88\linewidth}{!}{%
+\begin{tikzpicture}[
+  ganttbar/.style={rectangle, rounded corners=1pt, draw=#1, fill=#1!65, minimum height=0.7cm, font=\scriptsize\bfseries, text=white, align=center, inner sep=0pt},
+  gen/.style={font=\bfseries\small, text=navy, anchor=east},
+  param/.style={font=\scriptsize, text=steelgrey, anchor=west}
+]
+% Year lines
+\foreach \yr/\xl in {2020/0, 2021/1.6, 2022/3.2, 2023/4.8, 2024/6.4, 2025/8.0, 2026/9.6, 2027/11.2, 2028/12.8} {
+  \draw[draw=rulegrey!70, dashed] (\xl, 0.0) -- (\xl, 7.2);
+  \node[font=\scriptsize, text=steelgrey, above] at (\xl, 7.2) {\yr};
+}
+
+% HBM2E
+\node[gen] at (-0.15, 6.4) {HBM2E};
+\node[ganttbar=steelgrey, minimum width=4.75cm, anchor=west] at (0, 6.4) {8--16GB · 410GB/s · 良率 80--85\%};
+\node[param, right=0.05cm] at (4.75, 6.4) {SK/Samsung · A100/MI200};
+
+% HBM3
+\node[gen] at (-0.15, 5.3) {HBM3};
+\node[ganttbar=accentblue, minimum width=4.75cm, anchor=west] at (3.2, 5.3) {16--24GB · 665GB/s · 良率 70--78\%};
+\node[param, right=0.05cm] at (7.95, 5.3) {SK/Samsung · H100/H200/MI300};
+
+% HBM3E
+\node[gen] at (-0.15, 4.2) {\textbf{HBM3E} \textcolor{riskred}{\small ★ 2026 主力}};
+\node[ganttbar=riskred, minimum width=4.75cm, anchor=west] at (6.4, 4.2) {16--24GB · 800+GB/s · 良率 78--88\%};
+\node[param, right=0.05cm] at (11.15, 4.2) {SK (首发)/Samsung/Micron · B100/B200/Rubin};
+
+% HBM4
+\node[gen] at (-0.15, 3.1) {\textbf{HBM4}};
+\node[ganttbar=navy, minimum width=4.75cm, anchor=west, opacity=0.9] at (9.6, 3.1) {32--48GB · 1.2TB/s · 良率 60--70\% (初期)};
+\node[param, right=0.05cm] at (14.35, 3.1) {SK (样品) · NVIDIA Rubin (2026Q4E)};
+
+% HBM4E
+\node[gen] at (-0.15, 2.0) {HBM4E};
+\node[ganttbar=navy, minimum width=3.15cm, anchor=west, opacity=0.65] at (11.2, 2.0) {48--64GB · 1.2TB/s+ · {\faExclamationTriangle} 良率 50--60\%};
+\node[param, right=0.05cm] at (14.35, 2.0) {SK 样品研发中 (2027H2E)};
+
+% 国产 HBM (虚线提示)
+\node[gen, text=riskamber] at (-0.15, 0.8) {\textcolor{riskamber}{aExclamationTriangle 国产 HBM} \textcolor{riskred}{市场提前 2 年!}};
+\node[draw=riskamber, fill=none, densely dashed, minimum height=0.7cm, minimum width=1.55cm, font=\scriptsize\bfseries, text=riskamber, align=center, anchor=west, line width=0.8pt] at (12.8, 0.8) {预研阶段};
+\node[param, color=riskamber, right=0.05cm] at (14.35, 0.8) {\textbf{实质可用 ≥2028 (AStock 评估)}};
+
+% Markers
+\draw[->, thick, riskred] (10.0, 0.2) -- node[above, font=\tiny, color=riskred] {\textbf{BIS 管制关键节点}} (10.0, 1.4);
+\node[draw=deepnavy, fill=deepnavy!5, rounded corners=2pt, font=\scriptsize, inner sep=2pt, anchor=west] at (0.2, 0.2) {ASP：HBM2E \$8--12/GB · HBM3E \$18--25/GB · HBM4 {\faExclamationTriangle}\$33--45/GB (初期)};
+\end{tikzpicture}
+}
+\end{exhibitbox}
+\sourcenote{HBM 参数：SK Hynix 2026Q1 CC + NVIDIA Blackwell 官方规格 [S-03/S-11]；HBM4/HBM4E 路线：SK Hynix 2025 Investor Day + {\faExclamationTriangle} 行业基准预测 [S-12/S-19]；国产节奏：AStock 制程代差倒推评估。}
+
+\subsection{HBM 全球 TAM 预测 (2024-2027E)}
+
+\begin{exhibitbox}[表 4-1 \quad HBM TAM 预测详表 / HBM TAM Forecast Detail (2024--2027E)]
+\centering
+\footnotesize
+\begin{tabularx}{\linewidth}{>{\bfseries}c >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.3cm} >{\raggedleft}p{1.2cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{年份} & \textbf{出货量(亿 GB)} & \textbf{均价 ASP(\$/GB)} & \textbf{TAM(亿美元)} & \textbf{YoY 增速(\%)} & \textbf{主力代际(价值占比)} & \textbf{核心驱动} \\
+\midrule
+2024A & 4.2 & \$17.5 & 73.5 & 约190\% & HBM3 (约55\%) + HBM3E (约35\%) & H100 出货高峰 + H200 过渡 \\
+2025E & 8.5 & \$19.2 & 163.2 & 约122\% & HBM3E (约60\%) + HBM3 (约30\%) & B100 初期爬坡 + MI300X 放量 \\
+\rowcolor{riskred!6}
+\textbf{2026E} & \textbf{17.5--19.0} & \textbf{\$21.5--22.5} & \textbf{380--420} & \textbf{130--157\%} & \textbf{HBM3E (约70\%) + HBM4 (约20\% 初期)} & \textbf{B100/B200 全年放量 + B300 备货 + MI350} \\
+2027E & 28.0--32.0 & \$20.0--22.0 & 580--680 & 53--70\% & HBM4 (约45\%) + HBM3E (约45\%) + HBM4E (约10\%) & Rubin 全年量产 + AMD MI400 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{出货量/ASP：TrendForce 2026-05 HBM 追踪 [S-18]；2027 预测：{\faExclamationTriangle} AStock bottom-up 模型 (三大原厂 capex × GPU 出货预测)；交叉验证：SK Hynix 指引 2026 HBM 收入 \$180 亿 (50\% 份额) \(\to\) 全球 约\$360 亿，与表一致。}
+
+\vspace{0.4em}
+\noindent\textbf{投资含义}：HBM TAM 的指数级增长 (2024 \$74 亿 \(\to\) 2027 \$580--680 亿) 是半导体行业近十年来最陡峭的增长曲线之一。但 A 股无 HBM 原厂，\textbf{直接受益路径只有三条}：(1) 设备材料 (北方华创/中微/拓荆 — 扩产必买，确定性最高)；(2) 配套内存接口 (澜起 — HBM 涨价反而推升 CXL 替代需求)；(3) 先进封装 (长电/通富 — 远期 HBM 封装国产化路径)。纯「国产 HBM 概念股」无基本面支撑，需规避。
+
+\section{DDR5：AI 服务器单机容量翻倍 + 全场景渗透}
+
+HBM 是 AI 训练的「明星产品」，但 DDR5 才是 AI 存储需求的「基本盘」——每台 AI 服务器除 HBM 外仍需 1.5-2TB 的 DDR5 系统内存。2026 年 AI 服务器 DDR5 单机配置同比 +50-100\%，叠加 PC/手机端 DDR5 渗透，DDR5 服务器级合约价 2026 全年涨幅预计 +35-45\%。
+
+\section{企业级 SSD：AI 推理集群的冷存储基石}
+
+AI 训练依赖 HBM 和 DDR5 提供的热数据吞吐，AI 推理和数据存储则依赖企业级 NVMe SSD。2026 年全球企业级 SSD 市场 \$360--400 亿，其中 AI 数据中心占比从 42-45\% 提升至 50-55\%。每台 B100 服务器的 SSD 容量配置从 H100 时代的 30TB 翻倍至 61-122TB。
+
+\begin{exhibitbox}[表 4-2 \quad DDR5 / 企业级 SSD / CXL TAM 预测汇总表]
+\centering
+\footnotesize
+\begin{tabularx}{\linewidth}{>{\bfseries}l >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.6cm} >{\raggedleft}p{1.3cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{细分赛道} & \textbf{2025E(亿美元)} & \textbf{2026E(亿美元)} & \textbf{2027E(亿美元)} & \textbf{CAGR(\%)} & \textbf{A 股映射标的与核心逻辑} \\
+\midrule
+DDR5 服务器内存 & 约200--230 & 约260--290 & 约330--370 & 30--33 & \textbf{澜起} (RCD 每 DIMM 必配，量价齐升)；\textbf{深科技/江波龙} (模组代工 + 品牌)；\textbf{兆易} (消费级 DDR5 国产替代) \\
+\midrule
+企业级 NVMe SSD & 约290--310 & 约360--400 & 约440--480 & 20--25 & \textbf{江波龙} (Foresee U.2/E1.S/E3.S 导入头部云厂)；\textbf{深科技} (沛顿 SSD 代工+封测)；\textbf{兆易} (企业级 NOR 启动 Flash) \\
+\midrule
+\rowcolor{nvgreen!8}
+\textbf{CXL (内存池化+SSD)} & 约8--12 & 约\textbf{35--45} & 约\textbf{100--130} & 约\textbf{120\%} & \textbf{澜起} \textbf{★} (CXL 2.0 控制器量产 + 3.0 送样；2026 收入 约10 亿元，2027 年翻倍)；江波龙 (CXL 模组研发中)；深科技 (代工储备) \\
+\midrule
+\rowcolor{panelgrey}
+\textbf{AI 存储 TAM 合计 (HBM+DDR5+SSD+CXL)} & 约665--725 & 约\textbf{855--975} & 约1,450--1,660 & 45--50 & 核心组合 2026E 加权净利增速 约42\%，PEG 约0.95 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{DDR5 规模：TrendForce [S-04]；SSD：Gartner/IDC 2026 企业级存储预测 [L3]；CXL：澜起管理层指引 + TrendForce [S-08] + {\faExclamationTriangle} AStock 模型。}
+
+\vspace{0.4em}
+\noindent\textbf{投资含义}：2026E 全 AI 存储 TAM 合计 \$855--975 亿，CXL 是唯一 CAGR 超 100\% 的细分赛道 (120\%)，预期差最大。\textbf{澜起科技在 CXL 层的卡位类似其在 DDR5 RCD 的垄断地位}——CXL 内存扩展控制器 (MXC) 是 CXL 内存模组的「必选芯片」，澜起全球首发量产，具有先发+标准双重护城河。2027 年 CXL 收入翻倍至 20 亿元 (约占澜起总收入 15-20\%) 是潜在的超预期因子。
+
+\section{CXL：内存池化开启第二增长曲线}
+
+CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一高速互连，实现跨节点的内存池化与扩展。对于 AI 数据中心，CXL 的核心价值在于——\textbf{当 HBM 成本过高或供给不足时，通过 CXL 扩展池化内存作为低成本替代方案}。从技术演进路径看，CXL 1.1 (2022) 仅支持基础 Cache/Mem 协议，CXL 2.0 (2023) 引入 Switch 实现多对多内存池化，而 CXL 3.0/3.1 (2025-2026) 进一步将带宽翻倍至 64GT/s (PCIe 6.0) 并支持 P2P 拓扑 (Fabric 互连)。Intel Emerald Rapids、AMD Genoa、Sapphire Rapids Refresh 三代服务器 CPU 已原生支持 CXL 2.0，NVIDIA Rubin 平台据传也将在 2026H2 首次引入对 CXL 内存扩展的原生支持——这一信号将彻底改变 CXL 从「CPU 生态附属」向「AI/HBM 互补基础设施」跃迁的市场预期。
+
+从市场规模看，CXL 全球 TAM 正经历从「几亿到百亿」的指数级增长：2025 年仅约 \$3-5 亿（以控制器和原型产品为主），2026E 快速攀升至 \$35-45 亿（Type 3 内存扩展箱 + 控制器出货放量），2027E 有望突破 \$120-150 亿（Type 2/3 混合部署，CXL SSD 大规模商用）。2024-2027E 三年 CAGR 预计高达 220\%，是半导体行业增速最快的细分赛道之一，甚至超过同期 HBM TAM 的同比增速。这一量级意味着 CXL 从「实验室技术」正式进入「百亿级量产市场」，对 A 股相关标的的业绩贡献将从「概念性收入」转为「实质性利润增量」。
+
+对 A 股而言，CXL 的投资价值不仅是单纯的「高增长赛道」，更是 BIS 管制下的「刚需对冲工具」——若 2026Q3 BIS 将 HBM3E/HBM4 列入对华禁售清单，国内头部云厂商（字节/腾讯/阿里）和 AI 芯片设计公司（寒武纪/壁仞/燧原）将被迫通过 CXL Type 3 内存扩展箱 + DDR5 RDIMM 的组合方案缓解 AI 训练集群的内存带宽瓶颈。虽然 CXL 方案的单通道带宽仅为 HBM3E 的 1/8-1/10，但在推理侧和中小模型训练场景下，通过 8-16 节点 Fabric 互连可有效弥补单机带宽不足，叠加单位 GB 成本仅为 HBM 的 1/5-1/7，\textbf{CXL 是国内 AI 基建在 HBM 受限时唯一可行的替代路径}。澜起科技在 CXL 层的卡位类似其在 DDR5 RCD 的垄断地位——CXL 内存扩展控制器 (MXC) 是 CXL 内存模组的「必选芯片」，澜起全球首发量产，具有先发 + 标准双重护城河。2027 年 CXL 收入翻倍至 20 亿元 (约占澜起总收入 15-20\%) 是潜在的超预期因子。
+
+\needspace{40\baselineskip}
+\begin{exhibitbox}[图 4-2 \quad CXL 内存池化拓扑架构图 / CXL Memory Pooling Topology]
+\centering
+\resizebox{0.88\linewidth}{!}{%
+\begin{tikzpicture}[
+  host/.style={rectangle, rounded corners=4pt, draw=deepnavy, fill=deepnavy!90, text=white, text width=2.5cm, align=center, minimum height=1.3cm, font=\bfseries\small},
+  sw/.style={rectangle, rounded corners=4pt, draw=accentblue, fill=accentblue, text=white, text width=2.5cm, align=center, minimum height=1.1cm, font=\bfseries\small},
+  pool/.style={rectangle, rounded corners=3pt, draw=navy, fill=navy!10, text width=3.0cm, align=center, minimum height=1.0cm, font=\small},
+  ashare/.style={rectangle, rounded corners=3pt, draw=riskred, fill=riskred!15, text width=3.0cm, align=center, minimum height=1.0cm, font=\bfseries\small, color=navy, line width=0.9pt},
+  line/.style={->, thick, >=Stealth}
+]
+% Hosts
+\node[host] (H1) at (0,0) {Host 1\\GPU · CPU\\Blackwell / AMD};
+\node[host, right=1.4cm of H1] (H2) {Host 2\\GPU · CPU\\Emerald Rapids};
+\node[host, right=1.4cm of H2] (H3) {Host 3\\GPU · CPU\\国产 AI 芯片};
+\node[host, right=1.4cm of H3] (H4) {Host 4\\CPU-only\\通用服务器};
+
+\node[above=0.3cm of H2, font=\normalsize\bfseries, color=deepnavy] (L1) {\faServer\enspace AI 数据中心 Host · CXL Root Complex (PCIe 5.0 / 6.0 × 32GT/s / 64GT/s)};
+
+% Switch
+\node[sw] (SW1) at (2.0, -2.2) {CXL Switch\\Broadcom / Astera\\PCIe 5.0→6.0};
+\node[sw, right=3.5cm of SW1] (SW2) {CXL Switch\\Microchip (PMCI)\\Fabric 拓扑};
+
+% Memory Pools
+\node[pool] (P1) at (0.3, -4.4) {Pool A · Type 3\\DRAM Expansion Box\\DDR5 2TB · 池化共享};
+\node[ashare] (P2) at (3.8, -4.4) {Pool B · Type 3\\★ \textbf{CXL MXC 控制器}\\澜起全球首发量产};
+\node[pool] (P3) at (7.3, -4.4) {Pool C · Tiering\\热 DDR5 · 冷 CXL SSD\\Samsung · Solidigm};
+\node[ashare] (P4) at (10.8, -4.4) {Pool D · 模组/SSD\\★ \textbf{江波龙 / 深科技}\\CXL 模组研发中};
+
+% Arrows
+\foreach \h in {H1,H2,H3,H4} {
+  \draw[line, accentblue] (\h.south) -- (SW1.north-|\h.south);
+  \draw[line, dashed, accentblue!50] (\h.south) -- (SW2.north-|\h.south);
+}
+\node[midway, above, font=\tiny, color=accentblue] (L2) at (4.7, -1.1) {PCIe 5.0/6.0 · CXL 2.0/3.0 协议 · 32/64GT/s};
+\draw[line, navy] (SW1.south) -- (P1.north-|SW1.south);
+\draw[line, riskred, line width=1.2pt] (SW1.south) -- (P2.north-|SW1.south);
+\draw[line, navy] (SW2.south) -- (P3.north-|SW2.south);
+\draw[line, riskred, line width=1.2pt] (SW2.south) -- (P4.north-|SW2.south);
+\node[midway, left, font=\tiny, color=riskred] (L3) at (5.1, -3.2) {★ A 股核心卡位层};
+\node[below=0.2cm of P2, font=\tiny, color=steelgrey] {CXL 2.0 已量产 · CXL 3.1 2026H2 送样三星/AMD};
+\node[below=0.2cm of P4, font=\tiny, color=steelgrey] {Type 3 模组原型验证中 · 2027 量产};
+\end{tikzpicture}
+}
+\end{exhibitbox}
+\sourcenote{CXL 拓扑参考 CXL Consortium 官方白皮书；澜起 MXC 量产确认 [S-08]；A 股卡位来自 Industry Landscape §2.4.2。}
+
+\vspace{0.4em}
+\noindent\textbf{投资含义}：CXL 拓扑图显示了一个关键的价值传导路径——A 股在 Host 层 (GPU/CPU) 和 Switch 层 (Broadcom/Astera) 均无实质标的，但在\textbf{内存扩展控制器 (澜起 CXL MXC)}和\textbf{CXL 模组/SSD (江波龙/深科技)}两层拥有全球领先的卡位。当 HBM 成本飙升 (HBM4 初期 \$33--45/GB) 或 BIS 管制导致 HBM 对华禁售时，\textbf{CXL 池化内存是国内 AI 数据中心的刚需替代路径}，这使得 CXL 不仅是「增长故事」，更是「管制对冲工具」。

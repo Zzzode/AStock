@@ -1,0 +1,61 @@
+% 第 9 章 卖方共识与 AStock 分歧
+
+\section{卖方一致预期分布：全行业看多但覆盖广度不足}
+
+本次研究检索并整理了 2026-03-23 ~ 2026-06-23 (近 90 天) 窗口内 14 份券商 PDF 原件研报，覆盖 10 家券商、5 只核心标的。整体评级分布为「买入 9 / 增持 3 / 中性 0 / 减持 0 / 卖出 0」，\textbf{卖方一致看多，但覆盖广度存在结构性缺口}——深科技、通富微电、中微公司 3 只核心标的在窗口内无卖方 PDF 覆盖，头部券商 (中金/中信/华泰/广发) 的独立行业深度在本次检索中未返回可核验结果。
+
+\begin{exhibitbox}[表 9-1 \quad 卖方共识矩阵 / Street Consensus Matrix (精简版)]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\linewidth}{l l l >{\centering}p{1.0cm} >{\raggedleft}p{1.2cm} >{\raggedleft}p{1.0cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{标的} & \textbf{日期} & \textbf{券商/分析师} & \textbf{评级} & \textbf{26E EPS} & \textbf{26E PE} & \textbf{核心逻辑} \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{澜起} & 2026-05-20 & 东海证券 & \stance{riskamber}{增持} & 2.68 & 92x & DDR5 子代+MRDIMM；CXL3.1 MXC送样；PCIe Retimer 全球第二 \\
+& 2026-05-11 & 开源证券 & \stance{riskgreen}{买入} & 2.93 & 72x & MRCD/MDB二子代起量；RCD全球份额36.8\%；互连芯片TAM CAGR 25.9\% \\
+& 2026-04-15 & 国元证券 & \stance{riskgreen}{买入} & 2.40 & 64x & PCIe6.0 2026上量；MRCD/MDB拐点；RCD/DB 2026E收入>35亿 \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{兆易} & 2026-05-27 & 中邮证券 & \stance{riskgreen}{买入} & 8.67 & 59x & 利基DRAM量价齐升+海外退出；AI MCU 2026推出；MCU+20\% YoY \\
+& 2026-05-18 & 中航证券 & \stance{riskgreen}{买入} & 8.55 & 41x & DRAM占比升至1/3；长鑫年采57亿；LPDDR4 + D4 8Gb新制程H2量产 \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{江波龙} & 2026-05-07 & 国信证券 & \stance{riskamber}{增持} & 26.47 & 15x & 大幅上修盈利 (8.97→111亿)；Q1毛利率55.53\%；Lexar+Zilia全球化 \\
+& 2026-05-07 & 爱建证券 & \stance{riskgreen}{买入} & 47.64 & 10x & 2026-2028E归母199.7/219/227亿；UFS4.1+企业级SSD双轮 \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{长电} & 2026-05-12 & 华鑫证券 & \stance{riskgreen}{买入} & 1.08 & 52x & 首次覆盖；AI算力传导先进封装；毛利率Q1+1.92pct YoY \\
+& 2026-05-07 & 华源证券 & \stance{riskamber}{增持} & 1.09 & 44x & 固投99.8亿；研发费5.4\%+；HPC/SiIP/汽车电子方向 \\
+\midrule
+\rowcolor{riskgreen!8}
+\textbf{北华创} & 2026-05-02 & 东吴证券 & \stance{riskgreen}{买入} & 9.49 & 57x & 研发14亿 (+37\%)；确收节奏致利润增速低于收入 \\
+& 2026-04-21 & 东吴证券 & \stance{riskgreen}{买入} & 9.49 & 50x & 下修利润 (78→68.8亿) capex节奏+确收；品类覆盖度>80\% \\
+& 2026-04-20 & 开源证券 & \stance{riskgreen}{买入} & 9.73 & 48x & 上修收入 (493→495亿) 下修利润；全球capex周期上行确认 \\
+\midrule
+\rowcolor{riskamber!8}
+\textbf{中微/通富/深科技} & — & — & \multicolumn{3}{c}{\textbf{aExclamationTriangle 近90天无卖方PDF覆盖}} & 本次Web搜索可用度极低 (10次查仅1次返回)；强烈建议下一轮定向补采东方财富研报中心 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{14份PDF原件 (SOURCES 目录) + Web 聚合 [W1]；目标价因本次 PDF 正文摘要未直接提取统一以 EPS+PE 表征。完整 80 行矩阵详见附录 E 表 E-1。}
+
+\section{AStock 与卖方的三处关键分歧}
+
+卖方一致性看多的背景下，AStock 识别出三处独立判断与卖方观点的系统性差异，这三处差异是本报告 alpha 来源的核心。
+
+\begin{keyinsight}[分歧一：HBM 国产节奏预期差]
+卖方报告普遍将长存/长鑫 HBM 量产时点定在 2026-2027 年 (参考中邮证券/中航证券隐含假设)。\textbf{AStock 判断国产 HBM 实质商用时点 ≥ 2028 年}，代差 3-4 代，市场对相关标的 (部分媒体所指的「国产 HBM 概念股」) 存在 2 年以上的预期超前。分歧来源：HBM 不仅需存储晶圆制程，更需 CoWoS 先进封装 (TSV 工艺) 与 GPU 原厂的深度协同设计，国内两项能力均处于早期。
+\end{keyinsight}
+
+\begin{keyinsight}[分歧二：设备 capex 弹性低估]
+卖方一致预期北方华创 2026E 收入 495 亿元 (东吴/开源区间 493~495 亿)。\textbf{AStock 判断实际或达 520--550 亿元 (上修 5-11\%)}，核心原因：长存/长鑫国产化率从 15\% 提升至 25\% 的 S 曲线跃升值未被卖方模型充分计入 (本次 14 份报告仅东吴/开源 2 份覆盖北方华创且为跟踪报告非深度行业)。若 ASML DUV 进一步断供长存/长鑫，则国产化率跃升更剧烈。
+\end{keyinsight}
+
+\begin{keyinsight}[分歧三：CXL 商业化节奏预期过低]
+卖方对澜起 CXL 收入预期普遍保守 (东海/开源隐含 2026 年 CXL 贡献 3-5\% 营收)。\textbf{AStock 判断 2026 年 CXL 收入 10 亿元左右 (占总营收 约13\%)，2027 年翻倍至 20 亿元 (约18\%)}。核心依据：澜起 CXL 3.1 Type3 MXC 已向三星/AMD 送样且反馈积极；BIS HBM 管制传闻下国内云厂加速 CXL 池化内存替代评估；Intel Emerald Rapids + AMD Genoa 全量支持 CXL。CXL 是本报告核心的「超预期变量」。
+\end{keyinsight}
+
+\vspace{0.4em}
+\noindent\textbf{投资含义}：三处分歧各自对应一项可验证的「监控触发指标」。若 (a) 长存/长鑫 2026Q3 未披露任何 HBM 样品或合作信息 → \textbf{修正：国产 HBM 概念标的估值回撤 20\%+}；若 (b) 北方华创 2026H1 收入 >260 亿元 (YoY >32\%) → \textbf{修正：北华创 2026E 收入上修至 540 亿+，目标价上调 10-15\%}；若 (c) 澜起 2026Q3 CXL 出货 >50 万颗 → \textbf{修正：澜起 CXL 收入超预期，目标价追加 +15\% 溢价}。

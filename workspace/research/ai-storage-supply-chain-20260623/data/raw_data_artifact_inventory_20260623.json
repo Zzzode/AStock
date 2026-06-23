@@ -1,0 +1,50 @@
+{
+  "run_date": "2026-06-23",
+  "purpose": "Account for PRIMARY raw-level evidence inside top-level data/ and broker catalog.",
+  "raw_data_files": 4,
+  "present_raw_files": 4,
+  "missing_raw_files": 0,
+  "by_type": {
+    "md": 3,
+    "json": 1
+  },
+  "boundary": "Raw-file accounting only; not substantive completion of non-public data requirements.",
+  "files": [
+    {
+      "path": "workspace/research/ai-storage-supply-chain-20260623/data/raw_financials.md",
+      "level": "L3",
+      "note": "L3 卖方一致预期解析 + 原始财务抓取摘要",
+      "type": "md",
+      "size_bytes": 42882,
+      "sha256": "2de74e59bac52a1d6dc50b490c301729d1e78f9019a722d5d8765040e1c371e0",
+      "exists": true
+    },
+    {
+      "path": "workspace/research/ai-storage-supply-chain-20260623/data/report_catalog.md",
+      "level": "L3",
+      "note": "L3 卖方研报目录 + 摘要清单",
+      "type": "md",
+      "size_bytes": 12857,
+      "sha256": "79dc74feda93a89c152805a077e436476af3c47bf84967ff764839eef926cbbb",
+      "exists": true
+    },
+    {
+      "path": "workspace/research/ai-storage-supply-chain-20260623/data/consensus_analysis_raw.md",
+      "level": "L5",
+      "note": "L5 机构一致预期聚合原始数据",
+      "type": "md",
+      "size_bytes": 16981,
+      "sha256": "fb5eed5705e27b9ae3d85d6eba28c83d36ecd19afb021798b96c064deb66231c",
+      "exists": true
+    },
+    {
+      "path": "workspace/research/ai-storage-supply-chain-20260623/sources/broker-reports/2026-06-23/_catalog_draft.json",
+      "level": "L3",
+      "note": "L3 卖方研报捕获目录草稿",
+      "type": "json",
+      "size_bytes": 38799,
+      "sha256": "3dbd263ee639913289448d1638bbbf8173c5841bb354ca439a40812568ed9de9",
+      "exists": true
+    }
+  ]
+}

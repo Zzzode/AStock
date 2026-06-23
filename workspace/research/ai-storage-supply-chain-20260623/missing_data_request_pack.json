@@ -1,0 +1,30 @@
+{
+  "case": "ai-storage-supply-chain-20260623",
+  "date": "2026-06-23",
+  "requests": [
+    {
+      "id": "MD1",
+      "desc": "verified_market_data.md缺失（实时市值、成交、北向、融资融券）",
+      "priority": "medium",
+      "source_type": "L5东财聚合"
+    },
+    {
+      "id": "MD2",
+      "desc": "house_view.md缺失（IC/投决层独立观点）",
+      "priority": "low",
+      "source_type": "L6内部研究主管批注"
+    },
+    {
+      "id": "MD3",
+      "desc": "valuation_audit.md缺失（独立估值复核）",
+      "priority": "medium",
+      "source_type": "L6质控委员会复核"
+    },
+    {
+      "id": "MD4",
+      "desc": "6只小市值标的缺L1官方财务覆盖（完整利润表/资产负债表抓取）",
+      "priority": "high",
+      "source_type": "L1巨潮/SSE官方抓取"
+    }
+  ]
+}

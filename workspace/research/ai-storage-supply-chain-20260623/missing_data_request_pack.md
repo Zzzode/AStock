@@ -1,0 +1,14 @@
+# Missing Data Request Pack
+
+**Case:** `ai-storage-supply-chain-20260623`
+**Date:** 2026-06-23
+**Request count:** 4
+
+## Requests
+
+| ID | Description | Priority | Source type |
+|---|---|---|---|
+| MD1 | verified_market_data.md缺失（实时市值、成交、北向、融资融券） | medium | L5东财聚合 |
+| MD2 | house_view.md缺失（IC/投决层独立观点） | low | L6内部研究主管批注 |
+| MD3 | valuation_audit.md缺失（独立估值复核） | medium | L6质控委员会复核 |
+| MD4 | 6只小市值标的缺L1官方财务覆盖（完整利润表/资产负债表抓取） | high | L1巨潮/SSE官方抓取 |

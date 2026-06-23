@@ -1,0 +1,88 @@
+% !TEX program = xelatex
+% AI 驱动的全球存储产业链深度研究报告 — XeLaTeX 主文件
+% Design: Goldman Sachs / Morgan Stanley style via preamble.tex
+% Compile: xelatex main.tex (至少两次以生成目录)
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{AI 叙事下的全球存储产业链深度研究}
+\newcommand{\reportsubtitle}{HBM 扩容、DDR5 渗透、CXL 商业化与国产替代四主线共振下的 A 股投资机会}
+\newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
+\newcommand{\reportscope}{CHINA A-SHARES | AI Memory \& Storage Supply Chain}
+\newcommand{\reportdate}{2026 年 6 月 23 日}
+\newcommand{\reportdatacutoff}{市场数据截止 2026-06-23；财务数据截止 2026Q1 披露}
+\newcommand{\reporttype}{行业深度研究 · Industry Deep Dive}
+\newcommand{\reportauthor}{AStock Research Agent Team}
+\newcommand{\reporthouseview}{\kaishu 全球存储产业正处于「AI 拉动的结构性短缺 + 国产替代加速」的黄金拐点。\textbf{HBM} 是第一增长极（2026E 全球 TAM \$380--420 亿，2024-2027E CAGR 约 68\%），\textbf{DDR5} 服务器端渗透 80\%+ 且子代升级带来量价齐升，\textbf{CXL} 2026H2 进入商业化元年，\textbf{国产替代}在设备/材料环节确定性最高。\textbf{A 股配置首选：极高确定性 Tier 1（澜起科技 / 北方华创 / 中微公司）+ 高确定性 Tier 2（拓荆科技 / 沪硅产业 / 深科技）}的哑铃组合；卫星配置长电科技 / 通富微电 / 江波龙 / 兆易创新捕捉弹性。需规避``国产 HBM 概念''等被市场节奏提前 2 年以上的标的。核心组合建议基准仓位 60\% 设备材料 + 25\% 接口/封测 + 15\% 设计/模组，2026H2 若 DDR5 合约价 QoQ 超 +10\% 可超配至 70\%。上行触发：NVIDIA Rubin 超预期放量 / BIS 管制放宽。下行触发：HBM ASP 下行 30\%+ / Hyperscaler capex 连续两季下修 15\%。}
+\newcommand{\reportquality}{L1 原厂官方披露 (三星/SK 海力士/美光 capex 指引、NVIDIA 产品规格、各公司年报 IR) + L2 政府公开/权威媒体 (BIS 管制细则、ASML 公告、Reuters/FT) + L3 第三方机构 (TrendForce / DRAMeXchange / Omdia / Wind 一致预期) 交叉验证；HBM4/HBM4E 良率与国内未上市原厂数据标注 {\faExclamationTriangle} 推断级；A 股 AI 敞口为 AStock 自模型估算非官方披露。覆盖 14 份券商 PDF 原件 (L3) 与 20 项编号数据源 (详见附录 A 来源注册)。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料与机构研究数据整理，不构成任何证券买卖建议。投资者须自主决策并承担风险。}
+
+\input{../../../.agents/templates/preamble.tex}
+
+\hypersetup{
+  pdfauthor={\reportauthor},
+  pdftitle={\reporttitle}
+}
+
+\begin{document}
+
+\astockcover
+
+\tableofcontents
+\clearpage
+
+% ============ 正文章节 ============
+\chapter{投资委员会概要}
+\input{sections/ch01_ic_summary}
+
+\chapter{执行摘要与核心观点}
+\input{sections/ch02_executive_summary}
+
+\chapter{全球存储产业链图谱}
+\input{sections/ch03_supply_chain_map}
+
+\chapter{AI 对存储需求的拉动拆解}
+\input{sections/ch04_ai_demand}
+
+\chapter{供需-价格周期与原厂资本开支}
+\input{sections/ch05_supply_price_cycle}
+
+\chapter{全球竞争格局与国产替代进度}
+\input{sections/ch06_competition_substitution}
+
+\chapter{A 股映射标的深度分析}
+\input{sections/ch07_ashare_targets}
+
+\chapter{估值模型与国际可比}
+\input{sections/ch08_valuation}
+
+\chapter{卖方共识与 AStock 分歧}
+\input{sections/ch09_consensus_divergence}
+
+\chapter{风险矩阵与压力测试}
+\input{sections/ch10_risk_stress}
+
+\chapter{投资建议与组合构建}
+\input{sections/ch11_investment_reco}
+
+% ============ 附录 ============
+\appendix
+\chapter{来源注册表、估值审计与数据验证摘要}
+\input{sections/app_sources_audit}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[免责声明与披露]
+\small
+\reportdisclaimer\par
+\vspace{0.4em}
+This report is produced by AStock Research Agent Team from publicly available information, broker research PDFs, company filings and third-party data. Forecasts, target prices and ratings are sourced from identified brokers; scenarios and fair-value ranges produced internally are explicitly labeled as AStock estimates and should not be construed as investment recommendations.
+\par
+\vspace{0.4em}
+\textbf{Conflicts of interest:} The producing agent team does not hold any of the named securities. Data vendors (TrendForce, Wind, DRAMeXchange) are paid third-party sources and their forecasts may differ materially from realized outcomes.
+\par
+\vspace{0.4em}
+\textbf{Agent confidence:} 78/100. Deductions: China hyperscaler capex (L3), A-share AI revenue exposure (model-estimated, not disclosed), HBM4/HBM4E yield and ASP (benchmark forecasts, not vendor-confirmed).
+\end{disclosurebox}
+
+\end{document}
