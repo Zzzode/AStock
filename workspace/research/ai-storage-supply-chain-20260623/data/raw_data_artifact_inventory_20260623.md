@@ -1,5 +1,5 @@
-# raw_data_artifact · Artifact Inventory (R212 Refresh)
-- **Generated**：2026-06-24 R212 Polling
+# raw_data_artifact · Artifact Inventory (R213 Refresh)
+- **Generated**：2026-06-24 R213 Polling
 - **Items**：5
 - **治理分类**：PRIMARY / DERIVED_CORE / TEMP
 
