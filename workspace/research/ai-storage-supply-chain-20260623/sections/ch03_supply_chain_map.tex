@@ -8,7 +8,7 @@
 \needspace{52\baselineskip}
 \begin{exhibitbox}[图 3-1 \quad 全球存储产业链全景图谱 / Global Memory Supply-Chain Architecture]
 \centering
-\resizebox{0.88\linewidth}{!}{%
+\resizebox{0.88\exhibitwidth}{!}{%
 \begin{tikzpicture}[
   >=Stealth,
   node distance=0.55cm,
@@ -83,30 +83,30 @@
 \begin{exhibitbox}[表 3-1 \quad 产业链各环节价值量 / 毛利率 / A 股对标 / 国产化率 / 技术代差 五维总表]
 \centering
 \footnotesize
-\begin{tabularx}{\linewidth}{>{\raggedright}p{1.6cm} >{\raggedleft}p{0.9cm} >{\raggedleft}p{0.9cm} >{\raggedright}p{2.2cm} >{\raggedleft}p{0.9cm} >{\raggedleft}p{1.2cm} >{\raggedright\arraybackslash}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\raggedright}p{1.5cm} >{\raggedleft}p{0.85cm} >{\raggedleft}p{0.85cm} >{\raggedright\arraybackslash\hspace{0pt}}p{2.0cm} >{\raggedleft}p{0.85cm} >{\raggedright\arraybackslash\hspace{0pt}}p{1.4cm} >{\raggedright\arraybackslash\hspace{0pt}}X}
 \toprule
-\textbf{环节} & \textbf{价值占比(\%)} & \textbf{全球龙头毛利率(\%)} & \textbf{全球龙头} & \textbf{国产化率(\%)} & \textbf{A 股核心标的} & \textbf{A 股卡位与代差评估} \\
+\textbf{环节} & \textbf{价值(\%)} & \textbf{毛利(\%)} & \textbf{全球龙头} & \textbf{国产化(\%)} & \textbf{A 股核心标的} & \textbf{A 股卡位与代差评估} \\
 \midrule
 \rowcolor{accentblue!5}
-\textbf{半导体设备} & 10--12 & 45--60 & Lam · AMAT · ASML & {\faExclamationTriangle} 10--15 & \textbf{北方华创 (002371)\\中微公司 (688012)\\拓荆科技 (688072)} & 刻蚀/薄膜/ALD 在成熟制程全面突破，<16nm 验证中；\textbf{二阶 Beta 首选层}，国产化率仍有翻倍空间。代差 1--2 代。 \\
+\textbf{半导体设备} & 10--12 & 45--60 & Lam · AMAT · ASML & {\faExclamationTriangle} 10--15 & 北华创\newline 中微公司\newline 拓荆科技 & 刻蚀/薄膜/ALD 在成熟制程全面突破，<16nm 验证中；\textbf{二阶 Beta 首选层}，国产化率仍有翻倍空间。代差 1--2 代。 \\
 \midrule
 \rowcolor{accentblue!5}
-\textbf{半导体材料} & 7--9 & 35--50 & ShinEtsu · JSR & {\faExclamationTriangle} 8--12 & \textbf{沪硅产业 (688126)\\南大光电 (300346)} & 12 寸硅片 28nm 批量供应；ArF 光刻胶 2026 目标突破；KrF/特气已破。代差 1--3 代 (按品类)。 \\
+\textbf{半导体材料} & 7--9 & 35--50 & ShinEtsu · JSR & {\faExclamationTriangle} 8--12 & 沪硅产业\newline 南大光电 & 12 寸硅片 28nm 批量供应；ArF 光刻胶 2026 目标突破；KrF/特气已破。代差 1--3 代。 \\
 \midrule
 \rowcolor{nvgreen!5}
-\textbf{存储设计·接口} & 8--10 & 55--70 & Rambus · Marvell & 约3--5 & \textbf{澜起科技 (688008)★} & \textbf{全球领先无代差}——RCD 全球 70\% 份额，CXL 首发；A 股唯一「一阶 Alpha」。兆易 NOR 前三，DRAM 追赶中。代差 0。 \\
+\textbf{存储设计·接口} & 8--10 & 55--70 & Rambus · Marvell & 约3--5 & 澜起科技 ★ & \textbf{全球领先无代差}——RCD 全球 70\% 份额，CXL 首发；A 股唯一「一阶 Alpha」。兆易 NOR 前三，DRAM 追赶。代差 0。 \\
 \midrule
-\textbf{存储设计·原厂} & 8--10 & 40--60 & SK · Samsung · Micron & <1 & \textbf{无直接标的} & YMTC/CXMT 未上市；兆易自研 DRAM 试产；A 股原厂层缺失是最大结构缺口。代差 3--4 代 (HBM)。 \\
+\textbf{存储设计·原厂} & 8--10 & 40--60 & SK · Samsung · Micron & <1 & 无直接标的 & YMTC/CXMT 未上市；兆易自研 DRAM 试产；原厂层缺失是最大结构缺口。代差 3--4 代 (HBM)。 \\
 \midrule
-\textbf{晶圆制造} & 38--42 & 30--50 & Samsung · SK · YMTC & {\faExclamationTriangle} 8--15 & \textbf{无直接标的} & 长存/长鑫未上市，A 股仅通过设备供应商间接映射；DRAM 代差 1.5--2 代，NAND 代差 1 代。 \\
+\textbf{晶圆制造} & 38--42 & 30--50 & Samsung · SK · YMTC & {\faExclamationTriangle} 8--15 & 无直接标的 & 长存/长鑫未上市，A 股仅通过设备商间接映射；DRAM 代差 1.5--2 代，NAND 代差 1 代。 \\
 \midrule
 \rowcolor{riskred!5}
-\textbf{先进封装 (CoWoS)} & 12--15 & 25--35 & TSMC (约80\%) & {\faExclamationTriangle} 5--8 & \textbf{长电科技 (600584)\\通富微电 (002156)} & TSMC 垄断 HBM 封装产能；长电 XDFOI/通富 CoWoS 2027 前难撼份额；\textbf{弹性标的}，但 AI 实际贡献 <3\%。代差 1--2 代。 \\
+\textbf{先进封装 (CoWoS)} & 12--15 & 25--35 & TSMC (约80\%) & {\faExclamationTriangle} 5--8 & 长电科技\newline 通富微电 & TSMC 垄断 HBM 封装产能；长电 XDFOI/通富 CoWoS 2027 前难撼份额；\textbf{弹性标的}，AI 实际贡献 <3\%。代差 1--2 代。 \\
 \midrule
-\textbf{传统封测} & 5--7 & 15--22 & ASE · Amkor & 约25--30 & \textbf{长电 / 通富 / 华天} & 华天等传统封装国产替代较充分，毛利率低。代差 <1 代。 \\
+\textbf{传统封测} & 5--7 & 15--22 & ASE · Amkor & 约25--30 & 长电/通富/华天 & 传统封装国产替代较充分，毛利率低。代差 <1 代。 \\
 \midrule
 \rowcolor{deepnavy!5}
-\textbf{存储模组/SSD} & 8--10 & 10--20 & Smart Global · ATP & {\faExclamationTriangle} 10--20 & \textbf{江波龙 (301308)\\深科技 (000021)} & 深科技 Kingston 代工模式确定性高；江波龙 Foresee 企业级 SSD 导入头部云厂。代差 0--1 代 (技术门槛相对低)。 \\
+\textbf{存储模组/SSD} & 8--10 & 10--20 & Smart Global · ATP & {\faExclamationTriangle} 10--20 & 江波龙\newline 深科技 & 深科技 Kingston 代工确定性高；江波龙 Foresee 企业级 SSD 导入头部云厂。代差 0--1 代。 \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}

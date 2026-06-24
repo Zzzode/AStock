@@ -8,7 +8,7 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \needspace{44\baselineskip}
 \begin{exhibitbox}[图 6-1 \quad 三大原厂 HBM 产能份额预测 (2025E / 2026E / 2027E) / HBM Capacity Share]
 \centering
-\resizebox{0.88\linewidth}{!}{%
+\resizebox{0.88\exhibitwidth}{!}{%
 \begin{tikzpicture}[
   pie/.style={circle, minimum size=4.0cm},
   slice/.style={insert path={-- ++(\a:2.0) arc (\a:\a+#1:2.0) -- cycle}},
@@ -88,7 +88,7 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \centering
 \scriptsize
 \renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\linewidth}{>{\bfseries}l >{\raggedright}p{2.4cm} >{\centering}p{2.0cm} >{\centering}p{1.2cm} >{\centering}p{1.3cm} >{\raggedright\arraybackslash}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}p{2.1cm} >{\raggedright\arraybackslash\hspace{0pt}}p{1.9cm} >{\centering\arraybackslash}p{1.8cm} >{\centering\arraybackslash}p{1.2cm} >{\centering\arraybackslash\hspace{0pt}}p{1.3cm} >{\raggedright\arraybackslash\hspace{0pt}}X}
 \toprule
 \textbf{国内厂商} & \textbf{最新制程节点} & \textbf{月产能 (K 片 12 寸)} & \textbf{良率水平} & \textbf{BIS 约束} & \textbf{客户导入 + A 股关联} \\
 \midrule
@@ -96,18 +96,18 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \textbf{长江存储 (YMTC)} & 232L TLC/QLC 量产\par \textcolor{steelgrey}{290L 研发中 (2026 试产)} & 280--320K & 232L TLC 85--90\%\par QLC 75--80\% & \textbf{高}\par DUV+刻蚀受限 & 消费级国内渗透 约15\%；企业级小批量 + 华为深度导入。\par 未上市；供应商：\textbf{北方华创/中微/拓荆/沪硅} ★ ★ ★ \\
 \midrule
 \rowcolor{nvgreen!8}
-\textbf{长鑫存储 (CXMT)} & 17nm (1α-) 量产\par \textcolor{steelgrey}{15nm (1β-) 2026 试产} & 220--260K & 17nm DDR4 88--92\%\par DDR5/LPDDR5 75--80\% & \textbf{中高}\par 15nm 以下受限 & 消费级 DDR4 国内 约20\%；小米/OPPO/传音导入；服务器 DDR5 认证中。\par 未上市；供应商：\textbf{北方华创/深科技/兆易 (潜在 IP 合作)} \\
+\textbf{长鑫存储 (CXMT)} & 17nm (1α-) 量产\par \textcolor{steelgrey}{15nm (1β-) 2026 试产} & 220--260K & 17nm DDR4 88--92\%\par DDR5\slash LPDDR5 75--80\% & \textbf{中高}\par 15nm 以下受限 & 消费级 DDR4 国内 约20\%；小米\slash OPPO\slash 传音导入；服务器 DDR5 认证中。\par 未上市；供应商：\textbf{北方华创/深科技/兆易 (潜在 IP 合作)} \\
 \midrule
 \rowcolor{accentblue!8}
 \textbf{兆易创新 (603986)} & NOR: 38nm 量产，2xnm 研发\par \textcolor{steelgrey}{DRAM: 19nm DDR5 试产 + 17nm 研发} & NOR 120--150K (8+12 寸)\par DRAM {\faExclamationTriangle}<5K & NOR 92--95\%\par DRAM {\faExclamationTriangle}<40\% & \textbf{中低}\par 当前节点暂未受限 & \textbf{NOR 全球前三 (约15\%)}，汽车电子/工业客户广；自研 DRAM 消费级小批量送样。\par \textbf{直接上市标的}。 \\
 \midrule
-\textbf{北京君正 (300223)} & DRAM (ISSI) 38--25nm 利基\par SRAM 全球前三 & 40--50K (代工 Tower/UMC) & 成熟制程 >90\% & \textbf{低}\par 利基市场非管制重点 & 汽车/工业/医疗利基 DRAM+SRAM 稳定出货；AI 敞口实质小 (\(<5\%\))。\par 直接上市标的。 \\
+\textbf{北京君正 (300223)} & DRAM (ISSI) 38--25nm 利基\par SRAM 全球前三 & 40--50K (代工 Tower\slash UMC) & 成熟制程 >90\% & \textbf{低}\par 利基市场非管制重点 & 汽车\slash 工业\slash 医疗利基 DRAM\allowbreak+\allowbreak SRAM 稳定出货；AI 敞口实质小 (\(<5\%\))。\par 直接上市标的。 \\
 \midrule
 \rowcolor{riskamber!8}
 \textbf{aExclamationTriangle 国产 HBM 综合评估} & \textcolor{riskred}{\textbf{预研阶段，无公开样品}} & N/A & N/A & \textbf{极高}\par HBM 管制传闻 & 长存/长鑫未披露任何 HBM 计划；2028 年前实质商用概率 <30\%。\par \textbf{A 股无直接受益标的}。 \\
 \midrule
 \rowcolor{panelgrey}
-\multicolumn{2}{l}{\textbf{设备材料国产替代 (整体)}} & \multicolumn{2}{c}{长存/长鑫 2026E 国产率 约20--30\% (2023 年仅 10\%)} & \textbf{核心矛盾} & BIS 管制是国产化率的双重驱动：短期抑制原厂扩产节奏，长期加速国产设备材料验证周期。\\
+\multicolumn{2}{>{\cellcolor{panelgrey}\bfseries\raggedright\arraybackslash}p{\dimexpr2.1cm+1.9cm+2\tabcolsep\relax}}{\textbf{设备材料国产替代 (整体)}} & \multicolumn{2}{>{\cellcolor{panelgrey}\centering\arraybackslash}p{\dimexpr1.8cm+1.2cm+2\tabcolsep\relax}}{长存/长鑫 2026E 国产率 约20--30\% (2023 年仅 10\%)} & \cellcolor{panelgrey}\centering\arraybackslash\textbf{核心矛盾} & \cellcolor{panelgrey}\raggedright\arraybackslash\hspace{0pt} BIS 管制是国产化率的双重驱动：短期抑制原厂扩产节奏，长期加速国产设备材料验证周期。\\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}

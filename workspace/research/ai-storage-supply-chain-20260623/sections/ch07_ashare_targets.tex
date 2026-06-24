@@ -8,7 +8,7 @@
 \needspace{40\baselineskip}
 \begin{exhibitbox}[图 7-1 \quad A 股存储链市值分布 (按产业链环节) / A-Share Market-Cap Distribution]
 \centering
-\resizebox{0.82\linewidth}{!}{%
+\resizebox{0.82\exhibitwidth}{!}{%
 \begin{tikzpicture}
 \begin{axis}[
   xbar,
@@ -63,9 +63,9 @@
 \centering
 \scriptsize
 \renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\linewidth}{>{\bfseries}l l >{\centering}p{1.0cm} >{\raggedleft}p{0.9cm} >{\raggedleft}p{0.8cm} >{\raggedleft}p{0.8cm} >{\raggedleft}p{0.8cm} l}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}p{1.5cm} >{\raggedright}p{1.9cm} >{\centering\arraybackslash}p{0.9cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\raggedleft\arraybackslash}p{0.75cm} >{\raggedleft\arraybackslash}p{0.75cm} >{\raggedleft\arraybackslash}p{0.75cm} >{\raggedright\arraybackslash\hspace{0pt}}X}
 \toprule
-\textbf{标的} & \textbf{环节} & \textbf{AI敞口(\%)} & \textbf{25营收(亿)} & \textbf{净利(亿)} & \textbf{毛利率(\%)} & \textbf{26E PE} & \textbf{评级/触发} \\
+\textbf{标的} & \textbf{环节} & \textbf{AI敞口} & \textbf{25营收(亿)} & \textbf{净利(亿)} & \textbf{毛利率} & \textbf{26E PE} & \textbf{评级 / 触发} \\
 \midrule
 \rowcolor{nvgreen!6}
 澜起科技 & 接口/RCD+CXL & 40--45 & 75 & 32--35 & 65 & 42x & \gmark 买入 · CXL出量 \\
@@ -87,7 +87,7 @@
 北京君正 & 利基SRAM/DRAM & 3--5 & 65 & 11 & 38 & 28x & \rmark 观察 · AI敞口实质小 \\
 芯原股份 & Chiplet/互连IP & 10--15 & 35 & 3 & 35 & 120x & \rmark 观察 · PE估值过高 \\
 \bottomrule
-\multicolumn{8}{p{\linewidth}}{\scriptsize 数据来源：各公司 2025 年报 + 2026Q1 财报；AI 敞口为 {\faExclamationTriangle} AStock 模型估算 (非官方披露)；2026E PE 基于 Wind 一致预期 + 本报告盈利预测校准；完整版 23 只含 20+ 列详见附录 C 表 C-1。}
+\multicolumn{8}{p{\dimexpr\exhibitwidth-2\tabcolsep\relax}}{\scriptsize 数据来源：各公司 2025 年报 + 2026Q1 财报；AI 敞口为 {\faExclamationTriangle} AStock 模型估算 (非官方披露)；2026E PE 基于 Wind 一致预期 + 本报告盈利预测校准；完整版 23 只含 20+ 列详见附录 C 表 C-1。}
 \end{tabularx}
 \end{exhibitbox}
 

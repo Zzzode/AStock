@@ -8,7 +8,7 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \needspace{42\baselineskip}
 \begin{exhibitbox}[图 4-1 \quad HBM 代际路线图 / HBM Generation Roadmap (2020--2028E)]
 \centering
-\resizebox{0.88\linewidth}{!}{%
+\resizebox{0.88\exhibitwidth}{!}{%
 \begin{tikzpicture}[
   ganttbar/.style={rectangle, rounded corners=1pt, draw=#1, fill=#1!65, minimum height=0.7cm, font=\scriptsize\bfseries, text=white, align=center, inner sep=0pt},
   gen/.style={font=\bfseries\small, text=navy, anchor=east},
@@ -63,9 +63,9 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \begin{exhibitbox}[表 4-1 \quad HBM TAM 预测详表 / HBM TAM Forecast Detail (2024--2027E)]
 \centering
 \footnotesize
-\begin{tabularx}{\linewidth}{>{\bfseries}c >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.3cm} >{\raggedleft}p{1.2cm} >{\raggedright\arraybackslash}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}c >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.3cm} >{\raggedleft}p{1.2cm} >{\raggedright\arraybackslash\hspace{0pt}}X}
 \toprule
-\textbf{年份} & \textbf{出货量(亿 GB)} & \textbf{均价 ASP(\$/GB)} & \textbf{TAM(亿美元)} & \textbf{YoY 增速(\%)} & \textbf{主力代际(价值占比)} & \textbf{核心驱动} \\
+\textbf{年份} & \textbf{出货\\(亿GB)} & \textbf{均价\\ASP(\$/GB)} & \textbf{TAM\\(亿\$)} & \textbf{YoY(\%)} & \textbf{主力代(价值占)} & \textbf{核心驱动} \\
 \midrule
 2024A & 4.2 & \$17.5 & 73.5 & 约190\% & HBM3 (约55\%) + HBM3E (约35\%) & H100 出货高峰 + H200 过渡 \\
 2025E & 8.5 & \$19.2 & 163.2 & 约122\% & HBM3E (约60\%) + HBM3 (约30\%) & B100 初期爬坡 + MI300X 放量 \\
@@ -91,7 +91,7 @@ AI 训练依赖 HBM 和 DDR5 提供的热数据吞吐，AI 推理和数据存储
 \begin{exhibitbox}[表 4-2 \quad DDR5 / 企业级 SSD / CXL TAM 预测汇总表]
 \centering
 \footnotesize
-\begin{tabularx}{\linewidth}{>{\bfseries}l >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.6cm} >{\raggedleft}p{1.3cm} >{\raggedright\arraybackslash}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}l >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.6cm} >{\raggedleft}p{1.3cm} >{\raggedright\arraybackslash}X}
 \toprule
 \textbf{细分赛道} & \textbf{2025E(亿美元)} & \textbf{2026E(亿美元)} & \textbf{2027E(亿美元)} & \textbf{CAGR(\%)} & \textbf{A 股映射标的与核心逻辑} \\
 \midrule
@@ -123,7 +123,7 @@ CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一�
 \needspace{40\baselineskip}
 \begin{exhibitbox}[图 4-2 \quad CXL 内存池化拓扑架构图 / CXL Memory Pooling Topology]
 \centering
-\resizebox{0.88\linewidth}{!}{%
+\resizebox{0.88\exhibitwidth}{!}{%
 \begin{tikzpicture}[
   host/.style={rectangle, rounded corners=4pt, draw=deepnavy, fill=deepnavy!90, text=white, text width=2.5cm, align=center, minimum height=1.3cm, font=\bfseries\small},
   sw/.style={rectangle, rounded corners=4pt, draw=accentblue, fill=accentblue, text=white, text width=2.5cm, align=center, minimum height=1.1cm, font=\bfseries\small},

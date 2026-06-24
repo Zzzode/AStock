@@ -182,13 +182,21 @@
   fonttitle=\bfseries, title={#1},
   left=9pt, right=9pt, top=7pt, bottom=7pt
 }
+% exhibitbox：表/图外框。left=7pt+right=7pt=14pt 内边距，before upper 内的 \linewidth 已扣除该内边距。
+% 约定：\exhibitboxwidth = 真实内边距宽（tcolorbox 已扣好 padding 的 \linewidth）。
+% 由于 tabularx/longtable 宽度参数的语义是「外部总宽（含两侧 \tabcolsep）」，内部列实际可用 = W - 2\tabcolsep。
+% 所以 tabularx 直接传 \exhibitboxwidth（总宽 == 内边距宽），而其他用途（resizebox、tikz、p{...}）用 \exhibitwidth = \exhibitboxwidth - 2\tabcolsep。
+\newlength{\exhibitboxwidth}
+\newlength{\exhibitwidth}
 \newtcolorbox{exhibitbox}[1][]{
   enhanced, breakable,
   colback=white, colframe=rulegrey,
   borderline north={1.2pt}{0pt}{navy},
   boxrule=0.35pt, arc=1pt,
   fonttitle=\bfseries\color{navy}, title={#1},
-  left=7pt, right=7pt, top=6pt, bottom=6pt
+  left=7pt, right=7pt, top=6pt, bottom=6pt,
+  before upper={\global\exhibitboxwidth=\linewidth\relax
+    \global\exhibitwidth=\dimexpr\linewidth-2\tabcolsep\relax},
 }
 \newtcolorbox{disclosurebox}[1][]{
   enhanced, breakable,
