@@ -1,36 +1,36 @@
 {
-  "schema_v": "1.1",
-  "generated_at": "2026-06-24T07:40:08+00:00",
-  "polling_round": "R228",
-  "columns": [
-    "相对路径",
-    "文件分类",
-    "字节数",
-    "SHA-256[:16]",
-    "生成时间(UTC)"
-  ],
-  "inventory": [
+  "schema_version": "1.0",
+  "polling_round": "R233",
+  "inventory_type": "rendered_artifact_inventory",
+  "total_files": 4,
+  "files": [
     {
-      "相对路径": "main.pdf",
-      "文件分类": "RENDERED_PUBLISHABLE",
-      "字节数": 907898,
-      "SHA-256[:16]": "5ab63efa76eab79f",
-      "生成时间(UTC)": "2026-06-23T13:25:53+00:00"
+      "path": "workspace/research/ai-storage-supply-chain-20260623/main.pdf",
+      "filename": "main.pdf",
+      "sha256": "5ab63efa76eab79fc4f355bbe32f8eacca80bfcdfedb722b3ec2800dd31ea8ec",
+      "sha256_short": "5ab63efa76ea",
+      "size_bytes": 907898
     },
     {
-      "相对路径": "main.tex",
-      "文件分类": "DERIVED_WRITE",
-      "字节数": 4945,
-      "SHA-256[:16]": "90d28bf95a2851b5",
-      "生成时间(UTC)": "2026-06-23T13:20:28+00:00"
+      "path": "workspace/research/ai-storage-supply-chain-20260623/main.tex",
+      "filename": "main.tex",
+      "sha256": "90d28bf95a2851b5233d695d378f6aa2db3d3ff138d6bff21a4e826272738974",
+      "sha256_short": "90d28bf95a28",
+      "size_bytes": 4945
     },
     {
-      "相对路径": "main_current_text.txt",
-      "文件分类": "DERIVED_TOOL",
-      "字节数": 105445,
-      "SHA-256[:16]": "1b5faa114fe314a0",
-      "生成时间(UTC)": "2026-06-23T13:27:19+00:00"
+      "path": "workspace/research/ai-storage-supply-chain-20260623/main_current_text.txt",
+      "filename": "main_current_text.txt",
+      "sha256": "1b5faa114fe314a088d6b81a16b22aba86ebfbcddd1620ffe2acf5cfaef0acc8",
+      "sha256_short": "1b5faa114fe3",
+      "size_bytes": 105445
+    },
+    {
+      "path": "workspace/research/ai-storage-supply-chain-20260623/visual_review.md",
+      "filename": "visual_review.md",
+      "sha256": "c3a24aa7e6aaf00e405cee5820ef7d8eb8091e312a12997888f036a9d1a5ed6b",
+      "sha256_short": "c3a24aa7e6aa",
+      "size_bytes": 9792
     }
-  ],
-  "total_count": 3
+  ]
 }

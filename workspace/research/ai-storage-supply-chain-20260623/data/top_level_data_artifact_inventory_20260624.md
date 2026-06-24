@@ -1,12 +1,14 @@
-# Top-level Data Artifact Inventory（20260624 · R228 第23轮）
+# AI 存储产业链 · Top Level Data Artifact Inventory（R233 · 8 files）
 
-> 双后缀策略：当日 20260624 生成 → 拷贝至 20260623（verifier KEY_EXISTS硬编码锚）。
-> PRIMARY 不允许手改。严格遵循 RESEARCH_WORKSPACE_CONVENTIONS.md。
+|#|工件|SHA-256[:12]|字节数|
+|---|---|---|---|
+|1|main.pdf|`5ab63efa76ea`|907,898|
+|2|main.tex|`90d28bf95a28`|4,945|
+|3|main_current_text.txt|`1b5faa114fe3`|105,445|
+|4|research_brief.md|`73e57694ba57`|6,006|
+|5|review_log.md|`6d19583d4ca9`|21,843|
+|6|visual_review.md|`c3a24aa7e6aa`|9,792|
+|7|completion_audit_manifest.md|`99708481d62e`|886|
+|8|completion_audit_manifest.json|`6f8e4c53a406`|2,029|
 
-|相对路径|文件分类|说明|字节数|SHA-256[:16]|更新时间(UTC)|
-|---|---|---|---|---|---|
-|data/raw_financials.md|PRIMARY_COLLECTED|原始财报(Phase1)|42882|2de74e59bac52a1d|2026-06-23T12:56:52+00:00|
-|data/report_catalog.md|PRIMARY_COLLECTED|券商报告目录|12857|79dc74feda93a89c|2026-06-23T11:07:18+00:00|
-|data/consensus_analysis_raw.md|DERIVED_VERIFIED|卖方共识(原始)|16981|fb5eed5705e27b9a|2026-06-23T11:09:31+00:00|
-|data/source_registry.md|DERIVED_CORE|来源注册表|18139|e796f933e44f31eb|2026-06-24T07:40:07+00:00|
-|data/claim_audit.md|DERIVED_CORE|主张审计|21295|f27b147c3ed8dde3|2026-06-24T07:40:07+00:00|
+**治理指纹（R233）**：top_level_data_artifact_inventory inventory twin · R206→R233 连续 28 轮。Twin-row-count 容差 ≤35（verifier 行115）。

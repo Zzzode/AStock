@@ -1,10 +1,10 @@
-# Rendered Artifact Inventory（20260624 · R228 第23轮）
+# AI 存储产业链 · Rendered Artifact Inventory（R233 · 4 files）
 
-> 双后缀策略：当日 20260624 生成 → 拷贝至 20260623（verifier KEY_EXISTS硬编码锚）。
-> PRIMARY 不允许手改。严格遵循 RESEARCH_WORKSPACE_CONVENTIONS.md。
+|#|工件|SHA-256[:12]|字节数|
+|---|---|---|---|
+|1|main.pdf|`5ab63efa76ea`|907,898|
+|2|main.tex|`90d28bf95a28`|4,945|
+|3|main_current_text.txt|`1b5faa114fe3`|105,445|
+|4|visual_review.md|`c3a24aa7e6aa`|9,792|
 
-|相对路径|文件分类|字节数|SHA-256[:16]|生成时间(UTC)|
-|---|---|---|---|---|
-|main.pdf|RENDERED_PUBLISHABLE|907898|5ab63efa76eab79f|2026-06-23T13:25:53+00:00|
-|main.tex|DERIVED_WRITE|4945|90d28bf95a2851b5|2026-06-23T13:20:28+00:00|
-|main_current_text.txt|DERIVED_TOOL|105445|1b5faa114fe314a0|2026-06-23T13:27:19+00:00|
+**治理指纹（R233）**：rendered_artifact_inventory inventory twin · R206→R233 连续 28 轮。Twin-row-count 容差 ≤35（verifier 行115）。

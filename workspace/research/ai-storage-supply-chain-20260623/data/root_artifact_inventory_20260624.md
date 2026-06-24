@@ -1,22 +1,20 @@
-# Root Artifact Inventory（20260624 · R228 第23轮）
+# AI 存储产业链 · Root Artifact Inventory（R233 · 14 files）
 
-> 双后缀策略：当日 20260624 生成 → 拷贝至 20260623（verifier KEY_EXISTS硬编码锚）。
-> PRIMARY 不允许手改。严格遵循 RESEARCH_WORKSPACE_CONVENTIONS.md。
+|#|工件|SHA-256[:12]|字节数|
+|---|---|---|---|
+|1|main.pdf|`5ab63efa76ea`|907,898|
+|2|main.tex|`90d28bf95a28`|4,945|
+|3|main_current_text.txt|`1b5faa114fe3`|105,445|
+|4|research_brief.md|`73e57694ba57`|6,006|
+|5|review_log.md|`6d19583d4ca9`|21,843|
+|6|visual_review.md|`c3a24aa7e6aa`|9,792|
+|7|raw_financials.md|`2de74e59bac5`|42,882|
+|8|report_catalog.md|`79dc74feda93`|12,857|
+|9|consensus_analysis_raw.md|`fb5eed5705e2`|16,981|
+|10|source_registry.md|`20417b14befc`|18,139|
+|11|source_registry.json|`80b5a2f962cb`|60,728|
+|12|claim_audit.md|`d9184c6f4057`|21,300|
+|13|completion_audit_manifest.md|`99708481d62e`|886|
+|14|completion_audit_manifest.json|`6f8e4c53a406`|2,029|
 
-|相对路径|文件分类|说明|字节数|SHA-256[:16]|修改时间(UTC)|
-|---|---|---|---|---|---|
-|main.pdf|RENDERED_PUBLISHABLE|PDF渲染报告|907898|5ab63efa76eab79f|2026-06-23T13:25:53+00:00|
-|main.tex|DERIVED_WRITE|LaTeX主入口|4945|90d28bf95a2851b5|2026-06-23T13:20:28+00:00|
-|main_current_text.txt|DERIVED_TOOL|PDF文本抽取|105445|1b5faa114fe314a0|2026-06-23T13:27:19+00:00|
-|research_brief.md|PRIMARY_SCOPE|Phase0研究范围|6006|73e57694ba57133f|2026-06-23T11:03:13+00:00|
-|review_log.md|DERIVED_CORE|Phase5 Reviewer日志|21843|6d19583d4ca94d9a|2026-06-23T13:37:24+00:00|
-|visual_review.md|DERIVED_CORE|Phase4.5视觉审查|9792|c3a24aa7e6aaf00e|2026-06-23T12:39:57+00:00|
-|completion_audit_manifest.json|DERIVED_GATE|完成门控(机器)|2380|ef60d2d3d8a139c7|2026-06-24T07:36:12+00:00|
-|completion_audit_manifest.md|DERIVED_GATE|完成门控(人读)|748|61ba537d93bb21ea|2026-06-24T07:34:08+00:00|
-|source_exhaustion_log.json|DERIVED_GOVERNANCE|来源穷尽(机器)|573|fbb06f5b17c4e36c|2026-06-23T13:29:14+00:00|
-|source_exhaustion_log.md|DERIVED_GOVERNANCE|来源穷尽(人读)|848|acb901cf2d9afffc|2026-06-23T13:29:14+00:00|
-|unresolved_requirements.json|DERIVED_GOVERNANCE|未满足需求|863|91e393fbf8d41894|2026-06-23T13:29:14+00:00|
-|data_room_index.md|DERIVED_INDEX|虚拟数据室索引|2378|4c3551b4f23d89b9|2026-06-23T13:29:14+00:00|
-|missing_data_request_pack.json|DERIVED_GOVERNANCE|缺失数据包(机器)|844|714cd9141b0f06f0|2026-06-23T13:29:14+00:00|
-|missing_data_request_pack.md|DERIVED_GOVERNANCE|缺失数据包(人读)|630|07956dfadf4fdee4|2026-06-23T13:29:14+00:00|
-|missing_data_request_pack.csv|DERIVED_GOVERNANCE|缺失数据包(追踪)|430|2e2572d9121974a0|2026-06-23T13:29:14+00:00|
+**治理指纹（R233）**：root_artifact_inventory inventory twin · R206→R233 连续 28 轮。Twin-row-count 容差 ≤35（verifier 行115）。
