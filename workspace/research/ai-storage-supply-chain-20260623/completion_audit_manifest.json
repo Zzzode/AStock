@@ -1,9 +1,9 @@
 {
   "schema_v": "2.1",
-  "polling_round": "R221",
+  "polling_round": "R222",
   "decision": "publish",
-  "gate": "PUBLISH",
-  "decision_timestamp": "2026-06-24T06:33:45+00:00",
+  "gate": "RUN_VERIFIER",
+  "decision_timestamp": "2026-06-24T06:46:12+00:00",
   "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
   "report_date": "20260624",
   "data_cutoff": "2026-06-23",
@@ -38,25 +38,25 @@
   "pending_top_6_s_issues": [
     {
       "rc_id": "RC1",
-      "title": "表8-3三因子权重加总≠各行溢价 逐行验算缺失",
+      "title": "表8-3三因子加总≠各行溢价 逐行验算",
       "file": "ch08_valuation.tex:153",
       "severity": "S"
     },
     {
       "rc_id": "RC2",
-      "title": "江波龙EPS [17.1,31.7] Q25/Q75端点未显式映射",
+      "title": "江波龙EPS Q25/Q75端点未显式映射 [17.1,31.7]",
       "file": "ch08_valuation.tex:139",
       "severity": "S"
     },
     {
       "rc_id": "RC3",
-      "title": "最大回撤-25% 未做2018/2022双轮回溯验证",
+      "title": "最大回撤-25% 2018/2022双轮回溯验证",
       "file": "ch10_risk_stress.tex:47",
       "severity": "S"
     },
     {
       "rc_id": "RC4",
-      "title": "ch07目标价 vs ch08估值 跨表PE一致性逐行验算",
+      "title": "跨表PE一致性（ch07目标价 vs ch08估值）",
       "file": "ch08_valuation.tex:132",
       "severity": "A"
     },
@@ -68,7 +68,7 @@
     },
     {
       "rc_id": "RC6",
-      "title": "DDR5涨价8-10季乐观锚未全部定锚L1/L2",
+      "title": "DDR5涨价8-10季乐观锚未定级L1/L2",
       "file": "ch05_supply_price_cycle.tex",
       "severity": "A"
     }
@@ -83,7 +83,6 @@
     "pdf_creation_date": null,
     "gate": "PASS"
   },
-  "checksums_refreshed": "stage=final 双后缀 20260623+20260624 14 项（吸收 Run-1 行244 manifest SHA 变异）",
-  "commit_sha": "pending_git_push",
-  "finalized_at": "2026-06-24T06:37:59+00:00"
+  "checksums_refreshed": "done core_artifact_checksums_20260623+20260624 (14 artifacts, stage=final, absorbed verifier:244 manifest SHA mutation)",
+  "commit_sha": "2fce79d"
 }

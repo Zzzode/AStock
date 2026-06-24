@@ -1,7 +1,7 @@
-# Root Artifact Inventory（20260624 · R221 第16轮）
+# Root Artifact Inventory（20260624 · R222 第17轮）
 
-> 双后缀：当日 20260624 生成 → 后续拷贝至 20260623（verifier KEY_EXISTS 硬编码锚）。
-> PRIMARY 不允许手改。治理文件需严格按 RESEARCH_WORKSPACE_CONVENTIONS.md 分类。
+> 双后缀策略：当日 20260624 生成 → 随后拷贝至 20260623（verifier KEY_EXISTS 硬编码锚）。
+> PRIMARY 不允许手改。治理分类严格遵循 RESEARCH_WORKSPACE_CONVENTIONS.md。
 
 |相对路径|文件分类|说明|字节数|SHA-256[:16]|修改时间(UTC)|
 |---|---|---|---|---|---|
@@ -11,8 +11,8 @@
 |research_brief.md|PRIMARY_SCOPE|Phase0研究范围|6006|73e57694ba57133f|2026-06-23T11:03:13+00:00|
 |review_log.md|DERIVED_CORE|Phase5 Reviewer日志|21843|6d19583d4ca94d9a|2026-06-23T13:37:24+00:00|
 |visual_review.md|DERIVED_CORE|Phase4.5视觉审查|9792|c3a24aa7e6aaf00e|2026-06-23T12:39:57+00:00|
-|completion_audit_manifest.json|DERIVED_GATE|完成门控(机器)|2254|5bfe718de01906e6|2026-06-24T06:21:10+00:00|
-|completion_audit_manifest.md|DERIVED_GATE|完成门控(人读)|2031|98157f7e79b36954|2026-06-24T06:21:10+00:00|
+|completion_audit_manifest.json|DERIVED_GATE|完成门控(机器)|2323|4badf2aceee2057c|2026-06-24T06:37:59+00:00|
+|completion_audit_manifest.md|DERIVED_GATE|完成门控(人读)|1916|d6ddcc714c3c3e26|2026-06-24T06:37:59+00:00|
 |source_exhaustion_log.json|DERIVED_GOVERNANCE|来源穷尽(机器)|573|fbb06f5b17c4e36c|2026-06-23T13:29:14+00:00|
 |source_exhaustion_log.md|DERIVED_GOVERNANCE|来源穷尽(人读)|848|acb901cf2d9afffc|2026-06-23T13:29:14+00:00|
 |unresolved_requirements.json|DERIVED_GOVERNANCE|未满足需求|863|91e393fbf8d41894|2026-06-23T13:29:14+00:00|
