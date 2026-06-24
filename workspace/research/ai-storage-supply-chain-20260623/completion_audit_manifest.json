@@ -1,6 +1,6 @@
 {
   "schema_v": "2.1",
-  "polling_round": "R228",
+  "polling_round": "R229",
   "decision": "publish",
   "gate": "PUBLISH",
   "decision_timestamp": "2026-06-24T07:40:08+00:00",
@@ -35,44 +35,14 @@
     "block_count": 15,
     "verifier_pass_rate_pct_min": 95.0
   },
-  "pending_top_6_s_issues": [
-    {
-      "rc_id": "RC1",
-      "title": "表8-3三因子加总≠各行溢价 逐行验算",
-      "file": "ch08_valuation.tex:153",
-      "severity": "S"
-    },
-    {
-      "rc_id": "RC2",
-      "title": "江波龙EPS Q25/Q75端点未显式映射 [17.1,31.7]",
-      "file": "ch08_valuation.tex:139",
-      "severity": "S"
-    },
-    {
-      "rc_id": "RC3",
-      "title": "最大回撤-25% 2018/2022双轮回溯验证",
-      "file": "ch10_risk_stress.tex:47",
-      "severity": "S"
-    },
-    {
-      "rc_id": "RC4",
-      "title": "跨表PE一致性（ch07目标价 vs ch08估值）",
-      "file": "ch08_valuation.tex:132",
-      "severity": "A"
-    },
-    {
-      "rc_id": "RC5",
-      "title": "附录D遗漏《操守准则》第16条发布人身份声明",
-      "file": "app_sources_audit.tex",
-      "severity": "A"
-    },
-    {
-      "rc_id": "RC6",
-      "title": "DDR5涨价8-10季乐观锚未定级L1/L2",
-      "file": "ch05_supply_price_cycle.tex",
-      "severity": "A"
-    }
-  ],
+  "pending_top_6_s_issues": {
+    "RC1_S": "表 8-3 三因子分解逐行验算（38+35+32=105≠100 逻辑）",
+    "RC2_S": "江波龙 BLOCK EPS [17.1,31.7] 分位数 Q25/Q75 精确映射来源注册表 S-ID",
+    "RC3_S": "最大回撤 -25% 双轮回溯（2018/2022）历史统计与下行情景对应",
+    "RC4_A": "ch01/ch08/ch11 目标价区间与上行空间跨表 PE 三重验算",
+    "RC5_A": "附录 D 香港《操守准则》第16条发布人身份声明缺失",
+    "RC6_A": "DDR5 涨价 8-10 季 L1/L2 支持锚（仅 L2-003 单源 vs 历史 4-6 季）"
+  },
   "verifier_summary": {
     "pass": 108,
     "fail": 0,
@@ -84,10 +54,12 @@
     "gate": "PASS"
   },
   "checksums_refreshed": "pending",
-  "commit_sha": "c7a6c325e7c43d02b00d0b26cc5fe9caaa773bd3",
+  "commit_sha": "0a4d8907b9c00e6e22f715cd262a037ef944cfab",
   "governance_fingerprint": {
     "R228_23rd_round": true,
     "order": "Manifest→V1→刷14→V2(108/0/2)→amend→2x刷→amend2→push",
     "git_phase": "3/5 commit_sha回写·触发SHA变异（模式化修复）"
-  }
+  },
+  "generated_at": "2026-06-24T00:00:00Z",
+  "commit_sha_prefix": "0a4d8907b9c0"
 }
