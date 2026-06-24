@@ -1,7 +1,7 @@
-# Source Artifact Inventory（20260624 · R226 第21轮）
+# Source Artifact Inventory（20260624 · R227 第22轮）
 
-> 双后缀策略：当日 20260624 生成 → 随后拷贝至 20260623（verifier KEY_EXISTS 硬编码锚）。
-> PRIMARY 不允许手改。治理分类严格遵循 RESEARCH_WORKSPACE_CONVENTIONS.md。
+> 双后缀策略：当日 20260624 生成 → 拷贝至 20260623（verifier KEY_EXISTS 硬编码锚）。
+> PRIMARY 不允许手改。严格遵循 RESEARCH_WORKSPACE_CONVENTIONS.md。
 
 |相对路径|文件分类|文件名|字节数|SHA-256[:16]|采集时间(UTC)|
 |---|---|---|---|---|---|

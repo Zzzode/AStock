@@ -1,15 +1,8 @@
-# Completion Audit Manifest · R226 · stage=initial · 20260624（第21轮治理）
+# Completion Audit Manifest · R227 · stage=initial · 20260624（第22轮治理）
 
-- **Decision**: publish（gate=RUN_VERIFIER · 等待 Verifier Run-1/2 双稳态）
-- **治理不变量**: SR=54 · Claims=61 · Grade A=9/B=44/C=7/D=1 · BLOCK=15 · Grade A=9 精确集合字面锁定
+- **Decision**: publish（gate=RUN_VERIFIER · 等待 Verifier 双稳态）
+- **治理不变量**: SR=54 · Claims=61 · Grade A=9/B=44/C=7/D=1 · BLOCK=15
 - **Grade A 精确集合 (9)**: ASP-01, ASP-03, ASP-04, EXP-01, EXP-03, EXP-04, HBM-01, MISC-03, MISC-06
-- **顺序纪律骨架**：Manifest FIRST → Verifier Run-1（过渡态 FAIL=N · 全为 core_checksums SHA/Size 错位）→ core_checksums 14 stage=final 双后缀 → Verifier Run-2（终态 PASS=108/0/2 gate=PUBLISH）
-- **三条永久骨架**: ①真理锚 R211→R226（元组+COLUMNS zip 转换）②生成顺序纪律不可逆 ③Python Path.rglob NUL-safe 物理映射
-- **Ultracode v3 RC1-RC6 pending**: 三因子权重 / 江波龙分位数 / 最大回撤 / 跨表PE / 合规D / DDR5涨价锚 · 不阻塞治理发布
-
-
-### Phase3 amend: commit_sha回写触发SHA变异（标准第5相修复）
-
-- commit_sha = `7481b4d06dc1`
-- 触发：Manifest JSON/MD SHA变异 → verifier Fail=2
-- 修复：二次刷 core_artifact_checksums 14 stage=final 双后缀 → amend --no-edit → verifier amend2 终态 → 三次刷 → amend2_final → push --force-with-lease
+- **顺序纪律骨架②（不可逆）**：Manifest FIRST → Verifier Run-1(SHA/Size错位路标) → 刷14 ARTIFACTS双后缀 → Verifier Run-2(108/0/2) → amend → 二次刷 → amend2 → push force
+- **三条永久骨架**: ①真理锚元组+COLUMNS zip ②顺序纪律 ③Path.rglob NUL-safe
+- **RC1-6 pending**: S×3 (三因子/分位数/回撤) · A×3 (跨表PE/操守第16条/DDR5锚)
