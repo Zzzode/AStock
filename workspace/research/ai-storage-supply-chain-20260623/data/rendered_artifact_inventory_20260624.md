@@ -1,4 +1,4 @@
-# Rendered Artifact Inventory（R266 · 4 files）
+# Rendered Artifact Inventory（R267 · 4 files）
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|

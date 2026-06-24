@@ -1,4 +1,4 @@
-# Raw Data Artifact Inventory（R266 · 3 files）
+# Raw Data Artifact Inventory（R267 · 3 files）
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|
