@@ -1,4 +1,4 @@
-# Root Artifact Inventory（R248 · 14 files）
+# Root Artifact Inventory（R249 · 14 files）
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|
@@ -11,8 +11,8 @@
 |7|raw_financials.md|`2de74e59bac5`|42,882|
 |8|report_catalog.md|`79dc74feda93`|12,857|
 |9|consensus_analysis_raw.md|`fb5eed5705e2`|16,981|
-|10|source_registry.md|`7f192f9fec4f`|18,139|
-|11|source_registry.json|`c27b7659b105`|60,728|
-|12|claim_audit.md|`ca45970e3f32`|21,300|
+|10|source_registry.md|`4258ddbdd63c`|18,139|
+|11|source_registry.json|`93038343db83`|60,728|
+|12|claim_audit.md|`bab22d484460`|21,300|
 |13|completion_audit_manifest.md|`99708481d62e`|886|
 |14|completion_audit_manifest.json|`94ebf306bcfe`|2,030|
