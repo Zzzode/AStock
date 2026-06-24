@@ -1,11 +1,31 @@
 {
-  "case": "ai-storage-supply-chain-20260623",
-  "date": "2026-06-23",
+  "case_id": "ai-storage-supply-chain-20260623",
+  "polling_round": "R211",
+  "last_refreshed_at": "2026-06-24",
   "decision": "publish",
-  "reason": "S级问题3项已修复并重新编译；verified_market_data缺失在附录已声明",
-  "pdf_creation_date": "Tue Jun 23 21:25:53 2026 CST",
-  "pages": 49,
-  "pdf_file_size": 907898,
+  "phase_completion": {
+    "Phase0_Scope": true,
+    "Phase1_Research": true,
+    "Phase2_Verify": true,
+    "Phase25_HouseView": true,
+    "Phase3_Analyze": true,
+    "Phase4_Write": true,
+    "Phase45_Render": true,
+    "Phase5_Review": true,
+    "Phase6_Publish": true
+  },
+  "governance_invariants": {
+    "source_registry_count": 54,
+    "claim_audit_count": 61,
+    "grade_distribution": {
+      "A": 9,
+      "B": 44,
+      "C": 7,
+      "D": 1
+    },
+    "block_count": 15,
+    "verifier_gate": "PASS"
+  },
   "verifier_summary": {
     "pass": 108,
     "fail": 0,
@@ -15,5 +35,16 @@
     "pdf_file_size": 907898,
     "pdf_creation_date": null,
     "gate": "PASS"
-  }
+  },
+  "ultracode_review_status": "Phase 1 done (6 reviewers S=14/A=37/B=31) · Phase 2 adversarial dedupe pending · Phase 3 LaTeX+narrative pending",
+  "pending_top_6_s_issues_root_causes": [
+    "RC1: ch01 vs ch11 三重权重不一致（标的池/层级/顺序）",
+    "RC2: 江波龙 [390,540] vs 上行 [+20%,+45%] 端点映射",
+    "RC3: 最大回撤 -25% vs ch10 D -25~-40% 自证伪",
+    "RC4: 表 8-1 vs 8-2 跨表 PE/EV 系统性偏差（6/6 标的）",
+    "RC5: 附录 D 合规段严重缺失（HK SFC 16/SAC/版本号/司法辖区）",
+    "RC6: 乐观锚全未定量锚定 L1（DDR5/长存/CXL/封装）"
+  ],
+  "known_advisories": 2,
+  "notes": "R211 = R206-R210 全量幂等刷新；Grade A=9/B=44/C=7/D=1 严格锁定；BLOCK 15=11+4；Verifier 期望 PASS=108/FAIL=0/ADVISORY=2 gate=PUBLISH。"
 }
