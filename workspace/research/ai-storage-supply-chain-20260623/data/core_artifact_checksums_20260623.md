@@ -1,15 +1,14 @@
-# AI 存储产业链 · Core Artifact Checksums（20260624 · R222 第17轮 · stage=final）
+# AI 存储产业链 · Core Artifact Checksums（20260624 · R223 第18轮 · stage=final）
 
 > **治理门控**：core_checksums 14 ARTIFACTS 严格对应 verifier.py CS 校验。KEY_EXISTS 硬编码 `20260623` + `20260624` 归档双后缀。
-> **ARTIFACTS 14 不变量**：main 7 + data 5（raw_fin/report_catalog/consensus_raw/SR/CA）+ manifest 2 = 14（不含自指避免悖论）。
-> **Post-amend 刷新原因**：git amend 回写 manifest.json 中 commit_sha → SHA 变异，verifier 终态需 FAIL=0。
+> **post-amend 刷新原因**：git amend 回写 manifest.json commit_sha → SHA 变异 2 项 FAIL。
 
 ## 1. 元数据
 
-- **治理轮次**：R222（第 17 轮 · 2026-06-24）
+- **治理轮次**：R223（第 18 轮 · 2026-06-24）
 - **Artifacts 总数**：14
-- **全局校验和前缀**：db36b1ff8c438089
-- **差异来源**：completion_audit_manifest.json post-amend commit_sha 回写
+- **全局校验和前缀**：a09d7acfc971b4ac
+- **差异来源**：completion_audit_manifest.json post-amend commit_sha 回写（SHA+Size 2项变异）
 
 ## 2. Artifact 指纹表（14）
 
@@ -24,22 +23,21 @@
 |data/raw_financials.md|42,882|2de74e59bac52a1d|RAW_COLLECTED|2026-06-23T12:56:52+00:00|
 |data/report_catalog.md|12,857|79dc74feda93a89c|RAW_COLLECTED|2026-06-23T11:07:18+00:00|
 |data/consensus_analysis_raw.md|16,981|fb5eed5705e27b9a|RAW_COLLECTED|2026-06-23T11:09:31+00:00|
-|data/source_registry.md|18,139|4fd107b481e14c48|SOURCE_GOVERNANCE|2026-06-24T06:46:11+00:00|
-|data/source_registry.json|34,497|dfa4b57b99cba46b|SOURCE_GOVERNANCE|2026-06-24T06:46:11+00:00|
-|data/claim_audit.md|21,295|60d8a797932574ce|SOURCE_GOVERNANCE|2026-06-24T06:46:11+00:00|
-|completion_audit_manifest.md|922|0c5f73d4d9856a4f|MANIFEST|2026-06-24T06:46:12+00:00|
-|completion_audit_manifest.json|2,280|218fb1504c57e831|MANIFEST|2026-06-24T06:58:18+00:00|
+|data/source_registry.md|18,139|cfbef823de82e79d|SOURCE_GOVERNANCE|2026-06-24T07:04:05+00:00|
+|data/source_registry.json|34,497|dfc80dd8ca5f445f|SOURCE_GOVERNANCE|2026-06-24T07:04:05+00:00|
+|data/claim_audit.md|21,295|f2f5288978243f96|SOURCE_GOVERNANCE|2026-06-24T07:04:05+00:00|
+|completion_audit_manifest.md|922|3776944f880fe259|MANIFEST|2026-06-24T07:04:05+00:00|
+|completion_audit_manifest.json|2,235|46d43295bbe3c267|MANIFEST|2026-06-24T07:06:27+00:00|
 
 ## 3. 治理指纹断言
 
 |断言|值|状态|
 |---|---|---|
 |Artifacts 数量|14|✓|
-|SR=54 / Claims=61 / Grade=9/44/7/1 / BLOCK=15|字面锁定|R206→R222 17 轮幂等|
-|过渡态 Run-1 FAIL=9|CS (4+2+3) 错位|✓ 标准路标|
-|终态 Run-2 PASS=108 FAIL=0 ADV=2|双稳态合法终态|post-amend 二次刷新后验证|
-|BLOCK≥10 门控|15（数据级11 + 治理锚4）|✓|
+|SR=54 / Claims=61 / Grade=9/44/7/1 / BLOCK=15|字面锁定|R206→R223 18 轮幂等|
+|BLOCK≥10|15（数据级 11 + 治理锚 4）|✓|
 |Grade A=9 精确集合|ASP-01/03/04 EXP-01/03/04 HBM-01 MISC-03/06|✓ 字面锁定|
+|终态稳态 PASS=108 FAIL=0 ADV=2|双稳态合法终态|二次刷新后验证|
 
 ---
-**治理指纹 R222（post-amend）**：14 artifacts · 全局前缀 db36b1ff8c438089 · stage=final。
+**治理指纹 R223（post-amend）**：14 artifacts · 全局前缀 a09d7acfc971b4ac · stage=final。
