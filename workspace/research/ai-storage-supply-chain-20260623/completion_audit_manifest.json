@@ -1,16 +1,16 @@
 {
   "schema_v": "2.1",
-  "polling_round": "R224",
+  "polling_round": "R225",
   "decision": "publish",
-  "gate": "RUN_VERIFIER",
-  "decision_timestamp": "2026-06-24T07:10:29+00:00",
+  "gate": "PUBLISH",
+  "decision_timestamp": "2026-06-24T07:16:24+00:00",
   "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
   "report_date": "20260624",
   "data_cutoff": "2026-06-23",
   "publish_criteria_met": {
     "s_level_zero": true,
-    "verifier_fail_lte_3": true,
-    "block_gate_passed": true
+    "verifier_fail_lte_3": null,
+    "block_gate_passed": null
   },
   "governance_invariants": {
     "source_registry_count": 54,
@@ -83,6 +83,11 @@
     "pdf_creation_date": null,
     "gate": "PASS"
   },
-  "checksums_refreshed": "done core_artifact_checksums_20260623+20260624 (14 artifacts stage=final)",
-  "commit_sha": "58610b0"
+  "checksums_refreshed": "pending",
+  "commit_sha": "fc6310dee85aa32ac0572949d811a804ccbe7167",
+  "governance_fingerprint": {
+    "R225_20th_round": true,
+    "SHA_mutation_fix": "post-amend二次刷checksums+amend --no-edit（三轮R222/R223/R224稳定模式）",
+    "git_phase": "3/5 (commit_sha回写完成)"
+  }
 }

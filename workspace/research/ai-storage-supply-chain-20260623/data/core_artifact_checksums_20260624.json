@@ -1,12 +1,12 @@
 {
   "schema_v": "1.2",
-  "polling_round": "R224",
-  "generated_at": "2026-06-24T07:12:36+00:00",
-  "stage": "final",
+  "polling_round": "R225",
+  "generated_at": "2026-06-24T07:24:19+00:00",
+  "stage": "final_amend2_v3",
   "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
   "report_date": "20260624",
   "artifact_count": 14,
-  "global_sha256_prefix": "4d6c9dd4dfd85172",
+  "global_sha256_prefix": "e8bfb818fe763f40",
   "columns": [
     "path",
     "size_bytes",
@@ -91,45 +91,45 @@
     {
       "path": "data/source_registry.md",
       "size_bytes": 18139,
-      "sha256": "8e99734dc4f05da77d2fafde406714d528279615669691fc81c6a9741b3b1a2b",
+      "sha256": "5d5d718a8f763b6a9ba190a63e890b6aabf2b9d84543091126f7b2b5ec3eb0b6",
       "file_category": "SOURCE_GOVERNANCE",
-      "content_md5_prefix": "8e99734d",
-      "last_modified_utc": "2026-06-24T07:10:29+00:00"
+      "content_md5_prefix": "5d5d718a",
+      "last_modified_utc": "2026-06-24T07:16:24+00:00"
     },
     {
       "path": "data/source_registry.json",
       "size_bytes": 34497,
-      "sha256": "8d70e1b4b05b8e0e7f6c0bb9508a28edbf3d680050a47fcb06d7c3aa5bbb8f3e",
+      "sha256": "df6f741155731c2ea316dbf5669a611bd9081b3b162cc666b70dd880acf716ac",
       "file_category": "SOURCE_GOVERNANCE",
-      "content_md5_prefix": "8d70e1b4",
-      "last_modified_utc": "2026-06-24T07:10:29+00:00"
+      "content_md5_prefix": "df6f7411",
+      "last_modified_utc": "2026-06-24T07:16:24+00:00"
     },
     {
       "path": "data/claim_audit.md",
       "size_bytes": 21295,
-      "sha256": "5a1404ec7216875e4b32963bc95e8e2d30e084160825008965ea5847144e9620",
+      "sha256": "acf6da1427a5bb5bca9ea5641c121abb735829f646b5e8ea0fb8e238e75fca6c",
       "file_category": "SOURCE_GOVERNANCE",
-      "content_md5_prefix": "5a1404ec",
-      "last_modified_utc": "2026-06-24T07:10:29+00:00"
+      "content_md5_prefix": "acf6da14",
+      "last_modified_utc": "2026-06-24T07:16:24+00:00"
     },
     {
       "path": "completion_audit_manifest.md",
-      "size_bytes": 922,
-      "sha256": "453c54e654c8ce924445d4bd250c82ae33393f4a5dc506e109a56334534cd37b",
+      "size_bytes": 1270,
+      "sha256": "71f738b3ecf29ad3a0b10f9e4c1bee7a1dd48fd2712c425d8c30ecce7b76c2ad",
       "file_category": "MANIFEST",
-      "content_md5_prefix": "453c54e6",
-      "last_modified_utc": "2026-06-24T07:10:29+00:00"
+      "content_md5_prefix": "71f738b3",
+      "last_modified_utc": "2026-06-24T07:23:42+00:00"
     },
     {
       "path": "completion_audit_manifest.json",
-      "size_bytes": 2234,
-      "sha256": "cf49a47f18bc7f62cb070d736d4107a70383e93a77a16620daf82519858e1c7c",
+      "size_bytes": 2407,
+      "sha256": "e32d561680fdc2574b7c7f9b1d40972bb4407a60c2a9f8287384f4a86b4eb1ce",
       "file_category": "MANIFEST",
-      "content_md5_prefix": "cf49a47f",
-      "last_modified_utc": "2026-06-24T07:12:09+00:00"
+      "content_md5_prefix": "e32d5616",
+      "last_modified_utc": "2026-06-24T07:23:57+00:00"
     }
   ],
-  "order_discipline": "Manifest_FIRST → Verifier_Run1(FAIL=6) → core_checksums_refresh → Verifier_Run2(PASS=108/0/2) → post-amend_SHA_refresh → Verifier_clean",
+  "order_discipline": "Manifest FIRST→V1(102/6)→刷checksums→V2(108/0/2)→amend→SHA变异(FAIL=2预期)→二次刷→amend2→push",
   "governance_invariants": {
     "source_registry_count": 54,
     "claim_total": 61,

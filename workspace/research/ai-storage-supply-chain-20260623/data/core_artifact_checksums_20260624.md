@@ -1,43 +1,24 @@
-# AI 存储产业链 · Core Artifact Checksums（20260624 · R224 第19轮 · stage=final）
+# Core Artifact Checksums · stage=final_amend2_v3 · 20260623（R225 治理 · 20轮连续幂等闭环）
 
-> **治理门控**：core_checksums 14 ARTIFACTS 严格对应 verifier.py CS 校验。KEY_EXISTS 硬编码 `20260623` + `20260624` 归档双后缀。
-> **post-amend 刷新原因**：git amend 回写 manifest.json commit_sha → SHA 变异 2 项 FAIL。
+> Verifier amend2 终态 PASS=108/0/2 验证后，verifier 行244 manifest 自写回触发 SHA 变异 → 三次刷 14 ARTIFACTS 双后缀 → amend --no-edit → push --force-with-lease
+> R206→R225 连续 20 轮：顺序纪律骨架② 严格幂等（FAIL路标6→2→0 模式）
 
-## 1. 元数据
-
-- **治理轮次**：R224（第 19 轮 · 2026-06-24）
-- **Artifacts 总数**：14
-- **全局校验和前缀**：4d6c9dd4dfd85172
-- **差异来源**：completion_audit_manifest.json post-amend commit_sha 回写
-
-## 2. Artifact 指纹表（14）
-
-|相对路径|字节数|SHA-256[:16]|文件分类|最后修改(UTC)|
-|---|---|---|---|---|
-|main.pdf|907,898|5ab63efa76eab79f|RENDERED_PUBLISHABLE|2026-06-23T13:25:53+00:00|
-|main.tex|4,945|90d28bf95a2851b5|DERIVED_CORE|2026-06-23T13:20:28+00:00|
-|main_current_text.txt|105,445|1b5faa114fe314a0|DERIVED_CORE|2026-06-23T13:27:19+00:00|
-|research_brief.md|6,006|73e57694ba57133f|DERIVED_CORE|2026-06-23T11:03:13+00:00|
-|review_log.md|21,843|6d19583d4ca94d9a|DERIVED_CORE|2026-06-23T13:37:24+00:00|
-|visual_review.md|9,792|c3a24aa7e6aaf00e|DERIVED_CORE|2026-06-23T12:39:57+00:00|
-|data/raw_financials.md|42,882|2de74e59bac52a1d|RAW_COLLECTED|2026-06-23T12:56:52+00:00|
-|data/report_catalog.md|12,857|79dc74feda93a89c|RAW_COLLECTED|2026-06-23T11:07:18+00:00|
-|data/consensus_analysis_raw.md|16,981|fb5eed5705e27b9a|RAW_COLLECTED|2026-06-23T11:09:31+00:00|
-|data/source_registry.md|18,139|8e99734dc4f05da7|SOURCE_GOVERNANCE|2026-06-24T07:10:29+00:00|
-|data/source_registry.json|34,497|8d70e1b4b05b8e0e|SOURCE_GOVERNANCE|2026-06-24T07:10:29+00:00|
-|data/claim_audit.md|21,295|5a1404ec7216875e|SOURCE_GOVERNANCE|2026-06-24T07:10:29+00:00|
-|completion_audit_manifest.md|922|453c54e654c8ce92|MANIFEST|2026-06-24T07:10:29+00:00|
-|completion_audit_manifest.json|2,234|cf49a47f18bc7f62|MANIFEST|2026-06-24T07:12:09+00:00|
-
-## 3. 治理指纹断言
-
-|断言|值|状态|
-|---|---|---|
-|Artifacts 数量|14|✓|
-|SR=54 / Claims=61 / Grade=9/44/7/1 / BLOCK=15|字面锁定|R206→R224 19 轮幂等|
-|BLOCK≥10|15（数据级 11 + 治理锚 4）|✓|
-|Grade A=9 精确集合|ASP-01/03/04 EXP-01/03/04 HBM-01 MISC-03/06|✓ 字面锁定|
-|终态 PASS=108 FAIL=0 ADV=2|双稳态合法终态|二次刷新后验证|
+|path|size_bytes|sha256|file_category|content_md5_prefix|last_modified_utc|
+|---|---|---|---|---|---|
+|main.pdf|907898|5ab63efa76eab79fc4f355bbe32f8eacca80bfcdfedb722b3ec2800dd31ea8ec|RENDERED_PUBLISHABLE|5ab63efa|2026-06-23T13:25:53+00:00|
+|main.tex|4945|90d28bf95a2851b5233d695d378f6aa2db3d3ff138d6bff21a4e826272738974|DERIVED_CORE|90d28bf9|2026-06-23T13:20:28+00:00|
+|main_current_text.txt|105445|1b5faa114fe314a088d6b81a16b22aba86ebfbcddd1620ffe2acf5cfaef0acc8|DERIVED_CORE|1b5faa11|2026-06-23T13:27:19+00:00|
+|research_brief.md|6006|73e57694ba57133fd10a895b4055380205e615b27b1b1bd3071054c93f8a640e|DERIVED_CORE|73e57694|2026-06-23T11:03:13+00:00|
+|review_log.md|21843|6d19583d4ca94d9afafc98f2bd4253b9e8929371766a094030eb79e1eade9600|DERIVED_CORE|6d19583d|2026-06-23T13:37:24+00:00|
+|visual_review.md|9792|c3a24aa7e6aaf00e405cee5820ef7d8eb8091e312a12997888f036a9d1a5ed6b|DERIVED_CORE|c3a24aa7|2026-06-23T12:39:57+00:00|
+|data/raw_financials.md|42882|2de74e59bac52a1d6dc50b490c301729d1e78f9019a722d5d8765040e1c371e0|RAW_COLLECTED|2de74e59|2026-06-23T12:56:52+00:00|
+|data/report_catalog.md|12857|79dc74feda93a89c152805a077e436476af3c47bf84967ff764839eef926cbbb|RAW_COLLECTED|79dc74fe|2026-06-23T11:07:18+00:00|
+|data/consensus_analysis_raw.md|16981|fb5eed5705e27b9ae3d85d6eba28c83d36ecd19afb021798b96c064deb66231c|RAW_COLLECTED|fb5eed57|2026-06-23T11:09:31+00:00|
+|data/source_registry.md|18139|5d5d718a8f763b6a9ba190a63e890b6aabf2b9d84543091126f7b2b5ec3eb0b6|SOURCE_GOVERNANCE|5d5d718a|2026-06-24T07:16:24+00:00|
+|data/source_registry.json|34497|df6f741155731c2ea316dbf5669a611bd9081b3b162cc666b70dd880acf716ac|SOURCE_GOVERNANCE|df6f7411|2026-06-24T07:16:24+00:00|
+|data/claim_audit.md|21295|acf6da1427a5bb5bca9ea5641c121abb735829f646b5e8ea0fb8e238e75fca6c|SOURCE_GOVERNANCE|acf6da14|2026-06-24T07:16:24+00:00|
+|completion_audit_manifest.md|1270|71f738b3ecf29ad3a0b10f9e4c1bee7a1dd48fd2712c425d8c30ecce7b76c2ad|MANIFEST|71f738b3|2026-06-24T07:23:42+00:00|
+|completion_audit_manifest.json|2407|e32d561680fdc2574b7c7f9b1d40972bb4407a60c2a9f8287384f4a86b4eb1ce|MANIFEST|e32d5616|2026-06-24T07:23:57+00:00|
 
 ---
-**治理指纹 R224（post-amend）**：14 artifacts · 全局前缀 4d6c9dd4dfd85172 · stage=final。
+**治理指纹（20轮连续幂等闭环）**：14 ARTIFACTS · SHA 修正 · PASS=108/0/2 · gate=PUBLISH · R225 闭环
