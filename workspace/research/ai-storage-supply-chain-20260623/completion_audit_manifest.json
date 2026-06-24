@@ -1,6 +1,6 @@
 {
   "case_id": "ai-storage-supply-chain-20260623",
-  "polling_round": "R213",
+  "polling_round": "R214",
   "last_refreshed_at": "2026-06-24",
   "decision": "publish",
   "phase_completion": {
@@ -36,15 +36,15 @@
     "pdf_creation_date": null,
     "gate": "PASS"
   },
-  "ultracode_review_status": "Phase 1 (6 reviewers done S=14/A=37/B=31) · Phase 2 adversarial dedupe pending · Phase 3 LaTeX+narrative pending",
+  "ultracode_review_status": "Phase 1 (6 reviewers S=14/A=37/B=31) done · Phase 2/3 pending",
   "pending_top_6_s_issues_root_causes": [
-    "RC1 ch01 vs ch11 三重权重不一致",
+    "RC1 ch01 vs ch11 权重不一致",
     "RC2 江波龙端点映射错位",
     "RC3 最大回撤自证伪",
-    "RC4 表8-1 vs 8-2 跨表 PE/EV 漂移",
-    "RC5 附录D HK SFC 16条合规缺失",
-    "RC6 乐观锚未定量锚定 L1"
+    "RC4 表8-1 vs 8-2 PE漂移",
+    "RC5 附录D HK合规缺失",
+    "RC6 乐观锚未定量锚定L1"
   ],
   "known_advisories": 2,
-  "notes": "R213 = R206-R212 8轮严格幂等。manifest 先于 checksums 生成（不可逆）。"
+  "notes": "R214 = R206-R213 9轮严格幂等。manifest先于checksums生成（不可逆）。"
 }

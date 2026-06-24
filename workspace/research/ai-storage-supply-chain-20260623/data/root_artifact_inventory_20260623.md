@@ -1,5 +1,5 @@
-# root_artifact · Artifact Inventory (R213 Refresh)
-- **Generated**：2026-06-24 R213 Polling
+# root_artifact · Artifact Inventory (R214 Refresh)
+- **Generated**：2026-06-24 R214 Polling
 - **Items**：15
 - **治理分类**：PRIMARY / DERIVED_CORE / TEMP
 
@@ -10,8 +10,8 @@
 |3|research_brief.md|6,006|73e57694ba57|research_brief.md|
 |4|review_log.md|21,843|6d19583d4ca9|review_log.md|
 |5|visual_review.md|9,792|c3a24aa7e6aa|visual_review.md|
-|6|completion_audit_manifest.json|1,485|069e8ae4b72f|completion_audit_manifest.json|
-|7|completion_audit_manifest.md|1,029|1f43a7f587de|completion_audit_manifest.md|
+|6|completion_audit_manifest.json|1,382|3004d1cd11f8|completion_audit_manifest.json|
+|7|completion_audit_manifest.md|801|6a8bf3830fa9|completion_audit_manifest.md|
 |8|data_room_index.md|2,378|4c3551b4f23d|data_room_index.md|
 |9|source_exhaustion_log.json|573|fbb06f5b17c4|source_exhaustion_log.json|
 |10|source_exhaustion_log.md|848|acb901cf2d9a|source_exhaustion_log.md|
