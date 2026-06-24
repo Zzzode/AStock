@@ -1,7 +1,7 @@
 {
   "schema_v": "1.2",
-  "generated_at": "2026-06-24T06:08:26+00:00",
-  "polling_round": "R219",
+  "generated_at": "2026-06-24T06:19:00+00:00",
+  "polling_round": "R220",
   "stage": "final",
   "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
   "governance": {
@@ -21,9 +21,9 @@
     }
   },
   "notes": [
-    "KEY_EXISTS 20260623 永久锚 + 当日 20260624 双后缀（verifier:43 KEY_EXISTS 硬编码）",
-    "stage=final 在 Verifier Run-1 之后刷新，吸收 completion_audit_manifest.json 行244 自写回 SHA 变异",
-    "RC1-RC6 pending_top_6_s_issues 留存：Ultracode v3 Phase2-3 对抗校验+LaTeX补丁未执行"
+    "双后缀 20260623（KEY_EXISTS 永久锚）+ 20260624（当日归档）",
+    "stage=final 吸收 verifier 行244 manifest 自写回 SHA 变异",
+    "RC1-RC6 pending：Ultracode v3 Phase 2-3 尚未执行"
   ],
   "artifact_count": 14,
   "files": [
@@ -113,45 +113,45 @@
       "file_name": "source_registry.md",
       "artifact_classification": "DERIVED_CORE",
       "description": "来源注册表（治理）",
-      "sha256": "39ef2292723fc0416e3dc0862cde043f64f183b33a33c5a493403d86a327ba22",
-      "size_bytes": 18907,
-      "last_modified_utc": "2026-06-24T06:02:31+00:00"
+      "sha256": "405ca3b449abf8e9fbd7e4a1c0f60f9aa4585dc57efa884d1bb4ca3104dbd492",
+      "size_bytes": 18691,
+      "last_modified_utc": "2026-06-24T06:15:14+00:00"
     },
     {
       "path": "workspace/research/ai-storage-supply-chain-20260623/data/source_registry.json",
       "file_name": "source_registry.json",
       "artifact_classification": "DERIVED_CORE",
       "description": "来源注册表（机器）",
-      "sha256": "a35f2d106c4998d3d990f42268b95b1f628f56082782ed79ea3468510772dfda",
+      "sha256": "0868ec087d1903f0d26635c2e2dee43649b6a5a68f7fb60e9df2c339cf5c6baa",
       "size_bytes": 34497,
-      "last_modified_utc": "2026-06-24T06:02:31+00:00"
+      "last_modified_utc": "2026-06-24T06:15:14+00:00"
     },
     {
       "path": "workspace/research/ai-storage-supply-chain-20260623/data/claim_audit.md",
       "file_name": "claim_audit.md",
       "artifact_classification": "DERIVED_CORE",
       "description": "主张审计表（治理）",
-      "sha256": "9de072918e0ed4e48e21838799f1a80282e9cae6c12137f445fab5ef94a004c9",
-      "size_bytes": 22333,
-      "last_modified_utc": "2026-06-24T06:02:31+00:00"
+      "sha256": "6b070792b07c9b0045a1d71a83439c61803e2cc1bf37010e86fb94ff3585738b",
+      "size_bytes": 22201,
+      "last_modified_utc": "2026-06-24T06:15:14+00:00"
     },
     {
       "path": "workspace/research/ai-storage-supply-chain-20260623/completion_audit_manifest.md",
       "file_name": "completion_audit_manifest.md",
       "artifact_classification": "DERIVED_GATE",
       "description": "完成审计清单(人读)",
-      "sha256": "ba4f9c5aab6665714801d600a9e2226b5baad24818a3bf103763bf7f96686f1a",
-      "size_bytes": 649,
-      "last_modified_utc": "2026-06-24T06:02:31+00:00"
+      "sha256": "edf8686dbb9c69cb7a995aa4306ae460c95879917cf9bbed674813e3c116e3e5",
+      "size_bytes": 874,
+      "last_modified_utc": "2026-06-24T06:15:14+00:00"
     },
     {
       "path": "workspace/research/ai-storage-supply-chain-20260623/completion_audit_manifest.json",
       "file_name": "completion_audit_manifest.json",
       "artifact_classification": "DERIVED_GATE",
       "description": "完成审计清单(机器,含verifier写回)",
-      "sha256": "0c3fe5b58c2cfe5b44a48ceacbdac88d8dc690c3882b35354c0f7bc128a77f89",
-      "size_bytes": 2118,
-      "last_modified_utc": "2026-06-24T06:05:53+00:00"
+      "sha256": "44a91bf98fd21cc18d15323e4518a9d3ca049226aabdb93787cc6b1351430ffc",
+      "size_bytes": 2123,
+      "last_modified_utc": "2026-06-24T06:16:02+00:00"
     }
   ]
 }

@@ -1,8 +1,8 @@
-# AI 存储产业链 · 来源注册表（Source Registry · R219 Polling Refresh）
+# AI 存储产业链 · 来源注册表（Source Registry · R220 Polling Refresh · 第15轮）
 
 > 来源治理规则：L1 ≥95 / L2 ≥90 / L3 ≥75 / L4 ≥70 / L5 ≥75 / L6 ≥0。证据等级→主张 Grade：L1+L3交叉=A级；L3/L4/L5=B级；单一L4/L5=C级；L6或无来源=D级。
-> R219 更新：与 R206-R218 全量一致（幂等刷新，无新增/删除/修改）。治理指纹连续 14 轮锁定 SR=54 · Claim=61 · BLOCK=15。
-> 文件分类：DERIVED_CORE。主张审计（claim_audit.md）主张总数四元不变量 = md 主表行数 = json records = Σ L1-5 = 54。
+> R220 更新：与 R206-R219 全量一致（幂等刷新，无新增/删除/修改）。治理指纹连续 15 轮锁定 SR=54 · Claim=61 · BLOCK=15。
+> 文件分类：DERIVED_CORE。四元不变量 = md 主表行数 = json records = total_count = Σ L1-5 = 54。
 
 ## 1. 证据等级定义（6 档）
 
@@ -21,11 +21,9 @@
 - **L4 产业媒体：5 项（68–78）**
 - **L5 综合数据：8 项（65–83）**
 - **L6 自媒体传闻：0 项（治理红线）**
-- **合计 10+3+28+5+8 = 54（R206→R219 连续 14 轮幂等）**
+- **合计 10+3+28+5+8 = 54（R206→R220 连续 15 轮幂等）**
 
 ## 3.0 物理文件 ↔ S-ID 映射表（15 = 14 L3 PDF + 1 META-CAT）
-
-> Step 3(c) 治理产物：15 个 sources/ 物理文件 ↔ 15 条 S-ID 一一映射。official-filings / ir-records / probe-failed 为治理占位（URL 可审计，本地目录为空合规）。
 
 |S-ID|物理相对路径|文件名|字节数|SHA-256[:12]|分类|
 |---|---|---|---|---|---|
@@ -139,4 +137,4 @@
 
 ---
 
-**治理指纹（R219）**：来源 54 · Grade A=9 B=44 C=7 D=1 · BLOCK=15 · 8 锚对齐 · Twin-row-count 容差 ≤35。
+**治理指纹（R220）**：来源 54 · Grade A=9 B=44 C=7 D=1 · BLOCK=15 · 8 锚对齐 · Twin-row-count 容差 ≤35。
