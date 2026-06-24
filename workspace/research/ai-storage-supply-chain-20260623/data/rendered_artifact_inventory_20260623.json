@@ -1,29 +1,36 @@
 {
-  "polling_round": "R215",
-  "generated_at": "2026-06-24",
-  "inventory_name": "rendered_artifact",
-  "count": 3,
+  "schema_v": "1.1",
+  "generated_at": "2026-06-24T14:02:31",
+  "polling_round": "R219",
+  "columns": [
+    "相对路径",
+    "文件分类",
+    "字节数",
+    "SHA-256[:16]",
+    "生成时间"
+  ],
   "inventory": [
     {
-      "path": "main.pdf",
-      "size_bytes": 907898,
-      "sha256": "5ab63efa76eab79fc4f355bbe32f8eacca80bfcdfedb722b3ec2800dd31ea8ec",
-      "mtime": 1782221153,
-      "description": "main.pdf"
+      "相对路径": "main.pdf",
+      "文件分类": "RENDERED_PUBLISHABLE",
+      "字节数": 907898,
+      "SHA-256[:16]": "5ab63efa76eab79f",
+      "生成时间": "2026-06-23T21:25:53"
     },
     {
-      "path": "main_current_text.txt",
-      "size_bytes": 105445,
-      "sha256": "1b5faa114fe314a088d6b81a16b22aba86ebfbcddd1620ffe2acf5cfaef0acc8",
-      "mtime": 1782221239,
-      "description": "main_current_text.txt"
+      "相对路径": "main.tex",
+      "文件分类": "DERIVED_WRITE",
+      "字节数": 4945,
+      "SHA-256[:16]": "90d28bf95a2851b5",
+      "生成时间": "2026-06-23T21:20:28"
     },
     {
-      "path": "main.tex",
-      "size_bytes": 4945,
-      "sha256": "90d28bf95a2851b5233d695d378f6aa2db3d3ff138d6bff21a4e826272738974",
-      "mtime": 1782220828,
-      "description": "main.tex"
+      "相对路径": "main_current_text.txt",
+      "文件分类": "DERIVED_TOOL",
+      "字节数": 105445,
+      "SHA-256[:16]": "1b5faa114fe314a0",
+      "生成时间": "2026-06-23T21:27:19"
     }
-  ]
+  ],
+  "total_count": 3
 }

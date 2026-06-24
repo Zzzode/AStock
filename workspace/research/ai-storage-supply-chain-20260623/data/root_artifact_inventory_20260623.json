@@ -1,113 +1,136 @@
 {
-  "polling_round": "R215",
-  "generated_at": "2026-06-24",
-  "inventory_name": "root_artifact",
-  "count": 15,
+  "schema_v": "1.1",
+  "generated_at": "2026-06-24T14:02:31",
+  "polling_round": "R219",
+  "columns": [
+    "相对路径",
+    "文件分类",
+    "说明",
+    "字节数",
+    "SHA-256[:16]",
+    "修改时间"
+  ],
   "inventory": [
     {
-      "path": "main.pdf",
-      "size_bytes": 907898,
-      "sha256": "5ab63efa76eab79fc4f355bbe32f8eacca80bfcdfedb722b3ec2800dd31ea8ec",
-      "mtime": 1782221153,
-      "description": "main.pdf"
+      "相对路径": "main.pdf",
+      "文件分类": "RENDERED_PUBLISHABLE",
+      "说明": "Full report PDF",
+      "字节数": 907898,
+      "SHA-256[:16]": "5ab63efa76eab79f",
+      "修改时间": "2026-06-23T21:25:53"
     },
     {
-      "path": "main.tex",
-      "size_bytes": 4945,
-      "sha256": "90d28bf95a2851b5233d695d378f6aa2db3d3ff138d6bff21a4e826272738974",
-      "mtime": 1782220828,
-      "description": "main.tex"
+      "相对路径": "main.tex",
+      "文件分类": "DERIVED_WRITE",
+      "说明": "LaTeX 主入口",
+      "字节数": 4945,
+      "SHA-256[:16]": "90d28bf95a2851b5",
+      "修改时间": "2026-06-23T21:20:28"
     },
     {
-      "path": "research_brief.md",
-      "size_bytes": 6006,
-      "sha256": "73e57694ba57133fd10a895b4055380205e615b27b1b1bd3071054c93f8a640e",
-      "mtime": 1782212593,
-      "description": "research_brief.md"
+      "相对路径": "main_current_text.txt",
+      "文件分类": "DERIVED_TOOL",
+      "说明": "PDF文本抽取",
+      "字节数": 105445,
+      "SHA-256[:16]": "1b5faa114fe314a0",
+      "修改时间": "2026-06-23T21:27:19"
     },
     {
-      "path": "review_log.md",
-      "size_bytes": 21843,
-      "sha256": "6d19583d4ca94d9afafc98f2bd4253b9e8929371766a094030eb79e1eade9600",
-      "mtime": 1782221844,
-      "description": "review_log.md"
+      "相对路径": "research_brief.md",
+      "文件分类": "PRIMARY_SCOPE",
+      "说明": "Phase0 研究范围",
+      "字节数": 6006,
+      "SHA-256[:16]": "73e57694ba57133f",
+      "修改时间": "2026-06-23T19:03:13"
     },
     {
-      "path": "visual_review.md",
-      "size_bytes": 9792,
-      "sha256": "c3a24aa7e6aaf00e405cee5820ef7d8eb8091e312a12997888f036a9d1a5ed6b",
-      "mtime": 1782218397,
-      "description": "visual_review.md"
+      "相对路径": "review_log.md",
+      "文件分类": "DERIVED_CORE",
+      "说明": "Phase5 reviewer",
+      "字节数": 21843,
+      "SHA-256[:16]": "6d19583d4ca94d9a",
+      "修改时间": "2026-06-23T21:37:24"
     },
     {
-      "path": "completion_audit_manifest.json",
-      "size_bytes": 1299,
-      "sha256": "a41aafea7a51121652b529c4bf6f175a436a40a2928c01eccfcd4dedb7cf93dc",
-      "mtime": 1782278837,
-      "description": "completion_audit_manifest.json"
+      "相对路径": "visual_review.md",
+      "文件分类": "DERIVED_CORE",
+      "说明": "Phase4.5视觉",
+      "字节数": 9792,
+      "SHA-256[:16]": "c3a24aa7e6aaf00e",
+      "修改时间": "2026-06-23T20:39:57"
     },
     {
-      "path": "completion_audit_manifest.md",
-      "size_bytes": 759,
-      "sha256": "380334ebbc9d489643ebd2f27e517793477302d3257700c073ccfcd122703f1f",
-      "mtime": 1782278833,
-      "description": "completion_audit_manifest.md"
+      "相对路径": "completion_audit_manifest.json",
+      "文件分类": "DERIVED_GATE",
+      "说明": "完成门控",
+      "字节数": 2420,
+      "SHA-256[:16]": "cfe811a7949c9f14",
+      "修改时间": "2026-06-24T13:54:28"
     },
     {
-      "path": "data_room_index.md",
-      "size_bytes": 2378,
-      "sha256": "4c3551b4f23d89b9be861615e488f0dd68ef056eb3758178c0b0ed13c71f7fd7",
-      "mtime": 1782221354,
-      "description": "data_room_index.md"
+      "相对路径": "completion_audit_manifest.md",
+      "文件分类": "DERIVED_GATE",
+      "说明": "完成门控(人读)",
+      "字节数": 623,
+      "SHA-256[:16]": "b7a33646320712aa",
+      "修改时间": "2026-06-24T13:53:23"
     },
     {
-      "path": "source_exhaustion_log.json",
-      "size_bytes": 573,
-      "sha256": "fbb06f5b17c4e36cbe15d63763b0acd37c0e01179a679dbef397741a90f89f4e",
-      "mtime": 1782221354,
-      "description": "source_exhaustion_log.json"
+      "相对路径": "source_exhaustion_log.json",
+      "文件分类": "DERIVED_GOVERNANCE",
+      "说明": "来源穷尽",
+      "字节数": 573,
+      "SHA-256[:16]": "fbb06f5b17c4e36c",
+      "修改时间": "2026-06-23T21:29:14"
     },
     {
-      "path": "source_exhaustion_log.md",
-      "size_bytes": 848,
-      "sha256": "acb901cf2d9afffc6dd976e9a7ed62ec1267fb490a8cb51d0d10e3e44fd55822",
-      "mtime": 1782221354,
-      "description": "source_exhaustion_log.md"
+      "相对路径": "source_exhaustion_log.md",
+      "文件分类": "DERIVED_GOVERNANCE",
+      "说明": "来源穷尽(人读)",
+      "字节数": 848,
+      "SHA-256[:16]": "acb901cf2d9afffc",
+      "修改时间": "2026-06-23T21:29:14"
     },
     {
-      "path": "unresolved_requirements.json",
-      "size_bytes": 863,
-      "sha256": "91e393fbf8d41894b29d427a836622b281bcd49155f5c33f700e656b1570f4b8",
-      "mtime": 1782221354,
-      "description": "unresolved_requirements.json"
+      "相对路径": "unresolved_requirements.json",
+      "文件分类": "DERIVED_GOVERNANCE",
+      "说明": "未满足需求",
+      "字节数": 863,
+      "SHA-256[:16]": "91e393fbf8d41894",
+      "修改时间": "2026-06-23T21:29:14"
     },
     {
-      "path": "missing_data_request_pack.json",
-      "size_bytes": 844,
-      "sha256": "714cd9141b0f06f0b162d4997db38d740e2ac344c125cbe5e4e8cf193810beee",
-      "mtime": 1782221354,
-      "description": "missing_data_request_pack.json"
+      "相对路径": "data_room_index.md",
+      "文件分类": "DERIVED_INDEX",
+      "说明": "虚拟数据室索引",
+      "字节数": 2378,
+      "SHA-256[:16]": "4c3551b4f23d89b9",
+      "修改时间": "2026-06-23T21:29:14"
     },
     {
-      "path": "missing_data_request_pack.md",
-      "size_bytes": 630,
-      "sha256": "07956dfadf4fdee451c82ab46e9b2f497ad4481e88d3be9606ac062c115d6273",
-      "mtime": 1782221354,
-      "description": "missing_data_request_pack.md"
+      "相对路径": "missing_data_request_pack.json",
+      "文件分类": "DERIVED_GOVERNANCE",
+      "说明": "缺失数据包",
+      "字节数": 844,
+      "SHA-256[:16]": "714cd9141b0f06f0",
+      "修改时间": "2026-06-23T21:29:14"
     },
     {
-      "path": "missing_data_request_pack.csv",
-      "size_bytes": 430,
-      "sha256": "2e2572d9121974a09635bb4c1bd318fa2150f544903351e2f65f2cf6f5fc920b",
-      "mtime": 1782221354,
-      "description": "missing_data_request_pack.csv"
+      "相对路径": "missing_data_request_pack.md",
+      "文件分类": "DERIVED_GOVERNANCE",
+      "说明": "缺失数据包(人读)",
+      "字节数": 630,
+      "SHA-256[:16]": "07956dfadf4fdee4",
+      "修改时间": "2026-06-23T21:29:14"
     },
     {
-      "path": "main_current_text.txt",
-      "size_bytes": 105445,
-      "sha256": "1b5faa114fe314a088d6b81a16b22aba86ebfbcddd1620ffe2acf5cfaef0acc8",
-      "mtime": 1782221239,
-      "description": "main_current_text.txt"
+      "相对路径": "missing_data_request_pack.csv",
+      "文件分类": "DERIVED_GOVERNANCE",
+      "说明": "缺失数据包(追踪)",
+      "字节数": 430,
+      "SHA-256[:16]": "2e2572d9121974a0",
+      "修改时间": "2026-06-23T21:29:14"
     }
-  ]
+  ],
+  "total_count": 15
 }

@@ -1,16 +1,16 @@
 {
   "schema_v": "2.1",
-  "polling_round": "R218",
+  "polling_round": "R219",
   "decision": "publish",
-  "gate": "RUN_VERIFIER",
-  "decision_timestamp": "2026-06-24T13:53:23",
+  "gate": "PUBLISH",
+  "decision_timestamp": "2026-06-24T14:02:31",
   "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
   "report_date": "20260624",
   "data_cutoff": "2026-06-23",
   "publish_criteria_met": {
     "s_level_zero": true,
-    "verifier_fail_lte_3": null,
-    "block_gate_passed": null
+    "verifier_fail_lte_3": true,
+    "block_gate_passed": true
   },
   "governance_invariants": {
     "source_registry_count": 54,
@@ -38,45 +38,39 @@
   "pending_top_6_s_issues": [
     {
       "rc_id": "RC1",
-      "title": "三因子权重不一致（表8-3逐行验算）",
-      "file": "sections/ch08_valuation.tex:153",
-      "severity": "S",
-      "root_cause": "reviewer算术校验缺失"
+      "title": "表8-3三因子加总≠各行溢价 逐行验算",
+      "file": "ch08_valuation.tex:153",
+      "severity": "S"
     },
     {
       "rc_id": "RC2",
-      "title": "江波龙EPS Q25/Q75端点映射",
-      "file": "sections/ch08_valuation.tex:139",
-      "severity": "S",
-      "root_cause": "分位数未显式写出"
+      "title": "江波龙EPS Q25/Q75端点未显式映射",
+      "file": "ch08_valuation.tex:139",
+      "severity": "S"
     },
     {
       "rc_id": "RC3",
-      "title": "最大回撤-25%是否历史两轮回撤统计",
-      "file": "sections/ch10_risk_stress.tex:47",
-      "severity": "S",
-      "root_cause": "拍脑袋风险"
+      "title": "最大回撤-25% 历史2轮回溯验证",
+      "file": "ch10_risk_stress.tex:47",
+      "severity": "S"
     },
     {
       "rc_id": "RC4",
-      "title": "跨表PE偏差(ch07/ch08目标价逐行一致)",
-      "file": "sections/ch08_valuation.tex:132",
-      "severity": "A",
-      "root_cause": "reviewer提示"
+      "title": "跨表PE偏差（ch07目标价 vs ch08估值）",
+      "file": "ch08_valuation.tex:132",
+      "severity": "A"
     },
     {
       "rc_id": "RC5",
       "title": "附录D遗漏《操守准则》第16条",
-      "file": "sections/app_sources_audit.tex",
-      "severity": "A",
-      "root_cause": "合规reviewer"
+      "file": "app_sources_audit.tex",
+      "severity": "A"
     },
     {
       "rc_id": "RC6",
       "title": "乐观锚未定锚L1（DDR5涨价8-10季证据）",
-      "file": "sections/ch05_supply_price_cycle.tex",
-      "severity": "A",
-      "root_cause": "逆向reviewer"
+      "file": "ch05_supply_price_cycle.tex",
+      "severity": "A"
     }
   ],
   "verifier_summary": {
@@ -89,6 +83,7 @@
     "pdf_creation_date": null,
     "gate": "PASS"
   },
-  "checksums_refreshed": "pending",
-  "commit_sha": "pending"
+  "checksums_refreshed": "stage=final 双后缀 20260623+20260624 14 项，verifier Run-2 吸收变异",
+  "commit_sha": "pending_git_push",
+  "finalized_at": "2026-06-24T06:10:03+00:00"
 }

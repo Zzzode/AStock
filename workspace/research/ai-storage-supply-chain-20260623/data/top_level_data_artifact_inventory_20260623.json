@@ -1,134 +1,48 @@
 {
-  "polling_round": "R215",
-  "generated_at": "2026-06-24",
-  "inventory_name": "top_level_data_artifact",
-  "count": 18,
+  "schema_v": "1.1",
+  "generated_at": "2026-06-24T14:02:31",
+  "polling_round": "R219",
+  "columns": [
+    "相对路径",
+    "文件分类",
+    "说明",
+    "字节数",
+    "SHA-256[:16]",
+    "更新时间"
+  ],
   "inventory": [
     {
-      "path": "data/claim_audit.md",
-      "size_bytes": 23363,
-      "sha256": "fc27fd854f55c401998c831abfb225bce9cac8c234a5fe3009c60b0a1f037d43",
-      "mtime": 1782278985,
-      "description": "claim_audit.md"
+      "相对路径": "data/raw_financials.md",
+      "文件分类": "PRIMARY_COLLECTED",
+      "说明": "原始财报",
+      "字节数": 42882,
+      "SHA-256[:16]": "2de74e59bac52a1d",
+      "更新时间": "2026-06-23T20:56:52"
     },
     {
-      "path": "data/consensus_analysis_raw.md",
-      "size_bytes": 16981,
-      "sha256": "fb5eed5705e27b9ae3d85d6eba28c83d36ecd19afb021798b96c064deb66231c",
-      "mtime": 1782212971,
-      "description": "consensus_analysis_raw.md"
+      "相对路径": "data/report_catalog.md",
+      "文件分类": "PRIMARY_COLLECTED",
+      "说明": "券商目录",
+      "字节数": 12857,
+      "SHA-256[:16]": "79dc74feda93a89c",
+      "更新时间": "2026-06-23T19:07:18"
     },
     {
-      "path": "data/core_artifact_checksums_20260623.json",
-      "size_bytes": 3830,
-      "sha256": "aa21f36f8b8db88180cb6b6f6093009a4b04f6857efdf94c599a9858a7d87fe5",
-      "mtime": 1782278836,
-      "description": "core_artifact_checksums_20260623.json"
+      "相对路径": "data/source_registry.md",
+      "文件分类": "DERIVED_CORE",
+      "说明": "来源注册表",
+      "字节数": 18907,
+      "SHA-256[:16]": "39ef2292723fc041",
+      "更新时间": "2026-06-24T14:02:31"
     },
     {
-      "path": "data/core_artifact_checksums_20260623.md",
-      "size_bytes": 1422,
-      "sha256": "3767abe35d0b9cf97340dc342230a8e2bb91aea56df5bedcf1f54f2bf9efbb10",
-      "mtime": 1782278836,
-      "description": "core_artifact_checksums_20260623.md"
-    },
-    {
-      "path": "data/raw_data_artifact_inventory_20260623.json",
-      "size_bytes": 1326,
-      "sha256": "966e975ffd0574ab943f556bcf563c441e2425f5ec240a961d5e37bc4af87f4b",
-      "mtime": 1782278833,
-      "description": "raw_data_artifact_inventory_20260623.json"
-    },
-    {
-      "path": "data/raw_data_artifact_inventory_20260623.md",
-      "size_bytes": 597,
-      "sha256": "69e2913ce3aed285f940118d7cd2ad0d4f3cf91e09d8cc45b86a0a0c3559d87d",
-      "mtime": 1782278833,
-      "description": "raw_data_artifact_inventory_20260623.md"
-    },
-    {
-      "path": "data/raw_financials.md",
-      "size_bytes": 42882,
-      "sha256": "2de74e59bac52a1d6dc50b490c301729d1e78f9019a722d5d8765040e1c371e0",
-      "mtime": 1782219412,
-      "description": "raw_financials.md"
-    },
-    {
-      "path": "data/rendered_artifact_inventory_20260623.json",
-      "size_bytes": 792,
-      "sha256": "f3a3d5d9d5abc614e4b89728549cc7a94f756ef611647b2c0c8bc42df683e699",
-      "mtime": 1782278833,
-      "description": "rendered_artifact_inventory_20260623.json"
-    },
-    {
-      "path": "data/rendered_artifact_inventory_20260623.md",
-      "size_bytes": 397,
-      "sha256": "2b0d96d90e84cffc948f6ed9f23b11d3b253c3b1ec02952945443afeb457a512",
-      "mtime": 1782278833,
-      "description": "rendered_artifact_inventory_20260623.md"
-    },
-    {
-      "path": "data/report_catalog.md",
-      "size_bytes": 12857,
-      "sha256": "79dc74feda93a89c152805a077e436476af3c47bf84967ff764839eef926cbbb",
-      "mtime": 1782212838,
-      "description": "report_catalog.md"
-    },
-    {
-      "path": "data/root_artifact_inventory_20260623.json",
-      "size_bytes": 3661,
-      "sha256": "18236ecaed7ba6bed8960d8275f93a717621f6661b3d40edfbd18c563f776987",
-      "mtime": 1782278833,
-      "description": "root_artifact_inventory_20260623.json"
-    },
-    {
-      "path": "data/root_artifact_inventory_20260623.md",
-      "size_bytes": 1261,
-      "sha256": "5891bca27ac0e9e04b26220c4dcc02fca70476c60950544d41dcf26d6080bcb4",
-      "mtime": 1782278833,
-      "description": "root_artifact_inventory_20260623.md"
-    },
-    {
-      "path": "data/source_artifact_inventory_20260623.json",
-      "size_bytes": 6604,
-      "sha256": "84feb75eedc0aa71a33c1359ddf95df2ef4153f06a63a257644ae80f4fceddfc",
-      "mtime": 1782278833,
-      "description": "source_artifact_inventory_20260623.json"
-    },
-    {
-      "path": "data/source_artifact_inventory_20260623.md",
-      "size_bytes": 4029,
-      "sha256": "7e843fba9277ee2daeed7bc1151fe4e5c074299d028a6ffdcda5a381ff60415d",
-      "mtime": 1782278833,
-      "description": "source_artifact_inventory_20260623.md"
-    },
-    {
-      "path": "data/source_registry.json",
-      "size_bytes": 34347,
-      "sha256": "097be73179c5523595ae88c75984c629a6d8338513b97a740bb01d98a9de4faf",
-      "mtime": 1782278985,
-      "description": "source_registry.json"
-    },
-    {
-      "path": "data/source_registry.md",
-      "size_bytes": 19090,
-      "sha256": "5c32ebf1338553a46bfe616c48beeb8f1c394380ab00316bca0f2b9ee8abe0b5",
-      "mtime": 1782278985,
-      "description": "source_registry.md"
-    },
-    {
-      "path": "data/top_level_data_artifact_inventory_20260623.json",
-      "size_bytes": 4860,
-      "sha256": "6de293c2121ca2387db48a03259fb910b9f15e829afa764d70d8940bb25c9ab9",
-      "mtime": 1782278833,
-      "description": "top_level_data_artifact_inventory_20260623.json"
-    },
-    {
-      "path": "data/top_level_data_artifact_inventory_20260623.md",
-      "size_bytes": 1964,
-      "sha256": "74d5c9b86be23747651aad0e679af810219faaa39c906c4a7f04b42d32542dda",
-      "mtime": 1782278833,
-      "description": "top_level_data_artifact_inventory_20260623.md"
+      "相对路径": "data/claim_audit.md",
+      "文件分类": "DERIVED_CORE",
+      "说明": "主张审计",
+      "字节数": 22333,
+      "SHA-256[:16]": "9de072918e0ed4e4",
+      "更新时间": "2026-06-24T14:02:31"
     }
-  ]
+  ],
+  "total_count": 4
 }

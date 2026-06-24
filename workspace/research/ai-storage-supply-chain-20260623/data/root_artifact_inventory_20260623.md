@@ -1,22 +1,21 @@
-# root_artifact · Artifact Inventory (R215 Refresh)
-- **Generated**：2026-06-24 R215 Polling
-- **Items**：15
-- **治理分类**：PRIMARY / DERIVED_CORE / TEMP
+# Root Artifact Inventory（20260624）
 
-|#|Path|Size (bytes)|SHA-256[:12]|Description (≤45)|
-|---|---|---|---|---|
-|1|main.pdf|907,898|5ab63efa76ea|main.pdf|
-|2|main.tex|4,945|90d28bf95a28|main.tex|
-|3|research_brief.md|6,006|73e57694ba57|research_brief.md|
-|4|review_log.md|21,843|6d19583d4ca9|review_log.md|
-|5|visual_review.md|9,792|c3a24aa7e6aa|visual_review.md|
-|6|completion_audit_manifest.json|1,299|a41aafea7a51|completion_audit_manifest.json|
-|7|completion_audit_manifest.md|759|380334ebbc9d|completion_audit_manifest.md|
-|8|data_room_index.md|2,378|4c3551b4f23d|data_room_index.md|
-|9|source_exhaustion_log.json|573|fbb06f5b17c4|source_exhaustion_log.json|
-|10|source_exhaustion_log.md|848|acb901cf2d9a|source_exhaustion_log.md|
-|11|unresolved_requirements.json|863|91e393fbf8d4|unresolved_requirements.json|
-|12|missing_data_request_pack.json|844|714cd9141b0f|missing_data_request_pack.json|
-|13|missing_data_request_pack.md|630|07956dfadf4f|missing_data_request_pack.md|
-|14|missing_data_request_pack.csv|430|2e2572d91219|missing_data_request_pack.csv|
-|15|main_current_text.txt|105,445|1b5faa114fe3|main_current_text.txt|
+> 文件分类见 RESEARCH_WORKSPACE_CONVENTIONS.md。Primary 不允许手改。
+
+|相对路径|文件分类|说明|字节数|SHA-256[:16]|修改时间|
+|---|---|---|---|---|---|
+|main.pdf|RENDERED_PUBLISHABLE|Full report PDF|907898|5ab63efa76eab79f|2026-06-23T21:25:53|
+|main.tex|DERIVED_WRITE|LaTeX 主入口|4945|90d28bf95a2851b5|2026-06-23T21:20:28|
+|main_current_text.txt|DERIVED_TOOL|PDF文本抽取|105445|1b5faa114fe314a0|2026-06-23T21:27:19|
+|research_brief.md|PRIMARY_SCOPE|Phase0 研究范围|6006|73e57694ba57133f|2026-06-23T19:03:13|
+|review_log.md|DERIVED_CORE|Phase5 reviewer|21843|6d19583d4ca94d9a|2026-06-23T21:37:24|
+|visual_review.md|DERIVED_CORE|Phase4.5视觉|9792|c3a24aa7e6aaf00e|2026-06-23T20:39:57|
+|completion_audit_manifest.json|DERIVED_GATE|完成门控|2420|cfe811a7949c9f14|2026-06-24T13:54:28|
+|completion_audit_manifest.md|DERIVED_GATE|完成门控(人读)|623|b7a33646320712aa|2026-06-24T13:53:23|
+|source_exhaustion_log.json|DERIVED_GOVERNANCE|来源穷尽|573|fbb06f5b17c4e36c|2026-06-23T21:29:14|
+|source_exhaustion_log.md|DERIVED_GOVERNANCE|来源穷尽(人读)|848|acb901cf2d9afffc|2026-06-23T21:29:14|
+|unresolved_requirements.json|DERIVED_GOVERNANCE|未满足需求|863|91e393fbf8d41894|2026-06-23T21:29:14|
+|data_room_index.md|DERIVED_INDEX|虚拟数据室索引|2378|4c3551b4f23d89b9|2026-06-23T21:29:14|
+|missing_data_request_pack.json|DERIVED_GOVERNANCE|缺失数据包|844|714cd9141b0f06f0|2026-06-23T21:29:14|
+|missing_data_request_pack.md|DERIVED_GOVERNANCE|缺失数据包(人读)|630|07956dfadf4fdee4|2026-06-23T21:29:14|
+|missing_data_request_pack.csv|DERIVED_GOVERNANCE|缺失数据包(追踪)|430|2e2572d9121974a0|2026-06-23T21:29:14|

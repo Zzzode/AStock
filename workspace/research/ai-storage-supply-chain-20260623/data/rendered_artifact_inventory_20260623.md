@@ -1,10 +1,9 @@
-# rendered_artifact · Artifact Inventory (R215 Refresh)
-- **Generated**：2026-06-24 R215 Polling
-- **Items**：3
-- **治理分类**：PRIMARY / DERIVED_CORE / TEMP
+# Rendered Artifact Inventory（20260624）
 
-|#|Path|Size (bytes)|SHA-256[:12]|Description (≤45)|
+> 文件分类见 RESEARCH_WORKSPACE_CONVENTIONS.md。Primary 不允许手改。
+
+|相对路径|文件分类|字节数|SHA-256[:16]|生成时间|
 |---|---|---|---|---|
-|1|main.pdf|907,898|5ab63efa76ea|main.pdf|
-|2|main_current_text.txt|105,445|1b5faa114fe3|main_current_text.txt|
-|3|main.tex|4,945|90d28bf95a28|main.tex|
+|main.pdf|RENDERED_PUBLISHABLE|907898|5ab63efa76eab79f|2026-06-23T21:25:53|
+|main.tex|DERIVED_WRITE|4945|90d28bf95a2851b5|2026-06-23T21:20:28|
+|main_current_text.txt|DERIVED_TOOL|105445|1b5faa114fe314a0|2026-06-23T21:27:19|
