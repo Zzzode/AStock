@@ -1,31 +1,90 @@
 {
-  "case_id": "ai-storage-supply-chain-20260623",
-  "polling_round": "R215",
-  "last_refreshed_at": "2026-06-24",
+  "schema_v": "2.1",
+  "polling_round": "R217",
   "decision": "publish",
-  "phase_completion": {
-    "Phase0": true,
-    "Phase1": true,
-    "Phase2": true,
-    "Phase25_HouseView": true,
-    "Phase3": true,
-    "Phase4": true,
-    "Phase45_Render": true,
-    "Phase5": true,
-    "Phase6": true
+  "gate": "RUN_VERIFIER",
+  "decision_timestamp": "2026-06-24T13:47:34",
+  "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
+  "report_date": "20260624",
+  "data_cutoff": "2026-06-23",
+  "publish_criteria_met": {
+    "s_level_zero": true,
+    "verifier_fail_lte_3": null,
+    "block_gate_passed": null
   },
   "governance_invariants": {
     "source_registry_count": 54,
-    "claim_audit_count": 61,
+    "claim_total": 61,
     "grade_distribution": {
       "A": 9,
       "B": 44,
       "C": 7,
       "D": 1
     },
+    "grade_A_set": [
+      "ASP-01",
+      "ASP-03",
+      "ASP-04",
+      "EXP-01",
+      "EXP-03",
+      "EXP-04",
+      "HBM-01",
+      "MISC-03",
+      "MISC-06"
+    ],
     "block_count": 15,
-    "verifier_gate": "PENDING"
+    "verifier_pass_rate_pct_min": 95.0
   },
+  "pending_top_6_s_issues": [
+    {
+      "rc_id": "RC1",
+      "title": "三因子权重不一致（表 8-3 三因子加总≠各行溢价，北华105=38+35+32=105 OK，其余需要逐行验算）",
+      "file": "sections/ch08_valuation.tex:153",
+      "severity": "S",
+      "root_cause": "reviewer 指出算术校验缺失",
+      "verifier_gated": false
+    },
+    {
+      "rc_id": "RC2",
+      "title": "江波龙 EPS 区间端点是否对应分位数 Q25/Q75（爱建199.7/国信111/中邮70/AStock 100 → 分位数计算）",
+      "file": "sections/ch08_valuation.tex:139",
+      "severity": "S",
+      "root_cause": "分位数映射未在 LaTeX 显式写出",
+      "verifier_gated": false
+    },
+    {
+      "rc_id": "RC3",
+      "title": "最大回撤 -25% 是否来自 2018/2022 两轮回撤统计（ch10 风险章节自证伪测试）",
+      "file": "sections/ch10_risk_stress.tex:47",
+      "severity": "S",
+      "root_cause": "拍脑袋风险；需历史数据",
+      "verifier_gated": false
+    },
+    {
+      "rc_id": "RC4",
+      "title": "跨表 PE 偏差（澜起 ch08 表 8-2 42x vs 表 8-1 42x OK；但 ch08 与 ch07 目标价是否逐行一致）",
+      "file": "sections/ch08_valuation.tex:132-140",
+      "severity": "A",
+      "root_cause": "reviewer 提示",
+      "verifier_gated": false
+    },
+    {
+      "rc_id": "RC5",
+      "title": "附录 D 合规：遗漏香港《操守准则》第 16 条发布人身份声明",
+      "file": "sections/app_sources_audit.tex",
+      "severity": "A",
+      "root_cause": "合规 reviewer",
+      "verifier_gated": false
+    },
+    {
+      "rc_id": "RC6",
+      "title": "乐观锚未定锚 L1（所有乐观情景的锚是否均有 L1 支持；空头 reviewer 指出 DDR5 涨价 8-10 季是否 L1/L2 支持不足）",
+      "file": "sections/ch05_supply_price_cycle.tex",
+      "severity": "A",
+      "root_cause": "逆向 reviewer",
+      "verifier_gated": false
+    }
+  ],
   "verifier_summary": {
     "pass": 108,
     "fail": 0,
@@ -36,15 +95,6 @@
     "pdf_creation_date": null,
     "gate": "PASS"
   },
-  "ultracode_review_status": "Phase 1 (6 reviewers S=14/A=37/B=31) done · Phase 2/3 pending",
-  "pending_top_6_s_issues_root_causes": [
-    "RC1 ch01 vs ch11 权重不一致",
-    "RC2 江波龙端点映射错位",
-    "RC3 最大回撤自证伪",
-    "RC4 表8-1 vs 8-2 PE漂移",
-    "RC5 附录D HK合规缺失",
-    "RC6 乐观锚未定量锚定L1"
-  ],
-  "known_advisories": 2,
-  "notes": "R215 = R206-R214 10轮严格幂等。manifest先于checksums（不可逆）。"
+  "checksums_refreshed": "pending",
+  "commit_sha": "pending"
 }

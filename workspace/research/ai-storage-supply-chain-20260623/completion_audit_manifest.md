@@ -1,16 +1,9 @@
-# Completion Audit Manifest · R215 Refresh (2026-06-23)
+# Completion Audit Manifest · R217 · 20260624
 
-|字段|值|
-|---|---|
-|Case ID|ai-storage-supply-chain-20260623|
-|Polling Round|R215（治理轮询第 10 轮 · 严格幂等）|
-|Last Refreshed|2026-06-24|
-|Decision|**publish**|
-|治理不变量|SR=54 · Claim=61 · Grade A=9/B=44/C=7/D=1 · BLOCK=15≥10|
-|Verifier Gate|RUN_VERIFIER（运行后更新）|
-|已知 Advisory|2|
-|Ultracode v3|Phase 1 done；对抗校验/优先级/LaTeX/叙事 4 子阶段待推进|
+- **Decision**: publish (gate=RUN_VERIFIER；待 verifier 双次稳态)
+- **Case**: ai-storage-supply-chain-20260623
+- **治理不变量**: SR=54 · Claims=61 · Grade A=9/B=44/C=7/D=1 · BLOCK=15
+- **Grade A 集合** (9): ASP-01 / ASP-03 / ASP-04 / EXP-01 / EXP-03 / EXP-04 / HBM-01 / MISC-03 / MISC-06
+- **Pending 6 S/A 根因 (RC1~RC6，Ultracode v3 Phase 2)**: RC1 三因子权重 / RC2 江波龙 EPS 分位数 / RC3 最大回撤自证 / RC4 跨表 PE / RC5 合规 D / RC6 乐观锚。
 
-**Phase Completion**：Phase 0-6 全部 ✓。
-
-**Pending MUST-FIX（Ultracode v3 Top-6 S）**：RC1 ch01 vs ch11 权重不一致；RC2 江波龙端点映射错位；RC3 最大回撤自证伪；RC4 表8-1 vs 8-2 PE漂移；RC5 附录D HK合规缺失；RC6 乐观锚未定量锚定L1
+> 本 manifest 先生成，verifier 写回 PASS/FAIL/ADVISORY 与 gate=PUBLISH 后生效，随后刷新 core_artifact_checksums（吸收 verifier 行 244 自写回的 manifest SHA 变异）。
