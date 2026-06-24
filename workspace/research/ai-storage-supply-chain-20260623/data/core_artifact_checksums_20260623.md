@@ -1,6 +1,6 @@
-# AI 存储产业链 · 核心工件校验和（R236 · 14 files）
+# AI 存储产业链 · 核心工件校验和（R237 · 14 files）
 
-> Stage=amend_final · SHA三相闭环。
+> Stage=amend_final · SHA三相闭环中。双后缀 20260623（硬编码锚）+ 20260624（当日归档）。
 
 |#|文件名|SHA-256[:12]|字节数|分类|
 |---|---|---|---|---|
@@ -13,8 +13,8 @@
 |7|raw_financials.md|`2de74e59bac5`|42,882|data_raw|
 |8|report_catalog.md|`79dc74feda93`|12,857|data_raw|
 |9|consensus_analysis_raw.md|`fb5eed5705e2`|16,981|data_raw|
-|10|source_registry.md|`8a2f4bf9744f`|18,139|governance|
-|11|source_registry.json|`60882c11ba1f`|60,728|governance|
-|12|claim_audit.md|`d935312b8907`|21,300|governance|
+|10|source_registry.md|`8c13a9d32888`|18,139|governance|
+|11|source_registry.json|`8ab5f93d41b9`|60,728|governance|
+|12|claim_audit.md|`a7e2700f495c`|21,300|governance|
 |13|completion_audit_manifest.md|`99708481d62e`|886|governance|
 |14|completion_audit_manifest.json|`94ebf306bcfe`|2,030|governance|
