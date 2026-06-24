@@ -1,6 +1,6 @@
-# Core Artifact Checksums · stage=final_v3_22nd · 20260623（R227 第22轮闭环）
+# Core Artifact Checksums · stage=final_v3_23rd_complete · 20260623（R228 第23轮闭环）
 
-> Phase5: verifier行244 completion_audit_manifest自写回→SHA变异 → 三次刷 14 ARTIFACTS双后缀 → amend_final --no-edit → push --force-with-lease
+> Phase5: verifier行244自写回 → SHA变异 → 三次刷14 ARTIFACTS双后缀 → amend_final --no-edit → push --force-with-lease
 
 |path|size_bytes|sha256|file_category|content_md5_prefix|last_modified_utc|
 |---|---|---|---|---|---|
@@ -13,11 +13,11 @@
 |data/raw_financials.md|42882|2de74e59bac52a1d6dc50b490c301729d1e78f9019a722d5d8765040e1c371e0|RAW_COLLECTED|2de74e59|2026-06-23T12:56:52+00:00|
 |data/report_catalog.md|12857|79dc74feda93a89c152805a077e436476af3c47bf84967ff764839eef926cbbb|RAW_COLLECTED|79dc74fe|2026-06-23T11:07:18+00:00|
 |data/consensus_analysis_raw.md|16981|fb5eed5705e27b9ae3d85d6eba28c83d36ecd19afb021798b96c064deb66231c|RAW_COLLECTED|fb5eed57|2026-06-23T11:09:31+00:00|
-|data/source_registry.md|18139|589b2ddfdcd1bb45512da8ecde62e042ade397649d851f807a98728f50bd3f30|SOURCE_GOVERNANCE|589b2ddf|2026-06-24T07:34:06+00:00|
-|data/source_registry.json|34497|2867b52de8c27eccf9f861b8c1b924e319522f674693b373efcf1c8a13e2dd6f|SOURCE_GOVERNANCE|2867b52d|2026-06-24T07:34:06+00:00|
-|data/claim_audit.md|21295|81eeb7ddc5b1dfbe72d23869d3c21174893630dfdddd4716ac3425322d3630a2|SOURCE_GOVERNANCE|81eeb7dd|2026-06-24T07:34:06+00:00|
-|completion_audit_manifest.md|748|61ba537d93bb21ea73ca2bb2487f63a172d5b991050c77f10689788c66944102|MANIFEST|61ba537d|2026-06-24T07:34:08+00:00|
-|completion_audit_manifest.json|2380|ef60d2d3d8a139c7130603667cf0dc3e51804b288461990bc327dc846dbbe4a2|MANIFEST|ef60d2d3|2026-06-24T07:36:05+00:00|
+|data/source_registry.md|18139|e796f933e44f31ebc41dffadb9f265a194194510d27c61b47e23bfdf60f126ac|SOURCE_GOVERNANCE|e796f933|2026-06-24T07:40:07+00:00|
+|data/source_registry.json|34497|9b7568d85fa9aae847b32a7fa8a45d2f92a300e30431cba54b9d75f90dbbe08a|SOURCE_GOVERNANCE|9b7568d8|2026-06-24T07:40:07+00:00|
+|data/claim_audit.md|21295|f27b147c3ed8dde34f7c63bab2150b6830a003802aa2a5b7e57440f83eb2f337|SOURCE_GOVERNANCE|f27b147c|2026-06-24T07:40:07+00:00|
+|completion_audit_manifest.md|894|a38d88e65a0f16af86a0ac902dd30954a4b8822ac2825f048761bab62e9014e8|MANIFEST|a38d88e6|2026-06-24T07:40:08+00:00|
+|completion_audit_manifest.json|2411|31ff48cc99a8ea80bc5d1bf03b7b5d2a6a585bac102da2bfaeae7ed0a06a96a7|MANIFEST|31ff48cc|2026-06-24T07:41:53+00:00|
 
 ---
-**R227 闭环（第22轮连续幂等）**：14 ARTIFACTS · PASS=108/0/2 · gate=PUBLISH
+**R228 第23轮闭环（连续幂等）**：14 ARTIFACTS · PASS=108/0/2 · gate=PUBLISH
