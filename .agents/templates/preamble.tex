@@ -109,6 +109,23 @@
 \usepackage{enumitem}
 \setlist{nosep, leftmargin=2em}
 \usepackage{fontawesome5}
+% ============ Class B 全局兜底（xeCJK + 缺字 fallback 阻断）：
+% 当 fontawesome5 因 Times New Roman 缺字 / \FA 命名空间失败时，
+% 禁止输出 aExclamationTriangle / aCloud 裸文本，一律降级为 amssymb 原生符号。
+% 注：amssymb 在 L112 已加载，此处不重复。所有 \def 在本段落。
+\def\faExclamationTriangle{\ensuremath{\textcolor{riskred}{\blacktriangle}}\kern-0.25em}
+\def\faCloud{\ensuremath{\clubsuit}\kern-0.1em}
+\def\faYenSign{\ensuremath{\yen}}
+\def\faIndustry{\ensuremath{\S}}
+\def\faCogs{\ensuremath{\ast}}
+\def\faFlagCheckered{\ensuremath{\blacktriangleright}}
+\def\faMemory{\textbf{[RAM]}}
+\def\faServer{\textbf{[DC]}}
+\def\faGlobe{\ensuremath{\diamond}}
+\def\faStar{\ensuremath{\bigstar}}
+\def\faMicrochip{\textbf{[$\mu$P]}}
+\def\faLayerGroup{\textbf{[LAY]}}
+\def\faCubes{\ensuremath{\boxtimes}}
 \usepackage{amssymb}
 \usepackage{pifont}
 \usepackage{tcolorbox}

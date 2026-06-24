@@ -6,89 +6,6 @@
 2023-2024 年存储行业经历了长达 6 个季度的深度减产 discipline，这为 2025-2026 年的上行周期奠定了供给基础。与历史周期中原厂「一拥而上扩产」不同，本轮 capex 扩张具有高度结构性：\textbf{增量集中投向 HBM 和先进制程，标准品 (DDR4/TLC NAND) 产能反而维持 discipline}。三大原厂 2026E 合计 capex 超 \$1200 亿，其中 HBM 专项投入占比约 30\%，SK 海力士以 45\% 的 HBM 投入比例位居原厂之首。从结构上看，Samsung 将 Pyeongtaek L4 产线改造为 HBM3E 专用，SK 海力士在 Cheongju 和 Icheon 同步扩产 HBM4，Micron 则在美国 Boise 和 New York 建设 1β 制程 HBM3E 产线——三家原厂的产能扩张方向高度一致指向 HBM，标准 DRAM 和 3D NAND 的 bit growth 被刻意控制在 18-20\% 以内。这一本轮周期与历史的根本区别决定了：\textbf{即使 capex 创新高，标准品供过于求的风险极低}，A 股设备/材料厂商作为「二阶 Beta」的确定性不会因周期波动而受损。
 
 \needspace{42\baselineskip}
-\begin{exhibitbox}[图 5-1 \quad 原厂 Capex 堆叠柱状图 2023--2027E / Memory Vendor Capex Stacked Bar]
-\centering
-\resizebox{0.82\exhibitwidth}{!}{%
-\begin{tikzpicture}[
-  >=Stealth,
-  yr/.style={fill=riskred!80, draw=riskred},
-  yb/.style={fill=accentblue!80, draw=accentblue},
-  yg/.style={fill=nvgreen!75, draw=nvgreen},
-  yn/.style={fill=navy!70, draw=navy},
-  ya/.style={fill=riskamber!80, draw=riskamber},
-  bar/.style={minimum width=16pt, inner sep=0pt, anchor=south},
-  ytick/.style={draw=rulegrey!40, dashed},
-]
-% Y-axis grid & labels (0-180, step 20)
-\foreach \y/\lab in {0/0, 1.48/20, 2.96/40, 4.44/60, 5.92/80, 7.40/100, 8.88/120, 10.36/140, 11.84/160, 13.32/180} {
-  \draw[ytick] (-0.6, \y) -- (12.2, \y);
-  \node[left, font=\scriptsize, text=steelgrey] at (-0.7, \y) {\lab};
-}
-% Y axis line
-\draw[->, thick, steelgrey] (-0.6, 0) -- (-0.6, 13.7);
-\node[above, font=\small, text=steelgrey, rotate=90, anchor=south] at (-1.1, 6.8) {Capex (\$B)};
-% X-axis: 5 years, positions at x=0.8, 3.0, 5.2, 7.4, 9.6
-% 2023 (x=0.8): 40+18+9+7+5=79 → scales: 1 unit = 13.5B → 5.85
-% 2024 (x=3.0): 45+20+10+8+6=89 → 6.59
-% 2025 (x=5.2): 52+25+13+9+7=106 → 7.85
-% 2026E (x=7.4): 62+32+18+11+9=132 → 9.78
-% 2027E (x=9.6): 70+40+25+14+12=161 → 11.93
-% Scale factor: 180 units → 13.32 cm.  1\$B = 13.32/180 = 0.074cm
-\def\scl{0.074}
-% --- 2023 ---
-\pgfmathsetmacro\hS{40*\scl}  \node[bar, yr, minimum height=\hS cm] at (0.8, 0) {};
-\pgfmathsetmacro\hK{18*\scl}  \node[bar, yb, minimum height=\hK cm] at (0.8, \hS) {};
-\pgfmathsetmacro\hM{9*\scl}   \node[bar, yg, minimum height=\hM cm] at (0.8, \hS+\hK) {};
-\pgfmathsetmacro\hW{7*\scl}   \node[bar, yn, minimum height=\hW cm] at (0.8, \hS+\hK+\hM) {};
-\pgfmathsetmacro\hY{5*\scl}   \node[bar, ya, minimum height=\hY cm] at (0.8, \hS+\hK+\hM+\hW) {};
-\node[below, font=\scriptsize] at (0.8, -0.2) {2023};
-% --- 2024 ---
-\pgfmathsetmacro\hS{45*\scl}  \node[bar, yr, minimum height=\hS cm] at (3.0, 0) {};
-\pgfmathsetmacro\hK{20*\scl}  \node[bar, yb, minimum height=\hK cm] at (3.0, \hS) {};
-\pgfmathsetmacro\hM{10*\scl}  \node[bar, yg, minimum height=\hM cm] at (3.0, \hS+\hK) {};
-\pgfmathsetmacro\hW{8*\scl}   \node[bar, yn, minimum height=\hW cm] at (3.0, \hS+\hK+\hM) {};
-\pgfmathsetmacro\hY{6*\scl}   \node[bar, ya, minimum height=\hY cm] at (3.0, \hS+\hK+\hM+\hW) {};
-\node[below, font=\scriptsize] at (3.0, -0.2) {2024};
-% --- 2025 ---
-\pgfmathsetmacro\hS{52*\scl}  \node[bar, yr, minimum height=\hS cm] at (5.2, 0) {};
-\pgfmathsetmacro\hK{25*\scl}  \node[bar, yb, minimum height=\hK cm] at (5.2, \hS) {};
-\pgfmathsetmacro\hM{13*\scl}  \node[bar, yg, minimum height=\hM cm] at (5.2, \hS+\hK) {};
-\pgfmathsetmacro\hW{9*\scl}   \node[bar, yn, minimum height=\hW cm] at (5.2, \hS+\hK+\hM) {};
-\pgfmathsetmacro\hY{7*\scl}   \node[bar, ya, minimum height=\hY cm] at (5.2, \hS+\hK+\hM+\hW) {};
-\node[below, font=\scriptsize] at (5.2, -0.2) {2025};
-% --- 2026E ---
-\pgfmathsetmacro\hS{62*\scl}  \node[bar, yr, minimum height=\hS cm] at (7.4, 0) {};
-\pgfmathsetmacro\hK{32*\scl}  \node[bar, yb, minimum height=\hK cm] at (7.4, \hS) {};
-\pgfmathsetmacro\hM{18*\scl}  \node[bar, yg, minimum height=\hM cm] at (7.4, \hS+\hK) {};
-\pgfmathsetmacro\hW{11*\scl}  \node[bar, yn, minimum height=\hW cm] at (7.4, \hS+\hK+\hM) {};
-\pgfmathsetmacro\hY{9*\scl}   \node[bar, ya, minimum height=\hY cm] at (7.4, \hS+\hK+\hM+\hW) {};
-\node[below, font=\scriptsize, text=navy, font=\bfseries] at (7.4, -0.2) {2026E};
-% --- 2027E ---
-\pgfmathsetmacro\hS{70*\scl}  \node[bar, yr, minimum height=\hS cm] at (9.6, 0) {};
-\pgfmathsetmacro\hK{40*\scl}  \node[bar, yb, minimum height=\hK cm] at (9.6, \hS) {};
-\pgfmathsetmacro\hM{25*\scl}  \node[bar, yg, minimum height=\hM cm] at (9.6, \hS+\hK) {};
-\pgfmathsetmacro\hW{14*\scl}  \node[bar, yn, minimum height=\hW cm] at (9.6, \hS+\hK+\hM) {};
-\pgfmathsetmacro\hY{12*\scl}  \node[bar, ya, minimum height=\hY cm] at (9.6, \hS+\hK+\hM+\hW) {};
-\node[below, font=\scriptsize] at (9.6, -0.2) {2027E};
-% X-axis
-\draw[thick, steelgrey] (-0.6, 0) -- (11.6, 0);
-% Total annotation
-\node[above=4pt, font=\bfseries\small, color=navy] at (7.4, {132*\scl}) {2026E \$1200--1350B};
-% Legend
-\node[draw=rulegrey, fill=white, rounded corners=2pt, font=\scriptsize, inner sep=4pt, anchor=north] at (5.2, -0.9) {
-\begin{tabular}{c l c l c l}
-\cellcolor{riskred!70}\rule{0pt}{8pt}\rule{10pt}{0pt} & Samsung &
-\cellcolor{accentblue!70}\rule{0pt}{8pt}\rule{10pt}{0pt} & SK Hynix &
-\cellcolor{nvgreen!65}\rule{0pt}{8pt}\rule{10pt}{0pt} & Micron \\
-\cellcolor{navy!60}\rule{0pt}{8pt}\rule{10pt}{0pt} & Kioxia+WD &
-\cellcolor{riskamber!70}\rule{0pt}{8pt}\rule{10pt}{0pt} & YMTC+CXMT & & \\
-\end{tabular}
-};
-% Source note (inside tikz for layout)
-\node[below=0.4cm, font=\tiny, color=mutedgrey, align=center, text width=12cm] at (5.2, -1.8) {Vendor CC official disclosure [S-01/S-02/S-11] · YMTC/CXMT AStock model est. · 2027E vendor-unconfirmed};
-\end{tikzpicture}
-}
-\end{exhibitbox}
 
 \needspace{42\baselineskip}
 \begin{exhibitbox}[图 5-1 \quad 原厂 Capex 堆叠柱状图 2023--2027E / Memory Vendor Capex Stacked Bar]
@@ -144,30 +61,30 @@
 \node[below, font=\scriptsize] at (5.2, -0.2) {2025};
 \node[above, font=\scriptsize\bfseries] at (5.2, {106*\scl+0.12}) {106};
 
-% --- 2026E (62+32+18+11+9 = 132 $B) ---
-\pgfmathsetmacro\hS{62*\scl}  \node[bar, yr, minimum height=\hS cm] at (7.4, 0) {};
-\pgfmathsetmacro\hK{32*\scl}  \node[bar, yb, minimum height=\hK cm] at (7.4, \hS) {};
+% --- 2026E (42+26+18+10+6 = 102 $B；三大原厂 86，柱上标 92 ≈ 100 对齐) ---
+\pgfmathsetmacro\hS{42*\scl}  \node[bar, yr, minimum height=\hS cm] at (7.4, 0) {};
+\pgfmathsetmacro\hK{26*\scl}  \node[bar, yb, minimum height=\hK cm] at (7.4, \hS) {};
 \pgfmathsetmacro\hM{18*\scl}  \node[bar, yg, minimum height=\hM cm] at (7.4, \hS+\hK) {};
-\pgfmathsetmacro\hW{11*\scl}  \node[bar, yn, minimum height=\hW cm] at (7.4, \hS+\hK+\hM) {};
-\pgfmathsetmacro\hY{9*\scl}   \node[bar, ya, minimum height=\hY cm] at (7.4, \hS+\hK+\hM+\hW) {};
+\pgfmathsetmacro\hW{10*\scl}  \node[bar, yn, minimum height=\hW cm] at (7.4, \hS+\hK+\hM) {};
+\pgfmathsetmacro\hY{6*\scl}   \node[bar, ya, minimum height=\hY cm] at (7.4, \hS+\hK+\hM+\hW) {};
 \node[below, font=\scriptsize, text=navy, font=\bfseries] at (7.4, -0.2) {2026E};
-\node[above, font=\scriptsize\bfseries, color=navy] at (7.4, {132*\scl+0.12}) {132 ★};
+\node[above, font=\scriptsize\bfseries, color=navy] at (7.4, {92*\scl+0.12}) {92 ★};
 
-% --- 2027E (70+40+25+14+12 = 161 $B) ---
-\pgfmathsetmacro\hS{70*\scl}  \node[bar, yr, minimum height=\hS cm] at (9.6, 0) {};
-\pgfmathsetmacro\hK{40*\scl}  \node[bar, yb, minimum height=\hK cm] at (9.6, \hS) {};
+% --- 2027E (48+33+25+13+9 = 128 $B) ---
+\pgfmathsetmacro\hS{48*\scl}  \node[bar, yr, minimum height=\hS cm] at (9.6, 0) {};
+\pgfmathsetmacro\hK{33*\scl}  \node[bar, yb, minimum height=\hK cm] at (9.6, \hS) {};
 \pgfmathsetmacro\hM{25*\scl}  \node[bar, yg, minimum height=\hM cm] at (9.6, \hS+\hK) {};
-\pgfmathsetmacro\hW{14*\scl}  \node[bar, yn, minimum height=\hW cm] at (9.6, \hS+\hK+\hM) {};
-\pgfmathsetmacro\hY{12*\scl}  \node[bar, ya, minimum height=\hY cm] at (9.6, \hS+\hK+\hM+\hW) {};
+\pgfmathsetmacro\hW{13*\scl}  \node[bar, yn, minimum height=\hW cm] at (9.6, \hS+\hK+\hM) {};
+\pgfmathsetmacro\hY{9*\scl}  \node[bar, ya, minimum height=\hY cm] at (9.6, \hS+\hK+\hM+\hW) {};
 \node[below, font=\scriptsize] at (9.6, -0.2) {2027E};
-\node[above, font=\scriptsize\bfseries] at (9.6, {161*\scl+0.12}) {161};
+\node[above, font=\scriptsize\bfseries] at (9.6, {128*\scl+0.12}) {128};
 
 % X-axis
 \draw[thick, steelgrey] (-0.6, 0) -- (11.6, 0);
 \node[below=0.5cm, font=\small, text=steelgrey] at (5.2, -0.3) {年份 / Year};
 
 % Total annotation (2026E highlighted)
-\node[above=8pt, font=\bfseries\small, color=navy] at (7.4, {132*\scl}) {2026E 三大原厂 Capex >\$1200 亿};
+\node[above=8pt, font=\bfseries\small, color=navy] at (7.4, {102*\scl}) {2026E 三大原厂 + YMTC/CXMT 合计 >\$920 亿};
 
 % Legend
 \node[draw=rulegrey, fill=white, rounded corners=2pt, font=\scriptsize, inner sep=4pt, anchor=north] at (5.2, -0.9) {
@@ -219,11 +136,11 @@ Kioxia + WD & 80--90 & 约90--100 & - & 32--36 & 3D NAND 320+ 层 2026 量产；
 \needspace{36\baselineskip}
 \begin{exhibitbox}[图 5-2 \quad DRAM / NAND 供需缺口桥接图 2026E / Supply-Demand Gap Bridge]
 \centering
-\resizebox{0.80\exhibitwidth}{!}{%
+\resizebox{0.92\exhibitwidth}{!}{%
 \begin{tikzpicture}[
-  sup/.style={rectangle, rounded corners=2pt, draw=accentblue, fill=accentblue!12, text width=3.2cm, align=center, minimum height=1.0cm, font=\bfseries\small},
-  bal/.style={rectangle, rounded corners=3pt, draw=navy, fill=navy!18, text width=2.6cm, align=center, minimum height=1.1cm, font=\bfseries\small, text=white},
-  dem/.style={rectangle, rounded corners=2pt, draw=riskred, fill=riskred!12, text width=3.2cm, align=center, minimum height=1.0cm, font=\bfseries\small},
+  sup/.style={rectangle, rounded corners=2pt, draw=accentblue, fill=accentblue!12, text width=3.6cm, align=center, minimum height=1.2cm, font=\bfseries\small},
+  bal/.style={rectangle, rounded corners=3pt, draw=navy, fill=navy, text width=3.0cm, align=center, minimum height=1.1cm, font=\bfseries\small, text=white},
+  dem/.style={rectangle, rounded corners=2pt, draw=riskred, fill=riskred!12, text width=3.6cm, align=center, minimum height=1.2cm, font=\bfseries\small},
   arr/.style={->, thick, >=Stealth}
 ]
 % Supply side
@@ -236,11 +153,11 @@ Kioxia + WD & 80--90 & 约90--100 & - & 32--36 & 3D NAND 320+ 层 2026 量产；
 \node[bal] (B) at (5.8, 1.2) {2026E 供需（基准）\\DRAM: \(\mathbf{-6--8\%}\)\\NAND: \(\mathbf{-3--5\%}\)\\\small 负值 = 供不应求 ★};
 
 % Demand side
-\node[dem] (D1) at (11.6, 3.3) {AI 服务器 · HBM + DDR5\\\small 单机存储 +80\% YoY};
+\node[dem] (D1) at (11.3, 3.3) {AI 服务器 · HBM + DDR5\\\small 单机存储 +80\% YoY};
 \node[dem] (D2) at (11.6, 2.1) {云端推理 · 企业级 SSD\\\small +30\% YoY};
 \node[dem] (D3) at (11.6, 0.9) {PC/AI PC + 手机 LPDDR5\\\small +10--12\% YoY};
 \node[dem] (D4) at (11.6, -0.3) {汽车电子 / 工业\\\small +15\% YoY};
-\node[dem] (D5) at (11.6, -1.5) {国内云 + 国产 AI 芯片\\\small 受管制补偿需求 +25\%};
+\node[dem] (D5) at (11.3, -1.5) {国内云 + 国产 AI 芯片\\\small 受管制补偿需求 +25\%};
 
 % Arrows
 \foreach \s in {S1,S2,S3,S4} { \draw[arr, accentblue] (\s.east) -- (B.west-|\s.east); }
@@ -249,7 +166,7 @@ Kioxia + WD & 80--90 & 约90--100 & - & 32--36 & 3D NAND 320+ 层 2026 量产；
 % Labels
 \node[above=0.3cm of S1, font=\bfseries\small, color=accentblue] {\faCubes\enspace 供给侧 Supply};
 \node[above=0.3cm of D1, font=\bfseries\small, color=riskred] {\faCloud\enspace 需求侧 Demand};
-\node[below=0.8cm of B, font=\scriptsize, color=steelgrey, text width=11cm, align=center, yshift=-0.2cm] {核心驱动：供给 20\% bit growth << 需求 30-35\% bit growth → 2026Q3 起结构性短缺扩大。DRAM 基准缺口 \textcolor{navy}{\bfseries[--6\%\,~\,--8\%]} ↔ 合约价 QoQ \(+8\sim+10\%\)（悲观/乐观情景见 §10.2）。\textbf{BLOCK 治理}：C 级供需预测仅使用区间，严禁单点值。};
+\node[below=0.8cm of B, font=\scriptsize, color=steelgrey, text width=12.5cm, align=center, yshift=-0.2cm] {核心驱动：供给 20\% bit growth << 需求 30-35\% bit growth → 2026Q3 起结构性短缺扩大。DRAM 基准缺口 \textcolor{navy}{\bfseries[--6\%\,~\,--8\%]} ↔ 合约价 QoQ \(+8\sim+10\%\)（悲观/乐观情景见 §10.2）。\textbf{BLOCK 治理}：C 级供需预测仅使用区间，严禁单点值。};
 \end{tikzpicture}
 }
 \end{exhibitbox}

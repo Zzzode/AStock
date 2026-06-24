@@ -14,7 +14,7 @@
   node distance=0.55cm,
   layer/.style={rectangle, rounded corners=3pt, draw=#1, fill=#1!8, text width=13cm, align=center, inner sep=3pt, font=\bfseries\small, minimum height=0.55cm},
   node/.style={rectangle, rounded corners=2pt, draw=steelgrey, fill=white, text width=2.35cm, align=center, minimum height=0.95cm, font=\scriptsize, inner sep=2pt},
-  ashar/.style={rectangle, rounded corners=2pt, draw=riskamber, fill=riskamber!8, text width=2.35cm, align=center, minimum height=0.95cm, font=\scriptsize\bfseries, color=navy, inner sep=2pt, line width=0.7pt},
+  ashar/.style={rectangle, rounded corners=2pt, draw=riskamber, fill=white, text width=2.35cm, align=center, minimum height=0.95cm, font=\scriptsize\bfseries, text=deepnavy, inner sep=2pt, line width=0.7pt},
   gap/.style={text width=0.3cm}
 ]
 % Layer 1
@@ -23,38 +23,38 @@
 \node[node, right=of U1] (U2) {刻蚀/薄膜/ALD\\Lam · AMAT · TEL\\\textcolor{mutedgrey}{国产化 10--15\%}};
 \node[node, right=of U2] (U3) {测试设备\\Advantest · Teradyne\\\textcolor{mutedgrey}{国产化 5--8\%}};
 \node[node, right=of U3] (U4) {硅片/光刻胶/特气\\ShinEtsu · JSR · Entegris\\\textcolor{mutedgrey}{国产化 8--12\%}};
-\node[ashar, right=of U4] (A1) {\faStar\enspace A 股 · 设备\\北方华创 · 中微\\拓荆 · 沪硅 · 南大};
+\node[ashar, fill=white, draw=riskamber, text=deepnavy, right=of U4] (A1) {\faStar\enspace A 股 · 设备\\北方华创 · 中微\\拓荆 · 沪硅 · 南大};
 
 % Layer 2
 \node[layer=nvgreen, below=1.1cm of L1] (L2) {\faCogs\enspace L2 · 存储设计 \quad[\;8--10\%\;]};
 \node[node, below=of L2.west, anchor=north west, xshift=0.25cm] (D1) {DRAM 设计\\Samsung · SK · Micron\\\textcolor{mutedgrey}{国产 <1\%}};
 \node[node, right=of D1] (D2) {NAND 设计\\Samsung · Kioxia · YMTC\\\textcolor{mutedgrey}{国产 1--3\%}};
 \node[node, right=of D2] (D3) {接口/主控/RCD\\Rambus · Marvell\\\textcolor{mutedgrey}{澜起领先}};
-\node[ashar, right=of D3] (A2) {\faStar\enspace A 股 · 设计\\澜起科技 (RCD 70\%)\\兆易 · 芯原 · 北京君正};
+\node[ashar, fill=white, draw=riskamber, text=deepnavy, right=of D3] (A2) {\faStar\enspace A 股 · 设计\\澜起科技 (RCD 70\%)\\兆易 · 芯原 · 北京君正};
 
 % Layer 3
 \node[layer=riskamber, below=1.1cm of L2] (L3) {\faMicrochip\enspace L3 · 晶圆制造 \quad[\;38--42\%\;] \textcolor{riskred}{—— 价值最大环节}};
 \node[node, below=of L3.west, anchor=north west, xshift=0.25cm] (M1) {DRAM FAB\\SK · Samsung · Micron\\CXMT (长鑫, 未上市)};
 \node[node, right=of M1] (M2) {NAND FAB\\Samsung · Kioxia · Micron\\YMTC (长存, 未上市)};
-\node[ashar, right=of M2] (A3) {\faStar\enspace A 股间接\\\small A 股无直接原厂\\北方华创等为供应商};
+\node[ashar, fill=white, draw=riskamber, text=deepnavy, right=of M2] (A3) {\faStar\enspace A 股间接\\\small A 股无直接原厂\\北方华创等为供应商};
 
 % Layer 4
 \node[layer=riskred, below=1.1cm of L3] (L4) {\faLayerGroup\enspace L4 · 封装 \quad[\;先进 12--15\% \;|\; 传统 5--7\%\;]};
 \node[node, below=of L4.west, anchor=north west, xshift=0.25cm] (P1) {CoWoS/TSV 先进\\TSMC (约80\%) · Samsung\\ASE · Amkor};
 \node[node, right=of P1] (P2) {传统 FBGA/LGA\\ASE · Amkor · SPIL\\\textcolor{mutedgrey}{国产 约30\%}};
-\node[ashar, right=of P2] (A4) {\faStar\enspace A 股 · 封测\\长电 (XDFOI)\\通富 (AMD 绑定) · 华天};
+\node[ashar, fill=white, draw=riskamber, text=deepnavy, right=of P2] (A4) {\faStar\enspace A 股 · 封测\\长电 (XDFOI)\\通富 (AMD 绑定) · 华天};
 
 % Layer 5
 \node[layer=deepnavy, below=1.1cm of L4] (L5) {\faMemory\enspace L5 · 模组/主控 \quad[\;8--10\%\;]};
 \node[node, below=of L5.west, anchor=north west, xshift=0.25cm] (MO1) {企业级模组/SSD\\Smart Global · Dell\\Samsung OEM};
 \node[node, right=of MO1] (MO2) {消费级模组\\Apacer · G.Skill\\Kingston (深科技代工)};
-\node[ashar, right=of MO2] (A5) {\faStar\enspace A 股 · 模组\\江波龙 (Foresee/Lexar)\\深科技 (沛顿) · 佰维存储};
+\node[ashar, fill=white, draw=riskamber, text=deepnavy, right=of MO2] (A5) {\faStar\enspace A 股 · 模组\\江波龙 (Foresee\/Lexar)\\深科技 (沛顿) · 佰维存储};
 
 % Layer 6
 \node[layer=navy, below=1.1cm of L5] (L6) {\faServer\enspace L6 · 整机集成 \quad[\;-\;]};
 \node[node, below=of L6.west, anchor=north west, xshift=0.25cm] (S1) {AI 服务器\\NVIDIA DGX · Dell\\联想 · 浪潮 · 华为};
 \node[node, right=of S1] (S2) {PC/手机/汽车\\Apple · Dell · HP\\比亚迪 · 小米};
-\node[ashar, right=of S2] (A6) {\faStar\enspace A 股 · 系统\\(本报告不覆盖)\\浪潮 · 联想 · 华为};
+\node[ashar, fill=white, draw=riskamber, text=deepnavy, right=of S2] (A6) {\faStar\enspace A 股 · 系统\\(本报告不覆盖)\\浪潮 · 联想 · 华为};
 
 % Layer 7
 \node[layer=steelgrey, below=1.1cm of L6] (L7) {\faGlobe\enspace L7 · 下游应用 (Capex 来源)};
@@ -69,7 +69,7 @@
 }
 
 % Key stat
-\node[draw=navy, fill=white, rounded corners=3pt, font=\scriptsize\bfseries, text=navy, right=0.2cm of U2, yshift=-0.55cm] {aExclamationTriangle A 股无原厂 · 配置聚焦上游/接口/封测};
+\node[draw=navy, fill=white, rounded corners=3pt, font=\scriptsize\bfseries, text=navy, right=0.2cm of U2, yshift=-0.55cm] {\faExclamationTriangle A 股无原厂 · 配置聚焦上游/接口/封测};
 \end{tikzpicture}
 }
 \end{exhibitbox}

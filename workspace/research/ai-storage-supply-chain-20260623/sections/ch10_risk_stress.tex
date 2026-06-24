@@ -11,8 +11,8 @@
 \centering
 \resizebox{0.88\exhibitwidth}{!}{%
 \begin{tikzpicture}[
-  riskR/.style={circle, draw=riskred, fill=riskred!18, minimum size=2.2cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
-  riskA/.style={circle, draw=riskamber, fill=riskamber!18, minimum size=1.8cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
+  riskR/.style={circle, draw=riskred, fill=riskred, minimum size=2.4cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=white},
+  riskA/.style={circle, draw=riskamber, fill=riskamber!18, minimum size=2.0cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
   riskG/.style={circle, draw=riskgreen, fill=riskgreen!18, minimum size=1.5cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
   riskAs/.style={circle, draw=riskamber, fill=riskamber!18, minimum size=1.6cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
   riskGs/.style={circle, draw=riskgreen, fill=riskgreen!18, minimum size=1.3cm, inner sep=0pt, align=center, font=\scriptsize\bfseries, text=deepnavy},
@@ -40,8 +40,8 @@
 
 % Risk bubbles (X=概率, Y=影响程度, size=可监测性权重, color=风险等级)
 % 红区
-\node[riskR] (R1) at (7.2, 9.0) {R1\\HBM ASP -30\%\\供过于求};
-\node[riskR] (R2) at (8.0, 7.6) {R2\\BIS管制升级\\HBM/DUV禁售};
+\node[riskR, fill=riskred, draw=riskred, text=white] (R1) at (7.2, 9.0) {R1\\HBM ASP -30\%\\供过于求};
+\node[riskR, fill=riskred, draw=riskred, text=white] (R2) at (8.0, 7.6) {R2\\BIS管制升级\\HBM/DUV禁售};
 
 % 橙区
 \node[riskA] (R3) at (6.5, 6.8) {R3\\NAND价格战\\QoQ -10\%};
@@ -56,7 +56,7 @@
 % Legend
 \node[draw=rulegrey, fill=white, rounded corners=3pt, font=\scriptsize, inner sep=4pt, align=left, anchor=north east] at (10.8, 10.6) {
 \begin{tabular}{l l}
-\cellcolor{riskred!30} RED & HBM ASP / BIS 管制\\
+\cellcolor{riskred} RED & HBM ASP / BIS 管制\\
 \cellcolor{riskamber!30} AMBER & NAND战/capex/份额\\
 \cellcolor{riskgreen!30} GREEN & 扩产/汇率/渗透节奏\\
 \end{tabular}

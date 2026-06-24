@@ -46,7 +46,7 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \node[param, right=0.05cm] at (14.35, 2.0) {SK 样品研发中 (2027H2E)};
 
 % 国产 HBM (虚线提示)
-\node[gen, text=riskamber] at (-0.15, 0.8) {\textcolor{riskamber}{aExclamationTriangle 国产 HBM} \textcolor{riskred}{市场提前 2 年!}};
+\node[gen, text=riskamber] at (-0.15, 0.8) {\textcolor{riskamber}{\faExclamationTriangle 国产 HBM} \textcolor{riskred}{市场提前 2 年!}};
 \node[draw=riskamber, fill=none, densely dashed, minimum height=0.7cm, minimum width=1.55cm, font=\scriptsize\bfseries, text=riskamber, align=center, anchor=west, line width=0.8pt] at (12.8, 0.8) {预研阶段};
 \node[param, color=riskamber, right=0.05cm] at (14.35, 0.8) {\textbf{实质可用 ≥2028 (AStock 评估)}};
 
@@ -128,7 +128,7 @@ CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一�
   host/.style={rectangle, rounded corners=4pt, draw=deepnavy, fill=deepnavy!90, text=white, text width=2.5cm, align=center, minimum height=1.3cm, font=\bfseries\small},
   sw/.style={rectangle, rounded corners=4pt, draw=accentblue, fill=accentblue, text=white, text width=2.5cm, align=center, minimum height=1.1cm, font=\bfseries\small},
   pool/.style={rectangle, rounded corners=3pt, draw=navy, fill=navy!10, text width=3.0cm, align=center, minimum height=1.0cm, font=\small},
-  ashare/.style={rectangle, rounded corners=3pt, draw=riskred, fill=riskred!15, text width=3.0cm, align=center, minimum height=1.0cm, font=\bfseries\small, color=navy, line width=0.9pt},
+  ashare/.style={rectangle, rounded corners=3pt, draw=riskred, fill=white, text width=3.0cm, align=center, minimum height=1.0cm, font=\bfseries\small, text=deepnavy, line width=0.9pt},
   line/.style={->, thick, >=Stealth}
 ]
 % Hosts
@@ -145,9 +145,9 @@ CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一�
 
 % Memory Pools
 \node[pool] (P1) at (0.3, -4.4) {Pool A · Type 3\\DRAM Expansion Box\\DDR5 2TB · 池化共享};
-\node[ashare] (P2) at (3.8, -4.4) {Pool B · Type 3\\★ \textbf{CXL MXC 控制器}\\澜起全球首发量产};
+\node[ashare, fill=white, draw=riskred, text=deepnavy] (P2) at (3.8, -4.4) {Pool B · Type 3\\★ \textbf{CXL MXC 控制器}\\澜起全球首发量产};
 \node[pool] (P3) at (7.3, -4.4) {Pool C · Tiering\\热 DDR5 · 冷 CXL SSD\\Samsung · Solidigm};
-\node[ashare] (P4) at (10.8, -4.4) {Pool D · 模组/SSD\\★ \textbf{江波龙 / 深科技}\\CXL 模组研发中};
+\node[ashare, fill=white, draw=riskred, text=deepnavy] (P4) at (10.8, -4.4) {Pool D · 模组/SSD\\★ \textbf{江波龙 / 深科技}\\CXL 模组研发中};
 
 % Arrows
 \foreach \h in {H1,H2,H3,H4} {

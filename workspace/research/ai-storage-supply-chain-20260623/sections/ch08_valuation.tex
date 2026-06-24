@@ -11,7 +11,7 @@
 \centering
 \resizebox{0.88\exhibitwidth}{!}{%
 \begin{tikzpicture}[
-  dot/.style={circle, minimum size=10pt, inner sep=0pt, draw=#1, fill=#1!30, font=\bfseries\small, text=deepnavy},
+  dot/.style={circle, minimum size=10pt, inner sep=0pt, draw=#1, fill=#1!65, font=\bfseries\small, text=deepnavy},
   axis/.style={draw=steelgrey, line width=0.8pt},
   grid/.style={draw=rulegrey!40, dashed}
 ]
@@ -24,10 +24,10 @@
 \draw[grid] (0,5.5) -- (11,5.5);
 
 % Quadrant labels
-\node[font=\bfseries\small, color=nvgreen, above right] at (5.5,5.5) {I · 黄金象限 · 高确定+高性价比};
-\node[font=\bfseries\small, color=navy, above left] at (5.5,5.5) {II · 底仓区 · 高确定+合理估值};
-\node[font=\bfseries\small, color=riskred, below left] at (5.5,5.5) {III · 规避区 · 低确定+偏高估};
-\node[font=\bfseries\small, color=riskamber, below right] at (5.5,5.5) {IV · 弹性区 · 中确定+高弹性};
+\node[font=\bfseries\small, color=nvgreen, above right] at (8.3,8.3) {I · 黄金象限 · 高确定+高性价比};
+\node[font=\bfseries\small, color=navy, above left] at (2.7,8.3) {II · 底仓区 · 高确定+合理估值};
+\node[font=\bfseries\small, color=riskred, below left] at (2.7,2.7) {III · 规避区 · 低确定+偏高估};
+\node[font=\bfseries\small, color=riskamber, below right] at (8.3,2.7) {IV · 弹性区 · 中确定+高弹性};
 
 % Axis ticks (bottom: 上行空间%, left: 置信度分)
 \foreach \x/\v in {1.8/20, 5.5/30, 9.2/40} \node[below, font=\tiny, text=steelgrey] at (\x,0) {\v\%};
@@ -70,7 +70,7 @@
 \node[draw=rulegrey, fill=white, rounded corners=3pt, font=\tiny, inner sep=3pt, align=left, anchor=north east] at (10.8, 1.0) {
 \setlength{\tabcolsep}{3pt}
 \begin{tabular}{l l}
-\cellcolor{navy!30} $\bullet$ & 核心 Tier 1 (A+ 高确定) \\
+\cellcolor{navy!65} $\bullet$ & 核心 Tier 1 (A+ 高确定) \\
 \cellcolor{nvgreen!30} $\bullet$ & 卫星 Tier 2 (A/B+ 较高) \\
 \cellcolor{riskamber!30} $\bullet$ & 主题层 (B/C 事件驱动) \\
 \end{tabular}

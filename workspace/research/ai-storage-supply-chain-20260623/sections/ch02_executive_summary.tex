@@ -26,7 +26,7 @@ HBM 2026E 全球 TAM \$380--420 亿，CAGR 68\%，是半导体行业增速最快
 \resizebox{0.88\exhibitwidth}{!}{%
 \begin{tikzpicture}[
   thesis/.style={rectangle, rounded corners=4pt, minimum width=6.5cm, minimum height=1.4cm, align=center, draw=#1, fill=#1!10, text=deepnavy, font=\bfseries\small, inner sep=4pt},
-  subp/.style={rectangle, rounded corners=2pt, minimum width=3.0cm, minimum height=0.8cm, align=center, draw=#1!70, fill=#1!5, font=\scriptsize, inner sep=2pt},
+  subp/.style={rectangle, rounded corners=2pt, minimum width=3.0cm, minimum height=1.1cm, align=center, draw=#1!70, fill=#1!5, font=\scriptsize, inner sep=4pt, text=deepnavy},
   arrow/.style={->, thick, >=Stealth, draw=steelgrey}
 ]
 % Four theses arranged as 2x2
@@ -53,7 +53,7 @@ HBM 2026E 全球 TAM \$380--420 亿，CAGR 68\%，是半导体行业增速最快
 \node[subp=nvgreen, text width=3.0cm] at (9.0, -2.15) {澜起 CXL 收入 26 10亿 · 27 翻倍};
 
 % Arrows from thesis to conclusion center
-\node[draw=deepnavy, fill=deepnavy, text=white, rounded corners=4pt, minimum width=9cm, minimum height=1.1cm, align=center, font=\bfseries\normalsize] (CONCL) at (4.5, -3.4) {AStock 结论：2026H2-2027 量价齐升双击 · 核心组合目标回报 +25-40\%};
+\node[draw=deepnavy, fill=deepnavy, text=white, rounded corners=4pt, minimum width=9.5cm, minimum height=1.4cm, text width=14.4cm, align=center, font=\bfseries\normalsize, inner sep=5pt] (CONCL) at (4.5, -3.4) {AStock 结论：2026H2-2027 量价齐升双击 · 核心组合目标回报 +25-40\%};
 \foreach \t/\a in {TH1/-30, TH2/-150, TH3/30, TH4/150} { \draw[arrow, bend right=\a] (\t.south) to (CONCL.north); }
 
 % Top label

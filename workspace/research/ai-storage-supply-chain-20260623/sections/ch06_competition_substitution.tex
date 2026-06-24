@@ -15,6 +15,7 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
   slabel/.style={font=\bfseries\small, align=center, text=deepnavy}
 ]
 % Pie 1: 2025E
+\begingroup
 \node[above=0.1cm, font=\bfseries\large, color=navy] at (0, 2.3) {\textbf{2025E}};
 % SK 60% = 216deg, Samsung 24% = 86.4deg, Micron 12% = 43.2deg, Other 4% = 14.4deg
 \def\a{90}
@@ -30,9 +31,11 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \node[slabel, text=white] at (305:1.2) {Micron 12\%};
 \node[slabel, text=white, font=\tiny] at (345:1.5) {4\%};
 \draw (0,0) circle (2.0);
+\endgroup
 
 % Pie 2: 2026E
 \begin{scope}[xshift=6.0cm]
+\begingroup
 \node[above=0.1cm, font=\bfseries\large, color=navy] at (0, 2.3) {\textbf{2026E}};
 \def\a{90}
 \filldraw[fill=riskred!80, draw=white, line width=1.2pt] (0,0) [slice={205.2}];
@@ -47,10 +50,12 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \node[slabel, text=white] at (315:1.2) {Micron 15\%};
 \node[slabel, text=white, font=\tiny] at (355:1.7) {1\%};
 \draw (0,0) circle (2.0);
+\endgroup
 \end{scope}
 
 % Pie 3: 2027E
 \begin{scope}[xshift=12.0cm]
+\begingroup
 \node[above=0.1cm, font=\bfseries\large, color=navy] at (0, 2.3) {\textbf{2027E}};
 \def\a{90}
 \filldraw[fill=riskred!80, draw=white, line width=1.2pt] (0,0) [slice={187.2}];
@@ -62,6 +67,7 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \node[slabel, text=white] at (238:1.2) {Samsung 30\%};
 \node[slabel, text=white] at (320:1.2) {Micron 18\%};
 \draw (0,0) circle (2.0);
+\endgroup
 \end{scope}
 
 % Legend (bottom)
@@ -70,6 +76,7 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \cellcolor{riskred!60}\rule{0pt}{8pt}\rule{10pt}{0pt} & SK Hynix &
 \cellcolor{accentblue!60}\rule{0pt}{8pt}\rule{10pt}{0pt} & Samsung &
 \cellcolor{nvgreen!55}\rule{0pt}{8pt}\rule{10pt}{0pt} & Micron \\
+\cellcolor{steelgrey!60}\rule{0pt}{8pt}\rule{10pt}{0pt} & Other（铠侠/Solidigm）& \\[2pt]
 \end{tabular}
 };
 \end{tikzpicture}
@@ -104,7 +111,7 @@ HBM 市场高度集中，呈现「一强两弱」格局。SK 海力士凭借先�
 \textbf{北京君正 (300223)} & DRAM (ISSI) 38--25nm 利基\par SRAM 全球前三 & 40--50K (代工 Tower\slash UMC) & 成熟制程 >90\% & \textbf{低}\par 利基市场非管制重点 & 汽车\slash 工业\slash 医疗利基 DRAM\allowbreak+\allowbreak SRAM 稳定出货；AI 敞口实质小 (\(<5\%\))。\par 直接上市标的。 \\
 \midrule
 \rowcolor{riskamber!8}
-\textbf{aExclamationTriangle 国产 HBM 综合评估} & \textcolor{riskred}{\textbf{预研阶段，无公开样品}} & N/A & N/A & \textbf{极高}\par HBM 管制传闻 & 长存/长鑫未披露任何 HBM 计划；2028 年前实质商用概率 <30\%。\par \textbf{A 股无直接受益标的}。 \\
+\textbf{\faExclamationTriangle 国产 HBM 综合评估} & \textcolor{riskred}{\textbf{预研阶段，无公开样品}} & N/A & N/A & \textbf{极高}\par HBM 管制传闻 & 长存/长鑫未披露任何 HBM 计划；2028 年前实质商用概率 <30\%。\par \textbf{A 股无直接受益标的}。 \\
 \midrule
 \rowcolor{panelgrey}
 \multicolumn{2}{>{\cellcolor{panelgrey}\bfseries\raggedright\arraybackslash}p{\dimexpr2.1cm+1.9cm+2\tabcolsep\relax}}{\textbf{设备材料国产替代 (整体)}} & \multicolumn{2}{>{\cellcolor{panelgrey}\centering\arraybackslash}p{\dimexpr1.8cm+1.2cm+2\tabcolsep\relax}}{长存/长鑫 2026E 国产率 约20--30\% (2023 年仅 10\%)} & \cellcolor{panelgrey}\centering\arraybackslash\textbf{核心矛盾} & \cellcolor{panelgrey}\raggedright\arraybackslash\hspace{0pt} BIS 管制是国产化率的双重驱动：短期抑制原厂扩产节奏，长期加速国产设备材料验证周期。\\
