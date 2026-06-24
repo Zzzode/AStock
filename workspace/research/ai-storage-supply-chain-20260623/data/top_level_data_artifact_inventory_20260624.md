@@ -1,4 +1,4 @@
-# Top Level Data Artifact Inventory（R237 · 8 files）
+# Top Level Data Artifact Inventory（R238 · 8 files）
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|
@@ -9,4 +9,4 @@
 |5|review_log.md|`6d19583d4ca9`|21,843|
 |6|visual_review.md|`c3a24aa7e6aa`|9,792|
 |7|completion_audit_manifest.md|`99708481d62e`|886|
-|8|completion_audit_manifest.json|`3623b5c589ce`|2,041|
+|8|completion_audit_manifest.json|`94ebf306bcfe`|2,030|
