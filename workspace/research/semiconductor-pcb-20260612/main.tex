@@ -13,97 +13,6 @@
 \newcommand{\reportquality}{已归档核心/观察名单券商PDF、官方年报、官方IR和公开估值/持仓代理；腾讯公开行情已刷新至2026年6月18日抓取、内嵌2026年6月17日16:14前后返回字段；仍未覆盖完整付费一致预期数据库、具名客户收入和实时全票资金流。}
 \newcommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。}
 \input{../../../.agents/templates/preamble.tex}
-
-% 修复表格孤儿标题问题：确保标题与至少若干行内容同页
-% 方案：breakable + 适当的 Needspace 预检查（空间不足时整盒下移一页）
-% 对于超过一页的大表格（5-4/6-2/8-1），使用 longexhibit + longtable 方案
-\renewtcolorbox{exhibitbox}[1][]{
-  enhanced, breakable,
-  colback=white, colframe=rulegrey,
-  borderline north={1.2pt}{0pt}{navy},
-  boxrule=0.35pt, arc=1pt,
-  fonttitle=\bfseries\color{navy},
-  title={#1},
-  left=7pt, right=7pt, top=6pt, bottom=6pt,
-  before={\par\Needspace{0.35\textheight}},
-  before skip=6pt plus 2pt minus 2pt,
-  after skip=6pt plus 2pt minus 2pt,
-}
-
-% 注：跨页大表格（图表5-4/6-2/8-1）使用原生 longtable 实现
-% 标题内嵌于 \endfirsthead，保证与首行内容同页，根治"孤儿标题"问题
-% 顶部 1.2pt navy 粗线 + 底部 0.35pt rule-grey 细线，模拟 exhibitbox 视觉风格
-\renewtcolorbox{dashboardbox}[1][]{
-  enhanced, breakable,
-  colback=lightgrey, colframe=steelgrey,
-  boxrule=0.45pt, arc=2pt,
-  fonttitle=\bfseries,
-  title={#1},
-  left=9pt, right=9pt, top=7pt, bottom=7pt,
-  before={\par\Needspace{8\baselineskip}},
-  before skip=6pt plus 2pt minus 2pt,
-  after skip=6pt plus 2pt minus 2pt,
-}
-\renewtcolorbox{houseviewbox}[1][]{
-  enhanced, breakable,
-  colback=panelgrey, colframe=navy,
-  borderline west={3pt}{0pt}{navy},
-  boxrule=0.35pt, arc=1pt,
-  fonttitle=\bfseries\color{navy},
-  title={#1},
-  left=9pt, right=9pt, top=6pt, bottom=6pt,
-  before={\par\Needspace{5\baselineskip}},
-  before skip=4pt plus 2pt minus 2pt,
-  after skip=4pt plus 2pt minus 2pt,
-}
-\renewtcolorbox{sourcequalitybox}[1][]{
-  enhanced, breakable,
-  colback=white, colframe=steelgrey,
-  borderline west={2pt}{0pt}{riskamber},
-  boxrule=0.3pt, arc=1pt,
-  fonttitle=\small\bfseries\color{riskamber},
-  title={#1},
-  left=8pt, right=8pt, top=5pt, bottom=5pt,
-  before={\par\Needspace{4\baselineskip}},
-  before skip=3pt plus 1pt minus 1pt,
-  after skip=3pt plus 1pt minus 1pt,
-}
-\renewtcolorbox{disclosurebox}[1][]{
-  enhanced, breakable,
-  colback=lightgrey, colframe=steelgrey,
-  boxrule=0.35pt, arc=1pt,
-  fonttitle=\bfseries,
-  title={#1},
-  left=8pt, right=8pt, top=6pt, bottom=6pt,
-  before={\par\Needspace{5\baselineskip}},
-  before skip=4pt plus 2pt minus 2pt,
-  after skip=4pt plus 2pt minus 2pt,
-}
-\renewtcolorbox{keyinsight}[1][]{
-  enhanced, breakable,
-  colback=panelgrey, colframe=navy,
-  borderline west={3pt}{0pt}{navy},
-  boxrule=0.35pt, arc=1pt,
-  fonttitle=\bfseries\color{navy},
-  title={#1},
-  left=9pt, right=9pt, top=6pt, bottom=6pt,
-  before={\par\Needspace{5\baselineskip}},
-  before skip=4pt plus 2pt minus 2pt,
-  after skip=4pt plus 2pt minus 2pt,
-}
-\renewtcolorbox{riskbox}[1][]{
-  enhanced, breakable,
-  colback=white, colframe=riskred,
-  borderline west={3pt}{0pt}{riskred},
-  boxrule=0.35pt, arc=1pt,
-  fonttitle=\bfseries\color{riskred},
-  title={#1},
-  left=9pt, right=9pt, top=6pt, bottom=6pt,
-  before={\par\Needspace{5\baselineskip}},
-  before skip=4pt plus 2pt minus 2pt,
-  after skip=4pt plus 2pt minus 2pt,
-}
-
 \renewcommand{\sourcenote}[1]{\par{\scriptsize\color{mutedgrey}\textit{资料来源：#1}}\vspace{0.2em}}
 \renewcommand{\qualitynote}[1]{\par{\scriptsize\color{mutedgrey}\textit{数据质量：#1}}\vspace{0.2em}}
 
@@ -152,7 +61,8 @@
 \chapter{风险与监控}
 \input{sections/ch11_risks}
 
-\chapter{附录：来源与主张审计}
+\appendix
+\chapter{来源与主张审计}
 \input{sections/ch12_appendix}
 
 \clearpage

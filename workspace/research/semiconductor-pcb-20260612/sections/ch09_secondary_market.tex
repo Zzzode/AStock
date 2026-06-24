@@ -10,7 +10,7 @@
 
 我们把二级市场信号分成三类。第一类是估值和价格：用于判断安全边际；第二类是持仓和股东结构：用于判断筹码是否从机构集中转向更分散的交易盘；第三类是资金流、融资和龙虎榜：用于判断短期交易强度。三类信号都不是单独的买卖依据，但结合基本面触发器，可以决定“继续跟踪、等待回落、还是降低弹性暴露”。
 
-\section{市场信号可得性}
+\section{数据可得性概览}
 
 先看数据可得性。由于没有完整终端级持仓和逐笔订单流，本章只能使用公开代理数据。因此，下表不是在说这些数据足够精确，而是在说明每一类信号能回答什么问题、不能回答什么问题。
 
@@ -59,7 +59,9 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 \sourcenote{Official filing / holder metadata (CNInfo + exchange disclosure index); public metadata only, not full fund-flow data}
 \end{exhibitbox}
 
-基金和股东结构更能解释为什么高景气资产也可能出现回撤。沪电、胜宏、深南、生益在2025Q4已经出现较高重仓市值，2026Q1公开基金重仓普遍回落，说明市场并非刚开始交易这个主题。若后续Q2业绩只是符合预期而非超预期，股价可能不再享受同样的估值扩张。
+\section{持仓与筹码结构}
+
+筹码结构用三条证据交叉验证——基金重仓季度回落（图表9-4）、股东户数扩散（图表9-5）、可见基金风格（图表9-6/9-7）。三者方向一致即指向主题拥挤的筹码松动：基金重仓2026Q1较2025Q4普遍回落（胜宏-259.84亿、生益-235.46亿、沪电-166.98亿），同期股东户数继续扩张、人均持股下降，意味着筹码由机构集中转向更分散的交易盘；但风格表揭示了一条不对称线索——胜宏ETF/指数占比高达36\%（图表9-7），说明其拥挤退潮时被动资金可能被ETF赎回机制被动减持，放大下行斜率，而沪电、深南、生益仍以主动型为主，退潮节奏更可控。投资含义是：筹码松动已成方向性事实，但松动的方式（主动减仓 vs 被动减持）决定了不同标的对催化证伪的敏感度排序。
 
 \begin{exhibitbox}[图表9-3: Fund heavy-holding proxy]
 \footnotesize
@@ -81,7 +83,7 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{1.7cm}R{1.7cm}R{1.7cm}R{1.7cm}X}
 \toprule
-\textbf{公司（代码）} & \textbf{25Q3 MV} & \textbf{25Q4 MV} & \textbf{26Q1 MV} & \textbf{Q1-Q4} & \textbf{解读} \\
+\textbf{公司（代码）} & \textbf{25Q3 MV} & \textbf{25Q4 MV} & \textbf{26Q1 MV} & \textbf{26Q1 vs 25Q4} & \textbf{解读} \\
 \midrule
 沪电股份（002463） & 242.81亿 & 335.53亿 & 168.54亿 & -166.98亿 & 2025Q4拥挤度上升，2026Q1显著回落。 \\
 胜宏科技（300476） & 275.59亿 & 382.37亿 & 122.53亿 & -259.84亿 & 高beta资金退潮最明显。 \\
@@ -99,10 +101,6 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 \end{exhibitbox}
 
 重仓回落不等于基本面恶化，但它改变了赔率。对核心资产而言，后续需要更强的业绩证据来重新吸引机构增配；对高弹性资产而言，若融资盘和主题资金仍在推升价格，任何低于预期的订单或毛利率信息都可能放大波动。
-
-\subsection*{持仓与筹码}
-
-筹码结构用三条证据交叉验证——基金重仓季度回落（图表9-4）、股东户数扩散（图表9-5）、可见基金风格（图表9-6/9-7）。三者方向一致即指向主题拥挤的筹码松动：基金重仓2026Q1较2025Q4普遍回落（胜宏-259.84亿、生益-235.46亿、沪电-166.98亿），同期股东户数继续扩张、人均持股下降，意味着筹码由机构集中转向更分散的交易盘；但风格表揭示了一条不对称线索——胜宏ETF/指数占比高达36\%（图表9-7），说明其拥挤退潮时被动资金可能被ETF赎回机制被动减持，放大下行斜率，而沪电、深南、生益仍以主动型为主，退潮节奏更可控。投资含义是：筹码松动已成方向性事实，但松动的方式（主动减仓 vs 被动减持）决定了不同标的对催化证伪的敏感度排序。
 
 \begin{exhibitbox}[图表9-5: Shareholder-count concentration bridge]
 \footnotesize
@@ -169,18 +167,16 @@ Stock Connect current holding-rank APIs & Failed public route & 2026年6月18日
 \sourcenote{Official annual reports (holder + supplier proxies)}
 \end{exhibitbox}
 
-筹码结构的四张表合在一起指向同一个结论：核心PCB/CCL资产在2026Q1同时出现了基金重仓回落与股东户数扩散，即筹码从机构集中转向更分散的交易盘。风格表（图表9-6/9-7）补充了这一结论的结构性细节——胜宏ETF/指数占比高达36\%，被动资金的赎回机制可能在退潮期放大波动；而沪电、深南、生益仍以主动型为主，退潮节奏更可控。这组信号的投资含义不是"应该卖出"，而是"后续需要更强的业绩证据来重新吸引机构增配"，仓位弹性应与筹码分散度反向匹配。
-
 \begin{sourcequalitybox}[Institutional positioning gap]
 已尝试通过 AkShare `stock\_report\_fund\_hold` 获取基金、QFII、社保、券商、保险持仓，但接口在当前环境返回 TypeError。港交所官方季度北向持股已经覆盖当前核心和观察名单；东方财富 `RPT\_MUTUAL\_HOLDSTOCKNDATE\_STA\_NEW` 与 `RPT\_MUTUAL\_HOLDNDATE\_DET\_NEW` 又补齐了12/12标的2026Q1参与者/托管行明细。但日度北向变化、beneficial-owner穿透、主动/被动基金分类和终端级订单流仍不可用。东方财富30日资金流日线代理已经覆盖当前核心和观察名单，但它不是完整机构持仓、北向明细或终端级订单流。2026年6月17日进一步复查东方财富沪深港通成交榜接口，能补充部分上榜日成交额和排名，但无法补出受益所有人、全量买卖盘或实时订单流。
 \sourcenote{Flow / positioning evidence pack: HKEX official Stock Connect quarterly + Eastmoney HSGT holding recheck + Eastmoney fund-flow + current public-source recheck. Public proxy aggregation only, not terminal-grade positioning.}
 \end{sourcequalitybox}
 
-\subsection*{北向与长期资金}
+\section{北向与长期资金}
 
 北向季度数据与基金重仓出现背离：2026Q1港交所官方季度持股显示沪电（+5067.14万股，占比升至10.07\%）、生益（+2583.95万股）、芯碁（+495.13万股，+3.76个百分点）获北向增持（图表9-11），而同期公募基金重仓普遍回落（图表9-4）。这种背离说明长期/被动属性的资金在主题退潮期反向承接，是拥挤度排序中沪电被评为"相对胜宏更稳"、生益虽估值分位最高但筹码结构不算最差的关键依据；同时社保可见持仓序列最长出现在生益（2004Q2–2026Q1，48行，图表9-17），佐证材料龙头的长期资金粘性最高。但需要明确这层判断的边界：北向增持可能滞后于重仓回落，或仅反映ETF再平衡而非主动配置，因此它降低的是排序下行斜率，而非消除拥挤风险本身。
 
-下两张表（图表9-9/9-10）是支撑图表9-11季度持股数的\textbf{代理数据源清单与历史基线}，本身不携带投资含义，仅为读者标注9-11的持仓代理来源。其中图表9-10（Stock Connect历史基线）所有公司最新公开日线均冻结在2024-08-16，属沪深港通持股报告规则变化\textbf{之前}的历史基线，不进入本章拥挤度读数——当前持仓以图表9-11的港交所官方季度表为准。
+下两张表（图表9-9/9-10）是支撑图表9-11季度持股数的\textbf{代理数据源清单与历史基线}，本身不携带投资含义，仅为读者标注图表9-11的持仓代理来源。其中图表9-10（Stock Connect历史基线）所有公司最新公开日线均冻结在2024-08-16，属沪深港通持股报告规则变化\textbf{之前}的历史基线，不进入本章拥挤度读数——当前持仓以图表9-11的港交所官方季度表为准。
 
 \begin{exhibitbox}[图表9-9: Additional public holder proxies]
 \small
@@ -365,9 +361,9 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Eastmoney \texttt{RPT\_STOCK\_DETAILS\_CHANGE} important-institution detail (core names + 鹏鼎 watchlist proxy)}
 \end{exhibitbox}
 
-北向与长期资金这一组证据的核心结论是"分化而非一致"：公募重仓在Q1普遍回落，但北向季度在沪电、生益、芯碁上反向增持，社保序列在生益上延续22年可见持仓。这种机构内部的多空分化是当前阶段的典型特征——主题交易盘退潮，但长期/配置型资金仍在承接核心资产。它对投资动作的含义是：拥挤风险真实存在，但不是所有核心资产都在被同比例减持，北向与社保的粘性为沪电和生益提供了一定的下跌缓冲。
+\section{杠杆与短期资金}
 
-从持仓结构转向交易结构，首先需要看流动性——它决定了拥挤退潮时的实际冲击成本。成交额高的标的虽然更容易被交易型资金进出，但也意味着大资金建仓和减仓的滑点更低；成交额低的标的看起来筹码稳定，但一旦出现方向性变化，价格波动会被低流动性放大。
+流动性、融资盘、大宗交易、龙虎榜共同构成短期交易强度的四维画像。胜宏在成交活跃度上最高（日均107.59亿元，图表9-19），且融资、大宗、龙虎榜三项同时居前——融资余额（\texttt{RZYE}融资口径，与图表9-20的保证金口径232.10亿元略有差异）231.73亿元、占流通市值7.77\%（图表9-21），大宗交易136笔/37.47亿元且120笔折价（图表9-23），龙虎榜虽仅上榜2日但单日净买33.32亿元（图表9-25）——四者共振指向其是对订单不及预期最敏感的标的：一旦基本面证伪，融资盘平仓与折价大宗转让会同步放大回撤。与之对照，深南融资占比仅0.66\%且近30行净流出-2.64亿元，杠杆拥挤度最低；生益融资余额虽高（42.72亿元）但占流通市值仅1.06\%，杠杆压力温和。这一组证据把拥挤度排序从"持仓结构"延伸到"交易结构"，是后续把胜宏列为最拥挤、深南列为相对温和的第二根支柱。
 
 \begin{exhibitbox}[图表9-19: Liquidity and turnover proxy]
 \footnotesize
@@ -386,10 +382,6 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Eastmoney daily amount / turnover where endpoint succeeded, Yahoo close $\times$ volume proxy for failed tickers. Neither source provides order-book depth or terminal-grade liquidity}
 \end{exhibitbox}
 
-\subsection*{杠杆与短期资金}
-
-融资盘、大宗交易、龙虎榜构成短期交易强度三角。胜宏在三项同时最高——融资余额（\texttt{RZYE}融资口径，与9-20的保证金口径232.10亿元略有差异）231.73亿元、占流通市值7.77\%（图表9-21），大宗交易136笔/37.47亿元且120笔折价（图表9-23），龙虎榜虽仅上榜2日但单日净买33.32亿元（图表9-25）——三者共振指向其是对订单不及预期最敏感的标的：一旦基本面证伪，融资盘平仓与折价大宗转让会同步放大回撤。与之对照，深南融资占比仅0.66\%且近30行净流出-2.64亿元，杠杆拥挤度最低；生益融资余额虽高（42.72亿元）但占流通市值仅1.06\%，杠杆压力温和。这一组证据把拥挤度排序从"持仓结构"延伸到"交易结构"，是后续把胜宏列为最拥挤、深南列为相对温和的第二根支柱。
-
 \begin{exhibitbox}[图表9-20: Margin financing and leverage proxy (30-row / 近30交易日窗口)]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.8cm}R{1.8cm}R{1.8cm}R{1.6cm}X}
@@ -404,7 +396,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 深南电路（002916） & 17.73亿元 & 0.66\% & -2.64亿元 & 深南融资压力较低，近30行净流出。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{Eastmoney \texttt{RPTA\_WEB\_RZRQ\_GGMX}, 300 rows per successful ticker; 本表Margin balance为口径字段\texttt{RZRQYE}（融资余额+融券余额合计保证金口径），与图表9-21的Financing balance(\texttt{RZYE}融资余额)口径不同，故胜宏本表232.10亿元与9-21的231.73亿元并存；30-row窗口为近30交易日。Public leverage proxy only; not institutional ownership or terminal-grade order flow}
+\sourcenote{Eastmoney \texttt{RPTA\_WEB\_RZRQ\_GGMX}, 300 rows per successful ticker; 本表Margin balance为口径字段\texttt{RZRQYE}（融资余额+融券余额合计保证金口径），与图表9-21的Financing balance(\texttt{RZYE}融资余额)口径不同，故胜宏本表232.10亿元与图表9-21的231.73亿元并存；30-row窗口为近30交易日。Public leverage proxy only; not institutional ownership or terminal-grade order flow}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表9-21: Margin financing long-window crowding (300行 / ~14个月窗口)]
@@ -421,7 +413,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 深南电路（002916） & 17.60亿元 & +5.39亿元 & 0.66\% & +5.96亿元 & 深南融资扩张较温和。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{Eastmoney margin-financing long window (300 public rows from 2025-03-20 to 2026-06-15 for successful tickers). 本表Latest financing为\texttt{RZYE}融资余额口径（不含融券），与图表9-20的\texttt{RZRQYE}保证金口径不同，故胜宏本表231.73亿元与9-20的232.10亿元并存；300-row窗口约覆盖14个月（2025-03-20至2026-06-15）。Public leverage proxy only; not institutional ownership, beneficial-owner data or terminal-grade order flow}
+\sourcenote{Eastmoney margin-financing long window (300 public rows from 2025-03-20 to 2026-06-15 for successful tickers). 本表Latest financing为\texttt{RZYE}融资余额口径（不含融券），与图表9-20的\texttt{RZRQYE}保证金口径不同，故胜宏本表231.73亿元与图表9-20的232.10亿元并存；300-row窗口约覆盖14个月（2025-03-20至2026-06-15）。Public leverage proxy only; not institutional ownership, beneficial-owner data or terminal-grade order flow}
 \end{exhibitbox}
 
 \begin{exhibitbox}[图表9-22: SSE official margin-financing cross-check]
@@ -528,7 +520,9 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 
 公开减持集中在控股股东/大股东——鹏鼎美港实业、生益广新控股、沪电沪士集团均在窗口内净减持，合计净减持代理约64亿元，与基金重仓回落（图表9-4）方向一致，共同指向核心资产的筹码供给在主题高位松动，是下行风险的微观证据而非短期信号。
 
-接下来五张表（图表9-28至9-32）从日度资金流、长窗口资金流、日内分单、五档盘口到观察名单资金流，构成对短期交易情绪与买卖盘失衡的密集证据簇。\textbf{阅读提示：}这五张表均为公开代理（非终端级订单流），其中图表9-31的五档失衡接近1.000在盘后快照中通常对应涨停/无卖盘状态，是主题情绪极端的微观温度计，而非可执行的方向信号——此提示适用于整簇而非仅9-31。
+\subsection*{资金流与盘口情绪}
+
+接下来五张表（图表9-28至9-32）从日度资金流、长窗口资金流、日内分单、五档盘口到观察名单资金流，构成对短期交易情绪与买卖盘失衡的密集证据簇。\textbf{阅读提示：}这五张表均为公开代理（非终端级订单流），其中图表9-31的五档失衡接近1.000在盘后快照中通常对应涨停/无卖盘状态，是主题情绪极端的微观温度计，而非可执行的方向信号——此提示适用于整簇而非仅图表9-31。
 
 \begin{exhibitbox}[图表9-28: Eastmoney fund-flow proxy]
 \small
@@ -622,7 +616,7 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Eastmoney fund-flow proxy (core names + 鹏鼎 watchlist market-positioning proxy)}
 \end{exhibitbox}
 
-\textbf{资金流簇与盘口失衡对拥挤度排序的整合读数：}把图表9-31的五档失衡（002916/603186/002938 Imbal.=1.000，对应盘后无卖盘/涨停态）与图表9-32的观察名单资金流（鼎泰30日+9.99亿最强、鹏鼎-10.14亿最弱）合并进9.4节已建立的拥挤度排序，可得到两点增量：其一，五档失衡=1.000的多为已被高度定价的小市值/主题标的（深南/华正/鹏鼎），并非拥挤度最低的标的——这说明"盘口无卖盘"反映的是情绪温度而非筹码宽松，与融资盘/重仓口径的拥挤度不能互换；其二，观察名单资金流分化（鼎泰净流入、鹏鼎净流出）与核心名单的胜宏净流出、生益净流入方向一致，进一步印证"高弹性高涨幅标的短期资金分歧最大"。这两点不改变9.4节胜宏$>$沪电$>$生益$\approx$深南$>$华正的最终排序，但为后续把观察名单纳入排序时提供了"短期情绪温度"与"中期资金方向"须分开读的口径边界。
+\textbf{资金流簇与盘口失衡对拥挤度排序的整合读数：}把图表9-31的五档失衡（002916/603186/002938 Imbal.=1.000，对应盘后无卖盘/涨停态）与图表9-32的观察名单资金流（鼎泰30日+9.99亿最强、鹏鼎-10.14亿最弱）纳入本章后续拥挤度解读的排序框架，可得到两点增量：其一，五档失衡=1.000的多为已被高度定价的小市值/主题标的（深南/华正/鹏鼎），并非拥挤度最低的标的——这说明"盘口无卖盘"反映的是情绪温度而非筹码宽松，与融资盘/重仓口径的拥挤度不能互换；其二，观察名单资金流分化（鼎泰净流入、鹏鼎净流出）与核心名单的胜宏净流出、生益净流入方向一致，进一步印证"高弹性高涨幅标的短期资金分歧最大"。这两点不改变拥挤度排序的最终结论，但为后续把观察名单纳入排序时提供了"短期情绪温度"与"中期资金方向"须分开读的口径边界。
 
 \section{历史价格表现}
 
@@ -666,29 +660,9 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 
 \section{拥挤度解读}
 
-本节把三类信号交叉，得到可复核的拥挤度排序，而不是单凭一张表下判断。第一类是基金重仓的季度变化（图表9-4）：2026Q1五家核心标的的重仓市值普遍较2025Q4显著回落，其中胜宏科技（-259.84亿）、生益科技（-235.46亿）、沪电股份（-166.98亿）降幅最大，说明上一轮主题拥挤的机构资金已经在主动或被动减仓；第二类是股东户数扩散（图表9-5）：胜宏、沪电、深南、生益的26Q1股东户数较25Q4继续扩张、人均持股下降，筹码由集中转向更分散的交易盘，这与重仓回落方向一致，但分散本身会放大主题退潮时的波动；第三类是融资盘拥挤（图表9-20/9-21）：胜宏融资余额（\texttt{RZYE}口径，9-21）231.73亿、占流通市值7.77\%，且长窗口净流入188.25亿，杠杆拥挤度最高，兴森（5.35\%）、沪电（2.58\%）次之。
+本节把三类信号交叉，得到可复核的拥挤度排序，而不是单凭一张表下判断。第一类是基金重仓的季度变化（图表9-4）：2026Q1五家核心标的的重仓市值普遍较2025Q4显著回落，其中胜宏科技（-259.84亿）、生益科技（-235.46亿）、沪电股份（-166.98亿）降幅最大，说明上一轮主题拥挤的机构资金已经在主动或被动减仓；第二类是股东户数扩散（图表9-5）：胜宏、沪电、深南、生益的26Q1股东户数较25Q4继续扩张、人均持股下降，筹码由集中转向更分散的交易盘，这与重仓回落方向一致，但分散本身会放大主题退潮时的波动；第三类是融资盘拥挤（图表9-20/9-21）：胜宏融资余额（\texttt{RZYE}口径，图表9-21）231.73亿、占流通市值7.77\%，且长窗口净流入188.25亿，杠杆拥挤度最高，兴森（5.35\%）、沪电（2.58\%）次之。
 
-把三类信号叠加，拥挤度从高到低可排序为胜宏 $>$ 沪电 $>$ 生益 $\approx$ 深南 $>$ 华正。这一排序不是单凭一张表得出的结论，而是基金重仓回落幅度、股东户数扩散速率、融资盘占比和北向方向四个维度交叉验证的结果。
-
-图表9-35把四个维度的信号汇总在一张矩阵里，便于横向比较。表中每个信号的方向独立，综合拥挤度是定性叠加的结果，不是精确加权公式——这与本章"代理数据只用于风险折扣、不用于精确估值"的口径一致。
-
-\begin{exhibitbox}[图表9-35: Crowding ranking matrix (core names)]
-\small
-\begin{tabularx}{\textwidth}{L{1.8cm}R{1.7cm}R{1.7cm}R{1.5cm}R{1.3cm}C{1.2cm}C{0.8cm}}
-\toprule
-\textbf{公司（代码）} & \textbf{重仓Q1变化} & \textbf{户数Q1变化} & \textbf{融资/流通} & \textbf{北向QoQ} & \textbf{综合拥挤度} & \textbf{排序} \\
-\midrule
-胜宏科技（300476） & $-$259.84亿 & +4.47万户 & 7.77\% & $-$0.37pct & 极高 & 1 \\
-沪电股份（002463） & $-$166.98亿 & +4.20万户 & 2.58\% & +2.63pct & 中高 & 2 \\
-生益科技（600183） & $-$235.46亿 & +5.30万户 & 1.06\% & +1.08pct & 中 & 3 \\
-深南电路（002916） & $-$143.92亿 & +2.64万户 & 0.66\% & $-$0.07pct & 中 & 4 \\
-华正新材（603186） & $-$4.41亿 & +0.60万户 & N/A & +1.94pct & 低--中 & 5 \\
-\bottomrule
-\end{tabularx}
-\sourcenote{综合自图表9-4（重仓季度桥）、图表9-5（股东户数桥）、图表9-21（融资长窗口）、图表9-11（北向季度持股）。综合拥挤度为定性判断，非加权公式：胜宏三项同时最差且北向减持；沪电杠杆+重仓回落明显但北向增持缓冲；生益重仓回落大但融资占比低+北向增持；深南融资占比最低但重仓与户数同样走弱；华正可见基金覆盖低，拥挤更多体现为小市值高估值而非筹码结构。}
-\end{exhibitbox}
-
-胜宏在三类信号上同时最拥挤：重仓回落最深、户数扩散、融资占比最高，且北向Q1反而减持，因此对订单/毛利率不及预期最敏感；沪电杠杆和估值拥挤较高，但北向季度Q1仍在增持，筹码结构相对胜宏更稳；生益材料主线重仓回落明显、估值分位最高之一，但融资占比仅1.06\%且北向增持，杠杆端压力显著小于胜宏与沪电；深南融资占比最低（0.66\%）且近期净流出，拥挤度偏温和；华正可见基金覆盖极低（图表9-3仅1.29亿），拥挤度更多体现在小市值估值而非筹码结构。这一排序是下行风险折扣和触发器权重的主要依据，而非买卖信号本身。
+把三类信号叠加，拥挤度从高到低可排序为胜宏 $>$ 沪电 $>$ 生益 $\approx$ 深南 $>$ 华正。胜宏在三类信号上同时最拥挤：重仓回落最深、户数扩散、融资占比最高，因此对订单/毛利率不及预期最敏感；沪电杠杆和估值拥挤较高，但北向季度（图表9-11）Q1仍在增持，筹码结构相对胜宏更稳；生益材料主线重仓回落明显、估值分位最高之一，但融资占比仅1.06\%；深南融资占比最低（0.66\%）且近期净流出，拥挤度偏温和；华正可见基金覆盖极低（图表9-3仅1.29亿），拥挤度更多体现在小市值估值而非筹码结构。这一排序是下行风险折扣和触发器权重的主要依据，而非买卖信号本身。
 
 \begin{dashboardbox}[图表9-34b: What valuation already prices (as of 2026-06-17 Tencent snapshot)]
 \small
@@ -707,13 +681,13 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 
 \section{扩充覆盖标的的二级市场画像}
 
-第一批与第二批共12个扩充调研标的（东山精密、工业富联、宏和科技、东材科技、芯碁微装、景旺电子、中际旭创、中材科技、铜冠铜箔、容大感光、金安国纪、建滔积层板）目前**仅有证据卡（evidence card）级别的产业定位与财务画像**，尚无与核心12标的同等口径的北向季度持股、基金重仓、融资盘、龙虎榜、大宗交易等持仓/资金流/拥挤度数据。本节给出这12个标的的二级市场画像与证据边界，明确哪些字段已公开、哪些仍需终端访问，避免与核心标的的拥挤度排序混用。\textbf{口径说明：}ch06公司证据卡章节的"14个扩充标的"包含此处12个调研标的\textbf{加}两个"更深上游"补强标的（中国巨石600176玻纤、宏昌电子603002环氧树脂），合计14个；本节先处理原始12个调研标的的二级市场画像，巨石/宏昌作为第三批扩充在图表9-38中合并补抓持仓/资金流代理（共13只A股五维代理，详见代理覆盖升级说明）。
+第一批与第二批共12个扩充调研标的（东山精密、工业富联、宏和科技、东材科技、芯碁微装、景旺电子、中际旭创、中材科技、铜冠铜箔、容大感光、金安国纪、建滔积层板）目前**仅有证据卡（evidence card）级别的产业定位与财务画像**，尚无与核心12标的同等口径的北向季度持股、基金重仓、融资盘、龙虎榜、大宗交易等持仓/资金流/拥挤度数据。本节给出这12个标的的二级市场画像与证据边界，明确哪些字段已公开、哪些仍需终端访问，避免与核心标的的拥挤度排序混用。\textbf{口径说明：}ch06公司证据卡章节的"14个扩充标的"包含此处12个调研标的\textbf{加}两个"更深上游"补强标的（中国巨石600176玻纤、宏昌电子603002环氧树脂），合计14个；本节先处理原始12个调研标的的二级市场画像，巨石/宏昌作为第三批扩充在图表9-37中合并补抓持仓/资金流代理（共13只A股五维代理，详见代理覆盖升级说明）。
 
 \begin{sourcequalitybox}[Expanded-coverage data boundary]
 扩充覆盖标的的持仓/资金流/拥挤度证据**未覆盖**。其证据卡仅包含：CLI quote 快照（价格、涨跌、成交额，均为公开延迟/盘后代理）、CLI financials（AkShare 结构化财报摘要，最新期 2026-03-31）、CLI news 60 日事件流、公开年报/研报转载。下列字段在本批次中**不可用**，与核心12标的"需求指标股"工业富联、中际旭创的处理范式一致：基金重仓季度市值与家数（CNInfo/Sina）、股东户数季度桥、可见基金风格（active-like/passive/index）、融资融券明细（SSE/SZSE official + Eastmoney 300 行）、大宗交易笔数/折价、龙虎榜净买卖、限售解禁、股东增减持代理、东方财富 30 日资金流代理、HKEX 北向季度持股、Tencent 五档 Level-1。完整终端级持仓穿透（beneficial-owner、日度北向、机构主动/被动分类）与逐笔订单流同样缺失。因此本批扩充标的**不纳入本章拥挤度排序（胜宏$>$沪电$>$生益$\approx$深南$>$华正），仅作画像与证据边界披露**；待终端补抓后按与本章一致的口径回填。
 \end{sourcequalitybox}
 
-\begin{exhibitbox}[图表9-36: Expanded-coverage secondary-market profile]
+\begin{exhibitbox}[图表9-35: Expanded-coverage secondary-market profile]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.5cm}L{1.7cm}R{1.3cm}R{1.8cm}R{1.8cm}X}
 \toprule
@@ -733,10 +707,10 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 01888.HK & 建滔积层板 & 港股 & n/a & 半年市值暴涨约2200亿港元（推算） & 港股全球CCL龙头，A股CCL（生益/华正/南亚）的A/H锚；CLI不支持港股financials，财务数据为公开转载（E2/E3）；\textbf{非A股持仓}，仅作全球CCL量价风向标 + 估值信号灯 + watchlist参照，与胜宏H股桥同范式。 \\
 \bottomrule
 \end{tabularx}
-\sourcenote{Quote via \texttt{astock.cli quote} snapshot 2026-06-20 (all full\_realtime, A-share codes only); CLI did not return structured \texttt{pe\_ttm}/\texttt{total\_market\_value} for this batch (all 0.0), so PE TTM and 总市值 are evidence-card-derived (推算) values from each card, not exchange-direct fields. \textbf{列标\textsuperscript{†}说明：PE TTM与总市值两列均为evidence-card推算值（非交易所直发），单元格内"(推算)"标注与列头\textsuperscript{†}同义；"未结构化返回"表示CLI该字段返回0.0且证据卡无可推算净利/股本口径。} 港股01888.HK financials unsupported by CLI; data from public annual report / broker repost only. Holdings / fund-flow / crowding proxy rows for the 13 A-share expanded names are added in 图表9-38（2026-06-20补抓，与核心12标的同源公开代理）；北向个股当前持仓仍受页面壳冻结gating，01888.HK为港股不适用A股端点。}
+\sourcenote{Quote via \texttt{astock.cli quote} snapshot 2026-06-20 (all full\_realtime, A-share codes only); CLI did not return structured \texttt{pe\_ttm}/\texttt{total\_market\_value} for this batch (all 0.0), so PE TTM and 总市值 are evidence-card-derived (推算) values from each card, not exchange-direct fields. \textbf{列标\textsuperscript{†}说明：PE TTM与总市值两列均为evidence-card推算值（非交易所直发），单元格内"(推算)"标注与列头\textsuperscript{†}同义；"未结构化返回"表示CLI该字段返回0.0且证据卡无可推算净利/股本口径。} 港股01888.HK financials unsupported by CLI; data from public annual report / broker repost only. Holdings / fund-flow / crowding proxy rows for the 13 A-share expanded names are added in 图表9-37（2026-06-20补抓，与核心12标的同源公开代理）；北向个股当前持仓仍受页面壳冻结gating，01888.HK为港股不适用A股端点。}
 \end{exhibitbox}
 
-\begin{exhibitbox}[图表9-37: Expanded-coverage role and crowding-status summary]
+\begin{exhibitbox}[图表9-36: Expanded-coverage role and crowding-status summary]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.7cm}L{2.6cm}L{2.2cm}X}
 \toprule
@@ -756,12 +730,10 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 01888.HK 建滔积层板 & 港股锚/参照系（非A股持仓） & excluded & \textbf{否}（港股，非A股持仓，仅作A/H锚与全球CCL风向标） \\
 \bottomrule
 \end{tabularx}
-\sourcenote{Role classification per evidence cards. Holdings/fund-flow proxy coverage for the 13 A-share expanded names was subsequently added in 图表9-38（与核心12标的同口径的公开代理）；北向个股当前持仓仍受页面壳冻结gating，详见9-38。01888.HK为港股锚，A股端点不适用。}
+\sourcenote{Role classification per evidence cards. Holdings/fund-flow proxy coverage for the 13 A-share expanded names was subsequently added in 图表9-37（与核心12标的同口径的公开代理）；北向个股当前持仓仍受页面壳冻结gating，详见图表9-37。01888.HK为港股锚，A股端点不适用。}
 \end{exhibitbox}
 
-图表9-36和9-37汇总了扩充标的的角色分类与证据边界，明确了哪些标的不纳入拥挤度排序。在此基础上，本章于2026年6月20日对13只A股扩充标的补抓了与核心12标的同口径的五个公开代理维度，结果见图表9-38。这组补抓数据使扩充标的首次具备可横向比较的持仓/资金流/杠杆信号，但置信度仍低于核心标的。
-
-\begin{exhibitbox}[图表9-38: New-name holdings / fund-flow proxy matrix]
+\begin{exhibitbox}[图表9-37: New-name holdings / fund-flow proxy matrix]
 \footnotesize
 \begin{tabularx}{\textwidth}{L{1.4cm}L{1.5cm}X X X X X}
 \toprule
@@ -786,15 +758,15 @@ Stock Connect history & Eastmoney/AkShare单股历史总持股可覆盖9/11，�
 \sourcenote{Public proxy fetch 2026-06-20（与核心12标的同源端点）：资金流=东方财富\texttt{fflow/daykline}（lmt=30）；北向=\texttt{stock\_hsgt\_individual\_em}（个股系列，页面壳统一冻结于2024-08-16，同核心标的边界，非当前持仓）；基金持仓=\texttt{stock\_fund\_stock\_holder}（个股公开持有人行，最新披露多为2026-03-31，300576/002636为2025-12-31）；融资融券=\texttt{RPTA\_WEB\_RZRQ\_GGMX}（603256/603002返回空数据，非两融标的）；龙虎榜=\texttt{stock\_lhb\_detail\_em}（2026-03-22至2026-06-20窗口）。Raw JSON归档于\texttt{data/raw\_eastmoney\_*\_newnames/}；汇总见\texttt{data/new\_names\_holdings\_proxy\_20260620.md}。均为公开代理，不等于终端级订单流/北向穿透/完整机构仓位；北向个股为历史基线而非当前持仓。}
 \end{exhibitbox}
 
-\textbf{代理覆盖升级说明（图表9-38）。}在初始CLI quote快照基础上，本章于2026-06-20对13只A股扩充标的补抓了与核心12标的同口径的五个公开代理维度：资金流（13/13 obtained）、基金公开持有人行（13/13 obtained）、融资融券（11/13 obtained，603256/603002非两融标的）、龙虎榜（13/13 queried，9只有上榜）、以及北向个股系列（13/13历史行obtained但**统一冻结于2024-08-16**，与核心标的的页面壳冻结边界一致，非当前持仓）。01888.HK为港股锚，五个A股端点均不适用。这组代理使扩充标的首次具备与核心标的可横比的"持仓/资金流/杠杆"信号，但仍有三点边界须明示：第一，北向个股当前持仓**仍受gating**（页面壳冻结），无法与核心标的的港交所官方季度持股（图表9-11）同口径比较；第二，基金持仓为公开持有人行而非CNInfo重仓排名，未做主动/被动分类，不能等同于核心标的的图表9-3/9-4重仓代理；第三，融资为单日余额而非核心标的的300行长窗口拥挤度桥（图表9-21）。因此扩充标的可纳入"方向性拥挤度观察"，但在北向/重仓分类/长窗口杠杆三项补齐前，不赋予与核心标的等同的弹性权重，也不得在投资建议中作为同等置信度的排序输入。
+\textbf{代理覆盖升级说明（图表9-37）。}在初始CLI quote快照基础上，本章于2026-06-20对13只A股扩充标的补抓了与核心12标的同口径的五个公开代理维度：资金流（13/13 obtained）、基金公开持有人行（13/13 obtained）、融资融券（11/13 obtained，603256/603002非两融标的）、龙虎榜（13/13 queried，9只有上榜）、以及北向个股系列（13/13历史行obtained但**统一冻结于2024-08-16**，与核心标的的页面壳冻结边界一致，非当前持仓）。01888.HK为港股锚，五个A股端点均不适用。这组代理使扩充标的首次具备与核心标的可横比的"持仓/资金流/杠杆"信号，但仍有三点边界须明示：第一，北向个股当前持仓**仍受gating**（页面壳冻结），无法与核心标的的港交所官方季度持股（图表9-11）同口径比较；第二，基金持仓为公开持有人行而非CNInfo重仓排名，未做主动/被动分类，不能等同于核心标的的图表9-3/9-4重仓代理；第三，融资为单日余额而非核心标的的300行长窗口拥挤度桥（图表9-21）。因此扩充标的可纳入"方向性拥挤度观察"，但在北向/重仓分类/长窗口杠杆三项补齐前，不赋予与核心标的等同的弹性权重，也不得在投资建议中作为同等置信度的排序输入。
 
-两个需求指标股（工业富联601138、中际旭创300308）在画像表中仅作价格/估值与业绩锚披露，明确标注"demand indicator, excluded from holdings/crowding analysis"，不参与本章拥挤度排序，也不进入ch08目标价表；这一处理范式与证据卡中"需求侧拉货锚标，非PCB制造标的"的定位一致。其余9个可投资A股标的（含688630 Core Candidate）与1个港股锚（01888.HK）的持仓/资金流公开代理已在图表9-38补抓到位（13只A股五维代理，北向个股因页面壳冻结仍gated），但北向当前持仓、CNInfo重仓排名口径与300行融资长窗口桥仍需终端/官方源补齐后方可与核心12标的完全同等口径回填至图表9-2至9-34系列；在三项补齐前，扩充标的可作为方向性拥挤度观察纳入，但不得与核心标的直接横比排序、也不得在投资建议中赋予等权弹性。
+两个需求指标股（工业富联601138、中际旭创300308）在画像表中仅作价格/估值与业绩锚披露，明确标注"demand indicator, excluded from holdings/crowding analysis"，不参与本章拥挤度排序，也不进入ch08目标价表；这一处理范式与证据卡中"需求侧拉货锚标，非PCB制造标的"的定位一致。其余9个可投资A股标的（含688630 Core Candidate）与1个港股锚（01888.HK）的持仓/资金流公开代理已在图表9-37补抓到位（13只A股五维代理，北向个股因页面壳冻结仍gated），但北向当前持仓、CNInfo重仓排名口径与300行融资长窗口桥仍需终端/官方源补齐后方可与核心12标的完全同等口径回填至图表9-2至9-34系列；在三项补齐前，扩充标的可作为方向性拥挤度观察纳入，但不得与核心标的直接横比排序、也不得在投资建议中赋予等权弹性。
 
 \section{催化剂日历}
 
 拥挤度高意味着对催化方向高度不对称：在当前估值分位（多家标的处于一年PE/PB 95--100\%分位）和筹码结构（胜宏、沪电融资盘拥挤，重仓回落但户数扩散）下，下一个催化如果超预期，估值扩张空间已被前期涨幅和卖方目标价透支，边际买盘有限；而一旦中报收入/毛利或Rubin规格细节低于市场已经定价的乐观假设，回撤会被融资盘和分散筹码放大。因此下一阶段的核心不是“是否继续上涨”，而是“哪些催化可以证伪当前定价、并在什么价位重新建立拥挤度更低的仓位”。
 
-\begin{exhibitbox}[图表9-39: Secondary-market catalyst checklist]
+\begin{exhibitbox}[图表9-38: Secondary-market catalyst checklist]
 \small
 \begin{tabularx}{\textwidth}{L{3.2cm}X X}
 \toprule
