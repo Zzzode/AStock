@@ -1,9 +1,9 @@
 {
   "schema_v": "2.1",
-  "polling_round": "R217",
+  "polling_round": "R218",
   "decision": "publish",
   "gate": "RUN_VERIFIER",
-  "decision_timestamp": "2026-06-24T13:47:34",
+  "decision_timestamp": "2026-06-24T13:53:23",
   "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
   "report_date": "20260624",
   "data_cutoff": "2026-06-23",
@@ -38,51 +38,45 @@
   "pending_top_6_s_issues": [
     {
       "rc_id": "RC1",
-      "title": "三因子权重不一致（表 8-3 三因子加总≠各行溢价，北华105=38+35+32=105 OK，其余需要逐行验算）",
+      "title": "三因子权重不一致（表8-3逐行验算）",
       "file": "sections/ch08_valuation.tex:153",
       "severity": "S",
-      "root_cause": "reviewer 指出算术校验缺失",
-      "verifier_gated": false
+      "root_cause": "reviewer算术校验缺失"
     },
     {
       "rc_id": "RC2",
-      "title": "江波龙 EPS 区间端点是否对应分位数 Q25/Q75（爱建199.7/国信111/中邮70/AStock 100 → 分位数计算）",
+      "title": "江波龙EPS Q25/Q75端点映射",
       "file": "sections/ch08_valuation.tex:139",
       "severity": "S",
-      "root_cause": "分位数映射未在 LaTeX 显式写出",
-      "verifier_gated": false
+      "root_cause": "分位数未显式写出"
     },
     {
       "rc_id": "RC3",
-      "title": "最大回撤 -25% 是否来自 2018/2022 两轮回撤统计（ch10 风险章节自证伪测试）",
+      "title": "最大回撤-25%是否历史两轮回撤统计",
       "file": "sections/ch10_risk_stress.tex:47",
       "severity": "S",
-      "root_cause": "拍脑袋风险；需历史数据",
-      "verifier_gated": false
+      "root_cause": "拍脑袋风险"
     },
     {
       "rc_id": "RC4",
-      "title": "跨表 PE 偏差（澜起 ch08 表 8-2 42x vs 表 8-1 42x OK；但 ch08 与 ch07 目标价是否逐行一致）",
-      "file": "sections/ch08_valuation.tex:132-140",
+      "title": "跨表PE偏差(ch07/ch08目标价逐行一致)",
+      "file": "sections/ch08_valuation.tex:132",
       "severity": "A",
-      "root_cause": "reviewer 提示",
-      "verifier_gated": false
+      "root_cause": "reviewer提示"
     },
     {
       "rc_id": "RC5",
-      "title": "附录 D 合规：遗漏香港《操守准则》第 16 条发布人身份声明",
+      "title": "附录D遗漏《操守准则》第16条",
       "file": "sections/app_sources_audit.tex",
       "severity": "A",
-      "root_cause": "合规 reviewer",
-      "verifier_gated": false
+      "root_cause": "合规reviewer"
     },
     {
       "rc_id": "RC6",
-      "title": "乐观锚未定锚 L1（所有乐观情景的锚是否均有 L1 支持；空头 reviewer 指出 DDR5 涨价 8-10 季是否 L1/L2 支持不足）",
+      "title": "乐观锚未定锚L1（DDR5涨价8-10季证据）",
       "file": "sections/ch05_supply_price_cycle.tex",
       "severity": "A",
-      "root_cause": "逆向 reviewer",
-      "verifier_gated": false
+      "root_cause": "逆向reviewer"
     }
   ],
   "verifier_summary": {
