@@ -1,4 +1,4 @@
-# Completion Audit Manifest · R230 · stage=initial · 20260624（第25轮治理）
+# Completion Audit Manifest · R231 · stage=initial · 20260624（第26轮治理）
 
 - **Decision**: publish（gate=PASS · 等待 Verifier V1/V2 双稳态）
 - **治理不变量**: SR=54 · Claims=61 · Grade A=9/B=44/C=7/D=1 · BLOCK=15 · Grade A=9 精确集合字面永久锁
