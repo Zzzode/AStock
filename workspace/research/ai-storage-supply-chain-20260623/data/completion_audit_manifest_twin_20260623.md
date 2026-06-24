@@ -1,4 +1,4 @@
-# Completion Audit Manifest Twin（R246 · 2 files）
+# Completion Audit Manifest Twin（R247 · 2 files）
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|
