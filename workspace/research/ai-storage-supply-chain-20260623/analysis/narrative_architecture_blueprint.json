@@ -1,0 +1,587 @@
+{
+  "three_pillars": {
+    "pillar_1": "支柱一 · 需求侧三重共振：HBM扩容（TAM 380-420亿美元2026E，CAGR 68%）+ DDR5渗透（服务器端渗透率80-85%，单机容量1.5-2TB）+ CXL商业化（2026H2元年，澜起CXL 3.0首发量产）",
+    "pillar_2": "支柱二 · 供给侧纪律与国产化加速：原厂capex纪律（标准品bit growth≤20%，HBM占capex增量70%） + 2026Q3 DRAM供需缺口-6~-10% + BIS管制催化设备国产化率从10%→25%",
+    "pillar_3": "支柱三 · 估值与赔率非对称：A股存储链加权PE 40x（近3年40-60%分位）+ 2026E净利加权增速42%→PEG≈0.95 + 上/下行概率80%/20%→赔率≈3.25:1；深度悲观D仅5%",
+    "evidence_map": {
+      "pillar_1": [
+        {
+          "ev": "HBM 2026E TAM 380-420亿 / CAGR 68%",
+          "from": [
+            "表4-1 TrendForce [S-18]",
+            "SK Hynix CC [S-11] 交叉"
+          ]
+        },
+        {
+          "ev": "DDR5服务器2026E渗透率80-85% / 单机1.5-2TB",
+          "from": [
+            "TrendForce [S-04]"
+          ]
+        },
+        {
+          "ev": "CXL 2026H2元年 / 澜起CXL 3.0首发量产",
+          "from": [
+            "澜起IR [S-08] + CXL Consortium"
+          ]
+        }
+      ],
+      "pillar_2": [
+        {
+          "ev": "三大原厂2026E capex >亿 / HBM占比约30%",
+          "from": [
+            "原厂Q4CC [S-01/S-02/S-11]，表5-1四维总表"
+          ]
+        },
+        {
+          "ev": "标准DRAM bit growth ≤20% / Q3缺口-6~-10%",
+          "from": [
+            "AStock bottom-up模型 §5.2表5-2"
+          ]
+        },
+        {
+          "ev": "设备国产化率10%→25% / BIS管制概率45-55%",
+          "from": [
+            "中国招标网[S-10] / Reuters [S-15]"
+          ]
+        }
+      ],
+      "pillar_3": [
+        {
+          "ev": "A股加权PE 40x / 近3年40-60%分位",
+          "from": [
+            "Wind一致预期 [S-17]，表8-1国际可比"
+          ]
+        },
+        {
+          "ev": "净利加权增速42% / PEG≈0.95",
+          "from": [
+            "表8-2三表预测合计加权"
+          ]
+        },
+        {
+          "ev": "情景概率A15/B65/C15/D5恒等100 / 赔率3.25:1",
+          "from": [
+            "表10-1压力测试 + 分析师主观概率赋值†"
+          ]
+        }
+      ]
+    },
+    "alignment_schedule": [
+      {
+        "chapter": "ch01 §1 投资结论",
+        "action": "ch01 首段第一句直接列3支柱标签 + 括号中文全称；ch01 §2 四主线框架图四个色块 = 支柱1三分项 + 支柱2",
+        "deps": [
+          "glossary_patch"
+        ]
+      },
+      {
+        "chapter": "ch02 §1 House View 四论点",
+        "action": "论点1-4首句前缀：「支柱1HBM → 论点1」/「支柱2 DDR5+ → 论点3」/「支柱1 CXL → 论点4」/「支柱2+3 设备估值 → 论点2」，一字不差重复主线标签",
+        "deps": [
+          "FID-04"
+        ]
+      },
+      {
+        "chapter": "ch04/05 需求+供给章节",
+        "action": "ch04 §1(HBM) §2(DDR5) §3(SSD) §4(CXL) 四个二级节首段各加一句：「本章节对应支柱一需求侧三重共振之HBM/DDR5/CXL分项」",
+        "deps": [
+          "FID-03 IQ设问"
+        ]
+      },
+      {
+        "chapter": "ch08 估值",
+        "action": "§1 开场第一句加：「本章构建支柱三估值非对称论证：PE40x+增速42%→PEG0.95+赔率3.25:1」；表8-3三因子分解列标签修正「管制补偿/稀缺性+流动性复合」",
+        "deps": [
+          "F-011因子标签"
+        ]
+      },
+      {
+        "chapter": "ch11 §3 最终投资建议",
+        "action": "L117-121 结论段按3支柱三段式复述：(1)需求HBM+DDR5+CXL；(2)供给纪律+国产替代；(3)估值+赔率；每段首句前缀「支柱一/二/三」",
+        "deps": [
+          "F1权重回填"
+        ]
+      }
+    ]
+  },
+  "per_chapter_blueprint": [
+    {
+      "no": "01",
+      "title": "投资委员会概要（Goldman Sachs IC Memo 模板）",
+      "hook_iq": "AI 存储链双击行情是否于 2026Q3 真的到来？——本报告核心判断：2026H2-2027 年 A 股存储链将迎来「量价齐升+格局重塑」双击，建议 2026Q3-Q4 为核心加仓窗口，核心组合 6-12 月目标回报 +25~+40%（基准情景 B，概率 65%）。",
+      "open_with": "(1) IQ 设问句破题 → (2) 5-Way IC Dashboard 半页框（What/How Much/When/Why/Odds 6 行）→ (3) 表1-1 组合总览（ch11 v2.0 三层60/30/10 + 15只标的回填盛美/安集/芯原，权重纪律校验）→ (4) 表1-1后投资含义段 → (5) 表1-2 KPI仪表盘 → (6) 表1-2后独立投资含义段（≥3条聚合信号）→ (7) §2 四主线共振框架+tikz → (8) §3 资金传导逻辑 → (9) §4 上下行触发条件 + 三批建仓时间轴。",
+      "first_table_lead_in": "下表以 ch11 §2 最新 60/30/10 三层哑铃结构为唯一主数据，逐只标的、逐权重与 ch11 表11-1 三向联动；核心底仓 7 只 / 卫星 6 只 / 主题 2 只，合计 15 只、合计 100%，权重纪律校验（同一赛道次级标的 ≤ 龙头×60%）全通过。",
+      "post_table_implication": "投资含义：上述10项KPI聚合信号——(1) capex 1200亿+ HBM 30%占比 + DRAM缺口-6~-10% 同时成立，构成量价齐升充要条件（历史上仅2017年触发）；(2) PE40x处于近3年40-60%分位叠加增速42%，是周期股未充分定价的黄金PEG组合；(3) BIS管制45-55%概率与国产HBM≥2028时点组合，意味着2026-2027国产替代加速窗口期，提前布局设备/材料层确定性最高。",
+      "term_defs_needed": [
+        "HBM（首次）",
+        "DDR5（首次）",
+        "CXL（首次）",
+        "PEG（首次）",
+        "TAM（首次）",
+        "CAGR（首次）",
+        "BIS（首次）"
+      ],
+      "issues_fixed_here": [
+        "F1 权重半套修复（ch01表1-1回填60/30/10）",
+        "F7 上行区间改中值",
+        "FID-03 IQ设问",
+        "FID-05 KPI后投资含义",
+        "FID-07 首现英文中译",
+        "F-07 三章权重联动"
+      ]
+    },
+    {
+      "no": "02",
+      "title": "AStock House View：黄金拐点的四主线策略",
+      "hook_iq": "市场共识与 AStock 独立观点究竟差在哪里？为什么我们认为当前是 A 股存储链过去 15 年以来最确定的结构性建仓窗口？",
+      "open_with": "(1) IQ设问 → (2) 开篇叙事段（本轮vs历史三轮周期的3个结构性差异）→ (3) House View Box 四论点（论点首句前缀「主线①/②/③/④ →」与ch01一字不差对齐）→ (4) 图2-1四论点tikz结构 → (5) House View Box后聚合投资含义总结段（缺失，需补：将4论点浓缩为2段可执行操作建议）→ (6) §2 共识vs独立观点 表2-1 → (7) 表2-1后投资含义段 → (8) §3 核心声明可信度分级 表2-2 → (9) 表2-2后投资含义（拆为置信度-仓位映射 + 三批建仓 + 季度再评估三段独立）。",
+      "first_table_lead_in": "下表逐项对比卖方一致预期（14份近90天券商PDF原件）与 AStock 独立观点，6项议题中3项分歧显著。读者应以 AStock 观点的证据等级（SC-1至SC-10）作为分歧判断的独立依据。",
+      "post_table_implication": "投资含义：6项分歧中，AStock 乐观于市场的3项（设备弹性/价格幅度/CXL节奏）对应合计 70% 仓位；审慎于市场的2项（国产HBM节奏/长电通富HBM封装）对应合计规避仓位；溢价合理性的中性判断对应卫星层 15% 仓位控制。投资者应沿分歧方向倾斜：超配设备三强+澜起（3个乐观分歧），低配纯国产HBM概念，对长电/通富附加2027H2前的触发式建仓条件。",
+      "term_defs_needed": [
+        "capex（首次）",
+        "bit growth（首次）"
+      ],
+      "issues_fixed_here": [
+        "F2-S3 SC-6拆分SC-6a/SC-6b",
+        "F4-S3P CXL20亿偏离67%标记",
+        "F8-B1 DRAM缺口基准-6~-8%乐观-8~-10%",
+        "FID-04 3x3锚点对齐",
+        "FID-11 House View后投资含义"
+      ]
+    },
+    {
+      "no": "03",
+      "title": "全球存储产业链图谱",
+      "hook_iq": "全球存储产业链的价值池如何分布？A 股映射究竟卡在哪七层架构的哪几层，决定了本轮行情的「二阶Beta」和「一阶Alpha」？",
+      "open_with": "(1) IQ设问 → (2) 七层架构定义段（设备材料/设计/制造/封装/模组/整机/应用）→ (3) 图3-1 tikz全景图谱 → (4) 图后投资含义段（2段：价值池3层分布 + A股映射3层卡位）→ (5) §2 环节价值/毛利/对标 表3-1（需加英文标题）→ (6) 表后投资含义段。",
+      "first_table_lead_in": "下表将产业链七层的技术门槛、毛利率区间、竞争结构与 A 股可映射龙头对照列出，用于后续仓位分配的基本面依据。",
+      "post_table_implication": "投资含义：七层价值链中，设备/材料层毛利率最高（北华40%/拓荆45%）+ 国产替代空间最大（国产化率<25%），对应核心底仓；接口芯片层澜起的全球垄断地位（RCD 70%+）是唯一一阶Alpha；封测/模组层毛利率中低（长电/通富14-16%）但弹性足，对应卫星层。",
+      "term_defs_needed": [
+        "TSV（首次）",
+        "CoWoS（首次）"
+      ],
+      "issues_fixed_here": [
+        "FID-03 IQ",
+        "FID-10 exhibitbox英文标题",
+        "FID-12 避免定义式开场（改用设问）"
+      ]
+    },
+    {
+      "no": "04",
+      "title": "AI 对存储需求的拉动拆解",
+      "hook_iq": "为什么 AI 训练/推理集群对存储的需求不是「线性增长」而是「代际跳变」？HBM/DDR5/CXL 三重拉动各自的量级、节奏和 A 股映射弹性分别是多少？",
+      "open_with": "(1) IQ设问 → (2) HBM节首：改hook（B100 vs H100单机HBM量192GB vs 80GB=翻倍→质变而非迭代）→ (3) 图4-1 HBM代际路线 → 图后投资含义 → (4) §1.2 HBM TAM表4-1 前引导段 → 表后投资含义 → (5) DDR5节（§2）首段hook差异化（写服务器单机1.5→2TB，而非与HBM结构雷同）→ (6) SSD节（§3）首段hook差异化（AI推理冷数据层翻倍）→ (7) CXL拓扑图（§4）前后两段彻底拆分（图前写CXL是什么+为什么需要；图后写各标的收入敞口量化+2027E 20亿红色†标记），删除60%重复句。",
+      "first_table_lead_in": "下表基于 HBM单机出货量 × ASP（按HBM3E/HBM4分代）bottom-up 估算，2026E 380-420亿经 SK Hynix 管理层指引（50%份额对应180亿）反向校验一致；2027E 580-680亿区间为 C 级弱证据分析师推断，治理规则 BLOCK B2 强制采用 ±25% 宽区间，实际区间已扩充为【510亿，750亿】（半宽 ±25.2%）。",
+      "post_table_implication": "投资含义：HBM TAM三年CAGR 68% 是半导体最陡增长曲线之一，但A股无原厂，直接受益仅三条路径（设备/接口/封装远期）；DDR5单机1.5-2TB是更宽基本盘，对应澜起/江波龙/深科技；CXL是预期差所在，当前市场定价仅反映远期题材价值，澜起2027E 20亿收入假设相对卖方一致隐含（3-5亿）偏离+67%，红色†标记为 AStock 自模型预测。",
+      "term_defs_needed": [
+        "ALD（首次）",
+        "CVD（首次）",
+        "ASP（首次）"
+      ],
+      "issues_fixed_here": [
+        "S-002 HBM TAM 2027E区间修正半宽≥±25%",
+        "F4-S3P 澜起CXL 2027 20亿红色†标记+偏离67%脚注",
+        "FID-03 IQ设问",
+        "FID-09 三二级节公式化改写（hook差异化）",
+        "FID-13 CXL段60%重复删除拆分"
+      ]
+    },
+    {
+      "no": "05",
+      "title": "供需-价格周期与原厂资本开支",
+      "hook_iq": "原厂 Capex 创新高会否重蹈 2018 年供过于求的覆辙？为什么本轮 capex 扩张反而对应标准 DRAM 缺口 -6~-10%？",
+      "open_with": "(1) IQ设问 → (2) Capex 节首段保留结构差异论述 → (3) 图5-1（删除第二个物理重复，释放93行→表字比从1:17→1:9达标投行1:5~1:10）→ 图后新增4-6行叙述（三大原厂Capex结构性特征：SK海力士HBM占比45%最高、三星Pyeongtaek改造激进、美光1β良率关键）→ (4) 表5-1 Capex四维总表 → 表后投资含义 → (5) 供需桥前引导扩写 → (6) 图5-2供需桥 → 投资含义 → (7) 表5-2合约价前引导扩写 → (8) 表5-2 → 结尾投资含义段重写。",
+      "first_table_lead_in": "下表汇总原厂 capex 指引、产能 wafer out、市占率与 AI 产品策略四维参数，是 DRAM 供需缺口估算（表5-2）的上游输入主数据。",
+      "post_table_implication": "投资含义：(1) 原厂 capex 增量 70% 投向 HBM/先进制程，标准品 bit growth 被刻意压在 ≤20% → 供过于求风险已被原厂纪律内部化；(2) SK海力士 HBM capex 占比 45% 对应份额 55-60% 的护城河巩固；(3) YMTC/CXMT 受 DUV 约束 capex 占比 <5% 但国产化率 10→25% 对 A 股设备边际弹性极大。",
+      "term_defs_needed": [
+        "Wafer Out（首次）"
+      ],
+      "issues_fixed_here": [
+        "FID-01 删除物理重复图5-1×2",
+        "F1-S3S DDR5涨价8-10季三条论据逐条补L1/L2定量锚定",
+        "F8-B1 DRAM缺口基准[-6,-8]% 乐观[-8,-10]%拆分",
+        "FID-06 表字比修复（1:17→1:9）"
+      ]
+    },
+    {
+      "no": "06",
+      "title": "竞争格局、替代进度与管制变量",
+      "hook_iq": "在 BIS 管制持续加码的背景下，长存/长鑫的制程推进与设备/材料国产化进度究竟走到哪一步？A 股标的的真实国产化订单能见度是多少？",
+      "open_with": "(1) IQ设问 → (2) 竞争格局段 → (3) 国产替代进度表 → 表前引导+表后投资含义 → (4) §3 BIS管制：L0级 Federal Register 正文加内联显式标注【§6.3, S-14 L0 Federal Register / 2025-10-07 §123.5(b) 最终规则条款】→ (5) BIS情景表（拆R2-a仅HBM管制概率≈45%与R2-b DUV全面断供概率≈10%）→ (6) 管制章节后投资含义段。",
+      "first_table_lead_in": "下表基于 L2 政府公开+L4 集微网交叉汇总，分制程节点/产能/HBM进展/设备国产化率四列给出国产替代进度与可信度分级。",
+      "post_table_implication": "投资含义：长存232L量产（SC-6a，A级双源长存官网+武汉政府）与290L研发中（SC-6b，C级仅L4集微网+行业推断，原A→C治理自抬升修复）必须拆分评估；ch11催化剂日历长存290L概率从绿改琥珀（≤25%）。长鑫15nm同属C级，按C级±25%宽区间取进度预期。",
+      "term_defs_needed": [
+        "BIS（中文+英文首次）",
+        "DUV（首次）",
+        "Entity List（首次）"
+      ],
+      "issues_fixed_here": [
+        "F2-S3 SC-6拆分+分级C降级",
+        "A-002 BIS章节L0级Federal Register内联显式标注",
+        "F5-GS R2拆R2-a/R2-b（仅HBM/DUV断供）概率分配对冲逻辑细化"
+      ]
+    },
+    {
+      "no": "07",
+      "title": "A 股映射标的深度分析",
+      "hook_iq": "15 只推荐标的中，哪几只真正具备 AI 敞口的业绩兑现路径？哪几只仅沾主题标签？四象限筛选的黄金象限组合是什么？",
+      "open_with": "(1) IQ设问 → (2) 全景分层段 → (3) 图7-1市值分布 → 图后投资含义 → (4) §2 四象限筛选框架（新增）→ (5) 标的分层深度（7只核心/6只卫星/2只主题，每只按「AI敞口占比+业绩兑现时间轴+对应主线标签+风险」四段式，统一模板避免ch04首段公式化）。",
+      "first_table_lead_in": "（如本节新增分层汇总表）下表按 AI 敞口占比（自上而下模型估算，非官方披露）× 当前估值分位构建四象限筛选，每只标的绑定主线标签①-④对应逻辑。",
+      "post_table_implication": "投资含义：黄金象限（高敞口+合理PE）=澜起/北华/中微/拓荆（合计48%仓位，属核心层）；预期充分象限（高敞口+高PE）=沪硅/南大；低估潜力（低敞口+低PE）=深科技/江波龙（卫星层弹性池）；规避区=所有无真实AI收入、仅挂HBM/Chiplet标签标的。",
+      "term_defs_needed": [
+        "AI敞口（首次定义：单标的AI链相关营收占总营收比例，AStock自模型估算）"
+      ],
+      "issues_fixed_here": [
+        "B-001 澜起DDR5 RCD 70%份额首次声明加内联[S-08][SC-2 A+]脚注",
+        "FID-03 IQ"
+      ]
+    },
+    {
+      "no": "08",
+      "title": "估值模型与国际可比",
+      "hook_iq": "A 股存储链 40x PE 较海外 15-25x 高 2x 溢价，究竟是高估还是合理？分标的三因子拆解后哪几只溢价可被基本面支撑、哪几只偏高？",
+      "open_with": "(1) IQ设问 → (2) 估值位置段 → (3) 图8-1四象限 → 图后 → (4) 表8-1国际可比（拓荆可比=TEL或AMAT+LRCX均值统一，与表8-3对齐）→ 表前引导 → (5) 表8-1后投资含义加可比组一致性说明 → (6) 两表间过渡段补充：表8-1 PE=Wind一致隐含交易PE，表8-2 PE=目标估值PE+EPS上修校准，两者口径差2-4x（澜起+6%/北华+5%/兆易+8%/长电+16%），上修依据见各标的EPS脚注 → (7) 表8-2（长电EPS=1.30加脚注↑假设上调来源；澜起营收单位raw_financials 6.35→63.5亿修正+L5瑕疵清单；江波龙上行区间按2026-06-23收盘价325元校准：[390,540]/325-1=[+20%,+66%]，或合理价区间修正至[423,540]对应[+30%,+66%]；sourcenote删除「合计≠各行四舍五入」改为三因子精确成立5/5行）→ (8) 表8-2后投资含义 → (9) 表8-3（第三因子列标签改「管制补偿/稀缺性+流动性复合」；澜起第三因子标签重写；拓荆可比与表8-1统一）→ 表后。",
+      "first_table_lead_in": "下表构建三组可比矩阵：海外原厂（估值折价锚）/海外设备（增速可比锚）/接口IP（澜起直接锚），A股溢价=A股标的PE/海外可比PE-1。",
+      "post_table_implication": "投资含义：A股2x溢价的60-70%由国产替代增速差+稀缺性可解释；三因子分解显示设备三强增速差贡献38-80pct（主驱动）、管制补偿35-70pct（次驱动）、流动性/稀缺性32-40pct（辅助）；长电相对ASE 110%溢价偏高，需等待毛利率连续两季>14.5%验证。",
+      "term_defs_needed": [
+        "EV/EBITDA（首次）",
+        "PEG（ch01已定义，此处可复述）",
+        "Q25/Q75（首次定义）",
+        "S-ID（首次定义）"
+      ],
+      "issues_fixed_here": [
+        "F-001 表8-3 sourcenote四舍五入矛盾删除",
+        "F-002/F-003 跨表PE/EV口径差说明",
+        "F-004 江波龙4来源S-ID完整注册",
+        "F-005 江波龙加权一致披露",
+        "F-006 长电EPS上调脚注",
+        "F-007/F-010 拓荆可比组统一",
+        "F-008 江波龙EPS中值修正24.40",
+        "F-009 澜起营收raw_financials单位错误+L5瑕疵清单",
+        "F-011 第三因子标签「稀缺性+流动性复合」修正",
+        "F2 江波龙上行区间自洽",
+        "FID-08 删除BLOCK等治理元语言",
+        "F7-GS ch01上行空间改区间中值系统性修正"
+      ]
+    },
+    {
+      "no": "09",
+      "title": "卖方共识与 AStock 分歧",
+      "hook_iq": "近 90 天 14 份券商 PDF 中，全行业看多但为何 AStock 的组合结构、目标价和节奏判断与卖方显著不同？分歧的证据基础是什么？",
+      "open_with": "(1) IQ设问 → (2) 共识分布段 → (3) 表9-1共识矩阵 → 表前引导 → 表后投资含义段（AStock与14份券商3维度核心差异列表）→ (4) §2 目标价历史时序（如本报告存在）→ (5) §3 共识缺失领域（深科技/通富/中微覆盖不足）与 AStock 补充。",
+      "first_table_lead_in": "下表精简列出 14 份近 90 天券商对核心 5 只标的的评级/26E EPS/PE/核心逻辑，完整矩阵见附录。",
+      "post_table_implication": "投资含义：(1) 卖方对澜起/北华一致看多但目标价区间普遍低于本报告 10-15%（反映卖方对CXL/设备国产化弹性更保守）；(2) 深科技/通富/中微 3 只近 90 天无独立卖方 PDF，本报告估值为 AStock 自模型，读者需附加 20% 估值不确定性折扣；(3) 卖方一致未涉及「三因子联合概率<5%」风控指标，本报告独有。",
+      "term_defs_needed": [],
+      "issues_fixed_here": [
+        "FID-03 IQ",
+        "A-005 ch03引用中金深度补S-ID、ch04 ASP引用漏S-12双源"
+      ]
+    },
+    {
+      "no": "10",
+      "title": "风险矩阵与压力测试",
+      "hook_iq": "在 BIS 管制升级、AI capex 下修、HBM 供过于求三重尾部风险叠加下，组合最坏情景的回撤幅度与概率是多少？风控阈值与对冲策略如何？",
+      "open_with": "(1) IQ设问 → (2) 风险矩阵三维度段 → (3) 图10-1热力图 → 图后 → (4) §2 压力测试（显式声明相关性假设：独立假设下P(D)=0.30×0.50×0.20=3.0%~3.38%<5%；ρ=0.3相关性假设下Gaussian Copula≈7.2%≥5%，必须双轨披露）→ (5) 表10-1（概率列列头加红色†脚注）→ (6) 表后投资含义（删除「深度悲观仅5%」弱化措辞，诚实表述C+D共20%，D下沿可达-40%）→ (7) §3 KRI指标体系 → (8) 新增表：历史回撤核对表（2018/2022同构组合回测实际-45%/-38%，现代系数0.75-0.85→-34~-38%，-25%属乐观对冲）。",
+      "first_table_lead_in": "下表构建四情景压力测试（A乐观/B基准/C温和悲观/D深度悲观），每情景触发条件+EPS影响+估值调整+操作建议联合给出；概率列为分析师主观赋值列，见脚注†对相关性假设的双情形说明。",
+      "post_table_implication": "投资含义：四情景非对称结构成立，但情景D的尾部概率因BIS/AI下修正相关性可能从5%升至7.2%（突破5%硬约束），机构投资者应将情景C（-10~-15%）作风控基准而非乐观假设。最大回撤「基准对冲条件下约-25%、深度悲观下沿可达-40%」，不得省略后半句表述。",
+      "term_defs_needed": [
+        "VaR（首次）",
+        "Copula（首次）",
+        "KRI（首次）"
+      ],
+      "issues_fixed_here": [
+        "F4-S3 三因子联合概率显式声明独立+ρ=0.3相关性两假设",
+        "F3 最大回撤表述修正（基准约-25%、D下沿可达-40%）",
+        "F-02 2018/2022逐轮回撤统计+新增表A-3",
+        "F-01 四/三档情景并存，补充中性过渡情景权重分配说明",
+        "F-03 BIS HBM单独管制做EL=概率×冲击期望损失量化",
+        "F10 情景概率列加来源+非经验证脚注†",
+        "F9-GS 删除「1.1x拍脑袋系数」改为显式同构回测计算"
+      ]
+    },
+    {
+      "no": "11",
+      "title": "投资建议与组合构建",
+      "hook_iq": "基于上述 10 章的需求/供给/估值/风控四维论证，最终组合应如何分配仓位、何时建仓、持有逻辑是什么？买入/加仓/减仓/清仓的精确触发条件是什么？",
+      "open_with": "(1) IQ设问 → (2) §1 配置时点判断 → (3) 图11-1催化剂日历 → 图后 → (4) §2 组合构建（60/30/10三层，ch01必须以此为唯一主数据源；新增CR3/HHI/流动性覆盖率3指标+15只全量化校验表；15只标的流动性覆盖率全部>10x阈值）→ (5) 表11-1触发条件（16格中9格半定性绑定KRI数值阈值：先进封装>5亿不可观测替换为3代理变量：(a)长电先进封装分部营收同比+25%；(b)长电Q1整体营收91.71亿×AI封装占比≥4%=3.67亿；(c)通富AMD订单QoQ>20%）→ (6) 表后投资含义段 → (7) §3 最终投资建议（按3支柱三段式复述+目标回报首现处加‡脚注声明主观赋值）。",
+      "first_table_lead_in": "下表逐只标的给出买入/加仓/减仓/清仓四档触发条件与失效条件，所有阈值均绑定可量化KRI，确保持有逻辑可执行可验证。",
+      "post_table_implication": "投资含义：三支柱支撑的三层哑铃结构（60%核心/30%卫星/10%主题）在三类情景下均具备非对称回报：基准B 65%下3只核心贡献约65%上行；乐观A 15%下卫星弹性层江波龙/兆易+南大/芯原贡献超额30%；悲观C+D 20%下设备层国产替代对冲抵消模组/设计的回撤，回撤控制在-10%（C）与-25%~-40%（D）区间。目标回报+25~+40%、赔率3.25:1均为分析师基于情景概率加权的主观赋值‡，非历史回测结论。",
+      "term_defs_needed": [
+        "HHI（首次）",
+        "CR3（首次）",
+        "流动性覆盖率（首次）"
+      ],
+      "issues_fixed_here": [
+        "F1 ch11→ch01权重主数据联动同步",
+        "F5-BR 新增CR3/HHI/流动性覆盖率3指标+15只全量化校验表",
+        "F-06 表11-1 9格半定性→KRI数值阈值绑定",
+        "F3-S3T 先进封装>5亿不可观测→3项代理变量",
+        "F6-GS 卫星层1%仓位+3%来源不明→原子可追溯改写",
+        "S-001 目标回报+赔率首次出现脚注‡声明主观赋值",
+        "FID-04 ch11三层仓位段首句前缀「主线①→核心层…」"
+      ]
+    },
+    {
+      "no": "App",
+      "title": "附录A-D：来源注册/估值审计/数据验证/合规披露",
+      "hook_iq": null,
+      "open_with": "(1) 附录A保留；(2) 附录B保留+江波龙EPS中值修正24.40；(3) 附录C 表F-1→表C-1字母修正（FID-02）；(4) 附录D 合规段全重写：香港操守准则第16条四项披露（方法假设/12月评级变动/投行关系/薪酬独立）+内地发布人身份（机构许可证号/SAC编号/发布机构全称地址电话）+免责声明（版本号V1.0/生效日2026-06-24/司法辖区内地+香港）+评级体系定义+分发对象限制+近12月反向观点声明。",
+      "first_table_lead_in": null,
+      "post_table_implication": null,
+      "term_defs_needed": [],
+      "issues_fixed_here": [
+        "S-003 附录D港16条4项+内地资质+免责声明版本/生效日/司法辖区+评级体系+分发限制+反向观点",
+        "FID-02 附录C表前缀F→C",
+        "B-003 附录D补评级体系/分发限制/近12月反向观点",
+        "A-004 封面加数据截止日+页眉日期三重披露",
+        "F8-GS 哑铃60/25/15→60/30/10统一（ch01 L40）"
+      ]
+    }
+  ],
+  "templates": {
+    "table_before_investment_implication": "【标准模板：表前引导 3句式】\n句1（角色声明）：「下表给出{章节主题}的{表格主题}量化汇总，是本章前{n}段论述（来源{S-ID-列表}）的可视化证据集。」\n句2（主数据声明）：「主数据来源 = {主数据源 S-ID}/{治理等级}；辅助校准 = {交叉验证源 S-ID 列表}。数据截止日 = {YYYY-MM-DD}，单位 = {人民币亿元 / % / 美元亿元}。」\n句3（阅读指引）：「建议重点关注{高亮3行/列，如「SK海力士HBM列/2026E TAM行/基准情景列」}，其与{对应主线标签①-④或风险标签R1-R8}直接挂钩，是后续投资含义段聚合解读的核心锚。」",
+    "table_after_investment_implication": "【标准模板：表后投资含义 3层次超解读】\n层1（数字复述）：「上表{n}行关键指标中，{复述≥3个最高信息密度数字，如「HBM TAM CAGR 68% / DRAM缺口 -6~-10% / PE 40x分位40-60%」}直接成立。」\n层2（超解读 = 非表内直白）：「聚合信号：{指标A} + {指标B} + {指标C} 三者同时满足的历史样本仅{X}次（如2017年），对应后续12月板块回报约{Y}%；本报告组合构建即基于该三重成立充要条件。」\n层3（操作指令 = 与ch11挂钩）：「投资操作上，对该信号的核心受益标的为{列表，仓位合计约 Z%}，属{核心/卫星/主题}层；失效条件为{单一指标反向突破 X%}，见 ch11 表11-1 触发条件对应行。」",
+    "ch01_gs_ic_5way_dashboard_template": "【模板】Goldman Sachs IC Dashboard 半页框（\\exhibitbox 内6行tabularx，\\needspace{14\\baselineskip}）\n┌────────────────────────────────────────────────────────────────────────┐\n│ \\faRocket\\enspace\\textbf{5-Way IC 仪表盘 · 投委会级 3 分钟可读}                  │\n├────────────────────────────────────────────────────────────────────────┤\n│ ① WHAT 标的池：核心 7 只 (60%) + 卫星 6 只 (30%) + 主题 2 只 (10%) = 15 只   │\n│   【核心】澜起 18 / 北华 15 / 中微 9 / 拓荆 6 / 沪硅 6 / 深科技 5 / 盛美 1      │\n│   【卫星】长电 6 / 通富 5 / 江波龙 6 / 兆易 6 / 安集 4 / 沪硅/深科技弹性 3        │\n│   【主题】南大 6 / 芯原 4                                                     │\n│ ② HOW MUCH 权重纪律：60/30/10 三层哑铃；单票上限 18%（澜起）；次级≤龙头×60%    │\n│   CR3 = 42%，HHI ≈ 1,550；流动性覆盖率 15/15 > 10× 全通过                         │\n│ ③ WHEN 建仓窗口：6-12M 持有期；三批：40% 当前（A 类最高置信）                   │\n│   / 35% 2026-07 中报（涨价验证）/ 25% 2026Q3 BIS 靴子（不确定性消除）             │\n│ ④ WHY 核心逻辑：主线① HBM扩容(P85%)/② DDR5渗透(P90%)/③ CXL(P65%)/④ 国产替代(P80%) │\n│   独立近似，至少 3 条兑现概率 ≈ 86%                                              │\n│ ⑤ ODDS 赔率结构：A 15% +45%+ / B 65% +25~+40% / C 15% -10~-15% / D 5% -25~-40%  │\n│   联合赔率 ≈ 3.25:1（分析师情景加权主观赋值‡，非历史回测）                        │\n│ 【行动指令】首次评级：\\stance{riskgreen}{\\textbf{超配 · Overweight}} 存储产业链。             │\n└────────────────────────────────────────────────────────────────────────┘\n放置位置：ch01 \\section 之后、表 1-1 之前，保证 P.1 全文可见。",
+    "risk_scenario_probability_footnote_template": "【模板】所有含概率列的表格（表10-1 / ch02催化剂日历 / ch11赔率）必须加红色 † 脚注：\n† 情景概率 = AStock 2016-2026 三轮半导体周期数据库（样本 N = 128 事件）× 地缘政治模型\n（含 BIS 管制 2018-2025 事件回归系数 β = 0.64）综合赋值，属分析师主观判断，非 Bloomberg/Wind\n市场共识数据。三风险 R1(HBM ASP) × R2(BIS) × R4(capex) 的联合概率：\n  · 独立假设 P(D) = 0.30 × 0.50 × 0.20 = 3.0%~3.38% < 5% 门控及格；\n  · 正相关假设 ρ(R2,R4) = 0.3（BIS 升级 → AI capex 下修 正相关）下，Gaussian Copula 重算\n    P(D) ≈ 7.2% ≥ 5%，尾部风险须按 10-15% 区间管理。\n分析师推荐采用独立假设（偏乐观）+ 相关性假设（偏审慎）双轨风控。",
+    "target_return_subjective_assignment_footnote": "【模板】所有出现「目标回报 +25-40%」与「赔率 X:1」处（ch01 tikz节点 / ch02 House View 结论\n/ ch11 §3 L119-L121）首次出现加 ‡ 脚注：\n‡ 目标回报区间 +25-40% 与赔率 ≈ 3.25:1（四舍五入后 4:1）系分析师基于表 10-1 四情景\n（A 15%×45% + B 65%×32.5% + C 15%×-12.5% + D 5%×-32.5% = 加权期望 ≈ 21.9%，\n上半均值 ÷ 下半绝对值 ≈ 3.25）主观加权赋值；未覆盖 2018/2022 历史实际回撤的\n同构组合回测验证（回测见附录表 A-3：2018 ≈ -45% / 2022 ≈ -38%，现代系数 0.75-0.85 对应 -34~-38%），\n不构成对未来回报的精确承诺。"
+  },
+  "glossary_patch": [
+    {
+      "abbr": "HBM",
+      "cn": "高带宽内存",
+      "en": "High Bandwidth Memory",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "ch01 L6 主线一首次出现（与DDR5/CXL并列）",
+      "insertion_example": "主线① \\textbf{HBM（高带宽内存，High Bandwidth Memory）} 扩容、主线② \\textbf{DDR5（第五代双倍数据率同步动态随机存取内存，Double Data Rate 5）} 渗透、主线③ \\textbf{CXL（计算高速互连总线协议，Compute Express Link）} 商业化、主线④ 国产替代四主线共振"
+    },
+    {
+      "abbr": "DDR5",
+      "cn": "第五代双倍数据率同步动态随机存取内存",
+      "en": "Double Data Rate 5",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "ch01 L6 同上并列",
+      "insertion_example": "同上"
+    },
+    {
+      "abbr": "CXL",
+      "cn": "计算高速互连总线协议",
+      "en": "Compute Express Link",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "ch01 L6 同上并列",
+      "insertion_example": "同上"
+    },
+    {
+      "abbr": "TAM",
+      "cn": "总可及市场",
+      "en": "Total Addressable Market",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "表1-2 HBM行",
+      "insertion_example": "HBM 2026E 全球 \\textbf{TAM（总可及市场，Total Addressable Market）}"
+    },
+    {
+      "abbr": "CAGR",
+      "cn": "复合年均增长率",
+      "en": "Compound Annual Growth Rate",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "表1-2 HBM行 CAGR列",
+      "insertion_example": "\\textbf{CAGR（复合年均增长率，Compound Annual Growth Rate）} 68\\%"
+    },
+    {
+      "abbr": "PEG",
+      "cn": "市盈增长比",
+      "en": "Price/Earnings-to-Growth ratio",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "L40 组合整体PEG首次",
+      "insertion_example": "\\textbf{PEG（市盈增长比，Price/Earnings-to-Growth ratio）} ≈ 0.95"
+    },
+    {
+      "abbr": "BIS",
+      "cn": "美国商务部工业与安全局",
+      "en": "Bureau of Industry and Security, U.S. Department of Commerce",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "表1-2 BIS管制升级行",
+      "insertion_example": "\\textbf{BIS（美国商务部工业与安全局，Bureau of Industry and Security）} 管制升级概率"
+    },
+    {
+      "abbr": "capex",
+      "cn": "资本开支",
+      "en": "Capital Expenditure",
+      "first_file": "sections/ch02_executive_summary.tex",
+      "first_sentence_hint": "L6 首次「原厂capex纪律」",
+      "insertion_example": "原厂 \\textbf{capex（资本开支，Capital Expenditure）} 纪律性显著提升"
+    },
+    {
+      "abbr": "bit growth",
+      "cn": "位元出货增速",
+      "en": "Bit Growth (年度存储位元总出货同比增速)",
+      "first_file": "sections/ch02_executive_summary.tex",
+      "first_sentence_hint": "L17 标准品bit growth首次",
+      "insertion_example": "标准品 \\textbf{bit growth（位元出货增速，Bit Growth，即年度存储位元总出货量同比增幅）}"
+    },
+    {
+      "abbr": "TSV",
+      "cn": "硅通孔",
+      "en": "Through-Silicon Via",
+      "first_file": "sections/ch03_supply_chain_map.tex",
+      "first_sentence_hint": "先进封装TSV首次",
+      "insertion_example": "\\textbf{TSV（硅通孔，Through-Silicon Via）} 是 2.5D/3D 封装互连关键技术"
+    },
+    {
+      "abbr": "CoWoS",
+      "cn": "晶圆上芯片-基板系统",
+      "en": "Chip-on-Wafer-on-Substrate (TSMC 2.5D封装品牌)",
+      "first_file": "sections/ch03_supply_chain_map.tex",
+      "first_sentence_hint": "先进封装层首次CoWoS",
+      "insertion_example": "\\textbf{CoWoS（Chip-on-Wafer-on-Substrate，台积电 2.5D 先进封装品牌）}"
+    },
+    {
+      "abbr": "ASP",
+      "cn": "平均销售单价",
+      "en": "Average Selling Price",
+      "first_file": "sections/ch04_ai_demand.tex",
+      "first_sentence_hint": "表4-1 ASP列首次",
+      "insertion_example": "\\textbf{ASP（平均销售单价，Average Selling Price）} ($/GB)"
+    },
+    {
+      "abbr": "ALD",
+      "cn": "原子层沉积",
+      "en": "Atomic Layer Deposition",
+      "first_file": "sections/ch05_supply_price_cycle.tex",
+      "first_sentence_hint": "拓荆ALD/CVD首次",
+      "insertion_example": "\\textbf{ALD（原子层沉积，Atomic Layer Deposition）}是 HBM 与 3D NAND 关键设备技术"
+    },
+    {
+      "abbr": "CVD",
+      "cn": "化学气相沉积",
+      "en": "Chemical Vapor Deposition",
+      "first_file": "sections/ch05_supply_price_cycle.tex",
+      "first_sentence_hint": "同上ALD并列",
+      "insertion_example": "\\textbf{CVD（化学气相沉积，Chemical Vapor Deposition）}"
+    },
+    {
+      "abbr": "Wafer Out",
+      "cn": "晶圆产出（等效12英寸）",
+      "en": "Wafer Out (equivalent 12-inch wafers per quarter)",
+      "first_file": "sections/ch05_supply_price_cycle.tex",
+      "first_sentence_hint": "表5-1产能Wafer Out列首次",
+      "insertion_example": "产能 \\textbf{Wafer Out（季度等效 12 英寸晶圆出片数）}"
+    },
+    {
+      "abbr": "DUV",
+      "cn": "深紫外（193nm波长光刻机）",
+      "en": "Deep Ultraviolet (193nm wavelength lithography)",
+      "first_file": "sections/ch06_competition_substitution.tex",
+      "first_sentence_hint": "§3 BIS管制图首次DUV断供",
+      "insertion_example": "ASML \\textbf{DUV（深紫外光刻机，Deep Ultraviolet，193nm 波长）} 断供长存/长鑫"
+    },
+    {
+      "abbr": "Entity List",
+      "cn": "实体清单",
+      "en": "U.S. BIS Entity List 管制清单",
+      "first_file": "sections/ch06_competition_substitution.tex",
+      "first_sentence_hint": "BIS管制表首次Entity List",
+      "insertion_example": "列入 \\textbf{Entity List（实体清单，BIS 出口管制最严清单）}"
+    },
+    {
+      "abbr": "EV/EBITDA",
+      "cn": "企业价值 / 息税折旧摊销前利润",
+      "en": "Enterprise Value / Earnings Before Interest, Taxes, Depreciation and Amortization",
+      "first_file": "sections/ch08_valuation.tex",
+      "first_sentence_hint": "表8-1 EV/EBITDA列首次",
+      "insertion_example": "\\textbf{EV/EBITDA（企业价值/息税折旧摊销前利润，Enterprise Value / EBITDA）}"
+    },
+    {
+      "abbr": "Q25",
+      "cn": "下四分位（第25百分位）",
+      "en": "25th percentile",
+      "first_file": "sections/ch08_valuation.tex",
+      "first_sentence_hint": "sourcenote江波龙Q25-Q75首次",
+      "insertion_example": "取 4 样本的 \\textbf{Q25（下四分位 25th percentile）/ Q75（上四分位 75th percentile）}（线性插值法）"
+    },
+    {
+      "abbr": "Q75",
+      "cn": "上四分位（第75百分位）",
+      "en": "75th percentile",
+      "first_file": "sections/ch08_valuation.tex",
+      "first_sentence_hint": "同上Q25并列",
+      "insertion_example": "同上Q25并列定义"
+    },
+    {
+      "abbr": "S-ID",
+      "cn": "来源注册表编号",
+      "en": "Source Registry ID (附录A来源注册唯一编号)",
+      "first_file": "sections/ch01_ic_summary.tex",
+      "first_sentence_hint": "表1-2来源列首次[S-11]",
+      "insertion_example": "TrendForce + SK Hynix CC [\\textbf{S-ID-11} / \\textbf{S-ID-18}]（S-ID = 来源注册表编号，见附录 A）"
+    },
+    {
+      "abbr": "VaR",
+      "cn": "风险价值",
+      "en": "Value at Risk",
+      "first_file": "sections/ch10_risk_stress.tex",
+      "first_sentence_hint": "压力测试首次VaR提及",
+      "insertion_example": "按 1\\% 日度 \\textbf{VaR（风险价值，Value at Risk）} 对应组合回撤约 -2.5%"
+    },
+    {
+      "abbr": "Copula",
+      "cn": "连接函数（多变量概率相关建模）",
+      "en": "Copula (multivariate probability dependence modeling function)",
+      "first_file": "sections/ch10_risk_stress.tex",
+      "first_sentence_hint": "脚注†相关概率首次",
+      "insertion_example": "Gaussian \\textbf{Copula（连接函数，多变量相关概率建模工具）}"
+    },
+    {
+      "abbr": "KRI",
+      "cn": "关键风险指标",
+      "en": "Key Risk Indicator",
+      "first_file": "sections/ch10_risk_stress.tex",
+      "first_sentence_hint": "§3 KRI体系段首",
+      "insertion_example": "\\textbf{KRI（关键风险指标，Key Risk Indicator）} 三级领先/同步/滞后监控"
+    },
+    {
+      "abbr": "HHI",
+      "cn": "赫芬达尔-赫希曼指数（组合集中度）",
+      "en": "Herfindahl-Hirschman Index",
+      "first_file": "sections/ch11_investment_reco.tex",
+      "first_sentence_hint": "§2 CR3/HHI段首",
+      "insertion_example": "\\textbf{HHI（赫芬达尔-赫希曼指数，Herfindahl-Hirschman Index）} ≈ 1,550"
+    },
+    {
+      "abbr": "CR3",
+      "cn": "前三大权重集中度",
+      "en": "Top-3 Concentration Ratio",
+      "first_file": "sections/ch11_investment_reco.tex",
+      "first_sentence_hint": "同上HHI并列",
+      "insertion_example": "\\textbf{CR3（前三大权重集中度）} = 北华15 + 中微9 + 澜起18 = 42%"
+    },
+    {
+      "abbr": "流动性覆盖率",
+      "cn": "日均成交额/仓位金额",
+      "en": "Daily average trading volume ÷ position notional (threshold ≥ 10×)",
+      "first_file": "sections/ch11_investment_reco.tex",
+      "first_sentence_hint": "§2流动性覆盖率段首",
+      "insertion_example": "\\textbf{流动性覆盖率（日均成交额 ÷ 仓位金额，机构风控阈值 ≥ 10×）} 15/15 只全通过"
+    }
+  ],
+  "ch01_gs_ic_template": {
+    "ch01_new_section_order": [
+      "\\section*{投资委员会执行摘要（Goldman Sachs IC Memo 标准模板）}",
+      "Investment Question 设问（替换 L6 直述式，必须问号开场，见 ch01 hook_iq 内容）",
+      "5-Way IC Dashboard 半页框（表 1-1 之前，必须 P.1 可见，使用 5-Way 模板）",
+      "表 1-1 推荐组合与评级一览（必须以 ch11 v2.0 为唯一主数据：60/30/10 三层 + 15 只标的 + 盛美/安集/芯原回填，合计 100%，权重纪律三向联动 ch11 表 11-1）",
+      "表 1-1 后投资含义段（哑铃结构复述 + 组合 PEG ≈ 0.95 + 置信度仓位映射，原 L40 改 60/30/10）",
+      "表 1-2 核心数据速览 / 10 项 KPI 仪表盘（原表保留，上行空间 sourcenote 改「区间中值」并落实 ch01 F7-GS 重算）",
+      "表 1-2 后独立投资含义段（3 条聚合信号，FID-05 补齐）",
+      "\\section{四主线共振框架（主线①~④必须与 ch02 House View + ch11 组合构建 3×3 一字不差锚定）}",
+      "图 1-1 tikz 四主线框架（主线标签块色对应 ch02 四论点色）",
+      "图 1-1 后投资含义段（四主线独立概率 + 至少3条兑现 P≈86%）",
+      "\\section{资金传导逻辑（云厂商→原厂 capex→设备/材料→A 股映射，锚定主线④国产替代）}",
+      "图 1-2 tikz 资金传导图",
+      "图 1-2 后投资含义段（二阶 Beta / 一阶 Alpha / 国产化加速边际弹性 3 层解读）",
+      "\\section{上下行触发条件 + 三批建仓时间轴}",
+      "上行催化剂 5 条 + 下行风险触发 5 条 + 三批建仓时间轴（原 ch02 L124 迁移至此：40%当前 / 35%7月中报 / 25%Q3 BIS靴子）"
+    ],
+    "first_page_guarantee_rule": "P.1 必须包含：(1) IQ 设问句破题；(2) 5-Way IC Dashboard 全 6 行；(3) 表 1-1 至少首 8 行（澜起/北华/中微/拓荆/沪硅/深科技/盛美/长电）可见；(4) 表 1-1 后投资含义段首 2 行。如 PDF 排版溢出，需 \\enlargethispage{\\baselineskip} 或微调 \\resizebox 至 0.78 线宽。排版前必须运行 XeLaTeX 两遍检验。"
+  },
+  "rewrite_word_count_est": 19200
+}

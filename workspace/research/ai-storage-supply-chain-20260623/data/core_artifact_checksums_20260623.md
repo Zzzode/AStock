@@ -1,21 +1,20 @@
-# 核心工件校验和（Core Artifact Checksums）
+# Core Artifact Checksums · 14 项（R209 Baseline）
 
-> R208 治理轮询 · SHA-256 + Size 14 项 baseline
+> 生成于 2026-06-24 R209
 
-| 文件路径 | 类型 | 字节数 | SHA-256 |
-|---------|------|--------|--------|
-
-| data/source_registry.md | GOV-SR | 13732 | a2a6e1ef55547ecad31757540b0554ddadffe6317dc52ed8a085306303dab4b5 |
-| data/source_registry.json | GOV-SR | 26715 | 55239ac092c35367d8a4a83c4e02ab014a6173f693c744a9a1f7a2adcc7b5ebc |
-| data/claim_audit.md | GOV-CA | 18479 | c637996f26797dc6d7552e9dd9fd2411c1c98e2635a08d304c5e55e7710f3637 |
-| data/root_artifact_inventory_20260623.md | GOV-INV | 1037 | 64357cd51fcdf8a1954a6d29536e0ebab44f78cf61362126dca5274b06afc00e |
-| data/root_artifact_inventory_20260623.json | GOV-INV | 2437 | db9c2ef0f5336c2f5e7320a696245e9e60fe7aaf2dd339eadf089b3984e95ce8 |
-| data/source_artifact_inventory_20260623.md | GOV-INV | 2978 | 03e4aa742eee3f6166a8f9434369d8bebb333c9f36ec5872633f91b687f70bba |
-| data/source_artifact_inventory_20260623.json | GOV-INV | 4672 | 1eac1755231c9b91378bf5adc3c40f6bbdc697a4d60ddc25f11eb30203ca1f49 |
-| data/top_level_data_artifact_inventory_20260623.md | GOV-INV | 880 | aa39a7b25ad96a9f4cf21be2a8cbccf778b90b6d95e5aa5472621eae60c3fb62 |
-| data/top_level_data_artifact_inventory_20260623.json | GOV-INV | 1984 | 8935375bd3765872c41b7bbe5627bb762b33ec10d58b8d41dc6472668836f7ea |
-| data/rendered_artifact_inventory_20260623.md | GOV-INV | 1033 | 5ce0ff0dfbd59f669d7a79e12ecbe889edb3663ab1966c620aaede898593696a |
-| data/rendered_artifact_inventory_20260623.json | GOV-INV | 2136 | 688e6db24eb514eaddad8aeb93c9f4f101d46edb294f72c317af99ead7bb235d |
-| data/raw_data_artifact_inventory_20260623.md | GOV-INV | 3109 | 685f865c2b20bf10d59bcbe73745a3b9e7b95344c36d53fce557150ff0ce5e0b |
-| data/raw_data_artifact_inventory_20260623.json | GOV-INV | 4893 | 07afc5350db661e3201b99c3fc093a41c9f56cda2418e7a97c9710a7d4d1c67a |
-| completion_audit_manifest.md | GOV-MAN | 778 | 2bef0a2e8697cf50935dd49e4ce10a3c684bfad6821a0e6d1dcda787fb8db375 |
+| Path | Size(B) | SHA-256 | Desc |
+|---|---|---|---|
+|data/source_registry.md|22678|a9affb1b1cd6771548e8ad4888edffab52a382afad2ef84f520c952e9876d221|SR 主表 md|
+|data/source_registry.json|38540|6504d28912a4129d676b75de0cbcfd283201ba2bd94cac6b301a367024317458|SR 孪生 json|
+|data/claim_audit.md|21348|8f5b15628bf64c9f2b1491f04c6ec23a0aca77324abd914a2bb6a4cf10069e33|CA 主表 md|
+|data/root_artifact_inventory_20260623.md|1233|2a16a2c017979bdde43bc881e8ddc2529d6de573c5758b9ce28a674fdb3602e5|ROOT inv md|
+|data/root_artifact_inventory_20260623.json|4586|8351e72f42dd7d4f1a2f1479d36eb756e081ed68d439eb8e5bbeb67157e4cf97|ROOT inv json|
+|data/source_artifact_inventory_20260623.md|2962|b30b3e7844414376ab425d74a832e592a112dbf6a631bfb14521d70ed8d1de07|SRC inv md|
+|data/source_artifact_inventory_20260623.json|7557|9ead3f28409fd81b2463e15a355ee801d100a92e05ea3d0ee10a9805a4334de2|SRC inv json|
+|data/top_level_data_artifact_inventory_20260623.md|800|45bbb49c2f943bc8ee8bdef34bb10a3644a694fc5a690a70dbfbf34da5ac2cdf|TOP inv md|
+|data/top_level_data_artifact_inventory_20260623.json|2554|5b74ccaa83ff606631ed1a65b8f28bc2bd4c591a5d8aba953a2a5aebad460707|TOP inv json|
+|data/rendered_artifact_inventory_20260623.md|1691|e0b73b42a96a4168e5baa8db6a92da3eaa93cc06ca646c06205eff65da7efe8b|RDR inv md|
+|data/rendered_artifact_inventory_20260623.json|5312|0639b4b819f300023a12b3659e463e5d29d80c7251eeae905274859c09e26be1|RDR inv json|
+|data/raw_data_artifact_inventory_20260623.md|1730|bab51a749c60c3fac2a2aab66eb655209d646071f319544a51fd0f8a6c264e38|RAW inv md|
+|data/raw_data_artifact_inventory_20260623.json|6041|54dcbe646f601ad595d4a054d54320e6d19705970429d9a8e0257d345d2bae72|RAW inv json|
+|main.pdf|907898|5ab63efa76eab79fc4f355bbe32f8eacca80bfcdfedb722b3ec2800dd31ea8ec|PDF 主产物|

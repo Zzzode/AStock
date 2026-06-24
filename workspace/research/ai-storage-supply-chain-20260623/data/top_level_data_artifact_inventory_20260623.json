@@ -1,91 +1,74 @@
 {
-  "schema_version": "2.0",
-  "polling_round": "R208",
-  "last_updated": "2026-06-24",
-  "files": [
+  "inventory_name": "top_level_data_artifact_inventory_20260623",
+  "case": "ai-storage-supply-chain-20260623",
+  "generated_at": "2026-06-24 R209",
+  "classification": "DERIVED_CORE",
+  "total_count": 8,
+  "total_bytes": 249732,
+  "items": [
     {
-      "path": "data/raw_financials.md",
-      "type": "RAW",
-      "size_bytes": 42882,
-      "sha256": "2de74e59bac5",
-      "exists": true
+      "path": "data/source_registry.md",
+      "file_name": "source_registry.md",
+      "size_bytes": 22678,
+      "sha256": "a9affb1b1cd6771548e8ad4888edffab52a382afad2ef84f520c952e9876d221",
+      "description": "来源注册表(md)",
+      "classification": "DERIVED_CORE"
     },
     {
-      "path": "data/raw_market_data.md",
-      "type": "RAW",
-      "size_bytes": 0,
-      "sha256": "MISSING",
-      "exists": false
+      "path": "data/source_registry.json",
+      "file_name": "source_registry.json",
+      "size_bytes": 38540,
+      "sha256": "6504d28912a4129d676b75de0cbcfd283201ba2bd94cac6b301a367024317458",
+      "description": "来源注册表(json)",
+      "classification": "DERIVED_CORE"
+    },
+    {
+      "path": "data/claim_audit.md",
+      "file_name": "claim_audit.md",
+      "size_bytes": 21348,
+      "sha256": "8f5b15628bf64c9f2b1491f04c6ec23a0aca77324abd914a2bb6a4cf10069e33",
+      "description": "主张审计",
+      "classification": "DERIVED_CORE"
+    },
+    {
+      "path": "data/raw_financials.md",
+      "file_name": "raw_financials.md",
+      "size_bytes": 42882,
+      "sha256": "2de74e59bac52a1d6dc50b490c301729d1e78f9019a722d5d8765040e1c371e0",
+      "description": "原始财务",
+      "classification": "DERIVED_CORE"
     },
     {
       "path": "data/report_catalog.md",
-      "type": "RAW",
+      "file_name": "report_catalog.md",
       "size_bytes": 12857,
-      "sha256": "79dc74feda93",
-      "exists": true
+      "sha256": "79dc74feda93a89c152805a077e436476af3c47bf84967ff764839eef926cbbb",
+      "description": "券商报告目录",
+      "classification": "DERIVED_CORE"
     },
     {
       "path": "data/consensus_analysis_raw.md",
-      "type": "DERIVED",
+      "file_name": "consensus_analysis_raw.md",
       "size_bytes": 16981,
-      "sha256": "fb5eed5705e2",
-      "exists": true
-    },
-    {
-      "path": "data/verified_financials.md",
-      "type": "DERIVED",
-      "size_bytes": 0,
-      "sha256": "MISSING",
-      "exists": false
-    },
-    {
-      "path": "data/verified_market_data.md",
-      "type": "DERIVED",
-      "size_bytes": 0,
-      "sha256": "MISSING",
-      "exists": false
+      "sha256": "fb5eed5705e27b9ae3d85d6eba28c83d36ecd19afb021798b96c064deb66231c",
+      "description": "卖方共识原始",
+      "classification": "DERIVED_CORE"
     },
     {
       "path": "analysis/industry_landscape.md",
-      "type": "ANALYSIS",
+      "file_name": "industry_landscape.md",
       "size_bytes": 54538,
-      "sha256": "1c080dc86c5a",
-      "exists": true
-    },
-    {
-      "path": "analysis/house_view.md",
-      "type": "ANALYSIS",
-      "size_bytes": 0,
-      "sha256": "MISSING",
-      "exists": false
-    },
-    {
-      "path": "analysis/valuation_model.md",
-      "type": "ANALYSIS",
-      "size_bytes": 0,
-      "sha256": "MISSING",
-      "exists": false
-    },
-    {
-      "path": "analysis/risk_framework.md",
-      "type": "ANALYSIS",
-      "size_bytes": 0,
-      "sha256": "MISSING",
-      "exists": false
+      "sha256": "1c080dc86c5ae67ce7ff74b8a29efc4317d7c2f1a45f247c8dd2466315384b97",
+      "description": "产业格局分析",
+      "classification": "DERIVED_CORE"
     },
     {
       "path": "analysis/exhibit_plan.md",
-      "type": "ANALYSIS",
+      "file_name": "exhibit_plan.md",
       "size_bytes": 39908,
-      "sha256": "79deb50b7cfb",
-      "exists": true
-    },
-    {
-      "path": "analysis/valuation_audit.md",
-      "type": "ANALYSIS",
-      "size_bytes": 0,
-      "sha256": "MISSING",
-      "exists": false
+      "sha256": "79deb50b7cfb33bbd326d68fb735d0bb32630ff980b55669ccf4fa240082ab76",
+      "description": "图表蓝图",
+      "classification": "DERIVED_CORE"
     }
   ]
 }
