@@ -1,51 +1,21 @@
-| `completion_audit_manifest.json` | 504 | `ef83622181940f3521512f0434ba1adc590c07757a160eeafafa343b4146f274` |
-| `completion_audit_manifest.md` | 778 | `2bef0a2e8697cf50935dd49e4ce10a3c684bfad6821a0e6d1dcda787fb8db375` |
-| `data_room_index.md` | 2378 | `4c3551b4f23d89b9be861615e488f0dd68ef056eb3758178c0b0ed13c71f7fd7` |
-| `main.pdf` | 907898 | `5ab63efa76eab79fc4f355bbe32f8eacca80bfcdfedb722b3ec2800dd31ea8ec` |
-| `main.tex` | 4945 | `90d28bf95a2851b5233d695d378f6aa2db3d3ff138d6bff21a4e826272738974` |
-| `main_current_text.txt` | 105445 | `1b5faa114fe314a088d6b81a16b22aba86ebfbcddd1620ffe2acf5cfaef0acc8` |
-| `missing_data_request_pack.json` | 844 | `714cd9141b0f06f0b162d4997db38d740e2ac344c125cbe5e4e8cf193810beee` |
-| `missing_data_request_pack.md` | 630 | `07956dfadf4fdee451c82ab46e9b2f497ad4481e88d3be9606ac062c115d6273` |
-| `missing_data_request_pack.csv` | 430 | `2e2572d9121974a09635bb4c1bd318fa2150f544903351e2f65f2cf6f5fc920b` |
-| `source_exhaustion_log.json` | 573 | `fbb06f5b17c4e36cbe15d63763b0acd37c0e01179a679dbef397741a90f89f4e` |
-| `source_exhaustion_log.md` | 848 | `acb901cf2d9afffc6dd976e9a7ed62ec1267fb490a8cb51d0d10e3e44fd55822` |
-| `verify_research_workspace.py` | 47812 | `164c90f1a609556992aad65eb45c64c17390f86bf0488e5ae795a9797beebb6e` |
-| `unresolved_requirements.json` | 863 | `91e393fbf8d41894b29d427a836622b281bcd49155f5c33f700e656b1570f4b8` |
-| `source_registry.json` | 28926 | `b46ac762bddd88976db85788af741f6bca08b1c490c6ea635c21e0f75f6f902e` |
-# Core Artifact Checksums
+# 核心工件校验和（Core Artifact Checksums）
 
-**Run date:** 2026-06-23
+> R208 治理轮询 · SHA-256 + Size 14 项 baseline
 
-**File count:** 22
+| 文件路径 | 类型 | 字节数 | SHA-256 |
+|---------|------|--------|--------|
 
-**Purpose:** SHA-256 checksums for core deliverables, governance files, external request packs and verifier script.
-
-**Boundary:** Checksum manifest detects artifact drift only; it does not satisfy paid/non-public data requirements.
-
-## Files
-
-| Artifact path | Size (bytes) | SHA-256 (前 16) |
-|---|---|---|
-| completion_audit_manifest.json | 504 | 0196c44b25dfca5c… |
-| completion_audit_manifest.md | 778 | 2bef0a2e8697cf50… |
-| data_room_index.md | 2378 | 4c3551b4f23d89b9… |
-| main.pdf | 907898 | 5ab63efa76eab79f… |
-| main.tex | 4945 | 90d28bf95a2851b5… |
-| main_current_text.txt | 105445 | 1b5faa114fe314a0… |
-| missing_data_request_pack.json | 844 | 714cd9141b0f06f0… |
-| missing_data_request_pack.md | 630 | 07956dfadf4fdee4… |
-| missing_data_request_pack.csv | 430 | 2e2572d9121974a0… |
-| source_exhaustion_log.json | 573 | fbb06f5b17c4e36c… |
-| source_exhaustion_log.md | 848 | acb901cf2d9afffc… |
-| tools/verify_research_workspace.py | 47812 | 164c90f1a6095569… |
-| unresolved_requirements.json | 863 | 91e393fbf8d41894… |
-| data/source_registry.json | 27989 | e60a3a36d890d87f… |
-| data/claim_audit.md | 29093 | d8ce74670ea73901… |
-| data/source_registry.md | 18721 | 822b65e70cc481bf… |
-| tools/verify_ai_storage.py | 13070 | 18a91104dc4a0dd7… |
-| sections/ch11_investment_reco.tex | 9951 | 7b35f4b6ceb6c53f… |
-| sections/ch08_valuation.tex | 15365 | 29e5cd0c51d5db6a… |
-| sections/ch05_supply_price_cycle.tex | 20733 | 461459a0cf1d1481… |
-| sections/app_sources_audit.tex | 9849 | 305e189e5fa19594… |
-| review_log.md | 21843 | 6d19583d4ca94d9a… |
-
+| data/source_registry.md | GOV-SR | 13732 | a2a6e1ef55547ecad31757540b0554ddadffe6317dc52ed8a085306303dab4b5 |
+| data/source_registry.json | GOV-SR | 26715 | 55239ac092c35367d8a4a83c4e02ab014a6173f693c744a9a1f7a2adcc7b5ebc |
+| data/claim_audit.md | GOV-CA | 18479 | c637996f26797dc6d7552e9dd9fd2411c1c98e2635a08d304c5e55e7710f3637 |
+| data/root_artifact_inventory_20260623.md | GOV-INV | 1037 | 64357cd51fcdf8a1954a6d29536e0ebab44f78cf61362126dca5274b06afc00e |
+| data/root_artifact_inventory_20260623.json | GOV-INV | 2437 | db9c2ef0f5336c2f5e7320a696245e9e60fe7aaf2dd339eadf089b3984e95ce8 |
+| data/source_artifact_inventory_20260623.md | GOV-INV | 2978 | 03e4aa742eee3f6166a8f9434369d8bebb333c9f36ec5872633f91b687f70bba |
+| data/source_artifact_inventory_20260623.json | GOV-INV | 4672 | 1eac1755231c9b91378bf5adc3c40f6bbdc697a4d60ddc25f11eb30203ca1f49 |
+| data/top_level_data_artifact_inventory_20260623.md | GOV-INV | 880 | aa39a7b25ad96a9f4cf21be2a8cbccf778b90b6d95e5aa5472621eae60c3fb62 |
+| data/top_level_data_artifact_inventory_20260623.json | GOV-INV | 1984 | 8935375bd3765872c41b7bbe5627bb762b33ec10d58b8d41dc6472668836f7ea |
+| data/rendered_artifact_inventory_20260623.md | GOV-INV | 1033 | 5ce0ff0dfbd59f669d7a79e12ecbe889edb3663ab1966c620aaede898593696a |
+| data/rendered_artifact_inventory_20260623.json | GOV-INV | 2136 | 688e6db24eb514eaddad8aeb93c9f4f101d46edb294f72c317af99ead7bb235d |
+| data/raw_data_artifact_inventory_20260623.md | GOV-INV | 3109 | 685f865c2b20bf10d59bcbe73745a3b9e7b95344c36d53fce557150ff0ce5e0b |
+| data/raw_data_artifact_inventory_20260623.json | GOV-INV | 4893 | 07afc5350db661e3201b99c3fc093a41c9f56cda2418e7a97c9710a7d4d1c67a |
+| completion_audit_manifest.md | GOV-MAN | 778 | 2bef0a2e8697cf50935dd49e4ce10a3c684bfad6821a0e6d1dcda787fb8db375 |

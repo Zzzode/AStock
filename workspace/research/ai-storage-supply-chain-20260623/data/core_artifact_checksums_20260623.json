@@ -1,118 +1,91 @@
 {
-  "run_date": "2026-06-23",
-  "purpose": "SHA-256 checksums for core deliverables, governance files, external request packs and verifier script.",
-  "file_count": 22,
+  "schema_version": "2.0",
+  "polling_round": "R208",
+  "last_updated": "2026-06-24",
   "files": [
     {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/completion_audit_manifest.json",
-      "size_bytes": 504,
-      "sha256": "0196c44b25dfca5c652d3446145b453e984f50ed656fc1f55b3df8c1b024375c"
+      "path": "data/source_registry.md",
+      "type": "GOV-SR",
+      "size_bytes": 13732,
+      "sha256": "a2a6e1ef55547ecad31757540b0554ddadffe6317dc52ed8a085306303dab4b5"
     },
     {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/completion_audit_manifest.md",
+      "path": "data/source_registry.json",
+      "type": "GOV-SR",
+      "size_bytes": 26715,
+      "sha256": "55239ac092c35367d8a4a83c4e02ab014a6173f693c744a9a1f7a2adcc7b5ebc"
+    },
+    {
+      "path": "data/claim_audit.md",
+      "type": "GOV-CA",
+      "size_bytes": 18479,
+      "sha256": "c637996f26797dc6d7552e9dd9fd2411c1c98e2635a08d304c5e55e7710f3637"
+    },
+    {
+      "path": "data/root_artifact_inventory_20260623.md",
+      "type": "GOV-INV",
+      "size_bytes": 1037,
+      "sha256": "64357cd51fcdf8a1954a6d29536e0ebab44f78cf61362126dca5274b06afc00e"
+    },
+    {
+      "path": "data/root_artifact_inventory_20260623.json",
+      "type": "GOV-INV",
+      "size_bytes": 2437,
+      "sha256": "db9c2ef0f5336c2f5e7320a696245e9e60fe7aaf2dd339eadf089b3984e95ce8"
+    },
+    {
+      "path": "data/source_artifact_inventory_20260623.md",
+      "type": "GOV-INV",
+      "size_bytes": 2978,
+      "sha256": "03e4aa742eee3f6166a8f9434369d8bebb333c9f36ec5872633f91b687f70bba"
+    },
+    {
+      "path": "data/source_artifact_inventory_20260623.json",
+      "type": "GOV-INV",
+      "size_bytes": 4672,
+      "sha256": "1eac1755231c9b91378bf5adc3c40f6bbdc697a4d60ddc25f11eb30203ca1f49"
+    },
+    {
+      "path": "data/top_level_data_artifact_inventory_20260623.md",
+      "type": "GOV-INV",
+      "size_bytes": 880,
+      "sha256": "aa39a7b25ad96a9f4cf21be2a8cbccf778b90b6d95e5aa5472621eae60c3fb62"
+    },
+    {
+      "path": "data/top_level_data_artifact_inventory_20260623.json",
+      "type": "GOV-INV",
+      "size_bytes": 1984,
+      "sha256": "8935375bd3765872c41b7bbe5627bb762b33ec10d58b8d41dc6472668836f7ea"
+    },
+    {
+      "path": "data/rendered_artifact_inventory_20260623.md",
+      "type": "GOV-INV",
+      "size_bytes": 1033,
+      "sha256": "5ce0ff0dfbd59f669d7a79e12ecbe889edb3663ab1966c620aaede898593696a"
+    },
+    {
+      "path": "data/rendered_artifact_inventory_20260623.json",
+      "type": "GOV-INV",
+      "size_bytes": 2136,
+      "sha256": "688e6db24eb514eaddad8aeb93c9f4f101d46edb294f72c317af99ead7bb235d"
+    },
+    {
+      "path": "data/raw_data_artifact_inventory_20260623.md",
+      "type": "GOV-INV",
+      "size_bytes": 3109,
+      "sha256": "685f865c2b20bf10d59bcbe73745a3b9e7b95344c36d53fce557150ff0ce5e0b"
+    },
+    {
+      "path": "data/raw_data_artifact_inventory_20260623.json",
+      "type": "GOV-INV",
+      "size_bytes": 4893,
+      "sha256": "07afc5350db661e3201b99c3fc093a41c9f56cda2418e7a97c9710a7d4d1c67a"
+    },
+    {
+      "path": "completion_audit_manifest.md",
+      "type": "GOV-MAN",
       "size_bytes": 778,
       "sha256": "2bef0a2e8697cf50935dd49e4ce10a3c684bfad6821a0e6d1dcda787fb8db375"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/data_room_index.md",
-      "size_bytes": 2378,
-      "sha256": "4c3551b4f23d89b9be861615e488f0dd68ef056eb3758178c0b0ed13c71f7fd7"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/main.pdf",
-      "size_bytes": 907898,
-      "sha256": "5ab63efa76eab79fc4f355bbe32f8eacca80bfcdfedb722b3ec2800dd31ea8ec"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/main.tex",
-      "size_bytes": 4945,
-      "sha256": "90d28bf95a2851b5233d695d378f6aa2db3d3ff138d6bff21a4e826272738974"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/main_current_text.txt",
-      "size_bytes": 105445,
-      "sha256": "1b5faa114fe314a088d6b81a16b22aba86ebfbcddd1620ffe2acf5cfaef0acc8"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/missing_data_request_pack.json",
-      "size_bytes": 844,
-      "sha256": "714cd9141b0f06f0b162d4997db38d740e2ac344c125cbe5e4e8cf193810beee"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/missing_data_request_pack.md",
-      "size_bytes": 630,
-      "sha256": "07956dfadf4fdee451c82ab46e9b2f497ad4481e88d3be9606ac062c115d6273"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/missing_data_request_pack.csv",
-      "size_bytes": 430,
-      "sha256": "2e2572d9121974a09635bb4c1bd318fa2150f544903351e2f65f2cf6f5fc920b"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/source_exhaustion_log.json",
-      "size_bytes": 573,
-      "sha256": "fbb06f5b17c4e36cbe15d63763b0acd37c0e01179a679dbef397741a90f89f4e"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/source_exhaustion_log.md",
-      "size_bytes": 848,
-      "sha256": "acb901cf2d9afffc6dd976e9a7ed62ec1267fb490a8cb51d0d10e3e44fd55822"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/tools/verify_research_workspace.py",
-      "size_bytes": 47812,
-      "sha256": "164c90f1a609556992aad65eb45c64c17390f86bf0488e5ae795a9797beebb6e"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/unresolved_requirements.json",
-      "size_bytes": 863,
-      "sha256": "91e393fbf8d41894b29d427a836622b281bcd49155f5c33f700e656b1570f4b8"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/data/source_registry.json",
-      "size_bytes": 27989,
-      "sha256": "e60a3a36d890d87fe88cf9b70feb01941b7ca9a4b7b5fca43e56015d57b98afd"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/data/claim_audit.md",
-      "size_bytes": 29093,
-      "sha256": "d8ce74670ea73901bf82baadf4952fca198137be0d3c0051c0585f67f10d761a"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/data/source_registry.md",
-      "size_bytes": 18721,
-      "sha256": "822b65e70cc481bfd344882060c7c82d6b5ee42e966d437d31fc2278842a366d"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/tools/verify_ai_storage.py",
-      "size_bytes": 13070,
-      "sha256": "18a91104dc4a0dd7ff0954a8c00bca2c9e966c2cf3b0804ec0df0c146a18790c"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/sections/ch11_investment_reco.tex",
-      "size_bytes": 9951,
-      "sha256": "7b35f4b6ceb6c53f979635b8d813c629d31406dcedb901d7c227aa23746bc2ca"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/sections/ch08_valuation.tex",
-      "size_bytes": 15365,
-      "sha256": "29e5cd0c51d5db6a8083be21ece96f18d3e084be8cf4ae6465d1e5cb4172661b"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/sections/ch05_supply_price_cycle.tex",
-      "size_bytes": 20733,
-      "sha256": "461459a0cf1d14814382a29d2f5ff622fa77102344229ef8502db903783e5af4"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/sections/app_sources_audit.tex",
-      "size_bytes": 9849,
-      "sha256": "305e189e5fa195949fd3f900ae09ffd1f40580f68cf9d6279b2e9223eb8b7a06"
-    },
-    {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/review_log.md",
-      "size_bytes": 21843,
-      "sha256": "6d19583d4ca94d9afafc98f2bd4253b9e8929371766a094030eb79e1eade9600"
     }
-  ],
-  "boundary": "Checksum manifest detects artifact drift only; it does not satisfy paid/non-public data requirements."
+  ]
 }

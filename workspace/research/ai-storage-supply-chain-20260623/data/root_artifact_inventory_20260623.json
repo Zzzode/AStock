@@ -1,117 +1,112 @@
 {
-  "run_date": "2026-06-23",
-  "purpose": "Account for every top-level file in the research case directory.",
-  "root_files": 19,
-  "by_type": {
-    "json": 4,
-    "md": 7,
-    "aux": 1,
-    "log": 1,
-    "out": 1,
-    "pdf": 1,
-    "tex": 1,
-    "toc": 1,
-    "txt": 1,
-    "csv": 1
-  },
-  "boundary": "Root artifact accounting only; not substantive completion of non-public data requirements.",
+  "schema_version": "2.0",
+  "polling_round": "R208",
+  "last_updated": "2026-06-24",
   "files": [
     {
-      "file": "completion_audit_manifest.json",
-      "type": "json",
-      "size_bytes": 307
+      "path": "main.tex",
+      "type": "RENDERED",
+      "size_bytes": 4945,
+      "sha256": "90d28bf95a28",
+      "exists": true
     },
     {
-      "file": "completion_audit_manifest.md",
-      "type": "md",
-      "size_bytes": 778
+      "path": "main.pdf",
+      "type": "RENDERED",
+      "size_bytes": 907898,
+      "sha256": "5ab63efa76ea",
+      "exists": true
     },
     {
-      "file": "data_room_index.md",
-      "type": "md",
-      "size_bytes": 2378
+      "path": "main_current_text.txt",
+      "type": "RENDERED",
+      "size_bytes": 105445,
+      "sha256": "1b5faa114fe3",
+      "exists": true
     },
     {
-      "file": "main.aux",
-      "type": "aux",
-      "size_bytes": 9444
+      "path": "research_brief.md",
+      "type": "PRIMARY",
+      "size_bytes": 6006,
+      "sha256": "73e57694ba57",
+      "exists": true
     },
     {
-      "file": "main.log",
-      "type": "log",
-      "size_bytes": 94254
+      "path": "review_log.md",
+      "type": "DERIVED",
+      "size_bytes": 21843,
+      "sha256": "6d19583d4ca9",
+      "exists": true
     },
     {
-      "file": "main.out",
-      "type": "out",
-      "size_bytes": 9733
+      "path": "visual_review.md",
+      "type": "DERIVED",
+      "size_bytes": 9792,
+      "sha256": "c3a24aa7e6aa",
+      "exists": true
     },
     {
-      "file": "main.pdf",
-      "type": "pdf",
-      "size_bytes": 907898
+      "path": "completion_audit_manifest.json",
+      "type": "AUDIT",
+      "size_bytes": 503,
+      "sha256": "37db2fe05228",
+      "exists": true
     },
     {
-      "file": "main.tex",
-      "type": "tex",
-      "size_bytes": 4945
+      "path": "completion_audit_manifest.md",
+      "type": "AUDIT",
+      "size_bytes": 778,
+      "sha256": "2bef0a2e8697",
+      "exists": true
     },
     {
-      "file": "main.toc",
-      "type": "toc",
-      "size_bytes": 5868
+      "path": "data_room_index.md",
+      "type": "AUDIT",
+      "size_bytes": 2378,
+      "sha256": "4c3551b4f23d",
+      "exists": true
     },
     {
-      "file": "main_current_text.txt",
-      "type": "txt",
-      "size_bytes": 105445
+      "path": "source_exhaustion_log.json",
+      "type": "AUDIT",
+      "size_bytes": 573,
+      "sha256": "fbb06f5b17c4",
+      "exists": true
     },
     {
-      "file": "missing_data_request_pack.csv",
-      "type": "csv",
-      "size_bytes": 430
+      "path": "source_exhaustion_log.md",
+      "type": "AUDIT",
+      "size_bytes": 848,
+      "sha256": "acb901cf2d9a",
+      "exists": true
     },
     {
-      "file": "missing_data_request_pack.json",
-      "type": "json",
-      "size_bytes": 844
+      "path": "unresolved_requirements.json",
+      "type": "AUDIT",
+      "size_bytes": 863,
+      "sha256": "91e393fbf8d4",
+      "exists": true
     },
     {
-      "file": "missing_data_request_pack.md",
-      "type": "md",
-      "size_bytes": 630
+      "path": "missing_data_request_pack.json",
+      "type": "AUDIT",
+      "size_bytes": 844,
+      "sha256": "714cd9141b0f",
+      "exists": true
     },
     {
-      "file": "research_brief.md",
-      "type": "md",
-      "size_bytes": 6006
+      "path": "missing_data_request_pack.md",
+      "type": "AUDIT",
+      "size_bytes": 630,
+      "sha256": "07956dfadf4f",
+      "exists": true
     },
     {
-      "file": "review_log.md",
-      "type": "md",
-      "size_bytes": 17633
-    },
-    {
-      "file": "source_exhaustion_log.json",
-      "type": "json",
-      "size_bytes": 573
-    },
-    {
-      "file": "source_exhaustion_log.md",
-      "type": "md",
-      "size_bytes": 848
-    },
-    {
-      "file": "unresolved_requirements.json",
-      "type": "json",
-      "size_bytes": 863
-    },
-    {
-      "file": "visual_review.md",
-      "type": "md",
-      "size_bytes": 9792
+      "path": "missing_data_request_pack.csv",
+      "type": "AUDIT",
+      "size_bytes": 430,
+      "sha256": "2e2572d91219",
+      "exists": true
     }
-  ],
-  "last_updated": "2026-06-23",
-  "governance_inventory_count": 22
+  ]
 }

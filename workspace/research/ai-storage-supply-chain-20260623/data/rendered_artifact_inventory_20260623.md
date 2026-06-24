@@ -1,41 +1,19 @@
-# Rendered Artifact Inventory
+# 渲染工件清单
 
-**Run date:** 2026-06-23
+> R208 治理轮询 · 最后更新：2026-06-24
 
-**Rendered files:** 19
+| 文件路径 | 类型 | 字节数 | SHA-256（前 12） |
+|---------|------|--------|------------------|
 
-**Current full-render directory:** `⚠ N/A`
-
-**Full-render valid:** False
-
-**Current exhibit directory:** `workspace/research/ai-storage-supply-chain-20260623/rendered`
-
-**Boundary:** Rendered artifact accounting only; not substantive completion of non-public data requirements.
-
-## By Type
-
-- **page_png:** 19
-
-## Files
-
-| File | Type | Size bytes |
-|---|---|---:|
-| `rendered/page-05.png` | `page_png` | 192034 |
-| `rendered/page-06.png` | `page_png` | 181377 |
-| `rendered/page-07.png` | `page_png` | 339178 |
-| `rendered/page-08.png` | `page_png` | 437440 |
-| `rendered/page-18.png` | `page_png` | 263347 |
-| `rendered/page-19.png` | `page_png` | 386869 |
-| `rendered/page-20.png` | `page_png` | 173579 |
-| `rendered/page-21.png` | `page_png` | 154753 |
-| `rendered/page-22.png` | `page_png` | 62114 |
-| `rendered/page-33.png` | `page_png` | 227660 |
-| `rendered/page-34.png` | `page_png` | 339091 |
-| `rendered/page-35.png` | `page_png` | 265769 |
-| `rendered/page-38.png` | `page_png` | 186484 |
-| `rendered/page-39.png` | `page_png` | 304216 |
-| `rendered/page-40.png` | `page_png` | 318931 |
-| `rendered/page-41.png` | `page_png` | 354067 |
-| `rendered/page-44.png` | `page_png` | 205892 |
-| `rendered/page-45.png` | `page_png` | 295394 |
-| `rendered/page-46.png` | `page_png` | 99894 |
+| sections/ch01_ic_summary.tex | RENDERED | 13913 | c86b1ec58124 |
+| sections/ch02_executive_summary.tex | RENDERED | 13060 | 2b9917a15881 |
+| sections/ch03_supply_chain_map.tex | RENDERED | 10368 | 7fb771d589d3 |
+| sections/ch04_ai_demand.tex | RENDERED | 14906 | b8e463f0fd11 |
+| sections/ch05_supply_price_cycle.tex | RENDERED | 20733 | 461459a0cf1d |
+| sections/ch06_competition_substitution.tex | RENDERED | 10802 | 9d93fda19ec8 |
+| sections/ch07_ashare_targets.tex | RENDERED | 8886 | c51dbf22a78c |
+| sections/ch08_valuation.tex | RENDERED | 15365 | 29e5cd0c51d5 |
+| sections/ch09_consensus_divergence.tex | RENDERED | 5930 | ddc2eb20799d |
+| sections/ch10_risk_stress.tex | RENDERED | 9881 | fc14c33ccbba |
+| sections/ch11_investment_reco.tex | RENDERED | 9951 | 7b35f4b6ceb6 |
+| sections/app_sources_audit.tex | RENDERED | 9849 | 305e189e5fa1 |

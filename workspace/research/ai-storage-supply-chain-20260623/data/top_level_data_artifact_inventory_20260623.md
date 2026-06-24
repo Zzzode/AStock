@@ -1,41 +1,19 @@
-# Top-Level Data Artifact Inventory
+# 顶层数据工件清单
 
-**Run date:** 2026-06-23
+> R208 治理轮询 · 最后更新：2026-06-24
 
-**Top-level data files:** 18
+| 文件路径 | 类型 | 字节数 | SHA-256（前 12） |
+|---------|------|--------|------------------|
 
-**Individually referenced in data-room index:** 15
-
-**Accounted by inventory:** 18
-
-**Purpose:** Account for every top-level file under data/.
-
-**Boundary:** File accounting only; not substantive completion of non-public data requirements.
-
-## By Type
-
-- **json:** 7
-- **md:** 11
-
-## Files
-
-| File | Type | Main index row | Category | Size bytes |
-|---|---|---|---|---:|
-| `claim_audit.md` | `md` | True | evidence summary | 21685 |
-| `consensus_analysis_raw.md` | `md` | False | evidence summary | 16981 |
-| `core_artifact_checksums_20260623.json` | `json` | True | machine-readable companion | 3328 |
-| `core_artifact_checksums_20260623.md` | `md` | True | evidence summary | 1863 |
-| `raw_data_artifact_inventory_20260623.json` | `json` | True | machine-readable companion | 1757 |
-| `raw_data_artifact_inventory_20260623.md` | `md` | True | evidence summary | 1127 |
-| `raw_financials.md` | `md` | False | raw singleton | 42882 |
-| `rendered_artifact_inventory_20260623.json` | `json` | True | machine-readable companion | 4000 |
-| `rendered_artifact_inventory_20260623.md` | `md` | True | evidence summary | 1377 |
-| `report_catalog.md` | `md` | False | evidence summary | 12857 |
-| `root_artifact_inventory_20260623.json` | `json` | True | machine-readable companion | 2229 |
-| `root_artifact_inventory_20260623.md` | `md` | True | evidence summary | 1224 |
-| `source_artifact_inventory_20260623.json` | `json` | True | machine-readable companion | 7171 |
-| `source_artifact_inventory_20260623.md` | `md` | True | evidence summary | 4911 |
-| `source_registry.json` | `json` | True | machine-readable companion | 18960 |
-| `source_registry.md` | `md` | True | evidence summary | 12072 |
-| `top_level_data_artifact_inventory_20260623.json` | `json` | True | machine-readable companion | 3635 |
-| `top_level_data_artifact_inventory_20260623.md` | `md` | True | evidence summary | 1983 |
+| data/raw_financials.md | RAW | 42882 | 2de74e59bac5 |
+| data/raw_market_data.md | RAW | 0 | MISSING |
+| data/report_catalog.md | RAW | 12857 | 79dc74feda93 |
+| data/consensus_analysis_raw.md | DERIVED | 16981 | fb5eed5705e2 |
+| data/verified_financials.md | DERIVED | 0 | MISSING |
+| data/verified_market_data.md | DERIVED | 0 | MISSING |
+| analysis/industry_landscape.md | ANALYSIS | 54538 | 1c080dc86c5a |
+| analysis/house_view.md | ANALYSIS | 0 | MISSING |
+| analysis/valuation_model.md | ANALYSIS | 0 | MISSING |
+| analysis/risk_framework.md | ANALYSIS | 0 | MISSING |
+| analysis/exhibit_plan.md | ANALYSIS | 39908 | 79deb50b7cfb |
+| analysis/valuation_audit.md | ANALYSIS | 0 | MISSING |

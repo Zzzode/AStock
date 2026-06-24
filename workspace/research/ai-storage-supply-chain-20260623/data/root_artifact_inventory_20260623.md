@@ -1,46 +1,22 @@
-# Root Artifact Inventory
+# 根工件清单
 
-**Run date:** 2026-06-23
+> R208 治理轮询 · 最后更新：2026-06-24
 
-**Root files:** 19
+| 文件路径 | 类型 | 字节数 | SHA-256（前 12） |
+|---------|------|--------|------------------|
 
-**Purpose:** Account for every top-level file in the research case directory.
-
-**Boundary:** Root artifact accounting only; not substantive completion of non-public data requirements.
-
-## By Type
-
-- **aux:** 1
-- **csv:** 1
-- **json:** 4
-- **log:** 1
-- **md:** 7
-- **out:** 1
-- **pdf:** 1
-- **tex:** 1
-- **toc:** 1
-- **txt:** 1
-
-## Files
-
-| File | Type | Size bytes |
-|---|---|---:|
-| `completion_audit_manifest.json` | `json` | 307 |
-| `completion_audit_manifest.md` | `md` | 778 |
-| `data_room_index.md` | `md` | 2378 |
-| `main.aux` | `aux` | 9444 |
-| `main.log` | `log` | 94254 |
-| `main.out` | `out` | 9733 |
-| `main.pdf` | `pdf` | 907898 |
-| `main.tex` | `tex` | 4945 |
-| `main.toc` | `toc` | 5868 |
-| `main_current_text.txt` | `txt` | 105445 |
-| `missing_data_request_pack.csv` | `csv` | 430 |
-| `missing_data_request_pack.json` | `json` | 844 |
-| `missing_data_request_pack.md` | `md` | 630 |
-| `research_brief.md` | `md` | 6006 |
-| `review_log.md` | `md` | 17633 |
-| `source_exhaustion_log.json` | `json` | 573 |
-| `source_exhaustion_log.md` | `md` | 848 |
-| `unresolved_requirements.json` | `json` | 863 |
-| `visual_review.md` | `md` | 9792 |
+| main.tex | RENDERED | 4945 | 90d28bf95a28 |
+| main.pdf | RENDERED | 907898 | 5ab63efa76ea |
+| main_current_text.txt | RENDERED | 105445 | 1b5faa114fe3 |
+| research_brief.md | PRIMARY | 6006 | 73e57694ba57 |
+| review_log.md | DERIVED | 21843 | 6d19583d4ca9 |
+| visual_review.md | DERIVED | 9792 | c3a24aa7e6aa |
+| completion_audit_manifest.json | AUDIT | 503 | 37db2fe05228 |
+| completion_audit_manifest.md | AUDIT | 778 | 2bef0a2e8697 |
+| data_room_index.md | AUDIT | 2378 | 4c3551b4f23d |
+| source_exhaustion_log.json | AUDIT | 573 | fbb06f5b17c4 |
+| source_exhaustion_log.md | AUDIT | 848 | acb901cf2d9a |
+| unresolved_requirements.json | AUDIT | 863 | 91e393fbf8d4 |
+| missing_data_request_pack.json | AUDIT | 844 | 714cd9141b0f |
+| missing_data_request_pack.md | AUDIT | 630 | 07956dfadf4f |
+| missing_data_request_pack.csv | AUDIT | 430 | 2e2572d91219 |

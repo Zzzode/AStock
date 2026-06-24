@@ -1,49 +1,139 @@
 {
-  "run_date": "2026-06-23",
-  "purpose": "Account for PRIMARY raw-level evidence inside top-level data/ and broker catalog.",
-  "raw_data_files": 4,
-  "present_raw_files": 4,
-  "missing_raw_files": 0,
-  "by_type": {
-    "md": 3,
-    "json": 1
-  },
-  "boundary": "Raw-file accounting only; not substantive completion of non-public data requirements.",
+  "schema_version": "2.0",
+  "polling_round": "R208",
+  "last_updated": "2026-06-24",
   "files": [
     {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/data/raw_financials.md",
-      "level": "L3",
-      "note": "L3 卖方一致预期解析 + 原始财务抓取摘要",
-      "type": "md",
+      "path": "data/raw_financials.md",
+      "type": "RAW-FINANCIAL",
       "size_bytes": 42882,
-      "sha256": "2de74e59bac52a1d6dc50b490c301729d1e78f9019a722d5d8765040e1c371e0",
+      "sha256": "2de74e59bac5",
       "exists": true
     },
     {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/data/report_catalog.md",
-      "level": "L3",
-      "note": "L3 卖方研报目录 + 摘要清单",
-      "type": "md",
+      "path": "data/raw_market_data.md",
+      "type": "RAW-MARKET",
+      "size_bytes": 0,
+      "sha256": "MISSING",
+      "exists": false
+    },
+    {
+      "path": "data/report_catalog.md",
+      "type": "RAW-BROKER",
       "size_bytes": 12857,
-      "sha256": "79dc74feda93a89c152805a077e436476af3c47bf84967ff764839eef926cbbb",
+      "sha256": "79dc74feda93",
       "exists": true
     },
     {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/data/consensus_analysis_raw.md",
-      "level": "L5",
-      "note": "L5 机构一致预期聚合原始数据",
-      "type": "md",
+      "path": "data/consensus_analysis_raw.md",
+      "type": "RAW-CONSENSUS",
       "size_bytes": 16981,
-      "sha256": "fb5eed5705e27b9ae3d85d6eba28c83d36ecd19afb021798b96c064deb66231c",
+      "sha256": "fb5eed5705e2",
       "exists": true
     },
     {
-      "path": "workspace/research/ai-storage-supply-chain-20260623/sources/broker-reports/2026-06-23/_catalog_draft.json",
-      "level": "L3",
-      "note": "L3 卖方研报捕获目录草稿",
-      "type": "json",
+      "path": "sources/broker-reports/2026-06-23/_catalog_draft.json",
+      "type": "RAW-BROKER",
       "size_bytes": 38799,
-      "sha256": "3dbd263ee639913289448d1638bbbf8173c5841bb354ca439a40812568ed9de9",
+      "sha256": "3dbd263ee639",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-04-15_国元证券_澜起科技_2025年年报点评_产品结构升级改善盈利能力_运力芯片增强业.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 967581,
+      "sha256": "afbffe3dc3c3",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-04-20_开源证券_北方华创_公司信息更新报告_营收实现稳健增长_前瞻投入研发布局行业上行.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 875572,
+      "sha256": "b659d1690bb4",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-04-21_东吴证券_北方华创_2025年报点评_营收稳步增长_平台化布局加速推进.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 418452,
+      "sha256": "ef2bb7a84643",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-02_东吴证券_北方华创_2026一季报点评_营收稳步增长_平台化布局加速推进.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 413445,
+      "sha256": "351b48fc5c34",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-07_华源证券_长电科技_盈利水平持续提升_产品升级与研发扩产双轮驱动.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 9302107,
+      "sha256": "442143b8bec1",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-07_国信证券_江波龙_1Q26归母净利润同比增长2644_05%_端侧应用多维拓展.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 602890,
+      "sha256": "d0dba97bd85a",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-07_爱建证券_江波龙_2025年报&2026Q1点评_国产存储模组龙头进入业绩爆发.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 521643,
+      "sha256": "38d0e62f2f4c",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-11_开源证券_澜起科技_公司深度报告_内存互连全球龙头_发力AI运力打造第二增长中枢.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 4391060,
+      "sha256": "5f1b303907f3",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-12_华鑫证券_长电科技_公司事件点评报告_盈利能力复苏_先进封装龙头受益于AI算力强.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 572639,
+      "sha256": "756c1bd5bd03",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-18_中航证券_兆易创新_存储量价齐升空间打开_定制化存储进程加速.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 16463319,
+      "sha256": "f19a2532a3a3",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-20_东海证券_澜起科技_公司深度报告_全球互连芯片龙头厂商_聚焦“运力”构建AI战略.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 2919913,
+      "sha256": "dc1cc77d423c",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-05-27_中邮证券_兆易创新_全芯赋能_智创未来.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 544955,
+      "sha256": "f18a6b0f2683",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-06-22_国元证券_行业_半导体与半导体生产设备行业周报_英伟达Rubin开始量产交付.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 1205478,
+      "sha256": "b551e1e3818c",
+      "exists": true
+    },
+    {
+      "path": "sources/broker-reports/2026-06-23/2026-06-22_爱建证券_行业_电子行业周报_SK_Hynix送样12层HBM4E_AI高端.pdf",
+      "type": "RAW-SOURCE",
+      "size_bytes": 933815,
+      "sha256": "126f3e06bd61",
       "exists": true
     }
   ]
