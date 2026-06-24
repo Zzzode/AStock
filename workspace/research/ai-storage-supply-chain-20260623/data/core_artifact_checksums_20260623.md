@@ -1,6 +1,6 @@
-# Core Artifact Checksums (20260623 · R229 · stage=final_v3_229th_complete)
+# Core Artifact Checksums (20260623 · R230 · stage=final_v3_230th_complete)
 
-- global_sha256_prefix: 9cb9c7b1a5b7
+- global_sha256_prefix: 47189db8cf33
 
 | # | artifact | size_bytes | sha256 | category |
 |---|---|---|---|---|
@@ -13,8 +13,8 @@
 | 7 | raw_financials.md | 42,882 | 2de74e59bac5 | DATA_RAW |
 | 8 | report_catalog.md | 12,857 | 79dc74feda93 | DATA_CATALOG |
 | 9 | consensus_analysis_raw.md | 16,981 | fb5eed5705e2 | DATA_CONSENSUS |
-| 10 | source_registry.md | 18,139 | dc12a5f8536e | DATA_SOURCE_REGISTRY |
-| 11 | source_registry.json | 60,824 | 7114bfba8c7b | DATA_SOURCE_REGISTRY |
-| 12 | claim_audit.md | 21,295 | 8cbeb7b0b2ac | DATA_CLAIM_AUDIT |
-| 13 | completion_audit_manifest.md | 886 | 3d7b6100714d | MANIFEST_COMPLETION_AUDIT |
-| 14 | completion_audit_manifest.json | 2,035 | fc7ece432bb2 | MANIFEST_COMPLETION_AUDIT |
+| 10 | source_registry.md | 18,139 | 5496b93c09f4 | DATA_SOURCE_REGISTRY |
+| 11 | source_registry.json | 60,824 | bc40d19fb682 | DATA_SOURCE_REGISTRY |
+| 12 | claim_audit.md | 21,295 | cc3200c3e732 | DATA_CLAIM_AUDIT |
+| 13 | completion_audit_manifest.md | 886 | 4b828fd93765 | MANIFEST_COMPLETION_AUDIT |
+| 14 | completion_audit_manifest.json | 1,999 | df99a219c574 | MANIFEST_COMPLETION_AUDIT |
