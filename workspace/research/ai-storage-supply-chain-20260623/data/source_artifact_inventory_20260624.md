@@ -1,7 +1,7 @@
-# Source Artifact Inventory（R242 · 3 files）
+# Source Artifact Inventory（R243 · 3 files）
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|
-|1|source_registry.md|`3f87a89c2e68`|18,139|
-|2|source_registry.json|`d97d259d7c53`|60,728|
-|3|claim_audit.md|`7929c4ecead8`|21,300|
+|1|source_registry.md|`762d5cd7934f`|18,139|
+|2|source_registry.json|`bf90a7465107`|60,728|
+|3|claim_audit.md|`651cd1967172`|21,300|
