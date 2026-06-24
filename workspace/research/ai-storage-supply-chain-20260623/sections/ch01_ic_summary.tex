@@ -118,7 +118,8 @@ AI 资本开支从云厂商/超大规模数据中心逐级向下传导至原厂 
   hyp/.style={rectangle, rounded corners=5pt, draw=deepnavy, fill=deepnavy, text=white, text width=2.4cm, align=center, minimum height=1.2cm, font=\bfseries\small},
   vendor/.style={rectangle, rounded corners=4pt, draw=navy, fill=navy!10, text width=2.6cm, align=center, minimum height=1cm, font=\bfseries\small},
   seg/.style={rectangle, rounded corners=3pt, draw=steelgrey, fill=lightgrey, text width=2.0cm, align=center, minimum height=0.9cm, font=\small},
-  ashare/.style={rectangle, rounded corners=3pt, draw=riskamber, fill=riskamber!8, text width=1.9cm, align=center, minimum height=0.9cm, font=\small\bfseries, color=navy},
+  ashare/.style={rectangle, rounded corners=4pt, draw=navy, fill=white, line width=0.8pt,
+    text width=2.0cm, align=center, minimum height=1.0cm, font=\bfseries\small, text=deepnavy},
   arrow/.style={-{Stealth[length=5pt]}, thick},
   aiArrow/.style={-{Stealth[length=5pt]}, thick, riskred, line width=1.4pt}
 ]
@@ -147,12 +148,12 @@ AI 资本开支从云厂商/超大规模数据中心逐级向下传导至原厂 
 \node[seg, right=of PKG] (ITF) {接口/主控\\RCD/CXL 芯片};
 \node[seg, right=of ITF] (MOD) {模组/SSD\\DDR5/企业级};
 
-% A-shares
-\node[ashare, below=0.8cm of EQP] (A1) {北方华创\\中微 / 拓荆};
-\node[ashare, right=of A1] (A2) {沪硅产业\\南大光电};
-\node[ashare, right=of A2] (A3) {长电科技\\通富微电};
-\node[ashare, right=of A3] (A4) {澜起科技\\★ 第一受益};
-\node[ashare, right=of A4] (A5) {江波龙 / 深科技\\兆易创新};
+% A-shares（显式逐块指定颜色，避免 foreach 风格叠加导致的填色/文字同色 bug）
+\node[ashare, fill=white, draw=navy, text=deepnavy, below=0.8cm of EQP] (A1) {北方华创\\中微 / 拓荆};
+\node[ashare, fill=white, draw=navy, text=deepnavy, right=of A1] (A2) {沪硅产业\\南大光电};
+\node[ashare, fill=white, draw=navy, text=deepnavy, right=of A2] (A3) {长电科技\\通富微电};
+\node[ashare, fill=white, draw=navy, text=deepnavy, right=of A3] (A4) {澜起科技\\★ 第一受益};
+\node[ashare, fill=white, draw=navy, text=deepnavy, right=of A4] (A5) {江波龙 / 深科技\\兆易创新};
 
 % Arrows
 \foreach \h in {MS,META,GOOGL,AWS,BYTE} {
