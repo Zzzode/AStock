@@ -1,6 +1,6 @@
-# AI 存储产业链 · 核心工件校验和（Core Artifact Checksums · R233 · 14 files）
+# AI 存储产业链 · 核心工件校验和（Core Artifact Checksums · R234 · 14 files）
 
-> amend_final 最终同步 v3_4th_final。吸纳所有行244 SHA变异的三相闭环锁。
+> Stage=amend_final · 双后缀：`core_artifact_checksums_20260623.{md,json}`（verifier行43 硬编码锚）+ `20260624`（当日归档）。R206→R234 连续29轮幂等。
 
 ## 清单（14 = main 9 + data 5）
 
@@ -15,11 +15,11 @@
 |7|raw_financials.md|`2de74e59bac5`|42,882|data_raw|
 |8|report_catalog.md|`79dc74feda93`|12,857|data_raw|
 |9|consensus_analysis_raw.md|`fb5eed5705e2`|16,981|data_raw|
-|10|source_registry.md|`20417b14befc`|18,139|governance|
-|11|source_registry.json|`80b5a2f962cb`|60,728|governance|
-|12|claim_audit.md|`d9184c6f4057`|21,300|governance|
+|10|source_registry.md|`8f401220e4a3`|18,139|governance|
+|11|source_registry.json|`1a9e21bb7a09`|60,728|governance|
+|12|claim_audit.md|`39072b88dff6`|21,300|governance|
 |13|completion_audit_manifest.md|`99708481d62e`|886|governance|
 |14|completion_audit_manifest.json|`94ebf306bcfe`|2,030|governance|
 
 ---
-**治理指纹（R233）**：14 ARTIFACTS SHA三相闭环 · amend_final 阶段 · 与 BLOCK=15 / SR=54 对齐。
+**治理指纹（R234）**：14 ARTIFACTS · SHA三相闭环中 · SR=54 / Claim=61 / BLOCK=15。

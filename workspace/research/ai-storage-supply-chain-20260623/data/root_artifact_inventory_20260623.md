@@ -1,4 +1,4 @@
-# AI 存储产业链 · Root Artifact Inventory（R233 · 14 files）
+# AI 存储产业链 · Root Artifact Inventory（R234 · 14 files）
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|
@@ -11,10 +11,10 @@
 |7|raw_financials.md|`2de74e59bac5`|42,882|
 |8|report_catalog.md|`79dc74feda93`|12,857|
 |9|consensus_analysis_raw.md|`fb5eed5705e2`|16,981|
-|10|source_registry.md|`20417b14befc`|18,139|
-|11|source_registry.json|`80b5a2f962cb`|60,728|
-|12|claim_audit.md|`d9184c6f4057`|21,300|
+|10|source_registry.md|`8f401220e4a3`|18,139|
+|11|source_registry.json|`1a9e21bb7a09`|60,728|
+|12|claim_audit.md|`39072b88dff6`|21,300|
 |13|completion_audit_manifest.md|`99708481d62e`|886|
-|14|completion_audit_manifest.json|`6f8e4c53a406`|2,029|
+|14|completion_audit_manifest.json|`3623b5c589ce`|2,041|
 
-**治理指纹（R233）**：root_artifact_inventory inventory twin · R206→R233 连续 28 轮。Twin-row-count 容差 ≤35（verifier 行115）。
+**治理指纹（R234）**：root_artifact_inventory twin · stage=step4-final · R206→R234 连续29轮。Twin-row-count 容差≤35（verifier行115）。
