@@ -1,4 +1,4 @@
-# 核心产物校验和（Core Artifact Checksums · R215 Refresh · 2026-06-23）
+# 核心产物校验和（Core Artifact Checksums · R216 Refresh · 2026-06-23）
 - **治理纪律**：manifest→verifier→刷新checksums（最终态）。Stage=final。共 14 项 DERIVED_CORE。
 
 |#|文件名|Size (bytes)|SHA-256（前16字）|Path（截断显示）|
