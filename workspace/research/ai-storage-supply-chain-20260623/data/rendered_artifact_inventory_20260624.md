@@ -1,7 +1,7 @@
-# Rendered Artifact Inventory（20260624 · R220）
+# Rendered Artifact Inventory（20260624 · R221 第16轮）
 
-> 双后缀策略：当日文件（20260624）生成后会拷贝至 20260623（verifier.py:43 KEY_EXISTS 硬编码锚）。
-> 文件分类语义严格按 RESEARCH_WORKSPACE_CONVENTIONS.md。Primary 不允许手改。
+> 双后缀：当日 20260624 生成 → 后续拷贝至 20260623（verifier KEY_EXISTS 硬编码锚）。
+> PRIMARY 不允许手改。治理文件需严格按 RESEARCH_WORKSPACE_CONVENTIONS.md 分类。
 
 |相对路径|文件分类|字节数|SHA-256[:16]|生成时间(UTC)|
 |---|---|---|---|---|

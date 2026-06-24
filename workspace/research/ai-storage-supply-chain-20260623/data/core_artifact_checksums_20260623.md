@@ -1,10 +1,11 @@
-# Core Artifact Checksums（stage=final · R220 · 20260623 KEY_EXISTS 锚 + 20260624 当日）
+# Core Artifact Checksums（stage=final · R221 第16轮 · 双后缀 20260623 KEY_EXISTS + 20260624 当日）
 
-> stage=final 触发：manifest FIRST → Verifier Run-1 (行244) 自写回 manifest SHA → 本文件刷新 → Verifier Run-2 稳态 PASS=108/0/2。
-> 双后缀：*_20260623.* = KEY_EXISTS 硬编码锚；*_20260624.* = R220 归档。
+> stage=final 触发：manifest FIRST → Verifier Run-1 (行244) 自写回 manifest SHA → 本文件刷新（吸收变异）→ Verifier Run-2 稳态 PASS=108/0/2。
+> 双后缀策略（永久）：*_20260623.* = KEY_EXISTS 硬编码治理锚；*_20260624.* = R221 当日归档。
 
-**治理指纹（R220 · 第15轮）**：14 核心 · SR=54 · Claims=61 · Grade 9/44/7/1 · BLOCK=15 · Verifier PASS=108/0/2 gate=PUBLISH
-**顺序纪律（不可逆）**：①真理锚拷贝 ②manifest→V1→刷checksums→V2 ③Python Path.rglob NUL-safe
+**治理指纹（R221 · 第16轮）**：14 核心工件 · SR=54 · Claims=61 · Grade 9/44/7/1 · BLOCK=15 · Verifier PASS=108/0/2 gate=PUBLISH
+**顺序纪律（不可逆）**：①真理锚 R211→R221（元组+COLUMNS zip）② manifest→V1→刷checksums→V2 ③Python Path.rglob 零空格安全
+**合规标识**：[CONSISTENCY_OK · DUAL_SUFFIX_OK · STAGE_FINAL_AFTER_RUN1]
 **Twin 行容差**：md/json 行计数 ≤35
 
 |Artifact 路径|文件分类|说明|字节数|SHA-256[:16]|最后修改(UTC)|
@@ -18,11 +19,17 @@
 |data/raw_financials.md|PRIMARY_COLLECTED|原始财报（Phase1）|42,882|2de74e59bac52a1d|2026-06-23T12:56:52+00:00|
 |data/report_catalog.md|PRIMARY_COLLECTED|券商报告目录|12,857|79dc74feda93a89c|2026-06-23T11:07:18+00:00|
 |data/consensus_analysis_raw.md|DERIVED_INTERIM|卖方共识原始|16,981|fb5eed5705e27b9a|2026-06-23T11:09:31+00:00|
-|data/source_registry.md|DERIVED_CORE|来源注册表（治理）|18,691|405ca3b449abf8e9|2026-06-24T06:15:14+00:00|
-|data/source_registry.json|DERIVED_CORE|来源注册表（机器）|34,497|0868ec087d1903f0|2026-06-24T06:15:14+00:00|
-|data/claim_audit.md|DERIVED_CORE|主张审计表（治理）|22,201|6b070792b07c9b00|2026-06-24T06:15:14+00:00|
-|completion_audit_manifest.md|DERIVED_GATE|完成审计清单(人读)|874|edf8686dbb9c69cb|2026-06-24T06:15:14+00:00|
-|completion_audit_manifest.json|DERIVED_GATE|完成审计清单(机器,含verifier写回)|2,123|44a91bf98fd21cc1|2026-06-24T06:16:02+00:00|
+|data/source_registry.md|DERIVED_CORE|来源注册表（治理）|18,102|938290266ed8a651|2026-06-24T06:33:45+00:00|
+|data/source_registry.json|DERIVED_CORE|来源注册表（机器）|34,497|e8c410645916e3e6|2026-06-24T06:33:45+00:00|
+|data/claim_audit.md|DERIVED_CORE|主张审计表（治理）|21,044|6795c1d08de87432|2026-06-24T06:33:45+00:00|
+|completion_audit_manifest.md|DERIVED_GATE|完成审计清单(人读)|556|0c028bf2153835d4|2026-06-24T06:33:45+00:00|
+|completion_audit_manifest.json|DERIVED_GATE|完成审计清单(机器,verifier写回)|2,186|6793bd1c06546433|2026-06-24T06:34:46+00:00|
 
 ---
-复验：`cd /Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623 && for f in main.pdf main.tex main_current_text.txt research_brief.md review_log.md visual_review.md data/source_registry.md data/source_registry.json data/claim_audit.md data/raw_financials.md data/report_catalog.md data/consensus_analysis_raw.md completion_audit_manifest.md completion_audit_manifest.json; do [ -f "$f" ] && echo "--- $f ($(wc -c < $f) B)" && shasum -a 256 "$f" | cut -c1-16; done`
+**复验脚本（本地 SHA+Size）**：
+```bash
+cd /Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623
+for f in main.pdf main.tex main_current_text.txt research_brief.md review_log.md visual_review.md data/raw_financials.md data/report_catalog.md data/consensus_analysis_raw.md data/source_registry.md data/source_registry.json data/claim_audit.md completion_audit_manifest.md completion_audit_manifest.json; do
+  [ -f "$f" ] && echo "--- $f ($(wc -c < $f) B)" && shasum -a 256 "$f" | cut -c1-16
+done
+```

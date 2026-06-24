@@ -1,9 +1,9 @@
-# Source Artifact Inventory（20260624 · R220）
+# Source Artifact Inventory（20260624 · R221 第16轮）
 
-> 双后缀策略：当日文件（20260624）生成后会拷贝至 20260623（verifier.py:43 KEY_EXISTS 硬编码锚）。
-> 文件分类语义严格按 RESEARCH_WORKSPACE_CONVENTIONS.md。Primary 不允许手改。
+> 双后缀：当日 20260624 生成 → 后续拷贝至 20260623（verifier KEY_EXISTS 硬编码锚）。
+> PRIMARY 不允许手改。治理文件需严格按 RESEARCH_WORKSPACE_CONVENTIONS.md 分类。
 
-|相对路径|文件分类|文件名|字节数|SHA-256[:16]|采集/生成时间(UTC)|
+|相对路径|文件分类|文件名|字节数|SHA-256[:16]|采集时间(UTC)|
 |---|---|---|---|---|---|
 |sources/broker-reports/2026-06-23/2026-04-15_国元证券_澜起科技_2025年年报点评_产品结构升级改善盈利能力_运力芯片增强业.pdf|PRIMARY_SOURCE_BROKER_PDF|2026-04-15_国元证券_澜起科技_2025年年报点评_产品结构升级改善盈利能力_运力芯片增强业.pdf|967581|afbffe3dc3c338d0|2026-06-23T07:13:15+00:00|
 |sources/broker-reports/2026-06-23/2026-04-20_开源证券_北方华创_公司信息更新报告_营收实现稳健增长_前瞻投入研发布局行业上行.pdf|PRIMARY_SOURCE_BROKER_PDF|2026-04-20_开源证券_北方华创_公司信息更新报告_营收实现稳健增长_前瞻投入研发布局行业上行.pdf|875572|b659d1690bb4f0e5|2026-06-23T07:15:20+00:00|
