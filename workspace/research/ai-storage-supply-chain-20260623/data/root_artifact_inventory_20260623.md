@@ -1,7 +1,7 @@
-# root_artifact · Artifact Inventory (R211 Refresh)
-- **Generated**：2026-06-24 R211 Polling
+# root_artifact · Artifact Inventory (R212 Refresh)
+- **Generated**：2026-06-24 R212 Polling
 - **Items**：15
-- **治理分类**：PRIMARY 非再生源 / DERIVED_CORE 治理孪生 / TEMP 运行时
+- **治理分类**：PRIMARY / DERIVED_CORE / TEMP
 
 |#|Path|Size (bytes)|SHA-256[:12]|Description (≤45)|
 |---|---|---|---|---|
@@ -10,8 +10,8 @@
 |3|research_brief.md|6,006|73e57694ba57|research_brief.md|
 |4|review_log.md|21,843|6d19583d4ca9|review_log.md|
 |5|visual_review.md|9,792|c3a24aa7e6aa|visual_review.md|
-|6|completion_audit_manifest.json|504|ef8362218194|completion_audit_manifest.json|
-|7|completion_audit_manifest.md|778|2bef0a2e8697|completion_audit_manifest.md|
+|6|completion_audit_manifest.json|1,689|36fad3b183d4|completion_audit_manifest.json|
+|7|completion_audit_manifest.md|1,018|55dc2b20e943|completion_audit_manifest.md|
 |8|data_room_index.md|2,378|4c3551b4f23d|data_room_index.md|
 |9|source_exhaustion_log.json|573|fbb06f5b17c4|source_exhaustion_log.json|
 |10|source_exhaustion_log.md|848|acb901cf2d9a|source_exhaustion_log.md|

@@ -1,7 +1,7 @@
-# rendered_artifact · Artifact Inventory (R211 Refresh)
-- **Generated**：2026-06-24 R211 Polling
+# rendered_artifact · Artifact Inventory (R212 Refresh)
+- **Generated**：2026-06-24 R212 Polling
 - **Items**：3
-- **治理分类**：PRIMARY 非再生源 / DERIVED_CORE 治理孪生 / TEMP 运行时
+- **治理分类**：PRIMARY / DERIVED_CORE / TEMP
 
 |#|Path|Size (bytes)|SHA-256[:12]|Description (≤45)|
 |---|---|---|---|---|
