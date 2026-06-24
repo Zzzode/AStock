@@ -1,4 +1,10 @@
-# AI 存储产业链研报 · 图表格式 & 数据正确性全面审查报告
+# AI 存储产业链研报 · 图表格式 & 数据正确性全面审查报告 · 📁 SKILL 实战样例
+> ⚠️ **这不是通用审查模板**：本文件是 `exhibit-format-reviewer` skill 在 AI 存储产业链深度研报（20260624）上的一次真实执行产出，仅用于展示 skill 实际工作流的输出格式和问题粒度。
+> 对其他研报执行审查时，请调用 skill 本身生成对应项目的独立报告，切勿复制本文件里的任何行业硬编码结论。
+>
+> 本样例识别问题：10 张图 × 8 章节 → 8 Bug Class × 15 个问题实例 → BLOCK 12 项 / SIGNIFICANT 4 项 / MINOR 3 项。
+> 执行环境：XeLaTeX / MacTeX 2025 / macOS Darwin 25.5。
+
 **Review Version**: R1（基于 PDF 2026-06-24 编译版 + 8 张用户截图对照）
 **Reviewer Scope**: 图 2-1 / 3-1 / 4-2 / 5-1(×2) / 5-2 / 6-1 / 7-1 / 8-1 / 10-1，共 **10 张 TikZ/pgfplots 图表**
 **Hard Acceptance Gates**: ① 文字可见性（fill ≠ text color）② 图例-填色语义一致性 ③ 数据与正文章节一致性 ④ 图例/轴标/脚注完整性 ⑤ Overfull \(\hbox > 20\mathrm{pt}\) 清零

@@ -1,202 +1,306 @@
 ---
 name: exhibit-format-reviewer
-description: 图表/表格格式与数据正确性审查。对 LaTeX XeLaTeX 研报中的 TikZ/pgfplots/tabularx/longtable 等所有 exhibit 执行投行级硬门槛审查：颜色宏污染/文字不可见、legend-切片/柱色语义一致、Overfull \(\hbox >20pt\) 清零、数值与正文及表格交叉一致、标签无裁切/重叠、pgfplots cycle list 正确、fontawesome 宏 fallback 阻断、重复图表清理。输出分级 Reviewer 报告并给出精准的 LaTeX 代码级修复建议。
+description: 通用投行级研报图表/表格 · 格式 + 正确性审查 skill。面向任意 LaTeX XeLaTeX 研究报告（行业深度 / 单票点评 / 图表手册 / 投委会概要 / 估值年报 / 压力测试等），执行 exhibitbox 环境全量扫描（TikZ/pgfplots/tabularx/longtable），覆盖可见性、颜色宏污染、fontawesome5 宏 fallback、legend 语义匹配、数值单位交叉一致、重复图表、裁切重叠、Overfull hbox 硬门槛 8 大维度，输出分级 BLOCK / SIGNIFICANT / MINOR / NOTE 审查报告并给出 LaTeX 代码级修复。独立于任何具体项目，不包含任何 AI 存储 / 半导体 / PCB 的硬编码。
 ---
 
-# Exhibit Format & Correctness Reviewer
+# Exhibit Format & Correctness Reviewer · 通用投行级图表审查
 
-可复用的投行级图表/表格格式 + 正确性审查流水线。覆盖所有 LaTeX/XeLaTeX exhibit（TikZ 架构图/pgfplots 统计图/堆叠柱·饼·散点·气泡/tabularx 表/longtable 附录表/exhibitbox 外框）。
+**Scope**: 所有 XeLaTeX 编译的 LaTeX 研报，无论行业、主题、篇幅。  
+**Design Goal**: 通用、无行业硬编码、可复用、输出可追踪。  
+**Role companion**: `.agents/team/exhibit-format-reviewer.md`（审查员人格与详细检查清单）。
 
-## When to Use
+---
 
-- 用户说"图表看起来有问题"、"这个蓝色块没有文字"、"颜色不对"、"表格超出边界"。
-- 用户上传了 PDF 截图并明确要求"帮我审查一下图表格式/正确性"。
-- LaTeX 一轮编译后，任何图表/表格的视觉检查环节（render review / visual QA）。
-- Phase `Render Review`（equity-research skill 的写 → Render Review → Publish 阶段）。
-- **不要用**于章节叙事结构、估值逻辑、投资观点审查——那些属于 `research-report-review` skill。
+## When to Invoke
 
-## 审查输入（必须先确认可用）
+✅ **正确用法**（必须显式提供 `<project_root>`）：
+```
+/exhibit-format-reviewer  workspace/research/PCB-investment-2026Q2/
+/exhibit-format-reviewer  workspace/research/quantitative-strategy-2026/
+/exhibit-format-reviewer  <任意研报根目录，包含 sections/*.tex + main.tex>
+```
 
-| Item | Required | Location |
-|------|:---:|---|
-| ① LaTeX 源文件（sections/ch*.tex，exhibitbox 环境内嵌的 tikz/tabularx/longtable） | ✅ | `<project>/sections/*.tex` |
-| ② 模板 preamble（颜色宏、fontawesome5、tikz 全局 style、exhibitbox v6 双寄存器语义） | ✅ | `.agents/templates/preamble.tex` |
-| ③ 编译日志（Overfull / Underfull 审计，fontawesome5 缺字 fallback 警告） | ✅ | `<project>/*.log` |
-| ④ 用户提供的 PDF 截图（Image #2...#N）| 可选 | 用户消息附件 |
-| ⑤ 同项目对应数据锚：表 5-1 财务数据、S-ID 来源注册表 | 可选 | `data/*.md` 或 sections 内联 |
+✅ **自然语言触发**：
+- "帮我审查这份研报的所有图表格式/正确性"
+- "图表看起来有问题，做个全面的 reviewer"
+- "render review / visual QA"
+- 配合 `equity-research` skill 的 Render Review → Publish 阶段自动调用
 
-如果 ① 缺失，先让用户提供 sections 目录或 `find -name "*.tex"` 定位；如果 ② 缺失，**必须**读取 preamble 再下任何颜色相关的结论。
+❌ **不要用于**：
+- 纯叙事 / 估值逻辑 / 合规来源审查 → `research-report-review`
+- 纯估值算术 / 区间半宽 / 去单点 → `valuation-auditor`
+- S-ID 可追溯 / 来源治理 → `source-governance-analyst`
+- 乐观偏差 / 卖方 vs AStock 分歧 → `contrarian-analyst`
 
-## 审查清单（硬顺序，从上到下，任何 FAIL 即 BLOCK）
+---
 
-### 层级一：可见性 & 颜色硬门槛（BLOCK 级，任何 FAIL = 不可发布）
+## 工作流（通用，对任意 `<project_root>`）
 
-**V-1 fill=text 同色导致的"深蓝空块"病（TikZ 颜色宏继承污染）**
-  - 扫描所有 `\tikzset`/`[` style 定义，识别含风险色（riskamber/riskred 等）的 style：`ashare`、`ashar`、`bal`、`subp` 等。
-  - **触发模式**：父节点或 `\draw[->, navy]` 路径通过作用域把 `color=...`（`\textcolor` 的简写）覆盖到相邻子孙节点的 text。
-  - **修复标准（双保险，缺一不可）**：
-    1. style 定义中必须把颜色写死：`fill=white, draw=navy, text=deepnavy` 而不是 `fill=#1!8, color=navy`。
-    2. 每个具体节点（A1~A6、Pool B/D 等）**逐节点显式**再写一遍 `fill=white, draw=navy, text=deepnavy`。
-  - **覆盖的典型图**：ch01 图 1-2 资金传导、ch03 图 3-1 产业链七层、ch04 图 4-2 CXL 拓扑、ch05 图 5-2 供需桥接 BAL 块。
+```
+Step 1. 项目发现
+  └─ 输入：<project_root>（绝对 or 相对）
+     - 若缺：遍历 workspace/research/*/ 找最新 main.tex
+  └─ 必须定位以下项，缺失告警但继续：
+     (a) main.tex        → 章节结构 & preamble 入口
+     (b) sections/*.tex  → 所有 exhibitbox 载体
+     (c) *.log           → 若不存在则提示先跑 xelatex
+     (d) <preamble>      → main.tex 中 \input{...preamble.tex} 路径
+     (e) main.pdf / 截图 → 若有，做代码×视觉交叉校验（可选）
+```
 
-**V-2 fontawesome5 宏 fallback 成裸文本（`aExclamationTriangle` 病）**
-  - `grep -rn "\\\\fa[A-Z]" sections/*.tex` 找出所有 `\faExclamationTriangle`、`\faCloud`、`\faYenSign`、`\faFlagCheckered` 等符号。
-  - 任何在 PDF 中渲染为 `aExclamationTriangle`、`aCloud`、`aYenSign` 的符号 = **必须立即修复**。
-  - **根因**：`\usepackage[fixed]{fontawesome5}` 的 fixed 选项 + xeCJK 下 Times New Roman 缺字 → `\faicon{exclamation-triangle}` 的破折号寻址失败，宏 fallback 成字符串前缀 `a` + camelCase 名称。
-  - **修复（preamble 全局兜底 + 节点内双写）**：
-    1. preamble 末尾加：`\def\faExclamationTriangle{\ensuremath{\blacktriangle}\kern-0.25em}`（或 `\faIcon[regular]{exclamation-triangle}`，注意命名空间从 `\faIcon` 走，从不走 `\fa` 驼峰变体）。
-    2. 表/图里关键显式节点（如 ch03 L72 keystat、ch06 L107 国产HBM行首）写 `$\triangle$` math 版兜底。
-  - **必须逐处核实**：用户截图中出现 `aExclamationTriangle` 字样 = BLOCK，不接受"再编译试试"。
+**Step 1 代码级发现命令**（项目无关，纯 bash）：
+```bash
+# 1. 列所有章节
+find "$PROJ" -path "*/sections/*.tex" -type f | sort
+# 2. 定位 preamble（从 main.tex 解析 \input 路径）
+grep -oE '\\input\{[^}]+\}' "$PROJ/main.tex" | head -5
+# 3. 列所有 exhibitbox 环境编号
+grep -nE '\\begin\{exhibitbox\}\[图 [0-9]+-[0-9]+'  "$PROJ"/sections/*.tex
+grep -nE '\\begin\{exhibitbox\}\[表 [0-9]+-[0-9]+'  "$PROJ"/sections/*.tex
+# 4. 提取 Overfull 审计
+grep -oE 'Overfull [^[]+ [0-9]+(\.[0-9]+)?pt too wide' "$PROJ"/*.log
+# 5. 提取 fontawesome 宏
+grep -rnE '\\fa[A-Z][a-zA-Z]+' "$PROJ"/sections/*.tex
+```
 
-**V-3 文字裁切（节点 minimum height 不足 / text width 不足 / resizebox 缩放不足）**
-  - 扫描每个 style 的 `minimum height` × 行数 × 行距。规则：1 行中文 = `>= 0.85cm`（inner sep 2pt 时）；2 行 = `>= 1.1cm`；3 行 = `>= 1.4cm`。
-  - `resizebox` 缩放比 < 0.85 触发告警（< 0.80 强制重排：加文字折行、减小字级、加宽 text width）。
-  - **典型病**：ch02 图 2-1 `subp` 框首字被顶边切（`minimum height 0.8cm` 不够）、ch05 图 5-2 需求卡片右边 "补偿需求 +25%" 6 字整体被吞进右边框（`text width 3.2cm resize 0.80 × 卡片`）、ch10 图 10-1 R1 气泡顶部 "HBM ASP -30%" 2 行上半 2mm 被切（circle 内切正方形 = `size/√2`，三行字高 1.44cm 必须 > 内切边长）。
-  - **FAIL 判定**：任何 1 字被裁切 = BLOCK。
+```
+Step 2. 枚举所有 exhibit（图 + 表 + 附录表）
+  └─ 为每个 \begin{exhibitbox}[<编号> <标题>] 建立独立审查卡片：
+     ID = 图 3-1 / 表 5-2 / 表 A-1 等
+     File = 源文件 + 行号范围（自动 grep 匹配 \end{exhibitbox} 闭合）
+     Type = tikz / pgfplots / tabularx / longtable / mixed
+```
 
-### 层级二：语义正确性（SIGNIFICANT 级，不影响阅读但破坏专业信用）
+```
+Step 3. 执行 8 大维度审查（见下一节）
+  └─ 每个卡片单独过 8 维度 → 每条问题带
+     - 严重级 (BLOCK/SIGNIFICANT/MINOR/NOTE)
+     - 精确 file:line
+     - 根因（代码级，用 Bug Class 名称）
+     - 修复建议（含可直接 Copy→Paste 的 LaTeX snippet）
+  └─ 聚合：按 Bug Class 跨 exhibit 去重、聚类
+```
 
-**S-1 legend 颜色 ↔ 渲染图形颜色不一致（饼切片 swap、pgfplots cycle 单 addplot 全染一色）**
-  - **饼图**：每张饼按角度从 `\def\a{90}` 起算，**每个 scope 必须首行重写 `\def\a{90}`**（不继承前一个 scope）；然后按 `fill=... slice={deg}` 顺序逐条对照 legend 行的颜色。
-  - 特别陷阱：legend tabular 的 `\cellcolor{riskred!60}` 必须与对应 slice 的 `fill=riskred!80` 是同色系基色（riskred ≠ accentblue ≠ nvgreen）。**任何图实际颜色与 legend 不同 = 读者会完全读错数据 = SIGNIFICANT。**
-  - **pgfplots 横/柱图**：`cycle list={{riskred!60}, {accentblue!60}, ...}` 必须配套 `\addplot` 条数 = cycle list 条数。如果只有 1 条 `\addplot` 但有 N 个 bar，所有 bar 全染 cycle[0] = **FAIL。修复拆成 N 个 `\addplot[fill=<color>]`**。
-  - **散点/气泡图**：Tier 1 圆点 fill=`navy!30` 视觉上接近白灰，legend tabular 填色应与圆点描边同（`draw=deepnavy, fill=navy!65`）。legend 实际色块必须肉眼匹配最粗描边色。
+```
+Step 4. 输出审查报告（Markdown）
+  └─ 写入：<project_root>/governance/exhibit_format_review_R<N>.md
+     （N = 若已有同目录 R<N> 存在，N+1；否则 R1）
+  └─ 格式见 §输出格式
+```
 
-**S-2 数值交叉一致性（表 ↔ 柱 ↔ 正文 × 10× 单位陷阱）**
-  - **模式库（已知陷阱）**：
-    1. 表 5-1 "420--440 亿美元" vs 图 5-1 Samsung 柱高 $62\$B$（620 亿美元）= **不匹配（差 180 亿 = 40%）**。
-    2. 表 5-1 YMTC "3.5--4.5 亿美元" vs 图 5-1 YMTC+CXMT 叠加 $9\$B$（90 亿）= **10× 数量级冲突（最严重的一类）**。
-    3. 柱上 `nodes near coords` 与 `symbolic y coords` 顺序错位（图 7-1 长电柱顶标 1,150，兆易标 890）。
-  - **审查流程**：取图表中所有金额/市值/百分比数字，逐一与最近的表格对应行做 `±15%` 容差检查。**超容差 = SIGNIFICANT，差 10× = BLOCK。**
-  - **单位标注规则**：Capex 使用 `\$B`（Billion USD）与正文「亿美元」（100M USD = 0.1B）必须全文统一，不允许混用 "亿美元" 与 "$B" 又不做 `×10` 换算说明。
+```
+Step 5. [可选] 如果用户要求 "修复" 而非 "只审查"
+  └─ 按 §修复顺序纪律 从 BLOCK→SIGNIFICANT→MINOR 逐类应用
+  └─ 每类修完跑一次 xelatex 校验
+  └─ 最后：两遍 xelatex → Overfull >20pt 硬断言 → SYNC push
+```
 
-**S-3 图表重复编号（两个 `\begin{exhibitbox}[图 5-1 ...]`）**
-  - `grep -oE "图 [0-9]+-[0-9]+" sections/*.tex | sort` → 任何编号出现两次 = **BLOCK（读者交叉引用全崩）**。
-  - 保留规则：选柱上有数字标注、数据更新的那一版（版本 B > 版本 A）。
+---
 
-### 层级三：版式 & 空间（MINOR 级，影响专业观感）
+## 8 大维度审查清单（项目无关）
 
-**L-1 Overfull \(\hbox > 20pt\) 清零（投行硬门槛）**
-  - **审计命令**（从 .log 提取）：
-    ```
-    grep -oE "[0-9]+\.[0-9]+pt too wide" main.log | grep -oE "^[0-9]+\.[0-9]+" | sort -rn -u | awk '$1>20'
-    ```
-  - **FAIL 计数 > 0 = BLOCK**。10–20pt 为宽松 PASS；<10pt 完全忽略。
-  - **修复库（按匹配度从高到低）**：
-    1. 中英文混排的 `/` → `\slash`（YMTC/CXMT → YMTC\slash CXMT）。
-    2. 中英文混排的 `+` → `\allowbreak+\allowbreak`（DRAM+SRAM → DRAM\allowbreak+\allowbreak SRAM）。
-    3. p 列内 `\\` → `\newline`（p 列把 `\\` 当行终止）。
-    4. `\multicolumn{N}{l}` → `p{\dimexpr\sum(col_w)+2(N-1)\tabcolsep\relax}` 写死硬宽。
-    5. 首列汉字数超出 p{cm}：从 `p{1.8cm}` 精准调到 `p{N字×字宽+2em}`。
+| # | 维度 | 严重级 | 检测方法 |
+|---|---|---|---|
+| V-1 | **可见性**：fill 与 text 颜色对比度 <4:1（深蓝空块） | BLOCK | 扫描 `style/.style={...fill=<X>, color=<Y>...}`：若 X 与 Y 是同色系（navy/deepnavy、riskamber!8+navy 等）→ FAIL；另逐节点检查 `text=...` 与 `fill=...` 显式冲突 |
+| V-2 | **符号乱码**：fontawesome5 宏 fallback | BLOCK | 所有 `\fa<大写字母开头>` → 在 preamble 里查是否 `\usepackage{fontawesome5}` + xeCJK 下的命名空间；查 .log 中 `LaTeX Font Warning` → 若有 → FAIL |
+| V-3 | **文字裁切**：minimum height 不足 / text width 不足 / resizebox < 0.80 | BLOCK | 解析 style 的行数 × 行距 vs `minimum height`；`\resizebox{<ratio>}{!}` 的 ratio 下限检查 |
+| S-1 | **语义色一致性**：legend ↔ 实际切片/柱色不匹配 | BLOCK（饼切片 swap）/ SIGNIFICANT（pgfplots cycle list 单色） | 饼图：`\def\a{90}` 角度起算 + scope 隔离验证；pgfplots：cycle list 条目数 vs `\addplot` 条目数；散点：dot fill % 匹配 legend cell fill % |
+| S-2 | **数值单位一致性**：表 ↔ 图 ↔ 正文交叉 | SIGNIFICANT（±15% 不匹配）/ BLOCK（10× 数量级错） | 正则抽取所有金额 / 百分比数值，取同指标在三个载体的最近出现做容差校验；单位换算（亿 ↔ $B / ¥B / ¥亿）必须显式披露，未披露视为 FAIL |
+| S-3 | **重复编号**：两个 exhibitbox 使用相同图号 | BLOCK | 全部 `图 表 X-Y` 编号频度排序 |
+| L-1 | **Overfull hbox >20pt 计数** | BLOCK >0 | .log 正则提取 + 阈值过滤 |
+| L-2 | **版式重叠**：节点坐标中心距离 < 两元素半宽之和 | MINOR（文字压边）/ SIGNIFICANT（核心结论覆盖） | tikz 节点坐标的 bounding box 对撞检查；散点气泡 / 四象限标签 / subp 框三层 典型模式 |
 
-**L-2 元素重叠（象限标签十字交汇、气泡重叠、callout 截断）**
-  - **图 8-1 四象限标签典型**：四条标签 `above right/left` 全部锚在同一点 (5.5,5.5) → 中心十字交汇点 4 行文字相互覆盖。**修复：把四条锚分别移到 (8.3,8.3)/(2.7,8.3)/(2.7,2.7)/(8.3,2.7) 各象限中心。**
-  - **图 10-1 气泡重叠**：两两气泡中心距离 < 两半径之和 = 视觉融合。修复：各气泡 center 微调 0.3–0.5 坐标；legend 移到不覆盖 R1/R2。
-  - **图 2-1 subp 三重叠框**：`\foreach \y {...} \node[subp=...] {\strut}` 先画 3 个空占位，再写 2 个实 subp → 实空叠在一起视觉毛躁。**修复：弃用 `\foreach` 空占位，只在实际文本位置画实心框。**
+### Bug Class 库（通用，不绑定行业）
 
-### 层级四：观察项（NOTE 级，可不修但写入报告）
+```
+Class A: TikZ style 颜色宏污染（V-1 实现）
+Class B: fontawesome5 宏 fallback 乱码（V-2）
+Class C: legend ↔ 图形 颜色语义 swap（S-1 饼/柱）
+Class D: 数值/单位 交叉不一致（S-2，含 10× 陷阱）
+Class E: 重复 exhibit（S-3）
+Class F: 文字裁切 （V-3，subp/气泡/卡片）
+Class G: 版式元素重叠 （L-2，象限标签/气泡/callout）
+Class H: Overfull hbox 超标 （L-1，中文+\slash+\allowbreak 修复库）
+```
 
-- p 列中 `表 8-3` 列首有换行破字（B+A 刻度写成 "B+A" 实际应 "B+/A"）。
-- 图 3-1 L6 整机集成价值占比从 "-" 改为 "毛利 <2%，不计链上利润" 的明确说明（避免歧义）。
-- X 轴辅助刻度线缺失（25%/75% 分位无刻度 → 加细虚线）。
+每个 Class 都配有通用 LaTeX 代码修复片段（见 §修复库），完全不依赖具体行业。
 
-## 严重级别定义
+---
 
-| 级别 | 含义 | 发布要求 |
+## 修复代码片段库（通用 LaTeX）
+
+> 以下片段不包含任何 AI 存储/半导体/PCB 的行业词，可直接复制到任意研报的 preamble 或 exhibit。
+
+### A-1 节点 style 颜色硬写（双保险）
+```latex
+% ❌ 旧（风险色污染）：ashare/.style={draw=riskamber, fill=riskamber!8, color=navy}
+% ✅ 新（写死）：
+ashare/.style={rectangle, rounded corners=4pt, draw=navy, fill=white,
+  text width=2.0cm, align=center, minimum height=1.0cm,
+  font=\bfseries\small, text=deepnavy, line width=0.8pt}
+% 然后每个节点显式再写（双保险第二重）：
+\node[ashare, fill=white, draw=navy, text=deepnavy] (A1) {文本};
+```
+
+### B-1 fontawesome5 全局兜底（preamble 尾部）
+```latex
+% 当 xeCJK + fontawesome5[fixed] 因缺字 fallback 成 aExclamationTriangle 时生效
+\usepackage{etoolbox}
+\ifcsundef{faExclamationTriangle}{
+  \def\faExclamationTriangle{\ensuremath{\blacktriangle}\kern-0.25em}
+}{}
+\ifcsundef{faCloud}{
+  \def\faCloud{\ensuremath{\clubsuit}\kern-0.1em}
+}{}
+% 继续按需添加 \faYenSign / \faFlagCheckered / \faMemory 等兜底
+```
+
+### C-1 饼图 scope 隔离（避免角度继承）
+```latex
+% 每张饼 scope 首行强制 \a=90
+\begin{scope}[xshift=6.0cm]
+  \def\a{90}  % ← 显式重置，不依赖外部
+  \filldraw[fill=<C1>, ...] [slice={<D1>}]; \pgfmathsetmacro\a{\a+<D1>}
+  ...
+\end{scope}
+```
+
+### C-2 pgfplots 横柱分类色（避免 cycle list 单色）
+```latex
+% ❌ 旧：cycle list=6 色 + 1 条 addplot → 全染第一色
+% ✅ 新：按类别拆 N 条 \addplot
+\pgfplotscreateplotcyclelist{mktcap}{{fill=navy!30,draw=navy},{fill=nvgreen!30,draw=nvgreen},...}
+\begin{axis}[cycle list name=mktcap, ...]
+  \addplot+[fill=navy!30, draw=navy]  coordinates {(值, "标签1") (值, "标签2")}; % 设计/IP
+  \addplot+[fill=nvgreen!30, draw=nvgreen]  coordinates {(值, "标签3") (值, "标签4")}; % 封测
+  ...
+  \legend{设计IP, 封测,...}
+\end{axis}
+```
+
+### F-1 circle 节点内三行文字不溢出（内切正方形公式）
+```latex
+% 字高 h × 行数 N × 行距 1.2 ≤ minimum_size / √2
+% 例：三行 10pt 字 ≈ 1.1×3×1.2 = 3.96cm > 2.2/1.414 = 1.56cm × 错
+% ✅ 修正：
+riskR/.style={circle, ..., minimum size=2.4cm, inner sep=3pt,
+  align=center, font=\scriptsize\bfseries, text=deepnavy}
+% 或压缩行距：
+\node[riskR] {R1\\[-0.15em] HBM ASP -30\%\\[-0.15em] 供过于求};
+```
+
+### H-1 Overfull hbox 分级修复（从稳到激进）
+1. 中英文混排的 `/` → `\slash` （例：YMTC/CXMT → YMTC\slash CXMT）
+2. `+` → `\allowbreak+\allowbreak`（例：DRAM+SRAM → DRAM\allowbreak+\allowbreak SRAM）
+3. p 列行内换行 `\\` → `\newline`
+4. `\multicolumn{N}{l}` → `p{\dimexpr\sum(col_w)+2(N-1)\tabcolsep\relax}` 硬宽
+5. 首列字宽超 p{cm}：p{1.8cm} → 精准按 字×字宽+2em 调节
+
+---
+
+## 分级定义（严格复用）
+
+| 级别 | 发布阻塞 | 典型场景 |
 |---|---|---|
-| **BLOCK** | 读者直接看错结论（颜色 swap、10× 数量级错、文字完全看不见） | 必须修复后才能发布 |
-| **SIGNIFICANT** | 专业度受损（数据差 >15%、legend 标注不一致、重复图） | 合入下一版 |
-| **MINOR** | 版式毛躁（裁字 1pt 内、留白不均、线细） | 锦上添花 |
-| **NOTE** | 潜在的下一轮优化项 | 不阻塞 |
+| **BLOCK** | 必须修 | 读者直接看错结论：饼色 swap 全错 / 10× 单位 / 文字完全隐形 / 表号重复 / Overfull >20pt >0 |
+| **SIGNIFICANT** | 合入下一版 | 专业度受损：数据差 >15%、legend 填色不匹配、pgfplots 单色、节点轻微裁切 |
+| **MINOR** | 锦上添花 | 字间距微差、留白不均、线宽略细、辅助刻度缺失 |
+| **NOTE** | 不阻塞 | 潜在优化（例：某轴标签日后可改竖排） |
 
-> 注意：BLOCK 级 **至少包含** V-1/V-2/V-3 全 PASS + S-2 无 10× 错 + S-3 无重复 + L-1 >20pt 清零。
+---
 
-## 输出格式（严格一致，便于代码级修复）
+## 输出格式（通用 Markdown）
 
 ```markdown
-# Exhibit 格式 & 正确性审查 R<revision>
+# Exhibit 格式 & 正确性审查 · R1
+项目: <project_root 的 base name>
+审查日期: <YYYY-MM-DD>
+覆盖: 图 N 张 · 表 M 张 · 附录表 K 张
 
-## 0. 审查总览（traffic-light × 所有图表）
-| # | 图号 | 标题 | 可见性 | 语义 | 数据 | 版式 | 级别 |
-|---|---|---|---|---|---|---|---|
+## 0. 审查总览（traffic-light 矩阵）
+| # | 编号 | 标题 | 文件:行 | 类型 | 可见性 | 语义 | 数据 | 版式 | 严重级 |
+|---|---|---|---|---|---|---|---|---|---|
 
-## 1. 问题总分类（跨图共性 Bug，按 Class A/B/C/D/E 聚合）
+## 1. 问题分类总览（Bug Class A-H 跨 exhibit 聚合）
+### Bug Class <字母>：<名称>
+- 根因（LaTeX 代码级通用解释）
+- 影响的 exhibit 清单：图 X-Y / 表 X-Y ...
+- 标准修法：（§修复代码片段库对应项引用 + 具体 LaTeX 代码）
 
-### Bug Class A：<名称>
-- 根因（代码级）
-- 影响的图表清单
-- 标准修法（含 LaTeX 代码片段）
-
-### Bug Class B：<名称>
-...
-
-## 2. 分图逐项审查（每个 exhibitbox 一张，含：版式 Bug 清单/语义正确性/数据一致性）
-
-### [图 x-y] 标题
+## 2. 分 exhibit 逐项审查
+### [图 X-Y] <标题>
 #### 版式 Bug（N 项）
-1. ID: 现象 → 根因 → 修复代码（精确到具体行号范围）
+1. <ID>: <现象> → <根因 Bug Class> → <精确 file:line 范围> → <修复 LaTeX 片段>
 #### 语义正确性
-#### 数据一致性（对照表 <x-y> + 正文 §<章节号>）
+#### 数据一致性（对照最近的表 X-Y + 正文 §X.X 交叉）
 
 ## 3. 修复优先级排序（P0 BLOCK / P1 SIGNIFICANT / P2 MINOR）
-| ID | 图表 | 修复项 | 预计修改量 |
-|---|---|---|---|
+| ID | exhibit | 修复项 | 估算修改量 | Bug Class |
+|---|---|---|---|---|
 
-## 4. PASS 项（避免重复审查）
-- 已核实正确的所有 exhibit 列表 + 说明
+## 4. PASS 项（已全量核实无问题 · 避免重复审查）
+- 列所有 PASS 的图 × / 表 × + 说明
 
-## 5. 二次验收硬标准（下轮 review 必须全满足）
+## 5. 二次验收 5 条硬标准（下一轮审查必须全满足）
 1. Overfull \(\hbox > 20pt\) COUNT=0
-2. 视觉无深蓝空块（对比度 >4:1，WCAG 最低）
-3. legend ↔ 切片/柱色 语义 100% 一致
-4. 表 ↔ 图单位一致、数值 ±15%（单位换算必须显式披露）
-5. 任何图元含字符的框 >= 0.5em 留白（无裁切）
+2. 可见性：所有节点 fill 与 text 对比度 >4:1（WCAG 最低）
+3. 语义色：legend tabular fill % ↔ 各切片/柱最外描边色 肉眼 100% 匹配
+4. 数据：表 ↔ 图 ↔ 正文同一指标 ±15% 容差内，亿/$B 单位换算全文显式披露
+5. 裁切：所有含字符的元素 bounding box 外侧 ≥ 0.5em 留白
 ```
 
-输出位置：`<project>/governance/exhibit_format_review_R<N>.md`（**绝对不可**落入 `data/` 白名单、`sources/broker-reports/` PRIMARY 目录）。
+---
 
-## 修复顺序纪律（从根上到叶子）
+## 修复顺序纪律（通用 · 从根到叶子）
 
 ```
-P0-00 preamble 全局兜底（fontawesome 宏定义 / style 颜色死硬）
+P0-00 preamble 全局兜底（Class B fontawesome / Class A 颜色宏全局）
   ↓
-P0-01 重复图表清理（删旧版 / 合并重编号）
+P0-01 重复 exhibit 清理（Class E：删旧版 / 重编号）
   ↓
-P0-02 Class A（空蓝块 / fill=text 同色 —— 影响图最多的共性病）
+P0-02 Class A 空蓝块 fill=text 同色（影响图最多的共性病）
   ↓
-P0-03 Class B（aExclamationTriangle fallback 乱码 —— 读者可见的 "明显坏了"）
+P0-03 Class B aExclamationTriangle fallback 乱码（"明显坏了"）
   ↓
-P0-04 S-2 数值/单位一致性（最严重的实质错误）
+P0-04 Class D 数值/单位交叉一致性（最严重的实质错）
   ↓
-P0-05 S-1 颜色 swap（饼切片 / pgfplots cycle list）
+P0-05 Class C 颜色语义 swap（饼切片 / pgfplots cycle list）
   ↓
-P0-06 V-3 裁切（subp / BAL / 气泡 / 卡片）
+P0-06 Class F 裁切（subp / 气泡 / 卡片）
   ↓
-P0-07 L-2 元素重叠（象限标签 / 气泡 / callout）
+P0-07 Class G 元素重叠（象限标签 / 气泡 / callout）
   ↓
-P0-08 L-1 Overfull >20pt 清零
+P0-08 Class H Overfull >20pt 清零
   ↓
-二遍 XeLaTeX → Overfull >20pt 计数断言 → 视觉核对 → SYNC push
+二遍 XeLaTeX → Overfull 硬断言 → 视觉核对 → Git SYNC push
 ```
 
-## 与其他 skill 的分界
-
-| 需求 | 对应 skill |
-|---|---|
-| 章节叙事/估值逻辑/合规来源 | `research-report-review` |
-| **图表/表格格式 + 正确性（本 skill）** | `exhibit-format-reviewer` |
-| 估值模型算术 / 区间半宽 / 去单点 | `valuation-auditor` |
-| 来源治理 / S-ID 可追溯 / C 级主张零进入估值 | `source-governance-analyst` |
-| 乐观偏差 / 卖方 vs AStock 分歧 / 概率加权 | `contrarian-analyst` |
+---
 
 ## 约束（继承全仓库永久安全规则）
 
-1. **Git push 必须 `--force-with-lease`，禁裸 `--force`**。
-2. 治理白名单：`data/*.md/json`、`completion_audit_manifest.*`、`_r<N>_*` —— **绝对不可修改、不可 staged**。
-3. `sources/broker-reports/` PRIMARY 目录不可变。
-4. 任何对外发布路径（sourcenote、日志、commit message）**绝对不泄露 PDF 的绝对路径**。
-5. 白名单零触碰断言：`git status --porcelain` 的 staged 文件中 **不得** 出现 `data/` 前缀、`sources/broker-reports/` 前缀，也不得出现 `_r\d+_`。
+1. **Git push 必须 `--force-with-lease`（禁裸 `--force`）**。
+2. 治理白名单（**绝对不可进入 staged**）：
+   - `data/*.md` / `data/*.json`
+   - `completion_audit_manifest.*`
+   - `_r<N>_*`（文件名开头匹配正则）
+3. `sources/broker-reports/` PRIMARY 目录不可修改（含任何子路径）。
+4. 审查报告和 commit message 中**绝不泄露 PDF 的绝对路径**（只写 `main.pdf` / `<project>/main.pdf` 的相对路径）。
+5. 审查报告的输出目录：**强制** `<project_root>/governance/`，绝不落入白名单或 PRIMARY。
 
 ---
-**Skill Maturity**: v1.0（实战于 AI 存储产业链研报 20260624 版，已识别 7 Class × 15 Bug × 修复 10+ 张图表 20+ 个节点）
-**Design Goal**: 后续所有 LaTeX 研报的 Render Review 阶段默认调用，形成 "写 → 编译 → reviewer → 修 → 再编译 → 发布" 的工程化闭环。
+
+## Skill 成熟度与演化
+
+**v1.0**（首次入库）：
+- 8 维度 × 8 Bug Class × 修复片段库 × 严格分级 × 标准输出模板
+- 配套 `.agents/team/exhibit-format-reviewer.md` role 文件
+- 已在 AI 存储产业链深度研报（20260624）实战验证：10 张图 × 8 章节识别 15 个问题 + 12 BLOCK 修复清单
+
+**v1.1 Roadmap**：
+- 自动化正则扫描脚本（bash/python）：自动枚举所有 exhibit → 输出 JSON 卡片
+- Overfull 审计行 → 自动定位最窄列 / 最长词
+- pgfplots cycle list 条目数与 `\addplot` 自动计数匹配
+
+---
+**调用方式**：在任何对话里写 `/exhibit-format-reviewer <研报路径>`。
