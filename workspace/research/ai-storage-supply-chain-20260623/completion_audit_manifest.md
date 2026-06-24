@@ -1,9 +1,9 @@
-# Completion Audit Manifest · R214 Refresh (2026-06-23)
+# Completion Audit Manifest · R215 Refresh (2026-06-23)
 
 |字段|值|
 |---|---|
 |Case ID|ai-storage-supply-chain-20260623|
-|Polling Round|R214（治理轮询第 9 轮 · 严格幂等）|
+|Polling Round|R215（治理轮询第 10 轮 · 严格幂等）|
 |Last Refreshed|2026-06-24|
 |Decision|**publish**|
 |治理不变量|SR=54 · Claim=61 · Grade A=9/B=44/C=7/D=1 · BLOCK=15≥10|
