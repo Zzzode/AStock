@@ -218,6 +218,33 @@ class ResearchLedgerIndex:
         }
 
 
+@dataclass(frozen=True)
+class ResearchLedgerIndex:
+    """Lightweight query index and lifecycle summary for the research ledger."""
+
+    generated_at: datetime
+    entry_count: int
+    status_counts: dict[str, int]
+    target_counts: dict[str, int]
+    tag_counts: dict[str, int]
+    target_type_counts: dict[str, int]
+    observation_type_counts: dict[str, int]
+    entries: list[dict[str, Any]]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "schema_version": "research-ledger-index.v1",
+            "generated_at": self.generated_at.isoformat(),
+            "entry_count": self.entry_count,
+            "status_counts": self.status_counts,
+            "target_counts": self.target_counts,
+            "tag_counts": self.tag_counts,
+            "target_type_counts": self.target_type_counts,
+            "observation_type_counts": self.observation_type_counts,
+            "entries": self.entries,
+        }
+
+
 class ResearchLedger:
     """JSON-backed research opportunity ledger."""
 

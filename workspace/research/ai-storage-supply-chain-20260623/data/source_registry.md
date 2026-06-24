@@ -130,4 +130,4 @@
 |S-0|仓位合计 100%（60%核心/30%卫星/10%主题）|恒等断言|sections/ch11_investment_reco.tex:55|
 
 ---
-**治理指纹（R269）**：来源 54 · Grade 9/44/7/1 · BLOCK=15 · 8 锚对齐 · Twin-row-count 容差 ≤35。
+**治理指纹（R270）**：来源 54 · Grade 9/44/7/1 · BLOCK=15 · 8 锚对齐 · Twin-row-count 容差 ≤35。

@@ -71,7 +71,7 @@ E1对应Q1（已确认），E2对应Q2（券商陈述/可引用），E3对应Q3�
 \begin{exhibitbox}[图表2-1：本报告使用的证据等级与对应语料规模]
 \centering
 \begin{tikzpicture}[
-  level/.style={rectangle, draw=white, minimum width=12.8cm, minimum height=0.82cm, text=white, align=center, font=\small\bfseries},
+  level/.style={rectangle, draw=white, minimum width=7.0cm, minimum height=0.82cm, text=white, align=center, font=\small\bfseries},
   note/.style={font=\scriptsize\color{steelgrey}, align=center}
 ]
 \node[level, fill=riskgreen] (e1) {E1 已确认（Q1）：公司公告 / 官方披露 \quad（\textbf{168份原始PDF}：官方公告+IR+年报+券商原文）};
@@ -114,7 +114,7 @@ E4 & 传闻隔离、风险提示、后续调研清单。 & 不能支撑推荐、
 \toprule
 \textbf{资料更新至} & 初始语料2026年6月12日；持续刷新至2026年6月18日 & \textbf{资料整理日期} & 2026年6月15--18日 \\
 \textbf{已识别材料} & \textbf{168份原始PDF}（官方公告/IR/年报/券商PDF/H股文件）+ \textbf{466份配套转写文件}（md/txt/json/html，共634份源文件），归档清单见附录；数量不等于证据强度 & \textbf{可用材料} & 官方公告、IR、券商PDF、H股文件和公开数据代理均已入库 \\
-\textbf{完整原文PDF} & 国内券商与公司官方原文PDF已基本覆盖；海外券商（UBS/JPM/Goldman/Citi/HSBC）仅有Reportify/新浪等公开转载/转写正文，原始PDF未取得，详见附录来源审计与global\_broker\_gap\_fallback & \textbf{行情数据} & 腾讯行情刷新12/12价格、市值、PE和PB \\
+\textbf{完整原文PDF} & 国内券商与公司官方原文PDF已基本覆盖核心标的；海外券商（UBS/JPM/Goldman/Citi/HSBC）仅有Reportify/新浪等公开转载/转写正文，原始PDF未取得，详见附录来源审计与global\_broker\_gap\_fallback & \textbf{行情数据} & 腾讯行情刷新12/12核心证据标的价格、市值、PE和PB；扩充观察标的价格取自公开行情快照 \\
 \textbf{一致预期标签} & 公开研究情绪 + 东方财富预测交叉验证 & \textbf{主要限制} & 无具名客户收入、终端级持仓流和客户/平台自下而上EPS \\
 \bottomrule
 \end{tabularx}

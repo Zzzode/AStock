@@ -170,6 +170,14 @@ def analyze(
             console.print(f"[red]Error: {result['error']}[/red]")
         raise typer.Exit(1)
 
+    # Check for errors
+    if result.get("error"):
+        if json_output:
+            _print_json(result)
+        else:
+            console.print(f"[red]Error: {result['error']}[/red]")
+        raise typer.Exit(1)
+
     if json_output:
         _print_json(result)
     else:

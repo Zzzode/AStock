@@ -9,6 +9,15 @@ from datetime import date
 from functools import partial, wraps
 from typing import Any, Callable, Optional, TypeVar, ParamSpec, cast
 
+import asyncio
+import os
+import sys
+import time
+from concurrent.futures import ThreadPoolExecutor
+from datetime import date
+from functools import partial, wraps
+from typing import Any, Callable, Optional, TypeVar, ParamSpec, cast
+
 import akshare as ak
 import pandas as pd
 
@@ -581,6 +590,10 @@ class AkShareClient:
         end_date: Optional[date] = None,
     ) -> pd.DataFrame:
         """Get daily candlestick data
+
+        Priority:
+        1. Sina data source stock_zh_a_daily (more stable, no mini-racer required)
+        2. East Money data source stock_zh_a_hist (more complete data, but may trigger mini-racer)
 
         Priority:
         1. Sina data source stock_zh_a_daily (more stable, no mini-racer required)

@@ -15,6 +15,8 @@ from .alert_events import build_alert_market_event, encode_alert_message
 
 logger = get_logger("monitor_service")
 
+logger = get_logger("monitor_service")
+
 
 class MonitorService:
     """Stock monitoring service"""

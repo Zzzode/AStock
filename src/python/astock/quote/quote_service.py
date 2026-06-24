@@ -95,6 +95,23 @@ class QuoteService:
         self._daily_retry_attempts = 3
         self._daily_retry_delays = (1.0, 2.0)
 
+        # Primary data source (default: Baostock)
+        if primary_client is None:
+            self.primary_client = BaostockClient()
+        else:
+            self.primary_client = primary_client
+
+        # Fallback data source (AkShare)
+        self.fallback_client = fallback_client or AkShareClient()
+
+        # Backward compatibility
+        self.client = self.primary_client
+
+        self._realtime_retry_attempts = 3
+        self._realtime_retry_delays = (1.0, 2.0)
+        self._daily_retry_attempts = 3
+        self._daily_retry_delays = (1.0, 2.0)
+
     def _is_retryable_error(self, error: Exception) -> bool:
         """Determine whether the error is retryable"""
         current: Optional[BaseException] = error
@@ -205,9 +222,8 @@ class QuoteService:
         """Get real-time quote (with caching and dynamic TTL)
 
         Data source priority:
-        1. AkShare (lightweight single-stock via Tencent/East Money — fast and
-           reachable in restricted networks; provides core market data)
-        2. Baostock (fallback; adds valuation fields where reachable)
+        1. Baostock (latest trading day data, includes valuation)
+        2. AkShare (real-time data, degrades gracefully when unstable)
 
         Args:
             code: Stock code
@@ -242,6 +258,8 @@ class QuoteService:
             except Exception as e:
                 logger.error(f"All data sources failed to fetch quote: {e}")
                 raise
+
+        last_error: Optional[Exception] = None
 
         last_error: Optional[Exception] = None
 
@@ -311,6 +329,11 @@ class QuoteService:
         limit: Optional[int] = None,
     ) -> pd.DataFrame:
         """Get daily candlestick data (with caching and optimization)
+
+        Data source priority:
+        1. Baostock (stable, includes PE/PB valuation data)
+        2. AkShare (fallback)
+        3. Local database (last resort)
 
         Data source priority:
         1. Baostock (stable, includes PE/PB valuation data)

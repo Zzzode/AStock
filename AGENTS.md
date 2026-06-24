@@ -366,6 +366,23 @@ Scope:
 - Intermediate data files (data packets, verified tables) stay as `.md` or `.json`
 - Interactive conversational replies go directly to terminal — no LaTeX for chat
 
+## Document Format Policy
+
+All persistent reports and analysis documents MUST be written in LaTeX and compiled to PDF.
+
+- **Engine**: XeLaTeX (for CJK support)
+- **Shared preamble**: `.agents/templates/preamble.tex`
+- **Brief template**: `.agents/templates/report-brief.tex` (for team/analyze/backtest/recommend)
+- **Full template**: `.agents/templates/report-main.tex` (for equity-research deep reports)
+- **Compile**: `.venv/bin/python -m astock.cli build-pdf <directory-or-tex-file>`
+- **macOS toolchain**: use MacTeX's XeLaTeX toolchain only. If `xelatex` is not on `PATH`, check `/Library/TeX/texbin/xelatex` and run with `PATH="/Library/TeX/texbin:$PATH"`. Do **not** substitute `tectonic`, `typst`, `pdflatex`, `lualatex`, or other alternative compilers for project reports.
+
+Scope:
+- Final deliverables (team reports, analysis reports, backtest summaries, recommendations) → `.tex` → `.pdf`
+- Quick terminal outputs (quote, screen, monitor) remain JSON — they are not documents
+- Intermediate data files (data packets, verified tables) stay as `.md` or `.json`
+- Interactive conversational replies go directly to terminal — no LaTeX for chat
+
 ## Development Guidelines
 
 - Python code goes in `src/python/astock/`

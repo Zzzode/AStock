@@ -1,7 +1,7 @@
-# AI 存储产业链 · 主张审计表（Claim Audit · R269 Polling Refresh · 第64轮）
+# AI 存储产业链 · 主张审计表（Claim Audit · R270 Polling Refresh · 第65轮）
 
 > 治理规则：A = L1+L3≥2源交叉 / 算术恒真；B = L3/L4/L5；C = 单一L4/间接推断；D = 无来源。C/D 进入估值必须 BLOCK。
-> 治理指纹（R269）：61 主张 · Grade A=9/B=44/C=7/D=1 · BLOCK=15（数据级 11 + 治理锚 4）。R206→R269 连续 64 轮锁定。
+> 治理指纹（R270）：61 主张 · Grade A=9/B=44/C=7/D=1 · BLOCK=15（数据级 11 + 治理锚 4）。R206→R270 连续 65 轮锁定。
 
 ## §0. 主张分类与 Grade 指纹
 

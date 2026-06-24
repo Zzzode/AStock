@@ -188,6 +188,18 @@ After first compile, render or inspect actual PDF pages. Do not rely only on TeX
 
 **Quality gate:** Clipped diagrams, overlapping tables, unreadable appendices, table-only main-body chapters, or missing exhibits for core conclusions block publication.
 
+**macOS compiler rule:** Use MacTeX's XeLaTeX toolchain only. If `xelatex` is not on `PATH`, check `/Library/TeX/texbin/xelatex` and run compile commands with `PATH="/Library/TeX/texbin:$PATH"`. Do not try `tectonic`, `typst`, `pdflatex`, `lualatex`, or any other non-MacTeX substitute for project research reports.
+
+## Phase 4.5: RENDERED PDF VISUAL REVIEW
+
+After first compile, render or inspect actual PDF pages. Do not rely only on TeX source.
+
+| Agent | Role File | Input | Output |
+|-------|-----------|-------|--------|
+| Visual Layout Reviewer | `.agents/team/visual-layout-reviewer.md` | `main.pdf` + rendered page images + source | `visual_review.md` |
+
+**Quality gate:** Clipped diagrams, overlapping tables, unreadable appendices, table-only main-body chapters, or missing exhibits for core conclusions block publication.
+
 ## Phase 5: REVIEW (Parallel per chapter, iterative)
 
 | Agent | Role File | Input | Output |

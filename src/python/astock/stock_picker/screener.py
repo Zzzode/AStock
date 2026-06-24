@@ -220,6 +220,9 @@ class StockScreener:
             # Use cached stock name
             name = self._stock_names.get(code, "")
 
+            # 使用缓存的股票名称
+            name = self._stock_names.get(code, "")
+
             return {
                 "code": code,
                 "name": name,
