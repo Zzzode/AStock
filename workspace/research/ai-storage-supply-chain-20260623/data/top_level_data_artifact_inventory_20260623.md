@@ -2,8 +2,8 @@
 
 |#|工件|SHA-256[:12]|字节数|
 |---|---|---|---|
-|1|main.pdf|`6302e8beb181`|906,216|
-|2|main.tex|`90d28bf95a28`|4,945|
+|1|main.pdf|`769e2204763f`|919,537|
+|2|main.tex|`16709de4a4fa`|5,175|
 |3|main_current_text.txt|`1b5faa114fe3`|105,445|
 |4|research_brief.md|`73e57694ba57`|6,006|
 |5|review_log.md|`6d19583d4ca9`|21,843|
