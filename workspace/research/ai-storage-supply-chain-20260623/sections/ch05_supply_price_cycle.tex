@@ -61,14 +61,14 @@
 \node[below, font=\scriptsize] at (5.2, -0.2) {2025};
 \node[above, font=\scriptsize\bfseries] at (5.2, {106*\scl+0.12}) {106};
 
-% --- 2026E (42+26+18+10+6 = 102 $B；三大原厂 86，柱上标 92 ≈ 100 对齐) ---
+% --- 2026E (42+26+18+10+6 = 102 $B) ---
 \pgfmathsetmacro\hS{42*\scl}  \node[bar, yr, minimum height=\hS cm] at (7.4, 0) {};
 \pgfmathsetmacro\hK{26*\scl}  \node[bar, yb, minimum height=\hK cm] at (7.4, \hS) {};
 \pgfmathsetmacro\hM{18*\scl}  \node[bar, yg, minimum height=\hM cm] at (7.4, \hS+\hK) {};
 \pgfmathsetmacro\hW{10*\scl}  \node[bar, yn, minimum height=\hW cm] at (7.4, \hS+\hK+\hM) {};
 \pgfmathsetmacro\hY{6*\scl}   \node[bar, ya, minimum height=\hY cm] at (7.4, \hS+\hK+\hM+\hW) {};
 \node[below, font=\scriptsize, text=navy, font=\bfseries] at (7.4, -0.2) {2026E};
-\node[above, font=\scriptsize\bfseries, color=navy] at (7.4, {92*\scl+0.12}) {92 ★};
+\node[above, font=\scriptsize\bfseries, color=navy] at (7.4, {102*\scl+0.12}) {102 ★};
 
 % --- 2027E (48+33+25+13+9 = 128 $B) ---
 \pgfmathsetmacro\hS{48*\scl}  \node[bar, yr, minimum height=\hS cm] at (9.6, 0) {};
@@ -84,7 +84,7 @@
 \node[below=0.5cm, font=\small, text=steelgrey] at (5.2, -0.3) {年份 / Year};
 
 % Total annotation (2026E highlighted)
-\node[above=8pt, font=\bfseries\small, color=navy] at (7.4, {102*\scl}) {2026E 三大原厂 + YMTC/CXMT 合计 >\$920 亿};
+\node[above=8pt, font=\bfseries\small, color=navy] at (7.4, {102*\scl}) {2026E 五大原厂合计（Samsung/SK/Micron/Kioxia+WD/YMTC+CXMT） >\$1010 亿};
 
 % Legend
 \node[draw=rulegrey, fill=white, rounded corners=2pt, font=\scriptsize, inner sep=4pt, anchor=north] at (5.2, -0.9) {

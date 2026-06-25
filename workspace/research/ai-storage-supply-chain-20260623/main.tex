@@ -14,13 +14,82 @@
 \newcommand{\reportauthor}{AStock Research Agent Team}
 \newcommand{\reporthouseview}{\kaishu 全球存储产业正处于「AI 拉动的结构性短缺 + 国产替代加速」的黄金拐点。\textbf{HBM} 是第一增长极（2026E 全球 TAM \$380--420 亿，2024-2027E CAGR 约 68\%），\textbf{资本开支口径严格区分：}全球存储全产业链（含原厂+设备+材料）2026E Capex 约 \$1200 亿，其中三大原厂（Samsung/SK/Micron）合计约 \$850--910 亿，增量集中于 HBM 与先进制程；\textbf{DDR5} 服务器端渗透 80\%+ 且子代升级带来量价齐升，\textbf{CXL} 2026H2 进入商业化元年，\textbf{国产替代}在设备/材料环节确定性最高。\textbf{A 股配置首选：极高确定性 Tier 1（澜起科技 / 北方华创 / 中微公司）+ 高确定性 Tier 2（拓荆科技 / 沪硅产业 / 深科技）}的哑铃组合；卫星配置长电科技 / 通富微电 / 江波龙 / 兆易创新捕捉弹性。需规避``国产 HBM 概念''等被市场节奏提前 2 年以上的标的。核心组合建议基准仓位 60\% 设备材料 + 25\% 接口/封测 + 15\% 设计/模组，2026H2 若 DDR5 合约价 QoQ 超 +10\% 可超配至 70\%。上行触发：NVIDIA Rubin 超预期放量 / BIS 管制放宽。下行触发：HBM ASP 下行 30\%+ / Hyperscaler capex 连续两季下修 15\%。}
 \newcommand{\reportquality}{L1 原厂官方披露 (三星/SK 海力士/美光 capex 指引、NVIDIA 产品规格、各公司年报 IR) + L2 政府公开/权威媒体 (BIS 管制细则、ASML 公告、Reuters/FT) + L3 第三方机构 (TrendForce / DRAMeXchange / Omdia / Wind 一致预期) 交叉验证；HBM4/HBM4E 良率与国内未上市原厂数据标注 {\faExclamationTriangle} 推断级；A 股 AI 敞口为 AStock 自模型估算非官方披露。覆盖 14 份券商 PDF 原件 (L3) 与 20 项编号数据源 (详见附录 A 来源注册)。}
-\newcommand{\reportdisclaimer}{本报告基于公开资料与机构研究数据整理，不构成任何证券买卖建议。投资者须自主决策并承担风险。}
+\newcommand{\reportdisclaimer}{本报告不含投资建议，仅供AStock内部投研讨论，不构成对外发布的证券研究报告。涉及A股代码与目标价仅内部情景分析，不代表实际买卖建议。}
 
 \input{../../../.agents/templates/preamble.tex}
 
 \hypersetup{
   pdfauthor={\reportauthor},
   pdftitle={\reporttitle}
+}
+
+% ============ P3 合规方案 B：首页+封底 24pt+ 红色加粗水印 ============
+% 覆盖模板的 \astockcover：在首页左上角与页脚双处加内部研究水印
+\renewcommand{\astockcover}{%
+\begin{titlepage}
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay]
+  \fill[deepnavy] (current page.north west) rectangle ([yshift=-2.55cm]current page.north east);
+  \fill[accentblue] ([yshift=-2.55cm]current page.north west) rectangle ([yshift=-2.66cm]current page.north east);
+  \fill[deepnavy] (current page.south west) rectangle ([yshift=1.2cm]current page.south east);
+  % 左上角 24pt 红色加粗水印
+  \node[anchor=north west, text=riskred,
+        font=\fontsize{24}{28}\selectfont\bfseries\CJKfontspec{Heiti SC},
+        inner sep=8pt, text opacity=0.92]
+    at ([shift={(1.2cm,-0.18cm)}]current page.north west)
+    {内部研究参考\hspace{0.8em}严禁对外分发};
+  % 页脚区域 24pt 红色加粗水印
+  \node[anchor=south, text=riskred,
+        font=\fontsize{24}{28}\selectfont\bfseries\CJKfontspec{Heiti SC},
+        inner sep=4pt, text opacity=0.92]
+    at ([yshift=1.6cm]current page.south)
+    {本文件为 AStock 内部研究参考，严禁任何形式对外分发};
+\end{tikzpicture}
+\vspace*{0.62cm}
+{\color{white}\sffamily\bfseries\small \reportkicker}\\[0.18cm]
+{\color{white}\sffamily\scriptsize \reportscope \quad|\quad \reporttype \quad|\quad \reportdate}\\[1.0cm]
+{\fontsize{25}{30}\selectfont\bfseries\color{navy}\reporttitle}\\[0.25cm]
+{\fontsize{13}{17}\selectfont\color{steelgrey}\reportsubtitle}\\[0.75cm]
+\begin{dashboardbox}[决策摘要]
+\begin{tabularx}{\textwidth}{L{3.0cm}X L{3.0cm}X}
+\textbf{报告类型} & \reporttype & \textbf{数据截至} & \reportdatacutoff \\
+\textbf{覆盖范围} & \reportscope & \textbf{作者} & \reportauthor \\
+\end{tabularx}
+\vspace{0.45em}
+\begin{houseviewbox}[本机构观点]
+\reporthouseview
+\end{houseviewbox}
+\begin{sourcequalitybox}[证据质量]
+\reportquality
+\end{sourcequalitybox}
+\end{dashboardbox}
+\vfill
+{\scriptsize\color{white}\reportdisclaimer}
+\end{titlepage}
+}
+% 封底水印命令：在 L86 前插入，document 结束前调用
+\newcommand{\astockbackpagewatermark}{%
+\thispagestyle{empty}
+\begin{tikzpicture}[remember picture, overlay]
+  % 顶部横幅 24pt 红色加粗水印
+  \node[anchor=north, text=riskred,
+        font=\fontsize{24}{28}\selectfont\bfseries\CJKfontspec{Heiti SC},
+        inner sep=6pt, text opacity=0.92]
+    at ([yshift=-0.3cm]current page.north)
+    {内部研究参考\hspace{0.8em}严禁对外分发};
+  % 中央 26pt 红色加粗半透明水印（覆盖全文）
+  \node[anchor=center, text=riskred,
+        font=\fontsize{26}{32}\selectfont\bfseries\CJKfontspec{Heiti SC},
+        text opacity=0.18, rotate=30, inner sep=0pt]
+    at (current page.center)
+    {AStock 内部研究参考\hspace{1.2em}严禁对外分发};
+  % 页脚 24pt 红色加粗水印
+  \node[anchor=south, text=riskred,
+        font=\fontsize{24}{28}\selectfont\bfseries\CJKfontspec{Heiti SC},
+        inner sep=6pt, text opacity=0.92]
+    at ([yshift=0.5cm]current page.south)
+    {本文件不构成对外发布的证券研究报告};
+\end{tikzpicture}
 }
 
 \begin{document}
@@ -84,5 +153,8 @@ This report is produced by AStock Research Agent Team from publicly available in
 \vspace{0.4em}
 \textbf{Agent confidence:} 78/100. Deductions: China hyperscaler capex (L3), A-share AI revenue exposure (model-estimated, not disclosed), HBM4/HBM4E yield and ASP (benchmark forecasts, not vendor-confirmed).
 \end{disclosurebox}
+
+% P3 合规：封底水印（顶部横幅 + 中央斜纹 + 页脚 三处 24pt+ 红色加粗）
+\astockbackpagewatermark
 
 \end{document}

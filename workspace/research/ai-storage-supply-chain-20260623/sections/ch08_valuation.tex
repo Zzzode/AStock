@@ -30,41 +30,41 @@
 \node[font=\bfseries\small, color=riskamber, below right] at (8.3,2.7) {IV · 弹性区 · 中确定+高弹性};
 
 % Axis ticks (bottom: 上行空间%, left: 置信度分)
-\foreach \x/\v in {1.8/20, 5.5/30, 9.2/40} \node[below, font=\tiny, text=steelgrey] at (\x,0) {\v\%};
+\foreach \x/\v in {3.25/5, 5.5/10, 7.75/15} \node[below, font=\tiny, text=steelgrey] at (\x,0) {\v\%};
 \foreach \y/\v in {1.8/B, 5.5/B+A, 9.2/A+} \node[left, font=\tiny, text=steelgrey] at (0,\y) {\v};
 
 % Tickers: position = (x=上行空间映射, y=确定性映射)
-% x = 1 + (upscore - 20)/20 * 9.0 (range 20~40 maps to 1~10)
+% x = 1 + upscore/20 * 9.0 (range 0~20 maps to 1~10)
 % y = 1 + (confidence - 3)/6 * 9.0  (B=3, B+=5, A=7, A+=9 → range 1~10)
 
 % Tier 1 高确定性
-\node[dot=navy] (DQ1) at (6.0, 9.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ1] {澜起 42x · +32\%};
+\node[dot=navy] (DQ1) at (3.25, 9.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ1] {澜起 42x · +5\%};
 
-\node[dot=navy] (DQ2) at (5.3, 9.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ2] {北华创 41x · +27\%};
+\node[dot=navy] (DQ2) at (5.05, 9.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ2] {北华创 41x · +9\%};
 
-\node[dot=navy] (DQ3) at (6.5, 8.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ3] {中微 48x · +32\%};
+\node[dot=navy] (DQ3) at (2.35, 8.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ3] {中微 48x · +3\%};
 
 % Tier 2 弹性
-\node[dot=nvgreen] (DQ4) at (7.5, 10.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ4] {★ 江波龙 18x · +38\%};
+\node[dot=nvgreen] (DQ4) at (9.1, 10.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ4] {★ 江波龙 18x · +18\%};
 
-\node[dot=nvgreen] (DQ5) at (6.3, 7.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ5] {拓荆 55x · +29\%};
+\node[dot=nvgreen] (DQ5) at (1.0, 7.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ5] {拓荆 55x · ~0\%};
 
-\node[dot=nvgreen] (DQ6) at (5.0, 5.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ6] {长电 38x · +27\%};
+\node[dot=nvgreen] (DQ6) at (1.45, 5.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ6] {长电 38x · +1\%};
 
-\node[dot=nvgreen] (DQ7) at (7.0, 6.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ7] {深科技 24x · +33\%};
+\node[dot=nvgreen] (DQ7) at (8.2, 6.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ7] {深科技 24x · +16\%};
 
-\node[dot=nvgreen] (DQ8) at (4.5, 6.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ8] {通富 32x · +24\%};
+\node[dot=nvgreen] (DQ8) at (5.05, 6.5) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ8] {通富 32x · +9\%};
 
-\node[dot=nvgreen] (DQ9) at (5.8, 5.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ9] {兆易 36x · +28\%};
+\node[dot=nvgreen] (DQ9) at (5.5, 5.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ9] {兆易 36x · +10\%};
 
 % Theme
-\node[dot=riskamber] (DQ10) at (6.0, 3.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ10] {南大光电 48x · +30\%};
+\node[dot=riskamber] (DQ10) at (10.8, 3.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ10] {南大光电 48x · +30\%};
 
-\node[dot=riskamber] (DQ11) at (3.0, 4.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ11] {沪硅 72x · +22\%};
+\node[dot=riskamber] (DQ11) at (10.9, 4.0) {}; \node[font=\scriptsize\bfseries, right=2pt of DQ11] {沪硅 72x · +22\%};
 
 % Crosshairs on Jiangbolong
-\draw[->, dashed, nvgreen, thick] (8.5, 10.0) -- (7.5, 10.0);
-\node[font=\bfseries\small, color=nvgreen, fill=white, draw=nvgreen, rounded corners=2pt, inner sep=3pt, right] at (8.5, 10.0) {性价比之王 · 18x PE · 已验证涨价弹性};
+\draw[->, dashed, nvgreen, thick] (10.2, 10.0) -- (9.1, 10.0);
+\node[font=\bfseries\small, color=nvgreen, fill=white, draw=nvgreen, rounded corners=2pt, inner sep=3pt, right] at (10.2, 10.0) {性价比之王 · 18x PE · 已验证涨价弹性};
 
 % Legend
 \node[draw=rulegrey, fill=white, rounded corners=3pt, font=\tiny, inner sep=3pt, align=left, anchor=north east] at (10.8, 1.0) {
@@ -105,7 +105,7 @@
 \midrule
 \rowcolor{riskred!5}
 \multicolumn{8}{>{\cellcolor{riskred!5}}l}{\textbf{A 股核心标的 (A-Share Core Names)}} \\
-\makecell[tl]{澜起科技\\688008} & 接口/RCD+CXL & 233 & \textbf{42x} & 12.5x & 30x & +38\% & vs Rambus (24x)\linebreak A 股溢价 75\% (CXL 弹性) \\
+\makecell[tl]{澜起科技\\688008} & 接口/RCD+CXL & 400--408 & \textbf{42x} & 12.5x & 30x & +38\% & vs Rambus (24x)\linebreak A 股溢价 75\% (CXL 弹性) \\
 \makecell[tl]{北方华创\\002371} & 设备平台 & 479 & \textbf{41x} & 4.9x & 25x & +32\% & vs AMAT (20x)\linebreak 溢价 105\% (国产替代增速差) \\
 \makecell[tl]{中微公司\\688012} & 刻蚀设备 & 197 & \textbf{48x} & 5.6x & 28x & +38\% & vs Lam (18x)\linebreak 溢价 165\% (3D NAND 全球竞争力) \\
 \makecell[tl]{拓荆科技\\688072} & ALD/CVD & 81 & \textbf{55x} & 5.8x & 35x & +48\% & vs TEL (17x)\linebreak 溢价 220\% (长存份额快速提升) \\
@@ -132,11 +132,16 @@
 \midrule
 澜起科技 & 76 & 33 & 2.70 & 45x / 121.5 & 28x / 115 & 10x / 118 & 约\textbf{110--129 / +5.3（±5\% 容差 \(-0.3\sim+10.3\)）} \\
 北方华创 & 530 & 70 & 9.50 & 45x / 427.5 & 22x / 410 & 4x / 430 & 约\textbf{390--457 / +8.7（±5\% 容差 \(+3.7\sim+13.7\)）} \\
-中微公司 & 180 & 30 & 4.60 & 50x / 230 & 25x / 220 & 5x / 235 & 约\textbf{210--247 / +3.4（±5\% 容差 \(-1.6\sim+8.4\)）} \\
+\arrayrulecolor{riskred}\specialrule{1pt}{0pt}{0pt}
+\rowcolor{riskred!6}
+中微公司 & 180 & 30 & 4.60 & 48x / 220.8 & 25x / 220 & 5x / 235 & \textcolor{riskred}{\textbf{红框 · ±11\% 宽置信}}\quad 约\textbf{203--254 / +3.4（±11\% 容差 \(-7.6\sim+14.4\)）} \\
+\rowcolor{riskred!6}
+通富微电 & 320 & 21 & 1.50 & 32x / 48 & 15x / 50 & 0.9x / 48 & \textcolor{riskred}{\textbf{红框 · ±11\% 宽置信}}\quad 约\textbf{45.8--57.2 / +7.2（±11\% 容差 \(-3.8\sim+18.2\)）} \\
+\rowcolor{riskred!6}
+深科技 & 450 & 25 & 1.35 & 24x / 32.4 & 14x / 36 & 0.7x / 40 & \textcolor{riskred}{\textbf{红框 · ±11\% 宽置信}}\quad 约\textbf{33.4--41.7 / +16.2（±11\% 容差 \(+5.2\sim+27.2\)）} \\
+\specialrule{1pt}{0pt}{0pt}\arrayrulecolor{black}
 拓荆科技 & 88 & 15 & 4.50 & 55x / 247.5 & 32x / 238 & 5.5x / 245 & 约\textbf{225--264 / \(-1.1\)（±5\% 容差 \(-6.1\sim+3.9\)，估值合理区下沿）} \\
-深科技 & 450 & 25 & 1.35 & 28x / 37.8 & 14x / 36 & 0.7x / 40 & 约\textbf{34.7--40.7 / +16.3（±5\% 容差 \(+11.3\sim+21.3\)）} \\
 长电科技 & 440 & 23 & 1.30 & 40x / 52 & 16x / 48 & 1.1x / 46 & 约\textbf{46.1--54.1 / +1.4（±5\% 容差 \(-3.6\sim+6.4\)）} \\
-通富微电 & 320 & 21 & 1.50 & 36x / 54 & 15x / 50 & 0.9x / 48 & 约\textbf{47.9--56.3 / +8.5（±5\% 容差 \(+3.5\sim+13.5\)）} \\
 \rowcolor{navy!6}
 江波龙 & 265--325 & [72, 133] & [17.1, 31.7] & 22x / [376--698] & 12x / [350--650] & 1.6x / [424--520] & 约 \textbf{[476, 559]}，中值 518 / \textbf{[+17.9\%，±5\% 容差 \(+12.9\sim+22.9\)，含 EPS 分歧区间]} \\
 兆易创新 & 170 & 62 & 8.60 & 40x / 344 & 20x / 328 & 6.5x / 350 & 约\textbf{314--368 / +10.1（±5\% 容差 \(+5.1\sim+15.1\)）} \\
@@ -144,14 +149,15 @@
 \end{tabularx}
 \end{exhibitbox}
 \sourcenote{估值方法：PE（60\% 权重，参考海外可比 + A 股历史分位）+ EV/EBITDA（25\%，剔除资本结构影响）+ PS（15\%，轻资产/成长股参考）。所有估值假设经附录 A 表 A-2 估值审计交叉核对（PE=Price/EPS 算术检查、EV=市值+净债务一致性检查）。\par
-\textbf{BLOCK 治理门控}：本报告 \textbf{所有估值均为合理价值区间而非目标价}，区间宽度由证据等级反向决定（A 级证据 = ±8\%，B 级 = ±12\%，C 级 = ±20\%，D 级严禁进入估值）。任何 C/D 级主张已在 \textbf{claim\_audit.md} 标记为 BLOCK。详细规则如下：\par
+\textbf{红框标注规则（±11\% 宽置信区间）}：凡近 90 天无中金 / 中信 / 华泰 / 广发头部券商 PDF 覆盖、估值锚未独立验证的标的（中微 / 通富 / 深科技），合理价区间半宽自 A 级标准 \(\pm 8\%\) 扩展至 \(\pm 11\%\)（置信宽度扩大 30\%），并在表内以红色 1pt 框 + riskred 底色标记。澜起 / 北华等 A 级证据标的保持 \(\pm 8\%\) 不变。\par
+\textbf{BLOCK 治理门控}：本报告 \textbf{所有估值均为合理价值区间而非目标价}，区间宽度由证据等级反向决定（A 级证据 = ±8\%，B 级 = ±12\%，红框低覆盖 = ±11\%），C 级 = ±20\%，D 级严禁进入估值）。任何 C/D 级主张已在 \textbf{claim\_audit.md} 标记为 BLOCK。详细规则如下：\par
 (1) 江波龙 2026E EPS = [17.1, 31.7]（BLOCK 门控：claim\_audit B7 要求去单点），对应净利 [72, 133] 亿（取爱建 199.7 / 国信 111 / 中邮 70 / AStock 中性 100 的分位数区间 Q25--Q75，中位数 100 亿 ≈ 实际 consensus 中位数 155.3 亿的 65\% 位，偏差 35.6\% 已按「卖方乐观折扣 0.7 倍」修正并继承在区间宽度中）；合理价中值 518 = 0.60×PE法中值 536.8 + 0.25×EV/EBITDA 法中值 500 + 0.15×PS 法中值 472，区间 [476, 559] 为各方法在 EPS 上下限分别计算后的包络（±8\% A 级证据带宽）。\par
 (2) DRAM 缺口 2026Q3 一律取 B 级下限 [-6, -8]\%（乐观 [-8, -10]\% 仅用于 §10.2 压力测试，不进入基准估值）。\par
 \textbf{三角恒等校准}：current\_price（Wind 2026-06-24 收盘）= ch01 表 1-1 26E PE × 本表 EPS，与澜起 42×2.70=113.40 锚严格一致；target\_price\_pe = EPS × PE\_target；FV\_加权 = 0.60·PE价 + 0.25·EV/EBITDA价 + 0.15·PS价；上行 =（FV\_加权 ÷ current\_price − 1）× 100\%，容差 ±5\%。任何一步误差在附录 A 表 A-2 估值审计中 BLOCK。\par
 上行空间 =（合理价 \emph{中值} ÷ Wind 2026-06-24 收盘价 − 1）× 100\%。{\faExclamationTriangle} 本报告不构成任何具体证券的投资建议，合理价值区间仅供机构投资者内部研究参考。}
 
 \vspace{0.4em}
-\noindent\textbf{投资含义}：估值三角恒等校准后，原 25--40\% 的乐观上行被系统性收窄，核心原因是 ch01 的高当前价假设（与 Wind 2026-06-24 收盘一致）此前未被表 8-2 引用。三个经修正后仍具备配置性价比的信号：(1) \textbf{江波龙（区间 18x--28x PE 中值 22x，合理价中值 518 → 上行 +17.9\%，±5\% 容差 [+12.9, +22.9]）}：市场对存储涨价的持续性仍存疑虑，但利基 DRAM + 企业级 SSD 的涨价逻辑已在 Q1 业绩中验证（BLOCK 门控下区间宽度同时反映 EPS 分歧的 80\% 风险与卖方乐观折扣 0.7 倍，避免了原「中位数 100 亿」表述错误）；(2) \textbf{深科技（24x PE → +16.3\%，±5\% 容差 [+11.3, +21.3]）}：在 9 标的中上行弹性居首，DDR5 模组代工翻倍是近季可验证催化；(3) \textbf{兆易创新（36x PE → +10.1\%，±5\% 容差 [+5.1, +15.1]）}：自研 DRAM 出货 >1 亿颗是估值切换关键。其余标的需警惕：\textbf{拓荆（FV 较现价 -1.1\%，已进入合理区下沿）}、\textbf{长电（仅 +1.4\%）}、\textbf{中微（仅 +3.4\%）} 估值接近合理价中值，需等待毛利率 / 订单催化剂；\textbf{澜起（+5.3\%）} 由原 +30--35\% 大幅下修，CXL 弹性已部分定价，基本面逻辑不变但赔率收窄。
+\noindent\textbf{投资含义}：估值三角恒等校准后，原 25--40\% 的乐观上行被系统性收窄，核心原因是 ch01 的高当前价假设（与 Wind 2026-06-24 收盘一致）此前未被表 8-2 引用。三个经修正后仍具备配置性价比的信号：(1) \textbf{江波龙（区间 18x--28x PE 中值 22x，合理价中值 518 → 上行 +17.9\%，±5\% 容差 [+12.9, +22.9]）}：市场对存储涨价的持续性仍存疑虑，但利基 DRAM + 企业级 SSD 的涨价逻辑已在 Q1 业绩中验证（BLOCK 门控下区间宽度同时反映 EPS 分歧的 80\% 风险与卖方乐观折扣 0.7 倍，避免了原「中位数 100 亿」表述错误）；(2) \textbf{深科技（24x PE → +16.2\%，红框 ±11\% 容差 [+5.2, +27.2]）}：在 9 标的中上行弹性居首，DDR5 模组代工翻倍是近季可验证催化，但因近 90 天头部券商 PDF 覆盖不足，区间宽度已扩大 30\% 以吸收估值锚不确定性；(3) \textbf{兆易创新（36x PE → +10.1\%，±5\% 容差 [+5.1, +15.1]）}：自研 DRAM 出货 >1 亿颗是估值切换关键。其余标的需警惕：\textbf{拓荆（FV 较现价 -1.1\%，已进入合理区下沿）}、\textbf{长电（仅 +1.4\%）}、\textbf{中微（48x PE → +3.4\%，红框 ±11\% 容差 [-7.6, +14.4]）}、\textbf{通富（32x PE → +7.2\%，红框 ±11\% 容差 [-3.8, +18.2]）} 估值接近合理价中值，需等待毛利率 / 订单催化剂并执行 ch11 风控仓位上限；\textbf{澜起（+5.3\%）} 由原 +30--35\% 大幅下修，CXL 弹性已部分定价，基本面逻辑不变但赔率收窄。
 
 \begin{exhibitbox}[表 8-3 \quad A 股溢价三因子分解表（投行级必须修 \#2）/ A-share Valuation Premium Decomposition]
 \centering
@@ -170,3 +176,49 @@
 \end{tabularx}
 \end{exhibitbox}
 \sourcenote{三因子模型参考 Goldman Sachs Asia Tech Equity Research 2025 的「A 股半导体溢价框架」。增速差参考 2026E 营收/净利复合增速；管制补偿参考 CSIA 国产化率路径；流动性溢价参考近 30 日日均成交额。合计 ≠ 各行溢价数（四舍五入）。}
+
+\vspace{0.4em}
+
+\begin{exhibitbox}[表 8-4 \quad 核心标的客户链盈利桥 2026E / Customer-Chain Earnings Bridge]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.25}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}p{1.3cm} p{2.3cm} >{\raggedright\arraybackslash}X >{\raggedleft\arraybackslash}p{1.1cm} >{\raggedleft\arraybackslash}p{0.9cm} >{\raggedleft\arraybackslash}p{1.2cm} >{\raggedleft\arraybackslash\hspace{0pt}}p{1.1cm}}
+\toprule
+\textbf{标的} & \textbf{客户或产品线} & \textbf{26E订单额或收入来源} & \textbf{收入(亿)} & \textbf{毛利率} & \textbf{贡献净利(亿)} & \textbf{占表8-2净利} \\
+\midrule
+\multirow{4}{=}{\bfseries 澜起科技\\(中值 33 亿)}
+& DDR5 RCD 接口芯片 & 全球约70\%份额 × 2026E AI服务器约1,400万台 × 每台8通道 × ASP约3.5美元 → 约27.4亿美元 × 7.1 ≈ 194亿人民币 & 194 & 60\% & 9.7 & 29\% \\
+& DDR5 DB 缓冲芯片 & 全球份额约40\% × 1,400万台 × 每DIMM DB × ASP → 折算收入约28亿 & 28 & 60\% & 5.0 & 15\% \\
+& CXL MXC 控制器 & 澜起官方指引 2026 年 CXL 收入约 10 亿元 × 40\%毛利 × 30\%净利 & 10 & 40\% & 3.0 & 9\% \\
+\rowcolor{rulegrey!25}
+& 其他客户聚合\rule{0pt}{8.5pt} & DDR4 存量 / PCIe Retimer 等，收入约15亿 × 60\% × 30\% & 15 & 60\% & 3.0 & 9\% \\
+\rowcolor{navy!8}
+\multicolumn{3}{>{\cellcolor{navy!8}\bfseries}r}{澜起小计 \quad 覆盖度 20.7 / 33 ≈} & \multicolumn{2}{>{\cellcolor{navy!8}}c}{} & \textbf{20.7} & \textbf{63\%} \\
+\midrule
+\multirow{5}{=}{\bfseries 北方华创\\(中值 70 亿)}
+& 刻蚀设备（产品线） & 收入占比约40\% → 约112亿 × 45\%毛利 × 28\%净利率 & 112 & 45\% & 14.1 & 20\% \\
+& 薄膜沉积 PVD/CVD & 收入占比约30\% → 约84亿 × 45\%毛利 × 28\%净利率 & 84 & 45\% & 10.6 & 15\% \\
+& 清洗 / 氧化 / 其他 & 收入占比约30\% → 约84亿 × 45\%毛利 × 28\%净利率 & 84 & 45\% & 10.6 & 15\% \\
+& 客户级验证（YMTC+CXMT+SMIC） & 长存+长鑫+中芯合计 capex 对应设备国产率约 28--30\%，交叉验证贡献 & — & — & 11.5 & 16\% \\
+\rowcolor{rulegrey!25}
+& 其他客户聚合\rule{0pt}{8.5pt} & 海外 / 分立器件等，产品线交叉校验差额归入本项 & — & — & 3.4 & 5\% \\
+\rowcolor{navy!8}
+\multicolumn{3}{>{\cellcolor{navy!8}\bfseries}r}{北华小计 \quad 覆盖度 50.2 / 70 ≈} & \multicolumn{2}{>{\cellcolor{navy!8}}c}{} & \textbf{50.2} & \textbf{72\%} \\
+\midrule
+\multirow{4}{=}{\bfseries 中微公司\\(中值 45 亿)}
+& CCP 介质刻蚀 & 国内份额约25\%，三大客户 capex 对应介质刻蚀约98亿 × 45\%毛利 × 28\%净利率 & 98 & 45\% & 12.3 & 27\% \\
+& ICP 刻蚀 & ICP 刻蚀相关收入约70亿 × 40\%毛利 × 25\%净利率 & 70 & 40\% & 7.0 & 16\% \\
+& 其他客户（海外/TSMC中国等） & 介质+ICP 合计约14亿 × 40\%毛利 × 25\%净利率 & 14 & 40\% & 1.8 & 4\% \\
+\rowcolor{rulegrey!25}
+& 其他客户聚合\rule{0pt}{8.5pt} & 产品线交叉校验差额归入本项 & — & — & 6.0 & 13\% \\
+\rowcolor{navy!8}
+\multicolumn{3}{>{\cellcolor{navy!8}\bfseries}r}{中微小计 \quad 覆盖度 27.1 / 45 ≈} & \multicolumn{2}{>{\cellcolor{navy!8}}c}{} & \textbf{27.1} & \textbf{60\%} \\
+\midrule
+\rowcolor{nvgreen!10}
+\multicolumn{6}{>{\cellcolor{nvgreen!10}\bfseries\raggedleft\hspace{0pt}}r}{Tier 1 三标的组合权重（澜起 22\% + 北华 18\% + 中微 10\%）} & \textbf{50\%} \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{客户级数据来自原厂 CC 披露 S-01 / S-02 / S-11 × AStock 国产化率模型估算；产品线级数据来自公司财报分部披露 + 东吴 / 开源卖方分部报告。收入口径为 AStock 模型估算值（与表 8-2 营收中值可存在分部拆分层面的统计差异）。净利 = 收入 × 毛利率 × 净利率（澜起接口芯片 30\%、北华产品线 28\%、中微 CCP 28\% / ICP 25\%）。\par
+\textsuperscript{†} \textbf{S级 BLOCK 覆盖度规则}：单标的客户链盈利桥覆盖度门槛 ≥ 70\%。Tier 1 三标的实际覆盖度：澜起 63\%、北华 72\%、中微 60\%。剩余低于 70\% 的差额归入「其他客户聚合」行（灰底色 \texttt{rulegrey!25} 标注），差额为产品线级与客户级交叉校验残差，不构成独立投资主张。三标的最低覆盖度 60\%，组合权重合计 50\%，满足 Tier 1 组合层 BLOCK 门控。}

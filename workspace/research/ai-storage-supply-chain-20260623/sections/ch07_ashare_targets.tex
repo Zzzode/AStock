@@ -24,35 +24,41 @@
   point meta=rawx,
   visualization depends on=x \as \rawx,
   yticklabel style={font=\small},
-  legend style={at={(0.98,0.02)}, anchor=south east, draw=rulegrey, font=\scriptsize},
-  cycle list={
-    {fill=navy!30, draw=navy},
-    {fill=nvgreen!60, draw=nvgreen},
-    {fill=riskred!60, draw=riskred},
-    {fill=riskamber!70, draw=riskamber},
-    {fill=accentblue!70, draw=accentblue},
-    {fill=steelgrey!50, draw=steelgrey}
-  }
+  legend style={at={(0.98,0.02)}, anchor=south east, draw=rulegrey, font=\scriptsize}
 ]
-% [环节 市值(亿)] 按市值升序 (tikz ybar从下往上)
-\addplot coordinates {
+% 设计/IP (4 标的)
+\addplot +[fill=accentblue!60, draw=accentblue!80] coordinates {
   (220,北京君正)
   (310,芯原股份)
-  (380,华天科技)
   (280,全志科技)
+  (1680,澜起科技)
+}; \addlegendentry{设计/IP};
+% 设备 (3 标的，盛美上海未在本次15标的内)
+\addplot +[fill=navy, draw=navy] coordinates {
+  (580,拓荆科技)
+  (1420,中微公司)
+  (3450,北方华创)
+}; \addlegendentry{设备};
+% 封测 (3 标的)
+\addplot +[fill=riskred!65, draw=riskred!85] coordinates {
+  (380,华天科技)
+  (690,通富微电)
+  (890,长电科技)
+}; \addlegendentry{封测};
+% 模组/SSD (2 标的)
+\addplot +[fill=nvgreen!65, draw=nvgreen!85] coordinates {
+  (1846,江波龙)
+  (560,深科技)
+}; \addlegendentry{模组/SSD};
+% 材料 (2 标的)
+\addplot +[fill=riskamber!65, draw=riskamber!85] coordinates {
   (320,南大光电)
   (650,沪硅产业)
-  (580,拓荆科技)
-  (820,江波龙)
-  (560,深科技)
-  (690,通富微电)
+}; \addlegendentry{材料};
+% 主控 (1 标的)
+\addplot +[fill=deepnavy, draw=deepnavy] coordinates {
   (1150,兆易创新)
-  (890,长电科技)
-  (1420,中微公司)
-  (1680,澜起科技)
-  (3450,北方华创)
-};
-\legend{设计/IP, 封测, 模组/SSD, 材料, 设备, 主控}
+}; \addlegendentry{主控};
 \end{axis}
 \node[below, font=\tiny, color=mutedgrey, align=center, text width=14cm] at (7.5, -2.0) {市值数据基于 2026-06-23 收盘 (来源：Wind A 股实时行情)。北方华创 (3450 亿) 独占链上约 28\%，设备三强 (北华+中微+拓荆) 合计 约46\%。A 股存储链缺少真正原厂 (YMTC/CXMT 未上市)，设备龙头市值占比偏高反映市场对「二阶 Beta」的定价。};
 \end{tikzpicture}

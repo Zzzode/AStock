@@ -156,11 +156,11 @@ P("BLOCK-7(江波龙 EPS [17.1, 31.7])", "[17.1, 31.7]" in ch08,
   "" if "[17.1, 31.7]" in ch08 else "ch08 未找到区间")
 P("BLOCK-7(附录 BLOCK 化声明)", "BLOCK 区间化落实" in app or "BLOCK 区间化" in app,
   "" if "BLOCK 区间化" in app else "附录未声明 BLOCK 区间化落实")
-P("S-3(北华 15%/中微 9% 权重约束)",
-  ("北方华创 15\\%" in ch11 or "北方华创 15%" in ch11) and ("中微公司 9\\%" in ch11 or "中微公司 9%" in ch11),
-  f"15%={'15%' in ch11} 9%={'9%' in ch11}")
-# 仓位合计：LaTeX 源中百分号是转义的 \%，且"60\%（核心）"格式
-_has_pos = ("60\\%（核心）" in ch11 or "60%（核心）" in ch11) and ("30\\%（卫星）" in ch11 or "30%（卫星）" in ch11) and ("10\\%（主题）" in ch11 or "10%（主题）" in ch11)
+P("S-3(北华 18%/中微 10% 权重约束)",
+  ("北方华创 18\\%" in ch11 or "北方华创 18%" in ch11) and ("中微公司 10\\%" in ch11 or "中微公司 10%" in ch11),
+  f"18%={'18%' in ch11} 10%={'10%' in ch11}")
+# 仓位合计：LaTeX 源中百分号是转义的 \%
+_has_pos = ("60\\%（核心" in ch11 or "60%（核心" in ch11) and ("32\\%（卫星" in ch11 or "32%（卫星" in ch11) and ("8\\%（主题" in ch11 or "8%（主题" in ch11)
 _has_100 = ("100\\%" in ch11 or "100%" in ch11 or "100 %" in ch11)
 P("仓位合计=100%", _has_pos and _has_100, "" if (_has_pos and _has_100) else f"仓位段落存在={_has_pos} 100%存在={_has_100}")
 
