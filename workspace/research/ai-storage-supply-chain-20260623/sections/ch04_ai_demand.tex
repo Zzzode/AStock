@@ -56,7 +56,7 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \end{tikzpicture}
 }
 \end{exhibitbox}
-\sourcenote{HBM 参数：SK Hynix 2026Q1 CC + NVIDIA Blackwell 官方规格 [S-03/S-11]；HBM4/HBM4E 路线：SK Hynix 2025 Investor Day + {\faExclamationTriangle} 行业基准预测 [S-12/S-19]；国产节奏：AStock 制程代差倒推评估。}
+\sourcenote{HBM 参数：SK Hynix 2026 年 Q1 CC + NVIDIA Blackwell 官方规格 [S-03/S-11]；HBM4/HBM4E 路线：SK Hynix 2025 Investor Day + {\faExclamationTriangle} 行业基准预测 [S-12/S-19]；国产节奏：AStock 制程代差倒推评估。}
 
 \subsection{HBM 全球 TAM 预测 (2024-2027E)}
 
@@ -78,7 +78,7 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \sourcenote{出货量/ASP：TrendForce 2026-05 HBM 追踪 [S-18]；2027 预测：{\faExclamationTriangle} AStock bottom-up 模型 (三大原厂 capex × GPU 出货预测)；交叉验证：SK Hynix 指引 2026 HBM 收入 \$180 亿 (50\% 份额) \(\to\) 全球 约\$360 亿，与表一致。}
 
 \vspace{0.4em}
-\noindent\textbf{投资含义}：HBM TAM 的指数级增长 (2024 \$74 亿 \(\to\) 2027 \$580--680 亿) 是半导体行业近十年来最陡峭的增长曲线之一。但 A 股无 HBM 原厂，\textbf{直接受益路径只有三条}：(1) 设备材料 (北方华创/中微/拓荆 — 扩产必买，确定性最高)；(2) 配套内存接口 (澜起 — HBM 涨价反而推升 CXL 替代需求)；(3) 先进封装 (长电/通富 — 远期 HBM 封装国产化路径)。纯「国产 HBM 概念股」无基本面支撑，需规避。
+\noindent\textbf{投资含义}：HBM TAM 的指数级增长 (2024 \$74 亿 \(\to\) 2027 \$580--680 亿) 是半导体行业近十年来最陡峭的增长曲线之一。但 A 股无 HBM 原厂，\textbf{直接受益路径只有三条}：(1) 设备材料 (北方华创/中微/拓荆 — 扩产必买，确定性最高)；(2) 配套内存接口 (澜起 — HBM 涨价反而推升 CXL 替代需求)；(3) 先进封装 (长电\slash 通富 — 远期 HBM 封装国产化路径)。纯「国产 HBM 概念股」无基本面支撑，需规避。
 
 \section{DDR5：AI 服务器单机容量翻倍 + 全场景渗透}
 
@@ -114,11 +114,11 @@ DDR5 服务器内存 & 约200--230 & 约260--290 & 约330--370 & 30--33 & \textb
 
 \section{CXL：内存池化开启第二增长曲线}
 
-CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一高速互连，实现跨节点的内存池化与扩展。对于 AI 数据中心，CXL 的核心价值在于——\textbf{当 HBM 成本过高或供给不足时，通过 CXL 扩展池化内存作为低成本替代方案}。从技术演进路径看，CXL 1.1 (2022) 仅支持基础 Cache/Mem 协议，CXL 2.0 (2023) 引入 Switch 实现多对多内存池化，而 CXL 3.0/3.1 (2025-2026) 进一步将带宽翻倍至 64GT/s (PCIe 6.0) 并支持 P2P 拓扑 (Fabric 互连)。Intel Emerald Rapids、AMD Genoa、Sapphire Rapids Refresh 三代服务器 CPU 已原生支持 CXL 2.0，NVIDIA Rubin 平台据传也将在 2026H2 首次引入对 CXL 内存扩展的原生支持——这一信号将彻底改变 CXL 从「CPU 生态附属」向「AI/HBM 互补基础设施」跃迁的市场预期。
+CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一高速互连，实现跨节点的内存池化与扩展。对于 AI 数据中心，CXL 的核心价值在于——\textbf{当 HBM 成本过高或供给不足时，通过 CXL 扩展池化内存作为低成本替代方案}。从技术演进路径看，CXL 1.1 (2022) 仅支持基础 Cache/Mem 协议，CXL 2.0 (2023) 引入 Switch 实现多对多内存池化，而 CXL 3.0/3.1 (2025-2026) 进一步将带宽翻倍至 64GT/s (PCIe 6.0) 并支持 P2P 拓扑 (Fabric 互连)。Intel Emerald Rapids、AMD Genoa、Sapphire Rapids Refresh 三代服务器 CPU 已原生支持 CXL 2.0，NVIDIA Rubin 平台据传也将在 2026 年 H2 首次引入对 CXL 内存扩展的原生支持——这一信号将彻底改变 CXL 从「CPU 生态附属」向「AI/HBM 互补基础设施」跃迁的市场预期。
 
 从市场规模看，CXL 全球 TAM 正经历从「几亿到百亿」的指数级增长：2025 年仅约 \$3-5 亿（以控制器和原型产品为主），2026E 快速攀升至 \$35-45 亿（Type 3 内存扩展箱 + 控制器出货放量），2027E 有望突破 \$120-150 亿（Type 2/3 混合部署，CXL SSD 大规模商用）。2024-2027E 三年 CAGR 预计高达 220\%，是半导体行业增速最快的细分赛道之一，甚至超过同期 HBM TAM 的同比增速。这一量级意味着 CXL 从「实验室技术」正式进入「百亿级量产市场」，对 A 股相关标的的业绩贡献将从「概念性收入」转为「实质性利润增量」。
 
-对 A 股而言，CXL 的投资价值不仅是单纯的「高增长赛道」，更是 BIS 管制下的「刚需对冲工具」——若 2026Q3 BIS 将 HBM3E/HBM4 列入对华禁售清单，国内头部云厂商（字节/腾讯/阿里）和 AI 芯片设计公司（寒武纪/壁仞/燧原）将被迫通过 CXL Type 3 内存扩展箱 + DDR5 RDIMM 的组合方案缓解 AI 训练集群的内存带宽瓶颈。虽然 CXL 方案的单通道带宽仅为 HBM3E 的 1/8-1/10，但在推理侧和中小模型训练场景下，通过 8-16 节点 Fabric 互连可有效弥补单机带宽不足，叠加单位 GB 成本仅为 HBM 的 1/5-1/7，\textbf{CXL 是国内 AI 基建在 HBM 受限时唯一可行的替代路径}。澜起科技在 CXL 层的卡位类似其在 DDR5 RCD 的垄断地位——CXL 内存扩展控制器 (MXC) 是 CXL 内存模组的「必选芯片」，澜起全球首发量产，具有先发 + 标准双重护城河。2027 年 CXL 收入翻倍至 20 亿元 (约占澜起总收入 15-20\%) 是潜在的超预期因子。
+对 A 股而言，CXL 的投资价值不仅是单纯的「高增长赛道」，更是 BIS 管制下的「刚需对冲工具」——若 2026 年 Q3 BIS 将 HBM3E/HBM4 列入对华禁售清单，国内头部云厂商（字节/腾讯/阿里）和 AI 芯片设计公司（寒武纪/壁仞/燧原）将被迫通过 CXL Type 3 内存扩展箱 + DDR5 RDIMM 的组合方案缓解 AI 训练集群的内存带宽瓶颈。虽然 CXL 方案的单通道带宽仅为 HBM3E 的 1/8-1/10，但在推理侧和中小模型训练场景下，通过 8-16 节点 Fabric 互连可有效弥补单机带宽不足，叠加单位 GB 成本仅为 HBM 的 1/5-1/7，\textbf{CXL 是国内 AI 基建在 HBM 受限时唯一可行的替代路径}。澜起科技在 CXL 层的卡位类似其在 DDR5 RCD 的垄断地位——CXL 内存扩展控制器 (MXC) 是 CXL 内存模组的「必选芯片」，澜起全球首发量产，具有先发 + 标准双重护城河。2027 年 CXL 收入翻倍至 20 亿元 (约占澜起总收入 15-20\%) 是潜在的超预期因子。
 
 \needspace{40\baselineskip}
 \begin{exhibitbox}[图 4-2 \quad CXL 内存池化拓扑架构图 / CXL Memory Pooling Topology]
@@ -160,7 +160,7 @@ CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一�
 \draw[line, navy] (SW2.south) -- (P3.north-|SW2.south);
 \draw[line, riskred, line width=1.2pt] (SW2.south) -- (P4.north-|SW2.south);
 \node[midway, left, font=\tiny, color=riskred] (L3) at (5.1, -3.2) {★ A 股核心卡位层};
-\node[below=0.2cm of P2, font=\tiny, color=steelgrey] {CXL 2.0 已量产 · CXL 3.1 2026H2 送样三星/AMD};
+\node[below=0.2cm of P2, font=\tiny, color=steelgrey] {CXL 2.0 已量产 · CXL 3.1 2026 年 H2 送样三星/AMD};
 \node[below=0.2cm of P4, font=\tiny, color=steelgrey] {Type 3 模组原型验证中 · 2027 量产};
 \end{tikzpicture}
 }
