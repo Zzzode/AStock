@@ -1,0 +1,5 @@
+# Preserve raw external HTML captures under research sources.
+# These files are evidence artifacts; do not rewrite publisher whitespace just
+# to satisfy Git whitespace checks, because registry hashes should reflect the
+# archived capture.
+workspace/research/**/sources/**/*.html -whitespace
