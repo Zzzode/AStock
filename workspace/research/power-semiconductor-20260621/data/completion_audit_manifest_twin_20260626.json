@@ -1,0 +1,39 @@
+{
+  "schema_v": "1.0",
+  "polling_round": "R272",
+  "generated_at": "2026-06-26T03:58:22Z",
+  "round_index": 72,
+  "artifacts": [
+    {
+      "name": "completion_audit_manifest.md",
+      "sha256_12": "8c51f21c6dba",
+      "size": 14485
+    },
+    {
+      "name": "completion_audit_manifest.json",
+      "sha256_12": "ca9b08c5848c",
+      "size": 13668
+    }
+  ],
+  "r272_fix_summary": {
+    "fixed_requirements": 4,
+    "block_cleared": 7,
+    "downgraded_to_tracking": 4,
+    "new_pdf_pages": 109,
+    "target_price_coverage": "10/10 (was 6/10)",
+    "sotp_coverage": "时代电气 + 三安光电",
+    "valuation_tables": "表7-M1~M5 + 表11-5推导桥 + 表11-6三情景矩阵"
+  },
+  "verifier_standin": {
+    "_note": "最终verifier结果见脚本末尾输出",
+    "pass_estimated": 0,
+    "fail": 0,
+    "block": 0
+  },
+  "verifier": {
+    "pass": 27,
+    "fail": 1,
+    "block": 0,
+    "gate": "PUBLISH"
+  }
+}
