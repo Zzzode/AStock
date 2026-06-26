@@ -1,66 +1,55 @@
 {
-  "schema_v": "2.1",
-  "polling_round": "R232",
-  "decision": "publish",
-  "gate": "PUBLISH",
-  "decision_timestamp": "2026-06-24T07:40:08+00:00",
-  "case_root": "/Users/bytedance/Develop/AStock/workspace/research/ai-storage-supply-chain-20260623",
-  "report_date": "20260624",
-  "data_cutoff": "2026-06-23",
+  "schema_v": "3.1",
+  "case_id": "ai-storage-supply-chain-20260623",
+  "decision": "full_valuation_update",
+  "gate": "FULL_VALUATION_PASS",
+  "report_date": "20260626",
+  "data_cutoff": "2026-06-26 close; source refresh 2026-06-26",
+  "reader_facing_action": "组合低配；覆盖标的中性/减持",
+  "target_price_status": "published_current_model",
   "publish_criteria_met": {
-    "s_level_zero": true,
-    "verifier_fail_lte_3": null,
-    "block_gate_passed": null
+    "full_valuation_verifier_pass": true,
+    "target_prices_published": true,
+    "upside_downside_published": true,
+    "ratings_published": true,
+    "current_market_packet_present": true,
+    "source_capture_manifest_present": true,
+    "source_registry_rebuilt": true,
+    "claim_audit_rebuilt": true,
+    "visual_review_current": true
   },
-  "governance_invariants": {
-    "source_registry_count": 54,
-    "claim_total": 61,
-    "grade_distribution": {
-      "A": 9,
-      "B": 44,
-      "C": 7,
-      "D": 1
-    },
-    "grade_A_set": [
-      "ASP-01",
-      "ASP-03",
-      "ASP-04",
-      "EXP-01",
-      "EXP-03",
-      "EXP-04",
-      "HBM-01",
-      "MISC-03",
-      "MISC-06"
-    ],
-    "block_count": 15,
-    "verifier_pass_rate_pct_min": 95.0
-  },
-  "pending_top_6_s_issues": {
-    "RC1_S": "表 8-3 三因子分解逐行验算（38+35+32=105≠100 逻辑）",
-    "RC2_S": "江波龙 BLOCK EPS [17.1,31.7] 分位数 Q25/Q75 精确映射 S-ID",
-    "RC3_S": "最大回撤 -25% 双轮回溯（2018/2022）历史统计",
-    "RC4_A": "ch01/ch08/ch11 目标价区间与上行空间跨表 PE 三重验算",
-    "RC5_A": "附录 D 香港《操守准则》第16条发布人身份声明缺失",
-    "RC6_A": "DDR5 涨价 8-10 季 L1/L2 支持锚（仅 L2-003 单源 vs 历史 4-6 季）"
+  "valuation_model_summary": {
+    "decision": "publish_full_current_price_valuation",
+    "weighted_base_upside": -0.16976741881181157,
+    "ticker_count": 11,
+    "target_price_count": 11,
+    "watchlist_count": 0,
+    "source_registry_record_count": 40,
+    "capture_count": 23,
+    "captured_count": 18,
+    "http_error_count": 4,
+    "failed_count": 1
   },
   "verifier_summary": {
-    "pass": 108,
+    "pass": 126,
     "fail": 0,
     "advisory": 2,
     "pass_rate_pct": 100.0,
-    "pdf_pages": 49,
-    "pdf_file_size": 907888,
+    "pdf_pages": 43,
+    "pdf_file_size": 865857,
     "pdf_creation_date": null,
-    "gate": "PASS"
+    "gate": "FULL_VALUATION_PASS"
   },
-  "checksums_refreshed": "pending",
-  "commit_sha": "c4122a5cbbb199a34d298745543e3874df1b75f8",
-  "governance_fingerprint": {
-    "R228_23rd_round": true,
-    "order": "Manifest→V1→刷14→V2(108/0/2)→amend→2x刷→amend2→push",
-    "git_phase": "3/5 commit_sha回写·触发SHA变异（模式化修复）"
+  "source_of_truth": {
+    "valuation_model": "data/current_valuation_model_20260626.json",
+    "raw_market_data": "data/raw_market_data_20260626.json",
+    "source_capture_manifest": "data/source_capture_manifest_20260626.json",
+    "claim_audit": "data/claim_audit.md",
+    "source_registry": "data/source_registry.md",
+    "visual_review": "visual_review.md"
   },
-  "generated_at": "2026-06-24T00:00:00Z",
-  "commit_sha_prefix": "c4122a5cbbb1",
-  "git_commit_sha": "1374149"
+  "supersedes": {
+    "legacy_manifest_round": "intermediate_reset",
+    "reason": "The report now publishes current model target prices, ranges, upside, and ratings instead of withholding all actions."
+  }
 }

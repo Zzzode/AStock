@@ -15,12 +15,12 @@
   bar width=7pt,
   symbolic y coords={北京君正,芯原股份,华天科技,全志科技,南大光电,沪硅产业,拓荆科技,江波龙,深科技,通富微电,兆易创新,长电科技,中微公司,澜起科技,北方华创},
   ytick=data,
-  xlabel={总市值 (亿元人民币，2026-06-23)},
+  xlabel={总市值 (亿元人民币，2026-06-26)},
   xmajorgrids=true, grid style=dashed, draw=rulegrey!40,
   nodes near coords={\pgfmathprintnumber[fixed, precision=0]{\pgfplotspointmeta}},
   every node near coord/.append style={font=\tiny, xshift=3pt, color=steelgrey},
   enlarge y limits=0.04,
-  xmin=0, xmax=4500,
+  xmin=0, xmax=6500,
   point meta=rawx,
   visualization depends on=x \as \rawx,
   yticklabel style={font=\small},
@@ -31,36 +31,36 @@
   (220,北京君正)
   (310,芯原股份)
   (280,全志科技)
-  (1680,澜起科技)
-}; \addlegendentry{设计/IP};
+  (3200,澜起科技)
+}; \addlegendentry{设计/IP}
 % 设备 (3 标的，盛美上海未在本次15标的内)
 \addplot +[fill=navy, draw=navy] coordinates {
-  (580,拓荆科技)
-  (1420,中微公司)
-  (3450,北方华创)
-}; \addlegendentry{设备};
+  (2352,拓荆科技)
+  (3913,中微公司)
+  (5903,北方华创)
+}; \addlegendentry{设备}
 % 封测 (3 标的)
 \addplot +[fill=riskred!65, draw=riskred!85] coordinates {
   (380,华天科技)
-  (690,通富微电)
-  (890,长电科技)
-}; \addlegendentry{封测};
+  (1087,通富微电)
+  (1805,长电科技)
+}; \addlegendentry{封测}
 % 模组/SSD (2 标的)
 \addplot +[fill=nvgreen!65, draw=nvgreen!85] coordinates {
-  (1846,江波龙)
-  (560,深科技)
-}; \addlegendentry{模组/SSD};
+  (2875,江波龙)
+  (842,深科技)
+}; \addlegendentry{模组/SSD}
 % 材料 (2 标的)
 \addplot +[fill=riskamber!65, draw=riskamber!85] coordinates {
-  (320,南大光电)
-  (650,沪硅产业)
-}; \addlegendentry{材料};
+  (540,南大光电)
+  (1152,沪硅产业)
+}; \addlegendentry{材料}
 % 主控 (1 标的)
 \addplot +[fill=deepnavy, draw=deepnavy] coordinates {
-  (1150,兆易创新)
-}; \addlegendentry{主控};
+  (5403,兆易创新)
+}; \addlegendentry{主控}
 \end{axis}
-\node[below, font=\tiny, color=mutedgrey, align=center, text width=14cm] at (7.5, -2.0) {市值数据基于 2026-06-23 收盘 (来源：Wind A 股实时行情)。北方华创 (3450 亿) 独占链上约 28\%，设备三强 (北华+中微+拓荆) 合计 约46\%。A 股存储链缺少真正原厂 (YMTC\slash CXMT 未上市)，设备龙头市值占比偏高反映市场对「二阶 Beta」的定价。};
+\node[below, font=\tiny, color=mutedgrey, align=center, text width=14cm] at (7.5, -2.0) {核心 11 只市值更新至 2026-06-26 收盘；数据来自腾讯行情字段并经 Sina 价格交叉。北方华创、兆易创新、中微公司、澜起科技已成为市值最高的四个映射标的，说明市场已显著前置 AI 存储链预期。};
 \end{tikzpicture}
 }
 \end{exhibitbox}
@@ -71,29 +71,29 @@
 \renewcommand{\arraystretch}{1.25}
 \begin{tabularx}{\exhibitboxwidth}{>{\bfseries}p{1.5cm} >{\raggedright}p{1.9cm} >{\centering\arraybackslash}p{0.9cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\raggedleft\arraybackslash}p{0.75cm} >{\raggedleft\arraybackslash}p{0.75cm} >{\raggedleft\arraybackslash}p{0.75cm} >{\raggedright\arraybackslash\hspace{0pt}}X}
 \toprule
-\textbf{标的} & \textbf{环节} & \textbf{AI敞口} & \textbf{25营收(亿)} & \textbf{净利(亿)} & \textbf{毛利率} & \textbf{26E PE} & \textbf{评级 / 触发} \\
+\textbf{标的} & \textbf{环节} & \textbf{AI敞口} & \textbf{25营收(亿)} & \textbf{净利(亿)} & \textbf{毛利率} & \textbf{目标价} & \textbf{当前评级 / 估值触发} \\
 \midrule
 \rowcolor{nvgreen!6}
-澜起科技 & 接口/RCD+CXL & 40--45 & 75 & 32--35 & 65 & 42x & \gmark 买入 · CXL出量 \\
-北方华创 & 设备/平台 & 30--35 & 394 & 55 & 40 & 41x & \gmark 买入 · 订单>12月 \\
-中微公司 & 刻蚀设备 & 35--40 & 145 & 30 & 44 & 48x & \gmark 买入 · HVM确认 \\
-拓荆科技 & ALD/CVD & 30--35 & 60 & 12 & 50 & 55x & \amark 增持 · 长存份额 \\
+澜起科技 & 接口/RCD+CXL & 40--45 & 75 & 32--35 & 65 & 232 & \amark 中性 · CXL 收入桥上修 \\
+北方华创 & 设备/平台 & 30--35 & 394 & 55 & 40 & 869 & \amark 中性 · 订单继续上修 \\
+中微公司 & 刻蚀设备 & 35--40 & 145 & 30 & 44 & 277 & \rmark 减持 · HVM 与毛利率改善 \\
+拓荆科技 & ALD/CVD & 30--35 & 60 & 12 & 50 & 592 & \rmark 减持 · 长存份额超预期 \\
 \midrule
-沪硅产业 & 硅片材料 & 25--30 & 42 & 6 & 30 & 72x & \amark 增持 · 14nm验证 \\
-深科技 & 模组/封测代工 & 12--18 & 380 & 23 & 12 & 24x & \amark 增持 · DDR5代工↑ \\
-长电科技 & 先进封装 & 10--15 & 389 & 16 & 14 & 38x & \amark 增持 · 毛利率修复 \\
-通富微电 & AMD 封测 & 15--20 & 280 & 19 & 14 & 32x & \amark 增持 · MI350订单 \\
-江波龙 & 模组/SSD & 15--20 & 228 & 14 & 20 & 18x & \gmark 买入 · 云厂导入 \\
-兆易创新 & NOR/DRAM & 8--12 & 92 & 16 & 45 & 36x & \amark 增持 · DRAM出量 \\
+沪硅产业 & 硅片材料 & 25--30 & 42 & 6 & 30 & 24.78 & \rmark 减持 · PS/PB 已补齐 \\
+深科技 & 模组/封测代工 & 12--18 & 380 & 23 & 12 & 45.5 & \amark 中性 · DDR5 代工利润率 \\
+长电科技 & 先进封装 & 10--15 & 389 & 16 & 14 & 55.6 & \rmark 减持 · AI 封装收入占比 \\
+通富微电 & AMD 封测 & 15--20 & 280 & 19 & 14 & 57.6 & \rmark 减持 · MI350 订单与毛利率 \\
+江波龙 & 模组/SSD & 15--20 & 228 & 14 & 20 & 660 & \amark 中性 · 云厂导入与价格周期 \\
+兆易创新 & NOR/DRAM & 8--12 & 92 & 16 & 45 & 506 & \rmark 减持 · DRAM 涨价持续性 \\
 \midrule
-南大光电 & 光刻胶/前驱 & 15--20 & 22 & 5 & 42 & 48x & \rmark 观察 · ArF长存验证 \\
-盛美上海 & 清洗/电镀 & 25--30 & 35 & 8 & 42 & 45x & \amark 增持 · 先进封装验证 \\
-安集科技 & CMP 抛光液 & 25--30 & 20 & 5 & 52 & 40x & \amark 增持 · 铜抛份额↑ \\
+南大光电 & 光刻胶/前驱 & 15--20 & 22 & 5 & 42 & 51.35 & \rmark 减持 · 材料收入硬证据 \\
+盛美上海 & 清洗/电镀 & 25--30 & 35 & 8 & 42 & n.a. & \amark 观察 · 先进封装验证 \\
+安集科技 & CMP 抛光液 & 25--30 & 20 & 5 & 52 & n.a. & \amark 观察 · 铜抛份额 \\
 华天科技 & 传统封测 & 5--8 & 142 & 13 & 16 & 28x & \rmark 观察 · 先进封装贡献<5\% \\
 北京君正 & 利基SRAM/DRAM & 3--5 & 65 & 11 & 38 & 28x & \rmark 观察 · AI敞口实质小 \\
 芯原股份 & Chiplet/互连IP & 10--15 & 35 & 3 & 35 & 120x & \rmark 观察 · PE估值过高 \\
 \bottomrule
-\multicolumn{8}{p{\dimexpr\exhibitwidth-2\tabcolsep\relax}}{\scriptsize 数据来源：各公司 2025 年报 + 2026 年 Q1 财报；AI 敞口为 {\faExclamationTriangle} AStock 模型估算 (非官方披露)；2026E PE 基于 Wind 一致预期 + 本报告盈利预测校准；完整版 23 只含 20+ 列详见附录 C 表 C-1。}
+\multicolumn{8}{p{\dimexpr\exhibitwidth-2\tabcolsep\relax}}{\scriptsize 数据来源：各公司 2025 年报 + 2026 年 Q1 财报；AI 敞口为 {\faExclamationTriangle} AStock 模型估算 (非官方披露)。核心 11 只目标价与评级来自 ch08 / data/current\_valuation\_model\_20260626.json；非核心标的仍为观察。}
 \end{tabularx}
 \end{exhibitbox}
 
@@ -125,4 +125,4 @@
 \textbf{华天科技/北京君正/芯原股份}：AI 敞口实质较小或估值偏高，归入观察池。
 
 \vspace{0.4em}
-\noindent\textbf{投资含义}：标的分层的核心结论是 A 股存储链呈现「头部集中、长尾分散」特征——澜起 + 设备三强 + 模组双雄 6 只标的合计贡献链上约 65\% 的 AI 敞口市值。\textbf{配置策略应聚焦确定性最高的 6 只 (核心 Tier 1+2) 占比 75\%+}，剩余 25\% 分配给弹性卫星 (长电\slash 通富/兆易) 和主题催化 (南大光电)。避免追逐低确定性长尾标的的估值波动。
+\noindent\textbf{投资含义}：标的分层的核心结论是 A 股存储链呈现「头部集中、长尾分散」特征，但 2026-06-26 当前估值已经把多数产业弹性前置。研究覆盖仍应聚焦澜起、北方华创、江波龙、深科技等证据质量较高标的；组合动作则以 ch08 和 ch11 的当前目标价空间为准：北方、澜起、江波龙、深科技维持中性观察，中微、拓荆、沪硅、长电、通富、兆易、南大降低权重。沪硅产业的 PE 仍因 EPS 为负被屏蔽，但 PS/PB 目标价已经补齐，当前空间仍为负。

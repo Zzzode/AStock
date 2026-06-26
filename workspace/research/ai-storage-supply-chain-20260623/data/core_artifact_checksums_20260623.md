@@ -1,20 +1,18 @@
-# AI 存储产业链 · 核心工件校验和（R270 · 14 files）
+# Core Artifact Checksums - AI Storage Full Valuation - 20260623
 
-> Stage=step4 · SHA三相闭环中。双后缀 20260623（硬编码锚）+ 20260624（当日归档）。
-
-|#|文件名|SHA-256[:12]|字节数|分类|
-|---|---|---|---|---|
-|1|main.pdf|`769e2204763f`|919,537|core_output|
-|2|main.tex|`16709de4a4fa`|5,175|core_output|
-|3|main_current_text.txt|`1b5faa114fe3`|105,445|core_output|
-|4|research_brief.md|`73e57694ba57`|6,006|core_output|
-|5|review_log.md|`6d19583d4ca9`|21,843|core_output|
-|6|visual_review.md|`c3a24aa7e6aa`|9,792|core_output|
-|7|raw_financials.md|`2de74e59bac5`|42,882|data_raw|
-|8|report_catalog.md|`79dc74feda93`|12,857|data_raw|
-|9|consensus_analysis_raw.md|`fb5eed5705e2`|16,981|data_raw|
-|10|source_registry.md|`5d4100f57224`|18,139|governance|
-|11|source_registry.json|`9d7bb89aff14`|60,728|governance|
-|12|claim_audit.md|`134575ee290a`|21,300|governance|
-|13|completion_audit_manifest.md|`99708481d62e`|886|governance|
-|14|completion_audit_manifest.json|`275c0a13706f`|2,030|governance|
+| # | File | SHA-256[:12] | Size | Category |
+|---:|---|---|---:|---|
+| 1 | `workspace/research/ai-storage-supply-chain-20260623/main.pdf` | `14e28df6e69d` | 865857 | core_output |
+| 2 | `workspace/research/ai-storage-supply-chain-20260623/main.tex` | `ba654cb4be2f` | 8573 | core_output |
+| 3 | `workspace/research/ai-storage-supply-chain-20260623/main_current_text.txt` | `f3f7631629b5` | 141089 | core_output |
+| 4 | `workspace/research/ai-storage-supply-chain-20260623/research_brief.md` | `73e57694ba57` | 6006 | core_output |
+| 5 | `workspace/research/ai-storage-supply-chain-20260623/review_log.md` | `6d19583d4ca9` | 21843 | core_output |
+| 6 | `workspace/research/ai-storage-supply-chain-20260623/visual_review.md` | `5c4e1eac0485` | 1542 | core_output |
+| 7 | `workspace/research/ai-storage-supply-chain-20260623/data/raw_market_data_20260626.json` | `fefd5475ac97` | 16602 | data_current |
+| 8 | `workspace/research/ai-storage-supply-chain-20260623/data/current_valuation_model_20260626.json` | `3d3bcaea18bf` | 16161 | data_current |
+| 9 | `workspace/research/ai-storage-supply-chain-20260623/data/source_capture_manifest_20260626.json` | `1b6fe2216ea7` | 10528 | data_current |
+| 10 | `workspace/research/ai-storage-supply-chain-20260623/data/source_registry.md` | `d662facd8fff` | 8843 | governance |
+| 11 | `workspace/research/ai-storage-supply-chain-20260623/data/source_registry.json` | `40a62a745aa8` | 29895 | governance |
+| 12 | `workspace/research/ai-storage-supply-chain-20260623/data/claim_audit.md` | `3a919a77df6b` | 3909 | governance |
+| 13 | `workspace/research/ai-storage-supply-chain-20260623/completion_audit_manifest.md` | `44dca92d2ded` | 1249 | governance |
+| 14 | `workspace/research/ai-storage-supply-chain-20260623/completion_audit_manifest.json` | `f4497ea2dfab` | 1894 | governance |

@@ -60,11 +60,11 @@
 \node[layer=steelgrey, below=1.1cm of L6] (L7) {\faGlobe\enspace L7 · 下游应用 (Capex 来源)};
 \node[node, fill=steelgrey!10, below=of L7.west, anchor=north west, xshift=0.25cm, text width=4.1cm] (C1) {AI 训练集群\\MSFT · Meta · Google · AWS\\字节 · 腾讯 · 阿里 (\$2500 亿+)};
 \node[node, fill=steelgrey!10, right=of C1, text width=4.1cm] (C2) {云厂商数据中心\\AWS · Azure · GCP\\阿里云 · 腾讯云 · 火山};
-\node[node, fill=steelgrey!10, right=of C2, text width=4.1cm] (C3) {消费电子 + 汽车\\\(> \$10000 亿/年\) TAM\\PC 复苏 + AI PC + 新能源};
+\node[node, fill=steelgrey!10, right=of C2, text width=4.1cm] (C3) {消费电子 + 汽车\\\textgreater{} \$10000 亿/年 TAM\\PC 复苏 + AI PC + 新能源};
 
 % Main arrows
 \foreach \i in {1,...,6} {
-  \pgfmathsetmacro\j{int(\i+1)};
+  \pgfmathsetmacro\j{int(\i+1)}
   \draw[->, thick, navy] (L\i.south) -- node[midway, right=1pt, font=\tiny\color{steelgrey}] {价值传导} (L\j.north);
 }
 
@@ -94,7 +94,7 @@
 \textbf{半导体材料} & 7--9 & 35--50 & ShinEtsu · JSR & {\faExclamationTriangle} 8--12 & 沪硅产业\newline 南大光电 & 12 寸硅片 28nm 批量供应；ArF 光刻胶 2026 目标突破；KrF/特气已破。代差 1--3 代。 \\
 \midrule
 \rowcolor{nvgreen!5}
-\textbf{存储设计·接口} & 8--10 & 55--70 & Rambus · Marvell & 约3--5 & 澜起科技 ★ & \textbf{全球领先无代差}——RCD 全球 70\% 份额，CXL 首发；A 股唯一「一阶 Alpha」。兆易 NOR 前三，DRAM 追赶。代差 0。 \\
+\textbf{存储设计·接口} & 8--10 & 55--70 & Rambus · Marvell & 约3--5 & 澜起科技 \astockstar & \textbf{全球领先无代差}——RCD 全球 70\% 份额，CXL 首发；A 股唯一「一阶 Alpha」。兆易 NOR 前三，DRAM 追赶。代差 0。 \\
 \midrule
 \textbf{存储设计·原厂} & 8--10 & 40--60 & SK · Samsung · Micron & <1 & 无直接标的 & YMTC\slash CXMT 未上市；兆易自研 DRAM 试产；原厂层缺失是最大结构缺口。代差 3--4 代 (HBM)。 \\
 \midrule

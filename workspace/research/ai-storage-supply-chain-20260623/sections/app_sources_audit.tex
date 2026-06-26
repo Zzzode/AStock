@@ -1,109 +1,94 @@
 % Appendix 附录：来源注册表 / 估值审计 / 数据验证摘要
 
-\section{附录 A：来源注册表 (Source Registry)}
+\section{附录 A：2026-06-26 来源注册更新}
 
-遵循来源治理框架，本报告所有数据和引用均追溯至注册数据源。可信度分级：L0 法规原文 / L1 原厂官方 (财报/CC/IR) / L2 政府公开+权威媒体 / L3 第三方研究机构 (TrendForce/Wind/Omdia) / L4 产业媒体 / L5 泄密/传闻。
+本附录同步 2026-06-26 完整估值更新后的来源边界。旧版来源注册表中涉及 2026-06-24 价格锚、旧 Wind 一致预期、旧海外可比倍数、旧目标价区间和旧动作评级的条目，统一降级为历史诊断资料；当前读者表以 data/current\_valuation\_model\_20260626.json 为估值源，以腾讯行情、Sina 价格交叉和同花顺 2026--2028E EPS 作为公开代理输入。
 
-\begin{exhibitbox}[表 A-1 \quad 来源注册登记表 / Source Registry (20 项)]
-\centering
-\tiny
-\renewcommand{\arraystretch}{1.3}
-\begin{longtable}{>{\bfseries\centering\arraybackslash}p{0.7cm} >{\raggedright}p{6.3cm} >{\raggedright}p{1.8cm} >{\centering\arraybackslash}p{0.7cm} >{\raggedright\arraybackslash\hspace{0pt}}p{\dimexpr\exhibitboxwidth-0.7cm-6.3cm-1.8cm-0.7cm-10\tabcolsep\relax}}
-\toprule
-\textbf{编号} & \textbf{来源名称} & \textbf{日期 / 版本} & \textbf{等级} & \textbf{使用章节} \\
-\midrule
-\endhead
-S-01 & Samsung 2026 Capex 指引（CEO Han Jong-hee，Q4 2025 Earnings Call） & 2026-01-07 & L1 & §5.1 原厂 Capex 表 \\
-S-02 & Micron FY2026 Capex 指引（CEO Sanjay Mehrotra，FY2026 Q1 CC） & 2026-03 & L1 & §5.1 + §8.1 国际可比 \\
-S-03 & NVIDIA B100/B200 HBM3E 官方规格（GTC 2024 + VideoCardz/AnandTech） & 2024-03 / 2026-02 & L1+L2 & §4.1 HBM GPU 用量拆解 \\
-S-04 & TrendForce DDR4/DDR5 季度渗透率追踪报告 & 2026-03 & L3 & §4.2 DDR5 渗透率 + §4.3 TAM \\
-S-05 & DRAMeXchange / TrendForce DRAM/NAND 合约价季度数据 & 2026-05 & L3 & §5.3 合约价 + §5 供需 \\
-S-06 & MSFT/AMZN/GOOGL/META 2025/2026 财报电话会 Capex 官方指引 & 2026-04 \textasciitilde 05 & L1 & §5.1 Capex 结构 + 图 1-2 \\
-S-07 & 字节/腾讯/阿里 Capex 指引（36Kr 报道 + 各公司财报） & 2026-05 + 财报期 & L3+L2 & 图 1-2 云厂商层 \\
-S-08 & 澜起 2025 年报 + 2026 年 Q1 IR 投资者交流会（CXL 进展） & 2026-04-18 & L1 & §4.4 CXL 卡位 + §7.1 标的分析 \\
-S-09 & 长存\slash 长鑫制程产能（集微网 + 合肥/武汉地方政府公开） & 2026-05 & L4+L2 & §6.2 国产替代进度表 \\
-S-10 & 设备厂商存储厂中标（年报 + 中国国际招标网公开数据） & 2026-03 \textasciitilde 04 & L2+L1 & §6.2 设备材料国产替代表 \\
-S-11 & SK Hynix 2026 年 Q1 CC（HBM 产能/良率）+ DigiTimes 产能报道 & 2026-04 / 2026-04-25 & L1+L2 & §4.1 HBM 路线+份额 + §5 \\
-S-12 & DRAMeXchange HBM 季度报价 + 行业调研综合 & 2026-05 & L3 + {\faExclamationTriangle} & §4.1 HBM ASP 表 \\
-S-13 & Omdia DRAM/NAND 季度市占率报告 & 2026-02 & L3 & §5.1 原厂市占 \\
-S-14 & BIS 官方 Federal Register 最终规则（2024-10 / 2025-10 修订） & 2024-10-17 / 2025-10-07 & L0 & §6.3 BIS 管制表 \\
-S-15 & Reuters（BIS HBM 管制传闻）+ FT（ASML DUV 拒单） & 2026-05-12 / 2026-03 & L2 & §6.3 BIS 风险 + 表 10-1 \\
-S-16 & 兆易 2025 年报 + 2026 年 Q1 IR（自研 DRAM 进展披露） & 2026-04-28 & L1 & §6.2 兆易替代表 \\
-S-17 & Wind 一致预期 2026E 汇总（2026-06-20 提取） & 2026-06-20 & L3 & §8 估值模型 + 各标的 EPS \\
-S-18 & TrendForce HBM 报告 + SK Hynix 管理层指引交叉 & 2026-05 + 2026 年 Q1 CC & L3+L1 & §4.1 HBM TAM 表交叉验证 \\
-S-19 & Moore's Law is Dead（MLID）Rubin HBM4 规格传闻视频 & 2026-03 & L5 & §4.1 HBM4 标注 {\faExclamationTriangle} 推断 \\
-S-20 & DRAMeXchange 服务器内存模组 DDR5 RCD/LRDIMM 报价追踪 & 多期（2024 年 Q1 \textasciitilde 2026 年 Q2） & L3 & §4.2 DDR5 单价趋势 \\
-\bottomrule
-\end{longtable}
-\end{exhibitbox}
-\sourcenote{可信度分级：L0 (法规原文，最高) / L1 (原厂官方披露) / L2 (政府数据+权威媒体独家) / L3 (第三方机构) / L4 (产业媒体综合) / L5 (传闻/泄密，仅参考)。本报告所有核心结论均有 L1-L3 双源+交叉验证。}
-
-\section{附录 B：估值审计表 (Valuation Audit)}
-
-对第 8 章所有估值结果进行再验算，确保 PE=Price/EPS、EV=市值+净债务等基本算术关系。
-
-\begin{exhibitbox}[表 A-2 \quad 估值审计 (所有方法交叉核对率 100\%)]
-\centering
-\tiny
-\renewcommand{\arraystretch}{1.25}
-\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}p{0.9cm} >{\raggedleft\arraybackslash}p{2.2cm} >{\raggedleft\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash\hspace{0pt}}X >{\raggedright\arraybackslash\hspace{0pt}}X >{\raggedright\arraybackslash\hspace{0pt}}X >{\centering\arraybackslash}p{1.6cm}}
-\toprule
-\textbf{标的} & \textbf{26E EPS} & \textbf{市值(亿)} & \textbf{26E PE 核对} & \textbf{EV/EBITDA 核对} & \textbf{PS 核对} & \textbf{审计结果} \\
-\midrule
-澜起 & 2.70 & 1,680 (三锚恒等：ch07条形$+$42\allowbreak$\times$\allowbreak 2.70\allowbreak$=$\allowbreak 113.4\allowbreak$\times$\allowbreak 14.82亿股\allowbreak$\approx$\allowbreak 1680亿；折\$233亿) & 113.4 ÷ 2.70 = 42x ✓ & 净债≈0→EV≈MC=1,680亿 匹配 ✓ & 1680 ÷ 76 ≈ 22.1x（与表8-1 22.1x、表8-2 22.1x一致）✓ & \stance{riskgreen}{PASS · 三锚校准} \\
-北华创 & 9.50 & 3,450 & 389.5 ÷ 9.50 ≈ 41x（表8-1=41x一致）✓ & 存+债+市值匹配 ✓ & 3450 ÷ 530 ≈ 6.5x（表8-1=6.5x、表8-2=6.5x一致）✓ & \stance{riskgreen}{PASS} \\
-中微 & 4.60 & 1,420 & 220.8 ÷ 4.60 = 48x（表8-1=48x一致）✓ & EV/EBITDA 再算 ✓ & 1420 ÷ 180 ≈ 7.9x（表8-1=7.9x、表8-2=7.9x一致）✓ & \stance{riskgreen}{PASS} \\
-拓荆 & 4.50 & 580 & 247.5 ÷ 4.50 = 55x ✓ & 净债极小≈市值 ✓ & 580 ÷ 88 ≈ 6.59x（表8-1=6.6x、表8-2=6.6x；PS价=MC÷sh=580÷2.34≈247.9与PE锚247.5偏差<0.2\%）✓ & \stance{riskgreen}{PASS · sh=2.34反推} \\
-深科技 & 1.35 & 560 & 32.4 ÷ 1.35 = 24x ✓ & 沛顿资产核对 ✓ & 560 ÷ 450 ≈ 1.24x（表8-2=1.2x；PS价=MC÷sh=560÷17.28≈32.4与PE锚32.4精确闭环）✓ & \stance{riskgreen}{PASS · sh=17.28反推} \\
-长电 & 1.30 & 890 & 49.4 ÷ 1.30 = 38x ✓ & 99.8亿固投匹配 ✓ & 890 ÷ 440 ≈ 2.02x（表8-1=2.0x、表8-2=2.0x；PS价=MC÷sh=890÷18.02≈49.4与PE锚49.4精确闭环）✓ & \stance{riskgreen}{PASS · sh=18.02反推} \\
-通富 & 1.50 & 690 & 48 ÷ 1.50 = 32x ✓ & AMD 订单核对 ✓ & 690 ÷ 320 ≈ 2.16x（表8-2=2.2x；PS价=MC÷sh=690÷14.38≈48.0与PE锚48.0精确闭环）✓ & \stance{riskgreen}{PASS · sh=14.38反推} \\
-\rowcolor{navy!6}
-江波龙 & 24.40 (估值真理：Wind 2026-06-24 收盘 CP≈439.4 对应 PE=18.0x；卖方区间 [17.1, 31.7]) & 1,846 & 439.4÷24.4≈18.0x（估值三角真理锚），区间上下限 439.4÷31.7≈13.9x ~ 439.4÷17.1≈25.7x ✓ & BLOCK B7：存货重估+卖方分歧 已通过真理锚 (市值 1846 亿) 锁定 ✓ & 1846÷295≈6.26x（表8-2=6.3x；PS价=439.5与PE锚439.2偏差<0.1\%）✓ & \stance{riskgreen}{PASS · 真理锚 18.0x} \\
-兆易 & 8.60 & 1,150 & 344 ÷ 8.60 = 40x ✓ & 自研 DRAM 估值分部 ✓ & 1150 ÷ 170 ≈ 6.76x（表8-1=6.8x、表8-2=6.8x；PS价=MC÷sh=1150÷3.71≈310.0与PE锚309.6偏差<0.2\%）✓ & \stance{riskgreen}{PASS · sh=3.71反推} \\
-\end{tabularx}
-\end{exhibitbox}
-\sourcenote{审计依据：Industry Landscape §6 + Valuation Model §3 + 卖方合理价值区间历史（Broker Fair-Value Range History）+ claim\_audit BLOCK 门控。市值统一以 ch07 图7-1条形（Wind 2026-06-23/24 收盘）为真理锚：澜起 1,680 亿、北华创 3,450 亿、中微 1,420 亿、拓荆 580 亿、深科技 560 亿、长电 890 亿、通富 690 亿、江波龙 1,846 亿、兆易 1,150 亿。\par
-\textbf{PS 口径统一 (P3 治理)：}所有 A 股标的 26E PS = 真理锚市值（￥）÷ 表 8-2 26E 营收（￥）：澜起 22.1x / 22.11x、北华创 6.5x / 6.51x、中微 7.9x / 7.89x、拓荆 6.6x / 6.59x、深科技 1.2x / 1.24x、长电 2.0x / 2.02x、通富 2.2x / 2.16x、江波龙 6.3x / 6.26x、兆易 6.8x / 6.76x（斜线前为表 8-1/8-2 展示 1 位小数、斜线后为审计 2 位小数精确值），三表闭环一致；PE 核对列 = 表 8-1 当前列 26E PE ÷ EPS 算术验证，42x/41x/48x/55x/24x/40x/32x/18x/36x 全部通过。9 标的 × 3 方法（PE/EV-EBITDA/PS）= 27 项算术核对 27/27 全 PASS（100\%）。PS 估值列每股价格统一口径 = 真理锚 MC（亿元）÷ 总股本 sh（反推亿股），与 PE×EPS=CP 三锚恒等，所有 9 标的偏差均 <0.5\%；总股本取真理锚 MC ÷ Wind 2026-06-24 收盘 CP 反推：澜起 14.82 / 北华 8.86 / 中微 6.43 / 拓荆 2.34 / 兆易 3.71 / 长电 18.02 / 通富 14.38 / 深科技 17.28 / 江波龙 4.20 亿股，保证 CP×sh=MC 恒等。\par
-\textbf{BLOCK 区间化落实}：所有 C/D 级主张、BLOCK 化悲观情景、乐观区间、估值上下限与合理价值区间均采用区间化表达（半宽 ±8\%，低覆盖标的 ±11\%），杜绝单点预测；BLOCK 区间化涉及条目：B1 国产 HBM ≥2028（区间半宽 ±2 年）、B2 DRAM 缺口 [-6,-8]\%（乐观 [-10,-8]\% 仅压力测试）、B3 HBM4E 良率区间 [65\%,85\%]、B4 设备国产率 [25\%,35\%]、B5 CXL 渗透率区间 [8\%,22\%]、B6 HBM ASP 涨跌幅 [+25\%,+40\%]、B7 江波龙 EPS [17.1,31.7]（真理锚 18.0x PE 锁定）、B8 PS 估值区间半宽统一 [\(\pm 8\%\), \(\pm 11\%\)]；区间一致性由第 10 章压力测试全量验算。BLOCK 治理落实：江波龙 EPS 区间 [17.1, 31.7] 不再作为主锚，升级为真理锚 CP≈439.4 / 1846 亿 / PE=18.0x（BLOCK B7 解除条件已通过估值三角闭环）；DRAM 2026 年 Q3 基准缺口取 [-6,-8]\%（乐观 [-8,-10]\% 仅用于 §10.2 压力测试，不进入基准估值）；澜起表 8-1 \$市值自 400-408 亿下修为 220-240 亿（反推 1,680 亿人民币与图7-1一致）；全表 PS 列 P3 前存在 1-10 倍单位混淆（通富 0.9x、深科技 0.7x、澜起 2.1x 等为截断或错误值），且拓荆/兆易/通富/深科技/长电 5 标的总股本曾取登记值（与 MC/CP 反推值偏差 3-44\%）导致 PS 价算术错误，已按「市值÷营收」统一口径 + 反推股权数重算并与表 8-1/8-2 同步修订，三表无残留差异。\par
-\textbf{三角恒等校验脚注：}current\_price（Wind 2026-06-24 收盘）= 表 8-1 A 股 26E PE × 表 8-2 EPS，与澜起 42×2.70=113.40、北华 41×9.50=389.50、中微 48×4.60=220.80、拓荆 55×4.50=247.50、兆易 36×8.60=309.60、长电 38×1.30=49.40、通富 32×1.50=48.00、深科技 24×1.35=32.40、江波龙 18×24.40=439.20 共 9/9 锚严格一致（总股本反推 CP×sh=MC 9/9 闭合，偏差 <0.2\%）；FV\_加权 = 0.6·PE价 + 0.25·EV/EBITDA价 + 0.15·PS价；上行 =（FV\_加权 ÷ current\_price − 1）× 100\%，容差 ±8\%（红框低覆盖中微/通富/深科技扩展至 ±11\%），9/9 标的全部落入容差区间。}
-
-\vspace{0.3em}
-\noindent\textbf{估值审计投资含义}：三种估值方法的区间一致性 (区间半宽 <8\%) 进一步增强了本报告合理价值区间的可信度。核心组合 9 只标的中，澜起 (三法区间差仅 5\%)、北方华创 (4\%)、中微 (6\%) 的三法一致性最高，为高置信度底仓；拓荆 (区间差 12\%) 和长电 (15\%) 的方法间分歧较大，反映市场对其盈利兑现节奏的预期差异，配置时宜控制仓位并附加业绩触发条件。所有审计 PASS 标的的估值安全边际 (合理价下限÷当前价) 均 >1.20x，满足机构投委会最低安全边际标准。
-
-\needspace{32\baselineskip}
-\section{附录 C：数据验证摘要 (Data Verification Summary)}
-
-\begin{exhibitbox}[表 F-1 \quad 数据验证摘要]
+\begin{exhibitbox}[表 A-1 \quad 2026-06-26 新增来源注册 / Source Refresh Registry]
 \centering
 \scriptsize
-\renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}p{2.2cm} >{\centering}p{1.4cm} >{\centering}p{1.4cm} >{\centering}p{1.4cm} >{\centering}p{1.6cm} >{\raggedright\arraybackslash}X}
+\renewcommand{\arraystretch}{1.24}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{2.0cm} >{\raggedright\arraybackslash}p{3.1cm} >{\centering\arraybackslash}p{1.25cm} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}p{3.0cm}}
 \toprule
-\textbf{数据包} & \textbf{总数据点} & \textbf{已核验} & \textbf{核验通过率} & \textbf{未核实条目数} & \textbf{备注 / 未核实项处理} \\
+\textbf{来源组} & \textbf{归档文件} & \textbf{状态} & \textbf{核心用途} & \textbf{使用边界} \\
 \midrule
-原厂 Capex 数据 & 49 & 41 & 95.9\% & 4 (YMTC\slash CXMT\slash 兆易) & 未上市原厂 capex 取区间估计 {\faExclamationTriangle} \\
-HBM TAM 预测 & 32 & 29 & 90.6\% & 3 (HBM4E ASP) & 2027+ 远期取基准预测区间 \\
-供需-合约价历史 & 48 & 48 & 100\% & 0 & TrendForce 历史数据 12 季全核实 \\
-供需-合约价预测 & 24 & 16 & 66.7\% & 8 (2026 全年 4 季) & 为 AStock 模型输出，非第三方核实 \\
-A 股三表财务 (2025) & 138 & 138 & 100\% & 0 & 23 标的 6 列全量从巨潮/Wind 核实 \\
-A 股一致预期 (2026E) & 115 & 97 & 84.3\% & 18 (7 标的卖方覆盖<2份) & 取 AStock 模型与卖方平均 \\
-卖方共识矩阵 & 56 & 40 & 71.4\% & 16 (中微/通富/深科技) & 下一轮定向补采东方财富研报中心 \\
-设备中标数据 (长存\slash 长鑫) & 64 & 58 & 90.6\% & 6 (涉密/邀标项目) & 中标网公开数据交叉验证 \\
-风险情景参数 & 36 & 27 & 75.0\% & 9 (深度悲观情景) & 参考 2018/2022 历史两轮下行周期校准 \\
+腾讯行情 & market-data-20260626 / Tencent & captured & 11 只 A 股 2026-06-26 收盘价、总股本、市值 & 当前估值价格锚；后续需 Wind/Choice/iFind 复核 \\
+Sina 行情 & market-data-20260626 / Sina & captured & 价格逐项交叉，11 只价格差为 0 & 价格一致性校验，不单独给 EPS 或股本 \\
+同花顺 EPS & market-data-20260626 / THS & captured & 2026--2028E EPS 公开代理 & 当前模型 EPS 输入；机构数低的标的降权 \\
+BIS/govinfo & industry-refresh / BIS PDF & captured & HBM 管制正式规则与许可例外 & 政策风险主源；网页阻断时以 PDF 为准 \\
+NVIDIA & industry-refresh / NVIDIA & captured & Vera Rubin HBM4 规格、量产路径 & 替换旧 Rubin HBM 容量推断 \\
+Samsung & industry-refresh / Samsung & captured & HBM4/HBM4E 与 Vera Rubin 相关披露 & HBM4 供给模型主源之一 \\
+SK Hynix & industry-refresh / SK Hynix & captured & HBM4 量产准备、MR-MUF、1bnm 信息 & 良率/产能假设主源之一 \\
+Micron & industry-refresh / Micron & captured & HBM4 36GB 12H、Vera Rubin、量产交付信息 & HBM4 供给与竞争假设主源之一 \\
+TrendForce & industry-refresh / TrendForce & captured & DRAM/NAND 价格页与 Rubin 800V 产业新闻 & 公开页用于趋势，付费细项需另采 \\
+WSTS/SIA & industry-refresh / WSTS-SIA & captured & 行业销售和周期背景 & 周期背景，不替代公司盈利预测 \\
+G/S/Y probes & industry-refresh / blocked & blocked & 403 或付费墙探针 & 不进入量化估值 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{完整抓取清单见 data/source\_capture\_manifest\_20260626.md。所有可入估值来源必须具备原始 URL、归档文件、抓取时间和哈希；访问失败或付费墙探针只用于说明数据缺口。}
+
+\section{附录 B：完整估值审计}
+
+\begin{exhibitbox}[表 A-2 \quad 当前估值审计结论 / Current Valuation Audit]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.24}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{2.3cm} >{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{1.5cm}}
+\toprule
+\textbf{审计项} & \textbf{结论} & \textbf{状态} \\
+\midrule
+当前价格锚 & 2026-06-26 收盘价来自腾讯批量行情，并经 Sina 逐项交叉；11 只价格差为 0 & PASS \\
+股本/市值口径 & 腾讯总股本和市值字段可作为当前公开代理；所有读者表披露后续需 Wind/Choice/iFind 复核 & PASS \\
+一致预期 & 使用同花顺 2026--2028E EPS；机构数低、EPS 为负或周期峰值明显的标的通过证据质量降权 & PASS \\
+目标价与空间 & 11 只覆盖标的发布 bear/base/bull 区间、基准目标价、空间和评级；沪硅 PE 屏蔽但 PS/PB 已补齐 & PASS \\
+动作评级 & ch01、ch08、ch11 均以 AStock 当前模型输出为准：组合低配，覆盖标的中性/减持 & PASS \\
+来源证据 & NVIDIA、BIS、TrendForce、WSTS/SIA、Samsung、SK Hynix、Micron 已重新归档；受限项不入模 & PASS \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{审计文件：analysis/valuation\_audit.md、data/current\_valuation\_model\_20260626.json、data/raw\_market\_data\_20260626.json。}
+
+\section{附录 C：最终估值矩阵}
+
+\begin{exhibitbox}[表 A-3 \quad AStock 当前目标价与评级 / Final Target Price Matrix]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.18}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.55cm} >{\raggedleft\arraybackslash}p{1.0cm} >{\raggedleft\arraybackslash}p{0.9cm} >{\raggedleft\arraybackslash}p{0.9cm} >{\raggedleft\arraybackslash}p{1.0cm} >{\raggedright\arraybackslash}p{1.1cm} >{\centering\arraybackslash}p{1.0cm} >{\raggedright\arraybackslash}X}
+\toprule
+\textbf{标的} & \textbf{现价} & \textbf{26E EPS} & \textbf{27E EPS} & \textbf{目标价} & \textbf{区间} & \textbf{空间} & \textbf{评级 / 方法} \\
+\midrule
+澜起科技 & 261.82 & 2.70 & 3.57 & 232.05 & 142--323 & -11.4\% & 中性 / 2027E PE \\
+北方华创 & 813.37 & 10.51 & 14.49 & 869.40 & 367--1224 & +6.9\% & 中性 / 2027E PE \\
+中微公司 & 413.00 & 3.42 & 4.62 & 277.20 & 130--387 & -32.9\% & 减持 / 2027E PE \\
+拓荆科技 & 832.00 & 5.90 & 8.46 & 592.20 & 235--899 & -28.8\% & 减持 / 2027E PE \\
+沪硅产业 & 34.86 & -0.15 & -0.08 & 24.78 & 19--30 & -28.9\% & 减持 / 2026E PS-PB \\
+深科技 & 53.51 & 0.98 & 1.30 & 45.50 & 22--63 & -15.0\% & 中性 / 2027E PE \\
+长电科技 & 100.89 & 1.13 & 1.39 & 55.60 & 28--73 & -44.9\% & 减持 / 2027E PE \\
+通富微电 & 71.60 & 1.02 & 1.28 & 57.60 & 26--71 & -19.6\% & 减持 / 2027E PE \\
+江波龙 & 679.60 & 33.02 & 26.89 & 660.40 & 371--1143 & -2.8\% & 中性 / 2026E 峰值 PE \\
+兆易创新 & 770.00 & 6.82 & 8.43 & 505.80 & 130--745 & -34.3\% & 减持 / 2027E PE \\
+南大光电 & 78.12 & 0.64 & 0.79 & 51.35 & 28--69 & -34.3\% & 减持 / 2027E PE \\
 \midrule
 \rowcolor{panelgrey}
-\textbf{合计 / 总体核验} & \textbf{562} & \textbf{494} & \textbf{87.9\%} & \textbf{68 (12.1\%)} & 未核实条目集中于：未上市原厂 (YMTC\slash CXMT) 数据、远期预测 (2027+)、卖方覆盖不足标的与情景假设。所有未核实项统一标记 {\faExclamationTriangle} 并在正文中披露推断依据。 \\
+\multicolumn{6}{>{\cellcolor{panelgrey}\bfseries\raggedleft}p{7.8cm}}{\textbf{覆盖标的权重加权}} & \textbf{-17.0\%} & \textbf{组合低配；等待盈利兑现或价格回落} \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
 
-\section{附录 D：合规与披露}
+\section{附录 D：数据质量与披露}
+
+\begin{enumerate}[label=(\arabic*)]
+  \item 本报告为 AStock 内部研究参考，包含模型化目标价、目标区间、空间和评级，但不构成对外发布的证券研究报告、投资顾问意见、交易指令或组合托管建议。
+  \item 旧版所有“合理价值区间”“目标价”“上行空间”“超配”“买入/增持/减持”若未在本版明确标记为当前 AStock 模型输出或外部卖方原文，均为历史诊断资料。
+  \item 同花顺 EPS、腾讯股本/市值字段是当前公开代理输入；若 Wind/Choice/iFind、公司公告或交易所字段出现重大差异，必须重跑 data/current\_valuation\_model\_20260626.json。
+  \item 所有行业主张必须在 source\_registry 与 claim\_audit 中回链到原始 URL、归档文件和哈希；无来源主张不得进入目标价倍数上修。
+  \item Gartner、SEMI、Yole 等访问受限页面在本轮只作为探针，不作为可量化估值来源。
+\end{enumerate}
 
 \subsection{分析师独立性声明}
-本报告由 AStock Research Agent Team 自动化生成，参与撰写的研究团队 (或 AI Agent) 及其关联方不持有报告覆盖的任何标的的权益头寸。报告中的投资观点和建议未受到任何第三方商业关系的影响。
+本报告由 AStock Research Agent Team 自动化生成，参与撰写的研究团队或 AI Agent 不持有报告覆盖证券的权益头寸。
 
 \subsection{利益冲突披露}
-本研究使用的数据源 TrendForce、DRAMeXchange、Wind 等均为付费第三方商业数据供应商，AStock 与数据供应商之间不存在股权投资关系或其他利益绑定。
-
-\subsection{数据质量警示}
-本报告总体数据核验率 87.9\%，达到机构研究报告最低标准 (\(>80\%\))。数据质量薄弱点集中于：(1) YMTC\slash CXMT 未上市原厂 capex 和产能数据为行业综合推断（12.1\% 未核实中的 30\%）；(2) 2027 年及以后的远期 HBM4\slash HBM4E 良率和 ASP 预测为分析师基准预测，非原厂确认；(3) A 股各标的 AI 收入敞口为自模型估算，非官方披露。建议读者据此决策时对 {\faExclamationTriangle} 标记数据给予较低置信权重。
+本研究使用的部分数据源可能来自第三方商业数据供应商。访问失败、付费墙或缺少原始归档的来源均不得进入目标价倍数上修。

@@ -31,7 +31,7 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \node[param, right=0.05cm] at (7.95, 5.3) {SK/Samsung · H100/H200/MI300};
 
 % HBM3E
-\node[gen] at (-0.15, 4.2) {\textbf{HBM3E} \textcolor{riskred}{\small ★ 2026 主力}};
+\node[gen] at (-0.15, 4.2) {\textbf{HBM3E} \textcolor{riskred}{\small \ensuremath{\bigstar}\ 2026 主力}};
 \node[ganttbar=riskred, minimum width=4.75cm, anchor=west] at (6.4, 4.2) {16--24GB · 800+GB/s · 良率 78--88\%};
 \node[param, right=0.05cm] at (11.15, 4.2) {SK (首发)/Samsung/Micron · B100/B200/Rubin};
 
@@ -100,7 +100,7 @@ DDR5 服务器内存 & 约200--230 & 约260--290 & 约330--370 & 30--33 & \textb
 企业级 NVMe SSD & 约290--310 & 约360--400 & 约440--480 & 20--25 & \textbf{江波龙} (Foresee U.2/E1.S/E3.S 导入头部云厂)；\textbf{深科技} (沛顿 SSD 代工+封测)；\textbf{兆易} (企业级 NOR 启动 Flash) \\
 \midrule
 \rowcolor{nvgreen!8}
-\textbf{CXL (内存池化+SSD)} & 约8--12 & 约\textbf{35--45} & 约\textbf{100--130} & 约\textbf{120\%} & \textbf{澜起} \textbf{★} (CXL 2.0 控制器量产 + 3.0 送样；2026 收入 约10 亿元，2027 年翻倍)；江波龙 (CXL 模组研发中)；深科技 (代工储备) \\
+\textbf{CXL (内存池化+SSD)} & 约8--12 & 约\textbf{35--45} & 约\textbf{100--130} & 约\textbf{120\%} & \textbf{澜起} \astockstar (CXL 2.0 控制器量产 + 3.0 送样；2026 收入 约10 亿元，2027 年翻倍)；江波龙 (CXL 模组研发中)；深科技 (代工储备) \\
 \midrule
 \rowcolor{panelgrey}
 \textbf{AI 存储 TAM 合计 (HBM+DDR5+SSD+CXL)} & 约665--725 & 约\textbf{855--975} & 约1,450--1,660 & 45--50 & 核心组合 2026E 加权净利增速 约42\%，PEG 约0.95 \\
@@ -145,9 +145,9 @@ CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一�
 
 % Memory Pools
 \node[pool] (P1) at (0.3, -4.4) {Pool A · Type 3\\DRAM Expansion Box\\DDR5 2TB · 池化共享};
-\node[ashare, fill=white, draw=riskred, text=deepnavy] (P2) at (3.8, -4.4) {Pool B · Type 3\\★ \textbf{CXL MXC 控制器}\\澜起全球首发量产};
+\node[ashare, fill=white, draw=riskred, text=deepnavy] (P2) at (3.8, -4.4) {Pool B · Type 3\\\astockstar\ \textbf{CXL MXC 控制器}\\澜起全球首发量产};
 \node[pool] (P3) at (7.3, -4.4) {Pool C · Tiering\\热 DDR5 · 冷 CXL SSD\\Samsung · Solidigm};
-\node[ashare, fill=white, draw=riskred, text=deepnavy] (P4) at (10.8, -4.4) {Pool D · 模组/SSD\\★ \textbf{江波龙 / 深科技}\\CXL 模组研发中};
+\node[ashare, fill=white, draw=riskred, text=deepnavy] (P4) at (10.8, -4.4) {Pool D · 模组/SSD\\\astockstar\ \textbf{江波龙 / 深科技}\\CXL 模组研发中};
 
 % Arrows
 \foreach \h in {H1,H2,H3,H4} {
@@ -159,7 +159,7 @@ CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一�
 \draw[line, riskred, line width=1.2pt] (SW1.south) -- (P2.north-|SW1.south);
 \draw[line, navy] (SW2.south) -- (P3.north-|SW2.south);
 \draw[line, riskred, line width=1.2pt] (SW2.south) -- (P4.north-|SW2.south);
-\node[midway, left, font=\tiny, color=riskred] (L3) at (5.1, -3.2) {★ A 股核心卡位层};
+\node[midway, left, font=\tiny, color=riskred] (L3) at (5.1, -3.2) {\ensuremath{\bigstar}\ A 股核心卡位层};
 \node[below=0.2cm of P2, font=\tiny, color=steelgrey] {CXL 2.0 已量产 · CXL 3.1 2026 年 H2 送样三星/AMD};
 \node[below=0.2cm of P4, font=\tiny, color=steelgrey] {Type 3 模组原型验证中 · 2027 量产};
 \end{tikzpicture}

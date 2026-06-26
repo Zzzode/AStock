@@ -1,99 +1,25 @@
-# AI 存储产业链深度研究 — 视觉与版式审查报告
+# Visual Review - AI Storage Full Valuation - 2026-06-26
 
-- **审查对象**：`main.pdf` (2026-06-23 版, 46 页, XeLaTeX + ctexrep 编译)
-- **审查工具链**：MacTeX XeLaTeX 2024 · pdftoppm 150 DPI 全页渲染 · AStock LaTeX 视觉审查 v1.3
-- **审查日期**：2026-06-23
-- **审查结论**：**PASS（合规投行风格，阻断级问题已修复）**
+- **Object**: `main.pdf`
+- **Version**: 2026-06-26 full-valuation rebuild
+- **PDF pages**: 43
+- **Render directory**: `rendered/full-valuation-20260626/ (43 PNG pages)`
+- **Conclusion**: PASS after final render and visual inspection; no known stale-rating blocker remains in source text.
 
----
+## Inspected Pages
 
-## 一、审查项总览与评级
+| Page image | Area | Result | Notes |
+|---|---|---|---|
+| `page-01.png` | Cover | PASS | Shows PS/PB补齐后的 -17.0% weighted base upside and internal-use disclosure. |
+| `page-05.png` | ch01 valuation dashboard | PASS | 沪硅产业 target/range/upside/rating displays as 24.78 / 19--30 / -28.9% / 减持. |
+| `page-31.png` | ch08 opening | PASS | Full valuation section explains PE block and PS/PB replacement for Shanghai Silicon. |
+| `page-32.png` | ch08 valuation table | PASS | Final valuation matrix remains readable; no target row is n.a. for covered names. |
+| `page-39.png` | ch11 action list | PASS | Investment action list shows 沪硅产业 low allocation with target price and Reduce rating. |
+| `page-42.png` | Appendix valuation matrix | PASS | Appendix final target matrix is readable and includes 11 covered target rows. |
 
-| # | 审查项 | 投行合规标准 | 实际结果 | 评级 | 阻断级 |
-|:-:|:--|:--|:--|:-:|:-:|
-| 1 | 首页仪表盘完整性 | 含：机构抬头 / 报告日期 / 股票代号覆盖 / 免责声明 / 关键 KPI | 表 1-1 组合表 + 表 1-2 KPI 仪表盘，9 项指标全齐 | ★★★★★ | 否 |
-| 2 | 中文渲染 / 无缺字乱码 | 全报告 CJK 文字 0 个缺字 (tofu)，字体 STSong/Heiti/TNR 一致 | XeLaTeX Font 日志无 CJK 缺字告警；全 46 页抽查 CJK 正常 | ★★★★★ | 否 |
-| 3 | 章节首页、图表编号、交叉引用 | 章节首页≥30%文字填充；图/表编号连续无跳号；`\ref` 正常 | 11 章 + 4 附录全部合规；图 1-1~11-1 连续 11 张；表 1-1~11-1 连续 + A-1~F-1 | ★★★★★ | 否 |
-| 4 | 表格跨页截断 / longtable 使用 | ≥50 行超宽表必须 longtable，`@/endhead` 重复表头；普通表不得在正文中间跨页切断 | 表 A-1 来源注册表 (20 行) 正确使用 `longtable` + `\endhead`，跨页表头正常；其余 tabularx 均在单页内 | ★★★★★ | 否 |
-| 5 | mermaid/tikz 架构图清晰度 | 图表主体字体 ≥ 8pt，节点边框≥0.6pt，`resizebox` ≤ 0.75×下限，不得出现肉眼无法辨认文字 | 11 张 tikz 图 resizebox 范围 0.80~0.96×；抽查节点字 9~12pt 可清晰辨认 | ★★★★☆ | 否 |
-| 6 | 正文页「全表/全图无文字」阻断页 | 任何单页正文文字占比 ≥ 15%；图表页下方需含 sourcenote + 投资含义段落 | 全 46 页逐页核查：0 页阻断；原 6 处空白 (p.7/p.10/p.19/p.33/p.38/p.39) 本轮已全部修复 | ★★★★★ | 否 (原为是，已修复) |
-| 7 | 字体大小 / 行距 / 页边距投行风格 | 正文字 11pt；行距 1.15~1.20×；页边距上 1.8/下 1.9/左右 1.8cm；表格字 ≥ 8pt (tabularx 正文 9pt) | preamble: 11pt + `\linespread{1.12}` + geometry 1.8/1.9/1.8；表格 \scriptsize (9pt)，标题 11pt | ★★★★☆ | 否 |
+## Visual Gate
 
-**综合评级**：**7 项审查 6 项五星、1 项四星，阻断级问题数量为 0。符合机构投行发布标准。**
-
----
-
-## 二、阻断级问题修复记录（本轮完成 6 处）
-
-| 页号 | 章节 | 原始问题描述 | 根因 | 修复方案 | 修复后验证 |
-|:----:|:--|:--|:--|:--|:--|
-| 07 | ch01 §1.4 上下行触发 | 仅 1 条上行催化剂，页面 80% 空白 | `\chapter` clearpage 后 §1.4 起始文字太少，且 catalyst 列表未写完整 | 扩充为 5 项上行催化剂 + 5 项下行风险触发 (原 2 条→10 条)，附加投资含义段落 | 页面填充率 85%，列表+说明排版美观 |
-| 10 | ch02 §2.3 声明可信度末尾 | 仅 1 段投资含义，页面 90% 空白 | §2.3 后紧接 `\chapter{供应链地图}` 触发 clearpage，短内容被孤立整页 | 新增「置信度-仓位映射」「三批建仓策略」「季度声明再评估机制」3 段 (原 1 段→4 段) | 页面填充率 92%，内容逻辑闭环 |
-| 18→19 | ch05 图 5-1 Capex 堆叠图 | 原 pgfplots `ybar stacked` 崩溃，仅标题框无图 (整页空白) | pgfplots compat=1.18 在 XeLaTeX 下与 `symbolic x coords` + `axis cs:` 外节点引用触发 `\pgfcrdmth@x` 内部崩溃 | **彻底弃用 pgfplots → 纯 tikz 手绘**：`\def\scl{0.074}`(1$B=0.074cm)，5 年×5 层堆叠，手动 Y 轴网格、图例、2026E 高亮标注 | 渲染为第 22 页，5 色堆叠 79→89→106→132→161 $B，标注清晰，有 2026E ★ 高亮 |
-| 19 | ch04 §4.4 CXL 开头 | 仅 2 段引入文字，页面 85% 空白 | 图 4-2 (CXL 拓扑) 被 `\needspace{40\baselineskip}` 挤到下一页，§4.4 开头文字不足 | 扩充 3 段：CXL 技术演进路径 + 全球 TAM 规模预测 + A 股 CXL 管制对冲逻辑 (原 1 段→4 段) | 页面填充率 90%，含 TAM CAGR 220% 关键数据 |
-| 33 | ch08 §8.1 估值章首页 | 仅章节标题 + 3 行引言，页面 65% 空白 | 图 8-1 估值四象限被 `\needspace{40\baselineskip}` 挤到 p.34 | 扩充估值背景 3 段：PEG 分析 + 海外溢价解构 + 分标的估值特征 (原 3 行→3 段) | 页面填充率 88%，含 PEG≈0.95 关键估值锚点 |
-| 38→39 | ch10 §10.1 开头 & §10.2 开头 | 两处：p.38 章节首页 60% 空白 / p.39 压力测试标题后 65% 空白 | `\needspace{42\baselineskip}` 过大，图 10-1 风险矩阵被迫跨页，导致前后两页均只剩标题+2行 | **(a)** 10.1 开头扩充：风险非对称结构 + 对冲矩阵分析 <br> **(b)** 10.2 开头扩充：压力测试设计原则 + 机构分层应用建议 | 两处页面填充率均 ≥ 85%；p.38 含风险 80% 概率 / 设备对冲逻辑；p.39 含情景触发路径 + 三类机构配置建议 |
-
----
-
-## 三、各章节视觉复核（抽查页）
-
-### 3.1 首页与封面 (p.1-2)
-- **封面**：蓝色机构抬头 `INSTITUTIONAL EQUITY RESEARCH`；标题宋体二号加粗；副标题中英双语；股票代号/行业/日期/Rating 四列信息栏；免责声明小字底部。完全符合机构模板。
-- **p.2**：表 1-1 组合评级一览表 (12 只标的、权重、PE、上行、评级、触发、失效条件)；含 `\stance{riskgreen}{买入/增持/观察}` 彩色指示标。sourcenote 位于表下，格式规范。
-
-### 3.2 核心架构图 (抽查 5 张)
-
-| 图号 | 名称 | resize | 页面 | 评价 |
-|:--:|:--|:--:|:--:|:--|
-| 图 1-1 | 四大投资主线共振框架 | 0.90× | p.6 | 4 色四主线方框 + 驱动子节点 + 底部结论条；四色分区清晰，箭头指向准确 |
-| 图 1-2 | 资金传导逻辑图 | 0.92× | p.7 | 4 层漏斗 (Hyperscaler→原厂→环节→A股)，HBM 专用红箭头；A 股 SOM 标签醒目 |
-| 图 3-1 | 七层存储产业链全景架构 | 0.88× | p.13 | 原设/材料/设备/原厂/模组/芯片/应用七层；A 股卡位层红色星标；图例+来源注释齐全 |
-| 图 5-1 | Capex 堆叠柱状图 2023-2027E | 0.82× | p.22 | 纯 tikz 手绘 5×5 堆叠；Y 轴 $B 网格；2026E 海军蓝加粗高亮；2026E >\$1200B 悬浮标注；5 色 legend 清晰 |
-| 图 10-1 | 风险矩阵气泡热力图 | 0.88× | p.39 | 2 红 3 橙 3 绿气泡；三区划分 (低/中/高)；右上角 legend；气泡大小=可监测性 |
-
-### 3.3 长表跨页审查
-- **表 A-1 来源注册表 (20 行)**：第 44 页正确使用 `\begin{longtable}` + `\endhead` 表头；跨页表头在续页顶部自动重复；行线/列宽一致。
-- **其余表格**：tabularx + `\arraystretch{1.2-1.25}`，所有 tabularx 均在单页内完成，无正文中间强行分页截断。
-
-### 3.4 字体与页边距合规性
-- 正文字体：`11pt`，中文 STSong-Light，英文 Times New Roman，标题 Heiti SC。fontspec 日志 CJK 字体映射 100% 正常，0 个 CJK 缺字。
-- 行距：`\linespread{1.12}`，等效 1.23× 实际行距 (含字高)，处于投行 1.15~1.25× 推荐区间下限，信息密度偏高但仍合规。
-- 页边距：geometry `top=1.8cm, bottom=1.9cm, left=1.8cm, right=1.8cm`；页眉 `\thepage` 居右 + 报告标题居左；页脚免责声明 `\tiny` 居中。完全合规。
-
----
-
-## 四、已知瑕疵 (非阻断级)
-
-| # | 位置 | 瑕疵描述 | 严重程度 | 建议 |
-|:-:|:--|:--|:--|:--|
-| W-1 | Unicode 字符 ★/⚠️ | XeLaTeX 日志有 2 处 Font shape 警告 (U+2605/U+26A0 从 Times New Roman 回退到 Heiti SC)；PDF 中字符实际渲染正常 | 低 (视觉无影响) | 下一轮可在 preamble 定义 `\newcommand{\warn}{\ensuremath{\blacklozenge}}` 替代 ⚠️，避免 Font Warning |
-| W-2 | 图 5-1 柱状图柱宽比例 | 5 根柱子视觉略偏细 (minimum width=16pt vs 11 年跨度 x 轴)；柱间留白略大 | 中低 | 可微调为 18pt 增加视觉饱满度 |
-| W-3 | 行距 1.12× 偏紧 | 投行推荐区间 1.15~1.20×，当前取 1.12× 下限；部分密集文字段阅读压力略大 | 中低 | 下一轮若内容压缩可增至 1.15 |
-| W-4 | 部分 tikz 图中文颜色标签 | 图 10-1 Y 轴标签「高/中/低」使用 `\tiny`，在缩放下清晰度尚可但接近下限 | 低 | 可升为 `\small` 并略微减小 resizebox 补偿 |
-
----
-
-## 五、编译与交叉引用验证
-
-```bash
-× XeLaTeX 编译次数:   2 次 (resolve cross-references)
-× 编译错误数:         0 (0 Error, 0 Badbox, 仅 2 处非阻断 Font Warning)
-× 输出 PDF 页数:      46 页
-× PDF/A 合规:         未启用 (机构研报非强制)
-× 文件大小:           ~3.2 MB，含 11 张 tikz 图 & 16 张表格
-× \ref/\pageref 解析:  28/28 全部解析，无 "??" 残留
-× 目录 TOC:           11 章 + 4 附录全条目生成，页码全部对应
-```
-
----
-
-## 六、结论
-
-**本报告视觉与版式全面合规，符合机构级投行发布标准。** 本轮审查共识别并修复 6 处阻断级「全表/全图无文字」空白页，关键修复包括：(1) 图 5-1 Capex 堆叠柱状图从 pgfplots 重写为纯 tikz 手绘 (XeLaTeX 兼容性问题根因彻底消除)；(2) 6 处章节首页/短节结尾内容扩充；(3) 8 处图表 `\needspace{N\baselineskip}` 分页控制 + resizebox 尺度优化。全 46 页视觉核查完毕：无阻断级问题，中文渲染 100% 正常，图表编号连续无跳号，longtable 跨页表头正确，tikz 架构图清晰度达标，字体/行距/页边距均符合投行模板参数。
-
-**审查通过，可提交投委会审议。**
-
----
-
-*本审查报告由 AStock Research Agent 自动生成。所有阻断级问题已在本轮审查周期内完成修复并重新编译验证。*
+- ch01/ch08/ch11 all display target price, range, upside, and rating semantics.
+- No inspected page should show a legacy active-allocation label as the AStock action.
+- Tables must not be cut off horizontally or vertically in the rendered pages.
+- Appendix source and valuation audit tables must remain readable.

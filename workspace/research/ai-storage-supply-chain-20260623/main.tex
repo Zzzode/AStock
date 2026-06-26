@@ -5,18 +5,26 @@
 \documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
 
 \newcommand{\reporttitle}{AI 叙事下的全球存储产业链深度研究}
-\newcommand{\reportsubtitle}{HBM 扩容、DDR5 渗透、CXL 商业化与国产替代四主线共振下的 A 股投资机会}
+\newcommand{\reportsubtitle}{HBM 扩容、DDR5 渗透、CXL 商业化与国产替代四主线下的估值更新与来源复核}
 \newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
 \newcommand{\reportscope}{CHINA A-SHARES | AI Memory \& Storage Supply Chain}
-\newcommand{\reportdate}{2026 年 6 月 23 日}
-\newcommand{\reportdatacutoff}{市场数据截止 2026-06-23；财务数据截止 2026 年 Q1 披露}
+\newcommand{\reportdate}{2026 年 6 月 26 日（估值更新版）}
+\newcommand{\reportdatacutoff}{市场数据至 2026-06-26 收盘；估值使用腾讯/Sina 价格交叉与同花顺 2026-2028E EPS}
 \newcommand{\reporttype}{行业深度研究 · Industry Deep Dive}
 \newcommand{\reportauthor}{AStock Research Agent Team}
-\newcommand{\reporthouseview}{\kaishu\sloppy 全球存储产业正处于「AI 拉动的结构性短缺 + 国产替代加速」的黄金拐点。\textbf{HBM} 是第一增长极（2026E 全球 TAM \$380--420 亿，2024-2027E CAGR 约 68\%），\textbf{资本开支口径严格区分：}全球存储全产业链（含原厂+设备+材料）2026E Capex 约 \$1200 亿，其中三大原厂（Samsung\slash SK\slash Micron）合计约 \$850--910 亿，增量集中于 HBM 与先进制程；\textbf{DDR5} 服务器端渗透 80\%+ 且子代升级带来量价齐升，\textbf{CXL} 2026 年 H2 进入商业化元年，\textbf{国产替代}在设备/材料环节确定性最高。\textbf{A 股配置首选：极高确定性 Tier 1（澜起科技 / 北方华创 / 中微公司）+ 高确定性 Tier 2（拓荆科技 / 沪硅产业 / 深科技）}的哑铃组合；卫星配置长电科技 / 通富微电 / 江波龙 / 兆易创新捕捉弹性。需规避``国产 HBM 概念''等被市场节奏提前 2 年以上的标的。核心组合建议基准仓位 60\% 设备材料 + 25\% 接口/封测 + 15\% 设计/模组，2026 年 H2 若 DDR5 合约价 QoQ 超 +10\% 可超配至 70\%。上行触发：NVIDIA Rubin 超预期放量 / BIS 管制放宽。下行触发：HBM ASP 下行 30\%+ / Hyperscaler capex 连续两季下修 15\%。\par}
-\newcommand{\reportquality}{L1 原厂官方披露 (三星/SK 海力士/美光 capex 指引、NVIDIA 产品规格、各公司年报 IR) + L2 政府公开/权威媒体 (BIS 管制细则、ASML 公告、Reuters/FT) + L3 第三方机构 (TrendForce / DRAMeXchange / Omdia / Wind 一致预期) 交叉验证；HBM4/HBM4E 良率与国内未上市原厂数据标注 {\faExclamationTriangle} 推断级；A 股 AI 敞口为 AStock 自模型估算非官方披露。覆盖 14 份券商 PDF 原件 (L3) 与 20 项编号数据源 (详见附录 A 来源注册)。}
-\newcommand{\reportdisclaimer}{本报告不含投资建议，仅供AStock内部投研讨论，不构成对外发布的证券研究报告。涉及A股代码与合理价值区间仅内部情景分析，不代表实际买卖建议。}
+\newcommand{\reporthouseview}{\kaishu\sloppy 全球 AI 存储产业链仍具备长期研究价值，但 2026-06-26 收盘价已经显著抬高安全边际要求。本版已用腾讯行情、Sina 价格交叉与同花顺 2026-2028E EPS 代理重建 AStock 当前估值：11 只覆盖标的中，北方华创为\textbf{中性偏正}，澜起科技、江波龙、深科技为\textbf{中性}；中微公司、拓荆科技、沪硅产业、长电科技、通富微电、兆易创新、南大光电为\textbf{减持}。沪硅产业因 2026-2028E EPS 仍为负，PE 仍被屏蔽，但已改用 2026E PS/PB 交叉估值补齐目标价。覆盖标的加权基准空间为 \textbf{-17.0\%}；报告发布当前价基础上的目标价、区间、空间与评级。\par}
+\newcommand{\reportquality}{2026-06-26 估值更新包：腾讯行情收盘价/股本/市值 + Sina 价格交叉 + 同花顺 2026-2028E EPS；沪硅产业采用 2026E PS/PB 交叉估值补足亏损期目标价；来源复核归档 NVIDIA Vera Rubin、BIS/govinfo HBM 管制 PDF、TrendForce 页面、WSTS/SIA、Samsung/SK Hynix/Micron HBM4 相关披露。Gartner/SEMI/Yole 等 403 或付费墙页面仅作为访问探针，不能进入量化估值。目标价模型来源文件为 data/current\_valuation\_model\_20260626.json。}
+\newcommand{\reportdisclaimer}{本报告为 AStock 内部研究参考，包含模型化目标价与评级，但不构成对外发布的证券研究报告、投资顾问意见、交易指令或组合托管建议。}
 
 \input{../../../.agents/templates/preamble.tex}
+
+% Case-local symbol fallbacks: avoid Times New Roman missing-glyph warnings for
+% dingbat/check/star markers in dense tables and TikZ labels.
+\renewcommand{\rmark}{\textcolor{riskred}{\ensuremath{\blacktriangleright}}}
+\renewcommand{\amark}{\textcolor{riskamber}{\ensuremath{\blacktriangleright}}}
+\renewcommand{\gmark}{\textcolor{riskgreen}{\ensuremath{\blacktriangleright}}}
+\newcommand{\astockstar}{\textcolor{riskamber}{\ensuremath{\bigstar}}}
+\newcommand{\astockok}{\textcolor{riskgreen}{\ensuremath{\checkmark}}}
 
 \hypersetup{
   pdfauthor={\reportauthor},

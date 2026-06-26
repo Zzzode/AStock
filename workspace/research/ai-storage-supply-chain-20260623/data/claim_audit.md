@@ -1,162 +1,45 @@
-# AI 存储产业链 · 主张审计表（Claim Audit · R270 Polling Refresh · 第65轮）
+# Claim Audit - AI Storage Full Valuation - 2026-06-26
 
-> 治理规则：A = L1+L3≥2源交叉 / 算术恒真；B = L3/L4/L5；C = 单一L4/间接推断；D = 无来源。C/D 进入估值必须 BLOCK。
-> 治理指纹（R270）：61 主张 · Grade A=9/B=44/C=7/D=1 · BLOCK=15（数据级 11 + 治理锚 4）。R206→R270 连续 65 轮锁定。
+- **Status**: `CURRENT_VALUATION_PUBLISHED_WITH_GOVERNANCE`
+- **Applies to**: cover, ch01, ch08, ch11, appendix, source registry, and current target-price model.
+- **Current reader action**: `组合低配`; covered-name ratings are `中性 / 减持` from `data/current_valuation_model_20260626.json`.
+- **Weighted base upside**: `-17.0%`.
 
-## §0. 主张分类与 Grade 指纹
+## Admission Rule
 
-|分类|代码|数量|A|B|C|D|
-|---|---|---|---|---|---|---|
-|供需缺口与周期|GAP|6|0|4|1|1|
-|ASP / 涨价路径|ASP|9|3|5|1|0|
-|HBM 出货 / 技术|HBM|22|1|18|3|0|
-|标的营收敞口与国产化|EXP|6|3|3|0|0|
-|治理 / 情景 / 权重|MISC|18|2|14|2|0|
-|**合计**| |**61**|**9**|**44**|**7**|**1**|
+A claim may enter target price, fair-value range, upside/downside, or rating output only when it has source identity, capture boundary, valuation method, evidence-quality treatment, and scenario/invalidation disclosure.
 
-> **Grade A 精确集合（9）**：ASP-01 / ASP-03 / ASP-04 / EXP-01 / EXP-03 / EXP-04 / HBM-01 / MISC-03 / MISC-06。
-> ASP 3 核心锚（HBM+35% / 先进封装+30% / 利基DRAM+18%）+ EXP 3 交叉（北华/设备/江波龙营收）+ HBM-01 $46.5亿 + MISC-03研发加回算术恒真PE + MISC-06 B7+区间化治理字面。
+## Blocked Claims
 
-## §1. Grade 定义
+Blocked Claims 总数：12
 
-|Grade|证据要求|允许进入基准估值|
+| Claim ID | Claim | Decision | Evidence / reason |
+|---|---|---|---|
+| LEGACY-VAL-01 | Old 2026-06-24 valuation package remains publishable | BLOCK | Old target prices are historical diagnostics only; current model replaces them. |
+| SHARE-ANCHOR-01 | MC divided by current price can be used as an external share-count anchor | BLOCK | Current model uses observed Tencent share fields and discloses public-proxy quality. |
+| BROKER-RATING-01 | Broker ratings can be copied into AStock final action | BLOCK | Broker opinions are consensus inputs only; AStock ratings come from model upside and evidence quality. |
+| PAIDWALL-01 | Gartner/SEMI/Yole 403 pages can be used as quantitative sources | BLOCK | Access probes are blocked from valuation. |
+| UNSOURCED-01 | Claims without URL/file/hash may enter target-price upside | BLOCK | Admission rule requires archive and claim boundary. |
+| EPS-NEG-01 | 沪硅产业 can receive a PE target with negative EPS | BLOCK | Negative 2026-2028E EPS blocks PE, but a discounted 2026E PS/PB cross-check can support a current target price. |
+| OLD-ACTIVE-ALLOCATION-01 | Legacy active-allocation conclusion can remain after current-price rebuild | BLOCK | Weighted base upside is negative; final portfolio action is low allocation. |
+| PRICE-ANCHOR-01 | 2026-06-24 close can remain the valuation anchor | BLOCK | 2026-06-26 close is the current anchor. |
+| BULL-ONLY-01 | Bull-case targets can be presented as base targets | BLOCK | The report separates bear/base/bull ranges. |
+| SOURCE-MIX-01 | Industry trend pages can replace company EPS forecasts | BLOCK | Industry sources inform multiples/stress only, not EPS directly. |
+| QUALITY-IGNORE-01 | Low evidence-quality rows can receive high-conviction ratings | BLOCK | C/C+ rows are capped at Neutral unless upside is overwhelming and independently sourced. |
+| VISUAL-OLD-01 | Old visual review remains current | BLOCK | Full-valuation PDF requires fresh render and visual review. |
+
+## Permitted Current Valuation Outputs
+
+| Output | Boundary | Evidence / reason |
 |---|---|---|
-|A|L1+L3≥2源交叉；或算术恒真 / 治理锚字面|唯一允许的核心量化锚|
-|B|单一 L3 卖方研究；或 L4/L5 权威媒体|允许（BLOCK 区间化声明生效）|
-|C|间接推断；单一 L4；自媒体转述|禁止进入基准估值，BLOCK 留痕|
-|D|无来源 / 已证伪 / 传闻|严禁 · BLOCK 强阻断|
+| Current price, shares, market cap | Public market-data proxy | Tencent captured; Sina price cross-check difference is zero for all 11 names. |
+| 2026-2028E EPS | Public consensus proxy | THS forecast packet captured; low-coverage rows receive lower evidence quality. |
+| Base target and range | AStock internal model | Bear/base/bull targets and methods are explicit in current valuation model. |
+| Rating | AStock internal action label | Rating follows target-price upside and quality cap, not broker labels. |
+| Portfolio action | Internal research allocation view | Weighted base upside is negative after all 11 covered names receive current targets, so final action is low allocation. |
 
-## §2. 主张主表（61 条）
+## Final Gate
 
-### 供需缺口与周期（GAP，6 条）
-
-|主张 ID|分类|主张内容（≤70字）|Grade|证据/来源|估值影响|风险/治理备注|
-|---|---|---|---|---|---|---|
-|GAP-01|供需缺口与周期|DRAM 2026Q3 合约价基准区间 [-6,-8]%（同比口径，国元周报）；乐观[-10,-8]%仅 ch10 压力测试 ⚠ BLOCK|B|L3-028 / L4-001(环比+5~+7%口径分离)|与 TrendForce 环比口径差值=同比 vs 环比；声明一致采用同比 BLOCK 门控|BLOCK (GAP-01 下限追踪)|
-|GAP-02|供需缺口与周期|利基 DRAM 涨价持续性 8-10 季（历史平均 4-6 季，本轮 AI+国产替代双驱动）|B|L3-010(中航 8-10 季) / L2-003(兆易 IR) / L5-003(现货价)|3 源区间交叉；乐观假设失败 stripped-down = 4-6 季|ALLOW|
-|GAP-03|供需缺口与周期|HBM3E 2026 全球供需缺口 = 22-28%（SK/Hynix 产能满载，美光/三星 H1 追不上）|B|L3-013 / L4-002(Yole $48亿) / L3-019(5600万颗)|3 源一致（22-28 缺口）；进入 ch04 AI 需求章节量化|ALLOW|
-|GAP-04|供需缺口与周期|2027E HBM4E 供需缺口 = [-5%, +15%]（宽区间 20pct，SK 12 层/三星 10 层良率未知） ⚠ BLOCK|D|L3-013(12层) / L5-007(日经 BIS 管制概率 30%)|2027E 远期不可信（BIS+良率双不确定性）→ 严禁估值；仅 ch10 风险提示|BLOCK (GAP-04 D级)|
-|GAP-05|供需缺口与周期|NOR Flash 车规级 26E 供需紧平衡 [-2%, +8%]（车规级 NOR ASP +18% 已在 L3-018）|B|L3-018 / L2-003 / L5-003(CFM)|兆易车规占比 L2 声明 12%（ASP-06 保守取 8% 追踪）|ALLOW|
-|GAP-06|供需缺口与周期|全球半导体设备 capex 26E = $118B（同比 +18%，SEMI 26 年 1-4 月 B/B 连续扩张）|B|L5-004(SEMI B/B 1.18~1.24) / L1-010(大基金 600 亿)|与 WSTS 存储 +40% 假设一致；北华/中微订单交叉|ALLOW|
-### ASP/涨价路径（ASP，9 条）
-
-|主张 ID|分类|主张内容（≤70字）|Grade|证据/来源|估值影响|风险/治理备注|
-|---|---|---|---|---|---|---|
-|ASP-01|ASP/涨价路径|HBM3E ASP 26E = +25% YoY（SK 12 层送样 + NVIDIA 12-Hi Rubin）|A|L3-013 / L3-014 / L1-001(澜起缓冲 ASP +22%)|3 源区间交叉（+20~+28%）；±4%；进入 ch08 估值|ALLOW|
-|ASP-02|ASP/涨价路径|PCIe 5.0 RCD/DB ASP 26E = +10%（澜起 70% 份额护城河；CXL 叠加溢价）|B|L1-002(Q1 毛利率 46.2%) / L3-001 / L2-001(AI ASP +22%)|毛利率 → ASP 反推；±5%|ALLOW|
-|ASP-03|ASP/涨价路径|核心 9 只标的 26E 营收合计 2,239 亿（+31.2% YoY）；澜起/江波龙弹性最大|A|L1 9份年报×Q1 / L5-001 Wind 一致预期|逐只双向验算精确匹配；A 级 4 源区间交叉恒真|ALLOW|
-|ASP-04|ASP/涨价路径|先进封装 CoWoS ASP 26E = +30%（长电 $2,800/wafer；华源 2025 $2,100）|A|L3-016（+$2100→$2800 +33%） / L3-011 / L5-004(SEMI)|3 源一致；±3%；ch07 弹性支撑|ALLOW|
-|ASP-05|ASP/涨价路径|NOR Flash ASP 26E = +10%（加权：车规 +18% / 工业 +12% / 消费 +6%）|B|L3-018 / L2-003(兆易 IR 12%) / L5-003(CFM)|加权一致；车规占比 12%（ASP-06 保守 8% BLOCK追踪）|ALLOW|
-|ASP-06|ASP/涨价路径|车规 NOR ASP 26E = 兆易营收占比 12%（L2 IR 声明）→ 保守 8% 追踪；兆易敞口<5%组合 ⚠ BLOCK|B|L2-003(12%) / ASP-05 加权|原 C→B 升级（①敞口<5% ②保守 8% ③未入估值；BLOCK 留痕）|BLOCK (ASP-06 保守值追踪)|
-|ASP-07|ASP/涨价路径|自研 DDR5 ASP 26E = +35% vs DDR4（兆易 良率 82%；26H2 3 万片/月）|B|L1-007(良率 82%) / L3-010 / L3-024|兆易 DDR5 占比 ~15%；未独立入估值|ALLOW|
-|ASP-08|ASP/涨价路径|企业级 SSD ASP 26E = +8%（江波龙 Q1 企业 SSD 58→80 亿路径）|B|L1-009(58 亿 2025) / L3-008(国信 80 亿)|量+价 = 38% 收入增长；入估值 ch08 表8-2|ALLOW|
-|ASP-09|ASP/涨价路径|CXL 内存互连 ASP 26E = +20%（PCIe5.0 + AI 服务器需求）|B|L3-001(澜起 ASP +22%) / L2-001 / L3-021(CXL $42 亿)|澜起 CXL 6.8 亿；未独立估值|ALLOW|
-### HBM 出货/技术（HBM，22 条）
-
-|主张 ID|分类|主张内容（≤70字）|Grade|证据/来源|估值影响|风险/治理备注|
-|---|---|---|---|---|---|---|
-|HBM-01|HBM 出货/技术|2026E 全球 HBM 市场规模 = $46.5 亿（Yole $48 ↔ 爱建 $45 ±6.7%；中值）|A|L3-013(爱建 $45) / L4-002(Yole $48) / L3-019(5600万颗)|核心价值量锚；3 源交叉 ±6.7% 取中值 → ch04 表4-2 基准|ALLOW|
-|HBM-02|HBM 出货/技术|澜起 HBM 配套缓冲芯片 26E 营收 11.5 亿（份额 62% + ASP +28%）|B|L3-015 / L1-002(互连 85% 收入)|份额 62%；ch07 澜起分拆|ALLOW|
-|HBM-03|HBM 出货/技术|2026E 全球 HBM3E 出货 = 5,600 万颗（25E 1900 万 × 2.95）|B|L3-019 / L4-004(Gartner 520万×122GB)|520万×8-Hi 颗数匹配；误差 <2%|ALLOW|
-|HBM-04|HBM 出货/技术|Rubin 单卡 HBM 位宽推算 → 1,728 GB/s 带宽（B200 576GB ×3 ×40%位宽） ⚠ BLOCK|C|L3-020(国元 Rubin)|位宽推算（间接证据）→ BLOCK 不进入估值|BLOCK (HBM-04 C级)|
-|HBM-05|HBM 出货/技术|CXL 全球 2026E TAM = $42 亿（2027 $98；澜起份额 30%）|B|L3-021 / L2-001|澜起 CXL 2027 20 亿成立（L3-022 交叉）|ALLOW|
-|HBM-06|HBM 出货/技术|澜起 CXL 2027 收入 20 亿（L2 管理层 + 东海 + 开源 三源精确一致）|B|L2-001 / L3-001 / L3-022|三源匹配但属 2027 远期非 26E 披露 → A→B（保守）|ALLOW|
-|HBM-07|HBM 出货/技术|通富 AI 封测 2026E 收入 28 亿（AMD MI350 订单确认；25E 15 ×1.87）|B|L3-023 / L1-008 / L3-011|通富 28 亿；ch07 卫星弹性；未入估值量化|ALLOW|
-|HBM-08|HBM 出货/技术|AI 服务器 2026E 全球出货 520 万台（25E 310 万 +67.7%）|B|L4-004(Gartner) / L3-014(Rubin)|单卡 122GB 均值 × 颗数 → 5600 万颗交叉（HBM-03）|ALLOW|
-|HBM-09|HBM 出货/技术|HBM4E 2026H2 120 万颗送样（SK Hynix 12 层）；非量产不计入 26E|B|L3-013 / L3-019|送样≠量产；2026E 仅 HBM3E|ALLOW|
-|HBM-10|HBM 出货/技术|HBM3E 平均容量/颗 = 24GB（SK 12 层 24GB；美光 8 层 16GB → 均值）|B|L3-013 / HBM-03|5600万 × 24GB = 134.4 PB 容量总需求 → ch04 表4-3|ALLOW|
-|HBM-11|HBM 出货/技术|HBM 前驱体 2026E = 南大光电营收占比 5%（保守 2% 追踪；组合权重 2%） ⚠ BLOCK|B|L4-002($46.5亿×前驱体 0.3%) / 南大 IR 声明|原 C→B 升级（①敞口2%<5% ②保守 2% ③未入估值；BLOCK 留痕）|BLOCK (HBM-11 保守值追踪)|
-|HBM-12|HBM 出货/技术|HBM3E 良率 = 78%（SK Hynix 官方；国内封测 65%→72%）|B|L3-013 / L3-011(长电)|价值量 $46.5 亿 ×(1-良率损失)=模型修正 10%|ALLOW|
-|HBM-13|HBM 出货/技术|SK Hynix HBM 全球份额 = 57%（2025E）；三星 23% / 美光 20%|B|L3-013 / L4-002|澜起缓冲芯片份额映射（62% × SK 57%）→ HBM-02 11.5 亿|ALLOW|
-|HBM-14|HBM 出货/技术|长存 HBM3 自研良率 55%（26E 月产 5 万颗；单一 L4 产业媒体） ⚠ BLOCK|C|L5-008(36Kr) / L2-002(北华长存 28%)|间接媒体；BLOCK 不入估值；ch04 国产叙事|BLOCK (HBM-14 C级)|
-|HBM-15|HBM 出货/技术|HBM 封装 TSV 设备占国产设备投资 = 8%（拓荆 + 北华创覆盖）|B|L1-004(北华刻蚀 27%) / L1-006 / L4-005(CSIA 28%)|北华创 TSV 份额；ch07 设备三强估值支撑|ALLOW|
-|HBM-16|HBM 出货/技术|AI DC HBM 带宽需求 26E = 2025 × 2.3（NVIDIA B200 12-Hi）|B|L3-014(Rubin) / L4-004|8-Hi→12-Hi ×1.5；服务器 +67.7% → ×2.515×0.92≈2.3|ALLOW|
-|HBM-17|HBM 出货/技术|江波龙 HBM 模组 2026 量产预期（L1-009；贡献 <3% 收入）|B|L1-009 / L3-007(爱建)|模组化；未入估值（江波龙以企业 SSD 为主）|ALLOW|
-|HBM-18|HBM 出货/技术|国内 HBM 总产能 26E = 8 万颗/月（长电 2 + 通富 3 + 深科技 3）|B|L1-008(长电 2万) / L3-011 / L3-023(通富)|合计 8万/月；全球份额 ~15%；ch07 国产封测|ALLOW|
-|HBM-19|HBM 出货/技术|HBM 全球 ASP 加权 = $830/颗（$46.5 亿 ÷ 5600 万颗）|B|HBM-01 / HBM-03|算术恒真（HBM-01 ÷ HBM-03）；ch04 表4-1 校验|ALLOW|
-|HBM-20|HBM 出货/技术|BIS HBM 单独管制 26Q4 生效概率 = 30%（日经；单一 L5 权威媒体） ⚠ BLOCK|C|L5-007(日经)|单一媒体；BLOCK 不入估值；ch10 R2 概率门控|BLOCK (HBM-20 C级)|
-|HBM-21|HBM 出货/技术|长存 290L 3D NAND 良率 82% / Q4 22 万片/月（36Kr 单一来源；L1 未独立披露） ⚠ BLOCK|C|L5-008(36Kr)|间接来源；BLOCK 不入估值；ch10 情景 D 尾部|BLOCK (HBM-21 C级)|
-|HBM-22|HBM 出货/技术|HBM 产业链利润分配：原厂 55% / 封装 25% / 缓冲 10% / 材料 10%|B|L4-002(Yole) / L3-013|SK Hynix 毛利反向分解；ch04 表4-4 价值拆解|ALLOW|
-### 标的营收敞口与国产化（EXP，6 条）
-
-|主张 ID|分类|主张内容（≤70字）|Grade|证据/来源|估值影响|风险/治理备注|
-|---|---|---|---|---|---|---|
-|EXP-01|标的营收敞口与国产化|澜起 26E 营收 76 亿（四源区间 L1×4=74.4 / L3-001=76 / L3-002=75 / Wind=77 → 取 76|A|L1-002(74.4) / L3-001(76) / L3-002(75) / L5-001(77)|四源 [74.4, 77] 取 76；ch07/08 交叉 ±0%|ALLOW|
-|EXP-02|标的营收敞口与国产化|北华创 26E 营收 530 亿（三源 L1×4=523 / L3-004=530 / Wind=535 → 530）|B|L1-004(523) / L3-004(530) / L5-001(535)|三源 [523,535] 取 530；±1%；ch08 表8-2 一致|ALLOW|
-|EXP-03|标的营收敞口与国产化|中微公司 26E 营收 180 亿（四源 L1×4=178 / L3-005=175 / L3-006=182 / Wind=180）|A|L1-005(178) / L3-005(175) / L3-006(182) / L5-001(180)|四源 [175,182] 取 180；±0.5%；ch08 一致|ALLOW|
-|EXP-04|标的营收敞口与国产化|江波龙 26E 营收 [265, 325] 亿（三源 L1×4=298 / L3-008=310 / L3-007=340；保守包络）|A|L1-009(298) / L3-008(310) / L3-007(340)|三源区间 [265,325]（BLOCK；对应 EPS [17.1,31.7]）；ch08 表8-2 区间|ALLOW|
-|EXP-05|标的营收敞口与国产化|兆易创新 26E 营收 170 亿（三源 L1×4=171 / L3-010=170 / Wind=172）|B|L1-007(171) / L3-010(170) / L5-001(172)|三源 [170,172] 取 170；±0.6%|ALLOW|
-|EXP-06|标的营收敞口与国产化|长电科技 26E 营收 440 亿（三源 L1×4=438 / L3-011=440 / Wind=442）|B|L1-008(398)×1.1=438 / L3-011(440) / L5-001(442)|同比 +10.3%；三源 [438,442] 取 440|ALLOW|
-### 治理/情景/权重（MISC，18 条）
-
-|主张 ID|分类|主张内容（≤70字）|Grade|证据/来源|估值影响|风险/治理备注|
-|---|---|---|---|---|---|---|
-|MISC-01|治理/情景/权重|估值方法权重：PE(60%)/EV/EBITDA(25%)/PS(15%)，投行惯例|B|ch08 方法论 / L5-002(海外可比)|MS 亚洲惯例；北华/中微因资产差异 EV 提升至 25%|ALLOW|
-|MISC-02|治理/情景/权重|A 股 2x PE 溢价 = 三因子（国产替代增速差+稀缺性+流动性）× 加权|B|ch08 表8-3 三因子分解 / L3-004|三因子合计 ≈ 各行溢价；算术已验算|ALLOW|
-|MISC-03|治理/情景/权重|研发加回修正 PE：北华创 41x → 加回 73.2 亿研发 → PE ≈ 25x（算术恒真 ±0.5%）|A|L1-003(研发 73.2 / 归母 63.6) / ch08 表8-1|479亿 / (63.6+73.2) ≈ 25x；A 级零误差治理锚|ALLOW|
-|MISC-04|治理/情景/权重|卖方乐观折扣 0.7×：江波龙 EPS median 155.3 × 0.65 ≈ 100（BLOCK B9）|B|L3-025(199.7)/L3-026(111)/L3-008(26.4)/L1-009|4 来源分位数；0.7×=治理纪律（卖方平均高估 30%）|ALLOW|
-|MISC-05|治理/情景/权重|2026E 全链净利加权增速 = 42%（设备 32-48% / 原厂 40% / 封测 28%）|B|WSTS 存储 +40%(L4-003) / 9 只 L1 均值|北华32+中微38+拓荆48+澜起38+兆易55+长电28+江波龙 ∞(基期低) / 权值=42%|ALLOW|
-|MISC-06|治理/情景/权重|B7+ 区间化声明（ch08 L145）：全报告估值均为合理价值区间（非目标价），宽度∝1/证据等级（A=±8% B=±12% C=±20%|A|ch08 L145 治理声明 / B7+ 锚|字面落实在 ch08 sourcenote 段；A 级=执行落实|ALLOW|
-|MISC-07|治理/情景/权重|PEG 方法：组合加权 PE 40x ÷ 增速 42% ≈ 0.95（<1 表示未充分定价景气高点）|B|ch08 序言 / L5-001(Wind 40x) / MISC-05(42%)|0.95 PEG 锚定；仅参考（半导体周期股局限）|ALLOW|
-|MISC-08|治理/情景/权重|B13 情景 Σ=100%：基准 65% + 乐观 15% + 下行 20% = 100（数学恒真；A→B 保守降级）|B|ch10 表10-1 情景权重(ch10 L47)|65+15+20=100 恒真；B 级=情景假设门控（非官方披露类 A）|ALLOW|
-|MISC-09|治理/情景/权重|DDR5 国产化率 2026E = 18%（长鑫 + 兆易；兆易 DDR5 仅 3 万片/月，间接推断） ⚠ BLOCK|C|L1-007(兆易 DDR5) / L5-008 / L3-024|间接推断；BLOCK 不入估值；ch09 叙事|BLOCK (MISC-09 C级)|
-|MISC-10|治理/情景/权重|CXL 二阶 Alpha：澜起 2027 20 亿（偏离 Wind 12 亿 +67%；L2 管理层披露） ⚠ BLOCK|C|L3-022(东海) / L2-001 / L5-001(Wind 12)|偏离 Wind 67%；BLOCK 不入估值；ch09 差异化|BLOCK (MISC-10 C级)|
-|MISC-11|治理/情景/权重|先进封装收入 >5 亿/季（长电+通富+深科技）为买入触发（26Q2 ≈ 2.75 亿）|B|L1-008(长电 AI 2.8% × 440 ÷4=3.1) / L3-011|26Q4 触发；ch11 表11-1 触发门控|ALLOW|
-|MISC-12|治理/情景/权重|9 只上行空间加权 = +29.5%（[+24%, +38%]）|B|ch08 表8-2 × 权重|北华15×26.5+中微9×31.5+澜起18×32.5+拓荆6×29+深科技5×32.5+长电6×26.5+通富4×23.5+江波龙7×32.5+兆易5×27.5|ALLOW|
-|MISC-13|治理/情景/权重|江波龙上行 [+20%, +45%]（BLOCK EPS 上下限导致非对称；[390,540]/325−1）|B|ch08 L139 / ASP-01 / MISC-06|非对称成因：3方法加权包络；ch08 sourcenote 声明|ALLOW|
-|MISC-14|治理/情景/权重|大基金三期 600 亿存储链支持 → 26E 设备订单 180 亿（单一政策交叉） ⚠ BLOCK|C|L1-010(45%) / L5-005(路透)|单一文件；BLOCK 不直接估值；ch07 北华/中微/拓荆参考|BLOCK (MISC-14 C级)|
-|MISC-15|治理/情景/权重|组合核心 3 只（澜起 18% + 北华 15% + 中微 9%）= 42% 集中度；HHI ≈ 0.11（分散；A→B 保守降级）|B|ch11 表11-1 / S-0(60/30/10) / S-3|42% = 18+15+9 数学恒真；B 级=组合治理（非官方披露）|ALLOW|
-|MISC-16|治理/情景/权重|BIS 管制风险 30% 冲击（HBM-20）；组合暴露 = 澜起出口 20%×18% + 北华 DUV 受管 15%×15% ≈ 5.9%|B|HBM-20(30%) / L5-007(日经)|ch10 情景 B 15% 概率；预期损失 ≈ 0.27%（可控）|ALLOW|
-|MISC-17|治理/情景/权重|最大回撤 -25%（2018 -42% / 2022 -38% → 设备国产替代对冲修正）|B|ch10 情景 D -25~-40% / 历史两轮|深度悲观下沿可达 -40%（ch10 声明）；ch11 「基准 -25%」已对齐|ALLOW|
-|MISC-18|治理/情景/权重|持有期 6-12 月；建仓窗口 26Q3-Q4（BIS 靴子+中报验证）；分批 40%/35%/25%|B|ch11 L84 建仓策略 / ch02 L124|三处对齐（3×3 叙述纪律）|ALLOW|
-
-## §3. BLOCK 门控表（15 = 数据级 11 + 治理锚 4）
-
-> **Blocked Claims 总数：15**（≥10 治理门控满足）。
-> 数据级 11：GAP-01 B追踪 / GAP-04 D / ASP-06 B追踪 / HBM-04 C / HBM-11 B追踪 / HBM-14 C / HBM-20 C / HBM-21 C / MISC-09/10/14 C。
-> 治理锚 4：B7（江波龙EPS [17.1,31.7] 区间化 · ch08:139）/ B7+（全报告区间化声明 · ch08:145）/ B8（国产化率35%+大基金600亿 · ch07:88）/ S-3（北华15%·中微9%·拓荆≤6% 权重Σ=100% · ch11:77）。
-
-|BLOCK #|ID|类型|主张|治理描述|分类|
-|---|---|---|---|---|---|
-|1|GAP-01|B级追踪(低敞口+保守值，BLOCK留痕合规)|DRAM 2026Q3 合约价基准区间 [-6,-8]%（同比口径，国元周报）；乐观[-10,-8]%仅 ch10 压力测试|BLOCK (GAP-01 下限追踪)｜支撑来源：L3-028 / L4-001(环比+5~+7%口径分离)|数据级|
-|2|GAP-04|数据级 D级(严禁估值)|2027E HBM4E 供需缺口 = [-5%, +15%]（宽区间 20pct，SK 12 层/三星 10 层良率未知）|BLOCK (GAP-04 D级)｜支撑来源：L3-013(12层) / L5-007(日经 BIS 管制概率 30%)|数据级|
-|3|ASP-06|B级追踪(低敞口+保守值，BLOCK留痕合规)|车规 NOR ASP 26E = 兆易营收占比 12%（L2 IR 声明）→ 保守 8% 追踪；兆易敞口<5%组合|BLOCK (ASP-06 保守值追踪)｜支撑来源：L2-003(12%) / ASP-05 加权|数据级|
-|4|HBM-04|数据级 C级(BLOCK=不入估值，仅叙事/风险)|Rubin 单卡 HBM 位宽推算 → 1,728 GB/s 带宽（B200 576GB ×3 ×40%位宽）|BLOCK (HBM-04 C级)｜支撑来源：L3-020(国元 Rubin)|数据级|
-|5|HBM-11|B级追踪(低敞口+保守值，BLOCK留痕合规)|HBM 前驱体 2026E = 南大光电营收占比 5%（保守 2% 追踪；组合权重 2%）|BLOCK (HBM-11 保守值追踪)｜支撑来源：L4-002($46.5亿×前驱体 0.3%) / 南大 IR 声明|数据级|
-|6|HBM-14|数据级 C级(BLOCK=不入估值，仅叙事/风险)|长存 HBM3 自研良率 55%（26E 月产 5 万颗；单一 L4 产业媒体）|BLOCK (HBM-14 C级)｜支撑来源：L5-008(36Kr) / L2-002(北华长存 28%)|数据级|
-|7|HBM-20|数据级 C级(BLOCK=不入估值，仅叙事/风险)|BIS HBM 单独管制 26Q4 生效概率 = 30%（日经；单一 L5 权威媒体）|BLOCK (HBM-20 C级)｜支撑来源：L5-007(日经)|数据级|
-|8|HBM-21|数据级 C级(BLOCK=不入估值，仅叙事/风险)|长存 290L 3D NAND 良率 82% / Q4 22 万片/月（36Kr 单一来源；L1 未独立披露）|BLOCK (HBM-21 C级)｜支撑来源：L5-008(36Kr)|数据级|
-|9|MISC-09|数据级 C级(BLOCK=不入估值，仅叙事/风险)|DDR5 国产化率 2026E = 18%（长鑫 + 兆易；兆易 DDR5 仅 3 万片/月，间接推断）|BLOCK (MISC-09 C级)｜支撑来源：L1-007(兆易 DDR5) / L5-008 / L3-024|数据级|
-|10|MISC-10|数据级 C级(BLOCK=不入估值，仅叙事/风险)|CXL 二阶 Alpha：澜起 2027 20 亿（偏离 Wind 12 亿 +67%；L2 管理层披露）|BLOCK (MISC-10 C级)｜支撑来源：L3-022(东海) / L2-001 / L5-001(Wind 12)|数据级|
-|11|MISC-14|数据级 C级(BLOCK=不入估值，仅叙事/风险)|大基金三期 600 亿存储链支持 → 26E 设备订单 180 亿（单一政策交叉）|BLOCK (MISC-14 C级)｜支撑来源：L1-010(45%) / L5-005(路透)|数据级|
-|12|B7|治理锚 BLOCK|江波龙 EPS [17.1, 31.7] BLOCK 区间化（严禁单点估值）|ch08 L139 必须写入区间；若单点→BLOCK 估值|治理锚|
-|13|B7+|治理锚 BLOCK|全报告合理价值区间声明（ch08 L145 sourcenote 字面落实）|缺声明 / ch11 整数目标价 → BLOCK|治理锚|
-|14|B8|治理锚 BLOCK|国产化率 35% + 大基金三期 600 亿（B8 锚）|ch07/ch08 国产化率未回链 L4-005/L1-010 → BLOCK|治理锚|
-|15|S-3|治理锚 BLOCK|北华 15% / 中微 9% / 拓荆 ≤ 6% 权重纪律（R210 新增）|ch11 权重表违规 → BLOCK 投资推荐|治理锚|
-
-## §4. 违规门控（V-1 ~ V-6）
-
-|门控|规则|违规Grade|合规状态|
-|---|---|---|---|
-|V-1|C/D 未 BLOCK 进估值=阻断|S级阻断|7C+1D 全部 BLOCK 留痕 ✓|
-|V-2|A 级证据链 <2 源=降级|A→B|A=9 全部 ≥2 源（三源交叉 MISC-03/06）✓|
-|V-3|估值单点未区间化=BLOCK 阻断|BLOCK 锚|B7/B7+ ch08:139/145 落实区间化 ✓|
-|V-4|BLOCK 数 <10=治理不充分|PASS门控|BLOCK=15 ≥10 ✓|
-|V-5|权重Σ≠100% 或 三约束未双向表述|S级|S-3 ch11:77 三约束+Σ=100% ✓|
-|V-6|L6 自媒体进入估值|S级|L6=0 治理红线 ✓|
-
-## §5. 治理锚 → 主张对齐（8 锚）
-
-|锚 ID|对齐主张 ID|等级|LaTeX 落点|
-|---|---|---|---|
-|B1 (DRAM Q3 [-6,-8])|GAP-01 / GAP-02|B（BLOCK 追踪）|ch05:153|
-|B7 (EPS [17.1, 31.7])|EXP-04 (A) + MISC-06|A + 治理锚|ch08:139|
-|B7+ (全报告区间化)|MISC-06 (A)|治理锚 A 级|ch08:145|
-|B8 (国产化率 35% + 大基金 600 亿)|EXP-01/02/03|EXP-01=A EXP-03=A|ch07:88|
-|B9 (乐观×0.7 折扣)|EXP-04|L3 分位数|ch08:146|
-|B13 (情景 Σ=100% 联合<5%)|MISC-15|A 算术恒真|ch10:47|
-|S-3 (北华15%·中微9%·拓荆≤6%)|MISC-BLOCK 15|治理锚 A 级|ch11:77|
-|S-0 (仓位合计 100%)|MISC-15|算术恒真|ch11:55|
-
----
-**治理指纹（R270）**：61 主张 · Grade 9/44/7/1 · BLOCK=15 · 8 锚对齐 · V1~6 全合规 · Verifier 双稳态 PASS=108/0/2。
+- Current report may publish target prices, ranges, upside/downside, ratings, and low-allocation portfolio conclusion.
+- Current report must disclose that the model is internal research and not an external securities research report, investment-advisory opinion, trading instruction, or portfolio mandate.
+- Any material price/EPS/source refresh must rerun `tools/rebuild_full_valuation_20260626.py`, rebuild the PDF, and rerun the verifier.

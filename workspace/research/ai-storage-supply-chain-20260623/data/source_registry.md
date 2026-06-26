@@ -1,133 +1,69 @@
-# AI 存储产业链 · 来源注册表（Source Registry · R270 Polling Refresh · 第65轮）
+# Source Registry - AI Storage Full Valuation - 2026-06-26
 
-> 来源治理规则：L1≥95 / L2≥90 / L3≥75 / L4≥70 / L5≥75 / L6≥0。Grade A=L1+L3≥2源交叉；B=L3/L4/L5；C=单一L4/L5；D=无来源。
-> R231 更新：与 R206-R232 全量一致（幂等刷新）。治理指纹连续 65 轮锁定 SR=54 · Claim=61 · BLOCK=15。
+- **Status**: `PUBLISH_FULL_CURRENT_PRICE_VALUATION`
+- **Decision**: current AStock target prices, valuation ranges, upside/downside, and ratings are published from the rebuilt model.
+- **Current source of truth**: `data/current_valuation_model_20260626.json`
+- **Admission rule**: current model claims require original URL or archived file, capture timestamp, hash/stable identity, and claim-audit boundary. Probe-only sources cannot support quantitative valuation.
 
-## 1. 证据等级定义（6 档）
+## Summary
 
-- **L1 · 官方一手（≥95）**：交易所/证监会/港交所 PDF 年报季报、部委公告、政府公文。
-- **L2 · IR 记录（≥90）**：IR 业绩会 PPT、电话会纪要、路演。
-- **L3 · 卖方研究（70–85）**：持牌券商深度/周报/点评。
-- **L4 · 产业媒体/协会（≥65）**：TrendForce / Yole / WSTS / Gartner / CSIA。
-- **L5 · 综合数据 / 权威媒体（≥60）**：Wind / Bloomberg / Yahoo / 路透 / 日经 / 36Kr。
-- **L6 · 自媒体传闻（≥0）**：**0 项（治理红线，严禁出现在任何量化假设）**。
+| Use boundary | Count |
+|---|---:|
+| `consensus_context_only` | 14 |
+| `current_model_industry_evidence` | 18 |
+| `current_model_input` | 3 |
+| `failed_probe_only` | 1 |
+| `probe_only` | 4 |
+| **Total records** | **40** |
 
-## 2. 分级计数汇总（Σ = 54）
+## Current Registry
 
-- **L1 官方一手：10 项** / **L2 IR：3 项** / **L3 卖方：28 项** / **L4 产业媒体：5 项** / **L5 综合数据：8 项** / **L6 自媒体：0 项**
-- **合计 10+3+28+5+8 = 54（R206→R270 连续 65 轮幂等）**
-
-## 3.0 物理文件 ↔ S-ID 映射表（15 = 14 L3 PDF + 1 META-CAT）
-
-|S-ID|物理相对路径|文件名|字节数|SHA-256[:12]|分类|
+| SID | Group | Status | Archive | SHA-256[:12] | Valuation boundary |
 |---|---|---|---|---|---|
-|L3-001|sources/broker-reports/2026-06-23/2026-04-15_国元证券_澜起科技_2025年年报点评_产品结构升级改善盈利能力_运力芯片增强业.pdf|2026-04-15_国元证券_澜起科技_2025年年报点评_产品结构升级改善盈利能力_运力芯片增强业.pdf|967,581|afbffe3dc3c3|PRIMARY_SOURCE_BROKER_PDF|
-|L3-002|sources/broker-reports/2026-06-23/2026-04-20_开源证券_北方华创_公司信息更新报告_营收实现稳健增长_前瞻投入研发布局行业上行.pdf|2026-04-20_开源证券_北方华创_公司信息更新报告_营收实现稳健增长_前瞻投入研发布局行业上行.pdf|875,572|b659d1690bb4|PRIMARY_SOURCE_BROKER_PDF|
-|L3-003|sources/broker-reports/2026-06-23/2026-04-21_东吴证券_北方华创_2025年报点评_营收稳步增长_平台化布局加速推进.pdf|2026-04-21_东吴证券_北方华创_2025年报点评_营收稳步增长_平台化布局加速推进.pdf|418,452|ef2bb7a84643|PRIMARY_SOURCE_BROKER_PDF|
-|L3-004|sources/broker-reports/2026-06-23/2026-05-02_东吴证券_北方华创_2026一季报点评_营收稳步增长_平台化布局加速推进.pdf|2026-05-02_东吴证券_北方华创_2026一季报点评_营收稳步增长_平台化布局加速推进.pdf|413,445|351b48fc5c34|PRIMARY_SOURCE_BROKER_PDF|
-|L3-005|sources/broker-reports/2026-06-23/2026-05-07_华源证券_长电科技_盈利水平持续提升_产品升级与研发扩产双轮驱动.pdf|2026-05-07_华源证券_长电科技_盈利水平持续提升_产品升级与研发扩产双轮驱动.pdf|9,302,107|442143b8bec1|PRIMARY_SOURCE_BROKER_PDF|
-|L3-006|sources/broker-reports/2026-06-23/2026-05-07_国信证券_江波龙_1Q26归母净利润同比增长2644_05%_端侧应用多维拓展.pdf|2026-05-07_国信证券_江波龙_1Q26归母净利润同比增长2644_05%_端侧应用多维拓展.pdf|602,890|d0dba97bd85a|PRIMARY_SOURCE_BROKER_PDF|
-|L3-007|sources/broker-reports/2026-06-23/2026-05-07_爱建证券_江波龙_2025年报&2026Q1点评_国产存储模组龙头进入业绩爆发.pdf|2026-05-07_爱建证券_江波龙_2025年报&2026Q1点评_国产存储模组龙头进入业绩爆发.pdf|521,643|38d0e62f2f4c|PRIMARY_SOURCE_BROKER_PDF|
-|L3-008|sources/broker-reports/2026-06-23/2026-05-11_开源证券_澜起科技_公司深度报告_内存互连全球龙头_发力AI运力打造第二增长中枢.pdf|2026-05-11_开源证券_澜起科技_公司深度报告_内存互连全球龙头_发力AI运力打造第二增长中枢.pdf|4,391,060|5f1b303907f3|PRIMARY_SOURCE_BROKER_PDF|
-|L3-009|sources/broker-reports/2026-06-23/2026-05-12_华鑫证券_长电科技_公司事件点评报告_盈利能力复苏_先进封装龙头受益于AI算力强.pdf|2026-05-12_华鑫证券_长电科技_公司事件点评报告_盈利能力复苏_先进封装龙头受益于AI算力强.pdf|572,639|756c1bd5bd03|PRIMARY_SOURCE_BROKER_PDF|
-|L3-010|sources/broker-reports/2026-06-23/2026-05-18_中航证券_兆易创新_存储量价齐升空间打开_定制化存储进程加速.pdf|2026-05-18_中航证券_兆易创新_存储量价齐升空间打开_定制化存储进程加速.pdf|16,463,319|f19a2532a3a3|PRIMARY_SOURCE_BROKER_PDF|
-|L3-011|sources/broker-reports/2026-06-23/2026-05-20_东海证券_澜起科技_公司深度报告_全球互连芯片龙头厂商_聚焦“运力”构建AI战略.pdf|2026-05-20_东海证券_澜起科技_公司深度报告_全球互连芯片龙头厂商_聚焦“运力”构建AI战略.pdf|2,919,913|dc1cc77d423c|PRIMARY_SOURCE_BROKER_PDF|
-|L3-012|sources/broker-reports/2026-06-23/2026-05-27_中邮证券_兆易创新_全芯赋能_智创未来.pdf|2026-05-27_中邮证券_兆易创新_全芯赋能_智创未来.pdf|544,955|f18a6b0f2683|PRIMARY_SOURCE_BROKER_PDF|
-|L3-013|sources/broker-reports/2026-06-23/2026-06-22_国元证券_行业_半导体与半导体生产设备行业周报_英伟达Rubin开始量产交付.pdf|2026-06-22_国元证券_行业_半导体与半导体生产设备行业周报_英伟达Rubin开始量产交付.pdf|1,205,478|b551e1e3818c|PRIMARY_SOURCE_BROKER_PDF|
-|L3-014|sources/broker-reports/2026-06-23/2026-06-22_爱建证券_行业_电子行业周报_SK_Hynix送样12层HBM4E_AI高端.pdf|2026-06-22_爱建证券_行业_电子行业周报_SK_Hynix送样12层HBM4E_AI高端.pdf|933,815|126f3e06bd61|PRIMARY_SOURCE_BROKER_PDF|
-|META-CAT-001|sources/broker-reports/2026-06-23/_catalog_draft.json|_catalog_draft.json|38,799|3dbd263ee639|META_CATALOG_DRAFT|
+| MKT-001 | Market data valuation | captured | `sources/market-data-20260626/tencent_quote_20260626.txt` | `552d0057744f` | `current_model_input` |
+| MKT-002 | Market data valuation | captured | `sources/market-data-20260626/sina_quote_20260626.txt` | `72eb4782b108` | `current_model_input` |
+| MKT-003 | Market data valuation | captured | `sources/market-data-20260626/ths_profit_forecast_20260626.json` | `4ae0f900cfe4` | `current_model_input` |
+| IND-001 | BIS / Federal Register | captured | `sources/industry-refresh-20260626/bis_federal_register_2024_28270.html` | `9a84e4a98b7e` | `current_model_industry_evidence` |
+| IND-002 | BIS / Federal Register | captured | `sources/industry-refresh-20260626/bis_federal_register_2024_28270.pdf` | `9c9ea7f0655e` | `current_model_industry_evidence` |
+| IND-003 | BIS / Federal Register | captured | `sources/industry-refresh-20260626/bis_federal_register_2025_02655.html` | `29314f1744c4` | `current_model_industry_evidence` |
+| IND-004 | eCFR | captured | `sources/industry-refresh-20260626/ecfr_ear_774_supplement_1.html` | `4e3bbf62829b` | `current_model_industry_evidence` |
+| IND-005 | NVIDIA | captured | `sources/industry-refresh-20260626/nvidia_vera_rubin_nvl72.html` | `32e03c186820` | `current_model_industry_evidence` |
+| IND-006 | NVIDIA | captured | `sources/industry-refresh-20260626/nvidia_hgx_vera_rubin.html` | `d958f0ac60c5` | `current_model_industry_evidence` |
+| IND-007 | TrendForce / DRAMeXchange | captured | `sources/industry-refresh-20260626/trendforce_dram_price.html` | `c7b7a9fd2120` | `current_model_industry_evidence` |
+| IND-008 | TrendForce / DRAMeXchange | captured | `sources/industry-refresh-20260626/trendforce_flash_price.html` | `1db4b651218b` | `current_model_industry_evidence` |
+| IND-009 | TrendForce / DRAMeXchange | captured | `sources/industry-refresh-20260626/trendforce_vera_rubin_800v_20260625.html` | `837bc17180d4` | `current_model_industry_evidence` |
+| IND-010 | TrendForce / DRAMeXchange | captured | `sources/industry-refresh-20260626/trendforce_20260601_13070.html` | `00455d92712e` | `current_model_industry_evidence` |
+| IND-011 | Gartner | http_error_captured | `sources/industry-refresh-20260626/gartner_semiconductor_forecast_20260408.html` | `76461cd0eb6d` | `probe_only` |
+| IND-012 | WSTS | captured | `sources/industry-refresh-20260626/wsts_recent_news_release.html` | `135950e53625` | `current_model_industry_evidence` |
+| IND-013 | SIA | captured | `sources/industry-refresh-20260626/sia_april_2026_sales.html` | `d89c67e83dbe` | `current_model_industry_evidence` |
+| IND-014 | SEMI | http_error_captured | `sources/industry-refresh-20260626/semi_300mm_fab_spending_20260401.html` | `cb33f5cf72c6` | `probe_only` |
+| IND-015 | SEMI | http_error_captured | `sources/industry-refresh-20260626/semi_equipment_sales_record_2027.html` | `045718e36512` | `probe_only` |
+| IND-016 | Yole | http_error_captured | `sources/industry-refresh-20260626/yole_next_gen_dram_2026.html` | `7f318ab8d9b9` | `probe_only` |
+| IND-017 | SK Hynix IR | captured | `sources/industry-refresh-20260626/skhynix_hbm4_development.html` | `6a002f8f978d` | `current_model_industry_evidence` |
+| IND-018 | SK Hynix IR | captured | `sources/industry-refresh-20260626/skhynix_q1_2026_results.html` | `b01eac310da7` | `current_model_industry_evidence` |
+| IND-019 | Micron IR | captured | `sources/industry-refresh-20260626/micron_hbm4_vera_rubin.html` | `9b1a254d56ca` | `current_model_industry_evidence` |
+| IND-020 | Micron IR | captured | `sources/industry-refresh-20260626/micron_hbm4_vera_rubin.pdf` | `e97cc8b12af9` | `current_model_industry_evidence` |
+| IND-021 | Samsung IR | captured | `sources/industry-refresh-20260626/samsung_hbm4e_gtc_2026.html` | `afd34f1ff5e9` | `current_model_industry_evidence` |
+| IND-022 | Samsung IR | captured | `sources/industry-refresh-20260626/samsung_q1_2026_results.html` | `e845ea40fe93` | `current_model_industry_evidence` |
+| IND-023 | CXL Consortium probe | failed | `sources/industry-refresh-20260626/cxl_4_0_release_businesswire.html` | `fcb1faaf29b3` | `failed_probe_only` |
+| BRK-001 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-20_东海证券_澜起科技_公司深度报告_全球互连芯片龙头厂商_聚焦“运力”构建AI战略.pdf` | `dc1cc77d423c` | `consensus_context_only` |
+| BRK-002 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-11_开源证券_澜起科技_公司深度报告_内存互连全球龙头_发力AI运力打造第二增长中枢.pdf` | `5f1b303907f3` | `consensus_context_only` |
+| BRK-003 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-04-15_国元证券_澜起科技_2025年年报点评_产品结构升级改善盈利能力_运力芯片增强业.pdf` | `afbffe3dc3c3` | `consensus_context_only` |
+| BRK-004 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-27_中邮证券_兆易创新_全芯赋能_智创未来.pdf` | `f18a6b0f2683` | `consensus_context_only` |
+| BRK-005 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-18_中航证券_兆易创新_存储量价齐升空间打开_定制化存储进程加速.pdf` | `f19a2532a3a3` | `consensus_context_only` |
+| BRK-006 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-07_国信证券_江波龙_1Q26归母净利润同比增长2644_05%_端侧应用多维拓展.pdf` | `d0dba97bd85a` | `consensus_context_only` |
+| BRK-007 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-07_爱建证券_江波龙_2025年报&2026Q1点评_国产存储模组龙头进入业绩爆发.pdf` | `38d0e62f2f4c` | `consensus_context_only` |
+| BRK-008 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-12_华鑫证券_长电科技_公司事件点评报告_盈利能力复苏_先进封装龙头受益于AI算力强.pdf` | `756c1bd5bd03` | `consensus_context_only` |
+| BRK-009 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-07_华源证券_长电科技_盈利水平持续提升_产品升级与研发扩产双轮驱动.pdf` | `442143b8bec1` | `consensus_context_only` |
+| BRK-010 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-04-21_东吴证券_北方华创_2025年报点评_营收稳步增长_平台化布局加速推进.pdf` | `ef2bb7a84643` | `consensus_context_only` |
+| BRK-011 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-05-02_东吴证券_北方华创_2026一季报点评_营收稳步增长_平台化布局加速推进.pdf` | `351b48fc5c34` | `consensus_context_only` |
+| BRK-012 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-04-20_开源证券_北方华创_公司信息更新报告_营收实现稳健增长_前瞻投入研发布局行业上行.pdf` | `b659d1690bb4` | `consensus_context_only` |
+| BRK-013 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-06-22_国元证券_行业_半导体与半导体生产设备行业周报_英伟达Rubin开始量产交付.pdf` | `b551e1e3818c` | `consensus_context_only` |
+| BRK-014 | Legacy broker report | captured | `sources/broker-reports/2026-06-23/2026-06-22_爱建证券_行业_电子行业周报_SK_Hynix送样12层HBM4E_AI高端.pdf` | `126f3e06bd61` | `consensus_context_only` |
 
-## 3.1 L1 · 官方一手（10）
+## Use Boundaries
 
-|sid|name|type|level|date|agency|coverage|note|
-|---|---|---|---|---|---|---|---|
-|L1-001|澜起科技 2025 年报|Annual Report|L1|2026-04-28|上交所 SSE|2025 营收 67.4 亿/归母 29.5 亿；内存接口 85%；CXL 2027 20 亿指引|与 L2-001 IR PPT 交叉；Wind 偏差<0.1%|
-|L1-002|澜起科技 2026Q1 季报|Quarterly|L1|2026-04-29|上交所 SSE|Q1 营收 18.6 亿(+38%)/归母 8.1 亿；PCIe5.0 RCD 70%；CXL 采样率 40%|Wind 偏差 +0.8%；3 家 L3 交叉|
-|L1-003|北方华创 2025 年报|Annual Report|L1|2026-04-26|深交所 SZSE|营收 472.5 亿/归母 63.6 亿；研发 73.2 亿；订单 880 亿|L2-002 确认长存 28%；Wind 偏差 0.3%|
-|L1-004|北方华创 2026Q1 季报|Quarterly|L1|2026-04-27|深交所 SZSE|Q1 营收 130.8 亿(+32%)/归母 18.2 亿；刻蚀 27%/薄膜 24%；大基金三期缴款|国元 530 亿 与 Q1×4=523 偏差 1.3%|
-|L1-005|中微公司 2025 年报|Annual Report|L1|2026-04-25|上交所 SSE|营收 160.1 亿/归母 26.5 亿；CCP TSMC 验证；长存介质 35%|东吴 180 亿 与 Q1×4=178 偏差 1.1%|
-|L1-006|拓荆科技 2025 年报|Annual Report|L1|2026-04-26|上交所 SSE|营收 75.8 亿/归母 13.2 亿；ALD 长存 12→18%；SACVD 中芯 5nm|开源 88 亿 与 Q1×4=88.4 精确匹配|
-|L1-007|兆易创新 2025 年报|Annual Report|L1|2026-04-24|上交所 SSE|营收 140.3 亿/归母 48.5 亿；NOR 全球第三 21%；DDR5 良率 82%|中航 170 亿 与 Q1×4=171 偏差 0.6%|
-|L1-008|长电科技 2025 年报|Annual Report|L1|2026-04-26|上交所 SSE|营收 398.8 亿/归母 19.8 亿；CoWoS 2 万片/月；AI 封测 2.8%|华源 §1.2 8.5 亿 AI 收入一致|
-|L1-009|江波龙 2025 年报|Annual Report|L1|2026-04-26|深交所 SZSE|营收 230.1 亿/归母 31.5 亿；企业 SSD 58 亿(+125%)；HBM 模组 2026 量产|国信 310 亿 与 Q1×4=298 偏差 4%（更保守 280 入模）|
-|L1-010|大基金三期 2026-03 缴款公告|Government|L1|2026-03-15|工信部/财政部|首期 1340 亿；存储链 45%≈600 亿；设备三强 340 亿|L5-005 路透双源|
-
-## 3.2 L2 · IR 记录（3）
-
-|sid|name|type|level|date|agency|coverage|note|
-|---|---|---|---|---|---|---|---|
-|L2-001|澜起 2025 业绩会 PPT|IR PPT|L2|2026-05-06|澜起 IR 官网|CXL 2027 20 亿指引；PCIe6.0 RCD 2026H2；AI 互连 ASP +22%|与 L1-001 Q&A 逐字对应|
-|L2-002|北华创 Q1 业绩会纪要|IR Call|L2|2026-04-29|北华创 IR 官网|长存份额 28%(+3)；290L 国产化率 15→35%；BIS 对冲 58 亿|开源 §1.3 引述 100%|
-|L2-003|兆易 2026 投资者日 PPT|IR PPT|L2|2026-05-15|兆易 IR 官网|DDR5 良率 Q2 88%；利基 DRAM ASP Q2-Q4 每季 +5-8%；车规 NOR 12→18%|中航 §2 引述 90%|
-
-## 3.3 L3 · 卖方研究（28）
-
-|sid|name|type|level|date|agency|coverage|note|
-|---|---|---|---|---|---|---|---|
-|L3-001|开源_澜起深度 2026-05-11|Broker Deep|L3|2026-05-11|开源证券|澜起 26E 营收 76/归母 33；CXL 拆分 6.8；PCIe5.0 RCD 毛利率 48%；目标价 120|L1/002/L2 三源交叉；EPS <1%|
-|L3-002|东海_澜起深度 2026-05-20|Broker Deep|L3|2026-05-20|东海证券|澜起分部估值：互连 40x / CXL 12x PS(2027)；合理价 118-125；互连份额 72%|与 L3-001 同口径 +2.5%，取 118 下限|
-|L3-003|国元_澜起点评 2026-04-15|Broker Note|L3|2026-04-15|国元证券|产品结构 AI 占比 38→45%；毛利率 44.7→46.2%；目标价 121|EPS 2.75 高 2%，取 2.70 入模|
-|L3-004|开源_北华创公司更新 2026-04-20|Broker Note|L3|2026-04-20|开源证券|北华创 26E 营收 530/归母 70；研发加回 PE 25x(vs AMAT 20)；目标价 425|L1/004/L2 交叉；研发加回= MISC-03 A级|
-|L3-005|东吴_北华创 2025 年报点评 2026-04-21|Broker Note|L3|2026-04-21|东吴证券|北华创平台化；毛利率 42% 历史峰值；目标价 418|与 L3-004 差 -1.6% → 区间下限 420|
-|L3-006|东吴_北华创 Q1 点评 2026-05-02|Broker Note|L3|2026-05-02|东吴证券|Q1 超预期 4.2%（130.8 vs 125.5）；长存订单环比 +20%；目标价 432|上限 432 → 模型 [420,430]|
-|L3-007|爱建_江波龙 2025+Q1 点评 2026-05-07|Broker Note|L3|2026-05-07|爱建证券|江波龙 26E 净利 199.7（乐观极值）；合理价 540|显著偏离 L1×4=126 → BLOCK 分位数 Q100|
-|L3-008|国信_江波龙 Q1 点评 2026-05-07|Broker Note|L3|2026-05-07|国信证券|江波龙 26E 净利 111（中偏高）；企业 SSD 80 亿；目标价 468|BLOCK EPS Q50；模型中性 100|
-|L3-009|中邮_兆易 2026-05-27|Broker Note|L3|2026-05-27|中邮证券|兆易 26E 净利 70（中偏低）；定制化存储；车规 NOR 12%；目标价 330|车规 12% 与 L2-003 一致（ASP-06 保守取 8%）|
-|L3-010|中航_兆易深度 2026-05-18|Broker Deep|L3|2026-05-18|中航证券|兆易 26E 营收 170/归母 62；涨价 8-10 季；目标价 352；DDR5 良率 82%|L1-007 交叉；涨价 = GAP-02 B级|
-|L3-011|华源_长电科技 2026-05-07|Broker Deep|L3|2026-05-07|华源证券|长电 26E 营收 440/归母 23；CoWoS AI 26E 12 亿；目标价 52|L1-008 交叉；毛利率 14.3→15.0%|
-|L3-012|华鑫_长电点评 2026-05-12|Broker Note|L3|2026-05-12|华鑫证券|长电 AI 收入确认加速；毛利率 14.5% 连续两季；目标价 49|差 -5.8% → 模型 [49,52]|
-|L3-013|爱建_电子行业周报 2026-06-22|Broker Weekly|L3|2026-06-22|爱建证券|SK 送样 12 层 HBM4E（24GB/1.6TB/s）；HBM3E ASP +25% YoY；全球需求 +135%|HBM-01 A级核心锚|
-|L3-014|国元_半导体行业周报 2026-06-22|Broker Weekly|L3|2026-06-22|国元证券|Rubin 量产；B200 标配 HBM3E 12-Hi（H100 × 1.5）；DRAM Q3 合约价 [-6,-8]%|HBM ASP 与 GAP-01 B级 BLOCK|
-|L3-015|[L3-001 子] 澜起 HBM 缓冲芯片 2026E 收入|Sub-claim|L3|2026-05-11|开源证券|HBM 缓冲 26E 营收 11.5 亿；ASP +28%；份额 62%|HBM-02 B级支撑|
-|L3-016|[L3-011 子] 长电 CoWoS ASP 路径|Sub-claim|L3|2026-05-07|华源证券|CoWoS 26E ASP $2,800/wafer（2025 $2,100 +33%）；27E 产能 × 2.4|ASP-04 A级（先进封装 +30%）交叉|
-|L3-017|[L3-004 子] 北华创长存份额 28% 定量|Sub-claim|L3|2026-04-20|开源证券|长存订单 26E 收入 148 亿（28%×530 亿 capex）；国产化率 35%|L2-002 完全对应；EXP-02 核心|
-|L3-018|[L3-010 子] 兆易 NOR ASP 2026E|Sub-claim|L3|2026-05-18|中航证券|车规 NOR ASP +18%；工业 +12%；消费 +6%|ASP-05 B级（加权 +10%）吻合|
-|L3-019|[L3-013 子] HBM3E 全球出货量|Sub-claim|L3|2026-06-22|爱建证券|26E 全球 HBM3E 出货 5600 万颗（25E 1900 万 × 2.95）；HBM4E 120 万送样|HBM-03 B级（+195%）误差 <2%|
-|L3-020|[L3-014 子] Rubin HBM 配置|Sub-claim|L3|2026-06-22|国元证券|Rubin 单卡 HBM 192GB（B200×3× 位宽 40% → 1728GB/s 带宽）|HBM-04 C级 BLOCK（位宽推断，间接）|
-|L3-021|[L3-001 子] CXL 全球 2026E TAM|Sub-claim|L3|2026-05-11|开源证券|CXL 全球 TAM $42 亿；2027 $98 亿；澜起份额 30% 全球第二|HBM-05 B级支撑|
-|L3-022|[L3-002 子] 澜起 2027 CXL 20 亿|Sub-claim|L3|2026-05-20|东海证券|2027 澜起 CXL 20 亿（与 L2-001 指引精确匹配）；毛利率 52%|HBM-06 A级三源一致交叉锚|
-|L3-023|[L3-011 子] 通富 AI 封装 2026E|Sub-claim|L3|2026-05-07|华源证券|通富 26E AI 封测 28 亿（25E 15 亿 × 1.87）；AMD MI350 确认|HBM-07 B级支撑|
-|L3-024|[L3-010 子] 兆易 DDR5 量产进度|Sub-claim|L3|2026-05-18|中航证券|26H2 DDR5 月产能 3 万片；ASP +35% vs DDR4|ASP-07 B级支撑|
-|L3-025|[L3-007 子] 爱建 EPS 极值 199.7|Sub-claim|L3|2026-05-07|爱建证券|江波龙 EPS 极值 199.7 亿（Q100 乐观）→ 47.5 元/股|BLOCK B7 EPS 区间 Q100 锚，不入模|
-|L3-026|[L3-008 子] 国信江波龙 111 亿净利|Sub-claim|L3|2026-05-07|国信证券|江波龙 111 亿净利（中偏高）→ EPS 26.4（BLOCK Q50 25.3 偏差 +4.3%）|BLOCK EPS Q50 参考|
-|L3-027|[L3-009 子] 中邮兆易 70 亿净利|Sub-claim|L3|2026-05-27|中邮证券|兆易 70 亿净利 → EPS 9.7（模型中性 62/8.6 为 100，乐观 +13%）|区间参考，不做单点估值|
-|L3-028|[L3-014 子] DRAM Q3 合约价 [-6,-8]%|Sub-claim|L3|2026-06-22|国元证券|DRAM 26Q3 合约价基准=[-6,-8]%（乐观 [-8,-10]% 仅压力测试不入基准）|BLOCK GAP-01 精确锚|
-
-## 3.4 L4 · 产业媒体（5）
-
-|sid|name|type|level|date|agency|coverage|note|
-|---|---|---|---|---|---|---|---|
-|L4-001|DRAMeXchange (TrendForce) 2026-05 SP|Industry Media|L4|2026-05-31|TrendForce|DRAM 26Q2 +3~+5% 环比；Q3 +5~+7%（与国元「同比 [-6,-8]」口径差）|两口径=环比 vs 同比；GAP-01 明确使用同比 BLOCK|
-|L4-002|Yole HBM 报告 2026|Industry Media|L4|2026-04-08|Yole Group|HBM 2025→2030 CAGR 52%；26E $48 亿；2030 $380 亿；CoWoS 缺口至 2027|与 L3-013 HBM-01 交叉（$48 vs 45 ±6.7%，取中值 $46.5）|
-|L4-003|WSTS 2026 Spring Forecast|Industry Assoc|L4|2026-05-10|WSTS|全球半导体 26E $6900 亿(+18.4%)；存储 $1450 亿(+40%)|MISC-05 全链净利 42% 假设交叉|
-|L4-004|Gartner AI Server 出货 2026E|Industry Analyst|L4|2026-04-20|Gartner|AI Server 26E 出货 520 万台（25E 310 万 +67.7%）；单卡 HBM 122GB|HBM-08 B级（520 万×122GB = 5600 万颗）匹配 L3-019|
-|L4-005|CSIA 国产化率白皮书 2026|Industry Assoc|L4|2026-03-30|CSIA|26E 大陆晶圆制造设备国产化率 28%；长存 35% / 长鑫 25%|B8 A级 国产化率 35% 路径核心锚|
-
-## 3.5 L5 · 综合数据（8）
-
-|sid|name|type|level|date|agency|coverage|note|
-|---|---|---|---|---|---|---|---|
-|L5-001|Wind 一致预期（2026-06-22 收盘）|Market Data|L5|2026-06-22|Wind 终端|12 只核心 26E 营收/EPS/目标价中位值；≥15 家卖方覆盖|6 只 T1 的模型基准 EPS；L1 偏差 <2%|
-|L5-002|Bloomberg 海外可比估值 2026-06-23|Market Data|L5|2026-06-23|Bloomberg|Samsung/SK/MU/AMAT/Lam/TEL 6 只可比 26E PE/PS/EV；A 股溢价 2x 基准|ch08 表 8-1 海外数值锚；Yahoo 交叉 <0.5%|
-|L5-003|CFM 现货价追踪|Price Tracker|L5|2026-06-20|CFM 闪存市场|2026 至今 NAND 现货 +22%；DRAM +18%；NOR +12%|GAP 类现货 vs 合约口径分离|
-|L5-004|SEMI 设备 B/B 订单出货比|Industry Tracker|L5|2026-05-15|SEMI|北美半导体 26 年 1-4 月 B/B 1.18/1.20/1.22/1.24；26E capex $118B|GAP-06 B级（capex +18%）支撑；L1-010 600 亿交叉|
-|L5-005|路透社 2026-03-18 大基金三期|Authoritative|L5|2026-03-18|Reuters|大基金三期首期 1340 亿 3 月中旬缴款；存储链 45% 优先|L1-010 政府文件双源验证|
-|L5-006|Yahoo Finance 海外可比收盘价|Market Data|L5|2026-06-23|Yahoo Finance|6 只海外可比收盘价（Bloomberg 备份）|L5-002 备份；误差 <1%|
-|L5-007|日经 Asia 2026-05 BIS 管制动态|Authoritative|L5|2026-05-28|日经亚洲|BIS HBM 单独管制升级审议：HBM4+ 26Q4 生效可能；HBM3 封装豁免|HBM-20 C级 BLOCK（管制 30%）|
-|L5-008|36Kr 长存 290L 量产|Authoritative(CN)|L5|2026-06-08|36Kr|长存 290L 良率 82%；Q4 月产能 22 万片；capex 26E 530 亿|HBM-21 C级 BLOCK（长存间接来源）|
-
-## 4. 治理锚 → LaTeX 落点对齐（8 锚）
-
-|anchor_id|content|cross_refs|latex_point|
-|---|---|---|---|
-|B1|DRAM 缺口 26Q3 基准 [-6,-8]%（乐观 [-10,-8]% 仅 ch10 压力测试）|L3-028|sections/ch05_supply_price_cycle.tex:153 (BLOCK-1)|
-|B7|江波龙 26E EPS = [17.1, 31.7]（BLOCK 化，不使用单点）|L3-007/008 / L1-009|sections/ch08_valuation.tex:139（表 8-2）|
-|B7+|全报告估值为合理价值区间（而非目标价）；区间宽度∝1/证据等级|MISC-06（A级治理锚）|sections/ch08_valuation.tex:145（治理声明段）|
-|B8|国产化率 35% 路径（长存/长鑫 26E）+ 大基金三期 600 亿设备材料|L1-010 / L4-005 / L2-002|sections/ch07_ashare_targets.tex:88|
-|B9|江波龙 EPS 取卖方乐观 0.7 倍折扣（consensus 155.3×0.65≈100）|L3-007/008/025/026|sections/ch08_valuation.tex:146|
-|B13|情景权重 Σ=100%（基准65+乐观15+下行20）；三因子联合概率 <5%|MISC-15（A级情景恒真）|sections/ch10_risk_stress.tex:47|
-|S-3|权重纪律：北华 15% / 中微 9% / 拓荆 ≤6%（60% 核心）|MISC-BLOCK 15|sections/ch11_investment_reco.tex:77|
-|S-0|仓位合计 100%（60%核心/30%卫星/10%主题）|恒等断言|sections/ch11_investment_reco.tex:55|
-
----
-**治理指纹（R270）**：来源 54 · Grade 9/44/7/1 · BLOCK=15 · 8 锚对齐 · Twin-row-count 容差 ≤35。
+- `current_model_input`: can enter current price, market-cap, share-count, EPS, target-price, upside, and rating calculations with public-proxy disclosure.
+- `current_model_industry_evidence`: can support industry, policy, HBM4, CXL, cycle, and stress-test assumptions after claim-level mapping.
+- `consensus_context_only`: broker reports can explain consensus divergence; broker ratings are not copied into AStock final ratings.
+- `probe_only` / `failed_probe_only`: access evidence only; cannot enter quantitative valuation.
