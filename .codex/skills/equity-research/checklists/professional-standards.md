@@ -17,6 +17,14 @@
 - [ ] Large numbers use Chinese units: 1.4万亿 (not 14000亿)
 - [ ] Decimals consistent: financial data 2 decimals, growth rates 1-2 decimals
 
+## Valuation Model Standards
+
+- [ ] Every investable or explicitly covered ticker has current price/date, share count, market cap, currency/share class, forecast EPS/net profit, valuation method, bull/base/bear values, final target price or fair-value range, implied upside/downside, rating/action, catalysts, invalidation, and evidence quality
+- [ ] The reader-facing report includes a final valuation summary table covering the full investable universe
+- [ ] Broker target prices are separated from AStock final targets and clearly cited by broker/date/source
+- [ ] Upside/downside is calculated from current price: `(target or range midpoint / current price - 1) × 100%`
+- [ ] Any ticker without enough data for a defensible target is labeled `insufficient evidence / watchlist only` and is not given an investable recommendation
+
 ## Table Standards
 
 - [ ] All tables use booktabs (no vertical lines, \toprule/\midrule/\bottomrule)

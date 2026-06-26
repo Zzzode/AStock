@@ -15,6 +15,7 @@
 
 ### Ch1 (Executive Summary)
 - [ ] All numbers here appear identically in detail chapters (single source of truth)
+- [ ] Every primary recommendation includes current price, final target price or fair-value range, implied upside/downside, valuation method, and invalidation trigger
 - [ ] Catalyst timeline dates are specific (month, not "H2")
 - [ ] Risk tickers list is COMPLETE (not missing any high-risk names)
 - [ ] Recommendation language is unambiguous
@@ -38,8 +39,10 @@
 
 ### Ch9 (Valuation)
 - [ ] Three-tier table includes ALL 10+ major tickers (not subset)
+- [ ] Final valuation summary table includes current price/date, shares, market cap, method, bull/base/bear values, final target/fair-value range, upside/downside, rating/action, catalysts, invalidation, and evidence quality for every investable ticker
 - [ ] PE × profit = market cap (verify arithmetic for each row)
 - [ ] "泡沫度" correctly calculated: (current/base - 1) × 100
+- [ ] Upside/downside correctly calculated: (target or midpoint/current - 1) × 100
 - [ ] Q2 threshold table has clear "if below → consequence" logic
 - [ ] Thor/catalyst timeline has specific dates and amounts
 

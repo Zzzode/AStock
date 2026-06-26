@@ -1,5 +1,22 @@
 # Valuation Frameworks Reference
 
+## Mandatory Final Valuation Package
+
+Every full research report must publish AStock's own final valuation, not just broker target history or scenario commentary. For every investable or explicitly covered ticker, include:
+
+| Required Field | Purpose |
+|---|---|
+| Current price/date, share count, market cap, currency/share class | Anchor the valuation to observable market data |
+| Forecast revenue/net profit/EPS | Define the earnings denominator |
+| Primary method and secondary check | Explain why PE, EV/EBITDA, PS, PB, SOTP, or DCF is appropriate |
+| Bull/base/bear values | Show sensitivity and downside protection |
+| Final target price or fair-value range | State AStock's own valuation conclusion |
+| Implied upside/downside | Convert valuation into investment space |
+| Rating/action, catalysts, invalidation | Connect valuation to portfolio behavior |
+| Evidence quality | Separate verified data, broker forecast, company guidance, and inference |
+
+If a defensible target cannot be computed, label the ticker `insufficient evidence / watchlist only`. Do not publish an investable recommendation without current-price-based target price or fair-value range.
+
 ## When to Use Each Method
 
 | Method | Best For | Formula | A-Share Benchmark |

@@ -61,7 +61,8 @@ For full research reports (equity-research):
 The first chapter of a full institutional report must read like an investment committee summary, not an introduction to the report.
 
 - Open with the investment conclusion directly. Do not write meta-language such as "this chapter rewrites", "this report will", "the table should be read as", or "this is closer to institutional process".
-- Include current price, reasonable value range, implied upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and key up/down triggers for primary names.
+- Include current price, final target price or fair-value range, implied upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and key up/down triggers for primary names.
+- Include a compact final valuation table that ties each primary name to current price, target/fair-value range, upside/downside, method, rating/action, and invalidation trigger.
 - Explain the ranking methodology and weights when names are ordered, for example delivery certainty, customer-chain evidence, valuation safety margin, and near-term catalyst/risk.
 - Translate labels into investment actions: what enters the core review list, what is event-driven, what remains thematic tracking, and what evidence changes the action.
 - Define any risk label such as "high risk" in the same chapter.
@@ -75,6 +76,8 @@ Use project CLI: `.venv/bin/python -m astock.cli build-pdf <directory>`
 
 - Don't truncate tables — if source has 18 tickers, table has 18 rows
 - Don't simplify risk disclosures — BIS/ESG must include full details
+- Don't publish an investable recommendation without a current-price-based target price or fair-value range and implied upside/downside
+- Don't omit the final valuation summary table from full research reports
 - Strategy tables must match scatter plots (every point in chart → row in legend)
 - Every `keyinsight` box must have actionable "so what"
 - Every main-body chapter must have at least one substantive paragraph before its first table/exhibit and at least one synthesis paragraph after each major exhibit cluster

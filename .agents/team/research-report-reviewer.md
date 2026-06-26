@@ -29,6 +29,8 @@ Review the assigned chapters through these lenses:
 
 5. **Financial model and valuation**
    - Verify current price, market cap, share count, EPS/net profit, PE/PEG, target price, implied upside, and quarterly bridge.
+   - Require a complete final valuation table for every investable or explicitly covered ticker: current price/date, market cap, forecast EPS/net profit, method, bull/base/bear values, final target price or fair-value range, upside/downside, rating/action, catalysts, invalidation, and evidence quality.
+   - Treat broker targets as evidence only; the report must reconcile them to AStock's own final valuation.
    - Check broker target history, target-price bias, source quality, and scenario fair-value bands.
    - Verify that valuation and earnings forecasts are tied to customer-chain order durability. Generic “AI demand” cannot support durable earnings credit.
 
@@ -44,7 +46,7 @@ Review the assigned chapters through these lenses:
 
 9. **First-chapter investment committee standard**
    - The first chapter must state the investment conclusion directly, not describe the report-writing process.
-   - It must include current price, reasonable value range, implied upside/downside, next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
+   - It must include current price, final target price or fair-value range, implied upside/downside, next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
    - Ranking must have an explicit method or weights; subjective ordering without criteria is A-Level.
    - Vague labels such as "core tracking", "aggressive watch", "theme reserve", or "high risk" must be translated into investment behavior and risk meaning.
    - Flag meta-language such as "this report does/does not define", "this chapter rewrites", "closer to institutional process", or table-reading instructions as B-Level or A-Level when pervasive.
@@ -85,6 +87,7 @@ Review the assigned chapters through these lenses:
 ## Severity Rules
 
 - **S-Level:** internal contradiction, unverified data driving valuation, unsupported investment recommendation, source hierarchy failure, wrong arithmetic, missing current-price valuation for investable report.
+- **S-Level:** missing complete final valuation table, missing final target price/fair-value range, missing implied upside/downside, or investable recommendation without valuation support for any primary/investable ticker.
 - **A-Level:** incomplete supply-chain mapping, generic technology analysis, missing quarterly bridge, weak risk thresholds, missing citation table.
 - **A-Level:** chapter reads like a PPT/chartbook page: table-first structure, no analytical setup, no post-table synthesis, or unclear investment implication.
 - **A-Level:** first chapter lacks price anchors, upside/downside, Q2/next-quarter earnings bridge, ranking methodology, or actionable investment behavior for primary names.

@@ -24,7 +24,8 @@ Run independent read-only reviews across these lenses:
    - Investment thesis, industry logic, supply-chain mapping, customer relationships, competitive moat, technology architecture.
    - For hardware/semiconductor themes, explicitly check platform chains such as NVIDIA, Google TPU, Amazon Trainium, Intel, SK Hynix/HBM, domestic compute, and networking/optical. Missing chains must be labeled as corpus gaps, not silently omitted.
 2. **Valuation / financial model / secondary market**
-   - Current price, market cap, target-price history, quarterly bridge, earnings forecasts, scenario valuation, crowding and catalysts.
+   - Current price, market cap, share count, target-price history, quarterly bridge, earnings forecasts, scenario valuation, final target price or fair-value range, implied upside/downside, crowding and catalysts.
+   - Verify every investable or covered ticker has a complete AStock final valuation package: current price/date, market cap, forecast EPS/net profit, valuation method, bull/base/bear values, final target, upside/downside, rating/action, catalysts, invalidation, and evidence quality.
    - Verify that earnings forecasts and valuation are tied to customer-chain order durability; generic AI demand is insufficient.
 3. **Risk / evidence / compliance**
    - Source hierarchy, data quality, rumor isolation, recommendation boundary, geopolitical/policy risk, publishability.
@@ -35,7 +36,7 @@ Run independent read-only reviews across these lenses:
    - Check whether each major table/exhibit cluster is embedded in text and followed by a synthesis paragraph.
    - Flag any chapter that reads like PPT/chartbook pages, a source digest, or a table stack rather than institutional equity research prose.
 6. **First-chapter investment committee quality**
-   - Check whether Chapter 1 gives current price, value range, upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
+   - Check whether Chapter 1 gives current price, final target price or fair-value range, upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
    - Check whether ranking methodology and action labels are explicit.
    - Flag meta-language written for the author rather than the investor, such as "this chapter rewrites", "this report defines", "table should be read as", or "closer to institutional process".
 
@@ -57,11 +58,12 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 
 ## Severity Rules
 
-- **S-Level:** blocks publication. Examples: contradictory market-data disclosure, unsupported investment recommendation, bad arithmetic, current-price valuation missing, source hierarchy failure.
+- **S-Level:** blocks publication. Examples: contradictory market-data disclosure, unsupported investment recommendation, bad arithmetic, current-price valuation missing, final target price/fair-value range missing for an investable ticker, implied upside/downside missing, source hierarchy failure.
 - **S-Level:** also includes missing customer-chain matrix, missing customer-chain earnings bridge, or missing claim-audit appendix in platform-driven hardware reports.
 - **S-Level:** also includes clipped core diagrams, overlapping tables, unreadable evidence appendices, or missing visual exhibits for valuation/risk/customer-chain conclusions.
 - **S-Level:** also includes missing template benchmark, missing house view, missing exhibit plan, or a report that mechanically repeats broker views without AStock's own thesis.
 - **S-Level:** also includes table-only treatment of core investment recommendation, valuation, risk, or customer-chain conclusions.
+- **S-Level:** also includes any full report that lacks a reader-facing final valuation summary table tying current price, AStock target/fair-value range, upside/downside, method, rating/action, and evidence quality across the covered universe.
 - **A-Level:** must fix before serious use. Examples: generic supply chain, weak technical parameters, no quarterly bridge, no geopolitical path.
 - **A-Level:** includes main-body chapters that are table-led rather than prose-led, have consecutive exhibits without analytical text, or lack post-exhibit "so what" synthesis.
 - **A-Level:** includes a first chapter that lacks price anchors, ranking methodology, next-quarter bridge, or actionable investment behavior.
@@ -97,6 +99,7 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 - Do not flatter the report. Assume issues exist.
 - Do not treat media reposts, previews, or search snippets as full broker evidence.
 - Do not call something undervalued/overvalued without current price, market cap, and forecast bridge.
+- Do not pass any investable recommendation unless it has a complete current-price-based valuation model, final target price or fair-value range, and implied upside/downside.
 - Do not pass a report whose main body is a source digest rather than a house view supported by exhibits.
 - Do not pass a report whose main body reads like a PPT deck or chartbook. Appendices may be dense; main chapters must be prose-led.
 - Preserve project policy: research deliverables are LaTeX/PDF compiled with MacTeX XeLaTeX on macOS.

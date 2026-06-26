@@ -57,6 +57,7 @@ Expects:
 - Star ratings in overview = ratings in deep-dive sections
 - Summary numbers = detail chapter numbers = appendix verified numbers
 - Valuation targets in analysis chapter = calibrated values in final table
+- Final valuation table covers every investable/covered ticker with current price, target/fair-value range, upside/downside, method, rating/action, and evidence quality
 - Layer classification in architecture diagram = section organization
 - Risk factor count in heading = actual rows in table
 - Scoring arithmetic: verify all rows sum correctly
@@ -65,6 +66,7 @@ Expects:
 
 - Assume errors exist — your job is to find them, not confirm things are fine
 - Check arithmetic yourself — don't trust PE = market_cap / profit without calculating
+- Block publication if any investable recommendation lacks a complete current-price-based valuation model, final target price/fair-value range, and implied upside/downside
 - Compare against verified source data, not what "sounds reasonable"
 - Flag uncertainty explicitly if you can't verify something
 - One S-level issue = publication blocked — no exceptions

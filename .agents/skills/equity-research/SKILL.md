@@ -121,10 +121,12 @@ Full research reports must contain these evidence-backed sections. If evidence i
    - Include broker forecast ranges for future revenue/net profit/EPS and compare with consensus.
    - State what would count as in-line, beat, or miss for subsequent results.
 
-5. **Investment guidance and target framework**
-   - Provide a valuation framework and scenario table.
-   - Give investment stance by category (core, aggressive, watchlist, avoid/insufficient evidence) with triggers and invalidation conditions.
-   - Do not invent target prices. Use broker targets when sourced; otherwise provide scenario logic without a fake target.
+5. **Complete valuation model, final target price, and upside/downside**
+   - Produce a complete final valuation package for every investable or explicitly covered ticker. This is mandatory for all full research reports.
+   - Each valuation package must show current price and date, share count, market cap, currency/share class, forecast revenue/net profit/EPS, selected valuation method, core assumptions, bull/base/bear valuation, final target price or fair-value range, implied upside/downside, rating/action, key catalysts, and invalidation conditions.
+   - The reader-facing PDF must include a final valuation summary table that ties together current price, base target price, fair-value range, upside/downside, valuation method, rating/action, and evidence quality for the covered universe.
+   - Broker target prices are evidence, not a substitute for AStock's own final valuation. Cite broker targets separately, disclose sell-side bias, and reconcile them against the house valuation.
+   - If the inputs are insufficient to compute a defensible target price, label the ticker `insufficient evidence / watchlist only` and exclude it from investable recommendations. Do not publish an investable stance without a current-price-based target price or fair-value range.
 
 6. **Fundamental, news, geopolitics, and policy impact**
    - Analyze demand drivers, policy, export controls, localization, customer capex, supply-chain security, and geopolitical risk.
@@ -143,7 +145,7 @@ Full research reports must contain these evidence-backed sections. If evidence i
 | Exhibit Architect | `.agents/team/exhibit-architect.md` | house view + industry + valuation + risk + source registry | `analysis/exhibit_plan.md` |
 | Valuation Auditor | `.agents/team/valuation-auditor.md` | valuation model + market data + broker targets | `analysis/valuation_audit.md` |
 
-**Quality gate:** Valuation math checks (PE = price/EPS). Target-price tables must cite broker/date/source. Supply-chain relationship tables must label confidence. `analysis/exhibit_plan.md` must map every strong conclusion to an exhibit. Fix arithmetic, fake precision, missing exhibits, and evidence gaps before proceeding.
+**Quality gate:** `analysis/valuation_model.md` must contain a complete final valuation table for every investable or covered ticker: current price/date, share count, market cap, forecast EPS/net profit, method, bull/base/bear values, final target price or fair-value range, implied upside/downside, rating/action, catalysts, invalidation, and source/evidence quality. Valuation math checks (PE = price/EPS; market cap = price × shares; upside = target/current - 1). Target-price tables must cite broker/date/source and separate broker targets from AStock targets. Supply-chain relationship tables must label confidence. `analysis/exhibit_plan.md` must map every strong conclusion to an exhibit. Fix arithmetic, fake precision, missing final valuation outputs, missing exhibits, and evidence gaps before proceeding.
 
 ## Phase 4: WRITE (Sequential)
 
@@ -155,7 +157,7 @@ Templates:
 - `.agents/templates/preamble.tex` — IB-style formatting
 - `.agents/templates/report-main.tex` — document skeleton
 
-Report must include a dedicated "Street Consensus" section from `data/consensus_analysis.md` and all sections listed in "Institutional Depth Requirements".
+Report must include a dedicated "Street Consensus" section from `data/consensus_analysis.md`, a dedicated final valuation section/table from `analysis/valuation_model.md`, and all sections listed in "Institutional Depth Requirements".
 If source quality is weak, title the section "Publicly Available Research Sentiment" instead of "Street Consensus".
 
 **Narrative quality gate:** The main body must read as institutional equity research, not a PPT deck, chartbook, source digest, or table stack. Each main-body chapter must:
@@ -169,7 +171,7 @@ If source quality is weak, title the section "Publicly Available Research Sentim
 **First-chapter gate:** Chapter 1 must be an investment committee summary. It must include:
 
 - Direct investment conclusion with no meta-writing language.
-- Current price, reasonable value range, implied upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
+- Current price, final target price or fair-value range, implied upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
 - A clear ranking methodology or weights.
 - Definitions of action labels and risk labels in investment-behavior terms.
 - Compact tables only; long triggers belong in prose.
@@ -209,7 +211,7 @@ After first compile, render or inspect actual PDF pages. Do not rely only on TeX
 
 After review, feed issues back to LaTeX Writer for fixes. **Repeat until zero S-level issues.**
 
-**Quality gate:** Zero S-level issues before publish. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish.
+**Quality gate:** Zero S-level issues before publish. Any missing complete final valuation model, missing current-price-based target price/fair-value range, missing implied upside/downside, or investable recommendation without valuation support is S-Level and blocks publication. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish.
 
 ## Phase 6: PUBLISH
 
