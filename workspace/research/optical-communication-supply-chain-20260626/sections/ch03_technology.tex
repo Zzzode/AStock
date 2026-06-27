@@ -1,0 +1,40 @@
+\section{从 800G 到 1.6T：不是线性提速，而是系统瓶颈重排}
+AI 集群的网络需求不是传统电信流量的平滑升级，而是由 GPU/加速卡并行训练、MoE 推理、参数同步和存储访问共同驱动的突发式带宽需求。800G 光模块在 2025-2026 年仍是收入主力，1.6T 则开始进入资格认证和放量前夜。速率升级带来的价值不是单个模块单价提升，而是 DSP、EML/CW 激光器、光引擎、精密耦合和测试良率的门槛提高。
+
+\begin{exhibitbox}[表：速率升级对应的产业链变化]
+\centering
+\scriptsize
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}p{2.4cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X >{\raggedright\arraybackslash}p{3.2cm}}
+\toprule
+\textbf{代际} & \textbf{主要形态} & \textbf{技术变化} & \textbf{A 股映射} \\
+\midrule
+400G & 数通高端到主流 & 100G/lane 成熟，成本与良率是核心 & 光迅科技、华工科技、剑桥科技 \\
+800G & AI 集群主力 & 200G/lane、DSP 功耗、热管理和良率决定盈利差距 & 中际旭创、新易盛、天孚通信 \\
+1.6T & 2026 资格认证与初期放量 & 224G/lane、硅光/薄膜铌酸锂/EML 路线并行，测试与封装复杂度上升 & 中际旭创、新易盛、源杰科技、天孚通信 \\
+CPO & 2027+ 期权 & 光引擎靠近交换 ASIC，降低功耗但改变供应链分工 & 源杰科技、天孚通信、光迅科技 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{价值池从材料到应用的重新分配}
+800G/1.6T 不是单纯“模块速率翻倍”，而是把整条链的难度重新排序。材料端，高纯石英和光纤预制棒影响衰减与成本，InP/GaAs、硅光晶圆和薄膜铌酸锂决定激光器、PIC 与调制器路径；设备端，外延、光刻/刻蚀、划片、贴片、主动耦合、老化和高速测试决定良率；芯片端，EML/CW 激光器、PD/APD、DSP、TIA、driver、CDR、switch ASIC 与 NIC 决定功耗和带宽；封装端，透镜、隔离器、WDM、连接器和精密耦合决定可靠性；系统端，交换机、路由器、OTN/ROADM、PON 和 DCI 决定模块进入哪一类应用。
+
+\begin{exhibitbox}[表：技术价值池]
+\centering\scriptsize
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.5cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}p{3.1cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}p{3.2cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X}
+\toprule
+\textbf{价值池} & \textbf{核心技术} & \textbf{主要瓶颈} & \textbf{A 股映射} \\
+\midrule
+材料/基底 & 光纤预制棒、InP/GaAs、薄膜铌酸锂、硅光晶圆 & 纯度、缺陷密度、尺寸、衰减和供应稳定性 & 长飞光纤、亨通光电、中天科技；材料观察池 \\
+制造设备 & 外延、光刻/刻蚀、主动耦合、老化、光电测试 & 良率、吞吐、自动化和高速测试一致性 & 罗博特科观察池；海外测试/半导体设备厂 \\
+光/电芯片 & EML/CW/VCSEL、PD/APD、DSP/TIA/driver/CDR、switch ASIC & 224G/lane、功耗、热、封装和客户认证 & 源杰科技、长光华芯、仕佳光子；海外 Broadcom/Marvell \\
+模块/系统 & 800G/1.6T、相干模块、CPO、OTN/ROADM、PON & ASP、毛利率、客户集中和架构替代 & 中际旭创、新易盛、光迅科技、烽火通信、中兴通讯 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{CPO 是期权，不是 2026 年 EPS 分母}
+Co-packaged optics 的方向清晰，但投资上必须区分技术方向和财务兑现。CPO 会提高激光源、光引擎、精密耦合和测试价值量，但短期也会把传统可插拔模块的一部分价值转移到系统厂和芯片厂。本报告把 CPO 作为 2027 年后估值弹性，不把它纳入 2026 年利润基准，否则容易把远期叙事包装成当前安全边际。
+
+\section{Mermaid 产业链图源}
+仓库规则要求架构图使用 Mermaid。报告的 Mermaid 源文件已保存至 \texttt{analysis/optical\_chain\_map.mmd}，用于后续在有 Mermaid 渲染器的环境中转成图片；本版 PDF 正文使用表格表达同一关系，避免用 TikZ 或 ASCII 画架构图。

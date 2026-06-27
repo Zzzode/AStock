@@ -1,0 +1,26 @@
+\section{来源层级}
+本报告将来源分为三层。第一层是上市公司公告与结构化财务数据，用于收入、利润、EPS、现金流、股本和估值分母；第二层是 NVIDIA、Broadcom、Coherent、Lumentum、LightCounting、Cignal AI 等官方或产业公开页面，用于判断技术方向和需求节奏；第三层是公开研究情绪，用于识别市场分歧，但不用于直接计算目标价。
+
+\begin{sourcequalitybox}[证据边界]
+本轮取得了部分第三方一致预期、券商摘要和报告入口，但没有取得覆盖全部标的、逐篇原文可复核的券商目标价历史序列。因此第 7 章以“公开券商/一致预期对照”呈现，且逐项披露来源类型和证据质量；没有原文、日期、评级、目标价或预测方法的字段，保留为未披露，不得替代 AStock 自有目标价。
+\end{sourcequalitybox}
+
+\section{关键事实与可用性}
+\begin{exhibitbox}[表：关键证据链]
+\centering
+\scriptsize
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.2cm} >{\raggedright\arraybackslash}p{2.5cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X >{\centering\arraybackslash}p{1.0cm} >{\raggedright\arraybackslash}p{2.8cm}}
+\toprule
+\textbf{来源} & \textbf{类型} & \textbf{本报告采用的事实} & \textbf{质量} & \textbf{估值用途} \\
+\midrule
+S-01/S-02 & NVIDIA 官方合作 & NVIDIA 对 Coherent/Lumentum 的光互连合作说明光连接成为 AI 集群扩展瓶颈 & A & 只作为需求方向，不直接进入 EPS \\
+S-03/S-05 & 产业公开摘要 & 800G/1.6T 需求处在上行周期，CPO 是下一代选项 & B/B+ & 影响 PE 档位和风险描述 \\
+S-07--S-22/S-26--S-34 & 公司公告/结构化财务 & 2026Q1 收入、利润、EPS、现金流与毛利率，覆盖模块、器件、光芯片、光纤光缆、线缆互连和网络设备 & A/B+ & 直接作为估值分母 \\
+S-23--S-25 & Ethernet/OIF/光纤公开资料 & 高速网络接口、互操作标准和光纤传输底座 & B & 支撑完整产业链边界，不直接进入 EPS \\
+行情包 & astock.quote\_service & 2026-06-26 收盘后当前价与日内跌幅 & A- & 目标价空间计算 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{未解决数据与处理}
+两类数据仍有局限：第一，海外 hyperscaler 对中际旭创、新易盛等 A 股公司的直接订单分配没有公开逐客户金额，报告只能用公司已披露业绩和产业链方向推断；第二，券商目标价历史和 2026E/2027E 预测并非所有标的都有完整原文，因此本报告对能取得的公开目标价和评级做对照，对未披露字段明确留空。上述缺口均不阻碍当前价估值，因为 AStock 目标价以已披露财务、行情和统一假设计算；券商数据只用于识别市场预期。

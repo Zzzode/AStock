@@ -1,0 +1,60 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{光通信全产业链深度研究}
+\newcommand{\reportsubtitle}{材料、设备、芯片、器件、模块、光纤光缆、网络设备与应用全景}
+\newcommand{\reportkicker}{机构股票研究}
+\newcommand{\reportscope}{中国 A 股 | 光通信全产业链}
+\newcommand{\reportdate}{2026 年 6 月 26 日}
+\newcommand{\reportdatacutoff}{市场数据至 2026-06-26 收盘后；财务数据至 2026Q1}
+\newcommand{\reporttype}{行业深度研究}
+\newcommand{\reportauthor}{AStock 研究代理团队}
+\newcommand{\reporthouseview}{\kaishu 光通信不是只有光模块。本报告把产业链拆成材料/基底、制造设备、光芯片、光器件、光模块、光纤光缆、网络设备和下游应用八层，覆盖 25 只可估值 A 股标的并逐一给出当前价、内在价值锚、市场情绪锚、综合目标价、空间和动作；低纯度、亏损或利润分母过薄的链条公司进入观察池。组合权重市场共识调整后空间为 \textbf{-23.3\%}，内在价值锚空间为 -47.1\%。结论是精选已兑现利润分母的模块龙头，同时承认通鼎互联、中天科技、长飞光纤等慢周期链条公司存在可观察市场情绪溢价。}
+\newcommand{\reportquality}{行情来自 astock.quote\_service 2026-06-26 收盘后实时包；财务来自结构化 2026Q1/2025 年报数据；行业证据来自 NVIDIA/Coherent/Lumentum/Broadcom、Ethernet Alliance、OIF、Corning 官方或公开页面与 LightCounting/Cignal AI 公开摘要；券商目标价历史未取得完整可核验原文，因此不作为估值输入。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。}
+
+\input{../../../.agents/templates/preamble.tex}
+
+\hypersetup{pdfauthor={\reportauthor}, pdftitle={\reporttitle}}
+
+\begin{document}
+\astockcover
+\tableofcontents
+\clearpage
+
+\chapter{投资委员会概要}
+\input{sections/ch01_ic_summary}
+\chapter{证据治理与来源边界}
+\input{sections/ch02_evidence}
+\chapter{技术路线、速率升级与价值池}
+\input{sections/ch03_technology}
+\chapter{产业链映射与竞争格局}
+\input{sections/ch04_supply_chain}
+\chapter{AI 数据中心需求与订单传导}
+\input{sections/ch05_demand}
+\chapter{公司映射与财务交付}
+\input{sections/ch06_companies}
+\chapter{公开研究情绪与分歧}
+\input{sections/ch07_sentiment}
+\chapter{估值模型、目标价与空间}
+\input{sections/ch08_valuation}
+\chapter{风险、催化剂与监测框架}
+\input{sections/ch09_risks}
+\chapter{投资建议与组合执行}
+\input{sections/ch10_investment}
+
+\appendix
+\chapter{全产业链调研工作底稿}
+\input{sections/app_research_workplan}
+\chapter{来源注册表与模型披露}
+\input{sections/app_source_audit}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[免责声明]
+\small
+\reportdisclaimer\par
+本报告为 AStock 内部研究参考。AStock 目标价和评级为模型化研究结论，不代表外部券商评级、投资顾问意见、交易指令或组合托管建议。市场价格、盈利预测、产业节奏和政策环境可能快速变化，任何组合动作均需结合实时风险约束重新判断。
+\end{disclosurebox}
+\end{document}
