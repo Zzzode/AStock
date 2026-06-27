@@ -34,7 +34,12 @@ Review the assigned chapters through these lenses:
 5. **Financial model and valuation**
    - Verify current price, market cap, share count, EPS/net profit, PE/PEG, target price, implied upside, and quarterly bridge.
    - Require a complete final valuation table for every investable or explicitly covered ticker: current price/date, market cap, forecast EPS/net profit, method, bull/base/bear values, final target price or fair-value range, upside/downside, rating/action, catalysts, invalidation, and evidence quality.
-   - Treat broker targets as evidence only; the report must reconcile them to AStock's own final valuation.
+   - Require a market-expectation valuation bridge for every investable ticker: 2026E revenue, expected growth, 2026E NP/EPS, expectation multiple, expectation-implied target/fair value, upside/downside and driver attribution.
+   - Require a market-implied sentiment bridge for every investable ticker: current-implied PE/PS/PB/EV multiple, trading-value/liquidity or momentum evidence, market anchor, sentiment premium/discount, final target weights and embedded expectation gap.
+   - Require broker/Street comparison when public evidence exists: broker/source, date, rating, target price, 2026E/2027E revenue/NP/EPS when disclosed, valuation method, implied upside and evidence quality.
+   - Require valuation methods to match business models. A chain report must not value module leaders, optical chips, precision devices, fiber/cable assets, network equipment and interconnect companies with the same PE template.
+   - Treat single-quarter annualized EPS × sector PE as invalid for asset-heavy, project-cycle, near-zero-EPS or mixed-business names unless the report proves the denominator is normalized and the method has a secondary check.
+   - Treat broker targets as evidence only; the report must reconcile them to AStock's own final valuation and market-implied sentiment anchor.
    - Check broker target history, target-price bias, source quality, and scenario fair-value bands.
    - Verify that valuation and earnings forecasts are tied to customer-chain order durability. Generic “AI demand” cannot support durable earnings credit.
 
@@ -58,6 +63,11 @@ Review the assigned chapters through these lenses:
 7. **Compliance and recommendation boundary**
    - Distinguish cited broker ratings from the report’s own research priority.
    - Flag buy/sell/hold-like language unless explicitly framed as cited third-party rating.
+
+10. **Language and localization**
+   - For Chinese reports, all reader-facing narrative, table explanations, valuation logic, risk statements, catalysts and invalidation triggers must be in Chinese.
+   - English is acceptable only for proper nouns, tickers, formulas, technical abbreviations, URLs, source titles, and short bilingual captions.
+   - Untranslated English sentences in valuation or recommendation logic are S-Level.
 
 ## Output Contract
 
@@ -92,6 +102,10 @@ Review the assigned chapters through these lenses:
 
 - **S-Level:** internal contradiction, unverified data driving valuation, unsupported investment recommendation, source hierarchy failure, wrong arithmetic, missing current-price valuation for investable report.
 - **S-Level:** missing complete final valuation table, missing final target price/fair-value range, missing implied upside/downside, or investable recommendation without valuation support for any primary/investable ticker.
+- **S-Level:** missing market-expectation valuation bridge for investable tickers, or missing broker/Street comparison where public evidence exists.
+- **S-Level:** missing market-implied sentiment bridge, missing multi-anchor target weights, or an action label that mechanically ignores strong observable market consensus.
+- **S-Level:** valuation method mismatch, including one-size-fits-all PE across heterogeneous business models or targets driven by temporary depressed EPS denominators.
+- **S-Level:** untranslated English valuation, recommendation, risk or catalyst logic in a Chinese report.
 - **A-Level:** incomplete supply-chain mapping, generic technology analysis, missing quarterly bridge, weak risk thresholds, missing citation table.
 - **A-Level:** chapter reads like a PPT/chartbook page: table-first structure, no analytical setup, no post-table synthesis, or unclear investment implication.
 - **A-Level:** first chapter lacks price anchors, upside/downside, Q2/next-quarter earnings bridge, ranking methodology, or actionable investment behavior for primary names.

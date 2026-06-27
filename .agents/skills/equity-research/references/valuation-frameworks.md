@@ -17,6 +17,41 @@ Every full research report must publish AStock's own final valuation, not just b
 
 If a defensible target cannot be computed, label the ticker `insufficient evidence / watchlist only`. Do not publish an investable recommendation without current-price-based target price or fair-value range.
 
+## Market-Implied Expectations and Sentiment Anchor
+
+Modern equity research must triangulate intrinsic value against observable market pricing. The market can be wrong, crowded, or reflexive, but it is still a live consensus mechanism. A full report therefore needs three valuation anchors:
+
+| Anchor | Purpose | Typical Inputs | Output |
+|---|---|---|---|
+| Intrinsic/fundamental anchor | Estimate what normalized fundamentals support | Forward revenue, EPS, margin, ROE, cash flow, business-model matched multiples | Fundamental value and downside if sentiment fades |
+| Market-implied expectations anchor | Reverse-engineer what current price already assumes | Current price, implied PE/PS/PB/EV multiples, liquidity/turnover, price momentum, crowding, sector sentiment | Market-consensus support level and embedded expectation gap |
+| Broker/Street anchor | Compare with external sell-side expectations | Broker target, rating, forecast revenue/NP/EPS, valuation method, source quality | Street gap and bias-adjusted external reference |
+
+The final research target should not mechanically equal the intrinsic anchor when market evidence is strong. It should publish both the intrinsic value and a market-consensus adjusted target, with explicit weights. A typical blend is:
+
+```
+final target = intrinsic value × Wf + market-implied anchor × Wm + broker anchor × Ws
+```
+
+Suggested weight bands:
+
+| Situation | Wf | Wm | Ws | Guardrail |
+|---|---:|---:|---:|---|
+| Stable earnings compounder with clean forecasts | 60-75% | 10-25% | 0-20% | Market anchor cannot override deteriorating EPS/cash flow |
+| High-growth or strategically scarce technology asset | 45-65% | 20-40% | 0-25% | Require customer/order evidence before using a high sentiment weight |
+| Fiber/cable, carrier project, network equipment or asset-heavy cyclical with visible market premium | 40-60% | 25-45% | 0-20% | Do not force a deep-downside target if liquidity and consensus pricing remain strong |
+| Low-liquidity, rumor-driven, loss-making or unverifiable theme stock | 65-90% | 0-15% | 0-15% | Sentiment can be discussed but cannot support an investable target |
+
+Required diagnostics:
+
+- Current price versus intrinsic value, broker target and market-implied anchor.
+- Implied 2026E PE/PS/PB/EV multiple at the current price.
+- Sentiment/crowding indicators: short/medium-term momentum where available, turnover/volume ratio, trading value percentile, rating concentration, target-price dispersion, and sector narrative strength.
+- Embedded-expectation gap: what revenue growth, margin, EPS, multiple or duration must be true for the market price to be reasonable.
+- Sentiment premium/discount and whether it is supported by evidence, liquidity, broker consensus, policy/capex narrative, or only by theme trading.
+
+Rating/action guardrail: if intrinsic value is far below price but the market-implied anchor is strong, do not automatically publish a mechanical `Reduce`. Use an action such as `Neutral / market-supported watch`, `Event-driven`, or `Hold while validating` and state the trigger that would collapse the sentiment premium. Conversely, strong sentiment alone cannot create a `Buy` without evidence that fundamentals can catch up.
+
 ## When to Use Each Method
 
 | Method | Best For | Formula | A-Share Benchmark |
@@ -29,21 +64,36 @@ If a defensible target cannot be computed, label the ticker `insufficient eviden
 | EV/EBITDA | Cross-border / leveraged | Enterprise Value ÷ EBITDA | Industrial ~10-15× |
 | DCF | Mature / predictable cash flows | NPV(future FCFs) | Rarely used for A-share tech |
 
+## Business-Model Matched Valuation Is Mandatory
+
+Industry-chain reports cover companies with different profit mechanics. A single PE template is not acceptable across modules, chips, devices, fiber/cable, network equipment, materials and equipment. The valuation model must choose a primary method by business model, then add a secondary sanity check.
+
+| Business Model | Primary Method | Secondary Check | Blocked Method |
+|---|---|---|---|
+| AI datacenter optical-module leader with durable orders and positive EPS | Forward PE or PEG on normalized EPS | PS and customer/order durability | Pure PS that ignores margin conversion |
+| Optical chip, laser, silicon-photonics or scarce precision-device platform | PE plus PS/SOTP scarcity check | Qualification pipeline, gross margin, revenue scale | Low-current-EPS PE as sole target |
+| Fiber/cable, carrier project, submarine cable, ODN or asset-heavy transmission company | PB/ROE, EV/EBITDA, PS or SOTP-style blend | Cycle-normalized EPS and cash conversion | Single-quarter annualized EPS × sector PE as sole target |
+| Network equipment or carrier/cloud system vendor | PE plus order backlog/cash-flow bridge | PS/PB and segment mix | Treating it as a pure optical-module stock |
+| Connector, high-speed copper, cable assembly or mixed interconnect company | SOTP or PE/PS/PB blend by segment | AI exposure purity and working-capital check | One optical-module PE multiple |
+| Loss-making, near-zero EPS, early equipment/material option | PS, EV/Sales, transaction comparables or watchlist only | Funding runway and customer validation | PE |
+
+If the selected method produces a nonsensical target because the denominator is temporarily depressed, switch method or label the ticker watchlist-only. Do not publish a mechanically low or high target that contradicts the business model.
+
 ## Three-Tier Framework
 
 ```
 🟠 Bull (乐观档) = Sell-side remote-year logic
-   Method: 2028-30E profit × mature PE → WACC折现 to present
+   Method: method-matched remote-year scenario → WACC折现 to present
    Purpose: "What price reflects all dreams coming true"
    Equivalent: current profit × 100-400× PE (but disguised as "rational")
 
 🔵 Base (中性档) = Your cold assessment  
-   Method: 2026E static profit × sector consensus PE
-   Purpose: "What's the stock worth based on THIS year's actual earnings"
+   Method: business-model matched valuation on normalized 2026-27E drivers
+   Purpose: "What's the stock worth based on the relevant economic driver"
    This is the SAFETY MARGIN anchor
 
 🟢 Bear (悲观档) = Narrative break floor
-   Method: Trough profit × de-rated PE (25×)
+   Method: de-rated version of the same primary method, or liquidation/cycle floor for asset-heavy names
    Purpose: "Where does it fall if the story dies"
    This is the STOP-LOSS level
 ```

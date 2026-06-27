@@ -46,6 +46,7 @@ For full research reports (equity-research):
 - **Charts**: pgfplots (scatter/polar), TikZ (flowcharts), forest (trees)
 - **Numbers**: proper units (亿元, %, ×), en-dash for ranges
 - **Boxes**: `keyinsight` for conclusions, `riskbox` for warnings
+- **Chinese reports**: write all reader-facing prose, table explanations, catalysts, risks, valuation logic and appendix summaries in Chinese. English is allowed only for proper nouns, tickers, formulas, technical abbreviations, source titles, URLs and short bilingual captions.
 
 ## Narrative Requirements
 
@@ -63,6 +64,9 @@ The first chapter of a full institutional report must read like an investment co
 - Open with the investment conclusion directly. Do not write meta-language such as "this chapter rewrites", "this report will", "the table should be read as", or "this is closer to institutional process".
 - Include current price, final target price or fair-value range, implied upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and key up/down triggers for primary names.
 - Include a compact final valuation table that ties each primary name to current price, target/fair-value range, upside/downside, method, rating/action, and invalidation trigger.
+- Include a compact expectation-valuation bridge showing 2026E revenue, revenue growth, 2026E NP/EPS, expectation multiple, expectation-implied fair value and upside/downside.
+- Include a compact market-implied sentiment anchor table showing intrinsic value, market anchor, broker anchor, final weights, final market-consensus adjusted target, premium/discount and action logic.
+- Include a compact broker/Street comparison when public evidence exists: broker/source, date, rating, target, forecast assumptions, method and evidence quality.
 - Explain the ranking methodology and weights when names are ordered, for example delivery certainty, customer-chain evidence, valuation safety margin, and near-term catalyst/risk.
 - Translate labels into investment actions: what enters the core review list, what is event-driven, what remains thematic tracking, and what evidence changes the action.
 - Define any risk label such as "high risk" in the same chapter.
@@ -78,6 +82,10 @@ Use project CLI: `.venv/bin/python -m astock.cli build-pdf <directory>`
 - Don't simplify risk disclosures — BIS/ESG must include full details
 - Don't publish an investable recommendation without a current-price-based target price or fair-value range and implied upside/downside
 - Don't omit the final valuation summary table from full research reports
+- Don't omit market-expectation valuation and broker/Street comparison tables from full research reports.
+- Don't omit market-implied sentiment anchor and final-target weight tables from full research reports.
+- Don't let a report publish a mechanical Reduce/Sell when market evidence strongly supports a sentiment premium; explain whether the stance is intrinsic-value-driven, market-supported watch, event-driven validation, or sentiment-premium breakdown.
+- Don't leave untranslated English sentences in Chinese report narrative, valuation explanations, catalysts, risks or recommendation logic.
 - Strategy tables must match scatter plots (every point in chart → row in legend)
 - Every `keyinsight` box must have actionable "so what"
 - Every main-body chapter must have at least one substantive paragraph before its first table/exhibit and at least one synthesis paragraph after each major exhibit cluster

@@ -115,17 +115,29 @@ Full research reports must contain these evidence-backed sections. If evidence i
    - Build a time-series table by broker/date/rating/target price/valuation method.
    - Show target-price changes, implied upside/downside, EPS/net-profit assumptions, and whether the broker is bullish, neutral, or cautious.
    - Separate original broker evidence from media summaries and market rumors.
+   - Build a reader-facing broker comparison table for covered tickers whenever public data are available: broker, report date, rating, target price, 2026E/2027E revenue, net profit, EPS, valuation method, implied upside, and source quality.
+   - If only abstracts or aggregator pages are available, still publish a clearly labeled `public broker/consensus snapshot` and mark unavailable fields as `not disclosed`; do not replace missing broker assumptions with AStock assumptions.
 
 4. **Financial expectations versus delivery**
    - Include annual/quarterly reported revenue, net profit, margins, capex, backlog/order indicators where available.
    - Include broker forecast ranges for future revenue/net profit/EPS and compare with consensus.
    - State what would count as in-line, beat, or miss for subsequent results.
+   - Include a market-expectation bridge: current price, 2026E revenue, expected revenue growth, 2026E net profit/EPS, expected PE/PS/PB or SOTP multiple, expectation-implied target price/fair value, and upside/downside.
+   - The expectation bridge must answer what investors are paying for, not only what the company has already delivered. Reports must show whether upside comes from revenue growth, margin expansion, multiple expansion, or a combination.
+   - Include a market-implied expectations and sentiment bridge: current price versus intrinsic value, current-implied PE/PS/PB/EV multiple, liquidity/trading-value percentile, momentum or price-action context where available, broker/Street target dispersion, sentiment premium/discount, and the embedded expectation needed to justify the market price.
+   - The final research target must triangulate fundamental value, market-implied consensus pricing and broker/Street reference with explicit weights. If market evidence is strong, do not publish a mechanically conservative target or action that ignores observed market consensus; instead disclose the sentiment-supported component and the trigger that would invalidate it.
 
 5. **Complete valuation model, final target price, and upside/downside**
    - Produce a complete final valuation package for every investable or explicitly covered ticker. This is mandatory for all full research reports.
    - Each valuation package must show current price and date, share count, market cap, currency/share class, forecast revenue/net profit/EPS, selected valuation method, core assumptions, bull/base/bear valuation, final target price or fair-value range, implied upside/downside, rating/action, key catalysts, and invalidation conditions.
+   - Valuation method selection must match each ticker's business model, lifecycle, profit denominator and balance-sheet structure. Do not force a heterogeneous industry chain into one PE template.
+   - For every covered ticker, explicitly state why the primary method is appropriate and include a secondary sanity check. Examples: AI optical-module leaders may use forward PE/PEG; optical chips and scarce precision-device names often need PE plus PS/strategic scarcity checks; fiber/cable, carrier-project and asset-heavy names require PB/EV-EBITDA/PS or SOTP-style blends; network-equipment names require PE plus cash-flow/order-book checks; loss-making or near-zero EPS names must not use PE as the primary method.
+   - A target price that comes only from single-quarter annualized EPS multiplied by a sector PE is invalid unless the company is a stable earnings compounder and the section proves seasonality, customer durability and margin sustainability. Method mismatch is an S-Level publication blocker.
    - The reader-facing PDF must include a final valuation summary table that ties together current price, base target price, fair-value range, upside/downside, valuation method, rating/action, and evidence quality for the covered universe.
    - Broker target prices are evidence, not a substitute for AStock's own final valuation. Cite broker targets separately, disclose sell-side bias, and reconcile them against the house valuation.
+   - Every full report must compare AStock valuation against broker/Street valuation and market-expectation valuation. The comparison must explain whether AStock is above, below, or in line with Street targets and which assumption drives the gap: 2026E revenue, margin, EPS, growth duration, multiple, or business-model classification.
+   - Every full report must separate `intrinsic/fundamental value`, `market-implied sentiment anchor`, `broker/Street anchor`, and `final market-consensus adjusted target`. Reports must show the weights and explain why sentiment deserves high, medium, or low weight for each ticker.
+   - If intrinsic value is far below the current price but market-implied evidence is strong, classify the gap as a sentiment premium instead of automatically calling the stock a sell. Use an action such as `Neutral / market-supported watch`, `Event-driven`, or `Hold while validating` unless the report proves the sentiment premium is already breaking.
    - If the inputs are insufficient to compute a defensible target price, label the ticker `insufficient evidence / watchlist only` and exclude it from investable recommendations. Do not publish an investable stance without a current-price-based target price or fair-value range.
 
 6. **Fundamental, news, geopolitics, and policy impact**
@@ -145,7 +157,7 @@ Full research reports must contain these evidence-backed sections. If evidence i
 | Exhibit Architect | `.agents/team/exhibit-architect.md` | house view + industry + valuation + risk + source registry | `analysis/exhibit_plan.md` |
 | Valuation Auditor | `.agents/team/valuation-auditor.md` | valuation model + market data + broker targets | `analysis/valuation_audit.md` |
 
-**Quality gate:** `analysis/valuation_model.md` must contain a complete final valuation table for every investable or covered ticker: current price/date, share count, market cap, forecast EPS/net profit, method, bull/base/bear values, final target price or fair-value range, implied upside/downside, rating/action, catalysts, invalidation, and source/evidence quality. Valuation math checks (PE = price/EPS; market cap = price × shares; upside = target/current - 1). Target-price tables must cite broker/date/source and separate broker targets from AStock targets. Supply-chain relationship tables must label confidence. `analysis/exhibit_plan.md` must map every strong conclusion to an exhibit. Fix arithmetic, fake precision, missing final valuation outputs, missing exhibits, and evidence gaps before proceeding.
+**Quality gate:** `analysis/valuation_model.md` must contain a complete final valuation table for every investable or covered ticker: current price/date, share count, market cap, forecast EPS/net profit, method, bull/base/bear values, intrinsic/fundamental value, market-implied sentiment anchor, broker/Street anchor where available, final market-consensus adjusted target price or fair-value range, implied upside/downside, rating/action, catalysts, invalidation, and source/evidence quality. Valuation math checks must verify the actual method used (PE, PEG, PS, PB, EV/EBITDA, DCF, SOTP or blend), market cap = price × shares, upside = target/current - 1, and the explicit weights used in the multi-anchor target. A one-size-fits-all PE table across companies with different business models is an S-Level issue. A mechanically conservative target that ignores strong observable market consensus is also an S-Level issue. Target-price tables must cite broker/date/source and separate broker targets from AStock targets. Supply-chain relationship tables must label confidence. `analysis/exhibit_plan.md` must map every strong conclusion to an exhibit. Fix arithmetic, fake precision, missing final valuation outputs, missing exhibits, evidence gaps, method mismatch, and missing market-sentiment bridge before proceeding.
 
 ## Phase 4: WRITE (Sequential)
 
@@ -177,6 +189,8 @@ If source quality is weak, title the section "Publicly Available Research Sentim
 - Compact tables only; long triggers belong in prose.
 
 **Quality gate:** XeLaTeX compiles without errors, and a text extraction review confirms prose-led chapters with no table-only main-body sections.
+
+**Language gate:** When the requested report language is Chinese, all reader-facing narrative, table descriptions, valuation explanations, risk statements, catalysts, invalidation triggers, and source summaries must be written in Chinese. English is allowed only for proper nouns, ticker names, technical abbreviations, formulas, source titles, URLs, and short bilingual captions. Untranslated English sentences in the main body or appendix are A-Level; untranslated English valuation or recommendation logic is S-Level.
 
 **macOS compiler rule:** Use MacTeX's XeLaTeX toolchain only. If `xelatex` is not on `PATH`, check `/Library/TeX/texbin/xelatex` and run compile commands with `PATH="/Library/TeX/texbin:$PATH"`. Do not try `tectonic`, `typst`, `pdflatex`, `lualatex`, or any other non-MacTeX substitute for project research reports.
 
@@ -211,7 +225,8 @@ After first compile, render or inspect actual PDF pages. Do not rely only on TeX
 
 After review, feed issues back to LaTeX Writer for fixes. **Repeat until zero S-level issues.**
 
-**Quality gate:** Zero S-level issues before publish. Any missing complete final valuation model, missing current-price-based target price/fair-value range, missing implied upside/downside, or investable recommendation without valuation support is S-Level and blocks publication. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish.
+**Quality gate:** Zero S-level issues before publish. Any missing complete final valuation model, missing current-price-based target price/fair-value range, missing implied upside/downside, missing market-expectation valuation bridge, missing broker/Street comparison when public evidence exists, investable recommendation without valuation support, valuation method that does not fit the ticker's business model, or untranslated English recommendation/valuation logic in a Chinese report is S-Level and blocks publication. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish.
+Missing market-implied sentiment anchor, missing multi-anchor valuation weights, or an action label that mechanically ignores strong observed market consensus is S-Level for full research reports.
 
 ## Phase 6: PUBLISH
 

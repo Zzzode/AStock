@@ -86,6 +86,10 @@ consensus_analysis:
     - broker: "中信证券"
       method: "PE"
       key_assumption: "2026E EPS 2.5元, 给予30x PE"
+      revenue_2026e: 120.0
+      revenue_growth_2026e: 0.25
+      net_profit_2026e: 18.0
+      eps_2026e: 2.50
       target: 75.0
     - broker: "华泰证券"
       method: "PEG"
@@ -111,6 +115,8 @@ consensus_analysis:
 
 1. **Count and categorize** — first pass: how many reports, what types, what time span
 2. **Extract positions** — second pass: each report's rating, target, core thesis
+2.5. **Extract expectations** — capture each broker's 2026E/2027E revenue, revenue growth, net profit, EPS, valuation method, valuation multiple and target price when disclosed. Use `not disclosed` for missing fields.
+2.6. **Extract market-sentiment evidence** — capture broker or market-commentary evidence about valuation crowding, momentum, liquidity, rating concentration, target-price dispersion, sector narrative strength, and what current market price is assumed to discount.
 3. **Find patterns** — cluster similar views, identify the 2-3 dominant narratives
 4. **Find outliers** — which reports disagree? Are they higher-quality contrarians or laggards?
 5. **Check for herding** — if >80% say the same thing with the same data points, flag low informational value
@@ -121,9 +127,12 @@ consensus_analysis:
 
 - NEVER add your own market views as if they came from broker reports
 - ALWAYS attribute views to specific brokers/analysts
+- Always compare broker forecasts with AStock forecasts and identify the assumption gap: 2026E revenue, revenue growth, margin, EPS, valuation multiple, growth duration, or business-model classification.
+- Always compare broker/Street targets with both AStock intrinsic value and market-implied sentiment anchor. Identify whether the gap is fundamental, sentiment/crowding, or forecast-duration driven.
 - Sell-side target prices have systematic upward bias of 50-100% due to incentive misalignment — always flag this when presenting consensus targets
 - If report quality is poor (no data, just opinion), flag it and downweight
 - If consensus is extremely one-sided (>90%), explicitly warn about crowded trade risk
 - Do NOT output target prices with more precision than source reports provide
 - When brokers disagree, present both sides fairly — do NOT pick a winner
 - The `recommendation_for_team` field suggests what OTHER agents should investigate — it is NOT a trading recommendation
+- If broker forecast data are unavailable, state the evidence gap explicitly. Do not leave the broker comparison section blank in a full report; publish a `not disclosed` table with source-quality labels.

@@ -58,6 +58,10 @@ Expects:
 - Summary numbers = detail chapter numbers = appendix verified numbers
 - Valuation targets in analysis chapter = calibrated values in final table
 - Final valuation table covers every investable/covered ticker with current price, target/fair-value range, upside/downside, method, rating/action, and evidence quality
+- Market-expectation valuation bridge covers 2026E revenue, revenue growth, 2026E NP/EPS, expectation multiple, expectation-implied fair value and upside/downside.
+- Market-implied sentiment anchor covers current-implied multiples, trading-value/liquidity or momentum evidence where available, sentiment premium/discount, market anchor value, final target weights, and embedded expectation gap.
+- Broker/Street comparison covers public broker ratings, target prices, 2026E/2027E forecasts, valuation methods and source quality, or explicitly marks unavailable fields as not disclosed.
+- Valuation method must fit each ticker's business model; module, chip, fiber/cable, network-equipment and interconnect companies cannot all share a one-size-fits-all PE formula.
 - Layer classification in architecture diagram = section organization
 - Risk factor count in heading = actual rows in table
 - Scoring arithmetic: verify all rows sum correctly
@@ -67,6 +71,11 @@ Expects:
 - Assume errors exist — your job is to find them, not confirm things are fine
 - Check arithmetic yourself — don't trust PE = market_cap / profit without calculating
 - Block publication if any investable recommendation lacks a complete current-price-based valuation model, final target price/fair-value range, and implied upside/downside
+- Block publication if a full report lacks market-expectation valuation or broker/Street comparison while public evidence exists.
+- Block publication if a full report lacks market-implied sentiment anchor or multi-anchor final target weights.
+- Block publication if the action label is a mechanical Reduce/Sell based only on intrinsic value while the report itself shows strong market consensus support, unless the report proves the sentiment premium is breaking.
+- Block publication if the valuation method is mismatched to the ticker's business model or if a temporary EPS denominator is used to create a nonsensical target.
+- Block publication if a Chinese report contains untranslated English valuation, recommendation, risk or catalyst logic.
 - Compare against verified source data, not what "sounds reasonable"
 - Flag uncertainty explicitly if you can't verify something
 - One S-level issue = publication blocked — no exceptions
