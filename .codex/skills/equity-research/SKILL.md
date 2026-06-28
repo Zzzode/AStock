@@ -14,7 +14,7 @@ If you were dispatched as a subagent to execute a specific task, skip this skill
 A multi-stage orchestration that produces institutional-grade equity research reports. All agent capabilities live in `.agents/team/*.md` — this skill only defines the pipeline: which agents, what order, what inputs flow where.
 
 ```
-Scope → Template Benchmark → Source Governance → Research → House View → Exhibit Plan → Analyze → Write → Render Review → Publish
+Scope → Template Benchmark → Source Governance → Research → House View → Valuation Skill Gate → Exhibit Plan → Write → Render Review → Publish
 ```
 
 ## When to Use
@@ -96,9 +96,23 @@ The report must have AStock's own thesis. Broker views are evidence, not the rep
 
 **Quality gate:** If the house view mostly says “broker X believes,” it fails.
 
+## Phase 2.75: VALUATION SKILL READINESS
+
+The standalone `valuation` skill is the authoritative valuation system for all full research reports. The orchestrator must not hand-roll a simplified valuation table inside `equity-research`; it must run the valuation skill after verified data and house view are available.
+
+Required readiness inputs:
+- `data/verified_financials.md`
+- `data/verified_market_data.md`
+- `data/consensus_analysis.md` or a public broker/consensus snapshot with unavailable fields marked `not disclosed`
+- `data/source_registry.md`
+- `data/claim_audit.md`
+- `analysis/house_view.md`
+
+**Quality gate:** If these files do not exist or are not usable, block valuation and fix the upstream research artifacts first. Do not proceed to risk, exhibit planning, LaTeX writing, or review with a simplified substitute.
+
 ## Institutional Depth Requirements
 
-Full research reports must contain these evidence-backed sections. If evidence is unavailable, include a clearly marked "unverified / not found" table rather than omitting the topic.
+Full research reports must contain these evidence-backed sections. If evidence is unavailable, include a clearly marked "unverified / not found" table rather than omitting the topic. The `valuation` skill owns the valuation package and audit requirements in sections 3-5; use that skill's artifact contract as the source of truth.
 
 1. **Supply-chain relationship matrix**
    - Map upstream/downstream relationships: which company supplies which customer, platform, component, or process.
@@ -152,12 +166,11 @@ Full research reports must contain these evidence-backed sections. If evidence i
 
 | Agent | Role File | Input | Output File |
 |-------|-----------|-------|-------------|
-| Valuation Modeler | `.agents/team/valuation-modeler.md` | `data/verified_financials.md` + `data/verified_market_data.md` + `data/consensus_analysis.md` | `analysis/valuation_model.md` |
+| Valuation Specialist | `.agents/team/valuation-specialist.md` + `valuation` skill | verified financials + verified market data + consensus + source registry + claim audit + house view | `analysis/valuation_model.md` + `analysis/valuation_audit.md` + structured valuation JSON when applicable |
 | Risk Analyst | `.agents/team/risk-analyst.md` | all verified data + `analysis/industry_landscape.md` + `data/consensus_analysis.md` (blind spots) | `analysis/risk_framework.md` |
 | Exhibit Architect | `.agents/team/exhibit-architect.md` | house view + industry + valuation + risk + source registry | `analysis/exhibit_plan.md` |
-| Valuation Auditor | `.agents/team/valuation-auditor.md` | valuation model + market data + broker targets | `analysis/valuation_audit.md` |
 
-**Quality gate:** `analysis/valuation_model.md` must contain a complete final valuation table for every investable or covered ticker: current price/date, share count, market cap, forecast EPS/net profit, method, bull/base/bear values, intrinsic/fundamental value, market-implied sentiment anchor, broker/Street anchor where available, final market-consensus adjusted target price or fair-value range, implied upside/downside, rating/action, catalysts, invalidation, and source/evidence quality. Valuation math checks must verify the actual method used (PE, PEG, PS, PB, EV/EBITDA, DCF, SOTP or blend), market cap = price × shares, upside = target/current - 1, and the explicit weights used in the multi-anchor target. A one-size-fits-all PE table across companies with different business models is an S-Level issue. A mechanically conservative target that ignores strong observable market consensus is also an S-Level issue. Target-price tables must cite broker/date/source and separate broker targets from AStock targets. Supply-chain relationship tables must label confidence. `analysis/exhibit_plan.md` must map every strong conclusion to an exhibit. Fix arithmetic, fake precision, missing final valuation outputs, missing exhibits, evidence gaps, method mismatch, and missing market-sentiment bridge before proceeding.
+**Quality gate:** The valuation skill must complete before risk, exhibit planning, writing, or review. `analysis/valuation_model.md` must contain a complete final valuation table for every investable or covered ticker: current price/date, share count, market cap, forecast revenue/net profit/EPS, method, bull/base/bear values, intrinsic/fundamental value, market-implied sentiment anchor, broker/Street anchor where available, final market-consensus adjusted target price or fair-value range, implied upside/downside, rating/action, catalysts, invalidation, and source/evidence quality. It must also include three-tier targets, seasonality calibration, next-quarter threshold, method bridge, market-expectation bridge, broker/Street comparison, and market-implied sentiment anchor. `analysis/valuation_audit.md` must verify the actual method used (PE, PEG, PS, PB, EV/EBITDA, DCF, SOTP or blend), market cap = price × shares, upside = target/current - 1, scenario bands, and the explicit weights used in the multi-anchor target. A one-size-fits-all PE table across companies with different business models is an S-Level issue. A mechanically conservative target that ignores strong observable market consensus is also an S-Level issue. Target-price tables must cite broker/date/source and separate broker targets from AStock targets. Supply-chain relationship tables must label confidence. `analysis/exhibit_plan.md` must map every strong conclusion to an exhibit. Fix arithmetic, fake precision, missing final valuation outputs, missing exhibits, evidence gaps, method mismatch, and missing market-sentiment bridge before proceeding.
 
 ## Phase 4: WRITE (Sequential)
 
@@ -169,7 +182,7 @@ Templates:
 - `.agents/templates/preamble.tex` — IB-style formatting
 - `.agents/templates/report-main.tex` — document skeleton
 
-Report must include a dedicated "Street Consensus" section from `data/consensus_analysis.md`, a dedicated final valuation section/table from `analysis/valuation_model.md`, and all sections listed in "Institutional Depth Requirements".
+Report must include a dedicated "Street Consensus" section from `data/consensus_analysis.md`, a dedicated final valuation section/table from valuation skill outputs (`analysis/valuation_model.md` and `analysis/valuation_audit.md`), and all sections listed in "Institutional Depth Requirements".
 If source quality is weak, title the section "Publicly Available Research Sentiment" instead of "Street Consensus".
 
 **Narrative quality gate:** The main body must read as institutional equity research, not a PPT deck, chartbook, source digest, or table stack. Each main-body chapter must:
@@ -225,7 +238,7 @@ After first compile, render or inspect actual PDF pages. Do not rely only on TeX
 
 After review, feed issues back to LaTeX Writer for fixes. **Repeat until zero S-level issues.**
 
-**Quality gate:** Zero S-level issues before publish. Any missing complete final valuation model, missing current-price-based target price/fair-value range, missing implied upside/downside, missing market-expectation valuation bridge, missing broker/Street comparison when public evidence exists, investable recommendation without valuation support, valuation method that does not fit the ticker's business model, or untranslated English recommendation/valuation logic in a Chinese report is S-Level and blocks publication. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish.
+**Quality gate:** Zero S-level issues before publish. Any missing valuation skill artifact (`analysis/valuation_model.md`, `analysis/valuation_audit.md`, or structured valuation JSON when the case uses a data room), missing complete final valuation model, missing current-price-based target price/fair-value range, missing implied upside/downside, missing market-expectation valuation bridge, missing broker/Street comparison when public evidence exists, investable recommendation without valuation support, valuation method that does not fit the ticker's business model, or untranslated English recommendation/valuation logic in a Chinese report is S-Level and blocks publication. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish.
 Missing market-implied sentiment anchor, missing multi-anchor valuation weights, or an action label that mechanically ignores strong observed market consensus is S-Level for full research reports.
 
 ## Phase 6: PUBLISH

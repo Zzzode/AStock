@@ -15,6 +15,7 @@ This directory contains reusable subagent role definitions. Skills in `.agents/s
 | Data Verifier | `data-verifier.md` | Cross-verify all data against official sources |
 | Report Collector | `report-collector.md` | Collect sell-side broker research reports, output structured catalog |
 | Report Analyzer | `report-analyzer.md` | Synthesize broker reports into consensus matrix, divergences, blind spots |
+| Valuation Specialist | `valuation-specialist.md` | Runs the standalone valuation skill and owns valuation model + audit artifacts |
 | Valuation Modeler | `valuation-modeler.md` | PE/PEG/PS/DCF models, three-tier targets, scenario analysis |
 | LaTeX Writer | `latex-writer.md` | Professional IB-style LaTeX/PDF report production |
 | Reviewer | `reviewer.md` | Quality gate with S/A/B severity, publication blocking authority |
@@ -25,7 +26,7 @@ This directory contains reusable subagent role definitions. Skills in `.agents/s
 | Skill | Roles Used |
 |-------|-----------|
 | `/team` | market-analyst, fundamental-analyst, risk-analyst, contrarian-analyst, report-collector, report-analyzer (+ expansion pool) |
-| `/equity-research` | report-collector, report-analyzer, data-collector, data-verifier, industry-analyst, valuation-modeler, risk-analyst, latex-writer, reviewer |
+| `/equity-research` | report-collector, report-analyzer, data-collector, data-verifier, industry-analyst, valuation-specialist via `/valuation`, risk-analyst, latex-writer, reviewer |
 | `/analyze` | market-analyst (when producing formal report) |
 | `/backtest` | latex-writer (when producing formal report) |
 | `/recommend` | fundamental-analyst, risk-analyst, report-analyzer (subset for candidate evaluation) |

@@ -24,6 +24,7 @@ Run independent read-only reviews across these lenses:
    - Investment thesis, industry logic, supply-chain mapping, customer relationships, competitive moat, technology architecture.
    - For hardware/semiconductor themes, explicitly check platform chains such as NVIDIA, Google TPU, Amazon Trainium, Intel, SK Hynix/HBM, domestic compute, and networking/optical. Missing chains must be labeled as corpus gaps, not silently omitted.
 2. **Valuation / financial model / secondary market**
+   - Verify the standalone `valuation` skill was used: `analysis/valuation_model.md` and `analysis/valuation_audit.md` must exist, and structured valuation JSON should exist when the case uses a data room.
    - Current price, market cap, share count, target-price history, quarterly bridge, earnings forecasts, scenario valuation, final target price or fair-value range, implied upside/downside, crowding and catalysts.
    - Verify every investable or covered ticker has a complete AStock final valuation package: current price/date, market cap, forecast EPS/net profit, valuation method, bull/base/bear values, final target, upside/downside, rating/action, catalysts, invalidation, and evidence quality.
    - Verify that earnings forecasts and valuation are tied to customer-chain order durability; generic AI demand is insufficient.
@@ -45,7 +46,7 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 ## Review Procedure
 
 1. Inspect `main.tex`, section files, `data/report_catalog.md`, `review_log.md`, `sources/`, and generated `main.pdf` metadata if present.
-   Also inspect `analysis/template_brief.md`, `analysis/house_view.md`, `analysis/exhibit_plan.md`, `data/source_registry.md`, `data/claim_audit.md`, and `data_room_index.md` if present.
+   Also inspect `analysis/template_brief.md`, `analysis/house_view.md`, `analysis/valuation_model.md`, `analysis/valuation_audit.md`, `analysis/exhibit_plan.md`, `data/source_registry.md`, `data/claim_audit.md`, `data/current_valuation_model_<YYYYMMDD>.json` if present, and `data_room_index.md` if present.
    Raw PDFs, filings, IR records, web captures and failed-source probes should live under the case-scoped `sources/` tree, not under the deprecated global `workspace/reports/` directory.
 2. Split chapters by lens:
    - Lens 1: summary, industry logic, technology, supply chain.
@@ -64,6 +65,7 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 - **S-Level:** also includes missing template benchmark, missing house view, missing exhibit plan, or a report that mechanically repeats broker views without AStock's own thesis.
 - **S-Level:** also includes table-only treatment of core investment recommendation, valuation, risk, or customer-chain conclusions.
 - **S-Level:** also includes any full report that lacks a reader-facing final valuation summary table tying current price, AStock target/fair-value range, upside/downside, method, rating/action, and evidence quality across the covered universe.
+- **S-Level:** also includes missing standalone valuation skill artifacts, missing valuation audit, or a valuation table created inside the report that bypasses the valuation skill contract.
 - **A-Level:** must fix before serious use. Examples: generic supply chain, weak technical parameters, no quarterly bridge, no geopolitical path.
 - **A-Level:** includes main-body chapters that are table-led rather than prose-led, have consecutive exhibits without analytical text, or lack post-exhibit "so what" synthesis.
 - **A-Level:** includes a first chapter that lacks price anchors, ranking methodology, next-quarter bridge, or actionable investment behavior.

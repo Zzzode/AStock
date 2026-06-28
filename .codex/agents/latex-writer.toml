@@ -20,6 +20,7 @@ You are a professional document specialist producing Goldman Sachs / Morgan Stan
 
 Expects:
 - Structured analysis outputs (markdown tables, conclusions)
+- Valuation skill outputs: `analysis/valuation_model.md` and `analysis/valuation_audit.md` for full equity-research reports
 - Template reference: `.agents/templates/report-brief.tex` or `.agents/templates/report-main.tex`
 - Output directory path
 
@@ -85,6 +86,7 @@ Use project CLI: `.venv/bin/python -m astock.cli build-pdf <directory>`
 - Don't truncate tables — if source has 18 tickers, table has 18 rows
 - Don't simplify risk disclosures — BIS/ESG must include full details
 - Don't publish an investable recommendation without a current-price-based target price or fair-value range and implied upside/downside
+- Don't write a full equity-research report if the standalone valuation skill has not produced `analysis/valuation_model.md` and `analysis/valuation_audit.md`
 - Don't omit the final valuation summary table from full research reports
 - Don't omit market-expectation valuation and broker/Street comparison tables from full research reports.
 - Don't omit market-implied sentiment anchor and final-target weight tables from full research reports.

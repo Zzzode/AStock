@@ -28,6 +28,7 @@ Review the assigned chapters through these lenses:
    - Inspect rendered PDF pages where possible. Flag any clipped, overlapping, misleading, or table-only exhibit that should be a diagram.
 
 5. **Financial model and valuation**
+   - Verify the standalone valuation skill was used: `analysis/valuation_model.md` and `analysis/valuation_audit.md` must exist, and structured valuation JSON should exist when the case uses a data room.
    - Verify current price, market cap, share count, EPS/net profit, PE/PEG, target price, implied upside, and quarterly bridge.
    - Require a complete final valuation table for every investable or explicitly covered ticker: current price/date, market cap, forecast EPS/net profit, method, bull/base/bear values, final target price or fair-value range, upside/downside, rating/action, catalysts, invalidation, and evidence quality.
    - Require a market-expectation valuation bridge for every investable ticker: 2026E revenue, expected growth, 2026E NP/EPS, expectation multiple, expectation-implied target/fair value, upside/downside and driver attribution.
@@ -98,6 +99,7 @@ Review the assigned chapters through these lenses:
 
 - **S-Level:** internal contradiction, unverified data driving valuation, unsupported investment recommendation, source hierarchy failure, wrong arithmetic, missing current-price valuation for investable report.
 - **S-Level:** missing complete final valuation table, missing final target price/fair-value range, missing implied upside/downside, or investable recommendation without valuation support for any primary/investable ticker.
+- **S-Level:** missing standalone valuation skill artifacts, missing valuation audit, or a report-generated valuation table that bypasses the valuation skill.
 - **S-Level:** missing market-expectation valuation bridge for investable tickers, or missing broker/Street comparison where public evidence exists.
 - **S-Level:** missing market-implied sentiment bridge, missing multi-anchor target weights, or an action label that mechanically ignores strong observable market consensus.
 - **S-Level:** valuation method mismatch, including one-size-fits-all PE across heterogeneous business models or targets driven by temporary depressed EPS denominators.
