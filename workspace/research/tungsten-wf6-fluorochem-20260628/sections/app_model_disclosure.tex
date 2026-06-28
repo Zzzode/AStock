@@ -1,0 +1,42 @@
+        \begin{exhibitbox}[模型假设样本]
+        \scriptsize
+\resizebox{\exhibitwidth}{!}{
+\begin{tabular}{llllll}
+\toprule
+\textbf{主题} & \textbf{方法} & \textbf{2026E处理} & \textbf{Base倍数} & \textbf{三锚权重} & \textbf{二级校验} \\
+\midrule
+氟化工 & PE+配额 & Q1/24\% & 21 & 80\%/20\%/0\% & 价差现金流/配额份额/SOTP \\
+钨 & PE+周期折扣 & Q1/26\% & 18 & 75\%/25\%/0\% & PB/资源自给率/钨价敏感性 \\
+氟化工 & PE+SOTP & Q1/24\% & 28 & 82\%/18\%/0\% & SOTP/PS/电子材料收入占比 \\
+氟化工 & PE+产业链 & Q1/24\% & 23 & 80\%/20\%/0\% & 价差现金流/配额份额/SOTP \\
+钨 & PE+资源储量 & Q1/27\% & 22 & 68\%/32\%/0\% & PB/资源自给率/钨价敏感性 \\
+氟化工 & PE+SOTP & Q1/24\% & 22 & 78\%/22\%/0\% & 价差现金流/配额份额/SOTP \\
+氟化工 & PE+材料SOTP & Q1/25\% & 24 & 80\%/20\%/0\% & SOTP/PS/电子材料收入占比 \\
+电子特气 & PE+SOTP & Q1/23\% & 30 & 75\%/25\%/0\% & PS/PB/客户认证与产品收入占比 \\
+电子特气 & PE+材料平台 & Q1/23\% & 50 & 72\%/28\%/0\% & PS/PB/客户认证与产品收入占比 \\
+钨 & PE+PEG & Q1/25\% & 24 & 70\%/30\%/0\% & PB/资源自给率/钨价敏感性 \\
+钨 & PE+PB & Q1/27\% & 20 & 75\%/25\%/0\% & PB/资源自给率/钨价敏感性 \\
+电子特气 & PS+市场锚 & Q1/23\% & 10 & 65\%/35\%/0\% & PSG/客户认证/现金消耗 \\
+\bottomrule
+\end{tabular}
+}
+\end{exhibitbox}
+
+\begin{exhibitbox}[估值审计摘要]
+\scriptsize
+\resizebox{\exhibitwidth}{!}{
+\begin{tabular}{lll}
+\toprule
+\textbf{项目} & \textbf{状态} & \textbf{说明} \\
+\midrule
+估值总表 & PASS & 18只标的均有现价、股本、市值、2026E收入/净利/EPS、Bear/Base/Bull、Final、空间、行动 \\
+市场预期桥 & PASS & 逐标的披露2026E收入、增长、NP/EPS、预期倍数和驱动 \\
+情绪锚 & PASS & 逐标的披露内在值、市场锚、券商锚、权重、溢价和行动逻辑 \\
+券商对比 & PASS with limitation & 公开目标价有限，缺失字段以not disclosed披露，未伪造一致预期 \\
+假精确 & PASS with warning & 目标价为模型输出；读者应使用行动标签和触发条件，而非单点价格交易 \\
+\bottomrule
+\end{tabular}
+}
+\end{exhibitbox}
+
+本报告不构成任何证券买卖建议。所有估值均为公开资料研究模型，主要用于比较产业链位置、证据质量、估值拥挤度和后续跟踪优先级。

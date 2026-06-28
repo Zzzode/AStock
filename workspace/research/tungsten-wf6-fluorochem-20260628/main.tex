@@ -1,0 +1,53 @@
+        % !TEX program = xelatex
+        \documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+        \newcommand{\reporttitle}{钨--WF6电子特气--氟化工产业链深度}
+        \newcommand{\reportsubtitle}{资源安全、前道材料国产替代与AI存储需求的交汇点}
+        \newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
+        \newcommand{\reportscope}{CHINA A-SHARES | Tungsten, Specialty Gases, Fluorochemicals}
+        \newcommand{\reportdate}{2026年6月28日}
+        \newcommand{\reportdatacutoff}{行情：2026-06-28 03:10 CST；财务：2026Q1/2025A}
+        \newcommand{\reporttype}{Industry deep dive}
+        \newcommand{\reportauthor}{AStock Research Agent}
+        \newcommand{\reporthouseview}{我们认为本轮主题的核心不是简单的钨、气体、氟化工轮动，而是WF6把钨资源、含氟化学和电子特气认证连接到半导体前道材料国产替代。钨和制冷剂更接近业绩兑现，电子特气更接近高弹性事件驱动，当前必须用订单、价格和客户认证验证市场溢价。}
+        \newcommand{\reportquality}{行情和财务来自AStock能力层；产能、收入占比和订单边界以公司公告或产品页为主；券商观点使用公开PDF/转载，未接入付费一致预期库。}
+        \newcommand{\reportdisclaimer}{本报告基于公开资料整理，仅供研究和监测使用，不构成任何证券买卖建议。}
+
+        \input{../../../.agents/templates/preamble.tex}
+
+        \hypersetup{pdfauthor={\reportauthor}, pdftitle={\reporttitle}}
+
+        \begin{document}
+        \astockcover
+        \tableofcontents
+        \clearpage
+
+        \chapter{投资委员会摘要}
+        \input{sections/ch01_dashboard}
+        \chapter{证据边界与来源治理}
+        \input{sections/ch02_evidence}
+        \chapter{技术原理、产业逻辑与价值池}
+        \input{sections/ch03_industry}
+        \chapter{产业链标的映射}
+        \input{sections/ch04_supply_chain}
+        \chapter{财务交付与二级市场状态}
+        \input{sections/ch05_companies}
+        \chapter{公开研究情绪与拥挤交易}
+        \input{sections/ch06_sentiment}
+        \chapter{估值、目标价与行动框架}
+        \input{sections/ch07_valuation}
+        \chapter{风险、催化和监测清单}
+        \input{sections/ch08_risks}
+
+        \appendix
+        \chapter{来源登记与声明审计}
+        \input{sections/app_source_audit}
+        \chapter{模型假设与免责声明}
+        \input{sections/app_model_disclosure}
+
+        \clearpage
+        \begin{disclosurebox}[Disclaimer]
+        \small
+        本报告由AStock Research Agent基于公开资料和本地能力层生成。报告中任何目标价、评级、行动标签和情景假设均用于研究框架和监测优先级，不构成投资建议。投资有风险，市场价格可能大幅偏离模型估值。
+        \end{disclosurebox}
+        \end{document}
