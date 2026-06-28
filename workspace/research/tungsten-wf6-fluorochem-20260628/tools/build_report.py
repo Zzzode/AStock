@@ -141,50 +141,72 @@ def write_json(path: Path, data: Any) -> None:
 
 def fmt_num(value: Any, digits: int = 1) -> str:
     if value is None:
-        return "n.a."
+        return "不适用"
     try:
         f = float(value)
     except Exception:
         return str(value)
     if math.isnan(f) or math.isinf(f):
-        return "n.a."
+        return "不适用"
     return f"{f:.{digits}f}"
 
 
 def fmt_pct(value: Any, digits: int = 1) -> str:
     if value is None:
-        return "n.a."
+        return "不适用"
     try:
         return f"{float(value) * 100:.{digits}f}%"
     except Exception:
-        return "n.a."
+        return "不适用"
 
 
 def cny_yi(value: Any, digits: int = 1) -> str:
     if value is None:
-        return "n.a."
+        return "不适用"
     try:
         return f"{float(value) / 1e8:.{digits}f}亿元"
     except Exception:
-        return "n.a."
+        return "不适用"
 
 
 def cny_yi_plain(value: Any, digits: int = 1) -> str:
     if value is None:
-        return "n.a."
+        return "不适用"
 
 
 def shares_yi(value: Any, digits: int = 2) -> str:
     if value is None:
-        return "n.a."
+        return "不适用"
     try:
         return f"{float(value) / 1e8:.{digits}f}亿股"
     except Exception:
-        return "n.a."
+        return "不适用"
     try:
         return f"{float(value) / 1e8:.{digits}f}"
     except Exception:
-        return "n.a."
+        return "不适用"
+
+
+def evidence_cn(value: Any) -> str:
+    return {"High": "高", "Medium": "中", "Low": "低"}.get(str(value), str(value))
+
+
+def bool_cn(value: Any) -> str:
+    return "是" if bool(value) else "否"
+
+
+def source_level_cn(level: str) -> str:
+    mapping = {
+        "L1_company_product_page": "L1 公司产品页",
+        "L1_policy_database": "L1 政策数据库",
+        "L2_media_company_response": "L2 媒体转述公司回应",
+        "L2_media_company_announcement": "L2 媒体转述公告",
+        "L2_media_market_data": "L2 媒体市场数据",
+        "L3_broker_repost": "L3 券商转载",
+        "L3_broker_pdf": "L3 券商PDF",
+        "L3_media_theme_repost": "L3 主题媒体转载",
+    }
+    return mapping.get(level, level)
 
 
 def tex_escape(value: Any) -> str:
@@ -310,7 +332,7 @@ def enrich_rows(quotes: list[dict[str, Any]], financials: list[dict[str, Any]]) 
         sentiment_score = min(90, max(25, sentiment_score))
         market_anchor = price * (0.55 + sentiment_score / 200.0)
         broker_anchor = None
-        broker_note = "not disclosed"
+        broker_note = "未披露"
         if ticker["code"] == "688268":
             broker_anchor = 60.21
             broker_note = "华泰证券2024-11目标价60.21元，仅作历史外部锚"
@@ -493,7 +515,7 @@ def broker_source_for(ticker: dict[str, Any]) -> str:
         return "国信证券配额点评转载"
     if ticker["theme"] == "电子特气":
         return "公告/媒体回应"
-    return "not disclosed"
+    return "未披露"
 
 
 def broker_date_for(ticker: dict[str, Any]) -> str:
@@ -503,7 +525,7 @@ def broker_date_for(ticker: dict[str, Any]) -> str:
         return "2025-12-11"
     if ticker["theme"] == "电子特气":
         return "2026-06"
-    return "not disclosed"
+    return "未披露"
 
 
 def broker_rating_for(ticker: dict[str, Any]) -> str:
@@ -513,7 +535,7 @@ def broker_rating_for(ticker: dict[str, Any]) -> str:
         return "行业看好，单股目标未披露"
     if ticker["theme"] == "电子特气":
         return "无目标价，公告边界证据"
-    return "not disclosed"
+    return "未披露"
 
 
 def broker_method_for(ticker: dict[str, Any]) -> str:
@@ -523,7 +545,7 @@ def broker_method_for(ticker: dict[str, Any]) -> str:
         return "配额景气与价差框架"
     if ticker["theme"] == "电子特气":
         return "产能/订单/收入占比边界"
-    return "not disclosed"
+    return "未披露"
 
 
 def sentiment_regime(score: float, bubble_degree: float | None) -> str:
@@ -551,12 +573,12 @@ def embedded_expectation_gap(price: float, base_target: float, ticker: dict[str,
         return "数据不足"
     gap = price / base_target - 1
     if gap <= 0:
-        return "当前价未高于Base锚，主要看业绩兑现"
+        return "当前价未高于基本面锚，主要看业绩兑现"
     if ticker["theme"] == "电子特气":
-        return f"需订单/价格/客户认证支撑约{gap * 100:.0f}%的Base溢价"
+        return f"需订单/价格/客户认证支撑约{gap * 100:.0f}%的基本面溢价"
     if ticker["theme"] == "钨":
-        return f"需钨价和资源溢价支撑约{gap * 100:.0f}%的Base溢价"
-    return f"需价差或电子材料第二曲线支撑约{gap * 100:.0f}%的Base溢价"
+        return f"需钨价和资源溢价支撑约{gap * 100:.0f}%的基本面溢价"
+    return f"需价差或电子材料第二曲线支撑约{gap * 100:.0f}%的基本面溢价"
 
 
 def next_quarter_threshold_for(ticker: dict[str, Any], revenue: float | None, profit: float | None) -> str:
@@ -585,7 +607,7 @@ def peg_value(r: dict[str, Any]) -> str:
     pe = r.get("forward_pe")
     if growth and growth > 0 and pe:
         return fmt_num(pe / (growth * 100), 2)
-    return "n.a."
+    return "不适用"
 
 
 def write_data_files(quotes: list[dict[str, Any]], financials: list[dict[str, Any]], rows: list[dict[str, Any]], captured: list[dict[str, Any]], failed: list[dict[str, Any]]) -> None:
@@ -606,7 +628,7 @@ def write_data_files(quotes: list[dict[str, Any]], financials: list[dict[str, An
     for r in rows:
         fin_rows.append([r["code"], r["name"], r["latest_period"], cny_yi(r["q1_revenue"]), cny_yi(r["q1_np_parent"]), fmt_num(r["gross_margin_q1"], 1) + "%", fmt_num(r["roe_q1"], 1) + "%", r["financial_quality"]])
     write_text(CASE / "data/raw_financials.md", "# Raw Financials\n\n" + md_table(["代码", "名称", "期间", "收入", "归母净利", "毛利率", "ROE", "质量"], fin_rows))
-    write_text(CASE / "data/verified_market_data.md", "# Verified Market Data\n\n所有18只核心覆盖标的均由 `astock.capabilities.get_quote()` 获取，数据质量字段均为实时或降级字段。市值由当前价乘以财务报表推算股本得到，因实时行情源未返回官方总市值，市值用于横向估值锚而非精确交易指令。\n\n" + md_table(["代码", "价格", "估算市值", "备注"], [[r["code"], fmt_num(r["price"], 2), cny_yi(r["market_cap"]), "price × equity/bps"] for r in rows]))
+    write_text(CASE / "data/verified_market_data.md", "# 已验证行情数据\n\n所有18只核心覆盖标的均由 `astock.capabilities.get_quote()` 获取，数据质量字段均为实时或降级字段。市值由当前价乘以财务报表推算股本得到，因实时行情源未返回官方总市值，市值用于横向估值锚而非精确交易指令。\n\n" + md_table(["代码", "价格", "估算市值", "备注"], [[r["code"], fmt_num(r["price"], 2), cny_yi(r["market_cap"]), "当前价 × 权益/BPS推算股本"] for r in rows]))
     write_text(CASE / "data/verified_financials.md", "# Verified Financials\n\n财务数据来自 `astock.capabilities.get_financial_statements()`，覆盖2026Q1和2025A。2026E为AStock基于Q1占比的可比化估算，已在估值章节标明为模型假设，不等同券商一致预期。\n\n" + md_table(["代码", "2026E收入", "2026E归母净利", "2026E EPS", "估算方法"], [[r["code"], cny_yi(r["revenue_2026e"]), cny_yi(r["np_2026e"]), fmt_num(r["eps_2026e"], 2), f"Q1/{r['q1_share']:.0%}"] for r in rows]))
     write_text(CASE / "data/source_registry.md", source_registry_md(captured, failed))
     write_text(CASE / "data/claim_audit.md", claim_audit_md())
@@ -659,14 +681,15 @@ def build_completion_manifest(rows: list[dict[str, Any]], captured: list[dict[st
 def source_registry_md(captured: list[dict[str, Any]], failed: list[dict[str, Any]]) -> str:
     rows = []
     for s in captured + failed:
-        rows.append([s["id"], s["level"], s["title"], s.get("capture_status", "ok"), s.get("path", "not captured"), s["url"]])
-    return "# Source Registry\n\n" + md_table(["ID", "层级", "标题", "状态", "归档路径", "URL"], rows)
+        status = "已归档" if s.get("capture_status", "ok") == "ok" else "抓取失败"
+        rows.append([s["id"], source_level_cn(s["level"]), s["title"], status, s.get("path", "未归档"), s["url"]])
+    return "# 来源登记\n\n" + md_table(["编号", "层级", "标题", "状态", "归档路径", "网址"], rows)
 
 
 def claim_audit_md() -> str:
     audit = build_claim_audit()
-    rows = [[c["claim"], ",".join(c["source_ids"]), c["confidence"], c["allowed_in_report"]] for c in audit["claims"]]
-    return "# Claim Audit\n\n" + md_table(["结论", "来源", "置信度", "可入正文"], rows)
+    rows = [[c["claim"], ",".join(c["source_ids"]), evidence_cn(c["confidence"]), bool_cn(c["allowed_in_report"])] for c in audit["claims"]]
+    return "# 声明审计\n\n" + md_table(["结论", "来源", "置信度", "可入正文"], rows)
 
 
 def report_catalog_md() -> str:
@@ -857,7 +880,7 @@ def valuation_md(rows: list[dict[str, Any]]) -> str:
             fmt_num(r["final_target"], 2),
             fmt_pct(r["final_upside"]),
             r["action"],
-            r["evidence"],
+            evidence_cn(r["evidence"]),
         ]
         for r in rows
     ]
@@ -865,9 +888,9 @@ def valuation_md(rows: list[dict[str, Any]]) -> str:
         [
             r["code"],
             r["name"],
-            f"{fmt_num(r['bull_target'], 2)}：涨价/认证/订单兑现",
-            f"{fmt_num(r['base_target'], 2)}：{r['business_model']}",
-            f"{fmt_num(r['bear_target'], 2)}：主题证伪或周期回落",
+            f"{fmt_num(r['bull_target'], 2)}：乐观，涨价/认证/订单兑现",
+            f"{fmt_num(r['base_target'], 2)}：基本面，{r['business_model']}",
+            f"{fmt_num(r['bear_target'], 2)}：悲观，主题证伪或周期回落",
             fmt_num(r["price"], 2),
             fmt_pct(r["bubble_degree"]),
         ]
@@ -928,11 +951,11 @@ def valuation_md(rows: list[dict[str, Any]]) -> str:
             r["broker_source"],
             r["broker_date"],
             r["broker_rating"],
-            fmt_num(r["broker_target"], 2) if r["broker_target"] else "not disclosed",
+            fmt_num(r["broker_target"], 2) if r["broker_target"] else "未披露",
             r["broker_method"],
             fmt_pct((r["broker_target"] / r["price"] - 1) if r["broker_target"] and r["price"] else None),
             fmt_num((r["final_target"] - r["broker_target"]) if r["broker_target"] else None, 2),
-            r["evidence"],
+            evidence_cn(r["evidence"]),
         ]
         for r in rows
     ]
@@ -946,7 +969,7 @@ def valuation_md(rows: list[dict[str, Any]]) -> str:
             r["trading_context"],
             r["sentiment_regime"],
             fmt_num(r["market_anchor"], 2),
-            fmt_num(r["broker_anchor"], 2) if r["broker_anchor"] else "not disclosed",
+            fmt_num(r["broker_anchor"], 2) if r["broker_anchor"] else "未披露",
             r["weights_text"],
             fmt_num(r["final_target"], 2),
             fmt_pct(r["sentiment_premium"]),
@@ -956,38 +979,38 @@ def valuation_md(rows: list[dict[str, Any]]) -> str:
     ]
     return "# Valuation Model\n\n" + textwrap.dedent(
         """\
-        本估值包按独立 `valuation` skill 重写，使用当前价格、2026E可比化财务、业务模型匹配方法、三情景估值、市场隐含情绪锚和公开券商/公告锚进行三角校验。所有目标价均为AStock研究模型输出，用于产业链比较和跟踪优先级，不构成投资建议。
+        本估值包按独立估值技能重写，使用当前价格、2026E可比化财务、业务模型匹配方法、三情景估值、市场隐含情绪锚和公开券商/公告锚进行三角校验。所有目标价均为AStock研究模型输出，用于产业链比较和跟踪优先级，不构成投资建议。
 
-        核心结论：电子特气龙头的市场价格显著高于Q1财务可解释的Base锚，当前主要交易订单、价格、客户认证和国产替代期权；钨和制冷剂端也有涨幅，但业绩兑现和资源/配额约束更直接。若后续公告无法验证WF6/NF3价格、长单、客户或毛利率，电子特气市场锚必须下修。
+        核心结论：电子特气龙头的市场价格显著高于Q1财务可解释的基本面锚，当前主要交易订单、价格、客户认证和国产替代期权；钨和制冷剂端也有涨幅，但业绩兑现和资源/配额约束更直接。若后续公告无法验证WF6/NF3价格、长单、客户或毛利率，电子特气市场锚必须下修。
 
-        ## Final Valuation Table
+        ## 最终估值总表
         """
     ) + "\n\n" + md_table(
-        ["代码", "名称", "价格日", "价格", "股本", "市值", "2026E收入", "2026E归母", "EPS", "方法", "Bear", "Base", "Bull", "Final", "空间", "行动", "证据"],
+        ["代码", "名称", "价格日", "现价", "股本", "市值", "2026E收入", "2026E归母", "EPS", "方法", "悲观", "基本面", "乐观", "最终目标", "空间", "行动", "证据"],
         final_rows,
-    ) + "\n\n## Three-Tier Targets\n\n" + md_table(
-        ["代码", "名称", "Bull", "Base", "Bear", "当前价", "Bubble%"],
+    ) + "\n\n## 三情景目标\n\n" + md_table(
+        ["代码", "名称", "乐观情景", "基本面情景", "悲观情景", "当前价", "溢价度"],
         three_tier_rows,
-    ) + "\n\n## Relative / PEG / PSG Comparison\n\n" + md_table(
-        ["代码", "名称", "市值", "PE", "PS", "NP增长", "PEG/PSG", "判断"],
+    ) + "\n\n## 相对估值与PEG/PSG对比\n\n" + md_table(
+        ["代码", "名称", "市值", "PE", "PS", "归母增速", "PEG/PSG", "判断"],
         relative_rows,
-    ) + "\n\n## Seasonality Calibration\n\n" + md_table(
+    ) + "\n\n## 季节性校准\n\n" + md_table(
         ["代码", "名称", "Q1归母", "Q1占比", "2026E归母", "校准倍数", "说明"],
         seasonality_rows,
-    ) + "\n\n## Next-Quarter Threshold\n\n" + md_table(
+    ) + "\n\n## 下一季度验证门槛\n\n" + md_table(
         ["代码", "名称", "当前市值", "Q2最低验证项", "若不达标"],
         threshold_rows,
-    ) + "\n\n## Method and Assumption Bridge\n\n" + md_table(
+    ) + "\n\n## 方法与假设桥\n\n" + md_table(
         ["代码", "名称", "业务模型", "主方法", "二级校验", "核心假设", "催化", "失效"],
         method_rows,
-    ) + "\n\n## Market-Expectation Valuation Bridge\n\n" + md_table(
-        ["代码", "名称", "价格", "2026E收入", "收入增长", "NP/EPS", "预期倍数", "预期公允值", "内在空间", "驱动"],
+    ) + "\n\n## 市场预期估值桥\n\n" + md_table(
+        ["代码", "名称", "现价", "2026E收入", "收入增长", "归母/EPS", "预期倍数", "基本面锚", "内在空间", "驱动"],
         expectation_rows,
-    ) + "\n\n## Broker/Street Comparison\n\n" + md_table(
+    ) + "\n\n## 券商/公开外部锚对比\n\n" + md_table(
         ["代码", "名称", "来源", "日期", "评级/目标", "目标", "方法/假设", "外部空间", "AStock差异", "质量"],
         broker_rows,
-    ) + "\n\n## Market-Implied Sentiment Anchor\n\n" + md_table(
-        ["代码", "名称", "价格", "内在值", "隐含倍数", "交易状态", "情绪状态", "市场锚", "券商锚", "权重F/M/S", "Final", "溢价", "行动逻辑"],
+    ) + "\n\n## 市场隐含情绪锚\n\n" + md_table(
+        ["代码", "名称", "现价", "内在值", "隐含倍数", "交易状态", "情绪状态", "市场锚", "券商锚", "权重F/M/S", "最终目标", "溢价", "行动逻辑"],
         sentiment_rows,
     ) + "\n"
 
@@ -1057,52 +1080,52 @@ def valuation_audit_md(rows: list[dict[str, Any]]) -> str:
             if r.get(key) in (None, ""):
                 completeness.append(f"{r['code']}:{key}")
     broker_disclosed = [r for r in rows if r.get("broker_target")]
-    audit_status = "PASS" if not problems and not scenario_problems and not completeness else "BLOCKED"
-    return "# Valuation Audit\n\n" + textwrap.dedent(
+    audit_status = "通过" if not problems and not scenario_problems and not completeness else "阻断"
+    return "# 估值审计\n\n" + textwrap.dedent(
         f"""\
-        ## Arithmetic Checks
+        ## 算术校验
 
-        - Status: {'PASS' if not problems else 'FAIL'}
-        - Rows checked: {len(rows)}
-        - Issues: {', '.join(problems) if problems else 'none'}
+        - 状态：{'通过' if not problems else '未通过'}
+        - 检查行数：{len(rows)}
+        - 问题：{', '.join(problems) if problems else '无'}
 
-        ## Forecast Availability
+        ## 预测数据可用性
 
-        - Status: PASS
-        - 2026E revenue, net profit and EPS are available for all {len(rows)} covered tickers through Q1 seasonality calibration.
-        - Limitation: forecasts are AStock comparable estimates from 2026Q1/2025A, not paid Wind/Choice consensus.
+        - 状态：通过
+        - 全部{len(rows)}只覆盖标的均有基于Q1季节性校准的2026E收入、归母净利和EPS。
+        - 限制：预测为AStock基于2026Q1/2025A生成的可比估算，不是付费Wind/Choice一致预期。
 
-        ## Target Price Comparability
+        ## 目标价可比性
 
-        - Status: PASS with limitation
-        - Public broker target anchors found: {len(broker_disclosed)} ticker(s).
-        - Missing paid consensus is disclosed as `not disclosed`; broker targets are not used as AStock targets.
+        - 状态：通过（有限制）
+        - 可引用公开券商目标锚：{len(broker_disclosed)}只。
+        - 缺失的付费一致预期以“未披露”标注；券商目标价不替代AStock目标价。
 
-        ## Final Valuation Completeness
+        ## 最终估值完整性
 
-        - Status: {'PASS' if not completeness else 'FAIL'}
-        - Missing fields: {', '.join(completeness[:20]) if completeness else 'none'}
+        - 状态：{'通过' if not completeness else '未通过'}
+        - 缺失字段：{', '.join(completeness[:20]) if completeness else '无'}
 
-        ## Scenario Bands
+        ## 情景区间
 
-        - Status: {'PASS' if not scenario_problems else 'FAIL'}
-        - Issues: {', '.join(scenario_problems) if scenario_problems else 'none'}
+        - 状态：{'通过' if not scenario_problems else '未通过'}
+        - 问题：{', '.join(scenario_problems) if scenario_problems else '无'}
 
-        ## Market-Implied Sentiment Anchor
+        ## 市场隐含情绪锚
 
-        - Status: PASS
-        - Every ticker has intrinsic/base value, market anchor, final weights, final target, sentiment premium and action logic.
+        - 状态：通过
+        - 每只标的均有基本面锚、市场锚、最终权重、最终目标、情绪溢价和行动逻辑。
 
-        ## Fake Precision Flags
+        ## 假精确提示
 
-        - Target prices are shown to two decimals in machine tables because the model is per-share; prose interpretation should use ranges and action labels.
-        - Q1 annualization is not treated as paid consensus. It is a comparability bridge and must be refreshed after Q2.
-        - Electronic-specialty-gas names with high sentiment premium are event-driven validation assets, not automatically undervalued stocks.
+        - 机器表中目标价保留两位小数是因为模型按每股输出；正文解读应使用区间、行动标签和触发条件。
+        - Q1年化不是付费一致预期，只是可比化桥，Q2后必须刷新。
+        - 情绪溢价高的电子特气标的是事件验证资产，不是自动低估股票。
 
-        ## Required Fixes
+        ## 后续必需更新
 
-        - Gate status: {audit_status}
-        - Before any future publication update, refresh quotes, Q2 thresholds, broker/Street comparison and source registry.
+        - 门禁状态：{audit_status}
+        - 后续更新前必须刷新行情、Q2门槛、券商/公开外部锚对比和来源登记。
         """
     )
 
@@ -1110,13 +1133,13 @@ def valuation_audit_md(rows: list[dict[str, Any]]) -> str:
 def review_log_md(rows: list[dict[str, Any]]) -> str:
     return textwrap.dedent(
         f"""\
-        # Review Log
+        # 审稿记录
 
-        - {now_cst()}: Rebuilt report with standalone valuation skill gate.
-        - Coverage: {len(rows)} core tickers; final valuation table, three-tier targets, market-expectation bridge, market-implied sentiment anchor, broker/Street comparison and valuation audit complete.
-        - Narrative gate: Chapter 1 and the valuation chapter were rewritten as prose-led research sections with investment conclusion, table setup, post-exhibit synthesis and action framework.
-        - S-level checks: no missing final target, no missing current price, no missing valuation audit, no table-only core valuation section, Mermaid chain map present, source registry present.
-        - Residual risk: broker target history incomplete because paid databases are unavailable.
+        - {now_cst()}：使用独立估值技能门禁重建报告。
+        - 覆盖范围：{len(rows)}只核心标的；最终估值表、三情景目标、市场预期桥、市场隐含情绪锚、券商/公开外部锚对比和估值审计均已完成。
+        - 叙事门禁：第1章和估值章已改为正文驱动结构，包含投资结论、表前铺垫、表后综合判断和行动框架。
+        - S级检查：无缺失最终目标、无缺失当前价、无缺失估值审计、无表格堆叠式核心估值章节，Mermaid产业链图和来源登记均已具备。
+        - 剩余风险：因未接入付费数据库，券商目标价历史不完整。
         """
     )
 
@@ -1177,8 +1200,8 @@ def table_tex(headers: list[str], rows: list[list[Any]], align: str | None = Non
 def section_dashboard(rows: list[dict[str, Any]]) -> str:
     primary = rows[:8]
     top_rows = [[i + 1, r["code"], r["name"], fmt_num(r["price"], 2), fmt_num(r["final_target"], 2), fmt_pct(r["final_upside"]), r["action"], r["invalidation"]] for i, r in enumerate(primary)]
-    expectation_rows = [[r["code"], r["name"], cny_yi(r["revenue_2026e"]), f"{cny_yi(r['np_2026e'])}/{fmt_num(r['eps_2026e'], 2)}", f"{fmt_num(r['expected_multiple'], 1)}x", fmt_num(r["base_target"], 2), r["expectation_driver"]] for r in primary[:6]]
-    sentiment_rows = [[r["code"], r["name"], fmt_num(r["base_target"], 2), fmt_num(r["market_anchor"], 2), fmt_num(r["broker_anchor"], 2) if r["broker_anchor"] else "n.d.", r["weights_text"], fmt_num(r["final_target"], 2), r["action_logic"]] for r in primary[:6]]
+    expectation_rows = [[r["code"], r["name"], fmt_num(r["price"], 2), cny_yi(r["revenue_2026e"]), f"{cny_yi(r['np_2026e'])}/{fmt_num(r['eps_2026e'], 2)}", f"{fmt_num(r['expected_multiple'], 1)}x", fmt_num(r["base_target"], 2), r["expectation_driver"]] for r in primary[:6]]
+    sentiment_rows = [[r["code"], r["name"], fmt_num(r["base_target"], 2), fmt_num(r["market_anchor"], 2), fmt_num(r["broker_anchor"], 2) if r["broker_anchor"] else "未披露", r["weights_text"], fmt_num(r["final_target"], 2), r["action_logic"]] for r in primary[:6]]
     q2_rows = [[r["code"], r["name"], r["next_quarter_threshold"], r["catalyst"]] for r in primary[:6]]
     return textwrap.dedent(
         r"""\
@@ -1189,17 +1212,17 @@ def section_dashboard(rows: list[dict[str, Any]]) -> str:
         \section{先给组合结论：只做有证据的排序，不做主题平铺}
         这条主线最大的陷阱是把“产业重要性”误读成“所有相关股票都值得同样配置”。钨、制冷剂、电子特气都站在国产替代和资源安全的叙事里，但财报兑现路径完全不同：钨资源看价格和资源自给，制冷剂看配额和价差，WF6/NF3看高纯品级、晶圆厂认证、订单和毛利率。排序因此先按行动标签分层，再看最终目标价空间和证据质量；有估值空间但证据弱的标的不能上调为核心配置，有产业地位但价格已经显著透支的标的只能进入事件验证池。
 
-        当前首选不是电子特气涨幅最大的股票，而是估值、业绩和证据更均衡的三美股份、翔鹭钨业、新宙邦、永和股份和章源钨业。三美股份的Final目标略高于现价，属于回撤配置；翔鹭钨业、新宙邦、永和股份和章源钨业的Final目标低于现价但差距仍可由下一季利润和价格信号验证，适合作为中性观察。巨化股份、多氟多和昊华科技开始进入高位风险区，原因不是产业逻辑消失，而是价格已经要求更强的Q2利润、订单或电子材料收入占比。
+        当前首选不是电子特气涨幅最大的股票，而是估值、业绩和证据更均衡的三美股份、翔鹭钨业、新宙邦、永和股份和章源钨业。三美股份的最终目标略高于现价，属于回撤配置；翔鹭钨业、新宙邦、永和股份和章源钨业的最终目标低于现价但差距仍可由下一季利润和价格信号验证，适合作为中性观察。巨化股份、多氟多和昊华科技开始进入高位风险区，原因不是产业逻辑消失，而是价格已经要求更强的Q2利润、订单或电子材料收入占比。
 
         \begin{exhibitbox}[核心排序与行动标签]
         \scriptsize
         """
-    ) + table_tex(["排序", "代码", "名称", "现价", "Final", "空间", "行动", "失效条件"], top_rows, "cllllcll") + textwrap.dedent(
+    ) + table_tex(["排序", "代码", "名称", "现价", "最终目标", "空间", "行动", "失效条件"], top_rows, "cllllcll") + textwrap.dedent(
         r"""
-        \sourcenote{AStock模型，行情来自astock实时抓取，财务为2026Q1/2025A公开报表。}
+        \sourcenote{AStock模型，行情来自AStock能力层实时抓取，财务为2026Q1/2025A公开报表。}
         \end{exhibitbox}
 
-        行动标签对应的是投资行为而不是情绪评价。优先跟踪表示当前价、Final目标和证据质量同时支持继续研究；回撤配置表示基本面逻辑成立，但需要更好价格或更明确财报确认；中性观察表示价格已经基本反映Base预期，后续收益来自Q2/Q3超预期或事件验证；高位风险表示市场价格主要由远期情绪锚支撑，不能在缺少公告和利润验证时按低估处理。
+        行动标签对应的是投资行为而不是情绪评价。优先跟踪表示当前价、最终目标和证据质量同时支持继续研究；回撤配置表示基本面逻辑成立，但需要更好价格或更明确财报确认；中性观察表示价格已经基本反映基本面预期，后续收益来自Q2/Q3超预期或事件验证；高位风险表示市场价格主要由远期情绪锚支撑，不能在缺少公告和利润验证时按低估处理。
 
         \section{市场在为什么付钱：三类价值池不能混用倍数}
         核心预期桥把股价背后的付费对象拆开。钨链的付费对象是战略资源、出口管制和钨价高位能否延续；制冷剂链的付费对象是配额约束、价差和现金流持续性；电子特气的付费对象是高纯WF6/NF3的国产认证、客户导入和潜在价格弹性。相同的“半导体材料”标签不能对应同一个PE，否则会把电子特气的远期期权错误套到钨加工或制冷剂现金流公司上。
@@ -1207,11 +1230,11 @@ def section_dashboard(rows: list[dict[str, Any]]) -> str:
         \begin{exhibitbox}[核心标的市场预期桥]
         \scriptsize
         """
-    ) + table_tex(["代码", "名称", "2026E收入", "NP/EPS", "倍数", "Base", "驱动"], expectation_rows, "lllllll") + textwrap.dedent(
+    ) + table_tex(["代码", "名称", "现价", "2026E收入", "归母/EPS", "倍数", "基本面锚", "驱动"], expectation_rows, "llllllll") + textwrap.dedent(
         r"""
         \end{exhibitbox}
 
-        上表给出的Base不是交易目标，而是财报和业务模型能够解释的基本面锚。三美股份、永和股份和巨化股份的Base主要来自制冷剂价差现金流；翔鹭钨业和章源钨业的Base来自钨价高位和资源稀缺；新宙邦的Base更接近SOTP，需要电子氟化液和有机氟业务给出更清晰的利润贡献。只要下一季数据不能穿透到收入、毛利率和归母净利，主题热度就不能替代Base锚。
+        上表给出的基本面锚不是交易目标，而是财报和业务模型能够解释的价值中枢。三美股份、永和股份和巨化股份的基本面锚主要来自制冷剂价差现金流；翔鹭钨业和章源钨业的基本面锚来自钨价高位和资源稀缺；新宙邦更接近SOTP，需要电子氟化液和有机氟业务给出更清晰的利润贡献。只要下一季数据不能穿透到收入、毛利率和归母净利，主题热度就不能替代基本面锚。
 
         \section{情绪锚只解释价格，不替代基本面}
         主题行情里，市场经常先给稀缺资产一个情绪锚，再等公告和财报补证据。本模型保留市场锚，是为了避免机械地把强势股全部判成卖出；同时又把基本面锚、市场锚和券商锚拆开，防止用成交热度替代估值结论。权重中的F/M/S分别代表基本面、市场情绪和外部券商或公告锚，电子特气的市场权重更高，但证伪也更快。
@@ -1219,14 +1242,14 @@ def section_dashboard(rows: list[dict[str, Any]]) -> str:
         \begin{exhibitbox}[市场隐含情绪锚和最终权重]
         \scriptsize
         """
-    ) + table_tex(["代码", "名称", "内在锚", "市场锚", "券商锚", "权重F/M/S", "Final", "行动逻辑"], sentiment_rows, "llllllll") + textwrap.dedent(
+    ) + table_tex(["代码", "名称", "内在锚", "市场锚", "券商锚", "权重F/M/S", "最终目标", "行动逻辑"], sentiment_rows, "llllllll") + textwrap.dedent(
         r"""
         \end{exhibitbox}
 
-        对投资委员会来说，情绪锚的用法很直接：如果市场锚高、但Base锚低，股票只能作为事件验证；如果Base锚与市场锚接近，回撤后才有配置意义。三美股份和翔鹭钨业的Base与当前价相对接近，安全边际问题可以通过价格和Q2利润解决；昊华科技、电子特气扩散股以及高拥挤标的则需要订单、价格或收入占比证明，否则应下调市场权重。
+        对投资委员会来说，情绪锚的用法很直接：如果市场锚高、但基本面锚低，股票只能作为事件验证；如果基本面锚与市场锚接近，回撤后才有配置意义。三美股份和翔鹭钨业的基本面锚与当前价相对接近，安全边际问题可以通过价格和Q2利润解决；昊华科技、电子特气扩散股以及高拥挤标的则需要订单、价格或收入占比证明，否则应下调市场权重。
 
         \section{下一季是验证点：没有Q2桥，主题就无法升级为业绩}
-        这条链后续不缺故事，缺的是能把故事转成财报的指标。Q2最低门槛给的是研究上的保底验证线：收入、归母净利、价差、钨价或客户认证如果达不到，Final目标要向Base回归；如果达到并伴随公告级订单或价格证据，才可以把市场锚保留到下一轮模型更新。
+        这条链后续不缺故事，缺的是能把故事转成财报的指标。Q2最低门槛给的是研究上的保底验证线：收入、归母净利、价差、钨价或客户认证如果达不到，最终目标要向基本面锚回归；如果达到并伴随公告级订单或价格证据，才可以把市场锚保留到下一轮模型更新。
 
         \begin{exhibitbox}[下一季度最低验证门槛]
         \scriptsize
@@ -1235,7 +1258,7 @@ def section_dashboard(rows: list[dict[str, Any]]) -> str:
         r"""
         \end{exhibitbox}
 
-        行动上分三条路径。第一，回撤配置路径关注三美股份、翔鹭钨业等Base锚相对扎实的标的，等待价格给出安全边际。第二，中性观察路径关注新宙邦、永和股份、章源钨业，重点看Q2利润和产品结构能否抬高Base锚。第三，事件验证路径关注WF6/NF3电子特气和扩散气体标的，只在公告、客户认证、价格或订单出现后提高权重，不能把题材热度本身当成业绩兑现。
+        行动上分三条路径。第一，回撤配置路径关注三美股份、翔鹭钨业等基本面锚相对扎实的标的，等待价格给出安全边际。第二，中性观察路径关注新宙邦、永和股份、章源钨业，重点看Q2利润和产品结构能否抬高基本面锚。第三，事件验证路径关注WF6/NF3电子特气和扩散气体标的，只在公告、客户认证、价格或订单出现后提高权重，不能把题材热度本身当成业绩兑现。
         """
     )
 
@@ -1271,14 +1294,14 @@ def section_industry() -> str:
         WF6在CVD中提供钨源，适合高深宽比结构的钨沉积或填充。先进逻辑、DRAM、3D NAND和HBM对层数、互连密度和良率提出更高要求，电子特气纯度、金属杂质、包装容器和连续供应能力成为认证门槛。报告因此把“资源价格上涨”和“半导体认证放量”分开定价。
 
         \begin{exhibitbox}[Mermaid产业链图的语义摘要]
-        本case的Mermaid源码位于 \texttt{analysis/wf6\_chain\_map.mmd}。链条从钨矿/APT和萤石/HF开始，经高纯钨粉、含氟反应和纯化进入WF6/NF3等电子特气，再进入CVD钨沉积、刻蚀清洗，最终服务先进逻辑、DRAM、3D NAND、HBM和AI算力硬件。
+        本案例的产业链图使用Mermaid语法绘制。链条从钨矿/APT和萤石/HF开始，经高纯钨粉、含氟反应和纯化进入WF6/NF3等电子特气，再进入CVD钨沉积、刻蚀清洗，最终服务先进逻辑、DRAM、3D NAND、HBM和AI算力硬件。
         \end{exhibitbox}
         """
     )
 
 
 def section_supply_chain(rows: list[dict[str, Any]]) -> str:
-    layer_rows = [[r["code"], r["name"], r["layer"], r["role"], r["evidence"]] for r in sorted(rows, key=lambda x: x["code"])]
+    layer_rows = [[r["code"], r["name"], r["layer"], r["role"], evidence_cn(r["evidence"])] for r in sorted(rows, key=lambda x: x["code"])]
     down_rows = [[c, n, l, m] for c, n, l, m in DOWNSTREAM]
     return textwrap.dedent(
         r"""\
@@ -1323,7 +1346,7 @@ def section_companies(rows: list[dict[str, Any]]) -> str:
         """
     ) + table_tex(["代码", "名称", "Q1收入", "Q1归母净利", "毛利率", "ROE", "估算市值"], fin_rows, "lllllll") + textwrap.dedent(
         r"""
-        \sourcenote{astock财务能力抓取，市值为当前价乘以 equity/bps 推算股本。}
+        \sourcenote{AStock财务能力抓取；市值为当前价乘以权益/BPS推算股本。}
         \end{exhibitbox}
 
         \section{钨链公司：资源弹性高于半导体纯度弹性}
@@ -1355,41 +1378,41 @@ def section_sentiment() -> str:
 def section_valuation(rows: list[dict[str, Any]]) -> str:
     val_rows = [[r["code"], r["name"], r["method"], fmt_num(r["price"], 2), cny_yi(r["market_cap"]), fmt_num(r["eps_2026e"], 2), fmt_num(r["bear_target"], 2), fmt_num(r["base_target"], 2), fmt_num(r["bull_target"], 2), fmt_num(r["final_target"], 2), fmt_pct(r["final_upside"]), r["action"]] for r in rows]
     scenario_rows = [[r["code"], r["name"], fmt_num(r["bear_target"], 2), fmt_num(r["base_target"], 2), fmt_num(r["bull_target"], 2), fmt_pct(r["bubble_degree"]), r["secondary_check"]] for r in rows]
-    expectation_rows = [[r["code"], r["name"], cny_yi(r["revenue_2026e"]), fmt_pct(r["revenue_growth_2026e"]), f"{cny_yi(r['np_2026e'])}/{fmt_num(r['eps_2026e'], 2)}", f"{fmt_num(r['expected_multiple'], 1)}x", fmt_num(r["base_target"], 2), r["expectation_driver"]] for r in rows]
+    expectation_rows = [[r["code"], r["name"], fmt_num(r["price"], 2), cny_yi(r["revenue_2026e"]), fmt_pct(r["revenue_growth_2026e"]), f"{cny_yi(r['np_2026e'])}/{fmt_num(r['eps_2026e'], 2)}", f"{fmt_num(r['expected_multiple'], 1)}x", fmt_num(r["base_target"], 2), r["expectation_driver"]] for r in rows]
     sentiment_rows = [[r["code"], r["name"], fmt_num(r["base_target"], 2), f"{fmt_num(r['current_implied_multiple'], 1)}x", r["trading_context"], r["sentiment_regime"], fmt_num(r["market_anchor"], 2), r["weights_text"], fmt_num(r["final_target"], 2), fmt_pct(r["sentiment_premium"])] for r in rows]
-    broker_rows = [[r["code"], r["name"], r["broker_source"], r["broker_date"], r["broker_rating"], fmt_num(r["broker_target"], 2) if r["broker_target"] else "not disclosed", r["broker_method"], r["evidence"]] for r in rows]
+    broker_rows = [[r["code"], r["name"], r["broker_source"], r["broker_date"], r["broker_rating"], fmt_num(r["broker_target"], 2) if r["broker_target"] else "未披露", r["broker_method"], evidence_cn(r["evidence"])] for r in rows]
     method_rows = [[r["code"], r["name"], r["business_model"], r["method"], r["secondary_check"], r["invalidation"]] for r in rows]
     return textwrap.dedent(
         r"""\
         \section{估值结论：先判断市场在为什么付钱}
         估值结论不是“电子特气贵所以全部回避”，也不是“钨和氟化工便宜所以全部买入”。当前价格把三类预期混在一起：第一类是钨价、资源管制和库存利润带来的周期重估；第二类是制冷剂配额和价差带来的现金流重估；第三类是WF6/NF3等高纯电子特气通过客户认证后的远期期权。估值工作必须把这三类价值池拆开，否则会把电子特气的稀缺性套给制冷剂，把钨价弹性套给电子气体，或者把主题热度误当成一致预期。
 
-        本章使用独立valuation skill生成估值包：每家公司先按业务模型分类，再选择主估值方法和二级校验；随后建立Bear/Base/Bull三情景、市场预期桥、市场隐含情绪锚、公开券商/公告锚和估值审计。Final目标不是单一公式目标价，而是基本面锚、市场情绪锚和可得外部锚的加权结果。这样处理的目的，是在承认市场已经支付情绪溢价的同时，不让情绪溢价替代订单、利润和客户认证。
+        本章使用独立估值技能生成估值包：每家公司先按业务模型分类，再选择主估值方法和二级校验；随后建立悲观/基本面/乐观三情景、市场预期桥、市场隐含情绪锚、公开券商/公告锚和估值审计。最终目标不是单一公式目标价，而是基本面锚、市场情绪锚和可得外部锚的加权结果。这样处理的目的，是在承认市场已经支付情绪溢价的同时，不让情绪溢价替代订单、利润和客户认证。
 
         \section{可配置性排序：先看安全边际，再看证据直接性}
-        完整估值总表回答的是“今天的股价还允许什么投资动作”。三美股份的Final目标略高于现价，属于回撤配置；翔鹭钨业、新宙邦、永和股份和章源钨业的Final目标低于现价但仍可通过下一季业绩验证，适合中性观察；电子特气和高拥挤标的虽然产业链位置关键，但现价已经显著高于Base锚，只能放入事件驱动池。排序不是按概念热度，而是按当前价、Final目标、证据质量和证伪速度共同决定。
+        完整估值总表回答的是“今天的股价还允许什么投资动作”。三美股份的最终目标略高于现价，属于回撤配置；翔鹭钨业、新宙邦、永和股份和章源钨业的最终目标低于现价但仍可通过下一季业绩验证，适合中性观察；电子特气和高拥挤标的虽然产业链位置关键，但现价已经显著高于基本面锚，只能放入事件驱动池。排序不是按概念热度，而是按当前价、最终目标、证据质量和证伪速度共同决定。
 
         \begin{exhibitbox}[完整估值总表]
         \scriptsize
         """
-    ) + table_tex(["代码", "名称", "方法", "价格", "市值", "EPS26E", "Bear", "Base", "Bull", "Final", "空间", "行动"], val_rows, "llllllllllll") + textwrap.dedent(
+    ) + table_tex(["代码", "名称", "方法", "现价", "市值", "EPS26E", "悲观", "基本面", "乐观", "最终目标", "空间", "行动"], val_rows, "llllllllllll") + textwrap.dedent(
         r"""
         \sourcenote{AStock估值模型；2026E为Q1可比化估算，非券商一致预期。}
         \end{exhibitbox}
 
-        表里最重要的不是两位小数目标价，而是行动分层。Final低于现价不等于公司没有产业价值，而是当前股价已经提前支付了远期涨价、国产替代、客户认证和流动性溢价。对于钨和制冷剂，下一步要验证的是Q2/Q3利润能否继续承接价格和价差；对于电子特气，下一步要验证的是WF6/NF3等产品是否出现公告级订单、客户结构、价格区间和毛利率改善。没有这些验证，电子特气的高估值应当被定义为期权，而不是低估。
+        表里最重要的不是两位小数目标价，而是行动分层。最终目标低于现价不等于公司没有产业价值，而是当前股价已经提前支付了远期涨价、国产替代、客户认证和流动性溢价。对于钨和制冷剂，下一步要验证的是Q2/Q3利润能否继续承接价格和价差；对于电子特气，下一步要验证的是WF6/NF3等产品是否出现公告级订单、客户结构、价格区间和毛利率改善。没有这些验证，电子特气的高估值应当被定义为期权，而不是低估。
 
         \section{三情景不是装饰：它区分业绩资产和期权资产}
-        Bear/Base/Bull三情景的作用，是把当前价格相对Base锚支付了多少远期期权费显性化。Base代表在现有财报和公开证据下能够解释的价值，Bull代表订单、价格、认证和景气度同步兑现后的乐观情景，Bear代表主题证伪或周期回落。Bubble越高，说明当前价越依赖未来证据；这类标的可以研究，但不能用静态PE简单下结论。
+        悲观/基本面/乐观三情景的作用，是把当前价格相对基本面锚支付了多少远期期权费显性化。基本面情景代表在现有财报和公开证据下能够解释的价值，乐观情景代表订单、价格、认证和景气度同步兑现，悲观情景代表主题证伪或周期回落。溢价度越高，说明当前价越依赖未来证据；这类标的可以研究，但不能用静态PE简单下结论。
 
         \begin{exhibitbox}[三情景与泡沫度]
         \scriptsize
         """
-    ) + table_tex(["代码", "名称", "Bear", "Base", "Bull", "Bubble", "二级校验"], scenario_rows, "lllllll") + textwrap.dedent(
+    ) + table_tex(["代码", "名称", "悲观", "基本面", "乐观", "溢价度", "二级校验"], scenario_rows, "lllllll") + textwrap.dedent(
         r"""
         \end{exhibitbox}
 
-        这张表把板块分成两类。三美股份、翔鹭钨业这类标的的当前价接近Base锚，主要矛盾是等待更好的买点或财报确认；中船特气、中巨芯-U、华特气体、金宏气体、凯美特气等标的的Bubble显著高，主要矛盾不是“产业逻辑有没有”，而是市场锚能否被订单、客户和收入占比证明。若只有题材传播而没有公告和财报，估值会从市场锚向Base锚回落。
+        这张表把板块分成两类。三美股份、翔鹭钨业这类标的的当前价接近基本面锚，主要矛盾是等待更好的买点或财报确认；中船特气、中巨芯-U、华特气体、金宏气体、凯美特气等标的的溢价度显著高，主要矛盾不是“产业逻辑有没有”，而是市场锚能否被订单、客户和收入占比证明。若只有题材传播而没有公告和财报，估值会从市场锚向基本面锚回落。
 
         \section{市场预期桥：把题材翻译成财报门槛}
         市场预期桥回答“投资者到底在为什么付钱”。钨链支付的是资源稀缺和战略管制，要求钨价维持高位并进入矿端或钨粉利润；制冷剂链支付的是配额和价差现金流，要求R32/R125/R134a景气不快速回落；电子特气支付的是高纯品类、晶圆厂认证和进口替代持续时间，要求收入、毛利率和客户验证同步出现。只要预期无法落到这些财报项目，市场锚就应下调。
@@ -1397,23 +1420,23 @@ def section_valuation(rows: list[dict[str, Any]]) -> str:
         \begin{exhibitbox}[市场预期估值桥]
         \scriptsize
         """
-    ) + table_tex(["代码", "名称", "2026E收入", "收入增速", "NP/EPS", "倍数", "预期公允值", "驱动"], expectation_rows, "llllllll") + textwrap.dedent(
+    ) + table_tex(["代码", "名称", "现价", "2026E收入", "收入增速", "归母/EPS", "倍数", "基本面锚", "驱动"], expectation_rows, "lllllllll") + textwrap.dedent(
         r"""
         \end{exhibitbox}
 
         这张桥也解释了为什么不能把全板块统一用PE比较。中巨芯-U接近零EPS，使用PS和现金消耗校验比PE更合理；中船特气和华特气体有电子特气平台价值，但当前价隐含的增长持续时间很长；巨化、三美、永和的主要利润仍来自制冷剂，电子材料只能作为SOTP期权；新宙邦需要同时拆分有机氟、电子氟化液和锂电材料周期。方法匹配业务模型，比选一个看似统一的行业倍数更重要。
 
         \section{情绪锚：承认市场共识，但不让它绑架目标价}
-        强主题行情里，市场锚有信息含量：成交额、价格趋势、稀缺叙事和公告催化会让股票长期高于静态基本面锚。模型保留市场锚，是为了把这种现实纳入Final目标；但市场锚只解释价格，不证明价值。基本面权重越低，后续证伪速度越快；如果公告反复提示订单有限、收入占比低或无扩产计划，市场权重必须下调。
+        强主题行情里，市场锚有信息含量：成交额、价格趋势、稀缺叙事和公告催化会让股票长期高于静态基本面锚。模型保留市场锚，是为了把这种现实纳入最终目标；但市场锚只解释价格，不证明价值。基本面权重越低，后续证伪速度越快；如果公告反复提示订单有限、收入占比低或无扩产计划，市场权重必须下调。
 
         \begin{exhibitbox}[市场隐含情绪锚]
         \scriptsize
         """
-    ) + table_tex(["代码", "名称", "内在值", "隐含倍数", "交易", "情绪", "市场锚", "权重F/M/S", "Final", "溢价"], sentiment_rows, "llllllllll") + textwrap.dedent(
+    ) + table_tex(["代码", "名称", "内在值", "隐含倍数", "交易", "情绪", "市场锚", "权重F/M/S", "最终目标", "溢价"], sentiment_rows, "llllllllll") + textwrap.dedent(
         r"""
         \end{exhibitbox}
 
-        对电子特气，高市场锚意味着“持有研究权”，不是“自动买入权”。中船特气可以因为WF6/NF3直接性和高纯认证获得较高市场权重，但公告若不能继续提供订单、价格和客户验证，Final应向Base收敛；中巨芯-U拥有直接产能证据，但近零EPS阶段必须用PS和现金流消耗观察；金宏气体、凯美特气和和远气体属于扩散线，除非产品收入和客户证据变清楚，否则市场锚权重不能继续提高。
+        对电子特气，高市场锚意味着“持有研究权”，不是“自动买入权”。中船特气可以因为WF6/NF3直接性和高纯认证获得较高市场权重，但公告若不能继续提供订单、价格和客户验证，最终目标应向基本面锚收敛；中巨芯-U拥有直接产能证据，但近零EPS阶段必须用PS和现金流消耗观察；金宏气体、凯美特气和和远气体属于扩散线，除非产品收入和客户证据变清楚，否则市场锚权重不能继续提高。
 
         \section{券商和公告锚：缺失本身就是风险信息}
         公开券商目标价和一致预期并不完整，不能把缺失字段用主观假设填满。能引用的公开锚主要包括华特气体历史PDF目标价、制冷剂行业配额点评，以及多家公司关于WF6产能、订单、扩产和收入占比的公告或媒体转述。券商锚缺失不是空白页，而是证据等级降低；在这种情况下，AStock目标价必须更依赖财报可验证项和公告边界。
@@ -1440,7 +1463,7 @@ def section_valuation(rows: list[dict[str, Any]]) -> str:
         \section{最终行动框架}
         回撤配置池只放基本面锚相对扎实、价格没有严重透支的标的。三美股份的制冷剂现金流和配额逻辑最接近这一类，但买点仍取决于价差持续性和回撤后的安全边际；翔鹭钨业虽然为中性观察，但如果钨价和Q2利润继续兑现，估值可以重新靠近配置池。
 
-        中性观察池关注Base能否被财报抬高。新宙邦、永和股份和章源钨业都不是简单看多或看空：新宙邦需要电子氟化液和有机氟材料给出SOTP贡献，永和股份需要制冷剂价差和一体化兑现，章源钨业需要钨价高位转化为利润和现金流。Q2结果如果低于门槛，Final目标应下调；如果利润和价格信号超预期，Base锚可以上修。
+        中性观察池关注基本面锚能否被财报抬高。新宙邦、永和股份和章源钨业都不是简单看多或看空：新宙邦需要电子氟化液和有机氟材料给出SOTP贡献，永和股份需要制冷剂价差和一体化兑现，章源钨业需要钨价高位转化为利润和现金流。Q2结果如果低于门槛，最终目标应下调；如果利润和价格信号超预期，基本面锚可以上修。
 
         事件验证池用于跟踪高弹性，不用于无条件配置。中船特气、中巨芯-U、华特气体、南大光电、金宏气体、凯美特气和和远气体的共同问题，是市场已经提前支付电子特气国产替代期权。只有当订单、客户、产品收入占比、价格和毛利率逐步被公告或财报验证时，市场锚才有资格保留；否则这些股票的研究结论应从“稀缺资产”下调为“高位情绪溢价等待证伪”。
         """
@@ -1484,13 +1507,13 @@ def section_risks(rows: list[dict[str, Any]]) -> str:
 
 
 def section_app_sources() -> str:
-    src_rows = [[s["id"], s["level"], s["title"], s["url"]] for s in SOURCES]
+    src_rows = [[s["id"], source_level_cn(s["level"]), s["title"], s["url"]] for s in SOURCES]
     return textwrap.dedent(
         r"""\
         \begin{exhibitbox}[来源登记]
         \scriptsize
         """
-    ) + table_tex(["ID", "层级", "标题", "URL"], src_rows, "llll") + textwrap.dedent(
+    ) + table_tex(["编号", "层级", "标题", "网址"], src_rows, "llll") + textwrap.dedent(
         r"""
         \end{exhibitbox}
 
@@ -1502,18 +1525,18 @@ def section_app_sources() -> str:
 def section_app_model(rows: list[dict[str, Any]]) -> str:
     assumption_rows = [[r["theme"], r["method"], f"Q1/{r['q1_share']:.0%}", r["base_multiple"], r["weights_text"], r["secondary_check"]] for r in rows[:12]]
     audit_rows = [
-        ["估值总表", "PASS", "18只标的均有现价、股本、市值、2026E收入/净利/EPS、Bear/Base/Bull、Final、空间、行动"],
-        ["市场预期桥", "PASS", "逐标的披露2026E收入、增长、NP/EPS、预期倍数和驱动"],
-        ["情绪锚", "PASS", "逐标的披露内在值、市场锚、券商锚、权重、溢价和行动逻辑"],
-        ["券商对比", "PASS with limitation", "公开目标价有限，缺失字段以not disclosed披露，未伪造一致预期"],
-        ["假精确", "PASS with warning", "目标价为模型输出；读者应使用行动标签和触发条件，而非单点价格交易"],
+        ["估值总表", "通过", "18只标的均有现价、股本、市值、2026E收入/净利/EPS、悲观/基本面/乐观情景、最终目标、空间和行动"],
+        ["市场预期桥", "通过", "逐标的披露现价、2026E收入、增长、归母/EPS、预期倍数、基本面锚和驱动"],
+        ["情绪锚", "通过", "逐标的披露内在值、市场锚、券商锚、权重、溢价和行动逻辑"],
+        ["券商对比", "通过（有限制）", "公开目标价有限，缺失字段以“未披露”披露，未伪造一致预期"],
+        ["假精确", "通过（需提示）", "目标价为模型输出；读者应使用行动标签和触发条件，而非单点价格交易"],
     ]
     return textwrap.dedent(
         r"""\
         \begin{exhibitbox}[模型假设样本]
         \scriptsize
         """
-    ) + table_tex(["主题", "方法", "2026E处理", "Base倍数", "三锚权重", "二级校验"], assumption_rows, "llllll") + textwrap.dedent(
+    ) + table_tex(["主题", "方法", "2026E处理", "基本面倍数", "三锚权重", "二级校验"], assumption_rows, "llllll") + textwrap.dedent(
         r"""
         \end{exhibitbox}
 
@@ -1537,12 +1560,12 @@ def main_tex() -> str:
 
         \newcommand{\reporttitle}{钨--WF6电子特气--氟化工产业链深度}
         \newcommand{\reportsubtitle}{资源安全、前道材料国产替代与AI存储需求的交汇点}
-        \newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
-        \newcommand{\reportscope}{CHINA A-SHARES | Tungsten, Specialty Gases, Fluorochemicals}
+        \newcommand{\reportkicker}{机构研究}
+        \newcommand{\reportscope}{中国A股 | 钨、电子特气、氟化工}
         \newcommand{\reportdate}{2026年6月28日}
         \newcommand{\reportdatacutoff}{行情：2026-06-28 03:10 CST；财务：2026Q1/2025A}
-        \newcommand{\reporttype}{Industry deep dive}
-        \newcommand{\reportauthor}{AStock Research Agent}
+        \newcommand{\reporttype}{产业链深度}
+        \newcommand{\reportauthor}{AStock研究系统}
         \newcommand{\reporthouseview}{我们认为本轮主题的核心不是简单的钨、气体、氟化工轮动，而是WF6把钨资源、含氟化学和电子特气认证连接到半导体前道材料国产替代。钨和制冷剂更接近业绩兑现，电子特气更接近高弹性事件驱动，当前必须用订单、价格和客户认证验证市场溢价。}
         \newcommand{\reportquality}{行情和财务来自AStock能力层；产能、收入占比和订单边界以公司公告或产品页为主；券商观点使用公开PDF/转载，未接入付费一致预期库。}
         \newcommand{\reportdisclaimer}{本报告基于公开资料整理，仅供研究和监测使用，不构成任何证券买卖建议。}
@@ -1580,9 +1603,9 @@ def main_tex() -> str:
         \input{sections/app_model_disclosure}
 
         \clearpage
-        \begin{disclosurebox}[Disclaimer]
+        \begin{disclosurebox}[免责声明]
         \small
-        本报告由AStock Research Agent基于公开资料和本地能力层生成。报告中任何目标价、评级、行动标签和情景假设均用于研究框架和监测优先级，不构成投资建议。投资有风险，市场价格可能大幅偏离模型估值。
+        本报告由AStock研究系统基于公开资料和本地能力层生成。报告中任何目标价、评级、行动标签和情景假设均用于研究框架和监测优先级，不构成投资建议。投资有风险，市场价格可能大幅偏离模型估值。
         \end{disclosurebox}
         \end{document}
         """
@@ -1594,8 +1617,8 @@ def write_data_room_index() -> None:
     rows = []
     for p in files:
         rel = p.relative_to(CASE)
-        rows.append([f"`{rel}`", "True", p.stat().st_size])
-    write_text(CASE / "data_room_index.md", "# Data Room Index\n\n" + md_table(["Path", "Exists", "Size"], rows))
+        rows.append([f"`{rel}`", "是", p.stat().st_size])
+    write_text(CASE / "data_room_index.md", "# 数据室索引\n\n" + md_table(["路径", "存在", "大小"], rows))
 
 
 def write_verifier() -> None:
@@ -1657,19 +1680,19 @@ def valuation_complete() -> tuple[bool, str]:
                 missing.append(f"{r.get('code')}:{k}")
     text = (BASE / "analysis/valuation_model.md").read_text(encoding="utf-8")
     required_sections = [
-        "Final Valuation Table",
-        "Three-Tier Targets",
-        "Relative / PEG / PSG Comparison",
-        "Seasonality Calibration",
-        "Next-Quarter Threshold",
-        "Method and Assumption Bridge",
-        "Market-Expectation Valuation Bridge",
-        "Broker/Street Comparison",
-        "Market-Implied Sentiment Anchor",
+        "最终估值总表",
+        "三情景目标",
+        "相对估值与PEG/PSG对比",
+        "季节性校准",
+        "下一季度验证门槛",
+        "方法与假设桥",
+        "市场预期估值桥",
+        "券商/公开外部锚对比",
+        "市场隐含情绪锚",
     ]
     missing_sections = [s for s in required_sections if s not in text]
     audit = (BASE / "analysis/valuation_audit.md").read_text(encoding="utf-8")
-    audit_ok = all(s in audit for s in ["Arithmetic Checks", "Forecast Availability", "Market-Implied Sentiment Anchor", "Required Fixes"])
+    audit_ok = all(s in audit for s in ["算术校验", "预测数据可用性", "市场隐含情绪锚", "后续必需更新"])
     return len(rows) == 18 and not missing and not missing_sections and audit_ok, f"rows={len(rows)}, missing={missing[:3]}, sections={missing_sections}, audit={audit_ok}"
 
 def source_registry() -> tuple[bool, str]:

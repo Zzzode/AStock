@@ -1,45 +1,45 @@
-# Valuation Audit
+# 估值审计
 
-## Arithmetic Checks
+## 算术校验
 
-- Status: PASS
-- Rows checked: 18
-- Issues: none
+- 状态：通过
+- 检查行数：18
+- 问题：无
 
-## Forecast Availability
+## 预测数据可用性
 
-- Status: PASS
-- 2026E revenue, net profit and EPS are available for all 18 covered tickers through Q1 seasonality calibration.
-- Limitation: forecasts are AStock comparable estimates from 2026Q1/2025A, not paid Wind/Choice consensus.
+- 状态：通过
+- 全部18只覆盖标的均有基于Q1季节性校准的2026E收入、归母净利和EPS。
+- 限制：预测为AStock基于2026Q1/2025A生成的可比估算，不是付费Wind/Choice一致预期。
 
-## Target Price Comparability
+## 目标价可比性
 
-- Status: PASS with limitation
-- Public broker target anchors found: 1 ticker(s).
-- Missing paid consensus is disclosed as `not disclosed`; broker targets are not used as AStock targets.
+- 状态：通过（有限制）
+- 可引用公开券商目标锚：1只。
+- 缺失的付费一致预期以“未披露”标注；券商目标价不替代AStock目标价。
 
-## Final Valuation Completeness
+## 最终估值完整性
 
-- Status: PASS
-- Missing fields: none
+- 状态：通过
+- 缺失字段：无
 
-## Scenario Bands
+## 情景区间
 
-- Status: PASS
-- Issues: none
+- 状态：通过
+- 问题：无
 
-## Market-Implied Sentiment Anchor
+## 市场隐含情绪锚
 
-- Status: PASS
-- Every ticker has intrinsic/base value, market anchor, final weights, final target, sentiment premium and action logic.
+- 状态：通过
+- 每只标的均有基本面锚、市场锚、最终权重、最终目标、情绪溢价和行动逻辑。
 
-## Fake Precision Flags
+## 假精确提示
 
-- Target prices are shown to two decimals in machine tables because the model is per-share; prose interpretation should use ranges and action labels.
-- Q1 annualization is not treated as paid consensus. It is a comparability bridge and must be refreshed after Q2.
-- Electronic-specialty-gas names with high sentiment premium are event-driven validation assets, not automatically undervalued stocks.
+- 机器表中目标价保留两位小数是因为模型按每股输出；正文解读应使用区间、行动标签和触发条件。
+- Q1年化不是付费一致预期，只是可比化桥，Q2后必须刷新。
+- 情绪溢价高的电子特气标的是事件验证资产，不是自动低估股票。
 
-## Required Fixes
+## 后续必需更新
 
-- Gate status: PASS
-- Before any future publication update, refresh quotes, Q2 thresholds, broker/Street comparison and source registry.
+- 门禁状态：通过
+- 后续更新前必须刷新行情、Q2门槛、券商/公开外部锚对比和来源登记。

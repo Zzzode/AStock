@@ -56,19 +56,19 @@ def valuation_complete() -> tuple[bool, str]:
                 missing.append(f"{r.get('code')}:{k}")
     text = (BASE / "analysis/valuation_model.md").read_text(encoding="utf-8")
     required_sections = [
-        "Final Valuation Table",
-        "Three-Tier Targets",
-        "Relative / PEG / PSG Comparison",
-        "Seasonality Calibration",
-        "Next-Quarter Threshold",
-        "Method and Assumption Bridge",
-        "Market-Expectation Valuation Bridge",
-        "Broker/Street Comparison",
-        "Market-Implied Sentiment Anchor",
+        "最终估值总表",
+        "三情景目标",
+        "相对估值与PEG/PSG对比",
+        "季节性校准",
+        "下一季度验证门槛",
+        "方法与假设桥",
+        "市场预期估值桥",
+        "券商/公开外部锚对比",
+        "市场隐含情绪锚",
     ]
     missing_sections = [s for s in required_sections if s not in text]
     audit = (BASE / "analysis/valuation_audit.md").read_text(encoding="utf-8")
-    audit_ok = all(s in audit for s in ["Arithmetic Checks", "Forecast Availability", "Market-Implied Sentiment Anchor", "Required Fixes"])
+    audit_ok = all(s in audit for s in ["算术校验", "预测数据可用性", "市场隐含情绪锚", "后续必需更新"])
     return len(rows) == 18 and not missing and not missing_sections and audit_ok, f"rows={len(rows)}, missing={missing[:3]}, sections={missing_sections}, audit={audit_ok}"
 
 def source_registry() -> tuple[bool, str]:
