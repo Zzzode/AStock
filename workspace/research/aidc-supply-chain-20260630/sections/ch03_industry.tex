@@ -1,0 +1,38 @@
+AI 数据中心的技术变化不是“多买服务器”这么简单，而是从单机服务器采购走向机柜级、集群级和园区级协同。GB200 NVL72 这类架构把 GPU、CPU、NVLink、交换、液冷和供电整合到机柜级系统，直接提高了对高速光互联、低损耗 PCB、液冷和高密供配电的要求。
+
+\begin{exhibitbox}[AIDC 八大产业链模块总览]
+\scriptsize
+\begin{longtable}{L{3.0cm}L{6.5cm}R{1.5cm}R{1.5cm}R{1.6cm}L{1.7cm}}
+\toprule
+\textbf{板块} & \textbf{角色} & \textbf{子环节} & \textbf{核心} & \textbf{条件} & \textbf{来源}\\
+\midrule
+\endhead
+上游算力芯片与存储 & AIDC 算力、存储和网络卸载的最上游瓶颈。 & 10 & 4 & 5 & S15/S16/S17\\
+服务器整机与零部件 & 把芯片、存储、网络和供电冷却转化为可交付 AI 服务器/整柜。 & 10 & 3 & 6 & S07/S18/S25/S26\\
+网络与光通信 & AIDC scale-out/scale-across 的带宽和延迟瓶颈。 & 10 & 2 & 5 & S06/S16/S18\\
+PCB 与上游材料设备 & 高速信号完整性和 AI 服务器/交换机板卡价值量提升的核心受益链。 & 10 & 3 & 7 & S08/S18/S25\\
+供配电与能源 & AIDC 建设的第一约束是可用 MW、接入时点、可靠性和电力成本。 & 10 & 3 & 7 & S19/S23/S25/S29/S30\\
+液冷与温控 & 从风冷配套升级为高功率机柜的交付和可靠性约束。 & 10 & 2 & 9 & S04/S09/S19/S20/S22/S27/S28\\
+数据中心建设与运营 & 把设备 capex 转化为可出租/可调度的算力、电力和网络资产。 & 10 & 3 & 5 & S03/S11/S12/S23/S24/S29/S30\\
+下游需求与应用 & 决定 AIDC 利用率、租约、云账单和持续扩容。 & 10 & 0 & 3 & S23/S24/S29/S30\\
+\bottomrule
+\end{longtable}
+\sourcenote{data/full\_chain\_universe\_20260630.json；analysis/full\_chain\_taxonomy.md。核心=可直接进入或靠近核心估值池的子环节；条件=需要收入/订单/客户验证后才给估值信用。}
+\end{exhibitbox}
+
+
+\begin{exhibitbox}[AIDC 需求与价值池]
+\begin{tabularx}{\textwidth}{L{3.0cm}X L{3.2cm}X}
+\toprule
+\textbf{驱动} & \textbf{证据} & \textbf{最先受益环节} & \textbf{投资含义}\\
+\midrule
+全球 AI capex & NVIDIA 数据中心收入高增；Dell'Oro 上修 2026 年 capex 至万亿美元以上 & AI服务器、光模块、交换机、PCB & 订单真实，但供应链瓶颈会造成季度波动\\
+机柜级架构 & GB200 NVL72 采用液冷机柜级设计，强化 NVLink 与网络互联 & 光互联、液冷、供配电 & 传统风冷和低速网络价值占比下降\\
+中国算力政策 & 国家数据局强调全国一体化算力网、算电协同与枢纽节点 & AIDC运营商、电力设备、国产算力 & 国内需求更强调电力、上架率和资源调度\\
+功率密度提升 & JLL 指出 AI 机柜功率密度上升至 40--100+kW 区间 & 液冷、UPS、变压器、预制电力模组 & 供电和散热从配套件变成主约束\\
+\bottomrule
+\end{tabularx}
+\sourcenote{S01--S05。架构图按仓库规则使用 Mermaid，源文件为 \texttt{analysis/aidc\_chain\_map.mmd}；本 PDF 使用表格表达同一关系，避免非 Mermaid 架构图。}
+\end{exhibitbox}
+
+光互联仍是 AIDC 最清晰的外溢环节。LightCounting 的公开摘要提示，AI 集群光互联仍有强增长潜力，但 2026 年还会受 XPU、交换 ASIC 与供应链均衡约束。这一判断对 A 股的含义是：光模块龙头有盈利兑现能力，但估值不应线性外推到整个光器件链条。

@@ -1,0 +1,43 @@
+本章先界定证据等级。报告优先采用官方公告、公司年报摘要、IR 记录和已归档网页；行业研究机构和房地产/咨询报告只用作需求与情绪锚；行情和财务摘要来自本地能力层生成的数据包。
+
+\begin{exhibitbox}[来源等级表]
+\scriptsize
+\begin{longtable}{L{1.0cm}L{2.3cm}L{4.0cm}L{7.0cm}}
+\toprule
+\textbf{ID} & \textbf{类型} & \textbf{来源} & \textbf{用途}\\
+\midrule
+\endhead
+S01 & official & NVIDIA FY2027 Q1 results & NVIDIA FY2027 Q1 revenue was USD81.6bn and Data Center revenue was USD75.2bn.\\
+S02 & industry & Dell'Oro 1Q26 data center capex release & Dell'Oro raised 2026 global data-center capex outlook to more than USD1tn.\\
+S03 & official-policy & National Data Administration 2026 speech & China intelligent-compute scale reached 1.59mn PFlops by 2025 year-end; national hubs represented more than 80\%.\\
+S04 & official-product & NVIDIA GB200 NVL72 product page & GB200 NVL72 is a liquid-cooled rack-scale design with 36 Grace CPUs and 72 Blackwell GPUs.\\
+S05 & industry & JLL 2026 Global Data Center Outlook & JLL expects AI workload share to rise and AI rack density to move toward 40-100+kW.\\
+S06 & industry & LightCounting March 2026 Ethernet optics note & LightCounting discusses AI-cluster optics growth, 2026 growth constraints and the possible USD100bn market by 2030.\\
+S07 & company-filing & FII 2025 annual report summary & FII disclosed strong cloud-computing revenue growth and more than 3x cloud AI-server revenue growth in 2025.\\
+S08 & company-filing & Hushi Electronics 2025 annual report summary & Hushi disclosed data-communication PCB revenue and AI server/HPC plus high-speed switch/router sub-segment revenue.\\
+S09 & company-filing & Invic 2025 annual report summary & Invic disclosed end-to-end liquid-cooling products and large data-center customer examples.\\
+S10 & company-filing & Kehua Data 2025 annual report summary & Kehua disclosed full-stack intelligent data-center infrastructure products and 200kW high-density UPS module certification.\\
+S11 & company-ir & Runze investor relations activity record & Runze discussed AIDC growth, liquid-cooled 200MW data-center delivery and AIDC/IDC margin expectations.\\
+S12 & company-filing & Runze 2025 annual report summary & Runze disclosed AIDC growth drivers, 220MW added compute delivery and customer diversification.\\
+S15 & industry & SIA semiconductor ecosystem AI data centers & Maps the semiconductor stack behind AI data centers and frames compute, memory, networking and power as one system.\\
+S16 & official-product & NVIDIA Spectrum-X Ethernet platform & Defines the AI Ethernet networking stack and scale-out/scale-across bottleneck for AIDC clusters.\\
+S17 & industry & TrendForce AI HBM server research category & Tracks AI server, HBM and memory-cycle evidence used for upstream compute/storage mapping.\\
+S18 & official-product & TE data center AI connectivity solutions & Supports high-speed connector, cable, backplane, socket and power interconnect definitions.\\
+S19 & official-product & Schneider data center reference designs AI liquid cooling & Supports high-density AI data-center reference design, power and liquid-cooling architecture mapping.\\
+S20 & official-product & Vertiv high density cooling AI ML workloads & Defines high-density cooling, CDU role and rack-density pressure for AI/ML data centers.\\
+S21 & official-product & Schneider liquid cooling reference design blog & Supports liquid-cooling deployment architecture and reference-design language; local capture had HTTP 403 but URL is retained.\\
+S22 & official-product & Supermicro CDU glossary Chinese & Defines CDU as the heat-exchange, pumping and control boundary between facility water and the IT liquid loop.\\
+S23 & industry & DellOro data center capex market segments & Segments hyperscalers, China cloud, neoclouds, colocation, telco and enterprise capex demand.\\
+S24 & public-news & Xinhua 2026 China AI development trends & Supports China AI application, compute-network and smart-compute-density demand anchors.\\
+S25 & broker-public & Minsheng AIDC power distribution cooling trends & Maps data-center power and cooling segments including UPS/HVDC, transformers, busway, diesel generators and liquid cooling.\\
+S26 & official-product & Molex data center power management solutions & Supports server/rack power connector and power-management component mapping; local capture failed and URL is retained.\\
+S27 & official-product & CEJN data center quick connect coupling solutions & Defines quick-connect couplings for data-center CDU and liquid-cooling serviceability.\\
+S28 & official-product & Fuchs China liquid cooling fluid AIDC & Supports coolant and liquid-cooling material mapping for AIDC.\\
+S29 & industry & DellOro AI boom capex to 2030 & Supports long-cycle data-center capex demand and hyperscale/neocloud/sovereign AI buildout framing.\\
+S30 & official-policy & China intelligent computing center development guide & Supports China intelligent-computing center architecture, construction and operation mapping.\\
+\bottomrule
+\end{longtable}
+\sourcenote{data/source\_registry.md；sources/public-web-20260630/。}
+\end{exhibitbox}
+
+关键限制也必须写在正文里：第一，11:30 行情不是收盘价，适合估值快照但不适合作为成交确认；第二，财务摘要可校验收入、利润、BPS 和 EPS，但不能替代完整年报明细；第三，多数公司未披露 AI 订单、ASP、客户分配和单品毛利，因此只有官方披露了细分收入或项目/认证的公司才能获得较高估值信用。

@@ -1,0 +1,3875 @@
+ 
+         
+         
+            
+            
+        
+        
+         
+     
+     
+     Data Center & Artificial Intelligence (AI) Connectivity Solutions | TE Connectivity 
+
+     
+
+ 
+ 
+	 
+	
+	 
+	     
+	     
+         
+	 
+	    	 
+	     
+	     
+	     
+	     
+					     
+					 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+         
+            (function() {
+                var w = window,
+                      d = document,
+                      e = d.documentElement,
+                      g = d.getElementsByTagName('body')[0],
+                      x = (w.innerWidth && e.clientWidth) ? (Math.min(w.innerWidth, e.clientWidth)) : (w.innerWidth || e.clientWidth || g.clientWidth);
+      				
+                if(x > 1439){
+                    var allMetaElements = document.getElementsByTagName("meta");
+                    for (var i=0; i  719){
+                    var allMetaElements = document.getElementsByTagName("meta");
+                    for (var i=0; i 
+     
+
+ 
+             
+         
+     
+     
+     
+     
+    
+     
+
+ 
+
+ 
+ 
+  
+    var teV2 = window.teV2 || {};
+    teV2.ns = function() {
+        var obj = window.teV2;
+        for (var x = 0, len = arguments.length; x   
+    let enableLaunch = !noticeBehaviorPresent || consentToFunctional || consentToAll;
+    if(enableLaunch) {
+    	(function () {
+            function async_load() {
+                var l = document.createElement('script'); l.type = 'text/javascript'; l.async = true;
+                l.src = '//assets.adobedtm.com/de1f194adb16/2b79838b06f5/launch-b98ce4e2ccc2.min.js';
+                var t = document.getElementsByTagName('script')[0]; t.parentNode.insertBefore(l, t);
+            }
+            if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+            else if (window.attachEvent) window.attachEvent('onload', async_load); 
+        })();
+        window.launchDataLayer = window.launchDataLayer || [];
+        window.teV2.enableLaunchAndQualtrics = enableLaunch;
+        window.teV2.enableQualtrics = true;
+    }        
+     
+ 
+        window.dataLayer = window.dataLayer || [];
+     
+    
+     
+            	let enableGTM = !noticeBehaviorPresent || consentToFunctional || consentToAll;
+            	dataLayer.push({'GUA_PROP_ID':'UA-71955962-1'});
+             
+             
+            if(enableGTM){
+            	(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl+'&gtm_auth=EUkjw4e942Cn8U4xAE_Dng&gtm_preview=env-2&gtm_cookies_win=x';f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','GTM-5SRCLN6');
+            }
+             
+         
+	let geoInfo_Cookie = window.teV2.store.getCookie("cdn_geo_info");
+	let dEnv = 'PROD';
+	window.teV2.enableClarityLibrary = false;
+	window.teV2.pageTemplateName = '/apps/te/templates/freeform-responsive';
+	window.teV2.businessUnit = '30002-Consumer-Data-Devices';
+	if (!window.matchMedia("(max-width: 767px)").matches) {
+    	let enable_Tracking = false;
+    	let enableSignalsBeacon = !noticeBehaviorPresent || consentToFunctional || consentToAll;
+    	let enableClarityLibrary = !noticeBehaviorPresent || consentToAll;
+    	if (dEnv === 'PROD' || dEnv === 'STAGE' || dEnv === 'QA') {if (geoInfo_Cookie !== 'CN' && geoInfo_Cookie !== '') {
+    		enable_Tracking = true;
+    		}
+    	} else {
+    		if (geoInfo_Cookie !== 'CN') {
+    			enable_Tracking = true;
+    		}
+    	}
+    	window.teV2.enableSignalsBeacon = enable_Tracking && enableSignalsBeacon;
+		window.teV2.enableClarityLibrary = enable_Tracking && enableClarityLibrary;
+    	if(enable_Tracking && enableClarityLibrary){ 
+    	    (function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window, document, "clarity", "script", "n0lk2mkb5i");
+    	    try{window.addEventListener("consentGranted", () => window.clarity('consent'));}catch(Ex){}
+    	}
+	}
+  
+     
+ 
+
+ (window.BOOMR_mq=window.BOOMR_mq||[]).push(["addVar",{"rua.upush":"false","rua.cpush":"false","rua.upre":"false","rua.cpre":"false","rua.uprl":"false","rua.cprl":"false","rua.cprf":"false","rua.trans":"","rua.cook":"false","rua.ims":"false","rua.ufprl":"false","rua.cfprl":"false","rua.isuxp":"false","rua.texp":"norulematch","rua.ceh":"false","rua.ueh":"false","rua.ieh.st":"0"}]); 
+                                 !function(a){var e="https://s.go-mpulse.net/boomerang/",t="addEventListener";if("False"=="True")a.BOOMR_config=a.BOOMR_config||{},a.BOOMR_config.PageParams=a.BOOMR_config.PageParams||{},a.BOOMR_config.PageParams.pci=!0,e="https://s2.go-mpulse.net/boomerang/";if(window.BOOMR_API_key="827XA-7NWZT-CGSAU-WP5SG-7KSSA",function(){function n(e){a.BOOMR_onload=e&&e.timeStamp||(new Date).getTime()}if(!a.BOOMR||!a.BOOMR.version&&!a.BOOMR.snippetExecuted){a.BOOMR=a.BOOMR||{},a.BOOMR.snippetExecuted=!0;var i,_,o,r=document.createElement("iframe");if(a[t])a[t]("load",n,!1);else if(a.attachEvent)a.attachEvent("onload",n);r.src="javascript:void(0)",r.title="",r.role="presentation",(r.frameElement||r).style.cssText="width:0;height:0;border:0;display:none;",o=document.getElementsByTagName("script")[0],o.parentNode.insertBefore(r,o);try{_=r.contentWindow.document}catch(O){i=document.domain,r.src="javascript:var d=document.open();d.domain='"+i+"';void(0);",_=r.contentWindow.document}_.open()._l=function(){var a=this.createElement("script");if(i)this.domain=i;a.id="boomr-if-as",a.src=e+"827XA-7NWZT-CGSAU-WP5SG-7KSSA",BOOMR_lstart=(new Date).getTime(),this.body.appendChild(a)},_.write(" '),_.close()}}(),"".length>0)if(a&&"performance"in a&&a.performance&&"function"==typeof a.performance.setResourceTimingBufferSize)a.performance.setResourceTimingBufferSize();!function(){if(BOOMR=a.BOOMR||{},BOOMR.plugins=BOOMR.plugins||{},!BOOMR.plugins.AK){var e=""=="true"?1:0,t="",n="ej6iptqxe4edy2sdiqjq-f-02d688874-clientnsv4-s.akamaihd.net",i="false"=="true"?2:1,_={"ak.v":"41","ak.cp":"715433","ak.ai":parseInt("223585",10),"ak.ol":"0","ak.cr":181,"ak.ipv":4,"ak.proto":"http/1.1","ak.rid":"613f6b28","ak.r":47863,"ak.a2":e,"ak.m":"x","ak.n":"essl","ak.cport":63281,"ak.gh":"23.54.158.72","ak.quicv":"","ak.tlsv":"tls1.3","ak.0rtt":"","ak.0rtt.ed":"","ak.csrc":"-","ak.acc":"bbr","ak.t":"1782793235","ak.ak":"hOBiQwZUYzCg5VSAfCLimQ==PoilTp4c8wZY72/xwTLztK25kylMDpdb/XpqCnX4K9SF6c23+qSPXRxpArzsR5HP4drPePBM/0gwXtAZIobMLAWO1czh0IEv92T1xCpwRLR9C6QdtMWvAPlU660VYfpchAi3Pl0ir8JQYplwJZlxKdLtRpFPnVOCdVZr/dD+7taPIG+o2ZHaJsCBLn1rlGVl5A6gwuQzicJP0gBFHpqGqDe82SI0Y5Urn3B3b+KM5DY8QoUoYM1k5KpcgCZjjzcnQ7bya/zWLHG6t/36Nd5uo0ibIAlbnJPN3CucmIahaH96Nchkt0cbOaGXnyk55YcpsZ3CMtl1LstiOdkLEO0cD5VoWeEtpL+NzC1S8mx5aXEsMeuRRhumqVrYxgxc3Jd/qRlA++jACgB69yQ6v2Nvs+eaijsH3Uj9Da4G/0pYimU=","ak.pv":"151","ak.dpoabenc":"","ak.tf":i};if(""!==t)_["ak.ruds"]=t;var o={i:!1,av:function(e){var t="http.initiator";if(e&&(!e[t]||"spa_hard"===e[t]))_["ak.feo"]=void 0!==a.aFeoApplied?1:0,BOOMR.addVar(_)},rv:function(){var a=["ak.cport","ak.cr","ak.csrc","ak.gh","ak.ipv","ak.m","ak.n","ak.ol","ak.proto","ak.quicv","ak.tlsv","ak.0rtt","ak.0rtt.ed","ak.r","ak.acc","ak.t","ak.tf"];BOOMR.removeVar(a)}};BOOMR.plugins.AK={akVars:_,akDNSPreFetchDomain:n,init:function(){if(!o.i){var a=BOOMR.subscribe;a("before_beacon",o.av,null,null),a("onbeacon",o.rv,null,null),o.i=!0}return this},is_complete:function(){return!0}}}}()}(window);   
+	 
+teV2.ns('pageData').custinfo = {
+    c_eid: ''
+}
+  
+      
+   
+        
+  
+    
+	 	
+	
+	teV2.ns('countrySelector').panelText = {
+	regionalPreferences : '  Regional Preferences  \r\n Select a language and ship to location to update your experience on te.com \r\n',
+	languageLabel :'Language',
+	languageLabelToolTip :'TE.com pages are translated to a limited number of other languages.',
+	shipToCountryLabel :'Ship to',
+	shipToCountryLabelToolTip :'Ship to refers to the shipping address for your order. The selected location will determine if paid orders or Samples are available, and the currency used for the order.',
+	acceptedUStoTEUS :'  Accepted Currency and Billing Addresses  \r\n In order to ship your items to the {1}, you must complete your purchase in US dollars with a billing address in North America, India, Turkey, and the United Kingdom.* \r\n  *excluding Northern Ireland  \r\n Special Order items cannot be shipped outside the United States. \r\n',
+	acceptedCMITUtoTEUS :'  Accepted Currency and Billing Addresses  \r\n In order to ship your items to the {1}, you must complete your purchase in US dollars with a billing address in North America, India, Turkey, and the United Kingdom.* \r\n  *excluding Northern Ireland  \r\n',
+	acceptedTEUStoTESOG :'  Accepted Currency and Billing Addresses  \r\n In order to ship your items to the {1}, you must complete your purchase in euro with a billing address in Europe.* \r\n  *excluding United Kingdom  \r\n Your cart items will be transferred. Some items may not be purchasable in euros. \r\n',
+	acceptedTESOGtoTESOG :'  Accepted Currency and Billing Addresses  \r\n In order to ship your items to the {1}, you must complete your purchase in euro with a billing address in Europe.* \r\n  *excluding United Kingdom  \r\n',
+	acceptedTESOGtoTEUS :'  Accepted Currency and Billing Addresses  \r\n In order to ship your items to the {1}, you must complete your purchase in US dollars with a billing address in North America, India, Turkey, and the United Kingdom.* \r\n  *excluding Northern Ireland  \r\n Your cart items will be transferred. Some items may not be purchasable in US dollars. \r\n',
+	teusStoreMessage :'',
+	tesogStoreMessage :'',
+	sampleStoreMessage :'',
+	messageForAllOtherCountries :'',
+	searchCountryRegion:'Choose your location',
+	storeSamples:'Online Store & Samples',
+	samples:'Samples',
+	noResults:'There are no results for your search. Please check your entry and try again.',
+	cancel :'Cancel',
+	save :'Save',
+	utilityBarNeedHelp : 'Need Help? {1}'
+};
+
+teV2.countrySelector.countries = [{"A":["afg","alb","dza","asm","and","ago","aia","atg","arg","arm","abw","aus","aut","aze"]},{"B":["bhs","bhr","bgd","brb","bel","blz","ben","bmu","btn","bol","bes","bih","bwa","bra","vgb","brn","bgr","bfa","bdi"]},{"C":["cpv","khm","cmr","can","cym","caf","tcd","chl","chn","col","com","cog","cri","civ","hrv","cuw","cyp","cze"]},{"D":["cod","dma","dom","dnk","dji"]},{"E":["ecu","egy","slv","gnq","eri","est"]},{"F":["flk","fro","fji","fin","fra","guf","pyf"]},{"G":["gab","gmb","geo","deu","gha","gib","grc","grl","grd","glp","gum","gtm","ggy","gin","gnb","guy"]},{"H":["hti","hnd","hkg","hun"]},{"I":["isl","ind","idn","irq","irl","imn","isr","ita"]},{"J":["jam","jpn","jey","jor"]},{"K":["kaz","ken","kir","xkx","kwt","kgz"]},{"L":["lao","lva","lbn","lso","lbr","lby","lie","ltu","lux"]},{"M":["mac","mkd","mdg","mys","mwi","mdv","mli","mlt","mhl","mtq","mus","myt","mex","fsm","mda","mco","mng","mne","msr","mar","moz","mmr"]},{"N":["nam","npl","nld","ncl","nzl","nic","ner","nga","nor"]},{"O":["omn"]},{"P":["pak","pse","pan","png","pry","per","phl","pol","prt","pri"]},{"Q":["qat"]},{"R":["reu","rou","rwa"]},{"S":["blm","shn","kna","lca","maf","vct","wsm","smr","stp","sau","sen","srb","syc","sle","sgp","sxm","svk","svn","slb","som","esp","lka","zaf","kor","sur","sjm","swz","swe","che"]},{"T":["twn","tjk","tza","tha","tgo","ton","tto","tun","tur","tkm","tca"]},{"U":["uga","are","gbr","usa","ukr","ury","vir","uzb"]},{"V":["vut","vat","ven","vnm"]},{"W":["esh"]},{"Y":["yem"]},{"Z":["zmb","zwe"]}];teV2.countrySelector.languages = {"en":"English","zh":"Chinese (中文)","fr":"French (Français)","de":"German (Deutsch)","ja":"Japanese (日本語)","pt":"Portuguese (Português)","es":"Spanish (Español)"}; 
+  
+ 
+	 
+	    
+	       TE Connectivity (TE)   
+		   
+		   or 
+	       
+	      	  
+	          Chat 
+	       
+	    
+	    
+		    
+			   TE Connectivity (TE) 
+		    
+		    
+			   
+				 
+	    
+	   
+	    
+			  
+			    
+			 
+		  
+	 
+ 
+ 
+         
+             Skip Navigation 
+         
+         
+             
+                 TE Connectivity 
+             
+
+             
+             
+                     
+                         
+                      
+                         
+                            
+                               
+                                  All Products 
+                               
+                            
+                             
+                         
+                         
+                            
+                               
+                                  All Products 
+                               
+                            
+                            
+                               
+                                  LADD Products 
+                               
+                            
+                         
+                      
+                   
+                
+                         
+                         
+                          
+                         
+                          
+                          
+                          
+                     
+                 
+             
+
+             
+    teV2.isAngularPage = true;
+    teV2.ns('urls').suggestionsSearch = '/api/v1/search/service/search/suggestions';
+    teV2.ns('urls').categorySuggestionsSearch = '/api/v1/search/service/feature/child-features';
+    teV2.ns('urls').apiServicesHost = 'https://api.te.com';
+    teV2.ns('localization').results = 'Results';
+    teV2.ns('localization').searchTitleLabel = 'Search';
+    teV2.ns('localization').resultsFor = 'for';
+    teV2.ns('localization').recentSearchTitle = 'Recent Searches';
+    teV2.ns('localization').clearRecentSearchHistory = 'Clear Search History';
+    teV2.ns('localization').searchSuggestionCategoryLabel = 'Categories';
+    teV2.ns('localization').searchProductSuggestionsLabel = 'Product Suggestions';
+    teV2.ns('localization').searchSuggestionProductFamilyLabel = 'Product Family';
+    teV2.ns('localization').searchSuggestionsSeriesLabel = 'Series';
+    teV2.ns('localization').searchIndustriesSolutionsLabel = 'Industries & Solutions';
+    teV2.ns('localization').teInternalHash = 'TE Internal #:';
+    teV2.ns('localization').weAreHereToHelp= 'We are here to help!';
+    teV2.ns('localization').weAreHereToHelpDesc= 'Get in touch with our product experts.' ;
+    teV2.ns('localization').pdpEmailUs= 'Email us';
+    teV2.ns('localization').b2bRecentlyPurchasedLabel= 'Recently Purchased';
+ 
+
+ 
+     
+         
+             
+                 
+                     
+                            
+                         
+                             Login/Register 
+                             Hi, 
+                                 GivenName  
+                             
+                             
+        						 My Account 
+                                  
+                                  
+                             
+                             
+                                 Login Again 
+                             
+                         
+                     
+                      
+                     
+                         
+                             Create an Account 
+                             
+                                 Register to enjoy these benefits! 
+                                 
+                                        Order Samples (with Business email address)                                      
+                                            Track Your Orders                                      
+                                            Save Product List                                      
+                                            Access Additional Resources                                      
+                                            Get Tech Updates                                      
+                                         
+                             
+                              Create An Account  
+                         
+                         
+                              Welcome   ! 
+                              
+                                 Dashboard   
+                             
+                            	 
+                                                 
+                                                   Online Order Status   
+	                                     
+                                                 
+                                                   Track Order History   
+	                                     
+                                                 
+                                                   Samples Order History   
+	                                     
+                                                 
+                                                   Check Order Status   
+	                                     
+                                                 
+                                                   Request Secure Access   
+	                                     
+                                                 
+                                                   My Parts List   
+	                                     
+                                                 
+                                                   Recently Purchased   
+	                                     
+                                                 
+                                                   Bulk Order Purchasing   
+	                                     
+                             
+                                 Manage Account 
+	                                         
+	                                             
+                                                                 
+                                                                   Edit Profile   
+	                                                      
+                                                                 
+                                                                   Shipping Addresses   
+	                                                      
+                                                                 
+                                                                   Payment Methods   
+	                                                      
+                                                                 
+                                                                   Request Secure Resources   
+	                                                      
+                                         
+                             
+                                  Login to access your orders, address book, product lists, and more. 
+ 
+                                  Log In  
+                             
+                             
+                                 
+                                      
+                                     Log out 
+                                                                 
+                             
+                         
+                     
+                 
+             
+             
+     
+     
+          
+         
+             
+                  
+                  
+             
+             Cart 
+         
+     
+ 
+
+
+
+ 
+     
+         
+             
+                 
+                     
+                           Products     
+                           Industries     
+                           Tools & Resources     
+                           Shop TE Store   
+                           Services & Trainings     
+                        		   About TE     
+                        		   Sustainability     
+                        		 
+                              Cart&nbsp;(  0  )  
+                         
+                      
+                      
+                         
+                     
+                     
+
+                         
+                         
+                         
+                             
+                                Login/Register 
+                             
+                         
+						
+                         
+                             
+                                 We are here to help! 
+                                 Get in touch with our product experts. 
+                                      
+                                    Chat  
+                                 
+                                        Email us   
+                                    
+                             
+                         
+                              
+                     
+                 
+                 
+                     
+                           Products     
+                           Industries     
+                           Tools & Resources     
+                           Shop TE Store   
+                           Services & Trainings     
+                        	   About TE     
+                        	   Sustainability     
+                        	 
+                              Cart&nbsp;(  0  )  
+                         
+                       
+                       
+                         
+                     
+                        
+                         
+                         
+                         
+                             
+                                 Hi,&nbsp; GivenName &nbsp; (Log out)  
+                             
+                         
+                         
+                             
+                                 Dashboard 
+                             
+                         
+                         
+                              Your Account  
+                         
+                        
+                         
+                             
+                                Recently Purchased 
+                             
+                         
+                         
+                             
+                                 We are here to help! 
+                                 Get in touch with our product experts. 
+                                   
+                                    Chat  
+                                 
+                                        Email us   
+                             
+                         
+                             
+                     
+                 
+             
+             
+                 
+                     
+                         
+                             
+                                    
+                             
+                             
+                                 Products 
+                             
+                         
+                         
+                                
+                         
+                     
+                 
+                 
+                     
+                         
+                             
+                                    
+                             
+                             
+                                 Industries 
+                                 Innovation in Tech Platforms 
+                                 
+                         
+                         
+                              
+                              
+                             
+                     
+                 
+                 
+                     
+                         
+                             
+                                    
+                             
+                             
+                                 Tools & Resources 
+                                 My Tools 
+                                 
+                         
+                         
+                              
+                              
+                             
+                     
+                 
+                 
+	                     
+	                         
+	                             
+	                                    
+	                             
+	                             
+	                                 Services & Trainings 
+	                             
+	                         
+	                         
+	                              
+	                         
+	                     
+	                 
+	                 
+	                     
+	                         
+	                             
+	                                    
+	                             
+	                             
+	                                 About TE 
+	                             
+	                         
+	                         
+	                              
+	                         
+	                     
+	                 
+	                 
+	                     
+	                         
+	                             
+	                                    
+	                             
+	                             
+	                                 Sustainability 
+	                             
+	                         
+	                         
+	                              
+	                         
+	                     
+	                 
+	                 
+             
+                 
+                     
+                         
+                             
+                                    
+                             
+                             
+                                 Products 
+                             
+                         
+                         
+                                
+                         
+                     
+                 
+             
+         
+     
+ 
+ 
+                 
+                      
+                 
+                 
+                         Cart 
+                           
+                 
+                 
+                      
+                 
+             
+         
+     
+     
+         
+	     
+	         
+          
+              Products 
+               
+               
+          
+          
+				 
+					 
+						 
+								  Antennas 
+        						 
+                                         
+                                             Antennas 
+                                         
+                                         
+                                              
+                                                        Antenna Mounts  
+                                              
+                                                        Antennas for Bluetooth Devices  
+                                              
+                                                        Cellular Antennas  
+                                              
+                                                        DAS Antennas  
+                                              
+                                                        GNSS & GPS Antennas  
+                                              
+                                                        ISM, LPWAN & LoRaWAN Antennas  
+                                              
+                                                        Outdoor Antennas  
+                                              
+                                                        Public Safety Antennas  
+                                              
+                                                        RFID Antennas  
+                                              
+                                                        Ultra-Wideband Antennas  
+                                              
+                                                        Vehicle Antennas  
+                                              
+                                                        Wi-Fi Antennas  
+                                              
+                                                        Wi-Fi HaLow Antennas  
+                                             
+                                     
+                                 
+						 
+								  Application Tooling 
+        						 
+                                         
+                                             Application Tooling 
+                                         
+                                         
+                                              
+                                                        Applicators  
+                                              
+                                                        Benchtop Crimping Machines  
+                                              
+                                                        Connector Seating Machines  
+                                              
+                                                        Flat Flexible Cable (FFC) Processing Machine  
+                                              
+                                                        Hand Crimping Tools  
+                                              
+                                                        Heat Shrink Equipment  
+                                              
+                                                        High Voltage Wire Processing Equipment  
+                                              
+                                                        Insertion & Extraction Tools  
+                                              
+                                                        Insulation Displacement Crimp  
+                                              
+                                                        Magnet Wire Equipment  
+                                              
+                                                        Pin Insertion Machines  
+                                              
+                                                        Spare & Wear Tooling  
+                                             
+                                     
+                                 
+						 
+								  Automotive Parts 
+        						 
+                                         
+                                             Automotive Parts 
+                                         
+                                         
+                                              
+                                                        Automotive Cable Assemblies  
+                                              
+                                                        Automotive Connector Accessories  
+                                              
+                                                        Automotive Connectors  
+                                              
+                                                        Automotive Contactors  
+                                              
+                                                        Automotive Power Distribution Boxes  
+                                              
+                                                        Automotive Relays  
+                                              
+                                                        Automotive Sensors  
+                                              
+                                                        Automotive Terminals  
+                                              
+                                                        Mechatronics  
+                                             
+                                     
+                                 
+						 
+								  Cable Assemblies 
+        						 
+                                         
+                                             Cable Assemblies 
+                                         
+                                         
+                                              
+                                                        Automotive Cable Assemblies  
+                                              
+                                                        Copper Cable Assemblies  
+                                              
+                                                        Data Bus Components  
+                                              
+                                                        High Speed Backplane Cable Assemblies  
+                                              
+                                                        RF Cable Assemblies  
+                                             
+                                     
+                                 
+						 
+								  Connectors 
+        						 
+                                         
+                                             Connectors 
+                                         
+                                         
+                                              
+                                                        Audio & Video Connectors  
+                                              
+                                                        Automotive Connectors  
+                                              
+                                                        Circular Connectors  
+                                              
+                                                        Connector Accessories  
+                                              
+                                                        Contacts  
+                                              
+                                                        Docking Connectors  
+                                              
+                                                        D-Shaped Connectors  
+                                              
+                                                        Fiber Optic Connectors  
+                                              
+                                                        High Speed Pluggable IO Connectors & Cages  
+                                              
+                                                        Lighting Connectors  
+                                              
+                                                        Modular Jacks & Plugs  
+                                              
+                                                        PCB Connectors  
+                                              
+                                                        Power Connectors  
+                                              
+                                                        Rectangular Connectors  
+                                              
+                                                        RF Connectors  
+                                              
+                                                        Socket Connectors  
+                                              
+                                                        Terminal Blocks & Strips  
+                                              
+                                                        Terminal Junction Modules & Accessories  
+                                             
+                                     
+                                 
+						 
+								  EMI & EMC Solutions 
+        						 
+                                         
+                                             EMI & EMC Solutions 
+                                         
+                                         
+                                              
+                                                        Custom EMI Solutions  
+                                              
+                                                        EMC Chokes  
+                                              
+                                                        EMC Filters  
+                                              
+                                                        EMI/EMP Connectors  
+                                              
+                                                        EMI & EMC Accessories  
+                                              
+                                                        EMI Shielding  
+                                              
+                                                        IEC Inlets  
+                                              
+                                                        IEC Power Cords  
+                                              
+                                                        Power Quality  
+                                              
+                                                        Pulse Transformers  
+                                             
+                                     
+                                 
+						 
+								  Energy & Power 
+        						 
+                                         
+                                             Energy & Power 
+                                         
+                                         
+                                              
+                                                        Arresters, Insulators & Insulation  
+                                              
+                                                        Grid Monitoring & Automation  
+                                              
+                                                        Power Cable Accessories  
+                                              
+                                                        Power Meters  
+                                              
+                                                        Power Systems Connectors  
+                                              
+                                                        Solar Connectors  
+                                              
+                                                        Street Lighting Fuse Boxes  
+                                             
+                                     
+                                 
+						 
+								  Fiber Optics 
+        						 
+                                         
+                                             Fiber Optics 
+                                         
+                                         
+                                              
+                                                        Fiber Optic Connectors  
+                                              
+                                                        Fiber Optic Tooling  
+                                              
+                                                        Optical Transceivers  
+                                             
+                                     
+                                 
+						 
+								  Heat Shrink Tubing 
+        						 
+                                         
+                                             Heat Shrink Tubing 
+                                         
+                                         
+                                              
+                                                        Bio-Based Heat Shrink Tubing  
+                                              
+                                                        Dual Wall Tubing  
+                                              
+                                                        Orange Heat Shrink Tubing  
+                                              
+                                                        Single Wall Tubing  
+                                             
+                                     
+                                 
+						 
+								  Identification & Labeling 
+        						 
+                                         
+                                             Identification & Labeling 
+                                         
+                                         
+                                              
+                                                        Labels  
+                                              
+                                                        Pre-Printed Markers  
+                                              
+                                                        Printable Tags  
+                                              
+                                                        Printable Tubing  
+                                              
+                                                        Printer Ribbons  
+                                              
+                                                        Printers, Software & Accessories  
+                                             
+                                     
+                                 
+						 
+								  Medical Device Components 
+        						 
+                                         
+                                             Medical Device Components 
+                                         
+                                         
+                                              
+                                                        Hypotubes & Metal Shafts  
+                                              
+                                                        Medical Coils  
+                                              
+                                                        Medical Connectors  
+                                              
+                                                        Medical EMI & EMC Solutions  
+                                              
+                                                        Medical Extruded Tubing  
+                                              
+                                                        Medical Grade Heat Shrink Tubing  
+                                              
+                                                        Medical Metal Tubing  
+                                              
+                                                        Medical Needles  
+                                             
+                                     
+                                 
+						 
+								  Passive Components 
+        						 
+                                         
+                                             Passive Components 
+                                         
+                                         
+                                              
+                                                        Inductors  
+                                              
+                                                        Resistors  
+                                             
+                                     
+                                 
+						 
+								  Relays & Contactors 
+        						 
+                                         
+                                             Relays & Contactors 
+                                         
+                                         
+                                              
+                                                        Circuit Breakers  
+                                              
+                                                        Contactors  
+                                              
+                                                        Electromechanical Relays  
+                                              
+                                                        Relay Accessories  
+                                              
+                                                        Safety Relays  
+                                              
+                                                        Solid State Relays  
+                                             
+                                     
+                                 
+						 
+								  Sensors 
+        						 
+                                         
+                                             Sensors 
+                                         
+                                         
+                                              
+                                                        Automotive Sensors  
+                                              
+                                                        Current Sensors  
+                                              
+                                                        DAQ Systems & Scanners  
+                                              
+                                                        Flow Sensors  
+                                              
+                                                        Fluid Property Sensors  
+                                              
+                                                        Force Sensors  
+                                              
+                                                        Gas Detection Sensors  
+                                              
+                                                        Humidity Sensors  
+                                              
+                                                        Mass Air Flow Sensors  
+                                              
+                                                        Optical Sensors  
+                                              
+                                                        Piezo Film Sensors  
+                                              
+                                                        Position Sensors  
+                                              
+                                                        Pressure Sensors  
+                                              
+                                                        Proximity Sensors  
+                                              
+                                                        Rate & Inertial Sensors  
+                                              
+                                                        Safety Light Curtains  
+                                              
+                                                        Sensor Accessories  
+                                              
+                                                        Sensor Development Boards and Evaluation Kits  
+                                              
+                                                        Speed Sensors  
+                                              
+                                                        Temperature Sensors  
+                                              
+                                                        Torque Sensors  
+                                              
+                                                        Traffic Sensors  
+                                              
+                                                        Ultrasonic Sensors  
+                                              
+                                                        Vibration Sensors  
+                                              
+                                                        Wireless Sensors  
+                                             
+                                     
+                                 
+						 
+								  Switches 
+        						 
+                                         
+                                             Switches 
+                                         
+                                         
+                                              
+                                                        Battery Disconnect Switches  
+                                              
+                                                        DIP & SIP Switches  
+                                              
+                                                        Keylock Switches  
+                                              
+                                                        Push Button Switches  
+                                              
+                                                        Rocker Switches  
+                                              
+                                                        Rotary Switches  
+                                              
+                                                        Slide Switches  
+                                              
+                                                        Snap Action Switches  
+                                              
+                                                        Switch Knobs  
+                                              
+                                                        Switch Seals & Accessories  
+                                              
+                                                        Tactile Switches  
+                                              
+                                                        Toggle Switches  
+                                             
+                                     
+                                 
+						 
+								  Terminals & Splices 
+        						 
+                                         
+                                             Terminals & Splices 
+                                         
+                                         
+                                              
+                                                        Automotive Terminals  
+                                              
+                                                        Contacts  
+                                              
+                                                        Crimp Wire Pins, Tabs & Ferrules  
+                                              
+                                                        Foil Terminals  
+                                              
+                                                        Interconnect Devices  
+                                              
+                                                        Knife Disconnects  
+                                              
+                                                        Magnet Wire Terminals  
+                                              
+                                                        PCB Terminals  
+                                              
+                                                        Power Terminals  
+                                              
+                                                        Quick Disconnects  
+                                              
+                                                        Ring Terminals  
+                                              
+                                                        Spade Terminals  
+                                              
+                                                        Special Purpose Terminals  
+                                              
+                                                        Splices  
+                                              
+                                                        Terminal Housings, Insulation Sleeves & Blocks  
+                                             
+                                     
+                                 
+						 
+								  Valves & Modules 
+        						 
+                                         
+                                             Valves & Modules 
+                                         
+                                         
+                                              
+                                                        Derivators  
+                                              
+                                                        Electronic Controllers  
+                                              
+                                                        Field Safety Barriers  
+                                              
+                                                        Galvanic Insulators  
+                                              
+                                                        I/O Modules  
+                                              
+                                                        Interrupter Junction Modules  
+                                              
+                                                        Network Terminators  
+                                              
+                                                        Power Supplies  
+                                              
+                                                        Safety Barriers  
+                                              
+                                                        Segment Protectors  
+                                              
+                                                        Valve Control & Monitoring  
+                                             
+                                     
+                                 
+						 
+								  Wire & Cable 
+        						 
+                                         
+                                             Wire & Cable 
+                                         
+                                         
+                                              
+                                                        Cable Assemblies  
+                                              
+                                                        High Speed Digital & Data Cable  
+                                              
+                                                        Hook Up Wire  
+                                              
+                                                        Multicore Cable  
+                                              
+                                                        Power Cable  
+                                              
+                                                        Primary Wire  
+                                              
+                                                        Ribbon & Flat Cable  
+                                              
+                                                        Sensor Cable  
+                                              
+                                                        Twisted Pair Cable  
+                                              
+                                                        Wire & Cable Accessories  
+                                             
+                                     
+                                 
+						 
+								  Wire Protection & Management 
+        						 
+                                         
+                                             Wire Protection & Management 
+                                         
+                                         
+                                              
+                                                        Adhesives & Sealants  
+                                              
+                                                        Cable Braids  
+                                              
+                                                        Cable Conduit  
+                                              
+                                                        Cable Entry Plates  
+                                              
+                                                        Cable Glands  
+                                              
+                                                        Cable Mounting & Harness Accessories  
+                                              
+                                                        Cable Repair Kits & Maintenance  
+                                              
+                                                        Conduit Connectors  
+                                              
+                                                        Harness Software (Harnware)  
+                                              
+                                                        Heat Shrink Shapes  
+                                              
+                                                        Heat Shrink Tubing  
+                                              
+                                                        Interconnect Devices  
+                                              
+                                                        Wiring Ducts & Accessories  
+                                             
+                                     
+                                 
+						 
+										 All Product Categories  
+								 
+										 Shop LADD Products  
+								 
+										 Watch Product Videos  
+								 
+                                 
+                                    Find Parts by TE Brands 
+								 
+										 
+											 Featured TE Brands 
+										 
+										 
+											 
+                                                         
+                                                            AdrenaLINE 
+                                                     
+                                                 
+                                                         
+                                                            Agastat 
+                                                     
+                                                 
+                                                         
+                                                            Alcoswitch 
+                                                     
+                                                 
+                                                         
+                                                            AMP 
+                                                     
+                                                 
+                                                         
+                                                            AMPACT 
+                                                     
+                                                 
+                                                         
+                                                            AMPOWER 
+                                                     
+                                                 
+                                                         
+                                                            American Sensor Technologies 
+                                                     
+                                                 
+                                                         
+                                                            BUCHANAN 
+                                                     
+                                                 
+                                                         
+                                                            COPALUM 
+                                                     
+                                                 
+                                                         
+                                                            Corcom 
+                                                     
+                                                 
+                                                         
+                                                            Creganna Medical 
+                                                     
+                                                 
+                                                         
+                                                            DEUTSCH 
+                                                     
+                                                 
+                                                         
+                                                            DRI Relays 
+                                                     
+                                                 
+                                                         
+                                                            ELCON 
+                                                     
+                                                 
+                                                         
+                                                            ENTRELEC 
+                                                     
+                                                 
+                                                         
+                                                            ERNI 
+                                                     
+                                                 
+                                                         
+                                                            FASTON 
+                                                     
+                                                 
+                                                         
+                                                            First Sensor 
+                                                     
+                                                 
+                                                         
+                                                            HarnWare 
+                                                     
+                                                 
+                                                         
+                                                            Intercontec 
+                                                     
+                                                 
+                                                         
+                                                            Kemtron 
+                                                     
+                                                 
+                                                         
+                                                            Kilovac 
+                                                     
+                                                 
+                                                         
+                                                            KISSLING 
+                                                     
+                                                 
+                                                         
+                                                            Linx Technologies 
+                                                     
+                                                 
+                                                         
+                                                            Measurement Specialties 
+                                                     
+                                                 
+                                                         
+                                                            Micro-MaTch 
+                                                     
+                                                 
+                                                         
+                                                            Potter & Brumfield 
+                                                     
+                                                 
+                                                         
+                                                            RAYCHEM 
+                                                     
+                                                 
+                                                         
+                                                            Schaffner 
+                                                     
+                                                 
+                                                         
+                                                            Schrack 
+                                                     
+                                                 
+                                                         
+                                                            SEACON 
+                                                     
+                                                 
+                                                          View All TE Brands" href="/en/products/brands.html">
+                                                            > View All TE Brands 
+                                                     
+                                                  
+                                                        View All TE Brands  
+                                             
+									 
+								 
+						 
+                                     
+                                        Buy TE Parts - Direct on TE.com 
+                                 
+                             
+				 
+			 
+			 
+ 
+             
+                 Industries 
+                  
+                  
+             
+             
+                                
+                     
+                             
+								5G & Wireless Equipment 
+						 
+						 
+                             
+								Aerospace 
+						 
+						 
+                             
+								Automation & Control 
+						 
+						 
+                             
+								Automotive 
+						 
+						 
+                             
+								Autosport 
+						 
+						 
+                             
+								Commercial & Industrial Vehicles 
+						 
+						 
+                             
+								Connected Home & Smart Appliances 
+						 
+						 
+                             
+								Data Centers & Artificial Intelligence 
+						 
+						 
+                             
+								Defense & Military 
+						 
+						 
+                             
+								Energy Solutions 
+						 
+						 
+                             
+								E-mobility 
+						 
+						 
+                             
+								Industrial Machinery 
+						 
+						 
+                             
+								Intelligent Buildings & Smart Cities 
+						 
+						 
+                             
+								IoT Connectivity 
+						 
+						 
+                             
+								Medical Technologies 
+						 
+						 
+                             
+								Oil & Gas / Marine 
+						 
+						 
+                             
+								Personal Electronics & Wearable Technology 
+						 
+						 
+                             
+								Rail 
+						 
+						 
+                             
+								Sensor Applications 
+						 
+						 
+                             
+								Space 
+						 
+						 
+                 
+	                     Innovation in Tech Platforms 
+	                     
+	                         
+                                      
+										Electrification & Decarbonization 
+								 
+								 
+                                      
+										Clean Energy & Renewable Power 
+								 
+								 
+                                      
+										Data Connectivity & Cloud Computing 
+								 
+								 
+                                      
+										Industrial Automation & Factory Robotics 
+								 
+								 
+                                      
+										Digital Manufacturing & Materials Science 
+								 
+								 
+                                      
+										Partnerships with Innovators 
+								 
+								 
+                                      
+										Insights on Technology 
+								 
+								 
+                                      
+										Podcast on Tech Innovation 
+								 
+								 
+
+                         
+                 
+         
+        
+     
+             
+                 Services & Trainings 
+                  
+                  
+             
+             
+                 
+                     
+                               
+                                    3D Printing For Production (3D4P)  
+                             
+                               
+                                    Backshells Prototyping – BIT Workx  
+                             
+                               
+                                    Electrical Installation Trainings  
+                             
+                               
+                                    HarnWare Software  
+                             
+                               
+                                    Machine Tooling Service & Repair  
+                             
+                               
+                                    Medical Device Design Services  
+                             
+                               
+                                    Microfluidic Devices  
+                             
+                               
+                                    THE ACADEMY - Automotive Webinars  
+                             
+                               
+                                    Sensor Manufacturing Services  
+                             
+              
+             
+             
+                 Tools & Resources 
+                  
+                  
+             
+             
+                 
+                     
+                         
+									 
+	                                     TE.com Store 
+	                                     Shop 60,000+ electrical parts and electronic components, available for purchase on TE.com 
+									 
+								 
+							 
+									 
+	                                     Samples 
+	                                     Request free samples of TE products 
+									 
+								 
+							 
+									 
+	                                     LADD Store 
+	                                     Shop 3,700+ industrial commercial transportation parts available from LADD Distribution 
+									 
+								 
+							 
+									 
+	                                     Compare Products 
+	                                     Evaluate up to 10 products 
+									 
+								 
+							 
+									 
+	                                     My Lists 
+	                                     Save preferred products you can export and share 
+									 
+								 
+							 
+									 
+	                                     Customer Service 
+	                                     Get expert answers fast 
+									 
+								 
+							 
+                                                 
+                             
+                                      Document Number Search 
+                                 
+                             
+                                      Distributor Inventory 
+                                 
+                             
+                                      Product Cross Reference 
+                                 
+                             
+                                      Track TE Store & Sample Order 
+                                 
+                             
+                                      TE Store & Samples Order History 
+                                 
+                             
+                                      Product Compliance 
+                                 
+                             
+                                      Product Change Notification 
+                                 
+                             
+                                      Product Configurators & Selectors 
+                                 
+                             
+                                      Product & Technology Videos 
+                                 
+                             
+                                      Electrical Models 
+                                 
+                             
+                                      Management System Certifications 
+                                 
+                             
+                                      COO/USMCA 
+                                 
+                             
+                                   View All Resources    
+                                  
+                             
+                                   View All Resources    
+                                  
+                             
+                 
+             
+                     My Tools 
+                     
+                         
+                                   Data Export 
+                                 
+                             
+                         
+                                   Your Downloads 
+                                 
+                             
+                         
+                                   TE Direct Order History 
+                                 
+                             
+                         
+                                   Pricing and Availability 
+                                 
+                             
+                         
+                                   Request for Quote 
+                                 
+                             
+                         
+                 
+             
+         
+     
+             
+                 About TE 
+                  
+                  
+             
+             
+                 
+                     
+                               
+                                    Our Company  
+                             
+                               
+                                    Executive Team  
+                             
+                               
+                                    Engineering Leaders  
+                             
+                               
+                                    TE Stories  
+                             
+                               
+                                    TE News Center  
+                             
+                               
+                                    TE Perspectives  
+                             
+                               
+                                    TE Podcasts  
+                             
+                               
+                                    Events  
+                             
+                               
+                                    Careers  
+                             
+                               
+                                    Investors  
+                             
+                               
+                                    Industrial Technology Index  
+                             
+              
+             
+             
+                 Sustainability 
+                  
+                  
+             
+             
+                 
+                     
+                               
+                                    Strategy  
+                             
+                               
+                                    Planet  
+                             
+                               
+                                    Product  
+                             
+                               
+                                    People  
+                             
+                               
+                                    Sustainability Stories  
+                             
+              
+             
+			            	  Shop TE Store  
+						            
+			          
+	     
+	 
+ 
+     
+         
+      Our website has detected that you are using an unsupported browser that will prevent you from accessing certain features. 
+ We strongly recommend that you upgrade to the most recent version of your browser.  
+         
+     
+  
+             
+                 
+                      &nbsp;
+                      
+                 
+                  
+                  
+             
+         
+     
+  
+ 
+               
+ 
+
+ 
+   
+
+     
+
+
+       
+
+       
+         
+           
+         
+      
+          
+           
+             
+               Empowering AI & Data Center Connectivity
+                 For Next-Gen Speed, Efficiency, and Reliability 
+               
+      
+               
+                 We are your trusted supplier for Artificial Intelligence (AI) and data center solutions. Our products are engineered for compatibility, interconnectivity, and support industry standard form factors and performance requirements, helping deliver seamless integration and tailored solutions to address your unique needs. 
+      
+                 
+                   VISIT OUR VIRTUAL SHOWROOM 
+                 
+               
+      
+               
+      
+               
+                 Insights 
+                 Videos & Webinars 
+                 Access Downloads 
+                 Contact Us 
+               
+      
+             
+      
+           
+       
+      
+
+             
+         
+           
+             
+               Connectivity Solutions Empowering the AI Evolution 
+               
+                Learn how TE is helping to empower the AI evolution with our robust
+                portfolio of interconnect solutions.
+               
+             
+             
+               
+                 
+               
+             
+           
+         
+       
+      
+       
+         
+           
+             
+               Advancing End-to-End Optics for AI Data Centers 
+               At the 2026 OFC Conference, TE Digital Data Networks VP and CTO Mike Tryson speaks with Lightwave’s Ana Berry about AI data center trends and how TE is advancing end-to-end infrastructure across optics, copper, power, and liquid cooling, including its expanded optics portfolio.
+               
+             
+             
+               
+                 
+               
+             
+           
+         
+       
+
+  
+         
+           
+             
+               Scaling Data Centers for the AI Era 
+               
+AI is transforming data centers. In this video, Ganesh Srinivasan, VP of Product Management at TE, explains how TE enables customers to scale AI workloads with advanced interconnect, power, and cooling solutions—backed by deep ecosystem partnerships and a resilient global supply chain.
+
+               
+             
+             
+               
+                 
+               
+             
+           
+         
+       
+
+      
+       
+       
+          
+         
+           
+            &times;
+           
+      
+           
+            
+         
+       
+      
+       
+        
+      
+       
+        (function () {
+          const videoLinks = document.querySelectorAll(".c-solutions__video-link");
+          const lightbox = document.getElementById("videoLightbox");
+          const closeBtn = document.getElementById("closeLightbox");
+          const overlay = document.querySelector(".c-solutions__lightbox-overlay");
+      
+          let player = null;
+      
+          function disableScroll() {
+            document.body.style.overflow = "hidden";
+          }
+      
+          function enableScroll() {
+            document.body.style.overflow = "";
+          }
+      
+          function openLightbox(e) {
+            e.preventDefault();
+      
+            const videoId = e.currentTarget.getAttribute("data-video-id");
+      
+            // Get or initialize player
+            if (!player) {
+              player = videojs("brightcove-player");
+            }
+      
+            // Load the video
+            player.catalog.getVideo(videoId, function (error, video) {
+              if (error) {
+                console.error("Error loading video:", error);
+                return;
+              }
+              player.catalog.load(video);
+            });
+      
+            // Show lightbox
+            lightbox.style.display = "flex";
+            disableScroll();
+            lightbox.offsetHeight;
+            lightbox.classList.add("is-visible");
+      
+            // Play video
+            setTimeout(() => {
+              player.play();
+            }, 500);
+          }
+      
+          function closeLightbox() {
+            if (player) {
+              player.pause();
+            }
+      
+            lightbox.classList.remove("is-visible");
+      
+            setTimeout(() => {
+              lightbox.style.display = "none";
+              enableScroll();
+            }, 300);
+          }
+      
+          // Add click handlers
+          videoLinks.forEach((link) => {
+            link.addEventListener("click", openLightbox);
+          });
+      
+          closeBtn.addEventListener("click", closeLightbox);
+          overlay.addEventListener("click", closeLightbox);
+      
+          // Close on Escape key
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && lightbox.classList.contains("is-visible")) {
+              closeLightbox();
+            }
+          });
+        })();
+       
+
+
+
+
+       
+        (function () {
+          const videoLink = document.querySelector(".c-solutions__video-link");
+          const lightbox = document.getElementById("videoLightbox");
+          const video = document.getElementById("lightboxVideo");
+          const closeBtn = document.getElementById("closeLightbox");
+          const overlay = document.querySelector(".c-solutions__lightbox-overlay");
+      
+          let scrollY = 0;
+      
+          function disableScroll() {
+            scrollY = window.scrollY;
+            document.body.style.position = "fixed";
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.left = "0";
+            document.body.style.right = "0";
+          }
+      
+          function enableScroll() {
+            document.body.style.position = "";
+            document.body.style.top = "";
+            document.body.style.left = "";
+            document.body.style.right = "";
+            window.scrollTo(0, scrollY);
+          }
+      
+          function openLightbox(e) {
+            e.preventDefault();
+            lightbox.style.display = "flex";
+            disableScroll(); // Disable scroll while preserving position
+      
+            // Trigger reflow to ensure display change is applied
+            lightbox.offsetHeight;
+      
+            // Add visible class for fade in animation
+            lightbox.classList.add("is-visible");
+      
+            video.currentTime = 0;
+      	    setTimeout(() => {
+      	      video.play();
+            }, 500);
+      
+          }
+      
+          function closeLightbox() {
+            // Remove visible class for fade out animation
+            lightbox.classList.remove("is-visible");
+      
+            // Wait for animation to complete before hiding
+            setTimeout(() => {
+              lightbox.style.display = "none";
+              enableScroll(); // Re-enable scroll and restore position
+              video.pause();
+            }, 300); // Match the CSS transition duration
+          }
+      
+          videoLink.addEventListener("click", openLightbox);
+          closeBtn.addEventListener("click", closeLightbox);
+          overlay.addEventListener("click", closeLightbox);
+      
+          // Close on Escape key
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape" && lightbox.classList.contains("is-visible")) {
+              closeLightbox();
+            }
+          });
+        })();
+       
+      
+       
+         
+           
+               
+               
+                 
+                   VIRTUAL SHOWROOM 
+                   Welcome to TE AI Virtual Showroom 
+                 
+                 
+                 Discover the connectivity powering next-generation AI. Explore how TE’s high-performance solutions drive the speed, reliability and scalability behind modern compute and data infrastructure. 
+                 
+                 Visit Now 
+               
+             
+   
+               
+                 
+                   Trend Paper 
+                   The Evolution of Data Centers and the Future of Cooling and Connectivity 
+                 
+                 
+                  This trend paper explores how data centers are evolving to meet increasing power and cooling demands, with a focus on new design approaches and connectivity solutions.
+                 
+                 Read Now 
+               
+             
+        
+             
+               
+                 
+                   TE Perspective 
+                   Power, Speed, Cooling: The AI Data Center Challenge 
+                 
+                 
+                  Learn how TE is helping data centers scale intelligently – supporting high-speed connectivity, liquid cooling, and modular power architectures – to meet the evolving demands of AI training and deployment.
+                 
+                 Read Now 
+               
+             
+           
+           
+             
+             
+                
+                
+                
+             
+           
+         
+       
+      
+       
+         
+           
+             AI Data Center Portfolio 
+             
+              To support your need to move massive amounts of data among multiple
+              components quickly and reliably, TE produces a variety of connectors
+              designed with the right features as well as a family of internal cable
+              assemblies, while balancing performance, cost, reliability and durability.
+             
+           
+We recently launched our Virtual Showroom to offer an immersive way for customers to explore our solutions and products. Click the link below to experience it firsthand!
+             
+  
+      VISIT AI VIRITUAL SHOWROOM   
+ 
+
+             
+      
+             Connectivity Solutions for AI Data Centers 
+             Click on any of our solutions to learn more. 
+           
+           
+             
+               
+               
+      
+               
+                 1 
+                 1 
+                 2 
+                 2 
+                 3 
+                 4 
+                 5 
+                 5 
+                 6 
+                 6 
+               
+             
+             
+               
+                   
+                
+               
+               
+                   
+                
+               
+               
+                   
+                
+               
+               
+                   
+                
+               
+               
+                   
+                
+               
+               
+                    
+                
+               
+             
+             
+               
+                AdrenaLINE Slingshot Cabled Backplane Connectors
+               
+               Power Connectors, Cables & Busbar 
+               
+                AdrenaLINE Catapult Near Chip Socket and Mating Connectors
+               
+               
+                AdrenaLINE Fastlane Cabled I/O Connectors
+               
+               
+                High-Speed Cable Assemblies, Optical Transceivers
+               
+               
+                Sliver PCIe Gen 5/6/7 Internal Cabled Interconnects
+               
+             
+           
+         
+       
+      
+       
+         
+      
+           Power Infrastructure Solutions 
+           Click on any of our solutions to learn more. 
+      
+           
+             
+               
+                 
+               
+               
+                 
+               
+              
+               
+                 1 
+                 2 
+                 3 
+                 4 
+                 5 
+               
+             
+      
+             
+               
+                 
+                     
+                 
+                
+               
+               
+                   
+                
+               
+               
+                   
+                
+               
+               
+                   
+                
+               
+               
+                   
+                
+               
+             
+             
+               
+                AC Power Input
+                 Efficiently delivering AC from the power source to the rack 
+               
+               
+                Internal Power Distribution
+                 Complete power distribution solutions across the entire rack 
+               
+               
+                IT Gear DC Input Power
+                 Comprehensive cable-connector assemblies to deliver power to IT Gear 
+               
+               
+                Power Shelf
+                 Seamlessly converts incoming AC power to DC 
+               
+               
+                Rack Power Distribution
+                 Distributes DC power throughout the rack 
+               
+             
+           
+         
+      
+      
+       
+      
+       
+         
+       Our product portfolio 
+ 
+   
+     
+       High-Speed I/O Cables & Connectors 
+     
+     
+       Backplane Connectors & Cable Assemblies 
+     
+     
+       Over-the-Board Connectors & Cable Solutions 
+     
+     
+       Power Connectors & Cable Solutions 
+     
+     
+       Internal Cabled Interconnects 
+     
+     
+       IC & Memory Sockets 
+     
+     
+       112G Portfolio Solutions 
+     
+     
+       224G Portfolio Solutions 
+     
+     
+       Open Compute Project (OCP) Solutions 
+     
+     
+       Optical Solutions 
+     
+   
+
+   View All Products 
+ 
+
+         
+       
+      
+       
+         
+           Latest Insights and Innovations 
+      
+           
+             
+               
+                 
+                   
+                 
+                 
+                   
+                     White Paper 
+                      HVDC: Redefining Data Center Performance and Sustainability 
+                   
+                   
+                    This white paper explores the escalating data center power requirements, the advent of HVDC, and how TE is paving the way for some next-gen designs.
+                   
+                   Read Now 
+                 
+               
+
+ 
+                 
+                   
+                 
+                 
+                   
+                     Trend Insight 
+                     Scaling End-to-End Optical Interconnects for AI Data Centers 
+                   
+                     At OFC 2026, Pranav Garg, VP of Strategy, Business Development and Incubation spoke with Fiber Systems about how TE brings innovation to system-level challenges by scaling end-to-end optical interconnects for AI data centers.
+                   
+                   Read Now 
+                 
+               
+               
+                 
+                   
+                 
+                 
+                   
+                      Trend Insight  
+                      Accelerating the Deployment of Next-generation AI Infrastructure 
+                   
+                    At the 2025 Open Compute Project (OCP) Global Summit, TE Vice President of Product Management, Ganesh Srinivasan, spoke with EE Times Editor in Chief, Nitin Dahad, about the rapidly evolving needs of next generation data centers. Watch the interview on EE Times’ YouTube channel now. 
+                    Watch Now 
+                 
+               
+
+               
+                 
+                   
+                 
+                 
+                   
+                     Trend Paper 
+                     The Evolution of Data Centers and the Future of Cooling and Connectivity 
+                   
+                   
+                    This trend paper explores how data centers are evolving to meet increasing power and cooling demands, with a focus on new design approaches and connectivity solutions.
+                   
+                   Read Now 
+                 
+               
+               
+                 
+                   
+                 
+                 
+                   
+                     FEATURED APPLICATION 
+                     Open Compute Project (OCP) Power Distribution Solutions 
+                   
+                   TE’s OCP power solutions offering. 
+                   Read Now 
+                 
+               
+      
+   
+     
+   
+   
+     
+       Trend Insight 
+       Power Systems for Next-Generation Data Centers 
+     
+     
+      Explore how evolving power architectures support high-density AI compute and modern rack-level distribution.
+     
+     Read Now 
+   
+                             
+   
+  
+           
+           More Insights 
+           
+         
+    
+
+ 
+ 
+ 
+     
+       Subscribe to our Newsletter 
+       Get updates from us on latest new products, insight articles, events and activities. 
+     
+      
+           -->
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           -->
+           
+             
+             
+             
+             
+               
+                 
+                   
+                     
+                       
+                         Email Address
+                           *  
+                         
+                       
+                       
+                         
+                           
+                             
+                               
+                             
+                           
+                         
+                       
+                     
+                   
+                 
+               
+               
+                 
+                   
+                     
+                       
+                         
+                           
+                             
+                               
+                             
+                           
+                         
+                       
+                     
+                   
+                 
+               
+             
+           
+  
+
+   
+    /* Newsletter section (AI Hub) - TE branded styling */
+    section.c-contact.c-section,
+    section.c-contact.c-section .c-contact__content {
+      color: #ffffff;
+    }
+    section.c-contact.c-section h2,
+    section.c-contact.c-section p,
+    section.c-contact.c-section label,
+    section.c-contact.c-section a {
+      color: #ffffff !important;
+    }
+
+    /* TE Orange CTA for Eloqua submit */
+    section.c-contact.c-section .elq-form input.submit-button-style,
+    section.c-contact.c-section .elq-form input[type="submit"],
+    section.c-contact.c-section .elq-form button[type="submit"] {
+      background: #F28B00 !important;
+      background-color: #F28B00 !important;
+      background-image: none !important;
+      border: 1px solid #F28B00 !important;
+      border-color: #F28B00 !important;
+      color: #FFFFFF !important;
+      box-shadow: none !important;
+      text-shadow: none !important;
+      -webkit-appearance: none !important;
+      appearance: none !important;
+    }
+    section.c-contact.c-section .elq-form input.submit-button-style:hover,
+    section.c-contact.c-section .elq-form input[type="submit"]:hover,
+    section.c-contact.c-section .elq-form button[type="submit"]:hover {
+      background: #d97c00 !important;
+      background-color: #d97c00 !important;
+      background-image: none !important;
+      border-color: #d97c00 !important;
+    }
+
+    /* Ensure container wraps floated Eloqua rows */
+    section.c-contact.c-section .elq-form::after,
+    section.c-contact.c-section .layout::after,
+    section.c-contact.c-section .row::after {
+      content: "";
+      display: block;
+      clear: both;
+    }
+   
+
+ 
+    /* Put this AFTER the form so it wins over Eloqua-loaded styles */
+    section.c-contact.c-section .elq-form input.submit-button-style,
+    section.c-contact.c-section .elq-form input[type="submit"],
+    section.c-contact.c-section .elq-form button[type="submit"]{
+      background: #F28B00 !important;
+      background-color: #F28B00 !important;
+      border-color: #F28B00 !important;
+      color: #FFFFFF !important;
+    }
+   
+
+            
+           
+            function handleFormSubmit(ele) {
+              event.preventDefault();
+          
+              var submitButton = ele.querySelector("input[type=submit]");
+              submitButton.setAttribute("disabled", true);
+              submitButton.value = "Submitting...";
+          
+              var formData = new FormData(ele);
+          
+              fetch(ele.action, {
+                method: "POST",
+                body: formData,
+                mode: "no-cors",
+              }).then(function () {
+                // Always show success since we can't verify
+                ele.style.display = "none";
+                document.getElementById("thankYouMessage").style.display = "block";
+                document.getElementById("formCheckbox").style.display = "none";
+          
+              });
+          
+              return false;
+            }
+            function resetSubmitButton(e) {
+              var submitButtons = e.target.form.getElementsByClassName("submit-button");
+              for (var i = 0; i  
+          
+      
+           Thank you! 
+      
+           
+               Yes, I accept  TE’s Privacy Policy  and  TE’s Terms of Use  of this website. 
+           
+      
+           The personal information you provide will be transferred to and processed by TE Connectivity in the U.S. to provide you with the requested information or services. Please read our privacy policy for more details. 
+         
+       
+      
+       
+      	document.addEventListener("DOMContentLoaded", () => {
+      		const acceptCheck = document.getElementById("accept_check");
+      		const submitBtn = document.getElementById("fe105855");
+      		submitBtn.disabled = true;
+      		acceptCheck.addEventListener("change", function(e) {
+      			if (this.checked) {
+      				submitBtn.disabled = false;
+      			} else {
+      				submitBtn.disabled = true;
+      			}
+      		});
+      	});
+       
+      
+
+       
+         
+           
+            AdrenaLINE Catapult Near Chip Socket and Mating Connectors
+           
+           
+             
+               
+                 High-density, high-speed signal launch from the source 
+                 Near-chip connector utilizing uLGA socket technology 
+                 224G signal integrity performance 
+                 Customization available 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            AdrenaLINE Slingshot Cabled Backplane Connectors
+           
+           
+             
+               
+                 Enables all-to-all communication between AI Chips 
+                 Hermaphroditic mating interface for 224G performance 
+                 Operates at 224G PAM-4 data rates with 92 Ohm impedance 
+                 
+                  Mating force required including 1.0 N/DP, with a durability of 200
+                  cycles
+                 
+                 Optimized for 26 to 32 AWG cabled backplane architectures 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            Power Connectors, Cables & Busbar
+           
+           
+             
+               
+                 Reliable, scalable & customizable end-to-end power solution 
+                 
+                  Highly versatile portfolio meeting Open Rack v3 (Orv3) standards
+                 
+                 Offers liquid cooling capabilities 
+                 Supports OCP and custom infrastructures 
+                 Global footprint to ensure supply chain resilience 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            AdrenaLINE Fastlane Cabled I/O Connectors
+           
+           
+             
+               
+                 With twinax copper cables connecting to near-chip connectors 
+                 Supports industry standard form factors like OSFP & QSFP-DD 
+                 Integrated connector and cage press onto the host board 
+                 Advanced thermal management & heat dissipation 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            Sliver PCIe Gen 5/6/7 Internal Cabled Interconnects
+           
+           
+             
+               
+                 Flexible, robust, providing optimal signal integrity 
+                 Enable space saving and lowering design costs 
+                 
+                  Rated up to 56G PAM-4 (112G) speeds with PCIe Gen 6 & beyond
+                  capability
+                 
+                 Various sizing & configuration options 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+             High-Speed Cable Assemblies 
+             
+               
+                 
+                   High-speed solutions to connect devices to the switch 
+                   Greater cable flexibility and longer reach 
+                   Reduced power &amp; latency 
+                   Passive &amp; active, copper &amp; optical options available 
+                 
+               
+               
+                 
+               
+      
+               
+                 Learn More 
+               
+             
+           
+           
+             Optical Transceivers 
+             
+               
+                 
+                   Newly expanded portfolio 
+                   Offer 200G/400G/800G, with 1.6T solutions in development 
+                   Support distances from &lt;100m to 2km 
+                   Reliable performance with great Bit Error Ratio (BER) 
+                   Flexible integration, enabling improved network configuration 
+                 
+               
+               
+                 
+               
+               
+                 Learn More 
+             
+      
+             
+           
+         
+      
+         
+      
+         
+           
+            AC Power Input Efficiently delivering AC from the power source to the rack 
+           
+           
+             
+               
+                 Reliable AC power with board-mount connectors and panel-mount assemblies 
+                 Compliant with ORvX and HPR specifications 
+                 Customizable AC power whips delivering pre-terminated reconfigurable power 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            Rack Power Distribution Distributes DC power throughout the rack 
+           
+           
+             
+               
+                 High-current, durable power distribution with engineered vertical busbars 
+                 Versatile cooling options, including air, liquid and immersion 
+                 Supports rack-to-rack power distribution for advanced rack architectures 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            Power Shelf Seamlessly converts incoming AC power to DC 
+           
+           
+             
+               
+                 Efficient AC-to-DC PSUs including MULTI-BEAM and Card Edge connectors 
+                 Handles power loads using high-current output connectors to the busbar 
+                 Offers custom-engineered cabled and busbar assembly solutions 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            IT Gear DC Input Power
+             Comprehensive cable-connector assemblies deliver power to IT Gear 
+           
+           
+             
+               
+                 Industry-standard creation of ORv3 IT Gear, and adoption as part of the Open Compute Project (OCP) 
+                 Support high-current applications and 12V solutions 
+                 Simplified routing in dense racks with flexible cable exit designs 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+      
+         
+           
+            Internal Power Distribution
+             Complete power distribution solutions across the entire rack 
+           
+           
+             
+               
+                 High reliability power distribution for compute, server, and networking 
+                 Maximizes space-efficiency and performance with compact, high-density designs 
+                 Comprehensive portfolio of connector types for advanced power solutions 
+               
+             
+             
+               
+             
+      
+             
+               Learn More 
+             
+           
+         
+       
+        
+     
+   
+   
+  
+ 
+   
+ 
+      
+	teV2.ns('pageData').chatpopup = [{"endtime":"5:00 PM","starttime":"9:00 AM","day":"Mon"},{"endtime":"5:00 PM","starttime":"9:00 AM","day":"Tue"},{"endtime":"5:00 PM","starttime":"4:00 AM","day":"Wed"},{"endtime":"5:00 PM","starttime":"9:00 AM","day":"Thu"},{"endtime":"5:00 PM","starttime":"9:00 AM","day":"Fri"}];
+    function triggerAnalyticsSubmitFeedback(){
+        try{if (window.teV2.cmsSettings.defaultEnvironment !== 'LOCAL' && window._satellite.track) {
+            window.teV2.digitalData.footerSubmitFeedback = "footer|submit feedback"; window._satellite.track('Submit-feedback');}       
+        }catch(e){};    
+    }
+ 
+  
+
+ 
+    teV2.ns('localization').livechatOfflineLabel = '(OFFLINE)';
+    teV2.ns('localization').livechatHeadingLabel = 'To begin your chat with TE please enter your details';
+    teV2.ns('localization').yellowChatBotId = 'x1691391636415';
+    teV2.ns('localization').isProActiveChatBot =  'true' && true;
+    if(false){
+        if(false){
+            teV2.ns('localization').isProActiveChatBot= false  && true;
+        }
+        if(false){
+            teV2.ns('localization').isProActiveChatBot= '' && true;
+        }     
+    }
+    var hideYellowBot = window.sessionStorage.getItem('hideChat') == null;
+    window.customPlugin = CXBus.registerPlugin('Custom');
+    var botType = window.sessionStorage.getItem('botType');
+    
+    var chatLabels = {
+        "ChatTitle": "Chat",
+        "ChatFormCancel": "CANCEL",
+        "ChatFormSubmit": "CHAT NOW",
+        "required" : "Required",
+        "language": "Language",
+        "firstName": "*First Name",
+        "lastName": "*Last Name",
+        "phoneNumber": "Phone Number",
+        "email": "*Email",
+        "country": "Location",
+        "ConfirmCloseWindow": "Are you sure you want to close chat?",
+        "ConfirmCloseCancel": "Cancel",
+        "ConfirmCloseConfirm": "Close",
+        "ChatEndQuestion": "Are you sure you want to end this chat session?",
+        "ChatEndCancel": "Cancel",
+        "ChatEndConfirm": "End chat"
+    }
+    if(teV2.ns('localization').isProActiveChatBot && !botType)
+    window.ymConfig={bot:"x1733752463520",host:"https://r4.cloud.yellow.ai","payload":{"cookie":window.teV2.store.getCookie("TECewt7"), "url":window.location.href, "startTime":new Date().toISOString(), "pageTitle": document.title},"setDisableActionsTimeout": true,hideChatButton:false},function(){var t=window,e=t.YellowMessenger;if("function"==typeof e)e("reattach_activator"),e("update",ymConfig);else{var n=document,a=function(){a.c(arguments)};function o(){var t=n.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://cdn.yellowmessenger.com/plugin/widget-v2/latest/dist/main.min.js";var e=n.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}a.q=[],a.c=function(t){a.q.push(t)},t.YellowMessenger=a,t.attachEvent?t.attachEvent("onload",o):t.addEventListener("load",o,!1)}}();
+    else
+    window.ymConfig={bot:"x1691391636415",host:"https://r4.cloud.yellow.ai","setDisableActionsTimeout": true,hideChatButton:hideYellowBot},function(){var t=window,e=t.YellowMessenger;if("function"==typeof e)e("reattach_activator"),e("update",ymConfig);else{var n=document,a=function(){a.c(arguments)};function o(){var t=n.createElement("script");t.type="text/javascript",t.async=!0,t.src="https://cdn.yellowmessenger.com/plugin/widget-v2/latest/dist/main.min.js";var e=n.getElementsByTagName("script")[0];e.parentNode.insertBefore(t,e)}a.q=[],a.c=function(t){a.q.push(t)},t.YellowMessenger=a,t.attachEvent?t.attachEvent("onload",o):t.addEventListener("load",o,!1)}}();
+     
+ 
+    teV2.ns('localization').contactReasonOptions = '[{"id":"PI","text":"Product Inquiry"},{"id":"DI","text":"Document Inquiry"},{"id":"QI","text":"Quote Inquiry"},{"id":"OI","text":"Order Inquiry"},{"id":"RT","text":"Returns"},{"id":"WI","text":"Website Issue"},{"id":"OT","text":"Other"}]';
+    teV2.ns('localization').livechatDiscliamerFirstLabel = 'Access to and/or use of the TE Virtual Assistant (TE.V.A.) AI chatbot is subject to our Terms of Use accessible';
+    teV2.ns('localization').livechatDiscliamerLinkText = 'here';
+    teV2.ns('localization').livechatDiscliamerSecondLabel = 'This service is currently experimental.';
+    teV2.ns('localization').disClaimerLink = '/en/policies-agreements/terms-of-use-te-com.html';
+    teV2.ns('localization').chatIntakeFormDisclimer = 'By clicking "chat now" and using this service, you consent to our privacy policy';
+
+  
+ 
+     
+         
+             
+                 Are you sure you want to close chat? 
+                 
+                     Cancel 
+                     Close 
+                 
+             
+         
+         
+             
+                     
+                     Chat 
+                 
+                                             
+                     
+                                            
+                     
+                 
+             
+             
+                  To begin your chat with TE please enter your details 
+                 
+                     
+                         *Contact Reason 
+                         
+                         
+                     
+                     
+                         Language 
+                         
+                         
+                     
+
+                     
+                         *First Name 
+                         
+                     
+                     
+                         *Last Name 
+                         
+                     
+                     
+                         *Email 
+                         
+                     
+                     
+                         *Company 
+                         
+                     
+                     
+                         Phone Number 
+                         
+                             
+                     
+                         Location 
+                         
+                             Select a country 
+                         
+                     
+                     
+                         CANCEL 
+                         CHAT NOW 
+                     
+                     By clicking "chat now" and using this service, you consent to our privacy policy:
+                     
+                             
+                                      
+                                        Privacy  
+                                 
+                                      
+                                        US Privacy  
+                                 
+                     
+                 
+             
+         
+     
+  
+     
+         
+             
+                 
+                     Contact Our Team – 24/7 Support 
+                     
+                         
+                             
+                                 
+                             
+
+							 
+                                         
+                                                Chat 
+                                         
+							 
+                             
+                                  
+                             
+		                     
+                                         
+                                        See Support Details 
+                                     
+                                 
+                                                             
+                 
+
+                  
+                     Access Partner Information  
+                     
+                         
+                             
+                                          Distributors 
+                                     
+                                 
+                                          Suppliers 
+                                     
+                                 
+                                          Supplier Diversity 
+                                     
+                                 
+                     
+                 
+
+                 
+                     Get Answers Now 
+                     
+                      
+                             
+                                                 
+                                                      
+                                                     Authorized Distributors & Resellers 
+                                                 
+                                             
+                                         
+                                                 
+                                                      
+                                                     Product FAQs 
+                                                 
+                                             
+                                         
+                                                 
+                                                      
+                                                     Samples FAQs 
+                                                 
+                                             
+                                         
+                                                 
+                                                      
+                                                     TE Store FAQs 
+                                                 
+                                             
+                                         
+                                                 
+                                                      
+                                                     Terms and Conditions of Sale 
+                                                 
+                                             
+                                         
+                                                 
+                                                      
+                                                     Samples Terms and Conditions 
+                                                 
+                                             
+                                         
+                     
+                 
+
+				 
+                     Select Your Preferences 
+                     
+                           
+                              
+                        
+                                                    
+                              Connect With Us           
+                             
+                                      Facebook 
+                                      
+                                       LinkedIn 
+                                      
+                                       YouTube 
+                                      
+                                       Instagram 
+                                      
+                                 
+                                        
+					 
+				 
+             
+             
+                 Connect With Us 
+                 
+                     
+                                  Facebook  
+                         
+                     
+                                  LinkedIn  
+                         
+                     
+                                  YouTube  
+                         
+                     
+                                  Instagram  
+                         
+                     
+             
+         
+
+         
+              
+             
+                  TE Connectivity empowers engineers by designing and manufacturing sensor and connectivity solutions for our increasingly connected world. 
+            
+                 
+                     
+                         
+                                  Terms of Use  
+                         
+                                  Privacy  
+                         
+                                  US Privacy  
+                         
+                                  Cookie Policy  
+                         
+                                  Accessibility  
+                         
+                                  Security  
+                         
+                                  Site Map  
+                          © 2026 TE Connectivity. All Rights Reserved.  
+                     
+                 
+             
+         
+     
+ 
+ 
+        let geoInfoCookie = window.teV2.store.getCookie("cdn_geo_info");
+        let env = 'PROD';
+        let enableTracking = false;
+        let enableDemandBase = !noticeBehaviorPresent || consentToAll;
+        let enableEloqua = !noticeBehaviorPresent || consentToFunctional || consentToAll;
+
+        if(env === 'PROD' || env === 'STAGE' || env === 'QA') {
+            if(geoInfoCookie !== 'CN' && geoInfoCookie !== ''){
+            	enableTracking = true;
+            }
+        }else {
+            if(geoInfoCookie !== 'CN' ){
+            	enableTracking = true;
+            }
+        }
+        window.teV2.enableTracking = enableTracking;
+        window.teV2.enableSignalsBeacon = enableTracking && enableEloqua;
+        if(enableTracking && enableEloqua){
+            var _elqQ = _elqQ || [];
+            _elqQ.push(['elqSetSiteId', '2070786569']);
+            _elqQ.push(['elqTrackPageView', window.location.href]);
+            
+            (function () {
+                function async_load() {
+                    var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true;
+                    s.src = '//img.en25.com/i/elqCfg.min.js';
+                    var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+                }
+                if (window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+                else if (window.attachEvent) window.attachEvent('onload', async_load); 
+            })();
+    
+            // demandbase tag
+            if(env === 'PROD' && enableTracking && enableDemandBase){
+            	(function(d,b,a,s,e){ var t = b.createElement(a),fs = b.getElementsByTagName(a)[0]; t.async=1; t.id=e; t.src=s;fs.parentNode.insertBefore(t, fs); })(window,document,'script','https://tag.demandbase.com/3905eff9719669f7.min.js','demandbase_js_lib');        	
+            }
+        }
+     
+  
+	document.body.addEventListener('truste-consent-gtm', function(event) {     
+		setTimeout(function() { window.location.reload(); }, 1000);
+	 });
+   
+function loadLucidworksBeacon() {
+      const script = document.createElement('script');
+      script.type = 'module';
+      script.id = 'lw-ui-lib';
+      script.src = 'https://storage.googleapis.com/sb-ui/springboard.esm.js';
+      script.setAttribute('api-url', 'https://fcf41266-bb8c-4204-ba5c-842447baa473.applications.lucidworks.com');
+      script.setAttribute('embed-token', 'kxPLO5yFQmfkD25IX7O2gwCa50be5CEI');
+      script.setAttribute('beacon', '{}');
+      document.head.appendChild(script);      
+}
+if (window.teV2.enableSignalsBeacon) {
+    loadLucidworksBeacon();
+}
+  
+    teV2.ns('linksOpenTabMode').linksInformation = {
+        linksRegBegin : '^http(s?):\/\/(www\\.)?',
+        linksRegUserInput : '(^www\\.)|((^http(s?):\/\/(www\\.)?))',
+        linksNewOpentab : '/content/dam/te-com/documents/*,/commerce/DocumentDelivery/*,https://www.te.com/en/commerce/buy-online-faqs.html,https://www.te.com/commerce/uso/te-learning-connection/sso2.do?unit=PS,https://www.te.com/commerce/uso/te-learning-connection/sso2.do?unit=RL,/commerce/uso/te-learning-connection/sso2.do?unit=PS,/commerce/uso/te-learning-connection/sso2.do?unit=RL,https://learningconnection.te.com/asp/tool_launch.asp,https://www.te.com/en/policies-agreements/terms-of-use-te-com/terms-conditions-sale.html,/en/policies-agreements/privacy-policy.html,/en/industries/5g-wireless-equipment/insights/5g-ai-interactive-experience.html,https://www.te.com/en/policies-agreements/terms-of-use-te-com/sample-terms-conditions.html,https://www.te.com/en/private/corporate/agency-guidelines/agency-guidelines-template-code.html,/en/private/corporate/agency-guidelines/agency-guidelines-template-code.html,https://www.te.com/en/policies-agreements/terms-of-use-te-com.html,https://www.te.com/en/policies-agreements/privacy-policy.html,https://www.te.com/en/private/corporate/guide-order-status.html,/en/ladd/private/guide-bulk-order.html',
+        linksSameOpentab : ''
+    };
+  
+
+
+ 
+    teV2.settings = {"optimizeAssets":true,"plDevMode":false,"plLogLevel":"ERROR","plAEMSourceOverride":false,"plEpdHost":"https://www.te.com","eloquaFormActionUrl":"https://s2070786569.t.eloqua.com/e/f2","enableDivestiture":true,"enableCpdDivestiture":true,"muleSignUpHost":"https://api.te.com/portal/login/"};
+    teV2.ns('settings').logLevel = 'ERROR';
+    teV2.ns('settings').createTECewtCookies = true;
+    teV2.ns('settings').country = 'usa';
+    teV2.ns('settings').lang = 'en';
+    teV2.ns('settings').contactInfo = '+1 800 522 6752';
+    teV2.ns('settings').countryTitle = 'United States';
+    teV2.ns('settings').sitePath = '/content/te-com/framework/en';
+    teV2.ns('settings').isEditMode = false;
+    teV2.ns('settings').isDesignMode = false;
+    teV2.ns('settings').isPreviewMode = false;
+    teV2.ns('settings').isWCMDisabled = true;
+    teV2.ns('settings').distributorRegion = 'North America';
+	teV2.cmsSettings = {"defaultLanguage":"en","defaultCountry":"usa","envParamForAPI":"PROD","defaultEnvironment":"PROD"};teV2.supportURLSettings = {"liveChatConfig":{"liveChatURL":"https://api.mypurecloud.de","transportType":"purecloud-v2-sockets","deploymentKey":"e08c37d4-110d-4c24-9675-6194dedea345","orgGuid":"ce28a58e-e731-4964-9343-e00f95aece86","routingType":"QUEUE","targetAddress":"End Customer","priority":2,"theme":"light"},"liveChatEPDTimeoutMilli":2000,"teHost":"www.te.com","teCNHost":"www.te.com.cn"};teV2.commerceSettings = {"enableLaddNonShippedProducts":false,"enableShippingRestrictionsTEUSA":false,"enableShippingRestrictionsTESOG":false,"guestDataRefreshTimeInCheckout":30,"distRegionPriceDisplayConfig":{"South America":false,"Middle East":false,"Central America":false,"Asia":false,"Europe":true,"Japan":false,"Africa":false,"North America":true,"Oceania":false},"currencySymbolConfig":{"UGS":"Ush","FJD":"FJ$","MXN":"Mex$","STD":"Db","LVL":"Ls","SCR":"Sre","BBD":"Bds$","HNL":"L","UGX":"Ush","ZAR":"R","BSD":"B$","SDD":"ج.س.","ZRN":"NZ","IQD":"ع.د","SDP":"ج.س.","CUP":"$MN","GMD":"D","TWD":"NT$","RSD":"din","ZRZ":"Z","MYR":"RM","FKP":"£","UYP":"$","XOF":"CFA","ARA":"$","UYU":"$","SUR":"₽","CVE":"$","OMR":"ر.ع.","KES":"Ksh","SEK":"kr","BTN":"Nu.","GNF":"FG","MZM":"MT","SVC":"$","ARS":"$","IRR":"﷼","NLG":"fl.","THB":"฿","XPF":"₣","UZS":"so'm","BDT":"৳","LYD":"ل.د","KWD":"د.ك","RUB":"₽","ISK":"kr","BEF":"fr.","RUF":"Rf","MKD":"Ден","RUR":"₽","DZD":"دج","PAB":"B/.","SGD":"S$","KGS":"Лв","HRD":"kn","XAF":"FCFA","ATS":"S","CHF":"Fr.","ITL":"₤","DJF":"Fdj","TZS":"TSh","VND":"₫","ADP":"Pta","AUD":"A$","KHR":"៛","IDR":"Rp","KYD":"$","BWP":"P","SHP":"£","CYP":"£","TJR":"€","RWF":"R₣","AED":"د.إ","DKK":"Kr.","BGL":"Лв.","ZWD":"Z$","MMK":"K","NOK":"kr","SYP":"LS","PSR":"$","YUM":"din.","LKR":"ரூ","CZK":"Kč","IEP":"£","GRD":"Δρχ.","XCD":"$","HTG":"G","BHD":"د.ب","SIT":"SIT","PTE":"$","KZT":"₸","SZL":"E","YER":"﷼","BYB":"Br","AWG":"ƒ","NPR":"Re","MNT":"₮","GBP":"£","HUF":"Ft","BIF":"Fbu","BZD":"$","MOP":"MOP$","NAD":"N$","SKK":"Sk","PEI":"B/.","TMM":"T","PEN":"S/","WST":"WS$","FRF":"₣","GTQ":"Q","CLP":"$","XEU":"XEU","TND":"د.ت","SLL":"le","DOP":"$","KMF":"CF","GEK":"ლ","MAD":"DH","AZM":"₼","TOP":"T$","AZN":"₼","PGK":"K","AZR":"₼","CNH":"¥","UAH":"₴","UAK":"UAK","TPE":"$","MRO":"UM","CNY":"¥","BMD":"$","PHP":"₱","PYG":"₲","JMD":"$","GWP":"GWP","ESP":"Pt","COP":"$","RMB":"¥","USD":"$","ETB":"ብርF","VEB":"Bs.","ECS":"S/.","SOS":"Sh.so.","VEF":"Bs.","VUV":"VT","LAK":"₭","BND":"B$","ZMK":"ZK","LRD":"L$","ALL":"L","GHC":"GH₵","MTL":"Lm","TRL":"₺","USDN":"$","ILS":"₪","GYD":"G$","KPW":"₩","BOB":"Bs.","MDL":"L","AMD":"Դ","TRY":"₺","LBP":"ل.ل.","JOD":"د.ا","HKD":"$","EUR":"€","LSL":"M","CAD":"C$","EEK":"Kr.","MUR":"Rs","ROL":"lei","GIP":"£","RON":"lei","NGN":"₦","CRC":"₡","PKR":"Rs","ANG":"ƒ","LTL":"Lt","SAR":"﷼‎","TTD":"TT$","MVR":"Rf","SRG":"ƒ","INR":"₹","KRW":"₩","JPY":"¥","PLN":"zł","SBD":"Si$","LUF":"F","AOK":"Kz","AON":"Kz","MWK":"MK","AOR":"Kz","BAD":"BAD","NIC":"₪","FIM":"mk","DEM":"€","MGF":"Ar","BAM":"KM","EGP":"E£","BRC":"Cz$","NIO":"C$","NZD":"$","BRL":"R$"},"vatRestrictedCountries":["NO","CH"],"muleFedExAPIServiceUrl":"/api/v1/address/validate","enablePaypalPaymentMode":true}; 
+   
+     
+ 
+
+ 

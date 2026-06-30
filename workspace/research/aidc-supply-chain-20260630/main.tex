@@ -1,0 +1,57 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{AIDC 产业链上下游核心标的深度研究}
+\newcommand{\reportsubtitle}{8 大链条全景池 + 18 只核心估值池}
+\newcommand{\reportkicker}{机构股票研究}
+\newcommand{\reportscope}{中国 A 股 | AIDC 全产业链}
+\newcommand{\reportdate}{2026 年 6 月 30 日}
+\newcommand{\reportdatacutoff}{市场数据至 2026-06-30 11:30；财务数据至 2026Q1/2025A}
+\newcommand{\reporttype}{行业深度研究}
+\newcommand{\reportauthor}{AStock 研究代理团队}
+\newcommand{\reporthouseview}{\kaishu AIDC 产业链不是 18 只股票，而是覆盖算力芯片/存储、服务器零部件、网络光通信、PCB材料、供配电、液冷、数据中心建设运营和下游需求的八大链条。本报告用 80 个子环节做全景覆盖，再从中选取 18 只公开证据和财务数据相对充分的 A 股作为核心估值池。按直接收入证据、2026Q1 财务交付和估值隐含预期排序，工业富联、沪电股份、润泽科技、胜宏科技、中际旭创和新易盛最值得跟踪；但覆盖组合按权重计算的综合目标空间为 -30.1\%，说明现阶段更适合事件验证和回撤布局，而非无差别追高。}
+\newcommand{\reportquality}{来源包括 NVIDIA、Dell'Oro、国家数据局、JLL、LightCounting、SIA、TrendForce、Schneider、Vertiv、TE、Minsheng 公开研报、公司公告/IR、Sina 实时行情快照和 akshare 财务摘要。公司级订单、ASP、客户分配未完整披露的字段均标为 not disclosed、condition-only 或 optionality only。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。}
+
+\input{../../../.agents/templates/preamble.tex}
+\hypersetup{pdfauthor={\reportauthor}, pdftitle={\reporttitle}}
+
+\begin{document}
+\astockcover
+\tableofcontents
+\clearpage
+
+\chapter{投资委员会概要}
+\input{sections/ch01_dashboard}
+\chapter{证据治理与来源边界}
+\input{sections/ch02_evidence}
+\chapter{技术架构、产业趋势与价值池}
+\input{sections/ch03_industry}
+\chapter{供应链映射与竞争位置}
+\input{sections/ch04_supply_chain}
+\chapter{公司映射与财务交付}
+\input{sections/ch05_companies}
+\chapter{公开研究情绪与分歧}
+\input{sections/ch06_sentiment}
+\chapter{估值模型、目标价与隐含预期}
+\input{sections/ch07_valuation}
+\chapter{风险、催化剂与监测框架}
+\input{sections/ch08_risks}
+\chapter{AIDC 全产业链全景池}
+\input{sections/ch09_full_chain}
+
+\appendix
+\chapter{来源注册表与声明审计}
+\input{sections/app_source_audit}
+\chapter{模型假设与披露}
+\input{sections/app_model_disclosure}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[免责声明]
+\small
+\reportdisclaimer\par
+本报告为 AStock 内部研究参考。AStock 目标价和动作标签为模型化研究结论，不代表外部券商评级、投资顾问意见、交易指令或组合托管建议。市场价格、盈利预测、产业节奏和政策环境可能快速变化，任何组合动作均需结合实时风险约束重新判断。
+\end{disclosurebox}
+\end{document}

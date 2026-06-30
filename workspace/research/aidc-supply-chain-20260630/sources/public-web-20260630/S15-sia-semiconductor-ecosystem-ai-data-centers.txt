@@ -1,0 +1,5530 @@
+Powering AI:
+The Semiconductor Ecosystem at
+the Foundation of Data Centers
+June 2026
+
+Table of contents
+I.
+
+Executive Summary
+The many chips at the heart of AI
+Chip innovations driving AI advancements
+Semiconductor AI chip taxonomy
+
+II.
+
+3
+4
+4
+7
+
+Breaking down the AI hardware stack: Chips in an AI data server
+
+9
+
+Compute tray
+
+11
+
+Compute board
+AI Accelerators
+High-bandwidth memory (HBM)
+Central processing unit
+System memory/random access memory
+Non-volatile memory express storage
+Data processing unit
+Network interface card
+Power distribution unit
+
+12
+12
+13
+15
+15
+17
+17
+18
+19
+
+Accelerator interconnect tray
+
+21
+
+Switch ASICs
+Power distribution block
+Active copper cable chips
+Backplane connectors
+
+22
+22
+22
+22
+
+Power tray
+Power supply management module (PSMM)
+Power Supply Unit (PSU)
+Network and intelligent platform management interface tray
+Baseboard management card (BMC)
+Field replaceable unit
+Out-of-band (OOB) switch
+In-band (IB) switch
+Trusted platform module (TPM)
+
+23
+24
+24
+25
+25
+26
+26
+27
+27
+
+Coolant distribution unit tray
+
+29
+
+III.
+
+How chips work together to execute an AI training workflow
+
+30
+
+IV.
+
+The AI growth curve: Market view
+
+V.
+
+The big spend: Semiconductor content value analysis
+
+33
+
+Value concentration vs. cost dynamics
+
+36
+
+From design to data center: Understanding the global supply chain of AI data centers
+
+37
+
+VI.
+
+VII. Emerging Horizons in AI Infrastructure
+
+38
+
+VIII. Conclusion
+
+40
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Executive Summary
+Semiconductors are the foundation of artificial intelligence (AI), a technology that is transforming our economy
+and society, making entire industries more productive and innovative, and driving major scientific breakthroughs.
+Today’s AI systems are built on decades of innovation across the entire semiconductor ecosystem. As chip technologies continue to
+advance, AI will become more capable, energy-efficient, and cost effective. Stronger AI, in turn, will help improve chip design, optimize
+semiconductor manufacturing, and drive more demand for the broad range of chips that enable AI.
+
+Key Takeaways:
+1.
+
+Semiconductors are the fundamental enabling
+
+3.
+
+AI is a major demand driver for chips across the entire
+
+technology of AI. Chips provide the base hardware layer
+
+semiconductor industry. In a positive feedback loop,
+
+underpinning modern AI systems and comprise a significant
+
+advances in AI drive demand for improved semiconductor
+
+portion of the overall value in a modern AI server:
+
+performance and efficiency, while improvements in
+
+•
+
+A single AI server rack contains over 4,500 packaged
+chips, comprised of approximately 20,000 individual
+dies – i.e., unique integrated circuits.
+
+•
+
+semiconductor technology enable more powerful and
+advanced AI systems.
+•
+
+government and industry will invest over $4 trillion in
+
+Semiconductors account for more than 95% of a
+
+new data center infrastructure through 2028, of which
+
+leading AI server rack’s content value and more than
+
+up to $2.8 trillion will be spent on semiconductors.
+
+50% of the total capital expenditures required for
+building and operating an AI data center.
+
+•
+
+Annual revenue for semiconductors deployed in AI data
+centers could reach over $1.2 trillion by 2028, a nearly
+
+2. AI requires the full range of semiconductor
+
+tenfold increase over four years.
+
+technologies. To run complex AI training and inference
+workloads, today’s AI data centers need huge amounts
+
+To meet global demand for new AI applications,
+
+•
+
+The AI data center market is experiencing
+
+of compute, storage and memory bandwidth, power
+
+unprecedented growth, projected at an 88.8%
+
+distribution, and networking capabilities – all provided
+
+Compound Annual Growth Rate (CAGR) from 2022 to
+
+by the full stack of chip technologies. Each of these chip
+
+2028. While initial momentum was driven by the rapid
+
+technologies is essential to driving America’s AI buildout,
+
+adoption of Generative AI, sustained demand remains
+
+while critical dependencies in any of these areas would risk
+
+robust, with a projected 56.3% CAGR from 2025
+
+hampering this buildout. Chips in AI data centers include:
+
+through 2028.
+
+•
+
+•
+
+Advanced logic chips, such as AI accelerators,
+
+The entire semiconductor supply chain enables the buildout of
+
+application-specific integrated circuits (ASICs), field-pro-
+
+AI infrastructure. Without semiconductors, there is no AI. To lead
+
+grammable gate arrays (FPGAs), central processing
+
+in this transformational technology, government and industry
+
+units (CPUs), data processing units (DPUs), and
+
+must work together to advance policies to accelerate growth
+
+networking chips.
+
+and innovation across the full spectrum of chip technologies and
+
+Memory, such as high-bandwidth memory (HBM), both
+dynamic and static random-access memory (DRAM and
+
+work closely with global partners to build strong and resilient
+supply chains.
+
+SRAM), and non-volatile flash memory (NAND).
+•
+
+Analog and foundational chips, such as power chips,
+transceivers, controllers, and sensors.
+
+3
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+I. The many chips at the heart of AI
+Artificial intelligence (AI) has experienced explosive growth in
+
+analyses that stop at system-level performance or market sizing,
+
+recent years, drawing significant attention to those that train and
+
+this report dives into the semiconductor content itself within each
+
+deploy AI models. A wide variety of semiconductors serve as the
+
+of the subsystems within a server—mapping the chips, dies, and
+
+backbone and enabling technology of the AI hardware stack, with
+
+supporting components that power today’s data centers.
+
+1
+
+advancements in chip technology driving increases in processing
+power, computational efficiency, and overall performance
+across AI applications. Semiconductors underpin the AI systems
+embedded in everyday digital experiences.
+
+We further supplement this analysis by spotlighting where value
+is concentrated in these server systems and which technologies
+are critical, from cutting-edge logic built on leading process
+nodes to mature-node components—like power management
+
+This report offers a unique, inside-out look at the variety of
+
+integrated circuits (PMICs), electronically erasable programmable
+
+chips that constitute the heart of AI infrastructure by conducting
+
+read-only memory (EEPROM), compound semiconductors, and
+
+a virtual tear down of a state-of-the-art AI data server, the
+
+microcontrollers—all of which are essential to the functionality of
+
+foundational unit of modern AI infrastructure. Unlike traditional
+
+AI systems and infrastructure.
+
+Chip innovations driving AI advancements
+Though AI may appear to be a modern development, its foundations stretch through decades of development of
+state-of-the-art compute power. But functionality was ultimately constrained by limits in hardware available at the time.
+
+2
+
+Figure 1. Evolution of semiconductor hardware underpinning AI
+
+1950s-80s
+Mainframes and
+Early CPUs
+The earliest AI systems
+ran on mainframes and
+general-purpose CPUs.
+Compute was expensive,
+slow, and power-hungry,
+limiting AI to academic
+and defense labs. AI
+winters followed due to
+a mismatch between
+algorithmic ambition
+and hardware readiness.
+
+1990s-2000s
+Rise of CPUs and
+Clustered Compute
+With improved
+microprocessor
+performance and cheaper
+memory, AI research
+moved into more practical
+applications: like speech
+recognition and decision
+trees. HPC clusters began
+supporting large-scale
+training. Still, CPUs remained
+the dominant processor,
+and AI applications were
+narrow and brittle.
+
+2010s
+The GPU Revolution
+and Deep Learning
+The breakthrough
+moment came with the
+introduction of GPUs for
+general-purpose matrix
+math, ideal for deep
+learning. The training of
+AlexNet in 2012 on GPUs
+marked the dawn of
+modern AI. This ushered
+in an era of massive
+parallelism, with GPUs
+rapidly replacing CPUs
+for training workloads.
+
+Late 2010s
+Specialized AI
+Accelerators
+The rise of deep learning
+models like ResNets drove
+demand for custom AI
+accelerators. Tech giants
+developed their own ASICs
+such as Google’s TPU and
+Amazon’s Inferentia. FPGAs
+also emerged. Power
+eﬃciency, throughput, and
+latency became key
+hardware design metrics.
+
+2023 Onward
+AI Infrastructure
+at Scale
+The era of foundation models
+and generative AI is now pushing
+hardware design toward
+unprecedented complexity.
+Modern AI training runs require
+tens of thousands of AI
+Accelerators, often co-packaged
+with HBM and connected via
+optical interconnects. Innovations
+in 2.5D/3D packaging, chiplets,
+and liquid cooling are reshaping
+data center architecture.
+The bottleneck has shifted from
+pure compute to thermal energy
+management, memory bandwidth,
+and interconnect speed.
+
+4
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+In the past few years, continued improvements in the scale and
+
+center server rack integrates an intricate assemblage of advanced
+
+sophistication of logic, memory, networking, power, and cooling
+
+semiconductor devices engineered to support parallelization,
+
+have paved the way for widespread deployment of high-per-
+
+data proximity, and scalability. An individual AI server rack is
+
+formance AI systems.
+
+composed of approximately 20,000 individual semiconductor
+
+These advancements have catalyzed the rise of AI data centers.
+While traditional data centers have existed for decades to
+manage enterprise IT operations, web hosting, and storage,
+modern AI data centers represent a fundamental capability
+
+dies, consolidated into more than 4,500 packaged chips. These
+include logic processors delivering high-throughput compute,
+ultra-low latency memory subsystems, power management units,
+and networking components.
+
+specialization more than an incremental evolution. Each AI data
+
+Semiconductors account for roughly 95%
+of a leading AI server rack’s content value.
+Each server rack in an AI data center contains
+more than 4,500 chips, which are in turn
+comprised of approximately 20,000 individual
+semiconductor dies. A leading data center can
+accommodate over 45,000,000 chips.*
+* Note: Leading AI Data Center assumed to have 10,000 AI Compute racks
+
+As organizations across industries race to deploy AI-driven
+
+manufacturing technology upgrades to enable the leaps in
+
+solutions, the demand for AI data center capacity and, by extension,
+
+performance that AI workloads demand. These workloads are
+
+3
+
+advanced semiconductors, has skyrocketed. The impact of this
+
+pushing the limits of prior hardware generations, exposing critical
+
+demand surge extends throughout the semiconductor value
+
+issues in architecture optimization, heat dissipation, and data
+
+chain.
+
+movement across massive systems. In response, chipmakers
+
+4
+
+Chip designers are under pressure to shorten innovation
+cycles, releasing new generations of cutting-edge devices more
+frequently. At the same time, fabricators must deliver major
+
+are co-designing hardware and software and pursuing tighter
+integration of memory and compute, leading to the development
+of innovative packaging techniques that enable high-density,
+high-bandwidth configurations.
+5
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Figure 2. Demand growth cycle for semiconductors
+
+Advances in
+semiconductors enable
+development of a more
+capable & scalable AI
+ecosystem
+
+REINFORCING
+INNOVATION
+
+Growing demand &
+sophistication of AI
+ecosystems drive
+demand for new
+semiconductor
+technologies
+
+This is the self-reinforcing cycle of innovation between
+
+and systems can support. This has led to a shift toward highly
+
+semiconductors and AI: advances in semiconductor technology
+
+specialized semiconductor designs, including more efficient and
+
+and AI systems enable an increasingly sophisticated developer
+
+performant processors, more specialized memory stacks, and
+
+ecosystem which, in turn, demands increasingly powerful AI
+
+high-speed interconnects capable of supporting distributed AI
+
+systems and semiconductor technology. As the developer
+
+workloads across entire data centers. In fact, semiconductor
+
+ecosystem increases in sophistication, AI models scale and require
+
+designers and manufacturers are increasingly utilizing AI methods
+
+more data, faster processing, tighter coordination across systems,
+
+to advance the next generation of their products.
+
+and more computations, pushing the limits of what existing chips
+
+AI Workloads: Training
+Is the Homework,
+Inference Is the Test
+Throughout this report, we frequently reference two
+
+might be shown thousands of images of cats and
+non-cats. Through repeated exposure, the model
+learns to identify patterns, such as ears, whiskers,
+or body shape, which distinguish cats from other
+objects.
+•
+
+Inference is the application of that trained model
+to new, unseen data. Continuing the cat example,
+
+primary AI workloads—i.e., training and inferencing,
+
+once the model is trained, it can generate a picture
+
+which represent the distinct phases of AI computation
+
+of a new cat.
+
+and shape how chips are designed. Let’s build a
+clearer understanding of these two workloads with a
+
+In short, training is how a model learns, while inference
+
+simple example:
+
+is how it applies what it has learned to real-world
+
+•
+
+making predictions, or recognizing patterns.
+
+Training is the process of teaching a model by
+
+situations such as generating responses to queries,
+
+exposing it to very large sets of data. For example,
+to build a cat-recognition model, a neural network
+6
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Semiconductor AI chip taxonomy
+AI server racks rely on many types of semiconductor technologies that work together, each tailored to meet the demanding requirements
+of modern AI workloads (figure 3).
+
+5
+
+Figure 3. Types of semiconductors
+
+Semiconductors
+Power AI data centers through
+compute, memory, storage,
+connectivity
+
+Integrated Circuits
+Single or multi-die chips
+integrating many functions in
+one package
+
+Digital
+
+Analog
+
+Discrete Devices
+
+Performs computing, control,
+memory for processing and
+managing binary workloads
+
+Regulates power, manages heat,
+converts signals for
+digital infrastructure
+
+Standalone
+components
+performing one
+function
+
+Logic
+
+Memory/ Storage
+
+process data,
+enabling compute
+for AI and cloud
+workloads
+
+Stores, retrieves,
+and processes data
+for training and
+inference
+
+Serial
+Processors
+
+Parallel
+Accelerators
+
+General-purpose
+chips that execute
+tasks sequentially
+
+Specialized chips that
+run many operations
+in parallel, optimized
+for AI workloads
+training and
+inference at scale
+
+CPUs
+Controls system
+orchestration and
+workload processing
+in AI data center
+Networking
+Custom chip that
+moves data across
+servers, enabling
+low-latency AI
+
+AI Accelerators
+Accelerates
+parallel compute
+tasks for vast data
+volumes in AI training
+and deep learning
+ASICs
+Custom-designed
+chips optimized for
+speciﬁc AI workloads,
+delivering higher
+performance and
+energy eﬃciency than
+general-purpose
+accelerators.
+FPGAs
+Reconﬁgurable
+parallel processing
+chips mostly used for
+inference workloads
+
+DRAM
+Provides fast,
+volatile memory for AI
+training and inference
+workloads
+HBM
+Accelerates AI
+workloads by
+providing fast,
+high-bandwidth
+memory access in
+datacenters
+NAND
+Delivers
+non-volatile storage,
+enabling rapid AI
+dataset and
+model access
+
+Signal
+& Interface
+Manages signals
+for conversion
+& interface
+
+ADC/DAC
+Convertors
+Convert analog
+signals to digital data
+(and vice versa),
+enabling sensor input
+and high-speed I/O
+
+Power
+
+Optoelectronics
+
+Regulates voltage
+and power for
+system operation
+
+Devices that
+convert electrical
+signals to light (and
+vice versa) for
+communication,
+sensing, and display
+
+Power
+Management
+ICs
+
+Clocks/Buﬀers/
+Oscillators
+
+Perform multiple
+power-related functions
+such as controlling
+multi-stage voltage
+regulation, sequencing,
+monitoring, and
+protection
+
+Provide precise timing
+and synchronization
+across chips
+
+Voltage
+Regulators
+Step voltages up
+or down to precise
+supply levels
+
+Power
+Transistors
+Single-function devices
+that handle power
+switching, rectiﬁcation,
+and protection
+Sensors &
+Transducers
+Detect and convert
+signals into data for
+system monitoring.
+Examples,
+environmental
+(temp/humidity),
+electrical (current
+shunts)
+
+SRAM
+Ultra-fast on-chip
+memory used for
+caches and buﬀers,
+enabling low-latency
+data access in CPUs
+and AI accelerators.
+
+Please note:
+1. Some chips within signal will contain mixed signal i.e. analog and digital attributes
+2. The examples are not meant to be exhaustive but indicative, and due to the complex nature of the AI semiconductors, multi-die chip packages contain elements from diﬀerent classiﬁcations.
+3. Networking Chips are categorized under logic for the purposes of this report.
+4. Discrete devices include both analog and digital semiconductors, but the category is dominated by analog functions.
+7
+Pure digital discrete devices are outdated and rare, since digital logic is usually integrated into ICs for eﬃciency.
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Within each server are many specialized chips, including the AI
+
+AI tasks are increasingly central to next-generation AI system
+
+Accelerators which perform the parallel processing needed to run
+
+design.6
+
+complex AI training and inference models. These chips execute
+billions of operations simultaneously to efficiently process large
+amounts of information.
+
+A host of power and networking semiconductors enable efficient
+energy delivery and seamless interconnection within AI servers
+and across systems. AI servers use many chips operating at the
+
+Supporting this compute layer, memory semiconductors are
+
+same time, each tightly coordinated with the rest, making fast
+
+critical to performance, enabling fast and reliable data access.
+
+and reliable management of power, data, and compute resources
+
+As AI models scale, system data volume rises sharply. High-
+
+essential. In parallel, distributed AI workloads depend on fast,
+
+performance memory helps ensure processors are constantly
+
+low-latency communication between nodes, making networking
+
+loading data, avoiding bottlenecks, and maintaining system
+
+semiconductors essential for coordinating compute across
+
+responsiveness. The specialization of memory and logic with
+
+groups of interconnected servers.
+
+Figure 4. Standard AI hardware stack: From silicon die to rack
+
+Die The smallest functional unit in a semiconductor hierarchy—an individual
+slice of silicon containing transistors that perform logic, memory or I/O functions
+(e.g., AI Accelerator die, DRAM die, PHY).
+
+Chip A packaged semiconductor device that integrates one or more dies.
+Packaging provides electrical connections, thermal management, and mechanical
+protection. Chips are designed for placement on a board.
+
+Board A printed circuit board (PCB) that hosts chips, passives, memory, and
+connectors. Boards may also host secondary modules (e.g., SSDs on compute
+boards), forming layered assemblies within a single board footprint.
+
+Tray A modular assembly of one or more boards conﬁgured for a speciﬁc function
+(e.g., compute tray, interconnect tray, power tray). Trays are designed for
+hot-swappable installation within a rack and enable subsystem modularity.
+
+Rack The complete server enclosure that houses multiple trays along with shared
+power, networking, and thermal infrastructure. Racks are the top-level building
+blocks of AI data centers, scaling compute capacity across full systems.
+
+8
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+II. Breaking down the AI hardware stack:
+Chips in an AI data server
+As the following section will illustrate, breaking down AI server
+
+server, from CPUs and accelerators down to signal conditioning
+
+rack hardware reveals a highly modular, vertically integrated
+
+chips, power regulators, memory dies, and control logic.
+
+system. It is composed of tens of thousands of interdependent
+semiconductor components across every subsystem within a
+
+Figure 5. AI data server teardown
+I. AI DATA CENTER
+
+II. SERVER RACK
+
+III. COMPUTE TRAY
+
+IV. COMPUTE BOARD
+
+System Memory (RAM)
+
+High-Bandwidth Memory (HBM)
+
+The server’s main system memory, storing and
+rapidly serving intermediate data and instructions
+to CPUs and AI Accelerator during AI workloads.
+
+Delivers ultra-fast, on-package memory
+bandwidth directly to AI Accelerator for
+uninterrupted computation.
+
+Ac
+
+NETWORK
+& IPMI TRAY
+POWER
+TRAY
+
+c
+Ac
+
+RA
+
+c
+
+M
+CP
+
+COMPUTE
+TRAY
+
+U
+
+RA
+M
+
+Ac
+c
+Ac
+c
+
+RA
+M
+CP
+U
+
+Ac
+c
+
+M
+
+Ac
+c
+
+RA
+M
+CP
+U
+
+C
+
+RA
+M
+
+DP
+U
+PD
+U
+SS
+D
+NI
+C
+DP
+U
+
+distinct and mission-critical function. Both
+rack architectures and individual tray
+conﬁgurations are customized to meet
+customer requirements and workload
+demands.
+
+1-2 TRAYS
+PER SERVER RACK
+
+NI
+
+AI data center server racks consist of
+multiple server types—often referred to as
+“trays”—each engineered to perform a
+
+RA
+
+ACCELERATOR
+INTERCONNECT
+TRAY
+
+COMPUTE
+TRAY
+
+POWER
+TRAY
+CDU
+TRAY
+
+2-4 TRAYS
+PER SERVER RACK
+
+AI Accelerator
+Central Processing Unit (CPU)
+The general-purpose processor that
+orchestrates system operations, data
+preprocessing, and coordination
+between accelerators.
+
+1-2 TRAYS
+PER SERVER RACK
+
+The primary hardware for AI workloads,
+executing massively parallel computations.
+Their ability to run matrix operations at
+scale made modern deep learning feasible.
+
+8 -18 TRAYS
+PER SERVER RACK
+
+4-9 TRAYS
+PER SERVER RACK
+
+Network &
+IPMI Tray
+
+Power
+Tray
+
+CDU
+Tray
+
+Compute
+Tray
+
+Accelerator
+Interconnect Tray
+
+The network and intelligent
+platform management
+interface (IPMI) tray
+provides the control plane
+infrastructure, combining
+out-of-band management,
+high-speed networking, and
+hardware-rooted security to
+manage and secure
+rack-scale operations.
+
+The power tray is the
+electrical foundation of the
+rack, housing power supply
+units (PSUs) and power
+supply management
+modules (PSMMs) that
+convert, condition, and
+distribute multi-kilowatt
+loads with high eﬃciency
+and real-time monitoring.
+
+The coolant distribution
+unit (CDU) tray manages
+rack-level liquid cooling
+through a closed-loop
+system connected to cold
+plates on CPUs, AI
+Accelerators and memory,
+ensuring stable thermal
+performance beyond the
+limits of air cooling.
+
+~100 chips
+per server rack
+
+~600 chips
+per server rack
+
+~10 chips
+per server rack
+
+The Accelerator
+Interconnect tray
+establishes a uniﬁed
+high-performance
+computing fabric, using
+switch application-speciﬁc
+integrated circuits (ASICs),
+power distribution blocks,
+and active copper cable
+(ACC) chips to synchronize
+memory and computation
+across AI Accelerators.
+
+~$17,000-$25,000
+per server rack
+
+~$50,000-$290,000
+per server rack
+
+~$15,000-$30,000
+per server rack
+
+The compute tray is the
+brain of the AI server rack,
+hosting the primary
+processing logic. Each tray
+typically contains one or
+more compute boards,
+local Solid-State Drives
+(SSDs) for storage, Network
+Interface Cards (NICs) for
+connectivity, and often
+Data Processing Units
+(DPUs) for managing data
+organization.
+
+~4,000 chips
+per server rack
+~$1.5M - $3.5M Million
+per server rack
+
+~70 chips
+per server rack
+~$10,000-$50,000
+per server rack
+
+Please note: This illustration is for reference only; actual server component conﬁgurations can vary signiﬁcantly depending on speciﬁcations, price, vendor, and hyperscaler
+requirements. On that note, a tray size can also vary between 1U-8U based on the type of tray/function, vendor it is sourced from, data center requirements, etc.
+
+9
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+A server rack contains a coordinated set of trays, each designed
+to deliver a specific function. Each tray, or subsystem, contains a
+combination of semiconductor and support electronics—loaded
+with semiconductor content—that operate together to provide
+the throughput, energy efficiency, and reliability necessary for
+AI workloads. Understanding this layered architecture is key to
+appreciating the strategic importance of the semiconductor
+supply chain that underpins it. As AI continues to scale, the
+ability to secure, design, and integrate these components will
+be just as critical as the compute itself.
+Generally, there are five types of trays that comprise an AI data
+server rack found in a modern data center, namely 1) compute
+trays, 2) power trays, 3) network and intelligent platform
+management interface (IPMI) trays, 4) AI Accelerator interconnect
+trays, and 5) coolant distribution unit (CDU) trays. Each individual
+tray houses differentiated semiconductor components with
+critical roles. The precise composition of trays in a server rack will
+vary from data center to data center, with the variation driven by
+OEM selection, size, layout, power provision, and builder and/or
+operator of the data center.
+This report breaks down the semiconductor content within a
+generic AI data server, tray by tray.
+
+Every component in the system, from the AI
+Accelerator to individual voltage regulators,
+plays a vital role in ensuring performance,
+efficiency, and reliability at scale.
+
+10
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Compute tray
+The compute tray is the brain of an AI server rack, providing the
+
+units (DPUs) for organizing data into discrete processing units,
+
+primary processing logic required for AI workloads. Each compute
+
+and a power distribution unit (PDU). This tray bears the most
+
+tray typically contains one or more compute boards, non-volatile
+
+expensive, advanced, and most concentrated semiconductor
+
+memory express (NVMe) solid-state drives (SSDs) for storage,
+
+components within a server rack, as it is directly responsible for
+
+network interface cards (NICs) for connectivity, data processing
+
+performance per watt and AI workload throughput.
+
+Figure 6. Mapping the components of a compute tray
+
+A
+
+B
+
+AI Accelerator
+Executes the core AI model computations,
+processing massive data in parallel and
+interfacing tightly with HBM.
+
+Delivers ultra-fast, on-package memory
+bandwidth directly to AI Accelerators for
+uninterrupted computation.
+
+Unit price: ~$10,000 - $40,000
+
+C
+
+High-Bandwidth Memory (HBM)
+
+Unit price: ~$30-50/GB
+Assuming 14TB in a rack, the cost ranges
+from $400-600K (Built into the AI
+Accelerators Price)
+
+Central Processing Unit (CPU)
+Acts as the control center for the server,
+managing memory access, controls system
+boot and shutdown, handles lightweight AI
+inference, and allocates workloads across
+the server’s resources.
+
+D
+Ac
+
+Provides fast, temporary storage for
+CPUs and DPUs to handle data buﬀering
+and task switching during operations.
+
+c
+
+M
+
+Ac
+
+RA
+
+Unit price: ~$7,500 - $15,000
+
+System Memory (RAM)
+
+c
+
+Unit price: ~$7-8/GB
+Assuming 17-24TB in a rack, the cost
+ranges from ~$135-190K
+
+CP
+U
+RA
+M
+
+n
+Fa
+
+COMPUTE BOARD
+
+ay
+rr
+
+A
+Ac
+
+COMPUTE TRAY
+
+c
+
+RA
+
+Ac
+
+M
+
+c
+
+Non-volatile Storage (SSD)
+
+CP
+
+(1U = 1.75 inches)
+
+U
+
+E
+
+Usually 1- 4U in Height
+
+RA
+M
+
+Ac
+c
+
+RA
+
+Ac
+
+M
+
+c
+
+CP
+U
+
+NI
+C
+
+RA
+M
+
+DP
+U
+PD
+U
+
+G
+
+SS
+D
+NI
+C
+U
+
+Unit price: $0.20/GB
+Assuming 200TB in a rack, the
+cost approximates to $40,000
+
+H
+
+Power Distribution Unit (PDU)
+Steps down, regulates, and manages power
+supply from the rack-level busbar to
+individual chips (CPUs, AI Accelerators,
+DPUs, NICs).
+Unit price: $1,000 - $2,000
+
+Network Interface Cards (NIC)
+Performs instructions, calculations,
+and manages data ﬂow between
+hardware and software systems.
+
+DP
+
+Stores and serves large AI
+datasets and models quickly via
+PCIe, feeding AI Accelerators
+and CPUs for compute tasks
+used to load AI training
+datasets, intermediate
+checkpoints, and
+inference-ready models.
+
+Unit price: $7,500 - $15,000
+
+F
+
+Data Processing Unit (DPU)
+Dedicated data track controller that oﬄoads
+networking, storage access, encryption, and
+telemetry workloads from the CPU.
+Unit price: $1,000 - $3,500
+
+11
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Compute board
+Each compute tray houses one to two compute boards where AI
+
+AI Accelerators with a general-purpose CPU, tightly coupled
+
+computation is coordinated and executed. Each compute board
+
+via high-bandwidth interconnects and supported by local
+
+serves as a high-density processing module within the compute
+
+random-access memory (RAM). Compute boards are designed
+
+tray. It typically combines one or more high-performance
+
+for parallelism, thermal efficiency, and signal integrity.
+
+Table 1: Sub-components of a typical AI compute board
+Quantity
+
+Chip type(s)
+
+High-performance accelerator with on-package HBM and
+interconnect die
+
+1–2
+
+Logic and
+memory—DRAM
+
+Central processing unit
+(CPU)
+
+Multi-core micro-processor unit for task orchestration,
+input/output (I/O), and general-purpose workloads
+
+1–2
+
+Logic
+
+System memory (RAM)
+
+High-speed DDR5 or LPDDR5 modules for CPU memory access
+
+8–32 DIMMs
+
+Memory—DRAM
+
+Voltage regulator
+modules
+(VRMs)
+
+Power regulators, power management ICs, and discrete metal
+oxide semiconductor ﬁeld eﬀect transistor (MOSFET) or
+insulated-gate bipolar transistor power stages
+
+50–100+
+
+Analog and
+discrete—
+power transistors
+
+Control and support ICs
+
+Board management controllers, temperature sensors, oscillators,
+buﬀers, clock generators and/or other phase-locked loop
+
+10+
+
+Logic, sensors,
+and analog
+
+Networking
+and interconnect
+
+Communication logic ICs (e.g., InﬁniBand, Ethernet)
+
+1+
+
+Logic
+
+Sub-component
+
+Description
+
+AI Accelerator
+
+A. AI Accelerators
+AI
+
+accelerators,
+
+Graphics
+gate
+
+Processing
+
+arrays
+
+(FPGAs),
+
+circuits
+
+(ASICs),
+
+designed
+
+to
+
+by
+
+an
+
+optimizing
+
+otherwise
+
+are
+
+umbrella
+Units
+and
+
+(GPUs),
+
+up
+
+intelligence
+operations
+
+general-purpose
+
+GPU
+
+includes
+
+field-programmable
+
+semiconductor
+
+artificial
+
+compute-intensive
+
+overwhelm
+
+that
+
+application-specific
+
+specialized
+
+speed
+
+category
+
+accelerators
+
+dominate
+
+large-scale
+
+in
+
+centers,
+
+where
+
+AI
+
+data
+
+training
+
+maximizing
+
+and
+
+inference
+
+throughput
+
+and
+
+integrated
+
+performance is the priority. At the edge, a new class
+
+hardware
+
+of
+
+workloads
+
+Unit (NPU). NPUs are purpose-built to execute neural
+
+accelerator
+
+has
+
+emerged:
+
+the
+
+Neural
+
+Processing
+
+that
+
+would
+
+network
+
+processors.
+
+These
+
+optimizing matrix and tensor operations critical for inference.
+
+FPGA
+
+workloads
+
+with
+
+exceptional
+
+energy
+
+efficiency,
+
+ASIC
+
+12
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+While multiple AI Accelerator architectures exist as shown
+
+These AI Accelerators rely on advanced packaging technologies,
+
+above, GPUs or Graphics Processing units remain the most
+
+such as 2.5D integration with high-bandwidth memory (HBM)
+
+market-relevant and widely deployed platform for AI training
+
+and emerging 3D approaches, which go far beyond conventional
+
+and high-performance inference today. It is the computational
+
+packaging, which simply mounts a single die in a package. Unlike
+
+powerhouse of modern AI infrastructure. Originally designed to
+
+conventional packaging methods, advanced packaging tightly
+
+render graphics, GPU architecture allows for extreme parallel
+
+integrates multiple dies and memory to maximize bandwidth,
+
+processing capabilities to handle billions of computations. Like
+
+reduce latency, and improve power efficiency, making it essential
+
+other modern AI accelerators, they integrate logic dies, which are
+
+for powering AI data center workloads. It is important to note that
+
+fabricated on cutting-edge process technology (7 nm), with HBM
+
+these AI accelerators themselves are composed of both active
+
+stacks, enabling the rapid data throughput required for real-time
+
+and passive subcomponents. A generic bill of materials (BOM)
+
+AI applications and large language model processing.
+
+breakdown for these subcomponents is provided in figure 7.
+
+Figure 7. Schematic breakdown of a modern AI Accelerator and HBM
+TSV
+
+AI Accelerators
+
+CELLS
+
+Logic die
+PHY
+
+DRAM
+STACK
+
+HBM
+
+HBM’s
+PHY
+LOGIC
+DIE
+Interposer
+
+Substrate
+Connections in the
+Interposer linking diﬀerent
+sub-components together
+
+HBM
+
+Grid array pads
+
+B. High-bandwidth memory (HBM)
+HBM (component B of figure 6) is a type of dynamic random-access
+
+for large language models that require rapid access to billions
+
+memory (DRAM) packaged within an AI accelerator to provide
+
+of parameters. HBM is often used for both training large-scale
+
+extremely fast and efficient memory performance required by
+
+AI models and serving high-throughput inference workloads
+
+modern AI accelerators. Unlike system memory (described further
+
+where memory bandwidth directly impacts user experience and
+
+below) HBM stacks layers of memory vertically using vertical
+
+operational efficiency. However, HBM is not universally required
+
+electric connections (i.e., through-silicon vias or “TSVs”) to improve
+
+across all AI systems. Many AI chips, especially those optimized for
+
+the speed, energy efficiency, and scalability of data transfer back
+
+cost-sensitive, latency-tolerant, or narrower inference workloads,
+
+and forth to the logic processor. The physical proximity of HBM
+
+rely on alternative memory architectures such as on-package
+
+to the logic dies in an AI accelerator and the massive parallel
+
+DDR, LPDDR, or larger on-chip SRAM to balance performance,
+
+access capabilities of HBM mitigate memory bottlenecks that
+
+power, and system cost.
+
+7
+
+would otherwise constrain AI model performance, particularly
+
+13
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Table 2 : Semiconductor components of an integrated AI GPU
+Quantity
+
+Chip type(s)
+
+These are the AI Accelerators “compute engines.” They perform millions of math
+operations at once, powering AI training and inference. They contain tensor
+cores, matrix units, and cache.
+
+1–2
+
+Logic
+
+Interconnect PHY
+(physical link)
+interface
+
+This is the high-speed communication port that links the AI Accelerator to other
+AI Accelerators or CPUs using PCI Express (PCIe), Ethernet, or Scale technologies
+(UAL).
+
+1+
+
+Logic
+
+HBM
+(high-bandwidth
+memory)
+
+Stacked DRAM, up to 16 dies per stack, co-packaged with the logic die,
+connected by through-silicon vias (TSVs). Enables extremely fast data access
+required for AI workloads.
+
+6–12 stacks
+(96–192 dies)
+
+Memory—
+DRAM
+
+Co-packaged
+interposer or
+bridge die
+
+A special interconnect layer that connects the AI Accelerator die, Interconnect
+Phy, HBM, and other chiplets underneath so that they can operate with the
+eﬃciency and bandwidth of a uniﬁed die. Used in advanced AI Accelerator and
+CPU heterogenous System-on-Chip architectures
+
+1
+
+Logic
+
+Sub-component
+
+Description
+
+Logic
+die (ASIC)
+
+Sub-component
+
+Description
+
+Logic
+die (ASIC)
+
+These are the AI Accelerators “compute engines.” They perform millions of math
+operations at once, powering AI training and inference. They contain tensor
+cores, matrix units, and cache.
+
+Interconnect PHY
+(physical link)
+interface
+
+This is the high-speed communication port that links the AI Accelerator to other
+AI Accelerators or CPUs using PCI Express (PCIe), Ethernet, or Scale technologies
+(UAL).
+
+HBM
+(high-bandwidth
+memory)
+
+Stacked DRAM, up to 16 dies per stack, co-packaged with the logic die,
+connected by through-silicon vias (TSVs). Enables extremely fast data access
+required for AI workloads.
+
+Co-packaged
+interposer or
+bridge die
+
+A special interconnect layer that connects the AI Accelerator die, Interconnect
+Phy, HBM, and other chiplets underneath so that they can operate with the
+eﬃciency and bandwidth of a uniﬁed die. Used in advanced AI Accelerator and
+CPU heterogenous System-on-Chip architectures
+
+Quantity
+
+Chip type(s)
+
+1–2
+
+Logic
+
+1+
+
+Logic
+
+6–12 stacks
+(96–192 dies)
+
+Memory—
+DRAM
+
+1
+
+Logic
+
+VRMs and Passives
+Voltage regulator modules (VRMs) and passive components
+(capacitors, inductors, chokes, resistors) are the hidden workhorses
+of AI server hardware. A VRM itself is not a single chip but a small
+power subsystem typically built from a multiphase controller which
+drives power stages consisting of MOSFETs which in turn drive
+driver circuitry, inductors, and capacitors. Together, they step down
+rack-level voltages to the precise sub-1V rails needed by GPUs, CPUs,
+and memory. Each accelerator board can host dozens of VRMs and
+hundreds of supporting passives, and across an entire AI server
+rack these components number in the thousands. While individually
+inexpensive and largely commoditized, they are indispensable for
+maintaining stable, efficient power delivery under the extreme and
+rapidly changing demands of AI workloads.
+
+14
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+C. Central processing unit
+The central processing unit (component C of figure 6) serves as
+
+Figure 8. Schematic breakdown of a DRAM DIMM
+
+the orchestrator and general-purpose compute engine within AI
+servers, overseeing data preparation (pre and post processing
+
+SPD
+hub
+
+of data), coordinating workload execution, and managing overall
+system control. The CPU logic die is built on advanced to current
+
+PMIC
+
+SP
+
+generation nodes, depending on performance and cost targets.
+
+Thermal
+sensor
+
+D
+
+In AI infrastructure, CPUs are critical for data ingestion, model
+
+PM
+IC
+
+RC
+D
+
+serving coordination, and running the operating systems and
+
+DRAM
+die stacks
+
+frameworks that support AI workloads. Modern server CPUs uses
+multi-chip module packaging to combine multiple semiconductor
+dies with large cache hierarchies, supporting task scheduling and
+memory management for distributed AI training and inference
+
+Registered
+clock driver
+
+operations.
+
+Data
+Buﬀer
+
+D. System memory/random access memory
+System memory/random access memory (component D of figure
+
+directly to the motherboard. The capacity and bandwidth of
+
+6) provides the primary data staging and buffering capability
+
+system memory directly impact the size of data sets that can
+
+for AI servers, serving as the high-capacity, high-speed storage
+
+be processed simultaneously within an AI data server and the
+
+layer between permanent storage and processing units. System
+
+number of concurrent AI workloads a server can support, making
+
+memory/RAM is built from dynamic random access memory die
+
+it a critical factor in determining overall system throughput and
+
+arranged on dual in-line memory modules (DIMMs) or soldered
+
+cost-effectiveness.
+
+Table 3: Semiconductor components of DRAM DIMMs
+Quantity
+
+Chip type(s)
+
+To store and retrieve data at high-speed using volatile memory
+cells
+
+8–16 dies per
+DIMM
+
+Memory—DRAM
+
+Registering clock
+driver (RCD)
+
+Buﬀers and synchronizes clock and command signals from the
+memory controller
+
+1
+
+Analog—signal
+conversion
+
+Power management
+IC (PMIC)
+
+Locally manages and distributes power to DRAM chips, reducing
+motherboard burden
+
+1
+
+Analog—power
+management
+
+Serial Presence
+Detect (SPD) EEPROM
+
+Stores conﬁguration data for system BIOS to correctly identify
+memory
+
+1
+
+Memory—ﬂash
+
+Thermal sensor
+
+Monitors module temperature for thermal throttling or shutdown
+
+1
+
+Sensors
+
+Sub-component
+
+Description
+
+DRAM die
+
+15
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Architectural Trade-offs:
+Serial vs. Parallel vs.
+Reconfigurable Compute
+
+other essential components, such as expanded I/O
+channels, enhanced memory bandwidth, and high-speed
+interconnect support. By 2025, nearly all the world’s top
+500 supercomputers use this mix of AI Accelerators, HBM,
+and CPUs. In effect, today’s mega-scale AI data centers are
+purpose-built supercomputers, designed to train and run
+
+CPUs and AI Accelerators differ primarily in their
+processing architecture. CPUs are optimized for serial
+processing, executing a few complex tasks sequentially
+with low latency. CPUs can handle inference on smaller,
+basic, low-parameter AI models without the need for a
+dedicated accelerator, making them sufficient for basic
+AI tasks where latency and scale are less demanding.
+While AI Accelerators are built for massive parallelism,
+handling thousands of simpler operations simultaneously.
+This enables AI accelerators to handle 10-100x more
+calculations per second than CPUs and achieve far greater
+data processing throughput, making them especially
+effective for workloads like AI training and inference,
+which involve large-scale matrix operations. As a result, AI
+accelerators have become the compute engine of choice in
+AI data centers.
+As recently as 2015, high-end GPUs were found in gaming
+machines, not data centers. Most data center tasks were
+handled by CPUs—serial processors executing one task at
+a time. In 2016, researchers found GPUs used for gaming
+could efficiently run machine learning models due to their
+parallelism. Data centers subsequently began adopting
+optimized GPUs for AI, though the market remained
+modest. The 2022 emergence of large language models
+(LLMs) in generative AI pushed demand for more
+specialized AI accelerating hardware, often paired with
+high-bandwidth memory (HBM). These units relied on
+data center-grade or server-grade CPUs, architecturally
+similar but separate from standard CPUs, along with
+
+AI at scale.
+Field
+
+programmable
+
+gate
+
+arrays
+
+(FPGAs)
+
+are
+
+reconfigurable semiconductor devices that can be
+programmed
+
+post-manufacturing
+8
+
+to
+
+perform
+
+a
+
+wide variety of logic operations. Unlike CPUs and AI
+Accelerators,
+
+which have fixed instruction sets and
+
+execution architectures, FPGAs consist of a flexible matrix
+of logic blocks and high-speed interconnects that can be
+rewired through hardware description languages to suit
+specific workloads. This programmability allows FPGAs to
+deliver highly customized acceleration for targeted tasks
+without the upfront cost or lead time of designing custom
+ASICs.
+FPGAs serve as adaptable accelerators in AI infrastructure,
+occupying a niche where low latency, deterministic
+execution, and interface flexibility are critical. Unlike other
+AI Accelerators, which excel at massively parallel matrix
+operations, or CPUs, which manage general-purpose
+control tasks, FPGAs are valued for workload-specific
+acceleration, specializing in inference. They optimize data
+paths, reduce input–output bottlenecks, and integrate
+seamlessly with diverse sensors and network protocols,
+making them well-suited for edge AI, telecom, and
+specialized data center use cases where configurability
+and performance-per-watt matter most.
+
+9
+
+FPGAs are complementary to other AI Accelerators in AI
+data centers, carving out value in specialized inference
+niches.
+
+16
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+E. Non-volatile memory express storage
+Non-volatile memory express solid-state drives (component E of
+
+storage a core enabler of end-to-end AI pipeline efficiency.
+
+figure 6) store structured and unstructured data to support modern
+
+NVMe SSDs play a key role in staging large training data sets.
+
+AI workloads. Leveraging the PCIe interface and a streamlined
+
+In inference-centric systems, these memory drives often act as
+
+command set optimized for parallelism, NVMe drives ultra-low
+
+model caches, serving large models to memory on demand to
+
+latency and extremely high throughput, enabling rapid ingestion of
+
+reduce cold-start latency. Beyond logic components such as the
+
+large data sets, fast model checkpointing, and seamless inference
+
+AI Accelerator and CPU, memory components are also composed
+
+model loading. These capabilities eliminate I/O bottlenecks
+
+of multiple sub-components, as demonstrated in the BOM
+
+that can otherwise stall AI Accelerator utilization, making NVMe
+
+breakdown of a typical NVMe SSD in table 4.
+
+Table 4 : Sub-components of a typical data center non-volatile memory express solid-state drive
+Quantity
+
+Semiconductor type
+
+256 (8 stacks of 32
+dies in a package)
+
+Memory—ﬂash
+
+Manages data ﬂow, temperature control, wear leveling, and ﬂash
+translation layer
+
+1
+
+Logic
+
+DRAM cache
+
+Temporarily stores metadata and user data for fast access
+
+1
+
+Memory—DRAM
+
+I/O IC
+
+Handles interface protocols (PCIe/NVMe) and signal conversion
+
+1
+
+Analog—interface
+
+PMIC
+
+Regulates power delivery to all active SSD components
+
+1
+
+Analog—power
+management
+
+Sub-component
+
+Description
+
+NAND ﬂash
+
+Stores persistent data in memory cells using ﬂash technology
+
+SSD controller
+
+F. Data processing unit
+The data processing unit (component F of figure 6) is a
+
+Modern DPUs play a key role in making AI infrastructure
+
+specialized, programmable infrastructure processor that offloads
+
+more flexible, by allowing compute, storage, and networking
+
+non-compute tasks from CPUs and AI Accelerators in AI data
+
+resources to be dynamically assigned and reconfigured through
+
+centers. It operates at the intersection of networking, storage,
+
+software. Like AI Accelerators, DPUs are also composed of other
+
+and security, serving as the controller and data path enabler
+
+semiconductor components (table 5).
+
+for efficient resource orchestration. In AI-centric workloads,
+where massive data sets are streamed and shuffled across AI
+Accelerators, DPUs optimize network data flow (east-west traffic),
+handle security tasks like isolating workloads, and collect real-time
+system data.
+
+17
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Table 5: Semiconductor components of a typical DPU
+Quantity
+
+Semiconductor type
+
+A small processor inside the DPU that runs its own mini operating
+system; handles software and management tasks without involving the
+main server CPU
+
+1
+
+Logic
+
+Packet processing
+engine
+
+A custom-built engine that moves data quickly between networks,
+memory, and devices; handles complex tasks like encryption, traﬃc
+steering, and telemetry faster than a regular CPU could
+
+1
+
+Logic
+
+On-package DRAM
+
+External memory for buﬀering, control-plane operations, and software
+execution
+
+1–2
+
+Memory—DRAM
+
+Physical link (PHY)
+interface
+
+Transmits and receives Ethernet traﬃc over ﬁber or copper cables;
+converts data to and from the physical link
+
+1
+
+Analog—interface
+
+Flash storage
+(SPI/EEPROM)
+
+Stores boot ﬁrmware, telemetry logs, and operating system images
+
+1
+
+Memory—ﬂash
+
+PMICs/VRMs
+
+Power regulation and distribution for SoC and high-speed I/O domains
+
+6–8
+
+Analog—power
+management
+
+Sub-component
+
+Description
+
+Embedded
+logic die
+
+G. Network interface card
+Modern AI workloads require massive bandwidth. Network
+
+includes a network controller ASIC alongside analog physical
+
+interface cards (component G of figure 6) enable high-speed
+
+link (PHY) die for signal integrity and clock/data recovery.
+
+interconnectivity essential for distributed AI training and
+
+There are two types of networking ASICs: scale-up, which facilitates
+
+inference serving, supporting terabit-scale data transfers
+
+low-latency data movement within a system, and scale-out, which
+
+between server racks, compute trays, and storage systems.
+
+enables connectivity and coordination across larger, distributed
+
+NICs with advanced features like remote direct memory access
+
+systems. These chips are often packaged with onboard memory
+
+(RDMA)
+
+and
+
+buffers to support congestion control and packet queuing (table 6).
+
+minimize
+
+communication
+
+hardware-accelerated
+overhead
+
+networking
+and
+
+latency,
+
+protocols
+
+10
+
+directly
+
+improving training efficiency and inference response times in
+large-scale AI deployments. The core semiconductor content
+
+18
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Table 6: Sub-components of a high-performance NIC
+Quantity
+
+Chip type(s)
+
+System on chip with embedded DRAM handling packet processing,
+RDMA, and PCIe/CXL connectivity
+
+1
+
+Logic
+
+Optical
+transceiver
+
+Module that converts high-speed electrical signals to optical
+
+1
+
+Optoelectronics
+
+SerDes/physical
+link (PHY) interface
+
+Circuitry that converts digital data to analog signals for
+high-speed serial transmission
+
+4–8
+
+Analog—interface
+
+DDR memory
+module
+
+On-board DRAM for buﬀering, queuing, and control-plane operations
+
+1
+
+Memory—DRAM
+
+PCIe interface
+
+Connector and logic enabling host communication via PCIe Gen4/Gen5
+
+1
+
+Logic
+
+PMICs/VRMs
+
+Power delivery and regulation for core ASIC, I/O blocks, and memory
+
+2–4
+
+Analog—power
+management
+
+Digital signal
+processor
+
+Boosts and equalizes signal for long ﬁber runs, especially in DR4/DR8
+optics
+
+1
+
+Logic—digital signal
+processor
+
+Oscillator
+
+Provides the stable reference clock signal required for NIC timing
+
+1
+
+Discrete – timing
+
+Clock buﬀers
+
+Distribute the oscillator reference clock to multiple NIC domains while
+preserving signal integrity
+
+1–2
+
+Analog – timing/buﬀer
+
+Clock generator
+
+Alternative to oscillator and buﬀers; derives multiple frequencies from
+a single reference
+
+1
+
+Analog – timing/ clock
+generator
+
+Sub-component
+
+Description
+
+Network
+controller ASIC
+
+H. Power distribution unit
+In advanced AI compute trays, the power distribution unit
+
+greater efficiency. Compound semiconductors, such as those
+
+(component H of figure 6) converts and distributes electrical
+
+made from gallium nitride (GaN) and silicon carbide (SiC), are
+
+power from high-voltage inputs to precise, low-voltage rails
+
+increasingly used in power management systems because they
+
+required by CPUs, AI Accelerator, memory, and other subsystems.
+
+can handle higher voltages with less energy loss and heat.
+
+In advanced AI compute trays, the PDU takes in rack-level 48V or
+
+Also, there is a likelihood that AI data centers will move from the
+
+higher and delivers tightly regulated voltages, often below 1V, to
+
+current data center mix of higher voltage AC combined with 48V
+
+high-density components with high transient loads. Internally, they
+
+DC power to the racks, toward the proposed 400V DC power
+
+house multiple digital and analog semiconductor components,
+
+supply throughout, which would lead to various efficiency gains.
+
+including power management ICs, voltage regulator modules
+
+There are even some plans to move to 800V high-voltage DC
+
+(VRMs), integrated field-effect transistors (FETs), and microcon-
+
+(HVDC) architectures to support racks that individually require
+
+trollers. These chips are typically built on current generation to
+
+1 MW (i.e., 1,000 kW) of power in the near future, compared to
+
+mature process nodes for durability and thermal stability.
+
+the 100–120 kW requirements of the most powerful racks in
+
+As AI data centers demand more power, the chips responsible
+
+11
+
+12
+
+use today.
+
+for managing and converting electricity are evolving to deliver
+
+19
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Table 7: Semiconductor components of a typical power distribution unit for AI server compute tray components
+
+Compound
+Semiconductors,
+Beyond Silicon
+
+GaN, SiC, gallium arsenide (GaAs), and indium phosphide
+(InP) enable properties like wide bandgaps, higher electron
+mobility, and superior thermal conductivity, which are
+essential for next-generation data center scaling and
+optical technologies. These advances allow devices to
+
+Compound semiconductors represent a strategic evolution
+in materials science, expanding performance envelopes
+where silicon is reaching physical limits. Materials such as
+
+operate at higher voltages, frequencies, and temperatures,
+reducing the size and cooling requirements of supporting
+infrastructure.
+
+Power and Memory dominate sheer chip count; Power chips
+also stand out for material diversity using GaN/SiC
+
+2000
+
+Total Chips
+
+1500
+
+1000
+
+500
+
+0
+
+Power
+
+Memory
+
+I/O
+
+Logic
+
+Sensor
+
+Regulating voltage and
+enabling eﬃcient power
+conversion
+
+Both volatile and
+non-volatile, enabling data
+storage and retrieval
+
+Managing connectivity
+between subsystems
+
+Delivering the core
+computational
+performance
+
+Monitoring system
+status and environmental
+conditions
+
+Sub-component Split
+GaN/SiC
+
+Other III-V Compounds
+
+Si
+
+20
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Table 7: Semiconductor components of a typical power distribution unit for AI server compute tray components
+Sub-component
+
+Description
+
+Intermediate Bus
+Converters (IBCs)
+
+Quantity
+
+Chip type(s)
+
+High-power DC-DC converters that step the rack-level 48–51 V bus down to
+intermediate rails typically at 12 V
+
+2–6
+
+Discrete
+
+Point-of-load (PoL)
+converters
+
+Local voltage regulators that convert the intermediate rail (12V/6–8V) into
+low-voltage rails (5 V, 3.3 V, 1.8 V, 1.0 V)
+
+6–12
+
+Discrete
+
+Microcontroller or
+PMBus SoC
+
+For closed-loop power management, telemetry, and I2C/PMBus control
+
+1–2
+
+Logic—MCUs
+
+Power management Control logic for sequencing, telemetry, and dynamic voltage scaling
+ICs (PMICs)
+
+2–6
+
+Analog—power
+management
+
+Current and voltage
+sensors
+
+Analog/digital ICs for real-time telemetry and fault detection
+
+5–10
+
+Analog—ampliﬁers
+
+Drivers & FETs
+
+Performs actual current switching and regulation at IBC level (e.g., 48V->12V)
+
+2–4
+
+Discrete
+
+Accelerator interconnect tray
+The Accelerator interconnect tray creates a unified, high-per-
+
+communication between the dozens of AI Accelerators in a
+
+formance computing fabric that enables AI Accelerators within
+
+server rack (figure 10). This allows them to share memory,
+
+an AI server to function as a single unit. This tray contains
+
+synchronize computations, and collectively tackle large-scale AI
+
+high-bandwidth switch application-specific integrated circuits
+
+workloads that exceed the capabilities of individual accelerators
+
+(ASICs), power distribution blocks, and signal-conditioning
+
+(table 8).
+
+active copper cable (ACC) chips that orchestrate seamless
+
+Figure 10. Accelerator Interconnect tray
+Backplane
+
+D Connectors
+A
+C
+
+1U per tray
+~$10,000 - $50,000 per server rack
+
+Switch
+ASIC
+
+ACC
+Chips
+
+Power
+
+B Distribution
+Block
+
+Cooling
+Fans
+
+21
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+A. Switch ASICs
+
+C. Active copper cable chips
+
+Switch ASICs (component A of figure 10) enable high-speed,
+
+The ACC chip (component C of figure 10) is a compact
+
+low-latency communication between multiple AI Accelerators
+
+analog
+
+within a server rack or across server racks. Their performance
+
+end of an ACC, enabling high-speed, short-distance
+
+directly impacts the scalability and efficiency of AI workloads,
+
+communication (up to 5 meters) across trays or racks.
+
+signal- conditioning
+
+IC
+
+embedded
+
+at
+
+each
+
+especially in LLM training and other compute-heavy applications
+that require synchronized processing across multiple accelerators.
+
+D. Backplane connectors
+
+B. Power distribution block
+
+The backplane connectors (component D of figure 10) serve as
+
+The power distribution block (component B of figure 10) within
+the Accelerator interconnect tray manages localized, high-current
+delivery to switch ASICs and interconnect components,
+aggregating and redistributing power throughout a server rack.
+Internally, this element of the Accelerator interconnect tray
+incorporates power chips to distribute and regulate power to the
+
+the main hub that links multiple AI Accelerators on the compute
+trays. Backplane connectors are the physical interfaces that
+attach the Accelerator interconnect tray and other modules to
+the backplane. Backplane connectors are electromechanical
+components, not semiconductor devices, but are retained here
+for completeness given their role in system interconnect.
+
+trays.
+
+Table 8: Semiconductor components of a GPU interconnect tray
+Quantity
+
+Chip type(s)
+
+Converts digital data into extremely fast electrical signals
+for sending data between accelerators
+
+2
+
+Logic—digital
+signal processor
+
+Switch ASIC
+(fabric switch)
+
+Routes traﬃc between multiple accelerators so they can
+all talk to each other eﬃciently
+
+2 per
+interconnect tray
+
+Logic
+
+SerDes
+transceiver
+
+Converts wide data streams into narrow high-speed serial lanes, and
+back again
+
+16–72+ lanes per
+Switch ASIC
+
+Optoelectronic
+
+ACC chip
+
+Specialized controller IC that manages low-level control, telemetry, and
+coordination between multiple AI Accelerator modules
+
+1–2
+
+Analog—Signal
+conversion
+
+PMICs/VRMs
+
+Incorporated into power distribution blocks to eﬃciently regulate and
+distribute power
+
+4–6
+
+Analog—power
+management
+
+Clock generator/
+phase-locked
+loop (PLL) IC
+
+Provides precise timing signals to synchronize SerDes, switch ASICs,
+and PHYs
+
+1–2
+
+Logic—digital
+signal processor
+
+Oscillator
+
+Provides the stable reference clock signal for AI Accelerator
+interconnect timing
+
+1
+
+Discrete – Timing
+
+Clock
+Buﬀers
+
+Distribute the oscillator reference clock to multiple GPU/SerDes
+domains while maintaining signal integrity
+
+1–2
+
+Analog –
+Timing/Buﬀer
+
+Clock
+Generator
+
+Alternative to oscillator and buﬀer; derives multiple frequencies
+from a single source
+
+0–1
+
+Analog – Timing/Clock Generator
+
+Sub-component
+
+Description
+
+High-speed PHY
+interface
+
+22
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Power tray
+The power tray serves as the electrical foundation of an AI server
+
+Unlike the PDU—which is located on or closer to the compute trays
+
+rack, converting, conditioning, and distributing power to all system
+
+and is responsible for localized voltage regulation and fine-grained
+
+components within the rack. This tray houses the primary power
+
+current delivery to individual components on the compute tray—
+
+supply units (PSUs) that must reliably deliver multi-kilowatt power
+
+the power tray operates at the system level handling bulk power
+
+loads while maintaining high efficiency and providing real-time
+
+conversion and intelligent power orchestration for the entire
+
+monitoring capabilities. Key semiconductor components within
+
+server rack. Together, these power parts form a hierarchical
+
+the power tray include bridge rectifiers, which convert the
+
+power delivery network designed for high-density, high-reliability
+
+electrical currents; power factor correction (PFC) controller ICs,
+
+compute environments (figure 11).
+
+which optimize the quality and efficiency of the incoming power;
+and power transistors (often GaN-based), which rapidly switch
+and regulate voltage conversion for high efficiency.
+
+Figure 11. Power tray
+
+VI. Power Tray
+
+1U-2U per tray
+$50,000 - $290,000 per server rack
+
+Power Supply Unit
+(PSU)
+
+B
+
+Estimated price/unit: ~$500 - $3,000/EA
+~$12,000-$72,000 per rack
+
+A
+
+Power Supply
+Management Module (PSMM)
+Estimated price/unit: ~$50 - $200/EA
+~$200-$800 per rack
+
+Power Supply Units (PSUs) and Power
+Supply Management Modules (PSMMs)
+are composed of multiple semiconductor
+sub-components. For reference, the key
+semiconductor elements used in PSUs
+are summarized in the table below.
+
+23
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Within the power tray, the PSU serves as the primary power
+
+the PSMM incorporates a range of chips, including intelligent
+
+conversion and conditioning system for AI servers, transforming
+
+microcontrollers, voltage regulators for local power, remote
+
+high-voltage AC power from data center infrastructure into the
+
+access capabilities (Ethernet PHY), and sensors, working together
+
+multiple DC voltage rails required by server components (table 9).
+
+to keep servers running efficiently and minimize downtime.
+
+A. Power supply management module (PSMM)
+Power supply management module (component A of figure
+11) acts as the intelligent orchestrator of power distribution
+and monitoring within AI servers. PSMM systems help prevent
+overheating by limiting power when needed, balance electricity
+
+B. Power Supply Unit (PSU)
+Within the power tray, the PSU serves as the primary power
+conversion and conditioning system for AI servers, transforming
+high-voltage AC power from data center infrastructure into the
+multiple DC voltage rails required by server components (table 9).
+
+across different parts of the server, and support proactive
+maintenance by constantly monitoring power quality. To do this,
+
+Table 9 : Semiconductor components of a server-grade power supply unit
+Quantity
+
+Chip type(s)
+
+Converts incoming AC (alternating current) from the mains into unregulated DC (direct current); forms part of the PSU input stage
+
+1
+
+Discrete—
+rectiﬁers
+
+Power factor correction
+(PFC) controller IC
+
+Ensures the input current is drawn in phase with the voltage waveform,
+improving power eﬃciency and reducing harmonic distortion
+
+1
+
+Analog—power
+management
+
+Power MOSFET (e.g.,
+GaN)
+
+High-speed transistors used in switching stages to regulate voltage
+conversion; enable eﬃcient AC-DC conversion through rapid switching
+
+2–4
+
+Discrete—power
+transistors
+
+Pulse width modulation
+(PWM)/resonant
+controller IC
+
+Regulates switching behavior of the transformer by controlling duty
+cycle or resonance timing, optimizing power delivery and eﬃciency
+
+1
+
+Analog—power
+management
+
+Gate driver IC
+
+Interfaces between controller ICs and power MOSFETs, delivering
+the correct timing and voltage to switch the transistors
+
+2–4
+
+Analog—power
+management
+
+Synchronous
+rectiﬁer FETs
+
+Replaces traditional diodes for rectiﬁcation using low-resistance
+transistors, reducing power loss and improving conversion eﬃciency
+
+2–4
+
+Discrete—power
+transistors
+
+Microcontroller/power
+mgt. bus system-onchip (PMBus SoC)
+
+Embedded control unit for monitoring, telemetry, protection, and
+communication (e.g., via PMBus or I²C protocols); governs overall
+PSU logic
+
+1
+
+Logic—MCUs
+
+Voltage and
+temp sensors
+
+Monitor internal voltage rails, current draw, and thermal conditions to
+enable system protection and dynamic control
+
+3–5
+
+Sensors
+
+Sub-component
+
+Description
+
+Bridge rectiﬁer
+
+24
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Network and intelligent platform
+management interface tray
+The network and intelligent platform management interface
+
+server operations. Key semiconductors within this tray include
+
+(IPMI) tray is built on a foundation of semiconductor components
+
+baseboard management controllers, hardware security chips,
+
+that enable secure, scalable control and connectivity for AI
+
+local memory, and high-speed networking switches (figure 12).
+
+Figure 12 . Network and IPMI tray
+
+A
+
+1-2U per tray
+$17,000 - $25,000 per server rack
+
+VII. Network & IPMI Tray
+E
+
+Baseboard Management Card (BMC)
+
+Estimated price/unit: ~$10 - $20/EA
+~$40 per rack
+
+Estimated price/unit: ~$100 - $200/EA
+~$4000 per rack
+
+B
+
+Security Module (TPM)
+
+Field replaceable unit (FRU)
+Estimated price/unit: ~$1 - $3/EA
+~$50 per rack
+
+C
+
+Out of Band (OOB) Switch
+
+D
+
+Estimated price/unit: ~$3500 - $4500/EA
+~$8,000 per rack
+
+In Band (IB) Switch
+Estimated price/unit: ~$3500 - $4500/EA
+~$8,000 per rack
+
+A. Baseboard management card (BMC)
+The baseboard management card (component A of figure 12) enables remote power cycling, hardware
+health monitoring, and system configuration without interrupting running AI workloads (table 10).
+Table 10 : Sub-components of an AI server rack BMC
+Quantity
+
+Chip type(s)
+
+Central processing unit running ﬁrmware and IPMI stack for
+out-of-band management
+
+1
+
+Logic—MCUs
+
+Firmware
+ﬂash
+
+Non-volatile storage for BMC ﬁrmware, logs, and conﬁguration data
+
+1
+
+Memory—ﬂash
+
+Ethernet PHY +
+magnetics
+
+Provides physical and electrical connectivity for remote management
+over LAN
+
+1
+
+Analog—interface
+
+Power management
+IC (PMIC)
+
+Supplies regulated voltages to BMC SoC, memory, and I/O interfaces
+
+1–2
+
+Analog—power
+management
+
+Watchdog timer IC
+
+Automatically resets the system if a fault or freeze is detected
+
+1
+
+Logic—MCUs
+
+Clock Generator
+
+Provides reference clock signals for BMC and peripheral interfaces,
+replacing oscillator and buﬀer in some designs
+
+1
+
+Analog—Timing/Clock Generator
+
+Sub-component
+
+Description
+
+SoC
+(Microcontroller)
+
+25
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+B. Field replaceable unit
+
+C. Out-of-band (OOB) switch
+
+Field replaceable unit electrically erasable programmable read-only
+
+The out-of-band (OOB) switch (component C of figure 12) uses
+
+memory (FRU EEPROM) (component B of figure 12) acts as digital
+
+specialized semiconductor chips to create a separate network for
+
+“name tags” for server components, storing essential details like
+
+server management tasks. These switches (powered by network
+
+identity, configuration, and service history. This makes it easy for
+
+processors and microcontrollers) help maintain reliable oversight
+
+data centers to automatically track, manage, and maintain hardware.
+
+and control of the servers, even when the system is under
+heavy load. This separation is made possible by the advanced
+networking semiconductors inside the OOB switch, which ensure
+secure and uninterrupted access for administrators.
+
+Table 11: Sub-components of an out-of-band switch
+Quantity
+
+Chip type(s)
+
+Core logic chip that routes packets between ports using MAC
+tables, VLANs, and routing logic in real time.
+
+1
+
+Logic
+
+Ethernet PHY
+Interface
+
+Converts digital signals to electrical signals for transmission over
+physical Ethernet media and handles link protocols.
+
+24
+
+Analog—
+Interface
+
+Management SoC /
+CPU
+
+Embedded processor that runs the switch OS and handles CLI,
+API, telemetry, and system management functions.
+
+1
+
+Logic—
+MCUs
+
+Flash Memory
+
+Non-volatile storage used to hold ﬁrmware, conﬁguration ﬁles,
+operating system, and event logs for recovery.
+
+1
+
+Memory—
+Flash
+
+DRAM
+
+Volatile system memory that provides temporary storage for
+active data used by the management processor.
+
+1
+
+Memory—
+DRAM
+
+Power
+Management ICs
+
+Regulates power delivery to all active SSD components.
+
+1
+
+Analog—
+Power management
+
+Sub-component
+
+Description
+
+Switch ASIC
+
+26
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+attestation services. TPMs are also known as security modules.
+
+D. In-band (IB) switch
+
+In AI environments handling sensitive data or proprietary
+
+The in-band (IB) switch (component D of figure 12) manages
+
+models, TPM modules ensure system integrity and enable secure
+
+high-speed data traffic between compute nodes and storage
+
+multi-tenant operations by providing tamper-resistant security
+
+systems within the AI data center by supporting advanced
+
+anchors. These capabilities underpin emerging confidential
+
+networking protocols such as 400G/800G Ethernet or InfiniBand.
+
+computing architectures, in which data and models are protected
+
+The IB switch ensures scalable, synchronized communication,
+
+not only at rest and in transit but also during execution through
+
+essential for training and inference across multi-rack AI clusters.
+
+hardware-enforced isolation and encryption in CPUs and
+accelerators. While confidential computing is not yet the default
+
+E. Trusted platform module (TPM)
+The trusted platform module (component E of figure 12) provides
+hardware-based security foundations for AI servers, including
+
+for AI training or inference, adoption is increasing, particularly for
+inference workloads in regulated or multi-tenant environments,
+as standards and platform support continue to mature.
+
+secure boot capabilities, cryptographic key storage, and hardware
+
+Table 12 : Sub-components of an In-band switch
+Quantity
+
+Chip type(s)
+
+Central chip that receives data packets and routes them to the correct
+port at ultra-high speed
+
+1
+
+Logic
+
+SerDes Transceivers
+
+Converts parallel data into high-speed serial for each port (112G–224G
+per lane)
+
+100+
+
+Optoelectronic
+
+Ethernet/InﬁniBand
+PHY Interface
+
+Converts data to and from electrical/optical signals, depending on port
+type (e.g., OSFP)
+
+1
+
+Analog—
+Interface
+
+Optical Transceivers
+
+Pluggable optics for high-speed ﬁber links (800G, 1.6T)
+
+72
+
+Optoelectronics
+
+Digital Signal
+Processor
+
+Boosts and shapes high-speed signals for clean ﬁber transmission
+
+1
+
+Logic—
+Digital signal processor
+
+Power Management
+ICs
+
+Deliver and regulate power across diﬀerent parts of the switch ASIC
+and transceivers
+
+10
+
+Analog—
+Power management
+
+Fan / Thermal
+Management
+Controller
+
+Controls temperature with fans, enables local and remote setup via
+serial and Ethernet ports, and shows system status through
+indicator lights.
+
+1
+
+Logic—
+MCUs
+
+Flash Memory
+
+Non-volatile storage used to hold ﬁrmware, conﬁguration ﬁles,
+operating system, and event logs for recovery.
+
+1
+
+Memory—
+Flash
+
+DRAM
+
+Volatile system memory that provides temporary storage for active
+data used by the management processor.
+
+1
+
+Memory—
+DRAM
+
+Sub-component
+
+Description
+
+Switch ASIC
+
+27
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Co-Packaged Optics
+interconnect
+
+Thermo -mechanical
+integration
+
+As AI models grow increasingly complex, a large cluster
+
+The next phase of AI infrastructure will be constrained
+
+of accelerators must work in unison to develop frontier
+
+by heat flux, mechanical warpage, interface stability,
+
+models with billions of parameters. Similarly, inference
+
+and assembly/manufacturability as much as by
+
+solutions based on Agentic AI require progressively
+
+compute. Across AI/HPC projections, package areas
+
+larger cluster sizes to deploy multiple agents that
+
+scale to ~9,000–10,000 mm², die area trends toward
+
+can operate concurrently. To meet this insatiable
+
+~4,000–5,000 mm², and average accelerator die power
+
+demand for computing and memory, data centers
+
+is projected to surpass ~5,000 W in the next decade,
+
+are implementing high-speed scale-up networks that
+
+implying at least a doubling of effective power density
+
+provide high-bandwidth connectivity within a pod or
+
+even as silicon scales. These conditions increase
+
+cluster.
+
+sensitivity to TIM behavior under real flatness/
+
+Until now, these compute clusters have depended
+on electrical signals to transfer data. However,
+as bandwidth requirements increase and cluster
+sizes expand, it becomes increasingly challenging
+for electrical connections to meet the reach and
+
+curvature, clamp-load limits, and cyclic reliability
+(silicon cracking, delamination, interconnect fatigue)
+during both package and system-level assembly,
+making package–retention–cold-plate co-design a
+strategic requirement.
+
+bandwidth demands of these networks. High speed
+
+In parallel, as AI factories and data centers shift
+
+electrical signals show significant degradation in
+
+from air cooling toward liquid (air declining to ~65%
+
+signal quality as the network size and distance
+
+by 2035 while liquid rises toward ~30%, with other
+
+increase. Optics, and specifically co-packaged optics,
+
+such as 2 phase refrigerant cooling ~5%), the critical
+
+offer a pathway to achieving higher bandwidth and
+
+problem becomes maintaining low and stable thermal
+
+energy-efficient
+
+Co-packaged
+
+resistance at the liquid interface without over-con-
+
+optics technology leverages the advancements made
+
+straining the mechanics. Field realities also matter:
+
+in chiplet technology over the past decade to integrate
+
+reworkability and serviceability increasingly influence
+
+silicon photonics solutions on accelerator and switch
+
+uptime and total cost as AI deployments scale.
+
+scale-up
+
+networks.
+
+packages. By positioning an optical link close to the
+accelerator, they provide an energy-efficient solution.
+
+Looking ahead, thermo-mechanical design will hit
+an inflection point with emerging system-on-wafer /
+
+Despite these advancements, several challenges
+
+system-on-panel concepts, where module/tray-level
+
+remain in the implementation of co-packaged optics
+
+power can push toward the >25 kW class, and with
+
+solutions. While CMOS process technology and supply
+
+deeper photonic integration to reduce latency,
+
+chains are well-established, optical technology is still
+
+bringing tighter requirements on thermal stability and
+
+in the early stages of adoption. Establishing standard
+
+mechanical alignment. The practical winners will be
+
+protocols for optical communication is crucial for
+
+architectures that treat thermal as a mech-enabled
+
+building a supply chain that ecosystem partners
+
+system: engineered for manufacturability at OSAT/
+
+can readily access. Standard components, such as
+
+EMS scale, validated with correlated test vehicles,
+
+laser modules (light sources for optical engines) and
+
+hardened to mission-profile cycling, and designed for
+
+pluggable fiber modules, are vital for scaling optics
+
+efficient field service.
+
+from lab-scale to high-volume manufacturing.
+
+28
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Coolant distribution unit tray
+The coolant distribution unit tray manages rack-level liquid cooling
+
+Semiconductors enable the various pumps, sensors, circuit control
+
+for high-performance AI servers. As modern AI Accelerator and
+
+valves, and power supply units in these trays. For example, a CDU
+
+CPUs in AI workloads generate significantly higher thermal loads
+
+controller board, equipped with embedded logic semiconductors,
+
+than traditional servers, air cooling alone is no longer sufficient.
+
+manages flow rates, monitors pressure and temperature, and
+
+The CDU ensures reliable thermal management by circulating
+
+regulates pump speed and valve positions for precise thermal
+
+liquid coolant through a closed-loop system connected to cold
+
+control. An Ethernet interface containing semiconductor chips
+
+plates mounted on CPUs, AI Accelerators and memory modules.
+
+(PHY and MAC controllers) converts signals and manages data
+
+This not only prevents thermal throttling but also enables higher
+
+packets, enabling remote monitoring and control, while a local
+
+sustained compute performance in dense configurations.
+
+LCD display provides real-time diagnostics and operational status
+(figure 13).
+
+Figure 13. CDU tray
+Power Supply
+
+A Unit
+
+F
+
+Sensors
+
+Pumps
+
+Circuit
+
+D Control
+Valve
+
+Controller
+B CDU
+Board
+
+C
+
+Ethernet
+Interface
+
+Cooling
+Fans
+
+E
+
+Controller
+LCD Display
+
+2-4U per tray
+~$15,000 - $30,000 per rack
+Passive non-semiconductor
+components shown for
+illustration purposes
+
+Table 13: Semiconductor components of a coolant distribution unit
+Quantity
+
+Chip type(s)
+
+Ensures voltage compatibility between MCU and devices
+
+3
+
+Sensor
+
+Pressure Sensors
+
+Includes pumps, ﬂow meters, valves, cold plates, radiators, cooling fans
+and mechanical connections that circulate coolant across the server rack.
+
+4
+
+Sensor
+
+Temperature
+Sensors
+
+Measure real-time liquid ﬂow rate (in L/min)
+
+4
+
+Sensor
+
+CDU Controller
+Board (MCU)
+
+Monitor coolant temperature delta (ΔT)
+
+1
+
+Logic –
+MCUs
+
+Ethernet/PM Bus
+Interface
+
+Handles system monitoring, fan/pump control,
+Ethernet interface
+
+1
+
+Analog –
+Interface
+
+Sub-component
+
+Description
+
+Flow Sensors
+
+29
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+III. How chips work together to
+execute an AI training workflow
+Training AI models at scale requires a tightly coordinated
+
+interconnects operate in unison to manage parallel workloads,
+
+system of specialized chips, each optimized for a distinct role
+
+synchronize compute across nodes, and ultimately deliver a fully
+
+in the workflow. Figure 14 illustrates how CPUs, AI Accelerator
+
+trained model ready for deployment.
+
+high-bandwidth memory (HBM), non-volatile storage, and optical
+
+Figure 14. Data in a data center: How chips work together in an AI training workflow
+
+RAM Serves as a
+Fast-access Buﬀer &
+Execution Memory
+User /
+Web-scale
+Data
+
+Data Ingestion
+Managed by DPUs
+
+CPU Orchestrate
+Training Workloads
+I/O pathways
+(PCIe/C2C)
+
+Ethernet
+
+Persistent Storage
+in NVMe / SSDs
+
+Model Assembly
+& Inferencing
+Deployment
+
+Ethernet
+
+Data Pre-processing
+and Transfer
+using DPU
+
+I/O pathways
+(PCIe)
+
+Accelerated Compute
+for Parallel
+Processing
+Iterative Training Loop.
+Repeated until convergence
+
+Co-Packaged High
+Bandwidth Memory
+AI Accelerator clusters
+connected through
+Interconnects
+
+AI model training starts with data ingestion, which is handled
+
+greater scalability with lower power consumption. Once data
+
+by data processing units that function as coordinators for
+
+reaches the AI Accelerator cluster, training is accelerated through
+
+web-scalable data entering the system. Once ingested, data is
+
+highly parallelized compute across thousands of cores, supported
+
+written to NVMe SSDs, which are optimized for checkpointing
+
+by HBM to manage vast model weights and activations across
+
+and feeding multiple accelerators concurrently. This architecture
+
+distributed nodes.
+
+enables rapid throughput and reduces latency during training,
+especially when paired with technologies like GPUDirect, which
+allows direct access from storage to AI Accelerator memory,
+bypassing the CPU altogether.
+
+Meanwhile, CPUs orchestrate the training workload, managing
+synchronization, memory coordination, and task distribution.
+They handle control flow logic and offload activations to balance
+memory utilization, enabling support for larger models and batch
+
+DPUs also perform pre-processing on data at line rate, parsing
+
+sizes. Leveraging interconnects, AI Accelerators exchange model
+
+and formatting it before it’s passed directly to the compute
+
+states and intermediate activations at high speeds, allowing for
+
+units. This minimizes the CPU’s workload and ensures that
+
+massive models to be trained iteratively and efficiently across
+
+AI Accelerators receive clean, structured data for training.
+
+many devices. Once training is complete, CPUs aggregate
+
+SmartNIC-integrated DPUs can simultaneously support storage
+
+outputs and finalize model assembly, readying it for downstream
+
+offload, network acceleration, and protocol handling, allowing
+
+deployment.
+30
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+IV. The AI growth curve: Market view
+AI adoption is growing rapidly, which is driving greater demand
+
+2028, an almost tenfold increase over five years (figure 15). The
+
+for the semiconductors that power data centers supporting
+
+market for data center logic chips (primarily AI Accelerators) was
+
+these workloads. Revenue for semiconductors deployed in
+
+approximately $30 billion in 2022, expanded to $70 billion in 2024,
+
+AI data centers is projected to reach more than $1.2 trillion by
+
+and is projected by WSTS to reach $190 billion by 2026. .
+
+15
+
+Figure 15.  Total revenue by semiconductors deployed in AI data center servers
+
+AI Data Center | Semiconductor Revenue ($B)
+$1.5T
+$1.4T
+
+$1.2T
+
+$1.2T
+$1.0T
+
+$905B
+
+$800B
+
+$670B
+
+$600B
+$400B
+
+$886B
+
+$320B
+$123B
+
+$200B
+$0
+
+$770B
+
+$27B
+
+$45B
+
+2022e
+
+2023e
+
+2024e
+
+Source: Deloitte Research
+Note: This revenue forecast excludes Edge AI
+
+2025e
+Estimated
+
+2026f
+Forecast
+
+2027f
+Optimistic
+(35% growth)
+
+2028f
+Conservative
+(15% growth)
+
+Different AI applications require different compute infrastructure,
+
+in model architecture and training techniques have reduced the
+
+with implications for semiconductor hardware design and
+
+time and compute needed to train large models. Further, the
+
+deployment. While most data center demand for semiconductors
+
+availability of pretrained foundational models further decreases
+
+has been driven by training for AI model development, the market
+
+the need for large-scale training runs.
+
+for inference (e.g., applying trained models to real world scenarios)
+is growing.
+
+Once trained, models are deployed for inferencing—performing
+real-world tasks, generating responses to queries, making
+
+Training and inference represent distinct computational tasks.
+
+predictions, or recognizing patterns. Inferencing occurs in a data
+
+AI model training, during which a data center processes massive
+
+center, often referred to as “in the cloud,” or on a device, referred
+
+data sets to learn patterns and make sense of complex real-world
+
+to as “at the edge” (e.g., inside AI PCs, smartphones, vehicles, or
+
+variables, requires semiconductors with significant compute
+
+factory systems). In data centers, inference chips are optimized
+
+power. Chips designed for AI training deliver extreme parallelism
+
+for throughput and latency, leveraging high-efficiency compute
+
+and support enormous memory bandwidth, enabling a model to
+
+to execute operations in milliseconds. At the edge, on-device
+
+adjust its internal parameters millions, or even billions, of times
+
+AI accelerator chips prioritize low latency, small form factors,
+
+until it can make accurate predictions or recommendations.
+
+and energy efficiency, enabling local decision-making without
+
+This demands hardware with advanced interconnects, dense
+
+constant server communication. Given the unique characteristics
+
+transistor layouts, and high-speed memory hierarchies.
+
+of AI training versus inference workloads, data center operators
+
+Training workloads are episodic and increasingly efficient, which
+will lead to flattening demand for training specific chips. Advances
+
+are increasingly opting for vertically tailored application-specific
+integrated circuits (ASICs) to optimize performance and efficiency
+gains.
+
+31
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Inference workloads are predicted to become the primary driver
+
+on maximizing parallel compute, while inference chips evolve
+
+of AI-related chip demand. Demand for inference compute scales
+
+toward ultra-low-latency, energy-efficient designs.
+
+with consumer use of generative AI tools, enterprise adoption,
+16
+
+and the rise of AI agents embedded into applications.
+
+Unlike
+
+hyperscale training clusters, edge AI deployments are far less
+resource-intensive, relying on smaller, energy-efficient chips
+optimized for inference. Rising inference workloads point toward
+a growing need for custom, power-efficient silicon: AI Accelerators
+optimized for throughput, dedicated inference ASICs/FPGAs,
+CPUs tuned for latency-sensitive tasks, and associated memory
+17
+
+and networking chips.
+
+Training and inference workloads currently run on the same
+hardware components despite their different workload profiles.
+That said, chipmakers are
+
+designing products specifically for
+
+inferencing workloads driven by a need for greater efficiency or
+high throughput.
+
+18, 19, 20, 21
+
+As product differentiation continues to
+
+advance, the industry could see a sharper split between training22
+
+and inference-specific hardware. Training chips may concentrate
+
+Industry projections indicate that revenue from inference
+workloads will grow several times over in the coming years, while
+revenue from training is expected to flatten. For example, Boston
+Consulting Group estimates training will grow at a 30% compound
+annual rate from 2023 to 2028.
+
+23
+
+In contrast, inference will grow
+
+at 122% over the same period. To contextualize this shift, industry
+experts forecast inference’s share of total demand can grow from
+20% in 2024 to 80% by 2032.
+
+24
+
+AI is poised to drive a substantial portion of the semiconductor
+industry’s growth through the end of the decade, with McKinsey
+projecting semiconductor industry annual to reach $1.6 trillion
+revenue by 2030, largely due to AI & data centers.
+26
+
+25
+
+With a
+
+semiconductor market of $791.7 billion in 2025 Gen AI could
+therefore represent over 40% of the industry’s growth in the
+coming years.
+
+32
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+V. The big spend: Semiconductor
+content value analysis
+To meet global AI demand, a cumulative $4.0 trillion is expected
+
+AI data center rack, valued between $1.5 million and $4 million.
+
+to be invested in building AI data centers over a period of eight
+
+The percentages shown represent the approximate share of
+
+years from 2023 through 2030, of which up to $2.8 trillion is
+
+component content within that rack.)
+
+expected to be spent on semiconductors and other hardware
+for AI server setups.
+
+27
+
+For a modern, leading AI server rack, roughly 95% of content
+
+In a typical AI data center, the majority
+
+value resides in semiconductors. At the component level, the AI
+
+of capital expenditures lies in compute infrastructure, which
+
+Accelerator captures more than 70% of semiconductor content
+
+accounts for more than 50% of an AI data center’s total capital
+
+by value in an AI data server rack. Each GPU module co-packages
+
+expenditures. This investment is concentrated in the AI server
+
+one or more large, leading-node logic dies, HBM memory stacks,
+
+rack, a modular, high-value system costing $1.5 million to $4
+
+interposers, and specialized interconnects that contribute to this
+
+million each, purpose-built to handle the unique demands of AI
+
+overall value. CPUs, also architecturally critical, account for 8%,
+
+workloads. A leading data center could house up to 10,000 racks.
+
+and the DPU adds a further 2%.
+
+To further understand where this investment would land in the
+
+Overall, logic chips account for 65% of the semiconductor content
+
+semiconductor value chain, we analyzed the semiconductor
+
+in a server rack, which also includes AI Accelerators, CPUs, DPUs,
+
+content within a standard, industry-grade AI server and how
+
+NIC controllers, BMCs, and ASICs.
+
+this content translates into economic value across the global
+semiconductor supply chain. (Note: Figure 16 is based on a single
+
+Figure 16. Share of semiconductor content value in an AI data center rack
+Logic and memory are the most widely deployed chip domains across data center components,
+together accounting for more than 85% of semiconductor value
+
+AI Accelerator
+
+70%
+
+20%
+
+Central Processing
+Unit (CPU)
+
+85%
+
+Networking & Interconnect
+Components
+
+44%
+
+Power & Cooling
+Components
+
+8%
+
+Data Processing
+Unit (DPU)
+
+7%
+
+14%
+
+7%
+
+5%
+
+6%
+
+5%
+3%
+
+6%
+
+8%
+
+3%
+
+57%
+
+20%
+
+11%
+
+40%
+
+2%
+1%
+
+81%
+
+System Integration &
+Management
+
+0%
+
+8%
+
+43%
+16%
+
+15%
+
+10%
+
+39%
+
+66%
+
+Non-Volatile Storage
+(NVMe SSD)
+
+74%
+
+6%
+
+4%
+
+33%
+
+7%
+
+3%
+
+90%
+
+Volatile Memory
+(DDR5/LPDDR5 DRAM)
+
+Component
+
+% of Server
+Rack Value
+
+60%
+
+11%
+
+10%
+
+8%
+
+80%
+
+<1%
+
+100%
+
+Sub-component Split
+Logic
+
+Memory
+
+Power
+
+Sensor
+
+Signal
+
+Passives/Packaging
+
+33
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Memory and storage semiconductors account for more than
+
+ensure reliable power delivery and signal timing. It also includes
+
+20% of a rack’s total semiconductor content value, composed of
+
+compound semiconductors (e.g., GaN and SiC power devices) that
+
+HBM, DRAM, and NAND flash devices integrated in various server
+
+enable high-efficiency power conversion for liquid cooling pumps
+
+trays. These figures reflect the architectural nature of modern AI
+
+and high-voltage distribution. Together, these supporting chips
+
+workloads: vast matrices, distributed models, and large training
+
+provide the resilience, efficiency, and safety margins that allow the
+
+sets that demand not only raw compute but extreme memory
+
+high-value logic and memory components to perform at scale.
+
+bandwidth and low-latency access to data.
+
+As previously noted, the semiconductor value composition within
+
+The stability of the entire AI data server also rests on a long
+
+a given server will vary to some extent depending on certain
+
+tail of lower-cost, current-generation node components and
+
+factors (see the appendix for methodology and additional detail).
+
+emerging material innovations that account for the remaining
+
+However, this variation is driven primarily by the specific logic chip
+
+approximately 10% of the rack’s semiconductor content value.
+
+selection. Server racks that integrate cutting-edge AI Accelerators
+
+While individually low in unit cost, these chips are critical to
+
+exhibit a compositional value of 65% to 75% in logic chips, while
+
+voltage stability, signal integrity, and thermal control, particularly
+
+those using mid-tier AI Accelerators showed only 40% to 50%
+
+in tightly packed racks with megawatt-level power densities.
+
+logic value, with the balance shifting toward memory and storage
+
+This category includes analog semiconductors such as power
+
+components. Higher-priced systems are generally characterized
+
+management ICs, voltage regulators, and clock generators that
+
+by greater compute density and higher peak performance.
+
+28
+
+The Performance–
+Pragmatism
+Trade-Off
+System integrators and hyperscalers design AI platforms
+by first establishing requirements for performance,
+capacity, power consumption, and total cost of ownership
+(TCO). These requirements are driven by the intended
+workload mix, deployment scale, and operational constraints, and they guide a structured component selection
+process rather than a single “best-chip” outcome. From
+this perspective, accelerator selection reflects a series of
+deliberate trade-offs:
+• Performance targets (TFLOPs): Not all AI workloads
+require the maximum compute throughput offered by
+
+• Total cost of ownership (TCO): Accelerator choices are
+evaluated holistically, incorporating acquisition cost,
+power consumption, cooling requirements, rack density,
+and expected operational lifetime. Lower-power or midrange accelerators can offer superior TCO for workloads
+that are not performance-bound.
+• Capacity and availability considerations: Supply lead
+times, platform compatibility, and deployment timelines
+influence accelerator selection, particularly at scale,
+where predictability and repeatability are critical.
+
+cutting-edge GPUs. For many training and inference use
+cases, mid-tier accelerators deliver sufficient performance while improving utilization efficiency and system
+balance.
+
+34
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+By far, the compute tray accounts for most of the semiconductor footprint within a data server—about 95% of content value, nearly
+90% of total number of semiconductor dies, and more than 80% of the number of individual chips (figure 18).
+
+Figure 17. Value distribution by process node technology for each tray type
+Advanced-node dies are concentrated almost entirely in the compute tray to handle AI workloads,
+while other trays, handling non-core functions, rely mostly on mature and legacy nodes
+
+Compute Tray
+Accelerator Interconnect Tray
+
+49%
+
+13%
+
+38%
+
+94%
+
+6%
+
+IPMI Tray
+
+80%
+
+Power Tray
+
+19%
+
+17%
+
+83%
+
+CDU Tray
+
+100%
+
+0%
+
+50%
+
+100%
+
+Spread of Dies in the Tray
+Advanced Nodes:
+<10 nm for logic and
+alpha nm for memory
+
+Current-Generation Nodes:
+≥ 10nm and < 28nm, thus includes
+alpha/beta nm for memory
+
+Foundational/Mature Nodes:
+≥ 28 nm
+
+Figure 18. Content value and share of dies/chips by volume for each tray type
+Sub-component Split
+Node / Tray
+Outer Ring:
+
+Compute
+Tray
+
+By Content Value
+
+Middle Ring:
+
+By Total # of Chips
+in a Server
+
+Compute tray holds
+nearly all economic
+value, despite other
+trays carrying >15%
+of the chip count
+
+Inner Ring:
+
+By Total # of Dies
+in a Server
+
+Power
+Tray
+IPMI
+Tray
+Accelerator
+Interconnect Tray
+CDU
+Tray
+
+The value distribution of the trays is highly correlated with the
+
+The Accelerator interconnect tray and IPMI tray also leverage
+
+level of advancement, or process node, of the semiconductor
+
+some advanced dies, but the value of those trays is far lower
+
+technology. This report defines advanced nodes as sub-10
+
+overall due to the smaller number of dies present and the relative
+
+nanometer generations, typically fabricated with extreme
+
+maturity of the technology node used to manufacture those dies.
+
+ultraviolet (EUV) lithography. In addition to the compute tray
+accounting for the bulk of semiconductor dies overall, most of
+those dies are manufactured using advanced process technology
+(figure 18).
+
+35
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Value concentration vs. cost dynamics
+While a small number of logic chips account for most of the value in an AI data server, the vast majority of components by count sit at
+the low-cost end of the spectrum but are nevertheless mission-critical for system functionality (figure 19).
+
+Figure 19.  Chip distribution across pricing buckets in an AI data center
+
+3%
+Chip Pricing
+Buckets ($):
+
+Just 3% percent of high
+value chips drive majority
+of server’s content value
+
+16%
+
+Over half the chips in a
+server are less than $10
+
+<10
+10-100
+
+52%
+
+100-1000
+>1000
+
+29%
+
+This duality between a concentrated value stack at the leading edge and critical dependencies across the broader semiconductor
+spectrum highlights both the opportunities and vulnerabilities shaping the future of AI infrastructure.
+
+36
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+VI. From design to data center :
+Understanding the global
+supply chain of AI data centers
+Up to this moment in this report, we have broken down the chips
+which go into Data Center AI servers up to the lowest level of
+detail. To build one of these chips, however, an entire ecosystem
+needs to be brought together. Data center chip manufacturing
+requires thousands of steps across a globally distributed supply
+chain. The process involves two main supply chain segments:
+one for creating packaged chips from initial designs, and another
+for integrating these chips into systems ready for data center
+deployment.
+AI servers are not plug-and-play. They must be slotted into
+pre-provisioned power domains, matched to network topologies
+that minimize latency, and connected to distributed storage
+clusters that ensure throughput. Facility operators, cloud
+hyperscalers, and infrastructure providers all play a role in
+this deployment choreography and often work closely with
+semiconductor providers to ensure compute performance
+requirements are met. As AI infrastructure continues to
+
+are mounted on PCBs such as DIMMs (for DRAM), SSD boards
+
+scale, supply chains are expected to deliver both chips
+
+(for NAND), or compute boards (for AI Accelerators). System
+
+and complete, integrated systems ready to run complex
+
+integration and final assembly involve combining compute,
+
+workloads from day one.
+
+memory, storage, networking, and thermal systems into fully
+
+As seen in figure 20, the journey begins with semiconductor
+design, where engineers use electronic design automation (EDA)
+tools to architect and simulate integrated circuits and printed
+
+functional server units. The exact configuration of the units
+are adjusted to meet customer requirements for performance,
+cooling, and power delivery.
+
+circuit boards (PCBs), ensuring functional correctness and
+
+2.5D/3D techniques for high-performance chips while standard
+
+manufacturability before fabrication. Next, in semiconductor
+
+chips use conventional methods such as wire bonding. The
+
+fabrication, the designs are imprinted on silicon wafers in
+
+result is a fully packaged and electrically validated chip, ready for
+
+cleanroom environments using a variety of sophisticated raw
+
+integration into systems. Once chips pass electrical validation,
+
+materials and advanced equipment by processes such as
+
+they enter module and board assembly, where packaged dies
+
+lithography and etching. In the packaging stage, dies that have
+
+are mounted on PCBs such as DIMMs (for DRAM), SSD boards
+
+passed rigorous testing are interconnected using advanced
+
+(for NAND), or compute boards (for AI Accelerators). System
+
+2.5D/3D techniques for high-performance chips while standard
+
+integration and final assembly involve combining compute,
+
+chips use conventional methods such as wire bonding. The
+
+memory, storage, networking, and thermal systems into fully
+
+result is a fully packaged and electrically validated chip, ready for
+
+functional server units. The exact configuration of the units
+
+integration into systems. Once chips pass electrical validation,
+
+are adjusted to meet customer requirements for performance,
+
+they enter module and board assembly, where packaged dies
+
+cooling, and power delivery.
+
+37
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Figure 20. From design to data center
+
+Semiconductor Manufacturing Process
+
+Inputs
+
+Process
+
+Raw
+Manufacturing
+Materials
+Equipment
+
+EDA
+Solutions
+
+1. Product
+2.1 Wafer
+Design
+Fabrication
+Key locations:
+Key locations:
+United States,
+Taiwan,
+South Korea
+South Korea,
+United States
+
+2.2 Wafer Testing
+& Die-Cutout
+Key locations: Taiwan,
+South Korea, Malaysia,
+Vietnam, Philippines &
+United States
+
+Specialized equipment and raw materials are
+employed at each stage of the semiconductor
+manufacturing process, but those used in wafer
+fabrication are the most strategically critical
+
+For the latest
+High-Performance
+AI Chips such as
+accelerators, HBM,
+CPUs
+
+OUTPUT
+
+3.1 Advanced Packaging
+Key locations: Taiwan, South
+Korea, Malaysia & United States
+
+Finished
+Chip
+
+For normal Chips such
+as NAND, DRAM,
+Older Gen CPUs
+
+3.2 Traditional Packaging
+Key locations: Taiwan, China, South Korea,
+Malaysia, Vietnam & Philippines
+
+Data center build out process
+
+Finished
+Module
+4. Module/Board
+assembly
+Key locations: China,
+Taiwan, Vietnam
+
+AI Data
+Center
+
+Assembled
+Rack
+5. System Integration
+& Testing
+Key locations: Malaysia,
+China, Vietnam, Taiwan
+
+6. Installation
+and Deployment
+Key locations: Global
+
+VII. Emerging Horizons
+in AI Infrastructure
+As AI data centers mature, a series of technology shifts and
+
+being designed to run AI models independently without relying on
+
+market forces are reshaping how infrastructure is designed,
+
+cloud infrastructure. This trend is reinforced by the adoption of
+
+deployed, and sustained. This section highlights the key trends
+
+smaller, task-specific models that can be deployed locally. Hybrid
+
+that are starting to drive the next phase of growth:
+
+computing is becoming a core element for enterprise
+
+30
+
+AI strategies, driven by the need for faster response
+
+Impact of edge demand
+
+times,
+
+Inference demand is moving beyond centralized data centers
+
+segments of the market toward low-power, cost-optimized
+
+toward hybrid models that combine cloud, edge, and on-device
+
+semiconductors such as embedded AI SoCs and NPUs,
+
+computing. Edge AI is reshaping compute demand by redistributing
+
+micro-accelerators, and specialized PMICs. This trend could also
+
+workloads from centralized data centers to decentralized
+
+sustain demand for current-generation and mature-node chips,
+
+By 2025, more than 50% of data was expected
+
+sensors, and connectivity silicon, as edge deployments prioritize
+
+environments.
+
+29
+
+to be generated by edge devices, and many of these devices are
+
+reduce
+
+network
+
+privacy protections.
+
+31
+
+dependency,
+
+and
+
+stronger
+
+Expanding edge inference may pull
+
+volume, integration, and efficiency over raw performance.
+
+38
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Process technology evolution
+Semiconductors continue to advance in density and efficiency, but
+the pace of raw transistor scaling is slowing. The industry is shifting
+from FinFETs to nanosheet FET designs, which improve power
+32
+
+control and reduce energy loss. At the same time, researchers
+are exploring new materials such as 2D semiconductors and
+compound semiconductors to extend performance beyond
+silicon’s limits. With scaling alone no longer sufficient, progress
+increasingly comes from system-level innovation. While 3 nm
+technologies are currently pushing the boundaries of transistor
+scaling, future nodes may incorporate new materials such as
+nanosheet FETs, gate-all-around (GAA) transistors, and advanced
+lithographic techniques like EUV with high numerical aperture
+(High-NA EUV). These approaches allow chips to deliver greater
+performance, energy efficiency, and cost-effectiveness, even as
+
+Architecture and packaging transitions
+Another significant shift is the move toward domain-specific
+architecture that tightly integrate high-performance logic,
+memory, and interconnects. Future AI workloads will increasingly
+leverage modular designs that allow heterogeneous components
+(i.e., “chiplets”) to be co-packaged with minimal latency penalties.
+This architectural transition is supported by advances in 2.5D and
+3D packaging, which enable tighter integration of compute and
+memory elements while improving power efficiency and thermal
+management. Photonics with co-packaged optics (CPO) is also
+an emerging breakthrough, embedding optical interconnects
+directly with switch ASICs or accelerators to deliver higher
+bandwidth and lower energy per bit. Optical interconnects more
+broadly are positioned as next-generation solutions for latency
+reduction and energy savings, particularly for large-scale training
+clusters with multi-node AI Accelerator fabrics.
+
+Hardware–software co-design
+Another key trend is the increasing integration and optimization
+across hardware and software stacks, driving greater efficiency
+for AI workloads. By controlling silicon architecture, packaging,
+and deployment strategies end-to-end, these organizations and
+hyperscalers can tune systems for specific performance, latency,
+or energy goals. This trend is expected to influence market
+
+Moore’s Law slows.
+
+33
+
+Memory and data movement
+Continued innovation in HBM and next-generation DRAM is
+critical. The HBM market alone is forecast to reach $21 billion
+by 2025, highlighting its critical role in enabling high-bandwidth
+compute.
+
+34
+
+Future iterations of HBM will feature increased stack
+
+heights, improved energy efficiency, and tighter integration with
+compute cores. Similarly, new memory hierarchies are expected
+to emerge that combine SRAM, DRAM, and persistent memory for
+optimized data locality and reduced data movement.
+
+Energy and sustainability imperatives
+As energy requirements for AI infrastructure increase, energy
+efficiency and sustainability will become more pressing concerns,
+prompting greater investment in power-efficient chip design,
+dynamic workload allocation, and intelligent cooling systems.
+Infrastructure providers will need to prioritize computational
+efficiency per watt of energy, primarily as a cost-saving measure
+but also as a response to global sustainability targets and energy
+market volatility. Operators who proactively invest in adaptable,
+energy-efficient systems will be better positioned to sustain
+long-term value as AI deployments diversify across sectors and
+geographies.
+
+35
+
+dynamics by reducing reliance on off-the-shelf solutions and
+
+With each new generation of data centers, AI computation is
+
+increasing the strategic importance of in-house semiconductor
+
+becoming significantly more energy efficient, a trend that is
+
+capabilities.
+
+reshaping the economics and architecture of modern data
+
+39
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+centers. Continued improvements in the energy efficiency of
+
+costs and grid demand rise, higher energy efficiency is no longer
+
+semiconductor hardware that powers AI is key to unlocking AI’s
+
+a ‘bonus’, it is the only way to deploy AI at scale.
+
+potential, from compute-related chips to the chips that manage
+cooling, steady electricity demand, distribute and transform
+power, and organize workloads across the entire facility. Gains
+in performance per watt will allow data center operators to pack
+servers more densely and boost AI performance without requiring
+a proportional increase in energy. As chip companies develop
+solutions that reduce energy requirements per computing unit,
+a 10 MW data center with more efficient chips could eventually
+deliver the same processing capacity as 50 MW data centers using
+earlier generation semiconductor technologies. As electricity
+
+Lastly, overall AI energy efficiency is determined not only by the
+silicon itself, but by the end-to-end data center system. This
+includes how power is brought into the facility, an area evolving
+at a pace comparable to chip development, as well as power
+conversion losses, thermal management efficiency, utilization
+rates, and workload placement. The architecture of power delivery
+into AI data centers is now changing on an almost annual basis,
+and in some cases even faster, collectively governing how much
+effective compute is ultimately extracted per watt delivered.
+
+VIII. Conclusion
+This report illustrates the diversity of inputs within the
+semiconductor supply chain that underpin AI infrastructure
+– beyond high-end processors and accelerators to signal
+conditioning chips, power regulators, memory dies, and control
+logic. As AI continues to scale, the ability to maintain a competitive
+semiconductor innovation system will be foundational to the
+continued advancement of AI. The entire semiconductor supply
+chain, involving U.S. semiconductor design, manufacturing, and
+manufacturing equipment companies, enables the buildout of AI
+infrastructure. In short, without semiconductors there is no AI.
+To lead in this transformational technology, government and
+industry must work together to advance policies to accelerate
+semiconductor innovation – strengthening capabilities across the
+full spectrum of chip technologies – and work closely with global
+partners to build strong and resilient supply chains.
+
+40
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Author Bios
+David Isaacs
+Vice President, Government Affairs
+disaacs@semiconductors.org
+
+Jeroen Kusters
+Principal
+jekusters@deloitte.com
+
+David Isaacs is vice president of government affairs at SIA,
+where he is responsible for all aspects of the association’s
+work related to government policy.
+
+Jeroen Kusters is the US semiconductor leader and
+partner at Deloitte Consulting LLP, where he oversees the
+semiconductor industry practice, advising semiconductor
+clients across a variety of domains.
+
+Mary Thornton
+Vice President, Global Policy
+mthornton@semiconductors.org
+
+Duncan Stewart
+Director
+dunstewart@deloitte.ca
+
+Mary Thornton is vice president at SIA, where she is
+responsible for SIA’s global policy and economic security
+agenda.
+
+Duncan Stewart is the director of TMT research for Deloitte
+Canada and is the lead researcher on semiconductor
+topics for the US TMT Center and for DeloitteGlobal.
+
+Greg LaRocca
+Director of Market Research and Economic Policy
+glarocca@semiconductors.org
+Greg LaRocca is director of market research and economic
+policy at SIA, where he oversees the analysis of industry data.
+
+Erik Hadland
+Director of Technology Policy
+ehadland@semiconductors.org
+Erik Hadland is the director of technology policy at SIA,
+where he is responsible for the association’s research,
+development, and technology activities as well as its
+education and workforce development efforts.
+
+Amy Scimeca
+Manager
+aseiler@deloitte.com
+Amy Scimeca is a manager at Deloitte Consulting LLP,
+supporting market strategy, value capture, and supply
+chain design engagements for semiconductor clients.
+Karan Aggarwal
+Manager
+karaaggarwal@deloitte.com
+Karan Aggarwal is a manager at Deloitte Consulting
+LLP, where he leads large-scale strategic and enterprise
+transformation projects across US and Asian semiconductor clients.
+Pranav Salhan
+Consultant
+psalhan@deloitte.com
+Pranav Salhan is a consultant at Deloitte Consulting LLP,
+supporting semiconductor clients on operations optimization, supply planning, and enterprise transformation
+initiatives.
+
+Acknowledgments
+We appreciate the invaluable contributions of SIA member companies and subject
+matter experts who provided feedback that informed this report.
+This report would not have been possible without the contributions of our SIA
+colleagues Aaron Woolf, Alex Gordon, Emma Rafaelof, and Molly O’Leary.
+
+41
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Appendix
+Methodology for semiconductor
+content value analysis (CVA)
+
+Each setup adheres to a standardized 48U server rack format and
+is provisioned with 200 TB of storage for comparability. Compute
+
+CVA quantifies the relative semiconductor content value of an
+AI data center server setup by evaluating and averaging key
+hardware components costs across representative system
+configurations. It is designed to offer insight into how compute,
+memory, networking, and power infrastructure contribute to
+
+performance is measured using FP16 peak throughput (PFLOPS)
+to capture theoretical compute capacity for AI workloads. Costs,
+power draw, and component counts are normalized based
+on publicly available product specs and internal teardown
+benchmarks.
+
+the total semiconductor cost within high-performance AI server
+
+Each component category is assigned a value share based on
+
+racks.
+
+its bill-of-materials (BOM) contribution in the three reference
+systems. These shares are validated using teardown reports,
+
+Server configuration selection
+
+industry disclosures, and known silicon pricing ranges at volume
+
+The CVA is based on three representative AI server rack setups:
+
+scale.
+
+•
+
+Analytical approach and averaging
+
+OEM turnkey system: A vertically integrated configuration
+optimized for performance density, featuring 72 top-tier AI
+accelerators and custom interconnects.
+
+•
+
+semiconductor value breakdown across the three server setups
+
+Third-party system integrator setup 1: A modular high-performance system with 64 high-bandwidth AI Accelerators
+(same as OEM set up), emphasizing modularity and power
+scaling.
+
+•
+
+The value breakdown shown in figure 22 represents an average
+discussed above. This approach reflects both OEM turnkey
+system and third-party system integrator architectures, offering
+a balanced perspective on how component selection influences
+total cost and value concentration. We have provided the value
+21
+
+breakdown for each of the configurations separately in figure .
+
+Third-party system integrator setup 2: A mid-tier modular
+configuration using 32 accelerators across interconnected
+chassis, representing a performance-efficient, cost-sensitive
+deployment.
+
+Figure 22 : Value breakdown from reference racks
+Component
+
+Variant Setups
+
+Central Processing
+Unit (CPU)
+AI Accelerators
+
+OEM Turnkey
+Server Setup
+
+Data Processing
+Unit (DPU)
+High-Bandwidth
+Memory (HBM)
+
+3rd Party System
+Integrator
+Server Setup 1
+
+Double Data Rate Synchronous
+Dynamic RAM
+Non-volatile Memory
+Express (NVMe SSD)
+
+3rd Party System
+Integrator
+Server Setup 2
+
+Networking & Interconnect
+Infrastructure
+
+0M
+
+1M
+
+2M
+
+Cost ($)
+
+3M
+
+4M
+
+Power & Cooling
+Infrastructure
+System Integration Hardware
+& Security Infrastructure
+
+42
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+Glossary
+Abbreviation
+
+Definition (AI Data Center Context)
+
+Abbreviation
+
+Definition (AI Data Center Context)
+
+2.5D
+
+2.5 Dimension — advanced chip packaging combining
+multiple dies on a silicon interposer to enhance AI compute
+performance.
+
+I/O
+
+Input / Output — essential to AI data processing, impacting
+memory bandwidth and throughput in data centers.
+
+3D
+
+3 Dimension — refers to stacked chip architectures or 3D
+packaging used to increase density and efficiency in AI
+hardware.
+
+Inference
+
+Applying a trained AI model to new data for predictions or
+decisions, typically in real time.
+
+Interposer
+
+A layer connecting multiple chips in advanced semiconductor
+packaging.
+
+MCUs
+
+MicroController Units — embedded systems that help
+manage environmental controls and monitoring within data
+centers.
+
+Advanced
+Packaging
+
+Techniques like 2.5D and 3D integration to combine multiple
+chips for performance.
+
+AI Data
+Center
+
+A facility designed to support compute-intensive AI tasks like
+training and inference at scale.
+
+ASIC
+
+NAND
+
+Application-Specific Integrated Circuit — custom chips
+designed to accelerate specific AI tasks, widely used in
+hyperscale AI data centers.
+
+NOT AND — a type of non-volatile flash memory widely used
+in data center storage systems.
+
+NICs
+
+Baseboard Management Controllers — embedded
+controllers for monitoring server health and performance in
+AI data centers.
+
+Network Interface Cards — hardware enabling servers in
+AI data centers to communicate efficiently over high-speed
+networks.
+
+nm
+
+Nanometer — unit of measurement for semiconductor
+technology nodes; smaller sizes improve performance and
+energy efficiency in AI chips.
+
+NVMe
+
+Non-Volatile Memory Express — interface protocol that
+improves SSD access speed, critical for large data handling in
+AI workloads.
+
+OEM
+
+Original Equipment Manufacturer — companies producing
+AI data center equipment under another firm’s brand.
+
+PCBs
+
+Printed Circuit Boards — foundational to assembling AI
+server components in data center infrastructure.
+
+PCIe
+
+Peripheral Component Interconnect Express — a high-speed
+interface standard for connecting GPUs and accelerators in
+AI data center servers.
+
+Photonic
+Computing
+
+Computing using light signals for faster data transfer and
+lower power consumption.
+
+PHY
+
+PHYsical interface — layer that enables high-speed
+connectivity between AI chips and memory or interconnects
+in data centers.
+
+PMICs
+
+Power Management Integrated Circuits — manage voltage
+and power efficiency of AI chips within data centers.
+
+RAM
+
+Random Access Memory — essential for holding working
+data and models during training and inference in AI data
+centers.
+
+SoC
+
+System-on-Chip — an integrated circuit that consolidates
+multiple functions onto a single die, increasingly used in AI
+accelerators and edge AI to improve performance, power
+efficiency, and system integration.
+
+SRAM
+
+Static Random Access Memory — high-speed cache used in
+AI chips to store intermediate model weights or data.
+
+Training (AI)
+
+The phase where AI models learn patterns from large
+datasets using computational resources.
+
+TSVs
+
+Through-Silicon Vias — vertical interconnects enabling 3D
+chip stacking, improving performance and density for AI
+compute modules.
+
+VRMs
+
+Voltage Regulator Modules regulate power delivery to
+processors in AI servers for stable operation.
+
+BMCs
+
+CDUs
+
+Coolant Distribution Units — key elements in liquid cooling
+systems uased in AI data centers for thermal efficiency.
+
+Chiplet
+
+A modular semiconductor unit integrated with others to
+form a complete chip system.
+
+CPUs
+
+Central Processing Units — used in AI data centers for
+orchestrating and managing AI workloads and supporting
+traditional tasks.
+
+DRAM
+
+Dynamic Random Access Memory — commonly used in
+AI data centers for temporary data storage during model
+execution.
+
+EDA
+
+Electronic Design Automation — tools used in designing AI
+chips for data centers.
+
+Edge AI
+
+Running AI models on local devices to reduce latency and
+dependency on cloud infrastructure.
+
+EUV
+
+Extreme Ultraviolet — lithography technique enabling
+high-performance chips used in AI compute nodes.
+
+Fab
+
+Fabrication — refers to semiconductor manufacturing,
+foundational to producing AI processors used in data
+centers.
+
+Fabless
+
+A company that designs chips but outsources their
+manufacturing.
+
+FETs
+
+Field Effect Transistors — fundamental components in chips
+powering AI accelerators in modern data centers.
+
+Foundry
+
+A semiconductor fabrication facility that manufactures chips
+based on third-party designs.
+
+FPGAs
+
+Field-Programmable Gate Arrays — reconfigurable chips
+enabling efficient, task-specific acceleration in AI data
+centers.
+
+GAA
+
+Gate-All-Around — advanced transistor architecture
+enhancing performance and energy efficiency in AI
+hardware.
+
+GPUs
+
+Graphics Processing Units — a subclass of AI Accelerators.
+
+HBM
+
+High Bandwidth Memory — memory type that supports
+high-speed AI training workloads in modern data center
+chips.
+
+43
+
+SIA & Deloitte | Powering AI: The Semiconductor Ecosystem at the Foundation of Data Centers
+
+References
+1.
+
+Krystal Hu, “ChatGPT sets record for fastest-growing user base—analyst
+note,” Reuters, February 2, 2023.
+
+20.
+
+David Crawford, Jue Wang, Roy Singh, “AI’s Trillion-Dollar Opportunity,” Tech
+Report 2024, Bain & Company, 2024
+
+2.
+
+Fatima Hameed Khan, Muhammad Adeel Pasha, and Shahid Masud,
+“Advancements in microprocessor architecture for ubiquitous AI—
+an overview on history, evolution, and upcoming challenges in AI
+implementation,” Micromachines 12, no. 6 (2021): p. 665.
+
+21.
+
+Intel Corporation, “Gaudi AI Accelerator Products,” Intel, accessed October
+2025,
+
+22.
+
+Amazon Web Services (AWS), “AWS Trainium,” accessed August 23, 2025.
+
+3.
+
+Jesse Noffsinger et al., “The cost of compute: A $7 trillion race to scale data
+centers,” McKinsey Quarterly, April 28, 2025.
+
+23.
+
+Vivian Lee et al., “Breaking barriers to data center growth,” Boston
+Consulting Group, January 20, 2025.
+
+4.
+
+TrendForce News, “Foundry giants’ advanced node expansion efforts
+beyond 2025: TSMC, Intel, Rapidus and more,” January 13, 2025.
+
+24.
+
+5.
+
+World Semiconductor Trade Statistics, 2025 Product Classification Guide,
+December 11, 2024.
+
+Walters et al., “Rethinking AI demand part 1: AI data centers are experiencing
+a surge of training demand—what happens when the surge is over?,” Alvarez
+& Marsal,” February 25, 2025.
+
+25.
+
+6.
+
+Ondrej Burkacky et al., “Generative AI: The next S-curve for the
+semiconductor industry?,” McKinsey & Company, March 29, 2024.
+
+McKinsey & Company, “Hiding in plain sight: The underestimated size of the
+semiconductor industry,” January 16, 2026.
+
+26.
+
+7.
+
+SK Hynix, “HBM technology: The silent catalyst of the AI revolution,” January
+30, 2024.
+
+SIA/WSTS, “Global Annual Semiconductor Sales Increase 25.6% to $791.7
+Billion in 2025,” Feb. 7, 2025.
+
+27.
+
+8.
+
+Intel, “Field programmable gate arrays (FPGAs) for artificial intelligence (AI),”
+accessed August 23, 2025.
+
+Jesse Noffsinger et al., “The cost of compute: A $7 trillion race to scale data
+centers,” McKinsey Quarterly, April 28, 2025.
+
+28.
+
+9.
+
+Future Market Insights, FPGA market report, August 23, 2025.
+
+Uvation, “Why AI server cost per user is the new metric that matters,” July 4,
+2025.
+
+10.
+
+Manuel Mota, “Die-to-die connectivity with high-speed SerDes PHY IP,”
+Semiconductor Engineering, March 12, 2020.
+
+29.
+
+Josh Schneider and Ian Smalley, “What is a neural processing unit (NPU)?,”
+IBM, accessed August 23, 2025.
+
+11.
+
+Matteo Buffolo et al., “Review and outlook on GaN and SiC power devices:
+Industrial state-of-the-art, applications, and perspectives,” IEEE Transactions
+on Electron Devices 71, no. 3 (March 2024): pp. 1344-55.
+
+30.
+
+Adita Agrawal, “The convergence of edge computing and 5G,” Control
+Engineering, August 7, 2023; Baris Sarer et al., “AI and the evolving consumer
+device ecosystem,” CIO Journal by Deloitte for The Wall Street Journal, April
+24, 2024.
+
+12.
+
+Nidhi Govil, “Nvidia unveils 800V high-voltage DC power system for next-gen
+AI data centers,” The Outpost, May 28, 2025.
+
+31.
+
+Chris Thomas et al. “Is your organization’s infrastructure ready for the new
+hybrid cloud?,” Deloitte Insights, June 30, 2025.
+
+13.
+
+Amr Elmeleegy, “NVIDIA contributes NVIDIA GB200 NVL72 designs to Open
+Compute Project,” NVIDIA Developer Blog, October 15, 2024.
+
+32.
+
+Murray Slovick, “From FinFETs to Nanosheets: ICs evolve to keep pace with
+‘Moore’s Law’,” The IP&E Specialist, July 6, 2021.
+
+14.
+
+Duncan Stewart et al., “Silicon photonics: Gen AI communicates at
+lightspeed,” Deloitte, November 19, 2024.
+
+33.
+
+Slovick, “From FinFETs to Nanosheets: ICs evolve to keep pace with ‘Moore’s
+Law’.” July 6, 2021.
+
+15.
+
+World Semiconductor Trade Statistics (WSTS), “H2-2025 Forecast,”
+December 2, 2025
+
+34.
+
+Vishnu Kumar, “Global semiconductor market to grow 14% in 2025, Gartner
+report indicates,” Circuit Digest, October 29, 2024.
+
+16.
+
+Jim Rowan et al., “State of Generative AI in the Enterprise: Quarter four
+report,” Deloitte, January 2025.
+
+35.
+
+17.
+
+CloudSyntrix, “The impact of Generative AI on hyperscalers, chipmakers,
+and inference workload,” February 10, 2025.
+
+Walters et al., “Rethinking AI demand part 1: AI data centers are experiencing
+a surge of training demand—what happens when the surge is over?”
+February 25, 2025.
+
+36.
+
+18.
+
+SambaNova Systems, “SN40L RDU AI Chip,” accessed October 2025.
+
+Martin Stansbury et al., “Can US infrastructure keep up with the AI
+economy?,” Deloitte Insights, June 24, 2025.
+
+19.
+
+Qualcomm, “Cloud AI 100 Ultra,” Qualcomm Technologies, accessed October
+2025
+
+44
+
+About SIA
+The Semiconductor Industry Association (SIA) is the voice of the semiconductor
+industry, one of America’s top export industries and a key driver of America’s
+economic strength, national security, and global competitiveness. SIA represents
+99% of the U.S. semiconductor industry by revenue and nearly two-thirds of
+non-U.S. chip firms. Through this coalition, SIA seeks to strengthen leadership of
+semiconductor manufacturing, design, and research by working with Congress,
+the Administration, and key industry stakeholders around the world to encourage
+policies that fuel innovation, propel business, and drive international competition.
+Learn more at www.semiconductors.org.
+
+About Deloitte
+Deloitte refers to one or more of Deloitte Touche Tohmatsu Limited, a UK private
+company limited by guarantee, and its network of member firms, each of which is a
+legally separate and independent entity. Please see www.deloitte.com/about for a
+detailed description of the legal structure of Deloitte Touche Tohmatsu Limited and
+its member firms. Please see www.deloitte.com/us/about for a detailed description
+of the legal structure of Deloitte LLP and its subsidiaries. Certain services may not
+be available to attest clients under the rules and regulations of public accounting.
+This publication contains general information only and Deloitte is not, by means of
+this publication, rendering accounting, business, financial, investment, legal, tax, or
+other professional advice or services. This publication is not a substitute for such
+professional advice or services, nor should it be used as a basis for any decision
+or action that may affect your business. Before making any decision or taking any
+action that may affect your business, you should consult a qualified professional
+advisor. Deloitte shall not be responsible for any loss sustained by any person who
+relies on this publication.
+
+Copyright © 2026
+2025 Deloitte Development LLC. All rights reserved.
+
+

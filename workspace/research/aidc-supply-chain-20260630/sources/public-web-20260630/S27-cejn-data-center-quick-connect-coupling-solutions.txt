@@ -1,0 +1,1654 @@
+
+
+ 
+ 
+
+ 
+
+
+     
+        var connectionString = "InstrumentationKey=152a3070-6318-4f76-856b-8f3cd7b3d6d8;IngestionEndpoint=https://swedencentral-0.in.applicationinsights.azure.com/;LiveEndpoint=https://swedencentral.livediagnostics.monitor.azure.com/;ApplicationId=698cc4d3-a789-493d-a6cb-0c6ee0e910fa";
+
+        if (connectionString) {
+        var appInsights=window.appInsights||function(config){
+        function r(config){t[config]=function(){var i=arguments;t.queue.push(function(){t[config].apply(t,i)})}}
+        var t={config:config},u=document,e=window,o="script",s=u.createElement(o);
+        s.src="https://js.monitor.azure.com/scripts/b/ai.2.min.js";
+        u.getElementsByTagName(o)[0].parentNode.appendChild(s);
+        t.cookie=u.cookie;t.queue=[];
+        for(var n=["trackEvent","trackPageView","trackException","trackTrace"],a=0;a 
+
+
+     Data centers | CEJN (US) 
+     
+     
+     
+             
+             
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+                 
+     
+     
+     
+      
+
+
+      
+ 
+!function(T,l,y){var S=T.location,k="script",D="instrumentationKey",C="ingestionendpoint",I="disableExceptionTracking",E="ai.device.",b="toLowerCase",w="crossOrigin",N="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"5",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[b](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,u,p,l;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a 
+ 
+var epi = epi||{}; epi.EPiServer = epi.EPiServer||{}; epi.EPiServer.Forms = epi.EPiServer.Forms||{};
+                    epi.EPiServer.Forms.InjectFormOwnJQuery = false;epi.EPiServer.Forms.OriginalJQuery = typeof jQuery !== 'undefined' ? jQuery : undefined;
+ 
+
+
+     
+        if (typeof grecaptcha !== "undefined") {
+            grecaptcha.ready(function () {
+                if (epi !== undefined && epi.EPiServer !== undefined && epi.EPiServer.Forms !== undefined) {
+                    $.extend(true, epi.EPiServer.Forms,
+                        {
+                            Validators:
+                            {
+                                "CEJN.ExternalWeb.Web.Business.Forms.Elements.CejnRecaptchaValidator": function (fieldName, fieldValue, validatorMetaData) {
+                                    //Recaptcha token has a two minute time out, and we cannot generate the token before the form submission. Real validadation happen server-side.
+                                    //Consider valid clientside as this would otherwise go out of sync with revalidation triggered at a 2 minute interval.
+                                    return { isValid: true };
+                                },
+                            },
+                        });
+                }
+            });
+        }
+
+        function initializeRecaptcha(fieldId, siteKey) {
+            function revalidateCaptcha(delayMs) {
+                setTimeout(function () {
+                    grecaptcha.execute(siteKey, { action: 'homepage' }).then(function (token) {
+                        document.getElementById(fieldId).value = token;
+
+                        //Recaptcha token has a two minute time out, and we cannot generate the token before the form submission. Thus we re-generate the token every other minute.
+                        revalidateCaptcha((1000 * 60 * 2) - 5);
+                    });
+                }, delayMs);
+            }
+
+            revalidateCaptcha(0);
+        }
+     
+    
+ 
+
+ 
+    
+
+ 
+dataLayer = [{'tracking id4': 'G-KYK608XL0K'}];
+ 
+
+ 
+ 
+var _mtm = window._mtm = window._mtm || [];
+_mtm.push({'mtm.startTime': (new Date().getTime()), 'event': 'mtm.Start'});
+var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+g.async=true; g.src='https://matomo.cejn.com/js/container_i6JeKhVe.js'; s.parentNode.insertBefore(g,s);
+ 
+ 
+
+ 
+    
+ (function (w, d, s, l, i){
+	w[l] = w[l] || []; w[l].push({
+		'gtm.start':
+		new Date().getTime(), event: 'gtm.js'
+	}); var f = d.getElementsByTagName(s)[0],
+	j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+	'//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+})(window, document, 'script', 'dataLayer', 'GTM-NRVT52'); 
+ 
+
+    
+
+
+
+ 
+
+     
+         
+             
+                 
+                     
+                 
+             
+             
+                  
+                  
+                  
+                  
+             
+             
+                  
+             
+             
+                 
+                      
+                    EN-US
+                 
+
+                  
+
+                      
+             
+         
+     
+     
+         
+             
+                 
+                     CEJN MARKETS WORLDWIDE   
+                      
+                 
+                 
+                     
+                         
+                                 GLOBAL 
+                                 
+                                         
+                                             
+                                                Global (English)
+                                                  
+                                             
+                                         
+                                 
+                                 NORTH AMERICA 
+                                 
+                                         
+                                             
+                                                North America
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Mexico
+                                                  
+                                             
+                                         
+                                 
+                                 SOUTH AMERICA 
+                                 
+                                         
+                                             
+                                                South America
+                                                  
+                                             
+                                         
+                                 
+                         
+                             
+
+                                 EUROPE  
+                                 
+                                         
+                                             
+                                                Sweden
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Norway
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Czech Republic
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Denmark
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Finland
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                France
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Germany
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Italy
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Netherlands
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Poland
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Spain
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Switzerland
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Turkey
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                United Kingdom
+                                                  
+                                             
+                                         
+                                 
+                             
+                             
+
+                                 ASIA PACIFIC 
+                                 
+                                         
+                                             
+                                                China
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Japan
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Australia
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                Korea
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                India (English)
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                South East Asia / Middle East (English)
+                                                  
+                                             
+                                         
+                                 
+                             
+                     
+                 
+             
+         
+     
+ 
+ 
+    window.__SHARED__ = {"Items":[{"DisplayName":"Products","SortPosition":0,"ClientId":"8","ContentLink":"1073741825__CatalogContent","Url":"","IsCurrent":false,"IsActive":false,"Target":"","ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":{"DisplayName":"Product areas","SortPosition":0,"ClientId":null,"ContentLink":null,"Url":null,"IsCurrent":null,"IsActive":null,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":[{"DisplayName":"Pneumatics","SortPosition":0,"ClientId":null,"ContentLink":"1073741969__CatalogContent","Url":"/en-us/products/pneumatics/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/pneumatics_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Breathing Air","SortPosition":100,"ClientId":null,"ContentLink":"1073741890__CatalogContent","Url":"/en-us/products/breathing-air/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/breathing_air_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Ultra High-Pressure Hydraulics","SortPosition":200,"ClientId":null,"ContentLink":"1073742112__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/uhp_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Thermal Control","SortPosition":300,"ClientId":null,"ContentLink":"1073742065__CatalogContent","Url":"/en-us/products/thermal-control/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/thermal_control_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Fluids","SortPosition":400,"ClientId":null,"ContentLink":"1073742067__CatalogContent","Url":"/en-us/products/fluids/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/fluids_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi & Auto","SortPosition":500,"ClientId":null,"ContentLink":"1073742108__CatalogContent","Url":"/en-us/products/multicouplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/multi-auto_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Hydraulics","SortPosition":600,"ClientId":null,"ContentLink":"1073741886__CatalogContent","Url":"/en-us/products/hydraulics/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/hydraulics_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Customized solutions","SortPosition":800,"ClientId":null,"ContentLink":"1073742940__CatalogContent","Url":"/en-us/products/customized-solutions/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/customized-solutions-icon.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},"ApplicationAreas":{"DisplayName":"All products","SortPosition":0,"ClientId":null,"ContentLink":null,"Url":null,"IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":[{"DisplayName":"208 blow guns","SortPosition":0,"ClientId":null,"ContentLink":"1073741966__CatalogContent","Url":"/en-us/products/pneumatics/blowgun-208/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"208 Detect blow guns","SortPosition":0,"ClientId":null,"ContentLink":"1073743238__CatalogContent","Url":"/en-us/products/pneumatics/blowgun-208-detect/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"209 air and fluid guns","SortPosition":0,"ClientId":null,"ContentLink":"1073743071__CatalogContent","Url":"/en-us/products/pneumatics/blowgun-209/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"913 washdown guns","SortPosition":0,"ClientId":null,"ContentLink":"1073742510__CatalogContent","Url":"/en-us/products/fluids/series-913-spray-guns/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Adapters, brass","SortPosition":0,"ClientId":null,"ContentLink":"1073741975__CatalogContent","Url":"/en-us/products/pneumatics/brass-adapters/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Adapters, stainless steel","SortPosition":0,"ClientId":null,"ContentLink":"1073741857__CatalogContent","Url":"/en-us/products/pneumatics/stainless-steel-adapters/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"ADS auto-dock solutions","SortPosition":0,"ClientId":null,"ContentLink":"1073742987__CatalogContent","Url":"/en-us/products/customized-solutions/ads-auto-dock-solutions/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"ADX Auto-dock couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742230__CatalogContent","Url":"/en-us/products/hydraulics/adx-couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"ADX spare parts","SortPosition":0,"ClientId":null,"ContentLink":"1073742220__CatalogContent","Url":"/en-us/products/hydraulics/adx-seal-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Auto-couplings fluids","SortPosition":0,"ClientId":null,"ContentLink":"1073742087__CatalogContent","Url":"/en-us/products/multicouplings/auto-couplings-fluids/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Auto-couplings hydraulics","SortPosition":0,"ClientId":null,"ContentLink":"1073742058__CatalogContent","Url":"/en-us/products/multicouplings/auto-couplings-hydraulics/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Auto-couplings pneumatics","SortPosition":0,"ClientId":null,"ContentLink":"1073742113__CatalogContent","Url":"/en-us/products/multicouplings/auto-couplings-pneumatics/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Auto-Eject Multi-Connectors","SortPosition":0,"ClientId":null,"ContentLink":"1073742095__CatalogContent","Url":"/en-us/products/multicouplings/auto-eject-multi-connectors/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Blind-mate auto-couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742038__CatalogContent","Url":"/en-us/products/thermal-control/auto-couplings-fluids-thermal-control/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"BLX accessories","SortPosition":0,"ClientId":null,"ContentLink":"1073743333__CatalogContent","Url":"/en-us/products/hydraulics/blx-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"BLX couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743326__CatalogContent","Url":"/en-us/products/hydraulics/blx-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"BMQC couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743263__CatalogContent","Url":"/en-us/products/thermal-control/ocp-bmqc-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Breathing air couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073741891__CatalogContent","Url":"/en-us/products/breathing-air/couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Breathing air hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073741978__CatalogContent","Url":"/en-us/products/breathing-air/hose/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"CIS - CEJN Identification System","SortPosition":0,"ClientId":null,"ContentLink":"1073742689__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/cis-cejn-identification-system/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Compressed air hose kits","SortPosition":0,"ClientId":null,"ContentLink":"1073741916__CatalogContent","Url":"/en-us/products/pneumatics/compressed-air-hose-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Compressed air hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073741908__CatalogContent","Url":"/en-us/products/pneumatics/compressed-air-hoses/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Compressed air pressure tester","SortPosition":0,"ClientId":null,"ContentLink":"1073741847__CatalogContent","Url":"/en-us/products/pneumatics/compact-pressure-tester/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"eSafe quick couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073741970__CatalogContent","Url":"/en-us/products/pneumatics/esafe-couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"FRL accessories and spare parts","SortPosition":0,"ClientId":null,"ContentLink":"1073741974__CatalogContent","Url":"/en-us/products/pneumatics/frl-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"FRL air treatment","SortPosition":0,"ClientId":null,"ContentLink":"1073741934__CatalogContent","Url":"/en-us/products/pneumatics/frl-products/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"LQC couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743244__CatalogContent","Url":"/en-us/products/thermal-control/opc-lqc-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-Connection for Paper Mill","SortPosition":0,"ClientId":null,"ContentLink":"1073743091__CatalogContent","Url":"/en-us/products/customized-solutions/multi-connection-for-paper-mil/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-Link outlets","SortPosition":0,"ClientId":null,"ContentLink":"1073741921__CatalogContent","Url":"/en-us/products/pneumatics/multi-link-outlets/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-Plate for Bus Heating","SortPosition":0,"ClientId":null,"ContentLink":"1073742967__CatalogContent","Url":"/en-us/products/customized-solutions/p8-multi-plate/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-Plate for Press Hardening","SortPosition":0,"ClientId":null,"ContentLink":"1073742971__CatalogContent","Url":"/en-us/products/customized-solutions/multi-plate-for-press-hardening/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-X accessories","SortPosition":0,"ClientId":null,"ContentLink":"1073743017__CatalogContent","Url":"/en-us/products/hydraulics/multi-x-accessories-and-spare-parts/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-X couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742181__CatalogContent","Url":"/en-us/products/hydraulics/multi-x-range/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-X modular couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743272__CatalogContent","Url":"/en-us/products/hydraulics/modular-multi-x-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi-X with Power Connectors for Sheet Metal Pressing and Welding","SortPosition":0,"ClientId":null,"ContentLink":"1073742965__CatalogContent","Url":"/en-us/products/customized-solutions/multi-x-power-connectors/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"MultiFLOW air and fluid guns","SortPosition":0,"ClientId":null,"ContentLink":"1073741918__CatalogContent","Url":"/en-us/products/pneumatics/multiflow/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Non-drip dust caps","SortPosition":0,"ClientId":null,"ContentLink":"1073742117__CatalogContent","Url":"/en-us/products/fluids/accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Non-drip quick couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742097__CatalogContent","Url":"/en-us/products/fluids/non-drip-stainless-steel/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Nordic series accessories","SortPosition":0,"ClientId":null,"ContentLink":"1073742203__CatalogContent","Url":"/en-us/products/hydraulics/nordic-series-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Nordic series couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742170__CatalogContent","Url":"/en-us/products/hydraulics/nordic-range-steel/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Nozzles for air and fluid guns","SortPosition":0,"ClientId":null,"ContentLink":"1073741967__CatalogContent","Url":"/en-us/products/pneumatics/blowguns-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"OpenReel 913 hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743317__CatalogContent","Url":"/en-us/products/pneumatics/openreel-913-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"OpenReel hand crank hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743316__CatalogContent","Url":"/en-us/products/pneumatics/openreel-hand-crank-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"OpenReel Spare parts","SortPosition":0,"ClientId":null,"ContentLink":"1073742579__CatalogContent","Url":"/en-us/products/pneumatics/spare-parts-reelsopen/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"OpenReel SS hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743308__CatalogContent","Url":"/en-us/products/fluids/openreel-ss-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"OpenReel UHP hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743312__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/openreel-uhp-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"OSHA Gauge","SortPosition":0,"ClientId":null,"ContentLink":"1073741854__CatalogContent","Url":"/en-us/products/pneumatics/osha-gauge/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"PBMC couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743493__CatalogContent","Url":"/en-us/products/thermal-control/pbmc-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"PHA manual pumps","SortPosition":0,"ClientId":null,"ContentLink":"1073741860__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/uhp-hand-pumps/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"PHS hydraulic pumps","SortPosition":0,"ClientId":null,"ContentLink":"1073742854__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/cejn-phs-hydraulic-pumps/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Porting blocks","SortPosition":0,"ClientId":null,"ContentLink":"1073742043__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/porting-blocks/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Porting blocks and adapters - Stainless steel range","SortPosition":0,"ClientId":null,"ContentLink":"1073742004__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/stainless-steel-range/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Press-check accessories","SortPosition":0,"ClientId":null,"ContentLink":"1073742201__CatalogContent","Url":"/en-us/products/hydraulics/press-check-nipples-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Press-Check test point system","SortPosition":0,"ClientId":null,"ContentLink":"1073742205__CatalogContent","Url":"/en-us/products/hydraulics/press-check-monitoring-system/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Pressure Gauges","SortPosition":0,"ClientId":null,"ContentLink":"1073742051__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/pressure-gauges/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Quick Couplings with NFC Identification for Engine Testing","SortPosition":0,"ClientId":null,"ContentLink":"1073742957__CatalogContent","Url":"/en-us/products/customized-solutions/nfc-identification-engine-testing/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Safety lock quick couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073741843__CatalogContent","Url":"/en-us/products/pneumatics/safety-lock-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Safety reel shop display kits","SortPosition":0,"ClientId":null,"ContentLink":"1073741913__CatalogContent","Url":"/en-us/products/pneumatics/hose-cable-reels-closed/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"SafetyReel bSafe hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743309__CatalogContent","Url":"/en-us/products/breathing-air/safetyreel-bsafe-breathing-air-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"SafetyReel FS hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743471__CatalogContent","Url":"/en-us/products/pneumatics/safetyreel-fs-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"SafetyReel G2 cable reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743310__CatalogContent","Url":"/en-us/products/pneumatics/safetyreel-g2-cable-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"SafetyReel G2 hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743314__CatalogContent","Url":"/en-us/products/pneumatics/safetyreel-g2-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"SafetyReel G2 hoses and spare parts","SortPosition":0,"ClientId":null,"ContentLink":"1073743502__CatalogContent","Url":"/en-us/products/pneumatics/safetyreel-g2-hoses-and-spare-parts/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"SafetyReel hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743311__CatalogContent","Url":"/en-us/products/pneumatics/safetyreel-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Smartflow dry break couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743278__CatalogContent","Url":"/en-us/products/fluids/smartflow-quick-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Snap-check accessories","SortPosition":0,"ClientId":null,"ContentLink":"1073742222__CatalogContent","Url":"/en-us/products/hydraulics/snap-check-nipples-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Snap-check test point system","SortPosition":0,"ClientId":null,"ContentLink":"1073741880__CatalogContent","Url":"/en-us/products/hydraulics/snap-check-monitoring-system/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Soft-line cover","SortPosition":0,"ClientId":null,"ContentLink":"1073741905__CatalogContent","Url":"/en-us/products/pneumatics/accessories-soft-line-covers/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Standard quick couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073741982__CatalogContent","Url":"/en-us/products/pneumatics/standard-couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Stream-line hose adapters","SortPosition":0,"ClientId":null,"ContentLink":"1073741892__CatalogContent","Url":"/en-us/products/pneumatics/stream-line-adapters/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"T-Coax torque wrench connection system","SortPosition":0,"ClientId":null,"ContentLink":"1073743177__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/t-coax-connection-system/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Thermal management hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073743491__CatalogContent","Url":"/en-us/products/thermal-control/thermal-management-hoses/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"TLX accessories","SortPosition":0,"ClientId":null,"ContentLink":"1073742197__CatalogContent","Url":"/en-us/products/hydraulics/tlx-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"TLX couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742136__CatalogContent","Url":"/en-us/products/hydraulics/tlx-couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP Adapters","SortPosition":0,"ClientId":null,"ContentLink":"1073741864__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/uhp-adapters/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073741868__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP flat-face couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742055__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/flat-face/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP flat-face couplings, high-flow","SortPosition":0,"ClientId":null,"ContentLink":"1073742109__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/high-flow-flat-face/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP hose kits","SortPosition":0,"ClientId":null,"ContentLink":"1073742755__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/uhp-hose-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073742069__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/hose/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP hydraulic pump kits","SortPosition":0,"ClientId":null,"ContentLink":"1073742833__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/uhp-hydraulic-pump-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP needle valves - Stainless steel range","SortPosition":0,"ClientId":null,"ContentLink":"1073742815__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/needle-valves-stainless-steel-range/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP PHS manual pump accessories and spare parts","SortPosition":0,"ClientId":null,"ContentLink":"1073743030__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/uhp-phs-pumps-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP screw-to-connect couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742000__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/screw-to-connect/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP Seals","SortPosition":0,"ClientId":null,"ContentLink":"1073742053__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/uhp-seals/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UHP T-connection couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743290__CatalogContent","Url":"/en-us/products/high-pressure-hydraulics/uhp-t-connection-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"ultraFLOW quick couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742066__CatalogContent","Url":"/en-us/products/thermal-control/ultraflow-thermal-control/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"ultraFLOW SC quick couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743040__CatalogContent","Url":"/en-us/products/thermal-control/ultraflow-thermal-control-sc/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"ultraFLOW STC couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743028__CatalogContent","Url":"/en-us/products/thermal-control/ultraflow-stc-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UQD couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742847__CatalogContent","Url":"/en-us/products/thermal-control/uqd-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"UQDB couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073743242__CatalogContent","Url":"/en-us/products/thermal-control/uqdb-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Washdown hose kits","SortPosition":0,"ClientId":null,"ContentLink":"1073743489__CatalogContent","Url":"/en-us/products/fluids/washdown-hose-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Water hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073742118__CatalogContent","Url":"/en-us/products/fluids/hose/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"WEO 350 Standard plug-in fittings","SortPosition":0,"ClientId":null,"ContentLink":"1073742143__CatalogContent","Url":"/en-us/products/hydraulics/weo-couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"WEO 420 Plug-in fittings","SortPosition":0,"ClientId":null,"ContentLink":"1073742805__CatalogContent","Url":"/en-us/products/hydraulics/weo-420-couplings-nipples/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"X-series accessories","SortPosition":0,"ClientId":null,"ContentLink":"1073742195__CatalogContent","Url":"/en-us/products/hydraulics/x-series-accessories/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"X-series couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073741887__CatalogContent","Url":"/en-us/products/hydraulics/x-series-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},"ProductCategories":{"DisplayName":"Product categories","SortPosition":0,"ClientId":null,"ContentLink":null,"Url":null,"IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":null,"HasChildren":false,"Children":[{"DisplayName":"Quick couplings","SortPosition":10,"ClientId":null,"ContentLink":"1073741838__CatalogContent","Url":"/en-us/product-categories/quick-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/couplings-icon.svg","HasChildren":false,"Children":[{"DisplayName":"Compressed air couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742756__CatalogContent","Url":"/en-us/product-categories/quick-couplings/compressed-air-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Hydraulic couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742757__CatalogContent","Url":"/en-us/product-categories/quick-couplings/hydraulic-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Ultra high-pressure hydraulic couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742758__CatalogContent","Url":"/en-us/product-categories/quick-couplings/ultra-high-pressure-hydraulic-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Breathing air couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742759__CatalogContent","Url":"/en-us/product-categories/quick-couplings/breathing-air-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Fluid couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742761__CatalogContent","Url":"/en-us/product-categories/quick-couplings/fluid-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Thermal control couplings","SortPosition":0,"ClientId":null,"ContentLink":"1073742762__CatalogContent","Url":"/en-us/product-categories/quick-couplings/thermal-control-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Hydraulic plug-in fittings","SortPosition":0,"ClientId":null,"ContentLink":"1073742763__CatalogContent","Url":"/en-us/product-categories/quick-couplings/hydraulic-plug-in-fittings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Hose & Cable Reels","SortPosition":20,"ClientId":null,"ContentLink":"1073741848__CatalogContent","Url":"/en-us/product-categories/hose-cable-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/hosereels-icon.svg","HasChildren":false,"Children":[{"DisplayName":"Compressed air reels","SortPosition":0,"ClientId":null,"ContentLink":"1073742764__CatalogContent","Url":"/en-us/product-categories/hose-cable-reels/compressed-air-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Water hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073742765__CatalogContent","Url":"/en-us/product-categories/hose-cable-reels/water-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Hydraulic hose reels","SortPosition":0,"ClientId":null,"ContentLink":"1073742766__CatalogContent","Url":"/en-us/product-categories/hose-cable-reels/hydraulic-hose-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Cable reels","SortPosition":0,"ClientId":null,"ContentLink":"1073742767__CatalogContent","Url":"/en-us/product-categories/hose-cable-reels/cable-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Breathing air reels","SortPosition":0,"ClientId":null,"ContentLink":"1073743073__CatalogContent","Url":"/en-us/product-categories/hose-cable-reels/breathing-air-reels/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Hose Kits","SortPosition":30,"ClientId":null,"ContentLink":"1073741915__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/hoses-icon.svg","HasChildren":false,"Children":[{"DisplayName":"Compressed air hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073742772__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/compressed-air-hoses/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Breathing air hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073742774__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/breathing-air-hoses/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Water hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073742776__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/water-hoses/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Ultra high-pressure hydraulic hoses","SortPosition":0,"ClientId":null,"ContentLink":"1073742778__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/ultra-high-pressure-hydraulic-hoses/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Compressed air hose kits","SortPosition":0,"ClientId":null,"ContentLink":"1073742780__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/compressed-air-hose-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Breathing air hose kits","SortPosition":0,"ClientId":null,"ContentLink":"1073742781__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/breathing-air-hose-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Ultra high-pressure hydraulic hose kits","SortPosition":0,"ClientId":null,"ContentLink":"1073742783__CatalogContent","Url":"/en-us/product-categories/hoses-hose-kits/ultra-high-pressure-hydraulic-hose-kits/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi & auto couplings","SortPosition":40,"ClientId":null,"ContentLink":"1073741920__CatalogContent","Url":"/en-us/product-categories/multi-auto-couplings/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/multi-icon.svg","HasChildren":false,"Children":[{"DisplayName":"Manifold couplings fluids","SortPosition":0,"ClientId":null,"ContentLink":"1073742773__CatalogContent","Url":"/en-us/product-categories/multi-auto-couplings/manifold-couplings-fluids/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Manifold couplings hydraulics","SortPosition":0,"ClientId":null,"ContentLink":"1073742775__CatalogContent","Url":"/en-us/product-categories/multi-auto-couplings/manifold-couplings-hydraulics/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Manifold couplings pneumatics","SortPosition":0,"ClientId":null,"ContentLink":"1073742777__CatalogContent","Url":"/en-us/product-categories/multi-auto-couplings/manifold-couplings-pneumatics/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Multi connectors","SortPosition":0,"ClientId":null,"ContentLink":"1073742779__CatalogContent","Url":"/en-us/product-categories/multi-auto-couplings/multi-connectors/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Air & Fluid Guns","SortPosition":50,"ClientId":null,"ContentLink":"1073741853__CatalogContent","Url":"/en-us/product-categories/air-fluid-guns/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/guns-icon.svg","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Pumps","SortPosition":60,"ClientId":null,"ContentLink":"1073741859__CatalogContent","Url":"/en-us/product-categories/pumps/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/handpumps-icon.svg","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Customized solutions","SortPosition":65,"ClientId":null,"ContentLink":"1073742974__CatalogContent","Url":"/en-us/product-categories/customized-solutions/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/customized-solutions-icon.svg","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Quick Connect Pressure Testing","SortPosition":70,"ClientId":null,"ContentLink":"1073741879__CatalogContent","Url":"/en-us/product-categories/pressure-testing/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/gauges-icon.svg","HasChildren":false,"Children":[{"DisplayName":"Compressed air pressure testing","SortPosition":0,"ClientId":null,"ContentLink":"1073742782__CatalogContent","Url":"/en-us/product-categories/pressure-testing/compressed-air-pressure-testing/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Hydraulic pressure testing","SortPosition":0,"ClientId":null,"ContentLink":"1073742784__CatalogContent","Url":"/en-us/product-categories/pressure-testing/hydraulic-pressure-testing/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Pressure Gauges","SortPosition":90,"ClientId":null,"ContentLink":"1073741846__CatalogContent","Url":"/en-us/product-categories/pressure-testing/pressure-gauges/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/pressure_testing_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Air Treatment (FRL)","SortPosition":90,"ClientId":null,"ContentLink":"1073741933__CatalogContent","Url":"/en-us/product-categories/air-treatment-frl/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/air-treatment-frl.svg","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Accessories & spare parts","SortPosition":100,"ClientId":null,"ContentLink":"1073741856__CatalogContent","Url":"/en-us/product-categories/accessories-spare-parts/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/accessories-icon.svg","HasChildren":false,"Children":[{"DisplayName":"Spare parts","SortPosition":0,"ClientId":null,"ContentLink":"1073742768__CatalogContent","Url":"/en-us/product-categories/accessories-spare-parts/spare-parts/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Dust caps","SortPosition":0,"ClientId":null,"ContentLink":"1073742769__CatalogContent","Url":"/en-us/product-categories/accessories-spare-parts/dust-caps/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Ultra high-pressure hydraulic adapters","SortPosition":0,"ClientId":null,"ContentLink":"1073742770__CatalogContent","Url":"/en-us/product-categories/accessories-spare-parts/ultra-high-pressure-hydraulic-adapters/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"FRL accessories and spare parts","SortPosition":0,"ClientId":null,"ContentLink":"1073742771__CatalogContent","Url":"/en-us/product-categories/accessories-spare-parts/frl-accessories-and-spare-parts/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Adapters","SortPosition":110,"ClientId":null,"ContentLink":"1073741863__CatalogContent","Url":"/en-us/product-categories/accessories-spare-parts/adapters/","IsCurrent":false,"IsActive":false,"Target":null,"ImageUrl":"/globalassets/megamenu/adapters_icon_rounded.png","HasChildren":false,"Children":[],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}},{"DisplayName":"Academy","SortPosition":0,"ClientId":"145126","ContentLink":"145126","Url":"/en-us/academy/","IsCurrent":false,"IsActive":false,"Target":"","ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Applications","SortPosition":0,"ClientId":"18106","ContentLink":"18106","Url":"/en-us/applications/","IsCurrent":false,"IsActive":true,"Target":"","ImageUrl":null,"HasChildren":true,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Design Center","SortPosition":0,"ClientId":"92314","ContentLink":"92314","Url":"/en-us/high-pressure-hose-center/","IsCurrent":false,"IsActive":false,"Target":"","ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Stories","SortPosition":0,"ClientId":"104181","ContentLink":"104181","Url":"/en-us/articles/","IsCurrent":false,"IsActive":false,"Target":"","ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Guides & Support","SortPosition":0,"ClientId":"137095","ContentLink":"137095","Url":"/en-us/guides-support/","IsCurrent":false,"IsActive":false,"Target":"","ImageUrl":null,"HasChildren":true,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"About CEJN","SortPosition":0,"ClientId":"14497","ContentLink":"14497","Url":"/en-us/about-cejn/about-cejn/","IsCurrent":false,"IsActive":false,"Target":"","ImageUrl":null,"HasChildren":true,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null},{"DisplayName":"Contact","SortPosition":0,"ClientId":"143235","ContentLink":"143235","Url":"/en-us/contact/","IsCurrent":false,"IsActive":false,"Target":"","ImageUrl":null,"HasChildren":false,"Children":null,"ProductAreas":null,"ApplicationAreas":null,"ProductCategories":null}],"ViewAllProductsLink":"/en-us/products/","HomeLink":"/en-us/"};
+ 
+ 
+    
+
+     
+         
+             
+                 Contact us 
+                  
+             
+         
+     
+     
+     
+         
+             
+                 
+                      
+                 
+
+                 
+                            
+
+
+
+
+
+             
+
+
+
+ 
+        // This view acts as a rendering template to render InitScript(and server-side Form's descriptor) in FormContainerBlock's client-side for Form[74df2af5-85a6-4351-84cd-3ec672efcd03].
+        // TECHNOTE: all serverside (paths, dynamic values) of EPiServerForms will be transfered to client side here in this section.
+    (function initializeOnRenderingFormDescriptor() {
+        // each workingFormInfo is store inside epi.EPiServer.Forms, lookup by its FormGuid
+        var workingFormInfo=epi.EPiServer.Forms["74df2af5-85a6-4351-84cd-3ec672efcd03"] ={
+            Id: "74df2af5-85a6-4351-84cd-3ec672efcd03" ,
+            Name: "Contact-panel-form" ,
+            // whether this Form can be submitted which relates to the visitor's data (cookie, identity) and Form's settings (AllowAnonymous, AllowXXX)
+            SubmittableStatus: {"submittable":true,"message":""},
+            ConfirmMessage: "",
+            ResetConfirmMessage : "",
+            ShowNavigationBar : false,
+            FocusOnForm: false,
+            ShowSummarizedData : false,
+            // serialize the dependency configuration of this form to clientside
+            DependenciesInfo : JSON.parse("[]"),
+            // keep all fieldName which are not satisfied the field dependency conditions
+            DependencyInactiveElements: [],
+            // Validation info, for executing validating on client side
+            ValidationInfo : JSON.parse("[{\"targetElementName\":\"__field_115156\",\"targetElementId\":\"4eb740bd-04e4-4a60-bda5-d9e0959ab89a\",\"validators\":[{\"type\":\"EPiServer.Forms.Implementation.Validation.RequiredValidator\",\"description\":null,\"model\":{\"message\":\"This field is required.\",\"validationCssClass\":\"ValidationRequired\",\"additionalAttributes\":{\"required\":\"\",\"aria-required\":\"true\"}}}]},{\"targetElementName\":\"__field_115157\",\"targetElementId\":\"78541af1-670b-4b57-962f-9b6717a9ecde\",\"validators\":[{\"type\":\"EPiServer.Forms.Implementation.Validation.RequiredValidator\",\"description\":null,\"model\":{\"message\":\"This field is required.\",\"validationCssClass\":\"ValidationRequired\",\"additionalAttributes\":{\"required\":\"\",\"aria-required\":\"true\"}}}]},{\"targetElementName\":\"__field_115158\",\"targetElementId\":\"abe081f4-4020-4f80-88b9-678269d9f597\",\"validators\":[{\"type\":\"EPiServer.Forms.Implementation.Validation.RequiredValidator\",\"description\":null,\"model\":{\"message\":\"This field is required.\",\"validationCssClass\":\"ValidationRequired\",\"additionalAttributes\":{\"required\":\"\",\"aria-required\":\"true\"}}},{\"type\":\"EPiServer.Forms.Implementation.Validation.EmailValidator\",\"description\":null,\"model\":{\"jsPattern\":\"^((([a-zA-Z]|\\\\d|[!#\\\\$%\u0026\u0027\\\\*\\\\+\\\\-\\\\/=\\\\?\\\\^_`{\\\\|}~]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])+(\\\\.([a-zA-Z]|\\\\d|[!#\\\\$%\u0026\u0027\\\\*\\\\+\\\\-\\\\/=\\\\?\\\\^_`{\\\\|}~]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])+)*)|((\\\\x22)((((\\\\x20|\\\\x09)*(\\\\x0d\\\\x0a))?(\\\\x20|\\\\x09)+)?(([\\\\x01-\\\\x08\\\\x0b\\\\x0c\\\\x0e-\\\\x1f\\\\x7f]|\\\\x21|[\\\\x23-\\\\x5b]|[\\\\x5d-\\\\x7e]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])|(\\\\\\\\([\\\\x01-\\\\x09\\\\x0b\\\\x0c\\\\x0d-\\\\x7f]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF]))))*(((\\\\x20|\\\\x09)*(\\\\x0d\\\\x0a))?(\\\\x20|\\\\x09)+)?(\\\\x22)))@((([a-zA-Z]|\\\\d|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])|(([a-zA-Z]|\\\\d|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])([a-zA-Z]|\\\\d|-|\\\\.|_|~|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])*([a-zA-Z]|\\\\d|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])))\\\\.)+(([a-zA-Z]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])|(([a-zA-Z]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])([a-zA-Z]|\\\\d|-|\\\\.|_|~|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])*([a-zA-Z]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])))$\",\"dotNetPattern\":\"^((([a-zA-Z]|\\\\d|[!#\\\\$%\u0026\u0027\\\\*\\\\+\\\\-\\\\/=\\\\?\\\\^_`{\\\\|}~]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])+(\\\\.([a-zA-Z]|\\\\d|[!#\\\\$%\u0026\u0027\\\\*\\\\+\\\\-\\\\/=\\\\?\\\\^_`{\\\\|}~]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])+)*)|((\\\\x22)((((\\\\x20|\\\\x09)*(\\\\x0d\\\\x0a))?(\\\\x20|\\\\x09)+)?(([\\\\x01-\\\\x08\\\\x0b\\\\x0c\\\\x0e-\\\\x1f\\\\x7f]|\\\\x21|[\\\\x23-\\\\x5b]|[\\\\x5d-\\\\x7e]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])|(\\\\\\\\([\\\\x01-\\\\x09\\\\x0b\\\\x0c\\\\x0d-\\\\x7f]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF]))))*(((\\\\x20|\\\\x09)*(\\\\x0d\\\\x0a))?(\\\\x20|\\\\x09)+)?(\\\\x22)))@((([a-zA-Z]|\\\\d|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])|(([a-zA-Z]|\\\\d|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])([a-zA-Z]|\\\\d|-|\\\\.|_|~|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])*([a-zA-Z]|\\\\d|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])))\\\\.)+(([a-zA-Z]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])|(([a-zA-Z]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])([a-zA-Z]|\\\\d|-|\\\\.|_|~|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])*([a-zA-Z]|[\\\\u00A0-\\\\uD7FF\\\\uF900-\\\\uFDCF\\\\uFDF0-\\\\uFFEF])))$\",\"message\":\"Enter a valid email address.\",\"validationCssClass\":null,\"additionalAttributes\":null}}]},{\"targetElementName\":\"__field_115160\",\"targetElementId\":\"5fbc9d77-b234-4b22-8cf0-e079ad35d536\",\"validators\":[{\"type\":\"EPiServer.Forms.Implementation.Validation.RequiredValidator\",\"description\":null,\"model\":{\"message\":\"This field is required.\",\"validationCssClass\":\"ValidationRequired\",\"additionalAttributes\":{\"required\":\"\",\"aria-required\":\"true\"}}}]},{\"targetElementName\":\"__field_146080\",\"targetElementId\":\"2e07e906-f3b7-4ed0-9e07-9f8825fdfff9\",\"validators\":[{\"type\":\"CEJN.ExternalWeb.Web.Business.Forms.Elements.TurnstileValidator\",\"description\":null,\"model\":{\"message\":\"Failed serverside validation\",\"validationCssClass\":null,\"additionalAttributes\":null}}]}]"),
+            // Steps information for driving multiple-step Forms.
+            StepsInfo : {
+                Steps: [{"index":0,"attachedUrl":"","dependField":null,"dependCondition":null,"isActive":true,"attachedContentLink":"","dependValue":"","elementName":"__field_","guid":"00000000-0000-0000-0000-000000000000"}]
+            },
+            FieldsExcludedInSubmissionSummary: [],
+            ElementsInfo: JSON.parse("{\"__field_115156\":{\"type\":\"EPiServer.Forms.Implementation.Elements.SelectionElementBlock\",\"friendlyName\":\"Subject\",\"customBinding\":false},\"__field_115157\":{\"type\":\"EPiServer.Forms.Implementation.Elements.SelectionElementBlock\",\"friendlyName\":\"Country\",\"customBinding\":false},\"__field_115158\":{\"type\":\"EPiServer.Forms.Implementation.Elements.TextboxElementBlock\",\"friendlyName\":\"E-mail\",\"customBinding\":false},\"__field_115160\":{\"type\":\"EPiServer.Forms.Implementation.Elements.TextareaElementBlock\",\"friendlyName\":\"Message\",\"customBinding\":false},\"__field_146080\":{\"type\":\"CEJN.ExternalWeb.Web.Business.Forms.Elements.TurnstileElementBlock\",\"friendlyName\":\"Turnstile\",\"customBinding\":false},\"__field_115161\":{\"type\":\"CEJN.ExternalWeb.Domain.Models.Forms.BootstrapSubmitButtonElementBlock\",\"friendlyName\":\"Submit\",\"customBinding\":false}}"),
+            DataSubmitController: "/EPiServer.Forms/DataSubmit",
+        };
+        /// TECHNOTE: Calculation at FormInfo level, and these values will be static input for later processing.
+        workingFormInfo.StepsInfo.FormHasNoStep_VirtualStepCreated=true; // this FLAG will be true, if Editor does not put any FormStep. Engine will create a virtual step, with empty GUID
+        workingFormInfo.StepsInfo.FormHasNothing=false; // this FLAG will be true if FormContainer has no element at all
+        workingFormInfo.StepsInfo.AllStepsAreNotLinked=true; // this FLAG will be true, if all steps all have contentLink= ="" (emptyString)
+
+        epi.EPiServer.SystemSettings = {
+            RequestVerification: {
+                FormFieldName: "__RequestVerificationToken",
+                HeaderName: "requestverificationtoken"
+            }
+        };
+    })();
+ 
+         
+         
+         
+         
+         
+              Contact us 
+         
+             
+                
+             
+         
+         
+                 
+                     
+
+
+
+       
+     
+         
+            Select subject *
+         
+             Product information 
+             Technical support 
+             Buy products 
+             Website feedback 
+             Other 
+     
+   
+
+
+       
+     
+         
+            Select country *
+         
+             Afghanistan 
+             Albania 
+             Algeria 
+             Angola 
+             Argentina 
+             Armenia 
+             Australia 
+             Austria 
+             Azerbaijan 
+             Bahrain 
+             Bangladesh 
+             Belarus 
+             Belgium 
+             Belize 
+             Benin 
+             Bhutan 
+             Bolivia 
+             Bosnia and Herzegowina 
+             Botswana 
+             Brazil 
+             Brunei Darussalam 
+             Bulgaria 
+             Burkina Faso 
+             Burma Myanmar 
+             Burundi 
+             Cambodia 
+             Cameroon 
+             Canada 
+             Central African Republic 
+             Chad 
+             Chile 
+             China 
+             Colombia 
+             Congo, Democratic Republic of 
+             Congo, Republic of 
+             Costa Rica 
+             Cote Divoire 
+             Croatia 
+             Cuba 
+             Cyprus 
+             Czech Republic 
+             Denmark 
+             Djibouti 
+             Dominican Republic 
+             Ecuador 
+             Egypt 
+             El Salvador 
+             Equatorial Guinea 
+             Eritrea 
+             Estonia 
+             Ethiopia 
+             Finland 
+             France 
+             French Guiana 
+             Gabon 
+             Gambia 
+             Georgia 
+             Germany 
+             Ghana 
+             Greece 
+             Greenland 
+             Guatemala 
+             Guinea 
+             Guinea-Bissau 
+             Guyana 
+             Haiti 
+             Honduras 
+             Hungary 
+             Iceland 
+             India 
+             Indonesia 
+             Iran 
+             Iraq 
+             Ireland 
+             Israel 
+             Italy 
+             Jamaica 
+             Japan 
+             Jordan 
+             Kazakhstan 
+             Kenya 
+             Kuwait 
+             Kyrgyzstan 
+             Laos 
+             Latvia 
+             Lebanon 
+             Lesotho 
+             Liberia 
+             Libya 
+             Lichtenstein 
+             Lithuania 
+             Luxembourg 
+             Macedonia 
+             Madagascar 
+             Malawi 
+             Malaysia 
+             Mali 
+             Malta 
+             Mauritania 
+             Mexico 
+             Moldova, Republic of 
+             Mongolia 
+             Morocco 
+             Mozambique 
+             Namibia 
+             Nepal 
+             Netherlands 
+             New Zealand 
+             Nicaragua 
+             Niger 
+             Nigeria 
+             North Korea 
+             Norway 
+             Oman 
+             Pakistan 
+             Panama 
+             Papua New Guinea 
+             Paraguay 
+             Peru 
+             Philippines 
+             Poland 
+             Portugal 
+             Puerto Rico 
+             Qatar 
+             Romania 
+             Russia 
+             Rwanda 
+             Saudi Arabia 
+             Senegal 
+             Serbia and Montenegro 
+             Sierra Leone 
+             Singapore 
+             Slovakia 
+             Slovenia 
+             Somalia 
+             South Africa 
+             South Korea 
+             Spain 
+             Sri lanka 
+             Sudan 
+             Suriname 
+             Swaziland 
+             Sweden 
+             Switzerland 
+             Syrian Arab Republic 
+             Taiwan region 
+             Tajikistan 
+             Tanzania, United Republic of 
+             Thailand 
+             Togo 
+             Trinidad and Tobago 
+             Tunisia 
+             Turkey 
+             Turkmenistan 
+             Uganda 
+             Ukraine 
+             United Arab Emirates 
+             United Kingdom 
+             Uruguay 
+             USA 
+             Uzbekistan 
+             Venezuela 
+             Vietnam 
+             Western Sahara 
+             Yemen 
+             Zambia 
+             Zimbabwe 
+     
+   
+
+
+       
+     
+   
+
+       
+      
+   
+ 
+ 
+
+      
+   
+
+ 
+    window['turnstileJsCallback_2e07e906-f3b7-4ed0-9e07-9f8825fdfff9'] = function (token) {
+        document.getElementById('turnstile-token-2e07e906-f3b7-4ed0-9e07-9f8825fdfff9').value = token;
+    };
+
+    window.addEventListener("load", function () {
+        if (window.jQuery && epi?.EPiServer?.Forms) {
+            $.extend(true, epi.EPiServer.Forms, {
+                Validators: {
+                    "CEJN.ExternalWeb.Web.Business.Forms.Elements.TurnstileValidator": function (fieldName, fieldValue, validatorMetaData) {
+                        return {
+                            isValid: true,
+                            message: validatorMetaData.model.message
+                        };
+                    }
+                }
+            });
+        }
+    });
+ 
+
+
+ 
+     
+                Send Message
+                 
+                  
+
+         
+             
+
+
+     
+         
+            
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+ 
+ Call us at 
+  1-800-222-2356  
+ 
+         
+     
+
+     
+         
+            
+ 
+ Looking to buy our products? 
+  Find dealers&nbsp;  
+ 
+         
+     
+         
+     
+                 
+             
+         
+     
+
+         
+             
+                
+ 
+     
+         
+            	          Home  
+	          Applications  
+	          Data centers  
+
+         
+     
+ 
+
+
+             
+         
+    
+ 
+
+     
+        
+
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+     
+         
+            
+ Quick connect coupling solutions for data centers 
+  The data center industry is developing at a rapid speed. The increasing demand for cloud, AI, IoT, and edge applications drives the requirement for increased cooling capacity at a fast development pace. More advanced and powerful thermal management liquid cooling systems are needed to maintain the required cooling temperatures in data center applications  .  &nbsp;To that, quick couplings play an&nbsp;  important  &nbsp;role.  
+         
+     
+     
+ 
+
+ 
+     
+    
+
+
+
+ 
+     
+
+             
+         
+          load movie&nbsp;      
+             
+                Quick coupling solutions for liquid cooling in Data Centers
+             
+         
+       
+ 
+     
+ 
+                 
+             
+
+     
+ 
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+  CEJN and OCP   CDU solutions   Direct liquid cooling (DLC) solutions   Immersion cooling solutions  
+         
+     
+
+     
+         
+            
+ &nbsp; 
+         
+     
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+     
+         
+            
+  This is how CEJN coupling solutions enable high-performing liquid cooling systems in data centers:  
+ 
+ CEJNs contribution to the Open Compute Project (OCP). 
+ Non-drip high flow quick coupling with a screw-to-connect mechanism for data center Coolant Distribution Units (CDU). 
+ Compact quick connect coupling solutions with or without blind-mate function for Direct Liquid Cooling (DLC) applications. 
+ Flat-face non-drip quick connectors with a low-pressure drop for an efficient connection and disconnection of Immersion Cooling tanks.&nbsp; 
+ 
+         
+     
+     
+ 
+                 
+             
+
+     
+ 
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+    
+         
+     
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+     
+         
+            
+ CEJN part of the OCP initiative&nbsp; 
+ CEJN is a proud contributor to the OCP community, designing and developing interchangeable quick connect solutions alongside industry leaders and manifold- and chassis manufacturers for the data center industry. 
+ CEJN has long experience in quick coupling technology for thermal management and our expertise in quick coupling technology will make sure to meet the requirements. We offer a wide range of interchangeable coupling solutions developed within OCP as well as customized solutions for specific demands and needs.&nbsp; 
+         
+     
+     
+ 
+
+ 
+     
+    
+
+
+ 
+         
+             
+
+
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 UQD couplings 
+                                                 
+Universal Quick Disconnects (UQD), spill-free quick couplings for liquid cooling 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 LQC couplings 
+                                                 
+Screw-to-connect coupling solution for data center CDU applications. 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 BMQC couplings 
+                                                 
+Blind-Mate Quick Connector (BMQC) for data center DLC applications. 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 ultraFLOW STC couplings 
+                                                 
+Spill-free screw-to-connect couplings for low-pressure fluids 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 UQDB couplings 
+                                                 
+Universal Quick Disconnect blind-mate (UQDB) solution for data center applications. 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+         
+ 
+     
+ 
+                 
+             
+
+     
+ 
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+     
+         
+            
+ &nbsp; 
+ 
+ &ldquo;With our long experience and knowledge in quick coupling technology, we have good confidence that our participation will move the technology development forward&rdquo; 
+- Emil Pettersson, Design Engineer at CEJN AB 
+ &nbsp; 
+  Read the full story about CEJNs involvement in OCP  
+         
+     
+     
+ 
+                 
+             
+
+     
+ 
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+    
+         
+     
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+     
+         
+            
+ High flow quick couplings for an even and maintained cooling temperature in CDUs&nbsp; 
+ The Coolant Distribution Unit (CDU) is the core of the liquid cooling systems, responsible for evenly distributing coolant throughout the data server racks while maintaining the desired temperature and flow rate. 
+ Quick couplings are essential in CDU systems as they efficiently and safely transfer coolant through the CDU's inlets and outlets. Since operators frequently need to connect and disconnect cooling lines while the system is in operation,&nbsp;a screw-to-connect coupling solution is preferred for its ease of use compared to push-to-connect types. CEJN offers specially designed coupling solutions tailored for CDU applications in data centers, featuring high flow capacity, minimal pressure drop for improved efficiency, and the ability to connect and disconnect while under working pressure. 
+ &nbsp; 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ &nbsp; 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+         
+     
+     
+ 
+
+ 
+     
+    
+
+
+ 
+         
+             
+
+
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 LQC couplings 
+                                                 
+Screw-to-connect coupling solution for data center CDU applications. 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 Smartflow dry break couplings 
+                                                 
+Dry break couplings for fluid transfer 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+         
+ 
+     
+ 
+                 
+             
+
+     
+ 
+
+     
+         
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                  OCP (Open Compute Project) 
+                                 LQC couplings 
+                                 Screw-to-connect coupling solution for data center CDU applications. 
+                             
+                         
+                     
+                 
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                  Liquid cooling 
+                                 ultraFLOW STC couplings 
+                                 Spill-free screw-to-connect couplings for low-pressure fluids 
+                             
+                         
+                     
+                 
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                 Smartflow dry break couplings 
+                                 Dry break couplings for fluid transfer 
+                             
+                         
+                     
+                 
+         
+     
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+    
+         
+     
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+ 
+         
+             
+
+
+                     
+                         
+                             
+                                 
+                                         
+                                             
+                                                 
+                                             
+
+                                             
+                                                 UQD couplings 
+                                                 
+Universal Quick Disconnects (UQD), spill-free quick couplings for liquid cooling 
+                                             
+                                         
+                                 
+                             
+                         
+                     
+         
+ 
+     
+ 
+
+ 
+     
+    
+
+
+     
+         
+            
+ Ensure a reliable DLC process with high-quality quick couplings 
+  To enable a smooth, safe, and efficient Direct Liquid Cooling (DLC) process in data centers  , quick connect couplings play a key role as   they are the vital connection between the IT equipment like manifolds, cold plates,   and  &nbsp;CDUs (Coolant Distribution Units  ),   and the liquid cooling loop.  
+  Depending on the needs and requirements of the data center DLC infrastructure, two types of coupling solutions can be used, both hot-swappable allowing connection and disconnection without shutting off the CDU: hand-mate quick connect couplings or blind-mate solutions with misalignment tolerance. At CEJN, we offer both.&nbsp;  
+         
+     
+     
+ 
+                 
+             
+
+     
+ 
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+     
+         
+            
+ Hand-mate operated quick couplings 
+ CEJN OCP UQD is a latching style hand-mate, sometimes called one-hand-operated, quick connector with spill-free connection- and disconnection under operations, so-called hot-swap functionality. Equipped with a push-lock style hose connection, this solution enables a fast and secured assembly without the need for clamps or crimping ferrules. With its compact design, it is the perfect fit for data center manifolds.&nbsp; 
+         
+     
+
+     
+         
+            
+ Quick couplings with blind-mate function 
+ CEJN offers two different types of blind-mate quick connect coupling solutions, both developed within the OCP initiative with CEJN as one of the main contributors: OCP UQDB and OCP BMQC. Built with a blind-mate function, the connection and disconnection can be made even if misalignment occurs, making this an ideal solution due to the added flexibility for the data center chassis going in and out of the racks.&nbsp; 
+ The OCP UQDB features a +/- 1 mm radial misalignment tolerance while the OCP BMQC has an extra high radial misalignment tolerance of +/- 5 mm, as well as an angular misalignment tolerance of 2,7&deg;. 
+         
+     
+     
+ 
+                 
+             
+
+     
+ 
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+     
+         
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                  OCP (Open Compute Project) 
+                                 UQD couplings 
+                                 Universal Quick Disconnects (UQD), spill-free quick couplings for liquid cooling 
+                             
+                         
+                     
+                 
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                  OCP (Open Compute Project) 
+                                 UQDB couplings 
+                                 Universal Quick Disconnect blind-mate (UQDB) solution for data center applications. 
+                             
+                         
+                     
+                 
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                  OCP (Open Compute Project) 
+                                 BMQC couplings 
+                                 Blind-Mate Quick Connector (BMQC) for data center DLC applications. 
+                             
+                         
+                     
+                 
+         
+     
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+ &nbsp; 
+         
+     
+
+     
+         
+            
+    
+         
+     
+ 
+     
+
+             
+                 
+                    
+
+
+ 
+     
+    
+
+
+     
+         
+            
+ Quick connect couplings for an efficient Immersion Cooling process 
+ Immersion Cooling is an efficient and sustainable method in which IT systems are submerged in tanks with nonconductive or dielectric liquid through single-phase or two-phase immersion cooling. Inside the tanks, a liquid-to-liquid heat exchanger cools the dielectric fluid, directly interacting with servers and heat-generating IT gears. Quick couplings connect the tanks with facility cooling water, often in very limited spaces where compact quick connectors with small outside dimensions are needed while maintaining the highest performance and lowest pressure drop. CEJN ultraFLOW quick connectors fulfill these requirements as they provide a lightweight and compact design with a flat-face non-drip solution for low-pressure fluids, ensuring the system operates efficiently.&nbsp; 
+ This process consumes significantly less power than air cooling, making it one of the most environmentally friendly solutions for heat dissipation. Another cooling technique is a hybrid solution of Immersion Cooling and DLC, in which the DLC is used to cool the processor's most heat-exposed components (GPU, CDU, TPU).&nbsp; 
+ &nbsp; 
+ &nbsp; 
+         
+     
+     
+ 
+
+ 
+     
+    
+
+ 
+         
+ 
+
+     
+ 
+                 
+             
+
+     
+ 
+
+
+     
+         
+            
+ &nbsp; 
+         
+     
+     
+         
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                  Liquid cooling 
+                                 ultraFLOW quick couplings 
+                                 Non-drip quick couplings for low-pressure fluids 
+                             
+                         
+                     
+                 
+                 
+                     
+                         
+                             
+                                 
+                                     
+                                 
+                                  OCP (Open Compute Project) 
+                                 LQC couplings 
+                                 Screw-to-connect coupling solution for data center CDU applications. 
+                             
+                         
+                     
+                 
+         
+     
+
+     
+ 
+
+ 
+ 
+     
+         
+             
+                     
+             
+                       
+                    
+
+ CEJN Industrial Corporation 
+  
+
+  North American Headquarters   212 Ambrogio Drive   Gurnee,IL 60031  
+   High Pressure Center - Houston   10757 Cutten Rd., Building 7   Houston, TX 77066   
+       1-800-222-2356  
+       customer.service.usa@cejn.com  
+     
+          www.cejn.com/en-us
+      
+
+             
+             
+                         Whistleblowing hotline  
+                         Privacy and Cookies Policy  
+                         Brochures  
+                         Movies  
+                         Hose Kit Guide  
+                         Hose Assemblies  
+                         WEO Plug-In  
+                         Sign up for live poduct demo  
+             
+             
+                         
+                              Contact Form
+                         
+             
+             
+                        
+                            
+             
+         
+             
+                 
+                     © Copyright CEJN AB 2026 
+                 
+             
+     
+ 
+
+
+
+
+    
+ 
+    var i18n = {
+        baseUrl: "/en-us/",
+        CdnHostName: "https://www.cejn.com",
+        strings: {"allproducts":"All products","appliedfilters.title":"Applied filters","appliedfilters.clear":"Clear filters","articles":"Articles","articlelisting.itemsmatching":"products matching your filter","articlelisting.loadmore":"Load more parts","articlelisting.artno":"Part No.","articlelisting.series":"Series","articlelisting.modelfiles":"3D Model","articlelisting.drawingfiles":"Drawings","articlelisting.download":"Download","articlelisting.drawingShort":"PDF","articlelisting.modelShort":"3D","articlelisting.inquiryListButton":"Inquiry List","articlemodal.relatedparts":"Related parts","articlemodal.partno":"Part No.","articlemodal.series":"Series","articlemodal.downloadmodelfiles":"Download model files","articlemodal.downloaddrawingfiles":"Download drawing files","articlemodal.print":"Print","articlemodal.downloadform.submit":"Submit form","articlemodal.downloadform.error":"An error occured while sending the information, please try again later.","articlemodal.downloadform.heading":"Download","articlemodal.downloadform.description":"Please complete the form below in order to gain access to downloadable product files. The data you provide is for internal information purposes only and will not be published or made available outside of CEJN. By submitting this form you may recieve e-mail send-outs. You can unsubscribe from them at any time","articlemodal.downloadform.firstname":"First name","articlemodal.downloadform.lastname":"Last name","articlemodal.downloadform.country":"Country","articlemodal.downloadform.selectcountry":"Select country","articlemodal.downloadform.countryMissing":"Please select your country","articlemodal.downloadform.company":"Company","articlemodal.downloadform.email":"E-mail address","articlemodal.downloadform.phone":"Phone","articlemodal.downloadform.tooManyRequests":"To many requests","cejnToast.messages.addedWithQuantity":"added with quantity","cejnToast.messages.cartDeleted":"Cart deleted","cejnToast.messages.removedFromCart":"removed from cart","cejnToast.messages.sharedSuccessfullyWith":"Cart shared successfully with","cejnToast.errors.addItem":"An error occured when trying to add a cart item","cejnToast.errors.clearCart":"An error occured when trying to clear the cart","cejnToast.errors.deleteCart":"An error occured when trying to delete the cart","cejnToast.errors.deleteItem":"An error occured when trying to delete a cart item","cejnToast.errors.invalidForm":"The form is not valid","cejnToast.errors.sharingCart":"An error occured when trying to share the cart","cejnToast.errors.submitForm":"An error occured when trying to submit the form","cejnToast.errors.updateItem":"An error occured when trying to update a cart item","cejnToast.errors.itemDoesNotExist":"Item does not exist in cart","cejnToast.showListButton":"Show Inquiry List","common.error":"An error has occured!","generalError":"An error occured :-(","goBack":"Go back","inquiryList.heading":"Products in your inquiry list","inquiryList.listEmpty":"Inquiry list is empty","inquiryList.clearList":"Clear List","inquiryList.clearConfirm":"This will clear your cart, are you sure?","inquiryList.requestButton":"Request quotation","loading":"Loading...","productFilter.apply":"Apply","productFilter.expandTechnicalData":"Show technical data","productFilter.productListingHeader":"Products matching your filter","productFilter.heading":"Product overview","productFilter.matchingProducts":"matching products","products":"Products","quicksearch.buttontext":"Search","quicksearch.inputplaceholder":"Search for products and content","quicksearch.nomatchingresults":"No matching results","quicksearch.replacedarticles":"has been replaced","quicksearch.tabs.articles":"Articles","quicksearch.tabs.products":"Products","quicksearch.tabs.series":"Series","quicksearch.tabs.pages":"Pages","quicksearch.tabs.media":"Videos","quicksearch.tabs.documents":"Documents","readmore":"Read more","series":"Series","serieslisting.numberofarticles":"articles","serieslisting.select":"Select","serieslisting.close":"Close","serieslisting.technicaldata":"Technical data","share":"Share","shareInquiryForm.subject":"wants to share a list with you","shareInquiryForm.subjectreceipt":"You have shared a list with","shareInquiryForm.labels.myName":"My name","shareInquiryForm.labels.myEmail":"My email","shareInquiryForm.labels.receiverName":"Receiver name","shareInquiryForm.labels.receiverEmail":"Receiver email","shareInquiryForm.labels.message":"Message","shareInquiryForm.labels.sendButton":"Send list"},
+        languages: [{"value":"Afghanistan","name":"Afghanistan"},{"value":"Albania","name":"Albania"},{"value":"Algeria","name":"Algeria"},{"value":"Angola","name":"Angola"},{"value":"Argentina","name":"Argentina"},{"value":"Armenia","name":"Armenia"},{"value":"Australia","name":"Australia"},{"value":"Austria","name":"Austria"},{"value":"Azerbaijan","name":"Azerbaijan"},{"value":"Bahrain","name":"Bahrain"},{"value":"Bangladesh","name":"Bangladesh"},{"value":"Belarus","name":"Belarus"},{"value":"Belgium","name":"Belgium"},{"value":"Belize","name":"Belize"},{"value":"Benin","name":"Benin"},{"value":"Bhutan","name":"Bhutan"},{"value":"Bolivia","name":"Bolivia"},{"value":"Bosnia and Herzegowina","name":"Bosnia and Herzegowina"},{"value":"Botswana","name":"Botswana"},{"value":"Brazil","name":"Brazil"},{"value":"Brunei Darussalam","name":"Brunei Darussalam"},{"value":"Bulgaria","name":"Bulgaria"},{"value":"Burkina Faso","name":"Burkina Faso"},{"value":"Burma Myanmar","name":"Burma Myanmar"},{"value":"Burundi","name":"Burundi"},{"value":"Cambodia","name":"Cambodia"},{"value":"Cameroon","name":"Cameroon"},{"value":"Canada","name":"Canada"},{"value":"Central African Republic","name":"Central African Republic"},{"value":"Chad","name":"Chad"},{"value":"Chile","name":"Chile"},{"value":"China","name":"China"},{"value":"Colombia","name":"Colombia"},{"value":"Congo, Democratic Republic of","name":"Congo, Democratic Republic of"},{"value":"Congo, Republic of","name":"Congo, Republic of"},{"value":"Costa Rica","name":"Costa Rica"},{"value":"Cote Divoire","name":"Cote Divoire"},{"value":"Croatia","name":"Croatia"},{"value":"Cuba","name":"Cuba"},{"value":"Cyprus","name":"Cyprus"},{"value":"Czech Republic","name":"Czech Republic"},{"value":"Denmark","name":"Denmark"},{"value":"Djibouti","name":"Djibouti"},{"value":"Dominican Republic","name":"Dominican Republic"},{"value":"Ecuador","name":"Ecuador"},{"value":"Egypt","name":"Egypt"},{"value":"El Salvador","name":"El Salvador"},{"value":"Equatorial Guinea","name":"Equatorial Guinea"},{"value":"Eritrea","name":"Eritrea"},{"value":"Estonia","name":"Estonia"},{"value":"Ethiopia","name":"Ethiopia"},{"value":"Finland","name":"Finland"},{"value":"France","name":"France"},{"value":"French Guiana","name":"French Guiana"},{"value":"Gabon","name":"Gabon"},{"value":"Gambia","name":"Gambia"},{"value":"Georgia","name":"Georgia"},{"value":"Germany","name":"Germany"},{"value":"Ghana","name":"Ghana"},{"value":"Greece","name":"Greece"},{"value":"Greenland","name":"Greenland"},{"value":"Guatemala","name":"Guatemala"},{"value":"Guinea","name":"Guinea"},{"value":"Guinea-Bissau","name":"Guinea-Bissau"},{"value":"Guyana","name":"Guyana"},{"value":"Haiti","name":"Haiti"},{"value":"Honduras","name":"Honduras"},{"value":"Hungary","name":"Hungary"},{"value":"Iceland","name":"Iceland"},{"value":"India","name":"India"},{"value":"Indonesia","name":"Indonesia"},{"value":"Iran","name":"Iran"},{"value":"Iraq","name":"Iraq"},{"value":"Ireland","name":"Ireland"},{"value":"Israel","name":"Israel"},{"value":"Italy","name":"Italy"},{"value":"Jamaica","name":"Jamaica"},{"value":"Japan","name":"Japan"},{"value":"Jordan","name":"Jordan"},{"value":"Kazakhstan","name":"Kazakhstan"},{"value":"Kenya","name":"Kenya"},{"value":"Kuwait","name":"Kuwait"},{"value":"Kyrgyzstan","name":"Kyrgyzstan"},{"value":"Laos","name":"Laos"},{"value":"Latvia","name":"Latvia"},{"value":"Lebanon","name":"Lebanon"},{"value":"Lesotho","name":"Lesotho"},{"value":"Liberia","name":"Liberia"},{"value":"Libya","name":"Libya"},{"value":"Lichtenstein","name":"Lichtenstein"},{"value":"Lithuania","name":"Lithuania"},{"value":"Luxembourg","name":"Luxembourg"},{"value":"Macedonia","name":"Macedonia"},{"value":"Madagascar","name":"Madagascar"},{"value":"Malawi","name":"Malawi"},{"value":"Malaysia","name":"Malaysia"},{"value":"Mali","name":"Mali"},{"value":"Malta","name":"Malta"},{"value":"Mauritania","name":"Mauritania"},{"value":"Mexico","name":"Mexico"},{"value":"Moldova, Republic of","name":"Moldova, Republic of"},{"value":"Mongolia","name":"Mongolia"},{"value":"Morocco","name":"Morocco"},{"value":"Mozambique","name":"Mozambique"},{"value":"Namibia","name":"Namibia"},{"value":"Nepal","name":"Nepal"},{"value":"Netherlands","name":"Netherlands"},{"value":"New Zealand","name":"New Zealand"},{"value":"Nicaragua","name":"Nicaragua"},{"value":"Niger","name":"Niger"},{"value":"Nigeria","name":"Nigeria"},{"value":"North Korea","name":"North Korea"},{"value":"Norway","name":"Norway"},{"value":"Oman","name":"Oman"},{"value":"Pakistan","name":"Pakistan"},{"value":"Panama","name":"Panama"},{"value":"Papua New Guinea","name":"Papua New Guinea"},{"value":"Paraguay","name":"Paraguay"},{"value":"Peru","name":"Peru"},{"value":"Philippines","name":"Philippines"},{"value":"Poland","name":"Poland"},{"value":"Portugal","name":"Portugal"},{"value":"Puerto Rico","name":"Puerto Rico"},{"value":"Qatar","name":"Qatar"},{"value":"Romania","name":"Romania"},{"value":"Russia","name":"Russia"},{"value":"Rwanda","name":"Rwanda"},{"value":"Saudi Arabia","name":"Saudi Arabia"},{"value":"Senegal","name":"Senegal"},{"value":"Serbia and Montenegro","name":"Serbia and Montenegro"},{"value":"Sierra Leone","name":"Sierra Leone"},{"value":"Singapore","name":"Singapore"},{"value":"Slovakia","name":"Slovakia"},{"value":"Slovenia","name":"Slovenia"},{"value":"Somalia","name":"Somalia"},{"value":"South Africa","name":"South Africa"},{"value":"South Korea","name":"South Korea"},{"value":"Spain","name":"Spain"},{"value":"Sri lanka","name":"Sri lanka"},{"value":"Sudan","name":"Sudan"},{"value":"Suriname","name":"Suriname"},{"value":"Swaziland","name":"Swaziland"},{"value":"Sweden","name":"Sweden"},{"value":"Switzerland","name":"Switzerland"},{"value":"Syrian Arab Republic","name":"Syrian Arab Republic"},{"value":"Taiwan region","name":"Taiwan region"},{"value":"Tajikistan","name":"Tajikistan"},{"value":"Tanzania, United Republic of","name":"Tanzania, United Republic of"},{"value":"Thailand","name":"Thailand"},{"value":"Togo","name":"Togo"},{"value":"Trinidad and Tobago","name":"Trinidad and Tobago"},{"value":"Tunisia","name":"Tunisia"},{"value":"Turkey","name":"Turkey"},{"value":"Turkmenistan","name":"Turkmenistan"},{"value":"Uganda","name":"Uganda"},{"value":"Ukraine","name":"Ukraine"},{"value":"United Arab Emirates","name":"United Arab Emirates"},{"value":"United Kingdom","name":"United Kingdom"},{"value":"Uruguay","name":"Uruguay"},{"value":"USA","name":"USA"},{"value":"Uzbekistan","name":"Uzbekistan"},{"value":"Venezuela","name":"Venezuela"},{"value":"Vietnam","name":"Vietnam"},{"value":"Western Sahara","name":"Western Sahara"},{"value":"Yemen","name":"Yemen"},{"value":"Zambia","name":"Zambia"},{"value":"Zimbabwe","name":"Zimbabwe"}],
+        getString: function (key) {
+            if (this.strings[key]) {
+                return this.strings[key];
+            }
+
+            return "Missing translation: " + key;
+        },
+        nrOfCharsBeforeSearch: 3
+    };
+ 
+
+
+      
+      
+
+      
+ 
+/*
+This EPiServerForms_prerequisite.js TEMPLATE will be compiled with serverside values and injected into ViewMode page
+We reuse the existed global var epi from EPiServer CMS, if any. It will init/grab the epi object, and init epi.EPiServer.Forms object
+*/
+
+// (by default) Forms's jQuery will be injected right before this file. From now on, we refer Forms own jQuery as $$epiforms.
+// after this code, the object $ and jQuery will revert back to its original meaning in original library (Alloy jQuery or other lib).
+
+// Our clients' sites may include their own Jquery version (e.g. a higher version for some special functionalities), which leads to unexpected conflicts with ours.
+// To avoid this, we use jQuery.noConflict()  to set up $$epiforms as an allias for our jquery and then, revert Jquery allias to clients' by using
+// epi.EPiServer.Forms.OriginalJQuery whose value is set up as Jquery at the beginning in FormBlockController.
+// This also allows us to extend our own Jquery's functionalities without causing further conflicts.
+
+var $$epiforms = epi.EPiServer.Forms.InjectFormOwnJQuery ? jQuery.noConflict() : jQuery;
+if (epi.EPiServer.Forms.OriginalJQuery) {
+    jQuery = epi.EPiServer.Forms.OriginalJQuery;
+    delete epi.EPiServer.Forms.OriginalJQuery;
+}
+(function () {
+    var externalScript = [],
+        externalCss = [];
+
+    if (epi.EPiServer.Forms.ExternalScriptSources) {
+        externalScript = epi.EPiServer.Forms.ExternalScriptSources.concat(externalScript);
+        // Remove duplicate items
+        externalScript = externalScript.filter(function (value, index, self) {
+            return self.indexOf(value) === index;
+        });
+    }
+    if (epi.EPiServer.Forms.ExternalCssSources) {
+        externalCss = epi.EPiServer.Forms.ExternalCssSources.concat(externalCss);
+        // Remove duplicate items
+        externalCss = externalCss.filter(function (value, index, self) {
+            return self.indexOf(value) === index;
+        });
+    }
+
+    $$epiforms.extend(true, epi.EPiServer, {
+        CurrentPageLink: "105925",
+        CurrentPageLanguage: "en",
+        CurrentFormLanguage: "en",
+        Forms: {
+            Utils: {}, Data: {}, Extension: {}, Validation: {}, Navigation: {}, Dependency: {},
+            $: $$epiforms,  // save our own link to our own jQuery
+            ThrottleTimeout: 500,  // miliseconds
+            ExternalScriptSources: externalScript,
+            ExternalCssSources: externalCss,
+            UploadExtensionBlackList: "asp,aspx,asa,ashx,asmx,bat,chm,class,cmd,com,config,dll,exe,hta,htr,htw,jse,json,lnk,mda,mdb,msc,msh,pif,printer,ps1,ps2,reg,rem,scf,scr,sct,shtm,shtml,soap,stm,svc,url,vb,vbe,vbs,vsix,ws,wsc,wsf,wsh,xamlx,htm,html,js,jar",
+            Messages: {"viewMode":{"malformStepConfiguration":"Improperly formed FormStep configuration. Some steps are attached to pages, while some steps are not attached, or attached to content with no public URL.","commonValidationFail":"This element value is not valid."},"fileUpload":{"overFileSize":"The upload file size should be less than {0} MB.","invalidFileType":"The upload file format is not allowed or not supported.","postedFile":"(Previous posted file(s): {0})"}},
+            LocalizedResources: {"contentediting":{"clickdimensionactor":{"formactionurl":"Click dimension form tracking url","formactionurldescription":"The form action url for current form"},"fielddependency":{"condition":{"field":"Field","operator":"Operator","value":"Value"},"invalidcondition":"The condition is no longer valid","conditiondialog":{"title":"Condition Details"}},"optionitem":{"caption":"Choice","value":"Value","checked":"Checked by default","containsinvalidcharacter":"Comma (,) character is not allowed."},"emailtemplateactor":{"fromemail":"From","fromemaildescription":"Email address to send from","toemails":"To","toemailsdescription":"Email address to send to, or name of a form field with the email address (for confirmation emails)","subject":"Subject","subjectdescription":"Subject line for the email. You can use #FIELDNAME# to insert values from the form.","body":"Message","bodydescription":"The body of the email. You can insert values from the form with #FIELDNAME#, or show a summary listing of the form fields with #SUMMARY.","fromemailplaceholder":"someone@example.com","toemailsplaceholder":"address@example.com,...","subjectplaceholder":"Enter email subject","replyto":"Reply To","replytoplaceholder":"replytoaddress@example.com,...","replytodescription":"Email address that the reply email is sent when you want the reply to go to an email address that is different than the From"},"webhookactor":{"url":"Webhook URL","urldescription":"Webhook URL to send data payload to (http or https protocol).","jsonformat":"POST data in JSON format"},"validation":{"circulardependency":"Circular dependency configuration is not allowed","greaterthanequaltoerrorformat":"The {0} must be >= {1}'s value.","lessthanequaltoerrorformat":"The {0} must be  = 1 and  ${0}  record(s) are selected. ","extraselectionlink":"Select all  ${0}  records","clearselectionlink":"Clear selection","filterdata":"Filter","searchallcolumns":"All columns","exportasdecryptedcsv":"Decrypted CSV","exportasdecryptedcsvdesc":"Decrypt and export form data in CSV format"},"formscontentarea":{"emptyactions":{"actions":{"createnewformselement":"create a new element"},"template":"You can drop form elements here or ","templatewithoutcreate":"You can drop content here."}},"fieldselector":{"title":"Select dependent field"},"validators":{"episerver.forms.implementation.validation.requiredvalidator":{"displayname":"Required","message":"This field is required."},"episerver.forms.implementation.validation.regularexpressionvalidator":{"displayname":"Regular expression","message":"This field should be in \"{0}\" format."},"episerver.forms.implementation.validation.captchavalidator":{"displayname":"Captcha","message":"Enter the characters you see in the picture."},"episerver.forms.implementation.validation.allowedextensionsvalidator":{"displayname":"Allowed extensions","message":"The upload file format is not allowed or not supported.","allowedextensionsmessage":"The upload file format is not allowed or not supported. File format should be: {0}."},"episerver.forms.implementation.validation.maxfilesizevalidator":{"displayname":"Max file size","message":"The upload file size should be less than {0} MB."},"episerver.forms.implementation.validation.emailvalidator":{"displayname":"Email","message":"Enter a valid email address."},"episerver.forms.implementation.validation.urlvalidator":{"displayname":"Url","message":"Enter a valid URL."},"episerver.forms.implementation.validation.dateddmmyyyyvalidator":{"displayname":"Date (DD/MM/YYYY)","message":"Enter a date in the DD/MM/YYYY format."},"episerver.forms.implementation.validation.datemmddyyyyvalidator":{"displayname":"Date (MM/DD/YYYY)","message":"Enter a date in the MM/DD/YYYY format."},"episerver.forms.implementation.validation.dateyyyymmddvalidator":{"displayname":"Date (YYYY-MM-DD)","message":"Enter a date in the YYYY-MM-DD format."},"episerver.forms.implementation.validation.numericvalidator":{"displayname":"Numeric","message":"Enter a valid number."},"episerver.forms.implementation.validation.integervalidator":{"displayname":"Integer","message":"Enter a valid integer."},"episerver.forms.implementation.validation.positiveintegervalidator":{"displayname":"Positive integer","message":"Enter a valid positive integer."},"elementselfvalidator":{"unexpectedvalueisnotaccepted":"Unexpected value is not accepted."},"custommessage":{"resetbuttonlabel":"Reset to default","errormessagelabel":"Error message "},"fileuploadelementselfvalidator":{"multiplefilenotallowed":"Not allowed to upload multiple files."},"rangeelementblockselfvalidator":{"rangeinputinvalidnumber":"Range value must be in range of [{0}-{1}]'s value with Step = {2}"},"selectionelementseflvalidator":{"notallowmultiselection":"Multiple choices are not accepted."}},"visitordatasources":{"episerver.forms.implementation.visitordata.ipaddressvisitordatasource":{"displayname":"IP Address"},"episerver.forms.implementation.visitordata.geovisitordatasource":{"displayname":"Geo","properties":{"city":"City","country_code":"Country code","country_name":"Country name","ip":"IP","latitude":"Latitude","longitude":"Longitude","region_code":"Region code","region_name":"Region name","time_zone":"Time zone","zip_code":"Zip code"}},"episerver.forms.implementation.visitordata.profilevisitordatasource":{"displayname":"Profile","properties":{"address":"Address","zipcode":"Zip code","locality":"Locality","email":"Email","firstname":"First name","lastname":"Last name","language":"Language","country":"Country","company":"Company","title":"Title","phonenumber":"Phone number"}},"episerver.forms.implementation.visitordata.useragentvisitordatasource":{"displayname":"User agent","properties":{"ismobiledevice":"Is mobile","useragent":"User agent"}},"episerver.forms.implementation.visitordata.visitorgroupvisitordatasource":{"displayname":"Audiences","properties":{"id":"Id","name":"Name"}},"youmustselectvalueforhiddenvisitor":"You must select a value for the type of visitor data you choose."},"messages":{"fileupload":{"overfilesize":"The upload file size should be less than {0} MB.","invalidfiletype":"The upload file format is not allowed or not supported.","postedfile":"(Previous posted file(s): {0})"},"formsubmission":{"outdatedforminit":"Your current session for viewing the form is expired. Refresh your page to continue.","requirelogin":"You must be logged in to submit this form. If you are logged in and still cannot post, make sure \"Do not track\" in your browser settings is disabled.","denymultisubmit":"You already submitted this form.","submitsuccess":"The form has been submitted successfully.","validationfailformat":"Validation failed on \"{0}\" field: {1}","thereisnoformguid":"Submit data FAILED: there is no Form's Guid.","couldnotgetform":"Submit data FAILED: could not get Form with Id = {0} in language {1}.","submitcancelled":"TECHNICAL INFO: Submitting process is cancelled. Reason: ","formisrestricted":"Could not submit form. You do not have sufficient privileges.","formexpired":"Could not submit form. Form has been expired.","formdeleted":"Could not submit form. Form has been deleted.","submitnotsuccess":"Failed to submit.","sessionoff":"You cannot submit this form because an administrator has turned off data storage.","noelementstep":"Submit data FAILED: there is no element data exist on submitted step.","submissionfinalized":"Could not submit form. Submission has been finalized."}},"dependcondition":{"notapplicable":"Not applicable","matchregularexpression":"Match with regular expression","equals":"Equals","notequals":"Not equals","contains":"Contains","notcontains":"Not contains"},"imagechoiceitems":{"emptyactions":{"actions":{"createnewitem":"Create a link to an image"},"template":"Drop image content here. You also can {createnewitem}."},"menutooltip":"Display menu"},"editview":{"elementdependant":"This field depends on other field(s)","retentionperiod":{"partial":"partial","finalized":"finalized","default":"Default","keepforsomedays":"{0} days","customization":"Custom (days):","keepforever":"Forever","validation":{"errormessage":{"long":"The {0} submission retention period field must be an integer between {1} and {2}","short":"Input must be an integer between {0} and {1}"}},"revision":{"warningmessage":"At least {0} submission(s) are affected by your retention policy change"}},"notconfigured":"Not configured yet","insertplaceholder":"Insert placeholder","selectanitem":"Select an item","externalsystems":"External system field mapping","connecteddatasource":"Connect to Datasource","createemailtemplate":"Create email template","editemailtemplate":"Edit email template","addwebhook":"Add webhook","editwebhook":"Edit webhook","selectpage":"Select Page","editpage":"Edit page link","usemanualinput":"Use manual input","errorconditionalstepcannotcontainrequiredelement":"This Form step should not depend on other elements because it contains mandatory element [{0}].","cannotbuildformmodel":"Cannot build the form. You cannot use FormContainerBlock as a property. You can render a form in a ContentArea only.","placeholderwarning":{"subject":"Form element is used as a placeholder changed name","message":"Name of element  {0}  in form  {1}  which is used as a placeholder has been changed, you should also update the placeholder in the form under the \"Settings\" tab."},"resetconnecteddatasource":"Reset"},"viewmode":{"stepnavigation":{"previous":"Previous step","next":"Next step","page":"Step"},"untitled":"Untitled","selection":{"selectanoption":"-- Select an option --","selectoptions":"-- Select options --"},"reset":"Reset form","submit":"Submit","refreshcaptcha":"Refresh captcha","captchalabel":"Word verification","malformstepconfigruation":"Improperly formed FormStep configuration. Some steps are attached to pages, while some steps are not attached, or attached to content with no public URL.","commonvalidationfail":"This element value is not valid.","readonlymode":"Read-only mode. Submitted data is not saved.","submissionactors":{"savedatatostorage":{"error":"Something went wrong. Please contact the administrator for more information."}},"errorformusingdivinnonjsmode":"Form render using div element required js enabled to be able to work properly","error":"Something went wrong. Please contact the administrator for more information."},"rangeelementblock":{"increment":"Increment","decrement":"Decrement"}}
+        }
+    });
+})();
+
+ 
+  
+ 
+document.addEventListener('DOMContentLoaded',function(){if(typeof FindApi === 'function'){var api = new FindApi();api.setApplicationUrl('/');api.setServiceApiBaseUrl('/find_v2/');api.processEventFromCurrentUri();api.bindWindowEvents();api.bindAClickEvent();api.sendBufferedEvents();}})
+ 
+
+    
+    
+
+    
+
+
+ 
+
+ 

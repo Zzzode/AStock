@@ -1,0 +1,10209 @@
+
+ 
+ 
+     
+    
+    
+
+
+ 
+
+
+      
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+  
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+
+	 
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+	 
+
+
+
+
+
+
+	 
+
+
+	
+
+
+ 
+
+
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+	 
+
+
+
+ 
+
+
+
+ 
+{
+  "@context": "http://schema.org",
+  "@type": "Product",
+  "url": "https://www.nvidia.com/en-us/networking/spectrumx/",
+  "name": "NVIDIA Spectrum-X Networking Platform",
+  "image": "https://www.nvidia.com/content/dam/en-zz/Solutions/networking/spectrumx/nvidia-spectrumx-platform-og.jpg",
+  "description": "Accelerate AI networking by 1.6× with NVIDIA Spectrum-X Ethernet. Train and scale massive AI workloads across data centers with high performance and efficiency. ",
+  "brand": {
+    "@type": "Thing",
+    "name": "NVIDIA"
+  },
+  "manufacturer": {
+    "@type": "Organization",
+    "name": "NVIDIA",
+    "url": "https://www.nvidia.com/en-us/"
+  }
+}
+ 
+
+
+
+
+
+
+
+
+    
+  
+  
+  
+  
+
+
+
+
+
+		
+	 	
+	 
+	 
+        function OptanonWrapper() {	
+            var event = new Event('bannerLoaded');
+            window.dispatchEvent(event);
+        }
+	 
+    
+          
+    
+
+
+
+
+
+
+  
+
+
+
+    
+    
+
+    
+
+    
+    
+
+
+
+    
+    
+ 
+ 
+
+
+
+    
+
+
+
+    
+
+
+         
+
+
+
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+var NVIDIAGDC = NVIDIAGDC || {};
+
+;(function ( nvidiaGDC ){
+  
+
+    nvidiaGDC.addProperty = function(obj, name, val){
+        if (!obj && !name){
+            return;
+        }
+        
+        nvidiaGDC[obj] = nvidiaGDC[obj] || {};
+        
+        if(typeof val != "undefined" && val != null){
+            if(!nvidiaGDC[obj].hasOwnProperty(name) || !nvidiaGDC[obj][name]){
+                nvidiaGDC[obj][name] = val;
+            }    
+        }
+    };
+
+
+   nvidiaGDC.addProperty('Accounts', 'LoginPage', 'https://www.nvidia.com/en-us/account/');
+   nvidiaGDC.addProperty('Accounts', 'LoginGatePage', 'https://www.nvidia.com/en-us/account/login-gate/');
+	nvidiaGDC.addProperty('Accounts', 'accountsJarvisSrvcBase', 'https://accounts.nvgs.nvidia.com');
+	nvidiaGDC.addProperty('Accounts', 'accountsJarvisHeaderMagicValue', '');
+	nvidiaGDC.addProperty('Accounts', 'accountsJarvisHeaderCFGRefereID', 'Account Mini-Site');
+	nvidiaGDC.addProperty('apps', 'endpoint', 'https://api-prod.nvidia.com');
+	nvidiaGDC.addProperty('web', 'env', 'p-prod');
+    nvidiaGDC.addProperty('web', 'q1', '');
+    nvidiaGDC.addProperty('web', 'q2', '');
+    nvidiaGDC.addProperty('web', 'q3', '');
+    var genai="true";
+    if(genai===""){
+    	genai="true";
+    }
+    nvidiaGDC.addProperty('ai', 'gen', genai);
+
+})(NVIDIAGDC);
+ 
+
+
+
+
+
+    
+  
+
+
+
+
+ 
+
+var nvidiaGDClogqueue = [];
+var nvidiaGDClog = function() {
+    nvidiaGDClogqueue.push(arguments)
+};
+
+;(function ( nvidiaGDC ){
+    
+    nvidiaGDC.SC = nvidiaGDC.SC || {};
+    nvidiaGDC.SC.vars = nvidiaGDC.SC.vars || {};
+    nvidiaGDC.SC.vars.pageTemplate = "/conf/nvidiaweb/settings/wcm/templates/enterprise-template".toLowerCase();
+    
+
+    var nvidiaGDCFunctionQueue = function(){
+                this.queue = [];
+            };
+            nvidiaGDCFunctionQueue.prototype.addToQueue = function(funcItem){
+                nvidiaGDClog("funcqueue/add");
+                nvidiaGDClog(funcItem);
+                this.queue.push(funcItem);
+            };
+            nvidiaGDCFunctionQueue.prototype.clearQueue = function(){
+                this.queue.length = 0;
+            };
+            nvidiaGDCFunctionQueue.prototype.executeQueue = function(){
+
+                var nQueueLength = this.queue.length;
+                var sTargetID,
+                    sMethodName,
+                    aParams,
+                    $targetElement,
+                    fMethod;
+
+                for (var i = 0; i  
+
+
+
+    
+     
+        (() => {
+            let getViewportDimensions = () => {
+                return {
+                    width: Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0),
+                    height: Math.max(document.documentElement.clientHeight || 0, window.clientHeight || 0)
+                }
+            }
+
+            let getViewportType = () => {
+                const viewport = getViewportDimensions();
+                if (viewport.width  = 640 && viewport.width  = 1024 && viewport.width  = 1350) {
+                    return 'desktop';
+                }
+            }
+            let currentViewportType = getViewportType();
+
+            window.addEventListener("resize", () => {
+                const oldResolution = currentViewportType;
+                currentViewportType = getViewportType();
+                if (oldResolution !== currentViewportType) {
+                    window.dispatchEvent(new CustomEvent("onNvBreakpointChange", {
+                      detail: {
+                            breakpoint: currentViewportType,
+                            changedFrom: oldResolution,
+                            vw: getViewportDimensions().width,
+                            vh: getViewportDimensions().height
+                        }
+                    }));
+                }
+            });
+
+            // START: Header Height Calculation and Custom Event for Header Height Change
+            
+            let lastTotalHeight = 0;
+            const headerSelectors = [
+                // Below are Common Selectors
+                '.global-nav:not(.pull-up)>.geo-locator', // Geo - Locator
+                '.global-nav:not(.pull-up)>.nav-header', // Main Nav - Desktop
+                '.global-nav:not(.pull-up)>.mobile-nav', // Main Nav - Mobile
+                '.global-nav>#unibrow-container', // Unibrow - Injected via Target
+                '.global-nav>.sub-brand-nav', // Common Sub Brand Nav
+                '.global-nav>.breadcrumb .subnav', // Page Sub Brand Nav
+                '.global-nav>.in-page-nav-outer-container', // In-page Nav
+                '.global-nav>.cmp-verticalnavigation__toc-mobile', // Vertical navigation
+            ];
+
+            // Configuration for MutationObservers.
+            // Add a `debugName` property to help identify which observer is firing.
+            const mutationObserversConfig = [
+              {
+                selector: 'nav.global-nav',
+                debugName: 'Global Navigation Container',
+                options: { attributes: true, attributeFilter: ['class', 'style'], childList: true }
+              },
+              {
+                selector: '.global-nav>.geo-locator',
+                debugName: 'Geo Locator',
+                options: { attributes: true, attributeFilter: ['class', 'style'], childList: true }
+              },
+              {
+                selector: '.global-nav>#unibrow-container',
+                debugName: 'Unibrow Container',
+                options: { attributes: true, attributeFilter: ['class', 'style'], childList: true }
+              }
+            ];
+
+            // Configuration for ResizeObservers.
+            // Add new objects to this array to monitor additional elements for size changes.
+            const resizeObserversConfig = [
+              {
+                selector: '.global-nav>.geo-locator',
+                debugName: 'Geo Locator (ResizeObserver)'
+              }
+            ];
+
+            // ---------------------------------------------------------------------
+            // Utility Functions
+            // ---------------------------------------------------------------------
+
+            /**
+             * Function to calculate the total height of the header elements.
+             * This function loops through the provided header selectors, calculates their height, 
+             * and returns the total sum of these heights.
+             * 
+             * @returns {Number} The total height of all header elements.
+             */
+            const calculateTotalHeight = () => {
+                let totalHeight = 0;
+                    headerSelectors.forEach((headerSelector) => {
+                    const headerHeight = document.querySelector(headerSelector)?.offsetHeight || 0;
+                    totalHeight += headerHeight;
+                });
+                return totalHeight;
+            }
+
+            /**
+             * Updates the header layout by recalculating the total header height,
+             * updating CSS custom properties, and dispatching a custom event if a change occurred.
+             */
+            const updateHeaderLayout = () => {
+              const newTotalHeight = calculateTotalHeight();
+              if (newTotalHeight !== lastTotalHeight) {
+                lastTotalHeight = newTotalHeight;
+                window.dispatchEvent(new CustomEvent("onNvHeaderHeightChange", { detail: newTotalHeight }));
+                document.documentElement.style.setProperty('--nv-header-height', newTotalHeight + 'px');
+              
+                // Calculate pull-up height using either the mobile navigation or desktop navigation
+                // plus the geo-locator height.
+                const mobileNavHeight = 
+                  document.querySelector('.global-nav>.mobile-nav')?.offsetHeight ||
+                  document.querySelector('.global-nav>.nav-header')?.offsetHeight || 0;
+                const geoLocatorHeight = document.querySelector('.global-nav>.geo-locator')?.offsetHeight || 0;
+                const pullUpHeight = mobileNavHeight + geoLocatorHeight;
+                document.documentElement.style.setProperty('--nv-global-nav-pull-up', pullUpHeight + 'px');
+              }
+            };
+
+            /**
+            * Attaches a MutationObserver to the given element using the specified options.
+            *
+            * @param {HTMLElement} element - The DOM element to observe.
+            * @param {Object} options - Options for the MutationObserver.
+            * @param {String} debugName - A name to identify this observer in logs.
+            */
+            const attachMutationObserver = (element, options, debugName = 'Unknown MutationObserver') => {
+              if (!element) return;
+              const observer = new MutationObserver((mutationsList) => {
+                updateHeaderLayout();
+              });
+              observer.observe(element, options);
+            };
+          
+            /**
+             * Attaches a ResizeObserver to the given element.
+             *
+             * @param {HTMLElement} element - The DOM element to observe for size changes.
+             * @param {String} debugName - A name to identify this observer in logs.
+             */
+            const attachResizeObserver = (element, debugName = 'Unknown ResizeObserver') => {
+              if (!element || !window.ResizeObserver) return;
+              const resizeObserver = new ResizeObserver((entries) => {
+                updateHeaderLayout();
+              });
+              resizeObserver.observe(element);
+            };
+          
+            // ---------------------------------------------------------------------
+            // Observer Initialization Functions
+            // ---------------------------------------------------------------------
+          
+            /**
+             * Initializes and attaches MutationObservers for all configured elements.
+             */
+            const setMutationObservers = () => {
+              mutationObserversConfig.forEach(config => {
+                const element = document.querySelector(config.selector);
+                attachMutationObserver(element, config.options, config.debugName);
+              });
+            };
+          
+            /**
+             * Initializes and attaches ResizeObservers for all configured elements.
+             */
+            const setResizeObservers = () => {
+              resizeObserversConfig.forEach(config => {
+                const element = document.querySelector(config.selector);
+                attachResizeObserver(element, config.debugName);
+              });
+            };
+              
+            /**
+             * Main function to set up all header observers—both MutationObservers and ResizeObservers.
+             * Calling window.setHeaderObservers() will initialize and attach all observers.
+             */
+            window.setHeaderObservers = () => {
+              setMutationObservers();
+              setResizeObservers();
+              // Perform an initial update to ensure proper header layout on load.
+              updateHeaderLayout();
+            };
+            
+            /**
+             * Function to get the current total height of all header elements.
+             * This function returns the total header height by retrieving --nv-header-height value.
+             * 
+             * @returns {Number} The current total height of all header elements.
+             */
+            window.getHeaderHeight = () => {
+                const rootStyles = getComputedStyle(document.documentElement);
+                const headerHeight = rootStyles.getPropertyValue('--nv-header-height').trim();
+                return parseFloat(headerHeight);
+            };
+            
+            // END: Header Height Calculation and Custom Event for Header Height Change
+
+            // START: setContainerHeight
+            /* 
+                setContainerHeight sets the height of nv-container image or video.
+                This is included in head section to improve the page performance
+            */
+            
+            const containerWithFitBgEnabled = [];
+            window.setContainerHeight = (containerID) => {
+                var element = document.getElementById(containerID);
+                var disableMidgroundImgAutoHeight = null;
+                var disableVideoAutoHeight = null;
+                if (element.classList.contains('v1-1')) {
+                    disableMidgroundImgAutoHeight = 'true';
+                    disableVideoAutoHeight = 'true';
+                }
+                var vpWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+                var imageContainer = element.querySelector('.nv-img-as-bg');
+                var videoContainer = element.querySelector('.nv-video-as-bg');
+                var image = element.querySelector('#image-' + containerID);
+                var video = element.querySelector('#video-' + containerID);
+                disableMidgroundImgAutoHeight = disableMidgroundImgAutoHeight || element.getAttribute('data-cmp-disableMidgroundAutoHeight');
+                disableVideoAutoHeight = disableVideoAutoHeight || element.getAttribute('data-cmp-disableVideoAutoHeight');
+                if (!image && !video) {
+                    return;
+                }
+                if (!containerWithFitBgEnabled.includes(containerID)
+                    && (imageContainer?.classList.contains('t-img-fit')
+                    || imageContainer?.classList.contains('p-img-fit')
+                    || imageContainer?.classList.contains('t-image-fit-contain')
+                    || imageContainer?.classList.contains('t-image-fit-cover')
+                    || imageContainer?.classList.contains('p-image-fit-contain')
+                    || imageContainer?.classList.contains('p-image-fit-cover')
+                    || videoContainer?.classList.contains('t-video-fit')
+                    || videoContainer?.classList.contains('p-video-fit')
+                    || videoContainer?.classList.contains('t-video-fit-contain')
+                    || videoContainer?.classList.contains('t-video-fit-cover')
+                    || videoContainer?.classList.contains('p-video-fit-contain')
+                    || videoContainer?.classList.contains('p-video-fit-cover'))) {
+                        containerWithFitBgEnabled.push(containerID);
+                }
+                if (image && !image.classList.contains('hide')) {
+                    var imgHeight = image.naturalHeight;
+                    var imgRenderedHeight = image.height;
+                    var childElement = imageContainer;
+                    if (imgHeight === 1 || imgRenderedHeight === 1) {
+                        return;
+                    }
+                }
+                if (video && !video.classList.contains('hide') && video.children.length > 0) {
+                    var videoHeight = video.videoHeight;
+                    var videoRenderedHeight = video.getBoundingClientRect().height;
+                    var childElement = videoContainer;
+                }
+
+                element.style.height = null;
+                if (childElement) childElement.style.height = null;
+
+                const isMobileViewport = vpWidth  = 640 && vpWidth   {
+                document.querySelectorAll('[data-cmp-is="nv-container"]').forEach((container) => {
+                    const containerId = container.getAttribute('id');
+                    window.initBuildVideo(containerId);
+                    window.initLazyLoadingImages(containerId);
+                    window.setContainerHeight(containerId);
+                });
+            });
+
+            // Call setContainerHeight for containers with Fit Image Background or Fit Video Background is Enabled
+            // Fit Image / Video Background is applicabled only for Mobile & Tablet viewports
+            window.addEventListener('resize', (e) => {
+                if (containerWithFitBgEnabled.length > 0) {
+                    const vpWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+                    if (vpWidth   window.setContainerHeight(containerId));
+                    }
+                }
+            });
+            // END: setContainerHeight
+
+            // Variables
+            let videoSources = {};
+
+            /**
+             * @breif Accepts components JSON data to build source elements for each device type
+             * @param Object videoSource 
+             */
+            let buildSources = (videoSource) => {
+                for (const viewport in videoSource) {
+                    const fragment = createSrcFragment(videoSource[viewport]);
+                    videoSources[viewport] = fragment;
+                }
+            }
+
+            /**
+             * @breif Creats document fragment that contain maximum of upto 3   tags (webm, mp4, ogg)
+             * @param {*} videos - Array of objects with type and src properties
+             * @returns DocumentFragment with maximum of upto 3   tags
+             */
+            let createSrcFragment = (videos) => {
+                const fragment = new DocumentFragment();
+                const videoWebm = videos.find((src) => src.type === 'video/webm');
+                const videoMp4 = videos.find((src) => src.type === 'video/mp4');
+                const videoOgg = videos.find((src) => src.type === 'video/ogg');
+                if (videoWebm && videoWebm.src && videoWebm.type) {
+                    fragment.appendChild(createSource(videoWebm));
+                }
+                if (videoMp4 && videoMp4.src && videoMp4.type) {
+                    fragment.appendChild(createSource(videoMp4));
+                }
+                if (videoOgg && videoOgg.src && videoOgg.type) {
+                    fragment.appendChild(createSource(videoOgg));
+                }
+                return fragment;
+            }
+
+            /**
+             * @breif Creates source element
+             * @param {*} videos - Object with type and src properties
+             * @returns HTMLElement  
+             */
+            let createSource = (video) => {
+                const source = document.createElement('source');
+                source.setAttribute('src', video.src);
+                source.setAttribute('type', video.type);
+                return source;
+            }
+
+            /**
+             * Adds source elments to video and trigger play
+             * @param {*} videoEle 
+             * @param {*} videoSources 
+             */
+            let loadVideo = (videoEle, videoSources) => {
+                videoEle.classList.remove('hide');
+                videoEle.appendChild(videoSources);
+            }
+
+            let initLazyLoadingVideo = (containerId) => {
+                //Select all videos that have lazy loading enabled
+                const container = document.getElementById(containerId);
+                const videoTarget = container.querySelector('video[data-nv-lazyload]');
+            
+                if (videoTarget) {
+                    //Intersection Observer Callback Function
+                    const loadVideo = (entries, observer) => {
+                        const [entry] = entries;
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+                        entry.target.play();
+                    
+                        videoTarget.removeAttribute('data-nv-lazyload');
+                    
+                        observer.unobserve(entry.target);
+                    };
+                
+                    const videoObserver = new IntersectionObserver(loadVideo, {
+                        root: null,
+                        rootMargin: "300px"
+                    })
+                
+                    // Set the Videos to be observed
+                    videoObserver.observe(videoTarget);
+                
+                }
+            }
+
+            /**
+             * @breif Build   and append to  . Handles changing video source by screen size.
+             */
+            window.initBuildVideo = (containerId) => {
+                const container = document.getElementById(containerId);
+                const video = container.querySelector('.nv-video-load-src>video');
+                if (video) {
+                    const videoSource = JSON.parse(video.dataset.videoSource);
+                    let screen = document.documentElement.clientWidth || document.body.clientWidth;
+                    buildSources(videoSource);
+                
+                    if (Object.keys(videoSources).length > 0) {
+                        while (video.firstChild) {
+                            video.removeChild(video.lastChild);
+                        }
+                        if (screen  = 640 && screen  = 1024 && screen  = 1350) {
+                            if (videoSources.desktop) loadVideo(video, videoSources.desktop);
+                            else video.classList.add('hide');
+                        }
+                    }
+
+                    if (video.hasAttribute('poster')) {
+                        window.setContainerHeight(containerId);
+                    }
+                
+                    video.onloadeddata = function() {
+                        window.setContainerHeight(containerId);
+                        video.play();
+                    }
+                    video.onended = () => {
+                        if (!video.hasAttribute('loop')) {
+                            video.classList.add('hide');
+                            window.setContainerHeight(containerId);
+                        }
+                    }
+                
+                    if (video.hasAttribute('data-nv-lazyload')) {
+                        initLazyLoadingVideo(containerId);
+                    } else {
+                        video.load();
+                    }
+                
+                    video.classList.remove('nv-video-load-src');
+                    video.classList.add('nv-video-src-loaded');
+                }
+            }
+
+            window.initLazyLoadingImages = (containerId) => {
+                //Select all images that have lazy loading enabled
+                const container = document.getElementById(containerId);
+                const picture = container.querySelector('picture[data-nv-lazyload]');
+                if (picture) {
+                    const imageTarget = picture.querySelector('img');
+                
+                    //Intersection Observer Callback Function
+                    const loadImage = (entries, observer) => {
+                        const [entry] = entries;
+                        if (!entry.isIntersecting) {
+                            return;
+                        }
+                    
+                        const picture = entry.target.parentNode,
+                            srcsetMobile = picture.getAttribute('data-srcset-mobile'),
+                            srcsetTablet = picture.getAttribute('data-srcset-tablet'),
+                            srcsetLaptop = picture.getAttribute('data-srcset-laptop'),
+                            srcsetDesktop = picture.getAttribute('data-srcset-desktop');
+                        picture.querySelector('source[data-source-mobile]').srcset = srcsetMobile;
+                        picture.querySelector('source[data-source-tablet]').srcset = srcsetTablet;
+                        picture.querySelector('source[data-source-laptop]').srcset = srcsetLaptop;
+                        picture.querySelector('source[data-source-desktop]').srcset = srcsetDesktop;
+                        picture.querySelector('img').src = srcsetDesktop.split(',')[0];
+                        picture.querySelector('img').srcset = srcsetDesktop.split(',')[1];
+                    
+                        if (imageTarget.closest('.nv-img-as-bg')) {
+                            imageTarget.onload = function() {
+                                window.setContainerHeight(containerId);
+                            }
+                        }
+                    
+                        picture.removeAttribute('data-nv-lazyload');
+                    
+                        observer.unobserve(entry.target);
+                    };
+                
+                    const imageObserver = new IntersectionObserver(loadImage, {
+                        root: null,
+                        rootMargin: "300px"
+                    });
+                
+                    // Set the Images to be observed
+                    imageObserver.observe(imageTarget);
+                
+                }
+            };
+        })();
+     
+
+
+
+
+
+
+
+
+ NVIDIA Spectrum-X Ethernet Platform for AI Networking 
+
+
+
+
+ 
+ 
+
+    
+
+    
+
+
+
+
+
+
+
+
+
+    
+	 
+body.v4_design.base_v4 .navigation ul {
+    line-height: inherit;
+}
+ #nv-login-mob { display: flex; align-items: center; } @media (max-width: 1023px) and (min-width: 640px) { .navigation:has(.account-icon):not(:has(.account-icon.logged-in)) .global-nav .nav-header-container .nav-tools-container .nav-header-list .nav-header-item.cart-item
+
+{ right: 80px!important; }
+}
+@media (max-width: 639px) {
+body.v4_design.base_v4 .navigation .global-nav .nav-header-container .nav-tools-container .nav-header-list {
+        width: 92%;
+    }
+}
+ 
+ 
+    
+	    
+    	
+    	
+	    
+     
+    	
+        
+    	
+
+
+
+
+
+
+                      
+
+
+	 
+	
+		
+		    
+		 		 
+
+
+
+
+
+
+
+
+
+                      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+	
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+	
+	
+		
+	
+
+
+
+	
+	
+		
+	
+
+
+
+
+	
+		
+	
+	
+
+
+
+
+
+ 
+
+ 
+	    
+	     
+	         NVIDIA Home 
+	         NVIDIA Home 
+	         
+	         
+	         
+	     
+	    
+	     
+	         Menu 
+	         Menu icon 
+	         
+	 
+.n24-icon-menu-bg {
+	opacity: 0;
+}
+
+.n24-icon-menu-stroke {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	  
+	             
+	             
+	             
+	         
+	     
+	    
+	     
+	         Menu 
+	         Menu icon 
+	         
+	 
+.n32-icon-menu-cls-1, .n32-icon-menu-cls-3, .n32-icon-menu-cls-4 {
+	fill: none;
+}
+
+.n32-icon-menu-cls-1, .n32-icon-menu-cls-4 {
+	stroke: #666;
+	stroke-width: 2px;
+}
+
+.n32-icon-menu-cls-1 {
+	stroke-miterlimit: 10;
+}
+
+.n32-icon-menu-cls-2 {
+	opacity: 0;
+}
+  
+	         
+	         
+	         
+	         
+	         
+	         
+	         
+	             
+	             
+	         
+	     
+	    
+	     
+	         Close 
+	         Close icon 
+	         
+	 
+.n24-icon-close-small-cls-1 {
+	opacity: 0;
+}
+
+.n24-icon-close-small-cls-2 {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	                 
+	                     
+	                 
+	             
+	             
+	             
+	         
+	     
+	    
+	     
+	         Close 
+	         Close icon 
+	         
+	 
+.n24-icon-close-cls-1 {
+	opacity: 0;
+}
+
+.n24-icon-close-cls-2 {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	                 
+	                     
+	                 
+	             
+	             
+	             
+	         
+	     
+	    
+	     
+	         Close 
+	         Close icon 
+	         
+	 
+.close-icon {
+	fill: #666;
+	fill-rule: evenodd;
+}
+  
+	         
+	     
+	    
+	     
+	         Caret down icon 
+	         Accordion is closed, click to open. 
+	         
+	 
+.n24-icon-caret-down-cls-1 {
+	opacity: 0;
+}
+
+.n24-icon-caret-down-cls-2 {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	                 
+	                     
+	                 
+	             
+	             
+	         
+	     
+	    
+	     
+	         Caret down icon 
+	         Accordion is closed, click to open. 
+	         
+	         
+	             
+	             
+	         
+	     
+	    
+	     
+	         Caret up icon 
+	         Accordion is open, click to close. 
+	         
+	         
+	             
+	             
+	         
+	     
+	    
+	     
+	         Caret right icon 
+	         Click to expand 
+	         
+	 
+.n24-icon-caret-right-small-cls-1 {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+
+.n24-icon-caret-right-small-cls-2 {
+	opacity: 0;
+}
+  
+	         
+	             
+	                 
+	             
+	             
+	         
+	     
+	    
+	     
+	         Caret right icon 
+	         Click to expand 
+	         
+	 
+.n24-icon-caret-right-bg {
+	opacity: 0;
+}
+
+.n24-icon-caret-right-stroke {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	  
+	             
+	         
+	     
+	    
+	     
+	         Caret right icon 
+	         Click to expand menu. 
+	         
+	             
+	             
+	         
+	         
+	     
+	    
+	     
+	         Caret left icon 
+	         Click to collapse menu. 
+	         
+	 
+.n24-caret-left-small-cls-1 {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+
+.n24-caret-left-small-cls-2 {
+	opacity: 0;
+}
+  
+	         
+	             
+	             
+	                 
+	             
+	         
+	     
+	    
+	     
+	         Caret left icon 
+	         Click to collapse menu. 
+	         
+	 
+.n24-icon-caret-left-bg {
+	opacity: 0;
+}
+
+.n24-icon-caret-left-stroke {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	  
+	             
+	         
+	     
+	    
+	     
+	         Caret left icon 
+	         Click to collapse menu. 
+	         
+	         
+	             
+	             
+	         
+	     
+	    
+	     
+	    	 Shopping Cart 
+	         Click to see cart items 
+	         
+	 
+.n24-icon-cart-bg {
+	opacity: 0;
+}
+
+.n24-icon-cart-stroke {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	  
+	             
+	             
+	             
+	             
+	         
+	     
+	    
+	     
+	    	 Search icon 
+	         Click to search 
+	         
+	 
+.n24-icon-search-bg {
+	opacity: 0;
+}
+
+.n24-icon-search-fill {
+	fill: #666;
+}
+
+.n24-icon-search-stroke {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+  
+	         
+	             
+	  
+	             
+	             
+	         
+	     
+	    
+	     
+	         
+	 
+.n24-user-circle-cls-1 {
+	fill: none;
+	stroke: #666;
+	stroke-miterlimit: 10;
+	stroke-width: 1.5px;
+}
+
+.n24-bounds {
+	fill: none;
+}
+  
+	         
+	         
+	             
+	             
+	             
+	         
+	     
+	    
+	 
+
+
+
+
+    
+        
+			
+			
+				 
+			
+		
+    
+    
+
+  
+   
+	
+ 
+     
+         
+             Visit your regional NVIDIA website for local content, pricing, and where to buy partners specific to your country. 
+         
+         
+           
+             
+                 Argentina 
+                 Australia 
+                 België (Belgium) 
+                 Belgique (Belgium) 
+                 Brasil (Brazil) 
+                 Canada 
+                 Česká Republika (Czech Republic) 
+                 Chile 
+                 Colombia 
+                 Danmark (Denmark) 
+                 Deutschland (Germany) 
+                 España (Spain) 
+                 France 
+                 India 
+                 Italia (Italy) 
+                 México (Mexico) 
+                 Middle East 
+                 Nederland (Netherlands) 
+                 Norge (Norway) 
+                 Österreich (Austria) 
+                 Peru 
+                 Polska (Poland) 
+                 Rest of Europe 
+                 România (Romania) 
+                 Singapore 
+                 Suomi (Finland) 
+                 Sverige (Sweden) 
+                 Türkiye (Turkey) 
+                 United Kingdom 
+                 United States 
+                 대한민국 (South Korea) 
+                 中国大陆 (Mainland China) 
+                 台灣 (Taiwan) 
+                 日本 (Japan) 
+             				
+              
+           
+           
+               
+                   
+                       
+                           Continue 
+                       
+                   
+               
+               
+                    
+               
+           
+         
+     	
+ 
+
+
+ 
+    (() => {
+      const countrySelector = document.querySelector('#country-selector');
+      const GEO_LOCATOR_COOKIE_NAME = 'geo_locator';
+      const DISMISSAL_DAYS = 7;
+      
+      // Get cookie value by name
+      const getCookie = (name) => {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        return parts.length === 2 ? parts.pop().split(";").shift() : null;
+      };
+      
+      // Set cookie with expiration and domain
+      const setCookie = (name, value, days) => {
+        const date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        const expires = `expires=${date.toUTCString()}`;
+        document.cookie = `${name}=${value};${expires};domain=.nvidia.com;path=/`;
+      };
+      
+      // Get geo locator cookie data
+      const getGeoLocatorCookie = () => {
+        const cookieValue = getCookie(GEO_LOCATOR_COOKIE_NAME);
+        if (!cookieValue) return null;
+        try {
+          return JSON.parse(cookieValue);
+        } catch (e) {
+          return null;
+        }
+      };
+      
+      // Set geo locator cookie data
+      const setGeoLocatorCookie = (data) => {
+        setCookie(GEO_LOCATOR_COOKIE_NAME, JSON.stringify(data), DISMISSAL_DAYS);
+      };
+      
+      // Check if Geo Locator was dismissed
+      const isDismissed = () => {
+        const cookieData = getGeoLocatorCookie();
+        return cookieData && cookieData.dismissed === true;
+      };
+      
+      // Set dismissal status
+      const setDismissed = () => {
+        const existingData = getGeoLocatorCookie() || {};
+        const updatedData = {
+          ...existingData,
+          dismissed: true,
+          dismissedAt: new Date().toISOString()
+        };
+        setGeoLocatorCookie(updatedData);
+      };
+    
+      // Update select option values based on   in head.
+      const updateOptionValuesFromHead = () => {
+        const alternateLinks = document.querySelectorAll('head link[rel="alternate"][hreflang][href]');
+        if (!alternateLinks.length) return;
+        if (!countrySelector) return;
+        Array.from(countrySelector.options).forEach(option => {
+          const optCountry = option.getAttribute('data-country');
+          if (!optCountry) return;
+          alternateLinks.forEach(link => {
+            const hreflang = link.getAttribute('hreflang');
+            if (hreflang && hreflang.includes('-') && hreflang.toLowerCase().endsWith(`-${optCountry.toLowerCase()}`)) {
+              option.value = link.getAttribute('href');
+            }
+          });
+        });
+      };
+    
+      // Fetch translations from the GraphQL endpoint.
+      const fetchTranslations = () => 
+        fetch('/graphql/execute.json/geo-locator/translations')
+          .then(response => response.json())
+          .then(data => data.data.geoLocatorList.items)
+          .catch(err => {
+            console.error('Error fetching translations:', err);
+            return [];
+          });
+      
+      // Check current path against master.disableGeoLocRegExps
+      const matchesDisableByRegex = (translations) => {
+        const master = translations.find(item => item._variation === 'master');
+        if (!master || !Array.isArray(master.disableGeoLocRegExps)) return false;
+
+        const path = window.location.pathname;
+        return master.disableGeoLocRegExps.some(pattern => {
+          try {
+            const rx = new RegExp(pattern);
+            return rx.test(path);
+          } catch (err) {
+            console.error('Invalid regex in disableGeoLocRegExps:', pattern, err);
+            return false;
+          }
+        });
+      };
+
+      const getUserGeoLocatorFlag = (translations, userRegion) => {
+        const t = translations.find(item => {
+          if (item._variation.includes('-')) {
+            const regionPart = item._variation.split('-')[1].toUpperCase();
+            return regionPart === userRegion.toUpperCase();
+          }
+          return false;
+        });
+        return t?.disableGeoLocatorUserRegion;
+      };
+
+      const getGeoLocatorFlag = (translations, pageRegion) => {
+        const translation = translations.find(item => {
+          if (item._variation.includes('-')) {
+            const variantRegion = item._variation.split('-')[1].toUpperCase();
+            return variantRegion === pageRegion.toUpperCase();
+          }
+          return false;
+        });
+        return translation?.disableGeoLocatorPageRegion;
+      };
+    
+      // Select the correct translation by comparing last two characters of _variation with userRegion.
+      const getTranslation = (translations, userRegion) => {
+        let translation = translations.find(item => {
+          if (item._variation.includes('-')) {
+            const variantRegion = item._variation.split('-')[1].toUpperCase();
+            return variantRegion === userRegion.toUpperCase();
+          }
+          return false;
+        });
+        return translation || translations.find(item => item._variation.toLowerCase() === 'master');
+      };
+    
+      // Update the Geo Locator with the fetched translation and update UI.
+      const updateGeoLocator = (translation, userRegion, lookupKey) => {
+        if (!translation || translation?.disableGeoLocatorPageRegionFlag) return;
+        
+        // Check if Geo Locator was dismissed
+        if (isDismissed()) {
+          console.log('Geo Locator was dismissed by user. Will not show for 7 days.');
+          return;
+        }
+        
+        const geoLocator = document.querySelector('.geo-locator');
+        if (!geoLocator) return;
+        
+        // Update the message text
+        const geoLocatorText = geoLocator.querySelector('.geo-locator-text > p');
+        if (geoLocatorText && translation.geoLocatorMessage) {
+          geoLocatorText.textContent = translation.geoLocatorMessage.plaintext;
+        }
+        
+        // Update the Continue button text
+        const continueButton = geoLocator.querySelector('.geo-locator-cta .btn-content');
+        if (continueButton) {
+          continueButton.textContent = translation.continue;
+        }
+        
+        // Update the country dropdown selection to match the user's region
+        if (countrySelector) {
+          // Use lookupKey if provided (for special cases like BE), otherwise use userRegion
+          const countryKey = lookupKey || userRegion.toLowerCase();
+          const optionToSelect = countrySelector.querySelector(`option[data-country="${countryKey}"]`);
+          if (optionToSelect) {
+            optionToSelect.selected = true;
+            // Also update the Continue button's URL based on the selected option
+            if (continueButton) {
+              continueButton.href = optionToSelect.value;
+            }
+          }
+        }
+        
+        // Remove the hide class to display the Geo Locator
+        geoLocator.classList.remove('hide');
+      };
+    
+      // Retrieve user's region from the cookie and page region from the xml:lang attribute.
+      const userRegion = getCookie("c_code");
+      const pageLocale = document.documentElement.getAttribute("xml:lang");
+      let pageRegion = null;
+      if (pageLocale) {
+        const parts = pageLocale.split("-");
+        if (parts.length > 1) pageRegion = parts[1].toUpperCase();
+      }
+    
+      // Only proceed if both userRegion and pageRegion exist and they differ.
+      if (userRegion && pageRegion && userRegion.toUpperCase() !== pageRegion) {
+        // Special case: Skip Geo Locator for Canadian visitors on en-us pages to prevent infinite loop
+        if (userRegion.toUpperCase() === 'CA' && pageLocale && pageLocale.toLowerCase() === 'en-us') {
+          console.log('Skipping Geo Locator for Canadian visitors on en-us locale to prevent infinite loop.');
+          return;
+        }
+        
+        // Special case: Skip Geo Locator for Latin American visitors on es-la pages to prevent infinite loop
+        const latinAmericanCountries = ['MX', 'CO', 'AR', 'PE', 'CL'];
+        if (latinAmericanCountries.includes(userRegion.toUpperCase()) && pageLocale && pageLocale.toLowerCase() === 'es-la') {
+          console.log(`Skipping Geo Locator for ${userRegion} visitors on es-la locale to prevent infinite loop.`);
+          return;
+        }
+        
+        // map BE to be-fr, otherwise use raw
+        let lookupKey = userRegion.toLowerCase();
+        if (lookupKey === 'be') lookupKey = 'be-fr';
+
+        // if there's no matching dropdown entry, bail out
+        const userOption = countrySelector.querySelector(`option[data-country="${lookupKey}"]`);
+        // If we don't have a matching dropdown option, skip showing the Geo Locator
+        if (!userOption) return;
+
+        updateOptionValuesFromHead();
+        fetchTranslations().then(translations => {
+          if (matchesDisableByRegex(translations)) {
+            console.log('Page path matches disableGeoLocRegExps, skipping Geo Locator.');
+            return;
+          }
+          const pageFlag = getGeoLocatorFlag(translations, pageRegion);
+          const userFlag = getUserGeoLocatorFlag(translations, userRegion);
+
+          // only show if neither the page‐region nor the user‐region flag is set
+          if (!pageFlag && !userFlag) {
+            const translation = getTranslation(translations, userRegion);
+            updateGeoLocator(translation, userRegion, lookupKey);
+          }
+        });
+    
+        // Update Continue button URL on dropdown change.
+        if (countrySelector) {
+          countrySelector.addEventListener('change', (e) => {
+            const selectedUrl = e.target.value;
+            const continueButton = document.querySelector('.geo-locator-cta .btn-content');
+            if (continueButton) continueButton.href = selectedUrl;
+          });
+        }
+    
+        // Close button hides the Geo Locator.
+        const closeButton = document.querySelector('.geo-locator .close-button');
+        if (closeButton) {
+          closeButton.addEventListener('click', () => {
+            const geoLocator = document.querySelector('.geo-locator');
+            if (geoLocator) {
+              geoLocator.classList.add('hide');
+              // Set dismissal cookie when user closes the Geo Locator
+              setDismissed();
+              console.log('Geo Locator dismissed. Will not show for 7 days.');
+            }
+          });
+        }
+      } else {
+        // If there's no mismatch, do nothing or log as needed.
+        console.log("User region and page region match, or data is missing. Geo Locator will not be shown.");
+      }
+    })();
+ 
+
+
+	 
+  
+	 
+		  Skip to main content  
+		 
+			 
+
+
+				 
+					
+						
+						
+                             
+								 Artificial Intelligence Computing Leadership from NVIDIA 
+								 
+                            	 
+                             
+						
+					
+				 
+
+
+			 
+
+			 
+
+			  
+
+			
+			
+				
+				 
+			
+				
+				 
+			
+				
+				 
+			
+				
+				 
+			
+				
+				 
+			
+				
+				 
+			
+
+			
+			
+
+			 
+
+				
+
+
+				 
+					
+						
+						
+
+						
+							
+								 
+							
+							
+						
+
+							
+								
+								
+									
+										
+											 
+												 Networking 
+											 
+										
+										
+									
+								
+							
+							
+							
+							
+		
+			
+				 
+					
+						
+						
+						
+							
+								 
+									 
+										 
+											 
+												 
+												
+											 
+										 
+									 
+								 
+							
+						
+					
+				 
+			
+			
+		
+		
+		
+	 
+	
+						
+						
+
+						
+							
+							
+								 
+							
+						
+
+							
+								
+									
+										
+										
+											 
+												Platforms
+												
+												
+													 
+														 
+													 
+												
+											 
+										
+									
+								
+								
+							
+							
+							
+							
+		
+			
+				 
+					
+						
+						
+						
+							
+								 
+									 
+										 
+											 
+												 
+												
+													
+													 
+														 Platforms 
+														 
+															
+																 	
+																	 
+																		 
+																			 
+																				 BlueField DPU 
+																			 
+																		 
+																		
+																			 Advanced computing platform powering AI data centers 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Spectrum-X Ethernet 
+																			 
+																		 
+																		
+																			 Ethernet platform for hyperscale AI cloud networking 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Quantum-X800 InfiniBand 
+																			 
+																		 
+																		
+																			 High-bandwidth InfiniBand switching for giant AI clusters 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Quantum-2 InfiniBand 
+																			 
+																		 
+																		
+																			 InfiniBand networking for cloud‑native supercomputing at scale 
+																		
+																	 
+																 
+															
+														 
+													 
+												
+											 
+										 
+									 
+								 
+							
+						
+					
+				 
+			
+			
+		
+		
+		
+	 
+	
+						
+						
+
+						
+							
+							
+								 
+							
+						
+
+							
+								
+									
+										
+										
+											 
+												Products
+												
+												
+													 
+														 
+													 
+												
+											 
+										
+									
+								
+								
+							
+							
+							
+							
+		
+			
+				 
+					
+						
+						
+						
+							
+								 
+									 
+										 
+											 
+												 
+												
+													
+													 
+														 Products 
+														 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Ethernet Product Overview 
+																			 
+																		 
+																		
+																			 High performance Spectrum Ethernet for accelerated AI networking 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 DPUs 
+																			 
+																		 
+																		
+																			 Infrastructure accelerators for AI‑optimized data centers 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 InfiniBand Product Overview 
+																			 
+																		 
+																		
+																			 Quantum InfiniBand platform for high‑performance AI and HPC 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Cables & Transceivers 
+																			 
+																		 
+																		
+																			 800G and 400G Ethernet and InfiniBand cables and transceivers 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Ethernet Switches 
+																			 
+																		 
+																		
+																			 Spectrum Ethernet switches for AI & HPC workloads 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Ethernet SuperNICs 
+																			 
+																		 
+																		
+																			 High performance Ethernet SuperNICs for advanced AI networking 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 InfiniBand Switches & Appliances 
+																			 
+																		 
+																		
+																			 InfiniBand switches provide high performance and dense ports 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 ConnectX InfiniBand Adapters 
+																			 
+																		 
+																		
+																			 ConnectX InfiniBand accelerates scalable AI and HPC workloads 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Silicon Photonics 
+																			 
+																		 
+																		
+																			 Co-packaged silicon photonics for massive AI networking 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 ConnectX Ethernet NICs 
+																			 
+																		 
+																		
+																			 High performance ConnectX Ethernet for AI and cloud workloads 
+																		
+																	 
+																 
+															
+														 
+													 
+												
+											 
+										 
+									 
+								 
+							
+						
+					
+				 
+			
+			
+		
+		
+		
+	 
+	
+						
+						
+
+						
+							
+							
+								 
+							
+						
+
+							
+								
+									
+										
+										
+											 
+												Software
+												
+												
+													 
+														 
+													 
+												
+											 
+										
+									
+								
+								
+							
+							
+							
+							
+		
+			
+				 
+					
+						
+						
+						
+							
+								 
+									 
+										 
+											 
+												 
+												
+													
+													 
+														 Software 
+														 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Networking Software Overview 
+																			 
+																		 
+																		
+																			 Software suites to optimize Ethernet and InfiniBand networking 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 DOCA 
+																			 
+																		 
+																		
+																			 Scale agentic AI securely on BlueField and ConnectX 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 DSX Air 
+																			 
+																		 
+																		
+																			 NVIDIA Air builds full-stack simulations for AI data center infrastructure 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Cumulus 
+																			 
+																		 
+																		
+																			 Linux-based data center network OS 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 NetQ 
+																			 
+																		 
+																		
+																			 Real-time AI data center network observability 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 UFM 
+																			 
+																		 
+																		
+																			 InfiniBand data center fabric management platform 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Pure SONiC 
+																			 
+																		 
+																		
+																			 Open-source Linux network OS for switches 
+																		
+																	 
+																 
+															
+														 
+													 
+												
+											 
+										 
+									 
+								 
+							
+						
+					
+				 
+			
+			
+		
+		
+		
+	 
+	
+						
+						
+
+						
+							
+							
+								 
+							
+						
+
+							
+								
+									
+										
+										
+											 
+												Support
+												
+												
+													 
+														 
+													 
+												
+											 
+										
+									
+								
+								
+							
+							
+							
+							
+		
+			
+				 
+					
+						
+						
+						
+							
+								 
+									 
+										 
+											 
+												 
+												
+													
+													 
+														 Support 
+														 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Enterprise Support Portal 
+																			 
+																		 
+																		
+																			 NVIDIA Enterprise Application Hub login portal 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Firmware Download 
+																			 
+																		 
+																		
+																			 NVIDIA Networking firmware download center 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 End-of-life Products 
+																			 
+																		 
+																		
+																			 End-of-life and support status for products 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Product Documentation 
+																			 
+																		 
+																		
+																			 NVIDIA networking product and software documentation 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 InfiniBand Drivers 
+																			 
+																		 
+																		
+																			 InfiniBand and VPI software downloads and drivers 
+																		
+																	 
+																 
+															
+																 	
+																	 
+																		 
+																			 
+																				 Ethernet Drivers 
+																			 
+																		 
+																		
+																			 Ethernet adapter drivers and acceleration software 
+																		
+																	 
+																 
+															
+														 
+													 
+												
+											 
+										 
+									 
+								 
+							
+						
+					
+				 
+			
+			
+		
+		
+		
+	 
+	
+						
+						
+
+						
+							
+							
+								 
+							
+						
+
+							
+								
+								
+									
+										
+											 
+												 Buy 
+											 
+										
+										
+									
+								
+							
+							
+							
+							
+		
+			
+				 
+					
+						
+						
+						
+							
+								 
+									 
+										 
+											 
+												 
+												
+											 
+										 
+									 
+								 
+							
+						
+					
+				 
+			
+			
+		
+		
+		
+	 
+	
+
+	
+		
+				  
+		
+		
+	
+	 
+
+	
+
+	 
+		
+	 
+	 
+
+	 
+
+	 
+		 
+			  
+			 
+				 
+					   
+		                                 
+		                             
+					 
+				 
+			 
+			 
+				   
+									 
+								 
+			 
+			
+			
+				 
+				
+					 
+						 
+							
+								
+								
+									 
+										 
+									 
+								
+							
+							 US 
+						 
+					 
+					  
+				
+			
+			
+ 
+
+                
+					
+					
+					 
+					 
+					 
+					 
+						 
+							  
+							Sign In
+						 
+						 
+							 
+								  
+							 
+						 
+						 
+							  
+						 
+					 
+					 
+						 
+							 
+								 
+									  
+								 
+								 
+									  
+									  
+								 
+							 
+							
+								 
+									 
+										    
+										 NVIDIA Account 
+									 
+								 
+							
+							 
+								 
+									    
+									 Logout 
+								 
+							 
+						 
+					 
+					 
+					 
+					 
+						
+					
+				
+			 
+
+
+			    Log In 
+			     LogOut 
+			  
+		 
+	 
+	 
+	 
+
+
+
+	 
+	 
+		 
+
+   Skip to main content  
+ 
+ 
+	 
+		
+		 
+			 
+				 
+					 
+							 
+								 
+									 
+								 
+							 
+							 
+								 
+									 
+								 
+							 
+					 
+				 
+				  
+				 
+					 
+					 
+						 
+							 
+						 
+					 
+					 
+				 
+				 
+					 
+						 
+							 
+						 
+					 
+					
+					
+				 
+				 
+					 
+						
+							
+							
+								 
+									 Artificial Intelligence Computing Leadership from NVIDIA 
+									 
+									 
+								 
+							
+						
+					 
+
+				 
+				 
+					 0 
+					 
+						 
+							 
+						  
+					 
+				 
+				
+					 
+						 
+							
+								
+								
+									 
+										 
+									 
+								
+							
+							 US 
+						 
+					 
+					 
+						 
+							    
+						 
+					 
+					  
+				
+				
+					
+					
+						 
+							  
+								 
+									  
+									 Sign In 
+								 
+								 
+									 
+										  
+									 
+								 
+								 
+									  
+								 
+							 
+							 
+														
+								 
+									 
+										 
+											  
+										 
+										 
+											  
+											  
+										 
+									 
+									
+										 
+											 
+												    
+												 NVIDIA Account 
+											 
+										 
+									
+									 
+										 
+											    
+											 Logout 
+										 
+									 
+								 
+							 
+						 
+						 
+							  Login  
+							  LogOut  
+						 
+					
+				
+			 
+		 
+	 
+ 
+
+ 
+	 
+
+		 
+
+		 
+
+			 
+				 NVIDIA 
+				 NVIDIA logo 
+				 
+				 
+				 
+			 
+		 
+
+		
+			
+				 
+					 
+						
+						
+							
+							
+							 
+								
+									
+									
+										
+											
+												
+													
+														 
+															 Networking 
+														 
+													
+													
+												
+											
+											
+										
+
+										
+											
+										
+
+										
+											 
+												
+											 
+										
+									
+								
+							 
+						
+							
+							
+							 
+								
+									
+									
+										
+											
+											
+												
+													
+													
+														 
+															Platforms
+															  
+														 
+													
+												
+											
+										
+
+										
+
+										
+											 
+												
+													
+													
+														
+														
+														 
+															 
+																
+																	 	
+																		 
+																			 
+																				 BlueField DPU 
+																			 
+																		 
+																		
+																			 Advanced computing platform powering AI data centers 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Spectrum-X Ethernet 
+																			 
+																		 
+																		
+																			 Ethernet platform for hyperscale AI cloud networking 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Quantum-X800 InfiniBand 
+																			 
+																		 
+																		
+																			 High-bandwidth InfiniBand switching for giant AI clusters 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Quantum-2 InfiniBand 
+																			 
+																		 
+																		
+																			 InfiniBand networking for cloud‑native supercomputing at scale 
+																		
+																	 
+																
+															 
+														 
+													
+												
+											 
+										
+									
+								
+							 
+						
+							
+							
+							 
+								
+									
+									
+										
+											
+											
+												
+													
+													
+														 
+															Products
+															  
+														 
+													
+												
+											
+										
+
+										
+
+										
+											 
+												
+													
+													
+														
+														
+														 
+															 
+																
+																	 	
+																		 
+																			 
+																				 Ethernet Product Overview 
+																			 
+																		 
+																		
+																			 High performance Spectrum Ethernet for accelerated AI networking 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 DPUs 
+																			 
+																		 
+																		
+																			 Infrastructure accelerators for AI‑optimized data centers 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 InfiniBand Product Overview 
+																			 
+																		 
+																		
+																			 Quantum InfiniBand platform for high‑performance AI and HPC 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Cables & Transceivers 
+																			 
+																		 
+																		
+																			 800G and 400G Ethernet and InfiniBand cables and transceivers 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Ethernet Switches 
+																			 
+																		 
+																		
+																			 Spectrum Ethernet switches for AI & HPC workloads 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Ethernet SuperNICs 
+																			 
+																		 
+																		
+																			 High performance Ethernet SuperNICs for advanced AI networking 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 InfiniBand Switches & Appliances 
+																			 
+																		 
+																		
+																			 InfiniBand switches provide high performance and dense ports 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 ConnectX InfiniBand Adapters 
+																			 
+																		 
+																		
+																			 ConnectX InfiniBand accelerates scalable AI and HPC workloads 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Silicon Photonics 
+																			 
+																		 
+																		
+																			 Co-packaged silicon photonics for massive AI networking 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 ConnectX Ethernet NICs 
+																			 
+																		 
+																		
+																			 High performance ConnectX Ethernet for AI and cloud workloads 
+																		
+																	 
+																
+															 
+														 
+													
+												
+											 
+										
+									
+								
+							 
+						
+							
+							
+							 
+								
+									
+									
+										
+											
+											
+												
+													
+													
+														 
+															Software
+															  
+														 
+													
+												
+											
+										
+
+										
+
+										
+											 
+												
+													
+													
+														
+														
+														 
+															 
+																
+																	 	
+																		 
+																			 
+																				 Networking Software Overview 
+																			 
+																		 
+																		
+																			 Software suites to optimize Ethernet and InfiniBand networking 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 DOCA 
+																			 
+																		 
+																		
+																			 Scale agentic AI securely on BlueField and ConnectX 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 DSX Air 
+																			 
+																		 
+																		
+																			 NVIDIA Air builds full-stack simulations for AI data center infrastructure 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Cumulus 
+																			 
+																		 
+																		
+																			 Linux-based data center network OS 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 NetQ 
+																			 
+																		 
+																		
+																			 Real-time AI data center network observability 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 UFM 
+																			 
+																		 
+																		
+																			 InfiniBand data center fabric management platform 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Pure SONiC 
+																			 
+																		 
+																		
+																			 Open-source Linux network OS for switches 
+																		
+																	 
+																
+															 
+														 
+													
+												
+											 
+										
+									
+								
+							 
+						
+							
+							
+							 
+								
+									
+									
+										
+											
+											
+												
+													
+													
+														 
+															Support
+															  
+														 
+													
+												
+											
+										
+
+										
+
+										
+											 
+												
+													
+													
+														
+														
+														 
+															 
+																
+																	 	
+																		 
+																			 
+																				 Enterprise Support Portal 
+																			 
+																		 
+																		
+																			 NVIDIA Enterprise Application Hub login portal 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Firmware Download 
+																			 
+																		 
+																		
+																			 NVIDIA Networking firmware download center 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 End-of-life Products 
+																			 
+																		 
+																		
+																			 End-of-life and support status for products 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Product Documentation 
+																			 
+																		 
+																		
+																			 NVIDIA networking product and software documentation 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 InfiniBand Drivers 
+																			 
+																		 
+																		
+																			 InfiniBand and VPI software downloads and drivers 
+																		
+																	 
+																
+																	 	
+																		 
+																			 
+																				 Ethernet Drivers 
+																			 
+																		 
+																		
+																			 Ethernet adapter drivers and acceleration software 
+																		
+																	 
+																
+															 
+														 
+													
+												
+											 
+										
+									
+								
+							 
+						
+							
+							
+							 
+								
+									
+									
+										
+											
+												
+													
+													
+														 
+															 Buy 
+														 
+													
+												
+											
+											
+										
+
+										
+
+										
+											 
+												
+											 
+										
+									
+								
+							 
+						
+						 
+							 
+								 
+									
+								 
+							 
+						 
+					 
+				 
+			
+			
+		
+	 
+ 
+
+  
+	 
+	 
+
+	  
+
+	 
+	   
+    
+
+	 
+
+
+	
+   
+     
+       
+          
+          
+       
+     
+   
+	  
+	 	
+	 	if(false){
+			var searchPath = document.getElementById("search-path");
+			searchPath.value = window.location.pathname;
+     	}
+	    NVIDIAGDC.funcQueue.addToQueue({ 
+	        id : "meganavigation05ff6e2f_81e2_4b19_a65f_b05db38df20a",
+	        method : "navigation-megamenu",
+	        params : [{
+	            globalSite:false,
+	            breadCrumbAdded: false,
+	            enableSearchLibrary: true,
+	            isSolr:false,
+	            searchOptions: {
+	                destination: "https://www.nvidia.com/en-us/search/",
+	                apiUrl: "https://api-prod.nvidia.com/search/graphql",
+	                triggerId: 'nvidia-search-box-link',
+	                referenceId: 'nvidia-search-box-link'
+	              }
+	            }]
+	    });
+	    
+	    NVIDIAGDC.isBrandPage = true;
+		NVIDIAGDC.isMegaMenu = true;
+		NVIDIAGDC.disableOldBrandNav = true;
+		window.setHeaderObservers();
+	 
+
+ 
+
+
+
+ 
+
+		    
+			
+		
+	 
+
+
+
+    	 
+    This site requires Javascript in order to view all its content. Please enable Javascript in order to access all the functionality of this web site. Here are the  instructions how to enable JavaScript in your web browser.  
+ 
+        
+        
+            
+
+
+
+            
+ 
+
+
+ 
+    
+     
+
+
+ 
+    
+     
+
+    
+	
+		 
+
+         
+    
+    
+            
+            
+             
+                 
+                 
+                 
+                 
+                
+                	 
+                
+                
+             
+            
+
+            
+             
+              
+
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                NVIDIA Spectrum-X  Ethernet Networking Platform
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	  Accelerate AI network performance by 1.6x over off-the-shelf (OTS) Ethernet.  
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+    
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Datasheet
+         
+     
+
+    
+        
+     Watch Video
+         
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+  
+  
+ 
+     
+      
+         
+        
+    	@media screen and (min-width:1350px){
+            #nv-separator-d1eaf1896f{
+                height:45px;
+            }
+        }
+         
+        
+        @media screen and (min-width:1024px) and (max-width:1349px){
+            #nv-separator-d1eaf1896f{
+                 height:45px;
+            }
+        }
+         
+        
+        @media screen and (min-width:640px) and (max-width:1023px){
+        	 #nv-separator-d1eaf1896f{
+                 height:45px;
+            }
+        }
+         
+        
+     
+    
+  
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-1d5c489164 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-1d5c489164 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-1d5c489164 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-1d5c489164 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-1d5c489164 {
+            
+        }
+    }
+ 
+
+ 
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-3c7c261033 {
+        background-color:#111111;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-3c7c261033 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-3c7c261033 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-3c7c261033 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-3c7c261033 {
+            
+        }
+    }
+ 
+
+ 
+ 
+  
+  
+   
+     
+       
+          
+         
+           Introduction 
+         
+      
+        
+         
+           Benefits 
+         
+      
+        
+         
+           Products 
+         
+      
+        
+         
+           Applications 
+         
+      
+        
+         
+           Partners 
+         
+      
+        
+         
+           Resources 
+         
+       
+       
+         
+            
+         
+         
+           
+             Introduction 
+           
+        
+           
+             Benefits 
+           
+        
+           
+             Products 
+           
+        
+           
+             Applications 
+           
+        
+           
+             Partners 
+           
+        
+           
+             Resources 
+           
+         
+       
+       
+         
+            
+         
+         
+           
+             Introduction 
+           
+        
+           
+             Benefits 
+           
+        
+           
+             Products 
+           
+        
+           
+             Applications 
+           
+        
+           
+             Partners 
+           
+        
+           
+             Resources 
+           
+         
+       
+       
+         
+          
+              
+ 
+  
+   
+    
+    
+
+     Read Datasheet 
+    
+   
+ 
+
+
+ 
+ 
+          
+         
+       
+     
+   
+   
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Introduction
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+  
+    
+       
+         
+           
+            
+                The World’s First Ethernet Networking Platform for AI
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	  Train and deploy massive-scale AI with the NVIDIA Spectrum-X™ Ethernet networking platform. Powered by the tight coupling of the NVIDIA  Spectrum-X Ethernet switch  and the NVIDIA  Spectrum-X Ethernet SuperNIC™ , the platform delivers the highest performance for AI—connecting AI compute fabrics within the data center, scaling across multiple AI data centers with Spectrum-XGS Ethernet, and supporting innovative  co-packaged optical  switching for enhanced power efficiency and AI workload resiliency.  
+                 
+			 
+	 
+
+    
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-d2d4d52227 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-d2d4d52227 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-d2d4d52227 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-d2d4d52227 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-d2d4d52227 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        NVIDIA Vera Rubin Opens Next AI Frontier
+     
+
+        
+     
+    	
+       		 Expansive NVIDIA POD-scale platform featuring a Spectrum-X Ethernet-based spine for NVIDIA Vera CPU and BlueField®-4 STX storage racks. 
+        
+     
+
+        
+	
+	
+	
+     
+        
+     Read the Press Release
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        NVIDIA Ethernet Networking Accelerates World’s Largest AI Supercomputer, Built by xAI
+     
+
+        
+     
+    	
+       		 NVIDIA Spectrum-X Ethernet makes the colossal NVIDIA Hopper™ 100,000-GPU system possible. 
+        
+     
+
+        
+	
+	
+	
+     
+        
+     Read the Press Release
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-2036f250db {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-2036f250db {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-2036f250db {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-2036f250db {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-2036f250db {
+            
+        }
+    }
+  
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #introduction {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #introduction {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #introduction {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #introduction {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #introduction {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Benefits
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+  
+    
+       
+         
+           
+            
+                Powerful Performance in the AI Cloud
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 Spectrum-X Ethernet is a revolutionary solution for building multi-tenant, hyperscale AI clouds. Using Spectrum-X Ethernet, organizations can significantly improve the performance and power efficiency of AI clouds and gain higher predictability and consistency, resulting in faster time to market and a greater competitive edge. 
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+
+    
+    
+    
+     
+
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                Nearly Perfect Bandwidth at Scale
+          
+           
+         
+        
+      
+    
+
+  
+   
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-62c145ce40 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-62c145ce40 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-62c145ce40 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-62c145ce40 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-62c145ce40 {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                Extremely Low Latency 
+          
+           
+         
+        
+      
+    
+
+  
+   
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-11f7aba236 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-11f7aba236 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-11f7aba236 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-11f7aba236 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-11f7aba236 {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                End-to-End Stack Optimization
+          
+           
+         
+        
+      
+    
+
+  
+   
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-fe9130ba53 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-fe9130ba53 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-fe9130ba53 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-fe9130ba53 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-fe9130ba53 {
+            
+        }
+    }
+ 
+
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+ 
+    #container-2629dbd1a5 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-2629dbd1a5 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-2629dbd1a5 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-2629dbd1a5 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-2629dbd1a5 {
+            
+        }
+    }
+ 
+
+ 
+ 
+  
+  
+ 
+     
+      
+         
+        
+    	@media screen and (min-width:1350px){
+            #nv-separator-7edfcae26d{
+                height:45px;
+            }
+        }
+         
+        
+        @media screen and (min-width:1024px) and (max-width:1349px){
+            #nv-separator-7edfcae26d{
+                 height:45px;
+            }
+        }
+         
+        
+        @media screen and (min-width:640px) and (max-width:1023px){
+        	 #nv-separator-7edfcae26d{
+                 height:30px;
+            }
+        }
+         
+        
+        @media screen and (max-width: 639px){
+        	 #nv-separator-7edfcae26d{
+                 height:30px;
+            }
+        }
+         
+     
+    
+  
+ 
+
+    
+    
+    
+     
+
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                Advanced RoCE Extensions for Scalable AI Communications
+          
+           
+         
+        
+      
+    
+
+  
+   
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-35acd9bf6e {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-35acd9bf6e {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-35acd9bf6e {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-35acd9bf6e {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-35acd9bf6e {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                Deterministic Performance and Performance Isolation
+          
+           
+         
+        
+      
+    
+
+  
+   
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-34a4178395 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-34a4178395 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-34a4178395 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-34a4178395 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-34a4178395 {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                Open Network Operating System: SONiC and NVIDIA® Cumulus®
+          
+           
+         
+        
+      
+    
+
+  
+   
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-940c53272b {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-940c53272b {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-940c53272b {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-940c53272b {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-940c53272b {
+            
+        }
+    }
+ 
+
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+ 
+    #container-e1a183cdf0 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-e1a183cdf0 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-e1a183cdf0 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-e1a183cdf0 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-e1a183cdf0 {
+            
+        }
+    }
+ 
+
+ 
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #benefits {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #benefits {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #benefits {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #benefits {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #benefits {
+            
+        }
+    }
+ 
+
+ 
+ 
+  
+  
+ 
+     
+      
+         
+         #nv-separator-a3158c6367 .cmp-separator__separator{
+              background-color: #cccccc;
+            }
+        
+        
+        
+        
+        
+     
+     
+  
+ 
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Improved AI Cloud Performance
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 NVIDIA Spectrum-X Ethernet enhances  network performance by 1.6x , accelerating the processing, analysis, and execution of AI workloads and, in turn, the development and deployment of AI solutions.&nbsp; 
+                 
+			 
+	 
+
+    
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-128b0b15bc {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-128b0b15bc {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-128b0b15bc {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-128b0b15bc {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-128b0b15bc {
+            
+        }
+    }
+  
+
+ 
+ 
+
+ 
+     	 
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	     
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-db2d899470 {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-db2d899470 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-db2d899470 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-db2d899470 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-db2d899470 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Accelerated Ethernet for Hyperscale
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 Powered by NVIDIA networking innovations, Spectrum-X Ethernet is fully standards-based Ethernet with support for open Ethernet stacks (SONiC) at cloud scale. 
+                 
+			 
+	 
+
+    
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-970359b66c {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-970359b66c {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-970359b66c {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-970359b66c {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-970359b66c {
+            
+        }
+    }
+  
+
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-51e03b02f6 {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-51e03b02f6 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-51e03b02f6 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-51e03b02f6 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-51e03b02f6 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Full-Stack Optimization and Simulation
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 Spectrum-X Ethernet is tuned and validated across the  full stack  of NVIDIA hardware and software, creating an unmatched Ethernet solution for AI clouds.&nbsp;NVIDIA DSX Air integrates simulation of Spectrum-X Ethernet with the full-stack AI factory, including best-of-breed components from NVIDIA and ecosystem partners. 
+                 
+			 
+	 
+
+    
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-a6bb6f6194 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-a6bb6f6194 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-a6bb6f6194 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-a6bb6f6194 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-a6bb6f6194 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-454fd8bbf5 {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-454fd8bbf5 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-454fd8bbf5 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-454fd8bbf5 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-454fd8bbf5 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Connect Data Centers for Gigascale AI 
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 NVIDIA Spectrum-XGS Ethernet is built for scaling across multiple disparate data centers—located in different buildings or separated by hundreds of kilometers—allowing them to function as a single unified AI super-factory. Spectrum-XGS Ethernet uses a topology-aware congestion control algorithm, precise latency management, and end-to-end telemetry to deliver 1.9x higher NCCL performance in cross-data center environments. 
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Read the Press Release 
+    
+   
+ 
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Read the Technical Blog 
+    
+   
+ 
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-f08d7567c8 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-f08d7567c8 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-f08d7567c8 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-f08d7567c8 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-f08d7567c8 {
+            
+        }
+    }
+  
+
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-38220c587d {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-38220c587d {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-38220c587d {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-38220c587d {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-38220c587d {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                NVIDIA Silicon Photonics
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 Spectrum-X Ethernet Photonics reduces power consumption, increases reliability, and enhances AI productivity by situating the optics on the same package as the switch ASIC. Spectrum-X Ethernet Photonics enables 5x better network power efficiency, higher network resiliency, and 5x longer sustained AI application runtime compared with traditional pluggable transceiver-based networks.  
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Read the Technical Blog 
+    
+   
+ 
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Learn More About Silicon Photonics 
+    
+   
+ 
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-a24da94f70 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-a24da94f70 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-a24da94f70 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-a24da94f70 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-a24da94f70 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-71724928dc {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-71724928dc {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-71724928dc {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-71724928dc {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-71724928dc {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Spectrum-X Multiplane
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 Spectrum-X multiplane enables Ethernet to scale from thousands to hundreds of thousands of GPUs using a flat, two-tier topology. By splitting each GPU’s SuperNIC across two or more independent network planes, it overcomes single-plane limits, improves performance and resiliency, and scales Spectrum-X Ethernet networks up to 128K GPUs in two tiers—64x more than single-plane networks. 
+                 
+			 
+	 
+
+    
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-b1bfa5399e {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-b1bfa5399e {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-b1bfa5399e {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-b1bfa5399e {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-b1bfa5399e {
+            
+        }
+    }
+  
+
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-f5766ab6cc {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-f5766ab6cc {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-f5766ab6cc {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-f5766ab6cc {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-f5766ab6cc {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Rack-Scale Spectrum-X Ethernet
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 Spectrum-X Ethernet is fully integrated into the NVIDIA MGX™ ETL rack-scale architecture, delivering high-performance Ethernet networking for ultra-dense compute racks and expanding MGX liquid-cooling and reliability innovations to a wider variety of compute options. The power-efficient, copper-based cable cartridge connects liquid-cooled Spectrum-X Ethernet switch trays to up to 256 GPUs in a single rack, while front-panel optical connectivity enables scale-out to larger GPU domains. 
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Read the Technical Blog 
+    
+   
+ 
+
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-be8afb2334 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-be8afb2334 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-be8afb2334 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-be8afb2334 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-be8afb2334 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-fd58f79f9e {
+        background-color:#f7f7f7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-fd58f79f9e {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-fd58f79f9e {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-fd58f79f9e {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-fd58f79f9e {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+  
+  
+ 
+     
+      
+         
+        
+    	@media screen and (min-width:1350px){
+            #nv-separator-197b5fd8e5{
+                height:75px;
+            }
+        }
+         
+        
+        @media screen and (min-width:1024px) and (max-width:1349px){
+            #nv-separator-197b5fd8e5{
+                 height:75px;
+            }
+        }
+         
+        
+        @media screen and (min-width:640px) and (max-width:1023px){
+        	 #nv-separator-197b5fd8e5{
+                 height:45px;
+            }
+        }
+         
+        
+        @media screen and (max-width: 639px){
+        	 #nv-separator-197b5fd8e5{
+                 height:45px;
+            }
+        }
+         
+     
+    
+  
+ 
+  
+    
+       
+         
+           
+            
+                Products
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+  
+    
+       
+         
+           
+            
+                What’s Inside the Platform
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+
+    
+    
+    
+     
+
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                NVIDIA Spectrum-X Ethernet Switches
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 The NVIDIA Spectrum-X Ethernet switches are purpose-built to accelerate hyperscale generative AI fabrics. Spectrum-X Ethernet switches deliver high effective bandwidth and performance isolation for AI factories, scaling infrastructure to hundreds of thousands of GPUs and enabling the training and deployment of the world’s largest AI models. 
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Learn More About Spectrum SN5000 
+    
+   
+ 
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Learn More About Spectrum SN6000 
+    
+   
+ 
+
+
+ 
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-62ad2d69fe {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-62ad2d69fe {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-62ad2d69fe {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-62ad2d69fe {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-62ad2d69fe {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+  
+    
+       
+         
+           
+            
+                NVIDIA Spectrum-X Ethernet SuperNICs
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 The NVIDIA Spectrum-X Ethernet SuperNICs are novel classes of network accelerators, purpose-built for supercharging hyperscale AI workloads. Designed for network-intensive, massively parallel computations, NVIDIA SuperNICs provide high-bandwidth RDMA over Converged Ethernet (RoCE) network connectivity between GPU servers, optimizing peak AI workload efficiency.  
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Learn More About SuperNICs 
+    
+   
+ 
+
+
+ 
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-b3af171b8b {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-b3af171b8b {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-b3af171b8b {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-b3af171b8b {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-b3af171b8b {
+            
+        }
+    }
+ 
+
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+ 
+    #products {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #products {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #products {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #products {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #products {
+            
+        }
+    }
+ 
+
+ 
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #products {
+        background-color:#eeeeee;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #products {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #products {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #products {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #products {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Applications
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+  
+    
+       
+         
+           
+            
+                How Spectrum-X Ethernet Technology Is Used
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+
+    
+    
+    
+     
+
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        AI Compute Fabrics
+     
+
+        
+     
+    	
+       		 Spectrum-X Ethernet is ideal for GPU-to-GPU communication, providing the high, effective bandwidth and performance isolation needed for AI training and distributed inference. 
+        
+     
+
+        
+	
+	
+	
+     
+        
+     Read Whitepaper
+           
+     
+
+    
+        
+     Read Technical Blog
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        AI Storage
+     
+
+        
+     
+    	
+       		 NVIDIA and the storage ecosystem are extending Spectrum-X Ethernet innovations to the data storage fabric, leading to faster time to AI and maximizing return on investment. 
+        
+     
+
+        
+	
+	
+	
+     
+        
+     Read Whitepaper
+           
+     
+
+    
+        
+     Read Technical Blog
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+ 
+    #container-bb78237e37 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-bb78237e37 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-bb78237e37 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-bb78237e37 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-bb78237e37 {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+	
+	
+     
+    	
+		
+
+       
+span.fa-light.fa-file {
+    color: #76b900;
+}
+  	
+
+     
+ 
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #applications {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #applications {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #applications {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #applications {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #applications {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Partners
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+  
+    
+       
+         
+           
+            
+                Who We’re Working With
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 
+       
+      
+          
+     
+          
+        
+         
+             Server 
+         
+    
+        
+        
+         
+             Storage 
+         
+    
+        
+        
+         
+             Orchestration 
+         
+     
+
+          
+     
+      
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-97f5ba2d8a {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-97f5ba2d8a {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-97f5ba2d8a {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-97f5ba2d8a {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-97f5ba2d8a {
+            
+        }
+    }
+  
+
+ 
+ 
+  
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-4f5d718221 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-4f5d718221 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-4f5d718221 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-4f5d718221 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-4f5d718221 {
+            
+        }
+    }
+  
+
+ 
+ 
+  
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-8724b31196 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-8724b31196 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-8724b31196 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-8724b31196 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-8724b31196 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+  
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #partners {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #partners {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #partners {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #partners {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #partners {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Resources
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+  
+    
+       
+         
+           
+            
+                Continue Exploring Spectrum-X Ethernet
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+
+    
+    
+    
+     
+
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Spectrum-X Ethernet Datasheet
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Datasheet
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Spectrum-X Ethernet Technical Whitepaper
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Whitepaper
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Spectrum-X Ethernet for Storage Whitepaper
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Whitepaper
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Spectrum-X Ethernet for Storage Blog
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Blog
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Spectrum-X Ethernet Solution Bundle
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     View Solution
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Networking for AI Technical Whitepaper
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Whitepaper
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Spectrum-XGS  Ethernet Technical Blog
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Blog
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        SuperNIC Technical Whitepaper
+     
+
+        
+    
+
+        
+	
+	
+	
+     
+        
+     Read Whitepaper
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+ 
+    #container-43bba9ea37 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-43bba9ea37 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-43bba9ea37 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-43bba9ea37 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-43bba9ea37 {
+            
+        }
+    }
+ 
+
+ 
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #resources {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #resources {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #resources {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #resources {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #resources {
+            
+        }
+    }
+ 
+
+ 
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Get a Free Trial of NVIDIA Networking Software
+     
+
+        
+     
+    	
+       		 Simulate a fully automated network topology using NVIDIA DSX Air. 
+        
+     
+
+        
+	
+	
+	
+     
+        
+     Get Started
+         
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Discover Networking for the Era of AI
+     
+
+        
+     
+    	
+       		 The network is ultimately responsible for AI performance, acting as the backbone of the data center to harness the power of generative AI. 
+        
+     
+
+        
+	
+	
+	
+     
+        
+     Read Whitepaper
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+ 
+
+  
+ 
+        
+
+
+
+  
+    
+    
+	
+	 
+
+  
+
+        
+     
+     
+        
+    
+
+        
+     
+        Learn About the Spectrum-X Ethernet Platform 
+     
+
+        
+     
+    	
+       		 The Spectrum-X Ethernet platform is designed specifically to improve the performance and efficiency of Ethernet-based AI infrastructure. 
+        
+     
+
+        
+	
+	
+	
+     
+        
+     Read Datasheet
+           
+     
+
+     
+    
+    
+    
+
+     
+     
+       
+
+ 
+
+    
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-8f2b21a123 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-8f2b21a123 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-8f2b21a123 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-8f2b21a123 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-8f2b21a123 {
+            
+        }
+    }
+  
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #NextSteps {
+        background-color:#1A1A1A;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #NextSteps {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #NextSteps {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #NextSteps {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #NextSteps {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+	
+		 
+
+         
+         
+
+
+    	
+
+         
+        	
+
+
+ 
+    
+     
+  
+  
+ 
+     
+      
+         
+        
+    	@media screen and (min-width:1350px){
+            #nv-separator-0b2c22c0cf{
+                height:75px;
+            }
+        }
+         
+        
+        @media screen and (min-width:1024px) and (max-width:1349px){
+            #nv-separator-0b2c22c0cf{
+                 height:75px;
+            }
+        }
+         
+        
+        @media screen and (min-width:640px) and (max-width:1023px){
+        	 #nv-separator-0b2c22c0cf{
+                 height:60px;
+            }
+        }
+         
+        
+        @media screen and (max-width: 639px){
+        	 #nv-separator-0b2c22c0cf{
+                 height:60px;
+            }
+        }
+         
+     
+    
+  
+ 
+ 
+ 	
+     
+			 
+				 
+                	     Sign up to receive the latest news from NVIDIA.     
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Subscribe 
+    
+   
+ 
+
+
+ 
+ 
+  
+  
+ 
+     
+      
+         
+        
+    	@media screen and (min-width:1350px){
+            #nv-separator-de24129f1f{
+                height:75px;
+            }
+        }
+         
+        
+        @media screen and (min-width:1024px) and (max-width:1349px){
+            #nv-separator-de24129f1f{
+                 height:75px;
+            }
+        }
+         
+        
+        @media screen and (min-width:640px) and (max-width:1023px){
+        	 #nv-separator-de24129f1f{
+                 height:60px;
+            }
+        }
+         
+        
+        @media screen and (max-width: 639px){
+        	 #nv-separator-de24129f1f{
+                 height:60px;
+            }
+        }
+         
+     
+    
+  
+
+    
+ 
+
+         
+        
+     
+    
+
+    
+    
+    
+
+ 
+ 
+    #container-6f396e128f {
+        background-color:#1a1a1a;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-6f396e128f {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-6f396e128f {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-6f396e128f {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-6f396e128f {
+            
+        }
+    }
+ 
+
+ 
+ 
+ 
+   
+      
+   
+   
+     
+        
+     
+    
+     
+       
+        
+        
+          
+
+
+ 
+    
+     
+
+ 
+    
+    
+    
+
+ 
+
+   
+    
+    
+     *{padding:0;margin:0;overflow:hidden}html,body{height:100%}img,span{position:absolute;width:100%;top:0;bottom:0;margin:auto}.play-button-container{display:flex;justify-content:center;cursor:pointer;}.play-button{width:75px;height:75px;opacity:0.5;}.play-button-container:hover .play-button{opacity:0.9;}   &lt;span class=&#39;play-button-container&#39;>&lt;span class=&#39;play-button&#39;>&lt;svg width=&#39;75&#39; height=&#39;75&#39; viewBox=&#39;0 0 237 237&#39; fill=&#39;none&#39; xmlns=&#39;http://www.w3.org/2000/svg&#39;>&lt;path d=&#39;M0 118.25C0 52.9423 52.9423 0 118.25 0C183.558 0 236.5 52.9423 236.5 118.25C236.5 183.558 183.558 236.5 118.25 236.5C52.9423 236.5 0 183.558 0 118.25Z&#39; fill=&#39;white&#39;>&lt;/path>&lt;path d=&#39;M179.037 118.25L77.6562 59.1115V177.389L179.037 118.25Z&#39; fill=&#39;rgb(99,99,99)&#39;>&lt;/path>&lt;/svg>&lt;/span>&lt;/span> " loading="lazy" aria-label="YouTube Video" data-modal-autoplay="false"> 
+    
+     
+    
+
+   
+    
+       
+       
+         
+          
+              
+              
+          
+         
+       
+    
+
+   
+   
+    
+       
+          Consent for Optional Cookies 
+          (googleCookiePolicyLink)YouTube sets performance, advertising, and other optional cookies(/googleCookiePolicyLink) when you watch embedded videos. To watch this video, you need to turn on optional cookies for the site. By clicking “Accept and Play Video,” you will automatically turn on advertising and other optional cookies for the site and accept our (nvidiaTermsOfServiceLink)Terms of Service(/nvidiaTermsOfServiceLink) (which contains important waivers). Please see our (nvidiaPrivacyPolicyLink)Privacy Policy(/nvidiaPrivacyPolicyLink) and (nvidiaCookiePolicyLink)Cookie Policy(/nvidiaCookiePolicyLink) for more information. 
+          
+              
+                 Cancel  
+              
+              
+                 Accept and Play Video  
+              
+          
+          Alternatively, you can (youtubeLink)watch this video on YouTube(/youtubeLink). 
+       
+    
+
+
+ 
+
+
+    
+
+ 
+ 
+
+    
+ 
+
+        
+       
+     
+    
+   
+ 
+ 
+ 
+ 
+   
+      
+   
+   
+     
+        
+     
+    
+     
+       
+        
+           
+              
+              
+           
+        
+        
+       
+     
+    
+   
+ 
+ 
+ 
+ 
+   
+      
+   
+   
+     
+        
+     
+    
+     
+       
+        
+        
+          
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                
+		    	
+                    Augtera is now a part of NVIDIA 
+				
+	    	
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 	
+     
+			 
+				 
+                	 Augtera was acquired by NVIDIA Corporation of Santa Clara, CA in December 2024. It will become a part of NVIDIA Spectrum-X product portfolio. 
+                 
+			 
+	 
+
+    
+
+
+ 
+ 
+ 
+  
+   
+    
+    
+
+     Close 
+    
+   
+ 
+
+
+ 
+
+    
+ 
+
+        
+       
+     
+    
+   
+ 
+ 
+ 
+
+	
+	
+     
+    	
+		
+
+       
+$(document).on('click', '#augtera .btn-content.btncta', function(){
+   $('.nv-modal-close').trigger('click');
+});
+  	
+
+     
+ 
+ 
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+
+    
+	
+     
+      
+      
+      
+      
+
+      
+      
+       
+        
+
+
+ 
+    
+     
+  
+    
+       
+         
+           
+            
+                Partners
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+  
+    
+       
+         
+           
+            
+                Who We’re Working With
+          
+           
+         
+        
+      
+    
+
+  
+   
+ 
+ 
+ 
+       
+      
+          
+     
+          
+        
+         
+             Server 
+         
+    
+        
+        
+         
+             Storage 
+         
+    
+        
+        
+         
+             Orchestration 
+         
+     
+
+          
+     
+      
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-f42515207a {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-f42515207a {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-f42515207a {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-f42515207a {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-f42515207a {
+            
+        }
+    }
+  
+
+ 
+ 
+  
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-fff792f471 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-fff792f471 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-fff792f471 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-fff792f471 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-fff792f471 {
+            
+        }
+    }
+  
+
+ 
+ 
+  
+
+    
+    
+    
+     
+		
+		
+		
+       
+       
+    	 
+	        
+	         
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+ 
+
+ 
+     	
+           
+		   
+     
+	            
+	             
+	            
+	         
+
+	    
+	    
+	    
+	    
+   
+
+    
+ 
+
+	        
+         
+         
+     
+
+    
+    
+
+ 
+
+ 
+    #container-8d6c3daac0 {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-8d6c3daac0 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-8d6c3daac0 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-8d6c3daac0 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-8d6c3daac0 {
+            
+        }
+    }
+  
+
+ 
+ 
+
+    
+  
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-37ce15fea3 {
+        background-color:#F7F7F7;
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-37ce15fea3 {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-37ce15fea3 {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-37ce15fea3 {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-37ce15fea3 {
+            
+        }
+    }
+  
+
+ 
+
+    
+ 
+
+       
+      
+     
+    
+
+    
+    
+    
+
+ 
+
+ 
+    #container-c25db2444a {
+        
+    }
+
+    /* Mobile: up to 639px */
+    @media only screen and (max-width: 639px) {
+        #container-c25db2444a {
+            
+        }
+    }
+
+    /* Tablet: 640px to 1023px */
+    @media only screen and (min-width: 640px) and (max-width: 1023px) {
+        #container-c25db2444a {
+            
+        }
+    }
+
+    /* Laptop: 1024px to 1349px */
+    @media only screen and (min-width: 1024px) and (max-width: 1349px) {
+        #container-c25db2444a {
+            
+        }
+    }
+
+    /* Desktop: 1350px and up */
+    @media only screen and (min-width: 1350px) {
+        #container-c25db2444a {
+            
+        }
+    }
+  
+
+ 
+
+    
+ 
+ 
+ 
+	
+	
+	 
+		 
+			 
+			
+				
+		         
+		        	 
+		        		 Platforms 
+		                 
+		                	
+								 
+		                			 BlueField DPU 
+		            			 
+							
+								 
+		                			 Spectrum-X Ethernet 
+		            			 
+							
+								 
+		                			 Quantum-X800 InfiniBand 
+		            			 
+							
+								 
+		                			 Quantum-2 InfiniBand 
+		            			 
+							
+								 
+		                			 DOCA 
+		            			 
+							
+		                 
+		        	 
+		        	 
+		                 Products 
+		                 
+		                	
+								 
+		                			 Ethernet Product 
+		            			 
+							
+								 
+		                			 InfiniBand Product  
+		            			 
+							
+								 
+		                			 Networking Software 
+		            			 
+							
+		                 
+		             
+		             
+		                 Resources 
+		                 
+		                	
+								 
+		                			 How to Buy 
+		            			 
+							
+								 
+		                			 Support 
+		            			 
+							
+								 
+		                			 Networking Blogs 
+		            			 
+							
+								 
+		                			 Documentation 
+		            			 
+							
+								 
+		                			 Networking Community 
+		            			 
+							
+								 
+		                			 NVIDIA Academy 
+		            			 
+							
+								 
+		                			 NVIDIA Deep Learning Institute 
+		            			 
+							
+								 
+		                			 Ethernet Drivers 
+		            			 
+							
+								 
+		                			 InfiniBand Drivers 
+		            			 
+							
+		                 
+		             
+		             
+		                 Company Info 
+		                 
+		                	
+								 
+		                			 About Us 
+		            			 
+							
+								 
+		                			 Company Overview 
+		            			 
+							
+								 
+		                			 Investors 
+		            			 
+							
+								 
+		                			 Venture Capital (NVentures) 
+		            			 
+							
+								 
+		                			 NVIDIA Foundation 
+		            			 
+							
+								 
+		                			 Research 
+		            			 
+							
+								 
+		                			 Social Responsibility 
+		            			 
+							
+								 
+		                			 Technologies 
+		            			 
+							
+								 
+		                			 Careers 
+		            			 
+							
+		                 
+		             
+		         
+		        
+		        
+		        
+		         
+		        	
+
+		         
+		        
+		        
+		        
+	        	 
+	        		 Follow NVIDIA Networking 
+	        		
+					
+					
+	        			 ' title=' '>
+			                 
+			             
+	        		
+	        		
+                    
+			             
+							  
+						 
+					
+					
+                    
+                    
+	        		
+	        			 ' title=' '>
+			                 
+			             
+	        		
+		            
+					
+					
+					
+						
+					
+										
+					
+					
+					
+	        	 
+	        	
+	        	
+			 
+		 
+		 
+	
+
+
+
+ 
+ 
+	 
+		 
+	    	 NVIDIA 
+	    	 
+	    		  
+	    		  
+	    		  
+	    	 
+	     
+	    
+	     
+		    
+		    	 
+		    
+		
+	         
+	           United States
+	         
+		 
+		 
+		
+		 
+			
+				 
+	           		 Privacy Policy 
+	        	 
+			
+				 
+	           		 Your Privacy Choices 
+	        	 
+			
+				 
+	           		 Terms of Service 
+	        	 
+			
+				 
+	           		 Accessibility 
+	        	 
+			
+				 
+	           		 Corporate Policies 
+	        	 
+			
+				 
+	           		 Product Security 
+	        	 
+			
+				 
+	           		 Contact 
+	        	 
+			
+	     
+	    
+	     Copyright &#169; 2026 NVIDIA Corporation 
+    	
+    	
+	 
+ 
+ 
+
+
+
+
+	 
+    .image-container{
+        position:relative;
+    }
+.image-credit {
+    color: #ccc;
+    font-size: 11px;
+    line-height: 1.4em;
+    position:absolute;
+}
+.image-credit.credit--dark{
+    color: #333;
+}
+    .image-credit.position--top-left{
+        top:12px;
+        left:15px;
+    } 
+    .image-credit.position--top-right{
+        top:12px;
+        right:15px;
+    } 
+    .image-credit.position--bottom-left{
+        bottom:27px;
+        left:15px;
+    } 
+    .image-credit.position--bottom-right{
+        bottom:27px;
+        right:15px;
+    } 
+ 
+ 
+$(document).ready(function(){
+    $('.image-credit').each(function(){
+        var imageOuter = $(this).parent().parent().prev().children('.image-container').append(this);
+    })
+})
+ 
+
+ 
+.navigation .global-nav .desktop-nav .nav-header-container #tab4-nv-level2-tab8:checked~.menu3-container .nv-level3-tab8 {
+  background-color:#eee;
+  opacity:1;
+  -webkit-transform:rotateX(0);
+  transform:rotateX(0);
+  transition:.2s ease-out;
+  -webkit-transition:.2s ease-out;
+  -o-transition:.2s ease-out;
+  visibility:visible;
+  width:100%
+}
+.navigation .global-nav .desktop-nav .nav-header-container #tab4-nv-level2-tab8:checked ~ .nv-level2-list-container .nv-menu-level2-list .slider-menu {
+  opacity: 1;
+}
+
+
+.navigation .global-nav .desktop-nav .nav-header-container #tab4-nv-level2-tab9:checked~.menu3-container .nv-level3-tab9 {
+  background-color:#eee;
+  opacity:1;
+  -webkit-transform:rotateX(0);
+  transform:rotateX(0);
+  transition:.2s ease-out;
+  -webkit-transition:.2s ease-out;
+  -o-transition:.2s ease-out;
+  visibility:visible;
+  width:100%
+}
+.navigation .global-nav .desktop-nav .nav-header-container #tab4-nv-level2-tab9:checked ~ .nv-level2-list-container .nv-menu-level2-list .slider-menu {
+  opacity: 1;
+}
+
+.navigation .global-nav .desktop-nav .nav-header-container #tab4-nv-level2-tab10:checked~.menu3-container .nv-level3-tab10 {
+  background-color:#eee;
+  opacity:1;
+  -webkit-transform:rotateX(0);
+  transform:rotateX(0);
+  transition:.2s ease-out;
+  -webkit-transition:.2s ease-out;
+  -o-transition:.2s ease-out;
+  visibility:visible;
+  width:100%
+}
+.navigation .global-nav .desktop-nav .nav-header-container #tab4-nv-level2-tab10:checked ~ .nv-level2-list-container .nv-menu-level2-list .slider-menu {
+  opacity: 1;
+}
+ 
+
+
+	  
+  
+ 
+window.addEventListener('load', () => {
+    LIBRARIAN.Home.mount({
+                elementId: 'librarian-search',
+                searchPage: false,
+                placeholder:'',
+                site : 'https://www.nvidia.com',
+                generateSummary: false,
+                page:"",  
+                searchRedirectPath: '',
+                preSelectedFilters: '',
+                retainFilters: false,
+                suggestedSearchPills: []
+	})
+});
+ 
+
+
+ 
+
+    
+ 
+ 
+
+
+            
+    
+    
+  
+  
+
+
+
+    
+	
+	    
+    
+
+
+
+	
+	
+	 
+		NVIDIAGDC.funcQueue.executeQueue();
+		//DTM code Execution
+		//if(typeof _satellite !== "undefined"){
+		//	_satellite.pageBottom();
+		//}	
+	 
+	
+	
+
+	
+		 
+			 
+				  
+				  
+			 
+		 
+		  
+	
+	
+	 
+		$(function(){
+			$(window).bind('load', function(){
+				var ubContainer="";
+				if(typeof t_ubContainer !== 'undefined' && t_ubContainer.length>0){
+					ubContainer = t_ubContainer;
+					var cookieKey = "";
+					if(typeof t_cookieKey !== 'undefined' && t_cookieKey.length>0){
+						cookieKey = t_cookieKey
+					}
+					var ubcookie = "";
+					if(cookieKey.length>0){
+						ubcookie = Cookies.get(cookieKey)!=='undefined'?Cookies.get(cookieKey):"";
+					} else {
+						ubcookie = "";
+					}
+					// var ubcookie = Cookies.get(cookieKey);
+					var isCookie = typeof ubcookie !== 'undefined'?ubcookie:"";
+					if(!isCookie){
+						if(isCookie.length 0){
+								$('#unibrow-container').removeClass('hide-unibrow');
+								$('#unibrow-container').append(ubContainer);
+
+								// Marquee initialization (only when .unibrow-marquee class is present)
+								if ($('#unibrow-style.unibrow-marquee').length > 0) {
+									// Apply configurable scroll speed from API variable
+									var scrollSpeed = 15;
+									if (typeof t_ubScrollSpeed !== 'undefined' && !isNaN(t_ubScrollSpeed)) {
+										scrollSpeed = t_ubScrollSpeed;
+									}
+									document.documentElement.style.setProperty('--unibrow-scroll-speed', scrollSpeed + 's');
+
+									// Clone text twice (3 copies total) for seamless continuous scroll
+									var $track = $('.unibrow-scroll-track');
+									if ($track.length > 0) {
+										var $original = $track.find('.unibrow-scroll-text');
+										var $clone1 = $original.clone().attr('aria-hidden', 'true');
+										var $clone2 = $original.clone().attr('aria-hidden', 'true');
+										$track.append($clone1).append($clone2);
+									}
+								}
+
+								if ($(".sub-brand-nav").length >0){
+									$(".sub-brand-nav").addClass('unibrow-top');
+								}
+								var ubsc = $(window).width();
+								if(ubsc   NVIDIAGDC.tabletBreakpoint && ubsc   0) {
+									window.dispatchEvent(new CustomEvent("nvOnUnibrowLoaded"));
+								}
+
+								if($(".unibrow-close").length >0){
+									$( ".unibrow-close" ).click(function(e) {
+										e.preventDefault();
+										//$(".unibrow-top").animate({'marginTop': '0px'}, { duration: animationCloseTime, queue: false });
+										$(".unibrow-top").css('marginTop', '0px');
+										//$("#unibrow-container").animate({'height': '0px'}, { duration: animationCloseTime, queue: false });
+										$("#unibrow-container").css('height', '0px');
+										$("#unibrow-style-outer").remove();
+										$('.sub-brand-nav').removeClass('unibrow-top');
+										if(ubsc   NVIDIAGDC.tabletBreakpoint && ubsc  0){
+											var cookieVal = "";
+											var cookieExpires = 0;
+											if(typeof t_cookieVal !== 'undefined' && t_cookieVal.length>0){
+												cookieVal = t_cookieVal;
+											}
+											if(typeof t_cookieExpires !== 'undefined'){ cookieExpires = t_cookieExpires; }
+											var expires = (new Date(Date.now()+ 86400*1000)).toUTCString();
+											document.cookie = cookieKey + "=" +  cookieVal + "; expires=" + cookieExpires + ";path=/;";
+										}
+		                                $("#unibrow-container").addClass('hide-unibrow');
+										if($(".subnav").length>0){
+											$(".subnav").removeClass('unibrow-subnav');
+										}
+										$(".nv-page-body > .root").css("marginTop","");
+										if($(".stbrdcrmbblock").length>0){
+											$(".stbrdcrmbblock").css("top","");
+		                                    $(".stbrdcrmbblock").css("position", "");
+		                                    $(".stbrdcrmbblock").addClass("stbrdcrmbshadow");
+										}
+
+										// Trigger custom event when unibrow is loaded
+										window.dispatchEvent(new CustomEvent("nvOnUnibrowClose"));
+									});
+								}
+							}
+						}
+						
+					}
+				}
+			});
+		});
+		
+		var position = $(window).scrollTop();
+		
+		$(window).scroll(function() {
+			if($(".hide-unibrow").length 0) {
+				var scroll = $(window).scrollTop();
+				if (scroll > position) {
+					if($(window).width()   NVIDIAGDC.tabletBreakpoint && $(window).width()   NVIDIAGDC.tabletBreakpoint && $(window).width()  
+
+
+
+    
+
+    
+
+    
+    
+
+            
+
+        
+    
+    
+    
+     
+ 
+

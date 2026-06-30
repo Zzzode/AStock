@@ -1,0 +1,34 @@
+# Source Registry
+
+| ID | Quality | Type | Used for | URL / path |
+|---|---|---|---|---|
+| S01 | L1 official | official | NVIDIA FY2027 Q1 revenue was USD81.6bn and Data Center revenue was USD75.2bn. | https://nvidianews.nvidia.com/news/nvidia-announces-financial-results-for-first-quarter-fiscal-2027 |
+| S02 | L2 industry/public | industry | Dell'Oro raised 2026 global data-center capex outlook to more than USD1tn. | https://www.delloro.com/news/ai-infrastructure-buildouts-and-memory-cost-inflation-drove-data-center-capex-higher-in-1q-2026/ |
+| S03 | L1 official | official-policy | China intelligent-compute scale reached 1.59mn PFlops by 2025 year-end; national hubs represented more than 80%. | https://www.nda.gov.cn/sjj/jgsz/jld/llh/llhldhd/0323/20260323202204680553721_pc.html |
+| S04 | L1 official | official-product | GB200 NVL72 is a liquid-cooled rack-scale design with 36 Grace CPUs and 72 Blackwell GPUs. | https://www.nvidia.com/en-us/data-center/gb200-nvl72/ |
+| S05 | L2 industry/public | industry | JLL expects AI workload share to rise and AI rack density to move toward 40-100+kW. | https://www.joneslanglasalle.com.cn/zh-cn/insights/2026-data-center-outlook |
+| S06 | L2 industry/public | industry | LightCounting discusses AI-cluster optics growth, 2026 growth constraints and the possible USD100bn market by 2030. | https://www.lightcounting.com/newsletter/en/march-2026-ethernet-optics-382 |
+| S07 | L1 official | company-filing | FII disclosed strong cloud-computing revenue growth and more than 3x cloud AI-server revenue growth in 2025. | https://static.cninfo.com.cn/finalpage/2026-03-11/1225004416.PDF |
+| S08 | L1 official | company-filing | Hushi disclosed data-communication PCB revenue and AI server/HPC plus high-speed switch/router sub-segment revenue. | https://static.cninfo.com.cn/finalpage/2026-03-25/1225027831.PDF |
+| S09 | L1 official | company-filing | Invic disclosed end-to-end liquid-cooling products and large data-center customer examples. | https://static.cninfo.com.cn/finalpage/2026-04-21/1225131812.PDF |
+| S10 | L1 official | company-filing | Kehua disclosed full-stack intelligent data-center infrastructure products and 200kW high-density UPS module certification. | https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-27/793ce78f-1252-40f7-9c44-a13b6f8e3d67.PDF |
+| S11 | L2 industry/public | company-ir | Runze discussed AIDC growth, liquid-cooled 200MW data-center delivery and AIDC/IDC margin expectations. | https://pdf.dfcfw.com/pdf/H2_AN202604141821167621_1.pdf |
+| S12 | L1 official | company-filing | Runze disclosed AIDC growth drivers, 220MW added compute delivery and customer diversification. | https://static.cninfo.com.cn/finalpage/2026-04-10/1225091631.PDF |
+| S15 | L2 industry/public | industry-semiconductor | Maps the semiconductor stack behind AI data centers and frames compute, memory, networking and power as one system. | https://www.semiconductors.org/wp-content/uploads/2026/05/Powering-AI_The-Semiconductor-Ecosystem-at-the-Foundation-of-Data-Centers_report.pdf |
+| S16 | L1 official | official-product | Defines the AI Ethernet networking stack and scale-out/scale-across bottleneck for AIDC clusters. | https://www.nvidia.com/en-us/networking/spectrumx/ |
+| S17 | L2 industry/public | industry | Tracks AI server, HBM and memory-cycle evidence used for upstream compute/storage mapping. | https://www.trendforce.com/research/category/Semiconductors/AI%20Server_HBM_Server |
+| S18 | L2 industry/public | company-product | Supports high-speed connector, cable, backplane, socket and power interconnect definitions. | https://www.te.com/en/industries/data-centers-ai.html |
+| S19 | L2 industry/public | company-product | Supports high-density AI data-center reference design, power and liquid-cooling architecture mapping. | https://www.se.com/us/en/work/solutions/data-centers-and-networks/reference-designs/ |
+| S20 | L2 industry/public | company-education | Defines high-density cooling, CDU role and rack-density pressure for AI/ML data centers. | https://www.vertiv.com/en-us/insights/articles/educational-articles/high--density-cooling-a-guide-to-advanced-thermal-solutions-for-ai-and-ml-workloads-in-data-centers/ |
+| S21 | L2 industry/public | company-education | Supports liquid-cooling deployment architecture and reference-design language; local capture had HTTP 403 but URL is retained. | https://blog.se.com/datacenter/2026/01/06/how-liquid-cooling-reference-designs-optimize-ai-data-center-deployments/ |
+| S22 | L2 industry/public | company-education | Defines CDU as the heat-exchange, pumping and control boundary between facility water and the IT liquid loop. | https://www.supermicro.com/zh_cn/glossary/cdu |
+| S23 | L2 industry/public | industry | Segments hyperscalers, China cloud, neoclouds, colocation, telco and enterprise capex demand. | https://www.delloro.com/market-research/data-center-infrastructure/data-center-capex/ |
+| S24 | L1 official | official-media | Supports China AI application, compute-network and smart-compute-density demand anchors. | https://www.news.cn/politics/20260128/25f6978fe8cf41bda53b78bcf7106fec/c.html |
+| S25 | L2 industry/public | broker-public-pdf | Maps data-center power and cooling segments including UPS/HVDC, transformers, busway, diesel generators and liquid cooling. | https://pdf.dfcfw.com/pdf/H3_AP202502121643008300_1.pdf |
+| S26 | L2 industry/public | company-product | Supports server/rack power connector and power-management component mapping; local capture failed and URL is retained. | https://www.molex.com/en-us/industries-applications/power-for-data-center |
+| S27 | L2 industry/public | company-product | Defines quick-connect couplings for data-center CDU and liquid-cooling serviceability. | https://www.cejn.com/en-us/applications/data-centers/ |
+| S28 | L2 industry/public | company-product | Supports coolant and liquid-cooling material mapping for AIDC. | https://www.fuchs.com/cn/zh/company/news-new/news-entry/6800-fu-si-zhong-guo-zhong-bang-liang-xiang-di-wu-jie-zhong-guo-shu-ju-zhong-xin-ye-leng-chan-ye-feng-hui-fu-neng-lu-se-zhi-suan-fa-zhan/ |
+| S29 | L2 industry/public | industry | Supports long-cycle data-center capex demand and hyperscale/neocloud/sovereign AI buildout framing. | https://www.delloro.com/news/ai-boom-drives-data-center-capex-to-1-7-trillion-by-2030/ |
+| S30 | L1 official | official-guide | Supports China intelligent-computing center architecture, construction and operation mapping. | https://scdrc.sic.gov.cn/SmarterCity_new/yjcg/jlfx/0408/2c97b8cb-95c74996-0196-146608fd-0b8e.pdf |
+| S13 | L2 realtime market snapshot | market-data | 2026-06-30 11:30 price, turnover and intraday change snapshot. | https://hq.sinajs.cn/ |
+| S14 | L2 structured public financial packet | financial-data | 2026Q1 and 2025A revenue, profit, margin, BPS and EPS snapshots. | local capability adapter |

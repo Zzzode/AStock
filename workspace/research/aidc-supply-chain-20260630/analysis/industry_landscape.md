@@ -1,0 +1,5 @@
+# Industry Landscape
+
+AIDC demand is driven by three simultaneous changes: AI accelerator capex expansion, rack-scale architecture and power/cooling constraints. NVIDIA's FY2027 Q1 data-center revenue and Dell'Oro's 2026 capex outlook support the global demand anchor. China's national compute-network policy and hub-node buildout support the domestic infrastructure anchor.
+
+The full chain is broader than the 18-name valuation subset. The eight required blocks are: upstream compute chips and storage; server components; network and optical; PCB and upstream materials/equipment; power distribution and energy; liquid cooling and thermal control; data-center construction and operation; downstream cloud, model, enterprise and vertical AI demand. The key industry conclusion is that AIDC changes the bottleneck from general server count to rack power density, network bandwidth and energy availability. This makes optical interconnect, high-end PCB, liquid cooling, UPS/power modules and delivered AIDC capacity investable profit pools, but each requires separate evidence before valuation credit.

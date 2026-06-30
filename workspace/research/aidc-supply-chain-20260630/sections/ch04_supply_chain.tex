@@ -1,0 +1,35 @@
+供应链映射的核心是区分“全景覆盖”“核心估值”和“主题扩散”。全景池覆盖 80 个子环节，核心关系矩阵只展示 18 只当前可建模标的。下游 AI 资本开支不能直接证明所有上游公司收入增长；必须看产品、客户、认证、订单、交付、利用率和毛利率是否形成闭环。
+
+\begin{exhibitbox}[核心标的产业链关系矩阵]
+\scriptsize
+\begin{longtable}{L{1.5cm}L{2.0cm}L{2.5cm}L{5.1cm}L{1.6cm}L{2.1cm}}
+\toprule
+\textbf{代码} & \textbf{公司} & \textbf{环节} & \textbf{产品/工艺} & \textbf{置信度} & \textbf{估值使用}\\
+\midrule
+\endhead
+300308 & 中际旭创 & 光模块 & 800G/1.6T/3.2T光模块 & medium & yes\\
+300502 & 新易盛 & 光模块 & 800G/1.6T/3.2T光模块 & medium & yes\\
+300442 & 润泽科技 & AIDC/智算运营 & 智算中心、算力服务、托管 & high & yes\\
+601138 & 工业富联 & AI服务器/交换机ODM & AI服务器、NVLink/以太网交换机整机 & high & yes\\
+002463 & 沪电股份 & AI服务器PCB & 高多层板、HDI、UBB、交换机板 & high & yes\\
+300394 & 天孚通信 & 光器件/光引擎 & 光引擎、无源器件、CPO配套 & medium & optionality only\\
+300476 & 胜宏科技 & AI服务器PCB & 高多层板、HDI、UBB、交换机板 & medium & yes\\
+600183 & 生益科技 & 覆铜板/材料 & 高速覆铜板、低损耗材料 & medium & yes\\
+000938 & 紫光股份 & 网络设备/服务器 & 交换机、服务器、全栈液冷方案 & medium & optionality only\\
+002837 & 英维克 & 液冷/温控 & CDU、冷板、Manifold、液冷机柜、精密空调 & high & optionality only\\
+603019 & 中科曙光 & 国产算力/液冷整机 & 服务器、超算/智算中心、浸没式液冷 & medium & optionality only\\
+300738 & 奥飞数据 & IDC/边缘算力 & IDC托管、边缘算力节点 & medium & yes\\
+002916 & 深南电路 & PCB/封装基板 & 通信PCB、封装基板 & medium & yes\\
+002335 & 科华数据 & 供配电/UPS & 高密UPS、预制电力模组、供配电系统 & high & optionality only\\
+000977 & 浪潮信息 & AI服务器/整机 & AI服务器、超节点、异构算力平台 & medium & yes\\
+688676 & 金盘科技 & 算电协同/变压器 & 干式变压器、储能/数字化供电设备 & medium & optionality only\\
+301018 & 申菱环境 & 温控/液冷 & 冷源、精密空调、液冷系统集成 & medium & optionality only\\
+300383 & 光环新网 & IDC/云服务 & IDC托管、云服务 & medium & optionality only\\
+\bottomrule
+\end{longtable}
+\sourcenote{data/supply\_chain\_relationships.json；data/customer\_chain\_audit.md。}
+\end{exhibitbox}
+
+本报告给予较高证据权重的关系包括：工业富联 AI 服务器与高速交换机收入披露、沪电股份数据通讯 PCB 与 AI服务器/HPC 分项披露、英维克全链条液冷产品与客户案例、科华数据高密 UPS 认证、润泽科技 AIDC 项目和业务展望。其他标的即使处在正确环节，也需要在后续披露中补足客户、订单、ASP 或上架率证据。
+
+完整链条在第九章展开。特别需要注意的是，HBM、BMC、DPU/NIC、DSP、CPO/NPO 核心 ASIC、ABF、高端 HVLP 铜箔、绿电和通用 EPC 都是 AIDC 真实链条的一部分，但多数 A 股映射要么缺高纯度标的，要么缺直接收入证据，因此不能和光模块、AI PCB、液冷系统、UPS/HVDC 或 AIDC 运营商使用同一估值权重。

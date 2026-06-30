@@ -1,0 +1,11 @@
+flowchart LR
+  Demand[AIDC downstream demand: cloud, LLM, enterprise, government, vertical AI] --> Build[Data-center construction and operation]
+  Build --> Power[Power distribution and energy]
+  Build --> Cooling[Liquid cooling and thermal control]
+  Power --> Rack[AI server rack and server components]
+  Cooling --> Rack
+  Chip[Compute chips, memory, storage, NIC and switch ASIC] --> Rack
+  PCB[PCB, CCL, copper foil, glass cloth and process equipment] --> Rack
+  Optical[Network and optical interconnect] --> Rack
+  Rack --> Service[AIDC utilization: training, inference, MaaS and industry compute]
+  Service --> Demand

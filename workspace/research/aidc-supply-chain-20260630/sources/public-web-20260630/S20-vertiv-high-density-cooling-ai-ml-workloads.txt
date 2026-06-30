@@ -1,0 +1,6199 @@
+ 
+
+
+ 
+ 
+     
+     
+     
+     
+
+    
+         
+             
+         
+         
+         
+            window.addEventListener('DOMContentLoaded', function () {
+                var script = document.createElement('script');
+                script.src = '//cdn.pricespider.com/1/lib/ps-widget.js';
+                script.async = true;
+                document.head.appendChild(script);
+            });
+         
+
+     
+        High-density cooling: A guide to advanced thermal solutions for AI and ML workloads in data centers 
+     
+         
+     
+
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+     
+     
+     
+     
+     
+     
+     
+     
+         
+         
+    
+ 
+     
+
+
+
+    
+    
+
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+ 
+ 
+ 
+
+
+
+     
+     
+     
+
+    
+
+     
+     
+        .async-hide {
+            opacity: 0 !important
+        }
+     
+     
+     
+        .optimize-loading {
+            opacity: 0 !important
+        }
+     
+
+
+         
+            var isChinaIP = "false" == "true" ? true : false;
+            var isEnableEnCnRedirect = "true" == "true" ? true : false;
+
+            var str = window.location.pathname,
+                str2 = str.substring(str.indexOf('/') + 1),
+                locale = str2.substring(0, str2.indexOf('/')).toLowerCase();
+
+            var userDomain = window.location.host;
+            var redirectTo = "";
+
+            function getRedirectTo(domain, locale, hasParams) {
+                if (hasParams) {
+                    return window.location.origin.replace(window.location.origin.substring(window.location.origin.lastIndexOf('.') + 1), domain) + "/" + locale + window.location.search;
+                } else {
+                    return window.location.origin.replace(window.location.origin.substring(window.location.origin.lastIndexOf('.') + 1), domain) + "/" + locale;
+                }
+            }
+         
+ 
+	var cnRedirectTo = ""
+	var cnPathLocation = str2.substring(str2.indexOf('/'));
+
+	function getChinacnRedirectTo(domain, redirectLocale) {
+		return window.location.origin.replace(window.location.origin.substring(window.location.origin.lastIndexOf('.') + 1), domain) + "/" + redirectLocale + cnPathLocation + window.location.search;
+	}
+
+	if (isChinaIP) {
+		if (locale == "en-cn") {
+			if (!isEnableEnCnRedirect) {
+				//scenario#4
+				cnRedirectTo = getChinacnRedirectTo("cn", "en-cn"); // vertiv.cn/en-cn
+			}
+		} else if (locale == "zh-cn") {
+			//scenario#5
+			cnRedirectTo = getChinacnRedirectTo("cn", "zh-cn"); // vertiv.cn/zh-cn
+		}
+	} else {
+		//Outsite CN
+		if (locale == "en-cn") {
+			if (!isEnableEnCnRedirect) {
+				//scenario#13 and scenario#13.5
+				cnRedirectTo = getChinacnRedirectTo("cn", "en-cn");; // vertiv.cn/en-cn
+			}
+		} else if (locale == "zh-cn") {
+			//scenario#14
+			cnRedirectTo = getChinacnRedirectTo("cn", "zh-cn"); // vertiv.cn/zh-cn
+		}
+	}
+	if (locale == "episerver") {
+		cnRedirectTo = "";
+	}
+	if (window.location.hostname == "prod.vertiv.cn") {
+		if (locale == "zh-cn") {
+			cnRedirectTo = "https://www.vertiv.cn" + "/" + "zh-cn" + cnPathLocation + window.location.search;
+		}
+	}
+	if (cnRedirectTo != "") {
+		window.location = cnRedirectTo;
+		//alert("redirectTo:" + redirectTo);
+	}
+ 
+
+  
+ 
+	$(document).ready(function () {
+
+		function removeExtension() {
+			$(".container .tabs-left-component ul li a:contains('.pdf')").each(function () {
+				var currentText = $(this).text();
+				var newText = currentText.replace('.pdf', '');
+				$(this).text(newText);
+			});
+		}
+		removeExtension();
+		$(".container .tabs-left-component ul li").click(function () {
+			removeExtension();
+		});
+	});
+ 
+
+ 
+	/* This is for Workaround fix of VCM-2565 */
+	.contacts-result-section span.link.link--icon.contact__link.tel-desktop-new.ng-scope {
+		display: flex;
+	}
+
+	.contacts-result-section span.link__icon-p.icon3-phone.icon3-phone.contacts-result-circle-icon {
+		display: grid;
+		align-items: center;
+	}
+
+	.contacts-result-section a.link.link--icon.contact__link.tel-mobile.link__icon-p-new.ng-scope {
+		display: flex;
+	}
+
+	.contacts-result-section span.link__icon-p.icon3-phone.pl-1.contacts-result-circle-icon {
+		display: grid;
+		align-items: center;
+		padding-left: 4% !important;
+	}
+ 
+
+ 
+	//VCM-2593 WORKAROUND FIX
+	document.addEventListener("DOMContentLoaded", function (event) {
+		var howToBuyModal = $(".product-hero-buttons").find("[data-target='#modal-how-to-buy']");
+		if (howToBuyModal.length > 0) { howToBuyModal.data("url", howToBuyModal.data("url").replace("%20", "")); }
+
+		//VCM-2635 WORKAROUND FIX
+		//Partner Login
+		var partnerLoginLink_us = 'https://partners.vertiv.com/prm/auth/dff862e0-70e4-471e-aaa4-9e2577a42f87/saml2/login';
+
+		if ((window.location.href.indexOf('/en-asia/') != -1)) {
+			//en-asia
+			$('.link.desktop-submenu__link:contains("Partner Login")').attr('href', 'https://partners.vertiv.com/English/');
+			$('.mobile-nav__submenu_link:contains("Partner Login")').attr('href', 'https://partners.vertiv.com/English/');
+		}
+		else if ((window.location.href.indexOf('/ko-asia/') != -1)) {
+			//ko-asia
+			$('.link.desktop-submenu__link:contains("Partner Login")').attr('href', 'https://partners.vertiv.com/korean/');
+			$('.mobile-nav__submenu_link:contains("Partner Login")').attr('href', 'https://partners.vertiv.com/korean/');
+		}
+		else {
+			//en-us,en-emea,nl-emea,en-in,it-emea
+			$('.link.desktop-submenu__link:contains("Partner Login")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Partner Login")').attr('href', partnerLoginLink_us);
+
+			//fr-emea
+			$('.link.desktop-submenu__link:contains("Connexion Partenaire")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Connexion Partenaire")').attr('href', partnerLoginLink_us);
+
+			//es-emea
+			$('.link.desktop-submenu__link:contains("Inicio de sesión de Partners")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Inicio de sesión de Partners")').attr('href', partnerLoginLink_us);
+
+			//es-emea
+			$('.link.desktop-submenu__link:contains("Iniciar Sesion Como Socio")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Iniciar Sesion Como Socio")').attr('href', partnerLoginLink_us);
+
+			//es-emea
+			$('.link.desktop-submenu__link:contains("Iniciar Sesion Como Socio")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Iniciar Sesion Como Socio")').attr('href', partnerLoginLink_us);
+
+			//pl-emea
+			$('.link.desktop-submenu__link:contains("Zaloguj się")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Zaloguj się")').attr('href', partnerLoginLink_us);
+
+			//pt-emea
+			$('.link.desktop-submenu__link:contains("Acesso de Partner")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Acesso de Partner")').attr('href', partnerLoginLink_us);
+
+			//ru-emea
+			$('.link.desktop-submenu__link:contains("Вход для партнеров")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("Вход для партнеров")').attr('href', partnerLoginLink_us);
+
+			//ru-emea
+			$('.link.desktop-submenu__link:contains("İş Ortağı Giriş")').attr('href', partnerLoginLink_us);
+			$('.mobile-nav__submenu_link:contains("İş Ortağı Giriş")').attr('href', partnerLoginLink_us);
+		}
+
+		//Partner Program PST-119 & PST-214
+		function getCookiesforPartner(cookieName) {
+			const cookies = document.cookie.split('; ');
+			for (let i = 0; i  
+
+
+ 
+	// This is for PST-170 Workaround Fix
+	$(document).ready(function () {
+		setTimeout(function () {
+			$(' article .dropdown__content [ng-repeat="pageType in $ctrl.articleTypes"] input[value="Publication"]')
+				.closest('label')
+				.hide();
+		}, 1000);
+	});
+ 
+
+ 
+(function () {
+  var allowedPaths = [
+    '/en-us/about/news-and-insights/corporate-news/',
+    '/en-us/about/news-and-insights/',
+    '/en-us/search/',
+    '/en-us/insights/'
+  ];
+  var currentPath = window.location.pathname;
+  if (!allowedPaths.some(function (path) {
+    return currentPath.indexOf(path) === 0;
+  })) {
+    return;
+  }
+
+  function removeInsightsItems() {
+     const links = document.querySelectorAll('a[href^="/en-us/insights"]');
+
+    links.forEach(function (link) {
+       const parentDiv = link.closest('div.news-listing.ng-scope') || link.closest('div .search-type-holder') || link.closest('a.ng-scope.card') || link.closest('div.ng-scope');
+
+      if (!parentDiv || parentDiv.closest('.insights-col.ng-scope')) {
+            return;
+        }
+        //window.console.log('removeInsightsItems - removing parentDiv', parentDiv);
+        parentDiv.remove();
+    });
+  }
+
+  function initObserver() {
+    removeInsightsItems();
+    if (!window.MutationObserver || !document.body) {
+      return;
+    }
+    var observer = new MutationObserver(function (mutations) {
+      mutations.forEach(function (mutation) {
+        mutation.addedNodes.forEach(function (node) {
+          if (node.nodeType === 1) {
+            removeInsightsItems(node);
+          }
+        });
+      });
+    });
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initObserver);
+  } else {
+    initObserver();
+  }
+})();
+
+setTimeout(function () {
+    document.querySelectorAll('h3.subtitle.group-name').forEach(function (h3) {
+        if (
+            h3.textContent.includes("[Missing text '/search/facetGroups/blogSeries' for 'English']")
+        ) {
+            var container = h3.closest('.filter-facet-group');
+
+            if (container) {
+                container.remove();
+console.log('removed');
+            } else {
+                h3.remove();
+            }
+        }
+    });
+}, 6000);
+ 
+ 
+(function () {
+  var allowedPaths2 = ["/en-us/insights/"];
+  var currentPath = window.location.pathname;
+  if (
+    !allowedPaths2.some(function (path) {
+      return currentPath.indexOf(path) === 0;
+    })
+  ) {
+    return;
+  }
+  var HIDDEN_FILTER_LABELS = ["News Releases", "Events"];
+  var moreBtnClicking = false; // tracks an in-flight click, not a permanent state
+  var maxAutoClicks = 10;       // safety cap to prevent infinite loops
+  var autoClickCount = 0;
+
+  function removeNewsReleaseItems() {
+    var sections = document.querySelectorAll("div.news-and-blog-most-recent");
+    if (!sections.length) return;
+
+    sections.forEach(function (section) {
+      section
+        .querySelectorAll("div.card__tag.ng-binding")
+        .forEach(function (tag) {
+          if (HIDDEN_FILTER_LABELS.indexOf(tag.textContent.trim()) !== -1) {
+            var card = tag.closest("a.card") || tag.closest("div.ng-scope");
+            if (card) {
+              //window.console.log('removeNewsReleaseItems - removing card', card);
+              card.remove();
+            }
+          }
+        });
+      section
+        .querySelectorAll("span.p3-checkbox__text.ng-binding")
+        .forEach(function (span) {
+          if (HIDDEN_FILTER_LABELS.indexOf(span.textContent.trim()) !== -1) {
+            var label = span.closest("label.ng-scope");
+            if (label) {
+              label.remove();
+            }
+          }
+        });
+    });
+
+    // Count visible cards across all sections
+    var totalCards = 0;
+    sections.forEach(function (section) {
+      totalCards += section.querySelectorAll("a.card").length;
+    });
+
+    if (totalCards     
+ 
+(function () {
+  var allowedPaths2 = ["/en-us/about/news-and-insights/"];
+  var currentPath = window.location.pathname;
+  if (
+    !allowedPaths2.some(function (path) {
+      return currentPath.indexOf(path) === 0;
+    })
+  ) {
+    return;
+  }
+  var moreBtnClicked = false;
+  function checkAndLoadMore() {
+    var sections = document.querySelectorAll("div.news-and-blog-most-recent");
+    if (!sections.length || moreBtnClicked) return;
+    var totalCards = 0;
+    sections.forEach(function (section) {
+      totalCards += section.querySelectorAll("a.card").length;
+    });
+    if (totalCards  
+
+ 
+  function initFeature() {
+    var allowedPaths = ["/en-us/insights/"];
+    var currentPath = window.location.pathname;
+
+    if (
+      !allowedPaths.some(function (path) {
+        return currentPath.toLowerCase().indexOf(path.toLowerCase()) === 0;
+      })
+    ) {
+      return;
+    }
+
+    // --- Feature 1: Replace "Most Recent" header ---
+    const headerObserver = new MutationObserver(() => {
+      const header = document.querySelector(
+        ".news-and-blog-most-recent__header h2",
+      );
+
+      if (header && header.textContent.trim() === "Most Recent") {
+        header.textContent = "Additional resources";
+        headerObserver.disconnect();
+      }
+    });
+
+    headerObserver.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+
+    // --- Feature 2: Active nav state for Insights2 ---
+    const insightsLink = document.querySelector(
+      '.desktop-nav__link[href^="/en-us/insights"]',
+    );
+
+    if (insightsLink) {
+      const insightsItem = insightsLink.closest(".desktop-nav__item");
+      if (!insightsItem) return;
+
+      if (currentPath.toLowerCase().startsWith("/en-us/insights")) {
+        insightsItem.classList.add("is-active");
+      }
+
+      insightsLink.addEventListener("click", function () {
+        document
+          .querySelectorAll(".desktop-nav__item.is-active")
+          .forEach(function (item) {
+            item.classList.remove("is-active");
+          });
+
+        insightsItem.classList.add("is-active");
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initFeature);
+  } else {
+    initFeature();
+  }
+  
+
+
+
+ 
+
+(function () {
+  function cleanInsightsMenu() {
+    if (!window.matchMedia("(max-width: 767px)").matches) return;
+
+    const insights = [...document.querySelectorAll('.mobile-nav__item')]
+      .find(el =>
+        el.querySelector('.mobile-nav__item_title_text')?.textContent.trim() === 'INSIGHTS'
+      );
+
+    if (!insights) return;
+
+    const submenu = insights.querySelector('.mobile-nav__submenu');
+    if (!submenu) return;
+
+    if (submenu.dataset.cleaned === "true") return;
+
+    const links = [...submenu.querySelectorAll('a.mobile-nav__submenu_link')];
+
+    let overview = null;
+    const topics = [];
+
+    links.forEach(link => {
+      const text = link.textContent.trim().toLowerCase();
+
+      if (text === 'overview' && !overview) {
+        overview = link.cloneNode(true);
+      } else if (text !== 'overview') {
+        topics.push(link.cloneNode(true));
+      }
+    });
+
+    submenu.innerHTML = '';
+
+    if (overview) submenu.appendChild(overview);
+    topics.forEach(link => submenu.appendChild(link));
+
+
+    submenu.dataset.cleaned = "true";
+  }
+
+
+  setInterval(cleanInsightsMenu, 800);
+
+  cleanInsightsMenu();
+})();
+
+ 
+
+
+
+         
+            var path = window.location.pathname;
+            var path2 = path.substring(path.indexOf('/') + 1);
+            var path3 = path2.substring(0, path2.indexOf('/')).toLowerCase();
+
+            if (path3 == 'ru-emea') {
+                var redirectTo = window.location.origin + window.location.pathname.replace('ru-emea', 'en-emea')
+
+                if (UrlExists(redirectTo)) {
+                    redirectTo = redirectTo;
+                }
+
+                else {
+                    redirectTo = window.location.origin + "/en-emea"
+                }
+
+                window.location = redirectTo;
+
+            }
+
+            function UrlExists(url) {
+                var http = new XMLHttpRequest();
+                http.open('HEAD', url, false);
+                http.send();
+                if (http.status != 404)
+                    return true;
+                else
+                    return false;
+            }
+         
+
+         
+            var appInsights = window.appInsights || function (config) {
+                function t(config) {
+                    i[config] = function () {
+                        var t = arguments;
+                        i.queue.push(function () { i[config].apply(i, t) })
+                    }
+                }
+                var i = { config: config },
+                    u = document, e = window,
+                    o = "script", s = "AuthenticatedUserContext",
+                    h = "start", c = "stop",
+                    l = "Track", a = l + "Event",
+                    v = l + "Page", r, f;
+                setTimeout(function () {
+                    var t = u.createElement(o); t.src = config.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js";
+                    u.getElementsByTagName(o)[0].parentNode.appendChild(t)
+                });
+                try { i.cookie = u.cookie }
+                catch (y) { }
+                for (i.queue = [], r = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; r.length;)
+                    t("track" + r.pop()); return t("set" + s), t("clear" + s), t(h + a), t(c + a), t(h + v), t(c + v), t("flush"),
+                        config.disableExceptionTracking || (r = "onerror", t("_" + r), f = e[r], e[r] = function (config, t, u, e, o) { var s = f && f(config, t, u, e, o); return s !== !0 && i["_" + r](config, t, u, e, o), s }), i
+            }({ instrumentationKey: "b4c80f6b-6674-4b5f-afe9-332f67707e75", sdkExtension: "a" }); window.appInsights = appInsights; appInsights.queue && appInsights.queue.length === 0 && appInsights.trackPageView();
+         
+
+     
+        function trackUTMParameters() {
+            var hash = window.location.hash || '';
+            var currentSearch = window.location.search;
+            var utmsInUrl = {};
+
+            if (currentSearch.length > 1) {
+                currentSearch.substring(1).split('&').forEach(function (pair) {
+                    var eqIdx = pair.indexOf('=');
+                    if (eqIdx > -1) {
+                        var key = decodeURIComponent(pair.substring(0, eqIdx)).toLowerCase();
+                        var val = decodeURIComponent(pair.substring(eqIdx + 1).replace(/\+/g, ' '));
+                        if (key.indexOf('utm_') === 0) {
+                            utmsInUrl[key] = val;
+                        }
+                    }
+                });
+            }
+
+            if (Object.keys(utmsInUrl).length > 0) {
+                Object.keys(utmsInUrl).forEach(function (key) {
+                    sessionStorage.setItem(key, utmsInUrl[key]);
+                });
+            } else {
+                var stored = [];
+                for (var i = 0; i   0) {
+                    var base = window.location.protocol + '//' + window.location.host + window.location.pathname;
+                    var qs = currentSearch.length > 0 ? currentSearch + '&' : '?';
+                    var newUrl = base + qs + stored.join('&');
+                    window.history.replaceState({ path: newUrl }, '', newUrl + hash);
+                }
+            }
+        }
+
+        trackUTMParameters();
+     
+
+     
+        saveTimeZoneCookie();
+
+        function saveTimeZoneCookie() {
+            var timeZone = new Date().toString().replace(/.*\(|\).*/g, '');
+            if (timeZone != null && timeZone != "") {
+                if (timeZone == "GMT-12:00")
+                    timeZone = "Dateline Standard Time";
+                if (timeZone == "Hawaii-Aleutian Daylight Time")
+                    timeZone = "Aleutian Standard Time";
+                if (timeZone == "Hawaii-Aleutian Standard Time")
+                    timezone = "Hawaiian Standard Time";
+                if (timeZone == "Alaska Daylight Time")
+                    timeZone = "Alaskan Standard Time";
+                if (timeZone == "Mountain Standard Time")
+                    timeZone = "US Mountain Standard Time";
+                if (timeZone == "Mexican Pacific Daylight Time")
+                    timeZone = "Mountain Standard Time (Mexico)";
+                if (timeZone == "Central Standard Time")
+                    timeZone = "Central America Standard Time";
+                if (timeZone == "Colombia Standard Time")
+                    timeZone = "SA Pacific Standard Time";
+                if (timeZone == "Eastern Standard Time")
+                    timeZone = "Eastern Standard Time (Mexico)";
+                if (timeZone == "Amazon Standard Time")
+                    timeZone = "Central Brazilian Standard Time";
+                if (timeZone == "Bolivia Time")
+                    timeZone = "SA Western Standard Time";
+                if (timeZone == "Chile Summer Time")
+                    timeZone = "Pacific SA Standard Time";
+                if (timeZone == "Brasilia Standard Time")
+                    timeZone = "E. South America Standard Time";
+                if (timeZone == "French Guiana Time")
+                    timeZone = "SA Eastern Standard Time";
+                if (timeZone == "West Greenland Summer Time")
+                    timeZone = "Greenland Standard Time";
+                if (timeZone == "Uruguay Standard Time")
+                    timeZone = "Montevideo Standard Time";
+                if (timeZone == "GMT-03:00")
+                    timeZone = "Magallanes Standard Time";
+                if (timeZone == "St. Pierre & Miquelon Daylight Time")
+                    timeZone = "Saint Pierre Standard Time";
+                if (timeZone == "Greenwich Mean Time")
+                    timeZone = "Greenwich Standard Time";
+                if (timeZone == "British Summer Time")
+                    timeZone = "GMT Standard Time";
+                if (timeZone == "GMT+01:00")
+                    timeZone = "Morocco Standard Time";
+                if (timeZone == "West Africa Standard Time")
+                    timeZone = "W. Central Africa Standard Time";
+                if (timeZone == "Eastern European Summer Time")
+                    timeZone = "E. Europe Standard Time";
+                if (timeZone == "Eastern European Standard Time")
+                    timeZone = "Egypt Standard Time";
+                if (timeZone == "Central Africa Time")
+                    timeZone = "Sudan Standard Time";
+                if (timeZone == "Arabian Standard Time")
+                    timeZone = "Arabic Standard Time";
+                if (timeZone == "GMT+03:00")
+                    timeZone = "Turkey Standard Time";
+                if (timeZone == "Moscow Standard Time")
+                    timeZone = "Russian Standard Time";
+                if (timeZone == "Gulf Standard Time")
+                    timeZone = "Arabian Standard Time";
+                if (timeZone == "GMT+04:00")
+                    timeZone = "Astrakhan Standard Time";
+                if (timeZone == "Samara Standard Time")
+                    timeZone = "Russia Time Zone 3";
+                if (timeZone == "Georgia Standard Time")
+                    timeZone = "Georgian Standard Time";
+                if (timeZone == "Armenia Standard Time")
+                    timeZone = "Caucasus Standard Time";
+                if (timeZone == "Uzbekistan Standard Time")
+                    timeZone = "West Asia Standard Time";
+                if (timeZone == "Yekaterinburg Standard Time")
+                    timeZone = "Ekaterinburg Standard Time";
+                if (timeZone == "West Kazakhstan Time")
+                    timeZone = "Qyzylorda Standard Time";
+                if (timeZone == "East Kazakhstan Time")
+                    timeZone = "Central Asia Standard Time";
+                if (timeZone == "Indochina Time")
+                    timeZone = "SE Asia Standard Time";
+                if (timeZone == "GMT+07:00")
+                    timeZone = "Altai Standard Time";
+                if (timeZone == "Hovd Standard Time")
+                    timeZone = "W. Mongolia Standard Time";
+                if (timeZone == "Krasnoyarsk Standard Time")
+                    timeZone = "North Asia Standard Time";
+                if (timeZone == "Novosibirsk Standard Time")
+                    timeZone = "N. Central Asia Standard Time";
+                if (timeZone == "Irkutsk Standard Time")
+                    timeZone = "North Asia East Standard Time";
+                if (timeZone == "Australian Western Standard Time")
+                    timeZone = "W. Australia Standard Time";
+                if (timeZone == "Australian Central Western Standard Time")
+                    timeZone = "Aus Central W. Standard Time";
+                if (timeZone == "Japan Standard Time")
+                    timeZone = "Tokyo Standard Time";
+                if (timeZone == "Korean Standard Time")
+                    timeZone = "Korea Standard Time";
+                if (timeZone == "Australian Central Daylight Time")
+                    timeZone = "Cen. Australia Standard Time";
+                if (timeZone == "Australian Central Standard Time")
+                    timeZone = "AUS Central Standard Time";
+                if (timeZone == "Australian Eastern Standard Time")
+                    timeZone = "E. Australia Standard Time";
+                if (timeZone == "Australian Eastern Daylight Time")
+                    timeZone = "AUS Eastern Standard Time";
+                if (timeZone == "Papua New Guinea Time")
+                    timeZone = "West Pacific Standard Time";
+                if (timeZone == "GMT+11:00")
+                    timeZone = "Bougainville Standard Time";
+                if (timeZone == "Norfolk Island Daylight Time")
+                    timeZone = "Norfolk Standard Time";
+                if (timeZone == "Solomon Islands Time")
+                    timeZone = "Central Pacific Standard Time";
+                if (timeZone == "Petropavlovsk-Kamchatski Standard Time")
+                    timeZone = "Russia Time Zone 11";
+                if (timeZone == "Chatham Daylight Time")
+                    timeZone = "Chatham Islands Standard Time";
+                if (timeZone == "Apia Daylight Time")
+                    timeZone = "Samoa Standard Time";
+
+                if (timeZone.indexOf("GMT") != -1)
+                    timeZone = timeZone.replace("GMT", "UTC").replace(":00", "");
+
+                if (timeZone.indexOf("Time") != -1 && timeZone.indexOf("Standard") == -1 && timeZone.indexOf("Zone") == -1) {
+                    var x = timeZone.indexOf("Time");
+                    timeZone = timeZone.substr(0, x) + "Standard " + timeZone.substr(x);
+                }
+
+                if (timeZone.indexOf("Daylight") != -1)
+                    timeZone = timeZone.replace("Daylight ", "");
+
+                if (timeZone.indexOf("Summer") != -1)
+                    timeZone = timeZone.replace("Summer ", "");
+            }
+            document.cookie = "timeZone=" + timeZone + "; path=/;";
+        }
+     
+
+         
+         
+          
+         
+            if (typeof jQuery === 'undefined' || window._jq360Failed) {
+                document.write('  ');
+            }
+         
+         
+         
+            window.cookieNoticeProConfig = {
+                // Theme Settings
+                themeSettings: {
+                    primaryColor: '#115cfa',
+                    darkColor: '#3b3e4a',
+                    lightColor: '#ffffff',
+                    themeMode: 'light'
+                },
+
+                // Enable Google Consent Mode v2 - CRITICAL FOR GTM INTEGRATION
+                enableGoogleConsentMode: true,
+
+                // Vertiv Configuration
+                enableAutoLanguageDetection: true,
+                language: 'en',
+                enableMinimize: false,
+                showCookieIcon: false,
+                showSettingsBtn: true,
+                showCloseIcon: true,
+                showDeclineBtn: true,
+                fullWidth: false,
+                allCheckboxesChecked: false, // Important: Default to unchecked for non-essential
+                displayPosition: 'bottom',
+                minimizedIconDisplayPosition: 'left',
+                delay: 1000,
+                expires: 365,
+
+                // Privacy Policy Link
+                moreInfoBtnLink: '/globalassets/documents/2024-cookies-descriptions.pdf',
+
+                // Vertiv Cookie Categories Based on 2024 Documentation
+                // NOTE: Technical cookies are automatically included and cannot be disabled
+                cookieTypes: [
+                    {
+                        type: 'Analytics Cookies',
+                        value: 'analytics',
+                        description: 'Cookies from Google Analytics, Hotjar, Snowplow, and Qualtrics that help us understand how visitors use our website and which pages/products are viewed most frequently.'
+                    },
+                    {
+                        type: 'Profiling Cookies',
+                        value: 'profiling',
+                        description: 'Cookies from 6sense, LinkedIn, Pendo, and marketing platforms that create profiles of user preferences to deliver targeted promotional messages and personalized content.'
+                    }
+                ],
+
+                // Consent Acceptance Callback
+                onConsentAccept: function () {
+                    console.log('Cookie Notice Pro: All consents accepted');
+
+                    // Trigger GTM event for tool activation
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        'event': 'cookie_consent_accepted',
+                        'consent_technical': true,    // Always true
+                        'consent_analytics': true,
+                        'consent_profiling': true
+                    });
+                },
+
+                // Consent Rejection Callback
+                onConsentReject: function () {
+                    console.log('Cookie Notice Pro: All consents rejected');
+
+                    // Trigger GTM event - only technical cookies allowed
+                    window.dataLayer = window.dataLayer || [];
+                    window.dataLayer.push({
+                        'event': 'cookie_consent_rejected',
+                        'consent_technical': true,    // Always true
+                        'consent_analytics': false,
+                        'consent_profiling': false
+                    });
+                }
+            };
+         
+  
+         
+         
+
+            jQuery(document).ready(function ($) {
+                if (typeof cookieNoticePro !== 'undefined') {
+                    cookieNoticePro.init(window.cookieNoticeProConfig);
+                }
+            });
+         
+         
+
+             
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+
+                // DEFAULT STATE: Banner showing, no user choice made yet
+                // Technical cookies allowed, everything else blocked
+                gtag('consent', 'default', {
+                    'ad_storage': 'denied',              // Profiling cookies - BLOCKED
+                    'analytics_storage': 'denied',       // Analytics cookies - BLOCKED
+                    'functionality_storage': 'granted',  // Technical cookies - ALLOWED
+                    'personalization_storage': 'denied', // Profiling cookies - BLOCKED
+                    'security_storage': 'granted',       // Technical cookies - ALLOWED
+                    'wait_for_update': 1000
+                });
+
+                // Initialize custom consent states for pre-consent state
+                window.dataLayer.push({
+                    'consent_technical': true,    // Always true - necessary cookies
+                    'consent_analytics': false,   // Analytics cookies - BLOCKED until consent
+                    'consent_profiling': false,   // Profiling cookies - BLOCKED until consent
+                    'consent_state': 'pre_consent' // Track that user hasn't made choice yet
+                });
+
+                gtag('js', new Date());
+             
+             
+             
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                            'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-WVQJS6'); 
+             
+             
+
+             
+
+
+     
+     
+
+ 
+
+ 
+
+         
+         
+              
+         
+         
+             
+                var _elqQ = _elqQ || [];
+                var timerId = null, timeout = 5;
+                function WaitUntilCustomerGUIDIsRetrieved() {
+                    if (!!(timerId)) {
+                        if (timeout == 0) {
+                            return;
+                        }
+                        if (typeof this.GetElqCustomerGUID === 'function') {
+                            document.forms["SYSTEM-VERTIV-SUBSCRIBE"].elements["elqCustomerGUID"].value = GetElqCustomerGUID();
+                            return;
+                        }
+                        timeout -= 1;
+                    }
+                    timerId = setTimeout("WaitUntilCustomerGUIDIsRetrieved()", 500);
+                    return;
+                }
+                window.onload = WaitUntilCustomerGUIDIsRetrieved;
+                _elqQ.push(['elqGetCustomerGUID']);
+             
+
+
+         
+        !function () {
+            var b = function () {
+                window.__AudioEyeSiteHash = "4dde33b4085dcb4193f1490e74bf970c";
+                var a = document.createElement("script");
+                a.src = "https://wsmcdn.audioeye.com/aem.js";
+                a.type = "text/javascript"; a.setAttribute("async", "");
+                document.getElementsByTagName("body")[0].appendChild(a)
+            };
+            "complete" !== document.readyState ? window.addEventListener ? window.addEventListener("load", b) : window.attachEvent && window.attachEvent("onload", b) : b()
+        }();
+         
+
+
+ 
+  /**
+   * Chat Components IDs (Production environment):
+   * Bots61287413 - 24.10 instance
+   * Bots54351793 - 24.07 instance
+   * Bots61602383 - AI Assistant instance
+   */
+
+  // Cookie utility functions
+  const CookieUtils = {
+    getValue(cookieName) {
+      if (!cookieName) return null;
+      const name = `${cookieName}=`;
+      return document.cookie
+        .split(';')
+        .map(cookie => cookie.trim())
+        .find(cookie => cookie.startsWith(name))
+        ?.substring(name.length) || null;
+    }
+  };
+
+  // Static configurations
+  const CONFIG = {
+    RETRY: {
+      MAX_ATTEMPTS: 10,
+      INTERVAL: 500,
+      END_CHAT_DELAY: 5000
+    },
+    SELECTORS: {
+      ODA_FOOTER: '.oda-chat-footer.oda-chat-mode-keyboard',
+      WCFS_FOOTER: 'div.wcfs-footer.wcfs-mode-keyboard',
+      AI_BUTTON: '.wcfs-button.wcfs-flex',
+      SHARE_BUTTON: '#wcfs-share-button'
+    },
+    CLASSES: {
+      ODA: {
+        FOOTER: 'oda-chat-footer oda-chat-subtitle'
+      },
+      WCFS: {
+        FOOTER: 'wcfs-footer wcfs-subtitle'
+      }
+    },
+    DIMENSIONS: {
+      AI_BUTTON: {
+        width: '100px',
+        height: '100px'
+      }
+    },
+    AUTOSTART: {
+      queryParam: 'openChat', // ?openChat=1 will auto-click the widget open
+      debugParam: 'chatDebug' // ?chatDebug=1 to enable ChatManager.debug
+    }
+  };
+
+  // Privacy configurations
+  const PRIVACY_TEXTS = {
+    'en': 'Conversations may be shared with trusted service providers to improve service quality. By continuing, you consent to this use. See our Privacy Policy for details.',
+    'fr': 'Les conversations peuvent être partagées avec des fournisseurs de services de confiance pour améliorer la qualité du service. En continuant, vous consentez à cette utilisation. Consultez notre politique de confidentialité pour plus de détails.',
+    'es': 'Las conversaciones pueden compartirse con proveedores de servicios de confianza para mejorar la calidad del servicio. Al continuar, consiente este uso. Consulte nuestra Política de privacidad para obtener más detalles.',
+    'de': 'Gespräche können mit vertrauenswürdigen Dienstleistern geteilt werden, um die Servicequalität zu verbessern. Durch die weitere Nutzung stimmen Sie dieser Verwendung zu. Einzelheiten finden Sie in unserer Datenschutzerklärung.',
+    'it': 'Le conversazioni possono essere condivise con fornitori di servizi fidati per migliorare la qualità del servizio. Continuando, acconsenti a questo utilizzo. Consulta la nostra Informativa sulla privacy per i dettagli.',
+    'pl': 'Rozmowy mogą być udostępniane zaufanym usługodawcom w celu poprawy jakości usług. Kontynuując, wyrażasz zgodę na takie wykorzystanie. Szczegółowe informacje znajdują się w naszej Polityce prywatności.',
+    'tr': 'Hizmet kalitesini artırmak için görüşmeler güvenilir hizmet sağlayıcılarla paylaşılabilir. Devam ederek bu kullanıma onay vermiş olursunuz. Ayrıntılar için Gizlilik Politikamıza bakın.',
+    'pt-PT': 'As conversas podem ser partilhadas com fornecedores de serviços de confiança para melhorar a qualidade do serviço. Ao continuar, concorda com esta utilização. Consulte a nossa Política de Privacidade para mais detalhes.',
+    'nl': 'Gesprekken kunnen worden gedeeld met vertrouwde serviceproviders om de servicekwaliteit te verbeteren. Door verder te gaan, stemt u in met dit gebruik. Zie ons Privacybeleid voor details.'
+  };
+
+  // Country handling
+  const CountryManager = {
+    formatCountryPhase(countryCode) {
+      if (!countryCode) return '';
+      return `.Phase1.${countryCode}`;
+    },
+
+    formatCountryOnly(countryCode) {
+      if (!countryCode) return '';
+      return countryCode;
+    },
+
+    formatCountryWithLang(countryCode, langTag) {
+      if (!countryCode) return '';
+      return langTag && langTag !== 'en' ? `.Phase1.${countryCode}.${langTag}` : countryCode;
+    }
+  };
+
+  // Chat management
+  class ChatManager {
+    static debug = false;
+
+    static CONTROL_CODES = {
+      SHOW_SHARE_ICON: '[[SHOW_SHARE_ICON]]',
+      HIDE_SHARE_ICON: '[[HIDE_SHARE_ICON]]',
+      END_CHAT: '[[END_CHAT]]'
+    };
+
+    static log(...args) {
+      if (ChatManager.debug) console.log(...args);
+    }
+
+    static error(...args) {
+      if (ChatManager.debug) console.error(...args);
+    }
+
+    static warn(...args) {
+      if (ChatManager.debug) console.warn(...args);
+    }
+
+    constructor() {
+      this.isContentLoaded = false;
+      this.retryCount = 0;
+      this.footerRetryCount = 0;
+      this.botInstance = null;
+      this.isAIAssistant = false;
+      this.cached = new Map();
+      this.timeouts = new Set();
+      this.observers = new Set();
+      this.init();
+    }
+
+    init() {
+      // Enable debug via URL parameter
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get(CONFIG.AUTOSTART.debugParam) === '1') ChatManager.debug = true;
+      } catch (_) { }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => this.setupChat());
+      } else {
+        this.setupChat();
+      }
+    }
+
+    clearAllTimeouts() {
+      for (const t of this.timeouts) clearTimeout(t);
+      this.timeouts.clear();
+    }
+
+    disconnectObservers() {
+      for (const obs of this.observers) {
+        try { obs.disconnect(); } catch (_) { }
+      }
+      this.observers.clear();
+    }
+
+    getBotInstance() {
+      ChatManager.log('=== Bot Instance Detection ===');
+
+      if (typeof Bots61602383 !== 'undefined') {
+        ChatManager.log('Found AI Assistant bot instance');
+        this.isAIAssistant = true;
+        return Bots61602383;
+      }
+      if (typeof Bots54351793 !== 'undefined') {
+        ChatManager.log('Found old general bot instance');
+        this.isAIAssistant = false;
+        return Bots54351793;
+      }
+      if (typeof Bots61287413 !== 'undefined') {
+        ChatManager.log('Found new general bot instance');
+        this.isAIAssistant = false;
+        return Bots61287413;
+      }
+
+      ChatManager.log('No bot instance found');
+      return null;
+    }
+
+    setupChat() {
+      ChatManager.log('Setting up chat...');
+      const attachmentButton = document.getElementById(CONFIG.SELECTORS.SHARE_BUTTON.slice(1));
+      const languageSwitchDiv = document.getElementById('languageSwitch');
+
+      const tryGetBot = () => {
+        this.botInstance = this.getBotInstance();
+
+        if (!this.botInstance) {
+          if (this.retryCount   {
+              this.postSetupAutostart();
+            })
+            .catch(err => ChatManager.error('continueSetup error:', err));
+        }
+      };
+
+      tryGetBot();
+    }
+
+    getPrivacyUrl() {
+      // Get the base URL from the current page
+      const currentUrl = window.location.origin + window.location.pathname;
+
+      // Remove any trailing slashes
+      const baseUrl = currentUrl.replace(/\/+$/, '');
+
+      // Append privacy notice path
+      return `${baseUrl}/privacy-notice/privacy-notice/`;
+    }
+
+    createPrivacyElement(footerDiv) {
+      const currentLang = document.documentElement.lang || 'en';
+      const privacyText = PRIVACY_TEXTS[currentLang] || PRIVACY_TEXTS['en'];
+      const privacyUrl = this.getPrivacyUrl();
+
+      const privacyDiv = document.createElement('div');
+      privacyDiv.className = footerDiv.classList.contains('oda-chat-footer') ?
+        CONFIG.CLASSES.ODA.FOOTER :
+        CONFIG.CLASSES.WCFS.FOOTER;
+
+      privacyDiv.innerHTML = `
+                 
+                     
+                    ${privacyText}
+                     
+                 
+            `;
+
+      return privacyDiv;
+    }
+
+    async appendPrivacyFooter() {
+      try {
+        const footerDiv = this.cached.get('footer') ||
+          document.querySelector(CONFIG.SELECTORS.ODA_FOOTER) ||
+          document.querySelector(CONFIG.SELECTORS.WCFS_FOOTER);
+
+        if (!footerDiv && this.footerRetryCount   this.appendPrivacyFooter(), CONFIG.RETRY.INTERVAL);
+          this.timeouts.add(timeout);
+          return;
+        }
+
+        if (!footerDiv) {
+          ChatManager.warn('Footer not found after maximum retries');
+          return;
+        }
+
+        if (!this.cached.get('footer')) {
+          this.cached.set('footer', footerDiv);
+          const privacyDiv = this.createPrivacyElement(footerDiv);
+          this.cached.set('privacyDiv', privacyDiv);
+          footerDiv.appendChild(privacyDiv);
+          ChatManager.log('Privacy footer appended successfully');
+        }
+      } catch (error) {
+        ChatManager.error('Error appending privacy footer:', error);
+      }
+    }
+
+
+    async continueSetup(attachmentButton, languageSwitchDiv) {
+      ChatManager.log('=== Continue Setup Started ===');
+      try {
+        // Button size modification for AI Assistant
+        if (this.isAIAssistant) {
+          const buttonClass = document.querySelector(CONFIG.SELECTORS.AI_BUTTON);
+          if (buttonClass) {
+            Object.assign(buttonClass.style, CONFIG.DIMENSIONS.AI_BUTTON);
+            this.cached.set('aiButton', buttonClass);
+          } else {
+            ChatManager.warn('AI Button not found, retrying...');
+            setTimeout(() => this.continueSetup(attachmentButton, languageSwitchDiv), CONFIG.RETRY.INTERVAL);
+            return;
+          }
+        }
+
+        // Attachment button check
+        if (!attachmentButton) {
+          attachmentButton = document.getElementById(CONFIG.SELECTORS.SHARE_BUTTON.slice(1));
+          if (!attachmentButton) {
+            ChatManager.warn('Attachment button not found, retrying...');
+            setTimeout(() => this.continueSetup(attachmentButton, languageSwitchDiv), CONFIG.RETRY.INTERVAL);
+            return;
+          }
+        }
+
+        await Promise.all([
+          this.setupAttachmentButton(attachmentButton),
+          this.setupLanguageSwitch(languageSwitchDiv),
+          this.appendPrivacyFooter()
+        ]);
+
+        await this.setupBotDelegate(attachmentButton);
+        this.isContentLoaded = true;
+        ChatManager.log('=== Continue Setup Completed ===');
+      } catch (error) {
+        ChatManager.error('Error in continueSetup:', error);
+      }
+    }
+
+    forceUpdateButtonVisibility(show) {
+      try {
+        const button = this.cached.get('attachmentButton') ||
+          document.getElementById(CONFIG.SELECTORS.SHARE_BUTTON.slice(1));
+
+        if (button) {
+          button.style.display = show ? 'block' : 'none';
+          if (!this.cached.get('attachmentButton')) {
+            this.cached.set('attachmentButton', button);
+          }
+          ChatManager.log(`Force ${show ? 'shown' : 'hidden'} button`);
+        }
+      } catch (error) {
+        ChatManager.error('Error updating button visibility:', error);
+      }
+    }
+
+    setupAttachmentButton(button) {
+      return new Promise((resolve) => {
+        if (button) {
+          this.cached.set('attachmentButton', button);
+          this.forceUpdateButtonVisibility(false); // Initially hide
+        }
+        resolve();
+      });
+    }
+
+    setupLanguageSwitch(switchDiv) {
+      return new Promise((resolve) => {
+        if (switchDiv && this.botInstance) {
+          const handler = (e) => {
+            if (e.target.matches('form button')) {
+              this.botInstance.endChat();
+            }
+          };
+
+          switchDiv.addEventListener('click', handler);
+          this.cached.set('languageSwitchHandler', handler);
+        }
+        resolve();
+      });
+    }
+
+    setupBotDelegate(attachmentButton) {
+      if (!this.botInstance) {
+        ChatManager.error('No bot instance available for delegate');
+        return Promise.reject('No bot instance available');
+      }
+
+      return new Promise((resolve, reject) => {
+        try {
+          const delegate = {
+            beforeDisplay: (message) => {
+              if (!message?.messagePayload?.text) {
+                return message;
+              }
+
+              const messageText = message.messagePayload.text;
+              const newMessage = {
+                ...message,
+                messagePayload: {
+                  ...message.messagePayload,
+                  text: messageText
+                }
+              };
+
+              // Handle control codes
+              Object.entries(ChatManager.CONTROL_CODES).forEach(([key, code]) => {
+                if (messageText.includes(code)) {
+                  switch (code) {
+                    case ChatManager.CONTROL_CODES.SHOW_SHARE_ICON:
+                      this.forceUpdateButtonVisibility(true);
+                      break;
+                    case ChatManager.CONTROL_CODES.HIDE_SHARE_ICON:
+                      this.forceUpdateButtonVisibility(false);
+                      break;
+                    case ChatManager.CONTROL_CODES.END_CHAT:
+                      const timeout = setTimeout(
+                        () => this.botInstance.endChat(),
+                        CONFIG.RETRY.END_CHAT_DELAY
+                      );
+                      this.timeouts.add(timeout);
+                      break;
+                  }
+                  newMessage.messagePayload.text = newMessage.messagePayload.text.replace(code, '');
+                }
+              });
+
+              return newMessage;
+            }
+          };
+
+          // Just set the delegate without connecting
+          this.botInstance.setDelegate(delegate);
+          this.forceUpdateButtonVisibility(false);
+          resolve();
+
+        } catch (error) {
+          ChatManager.error('Error in delegate setup:', error);
+          reject(error);
+        }
+      });
+    }
+
+    // Observe the DOM for a selector once, then run the callback and disconnect
+    observeOnceForSelector(selector, callback, root = document.body) {
+      try {
+        const existing = document.querySelector(selector);
+        if (existing) {
+          callback(existing);
+          return;
+        }
+        const obs = new MutationObserver(() => {
+          const el = document.querySelector(selector);
+          if (el) {
+            try { callback(el); } finally {
+              obs.disconnect();
+              this.observers.delete(obs);
+            }
+          }
+        });
+        obs.observe(root, { childList: true, subtree: true });
+        this.observers.add(obs);
+      } catch (err) {
+        ChatManager.error('observeOnceForSelector error:', err);
+      }
+    }
+
+    // Auto-open support via URL param, without calling Bots.connect
+    postSetupAutostart() {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        const shouldOpen = params.get(CONFIG.AUTOSTART.queryParam) === '1';
+        if (!shouldOpen) return;
+
+        // Click the widget open when the button becomes available
+        this.observeOnceForSelector(CONFIG.SELECTORS.AI_BUTTON, (btn) => {
+          // Guard against repeated clicks if the widget handles its own open state
+          try {
+            btn.click();
+            ChatManager.log('Auto-open: clicked AI widget button');
+          } catch (e) {
+            ChatManager.error('Auto-open click failed:', e);
+          }
+        });
+      } catch (err) {
+        ChatManager.error('postSetupAutostart error:', err);
+      }
+    }
+
+    destroy() {
+      // Clear all timeouts
+      this.timeouts.forEach(timeout => clearTimeout(timeout));
+      this.timeouts.clear();
+
+      // Remove event listeners
+      const languageSwitchHandler = this.cached.get('languageSwitchHandler');
+      if (languageSwitchHandler) {
+        document.getElementById('languageSwitch')?.removeEventListener('click', languageSwitchHandler);
+      }
+
+      // Clear cached elements
+      this.cached.clear();
+
+      // Clear instance references
+      this.botInstance = null;
+      this.isContentLoaded = false;
+    }
+  }
+
+  // Initialize variables and setup
+  const currentCountry = CookieUtils.getValue("currentCountry");
+  const currentLang = document.documentElement.lang || 'en';
+
+  // Format country variables
+  var oDAcurrentCountry = CountryManager.formatCountryPhase(currentCountry);
+  var oDAcurrentCountryOnly = CountryManager.formatCountryOnly(currentCountry);
+  var oDAcurrentCountryWithLang = CountryManager.formatCountryWithLang(currentCountry, currentLang);
+  var oDAcurrentUser = Date.now();
+
+  // Setup EESvcs if in top window
+  if (window.self === window.top) {
+    window.EESvcs = { eeid: 202306052106119 };
+  }
+
+  // Initialize chat manager
+  const chatManager = new ChatManager();
+
+  // Make debug accessible globally (optional)
+  window.enableChatDebug = () => { ChatManager.debug = true; };
+  window.disableChatDebug = () => { ChatManager.debug = false; };
+ 
+
+  
+
+
+
+
+    
+
+
+
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+ 
+ {"IsDifferent":true,"HomePageUrl":null,"PageDoesNotExist":false,"UrlForCurrentLanguage":"/en-asia/insights/articles/educational-articles/high--density-cooling-a-guide-to-advanced-thermal-solutions-for-ai-and-ml-workloads-in-data-centers/","IsStartPage":false,"CountryCode":"USA","LanguageCode":"en"} 
+ 
+
+
+
+
+ 
+     
+         
+         
+         
+             
+                 
+                     
+                         
+                             &times; 
+
+                         
+                         Activation status 
+
+                     
+                     
+                          
+                         
+                            Your account is restricted to access this link. Please contact Vertiv Partner Support:  salescloudsupport@vertivco.com 
+
+                         
+                     
+                 
+             
+         
+
+         
+             
+                 
+                     
+                          
+                         Menu 
+                     
+                 
+                 
+                      
+                         
+                 
+                 
+                     Open search modal 
+                 
+             
+             
+                 
+
+
+                     
+                     
+                         
+
+                             
+                             
+                                  
+                                 
+                                    SG/EN
+                                 
+                                  
+                                  
+                             
+
+                             
+                                 
+                                      0, 'is-focused': isFocused }">
+                                          
+                                          
+                                     
+                                      0, 'is-focused': isFocused }">
+                                          
+                                          
+                                     
+                                     
+                                        Save
+                                     
+                                 
+                                 
+                                         
+                                             
+                                                  
+                                             
+                                             
+                                                 
+                                                    The page you&#39;re viewing is for
+                                                     
+                                                        English (United States)
+                                                     
+                                                    region.
+                                                 
+                                             
+                                         
+                                         
+                                             
+                                                Proceed
+                                             
+                                             
+                                                STAY IN MY REGION
+                                             
+                                         
+
+                                 
+                             
+                         
+                     
+                     
+
+                      
+
+             
+
+                     
+
+                             
+                                Portals
+                             
+
+                              
+                              
+                     
+                     
+         
+                 
+                    
+
+
+ 
+
+    
+
+                     
+                                                     Partners 
+                     
+                                 
+                                    Discover the Program
+                                 
+                                 
+                                    Apply now to get started!
+                                 
+                                 
+                                    Login as Partner
+                                 
+                                 
+                                    Find an IT Distributor
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                                                     Consultant Engineers 
+                     
+                                 
+                                    Join the consultant program
+                                 
+                                 
+                                    Apply now
+                                 
+                                 
+                                    Login as Consultant
+                                 
+ 
+
+                                     
+        
+        
+         
+
+     
+     
+        document.getElementsByClassName('col-sm-4-partners')[0].parentElement.parentElement.parentElement.parentElement.firstElementChild.removeAttribute("href");
+     
+
+
+
+
+             
+          
+             
+
+                     
+                     
+
+                             My Account 
+
+                              
+                              
+                     
+                          
+              
+                      
+                         
+
+
+ 
+
+    
+
+                                 
+                                    Customer Portal Login
+                                 
+                                 
+                                    Discover the Customer Portal
+                                 
+ 
+
+                                               
+    
+    
+              
+            
+
+
+
+
+             
+          
+             
+
+                     
+
+                             
+                                Investors
+                             
+
+                     
+                             
+          
+             
+
+                     
+
+                             
+                                Contact
+                             
+
+                     
+                             
+          
+
+                 
+                 
+                     
+                         
+                              
+                                 
+                         
+                     
+                     
+                                     
+                 
+                    Products &amp; Services
+                 
+
+          
+              
+                      
+
+
+
+ 
+
+    
+
+                     
+                              
+                                                     Critical Power 
+                     
+                                 
+                                    Uninterruptible Power Supplies (UPS)
+                                 
+                                 
+                                    Energy Storage System
+                                 
+                                 
+                                    DC Power Systems
+                                 
+                                 
+                                    Power Distribution
+                                 
+                                 
+                                    Static Transfer Switches
+                                 
+                                 
+                                    Switchgear and Switchboard
+                                 
+                                 
+                                    Busway and Busduct
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                              
+                                                     Thermal Management 
+                     
+                                 
+                                    Liquid Cooling Solutions
+                                 
+                                 
+                                    Heat Rejection
+                                 
+                                 
+                                    Outdoor Packaged Systems
+                                 
+                                 
+                                    Room Cooling
+                                 
+                                 
+                                    In-Row Cooling
+                                 
+                                 
+                                    Rack Cooling
+                                 
+                                 
+                                    Free Cooling Chillers
+                                 
+                                 
+                                    Evaporative Free Cooling
+                                 
+                                 
+                                    Thermal Control and Monitoring
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                              
+                                                     Racks &amp; Enclosures 
+                     
+                                 
+                                    Integrated Solutions
+                                 
+                                 
+                                    Racks &amp; Containment
+                                 
+                                 
+                                    Outdoor Enclosures
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                              
+                                                     Monitoring &amp; Management 
+                     
+                                 
+                                    Digital Infrastructure Solutions
+                                 
+                                 
+                                    Embedded Device Management
+                                 
+                                 
+                                    Serial Console
+                                 
+                                 
+                                    IP KVM Switches
+                                 
+                                 
+                                    High Performance KVM
+                                 
+                                 
+                                    LCD Tray
+                                 
+                                 
+                                    Desktop KVM and KM
+                                 
+                                 
+                                    Secure KVM
+                                 
+                                 
+                                    Software
+                                 
+                                 
+                                    Monitoring
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                              
+                                                     Services 
+                     
+                                 
+                                    Project Services
+                                 
+                                 
+                                    Liquid Cooling Services
+                                 
+                                 
+                                    Digital Services
+                                 
+                                 
+                                    Fluid Management Services
+                                 
+                                 
+                                    Thermal Services
+                                 
+                                 
+                                    UPS &amp; Battery Services
+                                 
+                                 
+                                    DC Power Services
+                                 
+                                 
+                                    Rack PDU Services
+                                 
+                                 
+                                    Electrical Safety &amp; Compliance
+                                 
+                                 
+                                    Service Training
+                                 
+                                 
+                                    Switchgear and Busway Services
+                                 
+ 
+
+                      
+                          
+
+
+
+ 
+
+    
+
+                     
+                                                     Tools &amp; Product Registration 
+                     
+                                 
+                                    AI Reference Design Selector
+                                 
+                                 
+                                    UPS Selector
+                                 
+                                 
+                                    Use the rPDU Finder
+                                 
+                                 
+                                    Calculate Cooling Economization
+                                 
+                                 
+                                    Compare Rack Products
+                                 
+                                 
+                                    Compare IT Management Products
+                                 
+                        
+                                 
+                                    Consultants Corner
+                                 
+                                 
+                                    Download the Vertiv™ XR App
+                                 
+                                 
+                                    Download the Vertiv™ Virtual Showroom App
+                                 
+                                 
+                                    How to Buy
+                                 
+                                 
+                                    Product Registration
+                                 
+                                 
+                                    Virtually Test Cooling Systems in our Labs’ Digital Twins
+                                 
+                        
+                                 
+                                    Download BIM files
+                                 
+                                 
+                                    Vertiv Web Interface Demonstrations
+                                 
+                                 
+                                    Vertiv Modular Designer
+                                 
+ 
+
+                          
+    
+    
+              
+          
+
+
+
+
+             
+             
+                 
+                    Solutions
+                 
+
+          
+              
+                      
+
+
+
+ 
+
+    
+
+                     
+                                                     Artificial Intelligence 
+                     
+                                 
+                                    AI Hub
+                                 
+                                 
+                                    Vertiv™ 360AI
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                                                     Industries 
+                     
+                                 
+                                    Colocation data centers
+                                 
+                                 
+                                    Hyperscale and cloud
+                                 
+                                 
+                                    Finance
+                                 
+                                 
+                                    Healthcare
+                                 
+                                 
+                                    Manufacturing
+                                 
+                                 
+                                    Logistics
+                                 
+                                 
+                                    Education
+                                 
+                                 
+                                    Retail
+                                 
+                                 
+                                    Federal
+                                 
+                                 
+                                    Telecom
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                                                     Offerings 
+                     
+                                 
+                                    Chilled Water Solutions
+                                 
+                                 
+                                    Bring Your Own Power &amp; Cooling
+                                 
+                                 
+                                    Prefabricated Modular Solutions
+                                 
+                                 
+                                    Edge Data Center
+                                 
+                                 
+                                    Server room cooling for key industries
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                                                     Learn About 
+                     
+                                 
+                                    Data Center Liquid Cooling
+                                 
+                                 
+                                    Battery Energy Storage System
+                                 
+                                 
+                                    Hydrogen Fuel Cells
+                                 
+                                 
+                                    Vertiv Continuing Education (CE) Program
+                                 
+ 
+
+                      
+                          
+
+
+
+ 
+
+    
+
+                     
+                                                     Vertiv Guides 
+                     
+                                 
+                                    AI Hub
+                                 
+                                 
+                                    Data Center Sustainability
+                                 
+                        
+                                 
+                                    Edge Computing
+                                 
+                                 
+                                    Mission-Critical Facility Services
+                                 
+ 
+
+                          
+    
+    
+              
+          
+
+
+
+
+             
+             
+                 
+                    Support
+                 
+
+          
+              
+                      
+
+
+
+ 
+
+    
+
+                     
+                                                     Self-help tools 
+                     
+                                 
+                                    Product Documentation
+                                 
+                                 
+                                    Software/Firmware Updates
+                                 
+                                 
+                                    Warranty Information
+                                 
+                                 
+                                    Quality Policy &amp; Certifications
+                                 
+                                 
+                                    Information and Product Security
+                                 
+                                 
+                                    Report a Security Concern
+                                 
+                        
+                                 
+                                    Register Your Product
+                                 
+                                 
+                                    Tools &amp; Applications
+                                 
+                                 
+                                    Discontinued Products
+                                 
+                                 
+                                    Frequently Asked Questions
+                                 
+                                 
+                                    Warranty Registration
+                                 
+                                 
+                                    Open Source Software Information
+                                 
+                        
+                                 
+                                    Download BIM files
+                                 
+ 
+
+                      
+                          
+
+
+
+ 
+
+    
+
+                     
+                                                     Support for Vertiv brands 
+                     
+                                 
+                                    Avocent maintenance program overview
+                                 
+                                 
+                                    Avocent support contacts
+                                 
+                                 
+                                    Busway and Busduct BIM library
+                                 
+ 
+
+                          
+    
+    
+              
+          
+
+
+
+
+             
+             
+                 
+                    Insights
+                 
+
+          
+              
+                      
+                         
+
+
+ 
+
+    
+
+                     
+                                                     Insights Overview 
+                     
+                                 
+                                    Artificial intelligence
+                                 
+                                 
+                                    Extreme densification
+                                 
+                                 
+                                    Energy autonomy
+                                 
+                                 
+                                    Thermal chain evolution
+                                 
+                        
+                                 
+                                     Digital first design
+                                 
+                                 
+                                     Power architecture transformation
+                                 
+                                 
+                                    Gigawatt-scale campuses
+                                 
+                                 
+                                    Data center innovation
+                                 
+                        
+                                 
+                                    Vertiv™ Frontiers
+                                 
+                                 
+                                    Spotlights
+                                 
+ 
+
+                                               
+    
+    
+              
+            
+
+
+
+
+             
+             
+                 
+                    About
+                 
+
+          
+              
+                      
+                         
+
+
+ 
+
+    
+
+                     
+                                                     About Vertiv 
+                     
+                                 
+                                    About Us
+                                 
+                                 
+                                    Responsible Business
+                                 
+                                 
+                                    Executives
+                                 
+                                 
+                                    Awards and Recognition
+                                 
+                                 
+                                    Become a Supplier
+                                 
+                                 
+                                    Connect With Us
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                                                     News and Events 
+                     
+                                 
+                                    News Releases
+                                 
+                                 
+                                    Vertiv Blog
+                                 
+                                 
+                                    Analyst Reports
+                                 
+                                 
+                                    In the News
+                                 
+                                 
+                                    Events
+                                 
+                                 
+                                    Media &amp; Analyst Contacts
+                                 
+                                 
+                                    Webcasts
+                                 
+                                 
+                                    Podcasts
+                                 
+                                 
+                                    Customer Case Studies
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                                                     Career Center 
+                     
+                                 
+                                    View all jobs
+                                 
+                                 
+                                    Working at Vertiv
+                                 
+                                 
+                                    Start your journey
+                                 
+ 
+
+
+
+
+ 
+
+    
+
+                     
+                                                     Trusted names 
+                     
+                                 
+                                    Alber™
+                                 
+                                 
+                                    Avocent&#174;
+                                 
+                                 
+                                    Energy Labs
+                                 
+                                 
+                                    Geist™
+                                 
+                                 
+                                    Liebert&#174;
+                                 
+                                 
+                                    NetSure™
+                                 
+                                 
+                                    ERS Inc.
+                                 
+ 
+
+                                               
+    
+    
+              
+            
+
+
+
+
+             
+
+                     
+                     
+                             
+                                             
+                  
+                 How To Buy 
+                  
+                  
+             
+ 
+     
+         
+             
+                 
+                          
+
+ 
+ 
+ 
+ 
+ 
+   Vertiv Sales Support  
+ Working with our Vertiv Sales team enables complex designs to be configured to your unique needs. If you are an organization seeking technical guidance on a large project, Vertiv can provide the support you require. 
+   Learn More   
+ 
+                  
+                 
+                          
+
+ 
+ 
+ 
+ 
+ 
+  Vertiv Reseller Partners  
+ Many customers work with a Vertiv reseller partner to buy Vertiv products for their IT applications. Partners have extensive training and experience, and are uniquely positioned to specify, sell and support entire IT and infrastructure solutions with Vertiv products.   
+   Find a Reseller   
+ 
+
+ 
+document.addEventListener("DOMContentLoaded", function(event) {
+setTimeout(function(){
+
+var countryTextValue = document.getElementById("SendEmailModel_CountryCode").options[document.getElementById("SendEmailModel_CountryCode") .selectedIndex].text;
+
+if (countryTextValue==='Netherlands (Nederland)') {
+ 
+countryTextValue="Netherlands"
+}
+
+var findLink = document.getElementById("myLink");
+var parnerLink = "https://partners.vertiv.com/English/directory?AccountCountry="+countryTextValue
+
+let decodedUrl = decodeURIComponent(parnerLink.replace(/%2F/g, "/"));
+findLink.href = decodedUrl; 
+
+findLink.style.removeProperty('pointer-events')
+
+}, 3500);
+
+});
+
+ 
+                  
+                 
+                          
+
+ 
+ 
+ 
+ 
+ 
+  Vertiv Online Resellers  
+ Already know what you need? Want the convenience of online purchase and shipping? Certain categories of Vertiv products can be purchased through an online reseller.    
+   Find an Online Reseller   
+ 
+
+ 
+document.addEventListener("DOMContentLoaded", function(event) {
+setTimeout(function(){
+
+var countryTextValue = document.getElementById("SendEmailModel_CountryCode").options[document.getElementById("SendEmailModel_CountryCode") .selectedIndex].text;
+
+if (countryTextValue==='Netherlands (Nederland)') {
+ 
+countryTextValue="Netherlands"
+}
+
+var findLink = document.getElementById("myLinks");
+var parnerLink = "https://partners.vertiv.com/English/directory?AccountCountry="+countryTextValue+"&iAmAValue=Med%20%2F%20Large%20Enterprise&iAmLooking=Buy%20Online";
+
+let decodedUrl = decodeURIComponent(parnerLink.replace(/%2F/g, "/"));
+findLink.href = decodedUrl; 
+
+findLink.style.removeProperty('pointer-events')
+
+}, 3500);
+
+});
+
+ 
+                  
+                 
+                          
+
+ 
+ 
+ 
+ 
+ 
+  Not Sure What You Need?  
+ Need help choosing a product? Speak with a highly qualified Vertiv Specialist who will help guide you to the solution that is right for you.     
+   Contact a Vertiv Specialist   
+ 
+                  
+             
+         
+     
+ 
+                             
+                         
+                             
+                             
+    .search-input-dropdown {
+        display: block !important;
+    }
+
+    .search-expand {
+        overflow: visible;
+    }
+  
+
+ 
+             Type search term here 
+             
+          0  && self.query.length > 2">
+               {{keyword}}  
+          
+
+     
+         Search 
+     
+
+ 
+                             
+                         
+                     
+                 
+             
+         
+
+     
+     
+         
+                 
+                     
+                          
+                     
+                     
+                         
+                            The page you&#39;re viewing is for
+                             
+                                English (United States)
+                             
+                            region.
+                         
+                     
+                 
+                 
+                     
+                        Proceed
+                     
+                     
+                        STAY IN MY REGION
+                     
+                 
+         
+     
+ 
+ 
+    .input-background-grey {
+        background: #cccccc;
+    }
+
+    textarea {
+        -moz-resize: none;
+        -ms-resize: none;
+        -o-resize: none;
+        resize: none;
+    }
+      
+
+
+        
+
+
+
+
+
+
+
+
+ 
+    {
+      "@context": "https://schema.org",
+      "@type": "NewsArticle",
+      "headline": "High-density cooling: A guide to advanced thermal solutions for AI and ML workloads in data centers ",
+      "image": [
+        "https://www.vertiv.com/48ecdc/globalassets/images/on-page-image/800x450/800x450gettyimages-1216520737.png"
+       ],
+      "isAccessibleForFree": true,
+      "keywords": ["ESG/sustainability","Extreme densification","Facility Optimization ","Liquid Cooling","Thermal chain evolution"],
+      "datePublished": "1/14/2025 7:14:08 AM",
+      "author": [{
+          "@type": "Person",
+          "name": "Vertiv"
+        }],
+        "url": "https://www.vertiv.com/en-us/insights/articles/educational-articles/high--density-cooling-a-guide-to-advanced-thermal-solutions-for-ai-and-ml-workloads-in-data-centers/",
+        "publisher": [{
+            "@type": "Organization",
+             "name": "Vertiv"
+        }]
+    }
+ 
+
+ 
+
+
+
+ 
+     
+         
+
+             
+                 
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                     
+                         
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                         
+                     
+                 
+             
+         
+     
+
+     
+         
+             
+                                      Artificial intelligence  
+                                      Extreme densification  
+                                      Energy autonomy  
+                                      Thermal chain evolution  
+                                      Digital-first design  
+                                      Power architecture transformation  
+                                      Gigawatt-scale campuses  
+                                      Data center innovation  
+                                      Vertiv™ Frontiers  
+                                      Spotlights  
+
+
+                 
+                     
+                        More
+                          
+                     
+                 
+             
+         
+     
+ 
+
+     
+         
+             
+                 
+
+
+ 
+
+         Home 
+
+         
+                 
+                    Insights
+                 
+         
+         
+High-density cooling: A guide to advanced thermal solutions for AI and ML workloads in data centers          
+ 
+                 
+             
+         
+     
+
+     
+
+         
+         
+             
+                 
+                     High-density cooling: A guide to advanced thermal solutions for AI and ML workloads in data centers  
+                     
+                         
+                                8 min. Read 
+
+                             
+                                  
+
+
+
+
+
+     
+        1/14/25
+     
+
+                             
+
+                     
+                 
+             
+         
+
+         
+         
+             
+                 
+                     
+                     
+                         
+
+                              
+
+                             
+                             
+
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+                                 
+ 
+     
+
+ 
+ 
+ 
+ 
+ 
+ The evolution of artificial intelligence (AI) and machine learning (ML), mainly through technologies like ChatGPT and  large language models (LLM) , has heightened the demand for  high-performance computing  (HPC). This shift necessitates data centers to adopt high-density cooling to meet the intense cooling requirements of AI workloads. Traditional air-cooling systems alone can no longer keep up. Consequently, operators are now using  liquid cooling solutions &nbsp;which can be&nbsp; 3,000 times more efficient than air cooling.  
+ Air-assisted liquid cooling can improve thermal management for businesses looking to leverage  AI  and stay competitive. IT and facility teams can start by evaluating their cooling needs, assessing their site, and selecting the appropriate cooling solutions to create an efficient  HPC cooling  system. 
+ A one-size-fits-all high-density cooling solution doesn't exist. Implementing a data center  liquid cooling  system requires thorough planning and assessment of an existing facility&rsquo;s footprint, current cooling methods, workloads, and budget. Here's how to begin. 
+ Determine cooling requirements 
+  Multi-tenant data centers (MTDCs)  and enterprise data centers are increasing rack densities due to the latest AI-capable graphics processing unit (GPU) chipsets. These chipsets now  exceed thermal design powers (TDP) of 1,000 watts (W) , and are quickly approaching 2,000 W or more. They support cloud and enterprise tasks like deep learning, natural language processing, generative AI, training, and inferencing. As a result, rack densities reach 100 kilowatts (kW) per rack (see  Figure 1 ). 
+   
+    Figure 1.  Evolution of thermal management technology with increasing rack density; red boundary highlights conditions for viable data center liquid cooling.   
+ IT and facility teams may have to decide how much space to allot to new AI or high-performance computing workloads to meet current and future demand over the next one to two years. Some are converting a few racks at a time, while others are dedicating entire rooms to these workloads and adding data center  liquid cooling systems  to support them. 
+ Measure the thermal footprint 
+ With upfront planning conducted, cooling teams can determine the thermal footprint of AI workloads. They might have to identify which configurations will be used and if there are any non-standard requirements. In addition, they can determine current airflow, identifying gaps between new heat loads and cooling limits.&nbsp; 
+ Assess flow rates 
+ Teams can assess flow rates after determining the kilowatts of compute coming in racks. This step is crucial in deploying  high-density cooling systems  to enable adequate coolant circulates through the racks, effectively removing heat. By assessing flow rates, teams can match the cooling capacity to the exact needs of the computing hardware, preventing overheating and potential damage.&nbsp;&nbsp; 
+ Determining flow rates optimizes energy efficiency, allowing precise control over the cooling system's operation. Teams can evaluate flow rates by calculating the thermal load per rack and assessing the cooling systems' capacity to allow efficient heat removal and optimal operation. 
+ Decide whether to upsize the cooling solution 
+ Depending on how long IT equipment has been deployed, teams may decide whether to upsize the cooling solution or not. For example, building extra cooling capacity into the model to support next-generation chips coming online may be beneficial if the IT equipment will be refreshed soon. 
+ Choose a high-density cooling solution 
+ Building a high-density cooling solution involves a strategic approach to managing the intense heat generated by HPC workloads. It requires selecting and implementing technologies (see  Figure 2 ) that can efficiently dissipate heat while minimizing energy consumption. 
+   
+    Figure 2   . A solution tree illustrating viable liquid cooling options for air-cooled facilities based on specific conditions.   
+ Consider chilled water onsite 
+ If teams can access chilled water, they can deploy a  liquid-to-liquid coolant distribution unit (CDU) . For successful deployment in an AI data center, the chilled water system needs to operate 24x7. This differs from traditional comfort cooling systems, which often turn off after hours, on weekends, and during off-seasons.&nbsp; 
+ These  CDUs , available as in-rack, in-row, and perimeter models, isolate IT equipment from the facility's chilled water loop with a separate liquid loop to and from the racks called a secondary fluid network (SFN). This approach allows teams to choose the fluid and flow rate for the racks, like treated water or a water-glycol mix. Water quality may also be an issue when deploying CDUs and leveraging existing chilled water systems. IT and facility teams may have to assess filtration capacity or the ability to implement it if needed.&nbsp;&nbsp; 
+ Deploy CDUs without access to chilled water onsite 
+ Some sites may not have access to chilled water systems on site but need to deploy data center liquid cooling capabilities to support business growth. Several technologies  are available to facilitate this type of implementation .&nbsp;&nbsp; 
+  Liquid-to-air CDUs  provide an independent SFN to the rack and reject heat into the data center air, enabling existing air-cooling systems to capture and reject heat. The SFN is isolated, delivering chilled fluid to liquid-cooled servers in the air-cooled data center environment.  Operators must also assess  the capacity of existing air-cooling systems. 
+ Use liquid-to-refrigerant CDUs to leverage existing DX condensers 
+ Another option for deploying data center liquid cooling technologies without access to chilled water could be to utilize existing refrigerant-based heat rejection. Liquid-to-refrigerant CDUs effectively combine  direct expansion (DX)  refrigerant-based heat rejection with data center liquid cooling technologies. This approach maximizes existing DX infrastructure while improving high-density cooling capacity where needed, speeding up HPC cooling deployment regardless of onsite chilled water availability. Additionally, liquid-to-refrigerant CDUs (see  Figure 3 ) enable modular setups without completely overhauling the existing cooling infrastructure 
+   
+    Figure 3   . Illustration of an air-cooled data center featuring the Vertiv&trade; CoolChip Econophase CDU, which efficiently cools high-density rack pods without chilled water. The Vertiv&trade; CoolPhase CDU operates in three modes: Full Compressor Mode, Partial Economization, and Full Economization.   
+ Operating with pumped refrigerant economization (PRE) heat rejection technology, this liquid-to-refrigerant CDU provides heat rejection based on ambient temperatures, reducing energy use. The internal components chill the SFN to deliver high-density cooling directly to the server cold plates.&nbsp; 
+ Enhance cooling with rear-door heat exchangers&nbsp; 
+ AI data centers can also implement  rear-door heat exchangers (RDHXs)  to supplement their air-cooling capacity. RDHXs can be used with existing air-cooling systems, don't require significant structural changes to white space, and can eliminate the need for containment strategies when adequately sized. Passive units work well for loads from five to 25 kW, while active units provide up to 50 kW in nominal capacity and have been tested up to 70+ kW in some cases. 
+ 
+             
+             
+                 
+ 
+ 
+ 
+ 
+ &nbsp; 
+ Learn more 
+   
+ 
+ 
+             
+             
+                 
+ 
+ 
+ 
+ 
+ Create a roadmap for liquid cooling installation by downloading our guide:  Deploying liquid cooling in the data center  
+ 
+ 
+             
+         
+ 
+
+ Design mechanical and compute network storage space 
+ Teams will need to decide where to place new high-density cooling systems, such as in a hallway, in the gallery surrounding the perimeter of the white space, or in a deeper concrete trench that runs around the gallery. Regardless of the approach, the mechanical space should have adequate room to install, remove, and replace any systems without disrupting other equipment or operations (see  Figure 4 ). 
+   
+    Figure 4.  Illustration of a data center highlighting the grey space, where most MTDC or enterprise facility operations teams prefer to locate liquid cooling equipment, which can be placed with electrical equipment.&nbsp;   
+ The IT, facility, and power team will then work with the design consultant to plan the technical space for placing racks, air cooling distribution, fluid piping,  power distribution systems , and  monitoring equipment . If the AI data center has a  non-raised floor , the team will likely consider a technical design that places power and pipework conduits above the racks, with threaded rods hung down from ceiling joists to provide support. 
+ Create cooling redundancy 
+ CDUs may be orchestrated to work together in a teamwork mode. At an MTDC, as many as eight to 10 CDUs, organized as a set or pod, will support most of the load. Since each unit only carries 10-15 percent of the load, one can easily step up and help more if another unit goes down due to a pump failure or other event. When appropriately sized for demand, CDUs can support up to 80 percent of the cooling demand for IT loads, while perimeter or  in-row air cooling  provides the remaining 20 percent. 
+ Design and implement controls 
+ Teams can leverage tools such as digital twins to run scenarios and analyze how systems will be deployed. They can then script alarms and alerts, fine-tuning them to expected performance and failure modes and preloading these business rules onto control logic during system installation.&nbsp; 
+ Controls work with sensors, such as humidity and temperature, to provide a view into operational conditions within the rack.  Point leak sensors  help detect leaks in piping distributing fluids, while rope leak sensors are placed around CDUs to detect leaks. Filter alarms trigger if debris clogs the filter, signaling the need for a service visit.&nbsp; 
+ Plan maintenance 
+ Liquid cooling systems require regular maintenance for efficient and reliable operation. Given the complex nature of liquid cooling systems, data center teams can benefit from full-service liquid cooling solutions that cover ongoing maintenance even after design and installation. Service teams can perform maintenance without taking the entire system down with valves to isolate individual piping sections. Some imperatives involve the following: 
+ 
+  Cleanliness : Contaminants can reduce coolant efficiency, disrupt server operations, and cause system failures. Maintaining a clean environment, even during servicing, is essential to prevent overheating and malfunctions caused by dust and particles. Teams must uphold cleanliness standards to maintain operational efficiency and compliance with regulations.&nbsp; 
+ 
+ 
+  Commissioning : Teams evaluate liquid cooling components, fluid flow, efficiency, and functionality under actual conditions to determine if the technology meets performance criteria. This process identifies issues like leaks and fluid distribution problems before operation. Adjustments in flow rates and sensor calibration optimize performance. Service teams test fluid to compare it with initial levels.&nbsp; 
+ 
+ 
+  Fluid management : Effective fluid management maintains optimal levels, flow rates, and temperatures, which are essential for heat transfer in data center equipment. It also prevents overheating, performance issues, leaks, and contamination risks.&nbsp;&nbsp; 
+ 
+ 
+  Recurring services:  Identifying issues early on with regular maintenance can prevent system failures and extend the lifespan of liquid cooling systems, reducing unplanned repairs or replacements.  Periodic checks document system conditions and&nbsp;assess compliance with safety standards. &nbsp;&nbsp; 
+ 
+ 
+  Spare parts:  Having spare parts readily available reduces repair time, minimizes downtime, and allows prompt action on issues, preventing disruptions and extended cooling reductions. Operators can benefit from partnering with a vendor that has a capillary service organization by allowing anomalies to be addressed quickly. Combined with such a service, a spare parts inventory eliminates the need for emergency repairs and expedited shipping.&nbsp; 
+ 
+ Harness AI's full potential with high-density cooling 
+ The surge in AI and ML, mainly through the development of foundation models and LLMs, demands significant upgrades in data center infrastructure for high-density cooling to support the heat from HPC workloads. More operators are deploying liquid cooling solutions to air-cooled data centers to harness AI's full potential.&nbsp;&nbsp; 
+ Vertiv offers a comprehensive solution that delivers comprehensive support and expertise to HPC and AI data centers. Whether you need brand-new technologies or retrofit systems for higher densities, we have you covered.&nbsp; 
+  Choose your path to high-density  &nbsp; 
+ Your journey to high-density can be a smooth ride. Vertiv offers advanced solutions engineered with industry leaders to power and cool the most challenging deployments.  Unleash your AI Evolution with Vertiv  today.&nbsp; 
+ 
+ 
+         
+.reskin .insights-article-content .container strong {
+font-weight: 500 !important;
+}
+
+.reskin .insights-article-content .container a {
+color: #fe5b1b !important;
+font-weight: 500 !important;
+}
+
+.reskin .insights-article-content .container a:hover {
+text-decoration: underline;
+}
+
+em{font-size: 16px !important;}
+h3{font-size: 28px !important;}
+p{font-size: 18px !important;}
+.reskin ol, .reskin ul {
+    color: #1d1d1d !important;
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+}
+ 
+     
+                                  
+                             
+
+                              
+
+                             
+
+                             
+                                 
+                                                                                                                         ESG/sustainability 
+                                                 Extreme densification 
+                                                 Facility Optimization  
+                                                 Liquid Cooling 
+                                                 Thermal chain evolution 
+                                 
+                             
+                         
+
+                         
+                         
+                             
+
+
+ 
+ 
+         Key points in this article: 
+     
+ 
+ 
+ 
+ 
+ 
+ 
+  AI and ML workloads are pushing rack densities to 100 kilowatts (kW) per rack, making high-density cooling a data center requirement.  
+  Liquid cooling solutions can be 3,000 times more efficient than air cooling alone for high-performance computing workloads.  
+  A coolant distribution unit (CDU) isolates IT equipment from the facility chilled water loop via a secondary fluid network.  
+  Liquid-to-refrigerant CDUs maximize existing DX infrastructure while accelerating high-density cooling deployment without chilled water onsite.  
+  Rear-door heat exchangers supplement air-cooling capacity &mdash; active units reach up to 50 kW nominal, tested beyond 70 kW.  
+ 
+ 
+      
+ 
+
+
+
+
+ 
+ 
+
+     
+              
+     
+                              
+                             
+                             
+                             
+                             
+                         
+                     
+                 
+             
+         
+
+         
+             {"moreResultsText":"More","filter_by":"Filter by","filterText":"Filter","mostRecent":"Most Recent","articleTypeFilterText":"Article Type","clearAll":"Clear All","closeFilterDoneTextLocalized":"Done","viewAllEventsText":"View all","upcomingEvents":"Upcoming Events","trendingTitle":"Trending","latestTitle":"Latest","moreRelatedTitle":"More on related topics","moreOnText":"More on","minsRead":"min. Read","minsWatch":"min. Watch","additionalResources":"Additional resources"} 
+                         
+                 
+                 
+
+         
+         
+         
+             
+                 
+                     
+                         
+ 
+     
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ Vertiv TM  AI Hub 
+ Infrastructure designed to stay multiple compute generations ahead, starting now. 
+  Learn more   
+ 
+ 
+ 
+         
+.ai-hub-promo-banner {
+  background: url("https://www.vertiv.com/494fcc/globalassets/new-insights/1200x250-ai-hub-banner.png") center/cover no-repeat;
+  padding: 3rem 5rem;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.ai-hub-promo-banner .ai-hub-promo-banner__content {
+  max-width: 45rem;
+}
+
+.ai-hub-promo-banner .ai-hub-promo-banner__heading {
+  font-size: 4.2rem !important;
+  font-weight: 500!important;
+  margin-bottom: 1rem!important;
+  color: #fff;
+}
+
+.ai-hub-promo-banner .ai-hub-promo-banner__superscript{
+    font-size: 1rem;
+    top: -1.8rem;
+    font-weight: 600;
+}
+
+.ai-hub-promo-banner .ai-hub-promo-banner__subheading {
+  font-size: 2.4rem !important;
+  margin-bottom: 2.5rem!important;
+  color: #fff;
+}
+
+.ai-hub-promo-banner .ai-hub-promo-banner__cta {
+  font-size: 2rem;
+  text-transform: unset !important;
+}
+
+@media only screen and (max-width: 767px) {
+.ai-hub-promo-banner.row {
+    padding: 3rem !important;
+}
+
+  .ai-hub-promo-banner .ai-hub-promo-banner__content {
+    max-width: 100%;
+  }
+}
+
+ 
+     
+ 
+                         
+                     
+                 
+             
+         
+
+     
+ 
+
+
+     
+
+
+ 
+    
+                
+
+
+ 
+     
+         
+
+                 
+                             
+                  
+          
+         
+                 
+             
+                 Subscribe to get the latest trends in technology 
+                 
+                     Receive updates on the most important topics in the industry, with latest discussions and expert insights on AI, liquid cooling, and high performance computing in the data center. 
+                         Sign up now 
+                 
+             
+         
+     
+    
+
+     
+         
+             
+                 
+                     
+                             
+                     
+                 
+             
+         
+         
+             
+                 
+                     
+                         
+                                 
+                                     
+                                        RESOURCES
+                                     
+                                     
+                                                 Product Documentation 
+                                                 Quality Policy &amp; Certifications 
+                                                 Terms &amp; Conditions of Sales 
+                                                 Warranty Information 
+                                                 Patents 
+                                                 Site Map 
+                                     
+                                 
+                                 
+                                     
+                                        SUPPORT
+                                     
+                                     
+                                                 Technical Support 
+                                                 Software/Firmware Updates 
+                                                 Submit Support Request 
+                                                 Submit Feedback 
+                                                 Contacts 
+                                                 Product Registration 
+                                                 Information and Product Security 
+                                                 Report a Security Concern 
+                                     
+                                 
+                                 
+                                     
+                                        CORPORATE
+                                     
+                                     
+                                                 About Vertiv 
+                                                 Executives 
+                                                 Careers 
+                                                 Investor Relations 
+                                                 Ethics &amp; Compliance 
+                                                         
+                                                             Your Privacy Choices 
+                                                             
+                                                         
+                                                 Privacy Notices 
+                                     
+                                 
+                         
+                     
+                     
+                             Connect with us 
+                           
+      
+    
+      
+    
+      
+    
+      
+    
+     Instagram 
+   
+
+                         
+                                     Terms of Use 
+                                          
+                                         &#8226; 
+                                     Data Privacy and Cookies Policy 
+                                          
+                                         &#8226; 
+                                     Accessibility Statement 
+                                          
+
+                             
+                                 &copy;  2026 Vertiv Group Corp. All rights reserved.
+                             
+                         
+                     
+                 
+             
+         
+     
+ 
+
+      
+     
+        document.addEventListener("DOMContentLoaded", function (event) {
+            if ($(".homepage-banner").length > 0) {
+                $('.subscribe-email-redesign').css({
+                    "background-color": "#f2f2f2"
+                })
+            }
+        });
+     
+
+ 
+    $(window).on('load', function () {
+        document.querySelectorAll(".p3-page-footer__submenu > a").forEach(function (element) {
+            let href = element.getAttribute("href");
+
+            // Check to see if the the href include http:// or https://
+            if (href.includes("http://") || href.includes("https://")) {
+                element.target = "_blank"; // Make link open in new tab
+                element.rel = "noreferrer nofollow noopener";
+            }
+        });
+    })
+ 
+
+
+ 
+
+
+
+
+
+
+
+  
+ 
+ 
+ 
+     
+         
+             
+                 
+                     &times; 
+                 
+                 Activation status 
+             
+             
+                  
+                 
+                    Your account is restricted to access this link. Please contact Vertiv Partner Support:  salescloudsupport@vertivco.com 
+                 
+             
+         
+     
+ 
+ 
+     
+         
+             
+                 
+                     Close 
+                      
+                 
+             
+                     
+         
+         
+                         
+                     
+                         PRODUCTS &amp; SERVICES 
+                     
+                         
+                                 Overview 
+                                     
+                 
+                     Critical Power 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Uninterruptible Power Supplies (UPS)
+                                     
+                                     
+                                    Energy Storage System
+                                     
+                                     
+                                    DC Power Systems
+                                     
+                                     
+                                    Power Distribution
+                                     
+                                     
+                                    Static Transfer Switches
+                                     
+                                     
+                                    Switchgear and Switchboard
+                                     
+                                     
+                                    Busway and Busduct
+                                     
+                 
+         
+         
+                 
+                     Thermal Management 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Liquid Cooling Solutions
+                                     
+                                     
+                                    Heat Rejection
+                                     
+                                     
+                                    Outdoor Packaged Systems
+                                     
+                                     
+                                    Room Cooling
+                                     
+                                     
+                                    In-Row Cooling
+                                     
+                                     
+                                    Rack Cooling
+                                     
+                                     
+                                    Free Cooling Chillers
+                                     
+                                     
+                                    Evaporative Free Cooling
+                                     
+                                     
+                                    Thermal Control and Monitoring
+                                     
+                 
+         
+         
+                 
+                     Racks &amp; Enclosures 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Integrated Solutions
+                                     
+                                     
+                                    Racks &amp; Containment
+                                     
+                                     
+                                    Outdoor Enclosures
+                                     
+                 
+         
+         
+                 
+                     Monitoring &amp; Management 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Digital Infrastructure Solutions
+                                     
+                                     
+                                    Embedded Device Management
+                                     
+                                     
+                                    Serial Console
+                                     
+                                     
+                                    IP KVM Switches
+                                     
+                                     
+                                    High Performance KVM
+                                     
+                                     
+                                    LCD Tray
+                                     
+                                     
+                                    Desktop KVM and KM
+                                     
+                                     
+                                    Secure KVM
+                                     
+                                     
+                                    Software
+                                     
+                                     
+                                    Monitoring
+                                     
+                 
+         
+         
+                 
+                     Services 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Project Services
+                                     
+                                     
+                                    Liquid Cooling Services
+                                     
+                                     
+                                    Digital Services
+                                     
+                                     
+                                    Fluid Management Services
+                                     
+                                     
+                                    Thermal Services
+                                     
+                                     
+                                    UPS &amp; Battery Services
+                                     
+                                     
+                                    DC Power Services
+                                     
+                                     
+                                    Rack PDU Services
+                                     
+                                     
+                                    Electrical Safety &amp; Compliance
+                                     
+                                     
+                                    Service Training
+                                     
+                                     
+                                    Switchgear and Busway Services
+                                     
+                 
+         
+         
+                 
+                     Tools &amp; Product Registration 
+                 
+            
+                 
+                                                         
+                                    AI Reference Design Selector
+                                     
+                                     
+                                    UPS Selector
+                                     
+                                     
+                                    Use the rPDU Finder
+                                     
+                                     
+                                    Calculate Cooling Economization
+                                     
+                                     
+                                    Compare Rack Products
+                                     
+                                     
+                                    Compare IT Management Products
+                                     
+                                     
+                                    Consultants Corner
+                                     
+                                     
+                                    Download the Vertiv™ XR App
+                                     
+                                     
+                                    Download the Vertiv™ Virtual Showroom App
+                                     
+                                     
+                                    How to Buy
+                                     
+                                     
+                                    Product Registration
+                                     
+                                     
+                                    Virtually Test Cooling Systems in our Labs’ Digital Twins
+                                     
+                                     
+                                    Download BIM files
+                                     
+                                     
+                                    Vertiv Web Interface Demonstrations
+                                     
+                                     
+                                    Vertiv Modular Designer
+                                     
+                 
+         
+
+                         
+             
+             
+                     
+                         SOLUTIONS 
+                     
+                         
+                                 Overview 
+                                     
+                 
+                     Artificial Intelligence 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    AI Hub
+                                     
+                                     
+                                    Vertiv™ 360AI
+                                     
+                 
+         
+         
+                 
+                     Industries 
+                 
+            
+                 
+                                                         
+                                    Colocation data centers
+                                     
+                                     
+                                    Hyperscale and cloud
+                                     
+                                     
+                                    Finance
+                                     
+                                     
+                                    Healthcare
+                                     
+                                     
+                                    Manufacturing
+                                     
+                                     
+                                    Logistics
+                                     
+                                     
+                                    Education
+                                     
+                                     
+                                    Retail
+                                     
+                                     
+                                    Federal
+                                     
+                                     
+                                    Telecom
+                                     
+                 
+         
+         
+                 
+                     Offerings 
+                 
+            
+                 
+                                                         
+                                    Chilled Water Solutions
+                                     
+                                     
+                                    Bring Your Own Power &amp; Cooling
+                                     
+                                     
+                                    Prefabricated Modular Solutions
+                                     
+                                     
+                                    Edge Data Center
+                                     
+                                     
+                                    Server room cooling for key industries
+                                     
+                 
+         
+         
+                 
+                     Learn About 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Data Center Liquid Cooling
+                                     
+                                     
+                                    Battery Energy Storage System
+                                     
+                                     
+                                    Hydrogen Fuel Cells
+                                     
+                                     
+                                    Vertiv Continuing Education (CE) Program
+                                     
+                 
+         
+         
+                 
+                     Vertiv Guides 
+                 
+            
+                 
+                                                         
+                                    AI Hub
+                                     
+                                     
+                                    Data Center Sustainability
+                                     
+                                     
+                                    Edge Computing
+                                     
+                                     
+                                    Mission-Critical Facility Services
+                                     
+                 
+         
+
+                         
+             
+             
+                     
+                         SUPPORT 
+                     
+                         
+                                 Overview 
+                                     
+                 
+                     Self-help tools 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Product Documentation
+                                     
+                                     
+                                    Software/Firmware Updates
+                                     
+                                     
+                                    Warranty Information
+                                     
+                                     
+                                    Quality Policy &amp; Certifications
+                                     
+                                     
+                                    Information and Product Security
+                                     
+                                     
+                                    Report a Security Concern
+                                     
+                                     
+                                    Register Your Product
+                                     
+                                     
+                                    Tools &amp; Applications
+                                     
+                                     
+                                    Discontinued Products
+                                     
+                                     
+                                    Frequently Asked Questions
+                                     
+                                     
+                                    Warranty Registration
+                                     
+                                     
+                                    Open Source Software Information
+                                     
+                                     
+                                    Download BIM files
+                                     
+                 
+         
+         
+                 
+                     Support for Vertiv brands 
+                 
+            
+                 
+                                                         
+                                    Avocent maintenance program overview
+                                     
+                                     
+                                    Avocent support contacts
+                                     
+                                     
+                                    Busway and Busduct BIM library
+                                     
+                 
+         
+
+                         
+             
+             
+                     
+                         INSIGHTS 
+                     
+                         
+                                 Overview 
+                                     
+                 
+                     Insights Overview 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Artificial intelligence
+                                     
+                                     
+                                    Extreme densification
+                                     
+                                     
+                                    Energy autonomy
+                                     
+                                     
+                                    Thermal chain evolution
+                                     
+                                     
+                                     Digital first design
+                                     
+                                     
+                                     Power architecture transformation
+                                     
+                                     
+                                    Gigawatt-scale campuses
+                                     
+                                     
+                                    Data center innovation
+                                     
+                                     
+                                    Vertiv™ Frontiers
+                                     
+                                     
+                                    Spotlights
+                                     
+                 
+         
+
+                         
+             
+             
+                     
+                         ABOUT 
+                     
+                         
+                                 Overview 
+                                     
+                 
+                     About Vertiv 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    About Us
+                                     
+                                     
+                                    Responsible Business
+                                     
+                                     
+                                    Executives
+                                     
+                                     
+                                    Awards and Recognition
+                                     
+                                     
+                                    Become a Supplier
+                                     
+                                     
+                                    Connect With Us
+                                     
+                 
+         
+         
+                 
+                     News and Events 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    News Releases
+                                     
+                                     
+                                    Vertiv Blog
+                                     
+                                     
+                                    Analyst Reports
+                                     
+                                     
+                                    In the News
+                                     
+                                     
+                                    Events
+                                     
+                                     
+                                    Media &amp; Analyst Contacts
+                                     
+                                     
+                                    Webcasts
+                                     
+                                     
+                                    Podcasts
+                                     
+                                     
+                                    Customer Case Studies
+                                     
+                 
+         
+         
+                 
+                     Career Center 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    View all jobs
+                                     
+                                     
+                                    Working at Vertiv
+                                     
+                                     
+                                    Start your journey
+                                     
+                 
+         
+         
+                 
+                     Trusted names 
+                 
+            
+                 
+                         Overview 
+                                                         
+                                    Alber™
+                                     
+                                     
+                                    Avocent&#174;
+                                     
+                                     
+                                    Energy Labs
+                                     
+                                     
+                                    Geist™
+                                     
+                                     
+                                    Liebert&#174;
+                                     
+                                     
+                                    NetSure™
+                                     
+                                     
+                                    ERS Inc.
+                                     
+                 
+         
+
+                         
+             
+
+
+             
+                     
+                         PORTALS 
+                     
+                         
+                                 Overview 
+                                     
+                 
+                     Partners 
+                 
+            
+                 
+                                                         
+                                    Discover the Program
+                                     
+                                     
+                                    Apply now to get started!
+                                     
+                                     
+                                    Login as Partner
+                                     
+                                     
+                                        Find an IT Distributor
+                                     
+                 
+         
+         
+                 
+                     Consultant Engineers 
+                 
+            
+                 
+                                                         
+                                    Join the consultant program
+                                     
+                                     
+                                    Apply now
+                                     
+                                     
+                                    Login as Consultant
+                                     
+                 
+         
+     
+        document.getElementsByClassName('mobile-nav')[0].lastElementChild.children[1].children[0].remove();
+     
+
+                         
+             
+             
+                     
+                         MY ACCOUNT 
+                     
+                         
+                                 Overview 
+                                     
+            
+                 
+                                                         
+                                    Customer Portal Login
+                                     
+                                     
+                                    Discover the Customer Portal
+                                     
+                 
+         
+
+                         
+             
+             
+                     INVESTORS 
+             
+             
+                     CONTACT 
+             
+
+             
+                     HOW TO BUY 
+             
+
+         
+         
+
+
+             
+                Singapore, English (ASIA)
+             
+
+         
+     
+ 
+ 
+     
+         
+             Close 
+              
+         
+     
+     
+         Login 
+                0, 'is-focused': isFocused }">
+                 Email address 
+                 
+             
+             
+                  
+             
+             
+                  0, 'is-focused': isFocused }">
+                     Password 
+                     
+                 
+                 
+                     Show password 
+                     
+                      
+                 
+             
+             
+                  
+             
+             
+                  
+             
+             
+                Forgot your password?
+             
+             
+                Login
+             
+             
+
+                 
+                    Create an account
+                 
+             
+      
+ 
+
+ 
+     
+         
+             Close 
+              
+         
+     
+     
+         Language &amp; Location 
+         
+             
+                  
+             
+             
+                  
+             
+             
+                Save
+             
+         
+     
+
+ 
+
+ 
+     
+         
+             Close 
+              
+         
+     
+     
+          
+         
+	 
+		 
+		  0  && self.query.length > 2">
+			  {{keyword}}  
+		 
+	 
+ 
+     
+ 
+
+
+ 
+ 
+     
+         
+             
+                 
+
+                    
+                    
+
+                      &times;  
+                    
+                    
+                     Tell us your feedback 
+                    
+                    
+
+
+                        
+                         
+                             
+                                 YOUR NAME 
+                             
+                             
+                                 
+                                     
+                                         
+                                             Salutation 
+                                             Mr. 
+                                             Ms. 
+                                                 Mrs. 
+                                             Dr. 
+                                             Engr. 
+                                             Prof. 
+                                             Other 
+                                         
+                                     
+                                      
+                                 
+                             
+                             
+                                 
+                                  
+                             
+
+                             
+                                 
+                                  
+                             
+
+                             
+                                 
+                                     YOUR COUNTRY 
+                                 
+                                 
+                                      USA 
+ Afghanistan 
+ Albania 
+ Algeria 
+ American Samoa 
+ Andorra 
+ Angola 
+ Anguilla 
+ Antigua and Barbuda 
+ Argentina 
+ Armenia 
+ Aruba 
+ Ascension Island 
+ Australia 
+ Austria (&#214;sterreich) 
+ Azerbaijan 
+ Bahamas 
+ Bahrain 
+ Bangladesh 
+ Barbados 
+ Belarus (Беларусь) 
+ Belgium (Belgique/Belgi&#235;) 
+ Belize 
+ Benin 
+ Bermuda 
+ Bhutan 
+ Bolivia 
+ Bonaire and Sint Eustatius 
+ Bosnia and Herzegovina 
+ Botswana 
+ Brazil 
+ British Indian Ocean Territory 
+ Brunei Darussalam 
+ Bulgaria 
+ Burkina Faso 
+ Burundi 
+ Cabo Verde 
+ Cambodia 
+ Cameroon (Cameroun) 
+ Canada 
+ Cayman Islands 
+ Central African Republic (R&#233;publique centrafricaine) 
+ Chad (Tchad) 
+ Channel Islands (&#206;les de la Manche) 
+ Chile 
+ China (中国) 
+ Christmas Island 
+ Cocos (Keeling) Islands 
+ Colombia 
+ Comoros (Union des Comores) 
+ Congo, Republic of the 
+ Congo, The Democratic Republic 
+ Cook Islands 
+ Costa Rica 
+ Croatia 
+ Curacao 
+ Cyprus (Kıbrıs) 
+ Czech Republic 
+ Denmark 
+ Djibouti 
+ Dominica 
+ Dominican Republic (Rep&#250;blica Dominicana) 
+ East Timor 
+ Ecuador 
+ Egypt 
+ El Salvador 
+ Equatorial Guinea (Guinea Ecuatorial) 
+ Eritrea 
+ Estonia 
+ Ethiopia 
+ Falkland Islands (Malvinas) 
+ Faroe Islands 
+ Fiji 
+ Finland 
+ France 
+ French Guiana 
+ French Polynesia 
+ Gabon (R&#233;publique gabonaise) 
+ Gambia 
+ Georgia 
+ Germany (Deutschland) 
+ Ghana 
+ Gibraltar 
+ Greece 
+ Greenland 
+ Grenada 
+ Guadeloupe 
+ Guam 
+ Guatemala 
+ Guinea (Guin&#233;e) 
+ Guinea-Bissau 
+ Guyana 
+ Haiti 
+ Holy See (Vatican City State) 
+ Honduras 
+ Hong Kong (中国香港) 
+ Hungary 
+ Iceland 
+ India 
+ Indonesia 
+ Iraq 
+ Ireland 
+ Israel 
+ Italy (Italia) 
+ Ivory Coast (C&#244;te d&#39;Ivoire) 
+ Jamaica 
+ Japan (日本) 
+ Jordan 
+ Kazakhstan (Қазақстан) 
+ Kenya 
+ Kiribati 
+ Korea (한국) 
+ Kosovo 
+ Kuwait 
+ Kyrgyzstan (Кыргызстан) 
+ Laos 
+ Latvia 
+ Lebanon 
+ Lesotho 
+ Liberia 
+ Libya 
+ Liechtenstein 
+ Lithuania 
+ Luxembourg 
+ Macau 
+ Madagascar 
+ Malawi 
+ Malaysia 
+ Maldives 
+ Mali 
+ Malta 
+ Marshall Islands 
+ Martinique 
+ Mauritania 
+ Mauritius 
+ Mayotte 
+ Mexico 
+ Micronesia 
+ Moldova, Republic of 
+ Monaco 
+ Mongolia 
+ Montenegro 
+ Montserrat 
+ Morocco 
+ Mozambique (Mo&#231;ambique) 
+ Myanmar 
+ Namibia 
+ Nauru 
+ Nepal 
+ Netherlands (Nederland) 
+ Netherlands Antilles 
+ New Caledonia 
+ New Zealand 
+ Nicaragua 
+ Niger 
+ Nigeria 
+ Niue 
+ Norfolk Island 
+ North Macedonia 
+ Northern Mariana Islands 
+ Norway 
+ Oman 
+ Pakistan 
+ Palau 
+ Palestinian Authority 
+ Panama 
+ Papua New Guinea 
+ Paraguay 
+ Peru 
+ Philippines 
+ Pitcairn Islands 
+ Poland (Polska) 
+ Portugal 
+ Puerto Rico 
+ Qatar 
+ Reunion 
+ Romania 
+ Rwanda 
+ Samoa 
+ San Marino 
+ Sao Tome and Principe (S&#227;o Tom&#233; e Pr&#237;ncipe) 
+ Saudi Arabia 
+ Senegal 
+ Serbia 
+ Seychelles 
+ Sierra Leone 
+ Singapore 
+ Sint Maarten 
+ Slovakia 
+ Slovenia 
+ Solomon Islands 
+ Somalia 
+ South Africa 
+ South Georgia/South Sandwich 
+ South Sudan 
+ Spain (Espa&#241;a) 
+ Sri Lanka 
+ St. Barts 
+ St. Helena 
+ St. Kitts and Nevis 
+ St. Lucia 
+ St. Martin 
+ St. Pierre and Miquelon 
+ St. Vincent and the Grenadines 
+ Sudan 
+ Suriname 
+ Swaziland 
+ Sweden 
+ Switzerland (Schweiz) 
+ Taiwan (臺灣地區) 
+ Tajikistan (Тоҷикистон) 
+ Tanzania, United Republic of 
+ Thailand 
+ Togo 
+ Tokelau 
+ Tonga 
+ Trinidad and Tobago 
+ Tunisia 
+ Turkey (T&#252;rkiye) 
+ Turkmenistan (Түркменистан) 
+ Turks and Caicos Islands 
+ Tuvalu 
+ Uganda 
+ Ukraine 
+ United Arab Emirates 
+ United Kingdom 
+ Uruguay 
+ US Minor Outlying Islands 
+ Uzbekistan 
+ Vanuatu 
+ Venezuela 
+ Vietnam 
+ Virgin Islands (British) 
+ Virgin Islands (U.S.) 
+ Wallis and Futuna Islands 
+ Western Sahara 
+ Yemen 
+ Zambia 
+ Zimbabwe 
+ 
+                                 
+                             
+
+                             
+                                 
+                                  
+                             
+                         
+                         
+                              
+                         
+                         
+                             
+                                 YOUR EMAIL 
+                             
+                                     
+                                         
+                                          
+                                     
+                                     
+                                         
+                                          
+                                     
+
+                         
+                         
+                             
+                                 
+                                     SUBJECT LINE 
+                                 
+                                 
+                                  
+                             
+
+                         
+                         
+                             
+                                 
+                                     MESSAGE 
+                                 
+                                 
+ 
+                                  
+                             
+                         
+                     
+                         
+                             
+                                 
+                                      PRIVACY NOTICE CONSENT 
+ Having received and read this  privacy notice  on personal data processing, I consent to: 
+                                 
+                             
+                             
+                                 
+                                     
+                                         
+                                             Subscribe 
+                                              
+                                              
+                                         
+                                         
+                                            The processing of my personal data for marketing purposes, including staying informed by email about industry trends, events, offers and product launches.
+                                         
+                                     
+                                 
+                             
+                         
+                     
+                         
+                            SEND EMAIL
+                         
+                     
+                  
+             
+         
+     
+
+
+     
+         
+             
+                 
+
+                    
+                    
+                     
+                         
+				Thank You! Your email was sent.
+			 
+                         
+				Sorry, an error was encountered.
+			 
+				Please try again.
+			 
+                         Continue Browsing 
+                     
+
+                 
+             
+         
+     
+ 
+
+ 
+    .input-background-grey {
+        background: #cccccc;
+    }
+
+    textarea {
+        -moz-resize: none;
+        -ms-resize: none;
+        -o-resize: none;
+        resize: none;
+    }
+
+    /*.sendEmail-header {
+             padding: 11px 35px 31px 35px!important;
+        }*/
+ 
+
+ 
+
+    setTimeout(function () {
+        var x = document.getElementById("SendEmailModel_CountryCode").selectedIndex;
+        var country = document.getElementsByTagName("option")[x].value;
+
+        if (country === "USA" || country === "CAN") {
+            $("div#zipCodeFeedback").removeClass("hidden");
+
+            $("input#SendEmailModel_ZipCode").each(function () {
+
+                $("#SendEmailModel_ZipCode").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Please fill out this required field."
+                    }
+                });
+            });
+
+        } else {
+            $("div#zipCodeFeedback").addClass("hidden");
+            $("input#SendEmailModel_ZipCode").each(function () {
+                $("#SendEmailModel_ZipCode").rules("add", {
+                    required: false
+                });
+            });
+            console.log("Hide Zip Code ");
+        }
+    }, 5000);
+
+    function OnChangeCountryFeedbackEmail() {
+        var x = document.getElementById("SendEmailModel_CountryCode").selectedIndex;
+        var country = document.getElementsByTagName("option")[x].value;
+
+        if (country === "USA" || country === "CAN") {
+            $("input#SendEmailModel_ZipCode").each(function () {
+                $("input#SendEmailModel_ZipCode").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Please fill out this required field."
+                    }
+                });
+            });
+
+            $("div#zipCodeFeedback").removeClass("hidden");
+
+        } else {
+
+            $("input#SendEmailModel_ZipCode").each(function () {
+                $(this).rules("add", {
+                    required: false
+                });
+            });
+            $("div#zipCodeFeedback").addClass("hidden");
+            console.log("Hide Zip Code ");
+        }
+    }
+ 
+
+  
+ 
+    $(document).ready(function () {
+        if ($("#IsVertivCN").eq(0).val().toLowerCase() == 'true') {
+
+            var blockJS = document.createElement('script');
+            blockJS.src = '/bundles/js/blockScripts?v=VW9wcHi0a4JmzgN4kvhXGzTtBUIZN9qTYdbV_Kx2y8U1';
+            blockJS.type = 'text/javascript';
+            document.getElementsByTagName("head")[0].appendChild(blockJS);
+
+        }
+
+        var randomNumber = Math.floor(Math.random() * $(".feedback-form #modal-feedback #modal-body .form-group").length);
+        $(".feedback-form #modal-feedback #modal-body .form-group").eq(randomNumber).append(' ')
+    });
+ 
+ 
+ 
+     
+         
+             
+                 
+
+                    
+                    
+
+                      &times;  
+                    
+                    
+                     Tell us your feedback 
+                    
+                    
+
+
+                        
+                         
+                             
+                                 
+                                     
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     Salutation 
+                                                     
+                                                          
+                                                         Mr. 
+                                                         Ms. 
+                                                             Mrs. 
+                                                         Dr. 
+                                                         Engr. 
+                                                         Prof. 
+                                                         Other 
+                                                     
+                                                 
+                                                  
+                                             
+                                         
+                                     
+                                 
+                                 
+                                     
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     First name 
+                                                     
+                                                 
+                                                  
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     Last name 
+                                                     
+                                                 
+                                                  
+                                             
+                                         
+                                     
+                                 
+                                 
+                                     
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     Country 
+                                                      USA 
+ Afghanistan 
+ Albania 
+ Algeria 
+ American Samoa 
+ Andorra 
+ Angola 
+ Anguilla 
+ Antigua and Barbuda 
+ Argentina 
+ Armenia 
+ Aruba 
+ Ascension Island 
+ Australia 
+ Austria (&#214;sterreich) 
+ Azerbaijan 
+ Bahamas 
+ Bahrain 
+ Bangladesh 
+ Barbados 
+ Belarus (Беларусь) 
+ Belgium (Belgique/Belgi&#235;) 
+ Belize 
+ Benin 
+ Bermuda 
+ Bhutan 
+ Bolivia 
+ Bonaire and Sint Eustatius 
+ Bosnia and Herzegovina 
+ Botswana 
+ Brazil 
+ British Indian Ocean Territory 
+ Brunei Darussalam 
+ Bulgaria 
+ Burkina Faso 
+ Burundi 
+ Cabo Verde 
+ Cambodia 
+ Cameroon (Cameroun) 
+ Canada 
+ Cayman Islands 
+ Central African Republic (R&#233;publique centrafricaine) 
+ Chad (Tchad) 
+ Channel Islands (&#206;les de la Manche) 
+ Chile 
+ China (中国) 
+ Christmas Island 
+ Cocos (Keeling) Islands 
+ Colombia 
+ Comoros (Union des Comores) 
+ Congo, Republic of the 
+ Congo, The Democratic Republic 
+ Cook Islands 
+ Costa Rica 
+ Croatia 
+ Curacao 
+ Cyprus (Kıbrıs) 
+ Czech Republic 
+ Denmark 
+ Djibouti 
+ Dominica 
+ Dominican Republic (Rep&#250;blica Dominicana) 
+ East Timor 
+ Ecuador 
+ Egypt 
+ El Salvador 
+ Equatorial Guinea (Guinea Ecuatorial) 
+ Eritrea 
+ Estonia 
+ Ethiopia 
+ Falkland Islands (Malvinas) 
+ Faroe Islands 
+ Fiji 
+ Finland 
+ France 
+ French Guiana 
+ French Polynesia 
+ Gabon (R&#233;publique gabonaise) 
+ Gambia 
+ Georgia 
+ Germany (Deutschland) 
+ Ghana 
+ Gibraltar 
+ Greece 
+ Greenland 
+ Grenada 
+ Guadeloupe 
+ Guam 
+ Guatemala 
+ Guinea (Guin&#233;e) 
+ Guinea-Bissau 
+ Guyana 
+ Haiti 
+ Holy See (Vatican City State) 
+ Honduras 
+ Hong Kong (中国香港) 
+ Hungary 
+ Iceland 
+ India 
+ Indonesia 
+ Iraq 
+ Ireland 
+ Israel 
+ Italy (Italia) 
+ Ivory Coast (C&#244;te d&#39;Ivoire) 
+ Jamaica 
+ Japan (日本) 
+ Jordan 
+ Kazakhstan (Қазақстан) 
+ Kenya 
+ Kiribati 
+ Korea (한국) 
+ Kosovo 
+ Kuwait 
+ Kyrgyzstan (Кыргызстан) 
+ Laos 
+ Latvia 
+ Lebanon 
+ Lesotho 
+ Liberia 
+ Libya 
+ Liechtenstein 
+ Lithuania 
+ Luxembourg 
+ Macau 
+ Madagascar 
+ Malawi 
+ Malaysia 
+ Maldives 
+ Mali 
+ Malta 
+ Marshall Islands 
+ Martinique 
+ Mauritania 
+ Mauritius 
+ Mayotte 
+ Mexico 
+ Micronesia 
+ Moldova, Republic of 
+ Monaco 
+ Mongolia 
+ Montenegro 
+ Montserrat 
+ Morocco 
+ Mozambique (Mo&#231;ambique) 
+ Myanmar 
+ Namibia 
+ Nauru 
+ Nepal 
+ Netherlands (Nederland) 
+ Netherlands Antilles 
+ New Caledonia 
+ New Zealand 
+ Nicaragua 
+ Niger 
+ Nigeria 
+ Niue 
+ Norfolk Island 
+ North Macedonia 
+ Northern Mariana Islands 
+ Norway 
+ Oman 
+ Pakistan 
+ Palau 
+ Palestinian Authority 
+ Panama 
+ Papua New Guinea 
+ Paraguay 
+ Peru 
+ Philippines 
+ Pitcairn Islands 
+ Poland (Polska) 
+ Portugal 
+ Puerto Rico 
+ Qatar 
+ Reunion 
+ Romania 
+ Rwanda 
+ Samoa 
+ San Marino 
+ Sao Tome and Principe (S&#227;o Tom&#233; e Pr&#237;ncipe) 
+ Saudi Arabia 
+ Senegal 
+ Serbia 
+ Seychelles 
+ Sierra Leone 
+ Singapore 
+ Sint Maarten 
+ Slovakia 
+ Slovenia 
+ Solomon Islands 
+ Somalia 
+ South Africa 
+ South Georgia/South Sandwich 
+ South Sudan 
+ Spain (Espa&#241;a) 
+ Sri Lanka 
+ St. Barts 
+ St. Helena 
+ St. Kitts and Nevis 
+ St. Lucia 
+ St. Martin 
+ St. Pierre and Miquelon 
+ St. Vincent and the Grenadines 
+ Sudan 
+ Suriname 
+ Swaziland 
+ Sweden 
+ Switzerland (Schweiz) 
+ Taiwan (臺灣地區) 
+ Tajikistan (Тоҷикистон) 
+ Tanzania, United Republic of 
+ Thailand 
+ Togo 
+ Tokelau 
+ Tonga 
+ Trinidad and Tobago 
+ Tunisia 
+ Turkey (T&#252;rkiye) 
+ Turkmenistan (Түркменистан) 
+ Turks and Caicos Islands 
+ Tuvalu 
+ Uganda 
+ Ukraine 
+ United Arab Emirates 
+ United Kingdom 
+ Uruguay 
+ US Minor Outlying Islands 
+ Uzbekistan 
+ Vanuatu 
+ Venezuela 
+ Vietnam 
+ Virgin Islands (British) 
+ Virgin Islands (U.S.) 
+ Wallis and Futuna Islands 
+ Western Sahara 
+ Yemen 
+ Zambia 
+ Zimbabwe 
+ 
+                                                 
+                                                  
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     Zip code 
+                                                     
+                                                 
+                                                  
+                                             
+                                         
+                                     
+                                 
+
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     Email address 
+                                                     
+                                                 
+                                                  
+                                             
+                                         
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     Confirm email address 
+                                                     
+                                                 
+                                                  
+                                             
+                                         
+
+                             
+                             
+                                 
+                                     
+                                         
+                                             
+                                                  0, 'is-focused': isFocused }">
+                                                     Your subject line 
+                                                     
+                                                 
+                                                  
+                                             
+                                         
+                                     
+                                 
+                                 
+                                     
+                                         
+                                             
+ 
+                                         
+                                          
+                                     
+                                 
+                             
+                         
+                     
+                         
+                             
+                                 
+                                      PRIVACY NOTICE CONSENT 
+ Having received and read this  privacy notice  on personal data processing, I consent to: 
+                                 
+                             
+                             
+                                 
+                                     
+                                         
+                                             Subscribe 
+                                              
+                                              
+                                         
+                                         
+                                            The processing of my personal data for marketing purposes, including staying informed by email about industry trends, events, offers and product launches.
+                                         
+                                     
+                                 
+                             
+                         
+                     
+                         
+                            SEND EMAIL
+                         
+                     
+                  
+             
+         
+     
+
+     
+         
+             
+                 
+
+                    
+                    
+                     
+                         
+				Thank You! Your email was sent.
+			 
+                         
+				Sorry, an error was encountered.
+			 
+				Please try again.
+			 
+                         Continue Browsing 
+                     
+
+                 
+             
+         
+     
+ 
+
+ 
+    .input-background-grey {
+        background: #cccccc;
+    }
+
+    textarea {
+        -moz-resize: none;
+        -ms-resize: none;
+        -o-resize: none;
+        resize: none;
+    }
+
+    /*.sendEmail-header {
+             padding: 11px 35px 31px 35px!important;
+        }*/
+ 
+
+ 
+
+    setTimeout(function () {
+        var x = document.getElementById("SendEmailModel_CountryCode").selectedIndex;
+        var country = document.getElementsByTagName("option")[x].value;
+
+        if (country === "USA" || country === "CAN") {
+            $("div#zipCodeFeedback").removeClass("hidden");
+
+            $("input#SendEmailModel_ZipCode").each(function () {
+
+                $("#SendEmailModel_ZipCode").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Please fill out this required field."
+                    }
+                });
+            });
+
+        } else {
+            $("div#zipCodeFeedback").addClass("hidden");
+            $("input#SendEmailModel_ZipCode").each(function () {
+                $("#SendEmailModel_ZipCode").rules("add", {
+                    required: false
+                });
+            });
+            console.log("Hide Zip Code ");
+        }
+    }, 5000);
+
+    function OnChangeCountryFeedbackEmail() {
+        var x = document.getElementById("SendEmailModel_CountryCode").selectedIndex;
+        var country = document.getElementsByTagName("option")[x].value;
+
+        if (country === "USA" || country === "CAN") {
+            $("input#SendEmailModel_ZipCode").each(function () {
+                $("input#SendEmailModel_ZipCode").rules("add", {
+                    required: true,
+                    messages: {
+                        required: "Please fill out this required field."
+                    }
+                });
+            });
+
+            $("div#zipCodeFeedback").removeClass("hidden");
+
+        } else {
+
+            $("input#SendEmailModel_ZipCode").each(function () {
+                $(this).rules("add", {
+                    required: false
+                });
+            });
+            $("div#zipCodeFeedback").addClass("hidden");
+            console.log("Hide Zip Code ");
+        }
+    }
+ 
+
+  
+ 
+    $(document).ready(function () {
+        if ($("#IsVertivCN").eq(0).val().toLowerCase() == 'true') {
+
+            var blockJS = document.createElement('script');
+            blockJS.src = '/bundles/js/blockScripts?v=VW9wcHi0a4JmzgN4kvhXGzTtBUIZN9qTYdbV_Kx2y8U1';
+            blockJS.type = 'text/javascript';
+            document.getElementsByTagName("head")[0].appendChild(blockJS);
+
+        }
+
+        var randomNumber = Math.floor(Math.random() * $(".feedback-form #modal-feedback-redesign .col-sm-12 .pb-2").length);
+        $(".feedback-form #modal-feedback-redesign .col-sm-12 .pb-2").eq(randomNumber).append(' Nickname    ')
+    });
+ 
+
+ 
+ 
+     
+         
+         
+             
+                 
+                     
+                          &times;  
+                     
+                     
+                               
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             Discover latest advancements in technology by joining our newsletter 
+                             
+                                Get exclusive insights and updates on AI, liquid cooling, and high performance computing in the data center delivered straight to your inbox.
+                             
+                             
+                                 
+                                     
+                                         YOUR EMAIL 
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         
+                                          
+                                     
+                                 
+                                 
+                                      
+                                 
+                                 
+                                     
+                                         
+                                          
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         YOUR COUNTRY 
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         
+                                              USA 
+ Afghanistan 
+ Albania 
+ Algeria 
+ American Samoa 
+ Andorra 
+ Angola 
+ Anguilla 
+ Antigua and Barbuda 
+ Argentina 
+ Armenia 
+ Aruba 
+ Ascension Island 
+ Australia 
+ Austria (&#214;sterreich) 
+ Azerbaijan 
+ Bahamas 
+ Bahrain 
+ Bangladesh 
+ Barbados 
+ Belarus (Беларусь) 
+ Belgium (Belgique/Belgi&#235;) 
+ Belize 
+ Benin 
+ Bermuda 
+ Bhutan 
+ Bolivia 
+ Bonaire and Sint Eustatius 
+ Bosnia and Herzegovina 
+ Botswana 
+ Brazil 
+ British Indian Ocean Territory 
+ Brunei Darussalam 
+ Bulgaria 
+ Burkina Faso 
+ Burundi 
+ Cabo Verde 
+ Cambodia 
+ Cameroon (Cameroun) 
+ Canada 
+ Cayman Islands 
+ Central African Republic (R&#233;publique centrafricaine) 
+ Chad (Tchad) 
+ Channel Islands (&#206;les de la Manche) 
+ Chile 
+ China (中国) 
+ Christmas Island 
+ Cocos (Keeling) Islands 
+ Colombia 
+ Comoros (Union des Comores) 
+ Congo, Republic of the 
+ Congo, The Democratic Republic 
+ Cook Islands 
+ Costa Rica 
+ Croatia 
+ Curacao 
+ Cyprus (Kıbrıs) 
+ Czech Republic 
+ Denmark 
+ Djibouti 
+ Dominica 
+ Dominican Republic (Rep&#250;blica Dominicana) 
+ East Timor 
+ Ecuador 
+ Egypt 
+ El Salvador 
+ Equatorial Guinea (Guinea Ecuatorial) 
+ Eritrea 
+ Estonia 
+ Ethiopia 
+ Falkland Islands (Malvinas) 
+ Faroe Islands 
+ Fiji 
+ Finland 
+ France 
+ French Guiana 
+ French Polynesia 
+ Gabon (R&#233;publique gabonaise) 
+ Gambia 
+ Georgia 
+ Germany (Deutschland) 
+ Ghana 
+ Gibraltar 
+ Greece 
+ Greenland 
+ Grenada 
+ Guadeloupe 
+ Guam 
+ Guatemala 
+ Guinea (Guin&#233;e) 
+ Guinea-Bissau 
+ Guyana 
+ Haiti 
+ Holy See (Vatican City State) 
+ Honduras 
+ Hong Kong (中国香港) 
+ Hungary 
+ Iceland 
+ India 
+ Indonesia 
+ Iraq 
+ Ireland 
+ Israel 
+ Italy (Italia) 
+ Ivory Coast (C&#244;te d&#39;Ivoire) 
+ Jamaica 
+ Japan (日本) 
+ Jordan 
+ Kazakhstan (Қазақстан) 
+ Kenya 
+ Kiribati 
+ Korea (한국) 
+ Kosovo 
+ Kuwait 
+ Kyrgyzstan (Кыргызстан) 
+ Laos 
+ Latvia 
+ Lebanon 
+ Lesotho 
+ Liberia 
+ Libya 
+ Liechtenstein 
+ Lithuania 
+ Luxembourg 
+ Macau 
+ Madagascar 
+ Malawi 
+ Malaysia 
+ Maldives 
+ Mali 
+ Malta 
+ Marshall Islands 
+ Martinique 
+ Mauritania 
+ Mauritius 
+ Mayotte 
+ Mexico 
+ Micronesia 
+ Moldova, Republic of 
+ Monaco 
+ Mongolia 
+ Montenegro 
+ Montserrat 
+ Morocco 
+ Mozambique (Mo&#231;ambique) 
+ Myanmar 
+ Namibia 
+ Nauru 
+ Nepal 
+ Netherlands (Nederland) 
+ Netherlands Antilles 
+ New Caledonia 
+ New Zealand 
+ Nicaragua 
+ Niger 
+ Nigeria 
+ Niue 
+ Norfolk Island 
+ North Macedonia 
+ Northern Mariana Islands 
+ Norway 
+ Oman 
+ Pakistan 
+ Palau 
+ Palestinian Authority 
+ Panama 
+ Papua New Guinea 
+ Paraguay 
+ Peru 
+ Philippines 
+ Pitcairn Islands 
+ Poland (Polska) 
+ Portugal 
+ Puerto Rico 
+ Qatar 
+ Reunion 
+ Romania 
+ Rwanda 
+ Samoa 
+ San Marino 
+ Sao Tome and Principe (S&#227;o Tom&#233; e Pr&#237;ncipe) 
+ Saudi Arabia 
+ Senegal 
+ Serbia 
+ Seychelles 
+ Sierra Leone 
+ Singapore 
+ Sint Maarten 
+ Slovakia 
+ Slovenia 
+ Solomon Islands 
+ Somalia 
+ South Africa 
+ South Georgia/South Sandwich 
+ South Sudan 
+ Spain (Espa&#241;a) 
+ Sri Lanka 
+ St. Barts 
+ St. Helena 
+ St. Kitts and Nevis 
+ St. Lucia 
+ St. Martin 
+ St. Pierre and Miquelon 
+ St. Vincent and the Grenadines 
+ Sudan 
+ Suriname 
+ Swaziland 
+ Sweden 
+ Switzerland (Schweiz) 
+ Taiwan (臺灣地區) 
+ Tajikistan (Тоҷикистон) 
+ Tanzania, United Republic of 
+ Thailand 
+ Togo 
+ Tokelau 
+ Tonga 
+ Trinidad and Tobago 
+ Tunisia 
+ Turkey (T&#252;rkiye) 
+ Turkmenistan (Түркменистан) 
+ Turks and Caicos Islands 
+ Tuvalu 
+ Uganda 
+ Ukraine 
+ United Arab Emirates 
+ United Kingdom 
+ Uruguay 
+ US Minor Outlying Islands 
+ Uzbekistan 
+ Vanuatu 
+ Venezuela 
+ Vietnam 
+ Virgin Islands (British) 
+ Virgin Islands (U.S.) 
+ Wallis and Futuna Islands 
+ Western Sahara 
+ Yemen 
+ Zambia 
+ Zimbabwe 
+ 
+                                         
+                                     
+
+                                     
+                                         
+                                          
+                                     
+                                 
+                                 
+                                      
+                                 
+                                 
+                                     
+                                         
+                                              English (United States) 
+ English (India) 
+ English (EMEA) 
+ Espa&#241;ol (EMEA) 
+ Espa&#241;ol (LATAM) 
+ Fran&#231;ais (Canada) 
+ Fran&#231;ais (EMEA) 
+ Italiano 
+ 한국어 
+ Nederlands 
+ Polski 
+ Portugu&#234;s (LATAM) 
+ Portugu&#234;s (EMEA) 
+ русский 
+ T&#252;rk&#231;e 
+ 繁體中文 （台灣） 
+ 中文(中华人民共和国) 
+ Deutsch 
+ English (ASIA) 
+ English (Canada) 
+ English (China) 
+ 日本語 (日本) 
+ English (LATAM) 
+ English (ANZ) 
+ Tiếng Việt 
+ 
+                                         
+                                     
+                                 
+                             
+                                 
+                                     
+                                         
+                                              PRIVACY NOTICE CONSENT 
+ Having received and read this  privacy notice  on personal data processing, I consent to: 
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                 
+                                                      
+                                                      
+                                                 
+                                                 
+                                                    The processing of my personal data for marketing purposes, including staying informed by email about industry trends, events, offers and product launches.
+                                                 
+                                             
+                                         
+                                     
+                                 
+                             
+                             
+                             
+                                 Subscribe 
+                             
+                      
+                 
+             
+         
+     
+ 
+
+ 
+     
+         
+             
+
+                
+                
+                 
+                     
+				Thank You! Your email was sent.
+			 
+                     
+				Sorry, an error was encountered.
+			 
+				Please try again.
+			 
+                     Continue Browsing 
+                 
+
+             
+         
+     
+ 
+
+  
+ 
+    $(document).ready(function () {
+        var randomNumber = Math.floor(Math.random() * $("#subscribeV2 .form-content-subscribe .row .col-sm-6").length);
+        $("#subscribeV2 .form-content-subscribe .row .col-sm-6").eq(randomNumber).append(' ')
+    });
+ 
+
+
+
+ 
+ 
+     
+         
+         
+             
+                 
+                     &times; 
+                 
+             
+             
+                 
+                     
+                               
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                             
+                              Discover latest advancements in technology by joining our newsletter 
+                             
+                                Get exclusive insights and updates on AI, liquid cooling, and high performance computing in the data center delivered straight to your inbox.
+                             
+                             
+                                 
+                                     
+                                         YOUR EMAIL 
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         EMAIL ADDRESS 
+                                         
+                                     
+                                 
+                                 
+                                     
+                                          
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         TOPICS OF INTEREST 
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                AI Solutions
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                Colocation / Cloud / Hyperscale Infrastructure
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                Critical Power
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                5G / Edge
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                Efficiency / Sustainability
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                Facilities Management / Services / Remote
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                IT Management / Remote Management
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                Modular Data Centers
+                                             
+                                         
+                                     
+                                     
+                                         
+                                             
+                                                  
+                                                  
+                                             
+                                             
+                                                Thermal Management
+                                             
+                                         
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         YOUR COUNTRY 
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                         COUNTRY 
+                                         
+                                              USA 
+ Afghanistan 
+ Albania 
+ Algeria 
+ American Samoa 
+ Andorra 
+ Angola 
+ Anguilla 
+ Antigua and Barbuda 
+ Argentina 
+ Armenia 
+ Aruba 
+ Ascension Island 
+ Australia 
+ Austria (&#214;sterreich) 
+ Azerbaijan 
+ Bahamas 
+ Bahrain 
+ Bangladesh 
+ Barbados 
+ Belarus (Беларусь) 
+ Belgium (Belgique/Belgi&#235;) 
+ Belize 
+ Benin 
+ Bermuda 
+ Bhutan 
+ Bolivia 
+ Bonaire and Sint Eustatius 
+ Bosnia and Herzegovina 
+ Botswana 
+ Brazil 
+ British Indian Ocean Territory 
+ Brunei Darussalam 
+ Bulgaria 
+ Burkina Faso 
+ Burundi 
+ Cabo Verde 
+ Cambodia 
+ Cameroon (Cameroun) 
+ Canada 
+ Cayman Islands 
+ Central African Republic (R&#233;publique centrafricaine) 
+ Chad (Tchad) 
+ Channel Islands (&#206;les de la Manche) 
+ Chile 
+ China (中国) 
+ Christmas Island 
+ Cocos (Keeling) Islands 
+ Colombia 
+ Comoros (Union des Comores) 
+ Congo, Republic of the 
+ Congo, The Democratic Republic 
+ Cook Islands 
+ Costa Rica 
+ Croatia 
+ Curacao 
+ Cyprus (Kıbrıs) 
+ Czech Republic 
+ Denmark 
+ Djibouti 
+ Dominica 
+ Dominican Republic (Rep&#250;blica Dominicana) 
+ East Timor 
+ Ecuador 
+ Egypt 
+ El Salvador 
+ Equatorial Guinea (Guinea Ecuatorial) 
+ Eritrea 
+ Estonia 
+ Ethiopia 
+ Falkland Islands (Malvinas) 
+ Faroe Islands 
+ Fiji 
+ Finland 
+ France 
+ French Guiana 
+ French Polynesia 
+ Gabon (R&#233;publique gabonaise) 
+ Gambia 
+ Georgia 
+ Germany (Deutschland) 
+ Ghana 
+ Gibraltar 
+ Greece 
+ Greenland 
+ Grenada 
+ Guadeloupe 
+ Guam 
+ Guatemala 
+ Guinea (Guin&#233;e) 
+ Guinea-Bissau 
+ Guyana 
+ Haiti 
+ Holy See (Vatican City State) 
+ Honduras 
+ Hong Kong (中国香港) 
+ Hungary 
+ Iceland 
+ India 
+ Indonesia 
+ Iraq 
+ Ireland 
+ Israel 
+ Italy (Italia) 
+ Ivory Coast (C&#244;te d&#39;Ivoire) 
+ Jamaica 
+ Japan (日本) 
+ Jordan 
+ Kazakhstan (Қазақстан) 
+ Kenya 
+ Kiribati 
+ Korea (한국) 
+ Kosovo 
+ Kuwait 
+ Kyrgyzstan (Кыргызстан) 
+ Laos 
+ Latvia 
+ Lebanon 
+ Lesotho 
+ Liberia 
+ Libya 
+ Liechtenstein 
+ Lithuania 
+ Luxembourg 
+ Macau 
+ Madagascar 
+ Malawi 
+ Malaysia 
+ Maldives 
+ Mali 
+ Malta 
+ Marshall Islands 
+ Martinique 
+ Mauritania 
+ Mauritius 
+ Mayotte 
+ Mexico 
+ Micronesia 
+ Moldova, Republic of 
+ Monaco 
+ Mongolia 
+ Montenegro 
+ Montserrat 
+ Morocco 
+ Mozambique (Mo&#231;ambique) 
+ Myanmar 
+ Namibia 
+ Nauru 
+ Nepal 
+ Netherlands (Nederland) 
+ Netherlands Antilles 
+ New Caledonia 
+ New Zealand 
+ Nicaragua 
+ Niger 
+ Nigeria 
+ Niue 
+ Norfolk Island 
+ North Macedonia 
+ Northern Mariana Islands 
+ Norway 
+ Oman 
+ Pakistan 
+ Palau 
+ Palestinian Authority 
+ Panama 
+ Papua New Guinea 
+ Paraguay 
+ Peru 
+ Philippines 
+ Pitcairn Islands 
+ Poland (Polska) 
+ Portugal 
+ Puerto Rico 
+ Qatar 
+ Reunion 
+ Romania 
+ Rwanda 
+ Samoa 
+ San Marino 
+ Sao Tome and Principe (S&#227;o Tom&#233; e Pr&#237;ncipe) 
+ Saudi Arabia 
+ Senegal 
+ Serbia 
+ Seychelles 
+ Sierra Leone 
+ Singapore 
+ Sint Maarten 
+ Slovakia 
+ Slovenia 
+ Solomon Islands 
+ Somalia 
+ South Africa 
+ South Georgia/South Sandwich 
+ South Sudan 
+ Spain (Espa&#241;a) 
+ Sri Lanka 
+ St. Barts 
+ St. Helena 
+ St. Kitts and Nevis 
+ St. Lucia 
+ St. Martin 
+ St. Pierre and Miquelon 
+ St. Vincent and the Grenadines 
+ Sudan 
+ Suriname 
+ Swaziland 
+ Sweden 
+ Switzerland (Schweiz) 
+ Taiwan (臺灣地區) 
+ Tajikistan (Тоҷикистон) 
+ Tanzania, United Republic of 
+ Thailand 
+ Togo 
+ Tokelau 
+ Tonga 
+ Trinidad and Tobago 
+ Tunisia 
+ Turkey (T&#252;rkiye) 
+ Turkmenistan (Түркменистан) 
+ Turks and Caicos Islands 
+ Tuvalu 
+ Uganda 
+ Ukraine 
+ United Arab Emirates 
+ United Kingdom 
+ Uruguay 
+ US Minor Outlying Islands 
+ Uzbekistan 
+ Vanuatu 
+ Venezuela 
+ Vietnam 
+ Virgin Islands (British) 
+ Virgin Islands (U.S.) 
+ Wallis and Futuna Islands 
+ Western Sahara 
+ Yemen 
+ Zambia 
+ Zimbabwe 
+ 
+                                         
+                                     
+
+
+                                 
+                                 
+                                     
+                                          ZIP CODE 
+                                         
+                                          
+                                     
+                                 
+                                 
+                                      
+                                 
+                                 
+                                     
+                                         
+                                              English (United States) 
+ English (India) 
+ English (EMEA) 
+ Espa&#241;ol (EMEA) 
+ Espa&#241;ol (LATAM) 
+ Fran&#231;ais (Canada) 
+ Fran&#231;ais (EMEA) 
+ Italiano 
+ 한국어 
+ Nederlands 
+ Polski 
+ Portugu&#234;s (LATAM) 
+ Portugu&#234;s (EMEA) 
+ русский 
+ T&#252;rk&#231;e 
+ 繁體中文 （台灣） 
+ 中文(中华人民共和国) 
+ Deutsch 
+ English (ASIA) 
+ English (Canada) 
+ English (China) 
+ 日本語 (日本) 
+ English (LATAM) 
+ English (ANZ) 
+ Tiếng Việt 
+ 
+                                         
+                                     
+                                 
+                             
+                                 
+                                     
+                                         
+                                             PRIVACY NOTICE CONSENT 
+                                             
+                                                 
+                                                      
+                                                      
+                                                 
+                                                  PRIVACY NOTICE CONSENT 
+ Having received and read this  privacy notice  on personal data processing, I consent to: 
+                                                 
+                                                    The processing of my personal data for marketing purposes, including staying informed by email about industry trends, events, offers and product launches.
+                                                 
+                                             
+                                         
+                                     
+                                 
+                             
+                             
+                                 SIGN UP NOW 
+                             
+                      
+                 
+             
+         
+     
+ 
+
+ 
+     
+         
+             
+
+                
+                
+                 
+                     
+                          
+                     
+                 
+                 
+                     
+                          
+                     
+                 
+
+
+                 
+                     
+                        Thank you for signing up!
+                         
+                        We received your email successfully.
+                     
+                     
+                        Please check your email if you received a confirmation message.
+                     
+                     
+                        Something went wrong.
+                     
+                     
+                        Unfortunately, we encountered an issue with your subscription.
+                     
+                     Continue Browsing 
+                     TRY AGAIN 
+                 
+
+             
+         
+     
+ 
+
+  
+ 
+    $(document).ready(function () {
+        var randomNumber = Math.floor(Math.random() * $("#newslettersubscribe .form-content-subscribe .row .col-sm-6").length);
+        $("#newslettersubscribe .form-content-subscribe .row .col-sm-6").eq(randomNumber).append(' ')
+
+        $(".newsletter-subscribe__modal-privacy-notice__title h5").attr('hidden', true);
+
+        var inputData = $(".newsletter-subscribe__modal-privacy-notice__title div .subscribe-text").text();
+        $(".newsletter-subscribe__modal-privacy-notice__title div p:first").append(inputData);
+        $(".newsletter-subscribe__modal-privacy-notice__title div .subscribe-text").remove();
+
+        //Set Checkbox Value 1 or 0
+        $('.toi').on('change', function () {
+            this.value ^= 1;
+        });
+
+        //Set AssetURL
+        var assetURL = window.location.href;
+        $("#newsletter_asseturl").val(assetURL);
+    });
+
+ 
+
+
+
+
+ 
+  
+  
+ 
+    $(document).ready(function () {
+
+        if ($("body").has("#SubscribeScrollBox").length > 0) {
+            $(".p3-page-header.header-redesign").addClass('p3-page-header--z-index');
+            $('body').addClass('scroll-box--overflow');
+
+        }
+
+    });
+ 
+
+ 
+ 
+     
+         
+         
+             
+                  &times;  
+             
+             
+                 Welcome back, {0}! 
+                 
+                    We detected multiple accounts using your login credentials. Please select one account and continue:
+                 
+                 
+                     
+                        LOGIN AS CUSTOMER
+                     
+                     
+                        LOGIN AS PARTNER
+                     
+                     
+                        LOGIN AS CONSULTANT
+                     
+
+                 
+             
+         
+     
+ 
+
+
+
+
+
+
+
+    
+
+     
+        // Query-only check for AngularJS modules
+        function moduleExists(name) {
+            if (typeof angular === 'undefined') {
+                return false;
+            }
+            try {
+                angular.module(name); // query-only; throws if missing
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+     
+     
+     
+     
+        if (typeof jQuery === 'undefined' || window._jqFailed) {
+            document.write('  ');
+        }
+     
+     
+     
+     
+        if (window._ngCoreFailed || typeof angular === 'undefined') {
+            document.write('  ');
+        }
+     
+     
+     
+     
+        if (window._ngAnimateFailed || !moduleExists('ngAnimate')) {
+            document.write('  ');
+        }
+     
+     
+     
+     
+        if (window._ngSanitizeFailed || !moduleExists('ngSanitize')) {
+            document.write('  ');
+        }
+     
+
+
+  
+
+  
+
+  
+
+
+ 
+	var isProgressiveProfilingPage = isProgressiveProfilingPage || false;
+	if (!isProgressiveProfilingPage) {
+		var _elqQ = _elqQ || [];
+		_elqQ.push(['elqSetSiteId', '157200592']);
+		_elqQ.push(['elqUseFirstPartyCookie', 'tracking.vertiv.com']);
+		_elqQ.push(['elqTrackPageView', window.location.href]);
+					
+		(function() {
+			function async_load() {
+				var s = document.createElement('script'); s.type = 'text/javascript';
+				s.async = true;
+				s.src = '//img.en25.com/i/elqCfg.min.js';
+				var x = document.getElementsByTagName('script')[0];
+				x.parentNode.insertBefore(s, x);
+			}
+			if(window.addEventListener) window.addEventListener('DOMContentLoaded', async_load, false);
+			else if (window.attachEvent) window.attachEvent('onload', async_load);
+		})();
+	}
+ 
+ 
+@media only screen and (min-width: 768px) {
+.reskin .is-locked .p3-page-header__logo_img {
+    -webkit-transform: scale(.62);
+    transform: (.62);
+    margin-top: -1.5rem;
+    padding-bottom: 0;
+}
+   
+
+     
+    $(document).on("click", ".data-modal", function () {
+        if ($(this).attr('data-email')) {
+            var getEmailData = $(this).data('email');
+            $("input#bookId").val(getEmailData);
+            $("input#To").val(getEmailData);
+        }
+
+        if ($(this).attr('data-contacname')) {
+            var getContactName = $(this).data('contacname');
+            $("#sendtoEmail").text(getContactName);
+        }
+
+        if ($('h1.h2.productnamedata').attr('data-productname')) {
+            var getProductNameData = $(".productnamedata").data('productname');
+            $("input#SubjectLine").val(getProductNameData);
+        }
+
+        if ($(this).attr('data-contactid')) {
+            var getContactId = $(this).data('contactid');
+            $("input#ContactId").val(getContactId);
+        }
+
+    });
+    
+
+    if (window.location.href.indexOf("QuickForgotPassword") > -1) {
+        $('#myModal').modal('show');
+    }
+ 
+    
+
+      
+
+
+     
+ 
+
+
+    
+    
+ 
+ 

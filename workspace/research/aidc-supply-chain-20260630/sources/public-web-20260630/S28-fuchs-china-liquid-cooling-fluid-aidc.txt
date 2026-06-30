@@ -1,0 +1,1549 @@
+ 
+ 
+ 
+
+ 
+ 
+
+
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+ 
+
+
+
+
+
+ 
+    
+        var TYPO3 = {
+            assetPaths: {
+                site: "/_assets/5633aca40c8991847850374eb9f0fc04/",
+                cyzFuchsProducts: "/_assets/4584d086e84c0a12f6573768f4873248/",
+                cyzFuchsDistributors: "/_assets/d94fe63c838c915062c827df65438d25/",
+                cyzFuchsDownloads: "/_assets/1195539f95d65063b3ad40d9fa431d13/"
+            },
+        };
+    
+ 
+
+   
+
+     
+    /* open-sans-300 - latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese */
+    @font-face {
+        font-family: "open sans";
+        font-style: normal;
+        font-weight: 300;
+        src: local('Open Sans Light'), local('OpenSans-Light'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff2") format("woff2"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300.woff") format("woff");
+        font-display: swap;
+    }
+    /* open-sans-300italic - latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese */
+    @font-face {
+        font-family: "open sans";
+        font-style: italic;
+        font-weight: 300;
+        src: local('Open Sans Light Italic'), local('OpenSans-LightItalic'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300italic.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300italic.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300italic.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-300italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+    /* open-sans-regular - latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese */
+    @font-face {
+        font-family: "open sans";
+        font-style: normal;
+        font-weight: 400;
+        src: local('Open Sans Regular'), local('OpenSans-Regular'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+    /* open-sans-italic - latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese */
+    @font-face {
+        font-family: "open sans";
+        font-style: italic;
+        font-weight: 400;
+        src: local('Open Sans Italic'), local('OpenSans-Italic'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-italic.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-italic.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-italic.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+    /* open-sans-700 - latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese */
+    @font-face {
+        font-family: "open sans";
+        font-style: normal;
+        font-weight: 700;
+        src: local('Open Sans Bold'), local('OpenSans-Bold'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+    /* open-sans-700italic - latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese */
+    @font-face {
+        font-family: "open sans";
+        font-style: italic;
+        font-weight: 700;
+        src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700italic.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700italic.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700italic.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/open-sans/open-sans-v15-latin-ext_greek_cyrillic_cyrillic-ext_greek-ext_latin_vietnamese-700italic.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+
+
+    /* tajawal-300 - arabic_latin */
+    @font-face {
+        font-family: 'Tajawal';
+        font-style: normal;
+        font-weight: 300;
+        src: local('Tajawal Light'), local('Tajawal-Light'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-300.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-300.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-300.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-300.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+    /* tajawal-regular - arabic_latin */
+    @font-face {
+        font-family: 'Tajawal';
+        font-style: normal;
+        font-weight: 400;
+        src: local('Tajawal'), local('Tajawal-Regular'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-regular.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-regular.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-regular.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-regular.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+    /* tajawal-500 - arabic_latin */
+    @font-face {
+        font-family: 'Tajawal';
+        font-style: normal;
+        font-weight: 500;
+        src: local('Tajawal Medium'), local('Tajawal-Medium'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-500.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-500.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-500.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-500.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+    /* tajawal-700 - arabic_latin */
+    @font-face {
+        font-family: 'Tajawal';
+        font-style: normal;
+        font-weight: 700;
+        src: local('Tajawal Bold'), local('Tajawal-Bold'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-700.woff2") format("woff2"),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-700.woff") format("woff"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-700.woff2") format("woff2"), /* Chrome 26+, Opera 23+, Firefox 39+ */
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/tajawal/tajawal-v1-arabic_latin-700.woff") format("woff"); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+        font-display: swap;
+    }
+
+    /* FontAwesome */
+
+    @font-face {
+        font-family: 'FontAwesome';
+        src: url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/fontawesome-webfont.eot?v=4.6.3");
+        src: url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/fontawesome-webfont.eot?#iefix&amp;v=4.6.3") format('embedded-opentype'),
+        url("https://fuchs.azureedge.net/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/fontawesome-webfont.woff2?v=4.6.3") format("woff2"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/fontawesome-webfont.woff2?v=4.6.3") format("woff2"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/fontawesome-webfont.woff?v=4.6.3") format("woff"), url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/fontawesome-webfont.ttf?v=4.6.3") format("truetype"),
+        url("/_assets/5633aca40c8991847850374eb9f0fc04/Fonts/fontawesome-webfont.svg?v=4.6.3#fontawesomeregular") format("svg");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+    }
+ 
+    
+        
+        
+        
+
+
+
+    
+    
+    
+     
+    
+         
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start':
+                        new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-56HJ8NGK');
+         
+    
+
+
+        
+
+        
+             
+        
+
+          
+         福斯中国重磅亮相第五届中国数据中心液冷产业峰会，赋能绿色智算发展 | FUCHS LUBRICANTS (CHINA) LTD. 
+    
+
+ 
+
+ 
+ 
+ 
+ 
+
+ 
+  
+ 
+ 
+
+
+
+     
+
+     
+     
+          
+          
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+         
+         
+     
+
+     
+     
+         
+         
+         
+     
+
+     
+     
+         
+         
+         
+     
+     
+         
+         
+         
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+         
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+         
+         
+     
+
+     
+     
+         
+     
+
+     
+     
+         
+     
+
+ 
+
+
+
+  
+
+    
+            
+                    
+                         
+                             
+                                 &times; 
+                             
+                            
+      我们使用Cookie来确保我们网站正确运行，并收集有关用户的统计数据，以便我们对网站进行改进。 如果要继续浏览网站，您需要接受我们的Cookie使用。
+   了解更多     
+
+
+                         
+                    
+                
+        
+
+
+
+
+
+ 
+      
+
+     
+        跳到内容
+     
+
+    
+            
+                
+
+    
+    
+    
+    
+
+    
+
+    
+
+     
+         
+
+             
+                 
+                     
+                        
+                                 
+                                    
+                                              
+                                            
+                                                  福斯润滑油（中国）有限公司 
+                                            
+                                        
+                                 
+                            
+                     
+
+                    
+                 
+             
+
+             
+
+                 
+
+                      
+                      
+                      
+
+                     
+                        显示或隐藏导航
+                     
+                 
+
+                 
+                     
+                         
+                             
+                         
+                     
+
+                     
+                         
+                             
+                                 
+                             
+                         
+                     
+
+                    
+                 
+
+             
+
+             
+                 
+                     
+                         
+                             
+                             
+                                 
+                                     
+                                 
+                                 Suchen 
+                             
+                         
+                     
+                 
+
+                 
+
+                    
+                            
+                                    
+                                            
+
+                                                
+                                                    
+
+                                                     
+                                                        
+                                                             
+                                                                 公司 
+                                                             
+                                                        
+
+                                                        
+                                                            
+    
+
+    
+         
+              
+         
+         
+             
+                   
+	
+    
+
+	 
+		 
+			
+                
+                    
+      关于福斯     
+                        FUCHS100战略
+                        
+                        公司介绍
+                        
+                        福斯中国
+                        
+                        企业宗旨
+                        
+                        合规
+                        
+                        历史
+                        
+                        福斯在全球
+                        
+                        福斯与您同行致远
+                        
+                        DMG MORI 2023最佳合作伙伴奖
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      技术     
+                        先进技术
+                        
+                        奖项和认证
+                        
+                        关键技术
+                        
+                        研究活动
+                         
+
+
+                
+            
+                
+                    
+      可持续发展     
+                        碳中和策略
+                        
+                        可持续发展管理
+                        
+                        企业公民
+                        
+                        企业社会责任
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      新闻     
+                        赛事
+                        
+                        即时新闻
+                         
+
+
+                
+            
+                
+                    
+      政策和证书     
+                        条款、条件及政策
+                        
+                        认证及认可
+                        
+                        福斯荣誉
+                         
+
+
+                
+            
+		 
+	 
+   
+             
+         
+    
+
+
+                                                        
+                                                     
+                                                
+                                            
+
+                                                
+                                                    
+
+                                                     
+                                                        
+                                                             
+                                                                 产品 
+                                                             
+                                                        
+
+                                                        
+                                                            
+    
+
+    
+         
+              
+         
+         
+             
+                   
+	
+    
+
+	 
+		 
+			
+                
+                    
+      产品系列     
+                        车用润滑油
+                        
+                        工业润滑油
+                        
+                        润滑脂
+                        
+                        金属加工润滑产品
+                        
+                        特种油
+                        
+                        服务
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      服务链接     
+                        选油助手
+                        
+                        产品搜索
+                        
+                        产品助手
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      
+
+
+                
+            
+		 
+	 
+   
+             
+         
+    
+
+
+                                                        
+                                                     
+                                                
+                                            
+
+                                                
+                                                    
+
+                                                     
+                                                        
+                                                             
+                                                                 行业 
+                                                             
+                                                        
+
+                                                        
+                                                            
+    
+
+    
+         
+              
+         
+         
+             
+                   
+	
+    
+
+	 
+		 
+			
+                
+                    
+      A - D     
+                        农业和林业
+                        
+                        汽车
+                        
+                        铸造
+                        
+                        水泥、石灰和石膏
+                        
+                        工程机械
+                        
+                        汽车售后市场
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      F - M     
+                        食品和饮料
+                        
+                        锻造
+                        
+                        玻璃
+                        
+                        通用机械设备
+                        
+                        金属加工
+                        
+                        采矿和勘探
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      N - Z     
+                        电力
+                        
+                        钢铁和金属
+                        
+                        运输
+                        
+                        其它行业
+                         
+
+
+                
+            
+		 
+	 
+   
+             
+         
+    
+
+
+                                                        
+                                                     
+                                                
+                                            
+
+                                                
+                                                    
+
+                                                     
+                                                        
+                                                             
+                                                                 品牌 
+                                                             
+                                                        
+
+                                                        
+                                                            
+    
+
+    
+         
+              
+         
+         
+             
+                   
+	
+    
+
+	 
+		 
+			
+                
+                    
+            A - K      AGRIFARM      ANTICORIT      CARBAFLO      CASSIDA      CEPLATTYN      CHEMPLEX      ECOCOOL      ECOCUT      FUCHS BluEV      GEARMASTER      GLEITMO    &nbsp;      
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+            L - R      LAGERMEISTER      LOCOLUB      LUBCON      LUBRODAL      MAINTAIN      MOLYPAUL      NYE Lubricants      PENTOSIN      PLANTO      RENEP      RENISO      RENOCLEAN      RENOFORM      RENOLIN      RENOLIT      RENOQUENCH        
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+            S - Z      SILKOLENE      SOK      SOLCENIC      STABYL      STABYLAN      TITAN      URETHYN      VITROLIS        
+
+
+                
+            
+		 
+	 
+   
+             
+         
+    
+
+
+                                                        
+                                                     
+                                                
+                                            
+
+                                                
+                                                    
+
+                                                     
+                                                        
+                                                             
+                                                                 加入福斯 
+                                                             
+                                                        
+
+                                                        
+                                                     
+                                                
+                                            
+
+                                                
+                                                    
+
+                                                     
+                                                        
+                                                             
+                                                                 资源 
+                                                             
+                                                        
+
+                                                        
+                                                     
+                                                
+                                            
+
+                                                
+                                            
+
+                                                
+                                                    
+
+                                                     
+                                                        
+
+                                                        
+                                                     
+                                                
+                                            
+                                        
+                                
+                        
+                 
+
+                
+             
+
+             
+
+                      Worldwide     
+                                            ZH
+                                              English    中文          Suchen               Suchen        
+             
+         
+     
+
+    
+
+    
+    
+    
+    
+
+    
+
+    
+
+    
+
+     
+        
+     
+
+
+            
+
+            
+                 
+                     
+                        
+
+                        
+                               
+                                            cn
+                                            
+                                            公司
+                                            
+                                            福斯新闻
+                                           
+                        
+                     
+                 
+            
+
+             
+             
+                
+
+    
+    
+    
+    
+
+
+     
+        
+     
+
+     
+
+        
+
+           
+	
+    
+
+	 
+		 
+			 
+				
+                
+                    
+     
+     
+         福斯中国重磅亮相第五届中国数据中心液冷产业峰会，赋能绿色智算发展 
+
+         
+            20.04.2026 - 02:00
+         
+
+         
+            
+
+                 
+                     
+                         
+                     
+
+                    
+                 
+
+            
+
+             
+                 在AI与云计算狂飙突进的当下，数据中心已迈入 MW级机柜、高密度算力 的全新阶段。传统风冷技术触达性能天花板，液冷正成为突破散热瓶颈、驱动绿色可持续发展的核心引擎，产业新蓝海加速开启。 
+ 4月14至15日，福斯中国携手精密冷却硬件合作伙伴，重磅亮相 第五届中国数据中心液冷产业峰会暨展览会。 双方联袂呈现领先的液冷散热解决方案，共绘数据中心高效、绿色冷却新蓝图。 
+ 本届峰会以 “聚焦AI时代数据中心散热技术升级与产业生态协同” 为主题，汇聚英特尔、中国移动、世纪互联、曙光数创、中兴通讯等产业链头部企业，设置五大专题论坛，全方位探讨AIDC液冷技术前沿趋势、全链路方案与落地实践。 
+  专业流体方案，破解高热密度核心痛点  
+ 面对“MW 级机柜”“大规模AI集群”的极高热流密度挑战，福斯现场展出的 RENOLIN FECC系列数据中心专用冷却液 ，以专业流体技术直击可靠性、能效、稳定性核心诉求。     RENOLIN FECC SYNTH系列（高热密度专属）     专为AIDC等极限场景优化，卓越散热效率助力显著降低PUE，践行绿色计算。具备 优异电气绝缘性、广谱材料兼容性、行业领先稳定性 ，并获 OCP（开放计算项目）与 UL双重权威认证 ，为大规模液冷部署提供安全、标准化的流体保障，精准匹配产业高标准需求。     RENOLIN FECC PG 25（冷板系统专用）     丙二醇基冷板式液冷专属配方，搭载 长效有机缓蚀技术 ，全方位保护系统内多种金属，强效防腐防锈。产品 无毒环保、安全稳定 ，保障液冷系统全生命周期洁净高效运行，深度契合可持续发展理念。 
+  生态协同共创，推动液冷产业规模化落地  
+ 福斯深耕液冷生态，与液冷板等关键硬件领域的头部伙伴长期深度绑定。本次联合参展，是 流体科技×精密硬件 的融合典范。福斯的高性能冷却液与伙伴的高效液冷板强强协同，打造从部件到流体，从方案到验证的全方位价值，助力液冷解决方案 标准化、高效化、规模化 应用。 
+  深耕热管理，赋能数字新基建  
+ 福斯始终以与客户“同行致远”为核心理念，用创新的润滑与热管理技术驱动产业升级。面向数据中心算力浪潮，福斯将持续深耕液冷领域，携手生态伙伴，以 更先进、更可靠、更绿色的热管理解决方案 ，为数字经济基础设施的高质量发展注入强劲动能。 
+             
+         
+
+         
+             
+                   
+                返回新闻
+             
+         
+     
+
+    
+   
+
+
+                
+            
+			 
+
+		 
+		 
+			 
+				
+			 
+		 
+	 
+   
+     
+
+    
+     
+
+        
+
+        
+
+        
+
+        
+                
+                    
+                         
+                             
+                                 
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                 
+                             
+                              
+                             
+                                
+     
+                客服热线
+               售前：021-39122362     售后：400-921-3912   办公时间：   8:30 - 16:30（周一至周五）      
+
+
+                             
+                         
+                    
+                
+
+                
+                    
+                         
+                             
+                                 
+                                     
+                                 
+                             
+                             
+                                 
+                                     
+                                 
+                             
+                              
+                             
+                                
+     
+                邮箱
+                marketing@fuchs.com.cn     
+
+
+                             
+                         
+                    
+                
+            
+
+         
+             
+                 
+                     
+                 
+             
+         
+     
+
+
+
+             
+             
+        
+
+    
+
+     
+         
+
+            var Fuchs = Fuchs || {};
+            Fuchs.Translations = Fuchs.Translations || {};
+
+            Fuchs.Translations.Shariff = {};
+            Fuchs.Translations.Shariff.share = "分享本网页";
+
+         
+         
+            
+                
+                    
+                
+                    
+                
+                    
+                         
+                              
+                             分享至微信朋友圈 
+                             
+                                 
+                                     
+                                         
+                                            分享至微信朋友圈
+                                         
+                                     
+                                     
+                                          
+                                     
+                                 
+                             
+                         
+                    
+                
+            
+
+              
+         
+     
+
+    
+     
+
+        
+        
+
+        
+            
+                
+            
+                
+                    
+                        
+                    
+                
+            
+                
+            
+                
+            
+
+            
+                 
+                     
+                         
+                            更多信息 "公司"
+                         
+
+                        
+                               
+	
+    
+
+	 
+		 
+			
+                
+                    
+      关于福斯     
+                        FUCHS100战略
+                        
+                        公司介绍
+                        
+                        福斯中国
+                        
+                        企业宗旨
+                        
+                        合规
+                        
+                        历史
+                        
+                        福斯在全球
+                        
+                        福斯与您同行致远
+                        
+                        DMG MORI 2023最佳合作伙伴奖
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      技术     
+                        先进技术
+                        
+                        奖项和认证
+                        
+                        关键技术
+                        
+                        研究活动
+                         
+
+
+                
+            
+                
+                    
+      可持续发展     
+                        碳中和策略
+                        
+                        可持续发展管理
+                        
+                        企业公民
+                        
+                        企业社会责任
+                         
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+      新闻     
+                        赛事
+                        
+                        即时新闻
+                         
+
+
+                
+            
+                
+                    
+      政策和证书     
+                        条款、条件及政策
+                        
+                        认证及认可
+                        
+                        福斯荣誉
+                         
+
+
+                
+            
+		 
+	 
+   
+                        
+                     
+                 
+            
+        
+
+              FUCHS國家/區域網站          
+                            福斯集团
+                           
+
+        
+                 
+                       
+    
+    
+
+     
+         
+            
+                
+                       
+	
+    
+
+	 
+		 
+			
+                
+                    
+     
+                        Europe
+                         Austria    Belgium    Croatia    Czech Republic    Denmark    Estonia    Finland    France    Germany    Greece    Hungary    Italy    Latvia    Lithuania    Luxembourg    Macedonia    Netherlands    Norway    Poland    Portugal   Romania   Slovakia    Slovenia    Spain    Sweden   Switzerland   Ukraine    United Kingdom      
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+     
+                        North and South America
+                         Argentina    Brazil    Canada    Central America    Chile    Mexico    Peru    United States of America      
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+     
+                        Asia-Pacific
+                         Australia    China    India    Indonesia    Japan    Korea (South)    Malaysia    New Zealand    Singapore    Taiwan    Thailand    Turkey    Vietnam      
+
+
+                
+            
+		 
+		 
+			
+                
+                    
+     
+                        Middle East and Africa
+                         Saudi Arabia    South Africa    United Arab Emirates      
+
+
+                
+            
+		 
+	 
+   
+                
+            
+         
+     
+   
+                 
+            
+
+         
+             
+                               
+             
+         
+
+         
+             
+                &copy; 福斯版权
+                2026
+
+                   
+                                                数据隐私
+                                                
+                                                版本说明
+                                                
+                                                沪ICP备16035998号-17
+                                                
+                            打印
+                           
+             
+         
+     
+
+
+    
+    
+
+    
+    
+    
+
+     window.jQuery || document.write('  ') 
+    
+    
+    
+
+    
+    
+
+    
+
+
+
+ 
+
+  
+  
+
+
+        
+
+         
+         
+            var _hmt = _hmt || [];
+            (function () {
+                    var hm = document.createElement("script");
+                    hm.src = "https://hm.baidu.com/hm.js?{settings.udg_dummy_package.tracking.baidu}";
+                    var s = document.getElementsByTagName("script")[0];
+                    s.parentNode.insertBefore(hm, s);
+                }
+            )();
+         
+         
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+     
+        window.onload = function () {
+
+            var cssElements = document.getElementsByTagName('link');
+            for (var i = 0; i  
+
+
+
+  
+   
+ 
