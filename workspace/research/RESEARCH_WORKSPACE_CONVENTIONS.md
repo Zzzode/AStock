@@ -9,6 +9,8 @@ A research case lives at `workspace/research/<case-id>/` where `<case-id> = <top
 ```
 <case-id>/
 ├── research_brief.md              # case definition: scope, tickers, objective
+├── gate_manifest.{md,json}         # workflow gates, required artifacts, pass conditions
+├── artifact_contract.{md,json}     # artifact owner/schema/review/verifier contract
 ├── main.tex / main.pdf            # deliverable source / compiled PDF
 ├── main_current_text.txt          # extracted PDF text (regenerated on each rebuild)
 ├── sections/*.tex                 # chapter sources
@@ -20,11 +22,41 @@ A research case lives at `workspace/research/<case-id>/` where `<case-id> = <top
 ├── review_log.md                  # append-only change log
 ├── completion_audit_manifest.{md,json}
 ├── source_exhaustion_log.{md,json}
+├── review_findings_<cycle>.json
+├── repair_plan_<cycle>.{md,json}
+├── final_signoff.{md,json}
+├── research_workflow_eval.{md,json}
 ├── data_room_index.md
 ├── missing_data_request_pack.{md,json,csv}
 ├── unresolved_requirements.json
 └── ...other governance files
 ```
+
+Full industry-chain cases must additionally contain:
+
+```text
+data/full_chain_universe_<YYYYMMDD>.{md,json}
+analysis/template_brief.md
+analysis/full_chain_taxonomy.md
+analysis/core_vs_satellite_universe.md
+analysis/coverage_gap_matrix.md
+analysis/competitive_landscape.md
+analysis/value_chain_economics.md
+analysis/variant_perception.md
+analysis/valuation_audit.md
+```
+
+Full research workflow cycles use these canonical cycle names:
+
+```text
+R0_evidence
+R1_model
+R2_draft
+R3_render_compliance
+R4_final_ic
+```
+
+Review findings must use this lifecycle: `open -> fixed -> verified -> closed` or `open -> waived`. Published reports must have zero open S-Level issues and zero open unwaived A-Level issues.
 
 ## 2. Directory semantics — what is source-of-truth vs derived vs temp
 
@@ -58,6 +90,29 @@ If a file is regenerable by re-running a script or rebuild, it is TEMP or DERIVE
 - **Money**: state currency + unit explicitly (`CNY4.055bn`, `USD35.674bn`, `+80.60%`). Never bare numbers.
 - **Paths in JSON**: use repo-relative absolute (`workspace/research/<case>/data/foo.json`) so references resolve from repo root. In `.md` body, case-relative (`data/foo.json`) is acceptable.
 - **Evidence-boundary discipline**: every proxy/derived file states plainly what it does NOT prove. Proxy evidence (public TDS, segment aggregate, OCR repost, model-derived) does NOT close hard-data blockers (product-level ASP, generation revenue/margin, complete dated certification, lead-time/shipment sequence). Keep `completion_audit_manifest.decision = do_not_mark_complete` while any blocker is unmet.
+
+## 4.1 Industry-chain content gates
+
+These gates apply to any report positioned as a full industry-chain report:
+
+1. **Coverage pack gate**: `analysis/template_brief.md` must cite a pack under `workspace/templates/industry-coverage-packs/` or label a case-specific `custom` pack. Required pack blocks must be present in the full-chain universe or listed in the coverage gap matrix.
+2. **Full-chain universe gate**: `data/full_chain_universe_<YYYYMMDD>.json` must include material upstream, midstream, downstream, private, overseas, demand-anchor, low-purity, and unavailable nodes. A short listed-stock table is not sufficient.
+3. **Node schema gate**: every full-chain row must include `node_type`, chain block, subsegment, evidence status, source count, classification, valuation status, evidence gap, next verification path, and upgrade trigger.
+4. **Core/satellite gate**: `analysis/core_vs_satellite_universe.md` must separate core valuation pool, satellite watch pool, demand anchors, low-purity names, unavailable nodes, and out-of-scope nodes.
+5. **Coverage gap gate**: `analysis/coverage_gap_matrix.md` must record missing blocks/fields, sources checked, reason unresolved, next verification path, and whether valuation is blocked.
+6. **Value-chain economics gate**: `analysis/value_chain_economics.md` must cover value amount/proxy, ASP or price proxy, margin pool, supply/demand, capacity, utilization/yield, customer certification, order visibility, and valuation credit.
+7. **Competitive landscape gate**: `analysis/competitive_landscape.md` must cover global and China leaders, CR3/CR5 when available, localization boundary, substitution risk, and source quality.
+8. **Broker/source quality gate**: source governance must preserve `source_quality` and distinguish original PDF, broker official page, abstract, media repost, third-party preview, search snippet, corpus gap, and not found.
+9. **Source exhaustion gate**: `source_exhaustion_log.md/json` must exist and capture failed probes, paywalls, abstracts-only limitations, missing original sources, and next verification paths.
+10. **Model reproducibility gate**: `analysis/valuation_audit.md` must contain `Model Reproducibility: PASS` before a full report can be publishable.
+11. **Variant perception gate**: `analysis/variant_perception.md` must state market consensus, AStock differentiated view, strongest opposing argument, falsification evidence, and monitoring triggers.
+12. **Publishability score gate**: `review_log.md` must record a 0-100 publishability score; PASS requires score >= 90, zero open S-Level issues, zero open unwaived A-Level issues, final sign-off, and verifier 39 PASS / 0 FAIL.
+13. **Gate manifest gate**: `gate_manifest.md/json` and `artifact_contract.md/json` must exist and list every required skill, artifact, review cycle, verifier, pass condition, and downgrade path.
+14. **Review lifecycle gate**: `review_findings_<cycle>.json` and `repair_plan_<cycle>.md/json` must exist for executed cycles, and no open S-Level or unwaived A-Level issue may remain before publish.
+15. **Final sign-off gate**: `final_signoff.md/json` must exist before publish and list verifier results, open issue counts, waivers, publishability score, residual risks, data cutoff, PDF path, page count, and downgrade status.
+16. **Workflow eval gate**: `research_workflow_eval.md/json` must be generated from `astock.capabilities.evaluate_research_case_quality(case_dir)` before publish; `publishable` must be true and `blocking_failure_count` must be zero.
+
+The reusable verifier template for new industry-chain cases lives at `workspace/research/templates/industry_chain_verify_research_workspace.py`. The repo-level gate runner lives at `workspace/research/tools/run_research_gates.py`. Case-local verifiers may copy or extend them, but must not weaken these content gates.
 
 ## 5. Version-control rules — keeping the repo lean
 
@@ -93,8 +148,9 @@ When you change something, refresh everything that depends on it before running 
 2. Recompute `core_artifact_checksums` for the changed `.md` (and any `.json` you touched).
 3. Update `top_level_data_artifact_inventory` sizes for the changed files (iterate to fixed point).
 4. Update `data_room_index.md` if it references new/deleted files.
-5. Run the verifier → 39/39.
+5. For industry-chain cases, re-run or update the industry-chain content checks so the full-chain universe, coverage gaps, value-chain economics, source exhaustion, valuation reproducibility, variant perception, and publishability score remain aligned.
+6. Run the verifier → 39/39.
 
 ## 7. The verifier is the only gate
 
-`tools/verify_research_workspace.py` is read-only and authoritative. It checks: root/data/source/raw/rendered file counts and sizes, core checksum manifest, current render validity, completion decision, source-exhaustion consistency, md/json summary currency, PDF hygiene (no path leakage, no unfinished markers), evidence-reference integrity, blocker/request-pack alignment, ticker coverage, and PDF page/creation-date. **39 PASS / 0 FAIL is the only acceptable state after any change.** Never hand-edit the verifier to force a pass — fix the underlying artifact.
+`tools/verify_research_workspace.py` is read-only and authoritative for case-local audit invariants. It checks: root/data/source/raw/rendered file counts and sizes, core checksum manifest, current render validity, completion decision, source-exhaustion consistency, md/json summary currency, PDF hygiene (no path leakage, no unfinished markers), evidence-reference integrity, blocker/request-pack alignment, ticker coverage, and PDF page/creation-date. Industry-chain verifiers must also check the content gates in section 4.1. The repo-level gate runner `workspace/research/tools/run_research_gates.py` must pass before publish; it checks gate manifests, artifact contracts, review lifecycle, final sign-off, valuation reproducibility, workflow eval, generic verifier, and industry-chain verifier when applicable. **39 PASS / 0 FAIL plus research gate PASS is the only acceptable state after any publish-bound change.** Never hand-edit a verifier to force a pass — fix the underlying artifact.

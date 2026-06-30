@@ -42,6 +42,7 @@ from .memory import FeedbackLearner
 from .quote import QuoteService
 from .quality import (
     check_prompt_drift as _check_prompt_drift,
+    evaluate_research_case_quality as _evaluate_research_case_quality,
     evaluate_report_quality as _evaluate_report_quality,
     evaluate_skill_response_cases as _evaluate_skill_response_cases,
     evaluate_source_health as _evaluate_source_health,
@@ -1323,6 +1324,14 @@ def evaluate_research_report_quality(
     return {
         "success": True,
         "quality": _evaluate_report_quality(report_text, checks=checks),
+    }
+
+
+def evaluate_research_case_quality(case_dir: str | Path) -> dict[str, Any]:
+    """Evaluate artifact-level research-case quality gates."""
+    return {
+        "success": True,
+        "quality": _evaluate_research_case_quality(case_dir),
     }
 
 

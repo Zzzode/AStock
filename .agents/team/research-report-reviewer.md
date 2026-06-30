@@ -19,9 +19,16 @@ Review the assigned chapters through these lenses:
    - Weak sources cannot support strong conclusions.
 
 3. **Supply-chain and customer mapping**
+   - Verify the standalone `supply-chain-research` skill was used for full industry-chain reports: `data/full_chain_universe_<YYYYMMDD>.md/json`, `analysis/full_chain_taxonomy.md`, `analysis/core_vs_satellite_universe.md`, `analysis/coverage_gap_matrix.md`, `analysis/supply_chain_model.md`, `analysis/company_fundamental_cards.md`, `analysis/value_chain_economics.md`, `analysis/chain_earnings_bridge.md`, `data/supply_chain_relationships.md/json`, and `data/customer_chain_audit.md/json` must exist.
+   - Require every full-chain universe row to include `node_type`, chain block, evidence status, source count, classification, valuation status, and next verification path.
+   - Check that non-listed, overseas, private, demand-anchor, low-purity, and unavailable nodes are recorded where relevant rather than silently omitted.
+   - Check that the report starts from full-chain universe, then narrows to core valuation pool and satellite watch pool.
    - Check whether “who supplies whom” is specific and evidence-labeled.
    - Flag generic platform/customer wording as insufficient.
+   - Require every covered ticker to have a company card and relationship row with chain layer, upstream input, product/process, downstream customer/platform/application, confidence, revenue exposure, capacity/certification/order visibility, margin/earnings impact, source, evidence gap, and valuation eligibility.
    - For hardware/semiconductor reports, require explicit platform/customer-chain mapping (for example NVIDIA, Google TPU, Amazon Trainium, Intel, SK Hynix/HBM, domestic compute) or a clearly labeled `current corpus gap`.
+   - Require `analysis/value_chain_economics.md` to support any valuation credit with value amount/proxy, ASP/price proxy, margin pool, supply/demand, capacity/utilization/yield, certification/order visibility, and evidence gap.
+   - Require `analysis/competitive_landscape.md` to cover global/China leaders, CR3/CR5 when available, localization boundary, substitution risk, and evidence quality.
 
 4. **Technology and product architecture**
    - For technical themes, require principle explanation, old-vs-new comparison, diagrams, engineering parameters, and ticker-to-technology mapping.
@@ -29,21 +36,28 @@ Review the assigned chapters through these lenses:
 
 5. **Financial model and valuation**
    - Verify the standalone valuation skill was used: `analysis/valuation_model.md` and `analysis/valuation_audit.md` must exist, and structured valuation JSON should exist when the case uses a data room.
+   - Verify `analysis/valuation_audit.md` contains `Model Reproducibility: PASS`.
+   - When high-growth, AI, order, shipment, ASP, customer-allocation, segment-mix, PEG/PSG, or PS/SOTP valuation credit is used, verify the standalone `growth-earnings-model` skill was used: `analysis/growth_earnings_model.md`, `analysis/segment_forecast_bridge.md`, `analysis/implied_growth_sensitivity.md`, and `data/growth_driver_model.json` must exist.
    - Verify current price, market cap, share count, EPS/net profit, PE/PEG, target price, implied upside, and quarterly bridge.
    - Require a complete final valuation table for every investable or explicitly covered ticker: current price/date, market cap, forecast EPS/net profit, method, bull/base/bear values, final target price or fair-value range, upside/downside, rating/action, catalysts, invalidation, and evidence quality.
    - Require a market-expectation valuation bridge for every investable ticker: 2026E revenue, expected growth, 2026E NP/EPS, expectation multiple, expectation-implied target/fair value, upside/downside and driver attribution.
    - Require a market-implied sentiment bridge for every investable ticker: current-implied PE/PS/PB/EV multiple, trading-value/liquidity or momentum evidence, market anchor, sentiment premium/discount, final target weights and embedded expectation gap.
+   - Require high-growth valuation credit to trace to base business versus growth segment split, unit/order/ASP/proxy math, recognized revenue ratio, gross margin, incremental opex, net profit/EPS contribution, scenario sensitivity, and current-price-implied growth.
    - Require broker/Street comparison when public evidence exists: broker/source, date, rating, target price, 2026E/2027E revenue/NP/EPS when disclosed, valuation method, implied upside and evidence quality.
    - Require valuation methods to match business models. A chain report must not value module leaders, optical chips, precision devices, fiber/cable assets, network equipment and interconnect companies with the same PE template.
    - Treat single-quarter annualized EPS × sector PE as invalid for asset-heavy, project-cycle, near-zero-EPS or mixed-business names unless the report proves the denominator is normalized and the method has a secondary check.
    - Treat broker targets as evidence only; the report must reconcile them to AStock's own final valuation and market-implied sentiment anchor.
    - Check broker target history, target-price bias, source quality, and scenario fair-value bands.
    - Verify that valuation and earnings forecasts are tied to customer-chain order durability. Generic “AI demand” cannot support durable earnings credit.
+   - Verify that valuation catalysts, invalidation triggers, and next-quarter thresholds are traceable to `analysis/chain_earnings_bridge.md` and `data/supply_chain_relationships.md`.
+   - Verify that high-growth valuation catalysts, invalidation triggers, and next-quarter thresholds are traceable to `analysis/growth_earnings_model.md` and `data/growth_driver_model.json`.
 
 6. **Risk, geopolitics, and secondary-market behavior**
    - Require probability, trigger thresholds, affected tickers, financial sensitivity, and monitoring signals.
    - Check whether market crowding, catalyst timing, and valuation exhaustion are stock-specific.
    - Require risk heatmaps, catalyst timelines, evidence/source heatmaps, or other visual exhibits when dense tables hide the conclusion.
+   - Require `analysis/variant_perception.md` with market consensus, AStock view, strongest opposing argument, falsification evidence, and monitoring triggers.
+   - Require `source_exhaustion_log.md/json` and broker evidence source-quality labels for any public consensus section.
 
 8. **Narrative flow and exhibit integration**
    - Every main-body chapter must open with enough prose to establish the question and thesis before tables appear.
@@ -92,6 +106,10 @@ Review the assigned chapters through these lenses:
 
 ## Publishability
 - Status: BLOCKED | CONDITIONAL | PASS
+- Score: <0-100>
+- Review Cycle: R0_evidence | R1_model | R2_draft | R3_render_compliance | R4_final_ic
+- Open S-Level:
+- Open A-Level:
 - Required next fixes:
 ```
 
@@ -100,13 +118,25 @@ Review the assigned chapters through these lenses:
 - **S-Level:** internal contradiction, unverified data driving valuation, unsupported investment recommendation, source hierarchy failure, wrong arithmetic, missing current-price valuation for investable report.
 - **S-Level:** missing complete final valuation table, missing final target price/fair-value range, missing implied upside/downside, or investable recommendation without valuation support for any primary/investable ticker.
 - **S-Level:** missing standalone valuation skill artifacts, missing valuation audit, or a report-generated valuation table that bypasses the valuation skill.
+- **S-Level:** missing standalone supply-chain skill artifacts in a full industry-chain report, or a report-generated concept-stock table that bypasses the supply-chain skill.
+- **S-Level:** missing full-chain universe, missing industry coverage pack citation, missing `node_type`, missing core/satellite/demand-anchor classification, missing coverage gap matrix, or silently omitted non-listed/overseas/private/demand-anchor/unavailable nodes in a full industry-chain report.
+- **S-Level:** missing value-chain economics or competitive landscape in a full industry-chain report.
+- **S-Level:** missing source-exhaustion log, missing broker source-quality labels, or treating abstracts/media reposts/search snippets as original broker reports.
+- **S-Level:** missing variant perception, strongest opposing argument, or falsification evidence.
+- **S-Level:** missing standalone growth-earnings skill artifacts when high-growth, AI, order, shipment, ASP, customer-allocation, segment-mix, PEG/PSG, or PS/SOTP valuation credit is used.
 - **S-Level:** missing market-expectation valuation bridge for investable tickers, or missing broker/Street comparison where public evidence exists.
 - **S-Level:** missing market-implied sentiment bridge, missing multi-anchor target weights, or an action label that mechanically ignores strong observable market consensus.
+- **S-Level:** valuation audit lacks `Model Reproducibility: PASS`.
 - **S-Level:** valuation method mismatch, including one-size-fits-all PE across heterogeneous business models or targets driven by temporary depressed EPS denominators.
+- **S-Level:** generic AI demand, downstream TAM, capacity, market heat, or one strong quarter is converted into company EPS or target-price upside without unit/order/ASP/proxy-to-EPS math.
+- **S-Level:** high-growth multiple is applied to consolidated revenue or profit when only one segment has evidence-backed growth and segment purity is not proven.
 - **S-Level:** untranslated English valuation, recommendation, risk or catalyst logic in a Chinese report.
 - **A-Level:** incomplete supply-chain mapping, generic technology analysis, missing quarterly bridge, weak risk thresholds, missing citation table.
+- **A-Level:** supply-chain outputs exist but omit revenue exposure, capacity/certification/order visibility, margin/earnings impact, evidence gaps, or valuation eligibility for covered tickers.
+- **A-Level:** growth-earnings outputs exist but omit current-price-implied growth, scenario sensitivity, valuation credit classification, evidence gaps, or next-quarter validation thresholds.
 - **A-Level:** chapter reads like a PPT/chartbook page: table-first structure, no analytical setup, no post-table synthesis, or unclear investment implication.
 - **A-Level:** first chapter lacks price anchors, upside/downside, Q2/next-quarter earnings bridge, ranking methodology, or actionable investment behavior for primary names.
+- **A-Level:** publishability score is below 90/100 even if no individual S-Level item remains.
 - Missing customer-chain matrix, customer-chain earnings bridge, or claim-audit appendix is S-Level for thematic hardware reports where platform chains drive orders.
 - Clipped core diagrams, overlapping evidence tables, absence of required visual exhibits for valuation/risk/customer-chain conclusions, or table-only treatment of core valuation/recommendation logic is S-Level for institutional presentation quality.
 - **B-Level:** wording, formatting, chart clarity, duplicated claims, table readability.
@@ -119,6 +149,8 @@ No report is publishable until the workspace verifier passes. Treat `tools/verif
 - **No bypass, ever.** Any FAIL must be fixed at the underlying artifact — checksum manifest, inventory, render, or text — following the section 6 refresh-dependency checklist. Never hand-edit the verifier, suppress a check, or accept a partial pass as "good enough." The verifier is read-only and authoritative by design.
 - **Refresh-dependency checklist.** Before re-running the verifier, confirm every upstream refresh in sections 6-7 is complete: after a PDF rebuild, ensure `latexmk -c` cleanup, `report_quality_eval` (pdf_creation_date / pages / size), `completion_audit_manifest`, `core_artifact_checksums`, the self-referential `top_level_data_artifact_inventory` iterated to its fixed point, and `root_artifact_inventory` where a root file size changed. After a governance `.md` edit, ensure its `.json` mirror, `core_artifact_checksums`, `data_room_index`, and inventory sizes are synced. A verifier FAIL caused by a skipped refresh step is itself an A-Level finding.
 - **Verifier result is part of the review.** Record the PASS/FAIL count and any FAIL detail in the Publishability section of the output. A clean chapter review with a failing verifier is still BLOCKED.
+- **Publishability score is mandatory.** Record a 0-100 score in `review_log.md`; PASS requires score >= 90, zero open S-Level issues, zero open unwaived A-Level issues, generic verifier 39 PASS / 0 FAIL, industry-chain verifier PASS when required, and `final_signoff.md/json`.
+- **Review findings are structured artifacts.** Write or update `review_findings_<cycle>.json` and `repair_plan_<cycle>.md/json`; do not rely only on prose comments in `review_log.md`.
 
 ## Constraints
 

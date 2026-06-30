@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import hashlib
+import json
+import re
 from collections.abc import Mapping, Sequence
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -25,7 +27,50 @@ DEFAULT_REPORT_CHECKS: dict[str, tuple[str, ...]] = {
     "monitoring_trigger": ("trigger", "monitor", "watch"),
     "invalidation": ("invalidation", "invalidate", "fails if"),
     "data_quality": ("data quality", "quality_tier", "degraded"),
+    "source_exhaustion": ("source exhaustion", "source_exhaustion", "exhaustion log"),
+    "full_chain_coverage": ("full-chain", "full_chain_universe", "coverage gap"),
+    "valuation_reproducibility": (
+        "model reproducibility",
+        "valuation audit",
+        "valuation_reproducibility",
+    ),
+    "review_lifecycle": ("review findings", "repair plan", "review lifecycle"),
+    "final_signoff": ("final sign-off", "final_signoff", "publishability score"),
 }
+
+CASE_ROOT_ARTIFACTS = (
+    "research_brief.md",
+    "gate_manifest.json",
+    "artifact_contract.json",
+    "review_log.md",
+    "final_signoff.json",
+)
+
+CASE_MD_JSON_PAIRS = (
+    "gate_manifest",
+    "artifact_contract",
+    "final_signoff",
+    "source_exhaustion_log",
+    "data/source_registry",
+    "data/claim_audit",
+)
+
+INDUSTRY_CHAIN_ARTIFACTS = (
+    "analysis/template_brief.md",
+    "analysis/full_chain_taxonomy.md",
+    "analysis/core_vs_satellite_universe.md",
+    "analysis/coverage_gap_matrix.md",
+    "analysis/supply_chain_model.md",
+    "analysis/company_fundamental_cards.md",
+    "analysis/value_chain_economics.md",
+    "analysis/chain_earnings_bridge.md",
+    "analysis/competitive_landscape.md",
+    "analysis/variant_perception.md",
+    "data/supply_chain_relationships.json",
+    "data/customer_chain_audit.json",
+)
+
+CLOSED_REVIEW_STATUSES = {"closed", "verified", "resolved", "pass", "passed"}
 
 DEFAULT_FORBIDDEN_SKILL_TERMS = (
     "place order",
@@ -186,6 +231,161 @@ def evaluate_report_quality(
     }
 
 
+def evaluate_research_case_quality(case_dir: str | Path) -> dict[str, Any]:
+    """Evaluate artifact-level quality gates for a research case directory."""
+
+    root = Path(case_dir)
+    checks: list[dict[str, Any]] = []
+
+    def add(name: str, passed: bool, detail: str = "", severity: str = "A") -> None:
+        checks.append(
+            {
+                "name": name,
+                "passed": passed,
+                "severity": severity,
+                "detail": detail,
+            }
+        )
+
+    add("case directory exists", root.exists(), str(root), "S")
+    if not root.exists():
+        return _research_case_result(root, checks, requires_industry_chain=False)
+
+    for rel in CASE_ROOT_ARTIFACTS:
+        add(f"exists {rel}", (root / rel).exists(), rel, "S")
+
+    for stem in CASE_MD_JSON_PAIRS:
+        add(
+            f"md/json pair present: {stem}",
+            (root / f"{stem}.md").exists() and (root / f"{stem}.json").exists(),
+            stem,
+            "A",
+        )
+
+    gate_manifest, gate_error = _load_json_document(root / "gate_manifest.json")
+    artifact_contract, contract_error = _load_json_document(
+        root / "artifact_contract.json"
+    )
+    final_signoff, signoff_error = _load_json_document(root / "final_signoff.json")
+    add("gate manifest json parses", gate_error is None, gate_error or "", "S")
+    add("artifact contract json parses", contract_error is None, contract_error or "", "S")
+    add("final sign-off json parses", signoff_error is None, signoff_error or "", "S")
+
+    required_artifacts = set()
+    required_artifacts.update(_artifact_paths_from_payload(gate_manifest))
+    required_artifacts.update(_artifact_paths_from_payload(artifact_contract))
+    for rel in sorted(required_artifacts):
+        add(f"required artifact exists: {rel}", (root / rel).exists(), rel, "S")
+
+    requires_industry_chain = _case_requires_industry_chain(
+        gate_manifest,
+        "\n".join(
+            (
+                _read_text(root / "research_brief.md"),
+                _read_text(root / "analysis" / "template_brief.md"),
+            )
+        ),
+    )
+    if requires_industry_chain:
+        for rel in INDUSTRY_CHAIN_ARTIFACTS:
+            add(f"industry-chain artifact exists: {rel}", (root / rel).exists(), rel, "S")
+        universe_files = sorted((root / "data").glob("full_chain_universe_*.json"))
+        add(
+            "industry-chain full-chain universe json present",
+            bool(universe_files),
+            "data/full_chain_universe_<YYYYMMDD>.json",
+            "S",
+        )
+
+    review_findings = sorted(root.glob("review_findings_*.json"))
+    add("review findings present", bool(review_findings), "review_findings_*.json", "S")
+    open_s_count = 0
+    open_unwaived_a_count = 0
+    parse_failures = 0
+    for findings_path in review_findings:
+        payload, error = _load_json_document(findings_path)
+        add(f"review findings parse: {findings_path.name}", error is None, error or "", "S")
+        if error:
+            parse_failures += 1
+            continue
+        for finding in _extract_review_findings(payload):
+            severity = _review_severity(finding)
+            status = _review_status(finding)
+            waived = _review_waived(finding)
+            if severity == "S" and status not in CLOSED_REVIEW_STATUSES:
+                open_s_count += 1
+            if (
+                severity == "A"
+                and status not in CLOSED_REVIEW_STATUSES
+                and not waived
+            ):
+                open_unwaived_a_count += 1
+
+        cycle = findings_path.stem.removeprefix("review_findings_")
+        if cycle != "R4_final_ic":
+            add(
+                f"repair plan pair present: {cycle}",
+                (root / f"repair_plan_{cycle}.md").exists()
+                and (root / f"repair_plan_{cycle}.json").exists(),
+                cycle,
+                "A",
+            )
+
+    add("no open S-Level findings", open_s_count == 0, str(open_s_count), "S")
+    add(
+        "no open unwaived A-Level findings",
+        open_unwaived_a_count == 0,
+        str(open_unwaived_a_count),
+        "A",
+    )
+
+    review_log = _read_text(root / "review_log.md")
+    publishability_score = _extract_publishability_score(review_log)
+    add(
+        "publishability score present",
+        publishability_score is not None,
+        "review_log.md",
+        "S",
+    )
+    if publishability_score is not None:
+        add(
+            "publishability score >= 90",
+            publishability_score >= 90,
+            str(publishability_score),
+            "S",
+        )
+
+    valuation_audit = _read_text(root / "analysis" / "valuation_audit.md")
+    add(
+        "valuation model reproducibility pass",
+        "model reproducibility: pass" in _normalize(valuation_audit),
+        "analysis/valuation_audit.md",
+        "S",
+    )
+
+    signoff_status = ""
+    if isinstance(final_signoff, Mapping):
+        signoff_status = _normalize(
+            final_signoff.get("signoff_status") or final_signoff.get("status")
+        )
+    add(
+        "final sign-off status pass",
+        signoff_status in {"pass", "passed", "approved", "signed", "publishable"},
+        signoff_status or "missing",
+        "S",
+    )
+
+    result = _research_case_result(root, checks, requires_industry_chain)
+    result["review_summary"] = {
+        "finding_file_count": len(review_findings),
+        "parse_failure_count": parse_failures,
+        "open_s_count": open_s_count,
+        "open_unwaived_a_count": open_unwaived_a_count,
+        "publishability_score": publishability_score,
+    }
+    return result
+
+
 def evaluate_skill_response_cases(
     cases: Sequence[Mapping[str, Any] | SkillEvalCase],
 ) -> dict[str, Any]:
@@ -207,6 +407,195 @@ def evaluate_skill_response_cases(
         "status": _score_status(score),
         "cases": results,
     }
+
+
+def _research_case_result(
+    root: Path,
+    checks: Sequence[Mapping[str, Any]],
+    requires_industry_chain: bool,
+) -> dict[str, Any]:
+    passed_count = sum(1 for check in checks if bool(check.get("passed")))
+    total = len(checks)
+    score = round(passed_count / total * 100, 2) if total else 100.0
+    blocking_failures = [
+        check
+        for check in checks
+        if not bool(check.get("passed")) and str(check.get("severity")) in {"S", "A"}
+    ]
+    publishable = not blocking_failures and score >= 90
+    status = "excellent" if publishable else _score_status(score)
+    if blocking_failures and status == "excellent":
+        status = "pass"
+    return {
+        "schema_version": "quality.research_case.v1",
+        "case_dir": str(root),
+        "score": score,
+        "passed_count": passed_count,
+        "check_count": total,
+        "blocking_failure_count": len(blocking_failures),
+        "requires_industry_chain": requires_industry_chain,
+        "publishable": publishable,
+        "status": status,
+        "checks": list(checks),
+        "blocking_failures": blocking_failures,
+    }
+
+
+def _load_json_document(path: Path) -> tuple[Any, str | None]:
+    if not path.exists():
+        return {}, f"missing: {path}"
+    try:
+        return json.loads(path.read_text(encoding="utf-8")), None
+    except Exception as exc:  # pragma: no cover - defensive diagnostics
+        return {}, f"{path}: {exc}"
+
+
+def _artifact_paths_from_payload(payload: Any) -> set[str]:
+    paths: set[str] = set()
+    paths.update(_artifact_paths_from_value(payload))
+    return paths
+
+
+def _artifact_paths_from_value(value: Any) -> set[str]:
+    paths: set[str] = set()
+    if isinstance(value, str):
+        if _looks_like_artifact_path(value):
+            paths.add(value.strip())
+        return paths
+    if isinstance(value, Mapping):
+        for key, item in value.items():
+            key_text = _normalize(key)
+            if key_text in {
+                "path",
+                "file",
+                "relpath",
+                "relative_path",
+                "artifact",
+                "artifact_path",
+                "output",
+            } and isinstance(item, str):
+                if _looks_like_artifact_path(item):
+                    paths.add(item.strip())
+                continue
+            paths.update(_artifact_paths_from_value(item))
+        return paths
+    if isinstance(value, Sequence) and not isinstance(value, (bytes, bytearray)):
+        for item in value:
+            paths.update(_artifact_paths_from_value(item))
+    return paths
+
+
+def _looks_like_artifact_path(value: str) -> bool:
+    text = value.strip()
+    if not text or text.startswith(("http://", "https://")):
+        return False
+    if any(token in text for token in ("\n", "\t", "{", "}")):
+        return False
+    suffix = Path(text).suffix.lower()
+    artifact_suffixes = {
+        ".csv",
+        ".json",
+        ".md",
+        ".pdf",
+        ".png",
+        ".tex",
+        ".txt",
+        ".xlsx",
+    }
+    return suffix in artifact_suffixes
+
+
+def _case_requires_industry_chain(gate_manifest: Any, text_blob: str) -> bool:
+    gate_text = ""
+    if isinstance(gate_manifest, Mapping):
+        gate_text = json.dumps(gate_manifest, ensure_ascii=False)
+    haystack = _normalize(f"{gate_text}\n{text_blob}")
+    return any(
+        token in haystack
+        for token in (
+            "industry-chain",
+            "industry_chain",
+            "full-chain",
+            "full_chain",
+            "supply-chain",
+            "supply_chain",
+            "coverage_pack",
+            "coverage pack",
+            "产业链",
+            "全产业链",
+        )
+    )
+
+
+def _extract_review_findings(payload: Any) -> list[Mapping[str, Any]]:
+    if isinstance(payload, list):
+        return [cast(Mapping[str, Any], item) for item in payload if isinstance(item, Mapping)]
+    if isinstance(payload, Mapping):
+        for key in ("findings", "issues", "items", "review_findings"):
+            value = payload.get(key)
+            if isinstance(value, list):
+                return [
+                    cast(Mapping[str, Any], item)
+                    for item in value
+                    if isinstance(item, Mapping)
+                ]
+        for value in payload.values():
+            if isinstance(value, list) and all(isinstance(item, Mapping) for item in value):
+                return [cast(Mapping[str, Any], item) for item in value]
+    return []
+
+
+def _review_severity(finding: Mapping[str, Any]) -> str:
+    severity = _normalize(
+        finding.get("severity") or finding.get("level") or finding.get("priority")
+    ).upper()
+    if severity.startswith("S"):
+        return "S"
+    if severity.startswith("A"):
+        return "A"
+    return "B"
+
+
+def _review_status(finding: Mapping[str, Any]) -> str:
+    return _normalize(
+        finding.get("status")
+        or finding.get("lifecycle_status")
+        or finding.get("state")
+        or "open"
+    )
+
+
+def _review_waived(finding: Mapping[str, Any]) -> bool:
+    waiver_status = _normalize(finding.get("waiver_status"))
+    return (
+        _review_status(finding) == "waived"
+        or waiver_status == "waived"
+        or _truthy(finding.get("waived"))
+    )
+
+
+def _truthy(value: Any) -> bool:
+    if isinstance(value, bool):
+        return value
+    return _normalize(value) in {"1", "true", "yes", "y", "waived"}
+
+
+def _extract_publishability_score(review_log: str) -> int | None:
+    patterns = (
+        r"publishability\s+score\D+(\d{1,3})",
+        r"publishability_score\D+(\d{1,3})",
+    )
+    for pattern in patterns:
+        match = re.search(pattern, review_log, re.IGNORECASE)
+        if match:
+            return int(match.group(1))
+    return None
+
+
+def _read_text(path: Path) -> str:
+    if not path.exists():
+        return ""
+    return path.read_text(encoding="utf-8", errors="ignore")
 
 
 def _source_summary(

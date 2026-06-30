@@ -3,6 +3,7 @@
 from .checks import (
     SkillEvalCase,
     check_prompt_drift,
+    evaluate_research_case_quality,
     evaluate_report_quality,
     evaluate_skill_response_cases,
     evaluate_source_health,
@@ -11,6 +12,7 @@ from .checks import (
 __all__ = [
     "SkillEvalCase",
     "check_prompt_drift",
+    "evaluate_research_case_quality",
     "evaluate_report_quality",
     "evaluate_skill_response_cases",
     "evaluate_source_health",

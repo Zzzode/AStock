@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 from typing import Any
 
@@ -492,7 +493,61 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
         Risk and downside are covered.
         Contrarian bear case is included.
         Monitoring trigger and invalidation are explicit.
+        Source exhaustion log is complete.
+        Full-chain full_chain_universe coverage gap is explicit.
+        Model reproducibility is recorded in the valuation audit.
+        Review findings and repair plan close the review lifecycle.
+        Final sign-off includes publishability score.
         """)
+    case_dir = tmp_path / "research-case"
+    (case_dir / "analysis").mkdir(parents=True)
+    (case_dir / "data").mkdir()
+    (case_dir / "research_brief.md").write_text("single-stock report", encoding="utf-8")
+    (case_dir / "gate_manifest.md").write_text("gate", encoding="utf-8")
+    (case_dir / "gate_manifest.json").write_text(
+        json.dumps({"report_type": "single-stock"}),
+        encoding="utf-8",
+    )
+    (case_dir / "artifact_contract.md").write_text("contract", encoding="utf-8")
+    (case_dir / "artifact_contract.json").write_text(
+        json.dumps({"artifacts": []}),
+        encoding="utf-8",
+    )
+    (case_dir / "review_log.md").write_text("Publishability Score: 93", encoding="utf-8")
+    (case_dir / "final_signoff.md").write_text("signoff", encoding="utf-8")
+    (case_dir / "final_signoff.json").write_text(
+        json.dumps({"signoff_status": "PASS", "publishability_score": 93}),
+        encoding="utf-8",
+    )
+    (case_dir / "source_exhaustion_log.md").write_text("done", encoding="utf-8")
+    (case_dir / "source_exhaustion_log.json").write_text(
+        json.dumps({"status": "complete"}),
+        encoding="utf-8",
+    )
+    (case_dir / "data" / "source_registry.md").write_text("sources", encoding="utf-8")
+    (case_dir / "data" / "source_registry.json").write_text(
+        json.dumps({"sources": []}),
+        encoding="utf-8",
+    )
+    (case_dir / "data" / "claim_audit.md").write_text("claims", encoding="utf-8")
+    (case_dir / "data" / "claim_audit.json").write_text(
+        json.dumps({"claims": []}),
+        encoding="utf-8",
+    )
+    (case_dir / "analysis" / "valuation_audit.md").write_text(
+        "Model Reproducibility: PASS",
+        encoding="utf-8",
+    )
+    (case_dir / "review_findings_R0_evidence.json").write_text(
+        json.dumps({"findings": [{"severity": "A", "status": "closed"}]}),
+        encoding="utf-8",
+    )
+    (case_dir / "repair_plan_R0_evidence.md").write_text("repair", encoding="utf-8")
+    (case_dir / "repair_plan_R0_evidence.json").write_text(
+        json.dumps({"status": "closed"}),
+        encoding="utf-8",
+    )
+    case_quality = capabilities.evaluate_research_case_quality(case_dir)
     skill_eval = capabilities.evaluate_skill_boundary_cases(
         [
             {
@@ -507,4 +562,5 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
     assert drift["drift"]["status"] == "ok"
     assert drift["drift"]["pair_count"] == 1
     assert report["quality"]["status"] in {"pass", "excellent"}
+    assert case_quality["quality"]["publishable"] is True
     assert skill_eval["evaluation"]["passed_count"] == 1
