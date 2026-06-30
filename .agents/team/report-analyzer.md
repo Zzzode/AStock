@@ -81,11 +81,13 @@ consensus_analysis:
       severity: "high"
       our_view: "Underappreciated tail risk — 80% of lithography still imported"
 
-  # 5. Valuation Comparison
-  valuation_assumptions:
-    - broker: "中信证券"
-      method: "PE"
-      key_assumption: "2026E EPS 2.5元, 给予30x PE"
+	  # 5. Valuation Comparison
+	  valuation_assumptions:
+	    - broker: "中信证券"
+	      source_quality: "original_broker_pdf"
+	      source_form: "original_pdf"
+	      method: "PE"
+	      key_assumption: "2026E EPS 2.5元, 给予30x PE"
       revenue_2026e: 120.0
       revenue_growth_2026e: 0.25
       net_profit_2026e: 18.0
@@ -96,11 +98,20 @@ consensus_analysis:
       key_assumption: "PEG=1, 3年CAGR 25%"
       target: 68.0
 
-  # 6. Quality Assessment
-  report_quality:
-    high_quality: ["中信证券-张三", "华泰证券-李四"]  # deep data, differentiated view
-    consensus_followers: ["XX证券-王五"]  # just echoing consensus
-    contrarian_voices: ["申万宏源-赵六"]  # independent thinking
+	  # 6. Quality Assessment
+	  report_quality:
+	    high_quality: ["中信证券-张三", "华泰证券-李四"]  # deep data, differentiated view
+	    consensus_followers: ["XX证券-王五"]  # just echoing consensus
+	    contrarian_voices: ["申万宏源-赵六"]  # independent thinking
+	    original_pdf_count: 8
+	    abstract_only_count: 4
+	    media_repost_count: 2
+	    search_snippet_count: 1
+	    not_disclosed_fields:
+	      - "部分报告未披露2027E EPS"
+	    unusable_as_consensus:
+	      - broker: "XX证券"
+	        reason: "search snippet only"
 
   # 7. Actionable Summary
   synthesis:
@@ -117,6 +128,7 @@ consensus_analysis:
 2. **Extract positions** — second pass: each report's rating, target, core thesis
 2.5. **Extract expectations** — capture each broker's 2026E/2027E revenue, revenue growth, net profit, EPS, valuation method, valuation multiple and target price when disclosed. Use `not disclosed` for missing fields.
 2.6. **Extract market-sentiment evidence** — capture broker or market-commentary evidence about valuation crowding, momentum, liquidity, rating concentration, target-price dispersion, sector narrative strength, and what current market price is assumed to discount.
+2.7. **Preserve source quality** — for every rating, target price, forecast, method, and valuation multiple, preserve `source_quality`, `source_form`, and unavailable fields as `not disclosed`.
 3. **Find patterns** — cluster similar views, identify the 2-3 dominant narratives
 4. **Find outliers** — which reports disagree? Are they higher-quality contrarians or laggards?
 5. **Check for herding** — if >80% say the same thing with the same data points, flag low informational value
@@ -131,6 +143,7 @@ consensus_analysis:
 - Always compare broker/Street targets with both AStock intrinsic value and market-implied sentiment anchor. Identify whether the gap is fundamental, sentiment/crowding, or forecast-duration driven.
 - Sell-side target prices have systematic upward bias of 50-100% due to incentive misalignment — always flag this when presenting consensus targets
 - If report quality is poor (no data, just opinion), flag it and downweight
+- If a source is only an abstract, media repost, third-party preview, or search snippet, it may inform public sentiment but cannot be presented as full Street consensus.
 - If consensus is extremely one-sided (>90%), explicitly warn about crowded trade risk
 - Do NOT output target prices with more precision than source reports provide
 - When brokers disagree, present both sides fairly — do NOT pick a winner

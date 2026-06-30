@@ -31,6 +31,28 @@
     ],
     "sandbox_mode": "read-only"
   },
+  "supply-chain-analyst": {
+    "description": "Company-level upstream/downstream, customer-chain, product/process exposure, capacity, certification, order visibility, revenue exposure, and chain earnings bridge analysis",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
+    "sandbox_mode": "read-only"
+  },
+  "growth-earnings-modeler": {
+    "description": "High-growth earnings precision modeling for AI/order/unit/ASP/segment-driven valuation narratives",
+    "tools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Bash",
+      "WebSearch"
+    ],
+    "sandbox_mode": "read-only"
+  },
   "risk-analyst": {
     "description": "Risk matrix, ESG/compliance screening, position sizing, stop-loss, stress tests, and Devil's Advocate",
     "tools": [
@@ -96,28 +118,6 @@
     ],
     "sandbox_mode": "read-only"
   },
-  "report-collector": {
-    "description": "Collect sell-side broker research reports for a sector or ticker from public sources, output structured catalog with metadata and key excerpts",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash",
-      "WebSearch"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "report-analyzer": {
-    "description": "Synthesize multiple broker reports into consensus matrix, identify divergences, blind spots, and crowded-trade risks",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash",
-      "WebSearch"
-    ],
-    "sandbox_mode": "read-only"
-  },
   "valuation-modeler": {
     "description": "PE/PEG/PS/DCF valuation models, three-tier target prices, seasonality calibration, sell-side bias detection",
     "tools": [
@@ -151,7 +151,7 @@
     "sandbox_mode": "workspace-write"
   },
   "reviewer": {
-    "description": "Senior research director quality gate - S/A/B severity review with publication blocking authority",
+    "description": "Senior research director quality gate aligned to R0-R4 review cycles, S/A/B severity, and publication blocking authority",
     "tools": [
       "Read",
       "Grep",
@@ -161,85 +161,13 @@
     "sandbox_mode": "read-only"
   },
   "research-report-reviewer": {
-    "description": "Global top-tier equity research report reviewer for investment thesis, evidence, valuation, risk, compliance, and publishability",
+    "description": "Global top-tier equity research report workflow reviewer for R0 evidence, R1 model, R2 draft, R3 render/compliance, R4 final IC sign-off, and publishability",
     "tools": [
       "Read",
       "Grep",
       "Glob",
       "Bash",
       "WebSearch"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "internal-control": {
-    "description": "System quality audit, prompt review, feedback pattern analysis, sync verification, and improvement proposals",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "template-benchmark-analyst": {
-    "description": "Selects global institutional report archetype and writes template brief before research drafting",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "exhibit-architect": {
-    "description": "Plans visual exhibits and converts strong conclusions into chart, heatmap, timeline, bridge, scorecard, or network map requirements",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "source-governance-analyst": {
-    "description": "Controls source hierarchy, source registry, claim audit, and whether claims may enter valuation",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash",
-      "WebSearch"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "house-view-analyst": {
-    "description": "Forms AStock house view and separates our thesis from broker views",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash",
-      "WebSearch"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "valuation-auditor": {
-    "description": "Audits valuation arithmetic, target comparability, forecast availability, and fake precision",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash"
-    ],
-    "sandbox_mode": "read-only"
-  },
-  "visual-layout-reviewer": {
-    "description": "Reviews rendered PDF pages for visual quality, clipping, overlap, chart readability, and exhibit professionalism",
-    "tools": [
-      "Read",
-      "Grep",
-      "Glob",
-      "Bash"
     ],
     "sandbox_mode": "read-only"
   },

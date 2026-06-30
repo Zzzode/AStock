@@ -73,11 +73,16 @@ report_catalog:
         - "全球HBM市场2026E规模350亿美元，YoY+85%"
         - "国内封装龙头Q1订单同比+40%"
       risk_flags: ["地缘制裁升级", "库存去化不及预期"]
-      source_url: "https://..."
-      pdf_url: "https://..."  # direct PDF download link if visible on page, null otherwise
-      local_pdf: "sources/broker-reports/2026-06-17/01-xxx.pdf"  # if downloaded
-      local_text: "sources/broker-reports/2026-06-17/01-xxx.md"  # if extracted
-      confidence: "high"  # high/medium/low based on source reliability
+	      source_url: "https://..."
+	      pdf_url: "https://..."  # direct PDF download link if visible on page, null otherwise
+	      local_pdf: "sources/broker-reports/2026-06-17/01-xxx.pdf"  # if downloaded
+	      local_text: "sources/broker-reports/2026-06-17/01-xxx.md"  # if extracted
+	      source_form: "original_pdf"  # original_pdf/broker_official_page/abstract/media_repost/third_party_preview/search_snippet/not_found
+	      source_quality: "original_broker_pdf"  # official_filing/original_broker_pdf/broker_official_page/broker_abstract/media_repost/third_party_preview/search_snippet/corpus_gap/not_found
+	      evidence_tier: "primary"  # primary/secondary/tertiary/gap
+	      download_status: "downloaded"  # downloaded/captured_html/abstract_only/paywalled/not_found/failed
+	      exhaustion_reason: null  # non-null when original evidence is unavailable
+	      confidence: "high"  # high/medium/low based on source reliability
 
   consensus_snapshot:
     bullish_count: 10
@@ -114,6 +119,8 @@ This builds the semantic search index that `search-report` queries. It is the in
 5. **Flag stale data** — if a report's market data is >30 days old, mark confidence as "medium"
 6. **Minimum coverage** — if fewer than `min_reports` found, expand date range or broaden keywords
 7. **Forecast completeness** — for every ticker-level report or abstract, attempt to capture rating, target price, 2026E/2027E revenue, net profit, EPS and valuation method. If unavailable, write `not disclosed`; never infer broker forecasts from AStock models.
+8. **Source-quality labeling** — every catalog row must label `source_form`, `source_quality`, `evidence_tier`, `download_status`, and `exhaustion_reason`.
+9. **Exhaustion logging** — if an original PDF, broker official page, customer evidence, or forecast table cannot be obtained, record the failed probe and next verification path in `source_exhaustion_log.md/json` through the source-governance workflow.
 
 ## Constraints
 
@@ -122,6 +129,7 @@ This builds the semantic search index that `search-report` queries. It is the in
 - NEVER present your own analysis as broker views
 - If a source is paywalled, note "paywalled" and extract only the freely visible abstract
 - If WebSearch returns no results for a query, try alternative keywords before reporting "not found"
+- Never treat abstracts, media reposts, third-party previews, or search snippets as original broker reports.
 - Always include `source_url` — traceability is non-negotiable
 - Always include `local_pdf` / `local_text` when files are downloaded or extracted
 - Never write source files outside the active research case directory

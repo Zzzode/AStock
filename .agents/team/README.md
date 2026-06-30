@@ -9,6 +9,8 @@ This directory contains reusable subagent role definitions. Skills in `.agents/s
 | Market Analyst | `market-analyst.md` | Market structure, volume-price dynamics, momentum, position assessment |
 | Fundamental Analyst | `fundamental-analyst.md` | Valuation, earnings, operations, order flow |
 | Industry Analyst | `industry-analyst.md` | TAM, competitive landscape, supply chain, policy, macro |
+| Supply Chain Analyst | `supply-chain-analyst.md` | Upstream/downstream relationships, customer-chain evidence, revenue exposure, earnings bridge |
+| Growth Earnings Modeler | `growth-earnings-modeler.md` | High-growth/AI/order/unit/ASP earnings precision model before valuation |
 | Risk Analyst | `risk-analyst.md` | Risk matrix, ESG/compliance, Devil's Advocate, stress tests, position sizing |
 | Contrarian Analyst | `contrarian-analyst.md` | Counterarguments, failure scenarios, bear case construction |
 | Data Collector | `data-collector.md` | Structured financial and market data gathering |
@@ -18,7 +20,8 @@ This directory contains reusable subagent role definitions. Skills in `.agents/s
 | Valuation Specialist | `valuation-specialist.md` | Runs the standalone valuation skill and owns valuation model + audit artifacts |
 | Valuation Modeler | `valuation-modeler.md` | PE/PEG/PS/DCF models, three-tier targets, scenario analysis |
 | LaTeX Writer | `latex-writer.md` | Professional IB-style LaTeX/PDF report production |
-| Reviewer | `reviewer.md` | Quality gate with S/A/B severity, publication blocking authority |
+| Reviewer | `reviewer.md` | Generic chapter/research quality gate aligned to R0-R4 review cycles |
+| Research Report Reviewer | `research-report-reviewer.md` | Full equity-research review workflow owner for evidence, model, draft, render/compliance, and final IC sign-off |
 | Internal Control | `internal-control.md` | System quality audit, prompt review, feedback patterns, sync verification |
 
 ## Usage by Skills
@@ -26,7 +29,7 @@ This directory contains reusable subagent role definitions. Skills in `.agents/s
 | Skill | Roles Used |
 |-------|-----------|
 | `/team` | market-analyst, fundamental-analyst, risk-analyst, contrarian-analyst, report-collector, report-analyzer (+ expansion pool) |
-| `/equity-research` | report-collector, report-analyzer, data-collector, data-verifier, industry-analyst, valuation-specialist via `/valuation`, risk-analyst, latex-writer, reviewer |
+| `/equity-research` | report-collector, report-analyzer, data-collector, data-verifier, industry-analyst, supply-chain-analyst via `/supply-chain-research`, growth-earnings-modeler via `/growth-earnings-model`, valuation-specialist via `/valuation`, risk-analyst, latex-writer, research-report-reviewer via `/research-report-review`, reviewer for chapter-level checks |
 | `/analyze` | market-analyst (when producing formal report) |
 | `/backtest` | latex-writer (when producing formal report) |
 | `/recommend` | fundamental-analyst, risk-analyst, report-analyzer (subset for candidate evaluation) |

@@ -19,6 +19,7 @@ Expects:
 - Ticker universe (which companies to cover)
 - Competitive landscape questions
 - Any existing industry data from shared packet
+- Selected industry coverage pack and full-chain taxonomy when this is an industry-chain report
 
 ## Output Contract
 
@@ -29,6 +30,9 @@ Conclusion: <one-sentence industry positioning assessment>
 Competitive Landscape:
 | Layer | Player | Moat | Moat Durability |
 |-------|--------|------|-----------------|
+
+Global / China Competitive Landscape:
+| Chain Block | Global Leaders | China Leaders | CR3 | CR5 | Localization Boundary | Substitution Risk | Source Quality |
 
 TAM Decomposition:
 - Global TAM: <with bottom-up math>
@@ -44,6 +48,14 @@ Confidence: <0-100>
 Degradation: <none / specific reason>
 ```
 
+For deep equity-research reports, also write `analysis/competitive_landscape.md` with:
+
+- Global and China leader map by chain block.
+- CR3 and CR5 when data exist; otherwise `not disclosed` with sources checked.
+- Localization boundary: what can be substituted domestically now, what remains imported/overseas/private, and the evidence.
+- Substitution risk and moat durability by block.
+- How the competitive landscape affects core valuation pool versus satellite watch pool.
+
 ## Constraints
 
 - Never cite vendor TAM claims without decomposition — always bottom-up validate
@@ -52,3 +64,5 @@ Degradation: <none / specific reason>
 - Classify companies by value chain position, not by end product category
 - Risk factors must have specific monitoring triggers, not vague statements
 - Apply China-specific discount (typically 10-25% of global TAM for A-share)
+- Do not write a full industry-chain report without `analysis/competitive_landscape.md`.
+- Do not present a company as a leader without stating whether the evidence is official, broker, industry database, media repost, or not disclosed.

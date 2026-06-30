@@ -19,22 +19,26 @@ Expects:
 - `data/verified_market_data.md`
 - `data/consensus_analysis.md` or a clearly labeled public broker/consensus snapshot.
 - `data/source_registry.md` and `data/claim_audit.md`
+- Supply-chain research outputs for full industry-chain reports: `analysis/supply_chain_model.md`, `analysis/company_fundamental_cards.md`, `analysis/chain_earnings_bridge.md`, `data/supply_chain_relationships.md`, and `data/customer_chain_audit.md`
+- Growth earnings outputs when high-growth, AI, order, shipment, ASP, customer-allocation, segment-mix, PEG/PSG, or PS/SOTP valuation credit is used: `analysis/growth_earnings_model.md`, `analysis/segment_forecast_bridge.md`, `analysis/implied_growth_sensitivity.md`, and `data/growth_driver_model.json`
 - `analysis/house_view.md`
 - Ticker universe, report language, data cutoff, and case directory.
 
-If required data is unavailable, write `not disclosed` or `insufficient evidence`; do not invent broker assumptions, consensus forecasts, order evidence, customer exposure, or share-class comparability.
+If required data is unavailable, write `not disclosed` or `insufficient evidence`; do not invent broker assumptions, consensus forecasts, order evidence, customer exposure, share-class comparability, unit volume, ASP, segment revenue, or AI-related margin. In a full industry-chain report, missing supply-chain outputs block investable recommendations unless the ticker is explicitly labeled `watchlist only / insufficient chain evidence`. Missing growth earnings outputs block high-growth valuation credit unless the ticker is explicitly labeled `watchlist only / insufficient growth evidence`.
 
 ## Procedure
 
 1. Read and follow `.agents/skills/valuation/SKILL.md`.
-2. Classify every covered ticker by lifecycle, business economics, profit denominator, cyclicality, asset intensity, and evidence quality.
+2. Classify every covered ticker by lifecycle, business economics, supply-chain directness, profit denominator, cyclicality, asset intensity, and evidence quality.
 3. Choose a primary valuation method and secondary check for each ticker before calculating target values.
 4. Build 2026E revenue, net profit/EPS, growth and seasonality bridges from verified data.
-5. Calculate bear/base/bull values, bubble degree, final multi-anchor target, implied upside/downside, catalysts, invalidation triggers, and next-quarter thresholds.
-6. Reconcile AStock intrinsic value, market-implied sentiment anchor, and broker/Street anchor with explicit weights.
-7. Write `analysis/valuation_model.md`.
-8. Audit the output and write `analysis/valuation_audit.md`.
-9. Mark the valuation gate `BLOCKED` if any publication blocker in the valuation skill remains.
+5. When the investment case depends on high-growth drivers, use the growth earnings outputs to separate base business and growth segment economics before selecting PE, PEG, PSG, PS, SOTP, market-sentiment weight, or target-price upside.
+6. Tie catalysts, invalidation triggers, and next-quarter thresholds to `analysis/chain_earnings_bridge.md`, `data/supply_chain_relationships.md`, `analysis/growth_earnings_model.md`, and `data/growth_driver_model.json` when available.
+7. Calculate bear/base/bull values, bubble degree, final multi-anchor target, implied upside/downside, catalysts, invalidation triggers, and next-quarter thresholds.
+8. Reconcile AStock intrinsic value, market-implied sentiment anchor, and broker/Street anchor with explicit weights. For high-growth names, explain what current price already implies for growth revenue, EPS, margin, shipments, ASP, order conversion, or duration.
+9. Write `analysis/valuation_model.md`.
+10. Audit the output and write `analysis/valuation_audit.md`.
+11. Mark the valuation gate `BLOCKED` if any publication blocker in the valuation skill remains.
 
 ## Output Contract
 
@@ -62,4 +66,6 @@ data/current_valuation_model_<YYYYMMDD>.json
 - Do not use broker targets as AStock targets.
 - Do not give investable action labels without current price, final target or fair-value range, and implied upside/downside.
 - Do not let valuation outputs proceed to LaTeX writing if market-expectation bridge, sentiment anchor, broker comparison, scenario bands, or audit are missing.
+- Do not compensate for missing supply-chain artifacts by hand-writing generic customer-chain assumptions inside valuation.
+- Do not assign high-growth valuation credit, high-growth multiples, PEG/PSG upside, PS/SOTP upside, or market-sentiment weight from generic AI demand without `growth-earnings-model` artifacts and explicit unit/order/ASP/proxy-to-EPS math.
 - For Chinese reports, write reader-facing valuation logic, action labels, catalysts, invalidation triggers, and audit summaries in Chinese.

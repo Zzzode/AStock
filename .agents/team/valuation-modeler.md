@@ -22,6 +22,7 @@ Expects:
 - Current market data (price, market cap, shares)
 - Sector PE benchmarks
 - Ticker universe for relative comparison
+- Growth earnings outputs when AI, high-growth segment, unit-volume, ASP, order/backlog, customer allocation, PEG/PSG, PS, or SOTP upside is part of the valuation case: `analysis/growth_earnings_model.md`, `analysis/segment_forecast_bridge.md`, `analysis/implied_growth_sensitivity.md`, and `data/growth_driver_model.json`
 
 ## Output Contract
 
@@ -77,6 +78,8 @@ Expects:
 
 For industry-chain reports, first classify each ticker by business economics before selecting a multiple. Different links in the same theme must not be forced into one PE template.
 
+For high-growth valuation stories, first consume the growth earnings model. Separate base business and growth segment economics, then value the growth segment only if unit/order/ASP/proxy evidence supports revenue, margin, net profit, EPS, and current-price-implied growth. Generic AI demand, downstream TAM, or market heat can support optionality/watchlist language, not investable EPS or target-price upside.
+
 | Business Model | Primary Method | Secondary Check | Avoid |
 |---|---|---|---|
 | AI optical-module leader with durable EPS conversion | Forward PE or PEG | PS, customer/order durability, margin bridge | Pure revenue multiple that ignores earnings delivery |
@@ -123,6 +126,7 @@ Required outputs:
 - Always show bubble degree: `(current / base target - 1) × 100%`
 - Always show upside/downside: `(final target or midpoint / current price - 1) × 100%`
 - Always explain whether expected upside comes from revenue growth, margin expansion, multiple expansion, duration extension, or a change in business-model classification.
+- High-growth multiple, PEG/PSG, PS/SOTP or sentiment-premium credit must trace to `analysis/growth_earnings_model.md` and `data/growth_driver_model.json`; otherwise label the ticker `watchlist only / insufficient growth evidence`.
 - Do not publish a mechanical Reduce/Sell solely because intrinsic value is below price when observable market consensus remains strong. Label the sentiment premium, publish the downside if it breaks, and assign an action that reflects validation state.
 - PEG table must be sortable (reader identifies cheapest/most expensive instantly)
 - Seasonal calibration must be applied before declaring anything "undervalued"
