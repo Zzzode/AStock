@@ -10,17 +10,73 @@
       "allowed_in_report": true
     },
     {
-      "claim": "中船特气WF6现有产能2000吨/年、6N级",
+      "claim": "中船特气WF6现有产能2000吨/年、6N级，并已有WF6/NF3历史合同金额样本和招股书历史产销证据",
       "source_ids": [
-        "S6"
+        "S6",
+        "S9",
+        "S18",
+        "S32",
+        "S33",
+        "S35"
       ],
       "confidence": "High",
       "allowed_in_report": true
     },
     {
-      "claim": "中巨芯WF6产能600吨且暂无扩产计划",
+      "claim": "中船特气2025年六氟化钨合同约1.1904亿元、2024年三氟化氮合同约1.1508亿元；但合同平均售价、收入确认比例、客户份额和单品毛利未披露",
       "source_ids": [
-        "S1"
+        "S32",
+        "S33"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "合同金额经济性约束显示中船特气WF6/NF3历史合同和电子气体平台合同可量化单笔订单强度，但只能进入事件验证和收入桥约束，不关闭ASP、确认比例、客户份额或单品毛利",
+      "source_ids": [
+        "contract_economics_constraint",
+        "contract_order_announcement_evidence",
+        "official_segment_table_evidence"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "订单持续性与收入确认耐久性证据显示18只标的中只有1只具备历史主题订单金额样本，但持续订单增长每股收益允许入模为0/18；历史订单、平台订单、非主题合同、合同负债和披露日历都不得替代持续订单、合同平均售价、收入确认比例、客户份额、单品收入或单品毛利",
+      "source_ids": [
+        "order_durability_evidence",
+        "contract_order_announcement_evidence",
+        "contract_economics_constraint",
+        "earnings_disclosure_calendar"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "价格与毛利入模门禁显示18只标的均没有公司合同平均售价和单品毛利可直接进入增长每股收益；公开价格、平台毛利、官方分部毛利、招股书历史价格敏感性和成本传导证据只能进入基准现金流、市场锚、风险折扣或事件验证",
+      "source_ids": [
+        "price_margin_valuation_gate",
+        "public_price_proxy_snapshot",
+        "cost_margin_pass_through_evidence",
+        "prospectus_price_boundary_evidence",
+        "official_segment_table_evidence"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "中船特气招股书披露NF3/WF6平均单价已申请豁免披露，公开可用的是历史产销、价格降幅和毛利率变动方向；因此不能用公开价格代理替代公司合同平均售价或单品毛利",
+      "source_ids": [
+        "S35"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "中巨芯WF6产能600吨且暂无扩产计划，并提示无新增长期/大额实质性订单",
+      "source_ids": [
+        "S10",
+        "S14"
       ],
       "confidence": "High",
       "allowed_in_report": true
@@ -28,9 +84,45 @@
     {
       "claim": "昊华科技WF6收入占2025收入0.13%",
       "source_ids": [
-        "S1"
+        "S11",
+        "S15"
       ],
       "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "华特气体无WF6合成产能，仅按客户要求供应纯化WF6且占比较小",
+      "source_ids": [
+        "S12",
+        "S17"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "和远气体WF6尚处试生产，尚未产生业绩且未签署实质性订单",
+      "source_ids": [
+        "S16"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "中船特气3383吨电子气体项目有公告和环评公示证据，但不能替代WF6单品产能拆分、订单、ASP和毛利",
+      "source_ids": [
+        "S29",
+        "S30",
+        "S31"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "2026年4月中国WF6出口均价149.79美元/千克，同比+28.33%、环比+203.83%；只能作为主题热度证据，不能替代公司合同ASP",
+      "source_ids": [
+        "S13"
+      ],
+      "confidence": "Medium",
       "allowed_in_report": true
     },
     {
@@ -48,6 +140,78 @@
         "S5"
       ],
       "confidence": "Medium",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "生态环境部2026年度氢氟碳化物配额附件可验证巨化、三美、永和体系相关HFC生产/内用/进口配额和全国生产份额，多氟多未检出对应同名配额行；该证据只能补强制冷剂基准现金流和公司相对地位，不替代含氟电子材料订单或价差",
+      "source_ids": [
+        "S36"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "含氟电子材料边界证据显示6家氟化工链标的0/6可进入含氟电子材料增长EPS；制冷剂配额、氟化工主业、有机氟平台或萤石/HF上游证据不得替代电子材料客户、订单、单品价差、收入占比或单品毛利",
+      "source_ids": [
+        "S36",
+        "business_segment_snapshot",
+        "contract_order_announcement_evidence"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "上游资源安全与基准现金流证据显示8只钨/萤石/AHF/制冷剂配额核心标的可区分资源或配额基准现金流与半导体/电子材料成长信用；资源/配额可进入基准估值，但当前0/8可进入成长每股收益",
+      "source_ids": [
+        "resource_security_evidence",
+        "production_sales_inventory_evidence",
+        "competitive_position_evidence",
+        "hfc_quota_allocation_evidence"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "客户侧验证探针显示8个客户链锚点中客户侧订单/采购/份额反向验证为0/8；供应商年报中的具名客户、认证或平台需求可以提高关系置信度，但不能替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利",
+      "source_ids": [
+        "customer_side_verification_probe",
+        "customer_qualification_evidence",
+        "ai_platform_demand_anchor_snapshot"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "下游客户公开文件探针检查晶圆厂、设备、硅片和面板客户侧2025年年报，客户侧采购订单/采购份额/合同价格反向验证仍为0；即使出现供应商名或产品词候选，也不能替代产品级采购文件、订单金额、合同平均售价、收入确认比例或单品毛利",
+      "source_ids": [
+        "downstream_customer_public_file_probe",
+        "customer_side_verification_probe"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "2026年半年报预约披露日可用于锚定下一季验证窗口，例如中船特气预约披露日为2026-07-18；但披露日历不得替代实际业绩、订单、合同平均售价、收入确认比例、客户份额、单品收入或单品毛利",
+      "source_ids": [
+        "earnings_disclosure_calendar"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "业绩预告/快报公告可用于验证公司层利润预警和模型刷新，但不得替代WF6/NF3/电子材料/高纯钨材单品订单、合同平均售价、收入确认比例、客户份额、单品收入或单品毛利",
+      "source_ids": [
+        "performance_forecast_evidence"
+      ],
+      "confidence": "High",
+      "allowed_in_report": true
+    },
+    {
+      "claim": "问询/审核回复公告可用于补强交易所或监管层硬字段复核和来源穷尽，但不得把问询标题、募投说明或泛化回复替代单品订单、合同平均售价、收入确认比例、客户份额、单品收入或单品毛利",
+      "source_ids": [
+        "regulatory_inquiry_evidence"
+      ],
+      "confidence": "High",
       "allowed_in_report": true
     },
     {

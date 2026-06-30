@@ -1,0 +1,83 @@
+{
+  "schema": "astock.company_product_capability_evidence.v1",
+  "generated_at": "2026-06-30T06:08:29.722683+08:00",
+  "gate_status": "CONDITIONAL",
+  "rows": [
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "capability_layer": "公司官网产品组合",
+      "official_evidence": "中船特气官网企业简介列示高纯三氟化氮、高纯六氟化钨、高纯氯化氢、高纯氟化氢等电子特种气体，并称产品应用于集成电路、显示面板等行业。",
+      "product_or_standard_detail": "高纯WF6属于官网列示的主要电子特气产品；公司称具备电子特气及含氟新材料等70余种产品生产能力。",
+      "source_ids": [
+        "S26"
+      ],
+      "valuation_use": "支持中船特气WF6/NF3直接性和调研优先级；具体估值仍受订单、ASP、收入拆分和毛利门禁约束",
+      "evidence_boundary": "官网产品组合不能替代客户认证、订单金额、合同价格、收入占比或单品毛利。",
+      "remaining_gap": "WF6具名客户、订单金额、合同ASP、产品收入占比和单品毛利。"
+    },
+    {
+      "ticker": "688549",
+      "company": "中巨芯-U",
+      "capability_layer": "公司官网产品页",
+      "official_evidence": "中巨芯官网列示高纯六氟化钨（WF6），纯度等级6N，包装规格10L钢瓶和40L钢瓶。",
+      "product_or_standard_detail": "官网称WF6主要用于半导体晶圆制造成膜工艺、钨薄膜化学沉积和原子层沉积，尤其在3D结构中重要。",
+      "source_ids": [
+        "S27"
+      ],
+      "valuation_use": "支持中巨芯具备WF6产品能力和半导体应用直接性；公告未披露长单前仍只能给观察/期权信用",
+      "evidence_boundary": "产品页证明产品和规格，不证明产能利用、客户认证、订单、销售价格或利润。",
+      "remaining_gap": "具名客户、订单金额、交付节奏、销售均价、产品收入和毛利。"
+    },
+    {
+      "ticker": "600378",
+      "company": "昊华科技",
+      "capability_layer": "公司产品页+公告收入边界",
+      "official_evidence": "昊华气体官网WF6产品页证明产品能力；昊华科技异常波动公告披露2025年度WF6收入占2025年度营业收入0.13%。",
+      "product_or_standard_detail": "有产品能力和低收入占比双重证据，适合写成能力可见但业绩弹性有限。",
+      "source_ids": [
+        "S2",
+        "S15"
+      ],
+      "valuation_use": "保留电子化学品平台价值，但WF6不得按高弹性主线给同等估值信用",
+      "evidence_boundary": "产品页和0.13%收入占比不能替代订单、ASP、客户结构或产品毛利。",
+      "remaining_gap": "订单金额、销售价格、客户结构、产品毛利和未来收入占比变化。"
+    },
+    {
+      "ticker": "002971",
+      "company": "和远气体",
+      "capability_layer": "公司公告项目阶段",
+      "official_evidence": "和远气体异常波动公告披露电子级WF6等电子特气尚处试生产阶段，尚未产生任何业绩且尚未签署具有法律约束力的实质性订单协议。",
+      "product_or_standard_detail": "项目能力处在试生产/验证前后，当前不能按量产供货处理。",
+      "source_ids": [
+        "S16"
+      ],
+      "valuation_use": "仅作为项目期权和风险提示，不进入2026E增长EPS",
+      "evidence_boundary": "试生产公告不能替代稳产量产、正式认证、订单金额、收入确认或毛利。",
+      "remaining_gap": "正式认证、量产爬坡、客户导入、订单金额、收入确认比例和单品毛利。"
+    },
+    {
+      "ticker": "标准化层",
+      "company": "电子气体WF6",
+      "capability_layer": "国家标准项目",
+      "official_evidence": "全国标准信息公共服务平台列示“电子气体 六氟化钨”国家标准项目。",
+      "product_or_standard_detail": "证明WF6进入电子气体标准化语境，可用于解释质量、纯度和产业规范化要求。",
+      "source_ids": [
+        "S28"
+      ],
+      "valuation_use": "支持行业规范化和产品质量门槛叙事，不进入单家公司盈利模型",
+      "evidence_boundary": "标准项目不能证明任何公司客户认证、量产订单、合同ASP、销售收入或毛利。",
+      "remaining_gap": "公司级标准参与角色、客户认证结果、订单金额和产品毛利。"
+    }
+  ],
+  "covered_entities": 5,
+  "source_ids": [
+    "S15",
+    "S16",
+    "S2",
+    "S26",
+    "S27",
+    "S28"
+  ],
+  "use_boundary": "公司官网、产品页、公告和标准项目只能证明产品能力、规格、应用或项目阶段，不得替代客户认证、订单金额、合同ASP、收入确认比例、收入占比或单品毛利。"
+}

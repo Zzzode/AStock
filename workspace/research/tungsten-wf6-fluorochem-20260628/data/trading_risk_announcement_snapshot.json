@@ -1,0 +1,69 @@
+{
+  "schema": "astock.trading_risk_announcement_snapshot.v1",
+  "generated_at": "2026-06-30T06:08:29.722644+08:00",
+  "gate_status": "CONDITIONAL",
+  "covered_companies": 4,
+  "rows": [
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "announcement_date": "2026-06-25",
+      "risk_event": "停牌核查结果暨复牌公告",
+      "price_move": "2026-05-11至2026-06-25累计涨幅388.77%",
+      "index_comparison": "同期科创综指+17.35%、科创50+25.96%",
+      "company_pe": "滚动PE 573.30x；静态PE 597.55x",
+      "industry_pe": "行业近一个月平均滚动PE 65.70x；静态PE 71.85x",
+      "official_boundary": "WF6现有产能2000吨/年、6N级；未公开披露产品价格；订单达到披露标准时依法披露；上游钨材料上涨可能挤压利润空间。",
+      "source_ids": [
+        "S19"
+      ],
+      "valuation_use": "高拥挤/高估值风险锚；市场锚权重必须由后续订单、价格和毛利验证维持。"
+    },
+    {
+      "ticker": "688549",
+      "company": "中巨芯-U",
+      "announcement_date": "2026-06-22",
+      "risk_event": "股票交易风险提示公告",
+      "price_move": "2026-05-08至2026-06-18累计涨幅180.63%",
+      "index_comparison": "同期科创综指+11.33%、科创50+13.86%",
+      "company_pe": "2025年归母净利润为负，传统PE锚弱",
+      "industry_pe": "C39行业滚动PE 71.45x；静态PE 78.31x",
+      "official_boundary": "高纯WF6未签署新的具有法律约束力的长期或大额实质性订单；产能600吨；暂无扩产计划；钨材料涨价带来成本不确定性。",
+      "source_ids": [
+        "S14"
+      ],
+      "valuation_use": "高涨幅与订单缺口并存，PS/现金流观察权重高于EPS信用。"
+    },
+    {
+      "ticker": "600378",
+      "company": "昊华科技",
+      "announcement_date": "2026-06-11",
+      "risk_event": "股票交易异常波动公告",
+      "price_move": "2026-06-04至2026-06-11连续6个交易日累计涨幅53.40%",
+      "index_comparison": "显著高于同期上证指数波动",
+      "company_pe": "公告未给出PE；报告使用AStock估值表约束",
+      "industry_pe": "公告未给出行业PE；报告使用同业估值与主营构成约束",
+      "official_boundary": "2025年度WF6收入占营业收入0.13%，占比较低，不会对公司业绩产生重大影响；不存在应披露未披露重大信息。",
+      "source_ids": [
+        "S15"
+      ],
+      "valuation_use": "WF6题材热度不得覆盖主营平台估值，市场锚需向平台业务和SOTP回归。"
+    },
+    {
+      "ticker": "002971",
+      "company": "和远气体",
+      "announcement_date": "2026-06-08",
+      "risk_event": "股票交易异常波动公告",
+      "price_move": "2026-06-04、06-05、06-08连续3个交易日累计偏离21.42%",
+      "index_comparison": "触发深交所股票交易异常波动情形",
+      "company_pe": "公告未给出PE；报告使用AStock估值表约束",
+      "industry_pe": "公告未给出行业PE；报告使用同业估值与项目阶段约束",
+      "official_boundary": "电子级WF6等产品尚处试生产阶段；WF6尚未产生任何业绩，未签署任何具有法律约束力的实质性订单协议。",
+      "source_ids": [
+        "S16"
+      ],
+      "valuation_use": "项目期权不能转为当期增长EPS，市场锚应低权重处理。"
+    }
+  ],
+  "use_boundary": "交易风险公告用于度量拥挤交易、异常涨幅和官方估值风险提示；它只能约束市场锚和风险折扣，不能替代基本面目标价、客户订单、合同ASP、收入确认比例或单品毛利。"
+}

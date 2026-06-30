@@ -1,8 +1,8 @@
-# Research Brief
+# 研究简报
 
-- Theme: Tungsten, electronic specialty gases and fluorochemicals as one semiconductor-front-end materials chain.
-- Core question: 当前钨、气体、氟化工行情分别是作为哪些大产业链环节被重估，哪些A股标的是真正直接受益，哪些只是题材外延？
-- Language: Chinese.
-- Coverage: 18 A-share core names plus 5 downstream demand anchors.
-- Data cutoff: 2026-06-28 for market data; 2026Q1/2025A for financials.
-- Output: LaTeX/PDF full research report with source registry, valuation model and risk gate.
+- 主题：把钨、电子特气和氟化工放在半导体前道材料产业链中统一分析。
+- 核心问题：当前钨、气体、氟化工行情分别是作为哪些大产业链环节被重估，哪些A股标的是真正直接受益，哪些只是题材外延？
+- 语言：中文。
+- 覆盖范围：18只A股核心标的，以及5个下游需求锚。
+- 数据截止：行情抓取截至2026年6月29日中国时间，估值价格基准为东方财富官方行情快照2026年6月29日；财务数据采用2026年一季报和2025年年报公开报表。
+- 输出形式：LaTeX/PDF正式研报，并配套来源登记、供应链证据包、产销量/库存/产能利用证据、估值模型和风险门禁。

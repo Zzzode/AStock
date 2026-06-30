@@ -1,0 +1,82 @@
+{
+  "schema": "astock.semiconductor_tungsten_material_boundary.v1",
+  "generated_at": "2026-06-30T06:08:29.929517+08:00",
+  "gate_status": "CONDITIONAL",
+  "covered_tickers": 4,
+  "growth_eps_allowed_count": 0,
+  "rows": [
+    {
+      "ticker": "600549",
+      "company": "厦门钨业",
+      "annual_report_anchor": "钨钼等有色金属产品收入占比42.4%、毛利率28.4%；钨粉末销量9,670吨，硬质合金销量8,272吨，细钨丝销量1,292亿米，其中光伏用钨丝1,023亿米。",
+      "semiconductor_relevance": "年报语境提及半导体领域六氟化钨增量贡献和高端靶材应用，但公司层面披露仍主要落在钨粉、硬质合金、细钨丝和钨钼产品大类。",
+      "customer_order_status": "未披露半导体高纯钨材客户、认证阶段、订单金额或收入确认比例。",
+      "revenue_margin_status": "已披露钨钼大类收入和毛利率；未披露半导体高纯钨材单品收入、合同ASP或单品毛利。",
+      "valuation_use": "钨资源/加工主业可进入周期和资源安全估值；半导体钨材只能作为外延期权和调研优先级。",
+      "model_gate": "RESOURCE_CYCLE_ONLY",
+      "source_artifacts": "data/business_segment_snapshot.json/md; data/production_sales_inventory_evidence.json/md; data/annual_report_evidence_snippet_snapshot.json/md",
+      "source_ids": [
+        "AR600549",
+        "business_segment_snapshot",
+        "production_sales_inventory_evidence"
+      ],
+      "remaining_gap": "半导体高纯钨材客户、订单金额、收入占比、合同ASP和单品毛利。",
+      "evidence_boundary": "半导体高纯钨材边界证据只能把资源/加工兑现与半导体材料外延分开；不得替代客户认证、订单金额、合同ASP、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "000657",
+      "company": "中钨高新",
+      "annual_report_anchor": "硬质合金及钨产品收入占比100.0%、毛利率23.7%；硬质合金销售10,756吨，钨钼钽铌库存因保证订单执行增加55.41%。",
+      "semiconductor_relevance": "年报披露钨粉可用于钨丝、钨棒、钨管等钨材及钨合金，应用场景包括集成电路和半导体等工业领域；互动问答线索显示没有进入WF6计划，但存在向相关客户供应钨粉原料的链条线索。",
+      "customer_order_status": "未披露半导体高纯钨材具名客户、认证阶段、订单金额、订单期限或确认比例。",
+      "revenue_margin_status": "公司整体钨产品毛利率可见；半导体高纯钨材收入、价格和毛利未单列。",
+      "valuation_use": "制造升级和刀具平台可进入基准估值；半导体高纯钨材不得给成长EPS信用。",
+      "model_gate": "MANUFACTURING_PLATFORM_ONLY",
+      "source_artifacts": "data/business_segment_snapshot.json/md; data/production_sales_inventory_evidence.json/md; data/investor_relations_qa_evidence.json/md",
+      "source_ids": [
+        "AR000657",
+        "production_sales_inventory_evidence",
+        "investor_relations_qa_evidence"
+      ],
+      "remaining_gap": "高纯钨材客户/订单、产品收入占比、合同ASP和产品级毛利。",
+      "evidence_boundary": "半导体高纯钨材边界证据只能把资源/加工兑现与半导体材料外延分开；不得替代客户认证、订单金额、合同ASP、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "002378",
+      "company": "章源钨业",
+      "annual_report_anchor": "碳化钨粉收入占比35.7%、毛利率11.5%；钨粉收入占比31.0%、毛利率8.5%；钨粉销量4,928吨，碳化钨粉销量5,812吨。",
+      "semiconductor_relevance": "年报主题扫描未找到半导体关键词；披露ZWC02超细碳化钨粉和超粗碳化钨粉通过客户认证，但没有把认证映射到半导体高纯钨材客户或订单。",
+      "customer_order_status": "未披露半导体高纯钨材客户、订单金额、客户份额、供货节奏或收入确认比例。",
+      "revenue_margin_status": "钨粉/碳化钨粉大类收入和毛利可见；半导体高纯钨材单品收入和毛利未披露。",
+      "valuation_use": "资源冶炼一体化和钨粉景气可进入周期/加工估值；半导体材料外延仍作折扣期权。",
+      "model_gate": "TUNGSTEN_POWDER_BASE_ONLY",
+      "source_artifacts": "data/business_segment_snapshot.json/md; data/production_sales_inventory_evidence.json/md; data/annual_report_theme_evidence_snapshot.json/md",
+      "source_ids": [
+        "AR002378",
+        "business_segment_snapshot",
+        "annual_report_theme_evidence_snapshot"
+      ],
+      "remaining_gap": "半导体高纯钨材客户/订单、单品收入、合同ASP和单品毛利。",
+      "evidence_boundary": "半导体高纯钨材边界证据只能把资源/加工兑现与半导体材料外延分开；不得替代客户认证、订单金额、合同ASP、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "002842",
+      "company": "翔鹭钨业",
+      "annual_report_anchor": "粉末制品收入占比66.9%、毛利率12.9%；硬质合金收入占比20.8%、毛利率15.5%；钨丝系列收入占比8.2%、毛利率24.0%。",
+      "semiconductor_relevance": "年报把半导体作为宏观需求场景提及；公司推进年产300亿米超细钨丝项目，当前证据更多对应光伏金刚线母线和硬质合金放量。",
+      "customer_order_status": "互动问答显示光伏金刚线用钨丝订单和意向订单充足，但不是半导体高纯钨材订单；未披露半导体客户认证或订单金额。",
+      "revenue_margin_status": "粉末制品、硬质合金和钨丝系列大类收入/毛利率可见；半导体高纯钨材收入和毛利未单列。",
+      "valuation_use": "钨加工、硬质合金和光伏钨丝兑现可进入基准估值；不得把光伏钨丝项目外推为半导体钨材成长EPS。",
+      "model_gate": "PV_TUNGSTEN_WIRE_NOT_SEMI",
+      "source_artifacts": "data/business_segment_snapshot.json/md; data/production_sales_inventory_evidence.json/md; data/investor_relations_qa_evidence.json/md",
+      "source_ids": [
+        "AR002842",
+        "business_segment_snapshot",
+        "investor_relations_qa_evidence"
+      ],
+      "remaining_gap": "半导体高纯钨材客户、订单、产品收入、合同ASP和单品毛利。",
+      "evidence_boundary": "半导体高纯钨材边界证据只能把资源/加工兑现与半导体材料外延分开；不得替代客户认证、订单金额、合同ASP、收入占比或单品毛利。"
+    }
+  ],
+  "use_boundary": "本包专门审计钨链四家公司能否把钨资源/加工证据升级为半导体高纯钨材成长信用。当前结论为0/4可进入半导体高纯钨材增长EPS；现有证据可支持钨价、资源/加工、光伏钨丝或制造升级，但不得替代半导体客户、订单、合同ASP、收入占比或单品毛利。"
+}

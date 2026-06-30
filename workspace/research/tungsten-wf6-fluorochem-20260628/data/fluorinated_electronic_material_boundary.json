@@ -1,0 +1,119 @@
+{
+  "schema": "astock.fluorinated_electronic_material_boundary.v1",
+  "generated_at": "2026-06-30T06:08:29.930675+08:00",
+  "gate_status": "CONDITIONAL",
+  "rows": [
+    {
+      "ticker": "600160",
+      "company": "巨化股份",
+      "base_cashflow_anchor": "生态环境部附件命中巨化体系HFC生产配额240,826吨、全国生产份额30.18%；年报/主营构成支持制冷剂和氟化工主业现金流。",
+      "electronic_material_relevance": "通过中巨芯股权映射电子级HF和含氟电子特气，但上市公司口径仍以制冷剂/氟化工现金流为主。",
+      "customer_order_status": "未披露巨化本体含氟电子材料具名客户、批量订单金额、客户采购量或收入确认比例。",
+      "spread_revenue_margin_status": "制冷剂配额和价差可跟踪；电子级HF/含氟电子材料单品价差、收入占比和毛利率未披露。",
+      "valuation_use": "制冷剂配额和价差进入基准现金流与SOTP主业权重；中巨芯电子材料映射只给股权/期权信用。",
+      "model_gate": "REFRIGERANT_BASE_ONLY",
+      "source_artifacts": "data/hfc_quota_allocation_evidence.json/md; data/business_segment_snapshot.json/md; data/production_sales_inventory_evidence.json/md; data/contract_order_announcement_evidence.json/md",
+      "source_ids": [
+        "S36",
+        "business_segment_snapshot",
+        "production_sales_inventory_evidence"
+      ],
+      "remaining_gap": "含氟电子材料客户、订单金额、单品价差、收入占比和单品毛利。",
+      "evidence_boundary": "含氟电子材料边界证据只能把制冷剂/氟化工基准现金流与电子材料第二曲线分开；不得替代电子级HF、氟化液、有机氟电子材料或含氟电子特气的客户、订单、单品价差、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "603379",
+      "company": "三美股份",
+      "base_cashflow_anchor": "生态环境部附件命中三美体系HFC生产配额76,910吨、全国生产份额9.64%，并披露进口配额8,451吨二氧化碳当量。",
+      "electronic_material_relevance": "当前公司逻辑更纯粹指向制冷剂配额和价差，半导体含氟电子材料相关性弱于巨化/中巨芯链条。",
+      "customer_order_status": "未披露电子级HF、氟化液或含氟电子材料客户认证、订单金额或交付节奏。",
+      "spread_revenue_margin_status": "制冷剂品种份额和价差可作为基准业务代理；电子材料单品价差、收入和毛利未披露。",
+      "valuation_use": "以制冷剂配额现金流和价差弹性估值；不得套用电子材料高成长分部倍数。",
+      "model_gate": "REFRIGERANT_QUOTA_BASE_ONLY",
+      "source_artifacts": "data/hfc_quota_allocation_evidence.json/md; data/business_segment_snapshot.json/md; data/cost_margin_pass_through_evidence.json/md",
+      "source_ids": [
+        "S36",
+        "business_segment_snapshot",
+        "cost_margin_pass_through_evidence"
+      ],
+      "remaining_gap": "含氟电子材料客户、订单、价差、收入占比和单品毛利。",
+      "evidence_boundary": "含氟电子材料边界证据只能把制冷剂/氟化工基准现金流与电子材料第二曲线分开；不得替代电子级HF、氟化液、有机氟电子材料或含氟电子特气的客户、订单、单品价差、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "605020",
+      "company": "永和股份",
+      "base_cashflow_anchor": "生态环境部附件命中永和体系HFC生产配额60,281吨、全国生产份额7.56%；年报产销证据支持一体化氟化工主业。",
+      "electronic_material_relevance": "年报和主营证据支持含氟材料/制冷剂一体化平台，但未把含氟电子材料单品与半导体客户或订单绑定。",
+      "customer_order_status": "未披露含氟电子材料具名客户、认证阶段、订单金额、客户份额或收入确认比例。",
+      "spread_revenue_margin_status": "制冷剂与氟化工大类产销/成本可见；含氟电子材料单品价差、收入占比和毛利未披露。",
+      "valuation_use": "一体化氟化工和制冷剂配额进入基准业务；电子材料第二曲线只保留调研信用。",
+      "model_gate": "INTEGRATED_FLUOROCHEM_BASE_ONLY",
+      "source_artifacts": "data/hfc_quota_allocation_evidence.json/md; data/production_sales_inventory_evidence.json/md; data/cost_margin_pass_through_evidence.json/md; data/competitive_position_evidence.json/md",
+      "source_ids": [
+        "S36",
+        "production_sales_inventory_evidence",
+        "competitive_position_evidence"
+      ],
+      "remaining_gap": "含氟电子材料客户、订单、单品价差、收入占比和单品毛利。",
+      "evidence_boundary": "含氟电子材料边界证据只能把制冷剂/氟化工基准现金流与电子材料第二曲线分开；不得替代电子级HF、氟化液、有机氟电子材料或含氟电子特气的客户、订单、单品价差、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "002407",
+      "company": "多氟多",
+      "base_cashflow_anchor": "生态环境部HFC附件未检出多氟多同名配额行；主营锚来自氟化盐、电子级HF、锂电材料和新材料平台。",
+      "electronic_material_relevance": "电子级HF和氟基新材料具备主题相关性，但锂电材料周期和电子化学品认证需要拆开处理。",
+      "customer_order_status": "未披露电子级HF/含氟电子材料具名半导体客户、订单金额、单品交付节奏或确认比例。",
+      "spread_revenue_margin_status": "氟化盐/锂电材料/电子化学品大类收入和毛利可参考；电子材料单品价差、收入占比和毛利未披露。",
+      "valuation_use": "按氟化盐、电子化学品和锂电材料平台做SOTP折扣；不得按制冷剂配额龙头或电子材料高成长段直接上修。",
+      "model_gate": "NEW_MATERIAL_PLATFORM_ONLY",
+      "source_artifacts": "data/hfc_quota_allocation_evidence.json/md; data/business_segment_snapshot.json/md; data/annual_report_theme_evidence_snapshot.json/md; data/contract_order_announcement_evidence.json/md",
+      "source_ids": [
+        "S36",
+        "business_segment_snapshot",
+        "annual_report_theme_evidence_snapshot"
+      ],
+      "remaining_gap": "电子级HF/含氟电子材料客户、订单金额、单品价差、收入占比和单品毛利。",
+      "evidence_boundary": "含氟电子材料边界证据只能把制冷剂/氟化工基准现金流与电子材料第二曲线分开；不得替代电子级HF、氟化液、有机氟电子材料或含氟电子特气的客户、订单、单品价差、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "300037",
+      "company": "新宙邦",
+      "base_cashflow_anchor": "主营锚来自电解液、有机氟精细化学品和电子氟化液平台，公告扫描命中锂电电解液合作协议而非含氟电子材料订单。",
+      "electronic_material_relevance": "有机氟和电子氟化液可映射AI数据中心液冷和半导体材料，但当前公开证据更多是远期应用线索。",
+      "customer_order_status": "未披露电子氟化液或含氟电子材料具名客户、批量供货订单、单品客户份额或收入确认比例。",
+      "spread_revenue_margin_status": "电解液协议不能替代电子氟化液/含氟电子材料单品价差、收入占比或毛利率。",
+      "valuation_use": "锂电电解液和有机氟平台分部可进入基准/SOTP；电子氟化液第二曲线只给观察信用。",
+      "model_gate": "LITHIUM_ELECTROLYTE_NOT_ELECTRONIC_FLUOROMATERIAL",
+      "source_artifacts": "data/contract_order_announcement_evidence.json/md; data/business_segment_snapshot.json/md; data/investor_relations_qa_evidence.json/md; data/annual_report_theme_evidence_snapshot.json/md",
+      "source_ids": [
+        "contract_order_announcement_evidence",
+        "business_segment_snapshot",
+        "investor_relations_qa_evidence"
+      ],
+      "remaining_gap": "电子氟化液/含氟电子材料客户、订单、单品价差、收入占比和单品毛利。",
+      "evidence_boundary": "含氟电子材料边界证据只能把制冷剂/氟化工基准现金流与电子材料第二曲线分开；不得替代电子级HF、氟化液、有机氟电子材料或含氟电子特气的客户、订单、单品价差、收入占比或单品毛利。"
+    },
+    {
+      "ticker": "603505",
+      "company": "金石资源",
+      "base_cashflow_anchor": "年报和主营锚支持萤石资源、无水氟化氢和上游氟化工原料暴露。",
+      "electronic_material_relevance": "处于萤石/HF上游，受制冷剂和含氟材料景气传导；不是电子级HF或含氟电子材料订单直接主体。",
+      "customer_order_status": "未披露含氟电子材料客户、电子级HF订单、客户份额或收入确认比例。",
+      "spread_revenue_margin_status": "资源端价格和AHF产销可解释成本/价差传导；电子材料单品价差、收入和毛利未披露。",
+      "valuation_use": "按萤石资源和氟化工原料景气估值；不能使用电子材料第二曲线增长倍数。",
+      "model_gate": "UPSTREAM_FLUORITE_ONLY",
+      "source_artifacts": "data/production_sales_inventory_evidence.json/md; data/business_segment_snapshot.json/md; data/cost_margin_pass_through_evidence.json/md; data/competitive_position_evidence.json/md",
+      "source_ids": [
+        "production_sales_inventory_evidence",
+        "business_segment_snapshot",
+        "cost_margin_pass_through_evidence"
+      ],
+      "remaining_gap": "电子级HF/含氟电子材料客户、订单、收入占比、单品价差和毛利。",
+      "evidence_boundary": "含氟电子材料边界证据只能把制冷剂/氟化工基准现金流与电子材料第二曲线分开；不得替代电子级HF、氟化液、有机氟电子材料或含氟电子特气的客户、订单、单品价差、收入占比或单品毛利。"
+    }
+  ],
+  "covered_tickers": 6,
+  "refrigerant_base_cashflow_allowed_count": 3,
+  "growth_eps_allowed_count": 0,
+  "use_boundary": "本包专门审计氟化工公司能否把制冷剂/HFC配额、氟化工主业或有机氟平台升级为含氟电子材料第二曲线成长信用。当前结论为0/6可进入含氟电子材料增长EPS；HFC配额和制冷剂价差可进入基准现金流，但不得替代电子材料客户、订单、单品价差、收入占比或单品毛利。"
+}

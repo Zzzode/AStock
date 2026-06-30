@@ -1,0 +1,100 @@
+{
+  "schema": "astock.customer_side_verification_probe.v1",
+  "generated_at": "2026-06-30T06:08:29.929530+08:00",
+  "gate_status": "CONDITIONAL",
+  "rows": [
+    {
+      "anchor_group": "中船特气WF6/NF3客户链",
+      "linked_a_share_names": "688146 中船特气",
+      "supplier_side_evidence": "供应商年报披露NF3稳定供应台积电、美光、海力士、英飞凌、格罗方德、中芯国际、长江存储、华虹、京东方等；WF6稳定供应台积电、美光、海力士、英飞凌、铠侠、格罗方德、中芯国际、长江存储、长鑫存储、华虹等。",
+      "customer_side_public_evidence": "本报告语料内未取得上述晶圆厂或存储厂客户侧供应商名录、采购订单、采购份额或合同价格文件。",
+      "checked_artifacts": "data/customer_qualification_evidence.json/md; data/customer_supplier_detail_snapshot.json/md; data/contract_order_announcement_evidence.json/md; sources/official-annual-reports-2025/688146-中船特气-2025-annual-report.txt",
+      "found_status": "供应商侧具名客户强；客户侧采购文件未取得",
+      "valuation_use": "关系置信度和调研优先级可提高；客户侧文件未取得前，不把客户名单直接折成WF6/NF3订单、收入或增长每股收益。",
+      "remaining_gap": "客户侧供应商名录、采购订单、采购份额、合同平均售价、收入确认比例和单品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    },
+    {
+      "anchor_group": "中巨芯电子湿化学品/电子特气客户链",
+      "linked_a_share_names": "688549 中巨芯-U；600160 巨化股份",
+      "supplier_side_evidence": "年报披露电子级氢氟酸、硫酸、硝酸等已在中芯国际、华虹集团等客户批量供货；电子特气及前驱体进入中芯国际、华虹集团、SK海力士、日本铠侠、上海华力、士兰微等试用与供应阶段。",
+      "customer_side_public_evidence": "本报告语料内未取得中芯国际、华虹、SK海力士、铠侠、上海华力或士兰微客户侧采购清单、产品份额或订单金额文件。",
+      "checked_artifacts": "data/customer_qualification_evidence.json/md; data/company_clarification_snapshot.json/md; data/contract_order_announcement_evidence.json/md; sources/official-annual-reports-2025/688549-中巨芯-U-2025-annual-report.txt",
+      "found_status": "供应商侧批量供货/试用披露强；客户侧订单金额未取得",
+      "valuation_use": "可进入强观察池和客户链置信度；WF6高成长信用仍受无新增长期/大额订单和无客户侧采购文件约束。",
+      "remaining_gap": "WF6客户侧订单、电子级HF客户采购量、产品收入占比、合同平均售价和单品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    },
+    {
+      "anchor_group": "华特气体认证客户链",
+      "linked_a_share_names": "688268 华特气体",
+      "supplier_side_evidence": "年报披露产品获得中芯国际、长江存储、三星、SK海力士、台积电等下游一线客户认可，并覆盖国内90%以上8-12寸芯片制造企业；多款稀混光刻气通过ASML/Cymer和GIGAPHOTON认证。",
+      "customer_side_public_evidence": "本报告语料内未取得客户侧采购订单、WF6纯化客户名单、纯化产品份额或客户采购价格文件。",
+      "checked_artifacts": "data/customer_qualification_evidence.json/md; data/company_clarification_snapshot.json/md; data/public_broker_fulltext_evidence.json/md; sources/official-annual-reports-2025/688268-华特气体-2025-annual-report.txt",
+      "found_status": "认证/客户覆盖证据强；WF6纯化客户侧订单未取得",
+      "valuation_use": "支持平台质量和认证壁垒；无WF6合成产能且纯化业务占比较小时，不给WF6单品增长每股收益。",
+      "remaining_gap": "纯化WF6客户侧采购、收入占比、订单金额、合同平均售价和产品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    },
+    {
+      "anchor_group": "南大光电前驱体客户链",
+      "linked_a_share_names": "300346 南大光电",
+      "supplier_side_evidence": "年报披露半导体前驱体主要品类实现全覆盖，成功导入国内领先芯片制造企业量产制程，成为国内主要核心前驱体材料供应商之一。",
+      "customer_side_public_evidence": "本报告语料内未取得国内领先芯片制造企业客户侧供应商名录、采购份额、价格或订单金额文件。",
+      "checked_artifacts": "data/customer_qualification_evidence.json/md; data/annual_report_evidence_snippet_snapshot.json/md; data/public_broker_fulltext_evidence.json/md; sources/official-annual-reports-2025/300346-南大光电-2025-annual-report.txt",
+      "found_status": "供应商侧量产导入披露强；客户侧反向文件未取得",
+      "valuation_use": "可支持强观察池和材料平台溢价；客户侧文件未取得前，不把前驱体导入直接折成订单金额或单品毛利。",
+      "remaining_gap": "具名客户、采购份额、订单金额、合同平均售价、收入确认比例和单品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    },
+    {
+      "anchor_group": "金宏气体半导体客户链",
+      "linked_a_share_names": "688106 金宏气体",
+      "supplier_side_evidence": "年报披露服务中芯国际、海力士、长鑫存储等头部企业，新增导入20余家半导体客户，并推进多种特气新产品认证。",
+      "customer_side_public_evidence": "本报告语料内未取得中芯国际、海力士、长鑫存储客户侧气体供应商名录、具体电子气体采购量或订单价格文件。",
+      "checked_artifacts": "data/customer_qualification_evidence.json/md; data/production_sales_inventory_evidence.json/md; data/contract_order_announcement_evidence.json/md; sources/official-annual-reports-2025/688106-金宏气体-2025-annual-report.txt",
+      "found_status": "客户导入证据存在；客户侧采购细节未取得",
+      "valuation_use": "支持电子气体平台观察信用；工业现场制气合同不能迁移为电子特气单品订单。",
+      "remaining_gap": "电子特气单品客户、采购量、订单金额、合同平均售价和产品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    },
+    {
+      "anchor_group": "凯美特气光刻气认证链",
+      "linked_a_share_names": "002549 凯美特气",
+      "supplier_side_evidence": "年报披露准分子激光气体获得Coherent认证，光刻气产品获得ASML子公司Cymer和日本GIGAPHOTON认证，2025年5月披露Kr/Ne、Ar/Ne/Xe光刻气通过GIGAPHOTON合格供应商认证。",
+      "customer_side_public_evidence": "本报告语料内未取得Coherent、Cymer、GIGAPHOTON或终端晶圆厂客户侧采购订单、价格或份额文件。",
+      "checked_artifacts": "data/customer_qualification_evidence.json/md; data/annual_report_theme_evidence_snapshot.json/md; data/public_broker_fulltext_evidence.json/md; sources/official-annual-reports-2025/002549-凯美特气-2025-annual-report.txt",
+      "found_status": "认证证据强于订单证据；客户侧采购文件未取得",
+      "valuation_use": "支持认证壁垒和期权信用；客户侧订单与价格未取得前，不进入增长每股收益。",
+      "remaining_gap": "光刻气客户侧采购订单、采购份额、收入占比、合同平均售价和产品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    },
+    {
+      "anchor_group": "和远气体半导体/面板认证链",
+      "linked_a_share_names": "002971 和远气体",
+      "supplier_side_evidence": "年报披露潜江电子级氯化氢、氯气、羰基硫开始在半导体、面板企业启动认证和销售工作；风险公告提示WF6仍处试生产、未产生业绩且未签实质性订单。",
+      "customer_side_public_evidence": "本报告语料内未取得半导体或面板客户侧认证通过文件、采购订单、销售价格或收入确认材料。",
+      "checked_artifacts": "data/customer_qualification_evidence.json/md; data/company_clarification_snapshot.json/md; data/contract_order_announcement_evidence.json/md; sources/official-annual-reports-2025/002971-和远气体-2025-annual-report.txt",
+      "found_status": "认证启动和负面门禁并存；客户侧确认未取得",
+      "valuation_use": "只能作为事件验证池；WF6不得进入2026E增长每股收益。",
+      "remaining_gap": "客户侧认证通过、正式订单、收入确认比例、合同平均售价和单品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    },
+    {
+      "anchor_group": "AI/HBM/云端算力平台链",
+      "linked_a_share_names": "全体电子特气、钨链和氟化工观察池",
+      "supplier_side_evidence": "AI平台/HBM/网络需求锚说明NVIDIA、SK hynix HBM、Google TPU、AWS Trainium、Intel Gaudi、华为昇腾和Spectrum-X会拉动先进逻辑、存储、封装和前道材料需求。",
+      "customer_side_public_evidence": "本报告语料内未取得平台厂商或终端晶圆厂把上述需求明确分配到A股上游供应商的采购订单、供应商名录或价格文件。",
+      "checked_artifacts": "data/ai_platform_demand_anchor_snapshot.json/md; data/downstream_demand_anchor_snapshot.json/md; data/public_broker_fulltext_evidence.json/md; sources/public-web-20260628/",
+      "found_status": "平台需求强；A股上游客户侧分配证据未取得",
+      "valuation_use": "只提高调研优先级和需求锚权重；不得直接上修A股供应商基本面目标价。",
+      "remaining_gap": "客户侧供应商名录、订单金额、采购量、合同平均售价、产品收入和产品毛利。",
+      "evidence_boundary": "客户侧验证探针只用于确认是否存在客户侧供应商名录、认证清单、采购订单或采购份额反向证据；不得把供应商年报自述、平台需求或券商关键词替代客户侧采购文件、订单金额、合同平均售价、收入确认比例或单品毛利。"
+    }
+  ],
+  "covered_anchor_groups": 8,
+  "customer_side_order_confirmed_count": 0,
+  "supplier_side_named_customer_rows": 7,
+  "platform_demand_only_rows": 1,
+  "use_boundary": "本包把客户链证据拆成供应商侧披露、客户侧反向验证和估值可用性三层；当前客户侧订单/采购/份额反向验证为0/8，不得替代订单金额、合同平均售价、收入确认比例或单品毛利。"
+}

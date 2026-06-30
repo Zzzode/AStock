@@ -1,0 +1,59 @@
+{
+  "schema": "astock.technical_process_evidence.v1",
+  "generated_at": "2026-06-30T06:08:29.722656+08:00",
+  "gate_status": "CONDITIONAL",
+  "rows": [
+    {
+      "process_layer": "前道钨源",
+      "evidence_point": "WF6用于低压或等离子增强CVD沉积钨、钨硅化物和钨氮化物",
+      "semiconductor_relevance": "证明WF6不是泛工业气体，而是前道薄膜/金属化工艺气体",
+      "demand_link": "先进逻辑、DRAM、3D NAND、HBM相关晶圆制造和薄膜工艺",
+      "source_ids": [
+        "S20"
+      ],
+      "valuation_use": "支持产业链交汇点和直接性评级，不直接进入单公司收入或EPS",
+      "evidence_boundary": "工艺用途不能证明A股供应商客户认证、采购订单、合同ASP或单品毛利"
+    },
+    {
+      "process_layer": "钨连接/金属化",
+      "evidence_point": "CVD/ALD用于制造微小钨连接和薄阻挡层，高保形金属膜用于先进钨金属化",
+      "semiconductor_relevance": "钨连接、互连、晶体管和先进存储是设备商公开列示的应用场景",
+      "demand_link": "先进存储、先进封装、互连和晶体管应用",
+      "source_ids": [
+        "S21"
+      ],
+      "valuation_use": "支持下游需求锚和工艺链位置，不替代公司订单",
+      "evidence_boundary": "设备端应用不能映射到某一家A股材料公司的收入份额"
+    },
+    {
+      "process_layer": "接触孔/通孔填充",
+      "evidence_point": "钨CVD用于DRAM和逻辑芯片关键接触孔/通孔结构无空洞填充",
+      "semiconductor_relevance": "高深宽比填充、接触电阻和良率是钨沉积工艺的核心约束",
+      "demand_link": "DRAM、逻辑芯片、0.18微米及以下接触/通孔结构，先进节点延伸关注接触电阻",
+      "source_ids": [
+        "S22"
+      ],
+      "valuation_use": "解释先进制程为什么会放大高纯WF6供应可靠性权重",
+      "evidence_boundary": "工艺瓶颈只提高调研优先级，不给A股公司增长EPS信用"
+    },
+    {
+      "process_layer": "供应规格/纯度控制",
+      "evidence_point": "WF6供应需要镍系统、专有蒸馏去除杂质、非反应性镍钢瓶和痕量金属分析",
+      "semiconductor_relevance": "纯度、痕量金属、容器和供应安全是电子特气认证的一部分",
+      "demand_link": "半导体制造客户，尤其存储芯片制造商的供应安全需求",
+      "source_ids": [
+        "S23"
+      ],
+      "valuation_use": "支持把包装、纯化、供应稳定性列入客户认证门槛",
+      "evidence_boundary": "全球供应规格不能证明国内公司已取得具名客户或批量订单"
+    }
+  ],
+  "covered_process_layers": 4,
+  "source_ids": [
+    "S20",
+    "S21",
+    "S22",
+    "S23"
+  ],
+  "use_boundary": "制程/材料功能证据证明WF6处在前道钨沉积、钨金属化、接触/通孔填充和电子特气纯度供应链中；它不能替代A股公司客户认证、采购订单、合同ASP、收入确认比例或单品毛利。"
+}

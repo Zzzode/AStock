@@ -1,0 +1,71 @@
+{
+  "schema": "astock.external_evidence_probe.v1",
+  "generated_at": "2026-06-30T06:08:30.404681+08:00",
+  "gate_status": "CONDITIONAL",
+  "rows": [
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "evidence_area": "WF6产能/订单边界",
+      "evidence_found": "2000吨/年、6N级；2025年六氟化钨采购合同约1.1904亿元；2024年三氟化氮销售合同约1.1508亿元；2025年HF/HCL/D2等11种电子气体产品采购合同约1.4822亿元；3383吨电子气体项目有公告/环评证据，但WF6单品新增拆分未由官方证实",
+      "source_ids": [
+        "S6",
+        "S9",
+        "S29",
+        "S30",
+        "S31",
+        "S32",
+        "S33"
+      ],
+      "still_missing": "合同平均售价、收入确认比例、客户份额、产品毛利、具名客户结构、2026年后持续订单和WF6单品新增产能拆分",
+      "valuation_gate": "历史主题订单金额样本可提高直接性和订单可见度，但不能把合同金额或项目总产能直接折成长期增长EPS"
+    },
+    {
+      "ticker": "688549",
+      "company": "中巨芯-U",
+      "evidence_area": "WF6产能/订单边界",
+      "evidence_found": "高纯WF6产能600吨；暂无扩产计划；无新增长期或大额实质性订单",
+      "source_ids": [
+        "S1",
+        "S10"
+      ],
+      "still_missing": "具名客户、订单金额、价格、收入占比、产品毛利",
+      "valuation_gate": "直接产能存在，但估值只能保留PS和观察信用，不给增长EPS信用"
+    },
+    {
+      "ticker": "600378",
+      "company": "昊华科技",
+      "evidence_area": "WF6收入占比",
+      "evidence_found": "2025年度WF6收入占公司营业收入0.13%；官网产品页披露电子级WF6能力",
+      "source_ids": [
+        "S2",
+        "S11"
+      ],
+      "still_missing": "订单金额、价格、客户结构、产品毛利；且单品占比低",
+      "valuation_gate": "按平台/SOTP观察，不得套用中船特气同等WF6弹性"
+    },
+    {
+      "ticker": "688268",
+      "company": "华特气体",
+      "evidence_area": "WF6业务真实性边界",
+      "evidence_found": "无WF6合成产能；仅按部分客户要求供应纯化WF6，业务占比较小",
+      "source_ids": [
+        "S8",
+        "S12"
+      ],
+      "still_missing": "客户名称、订单金额、收入占比、产品毛利",
+      "valuation_gate": "电子特气平台价值保留，WF6单品只给小权重观察信用"
+    },
+    {
+      "ticker": "主题层",
+      "company": "WF6行业",
+      "evidence_area": "行业价格/需求",
+      "evidence_found": "公开报道显示出口均价和市场需求存在上行叙事，AI/HBM/3D NAND为需求解释",
+      "source_ids": [
+        "S13"
+      ],
+      "still_missing": "公司合同ASP、季度销量、产品毛利和客户验证",
+      "valuation_gate": "行业价格只能解释主题热度，不能直接填入单公司收入桥"
+    }
+  ]
+}

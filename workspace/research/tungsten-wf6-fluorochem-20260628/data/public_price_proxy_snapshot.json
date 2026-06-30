@@ -1,0 +1,138 @@
+{
+  "schema": "astock.public_price_proxy.v1",
+  "generated_at": "2026-06-29T01:41:11.902608+08:00",
+  "gate_status": "CONDITIONAL",
+  "source": "archived_public_sources_plus_akshare_macro_index",
+  "rows": [
+    {
+      "theme": "钨",
+      "proxy_item": "65黑钨精矿",
+      "proxy_type": "行业现货价格报道",
+      "as_of": "2026年3月上旬",
+      "value": "104.5万元/吨",
+      "trend": "较2026年初约+128%，较2025年初约+633%",
+      "source_ids": [
+        "S3"
+      ],
+      "source_path": "sources/public-web-20260628/app.xinhuanet.com_news_article.html_articleId_5df39a9c924641c076b45b610eb27204.html",
+      "valuation_use": "用于钨矿端周期景气、资源溢价和库存利润代理",
+      "remaining_gap": "公司矿端销售价格、库存成本、半导体高纯钨材客户订单仍需公告或年报验证"
+    },
+    {
+      "theme": "钨",
+      "proxy_item": "APT",
+      "proxy_type": "行业现货价格报道",
+      "as_of": "2026年3月上旬",
+      "value": "150万元/吨",
+      "trend": "较2026年初超过+123%，较2025年初约+615%",
+      "source_ids": [
+        "S3"
+      ],
+      "source_path": "sources/public-web-20260628/app.xinhuanet.com_news_article.html_articleId_5df39a9c924641c076b45b610eb27204.html",
+      "valuation_use": "用于钨冶炼和粉末链价格传导代理",
+      "remaining_gap": "公司产品销售单价、加工费、存货计价和客户结构仍未完全披露"
+    },
+    {
+      "theme": "钨",
+      "proxy_item": "钨粉",
+      "proxy_type": "行业现货价格报道",
+      "as_of": "2026年3月上旬",
+      "value": "2345元/千克",
+      "trend": "较2026年初超过+119%，较2025年初约+644%",
+      "source_ids": [
+        "S3"
+      ],
+      "source_path": "sources/public-web-20260628/app.xinhuanet.com_news_article.html_articleId_5df39a9c924641c076b45b610eb27204.html",
+      "valuation_use": "用于钨粉、硬质合金和WF6上游成本压力代理",
+      "remaining_gap": "无法替代高纯钨粉合同价、产品毛利或半导体客户订单"
+    },
+    {
+      "theme": "钨",
+      "proxy_item": "80钨铁",
+      "proxy_type": "行业现货价格报道",
+      "as_of": "2026年3月上旬",
+      "value": "143万元/吨",
+      "trend": "较2026年初约+115%，较2025年初约+562%",
+      "source_ids": [
+        "S3"
+      ],
+      "source_path": "sources/public-web-20260628/app.xinhuanet.com_news_article.html_articleId_5df39a9c924641c076b45b610eb27204.html",
+      "valuation_use": "用于钢铁合金和高端制造需求侧价格验证",
+      "remaining_gap": "不直接对应A股公司高端钨材订单或电子材料价格"
+    },
+    {
+      "theme": "电子特气",
+      "proxy_item": "中国WF6出口均价",
+      "proxy_type": "海关出口均价公开报道",
+      "as_of": "2026年4月",
+      "value": "149.79美元/千克",
+      "trend": "同比+28.33%，环比+203.83%",
+      "source_ids": [
+        "S13"
+      ],
+      "source_path": "sources/public-web-20260628/www.cnfin.com_gs-lb_detail_20260609_4423869_1.html.html",
+      "valuation_use": "用于WF6行业供需紧张和出口价格情绪锚",
+      "remaining_gap": "公司合同ASP、客户结构、销量、收入确认比例和产品毛利仍未披露"
+    },
+    {
+      "theme": "电子特气",
+      "proxy_item": "日韩WF6报价调整",
+      "proxy_type": "公开研报转述的海外报价通知",
+      "as_of": "2025年10月至2026年",
+      "value": "报价上调70%-90%",
+      "trend": "海外供给收缩叙事强化",
+      "source_ids": [
+        "S13"
+      ],
+      "source_path": "sources/public-web-20260628/www.cnfin.com_gs-lb_detail_20260609_4423869_1.html.html",
+      "valuation_use": "只作为海外紧缺和国产替代情绪锚",
+      "remaining_gap": "不是国内上市公司合同ASP，不能直接进入EPS或目标价上修"
+    },
+    {
+      "theme": "电子特气",
+      "proxy_item": "WF6钨粉成本占比",
+      "proxy_type": "公开研报转述的成本结构代理",
+      "as_of": "2026年6月",
+      "value": "钨粉成本占60%-70%",
+      "trend": "钨价上行会抬高WF6原料成本和议价压力",
+      "source_ids": [
+        "S13",
+        "S7"
+      ],
+      "source_path": "sources/public-web-20260628/www.cnfin.com_gs-lb_detail_20260609_4423869_1.html.html",
+      "valuation_use": "用于判断WF6涨价是否可能被成本吞噬",
+      "remaining_gap": "缺公司采购成本、价格传导条款和单品毛利率"
+    },
+    {
+      "theme": "氟化工",
+      "proxy_item": "2026三代制冷剂配额",
+      "proxy_type": "公开券商转载的配额/景气代理",
+      "as_of": "2026年度配额公示",
+      "value": "三代制冷剂合计约79.78万吨，较2025年增加5963吨",
+      "trend": "R32/R134a/R125配额和景气度仍是现金流主线",
+      "source_ids": [
+        "S5"
+      ],
+      "source_path": "sources/public-web-20260628/stock.finance.sina.com.cn_stock_go.php_vReport_Show_kind_lastest_rptid_818762111591_index.phtml.html",
+      "valuation_use": "用于巨化、三美、永和等制冷剂现金流景气代理",
+      "remaining_gap": "公司单品价差、合同价格、库存和成本仍需季度财报验证"
+    },
+    {
+      "theme": "宏观价格背景",
+      "proxy_item": "中国大宗商品价格指数",
+      "proxy_type": "AkShare宏观商品价格指数",
+      "as_of": "2026-06-28",
+      "value": "1026",
+      "trend": "近3月-5.6%；近1年19.6%",
+      "source_ids": [
+        "AK_macro_china_commodity_price_index"
+      ],
+      "source_path": "akshare.macro_china_commodity_price_index",
+      "valuation_use": "只作为全市场商品价格背景，不替代钨、制冷剂或WF6单品价格",
+      "remaining_gap": "不能用于公司ASP、单品毛利或订单收入确认"
+    }
+  ],
+  "errors": [],
+  "cache_used": true,
+  "boundary": "行业价格、出口均价、报价通知、成本占比和宏观指数只能作为价格代理；不能替代公司合同ASP、产品毛利、订单金额或收入确认比例。"
+}

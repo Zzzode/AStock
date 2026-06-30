@@ -1,0 +1,160 @@
+{
+  "schema": "astock.official_single_product_revenue_boundary.v1",
+  "generated_at": "2026-06-30T06:08:29.929114+08:00",
+  "gate_status": "CONDITIONAL",
+  "covered_tickers": 5,
+  "covered_ticker_list": [
+    "002971",
+    "600378",
+    "688146",
+    "688268",
+    "688549"
+  ],
+  "rows": [
+    {
+      "ticker": "600378",
+      "company": "昊华科技",
+      "product_scope": "WF6产品收入占比",
+      "official_metric": "公司澄清口径显示，2025年度六氟化钨产品收入占公司2025年度营业收入0.13%。",
+      "quantified_value": "收入占比0.13%",
+      "source_basis": "company_clarification_snapshot；财联社/公司风险提示转述",
+      "what_it_proves": "WF6产品真实存在，但对2025年整体收入贡献极低。",
+      "valuation_use": "用于下调昊华科技WF6单品弹性和市场锚权重，不给增长每股收益信用。",
+      "still_missing": "单品订单、合同ASP、客户份额、收入确认比例、单品毛利",
+      "p0_status": "部分补证：收入占比可见，盈利字段未关闭",
+      "source_ids": [
+        "S15",
+        "company_clarification_snapshot"
+      ]
+    },
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "product_scope": "WF6主题单品合同",
+      "official_metric": "2025年境内某知名集成电路客户A六氟化钨采购合同约1.1904亿元（不含税）。",
+      "quantified_value": "1.1904亿元",
+      "source_basis": "contract_order_announcement_evidence",
+      "what_it_proves": "官方公告层存在WF6主题单品订单金额样本。",
+      "valuation_use": "可提高中船特气订单可见度和事件验证强度，但不能直接折成长期EPS。",
+      "still_missing": "合同ASP、交付节奏、收入确认比例、客户份额、单品毛利",
+      "p0_status": "部分补证：订单金额样本可见，盈利字段未关闭",
+      "source_ids": [
+        "contract_order_announcement_evidence"
+      ]
+    },
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "product_scope": "NF3主题单品合同",
+      "official_metric": "2024年三氟化氮销售合同约1.1508亿元（含税）。",
+      "quantified_value": "1.1508亿元",
+      "source_basis": "contract_order_announcement_evidence",
+      "what_it_proves": "官方公告层存在NF3主题单品订单金额样本，能补强电子特气订单可见度。",
+      "valuation_use": "用于事件验证和收入桥约束，不替代WF6合同ASP或WF6单品毛利。",
+      "still_missing": "合同ASP、交付节奏、收入确认比例、客户份额、单品毛利",
+      "p0_status": "部分补证：订单金额样本可见，盈利字段未关闭",
+      "source_ids": [
+        "contract_order_announcement_evidence"
+      ]
+    },
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "product_scope": "电子气体平台合同",
+      "official_metric": "2025年HF、HCL、D2等11种电子气体产品采购合同约1.4822亿元（不含税）。",
+      "quantified_value": "1.4822亿元",
+      "source_basis": "contract_order_announcement_evidence",
+      "what_it_proves": "电子气体平台订单可见度提高，但产品范围不是WF6/NF3单品。",
+      "valuation_use": "只支持平台订单监测和事件验证，不进入WF6/NF3增长EPS。",
+      "still_missing": "WF6/NF3单品订单、合同ASP、收入确认比例、客户份额、单品毛利",
+      "p0_status": "平台补证：不关闭WF6/NF3单品P0",
+      "source_ids": [
+        "contract_order_announcement_evidence"
+      ]
+    },
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "product_scope": "历史WF6产销",
+      "official_metric": "招股书披露2019/2020/2021/2022H1六氟化钨销量269.19/533.75/838.27/550.15吨，产能利用率33.62%/75.83%/58.44%/56.80%。",
+      "quantified_value": "历史销量269.19/533.75/838.27/550.15吨",
+      "source_basis": "prospectus_price_boundary_evidence",
+      "what_it_proves": "WF6历史产销兑现和产能利用可被一级来源量化。",
+      "valuation_use": "用于产能兑现和订单持续性监测，不替代2026年合同价或收入确认。",
+      "still_missing": "当前订单、合同ASP、收入确认比例、客户份额、当前单品毛利",
+      "p0_status": "历史补证：不等于当前收入拆分",
+      "source_ids": [
+        "S35"
+      ]
+    },
+    {
+      "ticker": "688146",
+      "company": "中船特气",
+      "product_scope": "价格/毛利披露边界",
+      "official_metric": "招股书说明NF3/WF6平均单价已申请豁免披露；WF6平均单价2020/2021/2022H1分别下降8.27%/5.76%/5.16%，2022H1毛利率下降7.50pct。",
+      "quantified_value": "价格降幅8.27%/5.76%/5.16%；毛利率下降7.50pct",
+      "source_basis": "prospectus_price_boundary_evidence",
+      "what_it_proves": "公开资料能证明价格和毛利方向，但不能得到绝对ASP或当前单品毛利。",
+      "valuation_use": "进入风险折扣和敏感性，不进入增长每股收益上修。",
+      "still_missing": "当前绝对ASP、当前单品毛利、价格传导条款",
+      "p0_status": "披露边界：ASP和毛利仍阻断",
+      "source_ids": [
+        "S35"
+      ]
+    },
+    {
+      "ticker": "688549",
+      "company": "中巨芯-U",
+      "product_scope": "WF6产能/订单边界",
+      "official_metric": "高纯六氟化钨产能600吨，公告时未签新的长期或大额实质性订单，暂无扩产计划。",
+      "quantified_value": "产能600吨；订单未关闭",
+      "source_basis": "company_clarification_snapshot；capacity_project_evidence",
+      "what_it_proves": "具备直接产品能力，但订单和盈利外推被公司口径限制。",
+      "valuation_use": "保留事件验证池，不给长期增长EPS信用。",
+      "still_missing": "订单金额、合同ASP、客户份额、收入确认比例、单品收入、单品毛利",
+      "p0_status": "负面边界：收入/订单未披露",
+      "source_ids": [
+        "S16",
+        "company_clarification_snapshot"
+      ]
+    },
+    {
+      "ticker": "688268",
+      "company": "华特气体",
+      "product_scope": "WF6纯化供货边界",
+      "official_metric": "无WF6合成产能，仅按部分客户要求供应纯化六氟化钨，业务占比较小。",
+      "quantified_value": "未披露占比",
+      "source_basis": "company_clarification_snapshot",
+      "what_it_proves": "公司不应按WF6合成产能逻辑估值，纯化供货弹性有限。",
+      "valuation_use": "用于下调WF6单品直接性和风险折扣，不给WF6高成长EPS信用。",
+      "still_missing": "纯化供货收入占比、订单金额、合同ASP、客户份额、单品毛利",
+      "p0_status": "负面边界：非合成产能逻辑",
+      "source_ids": [
+        "S17",
+        "company_clarification_snapshot"
+      ]
+    },
+    {
+      "ticker": "002971",
+      "company": "和远气体",
+      "product_scope": "WF6/NF3试生产边界",
+      "official_metric": "电子级三氟化氮、六氟化钨仍处试生产；WF6尚未产生任何业绩且尚未签署法律约束力实质性订单。",
+      "quantified_value": "0业绩贡献/无实质性订单",
+      "source_basis": "company_clarification_snapshot；investor_relations_qa_evidence",
+      "what_it_proves": "试生产和项目存在不能转成收入或订单。",
+      "valuation_use": "只保留项目期权和后续监测，不进入当前增长EPS。",
+      "still_missing": "批量销售、法律约束订单、合同ASP、收入确认、单品毛利",
+      "p0_status": "负面边界：业绩与订单均未关闭",
+      "source_ids": [
+        "S19",
+        "company_clarification_snapshot",
+        "investor_relations_qa_evidence"
+      ]
+    }
+  ],
+  "quantified_rows": 8,
+  "single_product_amount_rows": 2,
+  "revenue_ratio_rows": 1,
+  "negative_boundary_rows": 3,
+  "use_boundary": "官方单品收入/订单金额边界包把昊华WF6收入占比、中船WF6/NF3历史合同金额、电子气体平台合同、招股书历史产销和中巨芯/华特/和远负面边界放到同一张表；它只能收窄P0缺口和定义估值纪律，不关闭合同ASP、收入确认比例、客户份额或单品毛利。"
+}

@@ -1,10 +1,32 @@
-# Template Brief
+# 模板基准说明
 
-Archetype: thematic industry-chain deep dive, benchmarked to BlackRock/Vanguard theme framing and JPM first-page dashboard.
+## 报告类型
 
-Required reader journey:
-1. First page gives house view, ranking and action labels.
-2. Separate what is currently earnings-backed from what is market-implied optionality.
-3. Use supply-chain tables instead of broad concept-stock lists.
-4. Put dense source registry and model assumptions in appendices.
-5. Avoid chartbook-only writing; every exhibit must end with investment implication.
+本报告定位为主题型产业链深度，不是单票点评，也不是纯图表手册。模板基准采用三类顶级报告组件：BlackRock式主题框架、Vanguard式“事实/预测/情景/传闻”分离、J.P. Morgan式首页投资决策面板。
+
+## 读者路径
+
+1. 第一章先给组合结论、当前价、目标价、空间、排序和行动标签。
+2. 第二至四章说明证据质量、产业链位置和利润池，不把概念股名单当作结论。
+3. 第五章把公司基本面、产业链暴露和下一季业绩验证接起来。
+4. 第七章把估值拆为基本面锚、市场锚、情绪锚和高成长业绩门禁。
+5. 附录承接来源登记、模型假设和审计表，避免主文退化成长表堆叠。
+
+## 模板验收表
+
+| 组件 | 本报告落点 | 状态 |
+|---|---|---|
+| 首页决策面板 | 第1章核心排序、市场预期桥、情绪锚、二季度验证门槛 | 通过 |
+| 自有观点 | analysis/house_view.md 与第1章/第7章结论 | 通过 |
+| 证据金字塔 | data/source_registry.md 与 data/claim_audit.md | 通过 |
+| 产业链热力/映射 | 第4章关系证据、analysis/wf6_chain_map.mmd | 通过 |
+| 估值评分卡 | 第7章完整估值总表、三情景、市场锚 | 通过 |
+| 高成长业绩门禁 | 第1章与第7章增长业绩精算桥 | 通过 |
+| 风险与证伪 | 第8章主题证伪路径和催化失效条件 | 通过 |
+| 视觉审查 | analysis/visual_review.md | 通过，仍需每次发布前人工抽页复核 |
+
+## 明确不采用的模板
+
+- 不采用纯图表手册：本报告必须有连续投资论证和表后综合判断。
+- 不采用单票短评：覆盖对象是产业链和覆盖池，不是单一公司目标价报告。
+- 不采用卖方摘要合集：券商、媒体和公告只作为证据，本报告结论由估值和门禁模型生成。
