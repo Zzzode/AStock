@@ -1,11 +1,13 @@
 flowchart LR
-  Demand[AIDC downstream demand: cloud, LLM, enterprise, government, vertical AI] --> Build[Data-center construction and operation]
-  Build --> Power[Power distribution and energy]
-  Build --> Cooling[Liquid cooling and thermal control]
-  Power --> Rack[AI server rack and server components]
-  Cooling --> Rack
-  Chip[Compute chips, memory, storage, NIC and switch ASIC] --> Rack
-  PCB[PCB, CCL, copper foil, glass cloth and process equipment] --> Rack
-  Optical[Network and optical interconnect] --> Rack
-  Rack --> Service[AIDC utilization: training, inference, MaaS and industry compute]
-  Service --> Demand
+  A[AI capex and national compute network] --> B[GPU ASIC HBM and switch ASIC]
+  B --> C[AI server and rack-scale systems]
+  B --> D[Optical interconnect 800G 1.6T CPO]
+  B --> E[High-end PCB and CCL]
+  C --> F[Power UPS transformer and prefabricated power modules]
+  C --> G[Liquid cooling CDU cold plate manifold]
+  C --> H[AIDC and IDC operators]
+  D --> C
+  E --> C
+  F --> H
+  G --> H
+  H --> I[Cloud AI model training inference and enterprise workloads]

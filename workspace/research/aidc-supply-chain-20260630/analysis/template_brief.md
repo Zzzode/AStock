@@ -2,6 +2,8 @@
 
 **Archetype:** industry-chain deep dive plus first-page investment-committee dashboard. The chapter sequence follows the local report-main skeleton and the optical-communication precedent, but AIDC requires broader infrastructure mapping.
 
+**Selected industry coverage pack:** AIDC (`aidc`). This pack requires compute/accelerator demand anchors, server/OEM/ODM, power and thermal, optical/networking/interconnect, storage and memory, PCB/CCL/connectors/cables, IDC/cloud/operator infrastructure, and upstream equipment/material/component coverage.
+
 **First-page dashboard:** coverage universe, data cutoff, house view, evidence quality and final ranking should be visible before the table of contents.
 
 **Required exhibits:** full-chain taxonomy, market-demand anchors, rack-scale architecture transition, supply-chain matrix, company financial delivery table, public research sentiment, valuation summary, risk/catalyst monitor.

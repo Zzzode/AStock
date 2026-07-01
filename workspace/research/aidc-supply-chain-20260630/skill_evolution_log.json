@@ -1,0 +1,37 @@
+{
+  "case_id": "aidc-supply-chain-20260630",
+  "evolution_date": "2026-06-30",
+  "trigger": "AIDC report quality feedback after mechanical gate pass",
+  "failure_mode": "Mechanical gates passed, but institutional research depth remained insufficient.",
+  "root_cause": "Skills and deterministic gates emphasized artifact existence, closed review lifecycle, and final sign-off status more than field-level evidence depth, model depth, valuation depth, and IC readiness.",
+  "changes_applied": [
+    {
+      "area": "evolve trigger",
+      "prevention": "Route repeated report-depth feedback to equity-research, review, supply-chain, growth, and valuation skill audits"
+    },
+    {
+      "area": "equity workflow",
+      "prevention": "Require field-level artifact contract, depth gates, shallow-artifact rule, downgrade path, IC readiness, residual-risk consistency"
+    },
+    {
+      "area": "review gate",
+      "prevention": "Add mechanical PASS / institutional FAIL, residual-risk conflict, shallow-artifact severity, reopen rules, R4 IC strong review"
+    },
+    {
+      "area": "domain skills",
+      "prevention": "Add customer-chain evidence scores, EPS bridge, segment-purity gate, price/share validation, method matrix, Street/multi-anchor requirements"
+    },
+    {
+      "area": "deterministic gates",
+      "prevention": "Add artifact contract depth checks, gate depth checks, residual-risk conflict checks, and industry-depth checks"
+    }
+  ],
+  "regression_cases": [
+    "test_evaluate_research_case_quality_flags_shallow_industry_pass"
+  ],
+  "validation_commands": [
+    "pytest src/python/astock/quality/__tests__/test_checks.py src/python/astock/__tests__/test_capability_foundations.py",
+    "python3 workspace/research/tools/run_research_gates.py workspace/research/aidc-supply-chain-20260630"
+  ],
+  "current_case_disposition": "workflow-prevention gap closed; AIDC report content repair remains separate before publication"
+}

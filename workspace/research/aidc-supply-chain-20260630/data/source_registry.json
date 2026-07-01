@@ -299,6 +299,66 @@
       "status_code": 200,
       "quality_tier": "L2 structured public financial packet",
       "used_for": "2026Q1 and 2025A revenue, profit, margin, BPS and EPS snapshots."
+    },
+    {
+      "id": "S31",
+      "title": "Blocked core candidate public broker PDF collection",
+      "type": "broker-public-pdf-collection",
+      "url": "https://reportapi.eastmoney.com/report/list2",
+      "local_path": "data/blocked_core_candidate_report_collection_20260701.json",
+      "status_code": 200,
+      "quality_tier": "L2 public broker PDFs and extracted text",
+      "used_for": "Evidence backfill for 36/41 blocked core candidates; 70 PDFs archived; not-found candidates recorded in source_exhaustion_log."
+    },
+    {
+      "id": "S32",
+      "title": "CNINFO official filing collection for public-broker-not-found candidates",
+      "type": "official-filing-pdf-collection",
+      "url": "http://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "local_path": "data/source_exhausted_official_filing_collection_20260701.json",
+      "status_code": 200,
+      "quality_tier": "L1 official filings and extracted text",
+      "used_for": "Official filing evidence backfill for 5 candidates with no public broker PDF hit; 15 CNINFO PDFs archived."
+    },
+    {
+      "id": "S35",
+      "title": "CNINFO official filing collection for proxy-field completion",
+      "type": "official-proxy-field-pdf-collection",
+      "url": "http://www.cninfo.com.cn/new/hisAnnouncement/query",
+      "local_path": "data/proxy_field_official_filing_collection_20260701.json",
+      "status_code": 200,
+      "quality_tier": "L1 official filings and extracted text",
+      "used_for": "Official filing evidence backfill for 53 candidates with proxy fields; 158 CNINFO PDFs archived; 78 proxy-field hit cells extracted."
+    },
+    {
+      "id": "S36",
+      "title": "Residual proxy-field audit and valuation boundary",
+      "type": "field-evidence-boundary-audit",
+      "url": "case-scoped generated audit",
+      "local_path": "data/residual_proxy_field_audit_20260701.json",
+      "status_code": 200,
+      "quality_tier": "L1/L2 evidence boundary synthesis",
+      "used_for": "Residual proxy field treatment for 4 cells; 3 target-model cells retain no standalone valuation uplift."
+    },
+    {
+      "id": "S33",
+      "title": "Extended core-candidate market, financial, broker and valuation disposition model",
+      "type": "market-financial-broker-model",
+      "url": "case-scoped generated model",
+      "local_path": "data/core_candidate_extended_valuation_model_20260701.json",
+      "status_code": 200,
+      "quality_tier": "L2 structured quote/financial/broker model",
+      "used_for": "41/41 previously non-target core candidates refreshed: 38 target-model-ready (13 explicit broker target, 24 AStock house fair-value, 1 PS/SOTP), 0 legacy no-Street watchlist, 3 watchlist-only insufficient-denominator rows."
+    },
+    {
+      "id": "S34",
+      "title": "Field-level evidence completion matrix for core candidates",
+      "type": "field-evidence-matrix",
+      "url": "case-scoped generated evidence matrix",
+      "local_path": "data/field_evidence_completion_20260701.json",
+      "status_code": 200,
+      "quality_tier": "L2 case evidence governance artifact",
+      "used_for": "59 candidates x 7 fields; 413 field cells; statuses {'direct': 409, 'proxy': 4}; unresolved target fields 0."
     }
   ]
 }

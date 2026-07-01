@@ -1,0 +1,21 @@
+{
+  "cycle": "R1_model",
+  "publishability_status": "PASS",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R1_model-B-001",
+      "cycle": "R1_model",
+      "severity": "B",
+      "owner_skill": "research-report-review",
+      "owner_agent": "valuation-specialist",
+      "artifact": "workspace/research/aidc-supply-chain-20260630",
+      "evidence": "41-row extended core-candidate model verified: 38 target-ready (13 explicit broker-target, 24 AStock house fair-value, 1 PS/SOTP), 3 insufficient-denominator watchlist; residual proxy audit expected=4 audit_rows=4 missing=[] shallow=[]; unresolved blockers 0.",
+      "fix_required": "none; verified closed",
+      "blocking_gate": "R1_model",
+      "status": "closed",
+      "verifier_ref": "run_research_gates.py",
+      "reopened_count": 0
+    }
+  ]
+}

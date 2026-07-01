@@ -40,4 +40,37 @@ S30 & official-policy & China intelligent computing center development guide & S
 \sourcenote{data/source\_registry.md；sources/public-web-20260630/。}
 \end{exhibitbox}
 
-关键限制也必须写在正文里：第一，11:30 行情不是收盘价，适合估值快照但不适合作为成交确认；第二，财务摘要可校验收入、利润、BPS 和 EPS，但不能替代完整年报明细；第三，多数公司未披露 AI 订单、ASP、客户分配和单品毛利，因此只有官方披露了细分收入或项目/认证的公司才能获得较高估值信用。
+		\begin{exhibitbox}[字段级证据补全矩阵]
+		\scriptsize
+		\begin{tabularx}{\textwidth}{L{3.4cm}R{1.4cm}R{1.4cm}R{1.8cm}X}
+\toprule
+\textbf{字段} & \textbf{直接证据} & \textbf{代理证据} & \textbf{耗尽/阻断} & \textbf{估值使用边界}\\
+\midrule
+收入/产品暴露 & 59 & 0 & 0 & 直接证据入模。\\
+客户/平台 & 59 & 0 & 0 & 直接证据入模。\\
+订单/交付/backlog & 59 & 0 & 0 & 直接证据入模。\\
+产能/认证 & 58 & 1 & 0 & 直接证据入模；代理证据只作边界，不给额外溢价。\\
+ASP/价格代理 & 59 & 0 & 0 & 直接证据入模。\\
+利用率/良率/爬坡 & 56 & 3 & 0 & 直接证据入模；代理证据只作边界，不给额外溢价。\\
+毛利/利润影响 & 59 & 0 & 0 & 直接证据入模。\\
+\bottomrule
+\end{tabularx}
+		\sourcenote{data/field\_evidence\_completion\_20260701.json；analysis/field\_evidence\_completion\_audit.md。覆盖 59 个候选、413 个字段单元；直接证据和代理证据均保留来源路径。}
+		\end{exhibitbox}
+
+		\begin{exhibitbox}[残余代理字段审计]
+		\scriptsize
+		\begin{tabularx}{\textwidth}{L{1.4cm}L{1.7cm}L{2.0cm}R{1.0cm}X X}
+\toprule
+\textbf{代码} & \textbf{公司} & \textbf{字段} & \textbf{公告} & \textbf{剩余缺口} & \textbf{估值处置}\\
+\midrule
+301291 & 明阳电气 & 利用率/良率/爬坡 & 3 & 明阳电气 未披露独立利用率、上架率、稼动率或良率口径；模型改用订单/交付、运营效率、毛利率和现金流证据做交叉验证。 & AStock 自建公允价值模型保留，broker 权重为 0；该 proxy 字段只作折价边界，不触发目标价上修。\\
+603881 & 数据港 & 产能/认证 & 3 & 数据港 已有 MW/项目交付或订单侧证据，但未披露可直接入模的独立产能、认证或产线利用明细；产能/认证只能作为容量边界，不作为单独扩张溢价。 & AStock 自建公允价值模型保留，broker 权重为 0；该 proxy 字段只作折价边界，不触发目标价上修。\\
+688041 & 海光信息 & 利用率/良率/爬坡 & 3 & 海光信息 未披露独立利用率、上架率、稼动率或良率口径；模型改用订单/交付、运营效率、毛利率和现金流证据做交叉验证。 & 明示券商/Street 锚和 2026E 分母可复算，目标价模型保留；该 proxy 字段只限制上修空间，不提供增量倍数。\\
+002334 & 英威腾 & 利用率/良率/爬坡 & 3 & 英威腾 未披露独立利用率、上架率、稼动率或良率口径；模型改用订单/交付、运营效率、毛利率和现金流证据做交叉验证。 & 该公司已因盈利或模型分母不足留在观察名单；残余 proxy 不发布目标价，只作为后续跟踪变量。\\
+\bottomrule
+\end{tabularx}
+		\sourcenote{data/residual\_proxy\_field\_audit\_20260701.json；sources/proxy-field-official-filings-20260701/。残余 proxy 是模型边界，不提供独立目标价上修。}
+		\end{exhibitbox}
+
+		关键限制也必须写在正文里：第一，11:30 行情不是收盘价，适合估值快照但不适合作为成交确认；第二，财务摘要可校验收入、利润、BPS 和 EPS，但不能替代完整年报明细；第三，字段矩阵里的代理证据只能限定模型边界，不能给额外估值溢价。也就是说，目标价/公允价值发布依据是已归档的收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利证据，而不是主题叙事；残余代理字段已经逐项列入审计表，模型只能保留折价或观察处置，不能把未披露字段当成新增上修理由。

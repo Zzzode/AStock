@@ -23,10 +23,17 @@
     },
     {
       "id": "C04",
-      "claim": "Company-level order, ASP and customer allocation are incomplete for many tickers",
-      "source": "customer_chain_audit",
+      "claim": "Blocked core-candidate evidence was backfilled for 41/41 names: 36 via 70 public broker PDFs and 5 via 15 CNINFO official filing PDFs; unresolved no-source candidates 0.",
+      "source": "data/blocked_core_candidate_report_collection_20260701.json; data/source_exhausted_official_filing_collection_20260701.json; data/customer_chain_audit.json; source_exhaustion_log.json",
       "confidence": "high",
-      "status": "gap"
+      "status": "verified_with_named_gaps"
+    },
+    {
+      "id": "C05",
+      "claim": "Field-level evidence completion covers 59 candidates and 413 field cells; unresolved target-model fields 0.",
+      "source": "data/field_evidence_completion_20260701.json; analysis/field_evidence_completion_audit.md",
+      "confidence": "high",
+      "status": "verified"
     }
   ]
 }

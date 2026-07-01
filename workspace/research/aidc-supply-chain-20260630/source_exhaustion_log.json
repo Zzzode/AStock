@@ -1,0 +1,40 @@
+{
+  "status": "complete_with_public_corpus_gaps",
+  "checked_paths": [
+    "sources/public-web-20260630/",
+    "data/source_capture_manifest_20260630.json",
+    "data/report_catalog.md",
+    "data/source_registry.json",
+    "data/blocked_core_candidate_report_collection_20260701.json",
+    "data/source_exhausted_official_filing_collection_20260701.json",
+    "data/proxy_field_official_filing_collection_20260701.json",
+    "data/residual_proxy_field_audit_20260701.json",
+    "sources/blocked-core-candidate-broker-reports-20260701/",
+    "sources/source-exhausted-official-filings-20260701/",
+    "sources/proxy-field-official-filings-20260701/"
+  ],
+  "unresolved_gaps": [
+    "complete original broker target-price histories for every covered ticker",
+    "named customer allocation and product-level ASP for most component suppliers",
+    "HBM particles, BMC, DSP, CPO core ASIC and ABF high-purity A-share mapping",
+    "operator-level rack utilization, power cost and contract duration for all IDC/AIDC names"
+  ],
+  "broker_target_price_gaps": [],
+  "blocked_core_candidate_report_collection": {
+    "blocked_candidate_count": 41,
+    "public_broker_pdf_evidence_collected": 36,
+    "archived_pdf_count": 70,
+    "public_broker_pdf_not_found": 5,
+    "official_filing_evidence_collected_for_public_broker_not_found": 5,
+    "official_filing_pdf_count": 15,
+    "unresolved_no_source": 0,
+    "not_found_candidates": []
+  },
+  "residual_proxy_field_audit": {
+    "residual_proxy_cells": 4,
+    "target_model_residual_proxy_cells": 3,
+    "names": "301291 明阳电气 利用率/良率/爬坡、603881 数据港 产能/认证、688041 海光信息 利用率/良率/爬坡、002334 英威腾 利用率/良率/爬坡",
+    "valuation_policy": "Residual proxy fields are disclosed as model boundaries and do not add standalone target-price uplift."
+  },
+  "next_verification_path": "Collect original broker PDFs, company annual reports, IR records, exchange filings and customer-side qualification/order evidence before upgrading satellite nodes into valuation credit."
+}

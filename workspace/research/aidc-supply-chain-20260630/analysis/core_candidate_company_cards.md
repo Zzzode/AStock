@@ -1,0 +1,1395 @@
+# Core Candidate Company Cards
+
+These are company-level cards for the 58 core valuation candidates derived from the full-chain universe. A target price is not published unless the current-price valuation package is complete and reproducible.
+
+## 中科曙光
+
+- Chain role: 上游算力芯片与存储 / 下游需求与应用 / 数据中心建设与运营 / 服务器整机与零部件; AI 服务器/ODM / CPU/Host CPU / 互联网大模型/MaaS / 国产算力平台 / 政企智算 / 整柜集成/液冷服务器 / 科研超算/AI4S / 算力服务/调度.
+- Product/process exposure: AI 服务器/ODM / CPU/Host CPU / 互联网大模型/MaaS / 国产算力平台 / 政企智算 / 整柜集成/液冷服务器 / 科研超算/AI4S / 算力服务/调度.
+- Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 105.7; final target 46.77218181818182; upside -0.5575006450503139.
+- Current 2026E package: revenue 145.4 亿元；net profit 10.7 亿元；EPS 0.71；market cap 1587.6 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B; source tier original_pdf; source count across mapped nodes 33.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：i.txt ## Eastmoney visible abstract 中科曙光(603019) 核心观点 不断提高公司整体竞争力，促进业绩持续增长。公司发布2023年报，全年实现营收143.53亿元（+10%），归母净利润18.36亿元（+19%）。单2024年Q1来看，公司营业收入24.8亿元（+8%），归母净利润1.43亿元（+9%）。 毛利率稳定，合....
+- Customer/platform evidence: 直接证据：AI大模型的兴起带来算法需求的蓬勃增长，曙光GPU深度学习平台计算系统采用曙光新一代XMachine高性能GPU服务器组成大规模GPU训练、推理集群，广泛应用于运营商、金融、能源、互联网领域。公司打造“全国一体化算力服务平台”创新型算力服务平台，充分受益于算力国产化，成为算力调度建设行业领头羊。AI技术软件栈DASDAS成为曙光软件生态的核心，依托基础硬件系....
+- Order/backlog evidence: 直接证据：00 系列，通过冷热数据分层技术和智能数据调度功能，实现动态优化存储资源的分 配、跨形态热温冷数据无感流动，提高存储资源的利用率。公司 ParaStor 分布式存储系列连续 6 年中标中国移动分布式存储集采，在赛迪的存储市场报告中，位居具身智能、自动驾驶、科教等 5 行业领域存储市场份额首位 。2025 年 2 月，曙光存储自主研发的 FlashNexus....
+- Capacity/certification evidence: 直接证据：,555,074.93 收到的重要的投资活动有关的现金说明 无 支付的重要的投资活动有关的现金 √适用 □不适用 单位：元 币种：人民币 项目 本期发生额 上期发生额 中科曙光济南基地项目 94,471,600.00 投资参股企业 282,950,000.00 郑州曙光建设项目 113,225,742.25 320,102,129.57 合计 207,697....
+- ASP or margin evidence: 直接证据：。公司2025年扣非净利润取得较快增长，主要系产品结构优化提升主营业务盈利能力，同时公司沿产业链布局的海光信息、中科星图、曙光数创等多项优质资产获得了良好的投资回报。2025年公司毛利率为30.58%，同比提升1.42pct；研发费用率提升1.34pct至11.17%，销售费用率同比下降1.18pct。 推出超节点系列产品，落地国内最大AI4S计算集群。公司...；直接证据：。公司2025年扣非净利润取得较快增长，主要系产品结构优化提升主营业务盈利能力，同时公司沿产业链布局的海光信息、中科星图、曙光数创等多项优质资产获得了良好的投资回报。2025年公司毛利率为30.58%，同比提升1.42pct；研发费用率提升1.34pct至11.17%，销售费用率同比下降1.18pct。 推出超节点系列产品，落地国内最大AI4S计算集群。公司....
+- Utilization/yield evidence: 直接证据：标下数据中心能效监管持续收紧，工信部、国家发改委等十一部门联合印发的《新型数据 4 中心发展三年行动计划（2024-2026）》明确要求 ，2026 年底新建大型、超大型数据中心 PUE 值低 于 1.3，“东数西算”枢纽节点新建智算中心液冷渗透率不低于 60%，液冷散热、智能节能、高效 供配电等绿色技术成为行业主流发展方向；四是行业集中度持续提升，行业技术....
+- Evidence source: sources/broker-reports/2026-06-30/11-01-603019-report-ai.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for CPU/Host CPU.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 国产算力平台.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for AI 服务器/ODM..
+
+## 中际旭创
+
+- Chain role: 网络与光通信; 800G/1.6T 光模块 / LPO/LRO.
+- Product/process exposure: 800G/1.6T 光模块 / LPO/LRO.
+- Candidate valuation method: PE/PEG，校验出货、ASP、客户认证和 Street 分歧.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 1289.74; final target 1054.652963478261; upside -0.18227475035413265.
+- Current 2026E package: revenue 847.7 亿元；net profit 268.0 亿元；EPS 22.52；market cap 15348.5 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: A-; source tier original_pdf + industry; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：26/6/23 股 中际旭创 沪深300 润 57.35 亿元（+262.28%） ，Q1 销售毛利率约 46.1%，同比明显提升。 分业务看，光通信收发模块在 2025 年实现收入 374.57 亿元，同比增 份 长 63.67%，营收占比达 97.95%，毛利率为 42.61%，同比提升 7.96pct， 有 ◼ 股票数据 是公司收入核心来源；其他业务实....
+- Customer/platform evidence: 直接证据：.00 2.10% 否 客户 3 其他 600,000 488,490,000.00 1.30% 否 客户 4 其他 140,000 126,140,000.00 0.30% 否 客户 5 其他 60,000 54,230,000.00 0.10% 否 重大投资项目建设情况 □适用 不适用 - 13 - 中际旭创股份有限公司 2025 年年度报告全文 二、....
+- Order/backlog evidence: 直接证据：头提前锁定上游物料供应，截止Q1末预付款为14.88亿元，较年初环比增加13.54亿元，主要是积极向上游锁定物料、保证后续产能交付。公司相关重点客户已正式指引2026-2027相关订单，部分客户2028需求已沟通，行业需求仍处于供不应求状态，后续业绩增长确定性高。 盈利预测：我们预计公司2026-2028年净利润分别为334.75/590.85/911.71....
+- Capacity/certification evidence: 直接证据：品逐步推进，Scale-up光连接和NPO/XPO等新产品有望成为公司下一阶段产品迭代的重要方向。 投资建议：公司是光模块行业龙头，800G、1.6T光模块、硅光光模块技术储备、量产能力最优，充分受益AI算力浪潮下的增量市场。我们预计，2026-2028年公司归母净利润分别为350.51/672.05/1028.11亿元，对应EPS分别为31.43/60.2....
+- ASP or margin evidence: 直接证据：研发与送测。公司在可插拔光模块、NPO、CPO等多种技术路径上均有布局，不同路线之间更多体现为场景互补而非简单替代。可插拔高端光模块仍是短期需求主线，中期看，随着1.6T持续放量、3.2T及更高速率产品逐步推进，Scale-up光连接和NPO/XPO等新产品有望成为公司下一阶段产品迭代的重要方向。 投资建议：公司是光模块行业龙头，800G、1.6T光模块、硅...；直接证据：元（+60.25%），归母净利润 107.97 亿 券 (10%) 25/9/4 元（+108.78%） ；2026 年 Q1 营收 194.96 亿元（+192.12%） ，归母净利 25/6/23 25/11/16 26/1/28 26/4/11 26/6/23 股 中际旭创 沪深300 润 57.35 亿元（+262.28%） ，Q1 销售毛利率约 4....
+- Utilization/yield evidence: 直接证据：出货持续增长，1.6T自2025年三季度开始向重点客户出货，后续上量节奏进一步加快。与此同时，硅光方案在800G和1.6T产品中的占比持续提升，叠加高端产品比重增加、产品工艺优化和良率提升，公司在高端光模块环节的盈利弹性和客户黏性有望进一步增强。公司持续推进产能扩建、核心物料备货和供应链保障，并通过技术迭代、量产交付和重点客户联合开发维持竞争优势。整体来看....
+- Evidence source: sources/broker-reports/2026-06-30/01-01-300308-report-1-6t.txt; sources/broker-reports/2026-06-30/01-01-300308-report-report.txt; S06; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 800G/1.6T 光模块.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for LPO/LRO..
+
+## 光环新网
+
+- Chain role: 供配电与能源 / 数据中心建设与运营; IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入 / 网络接入/专线.
+- Product/process exposure: IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入 / 网络接入/专线.
+- Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 12.23; final target 4.217068181818181; upside -0.655186575485022.
+- Current 2026E package: revenue 74.2 亿元；net profit 0.9 亿元；EPS 0.05；market cap 229.8 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: C+; source tier original_pdf; source count across mapped nodes 33.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：该业务总体稳定发展，增速分别为 10.4%/6%/3.6%。毛利率保持稳定，假设 2025-2027 年该业务毛利率分别为 50%/50%/50%。 公司 2025-2027 年营收入预测如下： 表4：光环新网营收预测拆分（单位：亿元、%） 收入分类预测(亿元) 2023 2024 2025E 2026E 2027E 云计算 营业收入 55.44 51.02....
+- Customer/platform evidence: 直接证据：DC服务为第二大业务，营收从2020年16.7亿元增长至2024年20.9亿元，占收比28.7%。 需求侧看：AIDC需求高增，公司有望受益。近年来，阿里巴巴、腾讯、百度等国内头部云厂商通过提高资本开支加强AI算力建设来满足大模型及推理需求。近两年AI大模型发展驱动全球IDC市场进入高速发展状态，据FortuneBusinessInsight数据，全球数据中....
+- Order/backlog evidence: 直接证据：3 万个，截至目前已 投产机柜超过 8.6 万个，公司 IDC 业务规模及服务能力稳步提升。2026 年，公司将继续夯实数据中心核心业务根基，有 序推进各在建数据中心建设工作，保证在手订单按期交付，进一步提升已投产机柜上架率。2026 年将根据市场及客户需 求，积极推进内蒙古呼和浩特地区启动和林格尔和呼和浩特算力中心项目，打造同城双中心互为备份的高可靠算力架....
+- Capacity/certification evidence: 直接证据：实施主体为公司全资 天津宝坻三期 指 子公司光环新网（天津）信息服务有限公 司 。 按 单 机 柜 4.4KW 等 效， 规 划 机 柜 约 31,800 个。 上海嘉定绿色云计算基地一期项目位于上海 嘉定工业区，实施主体为公司全资子公司光 上海嘉定一期 指 环新网（上海）信息服务有限公司。项目已 全部投产，按单机柜 4.4KW 等效约 4,000 个 机柜....
+- ASP or margin evidence: 直接证据：量，敞口合同仅约定单价。对于固定合同，在合同服务期限内按月平均确认；对于敞口合同， 公司每月按照固定的单价和实际服务量向客户发出账单，并经客户核对确认。 与分摊至剩余履约义务的交易价格相关的信息： 本报告期末已签订合同、但尚未履行或尚未履行完毕的履约义务所对应的收入金额为 4,532,077,548.40 元，其中， 3,654,325,319.34 元预计...；直接证据：擎核心合作伙伴，持续受益于 AI 产业浪潮， 我们维持 2026-2027 并新增 2028 年盈利预测，预计 2026-2028 公司整体运营稳健， 光环新网 沪深300 年归母净利润为 3.85/4.93/7.91 亿元，对应 2026-2028 年 EV/EBITDA 分别为 18.2 40% 倍、15.5 倍、12.8 倍，维持“买入”评级。 20%....
+- Utilization/yield evidence: 直接证据：1.2。2030 年底 行业能效、碳效达到国际先进水平，可再生能源利用率显著提升，北方采暖 4 北京光环新网科技股份有限公司 2025 年年度报告全文 地区新建大型以上数据中心余热利用率大幅提高，新建数据中心绿电占比超 80%。 北京市《存量数据中心优化工作方案（2024—2027 年）》规定，自 2026 年起对 PUE 超 1.35 的存量数据中心征收差....
+- Evidence source: sources/broker-reports/2026-06-30/18-01-300383-report-ai.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 电力指标/接入.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 土地/园区/能耗指标.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for IDC/AIDC 运营..
+
+## 奥飞数据
+
+- Chain role: 供配电与能源 / 数据中心建设与运营; IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入 / 算力服务/调度.
+- Product/process exposure: IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入 / 算力服务/调度.
+- Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 19.9; final target 12.399000000000001; upside -0.37693467336683406.
+- Current 2026E package: revenue 29.3 亿元；net profit 4.2 亿元；EPS 0.39；market cap 212.2 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B-; source tier original_pdf; source count across mapped nodes 33.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：他互 联网综合服务收入增速分别为 15%/10%/8%，毛利率稳定，假设 2025-2027 年 IDC 业务毛利率分别为 16%/16%/16%。 公司 2025-2027 年营收入预测如下： 表5：奥飞数据营收预测拆分（单位：亿元、%） 收入分类预测(亿元) 2023 2024 2025E 2026E 2027E IDC 服务 营业收入 11.17 13....
+- Customer/platform evidence: 直接证据：的151.3亿美元增长至2032年的940.3亿美元。同时，我国字节跳动、阿里巴巴、腾讯、百度等国内头部云厂商通过提高资本开支加强AI算力建设来满足大模型训练及推理需求。公司是我国头部第三方数据中心服务商，有望受益行业发展。 供给侧：公司与头部互联网云厂合作多年，深耕华南、布局华北市场。（1）奥飞数据在过去5年已与包括阿里、快手、百度等互联网云厂大客户建立深....
+- Order/backlog evidence: 直接证据：亿元。上述合同的签订让公司成功与互联网巨头建立了合作关系，保障 了公司 IDC 业务收入。 表3：奥飞数据合作内容 时间 项目 合作模式 合作金额 与北京达佳签订了《云计算中心服务合同》。 公司应按合同约定按时交付数据中心模块 给北京达佳使用，并协助北京达佳进行设备 2019 年 7 月 数据中心模块 3.3 亿元 安装、联网调试及配置设定，如果因技术发 展....
+- Capacity/certification evidence: 直接证据：负债 净资产 减：少数股东权益 取得的净资产 可辨认资产、负债公允价值的确定方法： 企业合并中承担的被购买方的或有负债： 其他说明： （4） 购买日之前持有的股权按照公允价值重新计量产生的利得或损失 是否存在通过多次交易分步实现企业合并且在报告期内取得控制权的交易 □是 否 213 广东奥飞数据科技股份有限公司 2025 年年度报告全文 （5） 购买日或合....
+- ASP or margin evidence: 直接证据：收，占总 营收比例达到 25.8%。 图7：奥飞数据营收结构（亿元） 资料来源：wind，国信证券经济研究所整理 2025Q1 毛利率有所回升，费用率整体较为平稳。2024 年公司毛利率 26.4%，同比 下降 0.8pct，2025Q1 毛利率 31.6%，同比上升 0.5ptc；2024 年公司净利率 5.88%， 同比下降 5pct，2025Q1 净利...；直接证据：奥飞数据(300738) 业绩表现亮眼，盈利能力大幅提升，维持“买入”评级 公司发布2025年年报及2026年一季报。公司2025年实现营收利润同比稳健增长，2026年一季度归母净利润同比大幅增长。公司整体运营稳健，公司大型数据中心、智算中心项目的建设与交付工作进展顺利，随着AI发展带动训练及推理需求增长，公司有望持续受益，我们上调2026-2027年并新增....
+- Utilization/yield evidence: 直接证据：为单位 长期，一般 5 年以上 用户流动性 较高 极低 销售单位 单机柜起租 按机房模块起租 机柜单功率 低 高 单机柜价格 较高 较低 数据中心启用到满租时间 2-4 年 1年 上架率 相对低或不确定性大 取决于主要客户需求 光环新网、鹏博士 数据港、宝信软件、润泽科技等 类型企业 秦淮数据、万国数据、世纪互联和奥飞数据等。 资料来源：各公司公告，国信证券....
+- Evidence source: sources/broker-reports/2026-06-30/12-01-300738-report-2024-ebitda-34.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 电力指标/接入.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 土地/园区/能耗指标.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for IDC/AIDC 运营..
+
+## 工业富联
+
+- Chain role: 上游算力芯片与存储 / 服务器整机与零部件; AI 服务器/ODM / DPU/NIC/SuperNIC / 整柜集成/液冷服务器 / 机柜 / 结构件 / 背板/主板/Riser.
+- Product/process exposure: AI 服务器/ODM / DPU/NIC/SuperNIC / 整柜集成/液冷服务器 / 机柜 / 结构件 / 背板/主板/Riser.
+- Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 72.85; final target 65.10378333333334; upside -0.10633104552733907.
+- Current 2026E package: revenue 10461.6 亿元；net profit 439.1 亿元；EPS 2.21；market cap 14484.1 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: A-; source tier company filing + original_pdf; source count across mapped nodes 23.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：加速向整机柜出货模式改变，柜内附加多项高值组件，单体价值量相比传统服务器大幅提升。 通信及移动网络设备业务：工业富联在800G交换机上已实现批量放量，2026Q1公司800G及以上交换机出货同比+1.6倍、环比+46%，另外2026年开始1.6T交换机以及新一代CPO（共封装光学）全光交换机样机已开始小批量生产并逐步贡献营收。 全球化产能构成供应链护城河：公....
+- Customer/platform evidence: 直接证据：始改变。 传统代工巨头转变为全球AI服务器绝对龙头:公司已成为全球AI服务器ODM绝对龙头，是全球主要AI云厂商（如NVIDIA、Microsoft、AWS等）核心供应链伙伴，也是英伟达GB200等新一代机柜级服务器的核心供应商。 云计算业务-毛利提升的核心引擎：Q1季报公司AI GPU机柜出货量同比+3.8倍，AI ASIC服务器出货同比+3.2倍。伴随新....
+- Order/backlog evidence: 直接证据：度，受益于 AI 算力需求持续爆发，公司产品结构持续优化，主营业务经营效 益实现稳步提升。 云计算业务方面，板块营业收入同比增长 1 倍。客户覆盖范围持续拓展深化，同时产线自动 化交付水平持续升级，整体出货效率稳步增强。AI GPU 机柜同比出货量增长 3.8 倍，AI ASIC 服 务器出货量同比增长 3.2 倍。报告期内，部分云服务商客户新增订单的原材料....
+- Capacity/certification evidence: 直接证据：级工厂，覆盖德国、法国、英国等七个国家，总投资将超过300亿欧元。AI服务器、光模块需求将持续爆发。 盈利预测与投资建议：公司在全球服务器市场长期保持市占率领先，预计随着GB300量产爬坡，公司云计算产品业务将逐季成长。预计公司2025-2027年归母净利润分别为297亿元、356亿元和411亿元，YOY分别增长28%、20%和15%，EPS分别为1.5元、....
+- ASP or margin evidence: 直接证据：.2倍。伴随新一代算力平台逐步放量，服务器架构复杂度提升，公司加速向整机柜出货模式改变，柜内附加多项高值组件，单体价值量相比传统服务器大幅提升。 通信及移动网络设备业务：工业富联在800G交换机上已实现批量放量，2026Q1公司800G及以上交换机出货同比+1.6倍、环比+46%，另外2026年开始1.6T交换机以及新一代CPO（共封装光学）全光交换机样机已...；直接证据：-reports/2026-06-30/04-01-601138-report-ai.txt ## Eastmoney visible abstract 工业富联(601138) 毛利下降趋势Q1开始改变：公司近三年毛利率呈现持续走低趋势，毛利的持续走低状况直接影响了公司股价的市场估值水平。公司26Q1毛利率达7.35%，同比+0.62pct，净利率4.22....
+- Utilization/yield evidence: 直接证据：A 股比例 欧元。AI服务器、光模块需求将持续爆发。 基金 3.7% 一般法人 41.0% ◼ 盈利预测与投资建议：公司在全球服务器市场长期保持市占率领先，预计 随着GB300量产爬坡，公司云计算产品业务将逐季成长。预计公司 股价相对大盘走势 2025-2027年归母净利润分别为297亿元、356亿元和411亿元，YOY分别增 长28%、20%和15%，EP....
+- Evidence source: S07; sources/broker-reports/2026-06-30/04-01-601138-report-ai.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for DPU/NIC/SuperNIC.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for AI 服务器/ODM.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 背板/主板/Riser..
+
+## 新易盛
+
+- Chain role: 网络与光通信; 800G/1.6T 光模块 / LPO/LRO.
+- Product/process exposure: 800G/1.6T 光模块 / LPO/LRO.
+- Candidate valuation method: PE/PEG，校验出货、ASP、客户认证和 Street 分歧.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 608.94; final target 505.37960695652174; upside -0.1700666618114729.
+- Current 2026E package: revenue 362.5 亿元；net profit 121.8 亿元；EPS 12.17；market cap 6091.2 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: A-; source tier original_pdf + company filing page; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：） ： 9.96 利率下滑，但后续有望保持逐季环比提升态势。公司对 2026 市场需求和订单 流通股本（亿股） ： 8.87 情况持乐观态度，一季度营收符合年初对分季度产能的规划。收入环比持平 流通市值（亿元） ： 6,210.96 除产能释放原因外，物料紧张预计也造成一定影响。公司预计 Q2 起关键物 料紧张将逐渐缓解，Q3/Q4 供应链将趋于稳定，能够满....
+- Customer/platform evidence: 直接证据：0亿美元，年增85%；AWS亦因AI云端服务器需求预计资本开支超过2300亿美元，年增50%以上。反映至需求层面，Trendforce预计，2026仅英伟达GB/VR机柜反映在五大CSPAI训练算力增长有望超56%，推理算力增长超122%,；若合并计算ASIC服务器出货，2026年五大CSP服务器新增功耗合计将达到18GW。2025年，公司前五大客户销售合计....
+- Order/backlog evidence: 直接证据：比持平 流通市值（亿元） ： 6,210.96 除产能释放原因外，物料紧张预计也造成一定影响。公司预计 Q2 起关键物 料紧张将逐渐缓解，Q3/Q4 供应链将趋于稳定，能够满足当季订单交付需求， 基础数据：2026 年 3 月 31 日 Q2-Q4 订单交付和产能扩产将保持持续增长态势。公司当前订单储备饱满， 每股净资产（元/股）： 20.63 一季报预付款....
+- Capacity/certification evidence: 直接证据：三个月 一年 股价涨跌(%) -2.6 24.8 452.9 毛利产品占比持续提升，带动公司净利润快速增长。 近期评等 ◼ 泰国产能持续释放，北美客户交付受关税影响较小：公司泰国工厂一期 出刊日期 前日收盘 评等 2023年上半年投入生产运营；二期于2025年初已正式投产后，目前处于持 2025.07.23 174.2 买进 续扩产阶段，公司全球化战略将根据....
+- ASP or margin evidence: 直接证据：上推出 OCS、XPO、NPO 等新品，Scaleup 有望驱动下个五 年增长。公司预计在今年整体扩产节奏加速背景下，1.6T 占比或逐季环比提 升，高端产品结构变化有望带动公司毛利率继续环比上行。公司在 Scaleout 领域携手博通等全球顶级芯片和 IP 定义者，1.6T、3.2T 均保持首发和快速迭 代。2026 年 3 月，博通推出首款 3nm 工艺...；直接证据：visible abstract 新易盛(300502) 投资要点： 公司发布2025年报和2026年一季报。2025年，公司实现营收248.4亿元，同比增长187.3%，实现归母净利润95.3亿元，同比增长235.9%。2025年，公司整体毛利率达到47.8%，较上年提升3.1%，销售净利率为38.5%，较上年提升5.6%。 2026年一季度，公司实现营收....
+- Utilization/yield evidence: 直接证据：具备 800G 以上光模块量产能力的企业之一， 率先实现 1.6T 产品批量出货。在中国与泰国构建全球化制造网络，通过高端精密设备、全流程自动化产线与智能化系统 的投入，系统性提升生产效率、制程良率与柔性制造能力，快速响应 AI 算力集群、云数据中心及电信领域客户的大规 模需求。 3、全球协同：销售网络与交付能力双轮驱动 销售网络覆盖北美、欧洲、东南亚等核心....
+- Evidence source: sources/broker-reports/2026-06-30/02-01-300502-report-1-6t.txt; Sina 2025 annual report page; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 800G/1.6T 光模块.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for LPO/LRO..
+
+## 沪电股份
+
+- Chain role: PCB 与上游材料设备 / 服务器整机与零部件; AI 服务器 PCB / 交换机/路由器 PCB / 背板/主板/Riser.
+- Product/process exposure: AI 服务器 PCB / 交换机/路由器 PCB / 背板/主板/Riser.
+- Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 154.74; final target 101.34541999999999; upside -0.3450599715652063.
+- Current 2026E package: revenue 248.6 亿元；net profit 49.7 亿元；EPS 2.58；market cap 2980.3 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: A; source tier company filing + original_pdf; source count across mapped nodes 10.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：-002463-report-2025.txt ## Eastmoney visible abstract 沪电股份(002463) 投资要点 业绩总结：2025年一季度，公司实现收入40.4亿元，同比增长56.3%，实现归母净利润7.6亿元，同比增长48.1%。 业绩高速增长，费用端稳中有降。2025年一季度：1）营收端，公司实现收入40.4亿元，同比增长....
+- Customer/platform evidence: 直接证据：经验积累，高多层数通工艺上全球 沪电股份 沪深300 47% 处于领先地位。客户结构上看，公司是 Nvidia、思科、Arista 等厂商高多层产品 34% 核心 PCB 供应商，客户资源上深度绑定海外主流 AI 硬件客户。我们认为未来 21% 公司将持续受益于 AI模型升级、数据传输量提升带动的 AI加速卡与交换机升级， 7% PCB 产品将迎来层数增长与....
+- Order/backlog evidence: 直接证据：收入确认直至销售 2025 年度沪电股份印制电路板业务的产品 收款的完整业务流程中的关键控制。 销售收入为人民币 18,143,308,261 元。 （2）抽取主要客户的销售合同及订单，检查 沪电股份在客户取得产品的控制权时，按 主要合同条款，包括订单开立、产品交付、开 预期有权收取的对价金额确认收入。 票及收款等，评估收入确认的相关会计政策。 由于沪电股份....
+- Capacity/certification evidence: 直接证据：。沪士 泰国生产基地在AI服务器和交换机等应用领域，已取得2家客户的正式认可，另有4家客户的认证与产品导入工 作也在持续推进，预计将于2025年下半年陆续取得正式认可。沪士泰国生产基地的顺利运营是公司海外战略布 局的关键支撑，公司正全力提升其生产效率和产品质量，随着客户拓展及产品导入的逐步推进，其产能将逐步 有序释放，并进一步验证其中高端产品的生产能力，为产....
+- ASP or margin evidence: 直接证据：为公司通讯板将持续受益 AI 服务器产品带动的高多层设计升级，对应层 数与单平米价值量将持续提高。我们假设公司企业通讯市场板未来三年量分别增长 12.0%、 11.0%、9.0%，单价提升 16.5%、11.4%、8.7%。 假设 2：汽车板将受电动汽车智能化下沉、单车电气化程度提升等因素，量价将稳步增 长。我们假设公司汽车板未来三年量分别增长 15.3%、...；直接证据：# Eastmoney visible abstract 沪电股份(002463) 事件 公司发布2025年年报，2025年实现营收189.45亿元，同比增长42.00%；实现归母净利润38.22亿元，同比增长47.74%。 投资要点 数通PCB高速增长，高速交换机需求旺盛。2025年，数通PCB实现营收约146.56亿元，同比+45.21%，毛利率同比+1....
+- Utilization/yield evidence: 直接证据：国全力推动生产基地从产能爬坡期全面迈入高效规模化运营期。在业务拓展与产能释放端：数据通讯 事业部已有超 70%的海外客户完成认证，余下客户认证正稳步推进，2026 年第一季度其产能利用率已超 90%， 品质也逐步达到国内相应水准，为充分保障后续海外客户的需求，持续优化产品结构，公司已实施针对性的产 能升级扩容，预期将于 2026 年第二季度有序释放，其下一阶....
+- Evidence source: S08; sources/broker-reports/2026-06-30/05-01-002463-report-2025.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 背板/主板/Riser.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for AI 服务器 PCB.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 交换机/路由器 PCB..
+
+## 浪潮信息
+
+- Chain role: 上游算力芯片与存储 / 下游需求与应用 / 服务器整机与零部件 / 液冷与温控; AI 服务器/ODM / 互联网大模型/MaaS / 国产算力平台 / 政企智算 / 整柜集成/液冷服务器 / 液冷机柜 / 科研超算/AI4S.
+- Product/process exposure: AI 服务器/ODM / 互联网大模型/MaaS / 国产算力平台 / 政企智算 / 整柜集成/液冷服务器 / 液冷机柜 / 科研超算/AI4S.
+- Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 69.23; final target 50.17847; upside -0.275191824353604.
+- Current 2026E package: revenue 1418.8 亿元；net profit 24.6 亿元；EPS 1.65；market cap 1031.7 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B; source tier original_pdf; source count across mapped nodes 30.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：search Dept. 2025 年 5 月 6 日 何利超 浪潮信息（000977.SZ） Buy 买进 H70529@capital.com.tw 目标价(元) 60 一季度营收高速增长，规模效应带动费用率持续降低 公司基本资讯 结论与建议： 产业别 计算机 公司发布2025年一季报，2025年一季度公司实现营业收入46.86亿元，同比 A 股价(20....
+- Customer/platform evidence: 直接证据：流为58.03亿元，同比+265.5%，现金流快速提升，主要是公司本期销售回款良好，营业收现率提高及采购备货付款节奏变化。 互联网头部大厂加大算力方面资本开支，行业有望维持高景气：腾讯2024年资本开支突破767亿元，同比增长221%，其中AI相关研发投入为707亿元。计划2025年进一步增加资本支出，预计将达到营收占比低双位数左右；阿里巴巴2024年第四季....
+- Order/backlog evidence: 直接证据：.28%；扣非后归母净利 罗炜斌 润20.81亿元，同比增长11.03%。2026Q1，公司实现营业收入354.70亿元， SAC 执业证书编号： 同比下滑24.30%，主要受订单交付节奏、上年同期基数较高、市场供需 S0340521020001 阶段性调整等因素影响；归母净利润6.05亿元，同比增长30.74%；扣非 电话：0769-22110619 后归....
+- Capacity/certification evidence: 直接证据：以上。同时，公司提供从规划设计到建设实施的全生命周期整体解决方 资料来源：东莞证券研究所，iFinD 案，2025年初投运的元脑算力工厂，仅用120天建成10MW规模的智算中心， 通过部署高密智算算力仓，使风冷负载上限达50kW、液冷负载上限达 130kW，实现数据中心PUE降至1.1以下，年节约电费近2000万元。  投资建议：公司作为国内服务器龙头厂商....
+- ASP or margin evidence: 直接证据：项费用率： A 股数(百万) 1470.42 025 年第一季度，由于算力市场需求旺盛，公司 AI 服务器销售量增加， A 市值(亿元) 747.71 带动公司业绩高速增长。Q1 毛利率同比下降 4.68 个百分点为 3.45%，主 主要股东 浪潮集团有限 要由于下游互联网厂商销售占比提升、且相关公司议价能力较强所导致。 公司(31.93%) 费用率方面，销...；直接证据：现营业收入354.70亿元， SAC 执业证书编号： 同比下滑24.30%，主要受订单交付节奏、上年同期基数较高、市场供需 S0340521020001 阶段性调整等因素影响；归母净利润6.05亿元，同比增长30.74%；扣非 电话：0769-22110619 后归母净利润5.90亿元，同比增长38.22%。盈利能力方面，2025年，公 邮箱： 司销售毛利率....
+- Utilization/yield evidence: 直接证据：iFinD 案，2025年初投运的元脑算力工厂，仅用120天建成10MW规模的智算中心， 通过部署高密智算算力仓，使风冷负载上限达50kW、液冷负载上限达 130kW，实现数据中心PUE降至1.1以下，年节约电费近2000万元。  投资建议：公司作为国内服务器龙头厂商，有望持续受益于人工智能产 业的发展及液冷散热需求的增加。预计公司2026—2027年EP....
+- Evidence source: sources/broker-reports/2026-06-30/15-01-000977-report-2025-2026-2026q1.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 国产算力平台.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for AI 服务器/ODM.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 整柜集成/液冷服务器..
+
+## 润泽科技
+
+- Chain role: 供配电与能源 / 数据中心建设与运营; IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入 / 算力服务/调度.
+- Product/process exposure: IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入 / 算力服务/调度.
+- Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 78.67; final target 50.62230695652173; upside -0.3565233639694708.
+- Current 2026E package: revenue 80.0 亿元；net profit 29.5 亿元；EPS 1.57；market cap 1484.7 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: A-; source tier company IR + company filing + original_pdf; source count across mapped nodes 33.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：otePic] 面，公司 2025年经营活动产生的现金流量净额为 32.92亿元，同比增长 57.17%， 润泽科技 沪深300 124% 延续正向表现并进一步改善。 97%  收入快速增长，但利润高增更多体现为资本运作收益兑现，主业盈利释放相对 71% 滞后。公司 2025 年收入同比增长 30%，延续较快扩张态势，主要受 AIDC 业务 44% 持续高....
+- Customer/platform evidence: 直接证据：平能够较好反映国内 IDC 行业整体定价区间。 光 环新网（300383.SZ） 光环新网为国内 IDC 行业重要参与者，业务涵盖数据中心服务及云计算业务，长期深耕 互联网及云厂商客户，是典型的“IDC+云服务”一体化运营商。 从业务模式来看，公司与润泽科技同样以数据中心为基础，并逐步向更高附加值服务延 伸，发展路径具有较强相似性。相较而言，光环新网在云服务....
+- Order/backlog evidence: 直接证据：60.3%，归母净利润为 17.6 亿元，同比增长 43%，主要系 IDC 业务营收源增多 润泽科技 沪深300 3% 和 AIDC 业务拓展。IDC 业务方面，2023 年以前交付的算力中心上架率稳步提 -8% 升，2023 年实现多园区营收；AIDC 业务方面，业务拓展顺利，营收规模不断 -19% 扩大，逐渐成为公司第二增长极。截至目前，公司已在京津冀·....
+- Capacity/certification evidence: 直接证据：展及行业需求判断， 我们预计 2026–2028 年 A IDC 业务同比增速分 别为 40.0%、 42.0%、 50.0%。增长主要来自：1）AI 算力需求持续扩张；2）多园区产能逐 步释放；3）客户结构向互联网、云厂商及 AI 企业深化。 盈利能力方面，AIDC 业务当前仍处于规模扩张初期。2025 年毛利率已达到 48.5%，但 考虑到后续投入节奏及....
+- ASP or margin evidence: 直接证据：值算力服务占比提升缓慢，公司毛利率修复及盈利能力释放节奏可能低于预期。 3）资本开支及成本波动风险：公司业务属于重资产模式，持续依赖服务器、网络设备 及数据中心建设投入。若上游设备价格、电力成本或运维成本出现波动，或资本开支节奏与 收入释放节奏不匹配，可能对公司盈利能力及现金流表现造成压力。 4） REITs 及资本运作不确定性风险：公司通过数据中心 REI...；直接证据：23 年公司归母净利润同比增长 47.0% 数据来源：公司公告，西南证券整理 数据来源：公司公告，西南证券整理 净利率整体呈增长态势，盈利能力略有下滑。 2019-2023 年公司毛利率相对稳定，从 47.6%波动增长至 48.6%；净利率增长趋势显著，从 11.9%增长至 40.4%，主要系 IDC 业务 拉动，年复合增长率达 35.7%。2023 年毛利....
+- Utilization/yield evidence: 直接证据：归母净利润为 17.6 亿元，同比增长 43%，主要系 IDC 业务营收源增多 润泽科技 沪深300 3% 和 AIDC 业务拓展。IDC 业务方面，2023 年以前交付的算力中心上架率稳步提 -8% 升，2023 年实现多园区营收；AIDC 业务方面，业务拓展顺利，营收规模不断 -19% 扩大，逐渐成为公司第二增长极。截至目前，公司已在京津冀·廊坊、长三角....
+- Evidence source: S11; S12; sources/broker-reports/2026-06-30/03-01-300442-report-2025-aidc.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 电力指标/接入.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 土地/园区/能耗指标.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for IDC/AIDC 运营..
+
+## 深南电路
+
+- Chain role: PCB 与上游材料设备 / 服务器整机与零部件; AI 服务器 PCB / HDI/高多层板 / IC 载板/ABF / 交换机/路由器 PCB / 背板/主板/Riser.
+- Product/process exposure: AI 服务器 PCB / HDI/高多层板 / IC 载板/ABF / 交换机/路由器 PCB / 背板/主板/Riser.
+- Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 468.09; final target 221.82511666666667; upside -0.526105841469233.
+- Current 2026E package: revenue 274.8 亿元；net profit 36.4 亿元；EPS 5.33；market cap 3194.1 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B; source tier original_pdf; source count across mapped nodes 16.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：的 技术研发及打样工作按期推进中。 （3）电子装联业务紧抓产业机遇，保持稳健增长 报告期内，公司电子装联业务实现主营业务收入 14.78 亿元，同比增长 22.06%，占公司营业总收入的 14.14%；毛利 率 14.98%，同比增加 0.34 个百分点。 2025 年上半年，公司电子装联业务充分把握数据中心及汽车电子领域的需求增长机会，推动营收增长。数据中....
+- Customer/platform evidence: 直接证据：围是否发生变动 □是 否 17 深南电路股份有限公司 2025 年年度报告全文 （7） 公司报告期内业务、产品或服务发生重大变化或调整有关情况 □适用 不适用 （8） 主要销售客户和主要供应商情况 公司主要销售客户情况 前五名客户合计销售金额（元） 4,355,718,785.55 前五名客户合计销售金额占年度销售总额比例 18.42% 前五名客户销售额....
+- Order/backlog evidence: 直接证据：照修改后的条款确认一项新的金融负债。 112 深南电路股份有限公司 2025 年年度报告全文 以常规方式买卖金融资产，按交易日进行会计确认和终止确认。常规方式买卖金融资产，是指按照合同条款规定， 在法规或市场惯例所确定的时间安排来交付金融资产。交易日，是指本公司承诺买入或卖出金融资产的日期。 （2）金融资产的分类与计量 本公司在初始确认时根据管理金融资产的业....
+- Capacity/certification evidence: 直接证据：户新产品导入，并完成了目标产品的稳定批量生产。ABF 类（FC-BGA）封装基板方面，广州 新工厂投产后，产品线能力快速提升，产能爬坡稳步推进，公司已具备 20 层及以下产品批量生产能力，22~26 层产品的 技术研发及打样工作按期推进中。 （3）电子装联业务紧抓产业机遇，保持稳健增长 报告期内，公司电子装联业务实现主营业务收入 14.78 亿元，同比增长....
+- ASP or margin evidence: 直接证据：，同比增长36.84%，毛利率35.53%，同比增长3.91pct。得益于AI算力及汽车电子市场共同驱动；1）数据中心方面，AI服务器及相关配套产品订单同比显著增加，2）通讯方面，高速交换机、光模块需求显著增长，公司产品结构持续优化，订单规模大幅增长；3）汽车电子方面，公司把握ADAS和新能源汽车三电系统增长机会，订单保持快速增长。 存储产品放量，公司封装基...；直接证据：基板方面，产品线能力稳步提升，22层及以下产品已实现量产，24层及以上产品的技术研发及打样工作按期推进。伴随存储基板占比提升，业务结构优化，叠加广州产能爬坡顺利，驱动毛利率上行。 盈利预测与投资建议：预计2026-2028年营业总收入分别为315.98、402.90、501.46亿元，同比增速分别为33.62%、27.51%、24.46%；归母净利润分别为5....
+- Utilization/yield evidence: 直接证据：.54 该项 22 深南电路股份有限公司 2025 年年度报告全文 倒装 板 711,77 资金 % 目在 芯片 7.41 及募 报告 IC 载 集资 期内 板产 金 处于 品制 爬坡 造项 阶 目 段， 尚未 进入 完整 达产 年 度， 产能 与效 益尚 未完 全释 放所 致 泰兴 该项 高速 金融 目在 高密 机构 941,51 1,196, 报告 印制....
+- Evidence source: sources/broker-reports/2026-06-30/13-01-002916-report-ai-25.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 背板/主板/Riser.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for AI 服务器 PCB.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 交换机/路由器 PCB..
+
+## 生益科技
+
+- Chain role: PCB 与上游材料设备; 高速 CCL.
+- Product/process exposure: 高速 CCL.
+- Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 177.84; final target 85.8072; upside -0.5175033738191633.
+- Current 2026E package: revenue 339.2 亿元；net profit 54.9 亿元；EPS 2.00；market cap 4883.0 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B; source tier original_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：183-report-report.txt ## Eastmoney visible abstract 生益科技(600183) 事件：公司发布26年一季报，公司26年一季度营业总收入81.41亿元，同比增长45.09%；归属于母公司所有者的净利润11.58亿元，同比增长105.47%；扣非后归母净利润10.83亿元，同比增长93.51%。 高端CCL+PC....
+- Customer/platform evidence: 直接证据：元，占年度采购总额27.45%；其中前五名供应商采购额中关联 方采购额0万元，占年度采购总额0。 16 / 235 广东生益科技股份有限公司2025 年年度报告 B.报告期内向单个客户的销售比例超过总额的 50%、前 5 名客户中存在新增客户的或严重依赖于 少数客户的情形 □适用 √不适用 报告期内向单个供应商的采购比例超过总额的 50%、前 5 名供应商中....
+- Order/backlog evidence: 直接证据：证 56% 放，下游大客户进展显著，高频高速覆铜板占比提升，PCB 方面，公司精 券 (10%) 25/5/26 25/8/6 26/3/10 26/5/21 准锚定中高端市场，订单持续转化，高附加值产品提升，在中高端市场竞 25/10/17 25/12/28 股 生益科技 沪深300 争优势显著，带动营业收入及利润的大幅增长。 高性能覆铜板扩产，构筑中长期....
+- Capacity/certification evidence: 直接证据：锚定中高端市场，订单持续转化，高附加值产品提升，在中高端市场竞争优势显著，带动营业收入及利润的大幅增长。 高性能覆铜板扩产，构筑中长期增量空间。公司总投资约52亿元建设"松山湖第二工厂"，以生产高性能覆铜板为主，产品定位为汽车领域用、5G通讯领域和AI服务器用高频、高速产品，以及封装领域用封装基板材料产品及高密度产品。公司设计年产能4800万平方米及1000....
+- ASP or margin evidence: 直接证据：放 量， 整体产 品结 构持 续优化 ，毛 利率持 续提 升。 我们假 设公 司覆铜 板与 粘结 片业务 2026-2028 年收入增速分别为 22.0%、19.0%、18.0%，毛利率分别为 25.5%、28.0%、30.0%。 假设 2：公司 PCB 业务受海外 CSP 自研服务器需求带动，高多层产品快速放量，稼动 率与产品结构大幅优化，毛利率持续提升...；直接证据：47%；扣非后归母净利润10.83亿元，同比增长93.51%。 高端CCL+PCB放量，产品结构优化，业绩爆发式增长。公司26Q1归母净利润翻倍增长，利润端增速大幅超越收入端增速，毛利率提升，公司26Q1毛利率28.10%，同比增长3.50pct，环比增长2.32pct。公司盈利能力大幅增强，主要由于产品结构优化，分业务来看，覆铜板方面，AI服务器驱动高端产....
+- Utilization/yield evidence: 直接证据：分别为 22.0%、19.0%、18.0%，毛利率分别为 25.5%、28.0%、30.0%。 假设 2：公司 PCB 业务受海外 CSP 自研服务器需求带动，高多层产品快速放量，稼动 率与产品结构大幅优化，毛利率持续提升。我们假设印制电路板业务 2026-2028 年入增速分 别为 70.0%、40.0%、35.0%，毛利率分别为 32.0%、36.0%、....
+- Evidence source: sources/broker-reports/2026-06-30/08-01-600183-report-2026-ai.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 高速 CCL..
+
+## 申菱环境
+
+- Chain role: 液冷与温控; CDU / 冷水机组/精密空调 / 液冷机柜 / 漏液检测.
+- Product/process exposure: CDU / 冷水机组/精密空调 / 液冷机柜 / 漏液检测.
+- Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 114.16; final target 49.70080000000001; upside -0.5646391030133145.
+- Current 2026E package: revenue 30.9 亿元；net profit 2.4 亿元；EPS 0.91；market cap 306.4 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B-; source tier original_pdf; source count across mapped nodes 28.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：6% 5 供应商 5 51,015,634.18 1.75% 合计 -- 380,608,450.64 13.04% 主要供应商其他情况说明 □适用 不适用 报告期内公司贸易业务收入占营业收入比例超过 10% □适用 不适用 17 广东申菱环境系统股份有限公司 2025 年年度报告全文 3、费用 单位：元 2025 年 2024 年 同比增减 重大变动说....
+- Customer/platform evidence: 直接证据：、联通、华为、字节跳动、腾讯、阿里巴巴、百度、美团、 快手、京东、中金数据、秦淮数据、中兴、世纪互联、中联云港、润泽科技、浪潮、普洛斯、万国数据、国防科大、超 聚变、曙光等众多知名客户。 报告期内公司数据服务板块营收同比增长 51.42%。营收的增长主要来自于符合未来发展趋势的高能效创新产品，更 为重要的是，基于对公司技术创新能力、质量保障能力、快速交付能力....
+- Order/backlog evidence: 直接证据：9 亿元，较 2025 年底增加 48.7%，合同负债与 49.00 500 33.00 0 存货均达到历史新高，侧面反映公司在手订单充裕，下游数据中心 及电力能源领域客户散热设备需求旺盛。 250428 250728 251028 260128 260428 战略布局液冷新基建，产能扩容夯实增长根基：2026 年 3 月，公 成交金额 申菱环境 沪深300....
+- Capacity/certification evidence: 直接证据：司位于广东顺德的新基建领域智能温控产品智造基地正式投产。液冷测试中心、液冷长运平台、净化 车间、智能化产线等全新设施将大幅提高公司在液冷产品上的研发测试和加工制造能力，大幅提升交付产能和质量保障 能力，更好的满足头部客户对于液冷产品的可靠性和高质量要求，构建更强大的竞争力，为液冷业务规模快速增长提供 强有力的保障。 （二）工业板块 10 广东申菱环境系统股份....
+- ASP or margin evidence: 直接证据：公司在任意连续 90 日内采 取大宗交易方式减持股份的，减持股份的总数不得超过公司股份总数的 2%。4、本公司 通过协议转让方式减持股份的，单个受让方的受让比例不得低于 5%，转让价格范围下 限比照大宗交易的规定执行（法律法规、部门规章及深圳证券交易所业务规则另有规 48 广东申菱环境系统股份有限公司 2025 年年度报告全文 定的除外）。5、如本公司通过协...；直接证据：577,298.90 3.41% 19,156,852.17 0.64% 649.48% 15 广东申菱环境系统股份有限公司 2025 年年度报告全文 （2） 占公司营业收入或营业利润 10%以上的行业、产品、地区、销售模式的情况 适用 □不适用 单位：元 营业收入比上年 营业成本比上年 毛利率比上年 营业收入 营业成本 毛利率 同期增减 同期增减 同期增....
+- Utilization/yield evidence: 直接证据：冷却液 算力散热这一新兴赛道， 求设计，避免“大马拉小车” 项目 管路长度，降低流阻损耗，同时避免机房布局 拓展公司产品的市场份 的能源浪费，实现冷量与服务 改造，大幅提升机房空间利用率。 额。 器负载的精准匹配。 低 PUE 数 开发新产品，攻克传统制冷技 本项目旨在打造一种“全工况高效、极简运 本项目将彻底突破水资源 据中心磁 术的能效瓶颈，突破单一制冷....
+- Evidence source: sources/broker-reports/2026-06-30/17-01-301018-report-report.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for CDU.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 冷水机组/精密空调.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 液冷机柜..
+
+## 科华数据
+
+- Chain role: 供配电与能源 / 数据中心建设与运营; UPS/HVDC / 运维/监控/DCIM.
+- Product/process exposure: UPS/HVDC / 运维/监控/DCIM.
+- Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 43.2; final target 28.873200000000004; upside -0.3316388888888888.
+- Current 2026E package: revenue 71.5 亿元；net profit 4.9 亿元；EPS 0.93；market cap 227.6 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: A-; source tier company filing + original_pdf; source count across mapped nodes 12.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：金融、政务等 流通 A 股(百万股) 454.67 行业，共同研发，推动产品订单快速增长。 ◼ 海外业务起量带动新能源复苏、持续加大全球化布局。公司 25 年新能 相关研究 源业务收入 37.99 亿元，同比+5.31%，毛利率 17.87%，同比+1.09pct。 《科华数据(002335)：2025 年三季报 截至 25 年底，公司光伏产品累计出货超 6....
+- Customer/platform evidence: 直接证据：其在异构算力平台、软硬件一体化设计与开发者生态建设方面的领先能力。2）绑定优质客户，提高公司竞争力。公司已为超过2,000家企业提供数据中心及云服务解决方案，合作腾讯、阿里、字节等互联网大厂，并获得多项数据中心相关资质认证。3）自主开发HVDC，包括240V、336V两种电压制式，目前产品已应用于互联网、运营商、金融等行业的智算中心和数据机房。综上，数据中心....
+- Order/backlog evidence: 直接证据：0 个国家和地区，在中东中标 比亚迪 东、非洲、 了 SEC 授予的一系列 BESS 项目合同，总装机容量达 2.5GW/12.5GWh，成为全球新能源储能合同领域 拉丁美洲 的“订单王”。 中国能建已在 90 多个国家和地区设立各类驻外机构 256 个，业务覆盖 147 个国家和地区。截至 2023 一带一路国 中能建 年，公司各类在建国际项目 568 个....
+- Capacity/certification evidence: 直接证据：无主从自适应多机并联"等多项创新技术。 发制造 2001 中标当时国内最大的国产品牌 UPS 订单,初步奠定行业地位。 2006 漳州百亩工业园投产运营,成为国内最大 UPS 产研基地之一。 公司转型为数据中心整体解决方案提供商,同时推出光伏逆变器、风电专用电源设备,进 2007 入新能源领域。 2010 公司于深圳 A 股上市,股票代码 002335。 2....
+- ASP or margin evidence: 直接证据：有下滑。2024Q3 公司 IDC 业务和数据中心产品收入 8.6 亿元,智 慧电能收入 2.9 亿元,稳中有升;新能源业务收入 5.4 亿元左右,同比下降约 52%，主要因 产品单价出现大幅下降,同时公司基于内部对盈利和现金流的管控,储能国内业务承压。 在板块盈利能力方面，新能源业务受竞争影响毛利率下滑，数据中心和智慧电能业务毛 利率基本维持稳定。24H1...；直接证据：763 EBITDA 1,112 1,523 1,795 2,045 其他非流动负债 106 101 101 101 负债合计 7,559 8,146 10,401 12,795 毛利率(%) 24.56 24.60 23.58 23.09 归属母公司股东权益 6,407 6,676 7,042 7,509 归母净利率(%) 5.12 6.09 6.08 6....
+- Utilization/yield evidence: 直接证据：已应用于互联网、运营商、金融等行业的 智算中心和数据机房。综上，数据中心业务拐点已现，在建项目收入可期。24Q3 数据中心业 务收入增长转正，随北京智算数据中心项目投运，未来机柜的上架率及收入预计将有所提升。 ◼ 盈利预测与投资评级：我们预计公司 2024-2026 年归母净利润为：5.5/7.1/9.7 亿元，同比 +8.4%/29.9%/36.1%，对应....
+- Evidence source: S10; sources/broker-reports/2026-06-30/14-01-002335-report-2025-2026.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for UPS/HVDC.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 运维/监控/DCIM..
+
+## 紫光股份
+
+- Chain role: 上游算力芯片与存储 / 下游需求与应用 / 服务器整机与零部件 / 网络与光通信; AI 交换机/路由器 / AI 服务器/ODM / 交换 ASIC / 国产算力平台 / 政企智算 / 整柜集成/液冷服务器.
+- Product/process exposure: AI 交换机/路由器 / AI 服务器/ODM / 交换 ASIC / 国产算力平台 / 政企智算 / 整柜集成/液冷服务器.
+- Candidate valuation method: PE/PEG，校验出货、ASP、客户认证和 Street 分歧.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 28.86; final target 28.50097391304348; upside -0.012440266353309748.
+- Current 2026E package: revenue 1216.7 亿元；net profit 40.1 亿元；EPS 1.20；market cap 966.4 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B; source tier original_pdf; source count across mapped nodes 21.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：0%。 内部合并抵消：紫光股份的内部合并抵消主要与旗下 ICT 业务相关，由于该板块在集团内 部资源整合中涉及较多关联交易（如向内部销售产品及服务） ，此类交易在合并报表中需 进行收入与成本的抵消处理。我们认为未来三年抵消比例将延续既有水平，整体抵消规模 与 ICT 业务收入增速保持同步。预计公司此业务 2025-2027 年营收分别为-57.67(+18....
+- Customer/platform evidence: 直接证据：的比例较高，有望受益于芯片国产替代：IDC预测2024-2028年中国智算规模的复合增速有望达40%，智算规模扩大带来AI服务器需求增长。互联网大厂是需求端的主力，我们估算未来3年阿里、腾讯、字节每年新增服务器采购额约1300-1500亿元。相较其他厂商，公司2024年AI服务器放量节奏偏弱。但我们认为2025年起出现了积极转变。从行业端看，英伟达芯片禁售、....
+- Order/backlog evidence: 直接证据：比增速的大幅提高 往往伴随着收入端的同步增长。背后原理与服务器厂商的商业模式有关：服务器厂商向客 户发出产品，但产品自发出到验收的时间较长，这导致订单可能无法在当期结转成收入。 而合同负债可视作公司预收的一小笔定金，对业绩端起到一定的指引作用。 从合同负债看，紫光股份 1Q25 合同负债同比增长 67%至 187 亿元，达到历史新高，对应 1Q25 收入同比....
+- Capacity/certification evidence: 直接证据：-out 域数据中心交换机厂商 的核心竞争要素转向制造端的规模效应。由于纯硬件的进入壁垒低于交换机操作系统软件， 我们认为交换机厂商的核心竞争优势将转向制造端，包括收入端的大规模量产能力、成本 端的控费能力。纯白盒硬件厂商在制造端可能更有优势。 针对市场的担忧，我们认为公司未来交换机业务看点有三： 1）互联网客户端，公司在互联网白盒数通交换机赛道早有布局，有....
+- ASP or margin evidence: 直接证据：不变，为构建更大规模的 GPU 集群，将采用更多端口数量的交换机，交换 机端口数量的增加将带动交换容量实现从 200G 向 400G 再向 800G 的升级。 交换机容量的升级带来单价的提升。我们以锐捷网络数据中心交换机单价作为参考，其在 2021-2024 年间稳步提升。其中 2022 年、2024 年同比提升幅度较大，分别对应 200G、400G 交换机...；直接证据：力相对较弱，公司有望发挥其品牌厂商的优势，保持高盈利能力。中长期Scale-up域以太网交换机将加速渗透，行业扩容。我们看好公司凭借AI服务器业务经验率先取得突破，重塑准入壁垒。 盈利预测、估值和评级 我们预计公司2025-2027年营业收入分别为883.45/981.74/1079.09亿元，同比增长11.8%/11.1%/9.9%；预计归母净利润分别为2....
+- Utilization/yield evidence: 直接证据：算力 规 模有 望从 416.7EFLOPS 增至 2781.9EFLOPS，5 年 CAGR 有望达 46.2%。参考 H20 芯片，我们根据单卡算力 148TFLOPS、 有效利用率 60%估算，2025 年 1037.3EFLOPS 算力对应 1168 万 GPU 芯片需求量。单台 AI 服务器装载 8 个 GPU 芯片，因此对应 146 万台 AI....
+- Evidence source: sources/broker-reports/2026-06-30/09-01-000938-report-ai.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 交换 ASIC.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 国产算力平台.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for AI 服务器/ODM..
+
+## 胜宏科技
+
+- Chain role: PCB 与上游材料设备 / 服务器整机与零部件; AI 服务器 PCB / HDI/高多层板 / 交换机/路由器 PCB / 背板/主板/Riser.
+- Product/process exposure: AI 服务器 PCB / HDI/高多层板 / 交换机/路由器 PCB / 背板/主板/Riser.
+- Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 351.66; final target 238.67219999999998; upside -0.3212984132400616.
+- Current 2026E package: revenue 220.8 亿元；net profit 51.7 亿元；EPS 5.92；market cap 3068.4 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B+; source tier original_pdf; source count across mapped nodes 13.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：产计划中全过程跟踪客户，目前公司已推出高阶HDI、高频高速PCB等多款AI服务器相关产品；同时，全球算力龙头英伟达发布的FY24Q2的财报中指出其Q2营收远超预期，其中数据中心业务收入同比+171%/环比+141%再创新高，并给出FY24Q3营收指引同样超市场预期。我们认为胜宏科技作为英伟达的供应商将深度受益于英伟达以及全球算力产业链的蓬勃发展。 公司积极布....
+- Customer/platform evidence: 直接证据：车等领域的客户回款较快所推动。 luzhixin@dgzq.com.cn 主要数据 2024 年 8 月 20 日  AI及汽车双轮驱动，业绩增长动能充足。AI方面，近期海外主要CSP披 收盘价(元) 34.20 露最新财报，微软、谷歌、亚马逊、META等四大巨头最新CAPEX合计达531 总市值（亿元） 295.04 亿美元，同比大幅增长59%，并指引后....
+- Order/backlog evidence: 直接证据：用领域的快速发展，下游硬件对于通讯频率、传输速度等方面性能要求不断提升，HDI产品材料、线宽线距、层数及阶数将伴随着下游的产品迭代不断升级，产品价值量持续增加。 投资建议 公司在手订单饱满，订单生产和交付正常履行，新建厂房有序推进，产能产量逐步释放，带动业绩增长。我们预计2025-2027年公司实现归母净利润56.59亿元（yoy+390.2%）、76.25....
+- Capacity/certification evidence: 直接证据：产值，国内产能方面，惠州厂房四项目现已分阶段逐 券 研 步投产，目前处于爬坡与量产阶段；厂房十、十一项目正按计划快速有序推进中。 《2025Q3 业绩同比高增，未来增长动 究 海外产能方面，公司泰国工厂 A1 栋一期升级改造已于 2025 年 3 月完成，二期 报 力充足—胜宏科技三季报点评》 告 高端产能已经开始生产验证板；泰国 A2 栋厂房和越南工厂的建....
+- ASP or margin evidence: 直接证据：高端AI数据中心算力产品5阶、6阶HDI以及28层加速卡产品顺利进入量产，1.6T光模块进入小量产。公司针对AI服务器、AI算力、光传输交换机等产品的技术能力改造，完成对高多层精密HDI5.0mm和高多层PCB8.0mm厚板的设备优化与改造，大孔径盲孔填孔能力与超薄芯板能力建制。 中高端产品线占比提升，产品结构优化。公司24Q3毛利率23.17%，环比增长1...；直接证据：利润同比分别大增13%和104%；同时公司持续加大研发投入，积极布局AI、新能源汽车等新兴领域，高端AI数据中心算力产品5阶、6阶HDI以及28层加速卡产品顺利量产；此外，公司强化成本管理、实现降本增效也在一定程度上助力业绩增长。盈利能力方面，公司H1毛利率为20.61%（YoY：-0.35pct），净利率为9.45%（YoY：+0.06pct）。现金流方面....
+- Utilization/yield evidence: 直接证据：业务需求、HDI订单导入不及预期、高多层PCB硬板量产良率不及预期。 ## Text Preview 电子/元件 公 司 研 胜宏科技（300476.SZ） 下游需求影响 PCB 稼动率，公司持续推进新品研发 究 2022 年 08 月 23 日 ——公司信息更新报告 投资评级：买入（维持） 刘翔（分析师） 林承瑜（分析师） liuxiang2@kysec....
+- Evidence source: sources/probe-300476-eastmoney-fullscan-20260630/02-AP202604291821740007-东莞证券-深度报告-卡位优势明显-充分受益ai-pcb浪潮.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 背板/主板/Riser.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for AI 服务器 PCB.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 交换机/路由器 PCB..
+
+## 英维克
+
+- Chain role: 数据中心建设与运营 / 服务器整机与零部件 / 液冷与温控; CDU / Manifold/分液器 / 冷板 / 冷水机组/精密空调 / 整柜集成/液冷服务器 / 液冷机柜 / 漏液检测 / 运维/监控/DCIM.
+- Product/process exposure: CDU / Manifold/分液器 / 冷板 / 冷水机组/精密空调 / 整柜集成/液冷服务器 / 液冷机柜 / 漏液检测 / 运维/监控/DCIM.
+- Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 79.62; final target 48.11704; upside -0.3956664154734991.
+- Current 2026E package: revenue 65.3 亿元；net profit 6.3 亿元；EPS 0.64；market cap 783.3 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: A-; source tier company filing + original_pdf; source count across mapped nodes 53.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：关 的嵌入式软件及控制系统的研发、生产与销售。截止本报告期末，英维克软件总资产为 607,320,667.83 元，净资产为 487,162,464.83 元；报告期内实现主营业务收入 438,821,643.35 元，净利润 253,487,760.24 元。 25 深圳市英维克科技股份有限公司 2025 年年度报告全文 十、公司控制的结构化主体情况 □适....
+- Customer/platform evidence: 直接证据：其他应收款 组合 2 保证金、押金及代扣社保公积金组合 客户群体的信用风险特征 其他应收款 组合 3 其他往来组合 客户群体的信用风险特征 长期应收款 组合 1 分期收款销售商品 客户群体的信用风险特征 本公司不再合理预期金融资产合同现金流量能够全部或部分收回的，直接减记该金融资产的账面余额。 95 深圳市英维克科技股份有限公司 2025 年年度报告全文 1....
+- Order/backlog evidence: 直接证据：028E 收紧，液冷方案的渗透率提升逻辑将得到双重强化。考虑到下游客 营业收入(百万元) 4,589 6,068 8,119 12,858 19,113 户的招标节奏及大型数据中心交付周期，我们认为公司液冷订单 营业收入增长率 30.04% 32.23% 33.80% 58.38% 48.64% 放量将在 2026 年下半年更为明显，公司利润有望随收入规模扩....
+- Capacity/certification evidence: 直接证据：地区实现营收8.49亿元，同比+28.7%，全球化布局初见成效。截至26Q1公司在建工程3.22亿元，同比+20.3%；存货11.82亿元，同比+20.2%，均为应对未来订单而积极扩产、备货的明确信号。公司已率先推出高可靠Coolinside全链条液冷解决方案，实现端到端产品覆盖。我们认为公司有望凭借规模效应、技术积累及客户认证壁垒持续领跑市场。 业务扩张期....
+- ASP or margin evidence: 直接证据：7 日 献奖 关于调整 2022 2025 年 05 年和 2024 年股 无 无 月 30 日 票期权激励计划 39 深圳市英维克科技股份有限公司 2025 年年度报告全文 行权价格及数量 的议案 关于 2022 年股 票期权激励计划 2025 年 08 第三个行权期行 无 无 月 07 日 权条件达成、关 于注销部分股票 期权 提名委员会严格按照 《公司...；直接证据：Q3公司实现收入14.53亿元，同比增长25.3%，归母净利润1.8亿元，同比增长8.4%，业绩符合预期，三季度公司营收增速放缓主要受国内IDC部分项目收入确认延后等因素影响。Q3毛利率为27.32%，环比提升3.4个百分点，主要受益于东南亚高毛利项目占比提升和液冷高附加值产品放量。预计未来伴随AI液冷项目需求爆发，公司盈利能力有望持续提升。 盈利预期：预计....
+- Utilization/yield evidence: 直接证据：300 国产芯片加速替代，有望进一步加速液冷部署：国产 AI 芯片在相 同算力规模下通常功耗更高，因此对散热效率的要求更加严苛。随 着国产芯片在境内数据中心的上量节奏加快以及国内 PUE 政策的 公司基本情况（人民币） 项目 2024 2025 2026E 2027E 2028E 收紧，液冷方案的渗透率提升逻辑将得到双重强化。考虑到下游客 营业收入(百万元)....
+- Evidence source: S09; sources/broker-reports/2026-06-30/10-01-002837-report-2026-ai.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 整柜集成/液冷服务器.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 冷板.；Verify official filings, IR records, customer qualification and order/MW/utilization evidence for CDU..
+
+## 金盘科技
+
+- Chain role: 供配电与能源; 变压器.
+- Product/process exposure: 变压器.
+- Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
+- Target-price status: target_price_published.
+- Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
+- Current target package: current price 87.05; final target 44.75531818181818; upside -0.48586653438462746.
+- Current 2026E package: revenue 69.2 亿元；net profit 5.4 亿元；EPS 1.14；market cap 414.3 亿元；source data/current_valuation_model_20260630.json.
+- Extended model status: not disclosed; blocker none; source not applicable.
+- Evidence quality: B; source tier original_pdf; source count across mapped nodes 5.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：下游风光储持续扩容，25年预计新增装机分别同比+50/10/25%，1-8月社会用电量、制造业固投（+5%）稳健增长；24年公司国内营收受新能源拖累下滑，25H1新能源抢装带动相关收入增长、同时数据中心&下游扩张&高压产品释放望贡献新增量。公司其他亮点包括：①积极构建全球化产能（美国、波兰、墨西哥等11个生产基地），②卓越级数字化工厂（历经十余年升级、行业稀....
+- Customer/platform evidence: 直接证据：科技(688676)：2025 年年报点 SST 产品，送样海外客户进展顺利，产品持续迭代加速产业化进程，新 评：业绩符合市场预期，AIDC 业务 产品的成熟有望为国内 AIDC 客户提供从电力设备到电源设备的系统解 快速增长》 决方案，实现国内业务维持平稳发展。 2026-03-23 ◼ 费用率有所上升，存货增长较多。公司 26Q1 期间费用率为 17.9....
+- Order/backlog evidence: 直接证据：IDC领域的快速拓展。公司深耕北美、聚焦电力设备出海，26Q1海外营收6.18亿元同比+68%，新签订单22.52亿元同比+281%，占Q1新签订单约67%，其中我们预计高压变压器订单有望超预期。公司布局高压油变多年，24年签订北美首单、25年交付获得海外客户认可，我们预计26Q1高压油变订单有望超预期。截至26Q1末海外在手订单51.40亿元，同比+82%....
+- Capacity/certification evidence: 直接证据：全球 87 个国家 来源：公司官网、国金证券研究所 国内推动产能扩张&数字化升级，海外加速本地化布局。 公司武汉、上海、桂林研发制造基地分别于 2008、2009、2013 年建成投产，2019 年起全 面开展数字化转型，2020-2023 年先后完成海口、桂林、武汉数字化工厂升级，其中海口 /桂林/武汉干式变压器数字化工厂年产能分别提升至 1500/140....
+- ASP or margin evidence: 直接证据：019 2020 2021 2022 2023 2024 来源：Wind，国金证券研究所 来源：Wind，公司公告，国金证券研究所 伴随产品结构优化持续、公司盈利能力持续提升，公司毛利率处于行业领先水平。 变压器主要原材料为电磁线、硅钢、电气元器件等，原材料成本占比超过 80%。2021-2022 年受铜线（漆包线）、取向硅钢等主要原材料价格上涨影响，公司综...；直接证据：43 43 EBITDA 995 1,251 1,638 2,166 其他非流动负债 272 272 272 272 负债合计 7,170 8,504 10,261 12,117 毛利率(%) 25.85 26.28 27.66 28.81 归属母公司股东权益 5,230 6,444 7,531 9,011 归母净利率(%) 9.04 10.44 12.38....
+- Utilization/yield evidence: 直接证据：31 日，公司成套系列产品在数据中心 领域的在手订单金额（不含税）为 3.15 亿元，较上年同期末增长 43%。 公司成套系列产品产能趋于饱和，23、24 年公司成套系列产品的产能利用率分别为 85%、 89%，且前公司数据中心电源模块产品无独立生产线，占用其他成套系列产品的部分产能， 生产效率较低，因此 2025 年将进一步扩大成套系列规模——本项目建成达....
+- Evidence source: sources/broker-reports/2026-06-30/16-01-688676-report-aidc.txt; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: Official revenue split, named customer/platform qualification, order/backlog, capacity utilization, ASP or margin disclosure..
+- Next verification path: Verify official filings, IR records, customer qualification and order/MW/utilization evidence for 变压器..
+
+## 中兴通讯
+
+- Chain role: 网络与光通信; AI 交换机/路由器.
+- Product/process exposure: AI 交换机/路由器.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 37.18; final target 57.99744; upside 0.5599096288327057.
+- Extended 2026E package: revenue 1666.9 亿元；net profit 92.6 亿元；EPS 1.94；market cap 1786.6 亿元；broker target 60.0.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/000063-中兴通讯/AP202509011737603598-群益证券-运营商业务承压-AI服务器相关业务快速增长.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：市场表现 (%) 2025 年第二季度，公司实现销售毛利率 30.90%，同比下滑 中兴通讯 沪深300 100 8.08pcts，环比下滑 3.37pcts。公司运营商网络业务收入小 80 幅下滑，政企业务表现亮眼。此外，公司在巩固国内运营商 60 网络基本盘的同时，积极拓展智算数据中心项目。 40 20 ▌运营商业务稳步发展，政企业务板块表现亮眼 0 运....
+- Customer/platform evidence: 直接证据：下降 1.38pcts。在运营商传统网络方面，公司无线、有线 核心产品市场份额保持稳 ### customer_or_platform - ， 稳步提升份额。数据中心交换机方面，在互联网行业白盒交 换机持续规模商用，金融行业以第一名中标国有大行项目， 电力行业突破智算训练集群项目。数据中心配套方面，公司 聚焦高价值头部客户，为互联网公司提供定制化服务，自研....
+- Order/backlog evidence: 直接证据：芯片前后端全流程设计能力，自主研发并成功商用的芯片超过 130 种。目 收盘价（元） 45.80 前，公司已推出“珠峰”系列 CPU 和“定海”DPU 芯片，前者于 2024 年中标中国移动 PC 一年内最高/最低 48.88/25.36 服务器集采项目；后者卡位继 CPU 和 GPU 之后的第三大核心基础性算力芯片。公司在芯片 （元） 总市值（百万元） 2....
+- Capacity/certification evidence: 直接证据：设；通过“电可视”、“碳可视”等数 字化平台建设，公司实现了能耗与碳排放的有效监控。 在绿色供应链方面，2025年，公司五大制造基地单位产出能耗同比下降22.1%，新增 西安、长沙基地获得国家级绿色工厂认证。公司推行物流数字化、智能化，优选低碳运输， 有计划分步骤实施碳减排行动。公司积极赋能供应链协同降碳，推动152家重点供应商完 成碳盘查，辅导51家供应商....
+- ASP or margin evidence: 直接证据：革新，推动园区基础网络设施在 AI 与万兆 全光的驱动下迎来新一轮的演进革命。  光传输网络：全球首发 C+L 全频一体化光模块，联合运营商完成全球首个 C+L 一 体化 80x800G 现网试点，创造基于空芯光纤的单波 1T 光信号超 1 万公里传输的世界纪录； 联合国际运营商完成全球首个基于 12THz 谱宽的 1.6T 现网试验。 “最强 C+L 全...；直接证据：94%，环比增长 6.16%；实现扣非归母净利润 21.47 亿元，同比减少 7.22%，环比增长 9.74%。盈利能力方面， 市场表现 (%) 2025 年第二季度，公司实现销售毛利率 30.90%，同比下滑 中兴通讯 沪深300 100 8.08pcts，环比下滑 3.37pcts。公司运营商网络业务收入小 80 幅下滑，政企业务表现亮眼。此外，公司在巩....
+- Utilization/yield evidence: 直接证据：化、零组件结合简单化、产品设 计实用化、材料易回收、零组件再利用、延长产品使用寿命等原则开展设计活动。同时， 公司构建了完善的内外双循环体系，2025 年对内实现系统产品回退合规再利用率达成 78.2%，对外携手全球 105 家回收机构，报废物料金属再利用1,866吨、有机塑料再利用95 吨。 3.2.3 强化环境影响管理 公司全面强化环境影响管理，通过流程....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/000063-中兴通讯/AP202509011737603598-群益证券-运营商业务承压-AI服务器相关业务快速增长.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 中国电信
+
+- Chain role: 数据中心建设与运营; 运营商智算云.
+- Product/process exposure: 运营商智算云.
+- Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 5.27; final target 5.65915; upside 0.07384250474383314.
+- Extended 2026E package: revenue 5618.8 亿元；net profit 390.5 亿元；EPS 0.42；market cap 4900.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/601728-中国电信/02-AP202509031738356169-东莞证券-2025年半年报点评-上半年稳健增收-算力支持能力持续增强.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：电信运营Ⅲ 中国电信（601728.SH） 买入-A(维持) 基本盘保持稳健，智能收入大幅增长 2025 年 9 月 11 日 公司研究/公司快报 公司近一年市场表现 事件描述： 中国电信发布 2025 半年度报告，2025H1，公司实现营收 2694 亿元，同 比+1.3%。其中，服务收入为 2491 亿元，同比+1.2%；归母净利润 230.
+- Customer/platform evidence: 直接证据：子产业市场领军地位，量子密信实现六大主流系统全覆盖，量子密话、量子对讲持续丰富应用生态，全面适配主流终端，量子通信用户规模突破600万，服务政务、金融、能源等领域超3,000家行业客户，量子收入同比增长171.1%。我们认为，公司在新兴领域已取得了显著突破，星地融合、通感一体、量子服务的影响力不断提升，有望为公司创造新的增长活力。 3）资本开支持续下降，智算....
+- Order/backlog evidence: 直接证据：外。 69 中国电信股份有限公司 截至 2025 年 6 月 30 日止六个月期间财务报表附注 （除特别注明外，金额单位为人民币元） 三、 主要会计政策和会计估计（续） (24) 合同成本（续） (b) 履行合同的成本 本集团为履行合同发生的成本，不属于除收入准则外的其他企业会计准则范围且同时满 足下列条件的，确认为一项资产：(1)该成本与一份当前或预期取得....
+- Capacity/certification evidence: 直接证据：，同比-28%，其中移动网投资121亿元，产业数字化投资116亿元，投资继续向算力倾斜。我们认为，公司面向AI适度超前布局云网基础设施、IDC向AIDC升级的趋势不改，随着国产算力产能快速增长智算服务能力将持续增强，巩固“国云”地位。 展望：公司力争2025年收入、EBITDA、净利润良好增长，智能收入高速增长，保持云计算良好增长。公司继续保持高分红率，上半....
+- ASP or margin evidence: 直接证据：，加快连 总股本（亿股） ： 915.07 接提速升级，加速推进移动网络向 5G-A 升级，并不断加大直连卫星业务、 流通股本（亿股） ： 776.30 量子密话密信规模拓展，业务价值量有望维持稳定。 流通市值（亿元） ： 5,659.21 固网及智慧家庭服务收入达到人民币 641 亿元，同比+0.2%，宽带用户达 1.99 亿户，宽带综合 ARPU 达 4...；直接证据：近一年市场表现 事件描述： 中国电信发布 2025 半年度报告，2025H1，公司实现营收 2694 亿元，同 比+1.3%。其中，服务收入为 2491 亿元，同比+1.2%；归母净利润 230 亿元， 同比+5.5%；扣非后归母净利润 217 亿元，同比+0.2%；EBITDA 为 806 亿元， 同比+4.9%。 事件点评：  1）基础业务收入增长稳健....
+- Utilization/yield evidence: 直接证据：领域推出一揽子行业解决方案，120 余个数字平台持续赋能各类行业客户。 加快打造“5G+AI+云+应用”的 5G 定制网一体化产品体系，推出 5G 工控智能体等产品，助力客 户提升生产效率、降低安全风险、提高生产质量，广泛应用于矿山、制造、电力等领域。加快打 造“5 个 1”1创新标准 ICT 能力体系，提供满足中小企业客户办公及生产等通用场景的一体化解 决....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/601728-中国电信/02-AP202509031738356169-东莞证券-2025年半年报点评-上半年稳健增收-算力支持能力持续增强.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 中国移动
+
+- Chain role: 数据中心建设与运营; 运营商智算云.
+- Product/process exposure: 运营商智算云.
+- Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 86.49; final target 98.30234; upside 0.1365746329055384.
+- Extended 2026E package: revenue 11257.6 亿元；net profit 1562.3 亿元；EPS 7.24；market cap 18788.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/600941-中国移动/AP202504141656394300-山西证券-重点布局5-5G-推理算力-AI投资-新业务领域开辟新业态.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：月 14 日 公司研究/公司快报 公司近一年市场表现 事件描述： 中国移动发布 2024 年年度报告。2024 年，公司实现营收 10408 亿元， 同比+3.1%；其中，主营业务收入 8895 亿元，同比+3.0%。实现归母净利润 1384 亿元，同比+5.0%；EBITDA 为 3337 亿元，同比-2.3%。 事件点评： 1）C+H 端：AI 场景应用....
+- Customer/platform evidence: 直接证据：事业部总经理，联想移动通信科技有限公司首席技术官、技 术创新委员会主席，中国移动集团公司总经理助理。 张冬先生 本公司副总经理，于 2024 年 7 月获委任，分管本公司市场经营、客户服务、在线业务、 终端业务、移动互联网、智慧家庭、金融科技等业务。张先生同时担任中国移动集团公司副 总经理兼首席数据官，中移通信董事、副总经理。张先生为硕士研究生。张先生曾任海....
+- Order/backlog evidence: 直接证据：134 中国移动有限公司 合并财务报表附注 截至 2025 年 12 月 31 日止年度财务报表 (除特别注明外，金额单位为人民币百万元) 四 合并财务报表项目附注（续） (7) 合同资产 2025 年 2024 年 12 月 31 日 12 月 31 日 合同资产 26,763 26,249 减：减值准备 (1,079) (1,124) 25,684 25....
+- Capacity/certification evidence: 直接证据：体系，上半年 AI+DICT 签约项目达到 1,485 个，联合能源、水利、农业等行业央企共建行业大模型，赋能新型工业 化走深走实，助力各行各业数智化转型发展。面向千家万户，推动全量产品和服务嵌入 AI， “AI 化产品”客户合计近 2 亿户；发布 AI 智能助理灵犀智能体 2.0，月活跃客户突破 6,000 万户；联合行业龙头企业，发布 AI 智能终端、智....
+- ASP or margin evidence: 直接证据：RPU 为 46.8 元，同比下滑 3.5%。AI 相关算力、智能服务增 250327 250627 250927 251227 长，但算力基础设施等新型成本投入的增加可能带来短期毛利率的 成交金额 中国移动 沪深300 承压。中长期来看，我们仍看好 AI 与新兴业务贡献利润增量。 重点投资 AI 算力，建成国内领先的智算基础设施：截至 2025 年 末，公...；直接证据：RPU 为 46.8 元，同比下滑 3.5%。AI 相关算力、智能服务增 250327 250627 250927 251227 长，但算力基础设施等新型成本投入的增加可能带来短期毛利率的 成交金额 中国移动 沪深300 承压。中长期来看，我们仍看好 AI 与新兴业务贡献利润增量。 重点投资 AI 算力，建成国内领先的智算基础设施：截至 2025 年 末，公....
+- Utilization/yield evidence: 直接证据：5,000 4,000 入占比进一步提升。其中，移动云收入于 2024 年突破千亿，同比 111.00 3,000 增长 20.4%。得益于 DeepSeek 的发展，公司智算算力利用率已提 104.00 2,000 升至 68%，总体资源售卖率达 77%。其中约 60%通过超融合一体化 97.00 1,000 部署，约 30%通过裸金属方式部署，约 10%....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/600941-中国移动/AP202504141656394300-山西证券-重点布局5-5G-推理算力-AI投资-新业务领域开辟新业态.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 中国联通
+
+- Chain role: 数据中心建设与运营; 运营商智算云.
+- Product/process exposure: 运营商智算云.
+- Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 4.08; final target 4.5044; upside 0.10401960784313724.
+- Extended 2026E package: revenue 4018.1 亿元；net profit 235.3 亿元；EPS 0.34；market cap 2849.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/600050-中国联通/01-AP202603201820670142-国金证券-营收稳健增长-ai带动盈利质量优化.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：11,571 11,661 12,827 13,982 15,100 增长率 非现金支出 86,501 84,711 80,502 74,650 69,412 69,556 主营业务收入增长率 4.97% 4.56% 0.68% 4.14% 3.93% 3.37% 非经营收益 -2,616 -3,592 -3,458 -7,032 -5,755 -4,754....
+- Customer/platform evidence: 直接证据：通云，强化算智云网融合，实现毫秒级智能调度和一 5 体化智能运营，打造“AI 智选联通云”品牌形象。上半年，联通云收入 达到人民币 376 亿元。 数据中心适智化改造成效明显，更多互联网平台企业和银行等金融机构入驻联通数据中心,收 入达到人民币 144 亿元、同比增长 9.4%，AIDC 签约金额同比增长 60%，市场地位稳步提升。 二是智能服务发展提速。深....
+- Order/backlog evidence: 直接证据：34,896,516 6,092,926,902 其他应收款 4,361,183,066 4,312,937,530 存货 3,539,724,213 2,430,550,837 合同资产 757,349,995 650,168,085 一年内到期的非流动资产 2,880,574,522 2,854,516,412 其他流动资产 33,284,744,740....
+- Capacity/certification evidence: 直接证据：公司移动 和宽带用户净增超过 358 万户；物联网连接数超过 7.5 亿，净增 3,203 万，连接场景持续升级；5G 规模化应用加速推进，累计打造 超 5.3 万个 5G 商业化项目，落地 9800 余家 5G 工厂。公司用户规 模稳步增长，融合经营策略成效明显。 现金流短期承压，中长期多元发展值得关注：1Q26 公司应收账款 同比增长 19.7%至 77....
+- ASP or margin evidence: 直接证据：但战略性新兴业务占比高：公司 4Q25 净利润同环比均有下滑，低于市场此前预期，我们认为主要系： 传统电信业务承压，同时公司加大对主业及战略资源的投入带来营 业成本增长，4Q25 毛利率 13.4%，同环比下滑。但公司整体盈利质 量得到了优化：扣非净利润同比增长 14.7%，战略性新兴产业收入 占比已超过 86%，其中算力业务收入占比提升超过 15%，人工智...；直接证据：此前预期，我们认为主要系： 传统电信业务承压，同时公司加大对主业及战略资源的投入带来营 业成本增长，4Q25 毛利率 13.4%，同环比下滑。但公司整体盈利质 量得到了优化：扣非净利润同比增长 14.7%，战略性新兴产业收入 占比已超过 86%，其中算力业务收入占比提升超过 15%，人工智能 收入同比增长 140%，对冲了部分传统业务增长乏力的影响。 现金流....
+- Utilization/yield evidence: 直接证据：250920 251220 收入 281 亿元，同比增长 8.5%，标准机架规模超过 110 万架，建 成交金额 中国联通 沪深300 成 7 个百兆瓦级 AIDC 园区；同时机柜利用率超 72%，资源效率增 强。在基础设施层面，智算规模快速扩张，达到 45 EFLOPS。我们 看好伴随云和 IDC 等算力基础设施资源利用率的提升，给公司带 来更大的利润增量....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/600050-中国联通/01-AP202603201820670142-国金证券-营收稳健增长-ai带动盈利质量优化.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 中国西电
+
+- Chain role: 供配电与能源; 变压器.
+- Product/process exposure: 变压器.
+- Candidate valuation method: normalised PE plus order-cycle / working-capital check.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 14.5; final target 10.382749999999998; upside -0.28394827586206906.
+- Extended 2026E package: revenue 242.5 亿元；net profit 22.9 亿元；EPS 0.40；market cap 842.1 亿元；broker target 7.9.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/601179-中国西电/AP202503141644357609-国金证券-一次设备老牌巨头-主网景气再腾飞.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 5.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：.62% 7.39% 少 数 股东损益 101 135 165 209 310 426 增长率 非 现 金支出 408 1,208 1,182 1,042 879 905 主 营 业务收入增长率 26.61% 15.58% 5.84% 14.34% 16.02% 9.90% 非 经 营收益 -82 -259 -173 -339 -178 62 EBIT 增长....
+- Customer/platform evidence: 直接证据：网外市场：国内网外行业需求主要源自两方面：下游持续扩容的风光储等电源侧市场，及平稳增长的工业企业市场。公司坚持“大客户营销”战略，主要子公司西开电气、西电西变深挖电源、工业领域潜在客户，强化同“五大六小”等央企战略合作。 2）海外市场：Rystad Energy预计25年全球电网投资将超过4500亿美元，同比20年近翻倍；电力变压器、高压开关设备交货周期从1....
+- Order/backlog evidence: 直接证据：金证券以外的任何机构或个 ### order_or_backlog - 完成投资 3796 亿元，同比+14%。国网输变电设备前 四批招标 682 亿元，同比增长 23%，公司累计中标 56 亿元，同比 +15%，市占率 8.3%，维持行业前列。 在手订单充沛，特高压招标启动有望增厚订单。 人民币(元) 成交金额(百万元) 截至 2025 年三季度，公司合同....
+- Capacity/certification evidence: 直接证据：告期内，公司累计完成重大非股权投资 50,590 万元，其中重点固定资产投资 5 项，分别是西安智慧产业园建设项目，西电西容数字化工厂建设项 目，西开有限智能化高压开关总装单元制造基地建设项目，西电套管数字化工厂建设项目及西开铸造数字化工厂建设项目。 (3).以公允价值计量的金融资产 √适用 □不适用 单位：万元 币种：人民币 计入权益的 本期公允价值 本期....
+- ASP or margin evidence: 直接证据：要常规（柔性）换流 阀 8 套、换流变压器 56 台、750kv 组合电器 30 间隔、500kv 组合电器 32 间隔。 ④ 设备价值量：结合国网电子商务平台各类核心设备历史中标单价情况，我们预计核心 设备中标单价基本保持稳定。特高压交流方面，1000kv 组合电器/1000kv 变压器 /1000kv 电抗器单价分别为 0.7/0.4/0.2 亿元；特高...；直接证据：升行动稳步推进，推进常规产品节拍化连续流生产提高生产效率，25 年前三季度实现毛利率 22.1%，同比+1.7pct，净利率 6.9%，同比+0.4pct，提质增效成果持续显现。 盈利预测、估值与评级 公司作为一次设备龙头，在国网总部集招份额领先，海外市场产能、渠道布局领先，受益于国内主网加速扩容、海外电网投资提速，预计 25-27 年公司实现归母净利润 1....
+- Utilization/yield evidence: 直接证据：%，分 5.00 0 241022 250122 250422 250722 别同比-0.6/持平/+0.2pct。公司改革深化提升行动稳步推进，推 进常规产品节拍化连续流生产提高生产效率，25 年前三季度实现 成交金额 中国西电 沪深300 毛利率 22.1%，同比+1.7pct，净利率 6.9%，同比+0.4pct，提质增 效成果持续显现。 公司作为一次....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/601179-中国西电/AP202503141644357609-国金证券-一次设备老牌巨头-主网景气再腾飞.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 中恒电气
+
+- Chain role: 供配电与能源; UPS/HVDC.
+- Product/process exposure: UPS/HVDC.
+- Candidate valuation method: normalised PE plus order-cycle / working-capital check.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 51.84; final target 25.440579999999997; upside -0.5092480709876543.
+- Extended 2026E package: revenue 32.6 亿元；net profit 3.7 亿元；EPS 0.65；market cap 295.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002364-中恒电气/AP202505271679991867-西南证券-数据中心HVDC龙头-受益于AIDC需求增长.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 5.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：设 2：公司电力电源受充电桩业务带动，继续保持增长。我们假设公司电力电源未来 三年订单分别增长 15%、15%、15%，毛利率稳定。 假设 3：公司通信电源由于行业投资进入稳定期，收入保持稳定。我们假设公司通信电 源未来三年订单分别增长-5%、0%、5%，毛利率稳定。 基于以上假设，我们预测公司 2025-2027 年分业务收入成本如下表： 表 2：分业务收....
+- Customer/platform evidence: 直接证据：。2025 年 5 月，Meta 将全年资 本开支计划从 600-650 亿美元上调至 640-720 亿美元，主要是增加对数据中心及 AI 硬件设备的投资。国内方面，包括三大移动运营商和阿里、腾讯、字节在内的 头部互联网企业同样大力加强算力基础设施投入。 图19：北美主要云服务厂商资本开支（单位：亿美元） 图20：国内移动运营商及互联网企业资本开支（单位：....
+- Order/backlog evidence: 直接证据：需求快速增长，成为新的业绩增长点； 借助“一带一路”倡议，成功进入东南亚、中东、非洲等新兴市场。公司成功中标并交付国内外多个重大项 目，包括国网特高压工程、浙江电网多产品集采等国内订单，中标沙特电站项目直流电源系统、德国 3MW 新 能源制氢系统项目、埃及苏伊士 1.1GW 风电项目等海外项目（总包出口）。 4、充换电业务 23 杭州中恒电气股份有限公司 2....
+- Capacity/certification evidence: 直接证据：州万事利丝绸文化股份有限公司财务总监。现任杭州中恒电气股份有限公司副总经理兼财务总 监，兼任杭州永盛高纤股份有限公司独立董事。 资料来源：Wind，国信证券经济研究所整理 公司生产基地位于杭州富阳，已完成零碳智慧改造。公司富阳工厂已建成总建筑面积 8.6 万平方米，具有年产 80 万个电源模块、5 万台电源机柜的生产制造能力，机柜及 钣金、铜材等结构件的生产....
+- ASP or margin evidence: 直接证据：能力方面，公司 2024 年销售毛利率/净 中恒电气 沪深300 利率分别为 26.2%/5.8%，分别同比变化-0.1pp/3.0pp。公司 2025 年 Q1 销售 221% 毛利率/净利率分别为 24.6%/5.1%，分别同比变化 4.4pp/3.0pp。费用方面，公 174% 司 2024 - 能力方面，公司 2024 年销售毛利率/净 中恒电气 沪...；直接证据：营业收入及增速 图 3：公司归母净利润及增速 数据来源：公司公告，西南证券整理 数据来源：公司公告，西南证券整理 盈利能力提升，费用率控制良好。盈利能力方面，公司 2024 年销售毛利率/净利率分别 为 26.2%/5.8%，分别同比变化-0.1pp/3.0pp。公司 2025 年 Q1 销售毛利率/净利率分别为 24.6%/5.1%，分别同比变化 4.4p....
+- Utilization/yield evidence: 直接证据：。同时 国家对数据中心 PUE 要求持续提升，2024 年 7 月发布的《数据中心绿色低碳发展专项行动 计划》明确要求，到 2025 年底，新建及改扩建大型和超大型数据中心的平均 PUE 需降至 1.25 以下，国家枢 - 电耗的 2.4%，一些节点城市和区域占比超过 20%。 数据中心作为高能耗基础设施，电力成本在运营总成本中占据重要地位。而影响电力成 本....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/002364-中恒电气/AP202505271679991867-西南证券-数据中心HVDC龙头-受益于AIDC需求增长.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 中英科技
+
+- Chain role: PCB 与上游材料设备; 高速 CCL.
+- Product/process exposure: 高速 CCL.
+- Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
+- Target-price status: watchlist_only_insufficient_model.
+- Valuation disposition: watchlist_only_insufficient_positive_eps_or_denominator - 当前收入、股本和市值已补齐，但 2026E EPS 代理为负或不可用；PE/PEG 不适用，需等待盈利路径或改用明示 PS/PB/SOTP 证据。
+- Current target package: current price 108.0; final target not published; upside not applicable.
+- Extended 2026E package: revenue 3.0 亿元；net profit -0.0 亿元；EPS -0.06；market cap 80.8 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: 盈利或模型分母不足，观察名单; blocker positive 2026E EPS; source sources/source-exhausted-official-filings-20260701/300936-中英科技/annual-2025年年度报告.txt.
+- Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：专以上 65 高中及其他 110 合计 216 36 常州中英科技股份有限公司 2025 年年度报告全文 2、薪酬政策 根据公司发展战略，遵循激励性、公平性和竞争性的原则，结合营业收入、项目体量、员工人数等因素，经营管理 层将公司、部门、团队和个人绩效有机联系起来，执行岗位级别与薪资档次相结合的矩阵式薪酬体系，个人表现和公司 营收相结合的考核制度。保持业务目....
+- Customer/platform evidence: 直接证据：元。从 2023 年至 2029 年， 该市场的年复合增长率（CAGR）预计为 3.8%。 3、其他少量业务所在行业 （1）储能行业 公司子公司嘉森能源，从事储能行业的集成业务，为客户提供储能直流侧部分设备的集成服务。该业务目前处于起 步阶段，暂未形成持续利润贡献的能力。 15 常州中英科技股份有限公司 2025 年年度报告全文 三、核心竞争力分析 1、坚持....
+- Order/backlog evidence: 直接证据：直接或间接为资产负债率超过 70%的被担 0 保对象提供的债务担保余额（E） 担保总额超过净资产 50%部分的金额（F） 0 上述三项担保金额合计（D+E+F） 0 对未到期担保合同，报告期内发生担保责 无 51 常州中英科技股份有限公司 2025 年年度报告全文 任或有证据表明有可能承担连带清偿责任 的情况说明（如有） 违反规定程序对外提供担保的说明（如....
+- Capacity/certification evidence: 直接证据：全流程工艺技术， 求的 VCM 弹片，关键性能指标 进行中 规模化生产能力的示范 全流程工艺开发 包括材料改性、精密加 达到或超越国际同类竞品水 线，形成增收增利。 工、结构设计与验证。 平。 掌握具有自主知识产权 的高精度 VCM 弹片生产 建立一条完整的手机 VCM 弹片 开发一种创新的“卷进 工艺，打破国外技术壁 “卷进片出”工艺生产线。实 手机 VC....
+- ASP or margin evidence: 直接证据：期收益。同时，公司计划整合行业内的优质资源，加强与上下游客户的策略性合作， 并不断拓展新的市场领域，以巩固公司在行业中的领先地位。 4、财务风险 （1）毛利率下降的风险 报告期内，产品结构变化，主营业务成本增加，致使产品毛利率降低。 27 常州中英科技股份有限公司 2025 年年度报告全文 为应对这一风险，公司一方面致力于提升产品研发的技术水平，增强产品质量...；直接证据：,063.26 5.55% -87.07% （2） 占公司营业收入或营业利润 10%以上的行业、产品、地区、销售模式的情况 适用 □不适用 单位：元 营业收入比上 营业成本比上 毛利率比上年 营业收入 营业成本 毛利率 年同期增减 年同期增减 同期增减 分行业 计算机、通信 和其他电子设 224,705,253.65 185,190,389.55 17.5....
+- Utilization/yield evidence: 直接证据：在 热管理领域的技术积累。引线框架产品为公司在半导体封装材料领域打下了一定的基础。 二、报告期内公司所处行业情况 中英科技聚焦于通信领域，致力于为下游客户提供具备高性能、多样化、高良率的产品，目前产品以高频通信材料 为核心。其下游应用领域集中在通信基站与手机等散热领域。孙公司赛肯徐州主要产品为引线框架，应用于半导体封测 14 常州中英科技股份有限公司 202....
+- Evidence source: sources/source-exhausted-official-filings-20260701/300936-中英科技/annual-2025年年度报告.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵已完成，但盈利或模型分母不足；该标的保留观察名单，不发布目标价/公允价值。.
+- Upgrade trigger: positive 2026E EPS；wait for positive profit denominator or switch to explicit PS/PB/SOTP with path-to-profit evidence.
+- Next verification path: wait for positive profit denominator or switch to explicit PS/PB/SOTP with path-to-profit evidence.
+
+## 伊戈尔
+
+- Chain role: 供配电与能源 / 服务器整机与零部件; 变压器 / 服务器电源 PSU.
+- Product/process exposure: 变压器 / 服务器电源 PSU.
+- Candidate valuation method: normalised PE plus order-cycle / working-capital check.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 31.27; final target 28.053649999999998; upside -0.10285737128237937.
+- Extended 2026E package: revenue 73.1 亿元；net profit 4.9 亿元；EPS 1.15；market cap 133.8 亿元；broker target 45.8.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002922-伊戈尔/AP202512141800437415-东吴证券-新能源变压器龙头加速出海-布局AIDC打造第二增长曲线.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 9.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：品：公司其他产品主要为车载电感和车载电源等，当前基数较小，近年来凭 借原有技术积累带来的较强产品力拓展下游整车客户，增速较快，毛利率较稳定。我们 预计 2025-2027 年该业务收入分别为 4.7/7.0/9.1 亿元， 同比增长+60.0%/+50.0%/+30.0%。 图38：伊戈尔公司盈利预测表 数据来源：公司公告，东吴证券研究所 4.2. 投资建议....
+- Customer/platform evidence: 直接证据：、中亚和拉美等地区，美国 电力设备供不应求给公司进入北美市场带来机遇，25 年首次进入美国配电市场，我们预 计有望实现 1-2 亿元营收，公司的达拉斯工厂投产后，将成为公司拓展美国客户的重要 优势，随着北美客户对公司认知度的不断提高，我们预计公司北美配电变压器业务将实 现高速增长。 图25：公司的部分客户 数据来源：公司官网，东吴证券研究所 海外收入占比持续....
+- Order/backlog evidence: 直接证据：-10-30 器、SST 及高频变压器产品。在国内移相变压器市占率接近 70%，主供台 《伊戈尔(002922)：2024 年半年报点 达、中恒等；海外市场进展显著，与台达达成协议中标日本东京最大数据中 心项目电力设备总包合同，合同价值约 5 亿元，25 年成功与美国某数据中 评：升压变加速出海，盈利显著提升 》 心变压器生产商达成合作，收获数千万元代工订单....
+- Capacity/certification evidence: 直接证据：售中心，并在全球已有七大生产基地，积极布局海外产能。1）新能源变压器方面，我们 预计公司墨西哥基地 26Q2 投产，年产值 10 亿元，重点面向北美客户，泰国一期基地已 经投产，年产能 0.24 万台，年产值约 6 亿元，二期项目我们预计 26 年投产，主要为国 内大客户海外工厂配套及供货北美市场，我们预计 26 年公司新能源变压器海外基地年 产值将达 26....
+- ASP or margin evidence: 直接证据：。 盈利能力方面，25Q2 毛利率为 19%，同比下降 5.78pcts，环比提升 3.28pcts。 净利率为 4.80%，同比下降 4.63pcts，环比提升 0.79pct。毛利率下降主要是与 去年同期相比部分产品销售价格下降，以及大宗原材料价格上涨。但第二季度毛 利率已经出现环比改善。 分析师 邓永康 ➢ 能源产品持续增长，孵化业务增势迅猛。 执业证...；直接证据：117%， 毛利率 20.2%，同环比+2.2/+1.2pct，销售净利率 5.8%，同环比+2.7/+1.0pct，盈利能力显 著改善。 图6：公司营收净利情况 图7：公司分产品毛利率情况 营业总收入（亿元） 归母净利润（亿元） 能源产品毛利率（%） 景观照明灯具毛利率（%） ## Notice Content 伊戈尔(002922) 投资要点 国内新能源....
+- Utilization/yield evidence: 直接证据：营收/归母净利 38.1/1.8 亿 元，同比+17%/-15%，营收稳定增长，利润同比有所下滑，主要系 24Q3 以来大客户压 价，同时 25Q1 安徽生产基地、泰国一期工厂产能爬坡，生产效率相对较低，人工成本 和折旧费增幅较大，导致公司盈利能力短期承压，上半年净利润有所下滑；公司 25Q3 通过海外储能和数据中心放量提升盈利，单季度实现归母净利 0.74....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/002922-伊戈尔/AP202512141800437415-东吴证券-新能源变压器龙头加速出海-布局AIDC打造第二增长曲线.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 佳力图
+
+- Chain role: 液冷与温控; 冷水机组/精密空调 / 液冷机柜.
+- Product/process exposure: 冷水机组/精密空调 / 液冷机柜.
+- Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
+- Target-price status: watchlist_only_insufficient_model.
+- Valuation disposition: watchlist_only_insufficient_positive_eps_or_denominator - 当前收入、股本和市值已补齐，但 2026E EPS 代理为负或不可用；PE/PEG 不适用，需等待盈利路径或改用明示 PS/PB/SOTP 证据。
+- Current target package: current price 7.81; final target not published; upside not applicable.
+- Extended 2026E package: revenue 7.1 亿元；net profit -0.9 亿元；EPS -0.17；market cap 43.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: 盈利或模型分母不足，观察名单; blocker positive 2026E EPS; source sources/source-exhausted-official-filings-20260701/603912-佳力图/annual-603912-佳力图2025年年度报告.txt.
+- Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 14.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：生的收入。 4. 与上市公司现有正常经营业务无关的关联交易产 生的收入。 5. 同一控制下企业合并的子公司期初至合并日的收 入。 6. 未形成或难以形成稳定业务模式的业务所产生的 收入。 与主营业务无关的业务收入小计 1,295.41 3,169.17 二、不具备商业实质的收入 9 / 237 南京佳力图机房环境技术股份有限公司2025 年年度报告 1. 未....
+- Customer/platform evidence: 直接证据：制造部根据订单交货期等要求制定生产计划，物资部根据生产计划单制定并实施原材料采购 计划。生产部门在生产过程中实施全面的质量管理，确保高效、高质量完成生产计划。 3．销售模式 公司客户主要为中国移动、中国电信等通信运营商以及大型金融企业和互联网公司，这些客 户一般都是采取公开招标的形式进行采购，因此公司主要是以参与公开招投标或直销的形式开展 12 / 237....
+- Order/backlog evidence: 直接证据：不定期的实地走访，对于综合评定 不合格的，取消供应商资格。 2、生产模式 9 / 180 南京佳力图机房环境技术股份有限公司2025 年半年度报告 公司生产模式为以销定产，根据客户订单安排生产。公司结合企业信用情况、合作时间长短， 确定定金比例。对于实力雄厚、信用较好、合作较多的客户，如华为等约定不收取定金；对于普 通客户，一般收取合同总额 10%-30%的....
+- Capacity/certification evidence: 直接证据：的实验室、检测 2.湖北 722 研究所三坐标 室 测量室采购项目 14 / 180 南京佳力图机房环境技术股份有限公司2025 年半年度报告 1.京东集团华北（廊坊） 云数据中心基地项目，采 用佳力图 99 台 IDC 数据中心机房；通讯 MECD1801E,84 台 机房；恒温恒湿实验室； MECU1201E,18 台 ME 直流变频 MECU0601E....
+- ASP or margin evidence: 直接证据：1.62 资产收益率（%） 公司主要会计数据和财务指标的说明 √适用 □不适用 报告期内，归属于上市公司股东的净利润较上年同期下降的原因主要系： 1、市场竞争激烈，报告期内产品销售单价下降，导致毛利率下降； 2、公司销售合同订单增长，销售、研发及服务人员数量增加，导致销售费用及研发费用中薪 酬增加； 3、销售合同订单增长，相关配套服务费及检测费呈现增长，导致...；直接证据：润-6,923.11 万元，较上年同期下降 513.70%。截至 2025 年 12 月 31 日， 公司在手订单金额为 94,730.92 万元。 报告期内，归属于上市公司股东的净利润较上年同期下降，主要原因如下： 一是产品毛利率有所下滑。受上游核心原材料及机电部件采购成本同比上升影响，叠加行业市 场竞争加剧，产品盈利空间受到一定挤压。公司已通过工艺优化、....
+- Utilization/yield evidence: 直接证据：。 本项目主要技术指标或经济指标：基于模块化、标准化、快速部署 24 / 237 南京佳力图机房环境技术股份有限公司2025 年年度报告 的理念，场景适应性高，安全高效运行，全年 PUE 降低，达到节能 的效果。 （1）MS-20 控制器需满足包括基本控制功能、集成加热加湿功能、 集成电子膨胀阀功能、集成风机阵列功能等。 （2）接口通用化功能，二代控制器输入....
+- Evidence source: sources/source-exhausted-official-filings-20260701/603912-佳力图/annual-603912-佳力图2025年年度报告.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵已完成，但盈利或模型分母不足；该标的保留观察名单，不发布目标价/公允价值。.
+- Upgrade trigger: positive 2026E EPS；wait for positive profit denominator or switch to explicit PS/PB/SOTP with path-to-profit evidence.
+- Next verification path: wait for positive profit denominator or switch to explicit PS/PB/SOTP with path-to-profit evidence.
+
+## 依米康
+
+- Chain role: 液冷与温控; 冷水机组/精密空调.
+- Product/process exposure: 冷水机组/精密空调.
+- Candidate valuation method: normalised PE/SOTP with data-center order validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 15.21; final target 5.8389500000000005; upside -0.616111111111111.
+- Extended 2026E package: revenue 14.5 亿元；net profit 0.6 亿元；EPS 0.13；market cap 68.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/300249-依米康/AP202606091823393919-华鑫证券-公司事件点评报告-数据中心温控解决方案服务商-定增加码液冷促进产品升级.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：同时加强订单质 10 量把关，导致收入利润承压，同时正式剥离非核心环保业 0 务，影响归母净利润-9363.45 万元；2024 年企业集中资源深 -10 -20 耕信息数据领域，营收开始企稳回升，同时净利润减亏；直 至 2025 年利润扭亏，达到 3059.53 万元。2026 年 Q1 实现收 入 ## Notice Content 依米康(300249....
+- Customer/platform evidence: 直接证据：，并深度供货字节、阿里等头部云厂商，广泛应用于万国数据、世纪互联、 秦淮数据、光环新网、数据港等数据中心项目。与此同时，公司加速海外 - 信 运营商集采体系，并深度供货字节、阿里等头部云厂商，广泛应用于万国数据、世纪互联、 秦淮数据、光环新网、数据港等数据中心项目。与此同时，公司加速海外布局， 2025 年来 自海外客户的订单 2.59 亿元，同比增长 18....
+- Order/backlog evidence: 直接证据：新加坡、泰国、越南等，并建成新山、吉隆坡、泰国、 香港四大属地服务中心，搭建“区域总部+本地服务团队+海 外备件中心”全链路海外运维交付体系。2025 年，海外市场 大幅增长，海外订单合计约 2.59 亿元（含国内客户出口海外 订单），同比增长 182.62%。2026 年公司将持续深化全球化 布局，持续深耕东南亚核心市场（已成功中标马来西亚预制 化暖通方舱....
+- Capacity/certification evidence: 直接证据：大、新增 厂房租赁。上述指标共同反映，公司当前并非单纯账面收入增长，而是伴随备货、产能及交 付能力的同步扩张。但与此同时，应收账款快速增长和现金流承压也意味着公司增长质量仍 需回款验证，后续应重点关注应收账款周转、经营现金流改善及坏账计提压力变化。 图 13：2016-2026Q1 公司应收账款状况（单位：百万元） 图 14：2016-2026Q1 公司货币....
+- ASP or margin evidence: 直接证据：账计提压力变化。 图 13：2016-2026Q1 公司应收账款状况（单位：百万元） 图 14：2016-2026 ### asp_or_price_proxy - ，可能导致公司产品结构升级和盈利弹性 释放节奏不及预期。 3）毛利率承压及成本波动风险：公司当前仍处于收入放量与盈利质量验证阶段，毛利 率水平受产品结构、项目交付结构、原材料成本及价格竞争等因素...；直接证据：otePic] 相 对指数表现 盈利改善。3）盈利修复已现，但经营质量仍需验证。2026Q1 实现营业收入 4.17 依米康 沪 深 300 48% 亿元，同比+31.10%；归母净利润 938.46 万元，同比+33.32%。当前毛利率和 净利率仍偏低，经营性现金流承压，应收账款增长较快，需持续关注回款及现 37% 金流改善。 26% 15%  精密温控....
+- Utilization/yield evidence: 直接证据：025 年修复至 17.3%，反映公司业务聚焦后盈利能力已有边际改善。 展望 2026–2028 年，随着精密温控设备收入规模扩大、液冷及风液同源等高附加值产品占 比提升，以及产能利用率和供应链管理效率改善，公司信息领域产品毛利率有望逐步修复。 我们预计 2026–2028 年该业务毛利率分别为 18.0%、19.0%和 20.0%，对应营业成本分别 为 1....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/300249-依米康/AP202606091823393919-华鑫证券-公司事件点评报告-数据中心温控解决方案服务商-定增加码液冷促进产品升级.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 兆易创新
+
+- Chain role: 上游算力芯片与存储; HBM/DRAM.
+- Product/process exposure: HBM/DRAM.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 772.01; final target 370.75251999999995; upside -0.5197568425279466.
+- Extended 2026E package: revenue 85.1 亿元；net profit 31.5 亿元；EPS 4.45；market cap 5464.3 亿元；broker target 120.0.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/603986-兆易创新/AP202501141641912457-高盛-CEO电话会-2025年展望及边缘AI机会要点-买入.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：.0 17.5 19.0 19.0 经营活动现金流 1187 2032 1370 1524 2518 RO ## Notice Content 兆易创新(603986) 投资要点 AI算力建设&存储周期稳步上升，共同带动公司业绩稳步增长。2025年，公司营业收入实现稳健增长，主要得益于技术变革、行业格局优化及公司战略有效落地形成的多重协同效应。技术层面，AI....
+- Customer/platform evidence: 直接证据：31.16 33.56 105.73 研 LPDDR4X 小容量产品的量产，并着手规划 LPDDR5X 小容量产品的研发。（2） 绝对收益 32.64 34.45 128.42 客户关系方面，在本轮供应紧张周期中，公司不单纯追求短期毛利率的提升，也积 分析师 熊军 极与优质客户构建长久稳定的战略合作关系，包括：TV 客户、工业类（如电力） SAC 执业证书编....
+- Order/backlog evidence: 直接证据：评价存货跌价准备计提是否存在管理层偏向的 民币299,006,329.54元。 迹象；  在抽样的基础上，将资产负债表日存货的估计售价与 于资产负债表日，兆易创新公司的存货 在手订单价格及/或资产负债表日前后的销售价格比 按照成本与可变现净值孰低计量。可变 较，评价其合理性； 现净值以存货的估计售价减去至完工时  在抽样的基础上，将估计的存货至完工时将要....
+- Capacity/certification evidence: 直接证据：制化存储打开成长空间。为应对高性能计算对HBM、DDR5和LPDDR5产品 的爆发性需求，三星、SK海力士、美光等海外原厂逐步退出DDR3市场，同时大幅削减DDR4等利基型产 品的产能分配，海外大厂的退出为供给端带来缺口，国产厂商迎来历史性机遇。公司利基型DRAM产品 线基本铺齐，DDR4 8Gb较快抢占份额，自研LPDDR4系列预计26年实现量产。伴随存储....
+- ASP or margin evidence: 直接证据：是兆易创新的淡季。兆易创新指出，由于部分客户因担心潜在的关税风险而提 前备货，2024年四季度整体出货量略高于正常水平。尽管如此，季节性因素依然导致四 季度业绩环比走弱。到年底时，价格已基本触底，进一步下行空间有限，因为当前价格水 平已接近或略低于利基型DRAM的盈亏平衡点。继三季度利润率因短期产品结构调整而表 现强劲之后，毛利率可能正在恢复正常水平。 投资...；直接证据：8.00%，同比增加15.38pct，25年三季度单季度毛利率达到40.72%，环比增长3.7pct，主要 得益于存储行业迈入周期向上区间，供需格局好转，公司存储产品量价齐升，带动毛利率整体增 长。公司25年前三季度净利率16.17% ## Notice Content 兆易创新(603986) 全球领先Fabless芯片供应商，“感存算控连”多元布局。公司....
+- Utilization/yield evidence: 直接证据：WS耳机、家用 电器等）、网络通讯（包括无线路由器、基站及光模块等）、PC及服务器以及物联网等，实现了 产品应用范围的广泛覆盖。 （2）多元产品布局形成不同业务、不同应用领域的交替爬坡 公司业务分为成熟业务、成长业务和孵化业务三大矩阵： 成熟业务方面，公司NOR Flash业务全球排名第二；成长业务方面，公司MCU出货量创历史 新高，并将延续较快增长；利基型....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/603986-兆易创新/AP202501141641912457-高盛-CEO电话会-2025年展望及边缘AI机会要点-买入.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 光迅科技
+
+- Chain role: 网络与光通信; 800G/1.6T 光模块 / AWG / FAU / LPO/LRO / OCS/光交换 / 光引擎/硅光 / 光芯片/EML/VCSEL/CW laser.
+- Product/process exposure: 800G/1.6T 光模块 / AWG / FAU / LPO/LRO / OCS/光交换 / 光引擎/硅光 / 光芯片/EML/VCSEL/CW laser.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 242.43; final target 122.20944000000001; upside -0.4958980324217299.
+- Extended 2026E package: revenue 150.1 亿元；net profit 15.4 亿元；EPS 1.90；market cap 1964.4 亿元；broker target 78.3.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002281-光迅科技/AP202512291810626232-国信证券-自研光芯片垂直布局-受益国内AI算力发展.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 21.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：同比增长 24，39%，营收占比提 升 8.87pct 至 24.96%，公司顺利完成了海外制造基地及武汉东湖综合保税区高端 光电子器件产业基地的产能建设。 图12：光迅科技分业务收入（百万元，%） 图13：光迅科技分业务毛利率（%） 资料来源：公司公告，Wind，国信证券经济研究所整理 资料来源：公司公告，Wind，国信证券经济研究所整理 公司净利率水平稳....
+- Customer/platform evidence: 直接证据：元，预计 2026 财年 Q1 资本支出超 300 亿。 AWS 预计 2025 年全年资本开支 1000 亿美元。国内五大 CSP 厂商资本开支亦持续 攀升。2025 年 Q1 阿里资本开支增长 126.7%，腾讯同比增长 91%，百度预计 2025 年不断增加资本支出，字节、华为也有大幅投入，且多用于 AI 基础设施建设。 图20：北美 CSP 云厂资本....
+- Order/backlog evidence: 直接证据：_or_backlog - 市场走势 Capex 超过 3600 亿元。国内智算中心正加速建设，国产算力芯片日渐成熟， 推动国产算力配套光模块需求爆发。公司 400G 光模块已批量交付，800G 产 品获得订单，产品结构升级带动毛利提升，有望受益国内算力需求，并积极 突破海外市场。（2）“东数西算”到“毫秒用算”网络建设推动传输网络 需求增长。随着东数西算建....
+- Capacity/certification evidence: 直接证据：（4）2025 年，公司提出定增预案（拟募资 35 亿元），募集资金净额将用于算 力中心光连接及高速光传输产品生产建设项目、高速光互联及新兴光电子技术研 发项目。其中生产建设项目投产后，将形成武汉基地高速光模块年产能 499.20 万 只（含 1.6T 光模块）的规模；研发项目将聚焦 CPO、硅光等前沿光电子技术的 研发攻关。 表6：光迅科技最近几次融资明细....
+- ASP or margin evidence: 直接证据：前公司布局多项光互连技术（硅光/ZR 相干光模块/LPO/OCS 等）。  新易盛 2025H1 公司营收 104.37 亿，归母净利润 39.42 亿。毛利率小幅波动 或与产品价格及汇率有关。目前公司已有 200G 单波 1.6T/800G 产品、以及硅 光和薄膜铌酸锂的 1.6T/800G 产品、同时还有长距离传输(120km)DCI 光模块。  华...；直接证据：在美国洛杉矶举办的 OFC 全球光通信大会上，公司现场展示 包含 3.2T NPO、320×320 OCS 全光交换、800G ZR - 计 657 657 657 657 归母净利润增长率 6.8% 64.2% 41.5% 30.1% 负债合计 5,629 6,431 7,110 7,712 盈利能力 所有者权益 毛利率 22.5% 23.0% 23.5%....
+- Utilization/yield evidence: 直接证据：的高效管理。 （3）ELSFP：光迅科技 ELSFP 将高功率光源外置于交换机面板，通过“光电同口” 设计，实现光源与光引擎的物理分离，大幅提升了系统散热效率，助力智算中心 实现 PUE 的显著优化；单通道光功率可达 20dBm 以上，满足 3.2T CPO 光引擎的严 苛需求，同时兼具可插拔特性，使其成为 CPO 系统中可独立更换的“热插拔单 元”，无需整....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/002281-光迅科技/AP202512291810626232-国信证券-自研光芯片垂直布局-受益国内AI算力发展.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 冰山冷热
+
+- Chain role: 液冷与温控; 冷水机组/精密空调.
+- Product/process exposure: 冷水机组/精密空调.
+- Candidate valuation method: normalised PE/SOTP with data-center order validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 5.38; final target 5.380599999999999; upside 0.00011152416356874362.
+- Extended 2026E package: revenue 55.2 亿元；net profit 2.1 亿元；EPS 0.25；market cap 46.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/000530-冰山冷热/01-AP202505141672798964-华安证券-冷热核心事业稳步发展-并购与新事业未来可期.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：案。 ⚫ 并购事业稳健发展，持续拓展新事业 60% 50% 40% 报告期内，公司并购的松洋子公司均稳健发展。其中，松洋压缩机积极拓展 30% 20% 10% 欧洲及南美市场，出口收入快速增长；松洋制冷聚焦工业节能，成立海外事 0% -10% -20% -30% 业部，快速打通海外渠道，强力推进溴化锂吸收式制冷机组出口；松洋冷机 冰山冷热 沪深300 聚焦自....
+- Customer/platform evidence: 直接证据：+0.26%） ； 归母净利润 0.30 亿元（+2.90%） ；扣非后归母净利润 0.31 亿元（+25.59%） 。 流通股本（百万股） 600.04 ⚫ 工业制冷积极开拓高端客户，商用冷链业务领先 流通股比例（%） 71.16 工业制冷方面，工业制冷是体现公司冷热核心技术的重要领域，公司工业制 总市值（亿元） 46.46 冷技术接近国际主要竞争对手，并....
+- Order/backlog evidence: 直接证据：开拓，专注双碳及储能领域。最新研发氟泵-压缩机复合一体化储能机组，储 能电池高效热管理换热机组订单持续增长。二氧化碳跨临界制冷系统广泛商用，第六代跨临界全引射制冷机组多个项目 顺利交付。 冰山冷热科技股份有限公司董事会 2025 年 8 月 14 日 4.
+- Capacity/certification evidence: 直接证据：于上市公司股东的扣除非经常性损益的净利润 4,401 万元，同比增长 28.44%。 报告期内，公司接续奋斗、稳健发展。新厂区屋顶二期光伏项目正式并网发电，获得中国船级社五星级零碳工厂（I 型） 认证证书。降膜式开启螺杆冷水机组开始批量推向市场。二氧化碳跨临界冷热集成耦合机组、OCCS 液化机组入选 2025 中国制冷展“创新产品”。《特种深冷风洞纯化环境系....
+- ASP or margin evidence: 直接证据：公司价格与沪深 300 走势比较 间地头最初一公里到居民社区最后一百米全程绿色智能冷链，具备领先竞争 能力。围绕食品冷冻冷藏，公司在吸收日本、欧洲、美国相关经验的基础上， ### asp_or_price_proxy - 33.06 积极服务高端客户，在石油炼化一体化、精细化工、新材料等领域签订多个 高标项目，市场竞争力较强。商用冷冻冷藏方面，公司在我国率先...；直接证据：Notice Content 冰山冷热(000530) 主要观点： 公司发布2024年年报和2025年一季报 2024年公司共实现营业收入45.31亿元，同比减少5.91%；归母净利润1.10亿元，同比增长123.46%；扣除非经常性损益后的净利润为0.34亿元，同比增长107.90%；经营活动现金流净额2.37亿元；加权平均净资产收益率3.57%，较202....
+- Utilization/yield evidence: 直接证据：司冷热核心技术的重要领域。经过多年的发展，公司在工业制冷领域已经接近国际主要竞争对手 的技术水平，并在部分领域实现了赶超。公司在传统制冷的基础上，通过热的利用，实现冷热平衡，使能源利用率大幅 提高。 报告期内，公司积极服务高端客户，中标中海油壳牌项目、中国石油吉林石化项目、中国石化茂名石化项目等多个 高标项目，冰山品牌行业影响力持续提升。 二、商用冷冻冷藏事....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/000530-冰山冷热/01-AP202505141672798964-华安证券-冷热核心事业稳步发展-并购与新事业未来可期.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 剑桥科技
+
+- Chain role: 网络与光通信; 800G/1.6T 光模块 / LPO/LRO.
+- Product/process exposure: 800G/1.6T 光模块 / LPO/LRO.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 242.7; final target 131.8989; upside -0.4565352286773795.
+- Extended 2026E package: revenue 79.0 亿元；net profit 9.0 亿元；EPS 2.52；market cap 865.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/603083-剑桥科技/AP202508221732325413-华鑫证券-公司事件点评报告-高速光模块放量贡献强劲利润-多地量产支撑AI旺盛需求.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：风险提示 宏观经济的风险，产品研发不及预期的风险，行业竞争加剧 的风险，下游需求不及预期的风险，扩产不及预期的风险。 预测指标 2024A 2025E 2026E 2027E 主营收入（百万元） 3,652 5,190 7,901 11,437 增长率（%） 18.3% 42.1% 52.2% 44.8% 归母净利润（百万元） 167 271 942 1,5....
+- Customer/platform evidence: 直接证据：营商、通信设备制造商及数据中心运营商深度绑定，构建覆盖国内外头部企业的 稳定客户网络，报告期内通过 800G 光模块批量交付、25G PON 产品商用落地等成果，进一步深化与核 心客户的合作黏性，全球市场覆盖范围从北美、欧洲、亚太核心区域向新兴市场延伸，持续拓展全球市 场。 ⑵创新研发优势 14 / 218 上海剑桥科技股份有限公司2025 年年度报告 秉持....
+- Order/backlog evidence: 直接证据：。2026 年，公司预计 800G 光模块仍将是出货主力， 1.6T 光模块将于一季度 ### order_or_backlog - 61-138.11 中心建设提速带来的旺盛市场需求，通过嘉善新生产基地投 日均成交额（百万元） 2199.83 产、马来西亚生产基地产能爬坡及国内外基地规划扩产的持 续性产能布局，订单规模与发货数量同比均大幅增长。随着 市场表....
+- Capacity/certification evidence: 直接证据：款激光器、光纤阵 列等关键物料并完成工艺和可靠性验证，顺利完成多款 1.6T 光模块工艺开发，产品进入可量产状态， 同时推进 NPO/CPO 模组和 ELSFP 模块关键工艺开发。产能搬迁方面，公司顺利完成光模块产线从上海工 23 / 218 上海剑桥科技股份有限公司2025 年年度报告 厂到嘉善新工厂的整体搬迁，7 月份即通过北美关键客户认证，搬迁期间实现....
+- ASP or margin evidence: 直接证据：光模 日均成交额（百万元） 1127.57 块业务表现尤为亮眼，一方面，市场需求的旺盛带动订单大 幅增加，公司凭借高质量及时发货支撑了发货金额的同比大 市场表现 幅增长；另一方面，产品结构的优化推动销售毛利率显著提 (%) 剑桥科技 沪深300 升。 200 150 ▌ 全面聚焦 400G/800G/1.6T，前瞻研发占据下一代 100 带宽制高点 50 公...；直接证据：美元汇率同步下跌影响，汇兑净损益由 200 150 盈转亏，预计 2025 年度汇兑损失约为 8,161 万元，对 Q4 业 100 绩增 - 299 299 299 299 归母净利润增长率 75.4% 62.9% 246.9% 63.6% 负债合计 2,728 2,886 3,244 3,643 盈利能力 所有者权益 毛利率 21.0% 23.2% 26....
+- Utilization/yield evidence: 直接证据：能和全球数据 52 周价格范围（元） 30.61-138.11 中心建设提速带来的旺盛市场需求，通过嘉善新生产基地投 日均成交额（百万元） 2199.83 产、马来西亚生产基地产能爬坡及国内外基地规划扩产的持 续性产能布局，订单规模与发货数量同比均大幅增长。随着 市场表现 高速率、高毛利光模块占比显著提升，整体销售毛利率也进 (%) 剑桥科技 沪深300 一....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/603083-剑桥科技/AP202508221732325413-华鑫证券-公司事件点评报告-高速光模块放量贡献强劲利润-多地量产支撑AI旺盛需求.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 北京君正
+
+- Chain role: 上游算力芯片与存储; HBM/DRAM.
+- Product/process exposure: HBM/DRAM.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 259.05; final target 113.3794; upside -0.5623261918548543.
+- Extended 2026E package: revenue 58.9 亿元；net profit 6.6 亿元；EPS 1.36；market cap 1254.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/300223-北京君正/01-AP202512251807948565-中邮证券-计算-存储-感知-执行-多元化全面布局ai.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：pe1] 北京君正（300223） ⚫ 重要财务指标 单位:百万元 主要财务指标 2024A 2025E 2026E 2027E 营业收入 4213 4729 5550 6647 收入同比（%） -7.0% 12.3% 17.3% 19.8% 归属母公司净利润 366 362 697 1044 净利润同比（%） -31.8% -1.3% 92.8% 49.8....
+- Customer/platform evidence: 直接证据：也可能为这些公司提供或 者计划提供投资银行、财务顾问或者其他金融产品等相关服务。 《证券期货投资者适当性管理办法》于 2017 年 7 月 1 日起正式实施，本报告仅供中邮证券签约客户使用，若您非 中邮证券签约客户，为控制投资风险，请取消接收、订阅或使用本报告中的任何信息。本公司不会因接收人收到、 阅读或关注本报告中的内容而视其为签约客户。 本报告版权归中邮....
+- Order/backlog evidence: 直接证据：在存款、贷款、授信或其他金融业务。 7、其他重大关联交易 □适用 不适用 公司报告期无其他重大关联交易。 77 北京君正集成电路股份有限公司 2025 年年度报告全文 十五、重大合同及其履行情况 1、托管、承包、租赁事项情况 （1） 托管情况 □适用 不适用 公司报告期不存在托管情况。 （2） 承包情况 □适用 不适用 公司报告期不存在承包情况。 （3....
+- Capacity/certification evidence: 直接证据：研发支出。 （6）供应短缺及成本上涨风险 公司专注于集成电路芯片的设计研发，生产采用 Fabless 运营模式，即无晶圆厂运营模式。在行业生产旺季来临时， 晶圆代工厂和封装测试厂的产能能否满足公司的采购需求存在不确定性。同时，产能的变化以及产线的升级等均可能带 来产品采购单价的变动及生产周期的变化，若代工服务的采购单价上升，则可能导致公司产品毛利率下滑。此外....
+- ASP or margin evidence: 直接证据：下降 5.57pct，环比下降 3.13pct，主要系台币汇 28% 率波动等因素，存储芯片产品成本受到一定影响，产品毛利率有所下降， 10% 致使公司净利润有所下降。但是随着存储价格的上行，以及公司新制程 ## Notice Content 北京君正(300223) 主要观点： 事件 2025年10月28日，北京君正公告2025年第三季度报告，公司前三季度...；直接证据：系毛利率波动影响，3Q25 45% 毛利率 31.63%，同比下降 5.57pct，环比下降 3.13pct，主要系台币汇 28% 率波动等因素，存储芯片产品成本受到一定影响，产品毛利率有所下降， 10% 致使公司净利润有所下降。但是随着存储价格的上行，以及公司新制程 ## Notice Content 北京君正(300223) 主要观点： 事件 2025年....
+- Utilization/yield evidence: 直接证据：守《深圳证券交易所上市公司自律监管指引第 4 号——创业板行业信息披露》中的“集成电路业务”的披露要 求 产品的产销情况 单位：元 2025 年 2024 年 同比增减 产品名称 产能利用 产能利用 产能利用 营业成本 销售金额 营业成本 销售金额 营业成本 销售金额 率 率 率 1,981,06 2,911,25 1,694,80 2,589,49 存储芯....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/300223-北京君正/01-AP202512251807948565-中邮证券-计算-存储-感知-执行-多元化全面布局ai.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 华工科技
+
+- Chain role: 网络与光通信; 800G/1.6T 光模块 / OCS/光交换 / 光芯片/EML/VCSEL/CW laser.
+- Product/process exposure: 800G/1.6T 光模块 / OCS/光交换 / 光芯片/EML/VCSEL/CW laser.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 173.55; final target 99.66440000000001; upside -0.42573091328147505.
+- Extended 2026E package: revenue 200.6 亿元；net profit 15.5 亿元；EPS 1.99；market cap 1757.8 亿元；broker target 46.2.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/000988-华工科技/AP202505211676548456-国金证券-国内光模块市场兴起-光电器件业务有望迎来突破.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 9.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：净利润 6.38 亿元（+55.76%），毛利率 19.81%，同比小幅下滑。光电器件 券 (10%) 25/6/18 25/8/30 26/4/6 系列产品在 2025 年实现收入 60.97 亿元，同比增长 53.39%，营收占比提 25/11/11 26/1/23 26/6/18 股 华工科技 沪深300 升至 42.48%，成为驱动公司增长的最大力量....
+- Customer/platform evidence: 直接证据：2024Q2 2024Q3 2024Q4 来源：彭博，wind，国金证券研究所 2025 年国内大模型的投资方主要有互联网厂商、电信运营商、政府及相关部门。字节、腾 讯、阿里等头部互联网商投资额预计将大幅增长，其中字节资本支出将超过 1500 亿元， 其余各家也均在大模型军备竞赛中秣兵厉马。国内大模型行业有望复制北美大模型市场， 即 CSP 厂商军备竞赛抢夺....
+- Order/backlog evidence: 直接证据：比+36.40%；在建工程 2.71 亿 120.00 20,000 元，同比+26.2%。我们认为伴随下半年高速光模块进入规模交付 104.00 15,000 期，存货逐步转化为出货、产能利用率爬升摊薄固定成本，公司现 88.00 10,000 72.00 金流有望迎来拐点。 56.00 5,000 AI 带来巨大成长空间，公司全链条布局构建长期竞争壁垒：....
+- Capacity/certification evidence: 直接证据：2024 年 11 月华工科技光电子信息产业研创园“下一代超高速光模块研发中心暨高 速光模块生产基地建设项目”一期工程完成封顶，用于高速光模块产品的研发、生产，预 计未来将贡献更多产能。同时，公司也加快了海外工厂的建设，海外工厂目前已达到投产 状态，海外需求主要以 800G 和 1.6T 为主，现有月产能为 10 万只，Q2 末月产能将达 20 万 只。充足....
+- ASP or margin evidence: 直接证据：.6T 光模块进入商用元年，CPO 产品有望 在 2026-2027 年开始规模上量。公司联接业务具备从芯片到器件、模块、 子系统的全系列研发和规模化量产能力。产品端，公司已实现 800G 硅光 LPO 系列和 1.6T 光模块全球第一梯队规模化交付，并推出了 1.6T LPO、 3.2T NPO、3.2T CPO 光引擎及 400G/lane 光引擎解决方...；直接证据：e Content 华工科技(000988) 2026年4月27日公司发布一季度报告，实现营收42.66亿元，同比增长27.1%；扣非归母净利润3.73亿元，同比增长20.51%；毛利率19.8%，同比下滑0.7pct，主要系产品结构升级期间产能、良率等仍在爬坡。 经营分析 数据中心光模块业务爆发放量，产品结构稳步升级：报告期内公司光模块业务盈利同比增长约1....
+- Utilization/yield evidence: 直接证据：司发布一季度报告，实现营收42.66亿元，同比增长27.1%；扣非归母净利润3.73亿元，同比增长20.51%；毛利率19.8%，同比下滑0.7pct，主要系产品结构升级期间产能、良率等仍在爬坡。 经营分析 数据中心光模块业务爆发放量，产品结构稳步升级：报告期内公司光模块业务盈利同比增长约120%，其中电信光模块收入占比9.9%，同比下降7.5pct，而数据....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/000988-华工科技/AP202505211676548456-国金证券-国内光模块市场兴起-光电器件业务有望迎来突破.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 华正新材
+
+- Chain role: PCB 与上游材料设备; 高速 CCL.
+- Product/process exposure: 高速 CCL.
+- Candidate valuation method: PE/PEG plus cycle/product-mix check.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 212.91; final target 97.85763040244807; upside -0.5403802996456339.
+- Extended 2026E package: revenue 53.1 亿元；net profit 2.8 亿元；EPS 1.77；market cap 336.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/source-exhausted-official-filings-20260701/603186-华正新材/annual-浙江华正新材料股份有限公司2025年年度报告-修订版.txt.
+- Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：用 √不适用 前五名供应商 □适用 √不适用 D. 报告期内公司存在贸易业务收入 □适用 √不适用 23 / 228 浙江华正新材料股份有限公司2025 年年度报告 贸易业务占营业收入比例超过 10%前五名销售客户 □适用 √不适用 贸易业务收入占营业收入比例超过 10%前五名供应商 □适用 √不适用 其他说明： 无 3、 费用 √适用 □不适用 公司销售费....
+- Customer/platform evidence: 直接证据：款间隔不超过一年的，不考虑合同中存在的重大 融资成分。 2．本公司收入的具体确认原则 83 / 193 浙江华正新材料股份有限公司2025 年半年度报告 (1)内销产品在产品出库，客户签收确认后，控制权转移给买方，确认为收入的实现； (2)外销产品(包括直销、经销和代销)根据《联合国国际货物买卖合同公约》、《国际贸易术 语解释通则》和 2010 年新修订的《....
+- Order/backlog evidence: 直接证据：用复合材料等。 2025 年度，华正新材公司确认的营业收入为 436,920.77 万元。 如财务报表附注三(二十八)所述，华正新材公司内销产品收入确认需满足以下条件：公司已 根据合同约定将产品交付给购货方并经购货方签收，且产品销售收入金额已确定，已经收回货款 73 / 228 浙江华正新材料股份有限公司2025 年年度报告 或取得了收款凭证且相关的经济利益....
+- Capacity/certification evidence: 直接证据：主要 IC 载板厂家开展验证；CBF-RCC 产品在智能手机的 VCM 已实现小批量订单交付；主板、PMIC 等应用场景的客户端开启验证流程。同时，为更好地 推动该系列产品从研发到量产的转化，公司已在青山湖工业园区单独建设相应的研发中心和产线， 目前已实现杭州工厂批量订单交付能力。 3．功能性复合材料与交通物流用复合材料 报告期内，公司针对功能性复合材料与交....
+- ASP or margin evidence: 直接证据：和医疗行业表现稳健，分别增长 4.1%和 5.8%。 从 PCB 行业表现看，与人工智能、高速网络及数据存储强相关的公司业绩表现突出，行业分 化加剧，市场份额进一步向头部集中。从产品结构看，HDI 板、多层板表现最好，同比增长 25.6%、 18.2%，其中 18 层以上高多层高速板预计增速超过 50%，成为增长最快的细分品类；封装基板市 场则在经历两年的调...；直接证据：,920,963.67 18,400,541.91 68.04 利润 归属于上市公司股东的扣 29,184,725.40 14,384,597.80 102.89 除非经常性损益的净利润 1 / 13 浙江华正新材料股份有限公司2026 年第一季度报告 经营活动产生的现金流量 56,462,565.34 -213,806,304.67 不适用 净额 基本每股....
+- Utilization/yield evidence: 直接证据：建工程账面余额 761.26 万元，减值准备 171.35 万元，账面价值占合并资 产总额的 0.09%。 报告期内，华正能源公司受行业竞争加剧、市场需求下降等因素影响，生产线产能利用率远 低于设计水平，管理层认为相关固定资产及在建工程存在减值迹象。由于在确定固定资产及在建 工程减值准备时涉及重大的管理层判断，因此我们将固定资产及在建工程减值准备计提确定为关....
+- Evidence source: sources/source-exhausted-official-filings-20260701/603186-华正新材/annual-浙江华正新材料股份有限公司2025年年度报告-修订版.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 南亚新材
+
+- Chain role: PCB 与上游材料设备; 高速 CCL.
+- Product/process exposure: 高速 CCL.
+- Candidate valuation method: PE/PEG plus cycle/product-mix check.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 360.0; final target 146.584; upside -0.5928222222222221.
+- Extended 2026E package: revenue 60.1 亿元；net profit 4.9 亿元；EPS 2.08；market cap 845.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688519-南亚新材/AP202508011719656440-华金证券-高端高速产品获全球知名AI服务器认证-持续受益国产算力发展.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：求高增长带动， 公司新建产能加速释放，营业收入较上年同期实现大幅提升。而 2022 年以来，受国际形势和宏观经 济环境等因素的影响，产品市场终端需求持续疲软，产品价格下降，导致公司营收下降。 南亚新材 2024 年业绩快报显示，2024 年，公司预计实现营收 33.62 亿元，同比+12.70%，同比已呈 边际复苏态势。根据公司 2024 年半年报，公司提升....
+- Customer/platform evidence: 直接证据：均衡化后，我们认为，在流量与资本加持下，阿里、腾 讯、字节，分别把工具、社交、内容三大应用场景覆盖，相较初创公司更能占据 AI 时代战略主导地 位。 从需求端来看，2025 年国内互联网调增资本开支在望。根据第一财经，2 月 24 日阿里巴巴集团 CEO 吴泳铭宣布：未来三年阿里将投入超过 3,800 亿元，用于建设云和 AI 硬件基础设施，总投资额超过 去....
+- Order/backlog evidence: 直接证据：及价格波动的风险。铜价、玻纤布、树脂等受大宗商品周期影响显著，或加剧成本传导 压力。 国产算力链出货量不及预期。目前高端国产算力芯片良率仍较低，若技术爬坡延迟或海外芯片替代 恢复，订单放量或受阻。 CCL 涨价不及预期。若上游原材料涨价，但消费电子需求疲软叠加行业扩产，中小厂商议价能力弱， 成本上涨或难完全转嫁。 2025 年 4 月 16 日 南亚新材 2....
+- Capacity/certification evidence: 直接证据：张，继去年三季度释放月产能 30 万张后，今年 3 月末又新增投 入月产能 60 万张，5 月末新增投入月产能 30 万张，至此，N6 厂已全部建成投入。 到今年年底公司整体月生产产能将达近 400 万张。江苏生产基地首个年产 360 万 平米的高端 IC 封装材料智能工厂的各项建设工作有序推进中，预计到明年年底前 建成投产。泰国工厂已购地并办理地契，公司将....
+- ASP or margin evidence: 直接证据：业利润率从 0.31%变为 -5.46%，陷入亏损，公司经营面临严峻挑战，产品盈利空间收缩，成本控制与运营管理遭遇困境。 2024 年第一季度至第三季度，公司盈利能力出现积极变化。毛利率回升至 8.91%，营业利润率恢复 至 2.32%，重回盈利区间。2024 年上半年，受终端需求、市场竞争等多重因素影响，公司产品的销 售单价波动较大，且公司产品价格上升幅度...；直接证据：又降至 4.16%，营业利润率从 0.31%变为 -5.46%，陷入亏损，公司经营面临严峻挑战，产品盈利空间收缩，成本控制与运营管理遭遇困境。 2024 年第一季度至第三季度，公司盈利能力出现积极变化。毛利率回升至 8.91%，营业利润率恢 ## Notice Content 南亚新材(688519) 南亚新材是一家高性能覆铜板和粘结片提供商。伴随覆铜板涨价....
+- Utilization/yield evidence: 直接证据：0.55 资料来源：电子制造出海资讯，中银证券 2025 年 4 月 16 日 南亚新材 27 盈利预测与估值 核心假设 1）普通板业务：随着下游及终端客户需求不断提升，公司普通板稼动率提升，同时景气回暖公司有 望传导上游涨价弹性，逐渐形成规模经济，营收及毛利均有望稳步提升。我们预计 2024-2026 年公 司普通板业务营业收入分别为 28.35/35.6....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688519-南亚新材/AP202508011719656440-华金证券-高端高速产品获全球知名AI服务器认证-持续受益国产算力发展.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 同飞股份
+
+- Chain role: 液冷与温控; CDU / Manifold/分液器 / 冷板.
+- Product/process exposure: CDU / Manifold/分液器 / 冷板.
+- Candidate valuation method: normalised PE/SOTP with data-center order validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 100.04; final target 69.3598; upside -0.3066793282686925.
+- Extended 2026E package: revenue 43.6 亿元；net profit 4.7 亿元；EPS 2.76；market cap 170.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/300990-同飞股份/AP202604301821823442-东莞证券-深度报告-储能与数据中心液冷双核驱动-全球化开启新篇章.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 21.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：司液冷产 品的产能规模和技术水平。境外业务方面，2025年公司境外营收2.76亿 元，同比+269.92%，营收占比提升至9.63%，毛利率35.48%远高于境内 的20.91%，收入地域分布明显优化。全球化布局方面，2025年，公司正 式设立新加坡子公司和泰国孙公司，并同步启 - 图 19：同飞股份数据中心温控产品矩阵.
+- Customer/platform evidence: 直接证据：末页声明。 10 同飞股份（300990）深度报告 步成为头部云厂商自研 ASIC 服务器的主流共性技术路线。根据市场调研机构 TrendForce 数据，随着谷歌、Meta 等 CSP 厂商加速扩张自研 ASIC 方案，预计 2026 年基于 ASIC 的 AI 服务器的出货占比将提升至 27.8%，其出货增速也将超越基于 GPU 的 AI 服务器，与 基....
+- Order/backlog evidence: 直接证据：-54.25% 相关数据同比发生变动 30%以上的原因说明 适用 □不适用 电力电子装置温控产品 2025 年销售量同比增长 67.59%，生产量同比增长 56.07%，主要系订单增加，生产规模相应 扩大。 其他产品库存量减少 54.25%，主要系订单交付节奏变化。 （4） 公司已签订的重大销售合同、重大采购合同截至本报告期的履行情况 □适用 不适用 （....
+- Capacity/certification evidence: 直接证据：未来发展方向，有望打造公司第二增长引擎。 此外，2026年1月，公司发布定增预案，拟募集资金不超过12亿元，用 于强化温控技术研发与产能储备，项目投产后将进一步提升公司液冷产 品的产能规模和技术水平。境外业务方面，2025年公司境外营收2.76亿 元，同比+269.92%，营收占比提升至9.63%，毛利率35.48%远高于境内 的20.91%，收入地域分布明....
+- ASP or margin evidence: 直接证据：40 ### asp_or_price_proxy - ： 公司 3Q25 毛利率 6.8%， 72.00 800 62.00 同比-2.21pct，环比-1.98pct，我们认为毛利率下滑主要来自储能 600 52.00 400 液冷价格有向下的压力。行业新进入者增多、叠加头部客户议价权 42.00 200 增强，公司利润空间被压缩。公司 1-3Q 现金流...；直接证据：200 1,000 受行业层面影响，公司盈利能力有所承压： 公司 3Q25 毛利率 6.8%， 72.00 800 62.00 同比-2.21pct，环比-1.98pct，我们认为毛利率下滑主要来自储能 600 52.00 400 液冷价格有向下的压力。行业新进入者增多、叠加头部客户议价权 42.00 200 增强，公司利润空间被压缩。公司 1-3Q 现金流....
+- Utilization/yield evidence: 直接证据：CES 2026 展会上官宣新一代旗舰 AI 计算平台 Vera Rubin（简称“Rubin 平台”）进入全面量产阶段。根据官方规划，首批基于该平台的全栈解决方案已完成供 应链爬坡，将于 2026 年第三季度启动全球交付。与上一代 GB300 NVL72 系统约 80%的液 冷覆盖率相比，英伟达 Rubin NVL72 系统采用 100%全液冷设计，彻底摒....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/300990-同飞股份/AP202604301821823442-东莞证券-深度报告-储能与数据中心液冷双核驱动-全球化开启新篇章.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 奥士康
+
+- Chain role: PCB 与上游材料设备; 交换机/路由器 PCB.
+- Product/process exposure: 交换机/路由器 PCB.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 63.03; final target 69.28835000000001; upside 0.09929160717118846.
+- Extended 2026E package: revenue 67.4 亿元；net profit 6.9 亿元；EPS 2.18；market cap 205.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/002913-奥士康/02-AP202508271735306248-中邮证券-高阶hdi持续放量.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：奥士康 电子 80% 比增长 19.43%；实现归母净利润 1.96 亿元，同比减少 11.96%。 70% 60% l 投资要点 50% 25H1 营收稳健增长，数据中心及服务器收入规模进一步提升。 40% 30% 公司不断丰富产品矩阵，推出一系列满足数据中心及服务器应用需求 20% 10% 的高性能 PCB 产品，在数据中心及服务器领域的收入规模进一步提....
+- Customer/platform evidence: 直接证据：也可能为这些公司提供或 者计划提供投资银行、财务顾问或者其他金融产品等相关服务。 《证券期货投资者适当性管理办法》于 2017 年 7 月 1 日起正式实施，本报告仅供中邮证券签约客户使用，若您非 中邮证券签约客户，为控制投资风险，请取消接收、订阅或使用本报告中的任何信息。本公司不会因接收人收到、 阅读或关注本报告中的内容而视其为签约客户。 本报告版权归中邮....
+- Order/backlog evidence: 直接证据：拓展与现有客户在产品合作领域的深度与广度，有力地提升公司的市场占有率。 12 奥士康科技股份有限公司 2025 年半年度报告全文 在至关重要的售中交付管理环节，运营管理中心作为客户订单交付的核心支持部门，充分发挥其统筹协调作用，着重 强化对订单管理、物料管理、交期管理、出货管理这四大子模块的精细化管理，实现对订单交付全流程的有效管控。具体 而言，在订单管理方....
+- Capacity/certification evidence: 直接证据：部分关键 原材料价格波动影响，行业成本端面临一定压力。 在行业结构升级背景下，公司持续优化产品结构并拓展境内外客户资源。报告期内，泰国基地进入投产阶段，新客 户开发及新产品导入处于产能爬坡及良率优化过程中，对阶段性经营业绩产生一定影响。在原材料价格波动背景下，公 司通过产品结构优化及工艺改善等措施加强成本管控，但成本压力仍对盈利水平产生一定影响。 （1）紧跟....
+- ASP or margin evidence: 直接证据：印制电路板项目，本项目计划投资金额 18.2 亿元， 券 研 主要增加公司高多层及 HDI 产能。高端产能的持续扩充有利于公司后续 - 务多点开花 奥士康 沪深300 72% 公司产品结构不断优化，AI 属性业务增多。 （1）数据中心及服务器营收规模提 48% 升，服务器 CPU 主板、存储板、散热板等产品稳定批量交付，GPU 板组也在部 分客户中取得实质性...；直接证据：，服务器/AIPC/汽车多点开花。在服务器领域， 总股本/流通股本（亿股）3.17 / 3.02 公司围绕小间距 BGA 夹线、SI 数据库、背钻 - 9 59 72 归属于母公司净利润 -31.9% 45.7% 34.2% 25.9% 销售费用 185 215 263 318 获利能力 管理费用 244 249 317 407 毛利率 23.2% 22.9....
+- Utilization/yield evidence: 直接证据：25-04 ⚫ 持续布局高端产能，长期增长动力充足 证 数据来源：聚源 泰国工厂主要承接 AI 服务器、AIPC 及汽车电子等高端 PCB 产品的海外订单， 券 目前处于产能爬坡及良率提升阶段。公司近期发布公告，拟发行可转债，募集资 证 相关研究报告 金不超过 10 亿元，用于高端印制电路板项目，本项目计划投资金额 18.2 亿元， 券 研 主要增加公司高多....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/002913-奥士康/02-AP202508271735306248-中邮证券-高阶hdi持续放量.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 宝信软件
+
+- Chain role: 下游需求与应用 / 数据中心建设与运营; IDC/AIDC 运营 / 制造/工业 AI / 土地/园区/能耗指标 / 科研超算/AI4S / 算力服务/调度 / 网络接入/专线 / 运维/监控/DCIM.
+- Product/process exposure: IDC/AIDC 运营 / 制造/工业 AI / 土地/园区/能耗指标 / 科研超算/AI4S / 算力服务/调度 / 网络接入/专线 / 运维/监控/DCIM.
+- Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 18.29; final target 15.193050000000001; upside -0.16932476763258597.
+- Extended 2026E package: revenue 155.3 亿元；net profit 27.6 亿元；EPS 1.03；market cap 566.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/600845-宝信软件/01-AP202504101654109806-国元证券-2024年年度报告点评-营收实现稳健增长-ai驱动转型升级.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 43.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：71.00 29 ## Notice Content 宝信软件(600845) 事件： 公司于2025年3月31日收盘后发布《2024年年度报告》。 点评： 坚持创新引领做强，营业收入实现稳健增长 2024年，公司实现营业收入136.44亿元，同比增长5.64%；实现归母净利润22.65亿元，同比减少11.28%；实现扣非归母净利润21.98亿元，同比减少8....
+- Customer/platform evidence: 直接证据：3 2024 2025E 2026E 2027E 流动资产 17133.12 16655.32 18093.72 19458 - 立 2023.08.22 足上海罗泾园区，盘活存量客户，顺利完成相关续签工作；宝之云华北基地 成功中标互联网巨头项目，园区建设规模和交付需求相当于宝之云罗泾基 地总容量；完成宝之云智算中心（上海节点）建设，开发 ONE+算力管理平....
+- Order/backlog evidence: 直接证据：5 亿元，相比 24 年实际完成额增长较大。公司预计 25 年关联交易合计为 114.7 亿元。 宝之云受益于 AIDC 产业增长，PLC 国产化有望加大力度。宝之云华北基地成 功中标互联网巨头项目，园区建设规模和交付需求相当于宝之云罗泾基地总 容量，有望带动 IDC 业务重回增长节奏。PLC 方面，公司突破各关键技术， 资料来源：Wind、国信证券经济研究....
+- Capacity/certification evidence: 直接证据：务能力。围绕“市 场统筹、建设统一、运维统一”原则，构建统一体系和平台，推动宝之云全国布局有效落地；深 化市场拓展机制建设，持续推进存量客户续签与新客户导入工作；稳步推进宝之云华北基地建设； 形成云-边-端三层架构的宝之云智算服务方案，开展全国算力节点布局。 报告期内，公司实现营业收入 47.15 亿元，其中软件开发及工程服务营业收入为 30.18 亿元....
+- ASP or margin evidence: 直接证据：024-04-25 风险提示：钢铁行业 IT 支出下降；IDC 拓展不及预期；国产化替代缓慢等。 《宝信软件（600845.SH）——2023 年报点评-归母净利润增长约 17%，毛利率创新高》 ——2024-03-31 投资建议：维持“优于大市”评级。由于 24 年公司整体业绩下滑，钢铁及 《宝信软件（600845.SH）-单 Q3 利润增长超 31%，保...；直接证据：净利润增长约 17%，毛利率创新高》 ——2024-03-31 投资建议：维持“优于大市”评级。由于 24 年公司整体业绩下滑，钢铁及 《宝信软件（600845.SH）-单 Q3 利润增长超 31%，保持高质量成 长》 ——2023-10-23 其他下游行业 IT 开支均承压，下修盈利预测，预计 2025-2027 年公司归母 净利润为 28.00/33.1....
+- Utilization/yield evidence: 直接证据：名；荣获中国软件行业协会“2024 年软件行业智能制造领军企业”；智慧 车站解决方案被中国城市轨道交通协会授予“2024 城市轨道交通科技进步奖一等奖”；一批自主 可控重点项目上线投运。 发力人工智能新赛道，服务钢铁智造新范式，加速人工智能规模化应用。统筹“人工智能+” 顶层策划，明确以“业务场景、科技创新双轮驱动，平台、数据、算力、场景、模型五位一体的 A....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/600845-宝信软件/01-AP202504101654109806-国元证券-2024年年度报告点评-营收实现稳健增长-ai驱动转型升级.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 寒武纪
+
+- Chain role: 上游算力芯片与存储 / 下游需求与应用; GPU/AI ASIC / 互联网大模型/MaaS / 国产算力平台.
+- Product/process exposure: GPU/AI ASIC / 互联网大模型/MaaS / 国产算力平台.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 1485.33; final target 954.47616; upside -0.3573979115752054.
+- Extended 2026E package: revenue 108.5 亿元；net profit 67.9 亿元；EPS 16.10；market cap 6266.8 亿元；broker target 1903.0.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688256-寒武纪/AP202604281821702568-第一上海证券-AI-Agent时代来临-国产算力支撑AI建设.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 10.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：寒武纪（688256） 更新报告 买入 2026 年 4 月 27 日 AI Agent 时代来临，国产算力支撑 AI 建设 黄晨 ➢ 25 年业绩回顾：收入 65.0 亿元，同比增长 453.2%。毛利率 +852-2532 1954 55.2%，同比略下滑 1.6 个百分点，为产品阶梯式降价有关。归母净 chen.huang@firstshanghai....
+- Customer/platform evidence: 直接证据：1,256.68 万元，均实现了扭亏为盈。 （一）展开技术合作，推动应用落地 报告期内，依托于公司在人工智能芯片产品、基础系统软件平台取得的长足进步，公司产品 持续在运营商、金融、互联网等多个重点行业规模化部署并通过了客户严苛环境的验证。报告期 内，公司产品持续优化了软硬件平台可靠性及易用性，在大规模商业场景部署下，可长时间保持 稳定性。此外，公司产品在各人....
+- Order/backlog evidence: 直接证据：表现优异， 有望迎来订单的持续突破。 总市值 5,703 亿元 52 周高/低 1,595.88/520.67 元 ➢ 国产算力渗透加速，供应瓶颈有望缓 ### order_or_backlog - 256 3 月达到 120 万亿级别。公司产品在客户端的特定场景大模型训练与 已发行股本 4.22 亿股 推理、智能视觉、语音处理、推荐系统等典型 AI 场景中....
+- Capacity/certification evidence: 直接证据：正在不断地优化28纳米、40纳米、65纳米以及90纳米制程的工艺。在地缘政治博弈严重的当下，我们认为中国AI相关企业的Capex将深度挂钩国产芯片供给。未来，随着国产晶圆代工厂商的产能持续扩充以及工艺的不断优化，百度旗下昆仑、寒武纪、华为等头部厂商AI芯片量产难的问题将逐步得到解决。 AI芯片性能领先，软硬件协同发展提升未来业绩弹性 近期，寒武纪募资39.8....
+- ASP or margin evidence: 直接证据：） 更新报告 买入 2026 年 4 月 27 日 AI Agent 时代来临，国产算力支撑 AI 建设 黄晨 ➢ 25 年业绩回顾：收入 65.0 亿元，同比增长 453.2%。毛利率 +852-2532 1954 55.2%，同比略下滑 1.6 个百分点，为产品阶梯式降价有关。归母净 chen.huang@fi - 寒武纪（688256） 更新报告 买入...；直接证据：表现 (%) 寒武纪-U 沪深300 自 2022 年 OpenAI 发布 ChatGPT 以来，AI 大模型 - 5.0% 非流动负债合计 469 469 469 469 归母净利润增长率 53.5% 51.1% 负债合计 1,287 1,845 2,119 2,520 盈利能力 所有者权益 毛利率 56.7% 57.0% 58.0% 59.0% 股本 4....
+- Utilization/yield evidence: 直接证据：半年，中芯国际进一 步扩充产能，新增 2 万片 12 英寸标准逻辑月产能。展望未来 三到五年，预计中芯国际将持续以每年 5 万片 12 英寸左右的 节奏来扩产。同时，中芯国际的产能利用率也在逐步提升， 2025 年 Q2，产能利用率达到 92.5%，环比增长 2.9 个百分点。 此外，中芯国际目前正在不断地优化 28 纳米、40 纳米、65 纳 米以及 90....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688256-寒武纪/AP202604281821702568-第一上海证券-AI-Agent时代来临-国产算力支撑AI建设.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 摩尔线程
+
+- Chain role: 上游算力芯片与存储; GPU/AI ASIC.
+- Product/process exposure: GPU/AI ASIC.
+- Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
+- Target-price status: ps_sotp_target_model_ready.
+- Valuation disposition: published_ps_sotp_target_model - 盈利拐点尚不适合单一 PE，但收入、费用率、里程碑和 SOTP/PS 目标区间可复算；当前发布的是里程碑目标，不把未兑现利润提前资本化。
+- Current target package: current price 673.8; final target 182.25; upside -0.7295191451469278.
+- Extended 2026E package: revenue 26.7 亿元；net profit -10.0 亿元；EPS -2.13；market cap 3167.1 亿元；broker target 182.2.
+- Extended model status: PS/SOTP 里程碑目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688795-摩尔线程/AP202511301791284379-国金证券-以全功能GPU为核心的国产加速计算平台领军者.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：实现营业收 入 7.85 亿元，较 2024 年同期增长 181.99%；净利润亏损 7.24 亿元，亏损幅度较 2024 年同期 收窄 18.71%。 2025H1，公司主营业务收入按产品类别可分为五大板块，分别为 AI 智算(6.65 亿元，占 2025H1 主营收入的 94.85%）、专业图形加速（0.29 亿元，占 2025H1 主营收入的 4.19....
+- Customer/platform evidence: 直接证据：司多种形态的 GPU 产品广泛应用于云计算、科研、政务、低空经济、互联网、游戏等核心计算加速场景，广泛覆盖 重大科技创新平台、云服务厂商、运营商、商业企业、互联网厂商、个人消费者等客户类型。公 司不仅是国产替代的重要力量，更已成为驱动行业数智化转型的核心算力引擎。 （3）品牌地位 经过五年的快速发展，摩尔线程于 2025 年底成功完成科创板 IPO，正式登陆....
+- Order/backlog evidence: 直接证据：完成产品交付作为销售收入的确认时点，在完成产品交付后并获取经客户签收确认 的凭据（签收单/验收单）时确认收入。 （2）技术服务收入 本集团向客户提供芯片技术方案研究服务，根据合同或订单，在技术服务已完成并取得经客 户确认的验收凭据时确认收入。 本集团将因向客户转让商品而预期有权收取的对价金额作为交易价格，并根据合同条款，结 合以往的商业惯例予以确定。部分合同....
+- Capacity/certification evidence: 直接证据：具 身智能、低空经济、水利、交通、运营商等多个领域，2025 年相关产品已实现对外销售；2）汽 车芯片则主要面向新能源汽车的智能座舱，由于导入周期较长、预计将于 2026 年导入并量产。 截至 2025 年上半年，公司 SoC 业务已实现百万元级的销售收入；考虑到智能 SoC 市场目前主 要仍由国际厂商主导、国内厂商在该领域的竞争尚未完全展开，公司有望通过差....
+- ASP or margin evidence: 直接证据：方面，我们预测 2025-2027 年 AI 智算毛利率为 66.20%、63.98%、62.73%%。 据公司招股说明书，自 2025 年至 2027 年公司 AI 智算产品预测价格下降约 35%，叠加 公司产品持续迭代，AI 智算毛利率逐年略有下降。 专业图形加速：预测 2025-2027 年营收达到 1.08 亿元、1.83 亿元、3.30 亿元，同比...；直接证据：利率来看，AI 智算产品已成为公司核心的盈利业务，25H1 毛利贡献占比达 95%， 且毛利率维持在 69%的高位。专业图形加速产品表现稳健，得益于产品在高端应用场景 的深入渗透，毛利率由 2022 年的 45%提升至 2025 年上半年的 73%；桌面级图形加速 ## Notice Content 摩尔线程(688795) 投资逻辑 公司是国内唯一实现全功....
+- Utilization/yield evidence: 直接证据：具备全精度、全功能通用计算能力。基于 MTT S5000 搭 建的夸娥万卡级集群已完成部署并实现上线服务，集群浮点运算能力达 10 Exa-Flops，Dense 大模 型训练算力利用率（MFU）达 60%，MoE 大模型训练算力利用率达 40%，有效训练时间占比超过 90%，训练线性扩展效率达 95%，多项核心指标达到国际主流水平，可有效支撑超大规模智算集....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688795-摩尔线程/AP202511301791284379-国金证券-以全功能GPU为核心的国产加速计算平台领军者.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入 PS/SOTP 里程碑模型；后续验证收入、毛利率、研发费用率、现金流和盈利拐点。.
+- Next verification path: validate PS/SOTP target through revenue growth, gross margin, R&D intensity, cash runway and path-to-profit milestones.
+
+## 数据港
+
+- Chain role: 供配电与能源 / 数据中心建设与运营; IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入.
+- Product/process exposure: IDC/AIDC 运营 / 区域枢纽/国家算力网 / 土地/园区/能耗指标 / 电力指标/接入.
+- Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 25.8; final target 9.2548; upside -0.6412868217054264.
+- Extended 2026E package: revenue 18.2 亿元；net profit 1.7 亿元；EPS 0.23；market cap 185.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/603881-数据港/01-AP202604211821396756-中邮证券-业绩维持稳健-智算业务贡献增量.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 26.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=proxy; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: 产能/认证：AStock 自建公允价值模型保留，broker 权重为 0；该 proxy 字段只作折价边界，不触发目标价上修。.
+- Revenue exposure evidence: 直接证据：； 公司点评报告 发布时间：2026-04-21 股票投资评级 数据港(603881) 增持；维持 业绩维持稳健，智算业务贡献增量 个股表现  事件 2025 年，公司实现营业收入 17.21 亿元，同比+0.02%；实现归母 数据港 通信 152% 净利润 1.39 亿元，同比+4.95%；实现扣非归母 1.08 亿元，同比- 134% 116% 15....
+- Customer/platform evidence: 直接证据：%) 57.3% 截至 2025 年底，公司运营总电力容量 401MW，同比 2024 年底 市盈率 215.32 371MW 增加 30MW，主要系 25Q1 廊坊项目中标互联网客户订单。截至 上海市北高新(集团)有 25 年 Q3，公司廊坊项目已完成第一批机电交付，目前进展正常，后 第一大股东 限公司 续将持续推进该项目的交付与运营。此外，公司为抢抓算力....
+- Order/backlog evidence: 直接证据：1008.31万元，对利润形成一定拖累，整体归母净利率同比提升0.77pct至9.7%。 廊坊项目已完成第一批机电交付，业务拓展成效显著 2025Q1，公司廊坊项目已中标互联网客户订单；截至2025年6月末，该项目外市电及土建部分已完工并转固，其余机电部分处于建设阶，合同执行情况良好，该项目有望为公司26年及之后贡献稳定收入。截至25年Q3，公司已完成第一批....
+- Capacity/certification evidence: 代理证据：资产负债率(%) 57.3% 截至 2025 年底，公司运营总电力容量 401MW，同比 2024 年底 市盈率 215.32 371MW 增加 30MW，主要系 25Q1 廊坊项目中标互联网客户订单。截至 上海市北高新(集团)有 25 年 Q3，公司廊坊项目已完成第一批机电交付，目前进展正常，后 第一大股东 限公司 续将持续推进该项目的交付与运营。此外，公....
+- ASP or margin evidence: 直接证据：同比- 98% 10.79%；实现归母净利润 0.19 亿元，同比-30.33%；扣非归母 0.09 亿 80% 62% 元，同比-74.60%。 44% 26%  成本管控推动毛利率提升，利润受减值有所影响 8% 2025 年，公司营业成本为 10.74 亿元，毛利率为 37.56%（同比 -10% 2025-04 2025-07 2025-09 202...；直接证据：同比- 98% 10.79%；实现归母净利润 0.19 亿元，同比-30.33%；扣非归母 0.09 亿 80% 62% 元，同比-74.60%。 44% 26%  成本管控推动毛利率提升，利润受减值有所影响 8% 2025 年，公司营业成本为 10.74 亿元，毛利率为 37.56%（同比 -10% 2025-04 2025-07 2025-09 202....
+- Utilization/yield evidence: 直接证据：国家能源局四部委联合发 布了《贯彻落实碳达峰碳中和目标要求推动数据中心和 5G 等新型基础设施绿色高质量发展实施 方案》，目标到 2025 年，数据中心运行电能利用效率和可再生能源利用率明显提升，全国新建大 型、超大型数据中心平均电能利用效率降到 1.3 以下，国家枢纽节点进一步降到 1.25 以下，绿色 低碳等级达到 4A 级以上。 2023 年 12 月....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/603881-数据港/01-AP202604211821396756-中邮证券-业绩维持稳健-智算业务贡献增量.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS_WITH_BOUNDARY：残余代理字段为 产能/认证；已在 residual_proxy_field_audit 中披露官方文件检查、剩余缺口和估值处置；目标价/公允价值不因这些代理字段获得额外上修。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 明阳电气
+
+- Chain role: 供配电与能源; 变压器 / 高低压柜/开关柜.
+- Product/process exposure: 变压器 / 高低压柜/开关柜.
+- Candidate valuation method: normalised PE plus order-cycle / working-capital check.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 35.39; final target 62.29555; upside 0.7602585476123198.
+- Extended 2026E package: revenue 126.2 亿元；net profit 10.3 亿元；EPS 3.30；market cap 110.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/301291-明阳电气/AP202509301753286098-开源证券-公司首次覆盖报告-新能源输配电翘楚-海外-海风-AIDC多域突破.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 10.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=proxy; margin_impact=direct.
+- Residual proxy boundary: 利用率/良率/爬坡：AStock 自建公允价值模型保留，broker 权重为 0；该 proxy 字段只作折价边界，不触发目标价上修。.
+- Revenue exposure evidence: 直接证据：证券研究所 数据来源：Wind、开源证券研究所 公司核心产品包括智能变压器、箱式变电站和智能成套开关设备。2025H1 箱式 变电站实现营收 18.66 亿元，yoy+16.1%，收入占比为 53.7%，毛利率为 20.7%。成 套开关柜为增长最快的产品线，2025H1 实现收入 5.12 亿元，yoy+91.0%，在收入的 占比从 2024 年的 10.5....
+- Customer/platform evidence: 直接证据：0.5 0.0 0% 2020 2021 2022 数据中心领域收入（亿元） yoy 数据来源：公司公告、开源证券研究所 MyPower 数据中心电力模块已成功斩获多个互联网头部客户重要订单。2024 年 5 月，公司正式推出 MyPower 数据中心电力模块，凭借一体化设计、预制化生产、 模块化交付的创新优势，成功中标字节跳动火山引擎数据中心项目、江苏新纪....
+- Order/backlog evidence: 直接证据：0.0 0% 2020 2021 2022 数据中心领域收入（亿元） yoy 数据来源：公司公告、开源证券研究所 MyPower 数据中心电力模块已成功斩获多个互联网头部客户重要订单。2024 年 5 月，公司正式推出 MyPower 数据中心电力模块，凭借一体化设计、预制化生产、 模块化交付的创新优势，成功中标字节跳动火山引擎数据中心项目、江苏新纪联太 仓....
+- Capacity/certification evidence: 直接证据：-4.5 -2.63 10.27 威机构认证，远销欧洲、北美洲、东南亚、中东、南美洲、非洲等全球 60 多个国 绝对收益 6.24 14.3 45.47 家和地区；持续加码布局海外产能，已在马来西亚基地正式开展设备投资，海外业 贺朝晖 分析师 务将成为公司未来业绩新增长点。 SAC 执业证书编号：S0910525030003 hezhaohui@huajin....
+- ASP or margin evidence: 直接证据：源变压器空间在 306 亿元 考虑风电、光伏装机侧所需求的变压器，变压器功率因数为 0.85，即输出 1kW 需要 1.18 kVA 的变压器，市场空间=新增装机/功率因数*变压器单价。 根据金盘科技、江苏华辰公告，光伏新增装机配套变压器多为液浸式变压器， 陆风新增装机配套变压器多为干式变压器，干式变压器价格略高于液浸式变压器， 海风变压器由于作业环境更复杂...；直接证据：覆盖报告 主要系毛利率较低的成套开关柜在收入的占比提升，盈利能力整体较为稳定。同时 公司优化费用结构，2025H1 期间费用率同比下降至 8.7%，费用控制良好，2025H1 实现净利率为 8.8%。公司持续聚焦新能源输配电及数据中心电力模块，加大研发与 业务拓展。 图8：公司综合毛利率保持稳定 图9：公司期间费用控制良好 30.0% 26.2% 14.0%....
+- Utilization/yield evidence: 代理证据：及推测不一致的报告。本公司不保证本报告所含信息及资料保持在最新状态，本公司将随时补充、 更新和修订有关信息及资料，但不保证及时公开发布。同时，本公司有权对本报告所含信息在 ### utilization_or_yield ### margin_impact - 72.93%。 25H1 公司箱式变电站、变压器、成套开关柜分别实现营收 18.66/5.68/5....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/301291-明阳电气/AP202509301753286098-开源证券-公司首次覆盖报告-新能源输配电翘楚-海外-海风-AIDC多域突破.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS_WITH_BOUNDARY：残余代理字段为 利用率/良率/爬坡；已在 residual_proxy_field_audit 中披露官方文件检查、剩余缺口和估值处置；目标价/公允价值不因这些代理字段获得额外上修。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 星网锐捷
+
+- Chain role: 上游算力芯片与存储 / 网络与光通信; AI 交换机/路由器 / DPU/NIC/SuperNIC.
+- Product/process exposure: AI 交换机/路由器 / DPU/NIC/SuperNIC.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 21.09; final target 35.49694; upside 0.6831171171171173.
+- Extended 2026E package: revenue 249.2 亿元；net profit 10.3 亿元；EPS 1.21；market cap 179.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002396-星网锐捷/AP202507131708177975-民生证券-2025年中报预告点评-数据中心交换机驱动利润高增-探索跨境支付应用.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：旗下升腾资讯深耕金 -2024/08/25 融和信创领域，以“信创 + AI”产品创新为驱动，加快场景化方案升级，积极探 3.星网锐捷（002396.SZ）2023 年年报点评： 营收平稳静待需求恢复，持续升级智算中心网 索多元 AI 应用场景；星网视易在元宇宙领域布局，报告期内，发布“影楼数字 络方案-2024/03/29 影棚”解决方案，通过自研高清投影....
+- Customer/platform evidence: 直接证据：ICT 基础设施及 AI 应用方案提供商，围绕数据中心网络、光通信等网络通信基础设施，以及信创、 视联网、智慧空间、智能制造等 AI 应用方案，为政府、运营商、互联网、金融等多行业客户提供更多深入应用需求、 有独特竞争力的解决方案。 本财务报表业经公司董事会于 2026 年 3 月 26 日批准报出。 四、财务报表的编制基础 1、编制基础 公司以持续经营为基....
+- Order/backlog evidence: 直接证据：同环比高增。 公司净利润高增，主因互联网行业数据中心加快建设，25 年框采交付进度要求 快于往年，公司主要子公司锐捷网络（公司持股 45%股份）面向互联网客户的数 据中心交换机产品订单加速交付，营业收入较上年同期增长。运营商侧，6 月 11 日中国移动发布 25-27 年数据中心交换机集采，总价 16 亿元，锐捷网络中标 3.5 亿元，份额 21%，公司在运....
+- Capacity/certification evidence: 直接证据：项外观）,国内发明专利 310 项，外观设计专 利 17 项，实用新型专利 51 项。截止报告期末公司累计获得专利总数达 3320（有效 2264）项。 （二）产品质量与体系优势 通过多年的生产经营经验积累，公司建立了完善、有效的集约型一体化管理体系。先后导入质量、环境、职业健康、能 源、供应链安全等管理体系，同时成功申报国家级绿色工厂，以实际行动践行高质量....
+- ASP or margin evidence: 直接证据：金融客户，信创 邮箱： fanyu@mszq.com 运维平台覆盖福建标杆项目；星网视易（负责元宇宙业务子公司）将继续加大 AI 基础能力建设与前沿技术研究；光通信领域，400G/800G LPO 光模块实现低功 相关研究 耗传输，适配超算中心需求；全光网（OXC）方案向高维度升级，巩固运营商市 1.星网锐捷（002396.SZ）202 - /19/18 倍...；直接证据：15 销售费用 2,176 2,530 2,991 3,614 净利润增长率 -4.76 36.76 29.20 22.66 管理费用 862 1,008 1,221 1,446 盈利能力（%） 研发费用 2,345 2,879 3,489 4,217 毛利率 34.07 33.82 34.06 34.28 EBIT 481 873 1,146 1,400....
+- Utilization/yield evidence: 直接证据：一运维，满足中 新机会，提高公司的 企业智能网络系统 框式/盒式光网融合交 小企业多样化组网需 核心竞争力。 换机、光接入交换机/ 求，同时提升网络资 多业务光 AP 及配套无 源利用率与运维效 源分光器等产品，通 率。 过系统级验证和优 化，形成基于以太分 光的中小企业智能网 络系统。 AI 算力柜 通过研究 GPU 超节点 在研 推出锐捷超节点系统 为公....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/002396-星网锐捷/AP202507131708177975-民生证券-2025年中报预告点评-数据中心交换机驱动利润高增-探索跨境支付应用.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 景旺电子
+
+- Chain role: PCB 与上游材料设备; AI 服务器 PCB / HDI/高多层板.
+- Product/process exposure: AI 服务器 PCB / HDI/高多层板.
+- Candidate valuation method: PE/PEG plus cycle/product-mix check.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 68.21; final target 61.376270000000005; upside -0.10018662952646229.
+- Extended 2026E package: revenue 170.4 亿元；net profit 21.8 亿元；EPS 2.18；market cap 682.2 亿元；broker target 34.3.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/603228-景旺电子/AP202505141672723916-西南证券-看好PCB全平台工艺能力下客户突破机会.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：品类解决 方案”优势，进一步打开成长空间。 图 1：景旺电子组织架构与主要工厂布局 数据来源：公司公告，西南证券整理 公 司业务包括：公司主营业务包括:印制电路板、其他业务等。 从营收结构来看，2024 年公司营业总收入为 126.6 亿元，同比增长 17.7%；具体来看， 印制电路板达 119.9 亿元，同比增长 17.0%，占公司营业收入比重为 94.7....
+- Customer/platform evidence: 直接证据：2025 年上半年，公司在 AI 服务器领域的量产提速，高密度高 (%) 景旺电子 沪深300 阶 HDI 能力提升顺利。800G 光模块出货量增加，已为多家光 250 模块头部客户稳定批量供货。受益于 AI 服务器、高端光模块 200 等领域的订单批量出货，公司加紧开展对现有珠海金湾基地 150 HLC、SLP 工厂进行技术改造升级。2024 年公司已成为....
+- Order/backlog evidence: 直接证据：能有序释放，预 计 AI 服务器业务将为公司打开业绩增长新空 ### order_or_backlog - (%) 景旺电子 沪深300 阶 HDI 能力提升顺利。800G 光模块出货量增加，已为多家光 250 模块头部客户稳定批量供货。受益于 AI 服务器、高端光模块 200 等领域的订单批量出货，公司加紧开展对现有珠海金湾基地 150 HLC、SLP 工....
+- Capacity/certification evidence: 直接证据：Tier1 厂商， 汽车业务收入占比超 40%，ADAS 及智能座舱相关产品增速显著。 产能充沛，业务互补具备全平台工艺能力。景旺电子构建了覆盖深圳、龙川、珠海等 6 大生产基地的产能网络，拥有 13 个专业化工厂及 11 个全球办事处，形成“本地化服务+多 语种支持”的客户生态。公司积极拓展泰国生产基地，一期工程预计 2026 年投产，响应海 外客户汽车电....
+- ASP or margin evidence: 直接证据：作认证，未来有望通过高多层、HDI 工艺切入海外大客户产品，产品结构持续优化。我们 假设公司 PCB 业务 2025-2027 年出货量分别增长 14.0%、10.0%、8.0%，价格分别上升 1.1%、 5.4%、5.8%。 假设 2：我们假设公司其他业务保持稳定，未来毛利率维持 90%。 表 1：分业务收入及毛利率 单位：百万元 2024A 2025E...；直接证据：55 高速材料、高端 HDI、HLC 等产品供不应求。 市场表现 2025 年上半年，公司在 AI 服务器领域的量产提速，高密度高 ( - ,782 1,782 1,782 归母净利润增长率 24.9% 26.2% 30.5% 25.4% 负债合计 7,746 7,755 7,683 7,645 盈利能力 所有者权益 毛利率 22.7% 22.1% 22.2....
+- Utilization/yield evidence: 直接证据：聚焦下一代 AI 算力基础设施、高阶智驾等前沿领域，持续提升技术能力。同时，公司将推动 技术创新与生产经营深度融合，全面推进智能制造与绿色低碳生产体系建设，持续提升生产效率、 产品良率与精细化成本管控能力，实现经营质效的全面提升。 3、重视中小投资者权益，共享发展红利 34 / 226 深圳市景旺电子股份有限公司2025 年年度报告 公司重视与广大股东分享企....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/603228-景旺电子/AP202505141672723916-西南证券-看好PCB全平台工艺能力下客户突破机会.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 汉钟精机
+
+- Chain role: 液冷与温控; 冷水机组/精密空调.
+- Product/process exposure: 冷水机组/精密空调.
+- Candidate valuation method: normalised PE/SOTP with data-center order validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 36.42; final target 31.462720000000004; upside -0.13611422295442055.
+- Extended 2026E package: revenue 34.6 亿元；net profit 7.2 亿元；EPS 1.34；market cap 195.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002158-汉钟精机/AP202509171745482711-国信证券-AIDC压缩机-半导体真空泵打造新成长曲线.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：研究报告 升。半导体方面，全球半导体真空泵市场主要由外资品牌主导，国产化替代 《汉钟精机（ ## Notice Content 汉钟精机(002158) 核心观点 2025年上半年营收同比下降18.86%，归母净利润同比下降42.90%。公司2025年上半年实现营收14.89亿元，同比下降18.86%；实现归母净利润2.57亿元，同比下降42.90%。202....
+- Customer/platform evidence: 直接证据：的摊 薄 EPS 为 1.15/1.42/1.72 元 。 当前 股 价 对 应的 PE 倍 数 为 22/18/15 倍，维持“买入”投资评级。  风险提示 1）数据中心建设及客户拓展不及预期的风险。2）半导体行业客户拓展 不及预期的风险。3）海外市场波动的风险。4）原材料大幅波动的风险。 敬请参阅末页重要声明及.
+- Order/backlog evidence: 直接证据：市场稳步扩张，境外营收 7.50 亿元，同比增长 6.09%，占整体收入 25.61%。海外市场的数据中心行业对制冷压缩机需求强劲，公司已向更广泛客户群体提供测 试样机以及正式交付订单，其中包括非暖通空调领域的企业。此外，公司在海外设立的子公 司等机构，利用各自优势共同开拓国际市场。 在国际品牌建设方面，公司积极参与国际知名行业展会，通过产品展示、技术演示、....
+- Capacity/certification evidence: 直接证据：涵盖新产线扩产及存量市场的汰旧换新，严苛制程领域，公司在薄膜沉积、 ——2024-09-12 《汉钟精机（002158.SZ）-2023 年报&2024 一季报点评：业绩稳 刻蚀已通过部分设备商验证，半导体业务有望进一步打开公司成长空间。 步增长，盈利能力持续提升》 ——2024-05-07 《汉钟精机（002158.SZ）-2023 年业绩快报点评：归母净....
+- ASP or margin evidence: 直接证据：，盈利能力持续提升》 ——2024-05-07 《汉钟精机（002158.SZ）-2023 年业绩快报点评：归母净利润同 风险提示：经济复苏不及预期；真空泵业务拓展不及预期；原材料价格波动。 比增长 34%，盈利能力持续提升》 ——2024-02-27 投资建议：考虑光伏行业需求大幅下降，但 AIDC 行业有望打开新成长空间， 我们下调 2025-2026...；直接证据：25-2026 年盈利预测，上调 2027 年盈利预测，预计 2025-2027 年归母净利润为 6 - 设备 年上半年实现营收 14.89 亿元，同比下降 18.86%；实现归母净利润 2.57 亿 证券分析师：吴双 证券分析师：年亚颂 元，同比下降 42.90%。2025 年上半年毛利率/净利率分别为 35.02%/17.29%， 0755-819813....
+- Utilization/yield evidence: 直接证据：告期末，累计发电量已达 1,615.56 万度，折合节约标准煤 4,429.01 吨。 公司紧跟制造业"工业 4.0"和"智能制造"的发展趋势，着力提升智能化水平，降低能耗， 提高生产效率，打造具有汉钟特色的智能 4.0 体系。目前已建成 ERP 管理系统、自动仓储平 68 2025 年度报告 台、MES 制造执行系统、PLM 全生命周期管理系统、FMS 柔....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/002158-汉钟精机/AP202509171745482711-国信证券-AIDC压缩机-半导体真空泵打造新成长曲线.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 海光信息
+
+- Chain role: 上游算力芯片与存储 / 下游需求与应用; CPU/Host CPU / GPU/AI ASIC / 互联网大模型/MaaS / 国产算力平台.
+- Product/process exposure: CPU/Host CPU / GPU/AI ASIC / 互联网大模型/MaaS / 国产算力平台.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 349.9; final target 175.77819999999997; upside -0.49763303801086034.
+- Extended 2026E package: revenue 206.6 亿元；net profit 46.7 亿元；EPS 2.01；market cap 9401.5 亿元；broker target 260.0.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688041-海光信息/AP202512101797605876-群益证券-重大重组终止-长期仍看好公司算力产业发展.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 13.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=proxy; margin_impact=direct.
+- Residual proxy boundary: 利用率/良率/爬坡：明示券商/Street 锚和 2026E 分母可复算，目标价模型保留；该 proxy 字段只限制上修空间，不提供增量倍数。.
+- Revenue exposure evidence: 直接证据：融、AI 等领域加速渗透，本土化生态优势 股价表现 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年营收 143.77 亿元， 92% YoY+57%；毛利率 57.8%，YoY-5.9pcts；归母净利润 25.45 亿元，YoY+32%。公司持续优 61% 化“CPU+DCU....
+- Customer/platform evidence: 直接证据：续巩固产品性能与生态优势， 总市值(亿元)： 8,005.25 推动公司从技术领先向市场主导转化。 流通股本(亿股)： 23.24 流通市值(亿元)： 8,005.25 ⚫ 行业：云厂商“军备竞赛”推高需求，国产算力迎来加速发展期。 近 3 月换手率(%)： 57.84 国内云厂商持续加码算力基础设施建设，阿里巴巴、字节跳动等头部厂商 2025 年资本开支超....
+- Order/backlog evidence: 直接证据：方案、进行芯片设计和验证、交付芯片设计 版图等，芯片的晶圆加工、封装测试通过委外方式完成。公司主要采用直销模式进行产品销售， 少量采用经销模式。公司内部设有专门的销售团队与客户进行需求沟通。在直销模式下，公司直 接参与客户的公开招标或商务谈判，达成意向后，公司与客户签订销售合同；公司接收客户的采 购订单后，根据订单进行备产，生产完成后发货，并向客户提供设计、....
+- Capacity/certification evidence: 直接证据：25 年资本开支超过千亿元，为国产 AI 算力芯片带来了增量需求。国产 AI 股价一年走势 135% 算力芯片厂商已建立起覆盖训练与推理场景的全栈技术体系，多款产品成功 104% 导入主流服务器供应链，并能支持国内外主流大模型的训练与推理。在大模 73% 型从“训练竞赛”转向“推理普及”的产业迁移背景下，国产芯片凭借性价 41% 10% 比优势和供应链稳定性....
+- ASP or margin evidence: 直接证据：显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年营收 143.77 亿元， 92% YoY+57%；毛利率 57.8%，YoY-5.9p - 22 日收盘，公司总市值 7,261 亿元，对应 2026/2027/2028 年 PE 分别为 155.2/109.1/79.1 倍。维...；直接证据：显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年营收 143.77 亿元， 92% YoY+57%；毛利率 57.8%，YoY-5.9pcts；归母净利润 25.45 亿元，YoY+32%。公司持续优 61% 化“CPU+DCU”业务布局，构筑差异化竞争优势，市场影响力与日俱增....
+- Utilization/yield evidence: 代理证据：。同样，阁下获得有关投资 电话: (4420) 3651 8888 的价值或风险的可靠信息也存在困难。本报告中包含或涉及的投资及服务可能未必 ### utilization_or_yield ### margin_impact - 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688041-海光信息/AP202512101797605876-群益证券-重大重组终止-长期仍看好公司算力产业发展.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS_WITH_BOUNDARY：残余代理字段为 利用率/良率/爬坡；已在 residual_proxy_field_audit 中披露官方文件检查、剩余缺口和估值处置；目标价/公允价值不因这些代理字段获得额外上修。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 深科技
+
+- Chain role: 上游算力芯片与存储; HBM/DRAM.
+- Product/process exposure: HBM/DRAM.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 62.26; final target 34.92176273922022; upside -0.43909793223224824.
+- Extended 2026E package: revenue 163.8 亿元；net profit 12.5 亿元；EPS 0.64；market cap 1217.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/source-exhausted-official-filings-20260701/000021-深科技/annual-2025年年度报告.txt.
+- Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 3.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：适用 八、主要控股参股公司分析 √ 适用 □ 不适用 主要子公司及对公司净利润影响达 10%以上的参股公司情况 单位：万元 公司类 注册资 公司名称 主要业务 总资产 净资产 营业收入 营业利润 净利润 型 本 22 深圳长城开发科技股份有限公司 2025 年半年度报告全文 深科技香 390 万 子公司 商业贸易 478,830.61 -1,784.74 3....
+- Customer/platform evidence: 直接证据：并 10.88 亿元 亚 子部件 程和开展运营活动。 亿元 深科技香港成立于 1985 年 7 月，由于公司成立之初即是国际化运作的公司，公司产品 90%以上出口，而香港作为 国际金融中心,长期以来作为连接内地与国际市场的纽带，在区位、政策、法律、文化和人才上具有明显优势，公 其他 司在香港搭建投资平台，将进一步拓宽合作渠道，吸引更多的合作伙伴，有利于公司长....
+- Order/backlog evidence: 直接证据：产品质量保证 的货物 交付租赁物 租赁服务 预付租金 资产的使用权 是 无 服务类质保 时 4.分摊至剩余履约义务的说明 本公司与客户签订的主要为框架协议，客户根据需要向本公司下订单，每笔订单可视为 一项单项履约义务。 5.重大合同变更或重大交易价格调整 本公司与客户签订的主要为框架协议，客户根据需要向本公司下订单，每笔订单都会根 据市场当下的行情约定交易价....
+- Capacity/certification evidence: 直接证据：产，创新研发 LPDDR5 的 PoPt（Package on Package top）超薄叠层封装方案，配合高导热模封料使热管理效率提升 30%，目前该技术已通过 客户认证并进入量产导入阶段。这些技术创新推动公司封测业务收入实现稳健增长。 尽管消费级 HDD 市场持续受到 SSD 的冲击，但 HDD 凭借大容量和低成本存储的优 势，在数据中心、企业级存储和....
+- ASP or margin evidence: 直接证据：业、深科技均严格遵守市场原则，本着 平等互利、等价有偿的一般原则，公平合理地进行。交易定价 有政府定价的，执行政府定价；没有政府定价的，执行市场公 中 2020 长 关于关联交 允价格；没有政府定价且无可参考市场价格的，按照成本加可 履 电 年 12 期 易方面的承 比较的合理利润水平确定成本价执行。 约 有 月 24 有 诺 3）本公司及下属企业与深科技之...；直接证据：.41 274,009,763.05 74,947,484.52 348,957,247.57 存储 本期发生额 上期发生额 子公司名称 经营活动现金流 经营活动现金流 营业收入 净利润 综合收益总额 营业收入 净利润 综合收益总额 量 量 深科技成都 3,022,286,186.31 707,234,465.45 707,977,150.51 694,94....
+- Utilization/yield evidence: 直接证据：hingsCloud IOT）、数字化运营平台（Datatwin）、无代码云表平台（CloudSheet）等新 数字能力，并于 2024 年开始尝试 AI 大模型技术的应用，以提高生产效率、降低管理成本， - 14 - 深圳长城开发科技股份有限公司 2025 年年度报告 打造公司对市场的快速响应能力。 2. 先进的研发设计能力，强大的工程技术能力，满足客户全....
+- Evidence source: sources/source-exhausted-official-filings-20260701/000021-深科技/annual-2025年年度报告.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 澜起科技
+
+- Chain role: 上游算力芯片与存储; HBM/DRAM / 内存接口芯片.
+- Product/process exposure: HBM/DRAM / 内存接口芯片.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 315.89; final target 156.07128; upside -0.5059315584538921.
+- Extended 2026E package: revenue 71.6 亿元；net profit 23.4 亿元；EPS 1.92；market cap 3847.8 亿元；broker target 95.0.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688008-澜起科技/AP202502211643357942-群益证券-中国AI算力需求大爆发-利好内存接口龙头.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：投资摘要 《澜起科技》20240827 中银国际证券股份有限公司 年结日：12 月 31 日 2023 2024 2025E 2026E 2027E 具备证券投资咨询业务资格 主营收入(人民币 百万) 2,286 3,639 5,483 7,422 9,307 增长率(%) (37.8) 59.2 50.7 35.4 25.4 电子：半导体 EBITDA(人....
+- Customer/platform evidence: 直接证据：龙头 结论与建议： 公司基本资讯 随着 DeepSeek 大幅降低 AI 应用门槛，推理、微调等环节的算力需求激 产业别 电子 A 股价(2025/2/20) 72.44 增。国内互联网大厂如阿里、腾讯、字节都已进入算力军备竞赛的关键时期， 上证指数(2025/2/20) 3350.78 预计未来三年国内算力需求将实现跨越式增长。因此，DRAM 行业迎来了新....
+- Order/backlog evidence: 直接证据：额 (人民币 百万) 2,605.53 存接口芯片及高性能运力芯片需求的推动，截至 2025 年 4 月 22 日，预计在 2025 主要股东(%) 年第二季度交付的互连类芯片在手订单金额合计已超过 12.9 亿元， - Q25） 资料来源：ifind，中银证券 资料来源：ifind，中银证券 2025 年 4 月 24 日 澜起科技 2 利润表(人民币 百....
+- Capacity/certification evidence: 直接证据：，稳步拓宽公 司在该领域的市场空间，进一步提升公司的综合竞争力和市场影响力。 55 / 188 澜起科技股份有限公司 2025 年半年度报告 2．供应商风险 公司为最大程度优化自身产能资源配置，同时考虑经济性原则，采取 Fabless 模式，将芯片生 产及封测等工序交给外协厂商负责。自公司成立以来，公司已与外协加工厂商建立了稳定、良好 的协作关系，外协加工厂....
+- ASP or margin evidence: 直接证据：35.14%，环比+21.13%；实现扣非归母净利润 5.03 25% 亿元，同比+128.83%，环比+34.22%。伴随 DDR5 内存接口芯片及高性能运力芯 7% 片销售收入占比增加，互连类芯片产品线毛利率为 64.50%，同比 ## Notice Content 澜起科技(688008) 公司发布2025年一季度报告，互联芯片营收，归母净利连续8季环...；直接证据：13%；实现扣非归母净利润 5.03 25% 亿元，同比+128.83%，环比+34.22%。伴随 DDR5 内存接口芯片及高性能运力芯 7% 片销售收入占比增加，互连类芯片产品线毛利率为 64.50%，同比 ## Notice Content 澜起科技(688008) 公司发布2025年一季度报告，互联芯片营收，归母净利连续8季环比增长。展望2025年，D....
+- Utilization/yield evidence: 直接证据：优化集群拓扑与资源利用率。在 AI 推理场 景中，HBM 因容量限制难以有效支撑持续增大的模型和 KV 缓存，而 CXL 的内存扩展和池化能 力可以有效弥补这一缺口，提升 GPU 利用率和整体推理性能。目前，国际主流云服务商已在新型 服务器集群中部署 CXL 内存资源池，单个内存池通常配置 16-32 颗 CXL MXC 和 2-4 颗 CXLSwitch....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688008-澜起科技/AP202502211643357942-群益证券-中国AI算力需求大爆发-利好内存接口龙头.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 特变电工
+
+- Chain role: 供配电与能源; 变压器.
+- Product/process exposure: 变压器.
+- Candidate valuation method: normalised PE plus order-cycle / working-capital check.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 22.26; final target 26.05112; upside 0.17031087151841873.
+- Extended 2026E package: revenue 1129.4 亿元；net profit 73.3 亿元；EPS 1.21；market cap 1638.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/600089-特变电工/01-AP202510101759490773-华鑫证券-公司动态研究报告-输变电订单高增-中标沙特大单.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 5.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：特变电工 沪深300 美元。8 月，公司中标沙特电力公司变压器及电抗器项目，中 40 30 标总金额约 164 亿元，执行时间 7 年，最低执行量为 70%，为 20 公司未来海外收入提供坚实支撑。 10 0 硅料盈利承压。25H1 新能源产品及工程营收 63.15 亿元，同 -10 -20 比-37.9%，毛利率-3.6%，同比-8.4pct，下滑主要受多....
+- Customer/platform evidence: 直接证据：计 58,538,651,462.53 51,725,502,624.05 购买商品、接受劳务支付的 43,592,045,532.79 37,430,225,053.99 现金 客户贷款及垫款净增加额 存放中央银行和同业款项 5,243,090.15 -26,622,383.60 净增加额 支付原保险合同赔付款项 的现金 为交易目的而持有的金融 资产净增加....
+- Order/backlog evidence: 直接证据：.0%，同比+0.6pct。公司 25H1 新签国内订 日均成交额（百万元） 944.77 单 273.3 亿元，下半年特高压项目启动招标，将助力增量订 单获取；25H1 新签国际订单 11.2 亿美元（同比+66%），截至 市场表现 6 月末，正执行未确收及待履行的国际项目合同金额超 50 亿 (%) 特变电工 沪深300 美元。8 月，公司中标沙特电力公....
+- Capacity/certification evidence: 直接证据：来源：国家统计局，Wind，国信证券经济研究所整理 特变电工煤炭矿区位于新疆准东经济技术开发区，是国家确定的第十四个大型煤炭基地的重要组成部分。 截至 2024 年末，公司煤炭核定产能共计 7400 万吨/年。2024 年公司煤炭业务实现收入 192.6 亿元，同比 增长 5.7%；毛利率 32.4%，同比下降 14.0 个百分点，主要原因系煤炭销售均价同比....
+- ASP or margin evidence: 直接证据：亿元） 989 总股本（百万股） 5053 ▌输变电订单高增，中标沙特大单 流通股本（百万股） 5053 输变电订单高增。25H1 输变电产业营收 235.4 亿元，同比 52 周价格范围（元） 11.13-19.58 +19.7%，毛利率 15.0%，同比+0.6pct。公司 25H1 新签国内订 日均成交额（百万元） 944.77 单 273.3 亿元...；直接证据：万吨，同比下降 77%，价格和盈利承压。预计随着反内卷规范行业竞争秩序， 资料来源：Wind，华鑫证券研究 多晶硅价格回升，公司新能源板块经营状况将改善 - 44,447 归母净利润增长率 -61.4% 48.4% 19.6% 17.4% 负债合计 117,580 121,207 126,798 133,020 盈利能力 所有者权益 毛利率 18.2% 18....
+- Utilization/yield evidence: 直接证据：产品、绿色工厂、 绿色供应链等绿色制造体系示范企业。 公司南露天煤矿、将二矿、将一矿在采剥作业运输环节投入 1,056 辆矿用自 卸车，其中无人驾驶 470 辆，通过智能驾驶矿卡的投运，减少现场作业人员，降 22 / 308 特变电工股份有限公司2025 年半年度报告 低坑下车辆运输时人的不安全行为，避免边坡滑坡导致的安全生产事故，从本质 上实现“少人则安、....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/600089-特变电工/01-AP202510101759490773-华鑫证券-公司动态研究报告-输变电订单高增-中标沙特大单.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 生益电子
+
+- Chain role: PCB 与上游材料设备 / 服务器整机与零部件; AI 服务器 PCB / IC 载板/ABF / 背板/主板/Riser.
+- Product/process exposure: AI 服务器 PCB / IC 载板/ABF / 背板/主板/Riser.
+- Candidate valuation method: PE/PEG plus cycle/product-mix check.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 123.97; final target 65.94738999999998; upside -0.46803750907477626.
+- Extended 2026E package: revenue 90.3 亿元；net profit 12.1 亿元；EPS 1.46；market cap 1031.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688183-生益电子/AP202504291664395249-华鑫证券-公司事件点评报告-AI服务器高端PCB业绩放量-公司迈入高速成长通道.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 10.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：比较高的风险；存货管理风险；国内互联网大厂 对于 AI 资本开支不及预期风险；北美互联网巨头技术迭代不 及预期风险。 预测指标 2024A 2025E 2026E 2027E 主营收入（百万元） 4,687 6,842 9,032 11,832 增长率（%） 43.2% 46.0% 32.0% 31.0% 归母净利润（百万元） 332 855 1,214 1....
+- Customer/platform evidence: 直接证据：。 北美云厂商巨头揭露新一代训练芯片Trainium3计划，公司在高端PCB产品渗透率逐步提升 AWS揭露了新一代AI训练芯片AWS Trainium3的计划。Trainium3是AWS首款采用3纳米工艺制造的芯片，在效能、能效和密度上树立了新标准。搭载Trainium3的UltraServers效能预计将是Trn2UltraServers的四倍，使客户在建....
+- Order/backlog evidence: 直接证据：局变化及大宗商品价格波动影响，部分关键原材料面临供应趋紧与 成本上涨的挑战。2026 年，将深化与核心供应商的战略协同，通过多元化布局与前瞻性储备，确 保供应链的安全稳定，有效支撑订单交付。同时，统筹规划产能建设与资源配置，保障新增产能 38 / 240 生益电子股份有限公司2025 年年度报告 的顺利落地与投产。此外，将持续优化采购策略，通过管理创新与降本....
+- Capacity/certification evidence: 直接证据：保持相对较高的增长，预测2024年至2029年复合增长率将分别达到15.7%、6.4%和7.4%，高于总体增长率。公司在已有的高难度复合多种特殊工艺多层板产线外新建成了高精度HDI产线及软硬结合板产线。公司东城四期项目注于HDI、软硬结合板等高端产品，经过去年投产爬坡，目前HDI及软硬结合板的产能逐步释放，经营情况稳步向好，已逐步完成部分关键客户的认证和导入....
+- ASP or margin evidence: 直接证据：断增加，目前车用 PCB 以 4~8 层板为主，而自驾系统多采单价较高的 HDI 板， 其价格约为 4~8 层板的 3 倍，L3 以上自驾系统配备的 LIDAR 所采用的 HDI 价格可达 数十美元，亦为未来车用 PCB 产值增量的主要来源。 2030 年自动驾驶车端系统市场规模将达 5,000 亿元。根据罗兰贝格的数据预测， 预计中国自动驾驶市场在未来将快...；直接证据：2025 年 第 一 季 度 实 现 归 母 净 利 润 2 亿 元 ， 同 比 增 长 656.87%。公司积极携手多家知名 - 动负债合计 383 383 383 383 归母净利润增长率 157.4% 42.0% 39.2% 负债合计 3,412 3,407 3,534 3,840 盈利能力 所有者权益 毛利率 22.7% 28.0% 28.5% 29....
+- Utilization/yield evidence: 直接证据：循环利用率达 51.29%；能源端规 模化应用分布式光伏，清洁能源使用占比提升至 44.21%，年节电超 480 万千瓦时；荣获废弃物零 填埋 UL2799 铂金级认证，固废资源化利用率达到 100%，形成可复制的电子制造绿色生产模式。 2、数智化赋能智慧制造 构建以数据中台、商业智能（BI）、工业智能及大模型预测为核心的能力体系，在质量检测、 知识管理、辅....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688183-生益电子/AP202504291664395249-华鑫证券-公司事件点评报告-AI服务器高端PCB业绩放量-公司迈入高速成长通道.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 盛科通信
+
+- Chain role: 上游算力芯片与存储 / 网络与光通信; AI 交换机/路由器 / DSP/SerDes/TIA / 交换 ASIC.
+- Product/process exposure: AI 交换机/路由器 / DSP/SerDes/TIA / 交换 ASIC.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 380.52; final target 111.92623999999998; upside -0.7058597708399033.
+- Extended 2026E package: revenue 12.1 亿元；net profit 0.5 亿元；EPS 0.11；market cap 1560.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/688702-盛科通信/02-AP202604241821529215-开源证券-公司信息更新报告-营收增速符合预期-超节点龙头研发持续加速.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 9.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：3 个月换手率(%) 216.19 自研专利持续突破，或持续受益于高端芯片放量，维持“买入”评级。  营收规模符合预期，高强度研发持续投入 股价走势图 2025 年，公司实现营业收入 11.51 亿元，同比增长 6.35%；实现归母净利润-1.5 亿元；实现扣非归母净利润-2.18 亿元；实现毛利率、净利率分别为 49.21%、 盛科通信 沪深300 -1....
+- Customer/platform evidence: 直接证据：。公司目前产品覆盖中高 总市值(百万元) 49,610.00 端产品线，产品涵盖 100Gbps~25.6Tbps 交换容量及 100M~800G 的端口 速率，全面覆盖企业网络、运营商网络、数据中心网络和工业网络等应 用领域。2025 上半年，公司持续推进已处于量产阶段的产品销售，加强 基础数据 客户持续深度合作并取得积极成效，同时公司积极推动面向大规模数....
+- Order/backlog evidence: 直接证据：### order_or_backlog - 2025-05-08 快速迁移，高性能交换架构技术先进。随着国产算力浪潮迭起、算力互 《盛科通信-U(688702)：毛利率改善， 联需求快速增长，公司的高研发投入有望加速转化为订单与市场份额， 长期成长空间广阔。 高端客户导入进展良好》 2024-11-08 ◼ 盈利预测与投资评级：考虑公司有望持续、深度受益于....
+- Capacity/certification evidence: 直接证据：00Gbps~25.6Tbps 交换容量及 100M~800G 的端口 速率，全面覆盖企业网络、运营商网络、数据中心网络和工业网络等应 用领域。2025 上半年，公司持续推进已处于量产阶段的产品销售，加强 基础数据 客户持续深度合作并取得积极成效，同时公司积极推动面向大规模数据 每股净资产(元,LF) 5.69 中心和云服务的高端旗舰芯片产品的客户导入，公司....
+- ASP or margin evidence: 直接证据：-0.1亿元，环比减亏44.1%。毛利率方面，25H1同比增加9.2个百分点达46.7%，25Q2毛利率达48.8%，环比+4.7个百分点，主要系供应链及产品结构优化。我们预计随着高端产品放量，公司毛利率有望继续提升。 高端芯片客户导入顺利，公司竞争力持续增强。公司目前产品覆盖中高端产品线，产品涵盖100Gbps~25.6Tbps交换容量及100M~800G...；直接证据：《盛科通信-U(688702)：毛利率改善， 联需求快速增长，公司的高研发投入有望加速转化为订单与市场份额， 长期成长空间广阔。 高端客户导入进展良好》 2024-11-08 ◼ 盈利预测与投资评级：考虑公司有望持续、深度受益于算力国产化，我 们将公司 2025/2026/2027 年预期归母净利润由-0.28/0.07/1.02 亿元上调 至-0.17/0....
+- Utilization/yield evidence: 直接证据：量节点和业务的有效运维。智能 化的网络运维需要以太网交换芯片提供深度、精确的基础数据支撑。公司以太网交换芯片具备基 于统计、基于流、基于路径的三种数据可视化手段。统计可视化包括缓存利用率、时延分布、队 列统计、业务统计；流可视化包括业务流的硬件学习、状态收集和硬件记录以及大象流的学习； 15 / 165 苏州盛科通信股份有限公司2025 年半年度报告 路径可....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/688702-盛科通信/02-AP202604241821529215-开源证券-公司信息更新报告-营收增速符合预期-超节点龙头研发持续加速.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 科士达
+
+- Chain role: 供配电与能源; UPS/HVDC.
+- Product/process exposure: UPS/HVDC.
+- Candidate valuation method: normalised PE plus order-cycle / working-capital check.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 51.47; final target 41.95352; upside -0.18489372449970864.
+- Extended 2026E package: revenue 83.5 亿元；net profit 9.4 亿元；EPS 1.59；market cap 305.1 亿元；broker target 64.0.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002518-科士达/AP202604281821658543-东吴证券-2026年一季报点评-数据中心产品及订单发展提速-新能源重回增长通道.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 5.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：) 565.14 ◼ 储能景气度回升、新能源重回增长通道：25 年公司光储充业务实现营收 20.69 亿元，同增 52.01%，毛利率 19-20%。其中储能实现 10 亿元左右 收入，随欧洲市场恢复，和高价电芯库存的消化，下半年持续毛利率回 相关研究 升，贡献主要增长。26Q1 储能继续维持高景气度，实现营收 4 亿元左 《科士达(002518)：2025....
+- Customer/platform evidence: 直接证据：源业务的实质性突破，今年北美小批量订单，明年有望贡献显著增量。 市净率(倍) 5.26 新产品方面，公司计划年底推出 800V-HVDC 产品，布局下一代供电技 术，有望凭借已有客户渠道提高海外市场份额，身位优势显著。国内与 流通 A 股市值(百万元) 23,758.50 字节、阿里、万国数据、世纪互联等头部 CSP、COLO 以及运营商合作， 总市值(百万....
+- Order/backlog evidence: 直接证据：开发 银行等各大银行数据中心进行 UPS、电池、配电等设备交付，涉及内蒙、上海、贵阳、西安等地的核心项目；通信领 域：公司参与中国移动、中国联通、中国电信、中国铁塔等 UPS 设备集采执行，并中标 2025~2027 年度中国电信 10kV 中压直供一体化电力模块集采项目；互联网 IDC 领域：公司已成为字节跳动、阿里巴巴、京东、万国、世纪互联 等互联网客户....
+- Capacity/certification evidence: 直接证据：基础数据 长，大功率 UPS 开始交付，Q2 航运恢复后出货量将进一步大幅增长。 每股净资产(元,LF) 8.55 公司将把握新一轮数据中心基建机遇，积极参与阿里字节等招标，越南 工厂投建配套海外产业链，HVDC-800V 及 SST 模块将在 Q2 和年底分 资产负债率(%,LF) 37.45 别推出，有望带来实现新突破。 总股本(百万股) 582.23....
+- ASP or margin evidence: 直接证据：复，和高价电芯库存的消化，下半年持续毛利率回 相关研究 升，贡献主要增长。26Q1 储能继续维持高景气度，实现营收 4 亿元左 《科士达(002518)：2025 年业绩预告 右，毛利率恢复至 25%左右，海外 S 客户及自有品牌均快速增长。 点评：“数据中心+新能源”双轮驱动 ◼ 费用率稳定、存货略有上升：2025 年期间费用 7.3 亿元，同比+17.3...；直接证据：5 15 15 EBITDA 776 1,515 2,106 2,834 其他非流动负债 279 279 279 279 负债合计 2,947 5,445 6,034 9,339 毛利率(%) 28.98 30.36 31.06 31.69 归属母公司股东权益 4,827 5,752 7,168 9,119 归母净利率(%) 11.59 11.08 11.5....
+- Utilization/yield evidence: 直接证据：业年度统 计报告》，全球储能市场规模突破 8000 亿元，同比增长 45%，中国储能产业表现亮眼，成为全球储能发展的核心引擎。根 据国家能源局数据，截至 2025 年底，全国已建成投运新型储能装机规模达到 1.36 亿千瓦/3.51 亿千瓦时，较 2024 年底增 长 84%，与“十三五”末相比增长超 40 倍。“十四五”时期，新型储能主要应用场景形成“电网....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/002518-科士达/AP202604281821658543-东吴证券-2026年一季报点评-数据中心产品及订单发展提速-新能源重回增长通道.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 联特科技
+
+- Chain role: 网络与光通信; 800G/1.6T 光模块 / LPO/LRO.
+- Product/process exposure: 800G/1.6T 光模块 / LPO/LRO.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 346.0; final target 130.91799999999998; upside -0.6216242774566474.
+- Extended 2026E package: revenue 12.4 亿元；net profit 1.7 亿元；EPS 1.28；market cap 448.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/301205-联特科技/01-AP202502211643346322-东兴证券-三步走战略-成长为光模块行业小巨头.txt.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：联特科技（301205.SZ）：三步走战略，成长为光模块行业小巨头 P11 3. 盈利预测及评级 高速率光模块订单驱动 2024 年收入大幅增长。 2024 年前三季度，公司实现营收 6.43 亿元，同比增长 45.8%， 归母净利润为 0.62 亿元。根据公司业绩公告，2024 年全年预计实现归母净利润 8500-11500 万元，同比增 长 220.96....
+- Customer/platform evidence: 直接证据：品在性能、成本和质量等 33 武汉联特科技股份有限公司 2025 年年度报告全文 方面的核心竞争力。同时，公司还将加强与国内外主流电信设备制造商、数据通信设备商和互联网服务 提供商客户的合作，力争成为电信中长距传输领域、5G 中回传、数据中心互联领域的核心供应商。 （二）公司的经营计划 1、深耕数据通信市场，增强高速光模块产品实力 公司将充分把握数据通信市场....
+- Order/backlog evidence: 直接证据：备相关的内部控制，并测试了相关控制设计和执行的有 效性； （2）检查管理层提供的存货账龄信息是否准确； 93 武汉联特科技股份有限公司 2025 年年度报告全文 （3）通过检查销售订单评估管理层对其未来使用或销售预测的合理性。此外我们也通过考虑历史 销售及市场情况评估管理层以存货的估计售价减去至完工时估计将要发生的成本、估计的合同履约成本 和销售费用以及相关....
+- Capacity/certification evidence: 直接证据：0G光模块实现小规模量产量产。10月，在OCP上重点推出了800G2DR4LRO、800G DR4和1.6T OSFP1600等产品，并在交换机上进行了800G系列产品的现场演示，通过实际操作向市场展示了产品的性能和稳定性。 联特科技在光模块产能扩充方面取得显著进展。截止2024年6月底，公司光模块产能280万支，不含部分外协加工的低速率产品。 海外方面，公....
+- ASP or margin evidence: 直接证据：小巨头 P5 目前联特科技在推进高速率光模块研发和量产方面进展顺利。 联特科技目前着重扩宽其高速率数通光模块领域。2024 年 3 月，公司发布了基于 Sipho MZM 技术的 800G 光模块，包括集成 DSP 模块和 LPO 模块，主要应用于解决优质光网络方案，彰显其在技术创新上的突破。 9 月，在 CLOE 上，联特科技推出最新研发的 1.6T 光模...；直接证据：年前三季度联特科技归母净利润（亿元） 45.8% 9 8.25 50% 1.2 1.13 37.2% 1.06 8 40% 35.0% 18.1% 1 7 6 - 模块行业小巨头 毛利率回归正常区间。2020 年及 2023 年公司主营毛利率大幅下降，主要由于 2020 年公司 10G 以下速率产 品收入占比及毛利率波动较大；2023 年公司订单量下滑受海外....
+- Utilization/yield evidence: 直接证据：大马来西亚 生产设施的产能，以补充国内制造业务，提升服务国际客户的能力。 此外，公司将通过引入先进自动化设备、加强工艺标准化、强化数字化与信息管理系统，持续提升 生产制造基地的产能利用率与可扩展性，进一步提升生产效率、产品良率，并促进新增产能的逐步释放。 3、持续拓展客户群体，深化客户合作关系 公司将进一步深化与核心客户的战略合作关系，特别是北美及其他关键市....
+- Evidence source: sources/blocked-core-candidate-broker-reports-20260701/301205-联特科技/01-AP202502211643346322-东兴证券-三步走战略-成长为光模块行业小巨头.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 聚辰股份
+
+- Chain role: 上游算力芯片与存储; HBM/DRAM / 内存接口芯片.
+- Product/process exposure: HBM/DRAM / 内存接口芯片.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 215.0; final target 147.908; upside -0.31205581395348847.
+- Extended 2026E package: revenue 18.6 亿元；net profit 5.5 亿元；EPS 3.49；market cap 334.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688123-聚辰股份/AP202502241643441278-中邮证券-SPD5服务器PC齐发力-端侧AI赋能NorFlash走向大容量.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：AI 赋能 Nor Flash 走向大容量 个股表现 l 事件 2025 年 2 月 21 日，公司披露 2024 年度业绩快报公告，预计 2024 聚辰股份 电子 57% 年实现营收 10.28 亿元，同比+46.10%；实现归母净利润 2.90 亿元， 50% 43% 同比+188.52%；实现扣非归母净利润 2.61 亿元，同比+195.55%。 36....
+- Customer/platform evidence: 直接证据：易，也可能为这些公司提供或 者计划提供投资银行、财务顾问或者其他金融产品等相关服务。 《证券期货投资者适当性管理办法》于 2017 年 7 月 1 日起正式实施，本报告仅供中邮证券客户中的专业投资者使 用，若您非中邮证券客户中的专业投资者，为控制投资风险，请取消接收、订阅或使用本报告中的任何信息。本公 司不会因接收人收到、阅读或关注本报告中的内容而视其为专业....
+- Order/backlog evidence: 直接证据：backlog - 2025 年 08 月 25 日 公司点评 公 买入 / 维持 司 聚辰股份(688123) 研 究 昨收盘:83.28 DDR5SPD+车规级 EEPROM 出货增长，盈利能力提升 事件：公司发布 25 年中报，25 年上半年实现营业总收入 5.75 亿元， ◼ 走势比较 同比增长 11.69%；归属母公司股东的净利润 2.05 亿元....
+- Capacity/certification evidence: 直接证据：及 LU 等关键性能指标方 面优于市场同类产品 本项目拟开发多个规格的 摄像头马达驱动芯片，包 括 新 一 代 兼 容 1.2V/1.8V 的开环式摄像头马达驱动 部分规格产品已量产或已 本项目开发的摄像头马达 芯片以及整体控制性能更 准备导入量产；部分规格产 驱动芯片主要应用于智能 摄像头马达驱动芯 佳的闭环式与光学防抖 5 12,972.40 4,735....
+- ASP or margin evidence: 直接证据：、汽车级 平 50% EEPROM 芯片以及工业级 EEPROM 芯片出货量快速提升。公司 25 年上半年 洋 30% 毛利率 60.25%，同比增长 5.55pct，主要受益于高价值量产品出货增加， 证 10% 产品结构优化，带动整体盈利能力增加。 券 (10%) 24/8/26 24/11/6 25/1/17 25/3/30 25/6/10 25/8/2...；直接证据：在 10%以上 指数的涨跌幅。 市场基准指数的选取：A 股市 行业评级 中性 预期行业相对同期基准指数涨幅在-10%与 10%之间 场 - 附加 6 8 11 15 归属于母公司净利润 -71.6% 188.5% 41.4% 34.4% 销售费用 49 57 76 100 获利能力 管理费用 45 56 76 100 毛利率 46.6% 54.4% 54.8....
+- Utilization/yield evidence: 直接证据：务质量和运营质 量水平。同时，为控制委外加工风险，公司制定并实施了一整套从晶圆制造到封装测试的专业质 量控制流程，对生产环节进行全面、及时的质量监控，确保所销售芯片产品的高品质和优良率， 保证客户终端产品量产的顺利进行。通过公司长期大规模出货积累，公司产品质量已在客户端得 到了充分的验证，得以掌握较为全面的产品失效模式并可提前加以防范，通过量产前进行严格的....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688123-聚辰股份/AP202502241643441278-中邮证券-SPD5服务器PC齐发力-端侧AI赋能NorFlash走向大容量.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 芯原股份
+
+- Chain role: 上游算力芯片与存储; GPU/AI ASIC / 先进封装/Chiplet 配套.
+- Product/process exposure: GPU/AI ASIC / 先进封装/Chiplet 配套.
+- Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 342.1; final target 138.9198; upside -0.5939204910844782.
+- Extended 2026E package: revenue 62.7 亿元；net profit 0.8 亿元；EPS 0.17；market cap 1799.2 亿元；broker target 300.0.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688521-芯原股份/AP202606151823568591-群益证券-中美算力竞争利好公司-目前估值较低.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：2%、 98.2%。公司系算力产业链核心个股，我们看好公司在该领域 信达证券股份有限公司 的发展前景，维持对公 ## Notice Content 芯原股份(688521) 现营业收入31.52亿元（yoy+36%），2H25实现营收21.79亿元（环比+124%，同比+57%），下半年业绩拐点较为明显。具体来看，2025年公司量产业务实现营收14.9亿元（....
+- Customer/platform evidence: 直接证据：供商和车企首选的芯片设 计服务合作伙伴之一，服务的公司包括三星、谷歌、亚马逊、微软、百度、腾讯、阿里巴巴等国 际领先企业。报告期内，公司来自系统厂商、互联网企业、云服务提供商和车企客户的收入占总 收入比重约四成。 （2）公司是中国排名第一的半导体 IP 供应商 根据 IPnest 在 2025 年的统计，从半导体 IP 销售收入角度，芯原是 2024 年中国....
+- Order/backlog evidence: 直接证据：5 年末，公司在手订单 金额达到 50.75 亿元，较三季度末的 32.86 亿元大幅提升 54.45%，且已 相关研究 连续九个季度保持高位。公司 25 年末在手订单中，量产业务订单超 30 《芯原股份(688521)：事件点评：芯来 亿元，公司预计一年内转化的比例超 80%，且近 60%为数据处理应用领 智融收购终止，逐点半导体收购获多 域订单。 家重量....
+- Capacity/certification evidence: 直接证据：MCU 应用的 内 9 功耗 464.58 的 CPA 认证， 等对于 9 9 模拟 IP 平台 -整体功耗 先 模拟 部分 IP 已经得 功耗要 达到国内领先 进 IP 平 到量产验证 求高的 台研 产品 发 -更新 BLE 射 物联 频电路设计， 网连 继续优化 IP 的 --IP 核心工作电压可降 -广域物 接技 功耗面积-继续 低至 0.65v，射频....
+- ASP or margin evidence: 直接证据：百分点。 市净率(倍) 30.58 ◼ 量产业务加速放量，芯片设计稳健增长。分业务情况看，25 全年公司量 流通 A 股市值(百万元) 108,642.32 产业务收入同 ### asp_or_price_proxy - 45 45 45 45 EBITDA (331) (233) 490 1,054 其他非流动负债 83 33 33 33 负债合计 2,5...；直接证据：使用不同假设和标准，采用不同观点和分析方法， 致使信达证券发出与本报告所载意见、评估及预测不一致的研究报告，对此信达证券可不发出特别通知。 在任何情 - % 61.8% 归属母公司净利润 -601 -528 320 925 1,834 (百万元) 增长率 YoY% -102.7% 12.2% 160.6% 189.2% 98.2% 毛利率% 39.9% 34....
+- Utilization/yield evidence: 直接证据：目前，新能源汽车正在全球范围内快速发展，其带来的先进 ADAS 和自动驾驶技术需求，使得 汽车芯片在汽车中的价值和价格比重均日益增加。高端智驾芯片面临设计周期长、单芯片（大芯片） 良率较低、生产受限以及算力扩展困难等挑战，采用 Chiplet 技术可以有效解决这些问题，并已在汽 车产业界达成共识，相关技术获得了积极部署。例如，2023 年 11 月，瑞萨发布....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688521-芯原股份/AP202606151823568591-群益证券-中美算力竞争利好公司-目前估值较低.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.
+
+## 英威腾
+
+- Chain role: 供配电与能源; UPS/HVDC.
+- Product/process exposure: UPS/HVDC.
+- Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
+- Target-price status: watchlist_only_insufficient_model.
+- Valuation disposition: watchlist_only_insufficient_positive_eps_or_denominator - 当前收入、股本和市值已补齐，但 2026E EPS 代理为负或不可用；PE/PEG 不适用，需等待盈利路径或改用明示 PS/PB/SOTP 证据。
+- Current target package: current price 7.13; final target not published; upside not applicable.
+- Extended 2026E package: revenue 43.7 亿元；net profit -1.4 亿元；EPS -0.17；market cap 58.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: 盈利或模型分母不足，观察名单; blocker positive 2026E EPS; source sources/source-exhausted-official-filings-20260701/002334-英威腾/annual-2025年年度报告.txt.
+- Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 5.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=proxy; margin_impact=direct.
+- Residual proxy boundary: 利用率/良率/爬坡：该公司已因盈利或模型分母不足留在观察名单；残余 proxy 不发布目标价，只作为后续跟踪变量。.
+- Revenue exposure evidence: 直接证据：.04% 5 第五名 49,386,341.21 1.84% 合计 -- 440,830,696.72 16.42% 主要供应商其他情况说明 □适用 不适用 报告期内公司贸易业务收入占营业收入比例超过 10% □适用 不适用 28 深圳市英威腾电气股份有限公司 2025 年年度报告全文 3、费用 单位：元 2025 年 2024 年 同比增减 重大变动说....
+- Customer/platform evidence: 直接证据：中，组织调整建设持续推 进，叠加搬迁等偶发性交付波动影响，收入出现阶段性小幅下滑，但价值行业经营及战略性客户拓展取得成效，新产品 开发有序推进。 市场拓展与客户突破方面，公司与头部客户合作实现多点突破，全球化服务体系持续完善。公司在战略行业上取得 进展，在先进制造、电力能源等重点行业实现批量订单的突破，并先后成功中标基础运营商总部精密空调、金融机构总 23....
+- Order/backlog evidence: 直接证据：取得成效，新产品 开发有序推进。 市场拓展与客户突破方面，公司与头部客户合作实现多点突破，全球化服务体系持续完善。公司在战略行业上取得 进展，在先进制造、电力能源等重点行业实现批量订单的突破，并先后成功中标基础运营商总部精密空调、金融机构总 23 深圳市英威腾电气股份有限公司 2025 年年度报告全文 行 UPS 等项目；推进液冷产品试机，海外方面，成功交付....
+- Capacity/certification evidence: 直接证据：到端质量升级，体系与产品认证合规管理持续强化，产品可靠性与客户满意度稳 步提升。统筹推进中山一期新厂区投产落地与苏州三期基建项目有序建设，中山一期新厂区全面完成建设验收与产线搬 迁投产运营，苏州三期项目按既定建设计划有序推进，为后续产能释放奠定坚实基础。 2、收入与成本 （1） 营业收入构成 单位：元 2025 年 2024 年 同比增减 金额 占营业收入比....
+- ASP or margin evidence: 直接证据：.74 亿元，同比增长 3.52%，其中海外市场实现营收 13.92 亿元，同比增长 4.79%。工业自动化业务作为核心基 本盘持续稳健增长，面对激烈竞争及供应链成本变动，通过优化产品结构及技术创新保持了毛利率总体稳定；新能源动 力业务聚焦商用车战略显成效，营业收入实现大幅增长；网络能源、光伏储能业务在原有产品市场竞争激烈下推进业务 结构转型优化，加强产品力...；直接证据：挑战并存。 报告期内，公司持续聚焦商用车的战略方向，新能源动力业务实现营收 7.64 亿元，同比增长 30.71%，其中商用车 领域收入占比 81.78%，同比增长 67.22%；毛利率较上年显著提升，实现营业利润-0.09 亿元，较上年减亏明显；经营性 现金流净额为正，经营质量实现明显改善。 面对行业激烈竞争环境，报告期公司着力推动聚焦新能源商用车头部客户....
+- Utilization/yield evidence: 代理证据：持续的全球发展。 （三）2026 年度经营计划及关键经营举措 2026 年是公司战略攻坚、抢抓新质生产力产业机会积蓄更强发展动能，推动营业收入更快增长的关键一年。公司将 进一步优化运营效率，实现人均效益与核心经营指标持续向好。公司将推动以下具体计划：巩固通用变频器及模块化 UPS 市场基本盘，补强电机、伺服、控制与编码器、高功率 UPS、液冷等关键产品技术能....
+- Evidence source: sources/source-exhausted-official-filings-20260701/002334-英威腾/annual-2025年年度报告.txt; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵已完成，但盈利或模型分母不足；该标的保留观察名单，不发布目标价/公允价值。.
+- Upgrade trigger: positive 2026E EPS；wait for positive profit denominator or switch to explicit PS/PB/SOTP with path-to-profit evidence.
+- Next verification path: wait for positive profit denominator or switch to explicit PS/PB/SOTP with path-to-profit evidence.
+
+## 锐捷网络
+
+- Chain role: 上游算力芯片与存储 / 网络与光通信; AI 交换机/路由器 / DPU/NIC/SuperNIC.
+- Product/process exposure: AI 交换机/路由器 / DPU/NIC/SuperNIC.
+- Candidate valuation method: PE/PEG with shipment, customer and margin validation.
+- Target-price status: house_fair_value_model_ready_no_street_target.
+- Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
+- Current target package: current price 85.92; final target 60.227039999999995; upside -0.29903351955307267.
+- Extended 2026E package: revenue 182.2 亿元；net profit 11.5 亿元；EPS 1.44；market cap 683.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/301165-锐捷网络/AP202606021823158258-开源证券-公司首次覆盖报告-从高端交换机到光模块全链条布局的网络设备龙头.pdf.
+- Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：2025Q3 实现营收 40.31 亿元，同比增长 20.93%，环比下滑 2%；归母净 利润为 2.28 亿元，同比及环比分别下滑 11.5%和 33.8%。 图1：锐捷网络营业收入及增速（单位：亿元、%） 图2：锐捷网络单季营业收入及增速（单位：亿元、%） 资料来源：公司公告、Wind、国信证券经济研究所整理 资料来源：公司公告、Wind、国信证券经济研....
+- Customer/platform evidence: 直接证据：专利 3,377 项；拥有有效授权专利 1,371 项，其中发明专利 1,204 项。 （二）深厚的行业积累和优质客户资源 凭借多年的市场积累、过硬的综合实力，公司在业内获得庞大的客户资源、稳定的客户基础和良好的客户口碑。公司 在运营商、互联网、教育、医疗、制造、商业等行业拥有庞大、稳定的客户群体。截至目前，公司已累计服务 1,000 多家 金融机构、5,0....
+- Order/backlog evidence: 直接证据：于巨潮资讯网 全景网“投资 2025 上市公司投资者 书等就投资者关注技术与产品研 （http://www 者关系互动平 机构、 年 05 网络平台线 网上集体 发进展、核心客户订单交付进 .cninfo.com. 台” 个人、 月 14 上交流 接待日活动暨公 度、业绩变动原因、劳动用工情 cn）的《2025 （https://ir 其他 日 司 2024....
+- Capacity/certification evidence: 直接证据：28 / 32 公司首次覆盖报告 5、 风险提示 （1） 交换芯片放量不及预期 交换芯片产品研发难度较大、研发过程较长、投入资金较高，若公司交换芯片 设计及性能偏离行业方向、无法通过客户认证、落后于行业升级换代水平，导致最 终芯片难以量产放量，则公司前期高额研发投入可能无法收回，不利于公司长期发 展。 （2） 网络需求不及预期 若国内外的网络组网需求不及预期....
+- ASP or margin evidence: 直接证据：享受低成本 低功耗的收益。2022 年公司正式推出首款 CPO 数据中心交换机，整机交换容量 25.6Tbps，2025 年公司展示了 51.2T CPO 交换机商用互联方案，为 800G 和 1.6T 网 络升级提供了技术路径。 图31：锐捷网络推出 51.2T CPO 交换机 资料来源：公司官网 当前公司 LPO/NPO 处于样机小规模适配阶段，2026...；直接证据：单位：亿元、%） 图4：锐捷网络单季归母净利润及增速（单位：亿元、%） 资料来源：公司公告、Wind、国信证券经济研究所整理 资料来源：公司公告、Wind、国信证券经济研究所整理 盈利能力稳健，费用率有所下滑。2025 年前三季度公司毛利率为 34.08%，相较于 2024 年下滑 4.54pp，2025Q3 实现毛利率 35.56%，同比提升 0.78pp....
+- Utilization/yield evidence: 直接证据：两家 GPU 厂商完成适配测试，实现了计算节点的 BringUp。 交换节点方面，采用 51.2Tb/s 交换芯片，其中 25.6Tb/s 的带宽通过 Cable tray 连 GPUEthernet 实现 Scale-up，25.6Tb/s 带宽通过 Fly Cable 连接交换节点前 ，基于 接 面板作为 Scale-up 扩展端口，端口形态为 32*O....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/301165-锐捷网络/AP202606021823158258-开源证券-公司首次覆盖报告-从高端交换机到光模块全链条布局的网络设备龙头.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
+- Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
+
+## 高澜股份
+
+- Chain role: 液冷与温控; CDU / Manifold/分液器 / 冷板.
+- Product/process exposure: CDU / Manifold/分液器 / 冷板.
+- Candidate valuation method: normalised PE/SOTP with data-center order validation.
+- Target-price status: extended_target_price_model_ready.
+- Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
+- Current target package: current price 37.25; final target 19.347; upside -0.48061744966442954.
+- Extended 2026E package: revenue 12.7 亿元；net profit 1.4 亿元；EPS 0.45；market cap 115.3 亿元；broker target 32.5.
+- Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/300499-高澜股份/AP202509161744822098-国信证券-特高压纯水冷却设备龙头-数据中心液冷打造第二成长曲线.pdf.
+- Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 21.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
+- Residual proxy boundary: none.
+- Revenue exposure evidence: 直接证据：管理业务实现收入 2.24 亿元，同比增长 239.39%。剥离东莞硅翔后，公司重点发 展高功率密度热管理业务，主要为数据中心和储能领域需求，近两年实现快速增 长，2024 年实现收入 3.28 亿元，同比增长 74.66%，占总体收入比例达 47.47%。 图7：高澜股份分业务收入（亿元） 图8：高澜股份分业务收入结构 资料来源：公司公告、Wind、国信证....
+- Customer/platform evidence: 直接证据：维克机房温控节能产品供应客 户包括 IDC 运营商、大型互联网公司、通信运营商等，历年来公司已为腾讯、阿 里巴巴、秦淮数据、数据港等用户的大型数据中心提供制冷产品及系统；申菱环境 客户分布于通信、电力、化工、交通、国防工程、航空航天、VOCs 治理、公共建 筑、大型商用、科研院校等行业领域，其中数据中心客户包含华为、阿里巴巴、腾 讯、百度等；科创新源收入主要....
+- Order/backlog evidence: 直接证据：核准开工 4 条，2025 年特高压建设提速。海外沙特到 2030 年拟建 7 条柔直输电线路，公司已中标 2 条价值量不低于 5 亿元。受益国内 外电力系统建设景气上行，公司在手订单从 2024 年 6 月 30 号的 5.62 亿元 增长至 2025 年 6 月 30 号的 11.39 亿元。 液冷作为数据中心温控必选项将持续高增，公司覆盖头部客户并积极....
+- Capacity/certification evidence: 直接证据：门子全球供应商认证的液冷企业。公司已发展成为国内技术水平领先、产 品线齐全、具备规模化生产能力的热管理设备供应商，在行业中的地位和规模具有显著的竞争优势。 3.产品质量优势 公司已通过 ISO9001:2015 质量管理体系、ISO14001:2015 环境管理体系、ISO45001:2018 职业健康 安全管理体系、ISO50001:2018 能源管理体系....
+- ASP or margin evidence: 直接证据：20 高澜股份(300499.SZ)/通信、计算机 利润率层面，公司大功率电力电子热管理产品 2023 年实现毛利率 22.4%， 降幅收窄，我们认为随着上游原材料价格趋于稳定，毛利率整体趋势也有望平稳， 24 毛利率同 23 年相比持平，维持 22.4%，25~26 年毛利率稳定在 24.0%。高功 率电力电子热管理产品毛利率我们认为有望受益于公司产品由风...；直接证据：流产品竞争加剧以及拓展新市场营销，公司 2020 年-2024 年整体毛利率、净利 率呈波动趋势。公司 2022 年以来毛利率逐步修复，主要系大功率电力电子下游需 求回暖带动收入及毛利率企稳回升。高功率密度热管理业务毛利率水平较低， 2022-2025H1 在 9%-17%区间波动，备品备件毛利率维持在 40%以上的高盈利能力 水平。 图9：高澜股份盈利能力....
+- Utilization/yield evidence: 直接证据：KW 液冷系统应用在某科研项目 2020 年 6 月 服务器浸没式液冷 54U TANK 应用在知名互联网企业某数据中心机房 2021 年 6KW/8KW/66KW 浸没式液冷系统投运 2022 年 7KW/15KW/110KW/180KW/250KW 浸没式液冷系统投运，360KW/400KW/484KW 冷板式液冷系统投运 浸没式数据中心液冷装备关键技术....
+- Evidence source: sources/core-candidate-valuation-broker-reports-20260701/300499-高澜股份/AP202509161744822098-国信证券-特高压纯水冷却设备龙头-数据中心液冷打造第二成长曲线.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
+- Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
+- Next verification path: quarterly delivery, margin and customer/order evidence refresh.

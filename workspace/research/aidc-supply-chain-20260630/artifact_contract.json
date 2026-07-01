@@ -1,0 +1,1600 @@
+{
+  "case_id": "aidc-supply-chain-20260630",
+  "artifacts": [
+    {
+      "path": "research_brief.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/template_brief.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/source_registry.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "source_id, source_type, source_quality, evidence_tier, limitations",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "source_id",
+        "source_type",
+        "source_quality",
+        "evidence_tier",
+        "limitations"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/claim_audit.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "claim, source type, confidence, used in valuation, adopted wording",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "claim",
+        "source type",
+        "confidence",
+        "used in valuation",
+        "adopted wording"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "source_exhaustion_log.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "probe_id, reason_unresolved, next_verification_path, blocks_valuation",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "probe_id",
+        "reason_unresolved",
+        "next_verification_path",
+        "blocks_valuation"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/blocked_core_candidate_report_collection_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, reports_archived, best_evidence_score, field_summary, source_path",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "reports_archived",
+        "best_evidence_score",
+        "field_summary",
+        "source_path"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/source_exhausted_official_filing_collection_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, filings_archived, best_evidence_score, field_summary, source_path",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "filings_archived",
+        "best_evidence_score",
+        "field_summary",
+        "source_path"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/proxy_field_official_filing_collection_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, proxy_fields_requested, filings_archived, field_summary, proxy_field_direct_hits",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "proxy_fields_requested",
+        "filings_archived",
+        "field_summary",
+        "proxy_field_direct_hits"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/residual_proxy_field_audit_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, field, source, remaining_gap, valuation_consequence, next_verification_path",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "field",
+        "source",
+        "remaining_gap",
+        "valuation_consequence",
+        "next_verification_path"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/residual_proxy_field_audit_20260701.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, field, remaining gap, valuation consequence, next verification",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "field",
+        "remaining gap",
+        "valuation consequence",
+        "next verification"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "sources/broker-reports/2026-06-30/index.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "broker, title, date, rating, PDF, Text, notes",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "broker",
+        "title",
+        "date",
+        "rating",
+        "PDF",
+        "Text",
+        "notes"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/broker_street_consensus_20260630.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, broker, report_date, rating, target_price, revenue_E, net_profit_E, EPS_E, method, implied_upside, source_quality, source_path",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "broker",
+        "report_date",
+        "rating",
+        "target_price",
+        "revenue_E",
+        "net_profit_E",
+        "EPS_E",
+        "method",
+        "implied_upside",
+        "source_quality",
+        "source_path"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/broker_street_consensus_20260630.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, broker, target_price, source_quality, valuation_weight",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "broker",
+        "target_price",
+        "source_quality",
+        "valuation_weight"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/full_chain_universe_20260630.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "node_type, chain_block, evidence_status, classification, valuation_status",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "node_type",
+        "chain_block",
+        "evidence_status",
+        "classification",
+        "valuation_status"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/chain_business_research.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "upstream business, downstream business, business relationship, core technology, core revenue business, 2026E expectation",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "upstream business",
+        "downstream business",
+        "business relationship",
+        "core technology",
+        "core revenue business",
+        "2026E expectation"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/chain_business_matrix_20260630.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "upstream_business, downstream_business, business_relationship, core_technology, core_revenue_business, 2026e_expectation",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "upstream_business",
+        "downstream_business",
+        "business_relationship",
+        "core_technology",
+        "core_revenue_business",
+        "2026e_expectation"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/full_chain_taxonomy.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/core_vs_satellite_universe.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/coverage_gap_matrix.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/supply_chain_model.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/company_fundamental_cards.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "cash flow, inventory, capex, debt, order, certification",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "cash flow",
+        "inventory",
+        "capex",
+        "debt",
+        "order",
+        "certification"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/value_chain_economics.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/chain_earnings_bridge.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/supply_chain_relationships.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/customer_chain_audit.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/growth_earnings_model.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "base business, growth segment, unit, ASP, gross profit, net profit, EPS, bear/base/bull, current-price-implied",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "base business",
+        "growth segment",
+        "unit",
+        "ASP",
+        "gross profit",
+        "net profit",
+        "EPS",
+        "bear/base/bull",
+        "current-price-implied"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/segment_forecast_bridge.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/implied_growth_sensitivity.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/growth_driver_model.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/valuation_model.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "Final Valuation Table, Three-Tier Targets, Relative / PEG / PSG Comparison, Seasonality Calibration, Next-Quarter Threshold, Broker/Street Comparison, Market-Implied Sentiment Anchor, Growth Earnings Dependency",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "Final Valuation Table",
+        "Three-Tier Targets",
+        "Relative / PEG / PSG Comparison",
+        "Seasonality Calibration",
+        "Next-Quarter Threshold",
+        "Broker/Street Comparison",
+        "Market-Implied Sentiment Anchor",
+        "Growth Earnings Dependency"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/valuation_audit.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "price/share reconciliation, model reproducibility, method fit, broker comparison",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "price/share reconciliation",
+        "model reproducibility",
+        "method fit",
+        "broker comparison"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/current_valuation_model_20260630.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/core_candidate_extended_market_financials_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, current_price, shares_100mn, market_cap_100mn_cny, revenue_2026e_100mn, np_2026e_100mn, eps_2026e",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "current_price",
+        "shares_100mn",
+        "market_cap_100mn_cny",
+        "revenue_2026e_100mn",
+        "np_2026e_100mn",
+        "eps_2026e"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/core_candidate_extended_broker_consensus_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, broker, report_date, target_price, revenue_E, net_profit_E, EPS_E, source_quality, valuation_weight",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "broker",
+        "report_date",
+        "target_price",
+        "revenue_E",
+        "net_profit_E",
+        "EPS_E",
+        "source_quality",
+        "valuation_weight"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/core_candidate_extended_valuation_model_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, publication_status, current_price, shares_100mn, market_cap_100mn_cny, revenue_2026e_100mn, np_2026e_100mn, eps_2026e, method, bear, base, bull, final_target, upside, company_specific_disposition",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "publication_status",
+        "current_price",
+        "shares_100mn",
+        "market_cap_100mn_cny",
+        "revenue_2026e_100mn",
+        "np_2026e_100mn",
+        "eps_2026e",
+        "method",
+        "bear",
+        "base",
+        "bull",
+        "final_target",
+        "upside",
+        "company_specific_disposition"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/combined_target_valuation_model_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, chain_bucket, current_price, revenue_2026e_100mn, np_2026e_100mn, eps_2026e, method, bear, base, bull, final_target, upside, rating_or_action, evidence_quality, broker_weight, catalyst, invalidation",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "chain_bucket",
+        "current_price",
+        "revenue_2026e_100mn",
+        "np_2026e_100mn",
+        "eps_2026e",
+        "method",
+        "bear",
+        "base",
+        "bull",
+        "final_target",
+        "upside",
+        "rating_or_action",
+        "evidence_quality",
+        "broker_weight",
+        "catalyst",
+        "invalidation"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/combined_target_valuation_model_20260701.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "Final Valuation Table, Market-Implied Sentiment Anchor, Broker/Street Comparison, Next-Quarter Threshold",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "Final Valuation Table",
+        "Market-Implied Sentiment Anchor",
+        "Broker/Street Comparison",
+        "Next-Quarter Threshold"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/combined_broker_street_coverage_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, coverage_bucket, broker, report_date, target_price, revenue_E, net_profit_E, EPS_E, source_quality, broker_weight, weight_policy",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "coverage_bucket",
+        "broker",
+        "report_date",
+        "target_price",
+        "revenue_E",
+        "net_profit_E",
+        "EPS_E",
+        "source_quality",
+        "broker_weight",
+        "weight_policy"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/combined_broker_street_coverage_20260701.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "Coverage bucket, Weight policy, Source quality",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "Coverage bucket",
+        "Weight policy",
+        "Source quality"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/valuation_quality_audit_20260701.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "status, row_count, broker_coverage_count, issue_count, issues",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "status",
+        "row_count",
+        "broker_coverage_count",
+        "issue_count",
+        "issues"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/valuation_quality_audit_20260701.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "Status, Target rows, Broker coverage rows, Model Reproducibility",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "Status",
+        "Target rows",
+        "Broker coverage rows",
+        "Model Reproducibility"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/valuation_triage_20260630.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "company, primary_classification, target_price_status, valuation_disposition, evidence_gap, next_verification_path",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "company",
+        "primary_classification",
+        "target_price_status",
+        "valuation_disposition",
+        "evidence_gap",
+        "next_verification_path"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/valuation_triage_20260630.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "company, primary class, target status, disposition, evidence gap, next verification",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "company",
+        "primary class",
+        "target status",
+        "disposition",
+        "evidence gap",
+        "next verification"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/core_candidate_valuation_disposition_20260630.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "company, chain_blocks, candidate_method, target_price_status, valuation_disposition, residual_proxy_boundary, upgrade_trigger",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "company",
+        "chain_blocks",
+        "candidate_method",
+        "target_price_status",
+        "valuation_disposition",
+        "residual_proxy_boundary",
+        "upgrade_trigger"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "data/core_candidate_valuation_disposition_20260630.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "company, candidate method, target status, disposition, residual proxy boundary, upgrade trigger",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "company",
+        "candidate method",
+        "target status",
+        "disposition",
+        "residual proxy boundary",
+        "upgrade trigger"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/core_candidate_company_cards.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "chain role, product/process exposure, candidate valuation method, target-price status, field evidence status, residual proxy boundary, evidence gap, upgrade trigger",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "chain role",
+        "product/process exposure",
+        "candidate valuation method",
+        "target-price status",
+        "field evidence status",
+        "residual proxy boundary",
+        "evidence gap",
+        "upgrade trigger"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/core_candidate_extended_valuation_model.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "publication status, current price, 2026E revenue, 2026E EPS, method, target, blocking reason, next verification",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "publication status",
+        "current price",
+        "2026E revenue",
+        "2026E EPS",
+        "method",
+        "target",
+        "blocking reason",
+        "next verification"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/residual_proxy_field_audit.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "ticker, company, field, remaining gap, valuation consequence, next verification",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "ticker",
+        "company",
+        "field",
+        "remaining gap",
+        "valuation consequence",
+        "next verification"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/valuation_coverage_reconciliation.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "full-pool mapped companies, core valuation candidates, published target-price combo, gate consequence",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "full-pool mapped companies",
+        "core valuation candidates",
+        "published target-price combo",
+        "gate consequence"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "sections/ch04_supply_chain.tex",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "算力与存储, 服务器、整柜与网络设备, 光通信, PCB、CCL, 供配电与液冷, AIDC/IDC 运营, 附录证据索引",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "算力与存储",
+        "服务器、整柜与网络设备",
+        "光通信",
+        "PCB、CCL",
+        "供配电与液冷",
+        "AIDC/IDC 运营",
+        "附录证据索引"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/competitive_landscape.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/variant_perception.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/risk_framework.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/exhibit_plan.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/user_scope_coverage_audit.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "main.tex",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "main.pdf",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "main_current_text.txt",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "review_log.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "final_signoff.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "owner_skill, stage, required_for, evidence_quality_or_gap",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "owner_skill",
+        "stage",
+        "required_for",
+        "evidence_quality_or_gap"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "analysis/delta_audit.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "user_correction, original_miss, responsible_skills, prevention_rule_added",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "user_correction",
+        "original_miss",
+        "responsible_skills",
+        "prevention_rule_added"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    },
+    {
+      "path": "skill_evolution_log.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "workflow",
+      "required_for": "publication gate",
+      "schema_or_fields": "failure_mode, root_cause, changes_applied, regression_cases, validation_commands",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "run_research_gates",
+      "blocking_if_missing": true,
+      "required_fields": [
+        "failure_mode",
+        "root_cause",
+        "changes_applied",
+        "regression_cases",
+        "validation_commands"
+      ],
+      "minimum_depth": "Artifact must satisfy the owner skill field-level contract and disclose evidence gaps.",
+      "blocking_conditions": [
+        "artifact missing",
+        "required fields missing",
+        "shallow artifact used for core conclusion",
+        "material evidence gap not downgraded or opened as review finding"
+      ]
+    }
+  ]
+}

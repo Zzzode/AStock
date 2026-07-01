@@ -1,0 +1,83 @@
+{
+  "metadata": {
+    "case_id": "aidc-supply-chain-20260630",
+    "run_date": "2026-07-01",
+    "residual_proxy_cells": 4,
+    "target_model_residual_proxy_cells": 3,
+    "rule": "Residual proxy fields must disclose official files checked, remaining gap, valuation consequence, and next verification path. They cannot be used for incremental valuation uplift."
+  },
+  "rows": [
+    {
+      "ticker": "301291",
+      "company": "明阳电气",
+      "field": "utilization_or_yield",
+      "field_label": "利用率/良率/爬坡",
+      "publication_status": "house_target_model_ready",
+      "target_model": true,
+      "source": "sources/blocked-core-candidate-broker-reports-20260701/301291-明阳电气/02-AP202509041738768805-华金证券-上半年业绩高增-aidc带来新机遇.md",
+      "evidence": "代理证据：及推测不一致的报告。本公司不保证本报告所含信息及资料保持在最新状态，本公司将随时补充、 更新和修订有关信息及资料，但不保证及时公开发布。同时，本公司有权对本报告所含信息在 ### utilization_or_yield ### margin_impact - 72.93%。 25H1 公司箱式变电站、变压器、成套开关柜分别实现营收 18.66/5.68/5...",
+      "official_filings_archived": 3,
+      "official_proxy_fields_requested": [
+        "utilization_or_yield"
+      ],
+      "remaining_gap": "明阳电气 未披露独立利用率、上架率、稼动率或良率口径；模型改用订单/交付、运营效率、毛利率和现金流证据做交叉验证。",
+      "valuation_consequence": "AStock 自建公允价值模型保留，broker 权重为 0；该 proxy 字段只作折价边界，不触发目标价上修。",
+      "next_verification_path": "下一轮必须检查季度经营更新、IR 问答、上架率/稼动率/良率、PUE、毛利率、现金流和项目验收节奏。"
+    },
+    {
+      "ticker": "603881",
+      "company": "数据港",
+      "field": "capacity_or_certification",
+      "field_label": "产能/认证",
+      "publication_status": "house_target_model_ready",
+      "target_model": true,
+      "source": "sources/blocked-core-candidate-broker-reports-20260701/603881-数据港/01-AP202604211821396756-中邮证券-业绩维持稳健-智算业务贡献增量.txt",
+      "evidence": "代理证据：资产负债率(%) 57.3% 截至 2025 年底，公司运营总电力容量 401MW，同比 2024 年底 市盈率 215.32 371MW 增加 30MW，主要系 25Q1 廊坊项目中标互联网客户订单。截至 上海市北高新(集团)有 25 年 Q3，公司廊坊项目已完成第一批机电交付，目前进展正常，后 第一大股东 限公司 续将持续推进该项目的交付与运营。此外，公...",
+      "official_filings_archived": 3,
+      "official_proxy_fields_requested": [
+        "capacity_or_certification",
+        "asp_or_price_proxy",
+        "utilization_or_yield"
+      ],
+      "remaining_gap": "数据港 已有 MW/项目交付或订单侧证据，但未披露可直接入模的独立产能、认证或产线利用明细；产能/认证只能作为容量边界，不作为单独扩张溢价。",
+      "valuation_consequence": "AStock 自建公允价值模型保留，broker 权重为 0；该 proxy 字段只作折价边界，不触发目标价上修。",
+      "next_verification_path": "下一轮必须检查年报/半年报、IR 记录、中标公告、客户侧项目验收、机柜/MW/产线/认证披露。"
+    },
+    {
+      "ticker": "688041",
+      "company": "海光信息",
+      "field": "utilization_or_yield",
+      "field_label": "利用率/良率/爬坡",
+      "publication_status": "target_model_ready",
+      "target_model": true,
+      "source": "sources/blocked-core-candidate-broker-reports-20260701/688041-海光信息/01-AP202605251822847721-中银证券-双芯驱动-生态筑基-引领国产算力新纪元.md",
+      "evidence": "代理证据：。同样，阁下获得有关投资 电话: (4420) 3651 8888 的价值或风险的可靠信息也存在困难。本报告中包含或涉及的投资及服务可能未必 ### utilization_or_yield ### margin_impact - 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年...",
+      "official_filings_archived": 3,
+      "official_proxy_fields_requested": [
+        "asp_or_price_proxy",
+        "utilization_or_yield"
+      ],
+      "remaining_gap": "海光信息 未披露独立利用率、上架率、稼动率或良率口径；模型改用订单/交付、运营效率、毛利率和现金流证据做交叉验证。",
+      "valuation_consequence": "明示券商/Street 锚和 2026E 分母可复算，目标价模型保留；该 proxy 字段只限制上修空间，不提供增量倍数。",
+      "next_verification_path": "下一轮必须检查季度经营更新、IR 问答、上架率/稼动率/良率、PUE、毛利率、现金流和项目验收节奏。"
+    },
+    {
+      "ticker": "002334",
+      "company": "英威腾",
+      "field": "utilization_or_yield",
+      "field_label": "利用率/良率/爬坡",
+      "publication_status": "watchlist_only_insufficient_model",
+      "target_model": false,
+      "source": "sources/source-exhausted-official-filings-20260701/002334-英威腾/annual-2025年年度报告.txt",
+      "evidence": "代理证据：持续的全球发展。 （三）2026 年度经营计划及关键经营举措 2026 年是公司战略攻坚、抢抓新质生产力产业机会积蓄更强发展动能，推动营业收入更快增长的关键一年。公司将 进一步优化运营效率，实现人均效益与核心经营指标持续向好。公司将推动以下具体计划：巩固通用变频器及模块化 UPS 市场基本盘，补强电机、伺服、控制与编码器、高功率 UPS、液冷等关键产品技术能...",
+      "official_filings_archived": 3,
+      "official_proxy_fields_requested": [
+        "asp_or_price_proxy",
+        "utilization_or_yield"
+      ],
+      "remaining_gap": "英威腾 未披露独立利用率、上架率、稼动率或良率口径；模型改用订单/交付、运营效率、毛利率和现金流证据做交叉验证。",
+      "valuation_consequence": "该公司已因盈利或模型分母不足留在观察名单；残余 proxy 不发布目标价，只作为后续跟踪变量。",
+      "next_verification_path": "下一轮必须检查季度经营更新、IR 问答、上架率/稼动率/良率、PUE、毛利率、现金流和项目验收节奏。"
+    }
+  ]
+}

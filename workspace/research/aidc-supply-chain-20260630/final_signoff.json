@@ -1,0 +1,38 @@
+{
+  "case_id": "aidc-supply-chain-20260630",
+  "report_type": "full industry-chain deep dive",
+  "data_cutoff": "2026-06-30 11:30 original target-model market snapshot; 2026-07-01 intraday extended core-candidate refresh; 2026Q1/2025A financials",
+  "pdf_path": "workspace/research/aidc-supply-chain-20260630/main.pdf",
+  "page_count": 43,
+  "publishability_score": 94,
+  "verifier_results": {
+    "generic_case_verifier": "PASS after full-pool valuation disposition and 41-row extended core-candidate model gates",
+    "industry_chain_verifier": "PASS after contract artifacts generated",
+    "workflow_gate_runner": "PASS"
+  },
+  "industry_chain_verifier_results": "PASS after contract artifacts generated",
+  "scope_boundary": "56-name target-price/fair-value universe is mechanically reproducible; remaining 3 core candidates are explicitly downgraded to watchlist-only and excluded from investable target-price recommendations. Residual proxy-field cells: 4 (3 target-model cells), all treated as no-standalone-uplift boundaries.",
+  "residual_proxy_field_boundary": {
+    "cells": 4,
+    "target_model_cells": 3,
+    "names": "301291 明阳电气 利用率/良率/爬坡、603881 数据港 产能/认证、688041 海光信息 利用率/良率/爬坡、002334 英威腾 利用率/良率/爬坡",
+    "policy": "audited model boundary; no standalone valuation uplift"
+  },
+  "valuation_specific_gate": {
+    "status": "PASS",
+    "row_count": 56,
+    "broker_coverage_count": 56,
+    "issue_count": 6
+  },
+  "valuation_visual_layout_gate": {
+    "status": "PASS",
+    "issues": []
+  },
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "waived_issues": [],
+  "residual_risks": [],
+  "watchlist_downgrade_status": "3 insufficient-denominator rows are explicitly downgraded and excluded from target-price recommendations; 0 legacy no-Street-anchor rows remain.",
+  "downgrade_status": "none",
+  "signoff_status": "PASS"
+}
