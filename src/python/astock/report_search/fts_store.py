@@ -218,6 +218,13 @@ class FTSReportStore:
 
 
 def _split_text(text: str, *, chunk_size: int = 500, overlap: int = 100) -> list[str]:
+    if chunk_size <= 0:
+        raise ValueError("chunk_size must be positive")
+    if overlap < 0:
+        overlap = 0
+    if overlap >= chunk_size:
+        overlap = max(0, chunk_size // 5)
+
     text = text.strip()
     if not text:
         return []
