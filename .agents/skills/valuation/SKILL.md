@@ -15,12 +15,14 @@ Build and audit AStock valuation packages. This skill is the authoritative valua
 - Verified market data: current price/date, volume or trading value when available, shares or data needed to derive shares, market cap.
 - Verified financial data: revenue, net profit, EPS, margins, equity/BPS, quarterly and annual history.
 - Source registry and claim audit for product exposure, customer/order evidence, capacity, pricing, and broker/Street evidence.
-- Broker or public consensus material when available; if unavailable, publish `not disclosed` fields with source-quality labels.
+- Broker or public consensus material when available; full reports must provide `data/broker_street_consensus_<YYYYMMDD>.md/json`. If unavailable, publish ticker-level `not disclosed` / `not_found` fields with source-quality labels, zero Street valuation weight, and source-exhaustion records.
 - Full-chain and supply-chain research outputs for full industry-chain reports: `data/full_chain_universe_<YYYYMMDD>.md/json`, `analysis/full_chain_taxonomy.md`, `analysis/core_vs_satellite_universe.md`, `analysis/coverage_gap_matrix.md`, `analysis/supply_chain_model.md`, `analysis/company_fundamental_cards.md`, `analysis/value_chain_economics.md`, `analysis/chain_earnings_bridge.md`, `data/supply_chain_relationships.md/json`, and `data/customer_chain_audit.md/json`.
 - Growth earnings outputs when high-growth, AI, order, shipment, ASP, customer-allocation, segment-mix, PEG/PSG, or PS/SOTP valuation credit is used: `analysis/growth_earnings_model.md`, `analysis/segment_forecast_bridge.md`, `analysis/implied_growth_sensitivity.md`, and `data/growth_driver_model.json`.
 - House view and industry-chain classification so valuation methods match business economics.
 
 If an input is missing, either collect it through the project capability layer or mark it explicitly as `not disclosed` / `insufficient evidence`. Do not fill broker, order, customer, or consensus fields with AStock assumptions.
+
+Publication stance rule: if a ticker lacks the evidence needed to compute a defensible current-price-based target or fair-value range, use `watchlist only / insufficient evidence` and exclude it from investable recommendations. Do not use a pseudo-precise target price to hide missing customer, order, ASP, utilization, share-count, or broker-anchor inputs.
 
 ## Workflow
 
@@ -35,6 +37,7 @@ If an input is missing, either collect it through the project capability layer o
 
 2. **Normalize the financial denominator.**
    - Show 2026E revenue, 2026E net profit/EPS, expected growth, and the bridge from reported quarters to the forecast.
+   - Verify current price date, adjustment basis, share class, shares outstanding, market cap = price × shares, EPS denominator, PE/PS/PB/EV multiple, target price, and upside/downside. Any unreconciled price, share-count, market-cap, or adjustment mismatch blocks publication.
    - For high-growth stories, separate base business and growth segment economics using `analysis/segment_forecast_bridge.md`; do not apply high-growth multiples to consolidated revenue unless segment purity is proven.
    - Apply seasonality calibration before calling anything cheap or expensive.
    - If the denominator is near-zero, temporary, project-cycle distorted, or unsupported, switch methods or mark the ticker `insufficient evidence / watchlist only`.
@@ -47,11 +50,28 @@ If an input is missing, either collect it through the project capability layer o
    - Industry-chain scenario values must reference `analysis/value_chain_economics.md`: value amount, ASP/price proxy, margin pool, supply/demand, capacity, utilization/yield, certification, order visibility, and price pass-through.
    - Always show bubble degree: `(current / base target - 1) * 100%`.
 
+Business-model method matrix:
+
+| Business type | Preferred methods | Required secondary check |
+|---|---|---|
+| AI optical/module leader | PE/PEG with growth-earnings bridge | current-price-implied growth and Street target dispersion |
+| Optical chip / precision device / scarce component | PE plus PS or scarcity/SOTP check | customer qualification and ASP/margin evidence |
+| IDC / colocation / cloud infrastructure operator | PB/ROE, EV/EBITDA, DCF or SOTP | utilization, power cost, capex, debt and cash-flow sensitivity |
+| Power / UPS / transformer / project equipment | PE or EV/EBITDA with order-cycle check | backlog, delivery, margin and working-capital sensitivity |
+| Cooling / liquid-cooling equipment | PE/PEG or SOTP when segment mix differs | customer certification, ASP, margin and segment-purity evidence |
+| PCB / CCL / precision interconnect | PE/PEG plus cycle and product-mix check | layer/spec mix, yield, capex and customer/order evidence |
+| Server / network equipment / mixed integrator | PE/SOTP or EV/Sales blend | order durability, segment margins and cash conversion |
+| Near-zero EPS or loss-making ticker | PS, EV/Sales, PB, DCF or watchlist-only | path to profit and dilution/debt sensitivity |
+
+Using one PE template across the chain is a method-mismatch blocker.
+
 4. **Build the multi-anchor target.**
    - Final target = fundamental/intrinsic value * Wf + market-implied sentiment anchor * Wm + broker/Street anchor * Ws.
    - Show current-implied PE/PS/PB/EV multiple, trading-value or momentum context where available, market anchor, broker anchor, final weights, final target, premium/discount, and embedded expectation gap.
    - For high-growth stories, reconcile the market-implied sentiment anchor to `analysis/implied_growth_sensitivity.md`: what current price already implies for growth revenue, margin, EPS, duration, shipments, ASP, or order conversion.
    - Do not publish a mechanical sell/reduce action only because intrinsic value is below price when observable market evidence supports a sentiment premium. Label the premium and define what would break it.
+   - Street anchor must preserve broker/source, date, rating, target price, forecast revenue/net profit/EPS, valuation method, implied upside, and source quality. If only abstracts are available, mark unavailable fields `not disclosed`, assign zero Street weight unless the original source supports the numeric field, and explain why the row cannot support a full PASS.
+   - A full industry-chain report cannot receive `final_signoff: PASS` while the core valuation universe has incomplete original broker/Street target-price coverage. Either collect original reports / broker official pages, or downgrade the report to `MECHANICAL_PASS_INSTITUTIONAL_FAIL`, `CONDITIONAL`, `watchlist only`, or `evidence memo`.
 
 5. **Translate valuation into research action.**
    - Use action labels that describe behavior: `core review`, `pullback entry`, `market-supported watch`, `event-driven validation`, `watchlist only`, `sentiment premium breaking`, or `high valuation risk`.
@@ -66,6 +86,7 @@ If an input is missing, either collect it through the project capability layer o
    - If a row cannot be recalculated, mark `Model Reproducibility: FAIL` and block publication until the model table is repaired.
    - Check source hierarchy, fake precision, method mismatch, missing broker comparisons, and unsupported recommendations.
    - Missing required valuation artifacts are publication blockers, not formatting issues.
+   - The audit must include a price/share reconciliation table and state whether current price, share count, market cap, EPS denominator, final target, weights, and upside/downside are reproducible from disclosed inputs.
 
 ## Required Artifacts
 
@@ -74,6 +95,7 @@ Write these files for full equity-research reports:
 - `analysis/valuation_model.md`
 - `analysis/valuation_audit.md`
 - `data/current_valuation_model_<YYYYMMDD>.json` when a structured case data room exists.
+- `data/broker_street_consensus_<YYYYMMDD>.md/json` as a required input artifact for broker/Street comparison in full reports.
 
 `analysis/valuation_model.md` must contain:
 
@@ -100,6 +122,7 @@ Write these files for full equity-research reports:
 - Full-chain/core-satellite dependency checks.
 - Value-chain economics dependency checks.
 - Model reproducibility checks with `Model Reproducibility: PASS` or `FAIL`.
+- Price/share-count checks covering adjustment basis, current price date, shares outstanding, market cap, EPS denominator, target price, upside/downside, and currency/share-class consistency.
 - Fake-precision flags.
 - Supply-chain dependency checks: every investable ticker's valuation method, catalyst, invalidation, and next-quarter threshold must be traceable to the supply-chain package or marked `insufficient chain evidence`.
 - Growth earnings dependency checks: every high-growth valuation credit must trace to base/growth split, unit/order/ASP/proxy math, recognized revenue ratio, margin, opex, net profit, EPS, scenario sensitivity, and current-price-implied growth or be marked `watchlist only / insufficient growth evidence`.
@@ -117,7 +140,9 @@ Block publication if any covered or investable ticker is missing:
 - Market-expectation bridge.
 - Market-implied sentiment anchor and final weights.
 - Broker/Street comparison when public evidence exists.
+- Complete broker/Street consensus packet for every covered or investable ticker in full reports, or explicit downgrade from full PASS.
 - Catalysts and invalidation triggers.
+- Explicit insufficient-evidence action when any required valuation input is missing.
 - Valuation audit.
 - `Model Reproducibility: PASS` in `analysis/valuation_audit.md`.
 - Full-chain universe row, core/satellite classification, and value-chain economics for full industry-chain reports.
@@ -127,8 +152,10 @@ Block publication if any covered or investable ticker is missing:
 ## Integration Rules
 
 - `equity-research` must run `supply-chain-research` before this skill in full industry-chain reports, must run `growth-earnings-model` before this skill whenever high-growth valuation credit is used, then run this skill after data verification and house view, before risk analysis, exhibit planning, LaTeX writing, and review.
+- `equity-research` must run the `reports` broker/Street consensus gate before this skill. Do not build a Street anchor from search snippets, media reposts, or AStock assumptions.
 - `latex-writer` must copy the valuation skill outputs into reader-facing sections and must not summarize away required tables.
 - `research-report-reviewer` must treat missing valuation skill outputs as S-Level.
+- `research-report-reviewer` must treat `broker_weight=0` plus full `final_signoff: PASS` as an A-Level or S-Level contradiction unless the report is explicitly downgraded and no core conclusion depends on Street valuation.
 - `research-report-reviewer` must treat valuation packages unsupported by supply-chain evidence as S-Level or A-Level depending on whether investable recommendations depend on the unsupported claim.
 - `research-report-reviewer` must treat high-growth valuation packages unsupported by growth earnings artifacts as S-Level or A-Level depending on whether investable recommendations depend on the unsupported claim.
 - Chinese reports must write reader-facing valuation logic, action labels, catalysts, invalidation triggers, and audit summaries in Chinese.

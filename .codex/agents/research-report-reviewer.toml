@@ -17,6 +17,7 @@ Review the assigned chapters through these lenses:
    - Does it separate industry attractiveness from current investment action?
    - Does each chapter read as prose-led research rather than a table stack or slide deck?
    - Flag chapters where tables carry the argument without surrounding analysis.
+   - Decide whether the report is only a `mechanical PASS` or truly `institutional PASS`.
 
 2. **Evidence and source hierarchy**
    - Classify evidence as `official filing`, `original broker report`, `broker abstract`, `media repost`, `third-party preview`, `search snippet`, or `rumor`.
@@ -55,6 +56,7 @@ Review the assigned chapters through these lenses:
    - Verify that valuation and earnings forecasts are tied to customer-chain order durability. Generic “AI demand” cannot support durable earnings credit.
    - Verify that valuation catalysts, invalidation triggers, and next-quarter thresholds are traceable to `analysis/chain_earnings_bridge.md` and `data/supply_chain_relationships.md`.
    - Verify that high-growth valuation catalysts, invalidation triggers, and next-quarter thresholds are traceable to `analysis/growth_earnings_model.md` and `data/growth_driver_model.json`.
+   - Flag shallow artifacts when growth models only list EPS proxies, value-chain economics only repeat block-level `not disclosed` gaps, or valuation tables lack price/share-count/Street/multi-anchor reproducibility.
 
 6. **Risk, geopolitics, and secondary-market behavior**
    - Require probability, trigger thresholds, affected tickers, financial sensitivity, and monitoring signals.
@@ -72,6 +74,7 @@ Review the assigned chapters through these lenses:
    - The first chapter must state the investment conclusion directly, not describe the report-writing process.
    - It must include current price, final target price or fair-value range, implied upside/downside, next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
    - Ranking must have an explicit method or weights; subjective ordering without criteria is A-Level.
+   - The chapter must translate ranking into portfolio or monitoring behavior, including core/satellite grouping, risk budget or monitoring-equivalent risk control, expected return attribution, and buy/add/trim/watch/downgrade discipline.
    - Vague labels such as "core tracking", "aggressive watch", "theme reserve", or "high risk" must be translated into investment behavior and risk meaning.
    - Flag meta-language such as "this report does/does not define", "this chapter rewrites", "closer to institutional process", or table-reading instructions as B-Level or A-Level when pervasive.
 
@@ -110,6 +113,7 @@ Review the assigned chapters through these lenses:
 
 ## Publishability
 - Status: BLOCKED | CONDITIONAL | PASS
+- Institutional status: MECHANICAL_PASS_INSTITUTIONAL_FAIL | INSTITUTIONAL_PASS | BLOCKED
 - Score: <0-100>
 - Review Cycle: R0_evidence | R1_model | R2_draft | R3_render_compliance | R4_final_ic
 - Open S-Level:
@@ -134,8 +138,13 @@ Review the assigned chapters through these lenses:
 - **S-Level:** valuation method mismatch, including one-size-fits-all PE across heterogeneous business models or targets driven by temporary depressed EPS denominators.
 - **S-Level:** generic AI demand, downstream TAM, capacity, market heat, or one strong quarter is converted into company EPS or target-price upside without unit/order/ASP/proxy-to-EPS math.
 - **S-Level:** high-growth multiple is applied to consolidated revenue or profit when only one segment has evidence-backed growth and segment purity is not proven.
+- **S-Level:** final sign-off is PASS while material residual risks disclose customer/order/ASP/utilization, source-quality, EPS-bridge, or valuation-anchor gaps that affect core conclusions.
+- **S-Level:** a core valuation ticker receives investable action despite customer-chain, value-chain economics, company EPS bridge, or current-price-based valuation anchor being explicitly insufficient.
+- **S-Level:** a required model artifact exists but is shallow and still used for an investable recommendation.
 - **S-Level:** untranslated English valuation, recommendation, risk or catalyst logic in a Chinese report.
 - **A-Level:** incomplete supply-chain mapping, generic technology analysis, missing quarterly bridge, weak risk thresholds, missing citation table.
+- **A-Level:** artifact contract exists but lacks required fields, minimum depth, blocking conditions, review cycle, or verifier check.
+- **A-Level:** mechanical verifiers pass but the report lacks institutional evidence depth, model depth, valuation depth, or IC readiness.
 - **A-Level:** supply-chain outputs exist but omit revenue exposure, capacity/certification/order visibility, margin/earnings impact, evidence gaps, or valuation eligibility for covered tickers.
 - **A-Level:** growth-earnings outputs exist but omit current-price-implied growth, scenario sensitivity, valuation credit classification, evidence gaps, or next-quarter validation thresholds.
 - **A-Level:** chapter reads like a PPT/chartbook page: table-first structure, no analytical setup, no post-table synthesis, or unclear investment implication.
@@ -155,6 +164,8 @@ No report is publishable until the workspace verifier passes. Treat `tools/verif
 - **Verifier result is part of the review.** Record the PASS/FAIL count and any FAIL detail in the Publishability section of the output. A clean chapter review with a failing verifier is still BLOCKED.
 - **Publishability score is mandatory.** Record a 0-100 score in `review_log.md`; PASS requires score >= 90, zero open S-Level issues, zero open unwaived A-Level issues, generic verifier 39 PASS / 0 FAIL, industry-chain verifier PASS when required, and `final_signoff.md/json`.
 - **Review findings are structured artifacts.** Write or update `review_findings_<cycle>.json` and `repair_plan_<cycle>.md/json`; do not rely only on prose comments in `review_log.md`.
+- **Reopen on shallow pass.** If all machine verifiers pass but evidence penetration, profit-pool economics, company EPS bridge, valuation anchors, or IC actionability are weak, classify the outcome as `MECHANICAL_PASS_INSTITUTIONAL_FAIL`, reopen the relevant review cycle, and write a repair plan to the owner skill.
+- **No PASS with conflicting residual risks.** Do not write or endorse `final_signoff.md/json` as PASS when residual risks include material customer/order/ASP/utilization, source-quality, earnings-bridge, or valuation-anchor gaps that affect the core investment conclusion.
 
 ## Constraints
 

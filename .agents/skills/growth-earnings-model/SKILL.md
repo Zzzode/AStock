@@ -30,6 +30,8 @@ Build the precision earnings bridge that explains how a high-growth narrative be
 
 If a driver cannot be evidenced, write `not disclosed`, `not found`, or `insufficient evidence`. Do not fill unit volume, ASP, AI revenue share, margin, customer allocation, or order conversion with unsupported assumptions.
 
+Minimum model rule: an applicable ticker has no investable growth credit unless the artifact connects a unit/order/ASP/proxy driver to revenue, gross profit, net profit, EPS, scenario range, and current-price-implied expectation. A table that only lists EPS proxies or generic AI demand is `shallow_artifact`.
+
 ## Procedure
 
 1. **Classify whether precision modeling is required.**
@@ -39,6 +41,7 @@ If a driver cannot be evidenced, write `not disclosed`, `not found`, or `insuffi
 2. **Separate base business from growth business.**
    - Split reported revenue, gross profit, net profit, EPS, and valuation denominator into base business and growth driver segments.
    - For mixed companies, isolate the high-growth segment before assigning high-growth multiples. Do not apply AI or high-growth multiples to the whole company unless the report proves segment purity.
+   - If segment purity cannot be proven, set `valuation_credit` to `optionality credit` or `watchlist only / insufficient growth evidence`; do not use PE/PEG/PSG/SOTP upside for the growth segment.
 
 3. **Build the unit economics bridge.**
    - Use the formula:
@@ -64,6 +67,7 @@ growth EPS = growth net profit / shares
    - Build bear/base/bull cases for units, ASP, conversion ratio, gross margin, opex intensity, tax, and valuation multiple.
    - Show sensitivity to the driver that matters most, such as shipments, ASP, AI revenue share, customer concentration, order conversion, or margin.
    - Calculate what the current price implies: implied growth revenue, implied units/ASP, implied margin, implied EPS, and the number of quarters required to justify the market price.
+   - The sensitivity table must include the columns `driver`, `bear`, `base`, `bull`, `current_price_implied`, `validation_evidence`, and `downgrade_trigger`.
 
 6. **Decide valuation credit.**
    - Give **earnings credit** only when unit/order/customer/margin evidence supports revenue and profit conversion.
@@ -100,12 +104,14 @@ ticker | company | applies | growth_driver | base_business_revenue | growth_segm
 - Unit/order/ASP/revenue/margin/EPS bridge
 - Scenario results and valuation credit decision
 - Current-price-implied growth and evidence needed to validate or break it
+- Explicit decision for every applicable ticker: `earnings credit`, `optionality credit`, `watchlist only / insufficient growth evidence`, or `blocked`.
 
 `analysis/segment_forecast_bridge.md` must include:
 
 - Reported segment baseline
 - Growth segment forecast by quarter or fiscal year
 - Bridge from growth segment revenue to company-level revenue, net profit, EPS, and valuation method
+- Segment-purity evidence and the reason a consolidated multiple is or is not allowed.
 
 `analysis/implied_growth_sensitivity.md` must include:
 
@@ -128,4 +134,5 @@ ticker | company | applies | growth_driver | base_business_revenue | growth_segm
 - Do not turn value-chain participation into EPS credit without value amount, ASP/price proxy, margin pool, supply/demand, and customer/order evidence or an explicit gap label.
 - Do not annualize one strong quarter into a full-year denominator without seasonality and order durability.
 - Do not give investable upside from a growth segment without current price, explicit driver math, scenario range, implied growth, and source-quality labels.
+- Do not mark the gate PASS when most applicable tickers have only EPS proxies, generic AI demand, or repeated `not disclosed` evidence gaps; use CONDITIONAL or BLOCKED and force downgrade.
 - For Chinese reports, write reader-facing conclusions, model interpretation, catalysts, invalidation triggers, and caveats in Chinese.

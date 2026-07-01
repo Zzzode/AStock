@@ -20,6 +20,7 @@ Orchestrate the internal-control agent to audit system quality, detect drift, an
 | User asks why a quality-control behavior did not trigger automatically | `single_skill:evolve` + `sync_check` | Immediate |
 | Repeated corrections in the same dimension during a report/research workflow | `feedback_analysis` + relevant `single_role` / `single_skill` | Immediate |
 | User points out a material research-report gap after delivery, such as missing industry-chain block, missing core ticker, weak evidence, bad report structure, or incomplete gate | `feedback_analysis` + `single_skill:equity-research` + relevant domain skill/role | Immediate |
+| User repeatedly points out research-report depth gaps after a report passed mechanical gates, such as weak evidence penetration, shallow profit-pool economics, incomplete company EPS bridge, weak valuation anchors, reviewer not blocking, or missing investment-committee expression | `feedback_analysis` + `single_skill:equity-research` + `single_skill:research-report-review` + `single_skill:supply-chain-research` + `single_skill:growth-earnings-model` + `single_skill:valuation` | Immediate |
 | Periodic (user asks "system health") | `full_system` | On demand |
 
 ## Step 1: Determine Audit Scope
@@ -39,6 +40,13 @@ For research-report feedback, create or require `analysis/delta_audit.md` in the
 - New evidence or sources collected.
 - Files changed.
 - Prevention rule added to the relevant skill.
+
+When the feedback is about a skill/workflow failure rather than only the current report, also create or update `skill_evolution_log.md/json` in the affected case. It must map:
+- Failure mode and why the existing gate did not catch it.
+- Root-cause skill, role, verifier, or artifact-contract weakness.
+- Prompt files changed in `.agents/` and mirrored `.codex/`.
+- Deterministic regression case added or updated.
+- Validation commands and results.
 
 ## Step 2: Gather Audit Data
 
@@ -71,6 +79,12 @@ python3 workspace/research/tools/run_research_gates.py workspace/research/<case>
 If `run_research_gates.py` fails, treat the failed gate as the audit anchor and
 map it to the responsible skill, role, artifact, repair plan, and prevention
 rule before changing prompts.
+
+If `run_research_gates.py` passes but the user identifies a material research
+depth problem, treat it as `mechanical PASS / institutional FAIL`. Map the
+missing depth to `artifact_contract.*`, `research-report-review`, and the
+domain skill that should have blocked it. A mechanical PASS is not a reason to
+stop the audit.
 
 ### For `feedback_analysis`:
 
@@ -119,6 +133,7 @@ Display the Audit Report:
 6. Anti-patterns detected
 7. Metrics dashboard
 8. For report-feedback audits, the `analysis/delta_audit.md` path and prevention-rule changes
+9. For skill-evolution audits, the `skill_evolution_log.md/json` path, prompt changes, and regression evidence
 
 ## Step 5: Human Approval Gate
 
@@ -128,6 +143,7 @@ For each proposed change, present the diff and ask the user whether to apply. If
 - Apply the approved diff to the target file
 - Update `.agents/skills/evolve/anti-patterns.md` if new patterns detected
 - Update both `.agents/skills/...` and `.codex/skills/...` mirrors when a skill prevention rule changes
+- Update the affected case's `skill_evolution_log.md/json` when the change was triggered by a report-quality failure
 - Store audit results in memory:
 
 ```bash

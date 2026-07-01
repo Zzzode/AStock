@@ -122,6 +122,21 @@ Create `workspace/research/<topic-slug>-<YYYYMMDD>/sources/broker-reports/<YYYY-
 - Key divergence: ...
 ```
 
+## Step 6.5: Generate Broker/Street Consensus Packet
+
+When the collection supports an equity-research or valuation workflow, also create:
+
+- `workspace/research/<topic-slug>-<YYYYMMDD>/data/broker_street_consensus_<YYYYMMDD>.json`
+- `workspace/research/<topic-slug>-<YYYYMMDD>/data/broker_street_consensus_<YYYYMMDD>.md`
+
+Each covered ticker must have one or more rows with:
+
+```text
+ticker | broker | report_date | rating | target_price | revenue_E | net_profit_E | EPS_E | method | implied_upside | source_quality | source_path | valuation_weight
+```
+
+Use `source_quality` values such as `original_pdf`, `broker_official_page`, `auditable_consensus_snapshot`, `abstract`, `media_repost`, `third_party_preview`, `search_snippet`, `paywall`, or `not_found`. `auditable_consensus_snapshot` is allowed only for a public or exported Wind/Choice/iFinD-style structured table that preserves broker identity, report date, rating, target price, forecasts or visible forecast gaps, and a source path. If only weak evidence or no original report is available, keep the ticker row, mark unavailable fields `not disclosed`, set `valuation_weight` to `0`, and add the failed probe to `source_exhaustion_log.*`. Do not infer broker targets, forecasts, ratings, or valuation methods from AStock assumptions.
+
 ## Step 7: Report to User
 
 Present:
@@ -157,6 +172,7 @@ NN-<broker-slug>-<short-title-slug>.md
 - Output directory is directly inside the research case and can be referenced by `/equity-research` Phase 1
 - `report-analyzer` agent can consume the .md files for consensus analysis
 - `/team` skill can reference stored reports via case-scoped `workspace/research/<topic-slug>-<YYYYMMDD>/sources/` paths
+- Full industry-chain reports must not proceed to full `final_signoff: PASS` until `data/broker_street_consensus_<YYYYMMDD>.md/json` covers every core valuation ticker or the report is explicitly downgraded to `CONDITIONAL`, `MECHANICAL_PASS_INSTITUTIONAL_FAIL`, `watchlist only`, or `evidence memo`.
 
 ## Command Reference
 

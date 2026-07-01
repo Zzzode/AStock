@@ -35,6 +35,8 @@ Run independent read-only reviews across these lenses. The active cycle determin
    - Verify `analysis/valuation_audit.md` contains `Model Reproducibility: PASS`; otherwise valuation is not publishable.
    - When high-growth, AI, order, shipment, ASP, customer-allocation, segment-mix, PEG/PSG, or PS/SOTP valuation credit is used, verify the standalone `growth-earnings-model` skill was used: `analysis/growth_earnings_model.md`, `analysis/segment_forecast_bridge.md`, `analysis/implied_growth_sensitivity.md`, and `data/growth_driver_model.json` must exist.
    - Current price, market cap, share count, target-price history, quarterly bridge, earnings forecasts, scenario valuation, final target price or fair-value range, implied upside/downside, crowding and catalysts.
+   - Verify `data/broker_street_consensus_<YYYYMMDD>.md/json` exists for full reports and covers every covered or investable ticker with broker/source, date, rating, target price, forecast revenue/net profit/EPS, valuation method, implied upside, source quality, source path, and valuation weight.
+   - Verify weak broker evidence (`abstract`, `media_repost`, `third_party_preview`, `search_snippet`, `paywall`, `not_found`) is zero-weight, recorded in source exhaustion, and not presented as Street consensus.
    - Verify every investable or covered ticker has a complete AStock final valuation package: current price/date, market cap, forecast EPS/net profit, valuation method, bull/base/bear values, final target, upside/downside, rating/action, catalysts, invalidation, and evidence quality.
    - Verify every high-growth valuation claim has a base/growth split, unit/order/ASP/proxy bridge, recognized revenue ratio, gross margin, incremental opex, net profit/EPS contribution, scenario sensitivity, current-price-implied growth, evidence gaps, and valuation credit classification.
    - Verify that earnings forecasts and valuation are tied to customer-chain order durability; generic AI demand is insufficient.
@@ -42,6 +44,7 @@ Run independent read-only reviews across these lenses. The active cycle determin
    - Source hierarchy, data quality, rumor isolation, recommendation boundary, geopolitical/policy risk, publishability.
    - Verify `source_exhaustion_log.md/json` exists and records failed probes, paywalls, abstracts-only situations, inaccessible sources, and next verification paths.
    - Verify `data/consensus_analysis.md` labels source quality for broker evidence and does not present media reposts, previews, or search snippets as full broker reports.
+   - Verify `final_signoff.md/json` is not `PASS` when broker/Street target-price coverage is incomplete for the core valuation universe. Disclosure alone is insufficient; the report must be downgraded or reopened.
    - Verify `analysis/variant_perception.md` states consensus view, AStock's differentiated view, strongest opposing argument, falsification evidence, and monitoring triggers.
 4. **Visual exhibit quality**
    - Inspect rendered PDF pages when available. Core conclusions should be supported by readable figures, heatmaps, timelines, scorecards, or diagrams rather than dense longtables only.
@@ -53,6 +56,12 @@ Run independent read-only reviews across these lenses. The active cycle determin
    - Check whether Chapter 1 gives current price, final target price or fair-value range, upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
    - Check whether ranking methodology and action labels are explicit.
    - Flag meta-language written for the author rather than the investor, such as "this chapter rewrites", "this report defines", "table should be read as", or "closer to institutional process".
+   - Check whether the first chapter translates ranking into portfolio or monitoring behavior: core/satellite grouping, buy/add/trim/watch discipline, risk budget or monitoring-equivalent risk control, expected return attribution, and probability-weighted bear/base/bull interpretation.
+7. **Institutional depth versus mechanical completion**
+   - Treat artifact existence as necessary but insufficient.
+   - Flag `shallow_artifact` when a required artifact exists but lacks the fields or evidence depth required by `artifact_contract.md/json`.
+   - Use `mechanical PASS / institutional FAIL` when verifiers pass but the report lacks evidence penetration, profit-pool quantification, company EPS bridge, valuation-anchor depth, or investment-committee actionability.
+   - A final sign-off cannot be PASS if residual risks contain material customer/order/ASP/utilization, source-quality, earnings-bridge, or valuation-anchor gaps that affect core conclusions.
 
 Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this runtime supports subagents, dispatch one reviewer per lens in parallel. If it does not, simulate the same review sequentially and say subagents were not actually invoked.
 
@@ -81,7 +90,7 @@ The reviewer is read-only. It does not repair files. It writes findings, repair 
 4. Merge duplicate findings and order by severity.
 5. Write `review_findings_<cycle>.json`.
 6. Write `repair_plan_<cycle>.md/json` unless the cycle is `R4_final_ic` and all gates pass.
-7. State publishability: `BLOCKED`, `CONDITIONAL`, or `PASS`, plus a numeric publishability score from 0 to 100 using the scoring rubric below.
+7. State publishability: `BLOCKED`, `CONDITIONAL`, `MECHANICAL_PASS_INSTITUTIONAL_FAIL`, or `PASS`, plus a numeric publishability score from 0 to 100 using the scoring rubric below.
 8. If the review is triggered by user feedback about a missing chain block, missing ticker, weak evidence, or bad structure, require `analysis/delta_audit.md` and check that it maps the correction to a skill/role prevention rule.
 
 ## Finding and Repair Schema
@@ -113,7 +122,7 @@ The reviewer is read-only. It does not repair files. It writes findings, repair 
 
 `repair_plan_<cycle>.json` must group open S-Level and A-Level issues by `owner_skill` and list exact artifacts to regenerate. Repairs are complete only after the same cycle re-runs and marks issues `verified` or `closed`.
 
-Lifecycle: `open -> fixed -> verified -> closed` or `open -> waived`. S-Level issues are not waivable unless the user explicitly instructs a waiver and the final sign-off records residual risk. A-Level waiver requires waiver reason, residual risk, and approver. B-Level issues may remain open only if final sign-off lists them.
+Lifecycle: `open -> fixed -> verified -> closed` or `open -> waived`. S-Level issues are not waivable unless the user explicitly instructs a waiver and the final sign-off records residual risk. A-Level waiver requires waiver reason, residual risk, and approver. B-Level issues may remain open only if final sign-off lists them. A finding cannot move from `fixed` to `verified` until the reviewer re-reads the changed artifact, confirms the required field-level contract is satisfied, and records the artifact path or verifier evidence. Author assertion alone is not evidence.
 
 ## Publishability Score Rubric
 
@@ -128,6 +137,9 @@ Start from 100 and subtract:
 | Industry-chain verifier failure when required | 20 |
 | Missing `Model Reproducibility: PASS` | 20 |
 | Weak source-quality labeling or source-exhaustion gap | 10 |
+| Shallow artifact: exists but lacks required field-level depth | 10-20 |
+| PASS final sign-off with material residual-risk conflict | Immediate BLOCKED and score capped at 84 |
+| Mechanical verifier PASS but institutional depth failure | Immediate CONDITIONAL or BLOCKED and score capped at 84 |
 | Narrative/IC summary incomplete | 10 |
 | Visual/render issue | 5-15 by severity |
 
@@ -142,6 +154,8 @@ CONDITIONAL is for internal drafts only; published reports cannot be CONDITIONAL
 - **S-Level:** also includes missing full-chain universe, missing industry coverage pack citation, missing `node_type`, missing core/satellite/demand-anchor classification, or missing coverage gap matrix in a full industry-chain report.
 - **S-Level:** also includes missing `analysis/value_chain_economics.md` or `analysis/competitive_landscape.md` in a full industry-chain report.
 - **S-Level:** also includes missing `source_exhaustion_log.md/json`, missing broker source-quality labels, or treating search snippets/media reposts as original broker reports.
+- **S-Level:** also includes missing `data/broker_street_consensus_<YYYYMMDD>.md/json` in a full report, missing core-ticker coverage in that packet, using weak broker evidence as a positive Street valuation anchor, or marking final sign-off `PASS` while broker/Street target-price coverage is explicitly incomplete.
+- **S-Level:** also includes final sign-off marked PASS while material residual risks state that customer allocation, order backlog, ASP, utilization, source quality, EPS bridge, or valuation-anchor evidence is insufficient for a core investment conclusion.
 - **S-Level:** also includes missing `analysis/variant_perception.md` or a house view that lacks the strongest opposing argument.
 - **S-Level:** also includes missing standalone `growth-earnings-model` artifacts when high-growth, AI, order, shipment, ASP, customer-allocation, segment-mix, PEG/PSG, or PS/SOTP valuation credit is used.
 - **S-Level:** also includes clipped core diagrams, overlapping tables, unreadable evidence appendices, or missing visual exhibits for valuation/risk/customer-chain conclusions.
@@ -152,7 +166,12 @@ CONDITIONAL is for internal drafts only; published reports cannot be CONDITIONAL
 - **S-Level:** also includes missing `Model Reproducibility: PASS` in `analysis/valuation_audit.md`.
 - **S-Level:** also includes generic AI demand, downstream TAM, capacity, market heat, or one strong quarter converted into EPS or target-price upside without unit/order/ASP/proxy-to-EPS math.
 - **S-Level:** also includes applying high-growth multiples to consolidated revenue or profit when only one segment has evidence-backed growth and segment purity is not proven.
+- **S-Level:** includes a core valuation ticker receiving investable action when customer-chain evidence, value-chain economics, company EPS bridge, or current-price-based valuation anchor is explicitly insufficient and the ticker was not downgraded to watchlist-only.
+- **S-Level:** includes `analysis/value_chain_economics.md`, `analysis/growth_earnings_model.md`, or `analysis/valuation_model.md` existing but containing only block-level or generic prose while still supporting investable recommendations.
 - **A-Level:** must fix before serious use. Examples: generic supply chain, weak technical parameters, no quarterly bridge, no geopolitical path.
+- **A-Level:** includes any artifact contract row that lacks `required_fields`, `minimum_depth`, `blocking_conditions`, `reviewer_cycle`, or `verifier_check`.
+- **A-Level:** includes a report that passes mechanical verifiers but fails institutional evidence depth, model depth, valuation depth, or IC readiness; label this as `mechanical PASS / institutional FAIL`.
+- **A-Level:** includes `broker_weight=0` across covered tickers with final sign-off `PASS`, unless the report is explicitly downgraded and no core conclusion depends on Street valuation.
 - **A-Level:** includes growth-earnings outputs that omit current-price-implied growth, scenario sensitivity, valuation credit classification, evidence gaps, or next-quarter validation thresholds.
 - **A-Level:** includes main-body chapters that are table-led rather than prose-led, have consecutive exhibits without analytical text, or lack post-exhibit "so what" synthesis.
 - **A-Level:** includes a first chapter that lacks price anchors, ranking methodology, next-quarter bridge, or actionable investment behavior.
@@ -188,7 +207,9 @@ CONDITIONAL is for internal drafts only; published reports cannot be CONDITIONAL
 1. ...
 ```
 
-For `R4_final_ic`, write `final_signoff.md/json` only when every pass condition is met. It must include:
+For `R4_final_ic`, write `final_signoff.md/json` only when every pass condition is met and no material residual-risk conflict remains. R4 is an investment-committee sign-off, not a file-existence checklist. It must check whether the final conclusion, portfolio/monitoring action, evidence chain, valuation anchors, downgrade decisions, and residual risks are mutually consistent. If any core conclusion depends on a residual risk, do not write PASS; write open findings or downgrade the affected ticker/report.
+
+It must include:
 
 ```text
 case_id | report_type | data_cutoff | pdf_path | page_count | publishability_score | verifier_results | industry_chain_verifier_results | open_s_count | open_a_count | waived_issues | residual_risks | downgrade_status | signoff_status
@@ -204,6 +225,7 @@ case_id | report_type | data_cutoff | pdf_path | page_count | publishability_sco
 - Do not pass a full industry-chain report unless it has the required supply-chain skill artifacts or clearly labels the report as a non-investable quick screen.
 - Do not pass a report that turns high-growth, AI, order, shipment, ASP, customer-allocation, segment-mix, PEG/PSG, or PS/SOTP claims into valuation upside without the required growth earnings artifacts.
 - Do not pass a report whose main body is a source digest rather than a house view supported by exhibits.
+- Do not pass a report only because files exist or verifiers pass; institutional depth is a separate gate.
 - Do not pass a report whose main body reads like a PPT deck or chartbook. Appendices may be dense; main chapters must be prose-led.
 - Do not pass any report with open S-Level issues, open unwaived A-Level issues, publishability score below 90, missing final sign-off, or failing verifier.
 - Do not mark a repair complete from the author's assertion; re-read the artifact and rerun the relevant review cycle.

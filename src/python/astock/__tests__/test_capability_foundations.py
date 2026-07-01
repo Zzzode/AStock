@@ -498,6 +498,9 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
         Model reproducibility is recorded in the valuation audit.
         Review findings and repair plan close the review lifecycle.
         Final sign-off includes publishability score.
+        Evidence depth covers customer order ASP utilization evidence gap.
+        Model depth separates base business and growth segment gross profit net profit EPS.
+        Investment committee portfolio position risk budget expected return is explicit.
         """)
     case_dir = tmp_path / "research-case"
     (case_dir / "analysis").mkdir(parents=True)
@@ -505,12 +508,36 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
     (case_dir / "research_brief.md").write_text("single-stock report", encoding="utf-8")
     (case_dir / "gate_manifest.md").write_text("gate", encoding="utf-8")
     (case_dir / "gate_manifest.json").write_text(
-        json.dumps({"report_type": "single-stock"}),
+        json.dumps(
+                {
+                    "report_type": "single-stock",
+                    "depth_gates": [
+                        "evidence_depth",
+                        "broker_consensus_depth",
+                        "model_depth",
+                        "valuation_depth",
+                        "ic_readiness",
+                ],
+            }
+        ),
         encoding="utf-8",
     )
     (case_dir / "artifact_contract.md").write_text("contract", encoding="utf-8")
     (case_dir / "artifact_contract.json").write_text(
-        json.dumps({"artifacts": []}),
+        json.dumps(
+            {
+                "artifacts": [
+                    {
+                        "path": "analysis/valuation_audit.md",
+                        "required_fields": ["model_reproducibility"],
+                        "minimum_depth": "valuation audit fixture",
+                        "blocking_conditions": ["missing reproducibility"],
+                        "reviewer_cycle": "R1_model",
+                        "verifier_check": "evaluate_research_case_quality",
+                    }
+                ]
+            }
+        ),
         encoding="utf-8",
     )
     (case_dir / "review_log.md").write_text("Publishability Score: 93", encoding="utf-8")
@@ -536,6 +563,86 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
     )
     (case_dir / "analysis" / "valuation_audit.md").write_text(
         "Model Reproducibility: PASS",
+        encoding="utf-8",
+    )
+    valuation_sections = [
+        "Final Valuation Table",
+        "Three-Tier Targets",
+        "Relative / PEG / PSG Comparison",
+        "Seasonality Calibration",
+        "Next-Quarter Threshold",
+        "Method and Assumption Bridge",
+        "Market-Expectation Valuation Bridge",
+        "Broker/Street Comparison",
+        "Market-Implied Sentiment Anchor",
+        "Growth Earnings Dependency",
+        "Full-Chain Classification Dependency",
+    ]
+    (case_dir / "analysis" / "valuation_model.md").write_text(
+        "\n\n".join(
+            f"## {section}\ncurrent share market cap broker Street market-implied weight target upside"
+            for section in valuation_sections
+        ),
+        encoding="utf-8",
+    )
+    (case_dir / "data" / "current_valuation_model_20260630.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "ticker": "000001",
+                        "company": "Fixture Bank",
+                        "current_price": 10.0,
+                        "price_date": "2026-06-30",
+                        "shares_100mn": 100.0,
+                        "market_cap_100mn_cny": 1000.0,
+                        "revenue_2026e_100mn": 200.0,
+                        "np_2026e_100mn": 20.0,
+                        "eps_2026e": 0.2,
+                        "method": "PE",
+                        "bear": 8.0,
+                        "base": 10.0,
+                        "bull": 12.0,
+                        "market_implied_anchor": 10.0,
+                        "fundamental_weight": 0.7,
+                        "market_weight": 0.1,
+                        "broker_weight": 0.2,
+                        "final_target": 11.0,
+                        "upside": 0.1,
+                        "action": "core review",
+                        "evidence_quality": "A",
+                    }
+                ]
+            }
+        ),
+        encoding="utf-8",
+    )
+    (case_dir / "data" / "broker_street_consensus_20260630.md").write_text(
+        "complete broker street consensus",
+        encoding="utf-8",
+    )
+    (case_dir / "data" / "broker_street_consensus_20260630.json").write_text(
+        json.dumps(
+            {
+                "rows": [
+                    {
+                        "ticker": "000001",
+                        "broker": "Fixture Securities",
+                        "report_date": "2026-06-30",
+                        "rating": "Buy",
+                        "target_price": 12.0,
+                        "revenue_E": {"2026E": 200.0},
+                        "net_profit_E": {"2026E": 20.0},
+                        "EPS_E": {"2026E": 0.2},
+                        "method": "PE",
+                        "implied_upside": 0.2,
+                        "source_quality": "original_pdf",
+                        "source_path": "sources/broker-reports/2026-06-30/index.md",
+                        "valuation_weight": 0.2,
+                    }
+                ]
+            }
+        ),
         encoding="utf-8",
     )
     (case_dir / "review_findings_R0_evidence.json").write_text(

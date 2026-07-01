@@ -36,6 +36,27 @@ DEFAULT_REPORT_CHECKS: dict[str, tuple[str, ...]] = {
     ),
     "review_lifecycle": ("review findings", "repair plan", "review lifecycle"),
     "final_signoff": ("final sign-off", "final_signoff", "publishability score"),
+    "evidence_depth": (
+        "customer",
+        "order",
+        "asp",
+        "utilization",
+        "evidence gap",
+    ),
+    "model_depth": (
+        "base business",
+        "growth segment",
+        "gross profit",
+        "net profit",
+        "eps",
+    ),
+    "ic_readiness": (
+        "portfolio",
+        "position",
+        "risk budget",
+        "expected return",
+        "investment committee",
+    ),
 }
 
 CASE_ROOT_ARTIFACTS = (
@@ -58,6 +79,7 @@ CASE_MD_JSON_PAIRS = (
 INDUSTRY_CHAIN_ARTIFACTS = (
     "analysis/template_brief.md",
     "analysis/full_chain_taxonomy.md",
+    "analysis/chain_business_research.md",
     "analysis/core_vs_satellite_universe.md",
     "analysis/coverage_gap_matrix.md",
     "analysis/supply_chain_model.md",
@@ -69,6 +91,207 @@ INDUSTRY_CHAIN_ARTIFACTS = (
     "data/supply_chain_relationships.json",
     "data/customer_chain_audit.json",
 )
+
+ARTIFACT_CONTRACT_DEPTH_FIELDS = (
+    "required_fields",
+    "minimum_depth",
+    "blocking_conditions",
+    "reviewer_cycle",
+    "verifier_check",
+)
+
+GATE_MANIFEST_DEPTH_GATES = (
+    "evidence_depth",
+    "broker_consensus_depth",
+    "model_depth",
+    "valuation_depth",
+    "ic_readiness",
+)
+
+MATERIAL_RESIDUAL_RISK_TERMS = (
+    "customer",
+    "order",
+    "asp",
+    "utilization",
+    "capacity",
+    "broker target",
+    "broker target-price",
+    "street target",
+    "street/broker",
+    "consensus",
+    "insufficient evidence",
+    "not collected",
+    "not found",
+    "abstract only",
+)
+
+BROKER_CONSENSUS_REQUIRED_FIELDS = (
+    "ticker",
+    "broker",
+    "report_date",
+    "rating",
+    "target_price",
+    "revenue_E",
+    "net_profit_E",
+    "EPS_E",
+    "method",
+    "implied_upside",
+    "source_quality",
+    "source_path",
+)
+
+BROKER_WEAK_SOURCE_QUALITIES = {
+    "abstract_only",
+    "aggregator",
+    "incomplete",
+    "media_repost",
+    "not_disclosed",
+    "not_found",
+    "partial",
+    "paywall",
+    "search_snippet",
+    "third_party_aggregate",
+    "third_party_consensus_aggregate",
+    "third_party_preview",
+    "unavailable",
+}
+
+BROKER_UNAVAILABLE_VALUES = {
+    "",
+    "-",
+    "abstract only",
+    "n/a",
+    "na",
+    "none",
+    "not available",
+    "not collected",
+    "not disclosed",
+    "not found",
+    "null",
+    "paywall",
+    "unavailable",
+    "unknown",
+}
+
+BROKER_CONSENSUS_USABLE_FIELDS = (
+    "broker",
+    "report_date",
+    "rating",
+    "target_price",
+    "revenue_E",
+    "net_profit_E",
+    "EPS_E",
+    "method",
+    "implied_upside",
+)
+
+VALUATION_REQUIRED_SECTIONS = (
+    "Final Valuation Table",
+    "Three-Tier Targets",
+    "Relative / PEG / PSG Comparison",
+    "Seasonality Calibration",
+    "Next-Quarter Threshold",
+    "Method and Assumption Bridge",
+    "Market-Expectation Valuation Bridge",
+    "Broker/Street Comparison",
+    "Market-Implied Sentiment Anchor",
+    "Growth Earnings Dependency",
+    "Full-Chain Classification Dependency",
+)
+
+VALUATION_REQUIRED_ROW_FIELDS = (
+    "ticker",
+    "company",
+    "current_price",
+    "price_date",
+    "shares_100mn",
+    "market_cap_100mn_cny",
+    "revenue_2026e_100mn",
+    "np_2026e_100mn",
+    "eps_2026e",
+    "method",
+    "bear",
+    "base",
+    "bull",
+    "market_implied_anchor",
+    "fundamental_weight",
+    "market_weight",
+    "broker_weight",
+    "final_target",
+    "upside",
+    "action",
+    "evidence_quality",
+)
+
+INDUSTRY_DEPTH_TERM_SETS: dict[str, tuple[str, tuple[str, ...], str]] = {
+    "chain business research depth": (
+        "analysis/chain_business_research.md",
+        (
+            "upstream business",
+            "downstream business",
+            "business relationship",
+            "core technology",
+            "core revenue business",
+            "2026e expectation",
+        ),
+        "A",
+    ),
+    "value-chain economics depth": (
+        "analysis/value_chain_economics.md",
+        (
+            "asp",
+            "margin",
+            "capacity",
+            "utilization",
+            "order",
+            "valuation credit",
+        ),
+        "A",
+    ),
+    "growth earnings model depth": (
+        "analysis/growth_earnings_model.md",
+        (
+            "base business",
+            "growth segment",
+            "unit",
+            "asp",
+            "gross",
+            "net profit",
+            "eps",
+            "bear",
+            "bull",
+            "current-price-implied",
+        ),
+        "A",
+    ),
+    "company card operating depth": (
+        "analysis/company_fundamental_cards.md",
+        (
+            "cash flow",
+            "inventory",
+            "capex",
+            "debt",
+            "order",
+            "certification",
+        ),
+        "A",
+    ),
+    "valuation anchor depth": (
+        "analysis/valuation_model.md",
+        (
+            "current",
+            "share",
+            "market cap",
+            "broker",
+            "street",
+            "market-implied",
+            "weight",
+            "target",
+            "upside",
+        ),
+        "S",
+    ),
+}
 
 CLOSED_REVIEW_STATUSES = {"closed", "verified", "resolved", "pass", "passed"}
 
@@ -277,6 +500,16 @@ def evaluate_research_case_quality(case_dir: str | Path) -> dict[str, Any]:
     for rel in sorted(required_artifacts):
         add(f"required artifact exists: {rel}", (root / rel).exists(), rel, "S")
 
+    for gate_name, passed, detail, severity in _gate_manifest_depth_checks(
+        gate_manifest
+    ):
+        add(gate_name, passed, detail, severity)
+
+    for check_name, passed, detail, severity in _artifact_contract_depth_checks(
+        artifact_contract
+    ):
+        add(check_name, passed, detail, severity)
+
     requires_industry_chain = _case_requires_industry_chain(
         gate_manifest,
         "\n".join(
@@ -296,6 +529,8 @@ def evaluate_research_case_quality(case_dir: str | Path) -> dict[str, Any]:
             "data/full_chain_universe_<YYYYMMDD>.json",
             "S",
         )
+        for check_name, passed, detail, severity in _industry_depth_checks(root):
+            add(check_name, passed, detail, severity)
 
     review_findings = sorted(root.glob("review_findings_*.json"))
     add("review findings present", bool(review_findings), "review_findings_*.json", "S")
@@ -362,6 +597,12 @@ def evaluate_research_case_quality(case_dir: str | Path) -> dict[str, Any]:
         "analysis/valuation_audit.md",
         "S",
     )
+    for check_name, passed, detail, severity in _valuation_model_depth_checks(root):
+        add(check_name, passed, detail, severity)
+    for check_name, passed, detail, severity in _broker_street_consensus_checks(
+        root, final_signoff
+    ):
+        add(check_name, passed, detail, severity)
 
     signoff_status = ""
     if isinstance(final_signoff, Mapping):
@@ -372,6 +613,12 @@ def evaluate_research_case_quality(case_dir: str | Path) -> dict[str, Any]:
         "final sign-off status pass",
         signoff_status in {"pass", "passed", "approved", "signed", "publishable"},
         signoff_status or "missing",
+        "S",
+    )
+    add(
+        "final sign-off residual risks do not conflict with PASS",
+        not _final_signoff_has_material_residual_risk_conflict(final_signoff),
+        "material residual risk cannot be hidden in a PASS sign-off",
         "S",
     )
 
@@ -423,9 +670,11 @@ def _research_case_result(
         if not bool(check.get("passed")) and str(check.get("severity")) in {"S", "A"}
     ]
     publishable = not blocking_failures and score >= 90
-    status = "excellent" if publishable else _score_status(score)
-    if blocking_failures and status == "excellent":
-        status = "pass"
+    status = (
+        "excellent"
+        if publishable
+        else ("blocked" if blocking_failures else _score_status(score))
+    )
     return {
         "schema_version": "quality.research_case.v1",
         "case_dir": str(root),
@@ -454,6 +703,421 @@ def _artifact_paths_from_payload(payload: Any) -> set[str]:
     paths: set[str] = set()
     paths.update(_artifact_paths_from_value(payload))
     return paths
+
+
+def _gate_manifest_depth_checks(
+    payload: Any,
+) -> list[tuple[str, bool, str, str]]:
+    if not isinstance(payload, Mapping):
+        return [("gate manifest has depth gates", False, "not an object", "A")]
+
+    depth_gates = payload.get("depth_gates")
+    if not isinstance(depth_gates, Sequence) or isinstance(
+        depth_gates, (str, bytes, bytearray)
+    ):
+        return [("gate manifest has depth gates", False, "missing depth_gates", "A")]
+
+    normalized_gates = {_normalize(gate) for gate in depth_gates}
+    missing = [
+        gate for gate in GATE_MANIFEST_DEPTH_GATES if gate not in normalized_gates
+    ]
+    return [
+        (
+            "gate manifest depth gates complete",
+            not missing,
+            ", ".join(missing) if missing else "all depth gates present",
+            "A",
+        )
+    ]
+
+
+def _artifact_contract_depth_checks(
+    payload: Any,
+) -> list[tuple[str, bool, str, str]]:
+    if not isinstance(payload, Mapping):
+        return [("artifact contract is field-level", False, "not an object", "A")]
+
+    artifacts = payload.get("artifacts")
+    if not isinstance(artifacts, Sequence) or isinstance(
+        artifacts, (str, bytes, bytearray)
+    ):
+        return [("artifact contract is field-level", False, "missing artifacts", "A")]
+    if not artifacts:
+        return [("artifact contract is field-level", False, "empty artifacts", "A")]
+
+    missing_by_artifact: list[str] = []
+    for item in artifacts:
+        if not isinstance(item, Mapping):
+            missing_by_artifact.append("<non-object>: all depth fields")
+            continue
+        path = _text(item.get("path") or item.get("artifact"), "<missing path>")
+        missing_fields = [
+            field
+            for field in ARTIFACT_CONTRACT_DEPTH_FIELDS
+            if not _has_items(item.get(field))
+        ]
+        if missing_fields:
+            missing_by_artifact.append(f"{path}: {', '.join(missing_fields)}")
+
+    return [
+        (
+            "artifact contract declares required fields and depth gates",
+            not missing_by_artifact,
+            "; ".join(missing_by_artifact[:8])
+            + ("; ..." if len(missing_by_artifact) > 8 else ""),
+            "A",
+        )
+    ]
+
+
+def _industry_depth_checks(root: Path) -> list[tuple[str, bool, str, str]]:
+    checks: list[tuple[str, bool, str, str]] = []
+    for name, (rel, terms, severity) in INDUSTRY_DEPTH_TERM_SETS.items():
+        text = _normalize(_read_text(root / rel))
+        missing = [term for term in terms if _normalize(term) not in text]
+        checks.append(
+            (
+                name,
+                not missing,
+                f"{rel} missing: {', '.join(missing)}"
+                if missing
+                else f"{rel} contains required depth terms",
+                severity,
+            )
+        )
+    return checks
+
+
+def _valuation_model_depth_checks(root: Path) -> list[tuple[str, bool, str, str]]:
+    checks: list[tuple[str, bool, str, str]] = []
+    valuation_path = root / "analysis" / "valuation_model.md"
+    valuation_text = _normalize(_read_text(valuation_path))
+    missing_sections = [
+        section
+        for section in VALUATION_REQUIRED_SECTIONS
+        if _normalize(section) not in valuation_text
+    ]
+    checks.append(
+        (
+            "valuation model required sections complete",
+            not missing_sections,
+            ", ".join(missing_sections)
+            if missing_sections
+            else "all valuation sections present",
+            "S",
+        )
+    )
+
+    rows = _valuation_rows(_load_first_json(root, "data/current_valuation_model_*.json"))
+    checks.append(
+        (
+            "valuation model structured rows present",
+            bool(rows),
+            f"rows={len(rows)}",
+            "S",
+        )
+    )
+    if not rows:
+        return checks
+
+    missing_by_row: list[str] = []
+    arithmetic_errors: list[str] = []
+    for row in rows:
+        ticker = str(row.get("ticker") or "<missing ticker>")
+        missing = [
+            field
+            for field in VALUATION_REQUIRED_ROW_FIELDS
+            if not _has_items(row.get(field))
+        ]
+        if missing:
+            missing_by_row.append(f"{ticker}: {', '.join(missing)}")
+
+        current = _float_or_none(row.get("current_price"))
+        target = _float_or_none(row.get("final_target"))
+        upside = _float_or_none(row.get("upside"))
+        if current and target is not None and upside is not None:
+            expected = target / current - 1
+            if abs(expected - upside) > 0.005:
+                arithmetic_errors.append(
+                    f"{ticker}: upside {upside:.4f} != target/current-1 {expected:.4f}"
+                )
+
+    detail = "; ".join(missing_by_row[:6])
+    if len(missing_by_row) > 6:
+        detail += "; ..."
+    checks.append(("valuation model row fields complete", not missing_by_row, detail, "S"))
+    checks.append(
+        (
+            "valuation model target/upside recalculates",
+            not arithmetic_errors,
+            "; ".join(arithmetic_errors[:6]),
+            "S",
+        )
+    )
+    return checks
+
+
+def _broker_street_consensus_checks(
+    root: Path, final_signoff: Any
+) -> list[tuple[str, bool, str, str]]:
+    checks: list[tuple[str, bool, str, str]] = []
+    consensus_files = sorted((root / "data").glob("broker_street_consensus_*.json"))
+    checks.append(
+        (
+            "broker/street consensus json present",
+            bool(consensus_files),
+            "data/broker_street_consensus_<YYYYMMDD>.json",
+            "S",
+        )
+    )
+    if not consensus_files:
+        return checks
+
+    md_path = consensus_files[0].with_suffix(".md")
+    checks.append(
+        (
+            "broker/street consensus md pair present",
+            md_path.exists(),
+            str(md_path.relative_to(root)),
+            "S",
+        )
+    )
+    payload, error = _load_json_document(consensus_files[0])
+    checks.append(
+        (
+            "broker/street consensus json parses",
+            error is None,
+            error or "",
+            "S",
+        )
+    )
+    rows = _broker_consensus_rows(payload)
+    checks.append(
+        ("broker/street consensus rows present", bool(rows), f"rows={len(rows)}", "S")
+    )
+
+    valuation_rows = _valuation_rows(
+        _load_first_json(root, "data/current_valuation_model_*.json")
+    )
+    covered_tickers = {
+        str(row.get("ticker"))
+        for row in valuation_rows
+        if _has_items(row.get("ticker"))
+    }
+    row_tickers = {
+        str(row.get("ticker"))
+        for row in rows
+        if _has_items(row.get("ticker"))
+    }
+    missing_coverage = sorted(covered_tickers - row_tickers)
+    checks.append(
+        (
+            "broker/street consensus covers valuation universe",
+            not missing_coverage,
+            ", ".join(missing_coverage)
+            if missing_coverage
+            else f"covered={len(row_tickers)}",
+            "S",
+        )
+    )
+
+    missing_by_row: list[str] = []
+    unusable_by_row: list[str] = []
+    weak_not_downweighted: list[str] = []
+    weak_rows: list[Mapping[str, Any]] = []
+    unusable_rows: list[Mapping[str, Any]] = []
+    positive_anchor_tickers: set[str] = set()
+    for row in rows:
+        ticker = str(row.get("ticker") or "<missing ticker>")
+        missing = [
+            field
+            for field in BROKER_CONSENSUS_REQUIRED_FIELDS
+            if not _has_items(row.get(field))
+        ]
+        if missing:
+            missing_by_row.append(f"{ticker}: {', '.join(missing)}")
+
+        unusable = [
+            field
+            for field in BROKER_CONSENSUS_USABLE_FIELDS
+            if not _broker_value_usable(row.get(field))
+        ]
+        if unusable:
+            unusable_rows.append(row)
+            unusable_by_row.append(f"{ticker}: {', '.join(unusable)}")
+
+        source_quality = _normalize(row.get("source_quality"))
+        if source_quality in BROKER_WEAK_SOURCE_QUALITIES or unusable:
+            weak_rows.append(row)
+            weight = _first_float(
+                row.get("street_weight"),
+                row.get("broker_weight"),
+                row.get("valuation_weight"),
+                row.get("weight"),
+            )
+            if weight not in (0.0, None):
+                weak_not_downweighted.append(
+                    f"{ticker}: {source_quality or 'unusable_fields'} weight={weight}"
+                )
+        if (
+            not missing
+            and not unusable
+            and source_quality not in BROKER_WEAK_SOURCE_QUALITIES
+            and (
+                _first_float(
+                    row.get("street_weight"),
+                    row.get("broker_weight"),
+                    row.get("valuation_weight"),
+                    row.get("weight"),
+                )
+                or 0.0
+            )
+            > 0.0
+        ):
+            positive_anchor_tickers.add(ticker)
+
+    detail = "; ".join(missing_by_row[:8])
+    if len(missing_by_row) > 8:
+        detail += "; ..."
+    checks.append(("broker/street consensus row fields complete", not missing_by_row, detail, "S"))
+    unusable_detail = "; ".join(unusable_by_row[:8])
+    if len(unusable_by_row) > 8:
+        unusable_detail += "; ..."
+    checks.append(
+        (
+            "broker/street consensus values usable for valuation anchor",
+            not unusable_by_row,
+            unusable_detail,
+            "S",
+        )
+    )
+    checks.append(
+        (
+            "broker/street weak sources are zero-weight or unavailable",
+            not weak_not_downweighted,
+            "; ".join(weak_not_downweighted[:8]),
+            "S",
+        )
+    )
+    missing_positive_anchor = sorted(covered_tickers - positive_anchor_tickers)
+    checks.append(
+        (
+            "broker/street positive-weight auditable anchor covers valuation universe",
+            not missing_positive_anchor,
+            ", ".join(missing_positive_anchor[:8]),
+            "S",
+        )
+    )
+
+    source_exhaustion = _normalize(_read_text(root / "source_exhaustion_log.md"))
+    checks.append(
+        (
+            "broker/street gaps recorded in source exhaustion",
+            not (weak_rows or unusable_rows)
+            or ("broker" in source_exhaustion and "target" in source_exhaustion),
+            "source_exhaustion_log.md must record broker target-price gaps",
+            "A",
+        )
+    )
+
+    signoff_status = ""
+    if isinstance(final_signoff, Mapping):
+        signoff_status = _normalize(
+            final_signoff.get("signoff_status") or final_signoff.get("status")
+        )
+    checks.append(
+        (
+            "broker/street consensus complete before PASS sign-off",
+            signoff_status not in {"pass", "passed", "approved", "signed", "publishable"}
+            or not (weak_rows or unusable_rows),
+            "PASS cannot coexist with incomplete broker/Street target-price coverage",
+            "S",
+        )
+    )
+    return checks
+
+
+def _load_first_json(root: Path, pattern: str) -> Any:
+    matches = sorted(root.glob(pattern))
+    if not matches:
+        return {}
+    payload, error = _load_json_document(matches[0])
+    return {} if error else payload
+
+
+def _valuation_rows(payload: Any) -> list[Mapping[str, Any]]:
+    if isinstance(payload, Mapping):
+        for key in ("rows", "valuations", "items"):
+            rows = payload.get(key)
+            if isinstance(rows, list):
+                return [
+                    cast(Mapping[str, Any], row)
+                    for row in rows
+                    if isinstance(row, Mapping)
+                ]
+    if isinstance(payload, list):
+        return [
+            cast(Mapping[str, Any], row)
+            for row in payload
+            if isinstance(row, Mapping)
+        ]
+    return []
+
+
+def _broker_consensus_rows(payload: Any) -> list[Mapping[str, Any]]:
+    if isinstance(payload, Mapping):
+        for key in ("rows", "consensus", "items", "broker_street_consensus"):
+            rows = payload.get(key)
+            if isinstance(rows, list):
+                return [
+                    cast(Mapping[str, Any], row)
+                    for row in rows
+                    if isinstance(row, Mapping)
+                ]
+    if isinstance(payload, list):
+        return [
+            cast(Mapping[str, Any], row)
+            for row in payload
+            if isinstance(row, Mapping)
+        ]
+    return []
+
+
+def _first_float(*values: Any) -> float | None:
+    for value in values:
+        parsed = _float_or_none(value)
+        if parsed is not None:
+            return parsed
+    return None
+
+
+def _final_signoff_has_material_residual_risk_conflict(payload: Any) -> bool:
+    if not isinstance(payload, Mapping):
+        return False
+
+    status = _normalize(payload.get("signoff_status") or payload.get("status"))
+    if status not in {"pass", "passed", "approved", "signed", "publishable"}:
+        return False
+
+    residual_risks = payload.get("residual_risks")
+    if isinstance(residual_risks, str):
+        residual_text = residual_risks
+    elif isinstance(residual_risks, Sequence) and not isinstance(
+        residual_risks, (bytes, bytearray)
+    ):
+        residual_text = " ".join(str(item) for item in residual_risks)
+    else:
+        residual_text = ""
+
+    normalized_risk = _normalize(residual_text)
+    if not normalized_risk:
+        return False
+
+    downgrade_status = _normalize(payload.get("downgrade_status"))
+    if "downgrade" in downgrade_status and "none" not in downgrade_status:
+        return False
+
+    return any(term in normalized_risk for term in MATERIAL_RESIDUAL_RISK_TERMS)
 
 
 def _artifact_paths_from_value(value: Any) -> set[str]:
@@ -735,6 +1399,18 @@ def _has_items(value: Any) -> bool:
         return False
     if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
         return bool(value)
+    return bool(str(value).strip())
+
+
+def _broker_value_usable(value: Any) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return _normalize(value) not in BROKER_UNAVAILABLE_VALUES
+    if isinstance(value, Mapping):
+        return any(_broker_value_usable(item) for item in value.values())
+    if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
+        return any(_broker_value_usable(item) for item in value)
     return bool(str(value).strip())
 
 

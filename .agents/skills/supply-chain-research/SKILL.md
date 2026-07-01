@@ -34,6 +34,8 @@ If a required evidence item is unavailable, write `not found` or `not disclosed`
 - Demand anchors prove demand context only; they do not prove upstream revenue or orders.
 - A listed ticker can enter the core valuation pool only when relationship evidence and value-chain economics can support valuation work.
 - A missing chain block is a coverage gap, not an excuse to narrow the report after the fact.
+- Core valuation eligibility requires all three: company-level product/process exposure, customer/platform/order/certification evidence, and value-chain economics that can explain revenue and margin conversion. If any one is missing, classify the ticker as `satellite_watch` or `watchlist only / insufficient evidence`.
+- Evidence gaps must carry a valuation consequence. A gap that affects revenue, margin, EPS, or target price must set `blocks_valuation: true` and must be consumed by valuation and review.
 
 ## Procedure
 
@@ -57,11 +59,13 @@ If a required evidence item is unavailable, write `not found` or `not disclosed`
 4. **Build the coverage gap matrix.**
    - Write `analysis/coverage_gap_matrix.md`.
    - For every missing block or weakly evidenced node, record gap, reason, sources checked, next verification path, whether valuation is blocked, and expected upgrade trigger.
+   - Use `blocks_valuation: true` when missing customer/order/ASP/capacity/utilization/margin evidence prevents company-level revenue, margin, EPS, or valuation credit.
 
 5. **Map company relationships.**
    - For every covered ticker, map upstream input, product/process exposure, downstream customer/platform/application, and profit pool.
    - Classify every relationship as `confirmed`, `official-disclosed`, `broker-stated`, `media-stated`, `inferred`, `rumor`, or `not found`.
    - Preserve source path, original URL, date, source type, and evidence confidence.
+   - Assign `source_tier`, `evidence_score`, `valuation_eligibility`, and `downgrade_trigger` to every relationship row.
 
 6. **Quantify value-chain economics.**
    - Write `analysis/value_chain_economics.md`.
@@ -75,6 +79,7 @@ If a required evidence item is unavailable, write `not found` or `not disclosed`
 8. **Audit customer-chain claims.**
    - High-impact claims such as named customers, platform qualification, long-term orders, capacity, purity/specification, product revenue share, price pass-through, and localization substitution must enter `data/customer_chain_audit.md/json`.
    - Weak evidence can support watchlist language, not investable valuation credit.
+   - Every core valuation ticker must have customer-chain audit fields for customer/platform, certification status, order/backlog, ASP or price proxy, capacity, utilization/yield, product revenue exposure, margin impact, evidence score, source tier, and downgrade trigger. Use `not disclosed` or `not found` rather than blanks.
 
 9. **Block or pass the supply-chain gate.**
    - Mark `PASS` only when the full-chain universe exists, all coverage-pack blocks are mapped, every core valuation ticker has a company card and relationship row, and valuation-relevant economics are explicit.
@@ -121,13 +126,19 @@ listed | overseas | private | demand_anchor | low_purity | unavailable
 `analysis/coverage_gap_matrix.md` must include:
 
 ```text
-gap_id | chain_block | missing_node_or_field | why_it_matters | sources_checked | reason_unresolved | next_verification_path | valuation_blocker | owner_skill_or_role
+gap_id | chain_block | missing_node_or_field | why_it_matters | sources_checked | reason_unresolved | next_verification_path | blocks_valuation | owner_skill_or_role
 ```
 
 `data/supply_chain_relationships.md/json` must include these fields:
 
 ```text
-ticker | company | chain_layer | node_type | upstream_input | product_or_process | downstream_customer_or_platform | relationship_type | confidence | revenue_exposure | capacity_or_certification | order_visibility | margin_or_earnings_impact | source | evidence_gap | used_in_valuation
+ticker | company | chain_layer | node_type | upstream_input | product_or_process | downstream_customer_or_platform | relationship_type | confidence | source_tier | evidence_score | revenue_exposure | capacity_or_certification | order_visibility | ASP_or_price_proxy | utilization_or_yield | margin_or_earnings_impact | source | evidence_gap | valuation_eligibility | downgrade_trigger | used_in_valuation
+```
+
+`data/customer_chain_audit.md/json` must include these fields for every high-impact claim and every core valuation ticker:
+
+```text
+ticker | company | customer_or_platform | claim_type | product_or_process | certification_status | order_or_backlog | ASP_or_price_proxy | capacity | utilization_or_yield | revenue_exposure | margin_impact | source_tier | evidence_score | source | evidence_gap | blocks_valuation | downgrade_trigger | adopted_wording
 ```
 
 `analysis/company_fundamental_cards.md` must include one card per core valuation ticker and any satellite ticker explicitly covered in the report:
@@ -141,6 +152,7 @@ ticker | company | chain_layer | node_type | upstream_input | product_or_process
 - Recent revenue, net profit, margin, cash flow, inventory/debt, and capex observations where available.
 - Moat and substitution risk.
 - Valuation relevance and what evidence is still missing.
+- Core-pool eligibility decision: `eligible`, `watchlist only / insufficient customer evidence`, `watchlist only / insufficient economics`, or `unavailable`.
 
 `analysis/value_chain_economics.md` must include:
 
@@ -170,5 +182,6 @@ chain_block | value_amount_or_proxy | ASP_or_price_proxy | margin_pool | supply_
 - Do not turn capacity into revenue without utilization, customer qualification, order, or pricing evidence.
 - Do not give valuation credit for named customers, platforms, certifications, or orders unless the claim is in `customer_chain_audit`.
 - Do not proceed with investable recommendations if the covered ticker lacks both a company card and relationship row.
+- Do not keep a ticker in the core valuation pool when `coverage_gap_matrix` or `customer_chain_audit` marks customer/order/ASP/capacity/utilization/margin evidence as `blocks_valuation: true`.
 - Do not omit private, overseas, unavailable, or low-purity nodes just because they are not direct A-share valuation candidates.
 - Preserve project workspace conventions: raw sources stay under `sources/`; normalized packets stay under `data/`; analyst synthesis stays under `analysis/`.

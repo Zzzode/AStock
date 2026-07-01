@@ -14,7 +14,7 @@ If you were dispatched as a subagent to execute a specific task, skip this skill
 A multi-stage orchestration that produces institutional-grade equity research reports. All agent capabilities live in `.agents/team/*.md` — this skill only defines the pipeline: which agents, what order, what inputs flow where.
 
 ```
-Scope → Industry Coverage Pack → Template Benchmark → Source Governance → Research → Full-Chain Universe → Supply-Chain Gate → House View / Variant Perception → Growth-Earnings / Value-Chain Economics → Valuation Skill Gate → Exhibit Plan → Write → Render Review → Publish
+Scope → Industry Coverage Pack → Template Benchmark → Source Governance → Research → Full-Chain Universe → Supply-Chain Gate → House View / Variant Perception → Growth-Earnings / Value-Chain Economics → Broker/Street Consensus Gate → Valuation Skill Gate → Exhibit Plan → Write → Render Review → Publish
 ```
 
 Institutional research must run as a state machine. Do not skip a state, and do not publish from intent or draft quality alone:
@@ -54,14 +54,24 @@ Create these files during Intake and keep them current throughout the case:
 `gate_manifest.md/json` must include:
 
 ```text
-case_id | report_type | data_cutoff | coverage_pack | required_skills | required_artifacts | review_cycles | verifiers | pass_conditions | downgrade_path
+case_id | report_type | data_cutoff | coverage_pack | required_skills | required_artifacts | review_cycles | verifiers | depth_gates | pass_conditions | downgrade_path
 ```
 
 `artifact_contract.md/json` must include one row per required artifact:
 
 ```text
-artifact | owner_skill | owner_agent | stage | required_for | schema_or_fields | reviewer_cycle | verifier_check | blocking_if_missing
+artifact | owner_skill | owner_agent | stage | required_for | required_fields | minimum_depth | blocking_conditions | reviewer_cycle | verifier_check | blocking_if_missing
 ```
+
+Field-level contract rule: an artifact is not complete merely because the file exists. `required_fields` must name the fields or sections that prove the artifact's purpose, `minimum_depth` must state the minimum evidence/modeling depth expected, and `blocking_conditions` must state what makes the artifact A-Level or S-Level even if it exists. A contract row with only `see skill contract`, no field list, or no blocking condition is itself an A-Level workflow failure.
+
+Required `depth_gates` for every full research report:
+
+```text
+evidence_depth | broker_consensus_depth | model_depth | valuation_depth | ic_readiness
+```
+
+Pre-publish depth rule: a report can mechanically satisfy artifact existence while still failing institutional research depth. If evidence penetration, profit-pool economics, company EPS bridge, valuation anchors, or investment-committee actionability are shallow, record a `shallow_artifact` finding and route repair to the owner skill.
 
 Report-type routing:
 
@@ -75,12 +85,15 @@ Report-type routing:
 
 Downgrade rule: if a required evidence or valuation gate cannot pass, downgrade the deliverable to `watchlist only` or `evidence memo`; do not publish investable conclusions.
 
+Core-pool downgrade rule: any core valuation ticker with missing customer/order/ASP/utilization evidence, missing value-chain economics, or missing company-level EPS bridge must be downgraded to `watchlist only / insufficient evidence` unless the reviewer explicitly records why the missing field does not affect revenue, margin, EPS, or valuation.
+
 ## Skill Routing Matrix
 
 | Workstream | Owner Skill / Agent | Required Output |
 |---|---|---|
 | Intake and gate manifest | `equity-research` orchestrator | `research_brief.md`, `gate_manifest.*`, `artifact_contract.*` |
 | Broker/source collection | `reports`, `report-collector` | `data/report_catalog.md`, `sources/` |
+| Broker/Street consensus | `reports`, `report-analyzer` | `data/broker_street_consensus_<YYYYMMDD>.md/json`, `sources/broker-reports/<YYYY-MM-DD>/index.md` |
 | Source governance | `source-governance-analyst` | `data/source_registry.*`, `data/claim_audit.*`, `source_exhaustion_log.*` |
 | Full-chain mapping | `supply-chain-research`, `supply-chain-analyst` | full-chain universe, taxonomy, core/satellite, coverage gaps |
 | Industry/competition | `industry-analyst` | `analysis/industry_landscape.md`, `analysis/competitive_landscape.md` |
@@ -122,6 +135,8 @@ If the user asks for an industry-chain report but does not provide a ticker univ
 - Demand anchors: hyperscalers, OEMs, cloud/AI platforms, end customers, or other non-investable demand nodes.
 
 Create `research_brief.md`, `gate_manifest.md/json`, and `artifact_contract.md/json` in the working directory. `research_brief.md` must state target theme, report type, data cutoff, language, depth, industry coverage pack, full-chain universe definition, core valuation pool, conditional watch pool, demand anchors, downgrade path, and any user-imposed exclusions. Missing any of these fields in an industry-chain report is an S-Level scope failure.
+
+`gate_manifest.md/json` must also include a pre-publish self-checklist covering evidence depth, model depth, valuation depth, and investment-committee readiness. Missing this checklist is an A-Level workflow failure; publishing while the checklist is incomplete is S-Level.
 
 ## Phase 0.5: TEMPLATE BENCHMARK
 
@@ -167,7 +182,7 @@ Dispatch **in parallel** — no dependencies between them:
 | Report Collector | `.agents/team/report-collector.md` | sector/ticker + date_range=last_90d + min_reports=10 + output_dir=`sources/broker-reports/<YYYY-MM-DD>/` | `data/report_catalog.md` + `sources/broker-reports/<YYYY-MM-DD>/` |
 | Source Governance Analyst | `.agents/team/source-governance-analyst.md` | all collected sources | `data/source_registry.md/json` + `data/claim_audit.md/json` + `source_exhaustion_log.md/json` |
 
-**Quality gate:** All tickers have data. If any ticker is missing, re-run collector for that ticker. High-impact claims must be classified before they can enter the main report. Broker evidence must distinguish `original_pdf`, `broker_official_page`, `abstract`, `media_repost`, `third_party_preview`, `search_snippet`, and `not_found`; weak sources cannot be upgraded into Street consensus language.
+**Quality gate:** All tickers have data. If any ticker is missing, re-run collector for that ticker. High-impact claims must be classified before they can enter the main report. Broker evidence must distinguish `original_pdf`, `broker_official_page`, `abstract`, `media_repost`, `third_party_preview`, `search_snippet`, and `not_found`; weak sources cannot be upgraded into Street consensus language. Full industry-chain reports must create `sources/broker-reports/<YYYY-MM-DD>/index.md` and `data/broker_street_consensus_<YYYYMMDD>.md/json` before valuation. If original broker reports are not found, create explicit ticker-level `not_found` rows with 0% valuation weight and record the gap in `source_exhaustion_log.*`.
 
 ## Phase 2: VERIFY (Parallel, after Phase 1)
 
@@ -235,6 +250,12 @@ Required readiness inputs:
 
 **Quality gate:** If high-growth or AI-related valuation credit is used, the growth earnings skill must complete before valuation. Every applicable ticker must show base business versus growth segment split, unit/order/ASP or explicit proxy, recognition ratio, gross margin, incremental opex, net profit, EPS contribution, bear/base/bull scenarios, current-price-implied growth, source quality, evidence gap, and valuation credit. Generic AI demand, downstream TAM, capacity, or market heat cannot support EPS or target-price upside without this bridge. If the evidence is unavailable, publish a marked gap table and label the growth segment `watchlist only / insufficient growth evidence`.
 
+## Phase 2.7: BROKER/STREET CONSENSUS GATE
+
+Before valuation, run the `reports` skill and report analyzer over the case-scoped broker corpus. The gate must output `data/broker_street_consensus_<YYYYMMDD>.md/json` with one or more rows for every covered or investable ticker. Each row must preserve `ticker`, `broker`, `report_date`, `rating`, `target_price`, `revenue_E`, `net_profit_E`, `EPS_E`, `method`, `implied_upside`, `source_quality`, `source_path`, and `valuation_weight`.
+
+If an original PDF or broker official page is unavailable but a public or exported Wind/Choice/iFinD-style structured table preserves broker identity, report date, rating, target price, forecast fields or visible forecast gaps, and source path, label it `auditable_consensus_snapshot` and cap its Street anchor weight at the report's normal broker-anchor weight. If only abstracts, media reposts, previews, search snippets, paywalled pages, or no reports are available, keep the row but mark unavailable fields `not disclosed`, set `source_quality` to the weak source type, set `valuation_weight` to 0, and record the ticker in `source_exhaustion_log.*`. A full report cannot receive `final_signoff: PASS` while broker/Street target-price coverage remains incomplete across the core valuation universe; it must be downgraded to `MECHANICAL_PASS_INSTITUTIONAL_FAIL`, `CONDITIONAL`, `watchlist only`, or `evidence memo`.
+
 ## Phase 2.75: VALUATION SKILL READINESS
 
 The standalone `valuation` skill is the authoritative valuation system for all full research reports. The orchestrator must not hand-roll a simplified valuation table inside `equity-research`; it must run the valuation skill after verified data, house view, supply-chain outputs, and any required growth earnings model are available.
@@ -243,6 +264,8 @@ Required readiness inputs:
 - `data/verified_financials.md`
 - `data/verified_market_data.md`
 - `data/consensus_analysis.md` or a public broker/consensus snapshot with unavailable fields marked `not disclosed`
+- `data/broker_street_consensus_<YYYYMMDD>.md/json`
+- `sources/broker-reports/<YYYY-MM-DD>/index.md`
 - `data/source_registry.md`
 - `data/claim_audit.md`
 - `analysis/supply_chain_model.md`
@@ -337,6 +360,7 @@ Full research reports must contain these evidence-backed sections. If evidence i
 | Exhibit Architect | `.agents/team/exhibit-architect.md` | house view + industry + supply-chain outputs + growth-earnings outputs when applicable + valuation + risk + source registry | `analysis/exhibit_plan.md` |
 
 **Quality gate:** The supply-chain skill must complete before the valuation skill. The growth-earnings skill must complete before valuation whenever high-growth/AI/order/unit/ASP valuation credit is used. The valuation skill must complete before risk, exhibit planning, writing, or review. `analysis/competitive_landscape.md`, `analysis/value_chain_economics.md`, and `analysis/variant_perception.md` are mandatory for full industry-chain reports. `analysis/valuation_model.md` must contain a complete final valuation table for every investable or covered ticker: current price/date, share count, market cap, forecast revenue/net profit/EPS, method, bull/base/bear values, intrinsic/fundamental value, market-implied sentiment anchor, broker/Street anchor where available, final market-consensus adjusted target price or fair-value range, implied upside/downside, rating/action, catalysts, invalidation, and source/evidence quality. It must also include three-tier targets, seasonality calibration, next-quarter threshold, method bridge, market-expectation bridge, broker/Street comparison, and market-implied sentiment anchor. `analysis/valuation_audit.md` must verify the actual method used (PE, PEG, PS, PB, EV/EBITDA, DCF, SOTP or blend), market cap = price × shares, upside = target/current - 1, scenario bands, the explicit weights used in the multi-anchor target, any growth-earnings dependency, and `Model Reproducibility: PASS`. A one-size-fits-all PE table across companies with different business models is an S-Level issue. A mechanically conservative target that ignores strong observable market consensus is also an S-Level issue. Target-price tables must cite broker/date/source and separate broker targets from AStock targets. Supply-chain relationship tables must label confidence. Valuation catalysts, invalidation, and next-quarter thresholds must reference `analysis/chain_earnings_bridge.md`, `analysis/value_chain_economics.md`, and `data/supply_chain_relationships.md`; generic demand language is not enough. High-growth valuation credit must reference `analysis/growth_earnings_model.md` and `data/growth_driver_model.json`; generic AI demand is not enough. `analysis/exhibit_plan.md` must map every strong conclusion to an exhibit. Fix arithmetic, fake precision, missing final valuation outputs, missing supply-chain outputs, missing growth-earnings outputs, missing exhibits, evidence gaps, method mismatch, missing market-sentiment bridge, missing variant perception, and missing value-chain economics before proceeding.
+If these files exist but contain only generic summaries, repeated `not disclosed` markers without downgrade, or block-level prose that cannot support ticker-level revenue, margin, EPS, valuation, or actionability, mark them `shallow_artifact`. Shallow artifacts are A-Level by default and S-Level when used to support investable recommendations.
 
 ## Phase 4: WRITE (Sequential)
 
@@ -367,6 +391,7 @@ If source quality is weak, title the section "Publicly Available Research Sentim
 - A clear answer to: what to buy or track, why now, what evidence would make us wrong, what price/earnings/customer trigger changes the action, and which names are only satellites or demand anchors.
 - Definitions of action labels and risk labels in investment-behavior terms.
 - Compact tables only; long triggers belong in prose.
+- Portfolio construction for primary names: core/satellite grouping, suggested watch or position behavior, risk budget, expected return attribution, probability-weighted bear/base/bull interpretation, and buy/add/trim/downgrade discipline. If the report is not allowed to make portfolio recommendations, state the monitoring-equivalent behavior instead.
 
 **Quality gate:** XeLaTeX compiles without errors, and a text extraction review confirms prose-led chapters with no table-only main-body sections.
 
@@ -412,7 +437,9 @@ Lifecycle: `open -> fixed -> verified -> closed` or `open -> waived`. S-Level is
 
 After each failed review, route repairs to the owner skill named in `repair_plan_<cycle>.json`, regenerate affected artifacts, and rerun the same cycle. Continue until every required gate passes. Do not publish with open S-Level issues, open unwaived A-Level issues, publishability score below 90, failing verifier, or missing final sign-off.
 
-**Quality gate:** Zero open S-Level issues and zero open unwaived A-Level issues before publish. Any missing full-chain universe artifact (`data/full_chain_universe_<YYYYMMDD>.md/json`, `analysis/full_chain_taxonomy.md`, `analysis/core_vs_satellite_universe.md`, or `analysis/coverage_gap_matrix.md`) in a full industry-chain report is S-Level and blocks publication. Any missing industry coverage pack citation in `analysis/template_brief.md`, missing selected pack block, missing `node_type`, or missing core/satellite/demand-anchor classification is S-Level. Any missing supply-chain skill artifact (`analysis/supply_chain_model.md`, `analysis/company_fundamental_cards.md`, `analysis/value_chain_economics.md`, `analysis/chain_earnings_bridge.md`, `data/supply_chain_relationships.md/json`, or `data/customer_chain_audit.md/json`) in a full industry-chain report is S-Level and blocks publication. Any missing competitive landscape, source exhaustion log, source-quality labels in broker consensus, or variant perception is S-Level for a full report. Any missing growth-earnings skill artifact (`analysis/growth_earnings_model.md`, `analysis/segment_forecast_bridge.md`, `analysis/implied_growth_sensitivity.md`, or `data/growth_driver_model.json`) when high-growth/AI/order/unit/ASP valuation credit is used is S-Level and blocks publication. Any missing valuation skill artifact (`analysis/valuation_model.md`, `analysis/valuation_audit.md`, or structured valuation JSON when the case uses a data room), missing `Model Reproducibility: PASS`, missing complete final valuation model, missing current-price-based target price/fair-value range, missing implied upside/downside, missing market-expectation valuation bridge, missing broker/Street comparison when public evidence exists, investable recommendation without valuation support, valuation method that does not fit the ticker's business model, or untranslated English recommendation/valuation logic in a Chinese report is S-Level and blocks publication. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish. `review_log.md` must contain every cycle, every open/closed issue count, and a publishability score. PASS requires score >= 90, generic verifier PASS, industry-chain verifier PASS when applicable, and `final_signoff.md/json`.
+If all mechanical gates pass but the reviewer or user identifies weak evidence penetration, shallow value-chain economics, incomplete company-level EPS bridge, weak valuation anchors, or missing IC actionability, reopen the relevant cycle as `mechanical PASS / institutional FAIL`. The repair plan must name the owner skill and the field-level artifact contract that failed to prevent the shallow pass.
+
+**Quality gate:** Zero open S-Level issues and zero open unwaived A-Level issues before publish. Any missing full-chain universe artifact (`data/full_chain_universe_<YYYYMMDD>.md/json`, `analysis/full_chain_taxonomy.md`, `analysis/core_vs_satellite_universe.md`, or `analysis/coverage_gap_matrix.md`) in a full industry-chain report is S-Level and blocks publication. Any missing industry coverage pack citation in `analysis/template_brief.md`, missing selected pack block, missing `node_type`, or missing core/satellite/demand-anchor classification is S-Level. Any missing supply-chain skill artifact (`analysis/supply_chain_model.md`, `analysis/company_fundamental_cards.md`, `analysis/value_chain_economics.md`, `analysis/chain_earnings_bridge.md`, `data/supply_chain_relationships.md/json`, or `data/customer_chain_audit.md/json`) in a full industry-chain report is S-Level and blocks publication. Any missing competitive landscape, source exhaustion log, source-quality labels in broker consensus, `data/broker_street_consensus_<YYYYMMDD>.md/json`, broker-reports index, or variant perception is S-Level for a full report. Any final `PASS` while broker/Street target-price coverage is incomplete across the core valuation universe is S-Level and must be downgraded or reopened. Any missing growth-earnings skill artifact (`analysis/growth_earnings_model.md`, `analysis/segment_forecast_bridge.md`, `analysis/implied_growth_sensitivity.md`, or `data/growth_driver_model.json`) when high-growth/AI/order/unit/ASP valuation credit is used is S-Level and blocks publication. Any missing valuation skill artifact (`analysis/valuation_model.md`, `analysis/valuation_audit.md`, or structured valuation JSON when the case uses a data room), missing `Model Reproducibility: PASS`, missing complete final valuation model, missing current-price-based target price/fair-value range, missing implied upside/downside, missing market-expectation valuation bridge, missing broker/Street comparison when public evidence exists, investable recommendation without valuation support, valuation method that does not fit the ticker's business model, or untranslated English recommendation/valuation logic in a Chinese report is S-Level and blocks publication. Any chapter that reads like a PPT/chartbook page instead of prose-led research must be revised before publish. `review_log.md` must contain every cycle, every open/closed issue count, and a publishability score. PASS requires score >= 90, generic verifier PASS, industry-chain verifier PASS when applicable, and `final_signoff.md/json`.
 Missing market-implied sentiment anchor, missing multi-anchor valuation weights, or an action label that mechanically ignores strong observed market consensus is S-Level for full research reports.
 
 ## Phase 5.5: FINAL IC SIGN-OFF
@@ -423,6 +450,8 @@ Before publish, write:
 - `final_signoff.json`
 
 The final sign-off must list verifier results, industry-chain verifier result when applicable, open issue counts, waived issues, publishability score, residual risks, data cutoff, PDF path, page count, and downgrade status if relevant.
+
+Residual-risk rule: `final_signoff.md/json` must not mark `signoff_status: PASS` when residual risks include material customer/order/ASP/utilization, source-quality, earnings-bridge, or valuation-anchor gaps that affect core investment conclusions. Those risks must either become open A/S findings, receive an explicit downgrade/watchlist treatment, or be tied to a documented waiver.
 
 ## Phase 6: PUBLISH
 
@@ -495,6 +524,8 @@ workspace/research/<topic-slug>-<YYYYMMDD>/
 │   ├── raw_financials.md
 │   ├── raw_market_data.md
 │   ├── report_catalog.md
+│   ├── broker_street_consensus_<YYYYMMDD>.md
+│   ├── broker_street_consensus_<YYYYMMDD>.json
 │   ├── source_registry.md
 │   ├── source_registry.json
 │   ├── claim_audit.md
