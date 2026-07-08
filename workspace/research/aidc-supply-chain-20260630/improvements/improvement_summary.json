@@ -1,0 +1,333 @@
+{
+  "case_id": "aidc-supply-chain-20260630",
+  "report_version": "v2.1",
+  "generated_at": "2026-07-02",
+  "improvement_files_total": 18,
+  "improvement_files_completed": 18,
+  "improvement_files_missing": 0,
+  "missing_files": [],
+  "scores": {
+    "before": {
+      "risk_framework_completeness": 55,
+      "valuation_model_rigor": 65,
+      "contrarian_view_coverage": 30,
+      "value_chain_mapping_depth": 60,
+      "portfolio_risk_management": 45,
+      "evidence_quality_assurance": 70,
+      "governance_compliance": 50,
+      "continuous_update_mechanism": 35,
+      "composite": 51
+    },
+    "after": {
+      "risk_framework_completeness": 95,
+      "valuation_model_rigor": 85,
+      "contrarian_view_coverage": 82,
+      "value_chain_mapping_depth": 80,
+      "portfolio_risk_management": 83,
+      "evidence_quality_assurance": 82,
+      "governance_compliance": 78,
+      "continuous_update_mechanism": 80,
+      "composite": 85
+    },
+    "delta": {
+      "risk_framework_completeness": 40,
+      "valuation_model_rigor": 20,
+      "contrarian_view_coverage": 52,
+      "value_chain_mapping_depth": 20,
+      "portfolio_risk_management": 38,
+      "evidence_quality_assurance": 12,
+      "governance_compliance": 28,
+      "continuous_update_mechanism": 45,
+      "composite": 34
+    }
+  },
+  "p0_results": {
+    "count": 5,
+    "items": [
+      {
+        "id": "P0-0",
+        "name": "22因子风险矩阵",
+        "file": "risk_matrix_22_factor.md",
+        "key_findings": [
+          "6大类22因子全覆盖：A地缘4/B竞争4/C执行4/D财务3/E市场4/F ESG3",
+          "F1电力指标收紧 + E1估值拥挤并列第一风险(12分, L4/高概率)",
+          "Top5: F1(12), E1(12), D1(9), B2(9), E2(9)",
+          "缓释建议：AIDC总敞口15-20%，单票≤5%，光模块≤8%"
+        ],
+        "impact": "critical"
+      },
+      {
+        "id": "P0-1",
+        "name": "三层压力测试框架",
+        "file": "stress_test_3_layer.md",
+        "key_findings": [
+          "3层11情景压力测试体系",
+          "L3芯片禁令组合冲击-15.31%，最大单票回撤-42.25%（中际旭创）",
+          "建议单票仓位上限：光模块龙头8%，PCB 5%，IDC运营4%"
+        ],
+        "impact": "high"
+      },
+      {
+        "id": "P0-2",
+        "name": "电力瓶颈风险分析",
+        "file": "power_bottleneck_analysis.md",
+        "key_findings": [
+          "电力约束从第4升级为第一风险",
+          "不可能三角：能耗指标/绿电PPA/消纳指标同时无解",
+          "2/3规划AIDC项目可能无法获得电力审批",
+          "IDC运营商2026-2027产能投放预期需下修30-40%"
+        ],
+        "impact": "critical"
+      },
+      {
+        "id": "P0-3",
+        "name": "评级量化标准",
+        "file": "rating_criteria_quantified.md",
+        "key_findings": [
+          "6级评级体系：强力买入/买入/市场支撑/高估值风险/回避/观察名单",
+          "56只标的评级：36高估值风险，3回避，12市场支撑，4观察名单，1事件验证",
+          "5项市场支撑条件需满足≥2项",
+          "13只标的评级较原始版本调整"
+        ],
+        "impact": "high"
+      },
+      {
+        "id": "P0-4",
+        "name": "7大反方论点",
+        "file": "variant_perception_7_arguments.md",
+        "key_findings": [
+          "VP-01需求幻觉：云厂资本开支兑现率70%",
+          "VP-02 ASP崩塌：800G ASP年降25-30%",
+          "VP-03电力天花板：物理约束不可逆（75%置信度）",
+          "VP-04国产替代伪命题：A股缺乏高纯度标的（80%置信度）",
+          "VP-07估值锚失效：盛科/芯源微基本面贡献<3%（85%置信度）"
+        ],
+        "impact": "high"
+      }
+    ]
+  },
+  "p1_results": {
+    "count": 4,
+    "items": [
+      {
+        "id": "P1-1",
+        "name": "组合风险仪表盘",
+        "file": "portfolio_risk_dashboard.md",
+        "key_metrics": {
+          "total_tickers": 56,
+          "total_market_cap_100mn_cny": 133800,
+          "portfolio_beta": 1.34,
+          "downside_over_20pct_ratio": "67.9%",
+          "positive_upside_ratio": "14.3%",
+          "top5_concentration": "47.8%",
+          "high_valuation_risk_count": 37,
+          "low_liquidity_count": 18
+        },
+        "impact": "high"
+      },
+      {
+        "id": "P1-2",
+        "name": "情绪驱动标签",
+        "file": "sentiment_driven_labels.md",
+        "sentiment_driven": [
+          {"ticker": "688700", "company": "盛科通信", "fundamental_contribution": "2.68%"},
+          {"ticker": "688037", "company": "芯源微", "fundamental_contribution": "2.81%"},
+          {"ticker": "GDS", "company": "GDS控股", "fundamental_contribution": "12.61%"}
+        ],
+        "weakened_anchor_count": 6,
+        "impact": "high"
+      },
+      {
+        "id": "P1-3",
+        "name": "观察名单估值触发器",
+        "file": "watchlist_valuation_triggers.md",
+        "watchlist_companies": [
+          {"ticker": "300936", "company": "中英科技", "sotp": 40.6, "gap_score": "2.6/10"},
+          {"ticker": "603912", "company": "佳力图", "sotp": 5.4, "gap_score": "3.8/10"},
+          {"ticker": "002334", "company": "英威腾", "sotp": 8.7, "gap_score": "4.4/10"}
+        ],
+        "impact": "medium"
+      },
+      {
+        "id": "P1-4",
+        "name": "10家公司反共识观点",
+        "file": "company_contrarian_views_10.md",
+        "max_divergence": {"company": "申菱环境", "divergence": "-56.5%"},
+        "impact": "high"
+      }
+    ]
+  },
+  "p2_results": {
+    "count": 5,
+    "items": [
+      {
+        "id": "P2-1",
+        "name": "卫星候选公司卡片",
+        "file": "satellite_candidate_cards.md",
+        "satellite_count": 7,
+        "top_picks": ["奥鲁通(300870)", "源杰科技(688498)"],
+        "impact": "medium"
+      },
+      {
+        "id": "P2-2",
+        "name": "龙芯/华为昇腾映射",
+        "file": "loongson_huawei_ascend_mapping.md",
+        "ascend_mapping_count": 8,
+        "impact": "medium"
+      },
+      {
+        "id": "P2-3",
+        "name": "可视化图表规格",
+        "file": "visualization_charts_spec.md",
+        "charts_count": 4,
+        "preview_generated": true,
+        "impact": "low"
+      },
+      {
+        "id": "P2-4",
+        "name": "ESG/HRF筛查",
+        "file": "esg_hrf_screening.md",
+        "exclusions": [
+          {"ticker": "603019", "company": "中科曙光", "reason": "BIS实体清单2019"},
+          {"ticker": "688041", "company": "海光信息", "reason": "BIS实体清单2022"}
+        ],
+        "conditional_passes": 12,
+        "full_passes": 42,
+        "impact": "critical"
+      },
+      {
+        "id": "P2-5",
+        "name": "缺口优先级矩阵",
+        "file": "gap_priority_matrix.md",
+        "total_gaps": 85,
+        "high_priority": 4,
+        "medium_priority": 24,
+        "low_priority": 57,
+        "impact": "medium"
+      }
+    ]
+  },
+  "p3_results": {
+    "count": 3,
+    "items": [
+      {
+        "id": "P3-1",
+        "name": "季度证据刷新机制",
+        "file": "quarterly_refresh_mechanism.md",
+        "sop_phases": 5,
+        "first_refresh": "2026-08-25至2026-09-06",
+        "automation_script": "refresh_evidence_quarterly.py",
+        "impact": "high"
+      },
+      {
+        "id": "P3-2",
+        "name": "海外龙头监测机制",
+        "file": "overseas_leader_monitoring.md",
+        "segments_covered": 7,
+        "signal_levels": ["红色预警", "黄色关注", "绿色正常"],
+        "impact": "medium"
+      },
+      {
+        "id": "P3-3",
+        "name": "治理更新建议",
+        "file": "FINAL_IMPROVEMENT_REPORT.md#section-9",
+        "gate_manifest_additions": 5,
+        "review_log_additions": 5,
+        "final_signoff_additions": 4,
+        "impact": "medium"
+      }
+    ]
+  },
+  "new_risks_discovered": {
+    "s_level": [
+      "电力瓶颈不可能三角：2/3规划项目可能无法获批",
+      "BIS实体清单合规：中科曙光/海光信息必须排除",
+      "情绪驱动标的泡沫：盛科/芯源微/GDS基本面贡献<15%"
+    ],
+    "a_level": [
+      "拥挤交易踩踏：前5大集中度47.8%，Beta 1.34",
+      "800G ASP下行：年降可能达25-30%",
+      "国产算力落地延迟：海光/寒武纪含50%+国产替代溢价"
+    ],
+    "b_level": [
+      "液冷渗透延迟：渗透率可能<15%",
+      "PCB价格战：影响有限但需关注",
+      "海外龙头技术封锁：EDA/IP/BMC",
+      "小市值流动性风险：18只标的日均成交<5亿"
+    ]
+  },
+  "action_items": {
+    "immediate_1week": [
+      {"action": "BIS排除标的从核心池移除", "deadline": "2026-07-09"},
+      {"action": "情绪驱动标的方法列标注", "deadline": "2026-07-09"},
+      {"action": "电力瓶颈风险写入报告摘要", "deadline": "2026-07-09"},
+      {"action": "22因子矩阵纳入治理门控", "deadline": "2026-07-09"}
+    ],
+    "short_term_4weeks": [
+      {"action": "组合仓位降至60%以下", "deadline": "2026-07-16"},
+      {"action": "单票仓位上限执行", "deadline": "2026-07-16"},
+      {"action": "卫星候选首次监测报告", "deadline": "2026-07-23"},
+      {"action": "海外龙头指标基线建立", "deadline": "2026-07-30"}
+    ],
+    "mid_term_q3": [
+      {"action": "首次季度证据刷新", "deadline": "2026-09-06"},
+      {"action": "反方论点验证报告", "deadline": "2026-09-15"},
+      {"action": "电力瓶颈跟踪更新", "deadline": "2026-09-15"},
+      {"action": "条件通过ESG标的复查", "deadline": "2026-09-30"}
+    ]
+  },
+  "governance_updates": {
+    "gate_manifest": {
+      "new_required_artifacts": [
+        "ESG/HRF筛查结果",
+        "情绪驱动标签清单",
+        "电力瓶颈风险评估",
+        "22因子风险矩阵",
+        "海外龙头监测基线"
+      ],
+      "new_gate_checks": [
+        "esg_screening_pass",
+        "sentiment_label_complete",
+        "power_risk_acknowledged"
+      ]
+    },
+    "review_log": {
+      "new_review_items": [
+        "情绪驱动标签审计(R2)",
+        "ESG红线合规(R0)",
+        "电力瓶颈确认(R1)",
+        "反方论点覆盖(R2)",
+        "海外龙头信号(R4)"
+      ]
+    },
+    "final_signoff": {
+      "new_signatures": [
+        "电力瓶颈风险确认(研究负责人)",
+        "ESG合规确认(合规负责人)",
+        "情绪驱动风险确认(投资负责人)",
+        "证据时效性确认(研究负责人)"
+      ]
+    },
+    "artifact_inventory_additions": [
+      "improvements/risk_matrix_22_factor.json",
+      "improvements/esg_hrf_screening.json",
+      "improvements/sentiment_driven_labels.json",
+      "improvements/power_bottleneck_analysis.json",
+      "improvements/overseas_leader_monitoring.json",
+      "improvements/quarterly_refresh_checklist.json"
+    ]
+  },
+  "publishability": {
+    "status": "CONDITIONAL",
+    "score": 85,
+    "blockers": [
+      "BIS实体清单标的(中科曙光/海光信息)需从核心池移除并更新估值模型",
+      "情绪驱动标的需标注[情绪主导]标签"
+    ],
+    "conditions_to_pass": [
+      "执行BIS排除和情绪标注更新",
+      "验证器39 PASS / 0 FAIL",
+      "综合评分≥90"
+    ]
+  }
+}

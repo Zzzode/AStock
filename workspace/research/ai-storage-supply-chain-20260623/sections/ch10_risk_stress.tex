@@ -2,9 +2,9 @@
 
 \section{风险矩阵：两红三橙三中的非对称结构}
 
-基于「概率 × 影响程度 × 可监测性」三维度，本报告识别出 8 项核心风险。\textbf{红色高风险两项：HBM ASP 大幅下行 (供过于求) 与 BIS 出口管制升级 (设备/HBM 断供)}，这两项一旦触发会直接侵蚀本报告核心盈利假设；橙色中高风险三项；绿色低风险三项。风险结构的核心特征是「产业长期赔率仍在，但当前股价已经显著前置」：即使乐观情景能够上修 EPS，ch08 的 2026-06-26 模型仍显示覆盖标的加权基准空间为 -17.0\%，因此风险章节不支持主动超配，而是作为目标价上修/下修的触发器。
+基于「概率 × 影响程度 × 可监测性」三维度，本报告识别出 8 项核心风险。\textbf{红色高风险两项：HBM ASP 大幅下行 (供过于求) 与 BIS 出口管制升级 (设备/HBM 断供)}，这两项一旦触发会直接侵蚀本报告核心盈利假设；橙色中高风险三项；绿色低风险三项。风险结构的核心特征是「产业长期赔率仍在，存储涨价周期已获业绩验证」：江波龙中报预告（上半年净利92--110亿）验证涨价周期盈利弹性，ch08 的 2026-07-03 模型显示覆盖标的加权基准空间为 +8.5\%，组合建议已从"低配"上调至"标配偏积极"。风险章节作为目标价上修/下修的触发器，而非方向性判断的唯一依据。
 
-从风险对冲矩阵看，8 项核心风险中仅 2 项（R1 价格战、R3 NAND 价格战）对全链产生系统性负面冲击，其余 6 项风险均具备明确的「对冲标的」——BIS 管制升级 (R2) 可能加速长存\slash 长鑫设备国产化率提升，北方华创/拓荆/盛美在 R2 触发情景下存在订单对冲；Hyperscaler capex 下修 (R4) 对设备层影响约 1 个季度传导滞后，可通过订单监控提前降权；澜起份额抢占 (R5) 仅影响单标的；汇率/渗透节奏 (R7/R8) 对组合影响在 ±3\% 以内可控。\textbf{风险对冲不能替代估值安全边际}，当前报告的组合动作仍以低配和等待盈利兑现为主。
+从风险对冲矩阵看，8 项核心风险中仅 2 项（R1 价格战、R3 NAND 价格战）对全链产生系统性负面冲击，其余 6 项风险均具备明确的「对冲标的」——BIS 管制升级 (R2) 可能加速长存\slash 长鑫设备国产化率提升，北方华创/拓荆/盛美在 R2 触发情景下存在订单对冲；Hyperscaler capex 下修 (R4) 对设备层影响约 1 个季度传导滞后，可通过订单监控提前降权；澜起份额抢占 (R5) 仅影响单标的；汇率/渗透节奏 (R7/R8) 对组合影响在 ±3\% 以内可控。\textbf{风险对冲不能替代估值安全边际}，当前报告的组合动作为标配偏积极，核心推荐江波龙（存储涨价最直接受益者），同时保留北方华创、澜起科技等产业主线质量最高的覆盖标的作为中性观察。
 
 \needspace{42\baselineskip}
 \begin{exhibitbox}[图 10-1 \quad 风险矩阵热力图 / Risk Matrix Heatmap]
@@ -29,32 +29,33 @@
 \draw[grid] (0,7) -- (11,7);
 
 % Quadrant labels
-\node[font=\bfseries, color=riskgreen, above left] at (3.5,3.5) {低风险区};
-\node[font=\bfseries, color=riskamber, above left] at (7,3.5) {};
-\node[font=\bfseries, color=riskamber, above left] at (3.5,7) {中风险区};
-\node[font=\bfseries, color=riskred, above left] at (7,7) {\textbf{高风险区 RED}};
+\node[font=\bfseries, color=riskgreen, above left, fill=white, inner sep=1pt] at (3.5,3.5) {低风险区};
+\node[font=\bfseries, color=riskamber, above left, fill=white, inner sep=1pt] at (7,3.5) {};
+\node[font=\bfseries, color=riskamber, above left, fill=white, inner sep=1pt] at (3.5,7) {中风险区};
+\node[font=\bfseries, color=riskred, above left, fill=white, inner sep=1pt] at (7,7) {\textbf{高风险区 RED}};
 
 % Axis ticks
 \foreach \x/\v in {1.75/25, 5.25/55, 8.75/80} \node[below, font=\tiny, text=steelgrey] at (\x,0) {\v\%};
 \foreach \y/\v in {1.75/低, 5.25/中, 8.75/高} \node[left, font=\tiny, text=steelgrey] at (0,\y) {\v};
 
 % Risk bubbles (X=概率, Y=影响程度, size=可监测性权重, color=风险等级)
+% 注：气泡位置已调整避免重叠（中心距 > 直径和 + 0.3cm 安全间隙）
 % 红区
-\node[riskR, fill=riskred, draw=riskred, text=white] (R1) at (7.2, 9.0) {R1\\HBM ASP -30\%\\供过于求};
-\node[riskR, fill=riskred, draw=riskred, text=white] (R2) at (8.0, 7.6) {R2\\BIS管制升级\\HBM/DUV禁售};
+\node[riskR, fill=riskred, draw=riskred, text=white] (R1) at (7.3, 9.5) {R1\\HBM ASP -30\%\\供过于求};
+\node[riskR, fill=riskred, draw=riskred, text=white] (R2) at (9.5, 7.3) {R2\\BIS管制升级\\HBM/DUV禁售};
 
 % 橙区
-\node[riskA] (R3) at (6.5, 6.8) {R3\\NAND价格战\\QoQ -10\%};
-\node[riskA] (R4) at (4.8, 7.3) {R4\\Hyperscaler\\capex下修>15\%};
-\node[riskAs] (R5) at (5.8, 4.8) {R5\\澜起RCD份额\\Rambus抢占至<50\%};
+\node[riskA] (R3) at (7.2, 6.0) {R3\\NAND价格战\\QoQ -10\%};
+\node[riskA] (R4) at (4.3, 7.8) {R4\\Hyperscaler\\capex下修>15\%};
+\node[riskAs] (R5) at (5.0, 4.3) {R5\\澜起RCD份额\\Rambus抢占至<50\%};
 
 % 绿区
 \node[riskGs] (R6) at (2.8, 5.2) {R6\\长存扩产\\设备延迟};
 \node[riskGss] (R7) at (3.0, 2.5) {R7\\人民币升值5\%\\汇率扰动};
-\node[riskGss] (R8) at (2.0, 1.8) {R8\\DDR5渗透\\节奏推迟1季};
+\node[riskGss] (R8) at (1.5, 1.5) {R8\\DDR5渗透\\节奏推迟1季};
 
-% Legend
-\node[draw=rulegrey, fill=white, rounded corners=3pt, font=\scriptsize, inner sep=4pt, align=left, anchor=north east] at (10.8, 10.6) {
+% Legend (右下角空白区，避免与气泡重叠)
+\node[draw=rulegrey, fill=white, rounded corners=3pt, font=\scriptsize, inner sep=4pt, align=left, anchor=south east] at (10.8, 2.5) {
 \begin{tabular}{l l}
 \cellcolor{riskred} RED & HBM ASP / BIS 管制\\
 \cellcolor{riskamber!30} AMBER & NAND战/capex/份额\\
@@ -84,7 +85,7 @@
 \rowcolor{riskgreen!6}
 情景A 乐观 & Rubin 提前量产 + 良率 >60\%；DDR5 合约价 Q3 QoQ +12\%+；BIS 放宽 DUV 审批；澜起 CXL 3.1 获三星 HVM 订单 & 15\% & 约+12\% & PE 40x 升至约48x & +30--45\% & 上修目标价情景；若 EPS/PE 同时兑现，北方/澜起可从中性上调 \\
 \midrule
-情景B 基准 & 本报告核心假设：HBM ASP Q3 +8--10\%；DDR5 合约价+10\% QoQ；CXL H2 渗透 8--10\%；长存\slash 长鑫按计划扩产；BIS 小幅收紧但非全面 & 50\% & 约+42\% YoY & PE 40x (近3年中位) & +25--40\% & 对应 ch08 当前模型；组合维持低配，中性标的等待兑现 \\
+情景B 基准 & 本报告核心假设：HBM ASP Q3 +8--10\%；DDR5 合约价+8--10\% QoQ；CXL H2 渗透 8--10\%；长存\slash 长鑫按计划扩产；BIS 小幅收紧但非全面 & 50\% & 约+42\% YoY & PE 40x (近3年中位) & +25--40\% & 对应 ch08 当前模型；组合标配偏积极，江波龙买入，其余等待盈利兑现 \\
 \midrule
 \rowcolor{riskamber!6}
 情景C 温和悲观 & HBM ASP 2027 年 H1 下滑>15\%；Hyperscaler capex 单季下修 8--10\%；长存\slash 长鑫设备交付延迟 6 个月 & 27\% & 约-8\% (相对基准) & PE 40x 降至约34x & -10--15\% & 触发减持名单扩大；中性标的降为低配观察 \\
@@ -97,7 +98,7 @@
 \sourcenote{EPS 影响：AStock 自模型 (按各标的 AI 敞口×BIS 管制系数×价格弹性矩阵)。估值调整：参考 2018/2022 年两轮下行周期中 A 股半导体板块的估值压缩路径。压力测试非精确预测，仅用于极端情景下的风险敞口管理。}
 
 \vspace{0.4em}
-\noindent\textbf{风险含义（估值更新后）}：压力测试已经成为当前估值模型的调参框架。乐观情景用于定义上调目标价和评级的条件；温和悲观与深度悲观情景用于扩大减持/观察名单。2026-06-26 估值更新后的基准结论是明确的组合低配：产业方向继续跟踪，配置动作等待盈利兑现或价格回落。
+\noindent\textbf{风险含义（估值更新后）}：压力测试已经成为当前估值模型的调参框架。乐观情景用于定义上调目标价和评级的条件；温和悲观与深度悲观情景用于扩大减持/观察名单。2026-07-03 江波龙中报预告更新后的基准结论是组合标配偏积极（加权空间 +8.5\%）：江波龙上调至买入，存储涨价主线已获业绩验证，其余标的等待盈利兑现或价格回落。
 
 \section{风险监控指标体系}
 

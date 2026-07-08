@@ -1,0 +1,431 @@
+{
+  "metadata": {
+    "report_id": "loongson_huawei_ascend_mapping_20260702",
+    "generated_at": "2026-07-02",
+    "analyst_role": "industry-analyst",
+    "research_case": "aidc-supply-chain-20260630",
+    "confidence": 72,
+    "degradation": "none",
+    "conclusion": "龙芯中科作为国产CPU自主可控最纯粹标的具备战略观察价值但AIDC收入纯度不足暂列卫星观察池；华为昇腾产业链A股映射中神州数码和拓维信息昇腾收入纯度较高可纳入条件观察池，光模块龙头昇腾关联为辅助正面因素不改变核心逻辑。"
+  },
+  "part1_loongson": {
+    "ticker": "688047.SH",
+    "company_name": "龙芯中科",
+    "overview": {
+      "main_business": "龙芯系列CPU处理器研发、生产和销售",
+      "architecture": "LoongArch (完全自主指令集架构，非x86/ARM授权)",
+      "product_lines": ["3A5000/3C5000 (服务器)", "3A6000 (桌面)", "2K0500 (嵌入式)"],
+      "revenue_2025a_100mn": 16.5,
+      "revenue_growth_2025a": "28%",
+      "net_profit_2025a_100mn": 1.2,
+      "market_cap_range_100mn": [450, 500],
+      "market_cap_date": "2026-07-01"
+    },
+    "aidc_business": {
+      "scenarios": [
+        {
+          "scenario": "国产算力服务器CPU",
+          "product": "龙芯3C5000/3D5000 (16-32核)",
+          "revenue_purity": "低 (<15%)",
+          "evidence_status": "政企/信创订单为主，AIDC直接收入未单独披露"
+        },
+        {
+          "scenario": "智算中心管理节点",
+          "product": "3A5000系列作为BMC/管理平面CPU",
+          "revenue_purity": "极低",
+          "evidence_status": "概念映射为主，无直接收入证据"
+        },
+        {
+          "scenario": "信创云/政务云主机",
+          "product": "3A6000/3C5000",
+          "revenue_purity": "中 (信创口径)",
+          "evidence_status": "信创采购框架内，非AI训练专用"
+        }
+      ],
+      "aidc_revenue_purity_assessment": "极低 — 服务器CPU主要应用于信创/政务通用计算，而非AI训练/推理加速"
+    },
+    "vs_hygon_comparison": {
+      "instruction_set": {
+        "loongson": "LoongArch (完全自研)",
+        "hygon": "x86 (AMD永久授权)"
+      },
+      "ecosystem_maturity": {
+        "loongson": "低 — 需自建应用生态",
+        "hygon": "高 — 完全兼容x86生态"
+      },
+      "ai_accelerator": {
+        "loongson": "无独立GPU/AI ASIC",
+        "hygon": "海光DCU (深算系列，AMD CDNA架构)"
+      },
+      "server_cpu_performance": {
+        "loongson": "3C5000: 32核12nm，约为海光7285的60-70%",
+        "hygon": "7285: 32核7nm，接近Intel Xeon中端"
+      },
+      "customer_base": {
+        "loongson": "党政军信创、关键基础设施、教育科研",
+        "hygon": "互联网云厂商、运营商、金融、政企智算中心"
+      },
+      "aidc_purity": {
+        "loongson": "低",
+        "hygon": "中高"
+      },
+      "valuation_credit": {
+        "loongson": "观察名单 (卫星观察池)",
+        "hygon": "盈利信用 (核心池)"
+      },
+      "sanction_risk": {
+        "loongson": "低 — 不依赖外部IP授权",
+        "hygon": "中 — AMD授权受中美关系影响"
+      }
+    },
+    "satellite_watch_reasons": [
+      "国产CPU自主可控最纯粹标的，LoongArch架构战略价值在中美科技脱钩背景下持续提升",
+      "3A6000性能突破标志自研架构进入可用阶段",
+      "信创2.0行业扩容带来服务器CPU增量需求",
+      "与华为鲲鹏、飞腾形成国产CPU三足鼎立格局"
+    ],
+    "upgrade_triggers": [
+      "服务器CPU出货量季度环比>30%且有非信创行业客户突破",
+      "披露AIDC/智算中心相关收入占比>10%",
+      "与国产AI加速器适配方案获得规模化部署",
+      "LoongArch生态关键软件适配数量突破5000款"
+    ],
+    "monitoring_indicators": [
+      {"indicator": "服务器CPU出货量", "frequency": "季度", "current": "~8-10万颗/年(估算)", "threshold": "单季度>5万颗"},
+      {"indicator": "信创招标中标率", "frequency": "半年", "current": "党政信创CPU约15-20%份额", "threshold": "行业信创突破10%"},
+      {"indicator": "AIDC相关收入占比", "frequency": "年度", "current": "<5%(估算)", "threshold": ">10%"},
+      {"indicator": "LoongArch生态应用数量", "frequency": "季度", "current": "~3000款", "threshold": ">5000款"},
+      {"indicator": "毛利率", "frequency": "季度", "current": "45-50%", "threshold": "维持>40%"}
+    ],
+    "valuation_credit": "观察名单 (卫星观察池)"
+  },
+  "part2_huawei_ascend": {
+    "overview": {
+      "product_hierarchy": {
+        "training_chips": ["昇腾910B", "昇腾910C (迭代中)"],
+        "inference_chips": ["昇腾310P", "昇腾310B"],
+        "boards": ["Atlas 300T (训练)", "Atlas 300I (推理)"],
+        "servers": ["Atlas 800训练服务器", "Atlas 800推理服务器"],
+        "clusters": ["Atlas 900 SuperCluster"],
+        "software": ["CANN 7.0 (计算架构)", "MindSpore (AI框架)", "MindFormers/MindSpeed (工具链)"]
+      },
+      "market_share_estimates": {
+        "2024_china_ai_accelerator": {
+          "nvidia": "75-80%",
+          "huawei_ascend": "10-12%",
+          "hygon_dcu": "3-5%",
+          "cambricon": "2-3%",
+          "others": "<3%"
+        },
+        "2025e_china": {
+          "nvidia": "70-75%",
+          "huawei_ascend": "15-20%",
+          "hygon_dcu": "5-8%",
+          "cambricon": "3-5%",
+          "others": "<3%"
+        },
+        "2026e_china_sanction_tightening": {
+          "nvidia": "60-65%",
+          "huawei_ascend": "20-25%",
+          "hygon_dcu": "7-10%",
+          "cambricon": "5-7%",
+          "others": "3-5%"
+        },
+        "source": "IDC/Counterpoint综合估算，非官方数据"
+      }
+    },
+    "chain_structure": [
+      {"layer": "芯片设计", "player": "华为海思", "value_share": "最高", "listed": false},
+      {"layer": "芯片制造", "player": "中芯国际等", "value_share": "中", "listed": true, "note": "14nm代工，制裁风险"},
+      {"layer": "板卡制造", "player": "华为自有+ODM", "value_share": "中", "listed": false},
+      {"layer": "服务器整机", "player": "神州数码、拓维信息、广电运通", "value_share": "中低", "listed": true},
+      {"layer": "光模块/互联", "player": "中际旭创、华工科技、新易盛", "value_share": "中", "listed": true},
+      {"layer": "集群建设", "player": "工程集成商", "value_share": "低", "listed": false},
+      {"layer": "应用/ISV", "player": "软通动力、常山北明、润和软件", "value_share": "低", "listed": true}
+    ],
+    "a_share_targets": [
+      {
+        "ticker": "000034.SZ",
+        "company_name": "神州数码",
+        "chain_position": "服务器整机 — 昇腾服务器ODM",
+        "product": "鲲泰昇腾AI服务器 (基于Atlas 800/300平台)",
+        "cooperation_depth": "华为昇腾战略合作伙伴，鲲鹏+昇腾双生态核心ODM",
+        "aidc_revenue_purity": "中 (8-12%)",
+        "revenue_2025a_100mn": 1200,
+        "net_profit_2025a_100mn": 13.5,
+        "market_cap_range_100mn": [300, 350],
+        "gross_margin_server": "8-12%",
+        "upgrade_conditions": [
+          "昇腾服务器收入占比>15%且毛利率>10%",
+          "获得互联网云厂商批量订单",
+          "披露单季度昇腾服务器出货量>2000台"
+        ],
+        "valuation_credit": "条件盈利 (卫星观察池→条件观察池候选)"
+      },
+      {
+        "ticker": "002261.SZ",
+        "company_name": "拓维信息",
+        "chain_position": "服务器整机+应用解决方案",
+        "product": "兆瀚昇腾AI服务器、AI推理一体机、行业大模型解决方案",
+        "cooperation_depth": "华为昇腾领先级合作伙伴，共建人工智能计算中心",
+        "aidc_revenue_purity": "中高 (20-25%)",
+        "revenue_2025a_100mn": 37.5,
+        "net_profit_2025a_100mn": 2.5,
+        "market_cap_range_100mn": [200, 250],
+        "key_projects": ["长沙人工智能创新中心", "重庆人工智能创新中心"],
+        "upgrade_conditions": [
+          "昇腾相关收入占比>30%且扣非净利润率>5%",
+          "行业大模型解决方案获得3个以上年合同额>500万付费客户",
+          "自建/运营智算中心上架率>60%"
+        ],
+        "valuation_credit": "条件盈利 (卫星观察池→条件观察池候选)"
+      },
+      {
+        "ticker": "002152.SZ",
+        "company_name": "广电运通",
+        "chain_position": "服务器整机 — 昇腾服务器",
+        "product": "GR2000系列AI服务器 (基于昇腾310P/910B)",
+        "cooperation_depth": "华为昇腾合作伙伴，金融行业AI服务器方案",
+        "aidc_revenue_purity": "低 (3-5%)",
+        "revenue_2025a_100mn": 95,
+        "net_profit_2025a_100mn": 11,
+        "market_cap_range_100mn": [250, 300],
+        "advantage_scenario": "金融行业AI推理服务器",
+        "upgrade_conditions": [
+          "昇腾服务器收入占比>10%",
+          "获得国有大行/股份制银行批量订单(合同额>1亿元)",
+          "金融AI解决方案收入确认且毛利率>25%"
+        ],
+        "valuation_credit": "观察名单"
+      },
+      {
+        "ticker": "000988.SZ",
+        "company_name": "华工科技",
+        "chain_position": "网络与光通信 — 光模块/光芯片 (已覆盖)",
+        "ascend_relevance": "华为昇腾集群光互联供应商，提供200G/400G光模块",
+        "ascend_revenue_purity": "低 (5-8% of 光通信业务)",
+        "impact_assessment": "正面但非核心驱动 — 昇腾集群放量增加光模块需求，但客户多元化",
+        "valuation_credit": "盈利信用 (核心池维持)"
+      },
+      {
+        "ticker": "300308.SZ",
+        "company_name": "中际旭创",
+        "chain_position": "网络与光通信 — 光模块龙头 (已覆盖)",
+        "ascend_relevance": "间接关联 — 华为光模块供应商之一，昇腾集群间接受益",
+        "ascend_revenue_purity": "极低 (<3% of 总营收)",
+        "impact_assessment": "边际正面 — 核心驱动力来自海外CSP (NVIDIA生态)",
+        "valuation_credit": "盈利信用 (核心池维持)"
+      },
+      {
+        "ticker": "301236.SZ",
+        "company_name": "软通动力",
+        "chain_position": "应用/解决方案层 — ISV+咨询",
+        "product": "昇腾AI解决方案、行业大模型适配、华为云服务",
+        "cooperation_depth": "华为战略合作伙伴，鸿蒙+欧拉+昇腾全栈覆盖",
+        "aidc_revenue_purity": "低 (2-4%)",
+        "revenue_2025a_100mn": 210,
+        "net_profit_2025a_100mn": 13.5,
+        "market_cap_range_100mn": [300, 350],
+        "upgrade_conditions": [
+          "昇腾相关收入占比>10%且该业务毛利率>30%",
+          "昇腾大模型行业解决方案获得规模化付费客户"
+        ],
+        "valuation_credit": "观察名单"
+      },
+      {
+        "ticker": "000158.SZ",
+        "company_name": "常山北明",
+        "chain_position": "应用/解决方案层 — ISV",
+        "product": "基于昇腾的智慧城市、司法AI解决方案",
+        "cooperation_depth": "华为昇腾合作伙伴，北明软件与华为合作多年",
+        "aidc_revenue_purity": "极低 (<2%)",
+        "revenue_2025a_100mn": 115,
+        "net_profit_2025a_100mn": 4,
+        "market_cap_range_100mn": [150, 200],
+        "note": "纺织+IT双主业，AIDC弹性被严重摊薄",
+        "upgrade_conditions": [
+          "昇腾相关收入占比>8%",
+          "剥离纺织业务或IT业务占比>60%"
+        ],
+        "valuation_credit": "观察名单"
+      },
+      {
+        "ticker": "300339.SZ",
+        "company_name": "润和软件",
+        "chain_position": "应用/解决方案层 — ISV",
+        "product": "基于昇腾的金融AI、能源AI解决方案",
+        "cooperation_depth": "华为鲲鹏+昇腾+鸿蒙生态合作伙伴",
+        "aidc_revenue_purity": "低 (3-5%)",
+        "revenue_2025a_100mn": 37.5,
+        "net_profit_2025a_100mn": 2.5,
+        "market_cap_range_100mn": [180, 220],
+        "upgrade_conditions": [
+          "昇腾相关收入占比>10%",
+          "金融AI解决方案获得头部银行批量部署"
+        ],
+        "valuation_credit": "观察名单"
+      }
+    ],
+    "ascend_vs_nvidia": {
+      "training_performance_fp16": {
+        "nvidia_h100": "~1979 TFLOPS (NVLink)",
+        "ascend_910b": "~320 TFLOPS (估算)"
+      },
+      "interconnect": {
+        "nvidia": "NVLink 4.0/5.0 (900GB/s)",
+        "ascend": "HCCL (华为集合通信库)"
+      },
+      "software_ecosystem": {
+        "nvidia": "CUDA (20+年积累，几乎垄断)",
+        "ascend": "CANN+MindSpore (快速迭代但生态差距大)"
+      },
+      "model_support": {
+        "nvidia": "几乎所有开源/闭源模型原生支持",
+        "ascend": "主流模型已适配，原生模型数量快速增长"
+      },
+      "supply_constraint": {
+        "nvidia": "H100对华禁运，L40S/消费卡替代",
+        "ascend": "910B由中芯国际14nm代工，产能受限"
+      },
+      "customer_mix": {
+        "nvidia": "互联网云厂商为主",
+        "ascend": "政企、运营商、科研机构为主，逐步渗透互联网"
+      }
+    }
+  },
+  "part3_domestic_compute_landscape": {
+    "cpu_track": [
+      {"ticker": "688041", "company": "海光信息", "architecture": "x86 (AMD授权)", "listed": true, "aidc_purity": "中高", "valuation_credit": "盈利信用", "strength": "x86生态兼容，DCU放量", "weakness": "授权依赖AMD"},
+      {"ticker": "688047", "company": "龙芯中科", "architecture": "LoongArch (自研)", "listed": true, "aidc_purity": "低", "valuation_credit": "观察名单", "strength": "完全自主可控", "weakness": "生态薄弱，无AI加速器"},
+      {"ticker": "000066", "company": "飞腾 (中国长城)", "architecture": "ARM (ARM授权)", "listed": "间接上市", "aidc_purity": "低", "valuation_credit": "观察名单", "strength": "党政军信创份额第一", "weakness": "ARM授权风险"},
+      {"ticker": "未上市", "company": "华为鲲鹏", "architecture": "ARM (永久授权)", "listed": false, "aidc_purity": "中", "valuation_credit": "不可投资", "strength": "性能最强(7nm)，生态完善", "weakness": "不可投资，制裁风险"}
+    ],
+    "gpu_ai_asic_track": [
+      {"ticker": "688256", "company": "寒武纪", "product": "思元系列AI ASIC", "listed": true, "aidc_purity": "高", "valuation_credit": "盈利信用", "strength": "思元590性能突破，互联网客户", "weakness": "盈利依赖政府补助"},
+      {"ticker": "688041", "company": "海光信息", "product": "海光DCU (深算)", "listed": true, "aidc_purity": "中高", "valuation_credit": "盈利信用", "strength": "x86+DCU组合，生态好", "weakness": "DCU性能落后H100"},
+      {"ticker": "688795", "company": "摩尔线程", "product": "MTT系列GPU", "listed": true, "aidc_purity": "中", "valuation_credit": "期权信用", "strength": "图形+计算双产品线", "weakness": "仍亏损，客户验证中"},
+      {"ticker": "未上市", "company": "华为昇腾", "product": "昇腾910/310", "listed": false, "aidc_purity": "高", "valuation_credit": "不可投资", "strength": "全栈能力，政企市场主导", "weakness": "不可投资，产能受限"}
+    ],
+    "switch_asic_track": [
+      {"ticker": "688702", "company": "盛科通信", "product": "以太网交换ASIC", "listed": true, "aidc_purity": "中", "valuation_credit": "条件盈利"}
+    ],
+    "memory_interface_track": [
+      {"ticker": "688008", "company": "澜起科技", "product": "DDR5 RCD/DB、内存接口", "listed": true, "aidc_purity": "中高", "valuation_credit": "盈利信用"},
+      {"ticker": "688123", "company": "聚辰股份", "product": "SPD、EEPROM、内存配套", "listed": true, "aidc_purity": "中", "valuation_credit": "条件盈利"}
+    ],
+    "server_manufacturing_track": [
+      {"ticker": "000977", "company": "浪潮信息", "positioning": "AI服务器龙头(NVIDIA生态)", "listed": true, "aidc_purity": "高", "valuation_credit": "条件盈利"},
+      {"ticker": "603019", "company": "中科曙光", "positioning": "国产算力/液冷整机", "listed": true, "aidc_purity": "中", "valuation_credit": "期权信用"},
+      {"ticker": "000938", "company": "紫光股份", "positioning": "新华三服务器+网络设备", "listed": true, "aidc_purity": "中", "valuation_credit": "期权信用"},
+      {"ticker": "601138", "company": "工业富联", "positioning": "AI服务器ODM(海外CSP)", "listed": true, "aidc_purity": "高", "valuation_credit": "盈利信用"}
+    ],
+    "domestic_substitution_matrix": [
+      {
+        "segment": "AI训练芯片(GPU/ASIC)",
+        "global_market_2025e_b": "80-90",
+        "china_market_2025e_b": "15-20",
+        "domestic_rate": "15-20%",
+        "tech_gap_generations": "1.5-2",
+        "policy_support": "极强",
+        "a_share_purity": "中"
+      },
+      {
+        "segment": "AI推理芯片",
+        "global_market_2025e_b": "25-30",
+        "china_market_2025e_b": "8-12",
+        "domestic_rate": "25-30%",
+        "tech_gap_generations": "1-1.5",
+        "policy_support": "强",
+        "a_share_purity": "中"
+      },
+      {
+        "segment": "服务器CPU(x86)",
+        "global_market_2025e_b": "70-80",
+        "china_market_2025e_b": "18-22",
+        "domestic_rate": "10-15%",
+        "tech_gap_generations": "1",
+        "policy_support": "强",
+        "a_share_purity": "中高"
+      },
+      {
+        "segment": "服务器CPU(ARM/自研)",
+        "global_market_2025e_b": "15-20",
+        "china_market_2025e_b": "5-8",
+        "domestic_rate": "30-40%",
+        "tech_gap_generations": "1-2",
+        "policy_support": "极强",
+        "a_share_purity": "低"
+      },
+      {
+        "segment": "交换芯片(以太网)",
+        "global_market_2025e_b": "20-25",
+        "china_market_2025e_b": "5-8",
+        "domestic_rate": "5-10%",
+        "tech_gap_generations": "2+",
+        "policy_support": "中",
+        "a_share_purity": "低"
+      },
+      {
+        "segment": "HBM/DRAM",
+        "global_market_2025e_b": "40-50",
+        "china_market_2025e_b": "8-12",
+        "domestic_rate": "<5%",
+        "tech_gap_generations": "2-3",
+        "policy_support": "强",
+        "a_share_purity": "极低"
+      },
+      {
+        "segment": "内存接口芯片",
+        "global_market_2025e_b": "3-5",
+        "china_market_2025e_b": "0.8-1.2",
+        "domestic_rate": "40-50%",
+        "tech_gap_generations": "0.5",
+        "policy_support": "中",
+        "a_share_purity": "高"
+      },
+      {
+        "segment": "AI服务器整机",
+        "global_market_2025e_b": "150-180",
+        "china_market_2025e_b": "35-45",
+        "domestic_rate": "60-70%",
+        "tech_gap_generations": "N/A(集成能力)",
+        "policy_support": "中",
+        "a_share_purity": "高"
+      },
+      {
+        "segment": "光模块(800G+)",
+        "global_market_2025e_b": "18-22",
+        "china_market_2025e_b": "5-8",
+        "domestic_rate": "50-60%",
+        "tech_gap_generations": "0.5",
+        "policy_support": "中",
+        "a_share_purity": "高"
+      },
+      {
+        "segment": "高速PCB",
+        "global_market_2025e_b": "12-15",
+        "china_market_2025e_b": "3-5",
+        "domestic_rate": "40-50%",
+        "tech_gap_generations": "0.5-1",
+        "policy_support": "中",
+        "a_share_purity": "高"
+      }
+    ],
+    "key_conclusions": [
+      "最确定的国产替代赛道: 内存接口芯片(澜起)、AI服务器整机(浪潮/工业富联)、高速光模块(中际旭创) — 已具备全球竞争力",
+      "政策驱动最强但技术差距最大: AI训练芯片 — 国产化率最低但政策支持最大，短期不能完全替代NVIDIA",
+      "信创CPU排序: 海光(x86)>飞腾(ARM)>龙芯(LoongArch)，但最严格自主可控场景龙芯不可替代",
+      "卡脖子最严重环节: HBM(几乎100%进口)、先进制程代工、EDA工具 — A股缺乏高纯度映射",
+      "昇腾产业链投资价值排序: 光模块龙头(已在核心池)>神州数码/拓维(条件观察池)>广电运通/软通/润和/常山北明(观察名单)"
+    ]
+  },
+  "monitoring_triggers": [
+    {"trigger": "龙芯3A6000服务器CPU出货量突破", "affected": ["688047"], "frequency": "季度", "source": "公司IR、信创招标数据"},
+    {"trigger": "昇腾910C流片/量产消息", "affected": ["000034", "002261", "000988"], "frequency": "事件驱动", "source": "华为发布会、行业媒体"},
+    {"trigger": "中芯国际14nm产能扩张/制裁升级", "affected": ["整个昇腾产业链"], "frequency": "事件驱动", "source": "BIS公告、中芯国际财报"},
+    {"trigger": "海光DCU深算三号发布", "affected": ["688041", "688256(竞争)"], "frequency": "事件驱动", "source": "海光信息发布会"},
+    {"trigger": "信创2.0行业招标规模", "affected": ["688047", "688041", "000034"], "frequency": "半年", "source": "政府采购网、行业媒体"},
+    {"trigger": "CANN 8.0或MindSpore重大更新", "affected": ["昇腾全产业链"], "frequency": "事件驱动", "source": "华为开发者大会"},
+    {"trigger": "NVIDIA对华进一步限制(如L40S禁运)", "affected": ["国产算力全链条"], "frequency": "事件驱动", "source": "BIS公告"}
+  ]
+}

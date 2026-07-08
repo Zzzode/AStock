@@ -210,7 +210,7 @@ def field_evidence_completion_count() -> tuple[bool, str]:
         if row.get("target_model"):
             for field in fields:
                 status = cells.get(field, {}).get("status")
-                if status in {"source_exhausted", "watchlist_blocked", None}:
+                if status in {"source_exhausted", "watchlist_blocked", "ocr_noise", "not_disclosed", None}:
                     unresolved_target.append(f"{row.get('ticker')}:{field}")
     total_cells = int(metadata.get("total_field_cells") or 0)
     return (
@@ -291,7 +291,7 @@ def valuation_specific_gate() -> tuple[bool, str]:
             financial_failures.append(f"{row.get('ticker')}:margin")
         if isinstance(profit, (int, float)) and isinstance(eps, (int, float)) and isinstance(shares, (int, float)) and shares > 0:
             expected_eps = profit / shares
-            if abs(expected_eps - eps) > max(0.15, abs(eps) * 0.25):
+            if abs(expected_eps - eps) > max(0.03, abs(eps) * 0.03):
                 financial_failures.append(f"{row.get('ticker')}:eps")
     required_ch07_terms = (
         "统一",
@@ -301,8 +301,15 @@ def valuation_specific_gate() -> tuple[bool, str]:
         "zero-weight",
         "链条语义匹配",
         "汉钟精机",
+        "逐标的估值公式与解释",
+        "56 股正文披露",
     )
     missing_terms = [term for term in required_ch07_terms if term not in ch07]
+    formula_section = ""
+    if r"\subsection*{逐标的估值公式与解释" in ch07 and r"\begin{exhibitbox}[估值结论页" in ch07:
+        formula_section = ch07.split(r"\subsection*{逐标的估值公式与解释", 1)[1].split(r"\begin{exhibitbox}[估值结论页", 1)[0]
+    formula_rows = formula_section.count("目标 =")
+    formula_table_hits = [term for term in (r"\begin{longtable}", r"\begin{tabular", r"\begin{tabularx}") if term in formula_section]
     bad_threshold = any(
         "中科曙光" in line
         and ("CDU" in line or "冷板" in line or "Manifold" in line)
@@ -316,18 +323,23 @@ def valuation_specific_gate() -> tuple[bool, str]:
         and quality.get("status") == "PASS"
         and not financial_failures
         and not missing_terms
+        and formula_rows >= 56
+        and not formula_table_hits
         and "可发布目标价/公允价值组合 & 55" not in ch07
         and not bad_threshold
-    ), f"rows={len(rows)} broker_rows={len(broker_rows)} quality={quality.get('status')} financial_failures={financial_failures[:5]} missing_terms={missing_terms} bad_threshold={bad_threshold}"
+    ), f"rows={len(rows)} broker_rows={len(broker_rows)} quality={quality.get('status')} financial_failures={financial_failures[:5]} missing_terms={missing_terms} formula_rows={formula_rows} formula_table_hits={formula_table_hits} bad_threshold={bad_threshold}"
 
 def valuation_chapter_visual_layout() -> tuple[bool, str]:
     ch07 = text("sections/ch07_valuation.tex")
     required = [
+        "最终估值结果总表",
         "估值数值明细",
         "方法、证据与外部锚",
         "催化与失效条件",
         "Broker/Street 明细",
         "目标超出情景区间",
+        "逐标的估值公式与解释",
+        "56 股正文披露",
     ]
     banned = [
         r"L{0.92cm}L{1.25cm}L{1.35cm}R{0.78cm}",
@@ -340,7 +352,11 @@ def valuation_chapter_visual_layout() -> tuple[bool, str]:
     ]
     missing = [term for term in required if term not in ch07]
     raw_hits = [term for term in banned if term in ch07]
-    return not missing and not raw_hits, f"missing={missing} raw_hits={raw_hits}"
+    formula_section = ""
+    if r"\subsection*{逐标的估值公式与解释" in ch07 and r"\begin{exhibitbox}[估值结论页" in ch07:
+        formula_section = ch07.split(r"\subsection*{逐标的估值公式与解释", 1)[1].split(r"\begin{exhibitbox}[估值结论页", 1)[0]
+    formula_table_hits = [term for term in (r"\begin{longtable}", r"\begin{tabular", r"\begin{tabularx}") if term in formula_section]
+    return not missing and not raw_hits and not formula_table_hits, f"missing={missing} raw_hits={raw_hits} formula_table_hits={formula_table_hits}"
 
 def valuation_triage_count() -> tuple[bool, str]:
     data = json.loads(text("data/valuation_triage_20260630.json"))
@@ -386,7 +402,7 @@ def growth_count() -> tuple[bool, str]:
         for row in drivers
         if required_fields - set(row.keys())
     ]
-    return len(drivers) == 18 and not missing, f"drivers={len(drivers)} missing_schema={len(missing)}"
+    return len(drivers) == 56 and not missing, f"drivers={len(drivers)} missing_schema={len(missing)}"
 
 def no_ascii_diagram() -> tuple[bool, str]:
     forbidden = ["+---", "|---+", "---->", "<----"]
@@ -403,7 +419,7 @@ def chinese_text() -> tuple[bool, str]:
 
 def no_unfinished() -> tuple[bool, str]:
     body = text("main_current_text.txt")
-    bad = ["TODO", "PLACEHOLDER", "<Report Title>", "??"]
+    bad = ["TODO", "PLACEHOLDER", "<Report Title>", "??", "beyond th", "PS/PB or milestone", "positive EPS denominator"]
     return not any(x in body for x in bad), "no unfinished markers"
 
 def no_generic_valuation_placeholders() -> tuple[bool, str]:
@@ -425,7 +441,10 @@ def source_files() -> tuple[bool, str]:
 
 def rendered_pages() -> tuple[bool, str]:
     files = list((BASE / "rendered" / "current-20260630").glob("page-*.png"))
-    return len(files) >= 3, f"rendered_pages={len(files)}"
+    ok, message = pdf_pages()
+    match = re.search(r"(?:pdf_pages|pages)=(\d+)", message)
+    expected = int(match.group(1)) if ok and match else 0
+    return expected > 0 and len(files) >= expected, f"rendered_pages={len(files)} expected_pdf_pages={expected}"
 
 checks = []
 for path in REQUIRED:

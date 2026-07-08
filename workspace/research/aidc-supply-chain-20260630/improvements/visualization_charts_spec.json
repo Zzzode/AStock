@@ -1,0 +1,2151 @@
+{
+  "metadata": {
+    "case_id": "aidc-supply-chain-20260630",
+    "generated_at": "2026-07-02",
+    "data_sources": {
+      "valuation_model": "data/combined_target_valuation_model_20260701.json",
+      "evidence_completion": "data/field_evidence_completion_20260701.json",
+      "market_financials": "data/core_candidate_extended_market_financials_20260701.json",
+      "raw_market": "data/raw_market_financials_20260630.json"
+    }
+  },
+  "charts": [
+    {
+      "chart_id": "chart1_upside_distribution",
+      "title": "AIDC产业链标的目标价上行/下行空间分布",
+      "chart_type": "bar",
+      "subtitle": "按上行空间%降序排列，正值绿色/负值红色，标注评级标签",
+      "data_specification": {
+        "source_file": "data/combined_target_valuation_model_20260701.json",
+        "source_path": "rows[*]",
+        "fields": {
+          "x_axis": "company (公司简称)",
+          "y_axis": "upside * 100 (上行空间%)",
+          "color": "upside > 0 ? green : red",
+          "annotation": "rating_or_action",
+          "hover": [
+            "ticker",
+            "current_price",
+            "final_target",
+            "evidence_quality",
+            "chain_bucket"
+          ]
+        },
+        "sort_by": "upside descending",
+        "total_bars": 56,
+        "data_notes": "upside = (final_target / current_price) - 1"
+      },
+      "visual_specification": {
+        "figure_size": [
+          1600,
+          700
+        ],
+        "dpi": 150,
+        "colors": {
+          "positive": "#2ecc71",
+          "negative": "#e74c3c",
+          "zero_line": "#7f8c8d"
+        },
+        "axes": {
+          "x_label": "标的公司",
+          "y_label": "目标价上行空间 (%)",
+          "y_range": [
+            -80,
+            80
+          ],
+          "x_tick_rotation": 60,
+          "x_font_size": 7
+        },
+        "annotations": {
+          "show_rating_labels": true,
+          "label_font_size": 6,
+          "label_offset_y": 2,
+          "zero_line": true
+        },
+        "legend": {
+          "show": true,
+          "position": "upper right",
+          "items": [
+            "上行空间>0 (绿色)",
+            "上行空间<0 (红色)"
+          ]
+        },
+        "title_font_size": 14,
+        "background": "#ffffff",
+        "grid": {
+          "y_axis": true,
+          "style": "--",
+          "alpha": 0.3
+        }
+      },
+      "python_code_outline": "\nimport json\nimport matplotlib.pyplot as plt\nimport matplotlib\nmatplotlib.rcParams['font.sans-serif'] = ['SimHei', 'PingFang SC', 'Microsoft YaHei']\nmatplotlib.rcParams['axes.unicode_minus'] = False\n\nwith open('data/combined_target_valuation_model_20260701.json') as f:\n    data = json.load(f)\nrows = sorted(data['rows'], key=lambda x: x['upside'], reverse=True)\n\ncompanies = [r['company'] for r in rows]\nupsides = [r['upside'] * 100 for r in rows]\nratings = [r['rating_or_action'] for r in rows]\ncolors = ['#2ecc71' if u > 0 else '#e74c3c' for u in upsides]\n\nfig, ax = plt.subplots(figsize=(16, 7), dpi=150)\nbars = ax.bar(companies, upsides, color=colors, edgecolor='white', linewidth=0.5)\nax.axhline(y=0, color='#7f8c8d', linewidth=1.5, linestyle='-')\nax.set_ylabel('目标价上行空间 (%)', fontsize=12)\nax.set_xlabel('标的公司', fontsize=12)\nax.set_title('AIDC产业链标的目标价上行/下行空间分布', fontsize=14, fontweight='bold')\nax.set_ylim(-80, 80)\nplt.xticks(rotation=60, ha='right', fontsize=7)\nax.grid(axis='y', alpha=0.3, linestyle='--')\n\n# Rating labels\nfor bar, rating in zip(bars, ratings):\n    if rating in ['买入', '重点关注', '高估值风险', '观察']:\n        short = {'买入': '买', '重点关注': '关', '高估值风险': '★', '观察': '观'}.get(rating, rating[:2])\n        ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 2,\n                short, ha='center', va='bottom', fontsize=6, fontweight='bold')\n\nplt.tight_layout()\nplt.savefig('improvements/chart1_upside_distribution.png', dpi=150, bbox_inches='tight')\n",
+      "insights_to_convey": [
+        "多数标的当前市价显著高于模型目标价（70%+标的上行空间为负）",
+        "仅少数标的（运营商、部分供配电设备）存在正上行空间",
+        "光模块龙头（中际旭创、新易盛）虽绝对估值高，但模型给出的下行空间相对有限（-17%~-18%）",
+        "高估值风险集中在PCB材料、IDC运营、算力芯片板块"
+      ],
+      "caveats": [
+        "目标价基于2026E盈利预测，若基本面超预期可能重估",
+        "评级标签为简化标注，完整投资逻辑需参考个股估值模型",
+        "部分extended标的使用官方披露数据替代券商目标价锚"
+      ],
+      "actual_data": [
+        {
+          "ticker": "301291",
+          "company": "明阳电气",
+          "chain_bucket": "供配电/能源",
+          "upside_pct": 74.71,
+          "rating": "自建公允价值复核",
+          "final_target": 62.37,
+          "current_price": 34.75,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "002396",
+          "company": "星网锐捷",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": 61.47,
+          "rating": "自建公允价值复核",
+          "final_target": 35.78,
+          "current_price": 21.27,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "000063",
+          "company": "中兴通讯",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": 59.41,
+          "rating": "核心复核",
+          "final_target": 56.77,
+          "current_price": 35.32,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "600089",
+          "company": "特变电工",
+          "chain_bucket": "供配电/能源",
+          "upside_pct": 15.45,
+          "rating": "事件验证",
+          "final_target": 25.55,
+          "current_price": 21.83,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "002913",
+          "company": "奥士康",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": 11.4,
+          "rating": "事件验证",
+          "final_target": 69.03,
+          "current_price": 58.02,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "600050",
+          "company": "中国联通",
+          "chain_bucket": "AIDC/IDC 运营",
+          "upside_pct": 11.25,
+          "rating": "事件验证",
+          "final_target": 4.49,
+          "current_price": 4.06,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "600941",
+          "company": "中国移动",
+          "chain_bucket": "AIDC/IDC 运营",
+          "upside_pct": 10.72,
+          "rating": "事件验证",
+          "final_target": 96.69,
+          "current_price": 88.25,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "601728",
+          "company": "中国电信",
+          "chain_bucket": "AIDC/IDC 运营",
+          "upside_pct": 6.14,
+          "rating": "事件验证",
+          "final_target": 5.68,
+          "current_price": 5.42,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "000530",
+          "company": "冰山冷热",
+          "chain_bucket": "液冷/温控",
+          "upside_pct": -0.55,
+          "rating": "市场支撑观察",
+          "final_target": 5.39,
+          "current_price": 5.36,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "000938",
+          "company": "紫光股份",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -1.24,
+          "rating": "市场支撑观察",
+          "final_target": 28.5,
+          "current_price": 29.03,
+          "evidence_quality": "B"
+        },
+        {
+          "ticker": "002922",
+          "company": "伊戈尔",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -9.01,
+          "rating": "市场支撑观察",
+          "final_target": 27.91,
+          "current_price": 29.6,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "601138",
+          "company": "工业富联",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -10.63,
+          "rating": "市场支撑观察",
+          "final_target": 65.1,
+          "current_price": 64.02,
+          "evidence_quality": "A-"
+        },
+        {
+          "ticker": "603228",
+          "company": "景旺电子",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -12.38,
+          "rating": "市场支撑观察",
+          "final_target": 60.02,
+          "current_price": 66.17,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "300502",
+          "company": "新易盛",
+          "chain_bucket": "光通信",
+          "upside_pct": -17.01,
+          "rating": "市场支撑观察",
+          "final_target": 505.38,
+          "current_price": 509.0,
+          "evidence_quality": "A-"
+        },
+        {
+          "ticker": "600845",
+          "company": "宝信软件",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -17.5,
+          "rating": "市场支撑观察",
+          "final_target": 15.24,
+          "current_price": 18.11,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "002158",
+          "company": "汉钟精机",
+          "chain_bucket": "液冷/温控",
+          "upside_pct": -18.2,
+          "rating": "市场支撑观察",
+          "final_target": 31.09,
+          "current_price": 36.39,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "chain_bucket": "光通信",
+          "upside_pct": -18.23,
+          "rating": "市场支撑观察",
+          "final_target": 1054.65,
+          "current_price": 1143.0,
+          "evidence_quality": "A-"
+        },
+        {
+          "ticker": "002518",
+          "company": "科士达",
+          "chain_bucket": "供配电/能源",
+          "upside_pct": -19.77,
+          "rating": "市场支撑观察",
+          "final_target": 40.69,
+          "current_price": 49.07,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "000977",
+          "company": "浪潮信息",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -27.52,
+          "rating": "高估值风险",
+          "final_target": 50.18,
+          "current_price": 63.79,
+          "evidence_quality": "B"
+        },
+        {
+          "ticker": "688123",
+          "company": "聚辰股份",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "upside_pct": -29.13,
+          "rating": "高估值风险",
+          "final_target": 144.87,
+          "current_price": 195.99,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "601179",
+          "company": "中国西电",
+          "chain_bucket": "供配电/能源",
+          "upside_pct": -29.99,
+          "rating": "高估值风险",
+          "final_target": 10.03,
+          "current_price": 14.06,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "300990",
+          "company": "同飞股份",
+          "chain_bucket": "液冷/温控",
+          "upside_pct": -30.21,
+          "rating": "高估值风险",
+          "final_target": 69.11,
+          "current_price": 96.4,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "300476",
+          "company": "胜宏科技",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -32.13,
+          "rating": "高估值风险",
+          "final_target": 238.67,
+          "current_price": 306.09,
+          "evidence_quality": "B+"
+        },
+        {
+          "ticker": "301165",
+          "company": "锐捷网络",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -32.93,
+          "rating": "高估值风险",
+          "final_target": 58.94,
+          "current_price": 85.25,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "002335",
+          "company": "科华数据",
+          "chain_bucket": "供配电/能源",
+          "upside_pct": -33.16,
+          "rating": "高估值风险",
+          "final_target": 28.87,
+          "current_price": 37.81,
+          "evidence_quality": "A-"
+        },
+        {
+          "ticker": "688256",
+          "company": "寒武纪",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -33.97,
+          "rating": "高估值风险",
+          "final_target": 924.44,
+          "current_price": 1372.0,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "002463",
+          "company": "沪电股份",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -34.51,
+          "rating": "高估值风险",
+          "final_target": 101.35,
+          "current_price": 130.51,
+          "evidence_quality": "A"
+        },
+        {
+          "ticker": "300442",
+          "company": "润泽科技",
+          "chain_bucket": "AIDC/IDC 运营",
+          "upside_pct": -35.65,
+          "rating": "高估值风险",
+          "final_target": 50.62,
+          "current_price": 87.8,
+          "evidence_quality": "A-"
+        },
+        {
+          "ticker": "300738",
+          "company": "奥飞数据",
+          "chain_bucket": "AIDC/IDC 运营",
+          "upside_pct": -37.69,
+          "rating": "高估值风险",
+          "final_target": 12.4,
+          "current_price": 20.9,
+          "evidence_quality": "B-"
+        },
+        {
+          "ticker": "002837",
+          "company": "英维克",
+          "chain_bucket": "液冷/温控",
+          "upside_pct": -39.57,
+          "rating": "高估值风险",
+          "final_target": 48.12,
+          "current_price": 71.4,
+          "evidence_quality": "A-"
+        },
+        {
+          "ticker": "300394",
+          "company": "天孚通信",
+          "chain_bucket": "光通信",
+          "upside_pct": -40.97,
+          "rating": "高估值风险",
+          "final_target": 182.82,
+          "current_price": 250.77,
+          "evidence_quality": "B+"
+        },
+        {
+          "ticker": "000021",
+          "company": "深科技",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "upside_pct": -41.17,
+          "rating": "高估值风险",
+          "final_target": 33.05,
+          "current_price": 56.03,
+          "evidence_quality": "B- / official filing evidence; no Street target disclosed"
+        },
+        {
+          "ticker": "000988",
+          "company": "华工科技",
+          "chain_bucket": "光通信",
+          "upside_pct": -42.66,
+          "rating": "高估值风险",
+          "final_target": 92.52,
+          "current_price": 156.2,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "603083",
+          "company": "剑桥科技",
+          "chain_bucket": "光通信",
+          "upside_pct": -43.39,
+          "rating": "高估值风险",
+          "final_target": 126.25,
+          "current_price": 218.43,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "688183",
+          "company": "生益电子",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -48.14,
+          "rating": "高估值风险",
+          "final_target": 62.34,
+          "current_price": 115.3,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "688676",
+          "company": "金盘科技",
+          "chain_bucket": "供配电/能源",
+          "upside_pct": -48.59,
+          "rating": "高估值风险",
+          "final_target": 44.76,
+          "current_price": 79.0,
+          "evidence_quality": "B"
+        },
+        {
+          "ticker": "688008",
+          "company": "澜起科技",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "upside_pct": -49.18,
+          "rating": "高估值风险",
+          "final_target": 145.98,
+          "current_price": 269.15,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "002281",
+          "company": "光迅科技",
+          "chain_bucket": "光通信",
+          "upside_pct": -49.67,
+          "rating": "高估值风险",
+          "final_target": 110.62,
+          "current_price": 218.19,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "300499",
+          "company": "高澜股份",
+          "chain_bucket": "液冷/温控",
+          "upside_pct": -50.18,
+          "rating": "高估值风险",
+          "final_target": 18.57,
+          "current_price": 36.15,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "603986",
+          "company": "兆易创新",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "upside_pct": -50.68,
+          "rating": "高估值风险",
+          "final_target": 345.82,
+          "current_price": 694.81,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "688041",
+          "company": "海光信息",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -51.02,
+          "rating": "高估值风险",
+          "final_target": 164.25,
+          "current_price": 322.29,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "600183",
+          "company": "生益科技",
+          "chain_bucket": "AI PCB/CCL",
+          "upside_pct": -51.75,
+          "rating": "高估值风险",
+          "final_target": 85.81,
+          "current_price": 151.95,
+          "evidence_quality": "B"
+        },
+        {
+          "ticker": "002916",
+          "company": "深南电路",
+          "chain_bucket": "AI PCB/CCL",
+          "upside_pct": -52.61,
+          "rating": "高估值风险",
+          "final_target": 221.83,
+          "current_price": 423.1,
+          "evidence_quality": "B"
+        },
+        {
+          "ticker": "002364",
+          "company": "中恒电气",
+          "chain_bucket": "供配电/能源",
+          "upside_pct": -53.46,
+          "rating": "高估值风险",
+          "final_target": 24.65,
+          "current_price": 50.85,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "603186",
+          "company": "华正新材",
+          "chain_bucket": "AI PCB/CCL",
+          "upside_pct": -55.45,
+          "rating": "高估值风险",
+          "final_target": 91.21,
+          "current_price": 196.0,
+          "evidence_quality": "B- / official filing evidence; no Street target disclosed"
+        },
+        {
+          "ticker": "603019",
+          "company": "中科曙光",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -55.75,
+          "rating": "高估值风险",
+          "final_target": 46.77,
+          "current_price": 94.56,
+          "evidence_quality": "B"
+        },
+        {
+          "ticker": "301018",
+          "company": "申菱环境",
+          "chain_bucket": "液冷/温控",
+          "upside_pct": -56.46,
+          "rating": "高估值风险",
+          "final_target": 49.7,
+          "current_price": 107.56,
+          "evidence_quality": "B-"
+        },
+        {
+          "ticker": "300223",
+          "company": "北京君正",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "upside_pct": -57.73,
+          "rating": "高估值风险",
+          "final_target": 104.65,
+          "current_price": 234.67,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "688521",
+          "company": "芯原股份",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "upside_pct": -60.94,
+          "rating": "高估值风险",
+          "final_target": 126.48,
+          "current_price": 309.5,
+          "evidence_quality": "B+ / model-ready public broker target"
+        },
+        {
+          "ticker": "300249",
+          "company": "依米康",
+          "chain_bucket": "液冷/温控",
+          "upside_pct": -61.44,
+          "rating": "高估值风险",
+          "final_target": 5.79,
+          "current_price": 14.59,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "688519",
+          "company": "南亚新材",
+          "chain_bucket": "AI PCB/CCL",
+          "upside_pct": -61.53,
+          "rating": "高估值风险",
+          "final_target": 140.19,
+          "current_price": 353.0,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "301205",
+          "company": "联特科技",
+          "chain_bucket": "光通信",
+          "upside_pct": -63.73,
+          "rating": "高估值风险",
+          "final_target": 118.58,
+          "current_price": 306.82,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "300383",
+          "company": "光环新网",
+          "chain_bucket": "AIDC/IDC 运营",
+          "upside_pct": -65.52,
+          "rating": "高估值风险",
+          "final_target": 4.22,
+          "current_price": 13.24,
+          "evidence_quality": "C+"
+        },
+        {
+          "ticker": "603881",
+          "company": "数据港",
+          "chain_bucket": "AIDC/IDC 运营",
+          "upside_pct": -66.25,
+          "rating": "高估值风险",
+          "final_target": 8.73,
+          "current_price": 25.21,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "688702",
+          "company": "盛科通信",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "upside_pct": -72.67,
+          "rating": "高估值风险",
+          "final_target": 101.4,
+          "current_price": 353.05,
+          "evidence_quality": "B / broker forecast evidence; AStock house fair-value model when denominator is complete"
+        },
+        {
+          "ticker": "688795",
+          "company": "摩尔线程",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "upside_pct": -72.88,
+          "rating": "PS/SOTP 里程碑验证",
+          "final_target": 182.25,
+          "current_price": 641.59,
+          "evidence_quality": "B+ / model-ready public broker target"
+        }
+      ]
+    },
+    {
+      "chart_id": "chart2_pe_peg_comparison",
+      "title": "AIDC各板块PE估值分布与PEG对比",
+      "chart_type": "box",
+      "subtitle": "X轴=7大板块，Y轴=2026E PE（对数刻度），箱体标注板块平均PEG",
+      "data_specification": {
+        "source_files": {
+          "valuation": "data/combined_target_valuation_model_20260701.json",
+          "market_financials": "data/core_candidate_extended_market_financials_20260701.json"
+        },
+        "derived_metrics": {
+          "pe_2026e": "market_cap_100mn_cny / np_2026e_100mn",
+          "revenue_growth": "(revenue_2026e_proxy_100mn / revenue_2025_100mn) - 1",
+          "peg": "pe_2026e / revenue_growth (仅当growth>0时计算)"
+        },
+        "group_by": "chain_bucket",
+        "chains": [
+          "光通信",
+          "服务器/网络设备/国产算力",
+          "AI PCB/CCL",
+          "供配电/能源",
+          "液冷/温控",
+          "AIDC/IDC 运营",
+          "算力芯片/存储/网络 ASIC"
+        ],
+        "data_notes": "PE基于2026E一致预期净利润；PEG分母使用营收同比增速（因部分公司净利润基数异常）"
+      },
+      "visual_specification": {
+        "figure_size": [
+          1200,
+          700
+        ],
+        "dpi": 150,
+        "y_axis": {
+          "scale": "log",
+          "label": "2026E PE (对数刻度)",
+          "range": [
+            5,
+            5000
+          ]
+        },
+        "x_axis": {
+          "label": "板块",
+          "tick_rotation": 15
+        },
+        "box_colors": {
+          "光通信": "#3498db",
+          "服务器/网络设备/国产算力": "#e67e22",
+          "AI PCB/CCL": "#9b59b6",
+          "供配电/能源": "#f1c40f",
+          "液冷/温控": "#1abc9c",
+          "AIDC/IDC 运营": "#e91e63",
+          "算力芯片/存储/网络 ASIC": "#795548"
+        },
+        "annotations": {
+          "show_peg_label": true,
+          "peg_label_format": "PEG={avg_peg:.2f}",
+          "peg_label_position": "above box",
+          "show_count_label": true
+        },
+        "grid": {
+          "y_axis": true,
+          "style": "--",
+          "alpha": 0.3
+        },
+        "outliers": {
+          "show": true,
+          "marker": "o",
+          "marker_size": 4,
+          "label_outliers": true
+        }
+      },
+      "python_code_outline": "\nimport json\nimport matplotlib.pyplot as plt\nimport numpy as np\nfrom collections import defaultdict\nimport matplotlib\nmatplotlib.rcParams['font.sans-serif'] = ['SimHei', 'PingFang SC', 'Microsoft YaHei']\nmatplotlib.rcParams['axes.unicode_minus'] = False\n\n# Load data\nwith open('data/combined_target_valuation_model_20260701.json') as f:\n    val = json.load(f)\nwith open('data/core_candidate_extended_market_financials_20260701.json') as f:\n    mf = json.load(f)\nmf_map = {r['ticker']: r for r in mf['rows']}\n\n# Compute PE per chain\nchain_pe = defaultdict(list)\nchain_peg = defaultdict(list)\nfor r in val['rows']:\n    mcap = r.get('market_cap_100mn_cny', 0)\n    np26 = r.get('np_2026e_100mn', 0)\n    if np26 <= 0:\n        continue\n    pe = mcap / np26\n    chain = r['chain_bucket']\n    chain_pe[chain].append(pe)\n    \n    # PEG\n    ticker = r['ticker']\n    mf_rec = mf_map.get(ticker)\n    if mf_rec:\n        rev25 = mf_rec.get('revenue_2025_100mn')\n        rev26 = mf_rec.get('revenue_2026e_proxy_100mn')\n        if rev25 and rev26 and rev25 > 0:\n            growth = rev26 / rev25 - 1\n            if growth > 0:\n                chain_peg[chain].append(pe / growth)\n\n# Plot\nfig, ax = plt.subplots(figsize=(12, 7), dpi=150)\nchains = list(chain_pe.keys())\ndata = [chain_pe[c] for c in chains]\nbp = ax.boxplot(data, labels=chains, patch_artist=True)\n\n# Color boxes\ncolors = ['#3498db', '#e67e22', '#9b59b6', '#f1c40f', '#1abc9c', '#e91e63', '#795548']\nfor patch, color in zip(bp['boxes'], colors[:len(chains)]):\n    patch.set_facecolor(color)\n    patch.set_alpha(0.7)\n\nax.set_yscale('log')\nax.set_ylabel('2026E PE (对数刻度)', fontsize=12)\nax.set_title('AIDC各板块PE估值分布与PEG对比', fontsize=14, fontweight='bold')\nax.grid(axis='y', alpha=0.3, linestyle='--')\n\n# Annotate PEG\nfor i, chain in enumerate(chains):\n    pegs = chain_peg.get(chain, [])\n    if pegs:\n        avg_peg = np.mean(pegs)\n        ax.text(i+1, ax.get_ylim()[1]*0.8, f'PEG={avg_peg:.1f}', \n                ha='center', fontsize=9, fontweight='bold')\n\nplt.tight_layout()\nplt.savefig('improvements/chart2_pe_peg_boxplot.png', dpi=150, bbox_inches='tight')\n",
+      "insights_to_convey": [
+        "算力芯片板块PE中位数最高（~150x），反映市场对国产替代的高预期",
+        "供配电板块PE最低（中位数~36x），属于相对价值洼地",
+        "服务器板块PE离散度极大（18x~3300x），因盛科通信等亏损股拉高极值",
+        "液冷板块PEG最低（~3.0x），估值与增速匹配度相对最好",
+        "光模块龙头PE（50-57x）看似高，但考虑60%+增速，PEG合理"
+      ],
+      "caveats": [
+        "PE基于2026E一致预期，若盈利预测下修则实际PE更高",
+        "PEG使用营收增速而非净利润增速，因部分公司利润基数异常不可比",
+        "对数刻度压缩了高PE区间的视觉差异，实际差距更大",
+        "运营商（联通/移动/电信）拉低了IDC板块的PE中位数"
+      ],
+      "actual_data": [
+        {
+          "chain": "AI PCB/CCL",
+          "count": 4,
+          "pe_values": [
+            87.8,
+            88.9,
+            115.9,
+            175.2
+          ],
+          "pe_median": 115.9,
+          "pe_q1": 88.9,
+          "pe_q3": 175.2,
+          "pe_min": 87.8,
+          "pe_max": 175.2,
+          "pe_mean": 117.0,
+          "avg_peg": 4.48,
+          "avg_growth": 35.3,
+          "stocks": [
+            {
+              "ticker": "002916",
+              "company": "深南电路",
+              "pe": 87.8,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "600183",
+              "company": "生益科技",
+              "pe": 88.9,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "603186",
+              "company": "华正新材",
+              "pe": 115.9,
+              "revenue_growth_pct": 21.5,
+              "peg": 5.39
+            },
+            {
+              "ticker": "688519",
+              "company": "南亚新材",
+              "pe": 175.2,
+              "revenue_growth_pct": 49.1,
+              "peg": 3.57
+            }
+          ]
+        },
+        {
+          "chain": "AIDC/IDC 运营",
+          "count": 7,
+          "pe_values": [
+            269.1,
+            50.3,
+            50.8,
+            12.0,
+            12.1,
+            12.7,
+            110.7
+          ],
+          "pe_median": 50.3,
+          "pe_q1": 12.1,
+          "pe_q3": 110.7,
+          "pe_min": 12.0,
+          "pe_max": 269.1,
+          "pe_mean": 74.0,
+          "avg_peg": 7.17,
+          "avg_growth": -1.3,
+          "stocks": [
+            {
+              "ticker": "300383",
+              "company": "光环新网",
+              "pe": 269.1,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "300442",
+              "company": "润泽科技",
+              "pe": 50.3,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "300738",
+              "company": "奥飞数据",
+              "pe": 50.8,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "600050",
+              "company": "中国联通",
+              "pe": 12.0,
+              "revenue_growth_pct": 2.4,
+              "peg": 4.9
+            },
+            {
+              "ticker": "600941",
+              "company": "中国移动",
+              "pe": 12.1,
+              "revenue_growth_pct": 1.3,
+              "peg": 9.43
+            },
+            {
+              "ticker": "601728",
+              "company": "中国电信",
+              "pe": 12.7,
+              "revenue_growth_pct": -0.9,
+              "peg": null
+            },
+            {
+              "ticker": "603881",
+              "company": "数据港",
+              "pe": 110.7,
+              "revenue_growth_pct": -8.1,
+              "peg": null
+            }
+          ]
+        },
+        {
+          "chain": "供配电/能源",
+          "count": 7,
+          "pe_values": [
+            46.5,
+            82.7,
+            31.9,
+            10.8,
+            18.3,
+            36.3,
+            76.6
+          ],
+          "pe_median": 36.3,
+          "pe_q1": 18.3,
+          "pe_q3": 76.6,
+          "pe_min": 10.8,
+          "pe_max": 82.7,
+          "pe_mean": 43.3,
+          "avg_peg": 3.4,
+          "avg_growth": 1.2,
+          "stocks": [
+            {
+              "ticker": "002335",
+              "company": "科华数据",
+              "pe": 46.5,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "002364",
+              "company": "中恒电气",
+              "pe": 82.7,
+              "revenue_growth_pct": -2.6,
+              "peg": null
+            },
+            {
+              "ticker": "002518",
+              "company": "科士达",
+              "pe": 31.9,
+              "revenue_growth_pct": 18.0,
+              "peg": 1.77
+            },
+            {
+              "ticker": "301291",
+              "company": "明阳电气",
+              "pe": 10.8,
+              "revenue_growth_pct": -26.9,
+              "peg": null
+            },
+            {
+              "ticker": "600089",
+              "company": "特变电工",
+              "pe": 18.3,
+              "revenue_growth_pct": 12.2,
+              "peg": 1.5
+            },
+            {
+              "ticker": "601179",
+              "company": "中国西电",
+              "pe": 36.3,
+              "revenue_growth_pct": 5.2,
+              "peg": 6.92
+            },
+            {
+              "ticker": "688676",
+              "company": "金盘科技",
+              "pe": 76.6,
+              "revenue_growth_pct": null,
+              "peg": null
+            }
+          ]
+        },
+        {
+          "chain": "光通信",
+          "count": 7,
+          "pe_values": [
+            81.1,
+            115.7,
+            57.3,
+            112.5,
+            50.0,
+            255.4,
+            88.5
+          ],
+          "pe_median": 88.5,
+          "pe_q1": 57.3,
+          "pe_q3": 115.7,
+          "pe_min": 50.0,
+          "pe_max": 255.4,
+          "pe_mean": 108.6,
+          "avg_peg": 5.27,
+          "avg_growth": 12.5,
+          "stocks": [
+            {
+              "ticker": "000988",
+              "company": "华工科技",
+              "pe": 81.1,
+              "revenue_growth_pct": 28.3,
+              "peg": 2.87
+            },
+            {
+              "ticker": "002281",
+              "company": "光迅科技",
+              "pe": 115.7,
+              "revenue_growth_pct": 11.8,
+              "peg": 9.84
+            },
+            {
+              "ticker": "300308",
+              "company": "中际旭创",
+              "pe": 57.3,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "300394",
+              "company": "天孚通信",
+              "pe": 112.5,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "300502",
+              "company": "新易盛",
+              "pe": 50.0,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "301205",
+              "company": "联特科技",
+              "pe": 255.4,
+              "revenue_growth_pct": -18.7,
+              "peg": null
+            },
+            {
+              "ticker": "603083",
+              "company": "剑桥科技",
+              "pe": 88.5,
+              "revenue_growth_pct": 28.6,
+              "peg": 3.1
+            }
+          ]
+        },
+        {
+          "chain": "服务器/网络设备/国产算力",
+          "count": 17,
+          "pe_values": [
+            18.5,
+            24.1,
+            42.0,
+            18.3,
+            59.9,
+            29.3,
+            27.0,
+            59.4,
+            61.0,
+            17.9,
+            33.0,
+            149.1,
+            31.4,
+            166.8,
+            82.4,
+            87.0,
+            3306.7
+          ],
+          "pe_median": 42.0,
+          "pe_q1": 27.0,
+          "pe_q3": 82.4,
+          "pe_min": 17.9,
+          "pe_max": 3306.7,
+          "pe_mean": 247.9,
+          "avg_peg": 212.75,
+          "avg_growth": 15.6,
+          "stocks": [
+            {
+              "ticker": "000063",
+              "company": "中兴通讯",
+              "pe": 18.5,
+              "revenue_growth_pct": 10.2,
+              "peg": 1.8
+            },
+            {
+              "ticker": "000938",
+              "company": "紫光股份",
+              "pe": 24.1,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "000977",
+              "company": "浪潮信息",
+              "pe": 42.0,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "002396",
+              "company": "星网锐捷",
+              "pe": 18.3,
+              "revenue_growth_pct": -0.9,
+              "peg": null
+            },
+            {
+              "ticker": "002463",
+              "company": "沪电股份",
+              "pe": 59.9,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "002913",
+              "company": "奥士康",
+              "pe": 29.3,
+              "revenue_growth_pct": 7.6,
+              "peg": 3.87
+            },
+            {
+              "ticker": "002922",
+              "company": "伊戈尔",
+              "pe": 27.0,
+              "revenue_growth_pct": 13.6,
+              "peg": 2.0
+            },
+            {
+              "ticker": "300476",
+              "company": "胜宏科技",
+              "pe": 59.4,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "301165",
+              "company": "锐捷网络",
+              "pe": 61.0,
+              "revenue_growth_pct": 3.3,
+              "peg": 18.42
+            },
+            {
+              "ticker": "600845",
+              "company": "宝信软件",
+              "pe": 17.9,
+              "revenue_growth_pct": -0.1,
+              "peg": null
+            },
+            {
+              "ticker": "601138",
+              "company": "工业富联",
+              "pe": 33.0,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "603019",
+              "company": "中科曙光",
+              "pe": 149.1,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "603228",
+              "company": "景旺电子",
+              "pe": 31.4,
+              "revenue_growth_pct": 13.2,
+              "peg": 2.38
+            },
+            {
+              "ticker": "688041",
+              "company": "海光信息",
+              "pe": 166.8,
+              "revenue_growth_pct": 29.5,
+              "peg": 5.65
+            },
+            {
+              "ticker": "688183",
+              "company": "生益电子",
+              "pe": 82.4,
+              "revenue_growth_pct": 26.0,
+              "peg": 3.17
+            },
+            {
+              "ticker": "688256",
+              "company": "寒武纪",
+              "pe": 87.0,
+              "revenue_growth_pct": 67.0,
+              "peg": 1.3
+            },
+            {
+              "ticker": "688702",
+              "company": "盛科通信",
+              "pe": 3306.7,
+              "revenue_growth_pct": 1.8,
+              "peg": 1876.12
+            }
+          ]
+        },
+        {
+          "chain": "液冷/温控",
+          "count": 7,
+          "pe_values": [
+            22.5,
+            28.4,
+            125.0,
+            116.9,
+            84.2,
+            35.9,
+            125.8
+          ],
+          "pe_median": 84.2,
+          "pe_q1": 28.4,
+          "pe_q3": 125.0,
+          "pe_min": 22.5,
+          "pe_max": 125.8,
+          "pe_mean": 77.0,
+          "avg_peg": 2.98,
+          "avg_growth": 10.7,
+          "stocks": [
+            {
+              "ticker": "000530",
+              "company": "冰山冷热",
+              "pe": 22.5,
+              "revenue_growth_pct": -0.3,
+              "peg": null
+            },
+            {
+              "ticker": "002158",
+              "company": "汉钟精机",
+              "pe": 28.4,
+              "revenue_growth_pct": 9.9,
+              "peg": 2.86
+            },
+            {
+              "ticker": "002837",
+              "company": "英维克",
+              "pe": 125.0,
+              "revenue_growth_pct": null,
+              "peg": null
+            },
+            {
+              "ticker": "300249",
+              "company": "依米康",
+              "pe": 116.9,
+              "revenue_growth_pct": 30.9,
+              "peg": 3.79
+            },
+            {
+              "ticker": "300499",
+              "company": "高澜股份",
+              "pe": 84.2,
+              "revenue_growth_pct": -2.7,
+              "peg": null
+            },
+            {
+              "ticker": "300990",
+              "company": "同飞股份",
+              "pe": 35.9,
+              "revenue_growth_pct": 15.7,
+              "peg": 2.28
+            },
+            {
+              "ticker": "301018",
+              "company": "申菱环境",
+              "pe": 125.8,
+              "revenue_growth_pct": null,
+              "peg": null
+            }
+          ]
+        },
+        {
+          "chain": "算力芯片/存储/网络 ASIC",
+          "count": 6,
+          "pe_values": [
+            88.1,
+            182.0,
+            157.6,
+            149.6,
+            57.8,
+            2027.2
+          ],
+          "pe_median": 157.6,
+          "pe_q1": 88.1,
+          "pe_q3": 182.0,
+          "pe_min": 57.8,
+          "pe_max": 2027.2,
+          "pe_mean": 443.7,
+          "avg_peg": 31.44,
+          "avg_growth": 26.0,
+          "stocks": [
+            {
+              "ticker": "000021",
+              "company": "深科技",
+              "pe": 88.1,
+              "revenue_growth_pct": 4.0,
+              "peg": 22.06
+            },
+            {
+              "ticker": "300223",
+              "company": "北京君正",
+              "pe": 182.0,
+              "revenue_growth_pct": 40.6,
+              "peg": 4.48
+            },
+            {
+              "ticker": "603986",
+              "company": "兆易创新",
+              "pe": 157.6,
+              "revenue_growth_pct": 69.5,
+              "peg": 2.27
+            },
+            {
+              "ticker": "688008",
+              "company": "澜起科技",
+              "pe": 149.6,
+              "revenue_growth_pct": 15.1,
+              "peg": 9.89
+            },
+            {
+              "ticker": "688123",
+              "company": "聚辰股份",
+              "pe": 57.8,
+              "revenue_growth_pct": 0.8,
+              "peg": 72.0
+            },
+            {
+              "ticker": "688521",
+              "company": "芯原股份",
+              "pe": 2027.2,
+              "revenue_growth_pct": 26.0,
+              "peg": 77.96
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chart_id": "chart3_evidence_quality_heatmap",
+      "title": "AIDC产业链证据质量热力图：直接证据比例",
+      "chart_type": "heatmap",
+      "subtitle": "行=7大关键字段，列=8大板块，颜色=直接证据占比（绿=高/红=低）",
+      "data_specification": {
+        "source_file": "data/field_evidence_completion_20260701.json",
+        "source_path": "rows[*].fields[*].status",
+        "dimensions": {
+          "rows": [
+            "收入暴露",
+            "客户",
+            "订单",
+            "产能",
+            "ASP",
+            "利用率",
+            "利润率"
+          ],
+          "columns": [
+            "光通信",
+            "AI服务器",
+            "PCB材料",
+            "供配电",
+            "液冷",
+            "IDC",
+            "算力芯片",
+            "下游应用"
+          ]
+        },
+        "metric": "direct_evidence_ratio = count(status=='direct') / total_count",
+        "chain_mapping": {
+          "网络与光通信": "光通信",
+          "服务器整机与零部件": "AI服务器",
+          "PCB 与上游材料设备": "PCB材料",
+          "供配电与能源": "供配电",
+          "液冷与温控": "液冷",
+          "数据中心建设与运营": "IDC",
+          "上游算力芯片与存储": "算力芯片",
+          "下游需求与应用": "下游应用"
+        },
+        "total_candidates_audited": 59,
+        "field_count": 7,
+        "total_cells": 413,
+        "overall_direct_ratio": 0.99
+      },
+      "visual_specification": {
+        "figure_size": [
+          1000,
+          500
+        ],
+        "dpi": 150,
+        "color_scale": {
+          "low": "#d73027",
+          "mid": "#fee08b",
+          "high": "#1a9850",
+          "type": "RdYlGn",
+          "range": [
+            0.7,
+            1.0
+          ]
+        },
+        "cell_values": {
+          "show": true,
+          "format": "{:.0%}",
+          "font_size": 9,
+          "color_threshold": 0.85
+        },
+        "axes": {
+          "x_label": "板块",
+          "y_label": "证据字段",
+          "x_tick_rotation": 0
+        },
+        "title": "AIDC产业链证据质量热力图",
+        "colorbar_label": "直接证据比例"
+      },
+      "python_code_outline": "\nimport json\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport matplotlib\nmatplotlib.rcParams['font.sans-serif'] = ['SimHei', 'PingFang SC', 'Microsoft YaHei']\nmatplotlib.rcParams['axes.unicode_minus'] = False\n\nwith open('data/field_evidence_completion_20260701.json') as f:\n    data = json.load(f)\n\n# Build heatmap matrix (pre-computed above)\n# ... matrix construction ...\n\nfig, ax = plt.subplots(figsize=(10, 5), dpi=150)\nim = ax.imshow(matrix, cmap='RdYlGn', vmin=0.7, vmax=1.0, aspect='auto')\n\n# Labels\nax.set_xticks(range(len(chains)))\nax.set_xticklabels(chains, fontsize=9)\nax.set_yticks(range(len(fields)))\nax.set_yticklabels(fields, fontsize=9)\n\n# Cell annotations\nfor i in range(len(fields)):\n    for j in range(len(chains)):\n        val = matrix[i][j]\n        color = 'white' if val < 0.85 else 'black'\n        ax.text(j, i, f'{val:.0%}', ha='center', va='center', \n                fontsize=9, color=color, fontweight='bold')\n\nplt.colorbar(im, ax=ax, label='直接证据比例')\nax.set_title('AIDC产业链证据质量热力图', fontsize=13, fontweight='bold')\nplt.tight_layout()\nplt.savefig('improvements/chart3_evidence_heatmap.png', dpi=150, bbox_inches='tight')\n",
+      "insights_to_convey": [
+        "整体证据质量极高（99%直接证据），因研究覆盖的均为有券商深度覆盖的核心标的",
+        "利用率字段的直接证据比例相对最低（56/59），因部分公司不披露稼动率",
+        "产能字段有1例代理证据（proxy），利用率有1例代理+2例券商间接证据",
+        "光通信和算力芯片板块的证据覆盖最完整（头部标的多、信息披露规范）",
+        "下游应用板块样本最少（6家），但证据质量仍为100%直接"
+      ],
+      "caveats": [
+        "热力图反映的是证据分类的直接性，不代表证据本身的质量高低",
+        "直接证据包括券商研报引用和公司公告，间接证据不代表数据不可靠",
+        "部分字段（如ASP）的'直接'可能来自券商对产业链调研的转述",
+        "该热力图仅覆盖59家核心候选，未覆盖的长尾标的证据质量可能更低"
+      ],
+      "actual_data": {
+        "chains": [
+          "光通信",
+          "AI服务器",
+          "PCB材料",
+          "供配电",
+          "液冷",
+          "IDC",
+          "算力芯片",
+          "下游应用"
+        ],
+        "fields_cn": [
+          "收入暴露",
+          "客户",
+          "订单",
+          "产能",
+          "ASP",
+          "利用率",
+          "利润率"
+        ],
+        "fields_key": [
+          "revenue_exposure",
+          "customer_or_platform",
+          "order_or_backlog",
+          "capacity_or_certification",
+          "asp_or_price_proxy",
+          "utilization_or_yield",
+          "margin_impact"
+        ],
+        "matrix": [
+          [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0,
+            0.923,
+            1.0,
+            0.846,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0,
+            0.909,
+            1.0,
+            1.0,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.938,
+            1.0
+          ],
+          [
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            1.0,
+            0.833,
+            1.0
+          ]
+        ],
+        "total_candidates": 59,
+        "total_direct": 409,
+        "total_proxy": 2,
+        "total_broker_indirect": 2
+      }
+    },
+    {
+      "chart_id": "chart4_market_cap_upside_scatter",
+      "title": "市值-上行空间散点图：大市值标的相对抗跌",
+      "chart_type": "scatter",
+      "subtitle": "X=市值(亿元,对数)，Y=上行空间%，点大小=日均成交额，颜色=板块",
+      "data_specification": {
+        "source_files": {
+          "valuation": "data/combined_target_valuation_model_20260701.json",
+          "market_quote": "data/raw_market_financials_20260630.json"
+        },
+        "join_key": "ticker",
+        "fields": {
+          "x_axis": "market_cap_100mn_cny (亿元, log10)",
+          "y_axis": "upside * 100 (%)",
+          "size": "amount_cny / 1e8 (日均成交额亿元)",
+          "color": "chain_bucket",
+          "label_top10": "top 10 by market_cap"
+        },
+        "size_scaling": "area proportional to daily_turnover_yi",
+        "data_notes": "仅18只原始目标有成交额数据；扩展标的使用市值作为尺寸代理",
+        "fallback_for_missing_turnover": "size = market_cap_yi / 50"
+      },
+      "visual_specification": {
+        "figure_size": [
+          1200,
+          800
+        ],
+        "dpi": 150,
+        "x_axis": {
+          "scale": "log",
+          "label": "市值 (亿元，对数刻度)",
+          "range": [
+            10,
+            30000
+          ]
+        },
+        "y_axis": {
+          "label": "目标价上行空间 (%)",
+          "range": [
+            -80,
+            80
+          ]
+        },
+        "color_map": {
+          "光通信": "#3498db",
+          "服务器/网络设备/国产算力": "#e67e22",
+          "AI PCB/CCL": "#9b59b6",
+          "供配电/能源": "#f1c40f",
+          "液冷/温控": "#1abc9c",
+          "AIDC/IDC 运营": "#e91e63",
+          "算力芯片/存储/网络 ASIC": "#795548"
+        },
+        "marker": {
+          "style": "o",
+          "edge_color": "white",
+          "edge_width": 0.8,
+          "alpha": 0.75
+        },
+        "annotations": {
+          "label_top10_market_cap": true,
+          "label_font_size": 8,
+          "label_offset": [
+            5,
+            5
+          ],
+          "zero_line": true,
+          "quadrant_lines": {
+            "x_median": true,
+            "y_zero": true
+          }
+        },
+        "legend": {
+          "show": true,
+          "position": "lower right",
+          "title": "板块",
+          "font_size": 8
+        }
+      },
+      "python_code_outline": "\nimport json\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport matplotlib\nmatplotlib.rcParams['font.sans-serif'] = ['SimHei', 'PingFang SC', 'Microsoft YaHei']\nmatplotlib.rcParams['axes.unicode_minus'] = False\n\n# Load data\nwith open('data/combined_target_valuation_model_20260701.json') as f:\n    val = json.load(f)\nwith open('data/raw_market_financials_20260630.json') as f:\n    raw = json.load(f)\nraw_map = {r['code']: r for r in raw.get('records', [])}\n\n# Prepare scatter data\npoints = []\nfor r in val['rows']:\n    ticker = r['ticker']\n    mcap = r.get('market_cap_100mn_cny', 0)\n    upside = r.get('upside', 0) * 100\n    raw_rec = raw_map.get(ticker)\n    amount = raw_rec['quote']['amount_cny'] / 1e8 if raw_rec and 'quote' in raw_rec else mcap / 50\n    chain = r['chain_bucket']\n    points.append({'company': r['company'], 'mcap': mcap, 'upside': upside, \n                   'amount': amount, 'chain': chain})\n\n# Sort by mcap for top-10\npoints.sort(key=lambda x: x['mcap'], reverse=True)\ntop10 = set(p['company'] for p in points[:10])\n\n# Plot\nfig, ax = plt.subplots(figsize=(12, 8), dpi=150)\ncolor_map = {'光通信': '#3498db', '服务器/网络设备/国产算力': '#e67e22', ...}\nfor p in points:\n    color = color_map.get(p['chain'], '#95a5a6')\n    size = max(20, p['amount'] * 5)\n    ax.scatter(p['mcap'], p['upside'], s=size, c=color, alpha=0.75,\n               edgecolors='white', linewidth=0.8)\n\n# Label top-10\nfor p in points:\n    if p['company'] in top10:\n        ax.annotate(p['company'], (p['mcap'], p['upside']),\n                   fontsize=8, xytext=(5, 5), textcoords='offset points')\n\nax.set_xscale('log')\nax.axhline(y=0, color='gray', linewidth=1, linestyle='--')\nax.set_xlabel('市值 (亿元，对数刻度)', fontsize=12)\nax.set_ylabel('目标价上行空间 (%)', fontsize=12)\nax.set_title('市值-上行空间散点图', fontsize=14, fontweight='bold')\n# Add legend\nplt.tight_layout()\nplt.savefig('improvements/chart4_mcap_upside_scatter.png', dpi=150, bbox_inches='tight')\n",
+      "insights_to_convey": [
+        "大市值标的（>5000亿）的模型下行空间普遍小于中小市值标的",
+        "中国移动/电信（运营商）是唯一大市值且有正上行空间的标的",
+        "小市值IDC和液冷标的下行空间最大（-60%~-66%）",
+        "散点图呈现弱正相关：市值越大，模型给出的下行空间相对越小",
+        "日均成交额最大的标的（工业富联、中际旭创）流动性最好"
+      ],
+      "caveats": [
+        "仅18只原始目标有真实成交额数据，其余38只用市值/50近似",
+        "上行空间基于模型目标价，不代表短期股价走势预测",
+        "对数市值刻度使得大市值区间的视觉距离被压缩",
+        "点大小为面积映射，视觉感知可能与实际数值有偏差"
+      ],
+      "actual_data": [
+        {
+          "ticker": "002916",
+          "company": "深南电路",
+          "chain_bucket": "AI PCB/CCL",
+          "market_cap_yi": 3194.1,
+          "upside_pct": -52.61,
+          "daily_turnover_yi": 46.98,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "600183",
+          "company": "生益科技",
+          "chain_bucket": "AI PCB/CCL",
+          "market_cap_yi": 4883.0,
+          "upside_pct": -51.75,
+          "daily_turnover_yi": 76.24,
+          "rating": "高估值风险",
+          "is_top10": true
+        },
+        {
+          "ticker": "603186",
+          "company": "华正新材",
+          "chain_bucket": "AI PCB/CCL",
+          "market_cap_yi": 323.7,
+          "upside_pct": -55.45,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "688519",
+          "company": "南亚新材",
+          "chain_bucket": "AI PCB/CCL",
+          "market_cap_yi": 855.5,
+          "upside_pct": -61.53,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300383",
+          "company": "光环新网",
+          "chain_bucket": "AIDC/IDC 运营",
+          "market_cap_yi": 229.8,
+          "upside_pct": -65.52,
+          "daily_turnover_yi": 3.89,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300442",
+          "company": "润泽科技",
+          "chain_bucket": "AIDC/IDC 运营",
+          "market_cap_yi": 1484.7,
+          "upside_pct": -35.65,
+          "daily_turnover_yi": 13.88,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300738",
+          "company": "奥飞数据",
+          "chain_bucket": "AIDC/IDC 运营",
+          "market_cap_yi": 212.2,
+          "upside_pct": -37.69,
+          "daily_turnover_yi": 5.69,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "600050",
+          "company": "中国联通",
+          "chain_bucket": "AIDC/IDC 运营",
+          "market_cap_yi": 2821.2,
+          "upside_pct": 11.25,
+          "daily_turnover_yi": null,
+          "rating": "事件验证",
+          "is_top10": false
+        },
+        {
+          "ticker": "600941",
+          "company": "中国移动",
+          "chain_bucket": "AIDC/IDC 运营",
+          "market_cap_yi": 18971.1,
+          "upside_pct": 10.72,
+          "daily_turnover_yi": null,
+          "rating": "事件验证",
+          "is_top10": true
+        },
+        {
+          "ticker": "601728",
+          "company": "中国电信",
+          "chain_bucket": "AIDC/IDC 运营",
+          "market_cap_yi": 4974.5,
+          "upside_pct": 6.14,
+          "daily_turnover_yi": null,
+          "rating": "事件验证",
+          "is_top10": true
+        },
+        {
+          "ticker": "603881",
+          "company": "数据港",
+          "chain_bucket": "AIDC/IDC 运营",
+          "market_cap_yi": 186.0,
+          "upside_pct": -66.25,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "002335",
+          "company": "科华数据",
+          "chain_bucket": "供配电/能源",
+          "market_cap_yi": 227.6,
+          "upside_pct": -33.16,
+          "daily_turnover_yi": 12.36,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "002364",
+          "company": "中恒电气",
+          "chain_bucket": "供配电/能源",
+          "market_cap_yi": 302.0,
+          "upside_pct": -53.46,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "002518",
+          "company": "科士达",
+          "chain_bucket": "供配电/能源",
+          "market_cap_yi": 300.6,
+          "upside_pct": -19.77,
+          "daily_turnover_yi": null,
+          "rating": "市场支撑观察",
+          "is_top10": false
+        },
+        {
+          "ticker": "301291",
+          "company": "明阳电气",
+          "chain_bucket": "供配电/能源",
+          "market_cap_yi": 111.5,
+          "upside_pct": 74.71,
+          "daily_turnover_yi": null,
+          "rating": "自建公允价值复核",
+          "is_top10": false
+        },
+        {
+          "ticker": "600089",
+          "company": "特变电工",
+          "chain_bucket": "供配电/能源",
+          "market_cap_yi": 1629.0,
+          "upside_pct": 15.45,
+          "daily_turnover_yi": null,
+          "rating": "事件验证",
+          "is_top10": false
+        },
+        {
+          "ticker": "601179",
+          "company": "中国西电",
+          "chain_bucket": "供配电/能源",
+          "market_cap_yi": 832.2,
+          "upside_pct": -29.99,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "688676",
+          "company": "金盘科技",
+          "chain_bucket": "供配电/能源",
+          "market_cap_yi": 414.3,
+          "upside_pct": -48.59,
+          "daily_turnover_yi": 10.49,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "000988",
+          "company": "华工科技",
+          "chain_bucket": "光通信",
+          "market_cap_yi": 1634.5,
+          "upside_pct": -42.66,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "002281",
+          "company": "光迅科技",
+          "chain_bucket": "光通信",
+          "market_cap_yi": 1781.0,
+          "upside_pct": -49.67,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "chain_bucket": "光通信",
+          "market_cap_yi": 15348.5,
+          "upside_pct": -18.23,
+          "daily_turnover_yi": 230.7,
+          "rating": "市场支撑观察",
+          "is_top10": true
+        },
+        {
+          "ticker": "300394",
+          "company": "天孚通信",
+          "chain_bucket": "光通信",
+          "market_cap_yi": 2410.2,
+          "upside_pct": -40.97,
+          "daily_turnover_yi": 82.94,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300502",
+          "company": "新易盛",
+          "chain_bucket": "光通信",
+          "market_cap_yi": 6091.2,
+          "upside_pct": -17.01,
+          "daily_turnover_yi": 223.49,
+          "rating": "市场支撑观察",
+          "is_top10": true
+        },
+        {
+          "ticker": "301205",
+          "company": "联特科技",
+          "chain_bucket": "光通信",
+          "market_cap_yi": 424.2,
+          "upside_pct": -63.73,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "603083",
+          "company": "剑桥科技",
+          "chain_bucket": "光通信",
+          "market_cap_yi": 795.6,
+          "upside_pct": -43.39,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "000063",
+          "company": "中兴通讯",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 1711.2,
+          "upside_pct": 59.41,
+          "daily_turnover_yi": null,
+          "rating": "核心复核",
+          "is_top10": false
+        },
+        {
+          "ticker": "000938",
+          "company": "紫光股份",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 966.4,
+          "upside_pct": -1.24,
+          "daily_turnover_yi": 44.59,
+          "rating": "市场支撑观察",
+          "is_top10": false
+        },
+        {
+          "ticker": "000977",
+          "company": "浪潮信息",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 1031.7,
+          "upside_pct": -27.52,
+          "daily_turnover_yi": 47.68,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "002396",
+          "company": "星网锐捷",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 188.8,
+          "upside_pct": 61.47,
+          "daily_turnover_yi": null,
+          "rating": "自建公允价值复核",
+          "is_top10": false
+        },
+        {
+          "ticker": "002463",
+          "company": "沪电股份",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 2980.3,
+          "upside_pct": -34.51,
+          "daily_turnover_yi": 90.89,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "002913",
+          "company": "奥士康",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 202.0,
+          "upside_pct": 11.4,
+          "daily_turnover_yi": null,
+          "rating": "事件验证",
+          "is_top10": false
+        },
+        {
+          "ticker": "002922",
+          "company": "伊戈尔",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 131.2,
+          "upside_pct": -9.01,
+          "daily_turnover_yi": null,
+          "rating": "市场支撑观察",
+          "is_top10": false
+        },
+        {
+          "ticker": "300476",
+          "company": "胜宏科技",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 3068.4,
+          "upside_pct": -32.13,
+          "daily_turnover_yi": 156.17,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "301165",
+          "company": "锐捷网络",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 699.0,
+          "upside_pct": -32.93,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "600845",
+          "company": "宝信软件",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 572.2,
+          "upside_pct": -17.5,
+          "daily_turnover_yi": null,
+          "rating": "市场支撑观察",
+          "is_top10": false
+        },
+        {
+          "ticker": "601138",
+          "company": "工业富联",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 14484.1,
+          "upside_pct": -10.63,
+          "daily_turnover_yi": 77.74,
+          "rating": "市场支撑观察",
+          "is_top10": true
+        },
+        {
+          "ticker": "603019",
+          "company": "中科曙光",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 1587.6,
+          "upside_pct": -55.75,
+          "daily_turnover_yi": 97.01,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "603228",
+          "company": "景旺电子",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 685.1,
+          "upside_pct": -12.38,
+          "daily_turnover_yi": null,
+          "rating": "市场支撑观察",
+          "is_top10": false
+        },
+        {
+          "ticker": "688041",
+          "company": "海光信息",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 9010.3,
+          "upside_pct": -51.02,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": true
+        },
+        {
+          "ticker": "688183",
+          "company": "生益电子",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 999.8,
+          "upside_pct": -48.14,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "688256",
+          "company": "寒武纪",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 5906.8,
+          "upside_pct": -33.97,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": true
+        },
+        {
+          "ticker": "688702",
+          "company": "盛科通信",
+          "chain_bucket": "服务器/网络设备/国产算力",
+          "market_cap_yi": 1521.1,
+          "upside_pct": -72.67,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "000530",
+          "company": "冰山冷热",
+          "chain_bucket": "液冷/温控",
+          "market_cap_yi": 46.6,
+          "upside_pct": -0.55,
+          "daily_turnover_yi": null,
+          "rating": "市场支撑观察",
+          "is_top10": false
+        },
+        {
+          "ticker": "002158",
+          "company": "汉钟精机",
+          "chain_bucket": "液冷/温控",
+          "market_cap_yi": 204.4,
+          "upside_pct": -18.2,
+          "daily_turnover_yi": null,
+          "rating": "市场支撑观察",
+          "is_top10": false
+        },
+        {
+          "ticker": "002837",
+          "company": "英维克",
+          "chain_bucket": "液冷/温控",
+          "market_cap_yi": 783.3,
+          "upside_pct": -39.57,
+          "daily_turnover_yi": 28.29,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300249",
+          "company": "依米康",
+          "chain_bucket": "液冷/温控",
+          "market_cap_yi": 67.8,
+          "upside_pct": -61.44,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300499",
+          "company": "高澜股份",
+          "chain_bucket": "液冷/温控",
+          "market_cap_yi": 115.4,
+          "upside_pct": -50.18,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300990",
+          "company": "同飞股份",
+          "chain_bucket": "液冷/温控",
+          "market_cap_yi": 168.9,
+          "upside_pct": -30.21,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "301018",
+          "company": "申菱环境",
+          "chain_bucket": "液冷/温控",
+          "market_cap_yi": 306.4,
+          "upside_pct": -56.46,
+          "daily_turnover_yi": 15.26,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "000021",
+          "company": "深科技",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "market_cap_yi": 1098.7,
+          "upside_pct": -41.17,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "300223",
+          "company": "北京君正",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "market_cap_yi": 1198.6,
+          "upside_pct": -57.73,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "603986",
+          "company": "兆易创新",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "market_cap_yi": 4963.0,
+          "upside_pct": -50.68,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": true
+        },
+        {
+          "ticker": "688008",
+          "company": "澜起科技",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "market_cap_yi": 3498.6,
+          "upside_pct": -49.18,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": true
+        },
+        {
+          "ticker": "688123",
+          "company": "聚辰股份",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "market_cap_yi": 317.6,
+          "upside_pct": -29.13,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "688521",
+          "company": "芯原股份",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "market_cap_yi": 1702.9,
+          "upside_pct": -60.94,
+          "daily_turnover_yi": null,
+          "rating": "高估值风险",
+          "is_top10": false
+        },
+        {
+          "ticker": "688795",
+          "company": "摩尔线程",
+          "chain_bucket": "算力芯片/存储/网络 ASIC",
+          "market_cap_yi": 3158.5,
+          "upside_pct": -72.88,
+          "daily_turnover_yi": null,
+          "rating": "PS/SOTP 里程碑验证",
+          "is_top10": false
+        }
+      ]
+    }
+  ]
+}

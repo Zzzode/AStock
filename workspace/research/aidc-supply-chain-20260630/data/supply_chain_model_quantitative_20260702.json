@@ -1,0 +1,288 @@
+{
+  "metadata": {
+    "version": "v2.0",
+    "generated_at": "2026-07-02",
+    "model_type": "quantitative_supply_chain",
+    "improvement": "新增BOM价值树、供需平衡、盈利桥、情景参数、利润池迁移、风险传导"
+  },
+  "bom_value_tree": {
+    "total_value_per_rack_usd": "200000-300000",
+    "components": [
+      {
+        "component": "GPU/AI ASIC",
+        "pct": 40,
+        "a_share_purity": "低",
+        "core_tickers": [
+          "688041",
+          "688256"
+        ]
+      },
+      {
+        "component": "HBM/DRAM",
+        "pct": 15,
+        "a_share_purity": "极低",
+        "core_tickers": [
+          "688008"
+        ]
+      },
+      {
+        "component": "光模块",
+        "pct": 8,
+        "a_share_purity": "高",
+        "core_tickers": [
+          "300308",
+          "300502",
+          "300394"
+        ]
+      },
+      {
+        "component": "PCB/基板",
+        "pct": 5,
+        "a_share_purity": "高",
+        "core_tickers": [
+          "002463",
+          "300476",
+          "002916"
+        ]
+      },
+      {
+        "component": "电源/UPS",
+        "pct": 5,
+        "a_share_purity": "中",
+        "core_tickers": [
+          "002335"
+        ]
+      },
+      {
+        "component": "CPU",
+        "pct": 4,
+        "a_share_purity": "低",
+        "core_tickers": [
+          "688041"
+        ]
+      },
+      {
+        "component": "交换机/NIC",
+        "pct": 6,
+        "a_share_purity": "低",
+        "core_tickers": [
+          "688702"
+        ]
+      },
+      {
+        "component": "液冷系统",
+        "pct": 3,
+        "a_share_purity": "中高",
+        "core_tickers": [
+          "002837",
+          "301018"
+        ]
+      },
+      {
+        "component": "结构件",
+        "pct": 4,
+        "a_share_purity": "中",
+        "core_tickers": [
+          "601138"
+        ]
+      },
+      {
+        "component": "存储SSD",
+        "pct": 5,
+        "a_share_purity": "低",
+        "core_tickers": [
+          "603986",
+          "300223"
+        ]
+      },
+      {
+        "component": "其他",
+        "pct": 5,
+        "a_share_purity": "低",
+        "core_tickers": []
+      }
+    ]
+  },
+  "supply_demand_balance_2026e": [
+    {
+      "material": "800G光模块",
+      "demand_mn": 1200,
+      "supply_mn": 1000,
+      "gap_pct": -17,
+      "shortage_level": 4,
+      "impacted_tickers": [
+        "300308",
+        "300502",
+        "300394"
+      ]
+    },
+    {
+      "material": "1.6T光模块",
+      "demand_mn": 200,
+      "supply_mn": 150,
+      "gap_pct": -25,
+      "shortage_level": 5,
+      "impacted_tickers": [
+        "300308",
+        "300502"
+      ]
+    },
+    {
+      "material": "AI服务器PCB",
+      "demand_mn_sqm": 2500,
+      "supply_mn_sqm": 2200,
+      "gap_pct": -12,
+      "shortage_level": 3,
+      "impacted_tickers": [
+        "002463",
+        "300476",
+        "002916"
+      ]
+    },
+    {
+      "material": "高速CCL",
+      "demand_mn_sheets": 8000,
+      "supply_mn_sheets": 7500,
+      "gap_pct": -6,
+      "shortage_level": 2,
+      "impacted_tickers": [
+        "600183",
+        "603186"
+      ]
+    },
+    {
+      "material": "EML光芯片",
+      "demand_mn": 5000,
+      "supply_mn": 3500,
+      "gap_pct": -30,
+      "shortage_level": 5,
+      "impacted_tickers": [
+        "688498"
+      ]
+    },
+    {
+      "material": "DSP芯片",
+      "demand_mn": 1500,
+      "supply_mn": 1200,
+      "gap_pct": -20,
+      "shortage_level": 4,
+      "impacted_tickers": []
+    },
+    {
+      "material": "液冷CDU",
+      "demand_10k": 50,
+      "supply_10k": 40,
+      "gap_pct": -20,
+      "shortage_level": 3,
+      "impacted_tickers": [
+        "002837",
+        "301018",
+        "300990"
+      ]
+    },
+    {
+      "material": "HBM3e",
+      "demand_mn": 120,
+      "supply_mn": 80,
+      "gap_pct": -33,
+      "shortage_level": 5,
+      "impacted_tickers": []
+    }
+  ],
+  "earnings_transmission_model": {
+    "formula": "EPS_2026E = Revenue_2025 × (1 + AI_capex_growth × Revenue_elasticity) × Margin_2026E / Shares",
+    "scenario_assumptions": {
+      "bear": {
+        "csp_capex_growth": "20%",
+        "probability": "25%"
+      },
+      "base": {
+        "csp_capex_growth": "35%",
+        "probability": "50%"
+      },
+      "bull": {
+        "csp_capex_growth": "50%",
+        "probability": "25%"
+      }
+    },
+    "elasticity_table": [
+      {
+        "ticker": "300308",
+        "company": "中际旭创",
+        "elasticity": 1.1,
+        "margin_2026e_pct": 22.5,
+        "eps_2026e": 22.52
+      },
+      {
+        "ticker": "300502",
+        "company": "新易盛",
+        "elasticity": 1.05,
+        "margin_2026e_pct": 24.0,
+        "eps_2026e": 12.17
+      },
+      {
+        "ticker": "002463",
+        "company": "沪电股份",
+        "elasticity": 0.75,
+        "margin_2026e_pct": 18.5,
+        "eps_2026e": 2.58
+      },
+      {
+        "ticker": "300476",
+        "company": "胜宏科技",
+        "elasticity": 0.8,
+        "margin_2026e_pct": 19.0,
+        "eps_2026e": 5.92
+      },
+      {
+        "ticker": "601138",
+        "company": "工业富联",
+        "elasticity": 0.9,
+        "margin_2026e_pct": 6.8,
+        "eps_2026e": 2.21
+      },
+      {
+        "ticker": "002837",
+        "company": "英维克",
+        "elasticity": 0.85,
+        "margin_2026e_pct": 28.0,
+        "eps_2026e": 0.64
+      },
+      {
+        "ticker": "300442",
+        "company": "润泽科技",
+        "elasticity": 0.4,
+        "margin_2026e_pct": 42.0,
+        "eps_2026e": 1.57
+      }
+    ]
+  },
+  "risk_transmission_matrix": {
+    "top_risks": [
+      {
+        "factor": "F1电力指标收紧",
+        "rank": 1,
+        "impact_chain": "IDC→上游需求",
+        "eps_impact": "-15%~-30%"
+      },
+      {
+        "factor": "E1估值拥挤",
+        "rank": 2,
+        "impact_chain": "全链条",
+        "eps_impact": "估值压缩20-30%"
+      },
+      {
+        "factor": "D1毛利率低于预期",
+        "rank": 3,
+        "impact_chain": "制造环节",
+        "eps_impact": "-10%~-25%"
+      },
+      {
+        "factor": "B2光模块ASP下滑",
+        "rank": 4,
+        "impact_chain": "光模块",
+        "eps_impact": "-15%~-30%"
+      }
+    ]
+  }
+}

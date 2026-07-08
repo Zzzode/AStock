@@ -5,9 +5,7 @@
 
 2023-2024 年存储行业经历了长达 6 个季度的深度减产 discipline，这为 2025-2026 年的上行周期奠定了供给基础。与历史周期中原厂「一拥而上扩产」不同，本轮 capex 扩张具有高度结构性：\textbf{增量集中投向 HBM 和先进制程，标准品 (DDR4/TLC NAND) 产能反而维持 discipline}。全球存储全产业链（含原厂+设备+材料）2026E Capex 约 \$1200 亿，其中三大原厂（Samsung\slash SK\slash Micron）合计约 \$850--910 亿，HBM 专项投入占比约 30\%，SK 海力士以 45\% 的 HBM 投入比例位居原厂之首。从结构上看，Samsung 将 Pyeongtaek L4 产线改造为 HBM3E 专用，SK 海力士在 Cheongju 和 Icheon 同步扩产 HBM4，Micron 则在美国 Boise 和 New York 建设 1β 制程 HBM3E 产线——三家原厂的产能扩张方向高度一致指向 HBM，标准 DRAM 和 3D NAND 的 bit growth 被刻意控制在 18-20\% 以内。这一本轮周期与历史的根本区别决定了：\textbf{即使 capex 创新高，标准品供过于求的风险极低}，A 股设备/材料厂商（设备国产化率 10\%\(\to\)25\% 叠加全球 \$1200 亿+ capex）的确定性不会因周期波动而受损。
 
-\needspace{42\baselineskip}
-
-\needspace{42\baselineskip}
+\needspace{46\baselineskip}
 \begin{exhibitbox}[图 5-1 \quad 原厂 Capex 堆叠柱状图 2023--2027E / Memory Vendor Capex Stacked Bar]
 \centering
 \resizebox{0.82\exhibitwidth}{!}{%
@@ -83,11 +81,11 @@
 \draw[thick, steelgrey] (-0.6, 0) -- (11.6, 0);
 \node[below=0.5cm, font=\small, text=steelgrey] at (5.2, -0.3) {年份 / Year};
 
-% Total annotation (2026E highlighted)
-\node[above=8pt, font=\bfseries\small, color=navy] at (7.4, {102*\scl}) {2026E 五大原厂合计（Samsung\slash SK\slash Micron\slash Kioxia+WD\slash YMTC+CXMT） >\$1010 亿};
+% Total annotation (2026E highlighted) — raised above 2027E bar top to avoid bar overlap
+\node[above=0pt, font=\bfseries\footnotesize, color=navy, text width=7cm, align=center, fill=white, fill opacity=0.92, draw=rulegrey, inner sep=3pt, rounded corners=1pt] at (7.4, {128*\scl+0.65}) {2026E 五大原厂合计（Samsung\slash SK\slash Micron\slash Kioxia+WD\slash YMTC+CXMT） >\$1010 亿};
 
 % Legend
-\node[draw=rulegrey, fill=white, rounded corners=2pt, font=\scriptsize, inner sep=4pt, anchor=north] at (5.2, -0.9) {
+\node[draw=rulegrey, fill=white, rounded corners=2pt, font=\scriptsize, inner sep=4pt, anchor=north] at (5.2, -1.4) {
 \begin{tabular}{c l c l c l}
 \cellcolor{riskred!70}\rule{0pt}{8pt}\rule{10pt}{0pt} & Samsung &
 \cellcolor{accentblue!70}\rule{0pt}{8pt}\rule{10pt}{0pt} & SK Hynix &
@@ -98,7 +96,7 @@
 };
 
 % Source note
-\node[below=0.4cm, font=\tiny, color=mutedgrey, align=center, text width=12cm] at (5.2, -1.8) {Vendor CC official disclosure [S-01/S-02/S-11] · YMTC\slash CXMT AStock model est. · 2027E vendor-unconfirmed};
+\node[below=0.4cm, font=\tiny, color=mutedgrey, align=center, text width=12cm] at (5.2, -2.3) {Vendor CC official disclosure [S-01/S-02/S-11] · YMTC\slash CXMT AStock model est. · 2027E vendor-unconfirmed};
 \end{tikzpicture}
 }
 \end{exhibitbox}
@@ -107,9 +105,9 @@
 \centering
 \scriptsize
 \renewcommand{\arraystretch}{1.2}
-\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}l >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.4cm} >{\raggedleft}p{0.9cm} >{\raggedleft}p{0.9cm} >{\raggedright\arraybackslash}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}l >{\raggedleft}p{1.8cm} >{\raggedleft}p{2.0cm} >{\raggedleft}p{0.9cm} >{\raggedleft}p{0.9cm} >{\raggedright\arraybackslash}X}
 \toprule
-\textbf{原厂} & \textbf{2025 Capex(亿美元)} & \textbf{2026E Capex(亿美元)} & \textbf{DRAM 市占(\%)} & \textbf{NAND 市占(\%)} & \textbf{AI 产品策略 + HBM 占比} \\
+\textbf{原厂} & \textbf{2025\\Capex(亿\$)} & \textbf{2026E\\Capex(亿\$)} & \textbf{DRAM\\市占(\%)} & \textbf{NAND\\市占(\%)} & \textbf{AI 产品策略 + HBM 占比} \\
 \midrule
 Samsung & 350--370 & 约420--440 & 40--42 & 32--34 & HBM 优先扩产；HBM3E Pyeongtaek L4 改造；HBM4 2026 年 H2 样品；HBM 相关 capex 占比 约22\%。 \\
 \rowcolor{riskred!5}
@@ -159,14 +157,14 @@ Kioxia + WD & 80--90 & 约90--100 & - & 32--36 & 3D NAND 320+ 层 2026 量产；
 \node[dem] (D4) at (11.6, -0.3) {汽车电子 / 工业\\\small +15\% YoY};
 \node[dem] (D5) at (11.3, -1.5) {国内云 + 国产 AI 芯片\\\small 受管制补偿需求 +25\%};
 
-% Arrows
-\foreach \s in {S1,S2,S3,S4} { \draw[arr, accentblue] (\s.east) -- (B.west-|\s.east); }
-\foreach \d in {D1,D2,D3,D4,D5} { \draw[arr, riskred] (B.east-|\d.west) -- (\d.west); }
+% Arrows — 使用路径操作符确保真正连接到 Balance 框
+\foreach \s in {S1,S2,S3,S4} { \draw[arr, accentblue] (\s.east) |- (B.west); }
+\foreach \d in {D1,D2,D3,D4,D5} { \draw[arr, riskred] (B.east) -| (\d.west); }
 
 % Labels
 \node[above=0.3cm of S1, font=\bfseries\small, color=accentblue] {\faCubes\enspace 供给侧 Supply};
 \node[above=0.3cm of D1, font=\bfseries\small, color=riskred] {\faCloud\enspace 需求侧 Demand};
-\node[below=0.8cm of B, font=\scriptsize, color=steelgrey, text width=12.5cm, align=center, yshift=-0.2cm] {核心驱动：供给 20\% bit growth << 需求 30-35\% bit growth → 2026 年 Q3 起结构性短缺扩大。DRAM 基准缺口 \textcolor{navy}{\bfseries[--6\%\,~\,--8\%]} ↔ 合约价 QoQ \(+8\sim+10\%\)（悲观/乐观情景见 §10.2）。\textbf{BLOCK 治理}：C 级供需预测仅使用区间，严禁单点值。};
+\node[below=4.5cm of B, font=\scriptsize, color=steelgrey, text width=11cm, align=center] {核心驱动：供给 20\% bit growth << 需求 30-35\% bit growth → 2026 年 Q3 起结构性短缺扩大。DRAM 基准缺口 \textcolor{navy}{\bfseries[--6\%\,~\,--8\%]} ↔ 合约价 QoQ \(+8\sim+10\%\)（悲观/乐观情景见 §10.2）。\textbf{BLOCK 治理}：C 级供需预测仅使用区间，严禁单点值。};
 \end{tikzpicture}
 }
 \end{exhibitbox}
@@ -193,10 +191,10 @@ Kioxia + WD & 80--90 & 约90--100 & - & 32--36 & 3D NAND 320+ 层 2026 量产；
 2025 年 Q4 & -7---9 & -4---6 & +12--+15 & +8--+12 & B100 峰值 + Hyperscaler capex 超预期 \\
 \rowcolor{riskamber!6}
 2026Q1E & -4---6 & -2---4 & +8--+10 & +5--+8 & 季节性淡季但 AI 需求维持高位 \\
-\rowcolor{riskamber!6}
-2026Q2E & -6---8 & -3---5 & +8--+12 & +5--+8 & B100 继续爬坡 + B200 + AMD MI350 \\
+\rowcolor{riskred!15}
+\textbf{2026Q2} & \textbf{-6---8} & \textbf{-3---5} & \textbf{+8--+12} & \textbf{+5--+8} & \textbf{B100 爬坡 + B200 + AMD MI350；江波龙中报92--110亿验证涨价盈利弹性 \astockstar} \\
 \rowcolor{riskred!10}
-\textbf{2026Q3E} & \textbf{-6---8} & \textbf{-3---5} & \textbf{+8--+10} & \textbf{+6--+9} & \textbf{HBM3E 仍紧俏 + DDR5 缺口扩大 + B300 初期备货（BLOCK门控：取C级下限；乐观-8\char`\\-10\%见§10.2）} \\
+\textbf{2026Q3E} & \textbf{-6---8} & \textbf{-3---5} & \textbf{+8--+10} & \textbf{+6--+9} & \textbf{HBM3E 仍紧俏 + DDR5 缺口扩大 + B300 初期备货（BLOCK门控：取C级下限；乐观-8--10\%见§10.2）} \\
 \rowcolor{riskamber!6}
 2026Q4E & -6---8 & -3---5 & +8--+10 & +6--+8 & Rubin 备货 + 原厂 capex 产能尚未完全释放 \\
 \bottomrule

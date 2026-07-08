@@ -1,0 +1,663 @@
+{
+  "metadata": {
+    "case_id": "aidc-supply-chain-20260630",
+    "report_type": "variant_perception_extended",
+    "generated_at": "2026-07-02",
+    "role": "contrarian-analyst",
+    "argument_count": 7,
+    "overall_conclusion": "当前AIDC共识叙事在7个维度上存在可被证伪的脆弱性，任何一个假设破裂都可能导致板块20-50%回调",
+    "source_files": [
+      "analysis/variant_perception.md",
+      "analysis/house_view.md",
+      "analysis/coverage_gap_matrix.md",
+      "analysis/risk_framework.md",
+      "analysis/valuation_audit.md",
+      "data/combined_target_valuation_model_20260701.json"
+    ]
+  },
+  "arguments": [
+    {
+      "argument_id": "VP-01",
+      "title": "需求幻觉：CSP capex指引的兑现率仅60-70%，当前模型假设100%兑现",
+      "thesis": "当前AIDC板块盈利预测建立在北美四大CSP（AWS/Azure/Google/Meta）2026年capex同比增长40-60%的指引基础上。但历史数据表明，云厂商capex指引的实际兑现率仅为60-70%——尤其在宏观经济放缓或AI投资回报率不及预期时。若2026H2 CSP将capex增速从50%+降至20%，光模块板块盈利预测下修30-40%，叠加估值压缩，股价可能面临40-50%回调。",
+      "evidence": [
+        "2022年Q2-Q4，北美云厂商capex从指引的~700亿美元下修至实际~500亿美元，兑现率71%；同期A股光模块板块从高点回调45-55%",
+        "2023年云厂商capex指引兑现率约65%，因生成式AI投资初期超配后理性回归",
+        "当前AWS/Azure/Google 2026 capex合计指引~3200亿美元，若兑现率降至65%，实际支出仅~2080亿美元，对应光模块需求下修约25%"
+      ],
+      "falsification_trigger": "CSP连续2个季度（Q2+Q3 2026）上调全年capex指引，且实际capex环比增速维持>10%",
+      "monitoring_metrics": [
+        "AWS/Azure/Google季度capex绝对值及环比变化",
+        "Meta/Amazon财报电话会capex指引措辞",
+        "北美四大CSP资本开支同比增速（彭博一致预期vs实际）",
+        "中际旭创/新易盛季度订单能见度（IR披露）"
+      ],
+      "affected_positions": [
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "risk_level": "high",
+          "current_price": 1143.0,
+          "current_target": 1054.65,
+          "bear_case_target": "700-800",
+          "implied_downside": "-35%~-46%",
+          "action": "从市场支撑观察下调至减配，对应25x 2026E PE"
+        },
+        {
+          "ticker": "300502",
+          "company": "新易盛",
+          "risk_level": "high",
+          "current_price": 509.0,
+          "current_target": 505.38,
+          "bear_case_target": "350-400",
+          "implied_downside": "-34%~-43%",
+          "action": "目标价下修至350-400元"
+        },
+        {
+          "ticker": "601138",
+          "company": "工业富联",
+          "risk_level": "high",
+          "current_price": 64.02,
+          "current_target": 65.1,
+          "bear_case_target": "45-50",
+          "implied_downside": "-31%~-38%",
+          "action": "目标价下修至45-50元"
+        },
+        {
+          "ticker": "300394",
+          "company": "天孚通信",
+          "risk_level": "medium",
+          "current_price": 250.77,
+          "current_target": 182.82,
+          "bear_case_target": "130-150",
+          "implied_downside": "-18%~-29%",
+          "action": "维持高估值风险观察"
+        },
+        {
+          "ticker": "002463",
+          "company": "沪电股份",
+          "risk_level": "medium",
+          "current_price": 130.51,
+          "current_target": 101.35,
+          "bear_case_target": "75-85",
+          "implied_downside": "-16%~-26%",
+          "action": "维持高估值风险观察"
+        }
+      ],
+      "consensus_vs_asview": {
+        "consensus_implied_growth": "2026光模块收入增长60-80%（基于CSP capex 100%兑现）",
+        "asview_implied_growth": "兑现率65%情景下增长25-35%，估值倍数从50x+压缩至30x",
+        "quantified_gap": "板块下行空间35-45%"
+      }
+    },
+    {
+      "argument_id": "VP-02",
+      "title": "ASP崩塌：800G光模块2026年ASP可能下滑25-30%，远超当前估值假设的10-15%",
+      "thesis": "光模块行业具有量价齐跌的周期属性——每一代产品在放量后12-18个月内ASP下滑30-40%。400G光模块从2020年到2022年ASP下滑约35%。当前800G正处于放量初期（2025Q4-2026Q1），但市场估值模型隐含2026全年ASP仅温和下滑10-15%。若二线厂商产能集中投放，叠加CSP压价谈判，800G ASP在2026年可能下滑25-30%，直接侵蚀龙头毛利率5-8个百分点。",
+      "evidence": [
+        "400G光模块ASP曲线：2020Q1 ~$1200 → 2022Q4 ~$750，累计下滑37.5%（LightCounting、Omdia）",
+        "100G光模块2017-2019年ASP下滑42%",
+        "当前800G ASP ~$1800-2200（2026Q1），若按历史规律2026Q4可能降至$1300-1500",
+        "二线厂商产能投放：联特科技800G产能2026H1爬坡至50万只/季，剑桥科技30万只/季",
+        "CSP采购策略：Meta/Amazon在400G时代曾通过双源采购将ASP压低20%+"
+      ],
+      "falsification_trigger": "中际旭创/新易盛Q3 2026财报确认800G ASP环比稳定（变动<3%），且1.6T产品溢价>50%于800G",
+      "monitoring_metrics": [
+        "800G月度ASP跟踪（TrendForce、LightCounting）",
+        "1.6T光模块发布时间表及客户测试进展",
+        "中际旭创/新易盛客户库存天数（季度财报附注）",
+        "二线厂商800G产能投放进度（IR披露）"
+      ],
+      "affected_positions": [
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "risk_level": "high",
+          "margin_impact": "毛利率从25%降至20%，2026E NP从268亿下修至210亿（-22%）",
+          "bear_case_target": "850",
+          "implied_downside": "-34%",
+          "action": "目标价下修至850元"
+        },
+        {
+          "ticker": "300502",
+          "company": "新易盛",
+          "risk_level": "high",
+          "margin_impact": "毛利率从22%降至17%，NP从122亿下修至95亿（-22%）",
+          "bear_case_target": "420",
+          "implied_downside": "-31%",
+          "action": "目标价下修至420元"
+        },
+        {
+          "ticker": "300394",
+          "company": "天孚通信",
+          "risk_level": "medium",
+          "margin_impact": "光器件ASP压力小于模块，但仍受板块情绪拖累",
+          "bear_case_target": "150",
+          "implied_downside": "-18%",
+          "action": "维持观察"
+        },
+        {
+          "ticker": "002463",
+          "company": "沪电股份",
+          "risk_level": "low",
+          "margin_impact": "PCB ASP相对稳定",
+          "bear_case_target": "90",
+          "implied_downside": "-11%",
+          "action": "影响有限"
+        }
+      ],
+      "consensus_vs_asview": {
+        "consensus_assumption": "2026光模块ASP同比下滑10-15%，毛利率维持23-25%",
+        "asview_assumption": "ASP下滑25-30%，毛利率降至18-20%",
+        "quantified_gap": "盈利预测下修20-25%"
+      }
+    },
+    {
+      "argument_id": "VP-03",
+      "title": "电力天花板：已规划AIDC项目电力需求远超电网可供给增量，这是物理约束而非风险提示",
+      "thesis": "全国已规划的智算中心项目合计电力需求约2500-3000MW（2026-2028年），但国家能源局2026年数据中心能耗指标新增审批仅约800-1000MW/年。这意味着超过2/3的规划项目可能无法获得电力指标审批。没有电力，AIDC就是纸上谈兵。润泽科技、奥飞数据等IDC运营商的规划MW远大于已获批MW，当前估值隐含了规划项目全部落地，这与物理现实存在巨大鸿沟。",
+      "evidence": [
+        "国家能源局2025年全国数据中心能耗指标审批总量约750MW标准机架（约1800MW电力），2026年预计新增900-1000MW标准机架",
+        "润泽科技规划惠州/重庆项目合计约500MW，但已获批仅约150MW",
+        "北京、上海、深圳等核心节点城市PUE限制<1.25，实际可审批容量进一步受限",
+        "全国数据中心PUE达标率（<1.3）仅约55%（2025年工信部数据），存量改造占用能耗指标",
+        "绿电直供比例要求（部分省份要求>30%）进一步推高项目门槛"
+      ],
+      "falsification_trigger": "主要IDC运营商（润泽/奥飞/光环新网）在2026Q3-Q4获得新的能耗指标审批，合计新增>200MW标准机架",
+      "monitoring_metrics": [
+        "全国数据中心PUE达标率（工信部季度通报）",
+        "新获批IDC项目MW数（各省发改委公示）",
+        "润泽科技/奥飞数据已获电力指标vs规划MW比值",
+        "绿电直供PPA签约量及价格"
+      ],
+      "affected_positions": [
+        {
+          "ticker": "300442",
+          "company": "润泽科技",
+          "risk_level": "high",
+          "current_price": 87.8,
+          "current_target": 50.62,
+          "utilization_implied": "当前估值隐含2027年上架率>70%",
+          "bear_case_utilization": "若电力指标延迟，上架率可能仅45-50%",
+          "bear_case_target": "35-40",
+          "implied_downside": "-21%~-31%",
+          "action": "目标价下修至35-40元"
+        },
+        {
+          "ticker": "300738",
+          "company": "奥飞数据",
+          "risk_level": "high",
+          "current_price": 20.9,
+          "current_target": 12.4,
+          "bear_case_target": "8-9",
+          "implied_downside": "-27%~-35%",
+          "action": "目标价下修至8-9元"
+        },
+        {
+          "ticker": "002335",
+          "company": "科华数据",
+          "risk_level": "medium",
+          "current_price": 37.81,
+          "current_target": 28.87,
+          "bear_case_target": "22-25",
+          "implied_downside": "-13%~-24%",
+          "action": "维持观察"
+        },
+        {
+          "ticker": "002837",
+          "company": "英维克",
+          "risk_level": "medium",
+          "current_price": 71.4,
+          "current_target": 48.12,
+          "bear_case_target": "35-40",
+          "implied_downside": "-17%~-27%",
+          "action": "液冷需求与IDC建设进度挂钩"
+        },
+        {
+          "ticker": "600941",
+          "company": "中国移动",
+          "risk_level": "low",
+          "current_price": 88.25,
+          "current_target": 96.69,
+          "note": "集团电力指标资源更优，防御属性强",
+          "action": "相对受益，可作对冲配置"
+        }
+      ],
+      "consensus_vs_asview": {
+        "consensus_assumption": "IDC运营商规划项目70-80%可在2027年底前落地",
+        "asview_assumption": "仅30-40%可在2027年底前获得电力指标",
+        "quantified_gap": "IDC运营收入预测下修35-45%"
+      }
+    },
+    {
+      "argument_id": "VP-04",
+      "title": "国产替代伪命题：A股在GPU/HBM/DSP/BMC等核心价值池缺乏高纯度标的，利润池被海外拿走",
+      "thesis": "AIDC产业链的利润核心（GPU/AI ASIC占价值链40-50%、HBM占15-20%、高端DSP占10-15%、BMC占5-8%）几乎全部被海外公司（NVIDIA、AMD、SK Hynix、Samsung、Micron、Broadcom、Marvell、Aspeed）占据。A股公司在这些环节要么没有直接业务，要么仅提供低附加值配套。市场将国产算力链的宏大叙事映射到A股配套公司，但这些公司的AIDC收入占比和毛利率远低于市场想象。海光信息2026E AIDC收入约80-100亿元，仅占其总收入的30-35%，且毛利率（~25%）远低于NVIDIA的75%+。",
+      "evidence": [
+        "HBM全球市场：SK Hynix 58%、Samsung 25%、Micron 17%，A股零份额",
+        "高端DSP（800G/1.6T）：Broadcom约60%、Marvell约30%，A股无直接标的",
+        "BMC芯片：Aspeed（台湾）约70%份额，A股无直接标的",
+        "海光信息2025年AIDC相关收入约50-60亿元（公司IR交流），2026E约80-100亿元，AIDC收入占比约32%",
+        "寒武纪2025年AIDC收入约30-40亿元，2026E约60-70亿元，但毛利率仅20-25%（vs NVIDIA 75%）",
+        "A股算力链标的中，AIDC直接收入占比>50%的不超过5家（中际旭创、新易盛、工业富联、沪电股份、润泽科技）"
+      ],
+      "falsification_trigger": "海光信息或寒武纪单季度AIDC收入超过50亿元，且毛利率>35%",
+      "monitoring_metrics": [
+        "国产AI芯片出货量（信通院月度数据）",
+        "云厂商国产芯片采购比例（阿里云/腾讯云/百度智能云IR披露）",
+        "海光信息/寒武纪季度AIDC收入拆分及毛利率",
+        "国产GPU在大模型训练中的实际部署比例（MLPerf基准测试）"
+      ],
+      "affected_positions": [
+        {
+          "ticker": "688041",
+          "company": "海光信息",
+          "risk_level": "high",
+          "market_cap": "9010亿",
+          "pe_2026e": 167,
+          "consensus_aidc_revenue": "隐含2026年AIDC收入200亿+",
+          "asview_aidc_revenue": "实际仅80-100亿",
+          "bear_case_target": "180-220",
+          "implied_downside": "-34%~-46%",
+          "action": "估值需大幅消化，建议减配"
+        },
+        {
+          "ticker": "688256",
+          "company": "寒武纪",
+          "risk_level": "high",
+          "market_cap": "5907亿",
+          "pe_2026e": 87,
+          "current_target": 924.44,
+          "bear_case_target": "600-700",
+          "implied_downside": "-24%~-35%",
+          "action": "目标价下修至600-700元"
+        },
+        {
+          "ticker": "603019",
+          "company": "中科曙光",
+          "risk_level": "medium",
+          "market_cap": "1588亿",
+          "aidc_revenue_ratio": "AIDC直接收入占比<20%",
+          "bear_case_target": "35-40",
+          "implied_downside": "-15%~-25%",
+          "action": "国产算力平台概念，但收入纯度不足"
+        },
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "risk_level": "low",
+          "note": "虽然核心芯片在海外，但模块制造有直接收入",
+          "action": "有实际收入支撑，受此论点影响较小"
+        }
+      ],
+      "consensus_vs_asview": {
+        "consensus_assumption": "国产AI芯片2026年AIDC市场份额25-30%（对应收入300-400亿元）",
+        "asview_assumption": "实际份额10-15%（对应收入120-180亿元）",
+        "quantified_gap": "国产算力链标的估值需消化40-50%"
+      }
+    },
+    {
+      "argument_id": "VP-05",
+      "title": "拥挤交易踩踏：光模块三巨头合计3.5万亿市值，机构持仓集中度历史新高，一旦减仓流动性冲击剧烈",
+      "thesis": "中际旭创（1.53万亿）、新易盛（6091亿）、工业富联（1.45万亿）三家合计市值超3.5万亿元，已成为主动型公募基金前三大超配行业之一。根据公募基金2026Q1持仓数据，AIDC板块（光模块+AI服务器+PCB）在主动偏股型基金中的配置比例约8-10%，超配比例约4-5个百分点。一旦北向资金因美元指数反弹或地缘风险减仓，或公募基金因业绩排名调仓，这3.5万亿市值的板块将面临多杀多的流动性踩踏，股价跌幅可能远超基本面调整幅度（历史经验：拥挤交易板块踩踏时跌幅通常比基本面合理调整多15-20个百分点）。",
+      "evidence": [
+        "中际旭创当前市值15,349亿元，2026Q1公募基金持仓占流通股约12-15%，北向资金持仓占比约8-10%",
+        "新易盛公募持仓占流通股约10-12%，北向持仓约6-8%",
+        "工业富联公募持仓占流通股约8-10%，北向持仓约12-15%（外资对AI服务器ODM偏好更高）",
+        "2021年Q1茅指数拥挤交易踩踏：贵州茅台从高点2628元跌至1525元（-42%），其中基本面合理调整约-20%，流动性踩踏贡献额外-22%",
+        "2022年Q2新能源板块踩踏：宁德时代从高点692元跌至353元（-49%），基本面调整约-25%，流动性踩踏贡献-24%",
+        "当前AIDC板块融资余额/流通市值比约2.8-3.2%，处于历史90%分位以上"
+      ],
+      "falsification_trigger": "主动型公募基金AIDC配置比例连续2个季度（Q2+Q3 2026）维持或增加，且北向资金持仓占比不下降",
+      "monitoring_metrics": [
+        "主动型基金AIDC配置比例（Wind基金持仓季度数据）",
+        "北向资金AIDC持仓变化（每日陆股通数据）",
+        "融资余额/流通市值（交易所每日数据）",
+        "中际旭创/新易盛大宗交易折价率",
+        "AIDC板块ETF申赎比例"
+      ],
+      "affected_positions": [
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "risk_level": "highest",
+          "crowding_signal": "流动性最好但也是拥挤度最高",
+          "stop_loss": "建议设置15%止损线",
+          "liquidity_crash_downside": "基本面调整-25% + 流动性踩踏-15% = 总跌幅-40%",
+          "action": "减配，设置严格止损"
+        },
+        {
+          "ticker": "300502",
+          "company": "新易盛",
+          "risk_level": "highest",
+          "crowding_signal": "同理",
+          "stop_loss": "建议设置15%止损线",
+          "action": "减配，设置严格止损"
+        },
+        {
+          "ticker": "601138",
+          "company": "工业富联",
+          "risk_level": "highest",
+          "crowding_signal": "北向持仓占比最高，美元流动性收紧时首当其冲",
+          "action": "减配，关注北向资金动向"
+        },
+        {
+          "ticker": "300394",
+          "company": "天孚通信",
+          "risk_level": "medium",
+          "action": "维持观察"
+        },
+        {
+          "ticker": "002463",
+          "company": "沪电股份",
+          "risk_level": "medium",
+          "action": "维持观察"
+        },
+        {
+          "ticker": "300476",
+          "company": "胜宏科技",
+          "risk_level": "medium",
+          "action": "维持观察"
+        }
+      ],
+      "hedge_strategy": "买入沪深300看跌期权（行权价-10%，期限6个月），或融券做空AIDC ETF",
+      "consensus_vs_asview": {
+        "consensus_view": "机构持仓合理配置，未将流动性溢价纳入风险模型",
+        "asview_view": "拥挤交易可能额外贡献15-20%跌幅",
+        "quantified_gap": "基本面调整25% + 流动性踩踏15% = 总跌幅40%"
+      }
+    },
+    {
+      "argument_id": "VP-06",
+      "title": "液冷渗透延迟：2026年液冷渗透率可能仍低于15%，远低于市场预期的30%+",
+      "thesis": "市场普遍预期液冷服务器在2026年的渗透率将达到30-35%（对应约120-150亿元市场规模），但液冷技术在实际部署中面临三大障碍：(1)运维复杂度——冷却液泄漏检测、定期更换、防腐处理等运维成本是风冷的2-3倍；(2)标准缺失——不同厂商液冷接口（快接头、CDU、管路）标准不统一，客户锁定风险高；(3)保险与合规——数据中心财产保险对液冷系统保费上浮30-50%，且部分地区消防规范对冷却液有严格限制。综合这些因素，2026年液冷实际渗透率可能仅10-15%，远低于市场预期。",
+      "evidence": [
+        "2025年液冷服务器实际出货占比约5-7%（IDC数据），远低于2024年底市场预期的15%",
+        "三大运营商2026年AI服务器集采中，液冷比例约18-22%（招标文件数据），而非市场传闻的40%+",
+        "液冷项目实际交付率：2025年规划液冷项目约80个，实际完成验收约35个（交付率44%）",
+        "英维克（002837）2025年液冷收入约8-10亿元，占总收入约25-30%，但2026年市场预期液冷收入20-25亿元（隐含渗透率30%+）",
+        "中国数据中心液冷技术标准（ODCC/开放数据中心委员会）仍在制定中，预计2026H2才可能发布征求意见稿",
+        "某头部云厂商（AWS）液冷试点项目（2024-2025）因运维成本超支40%而缩减规模（行业交流）"
+      ],
+      "falsification_trigger": "三大运营商（中国移动/中国电信/中国联通）联合发布2026H2 AI服务器集采，液冷比例>50%",
+      "monitoring_metrics": [
+        "液冷服务器招标占比（采招网月度数据）",
+        "液冷项目实际验收数量及MW数",
+        "英维克/申菱环境/高澜股份液冷收入季度环比",
+        "ODCC液冷标准制定进展",
+        "数据中心液冷PUE实际达标数据"
+      ],
+      "affected_positions": [
+        {
+          "ticker": "002837",
+          "company": "英维克",
+          "risk_level": "high",
+          "current_price": 71.4,
+          "current_target": 48.12,
+          "consensus_implied_growth": "液冷收入2026年增长150%+",
+          "asview_implied_growth": "若渗透率仅15%，液冷收入增长可能仅50-80%",
+          "bear_case_target": "30-35",
+          "implied_downside": "-27%~-38%",
+          "action": "目标价下修至30-35元"
+        },
+        {
+          "ticker": "301018",
+          "company": "申菱环境",
+          "risk_level": "high",
+          "current_price": 107.56,
+          "current_target": 49.7,
+          "bear_case_target": "30-35",
+          "implied_downside": "-30%~-40%",
+          "action": "目标价下修至30-35元"
+        },
+        {
+          "ticker": "300499",
+          "company": "高澜股份",
+          "risk_level": "high",
+          "current_price": 36.15,
+          "current_target": 18.57,
+          "bear_case_target": "12-14",
+          "implied_downside": "-25%~-35%",
+          "action": "目标价下修至12-14元"
+        },
+        {
+          "ticker": "300990",
+          "company": "同飞股份",
+          "risk_level": "medium",
+          "current_price": 96.4,
+          "current_target": 69.11,
+          "bear_case_target": "50-55",
+          "implied_downside": "-20%~-28%",
+          "action": "维持观察"
+        },
+        {
+          "ticker": "002158",
+          "company": "汉钟精机",
+          "risk_level": "medium",
+          "current_price": 36.39,
+          "current_target": 31.09,
+          "bear_case_target": "25-28",
+          "implied_downside": "-10%~-20%",
+          "action": "维持观察"
+        }
+      ],
+      "consensus_vs_asview": {
+        "consensus_penetration": "2026年液冷渗透率30-35%（市场规模130-160亿元）",
+        "asview_penetration": "实际渗透率10-15%（市场规模45-70亿元）",
+        "quantified_gap": "液冷温控标的盈利预测下修40-50%"
+      }
+    },
+    {
+      "argument_id": "VP-07",
+      "title": "估值锚失效：盛科通信/芯原股份等标的基本面锚在目标价中贡献不足5%，市场情绪决定一切",
+      "thesis": "对于盛科通信（688702，3372x PE）、芯原股份（688521，1904x PE）等标的，估值模型中的基本面锚（Base case × Wf）对最终目标价的贡献不足5%。以盛科通信为例：基本面目标价 = 4.18元 × 65% = 2.72元，而最终目标价101.4元，基本面贡献仅2.7%。剩余97.3%由市场情绪锚（281.96元 × 35% = 98.69元）决定。这意味着这些标的的目标价没有任何基本面分析意义，完全由市场情绪和资金面驱动。一旦AIDC主题退潮或市场风险偏好下降，这些标的可能面临70-80%的回调，且没有基本面支撑来兜底。",
+      "evidence": [
+        "盛科通信（688702）：市值1521亿元，2026E NP仅0.46亿元，PE 3372x。估值模型：Base=4.18元，Wf=65%，市场锚=281.96元，Wm=35%，最终目标=101.4元。基本面贡献=4.18×0.65/101.4=2.7%",
+        "芯原股份（688521）：市值1703亿元，2026E NP 0.84亿元，PE 1904x。估值模型：Base=6.46元，Wf=55%，市场锚=265.51元，Wm=35%，最终目标=126.5元。基本面贡献=6.46×0.55/126.5=2.8%",
+        "对比：中际旭创基本面贡献=1013.5×0.55/1054.7=52.9%（有基本面支撑）",
+        "历史类比：2021年Q1医美泡沫期，爱美客PE最高280x，随后从高点1331元跌至370元（-72%）；华熙生物从314元跌至95元（-70%）",
+        "2020年半导体泡沫期，中芯国际PE最高180x，随后从97元跌至37元（-62%）"
+      ],
+      "falsification_trigger": "盛科通信/芯原股份实现正EPS（季度EPS>0.05元），且基本面锚在目标价中的贡献>30%",
+      "monitoring_metrics": [
+        "盛科通信/芯原股份季度EPS及收入增速",
+        "基本面锚（Base × Wf）在目标价中的权重变化",
+        "北向资金在高PE标的中的持仓变化",
+        "融资余额占流通市值比例（高PE标的）"
+      ],
+      "affected_positions": [
+        {
+          "ticker": "688702",
+          "company": "盛科通信",
+          "risk_level": "highest",
+          "market_cap": "1521亿",
+          "pe_2026e": 3372,
+          "fundamental_anchor_contribution": "2.7%",
+          "current_price": 353.05,
+          "current_target": 101.4,
+          "bear_case_target": "20-30",
+          "implied_downside": "-70%~-80%",
+          "action": "目标价仅作市场支撑观察参考，不作投资建议依据。若市场情绪退潮，可能跌至20-30元（对应500x PE，仍远高于行业均值）"
+        },
+        {
+          "ticker": "688521",
+          "company": "芯原股份",
+          "risk_level": "highest",
+          "market_cap": "1703亿",
+          "pe_2026e": 1904,
+          "fundamental_anchor_contribution": "2.8%",
+          "current_price": 309.5,
+          "current_target": 126.48,
+          "bear_case_target": "40-50",
+          "implied_downside": "-60%~-68%",
+          "action": "目标价仅作市场支撑观察参考"
+        },
+        {
+          "ticker": "688256",
+          "company": "寒武纪",
+          "risk_level": "high",
+          "market_cap": "5907亿",
+          "pe_2026e": 87,
+          "fundamental_anchor_contribution": "36.4%",
+          "current_price": 1372.0,
+          "current_target": 924.44,
+          "bear_case_target": "600-700",
+          "implied_downside": "-24%~-35%",
+          "action": "基本面贡献约36%，仍有较大情绪成分"
+        },
+        {
+          "ticker": "688795",
+          "company": "摩尔线程",
+          "risk_level": "highest",
+          "market_cap": "3159亿",
+          "pe_2026e": "N/A（尚未盈利）",
+          "fundamental_anchor_contribution": "0%（Wf=100%但Base=182.25，完全依赖基本面模型假设）",
+          "current_price": 641.59,
+          "current_target": 182.25,
+          "bear_case_target": "50-80",
+          "implied_downside": "-56%~-73%",
+          "action": "尚未盈利，完全无基本面锚，极度危险"
+        }
+      ],
+      "consensus_vs_asview": {
+        "consensus_view": "高成长消化高估值（盛科通信2028年NP预期15-20亿元，芯原股份10-12亿元）",
+        "asview_view": "盈利预测置信度<20%（基于历史半导体设计公司从亏损到盈利的概率），当前股价95%+由情绪驱动",
+        "quantified_gap": "回调空间60-80%"
+      }
+    }
+  ],
+  "failure_scenario": {
+    "trigger": "2026Q3北美CSP财报电话会下调全年capex指引15-20%（从~3200亿降至~2600亿美元），同时800G ASP环比下滑8-10%",
+    "timeline": "2026年8-10月（Q2财报季+Q3指引调整）",
+    "sector_impact": {
+      "optical_modules": "-40%~-50%",
+      "ai_servers": "-30%~-40%",
+      "pcb": "-25%~-35%",
+      "liquid_cooling": "-35%~-45%",
+      "idc_operators": "-20%~-30%",
+      "domestic_computing": "-45%~-55%"
+    },
+    "specific_targets": [
+      {
+        "ticker": "300308",
+        "company": "中际旭创",
+        "from": 1290,
+        "to": "650",
+        "change": "-50%"
+      },
+      {
+        "ticker": "300502",
+        "company": "新易盛",
+        "from": 609,
+        "to": "330",
+        "change": "-46%"
+      },
+      {
+        "ticker": "601138",
+        "company": "工业富联",
+        "from": 73,
+        "to": "44",
+        "change": "-40%"
+      },
+      {
+        "ticker": "002463",
+        "company": "沪电股份",
+        "from": 155,
+        "to": "95",
+        "change": "-39%"
+      },
+      {
+        "ticker": "300442",
+        "company": "润泽科技",
+        "from": 79,
+        "to": "48",
+        "change": "-39%"
+      },
+      {
+        "ticker": "002837",
+        "company": "英维克",
+        "from": 80,
+        "to": "40",
+        "change": "-50%"
+      },
+      {
+        "ticker": "688041",
+        "company": "海光信息",
+        "from": 335,
+        "to": "180",
+        "change": "-46%"
+      },
+      {
+        "ticker": "688702",
+        "company": "盛科通信",
+        "from": 371,
+        "to": "80",
+        "change": "-78%"
+      }
+    ],
+    "hedge_strategy": [
+      "减配光模块至标配以下3个百分点",
+      "增配三大运营商（电力指标优势+防御属性）",
+      "买入沪深300看跌期权（行权价-10%，期限6个月）",
+      "对高PE标的设置15%止损"
+    ]
+  },
+  "consensus_crowding_assessment": {
+    "active_fund_allocation": {
+      "value": "8-10%",
+      "percentile": "95%",
+      "signal": "极度拥挤"
+    },
+    "northbound_optical_module_holding": {
+      "value": "8-12%",
+      "percentile": "90%",
+      "signal": "拥挤"
+    },
+    "margin_balance_ratio": {
+      "value": "2.8-3.2%",
+      "percentile": "88%",
+      "signal": "偏热"
+    },
+    "aidc_etf_premium": {
+      "value": "3-5%",
+      "percentile": "85%",
+      "signal": "偏热"
+    },
+    "sell_side_buy_ratio": {
+      "value": "85%+",
+      "percentile": "98%",
+      "signal": "极度一致"
+    }
+  },
+  "confidence_scores": {
+    "VP-01": {
+      "score": 70,
+      "key_uncertainty": "CSP capex兑现率是否因AI投资紧迫性而高于历史"
+    },
+    "VP-02": {
+      "score": 65,
+      "key_uncertainty": "1.6T升级节奏是否延缓800G ASP下滑"
+    },
+    "VP-03": {
+      "score": 75,
+      "key_uncertainty": "政策是否特批AIDC能耗指标"
+    },
+    "VP-04": {
+      "score": 80,
+      "key_uncertainty": "国产芯片生态成熟度（软件栈+HBM绑定）"
+    },
+    "VP-05": {
+      "score": 60,
+      "key_uncertainty": "增量资金（保险/理财）是否持续流入"
+    },
+    "VP-06": {
+      "score": 70,
+      "key_uncertainty": "运营商集采政策是否强制液冷比例"
+    },
+    "VP-07": {
+      "score": 85,
+      "key_uncertainty": "情绪退潮时点不可预测，但方向确定"
+    }
+  },
+  "invalidation_condition": "若同时触发3个以上证伪条件失败（即CSP不下修、ASP稳定、液冷超预期），则反方论点失效，转为顺势做多"
+}

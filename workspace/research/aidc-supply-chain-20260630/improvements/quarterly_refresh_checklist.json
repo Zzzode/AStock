@@ -1,0 +1,495 @@
+{
+  "metadata": {
+    "case_id": "aidc-supply-chain-20260630",
+    "checklist_version": "1.0",
+    "created_at": "2026-07-02",
+    "total_candidates": 59,
+    "fields_per_candidate": 7,
+    "total_field_cells": 413,
+    "baseline_date": "2026-07-01",
+    "baseline_status": {
+      "direct": 409,
+      "proxy": 2,
+      "broker_indirect": 2
+    },
+    "watchlist_companies": ["300936", "603912", "002334"],
+    "residual_proxy_fields": [
+      {"ticker": "603881", "company": "数据港", "field": "capacity_or_certification"},
+      {"ticker": "002334", "company": "英威腾", "field": "utilization_or_yield"}
+    ],
+    "no_public_broker_pdf": ["300936", "603912", "603186", "000021", "002334"]
+  },
+  "trigger_conditions": {
+    "scheduled": [
+      {
+        "id": "T1",
+        "name": "年报后刷新",
+        "trigger_window": "4月下旬",
+        "filing_deadline": "4月30日",
+        "refresh_deadline": "5月5日",
+        "filing_type": "annual_report"
+      },
+      {
+        "id": "T2",
+        "name": "半年报后刷新",
+        "trigger_window": "8月下旬",
+        "filing_deadline": "8月31日",
+        "refresh_deadline": "9月5日",
+        "filing_type": "semi_annual_report"
+      },
+      {
+        "id": "T3",
+        "name": "三季报后刷新",
+        "trigger_window": "10月下旬",
+        "filing_deadline": "10月31日",
+        "refresh_deadline": "11月5日",
+        "filing_type": "q3_report"
+      }
+    ],
+    "event_driven": [
+      {
+        "id": "E1",
+        "name": "重大行业事件",
+        "criteria": "头部云厂商资本开支调整>20%、AI服务器出货量预期修正>15%、关键环节技术突破",
+        "response_time_hours": 48,
+        "scope": "industry_wide"
+      },
+      {
+        "id": "E2",
+        "name": "政策变化",
+        "criteria": "数据中心能耗标准修订、AI算力基础设施政策、运营商集采规则变化",
+        "response_time_hours": 72,
+        "scope": "industry_wide"
+      },
+      {
+        "id": "E3",
+        "name": "公司重大公告",
+        "criteria": "单笔AIDC相关订单>1亿元、核心客户认证通过、产能扩张>30%、核心技术人员变动",
+        "response_time_hours": 24,
+        "scope": "single_company"
+      },
+      {
+        "id": "E4",
+        "name": "券商首次覆盖",
+        "criteria": "观察名单公司获得首次券商覆盖并含目标价",
+        "response_time_hours": 48,
+        "scope": "single_company"
+      }
+    ],
+    "manual": {
+      "id": "M1",
+      "name": "手动触发",
+      "required_fields": ["reason", "scope", "urgency"],
+      "urgency_levels": ["routine", "expedited"]
+    }
+  },
+  "per_company_checklist": {
+    "financial_report_disclosures": [
+      {
+        "id": "F1",
+        "item": "最新财报中的AIDC相关收入披露",
+        "detail": "分产品/分业务收入中AIDC相关业务的收入金额、占比、同比增速",
+        "sources": ["annual_report", "semi_annual_report", "quarterly_report"],
+        "affects_fields": ["revenue_exposure", "margin_impact"],
+        "priority": "high"
+      },
+      {
+        "id": "F2",
+        "item": "最新财报中的AIDC相关毛利率披露",
+        "detail": "AIDC相关业务的毛利率、环比变化、同比变化",
+        "sources": ["annual_report", "semi_annual_report", "quarterly_report"],
+        "affects_fields": ["margin_impact", "asp_or_price_proxy"],
+        "priority": "high"
+      },
+      {
+        "id": "F3",
+        "item": "最新财报中的产能/在建工程/资本开支信息",
+        "detail": "AIDC相关产能的在建工程金额、进度、预计投产时间；资本开支中AIDC相关金额",
+        "sources": ["annual_report", "semi_annual_report"],
+        "affects_fields": ["capacity_or_certification"],
+        "priority": "high"
+      },
+      {
+        "id": "F4",
+        "item": "最新财报中的研发投入及方向",
+        "detail": "AIDC相关研发项目的投入金额、进展、预期成果",
+        "sources": ["annual_report", "semi_annual_report"],
+        "affects_fields": ["capacity_or_certification", "asp_or_price_proxy"],
+        "priority": "medium"
+      }
+    ],
+    "investor_relations": [
+      {
+        "id": "IR1",
+        "item": "最新投资者关系活动记录中的订单信息",
+        "detail": "AIDC相关订单的金额、客户、交付时间",
+        "sources": ["ir_activity_records", "earnings_call_transcript"],
+        "affects_fields": ["order_or_backlog"],
+        "priority": "high"
+      },
+      {
+        "id": "IR2",
+        "item": "最新投资者关系活动记录中的客户信息",
+        "detail": "是否有新AI客户、客户认证进展、客户结构变化",
+        "sources": ["ir_activity_records", "earnings_call_transcript"],
+        "affects_fields": ["customer_or_platform"],
+        "priority": "high"
+      },
+      {
+        "id": "IR3",
+        "item": "最新投资者关系活动记录中的产能/产能利用率信息",
+        "detail": "AIDC相关产能的利用率、稼动率、产能爬坡进度",
+        "sources": ["ir_activity_records", "earnings_call_transcript"],
+        "affects_fields": ["capacity_or_certification", "utilization_or_yield"],
+        "priority": "high"
+      },
+      {
+        "id": "IR4",
+        "item": "最新投资者关系活动记录中的ASP/价格变化信息",
+        "detail": "AIDC相关产品的ASP变化、价格趋势、产品结构对ASP的影响",
+        "sources": ["ir_activity_records", "earnings_call_transcript"],
+        "affects_fields": ["asp_or_price_proxy"],
+        "priority": "high"
+      },
+      {
+        "id": "IR5",
+        "item": "最新投资者关系活动记录中的良率/稼动率信息",
+        "detail": "AIDC相关产线的良率、稼动率、产能利用率",
+        "sources": ["ir_activity_records", "earnings_call_transcript"],
+        "affects_fields": ["utilization_or_yield"],
+        "priority": "high"
+      }
+    ],
+    "broker_reports": [
+      {
+        "id": "B1",
+        "item": "新发布的券商研报",
+        "detail": "自上次刷新以来发布的所有券商研报",
+        "sources": ["eastmoney", "ths", "ifind", "wind"],
+        "affects_fields": ["all"],
+        "priority": "high",
+        "special_focus": "首次覆盖(观察名单公司)、目标价大幅调整(>20%)"
+      },
+      {
+        "id": "B2",
+        "item": "首次覆盖情况",
+        "detail": "特别是观察名单公司的首次券商覆盖",
+        "sources": ["eastmoney", "ths", "ifind", "wind"],
+        "affects_fields": ["all"],
+        "priority": "high",
+        "watchlist_focus": ["300936", "603912", "002334"]
+      },
+      {
+        "id": "B3",
+        "item": "目标价调整",
+        "detail": "目标价变化幅度>20%需标注原因",
+        "sources": ["broker_report_target_price"],
+        "affects_fields": ["margin_impact", "asp_or_price_proxy"],
+        "priority": "medium"
+      },
+      {
+        "id": "B4",
+        "item": "盈利预测调整",
+        "detail": "收入/净利润/EPS预测的变化幅度和原因",
+        "sources": ["broker_report_forecast"],
+        "affects_fields": ["revenue_exposure", "margin_impact"],
+        "priority": "medium"
+      },
+      {
+        "id": "B5",
+        "item": "评级变化",
+        "detail": "买入/增持/中性/减持评级变化",
+        "sources": ["broker_report_rating"],
+        "affects_fields": ["all"],
+        "priority": "low"
+      }
+    ],
+    "official_announcements": [
+      {
+        "id": "A1",
+        "item": "新的中标公告",
+        "detail": "金额>5000万元的AIDC相关中标公告",
+        "sources": ["cninfo", "sse", "szse"],
+        "affects_fields": ["order_or_backlog", "customer_or_platform"],
+        "priority": "high",
+        "threshold_cny": 50000000
+      },
+      {
+        "id": "A2",
+        "item": "新的重大合同公告",
+        "detail": "金额>1亿元的AIDC相关重大合同",
+        "sources": ["cninfo", "sse", "szse"],
+        "affects_fields": ["order_or_backlog", "customer_or_platform"],
+        "priority": "high",
+        "threshold_cny": 100000000
+      },
+      {
+        "id": "A3",
+        "item": "产能扩张公告",
+        "detail": "AIDC相关产能的扩张计划、投资金额、预计产能",
+        "sources": ["cninfo", "sse", "szse"],
+        "affects_fields": ["capacity_or_certification"],
+        "priority": "high"
+      },
+      {
+        "id": "A4",
+        "item": "客户认证进展公告",
+        "detail": "获得AI服务器客户、云厂商等的认证通过公告",
+        "sources": ["cninfo", "sse", "szse"],
+        "affects_fields": ["customer_or_platform", "capacity_or_certification"],
+        "priority": "high"
+      },
+      {
+        "id": "A5",
+        "item": "核心技术/产品认证公告",
+        "detail": "AIDC相关产品的行业认证、标准认证通过",
+        "sources": ["cninfo", "sse", "szse"],
+        "affects_fields": ["capacity_or_certification"],
+        "priority": "medium"
+      }
+    ],
+    "operational_indicators": [
+      {
+        "id": "O1",
+        "item": "产能/认证进展",
+        "detail": "新产线投产、认证通过、产能爬坡进度",
+        "sources": ["ir_activity_records", "company_announcement", "broker_report"],
+        "affects_fields": ["capacity_or_certification"],
+        "priority": "high"
+      },
+      {
+        "id": "O2",
+        "item": "ASP/价格变化信息",
+        "detail": "提价/降价、产品结构变化对ASP的影响",
+        "sources": ["ir_activity_records", "broker_report", "industry_data"],
+        "affects_fields": ["asp_or_price_proxy"],
+        "priority": "high"
+      },
+      {
+        "id": "O3",
+        "item": "利用率/良率/稼动率更新",
+        "detail": "AIDC相关产线的利用率、良率、稼动率最新数据",
+        "sources": ["ir_activity_records", "broker_report", "annual_report"],
+        "affects_fields": ["utilization_or_yield"],
+        "priority": "high"
+      },
+      {
+        "id": "O4",
+        "item": "毛利率/净利率变化",
+        "detail": "AIDC相关业务的毛利率、净利率环比和同比变化",
+        "sources": ["quarterly_report", "semi_annual_report", "annual_report"],
+        "affects_fields": ["margin_impact"],
+        "priority": "high"
+      }
+    ],
+    "proxy_field_special": [
+      {
+        "id": "P1",
+        "ticker": "603881",
+        "company": "数据港",
+        "field": "capacity_or_certification",
+        "field_label": "产能/认证",
+        "current_status": "proxy",
+        "upgrade_conditions": [
+          "年报/半年报中披露独立产能明细(非MW容量边界)",
+          "IR记录中提及具体机柜利用率或上架率",
+          "客户项目验收公告中包含产能/认证信息",
+          "券商研报提供公司直接产能/认证数据(非行业推断)"
+        ],
+        "priority": "high",
+        "next_verification_path": "下一轮必须检查年报/半年报、IR记录、中标公告、客户侧项目验收、机柜/MW/产线/认证披露"
+      },
+      {
+        "id": "P2",
+        "ticker": "002334",
+        "company": "英威腾",
+        "field": "utilization_or_yield",
+        "field_label": "利用率/良率/爬坡",
+        "current_status": "proxy",
+        "upgrade_conditions": [
+          "季报中披露网络能源业务稼动率",
+          "IR记录中提及UPS/液冷产能利用率",
+          "中山一期/苏州三期产能利用率数据披露",
+          "券商研报提供公司直接稼动率数据(非行业推断)"
+        ],
+        "priority": "high",
+        "next_verification_path": "下一轮必须检查季度经营更新、IR问答、上架率/稼动率/良率、PUE、毛利率、现金流和项目验收节奏"
+      }
+    ]
+  },
+  "watchlist_upgrade_checklist": {
+    "common_triggers": [
+      {
+        "id": "U1",
+        "condition": "单季度毛利率转正且环比改善>2pct",
+        "quantitative_threshold": "单季GM>0%且QoQ>+2pct",
+        "data_source": "quarterly_report",
+        "triggers_review": "R1"
+      },
+      {
+        "id": "U2",
+        "condition": "单季度AIDC相关收入同比增长>50%",
+        "quantitative_threshold": "AIDC收入YoY>50%",
+        "data_source": "quarterly_report, ir_activity_records",
+        "triggers_review": "R1"
+      },
+      {
+        "id": "U3",
+        "condition": "获得重大客户认证或订单公告(金额>1亿元)",
+        "quantitative_threshold": "单笔订单>1亿或客户认证函",
+        "data_source": "official_announcement",
+        "triggers_review": "R1"
+      },
+      {
+        "id": "U4",
+        "condition": "产能/良率/利用率达到预设目标",
+        "quantitative_threshold": "因公司而异(见watchlist_valuation_triggers.json)",
+        "data_source": "ir_activity_records, broker_report",
+        "triggers_review": "R1"
+      },
+      {
+        "id": "U5",
+        "condition": "券商覆盖且给出明确目标价",
+        "quantitative_threshold": "至少1家券商发布含目标价的研报",
+        "data_source": "broker_report",
+        "triggers_review": "R1"
+      }
+    ],
+    "minimum_upgrade_combinations": {
+      "300936": "U1+U4同时满足, 或U3单独满足(单笔>1亿订单直接升级)",
+      "603912": "U1+U2同时满足, 或U3单独满足(单笔>1亿液冷订单直接升级)",
+      "002334": "U1+U4同时满足(已接近), 或U3单独满足(单笔>1亿AIDC订单直接升级)"
+    }
+  },
+  "governance_rules": {
+    "post_refresh_updates": [
+      {
+        "file": "analysis/field_evidence_completion_audit.md",
+        "condition": "always",
+        "description": "更新字段证据完成审计摘要"
+      },
+      {
+        "file": "data/residual_proxy_field_audit_*.json",
+        "condition": "proxy_field_status_changed",
+        "description": "更新残余代理字段审计(如有代理字段状态变化)"
+      },
+      {
+        "file": "source_exhaustion_log.md",
+        "condition": "new_sources_archived_or_status_changed",
+        "description": "更新来源耗尽日志"
+      },
+      {
+        "file": "review_log.md",
+        "condition": "R0_or_R1_review_triggered",
+        "description": "更新审查日志"
+      },
+      {
+        "file": "skill_evolution_log.json",
+        "condition": "proxy_field_upgraded_or_process_improved",
+        "description": "记录技能进化"
+      }
+    ],
+    "review_triggers": [
+      {
+        "id": "R0-trigger",
+        "condition": "字段变化数量 > 5",
+        "review_level": "R0_evidence",
+        "review_content": "新证据的来源可靠性、证据质量、字段分类准确性",
+        "reviewer": "research_lead"
+      },
+      {
+        "id": "R1-trigger",
+        "condition": "观察名单公司满足升级条件",
+        "review_level": "R1_model",
+        "review_content": "升级后的模型适用性、估值参数、目标价合理性",
+        "reviewer": "valuation_analyst"
+      },
+      {
+        "id": "R0-no-source",
+        "condition": "新增无来源公司",
+        "review_level": "R0_evidence",
+        "review_content": "评估是否需要启动新的来源采集",
+        "reviewer": "research_lead"
+      }
+    ],
+    "verifier_requirements": {
+      "case_verifier": {
+        "command": "python3 tools/verify_research_workspace.py",
+        "required_result": "39 PASS / 0 FAIL",
+        "description": "案例级验证器，所有工件必须通过"
+      },
+      "workflow_gate": {
+        "command": "python3 workspace/research/tools/run_research_gates.py <case-dir>",
+        "required_result": "RESULT PASS",
+        "description": "工作流门控，检查gate_manifest、artifact_contract、审查发现、最终签署等"
+      },
+      "refresh_dependency_chain": [
+        "PDF重建清理 (latexmk -c)",
+        "治理文件 .md → .json 同步",
+        "核心工件校验和重算 (core_artifact_checksums)",
+        "顶层数据工件清单刷新至固定点 (top_level_data_artifact_inventory)",
+        "报告质量评估 (report_quality_eval)",
+        "完成审计清单更新 (completion_audit_manifest)"
+      ],
+      "policy": "未通过验证器的刷新结果不得发布"
+    }
+  },
+  "quality_metrics": {
+    "field_evidence_direct_rate": {
+      "formula": "direct_fields / total_fields",
+      "target": ">0.98",
+      "current": 0.9903
+    },
+    "proxy_field_count": {
+      "formula": "proxy + broker_indirect",
+      "target": "<4",
+      "current": 4
+    },
+    "watchlist_company_count": {
+      "formula": "watchlist_only_status_companies",
+      "target": "<5",
+      "current": 3
+    },
+    "refresh_field_change_rate": {
+      "formula": "changed_fields_this_refresh / total_fields",
+      "target": "<0.15",
+      "current": null
+    },
+    "new_sources_archived": {
+      "formula": "count_new_source_files_this_refresh",
+      "target": "continuous_growth",
+      "current": null
+    },
+    "verifier_pass_rate": {
+      "formula": "pass_checks / total_checks",
+      "target": "1.0",
+      "current": null
+    },
+    "refresh_completion_timeliness": {
+      "formula": "days_from_filing_deadline_to_refresh_complete",
+      "target": "<5",
+      "current": null
+    }
+  },
+  "first_refresh_plan": {
+    "id": "REFRESH-2026Q3",
+    "name": "2026年半年报后首次刷新",
+    "steps": [
+      {"step": 1, "date": "2026-08-25", "action": "准备: 拉取当前矩阵，生成任务清单"},
+      {"step": 2, "date": "2026-09-01", "action": "半年报采集: 59家公司2026半年报"},
+      {"step": 3, "date": "2026-09-01", "action": "IR记录采集: 最新投资者关系活动记录"},
+      {"step": 4, "date": "2026-09-02", "action": "券商报告采集: 7月-8月新发布研报"},
+      {"step": 5, "date": "2026-09-04", "action": "字段重分类: 代理字段升级检查、观察名单评估"},
+      {"step": 6, "date": "2026-09-05", "action": "矩阵更新: 更新所有矩阵和审计文件"},
+      {"step": 7, "date": "2026-09-05", "action": "治理审查: 运行验证器，R0/R1审查(如需)"},
+      {"step": 8, "date": "2026-09-06", "action": "发布: 签署发布刷新后的研究版本"}
+    ]
+  },
+  "roles_and_responsibilities": {
+    "refresh_executor": "执行季度刷新SOP，运行脚本，更新矩阵",
+    "evidence_reviewer": "审核新证据的来源可靠性和字段分类准确性",
+    "R0_reviewer": "审查字段变化>5的刷新结果",
+    "R1_reviewer": "审查观察名单公司升级建议",
+    "research_lead": "最终审批刷新结果，签署发布"
+  }
+}

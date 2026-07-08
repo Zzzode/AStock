@@ -1,0 +1,506 @@
+{
+  "metadata": {
+    "case_id": "ai-storage-supply-chain-20260623",
+    "chapter": "ch12_company_fundamentals",
+    "data_cutoff": "2026Q1 (2025FY for annual)",
+    "data_sources": ["东方财富", "新浪财经", "公司年报/季报", "机构调研纪要"],
+    "collection_date": "2026-07-04",
+    "companies_covered": 12
+  },
+  "companies": [
+    {
+      "ticker": "688008",
+      "name": "澜起科技",
+      "segment": "接口芯片/DDR5 RCD/CXL",
+      "core_business": "DDR5 RCD全球龙头（约70%份额）；DDR4/DDR5寄存时钟驱动器(RCD/DB)、PCIe Retimer、CXL控制器。全球唯一同时覆盖DDR5全系列接口芯片的设计公司。",
+      "revenue": {
+        "fy2025_total": "75.08亿",
+        "fy2025_yoy": "+25.99%",
+        "q1_2026_total": "1.35亿",
+        "q1_2026_yoy": "+7.96%",
+        "product_breakdown": "内存接口芯片约85%；PCIe/CXL约10%；其他约5%",
+        "region_breakdown": "境外约70%（直接供货三星、海力士、美光）"
+      },
+      "inventory": {
+        "q1_2026": "8.52亿",
+        "vs_beginning": "+0.2%",
+        "days": "约180天",
+        "note": "库存稳定，Fabless模式+客户长协机制"
+      },
+      "cash_flow": {
+        "fy2025_operating": "-3.48亿",
+        "q1_2026_operating": "-1.06亿",
+        "fy2025_capex": "0.48亿",
+        "note": "CXL研发投入期，自由现金流为负"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约1.2亿",
+        "cip": "上海研发中心建设中",
+        "note": "轻资产Fabless模式"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "-4.55亿",
+        "fy2025_yoy": "+27.22%（亏损收窄）",
+        "q1_2026_net_profit": "-1.14亿",
+        "q1_2026_yoy": "+24.66%（亏损收窄）",
+        "gross_margin_q1": "34.87%",
+        "gross_margin_fy2025": "47.06%",
+        "rd_ratio": "约30%"
+      },
+      "ai_storage_exposure": "极高——DDR5 RCD是AI服务器内存模组标配，单机12-24颗；CXL控制器是内存扩展架构核心芯片，2026H2商业化元年"
+    },
+    {
+      "ticker": "002371",
+      "name": "北方华创",
+      "segment": "半导体设备平台",
+      "core_business": "国内最大半导体设备平台；刻蚀机、薄膜沉积(ALD/CVD/PVD)、清洗、氧化/扩散、离子注入、涂胶显影等全产品线。覆盖存储厂全部核心制程设备。",
+      "revenue": {
+        "fy2025_total": "393.53亿",
+        "fy2025_yoy": "+30.85%",
+        "q1_2026_total": "103.23亿",
+        "q1_2026_yoy": "+25.80%",
+        "product_breakdown": "电子工艺装备约90%；电子元器件约10%",
+        "region_breakdown": "境内约85%（长存/长鑫/中芯国际为核心客户）"
+      },
+      "inventory": {
+        "q1_2026": "286.03亿",
+        "vs_beginning": "-0.1%",
+        "yoy": "+13.45%",
+        "days": "约200天",
+        "note": "高库存反映在手订单饱满（设备交付周期6-12个月）"
+      },
+      "cash_flow": {
+        "fy2025_operating": "21.33亿",
+        "fy2025_yoy": "+37.48%",
+        "q1_2026_operating": "7.48亿",
+        "q1_2026_yoy": "+143.27%",
+        "note": "现金流质量高"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约85亿",
+        "cip": "约30亿（北京/上海/深圳产能扩建）"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "55.22亿",
+        "fy2025_yoy": "-1.77%",
+        "q1_2026_net_profit": "16.35亿",
+        "q1_2026_yoy": "+3.42%",
+        "gross_margin_q1": "40.77%",
+        "net_margin_q1": "15.19%"
+      },
+      "ai_storage_exposure": "高——长存232层/290L 3D NAND扩产、长鑫17nm/15nm DRAM扩产均需北方华创设备。HBM封装前道制程设备需求增量显著。"
+    },
+    {
+      "ticker": "301308",
+      "name": "江波龙",
+      "segment": "存储模组/企业级SSD",
+      "core_business": "全球存储模组龙头；企业级SSD、嵌入式存储(UFS/eMMC)、消费级SSD、内存模组、汽车存储。Lexar品牌全球消费存储Top3。",
+      "revenue": {
+        "fy2025_total": "227.66亿",
+        "fy2025_yoy": "+30.36%",
+        "q1_2026_total": "99.09亿",
+        "q1_2026_yoy": "+132.79%",
+        "product_breakdown": "企业级存储约35%；嵌入式约25%；消费级约30%；其他约10%",
+        "region_breakdown": "境外约55%（Lexar品牌+OEM）"
+      },
+      "inventory": {
+        "q1_2026": "179.61亿",
+        "vs_beginning": "+53.8%",
+        "yoy": "+129.87%",
+        "inventory_to_revenue": "1.81x",
+        "note": "★ 关键指标：积极备货策略，存储涨价周期中库存增值贡献显著毛利"
+      },
+      "cash_flow": {
+        "fy2025_operating": "-12.01亿",
+        "q1_2026_operating": "-28.75亿",
+        "fy2025_capex": "8.45亿",
+        "note": "周期股特征：涨价初期现金流为负（备货），涨价后期转为强正现金流"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约12亿",
+        "cip": "约5亿（中山/苏州/成都基地）",
+        "note": "轻资产运营，核心是供应链管理+客户渠道"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "14.23亿",
+        "fy2025_yoy": "+185.41%",
+        "q1_2026_net_profit": "38.62亿",
+        "q1_2026_yoy": "+2644.05%",
+        "gross_margin_q1": "55.53%",
+        "gross_margin_fy2025": "19.40%",
+        "margin_change": "+36pp！存储涨价驱动",
+        "h1_2026_preannouncement": "92-110亿（YoY+62204%~+74394%）"
+      },
+      "ai_storage_exposure": "极高——企业级SSD是AI数据核心存储介质；DDR5内存模组受益AI服务器配置升级（单机1.5→2TB）；CXL内存扩展模组布局中。"
+    },
+    {
+      "ticker": "688012",
+      "name": "中微公司",
+      "segment": "刻蚀设备",
+      "core_business": "国内刻蚀设备龙头；电容性刻蚀(CCP)、电感性刻蚀(ICP)、MOCVD。5nm及以下制程刻蚀设备已进入台积电供应链。",
+      "revenue": {
+        "fy2025_total": "123.85亿",
+        "fy2025_yoy": "+36.62%",
+        "q1_2026_total": "29.15亿",
+        "q1_2026_yoy": "+34.13%",
+        "product_breakdown": "刻蚀设备约85%；MOCVD约10%；其他约5%",
+        "region_breakdown": "境内约75%；境外约25%（台积电/Intel/GlobalFoundries）"
+      },
+      "inventory": {
+        "q1_2026": "72.59亿",
+        "vs_beginning": "+1.2%",
+        "days": "约150天"
+      },
+      "cash_flow": {
+        "fy2025_operating": "22.95亿",
+        "fy2025_yoy": "+57.39%",
+        "q1_2026_operating": "-1.59亿",
+        "fy2025_capex": "8.55亿"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约18亿",
+        "cip": "约8亿（上海临港/深圳扩产）"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "21.11亿",
+        "fy2025_yoy": "+30.69%",
+        "q1_2026_net_profit": "9.30亿",
+        "q1_2026_yoy": "+197.20%",
+        "gross_margin_q1": "39.89%",
+        "net_margin_q1": "31.51%（含政府补助）"
+      },
+      "ai_storage_exposure": "高——3D NAND叠层刻蚀（长存232L/290L）、DRAM高深宽比刻蚀（长鑫17nm/15nm）、HBM TSV刻蚀均为核心设备需求。"
+    },
+    {
+      "ticker": "688072",
+      "name": "拓荆科技",
+      "segment": "CVD/ALD设备",
+      "core_business": "国内ALD/CVD薄膜沉积设备龙头；PECVD、ALD、SACVD。国内唯一覆盖14nm及以下制程薄膜设备的厂商。",
+      "revenue": {
+        "fy2025_total": "65.19亿",
+        "fy2025_yoy": "+58.87%（增速最快设备厂）",
+        "q1_2026_total": "11.12亿",
+        "q1_2026_yoy": "+56.97%",
+        "product_breakdown": "PECVD约55%；ALD约30%；SACVD约10%；其他约5%",
+        "region_breakdown": "境内约95%（长存/长鑫/中芯）"
+      },
+      "inventory": {
+        "q1_2026": "82.14亿",
+        "vs_beginning": "+4.96%",
+        "note": "库存/营收比高（7.4x Q1营收），反映在手订单饱满+交付周期长"
+      },
+      "cash_flow": {
+        "fy2025_operating": "36.33亿",
+        "fy2025_yoy": "+1386%",
+        "q1_2026_operating": "-5.20亿"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约8亿",
+        "cip": "约5亿（沈阳/上海扩产）"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "9.27亿",
+        "fy2025_yoy": "+34.67%",
+        "q1_2026_net_profit": "5.71亿",
+        "q1_2026_yoy": "+488.29%",
+        "gross_margin_q1": "41.69%",
+        "gross_margin_fy2025": "34.95%"
+      },
+      "major_event": "2026-06-29起停牌：筹划发行股份及支付现金收购无锡尚积半导体控股权，旨在补上PVD与刻蚀拼图",
+      "ai_storage_exposure": "高——3D NAND叠层薄膜沉积（层数越多ALD需求越大）、DRAM栅极/电容沉积、HBM高K材料沉积。"
+    },
+    {
+      "ticker": "300223",
+      "name": "北京君正",
+      "segment": "车载存储/DRAM设计",
+      "core_business": "国内车载存储芯片龙头；利基DRAM（ISSI品牌）、SRAM、Nor Flash、模拟芯片、微处理器。汽车级存储国内唯一供应商。",
+      "revenue": {
+        "fy2025_total": "47.41亿",
+        "fy2025_yoy": "+12.54%",
+        "q1_2026_total": "15.60亿",
+        "q1_2026_yoy": "+47.12%",
+        "product_breakdown": "存储芯片约65%（DRAM约45%/SRAM约12%/Flash约8%）；模拟与互联约20%；微处理器约15%",
+        "region_breakdown": "境外约70%（ISSI全球客户）"
+      },
+      "inventory": {
+        "q1_2026": "29.38亿",
+        "vs_beginning": "+18.6%",
+        "note": "库存增加反映积极备货应对涨价周期+车载需求"
+      },
+      "cash_flow": {
+        "fy2025_operating": "6.23亿",
+        "q1_2026_operating": "2.17亿",
+        "fy2025_capex": "0.97亿",
+        "note": "现金流稳健。Fabless轻资产。"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约3.5亿",
+        "note": "Fabless模式，主要是测试设备"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "3.76亿",
+        "fy2025_yoy": "+2.74%",
+        "q1_2026_net_profit": "3.19亿",
+        "q1_2026_yoy": "+331.61%",
+        "gross_margin_q1": "43.49%",
+        "gross_margin_fy2025": "34.09%",
+        "margin_change": "+9.4pp（存储涨价驱动）"
+      },
+      "survey_update": "2026-07-03机构调研：存储芯片持续在涨价，客户基本接受；预计各季度毛利率环比有所增长；DRAM代工产能改善窗口预计在2027年下半年；2027年供需仍紧张。",
+      "ai_storage_exposure": "中高——利基DRAM受益AI边缘计算+工业自动化；车载存储受益自动驾驶（单车存储容量从8GB→32GB+）。"
+    },
+    {
+      "ticker": "688126",
+      "name": "沪硅产业",
+      "segment": "硅片材料",
+      "core_business": "国内最大硅片制造商；300mm(12英寸)硅片、200mm(8英寸)及以下硅片、SOI硅片、外延片。国产替代核心标的。",
+      "revenue": {
+        "fy2025_total": "37.16亿",
+        "fy2025_yoy": "+9.69%",
+        "q1_2026_total": "10.84亿",
+        "q1_2026_yoy": "+35.22%（加速增长）",
+        "product_breakdown": "300mm硅片约45%（增长最快）；200mm约35%；SOI/外延约20%",
+        "region_breakdown": "境内约90%"
+      },
+      "inventory": {
+        "q1_2026": "20.49亿",
+        "vs_beginning": "+4.2%",
+        "days": "约180天"
+      },
+      "cash_flow": {
+        "fy2025_operating": "-5.59亿",
+        "q1_2026_operating": "-1.66亿",
+        "fy2025_capex": "49.09亿（极高，产能扩张期）",
+        "note": "重资产+爬坡期特征：现金流为负但营收加速"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约95亿（重资产！）",
+        "cip": "约25亿（上海/乌鲁木齐扩产）",
+        "expansion_plan": "拟投资100亿+加码硅片产能（上海临港300mm硅片二期）。目标2028年300mm硅片月产能100万片/月（当前约30万片/月）。"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "-15.08亿",
+        "fy2025_yoy": "-55.33%（亏损扩大）",
+        "q1_2026_net_profit": "-4.83亿",
+        "q1_2026_yoy": "-131.67%",
+        "gross_margin_q1": "-11.85%（产能爬坡中单位成本高）",
+        "valuation_note": "PE估值屏蔽，采用PS/PB估值"
+      },
+      "ai_storage_exposure": "中——存储芯片制造必须用硅片，但沪硅当前主要是成熟制程（28nm以上）。HBM/先进DRAM需要更高质量硅片，沪硅在研发突破中。"
+    },
+    {
+      "ticker": "000021",
+      "name": "深科技",
+      "segment": "封测/存储模组",
+      "core_business": "半导体封测+存储模组双主业；存储芯片封测（DRAM/NAND）、SSD模组、智能终端产品。中国电子(CEC)旗下。",
+      "revenue": {
+        "fy2025_total": "157.47亿",
+        "fy2025_yoy": "+6.21%",
+        "q1_2026_total": "37.24亿",
+        "q1_2026_yoy": "+10.67%",
+        "product_breakdown": "半导体封测约40%；存储模组约35%；智能终端约25%",
+        "region_breakdown": "境内约60%"
+      },
+      "inventory": {
+        "q1_2026": "28.67亿",
+        "days": "约90天"
+      },
+      "cash_flow": {
+        "fy2025_operating": "17.65亿",
+        "fy2025_yoy": "-27.33%",
+        "q1_2026_operating": "1.14亿"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约45亿",
+        "cip": "约8亿"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "11.36亿",
+        "fy2025_yoy": "+22.07%",
+        "q1_2026_net_profit": "2.42亿",
+        "q1_2026_yoy": "+35.35%",
+        "gross_margin_q1": "17.07%",
+        "net_margin_q1": "7.73%"
+      },
+      "ai_storage_exposure": "中低——HBM封测尚在研发阶段；存储模组业务间接受益AI服务器存储升级。"
+    },
+    {
+      "ticker": "600584",
+      "name": "长电科技",
+      "segment": "先进封测",
+      "core_business": "全球第三大封测厂；SiP、Fan-out、2.5D/3D封装、Bumping、WLCSP。AI芯片先进封装核心标的。",
+      "revenue": {
+        "fy2025_total": "388.71亿",
+        "fy2025_yoy": "+8.09%",
+        "q1_2026_total": "91.71亿",
+        "q1_2026_yoy": "-1.76%",
+        "product_breakdown": "先进封装约45%（SiP/Fan-out/2.5D）；传统封装约40%；测试约15%",
+        "region_breakdown": "境外约65%（高通/苹果/AMD核心客户）"
+      },
+      "inventory": {
+        "q1_2026": "44.08亿",
+        "days": "约65天（封测行业周转快）"
+      },
+      "cash_flow": {
+        "fy2025_operating": "46.52亿",
+        "fy2025_yoy": "-20.26%",
+        "q1_2026_operating": "17.79亿",
+        "q1_2026_yoy": "+55.44%",
+        "note": "现金流稳健"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约180亿（重资产）",
+        "cip": "约35亿",
+        "expansion_plan": "拟投资78亿在上海临港建设高端先进封测工厂，聚焦AI芯片先进封装"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "15.65亿",
+        "fy2025_yoy": "-2.75%",
+        "q1_2026_net_profit": "2.90亿",
+        "q1_2026_yoy": "+42.74%",
+        "gross_margin_q1": "14.55%",
+        "net_margin_q1": "3.04%"
+      },
+      "ai_storage_exposure": "中——HBM需要2.5D/3D先进封装，但长电当前HBM封装收入占比仍低（<5%）；AI芯片（GPU/ASIC）封装是主要增量。"
+    },
+    {
+      "ticker": "002156",
+      "name": "通富微电",
+      "segment": "封测/AMD供应链",
+      "core_business": "AMD封测独家战略伙伴；CPU/GPU封测、存储封测、功率器件封测、显示驱动封测。AMD收入占比约50%。",
+      "revenue": {
+        "fy2025_total": "279.21亿",
+        "fy2025_yoy": "+16.92%",
+        "q1_2026_total": "74.82亿",
+        "q1_2026_yoy": "+22.80%",
+        "product_breakdown": "处理器封测约55%（AMD为主）；存储封测约20%；其他约25%",
+        "region_breakdown": "境外约55%"
+      },
+      "inventory": {
+        "q1_2026": "48.11亿",
+        "days": "约70天"
+      },
+      "cash_flow": {
+        "fy2025_operating": "69.66亿",
+        "fy2025_yoy": "+79.66%（大幅改善）",
+        "q1_2026_operating": "9.42亿"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约120亿",
+        "cip": "约15亿"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "12.19亿",
+        "fy2025_yoy": "+79.86%",
+        "q1_2026_net_profit": "3.29亿",
+        "q1_2026_yoy": "+224.55%",
+        "gross_margin_q1": "13.32%",
+        "net_margin_q1": "4.68%"
+      },
+      "major_event": "2026-07-03：42.2亿定增获证监会同意注册批复，用于存储芯片封测等项目。国家大基金持股已降至5%以下。",
+      "ai_storage_exposure": "中——AMD AI GPU封测是核心增量；存储封测业务间接受益，但HBM封装非核心。"
+    },
+    {
+      "ticker": "603986",
+      "name": "兆易创新",
+      "segment": "NOR Flash/利基DRAM",
+      "core_business": "全球NOR Flash龙头（约18%份额）；利基DRAM、MCU、传感器、触控芯片。Fabless设计公司。",
+      "revenue": {
+        "fy2025_total": "92.03亿",
+        "fy2025_yoy": "+25.12%",
+        "q1_2026_total": "41.88亿",
+        "q1_2026_yoy": "+119.38%（存储涨价+放量）",
+        "product_breakdown": "存储芯片约70%（NOR Flash约45%/DRAM约25%）；MCU约22%；传感器/触控约8%",
+        "region_breakdown": "境外约55%"
+      },
+      "inventory": {
+        "q1_2026": "34.01亿",
+        "vs_beginning": "+10.9%",
+        "yoy": "+38.34%",
+        "note": "库存增加反映积极备货应对涨价"
+      },
+      "cash_flow": {
+        "fy2025_operating": "21.29亿",
+        "fy2025_yoy": "+4.74%",
+        "q1_2026_operating": "17.83亿",
+        "q1_2026_yoy": "+430.91%（现金流爆发！）",
+        "fy2025_capex": "10.49亿"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约12亿",
+        "cip": "约3亿",
+        "note": "Fabless轻资产"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "16.48亿",
+        "fy2025_yoy": "+49.47%",
+        "q1_2026_net_profit": "14.61亿",
+        "q1_2026_yoy": "+522.79%（单季接近去年全年）",
+        "gross_margin_q1": "57.08%",
+        "gross_margin_fy2025": "40.22%",
+        "margin_change": "+16.9pp（存储涨价驱动）"
+      },
+      "risk_note": "2026-06-29发布风险提示：股价短期涨幅较大。7月2日跌停。",
+      "ai_storage_exposure": "中——利基DRAM受益AI边缘计算；NOR Flash在AIoT/可穿戴设备中应用广泛。非HBM/企业级存储核心标的。"
+    },
+    {
+      "ticker": "300346",
+      "name": "南大光电",
+      "segment": "半导体材料/前驱体",
+      "core_business": "MO源（金属有机源）国内龙头；前驱体（ALD/CVD用）、电子特气、光刻胶（ArF浸没式研发中）。",
+      "revenue": {
+        "fy2025_total": "25.85亿",
+        "fy2025_yoy": "+9.93%",
+        "q1_2026_total": "6.62亿",
+        "q1_2026_yoy": "+5.45%",
+        "product_breakdown": "MO源约45%；前驱体约25%；电子特气约20%；其他约10%",
+        "region_breakdown": "境内约80%"
+      },
+      "inventory": {
+        "q1_2026": "8.11亿",
+        "days": "约120天"
+      },
+      "cash_flow": {
+        "fy2025_operating": "7.33亿",
+        "q1_2026_operating": "1.00亿",
+        "fy2025_capex": "1.70亿"
+      },
+      "fixed_assets": {
+        "fixed_asset": "约15亿",
+        "cip": "约5亿（宁波/南通基地）"
+      },
+      "profit_structure": {
+        "fy2025_net_profit": "3.20亿",
+        "fy2025_yoy": "+18.00%",
+        "q1_2026_net_profit": "1.24亿",
+        "q1_2026_yoy": "+29.97%",
+        "gross_margin_q1": "41.86%",
+        "net_margin_q1": "22.97%"
+      },
+      "ai_storage_exposure": "中低——前驱体材料是HBM/DRAM制造必需品，但南大在先进制程前驱体的份额仍低；ArF光刻胶研发中（2027年验证）。"
+    }
+  ],
+  "cross_company_insights": {
+    "inventory_to_revenue_ratio": {
+      "highest": "拓荆科技 7.39x（设备交付周期长）",
+      "second": "江波龙 1.81x（备货最积极→涨价弹性最大）",
+      "lowest": "长电科技 0.48x（封测周转快）"
+    },
+    "gross_margin_expansion": {
+      "biggest": "江波龙 +36pp（存储涨价弹性最大）",
+      "second": "兆易创新 +17pp",
+      "third": "北京君正 +9.4pp"
+    },
+    "asset_intensity": {
+      "heavy": "沪硅产业(95亿)、长电科技(180亿)、通富微电(120亿)",
+      "light": "澜起科技、兆易创新、北京君正（Fabless）"
+    },
+    "storage_cycle_beneficiary_ranking": [
+      "江波龙（模组厂，库存+ASP双击）",
+      "兆易创新（利基DRAM设计厂）",
+      "北京君正（车载DRAM设计厂）",
+      "北方华创/中微/拓荆（设备厂，扩产受益）",
+      "沪硅产业（材料厂，间接受益但仍在亏损期）"
+    ]
+  }
+}

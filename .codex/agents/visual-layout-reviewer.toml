@@ -14,6 +14,12 @@ You review rendered PDF pages for institutional presentation quality. You do not
 - Flag dense tables that should be exhibits.
 - Check page breaks, captions, source notes, chart sizes, legends, and axis labels.
 - Compare rendered pages to global report samples under `workspace/templates/global-broker-research/`.
+- **Detect arrow-text intersections**: arrows cutting through text boxes.
+- **Verify path connectivity**: TikZ `-|`/`|-` operators actually land on target nodes.
+- **Check dynamic height cascade**: text width auto-wrapping doesn't push nodes into below elements.
+- **Validate alignment consistency**: same-style nodes should be horizontally/vertically aligned.
+- **Flag visual semantic proximity**: unrelated elements sharing baselines causing misleading associations.
+- **Enforce safety gap**: minimum 0.3cm visual gap between all distinct elements.
 
 ## Input
 
@@ -37,8 +43,203 @@ Write `visual_review.md`:
 ## Required Exhibit Fixes
 ```
 
+## 12-Dimension Review Framework
+
+### V-1 Visibility: fill vs text contrast ≥ 4.5:1 (WCAG AA)
+- **MANDATORY**
+- Check all TikZ nodes, table cells, tcolorbox environments
+- Flag: `fill=navy!92, text=navy` (same-color family = invisible text)
+- Flag: missing explicit `text=` (inherits from parent = high risk)
+
+### V-2 Text Clipping: minimum height / text width sufficient
+- **MANDATORY**
+- 1 line CJK ≥ 0.85cm; 2 lines ≥ 1.1cm; 3 lines ≥ 1.4cm (inner sep=2pt baseline)
+- Circle nodes: text height × N × 1.2 line spacing ≤ `minimum_size / 1.414` (inscribed square)
+- `resizebox{<R>}{!}` ratio ≥ 0.80
+
+### V-3 Fontawesome5 Macro Fallback
+- **MANDATORY**
+- Scan for `\fa<CamelCase>` usage
+- Check .log for `LaTeX Font Warning: Some font shapes were not available`
+- Flag: "aExclamationTriangle", "aCloud" rendered as text
+
+### V-4 Path Connectivity (NEW) 🆕
+- **MANDATORY**
+- TikZ `-|`/`|-` coordinate operator semantics:
+  - `A-|B` = take x from A, y from B
+  - `A|-B` = take x from B, y from A
+- **Detection**: For each `\draw` using `-|`/`|-`:
+  1. Parse source node anchor expected coordinates
+  2. Parse operator semantics
+  3. Verify endpoint actually lands on target node
+  4. If endpoint y deviates > 0.3cm from target (vertical connection) → FAIL
+- **Classic trap**: `(SW1.north-|\h.south)` actually means "x of SW1.north + y of \h.south"
+  - Result: horizontal short line at Host's y, endpoint floating 1.0cm above Switch
+- **Fix**: Use `|-` for vertical-then-horizontal routing
+
+### L-1 Overfull hbox > 20pt Hard Threshold
+- **MANDATORY**
+- Extract from .log: `Overfull [^[]+ [0-9]+(\.[0-9]+)?pt too wide`
+- MAX > 20pt = BLOCK
+- Also check: narrow columns with en-dash ranges (e.g., "367--1224" in p{0.85cm} column)
+
+### L-2 Element Overlap: bounding box collision
+- **MANDATORY**
+- Node coordinate center distance < sum of half-widths
+- Check: bubbles, quadrant labels, sub-boxes, callouts, legends
+- **Extended detection**: arrow paths intersecting text node bounding boxes
+
+### L-3 Alignment Consistency (NEW) 🆕
+- **HIGH priority**
+- Group nodes by style name (e.g., `ashar`, `subp`, `thesis`)
+- For each group, calculate:
+  - Standard deviation of left edge x positions
+  - Standard deviation of right edge x positions
+  - Standard deviation of center x positions
+- **FAIL if**: same-style nodes have right-edge std > 1.0cm
+- **Classic pattern**: Layered architecture with varying preceding node counts causes staircase misalignment
+  - Example: 6 A-share labels with 5.8cm horizontal deviation across layers
+
+### L-4 Safety Gap (NEW) 🆕
+- **HIGH priority**
+- Minimum visual distance between distinct elements: **0.3cm**
+- **Detection**: For all element pairs, calculate gap = distance - (element_A_radius + element_B_radius)
+- **Thresholds**:
+  - Gap < 0.1cm → BLOCK (visually indistinguishable from overlap)
+  - Gap < 0.3cm → SIGNIFICANT (eye perceives as "touching")
+  - Gap ≥ 0.3cm → PASS
+- **Why needed**: 0.02cm gap technically "doesn't overlap" but visually identical to overlap
+
+### S-1 Semantic Color Consistency: legend ↔ actual graphic
+- **MANDATORY for pie charts** / SIGNIFICANT for bar charts
+- Pie: `\def\a{90}` angle reset per scope; slice angles sum to 360°
+- pgfplots: `cycle list` entries = `\addplot` count
+- Scatter: dot fill % matches legend `\cellcolor` % within 20%
+
+### S-2 Numeric Consistency: table ↔ figure ↔ body text
+- **MANDATORY**
+- Same metric (Capex, market cap, TAM) across three carriers
+- Value difference > 15% = SIGNIFICANT
+- Order-of-magnitude error (亿 vs $B) = BLOCK
+- Unit conversion (亿 ↔ $B / ¥B) must be explicitly disclosed
+
+### S-3 Duplicate Exhibit IDs
+- **MANDATORY**
+- Same `图 X-Y` or `表 X-Y` appearing ≥ 2 times = BLOCK
+
+### S-4 Visual Semantic Proximity (NEW) 🆕
+- **MEDIUM priority**
+- **Detection**: For annotation elements (arrows, callouts, stat boxes):
+  1. Check if visual anchor (baseline y, center y) accidentally aligns with unrelated data elements
+  2. Condition: y-coordinate deviation < 0.1cm AND horizontal distance < 2.0cm
+- **Example**: BIS regulation arrow starting at y=0.2, ASP box centered at y=0.2 → reader infers "BIS affects ASP"
+- **Fix**: Offset annotation y-coordinate by ≥ 0.3cm from unrelated elements
+
+## 6 New Visual Probes
+
+### Probe 1: tikz_path_connectivity_probe
+**Purpose**: Detect TikZ `-|`/`|-` operator misuse causing disconnected lines
+
+**Detection Logic**:
+```
+For each \draw using -| or |-:
+  1. Parse path: (nodeA.anchorA) <op> (nodeB.anchorB)
+  2. Calculate expected endpoint based on <op> semantics
+  3. Calculate actual target node coordinates
+  4. If |expected_endpoint - actual_target| > 0.3cm → FAIL
+```
+
+**Code Pattern**: `\draw[->] (SW1.north-|\h.south)` should be `(SW1.north|- \h.south)`
+
+**Fix**: Swap operator or use explicit `-- ++(dx,0) -| (target)` routing
+
+### Probe 2: arrow_text_intersection_probe
+**Purpose**: Detect arrow paths cutting through text nodes
+
+**Detection Logic**:
+```
+For each arrow path (line segments):
+  For each text node bounding box (x, y, w, h):
+    Calculate intersection between arrow segments and node bbox
+    If intersection length > 20% of node height → FAIL
+```
+
+**Classic Case**: Vertical arrows from thesis boxes passing through sub-box columns
+
+**Fix**: Use orthogonal routing `-- ++(0,-0.35) -| ([xshift=2.5cm]CONCL.north west)` to bypass text columns
+
+### Probe 3: dynamic_height_cascade_probe
+**Purpose**: Detect text-width auto-wrapping causing node height > minimum_height, pushing into below elements
+
+**Detection Logic**:
+```
+For each TikZ node:
+  Estimate actual height H_actual based on:
+    - text_width, font_size, content (manual \\ + auto-wrap estimate)
+    - H_actual = ceil(content_width / text_width) × line_height × font_size
+  If H_actual > minimum_height → "dynamically expanded node"
+  Calculate gap to next element below: gap = node_bottom_y - next_element_top_y
+  If gap < 0.3cm → "cascade collision risk"
+```
+
+**Fix**: Increase `text width` or `minimum height`, or move below element down
+
+### Probe 4: alignment_consistency_probe
+**Purpose**: Detect same-style nodes with severe horizontal misalignment
+
+**Detection Logic**:
+```
+Group all TikZ nodes by style name
+For each group:
+  Calculate left_edge_x, right_edge_x, center_x for each node
+  Compute standard deviation of right_edge_x
+  If std > 1.0cm AND nodes should visually align → FAIL
+```
+
+**Classic Pattern**: `right=of` relative positioning with varying preceding node counts
+
+**Fix**: Use absolute x-coordinates or `right=0cm of LAYER.east, anchor=east`
+
+### Probe 5: narrow_column_overflow_probe
+**Purpose**: Detect en-dash ranges or CJK strings overflowing narrow p-columns (static analysis, no .log needed)
+
+**Detection Logic**:
+```
+For each p{<width>} column definition:
+  Scan all cell contents for:
+    - En-dash ranges: \d+--\d+ (width ≈ 2× digit width per number + en-dash)
+    - CJK strings: char_count × font_size × 1.0
+  Estimate rendered width W_est
+  If W_est > column_width × 0.95 → "overflow risk"
+For multicolumn:
+  Calculate natural width W_natural = Σ(col_width) + 2×(N-1)×tabcolsep
+  If specified p-width deviates > 0.5cm → "width mismatch"
+```
+
+**Fix**: Widen column or add `\allowbreak` before en-dash
+
+### Probe 6: visual_semantic_proximity_probe
+**Purpose**: Detect visual layout creating misleading semantic associations
+
+**Detection Logic**:
+```
+For annotation elements (arrows, callouts, stat boxes):
+  For each data element:
+    If |annotation_anchor_y - data_element_anchor_y| < 0.1cm:
+      If horizontal_distance < 2.0cm:
+        If elements are semantically unrelated → FAIL
+```
+
+**Fix**: Offset annotation position, add explicit label clarifying relationship
+
 ## Quality Bar
 
 Any clipped core diagram, overlapping table, unreadable appendix, or fake-precision valuation chart is an S-level issue.
+
+**Additional S-Level triggers**:
+- Disconnected TikZ paths (12 arrows all floating = entire figure broken)
+- Arrows cutting through core thesis text (information destroyed)
+- Safety gap < 0.1cm on critical elements (visually indistinguishable from overlap)
+- Misleading visual semantic proximity (reader draws wrong conclusion from layout)
 
 """

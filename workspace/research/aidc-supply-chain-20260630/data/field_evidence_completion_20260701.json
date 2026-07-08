@@ -7,7 +7,8 @@
     "total_field_cells": 413,
     "status_counts": {
       "direct": 409,
-      "proxy": 4
+      "proxy": 2,
+      "broker_indirect": 2
     },
     "field_status_counts": {
       "revenue_exposure": {
@@ -28,13 +29,14 @@
       },
       "utilization_or_yield": {
         "direct": 56,
-        "proxy": 3
+        "broker_indirect": 2,
+        "proxy": 1
       },
       "margin_impact": {
         "direct": 59
       }
     },
-    "rule": "Every modeled core candidate must have direct, proxy, structured-model, source-exhausted, or watchlist-blocked status for each material field."
+    "rule": "Every modeled core candidate must classify each material field as direct, proxy, broker-indirect, demand-anchor, structured-model, OCR-noise, source-exhausted, or watchlist-blocked."
   },
   "rows": [
     {
@@ -3436,8 +3438,8 @@
           "valuation_consequence": "usable in target/fair-value model with no incremental uplift beyond the evidenced field"
         },
         "utilization_or_yield": {
-          "status": "proxy",
-          "evidence": "代理证据：及推测不一致的报告。本公司不保证本报告所含信息及资料保持在最新状态，本公司将随时补充、 更新和修订有关信息及资料，但不保证及时公开发布。同时，本公司有权对本报告所含信息在 ### utilization_or_yield ### margin_impact - 72.93%。 25H1 公司箱式变电站、变压器、成套开关柜分别实现营收 18.66/5.68/5...",
+          "status": "broker_indirect",
+          "evidence": "券商间接证据：及推测不一致的报告。本公司不保证本报告所含信息及资料保持在最新状态，本公司将随时补充、 更新和修订有关信息及资料，但不保证及时公开发布。同时，本公司有权对本报告所含信息在 ### utilization_or_yield ### margin_impact - 72.93%。 25H1 公司箱式变电站、变压器、成套开关柜分别实现营收 18.66/5.68/5...",
           "raw_snippet": "及推测不一致的报告。本公司不保证本报告所含信息及资料保持在最新状态，本公司将随时补充、 更新和修订有关信息及资料，但不保证及时公开发布。同时，本公司有权对本报告所含信息在 ### utilization_or_yield ### margin_impact - 72.93%。 25H1 公司箱式变电站、变压器、成套开关柜分别实现营收 18.66/5.68/5...",
           "source": "sources/blocked-core-candidate-broker-reports-20260701/301291-明阳电气/02-AP202509041738768805-华金证券-上半年业绩高增-aidc带来新机遇.md",
           "score": 4,
@@ -3754,8 +3756,8 @@
           "valuation_consequence": "usable in target/fair-value model with no incremental uplift beyond the evidenced field"
         },
         "utilization_or_yield": {
-          "status": "proxy",
-          "evidence": "代理证据：。同样，阁下获得有关投资 电话: (4420) 3651 8888 的价值或风险的可靠信息也存在困难。本报告中包含或涉及的投资及服务可能未必 ### utilization_or_yield ### margin_impact - 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年...",
+          "status": "broker_indirect",
+          "evidence": "券商间接证据：。同样，阁下获得有关投资 电话: (4420) 3651 8888 的价值或风险的可靠信息也存在困难。本报告中包含或涉及的投资及服务可能未必 ### utilization_or_yield ### margin_impact - 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年...",
           "raw_snippet": "。同样，阁下获得有关投资 电话: (4420) 3651 8888 的价值或风险的可靠信息也存在困难。本报告中包含或涉及的投资及服务可能未必 ### utilization_or_yield ### margin_impact - 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年...",
           "source": "sources/blocked-core-candidate-broker-reports-20260701/688041-海光信息/01-AP202605251822847721-中银证券-双芯驱动-生态筑基-引领国产算力新纪元.md",
           "score": 6,

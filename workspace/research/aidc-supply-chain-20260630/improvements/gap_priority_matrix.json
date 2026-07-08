@@ -1,0 +1,1552 @@
+{
+  "metadata": {
+    "generated_at": "2026-07-02",
+    "total_gaps": 85,
+    "scoring_method": "value_volume * purity_improvement * evidence_feasibility / 100",
+    "priority_thresholds": {
+      "high": {
+        "min": 5.0,
+        "action": "short_term_1_3m"
+      },
+      "medium": {
+        "min": 2.0,
+        "max": 5.0,
+        "action": "medium_term_3_6m"
+      },
+      "low": {
+        "max": 2.0,
+        "action": "long_term_6_12m"
+      }
+    },
+    "dimensions": {
+      "value_volume": {
+        "scale": "1-10",
+        "factors": [
+          "global_TAM",
+          "A_share_mappable_market",
+          "margin_level"
+        ]
+      },
+      "purity_improvement": {
+        "scale": "1-10",
+        "factors": [
+          "current_A_share_technology",
+          "customer_import_progress",
+          "domestic_substitution_policy",
+          "historical_substitution_speed"
+        ]
+      },
+      "evidence_feasibility": {
+        "scale": "1-10",
+        "factors": [
+          "regular_disclosure_obligation",
+          "broker_coverage_density",
+          "industry_data_availability",
+          "official_announcement_frequency"
+        ]
+      }
+    }
+  },
+  "summary": {
+    "high_priority_count": 4,
+    "medium_priority_count": 24,
+    "low_priority_count": 57,
+    "overall_average_score": 1.82,
+    "block_averages": [
+      {
+        "block": "PCB 与上游材料设备",
+        "count": 10,
+        "avg_score": 2.28
+      },
+      {
+        "block": "服务器整机与零部件",
+        "count": 12,
+        "avg_score": 2.12
+      },
+      {
+        "block": "下游需求与应用",
+        "count": 10,
+        "avg_score": 1.95
+      },
+      {
+        "block": "数据中心建设与运营",
+        "count": 10,
+        "avg_score": 1.88
+      },
+      {
+        "block": "供配电与能源",
+        "count": 10,
+        "avg_score": 1.76
+      },
+      {
+        "block": "上游算力芯片与存储",
+        "count": 10,
+        "avg_score": 1.74
+      },
+      {
+        "block": "网络与光通信",
+        "count": 12,
+        "avg_score": 1.74
+      },
+      {
+        "block": "液冷与温控",
+        "count": 11,
+        "avg_score": 1.15
+      }
+    ]
+  },
+  "top20_highest_priority": [
+    {
+      "rank": 1,
+      "gap_id": "GAP024",
+      "node": "800G/1.6T 光模块",
+      "block": "网络与光通信",
+      "value": 10,
+      "purity": 9,
+      "evidence": 10,
+      "score": 9.0,
+      "tier": "high"
+    },
+    {
+      "rank": 2,
+      "gap_id": "GAP011",
+      "node": "AI 服务器/ODM",
+      "block": "服务器整机与零部件",
+      "value": 9,
+      "purity": 8,
+      "evidence": 9,
+      "score": 6.48,
+      "tier": "high"
+    },
+    {
+      "rank": 3,
+      "gap_id": "GAP035",
+      "node": "AI 服务器 PCB",
+      "block": "PCB 与上游材料设备",
+      "value": 9,
+      "purity": 8,
+      "evidence": 9,
+      "score": 6.48,
+      "tier": "high"
+    },
+    {
+      "rank": 4,
+      "gap_id": "GAP069",
+      "node": "IDC/AIDC 运营",
+      "block": "数据中心建设与运营",
+      "value": 9,
+      "purity": 8,
+      "evidence": 9,
+      "score": 6.48,
+      "tier": "high"
+    },
+    {
+      "rank": 5,
+      "gap_id": "GAP016",
+      "node": "背板/主板/Riser",
+      "block": "服务器整机与零部件",
+      "value": 8,
+      "purity": 7,
+      "evidence": 8,
+      "score": 4.48,
+      "tier": "medium"
+    },
+    {
+      "rank": 6,
+      "gap_id": "GAP038",
+      "node": "高速 CCL",
+      "block": "PCB 与上游材料设备",
+      "value": 8,
+      "purity": 7,
+      "evidence": 8,
+      "score": 4.48,
+      "tier": "medium"
+    },
+    {
+      "rank": 7,
+      "gap_id": "GAP045",
+      "node": "电力指标/接入",
+      "block": "供配电与能源",
+      "value": 8,
+      "purity": 7,
+      "evidence": 8,
+      "score": 4.48,
+      "tier": "medium"
+    },
+    {
+      "rank": 8,
+      "gap_id": "GAP004",
+      "node": "内存接口芯片",
+      "block": "上游算力芯片与存储",
+      "value": 7,
+      "purity": 7,
+      "evidence": 8,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "rank": 9,
+      "gap_id": "GAP022",
+      "node": "整柜集成/液冷服务器",
+      "block": "服务器整机与零部件",
+      "value": 8,
+      "purity": 7,
+      "evidence": 7,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "rank": 10,
+      "gap_id": "GAP036",
+      "node": "交换机/路由器 PCB",
+      "block": "PCB 与上游材料设备",
+      "value": 7,
+      "purity": 7,
+      "evidence": 8,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "rank": 11,
+      "gap_id": "GAP080",
+      "node": "政企智算",
+      "block": "下游需求与应用",
+      "value": 8,
+      "purity": 7,
+      "evidence": 7,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "rank": 12,
+      "gap_id": "GAP023",
+      "node": "AI 交换机/路由器",
+      "block": "网络与光通信",
+      "value": 9,
+      "purity": 6,
+      "evidence": 7,
+      "score": 3.78,
+      "tier": "medium"
+    },
+    {
+      "rank": 13,
+      "gap_id": "GAP077",
+      "node": "中国云厂商",
+      "block": "下游需求与应用",
+      "value": 9,
+      "purity": 6,
+      "evidence": 7,
+      "score": 3.78,
+      "tier": "medium"
+    },
+    {
+      "rank": 14,
+      "gap_id": "GAP048",
+      "node": "UPS/HVDC",
+      "block": "供配电与能源",
+      "value": 7,
+      "purity": 7,
+      "evidence": 7,
+      "score": 3.43,
+      "tier": "medium"
+    },
+    {
+      "rank": 15,
+      "gap_id": "GAP010",
+      "node": "国产算力平台",
+      "block": "上游算力芯片与存储",
+      "value": 8,
+      "purity": 7,
+      "evidence": 6,
+      "score": 3.36,
+      "tier": "medium"
+    },
+    {
+      "rank": 16,
+      "gap_id": "GAP014",
+      "node": "高速连接器",
+      "block": "服务器整机与零部件",
+      "value": 7,
+      "purity": 6,
+      "evidence": 7,
+      "score": 2.94,
+      "tier": "medium"
+    },
+    {
+      "rank": 17,
+      "gap_id": "GAP066",
+      "node": "土地/园区/能耗指标",
+      "block": "数据中心建设与运营",
+      "value": 7,
+      "purity": 6,
+      "evidence": 7,
+      "score": 2.94,
+      "tier": "medium"
+    },
+    {
+      "rank": 18,
+      "gap_id": "GAP055",
+      "node": "冷板",
+      "block": "液冷与温控",
+      "value": 7,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.52,
+      "tier": "medium"
+    },
+    {
+      "rank": 19,
+      "gap_id": "GAP056",
+      "node": "CDU",
+      "block": "液冷与温控",
+      "value": 7,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.52,
+      "tier": "medium"
+    },
+    {
+      "rank": 20,
+      "gap_id": "GAP063",
+      "node": "冷水机组/精密空调",
+      "block": "液冷与温控",
+      "value": 7,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.52,
+      "tier": "medium"
+    }
+  ],
+  "bottom20_lowest_priority": [
+    {
+      "rank": 1,
+      "gap_id": "GAP021",
+      "node": "BMC/管理芯片",
+      "block": "服务器整机与零部件",
+      "value": 4,
+      "purity": 1,
+      "evidence": 1,
+      "score": 0.04,
+      "tier": "low"
+    },
+    {
+      "rank": 2,
+      "gap_id": "GAP018",
+      "node": "滑轨",
+      "block": "服务器整机与零部件",
+      "value": 2,
+      "purity": 3,
+      "evidence": 2,
+      "score": 0.12,
+      "tier": "low"
+    },
+    {
+      "rank": 3,
+      "gap_id": "GAP026",
+      "node": "DSP/SerDes/TIA",
+      "block": "网络与光通信",
+      "value": 6,
+      "purity": 1,
+      "evidence": 2,
+      "score": 0.12,
+      "tier": "low"
+    },
+    {
+      "rank": 4,
+      "gap_id": "GAP065",
+      "node": "漏液检测",
+      "block": "液冷与温控",
+      "value": 2,
+      "purity": 3,
+      "evidence": 2,
+      "score": 0.12,
+      "tier": "low"
+    },
+    {
+      "rank": 5,
+      "gap_id": "GAP060",
+      "node": "管路/软管",
+      "block": "液冷与温控",
+      "value": 2,
+      "purity": 3,
+      "evidence": 3,
+      "score": 0.18,
+      "tier": "low"
+    },
+    {
+      "rank": 6,
+      "gap_id": "GAP028",
+      "node": "CPO/NPO/OIO",
+      "block": "网络与光通信",
+      "value": 6,
+      "purity": 2,
+      "evidence": 2,
+      "score": 0.24,
+      "tier": "low"
+    },
+    {
+      "rank": 7,
+      "gap_id": "GAP034",
+      "node": "OCS/光交换",
+      "block": "网络与光通信",
+      "value": 4,
+      "purity": 3,
+      "evidence": 2,
+      "score": 0.24,
+      "tier": "low"
+    },
+    {
+      "rank": 8,
+      "gap_id": "GAP031",
+      "node": "FAU",
+      "block": "网络与光通信",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "rank": 9,
+      "gap_id": "GAP057",
+      "node": "Manifold/分液器",
+      "block": "液冷与温控",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "rank": 10,
+      "gap_id": "GAP058",
+      "node": "快接头",
+      "block": "液冷与温控",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "rank": 11,
+      "gap_id": "GAP061",
+      "node": "冷却液",
+      "block": "液冷与温控",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "rank": 12,
+      "gap_id": "GAP067",
+      "node": "机房设计/咨询",
+      "block": "数据中心建设与运营",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "rank": 13,
+      "gap_id": "GAP032",
+      "node": "陶瓷套管",
+      "block": "网络与光通信",
+      "value": 2,
+      "purity": 5,
+      "evidence": 4,
+      "score": 0.4,
+      "tier": "low"
+    },
+    {
+      "rank": 14,
+      "gap_id": "GAP006",
+      "node": "DPU/NIC/SuperNIC",
+      "block": "上游算力芯片与存储",
+      "value": 7,
+      "purity": 2,
+      "evidence": 3,
+      "score": 0.42,
+      "tier": "low"
+    },
+    {
+      "rank": 15,
+      "gap_id": "GAP017",
+      "node": "机柜",
+      "block": "服务器整机与零部件",
+      "value": 4,
+      "purity": 3,
+      "evidence": 4,
+      "score": 0.48,
+      "tier": "low"
+    },
+    {
+      "rank": 16,
+      "gap_id": "GAP030",
+      "node": "AWG",
+      "block": "网络与光通信",
+      "value": 3,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.48,
+      "tier": "low"
+    },
+    {
+      "rank": 17,
+      "gap_id": "GAP008",
+      "node": "存储控制器/主控",
+      "block": "上游算力芯片与存储",
+      "value": 5,
+      "purity": 3,
+      "evidence": 4,
+      "score": 0.6,
+      "tier": "low"
+    },
+    {
+      "rank": 18,
+      "gap_id": "GAP050",
+      "node": "BBU/电池备电",
+      "block": "供配电与能源",
+      "value": 5,
+      "purity": 3,
+      "evidence": 4,
+      "score": 0.6,
+      "tier": "low"
+    },
+    {
+      "rank": 19,
+      "gap_id": "GAP041",
+      "node": "铜箔/HVLP 铜箔",
+      "block": "PCB 与上游材料设备",
+      "value": 4,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.64,
+      "tier": "low"
+    },
+    {
+      "rank": 20,
+      "gap_id": "GAP044",
+      "node": "电镀/压合设备",
+      "block": "PCB 与上游材料设备",
+      "value": 4,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.64,
+      "tier": "low"
+    }
+  ],
+  "all_gaps": [
+    {
+      "gap_id": "GAP001",
+      "block": "上游算力芯片与存储",
+      "node": "GPU/AI ASIC",
+      "value": 10,
+      "purity": 4,
+      "evidence": 5,
+      "score": 2.0,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP002",
+      "block": "上游算力芯片与存储",
+      "node": "CPU/Host CPU",
+      "value": 7,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.75,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP003",
+      "block": "上游算力芯片与存储",
+      "node": "HBM/DRAM",
+      "value": 8,
+      "purity": 4,
+      "evidence": 6,
+      "score": 1.92,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP004",
+      "block": "上游算力芯片与存储",
+      "node": "内存接口芯片",
+      "value": 7,
+      "purity": 7,
+      "evidence": 8,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP005",
+      "block": "上游算力芯片与存储",
+      "node": "企业级 SSD",
+      "value": 6,
+      "purity": 4,
+      "evidence": 5,
+      "score": 1.2,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP006",
+      "block": "上游算力芯片与存储",
+      "node": "DPU/NIC/SuperNIC",
+      "value": 7,
+      "purity": 2,
+      "evidence": 3,
+      "score": 0.42,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP007",
+      "block": "上游算力芯片与存储",
+      "node": "交换 ASIC",
+      "value": 7,
+      "purity": 3,
+      "evidence": 4,
+      "score": 0.84,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP008",
+      "block": "上游算力芯片与存储",
+      "node": "存储控制器/主控",
+      "value": 5,
+      "purity": 3,
+      "evidence": 4,
+      "score": 0.6,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP009",
+      "block": "上游算力芯片与存储",
+      "node": "先进封装/Chiplet 配套",
+      "value": 7,
+      "purity": 4,
+      "evidence": 5,
+      "score": 1.4,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP010",
+      "block": "上游算力芯片与存储",
+      "node": "国产算力平台",
+      "value": 8,
+      "purity": 7,
+      "evidence": 6,
+      "score": 3.36,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP011",
+      "block": "服务器整机与零部件",
+      "node": "AI 服务器/ODM",
+      "value": 9,
+      "purity": 8,
+      "evidence": 9,
+      "score": 6.48,
+      "tier": "high"
+    },
+    {
+      "gap_id": "GAP012",
+      "block": "服务器整机与零部件",
+      "node": "服务器电源 PSU",
+      "value": 6,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.16,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP013",
+      "block": "服务器整机与零部件",
+      "node": "Power shelf/板级/模组化电源",
+      "value": 5,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.8,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP014",
+      "block": "服务器整机与零部件",
+      "node": "高速连接器",
+      "value": 7,
+      "purity": 6,
+      "evidence": 7,
+      "score": 2.94,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP015",
+      "block": "服务器整机与零部件",
+      "node": "高速铜缆 DAC/ACC/AEC",
+      "value": 6,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.5,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP016",
+      "block": "服务器整机与零部件",
+      "node": "背板/主板/Riser",
+      "value": 8,
+      "purity": 7,
+      "evidence": 8,
+      "score": 4.48,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP017",
+      "block": "服务器整机与零部件",
+      "node": "机柜",
+      "value": 4,
+      "purity": 3,
+      "evidence": 4,
+      "score": 0.48,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP018",
+      "block": "服务器整机与零部件",
+      "node": "滑轨",
+      "value": 2,
+      "purity": 3,
+      "evidence": 2,
+      "score": 0.12,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP019",
+      "block": "服务器整机与零部件",
+      "node": "结构件",
+      "value": 5,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.25,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP020",
+      "block": "服务器整机与零部件",
+      "node": "热界面材料 TIM",
+      "value": 5,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.25,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP021",
+      "block": "服务器整机与零部件",
+      "node": "BMC/管理芯片",
+      "value": 4,
+      "purity": 1,
+      "evidence": 1,
+      "score": 0.04,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP022",
+      "block": "服务器整机与零部件",
+      "node": "整柜集成/液冷服务器",
+      "value": 8,
+      "purity": 7,
+      "evidence": 7,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP023",
+      "block": "网络与光通信",
+      "node": "AI 交换机/路由器",
+      "value": 9,
+      "purity": 6,
+      "evidence": 7,
+      "score": 3.78,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP024",
+      "block": "网络与光通信",
+      "node": "800G/1.6T 光模块",
+      "value": 10,
+      "purity": 9,
+      "evidence": 10,
+      "score": 9.0,
+      "tier": "high"
+    },
+    {
+      "gap_id": "GAP025",
+      "block": "网络与光通信",
+      "node": "光引擎/硅光",
+      "value": 7,
+      "purity": 4,
+      "evidence": 5,
+      "score": 1.4,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP026",
+      "block": "网络与光通信",
+      "node": "DSP/SerDes/TIA",
+      "value": 6,
+      "purity": 1,
+      "evidence": 2,
+      "score": 0.12,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP027",
+      "block": "网络与光通信",
+      "node": "LPO/LRO",
+      "value": 5,
+      "purity": 5,
+      "evidence": 4,
+      "score": 1.0,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP028",
+      "block": "网络与光通信",
+      "node": "CPO/NPO/OIO",
+      "value": 6,
+      "purity": 2,
+      "evidence": 2,
+      "score": 0.24,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP029",
+      "block": "网络与光通信",
+      "node": "光芯片/EML/VCSEL/CW laser",
+      "value": 7,
+      "purity": 5,
+      "evidence": 6,
+      "score": 2.1,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP030",
+      "block": "网络与光通信",
+      "node": "AWG",
+      "value": 3,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.48,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP031",
+      "block": "网络与光通信",
+      "node": "FAU",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP032",
+      "block": "网络与光通信",
+      "node": "陶瓷套管",
+      "value": 2,
+      "purity": 5,
+      "evidence": 4,
+      "score": 0.4,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP033",
+      "block": "网络与光通信",
+      "node": "光纤光缆/MPO",
+      "value": 5,
+      "purity": 6,
+      "evidence": 6,
+      "score": 1.8,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP034",
+      "block": "网络与光通信",
+      "node": "OCS/光交换",
+      "value": 4,
+      "purity": 3,
+      "evidence": 2,
+      "score": 0.24,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP035",
+      "block": "PCB 与上游材料设备",
+      "node": "AI 服务器 PCB",
+      "value": 9,
+      "purity": 8,
+      "evidence": 9,
+      "score": 6.48,
+      "tier": "high"
+    },
+    {
+      "gap_id": "GAP036",
+      "block": "PCB 与上游材料设备",
+      "node": "交换机/路由器 PCB",
+      "value": 7,
+      "purity": 7,
+      "evidence": 8,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP037",
+      "block": "PCB 与上游材料设备",
+      "node": "HDI/高多层板",
+      "value": 6,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.16,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP038",
+      "block": "PCB 与上游材料设备",
+      "node": "高速 CCL",
+      "value": 8,
+      "purity": 7,
+      "evidence": 8,
+      "score": 4.48,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP039",
+      "block": "PCB 与上游材料设备",
+      "node": "低损耗树脂/填料",
+      "value": 5,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.8,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP040",
+      "block": "PCB 与上游材料设备",
+      "node": "电子玻纤布",
+      "value": 4,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.0,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP041",
+      "block": "PCB 与上游材料设备",
+      "node": "铜箔/HVLP 铜箔",
+      "value": 4,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.64,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP042",
+      "block": "PCB 与上游材料设备",
+      "node": "IC 载板/ABF",
+      "value": 7,
+      "purity": 4,
+      "evidence": 5,
+      "score": 1.4,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP043",
+      "block": "PCB 与上游材料设备",
+      "node": "PCB 钻孔/曝光设备",
+      "value": 5,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.25,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP044",
+      "block": "PCB 与上游材料设备",
+      "node": "电镀/压合设备",
+      "value": 4,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.64,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP045",
+      "block": "供配电与能源",
+      "node": "电力指标/接入",
+      "value": 8,
+      "purity": 7,
+      "evidence": 8,
+      "score": 4.48,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP046",
+      "block": "供配电与能源",
+      "node": "变压器",
+      "value": 6,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.16,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP047",
+      "block": "供配电与能源",
+      "node": "高低压柜/开关柜",
+      "value": 5,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.25,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP048",
+      "block": "供配电与能源",
+      "node": "UPS/HVDC",
+      "value": 7,
+      "purity": 7,
+      "evidence": 7,
+      "score": 3.43,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP049",
+      "block": "供配电与能源",
+      "node": "PDU/母线槽",
+      "value": 5,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.25,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP050",
+      "block": "供配电与能源",
+      "node": "BBU/电池备电",
+      "value": 5,
+      "purity": 3,
+      "evidence": 4,
+      "score": 0.6,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP051",
+      "block": "供配电与能源",
+      "node": "柴油/燃气发电机",
+      "value": 4,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.64,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP052",
+      "block": "供配电与能源",
+      "node": "储能/PCS",
+      "value": 6,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.5,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP053",
+      "block": "供配电与能源",
+      "node": "电力 EPC/微网",
+      "value": 5,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.8,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP054",
+      "block": "供配电与能源",
+      "node": "绿电直供/PPA/算电协同",
+      "value": 6,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.5,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP055",
+      "block": "液冷与温控",
+      "node": "冷板",
+      "value": 7,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.52,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP056",
+      "block": "液冷与温控",
+      "node": "CDU",
+      "value": 7,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.52,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP057",
+      "block": "液冷与温控",
+      "node": "Manifold/分液器",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP058",
+      "block": "液冷与温控",
+      "node": "快接头",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP059",
+      "block": "液冷与温控",
+      "node": "泵阀/控制",
+      "value": 4,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.64,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP060",
+      "block": "液冷与温控",
+      "node": "管路/软管",
+      "value": 2,
+      "purity": 3,
+      "evidence": 3,
+      "score": 0.18,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP061",
+      "block": "液冷与温控",
+      "node": "冷却液",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP062",
+      "block": "液冷与温控",
+      "node": "干冷器/冷却塔",
+      "value": 5,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.25,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP063",
+      "block": "液冷与温控",
+      "node": "冷水机组/精密空调",
+      "value": 7,
+      "purity": 6,
+      "evidence": 6,
+      "score": 2.52,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP064",
+      "block": "液冷与温控",
+      "node": "液冷机柜",
+      "value": 6,
+      "purity": 6,
+      "evidence": 5,
+      "score": 1.8,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP065",
+      "block": "液冷与温控",
+      "node": "漏液检测",
+      "value": 2,
+      "purity": 3,
+      "evidence": 2,
+      "score": 0.12,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP066",
+      "block": "数据中心建设与运营",
+      "node": "土地/园区/能耗指标",
+      "value": 7,
+      "purity": 6,
+      "evidence": 7,
+      "score": 2.94,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP067",
+      "block": "数据中心建设与运营",
+      "node": "机房设计/咨询",
+      "value": 3,
+      "purity": 4,
+      "evidence": 3,
+      "score": 0.36,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP068",
+      "block": "数据中心建设与运营",
+      "node": "土建/EPC",
+      "value": 5,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.8,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP069",
+      "block": "数据中心建设与运营",
+      "node": "IDC/AIDC 运营",
+      "value": 9,
+      "purity": 8,
+      "evidence": 9,
+      "score": 6.48,
+      "tier": "high"
+    },
+    {
+      "gap_id": "GAP070",
+      "block": "数据中心建设与运营",
+      "node": "运营商智算云",
+      "value": 7,
+      "purity": 5,
+      "evidence": 6,
+      "score": 2.1,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP071",
+      "block": "数据中心建设与运营",
+      "node": "网络接入/专线",
+      "value": 5,
+      "purity": 4,
+      "evidence": 5,
+      "score": 1.0,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP072",
+      "block": "数据中心建设与运营",
+      "node": "运维/监控/DCIM",
+      "value": 4,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.64,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP073",
+      "block": "数据中心建设与运营",
+      "node": "算力服务/调度",
+      "value": 6,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.5,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP074",
+      "block": "数据中心建设与运营",
+      "node": "REITs/不动产资产证券化",
+      "value": 5,
+      "purity": 5,
+      "evidence": 6,
+      "score": 1.5,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP075",
+      "block": "数据中心建设与运营",
+      "node": "区域枢纽/国家算力网",
+      "value": 6,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.5,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP076",
+      "block": "下游需求与应用",
+      "node": "全球云厂商",
+      "value": 10,
+      "purity": 2,
+      "evidence": 8,
+      "score": 1.6,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP077",
+      "block": "下游需求与应用",
+      "node": "中国云厂商",
+      "value": 9,
+      "purity": 6,
+      "evidence": 7,
+      "score": 3.78,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP078",
+      "block": "下游需求与应用",
+      "node": "互联网大模型/MaaS",
+      "value": 8,
+      "purity": 5,
+      "evidence": 6,
+      "score": 2.4,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP079",
+      "block": "下游需求与应用",
+      "node": "AI 应用/SaaS/Agent",
+      "value": 7,
+      "purity": 4,
+      "evidence": 5,
+      "score": 1.4,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP080",
+      "block": "下游需求与应用",
+      "node": "政企智算",
+      "value": 8,
+      "purity": 7,
+      "evidence": 7,
+      "score": 3.92,
+      "tier": "medium"
+    },
+    {
+      "gap_id": "GAP081",
+      "block": "下游需求与应用",
+      "node": "科研超算/AI4S",
+      "value": 5,
+      "purity": 5,
+      "evidence": 5,
+      "score": 1.25,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP082",
+      "block": "下游需求与应用",
+      "node": "金融 AI",
+      "value": 5,
+      "purity": 4,
+      "evidence": 5,
+      "score": 1.0,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP083",
+      "block": "下游需求与应用",
+      "node": "制造/工业 AI",
+      "value": 6,
+      "purity": 4,
+      "evidence": 4,
+      "score": 0.96,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP084",
+      "block": "下游需求与应用",
+      "node": "自动驾驶/机器人/具身智能",
+      "value": 7,
+      "purity": 4,
+      "evidence": 4,
+      "score": 1.12,
+      "tier": "low"
+    },
+    {
+      "gap_id": "GAP085",
+      "block": "下游需求与应用",
+      "node": "内容/互联网推理",
+      "value": 7,
+      "purity": 5,
+      "evidence": 6,
+      "score": 2.1,
+      "tier": "medium"
+    }
+  ],
+  "resource_allocation": {
+    "analyst_time": {
+      "high": "40%",
+      "medium": "40%",
+      "low": "20%"
+    },
+    "data_budget": {
+      "high": "50%",
+      "medium": "35%",
+      "low": "15%"
+    },
+    "expert_interview": {
+      "high": "45%",
+      "medium": "40%",
+      "low": "15%"
+    },
+    "short_term_actions": [
+      {
+        "gap_id": "GAP024",
+        "action": "建立月度800G/1.6T出货量跟踪模型",
+        "key_metrics": [
+          "800G收入占比",
+          "1.6T客户认证",
+          "ASP趋势",
+          "毛利率"
+        ]
+      },
+      {
+        "gap_id": "GAP011",
+        "action": "完善工业富联/浪潮信息AI服务器收入拆分模型",
+        "key_metrics": [
+          "AI服务器收入占比",
+          "客户集中度",
+          "单机价值量"
+        ]
+      },
+      {
+        "gap_id": "GAP035",
+        "action": "建立沪电/胜宏/深南AI服务器PCB收入跟踪",
+        "key_metrics": [
+          "AI PCB收入占比",
+          "20L+良率",
+          "单机价值量"
+        ]
+      },
+      {
+        "gap_id": "GAP069",
+        "action": "建立润泽/奥飞/数据港AIDC运营指标仪表盘",
+        "key_metrics": [
+          "上架率",
+          "AIDC租约占比",
+          "电价成本",
+          "PUE"
+        ]
+      }
+    ],
+    "medium_term_monthly_themes": [
+      {
+        "theme": "PCB产业链升级",
+        "gaps": [
+          "GAP036",
+          "GAP037",
+          "GAP038"
+        ]
+      },
+      {
+        "theme": "服务器零部件国产替代",
+        "gaps": [
+          "GAP012",
+          "GAP014",
+          "GAP022"
+        ]
+      },
+      {
+        "theme": "算力芯片突破",
+        "gaps": [
+          "GAP001",
+          "GAP004",
+          "GAP010"
+        ]
+      },
+      {
+        "theme": "供配电验证",
+        "gaps": [
+          "GAP045",
+          "GAP046",
+          "GAP048"
+        ]
+      },
+      {
+        "theme": "网络设备升级",
+        "gaps": [
+          "GAP023",
+          "GAP029"
+        ]
+      },
+      {
+        "theme": "液冷渗透加速",
+        "gaps": [
+          "GAP055",
+          "GAP056",
+          "GAP063"
+        ]
+      },
+      {
+        "theme": "下游需求验证",
+        "gaps": [
+          "GAP077",
+          "GAP078",
+          "GAP080",
+          "GAP085"
+        ]
+      }
+    ],
+    "risk_monitoring": [
+      {
+        "risk": "800G光模块价格战",
+        "affected_gaps": [
+          "GAP024"
+        ],
+        "trigger": "中际旭创/新易盛毛利率环比下降>3pct"
+      },
+      {
+        "risk": "AI服务器需求不及预期",
+        "affected_gaps": [
+          "GAP011",
+          "GAP035"
+        ],
+        "trigger": "北美云厂capex下修>10%"
+      },
+      {
+        "risk": "国产算力政策退坡",
+        "affected_gaps": [
+          "GAP010",
+          "GAP080"
+        ],
+        "trigger": "政企智算招标金额同比下滑>20%"
+      },
+      {
+        "risk": "液冷渗透慢于预期",
+        "affected_gaps": [
+          "GAP055",
+          "GAP056",
+          "GAP063"
+        ],
+        "trigger": "头部IDC运营商液冷机柜占比<15%"
+      },
+      {
+        "risk": "PCB产能过剩",
+        "affected_gaps": [
+          "GAP035",
+          "GAP036",
+          "GAP038"
+        ],
+        "trigger": "行业产能利用率<75%持续2个季度"
+      }
+    ]
+  }
+}

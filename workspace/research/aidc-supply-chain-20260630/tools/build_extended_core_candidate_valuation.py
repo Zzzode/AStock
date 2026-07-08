@@ -687,7 +687,7 @@ def build_model_row(
         and eps_2026e <= 0
         and target_price is not None
     )
-    bear = base = bull = final_target = upside = bubble_degree = None
+    bear = base = bull = final_target = upside = bubble_degree = market_anchor = None
     publication_status = "watchlist_only_insufficient_model"
     action = "watchlist only"
     rating = "观察"
@@ -782,6 +782,7 @@ def build_model_row(
         "bear": bear,
         "base": base,
         "bull": bull,
+        "market_anchor": market_anchor,
         "broker_target": target_price or "not disclosed",
         "broker_weight": broker_weight,
         "fundamental_weight": fundamental_weight,

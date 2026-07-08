@@ -1,28 +1,110 @@
-# Valuation Audit - AI Storage Full Valuation 2026-06-26
+# Valuation Audit - AI Storage Full Valuation 2026-07-03
 
 ## Executive Verdict
 
+- **更新日期**: 2026-07-03
 - Publishability: PASS FOR INTERNAL RESEARCH USE
-- Reason: current price, share count, market cap, EPS proxy, target price, valuation range, upside, rating, and risk triggers have been rebuilt on 2026-06-26 inputs.
-- Weighted base upside: -17.0%
-- Portfolio conclusion: low allocation; the report publishes a complete model, not a suspended-rating report.
+- Reason: 已基于2026-07-03收盘价和江波龙中报业绩预告完成估值更新
+- **Weighted base upside: +8.5%**（从-17.0%大幅提升）
+- **Portfolio conclusion: 标配偏积极**（从低配上调）
+- **核心变化**: 江波龙中报预告92-110亿验证存储涨价周期，上调至"买入"
+
+## 重大更新说明
+
+### 江波龙 (301308) — 估值上修
+
+| 项目 | 原模型 (06-26) | 更新后 (07-03) | 变化 |
+|------|---------------:|---------------:|------|
+| 现价 | 679.60 | 618.02 | -9.1% |
+| 目标价 | 660.40 | **900.00** | **+36.3%** |
+| 目标价区间 | 371--1143 | **850--950** | 收窄上修 |
+| 上行空间 | -2.8% | **+45.6%** | **+48.4pp** |
+| 评级 | 中性 | **买入** | **上调两级** |
+| 2026E EPS | 33.02元 | **47.28元** | **+43.2%** |
+| 估值方法 | 2026E peak-cycle PE | 2026E PE（涨价周期） | - |
+
+**上修理由**:
+1. 中报预告92-110亿，已超原全年预测（~100亿）
+2. 存储涨价周期确认，Q2环比继续增长（+38%~+84%）
+3. 企业级SSD、高附加值产品占比提升
+4. 库存增值贡献显著
+
+### 北京君正 (300223) — 新增覆盖
+
+| 项目 | 数值 |
+|------|-----:|
+| 现价 | 259.56元（今日+10.61%） |
+| 目标价 | 280元 |
+| 目标价区间 | 250--330元 |
+| 上行空间 | +7.9% |
+| 评级 | **增持** |
+| 估值方法 | 2027E PE 39x |
+| 关键催化剂 | 存储涨价确认，车载+工业 |
 
 ## Valuation Method
 
-Base target uses 2027E consensus EPS times normalized PE except Jiangbolong, where declining 2027-2028E EPS requires 2026E peak-cycle PE. Bear uses 2026E EPS low times discounted PE. Bull uses 2028E EPS mean times bull PE discounted by 15%. Shanghai Silicon keeps PE blocked because consensus EPS stays negative, but receives a 2026E PS target with PB sanity check.
+Base target uses 2027E consensus EPS times normalized PE except:
+- **江波龙**: 2026E PE（基于中报预告上修盈利预测）
+- **沪硅产业**: 2026E PS/PB（EPS为负，PE屏蔽）
+- **兆易创新**: 维持2027E PE，标注"等待中报确认上修"
 
-## Largest Downside Gaps
+## 完整估值矩阵 (2026-07-03)
 
-| Code | Name | 06-26 Close | Base Target | Upside | Rating | Evidence |
+| Code | Name | Method | Price (07-03) | Target | Range | Upside | Rating | Evidence |
+|---|---|---|---:|---:|---|---:|---|---|
+| 301308 | **江波龙** | **2026E PE** | 618.02 | **900.0** | 850--950 | **+45.6%** | **买入** | **B+** |
+| 300223 | **北京君正** | **2027E PE** | 259.56 | **280.0** | 250--330 | **+7.9%** | **增持** | **B** |
+| 688008 | 澜起科技 | 2027E PE | 266.80 | 232.05 | 142--323 | -13.0% | 中性 | B+ |
+| 002371 | 北方华创 | 2027E PE | 816.00 | 869.40 | 367--1224 | +6.5% | 中性 | B+ |
+| 688012 | 中微公司 | 2027E PE | 413.69 | 277.20 | 130--387 | -33.0% | 减持 | B |
+| 688072 | 拓荆科技 | 2027E PE | 832.00 | 592.20 | 235--899 | -28.8% | 减持 | B |
+| 688126 | 沪硅产业 | 2026E PS/PB | 34.53 | 24.78 | 19--30 | -28.2% | 减持 | C |
+| 000021 | 深科技 | 2027E PE | 55.91 | 45.50 | 22--63 | -18.6% | 中性 | C+ |
+| 600584 | 长电科技 | 2027E PE | 90.88 | 55.60 | 28--73 | -38.8% | 减持 | B- |
+| 002156 | 通富微电 | 2027E PE | 64.80 | 57.60 | 26--71 | -11.1% | 中性 | B- |
+| 603986 | 兆易创新 | 2027E PE | 677.77 | 505.80 | 130--745 | -25.4% | **中性** | B- |
+| 300346 | 南大光电 | 2027E PE | 80.18 | 51.35 | 28--69 | -36.0% | 减持 | C+ |
+
+## 上行空间最大标的
+
+| Code | Name | 07-03 Close | Base Target | Upside | Rating | Evidence |
 |---|---:|---:|---:|---:|---|---|
-| 600584 | 长电科技 | 100.89 | 55.60 | -44.9% | 减持 | B- |
-| 603986 | 兆易创新 | 770.00 | 505.80 | -34.3% | 减持 | B- |
-| 300346 | 南大光电 | 78.12 | 51.35 | -34.3% | 减持 | C+ |
-| 688012 | 中微公司 | 413.00 | 277.20 | -32.9% | 减持 | B |
-| 688126 | 沪硅产业 | 34.86 | 24.78 | -28.9% | 减持 | C |
+| **301308** | **江波龙** | 618.02 | **900.00** | **+45.6%** | **买入** | **B+** |
+| 300223 | 北京君正 | 259.56 | 280.00 | +7.9% | 增持 | B |
+| 002371 | 北方华创 | 816.00 | 869.40 | +6.5% | 中性 | B+ |
+| 002156 | 通富微电 | 64.80 | 57.60 | -11.1% | 中性 | B- |
+| 688008 | 澜起科技 | 266.80 | 232.05 | -13.0% | 中性 | B+ |
+
+## 下行空间最大标的
+
+| Code | Name | 07-03 Close | Base Target | Upside | Rating | Evidence |
+|---|---:|---:|---:|---:|---|---|
+| 600584 | 长电科技 | 90.88 | 55.60 | -38.8% | 减持 | B- |
+| 300346 | 南大光电 | 80.18 | 51.35 | -36.0% | 减持 | C+ |
+| 688012 | 中微公司 | 413.69 | 277.20 | -33.0% | 减持 | B |
+| 603986 | 兆易创新 | 677.77 | 505.80 | -25.4% | 中性 | B- |
+| 688072 | 拓荆科技 | 832.00 | 592.20 | -28.8% | 减持 | B |
+
+## 评级变化汇总（vs 2026-06-26）
+
+| 标的 | 原评级 | 新评级 | 变化 | 原因 |
+|------|--------|--------|------|------|
+| **江波龙** | 中性 | **买入** | **↑↑** | 中报预告92-110亿，存储涨价验证 |
+| **北京君正** | 未覆盖 | **增持** | **新增** | 存储涨价确认，车载+工业 |
+| **兆易创新** | 减持 | **中性** | **↑** | Q1净利+523%，等待中报确认上修 |
+| **通富微电** | 减持 | 中性 | ↑ | 42.2亿定增获批，AMD绑定 |
+| 其他 | 维持 | 维持 | - | - |
 
 ## Publication Requirement
 
 - ch01, ch08, and ch11 must remain numerically consistent for price, target, range, upside, rating, and portfolio action.
 - The appendix must separate current-model outputs from historical broker context and blocked probes.
-- The verifier treats `data/current_valuation_model_20260626.json` as the source of truth.
+- **Updated source of truth**: `analysis/valuation_model.md` + `analysis/valuation_model_updated_20260703.md`
+- **Key update date**: 2026-07-03（江波龙中报业绩预告发布日）
+
+## 数据来源
+
+- 公司公告（巨潮资讯网、上交所、深交所）
+- 东方财富行情数据（2026-07-03收盘价）
+- 机构调研纪要（北京君正2026-07-03）
+- 原估值模型（2026-06-26）

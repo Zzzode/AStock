@@ -46,7 +46,6 @@
 \definecolor{riskgreen}{HTML}{38A169}
 \definecolor{riskblue}{HTML}{2B6CB0}
 \definecolor{accentblue}{HTML}{2B6CB0}
-\definecolor{riskblue}{HTML}{2B6CB0}
 \definecolor{nvgreen}{HTML}{76B900}
 \definecolor{rulegrey}{HTML}{CBD5E0}
 
@@ -149,8 +148,11 @@
 \newcommand{\starfour}{$\bigstar\bigstar\bigstar\bigstar$}
 \newcommand{\starthree}{$\bigstar\bigstar\bigstar$}
 % 资料来源注：使用楷体（STKaiti）而非斜体，避免中文无斜体字形导致的字体回退警告
-\newcommand{\sourcenote}[1]{\par{\scriptsize\color{mutedgrey}\kaishu 资料来源：#1}\vspace{0.2em}}
-\newcommand{\qualitynote}[1]{\par{\scriptsize\color{mutedgrey}数据质量：#1}\vspace{0.2em}}
+% \mdseries 避免继承周围 \bfseries 导致 STKaiti 粗体缺失警告
+% \sloppy + \hbadness 允许长文件名/URL 在必要时断行
+% 局部重定义 \textbf → \heiti：STKaiti 无粗体，用黑体替代强调
+\newcommand{\sourcenote}[1]{\par{\scriptsize\mdseries\color{mutedgrey}\kaishu\sloppy\hbadness=9999\def\textbf##1{{\heiti ##1}} 资料来源：#1}\vspace{0.2em}}
+\newcommand{\qualitynote}[1]{\par{\scriptsize\mdseries\color{mutedgrey}\sloppy\def\textbf##1{{\heiti ##1}} 数据质量：#1}\vspace{0.2em}}
 \newcommand{\evidencetag}[1]{%
   \tikz[baseline=(x.base)]\node[
     xshift=0pt,

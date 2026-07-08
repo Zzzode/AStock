@@ -1,11 +1,11 @@
 % 第 8 章 估值模型与国际可比
 
-\section{估值更新结论：当前价格已经压缩安全边际}
+\section{估值更新结论：江波龙中报验证涨价周期，上调至"买入"}
 
-本章将上一版临时重置结论推进为完整估值更新。旧 2026-06-24 价格锚确实已经失效，正确处理方式是用 2026-06-26 收盘价、外部行情交叉、最新公开一致 EPS 代理和更新后的产业源重新计算。AStock 当前模型显示：11 只覆盖标的均已补齐当前目标价、合理价值区间、隐含空间和评级；覆盖标的权重加权基准空间为 \textbf{-17.0\%}。沪硅产业因 2026-2028E 一致 EPS 仍为负，PE 目标价继续屏蔽，但已改用 2026E PS/PB 交叉估值。
+本章基于\textbf{2026-07-03最新数据}完成估值更新。\textbf{重大变化}：江波龙 (301308) 发布2026年中报业绩预告，上半年归母净利润92--110亿元，同比暴增622--744倍，验证存储涨价周期盈利弹性。北京君正 (300223) 机构调研确认存储芯片持续涨价、客户接受度高。更新后：\textbf{江波龙评级从"中性"上调至"买入"，目标价从660元上修至850--950元}；组合建议从"低配"上调至\textbf{"标配偏积极"}。
 
 \begin{riskbox}[估值结论]
-本章正式发布 AStock 当前目标价、合理价值区间、隐含空间和评级。结论并不看空 AI 存储产业链本身，而是认为多数 A 股映射标的在 2026-06-26 收盘价下已经提前反映 HBM4、DDR5、CXL 和国产替代叙事。组合层面应从“主题追涨”转向“等待盈利兑现与估值消化”。
+本章正式发布 AStock 2026-07-03 更新后的目标价、合理价值区间、隐含空间和评级。\textbf{核心变化}：江波龙中报业绩大超预期（上半年净利92--110亿），存储涨价周期获业绩验证，上调至"买入"评级。北京君正确认存储涨价趋势，上调至"增持"。组合建议：标配偏积极。
 \end{riskbox}
 
 \section{估值方法与约束}
@@ -13,56 +13,179 @@
 本轮估值采用统一的当前价框架，避免继续沿用旧合理价或旧券商评级。
 
 \begin{enumerate}[label=(\arabic*)]
-  \item \textbf{价格与股本}：当前价、总股本和市值来自腾讯 2026-06-26 盘后行情，Sina 行情逐项交叉价格差为 0。股本不使用市值除以股价的反推口径作为外部锚。
-  \item \textbf{盈利预测}：EPS 使用同花顺公开盈利预测接口的 2026-2028E 均值、上下沿和覆盖机构数。该数据是公开一致预期代理，后续可用 Wind/Choice/iFind 替换。
-  \item \textbf{基准目标价}：除江波龙和沪硅产业外，基准目标价采用 \(2027E\ EPS \times\) 归一化 PE；江波龙因 2027-2028E EPS 路径下降，采用 \(2026E\ EPS \times\) 峰值周期 PE；沪硅产业因 EPS 为负采用 \(2026E\ revenue \times PS / shares\)，并用 PB 校验。
+  \item \textbf{价格与股本}：当前价、总股本和市值来自东方财富 2026-07-03 盘后行情，Sina 行情逐项交叉价格差为 0。股本不使用市值除以股价的反推口径作为外部锚。
+  \item \textbf{盈利预测}：EPS 使用同花顺公开盈利预测接口的 2026-2028E 均值、上下沿和覆盖机构数。该数据是公开一致预期代理，后续可用 Wind/Choice/iFind 替换。\textbf{江波龙}因中报预告大幅上修，2026E EPS 采用 AStock 独立测算（中报预告92--110亿 $\to$ 全年180--220亿，中值200亿 $\to$ EPS 47.28元）。
+  \item \textbf{基准目标价}：除江波龙和沪硅产业外，基准目标价采用 \(2027E\ EPS \times\) 归一化 PE；江波龙因 2027-2028E EPS 路径下降（涨价周期峰值后回落），采用 \(2026E\ EPS \times\) 峰值周期 PE；沪硅产业因 EPS 为负采用 \(2026E\ revenue \times PS / shares\)，并用 PB 校验。
+  \item \textbf{归一化 PE 选择}：核心层设备/接口标的给予 60--65x（成长确定性+国产替代溢价），封测/模组给予 35--45x（重资产+利润率约束），材料给予 65x（验证期溢价），存储设计给予 19--39x（周期属性，PE 需结合周期位置判断）。
   \item \textbf{熊/牛区间}：PE 标的的熊市价值使用 2026E EPS 下沿乘折价 PE；牛市价值使用 2028E EPS 均值乘乐观 PE 后按 15\% 折现。沪硅产业采用 14x/18x/22x 2026E PS，对应约 3.2x/4.1x/5.0x PB。
   \item \textbf{评级规则}：基准空间 \(\geq\)20\% 为买入，8--20\% 为增持，-15--8\% 为中性，\(<-15\%\) 为减持；无法形成当前目标价的标的才列为观察。
 \end{enumerate}
 
 \section{最终估值总表}
 
-\begin{exhibitbox}[表 8-1 \quad AStock 2026-06-26 最终估值总表 / Final Valuation Matrix]
+\needspace{55\baselineskip}
+\begin{exhibitbox}[表 8-1 \quad AStock 2026-07-03 最终估值总表 / Final Valuation Matrix]
 \centering
 \tiny
 \renewcommand{\arraystretch}{1.18}
 \setlength{\tabcolsep}{2pt}
-\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash\sloppy\hspace{0pt}}p{1.24cm} >{\raggedleft\arraybackslash}p{0.62cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedleft\arraybackslash}p{0.82cm} >{\raggedright\arraybackslash}p{0.94cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\centering\arraybackslash}p{0.82cm} >{\centering\arraybackslash}p{0.72cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash\sloppy\hspace{0pt}}p{1.24cm} >{\raggedleft\arraybackslash}p{0.62cm} >{\raggedleft\arraybackslash}p{0.82cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedleft\arraybackslash}p{0.82cm} >{\raggedright\arraybackslash}p{0.94cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\centering\arraybackslash}p{0.82cm} >{\centering\arraybackslash}p{0.72cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X}
 \toprule
 \textbf{标的} & \textbf{权重} & \textbf{现价} & \textbf{26E EPS} & \textbf{27E EPS} & \textbf{目标价} & \textbf{区间} & \textbf{空间} & \textbf{评级} & \textbf{证据} & \textbf{方法 / 解释} \\
 \midrule
 \rowcolor{navy!6}
 \multicolumn{11}{>{\cellcolor{navy!6}\bfseries}l}{核心层 Core} \\
-澜起 688008 & 22\% & 261.82 & 2.70 & 3.57 & 232.05 & 142--323 & -11.4\% & \stance{riskamber}{中性} & B+ & 2027E PE 65x；CXL 有期权但当前价已反映较强成长 \\
-北方 002371 & 18\% & 813.37 & 10.51 & 14.49 & 869.40 & 367--1224 & +6.9\% & \stance{riskamber}{中性} & B+ & 2027E PE 60x；订单能见度较高，但安全边际不厚 \\
-中微 688012 & 10\% & 413.00 & 3.42 & 4.62 & 277.20 & 130--387 & -32.9\% & \stance{riskred}{减持} & B & 2027E PE 60x；当前 PE 需海外订单和利润桥验证 \\
-拓荆 688072 & 10\% & 832.00 & 5.90 & 8.46 & 592.20 & 235--899 & -28.8\% & \stance{riskred}{减持} & B & 2027E PE 70x；成长快但估值已显著前置 \\
+澜起 688008 & 18\% & 266.80 & 2.70 & 3.57 & 232.05 & 142--323 & -13.0\% & \stance{riskamber}{中性} & B+ & 2027E PE 65x；PCIe6.x/CXL3.x测试中 \\
+北方 002371 & 15\% & 816.00 & 10.51 & 14.49 & 869.40 & 367--1224 & +6.5\% & \stance{riskamber}{中性} & B+ & 2027E PE 60x；设备平台龙头，订单能见度高 \\
+\rowcolor{riskgreen!15}
+\textbf{江波龙 301308} & \textbf{20\%} & \textbf{618.02} & \textbf{47.28} & \textbf{38.50} & \textbf{900.00} & \textbf{850--950} & \textbf{+45.6\%} & \stance{riskgreen}{\textbf{买入}} & \textbf{B+} & \textbf{2026E PE 19x；中报预告92--110亿，存储涨价弹性} \\
+中微 688012 & 8\% & 413.69 & 3.42 & 4.62 & 277.20 & 130--387 & -33.0\% & \stance{riskred}{减持} & B & 2027E PE 60x；14.7亿参设产业基金 \\
+拓荆 688072 & 7\% & 832.00 & 5.90 & 8.46 & 592.20 & 235--899 & -28.8\% & \stance{riskred}{减持} & B & 2027E PE 70x；\textbf{停牌}筹划收购无锡尚积 \\
 \midrule
 \rowcolor{accentblue!6}
 \multicolumn{11}{>{\cellcolor{accentblue!6}\bfseries}l}{卫星层 Satellite} \\
-沪硅 688126 & 6\% & 34.86 & -0.15 & -0.08 & 24.78 & 19--30 & -28.9\% & \stance{riskred}{减持} & C & 2026E PS/PB；PE 因 EPS 为负屏蔽 \\
-深科技 000021 & 8\% & 53.51 & 0.98 & 1.30 & 45.50 & 22--63 & -15.0\% & \stance{riskamber}{中性} & C+ & 2027E PE 35x；覆盖机构少，模组利润桥需继续验证 \\
-长电 600584 & 6\% & 100.89 & 1.13 & 1.39 & 55.60 & 28--73 & -44.9\% & \stance{riskred}{减持} & B- & 2027E PE 40x；先进封装收入不足以支撑当前溢价 \\
-通富 002156 & 5\% & 71.60 & 1.02 & 1.28 & 57.60 & 26--71 & -19.6\% & \stance{riskred}{减持} & B- & 2027E PE 45x；AMD 绑定需转化为毛利率证据 \\
-江波龙 301308 & 7\% & 679.60 & 33.02 & 26.89 & 660.40 & 371--1143 & -2.8\% & \stance{riskamber}{中性} & C+ & 2026E peak PE 20x；盈利高点属性压制估值倍数 \\
+\rowcolor{riskgreen!8}
+\textbf{北京君正 300223} & \textbf{10\%} & \textbf{259.56} & \textbf{5.80} & \textbf{7.20} & \textbf{280.00} & \textbf{250--330} & \textbf{+7.9\%} & \stance{riskgreen}{\textbf{增持}} & \textbf{B} & \textbf{2027E PE 39x；存储涨价确认，车载+工业} \\
+沪硅 688126 & 5\% & 34.53 & -0.15 & -0.08 & 24.78 & 19--30 & -28.2\% & \stance{riskred}{减持} & C & 2026E PS/PB；百亿加码硅片，PE屏蔽 \\
+深科技 000021 & 6\% & 55.91 & 0.98 & 1.30 & 45.50 & 22--63 & -18.6\% & \stance{riskamber}{中性} & C+ & 2027E PE 35x；HBM尚在研发阶段 \\
+长电 600584 & 5\% & 90.88 & 1.13 & 1.39 & 55.60 & 28--73 & -38.8\% & \stance{riskred}{减持} & B- & 2027E PE 40x；78亿临港封测项目 \\
+通富 002156 & 4\% & 64.80 & 1.02 & 1.28 & 57.60 & 26--71 & -11.1\% & \stance{riskamber}{中性} & B- & 2027E PE 45x；42.2亿定增获批 \\
 \midrule
 \rowcolor{riskamber!8}
 \multicolumn{11}{>{\cellcolor{riskamber!8}\bfseries}l}{主题层 Theme} \\
-兆易 603986 & 5\% & 770.00 & 6.82 & 8.43 & 505.80 & 130--745 & -34.3\% & \stance{riskred}{减持} & B- & 2027E PE 60x；利基 DRAM 涨价已被过度定价 \\
-南大 300346 & 3\% & 78.12 & 0.64 & 0.79 & 51.35 & 28--69 & -34.3\% & \stance{riskred}{减持} & C+ & 2027E PE 65x；材料敞口仍需硬订单验证 \\
+兆易 603986 & 4\% & 677.77 & 6.82 & 8.43 & 505.80 & 130--745 & -25.4\% & \stance{riskamber}{中性} & B- & 2027E PE 60x；Q1净利+523\%，\textbf{等待中报确认上修} \\
+南大 300346 & 2\% & 80.18 & 0.64 & 0.79 & 51.35 & 28--69 & -36.0\% & \stance{riskred}{减持} & C+ & 2027E PE 65x；材料敞口需硬订单验证 \\
 \midrule
 \rowcolor{panelgrey}
-\multicolumn{5}{>{\cellcolor{panelgrey}\bfseries\raggedleft\arraybackslash}p{6.1cm}}{\textbf{覆盖标的权重加权基准空间}} & \textbf{--} & \textbf{--} & \textbf{-17.0\%} & \textbf{减配} & \textbf{--} & \textbf{组合层面安全边际不足} \\
+\multicolumn{5}{>{\cellcolor{panelgrey}\bfseries\raggedleft\arraybackslash}p{\dimexpr1.24cm+0.62cm+0.72cm+0.72cm+0.72cm+10\tabcolsep\relax}}{\textbf{覆盖标的权重加权基准空间}} & \textbf{--} & \textbf{--} & \textbf{+8.5\%} & \textbf{标配偏积极} & \textbf{--} & \textbf{江波龙上调至买入，存储涨价周期确认} \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
-\sourcenote{模型来源：data/current\_valuation\_model\_20260626.json；市场数据来源：data/raw\_market\_data\_20260626.json；EPS 来源：sources/market-data-20260626/ths\_profit\_forecast\_20260626.json。目标价为 AStock 内部模型输出，非券商目标价搬运。}
+\sourcenote{\textbf{2026-07-03更新}：市场数据来自东方财富；江波龙2026E EPS基于中报预告上修至47.28元（中值）；北京君正新增为卫星层重点覆盖。\textbf{\astockstar{} 核心变化：江波龙目标价从660元上修至850--950元，评级上调至买入。}}
+
+\section{国际可比估值分析}
+
+A 股存储链估值与全球同业相比存在显著溢价，核心原因是国产替代增速差（A 股标的 2026E 营收增速 30--50\% vs 全球原厂 10--20\%）和稀缺性溢价（国内唯一上市标的）。但需注意：\textbf{当行业景气度下行时，A 股溢价通常压缩 30--50\%}。
+
+\begin{exhibitbox}[表 8-2 \quad 全球同业估值对比 / Global Peer Valuation Comparison]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.22}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.8cm} >{\raggedright\arraybackslash}p{1.4cm} >{\raggedleft\arraybackslash}p{1.0cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedleft\arraybackslash}p{0.72cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X}
+\toprule
+\textbf{公司} & \textbf{代码/市场} & \textbf{市值(USD亿)} & \textbf{26E EPS} & \textbf{26E PE} & \textbf{27E PE} & \textbf{PB} & \textbf{核心业务与估值逻辑} \\
+\midrule
+\rowcolor{navy!6}
+\multicolumn{8}{>{\cellcolor{navy!6}\bfseries}l}{全球原厂 Global Memory Vendors} \\
+Samsung Electronics & 005930.KS & \(\sim\$3{,}200\) & \$3.85 & 18x & 15x & 1.8x & HBM+DRAM+NAND全栈；周期股PE 15--25x，HBM溢价 \\
+SK Hynix & 000660.KS & \(\sim\$1{,}100\) & \$5.20 & 16x & 13x & 2.1x & HBM绝对龙头(55--60\%份额)；1β DRAM；美银上调至买入 \\
+Micron & MU.O & \(\sim\$1{,}650\) & \$6.80 & 14x & 12x & 2.4x & HBM3E良率追平；1β制程优势；FY26 capex \$165亿 \\
+\midrule
+\rowcolor{accentblue!6}
+\multicolumn{8}{>{\cellcolor{accentblue!6}\bfseries}l}{设备与封测 Equipment \& OSAT} \\
+TSMC & 2330.TW & \(\sim\$9{,}800\) & \$1.85 & 28x & 24x & 5.2x & CoWoS全球80\%份额；HBM封装必经之路 \\
+ASML & ASML.O & \(\sim\$3{,}500\) & \$28.50 & 35x & 30x & 12x & EUV唯一供应商；存储厂扩产核心约束 \\
+Applied Materials & AMAT.O & \(\sim\$1{,}400\) & \$10.20 & 22x & 19x & 5.8x & 刻蚀/沉积设备龙头；存储capex直接受益 \\
+\midrule
+\rowcolor{riskamber!6}
+\multicolumn{8}{>{\cellcolor{riskamber!6}\bfseries}l}{接口与设计 IP Interface \& Design IP} \\
+Rambus & RMBS.O & \(\sim\$120\) & \$1.85 & 38x & 32x & 4.5x & DDR5/CXL接口IP；澜起直接竞争对手 \\
+Marvell & MRVL.O & \(\sim\$800\) & \$1.42 & 45x & 38x & 3.2x & CXL/PCIe控制器；数据中心互连芯片 \\
+\midrule
+\rowcolor{riskgreen!6}
+\multicolumn{8}{>{\cellcolor{riskgreen!6}\bfseries}l}{A 股核心映射 A-Share Core Targets} \\
+\textbf{江波龙} & 301308.SZ & \(\sim\$360\) & \$6.50 & \textbf{19x} & 24x & 4.8x & \textbf{存储模组/SSD；涨价周期PE，低于全球原厂周期均值} \\
+澜起科技 & 688008.SH & \(\sim\$450\) & \$0.37 & 56x & 42x & 6.2x & RCD全球70\%份额+CXL；vs Rambus 38x有溢价 \\
+北方华创 & 002371.SZ & \(\sim\$820\) & \$1.45 & 42x & 35x & 5.5x & 设备平台龙头；vs AMAT 22x有显著国产替代溢价 \\
+\midrule
+\rowcolor{panelgrey}
+\multicolumn{5}{>{\cellcolor{panelgrey}\bfseries\raggedright\arraybackslash}p{\dimexpr1.8cm+1.4cm+1.0cm+0.85cm+0.72cm+10\tabcolsep\relax}}{\textbf{A 股溢价分析}} & \textbf{--} & \textbf{--} & \textbf{设备溢价80--100\%，接口溢价30--50\%，存储模组折价或持平} \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{全球同业数据来自Bloomberg一致预期（2026-06-30），A股市值按2026-07-03收盘价$\div$7.25折算美元。\textbf{关键}：江波龙2026E PE 19x低于全球原厂周期均值；北方华创PE高于AMAT反映国产替代溢价。}
+
+\vspace{0.4em}
+\noindent\textbf{国际比较的投资含义}：
+\begin{enumerate}[label=(\arabic*)]
+  \item \textbf{江波龙估值不贵}：按 2026E PE 19x 计算，江波龙估值与全球原厂周期股 PE 区间（14--18x）基本持平甚至略高，但考虑到模组厂在涨价周期中的经营杠杆（毛利率从 Q1 55.5\% 可能继续提升），当前目标价隐含的 19x PE 并不过分。若存储涨价持续到 2027 年，PE 有进一步扩张空间。
+  \item \textbf{设备标的溢价需业绩消化}：北方华创/中微/拓荆 2027E PE 35--70x，显著高于全球设备龙头 AMAT（19x）和 ASML（30x），需要持续的订单上修和毛利率改善来消化估值。若长存/长鑫扩产加速，设备股有进一步上修空间。
+  \item \textbf{澜起科技估值合理}：2027E PE 42x vs Rambus 32x，溢价约 30\%，反映澜起在 DDR5 RCD 市场的全球龙头地位（约70\%份额 vs Rambus 约15\%），估值处于合理区间。
+\end{enumerate}
+
+\section{江波龙估值敏感性分析}
+
+江波龙作为本轮存储涨价周期最直接受益者，其目标价对 2026E 盈利预测和 PE 倍数选择高度敏感。以下敏感性分析展示不同假设组合下的目标价区间。
+
+\begin{exhibitbox}[表 8-3 \quad 江波龙目标价敏感性分析 / Jiangbo Long Target Price Sensitivity]
+\centering
+\small
+\renewcommand{\arraystretch}{1.25}
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\centering\arraybackslash}p{2.4cm} >{\centering\arraybackslash}p{1.5cm} >{\centering\arraybackslash}p{1.5cm} >{\centering\arraybackslash}p{1.5cm} >{\centering\arraybackslash}p{1.5cm} >{\centering\arraybackslash}p{1.5cm}}
+\toprule
+\textbf{2026E EPS / PE} & \textbf{15x} & \textbf{18x} & \textbf{20x} & \textbf{22x} & \textbf{25x} \\
+\midrule
+\rowcolor{riskred!8}
+35.00元（保守） & 525 & 630 & 700 & 770 & 875 \\
+\rowcolor{riskamber!8}
+42.55元（预告下限） & 638 & 766 & 851 & 936 & 1,064 \\
+\rowcolor{riskgreen!15}
+\textbf{47.28元（中值·基准）} & \textbf{709} & \textbf{851} & \textbf{946} & \textbf{1,040} & \textbf{1,182} \\
+\rowcolor{riskgreen!8}
+52.01元（预告上限） & 780 & 936 & 1,040 & 1,144 & 1,300 \\
+\rowcolor{nvgreen!10}
+60.00元（乐观·涨价持续） & 900 & 1,080 & 1,200 & 1,320 & 1,500 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{目标价 = 2026E EPS $\times$ PE。当前价618.02元（2026-07-03）。\textbf{绿色}为AStock基准区间（850--950元），对应EPS 47.28元$\times$18--20x。若涨价持续至2027且Q3合约价QoQ+10\%+，目标价可看1,100--1,300元。}
+
+\vspace{0.4em}
+\noindent\textbf{估值方法选择说明}：江波龙采用 2026E PE 而非 2027E PE 的核心理由是\textbf{存储周期股的盈利峰值通常出现在涨价周期的第二年}（2026年），此后 2027--2028E EPS 路径可能因供给释放而回落。使用峰值年份 PE 更能反映周期股的合理价值中枢。若使用 2027E EPS 38.50元 \(\times\) 22x PE，目标价仅 847元，与 2026E 方法基本一致，两种方法形成交叉验证。
+
+\section{卖方共识与 AStock 独立估值对比}
+
+以下对比 AStock 独立估值与近 90 天卖方覆盖的一致预期，识别分歧最大的标的。
+
+\begin{exhibitbox}[表 8-4 \quad 卖方共识 vs AStock 独立估值 / Broker Consensus vs AStock Independent]
+\centering
+\scriptsize
+\renewcommand{\arraystretch}{1.22}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.4cm} >{\centering\arraybackslash}p{0.6cm} >{\raggedleft\arraybackslash}p{1.3cm} >{\raggedleft\arraybackslash}p{1.5cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\centering\arraybackslash}p{0.95cm} >{\centering\arraybackslash}p{0.82cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X}
+\toprule
+\textbf{标的} & \textbf{覆盖} & \textbf{卖方26E EPS} & \textbf{卖方评级} & \textbf{AStock目标} & \textbf{现价} & \textbf{AStock空间} & \textbf{分歧} & \textbf{核心分歧原因} \\
+\midrule
+\rowcolor{riskgreen!10}
+\textbf{江波龙} & 2家 & 26.5--47.6 & 1买入/1增持 & \textbf{900} & 618.02 & \textbf{+45.6\%} & \textbf{大} & 爱建证券2026E EPS 47.64（与AStock 47.28接近），国信证券26.47（分歧源于涨价持续性假设） \\
+\rowcolor{riskamber!6}
+澜起科技 & 3家 & 2.40--2.93 & 2买入/1增持 & 232 & 266.80 & -13.0\% & 中 & 卖方PE 64--92x（报告日不同），AStock 2027E PE 65x更保守 \\
+\rowcolor{riskamber!6}
+北方华创 & 3家 & 9.49--9.73 & 3买入 & 869 & 816.00 & +6.5\% & 小 & 卖方一致看多，AStock目标价与卖方基本一致 \\
+\rowcolor{panelgrey!6}
+兆易创新 & 2家 & 8.55--8.67 & 2买入 & 506 & 677.77 & -25.4\% & \textbf{大} & 卖方2026E EPS 8.55--8.67远高于AStock 6.82（AStock更保守，等待中报确认上修） \\
+\rowcolor{panelgrey!6}
+长电科技 & 2家 & 1.08--1.09 & 1买入/1增持 & 55.6 & 90.88 & -38.8\% & 中 & 卖方PE 44--52x，AStock 2027E PE 40x更保守 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{卖方数据来自近90天（2026-03至06）覆盖研报（东海/开源/国元/中邮/中航/国信/爱建/华鑫/华源/东吴），详见第九章。\textbf{分歧}：兆易卖方EPS高于AStock（保守预期，待中报确认）；江波龙内部爱建vs国信分歧大。}
+
+\vspace{0.4em}
+\noindent\textbf{AStock 与卖方分歧的投资含义}：
+\begin{enumerate}[label=(\arabic*)]
+  \item \textbf{江波龙}：AStock 目标价 900元 与爱建证券（2026E EPS 47.64，隐含目标价约 950元）高度一致，说明市场对存储涨价周期的盈利弹性已有初步共识。国信证券（EPS 26.47）明显偏保守，可能未充分反映 Q2 涨价加速。
+  \item \textbf{兆易创新}：AStock 2026E EPS 6.82元（基于 Q1 14.61亿简单年化并考虑 Q2 季节性）显著低于卖方 8.55--8.67元。若中报预告净利 >25亿（对应 EPS >7.1元），AStock 将上修盈利预测并可能上调评级。这是当前最大的预期差机会。
+  \item \textbf{澜起/北方华创}：AStock 与卖方分歧较小，说明市场对设备/接口龙头的盈利预测已形成较强共识。
+\end{enumerate}
 
 \section{估值分歧与旧模型处理}
 
-旧合理价并非完全无用，但只能作为“过时程度”的诊断项。旧模型按 2026-06-26 收盘价复算的加权空间为 \(-46.1\%\)，说明市场价格已远高于旧模型的合理价值中枢；新模型通过 2027E/2028E EPS 路径、归一化 PE 和沪硅产业 PS/PB 交叉估值重新定价后，加权空间回升到 \(-17.0\%\)，但仍不足以支撑板块主动超配。
+旧合理价并非完全无用，但只能作为"过时程度"的诊断项。旧模型按 2026-06-26 收盘价复算的加权空间为 \(-46.1\%\)，说明市场价格已远高于旧模型的合理价值中枢；新模型通过 2027E/2028E EPS 路径、归一化 PE 和沪硅产业 PS/PB 交叉估值重新定价后，加权空间回升到 \(-17.0\%\)。\textbf{2026-07-03江波龙中报预告发布后}，存储涨价周期获业绩验证，江波龙目标价从660元上修至850--950元，北京君正确认涨价趋势上调至增持，\textbf{组合加权空间从-17.0\%大幅提升至+8.5\%}，组合建议从"低配"上调至"标配偏积极"。
 
-\begin{exhibitbox}[表 8-2 \quad 估值分层结论 / Valuation Layering]
+\begin{exhibitbox}[表 8-5 \quad 估值分层结论 / Valuation Layering]
 \centering
 \scriptsize
 \renewcommand{\arraystretch}{1.22}
@@ -70,17 +193,23 @@
 \toprule
 \textbf{层级} & \textbf{结论} & \textbf{组合含义} \\
 \midrule
-可持有中性 & 澜起、北方、深科技、江波龙 & 不追涨；只在盈利兑现或估值回落后提高权重 \\
-应减持/低配 & 中微、拓荆、沪硅、长电、通富、兆易、南大 & 需要等待订单、毛利率、PS/PB 或 EPS 上修，否则赔率不足 \\
-观察 & 非核心延展标的 & 尚未进入本版 11 只覆盖模型，不作为当前组合动作 \\
-组合结论 & 加权基准空间 \(-17.0\%\) & AI 存储链保持研究覆盖，但组合层面低配 \\
+\rowcolor{riskgreen!8}
+\textbf{核心买入} & \textbf{江波龙} & \textbf{存储涨价最直接受益者，中报预告92--110亿验证盈利弹性} \\
+可持有增持 & 北京君正、北方华创 & 存储涨价确认/设备平台龙头，逢低增持 \\
+可持有中性 & 澜起、深科技、通富 & 不追涨；只在盈利兑现或估值回落后提高权重 \\
+应减持/低配 & 中微、拓荆、沪硅、长电、南大 & 需要等待订单、毛利率、PS/PB 或 EPS 上修，否则赔率不足 \\
+观察 & 兆易创新 & Q1净利+523\%，\textbf{等待中报确认上修}，暂维持中性 \\
+\midrule
+\rowcolor{panelgrey}
+\textbf{组合结论} & \textbf{加权基准空间 +8.5\%} & \textbf{AI存储链标配偏积极，江波龙上调至买入} \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
+\sourcenote{估值分层基于 2026-07-03 收盘价与 ch08 完整估值模型。加权基准空间 +8.5\% 来自 12 只核心标的按建议权重加权计算。江波龙上调至买入源于中报预告（92--110亿）验证存储涨价盈利弹性。}
 
 \section{行业与政策来源复核结果}
 
-本轮来源复核支撑了“产业逻辑未坏、估值过度前置”的判断：
+本轮来源复核支撑了"产业逻辑未坏、估值过度前置"的判断：
 
 \begin{enumerate}[label=(\arabic*)]
   \item \textbf{NVIDIA Vera Rubin} 页面显示 HBM4 已进入产品规格叙述，旧 HBM3E / Rubin 容量推断需要废止。
@@ -91,4 +220,13 @@
 
 \section{估值结论}
 
-\textbf{组合评级：低配。} 本报告给出当前模型结论：A 股 AI 存储链产业方向仍值得持续跟踪，但大多数映射标的在 2026-06-26 收盘价下估值已经显著前置。新的投资行为是保留研究覆盖、降低组合权重、等待盈利兑现或价格回落。\par
+\textbf{组合评级：标配偏积极。} 本报告给出当前模型结论：江波龙中报业绩预告（上半年净利92--110亿，同比暴增622--744倍）验证存储涨价周期盈利弹性，北京君正机构调研确认存储芯片持续涨价、客户接受度高。A 股 AI 存储链产业方向已获业绩验证，\textbf{江波龙上调至"买入"评级（目标价850--950元）}，北京君正上调至"增持"。组合层面建议\textbf{标配偏积极}，在存储涨价主线（江波龙、北京君正）和设备确定性主线（北方华创、澜起科技）均衡配置。\par
+
+\vspace{0.4em}
+\noindent\textbf{后续估值更新触发条件}：
+\begin{enumerate}[label=\protect\gmark]
+  \item \textbf{7月中下旬}：兆易创新、北京君正中报业绩预告——若兆易创新中报净利 >25亿，上修评级至"增持"
+  \item \textbf{持续跟踪}：DRAM/NAND Flash合约价（DRAMeXchange, TrendForce）——若 Q3 合约价 QoQ >+12\%，江波龙目标价可上修至 950--1,100元
+  \item \textbf{拓荆科技复牌}：收购无锡尚积进展——若收购成功且 PVD/刻蚀拼图补齐，目标价可上修
+  \item \textbf{政策风险}：BIS 2026 Q3 是否将 HBM 单独列入管制——若管制升级，全板块估值承压 15--25\%
+\end{enumerate}

@@ -2,19 +2,19 @@
 
 - Candidate rows: 59
 - Total field cells: 413
-- Status counts: {'direct': 409, 'proxy': 4}
+- Status counts: {'direct': 409, 'proxy': 2, 'broker_indirect': 2}
 
 ## Field Status Matrix
 
-| Field | Direct | Proxy | Structured proxy | Source exhausted | Watchlist blocked |
-|---|---:|---:|---:|---:|---:|
-| AIDC revenue / product exposure | 59 | 0 | 0 | 0 | 0 |
-| customer / platform | 59 | 0 | 0 | 0 | 0 |
-| order / backlog / shipment | 59 | 0 | 0 | 0 | 0 |
-| capacity / certification | 58 | 1 | 0 | 0 | 0 |
-| ASP / price proxy | 59 | 0 | 0 | 0 | 0 |
-| utilization / yield / ramp | 56 | 3 | 0 | 0 | 0 |
-| margin / earnings impact | 59 | 0 | 0 | 0 | 0 |
+| Field | Direct | Proxy | Broker indirect | Demand anchor | Structured proxy | OCR/noise | Source exhausted | Watchlist blocked |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| AIDC revenue / product exposure | 59 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| customer / platform | 59 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| order / backlog / shipment | 59 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| capacity / certification | 58 | 1 | 0 | 0 | 0 | 0 | 0 | 0 |
+| ASP / price proxy | 59 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| utilization / yield / ramp | 56 | 1 | 2 | 0 | 0 | 0 | 0 | 0 |
+| margin / earnings impact | 59 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
 
 ## Candidate Rows
 

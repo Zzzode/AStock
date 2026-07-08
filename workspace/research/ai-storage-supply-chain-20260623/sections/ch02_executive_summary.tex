@@ -33,29 +33,31 @@ HBM 2026E 全球 TAM \$380--420 亿，CAGR 68\%，是半导体行业增速最快
 % Four theses arranged as 2x2
 \node[thesis=riskred] (TH1) at (0, 3.2) {论点一：HBM 是第一增长极 · A 股直接受益稀缺};
 \node[thesis=navy] (TH2) at (9.0, 3.2) {论点二：设备/材料是二阶 Beta · 澜起是一阶 Alpha};
-\node[thesis=riskamber] (TH3) at (0, 0) {论点三：2026 年 Q3 DRAM 合约价加速上行 · 利基弹性最大};
-\node[thesis=nvgreen] (TH4) at (9.0, 0) {论点四：CXL 商业化元年 · 预期差最大};
+\node[thesis=riskamber] (TH3) at (0, -0.5) {论点三：2026 年 Q3 DRAM 合约价加速上行 · 利基弹性最大};
+\node[thesis=nvgreen] (TH4) at (9.0, -0.5) {论点四：CXL 商业化元年 · 预期差最大};
 
-% Sub points for each
-\foreach \y in {2.1, 1.6, 1.1} \node[subp=riskred] at (0, \y-0.5) {\strut};
-\node[subp=riskred, text width=3.0cm] at (0, 1.6) {国产 HBM ≥2028 · {\faExclamationTriangle} 市场误判节奏};
-\node[subp=riskred, text width=3.0cm] at (0, 1.05) {SK 海力士 55\%+ · 三家原厂护城河极高};
+% Sub points for each — 调整 y 坐标确保垂直间隙 ≥ 0.3cm
+% 上方：TH1/TH2 底部 y=2.5，sub1 顶部 y=2.2，间隙 0.3cm
+\node[subp=riskred, text width=3.0cm] at (0, 1.65) {国产 HBM ≥2028 · {\faExclamationTriangle} 市场误判节奏};
+\node[subp=riskred, text width=3.0cm] at (0, 0.25) {SK 海力士 55\%+ · 三家原厂护城河极高};
 
-\foreach \y in {2.1, 1.6, 1.1} \node[subp=navy] at (9.0, \y-0.5) {\strut};
-\node[subp=navy, text width=3.0cm] at (9.0, 1.6) {北华/中微/拓荆 · 国产化率 10\%→25\%};
-\node[subp=navy, text width=3.0cm] at (9.0, 1.05) {澜起 RCD 70\% + CXL · 必选税};
+\node[subp=navy, text width=3.0cm] at (9.0, 1.65) {北华/中微/拓荆 · 国产化率 10\%→25\%};
+\node[subp=navy, text width=3.0cm] at (9.0, 0.25) {澜起 RCD 70\% + CXL · 必选税};
 
-\foreach \y in {-1.1, -1.6, -2.1} \node[subp=riskamber] at (0, \y+0.3) {\strut};
-\node[subp=riskamber, text width=3.0cm] at (0, -1.6) {标准品 bit growth ≤20\% · 供给刚性};
-\node[subp=riskamber, text width=3.0cm] at (0, -2.15) {Q3 基准缺口-6\(\sim\)-8\% (乐观-8\(\sim\)-10\% 见§10.2) · QoQ 基准+8\(\sim\)+10\%};
+% 下方：TH3/TH4 底部 y=-1.2，sub1 顶部 y=-1.5，间隙 0.3cm
+% sub2 底部 y=-4.0，CONCL 顶部 y=-4.3，间隙 0.3cm
+\node[subp=riskamber, text width=3.0cm] at (0, -2.05) {标准品 bit growth ≤20\% · 供给刚性};
+\node[subp=riskamber, text width=3.0cm] at (0, -3.45) {Q3 基准缺口-6\(\sim\)-8\% (乐观见§10.2) · QoQ +8\(\sim\)+10\%};
 
-\foreach \y in {-1.1, -1.6, -2.1} \node[subp=nvgreen] at (9.0, \y+0.3) {\strut};
-\node[subp=nvgreen, text width=3.0cm] at (9.0, -1.6) {CXL 2.0 量产 · 高端 AI 服 8-10\%};
-\node[subp=nvgreen, text width=3.0cm] at (9.0, -2.15) {澜起 CXL 收入 26 10亿 · 27 翻倍};
+\node[subp=nvgreen, text width=3.0cm] at (9.0, -2.05) {CXL 2.0 量产 · 高端 AI 服 8-10\%};
+\node[subp=nvgreen, text width=3.0cm] at (9.0, -3.45) {澜起 CXL 收入 26 10亿 · 27 翻倍};
 
-% Arrows from thesis to conclusion center
-\node[draw=deepnavy, fill=deepnavy, text=white, rounded corners=4pt, minimum width=9.5cm, minimum height=1.4cm, text width=14.4cm, align=center, font=\bfseries\normalsize, inner sep=5pt] (CONCL) at (4.5, -3.4) {AStock 结论：2026 年 H2--2027 量价齐升双击 · 核心组合目标回报 +25-40\%};
-\foreach \t/\a in {TH1/-30, TH2/-150, TH3/30, TH4/150} { \draw[arrow, bend right=\a] (\t.south) to (CONCL.north); }
+% Arrows from thesis to conclusion — use orthogonal routing to avoid sub-box columns
+\node[draw=deepnavy, fill=deepnavy, text=white, rounded corners=4pt, minimum width=9.5cm, minimum height=1.4cm, text width=14.4cm, align=center, font=\bfseries\normalsize, inner sep=5pt] (CONCL) at (4.5, -5.0) {AStock 结论：2026 年 H2--2027 量价齐升双击 · 核心组合目标回报 +25-40\%};
+\draw[arrow] (TH1.south) -- ++(0, -0.35) -| ([xshift=2.5cm]CONCL.north west);
+\draw[arrow] (TH2.south) -- ++(0, -0.35) -| ([xshift=-2.5cm]CONCL.north east);
+\draw[arrow] (TH3.south) -- ++(0, -0.35) -| ([xshift=2.5cm]CONCL.north west);
+\draw[arrow] (TH4.south) -- ++(0, -0.35) -| ([xshift=-2.5cm]CONCL.north east);
 
 % Top label
 \node[fill=deepnavy, text=white, font=\bfseries\small, rounded corners=2pt, inner sep=3pt, anchor=west] at (-1.5, 4.8) {\faFlagCheckered\enspace House View · 四核心论点 → 组合结论};
@@ -99,7 +101,7 @@ HBM 2026E 全球 TAM \$380--420 亿，CAGR 68\%，是半导体行业增速最快
 \begin{exhibitbox}[表 2-2 \quad 核心声明可信度分级 / High-Impact Claim Confidence Ranking]
 \centering
 \small
-\begin{tabularx}{\exhibitboxwidth}{>{\centering\arraybackslash}p{0.6cm} >{\raggedright\arraybackslash\hspace{0pt}}X >{\centering\arraybackslash}p{1.3cm} >{\centering\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash\hspace{0pt}}p{3.2cm}}
+\begin{tabularx}{\exhibitboxwidth}{>{\centering\arraybackslash}p{0.8cm} >{\raggedright\arraybackslash\hspace{0pt}}X >{\centering\arraybackslash}p{1.8cm} >{\centering\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash\hspace{0pt}}p{3.2cm}}
 \toprule
 \textbf{\#} & \textbf{声明内容} & \textbf{等级} & \textbf{来源数} & \textbf{核心依据} \\
 \midrule
@@ -119,5 +121,5 @@ SC-10 & BIS 2026 年 Q3 HBM 单独禁售概率 45--55\% & C (推断) & 1+ & Reut
 \sourcenote{可信度等级：A+ (L1×3+交叉验证) / A (L1×2+ 或 L1+L3 强交叉) / B+ (L2+L3 双源) / B (单一 L3 或 L2 独立) / C (模型推断 + 单一弱源)。详见附录 A 表 A-1 来源注册。}
 
 \vspace{0.4em}
-\noindent\textbf{研究含义（估值更新后）}：10 条核心声明仍可作为产业研究框架，但不能直接映射为仓位。2026-06-26 当前价估值更新已经重建 ch08 完整模型：A/B+ 级声明可进入盈利和倍数假设，B/C 级声明只能作为风险折扣或触发条件。最终评级由目标价空间、证据质量和情景压力共同决定，并已在 ch01、ch08、ch11 三处读者表逐项一致。\par
+\noindent\textbf{研究含义（估值更新后）}：10 条核心声明仍可作为产业研究框架，但不能直接映射为仓位。2026-07-03 江波龙中报预告更新已重建 ch08 完整模型（加权基准空间从-17.0\%提升至+8.5\%）：A/B+ 级声明可进入盈利和倍数假设，B/C 级声明只能作为风险折扣或触发条件。最终评级由目标价空间、证据质量和情景压力共同决定，并已在 ch01、ch08、ch11 三处读者表逐项一致。\par
 \textbf{后续复核机制}：每季度末重新评估 10 条核心声明的证据等级；若 SC-1、SC-2、SC-3 等高权重声明缺少原始 URL、归档文件或哈希，则不得进入目标价模型。所有升级/降级均需至少 2 个独立数据源交叉验证，并同步更新 source\_registry、claim\_audit 与 valuation\_audit。

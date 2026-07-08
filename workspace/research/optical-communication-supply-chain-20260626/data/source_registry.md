@@ -36,6 +36,9 @@
 | S-32 | official_filing | B+ | 兆龙互连 announcement access | https://data.eastmoney.com/notices/stock/300913.html | Announcement access point for high-speed data cable and communication cable delivery checks. |
 | S-33 | official_filing | B+ | 意华股份 announcement access | https://data.eastmoney.com/notices/stock/002897.html | Announcement access point for high-speed connector and communication interconnect delivery checks. |
 | S-34 | official_filing | B+ | 神宇股份 announcement access | https://data.eastmoney.com/notices/stock/300563.html | Announcement access point for communication cable and high-speed interconnect delivery checks. |
+| S-35 | official_filing | A | 永鼎股份 600105 2026 半年度业绩预告 | https://data.eastmoney.com/notices/stock/600105.html | 永鼎股份 2026-07-06 披露 H1 2026 归母净利润 5.0-7.0 亿元、同比 +57%~+120%（预增），为数据截止后新证据。 |
+| S-36 | official_filing | A | 锐捷网络 301165 2026 半年度业绩预告 | https://data.eastmoney.com/notices/stock/301165.html | 锐捷网络 2026-07-02 披露 H1 2026 归母净利润 6.0-7.5 亿元、同比 +32.7%~+65.9%（预增），观察池标的数据截止后新证据。 |
+| S-37 | official_filing | A | 杭电股份 603618 2026 半年度业绩预告 | https://data.eastmoney.com/notices/stock/603618.html | 杭电股份 2026-07-04 披露 H1 2026 归母净利润 3.6-4.0 亿元、同比 +852%~+958%（预增，光纤量价齐升、扭亏为盈），作为覆盖标的 2026E 估值分母输入。 |
 | B-01 | broker_consensus | B | 英为财情一致预期/21财经券商聚合 - 300308 | https://cn.investing.com/equities/zhongji-innolight-co-ltd-consensus-estimates | 300308 公开券商/一致预期：评级 偏积极，平均目标价 1062.5。 |
 | B-02 | broker_consensus | B | 英为财情一致预期 - 300502 | https://cn.investing.com/equities/chengdu-eoptolink-technology-co-ltd-consensus-estimates | 300502 公开券商/一致预期：评级 偏积极，平均目标价 496.76。 |
 | B-03 | broker_consensus | B | 英为财情一致预期/同花顺预测摘要 - 300394 | https://cn.investing.com/equities/suzhou-tfc-optical-communication-co-consensus-estimates | 300394 公开券商/一致预期：评级 偏积极，平均目标价 286.81。 |
@@ -61,6 +64,8 @@
 | B-23 | broker_consensus | C | 英为财情一致预期页面/公开缺口 - 300913 | https://cn.investing.com/equities/zhejiang-zhaolong-interconnect-tech-co-ltd-consensus-estimates | 300913 公开券商/一致预期：评级 未披露，平均目标价 未披露。 |
 | B-24 | broker_consensus | C | 英为财情一致预期页面 - 002897 | https://cn.investing.com/equities/wenzhou-yihua-connector-consensus-estimates | 002897 公开券商/一致预期：评级 偏谨慎，平均目标价 未披露。 |
 | B-25 | broker_consensus | C | 英为财情一致预期页面 - 300563 | https://cn.investing.com/equities/jiangsu-shenyu-communication-technolo-consensus-estimates | 300563 公开券商/一致预期：评级 偏谨慎，平均目标价 未披露。 |
+| B-26 | broker_consensus | C | 公开检索/一致预期缺口 - 603618 | https://data.eastmoney.com/stockcomment/stock/603618.html | 603618 公开券商/一致预期：评级 未披露，平均目标价 未披露。 |
 | M-01 | methodology | A- | CFA Institute market-based valuation multiples | https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/market-based-valuation-price-enterprise-value-multiples | 市场法估值使用可比公司价格和企业价值倍数，说明可观察市场定价本身是估值框架的一部分。 |
 | M-02 | methodology | B+ | Expectations Investing framework | https://www.expectationsinvesting.com/ | 预期投资框架要求反推当前股价已经隐含的增长、利润率和资本回报假设。 |
 | M-03 | methodology | A- | Baker and Wurgler investor sentiment research | https://pages.stern.nyu.edu/~jwurgler/papers/sentiment.pdf | 投资者情绪会影响难以估值、套利受限或主观性更强的股票定价，因此情绪溢价需要被量化和披露。 |
+| M-04 | methodology | A- | H1 2026 业绩预告普查方法（stock_yjyg_em × 光通信精选 universe 交叉核对） | https://data.eastmoney.com/bbsj/yjyg.html | 使用 akshare stock_yjyg_em(date=20260630) 预告库对 92 名光通信精选 universe 交叉核对，确认报告 35 只中仅永鼎 600105、锐捷 301165 已发 H1 预告；概念板块接口在本机不可用，交叉核对为稳健替代方法。 |

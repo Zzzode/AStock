@@ -6,62 +6,62 @@ Unified publication universe: 56 target-price/fair-value rows, including 18 orig
 
 | Ticker | Company | Chain | Current | 2026E revenue | 2026E NP | 2026E EPS | Method | Bear | Base | Bull | Final target | Upside | Action | Evidence | Broker weight | Catalyst | Invalidation |
 |---|---|---|---:|---:|---:|---:|---|---:|---:|---:|---:|---:|---|---|---:|---|---|
-| 002916 | 深南电路 | AI PCB/CCL | 468.09 | 274.8 | 36.4 | 5.33 | PE/封装基板景气校验 | 106.7 | 149.3 | 192.0 | 221.8 | -52.6% | 高估值风险 | B | 10% | 高多层/HDI/高速交换机板占比提升，扩产爬坡和材料成本传导兑现。 | 高端产品结构、良率或材料成本传导未兑现，估值折回电子周期股。 |
-| 600183 | 生益科技 | AI PCB/CCL | 177.84 | 339.2 | 54.9 | 2.00 | PE/材料周期校验 | 44.0 | 60.0 | 76.0 | 85.8 | -51.8% | 高估值风险 | B | 10% | 高多层/HDI/高速交换机板占比提升，扩产爬坡和材料成本传导兑现。 | 高端产品结构、良率或材料成本传导未兑现，估值折回电子周期股。 |
-| 603186 | 华正新材 | AI PCB/CCL | 212.91 | 53.1 | 2.8 | 1.77 | PE/PEG plus cycle/product-mix check | 42.4 | 56.5 | 70.7 | 97.9 | -54.0% | 高估值风险 | B- / official filing evidence; no Street target disclosed | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 688519 | 南亚新材 | AI PCB/CCL | 360.00 | 60.1 | 4.9 | 2.08 | PE/PEG plus cycle/product-mix check | 49.9 | 66.6 | 83.2 | 146.6 | -59.3% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 300383 | 光环新网 | AIDC/IDC 运营 | 12.23 | 74.2 | 0.9 | 0.05 | 修复型PE/PB校验 | 0.5 | 0.8 | 1.2 | 4.2 | -65.5% | 高估值风险 | C+ | 10% | 新增 MW、上架率、客户租约、单位电力成本和经营现金流改善。 | 上架率、电价、折旧、租约或经营现金流无法支撑资产回报。 |
+| 002916 | 深南电路 | AI PCB/CCL | 468.09 | 274.8 | 36.4 | 5.33 | PE/封装基板景气校验 | 106.7 | 149.3 | 221.8 | 221.8 | -52.6% | 高估值风险 | B | 10% | 高多层/HDI/高速交换机板占比提升，扩产爬坡和材料成本传导兑现。 | 高端产品结构、良率或材料成本传导未兑现，估值折回电子周期股。 |
+| 600183 | 生益科技 | AI PCB/CCL | 177.84 | 339.2 | 54.9 | 2.00 | PE/材料周期校验 | 44.0 | 60.0 | 85.8 | 85.8 | -51.8% | 高估值风险 | B | 10% | 高多层/HDI/高速交换机板占比提升，扩产爬坡和材料成本传导兑现。 | 高端产品结构、良率或材料成本传导未兑现，估值折回电子周期股。 |
+| 603186 | 华正新材 | AI PCB/CCL | 204.71 | 53.1 | 2.8 | 1.77 | PE/PEG plus cycle/product-mix check | 42.4 | 56.5 | 91.2 | 91.2 | -55.4% | 高估值风险 | B- / official filing evidence; no Street target disclosed | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 688519 | 南亚新材 | AI PCB/CCL | 364.39 | 60.1 | 4.9 | 2.08 | PE/PEG plus cycle/product-mix check | 49.9 | 66.6 | 140.2 | 140.2 | -61.5% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 300383 | 光环新网 | AIDC/IDC 运营 | 12.23 | 74.2 | 0.9 | 0.05 | 修复型PE/PB校验 | 0.5 | 0.8 | 4.2 | 4.2 | -65.5% | 高估值风险 | C+ | 10% | 新增 MW、上架率、客户租约、单位电力成本和经营现金流改善。 | 上架率、电价、折旧、租约或经营现金流无法支撑资产回报。 |
 | 300442 | 润泽科技 | AIDC/IDC 运营 | 78.67 | 80.0 | 29.5 | 1.57 | PE/现金流/上架率校验 | 34.4 | 47.0 | 62.6 | 50.6 | -35.7% | 高估值风险 | A- | 10% | 新增 MW、上架率、客户租约、单位电力成本和经营现金流改善。 | 上架率、电价、折旧、租约或经营现金流无法支撑资产回报。 |
 | 300738 | 奥飞数据 | AIDC/IDC 运营 | 19.90 | 29.3 | 4.2 | 0.39 | PE/负债率/上架率校验 | 6.3 | 9.4 | 12.5 | 12.4 | -37.7% | 高估值风险 | B- | 10% | 新增 MW、上架率、客户租约、单位电力成本和经营现金流改善。 | 上架率、电价、折旧、租约或经营现金流无法支撑资产回报。 |
-| 600050 | 中国联通 | AIDC/IDC 运营 | 4.08 | 4018.1 | 235.3 | 0.34 | PB/ROE plus EV/EBITDA check; PE is secondary | 4.0 | 5.4 | 6.7 | 4.5 | 10.4% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
-| 600941 | 中国移动 | AIDC/IDC 运营 | 86.49 | 11257.6 | 1562.3 | 7.24 | PB/ROE plus EV/EBITDA check; PE is secondary | 86.9 | 115.8 | 144.8 | 98.3 | 13.7% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
-| 601728 | 中国电信 | AIDC/IDC 运营 | 5.27 | 5618.8 | 390.5 | 0.42 | PB/ROE plus EV/EBITDA check; PE is secondary | 5.0 | 6.7 | 8.4 | 5.7 | 7.4% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
-| 603881 | 数据港 | AIDC/IDC 运营 | 25.80 | 18.2 | 1.7 | 0.23 | PB/ROE plus EV/EBITDA check; PE is secondary | 2.8 | 3.7 | 4.6 | 9.3 | -64.1% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
+| 600050 | 中国联通 | AIDC/IDC 运营 | 4.04 | 4018.1 | 235.3 | 0.34 | PB/ROE plus EV/EBITDA check; PE is secondary | 4.0 | 5.4 | 6.7 | 4.5 | 11.3% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
+| 600941 | 中国移动 | AIDC/IDC 运营 | 87.33 | 11257.6 | 1562.3 | 7.24 | PB/ROE plus EV/EBITDA check; PE is secondary | 86.9 | 115.8 | 144.8 | 96.7 | 10.7% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
+| 601728 | 中国电信 | AIDC/IDC 运营 | 5.35 | 5618.8 | 390.5 | 0.42 | PB/ROE plus EV/EBITDA check; PE is secondary | 5.0 | 6.7 | 8.4 | 5.7 | 6.1% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
+| 603881 | 数据港 | AIDC/IDC 运营 | 25.86 | 18.2 | 1.7 | 0.23 | PB/ROE plus EV/EBITDA check; PE is secondary | 2.8 | 3.7 | 8.7 | 8.7 | -66.3% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
 | 002335 | 科华数据 | 供配电/能源 | 43.20 | 71.5 | 4.9 | 0.93 | PE/供配电项目校验 | 16.7 | 23.2 | 29.7 | 28.9 | -33.2% | 高估值风险 | A- | 10% | UPS/HVDC、变压器或预制电力模组认证转订单、交付验收和回款。 | 认证停留在样机/项目阶段，订单未转收入或回款恶化。 |
-| 002364 | 中恒电气 | 供配电/能源 | 51.84 | 32.6 | 3.7 | 0.65 | normalised PE plus order-cycle / working-capital check | 11.7 | 16.2 | 20.8 | 25.4 | -50.9% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 002518 | 科士达 | 供配电/能源 | 51.47 | 83.5 | 9.4 | 1.59 | normalised PE plus order-cycle / working-capital check | 28.6 | 39.8 | 50.9 | 42.0 | -18.5% | 市场支撑观察 | B+ / model-ready public broker target | 10% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 301291 | 明阳电气 | 供配电/能源 | 35.39 | 126.2 | 10.3 | 3.30 | normalised PE plus order-cycle / working-capital check | 59.4 | 82.5 | 105.6 | 62.3 | 76.0% | 自建公允价值复核 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 600089 | 特变电工 | 供配电/能源 | 22.26 | 1129.4 | 73.3 | 1.21 | normalised PE plus order-cycle / working-capital check | 21.8 | 30.2 | 38.7 | 26.1 | 17.0% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 601179 | 中国西电 | 供配电/能源 | 14.50 | 242.5 | 22.9 | 0.40 | normalised PE plus order-cycle / working-capital check | 7.1 | 9.9 | 12.6 | 10.4 | -28.4% | 高估值风险 | B+ / model-ready public broker target | 10% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 688676 | 金盘科技 | 供配电/能源 | 87.05 | 69.2 | 5.4 | 1.14 | PE/PB/算电协同校验 | 22.7 | 31.8 | 40.9 | 44.8 | -48.6% | 高估值风险 | B | 10% | UPS/HVDC、变压器或预制电力模组认证转订单、交付验收和回款。 | 认证停留在样机/项目阶段，订单未转收入或回款恶化。 |
-| 000988 | 华工科技 | 光通信 | 173.55 | 200.6 | 15.5 | 1.99 | PE/PEG with shipment, customer and margin validation | 55.7 | 75.6 | 95.5 | 99.7 | -42.6% | 高估值风险 | B+ / model-ready public broker target | 10% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 002281 | 光迅科技 | 光通信 | 242.43 | 150.1 | 15.4 | 1.90 | PE/PEG with shipment, customer and margin validation | 53.2 | 72.2 | 91.2 | 122.2 | -49.6% | 高估值风险 | B+ / model-ready public broker target | 10% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 002364 | 中恒电气 | 供配电/能源 | 52.96 | 32.6 | 3.7 | 0.65 | normalised PE plus order-cycle / working-capital check | 11.7 | 16.2 | 24.6 | 24.6 | -53.5% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 002518 | 科士达 | 供配电/能源 | 50.71 | 83.5 | 9.4 | 1.59 | normalised PE plus order-cycle / working-capital check | 28.6 | 39.8 | 50.9 | 40.7 | -19.8% | 市场支撑观察 | B+ / model-ready public broker target | 10% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 301291 | 明阳电气 | 供配电/能源 | 35.70 | 126.2 | 10.3 | 3.30 | normalised PE plus order-cycle / working-capital check | 59.4 | 82.5 | 105.6 | 62.4 | 74.7% | 自建公允价值复核 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 600089 | 特变电工 | 供配电/能源 | 22.13 | 1129.4 | 89.1 | 1.21 | normalised PE plus order-cycle / working-capital check | 21.8 | 30.2 | 38.7 | 25.5 | 15.4% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 601179 | 中国西电 | 供配电/能源 | 14.33 | 242.5 | 22.9 | 0.40 | normalised PE plus order-cycle / working-capital check | 7.1 | 9.9 | 12.6 | 10.0 | -30.0% | 高估值风险 | B+ / model-ready public broker target | 10% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 688676 | 金盘科技 | 供配电/能源 | 87.05 | 69.2 | 5.4 | 1.14 | PE/PB/算电协同校验 | 22.7 | 31.8 | 44.8 | 44.8 | -48.6% | 高估值风险 | B | 10% | UPS/HVDC、变压器或预制电力模组认证转订单、交付验收和回款。 | 认证停留在样机/项目阶段，订单未转收入或回款恶化。 |
+| 000988 | 华工科技 | 光通信 | 161.37 | 200.6 | 20.2 | 1.99 | PE/PEG with shipment, customer and margin validation | 55.7 | 75.6 | 95.5 | 92.5 | -42.7% | 高估值风险 | B+ / model-ready public broker target | 10% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 002281 | 光迅科技 | 光通信 | 219.80 | 150.1 | 15.4 | 1.90 | PE/PEG with shipment, customer and margin validation | 53.2 | 72.2 | 110.6 | 110.6 | -49.7% | 高估值风险 | B+ / model-ready public broker target | 10% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
 | 300308 | 中际旭创 | 光通信 | 1289.74 | 847.7 | 268.0 | 22.52 | PE/PEG/PS交叉校验 | 788.3 | 1013.5 | 1238.7 | 1054.7 | -18.2% | 市场支撑观察 | A- | 10% | 800G/1.6T 出货、客户分配、ASP、良率和毛利率同步验证。 | 客户分配、ASP、良率或毛利率任一项低于模型假设，估值倍数下修。 |
 | 300394 | 天孚通信 | 光通信 | 309.68 | 57.8 | 21.4 | 2.75 | PE/稀缺器件溢价校验 | 110.1 | 151.4 | 192.7 | 182.8 | -41.0% | 高估值风险 | B+ | 10% | 800G/1.6T 出货、客户分配、ASP、良率和毛利率同步验证。 | 客户分配、ASP、良率或毛利率任一项低于模型假设，估值倍数下修。 |
 | 300502 | 新易盛 | 光通信 | 608.94 | 362.5 | 121.8 | 12.17 | PE/PEG/客户集中校验 | 365.2 | 487.0 | 608.7 | 505.4 | -17.0% | 市场支撑观察 | A- | 10% | 800G/1.6T 出货、客户分配、ASP、良率和毛利率同步验证。 | 客户分配、ASP、良率或毛利率任一项低于模型假设，估值倍数下修。 |
-| 301205 | 联特科技 | 光通信 | 346.00 | 12.4 | 1.7 | 1.28 | PE/PEG with shipment, customer and margin validation | 35.8 | 48.6 | 61.4 | 130.9 | -62.2% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 603083 | 剑桥科技 | 光通信 | 242.70 | 79.0 | 9.0 | 2.52 | PE/PEG with shipment, customer and margin validation | 70.6 | 95.8 | 121.0 | 131.9 | -45.7% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 000063 | 中兴通讯 | 服务器/网络设备/国产算力 | 37.18 | 1666.9 | 92.6 | 1.94 | PE/PEG with shipment, customer and margin validation | 54.3 | 73.7 | 93.1 | 58.0 | 56.0% | 核心复核 | B+ / model-ready public broker target | 10% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 301205 | 联特科技 | 光通信 | 326.93 | 12.4 | 1.7 | 1.28 | PE/PEG with shipment, customer and margin validation | 35.8 | 48.6 | 118.6 | 118.6 | -63.7% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 603083 | 剑桥科技 | 光通信 | 223.01 | 79.0 | 9.0 | 2.52 | PE/PEG with shipment, customer and margin validation | 70.6 | 95.8 | 126.2 | 126.2 | -43.4% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 000063 | 中兴通讯 | 服务器/网络设备/国产算力 | 35.61 | 1666.9 | 92.6 | 1.94 | PE/PEG with shipment, customer and margin validation | 54.3 | 73.7 | 93.1 | 56.8 | 59.4% | 核心复核 | B+ / model-ready public broker target | 10% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
 | 000938 | 紫光股份 | 服务器/网络设备/国产算力 | 28.86 | 1216.7 | 40.1 | 1.20 | PE/网络设备订单校验 | 21.6 | 29.9 | 38.3 | 28.5 | -1.2% | 市场支撑观察 | B | 10% | AI 服务器、整柜或交换机订单转收入，毛利率和应收/存货同步受控。 | 收入高增但毛利率、库存、应收或现金流恶化，目标价信用下调。 |
 | 000977 | 浪潮信息 | 服务器/网络设备/国产算力 | 69.23 | 1418.8 | 24.6 | 1.65 | PE/毛利率压力校验 | 33.0 | 46.1 | 57.7 | 50.2 | -27.5% | 高估值风险 | B | 10% | AI 服务器、整柜或交换机订单转收入，毛利率和应收/存货同步受控。 | 收入高增但毛利率、库存、应收或现金流恶化，目标价信用下调。 |
-| 002396 | 星网锐捷 | 服务器/网络设备/国产算力 | 21.09 | 249.2 | 10.3 | 1.21 | PE/PEG with shipment, customer and margin validation | 33.9 | 46.0 | 58.1 | 35.5 | 68.3% | 自建公允价值复核 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 002396 | 星网锐捷 | 服务器/网络设备/国产算力 | 22.16 | 249.2 | 10.3 | 1.21 | PE/PEG with shipment, customer and margin validation | 33.9 | 46.0 | 58.1 | 35.8 | 61.5% | 自建公允价值复核 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
 | 002463 | 沪电股份 | 服务器/网络设备/国产算力 | 154.74 | 248.6 | 49.7 | 2.58 | PE/高端PCB收入校验 | 64.5 | 90.4 | 116.2 | 101.3 | -34.5% | 高估值风险 | A | 10% | AI 服务器、整柜或交换机订单转收入，毛利率和应收/存货同步受控。 | 收入高增但毛利率、库存、应收或现金流恶化，目标价信用下调。 |
-| 002913 | 奥士康 | 服务器/网络设备/国产算力 | 63.03 | 67.4 | 6.9 | 2.18 | PE/PEG with shipment, customer and margin validation | 61.0 | 82.8 | 104.6 | 69.3 | 9.9% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 002922 | 伊戈尔 | 服务器/网络设备/国产算力 | 31.27 | 73.1 | 4.9 | 1.15 | normalised PE plus order-cycle / working-capital check | 20.7 | 28.7 | 36.8 | 28.1 | -10.3% | 市场支撑观察 | B+ / model-ready public broker target | 10% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 002913 | 奥士康 | 服务器/网络设备/国产算力 | 61.96 | 67.4 | 6.9 | 2.18 | PE/PEG with shipment, customer and margin validation | 61.0 | 82.8 | 104.6 | 69.0 | 11.4% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 002922 | 伊戈尔 | 服务器/网络设备/国产算力 | 30.67 | 73.1 | 4.9 | 1.15 | normalised PE plus order-cycle / working-capital check | 20.7 | 28.7 | 36.8 | 27.9 | -9.0% | 市场支撑观察 | B+ / model-ready public broker target | 10% | AIDC/海外订单、交付节奏、回款和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
 | 300476 | 胜宏科技 | 服务器/网络设备/国产算力 | 351.66 | 220.8 | 51.7 | 5.92 | PE/扩产与现金流校验 | 130.2 | 189.4 | 248.6 | 238.7 | -32.1% | 高估值风险 | B+ | 10% | AI 服务器、整柜或交换机订单转收入，毛利率和应收/存货同步受控。 | 收入高增但毛利率、库存、应收或现金流恶化，目标价信用下调。 |
-| 301165 | 锐捷网络 | 服务器/网络设备/国产算力 | 85.92 | 182.2 | 11.5 | 1.44 | PE/PEG with shipment, customer and margin validation | 40.3 | 54.7 | 69.1 | 60.2 | -29.9% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 600845 | 宝信软件 | 服务器/网络设备/国产算力 | 18.29 | 155.3 | 27.6 | 1.03 | PB/ROE plus EV/EBITDA check; PE is secondary | 12.4 | 16.5 | 20.6 | 15.2 | -16.9% | 市场支撑观察 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
+| 301165 | 锐捷网络 | 服务器/网络设备/国产算力 | 87.88 | 182.2 | 11.5 | 1.44 | PE/PEG with shipment, customer and margin validation | 40.3 | 54.7 | 69.1 | 58.9 | -32.9% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 600845 | 宝信软件 | 服务器/网络设备/国产算力 | 18.47 | 155.3 | 31.9 | 1.03 | PB/ROE plus EV/EBITDA check; PE is secondary | 12.4 | 16.5 | 20.6 | 15.2 | -17.5% | 市场支撑观察 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 新增 MW/机架、上架率、算力收入和 capex/现金流验证。 | 若上架率、算力收入或现金流不能覆盖 capex 和折旧压力，则估值信用下调。 |
 | 601138 | 工业富联 | 服务器/网络设备/国产算力 | 72.85 | 10461.6 | 439.1 | 2.21 | PE/订单现金流校验 | 55.2 | 75.1 | 92.8 | 65.1 | -10.6% | 市场支撑观察 | A- | 10% | AI 服务器、整柜或交换机订单转收入，毛利率和应收/存货同步受控。 | 收入高增但毛利率、库存、应收或现金流恶化，目标价信用下调。 |
-| 603019 | 中科曙光 | 服务器/网络设备/国产算力 | 105.70 | 145.4 | 10.7 | 0.71 | PE/PB稀缺性校验 | 21.3 | 29.8 | 39.0 | 46.8 | -55.8% | 高估值风险 | B | 10% | AI 服务器、整柜或交换机订单转收入，毛利率和应收/存货同步受控。 | 收入高增但毛利率、库存、应收或现金流恶化，目标价信用下调。 |
-| 603228 | 景旺电子 | 服务器/网络设备/国产算力 | 68.21 | 170.4 | 21.8 | 2.18 | PE/PEG plus cycle/product-mix check | 52.3 | 69.8 | 87.2 | 61.4 | -10.0% | 市场支撑观察 | B+ / model-ready public broker target | 10% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 688041 | 海光信息 | 服务器/网络设备/国产算力 | 349.90 | 206.6 | 46.7 | 2.01 | SOTP/PS/PE blend with profit-path validation | 56.3 | 76.4 | 96.5 | 175.8 | -49.8% | 高估值风险 | B+ / model-ready public broker target | 10% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 688183 | 生益电子 | 服务器/网络设备/国产算力 | 123.97 | 90.3 | 12.1 | 1.46 | PE/PEG plus cycle/product-mix check | 35.0 | 46.7 | 58.4 | 65.9 | -46.8% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 688256 | 寒武纪 | 服务器/网络设备/国产算力 | 1485.33 | 108.5 | 67.9 | 16.10 | SOTP/PS/PE blend with profit-path validation | 450.8 | 611.8 | 772.8 | 954.5 | -35.7% | 高估值风险 | B+ / model-ready public broker target | 5% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 688702 | 盛科通信 | 服务器/网络设备/国产算力 | 380.52 | 12.1 | 0.5 | 0.11 | PE/PEG with shipment, customer and margin validation | 3.1 | 4.2 | 5.3 | 111.9 | -70.6% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
-| 000530 | 冰山冷热 | 液冷/温控 | 5.38 | 55.2 | 2.1 | 0.25 | normalised PE/SOTP with data-center order validation | 4.5 | 6.2 | 8.0 | 5.4 | 0.0% | 事件验证 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 002158 | 汉钟精机 | 液冷/温控 | 36.42 | 34.6 | 7.2 | 1.34 | normalised PE/SOTP with data-center order validation | 24.1 | 33.5 | 42.9 | 31.5 | -13.6% | 市场支撑观察 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 002837 | 英维克 | 液冷/温控 | 79.62 | 65.3 | 6.3 | 0.64 | 正常化PE/液冷订单校验 | 15.9 | 22.3 | 28.7 | 48.1 | -39.6% | 高估值风险 | A- | 10% | CDU、冷板、液冷机柜或精密温控项目从认证进入批量验收。 | 只有认证或样机，没有批量验收、收入确认和毛利率改善。 |
-| 300249 | 依米康 | 液冷/温控 | 15.21 | 14.5 | 0.6 | 0.13 | normalised PE/SOTP with data-center order validation | 2.3 | 3.2 | 4.2 | 5.8 | -61.6% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 300499 | 高澜股份 | 液冷/温控 | 37.25 | 12.7 | 1.4 | 0.45 | normalised PE/SOTP with data-center order validation | 8.1 | 11.2 | 14.4 | 19.3 | -48.1% | 高估值风险 | B+ / model-ready public broker target | 10% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 300990 | 同飞股份 | 液冷/温控 | 100.04 | 43.6 | 4.7 | 2.76 | normalised PE/SOTP with data-center order validation | 49.7 | 69.0 | 88.3 | 69.4 | -30.7% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 301018 | 申菱环境 | 液冷/温控 | 114.16 | 30.9 | 2.4 | 0.91 | 正常化PE/项目验收校验 | 18.1 | 27.2 | 36.3 | 49.7 | -56.5% | 高估值风险 | B- | 10% | CDU、冷板、液冷机柜或精密温控项目从认证进入批量验收。 | 只有认证或样机，没有批量验收、收入确认和毛利率改善。 |
-| 000021 | 深科技 | 算力芯片/存储/网络 ASIC | 62.26 | 163.8 | 12.5 | 0.64 | SOTP/PS/PE blend with profit-path validation | 17.8 | 24.2 | 30.6 | 34.9 | -43.9% | 高估值风险 | B- / official filing evidence; no Street target disclosed | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 300223 | 北京君正 | 算力芯片/存储/网络 ASIC | 259.05 | 58.9 | 6.6 | 1.36 | SOTP/PS/PE blend with profit-path validation | 38.1 | 51.7 | 65.3 | 113.4 | -56.2% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 603986 | 兆易创新 | 算力芯片/存储/网络 ASIC | 772.01 | 85.1 | 31.5 | 4.45 | SOTP/PS/PE blend with profit-path validation | 124.6 | 169.1 | 213.6 | 370.8 | -52.0% | 高估值风险 | B+ / model-ready public broker target | 5% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 688008 | 澜起科技 | 算力芯片/存储/网络 ASIC | 315.89 | 71.6 | 23.4 | 1.92 | SOTP/PS/PE blend with profit-path validation | 53.8 | 73.0 | 92.2 | 156.1 | -50.6% | 高估值风险 | B+ / model-ready public broker target | 5% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 688123 | 聚辰股份 | 算力芯片/存储/网络 ASIC | 215.00 | 18.6 | 5.5 | 3.49 | SOTP/PS/PE blend with profit-path validation | 97.7 | 132.6 | 167.5 | 147.9 | -31.2% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 688521 | 芯原股份 | 算力芯片/存储/网络 ASIC | 342.10 | 62.7 | 0.8 | 0.17 | SOTP/PS/PE blend with profit-path validation | 4.8 | 6.5 | 8.2 | 138.9 | -59.4% | 高估值风险 | B+ / model-ready public broker target | 10% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
-| 688795 | 摩尔线程 | 算力芯片/存储/网络 ASIC | 673.80 | 26.7 | -10.0 | -2.13 | PS/PB or milestone valuation watchlist; positive EPS denominator not valid | 109.3 | 182.2 | 255.1 | 182.2 | -73.0% | PS/SOTP 里程碑验证 | B+ / model-ready public broker target | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 603019 | 中科曙光 | 服务器/网络设备/国产算力 | 105.70 | 145.4 | 10.7 | 0.71 | PE/PB稀缺性校验 | 21.3 | 29.8 | 46.8 | 46.8 | -55.8% | 高估值风险 | B | 10% | AI 服务器、整柜或交换机订单转收入，毛利率和应收/存货同步受控。 | 收入高增但毛利率、库存、应收或现金流恶化，目标价信用下调。 |
+| 603228 | 景旺电子 | 服务器/网络设备/国产算力 | 68.50 | 170.4 | 21.8 | 2.18 | PE/PEG plus cycle/product-mix check | 52.3 | 69.8 | 87.2 | 60.0 | -12.4% | 市场支撑观察 | B+ / model-ready public broker target | 10% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 688041 | 海光信息 | 服务器/网络设备/国产算力 | 335.34 | 206.6 | 54.0 | 2.01 | SOTP/PS/PE blend with profit-path validation | 56.3 | 76.4 | 164.3 | 164.3 | -51.0% | 高估值风险 | B+ / model-ready public broker target | 10% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 688183 | 生益电子 | 服务器/网络设备/国产算力 | 120.20 | 90.3 | 12.1 | 1.46 | PE/PEG plus cycle/product-mix check | 35.0 | 46.7 | 62.3 | 62.3 | -48.1% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 高端板/高速材料收入占比、认证进度、扩产稼动和毛利率验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 688256 | 寒武纪 | 服务器/网络设备/国产算力 | 1400.00 | 108.5 | 67.9 | 16.10 | SOTP/PS/PE blend with profit-path validation | 450.8 | 611.8 | 924.4 | 924.4 | -34.0% | 高估值风险 | B+ / model-ready public broker target | 5% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 688702 | 盛科通信 | 服务器/网络设备/国产算力 | 371.00 | 12.1 | 0.5 | 0.11 | PE/PEG with shipment, customer and margin validation | 3.1 | 4.2 | 101.4 | 101.4 | -72.7% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 800G/1.6T 出货、客户导入、毛利率和现金转化同步验证。 | 若产品升级不能转化为收入和毛利率，或客户/订单证据弱化，则估值信用下调。 |
+| 000530 | 冰山冷热 | 液冷/温控 | 5.42 | 55.2 | 2.1 | 0.25 | normalised PE/SOTP with data-center order validation | 4.5 | 6.2 | 8.0 | 5.4 | -0.5% | 市场支撑观察 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 002158 | 汉钟精机 | 液冷/温控 | 38.00 | 34.6 | 7.2 | 1.34 | normalised PE/SOTP with data-center order validation | 24.1 | 33.5 | 42.9 | 31.1 | -18.2% | 市场支撑观察 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 002837 | 英维克 | 液冷/温控 | 79.62 | 65.3 | 6.3 | 0.64 | 正常化PE/液冷订单校验 | 15.9 | 22.3 | 48.1 | 48.1 | -39.6% | 高估值风险 | A- | 10% | CDU、冷板、液冷机柜或精密温控项目从认证进入批量验收。 | 只有认证或样机，没有批量验收、收入确认和毛利率改善。 |
+| 300249 | 依米康 | 液冷/温控 | 15.02 | 14.5 | 0.6 | 0.13 | normalised PE/SOTP with data-center order validation | 2.3 | 3.2 | 5.8 | 5.8 | -61.4% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 300499 | 高澜股份 | 液冷/温控 | 37.28 | 12.7 | 1.4 | 0.45 | normalised PE/SOTP with data-center order validation | 8.1 | 11.2 | 18.6 | 18.6 | -50.2% | 高估值风险 | B+ / model-ready public broker target | 10% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 300990 | 同飞股份 | 液冷/温控 | 99.03 | 43.6 | 4.7 | 2.76 | normalised PE/SOTP with data-center order validation | 49.7 | 69.0 | 88.3 | 69.1 | -30.2% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 液冷订单、批量验收、收入确认和项目毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 301018 | 申菱环境 | 液冷/温控 | 114.16 | 30.9 | 2.4 | 0.91 | 正常化PE/项目验收校验 | 18.1 | 27.2 | 49.7 | 49.7 | -56.5% | 高估值风险 | B- | 10% | CDU、冷板、液冷机柜或精密温控项目从认证进入批量验收。 | 只有认证或样机，没有批量验收、收入确认和毛利率改善。 |
+| 000021 | 深科技 | 算力芯片/存储/网络 ASIC | 56.18 | 163.8 | 12.5 | 0.64 | SOTP/PS/PE blend with profit-path validation | 17.8 | 24.2 | 33.0 | 33.0 | -41.2% | 高估值风险 | B- / official filing evidence; no Street target disclosed | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 300223 | 北京君正 | 算力芯片/存储/网络 ASIC | 247.60 | 58.9 | 6.6 | 1.36 | SOTP/PS/PE blend with profit-path validation | 38.1 | 51.7 | 104.7 | 104.7 | -57.7% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 603986 | 兆易创新 | 算力芯片/存储/网络 ASIC | 701.18 | 85.1 | 31.5 | 4.45 | SOTP/PS/PE blend with profit-path validation | 124.6 | 169.1 | 345.8 | 345.8 | -50.7% | 高估值风险 | B+ / model-ready public broker target | 5% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 688008 | 澜起科技 | 算力芯片/存储/网络 ASIC | 287.22 | 71.6 | 23.4 | 1.92 | SOTP/PS/PE blend with profit-path validation | 53.8 | 73.0 | 146.0 | 146.0 | -49.2% | 高估值风险 | B+ / model-ready public broker target | 5% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 688123 | 聚辰股份 | 算力芯片/存储/网络 ASIC | 204.43 | 18.6 | 5.5 | 3.49 | SOTP/PS/PE blend with profit-path validation | 97.7 | 132.6 | 167.5 | 144.9 | -29.1% | 高估值风险 | B / broker forecast evidence; AStock house fair-value model when denominator is complete | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 688521 | 芯原股份 | 算力芯片/存储/网络 ASIC | 323.79 | 62.7 | 0.8 | 0.17 | SOTP/PS/PE blend with profit-path validation | 4.8 | 6.5 | 126.5 | 126.5 | -60.9% | 高估值风险 | B+ / model-ready public broker target | 10% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
+| 688795 | 摩尔线程 | 算力芯片/存储/网络 ASIC | 671.99 | 26.7 | -10.0 | -2.13 | PS/PB or milestone valuation watchlist; positive EPS denominator not valid | 109.3 | 182.2 | 255.1 | 182.2 | -72.9% | PS/SOTP 里程碑验证 | B+ / model-ready public broker target | 0% | 收入增长、客户认证、订单兑现和毛利率验证。 | 若订单交付、收入确认、毛利率或回款任一环节失速，则估值信用下调。 |
 
 ## Current Price, Share Count and Market Cap Reconciliation
 
@@ -69,121 +69,266 @@ Unified publication universe: 56 target-price/fair-value rows, including 18 orig
 |---|---|---:|---:|---:|---|
 | 002916 | 深南电路 | 468.09 | 6.82 | 3194.1 | 2026-06-30 11:30:00 |
 | 600183 | 生益科技 | 177.84 | 27.46 | 4883.0 | 2026-06-30 11:30:00 |
-| 603186 | 华正新材 | 212.91 | 1.58 | 336.7 | 2026-07-01 15:00:03 |
-| 688519 | 南亚新材 | 360.00 | 2.35 | 845.2 | 2026-07-01 15:34:59 |
+| 603186 | 华正新材 | 204.71 | 1.58 | 323.7 | 2026-07-02 11:30:00 |
+| 688519 | 南亚新材 | 364.39 | 2.35 | 855.5 | 2026-07-02 11:30:00 |
 | 300383 | 光环新网 | 12.23 | 18.79 | 229.8 | 2026-06-30 11:30:00 |
 | 300442 | 润泽科技 | 78.67 | 18.87 | 1484.7 | 2026-06-30 11:30:00 |
 | 300738 | 奥飞数据 | 19.90 | 10.66 | 212.2 | 2026-06-30 11:30:00 |
-| 600050 | 中国联通 | 4.08 | 698.32 | 2849.1 | 2026-07-01 15:00:01 |
-| 600941 | 中国移动 | 86.49 | 217.23 | 18788.6 | 2026-07-01 15:00:03 |
-| 601728 | 中国电信 | 5.27 | 929.82 | 4900.1 | 2026-07-01 15:00:01 |
-| 603881 | 数据港 | 25.80 | 7.19 | 185.5 | 2026-07-01 15:00:03 |
+| 600050 | 中国联通 | 4.04 | 698.32 | 2821.2 | 2026-07-02 11:30:00 |
+| 600941 | 中国移动 | 87.33 | 217.23 | 18971.1 | 2026-07-02 11:30:00 |
+| 601728 | 中国电信 | 5.35 | 929.82 | 4974.5 | 2026-07-02 11:30:00 |
+| 603881 | 数据港 | 25.86 | 7.19 | 186.0 | 2026-07-02 11:30:00 |
 | 002335 | 科华数据 | 43.20 | 5.27 | 227.6 | 2026-06-30 11:30:00 |
-| 002364 | 中恒电气 | 51.84 | 5.70 | 295.6 | 2026-07-01 15:00:00 |
-| 002518 | 科士达 | 51.47 | 5.93 | 305.1 | 2026-07-01 15:00:00 |
-| 301291 | 明阳电气 | 35.39 | 3.12 | 110.5 | 2026-07-01 15:41:30 |
-| 600089 | 特变电工 | 22.26 | 73.61 | 1638.5 | 2026-07-01 15:00:02 |
-| 601179 | 中国西电 | 14.50 | 58.08 | 842.1 | 2026-07-01 15:00:00 |
+| 002364 | 中恒电气 | 52.96 | 5.70 | 302.0 | 2026-07-02 11:30:00 |
+| 002518 | 科士达 | 50.71 | 5.93 | 300.6 | 2026-07-02 11:30:00 |
+| 301291 | 明阳电气 | 35.70 | 3.12 | 111.5 | 2026-07-02 11:30:00 |
+| 600089 | 特变电工 | 22.13 | 73.61 | 1629.0 | 2026-07-02 11:30:00 |
+| 601179 | 中国西电 | 14.33 | 58.08 | 832.2 | 2026-07-02 11:30:00 |
 | 688676 | 金盘科技 | 87.05 | 4.76 | 414.3 | 2026-06-30 11:30:00 |
-| 000988 | 华工科技 | 173.55 | 10.13 | 1757.8 | 2026-07-01 15:00:00 |
-| 002281 | 光迅科技 | 242.43 | 8.10 | 1964.4 | 2026-07-01 15:00:00 |
+| 000988 | 华工科技 | 161.37 | 10.13 | 1634.5 | 2026-07-02 11:30:00 |
+| 002281 | 光迅科技 | 219.80 | 8.10 | 1781.0 | 2026-07-02 11:30:00 |
 | 300308 | 中际旭创 | 1289.74 | 11.90 | 15348.5 | 2026-06-30 11:30:00 |
 | 300394 | 天孚通信 | 309.68 | 7.78 | 2410.2 | 2026-06-30 11:30:00 |
 | 300502 | 新易盛 | 608.94 | 10.00 | 6091.2 | 2026-06-30 11:30:00 |
-| 301205 | 联特科技 | 346.00 | 1.30 | 448.9 | 2026-07-01 15:42:15 |
-| 603083 | 剑桥科技 | 242.70 | 3.57 | 865.9 | 2026-07-01 15:00:03 |
-| 000063 | 中兴通讯 | 37.18 | 48.05 | 1786.6 | 2026-07-01 15:00:00 |
+| 301205 | 联特科技 | 326.93 | 1.30 | 424.2 | 2026-07-02 11:30:00 |
+| 603083 | 剑桥科技 | 223.01 | 3.57 | 795.6 | 2026-07-02 11:30:00 |
+| 000063 | 中兴通讯 | 35.61 | 48.05 | 1711.2 | 2026-07-02 11:30:00 |
 | 000938 | 紫光股份 | 28.86 | 33.49 | 966.4 | 2026-06-30 11:30:00 |
 | 000977 | 浪潮信息 | 69.23 | 14.90 | 1031.7 | 2026-06-30 11:30:00 |
-| 002396 | 星网锐捷 | 21.09 | 8.52 | 179.7 | 2026-07-01 15:00:00 |
+| 002396 | 星网锐捷 | 22.16 | 8.52 | 188.8 | 2026-07-02 11:30:00 |
 | 002463 | 沪电股份 | 154.74 | 19.26 | 2980.3 | 2026-06-30 11:30:00 |
-| 002913 | 奥士康 | 63.03 | 3.26 | 205.5 | 2026-07-01 15:00:00 |
-| 002922 | 伊戈尔 | 31.27 | 4.28 | 133.8 | 2026-07-01 15:00:00 |
+| 002913 | 奥士康 | 61.96 | 3.26 | 202.0 | 2026-07-02 11:30:00 |
+| 002922 | 伊戈尔 | 30.67 | 4.28 | 131.2 | 2026-07-02 11:30:00 |
 | 300476 | 胜宏科技 | 351.66 | 8.73 | 3068.4 | 2026-06-30 11:30:00 |
-| 301165 | 锐捷网络 | 85.92 | 7.95 | 683.5 | 2026-07-01 15:42:15 |
-| 600845 | 宝信软件 | 18.29 | 30.98 | 566.6 | 2026-07-01 15:00:01 |
+| 301165 | 锐捷网络 | 87.88 | 7.95 | 699.0 | 2026-07-02 11:30:00 |
+| 600845 | 宝信软件 | 18.47 | 30.98 | 572.2 | 2026-07-02 11:30:00 |
 | 601138 | 工业富联 | 72.85 | 198.82 | 14484.1 | 2026-06-30 11:30:00 |
 | 603019 | 中科曙光 | 105.70 | 15.02 | 1587.6 | 2026-06-30 11:30:00 |
-| 603228 | 景旺电子 | 68.21 | 10.00 | 682.2 | 2026-07-01 15:00:03 |
-| 688041 | 海光信息 | 349.90 | 26.87 | 9401.5 | 2026-07-01 15:34:59 |
-| 688183 | 生益电子 | 123.97 | 8.32 | 1031.2 | 2026-07-01 15:34:59 |
-| 688256 | 寒武纪 | 1485.33 | 4.22 | 6266.8 | 2026-07-01 15:34:59 |
-| 688702 | 盛科通信 | 380.52 | 4.10 | 1560.1 | 2026-07-01 15:34:59 |
-| 000530 | 冰山冷热 | 5.38 | 8.59 | 46.2 | 2026-07-01 15:00:00 |
-| 002158 | 汉钟精机 | 36.42 | 5.38 | 195.9 | 2026-07-01 15:00:00 |
+| 603228 | 景旺电子 | 68.50 | 10.00 | 685.1 | 2026-07-02 11:30:00 |
+| 688041 | 海光信息 | 335.34 | 26.87 | 9010.3 | 2026-07-02 11:30:00 |
+| 688183 | 生益电子 | 120.20 | 8.32 | 999.8 | 2026-07-02 11:30:00 |
+| 688256 | 寒武纪 | 1400.00 | 4.22 | 5906.8 | 2026-07-02 11:30:00 |
+| 688702 | 盛科通信 | 371.00 | 4.10 | 1521.1 | 2026-07-02 11:30:00 |
+| 000530 | 冰山冷热 | 5.42 | 8.59 | 46.6 | 2026-07-02 11:30:00 |
+| 002158 | 汉钟精机 | 38.00 | 5.38 | 204.4 | 2026-07-02 11:30:00 |
 | 002837 | 英维克 | 79.62 | 9.84 | 783.3 | 2026-06-30 11:30:00 |
-| 300249 | 依米康 | 15.21 | 4.52 | 68.7 | 2026-07-01 15:41:30 |
-| 300499 | 高澜股份 | 37.25 | 3.09 | 115.3 | 2026-07-01 15:41:45 |
-| 300990 | 同飞股份 | 100.04 | 1.71 | 170.6 | 2026-07-01 15:41:45 |
+| 300249 | 依米康 | 15.02 | 4.52 | 67.8 | 2026-07-02 11:30:00 |
+| 300499 | 高澜股份 | 37.28 | 3.09 | 115.4 | 2026-07-02 11:30:00 |
+| 300990 | 同飞股份 | 99.03 | 1.71 | 168.9 | 2026-07-02 11:30:00 |
 | 301018 | 申菱环境 | 114.16 | 2.68 | 306.4 | 2026-06-30 11:30:00 |
-| 000021 | 深科技 | 62.26 | 19.56 | 1217.6 | 2026-07-01 15:00:00 |
-| 300223 | 北京君正 | 259.05 | 4.84 | 1254.0 | 2026-07-01 15:42:00 |
-| 603986 | 兆易创新 | 772.01 | 7.08 | 5464.3 | 2026-07-01 15:00:00 |
-| 688008 | 澜起科技 | 315.89 | 12.18 | 3847.8 | 2026-07-01 15:34:59 |
-| 688123 | 聚辰股份 | 215.00 | 1.55 | 334.1 | 2026-07-01 15:34:59 |
-| 688521 | 芯原股份 | 342.10 | 5.26 | 1799.2 | 2026-07-01 15:34:59 |
-| 688795 | 摩尔线程 | 673.80 | 4.70 | 3167.1 | 2026-07-01 15:00:02 |
+| 000021 | 深科技 | 56.18 | 19.56 | 1098.7 | 2026-07-02 11:30:00 |
+| 300223 | 北京君正 | 247.60 | 4.84 | 1198.6 | 2026-07-02 11:30:00 |
+| 603986 | 兆易创新 | 701.18 | 7.08 | 4963.0 | 2026-07-02 11:30:00 |
+| 688008 | 澜起科技 | 287.22 | 12.18 | 3498.6 | 2026-07-02 11:30:00 |
+| 688123 | 聚辰股份 | 204.43 | 1.55 | 317.6 | 2026-07-02 11:30:00 |
+| 688521 | 芯原股份 | 323.79 | 5.26 | 1702.9 | 2026-07-02 11:30:00 |
+| 688795 | 摩尔线程 | 671.99 | 4.70 | 3158.5 | 2026-07-02 11:30:00 |
 
 ## Three-Tier Targets
 
 | Ticker | Company | Bear | Base | Bull | Final target | Scenario read |
 |---|---|---:|---:|---:|---:|---|
-| 002916 | 深南电路 | 106.7 | 149.3 | 192.0 | 221.8 | PE/封装基板景气校验 |
-| 600183 | 生益科技 | 44.0 | 60.0 | 76.0 | 85.8 | PE/材料周期校验 |
-| 603186 | 华正新材 | 42.4 | 56.5 | 70.7 | 97.9 | PE/PEG plus cycle/product-mix check |
-| 688519 | 南亚新材 | 49.9 | 66.6 | 83.2 | 146.6 | PE/PEG plus cycle/product-mix check |
-| 300383 | 光环新网 | 0.5 | 0.8 | 1.2 | 4.2 | 修复型PE/PB校验 |
-| 300442 | 润泽科技 | 34.4 | 47.0 | 62.6 | 50.6 | PE/现金流/上架率校验 |
-| 300738 | 奥飞数据 | 6.3 | 9.4 | 12.5 | 12.4 | PE/负债率/上架率校验 |
-| 600050 | 中国联通 | 4.0 | 5.4 | 6.7 | 4.5 | PB/ROE plus EV/EBITDA check; PE is secondary |
-| 600941 | 中国移动 | 86.9 | 115.8 | 144.8 | 98.3 | PB/ROE plus EV/EBITDA check; PE is secondary |
-| 601728 | 中国电信 | 5.0 | 6.7 | 8.4 | 5.7 | PB/ROE plus EV/EBITDA check; PE is secondary |
-| 603881 | 数据港 | 2.8 | 3.7 | 4.6 | 9.3 | PB/ROE plus EV/EBITDA check; PE is secondary |
-| 002335 | 科华数据 | 16.7 | 23.2 | 29.7 | 28.9 | PE/供配电项目校验 |
-| 002364 | 中恒电气 | 11.7 | 16.2 | 20.8 | 25.4 | normalised PE plus order-cycle / working-capital check |
-| 002518 | 科士达 | 28.6 | 39.8 | 50.9 | 42.0 | normalised PE plus order-cycle / working-capital check |
-| 301291 | 明阳电气 | 59.4 | 82.5 | 105.6 | 62.3 | normalised PE plus order-cycle / working-capital check |
-| 600089 | 特变电工 | 21.8 | 30.2 | 38.7 | 26.1 | normalised PE plus order-cycle / working-capital check |
-| 601179 | 中国西电 | 7.1 | 9.9 | 12.6 | 10.4 | normalised PE plus order-cycle / working-capital check |
-| 688676 | 金盘科技 | 22.7 | 31.8 | 40.9 | 44.8 | PE/PB/算电协同校验 |
-| 000988 | 华工科技 | 55.7 | 75.6 | 95.5 | 99.7 | PE/PEG with shipment, customer and margin validation |
-| 002281 | 光迅科技 | 53.2 | 72.2 | 91.2 | 122.2 | PE/PEG with shipment, customer and margin validation |
-| 300308 | 中际旭创 | 788.3 | 1013.5 | 1238.7 | 1054.7 | PE/PEG/PS交叉校验 |
-| 300394 | 天孚通信 | 110.1 | 151.4 | 192.7 | 182.8 | PE/稀缺器件溢价校验 |
-| 300502 | 新易盛 | 365.2 | 487.0 | 608.7 | 505.4 | PE/PEG/客户集中校验 |
-| 301205 | 联特科技 | 35.8 | 48.6 | 61.4 | 130.9 | PE/PEG with shipment, customer and margin validation |
-| 603083 | 剑桥科技 | 70.6 | 95.8 | 121.0 | 131.9 | PE/PEG with shipment, customer and margin validation |
-| 000063 | 中兴通讯 | 54.3 | 73.7 | 93.1 | 58.0 | PE/PEG with shipment, customer and margin validation |
-| 000938 | 紫光股份 | 21.6 | 29.9 | 38.3 | 28.5 | PE/网络设备订单校验 |
-| 000977 | 浪潮信息 | 33.0 | 46.1 | 57.7 | 50.2 | PE/毛利率压力校验 |
-| 002396 | 星网锐捷 | 33.9 | 46.0 | 58.1 | 35.5 | PE/PEG with shipment, customer and margin validation |
-| 002463 | 沪电股份 | 64.5 | 90.4 | 116.2 | 101.3 | PE/高端PCB收入校验 |
-| 002913 | 奥士康 | 61.0 | 82.8 | 104.6 | 69.3 | PE/PEG with shipment, customer and margin validation |
-| 002922 | 伊戈尔 | 20.7 | 28.7 | 36.8 | 28.1 | normalised PE plus order-cycle / working-capital check |
-| 300476 | 胜宏科技 | 130.2 | 189.4 | 248.6 | 238.7 | PE/扩产与现金流校验 |
-| 301165 | 锐捷网络 | 40.3 | 54.7 | 69.1 | 60.2 | PE/PEG with shipment, customer and margin validation |
-| 600845 | 宝信软件 | 12.4 | 16.5 | 20.6 | 15.2 | PB/ROE plus EV/EBITDA check; PE is secondary |
-| 601138 | 工业富联 | 55.2 | 75.1 | 92.8 | 65.1 | PE/订单现金流校验 |
-| 603019 | 中科曙光 | 21.3 | 29.8 | 39.0 | 46.8 | PE/PB稀缺性校验 |
-| 603228 | 景旺电子 | 52.3 | 69.8 | 87.2 | 61.4 | PE/PEG plus cycle/product-mix check |
-| 688041 | 海光信息 | 56.3 | 76.4 | 96.5 | 175.8 | SOTP/PS/PE blend with profit-path validation |
-| 688183 | 生益电子 | 35.0 | 46.7 | 58.4 | 65.9 | PE/PEG plus cycle/product-mix check |
-| 688256 | 寒武纪 | 450.8 | 611.8 | 772.8 | 954.5 | SOTP/PS/PE blend with profit-path validation |
-| 688702 | 盛科通信 | 3.1 | 4.2 | 5.3 | 111.9 | PE/PEG with shipment, customer and margin validation |
-| 000530 | 冰山冷热 | 4.5 | 6.2 | 8.0 | 5.4 | normalised PE/SOTP with data-center order validation |
-| 002158 | 汉钟精机 | 24.1 | 33.5 | 42.9 | 31.5 | normalised PE/SOTP with data-center order validation |
-| 002837 | 英维克 | 15.9 | 22.3 | 28.7 | 48.1 | 正常化PE/液冷订单校验 |
-| 300249 | 依米康 | 2.3 | 3.2 | 4.2 | 5.8 | normalised PE/SOTP with data-center order validation |
-| 300499 | 高澜股份 | 8.1 | 11.2 | 14.4 | 19.3 | normalised PE/SOTP with data-center order validation |
-| 300990 | 同飞股份 | 49.7 | 69.0 | 88.3 | 69.4 | normalised PE/SOTP with data-center order validation |
-| 301018 | 申菱环境 | 18.1 | 27.2 | 36.3 | 49.7 | 正常化PE/项目验收校验 |
-| 000021 | 深科技 | 17.8 | 24.2 | 30.6 | 34.9 | SOTP/PS/PE blend with profit-path validation |
-| 300223 | 北京君正 | 38.1 | 51.7 | 65.3 | 113.4 | SOTP/PS/PE blend with profit-path validation |
-| 603986 | 兆易创新 | 124.6 | 169.1 | 213.6 | 370.8 | SOTP/PS/PE blend with profit-path validation |
-| 688008 | 澜起科技 | 53.8 | 73.0 | 92.2 | 156.1 | SOTP/PS/PE blend with profit-path validation |
-| 688123 | 聚辰股份 | 97.7 | 132.6 | 167.5 | 147.9 | SOTP/PS/PE blend with profit-path validation |
-| 688521 | 芯原股份 | 4.8 | 6.5 | 8.2 | 138.9 | SOTP/PS/PE blend with profit-path validation |
-| 688795 | 摩尔线程 | 109.3 | 182.2 | 255.1 | 182.2 | PS/PB or milestone valuation watchlist; positive EPS denominator not valid |
+| 002916 | 深南电路 | 106.7 | 149.3 | 221.8 | 221.8 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；Street 锚高于 Bull，但权重被 capped 处理；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 600183 | 生益科技 | 44.0 | 60.0 | 85.8 | 85.8 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 603186 | 华正新材 | 42.4 | 56.5 | 91.2 | 91.2 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 688519 | 南亚新材 | 49.9 | 66.6 | 140.2 | 140.2 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 300383 | 光环新网 | 0.5 | 0.8 | 4.2 | 4.2 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 300442 | 润泽科技 | 34.4 | 47.0 | 62.6 | 50.6 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 300738 | 奥飞数据 | 6.3 | 9.4 | 12.5 | 12.4 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 600050 | 中国联通 | 4.0 | 5.4 | 6.7 | 4.5 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 600941 | 中国移动 | 86.9 | 115.8 | 144.8 | 96.7 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 601728 | 中国电信 | 5.0 | 6.7 | 8.4 | 5.7 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 603881 | 数据港 | 2.8 | 3.7 | 8.7 | 8.7 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002335 | 科华数据 | 16.7 | 23.2 | 29.7 | 28.9 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002364 | 中恒电气 | 11.7 | 16.2 | 24.6 | 24.6 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002518 | 科士达 | 28.6 | 39.8 | 50.9 | 40.7 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 301291 | 明阳电气 | 59.4 | 82.5 | 105.6 | 62.4 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 600089 | 特变电工 | 21.8 | 30.2 | 38.7 | 25.5 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 601179 | 中国西电 | 7.1 | 9.9 | 12.6 | 10.0 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 688676 | 金盘科技 | 22.7 | 31.8 | 44.8 | 44.8 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；Street 锚高于 Bull，但权重被 capped 处理；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 000988 | 华工科技 | 55.7 | 75.6 | 95.5 | 92.5 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002281 | 光迅科技 | 53.2 | 72.2 | 110.6 | 110.6 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 300308 | 中际旭创 | 788.3 | 1013.5 | 1238.7 | 1054.7 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 300394 | 天孚通信 | 110.1 | 151.4 | 192.7 | 182.8 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 300502 | 新易盛 | 365.2 | 487.0 | 608.7 | 505.4 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 301205 | 联特科技 | 35.8 | 48.6 | 118.6 | 118.6 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 603083 | 剑桥科技 | 70.6 | 95.8 | 126.2 | 126.2 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 000063 | 中兴通讯 | 54.3 | 73.7 | 93.1 | 56.8 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 000938 | 紫光股份 | 21.6 | 29.9 | 38.3 | 28.5 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 000977 | 浪潮信息 | 33.0 | 46.1 | 57.7 | 50.2 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002396 | 星网锐捷 | 33.9 | 46.0 | 58.1 | 35.8 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002463 | 沪电股份 | 64.5 | 90.4 | 116.2 | 101.3 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002913 | 奥士康 | 61.0 | 82.8 | 104.6 | 69.0 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002922 | 伊戈尔 | 20.7 | 28.7 | 36.8 | 27.9 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 300476 | 胜宏科技 | 130.2 | 189.4 | 248.6 | 238.7 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 301165 | 锐捷网络 | 40.3 | 54.7 | 69.1 | 58.9 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 600845 | 宝信软件 | 12.4 | 16.5 | 20.6 | 15.2 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 601138 | 工业富联 | 55.2 | 75.1 | 92.8 | 65.1 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 603019 | 中科曙光 | 21.3 | 29.8 | 46.8 | 46.8 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 603228 | 景旺电子 | 52.3 | 69.8 | 87.2 | 60.0 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 688041 | 海光信息 | 56.3 | 76.4 | 164.3 | 164.3 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 688183 | 生益电子 | 35.0 | 46.7 | 62.3 | 62.3 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 688256 | 寒武纪 | 450.8 | 611.8 | 924.4 | 924.4 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 688702 | 盛科通信 | 3.1 | 4.2 | 101.4 | 101.4 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 000530 | 冰山冷热 | 4.5 | 6.2 | 8.0 | 5.4 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002158 | 汉钟精机 | 24.1 | 33.5 | 42.9 | 31.1 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 002837 | 英维克 | 15.9 | 22.3 | 48.1 | 48.1 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；Street 锚高于 Bull，但权重被 capped 处理；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 300249 | 依米康 | 2.3 | 3.2 | 5.8 | 5.8 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 300499 | 高澜股份 | 8.1 | 11.2 | 18.6 | 18.6 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；Street 锚高于 Bull，但权重被 capped 处理；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 300990 | 同飞股份 | 49.7 | 69.0 | 88.3 | 69.1 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 301018 | 申菱环境 | 18.1 | 27.2 | 49.7 | 49.7 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；Street 锚高于 Bull，但权重被 capped 处理；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 000021 | 深科技 | 17.8 | 24.2 | 33.0 | 33.0 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 300223 | 北京君正 | 38.1 | 51.7 | 104.7 | 104.7 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 603986 | 兆易创新 | 124.6 | 169.1 | 345.8 | 345.8 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 688008 | 澜起科技 | 53.8 | 73.0 | 146.0 | 146.0 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 688123 | 聚辰股份 | 97.7 | 132.6 | 167.5 | 144.9 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+| 688521 | 芯原股份 | 4.8 | 6.5 | 126.5 | 126.5 | above_bull_explained: 市场情绪锚高于 Bull，交易价格已经要求基础情景外的更长增长久期；Street 锚高于 Bull，但权重被 capped 处理；该行只作市场支撑或高估值风险提示，不因超区间自动上调基本面倍数。 |
+| 688795 | 摩尔线程 | 109.3 | 182.2 | 255.1 | 182.2 | inside_scenario: 最终目标落在 Bear/Bull 区间内。 |
+
+## Target Formula Recalculation
+
+Final target = Base fundamental anchor x Wf + market-implied anchor x Wm + Street/broker anchor x Ws. Rows with missing market anchors in upstream refresh are inferred back from the published formula and flagged through `market_anchor_source`; the final audit must still recalculate to the published target.
+
+| Ticker | Company | Base | Market anchor | Market anchor source | Street anchor | Wf | Wm | Ws | Final target | Recalc | Diff | Upside | Result |
+|---|---|---:|---:|---|---:|---:|---:|---:|---:|---:|---:|---:|---|
+| 002916 | 深南电路 | 149.333 | 383.834 | source_model_disclosed | 288.000 | 65% | 25% | 10% | 221.825 | 221.825 | 0.00000 | -52.6% | PASS |
+| 600183 | 生益科技 | 60.000 | 145.829 | source_model_disclosed | 103.500 | 65% | 25% | 10% | 85.807 | 85.807 | 0.00000 | -51.8% | PASS |
+| 603186 | 华正新材 | 56.542 | 155.580 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 91.205 | 91.205 | 0.00000 | -55.4% | PASS |
+| 688519 | 南亚新材 | 66.560 | 276.936 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 140.192 | 140.192 | 0.00000 | -61.5% | PASS |
+| 300383 | 光环新网 | 0.818 | 8.561 | source_model_disclosed | 15.450 | 65% | 25% | 10% | 4.217 | 4.217 | 0.00000 | -65.5% | PASS |
+| 300442 | 润泽科技 | 46.957 | 59.789 | source_model_disclosed | 38.700 | 55% | 35% | 10% | 50.622 | 50.622 | 0.00000 | -35.7% | PASS |
+| 300738 | 奥飞数据 | 9.410 | 13.930 | source_model_disclosed | 28.000 | 65% | 25% | 10% | 12.399 | 12.399 | 0.00000 | -37.7% | PASS |
+| 600050 | 中国联通 | 5.392 | 2.828 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 4.495 | 4.495 | 0.00000 | 11.3% | PASS |
+| 600941 | 中国移动 | 115.840 | 61.131 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 96.692 | 96.692 | 0.00000 | 10.7% | PASS |
+| 601728 | 中国电信 | 6.720 | 3.745 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 5.679 | 5.679 | 0.00000 | 6.1% | PASS |
+| 603881 | 数据港 | 3.680 | 18.102 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 8.728 | 8.728 | 0.00000 | -66.3% | PASS |
+| 002335 | 科华数据 | 23.240 | 32.832 | source_model_disclosed | 46.000 | 55% | 35% | 10% | 28.873 | 28.873 | 0.00000 | -33.2% | PASS |
+| 002364 | 中恒电气 | 16.250 | 40.250 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 24.650 | 24.650 | 0.00000 | -53.5% | PASS |
+| 002518 | 科士达 | 39.750 | 35.497 | source_model_disclosed | 64.000 | 55% | 35% | 10% | 40.686 | 40.686 | 0.00000 | -19.8% | PASS |
+| 301291 | 明阳电气 | 82.500 | 24.990 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 62.371 | 62.371 | 0.00000 | 74.7% | PASS |
+| 600089 | 特变电工 | 30.250 | 16.819 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 25.549 | 25.549 | 0.00000 | 15.4% | PASS |
+| 601179 | 中国西电 | 9.875 | 10.891 | source_model_disclosed | 7.900 | 55% | 35% | 10% | 10.033 | 10.033 | 0.00000 | -30.0% | PASS |
+| 688676 | 金盘科技 | 31.818 | 66.158 | source_model_disclosed | 75.340 | 65% | 25% | 10% | 44.755 | 44.755 | 0.00000 | -48.6% | PASS |
+| 000988 | 华工科技 | 75.620 | 132.323 | source_model_disclosed | 46.200 | 55% | 35% | 10% | 92.524 | 92.524 | 0.00000 | -42.7% | PASS |
+| 002281 | 光迅科技 | 72.200 | 180.236 | source_model_disclosed | 78.310 | 55% | 35% | 10% | 110.624 | 110.624 | 0.00000 | -49.7% | PASS |
+| 300308 | 中际旭创 | 1013.478 | 1134.971 | source_model_disclosed | 1000.000 | 55% | 35% | 10% | 1054.653 | 1054.653 | 0.00000 | -18.2% | PASS |
+| 300394 | 天孚通信 | 151.393 | 272.518 | source_model_disclosed | 162.810 | 65% | 25% | 10% | 182.816 | 182.816 | 0.00000 | -41.0% | PASS |
+| 300502 | 新易盛 | 486.957 | 535.867 | source_model_disclosed | 500.000 | 55% | 35% | 10% | 505.380 | 505.380 | 0.00000 | -17.0% | PASS |
+| 301205 | 联特科技 | 48.640 | 248.467 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 118.579 | 118.579 | 0.00000 | -63.7% | PASS |
+| 603083 | 剑桥科技 | 95.760 | 182.868 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 126.248 | 126.248 | 0.00000 | -43.4% | PASS |
+| 000063 | 中兴通讯 | 73.720 | 29.200 | source_model_disclosed | 60.000 | 55% | 35% | 10% | 56.766 | 56.766 | 0.00000 | 59.4% | PASS |
+| 000938 | 紫光股份 | 29.946 | 23.665 | source_model_disclosed | 31.200 | 65% | 25% | 10% | 28.501 | 28.501 | 0.00000 | -1.2% | PASS |
+| 000977 | 浪潮信息 | 46.133 | 56.769 | source_model_disclosed | 60.000 | 65% | 25% | 10% | 50.178 | 50.178 | 0.00000 | -27.5% | PASS |
+| 002396 | 星网锐捷 | 45.980 | 16.842 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 35.782 | 35.782 | 0.00000 | 61.5% | PASS |
+| 002463 | 沪电股份 | 90.370 | 136.171 | source_model_disclosed | 39.820 | 55% | 35% | 10% | 101.345 | 101.345 | 0.00000 | -34.5% | PASS |
+| 002913 | 奥士康 | 82.840 | 43.372 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 69.026 | 69.026 | 0.00000 | 11.4% | PASS |
+| 002922 | 伊戈尔 | 28.750 | 21.469 | source_model_disclosed | 45.800 | 55% | 35% | 10% | 27.907 | 27.907 | 0.00000 | -9.0% | PASS |
+| 300476 | 胜宏科技 | 189.440 | 309.461 | source_model_disclosed | 381.710 | 65% | 25% | 10% | 238.672 | 238.672 | 0.00000 | -32.1% | PASS |
+| 301165 | 锐捷网络 | 54.720 | 66.789 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 58.944 | 58.944 | 0.00000 | -32.9% | PASS |
+| 600845 | 宝信软件 | 16.480 | 12.929 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 15.237 | 15.237 | 0.00000 | -17.5% | PASS |
+| 601138 | 工业富联 | 75.083 | 59.737 | source_model_disclosed | 29.000 | 55% | 35% | 10% | 65.104 | 65.104 | 0.00000 | -10.6% | PASS |
+| 603019 | 中科曙光 | 29.782 | 93.016 | source_model_disclosed | 41.600 | 65% | 25% | 10% | 46.772 | 46.772 | 0.00000 | -55.8% | PASS |
+| 603228 | 景旺电子 | 69.760 | 52.060 | source_model_disclosed | 34.320 | 55% | 35% | 10% | 60.021 | 60.021 | 0.00000 | -12.4% | PASS |
+| 688041 | 海光信息 | 76.380 | 274.979 | source_model_disclosed | 260.000 | 55% | 35% | 10% | 164.252 | 164.252 | 0.00000 | -51.0% | PASS |
+| 688183 | 生益电子 | 46.720 | 91.352 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 62.341 | 62.341 | 0.00000 | -48.1% | PASS |
+| 688256 | 寒武纪 | 611.800 | 1232.000 | source_model_disclosed | 1903.000 | 55% | 40% | 5% | 924.440 | 924.440 | 0.00000 | -34.0% | PASS |
+| 688702 | 盛科通信 | 4.180 | 281.960 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 101.403 | 101.403 | 0.00000 | -72.7% | PASS |
+| 000530 | 冰山冷热 | 6.250 | 3.794 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 5.390 | 5.390 | 0.00000 | -0.5% | PASS |
+| 002158 | 汉钟精机 | 33.500 | 26.600 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 31.085 | 31.085 | 0.00000 | -18.2% | PASS |
+| 002837 | 英维克 | 22.302 | 65.288 | source_model_disclosed | 130.000 | 55% | 35% | 10% | 48.117 | 48.117 | 0.00000 | -39.6% | PASS |
+| 300249 | 依米康 | 3.250 | 10.514 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 5.792 | 5.792 | 0.00000 | -61.4% | PASS |
+| 300499 | 高澜股份 | 11.250 | 26.096 | source_model_disclosed | 32.510 | 55% | 35% | 10% | 18.572 | 18.572 | 0.00000 | -50.2% | PASS |
+| 300990 | 同飞股份 | 69.000 | 69.321 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 69.112 | 69.112 | 0.00000 | -30.2% | PASS |
+| 301018 | 申菱环境 | 27.216 | 86.762 | source_model_disclosed | 103.200 | 65% | 25% | 10% | 49.701 | 49.701 | 0.00000 | -56.5% | PASS |
+| 000021 | 深科技 | 24.224 | 49.438 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 33.049 | 33.049 | 0.00000 | -41.2% | PASS |
+| 300223 | 北京君正 | 51.680 | 203.032 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 104.653 | 104.653 | 0.00000 | -57.7% | PASS |
+| 603986 | 兆易创新 | 169.100 | 617.038 | source_model_disclosed | 120.000 | 55% | 40% | 5% | 345.820 | 345.820 | 0.00000 | -50.7% | PASS |
+| 688008 | 澜起科技 | 72.960 | 252.754 | source_model_disclosed | 95.000 | 55% | 40% | 5% | 145.979 | 145.979 | 0.00000 | -49.2% | PASS |
+| 688123 | 聚辰股份 | 132.620 | 167.633 | source_model_disclosed | 未披露 | 65% | 35% | 0% | 144.874 | 144.874 | 0.00000 | -29.1% | PASS |
+| 688521 | 芯原股份 | 6.460 | 265.508 | source_model_disclosed | 300.000 | 55% | 35% | 10% | 126.481 | 126.481 | 0.00000 | -60.9% | PASS |
+| 688795 | 摩尔线程 | 182.250 | 未披露 | not_used_market_weight_zero | 182.250 | 100% | 0% | 0% | 182.250 | 182.250 | 0.00000 | -72.9% | PASS |
+
+## Row-Level Valuation Formula and Explanation
+
+本节是逐标的正文披露，不再用表格承载估值解释。每个目标价均按 Base 基本面锚 x Wf + 市场情绪锚 x Wm + Street/券商锚 x Ws 复算，并在同一段解释方法适配、锚点权重和下一季度验证条件。
+
+
+### AI PCB/CCL
+
+**002916 深南电路。** 2026E收入 274.8 亿元，净利 36.4 亿元，EPS 5.33；Bear/Base/Bull 106.7/149.3/221.8。目标 = 149.3×65% + 383.8×25% + 288.0×10% = 221.8；现价 468.09，空间 -52.6%。 PE/封装基板用于 PCB/CCL：核心看高端板占比、材料成本传导、扩产爬坡和良率。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 87.8x 2026E PE，Base 约 28.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：AI服务器/HPC/高速交换机板占比、良率、扩产爬坡和材料成本必须验证。
+**600183 生益科技。** 2026E收入 339.2 亿元，净利 54.9 亿元，EPS 2.00；Bear/Base/Bull 44.0/60.0/85.8。目标 = 60.0×65% + 145.8×25% + 103.5×10% = 85.8；现价 177.84，空间 -51.8%。 PE/材料周期用于 PCB/CCL：核心看高端板占比、材料成本传导、扩产爬坡和良率。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 88.9x 2026E PE，Base 约 30.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/HPC/高速交换机板占比、良率、扩产爬坡和材料成本必须验证。
+**603186 华正新材。** 2026E收入 53.1 亿元，净利 2.8 亿元，EPS 1.77；Bear/Base/Bull 42.4/56.5/91.2。目标 = 56.5×65% + 155.6×35% + Street锚未用×0% = 91.2；现价 204.71，空间 -55.4%。 PE/PEG/周期/结构用于 PCB/CCL：核心看高端板占比、材料成本传导、扩产爬坡和良率。市场锚按 原模型披露 进入 35% 权重。Street锚为公告替代，权重为 0，不替代 AStock 目标。现价约 115.9x 2026E PE，Base 约 32.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：AI服务器/HPC/高速交换机板占比、良率、扩产爬坡和材料成本必须验证。
+**688519 南亚新材。** 2026E收入 60.1 亿元，净利 4.9 亿元，EPS 2.08；Bear/Base/Bull 49.9/66.6/140.2。目标 = 66.6×65% + 276.9×35% + Street锚未用×0% = 140.2；现价 364.39，空间 -61.5%。 PE/PEG/周期/结构用于 PCB/CCL：核心看高端板占比、材料成本传导、扩产爬坡和良率。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 175.2x 2026E PE，Base 约 32.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：AI服务器/HPC/高速交换机板占比、良率、扩产爬坡和材料成本必须验证。
+
+### AIDC/IDC 运营
+
+**300383 光环新网。** 2026E收入 74.2 亿元，净利 0.9 亿元，EPS 0.05；Bear/Base/Bull 0.5/0.8/4.2。目标 = 0.8×65% + 8.6×25% + 15.4×10% = 4.2；现价 12.23，空间 -65.5%。 修复PE/PB用于 AIDC/IDC 运营：核心看 MW、上架率、租约、电价、折旧和经营现金流。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 269.1x 2026E PE，Base 约 18.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：新增 MW、上架率、客户租约、单位电力成本和折旧压力必须验证。
+**300442 润泽科技。** 2026E收入 80.0 亿元，净利 29.5 亿元，EPS 1.57；Bear/Base/Bull 34.4/47.0/62.6。目标 = 47.0×55% + 59.8×35% + 38.7×10% = 50.6；现价 78.67，空间 -35.7%。 PE/现金流/上架率用于 AIDC/IDC 运营：核心看 MW、上架率、租约、电价、折旧和经营现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 50.3x 2026E PE，Base 约 30.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：新增 MW、上架率、客户租约、单位电力成本和折旧压力必须验证。
+**300738 奥飞数据。** 2026E收入 29.3 亿元，净利 4.2 亿元，EPS 0.39；Bear/Base/Bull 6.3/9.4/12.5。目标 = 9.4×65% + 13.9×25% + 28.0×10% = 12.4；现价 19.90，空间 -37.7%。 PE/负债/上架率用于 AIDC/IDC 运营：核心看 MW、上架率、租约、电价、折旧和经营现金流。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 50.8x 2026E PE，Base 约 24.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：新增 MW、上架率、客户租约、单位电力成本和折旧压力必须验证。
+**600050 中国联通。** 2026E收入 4018.1 亿元，净利 235.3 亿元，EPS 0.34；Bear/Base/Bull 4.0/5.4/6.7。目标 = 5.4×65% + 2.8×35% + Street锚未用×0% = 4.5；现价 4.04，空间 11.3%。 PB/ROE/EVEBITDA用于 AIDC/IDC 运营：核心看 MW、上架率、租约、电价、折旧和经营现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 12.0x 2026E PE，Base 约 16.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：新增 MW、上架率、客户租约、单位电力成本和折旧压力必须验证。
+**600941 中国移动。** 2026E收入 11257.6 亿元，净利 1562.3 亿元，EPS 7.24；Bear/Base/Bull 86.9/115.8/144.8。目标 = 115.8×65% + 61.1×35% + Street锚未用×0% = 96.7；现价 87.33，空间 10.7%。 PB/ROE/EVEBITDA用于 AIDC/IDC 运营：核心看 MW、上架率、租约、电价、折旧和经营现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 12.1x 2026E PE，Base 约 16.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：新增 MW、上架率、客户租约、单位电力成本和折旧压力必须验证。
+**601728 中国电信。** 2026E收入 5618.8 亿元，净利 390.5 亿元，EPS 0.42；Bear/Base/Bull 5.0/6.7/8.4。目标 = 6.7×65% + 3.7×35% + Street锚未用×0% = 5.7；现价 5.35，空间 6.1%。 PB/ROE/EVEBITDA用于 AIDC/IDC 运营：核心看 MW、上架率、租约、电价、折旧和经营现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 12.7x 2026E PE，Base 约 16.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：新增 MW、上架率、客户租约、单位电力成本和折旧压力必须验证。
+**603881 数据港。** 2026E收入 18.2 亿元，净利 1.7 亿元，EPS 0.23；Bear/Base/Bull 2.8/3.7/8.7。目标 = 3.7×65% + 18.1×35% + Street锚未用×0% = 8.7；现价 25.86，空间 -66.3%。 PB/ROE/EVEBITDA用于 AIDC/IDC 运营：核心看 MW、上架率、租约、电价、折旧和经营现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 112.4x 2026E PE，Base 约 16.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：新增 MW、上架率、客户租约、单位电力成本和折旧压力必须验证。
+
+### 供配电/能源
+
+**002335 科华数据。** 2026E收入 71.5 亿元，净利 4.9 亿元，EPS 0.93；Bear/Base/Bull 16.7/23.2/29.7。目标 = 23.2×55% + 32.8×35% + 46.0×10% = 28.9；现价 43.20，空间 -33.2%。 PE/供配电项目用于供配电/能源：核心看 UPS/HVDC/变压器订单、交付验收、回款和项目毛利。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 46.5x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：UPS/HVDC、变压器或预制电力模组订单需转化为收入、毛利和回款。
+**002364 中恒电气。** 2026E收入 32.6 亿元，净利 3.7 亿元，EPS 0.65；Bear/Base/Bull 11.7/16.2/24.6。目标 = 16.2×65% + 40.2×35% + Street锚未用×0% = 24.6；现价 52.96，空间 -53.5%。 正常化PE/订单/现金流用于供配电/能源：核心看 UPS/HVDC/变压器订单、交付验收、回款和项目毛利。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 81.5x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：UPS/HVDC、变压器或预制电力模组订单需转化为收入、毛利和回款。
+**002518 科士达。** 2026E收入 83.5 亿元，净利 9.4 亿元，EPS 1.59；Bear/Base/Bull 28.6/39.8/50.9。目标 = 39.8×55% + 35.5×35% + 64.0×10% = 40.7；现价 50.71，空间 -19.8%。 正常化PE/订单/现金流用于供配电/能源：核心看 UPS/HVDC/变压器订单、交付验收、回款和项目毛利。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 31.9x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：UPS/HVDC、变压器或预制电力模组订单需转化为收入、毛利和回款。
+**301291 明阳电气。** 2026E收入 126.2 亿元，净利 10.3 亿元，EPS 3.30；Bear/Base/Bull 59.4/82.5/105.6。目标 = 82.5×65% + 25.0×35% + Street锚未用×0% = 62.4；现价 35.70，空间 74.7%。 正常化PE/订单/现金流用于供配电/能源：核心看 UPS/HVDC/变压器订单、交付验收、回款和项目毛利。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 10.8x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：UPS/HVDC、变压器或预制电力模组订单需转化为收入、毛利和回款。
+**600089 特变电工。** 2026E收入 1129.4 亿元，净利 89.1 亿元，EPS 1.21；Bear/Base/Bull 21.8/30.2/38.7。目标 = 30.2×65% + 16.8×35% + Street锚未用×0% = 25.5；现价 22.13，空间 15.4%。 正常化PE/订单/现金流用于供配电/能源：核心看 UPS/HVDC/变压器订单、交付验收、回款和项目毛利。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 18.3x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：UPS/HVDC、变压器或预制电力模组订单需转化为收入、毛利和回款。
+**601179 中国西电。** 2026E收入 242.5 亿元，净利 22.9 亿元，EPS 0.40；Bear/Base/Bull 7.1/9.9/12.6。目标 = 9.9×55% + 10.9×35% + 7.9×10% = 10.0；现价 14.33，空间 -30.0%。 正常化PE/订单/现金流用于供配电/能源：核心看 UPS/HVDC/变压器订单、交付验收、回款和项目毛利。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 36.3x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：UPS/HVDC、变压器或预制电力模组订单需转化为收入、毛利和回款。
+**688676 金盘科技。** 2026E收入 69.2 亿元，净利 5.4 亿元，EPS 1.14；Bear/Base/Bull 22.7/31.8/44.8。目标 = 31.8×65% + 66.2×25% + 75.3×10% = 44.8；现价 87.05，空间 -48.6%。 PE/PB/算电用于供配电/能源：核心看 UPS/HVDC/变压器订单、交付验收、回款和项目毛利。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 76.6x 2026E PE，Base 约 28.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：UPS/HVDC、变压器或预制电力模组订单需转化为收入、毛利和回款。
+
+### 光模块/光器件
+
+**000988 华工科技。** 2026E收入 200.6 亿元，净利 20.2 亿元，EPS 1.99；Bear/Base/Bull 55.7/75.6/95.5。目标 = 75.6×55% + 132.3×35% + 46.2×10% = 92.5；现价 161.37，空间 -42.7%。 PE/PEG/出货/客户/毛利用于光模块/光器件：核心看 800G/1.6T 出货、客户分配、ASP、良率和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 81.1x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：800G/1.6T 出货、客户导入、ASP、良率和毛利率必须同步验证。
+**002281 光迅科技。** 2026E收入 150.1 亿元，净利 15.4 亿元，EPS 1.90；Bear/Base/Bull 53.2/72.2/110.6。目标 = 72.2×55% + 180.2×35% + 78.3×10% = 110.6；现价 219.80，空间 -49.7%。 PE/PEG/出货/客户/毛利用于光模块/光器件：核心看 800G/1.6T 出货、客户分配、ASP、良率和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 115.7x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：800G/1.6T 出货、客户导入、ASP、良率和毛利率必须同步验证。
+**300308 中际旭创。** 2026E收入 847.7 亿元，净利 268.0 亿元，EPS 22.52；Bear/Base/Bull 788.3/1013.5/1238.7。目标 = 1013.5×55% + 1135.0×35% + 1000.0×10% = 1054.7；现价 1289.74，空间 -18.2%。 PE/PEG/PS用于光模块/光器件：核心看 800G/1.6T 出货、客户分配、ASP、良率和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 57.3x 2026E PE，Base 约 45.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：800G/1.6T 出货、客户导入、ASP、良率和毛利率必须同步验证。
+**300394 天孚通信。** 2026E收入 57.8 亿元，净利 21.4 亿元，EPS 2.75；Bear/Base/Bull 110.1/151.4/192.7。目标 = 151.4×65% + 272.5×25% + 162.8×10% = 182.8；现价 309.68，空间 -41.0%。 PE/稀缺器件用于光模块/光器件：核心看 800G/1.6T 出货、客户分配、ASP、良率和毛利率。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 112.5x 2026E PE，Base 约 55.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：800G/1.6T 出货、客户导入、ASP、良率和毛利率必须同步验证。
+**300502 新易盛。** 2026E收入 362.5 亿元，净利 121.8 亿元，EPS 12.17；Bear/Base/Bull 365.2/487.0/608.7。目标 = 487.0×55% + 535.9×35% + 500.0×10% = 505.4；现价 608.94，空间 -17.0%。 PE/PEG/客户集中校验用于光模块/光器件：核心看 800G/1.6T 出货、客户分配、ASP、良率和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 50.0x 2026E PE，Base 约 40.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：800G/1.6T 出货、客户导入、ASP、良率和毛利率必须同步验证。
+**301205 联特科技。** 2026E收入 12.4 亿元，净利 1.7 亿元，EPS 1.28；Bear/Base/Bull 35.8/48.6/118.6。目标 = 48.6×65% + 248.5×35% + Street锚未用×0% = 118.6；现价 326.93，空间 -63.7%。 PE/PEG/出货/客户/毛利用于光模块/光器件：核心看 800G/1.6T 出货、客户分配、ASP、良率和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 255.4x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：800G/1.6T 出货、客户导入、ASP、良率和毛利率必须同步验证。
+**603083 剑桥科技。** 2026E收入 79.0 亿元，净利 9.0 亿元，EPS 2.52；Bear/Base/Bull 70.6/95.8/126.2。目标 = 95.8×65% + 182.9×35% + Street锚未用×0% = 126.2；现价 223.01，空间 -43.4%。 PE/PEG/出货/客户/毛利用于光模块/光器件：核心看 800G/1.6T 出货、客户分配、ASP、良率和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 88.5x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：800G/1.6T 出货、客户导入、ASP、良率和毛利率必须同步验证。
+
+### 服务器/网络设备
+
+**000063 中兴通讯。** 2026E收入 1666.9 亿元，净利 92.6 亿元，EPS 1.94；Bear/Base/Bull 54.3/73.7/93.1。目标 = 73.7×55% + 29.2×35% + 60.0×10% = 56.8；现价 35.61，空间 59.4%。 PE/PEG/出货/客户/毛利用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 18.4x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**000938 紫光股份。** 2026E收入 1216.7 亿元，净利 40.1 亿元，EPS 1.20；Bear/Base/Bull 21.6/29.9/38.3。目标 = 29.9×65% + 23.7×25% + 31.2×10% = 28.5；现价 28.86，空间 -1.2%。 PE/网络订单用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 24.1x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**000977 浪潮信息。** 2026E收入 1418.8 亿元，净利 24.6 亿元，EPS 1.65；Bear/Base/Bull 33.0/46.1/57.7。目标 = 46.1×65% + 56.8×25% + 60.0×10% = 50.2；现价 69.23，空间 -27.5%。 PE/毛利压力用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 42.0x 2026E PE，Base 约 28.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**002396 星网锐捷。** 2026E收入 249.2 亿元，净利 10.3 亿元，EPS 1.21；Bear/Base/Bull 33.9/46.0/58.1。目标 = 46.0×65% + 16.8×35% + Street锚未用×0% = 35.8；现价 22.16，空间 61.5%。 PE/PEG/出货/客户/毛利用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 18.3x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**002463 沪电股份。** 2026E收入 248.6 亿元，净利 49.7 亿元，EPS 2.58；Bear/Base/Bull 64.5/90.4/116.2。目标 = 90.4×55% + 136.2×35% + 39.8×10% = 101.3；现价 154.74，空间 -34.5%。 PE/高端PCB用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 59.9x 2026E PE，Base 约 35.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**002913 奥士康。** 2026E收入 67.4 亿元，净利 6.9 亿元，EPS 2.18；Bear/Base/Bull 61.0/82.8/104.6。目标 = 82.8×65% + 43.4×35% + Street锚未用×0% = 69.0；现价 61.96，空间 11.4%。 PE/PEG/出货/客户/毛利用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 28.4x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**002922 伊戈尔。** 2026E收入 73.1 亿元，净利 4.9 亿元，EPS 1.15；Bear/Base/Bull 20.7/28.7/36.8。目标 = 28.7×55% + 21.5×35% + 45.8×10% = 27.9；现价 30.67，空间 -9.0%。 正常化PE/订单/现金流用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 26.7x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**300476 胜宏科技。** 2026E收入 220.8 亿元，净利 51.7 亿元，EPS 5.92；Bear/Base/Bull 130.2/189.4/248.6。目标 = 189.4×65% + 309.5×25% + 381.7×10% = 238.7；现价 351.66，空间 -32.1%。 PE/扩产/现金流用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 25% 权重。Street锚为一致预期快照，进入 10% 权重。现价约 59.4x 2026E PE，Base 约 32.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**301165 锐捷网络。** 2026E收入 182.2 亿元，净利 11.5 亿元，EPS 1.44；Bear/Base/Bull 40.3/54.7/69.1。目标 = 54.7×65% + 66.8×35% + Street锚未用×0% = 58.9；现价 87.88，空间 -32.9%。 PE/PEG/出货/客户/毛利用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 61.0x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**600845 宝信软件。** 2026E收入 155.3 亿元，净利 31.9 亿元，EPS 1.03；Bear/Base/Bull 12.4/16.5/20.6。目标 = 16.5×65% + 12.9×35% + Street锚未用×0% = 15.2；现价 18.47，空间 -17.5%。 PB/ROE/EVEBITDA用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 17.9x 2026E PE，Base 约 16.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**601138 工业富联。** 2026E收入 10461.6 亿元，净利 439.1 亿元，EPS 2.21；Bear/Base/Bull 55.2/75.1/92.8。目标 = 75.1×55% + 59.7×35% + 29.0×10% = 65.1；现价 72.85，空间 -10.6%。 PE/订单现金流校验用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 33.0x 2026E PE，Base 约 34.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**603019 中科曙光。** 2026E收入 145.4 亿元，净利 10.7 亿元，EPS 0.71；Bear/Base/Bull 21.3/29.8/46.8。目标 = 29.8×65% + 93.0×25% + 41.6×10% = 46.8；现价 105.70，空间 -55.8%。 PE/PB稀缺性用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 149.1x 2026E PE，Base 约 42.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**603228 景旺电子。** 2026E收入 170.4 亿元，净利 21.8 亿元，EPS 2.18；Bear/Base/Bull 52.3/69.8/87.2。目标 = 69.8×55% + 52.1×35% + 34.3×10% = 60.0；现价 68.50，空间 -12.4%。 PE/PEG/周期/结构用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 31.4x 2026E PE，Base 约 32.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**688041 海光信息。** 2026E收入 206.6 亿元，净利 54.0 亿元，EPS 2.01；Bear/Base/Bull 56.3/76.4/164.3。目标 = 76.4×55% + 275.0×35% + 260.0×10% = 164.3；现价 335.34，空间 -51.0%。 SOTP/PS/PE用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 166.8x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**688183 生益电子。** 2026E收入 90.3 亿元，净利 12.1 亿元，EPS 1.46；Bear/Base/Bull 35.0/46.7/62.3。目标 = 46.7×65% + 91.4×35% + Street锚未用×0% = 62.3；现价 120.20，空间 -48.1%。 PE/PEG/周期/结构用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 82.3x 2026E PE，Base 约 32.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**688256 寒武纪。** 2026E收入 108.5 亿元，净利 67.9 亿元，EPS 16.10；Bear/Base/Bull 450.8/611.8/924.4。目标 = 611.8×55% + 1232.0×40% + 1903.0×5% = 924.4；现价 1400.00，空间 -34.0%。 SOTP/PS/PE用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 40% 权重。Street锚为明示目标价，进入 5% 权重。现价约 87.0x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+**688702 盛科通信。** 2026E收入 12.1 亿元，净利 0.5 亿元，EPS 0.11；Bear/Base/Bull 3.1/4.2/101.4。目标 = 4.2×65% + 282.0×35% + Street锚未用×0% = 101.4；现价 371.00，空间 -72.7%。 PE/PEG/出货/客户/毛利用于服务器/网络设备：核心看订单转收入、毛利率、库存、应收和现金流。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 3372.7x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：AI服务器/交换机订单必须转收入，毛利率、库存、应收和现金流不能失控。
+
+### 液冷/温控
+
+**000530 冰山冷热。** 2026E收入 55.2 亿元，净利 2.1 亿元，EPS 0.25；Bear/Base/Bull 4.5/6.2/8.0。目标 = 6.2×65% + 3.8×35% + Street锚未用×0% = 5.4；现价 5.42，空间 -0.5%。 正常化PE/SOTP用于液冷/温控：核心看认证转批量交付、验收、售后成本和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 21.7x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：CDU、冷板、Manifold 或机柜级温控项目需从认证进入批量验收。
+**002158 汉钟精机。** 2026E收入 34.6 亿元，净利 7.2 亿元，EPS 1.34；Bear/Base/Bull 24.1/33.5/42.9。目标 = 33.5×65% + 26.6×35% + Street锚未用×0% = 31.1；现价 38.00，空间 -18.2%。 正常化PE/SOTP用于液冷/温控：核心看认证转批量交付、验收、售后成本和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 28.4x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：CDU、冷板、Manifold 或机柜级温控项目需从认证进入批量验收。
+**002837 英维克。** 2026E收入 65.3 亿元，净利 6.3 亿元，EPS 0.64；Bear/Base/Bull 15.9/22.3/48.1。目标 = 22.3×55% + 65.3×35% + 130.0×10% = 48.1；现价 79.62，空间 -39.6%。 正常化PE/液冷订单校验用于液冷/温控：核心看认证转批量交付、验收、售后成本和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 125.0x 2026E PE，Base 约 35.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：CDU、冷板、Manifold 或机柜级温控项目需从认证进入批量验收。
+**300249 依米康。** 2026E收入 14.5 亿元，净利 0.6 亿元，EPS 0.13；Bear/Base/Bull 2.3/3.2/5.8。目标 = 3.2×65% + 10.5×35% + Street锚未用×0% = 5.8；现价 15.02，空间 -61.4%。 正常化PE/SOTP用于液冷/温控：核心看认证转批量交付、验收、售后成本和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 115.5x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：CDU、冷板、Manifold 或机柜级温控项目需从认证进入批量验收。
+**300499 高澜股份。** 2026E收入 12.7 亿元，净利 1.4 亿元，EPS 0.45；Bear/Base/Bull 8.1/11.2/18.6。目标 = 11.2×55% + 26.1×35% + 32.5×10% = 18.6；现价 37.28，空间 -50.2%。 正常化PE/SOTP用于液冷/温控：核心看认证转批量交付、验收、售后成本和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 82.8x 2026E PE，Base 约 25.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：CDU、冷板、Manifold 或机柜级温控项目需从认证进入批量验收。
+**300990 同飞股份。** 2026E收入 43.6 亿元，净利 4.7 亿元，EPS 2.76；Bear/Base/Bull 49.7/69.0/88.3。目标 = 69.0×65% + 69.3×35% + Street锚未用×0% = 69.1；现价 99.03，空间 -30.2%。 正常化PE/SOTP用于液冷/温控：核心看认证转批量交付、验收、售后成本和毛利率。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 35.9x 2026E PE，Base 约 25.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：CDU、冷板、Manifold 或机柜级温控项目需从认证进入批量验收。
+**301018 申菱环境。** 2026E收入 30.9 亿元，净利 2.4 亿元，EPS 0.91；Bear/Base/Bull 18.1/27.2/49.7。目标 = 27.2×65% + 86.8×25% + 103.2×10% = 49.7；现价 114.16，空间 -56.5%。 正常化PE/项目验收校验用于液冷/温控：核心看认证转批量交付、验收、售后成本和毛利率。市场锚按 原模型披露 进入 25% 权重。Street锚为明示目标价，进入 10% 权重。现价约 125.8x 2026E PE，Base 约 30.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：CDU、冷板、Manifold 或机柜级温控项目需从认证进入批量验收。
+
+### 算力芯片/存储/网络 ASIC
+
+**000021 深科技。** 2026E收入 163.8 亿元，净利 12.5 亿元，EPS 0.64；Bear/Base/Bull 17.8/24.2/33.0。目标 = 24.2×65% + 49.4×35% + Street锚未用×0% = 33.0；现价 56.18，空间 -41.2%。 SOTP/PS/PE用于算力芯片/存储/ASIC：核心看收入确认、平台生态、研发费用率、现金流和盈利路径。市场锚按 原模型披露 进入 35% 权重。Street锚为公告替代，权重为 0，不替代 AStock 目标。现价约 88.1x 2026E PE，Base 约 38.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：产品出货、平台生态、费用率、现金流和盈利拐点必须验证。
+**300223 北京君正。** 2026E收入 58.9 亿元，净利 6.6 亿元，EPS 1.36；Bear/Base/Bull 38.1/51.7/104.7。目标 = 51.7×65% + 203.0×35% + Street锚未用×0% = 104.7；现价 247.60，空间 -57.7%。 SOTP/PS/PE用于算力芯片/存储/ASIC：核心看收入确认、平台生态、研发费用率、现金流和盈利路径。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 182.1x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：产品出货、平台生态、费用率、现金流和盈利拐点必须验证。
+**603986 兆易创新。** 2026E收入 85.1 亿元，净利 31.5 亿元，EPS 4.45；Bear/Base/Bull 124.6/169.1/345.8。目标 = 169.1×55% + 617.0×40% + 120.0×5% = 345.8；现价 701.18，空间 -50.7%。 SOTP/PS/PE用于算力芯片/存储/ASIC：核心看收入确认、平台生态、研发费用率、现金流和盈利路径。市场锚按 原模型披露 进入 40% 权重。Street锚为明示目标价，进入 5% 权重。现价约 157.6x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：产品出货、平台生态、费用率、现金流和盈利拐点必须验证。
+**688008 澜起科技。** 2026E收入 71.6 亿元，净利 23.4 亿元，EPS 1.92；Bear/Base/Bull 53.8/73.0/146.0。目标 = 73.0×55% + 252.8×40% + 95.0×5% = 146.0；现价 287.22，空间 -49.2%。 SOTP/PS/PE用于算力芯片/存储/ASIC：核心看收入确认、平台生态、研发费用率、现金流和盈利路径。市场锚按 原模型披露 进入 40% 权重。Street锚为明示目标价，进入 5% 权重。现价约 149.6x 2026E PE，Base 约 38.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：产品出货、平台生态、费用率、现金流和盈利拐点必须验证。
+**688123 聚辰股份。** 2026E收入 18.6 亿元，净利 5.5 亿元，EPS 3.49；Bear/Base/Bull 97.7/132.6/167.5。目标 = 132.6×65% + 167.6×35% + Street锚未用×0% = 144.9；现价 204.43，空间 -29.1%。 SOTP/PS/PE用于算力芯片/存储/ASIC：核心看收入确认、平台生态、研发费用率、现金流和盈利路径。市场锚按 原模型披露 进入 35% 权重。Street锚为预测-only，权重为 0，不替代 AStock 目标。现价约 58.6x 2026E PE，Base 约 38.0x 2026E PE。最终目标落在 Bear/Bull 区间内。下一季度验证：产品出货、平台生态、费用率、现金流和盈利拐点必须验证。
+**688521 芯原股份。** 2026E收入 62.7 亿元，净利 0.8 亿元，EPS 0.17；Bear/Base/Bull 4.8/6.5/126.5。目标 = 6.5×55% + 265.5×35% + 300.0×10% = 126.5；现价 323.79，空间 -60.9%。 SOTP/PS/PE用于算力芯片/存储/ASIC：核心看收入确认、平台生态、研发费用率、现金流和盈利路径。市场锚按 原模型披露 进入 35% 权重。Street锚为明示目标价，进入 10% 权重。现价约 1904.6x 2026E PE，Base 约 38.0x 2026E PE。最终目标触及情景边界，已在质量审计中解释，不能自动上调基本面权重。下一季度验证：产品出货、平台生态、费用率、现金流和盈利拐点必须验证。
+**688795 摩尔线程。** 2026E收入 26.7 亿元，净利 -10.0 亿元，EPS -2.13；Bear/Base/Bull 109.3/182.2/255.1。目标 = 182.2×100% + 市场锚未用×0% + Street锚未用×0% = 182.2；现价 671.99，空间 -72.9%。 PS/PB/里程碑用于算力芯片/存储/ASIC：核心看收入确认、平台生态、研发费用率、现金流和盈利路径。市场锚不参与最终目标，只保留为情绪观察。Street锚为PS/SOTP里程碑，权重为 0，不替代 AStock 目标。EPS 分母不足或为负，现价约 118.18x 2026E PS，按 PS/PB/SOTP 或观察逻辑处理。最终目标落在 Bear/Bull 区间内。下一季度验证：产品出货、平台生态、费用率、现金流和盈利拐点必须验证。
 
 ## Relative / PEG / PSG Comparison
 
@@ -191,60 +336,60 @@ Unified publication universe: 56 target-price/fair-value rows, including 18 orig
 |---|---|---:|---:|---:|---|
 | 002916 | 深南电路 | 87.8 | 28.0 | 11.62 | 现价要求高于基础情景的增长久期或利润率。 |
 | 600183 | 生益科技 | 88.9 | 30.0 | 14.39 | 现价要求高于基础情景的增长久期或利润率。 |
-| 603186 | 华正新材 | 120.5 | 32.0 | 6.34 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688519 | 南亚新材 | 173.1 | 32.0 | 14.05 | 现价要求高于基础情景的增长久期或利润率。 |
+| 603186 | 华正新材 | 115.9 | 32.0 | 6.10 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688519 | 南亚新材 | 175.2 | 32.0 | 14.22 | 现价要求高于基础情景的增长久期或利润率。 |
 | 300383 | 光环新网 | 269.1 | 18.0 | 3.10 | 现价要求高于基础情景的增长久期或利润率。 |
 | 300442 | 润泽科技 | 50.3 | 30.0 | 18.56 | 现价要求高于基础情景的增长久期或利润率。 |
 | 300738 | 奥飞数据 | 50.8 | 24.0 | 7.25 | 现价要求高于基础情景的增长久期或利润率。 |
-| 600050 | 中国联通 | 12.1 | 16.0 | 0.71 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
-| 600941 | 中国移动 | 11.9 | 16.0 | 1.67 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
-| 601728 | 中国电信 | 12.5 | 16.0 | 0.87 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
-| 603881 | 数据港 | 112.2 | 16.0 | 10.21 | 现价要求高于基础情景的增长久期或利润率。 |
+| 600050 | 中国联通 | 12.0 | 16.0 | 0.70 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 600941 | 中国移动 | 12.1 | 16.0 | 1.69 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 601728 | 中国电信 | 12.7 | 16.0 | 0.89 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 603881 | 数据港 | 112.4 | 16.0 | 10.23 | 现价要求高于基础情景的增长久期或利润率。 |
 | 002335 | 科华数据 | 46.5 | 25.0 | 3.18 | 现价要求高于基础情景的增长久期或利润率。 |
-| 002364 | 中恒电气 | 79.8 | 25.0 | 9.07 | 现价要求高于基础情景的增长久期或利润率。 |
-| 002518 | 科士达 | 32.4 | 25.0 | 3.65 | 现价要求高于基础情景的增长久期或利润率。 |
-| 301291 | 明阳电气 | 10.7 | 25.0 | 0.88 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
-| 600089 | 特变电工 | 18.4 | 25.0 | 1.45 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
-| 601179 | 中国西电 | 36.7 | 25.0 | 3.47 | 现价要求高于基础情景的增长久期或利润率。 |
+| 002364 | 中恒电气 | 81.5 | 25.0 | 9.27 | 现价要求高于基础情景的增长久期或利润率。 |
+| 002518 | 科士达 | 31.9 | 25.0 | 3.60 | 现价要求高于基础情景的增长久期或利润率。 |
+| 301291 | 明阳电气 | 10.8 | 25.0 | 0.88 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 600089 | 特变电工 | 18.3 | 25.0 | 1.44 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 601179 | 中国西电 | 36.3 | 25.0 | 3.43 | 现价要求高于基础情景的增长久期或利润率。 |
 | 688676 | 金盘科技 | 76.6 | 28.0 | 5.99 | 现价要求高于基础情景的增长久期或利润率。 |
-| 000988 | 华工科技 | 87.2 | 38.0 | 8.76 | 现价要求高于基础情景的增长久期或利润率。 |
-| 002281 | 光迅科技 | 127.6 | 38.0 | 13.09 | 现价要求高于基础情景的增长久期或利润率。 |
+| 000988 | 华工科技 | 81.1 | 38.0 | 8.15 | 现价要求高于基础情景的增长久期或利润率。 |
+| 002281 | 光迅科技 | 115.7 | 38.0 | 11.86 | 现价要求高于基础情景的增长久期或利润率。 |
 | 300308 | 中际旭创 | 57.3 | 45.0 | 18.11 | 现价要求高于基础情景的增长久期或利润率。 |
 | 300394 | 天孚通信 | 112.5 | 55.0 | 41.67 | 现价要求高于基础情景的增长久期或利润率。 |
 | 300502 | 新易盛 | 50.0 | 40.0 | 16.80 | 现价要求高于基础情景的增长久期或利润率。 |
-| 301205 | 联特科技 | 270.3 | 38.0 | 36.34 | 现价要求高于基础情景的增长久期或利润率。 |
-| 603083 | 剑桥科技 | 96.3 | 38.0 | 10.96 | 现价要求高于基础情景的增长久期或利润率。 |
-| 000063 | 中兴通讯 | 19.2 | 38.0 | 1.07 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 301205 | 联特科技 | 255.4 | 38.0 | 34.34 | 现价要求高于基础情景的增长久期或利润率。 |
+| 603083 | 剑桥科技 | 88.5 | 38.0 | 10.07 | 现价要求高于基础情景的增长久期或利润率。 |
+| 000063 | 中兴通讯 | 18.4 | 38.0 | 1.03 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
 | 000938 | 紫光股份 | 24.1 | 25.0 | 0.79 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
 | 000977 | 浪潮信息 | 42.0 | 28.0 | 0.73 | 现价要求高于基础情景的增长久期或利润率。 |
-| 002396 | 星网锐捷 | 17.4 | 38.0 | 0.72 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 002396 | 星网锐捷 | 18.3 | 38.0 | 0.76 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
 | 002463 | 沪电股份 | 59.9 | 35.0 | 11.99 | 现价要求高于基础情景的增长久期或利润率。 |
-| 002913 | 奥士康 | 28.9 | 38.0 | 3.05 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
-| 002922 | 伊戈尔 | 27.2 | 25.0 | 1.83 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
+| 002913 | 奥士康 | 28.4 | 38.0 | 3.00 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 002922 | 伊戈尔 | 26.7 | 25.0 | 1.80 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
 | 300476 | 胜宏科技 | 59.4 | 32.0 | 13.90 | 现价要求高于基础情景的增长久期或利润率。 |
-| 301165 | 锐捷网络 | 59.7 | 38.0 | 3.75 | 现价要求高于基础情景的增长久期或利润率。 |
-| 600845 | 宝信软件 | 17.8 | 16.0 | 3.65 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
+| 301165 | 锐捷网络 | 61.0 | 38.0 | 3.84 | 现价要求高于基础情景的增长久期或利润率。 |
+| 600845 | 宝信软件 | 17.9 | 16.0 | 3.68 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
 | 601138 | 工业富联 | 33.0 | 34.0 | 1.38 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
 | 603019 | 中科曙光 | 149.1 | 42.0 | 10.92 | 现价要求高于基础情景的增长久期或利润率。 |
-| 603228 | 景旺电子 | 31.3 | 32.0 | 4.00 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
-| 688041 | 海光信息 | 174.1 | 38.0 | 45.52 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688183 | 生益电子 | 84.9 | 32.0 | 11.42 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688256 | 寒武纪 | 92.3 | 38.0 | 57.76 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688702 | 盛科通信 | 3459.3 | 38.0 | 128.51 | 现价要求高于基础情景的增长久期或利润率。 |
-| 000530 | 冰山冷热 | 21.5 | 25.0 | 0.84 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
-| 002158 | 汉钟精机 | 27.2 | 25.0 | 5.66 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
+| 603228 | 景旺电子 | 31.4 | 32.0 | 4.02 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
+| 688041 | 海光信息 | 166.8 | 38.0 | 43.62 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688183 | 生益电子 | 82.3 | 32.0 | 11.07 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688256 | 寒武纪 | 87.0 | 38.0 | 54.44 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688702 | 盛科通信 | 3372.7 | 38.0 | 125.30 | 现价要求高于基础情景的增长久期或利润率。 |
+| 000530 | 冰山冷热 | 21.7 | 25.0 | 0.84 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
+| 002158 | 汉钟精机 | 28.4 | 25.0 | 5.91 | 现价大致贴近基础分母，后续看订单与现金流验证。 |
 | 002837 | 英维克 | 125.0 | 35.0 | 12.00 | 现价要求高于基础情景的增长久期或利润率。 |
-| 300249 | 依米康 | 117.0 | 25.0 | 4.73 | 现价要求高于基础情景的增长久期或利润率。 |
+| 300249 | 依米康 | 115.5 | 25.0 | 4.67 | 现价要求高于基础情景的增长久期或利润率。 |
 | 300499 | 高澜股份 | 82.8 | 25.0 | 9.06 | 现价要求高于基础情景的增长久期或利润率。 |
-| 300990 | 同飞股份 | 36.2 | 25.0 | 3.91 | 现价要求高于基础情景的增长久期或利润率。 |
+| 300990 | 同飞股份 | 35.9 | 25.0 | 3.87 | 现价要求高于基础情景的增长久期或利润率。 |
 | 301018 | 申菱环境 | 125.8 | 30.0 | 9.93 | 现价要求高于基础情景的增长久期或利润率。 |
-| 000021 | 深科技 | 97.7 | 38.0 | 7.44 | 现价要求高于基础情景的增长久期或利润率。 |
-| 300223 | 北京君正 | 190.5 | 38.0 | 21.29 | 现价要求高于基础情景的增长久期或利润率。 |
-| 603986 | 兆易创新 | 173.5 | 38.0 | 64.21 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688008 | 澜起科技 | 164.5 | 38.0 | 53.72 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688123 | 聚辰股份 | 61.6 | 38.0 | 17.98 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688521 | 芯原股份 | 2012.4 | 38.0 | 28.71 | 现价要求高于基础情景的增长久期或利润率。 |
-| 688795 | 摩尔线程 | -315.7 | -85.4 | 118.50 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
+| 000021 | 深科技 | 88.1 | 38.0 | 6.71 | 现价要求高于基础情景的增长久期或利润率。 |
+| 300223 | 北京君正 | 182.1 | 38.0 | 20.35 | 现价要求高于基础情景的增长久期或利润率。 |
+| 603986 | 兆易创新 | 157.6 | 38.0 | 58.32 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688008 | 澜起科技 | 149.6 | 38.0 | 48.84 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688123 | 聚辰股份 | 58.6 | 38.0 | 17.10 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688521 | 芯原股份 | 1904.6 | 38.0 | 27.17 | 现价要求高于基础情景的增长久期或利润率。 |
+| 688795 | 摩尔线程 | -314.9 | -85.4 | 118.18 | 现价低于基础倍数，关键在分母兑现而非主题溢价。 |
 
 ## Seasonality Calibration
 
@@ -327,20 +472,20 @@ The broker table distinguishes explicit target-price anchors from forecast-only 
 |---|---|---|---|---|---:|---|---|---:|
 | 002916 | 深南电路 | explicit_target_price_anchor | 招银国际 | 2026-03-16 | 288.00 | 收入306.93；净利50.48；EPS7.57 | original_pdf | 10% |
 | 600183 | 生益科技 | explicit_target_price_anchor | 西南证券 | 2026-05-19 | 103.50 | 收入390.45；净利55.89；EPS2.30 | original_pdf | 10% |
-| 603186 | 华正新材 | official_disclosure_substitute | not disclosed | 浙江华正新材料股份有限公司2025年年度报告（修订版） | not disclosed | 收入未披露；净利未披露；EPS未披露 | official_filing_no_broker_target | 0% |
-| 688519 | 南亚新材 | forecast_only_no_target | 华金证券 | 2025-08-01 | not disclosed | 收入60.14；净利0.80；EPS2.08 | original_pdf | 0% |
+| 603186 | 华正新材 | official_disclosure_substitute | 未披露 | 浙江华正新材料股份有限公司2025年年度报告（修订版） | 未披露 | 收入未披露；净利未披露；EPS未披露 | official_filing_no_broker_target | 0% |
+| 688519 | 南亚新材 | forecast_only_no_target | 华金证券 | 2025-08-01 | 未披露 | 收入60.14；净利0.80；EPS2.08 | original_pdf | 0% |
 | 300383 | 光环新网 | explicit_target_price_anchor | 国信证券 | 2025-04-29 | 15.45 | 收入78.55；净利4.43；EPS0.25 | original_pdf | 10% |
 | 300442 | 润泽科技 | explicit_target_price_anchor | 西南证券 target report / 西南证券 latest forecast | 2024-04-29 target report; 2026-04-26 latest forecast | 38.70 | 收入69.53；净利25.00；EPS2.01 | original_pdf | 10% |
 | 300738 | 奥飞数据 | explicit_target_price_anchor | 国信证券 | 2025-05-07 | 28.00 | 收入33.42；净利3.10；EPS0.31 | original_pdf | 10% |
-| 600050 | 中国联通 | forecast_only_no_target | 国金证券 | 2026-03-20 | not disclosed | 收入未披露；净利105.40；EPS0.34 | original_public_broker_pdf | 0% |
-| 600941 | 中国移动 | forecast_only_no_target | 山西证券 | 2025-04-14 | not disclosed | 收入11257.60；净利1562.31；EPS7.24 | original_pdf | 0% |
-| 601728 | 中国电信 | forecast_only_no_target | 东莞证券 | 2025-09-03 | not disclosed | 收入5618.82；净利未披露；EPS0.42 | original_public_broker_pdf | 0% |
-| 603881 | 数据港 | forecast_only_no_target | 中邮证券 | 2026-04-21 | not disclosed | 收入18.18；净利1.68；EPS0.23 | original_public_broker_pdf | 0% |
+| 600050 | 中国联通 | forecast_only_no_target | 国金证券 | 2026-03-20 | 未披露 | 收入未披露；净利105.40；EPS0.34 | original_public_broker_pdf | 0% |
+| 600941 | 中国移动 | forecast_only_no_target | 山西证券 | 2025-04-14 | 未披露 | 收入11257.60；净利1562.31；EPS7.24 | original_pdf | 0% |
+| 601728 | 中国电信 | forecast_only_no_target | 东莞证券 | 2025-09-03 | 未披露 | 收入5618.82；净利未披露；EPS0.42 | original_public_broker_pdf | 0% |
+| 603881 | 数据港 | forecast_only_no_target | 中邮证券 | 2026-04-21 | 未披露 | 收入18.18；净利1.68；EPS0.23 | original_public_broker_pdf | 0% |
 | 002335 | 科华数据 | explicit_target_price_anchor | 东吴证券 | 2025-02-16 | 46.00 | 收入108.20；净利9.73；EPS2.11 | original_pdf | 10% |
-| 002364 | 中恒电气 | forecast_only_no_target | 西南证券 | 2025-05-27 | not disclosed | 收入32.58；净利3.65；EPS0.65 | original_pdf | 0% |
+| 002364 | 中恒电气 | forecast_only_no_target | 西南证券 | 2025-05-27 | 未披露 | 收入32.58；净利3.65；EPS0.65 | original_pdf | 0% |
 | 002518 | 科士达 | explicit_target_price_anchor | 东吴证券 | 2026-04-28 | 64.00 | 收入83.51；净利6.11；EPS1.59 | original_pdf | 10% |
-| 301291 | 明阳电气 | forecast_only_no_target | 开源证券 | 2025-09-30 | not disclosed | 收入126.19；净利10.29；EPS3.30 | original_pdf | 0% |
-| 600089 | 特变电工 | forecast_only_no_target | 华鑫证券 | 2025-10-10 | not disclosed | 收入1129.39；净利73.34；EPS1.21 | original_public_broker_pdf | 0% |
+| 301291 | 明阳电气 | forecast_only_no_target | 开源证券 | 2025-09-30 | 未披露 | 收入126.19；净利10.29；EPS3.30 | original_pdf | 0% |
+| 600089 | 特变电工 | forecast_only_no_target | 华鑫证券 | 2025-10-10 | 未披露 | 收入1129.39；净利73.34；EPS1.21 | original_public_broker_pdf | 0% |
 | 601179 | 中国西电 | explicit_target_price_anchor | 国金证券 | 2025-03-14 | 7.90 | 收入242.46；净利8.85；EPS0.40 | original_pdf | 10% |
 | 688676 | 金盘科技 | explicit_target_price_anchor | 国金证券 | 2025-10-21 | 75.34 | 收入104.78；净利9.90；EPS2.15 | original_pdf | 10% |
 | 000988 | 华工科技 | explicit_target_price_anchor | 国金证券 | 2025-05-21 | 46.20 | 收入200.60；净利15.48；EPS1.99 | original_pdf | 10% |
@@ -348,39 +493,39 @@ The broker table distinguishes explicit target-price anchors from forecast-only 
 | 300308 | 中际旭创 | explicit_target_price_anchor | 群益证券 | 2026-04-17 | 1000.00 | 收入1026.99；净利334.75；EPS30.13 | original_pdf | 10% |
 | 300394 | 天孚通信 | explicit_target_price_anchor | 国金证券 target report / 太平洋 latest forecast | 2024-05-23 target report; 2026-05-31 latest forecast | 162.81 | 收入83.70；净利32.52；EPS4.17 | original_pdf | 10% |
 | 300502 | 新易盛 | explicit_target_price_anchor | 群益证券 | 2026-02-02 | 500.00 | 收入310.71；净利125.09；EPS12.59 | original_pdf | 10% |
-| 301205 | 联特科技 | forecast_only_no_target | 东兴证券 | 2025-02-21 | not disclosed | 收入12.35；净利0.97；EPS1.28 | original_public_broker_pdf | 0% |
-| 603083 | 剑桥科技 | forecast_only_no_target | 华鑫证券 | 2025-08-22 | not disclosed | 收入79.01；净利6.74；EPS2.52 | original_pdf | 0% |
+| 301205 | 联特科技 | forecast_only_no_target | 东兴证券 | 2025-02-21 | 未披露 | 收入12.35；净利0.97；EPS1.28 | original_public_broker_pdf | 0% |
+| 603083 | 剑桥科技 | forecast_only_no_target | 华鑫证券 | 2025-08-22 | 未披露 | 收入79.01；净利6.74；EPS2.52 | original_pdf | 0% |
 | 000063 | 中兴通讯 | explicit_target_price_anchor | 群益证券 | 2025-09-01 | 60.00 | 收入1666.94；净利92.63；EPS1.94 | original_pdf | 10% |
 | 000938 | 紫光股份 | explicit_target_price_anchor | 国金证券 | 2025-06-12 | 31.20 | 收入981.74；净利27.53；EPS0.96 | original_pdf | 10% |
 | 000977 | 浪潮信息 | explicit_target_price_anchor | 群益证券 | 2025-05-06 | 60.00 | 收入3113.28；净利46.67；EPS3.17 | original_pdf | 10% |
-| 002396 | 星网锐捷 | forecast_only_no_target | 民生证券 | 2025-07-13 | not disclosed | 收入249.24；净利未披露；EPS1.21 | original_pdf | 0% |
+| 002396 | 星网锐捷 | forecast_only_no_target | 民生证券 | 2025-07-13 | 未披露 | 收入249.24；净利未披露；EPS1.21 | original_pdf | 0% |
 | 002463 | 沪电股份 | explicit_target_price_anchor | 西南证券 | 2025-05-13 | 39.82 | 收入204.77；净利43.19；EPS2.25 | original_pdf | 10% |
-| 002913 | 奥士康 | forecast_only_no_target | 中邮证券 | 2025-08-27 | not disclosed | 收入67.42；净利6.90；EPS2.18 | original_public_broker_pdf | 0% |
+| 002913 | 奥士康 | forecast_only_no_target | 中邮证券 | 2025-08-27 | 未披露 | 收入67.42；净利6.90；EPS2.18 | original_public_broker_pdf | 0% |
 | 002922 | 伊戈尔 | explicit_target_price_anchor | 东吴证券 | 2025-12-14 | 45.80 | 收入73.06；净利4.85；EPS1.15 | original_pdf | 10% |
 | 300476 | 胜宏科技 | auditable_consensus_snapshot_target | 同花顺 iFinD consensus snapshot: 中信证券 / 国投证券 | 2026-04-29 snapshot; target rows 2026-04-23 / 2025-10-30 | 381.71 | 收入328.16；净利91.19；EPS9.28 | auditable_consensus_snapshot | 10% |
-| 301165 | 锐捷网络 | forecast_only_no_target | 开源证券 | 2026-06-02 | not disclosed | 收入182.18；净利16.05；EPS1.44 | original_pdf | 0% |
-| 600845 | 宝信软件 | forecast_only_no_target | 国元证券 | 2025-04-10 | not disclosed | 收入155.33；净利27.56；EPS1.03 | original_public_broker_pdf | 0% |
+| 301165 | 锐捷网络 | forecast_only_no_target | 开源证券 | 2026-06-02 | 未披露 | 收入182.18；净利16.05；EPS1.44 | original_pdf | 0% |
+| 600845 | 宝信软件 | forecast_only_no_target | 国元证券 | 2025-04-10 | 未披露 | 收入155.33；净利27.56；EPS1.03 | original_public_broker_pdf | 0% |
 | 601138 | 工业富联 | explicit_target_price_anchor | 群益证券 | 2025-07-08 | 29.00 | 收入9445.67；净利356.59；EPS1.80 | original_pdf | 10% |
 | 603019 | 中科曙光 | explicit_target_price_anchor | 国信证券 target report / 太平洋 latest forecast | 2024-06-02 target report; 2026-04-21 latest forecast | 41.60 | 收入170.46；净利34.11；EPS1.89 | original_pdf | 10% |
 | 603228 | 景旺电子 | explicit_target_price_anchor | 西南证券 | 2025-05-14 | 34.32 | 收入170.44；净利14.56；EPS2.18 | original_pdf | 10% |
 | 688041 | 海光信息 | explicit_target_price_anchor | 群益证券 | 2025-12-10 | 260.00 | 收入206.55；净利46.73；EPS2.01 | original_pdf | 10% |
-| 688183 | 生益电子 | forecast_only_no_target | 华鑫证券 | 2025-04-29 | not disclosed | 收入90.32；净利12.14；EPS1.46 | original_pdf | 0% |
+| 688183 | 生益电子 | forecast_only_no_target | 华鑫证券 | 2025-04-29 | 未披露 | 收入90.32；净利12.14；EPS1.46 | original_pdf | 0% |
 | 688256 | 寒武纪 | explicit_target_price_anchor | 第一上海证券 | 2026-04-28 | 1903.00 | 收入未披露；净利0.68；EPS16.10 | original_pdf | 5% |
-| 688702 | 盛科通信 | forecast_only_no_target | 开源证券 | 2026-04-24 | not disclosed | 收入12.14；净利0.46；EPS0.11 | original_public_broker_pdf | 0% |
-| 000530 | 冰山冷热 | forecast_only_no_target | 华安证券 | 2025-05-14 | not disclosed | 收入55.19；净利2.07；EPS0.25 | original_public_broker_pdf | 0% |
-| 002158 | 汉钟精机 | forecast_only_no_target | 国信证券 | 2025-09-17 | not disclosed | 收入34.60；净利54.43；EPS1.34 | original_pdf | 0% |
+| 688702 | 盛科通信 | forecast_only_no_target | 开源证券 | 2026-04-24 | 未披露 | 收入12.14；净利0.46；EPS0.11 | original_public_broker_pdf | 0% |
+| 000530 | 冰山冷热 | forecast_only_no_target | 华安证券 | 2025-05-14 | 未披露 | 收入55.19；净利2.07；EPS0.25 | original_public_broker_pdf | 0% |
+| 002158 | 汉钟精机 | forecast_only_no_target | 国信证券 | 2025-09-17 | 未披露 | 收入34.60；净利54.43；EPS1.34 | original_pdf | 0% |
 | 002837 | 英维克 | explicit_target_price_anchor | 群益证券 | 2025-12-30 | 130.00 | 收入89.60；净利10.69；EPS4.70 | original_pdf | 10% |
-| 300249 | 依米康 | forecast_only_no_target | 华鑫证券 | 2026-06-09 | not disclosed | 收入14.52；净利0.58；EPS0.13 | original_pdf | 0% |
+| 300249 | 依米康 | forecast_only_no_target | 华鑫证券 | 2026-06-09 | 未披露 | 收入14.52；净利0.58；EPS0.13 | original_pdf | 0% |
 | 300499 | 高澜股份 | explicit_target_price_anchor | 国信证券 | 2025-09-16 | 32.51 | 收入12.73；净利1.37；EPS0.45 | original_pdf | 10% |
-| 300990 | 同飞股份 | forecast_only_no_target | 东莞证券 | 2026-04-30 | not disclosed | 收入43.63；净利未披露；EPS2.76 | original_pdf | 0% |
+| 300990 | 同飞股份 | forecast_only_no_target | 东莞证券 | 2026-04-30 | 未披露 | 收入43.63；净利未披露；EPS2.76 | original_pdf | 0% |
 | 301018 | 申菱环境 | explicit_target_price_anchor | 国金证券 | 2025-09-23 | 103.20 | 收入67.50；净利4.28；EPS1.59 | original_pdf | 10% |
-| 000021 | 深科技 | official_disclosure_substitute | not disclosed | 2025年年度报告 | not disclosed | 收入未披露；净利未披露；EPS未披露 | official_filing_no_broker_target | 0% |
-| 300223 | 北京君正 | forecast_only_no_target | 中邮证券 | 2025-12-25 | not disclosed | 收入58.91；净利6.59；EPS1.36 | original_public_broker_pdf | 0% |
+| 000021 | 深科技 | official_disclosure_substitute | 未披露 | 2025年年度报告 | 未披露 | 收入未披露；净利未披露；EPS未披露 | official_filing_no_broker_target | 0% |
+| 300223 | 北京君正 | forecast_only_no_target | 中邮证券 | 2025-12-25 | 未披露 | 收入58.91；净利6.59；EPS1.36 | original_public_broker_pdf | 0% |
 | 603986 | 兆易创新 | explicit_target_price_anchor | 高盛 | 2025-01-14 | 120.00 | 收入85.10；净利未披露；EPS4.45 | original_pdf | 5% |
 | 688008 | 澜起科技 | explicit_target_price_anchor | 群益证券 | 2025-02-21 | 95.00 | 收入71.63；净利未披露；EPS1.92 | original_pdf | 5% |
-| 688123 | 聚辰股份 | forecast_only_no_target | 中邮证券 | 2025-02-24 | not disclosed | 收入18.58；净利5.50；EPS3.49 | original_pdf | 0% |
+| 688123 | 聚辰股份 | forecast_only_no_target | 中邮证券 | 2025-02-24 | 未披露 | 收入18.58；净利5.50；EPS3.49 | original_pdf | 0% |
 | 688521 | 芯原股份 | explicit_target_price_anchor | 群益证券 | 2026-06-15 | 300.00 | 收入62.67；净利0.84；EPS0.17 | original_pdf | 10% |
-| 688795 | 摩尔线程 | forecast_only_no_target | 国金证券 | 2025-11-30 | 182.25 | 收入2595.84；净利-1003.00；EPS-2.13 | original_pdf | 0% |
+| 688795 | 摩尔线程 | milestone_ps_sotp_target | 国金证券 | 2025-11-30 | 182.25 | 收入2595.84；净利-1003.00；EPS-2.13 | original_pdf | 0% |
 
 ## Market-Implied Sentiment Anchor
 
@@ -388,13 +533,74 @@ Current price is reverse-engineered by group: required EPS equals current price 
 
 | Group | Rows | Avg current PE | Avg base PE | Required EPS vs 2026E | Required revenue vs 2026E | Interpretation |
 |---|---:|---:|---:|---:|---:|---|
-| AI PCB/CCL | 4 | 117.6 | 30.5 | 281.8% | 281.8% | 现价基本要求基础情景外的 EPS 上修。 |
-| AIDC/IDC 运营 | 7 | 74.1 | 19.4 | 300.5% | 299.0% | 现价基本要求基础情景外的 EPS 上修。 |
-| 供配电/能源 | 7 | 43.0 | 25.4 | 67.3% | 70.3% | 现价基本要求基础情景外的 EPS 上修。 |
-| 光模块/光器件 | 7 | 114.5 | 41.7 | 183.8% | 193.8% | 现价基本要求基础情景外的 EPS 上修。 |
-| 服务器/网络设备 | 17 | 257.6 | 33.4 | 592.5% | 587.5% | 现价基本要求基础情景外的 EPS 上修。 |
-| 液冷/温控 | 7 | 76.5 | 27.1 | 173.6% | 175.7% | 现价基本要求基础情景外的 EPS 上修。 |
-| 算力芯片/存储/网络 ASIC | 7 | 340.6 | 20.4 | 967.9% | 1140.7% | 现价基本要求基础情景外的 EPS 上修。 |
+| AI PCB/CCL | 4 | 116.9 | 30.5 | 279.8% | 279.8% | 现价基本要求基础情景外的 EPS 上修。 |
+| AIDC/IDC 运营 | 7 | 74.2 | 19.4 | 300.9% | 299.4% | 现价基本要求基础情景外的 EPS 上修。 |
+| 供配电/能源 | 7 | 43.1 | 25.4 | 67.8% | 68.5% | 现价基本要求基础情景外的 EPS 上修。 |
+| 光模块/光器件 | 7 | 108.6 | 41.7 | 168.5% | 168.5% | 现价基本要求基础情景外的 EPS 上修。 |
+| 服务器/网络设备 | 17 | 251.7 | 33.4 | 576.8% | 566.8% | 现价基本要求基础情景外的 EPS 上修。 |
+| 液冷/温控 | 7 | 76.4 | 27.1 | 173.4% | 175.4% | 现价基本要求基础情景外的 EPS 上修。 |
+| 算力芯片/存储/网络 ASIC | 7 | 318.0 | 20.4 | 907.8% | 1067.7% | 现价基本要求基础情景外的 EPS 上修。 |
+
+## Row-Level Market-Implied Anchor
+
+| Ticker | Company | Current price | Base | Market anchor | Market weight | Current/Base premium | Market anchor source | Read-through |
+|---|---|---:|---:|---:|---:|---:|---|---|
+| 002916 | 深南电路 | 468.09 | 149.33 | 383.83 | 25% | 213.5% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 600183 | 生益科技 | 177.84 | 60.00 | 145.83 | 25% | 196.4% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 603186 | 华正新材 | 204.71 | 56.54 | 155.58 | 35% | 262.0% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688519 | 南亚新材 | 364.39 | 66.56 | 276.94 | 35% | 447.5% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300383 | 光环新网 | 12.23 | 0.82 | 8.56 | 25% | 1394.8% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300442 | 润泽科技 | 78.67 | 46.96 | 59.79 | 35% | 67.5% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300738 | 奥飞数据 | 19.90 | 9.41 | 13.93 | 25% | 111.5% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 600050 | 中国联通 | 4.04 | 5.39 | 2.83 | 35% | -25.1% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 600941 | 中国移动 | 87.33 | 115.84 | 61.13 | 35% | -24.6% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 601728 | 中国电信 | 5.35 | 6.72 | 3.74 | 35% | -20.4% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 603881 | 数据港 | 25.86 | 3.68 | 18.10 | 35% | 602.7% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 002335 | 科华数据 | 43.20 | 23.24 | 32.83 | 35% | 85.9% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 002364 | 中恒电气 | 52.96 | 16.25 | 40.25 | 35% | 225.9% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 002518 | 科士达 | 50.71 | 39.75 | 35.50 | 35% | 27.6% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 301291 | 明阳电气 | 35.70 | 82.50 | 24.99 | 35% | -56.7% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 600089 | 特变电工 | 22.13 | 30.25 | 16.82 | 35% | -26.8% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 601179 | 中国西电 | 14.33 | 9.88 | 10.89 | 35% | 45.1% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688676 | 金盘科技 | 87.05 | 31.82 | 66.16 | 25% | 173.6% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 000988 | 华工科技 | 161.37 | 75.62 | 132.32 | 35% | 113.4% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 002281 | 光迅科技 | 219.80 | 72.20 | 180.24 | 35% | 204.4% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300308 | 中际旭创 | 1289.74 | 1013.48 | 1134.97 | 35% | 27.3% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300394 | 天孚通信 | 309.68 | 151.39 | 272.52 | 25% | 104.6% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300502 | 新易盛 | 608.94 | 486.96 | 535.87 | 35% | 25.1% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 301205 | 联特科技 | 326.93 | 48.64 | 248.47 | 35% | 572.1% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 603083 | 剑桥科技 | 223.01 | 95.76 | 182.87 | 35% | 132.9% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 000063 | 中兴通讯 | 35.61 | 73.72 | 29.20 | 35% | -51.7% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 000938 | 紫光股份 | 28.86 | 29.95 | 23.67 | 25% | -3.6% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 000977 | 浪潮信息 | 69.23 | 46.13 | 56.77 | 25% | 50.1% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 002396 | 星网锐捷 | 22.16 | 45.98 | 16.84 | 35% | -51.8% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 002463 | 沪电股份 | 154.74 | 90.37 | 136.17 | 35% | 71.2% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 002913 | 奥士康 | 61.96 | 82.84 | 43.37 | 35% | -25.2% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 002922 | 伊戈尔 | 30.67 | 28.75 | 21.47 | 35% | 6.7% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300476 | 胜宏科技 | 351.66 | 189.44 | 309.46 | 25% | 85.6% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 301165 | 锐捷网络 | 87.88 | 54.72 | 66.79 | 35% | 60.6% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 600845 | 宝信软件 | 18.47 | 16.48 | 12.93 | 35% | 12.1% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 601138 | 工业富联 | 72.85 | 75.08 | 59.74 | 35% | -3.0% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 603019 | 中科曙光 | 105.70 | 29.78 | 93.02 | 25% | 254.9% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 603228 | 景旺电子 | 68.50 | 69.76 | 52.06 | 35% | -1.8% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 688041 | 海光信息 | 335.34 | 76.38 | 274.98 | 35% | 339.0% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688183 | 生益电子 | 120.20 | 46.72 | 91.35 | 35% | 157.3% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688256 | 寒武纪 | 1400.00 | 611.80 | 1232.00 | 40% | 128.8% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688702 | 盛科通信 | 371.00 | 4.18 | 281.96 | 35% | 8775.6% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 000530 | 冰山冷热 | 5.42 | 6.25 | 3.79 | 35% | -13.3% | source_model_disclosed | 现价低于 Base，重点验证分母质量。 |
+| 002158 | 汉钟精机 | 38.00 | 33.50 | 26.60 | 35% | 13.4% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 002837 | 英维克 | 79.62 | 22.30 | 65.29 | 35% | 257.0% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300249 | 依米康 | 15.02 | 3.25 | 10.51 | 35% | 362.2% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300499 | 高澜股份 | 37.28 | 11.25 | 26.10 | 35% | 231.4% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300990 | 同飞股份 | 99.03 | 69.00 | 69.32 | 35% | 43.5% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 301018 | 申菱环境 | 114.16 | 27.22 | 86.76 | 25% | 319.5% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 000021 | 深科技 | 56.18 | 24.22 | 49.44 | 35% | 131.9% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 300223 | 北京君正 | 247.60 | 51.68 | 203.03 | 35% | 379.1% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 603986 | 兆易创新 | 701.18 | 169.10 | 617.04 | 40% | 314.7% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688008 | 澜起科技 | 287.22 | 72.96 | 252.75 | 40% | 293.7% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688123 | 聚辰股份 | 204.43 | 132.62 | 167.63 | 35% | 54.1% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688521 | 芯原股份 | 323.79 | 6.46 | 265.51 | 35% | 4912.2% | source_model_disclosed | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
+| 688795 | 摩尔线程 | 671.99 | 182.25 | 未披露 | 0% | 268.7% | not_used_market_weight_zero | 现价高于 Base，需要订单、毛利和现金流继续证明。 |
 
 ## Growth Earnings Dependency
 

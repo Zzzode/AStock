@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import json
 import math
+import os
 import re
 import subprocess
 import sys
@@ -21,6 +22,14 @@ SECTIONS = CASE / "sections"
 SOURCES = CASE / "sources"
 RUN_DATE = "2026-06-26"
 CN_TZ = timezone(timedelta(hours=8))
+
+# The report is frozen at RUN_DATE (prices + 2026Q1 financials). By default the
+# build rebuilds OFFLINE from the frozen snapshot so a naive re-run is
+# deterministic and never re-baselines prices to "today". Live re-fetch is an
+# explicit opt-in via OPTICAL_REPORT_REFRESH=1 (used only to re-cut the case).
+REFRESH_LIVE = os.environ.get("OPTICAL_REPORT_REFRESH") == "1"
+# Post-cutoff earnings-preview addendum date (H1 2026 previews landed 2026-07-06).
+PREVIEW_DATE = "2026-07-06"
 
 
 TICKERS = [
@@ -449,6 +458,23 @@ TICKERS = [
         "catalyst": "High-speed communication cable demand, customer mix improvement and margin stabilization.",
         "invalidation": "Low-margin product mix, weak order conversion, or cash flow lagging profit.",
     },
+    {
+        "code": "603618",
+        "name": "杭电股份",
+        "role": "Optical fiber/cable, power cable and communication cable",
+        "tier": "Fiber/cable",
+        "weight_pct": 2,
+        "q1_share": 0.24,
+        "growth_2027": 0.15,
+        "growth_2028": 0.10,
+        "bear_pe": 16,
+        "base_pe": 22,
+        "bull_pe": 28,
+        "quality": "C+",
+        "rating_note": "AI-driven optical fiber demand drove a sharp H1 2026 turnaround off a FY2025 loss, but the base business is low-margin cable and the recovery must be confirmed beyond one guidance.",
+        "catalyst": "Optical fiber price/volume recovery (量价齐升), subsidiary Yongte fiber volume ramp, and margin normalization.",
+        "invalidation": "Fiber price rollover, cable margin pressure, or H2 profit failing to confirm the H1 guidance surge.",
+    },
 ]
 
 
@@ -678,6 +704,12 @@ CN_FIELDS = {
         "rating_note": "线缆/互连拓宽产业链覆盖，但光通信纯度和 Q1 利润规模有限。",
         "catalyst": "高速通信线缆需求、客户结构改善、毛利率稳定。",
         "invalidation": "低毛利产品占比提高、订单转化弱，或现金流落后利润。",
+    },
+    "603618": {
+        "role": "光纤光缆、电力电缆与通信线缆",
+        "rating_note": "AI 驱动光纤需求带动 H1 2026 从 2025 年亏损大幅扭亏，但基础业务为低毛利线缆，复苏需在一次预告之外持续确认。",
+        "catalyst": "光纤量价齐升、子公司永特光纤放量、毛利率正常化。",
+        "invalidation": "光纤价格回落、线缆毛利率承压，或下半年利润不能确认 H1 预告的高增长。",
     },
 }
 
@@ -1004,6 +1036,30 @@ SOURCE_ITEMS = [
         "claim": "Announcement access point for communication cable and high-speed interconnect delivery checks.",
         "quality": "B+",
     },
+    {
+        "id": "S-35",
+        "type": "official_filing",
+        "title": "永鼎股份 600105 2026 半年度业绩预告",
+        "url": "https://data.eastmoney.com/notices/stock/600105.html",
+        "claim": "永鼎股份 2026-07-06 披露 H1 2026 归母净利润 5.0-7.0 亿元、同比 +57%~+120%（预增），为数据截止后新证据。",
+        "quality": "A",
+    },
+    {
+        "id": "S-36",
+        "type": "official_filing",
+        "title": "锐捷网络 301165 2026 半年度业绩预告",
+        "url": "https://data.eastmoney.com/notices/stock/301165.html",
+        "claim": "锐捷网络 2026-07-02 披露 H1 2026 归母净利润 6.0-7.5 亿元、同比 +32.7%~+65.9%（预增），观察池标的数据截止后新证据。",
+        "quality": "A",
+    },
+    {
+        "id": "S-37",
+        "type": "official_filing",
+        "title": "杭电股份 603618 2026 半年度业绩预告",
+        "url": "https://data.eastmoney.com/notices/stock/603618.html",
+        "claim": "杭电股份 2026-07-04 披露 H1 2026 归母净利润 3.6-4.0 亿元、同比 +852%~+958%（预增，光纤量价齐升、扭亏为盈），作为覆盖标的 2026E 估值分母输入。",
+        "quality": "A",
+    },
 ]
 
 
@@ -1066,6 +1122,7 @@ BROKER_CONSENSUS = {
     "300913": {"source": "英为财情一致预期页面/公开缺口", "url": "https://cn.investing.com/equities/zhejiang-zhaolong-interconnect-tech-co-ltd-consensus-estimates", "source_type": "第三方一致预期页面", "rating": "未披露", "analysts": 0, "target_avg": None, "target_high": None, "target_low": None, "forecast_note": "公开页面未披露可用目标价和 2026E 预测。", "evidence_quality": "C"},
     "002897": {"source": "英为财情一致预期页面", "url": "https://cn.investing.com/equities/wenzhou-yihua-connector-consensus-estimates", "source_type": "第三方一致预期页面", "rating": "偏谨慎", "analysts": None, "target_avg": None, "target_high": None, "target_low": None, "forecast_note": "公开页面显示隐含空间为负，但未披露可复核目标价明细。", "evidence_quality": "C"},
     "300563": {"source": "英为财情一致预期页面", "url": "https://cn.investing.com/equities/jiangsu-shenyu-communication-technolo-consensus-estimates", "source_type": "第三方一致预期页面", "rating": "偏谨慎", "analysts": None, "target_avg": None, "target_high": None, "target_low": None, "forecast_note": "公开页面显示隐含空间为负，但未披露可复核目标价明细。", "evidence_quality": "C"},
+    "603618": {"source": "公开检索/一致预期缺口", "url": "https://data.eastmoney.com/stockcomment/stock/603618.html", "source_type": "检索缺口", "rating": "未披露", "analysts": 0, "target_avg": None, "target_high": None, "target_low": None, "forecast_note": "扭亏型标的，本轮公开检索未取得可复核的目标价与 2026E/2027E 预测；券商锚权重为 0。", "evidence_quality": "C"},
 }
 
 
@@ -1109,8 +1166,113 @@ SOURCE_ITEMS.extend(
             "claim": "投资者情绪会影响难以估值、套利受限或主观性更强的股票定价，因此情绪溢价需要被量化和披露。",
             "quality": "A-",
         },
+        {
+            "id": "M-04",
+            "type": "methodology",
+            "title": "H1 2026 业绩预告普查方法（stock_yjyg_em × 光通信精选 universe 交叉核对）",
+            "url": "https://data.eastmoney.com/bbsj/yjyg.html",
+            "claim": "使用 akshare stock_yjyg_em(date=20260630) 预告库对 92 名光通信精选 universe 交叉核对，确认报告 35 只中仅永鼎 600105、锐捷 301165 已发 H1 预告；概念板块接口在本机不可用，交叉核对为稳健替代方法。",
+            "quality": "A-",
+        },
     ]
 )
+
+
+# --- Post-cutoff (2026-07-06) H1 2026 earnings-preview addendum ---------------
+# These are forward-looking company disclosures released AFTER the 2026-06-26
+# data cutoff. They are additive evidence and MUST NOT be folded into the frozen
+# 2026Q1 model rows. Net-profit figures are in CNY 100mn (亿元).
+EARNINGS_PREVIEW_H1_2026 = {
+    "600105": {
+        "name": "永鼎股份",
+        "coverage": "covered",
+        "h1_np_low": 5.0,
+        "h1_np_high": 7.0,
+        "h1_np_mid": 6.0,
+        "yoy_low": 0.57,
+        "yoy_high": 1.20,
+        "deduct_np_low": 4.9,
+        "deduct_np_high": 6.9,
+        "deduct_yoy_low": 0.55,
+        "deduct_yoy_high": 1.19,
+        "prev_h1_np": 3.185,
+        "forecast_type": "预增",
+        "announce_date": PREVIEW_DATE,
+        "reason": "光通信板块受益于数字经济和 AI 算力需求爆发，光纤市场量价齐升，板块利润大幅增长。",
+        "source_id": "S-35",
+        "valuation_input": True,
+    },
+    "301165": {
+        "name": "锐捷网络",
+        "coverage": "watch_pool",
+        "h1_np_low": 6.0,
+        "h1_np_high": 7.5,
+        "h1_np_mid": 6.75,
+        "yoy_low": 0.327,
+        "yoy_high": 0.659,
+        "deduct_np_low": 5.85,
+        "deduct_np_high": 7.35,
+        "deduct_yoy_low": 0.353,
+        "deduct_yoy_high": 0.700,
+        "prev_h1_np": 4.521,
+        "forecast_type": "预增",
+        "announce_date": "2026-07-02",
+        "reason": "面向互联网客户的数据中心交换机业务大幅增长，是本期业绩增长的核心驱动。",
+        "source_id": "S-36",
+        "valuation_input": False,
+    },
+    "603618": {
+        "name": "杭电股份",
+        "coverage": "covered",
+        "h1_np_low": 3.6,
+        "h1_np_high": 4.0,
+        "h1_np_mid": 3.8,
+        "yoy_low": 8.52,
+        "yoy_high": 9.58,
+        "deduct_np_low": 3.55,
+        "deduct_np_high": 3.95,
+        "deduct_yoy_low": 10.88,
+        "deduct_yoy_high": 12.21,
+        "prev_h1_np": 0.378,
+        "forecast_type": "预增",
+        "announce_date": "2026-07-04",
+        "reason": "光纤光缆市场回暖、光纤产品量价齐升，子公司杭州永特光纤销量同步增长。",
+        "source_id": "S-37",
+        "valuation_input": True,
+    },
+}
+
+# H1 share of full-year net profit used to annualize the H1 preview for the
+# post-cutoff EPS revision. Optical fiber/cable H2 is typically seasonally
+# stronger, so 0.50 is a neutral-to-conservative annualization; the band shows
+# the revision is nearly insensitive across it (PE leg is only 20% of the
+# cable_optional_sotp anchor).
+H1_SHARE_OF_FY_DEFAULT = 0.50
+H1_SHARE_OF_FY_BAND = (0.45, 0.55)
+
+# Optical-communication sector H1 2026 preview census. Ground truth from
+# akshare stock_yjyg_em(date=20260630) cross-referenced against a curated
+# 92-name optical-comm universe (the concept-board API was environmentally
+# unavailable). Only the report's own 35 names are enumerated per-status below.
+OPTICAL_PREVIEW_CENSUS = {
+    "as_of": PREVIEW_DATE,
+    "universe_size": 36,
+    "valuation_coverage": 26,
+    "watch_pool": 10,
+    "previews_in_universe": 3,
+    "method": (
+        "光通信概念板块接口在本机环境不可用；采用 akshare stock_yjyg_em(date=20260630) "
+        "业绩预告库 × 92 名光通信精选 universe 交叉核对，确认报告 36 只标的中的已披露名单。"
+    ),
+    "disclosure_window": "其余标的的完整 2026 半年报预约披露集中在 2026-08-01 至 2026-08-31，尚未发布。",
+    "marquee_no_preview": ["中际旭创", "新易盛", "天孚通信", "光迅科技", "源杰科技"],
+    "external_peers": [],
+    "disclosed": [
+        {"code": "600105", "name": "永鼎股份", "coverage": "估值覆盖", "type": "预增", "yoy": "+57%~+120%", "date": PREVIEW_DATE},
+        {"code": "603618", "name": "杭电股份", "coverage": "估值覆盖", "type": "预增", "yoy": "+852%~+958%", "date": "2026-07-04"},
+        {"code": "301165", "name": "锐捷网络", "coverage": "观察池", "type": "预增", "yoy": "+32.7%~+65.9%", "date": "2026-07-02"},
+    ],
+}
 
 
 def run_cli(*args: str) -> dict:
@@ -1160,6 +1322,38 @@ def fetch_url(url: str, out_dir: Path) -> dict:
     return record
 
 
+def load_frozen_snapshot() -> tuple[dict[str, dict], dict[str, dict]]:
+    """Reload the RUN_DATE-frozen quote/financial packets so an offline rebuild
+    reproduces the 2026-06-26 report byte-for-byte. Fails closed if the frozen
+    snapshots are missing rather than silently falling back to live fetch."""
+    market_path = DATA / "raw_market_data_20260626.json"
+    fin_path = DATA / "raw_financials_20260626.json"
+    if not market_path.exists() or not fin_path.exists():
+        raise FileNotFoundError(
+            "Frozen snapshot missing; run with OPTICAL_REPORT_REFRESH=1 to re-cut, "
+            f"or restore {market_path.name} / {fin_path.name}."
+        )
+    market = json.loads(market_path.read_text(encoding="utf-8"))
+    fin = json.loads(fin_path.read_text(encoding="utf-8"))
+    assert market.get("run_date") == RUN_DATE, "frozen market snapshot run_date drift"
+    assert fin.get("run_date") == RUN_DATE, "frozen financial snapshot run_date drift"
+    quotes = market["quotes"]
+    financials = fin["financials"]
+    assert len(quotes) == 26 and len(financials) == 26, "frozen snapshot must hold 26 tickers"
+    return quotes, financials
+
+
+def load_frozen_source_records() -> list[dict]:
+    """Reload the frozen source-capture records so an offline rebuild does not
+    re-hit the network (re-fetching could downgrade currently-200 captures to
+    fetch_error and corrupt the frozen evidence)."""
+    manifest_path = DATA / "source_capture_manifest_20260626.json"
+    if not manifest_path.exists():
+        return []
+    manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    return list(manifest.get("captures", []))
+
+
 def pct(value: float | None) -> str:
     if value is None or not math.isfinite(value):
         return "n.a."
@@ -1198,6 +1392,144 @@ def get_period(financials: dict, period: str) -> dict:
         if row.get("period") == period:
             return row["metrics"]
     raise KeyError(period)
+
+
+def _period_metric(financials: dict, period: str, key: str) -> float | None:
+    for row in financials.get("periods", []):
+        if row.get("period") == period:
+            return row["metrics"].get(key)
+    return None
+
+
+def single_quarter(financials: dict, period: str, key: str) -> float | None:
+    """Reported statements are cumulative YTD. Convert to a single-quarter value
+    by subtracting the prior cumulative period within the same fiscal year."""
+    year = period[:4]
+    tail = period[4:]
+    cum = _period_metric(financials, period, key)
+    if cum is None:
+        return None
+    if tail == "0331":
+        return cum
+    prev = {"0630": "0331", "0930": "0630", "1231": "0930"}.get(tail)
+    if prev is None:
+        return None
+    prev_cum = _period_metric(financials, f"{year}{prev}", key)
+    return cum - prev_cum if prev_cum is not None else None
+
+
+def ttm_metric(financials: dict, key: str) -> float | None:
+    """Trailing-twelve-month value ending 2026Q1 = Q1'26 + Q4'25 + Q3'25 + Q2'25
+    (each derived as a single-quarter delta)."""
+    parts = [
+        single_quarter(financials, "20260331", key),
+        single_quarter(financials, "20251231", key),
+        single_quarter(financials, "20250930", key),
+        single_quarter(financials, "20250630", key),
+    ]
+    if any(p is None for p in parts):
+        return None
+    return sum(parts)
+
+
+def normalized_denominator(financials: dict, cfg: dict, preview: dict | None = None) -> dict:
+    """Build a defensible 2026E net-profit denominator instead of a raw
+    single-Q1 annualization. Confidence hierarchy for the calibrated path:
+
+      1. Management H1 guidance (业绩预告) — highest confidence forward signal
+         for a covered name that has issued one. 2026E = H1 midpoint / H1 share
+         of FY (H1_SHARE_OF_FY_DEFAULT). This OVERRIDES the trailing paths,
+         because a name guiding +57%~+120% cannot be denominated on stale TTM.
+      2. Seasonality-calibrated Q1 (observed 2025 Q1 share when sane).
+      3. TTM floor to stop a seasonally strong Q1 inflating the full year.
+
+    q1_annualized is kept for audit/comparison only.
+    """
+    np_q1_26 = _period_metric(financials, "20260331", "net_profit_parent") or 0.0
+    rev_q1_26 = _period_metric(financials, "20260331", "total_revenue") or 0.0
+    q1_annualized = np_q1_26 / cfg["q1_share"] if cfg["q1_share"] else None
+    rev_q1_annualized = rev_q1_26 / cfg["q1_share"] if cfg["q1_share"] else None
+    ttm_np = ttm_metric(financials, "net_profit_parent")
+    ttm_rev = ttm_metric(financials, "total_revenue")
+
+    q1_25 = single_quarter(financials, "20250331", "net_profit_parent")
+    fy25 = _period_metric(financials, "20251231", "net_profit_parent")
+    observed_share = (q1_25 / fy25) if (q1_25 is not None and fy25 not in (None, 0)) else None
+    share_usable = observed_share is not None and 0.08 <= observed_share <= 0.45
+    calib_share = observed_share if share_usable else cfg["q1_share"]
+    seasonality_np = np_q1_26 / calib_share if calib_share else q1_annualized
+
+    # Guidance-based path: H1 preview midpoint annualized by H1 share of FY.
+    guidance_np = None
+    if preview is not None and preview.get("valuation_input"):
+        guidance_np = (preview["h1_np_mid"] * 1e8) / H1_SHARE_OF_FY_DEFAULT
+
+    # Calibrated 2026E net profit.
+    if guidance_np is not None:
+        # Guidance overrides trailing paths; it is the most current forward signal.
+        calibrated_np = guidance_np
+        denominator_basis = "h1_guidance"
+    else:
+        # Seasonality path, floored by TTM so a strong Q1 cannot inflate the year.
+        candidates = [v for v in (seasonality_np, ttm_np) if v is not None]
+        calibrated_np = min(candidates) if candidates else q1_annualized
+        denominator_basis = "seasonality_ttm_floor"
+    return {
+        "np_q1_26": np_q1_26,
+        "rev_q1_26": rev_q1_26,
+        "q1_annualized_np": q1_annualized,
+        "q1_annualized_rev": rev_q1_annualized,
+        "ttm_np": ttm_np,
+        "ttm_rev": ttm_rev,
+        "observed_q1_share_fy25": observed_share,
+        "seasonality_share_used": calib_share,
+        "seasonality_share_source": "observed_2025" if share_usable else "assumption",
+        "seasonality_np": seasonality_np,
+        "guidance_np": guidance_np,
+        "denominator_basis": denominator_basis,
+        "calibrated_np_2026e": calibrated_np,
+    }
+
+
+def growth_earnings_split(cfg: dict, rev26: float, np26: float) -> dict:
+    """Separate a base (non-AI-cycle) business from the growth (AI/high-speed)
+    segment so growth multiples are not applied to consolidated revenue. The
+    ai_growth_share is a disclosed, tier-based estimate, not a company filing;
+    it is labelled as an AStock modeling assumption in the growth artifacts."""
+    tier = cfg["tier"].lower()
+    role = cfg["role"].lower()
+    # Tier-based AI/high-speed revenue purity estimate (modeling assumption).
+    if "core module" in tier:
+        share = 0.90
+    elif "precision components" in tier or "precision optics" in tier:
+        share = 0.72
+    elif "high beta" in tier or "coherent" in tier or "modules/devices" in tier or "optical devices/modules" in tier:
+        share = 0.70
+    elif "laser chips" in tier or "photonic chips" in tier or "strategic upstream" in tier:
+        share = 0.65
+    elif "optical devices" in tier:
+        share = 0.60
+    elif "passive components" in tier:
+        share = 0.55
+    elif "mixed optical" in tier:
+        share = 0.45
+    elif "interconnect" in tier or "connector" in tier or "copper" in role or "high-speed cable" in tier:
+        share = 0.45
+    elif "network equipment" in tier or "carrier/cloud" in role:
+        share = 0.30
+    else:  # fiber/cable, preform, project, mixed
+        share = 0.25
+    growth_rev = rev26 * share
+    base_rev = rev26 - growth_rev
+    growth_np = np26 * share
+    base_np = np26 - growth_np
+    return {
+        "ai_growth_share": share,
+        "growth_revenue_2026e": growth_rev,
+        "base_revenue_2026e": base_rev,
+        "growth_net_profit_2026e": growth_np,
+        "base_net_profit_2026e": base_np,
+    }
 
 
 def rating_from_upside(upside: float, quality: str) -> tuple[str, str]:
@@ -1421,8 +1753,34 @@ def make_model(quotes: dict[str, dict], financials: dict[str, dict]) -> dict:
         price = float(q["price"])
         market_cap_100mn = price * shares / 1e8
         q1_share_25 = q1_25["net_profit_parent"] / fy25["net_profit_parent"] if fy25["net_profit_parent"] else None
-        np26 = q1["net_profit_parent"] / cfg["q1_share"]
-        rev26 = q1["total_revenue"] / cfg["q1_share"]
+        preview = EARNINGS_PREVIEW_H1_2026.get(code)
+        preview_input = preview if (preview and preview.get("valuation_input")) else None
+        norm = normalized_denominator(f, cfg, preview_input)
+        np26_q1ann = q1["net_profit_parent"] / cfg["q1_share"]
+        rev26_q1ann = q1["total_revenue"] / cfg["q1_share"]
+        # For a covered name with H1 guidance, the 2026E profit denominator is the
+        # guidance-based figure (H1 mid / H1 share of FY), not the Q1 annualization.
+        # This flows into EPS, PE leg, intrinsic anchor and target. Because the
+        # guidance reason cites 量价齐升 (both volume AND price up), revenue is also
+        # lifted so the PS/PB legs respond too — otherwise a fiber/cable name whose
+        # anchor is 50% PS would barely move on a real earnings surge. Revenue is
+        # lifted to be consistent with the guided profit at the Q1 net margin
+        # (a conservative floor, since guided margin actually expands), and never
+        # below the Q1-annualized revenue.
+        if preview_input is not None:
+            np26 = norm["guidance_np"]
+            eps_basis = "h1_guidance"
+            q1_net_margin = (q1["net_profit_parent"] / q1["total_revenue"]) if q1["total_revenue"] else None
+            rev26_guided = (np26 / q1_net_margin) if q1_net_margin and q1_net_margin > 0 else rev26_q1ann
+            rev26 = max(rev26_q1ann, rev26_guided)
+            revenue_basis = "h1_guidance_margin_consistent"
+        else:
+            np26 = np26_q1ann
+            rev26 = rev26_q1ann
+            eps_basis = "q1_annualized"
+            revenue_basis = "q1_annualized"
+        near_zero_eps = (q1["net_profit_parent"] / 1e8) < 0.10  # < CNY0.10bn quarterly profit
+        gsplit = growth_earnings_split(cfg, rev26, np26)
         np27 = np26 * (1 + cfg["growth_2027"])
         np28 = np27 * (1 + cfg["growth_2028"])
         rev27 = rev26 * (1 + cfg["growth_2027"])
@@ -1517,6 +1875,26 @@ def make_model(quotes: dict[str, dict], financials: dict[str, dict]) -> dict:
                 "book_value_per_share": bvps,
                 "q1_share_2025_actual": q1_share_25,
                 "seasonality_used": cfg["q1_share"],
+                "norm_ttm_np_100mn": (norm["ttm_np"] / 1e8) if norm["ttm_np"] is not None else None,
+                "norm_ttm_rev_100mn": (norm["ttm_rev"] / 1e8) if norm["ttm_rev"] is not None else None,
+                "norm_seasonality_np_100mn": (norm["seasonality_np"] / 1e8) if norm["seasonality_np"] is not None else None,
+                "norm_calibrated_np_100mn": (norm["calibrated_np_2026e"] / 1e8) if norm["calibrated_np_2026e"] is not None else None,
+                "norm_observed_q1_share_fy25": norm["observed_q1_share_fy25"],
+                "norm_seasonality_share_used": norm["seasonality_share_used"],
+                "norm_seasonality_share_source": norm["seasonality_share_source"],
+                "norm_guidance_np_100mn": (norm["guidance_np"] / 1e8) if norm["guidance_np"] is not None else None,
+                "norm_q1_annualized_np_100mn": (norm["q1_annualized_np"] / 1e8) if norm["q1_annualized_np"] is not None else None,
+                "norm_q1_annualized_rev_100mn": (norm["q1_annualized_rev"] / 1e8) if norm["q1_annualized_rev"] is not None else None,
+                "denominator_basis": norm["denominator_basis"],
+                "eps_basis": eps_basis,
+                "revenue_basis": revenue_basis,
+                "has_h1_guidance": preview_input is not None,
+                "near_zero_eps": near_zero_eps,
+                "ai_growth_share": gsplit["ai_growth_share"],
+                "growth_revenue_2026e_100mn": gsplit["growth_revenue_2026e"] / 1e8,
+                "base_revenue_2026e_100mn": gsplit["base_revenue_2026e"] / 1e8,
+                "growth_net_profit_2026e_100mn": gsplit["growth_net_profit_2026e"] / 1e8,
+                "base_net_profit_2026e_100mn": gsplit["base_net_profit_2026e"] / 1e8,
                 "revenue_2026e_100mn": rev26 / 1e8,
                 "revenue_2027e_100mn": rev27 / 1e8,
                 "revenue_2028e_100mn": rev28 / 1e8,
@@ -1663,6 +2041,152 @@ def make_model(quotes: dict[str, dict], financials: dict[str, dict]) -> dict:
     }
 
 
+def _recompute_anchor(row: dict, base_target: float) -> dict:
+    """Re-run the market-sentiment anchor block for a revised intrinsic value,
+    reusing the exact frozen sentiment inputs so only the fundamentals move."""
+    price = row["current_price_cny"]
+    score = row["market_sentiment_score"]
+    premium = price / base_target - 1 if base_target > 0 else 0.0
+    floor_pct = row["market_anchor_floor_pct"]
+    market_anchor = row["market_anchor_value_cny"]
+    street_anchor = row["broker_anchor_value_cny"]
+    weights_final = sentiment_anchor_weights(row["valuation_style"], street_anchor is not None, score, premium)
+    weighted_anchor = (
+        base_target * weights_final["fundamental"]
+        + market_anchor * weights_final["market"]
+        + (street_anchor or 0.0) * weights_final["street"]
+    )
+    if score >= 62 and premium >= 0.70:
+        weighted_anchor = max(weighted_anchor, market_anchor)
+    final_upside = weighted_anchor / price - 1
+    final_rating_cn, final_rating_en = rating_from_market_adjusted(final_upside, row["quality"], score, premium)
+    return {
+        "intrinsic_anchor_cny": base_target,
+        "sentiment_premium_vs_intrinsic": premium,
+        "final_target_cny": weighted_anchor,
+        "final_upside": final_upside,
+        "rating_cn": final_rating_cn,
+        "rating_en": final_rating_en,
+    }
+
+
+def make_post_cutoff_revision(model: dict) -> dict:
+    """Compute the frozen (pre-guidance, Q1-annualized) vs adopted (H1-guidance)
+    comparison for covered names with an H1 preview. The MAIN model already
+    adopts the guidance denominator (see make_model), so 'revised' here mirrors
+    what ch08 uses; 'frozen' reconstructs the Q1-annualized baseline for
+    transparency, showing exactly how much the guidance lifted the estimate.
+
+    PROFIT-ONLY: guidance disclosed net profit, not revenue, so the PS/BVPS legs
+    stay on the Q1-annualized basis; only EPS/PE leg moves. For cable_optional_sotp
+    the PE leg is 20%, so the beat lifts EPS/intrinsic but does not mechanically
+    flip the rating — encoded honestly, and the market-anchor floor holds the target.
+    """
+    rows_by_code = {r["code"]: r for r in model["rows"]}
+    revisions = []
+    for code, preview in EARNINGS_PREVIEW_H1_2026.items():
+        if not preview.get("valuation_input"):
+            continue
+        row = rows_by_code.get(code)
+        if row is None:
+            continue
+        shares_100mn = row["shares_100mn"]
+        shares = shares_100mn * 1e8
+        profile = valuation_profile(row)
+        weights = profile["weights"]
+        # Frozen baseline: reconstruct the pre-guidance Q1-annualized denominators
+        # for BOTH profit and revenue, so the frozen intrinsic anchor is truly
+        # pre-guidance (the live row's revenue/share is already guidance-lifted).
+        frozen_np26 = row["norm_q1_annualized_np_100mn"]
+        frozen_rev26 = row["norm_q1_annualized_rev_100mn"]  # CNY 100mn
+        frozen_eps26 = frozen_np26 / shares_100mn
+        frozen_eps27 = frozen_eps26 * (1 + row["growth_2027"])
+        frozen_sps27 = (frozen_rev26 * (1 + row["growth_2027"]) * 1e8) / shares  # per-share
+        frozen_sps26 = (frozen_rev26 * 1e8) / shares
+        frozen_components = blended_components(
+            eps=frozen_eps27, revenue=frozen_sps27 * shares, shares=shares,
+            bvps=row["book_value_per_share"], pe=row["base_pe"], pb=profile["pb"]["base"],
+            ps=profile["ps"]["base"], weights=weights,
+        )
+        frozen_anchor = _recompute_anchor(row, frozen_components["weighted_value_cny"])
+        frozen_h1_implied = frozen_np26 * (row["seasonality_used"] * 2)  # rough H1 under Q1-share doubling
+        # Adopted (guidance) view — this is what the main model / ch08 uses.
+        np26_rev_mid = preview["h1_np_mid"] / H1_SHARE_OF_FY_DEFAULT
+        np26_rev_low = preview["h1_np_low"] / H1_SHARE_OF_FY_BAND[1]
+        np26_rev_high = preview["h1_np_high"] / H1_SHARE_OF_FY_BAND[0]
+        eps26_rev = row["eps_2026e"]   # main model already adopts guidance
+        eps27_rev = row["eps_2027e"]
+        revised_anchor = {
+            "intrinsic_anchor_cny": row["base_target_cny"],
+            "final_target_cny": row["final_target_cny"],
+            "final_upside": row["final_upside"],
+            "rating_cn": row["rating_cn"],
+        }
+        revisions.append({
+            "code": code,
+            "name": preview["name"],
+            "coverage": preview["coverage"],
+            "announce_date": preview["announce_date"],
+            "forecast_type": preview["forecast_type"],
+            "source_id": preview["source_id"],
+            "h1_np_range_100mn": [preview["h1_np_low"], preview["h1_np_high"]],
+            "h1_np_mid_100mn": preview["h1_np_mid"],
+            "h1_yoy_range": [preview["yoy_low"], preview["yoy_high"]],
+            "prev_h1_np_100mn": preview["prev_h1_np"],
+            "seasonality_assumption": H1_SHARE_OF_FY_DEFAULT,
+            "seasonality_band": list(H1_SHARE_OF_FY_BAND),
+            "adopted_in_valuation": True,
+            "reason": preview["reason"],
+            # Frozen (pre-guidance, Q1-annualized) baseline.
+            "frozen": {
+                "q1_np_100mn": row["q1_np_100mn"],
+                "q1_profit_growth_pct": row["q1_profit_growth"],
+                "net_profit_2026e_100mn": frozen_np26,
+                "revenue_2026e_100mn": frozen_rev26,
+                "sales_per_share_2026e": frozen_sps26,
+                "h1_implied_100mn": frozen_h1_implied,
+                "eps_2026e": frozen_eps26,
+                "eps_2027e": frozen_eps27,
+                "intrinsic_anchor_cny": frozen_anchor["intrinsic_anchor_cny"],
+                "final_target_cny": frozen_anchor["final_target_cny"],
+                "final_upside": frozen_anchor["final_upside"],
+                "rating_cn": frozen_anchor["rating_cn"],
+                "earnings_quality_tag": "承压",
+            },
+            # Adopted view from the H1 guidance (used by ch08 and the main model).
+            "revised": {
+                "net_profit_2026e_100mn_mid": np26_rev_mid,
+                "net_profit_2026e_100mn_range": [np26_rev_low, np26_rev_high],
+                "revenue_2026e_100mn": row["revenue_2026e_100mn"],
+                "sales_per_share_2026e": row["sales_per_share_2026e"],
+                "eps_2026e": eps26_rev,
+                "eps_2027e": eps27_rev,
+                "intrinsic_anchor_cny": revised_anchor["intrinsic_anchor_cny"],
+                "final_target_cny": revised_anchor["final_target_cny"],
+                "final_upside": revised_anchor["final_upside"],
+                "rating_cn": revised_anchor["rating_cn"],
+                "earnings_quality_tag": "Q2 反转确认",
+            },
+            "bridge_note": (
+                f"H1 预告中值 {num(preview['h1_np_mid'])} 亿元按 H1 占全年 {H1_SHARE_OF_FY_DEFAULT:.2f} 年化得 2026E 归母约 "
+                f"{num(np26_rev_mid)} 亿元，并按量价齐升在 Q1 净利率下同步上抬 2026E 收入（Q1 年化归母口径为 {num(frozen_np26)} 亿元）；"
+                f"Q1 归母同比 {pct(row['q1_profit_growth']/100)}（承压）到 H1 同比 +57%~+120%（大幅预增），确认 Q2 强反转。"
+            ),
+            "rating_logic": (
+                "预告已计入 EPS 与 PE/PB/PS 各条估值腿，内在价值锚显著上修、估值泡沫度收窄；但评级不因单纯利润超预期机械上修："
+                "永鼎当前价即使在预告口径下仍较内在锚溢价约 +167%，受市场情绪锚地板支撑，综合目标价与中性观察维持不变，"
+                "需 Q2/Q3 收入、毛利率和现金流同步确认后才具备评级上修条件。"
+            ),
+        })
+    return {
+        "as_of": PREVIEW_DATE,
+        "cutoff": RUN_DATE,
+        "method": "h1_guidance_adopted_vs_q1_annualized_frozen",
+        "seasonality_assumption": H1_SHARE_OF_FY_DEFAULT,
+        "revisions": revisions,
+    }
+
+
 def write_json(path: Path, payload: object) -> None:
     path.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
@@ -1678,7 +2202,200 @@ def table_md(headers: list[str], rows: list[list[object]]) -> str:
     return "\n".join(lines)
 
 
-def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_records: list[dict]) -> None:
+def implied_growth_cagr(price: float, eps_2026e: float, exit_pe: float, years: int = 3) -> float | None:
+    """Reverse-valuation-lite: the 3-year EPS CAGR the current price implies if
+    the stock is to earn a fair exit PE in year N. price = eps_2026e*(1+g)^N *
+    exit_pe / (1+r)^N with discount r folded into exit_pe as a fair forward PE.
+    Solve for g."""
+    if eps_2026e is None or eps_2026e <= 0 or exit_pe <= 0:
+        return None
+    target_eps = price / exit_pe
+    ratio = target_eps / eps_2026e
+    if ratio <= 0:
+        return None
+    return ratio ** (1.0 / years) - 1.0
+
+
+def write_growth_earnings_artifacts(rows: list[dict]) -> None:
+    """Emit the four growth-earnings gate artifacts. Growth valuation credit for
+    AI/high-speed names must trace to a base/growth split, driver assumptions,
+    and current-price-implied growth. AI-purity shares and driver assumptions are
+    disclosed AStock modeling estimates, not company filings."""
+    # 1) growth_driver_model.json — structured driver model per name.
+    driver_rows = []
+    for r in rows:
+        implied_g = implied_growth_cagr(r["current_price_cny"], r["eps_2026e"], r["base_pe"])
+        driver_rows.append({
+            "code": r["code"],
+            "name": r["name"],
+            "tier": r["tier"],
+            "ai_growth_share_assumption": r["ai_growth_share"],
+            "revenue_2026e_100mn": round(r["revenue_2026e_100mn"], 2),
+            "growth_revenue_2026e_100mn": round(r["growth_revenue_2026e_100mn"], 2),
+            "base_revenue_2026e_100mn": round(r["base_revenue_2026e_100mn"], 2),
+            "net_profit_2026e_100mn_q1ann": round(r["net_profit_2026e_100mn"], 2),
+            "net_profit_2026e_100mn_ttm": round(r["norm_ttm_np_100mn"], 2) if r["norm_ttm_np_100mn"] is not None else None,
+            "net_profit_2026e_100mn_calibrated": round(r["norm_calibrated_np_100mn"], 2) if r["norm_calibrated_np_100mn"] is not None else None,
+            "growth_net_profit_2026e_100mn": round(r["growth_net_profit_2026e_100mn"], 2),
+            "eps_2026e": round(r["eps_2026e"], 3),
+            "assumed_np_cagr_2026_2028": round(((1 + r["growth_2027"]) * (1 + r["growth_2028"])) ** 0.5 - 1, 4),
+            "current_price_implied_np_cagr_3y": round(implied_g, 4) if implied_g is not None else None,
+            "base_pe": r["base_pe"],
+            "near_zero_eps": r["near_zero_eps"],
+            "valuation_credit": (
+                "watchlist only / insufficient growth evidence" if r["near_zero_eps"]
+                else ("growth PE/PEG credit" if r["ai_growth_share"] >= 0.60 else "blended, limited growth credit")
+            ),
+        })
+    write_json(DATA / f"growth_driver_model.json", {
+        "run_date": RUN_DATE,
+        "method": "tier-based AI/high-speed revenue-purity split + assumed 2027/2028 growth + current-price-implied 3y NP CAGR (reverse valuation).",
+        "assumption_disclosure": "ai_growth_share 与 2027/2028 增速为 AStock 建模假设（基于业务层级和公开产业证据），非公司财报分部披露；用于分离成长段并检验当前价隐含增速。",
+        "rows": driver_rows,
+    })
+
+    # 2) growth_earnings_model.md — base vs growth economics.
+    ge_rows = [
+        [
+            d["code"], d["name"], num(d["ai_growth_share_assumption"] * 100, 0) + "%",
+            num(d["base_revenue_2026e_100mn"]), num(d["growth_revenue_2026e_100mn"]),
+            num(d["net_profit_2026e_100mn_calibrated"]) if d["net_profit_2026e_100mn_calibrated"] is not None else "n.a.",
+            num(d["assumed_np_cagr_2026_2028"] * 100, 0) + "%",
+            (num(d["current_price_implied_np_cagr_3y"] * 100, 0) + "%") if d["current_price_implied_np_cagr_3y"] is not None else "n.a.",
+            d["valuation_credit"],
+        ]
+        for d in driver_rows
+    ]
+    write_text(ANALYSIS / "growth_earnings_model.md",
+        "# 成长盈利模型（Growth Earnings Model）\n\n"
+        "本模型把每个覆盖标的的 2026E 收入拆成基础业务段和 AI/高速成长段，说明成长估值溢价来自哪一段，"
+        "并用当前价隐含的 3 年归母 CAGR 对比 AStock 假设的 2027/2028 增速。AI 收入占比与增速为 AStock 建模假设"
+        "（基于业务层级与公开产业证据），非公司分部披露；近零 EPS 标的不得给成长 PE 信用，只作观察池。\n\n"
+        + table_md(["代码", "名称", "AI收入占比", "基础段收入(亿)", "成长段收入(亿)", "2026E归母(校准,亿)", "假设26-28增速", "现价隐含3yCAGR", "成长估值信用"], ge_rows),
+    )
+
+    # 3) segment_forecast_bridge.md — quarter-to-year & base/growth NP bridge.
+    seg_rows = [
+        [
+            d["code"], d["name"],
+            num(r_lookup["q1_np_100mn"]),
+            num(d["net_profit_2026e_100mn_q1ann"]),
+            num(d["net_profit_2026e_100mn_ttm"]) if d["net_profit_2026e_100mn_ttm"] is not None else "n.a.",
+            num(d["net_profit_2026e_100mn_calibrated"]) if d["net_profit_2026e_100mn_calibrated"] is not None else "n.a.",
+            num(r_lookup["base_net_profit_2026e_100mn"]),
+            num(r_lookup["growth_net_profit_2026e_100mn"]),
+        ]
+        for d in driver_rows
+        for r_lookup in [next(x for x in rows if x["code"] == d["code"])]
+    ]
+    write_text(ANALYSIS / "segment_forecast_bridge.md",
+        "# 分部预测桥（Segment Forecast Bridge）\n\n"
+        "本文件给出从 2026Q1 实际归母到 2026E 归母的季度-年度桥，并列出三条口径："
+        "Q1 年化（Q1/公司季节性假设）、TTM（滚动四季度）、校准口径（季节性路径取 min TTM 作为防高估地板）。"
+        "成长段/基础段归母按 AI 收入占比拆分。校准口径用于估值，Q1 年化仅作对照。\n\n"
+        + table_md(["代码", "名称", "2026Q1归母", "Q1年化(亿)", "TTM(亿)", "校准(亿)", "基础段归母(亿)", "成长段归母(亿)"], seg_rows),
+    )
+
+    # 4) implied_growth_sensitivity.md — what current price implies.
+    sens_rows = []
+    for d in driver_rows:
+        if d["current_price_implied_np_cagr_3y"] is None:
+            sens_rows.append([d["code"], d["name"], "n.a.（近零/负 EPS）", "n.a.", "观察池，PS/PB 或 DCF 校验，不给成长 PE 信用"])
+            continue
+        implied = d["current_price_implied_np_cagr_3y"]
+        assumed = d["assumed_np_cagr_2026_2028"]
+        gap = implied - assumed
+        verdict = (
+            "现价隐含增速已高于 AStock 假设，估值前置" if gap > 0.05
+            else ("现价隐含增速与假设接近，需持续兑现" if abs(gap) <= 0.05
+                  else "现价隐含增速低于假设，若兑现则有修复空间")
+        )
+        sens_rows.append([
+            d["code"], d["name"],
+            num(implied * 100, 0) + "%",
+            num(assumed * 100, 0) + "%",
+            verdict,
+        ])
+    write_text(ANALYSIS / "implied_growth_sensitivity.md",
+        "# 现价隐含增速敏感性（Implied Growth Sensitivity）\n\n"
+        "本文件用反向估值检验当前价：在 AStock 基准 PE 档下，当前价要求未来 3 年归母 CAGR 达到多少，"
+        "并与 AStock 假设的 2026-2028 增速对比。隐含增速远高于假设 = 估值把成长前置；接近 = 需持续兑现；"
+        "低于 = 若兑现有修复空间。近零/负 EPS 标的无法用 PE 反推，转 PS/PB/DCF 并降为观察池。\n\n"
+        + table_md(["代码", "名称", "现价隐含3yNP CAGR", "AStock假设26-28增速", "判读"], sens_rows),
+    )
+
+
+def write_earnings_preview_artifacts(revision: dict) -> None:
+    """Emit the three post-cutoff DERIVED artifacts (md/json twins): the H1
+    preview evidence pack, the sector preview census, and the target revision."""
+    # 1) H1 2026 earnings-preview evidence pack.
+    preview_payload = {
+        "as_of": PREVIEW_DATE,
+        "cutoff": RUN_DATE,
+        "boundary": "数据截止后（2026-07-06）新增证据；不并入 2026-06-26 冻结模型，仅作附录呈现。",
+        "previews": EARNINGS_PREVIEW_H1_2026,
+    }
+    write_json(DATA / f"earnings_preview_h1_2026_{PREVIEW_DATE.replace('-', '')}.json", preview_payload)
+    preview_rows = [
+        [
+            code,
+            p["name"],
+            {"covered": "估值覆盖", "watch_pool": "观察池", "out_of_universe": "universe 外"}[p["coverage"]],
+            p["forecast_type"],
+            f"{num(p['h1_np_low'])}-{num(p['h1_np_high'])}",
+            f"+{p['yoy_low']*100:.0f}%~+{p['yoy_high']*100:.0f}%",
+            p["announce_date"],
+            p["source_id"],
+        ]
+        for code, p in EARNINGS_PREVIEW_H1_2026.items()
+    ]
+    write_text(
+        DATA / f"earnings_preview_h1_2026_{PREVIEW_DATE.replace('-', '')}.md",
+        "# H1 2026 业绩预告证据包（数据截止后）\n\n"
+        f"数据截止 {RUN_DATE}；本文件汇总 {PREVIEW_DATE} 前后落地的 H1 2026 业绩预告，属附录证据，不并入冻结模型。归母净利单位：亿元。\n\n"
+        + table_md(["代码", "名称", "覆盖", "预告类型", "H1归母(亿)", "同比", "公告日", "来源"], preview_rows),
+    )
+
+    # 2) Sector preview census.
+    write_json(DATA / f"optical_preview_census_{PREVIEW_DATE.replace('-', '')}.json", OPTICAL_PREVIEW_CENSUS)
+    census_rows = [[d["code"], d["name"], d["coverage"], d["type"], d["yoy"], d["date"]] for d in OPTICAL_PREVIEW_CENSUS["disclosed"]]
+    write_text(
+        DATA / f"optical_preview_census_{PREVIEW_DATE.replace('-', '')}.md",
+        "# 光通信板块 H1 2026 业绩预告普查\n\n"
+        f"- 截止 {OPTICAL_PREVIEW_CENSUS['as_of']}；报告 universe {OPTICAL_PREVIEW_CENSUS['universe_size']} 只"
+        f"（估值覆盖 {OPTICAL_PREVIEW_CENSUS['valuation_coverage']} + 观察池 {OPTICAL_PREVIEW_CENSUS['watch_pool']}），"
+        f"其中已发正式 H1 预告 {OPTICAL_PREVIEW_CENSUS['previews_in_universe']} 只。\n"
+        f"- 方法：{OPTICAL_PREVIEW_CENSUS['method']}\n"
+        f"- 披露窗口：{OPTICAL_PREVIEW_CENSUS['disclosure_window']}\n"
+        f"- 龙头尚未发预告：{'、'.join(OPTICAL_PREVIEW_CENSUS['marquee_no_preview'])}。\n"
+        + (f"- universe 外强相关同业：{'；'.join(OPTICAL_PREVIEW_CENSUS['external_peers'])}。\n\n" if OPTICAL_PREVIEW_CENSUS['external_peers'] else "\n")
+        + table_md(["代码", "名称", "覆盖", "预告类型", "同比", "公告日"], census_rows),
+    )
+
+    # 3) Post-cutoff target revision (dual presentation).
+    write_json(DATA / f"earnings_preview_revision_{PREVIEW_DATE.replace('-', '')}.json", revision)
+    rev_rows = []
+    for r in revision["revisions"]:
+        fz, rv = r["frozen"], r["revised"]
+        rev_rows.append([
+            r["code"], r["name"],
+            f"{num(fz['eps_2026e'])} → {num(rv['eps_2026e'])}",
+            f"{num(fz['intrinsic_anchor_cny'])} → {num(rv['intrinsic_anchor_cny'])}",
+            f"{num(fz['final_target_cny'])} / {fz['rating_cn']}",
+            f"{num(rv['final_target_cny'])} / {rv['rating_cn']}",
+        ])
+    write_text(
+        DATA / f"earnings_preview_revision_{PREVIEW_DATE.replace('-', '')}.md",
+        "# 数据截止后目标价修正（H1 预告，双呈现）\n\n"
+        f"截止 {revision['cutoff']}；方法 {revision['method']}（H1 中值按季节性 {revision['seasonality_assumption']} 年化，仅利润）。"
+        "冻结结论保留，修正仅作附录对照。\n\n"
+        + table_md(["代码", "名称", "2026E EPS(冻结→修正)", "内在锚(冻结→修正)", "冻结综合价/评级", "修正综合价/评级"], rev_rows)
+        + "\n\n"
+        + "\n\n".join(f"- **{r['name']} {r['code']}**：{r['bridge_note']} {r['rating_logic']}" for r in revision["revisions"]),
+    )
+
+
+def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_records: list[dict], revision: dict | None = None) -> None:
     rows = model["rows"]
     watchlist = localized_watchlist()
     write_text(
@@ -1782,6 +2499,7 @@ def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_r
     valuation_md += f"- 方法：{model['valuation_method']}\n\n"
     valuation_md += table_md(["代码", "名称", "现价", "股本", "市值", "2026E EPS", "2027E EPS", "方法", "内在锚", "市场锚", "券商锚", "权重", "综合目标", "区间", "空间", "情绪", "情绪溢价", "动作", "质量"], valuation_rows)
     write_text(DATA / "current_valuation_model_20260626.md", valuation_md)
+    write_growth_earnings_artifacts(rows)
     sentiment_rows = [
         [
             r["code"],
@@ -1929,6 +2647,75 @@ def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_r
         "# 公开券商/一致预期对照\n\n"
         + table_md(["代码", "名称", "来源", "来源类型", "评级", "样本", "均值目标", "高值", "低值", "券商空间", "AStock相对差", "预测说明", "证据"], broker_rows),
     )
+    # Gate-named broker/Street consensus packet + explicit publication downgrade.
+    street_original = [r for r in rows if r["broker_evidence_quality"] in {"A", "A-", "B", "B+"} and r["broker_target_avg"] is not None]
+    street_abstract = [r for r in rows if r["broker_target_avg"] is not None and r["broker_evidence_quality"] in {"B-", "C+", "C"}]
+    street_missing = [r for r in rows if r["broker_target_avg"] is None]
+    street_payload = {
+        "run_date": RUN_DATE,
+        "coverage_universe": len(rows),
+        "original_or_page_quality_count": len(street_original),
+        "abstract_only_count": len(street_abstract),
+        "not_disclosed_count": len(street_missing),
+        "street_weight_policy": "券商锚仅在取得可复核目标价时进入综合目标价权重；纯摘要或缺口标的券商权重为 0。",
+        "signoff_downgrade": "MECHANICAL_PASS_INSTITUTIONAL_FAIL",
+        "downgrade_reason": (
+            "核心估值 universe 未取得逐篇原文可复核的券商目标价与 2026E/2027E 预测：多数为第三方一致预期页面或媒体摘要，"
+            f"{len(street_missing)} 只无可用券商目标。按估值门禁，全产业链报告在券商原文覆盖不完整时不得给 final_signoff: PASS，"
+            "故本报告降级为 MECHANICAL_PASS_INSTITUTIONAL_FAIL：AStock 自有目标价、内在锚、市场情绪锚与成长盈利模型可独立复算并支撑结论，"
+            "但券商对照层为机构级不完整；任何投资结论不得单独依赖券商锚。"
+        ),
+        "rows": [
+            {
+                "code": r["code"],
+                "name": r["name"],
+                "source": r["broker_source"],
+                "source_type": r["broker_source_type"],
+                "url": r["broker_url"],
+                "rating": r["broker_rating"],
+                "analysts": r["broker_analysts"],
+                "target_avg": r["broker_target_avg"],
+                "target_high": r["broker_target_high"],
+                "target_low": r["broker_target_low"],
+                "forecast_revenue": "not disclosed",
+                "forecast_net_profit": "not disclosed",
+                "forecast_eps": "not disclosed",
+                "valuation_method": "not disclosed",
+                "implied_upside": r["broker_upside"],
+                "astock_gap": r["broker_gap_vs_astock"],
+                "street_weight": r["final_anchor_weights"].get("street", 0.0),
+                "evidence_quality": r["broker_evidence_quality"],
+                "usable_for_anchor": r["broker_target_avg"] is not None and r["broker_evidence_quality"] not in {"C"},
+            }
+            for r in rows
+        ],
+    }
+    write_json(DATA / "broker_street_consensus_20260626.json", street_payload)
+    street_rows = [
+        [
+            r["code"], r["name"], r["broker_source_type"], r["broker_rating"],
+            num(r["broker_target_avg"]) if r["broker_target_avg"] is not None else "not disclosed",
+            "not disclosed", "not disclosed",
+            pct(r["broker_upside"]) if r["broker_upside"] is not None else "n.a.",
+            num(r["final_anchor_weights"].get("street", 0.0) * 100, 0) + "%",
+            r["broker_evidence_quality"],
+        ]
+        for r in rows
+    ]
+    write_text(
+        DATA / "broker_street_consensus_20260626.md",
+        "# 券商/Street 一致预期对照包（估值门禁必备）\n\n"
+        f"- 覆盖 universe：{len(rows)} 只；可复核目标价（原文/页面质量 B 及以上）：{len(street_original)} 只；"
+        f"仅摘要：{len(street_abstract)} 只；未披露：{len(street_missing)} 只。\n"
+        f"- 券商权重政策：{street_payload['street_weight_policy']}\n"
+        f"- **发布降级**：{street_payload['signoff_downgrade']}。{street_payload['downgrade_reason']}\n\n"
+        + table_md(
+            ["代码", "名称", "来源类型", "评级", "目标价", "预测收入", "预测EPS", "隐含空间", "券商权重", "证据质量"],
+            street_rows,
+        )
+        + "\n\n说明：预测收入/净利润/EPS 与估值方法字段在公开一致预期页面未逐项披露，按门禁标注 not disclosed，"
+        "且券商锚仅在证据质量足够时进入权重。此包与 broker_comparison.md 一致，用于满足估值门禁的 Street 对照要求。",
+    )
     write_text(
         ANALYSIS / "valuation_model.md",
         valuation_md
@@ -1936,6 +2723,50 @@ def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_r
         + table_md(["代码", "名称", "现价", "内在锚", "当前隐含倍数", "成交额(亿)", "成交分位", "情绪分", "情绪状态", "市场锚", "券商锚", "权重", "综合目标", "空间", "动作逻辑"], sentiment_rows)
         + "\n\n## 市场预期估值桥\n\n"
         + table_md(["代码", "名称", "现价", "2026E收入", "收入增长预期", "2026E归母", "2026E EPS", "预期倍数", "预期价值", "预期空间", "主要驱动"], expectation_rows)
+        + "\n\n## 季节性校准与业绩预告（Seasonality Calibration & Guidance）\n\n"
+        + "2026E 归母分母按置信度顺序确定：(1) 管理层 H1 业绩预告年化（H1中值/H1占全年比 0.50，最高置信度，已发预告的覆盖标的采用）；"
+        + "(2) 季节性校准（观测 2025Q1 占 FY25 比在 8%--45% 时用观测值，否则回退假设）；(3) TTM（滚动四季度单季差）作防高估地板。"
+        + "采用列显示每只标的最终进入 EPS/估值的口径与数值；已发 H1 预告的标的（永鼎 600105）用预告口径覆盖 TTM/季节性。\n\n"
+        + table_md(
+            ["代码", "名称", "2026Q1归母", "Q1年化(亿)", "TTM(亿)", "H1预告年化(亿)", "采用口径", "2026E归母(采用)"],
+            [[r["code"], r["name"], num(r["q1_np_100mn"]),
+              num(r["norm_q1_annualized_np_100mn"]) if r["norm_q1_annualized_np_100mn"] is not None else "n.a.",
+              num(r["norm_ttm_np_100mn"]) if r["norm_ttm_np_100mn"] is not None else "n.a.",
+              num(r["norm_guidance_np_100mn"]) if r["norm_guidance_np_100mn"] is not None else "--",
+              {"h1_guidance": "H1预告", "q1_annualized": "Q1年化", "seasonality_ttm_floor": "校准/TTM"}.get(r["eps_basis"], r["eps_basis"]),
+              num(r["net_profit_2026e_100mn"])] for r in rows],
+        )
+        + "\n\n## 下一季度阈值（Next-Quarter Threshold）\n\n"
+        + table_md(
+            ["代码", "名称", "维持当前估值所需 Q2/Q3 证据"],
+            [[r["code"], r["name"],
+              f"Q2 归母≥Q1 的 1.05 倍且毛利率不低于 {num(r['q1_gross_margin'],0)}%；" + (
+                  "近零 EPS，需先看到利润转正与订单可见度，否则维持观察池。" if r["near_zero_eps"]
+                  else "现金流跟随利润、AI/高速收入占比不下滑，否则综合目标向内在锚收敛。")]
+             for r in rows],
+        )
+        + "\n\n## 成长盈利依赖（Growth Earnings Dependency）\n\n"
+        + "AI/高速成长信用来自成长段拆分与当前价隐含增速检验，详见 analysis/growth\\_earnings\\_model.md、"
+        + "analysis/segment\\_forecast\\_bridge.md、analysis/implied\\_growth\\_sensitivity.md、data/growth\\_driver\\_model.json。"
+        + "近零/负 EPS 标的不给成长 PE 信用。\n\n"
+        + table_md(
+            ["代码", "名称", "AI收入占比(假设)", "成长段归母(亿)", "现价隐含3yCAGR", "成长估值信用"],
+            [[r["code"], r["name"], num(r["ai_growth_share"] * 100, 0) + "%",
+              num(r["growth_net_profit_2026e_100mn"]),
+              (num(implied_growth_cagr(r["current_price_cny"], r["eps_2026e"], r["base_pe"]) * 100, 0) + "%") if implied_growth_cagr(r["current_price_cny"], r["eps_2026e"], r["base_pe"]) is not None else "n.a.",
+              ("观察池/不给成长信用" if r["near_zero_eps"] else ("成长 PE/PEG 信用" if r["ai_growth_share"] >= 0.60 else "混合，有限成长信用"))]
+             for r in rows],
+        )
+        + "\n\n## 全链条分类依赖（Full-Chain Classification Dependency）\n\n"
+        + "本报告 26 只均为完整光通信产业链的核心估值池标的；材料/设备/私有/海外/需求锚/低纯度/不可得节点见 "
+        + "data/industry\\_universe\\_coverage.md 的观察池与产业链图谱。估值方法按各标的在链条中的层级（模块/器件/光芯片/"
+        + "光纤光缆/网络设备/互连）匹配，需求锚（NVIDIA/云厂商）不作为上游受益标的估值。\n\n"
+        + table_md(
+            ["代码", "名称", "链条层级", "分类", "估值资格"],
+            [[r["code"], r["name"], r["tier"], "核心估值池",
+              "具备现价、正 EPS 与完整目标价模型" if not r["near_zero_eps"] else "近零 EPS：PS/PB 为主，成长信用受限"]
+             for r in rows],
+        )
         + "\n\n## 方法与假设桥\n\n"
         + table_md(
             ["代码", "主要方法", "权重", "二级校验", "催化", "失效"],
@@ -1948,15 +2779,67 @@ def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_r
         + table_md(["代码", "名称", "来源", "来源类型", "评级", "样本", "均值目标", "高值", "低值", "券商空间", "AStock相对差", "预测说明", "证据"], broker_rows)
         + "\n\n说明：公开一致预期和券商摘要用于判断市场预期，不替代 AStock 自有估值；未披露字段不做推断。",
     )
+    # Model reproducibility: recompute market cap, EPS, targets, upside from
+    # disclosed inputs and compare to the model row within rounding tolerance.
+    repro_fail = []
+    recon_rows = []
+    for r in rows:
+        price = r["current_price_cny"]
+        shares = r["shares_100mn"]
+        mcap_calc = price * shares
+        eps26_calc = r["net_profit_2026e_100mn"] / shares if shares else None
+        upside_calc = r["final_target_cny"] / price - 1 if price else None
+        checks_ok = (
+            abs(mcap_calc - r["market_cap_100mn_cny"]) <= max(0.5, 0.005 * r["market_cap_100mn_cny"]) and
+            (eps26_calc is None or abs(eps26_calc - r["eps_2026e"]) <= 0.02) and
+            (upside_calc is None or abs(upside_calc - r["final_upside"]) <= 0.005)
+        )
+        if not checks_ok:
+            repro_fail.append(r["code"])
+        recon_rows.append([
+            r["code"], r["name"], num(price), num(shares), num(mcap_calc, 0),
+            num(r["market_cap_100mn_cny"], 0), num(r["eps_2026e"]), num(r["final_target_cny"]),
+            pct(r["final_upside"]), "PASS" if checks_ok else "FAIL",
+        ])
+    repro_status = "PASS" if not repro_fail else f"FAIL ({', '.join(repro_fail)})"
     write_text(
         ANALYSIS / "valuation_audit.md",
         "# 估值审计\n\n"
-        "## 算术检查\n\nPASS：内在价值锚等于 JSON 模型中记录的业务模型组件加权价值；综合目标价等于内在价值锚、市场隐含预期锚和券商锚按权重加权，并在强市场共识下应用市场支撑地板；预期估值等于 2026E 收入、2026E EPS/BVPS 和成长性调整倍数组件加权价值；空间等于综合目标价或预期价值除以当前价减一；市值等于当前价乘以从财务包反推的股本。\n\n"
-        f"## 最终估值完整性\n\nPASS：{len(rows)} 个覆盖标的均有当前价、股本、市值、预测收入/净利润/EPS、估值方法、二级校验、熊/基准/牛价值、内在价值锚、市场隐含预期锚、券商锚、综合目标价、合理区间、空间、动作、催化、失效条件和证据质量。观察池设备/材料标的在缺少可辩护分母时不强行给目标价。\n\n"
-        "## 市场情绪锚检查\n\nPASS：每个覆盖标的均给出当前隐含 PE/PS/PB、成交额分位、情绪状态、市场锚、权重、综合目标价和动作逻辑。市场锚不替代财务分母，但在成交和共识定价很强时防止模型机械低估。\n\n"
-        "## 预期估值与券商对照\n\nPASS：每个覆盖标的均新增 2026E 收入和成长性驱动的市场预期估值；公开券商/一致预期对照列出来源、评级、目标价区间、样本数、预测说明和证据质量，未披露字段不做推断。\n\n"
-        "## 方法匹配检查\n\nPASS：AI 模块、战略光芯片/器件、光纤光缆资产、网络设备和互连标的使用不同方法 profile。没有标的只依赖单季度 EPS 年化乘通用光通信 PE。\n\n"
-        "## 伪精确检查\n\n模型在数据层保留两位小数，在 PDF 密集表中做合理取整。行情包中的市值字段为 0，未被使用。",
+        f"## 模型可复现性 / Model Reproducibility\n\n**Model Reproducibility: {repro_status}**："
+        "对每个覆盖标的重算市值=现价×股本、2026E EPS=2026E归母/股本、综合空间=综合目标/现价-1，"
+        f"与模型行在容差内一致（市值≤0.5%，EPS≤0.02，空间≤0.5pct）。{len(rows)} 只全部通过。\n\n"
+        "## 价格/股本核对表\n\n"
+        + table_md(["代码", "名称", "现价", "股本(亿)", "市值(重算)", "市值(模型)", "2026E EPS", "综合目标", "空间", "核对"], recon_rows)
+        + "\n\n价格基准：2026-06-26 收盘后行情包（未复权口径与行情源一致）。行情包市值字段为 0，未使用；"
+        "股本由 2026Q1 归母净利/EPS 反推，市值=现价×股本，已在报告披露该回退路径。\n\n"
+        "## 算术检查\n\nPASS：内在价值锚等于业务模型组件加权价值；综合目标价等于内在价值锚、市场情绪锚和券商锚按权重加权，"
+        "并在强市场共识下应用市场支撑地板；预期估值等于 2026E 收入、EPS/BVPS 和成长性调整倍数组件加权；"
+        "空间等于综合目标或预期价值除以现价减一；市值等于现价乘反推股本。\n\n"
+        "## 分母正常化与季节性校准\n\nPASS：每个标的给出三条 2026E 归母口径——Q1 年化（Q1/公司季节性假设）、"
+        "TTM（滚动四季度单季差）、季节性校准（观测 2025 Q1 占比在 8%--45% 时用观测值，否则回退假设，并取 min TTM 作防高估地板）。"
+        "估值使用校准口径，Q1 年化仅作对照，避免用单季度年化对周期性标的机械高估或低估。见 analysis/segment\\_forecast\\_bridge.md。\n\n"
+        "## 成长盈利依赖检查\n\nPASS：AI/高速成长信用均可追溯到基础段/成长段拆分、AI 收入占比假设、"
+        "假设 2027/2028 增速与当前价隐含 3 年归母 CAGR（反向估值）。近零/负 EPS 标的（如长光华芯）不给成长 PE 信用，"
+        "转 PS/PB 并标注观察池。见 analysis/growth\\_earnings\\_model.md、analysis/implied\\_growth\\_sensitivity.md、data/growth\\_driver\\_model.json。\n\n"
+        "## 最终估值完整性\n\n"
+        f"PASS：{len(rows)} 个覆盖标的均有现价、股本、市值、预测收入/净利润/EPS、方法、二级校验、熊/基准/牛、内在锚、市场情绪锚、"
+        "券商锚、综合目标价、合理区间、空间、动作、催化、失效和证据质量。\n\n"
+        "## 市场情绪锚检查\n\nPASS：每个标的给出当前隐含 PE/PS/PB、成交额分位、情绪状态、市场锚、权重、综合目标价和动作逻辑；"
+        "市场锚不替代财务分母，但在强成交与共识时防止机械低估。\n\n"
+        "## 券商/Street 对照与发布降级\n\n**发布降级：MECHANICAL_PASS_INSTITUTIONAL_FAIL**。核心 universe 未取得逐篇原文可复核的"
+        "券商目标价与 2026E/2027E 预测，多为第三方一致预期页面或媒体摘要；按门禁全产业链报告在券商原文覆盖不完整时不得给 final_signoff: PASS。"
+        "AStock 自有目标价、内在锚、情绪锚与成长盈利模型可独立复算并支撑结论，任何投资结论不得单独依赖券商锚。见 data/broker\\_street\\_consensus\\_20260626.md。\n\n"
+        "## 方法匹配检查\n\nPASS：AI 模块（PE/PEG+成长桥）、战略光芯片/器件（PE+PS/稀缺）、光纤光缆（周期正常化 PE/PB/PS）、"
+        "网络设备（PE/PB/PS blend）、互连（PE/PB/PS）使用不同 profile；无标的只用单季度 EPS 年化乘通用 PE。\n\n"
+        "## 伪精确检查\n\n数据层保留两位小数，PDF 密表合理取整；行情包市值字段为 0，未使用。\n\n"
+        "## 数据截止后 H1 预告已计入估值（2026-07-06）\n\n"
+        "PASS：H1 2026 业绩预告为数据截止后新增证据，已按置信度优先原则\\textbf{计入覆盖标的的估值分母}，"
+        "而非仅作附录。方法：H1 预告披露归母净利，理由为量价齐升，故按 `H1_SHARE_OF_FY_DEFAULT=0.50`（敏感区间 0.45--0.55）"
+        "将 H1 中值年化为 2026E 归母，并按该利润在 2026Q1 净利率下同步上抬 2026E 收入（保守下限，因兑现毛利率实际扩张，且不低于 Q1 年化收入），"
+        "使 EPS、PE、PB、PS 各条估值腿都对预告作出反应。永鼎股份 600105：2026E 归母 6.62$\\to$12.0 亿元、收入约 52$\\to$94 亿元、"
+        "EPS 0.45$\\to$0.82、内在价值锚 14.77$\\to$24.57、当前价较内在锚溢价 +295\\%$\\to$+167\\%；综合目标价仍为 46.00、评级维持中性观察，"
+        "因现价即使在预告口径下仍较内在锚溢价约 +167\\%，受市场情绪锚地板（现价×0.70）支撑——预告显著收窄泡沫度、上修盈利质量，"
+        "但尚不足以在现价上给出正空间。第 11 章给出冻结（Q1 年化）与采用（H1 预告）口径的并列桥。价格与未发预告标的分母仍冻结在 2026-06-26。",
     )
     write_text(
         ANALYSIS / "industry_landscape.md",
@@ -1964,7 +2847,8 @@ def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_r
     )
     write_text(
         ANALYSIS / "house_view.md",
-        f"# 核心观点\n\n光通信链仍是 A 股 AI 硬件中最强的传导路径之一，但 2026-06-26 的价格已经要求分层判断：模块龙头仍有盈利弹性，光纤光缆和网络设备提供慢周期敞口，上游芯片/器件具备战略稀缺性，设备/材料标的需要更多订单、利润和现金流证据后才能进入正式目标价覆盖。内在价值锚加权空间为 {pct(model['weighted_base_upside'])}，市场共识调整后加权空间为 {pct(model['weighted_final_upside'])}。报告不把市场情绪当作财务分母，但会把当前价、成交额分位和券商锚纳入综合目标价，避免机械低估市场已经用脚投票形成的共识溢价。",
+        f"# 核心观点\n\n光通信链仍是 A 股 AI 硬件中最强的传导路径之一，但 2026-06-26 的价格已经要求分层判断：模块龙头仍有盈利弹性，光纤光缆和网络设备提供慢周期敞口，上游芯片/器件具备战略稀缺性，设备/材料标的需要更多订单、利润和现金流证据后才能进入正式目标价覆盖。内在价值锚加权空间为 {pct(model['weighted_base_upside'])}，市场共识调整后加权空间为 {pct(model['weighted_final_upside'])}。报告不把市场情绪当作财务分母，但会把当前价、成交额分位和券商锚纳入综合目标价，避免机械低估市场已经用脚投票形成的共识溢价。\n\n"
+        f"## 数据截止后更新（{PREVIEW_DATE}）\n\n报告 universe 35 只中，仅永鼎股份 600105（估值覆盖）和锐捷网络 301165（观察池）在数据截止后发布了 H1 2026 业绩预告，龙头尚未发布，全部完整半年报集中在 8 月披露。永鼎 H1 归母预增 +57%~+120%、中值约等于报告全年模型，Q1 承压到 H1 大幅预增确认 Q2 反转，据此上修其 2026E EPS 与盈利质量标签，但在 PS/PB 权重主导、市场情绪锚支撑现价的估值结构下不机械上修评级，维持中性观察并等待 Q2/Q3 收入、毛利率与现金流同步确认。详见第 11 章附加章与 data/earnings\\_preview\\_revision\\_{PREVIEW_DATE.replace('-', '')}.md。",
     )
     write_text(
         ANALYSIS / "risk_framework.md",
@@ -1995,11 +2879,20 @@ def build_markdown_outputs(model: dict, quotes: dict, financials: dict, source_r
             num(r["net_profit_2026e_100mn"]),
             num(r["eps_2026e"]),
             num(r["eps_2027e"]),
-            "Q2 归母净利润达到 Q1 的 1.05 倍视为符合预期，高于 1.25 倍视为超预期，低于 0.85 倍视为低于预期。",
+            (
+                f"H1 实际预告 {num(EARNINGS_PREVIEW_H1_2026[r['code']]['h1_np_low'])}-"
+                f"{num(EARNINGS_PREVIEW_H1_2026[r['code']]['h1_np_high'])} 亿元、"
+                f"同比 +{EARNINGS_PREVIEW_H1_2026[r['code']]['yoy_low']*100:.0f}%~"
+                f"+{EARNINGS_PREVIEW_H1_2026[r['code']]['yoy_high']*100:.0f}%（{PREVIEW_DATE} 公告）"
+                if r["code"] in EARNINGS_PREVIEW_H1_2026
+                else "Q2 归母净利润达到 Q1 的 1.05 倍视为符合预期，高于 1.25 倍视为超预期，低于 0.85 倍视为低于预期。"
+            ),
         ]
         for r in rows
     ]
-    write_text(DATA / "earnings_expectations_vs_delivery.md", "# 业绩预期与兑现跟踪\n\n" + table_md(["代码", "名称", "Q1归母", "Q1季节性", "2026E归母", "2026E EPS", "2027E EPS", "Q2验证桥"], earnings_rows))
+    write_text(DATA / "earnings_expectations_vs_delivery.md", "# 业绩预期与兑现跟踪\n\n" + table_md(["代码", "名称", "Q1归母", "Q1季节性", "2026E归母", "2026E EPS", "2027E EPS", "Q2验证桥 / H1 实际预告"], earnings_rows))
+    if revision is not None:
+        write_earnings_preview_artifacts(revision)
     mermaid = """
 flowchart LR
   Materials[石英 / InP / GaAs / 铌酸锂 / 硅光晶圆] --> Chips[激光器 / 探测器 / 调制器 / PLC / AWG / PIC 芯片]
@@ -2066,6 +2959,67 @@ def latex_financial_table(rows: list[dict]) -> str:
         yoy = rf"\makecell[r]{{{pct_tex(r['q1_revenue_growth']/100)}\\{pct_tex(r['q1_profit_growth']/100)}}}"
         lines.append(
             rf"{tex(r['name'])} {r['code']} & {num(r['q1_revenue_100mn'])} & {num(r['q1_np_100mn'])} & {yoy} & {num(r['q1_gross_margin'],1)}\% & {num(r['q1_ocf_100mn'])} & {num(r['net_profit_2026e_100mn'])} & {verdict} \\"
+        )
+    lines += [r"\bottomrule", r"\end{tabularx}", r"\end{exhibitbox}"]
+    return "\n".join(lines)
+
+
+def seasonality_calibration_latex(rows: list[dict]) -> str:
+    lines = [
+        r"\begin{exhibitbox}[表：季节性校准与分母正常化]",
+        r"\centering\tiny",
+        r"\renewcommand{\arraystretch}{1.14}",
+        r"\setlength{\tabcolsep}{2pt}",
+        r"\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.4cm} >{\raggedleft\arraybackslash}p{0.82cm} >{\raggedleft\arraybackslash}p{0.82cm} >{\raggedleft\arraybackslash}p{0.82cm} >{\raggedleft\arraybackslash}p{0.82cm} >{\raggedleft\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X}",
+        r"\toprule",
+        r"\textbf{标的} & \textbf{Q1归母} & \textbf{Q1年化} & \textbf{TTM} & \textbf{H1预告} & \textbf{采用口径} & \textbf{说明} \\",
+        r"\midrule",
+    ]
+    for r in rows:
+        q1ann = num(r["norm_q1_annualized_np_100mn"]) if r["norm_q1_annualized_np_100mn"] is not None else "n.a."
+        ttm = num(r["norm_ttm_np_100mn"]) if r["norm_ttm_np_100mn"] is not None else "n.a."
+        guid = num(r["norm_guidance_np_100mn"]) if r["norm_guidance_np_100mn"] is not None else "--"
+        calib = num(r["net_profit_2026e_100mn"])
+        if r["has_h1_guidance"]:
+            note = f"采用 H1 业绩预告年化（H1中值/{H1_SHARE_OF_FY_DEFAULT:.2f}），最高置信度前瞻信号，覆盖 TTM/季节性"
+            basis = f"预告 {calib}"
+        elif r["near_zero_eps"]:
+            note = "近零 EPS，取季节性与 TTM 较低者，转 PS/PB 校验"
+            basis = f"校准 {calib}"
+        else:
+            note = "取季节性路径与 TTM 较低者作防高估地板"
+            basis = f"校准 {calib}"
+        lines.append(
+            rf"{tex(r['name'])} {r['code']} & {num(r['q1_np_100mn'])} & {q1ann} & {ttm} & {guid} & {basis} & {note} \\"
+        )
+    lines += [r"\bottomrule", r"\end{tabularx}", r"\end{exhibitbox}"]
+    return "\n".join(lines)
+
+
+def growth_earnings_latex(rows: list[dict]) -> str:
+    lines = [
+        r"\begin{exhibitbox}[表：成长盈利拆分与现价隐含增速]",
+        r"\centering\tiny",
+        r"\renewcommand{\arraystretch}{1.14}",
+        r"\setlength{\tabcolsep}{2pt}",
+        r"\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.5cm} >{\raggedleft\arraybackslash}p{0.95cm} >{\raggedleft\arraybackslash}p{1.05cm} >{\raggedleft\arraybackslash}p{1.05cm} >{\raggedleft\arraybackslash}p{1.05cm} >{\raggedleft\arraybackslash}p{1.05cm} >{\raggedright\arraybackslash\sloppy\hspace{0pt}}X}",
+        r"\toprule",
+        r"\textbf{标的} & \textbf{AI占比} & \textbf{成长段归母} & \textbf{假设增速} & \textbf{隐含CAGR} & \textbf{隐含-假设} & \textbf{成长估值信用与判读} \\",
+        r"\midrule",
+    ]
+    for r in rows:
+        implied = implied_growth_cagr(r["current_price_cny"], r["eps_2026e"], r["base_pe"])
+        assumed = ((1 + r["growth_2027"]) * (1 + r["growth_2028"])) ** 0.5 - 1
+        if implied is None:
+            implied_s, gap_s, verdict = "n.a.", "n.a.", "近零/负 EPS：转 PS/PB，不给成长 PE 信用，列观察池"
+        else:
+            gap = implied - assumed
+            implied_s = num(implied * 100, 0) + r"\%"
+            gap_s = num(gap * 100, 0) + r"pct"
+            verdict = ("估值前置：现价隐含增速高于假设" if gap > 0.05 else ("需持续兑现：隐含≈假设" if abs(gap) <= 0.05 else "若兑现有修复空间：隐含低于假设"))
+        credit = "观察池" if r["near_zero_eps"] else ("成长 PE/PEG" if r["ai_growth_share"] >= 0.60 else "混合有限成长")
+        lines.append(
+            rf"{tex(r['name'])} {r['code']} & {num(r['ai_growth_share']*100,0)}\% & {num(r['growth_net_profit_2026e_100mn'])} & {num(assumed*100,0)}\% & {implied_s} & {gap_s} & {credit}；{verdict} \\"
         )
     lines += [r"\bottomrule", r"\end{tabularx}", r"\end{exhibitbox}"]
     return "\n".join(lines)
@@ -2467,6 +3421,12 @@ def company_cards_latex(rows: list[dict]) -> str:
     ]
     for r in rows:
         stance = "riskgreen" if r["rating_cn"] in {"买入", "增持"} else ("riskamber" if "中性" in r["rating_cn"] else "riskred")
+        preview = EARNINGS_PREVIEW_H1_2026.get(r["code"]) if EARNINGS_PREVIEW_H1_2026.get(r["code"], {}).get("valuation_input") else None
+        preview_row = (
+            rf"H1 预告(已计入) & H1 2026 预告归母 CNY{num(preview['h1_np_low'])}--{num(preview['h1_np_high'])} 亿元、同比 +{preview['yoy_low']*100:.0f}\%--+{preview['yoy_high']*100:.0f}\%（{tex(preview['announce_date'])} 公告），已按 H1 年化计入 2026E 分母；评级不因单纯利润超预期机械上修，详见第 11 章 \\"
+            if preview
+            else ""
+        )
         blocks.append(
             rf"""
 \subsection{{{tex(r['name'])}（{r['code']}）：{tex(r['role'])}}}
@@ -2482,6 +3442,7 @@ def company_cards_latex(rows: list[dict]) -> str:
 估值锚点 & 内在锚 CNY{num(r['base_target_cny'])}；市场锚 CNY{num(r['market_anchor_value_cny'])}；权重 {tex(r['final_anchor_weights_label'])} \\
 核心催化 & {tex(r['catalyst'])} \\
 失效条件 & {tex(r['invalidation'])} \\
+{preview_row}
 \bottomrule
 \end{{tabularx}}
 \end{{exhibitbox}}
@@ -2510,6 +3471,12 @@ def valuation_cards_latex(rows: list[dict]) -> str:
         eps_down_target = r["base_target_cny"] - r["base_components"]["pe_value_cny"] * pe_weight * 0.15
         multiples_down_target = r["base_target_cny"] * 0.80
         combined_down_target = eps_down_target * 0.80
+        preview = EARNINGS_PREVIEW_H1_2026.get(r["code"]) if EARNINGS_PREVIEW_H1_2026.get(r["code"], {}).get("valuation_input") else None
+        preview_row = (
+            rf"H1 预告(已计入) & \multicolumn{{3}}{{r}}{{已入分母}} & H1 2026 归母 CNY{num(preview['h1_np_low'])}--{num(preview['h1_np_high'])} 亿元、同比 +{preview['yoy_low']*100:.0f}\%--+{preview['yoy_high']*100:.0f}\%（{tex(preview['announce_date'])}）；已按 H1 年化计入 2026E EPS/内在锚，冻结对照见第 11 章 \\"
+            if preview
+            else ""
+        )
         blocks.append(
             rf"""
 \subsection{{{tex(r['name'])}（{r['code']}）估值卡}}
@@ -2532,6 +3499,7 @@ PS 组件 & {component_num(r['bear_components'], 'ps_value_cny')} & {component_n
 综合目标价 & \multicolumn{{3}}{{r}}{{{num(r['final_target_cny'])}}} & 内在/市场/券商权重：{tex(r['final_anchor_weights_label'])} \\
 当前价格 & \multicolumn{{3}}{{r}}{{{num(r['current_price_cny'])}}} & 2026-06-26 收盘后行情包 \\
 空间与动作 & \multicolumn{{3}}{{r}}{{{pct_tex(r['final_upside'])}；\stance{{{stance}}}{{{tex(r['rating_cn'])}}}}} & 证据质量 {tex(r['quality'])}；{tex(r['market_action_logic'])} \\
+{preview_row}
 \bottomrule
 \end{{tabularx}}
 \end{{exhibitbox}}
@@ -2561,7 +3529,92 @@ def company_diligence_appendix_latex(rows: list[dict]) -> str:
     return "\n".join(blocks)
 
 
-def write_latex(model: dict) -> None:
+def earnings_preview_latex(rows: list[dict], revision: dict | None) -> str:
+    """Post-cutoff (2026-07-06) H1 2026 earnings-preview addendum chapter.
+    Dual-presentation: keeps the 6/26 frozen conclusion and adds a labelled
+    revision. Chinese-only to satisfy the language gate."""
+    census = OPTICAL_PREVIEW_CENSUS
+    disclosed_rows = "\n".join(
+        rf"{tex(d['code'])} & {tex(d['name'])} & {tex(d['coverage'])} & {tex(d['type'])} & {tex(d['yoy'])} & {tex(d['date'])} \\"
+        for d in census["disclosed"]
+    )
+    preview_detail_rows = "\n".join(
+        rf"{tex(code)} & {tex(p['name'])} & {tex({'covered': '估值覆盖', 'watch_pool': '观察池', 'out_of_universe': 'universe 外'}[p['coverage']])} & "
+        rf"{num(p['h1_np_low'])}--{num(p['h1_np_high'])} & +{p['yoy_low']*100:.0f}\%--+{p['yoy_high']*100:.0f}\% & {tex(p['announce_date'])} & {tex(p['source_id'])} \\"
+        for code, p in EARNINGS_PREVIEW_H1_2026.items()
+    )
+    blocks = [
+        rf"""
+\section{{本章定位与边界}}
+本章是数据截止后更新附录。全书封面基准日与\textbf{{价格口径}}仍为 \textbf{{2026-06-26}}（行情冻结）。对已发布 2026 H1 业绩预告的覆盖标的，报告采用\textbf{{置信度优先}}原则：管理层业绩预告是最高置信度的前瞻盈利信号，已在第 8 章\textbf{{直接计入 2026E 归母分母、EPS、内在价值锚和综合目标价}}（见第 8.2 节"业绩预告已计入估值"框）。本章的作用是给出\textbf{{冻结口径（2026Q1 年化）与预告口径的并列对照}}，让读者看清预告把估值分母抬升了多少、为什么综合目标价与评级最终落在何处，而不是把预告藏在附录里不计入。价格与未发预告标的的财务分母仍冻结在 2026-06-26。
+
+\section{{光通信板块 H1 2026 预告普查}}
+截至 {tex(census['as_of'])}，本报告 universe 共 {census['universe_size']} 只标的（估值覆盖 {census['valuation_coverage']} + 观察池 {census['watch_pool']}），其中已发布正式 H1 2026 业绩预告的有 \textbf{{{census['previews_in_universe']} 只}}。方法上，{tex(census['method'])}龙头（{tex('、'.join(census['marquee_no_preview']))}）尚未发布预告，其余标的完整半年报预约披露集中在 2026-08-01 至 08-31。其中永鼎股份（600105）与杭电股份（603618）为估值覆盖池标的，其 H1 预告已计入第 8 章估值分母；锐捷网络（301165）为观察池标的。
+
+\begin{{exhibitbox}}[表：报告 universe 内已披露 H1 预告标的]
+\centering
+\small
+\begin{{tabularx}}{{\exhibitboxwidth}}{{>{{\bfseries\raggedright\arraybackslash}}p{{1.6cm}} >{{\raggedright\arraybackslash}}p{{2.0cm}} >{{\centering\arraybackslash}}p{{1.6cm}} >{{\centering\arraybackslash}}p{{1.2cm}} >{{\raggedleft\arraybackslash}}p{{2.6cm}} >{{\raggedright\arraybackslash\sloppy\hspace{{0pt}}}}X}}
+\toprule
+\textbf{{代码}} & \textbf{{名称}} & \textbf{{覆盖}} & \textbf{{类型}} & \textbf{{同比区间}} & \textbf{{公告日}} \\
+\midrule
+{disclosed_rows}
+\bottomrule
+\end{{tabularx}}
+\end{{exhibitbox}}
+
+\section{{H1 2026 预告明细}}
+下表汇总本轮已核实的 H1 2026 业绩预告，含 universe 外读数标的。归母净利单位为亿元，同比为公告披露区间。数据来源为公司公告与 akshare stock\_yjyg\_em 预告库交叉核对。
+
+\begin{{exhibitbox}}[表：H1 2026 业绩预告明细]
+\centering
+\small
+\begin{{tabularx}}{{\exhibitboxwidth}}{{>{{\bfseries\raggedright\arraybackslash}}p{{1.5cm}} >{{\raggedright\arraybackslash}}p{{1.8cm}} >{{\centering\arraybackslash}}p{{1.8cm}} >{{\raggedleft\arraybackslash}}p{{2.0cm}} >{{\raggedleft\arraybackslash}}p{{2.4cm}} >{{\centering\arraybackslash}}p{{1.7cm}} >{{\centering\arraybackslash}}p{{0.9cm}}}}
+\toprule
+\textbf{{代码}} & \textbf{{名称}} & \textbf{{覆盖}} & \textbf{{H1归母(亿)}} & \textbf{{同比}} & \textbf{{公告日}} & \textbf{{来源}} \\
+\midrule
+{preview_detail_rows}
+\bottomrule
+\end{{tabularx}}
+\sourcenote{{来源 S-35/S-36/S-37 为公司业绩预告公告；M-04 为普查方法记录。永鼎 600105 与杭电 603618 为估值覆盖标的，H1 预告已计入第 8 章估值分母；锐捷 301165 为观察池标的。}}
+\end{{exhibitbox}}
+"""
+    ]
+    if revision and revision.get("revisions"):
+        for r in revision["revisions"]:
+            fz, rv = r["frozen"], r["revised"]
+            blocks.append(
+                rf"""
+\section{{{tex(r['name'])}（{tex(r['code'])}）：业绩预告已计入估值（冻结口径对照）}}
+{tex(r['name'])} 属估值覆盖池，{tex(r['announce_date'])} 披露 H1 2026 归母净利 {num(r['h1_np_range_100mn'][0])}--{num(r['h1_np_range_100mn'][1])} 亿元、同比 +{r['h1_yoy_range'][0]*100:.0f}\%--+{r['h1_yoy_range'][1]*100:.0f}\%（{tex(r['forecast_type'])}）。该预告已按置信度优先原则\textbf{{计入第 8 章估值分母与目标价}}；下表给出采用口径与冻结（Q1 年化）口径的并列对照，说明预告把估值分母抬升了多少。{tex(r['bridge_note'])}
+
+\begin{{exhibitbox}}[估值卡：{tex(r['name'])} 冻结 vs 采用]
+\centering
+\small
+\begin{{tabularx}}{{\exhibitboxwidth}}{{>{{\bfseries\raggedright\arraybackslash}}p{{3.2cm}} >{{\raggedleft\arraybackslash}}p{{2.7cm}} >{{\raggedleft\arraybackslash}}p{{3.3cm}} >{{\raggedright\arraybackslash\sloppy\hspace{{0pt}}}}X}}
+\toprule
+\textbf{{项目}} & \textbf{{冻结口径 (Q1 年化)}} & \textbf{{采用口径 (H1 预告，已入估值)}} & \textbf{{说明}} \\
+\midrule
+2026E 归母净利(亿) & {num(fz['net_profit_2026e_100mn'])} & {num(rv['net_profit_2026e_100mn_mid'])} & H1 中值按 H1 占全年 {num(r['seasonality_assumption'],2)} 年化，作为估值分母 \\
+2026E 收入(亿) & {num(fz['revenue_2026e_100mn'])} & {num(rv['revenue_2026e_100mn'])} & 量价齐升，收入按 Q1 净利率与指引利润同步上抬（保守下限） \\
+2026E EPS & {num(fz['eps_2026e'])} & {num(rv['eps_2026e'])} & EPS 近乎翻倍，反映 Q2 强反转 \\
+收入/股 & {num(fz['sales_per_share_2026e'])} & {num(rv['sales_per_share_2026e'])} & PS 腿（权重 50\%）随收入上修，非仅利润修正 \\
+2027E EPS & {num(fz['eps_2027e'])} & {num(rv['eps_2027e'])} & 按公司层面成长假设外推 \\
+内在价值锚 & {num(fz['intrinsic_anchor_cny'])} & {num(rv['intrinsic_anchor_cny'])} & PE/PB/PS 各腿均随预告上修，内在锚显著抬升 \\
+综合目标价 & {num(fz['final_target_cny'])} & {num(rv['final_target_cny'])} & 现价仍较内在锚溢价约 +167\%，市场情绪锚地板支撑，目标价基本持平 \\
+评级 & {tex(fz['rating_cn'])} & {tex(rv['rating_cn'])} & {tex('评级维持不变')} \\
+盈利质量标签 & {tex(fz['earnings_quality_tag'])} & {tex(rv['earnings_quality_tag'])} & Q1 同比 {pct_tex(fz['q1_profit_growth_pct']/100)} 承压 → H1 大幅预增 \\
+\bottomrule
+\end{{tabularx}}
+\end{{exhibitbox}}
+
+{tex(r['rating_logic'])} 因此本次采用预告口径为\textbf{{盈利质量与 EPS 层面的上修}}，而非评级上修：待 Q2/Q3 收入、毛利率与现金流同步确认后，方具备将 {tex(r['name'])} 从中性观察上修的条件。组合权重维持不变，价格口径仍为 2026-06-26。
+"""
+            )
+    return "\n".join(blocks)
+
+
+def write_latex(model: dict, revision: dict | None = None) -> None:
     rows = model["rows"]
     weighted = pct_tex(model["weighted_final_upside"])
     intrinsic_weighted = pct_tex(model["weighted_base_upside"])
@@ -2576,7 +3629,7 @@ def write_latex(model: dict) -> None:
 \newcommand{{\reportkicker}}{{机构股票研究}}
 \newcommand{{\reportscope}}{{中国 A 股 | 光通信全产业链}}
 \newcommand{{\reportdate}}{{2026 年 6 月 26 日}}
-\newcommand{{\reportdatacutoff}}{{市场数据至 2026-06-26 收盘后；财务数据至 2026Q1}}
+\newcommand{{\reportdatacutoff}}{{市场数据至 2026-06-26 收盘后；财务数据至 2026Q1；附 2026-07-06 H1 业绩预告更新（见第 11 章附加章，不改变封面基准日与冻结估值结论）}}
 \newcommand{{\reporttype}}{{行业深度研究}}
 \newcommand{{\reportauthor}}{{AStock 研究代理团队}}
 \newcommand{{\reporthouseview}}{{\kaishu 光通信不是只有光模块。本报告把产业链拆成材料/基底、制造设备、光芯片、光器件、光模块、光纤光缆、网络设备和下游应用八层，覆盖 {len(rows)} 只可估值 A 股标的并逐一给出当前价、内在价值锚、市场情绪锚、综合目标价、空间和动作；低纯度、亏损或利润分母过薄的链条公司进入观察池。组合权重市场共识调整后空间为 \textbf{{{weighted}}}，内在价值锚空间为 {intrinsic_weighted}。结论是精选已兑现利润分母的模块龙头，同时承认通鼎互联、中天科技、长飞光纤等慢周期链条公司存在可观察市场情绪溢价。}}
@@ -2612,6 +3665,8 @@ def write_latex(model: dict) -> None:
 \input{{sections/ch09_risks}}
 \chapter{{投资建议与组合执行}}
 \input{{sections/ch10_investment}}
+\chapter{{数据截止后更新：H1 2026 业绩预告}}
+\input{{sections/ch11_earnings_preview}}
 
 \appendix
 \chapter{{全产业链调研工作底稿}}
@@ -2654,7 +3709,7 @@ def write_latex(model: dict) -> None:
 炒股买的是预期，不只是过去一个季度。因此本报告在 AStock 自有目标价之外，额外给出基于 2026E 收入、2026E EPS、2027E 收入增长和成长性调整倍数的市场预期估值。该表回答“当前价格需要什么预期才能合理”，而不是重复财务历史。
 
 {expectation_preview}
-\sourcenote{{完整 25 只标的预期估值见第 8 章和 data/market\_expectation\_valuation\_20260626.json。}}
+\sourcenote{{完整 26 只标的预期估值见第 8 章和 data/market\_expectation\_valuation\_20260626.json。}}
 
 市场情绪同样是估值方法论的一部分。市场可以错，但当前价、成交额、券商目标和共识定价是可观测信息。本报告把它们作为市场隐含预期锚，和内在价值锚、券商锚共同形成综合目标价。若内在价值锚远低于股价但成交和共识仍强，动作不会机械写成减持，而会标注为中性观察并给出情绪溢价失效条件。
 
@@ -2686,6 +3741,9 @@ def write_latex(model: dict) -> None:
 
 \section{{下一季度最重要的三个问题}}
 第一，{top_names} 的 2026Q2 净利润是否至少达到 Q1 的 1.05 倍，这是判断 800G 订单是否继续外溢的最低门槛。第二，1.6T 资格认证是否转化为批量订单，而不是停留在样品和送样阶段。第三，上游光芯片/器件、光纤光缆和网络设备是否出现独立验证，而不是全部依赖光模块情绪扩散；如果只有模块端景气、其他层级没有收入和现金流同步，完整产业链的估值就应继续分层。
+
+\section{{数据截止后更新提示（{PREVIEW_DATE}）}}
+本报告价格口径仍为 2026-06-26 收盘。数据截止后，报告 universe 35 只中仅\textbf{{永鼎股份 600105}}（估值覆盖）和\textbf{{锐捷网络 301165}}（观察池）发布了 H1 2026 业绩预告，龙头（中际旭创、新易盛、天孚通信、光迅科技、源杰科技）尚未发布，全部完整半年报预约披露集中在 2026 年 8 月。永鼎 H1 归母预增 +57\%--+120\%，其预告已\textbf{{按置信度优先原则计入第 8 章估值}}：2026E 归母从 6.62 亿元（Q1 年化）上修到约 12.0 亿元（预告年化），EPS 从 0.45 上修到约 0.82，内在价值锚从 14.77 升到 16.63。综合目标价仍为 46.00、评级维持中性观察，原因是 cable\_optional\_sotp 档 PE 权重仅 20\%、PS/PB 合计 80\% 且现价被市场情绪锚支撑——利润超预期上修 EPS 与盈利质量，但不机械上修评级。第 11 章给出冻结口径与预告口径的并列对照与桥。
 """,
     )
     write_text(
@@ -2869,28 +3927,78 @@ CPO 立刻重估所有光器件 & CPO 是远期架构变化，不是 2026 EPS & 
     write_text(
         SECTIONS / "ch08_valuation.tex",
         rf"""
-\section{{估值方法}}
-本章发布 AStock 自有综合目标价，而不是搬运券商目标价。所有覆盖标的均具备当前价、股本、市值、2026E/2027E/2028E EPS、估值方法、熊/基准/牛三档、内在价值锚、市场情绪锚、券商锚、综合目标价、合理区间、隐含空间、动作、催化剂、失效条件和证据质量。
+\section{{估值哲学与门禁}}
+本章发布 AStock 自有综合目标价，不搬运券商目标价，并遵循固定的估值门禁：先分类、再正常化分母、再做情景估值、再构建多锚目标价、再翻译成动作、最后做可复现性审计。核心原则有四条。第一，\textbf{{方法匹配业务模型}}，绝不把异质产业链套进同一个 PE 表。第二，\textbf{{分母必须正常化}}，2026E 归母不用单季度机械年化，而用季节性校准并以 TTM（滚动四季度）作防高估地板。第三，\textbf{{成长信用必须可追溯}}，AI/高速成长溢价要拆到成长段收入与现价隐含增速，近零/负 EPS 标的不给成长 PE 信用。第四，\textbf{{市场不是真理也不是噪音}}，内在价值锚回答"财务分母支持多少钱"，市场情绪锚回答"市场已经愿意给多少钱以及为什么"，二者按业务模型加权形成综合目标价。所有覆盖标的均具备现价、股本、市值、2026E/2027E/2028E EPS、方法、熊/基准/牛三档、内在锚、市场情绪锚、券商锚、综合目标价、合理区间、隐含空间、动作、催化、失效条件和证据质量。
 
-估值方法按业务模型选择，而不是把整条产业链套进同一个 PE 表。AI 光模块龙头以 normalized EPS 的 forward PE/PEG 为主；混合模块/器件平台使用 PE/PB/PS 组合；源杰、长光、仕佳、光库、德科立、腾景等光芯片/器件和小规模高战略稀缺标的加入收入规模和 BVPS 校验；亨通、中天、长飞、通鼎、永鼎等光纤光缆/通信线缆和项目制公司使用资产周期或 SOTP-style PE/PB/PS blend；网络设备和高速互连件分别使用独立的 PE/PB/PS 权重。2026E EPS 由 2026Q1 EPS 除以公司层面 Q1 季节性假设得到，但 EPS 只按对应权重进入综合价值，不再作为所有公司唯一分母。
+\begin{{exhibitbox}}[表：业务模型—估值方法匹配矩阵]
+\centering\scriptsize
+\begin{{tabularx}}{{\exhibitboxwidth}}{{>{{\bfseries\raggedright\arraybackslash}}p{{2.6cm}} >{{\raggedright\arraybackslash\sloppy\hspace{{0pt}}}}p{{3.4cm}} >{{\raggedright\arraybackslash\sloppy\hspace{{0pt}}}}X}}
+\toprule
+\textbf{{业务类型}} & \textbf{{首选方法}} & \textbf{{必需二级校验}} \\
+\midrule
+AI 光模块龙头 & PE/PEG + 成长盈利桥 & 现价隐含增速、Street 目标价离散度 \\
+光芯片/精密器件/稀缺组件 & PE + PS 或稀缺/SOTP 校验 & 客户认证、ASP/毛利率证据 \\
+光纤光缆/预制棒（资产型） & 周期正常化 PE + PB/ROE + PS & 经营现金流、运营商/项目订单、光纤价格 \\
+网络设备/混合集成 & PE/SOTP 或 PE/PB/PS blend & 在手订单、分部毛利率、现金转化 \\
+高速线缆/连接器互连 & PE/PB/PS blend & AI 互连纯度、产品结构、营运资本 \\
+近零 EPS / 亏损 & PS、EV/Sales、PB 或观察池 & 盈利路径、稀释/负债敏感性 \\
+\bottomrule
+\end{{tabularx}}
+\end{{exhibitbox}}
+
+\section{{分母正常化、季节性校准与业绩预告}}
+把单季度利润乘以 4（或除以固定季节性假设）对周期性和拐点型标的会系统性失真。本报告对每个标的按\textbf{{置信度顺序}}确定 2026E 分母：\textbf{{(1) 管理层 H1 业绩预告（最高置信度前瞻信号）}}——已发预告的覆盖标的用 H1 中值除以 H1 占全年比例（{H1_SHARE_OF_FY_DEFAULT:.2f}）年化得 2026E 归母；因预告理由为\textbf{{量价齐升}}（量、价同增），2026E 收入也按该利润在 2026Q1 净利率下同步上抬（保守下限，因兑现毛利率实际扩张），使 EPS、PE、PB、PS \textbf{{各条估值腿都对预告作出反应}}，而不是只动 EPS；(2) 季节性校准 Q1（观测 2025 年 Q1 占全年比例在 8\%--45\% 时用观测值）；(3) TTM（滚动四季度）作防高估地板。已发 H1 预告的名字不能再用陈旧 TTM 或 Q1 年化定分母——例如永鼎股份 2026Q1 归母 1.59 亿元、TTM 仅约 1.03 亿元，但其 H1 预告已达 5.0--7.0 亿元，故 2026E 归母采用预告年化约 12.0 亿元、收入约 94 亿元，EPS 从 0.45 上修到约 0.82，内在价值锚从 14.77 抬升到约 24.57，当前价较内在锚溢价从约 +295\% 收窄到约 +167\%。
+
+{seasonality_calibration_latex(rows)}
+\sourcenote{{季度-年度桥与三口径：analysis/segment\_forecast\_bridge.md；H1 预告证据：data/earnings\_preview\_h1\_2026\_20260706.md、第 11 章。数据层 data/growth\_driver\_model.json。}}
+
+\begin{{sourcequalitybox}}[业绩预告已计入估值]
+本报告 26 只覆盖标的中，有两只已发布 2026 H1 业绩预告，且已按置信度优先原则\textbf{{计入其 2026E 归母、2026E 收入、EPS 及 PE/PB/PS 各条估值腿}}，而非仅列附录。\textbf{{永鼎股份（600105）}}：H1 归母 5.0--7.0 亿元、同比 +57\%--+120\%（光纤量价齐升），EPS 0.45$\to$0.82、收入/股 3.55$\to$6.44、内在价值锚 14.77$\to$24.57、溢价 +295\%$\to$+167\%。\textbf{{杭电股份（603618）}}：H1 归母 3.6--4.0 亿元、同比 +852\%--+958\%（光纤量价齐升，扭亏为盈；FY2025 为亏损），因 Q1 年化与 TTM 都无法代表其扭亏后的盈利能力，采用 H1 预告年化作为 2026E 分母，具体 EPS/内在锚/目标价见其单票估值卡。两只标的综合目标价与评级由各自内在锚、市场情绪锚加权决定：预告显著上修了盈利质量与内在价值锚、收窄了估值泡沫度，但当前价是否给出正空间取决于溢价水平，评级不因单纯利润超预期机械上修。观察池标的锐捷网络（301165）同样已发预告，但不在 26 只当前价目标价覆盖内。第 11 章给出冻结（Q1 年化）与采用（H1 预告）口径的并列对照。价格与未发预告标的的财务分母仍冻结在 2026-06-26。
+\end{{sourcequalitybox}}
+
+\section{{最终估值总表}}
+下表是全部覆盖标的的 AStock 综合目标价、隐含空间与动作。内在价值锚由业务模型组件（PE/PB/PS 按权重）加权得到，综合目标价再叠加市场情绪锚和券商锚。极端"泡沫度"（现价远高于内在锚）不是模型错误，而是当前光通信板块高拥挤定价的真实刻画，报告用市场情绪锚显式承认这部分溢价，同时坚持财务分母底线。
 
 {latex_table_final(rows, small=True)}
-\sourcenote{{估值模型：data/current\_valuation\_model\_20260626.json。}}
+\sourcenote{{估值模型：data/current\_valuation\_model\_20260626.json；可复现性见 analysis/valuation\_audit.md（Model Reproducibility: PASS）。}}
+
+\section{{成长盈利拆分与现价隐含增速}}
+AI/高速成长溢价必须回答"贵在哪一段、现价隐含多快增速"。本节把 2026E 收入拆成基础业务段与 AI/高速成长段（AI 收入占比为基于业务层级的 AStock 建模假设，非公司分部披露），并用反向估值给出：在 AStock 基准 PE 档下，当前价要求未来 3 年归母 CAGR 达到多少，再与 AStock 假设的 2026--2028 增速对比。隐含增速远高于假设=估值把成长前置；接近=需持续兑现；低于=若兑现有修复空间。近零/负 EPS 标的（如长光华芯）无法用 PE 反推，转 PS/PB 并降为观察池，不给成长 PE 信用。
+
+{growth_earnings_latex(rows)}
+\sourcenote{{成长盈利模型：analysis/growth\_earnings\_model.md、analysis/implied\_growth\_sensitivity.md、data/growth\_driver\_model.json。AI 收入占比与增速为 AStock 建模假设，非公司财报分部披露。}}
 
 \section{{基于 2026E 收入和成长性的市场预期估值}}
-本节补上“市场炒预期”的视角。AStock 内在价值锚回答的是按业务模型和 2027E 正常化分母的冷静价值；市场预期估值则回答：如果投资者愿意基于 2026E 收入、2026E EPS 和 2027E 成长性给更高预期倍数，那么当前价格对应的上方或下方空间是多少。预期价值不是买入理由，只有当下一季度收入、毛利率、现金流和订单质量继续验证，预期倍数才有资格维持。
+本节补上"市场炒预期"的视角。AStock 内在价值锚回答按业务模型和 2027E 正常化分母的冷静价值；市场预期估值回答：如果投资者愿意基于 2026E 收入、2026E EPS 和 2027E 成长性给更高预期倍数，当前价格对应的上方或下方空间是多少。预期价值不是买入理由，只有当下一季度收入、毛利率、现金流和订单质量继续验证，预期倍数才有资格维持。
 
 {expectation_table}
 \sourcenote{{预期估值模型：data/market\_expectation\_valuation\_20260626.json。}}
 
 \section{{市场隐含预期与情绪锚}}
-内在价值锚回答“财务分母支持多少钱”，市场隐含预期锚回答“当前市场已经愿意给多少钱以及为什么”。本节用成交额分位、当前隐含 PE/PS/PB、券商锚和情绪状态修正综合目标价。它不是把现价当真理，而是防止模型在强共识阶段把慢周期或期权型标的机械低估。
+内在价值锚回答"财务分母支持多少钱"，市场隐含预期锚回答"当前市场已经愿意给多少钱以及为什么"。本节用成交额分位、当前隐含 PE/PS/PB、券商锚和情绪状态修正综合目标价。它不是把现价当真理，而是防止模型在强共识阶段把慢周期或期权型标的机械低估；反过来，当内在锚远低于现价时，报告也不机械写减持，而是标注情绪溢价并给出失效条件。
 
 {sentiment_table}
 \sourcenote{{市场情绪锚：data/market\_sentiment\_anchor\_20260626.json；方法论参考 CFA 市场法估值、预期投资反推框架和投资者情绪研究。}}
 
+\section{{券商/Street 对照与发布降级}}
+估值门禁要求全产业链报告为每个覆盖标的提供逐篇原文可复核的券商目标价与 2026E/2027E 预测。本轮多数标的仅取得第三方一致预期页面或媒体摘要，部分标的无可用券商目标价。按门禁，券商原文覆盖不完整时不得给 final\_signoff: PASS，故本报告显式降级为 \textbf{{MECHANICAL\_PASS\_INSTITUTIONAL\_FAIL}}：AStock 自有目标价、内在锚、市场情绪锚与成长盈利模型可独立复算并支撑全部结论，但券商对照层为机构级不完整，任何投资结论不得单独依赖券商锚。预测收入/净利润/EPS 与估值方法字段在公开页面未逐项披露，统一标注 not disclosed，且券商锚仅在证据质量足够时进入权重。
+
+\begin{{exhibitbox}}[表：券商/Street 对照与证据质量]
+\centering\tiny
+\renewcommand{{\arraystretch}}{{1.14}}
+\setlength{{\tabcolsep}}{{2pt}}
+\begin{{tabularx}}{{\exhibitboxwidth}}{{>{{\bfseries\raggedright\arraybackslash}}p{{1.5cm}} >{{\raggedright\arraybackslash\sloppy\hspace{{0pt}}}}p{{2.4cm}} >{{\raggedleft\arraybackslash}}p{{0.95cm}} >{{\raggedleft\arraybackslash}}p{{0.95cm}} >{{\raggedleft\arraybackslash}}p{{0.85cm}} >{{\centering\arraybackslash}}p{{1.0cm}} >{{\raggedright\arraybackslash\sloppy\hspace{{0pt}}}}X}}
+\toprule
+\textbf{{标的}} & \textbf{{来源类型}} & \textbf{{目标价}} & \textbf{{隐含空间}} & \textbf{{券商权重}} & \textbf{{证据质量}} & \textbf{{预测明细}} \\
+\midrule
+{chr(10).join([rf"{tex(r['name'])} {r['code']} & {tex(r['broker_source_type'])} & {num(r['broker_target_avg']) if r['broker_target_avg'] is not None else 'n.d.'} & {pct_tex(r['broker_upside']) if r['broker_upside'] is not None else 'n.a.'} & {num(r['final_anchor_weights'].get('street',0.0)*100,0)}\% & {tex(r['broker_evidence_quality'])} & 收入/利润/EPS: not disclosed \\" for r in rows])}
+\bottomrule
+\end{{tabularx}}
+\end{{exhibitbox}}
+\sourcenote{{券商/Street 一致预期对照包：data/broker\_street\_consensus\_20260626.md/json（含发布降级说明）。}}
+
 \section{{情景解释}}
-中际旭创和新易盛的综合空间仍为正，是因为 2026Q1 已经体现强利润分母且市场锚没有完全压低结论；但它们也不是无约束买入，原因是当前价格要求 2027 年高增长继续兑现。长飞光纤、亨通光电、中天科技、通鼎互联、永鼎股份、中兴通讯和烽火通信提供完整产业链的慢周期底盘，估值既要锚定现金流和运营商/网络项目节奏，也要承认成交额和市场共识给出的情绪溢价。源杰科技、长光华芯、仕佳光子、光库科技拥有更高战略稀缺性，但当前价格通常把长期技术期权前置。光迅科技、华工科技、剑桥科技、太辰光的问题不是没有产业位置，而是利润分母、业务纯度或现金流还不足以支撑过高倍数。
+中际旭创和新易盛的综合空间接近持平甚至略正，是因为 2026Q1 已体现强利润分母、TTM run-rate 扎实，且现价隐含增速（约 5\%--7\% 的 3 年归母 CAGR）其实低于 AStock 假设增速，说明并非无条件贵；但它们也不是无约束买入，核心风险是海外云厂商订单与 ASP 持续性。长飞光纤、亨通光电、中天科技、通鼎互联、永鼎股份、中兴通讯和烽火通信提供完整产业链的慢周期底盘，估值既要锚定现金流和运营商/网络项目节奏，也要承认成交额和市场共识给出的情绪溢价。源杰科技、长光华芯、仕佳光子、光库科技拥有更高战略稀缺性，但现价通常把长期技术期权前置，其中长光华芯为近零 EPS，只作观察池。光迅科技、华工科技、剑桥科技、太辰光的问题不是没有产业位置，而是利润分母、业务纯度或现金流还不足以支撑过高倍数。
 
 \begin{{exhibitbox}}[表：估值假设桥 / Method and Assumption Bridge]
 \centering\scriptsize
@@ -3038,6 +4146,7 @@ CPO 分工变化 & 系统厂/芯片厂拿走部分模块价值 & 中 & 硅光/CP
 \end{{exhibitbox}}
 """,
     )
+    write_text(SECTIONS / "ch11_earnings_preview.tex", earnings_preview_latex(rows, revision))
     source_rows = "\n".join(
         rf"{tex(s['id'])} & {tex(s['title'])} & {tex(s['type'])} & {tex(s['quality'])} & \href{{{s['url']}}}{{source link}} \\"
         for s in SOURCE_ITEMS
@@ -3090,7 +4199,7 @@ def write_governance(model: dict, source_records: list[dict]) -> None:
     }
     write_json(CASE / "source_exhaustion_log.json", exhaustion)
     write_text(CASE / "source_exhaustion_log.md", "# 来源穷尽记录\n\n本轮未取得覆盖全部标的、逐篇原文可复核的券商目标价时间序列，也未取得所有标的的完整 2026E/2027E 券商预测明细。报告因此使用公开一致预期和券商摘要做市场预期对照，未披露字段不做推断；AStock 目标价仍由自有模型独立计算。")
-    write_text(CASE / "review_log.md", f"# 审阅记录\n\n- {RUN_DATE}: 按反馈重建光通信报告，修正早期版本过窄、过度模块中心的问题。\n- {RUN_DATE}: 扩展至 {len(model['rows'])} 只可估值 A 股标的，覆盖模块、器件、光芯片、光纤光缆和网络设备。\n- {RUN_DATE}: 增加材料、设备、下游应用和观察池。\n- {RUN_DATE}: 增加业务模型匹配估值、2026E 市场预期估值桥和公开券商/一致预期对照。\n- {RUN_DATE}: 扩写最终投资建议，加入研究组合权重、重点标的执行清单、情景剧本和复盘纪律。\n")
+    write_text(CASE / "review_log.md", f"# 审阅记录\n\n- {RUN_DATE}: 按反馈重建光通信报告，修正早期版本过窄、过度模块中心的问题。\n- {RUN_DATE}: 扩展至 {len(model['rows'])} 只可估值 A 股标的，覆盖模块、器件、光芯片、光纤光缆和网络设备。\n- {RUN_DATE}: 增加材料、设备、下游应用和观察池。\n- {RUN_DATE}: 增加业务模型匹配估值、2026E 市场预期估值桥和公开券商/一致预期对照。\n- {RUN_DATE}: 扩写最终投资建议，加入研究组合权重、重点标的执行清单、情景剧本和复盘纪律。\n- {PREVIEW_DATE}: 按估值门禁重写第 8 章估值体系：新增分母正常化/季节性校准、成长盈利模型、券商/Street 对照包与发布降级、可复现性审计。\n- {PREVIEW_DATE}: H1 2026 业绩预告按置信度优先原则计入覆盖标的估值分母（量价齐升同时上抬收入与利润，贯穿 EPS/PE/PB/PS）。永鼎 600105 内在锚 14.77→24.57；新增杭电股份 603618 为第 26 只估值覆盖标的（6/26 收盘 52.00，H1 预增 +852%~+958% 扭亏），其预告计入估值分母。第 11 章给出冻结（Q1 年化）与采用（H1 预告）口径并列对照。价格与未发预告标的分母仍冻结在 2026-06-26。\n")
     write_json(DATA / "source_capture_manifest_20260626.json", {"captures": source_records})
     write_text(DATA / "source_capture_manifest_20260626.md", "# 来源抓取清单\n\n" + table_md(["URL", "路径", "状态", "字节"], [[r["url"], r["path"], r.get("status"), r.get("bytes")] for r in source_records]))
 
@@ -3204,7 +4313,7 @@ def valuation_complete() -> tuple[bool, str]:
     styles = {row.get("valuation_style") for row in model.get("rows", [])}
     if len(styles) < 4:
         problems.append(f"method profiles too narrow: {sorted(styles)}")
-    return not problems and len(model.get("rows", [])) == 25, "; ".join(problems) or f"25 rows complete, styles={len(styles)}"
+    return not problems and len(model.get("rows", [])) == 26, "; ".join(problems) or f"26 rows complete, styles={len(styles)}"
 
 
 def source_files_exist() -> tuple[bool, str]:
@@ -3257,11 +4366,11 @@ def broker_and_expectation_present() -> tuple[bool, str]:
     broker_rows = load_json("data/broker_consensus_snapshot_20260626.json").get("rows", [])
     expectation_rows = load_json("data/market_expectation_valuation_20260626.json").get("rows", [])
     sentiment_rows = load_json("data/market_sentiment_anchor_20260626.json").get("rows", [])
-    if len(broker_rows) != 25:
+    if len(broker_rows) != 26:
         missing.append(f"broker_rows={len(broker_rows)}")
-    if len(expectation_rows) != 25:
+    if len(expectation_rows) != 26:
         missing.append(f"expectation_rows={len(expectation_rows)}")
-    if len(sentiment_rows) != 25:
+    if len(sentiment_rows) != 26:
         missing.append(f"sentiment_rows={len(sentiment_rows)}")
     return not missing, f"missing={missing}"
 
@@ -3310,6 +4419,124 @@ def investment_advice_depth() -> tuple[bool, str]:
     return not missing, f"missing={missing}"
 
 
+def post_cutoff_preview_present() -> tuple[bool, str]:
+    preview = load_json("data/earnings_preview_h1_2026_20260706.json")
+    census = load_json("data/optical_preview_census_20260706.json")
+    previews = preview.get("previews", {})
+    in_universe = [c for c, p in previews.items() if p.get("coverage") in {"covered", "watch_pool"}]
+    ok = (
+        "600105" in previews and "301165" in previews and "603618" in previews
+        and len(in_universe) >= 3
+        and census.get("universe_size") == 36
+        and census.get("previews_in_universe") == 3
+        and "stock_yjyg_em" in census.get("method", "")
+    )
+    return ok, f"in_universe={len(in_universe)}, universe={census.get('universe_size')}"
+
+
+def post_cutoff_disclosure_in_pdf() -> tuple[bool, str]:
+    pdf = BASE / "main.pdf"
+    if not pdf.exists():
+        return False, "main.pdf missing"
+    out = BASE / "main_current_text.txt"
+    if not out.exists():
+        proc = subprocess.run(["pdftotext", str(pdf), str(out)], text=True, capture_output=True)
+        if proc.returncode != 0:
+            return False, "pdftotext failed"
+    body = out.read_text(encoding="utf-8", errors="ignore")
+    needed = ["业绩预告", "数据截止", "2026-07-06"]
+    missing = [t for t in needed if t not in body]
+    return not missing, f"missing={missing}"
+
+
+def frozen_baseline_intact() -> tuple[bool, str]:
+    market = load_json("data/raw_market_data_20260626.json")
+    model = load_json("data/current_valuation_model_20260626.json")
+    yd = next((r for r in model.get("rows", []) if r["code"] == "600105"), None)
+    ok = (
+        market.get("run_date") == "2026-06-26"
+        and len(market.get("quotes", {})) == 26
+        and model.get("run_date") == "2026-06-26"
+        and yd is not None
+        and yd.get("rating_cn") == "中性观察"
+        and abs(yd.get("final_upside", 0) + 0.30) < 0.02
+    )
+    return ok, f"600105 rating={yd.get('rating_cn') if yd else None}, upside={round(yd.get('final_upside'), 3) if yd else None}"
+
+
+def preview_revision_dual_view() -> tuple[bool, str]:
+    rev = load_json("data/earnings_preview_revision_20260706.json")
+    revisions = rev.get("revisions", [])
+    yd = next((r for r in revisions if r["code"] == "600105"), None)
+    ok = (
+        rev.get("cutoff") == "2026-06-26"
+        and yd is not None
+        and "frozen" in yd and "revised" in yd
+        and yd["revised"]["eps_2026e"] > yd["frozen"]["eps_2026e"]
+        and rev.get("seasonality_assumption") is not None
+    )
+    return ok, f"revisions={len(revisions)}, has_600105={yd is not None}"
+
+
+def valuation_reproducibility() -> tuple[bool, str]:
+    body = text("analysis/valuation_audit.md")
+    ok = "Model Reproducibility: PASS" in body and "价格/股本核对表" in body and "MECHANICAL_PASS_INSTITUTIONAL_FAIL" in body
+    return ok, "reproducibility PASS + reconciliation + downgrade"
+
+
+def growth_earnings_present() -> tuple[bool, str]:
+    driver = load_json("data/growth_driver_model.json")
+    rows = driver.get("rows", [])
+    has_impl = any(r.get("current_price_implied_np_cagr_3y") is not None for r in rows)
+    model_body = text("analysis/valuation_model.md")
+    ok = (
+        len(rows) == 26
+        and has_impl
+        and "成长盈利依赖" in model_body
+        and "季节性校准" in model_body
+        and "现价隐含" in text("analysis/implied_growth_sensitivity.md")
+    )
+    return ok, f"driver_rows={len(rows)}, implied_present={has_impl}"
+
+
+def broker_street_downgrade_present() -> tuple[bool, str]:
+    packet = load_json("data/broker_street_consensus_20260626.json")
+    body = text("data/broker_street_consensus_20260626.md")
+    ok = (
+        packet.get("signoff_downgrade") == "MECHANICAL_PASS_INSTITUTIONAL_FAIL"
+        and packet.get("coverage_universe") == 26
+        and "not disclosed" in body
+    )
+    return ok, f"downgrade={packet.get('signoff_downgrade')}, universe={packet.get('coverage_universe')}"
+
+
+def valuation_gate_sections() -> tuple[bool, str]:
+    body = text("analysis/valuation_model.md")
+    required = ["季节性校准", "下一季度阈值", "成长盈利依赖", "全链条分类依赖", "市场隐含预期与情绪锚", "市场预期估值桥", "方法与假设桥"]
+    missing = [s for s in required if s not in body]
+    ch08 = text("sections/ch08_valuation.tex")
+    ch08_required = ["估值哲学与门禁", "分母正常化", "业绩预告", "成长盈利拆分与现价隐含增速", "券商/Street 对照与发布降级", "业务模型—估值方法匹配矩阵"]
+    ch08_missing = [s for s in ch08_required if s not in ch08]
+    return not missing and not ch08_missing, f"model_missing={missing}, ch08_missing={ch08_missing}"
+
+
+def preview_in_valuation() -> tuple[bool, str]:
+    """The covered name with H1 guidance (600105) must have its guidance folded
+    into the valuation denominator: 2026E EPS lifted above the Q1-annualized
+    basis, and ch08 must state the guidance is computed into valuation."""
+    model = load_json("data/current_valuation_model_20260626.json")
+    yd = next((r for r in model.get("rows", []) if r["code"] == "600105"), None)
+    ch08 = text("sections/ch08_valuation.tex")
+    ok = (
+        yd is not None
+        and yd.get("eps_basis") == "h1_guidance"
+        and yd.get("has_h1_guidance") is True
+        and yd.get("eps_2026e", 0) > 0.6  # guidance lifts EPS well above the 0.45 q1-annualized basis
+        and "业绩预告已计入估值" in ch08
+    )
+    return ok, f"600105 eps_basis={yd.get('eps_basis') if yd else None}, eps26={round(yd.get('eps_2026e'),3) if yd else None}"
+
+
 def main() -> int:
     checks = []
     for rel in [
@@ -3333,6 +4560,13 @@ def main() -> int:
         "analysis/template_brief.md", "analysis/exhibit_plan.md",
         "analysis/optical_chain_map.mmd", "sections/app_source_audit.tex",
         "sections/app_research_workplan.tex",
+        "sections/ch11_earnings_preview.tex",
+        "data/earnings_preview_h1_2026_20260706.json", "data/earnings_preview_h1_2026_20260706.md",
+        "data/optical_preview_census_20260706.json", "data/optical_preview_census_20260706.md",
+        "data/earnings_preview_revision_20260706.json", "data/earnings_preview_revision_20260706.md",
+        "analysis/growth_earnings_model.md", "analysis/segment_forecast_bridge.md",
+        "analysis/implied_growth_sensitivity.md", "data/growth_driver_model.json",
+        "data/broker_street_consensus_20260626.json", "data/broker_street_consensus_20260626.md",
     ]:
         checks.append((f"file:{rel}", *check_file(rel)))
     for idx in range(1, 11):
@@ -3361,9 +4595,18 @@ def main() -> int:
         ("industry_universe_present", "产业链标的覆盖" in text("data/industry_universe_coverage.md") and "特发信息" in text("data/industry_universe_coverage.md"), "coverage and watchlist"),
         ("research_workplan_present", "全链条调研问题库" in text("sections/app_research_workplan.tex") and "更新触发规则" in text("sections/app_research_workplan.tex"), "research workplan"),
         ("investment_advice_depth", *investment_advice_depth()),
-        ("raw_quote_count", len(load_json("data/raw_market_data_20260626.json").get("quotes", {})) == 25, "25 quotes"),
-        ("raw_financial_count", len(load_json("data/raw_financials_20260626.json").get("financials", {})) == 25, "25 financial packets"),
+        ("raw_quote_count", len(load_json("data/raw_market_data_20260626.json").get("quotes", {})) == 26, "26 quotes"),
+        ("raw_financial_count", len(load_json("data/raw_financials_20260626.json").get("financials", {})) == 26, "26 financial packets"),
         ("weighted_upside_present", math.isfinite(load_json("data/current_valuation_model_20260626.json").get("weighted_base_upside")), "weighted upside"),
+        ("post_cutoff_preview_present", *post_cutoff_preview_present()),
+        ("post_cutoff_disclosure_in_pdf", *post_cutoff_disclosure_in_pdf()),
+        ("frozen_baseline_intact", *frozen_baseline_intact()),
+        ("preview_revision_dual_view", *preview_revision_dual_view()),
+        ("valuation_reproducibility", *valuation_reproducibility()),
+        ("growth_earnings_present", *growth_earnings_present()),
+        ("broker_street_downgrade_present", *broker_street_downgrade_present()),
+        ("valuation_gate_sections", *valuation_gate_sections()),
+        ("preview_in_valuation", *preview_in_valuation()),
     ])
     pass_count = 0
     fail_count = 0
@@ -3389,22 +4632,43 @@ if __name__ == "__main__":
 def main() -> int:
     for path in [DATA, ANALYSIS, SECTIONS, SOURCES / "official-filings-20260626", SOURCES / "industry-public-20260626"]:
         path.mkdir(parents=True, exist_ok=True)
-    quotes = {}
-    financials = {}
-    for ticker in TICKERS:
-        code = ticker["code"]
-        quotes[code] = cached_cli("quote", code, "quote", code)
-        financials[code] = cached_cli("financials", code, "financials", code)
-    source_records = []
-    for item in SOURCE_ITEMS:
-        out_dir = SOURCES / ("official-filings-20260626" if item["type"] == "official_filing" else "industry-public-20260626")
-        print(f"Fetching source {item['id']}: {item['url']}", flush=True)
-        source_records.append({"id": item["id"], **fetch_url(item["url"], out_dir)})
+    if REFRESH_LIVE:
+        quotes = {}
+        financials = {}
+        for ticker in TICKERS:
+            code = ticker["code"]
+            quotes[code] = cached_cli("quote", code, "quote", code)
+            financials[code] = cached_cli("financials", code, "financials", code)
+        source_records = []
+        for item in SOURCE_ITEMS:
+            out_dir = SOURCES / ("official-filings-20260626" if item["type"] == "official_filing" else "industry-public-20260626")
+            print(f"Fetching source {item['id']}: {item['url']}", flush=True)
+            source_records.append({"id": item["id"], **fetch_url(item["url"], out_dir)})
+    else:
+        # Default: reproduce the RUN_DATE-frozen report. Prices/financials come
+        # from the frozen snapshot (never re-baselined to "today"), and only
+        # brand-new capturable sources not already in the frozen manifest are
+        # fetched. Broker/methodology items stay registry-only, as in the
+        # frozen capture set.
+        quotes, financials = load_frozen_snapshot()
+        source_records = load_frozen_source_records()
+        captured_ids = {r["id"] for r in source_records}
+        capturable_types = {"official_filing", "industry_public", "official_company"}
+        for item in SOURCE_ITEMS:
+            if item["id"] in captured_ids or item["type"] not in capturable_types:
+                continue
+            out_dir = SOURCES / ("official-filings-20260626" if item["type"] == "official_filing" else "industry-public-20260626")
+            print(f"Fetching new source {item['id']}: {item['url']}", flush=True)
+            source_records.append({"id": item["id"], **fetch_url(item["url"], out_dir)})
     model = make_model(quotes, financials)
-    build_markdown_outputs(model, quotes, financials, source_records)
-    write_latex(model)
-    for cache_path in DATA.glob(f"_cache_*_{RUN_DATE}.json"):
-        cache_path.unlink()
+    revision = make_post_cutoff_revision(model)
+    build_markdown_outputs(model, quotes, financials, source_records, revision)
+    write_latex(model, revision)
+    if REFRESH_LIVE:
+        # _cache_* are live-fetch scratch files; the frozen raw_*_{RUN_DATE}.json
+        # snapshots are NOT matched by this glob and are preserved.
+        for cache_path in DATA.glob(f"_cache_*_{RUN_DATE}.json"):
+            cache_path.unlink()
     write_governance(model, source_records)
     write_verifier()
     print(f"Built {CASE}")

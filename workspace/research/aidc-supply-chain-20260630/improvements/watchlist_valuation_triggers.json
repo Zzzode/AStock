@@ -1,0 +1,807 @@
+{
+  "metadata": {
+    "case_id": "aidc-supply-chain-20260630",
+    "generated_at": "2026-07-02T14:30:00",
+    "data_cutoff": "2026-07-02",
+    "watchlist_count": 3,
+    "framework_type": "PS_SOTP_milestone_alternative_valuation",
+    "output_files": {
+      "markdown": "improvements/watchlist_valuation_triggers.md",
+      "json": "improvements/watchlist_valuation_triggers.json"
+    }
+  },
+  "companies": [
+    {
+      "ticker": "300936",
+      "company": "中英科技",
+      "chain_role": "PCB与上游材料设备 / 高速CCL",
+      "business_model": "高速覆铜板+半导体封装材料+储能集成",
+      "current_price": 105.6,
+      "price_datetime": "2026-07-02 11:30:00",
+      "shares_100mn": 0.74813102,
+      "market_cap_100mn_cny": 79.00263571,
+      "revenue_2026e_100mn": 2.9768,
+      "np_2026e_100mn": -0.04806087,
+      "eps_2026e": -0.06424125,
+      "current_ps": 26.54,
+      "evidence_quality": "B-",
+      "source_count": 3,
+      "field_evidence_status": {
+        "revenue_exposure": "direct",
+        "customer_or_platform": "direct",
+        "order_or_backlog": "direct",
+        "capacity_or_certification": "direct",
+        "asp_or_price_proxy": "direct",
+        "utilization_or_yield": "direct",
+        "margin_impact": "direct"
+      },
+      "ps_valuation_framework": {
+        "activation_threshold": "单季度收入同比>30%且毛利率环比>+2pct, 或连续两季度收入环比正增长",
+        "scenarios": {
+          "bear": {
+            "revenue_assumption_100mn": 2.5,
+            "revenue_growth_pct": -17,
+            "gross_margin_pct": 15,
+            "applicable_ps": 8,
+            "target_market_cap_100mn": 20.0,
+            "target_price": 26.7,
+            "trigger_logic": "产品结构恶化, CCL价格战"
+          },
+          "base": {
+            "revenue_assumption_100mn": 3.0,
+            "revenue_growth_pct": 20,
+            "gross_margin_pct": 18,
+            "applicable_ps": 15,
+            "target_market_cap_100mn": 45.0,
+            "target_price": 60.2,
+            "trigger_logic": "收入恢复增长, 毛利触底"
+          },
+          "bull": {
+            "revenue_assumption_100mn": 4.0,
+            "revenue_growth_pct": 60,
+            "gross_margin_pct": 22,
+            "applicable_ps": 25,
+            "target_market_cap_100mn": 100.0,
+            "target_price": 133.7,
+            "trigger_logic": "高速CCL客户突破+引线框架放量"
+          }
+        }
+      },
+      "sotp_valuation_framework": {
+        "activation_threshold": "引线框架或VCM弹片业务单季度收入>2000万元, 或CCL业务获得AI服务器客户认证",
+        "segments": [
+          {
+            "segment": "高频通信材料/CCL",
+            "revenue_2026e_100mn": 2.2,
+            "method": "PS",
+            "multiple": 12,
+            "segment_valuation_100mn": 26.4,
+            "note": "核心业务, 通信基站+手机散热, 毛利承压"
+          },
+          {
+            "segment": "引线框架(赛肯徐州)",
+            "revenue_2026e_100mn": 0.5,
+            "method": "PS",
+            "multiple": 8,
+            "segment_valuation_100mn": 4.0,
+            "note": "半导体封装材料, 起步阶段"
+          },
+          {
+            "segment": "储能集成(嘉森能源)",
+            "revenue_2026e_100mn": 0.2,
+            "method": "option_value",
+            "multiple": null,
+            "segment_valuation_100mn": 1.0,
+            "note": "暂未形成持续利润"
+          },
+          {
+            "segment": "VCM弹片项目",
+            "revenue_2026e_100mn": 0,
+            "method": "rd_option",
+            "multiple": null,
+            "segment_valuation_100mn": 2.0,
+            "note": "进行中, 关键性能指标待验证"
+          },
+          {
+            "segment": "控股折价/总部",
+            "revenue_2026e_100mn": null,
+            "method": "discount",
+            "multiple": null,
+            "segment_valuation_100mn": -3.0,
+            "note": "小型多业务折价"
+          }
+        ],
+        "sotp_total_100mn": 30.4,
+        "sotp_per_share": 40.6,
+        "option_value_per_share": 18.0,
+        "theoretical_upper_bound_per_share": 58.6
+      },
+      "milestone_valuation": [
+        {
+          "milestone": "高速CCL产品进入AI服务器供应链",
+          "valuation_adjustment": 30,
+          "probability_weight_pct": 15,
+          "expected_value": 4.5
+        },
+        {
+          "milestone": "引线框架业务单季收入破5000万",
+          "valuation_adjustment": 15,
+          "probability_weight_pct": 20,
+          "expected_value": 3.0
+        },
+        {
+          "milestone": "VCM弹片项目通过客户认证",
+          "valuation_adjustment": 10,
+          "probability_weight_pct": 10,
+          "expected_value": 1.0
+        },
+        {
+          "milestone": "单季度毛利率回升至22%+",
+          "valuation_adjustment": 20,
+          "probability_weight_pct": 25,
+          "expected_value": 5.0
+        },
+        {
+          "milestone": "券商首次覆盖并给出目标价",
+          "valuation_adjustment": 15,
+          "probability_weight_pct": 30,
+          "expected_value": 4.5
+        }
+      ],
+      "upgrade_triggers": [
+        {
+          "id": "U1",
+          "condition": "单季度毛利率转正且环比改善>2pct",
+          "quantitative_threshold": "单季GM>0%且QoQ>+2pct",
+          "current_status": "2025全年GM 17.58%但趋势下滑; 需QoQ改善确认",
+          "gap_score": 4
+        },
+        {
+          "id": "U2",
+          "condition": "单季度AIDC相关收入同比增长>50%",
+          "quantitative_threshold": "AIDC收入YoY>50%",
+          "current_status": "当前业务以通信基站/手机散热为主, AIDC占比极低",
+          "gap_score": 2
+        },
+        {
+          "id": "U3",
+          "condition": "获得重大客户认证或订单公告(金额>1亿元)",
+          "quantitative_threshold": "单笔订单>1亿或客户认证函",
+          "current_status": "无AIDC相关重大订单披露",
+          "gap_score": 2
+        },
+        {
+          "id": "U4",
+          "condition": "产能/良率/利用率达到预设目标",
+          "quantitative_threshold": "高速CCL产能利用率>70%或良率>90%",
+          "current_status": "年报提及高良率产品, 但无稼动率数据",
+          "gap_score": 4
+        },
+        {
+          "id": "U5",
+          "condition": "券商覆盖且给出明确目标价",
+          "quantitative_threshold": "至少1家券商发布含目标价的研报",
+          "current_status": "无券商覆盖, 仅官方年报来源",
+          "gap_score": 1
+        }
+      ],
+      "comprehensive_gap_score": 2.6,
+      "closest_trigger": "U4 (产能/良率)",
+      "expected_trigger_window": "若2026H2通信基站需求回暖, U1可能在2026Q3-Q4触发; 引线框架客户突破可能在2026Q4-2027Q1",
+      "minimum_upgrade_combination": "U1+U4同时满足, 或U3单独满足(单笔>1亿订单直接升级)",
+      "downgrade_triggers": [
+        {
+          "id": "D1",
+          "condition": "连续4个季度EPS为负且无改善趋势",
+          "quantitative_threshold": "连续4Q亏损且亏损幅度未收窄>20%"
+        },
+        {
+          "id": "D2",
+          "condition": "AIDC业务收入占比持续低于5%",
+          "quantitative_threshold": "连续2个半年报AIDC占比<5%"
+        },
+        {
+          "id": "D3",
+          "condition": "核心技术人员流失或客户流失",
+          "quantitative_threshold": "核心研发/销售人员离职或前5大客户流失>1家"
+        }
+      ],
+      "monitoring_indicators": [
+        {
+          "indicator": "季度收入增速",
+          "frequency": "quarterly",
+          "current_value": "2025全年~2.25亿",
+          "alert_threshold": "单季<5000万预警"
+        },
+        {
+          "indicator": "毛利率环比变化",
+          "frequency": "quarterly",
+          "current_value": "2025全年17.58%(同比下滑)",
+          "alert_threshold": "环比<-2pct预警"
+        },
+        {
+          "indicator": "AIDC业务收入占比",
+          "frequency": "semi-annual",
+          "current_value": "估算<3%",
+          "alert_threshold": "<2%预警"
+        },
+        {
+          "indicator": "在手订单金额",
+          "frequency": "quarterly",
+          "current_value": "未单独披露",
+          "alert_threshold": null
+        },
+        {
+          "indicator": "客户认证状态",
+          "frequency": "event_driven",
+          "current_value": "无AI服务器客户认证",
+          "alert_threshold": null
+        },
+        {
+          "indicator": "引线框架业务收入",
+          "frequency": "semi-annual",
+          "current_value": "起步阶段",
+          "alert_threshold": "单季>2000万关注"
+        }
+      ],
+      "valuation_safety_margin": {
+        "current_price": 105.6,
+        "sotp_base_value": 40.6,
+        "option_value": 18.0,
+        "theoretical_upper_bound": 58.6,
+        "price_to_upper_bound_pct": 180,
+        "safety_margin_verdict": "高估80%(即使全部里程碑兑现)"
+      },
+      "upgrade_priority_rank": 3
+    },
+    {
+      "ticker": "603912",
+      "company": "佳力图",
+      "chain_role": "液冷与温控 / 冷水机组精密空调 / 液冷机柜",
+      "business_model": "精密空调+液冷温控+模块化数据中心",
+      "current_price": 7.75,
+      "price_datetime": "2026-07-02 11:30:00",
+      "shares_100mn": 5.56727713,
+      "market_cap_100mn_cny": 43.14639778,
+      "revenue_2026e_100mn": 7.0782,
+      "np_2026e_100mn": -0.92058182,
+      "eps_2026e": -0.16535585,
+      "current_ps": 6.1,
+      "evidence_quality": "B-",
+      "source_count": 14,
+      "field_evidence_status": {
+        "revenue_exposure": "direct",
+        "customer_or_platform": "direct",
+        "order_or_backlog": "direct",
+        "capacity_or_certification": "direct",
+        "asp_or_price_proxy": "direct",
+        "utilization_or_yield": "direct",
+        "margin_impact": "direct"
+      },
+      "ps_valuation_framework": {
+        "activation_threshold": "单季度收入同比>20%且经营现金流转正, 或液冷业务收入占比>15%",
+        "scenarios": {
+          "bear": {
+            "revenue_assumption_100mn": 6.0,
+            "revenue_growth_pct": -15,
+            "gross_margin_pct": 18,
+            "applicable_ps": 3,
+            "target_market_cap_100mn": 18.0,
+            "target_price": 3.2,
+            "trigger_logic": "运营商招标延迟, 价格战加剧"
+          },
+          "base": {
+            "revenue_assumption_100mn": 7.5,
+            "revenue_growth_pct": 15,
+            "gross_margin_pct": 22,
+            "applicable_ps": 5,
+            "target_market_cap_100mn": 37.5,
+            "target_price": 6.7,
+            "trigger_logic": "精密空调订单恢复, 液冷项目开始确认收入"
+          },
+          "bull": {
+            "revenue_assumption_100mn": 10.0,
+            "revenue_growth_pct": 50,
+            "gross_margin_pct": 26,
+            "applicable_ps": 8,
+            "target_market_cap_100mn": 80.0,
+            "target_price": 14.4,
+            "trigger_logic": "液冷批量交付+运营商集采中标"
+          }
+        }
+      },
+      "sotp_valuation_framework": {
+        "activation_threshold": "液冷业务单季度收入>3000万元, 或精密空调业务毛利率回升至25%+",
+        "segments": [
+          {
+            "segment": "精密空调/冷水机组",
+            "revenue_2026e_100mn": 5.5,
+            "method": "PS",
+            "multiple": 4,
+            "segment_valuation_100mn": 22.0,
+            "note": "核心业务, 运营商+金融+互联网客户, 在手订单9.47亿"
+          },
+          {
+            "segment": "液冷机柜/液冷系统",
+            "revenue_2026e_100mn": 1.0,
+            "method": "PS",
+            "multiple": 6,
+            "segment_valuation_100mn": 6.0,
+            "note": "新兴业务, MS-20控制器, 模块化液冷"
+          },
+          {
+            "segment": "机房一体化/其他",
+            "revenue_2026e_100mn": 0.6,
+            "method": "PS",
+            "multiple": 3,
+            "segment_valuation_100mn": 1.8,
+            "note": "配套服务及其他"
+          }
+        ],
+        "sotp_total_100mn": 29.8,
+        "sotp_per_share": 5.4,
+        "option_value_per_share": 2.8,
+        "theoretical_upper_bound_per_share": 8.2
+      },
+      "milestone_valuation": [
+        {
+          "milestone": "运营商液冷集采中标>2亿",
+          "valuation_adjustment": 3.0,
+          "probability_weight_pct": 25,
+          "expected_value": 0.75
+        },
+        {
+          "milestone": "京东/字节等互联网客户液冷订单",
+          "valuation_adjustment": 2.5,
+          "probability_weight_pct": 30,
+          "expected_value": 0.75
+        },
+        {
+          "milestone": "单季度毛利率回升至25%+",
+          "valuation_adjustment": 2.0,
+          "probability_weight_pct": 30,
+          "expected_value": 0.60
+        },
+        {
+          "milestone": "定增/可转债获批用于液冷扩产",
+          "valuation_adjustment": 1.5,
+          "probability_weight_pct": 20,
+          "expected_value": 0.30
+        },
+        {
+          "milestone": "券商首次覆盖并给出目标价",
+          "valuation_adjustment": 2.0,
+          "probability_weight_pct": 20,
+          "expected_value": 0.40
+        }
+      ],
+      "upgrade_triggers": [
+        {
+          "id": "U1",
+          "condition": "单季度毛利率转正且环比改善>2pct",
+          "quantitative_threshold": "单季GM>0%且QoQ>+2pct",
+          "current_status": "2025年毛利率承压但精密空调业务GM应为正; 需QoQ改善数据",
+          "gap_score": 5
+        },
+        {
+          "id": "U2",
+          "condition": "单季度AIDC相关收入同比增长>50%",
+          "quantitative_threshold": "AIDC收入YoY>50%",
+          "current_status": "京东廊坊项目已供货, 液冷业务有增长基础; 但具体增速不明",
+          "gap_score": 4
+        },
+        {
+          "id": "U3",
+          "condition": "获得重大客户认证或订单公告(金额>1亿元)",
+          "quantitative_threshold": "单笔订单>1亿或客户认证函",
+          "current_status": "在手订单9.47亿, 但需AIDC相关单笔>1亿的液冷订单",
+          "gap_score": 4
+        },
+        {
+          "id": "U4",
+          "condition": "产能/良率/利用率达到预设目标",
+          "quantitative_threshold": "液冷产能利用率>60%或精密空调稼动>75%",
+          "current_status": "MS-20控制器已开发, 产能爬坡进度不明",
+          "gap_score": 5
+        },
+        {
+          "id": "U5",
+          "condition": "券商覆盖且给出明确目标价",
+          "quantitative_threshold": "至少1家券商发布含目标价的研报",
+          "current_status": "无券商覆盖",
+          "gap_score": 1
+        }
+      ],
+      "comprehensive_gap_score": 3.8,
+      "closest_trigger": "U1 (毛利率环比改善) 和 U4 (产能利用率)",
+      "expected_trigger_window": "U1可能在2026Q3触发(原材料价格回落+低基数效应); U3若运营商液冷集采落地, 可能在2026Q3-Q4触发",
+      "minimum_upgrade_combination": "U1+U2同时满足, 或U3单独满足(单笔>1亿液冷订单直接升级)",
+      "downgrade_triggers": [
+        {
+          "id": "D1",
+          "condition": "连续4个季度EPS为负且无改善趋势",
+          "quantitative_threshold": "连续4Q亏损且亏损幅度未收窄>20%"
+        },
+        {
+          "id": "D2",
+          "condition": "AIDC业务收入占比持续低于5%",
+          "quantitative_threshold": "连续2个半年报AIDC占比<5%"
+        },
+        {
+          "id": "D3",
+          "condition": "核心技术人员流失或客户流失",
+          "quantitative_threshold": "液冷技术核心团队离职或运营商/互联网大客户流失"
+        }
+      ],
+      "monitoring_indicators": [
+        {
+          "indicator": "季度收入增速",
+          "frequency": "quarterly",
+          "current_value": "2025年收入承压",
+          "alert_threshold": "单季<1.5亿预警"
+        },
+        {
+          "indicator": "毛利率环比变化",
+          "frequency": "quarterly",
+          "current_value": "2025年同比下滑",
+          "alert_threshold": "环比<-2pct预警"
+        },
+        {
+          "indicator": "AIDC业务收入占比",
+          "frequency": "semi-annual",
+          "current_value": "估算5-10%(含精密空调数据中心订单)",
+          "alert_threshold": "<3%预警"
+        },
+        {
+          "indicator": "在手订单金额",
+          "frequency": "quarterly",
+          "current_value": "9.47亿元(2025年末)",
+          "alert_threshold": "<7亿预警"
+        },
+        {
+          "indicator": "客户认证状态",
+          "frequency": "event_driven",
+          "current_value": "华为/移动/电信/京东已有合作",
+          "alert_threshold": "液冷客户认证关注"
+        },
+        {
+          "indicator": "液冷业务收入",
+          "frequency": "semi-annual",
+          "current_value": "起步阶段",
+          "alert_threshold": "单季>3000万关注"
+        }
+      ],
+      "valuation_safety_margin": {
+        "current_price": 7.75,
+        "sotp_base_value": 5.4,
+        "option_value": 2.8,
+        "theoretical_upper_bound": 8.2,
+        "price_to_upper_bound_pct": 94,
+        "safety_margin_verdict": "接近理论上沿, 需催化剂"
+      },
+      "upgrade_priority_rank": 2
+    },
+    {
+      "ticker": "002334",
+      "company": "英威腾",
+      "chain_role": "供配电与能源 / UPS/HVDC",
+      "business_model": "工业自动化+网络能源(UPS)+新能源商用车+光伏储能",
+      "current_price": 7.15,
+      "price_datetime": "2026-07-02 11:30:00",
+      "shares_100mn": 8.23213508,
+      "market_cap_100mn_cny": 58.85976583,
+      "revenue_2026e_100mn": 43.7026,
+      "np_2026e_100mn": -1.38139091,
+      "eps_2026e": -0.16780469,
+      "current_ps": 1.35,
+      "evidence_quality": "B-",
+      "source_count": 5,
+      "field_evidence_status": {
+        "revenue_exposure": "direct",
+        "customer_or_platform": "direct",
+        "order_or_backlog": "direct",
+        "capacity_or_certification": "direct",
+        "asp_or_price_proxy": "direct",
+        "utilization_or_yield": "proxy",
+        "margin_impact": "direct"
+      },
+      "ps_valuation_framework": {
+        "activation_threshold": "单季度经营现金流转正且网络能源业务收入同比>30%, 或整体毛利率环比>+2pct且新能源业务亏损收窄>50%",
+        "scenarios": {
+          "bear": {
+            "revenue_assumption_100mn": 40.0,
+            "revenue_growth_pct": -8,
+            "gross_margin_pct": 22,
+            "applicable_ps": 1.0,
+            "target_market_cap_100mn": 40.0,
+            "target_price": 4.9,
+            "trigger_logic": "新能源商用车退坡, 工业自动化竞争加剧"
+          },
+          "base": {
+            "revenue_assumption_100mn": 47.0,
+            "revenue_growth_pct": 8,
+            "gross_margin_pct": 25,
+            "applicable_ps": 1.8,
+            "target_market_cap_100mn": 84.6,
+            "target_price": 10.3,
+            "trigger_logic": "工业自动化稳健, UPS数据中心增长, 新能源减亏"
+          },
+          "bull": {
+            "revenue_assumption_100mn": 55.0,
+            "revenue_growth_pct": 26,
+            "gross_margin_pct": 28,
+            "applicable_ps": 2.5,
+            "target_market_cap_100mn": 137.5,
+            "target_price": 16.7,
+            "trigger_logic": "AIDC UPS批量中标+液冷产品放量+海外高增"
+          }
+        }
+      },
+      "sotp_valuation_framework": {
+        "activation_threshold": "网络能源业务单季度收入>3亿元且AIDC相关占比>30%, 或新能源动力业务单季度盈利转正",
+        "segments": [
+          {
+            "segment": "工业自动化(变频器等)",
+            "revenue_2026e_100mn": 22.0,
+            "method": "PE",
+            "multiple": 15,
+            "segment_valuation_100mn": 33.0,
+            "note": "核心基本盘, 估算净利2.2亿, 净利率~10%"
+          },
+          {
+            "segment": "网络能源(UPS/HVDC)",
+            "revenue_2026e_100mn": 10.0,
+            "method": "PS",
+            "multiple": 2.5,
+            "segment_valuation_100mn": 25.0,
+            "note": "AIDC相关, 中标运营商+金融UPS, 推进液冷"
+          },
+          {
+            "segment": "新能源动力(商用车)",
+            "revenue_2026e_100mn": 8.5,
+            "method": "PS",
+            "multiple": 1.2,
+            "segment_valuation_100mn": 10.2,
+            "note": "2025年7.64亿(+30.71%), 亏损但减亏"
+          },
+          {
+            "segment": "光伏储能",
+            "revenue_2026e_100mn": 3.2,
+            "method": "PS",
+            "multiple": 1.0,
+            "segment_valuation_100mn": 3.2,
+            "note": "竞争激烈, 转型中"
+          }
+        ],
+        "sotp_total_100mn": 71.4,
+        "sotp_per_share": 8.7,
+        "option_value_per_share": 2.23,
+        "theoretical_upper_bound_per_share": 10.9
+      },
+      "milestone_valuation": [
+        {
+          "milestone": "运营商总部UPS集采>3亿",
+          "valuation_adjustment": 2.5,
+          "probability_weight_pct": 30,
+          "expected_value": 0.75
+        },
+        {
+          "milestone": "液冷产品通过头部互联网客户认证",
+          "valuation_adjustment": 2.0,
+          "probability_weight_pct": 20,
+          "expected_value": 0.40
+        },
+        {
+          "milestone": "新能源商用车单季盈利转正",
+          "valuation_adjustment": 1.5,
+          "probability_weight_pct": 35,
+          "expected_value": 0.53
+        },
+        {
+          "milestone": "海外市场营收占比突破40%",
+          "valuation_adjustment": 1.0,
+          "probability_weight_pct": 25,
+          "expected_value": 0.25
+        },
+        {
+          "milestone": "券商首次覆盖并给出目标价",
+          "valuation_adjustment": 1.5,
+          "probability_weight_pct": 20,
+          "expected_value": 0.30
+        }
+      ],
+      "upgrade_triggers": [
+        {
+          "id": "U1",
+          "condition": "单季度毛利率转正且环比改善>2pct",
+          "quantitative_threshold": "单季GM>0%且QoQ>+2pct",
+          "current_status": "工业自动化GM为正; 新能源2025年毛利率显著提升+减亏明显; 整体需QoQ改善确认",
+          "gap_score": 6
+        },
+        {
+          "id": "U2",
+          "condition": "单季度AIDC相关收入同比增长>50%",
+          "quantitative_threshold": "AIDC收入YoY>50%",
+          "current_status": "中标运营商总部精密空调+金融UPS, 液冷试机中; 网络能源业务有增长基础",
+          "gap_score": 4
+        },
+        {
+          "id": "U3",
+          "condition": "获得重大客户认证或订单公告(金额>1亿元)",
+          "quantitative_threshold": "单笔订单>1亿或客户认证函",
+          "current_status": "有运营商+金融订单, 但需确认单笔>1亿的AIDC相关订单",
+          "gap_score": 5
+        },
+        {
+          "id": "U4",
+          "condition": "产能/良率/利用率达到预设目标",
+          "quantitative_threshold": "中山一期满产>80%或苏州三期投产",
+          "current_status": "中山一期已全面投产, 苏州三期建设中",
+          "gap_score": 6
+        },
+        {
+          "id": "U5",
+          "condition": "券商覆盖且给出明确目标价",
+          "quantitative_threshold": "至少1家券商发布含目标价的研报",
+          "current_status": "无券商覆盖",
+          "gap_score": 1
+        }
+      ],
+      "comprehensive_gap_score": 4.4,
+      "closest_trigger": "U1 (毛利率环比改善) 和 U4 (产能)",
+      "expected_trigger_window": "U1可能在2026Q2-Q3触发(新能源商用车旺季+低基数); U3若运营商UPS集采落地, 可能在2026Q3触发",
+      "minimum_upgrade_combination": "U1+U4同时满足(已接近), 或U3单独满足(单笔>1亿AIDC订单直接升级)",
+      "downgrade_triggers": [
+        {
+          "id": "D1",
+          "condition": "连续4个季度EPS为负且无改善趋势",
+          "quantitative_threshold": "连续4Q亏损且亏损幅度未收窄>20%"
+        },
+        {
+          "id": "D2",
+          "condition": "AIDC业务收入占比持续低于5%",
+          "quantitative_threshold": "连续2个半年报网络能源AIDC相关占比<5%"
+        },
+        {
+          "id": "D3",
+          "condition": "核心技术人员流失或客户流失",
+          "quantitative_threshold": "液冷/UPS技术核心团队离职或运营商/金融大客户流失"
+        }
+      ],
+      "monitoring_indicators": [
+        {
+          "indicator": "季度收入增速",
+          "frequency": "quarterly",
+          "current_value": "2025全年+3.52%",
+          "alert_threshold": "单季同比<-5%预警"
+        },
+        {
+          "indicator": "毛利率环比变化",
+          "frequency": "quarterly",
+          "current_value": "新能源业务显著提升",
+          "alert_threshold": "环比<-2pct预警"
+        },
+        {
+          "indicator": "AIDC业务收入占比",
+          "frequency": "semi-annual",
+          "current_value": "网络能源估算~20%营收, 其中AIDC相关待拆分",
+          "alert_threshold": "网络能源<15%预警"
+        },
+        {
+          "indicator": "在手订单金额",
+          "frequency": "quarterly",
+          "current_value": "未单独披露",
+          "alert_threshold": null
+        },
+        {
+          "indicator": "客户认证状态",
+          "frequency": "event_driven",
+          "current_value": "运营商+金融已有合作, 液冷试机中",
+          "alert_threshold": "液冷客户认证关注"
+        },
+        {
+          "indicator": "新能源业务亏损",
+          "frequency": "quarterly",
+          "current_value": "2025年营业利润-0.09亿(接近盈亏平衡)",
+          "alert_threshold": "亏损扩大预警"
+        },
+        {
+          "indicator": "海外营收占比",
+          "frequency": "semi-annual",
+          "current_value": "2025年13.92亿(34%)",
+          "alert_threshold": "<30%预警"
+        }
+      ],
+      "valuation_safety_margin": {
+        "current_price": 7.15,
+        "sotp_base_value": 8.7,
+        "option_value": 2.23,
+        "theoretical_upper_bound": 10.9,
+        "price_to_upper_bound_pct": 66,
+        "safety_margin_verdict": "低估34%(SOTP已覆盖当前价)"
+      },
+      "upgrade_priority_rank": 1
+    }
+  ],
+  "cross_company_comparison": {
+    "gap_score_matrix": {
+      "U1_gross_margin_qoq": {
+        "300936": 4,
+        "603912": 5,
+        "002334": 6
+      },
+      "U2_aidc_revenue_growth": {
+        "300936": 2,
+        "603912": 4,
+        "002334": 4
+      },
+      "U3_major_order": {
+        "300936": 2,
+        "603912": 4,
+        "002334": 5
+      },
+      "U4_capacity_yield": {
+        "300936": 4,
+        "603912": 5,
+        "002334": 6
+      },
+      "U5_broker_coverage": {
+        "300936": 1,
+        "603912": 1,
+        "002334": 1
+      },
+      "comprehensive": {
+        "300936": 2.6,
+        "603912": 3.8,
+        "002334": 4.4
+      }
+    },
+    "upgrade_priority_order": ["002334 英威腾", "603912 佳力图", "300936 中英科技"],
+    "most_likely_upgrade_path": {
+      "300936": {
+        "trigger": "U3 (CCL客户突破) 或 U4 (引线框架放量)",
+        "expected_window": "2026Q4-2027Q1",
+        "post_upgrade_method": "PS (CCL PS + 引线框架 PS)"
+      },
+      "603912": {
+        "trigger": "U3 (液冷订单>1亿) 或 U1 (毛利率企稳)",
+        "expected_window": "2026Q3-Q4",
+        "post_upgrade_method": "PS/SOTP (精密空调 PS + 液冷 PS)"
+      },
+      "002334": {
+        "trigger": "U1 (毛利率环比改善) + U4 (产能释放)",
+        "expected_window": "2026Q2-Q3",
+        "post_upgrade_method": "SOTP (工业自动化 PE + 网络能源 PS)"
+      }
+    }
+  },
+  "monitoring_and_update_mechanism": {
+    "regular_review_rhythm": {
+      "monthly": "检查行业新闻、投资者关系活动记录、订单公告",
+      "quarterly": "财报发布后5个工作日内更新差距评分, 评估是否触发升级/降级",
+      "semi_annual": "重新校准PS/SOTP估值参数, 更新里程碑概率"
+    },
+    "immediate_trigger_events": {
+      "upgrade_assessment": [
+        "单笔AIDC相关订单公告>1亿元",
+        "头部云厂商/AI服务器客户的正式认证函",
+        "券商首次覆盖并发布含明确目标价的研报",
+        "单季度毛利率环比改善>5pct(超预期改善)"
+      ],
+      "downgrade_assessment": [
+        "核心技术/销售人员集体离职",
+        "主要客户(运营商/互联网)公开招标未中标",
+        "商誉减值或大额资产减值公告"
+      ]
+    },
+    "integration_with_main_valuation_model": {
+      "workflow": "触发升级 → 补齐broker target/market anchor → 运行PS/SOTP三情景 → 计算intrinsic value × Wf + market-implied × Wm + broker × Ws → 发布正式目标价 → 纳入valuation_model.md",
+      "default_weights": {
+        "fundamental": 0.55,
+        "market_sentiment": 0.35,
+        "broker": 0.1
+      }
+    }
+  },
+  "disclaimer": "本文件由AStock估值模型生成, 基于2026-07-01数据截止。所有目标价为框架性参考, 不构成投资建议。"
+}

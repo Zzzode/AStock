@@ -106,7 +106,7 @@ def valuation_complete() -> tuple[bool, str]:
     styles = {row.get("valuation_style") for row in model.get("rows", [])}
     if len(styles) < 4:
         problems.append(f"method profiles too narrow: {sorted(styles)}")
-    return not problems and len(model.get("rows", [])) == 25, "; ".join(problems) or f"25 rows complete, styles={len(styles)}"
+    return not problems and len(model.get("rows", [])) == 26, "; ".join(problems) or f"26 rows complete, styles={len(styles)}"
 
 
 def source_files_exist() -> tuple[bool, str]:
@@ -159,11 +159,11 @@ def broker_and_expectation_present() -> tuple[bool, str]:
     broker_rows = load_json("data/broker_consensus_snapshot_20260626.json").get("rows", [])
     expectation_rows = load_json("data/market_expectation_valuation_20260626.json").get("rows", [])
     sentiment_rows = load_json("data/market_sentiment_anchor_20260626.json").get("rows", [])
-    if len(broker_rows) != 25:
+    if len(broker_rows) != 26:
         missing.append(f"broker_rows={len(broker_rows)}")
-    if len(expectation_rows) != 25:
+    if len(expectation_rows) != 26:
         missing.append(f"expectation_rows={len(expectation_rows)}")
-    if len(sentiment_rows) != 25:
+    if len(sentiment_rows) != 26:
         missing.append(f"sentiment_rows={len(sentiment_rows)}")
     return not missing, f"missing={missing}"
 
@@ -212,6 +212,124 @@ def investment_advice_depth() -> tuple[bool, str]:
     return not missing, f"missing={missing}"
 
 
+def post_cutoff_preview_present() -> tuple[bool, str]:
+    preview = load_json("data/earnings_preview_h1_2026_20260706.json")
+    census = load_json("data/optical_preview_census_20260706.json")
+    previews = preview.get("previews", {})
+    in_universe = [c for c, p in previews.items() if p.get("coverage") in {"covered", "watch_pool"}]
+    ok = (
+        "600105" in previews and "301165" in previews and "603618" in previews
+        and len(in_universe) >= 3
+        and census.get("universe_size") == 36
+        and census.get("previews_in_universe") == 3
+        and "stock_yjyg_em" in census.get("method", "")
+    )
+    return ok, f"in_universe={len(in_universe)}, universe={census.get('universe_size')}"
+
+
+def post_cutoff_disclosure_in_pdf() -> tuple[bool, str]:
+    pdf = BASE / "main.pdf"
+    if not pdf.exists():
+        return False, "main.pdf missing"
+    out = BASE / "main_current_text.txt"
+    if not out.exists():
+        proc = subprocess.run(["pdftotext", str(pdf), str(out)], text=True, capture_output=True)
+        if proc.returncode != 0:
+            return False, "pdftotext failed"
+    body = out.read_text(encoding="utf-8", errors="ignore")
+    needed = ["业绩预告", "数据截止", "2026-07-06"]
+    missing = [t for t in needed if t not in body]
+    return not missing, f"missing={missing}"
+
+
+def frozen_baseline_intact() -> tuple[bool, str]:
+    market = load_json("data/raw_market_data_20260626.json")
+    model = load_json("data/current_valuation_model_20260626.json")
+    yd = next((r for r in model.get("rows", []) if r["code"] == "600105"), None)
+    ok = (
+        market.get("run_date") == "2026-06-26"
+        and len(market.get("quotes", {})) == 26
+        and model.get("run_date") == "2026-06-26"
+        and yd is not None
+        and yd.get("rating_cn") == "中性观察"
+        and abs(yd.get("final_upside", 0) + 0.30) < 0.02
+    )
+    return ok, f"600105 rating={yd.get('rating_cn') if yd else None}, upside={round(yd.get('final_upside'), 3) if yd else None}"
+
+
+def preview_revision_dual_view() -> tuple[bool, str]:
+    rev = load_json("data/earnings_preview_revision_20260706.json")
+    revisions = rev.get("revisions", [])
+    yd = next((r for r in revisions if r["code"] == "600105"), None)
+    ok = (
+        rev.get("cutoff") == "2026-06-26"
+        and yd is not None
+        and "frozen" in yd and "revised" in yd
+        and yd["revised"]["eps_2026e"] > yd["frozen"]["eps_2026e"]
+        and rev.get("seasonality_assumption") is not None
+    )
+    return ok, f"revisions={len(revisions)}, has_600105={yd is not None}"
+
+
+def valuation_reproducibility() -> tuple[bool, str]:
+    body = text("analysis/valuation_audit.md")
+    ok = "Model Reproducibility: PASS" in body and "价格/股本核对表" in body and "MECHANICAL_PASS_INSTITUTIONAL_FAIL" in body
+    return ok, "reproducibility PASS + reconciliation + downgrade"
+
+
+def growth_earnings_present() -> tuple[bool, str]:
+    driver = load_json("data/growth_driver_model.json")
+    rows = driver.get("rows", [])
+    has_impl = any(r.get("current_price_implied_np_cagr_3y") is not None for r in rows)
+    model_body = text("analysis/valuation_model.md")
+    ok = (
+        len(rows) == 26
+        and has_impl
+        and "成长盈利依赖" in model_body
+        and "季节性校准" in model_body
+        and "现价隐含" in text("analysis/implied_growth_sensitivity.md")
+    )
+    return ok, f"driver_rows={len(rows)}, implied_present={has_impl}"
+
+
+def broker_street_downgrade_present() -> tuple[bool, str]:
+    packet = load_json("data/broker_street_consensus_20260626.json")
+    body = text("data/broker_street_consensus_20260626.md")
+    ok = (
+        packet.get("signoff_downgrade") == "MECHANICAL_PASS_INSTITUTIONAL_FAIL"
+        and packet.get("coverage_universe") == 26
+        and "not disclosed" in body
+    )
+    return ok, f"downgrade={packet.get('signoff_downgrade')}, universe={packet.get('coverage_universe')}"
+
+
+def valuation_gate_sections() -> tuple[bool, str]:
+    body = text("analysis/valuation_model.md")
+    required = ["季节性校准", "下一季度阈值", "成长盈利依赖", "全链条分类依赖", "市场隐含预期与情绪锚", "市场预期估值桥", "方法与假设桥"]
+    missing = [s for s in required if s not in body]
+    ch08 = text("sections/ch08_valuation.tex")
+    ch08_required = ["估值哲学与门禁", "分母正常化", "业绩预告", "成长盈利拆分与现价隐含增速", "券商/Street 对照与发布降级", "业务模型—估值方法匹配矩阵"]
+    ch08_missing = [s for s in ch08_required if s not in ch08]
+    return not missing and not ch08_missing, f"model_missing={missing}, ch08_missing={ch08_missing}"
+
+
+def preview_in_valuation() -> tuple[bool, str]:
+    """The covered name with H1 guidance (600105) must have its guidance folded
+    into the valuation denominator: 2026E EPS lifted above the Q1-annualized
+    basis, and ch08 must state the guidance is computed into valuation."""
+    model = load_json("data/current_valuation_model_20260626.json")
+    yd = next((r for r in model.get("rows", []) if r["code"] == "600105"), None)
+    ch08 = text("sections/ch08_valuation.tex")
+    ok = (
+        yd is not None
+        and yd.get("eps_basis") == "h1_guidance"
+        and yd.get("has_h1_guidance") is True
+        and yd.get("eps_2026e", 0) > 0.6  # guidance lifts EPS well above the 0.45 q1-annualized basis
+        and "业绩预告已计入估值" in ch08
+    )
+    return ok, f"600105 eps_basis={yd.get('eps_basis') if yd else None}, eps26={round(yd.get('eps_2026e'),3) if yd else None}"
+
+
 def main() -> int:
     checks = []
     for rel in [
@@ -235,6 +353,13 @@ def main() -> int:
         "analysis/template_brief.md", "analysis/exhibit_plan.md",
         "analysis/optical_chain_map.mmd", "sections/app_source_audit.tex",
         "sections/app_research_workplan.tex",
+        "sections/ch11_earnings_preview.tex",
+        "data/earnings_preview_h1_2026_20260706.json", "data/earnings_preview_h1_2026_20260706.md",
+        "data/optical_preview_census_20260706.json", "data/optical_preview_census_20260706.md",
+        "data/earnings_preview_revision_20260706.json", "data/earnings_preview_revision_20260706.md",
+        "analysis/growth_earnings_model.md", "analysis/segment_forecast_bridge.md",
+        "analysis/implied_growth_sensitivity.md", "data/growth_driver_model.json",
+        "data/broker_street_consensus_20260626.json", "data/broker_street_consensus_20260626.md",
     ]:
         checks.append((f"file:{rel}", *check_file(rel)))
     for idx in range(1, 11):
@@ -263,9 +388,18 @@ def main() -> int:
         ("industry_universe_present", "产业链标的覆盖" in text("data/industry_universe_coverage.md") and "特发信息" in text("data/industry_universe_coverage.md"), "coverage and watchlist"),
         ("research_workplan_present", "全链条调研问题库" in text("sections/app_research_workplan.tex") and "更新触发规则" in text("sections/app_research_workplan.tex"), "research workplan"),
         ("investment_advice_depth", *investment_advice_depth()),
-        ("raw_quote_count", len(load_json("data/raw_market_data_20260626.json").get("quotes", {})) == 25, "25 quotes"),
-        ("raw_financial_count", len(load_json("data/raw_financials_20260626.json").get("financials", {})) == 25, "25 financial packets"),
+        ("raw_quote_count", len(load_json("data/raw_market_data_20260626.json").get("quotes", {})) == 26, "26 quotes"),
+        ("raw_financial_count", len(load_json("data/raw_financials_20260626.json").get("financials", {})) == 26, "26 financial packets"),
         ("weighted_upside_present", math.isfinite(load_json("data/current_valuation_model_20260626.json").get("weighted_base_upside")), "weighted upside"),
+        ("post_cutoff_preview_present", *post_cutoff_preview_present()),
+        ("post_cutoff_disclosure_in_pdf", *post_cutoff_disclosure_in_pdf()),
+        ("frozen_baseline_intact", *frozen_baseline_intact()),
+        ("preview_revision_dual_view", *preview_revision_dual_view()),
+        ("valuation_reproducibility", *valuation_reproducibility()),
+        ("growth_earnings_present", *growth_earnings_present()),
+        ("broker_street_downgrade_present", *broker_street_downgrade_present()),
+        ("valuation_gate_sections", *valuation_gate_sections()),
+        ("preview_in_valuation", *preview_in_valuation()),
     ])
     pass_count = 0
     fail_count = 0

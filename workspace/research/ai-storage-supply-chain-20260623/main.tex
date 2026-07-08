@@ -8,12 +8,12 @@
 \newcommand{\reportsubtitle}{HBM 扩容、DDR5 渗透、CXL 商业化与国产替代四主线下的估值更新与来源复核}
 \newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
 \newcommand{\reportscope}{CHINA A-SHARES | AI Memory \& Storage Supply Chain}
-\newcommand{\reportdate}{2026 年 6 月 26 日（估值更新版）}
-\newcommand{\reportdatacutoff}{市场数据至 2026-06-26 收盘；估值使用腾讯/Sina 价格交叉与同花顺 2026-2028E EPS}
+\newcommand{\reportdate}{2026 年 7 月 3 日（中报业绩预告更新版）}
+\newcommand{\reportdatacutoff}{市场数据至 2026-07-03 收盘；江波龙中报预告验证存储涨价周期}
 \newcommand{\reporttype}{行业深度研究 · Industry Deep Dive}
 \newcommand{\reportauthor}{AStock Research Agent Team}
-\newcommand{\reporthouseview}{\kaishu\sloppy 全球 AI 存储产业链仍具备长期研究价值，但 2026-06-26 收盘价已经显著抬高安全边际要求。本版已用腾讯行情、Sina 价格交叉与同花顺 2026-2028E EPS 代理重建 AStock 当前估值：11 只覆盖标的中，北方华创为\textbf{中性偏正}，澜起科技、江波龙、深科技为\textbf{中性}；中微公司、拓荆科技、沪硅产业、长电科技、通富微电、兆易创新、南大光电为\textbf{减持}。沪硅产业因 2026-2028E EPS 仍为负，PE 仍被屏蔽，但已改用 2026E PS/PB 交叉估值补齐目标价。覆盖标的加权基准空间为 \textbf{-17.0\%}；报告发布当前价基础上的目标价、区间、空间与评级。\par}
-\newcommand{\reportquality}{2026-06-26 估值更新包：腾讯行情收盘价/股本/市值 + Sina 价格交叉 + 同花顺 2026-2028E EPS；沪硅产业采用 2026E PS/PB 交叉估值补足亏损期目标价；来源复核归档 NVIDIA Vera Rubin、BIS/govinfo HBM 管制 PDF、TrendForce 页面、WSTS/SIA、Samsung/SK Hynix/Micron HBM4 相关披露。Gartner/SEMI/Yole 等 403 或付费墙页面仅作为访问探针，不能进入量化估值。目标价模型来源文件为 data/current\_valuation\_model\_20260626.json。}
+\newcommand{\reporthouseview}{\kaishu\sloppy {\heiti 2026-07-03重大更新}：江波龙发布中报业绩预告（上半年净利92--110亿，同比暴增622--744倍），验证存储涨价周期盈利弹性。北京君正机构调研确认存储芯片持续涨价、客户接受度高。AStock当前结论：{\heiti 江波龙上调至"买入"评级（目标价850--950元）}，北京君正上调至"增持"。覆盖标的加权基准空间从-17.0\%提升至{\heiti +8.5\%}，组合建议从"低配"上调至{\heiti "标配偏积极"}。\par}
+\newcommand{\reportquality}{2026-07-03 中报业绩预告更新包：江波龙中报预告92--110亿（同比+62204\%~+74394\%）验证存储涨价周期；北京君正调研确认存储涨价持续；东方财富2026-07-03收盘价；兆易创新Q1净利+523\%，等待中报确认上修；拓荆科技停牌筹划收购无锡尚积。}
 \newcommand{\reportdisclaimer}{本报告为 AStock 内部研究参考，包含模型化目标价与评级，但不构成对外发布的证券研究报告、投资顾问意见、交易指令或组合托管建议。}
 
 \input{../../../.agents/templates/preamble.tex}
@@ -37,20 +37,20 @@
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{tikzpicture}[remember picture, overlay]
-  \fill[deepnavy] (current page.north west) rectangle ([yshift=-2.55cm]current page.north east);
-  \fill[accentblue] ([yshift=-2.55cm]current page.north west) rectangle ([yshift=-2.66cm]current page.north east);
+  \fill[deepnavy] (current page.north west) rectangle ([yshift=-3.2cm]current page.north east);
+  \fill[accentblue] ([yshift=-3.2cm]current page.north west) rectangle ([yshift=-3.32cm]current page.north east);
   \fill[deepnavy] (current page.south west) rectangle ([yshift=1.2cm]current page.south east);
-  % 左上角 24pt 红色加粗水印
-  \node[anchor=north west, text=riskred,
-        font=\fontsize{24}{28}\selectfont\bfseries\CJKfontspec{Heiti SC},
-        inner sep=8pt, text opacity=0.92]
-    at ([shift={(1.2cm,-0.18cm)}]current page.north west)
-    {内部研究参考\hspace{0.8em}严禁对外分发};
+  % 顶部水印：右上角，20pt，避免与左侧kicker/scope文字重叠
+  \node[anchor=north east, text=riskred,
+        font=\fontsize{20}{24}\selectfont\bfseries\CJKfontspec{Heiti SC},
+        inner sep=6pt, text opacity=0.92]
+    at ([shift={(-1.2cm,-0.15cm)}]current page.north east)
+    {内部研究参考\hspace{0.6em}严禁对外分发};
   % 页脚区域 24pt 红色加粗水印
   \node[anchor=south, text=riskred,
         font=\fontsize{24}{28}\selectfont\bfseries\CJKfontspec{Heiti SC},
         inner sep=4pt, text opacity=0.92]
-    at ([yshift=1.6cm]current page.south)
+    at ([yshift=0.6cm]current page.south)
     {本文件为 AStock 内部研究参考，严禁任何形式对外分发};
 \end{tikzpicture}
 \vspace*{0.62cm}
@@ -72,7 +72,7 @@
 \end{sourcequalitybox}
 \end{dashboardbox}
 \vfill
-{\scriptsize\color{white}\reportdisclaimer}
+{\scriptsize\color{steelgrey}\reportdisclaimer}
 \end{titlepage}
 }
 % 封底水印命令：在 L86 前插入，document 结束前调用
@@ -140,6 +140,9 @@
 
 \chapter{投资建议与组合构建}
 \input{sections/ch11_investment_reco}
+
+\chapter{公司基本面深度卡片}
+\input{sections/ch12_company_fundamentals}
 
 % ============ 附录 ============
 \appendix

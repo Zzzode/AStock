@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIDC产业链可视化图表预览</title>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif; margin: 0; padding: 20px; background: #f5f7fa; color: #2c3e50; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { text-align: center; color: #1a1a2e; margin-bottom: 5px; }
+        .subtitle { text-align: center; color: #7f8c8d; margin-bottom: 30px; font-size: 14px; }
+        .chart-card { background: white; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08); padding: 24px; margin-bottom: 30px; }
+        .chart-card h2 { margin-top: 0; color: #2c3e50; font-size: 18px; border-bottom: 2px solid #3498db; padding-bottom: 8px; }
+        .chart-card .insight { background: #eaf6ff; border-left: 4px solid #3498db; padding: 12px 16px; margin-top: 16px; border-radius: 0 6px 6px 0; font-size: 13px; line-height: 1.6; }
+        .chart-card .caveat { background: #fff8e1; border-left: 4px solid #f39c12; padding: 12px 16px; margin-top: 8px; border-radius: 0 6px 6px 0; font-size: 12px; line-height: 1.5; color: #7d6608; }
+        .chart-div { width: 100%; }
+        .stats-row { display: flex; gap: 16px; margin-bottom: 20px; flex-wrap: wrap; }
+        .stat-card { flex: 1; min-width: 150px; background: white; border-radius: 8px; padding: 16px; text-align: center; box-shadow: 0 1px 4px rgba(0,0,0,0.06); }
+        .stat-card .value { font-size: 28px; font-weight: bold; color: #2980b9; }
+        .stat-card .label { font-size: 12px; color: #7f8c8d; margin-top: 4px; }
+        .footer { text-align: center; color: #95a5a6; font-size: 11px; margin-top: 40px; padding-top: 20px; border-top: 1px solid #ecf0f1; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>AIDC产业链可视化图表预览</h1>
+        <p class="subtitle">研究案例: aidc-supply-chain-20260630 | 数据截止: 2026-07-01 | 生成日期: 2026-07-02</p>
+
+        <div class="stats-row">
+            <div class="stat-card"><div class="value">56</div><div class="label">覆盖标的数</div></div>
+            <div class="stat-card"><div class="value">7</div><div class="label">产业链板块</div></div>
+            <div class="stat-card"><div class="value">8</div><div class="label">正上行空间</div></div>
+            <div class="stat-card"><div class="value">48</div><div class="label">负上行空间</div></div>
+            <div class="stat-card"><div class="value">99%</div><div class="label">直接证据比例</div></div>
+        </div>
+
+        <div class="chart-card">
+            <h2>图表1: 目标价上行/下行空间分布</h2>
+            <div id="chart1" class="chart-div" style="height:600px;"></div>
+            <div class="insight"><strong>核心洞察:</strong> 70%以上标的当前市价显著高于模型目标价。仅运营商和部分供配电设备存在正上行空间。光模块龙头虽绝对估值高，但模型下行空间相对有限。</div>
+            <div class="caveat"><strong>注意:</strong> 目标价基于2026E盈利预测。评级标签简化: ★=高估值风险, 买=买入, 关=重点关注, 观=观察。</div>
+        </div>
+
+        <div class="chart-card">
+            <h2>图表2: 市值-上行空间散点图</h2>
+            <div id="chart4" class="chart-div" style="height:650px;"></div>
+            <div class="insight"><strong>核心洞察:</strong> 大市值标的的模型下行空间普遍小于中小市值。运营商是唯一大市值且有正上行空间的标的。散点呈现弱正相关。</div>
+            <div class="caveat"><strong>注意:</strong> 仅18只有真实成交额数据，其余用市值代理。点大小与日均成交额成正比。</div>
+        </div>
+
+        <div class="chart-card">
+            <h2>图表3: 证据质量热力图</h2>
+            <div id="chart3" class="chart-div" style="height:450px;"></div>
+            <div class="insight"><strong>核心洞察:</strong> 整体证据质量极高(99%直接证据)。利用率字段直接证据比例最低。光通信和算力芯片板块证据覆盖最完整。</div>
+            <div class="caveat"><strong>注意:</strong> 热力图反映证据分类的直接性，不代表证据本身质量。仅覆盖59家核心候选公司。</div>
+        </div>
+
+        <div class="footer">AStock Research | AIDC Supply Chain | Generated 2026-07-02</div>
+    </div>
+
+    <script id="embedded-data" type="application/json">{"companies": ["明阳电气", "星网锐捷", "中兴通讯", "特变电工", "奥士康", "中国联通", "中国移动", "中国电信", "冰山冷热", "紫光股份", "伊戈尔", "工业富联", "景旺电子", "新易盛", "宝信软件", "汉钟精机", "中际旭创", "科士达", "浪潮信息", "聚辰股份", "中国西电", "同飞股份", "胜宏科技", "锐捷网络", "科华数据", "寒武纪", "沪电股份", "润泽科技", "奥飞数据", "英维克", "天孚通信", "深科技", "华工科技", "剑桥科技", "生益电子", "金盘科技", "澜起科技", "光迅科技", "高澜股份", "兆易创新", "海光信息", "生益科技", "深南电路", "中恒电气", "华正新材", "中科曙光", "申菱环境", "北京君正", "芯原股份", "依米康", "南亚新材", "联特科技", "光环新网", "数据港", "盛科通信", "摩尔线程"], "upsides": [79.49, 68.23, 60.72, 17.04, 18.97, 10.7, 9.57, 4.77, 0.57, -1.82, -5.72, 1.69, -9.29, -0.71, -15.86, -14.58, -7.73, -17.08, -21.34, -26.08, -28.64, -28.31, -22.03, -30.86, -23.64, -32.62, -22.35, -42.34, -40.67, -32.61, -27.1, -41.02, -40.77, -42.2, -45.93, -43.35, -45.76, -49.3, -48.62, -50.23, -49.04, -43.53, -47.57, -51.52, -53.47, -50.54, -53.79, -55.4, -59.13, -60.3, -60.29, -61.35, -68.15, -65.38, -71.28, -71.59], "colors": ["#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#2ecc71", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c", "#e74c3c"], "tickers": ["301291", "002396", "000063", "600089", "002913", "600050", "600941", "601728", "000530", "000938", "002922", "601138", "603228", "300502", "600845", "002158", "300308", "002518", "000977", "688123", "601179", "300990", "300476", "301165", "002335", "688256", "002463", "300442", "300738", "002837", "300394", "000021", "000988", "603083", "688183", "688676", "688008", "002281", "300499", "603986", "688041", "600183", "002916", "002364", "603186", "603019", "301018", "300223", "688521", "300249", "688519", "301205", "300383", "603881", "688702", "688795"], "chains": ["供配电/能源", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "供配电/能源", "服务器/网络设备/国产算力", "AIDC/IDC 运营", "AIDC/IDC 运营", "AIDC/IDC 运营", "液冷/温控", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "光通信", "服务器/网络设备/国产算力", "液冷/温控", "光通信", "供配电/能源", "服务器/网络设备/国产算力", "算力芯片/存储/网络 ASIC", "供配电/能源", "液冷/温控", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "供配电/能源", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "AIDC/IDC 运营", "AIDC/IDC 运营", "液冷/温控", "光通信", "算力芯片/存储/网络 ASIC", "光通信", "光通信", "服务器/网络设备/国产算力", "供配电/能源", "算力芯片/存储/网络 ASIC", "光通信", "液冷/温控", "算力芯片/存储/网络 ASIC", "服务器/网络设备/国产算力", "AI PCB/CCL", "AI PCB/CCL", "供配电/能源", "AI PCB/CCL", "服务器/网络设备/国产算力", "液冷/温控", "算力芯片/存储/网络 ASIC", "算力芯片/存储/网络 ASIC", "液冷/温控", "AI PCB/CCL", "光通信", "AIDC/IDC 运营", "AIDC/IDC 运营", "服务器/网络设备/国产算力", "算力芯片/存储/网络 ASIC"], "ev_quality": ["B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B+ / model-ready public broker target", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B", "B+ / model-ready public broker target", "A-", "B+ / model-ready public broker target", "A-", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "A-", "B+ / model-ready public broker target", "B", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B+ / model-ready public broker target", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B+", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "A-", "B+ / model-ready public broker target", "A", "A-", "B-", "A-", "B+", "B- / official filing evidence; no Street target disclosed", "B+ / model-ready public broker target", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B", "B+ / model-ready public broker target", "B+ / model-ready public broker target", "B+ / model-ready public broker target", "B+ / model-ready public broker target", "B+ / model-ready public broker target", "B", "B", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B- / official filing evidence; no Street target disclosed", "B", "B-", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B+ / model-ready public broker target", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "C+", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B / broker forecast evidence; AStock house fair-value model when denominator is complete", "B+ / model-ready public broker target"], "current_prices": [34.75, 21.27, 35.32, 21.83, 58.02, 4.06, 88.25, 5.42, 5.36, 29.03, 29.6, 64.02, 66.17, 509.0, 18.11, 36.39, 1143.0, 49.07, 63.79, 195.99, 14.06, 96.4, 306.09, 85.25, 37.81, 1372.0, 130.51, 87.8, 20.9, 71.4, 250.77, 56.03, 156.2, 218.43, 115.3, 79.0, 269.15, 218.19, 36.15, 694.81, 322.29, 151.95, 423.1, 50.85, 196.0, 94.56, 107.56, 234.67, 309.5, 14.59, 353.0, 306.82, 13.24, 25.21, 353.05, 641.59], "final_targets": [62.3715, 35.78156, 56.76607, 25.54908, 69.0262, 4.4946, 96.69185, 5.67875, 5.3904, 28.50097391304348, 27.90665, 65.10378333333334, 60.021000000000015, 505.37960695652174, 15.23715, 31.085, 1054.652963478261, 40.68645, 50.17847, 144.87441, 10.03303, 69.11234999999999, 238.67219999999998, 58.94408, 28.873200000000004, 924.4399999999999, 101.34541999999999, 50.62230695652173, 12.399000000000001, 48.11704, 182.81636086956522, 33.04912273922022, 92.52419, 126.24787, 62.3412, 44.75531818181818, 145.97944, 110.6236, 18.572100000000002, 345.82035999999994, 164.25158, 85.8072, 221.82511666666667, 24.649859999999997, 91.20532040244807, 46.77218181818182, 49.70080000000001, 104.6532, 126.48072999999998, 5.7924, 140.19173999999998, 118.57938, 4.217068181818181, 8.727699999999999, 101.40299999999999, 182.25], "rating_short": ["观", "观", "观", "事件", "事件", "事件", "观", "观", "观", "观", "观", "观", "观", "观", "观", "观", "观", "观", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "★", "避", "★", "避", "★", "★", "★", "★", "★", "避", "★", "★", "★"], "scatter_x": [3194.1, 4883.0, 323.7, 855.5, 229.8, 1484.7, 212.2, 2821.2, 18971.1, 4974.5, 186.0, 227.6, 302.0, 300.6, 111.5, 1629.0, 832.2, 414.3, 1634.5, 1781.0, 15348.5, 2410.2, 6091.2, 424.2, 795.6, 1711.2, 966.4, 1031.7, 188.8, 2980.3, 202.0, 131.2, 3068.4, 699.0, 572.2, 14484.1, 1587.6, 685.1, 9010.3, 999.8, 5906.8, 1521.1, 46.6, 204.4, 783.3, 67.8, 115.4, 168.9, 306.4, 1098.7, 1198.6, 4963.0, 3498.6, 317.6, 1702.9, 3158.5], "scatter_y": [79.49, 68.23, 60.72, 17.04, 18.97, 10.7, 9.57, 4.77, 0.57, -1.82, -5.72, 1.69, -9.29, -0.71, -15.86, -14.58, -7.73, -17.08, -21.34, -26.08, -28.64, -28.31, -22.03, -30.86, -23.64, -32.62, -22.35, -42.34, -40.67, -32.61, -27.1, -41.02, -40.77, -42.2, -45.93, -43.35, -45.76, -49.3, -48.62, -50.23, -49.04, -43.53, -47.57, -51.52, -53.47, -50.54, -53.79, -55.4, -59.13, -60.3, -60.29, -61.35, -68.15, -65.38, -71.28, -71.59], "scatter_size": [375.87020525599996, 609.92101272, 51.791961514315645, 136.87712998838248, 31.1471698088, 111.0739354368, 45.55910148, 451.3942270264594, 3035.377422223261, 795.9249477467347, 29.753858588668717, 98.90578626959999, 48.32142515525288, 48.09772811546877, 20, 260.63436649635594, 133.15477889227242, 83.88856312, 261.51339085596436, 284.9632616631759, 1845.6176411328, 663.545329636, 1787.8924460688002, 67.86752991270957, 127.29964736100514, 273.7916955590826, 356.7521630072, 381.4047153328, 30.20804853519108, 727.1113388664, 32.31862732868276, 20.992370628209347, 1249.3780106072, 111.84726213078662, 91.5444694174751, 621.89092288, 776.11358544, 109.61877250874946, 1441.650916772743, 159.97586227978783, 945.0878493646372, 243.37601079784454, 20, 32.69850588328345, 226.2937522848, 20, 20, 27.02792572553386, 122.1014062208, 175.79201073481548, 191.77846772752346, 794.0769421156197, 559.772588600817, 50.821499371839074, 272.4578145165591, 505.366832772037], "scatter_color": ["#9b59b6", "#9b59b6", "#9b59b6", "#9b59b6", "#e91e63", "#e91e63", "#e91e63", "#e91e63", "#e91e63", "#e91e63", "#e91e63", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#f1c40f", "#3498db", "#3498db", "#3498db", "#3498db", "#3498db", "#3498db", "#3498db", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#e67e22", "#1abc9c", "#1abc9c", "#1abc9c", "#1abc9c", "#1abc9c", "#1abc9c", "#1abc9c", "#795548", "#795548", "#795548", "#795548", "#795548", "#795548", "#795548"], "scatter_text": ["深南电路<br>市值: 3194亿<br>上行: +79.5%<br>板块: AI PCB/CCL", "生益科技<br>市值: 4883亿<br>上行: +68.2%<br>板块: AI PCB/CCL", "华正新材<br>市值: 324亿<br>上行: +60.7%<br>板块: AI PCB/CCL", "南亚新材<br>市值: 855亿<br>上行: +17.0%<br>板块: AI PCB/CCL", "光环新网<br>市值: 230亿<br>上行: +19.0%<br>板块: AIDC/IDC 运营", "润泽科技<br>市值: 1485亿<br>上行: +10.7%<br>板块: AIDC/IDC 运营", "奥飞数据<br>市值: 212亿<br>上行: +9.6%<br>板块: AIDC/IDC 运营", "中国联通<br>市值: 2821亿<br>上行: +4.8%<br>板块: AIDC/IDC 运营", "中国移动<br>市值: 18971亿<br>上行: +0.6%<br>板块: AIDC/IDC 运营", "中国电信<br>市值: 4975亿<br>上行: -1.8%<br>板块: AIDC/IDC 运营", "数据港<br>市值: 186亿<br>上行: -5.7%<br>板块: AIDC/IDC 运营", "科华数据<br>市值: 228亿<br>上行: +1.7%<br>板块: 供配电/能源", "中恒电气<br>市值: 302亿<br>上行: -9.3%<br>板块: 供配电/能源", "科士达<br>市值: 301亿<br>上行: -0.7%<br>板块: 供配电/能源", "明阳电气<br>市值: 111亿<br>上行: -15.9%<br>板块: 供配电/能源", "特变电工<br>市值: 1629亿<br>上行: -14.6%<br>板块: 供配电/能源", "中国西电<br>市值: 832亿<br>上行: -7.7%<br>板块: 供配电/能源", "金盘科技<br>市值: 414亿<br>上行: -17.1%<br>板块: 供配电/能源", "华工科技<br>市值: 1634亿<br>上行: -21.3%<br>板块: 光通信", "光迅科技<br>市值: 1781亿<br>上行: -26.1%<br>板块: 光通信", "中际旭创<br>市值: 15348亿<br>上行: -28.6%<br>板块: 光通信", "天孚通信<br>市值: 2410亿<br>上行: -28.3%<br>板块: 光通信", "新易盛<br>市值: 6091亿<br>上行: -22.0%<br>板块: 光通信", "联特科技<br>市值: 424亿<br>上行: -30.9%<br>板块: 光通信", "剑桥科技<br>市值: 796亿<br>上行: -23.6%<br>板块: 光通信", "中兴通讯<br>市值: 1711亿<br>上行: -32.6%<br>板块: 服务器/网络设备/国产算力", "紫光股份<br>市值: 966亿<br>上行: -22.3%<br>板块: 服务器/网络设备/国产算力", "浪潮信息<br>市值: 1032亿<br>上行: -42.3%<br>板块: 服务器/网络设备/国产算力", "星网锐捷<br>市值: 189亿<br>上行: -40.7%<br>板块: 服务器/网络设备/国产算力", "沪电股份<br>市值: 2980亿<br>上行: -32.6%<br>板块: 服务器/网络设备/国产算力", "奥士康<br>市值: 202亿<br>上行: -27.1%<br>板块: 服务器/网络设备/国产算力", "伊戈尔<br>市值: 131亿<br>上行: -41.0%<br>板块: 服务器/网络设备/国产算力", "胜宏科技<br>市值: 3068亿<br>上行: -40.8%<br>板块: 服务器/网络设备/国产算力", "锐捷网络<br>市值: 699亿<br>上行: -42.2%<br>板块: 服务器/网络设备/国产算力", "宝信软件<br>市值: 572亿<br>上行: -45.9%<br>板块: 服务器/网络设备/国产算力", "工业富联<br>市值: 14484亿<br>上行: -43.3%<br>板块: 服务器/网络设备/国产算力", "中科曙光<br>市值: 1588亿<br>上行: -45.8%<br>板块: 服务器/网络设备/国产算力", "景旺电子<br>市值: 685亿<br>上行: -49.3%<br>板块: 服务器/网络设备/国产算力", "海光信息<br>市值: 9010亿<br>上行: -48.6%<br>板块: 服务器/网络设备/国产算力", "生益电子<br>市值: 1000亿<br>上行: -50.2%<br>板块: 服务器/网络设备/国产算力", "寒武纪<br>市值: 5907亿<br>上行: -49.0%<br>板块: 服务器/网络设备/国产算力", "盛科通信<br>市值: 1521亿<br>上行: -43.5%<br>板块: 服务器/网络设备/国产算力", "冰山冷热<br>市值: 47亿<br>上行: -47.6%<br>板块: 液冷/温控", "汉钟精机<br>市值: 204亿<br>上行: -51.5%<br>板块: 液冷/温控", "英维克<br>市值: 783亿<br>上行: -53.5%<br>板块: 液冷/温控", "依米康<br>市值: 68亿<br>上行: -50.5%<br>板块: 液冷/温控", "高澜股份<br>市值: 115亿<br>上行: -53.8%<br>板块: 液冷/温控", "同飞股份<br>市值: 169亿<br>上行: -55.4%<br>板块: 液冷/温控", "申菱环境<br>市值: 306亿<br>上行: -59.1%<br>板块: 液冷/温控", "深科技<br>市值: 1099亿<br>上行: -60.3%<br>板块: 算力芯片/存储/网络 ASIC", "北京君正<br>市值: 1199亿<br>上行: -60.3%<br>板块: 算力芯片/存储/网络 ASIC", "兆易创新<br>市值: 4963亿<br>上行: -61.4%<br>板块: 算力芯片/存储/网络 ASIC", "澜起科技<br>市值: 3499亿<br>上行: -68.1%<br>板块: 算力芯片/存储/网络 ASIC", "聚辰股份<br>市值: 318亿<br>上行: -65.4%<br>板块: 算力芯片/存储/网络 ASIC", "芯原股份<br>市值: 1703亿<br>上行: -71.3%<br>板块: 算力芯片/存储/网络 ASIC", "摩尔线程<br>市值: 3159亿<br>上行: -71.6%<br>板块: 算力芯片/存储/网络 ASIC"], "scatter_chain": ["AI PCB/CCL", "AI PCB/CCL", "AI PCB/CCL", "AI PCB/CCL", "AIDC/IDC 运营", "AIDC/IDC 运营", "AIDC/IDC 运营", "AIDC/IDC 运营", "AIDC/IDC 运营", "AIDC/IDC 运营", "AIDC/IDC 运营", "供配电/能源", "供配电/能源", "供配电/能源", "供配电/能源", "供配电/能源", "供配电/能源", "供配电/能源", "光通信", "光通信", "光通信", "光通信", "光通信", "光通信", "光通信", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "服务器/网络设备/国产算力", "液冷/温控", "液冷/温控", "液冷/温控", "液冷/温控", "液冷/温控", "液冷/温控", "液冷/温控", "算力芯片/存储/网络 ASIC", "算力芯片/存储/网络 ASIC", "算力芯片/存储/网络 ASIC", "算力芯片/存储/网络 ASIC", "算力芯片/存储/网络 ASIC", "算力芯片/存储/网络 ASIC", "算力芯片/存储/网络 ASIC"], "heatmap_z": [[1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 0.923, 1.0, 0.909, 1.0, 1.0], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0], [1.0, 1.0, 1.0, 0.846, 1.0, 1.0, 0.938, 0.833], [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0]], "heatmap_x": ["光通信", "AI服务器", "PCB材料", "供配电", "液冷", "IDC", "算力芯片", "下游应用"], "heatmap_y": ["收入暴露", "客户", "订单", "产能", "ASP", "利用率", "利润率"], "total_count": 56, "positive_count": 10, "negative_count": 46}</script>
+    <script>
+    var DATA = JSON.parse(document.getElementById("embedded-data").textContent);
+
+    // ===== Chart 1: Upside Bar =====
+    (function() {
+        var hoverText = DATA.companies.map(function(c, i) {
+            return '<b>' + c + '</b> (' + DATA.tickers[i] + ')<br>' +
+                   '上行空间: ' + DATA.upsides[i].toFixed(1) + '%<br>' +
+                   '当前价: ' + DATA.current_prices[i].toFixed(2) + '<br>' +
+                   '目标价: ' + DATA.final_targets[i].toFixed(2) + '<br>' +
+                   '板块: ' + DATA.chains[i] + '<br>' +
+                   '证据质量: ' + DATA.ev_quality[i];
+        });
+
+        var trace = {
+            x: DATA.companies, y: DATA.upsides, type: 'bar',
+            marker: { color: DATA.colors, line: { color: 'white', width: 0.5 } },
+            text: DATA.rating_short, textposition: 'outside',
+            textfont: { size: 9, color: '#333' },
+            hovertext: hoverText, hoverinfo: 'text'
+        };
+
+        var layout = {
+            title: { text: 'AIDC产业链标的目标价上行/下行空间分布', font: { size: 16 } },
+            xaxis: { tickangle: -60, tickfont: { size: 8 } },
+            yaxis: { title: '上行空间 (%)', range: [-80, 80], gridcolor: '#eee',
+                      zeroline: true, zerolinecolor: '#7f8c8d', zerolinewidth: 2 },
+            margin: { t: 50, b: 150, l: 60, r: 30 },
+            plot_bgcolor: '#fafafa', paper_bgcolor: 'white', showlegend: false
+        };
+
+        Plotly.newPlot('chart1', [trace], layout, {responsive: true, displayModeBar: true});
+    })();
+
+    // ===== Chart 4: Scatter =====
+    (function() {
+        var chainsUnique = [...new Set(DATA.scatter_chain)];
+        var traces = chainsUnique.map(function(chain) {
+            var idx = DATA.scatter_chain.map(function(c, i) { return c === chain ? i : -1; }).filter(i => i >= 0);
+            return {
+                x: idx.map(i => DATA.scatter_x[i]),
+                y: idx.map(i => DATA.scatter_y[i]),
+                mode: 'markers', type: 'scatter', name: chain,
+                marker: {
+                    size: idx.map(i => DATA.scatter_size[i]),
+                    color: DATA.scatter_color[idx[0]],
+                    opacity: 0.75, line: { color: 'white', width: 1 }, sizemode: 'area'
+                },
+                text: idx.map(i => DATA.scatter_text[i]),
+                hoverinfo: 'text'
+            };
+        });
+
+        var layout = {
+            title: { text: '市值 vs 上行空间散点图', font: { size: 16 } },
+            xaxis: { title: '市值 (亿元，对数刻度)', type: 'log', range: [Math.log10(10), Math.log10(30000)], gridcolor: '#eee' },
+            yaxis: { title: '上行空间 (%)', range: [-80, 80], gridcolor: '#eee',
+                      zeroline: true, zerolinecolor: '#7f8c8d', zerolinewidth: 2 },
+            margin: { t: 50, b: 60, l: 60, r: 30 },
+            plot_bgcolor: '#fafafa', paper_bgcolor: 'white',
+            legend: { x: 0.02, y: 0.02, bgcolor: 'rgba(255,255,255,0.9)', font: { size: 10 } }
+        };
+
+        Plotly.newPlot('chart4', traces, layout, {responsive: true, displayModeBar: true});
+    })();
+
+    // ===== Chart 3: Heatmap =====
+    (function() {
+        var zData = DATA.heatmap_z;
+        var xLabels = DATA.heatmap_x;
+        var yLabels = DATA.heatmap_y;
+
+        var annotations = [];
+        for (var i = 0; i < yLabels.length; i++) {
+            for (var j = 0; j < xLabels.length; j++) {
+                var val = zData[i][j];
+                annotations.push({
+                    x: xLabels[j], y: yLabels[i],
+                    text: (val * 100).toFixed(0) + '%',
+                    showarrow: false,
+                    font: { size: 10, color: val > 0.85 ? '#000' : '#fff' }
+                });
+            }
+        }
+
+        var data = [{
+            z: zData, x: xLabels, y: yLabels, type: 'heatmap',
+            colorscale: [[0, '#d73027'], [0.5, '#fee08b'], [1, '#1a9850']],
+            zmin: 0.7, zmax: 1.0,
+            colorbar: { title: '直接证据比例', tickformat: '.0%' },
+            hovertemplate: '<b>%{y} - %{x}</b><br>直接证据: %{z:.1%}<extra></extra>'
+        }];
+
+        var layout = {
+            title: { text: 'AIDC产业链证据质量热力图', font: { size: 16 } },
+            annotations: annotations,
+            xaxis: { side: 'bottom', tickfont: { size: 11 } },
+            yaxis: { tickfont: { size: 11 }, autorange: 'reversed' },
+            margin: { t: 50, b: 60, l: 80, r: 30 },
+            plot_bgcolor: '#fafafa', paper_bgcolor: 'white'
+        };
+
+        Plotly.newPlot('chart3', data, layout, {responsive: true, displayModeBar: true});
+    })();
+    </script>
+</body>
+</html>

@@ -1,0 +1,869 @@
+{
+  "metadata": {
+    "title": "AIDC海外龙头映射监测机制",
+    "created_date": "2026-07-02",
+    "research_directory": "/Users/bytedance/Develop/AStock/workspace/research/aidc-supply-chain-20260630",
+    "coverage_segments": 7,
+    "purpose": "A股不可得的AIDC关键环节,通过海外龙头财报和行业数据建立替代监测指标,为A股相关公司的估值判断提供先行信号",
+    "monitoring_framework": {
+      "quarterly_process": "财报季跟踪(每季度首月15日前) -> 指标对比 -> 信号判定 -> 传导分析",
+      "signal_levels": {
+        "red_alert": "指标突破阈值且趋势确认, 立即调整相关A股公司估值假设",
+        "yellow_watch": "指标接近阈值或趋势变化, 加强监测频率,准备情景分析",
+        "green_normal": "指标在预期范围内, 维持现有估值假设"
+      },
+      "valuation_model_integration": "海外龙头监测指标作为A股公司估值模型的外生变量输入; 红色预警触发时启动敏感性分析; 季度TAM数据校准收入天花板假设"
+    },
+    "limitations": [
+      "部分海外龙头数据披露粒度有限, 需依赖行业调研补充",
+      "海外龙头指标到A股公司业绩的传导存在1-3个季度时滞, 需结合库存周期判断",
+      "海外龙头以美元/新台币/日元计价, 需剔除汇率因素",
+      "CR3/CR5数据多为研究机构估算, 以趋势判断为主",
+      "CPO/EDA等早期市场TAM和份额数据不确定性较高"
+    ]
+  },
+  "segments": [
+    {
+      "segment_id": "SEG-001",
+      "segment_name": "BMC管理芯片",
+      "fc_reference": "FC021",
+      "chain_block": "服务器整机与零部件",
+      "overseas_leaders": [
+        {
+          "company": "ASPEED",
+          "ticker": "2482.TW",
+          "hq": "台湾",
+          "market_share_2025e": "~70%",
+          "market_share_source": "Digitimes 2025Q2, 券商研报交叉验证",
+          "core_products": "AST2600/AST2700系列",
+          "moat": "服务器厂商深度绑定、固件生态、IP积累"
+        },
+        {
+          "company": "Nuvoton",
+          "ticker": "4919.TW",
+          "hq": "台湾",
+          "market_share_2025e": "~15-20%",
+          "market_share_source": "Digitimes 2025Q2, 券商研报交叉验证",
+          "core_products": "NPCC系列",
+          "moat": "通用MCU生态延伸、成本优势"
+        },
+        {
+          "company": "AMI MegaRAC",
+          "ticker": "private",
+          "hq": "美国",
+          "market_share_2025e": "~5-8%",
+          "market_share_source": "行业估算",
+          "core_products": "固件方案",
+          "moat": "软件生态、OpenBMC兼容"
+        }
+      ],
+      "global_tam_estimate": {
+        "2025e_usd_billion": "1.2-1.5",
+        "2026e_usd_billion": "1.8-2.2",
+        "tam_decomposition": "全球服务器出货量(~18M台/年) x BMC ASP ($50-80通用, $150-250 AI) x 渗透率",
+        "tam_source": "ASPEED法说会, IDC Server Tracker, 自下而上估算"
+      },
+      "concentration": {
+        "cr3": "~90-95%",
+        "cr5": "not disclosed",
+        "source": "Digitimes 2025Q2"
+      },
+      "a_share_mapping_status": "无直接标的",
+      "a_share_companies": [
+        {
+          "ticker": "601138",
+          "company": "工业富联",
+          "mapping_type": "间接使用者",
+          "relevance": "服务器ODM, BMC采购方"
+        },
+        {
+          "ticker": "000977",
+          "company": "浪潮信息",
+          "mapping_type": "间接使用者",
+          "relevance": "服务器整机, BMC采购方"
+        },
+        {
+          "ticker": "603019",
+          "company": "中科曙光",
+          "mapping_type": "间接使用者",
+          "relevance": "服务器整机, BMC采购方"
+        }
+      ],
+      "proxy_indicators": [
+        {
+          "indicator": "ASPEED单月营收增速(YoY)",
+          "frequency": "月度",
+          "source": "台股公开资讯观测站",
+          "threshold": ">30% YoY = AI服务器需求强劲; <10% = 需求放缓"
+        },
+        {
+          "indicator": "ASPEED数据中心收入占比",
+          "frequency": "季度",
+          "source": "ASPEED法说会",
+          "threshold": "趋势变化反映AI服务器BMC渗透"
+        },
+        {
+          "indicator": "服务器ODM厂商BMC采购金额",
+          "frequency": "季度",
+          "source": "Digitimes供应链调查",
+          "threshold": "采购额环比变化 = 服务器排产信号"
+        },
+        {
+          "indicator": "AI服务器出货量(全球)",
+          "frequency": "季度",
+          "source": "IDC/TrendForce",
+          "threshold": "直接锚定BMC增量需求"
+        }
+      ],
+      "monitoring_frequency": "季度",
+      "data_sources": [
+        "ASPEED官网: https://www.aspeedtech.com (法说会简报、月营收)",
+        "Nuvoton官网: https://www.nuvoton.com (季报、投资者关系)",
+        "Digitimes: 服务器BMC供应链报道",
+        "IDC Worldwide Quarterly Server Tracker"
+      ],
+      "impact_on_a_share": {
+        "transmission_path": "ASPEED营收增速 > 服务器排产预期 > ODM厂商(工业富联等)收入确认节奏; BMC供给紧张 > 服务器交付延迟 > 服务器厂商库存/应收周转变化; AI服务器BMC ASP提升 > 服务器BOM成本上升 > 服务器厂商毛利率压力",
+        "impact_strength": "中(间接)",
+        "time_lag": "1-2个季度"
+      }
+    },
+    {
+      "segment_id": "SEG-002",
+      "segment_name": "高端DSP/SerDes",
+      "fc_reference": "FC026",
+      "chain_block": "网络与光通信",
+      "overseas_leaders": [
+        {
+          "company": "Broadcom",
+          "ticker": "AVGO",
+          "hq": "美国",
+          "market_share_2025e": "~50-60%",
+          "market_share_source": "LightCounting 2025Q2, Broadcom投资者日",
+          "core_products": "Tomahawk DSP系列、112G/224G PAM4 DSP",
+          "moat": "工艺领先、生态绑定、IP积累"
+        },
+        {
+          "company": "Marvell",
+          "ticker": "MRVL",
+          "hq": "美国",
+          "market_share_2025e": "~15-20%",
+          "market_share_source": "LightCounting 2025Q2",
+          "core_products": "Orion DSP系列",
+          "moat": "定制化能力、云厂合作"
+        },
+        {
+          "company": "Credo",
+          "ticker": "CRDO",
+          "hq": "美国",
+          "market_share_2025e": "~10-15%",
+          "market_share_source": "LightCounting 2025Q2, Credo earnings",
+          "core_products": "AEC DSP、高速连接方案",
+          "moat": "低功耗设计、新兴客户渗透"
+        },
+        {
+          "company": "Semtech",
+          "ticker": "SMTC",
+          "hq": "美国",
+          "market_share_2025e": "~3-5%",
+          "market_share_source": "行业估算",
+          "core_products": "高速SerDes",
+          "moat": "特定细分市场"
+        }
+      ],
+      "global_tam_estimate": {
+        "2025e_usd_billion": "3.5-4.5",
+        "2026e_usd_billion": "5.5-7.0",
+        "tam_decomposition": "800G/1.6T光模块出货量 x DSP ASP ($25-40 for 800G, $50-80 for 1.6T) + 交换机SerDes需求",
+        "tam_source": "LightCounting, Broadcom投资者日, 自下而上估算"
+      },
+      "concentration": {
+        "cr3": "~80-85%",
+        "cr5": "not disclosed",
+        "source": "LightCounting 2025Q2"
+      },
+      "a_share_mapping_status": "无直接标的",
+      "a_share_companies": [
+        {
+          "ticker": "688515",
+          "company": "裕太微",
+          "mapping_type": "间接配套",
+          "relevance": "部分SerDes产品"
+        },
+        {
+          "ticker": "688702",
+          "company": "盛科通信",
+          "mapping_type": "间接配套",
+          "relevance": "交换芯片配套"
+        },
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "mapping_type": "下游客户",
+          "relevance": "光模块龙头, DSP最大采购方之一"
+        },
+        {
+          "ticker": "300502",
+          "company": "新易盛",
+          "mapping_type": "下游客户",
+          "relevance": "光模块龙头, DSP采购方"
+        }
+      ],
+      "proxy_indicators": [
+        {
+          "indicator": "Broadcom网络部门营收(数据中心细分)",
+          "frequency": "季度",
+          "source": "Broadcom 10-Q",
+          "threshold": "环比>15% = 800G/1.6T需求强劲"
+        },
+        {
+          "indicator": "Credo数据中心收入",
+          "frequency": "季度",
+          "source": "Credo earnings",
+          "threshold": "YoY增速反映AI数据中心渗透"
+        },
+        {
+          "indicator": "Marvell数据中心部门营收",
+          "frequency": "季度",
+          "source": "Marvell earnings",
+          "threshold": "云厂资本开支传导信号"
+        },
+        {
+          "indicator": "光模块厂商DSP采购成本/占比",
+          "frequency": "季度/半年",
+          "source": "光模块厂投资者关系活动记录",
+          "threshold": "成本上升>毛利率预警线"
+        },
+        {
+          "indicator": "112G/224G DSP出货量",
+          "frequency": "季度",
+          "source": "LightCounting",
+          "threshold": "代际切换节奏"
+        }
+      ],
+      "monitoring_frequency": "季度",
+      "data_sources": [
+        "Broadcom投资者关系: https://investors.broadcom.com (季报、投资者日简报)",
+        "Credo投资者关系: https://investors.credosemi.com",
+        "Marvell投资者关系: https://investor.marvell.com",
+        "LightCounting: 光通信器件市场报告(季度更新)",
+        "Yole Group: High-Speed Connectivity报告"
+      ],
+      "impact_on_a_share": {
+        "transmission_path": "DSP供给紧张 > 光模块厂商产能受限 > 收入确认延迟; DSP价格变化 > 光模块BOM成本波动 > 毛利率影响(每$5 ASP变动影响光模块毛利率~1.5-2pct); DSP代际升级(224G) > 光模块产品迭代要求 > 技术路线风险; Broadcom/Marvell指引 > 云厂资本开支信号 > 光模块需求预期",
+        "impact_strength": "高(成本端)",
+        "time_lag": "1个季度(DSP采购到光模块交付)"
+      }
+    },
+    {
+      "segment_id": "SEG-003",
+      "segment_name": "HBM存储",
+      "fc_reference": "FC003",
+      "chain_block": "上游算力芯片与存储",
+      "overseas_leaders": [
+        {
+          "company": "SK hynix",
+          "ticker": "000660.KS",
+          "hq": "韩国",
+          "market_share_2025e": "~50-55%",
+          "market_share_source": "TrendForce 2025Q2, SK hynix法说会",
+          "core_products": "HBM3E/HBM4",
+          "moat": "技术领先、NVIDIA优先供应"
+        },
+        {
+          "company": "Samsung",
+          "ticker": "005930.KS",
+          "hq": "韩国",
+          "market_share_2025e": "~25-30%",
+          "market_share_source": "TrendForce 2025Q2",
+          "core_products": "HBM3E/HBM4",
+          "moat": "产能规模、垂直整合"
+        },
+        {
+          "company": "Micron",
+          "ticker": "MU",
+          "hq": "美国",
+          "market_share_2025e": "~15-20%",
+          "market_share_source": "TrendForce 2025Q2, Micron earnings",
+          "core_products": "HBM3E",
+          "moat": "工艺追赶、客户多元化"
+        }
+      ],
+      "global_tam_estimate": {
+        "2025e_usd_billion": "18-22",
+        "2026e_usd_billion": "35-40",
+        "tam_decomposition": "AI GPU出货量 x HBM堆叠容量(每GPU 80-128GB) x HBM ASP ($15-25/GB for HBM3E)",
+        "tam_source": "SK hynix法说会, TrendForce, Yole Group, 自下而上估算"
+      },
+      "concentration": {
+        "cr3": "~100%",
+        "cr5": "~100%",
+        "source": "TrendForce 2025Q2"
+      },
+      "a_share_mapping_status": "间接配套",
+      "a_share_companies": [
+        {
+          "ticker": "688008",
+          "company": "澜起科技",
+          "mapping_type": "直接配套",
+          "relevance": "内存接口芯片RCD/DB, HBM配套必需"
+        },
+        {
+          "ticker": "688123",
+          "company": "聚辰股份",
+          "mapping_type": "直接配套",
+          "relevance": "SPD EEPROM, HBM配套"
+        },
+        {
+          "ticker": "000021",
+          "company": "深科技",
+          "mapping_type": "封测配套",
+          "relevance": "存储封测"
+        },
+        {
+          "ticker": "603986",
+          "company": "兆易创新",
+          "mapping_type": "观察",
+          "relevance": "存储芯片, 非HBM直接相关"
+        }
+      ],
+      "proxy_indicators": [
+        {
+          "indicator": "SK hynix HBM营收及占比",
+          "frequency": "季度",
+          "source": "SK hynix法说会",
+          "threshold": "HBM占内存收入>25% = AI需求强劲"
+        },
+        {
+          "indicator": "HBM出货量(GB)",
+          "frequency": "季度",
+          "source": "TrendForce/Yole",
+          "threshold": "环比增速反映GPU供给约束"
+        },
+        {
+          "indicator": "HBM3E/HBM4价格趋势",
+          "frequency": "月度",
+          "source": "DRAMeXchange",
+          "threshold": "价格持续上涨 = 供给紧张"
+        },
+        {
+          "indicator": "AI GPU出货量(NVIDIA/AMD)",
+          "frequency": "季度",
+          "source": "NVIDIA/AMD earnings",
+          "threshold": "直接锚定HBM需求"
+        },
+        {
+          "indicator": "澜起科技内存接口芯片营收增速",
+          "frequency": "季度",
+          "source": "澜起科技季报",
+          "threshold": "验证HBM需求向配套传导"
+        }
+      ],
+      "monitoring_frequency": "季度",
+      "data_sources": [
+        "SK hynix投资者关系: https://www.skhynix.com/eng/ir.jsp (季报、法说会)",
+        "Samsung投资者关系: https://www.samsung.com/global/ir/",
+        "Micron投资者关系: https://investors.micron.com",
+        "TrendForce: 内存市场报告(月度/季度)",
+        "Yole Group: HBM市场报告",
+        "DRAMeXchange: 内存价格指数"
+      ],
+      "impact_on_a_share": {
+        "transmission_path": "HBM供给释放 > AI GPU出货量增长 > 澜起科技接口芯片需求 > 营收/利润弹性; HBM价格上涨 > AI GPU成本上升 > GPU ASP传导 > 影响AI服务器厂商成本; HBM产能利用率 > 下一代GPU出货节奏 > 国产算力替代窗口; SK hynix资本开支 > HBM供给预期 > 澜起科技订单可见度",
+        "impact_strength": "高(需求锚)",
+        "time_lag": "1-2个季度(HBM出货到接口芯片收入确认)"
+      }
+    },
+    {
+      "segment_id": "SEG-004",
+      "segment_name": "CPO核心ASIC",
+      "fc_reference": "FC028",
+      "chain_block": "网络与光通信",
+      "overseas_leaders": [
+        {
+          "company": "Broadcom",
+          "ticker": "AVGO",
+          "hq": "美国",
+          "market_share_2025e": "交换ASIC龙头, CPO先行者",
+          "market_share_source": "LightCounting, Broadcom投资者日",
+          "core_products": "Tomahawk 6/7、Jericho 3、CPO平台",
+          "moat": "交换芯片生态、硅光集成能力"
+        },
+        {
+          "company": "NVIDIA",
+          "ticker": "NVDA",
+          "hq": "美国",
+          "market_share_2025e": "CPO架构定义者",
+          "market_share_source": "NVIDIA GTC, 财报电话会",
+          "core_products": "Spectrum-X、NVLink CPO路线图",
+          "moat": "GPU生态绑定、系统级优化"
+        },
+        {
+          "company": "Cisco",
+          "ticker": "CSCO",
+          "hq": "美国",
+          "market_share_2025e": "系统级CPO",
+          "market_share_source": "行业估算",
+          "core_products": "Silicon One + CPO",
+          "moat": "交换机系统地位"
+        },
+        {
+          "company": "Intel",
+          "ticker": "INTC",
+          "hq": "美国",
+          "market_share_2025e": "硅光技术储备",
+          "market_share_source": "行业估算",
+          "core_products": "硅光引擎、CPO研发",
+          "moat": "硅光工艺积累"
+        }
+      ],
+      "global_tam_estimate": {
+        "2025e_usd_billion": "2.0-3.0",
+        "2026e_usd_billion": "4.0-6.0",
+        "tam_decomposition": "CPO部署端口数 x CPO ASIC ASP ($200-500/端口); 含高端交换芯片中CPO相关部分",
+        "tam_source": "LightCounting CPO预测, Yole Silicon Photonics, 自下而上估算"
+      },
+      "concentration": {
+        "cr3": "不可单独拆分(CPO仍在早期商业化, 整体交换ASIC CR3约85%)",
+        "cr5": "not disclosed",
+        "source": "LightCounting 2025Q2"
+      },
+      "a_share_mapping_status": "无直接标的",
+      "a_share_companies": [
+        {
+          "ticker": "300394",
+          "company": "天孚通信",
+          "mapping_type": "配套供应商",
+          "relevance": "光引擎配套FAU/透镜"
+        },
+        {
+          "ticker": "688313",
+          "company": "仕佳光子",
+          "mapping_type": "配套供应商",
+          "relevance": "AWG/光芯片"
+        },
+        {
+          "ticker": "688498",
+          "company": "源杰科技",
+          "mapping_type": "配套供应商",
+          "relevance": "EML/CW光源"
+        },
+        {
+          "ticker": "300620",
+          "company": "光库科技",
+          "mapping_type": "配套供应商",
+          "relevance": "隔离器/合束器"
+        }
+      ],
+      "proxy_indicators": [
+        {
+          "indicator": "Broadcom交换芯片出货量(数据中心)",
+          "frequency": "季度",
+          "source": "Broadcom earnings",
+          "threshold": "环比增速反映交换机升级周期"
+        },
+        {
+          "indicator": "NVIDIA CPO路线图进展",
+          "frequency": "半年/年度",
+          "source": "NVIDIA GTC、财报电话会",
+          "threshold": "CPO试点到商用时间表"
+        },
+        {
+          "indicator": "云厂商CPO试点部署规模",
+          "frequency": "半年",
+          "source": "云厂基础设施日、行业会议",
+          "threshold": "微软/谷歌/亚马逊CPO试点进展"
+        },
+        {
+          "indicator": "1.6T/3.2T光模块出货中CPO占比",
+          "frequency": "季度",
+          "source": "LightCounting",
+          "threshold": "CPO渗透率>5% = 商业化拐点"
+        },
+        {
+          "indicator": "天孚通信光引擎/CPO配套收入",
+          "frequency": "季度",
+          "source": "天孚通信投资者关系",
+          "threshold": "验证CPO配套需求传导"
+        }
+      ],
+      "monitoring_frequency": "半年",
+      "data_sources": [
+        "Broadcom投资者关系: https://investors.broadcom.com (交换芯片部门数据)",
+        "NVIDIA投资者关系: https://investor.nvidia.com (GTC主题演讲、财报)",
+        "LightCounting: CPO/LPO市场预测报告",
+        "Yole Group: Silicon Photonics报告",
+        "OFC/ECOC行业会议: CPO技术路线更新"
+      ],
+      "impact_on_a_share": {
+        "transmission_path": "CPO商业化加速 > 传统可插拔光模块需求增长受限 > 光模块厂商估值压制; CPO硅光引擎需求 > 天孚通信FAU/透镜配套收入 > 结构性机会; CPO核心ASIC供给 > 下一代交换机部署节奏 > 交换机PCB/连接器需求; Broadcom/NVIDIA CPO路线图 > 光模块技术路线风险 > 光模块厂资本开支方向",
+        "impact_strength": "中高(架构变革)",
+        "time_lag": "2-4个季度(技术路线到商业化)"
+      }
+    },
+    {
+      "segment_id": "SEG-005",
+      "segment_name": "ABF载板",
+      "fc_reference": "FC042",
+      "chain_block": "PCB与上游材料设备",
+      "overseas_leaders": [
+        {
+          "company": "Ibiden",
+          "ticker": "5807.T",
+          "hq": "日本",
+          "market_share_2025e": "~30-35%",
+          "market_share_source": "Prismark 2025Q2, 券商研报",
+          "core_products": "GPU/CPU高端ABF载板",
+          "moat": "客户绑定(NVIDIA/Intel)、工艺领先"
+        },
+        {
+          "company": "Shinko",
+          "ticker": "6367.T",
+          "hq": "日本",
+          "market_share_2025e": "~20-25%",
+          "market_share_source": "Prismark 2025Q2",
+          "core_products": "高端FCBGA载板",
+          "moat": "Intel核心供应商、技术积累"
+        },
+        {
+          "company": "Unimicron",
+          "ticker": "3037.TW",
+          "hq": "台湾",
+          "market_share_2025e": "~15-20%",
+          "market_share_source": "Prismark 2025Q2, Unimicron法说会",
+          "core_products": "中高端ABF载板",
+          "moat": "产能规模、客户多元化"
+        },
+        {
+          "company": "Samsung Electro-Mechanics",
+          "ticker": "009150.KS",
+          "hq": "韩国",
+          "market_share_2025e": "~10-15%",
+          "market_share_source": "Prismark 2025Q2",
+          "core_products": "高端载板",
+          "moat": "垂直整合、内部需求"
+        }
+      ],
+      "global_tam_estimate": {
+        "2025e_usd_billion": "12-15",
+        "2026e_usd_billion": "16-20",
+        "tam_decomposition": "GPU/CPU出货量 x 每颗芯片ABF载板面积 x ASP ($150-300 for高端GPU载板)",
+        "tam_source": "Prismark, Ibiden季报, 自下而上估算"
+      },
+      "concentration": {
+        "cr3": "~65-75%",
+        "cr5": "not disclosed",
+        "source": "Prismark 2025Q2"
+      },
+      "a_share_mapping_status": "间接配套(中低端)",
+      "a_share_companies": [
+        {
+          "ticker": "002436",
+          "company": "兴森科技",
+          "mapping_type": "中低端ABF载板",
+          "relevance": "ABF载板中低端产能"
+        },
+        {
+          "ticker": "002916",
+          "company": "深南电路",
+          "mapping_type": "部分ABF产能",
+          "relevance": "部分ABF载板产能"
+        },
+        {
+          "ticker": "688183",
+          "company": "生益电子",
+          "mapping_type": "载板观察",
+          "relevance": "PCB载板业务"
+        }
+      ],
+      "proxy_indicators": [
+        {
+          "indicator": "Ibiden载板部门营收(半导体解决方案)",
+          "frequency": "季度",
+          "source": "Ibiden季报",
+          "threshold": "环比>10% = AI芯片载板需求强劲"
+        },
+        {
+          "indicator": "Shinko半导体载板营收",
+          "frequency": "季度",
+          "source": "Shinko季报",
+          "threshold": "产能利用率趋势"
+        },
+        {
+          "indicator": "Unimicron载板部门营收",
+          "frequency": "季度",
+          "source": "Unimicron法说会",
+          "threshold": "ABF产能扩张计划"
+        },
+        {
+          "indicator": "ABF材料价格指数",
+          "frequency": "月度",
+          "source": "Prismark/Digitimes",
+          "threshold": "材料价格上涨>载板成本压力"
+        },
+        {
+          "indicator": "兴森科技ABF载板收入及产能利用率",
+          "frequency": "季度",
+          "source": "兴森科技投资者关系",
+          "threshold": "国产替代进度验证"
+        }
+      ],
+      "monitoring_frequency": "季度",
+      "data_sources": [
+        "Ibiden投资者关系: https://www.ibiden.co.jp/english/ir/ (季报、载板部门数据)",
+        "Shinko投资者关系: https://www.shinko.co.jp/eng/ir/",
+        "Unimicron投资者关系: https://www.unimicron.com/investor",
+        "Prismark: PCB/IC载板市场报告(季度)",
+        "Digitimes: ABF载板供应链报道"
+      ],
+      "impact_on_a_share": {
+        "transmission_path": "ABF高端供给紧张 > GPU/CPU封装产能受限 > AI服务器交付延迟 > 服务器厂商影响; Ibiden/Shinko扩产进度 > ABF供给预期 > 国产载板替代时间窗口; ABF价格趋势 > 兴森科技/深南电路载板业务毛利率 > 盈利弹性; AI GPU出货量增长 > ABF载板需求 > 国产载板厂商客户导入加速",
+        "impact_strength": "中(供给约束)",
+        "time_lag": "1-3个季度(载板供给到芯片封装到服务器交付)"
+      }
+    },
+    {
+      "segment_id": "SEG-006",
+      "segment_name": "光模块测试设备",
+      "fc_reference": "未覆盖",
+      "chain_block": "网络与光通信",
+      "overseas_leaders": [
+        {
+          "company": "Keysight",
+          "ticker": "KEYS",
+          "hq": "美国",
+          "market_share_2025e": "光测试设备龙头",
+          "market_share_source": "Yole测试设备报告2025",
+          "core_products": "光调制分析仪、误码率测试仪、光示波器",
+          "moat": "精度标准、生态绑定、品牌"
+        },
+        {
+          "company": "Tektronix",
+          "ticker": "Fortive旗下",
+          "hq": "美国",
+          "market_share_2025e": "示波器龙头",
+          "market_share_source": "Yole测试设备报告2025",
+          "core_products": "高速示波器、光测试方案",
+          "moat": "技术积累、渠道网络"
+        },
+        {
+          "company": "Anritsu",
+          "ticker": "6754.T",
+          "hq": "日本",
+          "market_share_2025e": "通信测试专家",
+          "market_share_source": "Yole测试设备报告2025",
+          "core_products": "光模块测试系统、信号分析仪",
+          "moat": "通信测试专长、日本精密制造"
+        }
+      ],
+      "global_tam_estimate": {
+        "2025e_usd_billion": "0.8-1.2",
+        "2026e_usd_billion": "1.2-1.8",
+        "tam_decomposition": "光模块厂商产能 x 测试设备/产能比(每100万只产能约需$30-50M测试设备)",
+        "tam_source": "Yole Test Equipment for Photonics, 光模块厂商资本开支分析, 自下而上估算"
+      },
+      "concentration": {
+        "cr3": "~70-80%",
+        "cr5": "not disclosed",
+        "source": "Yole测试设备报告2025"
+      },
+      "a_share_mapping_status": "无直接标的",
+      "a_share_companies": [
+        {
+          "ticker": "300308",
+          "company": "中际旭创",
+          "mapping_type": "下游客户",
+          "relevance": "光模块龙头, 测试设备采购方"
+        },
+        {
+          "ticker": "300502",
+          "company": "新易盛",
+          "mapping_type": "下游客户",
+          "relevance": "光模块龙头, 测试设备采购方"
+        },
+        {
+          "ticker": "300394",
+          "company": "天孚通信",
+          "mapping_type": "下游客户",
+          "relevance": "光器件龙头, 测试设备采购方"
+        }
+      ],
+      "proxy_indicators": [
+        {
+          "indicator": "Keysight通信部门营收(数据中心细分)",
+          "frequency": "季度",
+          "source": "Keysight 10-Q",
+          "threshold": "环比>8% = 光模块扩产活跃"
+        },
+        {
+          "indicator": "光模块厂商资本开支中测试设备占比",
+          "frequency": "半年/年度",
+          "source": "光模块厂年报、投资者关系",
+          "threshold": "测试设备占比>20% = 产能扩张期"
+        },
+        {
+          "indicator": "光模块厂商产能利用率",
+          "frequency": "季度",
+          "source": "公司调研、行业数据",
+          "threshold": "产能紧张时测试设备为瓶颈"
+        },
+        {
+          "indicator": "1.6T/3.2T测试设备订单交付周期",
+          "frequency": "季度",
+          "source": "行业调研、Digitimes",
+          "threshold": "交付周期>6个月 = 供给紧张"
+        }
+      ],
+      "monitoring_frequency": "半年",
+      "data_sources": [
+        "Keysight投资者关系: https://investor.keysight.com (通信部门数据)",
+        "Anritsu投资者关系: https://www.anritsu.com/en-us/company/investors",
+        "Yole Group: Test Equipment for Photonics报告",
+        "光模块厂商年报/投资者关系活动记录: 中际旭创、新易盛、天孚通信",
+        "Digitimes: 光模块测试设备供应链报道"
+      ],
+      "impact_on_a_share": {
+        "transmission_path": "测试设备供给紧张 > 光模块厂商产能爬坡受限 > 收入确认延迟; 测试设备资本开支 > 光模块厂商扩产决心 > 需求预期验证; 1.6T测试设备就绪度 > 1.6T光模块量产时间表 > 光模块厂商产品升级节奏; 测试设备国产化进展 > 长期成本下降空间 > 光模块厂商毛利率改善",
+        "impact_strength": "中(产能约束)",
+        "time_lag": "1-2个季度(测试设备采购到产能释放)"
+      }
+    },
+    {
+      "segment_id": "SEG-007",
+      "segment_name": "AI芯片EDA/IP",
+      "fc_reference": "未覆盖",
+      "chain_block": "上游算力芯片与存储",
+      "overseas_leaders": [
+        {
+          "company": "Synopsys",
+          "ticker": "SNPS",
+          "hq": "美国",
+          "market_share_2025e": "~35-40%",
+          "market_share_source": "SEMI EDA市场报告2025, Gartner",
+          "core_products": "全流程EDA工具、AI设计IP(DSO.ai)",
+          "moat": "全流程覆盖、AI设计工具领先"
+        },
+        {
+          "company": "Cadence",
+          "ticker": "CDNS",
+          "hq": "美国",
+          "market_share_2025e": "~35-40%",
+          "market_share_source": "SEMI EDA市场报告2025, Gartner",
+          "core_products": "全流程EDA、仿真工具",
+          "moat": "仿真/验证优势、客户粘性"
+        },
+        {
+          "company": "Siemens EDA (Mentor)",
+          "ticker": "西门子旗下",
+          "hq": "德国/美国",
+          "market_share_2025e": "~15-20%",
+          "market_share_source": "SEMI EDA市场报告2025",
+          "core_products": "部分流程工具、DFT",
+          "moat": "特定领域优势、工业客户"
+        }
+      ],
+      "global_tam_estimate": {
+        "2025e_usd_billion": "3-5 (AI芯片相关EDA/IP); 14-16 (整体EDA)",
+        "2026e_usd_billion": "5-8 (AI芯片相关EDA/IP)",
+        "tam_decomposition": "AI芯片设计项目数 x 单项目EDA授权费($5-20M/项目/年) + IP授权费",
+        "tam_source": "SEMI EDA报告, Synopsys/Cadence投资者日, 自下而上估算"
+      },
+      "concentration": {
+        "cr3": "~85-90%",
+        "cr5": "not disclosed",
+        "source": "SEMI EDA市场报告2025, Gartner"
+      },
+      "a_share_mapping_status": "部分覆盖",
+      "a_share_companies": [
+        {
+          "ticker": "301269",
+          "company": "华大九天",
+          "mapping_type": "部分覆盖",
+          "relevance": "模拟EDA、部分数字EDA"
+        },
+        {
+          "ticker": "688206",
+          "company": "概伦电子",
+          "mapping_type": "部分覆盖",
+          "relevance": "器件建模/仿真"
+        },
+        {
+          "ticker": "688521",
+          "company": "芯原股份",
+          "mapping_type": "IP授权",
+          "relevance": "半导体IP授权服务"
+        }
+      ],
+      "proxy_indicators": [
+        {
+          "indicator": "Synopsys/Cadence营收增速(整体)",
+          "frequency": "季度",
+          "source": "公司季报",
+          "threshold": ">15% YoY = 芯片设计活动活跃"
+        },
+        {
+          "indicator": "Synopsys AI设计工具收入(DSO.ai等)",
+          "frequency": "季度",
+          "source": "Synopsys法说会",
+          "threshold": "AI EDA渗透加速信号"
+        },
+        {
+          "indicator": "全球AI芯片设计公司数量/融资额",
+          "frequency": "季度",
+          "source": "CB Insights/IT桔子",
+          "threshold": "新公司数量 = EDA潜在客户池"
+        },
+        {
+          "indicator": "华大九天/概伦电子营收增速",
+          "frequency": "季度",
+          "source": "公司季报",
+          "threshold": "国产替代进度验证"
+        },
+        {
+          "indicator": "EDA出口管制政策变化",
+          "frequency": "事件驱动",
+          "source": "BIS/商务部公告",
+          "threshold": "管制升级 = 国产替代加速"
+        }
+      ],
+      "monitoring_frequency": "季度",
+      "data_sources": [
+        "Synopsys投资者关系: https://investor.synopsys.com (季报、SNUG大会)",
+        "Cadence投资者关系: https://investor.cadence.com (季报、CDNLive大会)",
+        "SEMI: EDA市场季度报告",
+        "华大九天/概伦电子投资者关系活动记录",
+        "Gartner: EDA市场份额报告"
+      ],
+      "impact_on_a_share": {
+        "transmission_path": "海外EDA营收增速 > 全球芯片设计活动景气度 > 国产EDA市场空间预期; EDA出口管制升级 > 国产AI芯片设计工具约束 > 华大九天/概伦电子替代加速; AI芯片设计公司数量增长 > EDA/IP需求 > 芯原股份IP授权收入弹性; Synopsys/Cadence AI设计工具进展 > AI芯片设计效率提升 > 国产算力芯片追赶压力",
+        "impact_strength": "中高(自主可控)",
+        "time_lag": "2-4个季度(EDA工具采购到芯片设计到量产)"
+      }
+    }
+  ],
+  "cross_segment_watch": {
+    "description": "跨环节联动监测信号",
+    "signals": [
+      {
+        "signal": "HBM供给紧张 + ABF载板供给紧张",
+        "implication": "AI GPU双重供给约束, 服务器交付延迟风险高",
+        "affected_a_share": "澜起科技、工业富联、浪潮信息"
+      },
+      {
+        "signal": "DSP价格上涨 + 测试设备交付周期延长",
+        "implication": "光模块成本端双重压力, 毛利率预警",
+        "affected_a_share": "中际旭创、新易盛、天孚通信"
+      },
+      {
+        "signal": "Broadcom交换芯片出货强劲 + CPO路线图明确",
+        "implication": "网络升级周期确认, 但长期架构变革风险",
+        "affected_a_share": "中际旭创、新易盛、天孚通信、仕佳光子"
+      },
+      {
+        "signal": "EDA出口管制升级 + BMC/DSP海外依赖",
+        "implication": "国产算力供应链自主可控紧迫性提升",
+        "affected_a_share": "华大九天、概伦电子、寒武纪、海光信息"
+      }
+    ]
+  }
+}

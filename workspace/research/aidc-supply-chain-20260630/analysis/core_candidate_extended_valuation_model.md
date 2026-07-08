@@ -10,8 +10,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 000063 中兴通讯
 
-- Status: target_model_ready; action: core review; rating label: 核心复核.
-- Denominator: price 37.18, shares 48.05亿股, market cap 1786.6亿元.
+- Status: target_model_ready; action: core focus; rating label: 核心关注.
+- Denominator: price 36.38, shares 48.05亿股, market cap 1748.2亿元.
 - 2026E: revenue 1666.9亿元, net profit 92.6亿元, EPS 1.94.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_pdf; broker target: 60.00.
 - Forecast quality flags: none.
@@ -22,8 +22,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 601728 中国电信
 
-- Status: house_target_model_ready; action: event-driven validation; rating label: 事件验证.
-- Denominator: price 5.27, shares 929.82亿股, market cap 4900.1亿元.
+- Status: house_target_model_ready; action: pullback validation; rating label: 回调验证.
+- Denominator: price 5.43, shares 929.82亿股, market cap 5048.9亿元.
 - 2026E: revenue 5618.8亿元, net profit 390.5亿元, EPS 0.42.
 - Method: PB/ROE plus EV/EBITDA check; PE is secondary; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=None, eps=0.42, reason=missing net profit or EPS; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -34,8 +34,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 600941 中国移动
 
-- Status: house_target_model_ready; action: event-driven validation; rating label: 事件验证.
-- Denominator: price 86.49, shares 217.23亿股, market cap 18788.6亿元.
+- Status: house_target_model_ready; action: pullback validation; rating label: 回调验证.
+- Denominator: price 87.48, shares 217.23亿股, market cap 19003.7亿元.
 - 2026E: revenue 11257.6亿元, net profit 1562.3亿元, EPS 7.24.
 - Method: PB/ROE plus EV/EBITDA check; PE is secondary; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -46,8 +46,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 600050 中国联通
 
-- Status: house_target_model_ready; action: event-driven validation; rating label: 事件验证.
-- Denominator: price 4.08, shares 698.32亿股, market cap 2849.1亿元.
+- Status: house_target_model_ready; action: pullback validation; rating label: 回调验证.
+- Denominator: price 4.07, shares 698.32亿股, market cap 2842.2亿元.
 - 2026E: revenue 4018.1亿元, net profit 235.3亿元, EPS 0.34.
 - Method: PB/ROE plus EV/EBITDA check; PE is secondary; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=105.4, eps=0.337, reason=EPS/share mismatch expected 0.1509 vs EPS 0.3370; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -59,7 +59,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 601179 中国西电
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 14.50, shares 58.08亿股, market cap 842.1亿元.
+- Denominator: price 14.29, shares 58.08亿股, market cap 829.9亿元.
 - 2026E: revenue 242.5亿元, net profit 22.9亿元, EPS 0.40.
 - Method: normalised PE plus order-cycle / working-capital check; broker source quality: original_pdf; broker target: 7.90.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=8.85, eps=0.395, reason=EPS/share mismatch expected 0.1524 vs EPS 0.3950; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -71,7 +71,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 002364 中恒电气
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 51.84, shares 5.70亿股, market cap 295.6亿元.
+- Denominator: price 52.90, shares 5.70亿股, market cap 301.7亿元.
 - 2026E: revenue 32.6亿元, net profit 3.7亿元, EPS 0.65.
 - Method: normalised PE plus order-cycle / working-capital check; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -82,8 +82,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 300936 中英科技
 
-- Status: watchlist_only_insufficient_model; action: watchlist only; rating label: 观察.
-- Denominator: price 108.00, shares 0.75亿股, market cap 80.8亿元.
+- Status: watchlist_only_insufficient_model; action: insufficient evidence; rating label: 证据不足.
+- Denominator: price 101.93, shares 0.75亿股, market cap 76.3亿元.
 - 2026E: revenue 3.0亿元, net profit -0.0亿元, EPS -0.06.
 - Method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid; broker source quality: official_filing_no_broker_target; broker target: not disclosed.
 - Forecast quality flags: financial_proxy_profit_eps_used.
@@ -94,8 +94,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 002922 伊戈尔
 
-- Status: target_model_ready; action: market-supported watch; rating label: 市场支撑观察.
-- Denominator: price 31.27, shares 4.28亿股, market cap 133.8亿元.
+- Status: target_model_ready; action: market support watch; rating label: 市场支撑观察.
+- Denominator: price 29.65, shares 4.28亿股, market cap 126.8亿元.
 - 2026E: revenue 73.1亿元, net profit 4.9亿元, EPS 1.15.
 - Method: normalised PE plus order-cycle / working-capital check; broker source quality: original_pdf; broker target: 45.80.
 - Forecast quality flags: none.
@@ -106,8 +106,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 603912 佳力图
 
-- Status: watchlist_only_insufficient_model; action: watchlist only; rating label: 观察.
-- Denominator: price 7.81, shares 5.57亿股, market cap 43.5亿元.
+- Status: watchlist_only_insufficient_model; action: insufficient evidence; rating label: 证据不足.
+- Denominator: price 7.70, shares 5.57亿股, market cap 42.9亿元.
 - 2026E: revenue 7.1亿元, net profit -0.9亿元, EPS -0.17.
 - Method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid; broker source quality: official_filing_no_broker_target; broker target: not disclosed.
 - Forecast quality flags: financial_proxy_profit_eps_used.
@@ -119,7 +119,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 300249 依米康
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 15.21, shares 4.52亿股, market cap 68.7亿元.
+- Denominator: price 14.82, shares 4.52亿股, market cap 66.9亿元.
 - 2026E: revenue 14.5亿元, net profit 0.6亿元, EPS 0.13.
 - Method: normalised PE/SOTP with data-center order validation; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -131,7 +131,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 603986 兆易创新
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 772.01, shares 7.08亿股, market cap 5464.3亿元.
+- Denominator: price 677.77, shares 7.08亿股, market cap 4797.3亿元.
 - 2026E: revenue 85.1亿元, net profit 31.5亿元, EPS 4.45.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: original_pdf; broker target: 120.00.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=None, eps=4.45, reason=missing net profit or EPS; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -143,7 +143,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 002281 光迅科技
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 242.43, shares 8.10亿股, market cap 1964.4亿元.
+- Denominator: price 217.33, shares 8.10亿股, market cap 1761.0亿元.
 - 2026E: revenue 150.1亿元, net profit 15.4亿元, EPS 1.90.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_pdf; broker target: 78.31.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=10.6, eps=1.9, reason=EPS/share mismatch expected 1.3082 vs EPS 1.9000; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -154,8 +154,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 000530 冰山冷热
 
-- Status: house_target_model_ready; action: event-driven validation; rating label: 事件验证.
-- Denominator: price 5.38, shares 8.59亿股, market cap 46.2亿元.
+- Status: house_target_model_ready; action: pullback validation; rating label: 回调验证.
+- Denominator: price 5.36, shares 8.59亿股, market cap 46.0亿元.
 - 2026E: revenue 55.2亿元, net profit 2.1亿元, EPS 0.25.
 - Method: normalised PE/SOTP with data-center order validation; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -167,7 +167,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 603083 剑桥科技
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 242.70, shares 3.57亿股, market cap 865.9亿元.
+- Denominator: price 209.37, shares 3.57亿股, market cap 747.0亿元.
 - 2026E: revenue 79.0亿元, net profit 9.0亿元, EPS 2.52.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=6.74, eps=2.52, reason=EPS/share mismatch expected 1.8892 vs EPS 2.5200; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -179,7 +179,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 300223 北京君正
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 259.05, shares 4.84亿股, market cap 1254.0亿元.
+- Denominator: price 259.56, shares 4.84亿股, market cap 1256.5亿元.
 - 2026E: revenue 58.9亿元, net profit 6.6亿元, EPS 1.36.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -191,7 +191,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 000988 华工科技
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 173.55, shares 10.13亿股, market cap 1757.8亿元.
+- Denominator: price 153.95, shares 10.13亿股, market cap 1559.3亿元.
 - 2026E: revenue 200.6亿元, net profit 15.5亿元, EPS 1.99.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_pdf; broker target: 46.20.
 - Forecast quality flags: none.
@@ -203,7 +203,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 603186 华正新材
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 212.91, shares 1.58亿股, market cap 336.7亿元.
+- Denominator: price 199.99, shares 1.58亿股, market cap 316.2亿元.
 - 2026E: revenue 53.1亿元, net profit 2.8亿元, EPS 1.77.
 - Method: PE/PEG plus cycle/product-mix check; broker source quality: official_filing_no_broker_target; broker target: not disclosed.
 - Forecast quality flags: financial_proxy_profit_eps_used.
@@ -215,7 +215,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688519 南亚新材
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 360.00, shares 2.35亿股, market cap 845.2亿元.
+- Denominator: price 371.22, shares 2.35亿股, market cap 871.5亿元.
 - 2026E: revenue 60.1亿元, net profit 4.9亿元, EPS 2.08.
 - Method: PE/PEG plus cycle/product-mix check; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=0.8, eps=2.08, reason=EPS/share mismatch expected 0.3408 vs EPS 2.0800; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -227,7 +227,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 300990 同飞股份
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 100.04, shares 1.71亿股, market cap 170.6亿元.
+- Denominator: price 100.10, shares 1.71亿股, market cap 170.7亿元.
 - 2026E: revenue 43.6亿元, net profit 4.7亿元, EPS 2.76.
 - Method: normalised PE/SOTP with data-center order validation; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=None, eps=2.76, reason=missing net profit or EPS; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -238,8 +238,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 002913 奥士康
 
-- Status: house_target_model_ready; action: event-driven validation; rating label: 事件验证.
-- Denominator: price 63.03, shares 3.26亿股, market cap 205.5亿元.
+- Status: house_target_model_ready; action: pullback validation; rating label: 回调验证.
+- Denominator: price 57.15, shares 3.26亿股, market cap 186.3亿元.
 - 2026E: revenue 67.4亿元, net profit 6.9亿元, EPS 2.18.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -250,8 +250,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 600845 宝信软件
 
-- Status: house_target_model_ready; action: market-supported watch; rating label: 市场支撑观察.
-- Denominator: price 18.29, shares 30.98亿股, market cap 566.6亿元.
+- Status: house_target_model_ready; action: market support watch; rating label: 市场支撑观察.
+- Denominator: price 18.25, shares 30.98亿股, market cap 565.3亿元.
 - 2026E: revenue 155.3亿元, net profit 27.6亿元, EPS 1.03.
 - Method: PB/ROE plus EV/EBITDA check; PE is secondary; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -263,7 +263,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688256 寒武纪
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 1485.33, shares 4.22亿股, market cap 6266.8亿元.
+- Denominator: price 1353.00, shares 4.22亿股, market cap 5708.5亿元.
 - 2026E: revenue 108.5亿元, net profit 67.9亿元, EPS 16.10.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: original_pdf; broker target: 1903.00.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=0.678, eps=16.1, reason=EPS/share mismatch expected 0.1607 vs EPS 16.1000; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -274,8 +274,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 688795 摩尔线程
 
-- Status: ps_sotp_target_model_ready; action: milestone PS/SOTP validation; rating label: PS/SOTP 里程碑验证.
-- Denominator: price 673.80, shares 4.70亿股, market cap 3167.1亿元.
+- Status: ps_sotp_target_model_ready; action: high valuation risk; rating label: 高估值风险.
+- Denominator: price 643.81, shares 4.70亿股, market cap 3026.1亿元.
 - 2026E: revenue 26.7亿元, net profit -10.0亿元, EPS -2.13.
 - Method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid; broker source quality: original_pdf; broker target: 182.25.
 - Forecast quality flags: broker_2026E_revenue_outlier_rejected: broker=2595.8400, proxy=26.7268; broker_2026E_profit_eps_pair_rejected: net_profit=-1003.0, eps=-2.134, reason=implausible net margin -3752.79%; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -287,7 +287,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 603881 数据港
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 25.80, shares 7.19亿股, market cap 185.5亿元.
+- Denominator: price 25.21, shares 7.19亿股, market cap 181.3亿元.
 - 2026E: revenue 18.2亿元, net profit 1.7亿元, EPS 0.23.
 - Method: PB/ROE plus EV/EBITDA check; PE is secondary; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -298,8 +298,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 301291 明阳电气
 
-- Status: house_target_model_ready; action: house fair-value review; rating label: 自建公允价值复核.
-- Denominator: price 35.39, shares 3.12亿股, market cap 110.5亿元.
+- Status: house_target_model_ready; action: core focus; rating label: 核心关注.
+- Denominator: price 36.19, shares 3.12亿股, market cap 113.0亿元.
 - 2026E: revenue 126.2亿元, net profit 10.3亿元, EPS 3.30.
 - Method: normalised PE plus order-cycle / working-capital check; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -310,8 +310,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 002396 星网锐捷
 
-- Status: house_target_model_ready; action: house fair-value review; rating label: 自建公允价值复核.
-- Denominator: price 21.09, shares 8.52亿股, market cap 179.7亿元.
+- Status: house_target_model_ready; action: core focus; rating label: 核心关注.
+- Denominator: price 23.40, shares 8.52亿股, market cap 199.4亿元.
 - 2026E: revenue 249.2亿元, net profit 10.3亿元, EPS 1.21.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=None, eps=1.21, reason=missing net profit or EPS; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -322,8 +322,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 603228 景旺电子
 
-- Status: target_model_ready; action: market-supported watch; rating label: 市场支撑观察.
-- Denominator: price 68.21, shares 10.00亿股, market cap 682.2亿元.
+- Status: target_model_ready; action: market support watch; rating label: 市场支撑观察.
+- Denominator: price 71.97, shares 10.00亿股, market cap 719.8亿元.
 - 2026E: revenue 170.4亿元, net profit 21.8亿元, EPS 2.18.
 - Method: PE/PEG plus cycle/product-mix check; broker source quality: original_pdf; broker target: 34.32.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=14.5614, eps=2.18, reason=EPS/share mismatch expected 1.4559 vs EPS 2.1800; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -334,8 +334,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 002158 汉钟精机
 
-- Status: house_target_model_ready; action: market-supported watch; rating label: 市场支撑观察.
-- Denominator: price 36.42, shares 5.38亿股, market cap 195.9亿元.
+- Status: house_target_model_ready; action: market support watch; rating label: 市场支撑观察.
+- Denominator: price 35.97, shares 5.38亿股, market cap 193.4亿元.
 - 2026E: revenue 34.6亿元, net profit 7.2亿元, EPS 1.34.
 - Method: normalised PE/SOTP with data-center order validation; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=54.43, eps=1.34, reason=implausible net margin 157.31%; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -347,7 +347,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688041 海光信息
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 349.90, shares 26.87亿股, market cap 9401.5亿元.
+- Denominator: price 325.40, shares 26.87亿股, market cap 8743.2亿元.
 - 2026E: revenue 206.6亿元, net profit 46.7亿元, EPS 2.01.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: original_pdf; broker target: 260.00.
 - Forecast quality flags: none.
@@ -359,7 +359,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 000021 深科技
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 62.26, shares 19.56亿股, market cap 1217.6亿元.
+- Denominator: price 55.91, shares 19.56亿股, market cap 1093.4亿元.
 - 2026E: revenue 163.8亿元, net profit 12.5亿元, EPS 0.64.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: official_filing_no_broker_target; broker target: not disclosed.
 - Forecast quality flags: financial_proxy_profit_eps_used.
@@ -371,7 +371,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688008 澜起科技
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 315.89, shares 12.18亿股, market cap 3847.8亿元.
+- Denominator: price 266.80, shares 12.18亿股, market cap 3249.8亿元.
 - 2026E: revenue 71.6亿元, net profit 23.4亿元, EPS 1.92.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: original_pdf; broker target: 95.00.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=None, eps=1.92, reason=missing net profit or EPS; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -382,8 +382,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 600089 特变电工
 
-- Status: house_target_model_ready; action: event-driven validation; rating label: 事件验证.
-- Denominator: price 22.26, shares 73.61亿股, market cap 1638.5亿元.
+- Status: house_target_model_ready; action: pullback validation; rating label: 回调验证.
+- Denominator: price 22.01, shares 73.61亿股, market cap 1620.1亿元.
 - 2026E: revenue 1129.4亿元, net profit 73.3亿元, EPS 1.21.
 - Method: normalised PE plus order-cycle / working-capital check; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -395,7 +395,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688183 生益电子
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 123.97, shares 8.32亿股, market cap 1031.2亿元.
+- Denominator: price 122.89, shares 8.32亿股, market cap 1022.2亿元.
 - 2026E: revenue 90.3亿元, net profit 12.1亿元, EPS 1.46.
 - Method: PE/PEG plus cycle/product-mix check; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -407,7 +407,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688702 盛科通信
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 380.52, shares 4.10亿股, market cap 1560.1亿元.
+- Denominator: price 323.64, shares 4.10亿股, market cap 1326.9亿元.
 - 2026E: revenue 12.1亿元, net profit 0.5亿元, EPS 0.11.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -418,8 +418,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 002518 科士达
 
-- Status: target_model_ready; action: market-supported watch; rating label: 市场支撑观察.
-- Denominator: price 51.47, shares 5.93亿股, market cap 305.1亿元.
+- Status: target_model_ready; action: market support watch; rating label: 市场支撑观察.
+- Denominator: price 47.80, shares 5.93亿股, market cap 283.4亿元.
 - 2026E: revenue 83.5亿元, net profit 9.4亿元, EPS 1.59.
 - Method: normalised PE plus order-cycle / working-capital check; broker source quality: original_pdf; broker target: 64.00.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=6.1089, eps=1.59, reason=EPS/share mismatch expected 1.0305 vs EPS 1.5900; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -431,7 +431,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 301205 联特科技
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 346.00, shares 1.30亿股, market cap 448.9亿元.
+- Denominator: price 297.99, shares 1.30亿股, market cap 386.6亿元.
 - 2026E: revenue 12.4亿元, net profit 1.7亿元, EPS 1.28.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_public_broker_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=0.97, eps=1.28, reason=EPS/share mismatch expected 0.7476 vs EPS 1.2800; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -443,7 +443,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688123 聚辰股份
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 215.00, shares 1.55亿股, market cap 334.1亿元.
+- Denominator: price 204.00, shares 1.55亿股, market cap 317.0亿元.
 - 2026E: revenue 18.6亿元, net profit 5.5亿元, EPS 3.49.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: none.
@@ -455,7 +455,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 688521 芯原股份
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 342.10, shares 5.26亿股, market cap 1799.2亿元.
+- Denominator: price 303.00, shares 5.26亿股, market cap 1593.5亿元.
 - 2026E: revenue 62.7亿元, net profit 0.8亿元, EPS 0.17.
 - Method: SOTP/PS/PE blend with profit-path validation; broker source quality: original_pdf; broker target: 300.00.
 - Forecast quality flags: none.
@@ -466,8 +466,8 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 
 ## 002334 英威腾
 
-- Status: watchlist_only_insufficient_model; action: watchlist only; rating label: 观察.
-- Denominator: price 7.13, shares 8.23亿股, market cap 58.7亿元.
+- Status: watchlist_only_insufficient_model; action: insufficient evidence; rating label: 证据不足.
+- Denominator: price 7.26, shares 8.23亿股, market cap 59.8亿元.
 - 2026E: revenue 43.7亿元, net profit -1.4亿元, EPS -0.17.
 - Method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid; broker source quality: official_filing_no_broker_target; broker target: not disclosed.
 - Forecast quality flags: financial_proxy_profit_eps_used.
@@ -479,7 +479,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 301165 锐捷网络
 
 - Status: house_target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 85.92, shares 7.95亿股, market cap 683.5亿元.
+- Denominator: price 94.89, shares 7.95亿股, market cap 754.8亿元.
 - 2026E: revenue 182.2亿元, net profit 11.5亿元, EPS 1.44.
 - Method: PE/PEG with shipment, customer and margin validation; broker source quality: original_pdf; broker target: not disclosed.
 - Forecast quality flags: broker_2026E_profit_eps_pair_rejected: net_profit=16.05, eps=1.44, reason=EPS/share mismatch expected 2.0177 vs EPS 1.4400; broker_EPS_retained_net_profit_derived_from_share_count.
@@ -491,7 +491,7 @@ This file replaces the prior generic 'wait for more evidence' text with ticker-l
 ## 300499 高澜股份
 
 - Status: target_model_ready; action: high valuation risk; rating label: 高估值风险.
-- Denominator: price 37.25, shares 3.09亿股, market cap 115.3亿元.
+- Denominator: price 36.60, shares 3.09亿股, market cap 113.3亿元.
 - 2026E: revenue 12.7亿元, net profit 1.4亿元, EPS 0.45.
 - Method: normalised PE/SOTP with data-center order validation; broker source quality: original_pdf; broker target: 32.51.
 - Forecast quality flags: none.

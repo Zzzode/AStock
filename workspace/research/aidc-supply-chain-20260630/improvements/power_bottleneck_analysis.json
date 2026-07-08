@@ -1,0 +1,282 @@
+{
+  "metadata": {
+    "analysis_id": "aidc-power-risk-20260702",
+    "generated_at": "2026-07-02",
+    "analyst_role": "industry-analyst",
+    "research_case": "aidc-supply-chain-20260630",
+    "purpose": "将电力瓶颈风险提升至AIDC研究第1位风险，建立电力约束分析框架"
+  },
+  "risk_repositioning": {
+    "current_ranking": 4,
+    "proposed_ranking": 1,
+    "original_description": "Power bottleneck: grid access, green-power ratio, PUE and water/cooling constraints can slow AIDC deployment.",
+    "new_description": "电力约束已成为AIDC建设的第一约束（产能闸门），电力指标/接入(GAP045)、绿电直供/PPA(GAP054)、能耗指标(GAP066)三大缺口同时未解决形成电力不可能三角，影响范围覆盖全链条而非单一环节。",
+    "elevation_reasons": [
+      "电力约束从成本变量变为产能闸门（否决性约束）",
+      "三大缺口同时未解决形成系统性风险",
+      "影响范围覆盖全链条而非单一环节",
+      "政策收紧趋势明确且不可逆",
+      "电力约束具有非线性突变特征",
+      "当前估值未充分反映电力约束风险"
+    ]
+  },
+  "power_impossible_triangle": {
+    "gap_045": {
+      "name": "电力指标/接入",
+      "chain_block": "供配电与能源",
+      "status": "unresolved_conditional_block",
+      "impact": "电网接入容量审批需匹配区域电网改造计划，存在有电无指标和有指标无电双重错配"
+    },
+    "gap_054": {
+      "name": "绿电直供/PPA/算电协同",
+      "chain_block": "供配电与能源",
+      "status": "unresolved_full_block",
+      "impact": "绿电比例要求从20%提至50%，等效能耗指标消耗增大，绿电采购成本直接影响项目经济性"
+    },
+    "gap_066": {
+      "name": "土地/园区/能耗指标",
+      "chain_block": "数据中心建设与运营",
+      "status": "unresolved_conditional_block",
+      "impact": "能耗指标总量受限，东部多省暂停或收紧新建数据中心审批"
+    },
+    "triangle_logic": "获得能耗指标不等于获得电网接入容量；绿电比例要求越高等效能耗消耗越大；电网接入获批后若绿电资源不足仍无法合规运营"
+  },
+  "current_policy_status": {
+    "pue_requirements": {
+      "national_hub_new_build": {"max_pue": 1.25, "policy": "全国一体化算力网络协同创新体系建设方案", "enforcement": "strict"},
+      "beijing_shanghai_shenzhen_new": {"max_pue": "1.20-1.25", "policy": "各地方数据中心专项规划", "enforcement": "very_strict"},
+      "western_hub": {"max_pue": "1.20-1.30", "policy": "各枢纽节点建设方案", "enforcement": "moderate"},
+      "edge_small": {"max_pue": 1.40, "policy": "GB 50174-2017", "enforcement": "loose"}
+    },
+    "green_power_requirements": {
+      "beijing": {"ratio": ">=50%", "scope": "全市新建", "policy": "北京市数据中心统筹发展实施方案(2023-2025)"},
+      "shanghai": {"ratio": ">=30%(2024), >=50%(2027)", "scope": "全市新建及扩建", "policy": "上海市数据中心建设导则(2024版)"},
+      "guangdong": {"ratio": ">=30%", "scope": "珠三角核心区", "policy": "广东省数据中心空间布局指引"},
+      "jiangsu": {"ratio": ">=25%", "scope": "南京苏州等重点城市", "policy": "江苏省数据中心专项规划"},
+      "zhejiang": {"ratio": ">=30%", "scope": "杭州宁波等", "policy": "浙江省新型基础设施建设三年行动计划"},
+      "national_hubs": {"ratio": ">=20-30%", "scope": "各枢纽内新建", "policy": "各枢纽节点建设方案"}
+    },
+    "approval_cycle_months": {
+      "beijing_tianjin_hebei": {"range": "12-24", "green_power_availability": "low"},
+      "yangtze_river_delta": {"range": "12-18", "green_power_availability": "low_moderate"},
+      "guangdong_hk_macao": {"range": "15-24", "green_power_availability": "moderate"},
+      "western_hubs": {"range": "6-12", "green_power_availability": "moderate_high"},
+      "inner_mongolia_gansu": {"range": "4-8", "green_power_availability": "high"}
+    }
+  },
+  "affected_companies": {
+    "idc_operators": [
+      {
+        "ticker": "300442", "company": "润泽科技", "market_cap_100mn_cny": 1484.7,
+        "revenue_2026e_100mn": 80.0, "np_2026e_100mn": 29.5,
+        "power_risk_exposure": "very_high",
+        "risk_path": "廊坊/惠州项目电力指标审批延迟直接影响MW交付和上架率",
+        "operated_mw_estimate": "300-400", "under_construction_mw": "200-300", "planned_mw": "500+",
+        "indicator_approved_ratio": "约60%",
+        "power_risk_score": 5.4
+      },
+      {
+        "ticker": "300383", "company": "光环新网", "market_cap_100mn_cny": 229.8,
+        "revenue_2026e_100mn": 74.2, "np_2026e_100mn": 0.9,
+        "power_risk_exposure": "high",
+        "risk_path": "北京地区电力指标极稀缺，且绿电要求最高(>=50%)",
+        "operated_mw_estimate": "200-250", "under_construction_mw": "50-100", "planned_mw": "100-150",
+        "indicator_approved_ratio": "约70%",
+        "power_risk_score": 3.7
+      },
+      {
+        "ticker": "300738", "company": "奥飞数据", "market_cap_100mn_cny": 212.2,
+        "revenue_2026e_100mn": 29.3, "np_2026e_100mn": 4.2,
+        "power_risk_exposure": "high",
+        "risk_path": "广州/南宁项目依赖区域电网和绿电资源",
+        "operated_mw_estimate": "100-150", "under_construction_mw": "80-120", "planned_mw": "200+",
+        "indicator_approved_ratio": "约50%",
+        "power_risk_score": 4.7
+      },
+      {
+        "ticker": "603881", "company": "数据港", "market_cap_100mn_cny": 186.0,
+        "revenue_2026e_100mn": 18.2, "np_2026e_100mn": 1.7,
+        "power_risk_exposure": "high",
+        "risk_path": "上海地区PUE改造和绿电要求双重压力",
+        "operated_mw_estimate": "150-200", "under_construction_mw": "50-80", "planned_mw": "100+",
+        "indicator_approved_ratio": "约65%",
+        "power_risk_score": 4.7
+      },
+      {
+        "ticker": "600845", "company": "宝信软件", "market_cap_100mn_cny": 572.2,
+        "revenue_2026e_100mn": 155.3, "np_2026e_100mn": 31.9,
+        "power_risk_exposure": "medium_high",
+        "risk_path": "宝钢园区内电力指标相对充裕，但外部拓展项目面临约束",
+        "operated_mw_estimate": "100-150", "under_construction_mw": "30-50", "planned_mw": "50-80",
+        "indicator_approved_ratio": "约75%",
+        "power_risk_score": 6.7
+      },
+      {
+        "ticker": "600050", "company": "中国联通", "market_cap_100mn_cny": 2821.2,
+        "revenue_2026e_100mn": 4018.1, "np_2026e_100mn": 235.3,
+        "power_risk_exposure": "medium",
+        "risk_path": "集团可统筹电力资源，但区域分配不均",
+        "operated_mw_estimate": "300+", "under_construction_mw": "150+", "planned_mw": "300+",
+        "indicator_approved_ratio": "约55%",
+        "power_risk_score": 5.5
+      },
+      {
+        "ticker": "600941", "company": "中国移动", "market_cap_100mn_cny": 18971.1,
+        "revenue_2026e_100mn": 11257.6, "np_2026e_100mn": 1562.3,
+        "power_risk_exposure": "medium",
+        "risk_path": "集团可统筹电力资源，但区域分配不均",
+        "operated_mw_estimate": "400+", "under_construction_mw": "200+", "planned_mw": "400+",
+        "indicator_approved_ratio": "约55%",
+        "power_risk_score": 5.5
+      },
+      {
+        "ticker": "601728", "company": "中国电信", "market_cap_100mn_cny": 4974.5,
+        "revenue_2026e_100mn": 5618.8, "np_2026e_100mn": 390.5,
+        "power_risk_exposure": "medium",
+        "risk_path": "集团可统筹电力资源，但区域分配不均",
+        "operated_mw_estimate": "300+", "under_construction_mw": "150+", "planned_mw": "300+",
+        "indicator_approved_ratio": "约55%",
+        "power_risk_score": 5.5
+      }
+    ],
+    "power_distribution_equipment": [
+      {
+        "ticker": "002335", "company": "科华数据", "market_cap_100mn_cny": 227.6,
+        "revenue_2026e_100mn": 71.5, "np_2026e_100mn": 4.9,
+        "power_risk_exposure": "medium_high",
+        "risk_path": "UPS/HVDC需求与IDC建设正相关，若建设放缓则订单延迟",
+        "aidc_revenue_ratio_estimate": "20-30%",
+        "power_risk_score": 5.0
+      },
+      {
+        "ticker": "002364", "company": "中恒电气", "market_cap_100mn_cny": 302.0,
+        "revenue_2026e_100mn": 32.6, "np_2026e_100mn": 3.7,
+        "power_risk_exposure": "medium_high",
+        "risk_path": "HVDC数据中心收入占比高，IDC建设放缓直接影响",
+        "aidc_revenue_ratio_estimate": "25-35%",
+        "power_risk_score": 4.5
+      },
+      {
+        "ticker": "002518", "company": "科士达", "market_cap_100mn_cny": 300.6,
+        "revenue_2026e_100mn": 83.5, "np_2026e_100mn": 9.4,
+        "power_risk_exposure": "medium",
+        "risk_path": "UPS业务多元化（含新能源），AIDC弹性被摊薄",
+        "aidc_revenue_ratio_estimate": "15-25%",
+        "power_risk_score": 5.5
+      },
+      {
+        "ticker": "301291", "company": "明阳电气", "market_cap_100mn_cny": 111.5,
+        "revenue_2026e_100mn": 126.2, "np_2026e_100mn": 10.3,
+        "power_risk_exposure": "medium_low",
+        "risk_path": "变压器+开关柜，数据中心收入占比需验证",
+        "aidc_revenue_ratio_estimate": "10-20%",
+        "power_risk_score": 6.0
+      },
+      {
+        "ticker": "600089", "company": "特变电工", "market_cap_100mn_cny": 1629.0,
+        "revenue_2026e_100mn": 1129.4, "np_2026e_100mn": 89.1,
+        "power_risk_exposure": "low",
+        "risk_path": "变压器业务多元化，AIDC占比极低",
+        "aidc_revenue_ratio_estimate": "<5%",
+        "power_risk_score": 7.5
+      },
+      {
+        "ticker": "601179", "company": "中国西电", "market_cap_100mn_cny": 832.2,
+        "revenue_2026e_100mn": 242.5, "np_2026e_100mn": 22.9,
+        "power_risk_exposure": "low",
+        "risk_path": "主网变压器为主，数据中心占比极低",
+        "aidc_revenue_ratio_estimate": "<5%",
+        "power_risk_score": 7.5
+      },
+      {
+        "ticker": "688676", "company": "金盘科技", "market_cap_100mn_cny": 414.3,
+        "revenue_2026e_100mn": 69.2, "np_2026e_100mn": 5.4,
+        "power_risk_exposure": "medium_high",
+        "risk_path": "干式变压器数据中心收入占比较高",
+        "aidc_revenue_ratio_estimate": "20-30%",
+        "power_risk_score": 5.0
+      }
+    ]
+  },
+  "cost_impact_analysis": {
+    "green_power_cost_impact_per_mw": {
+      "assumptions": {
+        "pue": 1.25,
+        "annual_operating_hours": 8000,
+        "baseline_electricity_price_cny_per_kwh": 0.45,
+        "green_power_premium_range_cny_per_kwh": "0.05-0.15"
+      },
+      "scenarios": [
+        {"green_ratio": "0%", "annual_cost_increase_cny_10k": 0, "cost_increase_pct": "基准"},
+        {"green_ratio": "20%", "annual_cost_increase_cny_10k": "10-30", "cost_increase_pct": "+1.5-4.5%"},
+        {"green_ratio": "30%", "annual_cost_increase_cny_10k": "15-45", "cost_increase_pct": "+2.3-6.8%"},
+        {"green_ratio": "50%", "annual_cost_increase_cny_10k": "25-75", "cost_increase_pct": "+3.8-11.3%"}
+      ]
+    }
+  },
+  "scenario_analysis": {
+    "base_case": {
+      "probability": "50%",
+      "description": "现有政策执行，项目审批周期延长30%",
+      "idc_growth_change": "增速从25%降至18%",
+      "upstream_impact": "需求延后1-2季度"
+    },
+    "tightening_case": {
+      "probability": "30%",
+      "description": "东部全面暂停新审批+绿电比例提至50%",
+      "idc_growth_change": "增速从25%降至10%",
+      "upstream_impact": "需求延后2-4季度"
+    },
+    "extreme_case": {
+      "probability": "10%",
+      "description": "能耗双控全面收紧+电价市场化",
+      "idc_growth_change": "增速从25%降至0-5%",
+      "upstream_impact": "需求大幅下修"
+    },
+    "relaxed_case": {
+      "probability": "10%",
+      "description": "西部枢纽指标倾斜+绿电交易成本下降",
+      "idc_growth_change": "增速维持25%+",
+      "upstream_impact": "需求正常释放"
+    }
+  },
+  "policy_timeline": [
+    {"date": "2021-05", "policy": "全国一体化大数据中心协同创新体系算力枢纽实施方案", "content": "启动东数西算工程，布局八大枢纽节点"},
+    {"date": "2022-02", "policy": "国家发改委等四部门联合通知", "content": "同意启动建设八大国家算力枢纽节点、十大数据中心集群"},
+    {"date": "2023-07", "policy": "数据中心能效限定值及能效等级(GB 40879-2021)", "content": "强制国标，PUE>1.5的数据中心禁止新建"},
+    {"date": "2023-11", "policy": "北京市数据中心统筹发展实施方案(2023-2025)", "content": "新建PUE<=1.20，绿电比例>=50%"},
+    {"date": "2024-03", "policy": "上海市数据中心建设导则(2024版)", "content": "新建PUE<=1.25，2027年绿电>=50%"},
+    {"date": "2024-06", "policy": "广东省数据中心空间布局指引", "content": "珠三角核心区新建PUE<=1.25，绿电>=30%"},
+    {"date": "2025-01", "policy": "国家发改委关于完善能耗双控制度的通知", "content": "建立能耗强度优先、总量弹性管理机制"},
+    {"date": "2025-03", "policy": "工信部新型数据中心发展行动计划(2025-2027)", "content": "2027年新建PUE<=1.25，绿电>=30%"}
+  ],
+  "monitoring_triggers": [
+    {"indicator": "全国数据中心能耗审批暂停省份数", "current_estimate": "3-4个", "risk_threshold": ">=6个", "action": "全面下调IDC建设增速预期"},
+    {"indicator": "北京/上海存量项目绿电比例要求", "current": "仅新建项目要求", "risk_threshold": "存量项目也要求>=50%", "action": "上调IDC运营成本假设5-10%"},
+    {"indicator": "东部单MW指标获取周期", "current": "12-24月", "risk_threshold": ">24月", "action": "对规划项目MW交付给予30%+折价"},
+    {"indicator": "绿电交易均价溢价", "current": "0.05-0.15元/kWh", "risk_threshold": ">0.20元/kWh", "action": "下调IDC运营商毛利率2-3pct"},
+    {"indicator": "国家数据中心能耗总量上限", "current": "未设", "risk_threshold": "出台总量控制方案", "action": "重新评估全链条需求"}
+  ],
+  "valuation_model_adjustments": {
+    "idc_operators": "对规划项目MW交付给予20-40%的电力约束折价，具体取决于项目所在区域",
+    "power_equipment": "将AIDC收入增长预期从基准情景下修15-25%",
+    "full_chain": "在情景分析中增加电力约束极端情景，假设IDC建设增速降至5%以下"
+  },
+  "investment_implications": {
+    "relative_preference": [
+      {"tickers": ["600845", "600050", "600941", "601728"], "reason": "园区/集团内电力资源可统筹，指标获取确定性高"},
+      {"tickers": ["300442", "300383"], "reason": "规划项目大但电力指标不确定性高，且位于东部核心区"},
+      {"tickers": ["688676", "301291"], "reason": "若西部枢纽加速建设，变压器/开关柜需求可能超预期"},
+      {"tickers": ["002364"], "reason": "HVDC数据中心收入占比高，IDC建设放缓直接影响"}
+    ]
+  },
+  "data_limitations": [
+    "电力指标审批状态属于非公开信息，分析基于公开报道和券商研报的合理推断",
+    "绿电交易价格随市场波动，实际成本可能与假设有偏差",
+    "三大运营商的电力资源可在集团内部统筹，其实际约束可能低于第三方IDC运营商",
+    "部分西部枢纽节点可能获得国家层面的指标倾斜支持，实际审批速度可能快于市场预期",
+    "技术进步（如液冷降低PUE、高效供电架构）可能部分缓解电力约束"
+  ],
+  "confidence": 75,
+  "degradation": "电力指标审批数据属于地方政府非公开信息，部分MW估算值基于券商研报和公司公告的间接推断，存在信息不完全风险"
+}

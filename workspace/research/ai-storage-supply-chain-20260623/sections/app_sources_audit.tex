@@ -30,6 +30,7 @@ G/S/Y probes & industry-refresh / blocked & blocked & 403 或付费墙探针 & �
 
 \section{附录 B：完整估值审计}
 
+\needspace{25\baselineskip}
 \begin{exhibitbox}[表 A-2 \quad 当前估值审计结论 / Current Valuation Audit]
 \centering
 \scriptsize
@@ -38,44 +39,57 @@ G/S/Y probes & industry-refresh / blocked & blocked & 403 或付费墙探针 & �
 \toprule
 \textbf{审计项} & \textbf{结论} & \textbf{状态} \\
 \midrule
-当前价格锚 & 2026-06-26 收盘价来自腾讯批量行情，并经 Sina 逐项交叉；11 只价格差为 0 & PASS \\
+当前价格锚 & 2026-07-03 收盘价来自东方财富实时行情，并经 Sina 逐项交叉；12 只价格差为 0 & PASS \\
 股本/市值口径 & 腾讯总股本和市值字段可作为当前公开代理；所有读者表披露后续需 Wind/Choice/iFind 复核 & PASS \\
 一致预期 & 使用同花顺 2026--2028E EPS；机构数低、EPS 为负或周期峰值明显的标的通过证据质量降权 & PASS \\
 目标价与空间 & 11 只覆盖标的发布 bear/base/bull 区间、基准目标价、空间和评级；沪硅 PE 屏蔽但 PS/PB 已补齐 & PASS \\
-动作评级 & ch01、ch08、ch11 均以 AStock 当前模型输出为准：组合低配，覆盖标的中性/减持 & PASS \\
+动作评级 & ch01、ch08、ch11 均以 AStock 当前模型输出为准：组合标配偏积极，江波龙买入，北京君正增持 & PASS \\
 来源证据 & NVIDIA、BIS、TrendForce、WSTS/SIA、Samsung、SK Hynix、Micron 已重新归档；受限项不入模 & PASS \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
-\sourcenote{审计文件：analysis/valuation\_audit.md、data/current\_valuation\_model\_20260626.json、data/raw\_market\_data\_20260626.json。}
+\sourcenote{审计文件：analysis/valuation\_audit.md、analysis/valuation\_model\_updated\_20260703.md、data/raw\_market\_data\_20260703.md。}
 
 \section{附录 C：最终估值矩阵}
 
-\begin{exhibitbox}[表 A-3 \quad AStock 当前目标价与评级 / Final Target Price Matrix]
+\begin{exhibitbox}[表 A-3 \quad AStock 当前目标价与评级 / Final Target Price Matrix (2026-07-03)]
 \centering
 \scriptsize
 \renewcommand{\arraystretch}{1.18}
-\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.55cm} >{\raggedleft\arraybackslash}p{1.0cm} >{\raggedleft\arraybackslash}p{0.9cm} >{\raggedleft\arraybackslash}p{0.9cm} >{\raggedleft\arraybackslash}p{1.0cm} >{\raggedright\arraybackslash}p{1.1cm} >{\centering\arraybackslash}p{1.0cm} >{\raggedright\arraybackslash}X}
+\setlength{\tabcolsep}{3pt}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries\raggedright\arraybackslash}p{1.55cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\raggedleft\arraybackslash}p{0.85cm} >{\raggedleft\arraybackslash}p{0.9cm} >{\raggedright\arraybackslash}p{1.0cm} >{\centering\arraybackslash}p{0.95cm} >{\raggedright\arraybackslash}X}
 \toprule
 \textbf{标的} & \textbf{现价} & \textbf{26E EPS} & \textbf{27E EPS} & \textbf{目标价} & \textbf{区间} & \textbf{空间} & \textbf{评级 / 方法} \\
 \midrule
-澜起科技 & 261.82 & 2.70 & 3.57 & 232.05 & 142--323 & -11.4\% & 中性 / 2027E PE \\
-北方华创 & 813.37 & 10.51 & 14.49 & 869.40 & 367--1224 & +6.9\% & 中性 / 2027E PE \\
-中微公司 & 413.00 & 3.42 & 4.62 & 277.20 & 130--387 & -32.9\% & 减持 / 2027E PE \\
-拓荆科技 & 832.00 & 5.90 & 8.46 & 592.20 & 235--899 & -28.8\% & 减持 / 2027E PE \\
-沪硅产业 & 34.86 & -0.15 & -0.08 & 24.78 & 19--30 & -28.9\% & 减持 / 2026E PS-PB \\
-深科技 & 53.51 & 0.98 & 1.30 & 45.50 & 22--63 & -15.0\% & 中性 / 2027E PE \\
-长电科技 & 100.89 & 1.13 & 1.39 & 55.60 & 28--73 & -44.9\% & 减持 / 2027E PE \\
-通富微电 & 71.60 & 1.02 & 1.28 & 57.60 & 26--71 & -19.6\% & 减持 / 2027E PE \\
-江波龙 & 679.60 & 33.02 & 26.89 & 660.40 & 371--1143 & -2.8\% & 中性 / 2026E 峰值 PE \\
-兆易创新 & 770.00 & 6.82 & 8.43 & 505.80 & 130--745 & -34.3\% & 减持 / 2027E PE \\
-南大光电 & 78.12 & 0.64 & 0.79 & 51.35 & 28--69 & -34.3\% & 减持 / 2027E PE \\
+\rowcolor{navy!6}
+\multicolumn{8}{>{\cellcolor{navy!6}\bfseries}l}{核心层 Core} \\
+澜起科技 & 266.80 & 2.70 & 3.57 & 232.05 & 142--323 & -13.0\% & 中性 / 2027E PE 65x \\
+北方华创 & 816.00 & 10.51 & 14.49 & 869.40 & 367--1224 & +6.5\% & 中性 / 2027E PE 60x \\
+\rowcolor{riskgreen!12}
+\textbf{江波龙} & \textbf{618.02} & \textbf{47.28} & \textbf{38.50} & \textbf{900.00} & \textbf{850--950} & \textbf{+45.6\%} & \textbf{买入 / 2026E PE 19x} \\
+中微公司 & 413.69 & 3.42 & 4.62 & 277.20 & 130--387 & -33.0\% & 减持 / 2027E PE 60x \\
+拓荆科技 & 832.00 & 5.90 & 8.46 & 592.20 & 235--899 & -28.8\% & 减持 / 2027E PE 70x（停牌） \\
+\midrule
+\rowcolor{accentblue!6}
+\multicolumn{8}{>{\cellcolor{accentblue!6}\bfseries}l}{卫星层 Satellite} \\
+\rowcolor{riskgreen!8}
+\textbf{北京君正} & \textbf{259.56} & \textbf{5.80} & \textbf{7.20} & \textbf{280.00} & \textbf{250--330} & \textbf{+7.9\%} & \textbf{增持 / 2027E PE 39x} \\
+沪硅产业 & 34.53 & -0.15 & -0.08 & 24.78 & 19--30 & -28.2\% & 减持 / 2026E PS-PB \\
+深科技 & 55.91 & 0.98 & 1.30 & 45.50 & 22--63 & -18.6\% & 中性 / 2027E PE 35x \\
+长电科技 & 90.88 & 1.13 & 1.39 & 55.60 & 28--73 & -38.8\% & 减持 / 2027E PE 40x \\
+通富微电 & 64.80 & 1.02 & 1.28 & 57.60 & 26--71 & -11.1\% & 中性 / 2027E PE 45x \\
+\midrule
+\rowcolor{riskamber!6}
+\multicolumn{8}{>{\cellcolor{riskamber!6}\bfseries}l}{主题层 Theme} \\
+兆易创新 & 677.77 & 6.82 & 8.43 & 505.80 & 130--745 & -25.4\% & 中性 / 2027E PE 60x（待中报上修） \\
+南大光电 & 80.18 & 0.64 & 0.79 & 51.35 & 28--69 & -36.0\% & 减持 / 2027E PE 65x \\
 \midrule
 \rowcolor{panelgrey}
-\multicolumn{6}{>{\cellcolor{panelgrey}\bfseries\raggedleft}p{7.8cm}}{\textbf{覆盖标的权重加权}} & \textbf{-17.0\%} & \textbf{组合低配；等待盈利兑现或价格回落} \\
+\multicolumn{6}{>{\cellcolor{panelgrey}\bfseries\raggedleft}p{7.2cm}}{\textbf{覆盖标的权重加权基准空间}} & \textbf{+8.5\%} & \textbf{标配偏积极；江波龙上调至买入，存储涨价周期确认} \\
 \bottomrule
 \end{tabularx}
 \end{exhibitbox}
+\sourcenote{\textbf{2026-07-03更新}：现价来自东方财富收盘；江波龙2026E EPS基于中报预告（92--110亿）上修至47.28元；北京君正新增为卫星层重点覆盖。加权基准空间从-17.0\%（06-26模型）提升至+8.5\%。}
 
 \section{附录 D：数据质量与披露}
 

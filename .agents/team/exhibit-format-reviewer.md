@@ -17,13 +17,19 @@
 
 ## Capabilities
 
-- 8 维度审查（见 `exhibit-format-reviewer` skill §8 大维度清单）
+- **12 维度审查**（见 `exhibit-format-reviewer` skill §12 大维度清单）
 - 颜色宏污染诊断（TikZ scope 作用域 → fill/text 同色）
 - fontawesome5 缺字 fallback 诊断
 - pgfplots cycle list 与 `\addplot` 条目不匹配诊断
 - pie 切片角度累加与 legend 色 swap 诊断
 - LaTeX `\def\a{90}` 跨 scope 继承陷阱诊断
 - bounding box 元素重叠的坐标对撞诊断
+- **箭头-文字交叉诊断**（线段-矩形相交算法）🆕
+- **TikZ 路径连通性诊断**（`-|`/`|-` 语义验证）🆕
+- **动态高度级联分析**（text width → 自动换行 → 实际高度 → 下方碰撞）🆕
+- **同类元素对齐一致性诊断**（同 style 节点边缘位置标准差）🆕
+- **窄列溢出静态估算**（en-dash 区间值 / CJK 字符串宽度）🆕
+- **视觉语义邻近检测**（注释元素与不相关数据框基线对齐）🆕
 - Overfull \(\hbox\) > 20pt 审计与 p 列精准缩放宽修复
 - 表 × 柱 × 正文 三维数据交叉（单位 + 数值 + 换算）
 - 重复 exhibit 编号扫描（正则频度排序）
@@ -52,7 +58,7 @@ grep -rnE '\\fa[A-Z][A-Za-z]+' $PROJ/sections/*.tex | sort > /tmp/fa_usage.log
 grep -nE '/\.style=\{|ashare|ashar|bal|subp|risk(red|amber|blue|green)|fill=#1' $PROJ/sections/*.tex > /tmp/tikz_styles.log
 ```
 
-## 审查维度（硬顺序）
+## 审查维度（硬顺序，12维度）
 
 ### Stage 1 · BLOCK 级（任何一项 FAIL = 研报暂停发布）
 
@@ -77,6 +83,21 @@ grep -nE '/\.style=\{|ashare|ashar|bal|subp|risk(red|amber|blue|green)|fill=#1' 
 - **FAIL 判定公式**：1 行中文 ≥ 0.85cm；2 行 ≥ 1.1cm；3 行 ≥ 1.4cm（inner sep=2pt 基线）。circle 节点三行字：字高 × 3 × 行距 1.2 ≤ `minimum_size / 1.414`（内切正方形）。
 - **FAIL 触发**：任何 style 的 `minimum height` 低于上述阈值 × 行数估计；任何 `resizebox{<R>}{!}` 中 R < 0.80。
 
+#### V-4 路径连通性（TikZ `-|`/`|-` 语义正确性）🆕
+- **扫描模式**：所有 `\draw` 命令中使用 `-|` 或 `|-` 坐标操作符的路径。
+- **语义陷阱**：
+  - `A-|B` = 取 A 的 x 坐标 + 取 B 的 y 坐标（先垂直后水平）
+  - `A|-B` = 取 B 的 x 坐标 + 取 A 的 y 坐标（先水平后垂直）
+- **FAIL 触发**：
+  - 终点坐标距目标节点边界 > 0.3cm（垂直连接场景）
+  - 终点距目标节点 > 0.5cm（一般场景）
+  - 经典错误：`(SW1.north-|\h.south)` 实际是"x=SW1.north.x, y=H.south.y"，结果在 Host 底部画水平短线，终点悬空
+- **输出格式**：
+  ```
+  [file:line] 使用 `-|` 导致连线悬空，终点距 SW1.north 1.0cm → BLOCK
+  修复：改为 `|-` 或使用显式路由：\draw[->] (H.south) -- ++(0,-0.3) -| (SW1.north);
+  ```
+
 #### S-2 数值一致性：表 × 图 × 正文 三维交叉
 - **FAIL 判定**：同一指标（Capex、市值、TAM 等）在三个载体的最近出现，值差 > 15% = SIGNIFICANT；量级差 10×（亿 vs $B 未做换算）= BLOCK。
 - **FAIL 触发**：任何 `$B` 单位的柱 + `亿美元` 单位的表，未在图/表下方 sourcenote 中显式披露 `亿 = 100M USD = 0.1B` 换算规则。
@@ -86,7 +107,29 @@ grep -nE '/\.style=\{|ashare|ashar|bal|subp|risk(red|amber|blue|green)|fill=#1' 
 
 #### L-1 Overfull hbox > 20pt 硬门槛
 - **FAIL 判定**：从 /tmp/overfull.log 提取 `pt too wide` 数值，MAX > 20pt = BLOCK。
+- **静态降级检测**（无 .log 时）：
+  - 窄列 en-dash 区间值：`\d+--\d+` 估算宽度 > 列宽 × 0.95 → 溢出风险
+  - CJK 字符串：字符数 × 字号 × 1.0 > 列宽 × 0.95 → 溢出风险
+  - multicolumn 宽度偏差：指定 p-width 与自然宽度 Σ(col_width) + 2(N-1)tabcolsep 偏差 > 0.5cm → 不匹配
 - **修复优先级**：先处理 MAX 那一条，逐步收敛到 <20pt。
+
+#### L-2 元素重叠 + 箭头-文字交叉（扩展检测）
+- **节点-节点碰撞**：tikz 节点坐标的 bounding box 对撞检查；散点气泡 / 四象限标签 / subp 框三层典型模式。
+- **箭头-文字交叉** 🆕：
+  - 提取所有箭头路径的几何线段
+  - 提取所有文本节点的 bounding box (x, y, width, height)
+  - 计算箭头线段与节点 bbox 的交集
+  - 若交集长度 > 节点高度的 20% → FAIL（箭头切割文字）
+  - 典型场景：垂直箭头穿越同列子框
+
+#### L-4 安全间隙（视觉不可分辨距离）🆕
+- **FAIL 判定**：元素间最小间隙 < 0.3cm
+- **阈值分级**：
+  - 间隙 < 0.1cm → BLOCK（视觉上等同于重叠）
+  - 间隙 < 0.3cm → SIGNIFICANT（肉眼感知为"接触"）
+  - 间隙 ≥ 0.3cm → PASS
+- **检测逻辑**：对所有元素对，计算 gap = 中心距 - (元素A半径 + 元素B半径)
+- **为什么需要**：0.02cm 间隙技术上"不重叠"，但印刷品上肉眼几乎无法分辨箭头是否连接
 
 ### Stage 2 · SIGNIFICANT 级（阻塞下一轮合入）
 
@@ -94,6 +137,24 @@ grep -nE '/\.style=\{|ashare|ashar|bal|subp|risk(red|amber|blue|green)|fill=#1' 
 - **饼图**：逐张 `scope` 首行检查 `\def\a{90}` 是否存在；无则 BLOCK（跨 scope 角度继承陷阱）。
 - **pgfplots 柱**：`cycle list` 的条目数必须等于 `\addplot` 数量；只有 1 条 addplot + N 色 cycle = SIGNIFICANT（单色全染）。
 - **散点**：dot style `fill=#1!30` 视觉淡色 + legend tabular `\cellcolor{#1!60}` 深浅差 ≥ 2 倍 → SIGNIFICANT（肉眼错位）。
+
+#### L-3 对齐一致性（同类元素水平/垂直对齐）🆕
+- **扫描模式**：按 style 名称对所有 TikZ 节点分组（如 `ashar`、`subp`、`thesis`）。
+- **FAIL 判定**：
+  - 某组节点的右边缘 x 坐标标准差 > 1.0cm
+  - 该组节点在视觉上应对齐（如同类标签、同列元素）
+- **典型模式**：使用 `right=of` 相对定位但前置节点数量不同 → 阶梯状错落
+  - 例：6 个 A 股映射标签，因各层前置节点数不同（L1 有 4 个、L2 有 3 个、L3-L6 有 2 个），水平偏差达 5.8cm
+- **修复**：使用绝对 x 坐标或 `right=0cm of PARENT.east, anchor=east`
+
+#### S-4 视觉语义邻近（误导性布局）🆕
+- **扫描模式**：对所有注释类元素（箭头、callout、统计框、sourcenote），检查其视觉锚点是否与不相关数据元素意外对齐。
+- **FAIL 判定**：
+  1. 注释元素的锚点 y 坐标与某数据框的锚点 y 坐标偏差 < 0.1cm（共享基线）
+  2. 两者在语义上无直接关联
+  3. 水平间距 < 2.0cm（视觉上可感知为关联）
+- **典型案例**：BIS 管制箭头起点 y=0.2 与 ASP 说明框中心 y=0.2 完全相同，水平间距仅 1.3cm → 读者误以为"BIS 管制影响 ASP 价格"
+- **修复**：偏移注释元素 y 坐标 ≥ 0.3cm，或添加显式标签澄清关系
 
 ### Stage 3 · MINOR / NOTE 级
 

@@ -1,0 +1,489 @@
+{
+  "report_meta": {
+    "generated_date": "2026-07-02",
+    "analyst_role": "industry-analyst",
+    "research_directory": "/Users/bytedance/Develop/AStock/workspace/research/aidc-supply-chain-20260630",
+    "source_files": [
+      "analysis/coverage_gap_matrix.md",
+      "analysis/full_chain_taxonomy.md",
+      "analysis/core_vs_satellite_universe.md",
+      "data/full_chain_universe_20260630.json"
+    ],
+    "selection_criteria": [
+      "AIDC收入纯度提升概率",
+      "市值和流动性(可投资性)",
+      "催化剂可预见性(未来12个月内)",
+      "与核心池的互补性"
+    ]
+  },
+  "summary": {
+    "total_candidates": 7,
+    "high_upgrade_probability": 2,
+    "medium_high_upgrade_probability": 2,
+    "medium_upgrade_probability": 2,
+    "medium_low_upgrade_probability": 1,
+    "chain_blocks_covered": [
+      "服务器整机与零部件",
+      "网络与光通信",
+      "上游算力芯片与存储",
+      "供配电与能源",
+      "液冷与温控"
+    ]
+  },
+  "candidates": [
+    {
+      "ticker": "300870",
+      "company_name": "欧陆通",
+      "chain_position": "服务器整机与零部件 > 服务器电源PSU (FC012)",
+      "chain_block": "服务器整机与零部件",
+      "fc_id": "FC012",
+      "aidc_exposure_estimate": {
+        "level": "中",
+        "range": "15-25%",
+        "basis": "服务器电源专业厂商，已进入头部服务器厂商供应链，AI服务器电源价值量2-3倍于普通服务器"
+      },
+      "upgrade_probability": "高",
+      "priority_score": 8,
+      "key_products": [
+        "CRPS电源",
+        "ORv3高功率PSU",
+        "54V/48V服务器电源",
+        "AI服务器电源模块"
+      ],
+      "potential_customers": [
+        "浪潮信息",
+        "工业富联",
+        "中科曙光",
+        "华为",
+        "字节跳动/AIDC运营商"
+      ],
+      "evidence_gaps": [
+        "AI电源批量收入未单独披露",
+        "送样与量产收入未区分",
+        "客户平台认证和单机价值量数据缺失"
+      ],
+      "upgrade_triggers": [
+        "半年报/年报中AIDC相关电源收入占比超过20%",
+        "获得NVIDIA/AMD/浪潮等AI服务器平台电源供应商认证",
+        "单季度AI电源订单金额超过2亿元"
+      ],
+      "monitoring_metrics": [
+        "服务器电源收入占比",
+        "AI电源客户认证进展",
+        "单机电源价值量(普通vs AI)",
+        "毛利率变化",
+        "产能利用率"
+      ],
+      "next_review_date": "2026-08-31",
+      "core_pool_complement": "与核心池的工业富联/浪潮信息形成直接上下游互补，填补服务器电源环节空白",
+      "key_risks": [
+        "电源行业竞争激烈(台达/光宝等海外龙头占据高端)",
+        "AI电源认证周期可能长于预期",
+        "毛利率承压"
+      ]
+    },
+    {
+      "ticker": "688498",
+      "company_name": "源杰科技",
+      "chain_position": "网络与光通信 > 光芯片/EML/VCSEL/CW laser (FC029)",
+      "chain_block": "网络与光通信",
+      "fc_id": "FC029",
+      "aidc_exposure_estimate": {
+        "level": "中高",
+        "range": "20-35%",
+        "basis": "A股稀缺的高速光芯片标的，100G EML量产突破将直接受益于800G/1.6T光模块放量"
+      },
+      "upgrade_probability": "高",
+      "priority_score": 8,
+      "key_products": [
+        "100G/200G EML激光器芯片",
+        "CW激光器",
+        "VCSEL芯片",
+        "硅光外置光源"
+      ],
+      "potential_customers": [
+        "中际旭创",
+        "新易盛",
+        "光迅科技",
+        "华工科技",
+        "剑桥科技"
+      ],
+      "evidence_gaps": [
+        "100G/200G单通道量产规模和客户认证未充分披露",
+        "AIDC用光芯片收入占比未单独拆分",
+        "硅光配套进展不透明"
+      ],
+      "upgrade_triggers": [
+        "100G EML芯片通过主流光模块厂商认证并批量出货",
+        "AIDC用光芯片收入占比超过25%",
+        "硅光外置光源获得客户订单"
+      ],
+      "monitoring_metrics": [
+        "高速光芯片收入增速",
+        "100G/200G产品出货量",
+        "客户认证进展",
+        "毛利率(高端vs低端)",
+        "产能利用率"
+      ],
+      "next_review_date": "2026-08-31",
+      "core_pool_complement": "与核心池的中际旭创/新易盛形成上游互补，升级后可完善光通信全链条覆盖",
+      "key_risks": [
+        "光芯片认证周期长(通常12-18个月)",
+        "海外厂商(Lumentum/Coherent)技术领先",
+        "价格竞争可能压缩毛利"
+      ]
+    },
+    {
+      "ticker": "688629",
+      "company_name": "华丰科技",
+      "chain_position": "服务器整机与零部件 > 高速连接器 (FC014)",
+      "chain_block": "服务器整机与零部件",
+      "fc_id": "FC014",
+      "aidc_exposure_estimate": {
+        "level": "中",
+        "range": "10-20%",
+        "basis": "背靠中国电科，高速连接器和高速铜缆双线布局，A股连接器板块中AIDC弹性较高"
+      },
+      "upgrade_probability": "中高",
+      "priority_score": 7,
+      "key_products": [
+        "OSFP/QSFP-DD高速连接器",
+        "板对板连接器",
+        "背板连接器",
+        "PCIe/CXL连接器",
+        "高速铜缆DAC"
+      ],
+      "potential_customers": [
+        "工业富联",
+        "浪潮信息",
+        "紫光股份",
+        "锐捷网络",
+        "中兴通讯"
+      ],
+      "evidence_gaps": [
+        "112G/224G高速连接器客户认证进展未披露",
+        "AIDC用连接器收入占比未单独拆分",
+        "与立讯精密/中航光电的竞争格局不清晰"
+      ],
+      "upgrade_triggers": [
+        "112G高速连接器通过AI服务器/交换机客户认证",
+        "AIDC用连接器收入占比超过15%",
+        "单季度高速连接器订单超过1.5亿元"
+      ],
+      "monitoring_metrics": [
+        "高速连接器收入增速",
+        "112G/224G产品认证进展",
+        "AIDC客户拓展",
+        "毛利率",
+        "研发投入占比"
+      ],
+      "next_review_date": "2026-08-31",
+      "core_pool_complement": "与核心池的工业富联(服务器)和紫光股份(交换机)形成互补，填补高速连接器环节空白",
+      "key_risks": [
+        "高速连接器市场被Amphenol/TE/Molex等海外巨头主导",
+        "国产替代进度不确定",
+        "军工属性可能带来合规审查风险"
+      ]
+    },
+    {
+      "ticker": "300602",
+      "company_name": "飞荣达",
+      "chain_position": "服务器整机与零部件 > 热界面材料TIM (FC020) + 液冷冷板 (FC055)",
+      "chain_block": "服务器整机与零部件",
+      "fc_id": "FC020/FC055",
+      "aidc_exposure_estimate": {
+        "level": "中",
+        "range": "10-20%",
+        "basis": "A股热管理材料布局最全面的标的，同时覆盖TIM和液冷冷板，可受益于从风冷到液冷的全路径升级"
+      },
+      "upgrade_probability": "中高",
+      "priority_score": 7,
+      "key_products": [
+        "导热垫片",
+        "导热凝胶",
+        "相变材料",
+        "石墨片",
+        "VC均热板",
+        "液冷冷板"
+      ],
+      "potential_customers": [
+        "工业富联",
+        "浪潮信息",
+        "英维克",
+        "申菱环境",
+        "高澜股份"
+      ],
+      "evidence_gaps": [
+        "服务器/AI客户TIM收入未单独拆分",
+        "液冷冷板客户认证和批量收入缺失",
+        "与Henkel/Parker Chomerics等海外厂商的竞争差距未量化"
+      ],
+      "upgrade_triggers": [
+        "服务器/AI客户TIM收入占比超过15%",
+        "液冷冷板通过AI服务器厂商认证并批量出货",
+        "单季度AIDC相关热管理收入超过1亿元"
+      ],
+      "monitoring_metrics": [
+        "TIM产品收入增速",
+        "服务器客户拓展",
+        "冷板认证进展",
+        "毛利率变化",
+        "研发投入"
+      ],
+      "next_review_date": "2026-08-31",
+      "core_pool_complement": "与核心池的英维克/申菱环境(CDU/冷水机组)形成材料+系统互补，填补TIM环节空白",
+      "key_risks": [
+        "消费电子业务占比仍较高(可能超过50%)，AIDC收入弹性被摊薄",
+        "材料行业客户认证周期长",
+        "价格竞争激烈"
+      ]
+    },
+    {
+      "ticker": "002156",
+      "company_name": "通富微电",
+      "chain_position": "上游算力芯片与存储 > 先进封装/Chiplet配套 (FC009)",
+      "chain_block": "上游算力芯片与存储",
+      "fc_id": "FC009",
+      "aidc_exposure_estimate": {
+        "level": "中低",
+        "range": "5-12%",
+        "basis": "AMD核心封测合作伙伴，AMD AI芯片放量将直接拉动公司高端封装业务"
+      },
+      "upgrade_probability": "中",
+      "priority_score": 6,
+      "key_products": [
+        "2.5D/3D封装",
+        "CoWoS-like先进封装",
+        "Chiplet互连封装",
+        "BGA/LGA封装"
+      ],
+      "potential_customers": [
+        "AMD",
+        "海光信息",
+        "寒武纪",
+        "华为昇腾",
+        "壁仞科技"
+      ],
+      "evidence_gaps": [
+        "AIDC相关先进封装收入未单独披露",
+        "AMD AI芯片封装份额和产能数据缺失",
+        "2.5D/3D封装良率和客户认证进展不透明"
+      ],
+      "upgrade_triggers": [
+        "AIDC相关先进封装收入占比超过10%",
+        "AMD MI300/MI400系列封装订单明确且产能爬坡",
+        "国产AI芯片(海光/寒武纪)封装合作批量落地"
+      ],
+      "monitoring_metrics": [
+        "先进封装收入增速",
+        "AMD合作深度",
+        "产能利用率(苏州/槟城)",
+        "毛利率",
+        "研发投入"
+      ],
+      "next_review_date": "2026-08-31",
+      "core_pool_complement": "与核心池的寒武纪/海光信息(GPU/ASIC)形成产业链互补，填补先进封装环节空白",
+      "key_risks": [
+        "封测行业重资产、低毛利",
+        "AIDC收入占比短期难以大幅提升",
+        "AMD AI芯片市场份额不确定"
+      ]
+    },
+    {
+      "ticker": "002706",
+      "company_name": "良信股份",
+      "chain_position": "供配电与能源 > PDU/母线槽 (FC049) + 高低压柜/开关柜 (FC047)",
+      "chain_block": "供配电与能源",
+      "fc_id": "FC049/FC047",
+      "aidc_exposure_estimate": {
+        "level": "中低",
+        "range": "5-10%",
+        "basis": "低压电器领域积累深厚，正在向数据中心配电解决方案升级"
+      },
+      "upgrade_probability": "中",
+      "priority_score": 6,
+      "key_products": [
+        "智能PDU",
+        "母线槽",
+        "低压断路器",
+        "数据中心配电解决方案"
+      ],
+      "potential_customers": [
+        "润泽科技",
+        "奥飞数据",
+        "数据港",
+        "光环新网",
+        "三大运营商"
+      ],
+      "evidence_gaps": [
+        "数据中心PDU收入占比未单独披露",
+        "AIDC项目中标和验收证据不足",
+        "与施耐德/ABB等外资品牌在高端市场的竞争差距未量化"
+      ],
+      "upgrade_triggers": [
+        "数据中心相关收入占比超过10%",
+        "AIDC项目PDU/母线槽批量中标(单个项目超过5000万元)",
+        "智能PDU通过头部IDC运营商认证"
+      ],
+      "monitoring_metrics": [
+        "数据中心收入增速",
+        "PDU产品占比",
+        "AIDC项目中标公告",
+        "毛利率",
+        "产能利用率"
+      ],
+      "next_review_date": "2026-10-31",
+      "core_pool_complement": "与核心池的科华数据/科士达(UPS)和金盘科技(变压器)形成配电链互补，填补PDU环节空白",
+      "key_risks": [
+        "低压电器市场竞争激烈",
+        "数据中心客户认证周期长",
+        "房地产/工业等传统业务占比高，AIDC弹性被稀释"
+      ]
+    },
+    {
+      "ticker": "600160",
+      "company_name": "巨化股份",
+      "chain_position": "液冷与温控 > 冷却液 (FC061)",
+      "chain_block": "液冷与温控",
+      "fc_id": "FC061",
+      "aidc_exposure_estimate": {
+        "level": "低",
+        "range": "2-5%",
+        "basis": "国内氟化工龙头，在含氟冷却液原料方面具备资源和技术优势，但当前AIDC直接收入占比极低"
+      },
+      "upgrade_probability": "中低",
+      "priority_score": 5,
+      "key_products": [
+        "氟化工基础材料",
+        "冷却液原料",
+        "电子级氢氟酸",
+        "含氟聚合物"
+      ],
+      "potential_customers": [
+        "英维克",
+        "申菱环境",
+        "高澜股份",
+        "数据中心运营商",
+        "3M/Fuchs等冷却液品牌商"
+      ],
+      "evidence_gaps": [
+        "AIDC用冷却液直接收入未披露",
+        "与液冷系统集成商的合作进展不透明",
+        "电子级氟材料在数据中心的应用规模未量化"
+      ],
+      "upgrade_triggers": [
+        "冷却液相关收入占比超过5%",
+        "与头部液冷系统集成商签订战略合作协议",
+        "电子级氟材料获得数据中心客户批量订单"
+      ],
+      "monitoring_metrics": [
+        "氟化工产品价格走势",
+        "冷却液业务拓展",
+        "与液冷厂商合作公告",
+        "研发投入(电子级材料)"
+      ],
+      "next_review_date": "2026-10-31",
+      "core_pool_complement": "与核心池的英维克/申菱环境(CDU/液冷系统)形成材料+系统互补，填补冷却液环节空白",
+      "key_risks": [
+        "氟化工周期性强",
+        "AIDC用冷却液占比极低(当前可能<2%)，收入弹性有限",
+        "环保政策和配额管制风险"
+      ]
+    }
+  ],
+  "excluded_candidates": [
+    {
+      "ticker": "002851",
+      "company_name": "麦格米特",
+      "exclusion_reason": "业务多元化(家电/医疗/工业电源占比高)，AIDC纯度低于欧陆通"
+    },
+    {
+      "ticker": "603616",
+      "company_name": "鼎通科技",
+      "exclusion_reason": "连接器业务分散(汽车/通信)，AIDC纯度和客户认证进展弱于华丰科技"
+    },
+    {
+      "ticker": "688800",
+      "company_name": "瑞可达",
+      "exclusion_reason": "连接器业务分散(汽车/通信)，AIDC纯度和客户认证进展弱于华丰科技"
+    },
+    {
+      "ticker": "688313",
+      "company_name": "仕佳光子",
+      "exclusion_reason": "AWG+光芯片双线布局但规模偏小，光芯片进度落后于源杰科技"
+    },
+    {
+      "ticker": "600584",
+      "company_name": "长电科技",
+      "exclusion_reason": "封测龙头但AIDC纯度低(消费电子/手机占比高)，先进封装产能和客户认证透明度低于通富微电"
+    },
+    {
+      "ticker": "002028",
+      "company_name": "思源电气",
+      "exclusion_reason": "一次设备为主，AIDC相关收入占比极低"
+    },
+    {
+      "ticker": "300684",
+      "company_name": "中石科技",
+      "exclusion_reason": "TIM业务规模小于飞荣达，产品布局单一"
+    },
+    {
+      "ticker": "601869",
+      "company_name": "长飞光纤",
+      "exclusion_reason": "光纤光缆AIDC价值密度低(弹性远低于光模块)，升级概率低"
+    },
+    {
+      "ticker": "600487",
+      "company_name": "亨通光电",
+      "exclusion_reason": "光纤光缆AIDC价值密度低(弹性远低于光模块)，升级概率低"
+    },
+    {
+      "ticker": "300037",
+      "company_name": "新宙邦",
+      "exclusion_reason": "电子化学品龙头但冷却液业务占比极低，AIDC纯度不如巨化股份的氟材料映射"
+    }
+  ],
+  "upgrade_unified_criteria": [
+    "官方文件(年报/半年报/投资者关系记录)中明确披露AIDC相关收入占比",
+    "获得至少1家头部AIDC客户(云厂商/服务器ODM/IDC运营商)的正式供应商认证",
+    "AIDC相关业务毛利率不低于公司整体毛利率",
+    "市值和流动性满足核心池准入要求(通常>100亿市值，日均成交>1亿)"
+  ],
+  "quarterly_monitoring_thresholds": {
+    "300870": {
+      "aidc_revenue_ratio": ">20%",
+      "key_customer_certification": "浪潮/华为",
+      "quarterly_order_threshold": "2亿"
+    },
+    "688498": {
+      "aidc_revenue_ratio": ">25%",
+      "key_customer_certification": "中际旭创",
+      "quarterly_order_threshold": "1亿"
+    },
+    "688629": {
+      "aidc_revenue_ratio": ">15%",
+      "key_customer_certification": "工业富联",
+      "quarterly_order_threshold": "1.5亿"
+    },
+    "300602": {
+      "aidc_revenue_ratio": ">15%",
+      "key_customer_certification": "英维克/浪潮",
+      "quarterly_order_threshold": "1亿"
+    },
+    "002156": {
+      "aidc_revenue_ratio": ">10%",
+      "key_customer_certification": "AMD",
+      "quarterly_order_threshold": "3亿"
+    },
+    "002706": {
+      "aidc_revenue_ratio": ">10%",
+      "key_customer_certification": "润泽/奥飞",
+      "quarterly_order_threshold": "0.5亿"
+    },
+    "600160": {
+      "aidc_revenue_ratio": ">5%",
+      "key_customer_certification": "英维克/申菱",
+      "quarterly_order_threshold": "0.3亿"
+    }
+  }
+}

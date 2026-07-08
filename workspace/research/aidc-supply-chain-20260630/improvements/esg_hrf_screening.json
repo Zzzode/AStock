@@ -1,0 +1,2800 @@
+{
+  "metadata": {
+    "report_title": "AIDC供应链ESG/HRF合规筛查报告",
+    "generated_date": "2026-07-02",
+    "data_cutoff": "2026-07-01",
+    "coverage_count": 56,
+    "methodology": "30分制ESG评分(E10/S10/G10) + 10条红线检查",
+    "data_source": "combined_target_valuation_model_20260701.json",
+    "analyst": "ESG/合规分析师"
+  },
+  "summary": {
+    "pass_count": 42,
+    "conditional_pass_count": 12,
+    "exclude_count": 2,
+    "total_count": 56,
+    "red_line_triggered_count": 2,
+    "key_findings": [
+      "红线#1(BIS出口管制): 中科曙光(2019/6/24列入)、海光信息(2022/8/1列入) — 实体清单状态持续，无解除迹象",
+      "数据安全高风险组: 三大运营商 + 第三方IDC运营商(7只) 需持续监控《数据安全法》合规",
+      "能耗合规重点: IDC运营商PUE达标和绿电比例是2026-2027年核心约束",
+      "治理警示: 中兴通讯历史BIS违规记录(2018年$14亿和解)虽已结案，但合规文化需持续跟踪"
+    ]
+  },
+  "red_line_definitions": {
+    "1": "BIS出口管制实体清单",
+    "2": "重大环境违法",
+    "3": "数据安全法重大违规",
+    "4": "财务造假/欺诈",
+    "5": "重大关联交易利益输送",
+    "6": "实际控制人重大违法",
+    "7": "退市风险警示(*ST)",
+    "8": "HRF供应链严重违规",
+    "9": "重大安全生产事故",
+    "10": "信息披露严重违规"
+  },
+  "companies": {
+    "002916": {
+      "ticker": "002916",
+      "company": "深南电路",
+      "chain_bucket": "AI PCB/CCL",
+      "e_score": 6.0,
+      "s_score": 6.0,
+      "g_score": 6.0,
+      "esg_total": 18.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 2.0,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "央企背景治理较好",
+        "电子制造环保合规需持续关注"
+      ],
+      "red_line_triggered": false
+    },
+    "600183": {
+      "ticker": "600183",
+      "company": "生益科技",
+      "chain_bucket": "AI PCB/CCL",
+      "e_score": 6.0,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 17.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "混合所有制治理结构",
+        "覆铜板生产环保合规"
+      ],
+      "red_line_triggered": false
+    },
+    "603186": {
+      "ticker": "603186",
+      "company": "华正新材",
+      "chain_bucket": "AI PCB/CCL",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "民企治理规范性待提升",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "688519": {
+      "ticker": "688519",
+      "company": "南亚新材",
+      "chain_bucket": "AI PCB/CCL",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "民企治理规范性待提升",
+        "科创板信息披露要求高"
+      ],
+      "red_line_triggered": false
+    },
+    "300383": {
+      "ticker": "300383",
+      "company": "光环新网",
+      "chain_bucket": "AIDC/IDC 运营",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "PUE数据披露不完整，部分老项目可能高于1.35",
+        "AWS中国合作模式数据合规边界需明确",
+        "需每半年核查PUE达标和数据安全认证"
+      ],
+      "red_line_triggered": false
+    },
+    "300442": {
+      "ticker": "300442",
+      "company": "润泽科技",
+      "chain_bucket": "AIDC/IDC 运营",
+      "e_score": 5.0,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 16.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "廊坊园区PUE约1.2-1.3基本达标但液冷项目需验证",
+        "AIDC业务数据安全责任从托管升级为处理方",
+        "绿电PPA比例不高，需提升绿电使用"
+      ],
+      "red_line_triggered": false
+    },
+    "300738": {
+      "ticker": "300738",
+      "company": "奥飞数据",
+      "chain_bucket": "AIDC/IDC 运营",
+      "e_score": 4.0,
+      "s_score": 5.5,
+      "g_score": 5.0,
+      "esg_total": 14.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 0.5,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 1.5,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "PUE数据披露不充分",
+        "绿电使用信息不足",
+        "数据安全管理体系披露较少",
+        "需每半年核查PUE和能耗管理体系"
+      ],
+      "red_line_triggered": false
+    },
+    "600050": {
+      "ticker": "600050",
+      "company": "中国联通",
+      "chain_bucket": "AIDC/IDC 运营",
+      "e_score": 6.0,
+      "s_score": 7.5,
+      "g_score": 7.0,
+      "esg_total": 20.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.5,
+        "supply_chain_labor": 2.0,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 2.0,
+        "independent_director_ratio": 2.0,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "智算云业务数据合规需持续跟踪《数据安全法》执行",
+        "关键信息基础设施运营者数据安全义务更重",
+        "需年度核查数据安全合规和绿电目标"
+      ],
+      "red_line_triggered": false
+    },
+    "600941": {
+      "ticker": "600941",
+      "company": "中国移动",
+      "chain_bucket": "AIDC/IDC 运营",
+      "e_score": 7.0,
+      "s_score": 8.0,
+      "g_score": 8.0,
+      "esg_total": 23.0,
+      "e_breakdown": {
+        "pue_compliance": 2.0,
+        "green_power_ratio": 2.0,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 3.0,
+        "supply_chain_labor": 2.0,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 2.0,
+        "independent_director_ratio": 2.0,
+        "disclosure_quality": 2.0,
+        "related_party_transaction": 2.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "PUE 1.15-1.25达标，部分园区达1.1以下",
+        "2025年绿电采购超200亿kWh",
+        "等保三级认证齐全，数据分类分级管理完善",
+        "需年度核查数据安全合规和绿电目标"
+      ],
+      "red_line_triggered": false
+    },
+    "601728": {
+      "ticker": "601728",
+      "company": "中国电信",
+      "chain_bucket": "AIDC/IDC 运营",
+      "e_score": 6.0,
+      "s_score": 7.5,
+      "g_score": 7.0,
+      "esg_total": 20.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.5,
+        "supply_chain_labor": 2.0,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 2.0,
+        "independent_director_ratio": 2.0,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "PUE改善中，部分先进园区达标",
+        "绿电采购约15-20%稳步增长",
+        "AI算力服务数据合规需跟踪",
+        "需年度核查数据安全合规和绿电目标"
+      ],
+      "red_line_triggered": false
+    },
+    "603881": {
+      "ticker": "603881",
+      "company": "数据港",
+      "chain_bucket": "AIDC/IDC 运营",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 16.0,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "PUE数据披露不完整",
+        "绿电使用披露有限",
+        "需每半年核查PUE和能耗管理体系"
+      ],
+      "red_line_triggered": false
+    },
+    "002335": {
+      "ticker": "002335",
+      "company": "科华数据",
+      "chain_bucket": "供配电/能源",
+      "e_score": 5.5,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 17.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "UPS数据中心订单需关注质量合规",
+        "民企治理结构"
+      ],
+      "red_line_triggered": false
+    },
+    "002364": {
+      "ticker": "002364",
+      "company": "中恒电气",
+      "chain_bucket": "供配电/能源",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "信息披露质量一般",
+        "HVDC业务数据中心收入占比需验证"
+      ],
+      "red_line_triggered": false
+    },
+    "002518": {
+      "ticker": "002518",
+      "company": "科士达",
+      "chain_bucket": "供配电/能源",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "数据中心UPS业务合规性良好",
+        "海外供应链劳工标准需关注"
+      ],
+      "red_line_triggered": false
+    },
+    "301291": {
+      "ticker": "301291",
+      "company": "明阳电气",
+      "chain_bucket": "供配电/能源",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "变压器数据中心订单需验证",
+        "民企治理规范性"
+      ],
+      "red_line_triggered": false
+    },
+    "600089": {
+      "ticker": "600089",
+      "company": "特变电工",
+      "chain_bucket": "供配电/能源",
+      "e_score": 6.0,
+      "s_score": 6.5,
+      "g_score": 5.5,
+      "esg_total": 18.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "光伏/风电制造绿电相关加分",
+        "混合所有制治理结构",
+        "央企背景公益投入较多"
+      ],
+      "red_line_triggered": false
+    },
+    "601179": {
+      "ticker": "601179",
+      "company": "中国西电",
+      "chain_bucket": "供配电/能源",
+      "e_score": 6.0,
+      "s_score": 6.5,
+      "g_score": 6.0,
+      "esg_total": 18.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 2.0,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "央企背景治理规范",
+        "电力设备安全标准严格",
+        "公益投入较多"
+      ],
+      "red_line_triggered": false
+    },
+    "688676": {
+      "ticker": "688676",
+      "company": "金盘科技",
+      "chain_bucket": "供配电/能源",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "干式变压器数据中心占比需验证",
+        "科创板信息披露要求高"
+      ],
+      "red_line_triggered": false
+    },
+    "000988": {
+      "ticker": "000988",
+      "company": "华工科技",
+      "chain_bucket": "光通信",
+      "e_score": 6.0,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 17.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "高校背景治理结构",
+        "光模块行业认证要求高"
+      ],
+      "red_line_triggered": false
+    },
+    "002281": {
+      "ticker": "002281",
+      "company": "光迅科技",
+      "chain_bucket": "光通信",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "信息披露质量一般",
+        "光芯片国产化需持续投入"
+      ],
+      "red_line_triggered": false
+    },
+    "300308": {
+      "ticker": "300308",
+      "company": "中际旭创",
+      "chain_bucket": "光通信",
+      "e_score": 6.0,
+      "s_score": 6.0,
+      "g_score": 6.0,
+      "esg_total": 18.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "光模块龙头治理较好",
+        "北美客户集中风险",
+        "800G/1.6T产品质量认证关键"
+      ],
+      "red_line_triggered": false
+    },
+    "300394": {
+      "ticker": "300394",
+      "company": "天孚通信",
+      "chain_bucket": "光通信",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 16.0,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "无源器件龙头",
+        "信息披露质量较好"
+      ],
+      "red_line_triggered": false
+    },
+    "300502": {
+      "ticker": "300502",
+      "company": "新易盛",
+      "chain_bucket": "光通信",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 16.0,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "泰国产能扩张合规性",
+        "北美客户依赖度高",
+        "信息披露质量较好"
+      ],
+      "red_line_triggered": false
+    },
+    "301205": {
+      "ticker": "301205",
+      "company": "联特科技",
+      "chain_bucket": "光通信",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "光模块二线厂商需验证订单",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "603083": {
+      "ticker": "603083",
+      "company": "剑桥科技",
+      "chain_bucket": "光通信",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 4.5,
+      "esg_total": 15.0,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": -0.5
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "历史信息披露瑕疵记录(-0.5分)",
+        "海外供应链合规需持续关注"
+      ],
+      "red_line_triggered": false
+    },
+    "000063": {
+      "ticker": "000063",
+      "company": "中兴通讯",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 6.0,
+      "s_score": 7.0,
+      "g_score": 5.5,
+      "esg_total": 18.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.5,
+        "supply_chain_labor": 2.0,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 2.0,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": -1.0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "2018年BIS违规案已结案($14亿罚款)但合规文化扣分-1分",
+        "合规审计报告需年度核查",
+        "5G+AI算力业务数据安全责任重"
+      ],
+      "red_line_triggered": false
+    },
+    "000938": {
+      "ticker": "000938",
+      "company": "紫光股份",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 6.0,
+      "s_score": 6.0,
+      "g_score": 6.0,
+      "esg_total": 18.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "未列入BIS实体清单但网络设备业务有地缘风险",
+        "需季度核查BIS实体清单更新"
+      ],
+      "red_line_triggered": false
+    },
+    "000977": {
+      "ticker": "000977",
+      "company": "浪潮信息",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 6.0,
+      "s_score": 6.0,
+      "g_score": 6.0,
+      "esg_total": 18.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "服务器业务依赖美国芯片(NVIDIA/Intel)有供应链风险",
+        "需季度核查BIS实体清单和英伟达供货状态"
+      ],
+      "red_line_triggered": false
+    },
+    "002396": {
+      "ticker": "002396",
+      "company": "星网锐捷",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "网络设备业务合规性良好",
+        "教育/金融行业客户数据安全需关注"
+      ],
+      "red_line_triggered": false
+    },
+    "002463": {
+      "ticker": "002463",
+      "company": "沪电股份",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 6.0,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 17.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "高端PCB客户认证关键",
+        "泰国基地劳工合规需持续关注"
+      ],
+      "red_line_triggered": false
+    },
+    "002913": {
+      "ticker": "002913",
+      "company": "奥士康",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "PCB企业环保合规",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "002922": {
+      "ticker": "002922",
+      "company": "伊戈尔",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "电源变压器业务数据中心占比需验证",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "300476": {
+      "ticker": "300476",
+      "company": "胜宏科技",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "泰国/越南海外产能扩张合规性",
+        "英伟达供应商认证关键"
+      ],
+      "red_line_triggered": false
+    },
+    "301165": {
+      "ticker": "301165",
+      "company": "锐捷网络",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "网络设备数据安全合规",
+        "教育行业客户占比较高"
+      ],
+      "red_line_triggered": false
+    },
+    "600845": {
+      "ticker": "600845",
+      "company": "宝信软件",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 6.0,
+      "s_score": 6.5,
+      "g_score": 7.0,
+      "esg_total": 19.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 2.0,
+        "disclosure_quality": 2.0,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "宝钢背景治理规范",
+        "工业软件+IDC运营双轮驱动",
+        "信息披露质量优秀"
+      ],
+      "red_line_triggered": false
+    },
+    "601138": {
+      "ticker": "601138",
+      "company": "工业富联",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 6.0,
+      "s_score": 7.5,
+      "g_score": 7.5,
+      "esg_total": 21.0,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.5,
+        "supply_chain_labor": 2.0,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 2.0,
+        "independent_director_ratio": 2.0,
+        "disclosure_quality": 2.0,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "全球供应链复杂，HRF合规需持续验证",
+        "AI服务器ODM龙头但客户集中风险",
+        "需年度HRF供应链审计"
+      ],
+      "red_line_triggered": false
+    },
+    "603019": {
+      "ticker": "603019",
+      "company": "中科曙光",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 3.0,
+      "esg_total": 13.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": -2.0
+      },
+      "red_lines": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "需排除",
+      "key_concerns": [
+        "红线#1触发: BIS实体清单2019/6/24列入，持续至今",
+        "许可证政策: 推定拒绝",
+        "无法直接采购美国原产芯片/软件/技术",
+        "实体清单状态构成永久性合规障碍"
+      ],
+      "red_line_triggered": true
+    },
+    "603228": {
+      "ticker": "603228",
+      "company": "景旺电子",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "PCB企业环保合规",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "688041": {
+      "ticker": "688041",
+      "company": "海光信息",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 3.0,
+      "esg_total": 13.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": -2.0
+      },
+      "red_lines": {
+        "1": true,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "需排除",
+      "key_concerns": [
+        "红线#1触发: BIS实体清单2022/8/1列入(母公司THATIC 2019/6首批)",
+        "AMD x86 IP授权实质中断",
+        "CPU架构演进依赖外部授权模式已切断",
+        "长期技术路线存在根本性不确定性"
+      ],
+      "red_line_triggered": true
+    },
+    "688183": {
+      "ticker": "688183",
+      "company": "生益电子",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "生益科技子公司治理结构",
+        "PCB业务环保合规"
+      ],
+      "red_line_triggered": false
+    },
+    "688256": {
+      "ticker": "688256",
+      "company": "寒武纪",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 16.0,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "有条件通过",
+      "key_concerns": [
+        "未列入BIS实体清单但AI芯片设计可能面临管制升级",
+        "EDA工具国产化进度需评估",
+        "需每季度核查BIS实体清单更新",
+        "若被列入立即转为需排除"
+      ],
+      "red_line_triggered": false
+    },
+    "688702": {
+      "ticker": "688702",
+      "company": "盛科通信",
+      "chain_bucket": "服务器/网络设备/国产算力",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "交换芯片设计需关注供应链安全",
+        "科创板信息披露要求高"
+      ],
+      "red_line_triggered": false
+    },
+    "000530": {
+      "ticker": "000530",
+      "company": "冰山冷热",
+      "chain_bucket": "液冷/温控",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "制冷设备传统业务转型液冷",
+        "产品质量认证关键"
+      ],
+      "red_line_triggered": false
+    },
+    "002158": {
+      "ticker": "002158",
+      "company": "汉钟精机",
+      "chain_bucket": "液冷/温控",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "压缩机产品液冷应用拓展",
+        "台湾背景治理结构"
+      ],
+      "red_line_triggered": false
+    },
+    "002837": {
+      "ticker": "002837",
+      "company": "英维克",
+      "chain_bucket": "液冷/温控",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "液冷温控龙头",
+        "数据中心客户认证关键",
+        "产品有助于降低PUE属ESG正面贡献"
+      ],
+      "red_line_triggered": false
+    },
+    "300249": {
+      "ticker": "300249",
+      "company": "依米康",
+      "chain_bucket": "液冷/温控",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "精密空调液冷转型",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "300499": {
+      "ticker": "300499",
+      "company": "高澜股份",
+      "chain_bucket": "液冷/温控",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "液冷系统数据中心占比提升",
+        "电力电子热管理经验可复用"
+      ],
+      "red_line_triggered": false
+    },
+    "300990": {
+      "ticker": "300990",
+      "company": "同飞股份",
+      "chain_bucket": "液冷/温控",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "温控设备数据中心订单需验证",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "301018": {
+      "ticker": "301018",
+      "company": "申菱环境",
+      "chain_bucket": "液冷/温控",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "环境控制设备数据中心应用",
+        "液冷项目交付能力需验证"
+      ],
+      "red_line_triggered": false
+    },
+    "000021": {
+      "ticker": "000021",
+      "company": "深科技",
+      "chain_bucket": "算力芯片/存储/网络 ASIC",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "存储封测业务劳工合规",
+        "央企背景治理结构"
+      ],
+      "red_line_triggered": false
+    },
+    "300223": {
+      "ticker": "300223",
+      "company": "北京君正",
+      "chain_bucket": "算力芯片/存储/网络 ASIC",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 16.0,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "车载存储芯片设计",
+        "ISSI收购后整合治理"
+      ],
+      "red_line_triggered": false
+    },
+    "603986": {
+      "ticker": "603986",
+      "company": "兆易创新",
+      "chain_bucket": "算力芯片/存储/网络 ASIC",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.5,
+      "esg_total": 16.0,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.5,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "NOR Flash龙头",
+        "信息披露质量较好"
+      ],
+      "red_line_triggered": false
+    },
+    "688008": {
+      "ticker": "688008",
+      "company": "澜起科技",
+      "chain_bucket": "算力芯片/存储/网络 ASIC",
+      "e_score": 6.0,
+      "s_score": 6.5,
+      "g_score": 7.0,
+      "esg_total": 19.5,
+      "e_breakdown": {
+        "pue_compliance": 1.5,
+        "green_power_ratio": 1.5,
+        "carbon_disclosure": 1.5,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.5,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 2.0,
+        "disclosure_quality": 2.0,
+        "related_party_transaction": 1.5,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "内存接口芯片龙头",
+        "治理结构规范",
+        "信息披露质量优秀"
+      ],
+      "red_line_triggered": false
+    },
+    "688123": {
+      "ticker": "688123",
+      "company": "聚辰股份",
+      "chain_bucket": "算力芯片/存储/网络 ASIC",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "EEPROM芯片设计",
+        "信息披露质量一般"
+      ],
+      "red_line_triggered": false
+    },
+    "688521": {
+      "ticker": "688521",
+      "company": "芯原股份",
+      "chain_bucket": "算力芯片/存储/网络 ASIC",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "芯片IP授权业务",
+        "半导体设计服务合规"
+      ],
+      "red_line_triggered": false
+    },
+    "688795": {
+      "ticker": "688795",
+      "company": "摩尔线程",
+      "chain_bucket": "算力芯片/存储/网络 ASIC",
+      "e_score": 4.5,
+      "s_score": 6.0,
+      "g_score": 5.0,
+      "esg_total": 15.5,
+      "e_breakdown": {
+        "pue_compliance": 1.0,
+        "green_power_ratio": 1.0,
+        "carbon_disclosure": 1.0,
+        "energy_management": 1.5,
+        "environmental_penalty": 0
+      },
+      "s_breakdown": {
+        "data_security": 2.0,
+        "supply_chain_labor": 1.5,
+        "product_quality_safety": 1.5,
+        "community_impact": 1.0,
+        "safety_incident_penalty": 0
+      },
+      "g_breakdown": {
+        "ownership_structure": 1.5,
+        "independent_director_ratio": 1.5,
+        "disclosure_quality": 1.0,
+        "related_party_transaction": 1.0,
+        "regulatory_penalty": 0
+      },
+      "red_lines": {
+        "1": false,
+        "2": false,
+        "3": false,
+        "4": false,
+        "5": false,
+        "6": false,
+        "7": false,
+        "8": false,
+        "9": false,
+        "10": false
+      },
+      "overall_rating": "通过",
+      "key_concerns": [
+        "GPU芯片设计初创",
+        "PS/SOTP里程碑验证阶段",
+        "技术路线不确定性高"
+      ],
+      "red_line_triggered": false
+    }
+  },
+  "monitoring_framework": {
+    "periodic_checks": [
+      {
+        "item": "BIS实体清单更新",
+        "frequency": "月度",
+        "source": "BIS官网",
+        "owner": "合规分析师"
+      },
+      {
+        "item": "数据安全违规通报",
+        "frequency": "季度",
+        "source": "网信办、工信部",
+        "owner": "合规分析师"
+      },
+      {
+        "item": "环保处罚记录",
+        "frequency": "季度",
+        "source": "生态环境部",
+        "owner": "ESG分析师"
+      },
+      {
+        "item": "信息披露违规",
+        "frequency": "季度",
+        "source": "证监会、交易所",
+        "owner": "合规分析师"
+      },
+      {
+        "item": "PUE达标核查",
+        "frequency": "半年",
+        "source": "公司公告、行业报告",
+        "owner": "ESG分析师"
+      },
+      {
+        "item": "绿电采购比例",
+        "frequency": "年度",
+        "source": "公司ESG报告",
+        "owner": "ESG分析师"
+      }
+    ],
+    "immediate_triggers": [
+      "任何标的被新增列入BIS实体清单",
+      "数据安全重大违规事件(网信办通报)",
+      "重大环境违法事件(生态环境部挂牌督办)",
+      "财务造假立案调查(证监会立案)",
+      "实际控制人被立案调查或刑事处罚",
+      "退市风险警示(*ST)"
+    ]
+  }
+}

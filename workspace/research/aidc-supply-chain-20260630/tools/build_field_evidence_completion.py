@@ -554,11 +554,34 @@ def model_candidates() -> list[dict]:
     return candidates
 
 
+def looks_like_demand_anchor(field: str, snippet: str) -> bool:
+    if field != "customer_or_platform":
+        return False
+    text = snippet.lower()
+    demand_terms = ("capex", "ai", "算力", "智算", "大模型", "数据中心", "云", "需求", "景气")
+    direct_customer_terms = ("客户", "云厂商", "csp", "运营商", "microsoft", "meta", "aws", "google", "阿里", "腾讯", "字节", "百度", "华为")
+    return any(term in text for term in demand_terms) and not any(term.lower() in text for term in direct_customer_terms)
+
+
+def looks_like_ocr_noise(field: str, snippet: str) -> bool:
+    if not snippet:
+        return False
+    if any(marker in snippet for marker in DISALLOWED_BY_FIELD.get(field, ())):
+        return True
+    return noisy_snippet(snippet) or has_bad_marker(snippet)
+
+
 def completion_status(field: str, snippet: str, score: int, candidate: dict, structured_available: bool) -> str:
     if snippet and score > 0:
         direct_terms = STRICT_DIRECT_KEYWORDS.get(field, DIRECT_KEYWORDS[field])
         direct_hit = any(keyword.lower() in snippet.lower() for keyword in direct_terms)
-        return "direct" if direct_hit else "proxy"
+        if looks_like_ocr_noise(field, snippet) and score <= 2:
+            return "ocr_noise"
+        if direct_hit:
+            return "direct"
+        if looks_like_demand_anchor(field, snippet):
+            return "demand_anchor"
+        return "broker_indirect" if "预测" in snippet or "报告" in snippet else "proxy"
     if structured_available:
         return "structured_model_proxy"
     if candidate.get("watchlist_blocked"):
@@ -567,8 +590,15 @@ def completion_status(field: str, snippet: str, score: int, candidate: dict, str
 
 
 def canonical_text(field: str, status: str, snippet: str, candidate: dict, structured_text: str) -> str:
-    if status in {"direct", "proxy"}:
-        prefix = "直接证据" if status == "direct" else "代理证据"
+    if status in {"direct", "proxy", "broker_indirect", "demand_anchor", "ocr_noise"}:
+        prefixes = {
+            "direct": "直接证据",
+            "proxy": "代理证据",
+            "broker_indirect": "券商间接证据",
+            "demand_anchor": "需求锚",
+            "ocr_noise": "OCR噪声隔离",
+        }
+        prefix = prefixes[status]
         return f"{prefix}：{snippet}"
     if status == "structured_model_proxy":
         return f"结构化模型代理：{structured_text}"
@@ -578,7 +608,7 @@ def canonical_text(field: str, status: str, snippet: str, candidate: dict, struc
 
 
 def strip_evidence_prefix(text: str) -> str:
-    return re.sub(r"^(直接证据|代理证据|结构化模型代理)：", "", str(text or "")).strip()
+    return re.sub(r"^(直接证据|代理证据|券商间接证据|需求锚|OCR噪声隔离|结构化模型代理)：", "", str(text or "")).strip()
 
 
 def add_operating_proxy_boundaries(field_cells: dict[str, dict], candidate: dict) -> None:
@@ -704,7 +734,11 @@ def build() -> dict:
                 "materiality": "valuation_input" if field in {"revenue_exposure", "order_or_backlog", "asp_or_price_proxy", "margin_impact"} else "valuation_cross_check",
                 "valuation_consequence": (
                     "usable in target/fair-value model with no incremental uplift beyond the evidenced field"
-                    if status in {"direct", "proxy", "structured_model_proxy"}
+                    if status in {"direct", "proxy", "structured_model_proxy", "broker_indirect"}
+                    else "demand anchor only; validates direction but cannot be used as company-specific revenue/customer proof"
+                    if status == "demand_anchor"
+                    else "excluded from valuation input; OCR/noise source must be replaced or treated as source-exhausted"
+                    if status == "ocr_noise"
                     else "blocks incremental valuation credit; watchlist-only if model denominator is also insufficient"
                 ),
             }
@@ -716,7 +750,7 @@ def build() -> dict:
         unresolved = [
             field
             for field, cell in field_cells.items()
-            if cell["status"] in {"source_exhausted", "watchlist_blocked"}
+            if cell["status"] in {"source_exhausted", "watchlist_blocked", "ocr_noise", "not_disclosed"}
         ]
         rows.append({
             "ticker": ticker,
@@ -744,7 +778,7 @@ def build() -> dict:
         "total_field_cells": len(rows) * len(FIELDS),
         "status_counts": dict(status_counter),
         "field_status_counts": {field: dict(counter) for field, counter in field_counter.items()},
-        "rule": "Every modeled core candidate must have direct, proxy, structured-model, source-exhausted, or watchlist-blocked status for each material field.",
+        "rule": "Every modeled core candidate must classify each material field as direct, proxy, broker-indirect, demand-anchor, structured-model, OCR-noise, source-exhausted, or watchlist-blocked.",
     }
     payload = {"metadata": metadata, "rows": rows}
     OUT_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -764,14 +798,16 @@ def write_markdown(payload: dict) -> None:
         "",
         "## Field Status Matrix",
         "",
-        "| Field | Direct | Proxy | Structured proxy | Source exhausted | Watchlist blocked |",
-        "|---|---:|---:|---:|---:|---:|",
+        "| Field | Direct | Proxy | Broker indirect | Demand anchor | Structured proxy | OCR/noise | Source exhausted | Watchlist blocked |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
     ]
     for field in FIELDS:
         counter = metadata["field_status_counts"].get(field, {})
         lines.append(
             f"| {FIELD_LABELS[field]} | {counter.get('direct', 0)} | {counter.get('proxy', 0)} | "
-            f"{counter.get('structured_model_proxy', 0)} | {counter.get('source_exhausted', 0)} | {counter.get('watchlist_blocked', 0)} |"
+            f"{counter.get('broker_indirect', 0)} | {counter.get('demand_anchor', 0)} | "
+            f"{counter.get('structured_model_proxy', 0)} | {counter.get('ocr_noise', 0) + counter.get('not_disclosed', 0)} | "
+            f"{counter.get('source_exhausted', 0)} | {counter.get('watchlist_blocked', 0)} |"
         )
     lines += [
         "",

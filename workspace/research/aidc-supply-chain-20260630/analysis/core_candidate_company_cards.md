@@ -9,7 +9,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 105.7; final target 46.77218181818182; upside -0.5575006450503139.
+- Current target package: current price 94.56; final target 46.77218181818182; upside -0.5053703276419013.
 - Current 2026E package: revenue 145.4 亿元；net profit 10.7 亿元；EPS 0.71；market cap 1587.6 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B; source tier original_pdf; source count across mapped nodes 33.
@@ -33,7 +33,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG，校验出货、ASP、客户认证和 Street 分歧.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 1289.74; final target 1054.652963478261; upside -0.18227475035413265.
+- Current target package: current price 1143.00; final target 1054.652963478261; upside -0.07729399520712077.
 - Current 2026E package: revenue 847.7 亿元；net profit 268.0 亿元；EPS 22.52；market cap 15348.5 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: A-; source tier original_pdf + industry; source count across mapped nodes 6.
@@ -57,7 +57,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 12.23; final target 4.217068181818181; upside -0.655186575485022.
+- Current target package: current price 13.24; final target 4.217068181818181; upside -0.6814903185937929.
 - Current 2026E package: revenue 74.2 亿元；net profit 0.9 亿元；EPS 0.05；market cap 229.8 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: C+; source tier original_pdf; source count across mapped nodes 33.
@@ -81,7 +81,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 19.9; final target 12.399000000000001; upside -0.37693467336683406.
+- Current target package: current price 20.90; final target 12.399000000000001; upside -0.4067464114832535.
 - Current 2026E package: revenue 29.3 亿元；net profit 4.2 亿元；EPS 0.39；market cap 212.2 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B-; source tier original_pdf; source count across mapped nodes 33.
@@ -105,7 +105,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 72.85; final target 65.10378333333334; upside -0.10633104552733907.
+- Current target package: current price 64.02; final target 65.10378333333334; upside 0.01692882432573173.
 - Current 2026E package: revenue 10461.6 亿元；net profit 439.1 亿元；EPS 2.21；market cap 14484.1 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: A-; source tier company filing + original_pdf; source count across mapped nodes 23.
@@ -129,7 +129,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG，校验出货、ASP、客户认证和 Street 分歧.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 608.94; final target 505.37960695652174; upside -0.1700666618114729.
+- Current target package: current price 509.00; final target 505.37960695652174; upside -0.007112756470487702.
 - Current 2026E package: revenue 362.5 亿元；net profit 121.8 亿元；EPS 12.17；market cap 6091.2 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: A-; source tier original_pdf + company filing page; source count across mapped nodes 6.
@@ -153,7 +153,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 154.74; final target 101.34541999999999; upside -0.3450599715652063.
+- Current target package: current price 130.51; final target 101.34541999999999; upside -0.22346624779710367.
 - Current 2026E package: revenue 248.6 亿元；net profit 49.7 亿元；EPS 2.58；market cap 2980.3 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: A; source tier company filing + original_pdf; source count across mapped nodes 10.
@@ -177,7 +177,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 69.23; final target 50.17847; upside -0.275191824353604.
+- Current target package: current price 63.79; final target 50.17847; upside -0.2133803103934786.
 - Current 2026E package: revenue 1418.8 亿元；net profit 24.6 亿元；EPS 1.65；market cap 1031.7 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B; source tier original_pdf; source count across mapped nodes 30.
@@ -201,7 +201,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 78.67; final target 50.62230695652173; upside -0.3565233639694708.
+- Current target package: current price 87.80; final target 50.62230695652173; upside -0.4234361394473607.
 - Current 2026E package: revenue 80.0 亿元；net profit 29.5 亿元；EPS 1.57；market cap 1484.7 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: A-; source tier company IR + company filing + original_pdf; source count across mapped nodes 33.
@@ -225,7 +225,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 468.09; final target 221.82511666666667; upside -0.526105841469233.
+- Current target package: current price 423.10; final target 221.82511666666667; upside -0.47571468525959193.
 - Current 2026E package: revenue 274.8 亿元；net profit 36.4 亿元；EPS 5.33；market cap 3194.1 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B; source tier original_pdf; source count across mapped nodes 16.
@@ -249,7 +249,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 177.84; final target 85.8072; upside -0.5175033738191633.
+- Current target package: current price 151.95; final target 85.8072; upside -0.4352931885488648.
 - Current 2026E package: revenue 339.2 亿元；net profit 54.9 亿元；EPS 2.00；market cap 4883.0 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B; source tier original_pdf; source count across mapped nodes 3.
@@ -273,7 +273,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 114.16; final target 49.70080000000001; upside -0.5646391030133145.
+- Current target package: current price 107.56; final target 49.70080000000001; upside -0.5379248791372256.
 - Current 2026E package: revenue 30.9 亿元；net profit 2.4 亿元；EPS 0.91；market cap 306.4 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B-; source tier original_pdf; source count across mapped nodes 28.
@@ -297,7 +297,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 43.2; final target 28.873200000000004; upside -0.3316388888888888.
+- Current target package: current price 37.81; final target 28.873200000000004; upside -0.2363607511240412.
 - Current 2026E package: revenue 71.5 亿元；net profit 4.9 亿元；EPS 0.93；market cap 227.6 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: A-; source tier company filing + original_pdf; source count across mapped nodes 12.
@@ -321,7 +321,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG，校验出货、ASP、客户认证和 Street 分歧.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 28.86; final target 28.50097391304348; upside -0.012440266353309748.
+- Current target package: current price 29.03; final target 28.50097391304348; upside -0.01822342703949431.
 - Current 2026E package: revenue 1216.7 亿元；net profit 40.1 亿元；EPS 1.20；market cap 966.4 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B; source tier original_pdf; source count across mapped nodes 21.
@@ -345,7 +345,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG，校验产品结构、良率、扩产和周期.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 351.66; final target 238.67219999999998; upside -0.3212984132400616.
+- Current target package: current price 306.09; final target 238.67219999999998; upside -0.2202548270116632.
 - Current 2026E package: revenue 220.8 亿元；net profit 51.7 亿元；EPS 5.92；market cap 3068.4 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B+; source tier original_pdf; source count across mapped nodes 13.
@@ -369,7 +369,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: 正常化 PE/SOTP，校验认证、批量验收和收入纯度.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 79.62; final target 48.11704; upside -0.3956664154734991.
+- Current target package: current price 71.40; final target 48.11704; upside -0.3260918767507003.
 - Current 2026E package: revenue 65.3 亿元；net profit 6.3 亿元；EPS 0.64；market cap 783.3 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: A-; source tier company filing + original_pdf; source count across mapped nodes 53.
@@ -393,7 +393,7 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE 或 EV/EBITDA，校验 backlog、交付、毛利和营运资本.
 - Target-price status: target_price_published.
 - Valuation disposition: published_target_price_model - 进入可发布目标价组合；目标价、权重、上/下行空间必须由 current_valuation_model 复算。
-- Current target package: current price 87.05; final target 44.75531818181818; upside -0.48586653438462746.
+- Current target package: current price 79.00; final target 44.75531818181818; upside -0.4334769850402762.
 - Current 2026E package: revenue 69.2 亿元；net profit 5.4 亿元；EPS 1.14；market cap 414.3 亿元；source data/current_valuation_model_20260630.json.
 - Extended model status: not disclosed; blocker none; source not applicable.
 - Evidence quality: B; source tier original_pdf; source count across mapped nodes 5.
@@ -417,8 +417,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 37.18; final target 57.99744; upside 0.5599096288327057.
-- Extended 2026E package: revenue 1666.9 亿元；net profit 92.6 亿元；EPS 1.94；market cap 1786.6 亿元；broker target 60.0.
+- Current target package: current price 35.32; final target 56.76607; upside 0.607193374858437.
+- Extended 2026E package: revenue 1666.9 亿元；net profit 92.6 亿元；EPS 1.94；market cap 1711.2 亿元；broker target 60.0.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/000063-中兴通讯/AP202509011737603598-群益证券-运营商业务承压-AI服务器相关业务快速增长.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -441,8 +441,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 5.27; final target 5.65915; upside 0.07384250474383314.
-- Extended 2026E package: revenue 5618.8 亿元；net profit 390.5 亿元；EPS 0.42；market cap 4900.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 5.42; final target 5.67875; upside 0.04773985239852396.
+- Extended 2026E package: revenue 5618.8 亿元；net profit 390.5 亿元；EPS 0.42；market cap 4974.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/601728-中国电信/02-AP202509031738356169-东莞证券-2025年半年报点评-上半年稳健增收-算力支持能力持续增强.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -465,8 +465,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 86.49; final target 98.30234; upside 0.1365746329055384.
-- Extended 2026E package: revenue 11257.6 亿元；net profit 1562.3 亿元；EPS 7.24；market cap 18788.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 88.25; final target 96.69185; upside 0.09565835694050984.
+- Extended 2026E package: revenue 11257.6 亿元；net profit 1562.3 亿元；EPS 7.24；market cap 18971.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/600941-中国移动/AP202504141656394300-山西证券-重点布局5-5G-推理算力-AI投资-新业务领域开辟新业态.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -489,8 +489,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 4.08; final target 4.5044; upside 0.10401960784313724.
-- Extended 2026E package: revenue 4018.1 亿元；net profit 235.3 亿元；EPS 0.34；market cap 2849.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 4.06; final target 4.4946; upside 0.10704433497536958.
+- Extended 2026E package: revenue 4018.1 亿元；net profit 235.3 亿元；EPS 0.34；market cap 2821.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/600050-中国联通/01-AP202603201820670142-国金证券-营收稳健增长-ai带动盈利质量优化.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -513,8 +513,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE plus order-cycle / working-capital check.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 14.5; final target 10.382749999999998; upside -0.28394827586206906.
-- Extended 2026E package: revenue 242.5 亿元；net profit 22.9 亿元；EPS 0.40；market cap 842.1 亿元；broker target 7.9.
+- Current target package: current price 14.06; final target 10.03303; upside -0.2864132290184922.
+- Extended 2026E package: revenue 242.5 亿元；net profit 22.9 亿元；EPS 0.40；market cap 832.2 亿元；broker target 7.9.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/601179-中国西电/AP202503141644357609-国金证券-一次设备老牌巨头-主网景气再腾飞.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 5.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -537,8 +537,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE plus order-cycle / working-capital check.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 51.84; final target 25.440579999999997; upside -0.5092480709876543.
-- Extended 2026E package: revenue 32.6 亿元；net profit 3.7 亿元；EPS 0.65；market cap 295.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 50.85; final target 24.649859999999997; upside -0.5152436578171092.
+- Extended 2026E package: revenue 32.6 亿元；net profit 3.7 亿元；EPS 0.65；market cap 302.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002364-中恒电气/AP202505271679991867-西南证券-数据中心HVDC龙头-受益于AIDC需求增长.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 5.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -561,8 +561,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
 - Target-price status: watchlist_only_insufficient_model.
 - Valuation disposition: watchlist_only_insufficient_positive_eps_or_denominator - 当前收入、股本和市值已补齐，但 2026E EPS 代理为负或不可用；PE/PEG 不适用，需等待盈利路径或改用明示 PS/PB/SOTP 证据。
-- Current target package: current price 108.0; final target not published; upside not applicable.
-- Extended 2026E package: revenue 3.0 亿元；net profit -0.0 亿元；EPS -0.06；market cap 80.8 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 98.53; final target None; upside None.
+- Extended 2026E package: revenue 3.0 亿元；net profit -0.0 亿元；EPS -0.06；market cap 79.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: 盈利或模型分母不足，观察名单; blocker positive 2026E EPS; source sources/source-exhausted-official-filings-20260701/300936-中英科技/annual-2025年年度报告.txt.
 - Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -585,8 +585,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE plus order-cycle / working-capital check.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 31.27; final target 28.053649999999998; upside -0.10285737128237937.
-- Extended 2026E package: revenue 73.1 亿元；net profit 4.9 亿元；EPS 1.15；market cap 133.8 亿元；broker target 45.8.
+- Current target package: current price 29.60; final target 27.90665; upside -0.05720777027027035.
+- Extended 2026E package: revenue 73.1 亿元；net profit 4.9 亿元；EPS 1.15；market cap 131.2 亿元；broker target 45.8.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002922-伊戈尔/AP202512141800437415-东吴证券-新能源变压器龙头加速出海-布局AIDC打造第二增长曲线.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 9.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -609,8 +609,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
 - Target-price status: watchlist_only_insufficient_model.
 - Valuation disposition: watchlist_only_insufficient_positive_eps_or_denominator - 当前收入、股本和市值已补齐，但 2026E EPS 代理为负或不可用；PE/PEG 不适用，需等待盈利路径或改用明示 PS/PB/SOTP 证据。
-- Current target package: current price 7.81; final target not published; upside not applicable.
-- Extended 2026E package: revenue 7.1 亿元；net profit -0.9 亿元；EPS -0.17；market cap 43.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 7.58; final target None; upside None.
+- Extended 2026E package: revenue 7.1 亿元；net profit -0.9 亿元；EPS -0.17；market cap 43.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: 盈利或模型分母不足，观察名单; blocker positive 2026E EPS; source sources/source-exhausted-official-filings-20260701/603912-佳力图/annual-603912-佳力图2025年年度报告.txt.
 - Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 14.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -633,8 +633,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE/SOTP with data-center order validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 15.21; final target 5.8389500000000005; upside -0.616111111111111.
-- Extended 2026E package: revenue 14.5 亿元；net profit 0.6 亿元；EPS 0.13；market cap 68.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 14.59; final target 5.7924; upside -0.6029883481836875.
+- Extended 2026E package: revenue 14.5 亿元；net profit 0.6 亿元；EPS 0.13；market cap 67.8 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/300249-依米康/AP202606091823393919-华鑫证券-公司事件点评报告-数据中心温控解决方案服务商-定增加码液冷促进产品升级.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -657,8 +657,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 772.01; final target 370.75251999999995; upside -0.5197568425279466.
-- Extended 2026E package: revenue 85.1 亿元；net profit 31.5 亿元；EPS 4.45；market cap 5464.3 亿元；broker target 120.0.
+- Current target package: current price 694.81; final target 345.82035999999994; upside -0.5022806810494955.
+- Extended 2026E package: revenue 85.1 亿元；net profit 31.5 亿元；EPS 4.45；market cap 4963.0 亿元；broker target 120.0.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/603986-兆易创新/AP202501141641912457-高盛-CEO电话会-2025年展望及边缘AI机会要点-买入.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -681,8 +681,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 242.43; final target 122.20944000000001; upside -0.4958980324217299.
-- Extended 2026E package: revenue 150.1 亿元；net profit 15.4 亿元；EPS 1.90；market cap 1964.4 亿元；broker target 78.3.
+- Current target package: current price 218.19; final target 110.6236; upside -0.4929941793849397.
+- Extended 2026E package: revenue 150.1 亿元；net profit 15.4 亿元；EPS 1.90；market cap 1781.0 亿元；broker target 78.3.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002281-光迅科技/AP202512291810626232-国信证券-自研光芯片垂直布局-受益国内AI算力发展.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 21.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -705,8 +705,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE/SOTP with data-center order validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 5.38; final target 5.380599999999999; upside 0.00011152416356874362.
-- Extended 2026E package: revenue 55.2 亿元；net profit 2.1 亿元；EPS 0.25；market cap 46.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 5.36; final target 5.3904; upside 0.005671641791044735.
+- Extended 2026E package: revenue 55.2 亿元；net profit 2.1 亿元；EPS 0.25；market cap 46.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/000530-冰山冷热/01-AP202505141672798964-华安证券-冷热核心事业稳步发展-并购与新事业未来可期.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -729,8 +729,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 242.7; final target 131.8989; upside -0.4565352286773795.
-- Extended 2026E package: revenue 79.0 亿元；net profit 9.0 亿元；EPS 2.52；market cap 865.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 218.43; final target 126.24787; upside -0.42202137984709054.
+- Extended 2026E package: revenue 79.0 亿元；net profit 9.0 亿元；EPS 2.52；market cap 795.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/603083-剑桥科技/AP202508221732325413-华鑫证券-公司事件点评报告-高速光模块放量贡献强劲利润-多地量产支撑AI旺盛需求.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -753,8 +753,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 259.05; final target 113.3794; upside -0.5623261918548543.
-- Extended 2026E package: revenue 58.9 亿元；net profit 6.6 亿元；EPS 1.36；market cap 1254.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 234.67; final target 104.6532; upside -0.5540409937358843.
+- Extended 2026E package: revenue 58.9 亿元；net profit 6.6 亿元；EPS 1.36；market cap 1198.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/300223-北京君正/01-AP202512251807948565-中邮证券-计算-存储-感知-执行-多元化全面布局ai.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -777,8 +777,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 173.55; final target 99.66440000000001; upside -0.42573091328147505.
-- Extended 2026E package: revenue 200.6 亿元；net profit 15.5 亿元；EPS 1.99；market cap 1757.8 亿元；broker target 46.2.
+- Current target package: current price 156.20; final target 92.52419; upside -0.4076556338028169.
+- Extended 2026E package: revenue 200.6 亿元；net profit 15.5 亿元；EPS 1.99；market cap 1634.5 亿元；broker target 46.2.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/000988-华工科技/AP202505211676548456-国金证券-国内光模块市场兴起-光电器件业务有望迎来突破.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 9.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -801,8 +801,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG plus cycle/product-mix check.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 212.91; final target 97.85763040244807; upside -0.5403802996456339.
-- Extended 2026E package: revenue 53.1 亿元；net profit 2.8 亿元；EPS 1.77；market cap 336.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 196.00; final target 91.20532040244807; upside -0.5346667326405711.
+- Extended 2026E package: revenue 53.1 亿元；net profit 2.8 亿元；EPS 1.77；market cap 323.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/source-exhausted-official-filings-20260701/603186-华正新材/annual-浙江华正新材料股份有限公司2025年年度报告-修订版.txt.
 - Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -825,8 +825,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG plus cycle/product-mix check.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 360.0; final target 146.584; upside -0.5928222222222221.
-- Extended 2026E package: revenue 60.1 亿元；net profit 4.9 亿元；EPS 2.08；market cap 845.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 353.00; final target 140.19173999999998; upside -0.6028562606232295.
+- Extended 2026E package: revenue 60.1 亿元；net profit 4.9 亿元；EPS 2.08；market cap 855.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688519-南亚新材/AP202508011719656440-华金证券-高端高速产品获全球知名AI服务器认证-持续受益国产算力发展.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -849,8 +849,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE/SOTP with data-center order validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 100.04; final target 69.3598; upside -0.3066793282686925.
-- Extended 2026E package: revenue 43.6 亿元；net profit 4.7 亿元；EPS 2.76；market cap 170.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 96.40; final target 69.11234999999999; upside -0.2830669087136931.
+- Extended 2026E package: revenue 43.6 亿元；net profit 4.7 亿元；EPS 2.76；market cap 168.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/300990-同飞股份/AP202604301821823442-东莞证券-深度报告-储能与数据中心液冷双核驱动-全球化开启新篇章.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 21.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -873,8 +873,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 63.03; final target 69.28835000000001; upside 0.09929160717118846.
-- Extended 2026E package: revenue 67.4 亿元；net profit 6.9 亿元；EPS 2.18；market cap 205.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 58.02; final target 69.0262; upside 0.189696656325405.
+- Extended 2026E package: revenue 67.4 亿元；net profit 6.9 亿元；EPS 2.18；market cap 202.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/002913-奥士康/02-AP202508271735306248-中邮证券-高阶hdi持续放量.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -897,8 +897,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 18.29; final target 15.193050000000001; upside -0.16932476763258597.
-- Extended 2026E package: revenue 155.3 亿元；net profit 27.6 亿元；EPS 1.03；market cap 566.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 18.11; final target 15.23715; upside -0.15863335173937054.
+- Extended 2026E package: revenue 155.3 亿元；net profit 27.6 亿元；EPS 1.03；market cap 572.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/600845-宝信软件/01-AP202504101654109806-国元证券-2024年年度报告点评-营收实现稳健增长-ai驱动转型升级.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 43.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -921,8 +921,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 1485.33; final target 954.47616; upside -0.3573979115752054.
-- Extended 2026E package: revenue 108.5 亿元；net profit 67.9 亿元；EPS 16.10；market cap 6266.8 亿元；broker target 1903.0.
+- Current target package: current price 1372.00; final target 924.4399999999999; upside -0.32620991253644316.
+- Extended 2026E package: revenue 108.5 亿元；net profit 67.9 亿元；EPS 16.10；market cap 5906.8 亿元；broker target 1903.0.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688256-寒武纪/AP202604281821702568-第一上海证券-AI-Agent时代来临-国产算力支撑AI建设.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 10.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -945,8 +945,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
 - Target-price status: ps_sotp_target_model_ready.
 - Valuation disposition: published_ps_sotp_target_model - 盈利拐点尚不适合单一 PE，但收入、费用率、里程碑和 SOTP/PS 目标区间可复算；当前发布的是里程碑目标，不把未兑现利润提前资本化。
-- Current target package: current price 673.8; final target 182.25; upside -0.7295191451469278.
-- Extended 2026E package: revenue 26.7 亿元；net profit -10.0 亿元；EPS -2.13；market cap 3167.1 亿元；broker target 182.2.
+- Current target package: current price 641.59; final target 182.25; upside -0.7159400863479792.
+- Extended 2026E package: revenue 26.7 亿元；net profit -10.0 亿元；EPS -2.13；market cap 3158.5 亿元；broker target 182.2.
 - Extended model status: PS/SOTP 里程碑目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688795-摩尔线程/AP202511301791284379-国金证券-以全功能GPU为核心的国产加速计算平台领军者.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -969,8 +969,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PB/ROE plus EV/EBITDA check; PE is secondary.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 25.8; final target 9.2548; upside -0.6412868217054264.
-- Extended 2026E package: revenue 18.2 亿元；net profit 1.7 亿元；EPS 0.23；market cap 185.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 25.21; final target 8.727699999999999; upside -0.6538000793335978.
+- Extended 2026E package: revenue 18.2 亿元；net profit 1.7 亿元；EPS 0.23；market cap 186.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/603881-数据港/01-AP202604211821396756-中邮证券-业绩维持稳健-智算业务贡献增量.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 26.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=proxy; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -993,20 +993,20 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE plus order-cycle / working-capital check.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 35.39; final target 62.29555; upside 0.7602585476123198.
-- Extended 2026E package: revenue 126.2 亿元；net profit 10.3 亿元；EPS 3.30；market cap 110.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 34.75; final target 62.3715; upside 0.7948633093525179.
+- Extended 2026E package: revenue 126.2 亿元；net profit 10.3 亿元；EPS 3.30；market cap 111.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/301291-明阳电气/AP202509301753286098-开源证券-公司首次覆盖报告-新能源输配电翘楚-海外-海风-AIDC多域突破.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 10.
-- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=proxy; margin_impact=direct.
-- Residual proxy boundary: 利用率/良率/爬坡：AStock 自建公允价值模型保留，broker 权重为 0；该 proxy 字段只作折价边界，不触发目标价上修。.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=broker_indirect; margin_impact=direct.
+- Residual proxy boundary: none.
 - Revenue exposure evidence: 直接证据：证券研究所 数据来源：Wind、开源证券研究所 公司核心产品包括智能变压器、箱式变电站和智能成套开关设备。2025H1 箱式 变电站实现营收 18.66 亿元，yoy+16.1%，收入占比为 53.7%，毛利率为 20.7%。成 套开关柜为增长最快的产品线，2025H1 实现收入 5.12 亿元，yoy+91.0%，在收入的 占比从 2024 年的 10.5....
 - Customer/platform evidence: 直接证据：0.5 0.0 0% 2020 2021 2022 数据中心领域收入（亿元） yoy 数据来源：公司公告、开源证券研究所 MyPower 数据中心电力模块已成功斩获多个互联网头部客户重要订单。2024 年 5 月，公司正式推出 MyPower 数据中心电力模块，凭借一体化设计、预制化生产、 模块化交付的创新优势，成功中标字节跳动火山引擎数据中心项目、江苏新纪....
 - Order/backlog evidence: 直接证据：0.0 0% 2020 2021 2022 数据中心领域收入（亿元） yoy 数据来源：公司公告、开源证券研究所 MyPower 数据中心电力模块已成功斩获多个互联网头部客户重要订单。2024 年 5 月，公司正式推出 MyPower 数据中心电力模块，凭借一体化设计、预制化生产、 模块化交付的创新优势，成功中标字节跳动火山引擎数据中心项目、江苏新纪联太 仓....
 - Capacity/certification evidence: 直接证据：-4.5 -2.63 10.27 威机构认证，远销欧洲、北美洲、东南亚、中东、南美洲、非洲等全球 60 多个国 绝对收益 6.24 14.3 45.47 家和地区；持续加码布局海外产能，已在马来西亚基地正式开展设备投资，海外业 贺朝晖 分析师 务将成为公司未来业绩新增长点。 SAC 执业证书编号：S0910525030003 hezhaohui@huajin....
 - ASP or margin evidence: 直接证据：源变压器空间在 306 亿元 考虑风电、光伏装机侧所需求的变压器，变压器功率因数为 0.85，即输出 1kW 需要 1.18 kVA 的变压器，市场空间=新增装机/功率因数*变压器单价。 根据金盘科技、江苏华辰公告，光伏新增装机配套变压器多为液浸式变压器， 陆风新增装机配套变压器多为干式变压器，干式变压器价格略高于液浸式变压器， 海风变压器由于作业环境更复杂...；直接证据：覆盖报告 主要系毛利率较低的成套开关柜在收入的占比提升，盈利能力整体较为稳定。同时 公司优化费用结构，2025H1 期间费用率同比下降至 8.7%，费用控制良好，2025H1 实现净利率为 8.8%。公司持续聚焦新能源输配电及数据中心电力模块，加大研发与 业务拓展。 图8：公司综合毛利率保持稳定 图9：公司期间费用控制良好 30.0% 26.2% 14.0%....
-- Utilization/yield evidence: 代理证据：及推测不一致的报告。本公司不保证本报告所含信息及资料保持在最新状态，本公司将随时补充、 更新和修订有关信息及资料，但不保证及时公开发布。同时，本公司有权对本报告所含信息在 ### utilization_or_yield ### margin_impact - 72.93%。 25H1 公司箱式变电站、变压器、成套开关柜分别实现营收 18.66/5.68/5....
+- Utilization/yield evidence: 券商间接证据：及推测不一致的报告。本公司不保证本报告所含信息及资料保持在最新状态，本公司将随时补充、 更新和修订有关信息及资料，但不保证及时公开发布。同时，本公司有权对本报告所含信息在 ### utilization_or_yield ### margin_impact - 72.93%。 25H1 公司箱式变电站、变压器、成套开关柜分别实现营收 18.66/5.68/5....
 - Evidence source: sources/core-candidate-valuation-broker-reports-20260701/301291-明阳电气/AP202509301753286098-开源证券-公司首次覆盖报告-新能源输配电翘楚-海外-海风-AIDC多域突破.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
-- Evidence gap / valuation consequence: 字段级证据矩阵 PASS_WITH_BOUNDARY：残余代理字段为 利用率/良率/爬坡；已在 residual_proxy_field_audit 中披露官方文件检查、剩余缺口和估值处置；目标价/公允价值不因这些代理字段获得额外上修。.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
 - Upgrade trigger: 已进入自建公允价值模型；后续券商目标价、客户/订单、毛利率、现金流和残余 proxy 字段若改善，再更新目标区间。.
 - Next verification path: refresh broker target page when available; meanwhile validate AStock fair-value range through quarterly delivery, margin and customer/order evidence.
 
@@ -1017,8 +1017,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 21.09; final target 35.49694; upside 0.6831171171171173.
-- Extended 2026E package: revenue 249.2 亿元；net profit 10.3 亿元；EPS 1.21；market cap 179.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 21.27; final target 35.78156; upside 0.6822548189938882.
+- Extended 2026E package: revenue 249.2 亿元；net profit 10.3 亿元；EPS 1.21；market cap 188.8 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002396-星网锐捷/AP202507131708177975-民生证券-2025年中报预告点评-数据中心交换机驱动利润高增-探索跨境支付应用.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1041,8 +1041,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG plus cycle/product-mix check.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 68.21; final target 61.376270000000005; upside -0.10018662952646229.
-- Extended 2026E package: revenue 170.4 亿元；net profit 21.8 亿元；EPS 2.18；market cap 682.2 亿元；broker target 34.3.
+- Current target package: current price 66.17; final target 60.021000000000015; upside -0.09292730844793695.
+- Extended 2026E package: revenue 170.4 亿元；net profit 21.8 亿元；EPS 2.18；market cap 685.1 亿元；broker target 34.3.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/603228-景旺电子/AP202505141672723916-西南证券-看好PCB全平台工艺能力下客户突破机会.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1065,8 +1065,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE/SOTP with data-center order validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 36.42; final target 31.462720000000004; upside -0.13611422295442055.
-- Extended 2026E package: revenue 34.6 亿元；net profit 7.2 亿元；EPS 1.34；market cap 195.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 36.39; final target 31.085; upside -0.14578180818906294.
+- Extended 2026E package: revenue 34.6 亿元；net profit 7.2 亿元；EPS 1.34；market cap 204.4 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002158-汉钟精机/AP202509171745482711-国信证券-AIDC压缩机-半导体真空泵打造新成长曲线.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 7.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1089,20 +1089,20 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 349.9; final target 175.77819999999997; upside -0.49763303801086034.
-- Extended 2026E package: revenue 206.6 亿元；net profit 46.7 亿元；EPS 2.01；market cap 9401.5 亿元；broker target 260.0.
+- Current target package: current price 322.29; final target 164.25158; upside -0.49036091718638497.
+- Extended 2026E package: revenue 206.6 亿元；net profit 46.7 亿元；EPS 2.01；market cap 9010.3 亿元；broker target 260.0.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688041-海光信息/AP202512101797605876-群益证券-重大重组终止-长期仍看好公司算力产业发展.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 13.
-- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=proxy; margin_impact=direct.
-- Residual proxy boundary: 利用率/良率/爬坡：明示券商/Street 锚和 2026E 分母可复算，目标价模型保留；该 proxy 字段只限制上修空间，不提供增量倍数。.
+- Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=broker_indirect; margin_impact=direct.
+- Residual proxy boundary: none.
 - Revenue exposure evidence: 直接证据：融、AI 等领域加速渗透，本土化生态优势 股价表现 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年营收 143.77 亿元， 92% YoY+57%；毛利率 57.8%，YoY-5.9pcts；归母净利润 25.45 亿元，YoY+32%。公司持续优 61% 化“CPU+DCU....
 - Customer/platform evidence: 直接证据：续巩固产品性能与生态优势， 总市值(亿元)： 8,005.25 推动公司从技术领先向市场主导转化。 流通股本(亿股)： 23.24 流通市值(亿元)： 8,005.25 ⚫ 行业：云厂商“军备竞赛”推高需求，国产算力迎来加速发展期。 近 3 月换手率(%)： 57.84 国内云厂商持续加码算力基础设施建设，阿里巴巴、字节跳动等头部厂商 2025 年资本开支超....
 - Order/backlog evidence: 直接证据：方案、进行芯片设计和验证、交付芯片设计 版图等，芯片的晶圆加工、封装测试通过委外方式完成。公司主要采用直销模式进行产品销售， 少量采用经销模式。公司内部设有专门的销售团队与客户进行需求沟通。在直销模式下，公司直 接参与客户的公开招标或商务谈判，达成意向后，公司与客户签订销售合同；公司接收客户的采 购订单后，根据订单进行备产，生产完成后发货，并向客户提供设计、....
 - Capacity/certification evidence: 直接证据：25 年资本开支超过千亿元，为国产 AI 算力芯片带来了增量需求。国产 AI 股价一年走势 135% 算力芯片厂商已建立起覆盖训练与推理场景的全栈技术体系，多款产品成功 104% 导入主流服务器供应链，并能支持国内外主流大模型的训练与推理。在大模 73% 型从“训练竞赛”转向“推理普及”的产业迁移背景下，国产芯片凭借性价 41% 10% 比优势和供应链稳定性....
 - ASP or margin evidence: 直接证据：显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年营收 143.77 亿元， 92% YoY+57%；毛利率 57.8%，YoY-5.9p - 22 日收盘，公司总市值 7,261 亿元，对应 2026/2027/2028 年 PE 分别为 155.2/109.1/79.1 倍。维...；直接证据：显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年营收 143.77 亿元， 92% YoY+57%；毛利率 57.8%，YoY-5.9pcts；归母净利润 25.45 亿元，YoY+32%。公司持续优 61% 化“CPU+DCU”业务布局，构筑差异化竞争优势，市场影响力与日俱增....
-- Utilization/yield evidence: 代理证据：。同样，阁下获得有关投资 电话: (4420) 3651 8888 的价值或风险的可靠信息也存在困难。本报告中包含或涉及的投资及服务可能未必 ### utilization_or_yield ### margin_impact - 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年....
+- Utilization/yield evidence: 券商间接证据：。同样，阁下获得有关投资 电话: (4420) 3651 8888 的价值或风险的可靠信息也存在困难。本报告中包含或涉及的投资及服务可能未必 ### utilization_or_yield ### margin_impact - 显著。维持买入评级。 156% 124% 支撑评级的要点  营收保持高增速，全栈式解决方案赋能千行百业。海光信息 2025 年....
 - Evidence source: sources/core-candidate-valuation-broker-reports-20260701/688041-海光信息/AP202512101797605876-群益证券-重大重组终止-长期仍看好公司算力产业发展.pdf; data/core_candidate_extended_valuation_model_20260701.json; data/field_evidence_completion_20260701.json.
-- Evidence gap / valuation consequence: 字段级证据矩阵 PASS_WITH_BOUNDARY：残余代理字段为 利用率/良率/爬坡；已在 residual_proxy_field_audit 中披露官方文件检查、剩余缺口和估值处置；目标价/公允价值不因这些代理字段获得额外上修。.
+- Evidence gap / valuation consequence: 字段级证据矩阵 PASS：收入、客户/平台、订单/交付、产能/认证、ASP/价格代理、利用率/良率代理和毛利字段均已归档；目标价/公允价值只使用直接或代理证据。.
 - Upgrade trigger: 已进入扩展目标价模型；若季度订单、毛利率、客户/平台证据和现金流偏离模型假设，则上修、下修或降级。.
 - Next verification path: quarterly delivery, margin and customer/order evidence refresh.
 
@@ -1113,8 +1113,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 62.26; final target 34.92176273922022; upside -0.43909793223224824.
-- Extended 2026E package: revenue 163.8 亿元；net profit 12.5 亿元；EPS 0.64；market cap 1217.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 56.03; final target 33.04912273922022; upside -0.4101530833621234.
+- Extended 2026E package: revenue 163.8 亿元；net profit 12.5 亿元；EPS 0.64；market cap 1098.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/source-exhausted-official-filings-20260701/000021-深科技/annual-2025年年度报告.txt.
 - Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 3.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1137,8 +1137,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 315.89; final target 156.07128; upside -0.5059315584538921.
-- Extended 2026E package: revenue 71.6 亿元；net profit 23.4 亿元；EPS 1.92；market cap 3847.8 亿元；broker target 95.0.
+- Current target package: current price 269.15; final target 145.97944; upside -0.45762793981051453.
+- Extended 2026E package: revenue 71.6 亿元；net profit 23.4 亿元；EPS 1.92；market cap 3498.6 亿元；broker target 95.0.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688008-澜起科技/AP202502211643357942-群益证券-中国AI算力需求大爆发-利好内存接口龙头.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1161,8 +1161,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE plus order-cycle / working-capital check.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 22.26; final target 26.05112; upside 0.17031087151841873.
-- Extended 2026E package: revenue 1129.4 亿元；net profit 73.3 亿元；EPS 1.21；market cap 1638.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 21.83; final target 25.54908; upside 0.17036555199267078.
+- Extended 2026E package: revenue 1129.4 亿元；net profit 73.3 亿元；EPS 1.21；market cap 1629.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/600089-特变电工/01-AP202510101759490773-华鑫证券-公司动态研究报告-输变电订单高增-中标沙特大单.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 5.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1185,8 +1185,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG plus cycle/product-mix check.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 123.97; final target 65.94738999999998; upside -0.46803750907477626.
-- Extended 2026E package: revenue 90.3 亿元；net profit 12.1 亿元；EPS 1.46；market cap 1031.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 115.30; final target 62.3412; upside -0.45931309627059846.
+- Extended 2026E package: revenue 90.3 亿元；net profit 12.1 亿元；EPS 1.46；market cap 999.8 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688183-生益电子/AP202504291664395249-华鑫证券-公司事件点评报告-AI服务器高端PCB业绩放量-公司迈入高速成长通道.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 10.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1209,8 +1209,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 380.52; final target 111.92623999999998; upside -0.7058597708399033.
-- Extended 2026E package: revenue 12.1 亿元；net profit 0.5 亿元；EPS 0.11；market cap 1560.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 353.05; final target 101.40299999999999; upside -0.7127800594816598.
+- Extended 2026E package: revenue 12.1 亿元；net profit 0.5 亿元；EPS 0.11；market cap 1521.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/688702-盛科通信/02-AP202604241821529215-开源证券-公司信息更新报告-营收增速符合预期-超节点龙头研发持续加速.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 9.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1233,8 +1233,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE plus order-cycle / working-capital check.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 51.47; final target 41.95352; upside -0.18489372449970864.
-- Extended 2026E package: revenue 83.5 亿元；net profit 9.4 亿元；EPS 1.59；market cap 305.1 亿元；broker target 64.0.
+- Current target package: current price 49.07; final target 40.68645; upside -0.170848787446505.
+- Extended 2026E package: revenue 83.5 亿元；net profit 9.4 亿元；EPS 1.59；market cap 300.6 亿元；broker target 64.0.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/002518-科士达/AP202604281821658543-东吴证券-2026年一季报点评-数据中心产品及订单发展提速-新能源重回增长通道.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 5.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1257,8 +1257,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 346.0; final target 130.91799999999998; upside -0.6216242774566474.
-- Extended 2026E package: revenue 12.4 亿元；net profit 1.7 亿元；EPS 1.28；market cap 448.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 306.82; final target 118.57938; upside -0.6135213480216413.
+- Extended 2026E package: revenue 12.4 亿元；net profit 1.7 亿元；EPS 1.28；market cap 424.2 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/blocked-core-candidate-broker-reports-20260701/301205-联特科技/01-AP202502211643346322-东兴证券-三步走战略-成长为光模块行业小巨头.txt.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1281,8 +1281,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 215.0; final target 147.908; upside -0.31205581395348847.
-- Extended 2026E package: revenue 18.6 亿元；net profit 5.5 亿元；EPS 3.49；market cap 334.1 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 195.99; final target 144.87441; upside -0.26080713301699066.
+- Extended 2026E package: revenue 18.6 亿元；net profit 5.5 亿元；EPS 3.49；market cap 317.6 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688123-聚辰股份/AP202502241643441278-中邮证券-SPD5服务器PC齐发力-端侧AI赋能NorFlash走向大容量.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1305,8 +1305,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: SOTP/PS/PE blend with profit-path validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 342.1; final target 138.9198; upside -0.5939204910844782.
-- Extended 2026E package: revenue 62.7 亿元；net profit 0.8 亿元；EPS 0.17；market cap 1799.2 亿元；broker target 300.0.
+- Current target package: current price 309.50; final target 126.48072999999998; upside -0.5913385137318257.
+- Extended 2026E package: revenue 62.7 亿元；net profit 0.8 亿元；EPS 0.17；market cap 1702.9 亿元；broker target 300.0.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/688521-芯原股份/AP202606151823568591-群益证券-中美算力竞争利好公司-目前估值较低.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1329,8 +1329,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PS/PB or milestone valuation watchlist; positive EPS denominator not valid.
 - Target-price status: watchlist_only_insufficient_model.
 - Valuation disposition: watchlist_only_insufficient_positive_eps_or_denominator - 当前收入、股本和市值已补齐，但 2026E EPS 代理为负或不可用；PE/PEG 不适用，需等待盈利路径或改用明示 PS/PB/SOTP 证据。
-- Current target package: current price 7.13; final target not published; upside not applicable.
-- Extended 2026E package: revenue 43.7 亿元；net profit -1.4 亿元；EPS -0.17；market cap 58.7 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 7.04; final target None; upside None.
+- Extended 2026E package: revenue 43.7 亿元；net profit -1.4 亿元；EPS -0.17；market cap 58.9 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: 盈利或模型分母不足，观察名单; blocker positive 2026E EPS; source sources/source-exhausted-official-filings-20260701/002334-英威腾/annual-2025年年度报告.txt.
 - Evidence quality: B- / official filing evidence; no Street target disclosed; source tier official_filing_pdf; source count across mapped nodes 5.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=proxy; margin_impact=direct.
@@ -1353,8 +1353,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: PE/PEG with shipment, customer and margin validation.
 - Target-price status: house_fair_value_model_ready_no_street_target.
 - Valuation disposition: published_house_fair_value_model_no_street_target - 无可用明示 Street 目标价时采用 AStock 自建公允价值，broker 权重为 0；当前价、股本/市值、2026E 分母、Bear/Base/Bull 和来源路径已复算，残余 proxy 只作折价边界。
-- Current target package: current price 85.92; final target 60.227039999999995; upside -0.29903351955307267.
-- Extended 2026E package: revenue 182.2 亿元；net profit 11.5 亿元；EPS 1.44；market cap 683.5 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
+- Current target package: current price 85.25; final target 58.94408; upside -0.3085738416422288.
+- Extended 2026E package: revenue 182.2 亿元；net profit 11.5 亿元；EPS 1.44；market cap 699.0 亿元；broker target Street target unavailable; broker weight 0 / AStock house model.
 - Extended model status: AStock 自建公允价值模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/301165-锐捷网络/AP202606021823158258-开源证券-公司首次覆盖报告-从高端交换机到光模块全链条布局的网络设备龙头.pdf.
 - Evidence quality: B / broker forecast evidence; AStock house fair-value model when denominator is complete; source tier original_public_broker_pdf; source count across mapped nodes 6.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.
@@ -1377,8 +1377,8 @@ These are company-level cards for the 58 core valuation candidates derived from 
 - Candidate valuation method: normalised PE/SOTP with data-center order validation.
 - Target-price status: extended_target_price_model_ready.
 - Valuation disposition: published_extended_target_price_model - 明示券商/Street 目标价锚、当前价、股本/市值、2026E 收入/净利/EPS 和三情景复算已完成；后续订单、毛利率、客户/平台证据和现金流是目标价更新触发，不是发布前置缺口。
-- Current target package: current price 37.25; final target 19.347; upside -0.48061744966442954.
-- Extended 2026E package: revenue 12.7 亿元；net profit 1.4 亿元；EPS 0.45；market cap 115.3 亿元；broker target 32.5.
+- Current target package: current price 36.15; final target 18.572100000000002; upside -0.4862489626556016.
+- Extended 2026E package: revenue 12.7 亿元；net profit 1.4 亿元；EPS 0.45；market cap 115.4 亿元；broker target 32.5.
 - Extended model status: 明示券商目标价模型可发布; blocker none; source sources/core-candidate-valuation-broker-reports-20260701/300499-高澜股份/AP202509161744822098-国信证券-特高压纯水冷却设备龙头-数据中心液冷打造第二成长曲线.pdf.
 - Evidence quality: B+ / model-ready public broker target; source tier original_public_broker_pdf; source count across mapped nodes 21.
 - Field evidence status: revenue_exposure=direct; customer_or_platform=direct; order_or_backlog=direct; capacity_or_certification=direct; asp_or_price_proxy=direct; utilization_or_yield=direct; margin_impact=direct.

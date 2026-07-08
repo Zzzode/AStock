@@ -51,8 +51,8 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \node[param, color=riskamber, right=0.05cm] at (14.35, 0.8) {\textbf{实质可用 ≥2028 (AStock 评估)}};
 
 % Markers
-\draw[->, thick, riskred] (10.0, 0.2) -- node[above, font=\tiny, color=riskred] {\textbf{BIS 管制关键节点}} (10.0, 1.4);
-\node[draw=deepnavy, fill=deepnavy!5, rounded corners=2pt, font=\scriptsize, inner sep=2pt, anchor=west] at (0.2, 0.2) {ASP：HBM2E \$8--12/GB · HBM3E \$18--25/GB · HBM4 {\faExclamationTriangle}\$33--45/GB (初期)};
+\draw[->, thick, riskred] (11.5, 0.2) -- node[above, font=\tiny, color=riskred] {\textbf{BIS 管制关键节点}} (11.5, 1.4);
+\node[draw=deepnavy, fill=deepnavy!5, rounded corners=2pt, font=\scriptsize, inner sep=2pt, anchor=west, text width=10cm] at (0.2, 0.2) {ASP：HBM2E \$8--12/GB · HBM3E \$18--25/GB · HBM4 {\faExclamationTriangle}\$33--45/GB (初期)};
 \end{tikzpicture}
 }
 \end{exhibitbox}
@@ -63,9 +63,9 @@ HBM (High Bandwidth Memory) 是当前 AI 算力瓶颈的核心解决路径。每
 \begin{exhibitbox}[表 4-1 \quad HBM TAM 预测详表 / HBM TAM Forecast Detail (2024--2027E)]
 \centering
 \footnotesize
-\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}c >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.3cm} >{\raggedleft}p{1.2cm} >{\raggedright\arraybackslash\hspace{0pt}}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}c >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.7cm} >{\raggedleft}p{1.1cm} >{\raggedleft}p{1.2cm} >{\raggedleft}p{1.2cm} >{\raggedright\arraybackslash\hspace{0pt}}X}
 \toprule
-\textbf{年份} & \textbf{出货\\(亿GB)} & \textbf{均价\\ASP(\$/GB)} & \textbf{TAM\\(亿\$)} & \textbf{YoY(\%)} & \textbf{主力代(价值占)} & \textbf{核心驱动} \\
+\textbf{年份} & \textbf{出货\\(亿GB)} & \textbf{均价\\\$/GB} & \textbf{TAM\\(亿\$)} & \textbf{YoY\\(\%)} & \textbf{主力代(价值占)} & \textbf{核心驱动} \\
 \midrule
 2024A & 4.2 & \$17.5 & 73.5 & 约190\% & HBM3 (约55\%) + HBM3E (约35\%) & H100 出货高峰 + H200 过渡 \\
 2025E & 8.5 & \$19.2 & 163.2 & 约122\% & HBM3E (约60\%) + HBM3 (约30\%) & B100 初期爬坡 + MI300X 放量 \\
@@ -91,7 +91,7 @@ AI 训练依赖 HBM 和 DDR5 提供的热数据吞吐，AI 推理和数据存储
 \begin{exhibitbox}[表 4-2 \quad DDR5 / 企业级 SSD / CXL TAM 预测汇总表]
 \centering
 \footnotesize
-\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}l >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.6cm} >{\raggedleft}p{1.3cm} >{\raggedright\arraybackslash}X}
+\begin{tabularx}{\exhibitboxwidth}{>{\bfseries}l >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.5cm} >{\raggedleft}p{1.6cm} >{\raggedleft}p{1.5cm} >{\raggedright\arraybackslash}X}
 \toprule
 \textbf{细分赛道} & \textbf{2025E(亿美元)} & \textbf{2026E(亿美元)} & \textbf{2027E(亿美元)} & \textbf{CAGR(\%)} & \textbf{A 股映射标的与核心逻辑} \\
 \midrule
@@ -151,14 +151,14 @@ CXL (Compute Express Link) 标准通过在 CPU/GPU 与内存之间建立统一�
 
 % Arrows
 \foreach \h in {H1,H2,H3,H4} {
-  \draw[line, accentblue] (\h.south) -- (SW1.north-|\h.south);
-  \draw[line, dashed, accentblue!50] (\h.south) -- (SW2.north-|\h.south);
+  \draw[line, accentblue] (\h.south) |- (SW1.north);
+  \draw[line, dashed, accentblue!50] (\h.south) |- (SW2.north);
 }
 \node[midway, above, font=\tiny, color=accentblue] (L2) at (4.7, -1.1) {PCIe 5.0/6.0 · CXL 2.0/3.0 协议 · 32/64GT/s};
-\draw[line, navy] (SW1.south) -- (P1.north-|SW1.south);
-\draw[line, riskred, line width=1.2pt] (SW1.south) -- (P2.north-|SW1.south);
-\draw[line, navy] (SW2.south) -- (P3.north-|SW2.south);
-\draw[line, riskred, line width=1.2pt] (SW2.south) -- (P4.north-|SW2.south);
+\draw[line, navy] (SW1.south) |- (P1.north);
+\draw[line, riskred, line width=1.2pt] (SW1.south) |- (P2.north);
+\draw[line, navy] (SW2.south) |- (P3.north);
+\draw[line, riskred, line width=1.2pt] (SW2.south) |- (P4.north);
 \node[midway, left, font=\tiny, color=riskred] (L3) at (5.1, -3.2) {\ensuremath{\bigstar}\ A 股核心卡位层};
 \node[below=0.2cm of P2, font=\tiny, color=steelgrey] {CXL 2.0 已量产 · CXL 3.1 2026 年 H2 送样三星/AMD};
 \node[below=0.2cm of P4, font=\tiny, color=steelgrey] {Type 3 模组原型验证中 · 2027 量产};
