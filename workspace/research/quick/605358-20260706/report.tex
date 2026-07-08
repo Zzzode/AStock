@@ -1,0 +1,196 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,fontset=none]{ctexart}
+
+\newcommand{\reporttitle}{立昂微（605358）深度调研}
+\newcommand{\reportsubtitle}{半导体硅片IDM龙头 | 重掺硅片绝对龙头 | 业绩拐点确认}
+\newcommand{\reportkicker}{ASTOCK RESEARCH NOTE}
+\newcommand{\reportscope}{CHINA A-SHARES | SEMICONDUCTOR MATERIALS}
+\newcommand{\reportdate}{2026-07-06}
+\newcommand{\reportdatacutoff}{2026-07-06 (Web search; local data source unavailable)}
+\newcommand{\reporttype}{Multi-agent deep research note}
+\newcommand{\reportauthor}{AStock Agent Team}
+\newcommand{\reporthouseview}{%
+立昂微2026Q1业绩拐点确认（扭亏为盈），12英寸硅片量价齐升（毛利率从-33\%修复至6.7\%），重掺硅片涨价10-15\%且订单饱满，VCSEL芯片进入放量期。公司处于业绩从底部快速修复的确定性阶段，但当前股价已大幅反映乐观预期（PE>200x TTM），短期估值透支风险显著。值得中长期跟踪但需等待估值消化或业绩超预期确认。若12英寸硅片毛利率无法在Q2-Q3持续提升至10\%以上，或硅片涨价不可持续，则看多逻辑将被证伪。%
+}
+\newcommand{\reportquality}{Web search aggregated data; local data pipeline unavailable (Baostock/AkShare connection error). Quality tier: partial source / snapshot degraded.}
+\newcommand{\reportdisclaimer}{本报告不构成任何投资建议。}
+\input{../../../.agents/templates/preamble.tex}
+
+\begin{document}
+
+\begin{center}
+{\sffamily\small\bfseries\color{steelgrey} \reportkicker}\\[3pt]
+{\LARGE\bfseries\color{navy} \reporttitle}\\[5pt]
+{\large\color{steelgrey} \reportsubtitle}\\[4pt]
+{\small\color{mutedgrey} \reportscope \quad|\quad \reportdate \quad|\quad \reportdatacutoff}
+\end{center}
+\vspace{0.7em}
+
+\begin{dashboardbox}[Decision Snapshot]
+\begin{houseviewbox}[House View]
+\reporthouseview
+\end{houseviewbox}
+\begin{sourcequalitybox}[Data Quality]
+\reportquality
+\end{sourcequalitybox}
+\end{dashboardbox}
+
+%% ================================================================
+\section{公司概况与核心定位}
+
+\textbf{立昂微}（605358.SH）是国内稀缺的\textbf{硅片制造 + 功率器件 + 化合物半导体}垂直一体化IDM平台企业，核心业务包括：
+
+\begin{itemize}
+  \item \textbf{半导体硅片}（核心收入来源，约60\%）：6/8/12英寸全尺寸覆盖，重掺杂低电阻率硅片为绝对优势产品。
+  \item \textbf{功率器件}（约20\%）：MOSFET、IGBT，应用于新能源车、光伏逆变器。
+  \item \textbf{化合物半导体}（约20\%）：GaAs射频芯片（5G基站、卫星通信）、VCSEL芯片（激光雷达、光通信）。
+\end{itemize}
+
+\textbf{核心竞争壁垒}：重掺硅片国内市占率超50\%（绝对龙头），12英寸硅片国内第二（仅次于沪硅产业），A股唯一硅片+功率+化合物三位一体IDM。
+
+%% ================================================================
+\section{业绩与财务分析}
+
+\begin{exhibitbox}[Exhibit 1: 业绩拐点确认]
+\begin{tabularx}{\textwidth}{L{3cm}XXXX}
+\toprule
+\textbf{指标} & \textbf{2024A} & \textbf{2025A} & \textbf{2026Q1} & \textbf{2026E(机构)} \\
+\midrule
+营收（亿元） & 30.9 & 35.91 & 9.99（创新高） & 50--70 \\
+归母净利（亿元） & -2.66 & -1.42（减亏54\%） & 0.07（扭亏） & 1.91--2.9 \\
+12英寸硅片收入（亿） & --- & --- & 3.03（+88\%YoY） & --- \\
+12英寸毛利率 & -33\% & 逐季修复 & 6.7\% & 持续改善 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{数据来源：公司公告、中邮证券研报（2026.06.26）、雪球整理}
+\end{exhibitbox}
+
+\textbf{关键判断}：
+\begin{itemize}
+  \item 2026Q1单季营收9.99亿创历史新高（+21.8\% YoY），净利扭亏为盈。
+  \item 12英寸硅片是业绩弹性核心：Q1收入3.03亿（+88\% YoY），毛利率从-33\%跃升至6.7\%。
+  \item 中邮证券预测2026/2027/2028年归母净利分别为2.9/7.1/10.6亿元，维持``买入''。
+  \item 8英寸重掺外延片订单旺盛，涨价10--15\%，客户锁单意愿强。
+\end{itemize}
+
+%% ================================================================
+\section{行业地位与竞争格局}
+
+\begin{tabularx}{\textwidth}{L{3cm}L{3.5cm}L{3.5cm}X}
+\toprule
+\textbf{细分领域} & \textbf{全球格局} & \textbf{国内格局} & \textbf{立昂微地位} \\
+\midrule
+重掺硅片 & 信越、SUMCO主导 & 立昂微绝对龙头 & 国内市占率>50\% \\
+12英寸硅片 & 信越、SUMCO（70\%） & 沪硅（第一）、立昂微（第二） & 国内约5\%，快速放量 \\
+功率MOSFET & 英飞凌、安森美 & 华润微、士兰微 & IDM差异化 \\
+GaAs射频 & Skyworks、Qorvo & 三安光电、立昂微 & 切入卫星通信 \\
+VCSEL & Lumentum、II-VI & 立昂微（立昂东芯） & 车载VCSEL独家代工 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{数据来源：行业研究报告、公司投资者关系活动记录表（2026.05.14）}
+
+\textbf{差异化优势}：
+\begin{itemize}
+  \item 国内唯一全尺寸（6/8/12英寸）硅片+功率器件+化合物半导体IDM，抗周期能力强。
+  \item 重掺硅片深度绑定AI服务器电源管理芯片需求（适配AI算力供电链）。
+  \item 核心客户深度绑定：中芯国际2026年供货量+120\%，长鑫存储+200\%，华虹/台积电锁单。
+  \item 嘉兴基地定位28nm及以下先进制程硅片，已实现批量供货。
+\end{itemize}
+
+%% ================================================================
+\section{增长驱动与催化剂}
+
+\begin{enumerate}
+  \item \textbf{AI算力拉动重掺需求}：AI服务器电源管理芯片大量使用重掺硅片，公司为该领域独家量产龙头。
+  \item \textbf{12英寸硅片放量}：产能爬坡+良率提升驱动毛利率快速修复，2026年目标持续扩产。
+  \item \textbf{硅片行业涨价周期}：2026年中硅片全线上调报价，8英寸涨10--15\%，公司弹性行业领先。
+  \item \textbf{VCSEL芯片放量}：立昂东芯车载VCSEL订单排至2026年底，独家代工禾赛科技，配套800G/1.6T光模块。
+  \item \textbf{GaAs射频切入商业航天}：进入千帆星座等国家级卫星项目，实现大规模商业化出货。
+  \item \textbf{国产替代深化}：地缘政治背景下，28nm硅片/先进制程材料国产替代为刚性需求。
+\end{enumerate}
+
+%% ================================================================
+\section{估值与市场定价}
+
+\begin{tabularx}{\textwidth}{L{3cm}X}
+\toprule
+\textbf{Item} & \textbf{Value} \\
+\midrule
+最新股价 & 60.02元（2026-07-06盘中），近期从71.86元连续回调 \\
+总市值 & 约408--500亿（总股本6.79亿股） \\
+PE TTM & 约-920x（2025年亏损，TTM指标失真） \\
+前瞻PE（2026E） & 140--260x（基于1.9--2.9亿净利预测） \\
+前瞻PE（2027E） & 57--70x（基于7.1亿净利预测） \\
+中邮证券目标 & 维持``买入''（2026/27/28E收入50/70/85亿，净利2.9/7.1/10.6亿） \\
+近期走势 & 7月3日连续跌停第2天（-10\%），主力净流出2.52亿元 \\
+\evidencetag{confirmed} & 估值已充分透支乐观预期，需业绩持续验证 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{数据来源：富途牛牛、理杏仁、中财网（2026-07-06）}
+
+%% ================================================================
+\section{Risks and Invalidation}
+
+\begin{riskbox}[核心风险]
+\begin{itemize}
+  \item \textbf{估值透支}：当前市值对应2026E PE>140x，已price-in极度乐观预期。若Q2-Q3业绩不及预期，股价向下调整空间巨大。
+  \item \textbf{硅片涨价持续性}：若下游需求不及预期或全球产能释放超预期，涨价周期可能缩短。
+  \item \textbf{12英寸毛利率爬坡不确定性}：从6.7\%到行业正常水平（25--30\%）仍需时间，折旧压力大。
+  \item \textbf{行业周期波动}：半导体硅片行业强周期属性，2024--2025年的低谷可能重复。
+  \item \textbf{技术迭代风险}：若SOI、FD-SOI等替代衬底技术加速渗透，传统硅片需求空间被压缩。
+  \item \textbf{客户集中度}：深度绑定少数大客户，若核心客户订单调整则影响显著。
+  \item \textbf{近期连续跌停}：7月2--3日连续跌停，资金面承压，短期流动性风险需关注。
+\end{itemize}
+\end{riskbox}
+
+%% ================================================================
+\section{Contrarian View}
+
+\textbf{看空观点}：
+
+立昂微当前更像是一个``周期股按成长股定价''的案例。公司2025年仍处于亏损状态，2026Q1仅盈利722万元，而市场给予其400--500亿市值，隐含的是对2027--2028年高速增长的极度乐观预期。但半导体硅片是典型强周期行业，信越和SUMCO仍掌握定价权，一旦全球需求放缓或日韩产能释放，国内硅片价格弹性将被压制。此外，12英寸硅片从亏损到盈利的路径并非线性，折旧高峰+良率波动可能导致毛利率改善不及预期。
+
+\textbf{核心分歧与验证指标}：
+\begin{itemize}
+  \item \textbf{Q2-Q3 12英寸毛利率是否突破10\%}：是业绩弹性兑现的核心验证点。
+  \item \textbf{硅片涨价能否持续2个季度以上}：决定盈利弹性空间。
+  \item \textbf{VCSEL收入能否在2026H2贡献1亿以上}：第二增长曲线验证。
+  \item \textbf{大股东/机构减持动向}：近期连续跌停后需观察资金态度。
+\end{itemize}
+
+%% ================================================================
+\section{投资结论与监控触发}
+
+\textbf{综合评级}：值得中长期跟踪研究，但当前价位不宜追高。
+
+\textbf{看多逻辑}：业绩拐点确认 + AI重掺需求 + 涨价周期 + VCSEL/GaN第二曲线 + 国产替代刚需 = 中期高弹性。
+
+\textbf{看空逻辑}：估值严重透支 + 连续跌停显示短期资金分歧 + 周期底部盈利基数极低导致增速失真。
+
+\textbf{建议跟踪触发}：
+\begin{itemize}
+  \item 股价回调至PE 2027E 40--50x（对应股价42--52元区间）时可加大关注。
+  \item 2026Q2业绩披露（12英寸毛利率>10\%确认）为加仓信号。
+  \item 若连续跌停后放量企稳（换手率回落至5\%以下+量缩价稳），可视为短期底部。
+\end{itemize}
+
+\textbf{失效条件}：
+\begin{itemize}
+  \item 12英寸硅片毛利率Q2-Q3未能突破10\%。
+  \item 硅片行业涨价在1个季度内结束。
+  \item 核心客户（中芯、长鑫）订单大幅缩减。
+\end{itemize}
+
+%% ================================================================
+\vfill
+\begin{disclosurebox}[Metadata]
+\footnotesize
+Confidence: 55/100 \quad | \quad
+Data quality: partial source / snapshot degraded (web search only) \quad | \quad
+Degradation: Local data pipeline unavailable; analysis based on web-aggregated broker reports and public disclosures.
+
+\vspace{0.4em}
+{\tiny\reportdisclaimer\ Generated by AI agents for research reference only. 2026-07-06.}
+\end{disclosurebox}
+
+\end{document}
