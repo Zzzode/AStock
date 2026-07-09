@@ -1,0 +1,49 @@
+{
+  "case_id": "000977-20260709",
+  "artifacts": [
+    {
+      "artifact": "data/source_registry.md/json",
+      "owner_skill": "equity-research",
+      "stage": "evidence",
+      "required_fields": ["source", "type", "date", "quality", "use"],
+      "minimum_depth": "material claims tied to auditable sources",
+      "blocking_conditions": ["missing H1 forecast source", "missing broker target source"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "manual review",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/growth_earnings_model.md",
+      "owner_skill": "growth-earnings-model",
+      "stage": "model",
+      "required_fields": ["base split", "growth split", "H1 bridge", "scenario", "valuation credit"],
+      "minimum_depth": "Q2 implied profit and 2026E EPS bridge",
+      "blocking_conditions": ["no EPS bridge", "unsupported growth credit"],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "valuation audit",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/valuation_model.md",
+      "owner_skill": "valuation",
+      "stage": "valuation",
+      "required_fields": ["current price", "shares", "market cap", "bear", "base", "bull", "target", "upside"],
+      "minimum_depth": "current-price-based target and sensitivity",
+      "blocking_conditions": ["arithmetic mismatch", "no action label"],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "valuation audit",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "report.tex/pdf",
+      "owner_skill": "latex-writer",
+      "stage": "publish",
+      "required_fields": ["house view", "evidence", "valuation", "risks", "action"],
+      "minimum_depth": "reader-usable Chinese research note",
+      "blocking_conditions": ["compile failure", "missing target price", "missing action"],
+      "reviewer_cycle": "R3_render_compliance",
+      "verifier_check": "build-pdf",
+      "blocking_if_missing": true
+    }
+  ]
+}

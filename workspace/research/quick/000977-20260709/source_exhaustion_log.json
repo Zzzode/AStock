@@ -1,0 +1,53 @@
+{
+  "case_id": "000977-20260709",
+  "probes": [
+    {
+      "probe": "AI server revenue split",
+      "status": "not disclosed",
+      "sources_checked": ["2025 annual filing mirror", "2026Q1 filing mirror", "broker PDFs"],
+      "reason_unresolved": "company does not disclose AI-server segment revenue",
+      "consequence": "no SOTP or unit/ASP valuation; use earnings proxy",
+      "next_verification_path": "2026 interim report segment notes or investor relations Q&A"
+    },
+    {
+      "probe": "AI server unit shipments / ASP",
+      "status": "not disclosed",
+      "sources_checked": ["official filings", "broker PDFs", "public search"],
+      "reason_unresolved": "no disclosed unit/ASP data",
+      "consequence": "no unit * ASP model",
+      "next_verification_path": "management call or supply-chain channel checks"
+    },
+    {
+      "probe": "Named CSP customer allocation",
+      "status": "partially unresolved",
+      "sources_checked": ["annual filing top-five customer table", "broker PDFs", "public search"],
+      "reason_unresolved": "annual report anonymizes top customers",
+      "consequence": "named customers treated as broker/industry evidence only",
+      "next_verification_path": "customer procurement announcements and tender disclosures"
+    },
+    {
+      "probe": "Detailed MA/MACD technicals",
+      "status": "degraded",
+      "sources_checked": ["astock analyze packet", "Baostock/AkShare fallback"],
+      "reason_unresolved": "daily data source failed during run",
+      "consequence": "no hard MA/MACD claims in report",
+      "next_verification_path": "rerun technical packet after data source recovers"
+    },
+    {
+      "probe": "Original PDF for every broker target",
+      "status": "partially unresolved",
+      "sources_checked": ["Capital PDF", "Kaiyuan PDF", "public target aggregate", "search"],
+      "reason_unresolved": "some targets available only through media/aggregate snippets",
+      "consequence": "weak rows weight 0; not used as positive Street anchor",
+      "next_verification_path": "collect original PDFs from broker portals or Wind/Choice"
+    },
+    {
+      "probe": "7/8 complete LHB exchange detail",
+      "status": "media repost only",
+      "sources_checked": ["Eastmoney/Sina/Securities Times snippets"],
+      "reason_unresolved": "full exchange HTML not archived in this case",
+      "consequence": "LHB used as funds-flow context, not model input",
+      "next_verification_path": "archive exchange or Eastmoney LHB page"
+    }
+  ]
+}

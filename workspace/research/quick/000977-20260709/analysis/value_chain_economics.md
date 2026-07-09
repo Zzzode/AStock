@@ -1,0 +1,10 @@
+# Value-Chain Economics
+
+| chain_block | value_amount_or_proxy | ASP_or_price_proxy | margin_pool | supply_demand_state | capacity | utilization_or_yield | customer_certification | order_or_backlog_visibility | economics_source | evidence_gap | valuation_credit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| AI server / full system | 2026H1 parent NP CNY2.6-3.1bn; Q2 implied NP CNY1.995-2.495bn | not disclosed | consolidated net margin rising from 1.46% in 2025A to AStock 2026E base 2.27% | AI capex strong, but accelerator supply and CSP pricing constrain margin | not disclosed | not disclosed | broker-stated CSP/platform exposure; official customer names anonymized | contract liabilities CNY19.506bn at 2025 year-end, CNY12.252bn at 2026Q1 | raw financials, raw news, broker PDFs, official filing mirror | unit shipment, ASP, customer allocation not disclosed | earnings credit with working-capital discount |
+| liquid cooling / super-node | product capability and 1000+ liquid-cooling patents; no segment revenue | not disclosed | margin-improvement proxy, not standalone SOTP | high-power AIDC increases liquid-cooling need | not disclosed | not disclosed | official product/platform disclosure | product evidence, not backlog evidence | official filing mirror | product revenue and segment gross margin not disclosed | supports bull case only if H2 margin stays above 6% |
+| working-capital/order conversion | Q1 inventory CNY44.207bn; Q1 OCF CNY-7.772bn | not disclosed | negative if inventory/receivables absorb profit | high delivery volume requires inventory and financing | inventory disclosed, capacity not disclosed | not disclosed | not applicable | falling contract liabilities require new order validation | official filings and financial packet | backlog not disclosed | caps target multiple until cash conversion improves |
+
+Conclusion:
+The value-chain economics are sufficient for earnings-credit valuation because H1 profit is already disclosed. They are not sufficient for a standalone high-growth SOTP because AI-server revenue split, ASP and unit shipments are not disclosed.

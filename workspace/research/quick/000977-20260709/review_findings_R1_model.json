@@ -1,0 +1,73 @@
+{
+  "cycle": "R1_model",
+  "publishability_status": "PASS_AFTER_REPAIR",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R1-S-001",
+      "severity": "S",
+      "owner_skill": "growth-earnings-model",
+      "artifact": "data/growth_driver_model.json",
+      "evidence": "growth-earnings-model skill requires data/growth_driver_model.json, but it is absent.",
+      "fix_required": "Create structured growth driver model with proxy driver, EPS bridge, evidence gaps and valuation credit.",
+      "blocking_gate": "growth_earnings_model",
+      "status": "closed",
+      "closure_evidence": "data/growth_driver_model.json exists and contains driver, proxy, EPS bridge, evidence gaps and valuation credit."
+    },
+    {
+      "issue_id": "R1-S-002",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "artifact": "source_exhaustion_log.md/json",
+      "evidence": "source_exhaustion_log.md/json is absent despite explicit evidence gaps in customer names, AI-server revenue split, daily technical packet, and weak broker evidence.",
+      "fix_required": "Create source exhaustion log with failed/degraded probes and next verification path.",
+      "blocking_gate": "source_governance",
+      "status": "closed",
+      "closure_evidence": "source_exhaustion_log.md/json added with gaps, consequences and next verification paths."
+    },
+    {
+      "issue_id": "R1-A-001",
+      "severity": "A",
+      "owner_skill": "valuation",
+      "artifact": "data/broker_street_consensus_20260709.json",
+      "evidence": "Media repost and third-party aggregate rows carry positive valuation weights, contrary to review rules for weak broker evidence.",
+      "fix_required": "Set weak-source valuation_weight to 0 and keep them as context only.",
+      "blocking_gate": "broker_consensus_depth",
+      "status": "closed",
+      "closure_evidence": "media_repost and third_party_aggregate rows now have valuation_weight 0."
+    },
+    {
+      "issue_id": "R1-A-002",
+      "severity": "A",
+      "owner_skill": "supply-chain-research",
+      "artifact": "data/supply_chain_relationships.json and data/customer_chain_audit.json",
+      "evidence": "Report uses AIDC supply-chain and customer-chain arguments but lacks structured relationship and customer-chain audit files.",
+      "fix_required": "Create concise single-stock relationship and customer-chain audit files with evidence gaps and valuation consequences.",
+      "blocking_gate": "supply_chain_depth",
+      "status": "closed",
+      "closure_evidence": "data/supply_chain_relationships.md/json and data/customer_chain_audit.md/json added."
+    },
+    {
+      "issue_id": "R1-A-003",
+      "severity": "A",
+      "owner_skill": "latex-writer",
+      "artifact": "report.tex/report.pdf",
+      "evidence": "PDF text shows several tables with awkward broken labels; report.log has multiple Overfull hbox 21.9pt warnings.",
+      "fix_required": "Widen/narrow columns or convert dense tables into prose lists so Overfull >20pt becomes zero and tables are easier to read.",
+      "blocking_gate": "render_compliance",
+      "status": "closed",
+      "closure_evidence": "report rebuilt to 5 pages; log scan shows no Overfull hbox, no LaTeX error."
+    },
+    {
+      "issue_id": "R1-A-004",
+      "severity": "A",
+      "owner_skill": "research-report-review",
+      "artifact": "final_signoff.md/json and research_workflow_eval.md/json",
+      "evidence": "Final signoff and workflow eval are absent, so the review loop cannot be considered closed.",
+      "fix_required": "Create final signoff/eval only after repairs and second review pass.",
+      "blocking_gate": "R4_final_ic",
+      "status": "closed",
+      "closure_evidence": "final_signoff and research_workflow_eval created after second review."
+    }
+  ]
+}

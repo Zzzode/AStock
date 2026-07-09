@@ -1,0 +1,51 @@
+{
+  "case_id": "000977-20260709",
+  "claims": [
+    {
+      "claim": "2026H1 net profit attributable to parent is CNY2.6-3.1bn, up 226%-288% YoY.",
+      "evidence": ["data/raw_news_20260709.json", "broker PDFs"],
+      "source_quality": "structured_event_plus_original_pdf",
+      "adopted_wording": "公司预告H1归母净利26-31亿元。",
+      "valuation_impact": "primary denominator"
+    },
+    {
+      "claim": "2026Q2 implied net profit is CNY1.995-2.495bn.",
+      "evidence": ["H1 range less Q1 actual CNY0.605bn"],
+      "source_quality": "derived_from_structured_data",
+      "adopted_wording": "Q2利润爆发，推算单季19.95-24.95亿元。",
+      "valuation_impact": "margin/structure inflection"
+    },
+    {
+      "claim": "2025A revenue CNY164.782bn and parent net profit CNY2.413bn.",
+      "evidence": ["data/raw_financials_20260709.json"],
+      "source_quality": "structured_financial_packet",
+      "adopted_wording": "2025A为高收入低利润基数。",
+      "valuation_impact": "old denominator"
+    },
+    {
+      "claim": "2026Q1 operating cash flow was CNY-7.772bn.",
+      "evidence": ["data/raw_financials_20260709.json", "local quarterly filing mirror"],
+      "source_quality": "structured_plus_official_filing",
+      "adopted_wording": "Q1现金流承压。",
+      "valuation_impact": "risk cap"
+    },
+    {
+      "claim": "2025 top five customers were 71.29% of sales.",
+      "evidence": ["local 2025 annual filing mirror"],
+      "source_quality": "official_filing_local",
+      "adopted_wording": "客户集中度高，CSP议价权强。",
+      "valuation_impact": "margin risk"
+    },
+    {
+      "claim": "No clear Central Huijin, CSF, or Social Security top-ten holder evidence in 2026Q1 public holder snapshot.",
+      "evidence": ["public holder snippets"],
+      "source_quality": "public_holder_snapshot",
+      "adopted_wording": "前十大未见明确汇金/证金/社保持仓，主要为国资控股、北向和ETF。",
+      "valuation_impact": "style classification"
+    }
+  ],
+  "boundaries": [
+    "Named internet customers are broker/industry evidence, not official customer-name disclosure.",
+    "AI-server revenue split is not disclosed; use margin and broker forecast proxy rather than unsupported unit/ASP assumptions."
+  ]
+}

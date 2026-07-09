@@ -1,0 +1,57 @@
+{
+  "case_id": "000977-20260709",
+  "relationships": [
+    {
+      "ticker": "000977",
+      "company": "浪潮信息",
+      "chain_layer": "AI server / full system",
+      "node_type": "listed",
+      "upstream_input": "GPU, domestic AI chips, CPU, memory, PCB, PSU, liquid-cooling components",
+      "product_or_process": "AI server, SD200, HC1000, R1 inference server",
+      "downstream_customer_or_platform": "cloud vendors, operators, government/enterprise AIDC",
+      "relationship_type": "official-disclosed chain role with broker-stated demand",
+      "confidence": "high for chain role; medium for customer allocation",
+      "source_tier": "official_filing_local/original_pdf",
+      "evidence_score": 4,
+      "revenue_exposure": "AI server split not disclosed",
+      "capacity_or_certification": "1000+ liquid-cooling patents and disclosed product platforms",
+      "order_visibility": "H1 preannouncement and contract liabilities proxy",
+      "ASP_or_price_proxy": "not disclosed",
+      "utilization_or_yield": "not disclosed",
+      "margin_or_earnings_impact": "Q2 implied parent NP supports earnings conversion",
+      "source": [
+        "local 2025 annual filing mirror",
+        "data/raw_news_20260709.json",
+        "broker PDFs"
+      ],
+      "evidence_gap": "customer allocation, ASP, and unit shipment not disclosed",
+      "valuation_eligibility": "eligible with working-capital discount",
+      "downgrade_trigger": "H2 profit or OCF fails to validate Q2 inflection",
+      "used_in_valuation": true
+    },
+    {
+      "ticker": "000977",
+      "company": "浪潮信息",
+      "chain_layer": "liquid cooling",
+      "node_type": "listed",
+      "upstream_input": "cold plate, coolant, CDU, rack structure",
+      "product_or_process": "full liquid-cooling server and megawatt two-phase liquid-cooling rack",
+      "downstream_customer_or_platform": "high-density AIDC",
+      "relationship_type": "official-disclosed product capability",
+      "confidence": "high",
+      "source_tier": "official_filing_local",
+      "evidence_score": 4,
+      "revenue_exposure": "not disclosed",
+      "capacity_or_certification": "continuous China liquid-cooling leadership; standards and patents",
+      "order_visibility": "product evidence only",
+      "ASP_or_price_proxy": "not disclosed",
+      "utilization_or_yield": "not disclosed",
+      "margin_or_earnings_impact": "supports margin improvement",
+      "source": ["local 2025 annual filing mirror"],
+      "evidence_gap": "product revenue and segment margin not disclosed",
+      "valuation_eligibility": "eligible as margin driver",
+      "downgrade_trigger": "gross margin falls below 5.5%",
+      "used_in_valuation": true
+    }
+  ]
+}

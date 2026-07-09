@@ -1,0 +1,59 @@
+{
+  "case_id": "000977-20260709",
+  "report_type": "single-stock full note",
+  "data_cutoff": "2026-07-09 11:51 Asia/Shanghai",
+  "coverage_pack": "AIDC",
+  "required_skills": [
+    "equity-research",
+    "supply-chain-research",
+    "growth-earnings-model",
+    "valuation",
+    "research-report-review"
+  ],
+  "required_artifacts": [
+    "research_brief.md",
+    "data/source_registry.md",
+    "data/claim_audit.md",
+    "data/broker_street_consensus_20260709.md",
+    "analysis/supply_chain_model.md",
+    "analysis/growth_earnings_model.md",
+    "analysis/segment_forecast_bridge.md",
+    "analysis/implied_growth_sensitivity.md",
+    "analysis/valuation_model.md",
+    "analysis/valuation_audit.md",
+    "analysis/house_view.md",
+    "analysis/variant_perception.md",
+    "report.tex",
+    "report.pdf"
+  ],
+  "review_cycles": [
+    "R0_evidence",
+    "R1_model",
+    "R2_draft",
+    "R3_render_compliance",
+    "R4_final_ic"
+  ],
+  "verifiers": [
+    "astock.cli build-pdf",
+    "manual text grep",
+    "valuation arithmetic audit"
+  ],
+  "depth_gates": {
+    "evidence_depth": "PASS",
+    "broker_consensus_depth": "PASS",
+    "model_depth": "PASS",
+    "valuation_depth": "PASS",
+    "ic_readiness": "PASS"
+  },
+  "pass_conditions": [
+    "Use H1 preannouncement as primary denominator",
+    "Discuss target-price revision trend",
+    "Include AStock target price and action discipline",
+    "Compile report PDF"
+  ],
+  "downgrade_path": [
+    "H2 profit persistence failure",
+    "negative operating cash flow plus working-capital expansion",
+    "AI accelerator supply interruption"
+  ]
+}

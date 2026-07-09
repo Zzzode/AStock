@@ -1,0 +1,57 @@
+{
+  "case_id": "000977-20260709",
+  "sources": [
+    {
+      "id": "S1",
+      "source": "data/raw_quote_20260709.json",
+      "type": "live quote packet",
+      "date": "2026-07-09",
+      "quality": "full_realtime",
+      "used_for": ["current price", "turnover amount", "limit-up state"]
+    },
+    {
+      "id": "S2",
+      "source": "data/raw_financials_20260709.json",
+      "type": "structured financial packet",
+      "date": "2026-07-09",
+      "quality": "full",
+      "used_for": ["2025A", "2026Q1", "margins", "cash flow"]
+    },
+    {
+      "id": "S3",
+      "source": "data/raw_news_20260709.json",
+      "type": "structured news/events packet",
+      "date": "2026-07-09",
+      "quality": "full",
+      "used_for": ["H1 earnings preannouncement", "abnormal movement", "news flow"]
+    },
+    {
+      "id": "S4",
+      "source": "sources/broker-reports/2026-07-09/01-capital-20260708-q2-beat.pdf",
+      "type": "broker original PDF",
+      "date": "2026-07-08",
+      "quality": "original_pdf",
+      "used_for": ["target price", "EPS forecast", "broker revision trend"]
+    },
+    {
+      "id": "S5",
+      "source": "sources/broker-reports/2026-07-09/02-kysec-20260708-h1-beat.pdf",
+      "type": "broker original PDF",
+      "date": "2026-07-08",
+      "quality": "original_pdf",
+      "used_for": ["earnings forecast", "EPS forecast", "rating"]
+    },
+    {
+      "id": "S6",
+      "source": "workspace/research/aidc-supply-chain-20260630/sources/proxy-field-official-filings-20260701/000977-浪潮信息/",
+      "type": "official filing local mirror",
+      "date": "2025A/2026Q1",
+      "quality": "official_filing_local",
+      "used_for": ["inventory", "contract liabilities", "customer concentration", "liquid cooling"]
+    }
+  ],
+  "data_gaps": [
+    "Local technical-analysis packet failed because daily data sources degraded.",
+    "Top customer names are anonymized in official filings; named customers are broker-stated or industry-stated only."
+  ]
+}

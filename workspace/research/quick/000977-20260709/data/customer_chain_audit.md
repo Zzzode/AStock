@@ -1,0 +1,7 @@
+# Customer Chain Audit
+
+| ticker | company | customer_or_platform | claim_type | product_or_process | certification_status | order_or_backlog | ASP_or_price_proxy | capacity | utilization_or_yield | revenue_exposure | margin_impact | source_tier | evidence_score | evidence_gap | blocks_valuation | adopted_wording |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---:|---|---|---|
+| 000977 | 浪潮信息 | top five customers | official customer concentration | server and infrastructure products | not disclosed | sales concentration 71.29% in 2025 | not disclosed | not disclosed | not disclosed | consolidated sales concentration | CSP pricing risk | official_filing_local | 4 | customer names anonymized | false | 前五客户销售占比71.29%，客户集中度和议价风险高。 |
+| 000977 | 浪潮信息 | cloud / operator / enterprise AIDC | demand-platform exposure | AI server and liquid-cooling system | broker-stated / industry-stated | H1 preannouncement and broker forecast revisions | not disclosed | not disclosed | not disclosed | AI-server split not disclosed | positive if margin persists | original_pdf | 3 | named customer allocation not official | false | 下游AI算力需求强，但客户分项收入未披露。 |
+| 000977 | 浪潮信息 | contract liabilities proxy | order conversion proxy | server delivery | not applicable | contract liabilities CNY19.506bn at 2025 year-end, CNY12.252bn at 2026Q1 | not disclosed | not disclosed | not disclosed | consolidated | falling contract liabilities require H2 order validation | official_filing_local | 4 | backlog not disclosed | false | 预收款结转支撑Q1交付，H2需验证新增订单。 |

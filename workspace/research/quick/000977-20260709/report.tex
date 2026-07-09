@@ -1,0 +1,223 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,fontset=none]{ctexart}
+
+\newcommand{\reporttitle}{浪潮信息（000977）完整调研}
+\newcommand{\reportsubtitle}{AI服务器利润率重估 | H1预告后目标价上修 | AIDC核心机构趋势票}
+\newcommand{\reportkicker}{ASTOCK RESEARCH NOTE}
+\newcommand{\reportscope}{CHINA A-SHARES | AIDC / AI SERVER}
+\newcommand{\reportdate}{2026-07-09}
+\newcommand{\reportdatacutoff}{2026-07-09 11:51 quote; broker PDFs through 2026-07-08; filings through 2026Q1}
+\newcommand{\reporttype}{Single-stock full note with supply-chain, growth-earnings and valuation gates}
+\newcommand{\reportauthor}{AStock Agent Team}
+\newcommand{\reporthouseview}{%
+浪潮信息在2026H1业绩预告后，估值框架必须从“收入规模大但利润薄、估值偏高”的旧模型切换到“AI服务器/液冷/超节点带来利润率修复，且修复已被Q2利润验证”的新模型。公司预告2026H1归母净利26--31亿元，同比+226\%--288\%，H1下限已经超过2025全年24.13亿元；Q2单季隐含归母净利19.95--24.95亿元。当前85.99元、约1263亿元市值，对应AStock 2026E base EPS 3.78元约22.8x PE，不便宜，但可以被龙头地位和业绩重估解释。AStock House View目标价96元，合理区间78--105元，牛市情景126元。操作定义为“持有/回撤买入”，不建议在连续涨停和高换手情绪峰值追高。%
+}
+\newcommand{\reportquality}{实时行情、财务包、H1预告、两份事件后券商PDF和本地年报/一季报镜像均已归档。日线技术包在本次运行中降级，因此正文不写硬性MA/MACD数值；AI服务器收入拆分、ASP、客户分项未披露，估值采用利润率和EPS桥接。}
+\newcommand{\reportdisclaimer}{本报告不构成任何证券买卖建议。}
+\input{../../../.agents/templates/preamble.tex}
+
+\begin{document}
+
+\begin{center}
+{\sffamily\small\bfseries\color{steelgrey} \reportkicker}\\[3pt]
+{\LARGE\bfseries\color{navy} \reporttitle}\\[5pt]
+{\large\color{steelgrey} \reportsubtitle}\\[4pt]
+{\small\color{mutedgrey} \reportscope \quad|\quad \reportdate \quad|\quad \reportdatacutoff}
+\end{center}
+\vspace{0.7em}
+
+\begin{dashboardbox}[Decision Snapshot]
+\begin{houseviewbox}[House View]
+\reporthouseview
+\end{houseviewbox}
+\begin{sourcequalitybox}[Data Quality]
+\reportquality
+\end{sourcequalitybox}
+\end{dashboardbox}
+
+%% ================================================================
+\section{核心结论与操作建议}
+
+\begin{riskbox}[投资结论]
+\begin{itemize}
+  \item \textbf{评级/动作：} 持有；新增仓位等待回撤买入，不追连续涨停。
+  \item \textbf{AStock目标价：} 96元，对当前85.99元约+11.6\%空间；合理区间78--105元，牛市情景126元。
+  \item \textbf{入场纪律：} 78--82元为第一买入区，72--75元为强回撤加仓区；若放量冲高100元以上而没有新订单/现金流证据，偏兑现而非追涨。
+  \item \textbf{止损/失效：} 跌破75元且H2毛利率或现金流验证失败，降为观察；若H2归母净利低于20亿元，目标价下修至67--75元。
+  \item \textbf{票性：} 机构趋势票/产业主线票，不是庄股。控股股东为浪潮集团，前十大流通股东包含北向和ETF；暂未看到明确汇金、证金、社保进入前十大。
+\end{itemize}
+\end{riskbox}
+
+\noindent\begin{tabularx}{\textwidth}{L{3.8cm}X}
+\toprule
+\textbf{关键问题} & \textbf{AStock判断} \\
+\midrule
+为什么旧目标价失效？ & 旧模型主要用2025A或2026Q1利润分母，H1预告后Q2利润爆发，2026E EPS应重估到3.5--4.7元区间。 \\
+是否还便宜？ & 不算便宜。当前约22.8x 2026E base PE，但在AI服务器龙头和业绩重估背景下可解释。 \\
+核心验证点 & H2利润率是否延续、经营现金流是否改善、合同负债是否止跌、存货/应收是否可控。 \\
+最大风险 & AI服务器整机毛利薄，客户集中度高，CSP议价强；Q2可能是交付和产品结构峰值。 \\
+\bottomrule
+\end{tabularx}
+
+%% ================================================================
+\section{事件：H1预告改变估值分母}
+
+\begin{exhibitbox}[Exhibit 1: 业绩预告与Q2隐含利润]
+\begin{tabularx}{\exhibitboxwidth}{L{2.5cm}L{2.6cm}L{2.7cm}X}
+\toprule
+\textbf{项目} & \textbf{2025A} & \textbf{2026Q1} & \textbf{2026H1预告/推算} \\
+\midrule
+营业收入 & 1647.82亿元 & 354.70亿元（-24.3\% YoY） & 未披露 \\
+归母净利 & 24.13亿元 & 6.05亿元（+30.7\% YoY） & 26--31亿元（+226\%--288\%） \\
+扣非归母净利 & 20.81亿元 & 5.90亿元 & 20.55--25.55亿元（+206\%--280\%） \\
+EPS & 1.64元 & 0.41元 & 1.77--2.11元 \\
+Q2单季归母 & -- & -- & 19.95--24.95亿元（H1-Q1） \\
+经营现金流 & +54.53亿元 & -77.72亿元 & 待中报验证 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock raw financial/news packets；公司2026H1业绩预告；Q2为H1预告减Q1实际推算}
+\end{exhibitbox}
+
+\textbf{这次变化的本质}不是“营收又大了”，而是“薄利整机业务的利润率开始修复”。2025年浪潮信息已经有1647.82亿元收入，但归母净利只有24.13亿元，净利率约1.46\%。如果市场继续按1.5\%净利率看，公司只是一家高收入、低利润、重营运资本的整机厂；但H1预告把2026H1净利推到26--31亿元，说明Q2的高端AI服务器、液冷、超节点和供应链管理改善已经开始进入利润表。
+
+%% ================================================================
+\section{供应链定位：AIDC整机层核心，但不是高毛利芯片股}
+
+\noindent\begin{tabularx}{\textwidth}{L{2.2cm}L{4.0cm}X}
+\toprule
+\textbf{环节} & \textbf{浪潮角色} & \textbf{投资含义} \\
+\midrule
+算力芯片 & 上游采购GPU/国产AI芯片/CPU/HBM & 受益于AI capex，但受制于核心芯片供应和客户采购节奏。 \\
+服务器整机 & AI服务器、元脑SD200、HC1000、R1推理服务器 & 收入弹性最大，是A股最直接的AI服务器载体之一。 \\
+液冷整柜 & 全液冷服务器、兆瓦级两相液冷AI整机柜 & 是毛利率修复和估值溢价的关键，不是普通服务器组装。 \\
+互连/网络 & DirectCom、低延迟内存语义通信、超级AI以太网 & 支撑超节点、多智能体和推理集群场景。 \\
+下游客户 & 云厂商、运营商、政企智算中心 & 客户集中度高，议价强，是估值折扣来源。 \\
+\bottomrule
+\end{tabularx}
+
+公司年报披露其是全球领先IT基础设施产品、方案和服务提供商，2025年推出元脑R1推理服务器、元脑企智DeepSeek一体机、元脑SD200和HC1000等产品。液冷方面，公司披露拥有1000余件液冷技术领域核心专利，连续4年蝉联中国液冷服务器市场第一，并牵头/参与20余项液冷相关设计及技术标准。
+
+\textbf{边界}：公司没有披露AI服务器单独收入、出货量、ASP和客户分项收入。报告不把互联网客户名称当作公司官方客户披露，也不做虚假的“单台服务器ASP $\times$ 出货量”精算。估值采用利润率和券商预测作为代理。
+
+%% ================================================================
+\section{增长模型：从“收入”到“EPS”的桥}
+
+\begin{exhibitbox}[Exhibit 2: 2026E情景模型]
+\begin{tabularx}{\exhibitboxwidth}{L{2.4cm}XXXX}
+\toprule
+\textbf{情景} & \textbf{2026E收入} & \textbf{2026E归母净利} & \textbf{EPS} & \textbf{净利率} \\
+\midrule
+Bear & 2300亿元 & 44.5亿元 & 3.03元 & 1.93\% \\
+Base & 2440亿元 & 55.5亿元 & 3.78元 & 2.27\% \\
+Bull & 2600亿元 & 68.5亿元 & 4.66元 & 2.63\% \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock增长模型；群益证券2026E净利56.67亿元/EPS 3.86；开源证券2026E净利51.26亿元/EPS 3.49}
+\end{exhibitbox}
+
+Base情景没有把Q2单季高利润简单年化。H1净利中枢为28.5亿元，Q2单季隐含约22.45亿元；Base假设H2净利约27亿元，低于Q2年化节奏，留出供应链、客户降价和营运资本折扣。
+
+真正决定目标价上修幅度的不是收入，而是净利率从2025年的1.46\%抬到2026E的2.2\%--2.6\%。对整机厂来说，这是很大的利润率变化；但它仍然不是高毛利芯片或光模块模型，因此估值倍数不能无限拔高。
+
+%% ================================================================
+\section{券商目标价趋势：看上修方向，不迷信绝对值}
+
+\begin{exhibitbox}[Exhibit 3: Post-event Street Evidence]
+\begin{tabularx}{\exhibitboxwidth}{L{2.0cm}L{2.0cm}L{1.5cm}L{3.7cm}X}
+\toprule
+\textbf{机构} & \textbf{日期} & \textbf{评级} & \textbf{目标价/预测} & \textbf{关键信号} \\
+\midrule
+群益证券 & 2026-07-08 & 买进 & 目标价90元；2026E EPS 3.86 & 目标价从2025年5月60元上修至90元。 \\
+开源证券 & 2026-07-08 & 买入 & 2026--28E净利51.26/75.90/95.44亿元 & 预测从32.95/43.37/52.65亿元上修。 \\
+国泰海通 & 2026-04公开摘要 & 增持 & 目标价96.70元 & 旧报告仍低估H1预告后的利润弹性。 \\
+90日聚合 & 2026-07-08 & 13买入/3增持 & 均价79.34--86.66元，高点96.70--103.97元 & 很多旧目标价已落后现价。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{群益/开源原始PDF；公开券商聚合摘要；AStock broker consensus}
+\end{exhibitbox}
+
+券商目标价的绝对值在这种事件重估阶段会滞后。更重要的是\textbf{调整趋势}：群益把目标价从60元上修到90元；开源把2026E净利预测从32.95亿元上修到51.26亿元。这个方向说明机构开始承认H1预告不是一次简单季度波动，而是利润率模型重估。
+
+%% ================================================================
+\section{AStock估值：目标价96元，回撤买入}
+
+\begin{exhibitbox}[Exhibit 4: AStock Valuation]
+\begin{tabularx}{\exhibitboxwidth}{L{2.4cm}L{2.2cm}L{2.0cm}X}
+\toprule
+\textbf{情景} & \textbf{EPS} & \textbf{PE} & \textbf{目标价逻辑} \\
+\midrule
+Bear & 3.03元 & 22x & 67元：Q2利润部分回落，现金流继续偏弱。 \\
+Base & 3.78元 & 24x & 91元：H1利润率修复部分延续，H2稳定。 \\
+Bull & 4.66元 & 27x & 126元：高端AI服务器/液冷订单延续，2027E EPS 5元以上可信。 \\
+\midrule
+Final & -- & -- & \textbf{96元}：基本面锚91元、情绪锚103元、券商上修锚90元加权。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock valuation model; current price 85.99; shares 14.6848亿}
+\end{exhibitbox}
+
+当前价格85.99元对应：2025A PE约52.5x、2026E base PE约22.8x、开源2027E EPS 5.17对应约16.6x。结论是：\textbf{旧分母下很贵，新分母下合理但不便宜}。因此策略不是追涨，而是等情绪冷却后用H2验证换空间。
+
+%% ================================================================
+\section{资金面与票性：机构趋势票叠加短线资金接力}
+
+\noindent\begin{tabularx}{\textwidth}{L{3.4cm}X}
+\toprule
+\textbf{维度} & \textbf{判断} \\
+\midrule
+实时行情 & 7/9 11:51报85.99元，涨停+10.0\%，成交额181.90亿元，说明资金拥挤度已高。 \\
+7/8龙虎榜 & 公开数据称买入前五合计约9.50亿元、卖出约0.31亿元、净买约9.20亿元；东吴苏州工业园区扬富路净买约2.9亿元，华源深圳约2.63亿元。 \\
+分歧资金 & 深股通专用席位卖出约3.14亿元，3家机构专用席位净卖出约1亿元，说明机构/北向存在兑现分歧。 \\
+机构持仓 & Q1前十大流通股东包括香港中央结算、易方达中证人工智能主题ETF、华泰柏瑞沪深300ETF等。 \\
+国家队/社保 & 暂未在公开Q1前十大中看到明确汇金、证金、社保席位。 \\
+票性 & 机构趋势票+产业主线票；短线资金在业绩预告后接力，但底层不是庄股。 \\
+\bottomrule
+\end{tabularx}
+
+这类票的正确打法不是按庄股思路猜“主力成本”，而是跟踪机构是否继续上修利润、H2业绩是否兑现、指数/主题ETF是否继续增配。短线龙虎榜能解释涨停强度，但不能替代中期估值。
+
+%% ================================================================
+\section{风险与反证条件}
+
+\begin{riskbox}[必须盯住的四个风险]
+\begin{itemize}
+  \item \textbf{现金流风险：} 2026Q1经营现金流-77.72亿元，若中报/三季报仍不改善，利润质量会被打折。
+  \item \textbf{客户议价风险：} 2025年前五客户销售占比71.29\%，CSP客户议价权强，可能压制整机毛利率。
+  \item \textbf{合同负债风险：} 2025年末合同负债195.06亿元，2026Q1降至122.52亿元；若后续没有新增订单/预收款补充，H2持续性存疑。
+  \item \textbf{供应链风险：} GPU/国产AI芯片供应、出口管制、存储/电源/液冷部件交付都会影响收入确认。
+\end{itemize}
+\end{riskbox}
+
+\noindent\begin{tabularx}{\textwidth}{L{4.0cm}X}
+\toprule
+\textbf{触发条件} & \textbf{操作} \\
+\midrule
+H2归母净利>35亿元且现金流转正 & 目标价上修至110--126元区间。 \\
+H2归母净利约25--30亿元，毛利率稳定 & 维持96元目标价，回撤买入。 \\
+H2归母净利<20亿元，毛利率回落至5.5\%以下 & 目标价下修至67--75元，降为观察。 \\
+股价先涨到100元以上但没有新增订单/现金流证据 & 不追涨，偏兑现/等待。 \\
+\bottomrule
+\end{tabularx}
+
+%% ================================================================
+\section{结论}
+
+浪潮信息现在已经不是上一份AIDC旧模型中的“Q1营收下滑、毛利压力、高估值风险”状态。H1预告证明二季度利润率修复超预期，券商也开始集中上修盈利预测。我们接受这次重估，但不把它外推成无限估值扩张：公司仍是客户集中、资本占用高、毛利率薄的服务器系统集成商。
+
+\textbf{最终建议}：已有仓位持有，新增仓位等78--82元回撤；House View目标价96元，牛市情景126元。核心跟踪H2利润率和现金流，尤其是中报披露的毛利率、经营现金流、合同负债和存货/应收变化。
+
+%% ================================================================
+\vfill
+\begin{disclosurebox}[Metadata]
+\footnotesize
+Confidence: 91/100 \quad | \quad
+Data quality: high for quote/financials/broker PDFs; conditional for detailed technical indicators and undisclosed AI-server unit economics.
+
+\vspace{0.3em}
+Model Reproducibility: PASS. 市值=85.99元$\times$14.6848亿股=1263亿元；base EPS=55.5亿元/14.6848亿股=3.78元；目标96元对应+11.6\%。
+
+\vspace{0.4em}
+{\tiny\reportdisclaimer\ Generated by AI agents for research reference only.}
+\end{disclosurebox}
+
+\end{document}
