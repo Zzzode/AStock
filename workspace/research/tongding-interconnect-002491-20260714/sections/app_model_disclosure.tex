@@ -1,0 +1,25 @@
+\section{模型输入}
+\small
+\begin{tabularx}{0.94\linewidth}{L{3.2cm}X}
+\textbf{当前价格} & CNY20.86，2026-07-14收盘。 \\
+\textbf{股本} & 12.299945亿股，来自2026Q1报告。 \\
+\textbf{2026E基准扣非利润} & CNY5.20亿元：H1中点CNY2.80亿元加H2假设CNY2.40亿元。 \\
+\textbf{方法} & 50\%扣非PE、25\%归母PB、25\%收入PS。 \\
+\textbf{情绪锚} & CNY18.50，权重10\%；Street锚权重0\%。 \\
+\end{tabularx}
+\normalsize
+
+\section{复算示例}
+\[
+\begin{array}{rl}
+\mathrm{Base\ adj.\ EPS}&=5.20/12.299945=0.422766,\\
+\mathrm{PE\ component}&=0.422766\times34=14.3740,\\
+\mathrm{PB\ component}&=2.0490\times1.80=3.6883,\\
+\mathrm{PS\ component}&=(49.01/12.299945)\times1.05=4.1838,\\
+\mathrm{Base\ target}&=0.50\times14.3740+0.25\times3.6883+0.25\times4.1838=9.16,\\
+\mathrm{Final\ target}&=0.90\times9.16+0.10\times18.50=10.09.
+\end{array}
+\]
+
+\section{模型边界}
+本模型不是完整DCF，因为分部资本开支、营运资金正常化和长期现金流缺乏披露。它是可复算的周期平台相对估值。若正式半年报提供分部收入、毛利、现金流、订单和客户结构，应重新运行模型；不应机械沿用本目标价。

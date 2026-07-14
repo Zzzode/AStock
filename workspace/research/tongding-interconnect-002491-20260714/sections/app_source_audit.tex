@@ -1,0 +1,19 @@
+\section{来源目录}
+\begin{longtable}{L{0.8cm}L{3.2cm}L{2.0cm}L{6.2cm}}
+\textbf{ID} & \textbf{类型} & \textbf{质量} & \textbf{路径与用途} \\
+\endfirsthead
+\textbf{ID} & \textbf{类型} & \textbf{质量} & \textbf{路径与用途} \\
+\endhead
+S01 & 官方年报 & A & \makecell[l]{\texttt{official-20260714/}\\\texttt{annual-report.pdf}}：业务、财务、销量和风险。 \\
+S02 & 审计报告 & A & \makecell[l]{\texttt{official-20260714/}\\\texttt{audit-report.pdf}}：收入、应收账款和存货关键审计事项。 \\
+S03 & 官方Q1报告 & A & \makecell[l]{\texttt{official-20260714/}\\\texttt{q1-report.pdf}}：Q1业绩、资产负债表和前十股东。 \\
+S04 & 官方H1预告 & A preliminary & \makecell[l]{\texttt{official-20260714/}\\\texttt{h1-preview.pdf}}：最新盈利分母。 \\
+S05 & 公开实时行情 & B & \makecell[l]{\texttt{market-20260714/}\\\texttt{quote-sina.html}}：收盘价、成交量和成交额。 \\
+S06 & 龙虎榜快照 & B & \makecell[l]{\texttt{market-20260714/}\\\texttt{lhb.html}}：机构事件和换手。 \\
+S07 & 融资数据探针 & C partial & \makecell[l]{\texttt{market-20260714/}\\\texttt{margin.html}}：接口失败原件，余额采用公开文章并标记局限。 \\
+S08 & 集采媒体转述 & B media & \texttt{industry-20260714/}：需求背景，不作为公司订单。 \\
+S09 & 券商检索耗尽 & C & \makecell[l]{\texttt{broker-reports/}\\\texttt{2026-07-14/index.md}}：无原始目标价，Street权重0\%。 \\
+\end{longtable}
+
+\section{证据采用规则}
+官方披露可进入历史财务和公司层H1分母；媒体或需求锚点只能进入产业背景；席位和融资数据进入交易行为分析但不穿透实名投资者；弱券商来源不生成外部目标价。所有未披露字段写为not disclosed/not found，相关高成长估值信用被取消或降级。

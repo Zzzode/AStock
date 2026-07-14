@@ -1,0 +1,19 @@
+{
+  "cycle": "R0_evidence",
+  "publishability_status": "CONDITIONAL",
+  "publishability_score": 86,
+  "findings": [
+    {
+      "issue_id": "R0-A-001",
+      "severity": "A",
+      "owner_skill": "reports",
+      "artifact": "data/broker_street_consensus_20260714.json",
+      "evidence": "No original broker target-price row with complete numeric fields was verified.",
+      "fix_required": "Keep the row, mark unavailable fields and valuation weight zero; record source exhaustion.",
+      "blocking_gate": "broker_consensus_depth",
+      "status": "closed",
+      "verifier_ref": "run_research_gates.py",
+      "reopened_count": 0
+    }
+  ]
+}

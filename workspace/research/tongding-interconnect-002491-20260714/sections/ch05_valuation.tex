@@ -1,0 +1,27 @@
+\section{为什么使用PE/PB/PS交叉}
+通鼎互联包含周期性线缆、低毛利电力电缆和较高毛利安全业务；用单一高成长PE会把光纤期权过度外推。我们用扣非PE作为主方法，用Q1归母BPS做PB检查，用收入PS作为收入规模和周期位置的 sanity check。权重为50\%/25\%/25\%，所有输入都可从模型JSON复算。
+
+\begin{exhibitbox}[表5-1\quad 三情景估值]
+\begin{tabularx}{\exhibitboxwidth}{L{1.2cm}R{1.5cm}R{1.5cm}R{1.5cm}R{1.4cm}R{1.4cm}R{1.4cm}X}
+\textbf{情景} & \textbf{扣非净利} & \textbf{扣非EPS} & \textbf{PE} & \textbf{PE价值} & \textbf{PB价值} & \textbf{PS价值} & \textbf{目标价} \\
+熊 & 3.40 & 0.276 & 25x & 6.91 & 3.18 & 3.28 & CNY5.07 \\
+基准 & 5.20 & 0.423 & 34x & 14.37 & 3.69 & 4.18 & CNY9.16 \\
+牛 & 7.00 & 0.569 & 44x & 25.04 & 4.41 & 5.34 & CNY14.96 \\
+\end{tabularx}
+\sourcenote{data/current\_valuation\_model\_20260714.json；金额单位为CNY100m，价值列为每股CNY。}
+\end{exhibitbox}
+
+公式为：
+\[
+\mathrm{Target}=50\%\times(\mathrm{扣非EPS}\times\mathrm{PE})+25\%\times(\mathrm{Q1归母BPS}\times\mathrm{PB})+25\%\times(\mathrm{2026E收入}/\mathrm{股本}\times\mathrm{PS}).
+\]
+基准情景为CNY9.16元。以CNY18.50作为可观察的市场情绪锚、权重10\%，基本面权重90\%，得到综合目标价CNY10.09元。没有可验证的原始券商目标价，Street权重为0\%，没有把内部模型伪装成外部共识。
+
+\section{当前价格隐含预期}
+20.86元对应基准2026E扣非EPS约49.3倍PE，远高于本报告基准34倍。市场隐含的不是单纯H1公告，而是H2利润继续上行、光纤量价保持、安全业务贡献稳定和AI/数据中心期权被重新定价。若这些条件同时实现，牛情景仍有14.96元的模型上限，但即使牛情景仍低于当前价，说明市场价格需要更高的利润或更长的估值久期。
+
+\section{Street与公开观点}
+截至数据截止日，检索到的高盛/中信目标价仅见于财富号转述，未取得原始券商PDF或券商官方页面，因而标记为弱证据并不纳入目标价。报告保留这一缺口，避免将CNY22.8或CNY24.5等转述数字写成正式Street锚。
+
+\section{目标价与行动}
+综合目标价低于现价并不构成机械卖出指令。已有仓位应把逻辑切换为“业绩验证”：不在H1事件日天量追高，等待正式半年报和价格回撤；新增仓位只有在扣非利润、现金流、毛利率与分部数据同时验证时才提高风险预算。

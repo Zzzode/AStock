@@ -1,0 +1,19 @@
+{
+  "cycle": "R3_render_compliance",
+  "publishability_status": "CONDITIONAL",
+  "publishability_score": 92,
+  "findings": [
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "owner_skill": "exhibit-format-reviewer",
+      "artifact": "main.pdf",
+      "evidence": "15 pages; XeLaTeX double pass; hard errors 0; Overfull hbox 0.",
+      "fix_required": "Keep rendered snapshot and PDF; no blocking visual issue remains.",
+      "blocking_gate": "render_compliance",
+      "status": "closed",
+      "verifier_ref": "XeLaTeX log and pdfinfo",
+      "reopened_count": 0
+    }
+  ]
+}

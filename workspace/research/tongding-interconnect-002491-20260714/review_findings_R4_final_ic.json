@@ -1,0 +1,19 @@
+{
+  "cycle": "R4_final_ic",
+  "publishability_status": "CONDITIONAL",
+  "publishability_score": 86,
+  "findings": [
+    {
+      "issue_id": "R4-A-001",
+      "severity": "A",
+      "owner_skill": "research-report-review",
+      "artifact": "final_signoff.json",
+      "evidence": "Original broker target-price coverage remains unavailable; H1 segment and cash-conversion gaps remain material.",
+      "fix_required": "Do not sign unconditional PASS; publish only with explicit CONDITIONAL downgrade and zero Street weight.",
+      "blocking_gate": "final_ic",
+      "status": "closed",
+      "verifier_ref": "review_log.md and source_exhaustion_log.json",
+      "reopened_count": 0
+    }
+  ]
+}

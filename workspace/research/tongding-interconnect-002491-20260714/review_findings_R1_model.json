@@ -1,0 +1,19 @@
+{
+  "cycle": "R1_model",
+  "publishability_status": "CONDITIONAL",
+  "publishability_score": 86,
+  "findings": [
+    {
+      "issue_id": "R1-A-001",
+      "severity": "A",
+      "owner_skill": "valuation",
+      "artifact": "analysis/valuation_model.md",
+      "evidence": "H1 segment revenue, ASP, utilization and customer allocation are not disclosed.",
+      "fix_required": "Use consolidated cyclical PE/PB/PS; do not assign pure-growth multiple; retain next-quarter thresholds.",
+      "blocking_gate": "valuation_depth",
+      "status": "closed",
+      "verifier_ref": "tools/verify_research_workspace.py",
+      "reopened_count": 0
+    }
+  ]
+}

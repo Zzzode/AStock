@@ -1,0 +1,58 @@
+{
+  "artifacts": [
+    {
+      "artifact": "research_brief.md",
+      "required_fields": "scope, cutoff, exclusions, downgrade",
+      "minimum_depth": "explicit data boundary",
+      "blocking_conditions": "missing or unsupported data",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "case verifier",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/verified_financials.md",
+      "required_fields": "reported/guided financials and mix",
+      "minimum_depth": "official paths and units",
+      "blocking_conditions": "missing or unsupported data",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "case verifier",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/growth_earnings_model.md",
+      "required_fields": "driver bridge, scenarios and credit",
+      "minimum_depth": "no unsupported growth multiple",
+      "blocking_conditions": "missing or unsupported data",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "case verifier",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/valuation_model.md",
+      "required_fields": "price, shares, scenarios, target and action",
+      "minimum_depth": "reproducible formulas",
+      "blocking_conditions": "missing or unsupported data",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "case verifier",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/secondary_market_analysis.md",
+      "required_fields": "institution, LHB, financing, score",
+      "minimum_depth": "layered identity limits",
+      "blocking_conditions": "missing or unsupported data",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "case verifier",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "final_signoff.json",
+      "required_fields": "score, gates, residual risks",
+      "minimum_depth": "maker-checker closure",
+      "blocking_conditions": "missing or unsupported data",
+      "reviewer_cycle": "R0-R4",
+      "verifier_check": "case verifier",
+      "blocking_if_missing": true
+    }
+  ]
+}

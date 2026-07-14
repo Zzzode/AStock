@@ -1,0 +1,30 @@
+{
+  "case_id": "tongding-interconnect-002491-20260714",
+  "report_type": "single_stock_deep_research",
+  "data_cutoff": "2026-07-14 18:00 CST",
+  "required_artifacts": [
+    "research_brief.md",
+    "data/verified_financials.md",
+    "analysis/growth_earnings_model.md",
+    "analysis/valuation_model.md",
+    "analysis/secondary_market_analysis.md",
+    "final_signoff.json",
+    "main.tex",
+    "main.pdf"
+  ],
+  "review_cycles": [
+    "R0_evidence",
+    "R1_model",
+    "R2_draft",
+    "R3_render_compliance",
+    "R4_final_ic"
+  ],
+  "depth_gates": [
+    "evidence_depth",
+    "broker_consensus_depth",
+    "model_depth",
+    "valuation_depth",
+    "ic_readiness"
+  ],
+  "downgrade_path": "watchlist only / high valuation risk"
+}

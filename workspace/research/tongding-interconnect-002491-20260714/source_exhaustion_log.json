@@ -1,0 +1,28 @@
+{
+  "probes": [
+    {
+      "probe": "original broker target",
+      "status": "not_found",
+      "impact": "Street weight 0",
+      "next": "licensed broker database"
+    },
+    {
+      "probe": "Eastmoney quote/kline",
+      "status": "connection_error",
+      "impact": "Sina close used",
+      "next": "exchange/vendor history"
+    },
+    {
+      "probe": "Eastmoney margin endpoint",
+      "status": "schema_error",
+      "impact": "public article labeled partial",
+      "next": "exchange margin data"
+    },
+    {
+      "probe": "H1 segment ASP/utilization/customer split",
+      "status": "not_disclosed",
+      "impact": "no pure-growth multiple",
+      "next": "H1 report/IR"
+    }
+  ]
+}
