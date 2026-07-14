@@ -1,0 +1,186 @@
+{
+  "schema_version": "source_registry.v1",
+  "rows": [
+    {
+      "source_id": "S1",
+      "source_type": "local_capability_quote",
+      "title": "AStock realtime quote packet for 002384",
+      "date": "2026-07-14 13:27 CST",
+      "path": "sources/market-20260714/quote_packet_20260714.json",
+      "quality_tier": "realtime",
+      "use_in_model": "price, market cap, turnover context",
+      "limitation": "The quote service did not return valuation ratios; ratios are recomputed from disclosed shares and earnings."
+    },
+    {
+      "source_id": "S2",
+      "source_type": "local_capability_financials",
+      "title": "AStock financial packet for 002384",
+      "date": "2026-07-14",
+      "path": "sources/market-20260714/financial_packet_20260714.json",
+      "quality_tier": "full",
+      "use_in_model": "2025A and 2026Q1A consolidated financials",
+      "limitation": "The packet does not provide a full forward segment forecast."
+    },
+    {
+      "source_id": "S3",
+      "source_type": "official_annual_report",
+      "title": "2025 annual report",
+      "date": "2026-04-22",
+      "path": "sources/official-20260714/2026-04-22-2025年年度报告.pdf",
+      "quality_tier": "official_pdf",
+      "use_in_model": "segment revenue, gross margin, cash flow, debt, goodwill, acquisition accounting",
+      "limitation": "2025 optical revenue includes only the post-consolidation period."
+    },
+    {
+      "source_id": "S4",
+      "source_type": "official_quarterly_report",
+      "title": "2026 first-quarter report",
+      "date": "2026-04-28",
+      "path": "sources/official-20260714/2026-04-28-2026年第一季度报告.pdf",
+      "quality_tier": "official_pdf",
+      "use_in_model": "Q1 revenue, profit, cash flow, debt and capex indicators",
+      "limitation": "No product-level ASP or customer revenue disclosure."
+    },
+    {
+      "source_id": "S5",
+      "source_type": "official_announcement",
+      "title": "2026 Q1 earnings preview",
+      "date": "2026-04-08",
+      "path": "sources/official-20260714/2026-04-08-2026年第一季度业绩预告.pdf",
+      "quality_tier": "official_pdf",
+      "use_in_model": "Q1 preview range and stated drivers",
+      "limitation": "Preview was unaudited and is superseded by the Q1 report."
+    },
+    {
+      "source_id": "S6",
+      "source_type": "official_announcement",
+      "title": "Source Photonics acquisition announcement",
+      "date": "2025-06-14",
+      "path": "sources/official-20260714/2025-06-14-收购索尔思光电对外投资公告.pdf",
+      "quality_tier": "official_pdf",
+      "use_in_model": "purchase price, business scope, historical financials and valuation basis",
+      "limitation": "The acquisition announcement is not a customer order book."
+    },
+    {
+      "source_id": "S7",
+      "source_type": "official_announcement",
+      "title": "Source Photonics and AI optical expansion announcement",
+      "date": "2026-06-17",
+      "path": "sources/official-20260714/2026-06-17-光芯片及光模块扩建对外投资公告.pdf",
+      "quality_tier": "official_pdf",
+      "use_in_model": "USD1.2bn expansion, capacity rationale and project risks",
+      "limitation": "The announcement does not disclose capacity units, utilization or named customer commitments."
+    },
+    {
+      "source_id": "S8",
+      "source_type": "official_ir_record",
+      "title": "2026-06-17 investor relations activity record",
+      "date": "2026-06-17",
+      "path": "sources/official-20260714/2026-06-17-投资者关系活动记录表.pdf",
+      "quality_tier": "official_ir",
+      "use_in_model": "EML/silicon photonics route, imported MOCVD equipment, material safeguards",
+      "limitation": "The company did not disclose product-level volume, ASP or customer share."
+    },
+    {
+      "source_id": "S9",
+      "source_type": "official_abnormal_movement",
+      "title": "Abnormal trading movement clarification",
+      "date": "2026-06-05",
+      "path": "sources/official-20260714/2026-06-05-股票交易异常波动公告.pdf",
+      "quality_tier": "official_pdf",
+      "use_in_model": "official optical segment contribution and risk boundary",
+      "limitation": "It confirms contribution ratios, not future growth."
+    },
+    {
+      "source_id": "S10",
+      "source_type": "broker_original_pdf",
+      "title": "Dongwu Securities deep report",
+      "date": "2026-03-30",
+      "path": "sources/broker-reports/2026-07-14/2026-03-30-东吴证券-光模块与高端PCB双轮驱动AI基建新龙头.pdf",
+      "quality_tier": "original_pdf",
+      "use_in_model": "external industry and segment forecast cross-check",
+      "limitation": "No target price was disclosed in the archived pages."
+    },
+    {
+      "source_id": "S11",
+      "source_type": "broker_original_pdf",
+      "title": "Kaiyuan Securities Q1 update",
+      "date": "2026-04-30",
+      "path": "sources/broker-reports/2026-07-14/2026-04-30-开源证券-2026Q1业绩高增.pdf",
+      "quality_tier": "original_pdf",
+      "use_in_model": "external forecast cross-check",
+      "limitation": "No target price was disclosed in the archived pages."
+    },
+    {
+      "source_id": "S12",
+      "source_type": "broker_repost_full_fields",
+      "title": "Huachuang Securities Q1 preview target-price summary",
+      "date": "2026-04-17",
+      "path": "sources/broker-reports/2026-07-14/2026-04-17-华创证券-研报摘要页.html",
+      "quality_tier": "auditable_broker_repost",
+      "use_in_model": "external target price, revenue, net profit and EPS anchor",
+      "limitation": "The original licensed PDF is not archived; the public summary preserves the numeric forecast fields."
+    },
+    {
+      "source_id": "S13",
+      "source_type": "public_consensus_snapshot",
+      "title": "Tonghuashun/F10 forecast aggregation",
+      "date": "2026-07-14",
+      "path": "sources/market-20260714/10jqka_consensus_20260714.html",
+      "quality_tier": "auditable_consensus_snapshot",
+      "use_in_model": "12-institution forecast mean and target-price dispersion context",
+      "limitation": "An aggregate is not a substitute for original broker methodology."
+    },
+    {
+      "source_id": "S14",
+      "source_type": "market_structure_snapshot",
+      "title": "Dragon-Tiger, seat and financing evidence",
+      "date": "2026-07-14",
+      "path": "sources/market-20260714/dragon_tiger_20260701_20260714.json",
+      "quality_tier": "public_snapshot",
+      "use_in_model": "institutional/seat behavior and crowding",
+      "limitation": "Seat statistics are event snapshots, not a complete investor identity map."
+    },
+    {
+      "source_id": "S15",
+      "source_type": "market_structure_snapshot",
+      "title": "Financing balance public capture",
+      "date": "2026-07-14",
+      "path": "sources/market-20260714/eastmoney_margin_20260714.html",
+      "quality_tier": "public_snapshot",
+      "use_in_model": "financing balance and leverage crowding",
+      "limitation": "Eastmoney labels the article as data dissemination; exchange data remains the underlying reference."
+    },
+    {
+      "source_id": "S16",
+      "source_type": "official_h1_earnings_preview",
+      "title": "2026年半年度业绩预告",
+      "date": "2026-07-14 16:36 CST / notice date 2026-07-15",
+      "path": "sources/official-20260715/2026-07-15-2026年半年度业绩预告.pdf",
+      "quality_tier": "official_pdf",
+      "use_in_model": "H1 parent profit, deducted profit, EPS range and Q2 bridge",
+      "limitation": "Unaudited company-level range; no optical segment revenue, ASP, margin or order split."
+    },
+    {
+      "source_id": "S17",
+      "source_type": "official_holder_or_market_structure",
+      "title": "Q1 official shareholder table and capital-structure synthesis",
+      "date": "2026-07-14",
+      "path": "sources/official-20260714/2026-04-28-2026年第一季度报告.pdf",
+      "quality_tier": "official_report",
+      "use_in_model": "named insurance, public-fund, ETF, HKSCC and controller positions",
+      "limitation": "Quarter-end holder snapshot; not current July ownership."
+    },
+    {
+      "source_id": "S18",
+      "source_type": "official_holder_or_market_structure",
+      "title": "2026-07-14 Dragon-Tiger and institution-seat snapshot",
+      "date": "2026-07-14",
+      "path": "sources/market-20260714/capital_structure_20260714.json",
+      "quality_tier": "public_snapshot",
+      "use_in_model": "latest institution/Stock Connect/LHB direction and turnover",
+      "limitation": "Institution seats and HKSCC are aggregates; they do not identify a named fund."
+    }
+  ],
+  "updated_at": "2026-07-14T18:30:00+08:00"
+}

@@ -1,0 +1,44 @@
+{
+  "schema_version": "valuation_model.v2",
+  "data_cutoff": "2026-07-14 16:36 CST; market quote 13:27 CST",
+  "rows": [
+    {
+      "ticker": "002384.SZ",
+      "company": "东山精密",
+      "current_price": 260.37,
+      "price_date": "2026-07-14 13:27 CST; H1 preview released after market at 16:35 CST",
+      "shares_100mn": 18.31607532,
+      "market_cap_100mn_cny": 4768.9565,
+      "revenue_2026e_100mn": 685.0,
+      "np_2026e_100mn": 68.0,
+      "eps_2026e": 3.7126,
+      "method": "2027E SOTP with 2026E PE cross-check; final target blends fundamental, broker and market anchors",
+      "bear": 110.0,
+      "base": 198.96,
+      "bull": 310.0,
+      "scenario_expected_value": 198.96,
+      "market_implied_anchor": 225.0,
+      "broker_anchor": 199.87,
+      "fundamental_anchor": 198.96,
+      "fundamental_weight": 0.75,
+      "broker_weight": 0.15,
+      "market_weight": 0.1,
+      "final_target": 201.7,
+      "upside": -0.2253,
+      "action": "高估值风险；趋势波段观察；不追涨停；等待业绩与估值再平衡",
+      "evidence_quality": "official filings + original broker PDFs + auditable broker repost + realtime/public market snapshots",
+      "catalysts": "Q2/H1 optical revenue and margin confirmation; optical expansion milestones; AI PCB high-end capacity ramp",
+      "invalidation": "optical margin compression; capex delay or weak utilization; Q2 profit below threshold; financing-driven multiple contraction",
+      "next_quarter_threshold": "Q2 parent net profit preview lower bound CNY1.790bn; optical revenue/margin and cash conversion remain required for an upgrade.",
+      "h1_preview_low_100mn": 29.0,
+      "h1_preview_mid_100mn": 29.5,
+      "h1_preview_high_100mn": 30.0,
+      "q2_derived_parent_net_profit_100mn": [
+        17.9011,
+        18.9011
+      ],
+      "h1_completion_of_2026e_mid": 0.4338,
+      "target_price_update_policy": "No target change from H1 preview alone; 2027 SOTP is unchanged because the preview has no segment split."
+    }
+  ]
+}

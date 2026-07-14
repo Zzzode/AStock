@@ -1,0 +1,20 @@
+{
+  "cycle": "R0_evidence",
+  "publishability_status": "PASS",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R0_evidence-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "maker-checker reviewer",
+      "artifact": "main.pdf",
+      "evidence": "Initial build pending final PDF and gate execution.",
+      "fix_required": "Run finalization and re-read current artifacts.",
+      "blocking_gate": "R3/R4",
+      "status": "closed",
+      "verifier_ref": "tools/verify_research_workspace.py",
+      "reopened_count": 0
+    }
+  ]
+}

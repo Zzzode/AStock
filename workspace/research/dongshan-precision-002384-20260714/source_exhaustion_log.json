@@ -1,0 +1,53 @@
+{
+  "schema_version": "source_exhaustion.v1",
+  "rows": [
+    {
+      "topic": "H1 2026 earnings preview",
+      "sources_checked": "official No. 2026-035 PDF, Eastmoney announcement API, notice index and prior census",
+      "found": "H1 parent NP CNY2.90-3.00bn (29-30 CNY100m units), deducted NP CNY2.40-2.50bn (24-25 CNY100m units), EPS CNY1.58-1.64",
+      "missing": "final audited H1 report and optical segment split",
+      "model_policy": "Use as company-level denominator validation; no mechanical H1 annualization",
+      "next_verification_path": "Read formal H1 report and optical module/AI PCB segment disclosures"
+    },
+    {
+      "topic": "optical customer/order/ASP/utilization",
+      "sources_checked": "annual report, Q1 report, abnormal movement announcement, IR record, expansion announcement and original broker PDFs",
+      "found": "Q1 contribution ratios, product capability, expansion amount and qualitative customer introduction",
+      "missing": "named order value, ASP, utilization, yield, customer share and product-level margin",
+      "model_policy": "Reported Q1 earnings credit; future expansion conditional/optionality credit",
+      "next_verification_path": "H1 report, capacity progress announcement and dated customer qualification disclosure"
+    },
+    {
+      "topic": "AI PCB economics",
+      "sources_checked": "annual report, official company descriptions and four original broker PDFs",
+      "found": "high-layer/HDI capability and high-end expansion",
+      "missing": "AI PCB revenue split, ASP, yield, utilization and customer allocation",
+      "model_policy": "Use incremental scenario row, not full consolidated high-growth multiple",
+      "next_verification_path": "Read H1 product mix and capacity utilization disclosures"
+    },
+    {
+      "topic": "broker target-price corpus",
+      "sources_checked": "AkShare report catalog, four original PDFs, Sina/Caixin public summaries and F10 aggregate",
+      "found": "one auditable target-price row with complete revenue/net profit/EPS/method fields",
+      "missing": "licensed original PDFs for all target-price revisions",
+      "model_policy": "Huachuang row receives 15% Street weight; weak reposts and snippets receive zero weight",
+      "next_verification_path": "Licensed broker/terminal retrieval of target-price revision history"
+    },
+    {
+      "topic": "secondary-market flow",
+      "sources_checked": "AStock quote, Tencent adjusted daily series, AkShare LHB, Eastmoney financing capture",
+      "found": "price, volume, turnover, LHB, seat and financing snapshots",
+      "missing": "complete beneficial-owner and fund-flow decomposition",
+      "model_policy": "Crowding and behavior context only; no direction guarantee",
+      "next_verification_path": "Refresh exchange and licensed terminal flow data"
+    },
+    {
+      "topic": "institution, fund and active-money attribution",
+      "sources_checked": "official Q1 shareholder table, AkShare 2026-07-14 LHB, Eastmoney market-structure capture",
+      "found": "named Q1 insurance/public-fund/HKSCC holders; 7/14 institution net buy, Stock Connect net sell and LHB turnover",
+      "missing": "live July fund positions and beneficial-owner identity behind institution/broker seats",
+      "model_policy": "Classify as institutional base plus active trading; no fund-specific ownership claim beyond official Q1 table",
+      "next_verification_path": "Read 2026H1 fund reports and subsequent Q3 holder table"
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+
+\section{模型口径}
+金额在模型文件中按CNY100m记录，报告正文按上下文使用亿元或CNYbn。股本为18.31607532亿股。H1预告为盘后未经审计区间，现价为盘中价，不是收盘价；因此目标价的上行/下行是相对于盘中截点的研究比较，不代表收盘后收益率。
+
+\section{模型限制}
+2026E和2027E分部收入、净利率、倍数及保守准备为House模型输入，不是公司指引。Q1索尔思绝对收入和利润由公司披露的合并占比反推，已在正文注明。目标价中的市场情绪锚不等于基本面价值，Street权重仅15\%，因为公开目标价的原始文件完整性不如公司公告。
+
+\section{复算公式}
+\[
+\mathrm{Market\ Cap}=\mathrm{Price}\times\mathrm{Shares}
+\]
+\[
+\mathrm{SOTP\ Value}=\sum_i(\mathrm{Segment\ Net\ Profit}_i\times\mathrm{Segment\ Multiple}_i)-\mathrm{Conservatism\ Overlay}
+\]
+\[
+\mathrm{Final\ Target}=0.75\times\mathrm{Fundamental\ Anchor}+0.15\times\mathrm{Street\ Anchor}+0.10\times\mathrm{Market\ Anchor}
+\]
+\[
+\mathrm{Upside/Downside}=\mathrm{Final\ Target}/\mathrm{Current\ Price}-1
+\]

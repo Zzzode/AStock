@@ -1,0 +1,96 @@
+{
+  "schema_version": "claim_audit.v1",
+  "rows": [
+    {
+      "claim_id": "C1",
+      "claim": "2026Q1 revenue was CNY13.138bn and parent net profit was CNY1.11bn.",
+      "evidence": "Official Q1 report and local financial packet agree.",
+      "source_id": "S2/S4",
+      "confidence": "high",
+      "formal_boundary": "Company-level reported result; no product-level attribution is implied.",
+      "model_impact": "Sets the 2026 starting run-rate and seasonality check.",
+      "gap": "H1 result was not formally disclosed by the cutoff."
+    },
+    {
+      "claim_id": "C2",
+      "claim": "Source Photonics accounted for 16.02% of Q1 revenue and 52.92% of Q1 profit.",
+      "evidence": "The company disclosed the ratios in the abnormal movement announcement.",
+      "source_id": "S9",
+      "confidence": "high",
+      "formal_boundary": "Ratios are company disclosure; absolute segment amounts are derived by multiplication.",
+      "model_impact": "Supports segment split and optical earnings credit.",
+      "gap": "Q1 product and customer mix remains undisclosed."
+    },
+    {
+      "claim_id": "C3",
+      "claim": "2025 optical module revenue was CNY1.436bn with 36.74% gross margin.",
+      "evidence": "2025 annual report product table.",
+      "source_id": "S3",
+      "confidence": "high",
+      "formal_boundary": "Only post-consolidation period is included in the 2025 consolidated product table.",
+      "model_impact": "Anchors optical gross-profit quality, not full-year 2026 revenue.",
+      "gap": "No 2025 full-year standalone optical disclosure in the annual report."
+    },
+    {
+      "claim_id": "C4",
+      "claim": "A USD1.2bn optical expansion was approved.",
+      "evidence": "Official board-approved investment announcement.",
+      "source_id": "S7",
+      "confidence": "high",
+      "formal_boundary": "Capacity investment is not equal to orders, utilization or recognized revenue.",
+      "model_impact": "Catalyst and capex risk; only conditional earnings credit.",
+      "gap": "Units, schedule, utilization, customer allocation and ASP are undisclosed."
+    },
+    {
+      "claim_id": "C5",
+      "claim": "The market is crowded at the 2026-07-14 intraday price.",
+      "evidence": "Realtime price, 60-day return, turnover events, financing balance and LHB snapshots.",
+      "source_id": "S1/S14/S15",
+      "confidence": "medium-high",
+      "formal_boundary": "Crowding is a market-structure inference, not proof of manipulation or future direction.",
+      "model_impact": "Reduces market-anchor weight and raises entry discipline.",
+      "gap": "No complete beneficial-owner style flow decomposition is available."
+    },
+    {
+      "claim_id": "C6",
+      "claim": "The company formally previewed 2026H1 parent net profit of CNY2.90-3.00bn.",
+      "evidence": "Official announcement No. 2026-035, released 2026-07-14 16:35 and dated 2026-07-15.",
+      "source_id": "S16",
+      "confidence": "high",
+      "formal_boundary": "Unaudited company-level range; final H1 report may differ.",
+      "model_impact": "Validates the lower bound of the 2026E denominator and raises the Q2 earnings threshold.",
+      "gap": "No optical segment revenue, gross margin, ASP, order or customer split."
+    },
+    {
+      "claim_id": "C7",
+      "claim": "The H1 preview implies Q2 parent net profit of CNY1.790-1.890bn.",
+      "evidence": "H1 preview range less Q1 reported parent net profit CNY1.1099bn.",
+      "source_id": "S2/S16",
+      "confidence": "high",
+      "formal_boundary": "Derived quarter bridge, not separately disclosed Q2 result.",
+      "model_impact": "The prior CNY1.65bn Q2 threshold is exceeded by the preview lower bound.",
+      "gap": "Q2 product and segment attribution remains unavailable."
+    },
+    {
+      "claim_id": "C8",
+      "claim": "The stock has a real institutional base in the latest official quarter-end holder table.",
+      "evidence": "HKSCC 3.79%; named insurance 3.05%; named public fund/ETF 2.03%; controller family 33.25%.",
+      "source_id": "S17",
+      "confidence": "high",
+      "formal_boundary": "2026-03-31 snapshot; not a live July ownership statement.",
+      "model_impact": "Supports institutional-base classification, not a target-price uplift.",
+      "gap": "No current post-H1 fund-holding disclosure."
+    },
+    {
+      "claim_id": "C9",
+      "claim": "The 2026-07-14 tape was active institutional/trading capital, not quiet one-way accumulation.",
+      "evidence": "Institutional LHB net buy CNY436.83m; Stock Connect net sell CNY326.47m; LHB turnover 29.67% of market turnover.",
+      "source_id": "S18",
+      "confidence": "medium-high",
+      "formal_boundary": "Seat-level and aggregate flow evidence; cannot identify named funds.",
+      "model_impact": "Classifies the stock as institutional base plus active-trading reinforcement.",
+      "gap": "No beneficial-owner-level daily flow decomposition."
+    }
+  ],
+  "updated_at": "2026-07-14T18:30:00+08:00"
+}

@@ -1,0 +1,55 @@
+{
+  "schema_version": "growth_driver_model.v1",
+  "ticker": "002384.SZ",
+  "company": "东山精密",
+  "data_cutoff": "2026-07-14 16:36 CST",
+  "gate_status": "CONDITIONAL",
+  "drivers": [
+    {
+      "ticker": "002384.SZ",
+      "company": "东山精密",
+      "applies": true,
+      "growth_driver": "Source Photonics optical modules/chips plus high-end AI PCB",
+      "base_business_revenue_2026e_100mn": 329.0,
+      "growth_segment_revenue_2026e_100mn": 356.0,
+      "value_amount_or_proxy": "Official Q1 segment contribution ratios; USD1.2bn expansion as capacity proxy",
+      "unit_volume_or_proxy": "2025 annual report optical module volume 2.793m sold / 2.873m produced; 2026 product mix not disclosed",
+      "ASP_or_price": "not disclosed; revenue-per-unit is not used as a forward ASP assumption",
+      "recognized_revenue_ratio": "100% for reported Q1; forward conversion modeled as scenario assumption, not order fact",
+      "supply_demand_state": "AI optical demand strong; high-end chip supply constrained according to broker industry discussion",
+      "capacity_or_utilization": "USD1.2bn optical expansion announced; utilization and schedule not disclosed",
+      "certification_or_customer_qualification": "Company states new large customers are being introduced; named customer and certification timing not disclosed",
+      "growth_gross_margin": "2025 optical product gross margin 36.74%; 2026 consolidated segment margin is modeled at 32%-37% in scenarios",
+      "incremental_opex": "R&D, depreciation and financing cost are explicitly charged in consolidated margin bridge",
+      "growth_net_profit_2026e_100mn": 47.6,
+      "growth_EPS_2026e": 2.5988,
+      "evidence_type": "official segment ratio + official capacity announcement + original broker cross-check",
+      "source": "S3/S4/S7/S8/S9/S10/S11",
+      "evidence_gap": "No named orders, ASP, utilization, yield or product-level 2026 guidance",
+      "valuation_credit": "earnings credit for reported Q1; conditional earnings credit for 2026E; optionality credit for unproven expansion",
+      "bear": "optical revenue 250 CNY100m; net margin 12%; AI PCB revenue 35 CNY100m",
+      "base": "optical revenue 280 CNY100m; net margin 17%; AI PCB revenue 60 CNY100m",
+      "bull": "optical revenue 420 CNY100m; net margin 22%; AI PCB revenue 90 CNY100m",
+      "current_price_implied_growth": "At CNY260.37, a 30x 2027E PE requires EPS CNY8.68 and parent net profit CNY15.90bn; this is above the House 2027E CNY13.21bn and close to the upper Street trajectory.",
+      "sensitivity_key": "optical recognized revenue and net margin, followed by AI PCB high-end capacity conversion",
+      "h1_parent_net_profit_preview_100mn": [
+        29.0,
+        30.0
+      ],
+      "h1_deducted_net_profit_preview_100mn": [
+        24.0,
+        25.0
+      ],
+      "q2_derived_parent_net_profit_100mn": [
+        17.9011,
+        18.9011
+      ],
+      "q2_derived_deducted_net_profit_100mn": [
+        13.4072,
+        14.4072
+      ],
+      "h1_preview_effect": "H1 preview confirms acceleration and validates the prior Q2 threshold; it does not disclose optical segment economics.",
+      "valuation_credit_after_h1": "Reported company-level earnings credit strengthened; 2027 optical/AI PCB segment credit remains conditional."
+    }
+  ]
+}

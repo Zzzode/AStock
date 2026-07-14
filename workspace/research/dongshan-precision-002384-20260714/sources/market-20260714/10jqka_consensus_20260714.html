@@ -1,0 +1,3428 @@
+<!DOCTYPE HTML>
+<html>
+<head id="head">
+		    <title>东山精密(002384) 盈利预测_F10_同花顺金融服务网</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7;IE=9"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+	<meta name="keywords" content="东山精密最新动态,东山精密公司概况,东山精密财务分析,东山精密股东研究,东山精密股本结构,东山精密公司大事,东山精密分红融资"/>
+	<meta name="description" content="暂无"/>
+	<!-- 券商url参数添加，落地只落broker-pcf10.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.1.12.min.1784006.js"></script> <script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1784006.js"></script> <script>
+    function getUrlParams(key, url) {
+        var href = url ? url : window.location.href;
+        if (href.indexOf("?") < 0 && href.indexOf("#") < 0) {
+            return false;
+        }
+        var hrefStr = href.replace(/#/g, "&");
+        hrefStr = hrefStr.replace(/\?/g, "&");
+        var paramsObj= {};
+        hrefStr.split("&").forEach(function(i) {
+            if (i.indexOf("=") > -1) {
+                paramsObj[i.split("=")[0]] = i.split("=")[1];
+            }
+        });
+        if (key) {
+            return paramsObj[key] || false;
+        } else {
+            return paramsObj;
+        }
+    }
+
+    function addParam(url, obj) {
+        var str = "",res;
+        for (var key in obj) {
+            str += (key + "=" + obj[key]);
+        }
+        if (url.indexOf("?") > -1) {
+            res = url.split('?').join('?' + str + '&');
+        } else if (url.indexOf("#") > -1) {
+            res = url.replace(/#/g, "?" + str + "#");
+        } else {
+            res = url + "?" + str;
+        }
+        return res;
+    }
+
+    var historyUrl = document.referrer;
+    if (historyUrl) {
+        var broker = getUrlParams('broker', historyUrl);
+        if (broker && window.history) {
+            var url = window.location.href;
+            url = addParam(url, broker ? {broker: broker} : {});
+            window.history.pushState('', '', url);
+        }
+    }
+</script>
+	<!-- f10工具箱，工具函数修改，落地只落utils.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1784006.js"></script> <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.4.8/f10-polyfill.js" crossorigin></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cd/kernel-thslc-component-materials-container/F10/static/css-vars-ponyfill.js" ></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.0/thsc-f10-utils.js" crossorigin></script>
+<script>
+    function isIEInClient(){
+        return !!(window.external && 'getUserPath' in window.external && 'createObject' in window.external);
+    }
+
+    function isInTongYiClient(){
+      return !!(window.external && 'createObject' in window.external);
+    }
+
+    function isInYuanHangClient(){
+        return !!(window.HevoCef && 'IsHevoCef' in window.HevoCef);
+    }
+    
+    function isInIEEnv(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        return ua.indexOf('msie') > -1 || ua.indexOf('trident/') > -1;
+    }
+
+    function isChromeOlderThan50(){
+        var userAgent = navigator.userAgent.toLowerCase();
+        var match = userAgent.match(/chrome\/(\d+)./);
+        if (match && parseInt(match[1]) <= 49) {
+           return true;
+        }
+        return false;
+    }
+
+</script>
+<style>
+.kamis-loading {
+	min-height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #437EB7;
+	background-color: rgba(255,255,255,0.8);
+	gap: 4px;
+	font-size: 14px;
+}
+.dark .kamis-loading, .black .kamis-loading {
+	background-color: #171D25;
+	color: #FEB302;
+}
+.kamis-loading svg {
+	width: 20px;
+	height: 20px;
+}
+.arco-icon-spin {
+  animation: spin 1s linear infinite;
+}
+.kamis-nodata {
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #333;
+  padding: 10px 14px;
+}
+.dark .kamis-nodata, .black .kamis-nodata {
+  color: #999;
+  background-color: #0b1016;
+  border-color:#1e2b38;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+		<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1784006.js"></script> <script src="//s.thsi.cn/js/m/common/bridge.js" type="text/javascript"  crossorigin></script>
+	<script type="text/javascript"  crossorigin  src="//s.thsi.cn/js/jquery-1.8.3.min.js"></script>
+	<script charset="utf-8" src="//s.thsi.cn/cb?webprivate/lib/axios.min.js;hxapp/m/base/js/vue.2.7.16.min.js" crossorigin="anonymous"></script>
+	<!-- kamis 渲染器 -->
+	<script charset="utf-8" src="//s.thsi.cn/hxapp/m/pkgs/amis-2c/sdk/v1-3/2c-sdk-register.1.3.6.js"></script>
+	<!-- 新版埋点cdn -->
+	<script crossorigin src="//s.thsi.cn/cb?cd/weblog/0.0.1-alpha.27/weblog.js"></script>
+		<script>
+		var xhrProto = XMLHttpRequest.prototype;
+		var origOpen = xhrProto.open;
+		xhrProto.open = function (method, url) {
+			if (location.host.indexOf('0033.cn') > -1 && arguments[1] !== undefined && arguments[1].indexOf('10jqka.com.cn') > -1) {
+				arguments[1] = arguments[1].replace('10jqka.com.cn', '0033.cn');
+			}
+			return origOpen.apply(this, arguments);
+		};
+	</script>
+	<script>
+		var originCreateElement =  document.createElement;
+		document.createElement = function(tagName){
+			const element = originCreateElement.apply(document,arguments);
+			if(tagName.toLowerCase() === 'script'){
+				element.setAttribute('charset','utf-8');
+			}
+			return element;
+		}
+	</script>
+	<script id="monitor-script" api_key="ths_f10" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.40/monitor.js" crossorigin></script>
+	<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+	<script>
+		try{
+			feMonitor.setConfig(
+				{
+				slientDev:false,//开发环境(localhost)是否发送报错请求，默认不发送为true
+				sampleRate:0.1, //采样率,可设置0-1之间，越小采集的频率越低
+				isCollectPerformance:true, //是否采集性能
+				title:'pc-F10'
+				}
+			);
+		}catch(e){
+
+		}
+	</script>
+	<style>
+        .wencaibs{color:#008BFF!important;cursor:pointer;}
+        .wd-tb .ptxt { word-break: break-word;}
+        .comment-chart-head{color: #89a;}
+        .comment-chart-head span{float: right;}
+        .comment-chart-head span i{vertical-align: middle; display: inline-block; width: 20px; height: 20px;margin: 0 2px 0 6px; border-radius: 20px; overflow: hidden;}
+        .comment-chart-head .imp-news{background: #da2e1f;}
+        .comment-chart-head .yidong-news{background: #e3bf1a;}
+
+        #ckg_table1 tr td{text-align:center}
+        #ckg_table2 tr td{text-align:center}
+        #ckg_table3 tr td{text-align:center}
+        #ckg_table4 tr td{text-align:center}
+        #ckg_table5 tr td{text-align:center}
+		li{list-style-type:none;
+			list-style-position:outside;}
+		#jpjl-input:focus { outline: none; }
+		.black.inClient .clientJump {
+			cursor: pointer;
+			color: #0199fa;
+			text-decoration: underline;
+		}
+		.white.inClient .clientJump {
+			color: #07519a;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		.managelist .name a {    color: #0199fa;
+			margin: 0 3px 2px;
+			text-decoration: underline;
+			border-bottom: none !important;
+		}
+	</style>
+	<!--统计页面加载时间-->
+	<script type="text/javascript">
+		var loadTimer= new Date().getTime();
+	</script>
+    <style>
+        #search_cyter{
+            display: block !important;
+        }
+		#profile .tickLabels .tickLabel{
+			padding-right:12px;
+			box-sizing:border-box;
+		}
+	  .a_cursor {
+		pointer: cursor;
+	}
+    </style>
+</head>
+<script type="text/javascript">
+
+//cookie设置
+function setReviewJumpState(state) {
+	document.cookie = 'reviewJump='
+					+ state
+					+ ';path=/;domain='
+					+ window.location.host;
+}
+//取得对应名字cookie
+function getCookie(name) {
+	var cookieValue = "";
+	var search = name + "=";
+	if (document.cookie.length > 0) {
+	    offset = document.cookie.indexOf(search);
+	    if (offset != -1)    {
+	        offset += search.length;
+	        end = document.cookie.indexOf(";", offset);
+	        if (end == -1) end = document.cookie.length;
+	        cookieValue = unescape(document.cookie.substring(offset, end))
+	    }
+	}
+	return cookieValue;
+}
+//栏目提前跳转
+var reviewJumpState = getCookie('reviewJump');
+if (!!reviewJumpState && reviewJumpState != 'nojump') {
+	setReviewJumpState('nojump');
+	window.location.href = unescape(reviewJumpState);
+} else {
+	setReviewJumpState('nojump');
+}
+//动态添加link-同步-会阻塞
+function addCssByLink(url){
+    document.write('<link rel="stylesheet" type="text/css"');
+    document.write(' href="' + url + '">');
+}
+function isMac() {
+        return /macintosh|mac os x/i.test(navigator.userAgent);
+};
+ var hash = window.location.hash.substring(1);
+hashArray = hash.split('=');
+if (hashArray[0] == 'stockpage') {
+    var STOCK_SKIN = 'white';
+} else {
+    var STOCK_SKIN = getCookie('skin_color');
+}
+//肤色与客户端同步
+function syncClientSkin(){
+	try {//取得客户端肤色
+		if (isMac()) {
+			return 'white';
+		}
+		return 'black';
+	} catch(e) {}
+}
+if (!STOCK_SKIN) {
+	STOCK_SKIN = syncClientSkin();
+}
+document.documentElement.setAttribute("class",STOCK_SKIN);
+if (STOCK_SKIN == 'white') {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 
+    addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/style_v4-2.css;css/basic/stock/white/20200604153837/chart_v2.min.20180110.css;css/basic/stock/white/20200604153837/dupont.css;css/basic/stock/white/20200604153837/black_v2-4.20190711.css;css/basic/stock/white/custom.min.css;css/basic/stock/white/20200604153837/operations.css;css/basic/stock/white/20200604153837/writecsskzd.min.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/20200604153837/survey-w.css;css/basic/stock/20200604153837/wxgcl_mod.css;css/basic/stock/provider-w_v2.css;css/basic/stock/20200604153837/searchbar-w_v2.css;css/basic/stock/20200604153837/wccept.css;css/basic/stock/wtgfx.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school_w.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/wsplpager.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/wchartsdom.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/industrydata.css;css/basic/stock/white/20200604153837/main_v1-2.css;css/basic/stock/white/20200604153837/xgcl.css;css/basic/stock/white/20200604153837/courier.css;css/basic/stock/white/20200604153837/recommend.css;css/basic/stock/white/20200604153837/housedata.css;css/basic/stock/white/202005071600/20200604153837/longhu.css;css/basic/stock/white/20200604153837/operate_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/remind_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_white_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/white/20200604153837/expression.css');
+	}
+					addCssByLink("//s.thsi.cn/css/basic/common/white/title.css")
+} else {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/style_v3-5.min.20200426.css;css/basic/stock/black/20200604153837/chart_v2.min.20190410.css;css/basic/stock/black/20200604153837/black_v2-4.20190711.css;css/basic/stock/black/custom.min.css;css/basic/stock/black/20200604153837/operations.css;css/basic/stock/black/20200604153837/csskzd.min.20150608.css;/css/basic/stock/20200604153837/survey.20150929.css;/css/basic/stock/provider_v2.css;/css/basic/stock/20200604153837/searchbar_v2.css;/css/basic/stock/20200604153837/ccept.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/splpager.20170504.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/chartsdom.css;css/basic/stock/20200604153837/xgcl_mod.css;/css/basic/stock/tgfx.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/industrydata.css;css/basic/stock/black/20200604153837/main_v1-2.css;css/basic/stock/black/20200604153837/xgcl.css;css/basic/stock/black/20200604153837/courier.css;css/basic/stock/black/20200604153837/funcRecommend.css;css/basic/stock/black/20200604153837/dupont.css;css/basic/stock/black/202005071600/20200604153837/longhu.css;css/basic/stock/black/20200604153837/operate.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/remind_black.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_black_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/black/20200604153837/expression.min.20140801.css');
+	}
+					addCssByLink("//s.thsi.cn/css/basic/common/black/title.css")
+}
+/*calendar*/
+function  minDate(){
+ 	var data = $('#inte_json').text();
+	var datajson =new Object();
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson = data[x];
+	}
+	var minDate = datajson.year+'-'+datajson.month+'-'+datajson.day;
+	return minDate;
+ }
+ Date.prototype.Format = function(fmt)
+{ //author: meizz
+  var o = {
+    "M+" : this.getMonth()+1,                 //月份
+    "d+" : this.getDate(),                    //日
+    "h+" : this.getHours(),                   //小时
+    "m+" : this.getMinutes(),                 //分
+    "s+" : this.getSeconds(),                 //秒
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度
+    "S"  : this.getMilliseconds()             //毫
+  };
+  if(/(y+)/.test(fmt))
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  for(var k in o)
+    if(new RegExp("("+ k +")").test(fmt))
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+  return fmt;
+}
+ function  displayDate(){
+ 	var data = $('#inte_json').text();
+ 	var date =new Array();
+	var datajson =new Object();
+	var i=0;
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson[x] = data[x];
+		dates = datajson[x].year+'-'+datajson[x].month+'-'+datajson[x].day;
+		if (x==0|| date[i-1] != dates) {
+			date[i] = dates;
+			i++;
+		}
+	}
+	var count =date.length;
+	var date2 = new Date();
+	var month =date2.getMonth()+1;
+	var day =date2.getDate();
+	if ((date2.getMonth()+1)>9) {
+	} else {
+	 	var month ="0"+month;
+	}
+	if (date2.getDate()>9) {
+	} else {
+	 	var day ="0"+day;
+	}
+	year = date2.getFullYear();
+	date2 = year+'-'+month+'-'+day;
+	var result = "['";
+	for (i=0;i<count;i++) {
+		if (date2 == date[i]) {
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+		} else {
+			result +=date2+"',";
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+			i--;
+		}
+	}
+	result = result.substr(0,result.length-1)+']';
+	return result;
+ }
+    function showDatePicker1(color) {
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv1',
+            vel:'elDate1',
+            minDate:minDate(),
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate1').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+    function showDatePicker2(color) {
+
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv2',
+            vel:'elDate2',
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate2').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+  function isIE() {
+	// 判断IE浏览器及其版本
+	if(document.documentMode) {
+		return document.documentMode;
+	}
+	var userAgent = navigator.userAgent.toLowerCase();
+	if (userAgent.indexOf('edge') > -1) {
+		return 'edge';
+	}
+	return false;
+  }
+	 // 初始化财务
+	 var initFinance = window.localStorage.getItem('initFinance');
+	 if (!initFinance) {
+		 window.localStorage.setItem('initFinance', 'init');
+		 window.localStorage.setItem('memoryPage', 'old');
+	  }
+	  // 跳转地址
+    function jumpToUrl(url, name, anchor, conceptName) {
+	  if (!url || !name) {
+			return;
+		}
+		// 新老地址切换
+		var oldPage = {
+			'financen': true
+		}
+		var pageLocation = window.localStorage.getItem('memoryPage');
+      //在IE环境中
+      if (isInIEEnv() || (pageLocation && pageLocation == 'old' && oldPage[name])) {
+        location.href = url;
+	    return;
+     }
+     var code = $('#stockCode').val();
+	 var codeName = $('#stockName').val();
+	 var marketid = $('#marketId').val();
+	 var pageAnchor = anchor ? '&anchor=' + anchor : '';
+	 var host = window.location.host;
+	 var targetUrl = '//' + host + '/astockpc/astockmain/index.html#/' + name + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName + pageAnchor;
+	 if (conceptName) {
+		 targetUrl += "&cname=" + conceptName;
+	 }
+     location.href = targetUrl;
+    }
+	// 跳转新地址
+	function jumpToNew() {
+       var code = $('#stockCode').val();
+	   var codeName = $('#stockName').val();
+	   var marketid = $('#marketId').val();
+	   var url = window.location.href;
+	   var module = url.match(/\/(\w+).html?/);
+	   var moduleName = '';
+	   var host = window.location.host;
+	   if (module && module[1]) {
+		   moduleName = module[1];
+		   if (module[1] == 'finance') {
+			   moduleName = 'financen';
+		   }
+	   }
+	   window.TA.log('F10hs_cwfx.tyxbb.click');
+	   window.localStorage.setItem('memoryPage', 'new');
+	   setTimeout(function (){
+		  location.href = '//' + host + '/astockpc/astockmain/index.html#/' + moduleName + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName;
+	   }, 10)
+	}
+</script>
+    <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/qdc_ad-510a70.js"></script>
+	<link href="//s.thsi.cn/css/basic/stockph/qdc_ad-6e8683.css" rel="stylesheet" type="text/css">
+ 
+<body>
+<div class="votepopbox votesuccess" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">谢谢您的宝贵意见</p>
+		<p class="vpoptxt">您的支持是我们最大的动力</p>
+	</div>
+	<div class="votepopbox voteinfo" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">谢谢您的支持</p>
+		<p class="vpoptxt"></p>
+	</div>
+    <div class="wrapper">
+<!-- F10 Header Start -->
+		<div class="header">
+		    <div class="hd">
+		        <div class="logo fl" id="logo_self"><a title="同花顺F10">同花顺F10</a></div>
+
+															<div onclick="sendTalog('f10_click_quot')" style="width:260px; margin-left:60px; font-size:14px;cursor:pointer;margin-right:10px;display:none;text-align:center" class="fl tip " id="quotedata">
+							<div  class="fl">最新价： <span style="width:40px" class="upcolor" id="zxj">--</span></div>
+							<div  class="fr">涨跌幅： <span style="width:40px;" class="upcolor" id="zdf">--</span></div>
+						</div>
+											        <span class="fr skin-change"><a href="###">换肤</a></span>
+		        <div class="search fr" id="search_cyter">
+		            <div id="updownchange" type="once" class="codeChange fl" style="display: none;">
+		                <a href="javascript:void(0)" class="per">上一个股</a>
+		                <a href="javascript:void(0)" class="next">下一个股</a>
+		            </div>
+		            <div class="fl searchbar">
+			            <div class="text fl">
+			                <input type="text" id="jpjl-input" value="输入股票名称或代码" /><!--文本框获得焦点给.searchbar添加hover类-->
+			             </div>
+		                <input type="button" value="搜索" class="btn" id="submit"/>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="bd clear">
+		        <div class="code fl">
+					<div><h1 style="margin:3px 0px 0px 0px">
+												东山精密</h1></div>
+					<div>
+						<a href="interactive.html" tid="wdm" posid="r1c1" class="iwen" onclick="TA.log({'id':'F10_review','nj':1})">i问董秘</a>
+						<style>
+							.qiyehao {
+								display:none;
+								float:left;
+								cursor:pointer;
+								margin: 4px 0 0 17px;
+								width:50px;
+								text-align:center;
+								font-size:12px;
+								padding: 2px  0 4px 0;
+								line-height:12px;
+							    border-radius:6px;
+								color: white;
+                                background-color:#437eb7;
+							}
+							.black  .qiyehao {
+								background-color: #b60006;
+							}
+						</style>
+						<div class="qiyehao">企业号</div>
+						<h1 style="margin:3px 0px 0px 0px">
+						002384						</h1>
+						<script>
+							 $(document).ready(function(){
+								//获取市场代码
+                                var market = $('#marketId').val();
+								//获取股票代码
+								var code = $('#stockCode').val();
+								//判断是否是B股
+								var isBStock = function () {
+									var flag = market == '18' || market == '34' || market == '105';
+									return flag;
+								}
+								
+								//在B股和Ie浏览器中不展示企业号入口
+								if(isBStock() || isInIEEnv()){
+									return ;
+								}
+								isThsClient(function(){
+                                   //隐藏董秘问答入口
+								   $('.iwen').hide();
+                                   //展示企业号入口
+								   $('.qiyehao').show();
+								   $(document).on ('click','.qiyehao',function(){
+                                      var url = 'https://board.10jqka.com.cn/fe/board/qyh.html#/qyh/homepage?thscode=' + code  + '&marketid=' + market + '&from=f10';
+									    window.API.use({
+										  method: "Util.openURL2",
+										  data:{
+											url: url,
+											mode: 1,
+											useCef: true,
+										  }
+									    })
+								    })
+								})
+							 })
+						</script>
+					</div>
+		        </div>
+		        <div class="nav">
+		            <ul>
+		                <li><a href="./"              target="_self" tid="zxdt" posid="r1c3" >最新动态</a></li>
+		                <li><a href="javascript:void(0)" onclick="jumpToUrl('./company.html', 'company', '');return false;"   target="_self" tid="gszl" posid="r1c4" > 公司资料</a></li>
+		                <li><a href="./holder.html"   target="_self" tid="gdyj" posid="r1c5" >股东研究</a></li>
+						<li><a href="javascript:void(0)" onclick="jumpToUrl('./operate.html', 'operate', '');return false;" target="_self" tid="jyfx" posid="r1c6" > 经营分析</a></li>
+		                <li><a href="./equity.html"   target="_self" tid="gbjg" posid="r1c7" >股本结构</a></li>
+		                <li><a href="./capital.html"  target="_self" tid="zbyz" posid="r1c8" > 资本运作</a></li>
+		                <li><a href="./worth.html"    target="_self" tid="ylyc" posid="r1c9"  class="cur" >盈利预测</a></li>
+		                <li><a href="./news.html"     target="_self" tid="xwgg" posid="r2c3" >新闻公告</a></li>
+						<li><a  href="javascript:void(0)"  onclick="jumpToUrl('./concept.html', 'concept', '');return false;"target="_self" tid="gntc" posid="r2c4" >概念题材</a></li>
+		                <li><a  href="javascript:void(0)"  onclick="jumpToUrl('./position.html', 'position', '');return false;"target="_self" tid="zlcc" posid="r2c5" >主力持仓</a></li>
+		                <li><a href="javascript:void(0)"  onclick="jumpToUrl('./finance.html', 'financen', '');return false;" target="_self" tid="cwgk" posid="r2c6" > 财务分析</a></li>
+						<li><a href="javascript:void(0)"  onclick="jumpToUrl('./bonus.html', 'bonus', '');return false;" target="_self" tid="fhrz" posid="r2c7" >分红融资</a></li>
+						<li><a href="./event.html"    target="_self" tid="gsds" posid="r2c8" >公司大事</a></li>
+		                <li><a href="./field.html"    target="_self" tid="hydb" posid="r2c9" >行业对比</a></li>
+		            </ul>
+		        </div>
+		        <div class="subnav">
+					<ul>
+					   						<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="forecast"  name="worth.html#forecast" href="###">业绩预测							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="forecastdetail"  name="worth.html#forecastdetail" href="###">业绩预测详表							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="stockreport"  name="worth.html#stockreport" href="###">研报评级							</a>
+						</li>
+								            </ul>
+		        </div>
+		    </div>
+		</div>
+<!-- F10 Header End -->
+<!-- F10 Content Start -->
+		<style>
+		.iwc_searchbar{display: none;}
+	</style>
+		<div class="iwc_searchbar clearfix" style="">
+    <div class="tips-box" style="display: none;">
+        <div class="t-hd"></div>
+        <div class="t-bd">
+            <div class="info">
+                <p>F10 功能找不到？在搜索框里直接输入您想要的功能！比如输入“龙虎榜”，赶快试一下哦！</p>
+                <div class="btn">
+                    <a href="###" class="a-left close">跳过</a>
+                    <a href="###" class="a-right next">下一步</a>
+                </div>
+            </div>
+            <div class="info" style="display: none;">
+                <p>选股选不好？可以直接输入你想要的问句啦，比如输入“近一周涨幅超过30%的股票”赶紧行动吧！</p>
+                <div class="btn">
+                    <a href="###" class="a-left prev">上一步</a>
+                    <a href="###" class="a-right close">完成</a>
+                </div>
+            </div>
+        </div>
+        <div class="t-ft"></div>
+   	 </div>
+     <div class="searchfx">
+        <input id="search_input" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh_CN" class="fillbox" autocomplete="off" type="text" value="输入问句，你想知道的都在这里">
+        <input class="action_btn" id="search_submit" type="button" value="搜索">
+        <span  class="tips-icon"></span>
+     </div>
+	</div>
+	<div class="content page_event_content" >	
+
+<!-- 业绩预测 -->
+<div class="m_box z100" id="forecast" stat="worth_forecast">
+	<div class="hd">
+		<h2>业绩预测</h2>
+	</div>
+	<div class="bd">
+			<p class="tip clearfix">
+		截至2026-07-14，6个月以内共有 <strong>12</strong> 家机构对东山精密的2026年度业绩作出预测；<br />
+		预测2026年每股收益 <strong>3.67</strong> 元，较去年同比增长 <strong>364.56%</strong>，
+		预测2026年净利润 <strong>67.18</strong> 亿元，较去年同比增长 <strong>384.69%</strong>
+		</p>
+			<div class="pt10">
+			<div class="cwzb_wrap">
+				<div class="chart_nav clearfix">
+					<ul class="nav_tab">
+						<li class="current"><a href="javascript:void(0)">&nbsp;&nbsp;&nbsp;&nbsp;业绩预测&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+					<div class="legend_nav yjyc_legend_nav">
+						<a class="icons_col_blue icons_sprite" href="javascript:void(0)">净利润</a>
+						<a class="icons_col_yellow icons_sprite" href="javascript:void(0)">预测净利润</a>
+						<a class="icons_line_blue icons_sprite" href="javascript:void(0)">每股收益</a>
+						<a class="icons_line_yellow icons_sprite" href="javascript:void(0)">预测每股收益</a>
+					</div>
+				</div>
+				<div id="yjycData" class="none">[["2019","0.44","7.03","SJ"],["2020","0.93","15.30","SJ"],["2021","1.09","18.62","SJ"],["2022","1.39","23.68","SJ"],["2023","1.15","19.65","SJ"],["2024","0.64","10.86","SJ"],["2025","0.79","13.86","SJ"],["2026","3.67","67.18","YC"],["2027","7.37","134.99","YC"]]</div>
+				<div id="yjycChart" style="width:100%;height:220px;"></div>
+			</div>
+		</div>
+		<div class='clearfix'>
+	    		<div class="fl yjyc">
+			<table class="m_table m_hl">
+				<caption class="hltip m_cap">
+								<span class="fr tip">单位：元</span>汇总--预测年报每股收益
+								</caption>
+					<colgroup span="2" class="tc"></colgroup>
+					<colgroup span="4" class="tr"></colgroup>
+				<thead>
+					<tr>
+						<th>年度</th>
+						<th>预测机构数</th>
+						<th>最小值</th>
+						<th>均值</th>
+						<th>最大值</th>
+						<th>行业平均数</th>
+					</tr>
+				</thead>
+				<tbody>
+									<tr>
+						<th>2026</th>
+						<td class="tc">12</td>
+						<td>1.80</td>
+						<td>3.67</td>
+						<td>4.38</td>
+						<td>2.83</td>
+					</tr>
+									<tr>
+						<th>2027</th>
+						<td class="tc">12</td>
+						<td>2.39</td>
+						<td>7.37</td>
+						<td>12.92</td>
+						<td>4.00</td>
+					</tr>
+									<tr>
+						<th>2028</th>
+						<td class="tc">6</td>
+						<td>10.52</td>
+						<td>13.60</td>
+						<td>20.53</td>
+						<td>5.48</td>
+					</tr>
+								</tbody>
+			</table>
+		</div>
+				<div class="fr yjyc">
+			<table class="m_table m_hl">
+				<caption class="hltip m_cap">
+								<span class="fr tip">单位：亿元</span>汇总--预测年报净利润
+								</caption>
+					<colgroup span="2" class="tc"></colgroup>
+					<colgroup span="4" class="tr"></colgroup>
+				<thead>
+					<tr>
+						<th>年度</th>
+						<th>预测机构数</th>
+						<th>最小值</th>
+						<th>均值</th>
+						<th>最大值</th>
+						<th>行业平均数</th>
+					</tr>
+				</thead>
+				<tbody>
+									<tr>
+						<th>2026</th>
+						<td class="tc">12</td>
+						<td>32.88</td>
+						<td>67.18</td>
+						<td>80.22</td>
+						<td>31.46</td>
+					</tr>
+									<tr>
+						<th>2027</th>
+						<td class="tc">12</td>
+						<td>43.80</td>
+						<td>134.99</td>
+						<td>236.72</td>
+						<td>44.33</td>
+					</tr>
+									<tr>
+						<th>2028</th>
+						<td class="tc">6</td>
+						<td>192.67</td>
+						<td>249.00</td>
+						<td>376.02</td>
+						<td>60.02</td>
+					</tr>
+								</tbody>
+			</table>
+		</div>
+			</div>
+			<div class="xgcl_mod hover_ta" taname="f10_stock_slide_tgfx_jgpj">
+	   	   	    </a>
+	</div>
+		<p class="clearfix">预测数据根据各机构发布的研究报告摘录所得，与本终端立场无关。</p>
+	</div>
+	<div class="ft"></div>
+</div>
+
+<!-- 业绩预测详表 -->
+<div class="m_box z100" id="forecastdetail" stat="worth_forecastdetail">
+	<div class="hd">
+		<h2>业绩预测详表</h2>
+	</div>
+	<div class="bd">
+	<div class='ybhctl hover_ta' taname="f10_stock_mktl_ybhc">
+			<p class="tip clearfix"> </p>
+		</div>
+		<table class="m_table m_hl posi_table">
+			<caption class="m_cap adjust"><span class="high">调高</span><span class="low">调低</span></caption>
+				<colgroup span="2" class="tc" />
+				<colgroup span="6" class="tr hl" />
+				<colgroup span="1" class="tc" />
+			<thead>
+				<tr>
+					<th rowspan="2">机构名称</th>
+					<th rowspan="2">研究员</th>
+					<th colspan="3">预测年报每股收益（元）</th>
+					<th colspan="3">预测年报净利润（元）</th>
+					<th rowspan="2">报告日期</th>
+				</tr>
+				<tr>
+					<th>2026预测</th>
+					<th>2027预测</th>
+					<th>2028预测</th>
+					<th>2026预测</th>
+					<th>2027预测</th>
+					<th>2028预测</th>
+				</tr>
+			</thead>
+			<tbody>
+							<tr>
+					<th class="tl">国盛证券</th>
+					<td class="tl">佘凌星</td>
+					<td><s class=""></s>4.11</td>
+					<td><s class="up"></s>12.92</td>
+					<td><s class="up"></s>20.53</td>
+					<td><s class=""></s>75.23亿</td>
+					<td><s class="up"></s>236.72亿</td>
+					<td><s class="up"></s>376.02亿</td>
+					<td>2026-06-17</td>
+				</tr>
+							<tr>
+					<th class="tl">开源证券</th>
+					<td class="tl">陈蓉芳</td>
+					<td><s class="up"></s>3.76</td>
+					<td><s class="up"></s>7.00</td>
+					<td><s class=""></s>10.52</td>
+					<td><s class="up"></s>68.78亿</td>
+					<td><s class="up"></s>128.24亿</td>
+					<td><s class="up"></s>192.67亿</td>
+					<td>2026-04-30</td>
+				</tr>
+							<tr>
+					<th class="tl">中泰证券</th>
+					<td class="tl">王芳</td>
+					<td><s class="up"></s>4.12</td>
+					<td><s class="up"></s>8.10</td>
+					<td><s class=""></s>12.95</td>
+					<td><s class="up"></s>75.38亿</td>
+					<td><s class="up"></s>148.35亿</td>
+					<td><s class="up"></s>237.18亿</td>
+					<td>2026-04-27</td>
+				</tr>
+							<tr>
+					<th class="tl">中原证券</th>
+					<td class="tl">邹臣</td>
+					<td><s class=""></s>3.95</td>
+					<td><s class=""></s>7.72</td>
+					<td><s class=""></s>11.87</td>
+					<td><s class=""></s>72.41亿</td>
+					<td><s class=""></s>141.39亿</td>
+					<td><s class=""></s>217.49亿</td>
+					<td>2026-04-27</td>
+				</tr>
+							<tr>
+					<th class="tl">华金证券</th>
+					<td class="tl">熊军</td>
+					<td><s class="down"></s>1.80</td>
+					<td><s class="down"></s>2.39</td>
+					<td><s class=""></s>-</td>
+					<td><s class="down"></s>32.88亿</td>
+					<td><s class="down"></s>43.80亿</td>
+					<td><s class=""></s>-</td>
+					<td>2026-04-16</td>
+				</tr>
+							<tr>
+					<th class="tl">华泰证券</th>
+					<td class="tl">王心怡</td>
+					<td><s class=""></s>4.06</td>
+					<td><s class=""></s>8.39</td>
+					<td><s class=""></s>-</td>
+					<td><s class=""></s>74.37亿</td>
+					<td><s class=""></s>153.62亿</td>
+					<td><s class=""></s>-</td>
+					<td>2026-03-31</td>
+				</tr>
+							<tr>
+					<th class="tl">东吴证券</th>
+					<td class="tl">陈海进</td>
+					<td><s class="up"></s>3.80</td>
+					<td><s class=""></s>6.80</td>
+					<td><s class=""></s>-</td>
+					<td><s class="up"></s>69.57亿</td>
+					<td><s class=""></s>124.55亿</td>
+					<td><s class=""></s>-</td>
+					<td>2026-03-30</td>
+				</tr>
+							<tr>
+					<th class="tl">华泰证券</th>
+					<td class="tl">郇正林</td>
+					<td><s class="up"></s>4.06</td>
+					<td><s class="up"></s>8.39</td>
+					<td><s class=""></s>-</td>
+					<td><s class="up"></s>74.37亿</td>
+					<td><s class="up"></s>153.62亿</td>
+					<td><s class=""></s>-</td>
+					<td>2026-03-18</td>
+				</tr>
+						</tbody>
+		</table>
+		<table class="m_table m_hl ggintro ggintro_1 organData">
+			<caption class="m_cap adjust"><span class="table_cap">详细指标预测</span></caption>
+			<thead>
+				<tr>
+					<th>预测指标</th>
+											<th>2023（实际值）</th>											<th>2024（实际值）</th>											<th>2025（实际值）</th>											<th>预测2026（平均）</th>											<th>预测2027（平均）</th>											<th>预测2028（平均）</th>									</tr>
+			</thead>
+			<tbody>
+												<tr>
+					<th class="tl">营业收入(元)</th>
+					<td>
+													336.51亿											</td>
+					<td>
+													367.70亿						</td>
+					<td>
+													401.25亿						</td>
+															<td>
+						<div class="pr" style="z-index:199">
+							<span>									653.42亿								  </span>
+														<a class="m_more fr" targ="box_1" href="javascript:void(0)"></a>
+							<div class="tipbox box_1" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									692.19亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									652.82亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									619.34亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									669.84亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									500.54亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									685.99亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									720.62亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									685.99亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:198">
+							<span>									964.63亿								  </span>
+														<a class="m_more fr" targ="box_2" href="javascript:void(0)"></a>
+							<div class="tipbox box_2" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									1277.28亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									931.45亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									864.25亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									978.71亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									602.81亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									1055.59亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									951.33亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									1055.59亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:197">
+							<span>									1365.26亿								  </span>
+														<a class="m_more fr" targ="box_3" href="javascript:void(0)"></a>
+							<div class="tipbox box_3" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									1727.40亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									1284.98亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									1113.22亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									1335.43亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">营业收入增长率</th>
+					<td>
+													6.56%											</td>
+					<td>
+													9.27%						</td>
+					<td>
+													9.12%						</td>
+															<td>
+						<div class="pr" style="z-index:196">
+							<span>									62.84%								  </span>
+														<a class="m_more fr" targ="box_4" href="javascript:void(0)"></a>
+							<div class="tipbox box_4" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									72.51%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									62.70%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									54.35%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									66.94%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									24.75%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									70.96%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									79.59%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									70.96%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:195">
+							<span>									46.63%								  </span>
+														<a class="m_more fr" targ="box_5" href="javascript:void(0)"></a>
+							<div class="tipbox box_5" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									84.53%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									42.68%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									39.54%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									46.11%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									20.43%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									53.88%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									32.02%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									53.88%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:194">
+							<span>									34.61%								  </span>
+														<a class="m_more fr" targ="box_6" href="javascript:void(0)"></a>
+							<div class="tipbox box_6" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									35.24%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									37.95%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									28.81%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									36.45%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">利润总额(元)</th>
+					<td>
+													21.91亿											</td>
+					<td>
+													14.68亿						</td>
+					<td>
+													16.90亿						</td>
+															<td>
+						<div class="pr" style="z-index:193">
+							<span>									80.29亿								  </span>
+														<a class="m_more fr" targ="box_7" href="javascript:void(0)"></a>
+							<div class="tipbox box_7" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									88.64亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									82.57亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									87.45亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									86.09亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									39.77亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									86.46亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									84.86亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									86.46亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:192">
+							<span>									167.97亿								  </span>
+														<a class="m_more fr" targ="box_8" href="javascript:void(0)"></a>
+							<div class="tipbox box_8" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									279.05亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									153.45亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									170.82亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									173.37亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									53.08亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									178.59亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									156.80亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									178.59亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:191">
+							<span>									303.12亿								  </span>
+														<a class="m_more fr" targ="box_9" href="javascript:void(0)"></a>
+							<div class="tipbox box_9" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									443.26亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									229.23亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									262.82亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									277.17亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">净利润(元)</th>
+					<td>
+													19.65亿											</td>
+					<td>
+													10.86亿						</td>
+					<td>
+													13.86亿						</td>
+															<td>
+						<div class="pr" style="z-index:190">
+							<span>									67.18亿								  </span>
+														<a class="m_more fr" targ="box_10" href="javascript:void(0)"></a>
+							<div class="tipbox box_10" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									75.23亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									68.78亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									72.41亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									75.38亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									32.88亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									74.37亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									69.57亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									74.37亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:189">
+							<span>									134.99亿								  </span>
+														<a class="m_more fr" targ="box_11" href="javascript:void(0)"></a>
+							<div class="tipbox box_11" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									236.72亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									128.24亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									141.39亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									148.35亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									43.80亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									153.62亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									124.55亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									153.62亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:188">
+							<span>									249.00亿								  </span>
+														<a class="m_more fr" targ="box_12" href="javascript:void(0)"></a>
+							<div class="tipbox box_12" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									376.02亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									192.67亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									217.49亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									237.18亿								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">净利润增长率</th>
+					<td>
+													-17.05%											</td>
+					<td>
+													-44.74%						</td>
+					<td>
+													27.67%						</td>
+															<td>
+						<div class="pr" style="z-index:187">
+							<span>									389.68%								  </span>
+														<a class="m_more fr" targ="box_13" href="javascript:void(0)"></a>
+							<div class="tipbox box_13" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									442.76%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									396.22%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									422.41%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									443.84%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									137.22%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									436.55%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									401.92%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									436.55%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:186">
+							<span>									102.32%								  </span>
+														<a class="m_more fr" targ="box_14" href="javascript:void(0)"></a>
+							<div class="tipbox box_14" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									214.66%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									86.45%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									95.26%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									96.80%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									33.21%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									106.56%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									79.03%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									106.56%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:185">
+							<span>									55.70%								  </span>
+														<a class="m_more fr" targ="box_15" href="javascript:void(0)"></a>
+							<div class="tipbox box_15" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									58.85%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									50.24%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									53.82%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									59.88%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">每股现金流(元)</th>
+					<td>
+													3.02											</td>
+					<td>
+						2.92</td>
+					<td>
+						2.90</td>
+															<td>
+						<div class="pr" style="z-index:184">
+							<span>4.04</span>
+														<a class="m_more fr" targ="box_16" href="javascript:void(0)"></a>
+							<div class="tipbox box_16" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												4.65</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												1.69</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												5.48</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												4.44</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+												4.41</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+												3.81</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+												3.81</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:183">
+							<span>8.20</span>
+														<a class="m_more fr" targ="box_17" href="javascript:void(0)"></a>
+							<div class="tipbox box_17" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												13.13</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												9.96</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												8.62</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												7.76</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+												1.69</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+												8.13</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+												8.13</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:182">
+							<span>14.02</span>
+														<a class="m_more fr" targ="box_18" href="javascript:void(0)"></a>
+							<div class="tipbox box_18" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												21.20</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												9.10</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												13.65</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												12.13</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">每股净资产(元)</th>
+					<td>
+													10.61											</td>
+					<td>
+						11.04</td>
+					<td>
+						11.72</td>
+															<td>
+						<div class="pr" style="z-index:181">
+							<span>15.25</span>
+														<a class="m_more fr" targ="box_19" href="javascript:void(0)"></a>
+							<div class="tipbox box_19" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												15.74</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												15.47</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												15.66</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												15.76</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+												13.35</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+												15.06</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+												15.90</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+												15.06</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:180">
+							<span>22.84</span>
+														<a class="m_more fr" targ="box_20" href="javascript:void(0)"></a>
+							<div class="tipbox box_20" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												28.66</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												22.41</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												23.38</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												23.66</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+												15.59</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+												23.38</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+												22.23</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+												23.38</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:179">
+							<span>38.43</span>
+														<a class="m_more fr" targ="box_21" href="javascript:void(0)"></a>
+							<div class="tipbox box_21" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												49.19</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												32.88</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												35.26</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												36.41</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">净资产收益率</th>
+					<td>
+													11.38%											</td>
+					<td>
+													5.89%						</td>
+					<td>
+													6.89%						</td>
+															<td>
+						<div class="pr" style="z-index:178">
+							<span>									25.10%								  </span>
+														<a class="m_more fr" targ="box_22" href="javascript:void(0)"></a>
+							<div class="tipbox box_22" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									26.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									24.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									25.24%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									25.90%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									13.40%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									31.07%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									23.89%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									31.07%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:177">
+							<span>									34.55%								  </span>
+														<a class="m_more fr" targ="box_23" href="javascript:void(0)"></a>
+							<div class="tipbox box_23" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									45.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									31.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									33.01%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									34.00%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+																									15.30%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+																									43.64%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+																									30.59%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+																									43.64%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:176">
+							<span>									35.64%								  </span>
+														<a class="m_more fr" targ="box_24" href="javascript:void(0)"></a>
+							<div class="tipbox box_24" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+																									41.70%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+																									31.90%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+																									33.68%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+																									35.30%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">市盈率(动态)</th>
+					<td>
+													210.70											</td>
+					<td>
+						378.59</td>
+					<td>
+						306.71</td>
+															<td>
+						<div class="pr" style="z-index:175">
+							<span>70.16</span>
+														<a class="m_more fr" targ="box_25" href="javascript:void(0)"></a>
+							<div class="tipbox box_25" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												58.95</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												64.44</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												61.34</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												58.81</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+												134.61</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+												59.68</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+												63.76</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+												59.68</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:174">
+							<span>38.68</span>
+														<a class="m_more fr" targ="box_26" href="javascript:void(0)"></a>
+							<div class="tipbox box_26" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												18.75</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												34.61</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												31.39</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												29.91</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华金证券</td>
+												<td>熊军</td>
+												<td class="tr">
+												101.38</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>王心怡</td>
+												<td class="tr">
+												28.88</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>东吴证券</td>
+												<td>陈海进</td>
+												<td class="tr">
+												35.63</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>华泰证券</td>
+												<td>郇正林</td>
+												<td class="tr">
+												28.88</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:173">
+							<span>18.49</span>
+														<a class="m_more fr" targ="box_27" href="javascript:void(0)"></a>
+							<div class="tipbox box_27" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>预测机构一览</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">研究机构</th>
+											<th class="tc">研究员</th>
+											<th class="tc">预测值</th>
+											<th class="tc">评级</th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>国盛证券</td>
+												<td>佘凌星</td>
+												<td class="tr">
+												11.80</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>开源证券</td>
+												<td>陈蓉芳</td>
+												<td class="tr">
+												23.03</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中原证券</td>
+												<td>邹臣</td>
+												<td class="tr">
+												20.41</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>中泰证券</td>
+												<td>王芳</td>
+												<td class="tr">
+												18.71</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+							</tbody>
+		</table>
+        <p class="clearfix">预测数据根据各机构发布的研究报告摘录所得，与本终端立场无关。</p>
+	</div>
+	<div class="ft"></div>
+</div>
+
+<!-- 研报评级 -->
+<div class="m_box" id="stockreport" stat="worth_stockreport">
+	<div class="hd">
+		<h2>研报评级</h2>
+		<a class="rankpart popper" href="javascript:void(0)" targ="box_rhpj">投资评级是如何划分的</a><!-- 点击时.rp_tipbox显示-->
+	</div>
+	<div class="bd m_dlbox">
+		<div class="field_date1 profit-forecast-time">
+			<div class="m_select">
+				<div class="text" id="profit-forecast-timeselect"><s></s><span id="profit-forecast-time-cur">6个月内</span></div>
+				<ul style="display: none" class="list" id="profit-forecast-timeselect-list">
+					<li><a tag="1" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">1个月内</a></li>
+					<li><a tag="2" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">2个月内</a></li>
+					<li><a tag="3" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">3个月内</a></li>
+					<li><a tag="6" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">6个月内</a></li>
+				</ul>
+			</div>
+			时间范围
+		</div>
+		
+		<a href="./news.html#report" title="更多" class="profit-forecast-more-fr" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">更多&gt;&gt;</a>
+		<div class="profit-forecast-tab m_tab">
+			<ul class="fl" id="profit-forecast-tab-ul">
+				<li class="cur" id="profit-forecast-tab-li-0"><a href="javascript:void(0);" id="profit-forecast-tab-0" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">买入(<span id="profit-forecast-tab-count-0">9</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-1"><a href="javascript:void(0);" id="profit-forecast-tab-1" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">增持(<span id="profit-forecast-tab-count-1">1</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-2"><a href="javascript:void(0);" id="profit-forecast-tab-2" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">中性(<span id="profit-forecast-tab-count-2">0</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-3"><a href="javascript:void(0);" id="profit-forecast-tab-3" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">减持(<span id="profit-forecast-tab-count-3">0</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-4"><a href="javascript:void(0);" id="profit-forecast-tab-4" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">卖出(<span id="profit-forecast-tab-count-4">0</span>)</a></li>
+			</ul>
+		</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-0" style="display:block">
+																	<dl class="hover">
+				<dt>
+					<span class="subtitle">买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入</span>
+					<span class="title">国盛证券：12亿美元加码光芯片+光模块，AI进程再加速</span>
+					<span class="date">2026-06-17</span>
+				</dt>
+				<dd>摘要：盈利预测与投资建议：公司把握AI产业发展机遇，推动PCB、光模块/光芯片、光电显示、精密组件等核心主业与AI产业链深度融合，业绩增长潜力有望充分释放，将打开更广阔的成长空间。我们预计公司在2026/2027/2028年分别实现营业收入692/1277/1727亿元，同比增长73%/85%/35%，实现归母净利润75/237/376亿元，同比增长443%/215%/59%。公司当前股价对应2026/2027/2028年PE分别为61/19/12X，维持“买入”评级。					<a class="profit-forecast-more check_all" title="查看个股研报全文" href="javascript:void(0)">查看全文&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);">×</a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">12亿美元加码光芯片+光模块，AI进程再加速</h1>
+							<h2 class="sub_cont_title">发布时间：2026-06-17 来源：国盛证券</h2>
+							<div class="sub_cont">
+								　　索尔思拟投资12亿美元实施光芯片及光模块扩建项目，有效填补产能缺口。公司审议通过子公司索尔思光电及其子公司在常州等地实施光芯片及光模块扩建项目，项目总投资额为12亿美元，来源为公司自筹资金。索尔思光电现有光芯片及光模块的产能规模已无法满足行业及下游客户需求，通过本次投资，将提升索尔思高端光芯片、光模块产能，满足下游客户在AI算力服务器相关核心产品上的中长期采购需求，进一步优化公司产品结构和盈利能力。<br>　　高端光芯片供需缺口扩大，国产化窗口开启。AI算力对带宽、延迟、功耗的极致要求，推动光通信技术加快从800G向1.6T跨越。2026年，800G光模块进入规模化部署，1.6T光模块开启商用元年。根据Lightcounting预测，2026年全球800G与1.6T光模块合计市场规模有望达146亿美元，3.2T模块预计从2028年起逐步放量。Lumentum在FY26Q3业绩会上表示EML供需缺口已从上一季度的25%-30%扩大至超过30%，订单已经排满至2028年，光芯片的短缺信号清晰且强烈。全球EML产能较集中，主要由Lumentum、Coherent、三菱、住友、博通、索尔思等少数巨头主导，高端产品产能缺口持续扩大，将加速国产替代进程。<br>　　索尔思光芯片+光模块垂直一体化，稀缺性优势持续凸显。2025年10月，索尔思正式并表，目前各项生产经营稳步推进。2025年/26Q1，索尔思并表后收入分别为14/21亿元，占比3.6%/16.0%；利润分别为3.1/5.9亿元，占比22.7%/52.9%，客户订单充足，公司光模块业务业绩快速大幅提升。当前高端光芯片供应紧缺、国产化替代空间广阔，索尔思具备光芯片IDM自研及量产能力，为国内少数、全球为数不多具备100G、200G高端光芯片量产能力的厂商，CWlaser已实现规模化量产，单波400GEML高速光芯片研发项目稳步推进。光模块方面，公司产品覆盖10G至1.6T全速率，并持续推进3.2T及以上光模块研发，公司光模块海外生产基地建设稳步推进，助力海外客户交付。<br>　　高端PCB景气度维持高位，公司积极布局AIPCB产能。公司持续深耕高端PCB赛道，目前老厂改造项目已顺利投产，新建产能按计划稳步建设落地。公司投入超10亿美元扩充高端产能，Multek已具备78层及以上超高多层与7阶厚板HDIPCB的专业制造能力。公司的多层PCB和HDI采用超低损耗M8/9级材料，实现高达224Gbps的传输速率，满足GPU、AI加速卡、AI服务器及数据中心交换机的高要求。公司凭借Multek技术壁垒与提前布局产能优势，有望迎来业绩新增量。<br>　　盈利预测与投资建议：公司把握AI产业发展机遇，推动PCB、光模块/光芯片、光电显示、精密组件等核心主业与AI产业链深度融合，业绩增长潜力有望充分释放，将打开更广阔的成长空间。我们预计公司在2026/2027/2028年分别实现营业收入692/1277/1727亿元，同比增长73%/85%/35%，实现归母净利润75/237/376亿元，同比增长443%/215%/59%。公司当前股价对应2026/2027/2028年PE分别为61/19/12X，维持“买入”评级。<br>　　风险提示：下游需求不及预期，研发进展不及预期，市场竞争激烈。							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入</span>
+					<span class="title">方正证券：公司点评报告：业绩拐点已至，光模块+PCB双翼齐飞</span>
+					<span class="date">2026-04-30</span>
+				</dt>
+				<dd>摘要：盈利预测与投资建议：公司布局PCB、光模块两大AI驱动的高景气赛道，未来将持续受益于AI增长带来的需求，成长空间广阔。我们预计公司2026-2028年分别实现归母净利润74.5、150.1、237.7亿元，同比分别增长437.2%、101.6%、58.4%，对应PE分别为45.3、22.5、14.2倍，维持“强烈推荐”评级。					<a class="profit-forecast-more check_all" title="查看个股研报全文" href="javascript:void(0)">查看全文&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);">×</a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">公司点评报告：业绩拐点已至，光模块+PCB双翼齐飞</h1>
+							<h2 class="sub_cont_title">发布时间：2026-04-30 来源：方正证券</h2>
+							<div class="sub_cont">
+								　　事件：公司发布2025年报与2026年一季报，2025年公司实现营收401.3亿元，同比增长9.1%；实现归母净利润13.9亿元，同比增长27.7%；实现销售毛利率14.1%、销售净利率3.5%。26Q1公司实现营收131.4亿元，同比增长52.7%；实现归母净利润11.1亿元，同比大幅增长143.5%；实现扣非归母净利润10.6亿元，同比大幅增长167.0%；实现销售毛利率19.3%，同比增长5.2pct，销售净利率8.6%，同比增长3.3pct。<br>　　主业稳步增长，盈利结构持续优化。25年公司主业保持稳定增长趋势。公司主业电子电路业务实现营收256.2亿元，同比增长3.3%，随着AI终端、折叠屏等产品的创新驱动导致FPC用量与单机价值持续提升，公司依托全球第二的MFLEX产能与技术基础，为传统业务提供了稳健的现金流与利润支撑。同时26年Q1公司业绩实现跨越式增长，其核心驱动力来自于AI需求爆发带动的光模块及PCB业务放量。公司通过并购索尔思光电与GMD集团实现协同效应，收入端同比增长超五成，利润端净利润与扣非净利润增速均大幅增长，传统业务保持稳定，盈利结构持续优化。<br>　　索尔思光电具备“光芯片+光模块”一体化优势，有望持续受益光模块高景气。公司收购索尔思光电切入光模块行业，从行业层面需求侧看，CSP厂商持续将资本开支投入AI训练集群，服务器间通信需求提升，对光模块的数量和速度需求呈指数级增长。AI算力基建从“单点突破”进入“集群化、规模化”建设阶段，AI超节点互连架构演进，光传输突破瓶颈作用凸显。行业层面供给侧看，上游EML激光器芯片等核心元器件持续短缺，供给侧与需求侧形成明显“剪刀差”格局，可稳定响应客户需求、与客户保持深度技术合作的公司有望构建壁垒。从公司层面看，索尔思是全球为数不多的光模块+光芯片一体化布局的企业之一，采用IDM模式实现核心环节自主可控，且是国内少数具备100G和200G光芯片量产能力的企业。当前高端光芯片供应紧缺、对外依存度较高的行业环境下，索尔思的这一能力使其在产能调配和交付响应上具备突出优势。同时，公司正在积极研发单波400G光芯片，为下一代高速率产品升级做好技术储备。在产能扩产方面，索尔思同步加快光芯片和光模块产能建设，有效匹配下游客户放量节奏与行业需求增长趋势。我们认为，索尔思光电有望基于其技术+客户+响应优势持续受益光模块行业高景气。<br>　　持续扩充高端PCB产能，把握PCB变革机遇。AI驱动的数据通讯基础设施，正成为驱动PCB产业升级与规模扩张的核心引擎。AI算力硬件领域中，行业增长重心正加速转向高多层板与高密度互连板，公司凭借Multek具备78层及以上超高多层与7阶厚板HDIPCB的专业制造能力，并果断投入超10亿美元扩充高端产能以适配PCB高增需求。我们认为，公司有望凭借深厚的技术积淀与前瞻性的重金投入，精准卡位AI算力基建核心赛道，实现从FPC龙头向高端PCB全品类供应商跨越，充分享受此轮PCB产业升级带来的业绩增长红利。<br>　　盈利预测与投资建议：公司布局PCB、光模块两大AI驱动的高景气赛道，未来将持续受益于AI增长带来的需求，成长空间广阔。我们预计公司2026-2028年分别实现归母净利润74.5、150.1、237.7亿元，同比分别增长437.2%、101.6%、58.4%，对应PE分别为45.3、22.5、14.2倍，维持“强烈推荐”评级。<br>　　风险提示：AI需求不及预期；行业竞争加剧；产能扩充不及预期等。							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入</span>
+					<span class="title">开源证券：公司信息更新报告：2026Q1业绩高增，“光模块+AIPCB”打开成长空间</span>
+					<span class="date">2026-04-30</span>
+				</dt>
+				<dd>摘要：公司近期发布2025年报与2026年一季报。（1）2025年，公司实现营收401.25亿元，同比+9.12%；归母净利润13.86亿元，同比+27.67%；扣非归母净利润9.66亿元，同比+7.50%；销售毛利率14.09%，同比+0.07pcts；销售净利率3.47%，同比+0.52pcts。（2）2026年一季度，公司实现营收131.38亿元，同比+52.72%，环比+0.64%；归母净利润11.10亿元，同比+143.47%，环比+581.80%；扣非归母净利润10.59亿元，同比+166.99%，环比+1107.72%；毛利率19.33%，同比+5.19pcts，环比+4.62pcts；净利率8.56%，同比+3.25pcts，环比+7.26pcts。（3）在传统主业稳健经营的基础上，公司通过收购索尔思布局光模块业务，抓住行业需求高增机遇大力拓展行业头部客户，2026Q1业绩实现高增。作为全球唯一具备PCB、光芯片以及光模块从研发到生产全流程的企业，公司将通过“光模块+AIPCB”双引擎，驱动未来业绩持续高速增长。因此我们上调公司2026/2027盈利预测（归母净利润原值为43.52/59.60亿元），并新增2028年盈利预测，预计公司2026/2027/2028年归母净利润为68.78/128.24/192.67亿元，当前股价对应PE为49.7/26.7/17.8倍，维持“买入”评级。					<a class="profit-forecast-more check_all" title="查看个股研报全文" href="javascript:void(0)">查看全文&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);">×</a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">公司信息更新报告：2026Q1业绩高增，“光模块+AIPCB”打开成长空间</h1>
+							<h2 class="sub_cont_title">发布时间：2026-04-30 来源：开源证券</h2>
+							<div class="sub_cont">
+								　　2026Q1业绩高增，“光模块+AIPCB”打开新成长空间，维持“买入”评级<br>　　公司近期发布2025年报与2026年一季报。（1）2025年，公司实现营收401.25亿元，同比+9.12%；归母净利润13.86亿元，同比+27.67%；扣非归母净利润9.66亿元，同比+7.50%；销售毛利率14.09%，同比+0.07pcts；销售净利率3.47%，同比+0.52pcts。（2）2026年一季度，公司实现营收131.38亿元，同比+52.72%，环比+0.64%；归母净利润11.10亿元，同比+143.47%，环比+581.80%；扣非归母净利润10.59亿元，同比+166.99%，环比+1107.72%；毛利率19.33%，同比+5.19pcts，环比+4.62pcts；净利率8.56%，同比+3.25pcts，环比+7.26pcts。（3）<br>　　在传统主业稳健经营的基础上，公司通过收购索尔思布局光模块业务，抓住行业需求高增机遇大力拓展行业头部客户，2026Q1业绩实现高增。作为全球唯一具备PCB、光芯片以及光模块从研发到生产全流程的企业，公司将通过“光模块+AIPCB”双引擎，驱动未来业绩持续高速增长。因此我们上调公司2026/2027盈利预测（归母净利润原值为43.52/59.60亿元），并新增2028年盈利预测，预计公司2026/2027/2028年归母净利润为68.78/128.24/192.67亿元，当前股价对应PE为49.7/26.7/17.8倍，维持“买入”评级。<br>　　光芯片量产、研发持续投入，高速光模块放量，索尔思一体化优势凸显<br>　　2025年，公司通过收购索尔思光电切入光模块赛道，构建“光芯片+光模块”垂直整合一体化的IDM经营模式。研发端，依托磷化铟衬底等全流程研发体系，实现100G/200G光芯片量产及CWLaser的规模化交付。产品端，800G及1.6T高速光模块已实现批量交付，市场份额稳步提升；单波400GEML芯片研发顺利，并持续推进3.2T及以上下一代光模块研发。未来，随着AI集群光互连市场迈入千亿规模，公司有望凭借索尔思垂直一体化优势，稳步释放光芯片、光模块产能，驱动光模块板块业绩持续高增。<br>　　FPC基本盘稳固，PCB高端产品加速扩产，AIPCB打开未来成长空间<br>　　消费电子端，受益于AI终端与折叠屏等创新迭代，FPC单机量价双升。公司依托全球第二的MFLEX产能与制造优势，筑牢稳健的现金流与利润底座。AI硬件端，算力基建加速推动需求向高多层与HDI板倾斜。公司凭借Multek的技术优势，已具备78层及以上超高多层与7阶厚板HDI制造能力，并投入超10亿美元扩充产能，把握AI服务器PCB发展机遇。未来，公司将依托高端产能匹配AI算力高速增长的需求，推动AIPCB产品带来新增量。<br>　　风险提示：宏观政策风险;行业竟争加剧风险;公司新业务不及预期风险。							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入</span>
+					<span class="title">国盛证券：光芯片与AI PCB协同发力，迈入增长快车道</span>
+					<span class="date">2026-04-24</span>
+				</dt>
+				<dd>摘要：盈利预测与投资建议：公司把握全球高速互联和数据传输的增长机遇，构建起“光模块（含光芯片）+AIPCB”的AI算力核心硬件产品布局，业绩增长潜力有望充分释放，将打开更广阔的成长空间。我们预计公司在2026/2027/2028年分别实现营业收入692/976/1281亿元，同比增长73%/41%/31%，实现归母净利润75/151/242亿元，同比增长443%/101%/60%。公司当前股价对应2026/2027/2028年PE分别为45/23/14X，维持“买入”评级。					<a class="profit-forecast-more check_all" title="查看个股研报全文" href="javascript:void(0)">查看全文&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);">×</a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">光芯片与AI PCB协同发力，迈入增长快车道</h1>
+							<h2 class="sub_cont_title">发布时间：2026-04-24 来源：国盛证券</h2>
+							<div class="sub_cont">
+								　　公司发布2025年年报。2025年，东山精密实现营收401.25亿元，同比增长9.12%；实现归母净利润13.86亿元，同比增长27.67%；实现扣非归母净利润9.66亿元，同比增长7.50%；毛利率14.09%，净利率3.47%，均实现同比增长。25Q4，实现收入130.54亿元，同比增长26.69%；归母净利润1.63亿元，同比增长790.16%。公司持续优化传统业务的产品与客户结构，并通过外延内生切入AI硬件高增长赛道，加速高端新产能释放。<br>　　26Q1业绩预告：预计实现归母净利润10.0-11.5亿元，同比增长119.36%-152.27%；预计扣非归母净利润9.6-10.8亿元，同比增长141.97%-172.21%。公司业绩拐点已现，夯实“光模块（含光芯片）+AIPCB”产品矩阵协同优势：在光通信领域，公司光芯片新增产能按规划释放，800G及1.6T高速光模块市场份额稳步提升；AIPCB领域，新基地顺利投产，扩充高多层板、HDI等高端PCB产能供给。<br>　　索尔思光芯片+光模块一体化，核心竞争力持续凸显。2025年，公司光模块业务实现收入14.36亿元，占比3.58%，毛利率为36.7%。根据Lightcounting预测，2026年全球800G与1.6T光模块合计市场规模有望达146亿美元，3.2T模块预计从2028年起逐步放量。当前高端光芯片供应紧缺、国产化替代空间广阔，索尔思具备光芯片IDM自研及量产能力，为国内少数、全球为数不多具备100G、200G高端光芯片量产能力的厂商，CWlaser已实现规模化量产，单波400GEML高速光芯片研发项目稳步推进。光模块方面，公司产品覆盖10G至1.6T全速率，并持续推进3.2T及以上光模块研发，将成为公司新的核心增长极。<br>　　AI算力需求激增，高速光芯片产能缺口持续扩大。AI算力对带宽、延迟、功耗的极致要求，推动光通信技术加快从800G向1.6T跨越。2026年，800G光模块进入规模化部署，1.6T光模块开启商用元年。Lumentum从2025年2月说明200GEML供不应求，到2025年11月提出供需缺口从20%扩大至25%-30%，再到2026年4月表示订单已经排满至2028年，光芯片的短缺信号清晰且强烈。全球EML产能较集中，主要由Lumentum、Coherent、三菱、住友、博通、索尔思等少数巨头主导，高端产品产能缺口持续扩大，将加速国产替代进程。<br>　　PCB产业深刻变革，公司从FPC龙头进阶高端PCB供应商。2025年，公司电子电路业务实现收入256.20亿元，同比增长3.3%，占比63.9%，毛利率为17.6%。<br>　　1）FPC受益端侧AI创新，巩固龙头地位。在消费电子领域，AI终端、折叠屏等产品的技术创新持续推进，带动FPC单机用量与ASP稳步提升。公司凭借全球第二的MFLEX产能规模及技术基础，稳固占据行业优势地位，为传统业务提供稳健的现金流与利润支撑。<br>　　2）AIPCB：积极布局HDI和高多层PCB产能。公司投入超10亿美元扩充高端产能，Multek已具备78层及以上超高多层与7阶厚板HDIPCB的专业制造能力。公司的多层PCB和HDI采用超低损耗M8/9级材料，实现高达224Gbps的传输速率，满足GPU、AI加速卡、AI服务器及数据中心交换机的高要求。公司凭借Multek技术壁垒与提前布局产能优势，有望迎来业绩新增量。<br>　　盈利预测与投资建议：公司把握全球高速互联和数据传输的增长机遇，构建起“光模块（含光芯片）+AIPCB”的AI算力核心硬件产品布局，业绩增长潜力有望充分释放，将打开更广阔的成长空间。我们预计公司在2026/2027/2028年分别实现营业收入692/976/1281亿元，同比增长73%/41%/31%，实现归母净利润75/151/242亿元，同比增长443%/101%/60%。公司当前股价对应2026/2027/2028年PE分别为45/23/14X，维持买入”评级。<br>　　风险提示：下游需求不及预期，研发进展不及预期，市场竞争激烈。							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">买&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;入</span>
+					<span class="title">华创证券：2026年一季报预告点评：业绩超预期兑现，光通信打开新成长曲线</span>
+					<span class="date">2026-04-17</span>
+				</dt>
+				<dd>摘要：投资建议：公司线路板业务依然稳固，未来受益于未来AI手机+折叠屏等新产品迭代依然有成长空间，汽车业务积极拥抱T客户，逐步进入收获期，传统LED业务历经减值计提已轻装上阵，AI产业链同步布局高端PCB和光通信业务，有望打开新的成长曲线。考虑到25年LED业务亏损超预期、精密制造业务不及预期、泰国产能释放不及预期以及26和27年索尔思光模块和光芯片业务开拓顺利、LED业务减亏等因素，我们调整25-27年业绩预测，25-27年为13.29/80.22/159.25亿元（前值为30.18/50.14/60.32亿元），综合参考行业可对比公司以及索尔思业绩释放节奏，切换到27年估值，给予公司2027年23xPE，对应目标价为199.87元，维持“强推”评级。					<a class="profit-forecast-more check_all" title="查看个股研报全文" href="javascript:void(0)">查看全文&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);">×</a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">2026年一季报预告点评：业绩超预期兑现，光通信打开新成长曲线</h1>
+							<h2 class="sub_cont_title">发布时间：2026-04-17 来源：华创证券</h2>
+							<div class="sub_cont">
+								　　事项：<br>　　公司预计26Q1实现归母净利润10-11.5亿元，同比+119.36%-152.27%；扣非归母净利润9.6-10.8亿元，同比+141.97%-172.21%。<br>　　评论：<br>　　业绩跨越式增长，盈利结构质变。公司Q1业绩大幅增长，其中消费电子、汽车及通讯PCB、精密组件出货稳定，索尔思并表后成为公司新的利润增长点，核心驱动力已向AI算力发生战略性偏移。<br>　　IDM模式与光芯片自供能力构筑极高护城河。索尔思光电作为全球光通信模块行业的头部厂商，其最核心的竞争优势在于垂直一体化的IDM模式。其业务深度覆盖了从光芯片设计制造、光器件生产到光模块组装的全流程环节。在当前AI算力需求爆发导致800G及以上高速光芯片出现显著紧缺且短期难以缓解的格局下，这一能力尤为关键。相较于光模块环节较为灵活的扩产节奏，光芯片的产能建设周期通常需要1年左右，且必须经过长达3年的严格客户验证。索尔思突出的光芯片自研自产能力不仅保障了供应链的稳定与成本可控，更为其在激烈的行业竞争中确立了较强的卡位优势。目前，索尔思应用于数据中心400G、800G等高速光模块已经实现了规模量产。在下一代技术储备上，公司前瞻性地采取了EML与硅光方案双轨并行的策略，高度契合了下一代AI数据中心对高速率与降功耗的极致追求。<br>　　软硬板共振向上，PCB业务开启新一轮成长。在硬板端，顺应AI服务器加速渗透对高密度互连及高速信号传输PCB的需求，旗下Multek拟投入不超过10亿美元扩充高端产能，此举将强力赋能公司突破高端核心料号，确立在AI算力基础设施供应链的卡位优势；在软板端，受核心大客户20周年纪念款及折叠屏等重磅终端新品密集发布的催化，FPC单机价值量与用量有望迎来提升拐点，端侧创新有望驱动软板业务迈入新一轮高景气上行通道。<br>　　投资建议：公司线路板业务依然稳固，未来受益于未来AI手机+折叠屏等新产品迭代依然有成长空间，汽车业务积极拥抱T客户，逐步进入收获期，传统LED业务历经减值计提已轻装上阵，AI产业链同步布局高端PCB和光通信业务，有望打开新的成长曲线。考虑到25年LED业务亏损超预期、精密制造业务不及预期、泰国产能释放不及预期以及26和27年索尔思光模块和光芯片业务开拓顺利、LED业务减亏等因素，我们调整25-27年业绩预测，25-27年为13.29/80.22/159.25亿元（前值为30.18/50.14/60.32亿元），综合参考行业可对比公司以及索尔思业绩释放节奏，切换到27年估值，给予公司2027年23xPE，对应目标价为199.87元，维持“强推”评级。<br>　　风险提示：光模块客户导入不及预期，光芯片扩产不及预期，光芯片放量不及预期，消费电子产品销量或价格不及预期，PCB产能释放和客户导入不及预期，原材料、汇率大幅波动，行业竞争加剧，全球贸易冲突加剧。							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+																																																		</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-1" style="display:none">
+																	<dl class="hover">
+				<dt>
+					<span class="subtitle">增&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;持</span>
+					<span class="title">华金证券：深耕优势赛道，多元布局开启新程</span>
+					<span class="date">2026-04-16</span>
+				</dt>
+				<dd>摘要：投资建议：公司持续夯实传统业务根基，推动PCB、精密结构件、光电模组等业务实现稳健增长。我们预测公司2025-2027年归母净利润分别为13.29/32.88/43.8亿元；PB分别为12.5/10.9/9.4倍;维持“增持”评级。					<a class="profit-forecast-more check_all" title="查看个股研报全文" href="javascript:void(0)">查看全文&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);">×</a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">深耕优势赛道，多元布局开启新程</h1>
+							<h2 class="sub_cont_title">发布时间：2026-04-16 来源：华金证券</h2>
+							<div class="sub_cont">
+								　　投资要点<br>　　公司继续稳固传统业务的基本盘，保持在PCB、精密结构件和光电模组等业务的稳定增长。根据公司2025年度业绩快报，预计2025年公司实现营业收入401.25亿元，同比增长9.12%，归母净利润13.3亿元，同比增长22.43%，扣非归母净利润9.6亿元，同比增长6.8%。公司2025年内完成法国GMD公司的收购，进一步拓展海外布局并夯实在汽车业务的客户基础。根据公司2026年Q1业绩预告，该季度公司归母净利润预计为10-11.5亿元，预计同比增长119.36%-152.27%；扣非归母净利润预计为9.6-10.8亿元，预计同比增长141.97%-172.21%。其中，2026年Q1公司传统业务保持稳定增长，消费电子、汽车及通讯等行业的印刷线路板、精密组件及光电模组出货保持稳定；索尔思光模块产品不断导入新客户，成为公司新的核心利润增长点；公司积极赋能索尔思和GMD，充分发挥协同效应助力索尔思营收和利润大幅提升。<br>　　公司凭借多产业链一体化优势，成为全球领先的电子电路及新能源汽车综合方案供应商。以收入规模计算，公司连续多年柔性线路板（FPC）排名全球第二，PCB排名全球第三。在精密组件领域，公司是综合规模较大的专业精密组件供应商之一，产品涵盖新能源汽车和通信设备等领域相关结构件产品，主要服务全球知名新能源汽车、通信设备厂商，行业竞争力较强。在触控显示模组、LED显示器件领域，公司是国内触控显示模组和LED显示器件领域规模较大的企业之一。在新能源汽车上游供应链中，公司为新能源汽车客户提供PCB（含FPC）、车载显示屏、功能性结构件等多种产品及综合解决方案的供应商。<br>　　投资建议：公司持续夯实传统业务根基，推动PCB、精密结构件、光电模组等业务实现稳健增长。我们预测公司2025-2027年归母净利润分别为13.29/32.88/43.8亿元；PB分别为12.5/10.9/9.4倍;维持“增持”评级。<br>　　风险提示：宏观经济不确定性、行业竞争加剧的风险、新产品发展不及预期等。							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+														</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-2" style="display:none">
+								<dl class="hover profit-forecast-box-none">
+					最近<span>6个月内</span>，未有<span></span>评级的研究报告，
+					<a href="./news.html#report" class="profit-forecast-more-1" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">更多研究报告详情点击&gt;&gt;</a>
+			</dl>
+					</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-3" style="display:none">
+								<dl class="hover profit-forecast-box-none">
+					最近<span>6个月内</span>，未有<span>减持</span>评级的研究报告，
+					<a href="./news.html#report" class="profit-forecast-more-1" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">更多研究报告详情点击&gt;&gt;</a>
+			</dl>
+					</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-4" style="display:none">
+								<dl class="hover profit-forecast-box-none">
+					最近<span>6个月内</span>，未有<span>卖出</span>评级的研究报告，
+					<a href="./news.html#report" class="profit-forecast-more-1" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">更多研究报告详情点击&gt;&gt;</a>
+			</dl>
+					</div>
+						<p class="clearfix">评级根据各机构发布的研究报告摘录所得，不代表本终端的立场。</p>
+	</div>
+	<div class="ft"></div>
+	<div style="z-index:201" class="rp_tipbox box_rhpj" style="display:none">
+		<table class="m_table">
+			<thead>
+				<tr>
+					<th width="25%">评级</th>
+					<th>说明</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>公司评级</th>
+					<td>报告发布日后的12个月内，公司的涨跌幅度相对同期沪深300指数的涨跌幅为基准</td>
+				</tr>
+				<tr>
+					<th>买 入/推 荐</th>
+					<td>相对大盘涨幅大于10%</td>
+				</tr>
+				<tr>
+					<th>增 持/谨慎推荐</th>
+					<td>相对大盘涨幅在5%～10%之间</td>
+				</tr>
+				<tr>
+					<th>中 性/持 有</th>
+					<td>相对大盘涨幅在-5%～5%之间</td>
+				</tr>
+				<tr>
+					<th>减 持/卖 出</th>
+					<td>相对大盘涨幅小于-5%</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>注：以上为一般划分准则，具体评级请参考对应研究报告。</div>
+		<s class="arrow"></s>
+	</div>
+</div>
+
+</div>
+		<!-- F10 Content End -->
+<!-- F10 Footer Start -->
+		<div class="footer">
+		<div class="links">
+		    <a href="http://stockpage.10jqka.com.cn" target="_blank" onclick="clickTalogStat('jptostock');">同花顺个股页面</a> |
+		    <a href="http://moni.10jqka.com.cn/" target="_blank">模拟炒股</a> |
+		    <a href="http://www.10jqka.com.cn/school/" target="_blank">股民学校</a> |
+		    <a href="http://mobile.10jqka.com.cn/?req=pcf10" target="_blank">手机炒股</a>|
+		    <a target="_blank" href=" http://wpa.qq.com/msgrd?v=3&amp;uin=2270716061&amp;site=qq&amp;menu=yes">联系我们</a>
+		</div>
+		<p>免责声明:本信息由同花顺金融研究中心提供，仅供参考，同花顺金融研究中心力求但不保证数据的完全准确，如有错漏请以中国证监会指定上市公司信息披露媒体为准，同花顺金融研究中心不对因该资料全部或部分内容而引致的盈亏承担任何责任。用户个人对服务的使用承担风险。同花顺对此不作任何类型的担保。同花顺不担保服务一定能满足用户的要求，也不担保服务不会受中断，对服务的及时性，安全性，出错发生都不作担保。同花顺对在同花顺上得到的任何信息服务或交易进程不作担保。同花顺提供的包括同花顺理财的所有文章，数据，不构成任何的投资建议，用户查看或依据这些内容所进行的任何行为造成的风险和结果都自行负责，与同花顺无关。 </p>
+		</div>
+<!-- F10 Footer End -->
+    </div>
+    <div class="r-go-top" id="r-go-top"></div>
+</body>
+<input id="stockCode" type="hidden" value="002384">
+<input id="F001" type="hidden" value="A">
+<input id="F002" type="hidden" value="深圳证券交易所">
+<input id="F004" type="hidden" value="1">
+<input id="stockName" type="hidden" value="东山精密">
+<input id="marketId" type="hidden" value="33">
+<input id="cateName"  type="hidden" value="盈利预测">
+<input id="catecode"  type="hidden" value="worth">
+<input id="fcatecode"  type="hidden" value="worth">
+<input id="sid" type="hidden" value="F10new_jzfx">
+<input id="fid" type="hidden" value="F10,F10master,F10main,F10new">
+<input id="qid" type="hidden" value="14585137">
+<div style="display:none" id="wordraddom">
+</div>
+<!-- title 容器 -->
+	<div class="titleBox" id="altlayer" style="display:none; width: 260px;">
+		<div class="tipbox_bd p0_5"><span style="line-height:24px;" class="tip f14">
+		<span id="altlayer_content"></span>
+		</div>
+	</div>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+<script>
+try {
+    external.createObject('Util');
+    //document.getElementById("updownchange").style.display = "block";
+} catch (e) {}
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/jquery-1.8.3.min.js;js/basic/common/inheritance.js;js/basic/stock/popWin.js;js/basic/common/Model_v2.js;js/basic/stock/20200604153837/index.js;js/basic/stock/20200604153837/po_v2.js;js/basic/stock/scrollBind.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/common_v3-2-a58b25.js"></script>
+<!--[if IE ]><script type="text/javascript"  crossorigin src="//s.thsi.cn/js/excanvas.min.js"></script><![endif]-->
+<!--[if IE 6]>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('.company_logo,.btn-gnjx-left, .btn-gnjx-right, .concept_hot_icons,.iwc_searchbar,.iwc_searchbar .tips-icon,#autocomplete_search_input dd .icona,#autocomplete_search_input dd .iconb');</script>
+<![endif]-->
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/jquery.pos-fixed.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/cb?js/ta.min.js;js/pa.min.js;js/basic/stock/StatLoad.js;js/basic/stock/20200605135220/xgcl_mod.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/stock/tongji.min.js"></script>
+<!-- 统计 -->
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/home/ths_core.min.js;js/home/ths_quote.min.js;js/home/tongji.min.js" charset="utf-8"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/commonLog_v3.js" charset="utf-8"></script>
+<!--F10运营位脚本-->
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/append-960857.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/f10widget_v3-5ec039.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?/js/navigation/jquery.bgiframe.min.js;/js/navigation/jquery.ui.position.min.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/json2.js"></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/search_v3-fec53c.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/jquery.flot.min.js;js/basic/stock/jquery.flot.tooltip.min.js;js/basic/stock/20200604153837/worth.20151209.js"></script>
+<script>
+//---------------自定义title弹窗 start----------
+var tempalt='';//临时存储title
+document.body.onmousemove = function(event) {
+	if(altlayer.style.display==''){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+10
+		});
+	}
+};
+document.body.onmouseover = function(event) {
+	if (event.srcElement.className !== 'titleIcon') {
+		return false;
+	}
+	if(event.srcElement.title && (event.srcElement.title!='' || (event.srcElement.title=='' && tempalt!=''))){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+20,
+			display: ''
+		});
+		$("#altlayer_content").html(event.srcElement.title)
+		tempalt = event.srcElement.title;
+		event.srcElement.title='';
+	}
+};
+document.body.onmouseout = function(event) {
+	if (tempalt != '') {
+		event.srcElement.title = tempalt;	
+	}
+	tempalt = '';
+	$("#altlayer").hide();
+};
+//---------------自定义title弹窗 end----------
+//F10客户端结点设置
+function setClientCacheData() {
+    try { //判断是否在客户端，存入结点
+        external.createObject('Util');
+        window.API.use({
+            method: 'Util.getHxVer',
+            success: function(data) {
+                var hexinVer = getVersionStr(data);
+                var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+                //dalert(hexinVer);//上线注意，测试版版本86080  正式版 86090 请注意
+                if (hexinVer >= 86080) {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['f10_client_node', 'http://basic.10jqka.com.cn' + pathname],
+                        success: function() {
+                        }
+                    })
+                } else {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['', 'http://basic.10jqka.com.cn/' + pathname],
+                        success: function() {
+                        }
+                    })
+                }
+            }
+        })
+        document.getElementById("updownchange").style.display = "block";
+    } catch (e) {
+        //远航版隐藏header
+        $("#quotedata").empty()
+        $("#updownchange").empty()
+    }
+	try {
+		callNativeHandler('getMacVer', {}, function(data){
+			if (data.plaform == 'mac' && data.version>='1.3.0' ) {
+				var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+				callNativeHandler('cache_info_Data', {
+					'f10_client_node': 'http://basic.10jqka.com.cn' + pathname
+				}, function(data){
+				});
+			}
+		});
+	} catch (e) {
+    }
+}
+setClientCacheData();
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/20200604153837/stockpage_v3.20190506.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin id="ths-parser-script" app_key="f10_astockpc_config" src="//s.thsi.cn/cd/website-thsc-f10-utils/1.4.39/parser.js"></script>
+<script type="text/javascript">
+var sid = 'F10new_jzfx';
+var fid = 'F10,F10master,F10main,F10new';
+var stockcode = '002384';
+if (window.location.href.indexOf('interactive')<0
+		&&window.location.href.indexOf('dupont')<0) {
+    $(".subnav .skipto").each(function(){
+    	sonnav = $(this).attr('nav');
+    	if ($("#"+sonnav).length>0 || $("[idchange='"+sonnav+"']").length>0) {
+    	} else {
+    		$(this).hide();
+    	}
+    })
+}
+if (stockcode.substr(0,2) == '43' || stockcode.substr(0,2) == '83') {
+	var third_sid = sid+'_thirdboard';
+	var third_fid = fid+'_thirdboard';
+    PA.setStartTime(loadTimer);
+	PA.init({'id':third_sid, 'fid':third_fid, 'stockcode':stockcode});
+}
+$(document).ready(function(){
+var hash = window.location.hash.substring(1);
+var hashArray = hash.split('-');
+if(hashArray[0]  == 'position'){
+	$("#sortNav li").eq(hashArray[1]).find("a").click();
+}
+});
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: ['m_qs'],
+        success: function(data) {
+            var qsid = data
+            if (qsid == '114') {
+                $("#f10_top_ad").hide();
+                $("#r-go-top").hide();
+            }
+        }
+    })
+} catch (e) {}
+if (!isIE6()) {
+    $(".m_box").statload();
+}
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: 'm_qs',
+        success: function(data) {
+            var qsid = data
+            if (qsid < 800) {
+                fid += ',f10new_qs';
+            } else {
+                fid += ',f10new_fqs';
+            }
+            PA.setStartTime(loadTimer);
+            setTimeout(function(){
+                PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'qsid': qsid
+                });
+            },100)
+        }
+    })
+} catch (e) {
+    PA.setStartTime(loadTimer);
+    PA.init({
+        'id': sid,
+        'fid': fid,
+        'stockcode': stockcode
+    });
+}
+try {
+    external.createObject('Util');
+    var externalSessionId = window.API.createSessionId('external');
+    window.API.use({
+        method: 'external.registerEvent',
+        data: 'onshow',
+        sessionId: externalSessionId,
+        persistent: true,
+        callbackName: 'onshow',
+        success: function(data) {
+            if (!data) {
+                 PA.setStartTime(loadTimer);
+                 PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'hide': 1,
+                    'nj': 1,
+                    _sid: "__ths_onshow"
+                });
+            }
+        }
+    })
+} catch (e) {}
+</script>
+<div style="display:none"><script type="text/javascript">
+// 在客户端内，html做个区分，解决端内的一些特性
+if ((window.external && 'createObject' in window.external) || (window.HevoCef && "IsHevoCef" in window.HevoCef)) {
+	$('html').addClass("inClient");
+}
+(function(){
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F78c58f01938e4d85eaf619eae71b4ed1' type='text/javascript'%3E%3C/script%3E"));
+});
+</script>
+
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/f10hq_v4-5-576b58.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/onlyBAuthorize-4a6ce9.js"></script>
+</div>
+<!--F10头部广告-->
+
+<!--<div id="f10_top_ad" class="f10_ad_top none"><script type="text/javascript">CNZZ_SLOT_RENDER('297563');</script></div>-->
+</html>
+	

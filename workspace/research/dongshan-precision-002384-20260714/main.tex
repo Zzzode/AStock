@@ -1,0 +1,47 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+\newcommand{\reporttitle}{东山精密：光通信利润弹性与AI PCB估值再审视}
+\newcommand{\reportsubtitle}{Q1利润结构已变，但260.37元价格已提前交易高端兑现}
+\newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
+\newcommand{\reportscope}{CHINA A-SHARES | 002384.SZ | ELECTRONICS}
+\newcommand{\reportdate}{2026年7月14日}
+\newcommand{\reportdatacutoff}{行情截至13:27；H1预告截至16:36；正式财务截至2026Q1}
+\newcommand{\reporttype}{Single-stock deep research}
+\newcommand{\reportauthor}{AStock Research}
+\newcommand{\reporthouseview}{东山精密的基本面正在改善，但当前股价已经把光模块扩产、AI PCB放量和2027年高利润情景折现得较为充分。我们以2027E分部SOTP得到198.96元基本面锚，叠加华创199.87元外部目标价与225元市场情绪锚，给出201.70元综合目标价，较260.37元下行22.53\%。结论是“高估值风险、趋势波段观察、不追涨停”，等待盈利分母追上价格或价格回到证据支持区间。}
+\newcommand{\reportquality}{官方年报、Q1报告、H1业绩预告、并购与扩产公告、实时行情和4份原始券商PDF已归档；华创目标价使用可审计公开摘要。客户订单、ASP、利用率和良率缺口均被显式标注；H1预告已纳入公司层盈利桥，未使用社交媒体传闻。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。}
+\input{../../../.agents/templates/preamble.tex}
+\hypersetup{pdfauthor={\reportauthor},pdftitle={\reporttitle}}
+\begin{document}
+\astockcover
+\tableofcontents
+\clearpage
+\chapter{投资委员会摘要}
+\input{sections/ch01_dashboard}
+\chapter{证据、公司与并购边界}
+\input{sections/ch02_evidence}
+\chapter{产品、技术与需求链}
+\input{sections/ch03_industry}
+\chapter{增长桥与财务质量}
+\input{sections/ch04_growth}
+\chapter{分部估值、目标价与预期差}
+\input{sections/ch05_valuation}
+\chapter{二级市场与交易行为}
+\input{sections/ch06_market}
+\chapter{风险、催化剂与行动}
+\input{sections/ch07_risks}
+\appendix
+\chapter{来源与证据审计}
+\input{sections/app_source_audit}
+\chapter{模型披露}
+\input{sections/app_model_disclosure}
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[免责声明]
+\small
+\reportdisclaimer\par
+预测、目标价、市场锚和行动标签均为研究框架，不保证未来交易价格或收益。
+\end{disclosurebox}
+\end{document}

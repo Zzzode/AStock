@@ -1,0 +1,16 @@
+
+\section{来源层级}
+\begin{longtable}{L{1.2cm}L{3.2cm}L{3.0cm}L{4.5cm}}
+\textbf{ID} & \textbf{类型} & \textbf{质量} & \textbf{用途与限制} \\
+\endfirsthead
+\textbf{ID} & \textbf{类型} & \textbf{质量} & \textbf{用途与限制} \\
+\endhead
+S1 & 实时行情 & realtime & 价格和成交；估值比率自行复算。\\
+S2--S9 & 公司公告、年报、Q1、IR & official & 财务、并购、扩产和贡献比例；不含客户级ASP。\\
+S10--S11 & 原始券商PDF & original PDF & 预测和业务交叉；捕获页未必含目标价。\\
+S12 & 可审计研报摘要 & auditable repost & 目标价和完整预测字段；原始授权PDF未归档。\\
+S13--S15 & 聚合、龙虎榜、融资快照 & public snapshot & 市场结构和分歧；不是长期资金身份识别。\\
+\end{longtable}
+
+\section{证据边界}
+公司正式披露优先于券商观点，券商观点优先于媒体摘要，媒体摘要优先于搜索片段。凡是没有正式订单、客户份额、ASP、利用率、良率或收入确认的内容，均只用于风险和待验证项，不用于提高目标价。

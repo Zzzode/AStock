@@ -1,0 +1,3428 @@
+<!DOCTYPE HTML>
+<html>
+<head id="head">
+		    <title>ɽ(002384) ӯԤ_F10_ͬ˳ڷ</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7;IE=9"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=gbk"/>
+	<meta name="keywords" content="ɽ¶̬,ɽܹ˾ſ,ɽܲ,ɽܹɶо,ɽܹɱṹ,ɽܹ˾,ɽֺܷ"/>
+	<meta name="description" content=""/>
+	<!-- ȯurlӣֻbroker-pcf10.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.1.12.min.1784006.js"></script> <script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1784006.js"></script> <script>
+    function getUrlParams(key, url) {
+        var href = url ? url : window.location.href;
+        if (href.indexOf("?") < 0 && href.indexOf("#") < 0) {
+            return false;
+        }
+        var hrefStr = href.replace(/#/g, "&");
+        hrefStr = hrefStr.replace(/\?/g, "&");
+        var paramsObj= {};
+        hrefStr.split("&").forEach(function(i) {
+            if (i.indexOf("=") > -1) {
+                paramsObj[i.split("=")[0]] = i.split("=")[1];
+            }
+        });
+        if (key) {
+            return paramsObj[key] || false;
+        } else {
+            return paramsObj;
+        }
+    }
+
+    function addParam(url, obj) {
+        var str = "",res;
+        for (var key in obj) {
+            str += (key + "=" + obj[key]);
+        }
+        if (url.indexOf("?") > -1) {
+            res = url.split('?').join('?' + str + '&');
+        } else if (url.indexOf("#") > -1) {
+            res = url.replace(/#/g, "?" + str + "#");
+        } else {
+            res = url + "?" + str;
+        }
+        return res;
+    }
+
+    var historyUrl = document.referrer;
+    if (historyUrl) {
+        var broker = getUrlParams('broker', historyUrl);
+        if (broker && window.history) {
+            var url = window.location.href;
+            url = addParam(url, broker ? {broker: broker} : {});
+            window.history.pushState('', '', url);
+        }
+    }
+</script>
+	<!-- f10䣬ߺ޸ģֻutils.html -->
+	
+	<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1784006.js"></script> <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.4.8/f10-polyfill.js" crossorigin></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cd/kernel-thslc-component-materials-container/F10/static/css-vars-ponyfill.js" ></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.0/thsc-f10-utils.js" crossorigin></script>
+<script>
+    function isIEInClient(){
+        return !!(window.external && 'getUserPath' in window.external && 'createObject' in window.external);
+    }
+
+    function isInTongYiClient(){
+      return !!(window.external && 'createObject' in window.external);
+    }
+
+    function isInYuanHangClient(){
+        return !!(window.HevoCef && 'IsHevoCef' in window.HevoCef);
+    }
+    
+    function isInIEEnv(){
+        var ua = window.navigator.userAgent.toLowerCase();
+        return ua.indexOf('msie') > -1 || ua.indexOf('trident/') > -1;
+    }
+
+    function isChromeOlderThan50(){
+        var userAgent = navigator.userAgent.toLowerCase();
+        var match = userAgent.match(/chrome\/(\d+)./);
+        if (match && parseInt(match[1]) <= 49) {
+           return true;
+        }
+        return false;
+    }
+
+</script>
+<style>
+.kamis-loading {
+	min-height: 600px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: #437EB7;
+	background-color: rgba(255,255,255,0.8);
+	gap: 4px;
+	font-size: 14px;
+}
+.dark .kamis-loading, .black .kamis-loading {
+	background-color: #171D25;
+	color: #FEB302;
+}
+.kamis-loading svg {
+	width: 20px;
+	height: 20px;
+}
+.arco-icon-spin {
+  animation: spin 1s linear infinite;
+}
+.kamis-nodata {
+  min-height: 300px;
+  background-color: #fff;
+  border: 1px solid #fff;
+  border-radius: 4px;
+  color: #333;
+  padding: 10px 14px;
+}
+.dark .kamis-nodata, .black .kamis-nodata {
+  color: #999;
+  background-color: #0b1016;
+  border-color:#1e2b38;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+</style>
+		<script type="text/javascript" src="//s.thsi.cn/js/chameleon/chameleon.min.1784006.js"></script> <script src="//s.thsi.cn/js/m/common/bridge.js" type="text/javascript"  crossorigin></script>
+	<script type="text/javascript"  crossorigin  src="//s.thsi.cn/js/jquery-1.8.3.min.js"></script>
+	<script charset="utf-8" src="//s.thsi.cn/cb?webprivate/lib/axios.min.js;hxapp/m/base/js/vue.2.7.16.min.js" crossorigin="anonymous"></script>
+	<!-- kamis Ⱦ -->
+	<script charset="utf-8" src="//s.thsi.cn/hxapp/m/pkgs/amis-2c/sdk/v1-3/2c-sdk-register.1.3.6.js"></script>
+	<!-- °cdn -->
+	<script crossorigin src="//s.thsi.cn/cb?cd/weblog/0.0.1-alpha.27/weblog.js"></script>
+		<script>
+		var xhrProto = XMLHttpRequest.prototype;
+		var origOpen = xhrProto.open;
+		xhrProto.open = function (method, url) {
+			if (location.host.indexOf('0033.cn') > -1 && arguments[1] !== undefined && arguments[1].indexOf('10jqka.com.cn') > -1) {
+				arguments[1] = arguments[1].replace('10jqka.com.cn', '0033.cn');
+			}
+			return origOpen.apply(this, arguments);
+		};
+	</script>
+	<script>
+		var originCreateElement =  document.createElement;
+		document.createElement = function(tagName){
+			const element = originCreateElement.apply(document,arguments);
+			if(tagName.toLowerCase() === 'script'){
+				element.setAttribute('charset','utf-8');
+			}
+			return element;
+		}
+	</script>
+	<script id="monitor-script" api_key="ths_f10" src="//s.thsi.cn/cb?cd/website-thsc-f10-utils/1.6.40/monitor.js" crossorigin></script>
+	<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+	<script>
+		try{
+			feMonitor.setConfig(
+				{
+				slientDev:false,//(localhost)ǷͱĬϲΪtrue
+				sampleRate:0.1, //,0-1֮䣬ԽСɼƵԽ
+				isCollectPerformance:true, //Ƿɼ
+				title:'pc-F10'
+				}
+			);
+		}catch(e){
+
+		}
+	</script>
+	<style>
+        .wencaibs{color:#008BFF!important;cursor:pointer;}
+        .wd-tb .ptxt { word-break: break-word;}
+        .comment-chart-head{color: #89a;}
+        .comment-chart-head span{float: right;}
+        .comment-chart-head span i{vertical-align: middle; display: inline-block; width: 20px; height: 20px;margin: 0 2px 0 6px; border-radius: 20px; overflow: hidden;}
+        .comment-chart-head .imp-news{background: #da2e1f;}
+        .comment-chart-head .yidong-news{background: #e3bf1a;}
+
+        #ckg_table1 tr td{text-align:center}
+        #ckg_table2 tr td{text-align:center}
+        #ckg_table3 tr td{text-align:center}
+        #ckg_table4 tr td{text-align:center}
+        #ckg_table5 tr td{text-align:center}
+		li{list-style-type:none;
+			list-style-position:outside;}
+		#jpjl-input:focus { outline: none; }
+		.black.inClient .clientJump {
+			cursor: pointer;
+			color: #0199fa;
+			text-decoration: underline;
+		}
+		.white.inClient .clientJump {
+			color: #07519a;
+			text-decoration: underline;
+			cursor: pointer;
+		}
+		.managelist .name a {    color: #0199fa;
+			margin: 0 3px 2px;
+			text-decoration: underline;
+			border-bottom: none !important;
+		}
+	</style>
+	<!--ͳҳʱ-->
+	<script type="text/javascript">
+		var loadTimer= new Date().getTime();
+	</script>
+    <style>
+        #search_cyter{
+            display: block !important;
+        }
+		#profile .tickLabels .tickLabel{
+			padding-right:12px;
+			box-sizing:border-box;
+		}
+	  .a_cursor {
+		pointer: cursor;
+	}
+    </style>
+</head>
+<script type="text/javascript">
+
+//cookie
+function setReviewJumpState(state) {
+	document.cookie = 'reviewJump='
+					+ state
+					+ ';path=/;domain='
+					+ window.location.host;
+}
+//ȡöӦcookie
+function getCookie(name) {
+	var cookieValue = "";
+	var search = name + "=";
+	if (document.cookie.length > 0) {
+	    offset = document.cookie.indexOf(search);
+	    if (offset != -1)    {
+	        offset += search.length;
+	        end = document.cookie.indexOf(";", offset);
+	        if (end == -1) end = document.cookie.length;
+	        cookieValue = unescape(document.cookie.substring(offset, end))
+	    }
+	}
+	return cookieValue;
+}
+//Ŀǰת
+var reviewJumpState = getCookie('reviewJump');
+if (!!reviewJumpState && reviewJumpState != 'nojump') {
+	setReviewJumpState('nojump');
+	window.location.href = unescape(reviewJumpState);
+} else {
+	setReviewJumpState('nojump');
+}
+//̬link-ͬ-
+function addCssByLink(url){
+    document.write('<link rel="stylesheet" type="text/css"');
+    document.write(' href="' + url + '">');
+}
+function isMac() {
+        return /macintosh|mac os x/i.test(navigator.userAgent);
+};
+ var hash = window.location.hash.substring(1);
+hashArray = hash.split('=');
+if (hashArray[0] == 'stockpage') {
+    var STOCK_SKIN = 'white';
+} else {
+    var STOCK_SKIN = getCookie('skin_color');
+}
+//ɫͻͬ
+function syncClientSkin(){
+	try {//ȡÿͻ˷ɫ
+		if (isMac()) {
+			return 'white';
+		}
+		return 'black';
+	} catch(e) {}
+}
+if (!STOCK_SKIN) {
+	STOCK_SKIN = syncClientSkin();
+}
+document.documentElement.setAttribute("class",STOCK_SKIN);
+if (STOCK_SKIN == 'white') {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 
+    addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/style_v4-2.css;css/basic/stock/white/20200604153837/chart_v2.min.20180110.css;css/basic/stock/white/20200604153837/dupont.css;css/basic/stock/white/20200604153837/black_v2-4.20190711.css;css/basic/stock/white/custom.min.css;css/basic/stock/white/20200604153837/operations.css;css/basic/stock/white/20200604153837/writecsskzd.min.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/20200604153837/survey-w.css;css/basic/stock/20200604153837/wxgcl_mod.css;css/basic/stock/provider-w_v2.css;css/basic/stock/20200604153837/searchbar-w_v2.css;css/basic/stock/20200604153837/wccept.css;css/basic/stock/wtgfx.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school_w.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/wsplpager.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/wchartsdom.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/white/20200604153837/industrydata.css;css/basic/stock/white/20200604153837/main_v1-2.css;css/basic/stock/white/20200604153837/xgcl.css;css/basic/stock/white/20200604153837/courier.css;css/basic/stock/white/20200604153837/recommend.css;css/basic/stock/white/20200604153837/housedata.css;css/basic/stock/white/202005071600/20200604153837/longhu.css;css/basic/stock/white/20200604153837/operate_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/white/remind_white.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_white_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/white/20200604153837/expression.css');
+	}
+					addCssByLink("//s.thsi.cn/css/basic/common/white/title.css")
+} else {
+	// addCssByLink('/f10/css/company-compare.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/company-compare-202006082100.css');
+ 	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/style_v3-5.min.20200426.css;css/basic/stock/black/20200604153837/chart_v2.min.20190410.css;css/basic/stock/black/20200604153837/black_v2-4.20190711.css;css/basic/stock/black/custom.min.css;css/basic/stock/black/20200604153837/operations.css;css/basic/stock/black/20200604153837/csskzd.min.20150608.css;/css/basic/stock/20200604153837/survey.20150929.css;/css/basic/stock/provider_v2.css;/css/basic/stock/20200604153837/searchbar_v2.css;/css/basic/stock/20200604153837/ccept.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/fschool/20200604153837/f_school.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/splpager.20170504.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/chartsdom.css;css/basic/stock/20200604153837/xgcl_mod.css;/css/basic/stock/tgfx.css');
+	addCssByLink('//s.thsi.cn/cb?css/basic/stock/black/20200604153837/industrydata.css;css/basic/stock/black/20200604153837/main_v1-2.css;css/basic/stock/black/20200604153837/xgcl.css;css/basic/stock/black/20200604153837/courier.css;css/basic/stock/black/20200604153837/funcRecommend.css;css/basic/stock/black/20200604153837/dupont.css;css/basic/stock/black/202005071600/20200604153837/longhu.css;css/basic/stock/black/20200604153837/operate.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/black/remind_black.css');
+	addCssByLink('//s.thsi.cn/js/home/v5/thirdpart/scrollbar/jquery.mCustomScrollbar.css');
+
+	addCssByLink('//s.thsi.cn/css/basic/stock/index_v1.css');
+	addCssByLink('//s.thsi.cn/css/basic/stock/20200604153837/instition_black_v2.css');
+	if (!!window.ActiveXObject&&!window.XMLHttpRequest) {
+		addCssByLink('//s.thsi.cn/css/basic/stock/black/20200604153837/expression.min.20140801.css');
+	}
+					addCssByLink("//s.thsi.cn/css/basic/common/black/title.css")
+}
+/*calendar*/
+function  minDate(){
+ 	var data = $('#inte_json').text();
+	var datajson =new Object();
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson = data[x];
+	}
+	var minDate = datajson.year+'-'+datajson.month+'-'+datajson.day;
+	return minDate;
+ }
+ Date.prototype.Format = function(fmt)
+{ //author: meizz
+  var o = {
+    "M+" : this.getMonth()+1,                 //·
+    "d+" : this.getDate(),                    //
+    "h+" : this.getHours(),                   //Сʱ
+    "m+" : this.getMinutes(),                 //
+    "s+" : this.getSeconds(),                 //
+    "q+" : Math.floor((this.getMonth()+3)/3), //
+    "S"  : this.getMilliseconds()             //
+  };
+  if(/(y+)/.test(fmt))
+    fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));
+  for(var k in o)
+    if(new RegExp("("+ k +")").test(fmt))
+  fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));
+  return fmt;
+}
+ function  displayDate(){
+ 	var data = $('#inte_json').text();
+ 	var date =new Array();
+	var datajson =new Object();
+	var i=0;
+	if (data) {
+		data = eval('('+data+')');
+	}
+	for (var x in data) {
+		datajson[x] = data[x];
+		dates = datajson[x].year+'-'+datajson[x].month+'-'+datajson[x].day;
+		if (x==0|| date[i-1] != dates) {
+			date[i] = dates;
+			i++;
+		}
+	}
+	var count =date.length;
+	var date2 = new Date();
+	var month =date2.getMonth()+1;
+	var day =date2.getDate();
+	if ((date2.getMonth()+1)>9) {
+	} else {
+	 	var month ="0"+month;
+	}
+	if (date2.getDate()>9) {
+	} else {
+	 	var day ="0"+day;
+	}
+	year = date2.getFullYear();
+	date2 = year+'-'+month+'-'+day;
+	var result = "['";
+	for (i=0;i<count;i++) {
+		if (date2 == date[i]) {
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+		} else {
+			result +=date2+"',";
+			dateArr = date2.split('-');
+			newdate = new Date(new Date(dateArr[0], dateArr[1]-1,  dateArr[2])-24*60*60*1000);
+			date2 = newdate.Format("yyyy-MM-dd");
+			i--;
+		}
+	}
+	result = result.substr(0,result.length-1)+']';
+	return result;
+ }
+    function showDatePicker1(color) {
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv1',
+            vel:'elDate1',
+            minDate:minDate(),
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate1').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+    function showDatePicker2(color) {
+
+        WdatePicker({
+            selfCssUrl:'//s.thsi.cn/css/basic/stock/'+STOCK_SKIN+'/mydatepicker.css',
+            eCont:'WdateDiv2',
+            vel:'elDate2',
+            maxDate:'%y-%M-%d',
+            onpicked:function(dp){
+                $('#elDate2').text(dp.cal.getNewDateStr());
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            },
+            Mchanged:function(dp){
+                var invalider = $(".J_calendar").find("iframe").contents().find(".WinvalidDay");
+            }
+        });
+    }
+  function isIE() {
+	// жIE汾
+	if(document.documentMode) {
+		return document.documentMode;
+	}
+	var userAgent = navigator.userAgent.toLowerCase();
+	if (userAgent.indexOf('edge') > -1) {
+		return 'edge';
+	}
+	return false;
+  }
+	 // ʼ
+	 var initFinance = window.localStorage.getItem('initFinance');
+	 if (!initFinance) {
+		 window.localStorage.setItem('initFinance', 'init');
+		 window.localStorage.setItem('memoryPage', 'old');
+	  }
+	  // תַ
+    function jumpToUrl(url, name, anchor, conceptName) {
+	  if (!url || !name) {
+			return;
+		}
+		// ϵַл
+		var oldPage = {
+			'financen': true
+		}
+		var pageLocation = window.localStorage.getItem('memoryPage');
+      //IE
+      if (isInIEEnv() || (pageLocation && pageLocation == 'old' && oldPage[name])) {
+        location.href = url;
+	    return;
+     }
+     var code = $('#stockCode').val();
+	 var codeName = $('#stockName').val();
+	 var marketid = $('#marketId').val();
+	 var pageAnchor = anchor ? '&anchor=' + anchor : '';
+	 var host = window.location.host;
+	 var targetUrl = '//' + host + '/astockpc/astockmain/index.html#/' + name + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName + pageAnchor;
+	 if (conceptName) {
+		 targetUrl += "&cname=" + conceptName;
+	 }
+     location.href = targetUrl;
+    }
+	// תµַ
+	function jumpToNew() {
+       var code = $('#stockCode').val();
+	   var codeName = $('#stockName').val();
+	   var marketid = $('#marketId').val();
+	   var url = window.location.href;
+	   var module = url.match(/\/(\w+).html?/);
+	   var moduleName = '';
+	   var host = window.location.host;
+	   if (module && module[1]) {
+		   moduleName = module[1];
+		   if (module[1] == 'finance') {
+			   moduleName = 'financen';
+		   }
+	   }
+	   window.TA.log('F10hs_cwfx.tyxbb.click');
+	   window.localStorage.setItem('memoryPage', 'new');
+	   setTimeout(function (){
+		  location.href = '//' + host + '/astockpc/astockmain/index.html#/' + moduleName + '?code=' + code + '&marketid=' + marketid + '&code_name=' + codeName;
+	   }, 10)
+	}
+</script>
+    <script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/qdc_ad-510a70.js"></script>
+	<link href="//s.thsi.cn/css/basic/stockph/qdc_ad-6e8683.css" rel="stylesheet" type="text/css">
+ 
+<body>
+<div class="votepopbox votesuccess" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">ллı</p>
+		<p class="vpoptxt">֧Ķ</p>
+	</div>
+	<div class="votepopbox voteinfo" style="display: none">
+		<div class="vpopicon"></div>
+		<p class="vpoptxt fz18">лл֧</p>
+		<p class="vpoptxt"></p>
+	</div>
+    <div class="wrapper">
+<!-- F10 Header Start -->
+		<div class="header">
+		    <div class="hd">
+		        <div class="logo fl" id="logo_self"><a title="ͬ˳F10">ͬ˳F10</a></div>
+
+															<div onclick="sendTalog('f10_click_quot')" style="width:260px; margin-left:60px; font-size:14px;cursor:pointer;margin-right:10px;display:none;text-align:center" class="fl tip " id="quotedata">
+							<div  class="fl">¼ۣ <span style="width:40px" class="upcolor" id="zxj">--</span></div>
+							<div  class="fr">ǵ <span style="width:40px;" class="upcolor" id="zdf">--</span></div>
+						</div>
+											        <span class="fr skin-change"><a href="###"></a></span>
+		        <div class="search fr" id="search_cyter">
+		            <div id="updownchange" type="once" class="codeChange fl" style="display: none;">
+		                <a href="javascript:void(0)" class="per">һ</a>
+		                <a href="javascript:void(0)" class="next">һ</a>
+		            </div>
+		            <div class="fl searchbar">
+			            <div class="text fl">
+			                <input type="text" id="jpjl-input" value="Ʊƻ" /><!--ıý.searchbarhover-->
+			             </div>
+		                <input type="button" value="" class="btn" id="submit"/>
+		            </div>
+		        </div>
+		    </div>
+		    <div class="bd clear">
+		        <div class="code fl">
+					<div><h1 style="margin:3px 0px 0px 0px">
+												ɽ</h1></div>
+					<div>
+						<a href="interactive.html" tid="wdm" posid="r1c1" class="iwen" onclick="TA.log({'id':'F10_review','nj':1})">iʶ</a>
+						<style>
+							.qiyehao {
+								display:none;
+								float:left;
+								cursor:pointer;
+								margin: 4px 0 0 17px;
+								width:50px;
+								text-align:center;
+								font-size:12px;
+								padding: 2px  0 4px 0;
+								line-height:12px;
+							    border-radius:6px;
+								color: white;
+                                background-color:#437eb7;
+							}
+							.black  .qiyehao {
+								background-color: #b60006;
+							}
+						</style>
+						<div class="qiyehao">ҵ</div>
+						<h1 style="margin:3px 0px 0px 0px">
+						002384						</h1>
+						<script>
+							 $(document).ready(function(){
+								//ȡг
+                                var market = $('#marketId').val();
+								//ȡƱ
+								var code = $('#stockCode').val();
+								//жǷB
+								var isBStock = function () {
+									var flag = market == '18' || market == '34' || market == '105';
+									return flag;
+								}
+								
+								//BɺIeвչʾҵ
+								if(isBStock() || isInIEEnv()){
+									return ;
+								}
+								isThsClient(function(){
+                                   //ضʴ
+								   $('.iwen').hide();
+                                   //չʾҵ
+								   $('.qiyehao').show();
+								   $(document).on ('click','.qiyehao',function(){
+                                      var url = 'https://board.10jqka.com.cn/fe/board/qyh.html#/qyh/homepage?thscode=' + code  + '&marketid=' + market + '&from=f10';
+									    window.API.use({
+										  method: "Util.openURL2",
+										  data:{
+											url: url,
+											mode: 1,
+											useCef: true,
+										  }
+									    })
+								    })
+								})
+							 })
+						</script>
+					</div>
+		        </div>
+		        <div class="nav">
+		            <ul>
+		                <li><a href="./"              target="_self" tid="zxdt" posid="r1c3" >¶̬</a></li>
+		                <li><a href="javascript:void(0)" onclick="jumpToUrl('./company.html', 'company', '');return false;"   target="_self" tid="gszl" posid="r1c4" > ˾</a></li>
+		                <li><a href="./holder.html"   target="_self" tid="gdyj" posid="r1c5" >ɶо</a></li>
+						<li><a href="javascript:void(0)" onclick="jumpToUrl('./operate.html', 'operate', '');return false;" target="_self" tid="jyfx" posid="r1c6" > Ӫ</a></li>
+		                <li><a href="./equity.html"   target="_self" tid="gbjg" posid="r1c7" >ɱṹ</a></li>
+		                <li><a href="./capital.html"  target="_self" tid="zbyz" posid="r1c8" > ʱ</a></li>
+		                <li><a href="./worth.html"    target="_self" tid="ylyc" posid="r1c9"  class="cur" >ӯԤ</a></li>
+		                <li><a href="./news.html"     target="_self" tid="xwgg" posid="r2c3" >Ź</a></li>
+						<li><a  href="javascript:void(0)"  onclick="jumpToUrl('./concept.html', 'concept', '');return false;"target="_self" tid="gntc" posid="r2c4" ></a></li>
+		                <li><a  href="javascript:void(0)"  onclick="jumpToUrl('./position.html', 'position', '');return false;"target="_self" tid="zlcc" posid="r2c5" >ֲ</a></li>
+		                <li><a href="javascript:void(0)"  onclick="jumpToUrl('./finance.html', 'financen', '');return false;" target="_self" tid="cwgk" posid="r2c6" > </a></li>
+						<li><a href="javascript:void(0)"  onclick="jumpToUrl('./bonus.html', 'bonus', '');return false;" target="_self" tid="fhrz" posid="r2c7" >ֺ</a></li>
+						<li><a href="./event.html"    target="_self" tid="gsds" posid="r2c8" >˾</a></li>
+		                <li><a href="./field.html"    target="_self" tid="hydb" posid="r2c9" >ҵԱ</a></li>
+		            </ul>
+		        </div>
+		        <div class="subnav">
+					<ul>
+					   						<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="forecast"  name="worth.html#forecast" href="###">ҵԤ							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="forecastdetail"  name="worth.html#forecastdetail" href="###">ҵԤ							</a>
+						</li>
+												<li>
+							<a style="position:relative;height:25px;" class="skipto" type="" nav="stockreport"  name="worth.html#stockreport" href="###">б							</a>
+						</li>
+								            </ul>
+		        </div>
+		    </div>
+		</div>
+<!-- F10 Header End -->
+<!-- F10 Content Start -->
+		<style>
+		.iwc_searchbar{display: none;}
+	</style>
+		<div class="iwc_searchbar clearfix" style="">
+    <div class="tips-box" style="display: none;">
+        <div class="t-hd"></div>
+        <div class="t-bd">
+            <div class="info">
+                <p>F10 ҲֱҪĹܣ롰񡱣ϿһŶ</p>
+                <div class="btn">
+                    <a href="###" class="a-left close"></a>
+                    <a href="###" class="a-right next">һ</a>
+                </div>
+            </div>
+            <div class="info" style="display: none;">
+                <p>ѡѡãֱҪʾ롰һǷ30%ĹƱϽжɣ</p>
+                <div class="btn">
+                    <a href="###" class="a-left prev">һ</a>
+                    <a href="###" class="a-right close"></a>
+                </div>
+            </div>
+        </div>
+        <div class="t-ft"></div>
+   	 </div>
+     <div class="searchfx">
+        <input id="search_input" x-webkit-speech="" x-webkit-grammar="builtin:search" lang="zh_CN" class="fillbox" autocomplete="off" type="text" value="ʾ䣬֪Ķ">
+        <input class="action_btn" id="search_submit" type="button" value="">
+        <span  class="tips-icon"></span>
+     </div>
+	</div>
+	<div class="content page_event_content" >	
+
+<!-- ҵԤ -->
+<div class="m_box z100" id="forecast" stat="worth_forecast">
+	<div class="hd">
+		<h2>ҵԤ</h2>
+	</div>
+	<div class="bd">
+			<p class="tip clearfix">
+		2026-07-146ڹ <strong>12</strong> һԶɽܵ2026ҵԤ⣻<br />
+		Ԥ2026ÿ <strong>3.67</strong> Ԫȥͬ <strong>364.56%</strong>
+		Ԥ2026꾻 <strong>67.18</strong> Ԫȥͬ <strong>384.69%</strong>
+		</p>
+			<div class="pt10">
+			<div class="cwzb_wrap">
+				<div class="chart_nav clearfix">
+					<ul class="nav_tab">
+						<li class="current"><a href="javascript:void(0)">&nbsp;&nbsp;&nbsp;&nbsp;ҵԤ&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+					</ul>
+					<div class="legend_nav yjyc_legend_nav">
+						<a class="icons_col_blue icons_sprite" href="javascript:void(0)"></a>
+						<a class="icons_col_yellow icons_sprite" href="javascript:void(0)">Ԥ⾻</a>
+						<a class="icons_line_blue icons_sprite" href="javascript:void(0)">ÿ</a>
+						<a class="icons_line_yellow icons_sprite" href="javascript:void(0)">Ԥÿ</a>
+					</div>
+				</div>
+				<div id="yjycData" class="none">[["2019","0.44","7.03","SJ"],["2020","0.93","15.30","SJ"],["2021","1.09","18.62","SJ"],["2022","1.39","23.68","SJ"],["2023","1.15","19.65","SJ"],["2024","0.64","10.86","SJ"],["2025","0.79","13.86","SJ"],["2026","3.67","67.18","YC"],["2027","7.37","134.99","YC"]]</div>
+				<div id="yjycChart" style="width:100%;height:220px;"></div>
+			</div>
+		</div>
+		<div class='clearfix'>
+	    		<div class="fl yjyc">
+			<table class="m_table m_hl">
+				<caption class="hltip m_cap">
+								<span class="fr tip">λԪ</span>--Ԥ걨ÿ
+								</caption>
+					<colgroup span="2" class="tc"></colgroup>
+					<colgroup span="4" class="tr"></colgroup>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Ԥ</th>
+						<th>Сֵ</th>
+						<th>ֵ</th>
+						<th>ֵ</th>
+						<th>ҵƽ</th>
+					</tr>
+				</thead>
+				<tbody>
+									<tr>
+						<th>2026</th>
+						<td class="tc">12</td>
+						<td>1.80</td>
+						<td>3.67</td>
+						<td>4.38</td>
+						<td>2.83</td>
+					</tr>
+									<tr>
+						<th>2027</th>
+						<td class="tc">12</td>
+						<td>2.39</td>
+						<td>7.37</td>
+						<td>12.92</td>
+						<td>4.00</td>
+					</tr>
+									<tr>
+						<th>2028</th>
+						<td class="tc">6</td>
+						<td>10.52</td>
+						<td>13.60</td>
+						<td>20.53</td>
+						<td>5.48</td>
+					</tr>
+								</tbody>
+			</table>
+		</div>
+				<div class="fr yjyc">
+			<table class="m_table m_hl">
+				<caption class="hltip m_cap">
+								<span class="fr tip">λԪ</span>--Ԥ걨
+								</caption>
+					<colgroup span="2" class="tc"></colgroup>
+					<colgroup span="4" class="tr"></colgroup>
+				<thead>
+					<tr>
+						<th></th>
+						<th>Ԥ</th>
+						<th>Сֵ</th>
+						<th>ֵ</th>
+						<th>ֵ</th>
+						<th>ҵƽ</th>
+					</tr>
+				</thead>
+				<tbody>
+									<tr>
+						<th>2026</th>
+						<td class="tc">12</td>
+						<td>32.88</td>
+						<td>67.18</td>
+						<td>80.22</td>
+						<td>31.46</td>
+					</tr>
+									<tr>
+						<th>2027</th>
+						<td class="tc">12</td>
+						<td>43.80</td>
+						<td>134.99</td>
+						<td>236.72</td>
+						<td>44.33</td>
+					</tr>
+									<tr>
+						<th>2028</th>
+						<td class="tc">6</td>
+						<td>192.67</td>
+						<td>249.00</td>
+						<td>376.02</td>
+						<td>60.02</td>
+					</tr>
+								</tbody>
+			</table>
+		</div>
+			</div>
+			<div class="xgcl_mod hover_ta" taname="f10_stock_slide_tgfx_jgpj">
+	   	   	    </a>
+	</div>
+		<p class="clearfix">Ԥݸݸоժ¼ã뱾ն޹ء</p>
+	</div>
+	<div class="ft"></div>
+</div>
+
+<!-- ҵԤ -->
+<div class="m_box z100" id="forecastdetail" stat="worth_forecastdetail">
+	<div class="hd">
+		<h2>ҵԤ</h2>
+	</div>
+	<div class="bd">
+	<div class='ybhctl hover_ta' taname="f10_stock_mktl_ybhc">
+			<p class="tip clearfix"> </p>
+		</div>
+		<table class="m_table m_hl posi_table">
+			<caption class="m_cap adjust"><span class="high"></span><span class="low"></span></caption>
+				<colgroup span="2" class="tc" />
+				<colgroup span="6" class="tr hl" />
+				<colgroup span="1" class="tc" />
+			<thead>
+				<tr>
+					<th rowspan="2"></th>
+					<th rowspan="2">оԱ</th>
+					<th colspan="3">Ԥ걨ÿ棨Ԫ</th>
+					<th colspan="3">Ԥ걨Ԫ</th>
+					<th rowspan="2"></th>
+				</tr>
+				<tr>
+					<th>2026Ԥ</th>
+					<th>2027Ԥ</th>
+					<th>2028Ԥ</th>
+					<th>2026Ԥ</th>
+					<th>2027Ԥ</th>
+					<th>2028Ԥ</th>
+				</tr>
+			</thead>
+			<tbody>
+							<tr>
+					<th class="tl">ʢ֤ȯ</th>
+					<td class="tl"></td>
+					<td><s class=""></s>4.11</td>
+					<td><s class="up"></s>12.92</td>
+					<td><s class="up"></s>20.53</td>
+					<td><s class=""></s>75.23</td>
+					<td><s class="up"></s>236.72</td>
+					<td><s class="up"></s>376.02</td>
+					<td>2026-06-17</td>
+				</tr>
+							<tr>
+					<th class="tl">Դ֤ȯ</th>
+					<td class="tl">ط</td>
+					<td><s class="up"></s>3.76</td>
+					<td><s class="up"></s>7.00</td>
+					<td><s class=""></s>10.52</td>
+					<td><s class="up"></s>68.78</td>
+					<td><s class="up"></s>128.24</td>
+					<td><s class="up"></s>192.67</td>
+					<td>2026-04-30</td>
+				</tr>
+							<tr>
+					<th class="tl">̩֤ȯ</th>
+					<td class="tl"></td>
+					<td><s class="up"></s>4.12</td>
+					<td><s class="up"></s>8.10</td>
+					<td><s class=""></s>12.95</td>
+					<td><s class="up"></s>75.38</td>
+					<td><s class="up"></s>148.35</td>
+					<td><s class="up"></s>237.18</td>
+					<td>2026-04-27</td>
+				</tr>
+							<tr>
+					<th class="tl">ԭ֤ȯ</th>
+					<td class="tl">޳</td>
+					<td><s class=""></s>3.95</td>
+					<td><s class=""></s>7.72</td>
+					<td><s class=""></s>11.87</td>
+					<td><s class=""></s>72.41</td>
+					<td><s class=""></s>141.39</td>
+					<td><s class=""></s>217.49</td>
+					<td>2026-04-27</td>
+				</tr>
+							<tr>
+					<th class="tl">֤ȯ</th>
+					<td class="tl">ܾ</td>
+					<td><s class="down"></s>1.80</td>
+					<td><s class="down"></s>2.39</td>
+					<td><s class=""></s>-</td>
+					<td><s class="down"></s>32.88</td>
+					<td><s class="down"></s>43.80</td>
+					<td><s class=""></s>-</td>
+					<td>2026-04-16</td>
+				</tr>
+							<tr>
+					<th class="tl">̩֤ȯ</th>
+					<td class="tl"></td>
+					<td><s class=""></s>4.06</td>
+					<td><s class=""></s>8.39</td>
+					<td><s class=""></s>-</td>
+					<td><s class=""></s>74.37</td>
+					<td><s class=""></s>153.62</td>
+					<td><s class=""></s>-</td>
+					<td>2026-03-31</td>
+				</tr>
+							<tr>
+					<th class="tl">֤ȯ</th>
+					<td class="tl">º</td>
+					<td><s class="up"></s>3.80</td>
+					<td><s class=""></s>6.80</td>
+					<td><s class=""></s>-</td>
+					<td><s class="up"></s>69.57</td>
+					<td><s class=""></s>124.55</td>
+					<td><s class=""></s>-</td>
+					<td>2026-03-30</td>
+				</tr>
+							<tr>
+					<th class="tl">̩֤ȯ</th>
+					<td class="tl">ۨ</td>
+					<td><s class="up"></s>4.06</td>
+					<td><s class="up"></s>8.39</td>
+					<td><s class=""></s>-</td>
+					<td><s class="up"></s>74.37</td>
+					<td><s class="up"></s>153.62</td>
+					<td><s class=""></s>-</td>
+					<td>2026-03-18</td>
+				</tr>
+						</tbody>
+		</table>
+		<table class="m_table m_hl ggintro ggintro_1 organData">
+			<caption class="m_cap adjust"><span class="table_cap">ϸָԤ</span></caption>
+			<thead>
+				<tr>
+					<th>Ԥָ</th>
+											<th>2023ʵֵ</th>											<th>2024ʵֵ</th>											<th>2025ʵֵ</th>											<th>Ԥ2026ƽ</th>											<th>Ԥ2027ƽ</th>											<th>Ԥ2028ƽ</th>									</tr>
+			</thead>
+			<tbody>
+												<tr>
+					<th class="tl">Ӫҵ(Ԫ)</th>
+					<td>
+													336.51											</td>
+					<td>
+													367.70						</td>
+					<td>
+													401.25						</td>
+															<td>
+						<div class="pr" style="z-index:199">
+							<span>									653.42								  </span>
+														<a class="m_more fr" targ="box_1" href="javascript:void(0)"></a>
+							<div class="tipbox box_1" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									692.19								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									652.82								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									619.34								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									669.84								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									500.54								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									685.99								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									720.62								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									685.99								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:198">
+							<span>									964.63								  </span>
+														<a class="m_more fr" targ="box_2" href="javascript:void(0)"></a>
+							<div class="tipbox box_2" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									1277.28								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									931.45								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									864.25								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									978.71								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									602.81								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									1055.59								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									951.33								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									1055.59								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:197">
+							<span>									1365.26								  </span>
+														<a class="m_more fr" targ="box_3" href="javascript:void(0)"></a>
+							<div class="tipbox box_3" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									1727.40								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									1284.98								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									1113.22								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									1335.43								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">Ӫҵ</th>
+					<td>
+													6.56%											</td>
+					<td>
+													9.27%						</td>
+					<td>
+													9.12%						</td>
+															<td>
+						<div class="pr" style="z-index:196">
+							<span>									62.84%								  </span>
+														<a class="m_more fr" targ="box_4" href="javascript:void(0)"></a>
+							<div class="tipbox box_4" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									72.51%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									62.70%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									54.35%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									66.94%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									24.75%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									70.96%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									79.59%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									70.96%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:195">
+							<span>									46.63%								  </span>
+														<a class="m_more fr" targ="box_5" href="javascript:void(0)"></a>
+							<div class="tipbox box_5" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									84.53%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									42.68%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									39.54%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									46.11%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									20.43%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									53.88%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									32.02%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									53.88%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:194">
+							<span>									34.61%								  </span>
+														<a class="m_more fr" targ="box_6" href="javascript:void(0)"></a>
+							<div class="tipbox box_6" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									35.24%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									37.95%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									28.81%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									36.45%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">ܶ(Ԫ)</th>
+					<td>
+													21.91											</td>
+					<td>
+													14.68						</td>
+					<td>
+													16.90						</td>
+															<td>
+						<div class="pr" style="z-index:193">
+							<span>									80.29								  </span>
+														<a class="m_more fr" targ="box_7" href="javascript:void(0)"></a>
+							<div class="tipbox box_7" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									88.64								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									82.57								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									87.45								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									86.09								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									39.77								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									86.46								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									84.86								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									86.46								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:192">
+							<span>									167.97								  </span>
+														<a class="m_more fr" targ="box_8" href="javascript:void(0)"></a>
+							<div class="tipbox box_8" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									279.05								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									153.45								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									170.82								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									173.37								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									53.08								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									178.59								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									156.80								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									178.59								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:191">
+							<span>									303.12								  </span>
+														<a class="m_more fr" targ="box_9" href="javascript:void(0)"></a>
+							<div class="tipbox box_9" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									443.26								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									229.23								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									262.82								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									277.17								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">(Ԫ)</th>
+					<td>
+													19.65											</td>
+					<td>
+													10.86						</td>
+					<td>
+													13.86						</td>
+															<td>
+						<div class="pr" style="z-index:190">
+							<span>									67.18								  </span>
+														<a class="m_more fr" targ="box_10" href="javascript:void(0)"></a>
+							<div class="tipbox box_10" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									75.23								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									68.78								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									72.41								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									75.38								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									32.88								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									74.37								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									69.57								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									74.37								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:189">
+							<span>									134.99								  </span>
+														<a class="m_more fr" targ="box_11" href="javascript:void(0)"></a>
+							<div class="tipbox box_11" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									236.72								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									128.24								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									141.39								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									148.35								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									43.80								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									153.62								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									124.55								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									153.62								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:188">
+							<span>									249.00								  </span>
+														<a class="m_more fr" targ="box_12" href="javascript:void(0)"></a>
+							<div class="tipbox box_12" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									376.02								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									192.67								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									217.49								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									237.18								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl"></th>
+					<td>
+													-17.05%											</td>
+					<td>
+													-44.74%						</td>
+					<td>
+													27.67%						</td>
+															<td>
+						<div class="pr" style="z-index:187">
+							<span>									389.68%								  </span>
+														<a class="m_more fr" targ="box_13" href="javascript:void(0)"></a>
+							<div class="tipbox box_13" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									442.76%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									396.22%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									422.41%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									443.84%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									137.22%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									436.55%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									401.92%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									436.55%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:186">
+							<span>									102.32%								  </span>
+														<a class="m_more fr" targ="box_14" href="javascript:void(0)"></a>
+							<div class="tipbox box_14" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									214.66%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									86.45%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									95.26%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									96.80%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									33.21%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									106.56%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									79.03%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									106.56%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:185">
+							<span>									55.70%								  </span>
+														<a class="m_more fr" targ="box_15" href="javascript:void(0)"></a>
+							<div class="tipbox box_15" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									58.85%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									50.24%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									53.82%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									59.88%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">ÿֽ(Ԫ)</th>
+					<td>
+													3.02											</td>
+					<td>
+						2.92</td>
+					<td>
+						2.90</td>
+															<td>
+						<div class="pr" style="z-index:184">
+							<span>4.04</span>
+														<a class="m_more fr" targ="box_16" href="javascript:void(0)"></a>
+							<div class="tipbox box_16" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												4.65</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												1.69</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												5.48</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												4.44</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+												4.41</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												3.81</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+												3.81</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:183">
+							<span>8.20</span>
+														<a class="m_more fr" targ="box_17" href="javascript:void(0)"></a>
+							<div class="tipbox box_17" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												13.13</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												9.96</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												8.62</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												7.76</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+												1.69</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												8.13</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+												8.13</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:182">
+							<span>14.02</span>
+														<a class="m_more fr" targ="box_18" href="javascript:void(0)"></a>
+							<div class="tipbox box_18" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												21.20</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												9.10</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												13.65</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												12.13</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">ÿɾʲ(Ԫ)</th>
+					<td>
+													10.61											</td>
+					<td>
+						11.04</td>
+					<td>
+						11.72</td>
+															<td>
+						<div class="pr" style="z-index:181">
+							<span>15.25</span>
+														<a class="m_more fr" targ="box_19" href="javascript:void(0)"></a>
+							<div class="tipbox box_19" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												15.74</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												15.47</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												15.66</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												15.76</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+												13.35</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												15.06</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+												15.90</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+												15.06</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:180">
+							<span>22.84</span>
+														<a class="m_more fr" targ="box_20" href="javascript:void(0)"></a>
+							<div class="tipbox box_20" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												28.66</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												22.41</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												23.38</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												23.66</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+												15.59</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												23.38</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+												22.23</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+												23.38</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:179">
+							<span>38.43</span>
+														<a class="m_more fr" targ="box_21" href="javascript:void(0)"></a>
+							<div class="tipbox box_21" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												49.19</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												32.88</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												35.26</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												36.41</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">ʲ</th>
+					<td>
+													11.38%											</td>
+					<td>
+													5.89%						</td>
+					<td>
+													6.89%						</td>
+															<td>
+						<div class="pr" style="z-index:178">
+							<span>									25.10%								  </span>
+														<a class="m_more fr" targ="box_22" href="javascript:void(0)"></a>
+							<div class="tipbox box_22" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									26.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									24.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									25.24%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									25.90%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									13.40%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									31.07%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									23.89%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									31.07%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:177">
+							<span>									34.55%								  </span>
+														<a class="m_more fr" targ="box_23" href="javascript:void(0)"></a>
+							<div class="tipbox box_23" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									45.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									31.10%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									33.01%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									34.00%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+																									15.30%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									43.64%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+																									30.59%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+																									43.64%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:176">
+							<span>									35.64%								  </span>
+														<a class="m_more fr" targ="box_24" href="javascript:void(0)"></a>
+							<div class="tipbox box_24" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									41.70%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+																									31.90%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+																									33.68%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+																									35.30%								  				</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+								<tr>
+					<th class="tl">ӯ(̬)</th>
+					<td>
+													210.70											</td>
+					<td>
+						378.59</td>
+					<td>
+						306.71</td>
+															<td>
+						<div class="pr" style="z-index:175">
+							<span>70.16</span>
+														<a class="m_more fr" targ="box_25" href="javascript:void(0)"></a>
+							<div class="tipbox box_25" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												58.95</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												64.44</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												61.34</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												58.81</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+												134.61</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												59.68</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+												63.76</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+												59.68</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:174">
+							<span>38.68</span>
+														<a class="m_more fr" targ="box_26" href="javascript:void(0)"></a>
+							<div class="tipbox box_26" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												18.75</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												34.61</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												31.39</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												29.91</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>ܾ</td>
+												<td class="tr">
+												101.38</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												28.88</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>֤ȯ</td>
+												<td>º</td>
+												<td class="tr">
+												35.63</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td>ۨ</td>
+												<td class="tr">
+												28.88</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+															<td>
+						<div class="pr" style="z-index:173">
+							<span>18.49</span>
+														<a class="m_more fr" targ="box_27" href="javascript:void(0)"></a>
+							<div class="tipbox box_27" style="display:none;">
+								<div class="tipbox_hd">
+									<h4>Ԥһ</h4>
+								</div>
+								<div class="tipbox_bd p0_5">
+									<table class="m_table" style="width:350px">
+										<thead>
+										<tr>
+											<th class="tc">о</th>
+											<th class="tc">оԱ</th>
+											<th class="tc">Ԥֵ</th>
+											<th class="tc"></th>
+										</tr>
+										</thead>
+										<tbody>
+										    											<tr>
+												<td>ʢ֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												11.80</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>Դ֤ȯ</td>
+												<td>ط</td>
+												<td class="tr">
+												23.03</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>ԭ֤ȯ</td>
+												<td>޳</td>
+												<td class="tr">
+												20.41</td>
+												<td class="tr">-</td>
+											</tr>
+																						<tr>
+												<td>̩֤ȯ</td>
+												<td></td>
+												<td class="tr">
+												18.71</td>
+												<td class="tr">-</td>
+											</tr>
+																					</tbody>
+									</table>
+								</div>
+								<div class="arrow"></div>
+							</div>
+													</div>
+					</td>
+									</tr>
+							</tbody>
+		</table>
+        <p class="clearfix">Ԥݸݸоժ¼ã뱾ն޹ء</p>
+	</div>
+	<div class="ft"></div>
+</div>
+
+<!-- б -->
+<div class="m_box" id="stockreport" stat="worth_stockreport">
+	<div class="hd">
+		<h2>б</h2>
+		<a class="rankpart popper" href="javascript:void(0)" targ="box_rhpj">Ͷλֵ</a><!-- ʱ.rp_tipboxʾ-->
+	</div>
+	<div class="bd m_dlbox">
+		<div class="field_date1 profit-forecast-time">
+			<div class="m_select">
+				<div class="text" id="profit-forecast-timeselect"><s></s><span id="profit-forecast-time-cur">6</span></div>
+				<ul style="display: none" class="list" id="profit-forecast-timeselect-list">
+					<li><a tag="1" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">1</a></li>
+					<li><a tag="2" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">2</a></li>
+					<li><a tag="3" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">3</a></li>
+					<li><a tag="6" class="tableTab" href="javascript:void(0);" onclick="TA.log({'id':'F10new_ylycpjsj','nj':1})">6</a></li>
+				</ul>
+			</div>
+			ʱ䷶Χ
+		</div>
+		
+		<a href="./news.html#report" title="" class="profit-forecast-more-fr" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">&gt;&gt;</a>
+		<div class="profit-forecast-tab m_tab">
+			<ul class="fl" id="profit-forecast-tab-ul">
+				<li class="cur" id="profit-forecast-tab-li-0"><a href="javascript:void(0);" id="profit-forecast-tab-0" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">(<span id="profit-forecast-tab-count-0">9</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-1"><a href="javascript:void(0);" id="profit-forecast-tab-1" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">(<span id="profit-forecast-tab-count-1">1</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-2"><a href="javascript:void(0);" id="profit-forecast-tab-2" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">(<span id="profit-forecast-tab-count-2">0</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-3"><a href="javascript:void(0);" id="profit-forecast-tab-3" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">(<span id="profit-forecast-tab-count-3">0</span>)</a></li>
+				<li class="" id="profit-forecast-tab-li-4"><a href="javascript:void(0);" id="profit-forecast-tab-4" class="operateTab" onclick="TA.log({'id':'F10new_ylycpjfl','nj':1})">(<span id="profit-forecast-tab-count-4">0</span>)</a></li>
+			</ul>
+		</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-0" style="display:block">
+																	<dl class="hover">
+				<dt>
+					<span class="subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<span class="title">ʢ֤ȯ12ԪоƬ+ģ飬AIټ</span>
+					<span class="date">2026-06-17</span>
+				</dt>
+				<dd>ժҪӯԤͶʽ飺˾AIҵչƶPCBģ/оƬʾȺҵAIҵںϣҵǱͷţ򿪸ĳɳռ䡣Ԥƹ˾2026/2027/2028ֱʵӪҵ692/1277/1727Ԫͬ73%/85%/35%ʵֹĸ75/237/376Ԫͬ443%/215%/59%˾ǰɼ۶Ӧ2026/2027/2028PEֱΪ61/19/12Xά֡롱					<a class="profit-forecast-more check_all" title="鿴бȫ" href="javascript:void(0)">鿴ȫ&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);"></a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">12ԪоƬ+ģ飬AIټ</h1>
+							<h2 class="sub_cont_title">ʱ䣺2026-06-17 Դʢ֤ȯ</h2>
+							<div class="sub_cont">
+								˼Ͷ12ԪʵʩоƬģĿЧȱڡ˾ͨӹ˾˼缰ӹ˾ڳݵȵʵʩоƬģĿĿͶʶΪ12ԪԴΪ˾Գʽ˼йоƬģĲܹģ޷ҵοͻͨͶʣ˼߶˹оƬģܣοͻAIغĲƷϵгڲɹ󣬽һŻ˾Ʒṹӯ<br>߶˹оƬȱ󣬹ڿAIԴӳ١ĵļҪƶͨżӿ800G1.6TԽ2026꣬800Gģģ1.6Tģ鿪ԪꡣLightcountingԤ⣬2026ȫ800G1.6Tģϼгģ146Ԫ3.2TģԤƴ2028𲽷LumentumFY26Q3ҵϱʾEMLȱѴһȵ25%-30%30%Ѿ2028꣬оƬĶȱźǿҡȫEMLܽϼУҪLumentumCoherent⡢סѡͨ˼ͷ߶˲Ʒȱڳ󣬽ٹ̡<br>˼оƬ+ģ鴹ֱһ廯ϡȱƳ͹ԡ202510£˼ʽĿǰӪȲƽ2025/26Q1˼ֱΪ14/21Ԫռ3.6%/16.0%ֱΪ3.1/5.9Ԫռ22.7%/52.9%ͻ㣬˾ģҵҵٴǰ߶˹оƬӦȱռ˼߱оƬIDMмΪȫΪ߱100G200G߶˹оƬĳ̣CWlaserʵֹģ400GEMLٹоƬзĿȲƽģ鷽棬˾Ʒ10G1.6Tȫʣƽ3.2TϹģз˾ģ麣ؽȲƽͻ<br>߶PCBάָλ˾AIPCBܡ˾߶PCBĿǰϳĿ˳Ͷ½ܰƻȲء˾Ͷ볬10Ԫ߶˲ܣMultekѾ߱78㼰ϳ߶7׺HDIPCBרҵ˾ĶPCBHDIóM8/9ϣʵָߴ224GbpsĴʣGPUAIٿAIĽĸҪ󡣹˾ƾMultekǰֲƣӭҵ<br>ӯԤͶʽ飺˾AIҵչƶPCBģ/оƬʾȺҵAIҵںϣҵǱͷţ򿪸ĳɳռ䡣Ԥƹ˾2026/2027/2028ֱʵӪҵ692/1277/1727Ԫͬ73%/85%/35%ʵֹĸ75/237/376Ԫͬ443%/215%/59%˾ǰɼ۶Ӧ2026/2027/2028PEֱΪ61/19/12Xά֡롱<br>ʾ󲻼ԤڣзչԤڣгҡ							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<span class="title">֤ȯ˾棺ҵյģ+PCB˫</span>
+					<span class="date">2026-04-30</span>
+				</dt>
+				<dd>ժҪӯԤͶʽ飺˾PCBģAIĸ߾δAI󣬳ɳռԤƹ˾2026-2028ֱʵֹĸ74.5150.1237.7Ԫͬȷֱ437.2%101.6%58.4%ӦPEֱΪ45.322.514.2ά֡ǿƼ					<a class="profit-forecast-more check_all" title="鿴бȫ" href="javascript:void(0)">鿴ȫ&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);"></a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">˾棺ҵյģ+PCB˫</h1>
+							<h2 class="sub_cont_title">ʱ䣺2026-04-30 Դ֤ȯ</h2>
+							<div class="sub_cont">
+								¼˾2025걨2026һ2025깫˾ʵӪ401.3Ԫͬ9.1%ʵֹĸ13.9Ԫͬ27.7%ʵë14.1%۾3.5%26Q1˾ʵӪ131.4Ԫͬ52.7%ʵֹĸ11.1Ԫͬȴ143.5%ʵֿ۷ǹĸ10.6Ԫͬȴ167.0%ʵë19.3%ͬ5.2pct۾8.6%ͬ3.3pct<br>ҵȲӯṹŻ25깫˾ҵȶơ˾ҵӵ·ҵʵӪ256.2Ԫͬ3.3%AIնˡ۵ȲƷĴFPC뵥ֵ˾ȫڶMFLEX뼼ΪͳҵṩȽֽ֧šͬʱ26Q1˾ҵʵֿԽʽAI󱬷Ĺģ鼰PCBҵ˾ͨ˼GMDʵЭͬЧӦͬɣ˾۷Ǿپͳҵ񱣳ȶӯṹŻ<br>˼߱оƬ+ģ顱һ廯ƣģ߾˾չ˼ģҵҵ࿴CSP̳ʱ֧ͶAIѵȺͨԹģٶָAIӡͻơ롰Ⱥģ׶ΣAIڵ㻥ܹݽ⴫ͻƿ͹ԡҵ湩࿴EMLоƬȺԪȱγԡ֣ȶӦͻͻȼĹ˾ݡӹ˾濴˼ȫΪĹģ+оƬһ廯ֵҵ֮һIDMģʽʵֺĻɿأǹ߱100G200GоƬҵǰ߶˹оƬӦȱȽϸߵҵ£˼һʹڲܵͽӦϾ߱ͻơͬʱ˾ڻз400GоƬΪһʲƷüڲ棬˼ͬӿоƬ͹ģܽ裬ЧƥοͻҵơΪ˼似+ͻ+ӦƳģҵ߾<br>߶PCBܣPCBAIͨѶʩΪPCBҵģŵĺ档AIӲУҵת߶ܶȻ壬˾ƾMultek߱78㼰ϳ߶7׺HDIPCBרҵͶ볬10Ԫ߶˲PCBΪ˾ƾļǰհԵؽͶ룬׼λAIʵִFPCͷ߶PCBȫƷ๩Ӧ̿ԽܴPCBҵҵ<br>ӯԤͶʽ飺˾PCBģAIĸ߾δAI󣬳ɳռԤƹ˾2026-2028ֱʵֹĸ74.5150.1237.7Ԫͬȷֱ437.2%101.6%58.4%ӦPEֱΪ45.322.514.2ά֡ǿƼ<br>ʾAI󲻼ԤڣҵӾ磻䲻Ԥڵȡ							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<span class="title">Դ֤ȯ˾Ϣ±棺2026Q1ҵģ+AIPCB򿪳ɳռ</span>
+					<span class="date">2026-04-30</span>
+				</dt>
+				<dd>ժҪ˾ڷ2025걨2026һ12025꣬˾ʵӪ401.25Ԫͬ+9.12%ĸ13.86Ԫͬ+27.67%۷ǹĸ9.66Ԫͬ+7.50%ë14.09%ͬ+0.07pcts۾3.47%ͬ+0.52pcts22026һȣ˾ʵӪ131.38Ԫͬ+52.72%+0.64%ĸ11.10Ԫͬ+143.47%+581.80%۷ǹĸ10.59Ԫͬ+166.99%+1107.72%ë19.33%ͬ+5.19pcts+4.62pcts8.56%ͬ+3.25pcts+7.26pcts3ڴͳҵȽӪĻϣ˾ͨչ˼ֹģҵץסҵչҵͷͻ2026Q1ҵʵָΪȫΨһ߱PCBоƬԼģзȫ̵ҵ˾ͨģ+AIPCB˫棬δҵϵ˾2026/2027ӯԤ⣨ĸԭֵΪ43.52/59.60Ԫ2028ӯԤ⣬Ԥƹ˾2026/2027/2028ĸΪ68.78/128.24/192.67Ԫǰɼ۶ӦPEΪ49.7/26.7/17.8ά֡롱					<a class="profit-forecast-more check_all" title="鿴бȫ" href="javascript:void(0)">鿴ȫ&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);"></a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">˾Ϣ±棺2026Q1ҵģ+AIPCB򿪳ɳռ</h1>
+							<h2 class="sub_cont_title">ʱ䣺2026-04-30 ԴԴ֤ȯ</h2>
+							<div class="sub_cont">
+								2026Q1ҵģ+AIPCB³ɳռ䣬ά֡롱<br>˾ڷ2025걨2026һ12025꣬˾ʵӪ401.25Ԫͬ+9.12%ĸ13.86Ԫͬ+27.67%۷ǹĸ9.66Ԫͬ+7.50%ë14.09%ͬ+0.07pcts۾3.47%ͬ+0.52pcts22026һȣ˾ʵӪ131.38Ԫͬ+52.72%+0.64%ĸ11.10Ԫͬ+143.47%+581.80%۷ǹĸ10.59Ԫͬ+166.99%+1107.72%ë19.33%ͬ+5.19pcts+4.62pcts8.56%ͬ+3.25pcts+7.26pcts3<br>ڴͳҵȽӪĻϣ˾ͨչ˼ֹģҵץסҵչҵͷͻ2026Q1ҵʵָΪȫΨһ߱PCBоƬԼģзȫ̵ҵ˾ͨģ+AIPCB˫棬δҵϵ˾2026/2027ӯԤ⣨ĸԭֵΪ43.52/59.60Ԫ2028ӯԤ⣬Ԥƹ˾2026/2027/2028ĸΪ68.78/128.24/192.67Ԫǰɼ۶ӦPEΪ49.7/26.7/17.8ά֡롱<br>оƬзͶ룬ٹģ˼һ廯͹<br>2025꣬˾ͨչ˼ģоƬ+ģ顱ֱһ廯IDMӪģʽзˣ׻ĵ׵ȫзϵʵ100G/200GоƬCWLaserĹģƷˣ800G1.6TٹģʵгݶȲ400GEMLоƬз˳ƽ3.2TһģзδAIȺ⻥гǧڹģ˾ƾ˼ֱһ廯ƣȲͷŹоƬģܣģҵ<br>FPCȹ̣PCB߶˲ƷAIPCBδɳռ<br>ѵӶˣAIն۵ȴµFPC˫˾ȫڶMFLEXƣȽֽAIӲˣƶ߶HDIб˾ƾMultekļƣѾ߱78㼰ϳ߶7׺HDIͶ볬10ԪܣAIPCBչδ˾и߶˲ƥAIƶAIPCBƷ<br>ʾ߷;ҵӾ;˾ҵ񲻼Ԥڷա							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<span class="title">ʢ֤ȯоƬAI PCBЭͬ쳵</span>
+					<span class="date">2026-04-24</span>
+				</dt>
+				<dd>ժҪӯԤͶʽ飺˾ȫٻݴ𡰹ģ飨оƬ+AIPCBAIӲƷ֣ҵǱͷţ򿪸ĳɳռ䡣Ԥƹ˾2026/2027/2028ֱʵӪҵ692/976/1281Ԫͬ73%/41%/31%ʵֹĸ75/151/242Ԫͬ443%/101%/60%˾ǰɼ۶Ӧ2026/2027/2028PEֱΪ45/23/14Xά֡롱					<a class="profit-forecast-more check_all" title="鿴бȫ" href="javascript:void(0)">鿴ȫ&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);"></a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">оƬAI PCBЭͬ쳵</h1>
+							<h2 class="sub_cont_title">ʱ䣺2026-04-24 Դʢ֤ȯ</h2>
+							<div class="sub_cont">
+								˾2025걨2025꣬ɽʵӪ401.25Ԫͬ9.12%ʵֹĸ13.86Ԫͬ27.67%ʵֿ۷ǹĸ9.66Ԫͬ7.50%ë14.09%3.47%ʵͬ25Q4ʵ130.54Ԫͬ26.69%ĸ1.63Ԫͬ790.16%˾ŻͳҵĲƷͻṹͨAIӲٸ߶²ͷš<br>26Q1ҵԤ棺Ԥʵֹĸ10.0-11.5Ԫͬ119.36%-152.27%Ԥƿ۷ǹĸ9.6-10.8Ԫͬ141.97%-172.21%˾ҵյ֣ʵģ飨оƬ+AIPCBƷЭͬƣڹͨ򣬹˾оƬܰ滮ͷţ800G1.6TٹģгݶȲAIPCB»˳Ͷ߶塢HDIȸ߶PCBܹ<br>˼оƬ+ģһ廯ľ͹ԡ2025꣬˾ģҵʵ14.36Ԫռ3.58%ëΪ36.7%LightcountingԤ⣬2026ȫ800G1.6Tģϼгģ146Ԫ3.2TģԤƴ2028𲽷ǰ߶˹оƬӦȱռ˼߱оƬIDMмΪȫΪ߱100G200G߶˹оƬĳ̣CWlaserʵֹģ400GEMLٹоƬзĿȲƽģ鷽棬˾Ʒ10G1.6Tȫʣƽ3.2TϹģзΪ˾µĺ<br>AIٹоƬȱڳAIԴӳ١ĵļҪƶͨżӿ800G1.6TԽ2026꣬800Gģģ1.6Tģ鿪ԪꡣLumentum20252˵200GEMLӦ󣬵202511ȱڴ20%25%-30%ٵ20264±ʾѾ2028꣬оƬĶȱźǿҡȫEMLܽϼУҪLumentumCoherent⡢סѡͨ˼ͷ߶˲Ʒȱڳ󣬽ٹ̡<br>PCBҵ̱˾FPCͷ׸߶PCBӦ̡2025꣬˾ӵ·ҵʵ256.20Ԫͬ3.3%ռ63.9%ëΪ17.6%<br>1FPC˲AI£ͷλѵAIնˡ۵ȲƷļ³ƽFPCASPȲ˾ƾȫڶMFLEXܹģȹռҵƵλΪͳҵṩȽֽ֧š<br>2AIPCBHDI͸߶PCBܡ˾Ͷ볬10Ԫ߶˲ܣMultekѾ߱78㼰ϳ߶7׺HDIPCBרҵ˾ĶPCBHDIóM8/9ϣʵָߴ224GbpsĴʣGPUAIٿAIĽĸҪ󡣹˾ƾMultekǰֲƣӭҵ<br>ӯԤͶʽ飺˾ȫٻݴ𡰹ģ飨оƬ+AIPCBAIӲƷ֣ҵǱͷţ򿪸ĳɳռ䡣Ԥƹ˾2026/2027/2028ֱʵӪҵ692/976/1281Ԫͬ73%/41%/31%ʵֹĸ75/151/242Ԫͬ443%/101%/60%˾ǰɼ۶Ӧ2026/2027/2028PEֱΪ45/23/14Xά롱<br>ʾ󲻼ԤڣзչԤڣгҡ							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+															<dl class="hover">
+				<dt>
+					<span class="subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<span class="title">֤ȯ2026һԤҵԤڶ֣ͨŴ³ɳ</span>
+					<span class="date">2026-04-17</span>
+				</dt>
+				<dd>ժҪͶʽ飺˾·ҵȻȹ̣δδAIֻ+۵²ƷȻгɳռ䣬ҵӵTͻ𲽽ջڣͳLEDҵֵװAIҵָͬ߶PCB͹ͨҵµĳɳߡǵ25LEDҵԤڡҵ񲻼Ԥڡ̩ͷŲԤԼ2627˼ģ͹оƬҵ˳LEDҵأǵ25-27ҵԤ⣬25-27Ϊ13.29/80.22/159.25ԪǰֵΪ30.18/50.14/60.32ԪۺϲοҵɶԱȹ˾Լ˼ҵͷŽ࣬л27ֵ蹫˾202723xPEӦĿΪ199.87Ԫά֡ǿơ					<a class="profit-forecast-more check_all" title="鿴бȫ" href="javascript:void(0)">鿴ȫ&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);"></a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">2026һԤҵԤڶ֣ͨŴ³ɳ</h1>
+							<h2 class="sub_cont_title">ʱ䣺2026-04-17 Դ֤ȯ</h2>
+							<div class="sub_cont">
+								<br>˾Ԥ26Q1ʵֹĸ10-11.5Ԫͬ+119.36%-152.27%۷ǹĸ9.6-10.8Ԫͬ+141.97%-172.21%<br>ۣ<br>ҵԽʽӯṹʱ䡣˾Q1ҵѵӡͨѶPCBȶ˼Ϊ˾µ㣬AIսƫơ<br>IDMģʽоƬԹ߻Ǻӡ˼Ϊȫͨģҵͷ̣ĵľڴֱһ廯IDMģʽҵȸ˴ӹоƬ졢ģװȫ̻ڡڵǰAI󱬷800GϸٹоƬȱҶԻĸ£һΪؼڹģ黷ڽΪ࣬оƬĲܽͨҪ1ңұ뾭3ϸͻ֤˼ͻĹоƬԲ˹ӦȶɱɿأΪڼҵҵȷ˽ǿĿλơĿǰ˼Ӧ400G800GȸٹģѾʵ˹ģһϣ˾ǰհԵزȡEMLⷽ˫첢еĲԣ߶һAIĶԸ뽵ĵļ׷<br>Ӳ干ϣPCBҵһֳɳӲˣ˳ӦAI͸ԸܶȻźŴPCBMultekͶ벻10Ԫ߶˲ܣ˾ٽǿܹ˾ͻƸ߶˺ϺţȷAIʩӦĿλƣˣܺĴͻ20۵ذնƷܼĴ߻FPCֵӭյ㣬˲ഴҵһָ߾ͨ<br>Ͷʽ飺˾·ҵȻȹ̣δδAIֻ+۵²ƷȻгɳռ䣬ҵӵTͻ𲽽ջڣͳLEDҵֵװAIҵָͬ߶PCB͹ͨҵµĳɳߡǵ25LEDҵԤڡҵ񲻼Ԥڡ̩ͷŲԤԼ2627˼ģ͹оƬҵ˳LEDҵأǵ25-27ҵԤ⣬25-27Ϊ13.29/80.22/159.25ԪǰֵΪ30.18/50.14/60.32ԪۺϲοҵɶԱȹ˾Լ˼ҵͷŽ࣬л27ֵ蹫˾202723xPEӦĿΪ199.87Ԫά֡ǿơ<br>ʾģͻ벻ԤڣоƬԤڣоƬԤڣѵӲƷ۸񲻼ԤڣPCBͷźͿͻ벻ԤڣԭϡʴҵӾ磬ȫó׳ͻӾ硣							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+																																																		</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-1" style="display:none">
+																	<dl class="hover">
+				<dt>
+					<span class="subtitle">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+					<span class="title">֤ȯԪֿ³</span>
+					<span class="date">2026-04-16</span>
+				</dt>
+				<dd>ժҪͶʽ飺˾ʵͳҵƶPCBܽṹģҵʵȽԤ⹫˾2025-2027ĸֱΪ13.29/32.88/43.8ԪPBֱΪ12.5/10.9/9.4;ά֡֡					<a class="profit-forecast-more check_all" title="鿴бȫ" href="javascript:void(0)">鿴ȫ&gt;&gt;</a>
+					<div class="the_all hidden">
+						<span class="close"><a href="javascript:void(0);"></a></span>
+						<div class="cont_wraper">
+							<h1 class="cont_title">Ԫֿ³</h1>
+							<h2 class="sub_cont_title">ʱ䣺2026-04-16 Դ֤ȯ</h2>
+							<div class="sub_cont">
+								ͶҪ<br>˾ȹ̴ͳҵĻ̣PCBܽṹ͹ģҵȶݹ˾2025ҵ챨Ԥ2025깫˾ʵӪҵ401.25Ԫͬ9.12%ĸ13.3Ԫͬ22.43%۷ǹĸ9.6Ԫͬ6.8%˾2025ɷGMD˾չһչⲼֲʵҵĿͻݹ˾2026Q1ҵԤ棬üȹ˾ĸԤΪ10-11.5ԪԤͬ119.36%-152.27%۷ǹĸԤΪ9.6-10.8ԪԤͬ141.97%-172.21%У2026Q1˾ͳҵ񱣳ȶѵӡͨѶҵӡˢ·塢ģȶ˼ģƷϵ¿ͻΪ˾µĺ㣻˾˼GMDַЭͬЧӦ˼Ӫպ<br>˾ƾҵһ廯ƣΪȫȵĵӵ·ԴۺϷӦ̡ģ㣬˾·壨FPCȫڶPCBȫھ򣬹˾ۺϹģϴרҵӦ֮һƷԴͨ豸ؽṹƷҪȫ֪Դͨ豸̣ҵǿڴʾģ顢LEDʾ򣬹˾ǹڴʾģLEDʾģϴҵ֮һԴιӦУ˾ΪԴͻṩPCBFPCʾԽṹȶֲƷۺϽĹӦ̡<br>Ͷʽ飺˾ʵͳҵƶPCBܽṹģҵʵȽԤ⹫˾2025-2027ĸֱΪ13.29/32.88/43.8ԪPBֱΪ12.5/10.9/9.4;ά֡֡<br>ʾ۾òȷԡҵӾķա²ƷչԤڵȡ							</div>								
+						</div>
+					</div>
+				</dd>
+			</dl>
+														</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-2" style="display:none">
+								<dl class="hover profit-forecast-box-none">
+					<span>6</span>δ<span></span>о棬
+					<a href="./news.html#report" class="profit-forecast-more-1" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">о&gt;&gt;</a>
+			</dl>
+					</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-3" style="display:none">
+								<dl class="hover profit-forecast-box-none">
+					<span>6</span>δ<span></span>о棬
+					<a href="./news.html#report" class="profit-forecast-more-1" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">о&gt;&gt;</a>
+			</dl>
+					</div>
+								<div class="profit-forecast-box" id="profit-forecast-box-4" style="display:none">
+								<dl class="hover profit-forecast-box-none">
+					<span>6</span>δ<span></span>о棬
+					<a href="./news.html#report" class="profit-forecast-more-1" onclick="TA.log({'id':'F10new_ylycgdyb','nj':1})">о&gt;&gt;</a>
+			</dl>
+					</div>
+						<p class="clearfix">ݸоժ¼ãն˵</p>
+	</div>
+	<div class="ft"></div>
+	<div style="z-index:201" class="rp_tipbox box_rhpj" style="display:none">
+		<table class="m_table">
+			<thead>
+				<tr>
+					<th width="25%"></th>
+					<th>˵</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>˾</th>
+					<td>淢պ12ڣ˾ǵͬڻ300ָǵΪ׼</td>
+				</tr>
+				<tr>
+					<th> / </th>
+					<td>ԴǷ10%</td>
+				</tr>
+				<tr>
+					<th> /Ƽ</th>
+					<td>ԴǷ5%10%֮</td>
+				</tr>
+				<tr>
+					<th> / </th>
+					<td>ԴǷ-5%5%֮</td>
+				</tr>
+				<tr>
+					<th> / </th>
+					<td>ԴǷС-5%</td>
+				</tr>
+			</tbody>
+		</table>
+		<div>עΪһ㻮׼򣬾οӦо档</div>
+		<s class="arrow"></s>
+	</div>
+</div>
+
+</div>
+		<!-- F10 Content End -->
+<!-- F10 Footer Start -->
+		<div class="footer">
+		<div class="links">
+		    <a href="http://stockpage.10jqka.com.cn" target="_blank" onclick="clickTalogStat('jptostock');">ͬ˳ҳ</a> |
+		    <a href="http://moni.10jqka.com.cn/" target="_blank">ģ⳴</a> |
+		    <a href="http://www.10jqka.com.cn/school/" target="_blank">ѧУ</a> |
+		    <a href="http://mobile.10jqka.com.cn/?req=pcf10" target="_blank">ֻ</a>|
+		    <a target="_blank" href=" http://wpa.qq.com/msgrd?v=3&amp;uin=2270716061&amp;site=qq&amp;menu=yes">ϵ</a>
+		</div>
+		<p>:Ϣͬ˳оṩοͬ˳о󵫲֤ݵȫ׼ȷд©йָ֤й˾Ϣ¶ýΪ׼ͬ˳оĲȫ򲿷ݶµӯеκΡû˶Էʹóеաͬ˳Դ˲κ͵ĵͬ˳һûҪҲ񲻻жϣԷļʱԣȫԣͬ˳ͬ˳ϵõκϢ׽̲ͬ˳ṩİͬ˳Ƶ£ݣκεͶʽ飬û鿴ЩеκΪɵķպͽиͬ˳޹ء </p>
+		</div>
+<!-- F10 Footer End -->
+    </div>
+    <div class="r-go-top" id="r-go-top"></div>
+</body>
+<input id="stockCode" type="hidden" value="002384">
+<input id="F001" type="hidden" value="A">
+<input id="F002" type="hidden" value="֤ȯ">
+<input id="F004" type="hidden" value="1">
+<input id="stockName" type="hidden" value="ɽ">
+<input id="marketId" type="hidden" value="33">
+<input id="cateName"  type="hidden" value="ӯԤ">
+<input id="catecode"  type="hidden" value="worth">
+<input id="fcatecode"  type="hidden" value="worth">
+<input id="sid" type="hidden" value="F10new_jzfx">
+<input id="fid" type="hidden" value="F10,F10master,F10main,F10new">
+<input id="qid" type="hidden" value="14585137">
+<div style="display:none" id="wordraddom">
+</div>
+<!-- title  -->
+	<div class="titleBox" id="altlayer" style="display:none; width: 260px;">
+		<div class="tipbox_bd p0_5"><span style="line-height:24px;" class="tip f14">
+		<span id="altlayer_content"></span>
+		</div>
+	</div>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/common/cefapi/1.5.5/cefApi.min.js;js/basic/stock/newPcJs/common.js"></script>
+<script>
+try {
+    external.createObject('Util');
+    //document.getElementById("updownchange").style.display = "block";
+} catch (e) {}
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/jquery-1.8.3.min.js;js/basic/common/inheritance.js;js/basic/stock/popWin.js;js/basic/common/Model_v2.js;js/basic/stock/20200604153837/index.js;js/basic/stock/20200604153837/po_v2.js;js/basic/stock/scrollBind.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/common_v3-2-a58b25.js"></script>
+<!--[if IE ]><script type="text/javascript"  crossorigin src="//s.thsi.cn/js/excanvas.min.js"></script><![endif]-->
+<!--[if IE 6]>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/DD_belatedPNG_0.0.8a-min.js"></script>
+<script type="text/javascript">DD_belatedPNG.fix('.company_logo,.btn-gnjx-left, .btn-gnjx-right, .concept_hot_icons,.iwc_searchbar,.iwc_searchbar .tips-icon,#autocomplete_search_input dd .icona,#autocomplete_search_input dd .iconb');</script>
+<![endif]-->
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/jquery.pos-fixed.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/cb?js/ta.min.js;js/pa.min.js;js/basic/stock/StatLoad.js;js/basic/stock/20200605135220/xgcl_mod.js"></script>
+<script type="text/javascript" crossorigin src="//s.thsi.cn/js/basic/stock/tongji.min.js"></script>
+<!-- ͳ -->
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/home/ths_core.min.js;js/home/ths_quote.min.js;js/home/tongji.min.js" charset="utf-8"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/commonLog_v3.js" charset="utf-8"></script>
+<!--F10Ӫλű-->
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/append-960857.js"></script>
+<script type="text/javascript" crossorigin charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/f10widget_v3-5ec039.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?/js/navigation/jquery.bgiframe.min.js;/js/navigation/jquery.ui.position.min.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/json2.js"></script>
+<script type="text/javascript" charset="utf-8" src="//s.thsi.cn/js/basic/stockph_v2/stock/search_v3-fec53c.js"></script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/cb?js/basic/stock/jquery.flot.min.js;js/basic/stock/jquery.flot.tooltip.min.js;js/basic/stock/20200604153837/worth.20151209.js"></script>
+<script>
+//---------------Զtitle start----------
+var tempalt='';//ʱ洢title
+document.body.onmousemove = function(event) {
+	if(altlayer.style.display==''){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+10
+		});
+	}
+};
+document.body.onmouseover = function(event) {
+	if (event.srcElement.className !== 'titleIcon') {
+		return false;
+	}
+	if(event.srcElement.title && (event.srcElement.title!='' || (event.srcElement.title=='' && tempalt!=''))){
+		$("#altlayer").css({
+			left: event.pageX,
+			top: event.pageY+20,
+			display: ''
+		});
+		$("#altlayer_content").html(event.srcElement.title)
+		tempalt = event.srcElement.title;
+		event.srcElement.title='';
+	}
+};
+document.body.onmouseout = function(event) {
+	if (tempalt != '') {
+		event.srcElement.title = tempalt;	
+	}
+	tempalt = '';
+	$("#altlayer").hide();
+};
+//---------------Զtitle end----------
+//F10ͻ˽
+function setClientCacheData() {
+    try { //жǷڿͻˣ
+        external.createObject('Util');
+        window.API.use({
+            method: 'Util.getHxVer',
+            success: function(data) {
+                var hexinVer = getVersionStr(data);
+                var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+                //dalert(hexinVer);//ע⣬԰汾86080  ʽ 86090 ע
+                if (hexinVer >= 86080) {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['f10_client_node', 'http://basic.10jqka.com.cn' + pathname],
+                        success: function() {
+                        }
+                    })
+                } else {
+                    window.API.use({
+                        method: 'Info.cacheInfoData',
+                        data: ['', 'http://basic.10jqka.com.cn/' + pathname],
+                        success: function() {
+                        }
+                    })
+                }
+            }
+        })
+        document.getElementById("updownchange").style.display = "block";
+    } catch (e) {
+        //Զheader
+        $("#quotedata").empty()
+        $("#updownchange").empty()
+    }
+	try {
+		callNativeHandler('getMacVer', {}, function(data){
+			if (data.plaform == 'mac' && data.version>='1.3.0' ) {
+				var pathname = window.location.pathname
+                pathname = pathname.replace(/\/\d{2,3}\//, '/%4/');
+                pathname = pathname.replace(/\/[\d|A]\d{5}\//, '/%6/');
+				callNativeHandler('cache_info_Data', {
+					'f10_client_node': 'http://basic.10jqka.com.cn' + pathname
+				}, function(data){
+				});
+			}
+		});
+	} catch (e) {
+    }
+}
+setClientCacheData();
+</script>
+<script type="text/javascript"  crossorigin src="//s.thsi.cn/js/basic/stock/20200604153837/stockpage_v3.20190506.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin id="ths-parser-script" app_key="f10_astockpc_config" src="//s.thsi.cn/cd/website-thsc-f10-utils/1.4.39/parser.js"></script>
+<script type="text/javascript">
+var sid = 'F10new_jzfx';
+var fid = 'F10,F10master,F10main,F10new';
+var stockcode = '002384';
+if (window.location.href.indexOf('interactive')<0
+		&&window.location.href.indexOf('dupont')<0) {
+    $(".subnav .skipto").each(function(){
+    	sonnav = $(this).attr('nav');
+    	if ($("#"+sonnav).length>0 || $("[idchange='"+sonnav+"']").length>0) {
+    	} else {
+    		$(this).hide();
+    	}
+    })
+}
+if (stockcode.substr(0,2) == '43' || stockcode.substr(0,2) == '83') {
+	var third_sid = sid+'_thirdboard';
+	var third_fid = fid+'_thirdboard';
+    PA.setStartTime(loadTimer);
+	PA.init({'id':third_sid, 'fid':third_fid, 'stockcode':stockcode});
+}
+$(document).ready(function(){
+var hash = window.location.hash.substring(1);
+var hashArray = hash.split('-');
+if(hashArray[0]  == 'position'){
+	$("#sortNav li").eq(hashArray[1]).find("a").click();
+}
+});
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: ['m_qs'],
+        success: function(data) {
+            var qsid = data
+            if (qsid == '114') {
+                $("#f10_top_ad").hide();
+                $("#r-go-top").hide();
+            }
+        }
+    })
+} catch (e) {}
+if (!isIE6()) {
+    $(".m_box").statload();
+}
+try {
+    external.createObject('Util');
+    window.API.use({
+        method: 'Passport.get',
+        data: 'm_qs',
+        success: function(data) {
+            var qsid = data
+            if (qsid < 800) {
+                fid += ',f10new_qs';
+            } else {
+                fid += ',f10new_fqs';
+            }
+            PA.setStartTime(loadTimer);
+            setTimeout(function(){
+                PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'qsid': qsid
+                });
+            },100)
+        }
+    })
+} catch (e) {
+    PA.setStartTime(loadTimer);
+    PA.init({
+        'id': sid,
+        'fid': fid,
+        'stockcode': stockcode
+    });
+}
+try {
+    external.createObject('Util');
+    var externalSessionId = window.API.createSessionId('external');
+    window.API.use({
+        method: 'external.registerEvent',
+        data: 'onshow',
+        sessionId: externalSessionId,
+        persistent: true,
+        callbackName: 'onshow',
+        success: function(data) {
+            if (!data) {
+                 PA.setStartTime(loadTimer);
+                 PA.init({
+                    'id': sid,
+                    'fid': fid,
+                    'stockcode': stockcode,
+                    'hide': 1,
+                    'nj': 1,
+                    _sid: "__ths_onshow"
+                });
+            }
+        }
+    })
+} catch (e) {}
+</script>
+<div style="display:none"><script type="text/javascript">
+// ڿͻڣhtml֣ڵһЩ
+if ((window.external && 'createObject' in window.external) || (window.HevoCef && "IsHevoCef" in window.HevoCef)) {
+	$('html').addClass("inClient");
+}
+(function(){
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F78c58f01938e4d85eaf619eae71b4ed1' type='text/javascript'%3E%3C/script%3E"));
+});
+</script>
+
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/f10hq_v4-5-576b58.js"></script>
+<script type="text/javascript" charset="utf-8" crossorigin src="//s.thsi.cn/js/basic/stockph_v2/stock/onlyBAuthorize-4a6ce9.js"></script>
+</div>
+<!--F10ͷ-->
+
+<!--<div id="f10_top_ad" class="f10_ad_top none"><script type="text/javascript">CNZZ_SLOT_RENDER('297563');</script></div>-->
+</html>
+	

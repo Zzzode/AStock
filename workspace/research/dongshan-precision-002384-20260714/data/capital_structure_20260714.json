@@ -1,0 +1,111 @@
+{
+  "schema_version": "astock.capital_structure.v1",
+  "as_of": "2026-07-14 after market",
+  "official_holder_period": "2026-03-31",
+  "official_shareholder_count": 108519,
+  "total_shares": 1831607532,
+  "controllers_pct": 33.25,
+  "named_insurance_shares": 55796327,
+  "named_insurance_pct": 3.05,
+  "named_public_fund_and_etf_shares": 37154317,
+  "named_public_fund_and_etf_pct": 2.03,
+  "direct_named_institutional_pct": 5.07,
+  "hkscc_shares": 69480875,
+  "hkscc_pct": 3.79,
+  "holder_rows": [
+    {
+      "name": "香港中央结算有限公司",
+      "category": "Stock Connect nominee / foreign investor aggregate",
+      "shares": 69480875,
+      "ownership_pct": 3.79,
+      "status": "official Q1 top-ten holder",
+      "interpretation": "Large non-controller holder; not attributable to one fund or one investor."
+    },
+    {
+      "name": "中国人寿保险股份有限公司－传统－普通保险产品－005L－CT001沪",
+      "category": "insurance",
+      "shares": 20417412,
+      "ownership_pct": 1.11,
+      "status": "official Q1 top-ten holder",
+      "interpretation": "Longer-horizon insurance account signal; Q1 snapshot, not a live July position."
+    },
+    {
+      "name": "新华人寿保险股份有限公司－分红－个人分红-018L-FH002深",
+      "category": "insurance",
+      "shares": 17962635,
+      "ownership_pct": 0.98,
+      "status": "official Q1 top-ten holder",
+      "interpretation": "Insurance account; Q1 snapshot, not a live July position."
+    },
+    {
+      "name": "新华人寿保险股份有限公司－传统－普通保险产品-018L-CT001深",
+      "category": "insurance",
+      "shares": 17416280,
+      "ownership_pct": 0.95,
+      "status": "official Q1 top-ten holder",
+      "interpretation": "Insurance account; Q1 snapshot, not a live July position."
+    },
+    {
+      "name": "睿远成长价值混合A（007119）",
+      "category": "public mutual fund",
+      "shares": 17092410,
+      "ownership_pct": 0.93,
+      "status": "official Q1 top-ten holder",
+      "interpretation": "Named active public fund holder; Q1 table does not reveal subsequent July trading."
+    },
+    {
+      "name": "华泰柏瑞沪深300ETF（510300）",
+      "category": "index ETF",
+      "shares": 10311700,
+      "ownership_pct": 0.56,
+      "status": "official Q1 top-ten holder",
+      "interpretation": "Passive/index exposure, not a discretionary stock-picking signal."
+    },
+    {
+      "name": "摩根新兴动力混合A（377240）",
+      "category": "public mutual fund",
+      "shares": 9750207,
+      "ownership_pct": 0.53,
+      "status": "official Q1 top-ten holder",
+      "interpretation": "Named public fund holder and Q1 new entrant in the top-ten table."
+    }
+  ],
+  "latest_lhb": {
+    "date": "2026-07-14",
+    "close": 260.37,
+    "market_turnover_100mn": 2385.6271061,
+    "turnover_pct": 6.8865,
+    "lhb_buy_100mn": 420.714245143,
+    "lhb_sell_100mn": 287.184951032,
+    "lhb_net_100mn": 133.529294111,
+    "lhb_share_of_market_turnover_pct": 29.6735,
+    "institution_buy_100mn": 20.5003152696,
+    "institution_sell_100mn": 16.1319670232,
+    "institution_net_buy_100mn": 4.3683482464,
+    "institution_buyers": 2,
+    "institution_sellers": 4,
+    "stock_connect_buy_100mn": 9.3052991,
+    "stock_connect_sell_100mn": 12.5699924,
+    "stock_connect_net_100mn": -3.2646933,
+    "active_broker_seats": [
+      {
+        "seat": "国泰海通证券上海分公司",
+        "public_attribution": "public LHB table reports a large buy-side seat",
+        "evidence_boundary": "The seat-level aggregate may include multiple stocks; it is not proof of a named fund position."
+      },
+      {
+        "seat": "国泰海通证券武汉紫阳东路证券营业部",
+        "public_attribution": "public LHB table reports an active broker seat",
+        "evidence_boundary": "Broker seat is not equivalent to a verified natural-person or private-fund identity."
+      }
+    ]
+  },
+  "classification": "institutional_base_plus_active_trading",
+  "conclusion": "The stock has a real institutional/fund/insurance base, but the July tape is not quiet institutional accumulation. It is a high-turnover trend stock with institutions, Stock Connect and active broker seats trading in opposite directions.",
+  "limitations": [
+    "Q1 top-ten holders are a 2026-03-31 snapshot and do not prove current July holdings.",
+    "HKSCC is an aggregate nominee account and cannot be assigned to one fund.",
+    "Institution-specific LHB seats are not named funds; public seat-style attribution is not ownership proof.",
+    "Financing balance is leveraged market capital, not institutional long-only capital."
+  ]
+}

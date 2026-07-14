@@ -1,0 +1,41 @@
+{
+  "schema_version": "astock.capital_flow_algorithm.v1",
+  "as_of": "2026-07-14 after market",
+  "classification": "institutional_base_plus_active_trading",
+  "formula": {
+    "institution_base_score": "100 * [0.60 * min(named_institution_pct / 6%, 1) + 0.40 * min(HKSCC_pct / 5%, 1)]",
+    "active_trading_score": "100 * [0.35 * min(LHB_share_of_market_turnover / 30%, 1) + 0.25 * min(LHB_event_count / 4, 1) + 0.20 * (1 - institutional_direction_consistency) + 0.20 * min(financing_pct_of_float / 5%, 1)]",
+    "institutional_direction_consistency": "abs(sum(institutional_net_flow)) / sum(abs(institutional_net_flow)) over 7/2, 7/3, 7/9, 7/14",
+    "composite_style_score": "0.45 * institution_base_score + 0.55 * active_trading_score"
+  },
+  "inputs": {
+    "named_insurance_pct": 3.05,
+    "named_public_fund_and_etf_pct": 2.03,
+    "named_institution_pct": 5.07,
+    "hkscc_pct": 3.79,
+    "controllers_pct": 33.25,
+    "lhb_event_count": 4,
+    "lhb_share_of_market_turnover_pct": 29.6735,
+    "financing_pct_of_float": 4.28,
+    "institutional_net_flow_100mn": [
+      4.2422,
+      -2.5227,
+      -8.6979,
+      4.3683
+    ],
+    "stock_connect_net_flow_100mn_20260714": -3.2647
+  },
+  "calculated": {
+    "institutional_direction_consistency": 0.1316,
+    "institution_base_score": 81.07,
+    "active_trading_score": 94.11,
+    "composite_style_score": 88.24
+  },
+  "classification_rules": [
+    "institution_base_score >= 50 means a meaningful named institutional base",
+    "active_trading_score >= 70 means active-trading reinforcement",
+    "direction consistency <= 0.50 means institutional LHB direction is conflicted, not quiet accumulation",
+    "composite score >= 75 with active score > institution base maps to institutional base plus active trading reinforcement"
+  ],
+  "evidence_boundary": "This is a descriptive classification score, not a predictive alpha model. Institution seats, HKSCC and broker营业部 cannot be mapped one-to-one to named funds or private traders."
+}

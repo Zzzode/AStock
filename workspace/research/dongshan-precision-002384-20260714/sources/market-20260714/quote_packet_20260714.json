@@ -1,0 +1,79 @@
+{
+  "code": "002384",
+  "name": "东山精密",
+  "price": 260.37,
+  "prev_close": 236.7,
+  "open": 241.52,
+  "volume": 903891.0,
+  "change": 23.67,
+  "change_percent": 10.0,
+  "high": 260.37,
+  "low": 237.01,
+  "amount": 22533710190.0,
+  "bid_price": 260.37,
+  "ask_price": 0.0,
+  "pe": 0.0,
+  "pb": 0.0,
+  "pe_ttm": 0.0,
+  "total_market_value": 0.0,
+  "circulating_market_value": 0.0,
+  "turnover_rate": 0.0,
+  "volume_ratio": 0.0,
+  "data_quality": "full_realtime",
+  "provenance": {
+    "schema_version": "data_provenance.v1",
+    "source": "astock.quote_service",
+    "timestamp": "2026-07-14T13:27:30.215459+08:00",
+    "quality_tier": "realtime",
+    "quality_rank": 100,
+    "latency_ms": null,
+    "fallback_path": [],
+    "warnings": [],
+    "errors": [],
+    "ok": true
+  },
+  "market_events": [
+    {
+      "id": "mevt_2f7158846a45b6385393eaf2",
+      "schema_version": "market_event.v1",
+      "event_type": "price_move",
+      "title": "002384 东山精密 price move +10.00%",
+      "observed_at": "1970-01-01T00:00:00+00:00",
+      "severity": "critical",
+      "direction": "bullish",
+      "subject": {
+        "type": "stock",
+        "code": "002384",
+        "name": "东山精密",
+        "market": "A-share",
+        "key": "002384"
+      },
+      "quality": {
+        "level": "full",
+        "source": "astock.quote_service",
+        "confidence": 1.0,
+        "as_of": "1970-01-01T00:00:00+00:00",
+        "latency_seconds": null,
+        "warnings": [
+          "missing_observed_at"
+        ],
+        "missing_fields": []
+      },
+      "source": "astock.quote_service",
+      "metrics": {
+        "price": 260.37,
+        "prev_close": 236.7,
+        "change_pct": 10.0,
+        "change_amount": 23.67
+      },
+      "context": {
+        "raw_change_pct": 10.0
+      },
+      "tags": [
+        "quote",
+        "price"
+      ],
+      "dedupe_key": "price_move"
+    }
+  ]
+}

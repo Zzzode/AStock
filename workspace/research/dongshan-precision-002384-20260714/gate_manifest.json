@@ -1,0 +1,77 @@
+{
+  "case_id": "dongshan-precision-002384-20260714",
+  "report_type": "single_stock_deep_research",
+  "data_cutoff": "2026-07-14 18:30 CST; market quote 13:27 CST; H1 preview 16:36 CST",
+  "required_skills": [
+    "equity-research",
+    "growth-earnings-model",
+    "valuation",
+    "reports",
+    "research-report-review",
+    "exhibit-format-reviewer"
+  ],
+  "required_artifacts": [
+    "research_brief.md",
+    "analysis/template_brief.md",
+    "analysis/house_view.md",
+    "analysis/variant_perception.md",
+    "analysis/value_chain_economics.md",
+    "analysis/growth_earnings_model.md",
+    "analysis/segment_forecast_bridge.md",
+    "analysis/implied_growth_sensitivity.md",
+    "analysis/segment_valuation_model.md",
+    "analysis/valuation_model.md",
+    "analysis/valuation_audit.md",
+    "analysis/secondary_market_analysis.md",
+    "analysis/risk_framework.md",
+    "analysis/exhibit_plan.md",
+    "data/verified_financials.md",
+    "data/verified_market_data.md",
+    "data/consensus_analysis.md",
+    "data/growth_driver_model.json",
+    "data/current_valuation_model_20260714.json",
+    "data/broker_street_consensus_20260714.json",
+    "sources/broker-reports/2026-07-14/index.md",
+    "main.tex",
+    "main.pdf",
+    "data/capital_structure_20260714.json",
+    "data/capital_structure_20260714.md",
+    "analysis/valuation_algorithm_20260714.md",
+    "analysis/capital_flow_algorithm_20260714.md",
+    "data/valuation_algorithm_20260714.json",
+    "data/capital_flow_algorithm_20260714.json"
+  ],
+  "review_cycles": [
+    "R0_evidence",
+    "R1_model",
+    "R2_draft",
+    "R3_render_compliance",
+    "R4_final_ic"
+  ],
+  "verifiers": [
+    "tools/verify_research_workspace.py",
+    "workspace/research/tools/run_research_gates.py"
+  ],
+  "depth_gates": [
+    "evidence_depth",
+    "broker_consensus_depth",
+    "model_depth",
+    "valuation_depth",
+    "ic_readiness"
+  ],
+  "pass_conditions": [
+    "0 open S-level findings",
+    "0 open unwaived A-level findings",
+    "Model Reproducibility: PASS",
+    "XeLaTeX clean",
+    "case verifier PASS",
+    "research gate PASS"
+  ],
+  "downgrade_path": "watchlist only / insufficient evidence if material driver thresholds fail",
+  "pre_publish_self_checklist": {
+    "evidence_depth": "official filings and original broker PDFs archived; weak sources labeled",
+    "model_depth": "base/growth split, proxy-to-revenue-to-EPS bridge and current-price-implied growth",
+    "valuation_depth": "SOTP, scenario bands, Street comparison, market anchor and reproducibility audit",
+    "ic_readiness": "action label, position discipline, catalysts, invalidation and next-quarter thresholds"
+  }
+}

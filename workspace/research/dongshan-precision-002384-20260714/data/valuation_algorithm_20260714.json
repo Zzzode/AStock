@@ -1,0 +1,102 @@
+{
+  "schema_version": "astock.valuation_algorithm.v1",
+  "as_of": "2026-07-14 18:30 CST",
+  "formula": {
+    "market_cap_100mn": "price_cny * shares_100mn",
+    "segment_value_100mn": "segment_net_profit_100mn * segment_multiple",
+    "fundamental_anchor_cny": "(fixed_segment_value_before_optical_100mn + optical_net_profit_100mn * optical_multiple - conservatism_overlay_100mn) / shares_100mn",
+    "final_target_cny": "fundamental_anchor_cny * 0.75 + street_anchor_cny * 0.15 + market_anchor_cny * 0.10",
+    "upside": "final_target_cny / price_cny - 1"
+  },
+  "inputs": {
+    "price_cny": 260.37,
+    "shares_100mn": 18.31607532,
+    "street_anchor_cny": 199.87,
+    "market_anchor_cny": 225.0,
+    "weights": {
+      "fundamental": 0.75,
+      "street": 0.15,
+      "market": 0.1
+    },
+    "conservatism_overlay_100mn": 182.0,
+    "fixed_segment_value_before_optical_100mn": 786.5,
+    "fixed_segment_components_100mn": {
+      "legacy_fpc_pcb": 252.0,
+      "ai_pcb_increment": 462.0,
+      "display": 18.2,
+      "precision_gmd": 52.8,
+      "other": 1.5
+    },
+    "optical_net_profit_sensitivity_100mn": [
+      80.0,
+      95.0,
+      110.0
+    ],
+    "optical_multiple_sensitivity": [
+      26.0,
+      32.0,
+      38.0
+    ]
+  },
+  "base_case": {
+    "optical_net_profit_100mn": 95.0,
+    "optical_multiple": 32.0,
+    "fundamental_anchor_cny": 198.98,
+    "final_target_cny": 201.71,
+    "upside": -0.2253
+  },
+  "sensitivity_rows": [
+    {
+      "optical_net_profit_100mn": 80.0,
+      "fundamental_value_by_multiple": {
+        "26": 146.57,
+        "32": 172.77,
+        "38": 198.98
+      },
+      "final_target_by_multiple": {
+        "26": 162.41,
+        "32": 182.06,
+        "38": 201.72
+      }
+    },
+    {
+      "optical_net_profit_100mn": 95.0,
+      "fundamental_value_by_multiple": {
+        "26": 167.86,
+        "32": 198.98,
+        "38": 230.1
+      },
+      "final_target_by_multiple": {
+        "26": 178.38,
+        "32": 201.72,
+        "38": 225.06
+      }
+    },
+    {
+      "optical_net_profit_100mn": 110.0,
+      "fundamental_value_by_multiple": {
+        "26": 189.15,
+        "32": 225.18,
+        "38": 261.22
+      },
+      "final_target_by_multiple": {
+        "26": 194.34,
+        "32": 221.37,
+        "38": 248.4
+      }
+    }
+  ],
+  "h1_update": {
+    "h1_parent_net_profit_100mn": [
+      29.0,
+      30.0
+    ],
+    "h1_midpoint_completion_of_2026e": 0.4338,
+    "derived_q2_parent_net_profit_100mn": [
+      17.9011,
+      18.9011
+    ],
+    "denominator_policy": "H1 validates the company-level denominator; no mechanical annualization or 2027 SOTP re-rating without segment split."
+  },
+  "model_interpretation": "The optical segment drives most of the SOTP. The H1 preview improves denominator confidence but does not identify how much of the Q2 profit came from optical modules, AI PCB, data-center investment returns or other items."
+}
