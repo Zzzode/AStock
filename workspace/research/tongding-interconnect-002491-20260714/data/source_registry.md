@@ -2,6 +2,7 @@
 
 | ID | Type | Date | Quality | Path | Use |
 |---|---|---|---|---|---|
+| S10 | auditable_broker_directory_probe | 2026-07-14 | B auditable source exhaustion | `sources/broker-reports/2026-07-14/eastmoney_report_api_002491_20260714.json` | Direct Eastmoney report directory query returned hits=0; supports zero Street weight. |
 | S01 | official_annual_report | 2026-04-28 | A | `sources/official-20260714/2026-04-28-2025年年度报告.pdf` | 2025 business mix, financials, volumes, risk and audit notes |
 | S02 | official_audit_report | 2026-04-28 | A | `sources/official-20260714/2026-04-28-2025年度财务报表审计报告.pdf` | revenue recognition, receivables and inventory audit matters |
 | S03 | official_q1_report | 2026-04-30 | A | `sources/official-20260714/2026-04-30-2026年第一季度报告.pdf` | Q1 results, balance sheet, shareholders |

@@ -1,0 +1,25 @@
+{
+  "case_id": "tongding-interconnect-002491-20260714",
+  "objective": "Latest-data multi-agent institutional research report with valuation, target price, investment advice, secondary-market analysis, commit and push",
+  "status": "conditional_complete",
+  "requirements": {
+    "latest_official_data": "pass",
+    "financial_and_business_research": "pass",
+    "multi_agent_workflow": "pass",
+    "reproducible_valuation": "pass",
+    "target_price_scenarios": "pass",
+    "investment_advice": "pass",
+    "secondary_market_analysis": "pass",
+    "broker_street_anchor": "conditional_zero_weight_not_found",
+    "pdf": "pass",
+    "case_verifier": "pass",
+    "strict_research_gate": "conditional_88_pass_9_fail",
+    "commit": "pass_d5d124f",
+    "push": "pass_origin_main_aligned"
+  },
+  "unresolved": [
+    "No original broker target-price report or complete public broker row was verified.",
+    "H1 segment revenue, ASP, utilization, customer allocation and cash-conversion detail remain undisclosed."
+  ],
+  "safety_decision": "Do not fabricate Street targets or upgrade the report to unconditional PASS."
+}

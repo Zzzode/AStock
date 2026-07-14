@@ -1,0 +1,28 @@
+{
+  "endpoint": "https://reportapi.eastmoney.com/report/list2",
+  "method": "POST",
+  "parameters": {
+    "beginTime": "2025-01-01",
+    "endTime": "2026-07-14",
+    "industryCode": "*",
+    "ratingChange": "*",
+    "rating": "*",
+    "orgCode": "*",
+    "code": "002491",
+    "rcode": "",
+    "pageSize": 50,
+    "pageNo": 1
+  },
+  "retrieved_at": "2026-07-14T20:02:00+08:00",
+  "http_status": 200,
+  "response": {
+    "hits": 0,
+    "traceId": "8f4aa63273d942f8832d3c5e9710ddb4",
+    "size": 0,
+    "data": [],
+    "TotalPage": 0,
+    "pageNo": 1,
+    "currentYear": 2026
+  },
+  "interpretation": "No public Eastmoney broker-report directory row was returned for 002491 in the queried period. This does not prove that private or licensed-terminal research does not exist; it supports source exhaustion and zero Street valuation weight."
+}

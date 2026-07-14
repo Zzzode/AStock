@@ -52,7 +52,12 @@ The price pays for H1 delivery, H2 optical price/volume continuation, safety-bus
 
 ## Broker/Street Comparison
 
-No original broker target-price row with complete numeric fields was verified. Media and wealth-platform target-price mentions are recorded as weak evidence, not presented as Street consensus, and assigned zero valuation weight.
+No original broker target-price row with complete numeric fields was verified.
+The Eastmoney public broker-report directory was queried directly for 002491
+from 2025-01-01 through 2026-07-14 and returned `hits=0`; the raw response is
+archived under `sources/broker-reports/2026-07-14/`. Media and wealth-platform
+target-price mentions are recorded as weak evidence, not presented as Street
+consensus, and assigned zero valuation weight.
 
 ## Market-Implied Sentiment Anchor
 

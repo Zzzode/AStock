@@ -2,6 +2,7 @@
 
 | ID | Claim | Source | Confidence | Boundary |
 |---|---|---|---|---|
+| C10 | Eastmoney public broker-report directory query for 002491 from 2025-01-01 through 2026-07-14 returned hits=0. | S10 | high | Public-directory result only; licensed/private research may still exist. |
 | C01 | H1 parent NP CNY170m-CNY240m; adjusted NP CNY230m-CNY330m; EPS CNY0.1382-CNY0.1951. | S04 | high | preliminary and unaudited |
 | C02 | H1 revenue growth is 56%-66%; optical-fiber volume and price recovery plus safety subsidiary consolidation/improvement are cited drivers. | S04 | high | company-level; no segment split or ASP |
 | C03 | 2025 revenue CNY3.413bn; communication cable and related manufacturing 70.19%; safety business 19.61%. | S01 | high | audited annual disclosure |
