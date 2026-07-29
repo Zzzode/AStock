@@ -2,7 +2,6 @@
 
 import pandas as pd
 import numpy as np
-from typing import Optional, Any
 import talib
 
 
@@ -122,101 +121,3 @@ class TechnicalAnalyzer:
         self.add_kdj()
         self.add_rsi()
         return self.df
-
-    def get_signals(self) -> dict[str, Any]:
-        """Get technical signals
-
-        Returns:
-            Signal dictionary
-        """
-        signals: list[dict[str, Any]] = []
-
-        # Get latest data
-        latest = self.df.iloc[-1]
-        prev = self.df.iloc[-2] if len(self.df) > 1 else latest
-
-        # MA signals
-        if "ma5" in self.df.columns and "ma20" in self.df.columns:
-            if prev["ma5"] <= prev["ma20"] and latest["ma5"] > latest["ma20"]:
-                signals.append({
-                    "type": "ma_cross_up",
-                    "name": "Golden Cross",
-                    "description": "MA5 crossed above MA20",
-                    "bias": "bullish"
-                })
-            elif prev["ma5"] >= prev["ma20"] and latest["ma5"] < latest["ma20"]:
-                signals.append({
-                    "type": "ma_cross_down",
-                    "name": "Death Cross",
-                    "description": "MA5 crossed below MA20",
-                    "bias": "bearish"
-                })
-
-        # MACD signals
-        if "macd" in self.df.columns:
-            if prev["macd_hist"] <= 0 and latest["macd_hist"] > 0:
-                signals.append({
-                    "type": "macd_cross_up",
-                    "name": "MACD Golden Cross",
-                    "description": "MACD histogram turned from negative to positive",
-                    "bias": "bullish"
-                })
-            elif prev["macd_hist"] >= 0 and latest["macd_hist"] < 0:
-                signals.append({
-                    "type": "macd_cross_down",
-                    "name": "MACD Death Cross",
-                    "description": "MACD histogram turned from positive to negative",
-                    "bias": "bearish"
-                })
-
-        # KDJ signals
-        if "kdj_k" in self.df.columns:
-            # Overbought/Oversold
-            if latest["kdj_j"] < 20:
-                signals.append({
-                    "type": "kdj_oversold",
-                    "name": "KDJ Oversold",
-                    "description": f"J value={latest['kdj_j']:.1f}, in oversold zone",
-                    "bias": "bullish"
-                })
-            elif latest["kdj_j"] > 80:
-                signals.append({
-                    "type": "kdj_overbought",
-                    "name": "KDJ Overbought",
-                    "description": f"J value={latest['kdj_j']:.1f}, in overbought zone",
-                    "bias": "bearish"
-                })
-
-        # RSI signals
-        if "rsi6" in self.df.columns:
-            if latest["rsi6"] < 30:
-                signals.append({
-                    "type": "rsi_oversold",
-                    "name": "RSI Oversold",
-                    "description": f"RSI6={latest['rsi6']:.1f}, in oversold zone",
-                    "bias": "bullish"
-                })
-            elif latest["rsi6"] > 70:
-                signals.append({
-                    "type": "rsi_overbought",
-                    "name": "RSI Overbought",
-                    "description": f"RSI6={latest['rsi6']:.1f}, in overbought zone",
-                    "bias": "bearish"
-                })
-
-        return {
-            "signals": signals,
-            "latest": {
-                "close": float(latest["close"]),
-                "ma5": float(latest.get("ma5", 0)),
-                "ma10": float(latest.get("ma10", 0)),
-                "ma20": float(latest.get("ma20", 0)),
-                "macd": float(latest.get("macd", 0)),
-                "macd_signal": float(latest.get("macd_signal", 0)),
-                "macd_hist": float(latest.get("macd_hist", 0)),
-                "kdj_k": float(latest.get("kdj_k", 0)),
-                "kdj_d": float(latest.get("kdj_d", 0)),
-                "kdj_j": float(latest.get("kdj_j", 0)),
-                "rsi6": float(latest.get("rsi6", 0)),
-            }
-        }

@@ -130,6 +130,7 @@ class ResearchQualityReport:
     overall_risk_foresight: float = 0.0
     assessed_at: datetime = field(default_factory=datetime.now)
     notes: str = ""
+    evidence_refs: list[str] = field(default_factory=list)
 
     def compute_rates(self) -> None:
         """Recompute catalyst realization rate and risk foresight rate."""
@@ -157,6 +158,7 @@ class ResearchQualityReport:
             "overall_risk_foresight": round(self.overall_risk_foresight, 4),
             "assessed_at": self.assessed_at.isoformat(),
             "notes": self.notes,
+            "evidence_refs": self.evidence_refs,
         }
 
     @classmethod
@@ -179,6 +181,7 @@ class ResearchQualityReport:
             ],
             assessed_at=datetime.fromisoformat(data["assessed_at"]),
             notes=str(data.get("notes", "")),
+            evidence_refs=[str(value) for value in data.get("evidence_refs", [])],
         )
         report.compute_rates()
         return report
@@ -207,10 +210,7 @@ class QualityFeedbackStore:
                 item["entry_id"]: ResearchQualityReport.from_dict(item)
                 for item in raw.get("reports", [])
             }
-            self._role_scores = {
-                item["role"]: AgentRoleScore.from_dict(item)
-                for item in raw.get("aggregate_role_scores", [])
-            }
+            self._rebuild_aggregate_scores()
         except Exception:
             self._reports = {}
             self._role_scores = {}
@@ -232,7 +232,7 @@ class QualityFeedbackStore:
         self._ensure_loaded()
         report.compute_rates()
         self._reports[report.entry_id] = report
-        self._update_aggregate_scores(report)
+        self._rebuild_aggregate_scores()
         self._save()
 
     def get_report(self, entry_id: str) -> Optional[ResearchQualityReport]:
@@ -268,14 +268,16 @@ class QualityFeedbackStore:
             },
         }
 
-    def _update_aggregate_scores(self, report: ResearchQualityReport) -> None:
-        """Update aggregate role accuracy scores."""
-        for score in report.agent_scores:
-            if score.role not in self._role_scores:
-                self._role_scores[score.role] = AgentRoleScore(role=score.role)
-            agg = self._role_scores[score.role]
-            agg.correct_calls += score.correct_calls
-            agg.total_calls += score.total_calls
-            agg.notable_misses.extend(score.notable_misses[-3:])
-            if len(agg.notable_misses) > 10:
-                agg.notable_misses = agg.notable_misses[-10:]
+    def _rebuild_aggregate_scores(self) -> None:
+        """Derive role aggregates from the current report set without stale counts."""
+        self._role_scores = {}
+        for report in self._reports.values():
+            for score in report.agent_scores:
+                if score.role not in self._role_scores:
+                    self._role_scores[score.role] = AgentRoleScore(role=score.role)
+                aggregate = self._role_scores[score.role]
+                aggregate.correct_calls += score.correct_calls
+                aggregate.total_calls += score.total_calls
+                aggregate.notable_misses.extend(score.notable_misses[-3:])
+                if len(aggregate.notable_misses) > 10:
+                    aggregate.notable_misses = aggregate.notable_misses[-10:]

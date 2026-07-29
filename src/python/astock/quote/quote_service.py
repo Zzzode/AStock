@@ -1,13 +1,14 @@
 """Quote service - supports multiple data sources, caching, and error handling
 
 Data source priority:
-1. Baostock: stable and reliable, suitable for historical and valuation data (T+1)
+1. AkShare EastMoney history: timeout-bounded public daily data
 2. AkShare: real-time quote supplement (degrades gracefully when unstable)
+3. Baostock: fallback for legacy basic-information paths only
 """
 
 import asyncio
 from datetime import date, datetime, time as datetime_time, timedelta
-from typing import Any, Optional, Union, cast
+from typing import Any, Optional, Union
 
 import pandas as pd
 
@@ -65,7 +66,7 @@ class QuoteService:
     """Quote service - supports multiple data sources, caching, retry, and dynamic TTL
 
     Data source strategy:
-    - Daily data: prefer Baostock (stable, includes valuation data)
+    - Daily data: use timeout-bounded AkShare EastMoney history
     - Real-time quotes: prefer AkShare (Tencent/East Money single-stock, fast and reachable), fallback to Baostock
     """
 
@@ -90,11 +91,6 @@ class QuoteService:
         # Backward compatibility
         self.client = self.primary_client
 
-        self._realtime_retry_attempts = 3
-        self._realtime_retry_delays = (1.0, 2.0)
-        self._daily_retry_attempts = 3
-        self._daily_retry_delays = (1.0, 2.0)
-
         # Primary data source (default: Baostock)
         if primary_client is None:
             self.primary_client = BaostockClient()
@@ -111,6 +107,7 @@ class QuoteService:
         self._realtime_retry_delays = (1.0, 2.0)
         self._daily_retry_attempts = 3
         self._daily_retry_delays = (1.0, 2.0)
+        self._daily_source_timeout_seconds = 20.0
 
     def _is_retryable_error(self, error: Exception) -> bool:
         """Determine whether the error is retryable"""
@@ -314,7 +311,7 @@ class QuoteService:
                 ) from e
 
         raise DataSourceError(
-            f"Failed to fetch real-time quote (max retries reached)",
+            "Failed to fetch real-time quote (max retries reached)",
             source="multi",
             code=code,
             details={"last_error": str(last_error) if last_error else None},
@@ -367,21 +364,26 @@ class QuoteService:
         ttl = get_dynamic_ttl("daily")
 
         async def _fetch_daily() -> pd.DataFrame:
-            # Prefer Baostock
-            if isinstance(self.primary_client, BaostockClient):
-                try:
-                    df = await self.primary_client.get_daily_quotes(code, start_date, end_date)
-                    if not df.empty:
-                        logger.debug(f"Baostock daily data fetched successfully: {code}, {len(df)} records")
-                        return df
-                except Exception as e:
-                    logger.warning(f"Baostock daily data fetch failed, switching to AkShare: {e}")
-
-            # Fallback to AkShare
+            # Use the timeout-bounded AKShare history adapter first. Baostock
+            # login/query calls are synchronous and do not expose a network
+            # timeout, so they cannot be the default path for an interactive
+            # public-data desk.
             try:
-                df = await self.fallback_client.get_daily_quotes(code, start_date, end_date)
+                df = await asyncio.wait_for(
+                    self.fallback_client.get_daily_quotes(code, start_date, end_date),
+                    timeout=self._daily_source_timeout_seconds,
+                )
                 logger.debug(f"AkShare daily data fetched successfully: {code}, {len(df)} records")
                 return df
+            except asyncio.TimeoutError as error:
+                logger.error(
+                    "AkShare daily data timed out after %.1fs: %s",
+                    self._daily_source_timeout_seconds,
+                    code,
+                )
+                raise TimeoutError(
+                    f"AkShare daily data timed out after {self._daily_source_timeout_seconds:.1f}s"
+                ) from error
             except Exception as e:
                 logger.error(f"All data sources failed to fetch daily data: {e}")
                 raise

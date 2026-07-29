@@ -271,65 +271,6 @@ def build_fund_flow_event(
     )
 
 
-def build_technical_signal_events(
-    payload: Mapping[str, Any] | Any,
-    *,
-    source: str | None = None,
-    observed_at: datetime | str | None = None,
-) -> list[MarketEvent]:
-    """Build technical-signal events from scanner/analyzer payloads."""
-
-    data = payload_to_dict(payload)
-    signals_value = _first_value(data, "signals")
-    signals = signals_value if isinstance(signals_value, list) else [data]
-    event_source = _source_from_payload(data, source, "signal")
-    event_time, warnings = _resolve_observed_at(data, observed_at)
-    root_level = _first_value(data, "level", "severity")
-    latest = _first_value(data, "latest")
-    subject = _stock_subject(data)
-
-    events: list[MarketEvent] = []
-    for signal in signals:
-        if not isinstance(signal, Mapping):
-            continue
-        signal_data = dict(signal)
-        signal_type = str(_first_value(signal_data, "type", "signal_type") or "signal")
-        signal_name = str(
-            _first_value(signal_data, "name", "signal_name") or signal_type
-        )
-        bias = _first_value(signal_data, "bias", "direction")
-        severity = _technical_signal_severity(signal_type, root_level, signal_data)
-
-        events.append(
-            MarketEvent(
-                event_type=MarketEventType.TECHNICAL_SIGNAL,
-                subject=subject,
-                title=f"{subject.key} technical signal: {signal_name}",
-                observed_at=event_time,
-                severity=severity,
-                direction=normalize_direction(bias),
-                quality=quality_from_payload(
-                    data,
-                    source=event_source,
-                    observed_at=event_time,
-                    warnings=warnings,
-                ),
-                source=event_source,
-                metrics=_numeric_mapping(latest if isinstance(latest, Mapping) else {}),
-                context={
-                    "signal_type": signal_type,
-                    "signal_name": signal_name,
-                    "description": _first_value(signal_data, "description", "message"),
-                    "bias": bias,
-                },
-                tags=("technical", "signal"),
-                dedupe_key=f"technical_signal:{signal_type}",
-            )
-        )
-
-    return events
-
-
 def build_alert_trigger_event(
     payload: Mapping[str, Any] | Any,
     *,
@@ -511,21 +452,6 @@ def build_events_from_screen_payload(
     return events
 
 
-def build_events_from_signal_payload(
-    payload: Mapping[str, Any] | Any,
-    *,
-    source: str | None = None,
-    observed_at: datetime | str | None = None,
-) -> list[MarketEvent]:
-    """Alias for technical signal payloads."""
-
-    return build_technical_signal_events(
-        payload,
-        source=source,
-        observed_at=observed_at,
-    )
-
-
 def quality_from_payload(
     payload: Mapping[str, Any] | Any,
     *,
@@ -694,22 +620,6 @@ def _extract_net_flow(data: Mapping[str, Any]) -> float | None:
     )
 
 
-def _technical_signal_severity(
-    signal_type: str,
-    root_level: Any,
-    signal_data: Mapping[str, Any],
-) -> EventSeverity:
-    raw = _first_value(signal_data, "severity", "level")
-    if raw is not None:
-        return normalize_severity(raw)
-    if root_level is not None:
-        return normalize_severity(root_level)
-    lowered = signal_type.lower()
-    if "cross" in lowered or "breakout" in lowered:
-        return EventSeverity.IMPORTANT
-    return EventSeverity.WATCH
-
-
 def _screen_factor_event_type(
     factor_type: str,
     check: Mapping[str, Any],
@@ -721,8 +631,6 @@ def _screen_factor_event_type(
         return MarketEventType.FUND_FLOW_MOVE
     if "volume" in field or "volume" in key or key == "high_volume":
         return MarketEventType.VOLUME_SPIKE
-    if factor_type in {"momentum", "technical", "sentiment", "volatility"}:
-        return MarketEventType.TECHNICAL_SIGNAL
     return MarketEventType.ALERT_TRIGGER
 
 

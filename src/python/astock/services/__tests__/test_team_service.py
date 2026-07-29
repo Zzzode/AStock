@@ -47,16 +47,14 @@ def mock_analysis_service() -> MagicMock:
             code="000001",
             name="平安银行",
             indicators={
+                "open": 10.2,
+                "high": 10.7,
+                "low": 10.0,
                 "close": 10.5,
-                "rsi6": 25.0,
-                "kdj_j": 15.0,
+                "volume": 1_000_000,
+                "amount": 10_500_000,
             },
             prev_indicators={"close": 10.1},
-            signals=[
-                {"type": "ma_cross_up", "bias": "bullish"},
-                {"type": "kdj_oversold", "bias": "bullish"},
-            ],
-            signal_stats={"bullish_count": 2, "bearish_count": 0, "total_count": 2},
             quote={
                 "code": "000001",
                 "name": "平安银行",
@@ -71,11 +69,7 @@ def mock_analysis_service() -> MagicMock:
         return_value={
             "code": "000001",
             "name": "平安银行",
-            "indicators": {"close": 10.5, "rsi6": 25.0, "kdj_j": 15.0},
-            "signals": [
-                {"type": "ma_cross_up", "bias": "bullish"},
-                {"type": "kdj_oversold", "bias": "bullish"},
-            ],
+            "indicators": {"open": 10.2, "high": 10.7, "low": 10.0, "close": 10.5, "volume": 1_000_000, "amount": 10_500_000},
             "data_quality": {"daily": "daily_only", "quote": "full_realtime"},
         }
     )
@@ -159,10 +153,39 @@ async def test_team_service_generates_packet_and_report(
     assert result.recommended_roles == ["core", "short_term"]
     assert result.packet["screen"]["mode"] == "single_stock"
     assert result.packet["orchestration"]["strategy"] == "packet_only_agent_reasoning"
-    assert "scalper" in result.orchestration["active_agent_ids"]
+    assert "short-term-trader" in result.orchestration["active_agent_ids"]
+    assert "execution-liquidity-analyst" in result.orchestration["active_agent_ids"]
     assert result.data_quality["quote"] == "full_realtime"
     assert result.session_path is not None
     assert Path(result.session_path).exists()
+
+
+@pytest.mark.asyncio
+async def test_team_service_uses_registered_portfolio_gate_roles(
+    mock_db: AsyncMock,
+    mock_quote_service: AsyncMock,
+    mock_analysis_service: MagicMock,
+    mock_screener: MagicMock,
+    mock_config_manager: MagicMock,
+    mock_feedback_learner: AsyncMock,
+    tmp_path,
+) -> None:
+    service = TeamAnalysisService(
+        mock_db,
+        quote_service=mock_quote_service,
+        analysis_service=mock_analysis_service,
+        screener=mock_screener,
+        config_manager=mock_config_manager,
+        feedback_learner=mock_feedback_learner,
+        sessions_dir=tmp_path,
+    )
+
+    result = await service.analyze("000001", question="组合仓位和风险预算怎么安排？")
+
+    assert "portfolio" in result.recommended_roles
+    assert {"portfolio-manager", "quant-risk-modeler", "compliance-officer"} <= set(
+        result.orchestration["active_agent_ids"]
+    )
 
 
 def test_team_cli_json_output() -> None:
@@ -178,7 +201,7 @@ def test_team_cli_json_output() -> None:
         warnings=["实时行情已降级到最近交易日日线快照。"],
         orchestration={
             "strategy": "packet_only_agent_reasoning",
-            "active_agent_ids": ["market-analyst", "risk-manager", "swing-trader"],
+            "active_agent_ids": ["market-analyst", "risk-analyst", "swing-trend-analyst"],
         },
         packet={"recommended_roles": ["core", "swing"]},
         session_path="data/sessions/team-000001-20260327.md",

@@ -24,9 +24,9 @@ def test_alert_record_like_payload_roundtrips_market_event() -> None:
     alert = AlertRecord(
         id=1,
         code="000001",
-        signal_type="ma_cross",
-        signal_name="MA cross",
-        message="MA5 crossed above MA20",
+        signal_type="price_dislocation",
+        signal_name="Large Price Dislocation",
+        message="Daily price moved more than 7%.",
         level=2,
         triggered_at=datetime(2026, 6, 12, 10, 30, 0),
         status="pending",
@@ -41,12 +41,12 @@ def test_alert_record_like_payload_roundtrips_market_event() -> None:
     decoded = decode_alert_message(stored_alert.message)
 
     assert envelope["schema_version"] == ALERT_MESSAGE_SCHEMA_VERSION
-    assert decoded.text == "MA5 crossed above MA20"
+    assert decoded.text == "Daily price moved more than 7%."
     assert decoded.market_event is not None
     assert decoded.market_event["schema_version"] == "market_event.v1"
     assert decoded.market_event["event_type"] == "alert_trigger"
     assert decoded.market_event["subject"]["code"] == "000001"
-    assert decoded.market_event["context"]["message"] == "MA5 crossed above MA20"
+    assert decoded.market_event["context"]["message"] == "Daily price moved more than 7%."
     json.dumps(decoded.market_event, ensure_ascii=False)
 
 
@@ -133,14 +133,14 @@ async def test_monitor_service_stores_and_sends_alert_market_event(
     scan_result = {
         "signals": [
             {
-                "type": "ma_cross",
-                "name": "MA cross",
-                "description": "MA5 crossed above MA20",
+                "type": "volume_spike",
+                "name": "Volume Dislocation",
+                "description": "Volume exceeded twice the prior 20-session median.",
                 "bias": "bullish",
             }
         ],
         "level": 2,
-        "latest": {"close": 12.34, "ma5": 12.2, "ma20": 12.1},
+        "latest": {"close": 12.34, "volume_multiple_20d_median": 2.3},
         "data_quality": "full",
     }
 
@@ -149,7 +149,7 @@ async def test_monitor_service_stores_and_sends_alert_market_event(
     assert db.saved_record is not None
     assert db.saved_record.id == 42
     decoded = decode_alert_message(db.saved_record.message)
-    assert decoded.text == "MA5 crossed above MA20"
+    assert decoded.text == "Volume exceeded twice the prior 20-session median."
     assert decoded.market_event is not None
     assert decoded.market_event["source"] == "monitor.signal_scanner"
     assert decoded.market_event["subject"]["code"] == "000001"

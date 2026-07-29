@@ -166,6 +166,29 @@ BROKER_WEAK_SOURCE_QUALITIES = {
     "unavailable",
 }
 
+BROKER_INTERNAL_SOURCE_QUALITIES = {
+    "astock_house",
+    "astock_house_model",
+    "house_model",
+    "house_model_auditable",
+    "internal_model",
+}
+
+BROKER_INTERNAL_NAME_TERMS = (
+    "astock",
+    "house view",
+    "house model",
+    "internal",
+)
+
+BROKER_EXTERNAL_POSITIVE_SOURCE_QUALITIES = {
+    "original_pdf",
+    "broker_official_page",
+    "auditable_consensus_snapshot",
+    "auditable_broker_repost",
+    "broker_repost_full_fields",
+}
+
 BROKER_UNAVAILABLE_VALUES = {
     "",
     "-",
@@ -232,6 +255,42 @@ VALUATION_REQUIRED_ROW_FIELDS = (
     "action",
     "evidence_quality",
 )
+
+SINGLE_STOCK_INSTITUTIONAL_DEPTH_TERMS = {
+    "segment valuation depth": (
+        "analysis/segment_valuation_model.md",
+        (
+            "segment",
+            "sotp",
+            "revenue",
+            "net profit",
+            "multiple",
+            "sensitivity",
+            "validation trigger",
+        ),
+    ),
+    "secondary-market analysis depth": (
+        "analysis/secondary_market_analysis.md",
+        (
+            "price",
+            "volume",
+            "turnover",
+            "drawdown",
+            "relative performance",
+            "valuation crowding",
+            "support",
+            "resistance",
+            "seat",
+            "institutional",
+            "northbound",
+            "financing",
+            "trading style",
+            "hot-money",
+            "fund attitude",
+            "trend swing",
+        ),
+    ),
+}
 
 INDUSTRY_DEPTH_TERM_SETS: dict[str, tuple[str, tuple[str, ...]]] = {
     "chain business research depth": (
@@ -371,7 +430,12 @@ class GateRunner:
         if industry_case:
             self.check_valuation_coverage_reconciliation()
             self.check_supply_chain_chapter_prose_led()
-        self.check_broker_street_consensus(final_signoff)
+        else:
+            self.check_single_stock_depth()
+        self.check_broker_street_consensus(
+            final_signoff,
+            allow_zero_weight_exhaustion=not industry_case,
+        )
         self.check_final_signoff(final_signoff)
         self.check_workflow_eval(workflow_eval)
         self.check_case_verifier()
@@ -407,7 +471,7 @@ class GateRunner:
         return payload
 
     def load_first_json(self, pattern: str) -> Any:
-        matches = sorted(self.case_dir.glob(pattern))
+        matches = sorted(self.case_dir.glob(pattern), reverse=True)
         if not matches:
             return {}
         rel = str(matches[0].relative_to(self.case_dir))
@@ -600,6 +664,31 @@ class GateRunner:
             "; ".join(arithmetic_errors[:6]),
         )
 
+    def check_single_stock_depth(self) -> None:
+        missing_artifacts: list[str] = []
+        shallow_artifacts: list[str] = []
+        for rel, terms in SINGLE_STOCK_INSTITUTIONAL_DEPTH_TERMS.values():
+            path = self.case_dir / rel
+            text = normalize(read_text(path))
+            if not path.exists():
+                missing_artifacts.append(rel)
+                continue
+            missing_terms = [term for term in terms if normalize(term) not in text]
+            if missing_terms:
+                shallow_artifacts.append(f"{rel}: {', '.join(missing_terms)}")
+        detail_parts = []
+        if missing_artifacts:
+            detail_parts.append("missing " + ", ".join(missing_artifacts))
+        if shallow_artifacts:
+            detail_parts.append("; ".join(shallow_artifacts[:4]))
+        self.check(
+            "single-stock valuation model institutional depth",
+            not missing_artifacts and not shallow_artifacts,
+            "; ".join(detail_parts)
+            if detail_parts
+            else "segment valuation and secondary-market artifacts present",
+        )
+
     def check_valuation_coverage_reconciliation(self) -> None:
         triage_payload = self.load_json("data/valuation_triage_20260630.json")
         core_payload = self.load_json("data/core_candidate_valuation_disposition_20260630.json")
@@ -751,8 +840,16 @@ class GateRunner:
         ]
         self.check("core candidate company cards present", not missing_cards, ", ".join(missing_cards[:10]))
 
-    def check_broker_street_consensus(self, final_signoff: Any) -> None:
-        consensus_files = sorted((self.case_dir / "data").glob("broker_street_consensus_*.json"))
+    def check_broker_street_consensus(
+        self,
+        final_signoff: Any,
+        *,
+        allow_zero_weight_exhaustion: bool = False,
+    ) -> None:
+        consensus_files = sorted(
+            (self.case_dir / "data").glob("broker_street_consensus_*.json"),
+            reverse=True,
+        )
         self.check(
             "broker/street consensus json present",
             bool(consensus_files),
@@ -781,6 +878,12 @@ class GateRunner:
             for row in valuation_payload_rows
             if has_items(row.get("ticker"))
         }
+        zero_weight_valuation_tickers = {
+            str(row.get("ticker"))
+            for row in valuation_payload_rows
+            if has_items(row.get("ticker"))
+            and first_float(row.get("broker_weight")) == 0.0
+        }
         row_tickers = {
             str(row.get("ticker"))
             for row in rows
@@ -801,6 +904,7 @@ class GateRunner:
         weak_rows: list[Mapping[str, Any]] = []
         unusable_rows: list[Mapping[str, Any]] = []
         positive_anchor_tickers: set[str] = set()
+        external_positive_anchor_tickers: set[str] = set()
         for row in rows:
             ticker = str(row.get("ticker") or "<missing ticker>")
             missing = [
@@ -845,6 +949,8 @@ class GateRunner:
                 ) or 0.0) > 0.0
             ):
                 positive_anchor_tickers.add(ticker)
+                if broker_row_external(row):
+                    external_positive_anchor_tickers.add(ticker)
 
         detail = "; ".join(missing_by_row[:8])
         if len(missing_by_row) > 8:
@@ -854,27 +960,61 @@ class GateRunner:
         if len(unusable_by_row) > 8:
             unusable_detail += "; ..."
         self.check(
-            "broker/street consensus values usable for valuation anchor",
-            not unusable_by_row,
-            unusable_detail,
-        )
-        self.check(
             "broker/street weak sources are zero-weight or unavailable",
             not weak_not_downweighted,
             "; ".join(weak_not_downweighted[:8]),
         )
-        missing_positive_anchor = sorted(covered_tickers - positive_anchor_tickers)
+
+        source_exhaustion = normalize(read_text(self.case_dir / "source_exhaustion_log.md"))
+        broker_gap_documented = (
+            ("broker" in source_exhaustion or "券商" in source_exhaustion)
+            and ("target" in source_exhaustion or "目标价" in source_exhaustion)
+        )
+        auditable_zero_weight_tickers = (
+            zero_weight_valuation_tickers
+            if allow_zero_weight_exhaustion
+            and broker_gap_documented
+            and not weak_not_downweighted
+            else set()
+        )
+        unusable_positive_rows = [
+            row
+            for row in unusable_rows
+            if str(row.get("ticker") or "") not in auditable_zero_weight_tickers
+            or (first_float(
+                row.get("street_weight"),
+                row.get("broker_weight"),
+                row.get("valuation_weight"),
+                row.get("weight"),
+            ) or 0.0) > 0.0
+        ]
+        self.check(
+            "broker/street consensus values usable for valuation anchor",
+            not unusable_positive_rows,
+            unusable_detail,
+        )
+
+        missing_positive_anchor = sorted(
+            covered_tickers - positive_anchor_tickers - auditable_zero_weight_tickers
+        )
         self.check(
             "broker/street positive-weight auditable anchor covers valuation universe",
             not missing_positive_anchor,
             ", ".join(missing_positive_anchor[:8]),
         )
+        missing_external_anchor = sorted(
+            covered_tickers - external_positive_anchor_tickers - auditable_zero_weight_tickers
+        )
+        self.check(
+            "broker/street external positive anchor covers valuation universe",
+            not missing_external_anchor,
+            ", ".join(missing_external_anchor[:8]),
+        )
 
-        source_exhaustion = normalize(read_text(self.case_dir / "source_exhaustion_log.md"))
         self.check(
             "broker/street gaps recorded in source exhaustion",
             not (weak_rows or unusable_rows)
-            or ("broker" in source_exhaustion and "target" in source_exhaustion),
+            or broker_gap_documented,
             "source_exhaustion_log.md must record broker target-price gaps",
         )
 
@@ -884,7 +1024,12 @@ class GateRunner:
         self.check(
             "broker/street consensus complete before PASS sign-off",
             signoff_status not in {"pass", "passed", "approved", "signed", "publishable"}
-            or not (weak_rows or unusable_rows),
+            or not (weak_rows or unusable_rows)
+            or (
+                broker_gap_documented
+                and not weak_not_downweighted
+                and covered_tickers <= auditable_zero_weight_tickers
+            ),
             "PASS cannot coexist with incomplete broker/Street target-price coverage",
         )
 
@@ -1495,6 +1640,13 @@ def resolve_artifact(case_dir: Path, rel: str) -> Path:
 def case_requires_industry_chain(gate_manifest: Any, text_blob: str) -> bool:
     gate_text = ""
     if isinstance(gate_manifest, Mapping):
+        report_type = normalize(gate_manifest.get("report_type"))
+        # A single-stock report may embed a full value-chain module without
+        # becoming a multi-company industry-chain valuation case.  The latter
+        # requires universe-wide triage and proxy-field artifacts that are not
+        # applicable to a one-ticker valuation parent.
+        if report_type.startswith("single_stock"):
+            return False
         gate_text = json.dumps(gate_manifest, ensure_ascii=False)
     haystack = normalize(f"{gate_text}\n{text_blob}")
     return any(
@@ -1688,6 +1840,21 @@ def broker_value_usable(value: Any) -> bool:
     if isinstance(value, Sequence) and not isinstance(value, (bytes, bytearray)):
         return any(broker_value_usable(item) for item in value)
     return bool(str(value).strip())
+
+
+def broker_row_external(row: Mapping[str, Any]) -> bool:
+    broker = normalize(row.get("broker"))
+    source_quality = normalize(row.get("source_quality"))
+    source_path = normalize(row.get("source_path"))
+    if source_quality not in BROKER_EXTERNAL_POSITIVE_SOURCE_QUALITIES:
+        return False
+    if source_quality in BROKER_INTERNAL_SOURCE_QUALITIES:
+        return False
+    if any(term in broker for term in BROKER_INTERNAL_NAME_TERMS):
+        return False
+    if source_path.startswith("analysis/") or source_path.startswith("data/current_valuation"):
+        return False
+    return bool(broker)
 
 
 def read_text(path: Path) -> str:

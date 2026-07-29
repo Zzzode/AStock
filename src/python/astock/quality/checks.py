@@ -156,6 +156,29 @@ BROKER_WEAK_SOURCE_QUALITIES = {
     "unavailable",
 }
 
+BROKER_INTERNAL_SOURCE_QUALITIES = {
+    "astock_house",
+    "astock_house_model",
+    "house_model",
+    "house_model_auditable",
+    "internal_model",
+}
+
+BROKER_INTERNAL_NAME_TERMS = (
+    "astock",
+    "house view",
+    "house model",
+    "internal",
+)
+
+BROKER_EXTERNAL_POSITIVE_SOURCE_QUALITIES = {
+    "original_pdf",
+    "broker_official_page",
+    "auditable_consensus_snapshot",
+    "auditable_broker_repost",
+    "broker_repost_full_fields",
+}
+
 BROKER_UNAVAILABLE_VALUES = {
     "",
     "-",
@@ -222,6 +245,44 @@ VALUATION_REQUIRED_ROW_FIELDS = (
     "action",
     "evidence_quality",
 )
+
+SINGLE_STOCK_INSTITUTIONAL_DEPTH_TERMS = {
+    "segment valuation depth": (
+        "analysis/segment_valuation_model.md",
+        (
+            "segment",
+            "sotp",
+            "revenue",
+            "net profit",
+            "multiple",
+            "sensitivity",
+            "validation trigger",
+        ),
+        "S",
+    ),
+    "secondary-market analysis depth": (
+        "analysis/secondary_market_analysis.md",
+        (
+            "price",
+            "volume",
+            "turnover",
+            "drawdown",
+            "relative performance",
+            "valuation crowding",
+            "support",
+            "resistance",
+            "seat",
+            "institutional",
+            "northbound",
+            "financing",
+            "trading style",
+            "hot-money",
+            "fund attitude",
+            "trend swing",
+        ),
+        "S",
+    ),
+}
 
 INDUSTRY_DEPTH_TERM_SETS: dict[str, tuple[str, tuple[str, ...], str]] = {
     "chain business research depth": (
@@ -599,8 +660,13 @@ def evaluate_research_case_quality(case_dir: str | Path) -> dict[str, Any]:
     )
     for check_name, passed, detail, severity in _valuation_model_depth_checks(root):
         add(check_name, passed, detail, severity)
+    if not requires_industry_chain:
+        for check_name, passed, detail, severity in _single_stock_depth_checks(root):
+            add(check_name, passed, detail, severity)
     for check_name, passed, detail, severity in _broker_street_consensus_checks(
-        root, final_signoff
+        root,
+        final_signoff,
+        allow_zero_weight_exhaustion=not requires_industry_chain,
     ):
         add(check_name, passed, detail, severity)
 
@@ -857,8 +923,43 @@ def _valuation_model_depth_checks(root: Path) -> list[tuple[str, bool, str, str]
     return checks
 
 
+def _single_stock_depth_checks(root: Path) -> list[tuple[str, bool, str, str]]:
+    checks: list[tuple[str, bool, str, str]] = []
+    missing_artifacts: list[str] = []
+    shallow_artifacts: list[str] = []
+    for _name, (rel, terms, _severity) in SINGLE_STOCK_INSTITUTIONAL_DEPTH_TERMS.items():
+        path = root / rel
+        text = _normalize(_read_text(path))
+        if not path.exists():
+            missing_artifacts.append(rel)
+            continue
+        missing_terms = [term for term in terms if _normalize(term) not in text]
+        if missing_terms:
+            shallow_artifacts.append(f"{rel}: {', '.join(missing_terms)}")
+
+    detail_parts = []
+    if missing_artifacts:
+        detail_parts.append("missing " + ", ".join(missing_artifacts))
+    if shallow_artifacts:
+        detail_parts.append("; ".join(shallow_artifacts[:4]))
+    checks.append(
+        (
+            "single-stock valuation model institutional depth",
+            not missing_artifacts and not shallow_artifacts,
+            "; ".join(detail_parts)
+            if detail_parts
+            else "segment valuation and secondary-market artifacts present",
+            "S",
+        )
+    )
+    return checks
+
+
 def _broker_street_consensus_checks(
-    root: Path, final_signoff: Any
+    root: Path,
+    final_signoff: Any,
+    *,
+    allow_zero_weight_exhaustion: bool = False,
 ) -> list[tuple[str, bool, str, str]]:
     checks: list[tuple[str, bool, str, str]] = []
     consensus_files = sorted((root / "data").glob("broker_street_consensus_*.json"))
@@ -904,6 +1005,12 @@ def _broker_street_consensus_checks(
         for row in valuation_rows
         if _has_items(row.get("ticker"))
     }
+    zero_weight_valuation_tickers = {
+        str(row.get("ticker"))
+        for row in valuation_rows
+        if _has_items(row.get("ticker"))
+        and _first_float(row.get("broker_weight")) == 0.0
+    }
     row_tickers = {
         str(row.get("ticker"))
         for row in rows
@@ -927,6 +1034,7 @@ def _broker_street_consensus_checks(
     weak_rows: list[Mapping[str, Any]] = []
     unusable_rows: list[Mapping[str, Any]] = []
     positive_anchor_tickers: set[str] = set()
+    external_positive_anchor_tickers: set[str] = set()
     for row in rows:
         ticker = str(row.get("ticker") or "<missing ticker>")
         missing = [
@@ -975,6 +1083,8 @@ def _broker_street_consensus_checks(
             > 0.0
         ):
             positive_anchor_tickers.add(ticker)
+            if _broker_row_external(row):
+                external_positive_anchor_tickers.add(ticker)
 
     detail = "; ".join(missing_by_row[:8])
     if len(missing_by_row) > 8:
@@ -985,21 +1095,52 @@ def _broker_street_consensus_checks(
         unusable_detail += "; ..."
     checks.append(
         (
-            "broker/street consensus values usable for valuation anchor",
-            not unusable_by_row,
-            unusable_detail,
-            "S",
-        )
-    )
-    checks.append(
-        (
             "broker/street weak sources are zero-weight or unavailable",
             not weak_not_downweighted,
             "; ".join(weak_not_downweighted[:8]),
             "S",
         )
     )
-    missing_positive_anchor = sorted(covered_tickers - positive_anchor_tickers)
+
+    source_exhaustion = _normalize(_read_text(root / "source_exhaustion_log.md"))
+    broker_gap_documented = (
+        ("broker" in source_exhaustion or "券商" in source_exhaustion)
+        and ("target" in source_exhaustion or "目标价" in source_exhaustion)
+    )
+    auditable_zero_weight_tickers = (
+        zero_weight_valuation_tickers
+        if allow_zero_weight_exhaustion
+        and broker_gap_documented
+        and not weak_not_downweighted
+        else set()
+    )
+    unusable_positive_rows = [
+        row
+        for row in unusable_rows
+        if str(row.get("ticker") or "") not in auditable_zero_weight_tickers
+        or (
+            _first_float(
+                row.get("street_weight"),
+                row.get("broker_weight"),
+                row.get("valuation_weight"),
+                row.get("weight"),
+            )
+            or 0.0
+        )
+        > 0.0
+    ]
+    checks.append(
+        (
+            "broker/street consensus values usable for valuation anchor",
+            not unusable_positive_rows,
+            unusable_detail,
+            "S",
+        )
+    )
+
+    missing_positive_anchor = sorted(
+        covered_tickers - positive_anchor_tickers - auditable_zero_weight_tickers
+    )
     checks.append(
         (
             "broker/street positive-weight auditable anchor covers valuation universe",
@@ -1008,13 +1149,23 @@ def _broker_street_consensus_checks(
             "S",
         )
     )
+    missing_external_anchor = sorted(
+        covered_tickers - external_positive_anchor_tickers - auditable_zero_weight_tickers
+    )
+    checks.append(
+        (
+            "broker/street external positive anchor covers valuation universe",
+            not missing_external_anchor,
+            ", ".join(missing_external_anchor[:8]),
+            "S",
+        )
+    )
 
-    source_exhaustion = _normalize(_read_text(root / "source_exhaustion_log.md"))
     checks.append(
         (
             "broker/street gaps recorded in source exhaustion",
             not (weak_rows or unusable_rows)
-            or ("broker" in source_exhaustion and "target" in source_exhaustion),
+            or broker_gap_documented,
             "source_exhaustion_log.md must record broker target-price gaps",
             "A",
         )
@@ -1029,7 +1180,12 @@ def _broker_street_consensus_checks(
         (
             "broker/street consensus complete before PASS sign-off",
             signoff_status not in {"pass", "passed", "approved", "signed", "publishable"}
-            or not (weak_rows or unusable_rows),
+            or not (weak_rows or unusable_rows)
+            or (
+                broker_gap_documented
+                and not weak_not_downweighted
+                and covered_tickers <= auditable_zero_weight_tickers
+            ),
             "PASS cannot coexist with incomplete broker/Street target-price coverage",
             "S",
         )
@@ -1038,7 +1194,7 @@ def _broker_street_consensus_checks(
 
 
 def _load_first_json(root: Path, pattern: str) -> Any:
-    matches = sorted(root.glob(pattern))
+    matches = sorted(root.glob(pattern), reverse=True)
     if not matches:
         return {}
     payload, error = _load_json_document(matches[0])
@@ -1172,6 +1328,9 @@ def _looks_like_artifact_path(value: str) -> bool:
 def _case_requires_industry_chain(gate_manifest: Any, text_blob: str) -> bool:
     gate_text = ""
     if isinstance(gate_manifest, Mapping):
+        report_type = _normalize(gate_manifest.get("report_type"))
+        if report_type.startswith(("single_stock", "single-stock")):
+            return False
         gate_text = json.dumps(gate_manifest, ensure_ascii=False)
     haystack = _normalize(f"{gate_text}\n{text_blob}")
     return any(
@@ -1245,15 +1404,14 @@ def _truthy(value: Any) -> bool:
 
 
 def _extract_publishability_score(review_log: str) -> int | None:
-    patterns = (
-        r"publishability\s+score\D+(\d{1,3})",
-        r"publishability_score\D+(\d{1,3})",
+    matches = list(
+        re.finditer(
+            r"publishability(?:\s+score|_score)\D+(\d{1,3})",
+            review_log,
+            re.IGNORECASE,
+        )
     )
-    for pattern in patterns:
-        match = re.search(pattern, review_log, re.IGNORECASE)
-        if match:
-            return int(match.group(1))
-    return None
+    return int(matches[-1].group(1)) if matches else None
 
 
 def _read_text(path: Path) -> str:
@@ -1328,7 +1486,9 @@ def _evaluate_skill_case(case: SkillEvalCase) -> dict[str, Any]:
         term for term in case.required_terms if _normalize(term) not in normalized
     ]
     forbidden_hits = [
-        term for term in case.forbidden_terms if _normalize(term) in normalized
+        term
+        for term in case.forbidden_terms
+        if _has_unnegated_forbidden_term(normalized, _normalize(term))
     ]
     passed = not missing_required and not forbidden_hits
     score = 100 - len(missing_required) * 20 - len(forbidden_hits) * 50
@@ -1341,6 +1501,38 @@ def _evaluate_skill_case(case: SkillEvalCase) -> dict[str, Any]:
         "forbidden_hits": forbidden_hits,
         "metadata": dict(case.metadata),
     }
+
+
+def _has_unnegated_forbidden_term(response: str, term: str) -> bool:
+    """Return whether a forbidden action is asserted rather than explicitly denied."""
+    if not term:
+        return False
+
+    for match in re.finditer(re.escape(term), response):
+        sentence_start = max(
+            response.rfind(".", 0, match.start()),
+            response.rfind("!", 0, match.start()),
+            response.rfind("?", 0, match.start()),
+            response.rfind(";", 0, match.start()),
+            response.rfind("。", 0, match.start()),
+            response.rfind("！", 0, match.start()),
+            response.rfind("？", 0, match.start()),
+            response.rfind("；", 0, match.start()),
+            response.rfind("\n", 0, match.start()),
+        )
+        prefix = response[sentence_start + 1 : match.start()].strip()
+        clause = re.split(r"(?:\bbut\b|\bhowever\b|但是|但|而是|；|;|，|,)", prefix)[-1].strip()
+        explicit_english_denial = re.search(
+            r"(?:\b(?:do|does|did|will|shall|can)\s+not\b|\b(?:cannot|can't|won't|never|not)\b)(?:\s+\w+){0,3}\s*$",
+            clause,
+        )
+        explicit_chinese_denial = re.search(
+            r"(?:不会|不能|不可|不得|禁止|严禁|不予)(?:[\s\w\u4e00-\u9fff、:：-]){0,40}$",
+            clause,
+        )
+        if explicit_english_denial is None and explicit_chinese_denial is None:
+            return True
+    return False
 
 
 def _resolve_path(value: Any, root: Path | None) -> Path:
@@ -1412,6 +1604,21 @@ def _broker_value_usable(value: Any) -> bool:
     if isinstance(value, Sequence) and not isinstance(value, (str, bytes, bytearray)):
         return any(_broker_value_usable(item) for item in value)
     return bool(str(value).strip())
+
+
+def _broker_row_external(row: Mapping[str, Any]) -> bool:
+    broker = _normalize(row.get("broker"))
+    source_quality = _normalize(row.get("source_quality"))
+    source_path = _normalize(row.get("source_path"))
+    if source_quality not in BROKER_EXTERNAL_POSITIVE_SOURCE_QUALITIES:
+        return False
+    if source_quality in BROKER_INTERNAL_SOURCE_QUALITIES:
+        return False
+    if any(term in broker for term in BROKER_INTERNAL_NAME_TERMS):
+        return False
+    if source_path.startswith("analysis/") or source_path.startswith("data/current_valuation"):
+        return False
+    return bool(broker)
 
 
 def _float_or_none(value: Any) -> float | None:

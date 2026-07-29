@@ -21,9 +21,15 @@ DEFAULT_QUESTION = "Is now a good time to enter?"
 DEFAULT_SESSIONS_DIR = Path(__file__).resolve().parents[4] / "data" / "sessions"
 CORE_AGENT_SPECS: list[dict[str, Any]] = [
     {
+        "id": "market-regime-analyst",
+        "label": "Market Regime Analyst",
+        "mission": "Constrain target-level risk using the separately supplied whole-market state.",
+        "required_packet_keys": ["data_quality", "warnings", "question"],
+    },
+    {
         "id": "market-analyst",
         "label": "Market Analyst",
-        "mission": "Interpret market momentum, volume-price structure, and key levels.",
+        "mission": "Interpret target momentum, volume-price structure, and key levels.",
         "required_packet_keys": ["quote", "analysis", "data_quality"],
     },
     {
@@ -33,14 +39,14 @@ CORE_AGENT_SPECS: list[dict[str, Any]] = [
         "required_packet_keys": ["analysis", "screen", "config"],
     },
     {
-        "id": "policy-analyst",
-        "label": "Policy Analyst",
+        "id": "industry-analyst",
+        "label": "Industry Analyst",
         "mission": "Supplement with industry policy, regulatory changes, and macro constraints.",
         "required_packet_keys": ["analysis", "warnings", "question"],
     },
     {
-        "id": "risk-manager",
-        "label": "Risk Manager",
+        "id": "risk-analyst",
+        "label": "Risk Analyst",
         "mission": "Provide position sizing, stop-loss/take-profit levels, and risk exposure boundaries.",
         "required_packet_keys": ["quote", "analysis", "data_quality"],
     },
@@ -50,45 +56,77 @@ CORE_AGENT_SPECS: list[dict[str, Any]] = [
         "mission": "Present counterarguments and failure scenarios to challenge the main thesis.",
         "required_packet_keys": ["quote", "analysis", "screen", "warnings"],
     },
+    {
+        "id": "data-verifier",
+        "label": "Data Verifier",
+        "mission": "Block unsupported or stale facts from target-level conclusions.",
+        "required_packet_keys": ["quote", "analysis", "data_quality", "warnings"],
+    },
 ]
 EXPANSION_ROLE_SPECS: dict[str, list[dict[str, Any]]] = {
     "short_term": [
         {
-            "id": "scalper",
-            "label": "Scalper",
-            "mission": "Provide short-term entry timing and exit conditions.",
+            "id": "short-term-trader",
+            "label": "Short-Term Trader",
+            "mission": "Provide conditional 1-10 day entry timing and exit conditions.",
             "required_packet_keys": ["quote", "analysis", "data_quality"],
         },
         {
-            "id": "momentum-trader",
-            "label": "Momentum Trader",
-            "mission": "Assess momentum continuation probability and chasing risk.",
+            "id": "execution-liquidity-analyst",
+            "label": "Execution & Liquidity Analyst",
+            "mission": "Assess A-share tradability, T+1, price-limit, and liquidity constraints.",
             "required_packet_keys": ["quote", "analysis", "screen"],
         },
     ],
     "swing": [
         {
-            "id": "swing-trader",
-            "label": "Swing Trader",
+            "id": "swing-trend-analyst",
+            "label": "Swing Trend Analyst",
             "mission": "Provide a 3-10 day swing plan with position pacing.",
             "required_packet_keys": ["analysis", "screen", "data_quality"],
         }
     ],
     "long_term": [
         {
-            "id": "value-investor",
-            "label": "Value Investor",
+            "id": "valuation-specialist",
+            "label": "Valuation Specialist",
             "mission": "Assess long-term margin of safety and holding rationale.",
             "required_packet_keys": ["screen", "config", "profiles"],
         }
     ],
     "sentiment": [
         {
-            "id": "sentiment-analyst",
-            "label": "Sentiment Analyst",
-            "mission": "Assess sentiment-driven moves, hot-topic sustainability, and speculation risk.",
+            "id": "sector-rotation-analyst",
+            "label": "Sector Rotation Analyst",
+            "mission": "Assess sector relative strength, crowding, and theme durability.",
             "required_packet_keys": ["quote", "analysis", "warnings"],
         }
+    ],
+    "portfolio": [
+        {
+            "id": "portfolio-manager",
+            "label": "Portfolio Manager",
+            "mission": "Merge only non-vetoed target conclusions into a conditional paper-plan allocation view.",
+            "required_packet_keys": ["quote", "analysis", "config", "data_quality"],
+        },
+        {
+            "id": "quant-risk-modeler",
+            "label": "Quant Risk Modeler",
+            "mission": "Review concentration, scenario, and model-risk limits before allocation.",
+            "required_packet_keys": ["quote", "analysis", "data_quality", "warnings"],
+        },
+        {
+            "id": "execution-liquidity-analyst",
+            "label": "Execution & Liquidity Analyst",
+            "mission": "Review A-share liquidity, T+1, price-limit, and suspension constraints.",
+            "required_packet_keys": ["quote", "analysis", "data_quality"],
+        },
+        {
+            "id": "compliance-officer",
+            "label": "Compliance Officer",
+            "mission": "Confirm source disclosure and research-only boundary compliance.",
+            "required_packet_keys": ["data_quality", "warnings", "question"],
+        },
     ],
 }
 
@@ -144,7 +182,6 @@ class TeamAnalysisService:
             self._analysis_service = AnalysisService(
                 self.db,
                 quote_service=self.quote_service,
-                feedback_learner=self.feedback_learner,
             )
         return self._analysis_service
 
@@ -373,6 +410,18 @@ class TeamAnalysisService:
                 "资金",
                 "新闻",
             ],
+            "portfolio": [
+                "portfolio",
+                "position size",
+                "cash",
+                "allocation",
+                "risk budget",
+                "仓位",
+                "组合",
+                "现金",
+                "配置",
+                "风险预算",
+            ],
         }
 
         for role, keywords in role_keywords.items():
@@ -413,11 +462,13 @@ class TeamAnalysisService:
             "expansion_agents": expansion_agents,
             "active_agent_ids": [agent["id"] for agent in active_agents],
             "merge_order": [
+                "market-regime-analyst",
                 "market-analyst",
                 "fundamental-analyst",
-                "policy-analyst",
-                "risk-manager",
+                "industry-analyst",
+                "risk-analyst",
                 "contrarian-analyst",
+                "data-verifier",
             ]
             + [agent["id"] for agent in expansion_agents],
             "lead_rules": [
@@ -521,7 +572,7 @@ class TeamAnalysisService:
         )
 
         quote = result.packet.get("quote", {})
-        indicators = result.packet.get("analysis", {}).get("indicators", {})
+        observations = result.packet.get("analysis", {}).get("indicators", {})
 
         lines = [
             f"# {result.name or result.code} ({result.code}) Team Data Packet",
@@ -541,11 +592,8 @@ class TeamAnalysisService:
             "",
             f"- Latest price: `{float(quote.get('price', 0.0) or 0.0):.2f}`",
             f"- Change percent: `{float(quote.get('change_percent', 0.0) or 0.0):+.2f}%`",
-            f"- MA5: `{float(indicators.get('ma5', 0.0) or 0.0):.2f}`",
-            f"- MA20: `{float(indicators.get('ma20', 0.0) or 0.0):.2f}`",
-            f"- MACD Hist: `{float(indicators.get('macd_hist', 0.0) or 0.0):+.4f}`",
-            f"- RSI6: `{float(indicators.get('rsi6', 0.0) or 0.0):.2f}`",
-            f"- KDJ-J: `{float(indicators.get('kdj_j', 0.0) or 0.0):.2f}`",
+            f"- Daily open/high/low/close: `{observations.get('open', 'n/a')}` / `{observations.get('high', 'n/a')}` / `{observations.get('low', 'n/a')}` / `{observations.get('close', 'n/a')}`",
+            f"- Daily volume / amount: `{observations.get('volume', 'n/a')}` / `{observations.get('amount', 'n/a')}`",
             "",
             "## Notes",
             "",

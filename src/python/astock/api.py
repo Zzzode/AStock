@@ -10,7 +10,6 @@ from pydantic import BaseModel, Field
 
 from .storage import Database
 from .quote import QuoteService
-from .analysis import TechnicalAnalyzer
 from .stock_picker import StockScreener
 from .backtest import BacktestEngine
 from .config import ConfigManager
@@ -78,11 +77,11 @@ class QuoteResponse(BaseModel):
 
 
 class AnalysisResponse(BaseModel):
-    """Analysis response"""
+    """Raw price-and-volume observation response."""
 
     code: str
-    signals: list[dict[str, Any]]
     latest: dict[str, Any]
+    previous: dict[str, Any]
 
 
 class ScreenResult(BaseModel):
@@ -183,18 +182,16 @@ async def analyze_stock(
     db: Database = Depends(get_db),
     quote_service: QuoteService = Depends(get_quote_service),
 ) -> AnalysisResponse:
-    """Technical analysis"""
+    """Return raw daily observations without directional signal labels."""
     try:
         df = await quote_service.get_daily(code, limit=days)
 
         if df.empty:
             raise HTTPException(status_code=404, detail=f"No data: {code}")
 
-        analyzer = TechnicalAnalyzer(df)
-        analyzer.add_all()
-        result = analyzer.get_signals()
-
-        return AnalysisResponse(code=code, **result)
+        latest = df.iloc[-1].to_dict()
+        previous = df.iloc[-2].to_dict() if len(df) > 1 else latest
+        return AnalysisResponse(code=code, latest=latest, previous=previous)
     except HTTPException:
         raise
     except Exception as e:
@@ -244,12 +241,20 @@ async def screen_stocks(
 @app.get("/backtest/{code}", response_model=BacktestResponse)
 async def backtest_stock(
     code: str,
-    strategy: str = Query("ma_cross", description="Strategy name"),
+    strategy: Optional[str] = Query(
+        None,
+        description="Explicit legacy-study strategy; excluded from market-desk decisions",
+    ),
     capital: float = Query(100000, ge=10000, description="Initial capital"),
     quote_service: QuoteService = Depends(get_quote_service),
 ) -> BacktestResponse:
-    """Backtest"""
+    """Run an explicitly requested historical study, never a desk decision gate."""
     try:
+        if not strategy:
+            raise HTTPException(
+                status_code=400,
+                detail="strategy must be explicit; no indicator strategy is a market-desk default",
+            )
         df = await quote_service.get_daily(code, save=False)
 
         if df.empty:

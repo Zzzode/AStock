@@ -4,8 +4,8 @@ Provides cross-session persistent memory storage accessible by Claude Code subag
 """
 
 import json
-from dataclasses import dataclass, field, asdict
-from datetime import datetime
+from dataclasses import dataclass, field
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Any, Optional
 
@@ -281,7 +281,3 @@ class MemoryStore:
             self._save()
 
         return count
-
-
-# Need to import timedelta
-from datetime import timedelta

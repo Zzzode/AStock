@@ -6,8 +6,7 @@ statements, and news pipeline to detect conflicts and stale data.
 
 from __future__ import annotations
 
-import asyncio
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Optional
 

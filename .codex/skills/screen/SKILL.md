@@ -1,6 +1,6 @@
 ---
 name: screen
-description: Use when user needs to screen or filter stocks based on technical indicators, valuation factors, or custom criteria. Triggers on "find stocks", "screen for", "filter by", "which stocks have golden cross", "pick some stocks" or when user asks for stock selection based on specific conditions.
+description: Use when user needs to screen or filter stocks using valuation, financial quality, liquidity, volatility, capital-flow, or observable market-structure conditions. Triggers on "find stocks", "screen for", "filter by", or "pick some stocks". Do not screen on MA, MACD, KDJ, RSI, crossovers, or overbought/oversold labels.
 ---
 
 <SUBAGENT-STOP>
@@ -12,6 +12,11 @@ If you were dispatched as a subagent to execute a specific task, skip this skill
 Execute screening using factors that actually exist in this repository.
 Python returns only candidate stock snapshots and factor hit details — no composite scoring or ranking.
 
+A screen is not a strategy answer. When the user asks which result to buy,
+hold, add, reduce, exit, or use in a trading strategy, pass the shortlist to
+`market-desk`; the compulsory desk team must complete and verify the evidence
+before it can express an opportunity view.
+
 ## Execution Flow
 
 ### Step 1: Parse Conditions
@@ -22,10 +27,10 @@ Common mappings:
 |---------------|-------------------|
 | Undervalued, cheap | `pe_low,pb_low` |
 | Deeply undervalued | `pe_very_low,pb_very_low` |
-| MA golden cross | `ma5_cross_ma20` |
-| Above 20-day MA | `ma20_above` |
-| High volume | `high_volume` |
-| Oversold bounce | `rsi_oversold,kdj_oversold` |
+| Liquid trading | `high_volume,volume_steady` |
+| Wide session range | `range_expansion` |
+| Close near session high | `close_near_high` |
+| Financial quality | `roe_high,profit_growth,revenue_growth` |
 
 Do NOT use factor names that don't exist in this repository.
 
@@ -33,7 +38,7 @@ Do NOT use factor names that don't exist in this repository.
 
 ```bash
 .venv/bin/python -m astock.cli screen --json --limit 10
-.venv/bin/python -m astock.cli screen pe_low,pb_low,ma5_cross_ma20 --json --limit 10
+.venv/bin/python -m astock.cli screen pe_low,pb_low,volume_steady --json --limit 10
 .venv/bin/python -m astock.cli screen --codes 000001 --json
 ```
 
@@ -66,7 +71,7 @@ screen_events = [
 .venv/bin/python -m astock.cli screen pe_low,pb_low --industry 银行 --json --limit 10
 
 # Exclude a sector
-.venv/bin/python -m astock.cli screen ma5_cross_ma20 --exclude-industry 房地产 --json --limit 10
+.venv/bin/python -m astock.cli screen volume_steady,close_near_high --exclude-industry 房地产 --json --limit 10
 ```
 
 ### Step 3: Parse Results and Complete Agent Reasoning
@@ -86,7 +91,7 @@ When replying to user, supplement with at minimum:
 - What the hit combination implies
 - Risk points and invalidation conditions
 
-If screening a single stock, frame it as a "condition hit snapshot" — not a "strategy match score".
+If screening a single stock, frame it as a "condition hit snapshot" — not a strategy score, entry trigger, or rank. A screen cannot substitute for the desk's catalyst, market-regime, counterparty, liquidity, and risk review.
 
 ## Error Handling
 

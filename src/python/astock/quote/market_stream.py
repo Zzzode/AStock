@@ -10,11 +10,10 @@ for subscribed stock codes.
 from __future__ import annotations
 
 import asyncio
-import json
 import re
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, AsyncIterator, Callable, Coroutine, Optional
+from typing import Any, Callable, Coroutine, Optional
 
 from ..utils import get_logger
 

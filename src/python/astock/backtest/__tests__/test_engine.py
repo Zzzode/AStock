@@ -3,7 +3,7 @@
 import pytest
 import pandas as pd
 import numpy as np
-from datetime import date, datetime
+from unittest.mock import patch
 
 from astock.backtest.engine import BacktestEngine, BacktestResult
 from astock.backtest.strategies import (
@@ -100,6 +100,86 @@ class TestBacktestEngine:
         assert "total_return" in result_dict
         assert "sharpe_ratio" in result_dict
         assert "max_drawdown" in result_dict
+        assert result_dict["execution_assumptions"]["execution_timing"] == "next_open"
+        assert result_dict["warnings"]
+
+    def test_executes_completed_bar_signal_at_next_open(self) -> None:
+        """A close-derived signal must never fill at that same close."""
+        df = pd.DataFrame(
+            {
+                "date": pd.date_range("2024-01-01", periods=25, freq="D"),
+                "open": [10.0] * 20 + [15.0, 16.0, 17.0, 18.0, 19.0],
+                "high": [10.0] * 25,
+                "low": [10.0] * 25,
+                "close": [10.0] * 19 + [11.0, 20.0, 19.0, 18.0, 17.0, 16.0],
+                "volume": [1_000_000.0] * 25,
+            }
+        )
+        result = BacktestEngine().run(df, "ma_cross", initial_capital=100_000)
+
+        assert result.execution_assumptions.execution_timing == "next_open"
+        if result.trades:
+            first_trade = result.trades[0]
+            signal_index = next(
+                index
+                for index, row in MACrossStrategy().generate_signals(df).iterrows()
+                if row["signal"] == first_trade.signal
+            )
+            assert first_trade.price == df.iloc[signal_index + 1]["open"]
+
+    def test_terminal_value_includes_assumed_sell_cost_for_open_position(self) -> None:
+        class BuyAndHoldStrategy:
+            def generate_signals(self, frame: pd.DataFrame) -> pd.DataFrame:
+                enriched = frame.copy()
+                enriched["signal"] = [Signal.BUY, Signal.HOLD, Signal.HOLD]
+                return enriched
+
+        frame = pd.DataFrame(
+            {
+                "date": pd.date_range("2024-01-01", periods=3, freq="D"),
+                "open": [10.0, 10.0, 20.0],
+                "high": [10.0, 10.0, 20.0],
+                "low": [10.0, 10.0, 20.0],
+                "close": [10.0, 10.0, 20.0],
+            }
+        )
+        with patch("astock.backtest.engine.get_strategy", return_value=BuyAndHoldStrategy()):
+            result = BacktestEngine().run(frame, "test", initial_capital=2_000)
+
+        expected_cost = 100 * 20 * (0.0003 + 0.0005 + 0.00001)
+        assert result.terminal_liquidation_cost == pytest.approx(expected_cost)
+        assert result.final_capital == pytest.approx(999.69 + 2_000 - expected_cost)
+        assert result.equity_curve[-1]["equity"] == pytest.approx(result.final_capital)
+        assert all(trade.signal != Signal.SELL for trade in result.trades)
+        assert "includes modelled sell costs" in " ".join(result.warnings)
+
+    def test_walk_forward_reports_only_out_of_sample_folds(self, sample_df: pd.DataFrame) -> None:
+        result = BacktestEngine().run_walk_forward(
+            sample_df,
+            "ma_cross",
+            train_bars=60,
+            test_bars=30,
+        )
+
+        payload = result.to_dict()
+        assert payload["schema_version"] == "walk_forward_backtest.v1"
+        assert payload["fold_count"] == 5
+        assert all(fold.start_date >= sample_df.iloc[60]["date"].date() for fold in result.folds)
+        assert "not a continuous multi-asset" in payload["warnings"][1]
+
+    def test_walk_forward_carries_explicit_cost_assumptions(self, sample_df: pd.DataFrame) -> None:
+        result = BacktestEngine().run_walk_forward(
+            sample_df,
+            "ma_cross",
+            train_bars=60,
+            test_bars=30,
+            transfer_fee_rate=0.00001,
+        )
+
+        assert all(
+            fold.execution_assumptions.transfer_fee_rate == 0.00001
+            for fold in result.folds
+        )
 
     def test_calc_max_drawdown(self, sample_df: pd.DataFrame) -> None:
         """Max drawdown calculation test"""

@@ -2,21 +2,12 @@
 
 import asyncio
 import os
-import sys
 import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import date
 from functools import partial, wraps
-from typing import Any, Callable, Optional, TypeVar, ParamSpec, cast
+from typing import Any, Callable, Optional, TypeVar, ParamSpec
 
-import asyncio
-import os
-import sys
-import time
-from concurrent.futures import ThreadPoolExecutor
-from datetime import date
-from functools import partial, wraps
-from typing import Any, Callable, Optional, TypeVar, ParamSpec, cast
 
 import akshare as ak
 import pandas as pd
@@ -85,6 +76,7 @@ class AkShareClient:
         self._rate_limit = rate_limit_per_second
         self._last_request_time: float = 0.0
         self._rate_limit_lock = asyncio.Lock()
+        self._daily_history_timeout_seconds = 10.0
 
     async def _apply_rate_limit(self) -> None:
         """Apply request rate limiting"""
@@ -591,13 +583,10 @@ class AkShareClient:
     ) -> pd.DataFrame:
         """Get daily candlestick data
 
-        Priority:
-        1. Sina data source stock_zh_a_daily (more stable, no mini-racer required)
-        2. East Money data source stock_zh_a_hist (more complete data, but may trigger mini-racer)
-
-        Priority:
-        1. Sina data source stock_zh_a_daily (more stable, no mini-racer required)
-        2. East Money data source stock_zh_a_hist (more complete data, but may trigger mini-racer)
+        The East Money history endpoint is deliberately used instead of the
+        legacy Sina adapter because it exposes an HTTP timeout. A synchronous
+        library call without a request timeout can leave a worker thread alive
+        after coroutine cancellation and stall the CLI at process shutdown.
 
         Args:
             code: Stock code
@@ -612,37 +601,29 @@ class AkShareClient:
         """
         errors: list[str] = []
 
-        # Prefer Sina data source (more stable)
+        # East Money accepts an explicit request timeout. Keep this source
+        # bounded; an unbounded public fallback is worse than returning a
+        # source-labelled failure to the research desk.
         try:
-            symbol = self._daily_symbol(code)
-            kwargs: dict[str, Any] = {"symbol": symbol, "adjust": "qfq"}
+            kwargs: dict[str, Any] = {
+                "symbol": code,
+                "period": "daily",
+                "adjust": "qfq",
+                "timeout": self._daily_history_timeout_seconds,
+            }
 
             if start_date:
                 kwargs["start_date"] = start_date.strftime("%Y%m%d")
             if end_date:
                 kwargs["end_date"] = end_date.strftime("%Y%m%d")
 
-            df = ak.stock_zh_a_daily(**kwargs)
-            df = self._filter_by_date(df, start_date, end_date)
-            return self._normalize_daily_dataframe(df)
-        except Exception as e:
-            error_type = self._classify_error(e)
-            errors.append(f"Sina: {type(e).__name__}: {e} (type={error_type})")
-            logger.warning(f"Sina data source stock_zh_a_daily failed: {e} (type={error_type})")
-
-        # Fallback: East Money data source
-        try:
-            df = ak.stock_zh_a_hist(
-                symbol=code,
-                period="daily",
-                adjust="qfq",
-            )
+            df = ak.stock_zh_a_hist(**kwargs)
             df = self._filter_by_date(df, start_date, end_date)
             return self._normalize_daily_dataframe(df)
         except Exception as e:
             error_type = self._classify_error(e)
             errors.append(f"East Money: {type(e).__name__}: {e} (type={error_type})")
-            logger.error(f"East Money data source stock_zh_a_hist also failed: {e}")
+            logger.error(f"East Money data source stock_zh_a_hist failed: {e}")
 
         raise DataSourceError(
             f"Failed to fetch daily data: {'; '.join(errors)}",
@@ -671,12 +652,12 @@ class AkShareClient:
         if date_col is None:
             return df
 
+        parsed_dates = pd.to_datetime(df[date_col], errors="coerce")
         if start_date:
-            start_str = start_date.strftime("%Y-%m-%d")
-            df = df[df[date_col] >= start_str]
+            df = df[parsed_dates >= pd.Timestamp(start_date)]
+            parsed_dates = parsed_dates.loc[df.index]
         if end_date:
-            end_str = end_date.strftime("%Y-%m-%d")
-            df = df[df[date_col] <= end_str]
+            df = df[parsed_dates <= pd.Timestamp(end_date)]
 
         return df
 
@@ -695,7 +676,6 @@ class AkShareClient:
             df = ak.stock_info_a_code_name()
             return df.rename(columns={"code": "code", "name": "name"})
         except Exception as e:
-            error_type = self._classify_error(e)
             errors.append(f"Sina: {type(e).__name__}: {e}")
             logger.warning(f"Sina data source stock_info_a_code_name failed: {e}")
 
@@ -704,7 +684,6 @@ class AkShareClient:
             df = ak.stock_zh_a_spot_em()
             return df[["代码", "名称"]].rename(columns={"代码": "code", "名称": "name"})
         except Exception as e:
-            error_type = self._classify_error(e)
             errors.append(f"East Money: {type(e).__name__}: {e}")
             logger.error(f"East Money data source also failed: {e}")
 

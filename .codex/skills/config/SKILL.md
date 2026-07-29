@@ -17,6 +17,7 @@ Manage the current user's trading preference configuration.
 .venv/bin/python -m astock.cli config show
 .venv/bin/python -m astock.cli config set risk_level aggressive
 .venv/bin/python -m astock.cli config set trading_style swing
+.venv/bin/python -m astock.cli config set market_data_mode public_observation
 .venv/bin/python -m astock.cli config style
 .venv/bin/python -m astock.cli config reset
 ```
@@ -43,6 +44,7 @@ Do NOT reference TypeScript config files that don't exist in this repository.
 | `max_price` | Maximum price filter |
 | `default_capital` | Default capital amount |
 | `default_strategy` | Default strategy |
+| `market_data_mode` | `public_observation` (AKShare research and paper suggestions) / `licensed_eod` (optional licensed replay and formal-release controls) |
 
 ## Error Handling
 

@@ -7,7 +7,7 @@ from typing import Optional, Any, cast
 
 from ..storage import Database, WatchItem, AlertRecord
 from ..quote import QuoteService
-from ..quote.market_stream import MarketStream, MarketTick
+from ..quote.market_stream import MarketStream
 from ..utils import get_logger, DataSourceError, AlertError
 from .scanner import SignalScanner
 from .alert_engine import AlertEngine

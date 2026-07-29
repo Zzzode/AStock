@@ -1,12 +1,11 @@
 """Stock screener tests"""
 
 import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock
 import pandas as pd
 import numpy as np
 
 from astock.stock_picker.screener import StockScreener, ScreenResult
-from astock.stock_picker.factors import Factor, FactorType
 
 
 @pytest.fixture
@@ -85,6 +84,50 @@ class TestStockScreener:
         factors = screener._get_factor_list(["pe_low", "pb_low"])
         assert len(factors) == 2
 
+    def test_factor_registry_excludes_mechanical_indicator_gates(
+        self, screener: StockScreener
+    ) -> None:
+        """Screening must not route MA/MACD/KDJ/RSI through factor matching."""
+        from astock.stock_picker.factors import FACTORS, get_preset_factors
+
+        prohibited_keys = {
+            "ma20_above",
+            "ma5_cross_ma20",
+            "ma10_cross_ma30",
+            "price_above_ma5",
+            "ma_trend_up",
+            "macd_golden_cross",
+            "macd_dead_cross",
+            "macd_above_zero",
+            "kdj_golden_cross",
+            "kdj_oversold",
+            "kdj_overbought",
+            "rsi_oversold",
+            "rsi_overbought",
+            "rsi_neutral",
+        }
+        prohibited_fields = {
+            "ma5",
+            "ma10",
+            "ma20",
+            "ma30",
+            "ma60",
+            "macd",
+            "macd_signal",
+            "macd_hist",
+            "kdj_k",
+            "kdj_d",
+            "kdj_j",
+            "rsi6",
+        }
+
+        assert set(FACTORS).isdisjoint(prohibited_keys)
+        assert {factor.field for factor in FACTORS.values()}.isdisjoint(prohibited_fields)
+        for preset in ("high_dividend", "value", "growth"):
+            assert set(get_preset_factors(preset)).isdisjoint(
+                {"ma20_above", "ma5_cross_ma20", "ma_trend_up", "macd_golden_cross"}
+            )
+
     def test_check_condition(self, screener: StockScreener) -> None:
         """Condition check test"""
         from astock.stock_picker.factors import FACTORS
@@ -93,24 +136,23 @@ class TestStockScreener:
             "pe": 25,
             "pb": 2.5,
             "close": 15,
-            "ma20": 14,
         }
 
         # Test PE < 30
         factor = FACTORS["pe_low"]
-        assert screener._check_condition(data, factor) == True
+        assert screener._check_condition(data, factor)
 
         # Test PB < 3
         factor = FACTORS["pb_low"]
-        assert screener._check_condition(data, factor) == True
+        assert screener._check_condition(data, factor)
 
     def test_compare_values(self, screener: StockScreener) -> None:
         """Value comparison test"""
-        assert screener._compare_values(10, "lt", 20) == True
-        assert screener._compare_values(10, "gt", 20) == False
-        assert screener._compare_values(10, "eq", 10) == True
-        assert screener._compare_values(10, "le", 10) == True
-        assert screener._compare_values(10, "ge", 10) == True
+        assert screener._compare_values(10, "lt", 20)
+        assert not screener._compare_values(10, "gt", 20)
+        assert screener._compare_values(10, "eq", 10)
+        assert screener._compare_values(10, "le", 10)
+        assert screener._compare_values(10, "ge", 10)
 
 
 class TestScreenResult:

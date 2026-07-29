@@ -10,7 +10,6 @@ from astock.market_event import (
     build_alert_trigger_event,
     build_events_from_quote_payload,
     build_events_from_screen_payload,
-    build_events_from_signal_payload,
     build_news_policy_event,
     build_sector_move_event,
     quality_from_payload,
@@ -56,37 +55,6 @@ def test_build_events_from_quote_payload() -> None:
     assert volume_event.metrics["volume_ratio"] == 3.0
 
 
-def test_build_events_from_signal_payload() -> None:
-    payload = {
-        "code": "000001",
-        "level": 2,
-        "latest": {"close": 15.5, "macd_hist": 0.18},
-        "scanned_at": datetime(2026, 6, 12, 10, 30, tzinfo=timezone.utc),
-        "signals": [
-            {
-                "type": "macd_cross_up",
-                "name": "MACD Golden Cross",
-                "description": "MACD histogram turned positive",
-                "bias": "bullish",
-            },
-            {
-                "type": "rsi_overbought",
-                "name": "RSI Overbought",
-                "bias": "bearish",
-            },
-        ],
-    }
-
-    events = build_events_from_signal_payload(payload)
-
-    assert len(events) == 2
-    assert {event.event_type for event in events} == {MarketEventType.TECHNICAL_SIGNAL}
-    assert events[0].severity == EventSeverity.IMPORTANT
-    assert events[0].direction == EventDirection.BULLISH
-    assert events[0].context["signal_type"] == "macd_cross_up"
-    assert events[1].direction == EventDirection.BEARISH
-
-
 @dataclass
 class ScreenPayload:
     code: str
@@ -101,19 +69,19 @@ def test_build_events_from_screen_payload_maps_factor_types() -> None:
         code="000001",
         name="Ping An Bank",
         matched_factors=[
-            "macd_golden_cross",
+            "range_expansion",
             "high_volume",
             "net_inflow",
             "pe_low",
         ],
         factor_checks={
-            "macd_golden_cross": {
-                "name": "MACD Golden Cross",
-                "type": "technical",
-                "field": "macd_hist",
-                "operator": "gt",
-                "value": 0.2,
-                "reference_value": 0,
+            "range_expansion": {
+                "name": "Range Expansion",
+                "type": "market_structure",
+                "field": "intraday_range_pct",
+                "operator": "gte",
+                "value": 4.2,
+                "reference_value": 2.0,
                 "weight": 2.0,
                 "matched": True,
             },
@@ -151,7 +119,7 @@ def test_build_events_from_screen_payload_maps_factor_types() -> None:
     events = build_events_from_screen_payload(payload)
     by_key = {str(event.context["factor_key"]): event for event in events}
 
-    assert by_key["macd_golden_cross"].event_type == MarketEventType.TECHNICAL_SIGNAL
+    assert by_key["range_expansion"].event_type == MarketEventType.ALERT_TRIGGER
     assert by_key["high_volume"].event_type == MarketEventType.VOLUME_SPIKE
     assert by_key["net_inflow"].event_type == MarketEventType.FUND_FLOW_MOVE
     assert by_key["pe_low"].event_type == MarketEventType.ALERT_TRIGGER

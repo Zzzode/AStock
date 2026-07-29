@@ -42,19 +42,6 @@ class RecommendResult:
     generated_at: datetime = field(default_factory=datetime.now)
 
 
-@dataclass
-class RecommendResult:
-    """Recommendation request result"""
-
-    success: bool
-    candidates: list[RecommendCandidate] = field(default_factory=list)
-    total: int = 0
-    config_used: Optional[dict[str, Any]] = None
-    selection_context: dict[str, Any] = field(default_factory=dict)
-    error: Optional[str] = None
-    generated_at: datetime = field(default_factory=datetime.now)
-
-
 class Recommender:
     """Personalized candidate pool builder"""
 

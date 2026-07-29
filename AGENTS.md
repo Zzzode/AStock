@@ -180,6 +180,7 @@ Agent: Running MA crossover backtest...
 | Skill | Function | Natural Language Trigger Examples |
 |-------|----------|----------------------------------|
 | /team | Multi-expert collaborative analysis | "Is X worth tracking?" / "Is X a good opportunity?" |
+| /market-desk | Whole-market end-of-day trading-desk research | "What is the market regime?" / "Build a market-wide trading plan" |
 | /equity-research | Institutional research report production | "Write a research report" / "Industry chain analysis" |
 | /quote | Real-time quote lookup | "What's the price of X?" / "Latest quote" |
 | /analyze | Technical analysis | "Analyze X technicals" / "Any signals on X?" |

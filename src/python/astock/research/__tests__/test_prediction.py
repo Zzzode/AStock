@@ -1,8 +1,6 @@
 """Tests for prediction ledger and verification."""
 
-import tempfile
-from datetime import date, datetime, timedelta
-from pathlib import Path
+from datetime import datetime, timedelta
 
 import pytest
 

@@ -29,6 +29,8 @@ class MarketEventType(StrEnum):
     VOLUME_SPIKE = "volume_spike"
     SECTOR_MOVE = "sector_move"
     FUND_FLOW_MOVE = "fund_flow_move"
+    # Read-only compatibility for historical event records. No producer or
+    # market-desk route may emit or consume this type as a decision input.
     TECHNICAL_SIGNAL = "technical_signal"
     ALERT_TRIGGER = "alert_trigger"
     NEWS_POLICY_EVENT = "news_policy_event"

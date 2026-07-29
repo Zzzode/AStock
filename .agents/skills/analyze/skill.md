@@ -1,107 +1,77 @@
 ---
 name: analyze
-description: Use when user asks for technical analysis of a stock, including MA, MACD, KDJ, RSI, golden cross, death cross, trend strength, support/resistance, or technical entry/exit signals from a chart perspective. Trigger on phrases like "technical analysis", "analyze X", "moving average", "MACD", "RSI", "golden cross", "death cross", or "trend outlook". Do not use for simple price lookup or broader buy/sell decision advice involving position sizing or multi-factor judgment.
+description: Use when the user asks for a stock's price structure, volume/turnover behaviour, support and resistance formed by real trading, relative strength, catalyst reaction, or a discretionary chart read. Trigger for “技术分析”, “走势怎么看”, “承接”, “分歧”, “突破是否有效”, “趋势位置”, “量价”, or “交易结构”. Do not use a KDJ, RSI, MACD, moving-average crossover, or any single indicator as a directional shortcut; route portfolio or whole-market decisions to market-desk.
 ---
 
 <SUBAGENT-STOP>
 If you were dispatched as a subagent to execute a specific task, skip this skill.
 </SUBAGENT-STOP>
 
-# /analyze - Technical Analysis
+# /analyze - Price Structure Review
 
-Perform technical analysis on a stock. Python provides raw data and signal detection. **You perform the dynamic reasoning and analysis.**
+Produce an evidence-labelled, discretionary price-structure review. The Python
+packet contains timestamped bars and a quote; it does not generate buy/sell
+signals. This review explains *who may be trapped or in control, what changed,
+and what would prove the read wrong* rather than applying oscillator thresholds.
 
-## Execution Flow
+This skill may provide a descriptive structure read only. Any question that
+asks what to trade, whether to hold/add/reduce/exit, or how to implement a
+strategy must be escalated to `market-desk` for a compulsory team decision and
+completed shared evidence packet.
 
-### Step 1: Call Python to Fetch Data
+## Data collection
 
 ```bash
-.venv/bin/python -m astock.cli analyze <CODE> --json --days 100
+.venv/bin/python -m astock.cli quote <CODE> --json
+.venv/bin/python -m astock.cli analyze <CODE> --json --days 120
+.venv/bin/python -m astock.cli market-overview --json
 ```
 
-### Step 2: Read Output Data
+Supplement only when needed with a source-labelled catalyst, filing, sector
+mapping, or a reproducible order-book/auction source. Daily bars never justify
+claims about queue position, intraday absorption, or auction intent.
 
-Python output contains:
+## Reasoning contract
 
-| Field | Description |
-|-------|------------|
-| `indicators` | Current technical indicator values |
-| `prev_indicators` | Previous day's indicators (for comparison) |
-| `signals` | Detected signals (type, current value, bias) |
-| `signal_stats` | Signal statistics (bull/bear counts) |
-| `history` | Recent analysis history |
-| `feedback_stats` | User feedback statistics (success rate) |
-| `quote` | Real-time quote |
+Build the conclusion in this order:
 
-### Step 2b: Foundation Capability Example
+1. **Location** — prior range, gap, high/low, key turnover exchange area, and
+   whether the move is an expansion, contraction, failed break, or repair.
+2. **Participation** — turnover, range, liquidity, sector/leader behaviour, and
+   relative performance where evidence exists. Never infer fund flow from price.
+3. **Catalyst and expectation** — what public fact changed, what the market may
+   already have priced, and what evidence would distinguish a repricing from
+   pure trading heat.
+4. **Game hypothesis** — identify the specific, falsifiable proposition (for
+   example: leader retains liquidity after a divergence; event reaction is
+   absorbed; range failure forces trapped supply out). Do not use named-trader
+   folklore as evidence.
+5. **Decision boundary** — observable confirmation, invalidation, time stop,
+   and the data required before any portfolio action. A structure review alone
+   never authorizes an order.
 
-When technical signals feed a conclusion or report, attach provenance and convert
-signals into canonical market events:
-
-```python
-from astock import capabilities
-
-analysis_provenance = capabilities.create_data_provenance_record(
-    source="astock.cli analyze",
-    quality_tier="snapshot",
-)
-signal_events = capabilities.build_market_event_packet(
-    analysis_payload,
-    payload_type="signal",
-    source="astock.cli analyze",
-)
-```
-
-### Step 3: Perform Reasoning Analysis
-
-**You are responsible for genuine analysis reasoning — not template filling.**
-
-Analysis points:
-1. **Indicator interpretation** — What do current values mean? How do they compare to yesterday?
-2. **Signal analysis** — Are detected signals reliable? Do they need confirmation from other indicators?
-3. **Historical comparison** — Have similar signals appeared recently? What happened then?
-4. **Feedback reference** — What's the user's success rate on similar signals?
-5. **Risk assessment** — What are the potential risks?
-6. **Action recommendation** — Provide specific recommendations with reasoning
-
-### Step 4: Output Analysis Report
-
-**When the user requests a saved report or the analysis feeds into a larger research flow:**
-
-Write LaTeX to:
+## Output format
 
 ```text
-workspace/analyze/<CODE>-<YYYYMMDD>/
-├── report.tex        # LaTeX source (use report-brief.tex template)
-└── report.pdf        # Compiled PDF
+Structure State: <initiative / balance / failed expansion / repair / unavailable>
+One-line Read: <what the market is testing, not an indicator verdict>
+Evidence:
+- <timestamped price-volume or relative-performance fact>
+- <sector, catalyst, or liquidity fact; otherwise explicitly unavailable>
+Game Hypothesis: <falsifiable proposition>
+Confirmation: <future observable condition>
+Invalidation / Time Stop: <observable condition and review date>
+What We Do Not Know: <order book, position, flow, or catalyst gap>
+Data Quality: <tier and cutoff>
 ```
 
-Use template: `.agents/templates/report-brief.tex`
-Compile: `.venv/bin/python -m astock.cli build-pdf workspace/analyze/<CODE>-<YYYYMMDD>/ --file report.tex`
+## Non-negotiable boundaries
 
-**For quick interactive replies (default):** respond in conversation directly, no file output.
-
-Report must include:
-- Market overview
-- Technical indicator analysis (with tables)
-- Signal interpretation (your reasoning, not predefined text)
-- Comprehensive assessment
-- Action recommendations
-- Risk warnings
-
-## Error Handling
-
-| Scenario | Action |
-|----------|--------|
-| Capability adapter fails | Retry once; on failure, degrade with `--days 60` |
-| JSON parse fails | Try regex extraction of key indicators |
-| Invalid stock code | Prompt user to confirm code |
-| Insufficient data | Note data gaps; continue analysis on available portion |
-
-## Important Reminders
-
-1. **You are the analyst** — Python only provides data; analysis and judgment are yours
-2. **No templates** — Reason dynamically from actual data; never use predefined interpretation text
-3. **Be logical** — Analysis must have a logical chain; conclusions must have evidence
-4. **Stay objective** — Point out factors on both sides; never present only one direction
-5. **Risk awareness** — All judgments have uncertainty; always note risks
+- MA, MACD, KDJ, RSI, golden/death crosses, and their counts have zero decision
+  weight. Do not display them as bullish, bearish, overbought, or oversold.
+- A single bar, one-day sector move, or public “fund-flow” claim is not proof of
+  control, continuation, or a tradable edge.
+- In A shares, state T+1, price-limit, suspension, and overnight-gap constraints
+  whenever the user asks for a holding or exit plan.
+- Keep this research-only. Portfolio sizing and conditional paper plans belong
+  to `market-desk`; no analysis output may place, route, or manage an order.

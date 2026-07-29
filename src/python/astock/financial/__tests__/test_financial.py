@@ -1,5 +1,7 @@
 """Tests for financial statement service (unit tests)."""
 
+import pytest
+
 from astock.financial import (
     FinancialPeriod,
     FinancialStatements,
@@ -94,6 +96,3 @@ def test_financial_statements_to_dict():
     assert d["code"] == "000001"
     assert len(d["periods"]) == 1
     assert d["yoy_growth"]["total_revenue"] == 10.0
-
-
-import pytest

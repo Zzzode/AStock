@@ -29,7 +29,7 @@ from .monitor.service_status import (
     get_uptime_info,
     format_duration,
 )
-from .config import ConfigManager, TradingStyle, RiskLevel, EmailConfig
+from .config import ConfigManager, MarketDataMode, TradingStyle, RiskLevel, EmailConfig
 from .learning import StyleAnalyzer
 from .utils import DataSourceError, ValidationError
 
@@ -47,6 +47,17 @@ def _print_json(data: Any) -> None:
     """Output clean JSON to stdout, avoiding Rich or log pollution."""
     sys.stdout.write(json.dumps(data, ensure_ascii=False, indent=2))
     sys.stdout.write("\n")
+
+
+def _load_json_object(path: Path, *, label: str) -> dict[str, Any]:
+    """Load one JSON object for a capability command input."""
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise typer.BadParameter(f"{label} must be valid JSON: {error}") from error
+    if not isinstance(value, dict):
+        raise typer.BadParameter(f"{label} must be a JSON object")
+    return value
 
 
 def _json_stdout_guard(enabled: bool):
@@ -142,7 +153,7 @@ def analyze(
     days: int = typer.Option(100, "--days", "-d", help="Number of days to analyze"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """Technical analysis - outputs raw data and signals for LLM reasoning"""
+    """Price-and-volume observations for discretionary market-structure analysis."""
 
     async def _analyze() -> dict[str, Any]:
         return await capabilities.analyze_stock(code, days=days, db_path=DB_PATH)
@@ -184,72 +195,21 @@ def analyze(
         # Display stock name
         name = result.get("name")
         title = (
-            f"Technical Analysis - {name} ({code})"
+            f"Market Observations - {name} ({code})"
             if name
-            else f"Technical Analysis - {code}"
+            else f"Market Observations - {code}"
         )
 
-        # Display technical indicators
         indicators = result.get("indicators", {})
         prev_indicators = result.get("prev_indicators", {})
 
         panel_content = f"""
-[bold cyan]Price Indicators[/bold cyan]
-Close: {indicators.get("close", 0):.2f}  (Previous: {prev_indicators.get("close", 0):.2f})
-MA5: {indicators.get("ma5", 0):.2f}
-MA10: {indicators.get("ma10", 0):.2f}
-MA20: {indicators.get("ma20", 0):.2f}
-
-[bold cyan]MACD[/bold cyan]
-DIF: {indicators.get("macd", 0):.4f}
-DEA: {indicators.get("macd_signal", 0):.4f}
-Histogram: {indicators.get("macd_hist", 0):.4f}
-
-[bold cyan]KDJ[/bold cyan]
-K: {indicators.get("kdj_k", 0):.2f}
-D: {indicators.get("kdj_d", 0):.2f}
-J: {indicators.get("kdj_j", 0):.2f}
-
-[bold cyan]RSI[/bold cyan]
-RSI6: {indicators.get("rsi6", 0):.2f}
+[bold cyan]Latest Daily Bar[/bold cyan]
+Open / High / Low / Close: {indicators.get("open", 0):.2f} / {indicators.get("high", 0):.2f} / {indicators.get("low", 0):.2f} / {indicators.get("close", 0):.2f}
+Previous close: {prev_indicators.get("close", 0):.2f}
+Volume / Amount: {indicators.get("volume", 0)} / {indicators.get("amount", 0)}
 """
         console.print(Panel(panel_content, title=title))
-
-        # Display signals
-        signals = result.get("signals", [])
-        signal_stats = result.get("signal_stats", {})
-
-        if signals:
-            console.print(
-                f"\n[bold yellow]Detected Signals ({signal_stats.get('bullish_count', 0)} bullish/{signal_stats.get('bearish_count', 0)} bearish):[/bold yellow]"
-            )
-            for signal in signals:
-                bias_color = "green" if signal.get("bias") == "bullish" else "red"
-                current = signal.get("current", {})
-                current_str = ", ".join(
-                    f"{k}={v:.2f}" if isinstance(v, float) else f"{k}={v}"
-                    for k, v in current.items()
-                )
-                console.print(
-                    f"  [{bias_color}]●[/{bias_color}] {signal.get('name', signal.get('type'))}: {current_str}"
-                )
-
-        # Display historical context
-        history = result.get("history", {})
-        if history.get("recent_analyses"):
-            console.print("\n[bold dim]Recent Analysis History:[/bold dim]")
-            for h in history["recent_analyses"][:3]:
-                signals_str = ", ".join(h.get("signals", []))
-                console.print(f"  {h.get('date', '')}: {signals_str}")
-
-        # Display feedback statistics
-        feedback_stats = result.get("feedback_stats", {})
-        if feedback_stats.get("overall"):
-            overall = feedback_stats["overall"]
-            console.print("\n[bold dim]User Feedback Statistics:[/bold dim]")
-            console.print(
-                f"  Total samples: {overall.get('total', 0)}, Success rate: {overall.get('success_rate', 0):.0%}"
-            )
 
         # Display quote
         quote = result.get("quote", {})
@@ -928,6 +888,7 @@ def recommend_config(
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
         config_data["risk_level"] = config.risk_level.value
+        config_data["market_data_mode"] = config.market_data_mode.value
         _print_json(config_data)
     else:
         panel_content = f"""
@@ -996,6 +957,7 @@ Excluded sectors: {", ".join(config.excluded_sectors) or "-"}
 Alert channels: {", ".join(config.alert_channels)}
 Default capital: {config.default_capital:,.0f}
 Default strategy: {config.default_strategy}
+Market data mode: {config.market_data_mode.value}
 """
         console.print(Panel(panel_content.strip(), title=f"User Config: {user_id}"))
 
@@ -1024,6 +986,7 @@ def config_set(
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
         config_data["risk_level"] = config.risk_level.value
+        config_data["market_data_mode"] = config.market_data_mode.value
         _print_json(config_data)
     else:
         console.print(f"[green]Configuration updated: {key} = {value}[/green]")
@@ -1043,6 +1006,12 @@ def _parse_config_value(key: str, value: str) -> Optional[object]:
         for s in TradingStyle:
             if s.value == value:
                 return s
+        return None
+
+    if key == "market_data_mode":
+        for mode in MarketDataMode:
+            if mode.value == value:
+                return mode
         return None
 
     # Numeric types
@@ -2047,14 +2016,14 @@ def migration_status(
     else:
         pending = result.get("pending", [])
         applied = result.get("applied", [])
-        console.print(f"[bold]Migration Status[/bold]")
+        console.print("[bold]Migration Status[/bold]")
         console.print(f"  Applied: {len(applied)}")
         if pending:
             console.print(f"  [yellow]Pending: {len(pending)}[/yellow]")
             for name in pending:
                 console.print(f"    - {name}")
         else:
-            console.print(f"  [green]No pending migrations[/green]")
+            console.print("  [green]No pending migrations[/green]")
 
 
 @app.command()
@@ -2066,7 +2035,7 @@ def scheduler_status(
     if json_output:
         _print_json(result)
     else:
-        console.print(f"[bold]Scheduler Status[/bold]")
+        console.print("[bold]Scheduler Status[/bold]")
         console.print(f"  Running: {result['running']}")
         console.print(f"  Jobs: {result['job_count']}")
         for name, job in result.get("jobs", {}).items():
@@ -2089,7 +2058,7 @@ def sync_monitor(
     if json_output:
         _print_json(result)
     else:
-        console.print(f"[green]✓ Research-Monitor sync complete[/green]")
+        console.print("[green]✓ Research-Monitor sync complete[/green]")
         console.print(f"  Added: {len(result.get('added', []))}")
         console.print(f"  Updated: {len(result.get('updated', []))}")
         console.print(f"  Removed: {len(result.get('removed', []))}")
@@ -2117,7 +2086,7 @@ def consistency_check(
         console.print(f"  Conflicts: {len(conflicts)}")
         for c in conflicts:
             console.print(f"    [{c['severity']}] {c['description']}")
-        console.print(f"  Freshness:")
+        console.print("  Freshness:")
         for f in result.get("freshness", []):
             console.print(f"    {f['source']}: {f['status']}")
 
@@ -2144,6 +2113,1187 @@ def market_snapshot(
             console.print(
                 f"  {tick['code']} {tick['name']}: [{color}]{tick['price']:.2f} ({chg:+.2f}%)[/{color}]"
             )
+
+
+@app.command("market-overview")
+def market_overview(
+    etf: Optional[list[str]] = typer.Option(
+        None,
+        "--etf",
+        help="Optional listed ETF code to observe; repeat the option for more codes.",
+    ),
+    industry: Optional[list[str]] = typer.Option(
+        None,
+        "--industry",
+        help="Optional listed industry proxy code; repeat the option for more codes.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Get a source-labelled whole-market MarketSnapshotV1 packet."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.build_market_snapshot_v1(
+            etf_codes=etf or (),
+            industry_codes=industry or (),
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+        return
+
+    breadth = result["breadth"]
+    console.print(
+        f"[bold]Market Overview ({result['data_quality']})[/bold] "
+        f"{result['observed_at']}"
+    )
+    console.print(
+        "  Breadth: "
+        f"{breadth['advancers']} up / {breadth['decliners']} down / "
+        f"{breadth['unchanged']} flat ({breadth['status']})"
+    )
+    for index in result["indices"]:
+        console.print(
+            f"  {index['name']} ({index['code']}): "
+            f"{index['price']:.2f} ({index['change_percent']:+.2f}%)"
+        )
+
+
+@app.command("market-data-sources")
+def market_data_sources(
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Show the data-source eligibility policy without exposing credentials."""
+    result = capabilities.list_market_data_source_governance()
+    if json_output:
+        _print_json(result)
+        return
+    console.print("[bold]Market Data Source Governance[/bold]")
+    for source in result["sources"]:
+        status = "configured" if source["configured"] else "not configured"
+        eligibility = "decision/backtest eligible" if source["reproducible_backtest_eligible"] else "observation only"
+        console.print(f"  {source['source_id']}: {eligibility}; {status}")
+
+
+@app.command("freeze-tushare-daily")
+def freeze_tushare_daily(
+    codes: list[str] = typer.Argument(..., help="Qualified Tushare codes, e.g. 600460.SH"),
+    start_date: str = typer.Option(..., "--start-date", help="Inclusive YYYYMMDD or ISO date"),
+    end_date: str = typer.Option(..., "--end-date", help="Inclusive YYYYMMDD or ISO date"),
+    archive_directory: Path = typer.Option(..., "--archive-directory", help="Immutable archive destination"),
+    user_id: str = typer.Option("default", "--user-id", help="Profile whose licensed-data policy is checked"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Freeze licensed Tushare daily replay inputs without exposing credentials."""
+    try:
+        capabilities.require_licensed_market_data_mode(user_id=user_id)
+        result = capabilities.build_tushare_daily_replay_input(
+            codes,
+            start_date=start_date,
+            end_date=end_date,
+            user_id=user_id,
+            archive_directory=archive_directory,
+        )
+    except Exception as error:
+        if json_output:
+            _print_json({"error": str(error)})
+        else:
+            console.print(f"[red]Unable to freeze Tushare daily data: {error}[/red]")
+        raise typer.Exit(1)
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(result["source_archive_path"])
+
+
+@app.command("freeze-tushare-universe")
+def freeze_tushare_universe(
+    as_of_date: str = typer.Option(..., "--as-of-date", help="Historical listing date"),
+    archive_directory: Path = typer.Option(..., "--archive-directory", help="Immutable archive destination"),
+    user_id: str = typer.Option("default", "--user-id", help="Profile whose licensed-data policy is checked"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Freeze a licensed Tushare historical listing-universe snapshot."""
+    try:
+        capabilities.require_licensed_market_data_mode(user_id=user_id)
+        result = capabilities.build_tushare_listing_universe_snapshot(
+            as_of_date=as_of_date,
+            user_id=user_id,
+            archive_directory=archive_directory,
+        )
+    except Exception as error:
+        if json_output:
+            _print_json({"error": str(error)})
+        else:
+            console.print(f"[red]Unable to freeze Tushare listing universe: {error}[/red]")
+        raise typer.Exit(1)
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(result["source_archive_path"])
+
+
+@app.command("market-rotation")
+def market_rotation(
+    include_concepts: bool = typer.Option(
+        True,
+        "--include-concepts/--industries-only",
+        help="Include the full concept-board source alongside industries.",
+    ),
+    observation_limit: int = typer.Option(
+        20,
+        "--observation-limit",
+        min=1,
+        max=100,
+        help="Maximum observations per source component.",
+    ),
+    history_validation_limit: int = typer.Option(
+        0,
+        "--history-validation-limit",
+        min=0,
+        max=50,
+        help="Validate daily 5/20/60-day returns for top rows per component; zero disables it.",
+    ),
+    history_scope: str = typer.Option(
+        "selected",
+        "--history-scope",
+        help="History coverage: selected (rate-bounded) or full (every normalized source row).",
+    ),
+    history_concurrency: int = typer.Option(
+        8,
+        "--history-concurrency",
+        min=1,
+        max=16,
+        help="Maximum concurrent board-history source calls.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Build a source-labelled industry/concept observation ranking."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.build_market_rotation_v1(
+            include_concepts=include_concepts,
+            observation_limit=observation_limit,
+            history_validation_limit=history_validation_limit,
+            history_scope=history_scope,
+            history_concurrency=history_concurrency,
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Market Rotation ({result['data_quality']})[/bold] "
+        f"{result['observed_at']}"
+    )
+    for observation in result["observation_pool"]:
+        console.print(
+            f"  {observation['subject_type']} {observation['name']}: "
+            f"rank {observation['rank']}, {observation['change_pct']:+.2f}% "
+            "[observation only]"
+        )
+    for warning in result["warnings"]:
+        console.print(f"[yellow]Warning: {warning['message']}[/yellow]")
+
+
+@app.command("freeze-market-rotation")
+def freeze_market_rotation(
+    include_concepts: bool = typer.Option(
+        True,
+        "--include-concepts/--industries-only",
+        help="Include concept observations when their public source is available.",
+    ),
+    observation_limit: int = typer.Option(
+        20,
+        "--observation-limit",
+        min=1,
+        max=100,
+        help="Maximum observations per source component.",
+    ),
+    archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-observation-archives",
+        "--archive-directory",
+        help="Directory for immutable public-observation archives.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Capture a content-addressed public rotation observation for paper research."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.freeze_public_market_rotation_observation(
+            include_concepts=include_concepts,
+            observation_limit=observation_limit,
+            archive_directory=archive_directory,
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+    else:
+        console.print(
+            f"Frozen public rotation observation: {result.get('source_archive_path', 'not written')}"
+        )
+
+
+@app.command("market-desk")
+def market_desk(
+    etf: Optional[list[str]] = typer.Option(
+        None,
+        "--etf",
+        help="Optional listed ETF code to observe; repeat the option for more codes.",
+    ),
+    industry: Optional[list[str]] = typer.Option(
+        None,
+        "--industry",
+        help="Optional listed industry proxy code; repeat the option for more codes.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Build the end-of-day market-desk observation and regime packet."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.build_market_desk_overview(
+            etf_codes=etf or (),
+            industry_codes=industry or (),
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+        return
+
+    regime = result["regime"]
+    snapshot = result["snapshot"]
+    console.print(
+        f"[bold]Market Desk: {regime['regime']}[/bold] "
+        f"({snapshot['observed_at']}; {snapshot['data_quality']})"
+    )
+    for evidence in regime["evidence"]:
+        console.print(f"  Evidence: {evidence}")
+    for warning in regime["warnings"]:
+        console.print(f"[yellow]Warning: {warning}[/yellow]")
+
+
+@app.command("market-desk-discover")
+def market_desk_discover(
+    include_concepts: bool = typer.Option(
+        True,
+        "--include-concepts/--industries-only",
+        help="Include concept-board observations as market context.",
+    ),
+    observation_limit: int = typer.Option(20, "--observation-limit", min=1, max=100),
+    candidate_limit: int = typer.Option(20, "--candidate-limit", min=1, max=100),
+    min_amount: float = typer.Option(
+        200_000_000.0,
+        "--min-amount",
+        min=0,
+        help="Minimum public-snapshot turnover in source currency units.",
+    ),
+    min_change_pct: float = typer.Option(
+        3.0,
+        "--min-change-pct",
+        help="Minimum public-snapshot daily percentage change.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Build a whole-market public-data research-discovery queue, never an order."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.discover_public_market_desk_opportunities(
+            include_concepts=include_concepts,
+            observation_limit=observation_limit,
+            candidate_limit=candidate_limit,
+            min_amount=min_amount,
+            min_change_pct=min_change_pct,
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Public market discovery[/bold]: {result['screening_counts']['returned_candidates']} "
+        "research observations (no order execution)"
+    )
+    for candidate in result["candidates"]:
+        console.print(
+            f"  {candidate['code']} {candidate.get('name') or ''} "
+            f"[{candidate['discovery_status']}]"
+        )
+
+
+@app.command("market-desk-record-discovery")
+def market_desk_record_discovery(
+    include_concepts: bool = typer.Option(
+        True,
+        "--include-concepts/--industries-only",
+        help="Include concept-board observations as market context.",
+    ),
+    observation_limit: int = typer.Option(20, "--observation-limit", min=1, max=100),
+    candidate_limit: int = typer.Option(20, "--candidate-limit", min=1, max=100),
+    min_amount: float = typer.Option(200_000_000.0, "--min-amount", min=0),
+    min_change_pct: float = typer.Option(3.0, "--min-change-pct"),
+    archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-desk-discovery-archives",
+        "--archive-directory",
+        help="Immutable archive destination for the public discovery record.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Freeze one public whole-market discovery queue for research audit."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.record_public_market_desk_discovery(
+            include_concepts=include_concepts,
+            observation_limit=observation_limit,
+            candidate_limit=candidate_limit,
+            min_amount=min_amount,
+            min_change_pct=min_change_pct,
+            archive_directory=archive_directory,
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        "[bold]Public discovery record frozen[/bold] "
+        f"({result['source_archive_path']}; research-only; no order execution)"
+    )
+
+
+@app.command("market-desk-enrich-discovery-industry")
+def market_desk_enrich_discovery_industry(
+    source_archive_path: Path = typer.Argument(
+        ..., exists=True, readable=True, help="Verified public discovery source archive"
+    ),
+    mapping_archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-subject-mapping-archives",
+        "--mapping-archive-directory",
+        help="Immutable archive destination for normalized public industry lookups.",
+    ),
+    market_map_path: Optional[Path] = typer.Option(
+        None, "--market-map-path", help="Persistent market relationship mapping JSON path"
+    ),
+    candidate_limit: int = typer.Option(20, "--candidate-limit", min=1, max=100),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Freeze public industry context for candidates from one discovery archive."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.enrich_public_discovery_industry_context(
+            source_archive_path,
+            mapping_archive_directory=mapping_archive_directory,
+            market_map_path=market_map_path,
+            candidate_limit=candidate_limit,
+        )
+
+    try:
+        result = _run_async(_run(), json_output)
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Public discovery industry context[/bold]: {result['mapped_count']} mapped, "
+        f"{result['failed_count']} unavailable (research-only; no order execution)"
+    )
+
+
+@app.command("market-desk-promote-discovery")
+def market_desk_promote_discovery(
+    source_archive_path: Path = typer.Argument(
+        ..., exists=True, readable=True, help="Verified public discovery source archive"
+    ),
+    candidate_id: str = typer.Option(..., "--candidate-id", help="Candidate ID from the frozen archive"),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    market_map_path: Optional[Path] = typer.Option(
+        None,
+        "--market-map-path",
+        help="Source-referenced mapping store for a later frozen industry enrichment.",
+    ),
+    mapping_archive_path: Optional[Path] = typer.Option(
+        None,
+        "--mapping-archive-path",
+        help="Verified frozen industry-enrichment archive required for a later mapping.",
+    ),
+    created_by: str = typer.Option("market-desk", "--created-by"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Move one frozen discovery observation into monitoring research only."""
+    try:
+        result = capabilities.promote_public_market_desk_discovery_candidate(
+            source_archive_path=source_archive_path,
+            candidate_id=candidate_id,
+            ledger_path=ledger_path,
+            created_by=created_by,
+            market_map_path=market_map_path,
+            mapping_archive_path=mapping_archive_path,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Discovery candidate {result['status']}[/bold] "
+        "(monitoring research only; no paper entry or order execution)"
+    )
+
+
+@app.command("market-desk-discovery-history")
+def market_desk_discovery_history(
+    archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-desk-discovery-archives",
+        "--archive-directory",
+        help="Directory containing frozen public discovery records.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Audit frozen public market-discovery records without changing them."""
+    result = capabilities.get_public_market_desk_discovery_history(
+        archive_directory=archive_directory
+    )
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Public discovery history[/bold]: "
+        f"{result['valid_count']}/{result['run_count']} valid records"
+    )
+    if result["duplicate_run_dates"]:
+        console.print(
+            "[yellow]Duplicate run dates: "
+            + ", ".join(result["duplicate_run_dates"])
+            + "[/yellow]"
+        )
+
+
+@app.command("market-desk-observe")
+def market_desk_observe(
+    etf: Optional[list[str]] = typer.Option(
+        None,
+        "--etf",
+        help="Optional listed ETF code to observe; repeat the option for more codes.",
+    ),
+    industry: Optional[list[str]] = typer.Option(
+        None,
+        "--industry",
+        help="Optional listed industry proxy code; repeat the option for more codes.",
+    ),
+    include_concepts: bool = typer.Option(
+        True,
+        "--include-concepts/--industries-only",
+        help="Include concept observations when their public source is available.",
+    ),
+    observation_limit: int = typer.Option(20, "--observation-limit", min=1, max=100),
+    archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-desk-observation-runs",
+        "--archive-directory",
+        help="Directory for immutable public desk observation records.",
+    ),
+    rotation_archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-observation-archives",
+        "--rotation-archive-directory",
+        help="Directory for immutable public rotation source records.",
+    ),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    restricted_list: Optional[Path] = typer.Option(None, "--restricted-list"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Record one research-only, whole-market public-data desk observation."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.run_public_market_desk_observation(
+            etf_codes=etf or (),
+            industry_codes=industry or (),
+            include_concepts=include_concepts,
+            observation_limit=observation_limit,
+            archive_directory=archive_directory,
+            rotation_archive_directory=rotation_archive_directory,
+            ledger_path=ledger_path,
+            restricted_list_path=restricted_list,
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        "[bold]Public market-desk observation recorded[/bold] "
+        f"({result['source_archive_path']}; research-only; no order execution)"
+    )
+
+
+@app.command("market-desk-observation-history")
+def market_desk_observation_history(
+    archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-desk-observation-runs",
+        "--archive-directory",
+        help="Directory containing immutable public desk observation records.",
+    ),
+    exception_directory: Optional[Path] = typer.Option(
+        None,
+        "--exception-directory",
+        help="Directory containing immutable duplicate-run exception reviews.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Audit immutable public market-desk observation records."""
+    result = capabilities.get_public_market_desk_observation_history(
+        archive_directory=archive_directory,
+        exception_directory=exception_directory,
+    )
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Public desk observation history[/bold]: "
+        f"{result['valid_count']}/{result['run_count']} valid records"
+    )
+    if result["duplicate_run_dates"]:
+        console.print(
+            "[yellow]Duplicate run dates: "
+            + ", ".join(result["duplicate_run_dates"])
+            + "[/yellow]"
+        )
+
+
+@app.command("market-desk-observation-exception-review")
+def market_desk_observation_exception_review(
+    session_date: str = typer.Option(..., "--session-date", help="Exchange session date (YYYY-MM-DD)."),
+    archive_id: list[str] = typer.Option(..., "--archive-id", help="Repeat for every valid duplicate archive ID."),
+    canonical_archive_id: str = typer.Option(..., "--canonical-archive-id", help="Archive ID retained as the canonical session record."),
+    reviewer: str = typer.Option(..., "--reviewer", help="Named operations-control reviewer."),
+    reason: str = typer.Option(..., "--reason", help="Evidence-bound explanation for the duplicate run."),
+    evidence_ref: list[str] = typer.Option(..., "--evidence-ref", help="Repeat for supporting ticket or evidence references."),
+    archive_directory: Path = typer.Option(
+        DB_PATH.parent / "market-desk-observation-runs",
+        "--archive-directory",
+    ),
+    exception_directory: Path = typer.Option(
+        DB_PATH.parent / "market-desk-observation-exceptions",
+        "--exception-directory",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Record a non-destructive review for one exact duplicate-run set."""
+    try:
+        result = capabilities.resolve_public_market_desk_observation_duplicate(
+            session_date=session_date,
+            archive_ids=archive_id,
+            canonical_archive_id=canonical_archive_id,
+            reviewer=reviewer,
+            reason=reason,
+            evidence_refs=evidence_ref,
+            archive_directory=archive_directory,
+            exception_directory=exception_directory,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Observation duplicate review recorded[/bold] ({result['review_path']}; research-only)"
+    )
+
+
+@app.command("market-desk-observation-action")
+def market_desk_observation_action(
+    candidate_file: Path = typer.Argument(
+        ..., exists=True, readable=True, help="Observation candidate JSON file"
+    ),
+    regime: str = typer.Option(..., "--regime", help="Market regime from market-desk"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Return a non-executing, condition-based paper action from observation data."""
+    try:
+        candidate = json.loads(candidate_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise typer.BadParameter(f"Observation candidate must be valid JSON: {exc}") from exc
+    if not isinstance(candidate, dict):
+        raise typer.BadParameter("Observation candidate must be a JSON object")
+
+    try:
+        result = capabilities.evaluate_market_desk_observation_action(
+            candidate, regime=regime
+        )
+    except ValueError as exc:
+        raise typer.BadParameter(f"Invalid observation action input: {exc}") from exc
+
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Observation action: {result['action']}[/bold] "
+        "(research-only; no order execution)"
+    )
+    for failed_check in result["failed_checks"]:
+        console.print(f"[yellow]Missing: {failed_check}[/yellow]")
+    for warning in result["warnings"]:
+        console.print(f"[yellow]Warning: {warning}[/yellow]")
+
+
+@app.command("market-desk-playbooks")
+def market_desk_playbooks(
+    json_output: bool = typer.Option(False, "--json", help="Output the playbook catalog as JSON"),
+) -> None:
+    """List the desk's standard research-only discretionary playbooks."""
+    result = capabilities.list_market_desk_playbooks()
+    if json_output:
+        _print_json(result)
+        return
+    for playbook in result["playbooks"]:
+        console.print(
+            f"[bold]{playbook['playbook_id']}[/bold] "
+            f"({playbook['horizon']}; research-only)"
+        )
+
+
+@app.command("market-desk-evaluate-playbook")
+def market_desk_evaluate_playbook(
+    playbook_id: str = typer.Argument(..., help="One named market-desk playbook"),
+    evidence_file: Path = typer.Argument(
+        ..., exists=True, readable=True, help="Evidence JSON for the selected playbook"
+    ),
+    regime: str = typer.Option(..., "--regime", help="Current market-desk regime"),
+    json_output: bool = typer.Option(False, "--json", help="Output the evaluation as JSON"),
+) -> None:
+    """Evaluate a named playbook without creating any trade or order."""
+    try:
+        evidence = json.loads(evidence_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise typer.BadParameter(f"Playbook evidence must be valid JSON: {exc}") from exc
+    if not isinstance(evidence, dict):
+        raise typer.BadParameter("Playbook evidence must be a JSON object")
+    try:
+        result = capabilities.evaluate_market_desk_playbook(
+            playbook_id, evidence, regime=regime
+        )
+    except ValueError as exc:
+        raise typer.BadParameter(str(exc)) from exc
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Playbook evaluation: {result['playbook_id']} -> {result['decision']}[/bold] "
+        "(research-only; no order execution)"
+    )
+    for requirement in result["failed_requirements"]:
+        console.print(f"[yellow]Evidence to complete: {requirement}[/yellow]")
+
+
+@app.command("market-desk-books")
+def market_desk_books(
+    ledger_path: Optional[Path] = typer.Option(
+        None, "--ledger-path", help="Research-ledger JSON path"
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """List persisted short, swing, and long paper-research books."""
+    result = capabilities.get_market_desk_strategy_books(ledger_path=ledger_path)
+    if json_output:
+        _print_json(result)
+        return
+    console.print("[bold]Market Desk Strategy Books[/bold] (research-only; no order execution)")
+    for horizon, cards in result["books"].items():
+        console.print(f"  [bold]{horizon}[/bold]: {len(cards)}")
+        for card in cards:
+            plan = card["plan"]
+            attention = card["attention"]
+            suffix = f"; {attention}" if attention != "none" else ""
+            console.print(
+                f"    {plan['target']} {plan['state']} ({card['ledger_status']}){suffix}"
+            )
+
+
+@app.command("market-desk-create-plan")
+def market_desk_create_plan(
+    plan_file: Path = typer.Argument(
+        ..., exists=True, readable=True, help="Observation-stage strategy plan JSON file"
+    ),
+    title: str = typer.Option(..., "--title", help="Research-ledger title"),
+    tag: Optional[list[str]] = typer.Option(None, "--tag", help="Optional ledger tag; repeat"),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Create one observation-stage market-desk strategy plan."""
+    plan = _load_json_object(plan_file, label="Strategy plan")
+    try:
+        result = capabilities.create_market_desk_strategy_plan(
+            plan,
+            title=title,
+            tags=tag or (),
+            ledger_path=ledger_path,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    entry = result["entry"]
+    console.print(
+        f"[bold]Market-desk strategy plan created[/bold]: {entry['entry_id']} "
+        "(observation only; no order execution)"
+    )
+
+
+@app.command("market-desk-transition-plan")
+def market_desk_transition_plan(
+    entry_id: str = typer.Argument(..., help="Research-ledger strategy-plan entry ID"),
+    next_state: str = typer.Option(..., "--next-state", help="Target lifecycle state"),
+    reason: str = typer.Option(..., "--reason", help="Evidence-bound transition rationale"),
+    observed_at: Optional[str] = typer.Option(None, "--observed-at"),
+    ic_decision_file: Optional[Path] = typer.Option(
+        None, "--ic-decision-file", exists=True, readable=True,
+        help="IC decision JSON; mandatory for active state",
+    ),
+    release_inputs_file: Optional[Path] = typer.Option(
+        None, "--release-inputs-file", exists=True, readable=True,
+        help="Release-inputs JSON; mandatory for active state",
+    ),
+    restricted_list: Optional[Path] = typer.Option(
+        None, "--restricted-list", exists=True, readable=True,
+        help="Signed restricted-list authority required for active state",
+    ),
+    portfolio_path: Optional[Path] = typer.Option(
+        None, "--portfolio-path", help="Paper-portfolio JSON for active-state governance"
+    ),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Record a validated market-desk strategy lifecycle transition."""
+    ic_decision = (
+        _load_json_object(ic_decision_file, label="IC decision")
+        if ic_decision_file is not None
+        else None
+    )
+    release_inputs = (
+        _load_json_object(release_inputs_file, label="Release inputs")
+        if release_inputs_file is not None
+        else None
+    )
+    try:
+        result = capabilities.transition_market_desk_strategy_plan(
+            entry_id,
+            next_state=next_state,
+            reason=reason,
+            observed_at=observed_at,
+            ic_decision=ic_decision,
+            release_inputs=release_inputs,
+            restricted_list_path=restricted_list,
+            ledger_path=ledger_path,
+            portfolio_path=portfolio_path,
+        )
+    except (KeyError, ValueError) as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        "[bold]Market-desk strategy lifecycle updated[/bold] "
+        "(research and paper-plan only; no order execution)"
+    )
+
+
+@app.command("market-desk-record-strategy-review")
+def market_desk_record_strategy_review(
+    entry_id: str = typer.Argument(..., help="Research-ledger strategy-plan entry ID"),
+    reviewer: str = typer.Option(..., "--reviewer", help="Named strategy reviewer"),
+    reason: str = typer.Option(..., "--reason", help="Evidence-bound review rationale"),
+    evidence_ref: list[str] = typer.Option(
+        ..., "--evidence-ref", help="Supporting evidence reference; repeat"
+    ),
+    next_review_at: str = typer.Option(..., "--next-review-at"),
+    observed_at: Optional[str] = typer.Option(None, "--observed-at"),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Record a nonterminal, evidence-bound market-desk strategy review."""
+    try:
+        result = capabilities.record_market_desk_strategy_review(
+            entry_id,
+            reviewer=reviewer,
+            reason=reason,
+            evidence_refs=evidence_ref,
+            next_review_at=next_review_at,
+            observed_at=observed_at,
+            ledger_path=ledger_path,
+        )
+    except (KeyError, ValueError) as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        "[bold]Market-desk strategy review recorded[/bold] "
+        "(research and paper-plan only; no order execution)"
+    )
+
+
+@app.command("market-desk-record-paper-review")
+def market_desk_record_paper_review(
+    entry_id: str = typer.Argument(..., help="Research-ledger strategy-plan entry ID"),
+    ic_decision_file: Path = typer.Option(
+        ..., "--ic-decision-file", exists=True, readable=True,
+        help="IC decision JSON bound to the strategy plan",
+    ),
+    evaluation_start: str = typer.Option(..., "--evaluation-start"),
+    evaluation_end: str = typer.Option(..., "--evaluation-end"),
+    benchmark_id: str = typer.Option(..., "--benchmark-id"),
+    gross_paper_return: float = typer.Option(..., "--gross-paper-return"),
+    implementation_cost_return: float = typer.Option(..., "--implementation-cost-return"),
+    benchmark_return: float = typer.Option(..., "--benchmark-return"),
+    return_evidence_file: Optional[Path] = typer.Option(
+        None, "--return-evidence-file", exists=True, readable=True,
+        help="Frozen return-evidence JSON; absent evidence remains non-publishable",
+    ),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Persist a benchmarked, cost-aware paper-decision outcome review."""
+    ic_decision = _load_json_object(ic_decision_file, label="IC decision")
+    return_evidence = (
+        _load_json_object(return_evidence_file, label="Return evidence")
+        if return_evidence_file is not None
+        else None
+    )
+    try:
+        result = capabilities.record_market_desk_paper_decision_review(
+            entry_id,
+            ic_decision=ic_decision,
+            evaluation_start=evaluation_start,
+            evaluation_end=evaluation_end,
+            benchmark_id=benchmark_id,
+            gross_paper_return=gross_paper_return,
+            implementation_cost_return=implementation_cost_return,
+            benchmark_return=benchmark_return,
+            return_evidence=return_evidence,
+            ledger_path=ledger_path,
+        )
+    except (KeyError, ValueError) as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    review = result["review"]
+    console.print(
+        f"[bold]Paper decision review: {review['outcome']}[/bold] "
+        f"(evidence={review['evidence_status']}; no order execution)"
+    )
+
+
+@app.command("market-desk-review-queue")
+def market_desk_review_queue(
+    ledger_path: Optional[Path] = typer.Option(
+        None, "--ledger-path", help="Research-ledger JSON path"
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """List due paper-strategy reviews without changing their state."""
+    result = capabilities.get_market_desk_review_queue(ledger_path=ledger_path)
+    if json_output:
+        _print_json(result)
+        return
+    console.print(f"[bold]Market Desk Review Queue[/bold]: {result['due_count']} due")
+    for item in result["due"]:
+        console.print(
+            f"  {item['target']} {item['horizon']} {item['attention']} "
+            f"(review_at={item['review_at']})"
+        )
+
+
+@app.command("market-desk-postmortem-queue")
+def market_desk_postmortem_queue(
+    ledger_path: Optional[Path] = typer.Option(
+        None, "--ledger-path", help="Research-ledger JSON path"
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """List underperformance reviews requiring evidence-bound postmortems."""
+    result = capabilities.get_market_desk_postmortem_queue(ledger_path=ledger_path)
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Market Desk Postmortem Queue[/bold]: {result['due_count']} due"
+    )
+    for item in result["due"]:
+        console.print(
+            f"  {item['target']} {item['attention']} "
+            f"(review_at={item['review_observed_at']})"
+        )
+
+
+@app.command("market-desk-discovery-research-queue")
+def market_desk_discovery_research_queue(
+    ledger_path: Optional[Path] = typer.Option(
+        None, "--ledger-path", help="Research-ledger JSON path"
+    ),
+    review_sla_hours: int = typer.Option(
+        48, "--review-sla-hours", min=1, max=720,
+        help="Maximum hours before a promoted public discovery needs a research review.",
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """List due discovery research reviews without changing any state."""
+    result = capabilities.get_market_desk_discovery_research_queue(
+        ledger_path=ledger_path,
+        review_sla_hours=review_sla_hours,
+    )
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Market Desk Discovery Research Queue[/bold]: {result['due_count']} due"
+    )
+    for item in result["due"]:
+        console.print(
+            f"  {item['target']} {item['attention']} "
+            f"(review_due_at={item['review_due_at']})"
+        )
+
+
+@app.command("market-desk-triage-discovery")
+def market_desk_triage_discovery(
+    entry_id: str = typer.Argument(..., help="Public discovery research-ledger entry ID"),
+    action: str = typer.Option(
+        ..., "--action", help="continue_research, invalidate, or close"
+    ),
+    reviewer: str = typer.Option(..., "--reviewer", help="Named research reviewer"),
+    reason: str = typer.Option(..., "--reason", help="Evidence-bound triage rationale"),
+    evidence_ref: list[str] = typer.Option(
+        ..., "--evidence-ref", help="Repeat for every supporting evidence reference"
+    ),
+    next_review_at: Optional[str] = typer.Option(
+        None, "--next-review-at", help="ISO-8601 time required for continue_research"
+    ),
+    reviewed_at: Optional[str] = typer.Option(None, "--reviewed-at"),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Record evidence-bound triage for one public discovery research entry."""
+    try:
+        result = capabilities.record_market_desk_discovery_triage(
+            entry_id,
+            action=action,
+            reviewer=reviewer,
+            reason=reason,
+            evidence_refs=evidence_ref,
+            next_review_at=next_review_at,
+            reviewed_at=reviewed_at,
+            ledger_path=ledger_path,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Discovery triage: {result['triage_action']}[/bold] "
+        "(research lifecycle only; no candidate or paper entry)"
+    )
+
+
+@app.command("market-desk-readiness")
+def market_desk_readiness(
+    ledger_path: Optional[Path] = typer.Option(
+        None, "--ledger-path", help="Research-ledger JSON path"
+    ),
+    restricted_list: Optional[Path] = typer.Option(
+        None, "--restricted-list", help="Restricted-list authority JSON path"
+    ),
+    observation_archive_directory: Optional[Path] = typer.Option(
+        None,
+        "--observation-archive-directory",
+        help="Public desk observation archive directory for integrity readiness.",
+    ),
+    portfolio_path: Optional[Path] = typer.Option(
+        None,
+        "--portfolio-path",
+        help="Paper-portfolio JSON path for linkage, entry-evidence, and exit-review readiness.",
+    ),
+    user_id: str = typer.Option(
+        "default", "--user", help="User profile that selects the market-data evidence lane"
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Audit observation versus formal paper-desk operating readiness."""
+    result = capabilities.assess_market_desk_operational_readiness(
+        user_id=user_id,
+        ledger_path=ledger_path,
+        restricted_list_path=restricted_list,
+        observation_archive_directory=observation_archive_directory,
+        portfolio_path=portfolio_path,
+    )
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Observation desk: {result['observation_desk_status']}[/bold]; "
+        f"formal paper desk: {result['formal_paper_desk_status']}"
+    )
+    for name, check in result["checks"].items():
+        console.print(f"  {name}: {check['status']} — {check['message']}")
+
+
+@app.command("market-desk-run")
+def market_desk_run(
+    candidate_limit: int = typer.Option(20, "--candidate-limit", min=1, max=100),
+    min_amount: float = typer.Option(200_000_000.0, "--min-amount", min=0.0),
+    min_change_pct: float = typer.Option(3.0, "--min-change-pct"),
+    market_map: Optional[Path] = typer.Option(
+        None, "--market-map", help="Optional source-referenced stock-to-sector mapping JSON"
+    ),
+    ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
+    restricted_list: Optional[Path] = typer.Option(None, "--restricted-list"),
+    portfolio_path: Optional[Path] = typer.Option(None, "--portfolio-path"),
+    user_id: str = typer.Option("default", "--user"),
+    json_output: bool = typer.Option(False, "--json", help="Output the shared team packet as JSON"),
+) -> None:
+    """Build one shared whole-market packet for the complete research desk."""
+
+    async def _run() -> dict[str, Any]:
+        return await capabilities.build_market_desk_team_packet(
+            candidate_limit=candidate_limit,
+            min_amount=min_amount,
+            min_change_pct=min_change_pct,
+            market_map_path=market_map,
+            ledger_path=ledger_path,
+            restricted_list_path=restricted_list,
+            portfolio_path=portfolio_path,
+            user_id=user_id,
+        )
+
+    result = _run_async(_run(), json_output)
+    if json_output:
+        _print_json(result)
+        return
+    regime = result["market_overview"]["regime"].get("regime", "insufficient_data")
+    discovery = result["whole_market_discovery"]
+    counts = discovery.get("screening_counts", {})
+    readiness = result["operational_readiness"]
+    console.print(
+        f"[bold]Whole-Market Research Desk[/bold] {result.get('observed_at') or 'unknown time'}"
+    )
+    console.print(f"  Regime: {regime}; discovery observations: {counts.get('returned_candidates', 0)}")
+    console.print(
+        f"  Observation desk: {readiness['observation_desk_status']}; "
+        f"governed public paper entry: {readiness['public_paper_entry_status']}; "
+        f"formal release: {readiness['formal_paper_desk_status']}"
+    )
+    console.print("  Output is a shared research packet only; no order execution is available.")
+
+
+@app.command("market-desk-maturity")
+def market_desk_maturity(
+    ledger_path: Optional[Path] = typer.Option(
+        None, "--ledger-path", help="Research-ledger JSON path"
+    ),
+    restricted_list: Optional[Path] = typer.Option(
+        None, "--restricted-list", help="Restricted-list authority JSON path"
+    ),
+    observation_archive_directory: Optional[Path] = typer.Option(
+        None,
+        "--observation-archive-directory",
+        help="Public desk observation archive directory.",
+    ),
+    discovery_archive_directory: Optional[Path] = typer.Option(
+        None,
+        "--discovery-archive-directory",
+        help="Public desk discovery archive directory.",
+    ),
+    portfolio_path: Optional[Path] = typer.Option(
+        None,
+        "--portfolio-path",
+        help="Paper-portfolio JSON path for lifecycle-governance evidence.",
+    ),
+    user_id: str = typer.Option(
+        "default", "--user", help="User profile that selects the market-data evidence lane"
+    ),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Audit institution-style market-desk operating evidence and boundaries."""
+    result = capabilities.assess_market_desk_operating_maturity(
+        user_id=user_id,
+        ledger_path=ledger_path,
+        restricted_list_path=restricted_list,
+        observation_archive_directory=observation_archive_directory,
+        discovery_archive_directory=discovery_archive_directory,
+        portfolio_path=portfolio_path,
+    )
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]Market-desk maturity: {result['maturity_status']}[/bold] "
+        f"({result['market_data_mode']})"
+    )
+    for name, requirement in result["requirements"].items():
+        console.print(f"  {name}: {requirement['status']} — {requirement['message']}")
+
+
+@app.command("market-desk-decision")
+def market_desk_decision(
+    candidate_file: Path = typer.Argument(..., exists=True, readable=True, help="Candidate JSON file"),
+    control_file: Path = typer.Argument(..., exists=True, readable=True, help="IC control-assessments JSON file"),
+    candidate_id: str = typer.Option(..., "--candidate-id", help="Stable candidate identifier"),
+    regime: str = typer.Option(..., "--regime", help="Market regime from market-desk"),
+    owner: str = typer.Option(..., "--owner", help="Investment-committee decision owner"),
+    evidence_ref: Optional[list[str]] = typer.Option(None, "--evidence-ref", help="Evidence reference; repeat for more than one"),
+    model_version: Optional[list[str]] = typer.Option(
+        None,
+        "--model-version",
+        help="Named model version in name=version form; repeat for each material model.",
+    ),
+    restricted_list: Optional[Path] = typer.Option(
+        None,
+        "--restricted-list",
+        exists=True,
+        readable=True,
+        help="Current externally sourced restricted-list JSON authority.",
+    ),
+    decided_at: Optional[str] = typer.Option(None, "--decided-at", help="ISO-8601 decision timestamp"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Create a non-bypassable market-desk IC decision record from JSON inputs."""
+    try:
+        candidate = json.loads(candidate_file.read_text(encoding="utf-8"))
+        controls = json.loads(control_file.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise typer.BadParameter(f"Decision inputs must be valid JSON: {exc}") from exc
+    if not isinstance(candidate, dict) or not isinstance(controls, dict):
+        raise typer.BadParameter("Candidate and control inputs must each be JSON objects")
+    model_versions: dict[str, str] = {}
+    for item in model_version or []:
+        name, separator, version = item.partition("=")
+        if not separator or not name.strip() or not version.strip():
+            raise typer.BadParameter("--model-version must use name=version form")
+        model_versions[name.strip()] = version.strip()
+
+    result = capabilities.decide_market_desk_investment_committee(
+        candidate,
+        candidate_id=candidate_id,
+        regime=regime,
+        control_assessments=controls,
+        decision_owner=owner,
+        evidence_refs=evidence_ref or (),
+        model_versions=model_versions,
+        decided_at=decided_at,
+        restricted_list_path=restricted_list,
+    )
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        f"[bold]IC decision: {result['decision']}[/bold] "
+        f"for {result['candidate_id']} ({result['regime']})"
+    )
+    for blocker in result["blockers"]:
+        console.print(f"[yellow]Blocker: {blocker}[/yellow]")
 
 
 @app.command()
@@ -2177,52 +3327,41 @@ def scheduler_start(
     json_output: bool = typer.Option(False, "--json", help="Output JSON on start"),
 ) -> None:
     """Start the task scheduler daemon."""
-    from .scheduler import TaskScheduler, ScheduledJob, JobFrequency, create_default_jobs
-    from .scheduler.bridge import sync_research_to_monitor
+    from .scheduler import create_default_scheduler
+
+    if not foreground:
+        result = {
+            "error": "Background scheduler startup is not supported by this CLI process. Run with --foreground under a process supervisor.",
+            "background_supported": False,
+        }
+        if json_output:
+            _print_json(result)
+        else:
+            console.print(f"[red]{result['error']}[/red]")
+        raise typer.Exit(2)
 
     async def _run():
-        scheduler = TaskScheduler()
-        for job in create_default_jobs():
-            scheduler.register(job)
-
-        async def _sync_bridge():
-            return await sync_research_to_monitor()
-
-        scheduler.register(ScheduledJob(
-            name="sync_research_to_monitor",
-            frequency=JobFrequency.EVERY_30_MIN,
-            handler=_sync_bridge,
-        ))
+        scheduler = create_default_scheduler()
 
         await scheduler.start()
 
         if json_output:
             _print_json(scheduler.get_status())
 
-        if foreground:
-            console.print("[green]Scheduler running (Ctrl+C to stop)[/green]")
-            try:
-                while True:
-                    await asyncio.sleep(1)
-            except (KeyboardInterrupt, asyncio.CancelledError):
-                pass
-            finally:
-                await scheduler.stop()
-                console.print("[yellow]Scheduler stopped[/yellow]")
-        else:
-            return scheduler.get_status()
-
-    if foreground:
+        console.print("[green]Scheduler running (Ctrl+C to stop)[/green]")
         try:
-            asyncio.run(_run())
-        except KeyboardInterrupt:
+            while True:
+                await asyncio.sleep(1)
+        except (KeyboardInterrupt, asyncio.CancelledError):
             pass
-    else:
-        result = asyncio.run(_run())
-        if json_output and result:
-            _print_json(result)
-        else:
-            console.print("[green]Scheduler started in background[/green]")
+        finally:
+            await scheduler.stop()
+            console.print("[yellow]Scheduler stopped[/yellow]")
+
+    try:
+        asyncio.run(_run())
+    except KeyboardInterrupt:
+        pass
 
 
 @scheduler_app.command("status")
@@ -2230,8 +3369,8 @@ def scheduler_show_status(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Show scheduler status from saved state."""
-    from .scheduler import TaskScheduler
-    scheduler = TaskScheduler()
+    from .scheduler import create_default_scheduler
+    scheduler = create_default_scheduler()
     # Load persisted state to show last known status
     scheduler._load_state()
     status = scheduler.get_status()
@@ -2244,6 +3383,48 @@ def scheduler_show_status(
         for name, job in status.get("jobs", {}).items():
             last = job.get("last_run") or "never"
             console.print(f"  • {name}: runs={job['run_count']}, errors={job['error_count']}, last={last}")
+            for blocker in job.get("dependency_blockers", []):
+                console.print(
+                    f"    waiting on {blocker['job']}: {blocker['reason']}"
+                )
+
+
+@scheduler_app.command("launchd-plan")
+def scheduler_launchd_plan(
+    output: Path = typer.Option(
+        Path("data/launchd/com.astock.scheduler.plist"),
+        "--output",
+        help="Workspace-local LaunchAgent plan path; generation never installs it.",
+    ),
+    python_executable: Path = typer.Option(
+        Path(sys.executable), "--python-executable", help="Project virtualenv Python executable"
+    ),
+    project_root: Path = typer.Option(
+        Path(__file__).resolve().parents[3], "--project-root", help="AStock project root"
+    ),
+    label: str = typer.Option("com.astock.scheduler", "--label"),
+    logs_directory: Optional[Path] = typer.Option(None, "--logs-directory"),
+    json_output: bool = typer.Option(False, "--json", help="Output JSON"),
+) -> None:
+    """Generate, but never install, a macOS LaunchAgent supervisor plan."""
+    from .scheduler.launchd import write_launch_agent_plan
+
+    try:
+        result = write_launch_agent_plan(
+            output,
+            python_executable=python_executable,
+            project_root=project_root,
+            label=label,
+            logs_directory=logs_directory,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(f"[bold]LaunchAgent plan written[/bold]: {result['plist_path']}")
+    console.print("Not installed. Review before running:")
+    console.print(f"  {result['install_command']}")
 
 
 @scheduler_app.command("run-job")
@@ -2252,22 +3433,11 @@ def scheduler_run_job(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Manually trigger a single scheduler job."""
-    from .scheduler import TaskScheduler, create_default_jobs
-    from .scheduler.bridge import sync_research_to_monitor
+    from .scheduler import create_default_scheduler
 
     async def _run():
-        scheduler = TaskScheduler()
-        for job in create_default_jobs():
-            scheduler.register(job)
-
-        from .scheduler import ScheduledJob, JobFrequency
-        async def _sync_bridge():
-            return await sync_research_to_monitor()
-        scheduler.register(ScheduledJob(
-            name="sync_research_to_monitor",
-            frequency=JobFrequency.EVERY_30_MIN,
-            handler=_sync_bridge,
-        ))
+        scheduler = create_default_scheduler()
+        scheduler._load_state()
 
         return await scheduler.run_once(job_name)
 

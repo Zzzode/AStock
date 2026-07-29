@@ -1,5 +1,7 @@
 """Quote service tests"""
 
+import asyncio
+
 import pytest
 import pytest_asyncio
 import pandas as pd
@@ -165,6 +167,32 @@ async def test_quote_service_get_daily_retry_on_transient_error(
     assert mock_get_or_set.await_count == 2
 
 
+@pytest.mark.asyncio
+async def test_get_daily_skips_a_hung_unbounded_primary_source_and_uses_akshare(
+    mock_db: AsyncMock,
+) -> None:
+    service = QuoteService(mock_db)
+    service._daily_source_timeout_seconds = 0.01
+
+    async def never_returns(*_: object, **__: object) -> pd.DataFrame:
+        await asyncio.Event().wait()
+        raise AssertionError("unreachable")
+
+    fallback_df = pd.DataFrame(
+        [{"date": "2026-03-06", "open": 10.1, "high": 10.3, "low": 9.9, "close": 10.2, "volume": 1_000, "amount": 10_200}]
+    )
+    service.primary_client.get_daily_quotes = AsyncMock(side_effect=never_returns)
+    service.fallback_client.get_daily_quotes = AsyncMock(return_value=fallback_df)
+
+    result = await asyncio.wait_for(
+        service.get_daily("600123", save=False, limit=10), timeout=0.1
+    )
+
+    assert result.equals(fallback_df)
+    service.primary_client.get_daily_quotes.assert_not_awaited()
+    service.fallback_client.get_daily_quotes.assert_awaited_once()
+
+
 def test_analyze_cli_handles_data_source_error_without_traceback() -> None:
     """Test analyze command returns readable error on data source exception"""
     runner = CliRunner()
@@ -225,8 +253,8 @@ async def test_quote_service_get_daily_fallback_to_db_when_network_fails(
 
 
 @pytest.mark.asyncio
-async def test_get_daily_quotes_fallback_to_daily_source(client: AkShareClient) -> None:
-    fallback_df = pd.DataFrame(
+async def test_get_daily_quotes_uses_timeout_bound_eastmoney_history(client: AkShareClient) -> None:
+    history_df = pd.DataFrame(
         [
             {
                 "date": "2026-03-05",
@@ -240,17 +268,12 @@ async def test_get_daily_quotes_fallback_to_daily_source(client: AkShareClient) 
         ]
     )
 
-    with (
-        patch(
-            "astock.quote.akshare_client.ak.stock_zh_a_hist",
-            side_effect=ConnectionError("em down"),
-        ),
-        patch(
-            "astock.quote.akshare_client.ak.stock_zh_a_daily", return_value=fallback_df
-        ),
-    ):
+    with patch(
+        "astock.quote.akshare_client.ak.stock_zh_a_hist", return_value=history_df
+    ) as history:
         result = await client.get_daily_quotes("600589")
 
+    assert history.call_args.kwargs["timeout"] == client._daily_history_timeout_seconds
     assert not result.empty
     assert list(result.columns) == [
         "date",
@@ -261,3 +284,40 @@ async def test_get_daily_quotes_fallback_to_daily_source(client: AkShareClient) 
         "volume",
         "amount",
     ]
+
+
+@pytest.mark.asyncio
+async def test_get_daily_quotes_filters_string_dates_before_normalization(
+    client: AkShareClient,
+) -> None:
+    daily = pd.DataFrame(
+        [
+            {"date": "2026-03-04", "open": 9.0, "high": 9.2, "low": 8.9, "close": 9.1, "volume": 1_000, "amount": 9_100},
+            {"date": "2026-03-05", "open": 10.0, "high": 10.2, "low": 9.8, "close": 10.1, "volume": 1_000, "amount": 10_100},
+            {"date": "2026-03-06", "open": 11.0, "high": 11.2, "low": 10.8, "close": 11.1, "volume": 1_000, "amount": 11_100},
+        ]
+    )
+
+    with patch("astock.quote.akshare_client.ak.stock_zh_a_hist", return_value=daily):
+        result = await client.get_daily_quotes(
+            "600589", start_date=date(2026, 3, 5), end_date=date(2026, 3, 5)
+        )
+
+    assert result["date"].tolist() == ["2026-03-05"]
+
+
+@pytest.mark.asyncio
+async def test_get_daily_quotes_filters_python_date_values_before_normalization(
+    client: AkShareClient,
+) -> None:
+    daily = pd.DataFrame(
+        [
+            {"date": date(2026, 3, 4), "open": 9.0, "high": 9.2, "low": 8.9, "close": 9.1, "volume": 1_000, "amount": 9_100},
+            {"date": date(2026, 3, 5), "open": 10.0, "high": 10.2, "low": 9.8, "close": 10.1, "volume": 1_000, "amount": 10_100},
+            {"date": date(2026, 3, 6), "open": 11.0, "high": 11.2, "low": 10.8, "close": 11.1, "volume": 1_000, "amount": 11_100},
+        ]
+    )
+
+    result = client._filter_by_date(daily, start_date=date(2026, 3, 5), end_date=date(2026, 3, 5))
+
+    assert result["date"].tolist() == [date(2026, 3, 5)]

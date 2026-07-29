@@ -3,14 +3,10 @@
 from dataclasses import dataclass
 from datetime import datetime
 from typing import Any, Optional
-import asyncio
-import pandas as pd
-import numpy as np
 
-from .factors import Factor, FactorType, FACTORS, get_factor
+from .factors import Factor, FACTORS, get_factor
 from ..quote import QuoteService
-from ..analysis import TechnicalAnalyzer
-from ..utils import get_logger, DataSourceError, ValidationError
+from ..utils import get_logger, DataSourceError
 
 logger = get_logger("screener")
 
@@ -197,20 +193,12 @@ class StockScreener:
                 logger.debug(f"Stock {code} has insufficient data")
                 return None
 
-            # Compute technical indicators
-            analyzer = TechnicalAnalyzer(df)
-            df_with_indicators = analyzer.add_all()
-
-            # Get latest data
-            latest = df_with_indicators.iloc[-1]
-            prev = (
-                df_with_indicators.iloc[-2] if len(df_with_indicators) > 1 else latest
-            )
-
-            # Compute additional indicators
-            vol_ma5 = df_with_indicators["volume"].rolling(5).mean().iloc[-1]
+            # The screener intentionally operates on observable market structure,
+            # liquidity, volatility, and financial fields. It must not turn
+            # MA/MACD/KDJ/RSI calculations into screening gates.
+            latest = df.iloc[-1]
             volatility_20 = (
-                df_with_indicators["close"].pct_change().rolling(20).std().iloc[-1]
+                df["close"].pct_change().rolling(20).std().iloc[-1]
             )
 
             # Get PE, PB from daily data (supported by Baostock)
@@ -223,34 +211,25 @@ class StockScreener:
             # 使用缓存的股票名称
             name = self._stock_names.get(code, "")
 
+            close = float(latest["close"])
+            high = float(latest["high"])
+            low = float(latest["low"])
+
             return {
                 "code": code,
                 "name": name,
-                "close": float(latest["close"]),
+                "close": close,
                 "open": float(latest["open"]),
-                "high": float(latest["high"]),
-                "low": float(latest["low"]),
+                "high": high,
+                "low": low,
                 "volume": float(latest["volume"]),
                 "amount": float(latest["amount"]) if "amount" in latest else 0,
                 "pe": float(pe_value) if pe_value is not None and pe_value != 0 else None,
                 "pb": float(pb_value) if pb_value is not None and pb_value != 0 else None,
                 "turnover_rate": float(latest.get("turn", 0)) if latest.get("turn") else None,
-                "ma5": float(latest.get("ma5", 0)),
-                "ma10": float(latest.get("ma10", 0)),
-                "ma20": float(latest.get("ma20", 0)),
-                "ma60": float(latest.get("ma60", 0)),
-                "macd": float(latest.get("macd", 0)),
-                "macd_signal": float(latest.get("macd_signal", 0)),
-                "macd_hist": float(latest.get("macd_hist", 0)),
-                "kdj_k": float(latest.get("kdj_k", 0)),
-                "kdj_d": float(latest.get("kdj_d", 0)),
-                "kdj_j": float(latest.get("kdj_j", 0)),
-                "rsi6": float(latest.get("rsi6", 0)),
-                "prev_ma5": float(prev.get("ma5", 0)),
-                "prev_ma20": float(prev.get("ma20", 0)),
-                "vol_ma5": float(vol_ma5),
-                "vol_ma5_2x": float(vol_ma5 * 2),
                 "volatility_20": float(volatility_20),
+                "daily_range_pct": (high - low) / close if close > 0 else None,
+                "close_to_high_pct": close / high if high > 0 else None,
             }
 
         except Exception as e:
@@ -307,40 +286,6 @@ class StockScreener:
             if threshold is None:
                 return False
 
-        # Handle special operators
-        if factor.operator == "cross_up":
-            prev_value = data.get(f"prev_{factor.field}")
-            prev_threshold_key = (
-                f"prev_{factor.threshold}"
-                if isinstance(factor.threshold, str)
-                else None
-            )
-            prev_threshold = (
-                data.get(prev_threshold_key) if prev_threshold_key else threshold
-            )
-
-            if prev_value is None or prev_threshold is None:
-                return False
-
-            return bool(value > threshold and prev_value <= prev_threshold)
-
-        if factor.operator == "cross_down":
-            prev_value = data.get(f"prev_{factor.field}")
-            prev_threshold_key = (
-                f"prev_{factor.threshold}"
-                if isinstance(factor.threshold, str)
-                else None
-            )
-            prev_threshold = (
-                data.get(prev_threshold_key) if prev_threshold_key else threshold
-            )
-
-            if prev_value is None or prev_threshold is None:
-                return False
-
-            return bool(value < threshold and prev_value >= prev_threshold)
-
-        # Handle regular operators
         return self._compare_values(value, factor.operator, threshold)
 
     def _compare_values(self, value: Any, operator: str, threshold: Any) -> bool:

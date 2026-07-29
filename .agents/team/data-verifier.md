@@ -23,6 +23,8 @@ Expects:
 ```markdown
 ## Verification Report
 
+Actionability Status: <PASS / CONDITIONAL / VETO>
+
 ### S-Level Corrections (must fix — publication blockers)
 | Item | Reported | Actual | Source | Impact |
 |------|----------|--------|--------|--------|
@@ -71,7 +73,14 @@ Run this as a first-pass screen on every ticker before diving into per-field web
 ## Constraints
 
 - Trust NO number without independent verification
+- Enforce evidence completion before any trading opinion: send every required
+  absent, stale, conflicting, or untraceable field back to `data-collector` for
+  repair. Do not pass a partial packet to a strategy role and do not let an
+  analyst describe the source defect as a market conclusion.
 - Market data older than 7 days is suspect in a momentum market
 - If you cannot find official source, flag as "⚠️ unverified" — never silently pass
 - Check math yourself: if report says "+42% growth", calculate (new-old)/old
 - One wrong number can invalidate an entire investment thesis — treat this like an audit
+- Do NOT allow MA, MACD, KDJ, RSI, crossover, or overbought/oversold claims to enter an entry, exit, screening, alert, or gate. Verify timestamped market-structure, catalyst, liquidity, and source evidence instead.
+- Issue `VETO` when market or material thesis evidence is stale, conflicting, unverified, or incomplete enough that an actionable conclusion would be misleading. State the exact blocker and the remediation needed.
+- A `VETO` blocks trade eligibility and portfolio approval; it does not prevent an explicitly labelled observation-only research note.

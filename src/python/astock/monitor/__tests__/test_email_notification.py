@@ -97,9 +97,9 @@ class TestSendEmailNotification:
         return AlertRecord(
             id=1,
             code="000001",
-            signal_type="ma_cross",
-            signal_name="MA金叉",
-            message="MA5上穿MA20，形成金叉信号",
+            signal_type="price_dislocation",
+            signal_name="价格异动",
+            message="单日价格异动超过7%",
             level=2,
             triggered_at=datetime(2026, 3, 10, 10, 30, 0),
             status="pending",
@@ -138,7 +138,7 @@ class TestSendEmailNotification:
             assert call_args[0][0] == sample_email_config
             assert "[测试]" in call_args[0][1]
             assert "000001" in call_args[0][1]
-            assert "MA金叉" in call_args[0][1]
+            assert "价格异动" in call_args[0][1]
 
     @pytest.mark.asyncio
     async def test_send_email_notification_tls(self, sample_alert):

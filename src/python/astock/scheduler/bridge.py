@@ -6,12 +6,11 @@ and feeds verification results back to remove/update monitoring rules.
 
 from __future__ import annotations
 
-import json
 from datetime import datetime
 from pathlib import Path
 from typing import Any, Optional
 
-from ..research import ResearchEntry, ResearchLedger, ResearchStatus, ResearchTrigger
+from ..research import ResearchEntry, ResearchLedger, ResearchStatus
 from ..storage import Database, WatchItem
 from ..utils import get_logger
 

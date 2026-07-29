@@ -1,4 +1,4 @@
-"""Extended factor definitions - financial/sentiment/capital flow/technical factors"""
+"""Screening factors for valuation, quality, volatility, and market structure."""
 
 from dataclasses import dataclass
 from enum import Enum
@@ -9,13 +9,12 @@ class FactorType(Enum):
     """Factor type"""
 
     VALUATION = "valuation"  # Valuation factors
-    MOMENTUM = "momentum"  # Momentum factors
+    MOMENTUM = "momentum"  # Reserved for non-indicator price-structure research
     QUALITY = "quality"  # Quality factors
     VOLATILITY = "volatility"  # Volatility factors
     FINANCIAL = "financial"  # Financial factors
-    SENTIMENT = "sentiment"  # Sentiment factors
     CAPITAL_FLOW = "capital_flow"  # Capital flow factors
-    TECHNICAL = "technical"  # Technical factors
+    MARKET_STRUCTURE = "market_structure"  # Price and liquidity structure factors
 
 
 @dataclass
@@ -27,7 +26,7 @@ class Factor:
     type: FactorType  # Factor type
     description: str  # Factor description
     field: str  # Data field
-    operator: str  # Comparison operator (lt, le, gt, ge, eq, cross_up, cross_down)
+    operator: str  # Comparison operator (lt, le, gt, ge, eq)
     threshold: Any  # Threshold value
     weight: float = 1.0  # Weight
     value_extractor: Optional[str] = None  # Value extractor
@@ -97,76 +96,25 @@ FACTORS: dict[str, Factor] = {
         threshold=0,
         weight=0.5,
     ),
-    # ============ Momentum factors ============
-    "ma20_above": Factor(
-        key="ma20_above",
-        name="Above MA20",
-        type=FactorType.MOMENTUM,
-        description="Close price above 20-day moving average",
-        field="close",
-        operator="gt",
-        threshold="ma20",
-        weight=1.5,
-    ),
-    "ma5_cross_ma20": Factor(
-        key="ma5_cross_ma20",
-        name="MA5 Golden Cross MA20",
-        type=FactorType.MOMENTUM,
-        description="5-day MA crosses above 20-day MA",
-        field="ma5",
-        operator="cross_up",
-        threshold="ma20",
-        weight=2.0,
-    ),
-    "ma10_cross_ma30": Factor(
-        key="ma10_cross_ma30",
-        name="MA10 Golden Cross MA30",
-        type=FactorType.MOMENTUM,
-        description="10-day MA crosses above 30-day MA",
-        field="ma10",
-        operator="cross_up",
-        threshold="ma30",
-        weight=1.8,
-    ),
-    "price_above_ma5": Factor(
-        key="price_above_ma5",
-        name="Above MA5",
-        type=FactorType.MOMENTUM,
-        description="Close price above 5-day moving average",
-        field="close",
-        operator="gt",
-        threshold="ma5",
-        weight=1.0,
-    ),
-    "ma_trend_up": Factor(
-        key="ma_trend_up",
-        name="Bullish MA Alignment",
-        type=FactorType.MOMENTUM,
-        description="MA5 > MA10 > MA20 bullish alignment",
-        field="ma5",
-        operator="gt",
-        threshold="ma10",
-        weight=2.5,
-    ),
     # ============ Quality factors ============
     "high_volume": Factor(
         key="high_volume",
-        name="High Volume",
+        name="Active Turnover",
         type=FactorType.QUALITY,
-        description="Volume greater than 2x of 5-day average volume",
-        field="volume",
+        description="Turnover rate above 2%",
+        field="turnover_rate",
         operator="gt",
-        threshold="vol_ma5_2x",
+        threshold=2.0,
         weight=1.0,
     ),
     "volume_steady": Factor(
         key="volume_steady",
-        name="Steady Volume",
+        name="Liquid Trading",
         type=FactorType.QUALITY,
-        description="Volume near 5-day average volume",
-        field="volume",
+        description="Daily traded value above 50 million",
+        field="amount",
         operator="ge",
-        threshold="vol_ma5",
+        threshold=50_000_000,
         weight=0.8,
     ),
     # ============ Volatility factors ============
@@ -241,57 +189,6 @@ FACTORS: dict[str, Factor] = {
         threshold=1.5,
         weight=1.0,
     ),
-    # ============ Sentiment factors ============
-    "rsi_oversold": Factor(
-        key="rsi_oversold",
-        name="RSI Oversold",
-        type=FactorType.SENTIMENT,
-        description="RSI6 below 30, oversold zone",
-        field="rsi6",
-        operator="lt",
-        threshold=30,
-        weight=1.5,
-    ),
-    "rsi_overbought": Factor(
-        key="rsi_overbought",
-        name="RSI Overbought",
-        type=FactorType.SENTIMENT,
-        description="RSI6 above 70, overbought zone",
-        field="rsi6",
-        operator="gt",
-        threshold=70,
-        weight=-1.0,  # Negative weight indicates risk
-    ),
-    "rsi_neutral": Factor(
-        key="rsi_neutral",
-        name="RSI Neutral",
-        type=FactorType.SENTIMENT,
-        description="RSI between 30-70, neutral sentiment",
-        field="rsi6",
-        operator="ge",
-        threshold=30,
-        weight=0.5,
-    ),
-    "kdj_oversold": Factor(
-        key="kdj_oversold",
-        name="KDJ Oversold",
-        type=FactorType.SENTIMENT,
-        description="KDJ J-value below 20, oversold zone",
-        field="kdj_j",
-        operator="lt",
-        threshold=20,
-        weight=1.5,
-    ),
-    "kdj_overbought": Factor(
-        key="kdj_overbought",
-        name="KDJ Overbought",
-        type=FactorType.SENTIMENT,
-        description="KDJ J-value above 80, overbought zone",
-        field="kdj_j",
-        operator="gt",
-        threshold=80,
-        weight=-1.0,
-    ),
     # ============ Capital flow factors ============
     "net_inflow": Factor(
         key="net_inflow",
@@ -323,76 +220,26 @@ FACTORS: dict[str, Factor] = {
         threshold=0,
         weight=1.8,
     ),
-    # ============ Technical factors ============
-    "macd_golden_cross": Factor(
-        key="macd_golden_cross",
-        name="MACD Golden Cross",
-        type=FactorType.TECHNICAL,
-        description="MACD histogram turns from negative to positive",
-        field="macd_hist",
-        operator="gt",
-        threshold=0,
-        weight=2.0,
-    ),
-    "macd_dead_cross": Factor(
-        key="macd_dead_cross",
-        name="MACD Death Cross",
-        type=FactorType.TECHNICAL,
-        description="MACD histogram turns from positive to negative",
-        field="macd_hist",
-        operator="lt",
-        threshold=0,
-        weight=-1.5,
-    ),
-    "macd_above_zero": Factor(
-        key="macd_above_zero",
-        name="MACD Above Zero",
-        type=FactorType.TECHNICAL,
-        description="MACD running above zero line",
-        field="macd",
-        operator="gt",
-        threshold=0,
-        weight=1.2,
-    ),
-    "kdj_golden_cross": Factor(
-        key="kdj_golden_cross",
-        name="KDJ Golden Cross",
-        type=FactorType.TECHNICAL,
-        description="K line crosses above D line",
-        field="kdj_k",
-        operator="cross_up",
-        threshold="kdj_d",
-        weight=1.8,
-    ),
-    "boll_lower_support": Factor(
-        key="boll_lower_support",
-        name="Bollinger Lower Band Support",
-        type=FactorType.TECHNICAL,
-        description="Price touches Bollinger lower band",
-        field="close",
-        operator="le",
-        threshold="boll_lower",
-        weight=1.5,
-    ),
-    "boll_upper_pressure": Factor(
-        key="boll_upper_pressure",
-        name="Bollinger Upper Band Resistance",
-        type=FactorType.TECHNICAL,
-        description="Price touches Bollinger upper band",
-        field="close",
+    # ============ Market-structure factors ============
+    "range_expansion": Factor(
+        key="range_expansion",
+        name="Wide Daily Range",
+        type=FactorType.MARKET_STRUCTURE,
+        description="Intraday range is at least 5% of the closing price",
+        field="daily_range_pct",
         operator="ge",
-        threshold="boll_upper",
-        weight=-0.5,
+        threshold=0.05,
+        weight=1.0,
     ),
-    "breakout_high": Factor(
-        key="breakout_high",
-        name="Breakout High",
-        type=FactorType.TECHNICAL,
-        description="Price breaks 20-day high",
-        field="close",
+    "close_near_high": Factor(
+        key="close_near_high",
+        name="Close Near Session High",
+        type=FactorType.MARKET_STRUCTURE,
+        description="Close is within 2% of the session high",
+        field="close_to_high_pct",
         operator="ge",
-        threshold="high_20d",
-        weight=2.5,
+        threshold=0.98,
+        weight=1.0,
     ),
 }
 
@@ -424,9 +271,7 @@ HIGH_DIVIDEND_FACTORS = [
     "pe_positive",      # Profitable company
     "pe_very_low",      # PE < 15, low valuation
     "pb_very_low",      # PB < 1.5, low valuation
-    "ma20_above",       # Above 20-day MA, uptrend
-    "macd_above_zero",  # MACD above zero line
-    "volume_steady",    # Steady volume
+    "volume_steady",    # Minimum liquidity
 ]
 
 # Value investing factor combination
@@ -435,15 +280,13 @@ VALUE_INVEST_FACTORS = [
     "pe_very_low",
     "pb_very_low",
     "low_volatility",
-    "ma_trend_up",
 ]
 
 # Growth momentum factor combination
 GROWTH_MOMENTUM_FACTORS = [
-    "ma5_cross_ma20",
-    "macd_golden_cross",
     "high_volume",
-    "ma_trend_up",
+    "range_expansion",
+    "close_near_high",
 ]
 
 

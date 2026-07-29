@@ -1,6 +1,5 @@
 """User configuration management"""
 
-from dataclasses import dataclass, field
 from datetime import time
 from enum import Enum
 from pathlib import Path
@@ -22,6 +21,13 @@ class TradingStyle(str, Enum):
     SWING = "swing"  # Swing Trading
     TREND_FOLLOWING = "trend_following"  # Trend Following
     VALUE_INVESTING = "value_investing"  # Value Investing
+
+
+class MarketDataMode(str, Enum):
+    """Permitted market-data evidence lane for the current user profile."""
+
+    PUBLIC_OBSERVATION = "public_observation"
+    LICENSED_EOD = "licensed_eod"
 
 
 class UserConfig(BaseModel):
@@ -52,7 +58,12 @@ class UserConfig(BaseModel):
 
     # Default settings
     default_capital: float = 100000.0  # Default capital
-    default_strategy: str = "ma_cross"  # Default strategy
+    default_strategy: str = "market_structure_review"  # Default strategy
+
+    # Data-source policy
+    # New and reset profiles must never opt into paid/licensed data implicitly.
+    # A licensed lane is an explicit, auditable user policy change.
+    market_data_mode: MarketDataMode = MarketDataMode.PUBLIC_OBSERVATION
 
     class Config:
         use_enum_values = False  # Keep enum types
@@ -129,6 +140,7 @@ class ConfigManager:
         data["alert_time_end"] = config.alert_time_end.isoformat()
         data["risk_level"] = config.risk_level.value
         data["trading_style"] = config.trading_style.value
+        data["market_data_mode"] = config.market_data_mode.value
 
         with open(config_path, "w", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)

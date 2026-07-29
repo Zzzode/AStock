@@ -22,7 +22,25 @@ Build and audit AStock valuation packages. This skill is the authoritative valua
 
 If an input is missing, either collect it through the project capability layer or mark it explicitly as `not disclosed` / `insufficient evidence`. Do not fill broker, order, customer, or consensus fields with AStock assumptions.
 
-Publication stance rule: if a ticker lacks the evidence needed to compute a defensible current-price-based target or fair-value range, use `watchlist only / insufficient evidence` and exclude it from investable recommendations. Do not use a pseudo-precise target price to hide missing customer, order, ASP, utilization, share-count, or broker-anchor inputs.
+Publication stance rule: if a ticker lacks the evidence needed to compute a defensible current-price-based target or fair-value range, use `watchlist only / insufficient evidence` and exclude it from investable recommendations. Do not use a pseudo-precise target price to hide missing customer, order, ASP, utilization, share-count, or broker-anchor inputs. Missing one direct broker target is not by itself a reason to stop valuation work: run the valuation recovery loop below before downgrading.
+
+## Valuation Recovery Loop
+
+When a ticker is low-base, turnaround, project-cycle distorted, real-estate settlement-driven, cyclical, near-zero EPS, or lacks a current direct broker target, run a recovery loop rather than mechanically annualizing the latest profit or stopping at `not disclosed`:
+
+1. **Institutional evidence:** collect current original broker PDFs, broker official pages, public or exported Wind/Choice/iFinD-style consensus snapshots, earnings previews, rating changes, target-price history, and forecast EPS/revenue/net-profit revisions. Preserve source quality, date, broker identity, and visible missing fields.
+2. **Peer valuation:** construct a business-model-matched comparable set with at least three relevant listed peers when available. Normalize exchange, share class, currency, forward period, cyclicality, leverage, business mix, and one-off earnings before comparing PE, PB/ROE, EV/EBITDA, PS, NAV, or SOTP.
+3. **Market-implied valuation:** calculate what the current price implies using normalized EPS, BPS, EBITDA, revenue, NAV, or segment value. Add price position, trading value/liquidity, momentum, crowding, target-price dispersion, rating concentration, and narrative regime. Market price is an observable sentiment anchor, not noise to be discarded.
+4. **Alternative primary method:** choose the method that matches the failure mode: normalized/cycle-adjusted PE for recurring earnings, PB/ROE or NAV/SOTP for financial and real-estate assets, EV/EBITDA for asset-heavy/project businesses, PS/EV-Sales for low-profit growth, DCF for long-duration cash flows, or SOTP for mixed businesses.
+5. **Scenario and confidence:** produce bear/base/bull fair-value ranges, explicit normalization assumptions, source-weighted anchors, and a confidence label. A direct broker target is one anchor, not a prerequisite. If evidence remains weak, publish a range or pressure-test boundary with `watchlist only`, not a pseudo-precise point target.
+
+Required recovery fields:
+
+```text
+valuation_recovery_status | direct_broker_anchor | public_consensus_anchor | peer_set | peer_metrics | market_implied_metric | alternative_method | normalized_denominator | scenario_range | confidence | upgrade_trigger | downgrade_trigger
+```
+
+For low-base or settlement-driven names, show both the mechanical annualized metric and the normalized or alternative valuation. The mechanical metric must be labeled a stress test and must not be used as the final target without recurring-earnings or asset-value evidence.
 
 ## Workflow
 
@@ -34,6 +52,7 @@ Publication stance rule: if a ticker lacks the evidence needed to compute a defe
    - Value only core valuation names unless the satellite section states exactly what evidence is missing and why the ticker remains watchlist-only.
    - Never value demand anchors as upstream beneficiaries.
    - If the valuation case depends on AI, high-growth segment mix, shipments, units, ASP, order/backlog conversion, customer allocation, or "sales/orders will double", consume the growth earnings package before assigning any growth multiple or upside.
+   - If the ticker is low-base, turnaround, project-cycle distorted, or settlement-driven, route it through the Valuation Recovery Loop before selecting a target method.
 
 2. **Normalize the financial denominator.**
    - Show 2026E revenue, 2026E net profit/EPS, expected growth, and the bridge from reported quarters to the forecast.
@@ -41,6 +60,7 @@ Publication stance rule: if a ticker lacks the evidence needed to compute a defe
    - For high-growth stories, separate base business and growth segment economics using `analysis/segment_forecast_bridge.md`; do not apply high-growth multiples to consolidated revenue unless segment purity is proven.
    - Apply seasonality calibration before calling anything cheap or expensive.
    - If the denominator is near-zero, temporary, project-cycle distorted, or unsupported, switch methods or mark the ticker `insufficient evidence / watchlist only`.
+   - Do not let a positive turnaround period or a single real-estate/project settlement period become the full-year denominator without a normalized earnings, NAV, SOTP, EBITDA, revenue, or cash-flow bridge.
 
 3. **Build scenario valuation.**
    - Bear case: narrative breaks, lower multiple, lower margin, weaker price or order conversion, or cycle floor.
@@ -49,6 +69,7 @@ Publication stance rule: if a ticker lacks the evidence needed to compute a defe
    - When growth earnings outputs exist, scenario values must use the driver sensitivities for units/shipments, ASP, recognized revenue ratio, gross margin, incremental opex, tax, EPS, and valuation multiple.
    - Industry-chain scenario values must reference `analysis/value_chain_economics.md`: value amount, ASP/price proxy, margin pool, supply/demand, capacity, utilization/yield, certification, order visibility, and price pass-through.
    - Always show bubble degree: `(current / base target - 1) * 100%`.
+   - For low-base/settlement names, show a mechanical stress-test range separately from the investable normalized range; do not collapse the two into one probability target.
 
 Business-model method matrix:
 
@@ -72,6 +93,7 @@ Using one PE template across the chain is a method-mismatch blocker.
    - Do not publish a mechanical sell/reduce action only because intrinsic value is below price when observable market evidence supports a sentiment premium. Label the premium and define what would break it.
    - Street anchor must preserve broker/source, date, rating, target price, forecast revenue/net profit/EPS, valuation method, implied upside, and source quality. If only abstracts are available, mark unavailable fields `not disclosed`, assign zero Street weight unless the original source supports the numeric field, and explain why the row cannot support a full PASS.
    - A full industry-chain report cannot receive `final_signoff: PASS` while the core valuation universe has incomplete original broker/Street target-price coverage. Either collect original reports / broker official pages, or downgrade the report to `MECHANICAL_PASS_INSTITUTIONAL_FAIL`, `CONDITIONAL`, `watchlist only`, or `evidence memo`.
+   - If direct broker targets are unavailable, the recovery loop must still compare public consensus, peers, and market-implied value before assigning a watchlist boundary or fair-value range. Do not equate `broker target not found` with `valuation model not possible`.
 
 5. **Translate valuation into research action.**
    - Use action labels that describe behavior: `core review`, `pullback entry`, `market-supported watch`, `event-driven validation`, `watchlist only`, `sentiment premium breaking`, or `high valuation risk`.

@@ -1,6 +1,6 @@
 ---
 name: monitor
-description: Use when user needs to manage stock monitoring — add/remove watch items, set price or signal conditions, start/stop the monitoring service, check status, or view historical alerts. Also covers scheduled/periodic patrols via the task scheduler (scheduler health, start daemon, run jobs). Triggers on "watch this stock", "add monitor", "set alert for", "notify me when price hits X", "start monitoring", "stop monitoring", "alert history", "what alerts fired", "view watch list", "scheduler status", "scheduled patrol", "run scheduler job".
+description: Use when user needs to manage stock monitoring — add/remove watch items, set observable price, liquidity, or range conditions, start/stop the monitoring service, check status, or view historical alerts. Also covers scheduled/periodic patrols via the task scheduler (scheduler health, start daemon, run jobs). Triggers on "watch this stock", "add monitor", "set alert for", "notify me when price hits X", "start monitoring", "stop monitoring", "alert history", "what alerts fired", "view watch list", "scheduler status", "scheduled patrol", "run scheduler job". Never configure MA, MACD, KDJ, RSI, or crossover alerts.
 ---
 
 <SUBAGENT-STOP>
@@ -11,12 +11,17 @@ If you were dispatched as a subagent to execute a specific task, skip this skill
 
 Unified skill for managing stock watch lists, running the monitoring service, and viewing alert history.
 
+An alert is only an observation. If the user asks what an alert means for a
+trade, position, strategy, add/reduce, or exit, escalate to `market-desk` for a
+compulsory team decision after evidence completion; never infer action from the
+monitoring role alone.
+
 ## Watch List Management
 
 ### Add Watch Item
 
 ```bash
-.venv/bin/python -m astock.cli watch add <CODE> --signals "macd,rsi" --channels terminal
+.venv/bin/python -m astock.cli watch add <CODE> --signals "price_dislocation,volume_spike" --channels terminal
 ```
 
 ### Remove Watch Item
@@ -31,20 +36,21 @@ Unified skill for managing stock watch lists, running the monitoring service, an
 .venv/bin/python -m astock.cli watch list --json
 ```
 
-### Signal Types
+### Observable Alert Types
 
-The `--signals` parameter accepts comma-separated technical signal types to monitor:
+The `--signals` parameter accepts comma-separated, reproducible market-structure alert types:
 
-- `macd` — MACD golden/death cross
-- `rsi` — RSI overbought/oversold
-- `kdj` — KDJ overbought/oversold
-- `ma` — MA golden/death cross
+- `price_dislocation` — a large close-to-close move
+- `range_expansion` — unusually wide session range
+- `volume_spike` — turnover materially above the preceding 20-session median
 
 Example:
 
 ```bash
-.venv/bin/python -m astock.cli watch add 000001 --signals "macd,rsi" --channels terminal
+.venv/bin/python -m astock.cli watch add 000001 --signals "range_expansion,volume_spike" --channels terminal
 ```
+
+An alert is an observation, not a buy, sell, add, reduce, or risk-permission signal. It must be read with the catalyst, market regime, liquidity, and risk context.
 
 ## Service Lifecycle
 
@@ -142,9 +148,9 @@ capabilities.record_research_observation(
 
 ## How It Works
 
-1. User adds stocks to the watch list with signal/price conditions
+1. User adds stocks to the watch list with observable price/liquidity/range conditions
 2. Monitoring service scans watch list periodically during trading hours (9:30-11:30, 13:00-15:00)
-3. SignalScanner detects technical signals matching conditions
+3. SignalScanner detects reproducible market-structure dislocations
 4. AlertEngine dispatches alerts via configured channels
 5. Alert records are saved to the database
 

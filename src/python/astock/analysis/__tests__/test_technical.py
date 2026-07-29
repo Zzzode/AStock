@@ -71,17 +71,6 @@ def test_add_rsi(sample_df: pd.DataFrame) -> None:
     assert "rsi24" in result.columns
 
 
-def test_get_signals(sample_df: pd.DataFrame) -> None:
-    """Test signal retrieval"""
-    analyzer = TechnicalAnalyzer(sample_df)
-    analyzer.add_all()
-    signals = analyzer.get_signals()
-
-    assert "signals" in signals
-    assert "latest" in signals
-    assert isinstance(signals["signals"], list)
-
-
 def test_add_all(sample_df: pd.DataFrame) -> None:
     """Test adding all indicators"""
     analyzer = TechnicalAnalyzer(sample_df)

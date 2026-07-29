@@ -26,6 +26,8 @@ class Trade:
     shares: int
     value: float
     commission: float
+    stamp_duty: float = 0.0
+    transfer_fee: float = 0.0
 
     def to_dict(self) -> dict[str, object]:
         return {
@@ -35,6 +37,8 @@ class Trade:
             "shares": self.shares,
             "value": self.value,
             "commission": self.commission,
+            "stamp_duty": self.stamp_duty,
+            "transfer_fee": self.transfer_fee,
         }
 
 

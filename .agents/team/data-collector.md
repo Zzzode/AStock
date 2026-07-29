@@ -52,7 +52,13 @@ Expects:
 
 ## Constraints
 
-- Never estimate or interpolate — if unavailable, write "N/A (not disclosed)"
+- Complete every field required by the assigned trading horizon before handing
+  the packet to an analyst. Start with the preferred source, then obtain a
+  current independent source; use exchange/company disclosures for issuer
+  facts and source-labelled market feeds for market facts.
+- Never estimate, interpolate, or replace a missing field with a price/turnover
+  proxy. Return unresolved fields to collection with the exact source path
+  attempted; do not label the packet analysis-ready.
 - Always note the exact reporting period (Q1 2026 vs FY2025 vs TTM)
 - For market data, always note the exact date — prices from 3+ days ago are stale
 - Free-float ≠ total shares — many companies have large locked holdings

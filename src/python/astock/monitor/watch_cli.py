@@ -1,7 +1,6 @@
 """Watch management CLI"""
 
 import asyncio
-import json
 from datetime import datetime
 from pathlib import Path
 from typing import Optional, Any
@@ -15,13 +14,36 @@ from ..storage import Database, WatchItem
 app = typer.Typer(name="watch")
 console = Console()
 
-DB_PATH = Path(__file__).parent.parent.parent.parent / "data" / "stocks.db"
+PROJECT_ROOT = Path(__file__).resolve().parents[4]
+LEGACY_DB_PATH = Path(__file__).resolve().parents[3] / "data" / "stocks.db"
+CANONICAL_DB_PATH = PROJECT_ROOT / "data" / "stocks.db"
+DB_PATH = CANONICAL_DB_PATH if CANONICAL_DB_PATH.exists() or not LEGACY_DB_PATH.exists() else LEGACY_DB_PATH
+STRUCTURE_ALERT_TYPES = frozenset(
+    {"price_dislocation", "range_expansion", "volume_spike"}
+)
+
+
+def normalize_watch_alert_types(raw: str) -> list[str]:
+    """Validate watch-list alerts against the production structure scanner."""
+    alert_types = [item.strip() for item in raw.split(",") if item.strip()]
+    unknown = sorted(set(alert_types) - STRUCTURE_ALERT_TYPES)
+    if unknown:
+        supported = ", ".join(sorted(STRUCTURE_ALERT_TYPES))
+        raise typer.BadParameter(
+            f"unsupported alert type(s): {', '.join(unknown)}; supported: {supported}"
+        )
+    return alert_types
 
 
 @app.command("add")
 def add_watch(
     code: str = typer.Argument(..., help="Stock code"),
-    signals: Optional[str] = typer.Option(None, "--signals", "-s", help="Signal types to monitor"),
+    signals: Optional[str] = typer.Option(
+        None,
+        "--signals",
+        "-s",
+        help="Observable market-structure alert types to monitor",
+    ),
     channels: str = typer.Option("terminal", "--channels", "-c", help="Alert channels"),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")
 ) -> None:
@@ -32,7 +54,7 @@ def add_watch(
 
         conditions: dict[str, object] = {}
         if signals:
-            conditions["signal_types"] = signals.split(",")
+            conditions["signal_types"] = normalize_watch_alert_types(signals)
 
         item = WatchItem(
             code=code,

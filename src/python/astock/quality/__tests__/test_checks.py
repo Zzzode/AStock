@@ -326,6 +326,50 @@ def test_evaluate_research_case_quality_blocks_third_party_consensus_anchor(
     )
 
 
+def test_evaluate_research_case_quality_blocks_house_view_as_broker_anchor(
+    tmp_path: Path,
+) -> None:
+    case_dir = tmp_path / "house-view-as-broker-anchor-case"
+    _gate_runner_case(case_dir)
+    packet = _broker_consensus_packet(source_quality="original_pdf", valuation_weight=1.0)
+    row = packet["rows"][0]
+    row["broker"] = "AStock House View"
+    row["source_quality"] = "house_model_auditable"
+    row["source_path"] = "analysis/valuation_model.md"
+    _write_json(case_dir / "data/broker_street_consensus_20260630.json", packet)
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"] == "broker/street external positive anchor covers valuation universe"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_blocks_shallow_single_stock_model(
+    tmp_path: Path,
+) -> None:
+    case_dir = tmp_path / "shallow-single-stock-model-case"
+    _gate_runner_case(case_dir)
+    _write(
+        case_dir / "analysis/valuation_model.md",
+        _valuation_model_text(),
+    )
+    (case_dir / "analysis/segment_valuation_model.md").unlink()
+    (case_dir / "analysis/secondary_market_analysis.md").unlink()
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"] == "single-stock valuation model institutional depth"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
 def test_evaluate_research_case_quality_blocks_open_s_issue(tmp_path: Path) -> None:
     case_dir = tmp_path / "blocked-case"
     _minimal_case(case_dir)
@@ -441,6 +485,21 @@ def test_evaluate_skill_response_cases_flags_forbidden_actions() -> None:
                 "response": "I will place order through the broker login.",
                 "required_terms": ["data"],
             },
+            {
+                "name": "explicit_no_execution",
+                "response": "This paper portfolio does not place orders through a broker.",
+                "required_terms": ["paper portfolio"],
+            },
+            {
+                "name": "explicit_chinese_no_execution",
+                "response": "这是研究与纸面组合方案，不会 place order、submit order；不会执行券商交易。",
+                "required_terms": ["纸面组合"],
+            },
+            {
+                "name": "chinese_contrast_violation",
+                "response": "不会 place order，但会 submit order。",
+                "required_terms": [],
+            },
         ]
     )
     cases = {item["name"]: item for item in result["cases"]}
@@ -449,6 +508,12 @@ def test_evaluate_skill_response_cases_flags_forbidden_actions() -> None:
     assert cases["boundary_ok"]["passed"] is True
     assert cases["boundary_violation"]["passed"] is False
     assert "place order" in cases["boundary_violation"]["forbidden_hits"]
+    assert cases["explicit_no_execution"]["passed"] is True
+    assert cases["explicit_no_execution"]["forbidden_hits"] == []
+    assert cases["explicit_chinese_no_execution"]["passed"] is True
+    assert cases["explicit_chinese_no_execution"]["forbidden_hits"] == []
+    assert cases["chinese_contrast_violation"]["passed"] is False
+    assert cases["chinese_contrast_violation"]["forbidden_hits"] == ["submit order"]
 
 
 def test_evaluate_skill_response_cases_cover_research_report_evolution() -> None:
@@ -612,6 +677,15 @@ def _gate_runner_case(case_dir: Path, *, industry: bool = False) -> None:
     _write_json(case_dir / "data/claim_audit.json", {"claims": []})
     _write(case_dir / "analysis/valuation_audit.md", "Model Reproducibility: PASS")
     _write(case_dir / "analysis/valuation_model.md", _valuation_model_text())
+    if not industry:
+        _write(
+            case_dir / "analysis/segment_valuation_model.md",
+            "segment SOTP revenue net profit multiple sensitivity validation trigger",
+        )
+        _write(
+            case_dir / "analysis/secondary_market_analysis.md",
+            "price volume turnover drawdown relative performance valuation crowding support resistance seat institutional northbound financing trading style hot-money fund attitude trend swing",
+        )
     valuation_row_count = 18 if industry else 1
     _write_json(
         case_dir / "data/current_valuation_model_20260630.json",

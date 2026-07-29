@@ -1,7 +1,6 @@
 """Tests for migration system."""
 
 import pytest
-import aiosqlite
 
 from astock.migrations import MigrationRunner, MigrationError
 

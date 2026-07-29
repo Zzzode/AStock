@@ -9,6 +9,61 @@
     ],
     "sandbox_mode": "read-only"
   },
+  "market-regime-analyst": {
+    "description": "Classifies A-share market regime from breadth, liquidity, volatility, and leadership before security selection",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "sector-rotation-analyst": {
+    "description": "Maps A-share sector and theme relative strength, participation, catalysts, and crowding across trading horizons",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "short-term-trader": {
+    "description": "Builds evidence-led 1-to-10 trading-day A-share tactical research setups from catalyst, cohort, auction and liquidity structure",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "ultra-short-tactical-trader": {
+    "description": "Research-only 1-to-3 day A-share tactical specialist for catalyst, leader, auction, breadth and limit-ecology setups",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "event-driven-institutional-analyst": {
+    "description": "Assesses whether verified corporate, earnings, policy, supply or macro events change expectations and marginal-buyer time horizons",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "counterparty-structure-risk-analyst": {
+    "description": "Binding gate for A-share float, supply, liquidity, price-limit, corporate-action and unsupported counterparty-assumption risk",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "swing-trend-analyst": {
+    "description": "Evaluates conditional 2-to-12 week A-share swing opportunities through market structure, sector leadership and dated earnings catalysts",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
+  "portfolio-manager": {
+    "description": "Integrates market and research evidence into a bounded A-share portfolio risk budget and investment-committee decision",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  },
+  "quant-risk-modeler": {
+    "description": "Independently assesses A-share portfolio concentration, scenario exposure, model limitations, and backtest validity",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  },
+  "execution-liquidity-analyst": {
+    "description": "Assesses A-share tradability, T+1, price-limit, suspension, and liquidity constraints for conditional research plans",
+    "tools": ["Read", "Grep", "Glob", "Bash"],
+    "sandbox_mode": "read-only"
+  },
+  "compliance-officer": {
+    "description": "Independently checks research-only boundaries, source disclosure, conflicts, and A-share compliance blockers before portfolio decisions",
+    "tools": ["Read", "Grep", "Glob", "Bash", "WebSearch"],
+    "sandbox_mode": "read-only"
+  },
   "fundamental-analyst": {
     "description": "Valuation, earnings quality, operations, and catalyst identification for A-share equities",
     "tools": [
@@ -54,7 +109,7 @@
     "sandbox_mode": "read-only"
   },
   "risk-analyst": {
-    "description": "Risk matrix, ESG/compliance screening, position sizing, stop-loss, stress tests, and Devil's Advocate",
+    "description": "Binding desk risk gate for loss budget, concentration, gap, suspension, catalyst-failure and stress-scenario controls",
     "tools": [
       "Read",
       "Grep",
@@ -65,7 +120,7 @@
     "sandbox_mode": "read-only"
   },
   "contrarian-analyst": {
-    "description": "Constructs strongest counter-arguments against prevailing thesis, identifies failure scenarios and consensus risk",
+    "description": "Constructs evidence-led counter-theses, failed-trade scenarios, and consensus-risk challenges to the prevailing view",
     "tools": [
       "Read",
       "Grep",

@@ -1,11 +1,9 @@
-"""Technical analysis module"""
+"""Price-and-volume analysis utilities.
+
+Indicator calculation remains isolated for explicitly requested legacy studies;
+it is not a market-desk signal or decision interface.
+"""
 
 from .technical import TechnicalAnalyzer
-from .interpretation import detect_signals, calculate_statistics, SignalContext
 
-__all__ = [
-    "TechnicalAnalyzer",
-    "detect_signals",
-    "calculate_statistics",
-    "SignalContext",
-]
+__all__ = ["TechnicalAnalyzer"]

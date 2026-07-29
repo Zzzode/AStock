@@ -2,7 +2,7 @@
 
 import pytest
 
-from astock.report_search import ReportVectorStore, SearchResult
+from astock.report_search import ReportVectorStore
 
 
 @pytest.fixture
@@ -22,7 +22,6 @@ def test_index_and_search(tmp_store):
 
 def test_index_removes_old_chunks(tmp_store):
     tmp_store.index_document("doc1", "first version of the document")
-    stats1 = tmp_store.get_stats()
 
     tmp_store.index_document("doc1", "second version completely rewritten")
     stats2 = tmp_store.get_stats()

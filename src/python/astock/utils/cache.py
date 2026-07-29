@@ -5,7 +5,6 @@ import inspect
 import time
 from collections import OrderedDict
 from contextlib import suppress
-from datetime import timedelta
 from functools import wraps
 from typing import Any, Awaitable, Callable, Optional, ParamSpec, TypeVar, cast
 
@@ -186,23 +185,6 @@ class DataCache:
         else:
             cache.clear()
             logger.debug(f"All cache cleared: {cache_type}")
-
-    def set_ttl(self, cache_type: str, ttl: int) -> None:
-        """Dynamically set TTL
-
-        Args:
-            cache_type: Cache type
-            ttl: New TTL value (seconds)
-        """
-        if cache_type in self._ttl_config:
-            self._ttl_config[cache_type] = ttl
-            # Note: TTLCache TTL is fixed at creation time, only config is updated here
-            # Newly created caches will use the new TTL
-            logger.info(f"Updated TTL config: {cache_type} -> {ttl}s")
-
-    def get_ttl(self, cache_type: str) -> int:
-        """Get current TTL configuration"""
-        return self._ttl_config.get(cache_type, 60)
 
     def set_ttl(self, cache_type: str, ttl: int) -> None:
         """Dynamically set TTL

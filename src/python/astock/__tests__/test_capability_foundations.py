@@ -212,6 +212,37 @@ async def test_get_quote_attaches_provenance_and_market_events(
 
 
 @pytest.mark.asyncio  # type: ignore[untyped-decorator]
+async def test_get_quote_assigns_and_discloses_local_observation_time(
+    monkeypatch: pytest.MonkeyPatch,
+    tmp_path: Path,
+) -> None:
+    class DummyQuoteService:
+        def __init__(self, db: DummyDatabase):
+            self.db = db
+
+        async def get_realtime(self, code: str) -> dict[str, Any]:
+            return {
+                "code": code,
+                "name": "Ping An Bank",
+                "price": 15.5,
+                "prev_close": 15.0,
+                "change_percent": 3.33,
+                "data_quality": "full_realtime",
+            }
+
+    monkeypatch.setattr(capabilities, "Database", DummyDatabase)
+    monkeypatch.setattr(capabilities, "QuoteService", DummyQuoteService)
+
+    quote = await capabilities.get_quote("000001", db_path=tmp_path / "stocks.db")
+
+    assert quote["observed_at"]
+    assert not quote["market_events"][0]["observed_at"].startswith("1970-")
+    assert quote["provenance"]["warnings"][0]["message"] == (
+        "Provider timestamp unavailable; assigned local observation timestamp."
+    )
+
+
+@pytest.mark.asyncio  # type: ignore[untyped-decorator]
 async def test_build_team_packet_attaches_foundation_context(
     monkeypatch: pytest.MonkeyPatch,
     tmp_path: Path,
@@ -259,8 +290,7 @@ async def test_build_team_packet_attaches_foundation_context(
                     "analysis": {
                         "code": "000001",
                         "name": "Ping An Bank",
-                        "indicators": {"close": 15.5, "macd_hist": 0.2},
-                        "signals": [{"type": "macd_cross_up", "bias": "bullish"}],
+                        "indicators": {"open": 15.0, "high": 15.8, "low": 14.9, "close": 15.5, "volume": 2_000_000},
                         "quote": {
                             "code": "000001",
                             "price": 15.5,
@@ -280,12 +310,12 @@ async def test_build_team_packet_attaches_foundation_context(
                             {
                                 "code": "000001",
                                 "name": "Ping An Bank",
-                                "matched_factors": ["macd_golden_cross"],
+                                "matched_factors": ["range_expansion"],
                                 "factor_checks": {
-                                    "macd_golden_cross": {
+                                    "range_expansion": {
                                         "matched": True,
-                                        "type": "technical",
-                                        "field": "macd_hist",
+                                        "type": "market_structure",
+                                        "field": "intraday_range_pct",
                                         "weight": 2.0,
                                         "value": 0.2,
                                     }
@@ -312,9 +342,7 @@ async def test_build_team_packet_attaches_foundation_context(
     assert packet["provenance"]["quality_tier"] == "delayed"
     assert packet["market_events"]
     assert packet["packet"]["quote"]["provenance"]["quality_tier"] == "realtime"
-    assert packet["packet"]["screen"]["market_events"][0]["event_type"] == (
-        "technical_signal"
-    )
+    assert packet["packet"]["screen"]["market_events"][0]["event_type"] == "alert_trigger"
 
 
 def test_capability_research_ledger_round_trip(tmp_path: Path) -> None:
@@ -355,6 +383,79 @@ def test_capability_research_ledger_round_trip(tmp_path: Path) -> None:
     assert observed["entry"]["status"] == "monitoring"
     assert listed["total"] == 1
     assert listed["entries"][0]["entry_id"] == entry_id
+
+
+def test_quality_feedback_is_bound_to_an_existing_research_entry(tmp_path: Path) -> None:
+    ledger_path = tmp_path / "research-ledger.json"
+    created = capabilities.create_research_entry(
+        title="Quality feedback linkage",
+        thesis="A feedback report must remain attached to its underlying research entry.",
+        targets=["000001"],
+        ledger_path=ledger_path,
+    )
+    entry_id = created["entry"]["entry_id"]
+    postmortem = capabilities.record_research_postmortem(
+        entry_id,
+        outcome="The monitored thesis concluded with a documented outcome.",
+        expected="A structured review would establish whether the thesis held.",
+        actual="The structured review produced the quality-assessment input.",
+        error_analysis="The feedback must be linked to a persisted outcome review.",
+        lessons=["Anchor quality feedback to postmortem evidence"],
+        ledger_path=ledger_path,
+    )
+    anchor = f"postmortem:{postmortem['postmortem']['postmortem_id']}"
+
+    report = capabilities.record_quality_feedback(
+        entry_id=entry_id,
+        agent_scores=[{"role": "risk-analyst", "correct_calls": 1, "total_calls": 1}],
+        notes="Validated after a structured review.",
+        evidence_refs=[anchor],
+        store_path=tmp_path / "quality-feedback.json",
+        ledger_path=ledger_path,
+    )
+
+    linked = capabilities.get_research_entry(entry_id, ledger_path=ledger_path)["entry"]
+    assert report["entry_id"] == entry_id
+    assert linked["observations"][-1]["observation_type"] == "quality_feedback"
+    assert linked["observations"][-1]["evidence"]["quality_feedback"]["entry_id"] == entry_id
+    assert linked["observations"][-1]["evidence"]["quality_feedback"]["evidence_refs"] == [anchor]
+
+
+def test_quality_feedback_requires_evidence_references(tmp_path: Path) -> None:
+    ledger_path = tmp_path / "research-ledger.json"
+    created = capabilities.create_research_entry(
+        title="Quality feedback evidence",
+        thesis="Team scores require source-addressable review evidence.",
+        targets=["000001"],
+        ledger_path=ledger_path,
+    )
+
+    with pytest.raises(ValueError, match="evidence reference"):
+        capabilities.record_quality_feedback(
+            entry_id=created["entry"]["entry_id"],
+            agent_scores=[{"role": "risk-analyst", "correct_calls": 1, "total_calls": 1}],
+            store_path=tmp_path / "quality-feedback.json",
+            ledger_path=ledger_path,
+        )
+
+
+def test_quality_feedback_requires_a_prior_review_or_postmortem_anchor(tmp_path: Path) -> None:
+    ledger_path = tmp_path / "research-ledger.json"
+    created = capabilities.create_research_entry(
+        title="Unanchored quality feedback",
+        thesis="A quality score must have a reviewable outcome.",
+        targets=["000001"],
+        ledger_path=ledger_path,
+    )
+
+    with pytest.raises(ValueError, match="prior persisted"):
+        capabilities.record_quality_feedback(
+            entry_id=created["entry"]["entry_id"],
+            agent_scores=[{"role": "risk-analyst", "correct_calls": 1, "total_calls": 1}],
+            evidence_refs=["review-packet:unlinked"],
+            store_path=tmp_path / "quality-feedback.json",
+            ledger_path=ledger_path,
+        )
 
 
 def test_capability_research_index_query_and_duplicates(tmp_path: Path) -> None:
@@ -540,7 +641,10 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
         ),
         encoding="utf-8",
     )
-    (case_dir / "review_log.md").write_text("Publishability Score: 93", encoding="utf-8")
+    (case_dir / "review_log.md").write_text(
+        "Publishability Score: 50\nPublishability Score: 93",
+        encoding="utf-8",
+    )
     (case_dir / "final_signoff.md").write_text("signoff", encoding="utf-8")
     (case_dir / "final_signoff.json").write_text(
         json.dumps({"signoff_status": "PASS", "publishability_score": 93}),
@@ -583,6 +687,16 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
             f"## {section}\ncurrent share market cap broker Street market-implied weight target upside"
             for section in valuation_sections
         ),
+        encoding="utf-8",
+    )
+    (case_dir / "analysis" / "segment_valuation_model.md").write_text(
+        "segment SOTP revenue net profit multiple sensitivity validation trigger",
+        encoding="utf-8",
+    )
+    (case_dir / "analysis" / "secondary_market_analysis.md").write_text(
+        "price volume turnover drawdown relative performance valuation crowding "
+        "support resistance seat institutional northbound financing trading style "
+        "hot-money fund attitude trend swing",
         encoding="utf-8",
     )
     (case_dir / "data" / "current_valuation_model_20260630.json").write_text(

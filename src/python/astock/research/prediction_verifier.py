@@ -8,7 +8,7 @@ a cron job, the monitor service, or an agent skill.
 from __future__ import annotations
 
 import asyncio
-from datetime import date, datetime, timedelta
+from datetime import date, datetime
 from pathlib import Path
 from typing import Any, Optional
 
@@ -21,7 +21,6 @@ from .prediction import (
 )
 from ..quote import QuoteService
 from ..storage import Database
-from ..research.postmortem import PostmortemRootCause, ResearchPostmortem
 from ..research.ledger import ResearchLedger, ResearchObservation, ResearchStatus
 from ..utils import get_logger
 

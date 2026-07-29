@@ -1,10 +1,8 @@
 """Industry data service tests"""
 
 import pytest
-import asyncio
 from datetime import datetime, timedelta
 from pathlib import Path
-import json
 import os
 
 from ..industry import (

@@ -1,8 +1,8 @@
 """Risk management"""
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Optional
+from typing import Any, Optional
 from enum import Enum
 import math
 
@@ -46,10 +46,91 @@ class RiskLimits:
 
     max_position_size: float = 0.2  # Max single stock position size
     max_sector_exposure: float = 0.4  # Max single sector exposure
+    max_theme_exposure: float = 0.4  # Max single theme exposure
     max_drawdown_limit: float = 0.2  # Max drawdown limit
     max_positions: int = 10  # Max number of positions
     stop_loss_percent: float = 0.08  # Stop-loss ratio
     take_profit_percent: float = 0.15  # Take-profit ratio
+    min_cash_ratio: float = 0.10  # Minimum cash reserve under normal conditions
+    max_portfolio_risk: float = 0.03  # Sum of planned stop losses / account value
+    max_portfolio_stress_loss: float = 0.06  # Sum of worst stated gap/limit stress losses / account value
+    max_daily_new_risk: float = 0.01  # Maximum incremental planned loss / account value
+    max_factor_exposure: float = 0.60  # Maximum aggregate exposure to any supplied factor
+    max_pairwise_correlation: float = 0.80  # Pairwise correlation review threshold
+    max_liquidity_participation: float = 0.10  # Maximum planned exit / average daily turnover
+    max_structural_stress_loss: float = 0.10  # Maximum supplied factor-scenario loss / account value
+    max_horizon_exposure: dict[str, float] = field(
+        default_factory=lambda: {
+            "short_term": 0.20,
+            "swing": 0.30,
+            "long_term": 0.50,
+        }
+    )
+
+
+@dataclass(frozen=True)
+class RiskBudgetReport:
+    """Auditable portfolio risk-budget report for paper-trading decisions.
+
+    `planned_loss` is the sum of each position's market value times its explicit
+    stop distance (or a conservative fallback).  It is not VaR and must not be
+    presented as a probabilistic loss estimate.
+    """
+
+    total_value: float
+    cash_ratio: float
+    planned_loss: float
+    planned_loss_ratio: float
+    stressed_loss: float
+    stressed_loss_ratio: float
+    sector_exposure: dict[str, float]
+    theme_exposure: dict[str, float]
+    horizon_exposure: dict[str, float]
+    blockers: list[str]
+    warnings: list[str]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "total_value": self.total_value,
+            "cash_ratio": self.cash_ratio,
+            "planned_loss": self.planned_loss,
+            "planned_loss_ratio": self.planned_loss_ratio,
+            "stressed_loss": self.stressed_loss,
+            "stressed_loss_ratio": self.stressed_loss_ratio,
+            "sector_exposure": self.sector_exposure,
+            "theme_exposure": self.theme_exposure,
+            "horizon_exposure": self.horizon_exposure,
+            "blockers": self.blockers,
+            "warnings": self.warnings,
+        }
+
+
+@dataclass(frozen=True)
+class PortfolioStructureRiskReport:
+    """Factor, correlation, liquidity, and scenario-risk controls.
+
+    All inputs are caller-supplied, source-labelled desk inputs. Missing factor,
+    correlation, liquidity, or scenario data is a blocker rather than a zero.
+    """
+
+    total_value: float
+    factor_exposure: dict[str, float]
+    correlated_pairs: list[dict[str, Any]]
+    liquidity: list[dict[str, Any]]
+    scenario_losses: dict[str, float]
+    blockers: list[str]
+    warnings: list[str]
+
+    def to_dict(self) -> dict[str, Any]:
+        return {
+            "total_value": self.total_value,
+            "factor_exposure": self.factor_exposure,
+            "correlated_pairs": self.correlated_pairs,
+            "liquidity": self.liquidity,
+            "scenario_losses": self.scenario_losses,
+            "blockers": self.blockers,
+            "warnings": self.warnings,
+        }
 
 
 class RiskManager:
@@ -70,11 +151,13 @@ class RiskManager:
         Returns:
             (passed, reason)
         """
-        total_value = current_value + new_position_value
-        if total_value == 0:
+        if current_value <= 0:
             return True, ""
 
-        position_ratio = (position_value + new_position_value) / total_value
+        # A paper buy reallocates existing cash; it does not create new account
+        # equity.  `current_value` is therefore the account value before the
+        # trade, not a value to which the order should be added again.
+        position_ratio = (position_value + new_position_value) / current_value
 
         if position_ratio > self.limits.max_position_size:
             return False, f"Single stock position exceeds limit {self.limits.max_position_size:.0%}"
@@ -257,6 +340,266 @@ class RiskManager:
             updated_at=datetime.now(),
         )
 
+    def assess_risk_budget(
+        self,
+        *,
+        positions: list[dict[str, Any]],
+        cash: float,
+        planned_new_risk: float = 0.0,
+    ) -> RiskBudgetReport:
+        """Assess concentration, planned-loss, sector, and theme budget gates.
+
+        Position records may include `market_value`, `stop_distance_pct`,
+        `sector`, and `theme`. Missing stop distances use the configured stop
+        limit and are explicitly reported, never silently treated as zero risk.
+        """
+
+        market_value = sum(max(0.0, float(item.get("market_value", 0.0))) for item in positions)
+        total_value = max(0.0, cash) + market_value
+        sector_exposure: dict[str, float] = {}
+        theme_exposure: dict[str, float] = {}
+        horizon_exposure: dict[str, float] = {}
+        warnings: list[str] = []
+        blockers: list[str] = []
+        planned_loss = 0.0
+        stressed_loss = 0.0
+        normalized_new_risk = _nonnegative_float(planned_new_risk)
+        if normalized_new_risk is None:
+            blockers.append("New-risk budget must be a non-negative number.")
+            normalized_new_risk = 0.0
+
+        if total_value <= 0:
+            return RiskBudgetReport(
+                total_value=0.0,
+                cash_ratio=1.0,
+                planned_loss=0.0,
+                planned_loss_ratio=0.0,
+                stressed_loss=0.0,
+                stressed_loss_ratio=0.0,
+                sector_exposure={},
+                theme_exposure={},
+                horizon_exposure={},
+                blockers=["Portfolio value must be positive before risk budget can be assessed."],
+                warnings=[],
+            )
+
+        active_positions = 0
+        for item in positions:
+            value = max(0.0, float(item.get("market_value", 0.0)))
+            if value > 0:
+                active_positions += 1
+            stop_distance = item.get("stop_distance_pct")
+            normalized_stop = _nonnegative_float(stop_distance)
+            if normalized_stop is None or normalized_stop <= 0 or normalized_stop > 1:
+                stop_distance = self.limits.stop_loss_percent
+                warnings.append(
+                    f"{item.get('code', 'unknown')}: missing or invalid stop distance; used configured fallback."
+                )
+                normalized_stop = self.limits.stop_loss_percent
+            planned_loss += value * normalized_stop
+
+            horizon = str(item.get("horizon") or "").strip().lower()
+            if horizon in self.limits.max_horizon_exposure:
+                horizon_exposure[horizon] = (
+                    horizon_exposure.get(horizon, 0.0) + value / total_value
+                )
+            overnight_stress = _bounded_loss(item.get("overnight_stress_pct"))
+            limit_down_stress = _bounded_loss(item.get("limit_down_stress_pct"))
+            if horizon in {"short_term", "swing"} and (
+                overnight_stress is None or limit_down_stress is None
+            ):
+                blockers.append(
+                    f"{item.get('code', 'unknown')}: {horizon} plan requires overnight and limit-down stress assumptions."
+                )
+            stress_distance = max(
+                normalized_stop,
+                overnight_stress if overnight_stress is not None else normalized_stop,
+                limit_down_stress if limit_down_stress is not None else normalized_stop,
+            )
+            if horizon in {"short_term", "swing"} and stress_distance == normalized_stop:
+                warnings.append(
+                    f"{item.get('code', 'unknown')}: stress loss falls back to stop distance; plan is blocked until scenarios are supplied."
+                )
+            stressed_loss += value * stress_distance
+
+            for field, exposures in (("sector", sector_exposure), ("theme", theme_exposure)):
+                label = str(item.get(field) or "unclassified").strip() or "unclassified"
+                exposures[label] = exposures.get(label, 0.0) + value / total_value
+
+            if value / total_value > self.limits.max_position_size:
+                blockers.append(
+                    f"Position {item.get('code', 'unknown')} exposure {value / total_value:.1%} exceeds limit {self.limits.max_position_size:.1%}."
+                )
+
+        cash_ratio = max(0.0, cash) / total_value
+        planned_loss_ratio = planned_loss / total_value
+        stressed_loss_ratio = stressed_loss / total_value
+        if cash_ratio < self.limits.min_cash_ratio:
+            blockers.append(
+                f"Cash ratio {cash_ratio:.1%} is below minimum {self.limits.min_cash_ratio:.1%}."
+            )
+        if planned_loss_ratio > self.limits.max_portfolio_risk:
+            blockers.append(
+                f"Planned-loss budget {planned_loss_ratio:.1%} exceeds limit {self.limits.max_portfolio_risk:.1%}."
+            )
+        if stressed_loss_ratio > self.limits.max_portfolio_stress_loss:
+            blockers.append(
+                f"Stress-loss budget {stressed_loss_ratio:.1%} exceeds limit {self.limits.max_portfolio_stress_loss:.1%}."
+            )
+        if normalized_new_risk / total_value > self.limits.max_daily_new_risk:
+            blockers.append(
+                f"New-risk budget {normalized_new_risk / total_value:.1%} exceeds daily limit {self.limits.max_daily_new_risk:.1%}."
+            )
+        if active_positions > self.limits.max_positions:
+            blockers.append(
+                f"Active positions {active_positions} exceed limit {self.limits.max_positions}."
+            )
+        for sector, exposure in sector_exposure.items():
+            if exposure > self.limits.max_sector_exposure:
+                blockers.append(
+                    f"Sector {sector} exposure {exposure:.1%} exceeds limit {self.limits.max_sector_exposure:.1%}."
+                )
+        for theme, exposure in theme_exposure.items():
+            if exposure > self.limits.max_theme_exposure:
+                blockers.append(
+                    f"Theme {theme} exposure {exposure:.1%} exceeds limit {self.limits.max_theme_exposure:.1%}."
+                )
+        for horizon, exposure in horizon_exposure.items():
+            limit = self.limits.max_horizon_exposure[horizon]
+            if exposure > limit:
+                blockers.append(
+                    f"{horizon} sleeve exposure {exposure:.1%} exceeds limit {limit:.1%}."
+                )
+
+        return RiskBudgetReport(
+            total_value=total_value,
+            cash_ratio=cash_ratio,
+            planned_loss=planned_loss,
+            planned_loss_ratio=planned_loss_ratio,
+            stressed_loss=stressed_loss,
+            stressed_loss_ratio=stressed_loss_ratio,
+            sector_exposure=sector_exposure,
+            theme_exposure=theme_exposure,
+            horizon_exposure=horizon_exposure,
+            blockers=blockers,
+            warnings=list(dict.fromkeys(warnings)),
+        )
+
+    def assess_portfolio_structure(
+        self,
+        *,
+        positions: list[dict[str, Any]],
+        cash: float,
+        correlations: Optional[dict[str, float]] = None,
+        stress_scenarios: Optional[dict[str, dict[str, float]]] = None,
+    ) -> PortfolioStructureRiskReport:
+        """Assess supplied factor, correlation, liquidity, and scenario inputs.
+
+        ``correlations`` uses the deterministic key ``CODE_A|CODE_B`` (sorted).
+        ``stress_scenarios`` maps a scenario name to factor shocks as decimal
+        returns, e.g. ``{"growth_down": {"growth": -0.15}}``.
+        """
+        market_value = sum(max(0.0, float(item.get("market_value", 0.0))) for item in positions)
+        total_value = max(0.0, cash) + market_value
+        blockers: list[str] = []
+        warnings: list[str] = []
+        factor_exposure: dict[str, float] = {}
+        liquidity: list[dict[str, Any]] = []
+        if total_value <= 0:
+            return PortfolioStructureRiskReport(0.0, {}, [], [], {}, ["Portfolio value must be positive."], [])
+
+        active = [item for item in positions if float(item.get("market_value", 0.0)) > 0]
+        for item in active:
+            code = str(item.get("code") or "unknown")
+            value = max(0.0, float(item.get("market_value", 0.0)))
+            exposures = item.get("factor_exposures")
+            if not isinstance(exposures, dict) or not exposures:
+                blockers.append(f"{code}: factor exposures are required for structural risk assessment.")
+            else:
+                for factor, loading in exposures.items():
+                    normalized = _bounded_signed_float(loading)
+                    if normalized is None:
+                        blockers.append(f"{code}: factor loading {factor} must be between -1 and 1.")
+                        continue
+                    factor_exposure[str(factor)] = factor_exposure.get(str(factor), 0.0) + value / total_value * normalized
+            average_turnover = _positive_float(item.get("average_daily_turnover"))
+            planned_exit = _positive_float(item.get("planned_exit_value")) or value
+            if average_turnover is None:
+                blockers.append(f"{code}: average daily turnover is required for liquidity assessment.")
+                liquidity.append({"code": code, "participation_ratio": None, "estimated_exit_days": None})
+            else:
+                participation = planned_exit / average_turnover
+                record = {"code": code, "participation_ratio": participation, "estimated_exit_days": participation / self.limits.max_liquidity_participation}
+                liquidity.append(record)
+                if participation > self.limits.max_liquidity_participation:
+                    blockers.append(f"{code}: planned exit is {participation:.1%} of average daily turnover, above {self.limits.max_liquidity_participation:.1%}.")
+
+        for factor, exposure in factor_exposure.items():
+            if abs(exposure) > self.limits.max_factor_exposure:
+                blockers.append(f"Factor {factor} exposure {exposure:.1%} exceeds limit {self.limits.max_factor_exposure:.1%}.")
+
+        supplied_correlations = correlations or {}
+        correlated_pairs: list[dict[str, Any]] = []
+        for index, left in enumerate(active):
+            for right in active[index + 1:]:
+                left_code, right_code = sorted((str(left.get("code") or "unknown"), str(right.get("code") or "unknown")))
+                key = f"{left_code}|{right_code}"
+                correlation = _bounded_signed_float(supplied_correlations.get(key))
+                if correlation is None:
+                    blockers.append(f"Correlation input is required for pair {key}.")
+                    continue
+                pair = {"pair": key, "correlation": correlation, "combined_exposure": (float(left.get("market_value", 0.0)) + float(right.get("market_value", 0.0))) / total_value}
+                correlated_pairs.append(pair)
+                if correlation > self.limits.max_pairwise_correlation:
+                    blockers.append(f"Pair {key} correlation {correlation:.2f} exceeds limit {self.limits.max_pairwise_correlation:.2f}.")
+
+        scenario_losses: dict[str, float] = {}
+        if not stress_scenarios:
+            blockers.append("At least one source-labelled factor stress scenario is required.")
+        else:
+            for name, shocks in stress_scenarios.items():
+                if not isinstance(shocks, dict) or not shocks:
+                    blockers.append(f"Stress scenario {name} has no factor shocks.")
+                    continue
+                scenario_loss = 0.0
+                for item in active:
+                    exposures = item.get("factor_exposures") if isinstance(item.get("factor_exposures"), dict) else {}
+                    shock = sum(
+                        (_bounded_signed_float(exposures.get(factor)) or 0.0) * (_bounded_signed_float(value) or 0.0)
+                        for factor, value in shocks.items()
+                    )
+                    scenario_loss += max(0.0, -shock) * max(0.0, float(item.get("market_value", 0.0)))
+                scenario_losses[str(name)] = scenario_loss / total_value
+                if scenario_losses[str(name)] > self.limits.max_structural_stress_loss:
+                    blockers.append(f"Stress scenario {name} loss {scenario_losses[str(name)]:.1%} exceeds limit {self.limits.max_structural_stress_loss:.1%}.")
+        rounded_exposure = {factor: round(exposure, 8) for factor, exposure in factor_exposure.items()}
+        rounded_pairs = [
+            {**pair, "correlation": round(float(pair["correlation"]), 8), "combined_exposure": round(float(pair["combined_exposure"]), 8)}
+            for pair in correlated_pairs
+        ]
+        rounded_liquidity = [
+            {
+                **item,
+                "participation_ratio": round(float(item["participation_ratio"]), 8)
+                if item["participation_ratio"] is not None
+                else None,
+                "estimated_exit_days": round(float(item["estimated_exit_days"]), 8)
+                if item["estimated_exit_days"] is not None
+                else None,
+            }
+            for item in liquidity
+        ]
+        rounded_scenarios = {name: round(loss, 8) for name, loss in scenario_losses.items()}
+        return PortfolioStructureRiskReport(
+            total_value,
+            rounded_exposure,
+            rounded_pairs,
+            rounded_liquidity,
+            rounded_scenarios,
+            list(dict.fromkeys(blockers)),
+            warnings,
+        )
+
     def suggest_position_size(
         self,
         total_capital: float,
@@ -281,3 +624,29 @@ class RiskManager:
             target_risk / stock_volatility, self.limits.max_position_size
         )
         return total_capital * position_ratio
+
+
+def _nonnegative_float(value: Any) -> float | None:
+    try:
+        result = float(value)
+    except (TypeError, ValueError):
+        return None
+    return result if result >= 0 else None
+
+
+def _bounded_loss(value: Any) -> float | None:
+    result = _nonnegative_float(value)
+    return result if result is not None and 0 < result <= 1 else None
+
+
+def _positive_float(value: Any) -> float | None:
+    result = _nonnegative_float(value)
+    return result if result is not None and result > 0 else None
+
+
+def _bounded_signed_float(value: Any) -> float | None:
+    try:
+        result = float(value)
+    except (TypeError, ValueError):
+        return None
+    return result if -1 <= result <= 1 else None
