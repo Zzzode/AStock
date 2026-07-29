@@ -1,0 +1,36 @@
+{
+  "cycle": "R3_render_compliance",
+  "publishability_status": "PASS",
+  "publishability_score": 95,
+  "review_mode": "sequential independent-lens simulation with R5 expert repair verification",
+  "findings": [
+    {
+      "issue_id": "R5-S-002",
+      "severity": "S",
+      "owner_skill": "exhibit-format-reviewer",
+      "owner_agent": "exhibit-format-reviewer",
+      "artifact": "main.pdf",
+      "evidence": "The prior layout contained dense ledger rows, unused pages and an isolated disclaimer page; later rendering exposed table-width diagnostics.",
+      "fix_required": "Separate appendices, compress repeated row prose, merge the disclosure into the evidence chapter, correct box/table widths, and rerun two-pass XeLaTeX with zero Overfull boxes.",
+      "blocking_gate": "render_compliance",
+      "status": "closed",
+      "verifier_ref": "tools/verify_refresh_workspace.py; /tmp/low-position-xelatex-release-pass2.log",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R5-B-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/institutional_ch04_focus.tex",
+      "evidence": "Focus-name prose did not provide an immediate cross-name comparison.",
+      "fix_required": "Add a formal-model comparison exhibit that places valuation space, action role and invalidation discipline side by side.",
+      "blocking_gate": "focus_name_comparability",
+      "status": "closed",
+      "verifier_ref": "sections/institutional_ch04_focus.tex",
+      "reopened_count": 0
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0
+}

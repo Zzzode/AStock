@@ -1,0 +1,79 @@
+{
+  "code": "000703",
+  "name": "恒逸石化",
+  "price": 15.06,
+  "prev_close": 14.64,
+  "open": 14.51,
+  "volume": 737239.0,
+  "change": 0.42,
+  "change_percent": 2.87,
+  "high": 15.43,
+  "low": 14.33,
+  "amount": 1104778003.0,
+  "bid_price": 15.05,
+  "ask_price": 15.06,
+  "pe": 0.0,
+  "pb": 0.0,
+  "pe_ttm": 0.0,
+  "total_market_value": 0.0,
+  "circulating_market_value": 0.0,
+  "turnover_rate": 0.0,
+  "volume_ratio": 0.0,
+  "data_quality": "full_realtime",
+  "provenance": {
+    "schema_version": "data_provenance.v1",
+    "source": "astock.quote_service",
+    "timestamp": "2026-07-22T13:52:00.052918+08:00",
+    "quality_tier": "realtime",
+    "quality_rank": 100,
+    "latency_ms": null,
+    "fallback_path": [],
+    "warnings": [],
+    "errors": [],
+    "ok": true
+  },
+  "market_events": [
+    {
+      "id": "mevt_184bc7b7377c087b2a695be2",
+      "schema_version": "market_event.v1",
+      "event_type": "price_move",
+      "title": "000703 恒逸石化 price move +2.87%",
+      "observed_at": "1970-01-01T00:00:00+00:00",
+      "severity": "watch",
+      "direction": "bullish",
+      "subject": {
+        "type": "stock",
+        "code": "000703",
+        "name": "恒逸石化",
+        "market": "A-share",
+        "key": "000703"
+      },
+      "quality": {
+        "level": "full",
+        "source": "astock.quote_service",
+        "confidence": 1.0,
+        "as_of": "1970-01-01T00:00:00+00:00",
+        "latency_seconds": null,
+        "warnings": [
+          "missing_observed_at"
+        ],
+        "missing_fields": []
+      },
+      "source": "astock.quote_service",
+      "metrics": {
+        "price": 15.06,
+        "prev_close": 14.64,
+        "change_pct": 2.87,
+        "change_amount": 0.42
+      },
+      "context": {
+        "raw_change_pct": 2.87
+      },
+      "tags": [
+        "quote",
+        "price"
+      ],
+      "dedupe_key": "price_move"
+    }
+  ]
+}

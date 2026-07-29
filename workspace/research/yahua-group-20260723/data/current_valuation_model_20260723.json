@@ -1,0 +1,167 @@
+{
+  "schema_version": "3.0",
+  "case_id": "yahua-group-20260723",
+  "artifact_type": "current_price_based_house_valuation",
+  "report_type": "single_stock_full_note",
+  "as_of": "2026-07-23",
+  "market_facts": {
+    "ticker": "002497.SZ",
+    "company": "雅化集团",
+    "current_price_cny": 17.75,
+    "price_date": "2026-07-23",
+    "adjustment_basis": "unadjusted closing price",
+    "shares_outstanding": 1152562520,
+    "shares_100m": 11.5256252,
+    "market_cap_100m_cny": 204.5798473,
+    "market_cap_recalculated_100m_cny": 204.5798473,
+    "market_cap_check": "PASS"
+  },
+  "forecast_scenarios": [
+    {
+      "case": "bear",
+      "probability_pct": 30,
+      "revenue_2026e_100m": 108.85,
+      "parent_np_2026e_100m": 15.0,
+      "eps_2026e_cny": 1.3014,
+      "revenue_2027e_100m": 100.2,
+      "parent_np_2027e_100m": 11.7,
+      "eps_2027e_cny": 1.0152,
+      "cycle_pe_2026e": 8.0,
+      "cycle_pe_2027e": 9.0,
+      "pe_value_cny": 10.03,
+      "bps_2026e_cny": 10.7934,
+      "pb_multiple": 1.0,
+      "pb_value_cny": 10.79,
+      "fundamental_value_cny": 10.26,
+      "upside_downside_vs_current_pct": -42.2
+    },
+    {
+      "case": "base",
+      "probability_pct": 50,
+      "revenue_2026e_100m": 133.3,
+      "parent_np_2026e_100m": 20.1,
+      "eps_2026e_cny": 1.7439,
+      "revenue_2027e_100m": 114.2,
+      "parent_np_2027e_100m": 14.2625,
+      "eps_2027e_cny": 1.2374,
+      "cycle_pe_2026e": 10.5,
+      "cycle_pe_2027e": 12.0,
+      "pe_value_cny": 17.27,
+      "bps_2026e_cny": 11.2359,
+      "pb_multiple": 1.55,
+      "pb_value_cny": 17.42,
+      "fundamental_value_cny": 17.32,
+      "upside_downside_vs_current_pct": -2.4
+    },
+    {
+      "case": "bull",
+      "probability_pct": 20,
+      "revenue_2026e_100m": 152.5,
+      "parent_np_2026e_100m": 24.7,
+      "eps_2026e_cny": 2.143,
+      "revenue_2027e_100m": 129.9,
+      "parent_np_2027e_100m": 18.6,
+      "eps_2027e_cny": 1.6138,
+      "cycle_pe_2026e": 13.0,
+      "cycle_pe_2027e": 14.0,
+      "pe_value_cny": 26.28,
+      "bps_2026e_cny": 11.635,
+      "pb_multiple": 2.2,
+      "pb_value_cny": 25.6,
+      "fundamental_value_cny": 26.07,
+      "upside_downside_vs_current_pct": 46.9
+    }
+  ],
+  "valuation_methodology": {
+    "primary": "cycle-normalized forward P/E; 70% of scenario P/E value is based on 2026E EPS and 30% on 2027E EPS",
+    "secondary": "P/B-ROE cross-check; 2026E BPS equals 2026Q1 BPS CNY9.572 plus EPS less assumed CNY0.08 dividend per share",
+    "fundamental_value_weighting": {
+      "cycle_pe_pct": 70,
+      "pb_roe_pct": 30
+    },
+    "reason_for_not_using_sotp": "segment revenue and gross margin are disclosed, but segment net profit, cash flow and comparable segment multiples are not; a mechanical SOTP would add false precision",
+    "reason_for_not_using_peer_multiple": "the case contains peer earnings aggregates but no verified peer price/EV multiple set on the same date; peer relative valuation has zero target weight",
+    "ev_ebitda_diagnostic_only": {
+      "q1_net_cash_proxy_100m": 14.8444,
+      "current_ev_proxy_100m": 189.7354,
+      "house_2026e_ebitda_100m_bear_base_bull": [24.5, 33.5, 40.3],
+      "current_ev_ebitda_bear_base_bull": [7.74, 5.66, 4.71],
+      "limitation": "working-capital intensity, cash conversion and H1 segment economics are unverified; EV/EBITDA is not a target-price anchor"
+    }
+  },
+  "market_expectation_bridge": {
+    "current_pe_on_house_2026e_bear_base_bull": [13.64, 10.18, 8.28],
+    "current_pb_on_house_2026e_bear_base_bull": [1.64, 1.58, 1.53],
+    "house_base_h2_parent_np_100m": 8.1,
+    "external_eps_2026e_cny_range": [2.01, 2.63],
+    "external_implied_h2_parent_np_100m_at_h1_midpoint": [11.15, 18.32],
+    "interpretation": "Current price does not require multiple expansion in the House base case, but it requires H2 profit and cash conversion to be demonstrated; low external PE alone is not an entry signal."
+  },
+  "street_comparison": {
+    "original_pdf_forecasts": {
+      "Guosen_eps_2026e": 2.01,
+      "Kaiyuan_eps_2026e": 2.23,
+      "Dongwu_eps_2026e": 2.63
+    },
+    "direct_target_anchor": {
+      "broker": "Dongwu Securities",
+      "target_cny": 42.0,
+      "report_date": "2026-07-07",
+      "method": "16x 2026E P/E",
+      "source_quality": "original PDF",
+      "weight_pct": 0,
+      "reason_for_zero_weight": "single dated target and material EPS/assumption dispersion; it is a sensitivity reference, not a Street consensus or House valuation input"
+    }
+  },
+  "multi_anchor_final": {
+    "probability_weighted_fundamental_value_cny": 16.95,
+    "fundamental_weight_pct": 85,
+    "market_anchor_cny": 17.75,
+    "market_weight_pct": 15,
+    "street_anchor_cny": 42.0,
+    "street_weight_pct": 0,
+    "final_target_cny": 17.07,
+    "display_target_cny": 17.0,
+    "upside_pct": -3.8,
+    "action": "reduce_avoid_new_position_pending_h1_validation",
+    "confidence": "medium_low",
+    "horizon_months": 12
+  },
+  "catalyst": [
+    "formal H1 disclosure validates lithium volume, realised price, cost and H2 earnings bridge",
+    "positive operating cash flow with contained receivables and inventory",
+    "civil-explosives segment margin and collection disclosure supports defensive earnings"
+  ],
+  "invalidation": [
+    "formal H1 parent NP below preview range",
+    "continued material negative OCF with worsening working capital",
+    "H2 variables cannot support House bear-case CNY400m parent NP"
+  ],
+  "model_reproducibility": "PASS; arithmetic formulae and rounding conventions are documented in analysis/valuation_audit.md",
+  "evidence_quality": "medium_low; 2025A/Q1 facts are L1, H1 NP preview is L1 preliminary, 2026-2027 operating assumptions are House inputs",
+  "rows": [
+    {
+      "ticker": "002497.SZ",
+      "company": "雅化集团",
+      "current_price": 17.75,
+      "price_date": "2026-07-23",
+      "shares_100mn": 11.5256252,
+      "market_cap_100mn_cny": 204.5798473,
+      "revenue_2026e_100mn": 133.3,
+      "np_2026e_100mn": 20.1,
+      "eps_2026e": 1.7439,
+      "method": "cycle-normalized P/E plus P/B-ROE cross-check; probability-weighted multi-anchor",
+      "bear": 10.26,
+      "base": 17.32,
+      "bull": 26.07,
+      "market_implied_anchor": 17.75,
+      "fundamental_weight": 0.85,
+      "market_weight": 0.15,
+      "broker_weight": 0.0,
+      "final_target": 17.07,
+      "upside": -0.0383,
+      "action": "reduce_avoid_new_position_pending_h1_validation",
+      "evidence_quality": "medium_low; L1 historical and preliminary results plus House scenario assumptions"
+    }
+  ]
+}

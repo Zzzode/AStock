@@ -1,0 +1,64 @@
+{
+  "cycle": "R0_evidence",
+  "cycle_status": "PASS",
+  "publishability_status": "PASS_FOR_MODEL_STAGE",
+  "publishability_score": 96,
+  "findings": [
+    {
+      "issue_id": "R0-B-004",
+      "cycle": "R0_evidence",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-verifier",
+      "artifact": "data/physical_ai_evidence_20260723.json",
+      "evidence": "The future-opportunity update required a primary-source boundary between monetised automotive intelligent driving, robot/low-speed commercialisation options, and ecosystem technology options. Available issuer material discloses products, a nomination, planned delivery, unspecified orders, POC and cooperation, but not a complete customer-to-cash chain.",
+      "fix_required": "Register issuer annual-report, IR-record and corporate-news evidence; classify every missing customer, unit, revenue, ASP, margin and cash field; prohibit all unclosed paths from base EPS and target-price inputs.",
+      "blocking_gate": "physical_ai_evidence_permissioning",
+      "status": "closed",
+      "verifier_ref": "data/physical_ai_evidence_20260723.md; data/source_registry.json; data/claim_audit.json; analysis/physical_ai_opportunity_tree.md",
+      "reopened_count": 1
+    },
+    {
+      "issue_id": "R0-B-001",
+      "cycle": "R0_evidence",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "artifact": "data/verified_financials.md",
+      "evidence": "2026H1 formal report/forecast was not present in the collected primary corpus as of 2026-07-23.",
+      "fix_required": "Keep 2026Q1 unaudited and do not annualise it; use a disclosed public forecast only as a labelled external cross-check until formal interim disclosure.",
+      "blocking_gate": "forecast_boundary",
+      "status": "closed",
+      "verifier_ref": "data/verified_financials.md; source_exhaustion_log.md",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-B-002",
+      "cycle": "R0_evidence",
+      "severity": "B",
+      "owner_skill": "reports",
+      "owner_agent": "report-collector",
+      "artifact": "data/broker_street_consensus_20260723.json",
+      "evidence": "Four original broker PDFs and 12 auditable snapshots contain earnings information, but no current auditable broker target-price/method anchor.",
+      "fix_required": "Set all Street target-price valuation weights to zero, retain revenue/EPS fields as external cross-checks only, and disclose the exhaustion path.",
+      "blocking_gate": "street_target_anchor",
+      "status": "closed",
+      "verifier_ref": "data/consensus_analysis.md; source_exhaustion_log.md",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-B-003",
+      "cycle": "R0_evidence",
+      "severity": "B",
+      "owner_skill": "supply-chain-research",
+      "owner_agent": "supply-chain-analyst",
+      "artifact": "data/customer_chain_audit.json",
+      "evidence": "Customer/vehicle-level revenue, ASP, utilization, order-conversion and project margin are not disclosed despite verified customer, platform and order language.",
+      "fix_required": "Keep customer/vehicle optionalities out of base EPS and target-price uplift; use only reported segment revenue, margin, working-capital and cash-flow facts for the core model.",
+      "blocking_gate": "customer_chain_incremental_eps",
+      "status": "closed",
+      "verifier_ref": "analysis/coverage_gap_matrix.md; analysis/value_chain_economics.md",
+      "reopened_count": 0
+    }
+  ]
+}

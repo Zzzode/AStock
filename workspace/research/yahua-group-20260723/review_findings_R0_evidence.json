@@ -1,0 +1,25 @@
+{
+  "cycle": "R0_evidence",
+  "report_type": "single_stock_full_note",
+  "findings": [
+    {
+      "issue_id": "R0-001",
+      "severity": "S",
+      "finding": "The former event package did not support a current-price full-note conclusion: source registry, claims, broker originals, market date and company history were not aligned to one coverage contract.",
+      "repair": "Rebuilt the source registry and claim audit; archived the 2025 annual report, 2026Q1, H1 preview, 7/23 market data and three original broker PDFs; separated issuer facts, external forecasts and House assumptions.",
+      "evidence": "data/source_registry.json, data/claim_audit.json, data/verified_financials.md, data/verified_market_data.md, data/broker_street_consensus_20260723.json",
+      "status": "closed"
+    },
+    {
+      "issue_id": "R0-002",
+      "severity": "A",
+      "finding": "Resource, customer, capacity and industry signals could have been mistaken for company earnings inputs.",
+      "repair": "Created full-chain, relationship and customer audits; unverified resource, customer and project economics receive no incremental valuation credit.",
+      "evidence": "analysis/value_chain_economics.md, analysis/supply_chain_model.md, data/full_chain_universe_20260723.json, data/customer_chain_audit.json",
+      "status": "closed"
+    }
+  ],
+  "open_s": 0,
+  "open_a": 0,
+  "open_b": 0
+}

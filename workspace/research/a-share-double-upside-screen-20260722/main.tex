@@ -1,0 +1,42 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+\newcommand{\reporttitle}{2026年末翻倍空间筛选}
+\newcommand{\reportsubtitle}{A股高弹性标的：基准价值、牛市尾部与证据门槛}
+\newcommand{\reportkicker}{A股策略与多标的研究}
+\newcommand{\reportscope}{中国A股 | 当前价格 | 2026年末事件窗口}
+\newcommand{\reportdate}{2026年7月22日}
+\newcommand{\reportdatacutoff}{行情截至2026年7月22日收盘；财务截至2025年报、2026Q1及已披露2026H1预告}
+\newcommand{\reporttype}{全市场高弹性筛选}
+\newcommand{\reportauthor}{AStock研究体系}
+\newcommand{\reporthouseview}{没有基准情景下高置信度翻倍标的。雅化16.79元：B+级条件核心，正式区间约25--26元，42元外部锚期限未披露；H2利润与OCF验证，现金仍负或库存/套保主导则失效。恩捷47.84元：C级零权敏感性，无正式目标；103元外部锚期限未披露，公司级量价、利用率与良率缺失即维持阻断。}
+\newcommand{\reportquality}{核心价格为实时收盘数据；缺少显式点目标者零外部权重；显式目标但期限未披露者仅作限权牛市参考，且须先通过公司级估值资格门槛。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。}
+\input{../../../.agents/templates/preamble.tex}
+\sloppy
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdfauthor={\reportauthor},pdftitle={\reporttitle}}
+\usepackage{amsmath}
+\begin{document}
+\astockcover
+\begin{abstract}
+本文回答一个严格限定的问题：从2026年7月22日到2026年12月31日，A股是否存在具备翻倍空间、且证据链足以进入投资研究核心池的标的。结论是：没有基准情景下的高置信度翻倍标的；雅化集团是唯一条件核心候选，恩捷股份因客户级量价与利用率证据不足只保留零权敏感性。原始报告中的42元与103元均具备数学上的翻倍空间，但目标期限未披露，不能改写成年末目标；其中只有雅化通过公司级估值资格门槛。报告将外部目标、AStock年末情景和证据阻断严格分开，并把缺失目标价、低基数、投资收益、周期峰值及现金流不匹配纳入降级规则。
+
+\textbf{English abstract.} No validated name offers a high-confidence base-case double by 2026 year-end. 002497 is the sole conditional-core candidate, with a judgmental 20\% bull probability. 002812 retains only a zero-weight external sensitivity, with no house target or probability. The report separates reported evidence, broker forecasts, house inference, and timing risk.
+\end{abstract}
+\tableofcontents
+\clearpage
+\input{sections/ch01_decision}
+\input{sections/ch02_market_hurdle}
+\input{sections/ch03_screen_method}
+\input{sections/ch04_yahua}
+\input{sections/ch05_enjie}
+\input{sections/ch06_backup_watch}
+\input{sections/ch07_valuation}
+\input{sections/ch08_catalysts}
+\input{sections/ch09_risks}
+\input{sections/ch10_evidence}
+\appendix
+\input{sections/app_a_false_positives}
+\input{sections/app_b_model_ledger}
+\input{sections/app_c_sources}
+\end{document}

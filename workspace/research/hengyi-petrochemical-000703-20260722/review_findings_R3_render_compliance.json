@@ -1,0 +1,63 @@
+{
+  "cycle": "R3_render_compliance",
+  "publishability_status": "PASS",
+  "publishability_score": 95,
+  "review_mode": "full PDF machine checks plus visual sampling before and after repair",
+  "findings": [
+    {
+      "issue_id": "R3-A-001",
+      "severity": "A",
+      "artifact": "sections/ch07_industry_competition.tex",
+      "evidence": "The pre-repair PDF had two severe near-empty orphan pages caused by terminal boxed paragraphs.",
+      "fix_required": "Convert the terminal boxes to flowing paragraphs and rebuild the PDF.",
+      "blocking_gate": "orphan_page_control",
+      "status": "closed",
+      "verifier_ref": "main.pdf; rendered/"
+    },
+    {
+      "issue_id": "R3-A-002",
+      "severity": "A",
+      "artifact": "main.tex",
+      "evidence": "The pre-repair report had 54 unnumbered exhibits without stable anchors.",
+      "fix_required": "Add chapter-scoped automatic exhibit numbering and labels to the case-local exhibit environment.",
+      "blocking_gate": "exhibit_referenceability",
+      "status": "closed",
+      "verifier_ref": "main.tex; main.pdf"
+    },
+    {
+      "issue_id": "R3-A-003",
+      "severity": "A",
+      "artifact": "main.tex",
+      "evidence": "The pre-repair final disclaimer was Chinese-only.",
+      "fix_required": "Add a concise English disclaimer matching the Chinese scope and execution boundary.",
+      "blocking_gate": "bilingual_disclaimer",
+      "status": "closed",
+      "verifier_ref": "main.tex; main.pdf"
+    },
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "artifact": "main.pdf",
+      "evidence": "Some chapter-ending pages retain moderate whitespace, while no page is blank, clipped or overlapping.",
+      "fix_required": "Accept the residual whitespace to preserve chapter boundaries and readable box flow.",
+      "blocking_gate": "layout_density",
+      "status": "accepted",
+      "waived": true,
+      "verifier_ref": "rendered/"
+    }
+  ],
+  "render_checks": {
+    "page_count": 55,
+    "page_size": "A4",
+    "fonts_embedded": true,
+    "unicode_maps_present": true,
+    "text_layer_extractable": true,
+    "out_of_bounds_text": 0,
+    "clipping_or_overlap": false,
+    "exhibit_count": 57,
+    "exhibit_numbering": "chapter-scoped",
+    "disclaimer_languages": ["Chinese", "English"]
+  },
+  "open_s_count": 0,
+  "open_a_count": 0
+}

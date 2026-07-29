@@ -1,0 +1,208 @@
+{
+  "subject": {
+    "security_code": "600150.SH",
+    "security_name": "中国船舶"
+  },
+  "data_cutoff": "2026-07-22",
+  "retrieved_at": "2026-07-22T23:52:00+08:00",
+  "purpose": "Market structure evidence for the China Shipbuilding research case. All historical return, drawdown, moving-average, range, volume, and turnover calculations below use the explicitly forward-adjusted daily series only.",
+  "historical_daily_kline": {
+    "provider": "Eastmoney public structured endpoint",
+    "frequency": "daily",
+    "adjustment_used": "front_adjusted",
+    "adjustment_parameter": "fqt=1",
+    "adjustment_comparison_archived": {
+      "unadjusted": "fqt=0",
+      "back_adjusted": "fqt=2"
+    },
+    "archive": "sources/market-structure-20260722/eastmoney_kline_daily_fqt1_front_adjusted_20230701_20260722.json",
+    "manifest": "sources/market-structure-20260722/source_manifest.md",
+    "coverage": {
+      "first_trade_date": "2023-07-03",
+      "last_trade_date": "2026-07-22",
+      "trading_days": 727,
+      "one_year_window_first_trade_date": "2025-07-22",
+      "one_year_trading_days": 239
+    },
+    "field_units": {
+      "open_close_high_low": "CNY per share",
+      "volume": "hand; 1 hand = 100 shares",
+      "amount": "CNY",
+      "turnover": "percent"
+    },
+    "period_performance": {
+      "one_month": {
+        "window": "2026-06-22 to 2026-07-22; first available trade date is 2026-06-22",
+        "start_close_cny": 36.97,
+        "end_close_cny": 33.02,
+        "return_pct": -10.6843,
+        "high_cny": 37.9,
+        "high_date": "2026-07-10",
+        "low_cny": 31.76,
+        "low_date": "2026-07-17",
+        "max_close_drawdown_pct": -14.2167,
+        "drawdown_peak_date": "2026-07-06",
+        "drawdown_trough_date": "2026-07-17"
+      },
+      "three_month": {
+        "window": "2026-04-22 to 2026-07-22; first available trade date is 2026-04-22",
+        "start_close_cny": 36.12,
+        "end_close_cny": 33.02,
+        "return_pct": -8.5825,
+        "high_cny": 43.06,
+        "high_date": "2026-04-30",
+        "low_cny": 31.76,
+        "low_date": "2026-07-17",
+        "max_close_drawdown_pct": -22.7723,
+        "drawdown_peak_date": "2026-05-13",
+        "drawdown_trough_date": "2026-07-17"
+      },
+      "year_to_date": {
+        "window": "2026-01-01 to 2026-07-22; first available trade date is 2026-01-05",
+        "start_close_cny": 34.12,
+        "end_close_cny": 33.02,
+        "return_pct": -3.2239,
+        "high_cny": 43.06,
+        "high_date": "2026-04-30",
+        "low_cny": 29.64,
+        "low_date": "2026-03-27",
+        "max_close_drawdown_pct": -22.7723,
+        "drawdown_peak_date": "2026-05-13",
+        "drawdown_trough_date": "2026-07-17"
+      },
+      "one_year": {
+        "window": "2025-07-22 to 2026-07-22",
+        "start_close_cny": 34.34,
+        "end_close_cny": 33.02,
+        "return_pct": -3.8439,
+        "high_cny": 43.06,
+        "high_date": "2026-04-30",
+        "low_cny": 29.64,
+        "low_date": "2026-03-27",
+        "max_close_drawdown_pct": -22.89,
+        "drawdown_peak_date": "2025-09-05",
+        "drawdown_trough_date": "2026-04-03"
+      },
+      "three_year": {
+        "window": "2023-07-03 to 2026-07-22",
+        "start_close_cny": 31.9,
+        "end_close_cny": 33.02,
+        "return_pct": 3.511,
+        "high_cny": 45.34,
+        "high_date": "2024-10-08",
+        "low_cny": 23.99,
+        "low_date": "2023-10-26",
+        "max_close_drawdown_pct": -37.4327,
+        "drawdown_peak_date": "2024-10-08",
+        "drawdown_trough_date": "2025-04-07"
+      }
+    },
+    "moving_averages_at_cutoff_cny": {
+      "ma5": 32.722,
+      "ma10": 33.72,
+      "ma20": 34.368,
+      "ma60": 36.547,
+      "ma120": 35.3775,
+      "ma250": 35.1647
+    },
+    "latest_close_relative_to_moving_average_pct": {
+      "ma5": 0.9107,
+      "ma10": -2.0759,
+      "ma20": -3.9223,
+      "ma60": -9.6506,
+      "ma120": -6.6638,
+      "ma250": -6.099
+    },
+    "recent_ranges": {
+      "5_trading_days": {
+        "window": "2026-07-16 to 2026-07-22",
+        "high_cny": 33.8,
+        "high_date": "2026-07-22",
+        "low_cny": 31.76,
+        "low_date": "2026-07-17"
+      },
+      "20_trading_days": {
+        "window": "2026-06-25 to 2026-07-22",
+        "high_cny": 37.9,
+        "high_date": "2026-07-10",
+        "low_cny": 31.76,
+        "low_date": "2026-07-17"
+      },
+      "60_trading_days": {
+        "window": "2026-04-24 to 2026-07-22",
+        "high_cny": 43.06,
+        "high_date": "2026-04-30",
+        "low_cny": 31.76,
+        "low_date": "2026-07-17"
+      }
+    }
+  },
+  "cutoff_market_snapshot": {
+    "provider": "Eastmoney public quote endpoint, cross-checked against project-native astock quote packet",
+    "date": "2026-07-22",
+    "close_cny": 33.02,
+    "open_cny": 32.88,
+    "high_cny": 33.8,
+    "low_cny": 32.67,
+    "volume_hand": 1083698,
+    "volume_shares": 108369800,
+    "amount_cny": 3604353059,
+    "turnover_pct": 1.44,
+    "total_shares": 7525621288,
+    "circulating_shares": 7525621288,
+    "total_market_cap_cny": 248496014929.76,
+    "circulating_market_cap_cny": 248496014929.76,
+    "archive": "sources/market-structure-20260722/eastmoney_quote_snapshot_core_20260722.json"
+  },
+  "trading_activity": {
+    "at_cutoff": {
+      "volume_hand": 1083698,
+      "volume_shares": 108369800,
+      "amount_cny": 3604353059,
+      "turnover_pct": 1.44
+    },
+    "five_trading_day_average": {
+      "volume_hand": 1035308.2,
+      "volume_shares": 103530820,
+      "amount_cny": 3414152571.6,
+      "turnover_pct": 1.376
+    },
+    "twenty_trading_day_average": {
+      "volume_hand": 1256320.45,
+      "volume_shares": 125632045,
+      "amount_cny": 4385302423.15,
+      "turnover_pct": 1.669
+    },
+    "sixty_trading_day_average": {
+      "volume_hand": 1181836.57,
+      "volume_shares": 118183656.67,
+      "amount_cny": 4407579164.82,
+      "turnover_pct": 1.5698
+    }
+  },
+  "share_float_interpretation": {
+    "reported_circulating_a_shares": 7525621288,
+    "reported_circulating_market_cap_cny": 248496014929.76,
+    "reported_total_shares": 7525621288,
+    "reported_total_market_cap_cny": 248496014929.76,
+    "strict_free_float_shares": null,
+    "strict_free_float_market_cap_cny": null,
+    "latest_top_ten_circulating_shareholder_disclosure_date": "2026-03-31",
+    "top_ten_circulating_shareholders_shares": 4176801659,
+    "top_ten_circulating_shareholders_pct_of_reported_circulating_shares": 55.5011,
+    "interpretation": "The vendor-reported circulating share capital is available and reconciles with the daily turnover rate. It must not be relabelled as strict free float because the public top-ten holder disclosure does not assign a consistent investability/lock-up classification to all holdings."
+  },
+  "quality": {
+    "cutoff_snapshot": "high: Eastmoney structured snapshot reconciles with project-native astock real-time packet on price, OHLC, volume and amount",
+    "historical_kline": "medium_high: 727-row structured daily sequence, explicit fqt=1 label and parallel fqt=0/fqt=2 archives; vendor is not an exchange-operated historical price feed",
+    "circulating_share_and_turnover": "medium_high: f84/f85/f116/f117/f168 mechanically reconcile on the cutoff date",
+    "strict_free_float": "unavailable: no standard public field or authoritative classification found that separates strategic/long-term/locked holdings from economically tradeable free float",
+    "fund_flow_margin_northbound_fund_holding_dragon_tiger": "outside this packet; no value is inferred from turnover, volume, or top-ten shareholder data"
+  },
+  "unresolved_items": [
+    "Strict free float shares and free-float market capitalization cannot be verified from the archived public fields and are deliberately null.",
+    "The latest top-ten circulating shareholder disclosure has a 2026-03-31 reporting date, not a 2026-07-22 ownership timestamp.",
+    "No benchmark index is included, so no relative-return claim is made.",
+    "Historical returns and drawdowns are price-series measures under Eastmoney fqt=1; they are not a tax-aware total-return calculation."
+  ]
+}

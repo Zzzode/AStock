@@ -1,0 +1,2690 @@
+{
+  "schema_version": "astock.full_market_evidence_closure.refresh.v1",
+  "data_cutoff": "2026-07-15",
+  "row_count": 142,
+  "closed_count": 141,
+  "downgraded_count": 1,
+  "unresolved_material_gap_count": 0,
+  "rows": [
+    {
+      "ticker": "000042",
+      "company": "中洲控股",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 9.90 CNY100mn; H1 deducted 10.60 CNY100mn",
+      "proxy_evidence": "recurring/normalized EPS after project settlement and tax/interest normalization",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 8.54,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600150",
+      "company": "中国船舶",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 101.00 CNY100mn; H1 deducted 99.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600150-中国船舶/2026-07-14-华源证券-26H1预告点评-Q2业绩预计同比大增-关注后续船价与集团整合.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 83.33,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002379",
+      "company": "宏桥控股",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 155.00 CNY100mn; H1 deducted 154.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002379-宏桥控股/2026-05-13-招银国际-高盈利弹性-高分红比例-首次覆盖给予买入评级.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 25.8,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601600",
+      "company": "中国铝业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "medium-low",
+      "direct_evidence": "H1 parent 117.00 CNY100mn; H1 deducted 115.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 14.07,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600346",
+      "company": "恒力石化",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 72.00 CNY100mn; H1 deducted 53.30 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600346-恒力石化/2026-07-10-中邮证券-2026H1业绩高增-大化工-平台优势显著.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 14.21,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000858",
+      "company": "五粮液",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 89.65 CNY100mn; H1 deducted 86.95 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000858-五粮液/2026-05-06-中邮证券-谨慎原则下收入再梳理-动销保障经营基本盘-高股息保障股东回报.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 75.26,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002460",
+      "company": "赣锋锂业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 41.25 CNY100mn; H1 deducted 36.00 CNY100mn",
+      "proxy_evidence": "2026E cycle-adjusted EPS, not H1 turnaround annualization",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 53.68,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002466",
+      "company": "天齐锂业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 35.50 CNY100mn; H1 deducted 35.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002466-天齐锂业/2026-05-22-东莞证券-2026年一季报点评-盈利能力大幅提升-公司一季度业绩表现亮眼.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 44.4,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601688",
+      "company": "华泰证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 115.13 CNY100mn; H1 deducted 115.19 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601688-华泰证券/2026-05-09-华源证券-投资收益大幅增长-所得税率略微影响净利润增速.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 22.56,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601336",
+      "company": "新华保险",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 221.99 CNY100mn; H1 deducted 222.74 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601336-新华保险/2026-07-14-东吴证券-2026年中报业绩预增点评-归母净利润同比增长40-60-预计主要受投资向好带动.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 78.45,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600037",
+      "company": "歌华有线",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 2.13 CNY100mn; H1 deducted 2.10 CNY100mn",
+      "proxy_evidence": "2026E recurring EPS after turnaround, not H1 profit annualization",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 5.62,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002738",
+      "company": "中矿资源",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 11.50 CNY100mn; H1 deducted 11.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002738-中矿资源/2026-07-14-东吴证券-26H1业绩预告点评-锂价上行贡献弹性-铯铷业务稳健增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 39.26,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601069",
+      "company": "西部黄金",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.35 CNY100mn; H1 deducted 5.35 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601069-西部黄金/2025-10-31-民生证券-2025年三季报点评-自产金量价齐升增厚利润-期待美盛达产.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 12.74,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000567",
+      "company": "海德股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 14.50 CNY100mn; H1 deducted 14.40 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000567-海德股份/2024-06-20-太平洋-海德股份2023年年报及一季报点评-业绩稳健增长-机构业务优异.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 7.45,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002602",
+      "company": "世纪华通",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 45.35 CNY100mn; H1 deducted 43.15 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002602-世纪华通/2026-06-30-开源证券-公司首次覆盖报告-掌握掘金密码-SLG-休闲双金矿持续寻宝.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 16.51,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600026",
+      "company": "中远海能",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 45.00 CNY100mn; H1 deducted 44.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600026-中远海能/2025-10-31-国金证券-Q3业绩同比增长-租船扩大运力规模.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 17.45,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002048",
+      "company": "宁波华翔",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 6.50 CNY100mn; H1 deducted 5.35 CNY100mn",
+      "proxy_evidence": "2026E normalized EPS after auto-cycle and robot-order verification",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 28.5,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600688",
+      "company": "上海石化",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 2.92 CNY100mn; H1 deducted 3.06 CNY100mn",
+      "proxy_evidence": "Q1 BPS and cycle-adjusted asset value",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 2.61,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600095",
+      "company": "湘财股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.40 CNY100mn; H1 deducted 5.15 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600095-湘财股份/2025-07-30-国金证券-携手金融科技行业聚势共赢-财富管理转型加速.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 4.2,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000426",
+      "company": "兴业银锡",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 22.55 CNY100mn; H1 deducted 18.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000426-兴业银锡/2026-04-24-国信证券-2025年归母净利润同增11-银-锡储量大幅提升.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 23.56,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600489",
+      "company": "中金黄金",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 43.50 CNY100mn; H1 deducted 43.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600489-中金黄金/2026-05-08-中邮证券-业绩释放良好-静待纱岭投产.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 21.16,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000737",
+      "company": "北方铜业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "medium-low",
+      "direct_evidence": "H1 parent 13.64 CNY100mn; H1 deducted 13.52 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 15.4,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002756",
+      "company": "永兴材料",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 10.50 CNY100mn; H1 deducted 10.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002756-永兴材料/2026-07-14-东吴证券-2026H1业绩预告点评-锂盐利润弹性释放-特钢贡献稳定利润.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 42.1,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "300014",
+      "company": "亿纬锂能",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 32.50 CNY100mn; H1 deducted 25.16 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/300014-亿纬锂能/2026-06-26-群益证券-公司26H1净利润翻倍增长-储能业务加快扩张-建议-买进.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 60.43,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601061",
+      "company": "中信金属",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 26.25 CNY100mn; H1 deducted 26.45 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601061-中信金属/2025-09-05-西南证券-2025年中报点评-国内领先大宗商品贸易商-Nb产品国内市占率达80.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 17.37,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600739",
+      "company": "辽宁成大",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 15.81 CNY100mn; H1 deducted 15.84 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600739-辽宁成大/2017-10-30-太平洋-辽宁成大2017年三季报点评-单季业绩暴增-投资收益稳定.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 43.8,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601360",
+      "company": "三六零",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 2.20 CNY100mn; H1 deducted 1.60 CNY100mn",
+      "proxy_evidence": "2026E revenue consensus and recurring AI/security monetization, not H1 turnaround EPS",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 13.1,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600918",
+      "company": "中泰证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 17.52 CNY100mn; H1 deducted 16.98 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600918-中泰证券/2025-10-31-太平洋-中泰证券2025年中报点评-财富管理表现出色-自营投资提供弹性.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 5.35,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000975",
+      "company": "山金国际",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 24.15 CNY100mn; H1 deducted 23.45 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000975-山金国际/2026-05-13-太平洋-量稳价升-一季度业绩实现高增.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 20.31,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000623",
+      "company": "吉林敖东",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 20.50 CNY100mn; H1 deducted 22.16 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000623-吉林敖东/2024-09-03-国元证券-2024半年报点评-业绩增长符合预期-年中分红保障股东回报.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 77.82,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600292",
+      "company": "电投水电",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 11.90 CNY100mn; H1 deducted 11.83 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600292-电投水电/2025-09-12-西南证券-水电平台定位明确-价值有望重塑.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 6.56,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000987",
+      "company": "越秀资本",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 28.83 CNY100mn; H1 deducted 23.32 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000987-越秀资本/2019-08-19-太平洋-越秀金控中报点评-证券业务业绩波动剧烈-业务转型进行中.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 7.88,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000155",
+      "company": "川能动力",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 6.85 CNY100mn; H1 deducted 6.75 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000155-川能动力/2026-04-20-国信证券-区域优质新能源发电运营商-锂矿达产-算电融合打开成长空间.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 10.04,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601377",
+      "company": "兴业证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 21.60 CNY100mn; H1 deducted 20.95 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601377-兴业证券/2026-05-05-开源证券-兴业证券2026年一季报点评-净利润同比-52-经纪-资管同比高增.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 6.16,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600120",
+      "company": "浙江东方",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "medium-low",
+      "direct_evidence": "H1 parent 8.72 CNY100mn; H1 deducted 8.40 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 5.02,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000703",
+      "company": "恒逸石化",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 57.50 CNY100mn; H1 deducted 57.20 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000703-恒逸石化/2026-07-05-国信证券-文莱炼化项目盈利提升-公司上半年业绩大幅增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 23.42,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000301",
+      "company": "东方盛虹",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 46.00 CNY100mn; H1 deducted 44.16 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000301-东方盛虹/2026-05-06-中邮证券-石化新材料销量稳步增长-高端新材料矩阵持续丰富.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 11.18,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "001339",
+      "company": "智微智能",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 3.84 CNY100mn; H1 deducted 3.67 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/001339-智微智能/2026-06-18-中邮证券-智算业务兑现增长-LPU与具身智能打开AI硬件新空间.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 65.43,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002558",
+      "company": "巨人网络",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 21.00 CNY100mn; H1 deducted 23.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002558-巨人网络/2026-07-15-西南证券-2026年半年报业绩预告点评-业绩预告符合预期-关注-超自然行动组-暑期表现.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 33.99,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "301308",
+      "company": "江波龙",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 101.00 CNY100mn; H1 deducted 97.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/301308-江波龙/2026-05-07-国信证券-1Q26归母净利润同比增长2644.05-端侧应用多维拓展.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 1069.45,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601628",
+      "company": "中国人寿",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 1330.26 CNY100mn; H1 deducted 1332.76 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601628-中国人寿/2026-07-16-国信证券-2026年中报预增点评-资本市场成长主线促投资收益高增.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 48.58,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002493",
+      "company": "荣盛石化",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 51.00 CNY100mn; H1 deducted 53.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002493-荣盛石化/2026-07-15-国信证券-上半年业绩高速增长-大炼化龙头优势凸显.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 8.88,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "001309",
+      "company": "德明利",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 61.00 CNY100mn; H1 deducted 60.49 CNY100mn",
+      "proxy_evidence": "2026E memory-cycle-adjusted EPS, not H1 annualized EPS",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 481.5,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601233",
+      "company": "桐昆股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 43.00 CNY100mn; H1 deducted 40.80 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601233-桐昆股份/2026-05-08-东海证券-公司简评报告-长丝景气改善-2026Q1盈利弹性超预期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 28.59,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603986",
+      "company": "兆易创新",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 69.00 CNY100mn; H1 deducted 48.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603986-兆易创新/2026-06-29-华鑫证券-公司动态研究报告-存储-MCU迎涨价浪潮-多业务推动业绩强劲增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 351.24,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601225",
+      "company": "陕西煤业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 114.58 CNY100mn; H1 deducted 97.46 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601225-陕西煤业/2026-04-28-国信证券-煤价下行拖累业绩-2026年业绩弹性可期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 17.61,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601138",
+      "company": "工业富联",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 239.00 CNY100mn; H1 deducted 232.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601138-工业富联/2026-06-18-金元证券-AI服务器销售占比提升-毛利预期持续改善.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 68.8,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000807",
+      "company": "云铝股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 76.50 CNY100mn; H1 deducted 75.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000807-云铝股份/2026-04-27-东吴证券-2026年一季报点评-铝价上涨带动公司盈利能力大幅上行.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 45.02,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603993",
+      "company": "洛阳钼业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 160.00 CNY100mn; H1 deducted 155.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603993-洛阳钼业/2026-05-14-太平洋-铜金双极战略初现峥嵘-钨金属表现亮眼.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 16.44,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601872",
+      "company": "招商轮船",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 69.50 CNY100mn; H1 deducted 68.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601872-招商轮船/2026-07-06-华源证券-26H1预告点评-Q2业绩同环比大增-油运大时代-渐入佳境.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 21.58,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600999",
+      "company": "招商证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 105.00 CNY100mn; H1 deducted 105.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600999-招商证券/2026-07-10-国信证券-构建募投闭环-直投成就业绩超预期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 18.51,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601899",
+      "company": "紫金矿业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 391.00 CNY100mn; H1 deducted 379.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601899-紫金矿业/2026-04-28-中邮证券-季度利润再创新高-碳酸锂利润开始释放.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 35.15,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600309",
+      "company": "万华化学",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 101.00 CNY100mn; H1 deducted 99.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600309-万华化学/2026-07-07-国信证券-聚氨酯-石化板块景气回升-1H26归母净利润98-104亿元.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 80.14,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600989",
+      "company": "宝丰能源",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 97.50 CNY100mn; H1 deducted 91.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600989-宝丰能源/2026-05-05-环球富盛理财-煤制烯烃龙头企业-26Q1归母净利润同比增长50.23.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 31.66,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "300475",
+      "company": "香农芯创",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 37.50 CNY100mn; H1 deducted 36.40 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/300475-香农芯创/2026-03-22-华鑫证券-公司动态研究报告-企业级存储需求旺盛-海普存储-实现年度盈利.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 372.57,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000776",
+      "company": "广发证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 115.00 CNY100mn; H1 deducted 116.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000776-广发证券/2026-04-30-华源证券-资管和投资增速较高-金融资产扩表较快.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 22.85,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600030",
+      "company": "中信证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 233.43 CNY100mn; H1 deducted 236.10 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600030-中信证券/2026-07-10-东吴证券-2026年中报业绩预增点评-境内境外业务线全面大增-归母净利润预计增长70.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 24.96,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601088",
+      "company": "中国神华",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 280.50 CNY100mn; H1 deducted 271.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601088-中国神华/2026-04-11-华源证券-盈利稳健提分红-资产注入促增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 21.68,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600362",
+      "company": "江西铜业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 80.25 CNY100mn; H1 deducted 81.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600362-江西铜业/2025-09-02-国信证券-国内铜矿盈利稳健-国外资源多点开花.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 50.79,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002709",
+      "company": "天赐材料",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 28.50 CNY100mn; H1 deducted 28.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002709-天赐材料/2026-07-10-东吴证券-26H1业绩预告点评-Q2业绩受费用影响-基本符合市场预期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 60.46,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002414",
+      "company": "高德红外",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 13.60 CNY100mn; H1 deducted 13.25 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002414-高德红外/2025-11-06-太平洋-合同负债大幅增长-看好全年业绩表现.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 20.83,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "300390",
+      "company": "天华新能",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 23.00 CNY100mn; H1 deducted 22.62 CNY100mn",
+      "proxy_evidence": "2026E cycle-adjusted EPS and lithium-price sensitivity",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 77.3,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002648",
+      "company": "卫星化学",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 65.00 CNY100mn; H1 deducted 61.87 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002648-卫星化学/2026-04-24-西南证券-2026年一季报点评-轻烃一体化优势明显-C2-C3产业链布局完善.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 42.38,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000792",
+      "company": "盐湖股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 61.50 CNY100mn; H1 deducted 61.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000792-盐湖股份/2026-04-09-华鑫证券-公司事件点评报告-价本共振业绩高增-盐湖龙头迈入成长新周期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 29.45,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601869",
+      "company": "长飞光纤",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 27.00 CNY100mn; H1 deducted 23.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601869-长飞光纤/2026-04-12-华鑫证券-公司事件点评报告-AI催生光纤光缆新需求-棒纤缆一体化生产把握上行周期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 147.6,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002432",
+      "company": "九安医疗",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 31.00 CNY100mn; H1 deducted 31.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002432-九安医疗/2025-05-06-东吴证券-2024及2025Q1业绩点评-品牌渠道优势显著-慢病O-O有望打开第二增长曲线.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 283.63,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000657",
+      "company": "中钨高新",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 20.70 CNY100mn; H1 deducted 20.55 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000657-中钨高新/2026-07-14-东吴证券-2026年半年度业绩预告点评-业绩稳步高增-PCB钻针业务放量可期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 23.06,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601995",
+      "company": "中金公司",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 79.67 CNY100mn; H1 deducted 78.07 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601995-中金公司/2026-05-05-国信证券-业绩高增-策略多元.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 26.2,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002497",
+      "company": "雅化集团",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 12.00 CNY100mn; H1 deducted 12.20 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002497-雅化集团/2026-07-08-东吴证券-26H1业绩预告点评-Q2锂盐量利齐升-略超我们预期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 31.8,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000933",
+      "company": "神火股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 48.00 CNY100mn; H1 deducted 48.06 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000933-神火股份/2026-04-14-国金证券-电解铝26Q1盈利弹性释放.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 44.21,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "300223",
+      "company": "北京君正",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 11.80 CNY100mn; H1 deducted 11.51 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/300223-北京君正/2026-05-06-国信证券-1Q26归母净利润同比增长331.61-行业景气度持续提升.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 120.94,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002192",
+      "company": "融捷股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 10.00 CNY100mn; H1 deducted 10.03 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002192-融捷股份/2022-10-26-东吴证券-高成长的川矿锂资源新星.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 83.83,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601066",
+      "company": "中信建投",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 76.65 CNY100mn; H1 deducted 77.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601066-中信建投/2026-04-29-东吴证券-定位精品投行-ROE领先同业.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 14.89,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002812",
+      "company": "恩捷股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 8.18 CNY100mn; H1 deducted 8.46 CNY100mn",
+      "proxy_evidence": "2027E normalized EPS after separator price and utilization recovery",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 85.29,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002636",
+      "company": "金安国纪",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 7.75 CNY100mn; H1 deducted 7.80 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002636-金安国纪/2021-09-02-开源证券-公司信息更新报告-2021Q2受益覆铜板提价-尽显盈利弹性.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 54.49,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002378",
+      "company": "章源钨业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 6.90 CNY100mn; H1 deducted 6.80 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002378-章源钨业/2025-08-27-民生证券-2025年半年报点评-钨价上涨增厚利润-刀具有望持续放量.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 12.29,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601211",
+      "company": "国泰海通",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 202.57 CNY100mn; H1 deducted 195.03 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601211-国泰海通/2026-07-05-东吴证券-2026年上半年业绩预告-券业首份业绩预告-扣非净利润同比增长164-到171.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 20.45,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600884",
+      "company": "杉杉股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 8.25 CNY100mn; H1 deducted 7.75 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600884-杉杉股份/2024-04-28-民生证券-2023年年报及2024年一季报点评-业绩短期承压-双主业市场份额再创新高.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 14.75,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002842",
+      "company": "翔鹭钨业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.50 CNY100mn; H1 deducted 5.35 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002842-翔鹭钨业/2018-12-04-中邮证券-专注钨制品行业-短期业绩弹性明显.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 35.48,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002407",
+      "company": "多氟多",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.05 CNY100mn; H1 deducted 4.89 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002407-多氟多/2025-04-24-民生证券-2024年年报及2025年一季报点评-业绩持续承压-六氟磷酸锂出货稳步增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 10.41,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002653",
+      "company": "海思科",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 8.30 CNY100mn; H1 deducted 7.30 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002653-海思科/2026-06-12-太平洋-海思科-创新转型进入收获期-核心产品放量可期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 31.87,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603629",
+      "company": "利通电子",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 7.00 CNY100mn; H1 deducted 6.12 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603629-利通电子/2018-12-04-东莞证券-新股网下申购询价建议报告-利通电子.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 84.74,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600961",
+      "company": "株冶集团",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 19.00 CNY100mn; H1 deducted 19.10 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600961-株冶集团/2026-04-21-国信证券-受益于金价上涨-2025年归母净利同比上升43.1.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 37.58,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002128",
+      "company": "电投能源",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 52.77 CNY100mn; H1 deducted 40.47 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002128-电投能源/2026-04-17-开源证券-公司信息更新报告-铝业务量价齐升助业绩稳增-分红比例大幅提升.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 23.98,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601168",
+      "company": "西部矿业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 41.50 CNY100mn; H1 deducted 41.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601168-西部矿业/2026-07-06-国信证券-坐拥国内优质铜矿山-开启新一轮扩张周期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 38.19,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600188",
+      "company": "兖矿能源",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 72.00 CNY100mn; H1 deducted 45.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600188-兖矿能源/2026-05-05-开源证券-公司信息更新报告-资产处置贡献显著收益-煤化协同释放增长潜力.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 9.96,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603162",
+      "company": "海通发展",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.25 CNY100mn; H1 deducted 5.23 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603162-海通发展/2026-07-09-西南证券-2026年半年度业绩预告点评-干散货运供需改善-公司充分享受弹性.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 8.53,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002240",
+      "company": "盛新锂能",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 11.00 CNY100mn; H1 deducted 14.00 CNY100mn",
+      "proxy_evidence": "2026E cycle-adjusted EPS with lithium-price and cash-flow bridge",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 37.89,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002440",
+      "company": "闰土股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.90 CNY100mn; H1 deducted 4.40 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002440-闰土股份/2025-05-02-华鑫证券-公司事件点评报告-染料产销量增长-公司市占率稳固.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 9.92,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002532",
+      "company": "天山铝业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 42.00 CNY100mn; H1 deducted 40.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002532-天山铝业/2026-04-29-国金证券-稀缺产能释放-全年开局表现亮眼.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 20.46,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "301377",
+      "company": "鼎泰高科",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 6.70 CNY100mn; H1 deducted 6.60 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/301377-鼎泰高科/2026-07-15-东吴证券-2026年半年度业绩预告点评-业绩高增-AI-PCB钻针量价齐升驱动业绩增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 60.56,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "688257",
+      "company": "新锐股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.80 CNY100mn; H1 deducted 5.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/688257-新锐股份/2026-07-15-东吴证券-2026年半年度业绩预告点评-业绩稳步高增-并购慧联电子打造新成长曲线.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 63.52,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000408",
+      "company": "藏格矿业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 36.50 CNY100mn; H1 deducted 37.13 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000408-藏格矿业/2026-04-18-东吴证券-2026年一季报点评-铜矿贡献核心利润-碳酸锂价格弹性明显.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 71.44,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600601",
+      "company": "方正科技",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.70 CNY100mn; H1 deducted 5.55 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600601-方正科技/2025-07-24-中航证券-锚定AI算力浪潮-高端PCB引领增长新势能.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 6.6,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002475",
+      "company": "立讯精密",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 79.73 CNY100mn; H1 deducted 64.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002475-立讯精密/2025-11-05-招银国际-Stronger-outlook-in-Apple-upgrade-cycle-andLeoni-ODM-s.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 42.69,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600595",
+      "company": "中孚实业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 18.75 CNY100mn; H1 deducted 19.25 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600595-中孚实业/2026-04-28-国信证券-电解铝和加工业务单位盈利高增-2025年分红比例43.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 10.76,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600487",
+      "company": "亨通光电",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 32.92 CNY100mn; H1 deducted 33.26 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600487-亨通光电/2026-07-14-群益证券-量价齐升推动上半年高速增长-关注AI需求带来的景气周期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 70.18,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600183",
+      "company": "生益科技",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 31.98 CNY100mn; H1 deducted 28.18 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600183-生益科技/2026-05-19-西南证券-2026年一季报点评-全面拥抱AI浪潮-业绩弹性持续释放.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 63.42,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000630",
+      "company": "铜陵有色",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 29.00 CNY100mn; H1 deducted 28.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000630-铜陵有色/2026-04-22-国信证券-矿山和冶炼业务盈利能力强-米拉多二期有望年内投产.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 5.61,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600549",
+      "company": "厦门钨业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 22.16 CNY100mn; H1 deducted 21.76 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600549-厦门钨业/2026-06-21-太平洋-业绩续创新高-不断提升钨原料自给率.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 32.11,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000100",
+      "company": "TCL科技",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 38.10 CNY100mn; H1 deducted 30.30 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000100-TCL科技/2026-04-27-中邮证券-质效双升.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 8.09,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "001287",
+      "company": "中电港",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 5.15 CNY100mn; H1 deducted 5.15 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/001287-中电港/2026-07-13-爱建证券-公司深度报告-两存上市乘风起-国产分销势正隆.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 40.52,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600111",
+      "company": "北方稀土",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 20.20 CNY100mn; H1 deducted 20.30 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600111-北方稀土/2026-04-23-东莞证券-2025年年报点评-稀土价格整体上行-公司业绩稳步增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 12.67,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000725",
+      "company": "京东方A",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 52.50 CNY100mn; H1 deducted 31.95 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000725-京东方A/2026-07-10-金元证券-全球半导体显示龙头-LCD稳健与AMOLED成长双轮驱动.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 5.51,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600176",
+      "company": "中国巨石",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 29.52 CNY100mn; H1 deducted 29.77 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600176-中国巨石/2026-05-26-群益证券-电子布价格继续上涨-公司扩张产能-建议-买进.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 28.18,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002266",
+      "company": "浙富控股",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 13.50 CNY100mn; H1 deducted 12.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002266-浙富控股/2026-06-29-中邮证券-作为拥有二本核一级制造证书的民营企业有望充分受益全球核电复兴-同时危废业务受益金属涨价.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 7.77,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000612",
+      "company": "焦作万方",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 12.20 CNY100mn; H1 deducted 12.08 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000612-焦作万方/2025-09-26-开源证券-公司首次覆盖报告-锦江集团入主-助力公司实现一体化腾飞.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 20.66,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "605117",
+      "company": "德业股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 26.98 CNY100mn; H1 deducted 25.23 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/605117-德业股份/2026-06-30-群益证券-储能业务爆发式增长-新产品积极推进-建议-买进.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 93.84,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000783",
+      "company": "长江证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 32.13 CNY100mn; H1 deducted 31.84 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000783-长江证券/2021-05-06-中航证券-2020年年报点评-经纪业务表现突出-2021年一季度业绩同比增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 8.72,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600233",
+      "company": "圆通速递",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 32.50 CNY100mn; H1 deducted 31.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600233-圆通速递/2026-07-01-群益证券-26H1净利润超预期-维持-买进-的投资建议.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 20.67,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600392",
+      "company": "盛和资源",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 8.65 CNY100mn; H1 deducted 8.55 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600392-盛和资源/2025-11-12-国元证券-首次覆盖报告-业绩高增长-全球化布局成效凸显.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 10.59,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603225",
+      "company": "新凤鸣",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 14.40 CNY100mn; H1 deducted 15.15 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603225-新凤鸣/2026-07-10-中邮证券-2026H1业绩高增-涤纶长丝行业盈利改善.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 22.73,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002008",
+      "company": "大族激光",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 13.00 CNY100mn; H1 deducted 14.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002008-大族激光/2026-07-10-东吴证券-2026年半年度业绩预告点评-业绩超市场预期-PCB-消费电子等业务多点开花.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 52.38,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000685",
+      "company": "中山公用",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 14.39 CNY100mn; H1 deducted 14.27 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000685-中山公用/2026-05-11-国信证券-投资收益带动业绩高增-公用事业-资本-科技-三大板块引领未来发展.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 29.41,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600909",
+      "company": "华安证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 21.73 CNY100mn; H1 deducted 21.60 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600909-华安证券/2026-04-23-太平洋-华安证券2025年年报点评-自营弹性充足-集团协同深化.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 6.7,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000833",
+      "company": "粤桂股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 6.55 CNY100mn; H1 deducted 6.53 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000833-粤桂股份/2018-08-31-东兴证券-财报点评-糖价低迷-矿来扛-广业整合是核心.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 27.03,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "300037",
+      "company": "新宙邦",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 10.00 CNY100mn; H1 deducted 9.85 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/300037-新宙邦/2026-07-10-东吴证券-26H1业绩预告点评-氟化工及电子信息化学品显著增长-符合市场预期.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 68.85,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000060",
+      "company": "中金岭南",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 11.25 CNY100mn; H1 deducted 11.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000060-中金岭南/2026-05-13-中邮证券-高纯金属镓锗铟产量大增-参股金洲精工受益PCB钻针需求爆发.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 5.7,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600522",
+      "company": "中天科技",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 24.30 CNY100mn; H1 deducted 22.33 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600522-中天科技/2026-02-25-中邮证券-AI驱动光通信需求-空芯光纤实现商业化突破.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 33.25,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002468",
+      "company": "申通快递",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 10.05 CNY100mn; H1 deducted 10.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002468-申通快递/2026-04-15-群益证券-26Q1利润超预期-给予-买进-的投资建议.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 14.88,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600267",
+      "company": "海正药业",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 6.25 CNY100mn; H1 deducted 5.10 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600267-海正药业/2022-08-24-中银证券-业绩保持增长态势-产品管线加速扩充.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 19.85,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600906",
+      "company": "财达证券",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 7.60 CNY100mn; H1 deducted 7.60 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/600906-财达证券/2022-02-24-东兴证券-省内资源优势集聚-京津冀一体化助力开启业务成长空间.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 4.31,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603268",
+      "company": "松发股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 36.00 CNY100mn; H1 deducted 35.00 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603268-松发股份/2026-06-02-东吴证券-民营造船新锐-技术与效率加持下量价利齐升.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 243.48,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002458",
+      "company": "益生股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 2.85 CNY100mn; H1 deducted 2.83 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002458-益生股份/2026-03-30-太平洋-益生股份年报点评-种鸡业务龙头地位稳固-种猪出栏高速增长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 7.67,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002384",
+      "company": "东山精密",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 29.50 CNY100mn; H1 deducted 24.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002384-东山精密/2026-05-05-开源证券-公司信息更新报告-2026Q1业绩高增-光模块-AIPCB-打开成长空间.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 82.08,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000977",
+      "company": "浪潮信息",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 28.50 CNY100mn; H1 deducted 23.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000977-浪潮信息/2026-07-08-群益证券-二季度业绩超预期增长-AI服务器有望持续抬高盈利能力.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 96.37,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603127",
+      "company": "昭衍新药",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 7.50 CNY100mn; H1 deducted 7.01 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603127-昭衍新药/2026-04-20-国信证券-2025年年报点评-订单中高速增长-主营业务有望改善.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 45.77,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "301200",
+      "company": "大族数控",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 9.50 CNY100mn; H1 deducted 9.50 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/301200-大族数控/2026-07-10-东吴证券-2026年半年度业绩预告点评-业绩超预期-AI-PCB扩产带动公司业绩稳步高增.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 79.9,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000938",
+      "company": "紫光股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 21.15 CNY100mn; H1 deducted 18.15 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/000938-紫光股份/2026-07-13-开源证券-公司信息更新报告-业绩超预期-AI交换机和服务器双轮驱动.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 38.54,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002463",
+      "company": "沪电股份",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 29.15 CNY100mn; H1 deducted 28.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002463-沪电股份/2026-04-24-中邮证券-高速交换机业务高增-产能扩张蓄力长期成长.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 75.05,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "688183",
+      "company": "生益电子",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 11.09 CNY100mn; H1 deducted 11.09 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/688183-生益电子/2025-12-31-华安证券-国内领先的PCB供应商-充分受益于AI需求.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 67.3,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "300604",
+      "company": "长川科技",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 9.50 CNY100mn; H1 deducted 9.05 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/300604-长川科技/2026-06-26-群益证券-2Q26业绩表现靓丽-估值合理.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 108.6,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002916",
+      "company": "深南电路",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 22.00 CNY100mn; H1 deducted 21.80 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002916-深南电路/2026-03-16-招银国际-AI-led-PCB-growth-with-substrate-upside-ahead.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 177.84,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "688825",
+      "company": "长鑫科技",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "not_priceable",
+      "closure_status": "closed_with_valuation_downgrade",
+      "evidence_quality": "low",
+      "direct_evidence": "H1 parent 未披露 CNY100mn; H1 deducted 未披露 CNY100mn",
+      "proxy_evidence": null,
+      "checked_sources": null,
+      "source_paths": [],
+      "formal_boundary": "未上市；发行价8.66元，暂无二级市场当前价",
+      "valuation_consequence": null,
+      "target_or_boundary": null,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "001248",
+      "company": "华润新能源",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 35.50 CNY100mn; H1 deducted 35.40 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/001248-华润新能源/2026-06-21-华金证券-新股覆盖研究-华润新能源.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 6.61,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "601633",
+      "company": "长城汽车",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 24.75 CNY100mn; H1 deducted 16.25 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/601633-长城汽车/2026-06-03-国金证券-中高端产品大年-差异化打开长期出海空间.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 11.25,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "600736",
+      "company": "苏州高新",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 6.00 CNY100mn; H1 deducted 3.00 CNY100mn",
+      "proxy_evidence": "2026E normalized EPS after property settlement and investment-income normalization",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 7.19,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "000415",
+      "company": "渤海租赁",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "recovery_conditional_model",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 33.00 CNY100mn; H1 deducted 17.00 CNY100mn",
+      "proxy_evidence": "2026E normalized EPS after lease income, asset quality and FX normalization",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line, public consensus, peer method and market-implied metrics",
+      "source_paths": [
+        "data/valuation_recovery_601360_000042_20260715.json"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Conditional recovery range; not formal Street valuation and not a guaranteed target.",
+      "target_or_boundary": 4.4,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002221",
+      "company": "东华能源",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 2.11 CNY100mn; H1 deducted 0.95 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002221-东华能源/2024-12-30-东吴证券-PDH龙头盈利承压-新建碳纤维项目有序推进.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 1.01,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002611",
+      "company": "东方精工",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 33.78 CNY100mn; H1 deducted 0.90 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002611-东方精工/2025-12-25-爱建证券-首次覆盖报告-全球瓦楞纸装备龙头-积极布局新兴产业.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 2.83,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "002174",
+      "company": "游族网络",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 2.50 CNY100mn; H1 deducted 0.20 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/002174-游族网络/2020-08-28-东吴证券-营收创新高-构建品类护城河-持续发力全球化.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 0.58,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "603296",
+      "company": "华勤技术",
+      "source_pool": "full_market_h1_refresh",
+      "model_tier": "screening_house_range",
+      "closure_status": "closed",
+      "evidence_quality": "high",
+      "direct_evidence": "H1 parent 29.75 CNY100mn; H1 deducted 16.82 CNY100mn",
+      "proxy_evidence": "H1 deducted-profit purity, Q1 cash flow, H2 calibration and price position",
+      "checked_sources": "official H1 preview, Q1 financial packet, current quote/K-line and latest broker metadata",
+      "source_paths": [
+        "data/full_market_valuation_evidence_20260715.json",
+        "refresh-20260715/sources/broker-reports-20260715/603296-华勤技术/2026-05-22-太平洋-26Q1业绩亮眼-超节点带来数据中心高增弹性.pdf"
+      ],
+      "formal_boundary": null,
+      "valuation_consequence": "Screening range only; no formal rating.",
+      "target_or_boundary": 78.12,
+      "unresolved_material_gap": false
+    }
+  ]
+}

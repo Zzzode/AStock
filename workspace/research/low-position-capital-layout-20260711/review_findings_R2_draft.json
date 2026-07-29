@@ -1,0 +1,49 @@
+{
+  "cycle": "R2_draft",
+  "publishability_status": "PASS",
+  "publishability_score": 95,
+  "review_mode": "sequential independent-lens simulation with R5 expert repair verification",
+  "findings": [
+    {
+      "issue_id": "R5-S-001",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf",
+      "evidence": "The prior working-paper hierarchy placed the full candidate and formula ledger ahead of the investor decision.",
+      "fix_required": "Move the investment decision, market-state interpretation, valuation framework, focus names and risk discipline into the main body; retain the 142-name ledger in appendices.",
+      "blocking_gate": "main_body_information_architecture",
+      "status": "closed",
+      "verifier_ref": "governance/institutional_report_review_R5_20260715.md; main.pdf",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R5-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/institutional_ch01_decision.tex",
+      "evidence": "The first chapter lacked a direct translation from model rank to portfolio or monitoring behavior.",
+      "fix_required": "Add an action framework separating validated allocation, event validation and valuation discipline, with explicit downgrade rules.",
+      "blocking_gate": "ic_actionability",
+      "status": "closed",
+      "verifier_ref": "sections/institutional_ch01_decision.tex",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R5-A-002",
+      "severity": "A",
+      "owner_skill": "research-report-review",
+      "owner_agent": "research-report-reviewer",
+      "artifact": "main.pdf",
+      "evidence": "Reader-facing pages used English work labels and exposed long internal-style reasoning strings.",
+      "fix_required": "Use Chinese reader-facing terminology and move detailed rationale to method-family explanations plus the auditable ledger.",
+      "blocking_gate": "reader_facing_language",
+      "status": "closed",
+      "verifier_ref": "tools/verify_refresh_workspace.py",
+      "reopened_count": 0
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0
+}

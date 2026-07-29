@@ -1,0 +1,103 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+\usepackage{amsmath}
+
+\newcommand{\reporttitle}{恒逸石化：峰值利润之后，每股价值还剩多少}
+\newcommand{\reportsubtitle}{文莱炼化兑现、国内聚酯修复与完全稀释估值再审视}
+\newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
+\newcommand{\reportscope}{A-SHARE | 000703.SZ | PETROCHEMICALS | V1.0}
+\newcommand{\reportdate}{2026年7月22日}
+\newcommand{\reportdatacutoff}{盘中行情截至2026年7月22日13:52 CST；财务截至2026Q1；2026H1为未经审计预告}
+\newcommand{\reporttype}{单票深度研究｜周期与资本结构专题}
+\newcommand{\reportauthor}{AStock研究代理}
+\newcommand{\reporthouseview}{恒逸石化2026H1利润反转真实，但市场已计入大部分可见改善。本机构以H1预告中值57.5亿元加H2正常化20.0亿元得到House 2026E归母77.5亿元，并按38.80694189亿股已披露稀释股本重算每股价值。模型值15.6575元，发布目标15.7元，相对15.06元盘中价上行约4.3\%，评级为中性／观察。}
+\newcommand{\reportquality}{核心财务、股本、员工计划及项目节点来自巨潮原始公告；行业价差、开工和库存仅作情景代理；正权重Street证据仅有一份已归档原始券商PDF。文莱2026分部利润、员工计划股份支付费用、剩余2.31亿库存股用途及二期完整金融交割尚未披露，报告据此维持CONDITIONAL边界。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，仅供研究与监控，不构成任何证券买卖建议。}
+
+\input{../../../.agents/templates/preamble.tex}
+
+% Case-local exhibit numbering provides stable, chapter-scoped reference anchors
+% without changing the shared report template.
+\renewtcolorbox[auto counter,number within=chapter]{exhibitbox}[1][]{
+  enhanced, breakable,
+  colback=white, colframe=rulegrey,
+  borderline north={1.2pt}{0pt}{navy},
+  boxrule=0.35pt, arc=1pt,
+  fonttitle=\bfseries\color{navy},
+  title={展品~\thetcbcounter\quad #1},
+  label={exhibit-\thetcbcounter},
+  left=7pt, right=7pt, top=6pt, bottom=6pt,
+  before upper={\global\exhibitboxwidth=\linewidth\relax
+    \global\exhibitwidth=\dimexpr\linewidth-2\tabcolsep\relax},
+}
+
+\hypersetup{
+  pdfauthor={\reportauthor},
+  pdftitle={\reporttitle},
+  pdfsubject={恒逸石化000703.SZ单票深度研究}
+}
+
+\begin{document}
+
+\astockcover
+
+\tableofcontents
+\clearpage
+
+\chapter{投资委员会摘要：反转成立，赔率不足}
+\input{sections/ch01_ic_summary}
+
+\chapter{证据治理：哪些是事实，哪些只是可检验假设}
+\input{sections/ch02_evidence_governance}
+
+\chapter{公司与治理：控制力强，资本约束也强}
+\input{sections/ch03_company_governance}
+
+\chapter{商业模式与资产地图：一体化如何转移利润池}
+\input{sections/ch04_business_asset_map}
+
+\chapter{文莱一期：利润爆发的来源与可持续性边界}
+\input{sections/ch05_brunei_phase1}
+
+\chapter{国内PTA、聚酯与尼龙：修复不是全面复苏}
+\input{sections/ch06_domestic_chain}
+
+\chapter{行业与竞争：海外区位稀缺，国内规模并非第一}
+\input{sections/ch07_industry_competition}
+
+\chapter{2025--2026财务质量：利润已反转，现金尚待证明}
+\input{sections/ch08_financial_quality}
+
+\chapter{文莱二期与资本开支：远期成长先通过融资门槛}
+\input{sections/ch09_phase2_capex}
+
+\chapter{盈利预测：用H2正常化约束峰值外推}
+\input{sections/ch10_earnings_forecast}
+
+\chapter{三层股本桥与员工计划：每股价值不能只看总利润}
+\input{sections/ch11_share_capital}
+
+\chapter{估值：15.7元目标如何从三座锚得到}
+\input{sections/ch12_valuation}
+
+\chapter{二级市场：预告后的高波动再定价}
+\input{sections/ch13_secondary_market}
+
+\chapter{风险、催化与监控：把观点变成可证伪流程}
+\input{sections/ch14_risk_catalysts}
+
+\appendix
+
+\chapter{公式、来源与模型披露}
+\input{sections/appA_model_sources}
+
+\medskip
+\begin{disclosurebox}[免责声明]
+\small
+\reportdisclaimer\par
+本报告使用的盈利预测、情景概率、估值倍数、目标价、支撑阻力与行动标签均为研究框架，不构成收益承诺、自动交易指令或任何形式的适当性意见。投资者应独立核对最新公告、市场价格及自身风险承受能力。
+
+This report is based solely on public information and is provided for research and monitoring purposes. It does not constitute investment advice, a solicitation, a suitability opinion, or an instruction to buy or sell any security. Readers should independently verify current disclosures and market data and make decisions according to their own objectives and risk tolerance.
+\end{disclosurebox}
+
+\end{document}

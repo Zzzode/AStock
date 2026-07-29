@@ -1,0 +1,103 @@
+{
+  "case_id": "hengyi-petrochemical-000703-20260722",
+  "model_date": "2026-07-22",
+  "currency": "CNY",
+  "units": "CNY per share unless otherwise stated",
+  "rows": [
+    {
+      "ticker": "000703.SZ",
+      "company": "Hengyi Petrochemical / 恒逸石化",
+      "current_price": 15.06,
+      "price_date": "2026-07-22 13:51:54 CST",
+      "shares_100mn": 38.80694189,
+      "share_basis": "disclosed-dilution shares: legal shares less treasury shares plus remaining convertible conversion shares plus the approved maximum seventh employee share-plan transfer; no unsupported effective-interest add-back is used, while employee-plan cash proceeds are added to equity value",
+      "market_cap_100mn_cny": 575.5273,
+      "market_cap_basis": "current legal shares of 3,821,562,147 multiplied by the CNY15.06 intraday price",
+      "disclosed_dilution_capitalization_sensitivity_100mn_cny": 584.4325,
+      "disclosed_dilution_capitalization_basis": "disclosed-dilution shares of 3,880,694,188.9535 multiplied by the CNY15.06 intraday price; this is a capital-structure sensitivity, not current quoted market capitalization",
+      "revenue_2026e_100mn": 1417.4,
+      "np_2026e_100mn": 77.5,
+      "eps_2026e": 1.9971,
+      "method": "cycle-adjusted disclosed-dilution PE-equity-value bridge using reported-basis profit without unsupported convertible effective-interest add-back, plus employee-plan cash proceeds and share-normalized fundamental, market and external Street anchors",
+      "bear": 10.5328,
+      "base": 15.4611,
+      "bull": 22.5152,
+      "scenario_probabilities": {
+        "bear": 0.25,
+        "base": 0.55,
+        "bull": 0.20
+      },
+      "fundamental_anchor": 15.6398,
+      "market_implied_anchor": 14.86,
+      "market_anchor_basis": "rounded five-session VWAP through 2026-07-21 (CNY14.6555) and current intraday price (CNY15.06) midpoint",
+      "street_anchor": 16.3130,
+      "street_anchor_basis": "Guosen target midpoint CNY17.05 multiplied by Guosen forecast shares 3.603bn, plus CNY1.8746bn maximum employee-plan cash proceeds, divided by house disclosed-dilution shares 3.88069bn",
+      "fundamental_weight": 0.65,
+      "market_weight": 0.15,
+      "broker_weight": 0.20,
+      "final_target": 15.7,
+      "unrounded_model_target": 15.6575,
+      "published_target": 15.7,
+      "upside": 0.0425,
+      "unrounded_model_upside": 0.0397,
+      "published_target_upside": 0.0425,
+      "core_fair_value_range": [13.46, 16.46],
+      "tail_range": [10.5, 22.5],
+      "action": "Neutral / watch; do not chase, require H2 earnings and cash-flow validation",
+      "evidence_quality": "official filings for shares and reported financials; full original broker PDF for Street anchor; live AStock quote; scenario assumptions are AStock house estimates",
+      "reported_2026_h1_preview_midpoint_100mn": 57.5,
+      "implied_2026_h2_np_base_100mn": 20.0,
+      "current_price_implied_np_at_base_pe_convertible_share_only_100mn": 74.8960,
+      "current_price_implied_np_at_base_pe_current_economic_shares_100mn": 69.0696,
+      "current_price_implied_np_at_base_pe_disclosed_dilution_100mn": 75.4249,
+      "current_price_implied_pe_on_disclosed_dilution_base_np": 7.2992,
+      "scenario_inputs": {
+        "bear": {"reported_basis_np_2026e_100mn": 65.0, "disclosed_dilution_eps": 1.6750, "pe": 6.0, "value_including_plan_cash": 10.5328},
+        "base": {"reported_basis_np_2026e_100mn": 77.5, "disclosed_dilution_eps": 1.9971, "pe": 7.5, "value_including_plan_cash": 15.4611},
+        "bull": {"reported_basis_np_2026e_100mn": 95.0, "disclosed_dilution_eps": 2.4480, "pe": 9.0, "value_including_plan_cash": 22.5152}
+      },
+      "quarterly_profit_bridge_100mn_cny": {
+        "q1_reported_parent_np": 19.95,
+        "q2_implied_from_h1_preview_range": [35.05, 40.05],
+        "q2_implied_from_h1_midpoint": 37.55,
+        "bear": {"q3e": 4.5, "q4e": 3.0, "h2e": 7.5, "nine_month_parent_np_at_h1_midpoint": 62.0},
+        "base": {"q3e": 12.0, "q4e": 8.0, "h2e": 20.0, "nine_month_parent_np_at_h1_midpoint": 69.5},
+        "bull": {"q3e": 22.5, "q4e": 15.0, "h2e": 37.5, "nine_month_parent_np_at_h1_midpoint": 80.0},
+        "boundary": "Q3E and Q4E are house timing assumptions, not company guidance; do not mechanically annualize Q3"
+      },
+      "capital_structure_sensitivities": {
+        "employee_plan_subscription": [
+          {"subscription_pct": 0, "valuation_shares_100mn": 37.29880389, "cash_proceeds_100mn_cny": 0.0, "base_value_per_share": 15.5836, "share_payment_expense": "not applicable if no transfer"},
+          {"subscription_pct": 50, "valuation_shares_100mn": 38.05287289, "cash_proceeds_100mn_cny": 9.373078, "base_value_per_share": 15.5211, "share_payment_expense": "unknown until grant and accounting terms are disclosed"},
+          {"subscription_pct": 100, "valuation_shares_100mn": 38.80694189, "cash_proceeds_100mn_cny": 18.746155, "base_value_per_share": 15.4611, "share_payment_expense": "unknown until grant and accounting terms are disclosed"}
+        ],
+        "remaining_treasury_shares": [
+          {"scenario": "continue as treasury or retire", "valuation_shares_100mn": 38.80694189, "incremental_cash_100mn_cny": 0.0, "base_value_per_share": 15.4611, "expense_boundary": "no incremental expense assumed"},
+          {"scenario": "reenter without cash compensation", "valuation_shares_100mn": 41.11720461, "incremental_cash_100mn_cny": 0.0, "base_value_per_share": 14.5923, "expense_boundary": "downside sensitivity only; any share-payment expense remains unquantified"},
+          {"scenario": "sell at CNY12.43", "valuation_shares_100mn": 41.11720461, "incremental_cash_100mn_cny": 28.716566, "base_value_per_share": 15.2907, "expense_boundary": "sale proceeds included; transaction costs and tax not modeled"},
+          {"scenario": "sell at CNY15.06", "valuation_shares_100mn": 41.11720461, "incremental_cash_100mn_cny": 34.792557, "base_value_per_share": 15.4385, "expense_boundary": "sale proceeds included; transaction costs and tax not modeled"}
+        ],
+        "remaining_treasury_formula": "(599.996155 + 2.31026272 * P) / 41.11720461"
+      },
+      "share_reconciliation": {
+        "legal_shares": 3821562147,
+        "treasury_shares": 381840072,
+        "economic_shares": 3439722075,
+        "remaining_convertible_principal_cny": 2994433800,
+        "conversion_price": 10.32,
+        "potential_new_shares": 290158313.9535,
+        "if_converted_economic_shares": 3729880388.9535,
+        "approved_employee_plan_max_shares": 150813800,
+        "approved_employee_plan_transfer_price": 12.43,
+        "approved_employee_plan_max_cash_proceeds_100mn_cny": 18.7462,
+        "disclosed_dilution_shares": 3880694188.9535,
+        "remaining_treasury_shares_without_confirmed_reissue_plan": 231026272,
+        "legal_max_shares_if_all_treasury_reenters_plus_convertible": 4111720460.9535,
+        "2026_weighted_coupon_rate": 0.01634795,
+        "coupon_and_effective_interest_treatment": "no profit add-back in primary valuation because bond effective-interest amortization and tax effect are not separately disclosed; this is intentionally conservative",
+        "employee_share_payment_treatment": "no separately modeled expense because the filing does not quantify it; the house base is CNY0.16bn below Street base and the gap is monitored, not asserted as a precise offset",
+        "timing_note": "treasury shares are from the 2026-06-12 distribution register while legal shares and bond balance are at 2026-06-30; the employee plan is approved but the final subscription and transfer quantity are uncertain; remaining treasury-share use is not confirmed"
+      }
+    }
+  ]
+}

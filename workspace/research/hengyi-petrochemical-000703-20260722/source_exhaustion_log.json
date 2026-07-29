@@ -1,0 +1,22 @@
+{
+  "case_id": "hengyi-petrochemical-000703-20260722",
+  "cutoff": "2026-07-22 CST",
+  "status": "sufficient_for_neutral_watch_conclusion",
+  "searched": [
+    "official company filings",
+    "CNINFO announcements",
+    "AStock market and financial packets",
+    "original broker PDFs",
+    "industry capacity, spread, utilization and inventory sources"
+  ],
+  "gaps": [
+    {"field": "project-level after-tax earnings and net debt", "impact": "blocks precise legal-entity SOTP", "valuation_weight": 0},
+    {"field": "audited 2026H1 results", "impact": "preview remains unaudited", "valuation_weight": "scenario constrained"},
+    {"field": "broad original broker target-price set", "impact": "limits Street anchor breadth", "valuation_weight": "only original PDF receives positive weight"},
+    {"field": "auditable seat/northbound/margin-financing time series", "impact": "no directional fund-flow claim", "valuation_weight": 0},
+    {"field": "customer/order and daily utilization disclosure", "impact": "no unsupported operating claim", "valuation_weight": 0}
+    ,{"field": "employee-plan final subscription, share-payment expense and remaining treasury-share use", "impact": "requires three-level share bridge and conservative reported-profit treatment", "valuation_weight": "approved maximum shares and cash only"}
+    ,{"field": "convertible effective-interest amortization and tax effect", "impact": "blocks precise if-converted earnings add-back", "valuation_weight": "no profit add-back"}
+  ],
+  "downgrade_rule": "downgrade to watchlist only if H1 cash-flow quality or H2 normalized earnings cannot be verified"
+}

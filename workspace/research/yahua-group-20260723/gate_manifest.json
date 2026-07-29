@@ -1,0 +1,100 @@
+{
+  "case_id": "yahua-group-20260723",
+  "report_type": "single_stock_full_note",
+  "data_cutoff": {
+    "market": "2026-07-23",
+    "research": "2026-07-23",
+    "financial": "2023A-2025A, 2026Q1 reported and 2026H1 earnings preview; formal 2026H1 statements unavailable"
+  },
+  "coverage_pack": "single-stock cyclical materials and civil-explosives coverage pack",
+  "required_skills": [
+    "equity-research",
+    "reports",
+    "supply-chain-research",
+    "growth-earnings-model",
+    "valuation",
+    "research-report-review",
+    "exhibit-format-reviewer",
+    "pdf"
+  ],
+  "required_artifacts": [
+    "research_brief.md",
+    "analysis/template_brief.md",
+    "analysis/delta_audit.md",
+    "data/raw_financials.md",
+    "data/verified_financials.md",
+    "data/raw_market_data.md",
+    "data/verified_market_data.md",
+    "data/report_catalog.md",
+    "data/consensus_analysis.md",
+    "data/broker_street_consensus_20260723.md",
+    "data/broker_street_consensus_20260723.json",
+    "data/source_registry.md",
+    "data/source_registry.json",
+    "data/claim_audit.md",
+    "data/claim_audit.json",
+    "source_exhaustion_log.md",
+    "source_exhaustion_log.json",
+    "analysis/industry_landscape.md",
+    "analysis/competitive_landscape.md",
+    "analysis/supply_chain_model.md",
+    "analysis/company_fundamental_cards.md",
+    "analysis/value_chain_economics.md",
+    "analysis/chain_earnings_bridge.md",
+    "analysis/house_view.md",
+    "analysis/variant_perception.md",
+    "analysis/growth_earnings_model.md",
+    "analysis/segment_forecast_bridge.md",
+    "analysis/implied_growth_sensitivity.md",
+    "data/growth_driver_model.json",
+    "analysis/segment_valuation_model.md",
+    "analysis/secondary_market_analysis.md",
+    "analysis/valuation_model.md",
+    "analysis/valuation_audit.md",
+    "data/current_valuation_model_20260723.json",
+    "analysis/risk_framework.md",
+    "analysis/exhibit_plan.md",
+    "analysis/narrative_blueprint.md",
+    "main.tex",
+    "main.pdf",
+    "main_current_text.txt",
+    "visual_review.md",
+    "review_log.md",
+    "final_signoff.md",
+    "final_signoff.json",
+    "research_workflow_eval.md",
+    "research_workflow_eval.json"
+  ],
+  "review_cycles": [
+    "R0_evidence",
+    "R1_model",
+    "R2_draft",
+    "R3_render_compliance",
+    "R4_final_ic"
+  ],
+  "verifiers": [
+    "tools/verify_research_workspace.py",
+    "workspace/research/tools/run_research_gates.py",
+    "astock.capabilities.evaluate_research_case_quality"
+  ],
+  "depth_gates": [
+    "evidence_depth",
+    "broker_consensus_depth",
+    "model_depth",
+    "valuation_depth",
+    "ic_readiness"
+  ],
+  "pass_conditions": [
+    "every material company, market and broker claim is source-traceable",
+    "2026E and 2027E bear/base/bull model bridges operating drivers to net profit and EPS without annualizing a single quarter",
+    "valuation discloses fundamental, market-implied and broker anchors, weights, target, upside, action and invalidation",
+    "no open S-level or unwaived A-level findings remain after R0-R4",
+    "case-local verifier, generic workflow evaluation and repository gate pass against the same PDF/model version"
+  ],
+  "downgrade_path": [
+    "downgrade to watchlist only if evidence cannot support a current-price-based fair-value range",
+    "remove valuation credit for any customer, resource, capacity or order claim not supported by the claim audit",
+    "refresh all forecasts and targets when formal 2026H1 statements are released"
+  ],
+  "status": "full_note_published_after_all_gates"
+}

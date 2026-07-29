@@ -1,0 +1,68 @@
+\chapter{筛选方法：从数学翻倍到证据可投}
+
+\section{五道门槛}
+
+本报告先从2026H1盈利改善、低位估值、产业周期与已有模型中形成候选，再依次通过五道门槛：
+
+\begin{enumerate}
+  \item \textbf{盈利兑现：}2025年报、2026Q1和H1预告能否建立不机械年化的全年桥接；
+  \item \textbf{估值空间：}基准与牛市情景是否分离，现价翻倍需要多少EPS与PE；
+  \item \textbf{年末催化：}H2业绩、价格、产能、订单或整合是否能在12月31日前被市场观察；
+  \item \textbf{现金与资产负债表：}利润是否转为经营现金流，库存和债务是否吞噬收益；
+  \item \textbf{证据质量：}公司公告、原始券商报告、行情与推断是否清楚分层。
+\end{enumerate}
+
+评分权重为盈利兑现30\%、估值空间25\%、催化时点20\%、现金与资产负债表15\%、证据质量10\%。任何发布阻断项都可以让高分候选降为观察，而不是用总分掩盖证据缺口。
+
+\begin{exhibitbox}[Exhibit 4：六标的可复核评分与硬门槛]
+\scriptsize
+\begin{tabularx}{\exhibitboxwidth}{L{1.9cm} R{1.0cm} R{1.0cm} R{1.0cm} R{1.0cm} R{1.0cm} R{1.0cm} L{1.1cm} X}
+\toprule
+标的 & 盈利30\% & 估值25\% & 催化20\% & 现金15\% & 证据10\% & 总分 & 证据级 & 硬门槛/最终层级 \\
+\midrule
+雅化集团 & 85 & 90 & 75 & 45 & 82 & 78.0 & B+ & OCF条件；条件核心 \\
+中国船舶 & 78 & 55 & 68 & 75 & 80 & 70.0 & B+ & 缺点目标；质量备选 \\
+恩捷股份 & 72 & 80 & 70 & 60 & 34 & 68.0 & C & 估值阻断；零权敏感性 \\
+盛新锂能 & 70 & 70 & 65 & 30 & 50 & 61.0 & C+ & 周期/OCF；周期备选 \\
+江波龙 & 75 & 55 & 55 & 20 & 38 & 54.1 & C & 峰值/OCF；观察 \\
+天华新能 & 65 & 35 & 55 & 40 & 47.5 & 50.0 & C & 牛市不翻倍；观察 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{AStock评分：总分=各项分数乘页首权重；硬门槛独立于总分。}
+\end{exhibitbox}
+
+条件核心允许形成正式自有区间，但升级仍依赖已列验证项；质量备选与周期备选只表示研究优先级，不发布正式目标；观察表示驱动或现金证据不足；零权敏感性只展示外部或假设区间，权重为零。硬门槛覆盖估值资格、现金错配、周期峰值与翻倍阈值，不能被总分抵销。
+
+\section{从16只候选到1只条件核心}
+
+初始池覆盖中国船舶、江波龙、恩捷股份、盛新锂能、天华新能、雅化集团、赣锋锂业，以及若干低位控股平台、现金型公司、化工与AI硬件对照。最终六只进入深度经营与估值审查，其中只有雅化集团同时满足公司级经营证据、显式外部目标、当前价格与可复核情景。
+
+\begin{exhibitbox}[Exhibit 3：筛选漏斗]
+\centering
+\begin{tikzpicture}[node distance=0.55cm, every node/.style={font=\small}]
+\node[draw=navy,fill=lightgrey,rounded corners,minimum width=12.5cm,minimum height=0.8cm] (u) {16只初始候选：盈利预告、低位、周期修复与热门对照};
+\node[below=of u,draw=navy,fill=lightgrey,rounded corners,minimum width=10.5cm,minimum height=0.8cm] (d) {6只深度审查：股本、现金流、经营驱动、券商原文、情景估值};
+\node[below=of d,draw=riskamber,fill=yellow!8,rounded corners,minimum width=8.5cm,minimum height=0.8cm] (v) {2只有完整显式外部目标：雅化集团、恩捷股份};
+\node[below=of v,draw=riskgreen,fill=green!6,rounded corners,minimum width=6.5cm,minimum height=0.8cm] (c) {1只条件核心：雅化集团};
+\draw[-{Latex[length=3mm]},thick,navy] (u)--(d);
+\draw[-{Latex[length=3mm]},thick,navy] (d)--(v);
+\draw[-{Latex[length=3mm]},thick,navy] (v)--(c);
+\end{tikzpicture}
+\sourcenote{AStock筛选与证据门槛。}
+\end{exhibitbox}
+
+\section{外部目标的统一权重政策}
+
+雅化集团42元目标以2026E EPS 2.63元乘16倍PE得出；恩捷股份103元目标以2027E EPS 5.16元乘20倍PE得出。两份原始报告完整、算术可复核，但均未披露目标期限，不能视为精确的2026年12月31日目标。
+
+统一政策是：缺少显式点目标者，外部目标权重为零；显式目标但期限未披露者，只有在公司级经营驱动通过估值资格门槛后，才能作为上限10\%的牛市参考。雅化因此采用80\%驱动情景概率值、10\%现价市场锚、10\%原始外部目标；恩捷虽然有103元目标，但公司级量价、利用率与客户证据阻断估值资格，外部目标和自有正式目标权重均为零。
+
+\section{不允许的估值捷径}
+
+吉林敖东、辽宁成大等控股平台可能因投资收益或资产折价而出现高数学空间，但不能把投资收益当作高增长经营EPS；九安医疗的历史利润容易受一次性或波动项目影响；江波龙的2026利润可能处于存储涨价峰值，不能仅凭低PE给予增长倍数；AI硬件热门股也不能因为景气强就忽略估值拥挤。
+
+\begin{disclosurebox}[证据分层]
+公司公告用于确认已披露事实；原始券商PDF用于确认预测与目标；实时行情用于确认现价；AStock模型用于明确推断。任何客户、订单、ASP、产能利用率或单平利润若只来自券商估计，都必须标记为预测并折价。
+\end{disclosurebox}
+
+\clearpage

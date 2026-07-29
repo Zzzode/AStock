@@ -1,0 +1,55 @@
+{
+  "cycle": "R1_model",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "recheck": 1,
+  "cycle_status": "PASS",
+  "publishability_status": "BLOCKED_DOWNSTREAM_INCOMPLETE",
+  "publishability_score": 95,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "closed_issue_ids": [
+    "R1-S-001",
+    "R1-A-001",
+    "R1-A-002"
+  ],
+  "groups": [],
+  "frozen_model_numbers": {
+    "base_parent_net_profit_2026_2028_CNY100m": [
+      172.762156,
+      216.489959,
+      246.810914
+    ],
+    "shares_100mn": 75.25621288,
+    "current_price_CNY": 33.02,
+    "market_cap_CNY100m": 2484.9601492976,
+    "bear_base_bull_CNY": [
+      11.20761,
+      33.0821075,
+      48.342034
+    ],
+    "weights": {
+      "fundamental": 0.85,
+      "market": 0.15,
+      "broker": 0.0
+    },
+    "published_final_target_CNY": 33.07,
+    "published_upside_decimal": 0.0015142337977,
+    "action": "中性偏多（持有/等待验证） / event-driven validation"
+  },
+  "residual_model_constraints": [
+    "Only consolidated scenario valuation is allowed while ship-level ASP, delivery schedule, utilization, payment and cost-pass-through evidence remains unavailable.",
+    "No usable original Street target price exists; broker weight must remain zero and the gap must remain explicit through final sign-off.",
+    "The shared source-exhaustion literal-token check must be repaired at the underlying governance artifact or machine-readable contract before publication.",
+    "R2-R4, main.tex/main.pdf, workflow evaluation and final sign-off remain incomplete."
+  ],
+  "reopen_triggers": [
+    "growth Base profit or share denominator changes",
+    "Q1 or H1 is annualized into the forecast",
+    "backlog or the COSCO project is directly converted into incremental revenue or EPS",
+    "military, Hudong-Zhonghua, group-order or weak target-price option credit becomes non-zero",
+    "a subsidiary or yard receives a separate target or SOTP multiple",
+    "scenario multiples, target weights, final target or action changes without a regenerated valuation package",
+    "the near-zero target return is presented as an AStock Buy action"
+  ]
+}

@@ -1,0 +1,56 @@
+\section{关键工件索引}
+
+\begin{itemize}
+  \item 全市场预告：\texttt{data/full\_market\_preview\_screen\_20260712.json}
+  \item 73只候选：\texttt{data/full\_market\_preview\_candidates\_20260712.json}
+  \item 16只优先池：\texttt{data/full\_market\_priority\_evidence\_20260712.json}
+  \item 16只完整估值：\texttt{data/full\_market\_priority\_valuation\_20260712.json}
+  \item 73只候选估值：\texttt{data/full\_market\_candidate\_valuation\_20260712.json}
+  \item 117只去重总账：\texttt{data/report\_wide\_valuation\_ledger\_20260712.json}
+  \item 117只证据闭环：\texttt{data/report\_wide\_evidence\_closure\_20260713.json}
+  \item 44只主题独有证据：\texttt{data/theme\_only\_evidence\_20260713.json}
+  \item 全候选估值证据：\texttt{data/full\_market\_valuation\_evidence\_20260712.json}
+  \item 公告EPS／扣非质量：\texttt{data/earnings\_preview\_quality\_20260711.json}
+  \item 7月15日预告增量：\texttt{data/earnings\_preview\_update\_20260715.json}
+  \item 7月15日公告原件：\texttt{sources/earnings-previews-20260715/}
+  \item 五只正式估值：\texttt{data/current\_valuation\_model\_20260711.json}
+  \item Street锚：\texttt{data/broker\_street\_consensus\_20260711.json}
+  \item 恒瑞SOTP：\texttt{data/hengrui\_sotp\_model\_20260712.json}
+  \item 条件观察：\texttt{data/conditional\_watch\_models\_20260712.json}
+  \item 高增长桥：\texttt{data/growth\_driver\_model.json}
+  \item 旧主题池：\texttt{data/company\_cards\_20260711.json}
+  \item 旧主题研报目录：\texttt{data/core\_broker\_report\_catalog\_20260711.json}
+\end{itemize}
+
+\section{来源层级}
+
+\begin{exhibitbox}[Exhibit A1：来源与用途]
+\begin{tabularx}{\textwidth}{L{2.1cm}L{2.4cm}L{3.4cm}X}
+\toprule
+\textbf{来源} & \textbf{质量} & \textbf{用途} & \textbf{边界} \\
+\midrule
+公司公告／财报 & L1 & H1预告、Q1财务、扣非与EPS & 预告未经审计，不机械年化 \\
+申万官方分类 & L1传输降级 & 364家A股公司映射31行业 & HTTPS证书校验失败，文件已归档校验 \\
+交易行情与历史K线 & L1--L2 & 现价、20/60日、一年位置 & 不证明机构身份或未来趋势 \\
+原始券商PDF & L2 & 盈利分母、目标、方法、风险 & 需要时效折价，不能替代AStock判断 \\
+详细转载页 & L3 & 最新目标方向与预测交叉验证 & 目标权重为0，不冒充原始报告 \\
+结构化资金表 & L2 & 行业与个股资金阶段 & 按成交单分类，无法穿透受益人 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+\section{模型复现声明}
+
+五只正式模型的现价、股本、市值、2026E收入／净利／EPS、三情景、概率、Street权重、最终目标和空间均可由结构化JSON复算。所有熊市值低于现价，概率和为100\%，市场锚权重为0，同票同源原始PDF覆盖5/5。\textbf{Model Reproducibility: PASS}。
+估值覆盖层另包含16只优先股公司级模型、73只H1候选估值行和117只报告全标的去重总账。73只候选中72只可定价、1只因无有效二级市场价格不可定价；117只总账中116只可定价、1只为IPO定价时间边界。\textbf{Full-Market Valuation Coverage Reproducibility: PASS}。
+
+\section{证据闭环与正式边界}
+
+117只证据闭环总账中，114只直接关闭、2只通过估值降权关闭、1只为正式时间边界，开放实质缺口0只。正式边界不是空白：每项均列明检查来源、代理证据及估值后果。
+\begin{itemize}
+  \item 浙江东方：已检查研报接口、官方H1预告、Q1财务与公开检索；当前原始券商PDF未取得，Street权重为0，House PB-ROE／盈利桥仍可复算。
+  \item 恒瑞／工业富联：组合或合并盈利证据完整；产品PoS、客户分配等边界分别通过SOTP折价或只用合并PE处理。
+  \item 中兴／江波龙：直接披露和代理证据已闭环，但概率值低于现价；分别只用合并PE或周期PE，维持条件观察。
+  \item 长鑫科技：官方IPO公告显示2026-07-15才刊登发行公告；数据截点没有发行价和二级历史，因此不给二级目标。
+  \item 资金表不能穿透到具体机构、量化策略或最终受益人。
+\end{itemize}

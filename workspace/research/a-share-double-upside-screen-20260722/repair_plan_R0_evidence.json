@@ -1,0 +1,75 @@
+{
+  "cycle": "R0_evidence",
+  "status": "complete_with_accepted_residual",
+  "publishability_status": "PASS",
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 1,
+  "repairs_by_owner_skill": [
+    {
+      "owner_skill": "equity-research",
+      "owner_agent": "equity-research-orchestrator",
+      "priority": 1,
+      "issue_ids": [
+        "R0-S-001"
+      ],
+      "artifacts": [
+        "main.tex",
+        "sections/ch09_risks.tex",
+        "analysis/valuation_model.md",
+        "analysis/valuation_audit.md",
+        "analysis/risk_framework.md",
+        "main.pdf",
+        "main_current_text.txt"
+      ],
+      "repair": "Corrected the source wording, rebuilt main.pdf and regenerated main_current_text.txt so the current deliverables no longer contain the superseded 6-12 month horizon assertion.",
+      "acceptance": "Regenerated PDF text contains no unsupported 6-12 month target horizon and consistently states that the horizon is not disclosed.",
+      "status": "closed",
+      "verification": "Verified on 2026-07-22 against the 17:32:25 CST PDF and 17:32:39 CST extracted text."
+    },
+    {
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "priority": 2,
+      "issue_ids": [
+        "R0-A-001"
+      ],
+      "artifacts": [
+        "data/source_registry.md",
+        "data/source_registry.json",
+        "data/claim_audit.md",
+        "data/claim_audit.json"
+      ],
+      "repair": "Registered OFF-600150-SHARES and OFF-301308-SHARES and added the associated current-price-times-official-shares market-cap claims.",
+      "acceptance": "All 21 official PDFs are represented; the two omitted share announcements and the CNY248.496bn/CNY164.338bn bridges resolve through source registry and claim audit.",
+      "status": "closed",
+      "verification": "Verified on 2026-07-22 by registry count, local-path existence and claim source-ID resolution."
+    },
+    {
+      "owner_skill": "equity-research",
+      "owner_agent": "data-collector",
+      "priority": 3,
+      "issue_ids": [
+        "R0-B-001"
+      ],
+      "artifacts": [
+        "data/raw_market_data.md",
+        "data/source_registry.md",
+        "data/source_registry.json",
+        "source_exhaustion_log.md",
+        "source_exhaustion_log.json",
+        "sources/market-20260722/"
+      ],
+      "repair": "Archive exact provider payloads and the market-close page with capture metadata and hashes, or disclose that the curated Markdown packet is the surviving evidence ceiling.",
+      "acceptance": "Each market source has an immutable local capture or an explicit evidence-ceiling disclosure.",
+      "status": "open",
+      "accepted_residual": true,
+      "residual_rationale": "No market-number error was detected; two-source price agreement and documented timestamps are sufficient for current use, while immutable replay remains desirable."
+    }
+  ],
+  "verification_required": [
+    "Target-horizon source and rendered artifacts verified with zero unsupported 6-12 month assertions.",
+    "Validate source_registry.json and claim_audit.json parsing and source-ID resolution.",
+    "Run the full case verifier only after all review-cycle artifacts are present."
+  ]
+}

@@ -1,0 +1,241 @@
+{
+  "case_id": "low-position-capital-layout-20260711",
+  "artifacts": [
+    {
+      "artifact": "refresh-20260715/data/raw_a_share_h1_2026_preview_20260715.json",
+      "owner_skill": "screen",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R0_evidence",
+      "required_fields": [
+        "4429 metric rows",
+        "4339 A-share rows",
+        "1680 companies",
+        "1678 mapped"
+      ],
+      "minimum_depth": "Official full-table capture with explicit B-share exclusions.",
+      "blocking_conditions": [
+        "partial table",
+        "unmapped majority",
+        "B-share contamination"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/full_market_candidate_valuation_20260715.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R1_model",
+      "required_fields": [
+        "142 rows",
+        "141 conditionally priceable",
+        "1 genuinely unpriceable pre-listing row",
+        "12 recovery-model rows",
+        "bear/base/bull or explicit listing boundary",
+        "target/upside/action or explicit boundary"
+      ],
+      "minimum_depth": "Every high-impact candidate has a reproducible screening model, conditional recovery range, or an explicit listing/evidence boundary.",
+      "blocking_conditions": [
+        "missing candidate",
+        "pseudo-precise target for blocked denominator",
+        "missing recovery evidence",
+        "missing action"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/valuation_recovery_601360_000042_20260715.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R0_evidence/R1_model",
+      "required_fields": [
+        "12 exceptional-denominator rows",
+        "public consensus/earnings/peer/market-implied fields",
+        "scenario formulas",
+        "confidence and upgrade/downgrade triggers"
+      ],
+      "minimum_depth": "Low-base turnaround and project-settlement names receive a conditional, triangulated valuation instead of mechanical H1 annualization.",
+      "blocking_conditions": [
+        "missing source quality",
+        "weak source treated as Street anchor",
+        "arithmetic mismatch",
+        "missing conditional boundary"
+      ],
+      "reviewer_cycle": "R0_evidence/R1_model",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/full_market_candidate_valuation_audit_20260715.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R1_model/R2_draft",
+      "required_fields": [
+        "142 rows",
+        "formula_type",
+        "denominator",
+        "scenario inputs",
+        "final-target formula",
+        "evidence paths",
+        "audit status"
+      ],
+      "minimum_depth": "Every candidate receives a row-level valuation algorithm and evidence recalculation in the reader-facing audit table.",
+      "blocking_conditions": [
+        "missing row",
+        "missing formula",
+        "missing evidence path",
+        "recalculation FAIL",
+        "formula method mismatch"
+      ],
+      "reviewer_cycle": "R1_model/R2_draft",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/high_upside_selection_audit_20260715.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R1_model/R2_draft",
+      "required_fields": [
+        "6 100%+ upside rows",
+        "priority/formal flags",
+        "hard-gate reasons",
+        "upgrade evidence"
+      ],
+      "minimum_depth": "Every high-upside but non-formal row has a reader-facing reason for exclusion and a concrete evidence path for future upgrade.",
+      "blocking_conditions": [
+        "high-upside omission",
+        "missing hard-gate reason",
+        "missing upgrade evidence",
+        "space-only selection"
+      ],
+      "reviewer_cycle": "R1_model/R2_draft",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/high_upside_evidence_closure_20260716.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R0_evidence/R1_model/R2_draft",
+      "required_fields": [
+        "6 high-upside rows",
+        "original API report count",
+        "archived original PDF count",
+        "current target-field proof",
+        "accepted counterevidence or not-found result",
+        "Q1 operating cash flow",
+        "final admission decision",
+        "remaining future-event validation",
+        "evidence paths"
+      ],
+      "minimum_depth": "Every Section 4.3 ticker closes the source gap through direct evidence, counterevidence, or documented non-disclosure; no missing-target placeholder remains.",
+      "blocking_conditions": [
+        "ticker omission",
+        "weak source receives positive weight",
+        "current target claimed without original evidence",
+        "future H2 event presented as completed evidence",
+        "missing final admission decision",
+        "missing evidence path"
+      ],
+      "reviewer_cycle": "R0_evidence/R1_model/R2_draft",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/former_medium_candidate_admission_20260715.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R1_model/R2_draft",
+      "required_fields": [
+        "48 formerly medium rows",
+        "admission status",
+        "decision",
+        "blockers",
+        "upgrade trigger"
+      ],
+      "minimum_depth": "Every formerly medium-evidence row receives a candidate-admission decision after evidence upgrade.",
+      "blocking_conditions": [
+        "missing formerly medium row",
+        "missing admission decision",
+        "formal upgrade without current external anchor",
+        "unexplained non-admission"
+      ],
+      "reviewer_cycle": "R1_model/R2_draft",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/current_valuation_model_20260715.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R1_model",
+      "required_fields": [
+        "4 formal rows",
+        "current price",
+        "share count",
+        "scenarios",
+        "target",
+        "upside",
+        "external target"
+      ],
+      "minimum_depth": "Formal rows require current auditable external target/range evidence.",
+      "blocking_conditions": [
+        "House-only row labeled formal",
+        "no downside",
+        "arithmetic mismatch"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "refresh-20260715/data/formal_selection_bridge_20260715.json",
+      "owner_skill": "valuation",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R1_model",
+      "required_fields": [
+        "39 priority rows",
+        "formal/conditional/risk statuses",
+        "selection reasons",
+        "external anchor boundary"
+      ],
+      "minimum_depth": "Every priority name must have an explicit path to formal model, conditional observation, or valuation risk/watch.",
+      "blocking_conditions": [
+        "priority row missing",
+        "unexplained formal exclusion",
+        "conditional row not disclosed"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "main.pdf",
+      "owner_skill": "equity-research",
+      "owner_agent": "refresh-orchestrator",
+      "stage": "R3_render_compliance",
+      "required_fields": [
+        "decision-first hierarchy",
+        "142 candidates",
+        "39 priority",
+        "4 formal models",
+        "142-row formula ledger",
+        "zero hard diagnostics"
+      ],
+      "minimum_depth": "Reader-facing strategy report with decision chapters first and fully auditable appendices after the main body.",
+      "blocking_conditions": [
+        "stale working-paper hierarchy",
+        "Overfull",
+        "untranslated work labels",
+        "missing source boundary"
+      ],
+      "reviewer_cycle": "R3_render_compliance",
+      "verifier_check": "tools/verify_refresh_workspace.py",
+      "blocking_if_missing": true
+    }
+  ]
+}

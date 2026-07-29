@@ -1,0 +1,517 @@
+ 
+ 
+ 
+ 
+ 深科技(000021)首次覆盖报告：多业务协同发力 先进制造平台价值凸显__新浪财经_新浪网 
+ 
+ 
+ 
+ 
+ 
+ jQuery.noConflict(); 
+ 
+ 
+ 
+/* 初始化CSS */
+html, body, ul, li, ol, dl, dd, dt, p, h1, h2, h3, h4, h5, h6, form, fieldset, legend,img{margin:0;padding:0;}
+fieldset,img{border:none;}
+address,caption,cite,code,dfn,th,var{font-style:normal;font-weight:normal;}
+ul,ol{list-style:none;}
+select,input{vertical-align:middle;}
+select,input,textarea{font-size:12px;margin:0;}
+table{border-collapse:collapse;}
+body{background:#fff;color:#4e4e4e;padding:5px 0;font:12px/20px "宋体";}
+
+.clearfix:after{content:".";display:block;height:0;visibility:hidden;clear:both;}
+.clearfix{zoom:1;}
+.clearit{clear:both;height:0;font-size:0;overflow:hidden;}
+
+a{color:#18479b;text-decoration:none;}
+a:visited{color:#800080;}
+a:hover, a:active, a:focus{color:#f00;text-decoration:underline;}
+
+a.linkRed:link,a.linkRed:visited{color:#f00!important;}/* 红色 */
+a.linkRed:hover{color:#c00!important;}
+a.linkRed01:link,a.linkRed01:visited{color:red!important}
+a.linkRed01:hover{color:red!important}
+
+/*自定义链接颜色*/
+.fred { color:#f00 !important}
+.fblack { color:#000 !important}
+.fblue { color:#33F !important}
+.forange { color:#F60 !important}
+.fred:visited, .fblack:visited, .fblue:visited, .forange:visited{color:#800080 !important}
+.fred:hover, .fblack:hover, .fblue:hover, .forange:hover{color:#f00 !important}
+
+/*自定义标题链接颜色*/
+.f_red, .f_red:visited, .f_red:hover { color:#f00 !important}
+.f_black, .f_black:visited, .f_black:hover { color:#000 !important}
+.f_blue, .f_blue:visited, .f_blue:hover { color:#18479B !important}
+.f_orange, .f_orange:visited, .f_orange:hover { color:#F60 !important}
+
+.space { height:10px; overflow:hidden; background:#fff; }
+.isLine { text-decoration:underline !important; }
+.f12 { font-size:12px !important}
+.f14 { font-size:14px !important}
+.f16 { font-size:16px !important}
+.lh23 { line-height:23px !important }
+.lh24 { line-height:24px !important }
+.lh30 { line-height:30px !important }
+.left{float:left}
+.right{float:right}
+.tal{text-align:left !important}
+.tar{text-align:right !important}
+.bold{ font-weight:bold;}
+.nobottom{border-bottom:none !important}
+.nobg{background:none !important}
+h1, h2, h3, h4, h5, strong { font-weight:normal; }
+.wrap { width:950px; margin:0 auto; }
+/* 导航 */
+.navTop {position: relative;}
+.navTop .more-list{position: absolute;right: -2px;bottom: -5px;height: 41px;width: 430px;background: url(//n.sinaimg.cn/finance/research/report/src/images/more-hover.png) no-repeat;background-size: 100% 100%; z-index: 99;display: flex;}
+.navTop .more-list a{color: #0f2e67;font-size: 14px;line-height: 20px;display: inline-block;height: 20px;margin: 12px 0 10px 10px;padding: 0 10px;}
+.navTop .more-list a:visited{color: #0f2e67;display: inline-block;}
+.navTop .more-list a:link{color: #0f2e67;}
+.navTop .more-list a:hover{color: #0f2e67;}
+.navTop .more-list .current a{color: #0f2e67;background-color: #a4daff;border: solid 1px #2aa6f1;}
+.navTop .nav01{background:url(/stock/view/images/finance_zxh_0406_01.png) repeat-x; border:solid 1px #0988d2; line-height:33px; height:33px;}
+.nav01 ul{height:25px; padding:4px 0}
+.nav01 li{float:left; font-size:14px; padding:0 14px; height:25px; line-height:25px;}
+.nav01 li.home{background:url(/stock/view/images/finance_zxh_0406_01.png) no-repeat 0 -37px; width:130px; text-indent:-999em;overflow:hidden}
+.nav01 li.current{ color:#fff79d; margin:0 14px; padding:0 9px; border:solid 1px #2aa6f1; background:url(/stock/view/images/finance_zxh_0406_01.png) no-repeat 0 -77px; height:23px;}
+.nav01 li.line{ border-left:solid 1px #0967bb; padding:0; margin-top:6px; border-right:solid 1px #9ad4f9; height:11px; width:0; overflow:hidden; font-size:0}
+.nav02{ border:solid 1px #d8d8d8; background:#f3f3f3; line-height:20px; padding:5px 0 5px 18px; height:20px; font-family:Tahoma; vertical-align:middle}
+.nav02 .radio{vertical-align: middle}
+.navTop a:link, .navTop a:visited { color:#fff; display:block;}
+.navTop a:hover { color:#fff;}
+/* ============== 横切定义 ============== */
+.main{margin-top:10px;}
+.main .ml{float:left; width:690px;}
+.main .mr{float:right; width:250px;}
+/* ================== block define ================== */
+.content{ padding:0 27px 30px;}
+.content h1{ line-height:48px; height:auto; font-size:20px; text-align:center; font-family:"黑体"}
+.creab{ text-align:center; background:url(/stock/view/images/finance_zxh_0406_02.png) repeat-x 0 100%; padding-bottom:12px;}
+.creab span{ padding:0 7px}
+.blk_container{}
+.blk_container p{ text-indent:2em; line-height:23px; font-size:14px; margin:10px 0}
+
+
+/* 板块单独定义 */
+.blk_01, .blk_01 form { vertical-align:middle}
+.blk_02 {border:solid 1px #dae2ec; padding:5px 5px 14px;}
+
+.blk_03{ margin-top:10px;}
+.blk_03 .bc{ padding:7px; border:solid 1px #d8dfe9; border-top:none}
+.blk a:visited{ color:#800080;}
+.blk a:hover{color:#c00;}
+/* ================= commen define ================ */
+/* 标题 */
+.tit_01 { padding-right:10px; border:solid 1px #d4dbe6; background:#f6f9fb; line-height:28px; height:28px; overflow:hidden; zoom:1}
+.tit_01 h2 { float:left; font-size:14px; background:url(/stock/view/images/finance_zxh_0406_03.png) no-repeat -247px -83px; padding-left:21px; line-height:30px; color:#18479b; font-weight:bold}
+.tit_01 h2 a:link, .tit_01 h2 a:visited { color:#039}
+.tit_01 h2 a:hover { color:#c00}
+.tit_01 .more { float:right;}
+.tit_01 .more a:link, .tit_01 .more a:visited{ color:#18479b}
+.tit_01 .more a:hover {color:#c00;}
+
+.tit_02 { padding-right:10px; line-height:30px; background:#09a9ec; height:30px; overflow:hidden; zoom:1}
+.tit_02 h2 { float:left; font-size:14px; background:url(/stock/view/images/finance_zxh_0406_03.png) no-repeat -247px 12px; padding-left:21px; line-height:30px; color:#fff;}
+.tit_02 h2 a:link, .tit_02 h2 a:visited { color:#fff}
+.tit_02 h2 a:hover { color:#fff}
+.tit_02 .more { float:right;}
+.tit_02 .more a:link, .tit_02 .more a:visited{ color:#fff}
+.tit_02 .more a:hover {color:#fff;}
+
+.pcont01{ border:solid 1px #bcd3ea;}
+.pcont02{ padding:5px}
+/* 标题 */
+.tb_01{}
+.tb_01 th{border-bottom:solid 1px #d4dce7; line-height:24px; height:24px; text-align:center;}
+.tb_01 td{ height:22px; line-height:22px; text-align:center; background:#fcfdfe; border-top:solid 1px #e3edf3;}
+.tb_01 td.tal{ padding-left:5px; text-align:left}
+.tb_01 .up{ color:#f00}
+.tb_01 .down{ color:#094}
+.tb_01 a:visited{color:#800080}
+.tb_01 a:hover{ color:#0677d6;}
+
+.tb_02{}
+.tb_02 th{ color:#848484; border-bottom:solid 1px #d0d0d0; line-height:30px; height:30px; background:url(/stock/view/images/finance_zxh_0406_03.png) no-repeat 100% -159px}
+.tb_02 td{line-height:24px; height:24px; text-align:center}
+.tb_02 tr.tr2 td{background:#f9fafa;}
+.tb_02 a:visited{color:#800080}
+.tb_02 a:hover{ color:#0677d6;}
+/* 列表 */
+ul.f14 li{font-size:14px;}
+ul.lh23 li{line-height:23px; height:23px;}
+ul.lh24 li{line-height:24px; height:24px;}
+ul.lh30 li{line-height:30px; height:30px;}
+
+.list_01 { padding:15px 0 0 8px;}
+.list_01 li { float:left; display:inline;margin-right:7px; width:112px; overflow:hidden}
+.list_01 li a{ display:inline-block; padding:0 7px 10px 26px; text-align:center; width:79px; height:30px; line-height:30px; background:url(/stock/view/images/finance_zxh_0406_03.png) no-repeat -999em 0;}
+
+.list_01 li.num01 a{ background-position:0 0}
+.list_01 li.num02 a{ background-position:-120px 0}
+.list_01 li.num03 a{ background-position:0 -40px}
+.list_01 li.num04 a{ background-position:-120px -40px}
+.list_01 li.num05 a{ background-position:0 -80px}
+.list_01 li.num06 a{ background-position:-120px -80px}
+.list_01 li.num07 a{ background-position:0 -120px}
+.list_01 li.num08 a{ background-position:-120px -120px}
+
+.list_01 li.num01 a:hover{ background-position:0 -200px}
+.list_01 li.num02 a:hover{ background-position:-120px -200px}
+.list_01 li.num03 a:hover{ background-position:0 -240px}
+.list_01 li.num04 a:hover{ background-position:-120px -240px}
+.list_01 li.num05 a:hover{ background-position:0 -280px}
+.list_01 li.num06 a:hover{ background-position:-120px -280px}
+.list_01 li.num07 a:hover{ background-position:0 -320px}
+.list_01 li.num08 a:hover{ background-position:-120px -320px}
+.list a:link{ color:#333;}
+.list_01 a:link { color:#4e4e4e}
+.list a:visited{color:800080;}
+.list a:hover{color:#f00;}
+ 
+ 
+ 
+ 
+ 
+ 
+.secondaryHeader{height:33px;overflow:hidden;background:url(http://i2.sinaimg.cn/dy/images/header/2008/standardl2nav_bg.gif) repeat-x #fff;color:#000;font-size:12px;font-weight:100;}
+.secondaryHeader a,.secondaryHeader a:visited{color:#000;text-decoration:none;}
+.secondaryHeader a:hover,.secondaryHeader a:active{color:#c00;text-decoration:underline;}
+.sHBorder{border:1px #e3e3e3 solid;padding:0 10px 0 12px;overflow:hidden;zoom:1;}
+.sHLogo{float:left;height:31px;line-height:31px;overflow:hidden;}
+.sHLogo span,.sHLogo span a,.sHLogo span a:link,.sHLogo span a:visited,.sHLogo span a:hover{display:block;*float:left;display:table-cell;vertical-align:middle;*display:block;*font-size:27px;*font-family:Arial;height:31px;}
+.sHLogo span,.sHLogo span a img,.sHLogo span a:link img,.sHLogo span a:visited img,.sHLogo span a:hover img{vertical-align:middle;}
+.sHLinks{float:right;line-height:31px;}
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 财经首页 | 新浪首页 | 新浪导航 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 研究报告
+ 
+ 最新滚动 
+ 
+ 主力动向 
+ 
+ 
+ 
+ 个股评级 
+ 
+ 
+ 公司研究 
+ 行业研究 
+ 投资策略 
+ 宏观研究 
+ 
+ 金麒麟研报 
+ 
+ 
+ 
+ 更多 
+ 
+ 
+ 
+ 
+ 晨报 
+ 创业板 
+ 基金 
+ 债券 
+ 金融工程 
+ 个股点评 
+ 
+ 
+jQuery('.nav01 .more').hover(function(){
+ jQuery('.more-list').show();
+},function(){
+ jQuery('.more-list').hide();
+})
+jQuery('.more-list').hover(function(){
+ jQuery('.more-list').show();
+},function(){
+ jQuery('.more-list').hide();
+})
+ 
+ 
+ (new SuggestServer()).bind({"input": "key", "value": "@3@", "type": "stock", "width": 180, "target":"_self","link": "/stock/go.php/vIR_StockSearch/key/@2@.phtml"}); 
+ jQuery.noConflict(); 
+ 
+ var _industry = '';
+ var _orgname = '';
+ var searchType = 'title';
+ function checkForm()
+ {
+ if(searchType == 'stock'){
+ var symbol = jQuery.trim(jQuery('#symbol').val());
+ if(symbol == '')
+ return false;
+ else{
+ var pattern = /^(sh|sz)?[0-9]{6}$/;
+ var rs = pattern.test(symbol);
+ if(rs == false){
+ alert('不正确的股票代码');
+ return false;
+ }
+ }
+ }else if(jQuery.trim(jQuery('#'+searchType).val()) == '')
+ return false;
+ return true;
+ }
+ function search(t)
+ {
+ searchType = t;
+ switch(t)
+ {
+ case 'stock':
+ jQuery('#symbol').show();
+					jQuery('#pubdate').hide();
+ jQuery('#searchInner').html('');
+ break;
+				case 'pubdate':
+					jQuery('#symbol').hide();
+					jQuery('#pubdate').show();
+ jQuery('#searchInner').html('');
+					break;
+ case 'analysts':
+ case 'title':
+ var c = ' ';
+ jQuery('#searchInner').html(c);
+ jQuery('#symbol').hide();
+					jQuery('#pubdate').hide();
+ break;
+ case 'orgname':
+ if(_orgname == '')
+ {
+ var _listWithoutID = ['reportOrgname'];
+ var _list;
+ for(var i = 0;i < _listWithoutID.length;i++)
+ {
+ _list = window[_listWithoutID[i]] || [];
+ _orgname = jQuery(' ');
+ for(var j = 0;j < _list.length;j++)
+ {
+ _orgname.append(jQuery(' ').html(_list[j].svalue));
+ }
+ }
+ }
+ jQuery('#searchInner').html(_orgname);
+ jQuery('#symbol').hide();
+					jQuery('#pubdate').hide();
+ break;
+ case 'industry':
+ if(_industry == '')
+ {
+ var _listWithoutID = ['reportIndustry'];
+ var _list;
+ for(var i = 0;i < _listWithoutID.length;i++)
+ {
+ _list = window[_listWithoutID[i]] || [];
+ _industry = jQuery(' ');
+ for(var j = 0;j < _list.length;j++)
+ {
+ _industry.append(jQuery(' ').html(_list[j].svalue));
+ }
+ }
+ }
+ jQuery('#searchInner').html(_industry);
+ jQuery('#symbol').hide();
+					jQuery('#pubdate').hide();
+ break;
+ default:
+ break;
+ }
+ }
+ jQuery(document).ready(function(){
+			jQuery('#pubdate').hide();
+ var t1 = '';
+ if(t1 != '' && t1 != 'all')
+ {
+ jQuery('#t1_'+t1).click();
+ if(t1 == '1'){
+ jQuery('#orgname').val('');
+ }else if(t1 == '2'){
+ jQuery('#symbol').val('');
+ }else if(t1 == '3'){
+ jQuery('#industry').val('');
+ }else if(t1 == '4'){
+ jQuery('#analysts').val('');
+ }else if(t1 == '5'){
+ jQuery('#title').val('');
+ }else if(t1 == '6'){
+ jQuery('#pubdate').val('');
+ }
+ }
+ else
+ {
+ jQuery('#t1_6').click();
+ }
+ })
+ 
+ 
+ 
+ 
+ 研报搜索： 
+ 研究机构
+ 公司股票
+ 行业分类
+ 分析师
+ 标题
+			 发布日期
+ 
+ 
+ 
+ 
+			 
+ 
+ 
+				(new SuggestServer()).bind({"input": "symbol", "value": "@3@", "type": "stock", "width": 180});
+				var calendar = new Calendar("pubdate", false, false, [155, 800, 0.95, "solid", "#EEE", "#FFF", 3, 3, 0.2, "#000", "#444", "#F6F8FD", "#333", "#F1F5FC", "#000", "#EFF3FB", false, false]);
+			 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 深科技(000021)首次覆盖报告：多业务协同发力 先进制造平台价值凸显 
+ 
+ 类别：公司 
+ 机构： 国泰海通证券股份有限公司 
+ 研究员： 杨林/吕浦源/钟明翰 
+ 日期：2026-06-21 
+ 
+ 
+ 　　本报告导读：
+
+ 
+　　电子制造产业向高端化、智能化与全球化布局加速演进，深科技三大主业协同发力，高端制造夯实收入底盘，存储封测与计量智能终端打开盈利弹性，看好公司先进制造平台的长期价值。
+
+ 
+　　投资要点：
+
+ 
+　　投资建议：首 次覆盖，给予“增持”评级，目标价 51.76 元。公司作为国内领先的电子制造平台型企业，主营业务覆盖高端制造、存储半导体、计量智能终端。我们预计公司2026-2028 年营收分别为181.10/208.26/249.91 亿元，归母净利润分别为14.04/16.73/20.56 亿元，EPS 分别为0.89/1.06/1.31 元。结合PE 和PS 估值，考虑公司存储封测业务回暖、计量智能终端毛利率较高及高端制造业务稳定性，给予公司2026 年4.5 倍PS，合理估值为814.93 亿元，对应目标价51.76 元。首次覆盖给予“增持”评级。
+
+ 
+　　高端制造提供收入基础，存储封测和计量终端改善利润结构。 公司深耕电子制造服务领域，业务覆盖高端制造、存储半导体和计量智能终端，兼具规模制造、存储芯片封测和智能计量产品能力。2025年公司营收同比增长6.21%，归母净利润同比增长22.07%，利润增速快于收入增速；其中高端制造收入占比54.20%，存储半导体收入同比增长16.16%，计量智能终端毛利率达39.26%，高毛利业务增长有望继续支撑利润率改善。
+
+ 
+　　存储半导体业务受益于行业需求回暖，封测能力持续完善。公司存储半导体业务主要覆盖DRAM、NAND Flash 及嵌入式存储芯片封装测试，深圳、合肥双基地持续提升产能和交付能力。随着AI 服务器、数据中心及高性能存储需求增长，存储芯片封测需求有望延续修复，公司先进封装技术研发、材料国产化验证及高性能产品导入将支撑该业务后续增长。
+
+ 
+　　高端制造业务稳健运行，计量智能终端项目推进提供盈利弹性。高端制造业务覆盖医疗健康、汽车电子、消费电子、智能家居、物联网、新能源等领域，依托全球化产能布局和柔性制造能力，为公司提供稳定收入来源。计量智能终端业务围绕智能电、水、气表及智慧能源管理方案展开，2025 年国内外市场均取得进展。我们预计2026-2028 年公司综合毛利率维持在20.00%左右，高于2025 年的18.32%，主要由存储封测修复和计量智能终端较高毛利率支撑。
+
+ 
+　　风险提示：业务拓展不及预期；研发进展不及预期。 
+ 
+ 
+ 
+ 
+ 文本中涉及股票 
+ 
+ -->
+ 
+ 
+ #stocks tbody th{text-align:right;padding-right:30px;font-weight:normal;}
+ 
+ 
+ 
+ 
+ 
+ 股票代码 
+ 股票名称 
+ 最新价（元） 
+ 涨跌额（元） 
+ 涨跌幅（%） 
+ 成交额（万元） 
+ 成交量（手） 
+ 
+ 
+ 
+ 
+ 000021 
+ @nn@ 
+ @n@ 
+ @c@ 
+ @cc@ 
+ @v@ 
+ @t@ 
+ 
+ 
+ 
+ -->
+ 
+ -->
+ 
+ 
+ 
+ 
+ 
+ 数据推荐 
+ 
+ 
+ 最新投资评级 
+ 	 目标涨幅排名 
+ 	 上调投资评级 
+ 	 下调投资评级 
+ 	 机构关注度 
+ 	 行业关注度 
+ 	 股票综合评级 
+ 	 首次评级股票 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+#footer{width:950px; text-align:center; line-height:21px; font-size:12px;margin-top:20px;color:#333;margin-left:auto;margin-right:auto;}
+#footer a:link{color:#000099}
+#footer a:visited{color:#800080}
+#footer a:hover{color:#ff0000;text-decoration:underline;}
+#footer a:active {color:#0100A3; text-decoration:none;}
+ 
+ 
+ 
+ 
+_S_pSt(_S_PID_); 
+ 
+ 
+
+ 
+客户服务热线：4001102288　　
+欢迎批评指正 
+
+ 常见问题解答 
+ 互联网违法和不良信息举报 　
+ 新浪财经意见反馈留言板 
+ 
+ 新浪简介 | About Sina | 广告服务 | 联系我们 | 招聘信息 | 网站律师 | SINA English | 通行证注册 | 产品答疑 新浪公司　 版权所有 
+ 
+
+ 
+ 
+ 

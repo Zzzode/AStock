@@ -1,0 +1,196 @@
+{
+  "case_id": "hengyi-petrochemical-000703-20260722",
+  "data_cutoff": "2026-07-22 CST",
+  "sources": [
+    {
+      "source_id": "HY-OFF-2025AR",
+      "title": "恒逸石化2025年年度报告",
+      "date": "2026-04-15",
+      "source_type": "official_filing",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/official-20260722/2025_annual_report.pdf | https://static.cninfo.com.cn/finalpage/2026-04-15/1225104872.PDF",
+      "claims_supported": ["2025 financials", "segment revenue and gross margin", "capacity", "debt", "guarantees", "Brunei ownership and operations"],
+      "limitations": "historical audited period; company descriptions of third-party industry data remain company-cited"
+    },
+    {
+      "source_id": "HY-OFF-2026Q1",
+      "title": "恒逸石化2026年第一季度报告",
+      "date": "2026-04-15",
+      "source_type": "official_filing",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/official-20260722/2026_q1_report.pdf | https://static.cninfo.com.cn/finalpage/2026-04-15/1225104881.PDF",
+      "claims_supported": ["2026Q1 revenue and profit", "cash flow", "balance sheet", "minority interests"],
+      "limitations": "quarterly report is unaudited and lacks project-level profit"
+    },
+    {
+      "source_id": "HY-OFF-2026H1P",
+      "title": "恒逸石化2026年半年度业绩预告",
+      "date": "2026-06-26",
+      "source_type": "official_filing",
+      "source_quality": "L1_primary_unaudited",
+      "path_or_url": "sources/official-20260722/2026_h1_earnings_forecast.pdf | https://static.cninfo.com.cn/finalpage/2026-06-26/1225387510.PDF",
+      "claims_supported": ["2026H1 parent and deducted profit range", "company-stated drivers", "restatement warning"],
+      "limitations": "forecast, unaudited, no segment profit split, prior-period comparison subject to same-control restatement"
+    },
+    {
+      "source_id": "HY-OFF-P2",
+      "title": "文莱二期项目进展公告",
+      "date": "2026-01-06",
+      "source_type": "official_filing",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/official-20260722/brunei_phase2_progress.pdf | https://static.cninfo.com.cn/finalpage/2026-01-06/1224919914.PDF",
+      "claims_supported": ["phase-2 capacity", "target schedule", "tax approval", "financing intent"],
+      "limitations": "intent letters and shareholder commitments do not prove full financial close"
+    },
+    {
+      "source_id": "HY-OFF-CB",
+      "title": "恒逸转2 2026Q2转股结果暨股本变动公告",
+      "date": "2026-07-02",
+      "source_type": "official_filing",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/official-20260722/2026_q2_convertible_bond_conversion.pdf | https://static.cninfo.com.cn/finalpage/2026-07-02/1225403169.PDF",
+      "claims_supported": ["legal shares", "remaining convertible principal", "conversion price"],
+      "limitations": "subsequent Q3 conversions are not yet disclosed"
+    },
+    {
+      "source_id": "HY-OFF-DIV",
+      "title": "2025年度权益分派实施公告",
+      "date": "2026-06-08",
+      "source_type": "official_filing",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/official-20260722/2025_dividend_implementation.pdf | https://static.cninfo.com.cn/finalpage/2026-06-08/1225355632.PDF",
+      "claims_supported": ["treasury shares excluded from distribution", "distribution share base"],
+      "limitations": "treasury-share balance can change after registration date"
+    },
+    {
+      "source_id": "HY-OFF-ESOP7",
+      "title": "恒逸石化第七期员工持股计划（修订稿）",
+      "date": "2026-06-13",
+      "source_type": "official_filing",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/official-20260722/2026_seventh_employee_share_plan.pdf | https://static.cninfo.com.cn/finalpage/2026-06-13/1225369014.PDF",
+      "claims_supported": ["approved treasury-share transfer maximum", "transfer price", "cash proceeds", "share-payment treatment"],
+      "limitations": "final subscription and transfer quantity are uncertain; share-payment expense not quantified"
+    },
+    {
+      "source_id": "HY-OFF-RATING",
+      "title": "恒逸转2 2026年跟踪评级报告",
+      "date": "2026-06-13",
+      "source_type": "official_archived_third_party_rating",
+      "source_quality": "L1_secondary_calculation",
+      "path_or_url": "sources/official-20260722/convertible_bond_2026_tracking_rating.pdf | https://static.cninfo.com.cn/finalpage/2026-06-13/1225369010.PDF",
+      "claims_supported": ["rigid debt", "short-term debt share", "project spending", "credit risks"],
+      "limitations": "rating-agency metrics are not audited financial-statement line items"
+    },
+    {
+      "source_id": "HY-MKT-QUOTE",
+      "title": "AStock realtime quote and market snapshot",
+      "date": "2026-07-22 13:51:54 CST",
+      "source_type": "market_data_packet",
+      "source_quality": "L1_realtime_packet",
+      "path_or_url": "sources/market-20260722/astock_market_snapshot_000703_20260722.json",
+      "claims_supported": ["current price", "intraday range", "volume", "turnover"],
+      "limitations": "intraday snapshot, not closing price; valuation ratios returned as zero were rejected"
+    },
+    {
+      "source_id": "HY-MKT-KLINE",
+      "title": "Sina adjusted daily history captured through AStock",
+      "date": "2026-07-21",
+      "source_type": "market_history",
+      "source_quality": "L2_delayed_complete_sessions",
+      "path_or_url": "sources/market-20260722/akshare_sina_qfq_daily_000703_20250722_20260722.json",
+      "claims_supported": ["one-year adjusted high and low", "five-day average volume"],
+      "limitations": "adjusted history; no same-day close and not an official exchange file"
+    },
+    {
+      "source_id": "HY-BRK-GUOXIN",
+      "title": "国信证券：文莱炼化项目盈利提升，公司上半年业绩大幅增长",
+      "date": "2026-07-04",
+      "source_type": "broker_original_pdf",
+      "source_quality": "original_pdf",
+      "path_or_url": "sources/broker-reports/2026-07-22/01-guoxin-20260704-brunei-refinery-profit.pdf",
+      "claims_supported": ["2026E-2028E forecasts", "target range", "FCFE and comparable valuation", "broker segment assumptions"],
+      "limitations": "broker assumptions are opinions; its EPS/share basis is recalculated in the house model"
+    },
+    {
+      "source_id": "IND-IEA-202607",
+      "title": "IEA Oil Market Report July 2026 evidence extract",
+      "date": "2026-07",
+      "source_type": "international_agency",
+      "source_quality": "L1_excerpt",
+      "path_or_url": "sources/industry-20260722/global-oil/iea_omr_july_2026_evidence.md | https://www.iea.org/reports/oil-market-report-july-2026",
+      "claims_supported": ["global oil demand", "refinery runs", "crack-spread environment"],
+      "limitations": "public excerpt, not full paid report; does not prove company margin"
+    },
+    {
+      "source_id": "IND-EIA-202607",
+      "title": "EIA Short-Term Energy Outlook July 2026",
+      "date": "2026-07",
+      "source_type": "international_agency",
+      "source_quality": "L1_primary_forecast",
+      "path_or_url": "sources/industry-20260722/global-oil/eia_steo_july_2026.pdf | https://www.eia.gov/outlooks/steo/",
+      "claims_supported": ["Brent scenario path"],
+      "limitations": "forecast, not realized price or company feedstock cost"
+    },
+    {
+      "source_id": "IND-NBS",
+      "title": "National Bureau of Statistics output and utilization releases",
+      "date": "2026-01 to 2026-06",
+      "source_type": "government_statistics",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/industry-20260722/china-cycle/",
+      "claims_supported": ["chemical-fiber output", "industry utilization", "terminal macro context"],
+      "limitations": "national value/volume aggregates, not Hengyi utilization"
+    },
+    {
+      "source_id": "IND-PTA-202606",
+      "title": "MOFCOM market forecast repost: June 2026 PTA and polyester indicators",
+      "date": "2026-06",
+      "source_type": "industry_repost",
+      "source_quality": "L2_L3_proxy",
+      "path_or_url": "sources/industry-20260722/polyester-chain/mofcom_pta_june_2026.html",
+      "claims_supported": ["PTA processing fee", "PTA and polyester utilization", "inventories"],
+      "limitations": "underlying information provider unnamed; industry proxy only, zero direct company-profit weight"
+    },
+    {
+      "source_id": "IND-CZCE",
+      "title": "CZCE PTA and polyester staple investor materials",
+      "date": "archived 2026-07-22",
+      "source_type": "exchange_education_material",
+      "source_quality": "L1_methodology",
+      "path_or_url": "sources/industry-20260722/polyester-chain/czce_pta_investor_material.pdf; sources/industry-20260722/polyester-chain/czce_polyester_staple_basics.pdf",
+      "claims_supported": ["industry material balance", "theoretical cost and spread relationships"],
+      "limitations": "theoretical formulas, not Hengyi actual consumption or cost"
+    },
+    {
+      "source_id": "IND-PEERS",
+      "title": "2025 annual reports of Rongsheng, Hengli, Eastern Shenghong, Tongkun and Xinfengming",
+      "date": "2026 filing season",
+      "source_type": "peer_official_filings",
+      "source_quality": "L1_primary",
+      "path_or_url": "sources/industry-20260722/peers/",
+      "claims_supported": ["peer capacity", "business-model comparison", "industry data cited by peers"],
+      "limitations": "capacity definitions differ; peer industry data retain cited-source limitations"
+    },
+    {
+      "source_id": "IND-BRUNEI",
+      "title": "Brunei government tax, monetary and phase-2 project pages",
+      "date": "archived 2026-07-22",
+      "source_type": "government_web",
+      "source_quality": "L1_primary_context",
+      "path_or_url": "sources/industry-20260722/brunei/",
+      "claims_supported": ["general corporate tax", "BND-SGD monetary framework", "phase-2 implementation context"],
+      "limitations": "company-specific tax holiday and financing still require company filing evidence"
+    },
+    {
+      "source_id": "IND-SSE-FREIGHT",
+      "title": "Shanghai Shipping Exchange freight benchmarks",
+      "date": "2026-07-17 to 2026-07-20",
+      "source_type": "exchange_market_data",
+      "source_quality": "L1_primary_benchmark",
+      "path_or_url": "sources/industry-20260722/policy-logistics/",
+      "claims_supported": ["external VLCC and container-freight context"],
+      "limitations": "not Hengyi's realized freight; crude tanker and container routes cannot be mixed"
+    }
+  ]
+}

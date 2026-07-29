@@ -1,0 +1,29 @@
+{
+  "cycle": "R0_evidence",
+  "status": "cycle_repairs_verified_overall_report_blocked",
+  "publishability_status": "BLOCKED",
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "repairs_by_owner_skill": [],
+  "verified_findings": [
+    "R0-S-001",
+    "R0-S-002",
+    "R0-A-001",
+    "R0-A-002",
+    "R0-A-003",
+    "R0-B-001"
+  ],
+  "closure_evidence": [
+    "12/12 modeled FY2025 official filings and share/corporate-action bases reconciled; 2026Q1 is monitoring-only.",
+    "002130 relationship row, company card and company-level reconciliation are complete.",
+    "Relation strength, valuation eligibility and action are separated in a de-duplicated 12-row authority.",
+    "Competitive-landscape source tiers and G10 broker-gap language are current.",
+    "broker_consensus_depth exists in both gate-manifest depth and checklist structures."
+  ],
+  "verification_required": [
+    "R0_evidence re-review completed with zero open S/A/B findings.",
+    "Run python3 tools/verify_research_workspace.py and require 39 PASS / 0 FAIL before sign-off.",
+    "Run the industry-chain gate and repo research-gate runner after all lifecycle artifacts exist."
+  ]
+}

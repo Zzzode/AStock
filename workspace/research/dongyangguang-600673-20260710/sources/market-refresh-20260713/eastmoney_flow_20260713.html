@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow-x:hidden;">
+    <head>
+        <meta http-equiv="content-type" content="text/html" charset="utf-8">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0,minimum-scale=1.0, user-scalable=no">
+        <title>资金流向</title>
+        <meta name="applicable-device" content="mobile">
+        <link rel="shortcut icon" type="image/x-icon" href="//g1.dfcfw.com/g1/special/favicon_shortcut.ico">
+    <link href=".././static/css/commons.css?45b59ee42d2963c29a74" rel="stylesheet"><script type="text/javascript" src="../static/script/vendor.js?45b59ee42d2963c29a74"></script><script type="text/javascript" src="../static/script/commons.js?45b59ee42d2963c29a74"></script><script type="text/javascript" src="../static/script/zjlx_stock.js?45b59ee42d2963c29a74"></script></head>
+    <body>
+        <script>
+            //让字体无法跟随微信的字体大小设置进行变化
+            (function () {
+                if (typeof WeixinJSBridge == "object" && typeof WeixinJSBridge.invoke == "function") {
+                    handleFontSize();
+                } else {
+                    if (document.addEventListener) {
+                        document.addEventListener("WeixinJSBridgeReady", handleFontSize, false);
+                    } else if (document.attachEvent) {
+                        document.attachEvent("WeixinJSBridgeReady", handleFontSize);
+                        document.attachEvent("onWeixinJSBridgeReady", handleFontSize);
+                    }
+                }
+    
+                function handleFontSize() {
+                    // 设置网页字体为默认大小
+                    WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+                    // 重写设置网页字体大小的事件
+                    WeixinJSBridge.on('menu:setfont', function () {
+                        WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize': 0 });
+                    });
+                }
+            })();
+        </script>
+
+    <ul class="common-header2">
+        <li class="back" onclick="goHistory()"></li>
+        <li class="title">
+            <a href="javascript:void(0);" id="pageTitleName" style="width: 70%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;">资金流向</a>
+        </li>
+        <li class="header-icon">
+            <a href="https://wap.eastmoney.com/Home/Menu">
+                <i class="sprite-ico icons-icon8"></i>
+            </a>
+        </li>
+        <li class="gotopc"><a href="javascript:void(0);"></a></li>
+    </ul>
+
+    <div id="mainContent">
+        <!-- 实时分布成交图 -->
+        <div class="m-title">
+            <i class="line"></i>
+            <span class="">实时分布成交图</span>
+            <span class="date" id="dataTimeNow"></span>
+            <span></span>
+        </div>
+        <div class="m-chart">
+            <div class="chart" id="zjlx_ssfbChart"></div>
+        </div>
+        <!-- /实时分布成交图-->
+        <!-- 今日主力增减仓趋势 -->
+        <div class="m-title">
+            <i class="line"></i>
+            <span class="">今日主力增减仓趋势</span>
+            <span></span>
+        </div>
+        <div class="m-chart chart">
+            <div id="zjlx_zlzjChart"></div>
+            <div class="description center">
+                <p>
+                    <i class="icon-square-block deepred-square-block"></i><span> 资金净流入</span>
+                    <i class="icon-square-block green-square-block"></i><span> 资金净流出  单位(万元)</span>
+                </p>
+            </div>
+        </div>
+        <!-- /今日主力增减仓趋势 -->
+        <!-- 最近主力增减仓趋势 -->
+        <div class="m-title">
+            <i class="line"></i>
+            <span class="">最近主力增减仓趋势</span>
+            <span></span>
+        </div>
+        <div class="m-table" id="zjlx_zjccShow">
+            <div class="wrap-table">
+                <table cellpadding="0" cellspacing="0" id="zjlx_jrzlzjTable">
+                    <thead>
+                        <tr class="table-tit">
+                            <td>名称 </td>
+                            <td>净流入(万元)</td>
+                            <td>净占比(%)</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span>3日主力<br>资金净流入</span></td>
+                            <td><span>--</span></td>
+                            <td><span>--</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>5日主力<br>资金净流入</span></td>
+                            <td><span>--</span></td>
+                            <td><span>--</span></td>
+                        </tr>
+                        <tr>
+                            <td><span>10日主力<br>资金净流入</span></td>
+                            <td><span>--</span></td>
+                            <td><span>--</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /最近主力增减仓趋势 -->
+        <!-- 资金流向历史数据一览 -->
+        <div class="m-title">
+            <i class="line"></i>
+            <span class="" id="zjlx_HistoryTitleName"></span>
+            <span></span>
+        </div>
+    
+        <!-- 个股历史数据 -->
+        <div class="m-table" id="zjlx_stockHistoryShow" style="display:none;">
+            <div class="wrap-table">
+                <table cellpadding="0" cellspacing="0" id="zjlx_stockTable">
+                    <thead>
+                        <tr class="table-tit">
+                            <td>日期 </td>
+                            <td>收盘价</td>
+                            <td>涨跌幅(%)</td>
+                            <td>净流向</td>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </div>
+        <!-- /个股历史数据 -->
+        <!-- 板块历史数据 -->
+        <div class="m-table" id="zjlx_bkHistoryShow" style="display:none;">
+            <div class="wrap-table">
+                <table cellpadding="0" cellspacing="0" id="zjlx_bkTable">
+                    <thead>
+                        <tr class="table-tit">
+                            <td>名称 </td>
+                            <td>最新</td>
+                            <td>涨跌幅</td>
+                            <td>净流入</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <!-- /板块历史数据 -->
+    
+        <!-- /资金流向历史数据一览 -->
+    </div>
+
+    <div>
+        <div class="disclaimer">
+            <p>声明：本信息来源于东方财富Choice数据，相关数据仅供参考，若数据有误，以交易所发布数据为准，不构成投资建议。</p>
+        </div>
+        <div class="common-footer">
+                    
+        </div>
+    </div>
+    </body>
+</html>

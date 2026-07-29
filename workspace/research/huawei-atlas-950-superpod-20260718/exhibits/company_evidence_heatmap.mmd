@@ -1,0 +1,22 @@
+flowchart LR
+    A["关系证据较强<br/>申菱环境：华为客户<br/>科大讯飞：昇腾950协同<br/>拓维信息：昇腾生态"]
+    B["广义能力较强<br/>华工/胜宏/英维克/科华<br/>但 Atlas 平台未确认"]
+    C["低纯度价值观察<br/>沃尔核材<br/>正空间来自原有业务"]
+    D["未确认或排除<br/>航天电器：平台未确认<br/>四川长虹：相关叙事被否认"]
+    E["估值信用闸门<br/>产品 + 平台 + 订单 + 经济性"]
+    F["Atlas 2026E 收入/净利/EPS<br/>统一为 0"]
+    A --> E
+    B --> E
+    C --> E
+    D --> E
+    E --> F
+    classDef strong fill:#d9ead3,stroke:#38761d,color:#1b3b13
+    classDef broad fill:#d9eaf7,stroke:#3d6d91,color:#15324a
+    classDef value fill:#fff2cc,stroke:#bf9000,color:#5b4500
+    classDef reject fill:#f4cccc,stroke:#a61c00,color:#5c1205
+    classDef gate fill:#e8e8e8,stroke:#595959,color:#202020
+    class A strong
+    class B broad
+    class C value
+    class D reject
+    class E,F gate

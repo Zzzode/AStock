@@ -1,0 +1,595 @@
+{
+  "schema_version": "astock.high_upside_evidence_closure.v1",
+  "data_cutoff": "2026-07-15",
+  "evidence_date": "2026-07-16",
+  "current_report_threshold": "2026-04-01",
+  "row_count": 6,
+  "closure_count": 6,
+  "current_positive_anchor_count": 0,
+  "formal_upgrade_count": 0,
+  "priority_retained_count": 3,
+  "candidate_only_count": 3,
+  "source_policy": {
+    "positive_weight": "current original broker PDF/API target field only",
+    "zero_weight": [
+      "historical original target",
+      "media repost",
+      "third-party aggregation",
+      "search snippet",
+      "user-generated content",
+      "failed probe"
+    ],
+    "future_event_boundary": "H2 earnings, cash flow, orders, prices and pool re-entry are future validation events, not completed evidence."
+  },
+  "rows": [
+    {
+      "ticker": "002432",
+      "company": "九安医疗",
+      "industry": "医药生物",
+      "current_price": 66.99,
+      "house_probability_target": 283.63,
+      "house_model_upside": 3.2339,
+      "q1_ocf_100mn": -0.9248,
+      "cash_flow_status": "negative_or_zero_observed",
+      "in_priority_pool": false,
+      "in_formal_pool": false,
+      "metadata_report_count": 2,
+      "archived_original_pdf_count": 2,
+      "archived_original_text_count": 2,
+      "latest_metadata_report_date": "2025-05-06",
+      "latest_metadata_report_is_current": false,
+      "current_report_count": 0,
+      "current_original_target_count": 0,
+      "api_target_record_count": 0,
+      "api_target_records": [],
+      "accepted_external_anchor": {
+        "status": "found",
+        "target_low": 70.28,
+        "target_high": 70.28,
+        "target_midpoint": 70.28,
+        "report_date": "2024-12-23",
+        "age_days_at_cutoff": 569,
+        "broker": "东吴证券",
+        "source_class": "historical_original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002432-九安医疗/2024-12-23-东吴证券-立足iHealth系列-展望O-O互联网医疗.pdf",
+        "extract": "FCFF估值测算得到公司市值344.47亿元，对应每股价值70.28元。",
+        "derivation": null,
+        "valuation_weight": 0.0,
+        "implied_upside_vs_current": 0.0491,
+        "target_to_house_probability_value": 0.2478
+      },
+      "current_target_proof": "原始API中没有2026-04-01后的研报，因此不存在可正权使用的当前目标价。",
+      "cross_checks": [
+        {
+          "source_class": "failed_public_probe",
+          "source_path": "sources/high-upside-evidence-20260716/public-probes/002432_ttchagu_probe.html",
+          "result": "页面可归档，但未出现可核验的53元目标价原文；不接受搜索摘要或聚合页推断。",
+          "valuation_weight": 0.0
+        }
+      ],
+      "closed_gaps": [
+        {
+          "gap": "original_broker_corpus",
+          "status": "closed",
+          "finding": "东方财富原始API完整返回2份；本地归档并复核2份PDF及对应文本。"
+        },
+        {
+          "gap": "current_external_target",
+          "status": "closed_by_counterevidence",
+          "finding": "找到2024-12-23的70.28元历史锚，但其相对当前价空间仅4.9%，仅相当于本机构概率值的24.8%；因陈旧或非当前原始证据，估值权重为0。原始API中没有2026-04-01后的研报，因此不存在可正权使用的当前目标价。"
+        },
+        {
+          "gap": "cash_conversion",
+          "status": "closed_as_observed_not_forecast",
+          "finding": "Q1经营现金流为-0.9248亿元，状态为negative_or_zero_observed；H2仅保留为未来事件验证，不冒充已满足。"
+        },
+        {
+          "gap": "pool_admission",
+          "status": "closed",
+          "finding": "保留候选观察，维持未进入优先池及非正式模型"
+        }
+      ],
+      "remaining_event_validation": [
+        "重新满足优先池的价格位置与行业阶段规则",
+        "H2扣非利润持续性与经营现金流转正",
+        "2026-04-01之后原始券商目标价或合理价值区间"
+      ],
+      "final_admission_code": "retain_candidate_not_priority_not_formal",
+      "final_admission_decision": "保留候选观察，维持未进入优先池及非正式模型",
+      "final_conclusion": "证据缺口已完成事实闭环，但未形成当前正权外部锚；保留候选观察，维持未进入优先池及非正式模型。内部323.4%高空间不得转换为正式目标价或配置结论。",
+      "direct_evidence_paths": [
+        "sources/high-upside-evidence-20260716/eastmoney-report-metadata/002432_report_list.json",
+        "refresh-20260715/sources/broker-reports-20260715/002432-九安医疗",
+        "refresh-20260715/sources/broker-reports-20260715/002432-九安医疗/2025-05-06-东吴证券-2024及2025Q1业绩点评-品牌渠道优势显著-慢病O-O有望打开第二增长曲线.pdf",
+        "refresh-20260715/sources/broker-reports-20260715/002432-九安医疗/2024-12-23-东吴证券-立足iHealth系列-展望O-O互联网医疗.pdf"
+      ],
+      "metadata_request_url": "https://reportapi.eastmoney.com/report/list?industryCode=%2A&pageSize=5000&industry=%2A&rating=%2A&ratingChange=%2A&beginTime=2000-01-01&endTime=2026-07-15&pageNo=1&fields=&qType=0&orgCode=&rcode=&p=1&pageNum=1&pageNumber=1&code=002432",
+      "metadata_retrieved_at": "2026-07-16"
+    },
+    {
+      "ticker": "000623",
+      "company": "吉林敖东",
+      "industry": "医药生物",
+      "current_price": 18.66,
+      "house_probability_target": 77.82,
+      "house_model_upside": 3.1704,
+      "q1_ocf_100mn": 0.107,
+      "cash_flow_status": "positive_observed",
+      "in_priority_pool": true,
+      "in_formal_pool": false,
+      "metadata_report_count": 2,
+      "archived_original_pdf_count": 2,
+      "archived_original_text_count": 2,
+      "latest_metadata_report_date": "2024-09-03",
+      "latest_metadata_report_is_current": false,
+      "current_report_count": 0,
+      "current_original_target_count": 0,
+      "api_target_record_count": 0,
+      "api_target_records": [],
+      "accepted_external_anchor": {
+        "status": "found",
+        "target_low": 18.02,
+        "target_high": 18.02,
+        "target_midpoint": 18.02,
+        "report_date": "2024-03-27",
+        "age_days_at_cutoff": 840,
+        "broker": "国元证券",
+        "source_class": "historical_original_pdf_derived_per_share",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/000623-吉林敖东/2024-03-27-国元证券-首次覆盖报告-医药主业持续发力-金融赋能-老牌药企迎来新发展.pdf",
+        "extract": "公司目标总市值223.7亿元；A股总股本1,241.07百万股。",
+        "derivation": "223.7亿元 / 12.4107亿股 = 18.02元/股",
+        "valuation_weight": 0.0,
+        "implied_upside_vs_current": -0.0343,
+        "target_to_house_probability_value": 0.2316
+      },
+      "current_target_proof": "原始API中没有2026-04-01后的研报，因此不存在可正权使用的当前目标价。",
+      "cross_checks": [],
+      "closed_gaps": [
+        {
+          "gap": "original_broker_corpus",
+          "status": "closed",
+          "finding": "东方财富原始API完整返回2份；本地归档并复核2份PDF及对应文本。"
+        },
+        {
+          "gap": "current_external_target",
+          "status": "closed_by_counterevidence",
+          "finding": "找到2024-03-27的18.02元历史锚，但其相对当前价空间仅-3.4%，仅相当于本机构概率值的23.2%；因陈旧或非当前原始证据，估值权重为0。原始API中没有2026-04-01后的研报，因此不存在可正权使用的当前目标价。"
+        },
+        {
+          "gap": "cash_conversion",
+          "status": "closed_as_observed_not_forecast",
+          "finding": "Q1经营现金流为0.1070亿元，状态为positive_observed；H2仅保留为未来事件验证，不冒充已满足。"
+        },
+        {
+          "gap": "pool_admission",
+          "status": "closed",
+          "finding": "保留优先池验证，维持非正式模型"
+        }
+      ],
+      "remaining_event_validation": [
+        "2026-04-01之后原始券商目标价或合理价值区间",
+        "H2扣非利润持续性与投资收益质量",
+        "经营现金流持续为正"
+      ],
+      "final_admission_code": "retain_priority_not_formal",
+      "final_admission_decision": "保留优先池验证，维持非正式模型",
+      "final_conclusion": "证据缺口已完成事实闭环，但未形成当前正权外部锚；保留优先池验证，维持非正式模型。内部317.0%高空间不得转换为正式目标价或配置结论。",
+      "direct_evidence_paths": [
+        "sources/high-upside-evidence-20260716/eastmoney-report-metadata/000623_report_list.json",
+        "refresh-20260715/sources/broker-reports-20260715/000623-吉林敖东",
+        "refresh-20260715/sources/broker-reports-20260715/000623-吉林敖东/2024-09-03-国元证券-2024半年报点评-业绩增长符合预期-年中分红保障股东回报.pdf",
+        "refresh-20260715/sources/broker-reports-20260715/000623-吉林敖东/2024-03-27-国元证券-首次覆盖报告-医药主业持续发力-金融赋能-老牌药企迎来新发展.pdf"
+      ],
+      "metadata_request_url": "https://reportapi.eastmoney.com/report/list?industryCode=%2A&pageSize=5000&industry=%2A&rating=%2A&ratingChange=%2A&beginTime=2000-01-01&endTime=2026-07-15&pageNo=1&fields=&qType=0&orgCode=&rcode=&p=1&pageNum=1&pageNumber=1&code=000623",
+      "metadata_retrieved_at": "2026-07-16"
+    },
+    {
+      "ticker": "600739",
+      "company": "辽宁成大",
+      "industry": "医药生物",
+      "current_price": 10.95,
+      "house_probability_target": 43.8,
+      "house_model_upside": 3.0,
+      "q1_ocf_100mn": -1.7588,
+      "cash_flow_status": "negative_or_zero_observed",
+      "in_priority_pool": true,
+      "in_formal_pool": false,
+      "metadata_report_count": 4,
+      "archived_original_pdf_count": 4,
+      "archived_original_text_count": 4,
+      "latest_metadata_report_date": "2017-10-30",
+      "latest_metadata_report_is_current": false,
+      "current_report_count": 0,
+      "current_original_target_count": 0,
+      "api_target_record_count": 4,
+      "api_target_records": [
+        {
+          "report_date": "2017-10-30",
+          "broker": "太平洋",
+          "title": "辽宁成大2017年三季报点评：单季业绩暴增，投资收益稳定",
+          "target_low": 22.79,
+          "target_high": 22.79,
+          "target_midpoint": 22.79,
+          "info_code": "AP201710300990343248"
+        },
+        {
+          "report_date": "2017-08-28",
+          "broker": "太平洋",
+          "title": "辽宁成大2017年半年报点评：大宗商贸景气度向上，投资收益显著增长",
+          "target_low": 22.79,
+          "target_high": 22.79,
+          "target_midpoint": 22.79,
+          "info_code": "AP201708280833947375"
+        },
+        {
+          "report_date": "2017-06-21",
+          "broker": "太平洋",
+          "title": "长期低估，股权结构变动催化价值复苏",
+          "target_low": 22.79,
+          "target_high": 22.79,
+          "target_midpoint": 22.79,
+          "info_code": "AP201706210660371635"
+        },
+        {
+          "report_date": "2017-05-18",
+          "broker": "太平洋",
+          "title": "减亏成效显著，金融加持再度出发",
+          "target_low": 22.79,
+          "target_high": 22.79,
+          "target_midpoint": 22.79,
+          "info_code": "AP201705180589068796"
+        }
+      ],
+      "accepted_external_anchor": {
+        "status": "found",
+        "target_low": 22.79,
+        "target_high": 22.79,
+        "target_midpoint": 22.79,
+        "report_date": "2017-10-30",
+        "age_days_at_cutoff": 3180,
+        "broker": "太平洋证券",
+        "source_class": "stale_original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600739-辽宁成大/2017-10-30-太平洋-辽宁成大2017年三季报点评-单季业绩暴增-投资收益稳定.pdf",
+        "extract": "目标价22.79元。",
+        "derivation": null,
+        "valuation_weight": 0.0,
+        "implied_upside_vs_current": 1.0813,
+        "target_to_house_probability_value": 0.5203
+      },
+      "current_target_proof": "原始API中没有2026-04-01后的研报，因此不存在可正权使用的当前目标价。",
+      "cross_checks": [],
+      "closed_gaps": [
+        {
+          "gap": "original_broker_corpus",
+          "status": "closed",
+          "finding": "东方财富原始API完整返回4份；本地归档并复核4份PDF及对应文本。"
+        },
+        {
+          "gap": "current_external_target",
+          "status": "closed_by_counterevidence",
+          "finding": "找到2017-10-30的22.79元历史锚，但其相对当前价空间仅108.1%，仅相当于本机构概率值的52.0%；因陈旧或非当前原始证据，估值权重为0。原始API中没有2026-04-01后的研报，因此不存在可正权使用的当前目标价。"
+        },
+        {
+          "gap": "cash_conversion",
+          "status": "closed_as_observed_not_forecast",
+          "finding": "Q1经营现金流为-1.7588亿元，状态为negative_or_zero_observed；H2仅保留为未来事件验证，不冒充已满足。"
+        },
+        {
+          "gap": "pool_admission",
+          "status": "closed",
+          "finding": "保留优先池验证，维持非正式模型"
+        }
+      ],
+      "remaining_event_validation": [
+        "2026-04-01之后原始券商目标价或合理价值区间",
+        "H2扣非利润持续性与广发证券投资收益质量",
+        "经营现金流转正"
+      ],
+      "final_admission_code": "retain_priority_not_formal",
+      "final_admission_decision": "保留优先池验证，维持非正式模型",
+      "final_conclusion": "证据缺口已完成事实闭环，但未形成当前正权外部锚；保留优先池验证，维持非正式模型。内部300.0%高空间不得转换为正式目标价或配置结论。",
+      "direct_evidence_paths": [
+        "sources/high-upside-evidence-20260716/eastmoney-report-metadata/600739_report_list.json",
+        "refresh-20260715/sources/broker-reports-20260715/600739-辽宁成大",
+        "refresh-20260715/sources/broker-reports-20260715/600739-辽宁成大/2017-10-30-太平洋-辽宁成大2017年三季报点评-单季业绩暴增-投资收益稳定.pdf"
+      ],
+      "metadata_request_url": "https://reportapi.eastmoney.com/report/list?industryCode=%2A&pageSize=5000&industry=%2A&rating=%2A&ratingChange=%2A&beginTime=2000-01-01&endTime=2026-07-15&pageNo=1&fields=&qType=0&orgCode=&rcode=&p=1&pageNum=1&pageNumber=1&code=600739",
+      "metadata_retrieved_at": "2026-07-16"
+    },
+    {
+      "ticker": "000685",
+      "company": "中山公用",
+      "industry": "环保",
+      "current_price": 11.19,
+      "house_probability_target": 29.41,
+      "house_model_upside": 1.6282,
+      "q1_ocf_100mn": -0.2693,
+      "cash_flow_status": "negative_or_zero_observed",
+      "in_priority_pool": false,
+      "in_formal_pool": false,
+      "metadata_report_count": 6,
+      "archived_original_pdf_count": 6,
+      "archived_original_text_count": 6,
+      "latest_metadata_report_date": "2026-05-11",
+      "latest_metadata_report_is_current": true,
+      "current_report_count": 1,
+      "current_original_target_count": 0,
+      "api_target_record_count": 1,
+      "api_target_records": [
+        {
+          "report_date": "2025-03-04",
+          "broker": "国信证券",
+          "title": "攻守兼备的珠三角公用事业平台，长期破净估值有望修复",
+          "target_low": 10.5,
+          "target_high": 11.11,
+          "target_midpoint": 10.805,
+          "info_code": "AP202503041644026075"
+        }
+      ],
+      "accepted_external_anchor": {
+        "status": "found",
+        "target_low": 10.5,
+        "target_high": 11.11,
+        "target_midpoint": 10.805,
+        "report_date": "2025-03-04",
+        "age_days_at_cutoff": 498,
+        "broker": "国信证券",
+        "source_class": "historical_original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/000685-中山公用/2025-03-04-国信证券-攻守兼备的珠三角公用事业平台-长期破净估值有望修复.pdf",
+        "extract": "合理估值10.50-11.11元。",
+        "derivation": null,
+        "valuation_weight": 0.0,
+        "implied_upside_vs_current": -0.0344,
+        "target_to_house_probability_value": 0.3674
+      },
+      "current_target_proof": "截止2026-07-15，原始API中1份2026-04-01后研报均未披露目标价字段。",
+      "cross_checks": [],
+      "closed_gaps": [
+        {
+          "gap": "original_broker_corpus",
+          "status": "closed",
+          "finding": "东方财富原始API完整返回6份；本地归档并复核6份PDF及对应文本。"
+        },
+        {
+          "gap": "current_external_target",
+          "status": "closed_by_counterevidence",
+          "finding": "找到2025-03-04的10.80元历史锚，但其相对当前价空间仅-3.4%，仅相当于本机构概率值的36.7%；因陈旧或非当前原始证据，估值权重为0。截止2026-07-15，原始API中1份2026-04-01后研报均未披露目标价字段。"
+        },
+        {
+          "gap": "cash_conversion",
+          "status": "closed_as_observed_not_forecast",
+          "finding": "Q1经营现金流为-0.2693亿元，状态为negative_or_zero_observed；H2仅保留为未来事件验证，不冒充已满足。"
+        },
+        {
+          "gap": "pool_admission",
+          "status": "closed",
+          "finding": "保留候选观察，维持未进入优先池及非正式模型"
+        }
+      ],
+      "remaining_event_validation": [
+        "重新满足优先池的价格位置与行业阶段规则",
+        "H2扣非利润与投资收益可持续性",
+        "经营现金流转正",
+        "当前原始券商目标价或合理价值区间"
+      ],
+      "final_admission_code": "retain_candidate_not_priority_not_formal",
+      "final_admission_decision": "保留候选观察，维持未进入优先池及非正式模型",
+      "final_conclusion": "证据缺口已完成事实闭环，但未形成当前正权外部锚；保留候选观察，维持未进入优先池及非正式模型。内部162.8%高空间不得转换为正式目标价或配置结论。",
+      "direct_evidence_paths": [
+        "sources/high-upside-evidence-20260716/eastmoney-report-metadata/000685_report_list.json",
+        "refresh-20260715/sources/broker-reports-20260715/000685-中山公用",
+        "refresh-20260715/sources/broker-reports-20260715/000685-中山公用/2026-05-11-国信证券-投资收益带动业绩高增-公用事业-资本-科技-三大板块引领未来发展.pdf",
+        "refresh-20260715/sources/broker-reports-20260715/000685-中山公用/2025-03-04-国信证券-攻守兼备的珠三角公用事业平台-长期破净估值有望修复.pdf"
+      ],
+      "metadata_request_url": "https://reportapi.eastmoney.com/report/list?industryCode=%2A&pageSize=5000&industry=%2A&rating=%2A&ratingChange=%2A&beginTime=2000-01-01&endTime=2026-07-15&pageNo=1&fields=&qType=0&orgCode=&rcode=&p=1&pageNum=1&pageNumber=1&code=000685",
+      "metadata_retrieved_at": "2026-07-16"
+    },
+    {
+      "ticker": "600150",
+      "company": "中国船舶",
+      "industry": "国防军工",
+      "current_price": 34.31,
+      "house_probability_target": 83.33,
+      "house_model_upside": 1.4287,
+      "q1_ocf_100mn": 81.5153,
+      "cash_flow_status": "positive_observed",
+      "in_priority_pool": true,
+      "in_formal_pool": false,
+      "metadata_report_count": 56,
+      "archived_original_pdf_count": 8,
+      "archived_original_text_count": 8,
+      "latest_metadata_report_date": "2026-07-14",
+      "latest_metadata_report_is_current": true,
+      "current_report_count": 5,
+      "current_original_target_count": 0,
+      "api_target_record_count": 4,
+      "api_target_records": [
+        {
+          "report_date": "2023-03-27",
+          "broker": "国金证券",
+          "title": "新造船周期启动，中国船舶引领全球",
+          "target_low": 31.36,
+          "target_high": 31.36,
+          "target_midpoint": 31.36,
+          "info_code": "AP202303271584565241"
+        },
+        {
+          "report_date": "2022-09-04",
+          "broker": "中航证券",
+          "title": "中报点评：受疫情影响上半年营收放缓，中长期看高船价、低船钢价有望共同驱动公司利润释放",
+          "target_low": 30.0,
+          "target_high": 30.0,
+          "target_midpoint": 30.0,
+          "info_code": "AP202209041578021752"
+        },
+        {
+          "report_date": "2020-04-22",
+          "broker": "中航证券",
+          "title": "2019年报点评：经营业绩稳中有升，优质资产注入未来可期",
+          "target_low": 25.2,
+          "target_high": 25.2,
+          "target_midpoint": 25.2,
+          "info_code": "AP202004221378379742"
+        },
+        {
+          "report_date": "2019-08-23",
+          "broker": "中航证券",
+          "title": "公司2019半年报点评：各业务订单稳中向好，优化资源配置成效可期",
+          "target_low": 25.3,
+          "target_high": 25.3,
+          "target_midpoint": 25.3,
+          "info_code": "AP201909291367858643"
+        }
+      ],
+      "accepted_external_anchor": {
+        "status": "found",
+        "target_low": 31.36,
+        "target_high": 31.36,
+        "target_midpoint": 31.36,
+        "report_date": "2023-03-27",
+        "age_days_at_cutoff": 1206,
+        "broker": "国金证券",
+        "source_class": "stale_original_api_metadata",
+        "source_path": "sources/high-upside-evidence-20260716/eastmoney-report-metadata/600150_report_list.json",
+        "extract": "indvAimPriceL=31.36; indvAimPriceT=31.36",
+        "derivation": null,
+        "valuation_weight": 0.0,
+        "implied_upside_vs_current": -0.086,
+        "target_to_house_probability_value": 0.3763
+      },
+      "current_target_proof": "截止2026-07-15，原始API中5份2026-04-01后研报均未披露目标价字段。",
+      "cross_checks": [
+        {
+          "source_class": "media_repost",
+          "source_path": "sources/high-upside-evidence-20260716/public-probes/600150_sina_vreport_837356572572.html",
+          "report_date": "2026-07-14",
+          "broker": "中金公司",
+          "target_price": 50.0,
+          "result": "新浪转载文本明确写出50.00元目标价，但不是原始研报PDF，估值权重为0。",
+          "valuation_weight": 0.0
+        }
+      ],
+      "closed_gaps": [
+        {
+          "gap": "original_broker_corpus",
+          "status": "closed",
+          "finding": "东方财富原始API完整返回56份；本地归档并复核8份PDF及对应文本。"
+        },
+        {
+          "gap": "current_external_target",
+          "status": "closed_by_counterevidence",
+          "finding": "找到2023-03-27的31.36元历史锚，但其相对当前价空间仅-8.6%，仅相当于本机构概率值的37.6%；因陈旧或非当前原始证据，估值权重为0。截止2026-07-15，原始API中5份2026-04-01后研报均未披露目标价字段。"
+        },
+        {
+          "gap": "cash_conversion",
+          "status": "closed_as_observed_not_forecast",
+          "finding": "Q1经营现金流为81.5153亿元，状态为positive_observed；H2仅保留为未来事件验证，不冒充已满足。"
+        },
+        {
+          "gap": "pool_admission",
+          "status": "closed",
+          "finding": "保留优先池验证，维持非正式模型"
+        }
+      ],
+      "remaining_event_validation": [
+        "当前原始券商目标价或合理价值区间",
+        "H2订单交付、船价、利润率与应收回款",
+        "集团整合后的持续盈利与现金流"
+      ],
+      "final_admission_code": "retain_priority_not_formal",
+      "final_admission_decision": "保留优先池验证，维持非正式模型",
+      "final_conclusion": "证据缺口已完成事实闭环，但未形成当前正权外部锚；保留优先池验证，维持非正式模型。内部142.9%高空间不得转换为正式目标价或配置结论。",
+      "direct_evidence_paths": [
+        "sources/high-upside-evidence-20260716/eastmoney-report-metadata/600150_report_list.json",
+        "refresh-20260715/sources/broker-reports-20260715/600150-中国船舶",
+        "refresh-20260715/sources/broker-reports-20260715/600150-中国船舶/2026-07-14-华源证券-26H1预告点评-Q2业绩预计同比大增-关注后续船价与集团整合.pdf"
+      ],
+      "metadata_request_url": "https://reportapi.eastmoney.com/report/list?industryCode=%2A&pageSize=5000&industry=%2A&rating=%2A&ratingChange=%2A&beginTime=2000-01-01&endTime=2026-07-15&pageNo=1&fields=&qType=0&orgCode=&rcode=&p=1&pageNum=1&pageNumber=1&code=600150",
+      "metadata_retrieved_at": "2026-07-16"
+    },
+    {
+      "ticker": "301308",
+      "company": "江波龙",
+      "industry": "电子",
+      "current_price": 488.0,
+      "house_probability_target": 1069.45,
+      "house_model_upside": 1.1915,
+      "q1_ocf_100mn": -28.7454,
+      "cash_flow_status": "negative_or_zero_observed",
+      "in_priority_pool": false,
+      "in_formal_pool": false,
+      "metadata_report_count": 12,
+      "archived_original_pdf_count": 8,
+      "archived_original_text_count": 8,
+      "latest_metadata_report_date": "2026-05-07",
+      "latest_metadata_report_is_current": true,
+      "current_report_count": 2,
+      "current_original_target_count": 0,
+      "api_target_record_count": 0,
+      "api_target_records": [],
+      "accepted_external_anchor": {
+        "status": "not_disclosed",
+        "target_low": null,
+        "target_high": null,
+        "target_midpoint": null,
+        "report_date": null,
+        "age_days_at_cutoff": null,
+        "broker": null,
+        "source_class": "not_found_in_original_corpus",
+        "source_path": null,
+        "extract": null,
+        "derivation": null,
+        "valuation_weight": 0.0,
+        "implied_upside_vs_current": null,
+        "target_to_house_probability_value": null
+      },
+      "current_target_proof": "截止2026-07-15，原始API中2份2026-04-01后研报均未披露目标价字段。",
+      "cross_checks": [
+        {
+          "source_class": "failed_third_party_probe",
+          "source_path": "sources/high-upside-evidence-20260716/public-probes/301308_stockstar_probe.html",
+          "result": "归档页面未出现454.51元目标均价文本，不能作为可审计共识或目标价。",
+          "valuation_weight": 0.0
+        }
+      ],
+      "closed_gaps": [
+        {
+          "gap": "original_broker_corpus",
+          "status": "closed",
+          "finding": "东方财富原始API完整返回12份；本地归档并复核8份PDF及对应文本。"
+        },
+        {
+          "gap": "current_external_target",
+          "status": "closed_by_exhaustion",
+          "finding": "东方财富原始API共12份研报的目标价字段均为空；本地复核8份原始PDF，未获得可接受目标价。截止2026-07-15，原始API中2份2026-04-01后研报均未披露目标价字段。"
+        },
+        {
+          "gap": "cash_conversion",
+          "status": "closed_as_observed_not_forecast",
+          "finding": "Q1经营现金流为-28.7454亿元，状态为negative_or_zero_observed；H2仅保留为未来事件验证，不冒充已满足。"
+        },
+        {
+          "gap": "pool_admission",
+          "status": "closed",
+          "finding": "保留候选观察，维持未进入优先池及非正式模型"
+        }
+      ],
+      "remaining_event_validation": [
+        "重新满足优先池的价格位置与行业阶段规则",
+        "当前原始券商目标价或合理价值区间",
+        "H2存储价格、出货、毛利率与库存周期",
+        "经营现金流显著改善"
+      ],
+      "final_admission_code": "retain_candidate_not_priority_not_formal",
+      "final_admission_decision": "保留候选观察，维持未进入优先池及非正式模型",
+      "final_conclusion": "证据缺口已完成事实闭环，但未形成当前正权外部锚；保留候选观察，维持未进入优先池及非正式模型。内部119.2%高空间不得转换为正式目标价或配置结论。",
+      "direct_evidence_paths": [
+        "sources/high-upside-evidence-20260716/eastmoney-report-metadata/301308_report_list.json",
+        "refresh-20260715/sources/broker-reports-20260715/301308-江波龙",
+        "refresh-20260715/sources/broker-reports-20260715/301308-江波龙/2026-05-07-国信证券-1Q26归母净利润同比增长2644.05-端侧应用多维拓展.pdf"
+      ],
+      "metadata_request_url": "https://reportapi.eastmoney.com/report/list?industryCode=%2A&pageSize=5000&industry=%2A&rating=%2A&ratingChange=%2A&beginTime=2000-01-01&endTime=2026-07-15&pageNo=1&fields=&qType=0&orgCode=&rcode=&p=1&pageNum=1&pageNumber=1&code=301308",
+      "metadata_retrieved_at": "2026-07-16"
+    }
+  ]
+}

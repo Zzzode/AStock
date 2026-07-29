@@ -1,0 +1,16 @@
+# Source Registry
+
+| ID | Type | Date | Quality | Path | Use | Boundary |
+|---|---|---|---|---|---|---|
+| S01 | local_capability_quote | 2026-07-13 11:33 CST | full_realtime | sources/market-refresh-20260713/quote_packet_20260713.json | current price, amount, intraday range and price date | daily-history adapters failed; no fabricated rolling indicators |
+| S02 | local_capability_financials | through 2026Q1 | full | sources/market-refresh-20260713/financial_packet_20260713.json | 2025 and 2026Q1 revenue, profit, cash flow and leverage | no company H1 guidance was published by the 2026-07-13 cutoff |
+| S03 | official_transaction_report | 2026-06-16 | official_pdf | sources/official-refresh-20260713/2026-06-16-重组报告书草案.pdf | Qinhuai financials, CNY29.063bn appraisal, CNY11.5bn Dongshu transaction equity, debt, customer concentration, capacity and risks | transaction still requires SSE review and CSRC registration |
+| S04 | official_shareholder_resolution | 2026-07-11 | official_pdf | sources/official-refresh-20260713/2026-07-11-第一次临时股东会决议.pdf | shareholder approval of purchase and placement plan | shareholder approval is not regulatory registration or closing |
+| S05 | official_dilution_statement | 2026-06-16 | official_pdf | sources/official-refresh-20260713/2026-06-16-摊薄即期回报说明.pdf | pro-forma revenue, profit, EPS and transaction dilution | placement shares are excluded from the official pro-forma table |
+| S06 | official_compute_contract | 2026-05-06 | official_pdf | sources/official-refresh-20260713/2026-05-06-A公司算力服务框架合同.pdf | A-contract CNY16-19bn, 60 months, monthly billing after acceptance | recognized revenue, hardware cost and margin are not quantified |
+| S07 | official_compute_contract | 2026-06-02 | official_pdf | sources/official-refresh-20260713/2026-06-02-B公司算力服务采购合同.pdf | B-contract CNY10-12bn and 10% prepayment structure | recognized revenue, financing cost and margin are not quantified |
+| S08 | official_compute_contract | 2026-07-11 | official_pdf | sources/official-refresh-20260713/2026-07-11-算力服务采购合同公告.pdf | C-contract CNY13-15bn and confirmation that prior contracts were delivered, accepted and recognized as revenue | C-contract still needs delivery, inspection and acceptance |
+| S09 | original_broker_pdf | 2026-04-10 | original_pdf | sources/broker-refresh-20260713/2026-04-10-国金证券-传统利润快速提升-AI智算共启新篇.pdf | latest legacy-business forecast: CNY18.762bn revenue / CNY1.947bn NP / EPS CNY0.647 | forecast excludes Qinhuai consolidation and predates three contracts |
+| S10 | original_broker_pdf | 2026-03-15 | original_pdf | sources/broker-refresh-20260713/2026-03-15-国金证券-全链AI算力领军平台扬帆.pdf | CNY50.90 original target and segment forecast cross-check | forecast excludes Qinhuai consolidation and predates contracts |
+| S11 | official_policy_archive | 2026 | official_archive | ../tungsten-wf6-fluorochem-20260628/sources/official-policy-hfc-quota-2026/mee-2026-hfc-quota-attachment2.txt | HFC quota evidence for the legacy earnings anchor | realized ASP, volume and product gross margin still require filings |
+| S12 | public_market_snapshot | 2026-07-13 | auditable_public_snapshot | sources/market-refresh-20260713/cfi_quote_20260713.html | quote cross-check and public valuation/crowding snapshot | intraday snapshot, not a full historical terminal export |

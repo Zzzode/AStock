@@ -1,0 +1,50 @@
+{
+  "cycle": "R2_draft",
+  "status": "BLOCKED",
+  "open_s_count": 1,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "baseline_verifier": "37 PASS / 2 FAIL",
+  "repair_groups": [
+    {
+      "owner_skill": "valuation",
+      "owner_agents": [
+        "growth-earnings-modeler",
+        "valuation-specialist",
+        "valuation-modeler",
+        "valuation-auditor"
+      ],
+      "issues": [
+        "R2-S-002"
+      ],
+      "required_artifacts": [
+        "analysis/growth_earnings_model.md",
+        "analysis/segment_forecast_bridge.md",
+        "data/growth_driver_model.json",
+        "analysis/valuation_method_matrix.md",
+        "data/valuation_method_matrix_20260718.json",
+        "data/current_valuation_model_20260718.json",
+        "sections/ch01_dashboard.tex",
+        "sections/ch07_valuation.tex",
+        "sections/generated_valuation_matrix.tex",
+        "sections/generated_market_sentiment_bridge.tex",
+        "main.pdf"
+      ],
+      "acceptance": "For every high-growth premium, prove segment purity and a segment-level gross-profit-to-net-profit bridge or remove the unsupported premium. Replace the reverse-engineered P/S bands with an independently auditable secondary anchor derived from disclosed comparables, company history or business economics; recalculate rather than preserve the old target prices, then refresh all reader-facing valuation tables and the PDF."
+    }
+  ],
+  "verified_findings": [
+    "R2-S-001",
+    "R2-S-003",
+    "R2-S-004",
+    "R2-A-001",
+    "R2-A-002",
+    "R2-A-003"
+  ],
+  "final_acceptance": [
+    "R1-S-003 and R1-S-004 are closed at the underlying model before reader-facing regeneration.",
+    "Independent R2 textual and visual review closes R2-S-002 without reopening any verified finding.",
+    "The rebuilt PDF and audit dependencies are refreshed according to workspace conventions.",
+    "Case verifier reaches 39 PASS / 0 FAIL and all industry/repo gates pass before R4 sign-off."
+  ]
+}

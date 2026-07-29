@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "ticker": "600150.SH",
+  "company": "中国船舶",
+  "data_cutoff": "2026-07-22",
+  "currency_unit": "CNY100m",
+  "applies": true,
+  "gate_status": "CONDITIONAL",
+  "model_reproducibility": "PASS",
+  "growth_driver": "effective delivery DWT x 2025 revenue-intensity proxy x price/mix index x recognized revenue ratio",
+  "growth_driver_type": [
+    "order_related",
+    "shipment_related",
+    "price_mix_related",
+    "segment_mix_related"
+  ],
+  "base_business_revenue_2025A": 206.9926,
+  "growth_segment_revenue_2025A": 1312.7873,
+  "base_business_revenue": 206.9926,
+  "growth_segment_revenue": 1312.7873,
+  "value_amount_or_proxy": {
+    "description": "2025 year-end listed-company civil and offshore backlog; coverage check only",
+    "amount": 4674.51,
+    "direct_revenue_credit": 0
+  },
+  "unit_volume_or_proxy": {
+    "type": "effective delivered million DWT",
+    "2025_actual": 13.6775,
+    "2026_management_plan": 16.5
+  },
+  "ASP_or_price": {
+    "type": "price_mix_index",
+    "2025_base": 1,
+    "not_vessel_ASP": true,
+    "revenue_intensity_proxy_CNY100m_per_m_dwt": 95.981524
+  },
+  "recognized_revenue_ratio": {
+    "description": "scenario coefficient relative to 2025 revenue intensity; not disclosed contract completion percentage",
+    "2026_bear": 0.96,
+    "2026_base": 0.96,
+    "2026_bull": 0.99
+  },
+  "supply_demand_state": "high backlog and tight slots with cyclical order flow and mix risk",
+  "capacity_or_utilization": "unified utilization not disclosed; actual and planned deliveries used as proxy",
+  "certification_or_customer_qualification": "aggregate order and yard capability evidenced; ship-level certification and customer allocation not disclosed",
+  "growth_gross_margin": {
+    "2025A": 0.1172,
+    "2026_bear": 0.14,
+    "2026_base": 0.168,
+    "2026_bull": 0.185
+  },
+  "incremental_opex": {
+    "definition": "consolidated operating tax selling administrative and R&D expenses",
+    "2026_bear": 120,
+    "2026_base": 128,
+    "2026_bull": 145
+  },
+  "growth_net_profit": "not separately disclosed; consolidated parent net profit receives credit and standalone growth EPS is blocked",
+  "growth_EPS": "not separately disclosed; consolidated EPS only",
+  "share_denominator_100m": 75.25621288,
+  "bear": {
+    "2026": {"revenue": 1652.487134, "gross_margin": 0.141906, "minority_share": 0.15, "parent_net_profit": 112.071122, "EPS": 1.489194, "OCF_conversion": 0.55},
+    "2027": {"revenue": 1641.275854, "gross_margin": 0.13762, "minority_share": 0.18, "parent_net_profit": 93.715809, "EPS": 1.24529, "OCF_conversion": 0.65},
+    "2028": {"revenue": 1666.216339, "gross_margin": 0.130971, "minority_share": 0.2, "parent_net_profit": 80.197081, "EPS": 1.065654, "OCF_conversion": 0.75}
+  },
+  "base": {
+    "2026": {"revenue": 1775, "gross_margin": 0.166997, "minority_share": 0.07, "parent_net_profit": 172.762156, "EPS": 2.295653, "OCF_conversion": 0.85},
+    "2027": {"revenue": 2000, "gross_margin": 0.173014, "minority_share": 0.07, "parent_net_profit": 216.489959, "EPS": 2.876705, "OCF_conversion": 0.95},
+    "2028": {"revenue": 2150, "gross_margin": 0.175179, "minority_share": 0.07, "parent_net_profit": 246.810914, "EPS": 3.279608, "OCF_conversion": 1}
+  },
+  "bull": {
+    "2026": {"revenue": 1935, "gross_margin": 0.182655, "minority_share": 0.04, "parent_net_profit": 217.340737, "EPS": 2.888011, "OCF_conversion": 1.05},
+    "2027": {"revenue": 2205, "gross_margin": 0.192226, "minority_share": 0.04, "parent_net_profit": 279.849133, "EPS": 3.718618, "OCF_conversion": 1.1},
+    "2028": {"revenue": 2448, "gross_margin": 0.199137, "minority_share": 0.04, "parent_net_profit": 331.629435, "EPS": 4.406672, "OCF_conversion": 1.15}
+  },
+  "current_price_implied_growth": {
+    "price": 33.02,
+    "market_cap": 2484.960149,
+    "2026_at_14x_parent_net_profit": 177.497154,
+    "2026_required_growth_gross_margin": 0.171565,
+    "2027_at_11x_parent_net_profit": 225.905468,
+    "2027_required_total_gross_margin": 0.178516,
+    "2028_at_9x_parent_net_profit": 276.106683,
+    "2028_required_total_gross_margin": 0.19128
+  },
+  "sensitivity_key": "2026 recognized revenue ratio x growth gross margin",
+  "evidence_type": "official filing anchors plus house scenario assumptions",
+  "source": ["CF-03", "CF-04", "CF-05", "CF-17", "PR-01", "BR-01", "BR-02", "BR-03", "BR-04", "BR-05"],
+  "evidence_gap": [
+    "ship-level ASP",
+    "ship-level schedule",
+    "unified yard utilization",
+    "payment milestones",
+    "cost pass-through FX rework warranty",
+    "cancellation and price-adjustment clauses"
+  ],
+  "valuation_credit": "earnings credit - consolidated scenario only",
+  "blocked_method": [
+    "ship-level schedule/ASP model",
+    "supplier/SKU pass-through model",
+    "yard SOTP and utilization model",
+    "ship-type ASP/margin model",
+    "standalone contract margin valuation",
+    "contract-level cash-flow model",
+    "repair standalone SOTP",
+    "equipment standalone SOTP",
+    "consolidated-revenue attribution for China Power",
+    "LNG order attribution and asset-injection value for Hudong-Zhonghua",
+    "incremental order/EPS addition for COSCO project",
+    "policy-premium valuation",
+    "backlog-to-revenue direct conversion",
+    "order-value-to-EPS direct conversion",
+    "ship-by-ship schedule model",
+    "military SOTP",
+    "cruise standalone valuation",
+    "weak target price anchoring"
+  ],
+  "allowed_valuation_use": [
+    "consolidated revenue/margin scenario",
+    "gross-margin sensitivity only",
+    "consolidated delivery scenario",
+    "aggregate mix direction",
+    "de-duplicated backlog and customer quality evidence",
+    "consolidated cash conversion",
+    "consolidated revenue only for repair and equipment",
+    "equity-boundary context for China Power",
+    "perimeter exclusion for Hudong-Zhonghua",
+    "monitoring optionality only for policy and cruise",
+    "visibility proxy for aggregate backlog",
+    "replenishment and mix direction for new orders",
+    "capability context only for military"
+  ],
+  "required_sensitivity": [
+    "effective delivery DWT",
+    "price_mix_index",
+    "recognized_revenue_ratio",
+    "growth gross margin",
+    "impairment",
+    "OCF conversion"
+  ],
+  "validation_evidence": [
+    "formal 2026H1 actual results and stated audit or review status",
+    "shipbuilding repair offshore revenue and gross margin",
+    "delivery progress against 168 vessels and 16.5m DWT plan",
+    "OCF inventory contract assets and contract liabilities"
+  ],
+  "downgrade_trigger": [
+    "H1 parent net profit below 92 or adjusted parent net profit below 90",
+    "shipbuilding repair offshore gross margin below 10.5%",
+    "material delivery delay cancellation customer-financing or warranty issue",
+    "2026 OCF to parent net profit below 0.8x without next-period recovery"
+  ],
+  "prohibited_credit": {
+    "military": 0,
+    "unallocated_group_orders": 0,
+    "Hudong_Zhonghua": 0,
+    "weak_target_prices": 0,
+    "COSCO_approximately_CNY50bn_87_vessel_project_incremental": 0
+  }
+}

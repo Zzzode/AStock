@@ -1,0 +1,109 @@
+{
+  "cycle": "R0_evidence",
+  "review_date": "2026-07-22",
+  "review_mode": "independent read-only maker-checker review",
+  "review_scope": [
+    "data/raw_market_data.md",
+    "data/verified_market_data.md",
+    "data/raw_financials.md",
+    "data/verified_financials.md",
+    "sources/official-20260722/",
+    "data/source_registry.md/json",
+    "data/claim_audit.md/json",
+    "source_exhaustion_log.md/json",
+    "main.tex and sections/*.tex",
+    "analysis files that repeat market, share-count, financial or target-horizon facts"
+  ],
+  "publishability_status": "PASS",
+  "institutional_status": "R0_EVIDENCE_PASS_WITH_ACCEPTED_RESIDUAL",
+  "publishability_score": 93,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 1,
+  "closed_s_count": 1,
+  "closed_a_count": 1,
+  "verifier_results": {
+    "full_case_gate": "not rerun",
+    "reason": "This cycle was an evidence-only review and the orchestrator requested prompt delivery without repeating the full-case gate.",
+    "focused_checks": [
+      "source_registry.json, claim_audit.json and source_exhaustion_log.json parse successfully",
+      "all claim-audit source IDs resolve to source_registry.json",
+      "all non-empty registered local paths exist",
+      "all 21 official PDFs now have individual L1 source-registry entries",
+      "OFF-600150-SHARES and OFF-301308-SHARES resolve to the archived official announcements and new market-cap claim rows",
+      "source TeX, analysis files and the 2026-07-22 17:32 rebuilt PDF/extracted text all state that the CNY42 and CNY103 target horizons are not disclosed",
+      "six deep-model close prices, total shares, market caps, FY2025 actuals, 2026Q1 actuals, H1 preview ranges and Q1 OCF figures reconcile across verified packets and reader-facing sections"
+    ]
+  },
+  "findings": [
+    {
+      "issue_id": "R0-S-001",
+      "cycle": "R0_evidence",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "equity-research-orchestrator",
+      "artifact": "main.tex; analysis/valuation_model.md; analysis/valuation_audit.md; analysis/risk_framework.md; sections/ch09_risks.tex",
+      "section_or_line": "main.tex abstract; analysis/valuation_model.md Broker/Street Comparison; analysis/valuation_audit.md horizon statement; analysis/risk_framework.md broker-horizon rows; sections/ch09_risks.tex target-horizon discussion",
+      "issue": "The source TeX and analysis files have corrected the target horizon to 'not disclosed', but the current PDF-derived text still contains the superseded 6-12 month assertion.",
+      "evidence": "main.tex, sections/ch03_screen_method.tex, sections/ch09_risks.tex, analysis/valuation_model.md, analysis/valuation_audit.md and analysis/risk_framework.md now consistently say the CNY42 and CNY103 target horizons are not disclosed. However, main_current_text.txt line 43 still says the report separates 'broker 6-12 month targets' from year-end targets, and line 794 still says the broker rating framework generally describes 6-12 month relative return. The currently delivered main.pdf therefore predates the corrected source language.",
+      "fix_required": "Rebuild main.pdf from the corrected main.tex and regenerate main_current_text.txt. Confirm the extracted PDF text contains no asserted 6-12 month horizon and preserves 'target horizon not disclosed'.",
+      "blocking_gate": "source_hierarchy_and_target_horizon_consistency",
+      "status": "closed",
+      "verification_evidence": "Verified on 2026-07-22: a focused repository-wide search found no asserted 6-12 month horizon; main.pdf was rebuilt at 17:32:25 CST and main_current_text.txt regenerated at 17:32:39 CST. The extracted abstract, decision, methodology, valuation and risk text consistently states that the CNY42 and CNY103 target horizons are not disclosed.",
+      "verifier_ref": "data/report_catalog.md; data/consensus_analysis.md; data/broker_street_consensus_20260722.md/json; source_exhaustion_log.md/json",
+      "reopened_count": 0,
+      "publication_implication": "Resolved; the current reader-facing deliverable no longer assigns an unsupported horizon."
+    },
+    {
+      "issue_id": "R0-A-001",
+      "cycle": "R0_evidence",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "data/source_registry.md; data/source_registry.json; data/claim_audit.md; data/claim_audit.json",
+      "section_or_line": "official-source rows and material market/share claims",
+      "issue": "The source registry and claim audit do not fully trace the current-share and market-cap bridge used by the report.",
+      "evidence": "The official archive contains 21 PDFs, but source_registry.json registers only 19 official documents. The omitted originals are sources/official-20260722/600150_2025_distribution_implementation.pdf, which supports 7,525,621,288 shares and the CNY0.365 ex-dividend adjustment, and sources/official-20260722/301308_2025_and_2026_interim_distribution.pdf, which supports the post-vesting 423,061,007 shares. sections/ch10_evidence.tex says all six deep-model share counts were aligned, while the 12-row claim audit contains no explicit current-share/market-cap reconciliation claims for the investable names.",
+      "fix_required": "Add separate L1 registry entries for the 600150 and 301308 share/corporate-action announcements, including date, local path, official URL, use and limitation. Add claim-audit rows for the current prices, current shares, market-cap arithmetic and corporate-action boundary used by 002497 and 002812 formal valuations, plus the share bases used in all four zero-weight scenario names. Keep Markdown and JSON pairs synchronized.",
+      "blocking_gate": "source_registry_and_claim_audit_completeness",
+      "status": "closed",
+      "verification_evidence": "Verified on 2026-07-22: source_registry.md/json now includes OFF-600150-SHARES and OFF-301308-SHARES with official URLs and local PDF paths; all 21 official PDFs are individually represented. claim_audit.md/json includes the CNY248.496bn and CNY164.338bn price-times-official-shares bridges, and all referenced source IDs resolve.",
+      "verifier_ref": "sources/official-20260722/capture_manifest.md; data/raw_market_data.md; data/verified_market_data.md; sections/ch07_valuation.tex; sections/ch10_evidence.tex",
+      "reopened_count": 0,
+      "publication_implication": "The numbers are correct, but the governance artifacts do not provide a complete source-to-claim trail for target-driving denominators."
+    },
+    {
+      "issue_id": "R0-B-001",
+      "cycle": "R0_evidence",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-collector",
+      "artifact": "data/raw_market_data.md; data/source_registry.md; data/source_registry.json; source_exhaustion_log.md; source_exhaustion_log.json",
+      "section_or_line": "MKT-ASTOCK-20260722, MKT-TENCENT-20260722 and MKT-CLOSE-NEWS-20260722 rows",
+      "issue": "The market-data registry points to a curated Markdown packet or live URL rather than immutable case-local raw response captures.",
+      "evidence": "MKT-ASTOCK-20260722 and MKT-TENCENT-20260722 support all current-price and ten-session calculations, but their registered local path is data/raw_market_data.md, which is an analyst-created table rather than the provider response. MKT-CLOSE-NEWS-20260722 has an empty local path. The packet documents commands, timestamps, two-source price agreement and limitations, so the reported numbers remain usable, but a future reviewer cannot replay the exact captured payload after provider data changes.",
+      "fix_required": "Archive the exact AStock JSON output, Tencent quote/K-line responses and the market-close page under a case-scoped market-source directory; add hashes or capture metadata; update source_registry and source_exhaustion. If capture is no longer possible, explicitly label the existing Markdown packet as the retained evidence ceiling.",
+      "blocking_gate": "market_data_capture_reproducibility",
+      "status": "open",
+      "accepted_residual": true,
+      "residual_rationale": "The two-source close-price match, explicit timestamps and arithmetic reconciliation make the numbers usable; the remaining weakness concerns immutable replay evidence, not detected data error.",
+      "verifier_ref": "data/raw_market_data.md; data/source_registry.json; source_exhaustion_log.json",
+      "reopened_count": 0,
+      "publication_implication": "This is an audit-trail weakness, not a detected price or valuation error."
+    }
+  ],
+  "confirmed_strengths": [
+    "All 16 closing prices matched between the AStock/Sina packet and Tencent on 2026-07-22.",
+    "All six deep-model total-share counts and recomputed total market capitalizations agree with the verified packet; the 301308 vesting and 002812 cancellation are correctly reflected.",
+    "FY2025 and 2026Q1 revenue, parent net profit, deducted net profit and operating cash flow reconcile for all six deep-model names.",
+    "All six H1 earnings previews are labeled unaudited and are not mechanically annualized.",
+    "The 600150 same-control merger comparison and 300390 corrected/restated accounting boundaries are preserved.",
+    "The reader-facing report does not turn the ten-session drawdowns into proof of earnings deterioration and discloses the 600150 ex-dividend caveat."
+  ],
+  "required_next_fixes": [
+    "The target-horizon source and rendered-artifact repair is verified closed; preserve the 'target horizon not disclosed' wording.",
+    "The source-registry and claim-audit repair is verified closed; preserve the two new share-source entries and market-cap bridges.",
+    "The immutable market-capture gap is an accepted open B-Level residual; archive payloads later or preserve the evidence-ceiling disclosure.",
+    "No blocking R0 repair remains; later-cycle and full-case gates remain outside this focused re-review."
+  ]
+}

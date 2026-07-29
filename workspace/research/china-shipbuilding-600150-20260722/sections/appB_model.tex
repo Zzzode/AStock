@@ -1,0 +1,167 @@
+本附录给出冻结模型的主要公式、输入与复算结果。读者应把模型视为合并口径情景系统，不是逐船预算。逐船ASP、排程、利用率、付款节点和成本传导未披露，因此所有精细参数都通过敏感性表达，不能被解释为公司指引。
+
+\section{股本、市值与EPS复算}
+
+\begin{align*}
+\text{合并后股本}&=44.72428758+30.53192530=75.25621288\text{亿股},\\
+\text{市值}&=33.02\times75.25621288=2,484.960149\text{亿元},\\
+\text{2026E Base EPS}&=172.762156/75.25621288=2.295653\text{元},\\
+\text{2027E Base EPS}&=216.489959/75.25621288=2.876705\text{元},\\
+\text{2028E Base EPS}&=246.810914/75.25621288=3.279608\text{元}.
+\end{align*}
+
+2025A法定EPS不使用上述期末股本重算，而保留公司披露的加权平均63.29638855亿股。2026E以后统一使用75.25621288亿股，确保价格、股本和盈利分母一致。
+
+\section{收入、毛利与归母公式}
+
+\begin{align*}
+\text{2025收入强度代理}&=1,312.7873/13.6775=95.981524,\\
+\text{Growth收入}_{t}&=\text{有效交付百万DWT}_{t}\times95.981524\\
+&\quad\times\text{价格/结构指数}_{t}\times\text{确认系数}_{t},\\
+\text{合并毛利}_{t}&=\text{Growth收入}_{t}\times\text{Growth GM}_{t}\\
+&\quad+\text{Base收入}_{t}\times\text{Base GM}_{t},\\
+\text{归母净利}_{t}&=[\text{合并毛利}_{t}-\text{经营费用}_{t}-\text{减值}_{t}\\
+&\quad+\text{财务/投资/其他净收益}_{t}]\times(1-\text{税率}_{t})\\
+&\quad\times(1-\text{少数股东份额}_{t}).
+\end{align*}
+
+收入强度代理同时包含造船进度确认、修船和海工，不是船型ASP；确认系数是情景因子，不是法定履约比例。4,674.51亿元在手只做覆盖校验，不进入上述乘法。
+
+\section{三情景驱动假设}
+
+\scriptsize
+\begin{longtable}{L{2.0cm} R{2.0cm} R{2.0cm} R{2.0cm} R{2.1cm} R{2.0cm} R{2.0cm}}
+\toprule
+\textbf{情景/年度} & \textbf{有效交付\newline 百万DWT} & \textbf{价格/结构\newline 2025=1} & \textbf{确认系数} & \textbf{Growth收入} & \textbf{Base收入} & \textbf{总收入} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{情景/年度} & \textbf{有效交付\newline 百万DWT} & \textbf{价格/结构\newline 2025=1} & \textbf{确认系数} & \textbf{Growth收入} & \textbf{Base收入} & \textbf{总收入} \\
+\midrule
+\endhead
+Bear 2026 & 15.5 & 1.01 & 0.96 & 1,442.49 & 210.00 & 1,652.49 \\
+Bear 2027 & 15.8 & 0.99 & 0.95 & 1,426.28 & 215.00 & 1,641.28 \\
+Bear 2028 & 16.3 & 0.98 & 0.94 & 1,441.22 & 225.00 & 1,666.22 \\
+\rowcolor{accentblue!8} Base 2026 & 16.2 & 1.04 & 0.96 & 1,552.41 & 222.59 & 1,775.00 \\
+\rowcolor{accentblue!8} Base 2027 & 17.5 & 1.07 & 0.99 & 1,779.28 & 220.72 & 2,000.00 \\
+\rowcolor{accentblue!8} Base 2028 & 18.6 & 1.09 & 0.985 & 1,916.74 & 233.26 & 2,150.00 \\
+Bull 2026 & 16.8 & 1.07 & 0.99 & 1,708.11 & 226.89 & 1,935.00 \\
+Bull 2027 & 18.4 & 1.11 & 1.00 & 1,960.33 & 244.67 & 2,205.00 \\
+Bull 2028 & 20.0 & 1.14 & 1.00 & 2,188.38 & 259.62 & 2,448.00 \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+Base 2026有效交付低于公司1,650万DWT计划，Bull高于计划，均为研究假设。2027--2028没有公司逐年交付指引，需以后续披露滚动更新。
+
+\section{毛利、费用与归母桥}
+
+\scriptsize
+\begin{longtable}{L{2.0cm} R{2.0cm} R{2.0cm} R{2.0cm} R{2.0cm} R{2.0cm} R{2.0cm}}
+\toprule
+\textbf{情景/年度} & \textbf{Growth GM} & \textbf{Base GM} & \textbf{合并毛利} & \textbf{经营费用} & \textbf{归母净利} & \textbf{EPS} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{情景/年度} & \textbf{Growth GM} & \textbf{Base GM} & \textbf{合并毛利} & \textbf{经营费用} & \textbf{归母净利} & \textbf{EPS} \\
+\midrule
+\endhead
+Bear 2026 & 14.0\% & 15.5\% & 234.50 & 120 & 112.07 & 1.489 \\
+Bear 2027 & 13.5\% & 15.5\% & 225.87 & 119 & 93.72 & 1.245 \\
+Bear 2028 & 12.8\% & 15.0\% & 218.23 & 120 & 80.20 & 1.066 \\
+\rowcolor{accentblue!8} Base 2026 & 16.8\% & 16.0\% & 296.42 & 128 & 172.76 & 2.296 \\
+\rowcolor{accentblue!8} Base 2027 & 17.5\% & 15.7\% & 346.03 & 137 & 216.49 & 2.877 \\
+\rowcolor{accentblue!8} Base 2028 & 17.8\% & 15.2\% & 376.64 & 136 & 246.81 & 3.280 \\
+Bull 2026 & 18.5\% & 16.5\% & 353.44 & 145 & 217.34 & 2.888 \\
+Bull 2027 & 19.5\% & 17.0\% & 423.86 & 155 & 279.85 & 3.719 \\
+Bull 2028 & 20.2\% & 17.5\% & 487.49 & 170 & 331.63 & 4.407 \\
+\bottomrule
+\end{longtable}
+\normalsize
+
+经营费用之外，模型另含减值、财务/投资/其他净收益、税率和少数股东份额。由于没有证据将这些项目无歧义分配给Growth和Base，本报告不发布Growth standalone EPS。为避免归母桥只停留在公式层，下一表完整列出Base税前利润到EPS的每个步骤。
+
+\begin{exhibitbox}[Base PBT到归母净利润与EPS完整桥]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{3.8cm}R{2.6cm}R{2.6cm}R{2.6cm}X}
+\toprule
+\textbf{项目} & \textbf{2026E} & \textbf{2027E} & \textbf{2028E} & \textbf{公式/性质} \\
+\midrule
+税前利润（PBT） & 201.919 & 253.027 & 291.635 & 毛利-费用-减值+财务/投资/其他净收益 \\
+模型税率 & 8.0\% & 8.0\% & 9.0\% & 冻结情景假设 \\
+所得税 & 16.154 & 20.242 & 26.247 & PBT\(\times\)税率 \\
+合并净利润 & 185.766 & 232.785 & 265.388 & PBT-所得税 \\
+少数股东份额 & 7.0\% & 7.0\% & 7.0\% & 冻结情景假设 \\
+少数股东损益 & 13.004 & 16.295 & 18.577 & 合并净利润\(\times\)少数股东份额 \\
+归母净利润 & 172.762 & 216.490 & 246.811 & 合并净利润-少数股东损益 \\
+EPS & 2.295653 & 2.876705 & 3.279608 & 归母/75.25621288亿股 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{冻结增长JSON；金额单位除比例和EPS外均为亿元，展示值四舍五入。}
+\end{exhibitbox}
+
+Base以外的税与归属同样是完整情景的一部分，并非把Base归母按单一比例缩放。
+
+\begin{exhibitbox}[Bear/Bull税率与归属关键假设]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{3.2cm}C{2.6cm}C{2.6cm}C{2.6cm}X}
+\toprule
+\textbf{情景} & \textbf{2026E} & \textbf{2027E} & \textbf{2028E} & \textbf{归属含义} \\
+\midrule
+Bear税率/少数股东 & 10\% / 15\% & 12\% / 18\% & 13\% / 20\% & 税负与归属恶化共同压低归母 \\
+Base税率/少数股东 & 8\% / 7\% & 8\% / 7\% & 9\% / 7\% & 合并正常化假设 \\
+Bull税率/少数股东 & 7\% / 4\% & 8\% / 4\% & 8\% / 4\% & 更优归属与执行共同支撑上端 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{冻结增长模型。税率和少数股东份额为研究情景，不是公司指引。}
+\end{exhibitbox}
+
+\section{H1残余、现金与敏感性}
+
+\begin{exhibitbox}[H1不同结果下的H2 Base残余]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{4.5cm}R{3.2cm}X}
+\toprule
+\textbf{H1归母假设} & \textbf{H2需实现} & \textbf{解释} \\
+\midrule
+92亿元（预告下限） & 80.76亿元 & 下限不代表全年已锁定 \\
+101亿元（区间中点） & 71.76亿元 & Base验证口径 \\
+110亿元（预告上限） & 62.76亿元 & H2允许交付节奏正常化 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{CF-05与2026 Base归母172.762156亿元。}
+\end{exhibitbox}
+
+Base OCF/归母为0.85/0.95/1.00倍，现金资本开支50/55/60亿元；Bear为0.55/0.65/0.75倍，Bull为1.05/1.10/1.15倍。现金只作为倍数质量门槛，不机械加回股权价值。
+
+\begin{exhibitbox}[2026归母二维敏感性，亿元]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{4.0cm}R{3.0cm}R{3.0cm}R{3.0cm}X}
+\toprule
+\textbf{确认系数\textbackslash Growth GM} & \textbf{15.8\%} & \textbf{16.8\%} & \textbf{17.8\%} & \textbf{状态} \\
+\midrule
+0.92 & 150.74 & 163.46 & 176.19 & 确认偏慢 \\
+0.96 & 159.48 & \textbf{172.76} & 186.04 & Base \\
+1.00 & 168.22 & 182.06 & 195.90 & 确认偏快 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+
+敏感性不应与公司指引混淆。正式中报若改变确认、毛利、费用、少数股东或现金中的任一项，应整体重跑合并模型，而不是只替换归母净利。
+
+\section{估值复算与审计结论}
+
+\begin{align*}
+\text{Bear价值}&=1.245290\times9.0=11.207610,\\
+\text{Base价值}&=2.876705\times11.5=33.0821075,\\
+\text{Bull价值}&=3.718618\times13.0=48.342034,\\
+\text{最终精确目标}&=33.0821075\times85\%+33.02\times15\%\\
+&=33.072791375\approx33.07,\\
+\text{发布目标回报}&=33.07/33.02-1=0.1514\%.
+\end{align*}
+
+基础公允区间为2.876705元乘11.0--12.5倍，即31.643755--35.958813元。Broker目标未披露且权重为0；所有锚权重合计100\%。估值审计结论为\texttt{Model Reproducibility: PASS}。
+
+\begin{riskbox}[模型禁止项]
+不使用Q1\(\times4\)或H1\(\times2\)；不将4,674.51亿元在手按年数直接分摊；不将中远约500亿元项目二次加总；不对七家船厂、军品、沪东中华、邮轮或Growth业务做缺乏证据的SOTP；不以第三方目标价替代原始Street证据。
+\end{riskbox}

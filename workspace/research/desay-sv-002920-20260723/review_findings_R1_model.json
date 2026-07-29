@@ -1,0 +1,66 @@
+{
+  "cycle": "R1_model",
+  "cycle_status": "PASS",
+  "publishability_status": "PASS_FOR_DRAFT_STAGE",
+  "publishability_score": 95,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "findings": [
+    {
+      "issue_id": "R1-B-003",
+      "cycle": "R1_model",
+      "severity": "B",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "growth-earnings-modeler",
+      "artifact": "analysis/physical_ai_growth_model.md",
+      "evidence": "Physical AI has no disclosed customers, units, ASP, recognised revenue, margin or incremental opex. The initial repair kept the opportunity only as sensitivity outside the displayed valuation, which preserved the base-EPS boundary but did not answer the future-opportunity mandate.",
+      "fix_required": "Keep CNY86.4 as the 2026E base-business target, but add a separately labelled, mutually exclusive FY2028 real-option layer. Discount conditional values at 12%, disclose the 55%/35%/10% house probability policy, add only the CNY2.49 risk-adjusted result to the combined reference, and never represent it as disclosed earnings or base-P/E credit.",
+      "blocking_gate": "physical_ai_risk_adjusted_option_boundary",
+      "status": "closed",
+      "verifier_ref": "analysis/physical_ai_growth_model.md; data/physical_ai_option_model_20260723.json; analysis/physical_ai_valuation.md",
+      "reopened_count": 2
+    },
+    {
+      "issue_id": "R1-S-001",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "growth-earnings-modeler",
+      "artifact": "data/growth_driver_model.json",
+      "evidence": "The first review detected a numerical growth_net_profit and growth_EPS allocation without disclosed unit, ASP, recognition ratio or incremental-opex inputs.",
+      "fix_required": "Remove the unsupported incremental profit/EPS allocation; retain reported-segment revenue/margin as the growth boundary and designate product optionalities as no-incremental-EPS-credit.",
+      "blocking_gate": "growth_earnings_dependency",
+      "status": "closed",
+      "verifier_ref": "analysis/growth_earnings_model.md; data/growth_driver_model.json",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-B-001",
+      "cycle": "R1_model",
+      "severity": "B",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "analysis/valuation_model.md",
+      "evidence": "No current auditable broker target price or method was available; four original reports support earnings cross-checks only.",
+      "fix_required": "Retain a zero Street-target weight, disclose the evidence gap and use fundamental plus market-implied anchors only.",
+      "blocking_gate": "broker_street_anchor",
+      "status": "closed",
+      "verifier_ref": "data/consensus_analysis.md; source_exhaustion_log.md; data/current_valuation_model_20260723.json",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-B-002",
+      "cycle": "R1_model",
+      "severity": "B",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-auditor",
+      "artifact": "analysis/valuation_audit.md",
+      "evidence": "Price, share count, market cap, EPS, scenarios, final target and upside recompute from CNY83.48 and 5.96809294 hundred-million shares; all values are rounded only for display.",
+      "fix_required": "Keep the intraday price timestamp and refresh before any later publication date.",
+      "blocking_gate": "current_price_anchor",
+      "status": "closed",
+      "verifier_ref": "data/verified_market_data.md; data/current_valuation_model_20260723.json",
+      "reopened_count": 0
+    }
+  ]
+}

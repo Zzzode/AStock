@@ -1,0 +1,221 @@
+{
+  "schema_version": "astock.high_upside_selection_audit.refresh.v1",
+  "data_cutoff": "2026-07-15",
+  "upside_threshold": 1.0,
+  "row_count": 6,
+  "formal_count": 0,
+  "priority_count": 3,
+  "not_priority_count": 3,
+  "status_counts": {
+    "candidate_high_upside_not_priority": 3,
+    "priority_high_upside_not_formal": 3
+  },
+  "rows": [
+    {
+      "ticker": "002432",
+      "company": "九安医疗",
+      "industry": "医药生物",
+      "current_price": 66.99,
+      "probability_target": 283.63,
+      "upside": 3.2339,
+      "evidence_quality": "high",
+      "latest_report_date": "2025-05-06",
+      "latest_broker": "东吴证券",
+      "external_target": null,
+      "external_source": null,
+      "report_pdf_source": "refresh-20260715/sources/broker-reports-20260715/002432-九安医疗/2025-05-06-东吴证券-2024及2025Q1业绩点评-品牌渠道优势显著-慢病O-O有望打开第二增长曲线.pdf",
+      "disposition": "earnings_validation_watch",
+      "model_tier": "screening_house_range",
+      "q1_ocf_100mn": -0.9248,
+      "legacy_evidence_quality": "medium",
+      "evidence_quality_basis": "official H1 preview + Q1 financial packet + current quote/K-line + archived original broker PDF; broker-anchor usability is governed separately",
+      "broker_anchor_quality": "original_pdf_no_target_or_not_disclosed",
+      "formal_anchor_eligible": false,
+      "in_priority_pool": false,
+      "in_formal_pool": false,
+      "selection_status": "candidate_high_upside_not_priority",
+      "hard_gate_reasons": [
+        "未进入39只优先池：当前处置为earnings_validation_watch，优先池仅接收launched_with_runway_candidate/low_position_earnings_priority/quiet_accumulation_priority",
+        "缺少当前可正权使用的外部估值锚",
+        "最新研报缺失或早于2026-04-01",
+        "原始研报已归档但未披露目标价/合理价值区间"
+      ],
+      "required_upgrade_evidence": [
+        "先重新进入优先池：价格位置、行业阶段或处置标签需满足优先池规则",
+        "补齐2026-04-01之后的原始券商研报或可审计共识快照",
+        "补齐当前可审计目标价/合理价值区间，摘要、转载和用户估值不计入正权重",
+        "补齐可正权使用的当前外部估值锚",
+        "验证经营现金流改善，避免利润空间仅来自会计分母"
+      ]
+    },
+    {
+      "ticker": "000623",
+      "company": "吉林敖东",
+      "industry": "医药生物",
+      "current_price": 18.66,
+      "probability_target": 77.82,
+      "upside": 3.1704,
+      "evidence_quality": "high",
+      "latest_report_date": "2024-09-03",
+      "latest_broker": "国元证券",
+      "external_target": null,
+      "external_source": null,
+      "report_pdf_source": "refresh-20260715/sources/broker-reports-20260715/000623-吉林敖东/2024-09-03-国元证券-2024半年报点评-业绩增长符合预期-年中分红保障股东回报.pdf",
+      "disposition": "low_position_earnings_priority",
+      "model_tier": "screening_house_range",
+      "q1_ocf_100mn": 0.107,
+      "legacy_evidence_quality": "medium",
+      "evidence_quality_basis": "official H1 preview + Q1 financial packet + current quote/K-line + archived original broker PDF; broker-anchor usability is governed separately",
+      "broker_anchor_quality": "original_pdf_no_target_or_not_disclosed",
+      "formal_anchor_eligible": false,
+      "in_priority_pool": true,
+      "in_formal_pool": false,
+      "selection_status": "priority_high_upside_not_formal",
+      "hard_gate_reasons": [
+        "缺少当前可正权使用的外部估值锚",
+        "最新研报缺失或早于2026-04-01",
+        "原始研报已归档但未披露目标价/合理价值区间"
+      ],
+      "required_upgrade_evidence": [
+        "补齐2026-04-01之后的原始券商研报或可审计共识快照",
+        "补齐当前可审计目标价/合理价值区间，摘要、转载和用户估值不计入正权重",
+        "补齐可正权使用的当前外部估值锚"
+      ]
+    },
+    {
+      "ticker": "600739",
+      "company": "辽宁成大",
+      "industry": "医药生物",
+      "current_price": 10.95,
+      "probability_target": 43.8,
+      "upside": 3.0,
+      "evidence_quality": "high",
+      "latest_report_date": "2017-10-30",
+      "latest_broker": "太平洋",
+      "external_target": 22.79,
+      "external_source": "refresh-20260715/sources/broker-reports-20260715/600739-辽宁成大/2017-10-30-太平洋-辽宁成大2017年三季报点评-单季业绩暴增-投资收益稳定.pdf",
+      "report_pdf_source": "refresh-20260715/sources/broker-reports-20260715/600739-辽宁成大/2017-10-30-太平洋-辽宁成大2017年三季报点评-单季业绩暴增-投资收益稳定.pdf",
+      "disposition": "low_position_earnings_priority",
+      "model_tier": "screening_house_range",
+      "q1_ocf_100mn": -1.7588,
+      "legacy_evidence_quality": "medium",
+      "evidence_quality_basis": "official H1 preview + Q1 financial packet + current quote/K-line + archived original broker PDF; broker-anchor usability is governed separately",
+      "broker_anchor_quality": "stale_or_aging_target_zero_to_low_weight",
+      "formal_anchor_eligible": false,
+      "in_priority_pool": true,
+      "in_formal_pool": false,
+      "selection_status": "priority_high_upside_not_formal",
+      "hard_gate_reasons": [
+        "缺少当前可正权使用的外部估值锚",
+        "最新研报缺失或早于2026-04-01"
+      ],
+      "required_upgrade_evidence": [
+        "补齐2026-04-01之后的原始券商研报或可审计共识快照",
+        "补齐可正权使用的当前外部估值锚",
+        "验证经营现金流改善，避免利润空间仅来自会计分母"
+      ]
+    },
+    {
+      "ticker": "000685",
+      "company": "中山公用",
+      "industry": "环保",
+      "current_price": 11.19,
+      "probability_target": 29.41,
+      "upside": 1.6282,
+      "evidence_quality": "high",
+      "latest_report_date": "2026-05-11",
+      "latest_broker": "国信证券",
+      "external_target": null,
+      "external_source": null,
+      "report_pdf_source": "refresh-20260715/sources/broker-reports-20260715/000685-中山公用/2026-05-11-国信证券-投资收益带动业绩高增-公用事业-资本-科技-三大板块引领未来发展.pdf",
+      "disposition": "earnings_validation_watch",
+      "model_tier": "screening_house_range",
+      "q1_ocf_100mn": -0.2693,
+      "legacy_evidence_quality": "medium-high",
+      "evidence_quality_basis": "official H1 preview + Q1 financial packet + current quote/K-line + archived original broker PDF; broker-anchor usability is governed separately",
+      "broker_anchor_quality": "original_pdf_no_target_or_not_disclosed",
+      "formal_anchor_eligible": false,
+      "in_priority_pool": false,
+      "in_formal_pool": false,
+      "selection_status": "candidate_high_upside_not_priority",
+      "hard_gate_reasons": [
+        "未进入39只优先池：当前处置为earnings_validation_watch，优先池仅接收launched_with_runway_candidate/low_position_earnings_priority/quiet_accumulation_priority",
+        "缺少当前可正权使用的外部估值锚",
+        "原始研报已归档但未披露目标价/合理价值区间"
+      ],
+      "required_upgrade_evidence": [
+        "先重新进入优先池：价格位置、行业阶段或处置标签需满足优先池规则",
+        "补齐当前可审计目标价/合理价值区间，摘要、转载和用户估值不计入正权重",
+        "补齐可正权使用的当前外部估值锚",
+        "验证经营现金流改善，避免利润空间仅来自会计分母"
+      ]
+    },
+    {
+      "ticker": "600150",
+      "company": "中国船舶",
+      "industry": "国防军工",
+      "current_price": 34.31,
+      "probability_target": 83.33,
+      "upside": 1.4287,
+      "evidence_quality": "high",
+      "latest_report_date": "2026-07-14",
+      "latest_broker": "华源证券",
+      "external_target": null,
+      "external_source": null,
+      "report_pdf_source": "refresh-20260715/sources/broker-reports-20260715/600150-中国船舶/2026-07-14-华源证券-26H1预告点评-Q2业绩预计同比大增-关注后续船价与集团整合.pdf",
+      "disposition": "low_position_earnings_priority",
+      "model_tier": "screening_house_range",
+      "q1_ocf_100mn": 81.5153,
+      "legacy_evidence_quality": "medium-high",
+      "evidence_quality_basis": "official H1 preview + Q1 financial packet + current quote/K-line + archived original broker PDF; broker-anchor usability is governed separately",
+      "broker_anchor_quality": "original_pdf_no_target_or_not_disclosed",
+      "formal_anchor_eligible": false,
+      "in_priority_pool": true,
+      "in_formal_pool": false,
+      "selection_status": "priority_high_upside_not_formal",
+      "hard_gate_reasons": [
+        "缺少当前可正权使用的外部估值锚",
+        "原始研报已归档但未披露目标价/合理价值区间"
+      ],
+      "required_upgrade_evidence": [
+        "补齐当前可审计目标价/合理价值区间，摘要、转载和用户估值不计入正权重",
+        "补齐可正权使用的当前外部估值锚"
+      ]
+    },
+    {
+      "ticker": "301308",
+      "company": "江波龙",
+      "industry": "电子",
+      "current_price": 488.0,
+      "probability_target": 1069.45,
+      "upside": 1.1915,
+      "evidence_quality": "high",
+      "latest_report_date": "2026-05-07",
+      "latest_broker": "国信证券",
+      "external_target": null,
+      "external_source": null,
+      "report_pdf_source": "refresh-20260715/sources/broker-reports-20260715/301308-江波龙/2026-05-07-国信证券-1Q26归母净利润同比增长2644.05-端侧应用多维拓展.pdf",
+      "disposition": "earnings_validation_watch",
+      "model_tier": "screening_house_range",
+      "q1_ocf_100mn": -28.7454,
+      "legacy_evidence_quality": "medium-high",
+      "evidence_quality_basis": "official H1 preview + Q1 financial packet + current quote/K-line + archived original broker PDF; broker-anchor usability is governed separately",
+      "broker_anchor_quality": "original_pdf_no_target_or_not_disclosed",
+      "formal_anchor_eligible": false,
+      "in_priority_pool": false,
+      "in_formal_pool": false,
+      "selection_status": "candidate_high_upside_not_priority",
+      "hard_gate_reasons": [
+        "未进入39只优先池：当前处置为earnings_validation_watch，优先池仅接收launched_with_runway_candidate/low_position_earnings_priority/quiet_accumulation_priority",
+        "缺少当前可正权使用的外部估值锚",
+        "原始研报已归档但未披露目标价/合理价值区间"
+      ],
+      "required_upgrade_evidence": [
+        "先重新进入优先池：价格位置、行业阶段或处置标签需满足优先池规则",
+        "补齐当前可审计目标价/合理价值区间，摘要、转载和用户估值不计入正权重",
+        "补齐可正权使用的当前外部估值锚",
+        "验证经营现金流改善，避免利润空间仅来自会计分母"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "schema_version": "astock.growth_driver_model.v1",
+  "data_cutoff": "2026-07-22",
+  "drivers": [
+    {
+      "ticker": "002497",
+      "company": "雅化集团",
+      "base_business_revenue": "civil-explosives earnings floor",
+      "growth_segment_revenue": "lithium-led portion within consolidated revenue",
+      "unit_volume_or_proxy": "lithium-salt shipments",
+      "ASP_or_price": "lithium realized-price proxy",
+      "supply_demand_state": "cyclical recovery; not assumed permanent",
+      "capacity_or_utilization": "nearly 130kt lithium-salt capacity; shipment execution is binding",
+      "certification_or_customer_qualification": "not used as an incremental valuation input",
+      "recognized_revenue_ratio": "company segment ratio disclosed for FY2025; 2026 scenario split remains modeled",
+      "source": "official FY2025/H1 filings and 2026-07-07 original Dongwu report",
+      "evidence_gap": "H2 cash conversion, realized price, inventory/hedge split, and exact 2026 segment revenue",
+      "valuation_credit": "formal conditional model; no base-case double",
+      "current_price_implied_growth": "6.38x base 2026E EPS versus 12.77x required for a double",
+      "next_quarter_validation_threshold": "H2 net profit at least CNY1.73bn with improving operating cash flow",
+      "scenarios": {
+        "bear": {"shipments_kt": 90, "price_proxy_cny_per_t": 120000, "revenue_100mn": 120.0, "gross_margin": 0.20, "gross_profit_100mn": 24.0, "opex_tax_other_100mn": 10.9, "civil_explosives_np_100mn": 5.0, "lithium_np_100mn": 8.1, "net_profit_100mn": 13.1, "eps": 1.14, "pe": 8.0, "value": 9.12},
+        "base": {"shipments_kt": 120, "price_proxy_cny_per_t": 165000, "revenue_100mn": 170.52, "gross_margin": 0.2704, "gross_profit_100mn": 46.11, "opex_tax_other_100mn": 15.76, "civil_explosives_np_100mn": 5.75, "lithium_np_100mn": 24.6, "net_profit_100mn": 30.35, "eps": 2.63, "pe": 10.0, "value": 26.30},
+        "bull": {"shipments_kt": 130, "price_proxy_cny_per_t": 180000, "revenue_100mn": 195.0, "gross_margin": 0.285, "gross_profit_100mn": 55.58, "opex_tax_other_100mn": 17.08, "civil_explosives_np_100mn": 6.0, "lithium_np_100mn": 32.5, "net_profit_100mn": 38.5, "eps": 3.34, "pe": 12.6, "value": 42.08}
+      },
+      "normalization": "Inventory gains and hedge P&L receive zero normalized credit; non-base parameters are AStock scenarios, not company guidance."
+    },
+    {
+      "ticker": "002812",
+      "company": "恩捷股份",
+      "base_business_revenue": "existing wet-process separator platform",
+      "growth_segment_revenue": "utilization and unit-profit recovery within broker-estimated revenue",
+      "unit_volume_or_proxy": "broker forecast of more than 16bn sqm 2026 shipments",
+      "ASP_or_price": "separator unit price and unit profit",
+      "supply_demand_state": "recovery direction officially stated; magnitude not company-quantified",
+      "capacity_or_utilization": "2027 utilization and 22bn-sqm effective-capacity bridge are broker estimates",
+      "certification_or_customer_qualification": "company-level evidence required",
+      "recognized_revenue_ratio": "overseas/3C mix not fully disclosed",
+      "source": "official H1 preview and 2026-07-10 original Dongwu report",
+      "evidence_gap": "shipment, realized unit profit, utilization, yield, customer price, and cash conversion",
+      "valuation_credit": "zero weight; blocks_valuation=true",
+      "current_price_implied_growth": "9.27x broker 2027E EPS versus 18.54x required for a double",
+      "next_quarter_validation_threshold": "company evidence independently rebuilds the 2027 earnings bridge",
+      "sensitivity_only": {"eps_2027e": 5.16, "bear_6x": 30.96, "base_13x": 67.08, "bull_20x": 103.20, "probabilities": null, "formal_target": null}
+    }
+  ]
+}

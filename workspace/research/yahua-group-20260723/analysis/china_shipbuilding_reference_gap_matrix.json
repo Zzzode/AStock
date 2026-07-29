@@ -1,0 +1,269 @@
+{
+  "schema_version": "1.0",
+  "document_type": "read_only_reference_gap_matrix",
+  "as_of": "2026-07-23",
+  "reference_case": {
+    "case_id": "china-shipbuilding-600150-20260722",
+    "report_type": "single_stock_full_research",
+    "data_cutoff": "2026-07-22",
+    "key_files": [
+      "workspace/research/china-shipbuilding-600150-20260722/research_brief.md",
+      "workspace/research/china-shipbuilding-600150-20260722/gate_manifest.json",
+      "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+      "workspace/research/china-shipbuilding-600150-20260722/analysis/growth_earnings_model.md",
+      "workspace/research/china-shipbuilding-600150-20260722/analysis/valuation_model.md",
+      "workspace/research/china-shipbuilding-600150-20260722/analysis/valuation_audit.md",
+      "workspace/research/china-shipbuilding-600150-20260722/final_signoff.json",
+      "workspace/research/china-shipbuilding-600150-20260722/research_workflow_eval.json"
+    ]
+  },
+  "current_case": {
+    "case_id": "yahua-group-20260723",
+    "report_type": "earnings_preview_event_research",
+    "market_cutoff": "2026-07-22",
+    "financial_cutoff": "2026Q1 reported; 2025 annual report; 2026H1 earnings preview",
+    "current_release_boundary": "PASS_EVENT_RESEARCH_ONLY; non-rating and expires when formal 2026H1 report is released",
+    "key_files": [
+      "workspace/research/yahua-group-20260723/research_brief.md",
+      "workspace/research/yahua-group-20260723/gate_manifest.json",
+      "workspace/research/yahua-group-20260723/artifact_contract.json",
+      "workspace/research/yahua-group-20260723/data/verified_financials.md",
+      "workspace/research/yahua-group-20260723/analysis/growth_earnings_model.md",
+      "workspace/research/yahua-group-20260723/analysis/valuation_model.md",
+      "workspace/research/yahua-group-20260723/analysis/valuation_audit.md",
+      "workspace/research/yahua-group-20260723/final_signoff.json"
+    ]
+  },
+  "classification_definitions": {
+    "immediately_completable": "Can be prepared from current filings, archived market data, original broker PDFs, or publicly available sources. It cannot create house FY EPS, target price, upside, or rating before formal H1.",
+    "only_after_formal_H1": "Formal H1 is a necessary input. It is not sufficient if segment, unit-economics, customer/order, or cash-conversion disclosure remains inadequate.",
+    "industry_not_applicable": "Literal China Shipbuilding sector-specific fields should not be copied to Yahua. Only the driver-to-cash-to-valuation-control method transfers."
+  },
+  "overall_conclusion": {
+    "finding": "Yahua's missing house EPS, target price, upside, and rating are correct for its pre-formal-H1 event-research mandate, not a mechanical deficiency against a full-note template.",
+    "full_note_rule": "Do not silently relabel the current event study. Formal H1 must initiate a new full-note contract and R0-R4 lifecycle; unresolved unit-economics or cash gaps require watchlist only / insufficient evidence.",
+    "open_S_or_A_finding_for_current_event_report": false
+  },
+  "gaps": [
+    {
+      "id": "G01",
+      "topic": "Report identity and field-level contract",
+      "classification": "only_after_formal_H1",
+      "reference_requirement": "The reference brief, gate manifest, and contract define a 40-60-page single-stock full research note and require evidence, full-chain, broker, model, valuation, secondary-market, and IC-readiness gates.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/research_brief.md",
+        "workspace/research/china-shipbuilding-600150-20260722/gate_manifest.json",
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json"
+      ],
+      "yahua_status": "Current brief, manifest, and contract intentionally define an earnings-preview event study with no house FY EPS, target, upside, or rating and expiry at formal H1.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/research_brief.md",
+        "workspace/research/yahua-group-20260723/gate_manifest.json",
+        "workspace/research/yahua-group-20260723/artifact_contract.json"
+      ],
+      "conclusion": "A full-note identity requires a new or materially rewritten contract after H1; it must not be an in-place label change."
+    },
+    {
+      "id": "G02",
+      "topic": "Source governance and explicit gap consumption",
+      "classification": "immediately_completable",
+      "reference_requirement": "Every valuation-material claim resolves to a source or explicit block, and every material gap is consumed by a restriction, sensitivity, or monitor in R1.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/coverage_gap_matrix.md"
+      ],
+      "yahua_status": "Source registry, claim audit, source exhaustion log, and G01-G05 coverage gaps already exist for the event study.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/data/source_registry.json",
+        "workspace/research/yahua-group-20260723/data/claim_audit.json",
+        "workspace/research/yahua-group-20260723/source_exhaustion_log.json",
+        "workspace/research/yahua-group-20260723/analysis/coverage_gap_matrix.md"
+      ],
+      "conclusion": "Immediately deepen allowed-method, blocked-method, sensitivity, and owner fields. This prevents fake precision but does not create missing operating inputs."
+    },
+    {
+      "id": "G03",
+      "topic": "Historical financial, segment, balance-sheet, and cash baseline",
+      "classification": "immediately_completable",
+      "reference_requirement": "Official financial history, current interim data, segments, cash flow, debt, capex, customer advances, and share/perimeter reconciliation form the model baseline.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/growth_earnings_model.md"
+      ],
+      "yahua_status": "2023A-2025A and 2026Q1 financials are verified; company card includes 2025 lithium/civil-explosives baseline, negative OCF, and inventory. Formal H1 revenue, cash flow, balance sheet, inventory, and capex are not disclosed.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/data/verified_financials.md",
+        "workspace/research/yahua-group-20260723/analysis/company_fundamental_cards.md"
+      ],
+      "conclusion": "Historical segment, debt, tax, minority-interest, share-count, capex, and working-capital schedules can be built now; H1 forecast inputs remain unavailable until official results."
+    },
+    {
+      "id": "G04",
+      "topic": "Lithium and civil-explosives revenue-to-EPS bridge",
+      "classification": "only_after_formal_H1",
+      "reference_requirement": "The reference model bridges operating drivers to revenue, gross profit, opex, parent net profit, EPS, cash conversion, and sensitivities without converting backlog directly into earnings.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/growth_earnings_model.md",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/chain_earnings_bridge.md"
+      ],
+      "yahua_status": "Current model and segment bridge explicitly stop before H2/FY EPS because formal H1 has no disclosed lithium volume, ASP, unit cost, segment profit, civil-explosives order/collection, or cash-conversion bridge.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/growth_earnings_model.md",
+        "workspace/research/yahua-group-20260723/analysis/segment_forecast_bridge.md",
+        "workspace/research/yahua-group-20260723/analysis/chain_earnings_bridge.md",
+        "workspace/research/yahua-group-20260723/data/growth_driver_model.json"
+      ],
+      "conclusion": "Formal H1 must support a volume/product-mix x realised-ASP minus cost bridge plus civil-explosives revenue/margin/collection, tax, minority-interest, and OCF/working-capital checks. H1 is necessary but not sufficient if those fields remain undisclosed."
+    },
+    {
+      "id": "G05",
+      "topic": "Value-chain, customer, resource, and order valuation credit",
+      "classification": "immediately_completable",
+      "reference_requirement": "Relationship and customer records have row-level provenance, economics, blocked methods, allowed valuation use, and required sensitivity; unverified order/customer claims cannot become valuation credit.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+        "workspace/research/china-shipbuilding-600150-20260722/data/supply_chain_relationships.json",
+        "workspace/research/china-shipbuilding-600150-20260722/data/customer_chain_audit.json"
+      ],
+      "yahua_status": "Current evidence correctly assigns zero or verification-only credit to utilisation, unit costs, customer allocation, self-supply rate, civil-explosives orders, and collections.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/value_chain_economics.md",
+        "workspace/research/yahua-group-20260723/data/supply_chain_relationships.json",
+        "workspace/research/yahua-group-20260723/data/customer_chain_audit.json"
+      ],
+      "conclusion": "Immediately enrich row provenance and usage restrictions. Named-customer revenue, actual self-supply, and project order data remain zero-credit until issuer/customer primary disclosure appears."
+    },
+    {
+      "id": "G06",
+      "topic": "Street comparison and external forecast discipline",
+      "classification": "immediately_completable",
+      "reference_requirement": "Original/official broker sources retain forecast, rating, target, method, source quality, source path, and valuation weight; weak evidence receives zero weight.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+        "workspace/research/china-shipbuilding-600150-20260722/data/broker_street_consensus_20260722.json"
+      ],
+      "yahua_status": "Three original broker PDFs are archived with EPS forecasts; all current valuation weights are zero and Dongwu's CNY42 target is explicitly a single external view.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/data/broker_street_consensus_20260723.md",
+        "workspace/research/yahua-group-20260723/data/consensus_analysis.md",
+        "workspace/research/yahua-group-20260723/source_exhaustion_log.md"
+      ],
+      "conclusion": "Source normalization, share-basis comparison, forecast-revision table, and coverage refresh plan can be done now. External forecasts or a single target cannot be converted into a house target before G04/G09 pass."
+    },
+    {
+      "id": "G07",
+      "topic": "Secondary-market structure and capital-positioning evidence",
+      "classification": "immediately_completable",
+      "reference_requirement": "Use raw adjusted K-line paths, dated OHLCV/turnover, margin, Connect/fund frequency boundaries, Dragon-Tiger queries, source tier, and limitations for every published market statement.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+        "workspace/research/china-shipbuilding-600150-20260722/data/market_structure_20260722.json",
+        "workspace/research/china-shipbuilding-600150-20260722/data/capital_positioning_20260722.json"
+      ],
+      "yahua_status": "Current analysis intentionally limits itself to a 20-day price/turnover event snapshot and explicitly says that index/peer, seat, northbound, margin, and fund data were not collected.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/secondary_market_analysis.md",
+        "workspace/research/yahua-group-20260723/data/verified_market_data.md"
+      ],
+      "conclusion": "This evidence pack can be collected now with frequency and availability limits. It improves positioning and monitoring only; it does not substitute for formal-H1 economics or add target-price credit."
+    },
+    {
+      "id": "G08",
+      "topic": "House FY scenarios, implied expectations, and sensitivity",
+      "classification": "only_after_formal_H1",
+      "reference_requirement": "Independent Bear/Base/Bull operating and cash scenarios produce multi-year revenue, margin, parent net profit, EPS, implied expectations, and downgrade thresholds.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/growth_earnings_model.md",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/implied_growth_sensitivity.md"
+      ],
+      "yahua_status": "No house scenarios exist by design; only a mechanical current-price versus external-EPS cross-check is permitted.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/growth_earnings_model.md",
+        "workspace/research/yahua-group-20260723/analysis/implied_growth_sensitivity.md",
+        "workspace/research/yahua-group-20260723/analysis/valuation_audit.md"
+      ],
+      "conclusion": "After G04, scenarios must identify volume, ASP, cost, civil-explosives revenue/margin/collection, tax, minority interest, and cash assumptions. H1 x2, spot lithium, design capacity, or customer names are not substitute drivers."
+    },
+    {
+      "id": "G09",
+      "topic": "Multi-anchor valuation, target price, and action",
+      "classification": "only_after_formal_H1",
+      "reference_requirement": "Reproducible price/share/market-cap inputs, forecasts, method fit, bear/base/bull, intrinsic/market/Street anchors, weights, fair range/target, upside, catalysts, and invalidation are required; Model Reproducibility must pass.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/valuation_model.md",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/valuation_audit.md",
+        "workspace/research/china-shipbuilding-600150-20260722/data/current_valuation_model_20260722.json"
+      ],
+      "yahua_status": "Current target, upside, and house EPS fields are null; 6.38-8.35x PE only expresses current price divided by external EPS and is not valuation.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/valuation_model.md",
+        "workspace/research/yahua-group-20260723/analysis/valuation_audit.md",
+        "workspace/research/yahua-group-20260723/data/current_valuation_model_20260723.json"
+      ],
+      "conclusion": "Publish valuation only after G04/G08 pass and all valuation arithmetic can reproduce. Otherwise the correct post-H1 result remains watchlist only / insufficient evidence, not a placeholder target."
+    },
+    {
+      "id": "G10",
+      "topic": "House view, risk, current-PDF R0-R4, and final signoff",
+      "classification": "only_after_formal_H1",
+      "reference_requirement": "The reference aligns house view, variant perception, risk framework, current PDF, R0-R4, signoff, case verifier, and shared gate for the same report version.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/house_view.md",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/variant_perception.md",
+        "workspace/research/china-shipbuilding-600150-20260722/final_signoff.md",
+        "workspace/research/china-shipbuilding-600150-20260722/research_workflow_eval.md"
+      ],
+      "yahua_status": "Current house view and signoff are correctly event-only; the 19-page PDF expires at formal H1 and cannot certify a later full note.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/house_view.md",
+        "workspace/research/yahua-group-20260723/analysis/variant_perception.md",
+        "workspace/research/yahua-group-20260723/analysis/risk_framework.md",
+        "workspace/research/yahua-group-20260723/final_signoff.md",
+        "workspace/research/yahua-group-20260723/research_workflow_eval.md"
+      ],
+      "conclusion": "Drafting questions can occur now. Full-note recommendation, current-PDF signoff, R0-R4, and both verifiers must be rebuilt against the H1-after model, not inherited from the event study."
+    },
+    {
+      "id": "G11",
+      "topic": "Deliverable structure, rendering, and version-bound visual evidence",
+      "classification": "only_after_formal_H1",
+      "reference_requirement": "The full-note contract requires a 40-60-page Chinese IC deliverable with model, valuation, market, risk, evidence appendix, rendered-page inspection, and final-signoff binding to the current PDF.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+        "workspace/research/china-shipbuilding-600150-20260722/final_signoff.md"
+      ],
+      "yahua_status": "Template brief, exhibit plan, and narrative blueprint are intentionally designed for the 19-page event study, whose visual review passed for that report type.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/template_brief.md",
+        "workspace/research/yahua-group-20260723/analysis/exhibit_plan.md",
+        "workspace/research/yahua-group-20260723/analysis/narrative_blueprint.md",
+        "workspace/research/yahua-group-20260723/visual_review.md"
+      ],
+      "conclusion": "Future full-note structure and exhibits may be planned now, but a full-note PDF, render set, text snapshot, hash, and visual review must be generated only from the H1-after model and evidence pack; the 19-page event PDF cannot be inflated or re-labelled."
+    },
+    {
+      "id": "G12",
+      "topic": "Shipbuilding-specific operating units and contract economics",
+      "classification": "industry_not_applicable",
+      "reference_requirement": "The reference uses vessel type/price, DWT, yard slots, delivery schedules, classification/acceptance, steel/equipment costs, shipowner advances, military/group orders, and restructuring perimeter controls.",
+      "reference_files": [
+        "workspace/research/china-shipbuilding-600150-20260722/artifact_contract.json",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/value_chain_economics.md",
+        "workspace/research/china-shipbuilding-600150-20260722/analysis/growth_earnings_model.md"
+      ],
+      "yahua_status": "Yahua's material operating fields are lithium volume/product mix/realised ASP/conversion cost/self-supply and civil-explosives licence utilisation/project execution/collections; many are currently undisclosed.",
+      "yahua_files": [
+        "workspace/research/yahua-group-20260723/analysis/value_chain_economics.md",
+        "workspace/research/yahua-group-20260723/analysis/chain_earnings_bridge.md"
+      ],
+      "conclusion": "Do not copy DWT, shipyard, delivery, shipowner-advance, or military-SOTP fields. Transfer only the auditable driver -> revenue -> margin -> cash -> EPS -> valuation-credit control chain."
+    }
+  ],
+  "recommended_sequence": [
+    "Before H1: complete G02, G03, G05, G06, and G07 as preparation only; preserve the non-rating event-study label.",
+    "On formal H1 release: verify income statement, cash flow, balance sheet, receivables, inventory, capex, and segment explanation; record forecast-versus-actual evidence in a new R0 cycle.",
+    "After H1: complete G04, G08, and G09 only if unit economics and cash conversion can be reproduced; otherwise issue watchlist only / insufficient evidence.",
+    "Full-note publication: use a new full-note contract and rebuild R0-R4, current PDF/render/text evidence, case verifier, and shared research gate for the same H1-after version."
+  ],
+  "read_only_boundary": "This comparison creates no EPS, target price, rating, report-type change, or modification to existing Yahua research artifacts."
+}

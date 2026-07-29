@@ -1,0 +1,1224 @@
+{
+  "case_id": "china-shipbuilding-600150-20260722",
+  "data_cutoff": "2026-07-22 CST",
+  "hierarchy": [
+    "A1 exchange/regulator filing or issuer IR",
+    "A2 government/international organization",
+    "B1 original broker PDF or public industry database",
+    "C broker abstract/third-party preview/media repost",
+    "D search snippet",
+    "G corpus gap/not found"
+  ],
+  "perimeter_rules": [
+    "600150 listed company is not CSSC group",
+    "statutory actual/restated is not transaction pro forma",
+    "pre-merger broker forecasts have zero current-valuation weight"
+  ],
+  "sources": [
+    {
+      "source_id": "CF-01",
+      "title": "2023 annual report",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2024-04-27",
+      "local_path": "sources/official-company-20260722/2024-04-27_600150_2023-annual-report.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2024-04-27/600150_20240427_7VOC.pdf",
+      "source_type": "issuer filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "legacy 600150",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "pre-merger; disposal gain affects reported profit",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate legacy orders only",
+      "unsupported_fields": [
+        "post-merger perimeter",
+        "ship ASP",
+        "utilization"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "must be used only as labelled legacy history",
+      "claims_supported": [
+        "2023 legacy financial history",
+        "legacy order scope and disposal-gain normalization"
+      ]
+    },
+    {
+      "source_id": "CF-02",
+      "title": "2024 annual report",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2025-04-30",
+      "local_path": "sources/official-company-20260722/2025-04-30_600150_2024-annual-report.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-04-30/600150_20250430_T1GT.pdf",
+      "source_type": "issuer filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "legacy 600150",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "not the restated 2024 comparator",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate legacy orders only",
+      "unsupported_fields": [
+        "post-merger perimeter",
+        "ship ASP",
+        "utilization"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "must not be the 2025 YoY base",
+      "claims_supported": [
+        "2024 legacy financials",
+        "2024 original-report perimeter is not the 2025 YoY base"
+      ]
+    },
+    {
+      "source_id": "CF-03",
+      "title": "2025 annual report",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2026-04-30",
+      "local_path": "sources/official-company-20260722/2026-04-30_600150_2025-annual-report.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/600150_20260430_TC3V.pdf",
+      "source_type": "audited issuer filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "post-merger statutory actual and restated comparatives",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "aggregated disclosure",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate orders/deliveries/backlog strong; customer, ASP and utilization missing",
+      "unsupported_fields": [
+        "ship-level ASP",
+        "delivery schedule",
+        "military economics",
+        "yard utilization"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "wrong perimeter or pro-forma splice blocks valuation",
+      "claims_supported": [
+        "2024 restated comparator",
+        "2025 statutory actuals",
+        "post-merger perimeter",
+        "aggregate orders/backlog",
+        "weighted-average EPS denominator"
+      ]
+    },
+    {
+      "source_id": "CF-04",
+      "title": "2026 Q1 report",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2026-04-30",
+      "local_path": "sources/official-company-20260722/2026-04-30_600150_2026Q1-report.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/600150_20260430_DRFR.pdf",
+      "source_type": "issuer filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "post-merger actual and exact shares",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "unaudited; no segment margin or backlog update",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not disclosed",
+      "unsupported_fields": [
+        "full-year outcome",
+        "current free float"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "do not annualize one quarter as primary denominator",
+      "claims_supported": [
+        "2026Q1 actuals",
+        "7,525,621,288 total shares"
+      ]
+    },
+    {
+      "source_id": "CF-05",
+      "title": "2026 H1 earnings preview",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2026-07-14",
+      "local_path": "sources/official-company-20260722/2026-07-14_600150_2026H1-earnings-preview.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-14/600150_20260714_QX77.pdf",
+      "source_type": "issuer filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "post-merger unaudited preview",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no revenue, cash flow or margin",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not disclosed",
+      "unsupported_fields": [
+        "final H1 result",
+        "non-recurring detail"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "final result below range or restatement",
+      "claims_supported": [
+        "2026H1 unaudited earnings-preview range"
+      ]
+    },
+    {
+      "source_id": "CF-12",
+      "title": "Final merger report",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2025-07-19",
+      "local_path": "sources/official-company-20260722/2025-07-19_600150-merger-report-final.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-07-19/600150_20250719_8123.pdf",
+      "source_type": "transaction filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "transaction terms, asset perimeter and pro forma",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "pro forma is not later statutory restatement",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "asset scope only",
+      "unsupported_fields": [
+        "post-deal actuals",
+        "all title registrations"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "pro-forma figures cannot be spliced into statutory history",
+      "claims_supported": [
+        "final merger terms",
+        "transaction pro-forma perimeter",
+        "asset scope"
+      ]
+    },
+    {
+      "source_id": "CF-13",
+      "title": "601989 delisting decision",
+      "publisher": "SSE",
+      "date": "2025-08-29",
+      "local_path": "sources/official-company-20260722/2025-08-29_SSE-601989-delisting.html",
+      "original_url": "https://www.sse.com.cn/disclosure/announcement/listing/stock/c/c_20250829_10790128.shtml",
+      "source_type": "exchange decision",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "delisting",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "HTML readable",
+      "limitations": "does not prove legal-person deregistration",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "legal-person deregistration"
+      ],
+      "valuation_consequence": "context only",
+      "downgrade_trigger": "do not equate delisting with deregistration",
+      "claims_supported": [
+        "601989 delisting confirmed",
+        "legal-person deregistration not established"
+      ]
+    },
+    {
+      "source_id": "CF-14",
+      "title": "Share-swap result and new-share listing",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2025-09-12",
+      "local_path": "sources/official-company-20260722/2025-09-12_600150-swap-result-share-change-listing.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-09-12/600150_20250912_BPCR.pdf",
+      "source_type": "issuer filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "final swap terms, share count and listing",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "some title transfers were still in process",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "all title registrations complete"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "current EPS requires 7,525,621,288 shares",
+      "claims_supported": [
+        "final share-swap terms",
+        "post-merger share count",
+        "new-share listing"
+      ]
+    },
+    {
+      "source_id": "CF-15",
+      "title": "Implementation and listing memorandum",
+      "publisher": "China CSSC Holdings/SSE",
+      "date": "2025-09-12",
+      "local_path": "sources/official-company-20260722/2025-09-12_600150-implementation-new-share-listing-memo.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2025-09-12/600150_20250912_YD4T.pdf",
+      "source_type": "issuer filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "legal succession and implementation",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no asset-by-asset completion inventory",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "formal title completion",
+        "601989 deregistration"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "adopt substantive succession wording only",
+      "claims_supported": [
+        "substantive legal succession",
+        "formal registrations not fully inventoried"
+      ]
+    },
+    {
+      "source_id": "CF-16",
+      "title": "2025 continuing-supervision opinion",
+      "publisher": "Financial adviser/SSE disclosure",
+      "date": "2026-05-15",
+      "local_path": "sources/official-company-20260722/2026-05-15_600150-merger-2025-continuing-supervision.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-05-15/600150_20260515_6WVW.pdf",
+      "source_type": "transaction supervision filing",
+      "source_quality": "official_filing",
+      "evidence_tier": "A1",
+      "coverage_scope": "post-implementation supervision",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "still no completion inventory or explicit deregistration filing",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "formal title completion",
+        "601989 deregistration"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "retain caveat",
+      "claims_supported": [
+        "post-merger supervision",
+        "remaining formal-completion corpus gaps"
+      ]
+    },
+    {
+      "source_id": "CF-17",
+      "title": "2025 FY and 2026 Q1 results briefing",
+      "publisher": "China CSSC Holdings",
+      "date": "2026-06-03",
+      "local_path": "sources/official-company-20260722/2026-06-03_600150-2025-FY-2026Q1-briefing.pdf",
+      "original_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-03/600150_20260603_Z8GR.pdf",
+      "source_type": "company IR transcript",
+      "source_quality": "company_ir",
+      "evidence_tier": "A1",
+      "coverage_scope": "management commentary",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "investor-question premises are not company confirmations",
+      "source_tier": "A1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate delivery vintages/cost direction only",
+      "unsupported_fields": [
+        "question premises",
+        "contract-level ASP",
+        "utilization"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "use only explicit management answers",
+      "claims_supported": [
+        "management delivery-vintage commentary",
+        "approximately 65% steel-plus-equipment cost share",
+        "2026 operating plan",
+        "investor-question premise exclusion"
+      ]
+    },
+    {
+      "source_id": "PR-01",
+      "title": "600150 market quote packet",
+      "publisher": "AStock quote service",
+      "date": "2026-07-22",
+      "local_path": "sources/probe-20260722/astock-quote-600150-20260722.json",
+      "original_url": "not disclosed by packet",
+      "source_type": "market data packet",
+      "source_quality": "industry_database",
+      "evidence_tier": "B1",
+      "coverage_scope": "after-close spot snapshot",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "JSON readable",
+      "limitations": "market cap, PE/PB and free float fields were missing zeros; not official close label",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "official close label",
+        "same-time free float"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "use only price 33.02 and recompute market cap",
+      "claims_supported": [
+        "2026-07-22 CNY33.02 price snapshot",
+        "market-cap fields missing and recomputation required"
+      ]
+    },
+    {
+      "source_id": "PR-02",
+      "title": "600150 front-adjusted daily K-line, quote, turnover and circulating-share snapshot",
+      "publisher": "Eastmoney public structured endpoints",
+      "date": "2026-07-22",
+      "local_path": "data/market_structure_20260722.md/json; sources/market-structure-20260722/",
+      "original_url": "Exact endpoints and query parameters are preserved in sources/market-structure-20260722/source_manifest.md",
+      "source_type": "public structured market data",
+      "source_quality": "market_data_provider",
+      "evidence_tier": "B1",
+      "coverage_scope": "727 daily observations labelled fqt=1, cutoff price/volume/amount/turnover/circulating shares",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "raw JSON and SHA-256 manifest",
+      "limitations": "provider is not an exchange-operated historical-price service; reported circulating shares are not strict free float",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "strict free-float shares",
+        "fund-flow identity"
+      ],
+      "valuation_consequence": "supports market-execution context; not a separate valuation anchor",
+      "downgrade_trigger": "use only fqt=1 for reported return, drawdown and moving-average statistics; never relabel circulating shares as free float",
+      "claims_supported": [
+        "727-day explicitly front-adjusted price history",
+        "return, drawdown, moving-average and range calculations",
+        "cutoff volume, amount, turnover, circulating shares and market cap"
+      ]
+    },
+    {
+      "source_id": "PR-03",
+      "title": "600150 margin, Shanghai Connect, fund-holding and Dragon-Tiger evidence pack",
+      "publisher": "Shanghai Stock Exchange and Eastmoney structured data",
+      "date": "2026-06-30 to 2026-07-22",
+      "local_path": "data/capital_positioning_20260722.md/json; sources/capital-positioning-20260722/",
+      "original_url": "Exact endpoints and query parameters are preserved in sources/capital-positioning-20260722/SOURCE_MANIFEST.md",
+      "source_type": "exchange data plus public structured data",
+      "source_quality": "official_market_data / market_data_provider",
+      "evidence_tier": "A1/B1",
+      "coverage_scope": "daily margin detail, quarterly Shanghai Connect holding, quarterly public-fund aggregate, Dragon-Tiger window query",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "raw JSON, SHA-256 manifest and archived negative daily-Connect response",
+      "limitations": "margin is daily but Connect/fund fields are quarterly stocks; daily Connect endpoint returned no result; fund aggregate does not identify active/passive trading",
+      "source_tier": "A1/B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "2026-07-22 daily Shanghai Connect net flow",
+        "capital-owner identity",
+        "causal price attribution"
+      ],
+      "valuation_consequence": "supports market-execution context; zero direct valuation weight",
+      "downgrade_trigger": "do not convert quarterly holdings to daily net flow or treat a Dragon-Tiger negative query as proof of no large trading",
+      "claims_supported": [
+        "2026-07-21 margin balances and recent financing change",
+        "2026Q2 Shanghai Connect holding and change from Q1",
+        "2026Q2 public-fund aggregate holding",
+        "defined near-one-year Dragon-Tiger negative query"
+      ]
+    },
+    {
+      "source_id": "II-06",
+      "title": "2025 shipbuilding statistics",
+      "publisher": "MIIT",
+      "date": "2026-02-01",
+      "local_path": "sources/official-industry-20260722/miit_2025_shipbuilding_statistics.html",
+      "original_url": "https://www.miit.gov.cn/gxsj/tjfx/zbgy/mycb/art/2026/art_fc5e4ed1d3f5421885e6c3afff91cbbc.html",
+      "source_type": "official industry statistics",
+      "source_quality": "industry_database",
+      "evidence_tier": "A2",
+      "coverage_scope": "China completion, contracting and backlog",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "HTML readable",
+      "limitations": "country DWT data cannot prove 600150 value share",
+      "source_tier": "A2",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "industry aggregate only",
+      "unsupported_fields": [
+        "600150 market share"
+      ],
+      "valuation_consequence": "context only",
+      "downgrade_trigger": "no company share premium",
+      "claims_supported": [
+        "2025 China completion/new-order/backlog DWT statistics",
+        "no 600150 company-share inference"
+      ]
+    },
+    {
+      "source_id": "II-07",
+      "title": "2025 shipbuilding industry review",
+      "publisher": "CANSI",
+      "date": "2026-03-12",
+      "local_path": "sources/official-industry-20260722/cansi_2025_industry_review.html",
+      "original_url": "https://www.cansi.org.cn/cms/document/19815.html",
+      "source_type": "industry association review",
+      "source_quality": "industry_database",
+      "evidence_tier": "A2",
+      "coverage_scope": "CGT share, green orders and costs",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "HTML readable",
+      "limitations": "CSSC group rankings cannot be assigned to 600150",
+      "source_tier": "A2",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "industry/group aggregate",
+      "unsupported_fields": [
+        "listed-company share",
+        "listed-company profit"
+      ],
+      "valuation_consequence": "context only",
+      "downgrade_trigger": "label group perimeter",
+      "claims_supported": [
+        "2025 China CGT and green-order context",
+        "CSSC group rank is not 600150 rank"
+      ]
+    },
+    {
+      "source_id": "II-08",
+      "title": "Clarksons PLC 2025 annual report",
+      "publisher": "Clarksons",
+      "date": "2026",
+      "local_path": "sources/official-industry-20260722/clarksons_plc_annual_report_2025.pdf",
+      "original_url": "https://prod.clarksons.com/media/a3zhn1uv/clarksons-plc-annual-report-2025.pdf",
+      "source_type": "public industry database report",
+      "source_quality": "industry_database",
+      "evidence_tier": "B1",
+      "coverage_scope": "global contracting value, CGT, delivery and lead time",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "paywalled vessel price series and company share unavailable",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "global aggregate only",
+      "unsupported_fields": [
+        "ship ASP",
+        "600150 attribution"
+      ],
+      "valuation_consequence": "context only",
+      "downgrade_trigger": "do not capitalize TAM directly",
+      "claims_supported": [
+        "2025 global contracting value/CGT and delivery context",
+        "mixed value per CGT is not vessel ASP"
+      ]
+    },
+    {
+      "source_id": "II-10",
+      "title": "Role of shipbuilding in maritime decarbonisation",
+      "publisher": "OECD",
+      "date": "2025",
+      "local_path": "sources/official-industry-20260722/oecd_role_shipbuilding_decarbonisation_2025.pdf",
+      "original_url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2025/04/the-role-of-shipbuilding-in-maritime-decarbonisation_cbe46c48/0c8362c0-en.pdf",
+      "source_type": "intergovernmental study",
+      "source_quality": "industry_database",
+      "evidence_tier": "A2",
+      "coverage_scope": "technology and policy context",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no company order attribution",
+      "source_tier": "A2",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "600150 order attribution"
+      ],
+      "valuation_consequence": "context only",
+      "downgrade_trigger": "policy context only",
+      "claims_supported": [
+        "maritime-decarbonisation technology and policy context",
+        "no company order attribution"
+      ]
+    },
+    {
+      "source_id": "II-11",
+      "title": "UK shipbuilding peer review",
+      "publisher": "OECD",
+      "date": "2026",
+      "local_path": "sources/official-industry-20260722/oecd_uk_shipbuilding_peer_review_2026.pdf",
+      "original_url": "https://www.oecd.org/content/dam/oecd/en/publications/reports/2026/06/peer-review-of-the-united-kingdom-shipbuilding-industry_b60824a7/4c880aa8-en.pdf",
+      "source_type": "intergovernmental study",
+      "source_quality": "industry_database",
+      "evidence_tier": "A2",
+      "coverage_scope": "country orderbook concentration",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no company CR3/CR5",
+      "source_tier": "A2",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "country aggregate",
+      "unsupported_fields": [
+        "company CR3",
+        "company CR5"
+      ],
+      "valuation_consequence": "context only",
+      "downgrade_trigger": "no company share inference",
+      "claims_supported": [
+        "country orderbook concentration",
+        "company CR3/CR5 unavailable"
+      ]
+    },
+    {
+      "source_id": "II-12",
+      "title": "IMO Net-Zero Framework FAQ",
+      "publisher": "IMO",
+      "date": "accessed 2026-07-22",
+      "local_path": "sources/official-industry-20260722/imo_net_zero_framework_faq.html",
+      "original_url": "https://www.imo.org/en/mediacentre/hottopics/pages/faqs-the-imo-net-zero-framework.aspx",
+      "source_type": "regulator policy page",
+      "source_quality": "industry_database",
+      "evidence_tier": "A2",
+      "coverage_scope": "legal status and policy scope",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "HTML readable",
+      "limitations": "framework not legally effective at cutoff",
+      "source_tier": "A2",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "not applicable",
+      "unsupported_fields": [
+        "final price schedule",
+        "company orders"
+      ],
+      "valuation_consequence": "context only",
+      "downgrade_trigger": "optionality only until binding",
+      "claims_supported": [
+        "IMO framework not legally effective at cutoff",
+        "policy optionality only"
+      ]
+    },
+    {
+      "source_id": "II-13",
+      "title": "Review of Maritime Transport 2025 chapter 2",
+      "publisher": "UNCTAD",
+      "date": "2025",
+      "local_path": "not captured",
+      "original_url": "https://unctad.org/system/files/official-document/rmt2025ch2_en.pdf",
+      "source_type": "intergovernmental report",
+      "source_quality": "not_found",
+      "evidence_tier": "A2 lead only",
+      "coverage_scope": "future retrieval lead only; no quantitative publication claim",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "remote download blocked",
+      "limitations": "local original missing; all exact concentration and vessel-ratio figures were removed from publication artifacts",
+      "source_tier": "A2 lead",
+      "original_availability": "URL available, artifact missing",
+      "customer_order_ASP_utilization_coverage": "none for publication",
+      "unsupported_fields": [
+        "all quantitative claims",
+        "600150 attribution"
+      ],
+      "valuation_consequence": "zero weight",
+      "downgrade_trigger": "rearchive with page locators before any upgrade",
+      "claims_supported": [
+        "future retrieval URL only",
+        "local original artifact unavailable; no exact publication figure supported"
+      ]
+    },
+    {
+      "source_id": "II-14",
+      "title": "Section 301 maritime action suspension lead",
+      "publisher": "USTR",
+      "date": "2025-11",
+      "local_path": "not captured",
+      "original_url": "https://ustr.gov/about/policy-offices/press-office/press-releases/2025/november/ustr-opens-comment-docket-suspension-action-section-301-investigation-chinas-targeting-maritime",
+      "source_type": "official policy page lead",
+      "source_quality": "not_found",
+      "evidence_tier": "A2 lead only",
+      "coverage_scope": "future retrieval lead only",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "not archived",
+      "limitations": "exact dates and legal effect removed from publication artifacts",
+      "source_tier": "A2 lead",
+      "original_availability": "URL only",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": ["dates", "legal effect", "company impact"],
+      "valuation_consequence": "zero weight",
+      "downgrade_trigger": "archive official page before any use",
+      "claims_supported": ["future retrieval URL only"]
+    },
+    {
+      "source_id": "II-15",
+      "title": "China trade fact-sheet lead",
+      "publisher": "White House",
+      "date": "2025-11",
+      "local_path": "not captured",
+      "original_url": "https://www.whitehouse.gov/fact-sheets/2025/11/fact-sheet-president-donald-j-trump-strikes-deal-on-economic-and-trade-relations-with-china/",
+      "source_type": "official policy page lead",
+      "source_quality": "not_found",
+      "evidence_tier": "A2 lead only",
+      "coverage_scope": "future retrieval lead only",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "not archived",
+      "limitations": "exact dates and legal effect removed from publication artifacts",
+      "source_tier": "A2 lead",
+      "original_availability": "URL only",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": ["dates", "legal effect", "company impact"],
+      "valuation_consequence": "zero weight",
+      "downgrade_trigger": "archive official page before any use",
+      "claims_supported": ["future retrieval URL only"]
+    },
+    {
+      "source_id": "II-16",
+      "title": "Yangzijiang Shipbuilding 2025 annual report lead",
+      "publisher": "Yangzijiang Shipbuilding",
+      "date": "2026",
+      "local_path": "not captured",
+      "original_url": "https://www.yzjship.com/Upload/ueditor/files/2026-04-16/ANNUALREPORT2025-800a197145c944b6b1f93e7185339d06.pdf",
+      "source_type": "peer company report lead",
+      "source_quality": "company_ir",
+      "evidence_tier": "A2 lead only",
+      "coverage_scope": "peer context only",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "URL only",
+      "limitations": "not standardized and not usable for peer valuation",
+      "source_tier": "A2 lead",
+      "original_availability": "URL only",
+      "customer_order_ASP_utilization_coverage": "peer context only",
+      "unsupported_fields": ["comparable valuation"],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "archive and normalize before upgrade",
+      "claims_supported": ["peer reference lead only"]
+    },
+    {
+      "source_id": "II-17",
+      "title": "HD Hyundai Heavy Industries capability page lead",
+      "publisher": "HD Hyundai Heavy Industries",
+      "date": "accessed 2026-07-22",
+      "local_path": "not captured",
+      "original_url": "https://www.hd.com/en/business/shipbuilding/hhi/contents",
+      "source_type": "peer official page lead",
+      "source_quality": "company_ir",
+      "evidence_tier": "C1 lead only",
+      "coverage_scope": "capability context only",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "URL only",
+      "limitations": "marketing content; no standardized economics",
+      "source_tier": "C1 lead",
+      "original_availability": "URL only",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": ["financials", "valuation"],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "archive official financial reports before upgrade",
+      "claims_supported": ["peer capability lead only"]
+    },
+    {
+      "source_id": "II-18",
+      "title": "Samsung Heavy Industries ship portfolio lead",
+      "publisher": "Samsung Heavy Industries",
+      "date": "accessed 2026-07-22",
+      "local_path": "not captured",
+      "original_url": "https://samsungshi.com/En/Ps_ship.aspx",
+      "source_type": "peer official page lead",
+      "source_quality": "company_ir",
+      "evidence_tier": "C1 lead only",
+      "coverage_scope": "capability context only",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "URL only",
+      "limitations": "no standardized economics",
+      "source_tier": "C1 lead",
+      "original_availability": "URL only",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": ["financials", "valuation"],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "archive official financial reports before upgrade",
+      "claims_supported": ["peer capability lead only"]
+    },
+    {
+      "source_id": "II-19",
+      "title": "Hanwha Ocean profile lead",
+      "publisher": "Hanwha Ocean",
+      "date": "accessed 2026-07-22",
+      "local_path": "not captured",
+      "original_url": "https://www.hanwha.com/companies/hanwha-ocean.do?nlsFlag=gnb",
+      "source_type": "peer official page lead",
+      "source_quality": "company_ir",
+      "evidence_tier": "C1 lead only",
+      "coverage_scope": "capability context only",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "URL only",
+      "limitations": "no standardized economics",
+      "source_tier": "C1 lead",
+      "original_availability": "URL only",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": ["financials", "valuation"],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "archive official financial reports before upgrade",
+      "claims_supported": ["peer capability lead only"]
+    },
+    {
+      "source_id": "II-20",
+      "title": "Fincantieri 2025 results lead",
+      "publisher": "Fincantieri",
+      "date": "2026",
+      "local_path": "not captured",
+      "original_url": "https://www.fincantieri.com/en/newsroom/press-releases/2026/2025-financial-results-approved",
+      "source_type": "peer official page lead",
+      "source_quality": "company_ir",
+      "evidence_tier": "A2 lead only",
+      "coverage_scope": "cruise and defence peer context only",
+      "downloaded_or_captured": "not captured",
+      "extraction_status": "URL only",
+      "limitations": "business mix differs; no comparable valuation",
+      "source_tier": "A2 lead",
+      "original_availability": "URL only",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": ["comparable valuation"],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "archive and normalize before upgrade",
+      "claims_supported": ["peer reference lead only"]
+    },
+    {
+      "source_id": "BR-01",
+      "title": "2026 H1 preview comment",
+      "publisher": "Huayuan Securities",
+      "date": "2026-07-14",
+      "local_path": "sources/broker-reports/2026-07-22/01-huayuan-2026h1-preview.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202607141826961354_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "post-merger 2026E-2028E",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no target price; repeated team coverage",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "target price",
+        "implied upside"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "Street reference only",
+      "claims_supported": [
+        "post-merger 2026E-2028E broker forecasts",
+        "rating and PE reference",
+        "explicit target price not disclosed"
+      ]
+    },
+    {
+      "source_id": "BR-02",
+      "title": "2025 annual and 2026 Q1 comment",
+      "publisher": "Chengtong Securities",
+      "date": "2026-05-06",
+      "local_path": "sources/broker-reports/2026-07-22/02-chengtong-2025ar-2026q1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202605081822083256_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "post-merger 2026E-2028E",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no target price",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "target price",
+        "implied upside"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "Street reference only",
+      "claims_supported": [
+        "post-merger 2026E-2028E broker forecasts",
+        "rating and PE reference",
+        "explicit target price not disclosed"
+      ]
+    },
+    {
+      "source_id": "BR-03",
+      "title": "2025 annual and 2026 Q1 comment",
+      "publisher": "Soochow Securities",
+      "date": "2026-05-05",
+      "local_path": "sources/broker-reports/2026-07-22/03-dongwu-2025ar-2026q1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202605051821967882_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "post-merger 2026E-2028E",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no target price; high-end profit forecast",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "target price",
+        "implied upside"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "must retain low/base/high range",
+      "claims_supported": [
+        "post-merger 2026E-2028E broker forecasts",
+        "rating and PE reference",
+        "explicit target price not disclosed"
+      ]
+    },
+    {
+      "source_id": "BR-04",
+      "title": "2026 Q1 comment",
+      "publisher": "Huayuan Securities",
+      "date": "2026-05-01",
+      "local_path": "sources/broker-reports/2026-07-22/04-huayuan-2026q1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202605011821926492_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "post-merger 2026E-2028E",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no target price; same team as BR-01",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "target price",
+        "implied upside"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "do not count as independent vote from BR-01",
+      "claims_supported": [
+        "post-merger 2026E-2028E broker forecasts",
+        "rating and PE reference",
+        "explicit target price not disclosed"
+      ]
+    },
+    {
+      "source_id": "BR-05",
+      "title": "2026 Q1 comment",
+      "publisher": "Sinolink Securities",
+      "date": "2026-04-29",
+      "local_path": "sources/broker-reports/2026-07-22/05-guojin-2026q1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202604301821799085_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "post-merger 2026E-2028E",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "no target price",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "target price",
+        "implied upside"
+      ],
+      "valuation_consequence": "supports valuation",
+      "downgrade_trigger": "Street reference only",
+      "claims_supported": [
+        "post-merger 2026E-2028E broker forecasts",
+        "rating and PE reference",
+        "explicit target price not disclosed"
+      ]
+    },
+    {
+      "source_id": "BR-06",
+      "title": "2025 earnings preview comment",
+      "publisher": "Sinolink Securities",
+      "date": "2026-01-29",
+      "local_path": "sources/broker-reports/2026-07-22/06-guojin-2025-performance-preview.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202601301818568760_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "old post-merger forecast",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "superseded; no 2028E or target",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "2028E",
+        "target price"
+      ],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "zero current-cross-section weight",
+      "claims_supported": [
+        "historical post-merger or pro-forma forecast revision",
+        "excluded from current cross-section"
+      ]
+    },
+    {
+      "source_id": "BR-07",
+      "title": "2025 Q3 comment",
+      "publisher": "Chengtong Securities",
+      "date": "2025-10-30",
+      "local_path": "sources/broker-reports/2026-07-22/07-chengtong-2025q3.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202510311772551806_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "old post-merger forecast",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "superseded; no 2028E or target",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "2028E",
+        "target price"
+      ],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "zero current-cross-section weight",
+      "claims_supported": [
+        "historical post-merger or pro-forma forecast revision",
+        "excluded from current cross-section"
+      ]
+    },
+    {
+      "source_id": "BR-08",
+      "title": "2025 Q3 comment",
+      "publisher": "Soochow Securities",
+      "date": "2025-10-30",
+      "local_path": "sources/broker-reports/2026-07-22/08-dongwu-2025q3.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202510311772233909_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "old post-merger forecast",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "superseded; no 2028E or target",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "2028E",
+        "target price"
+      ],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "zero current-cross-section weight",
+      "claims_supported": [
+        "historical post-merger or pro-forma forecast revision",
+        "excluded from current cross-section"
+      ]
+    },
+    {
+      "source_id": "BR-09",
+      "title": "Merger completion comment",
+      "publisher": "Sinolink Securities",
+      "date": "2025-09-18",
+      "local_path": "sources/broker-reports/2026-07-22/09-guojin-merger-close.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202509181745860366_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "post-merger transaction pro forma",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "pro-forma from 2025-01-01; not statutory actual",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "aggregate only",
+      "unsupported_fields": [
+        "statutory actual",
+        "2028E",
+        "target price"
+      ],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "do not splice into statutory history",
+      "claims_supported": [
+        "historical post-merger or pro-forma forecast revision",
+        "excluded from current cross-section"
+      ]
+    },
+    {
+      "source_id": "BR-10",
+      "title": "2025 H1 comment",
+      "publisher": "Chengtong Securities",
+      "date": "2025-08-29",
+      "local_path": "sources/broker-reports/2026-07-22/10-chengtong-2025h1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202509051739045266_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "pre-merger legacy 600150",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "explicitly excludes merger; 4.47243bn shares",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "legacy aggregate only",
+      "unsupported_fields": [
+        "post-merger forecasts",
+        "target price"
+      ],
+      "valuation_consequence": "blocks valuation",
+      "downgrade_trigger": "current valuation weight zero",
+      "claims_supported": [
+        "pre-merger legacy forecast",
+        "zero current-valuation weight due to 4.47243bn-share perimeter"
+      ]
+    },
+    {
+      "source_id": "BR-11",
+      "title": "2025 H1 comment",
+      "publisher": "Huayuan Securities",
+      "date": "2025-09-02",
+      "local_path": "sources/broker-reports/2026-07-22/11-huayuan-2025h1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202509021738100043_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "pre-merger legacy 600150",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "4.47243bn shares",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "legacy aggregate only",
+      "unsupported_fields": [
+        "post-merger forecasts",
+        "target price"
+      ],
+      "valuation_consequence": "blocks valuation",
+      "downgrade_trigger": "current valuation weight zero",
+      "claims_supported": [
+        "pre-merger legacy forecast",
+        "zero current-valuation weight due to 4.47243bn-share perimeter"
+      ]
+    },
+    {
+      "source_id": "BR-12",
+      "title": "2025 H1 comment",
+      "publisher": "Soochow Securities",
+      "date": "2025-09-01",
+      "local_path": "sources/broker-reports/2026-07-22/12-dongwu-2025h1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202509011737631268_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "pre-merger legacy 600150",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "explicitly excludes merger; 4.47243bn shares",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "legacy aggregate only",
+      "unsupported_fields": [
+        "post-merger forecasts",
+        "target price"
+      ],
+      "valuation_consequence": "blocks valuation",
+      "downgrade_trigger": "current valuation weight zero",
+      "claims_supported": [
+        "pre-merger legacy forecast",
+        "zero current-valuation weight due to 4.47243bn-share perimeter"
+      ]
+    },
+    {
+      "source_id": "BR-13",
+      "title": "2025 H1 comment",
+      "publisher": "Sinolink Securities",
+      "date": "2025-08-29",
+      "local_path": "sources/broker-reports/2026-07-22/13-guojin-2025h1.pdf",
+      "original_url": "https://pdf.dfcfw.com/pdf/H3_AP202508301736869752_1.pdf",
+      "source_type": "original broker report",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "B1",
+      "coverage_scope": "pre-merger legacy 600150",
+      "downloaded_or_captured": "downloaded",
+      "extraction_status": "PDF and text",
+      "limitations": "4.47243bn shares",
+      "source_tier": "B1",
+      "original_availability": "available",
+      "customer_order_ASP_utilization_coverage": "legacy aggregate only",
+      "unsupported_fields": [
+        "post-merger forecasts",
+        "target price"
+      ],
+      "valuation_consequence": "blocks valuation",
+      "downgrade_trigger": "current valuation weight zero",
+      "claims_supported": [
+        "pre-merger legacy forecast",
+        "zero current-valuation weight due to 4.47243bn-share perimeter"
+      ]
+    },
+    {
+      "source_id": "AG-03",
+      "title": "Huatai 2026-05-03 third-party preview",
+      "publisher": "third-party report site",
+      "date": "2026-05-03",
+      "local_path": "sources/probe-20260722/huatai-600150-260503-preview.html",
+      "original_url": "not preserved in artifact",
+      "source_type": "third-party report preview",
+      "source_quality": "third_party_preview",
+      "evidence_tier": "C2",
+      "coverage_scope": "58.96 target-price lead",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "HTML readable",
+      "limitations": "not broker official or original PDF",
+      "source_tier": "C2",
+      "original_availability": "unavailable",
+      "customer_order_ASP_utilization_coverage": "abstract only",
+      "unsupported_fields": [
+        "auditable original valuation table"
+      ],
+      "valuation_consequence": "watchlist only",
+      "downgrade_trigger": "valuation weight zero",
+      "claims_supported": [
+        "CNY58.96 third-party target-price lead",
+        "zero valuation weight without original report"
+      ]
+    },
+    {
+      "source_id": "AG-04",
+      "title": "Guotai Haitong 2026-05-19 failed preview",
+      "publisher": "third-party site",
+      "date": "2026-05-19",
+      "local_path": "sources/probe-20260722/guotai-haitong-600150-260519-preview.html",
+      "original_url": "not preserved in artifact",
+      "source_type": "failed preview",
+      "source_quality": "not_found",
+      "evidence_tier": "G",
+      "coverage_scope": "47.00 target-price lead",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "local artifact is a 404 page",
+      "limitations": "does not contain claimed abstract or forecast",
+      "source_tier": "G",
+      "original_availability": "unavailable",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": [
+        "all forecast fields",
+        "target price"
+      ],
+      "valuation_consequence": "blocks valuation",
+      "downgrade_trigger": "valuation weight zero; do not cite as visible abstract",
+      "claims_supported": [
+        "CNY47.00 unresolved lead",
+        "local artifact is a 404 and supports no forecast"
+      ]
+    },
+    {
+      "source_id": "AG-05",
+      "title": "iFinD consensus failed probe",
+      "publisher": "10jqka",
+      "date": "2026-05-18",
+      "local_path": "sources/probe-20260722/10jqka-ifind-consensus-600150-20260518.html",
+      "original_url": "not preserved in artifact",
+      "source_type": "failed access",
+      "source_quality": "not_found",
+      "evidence_tier": "G",
+      "coverage_scope": "consensus probe",
+      "downloaded_or_captured": "captured",
+      "extraction_status": "Nginx forbidden only",
+      "limitations": "no usable fields",
+      "source_tier": "G",
+      "original_availability": "unavailable",
+      "customer_order_ASP_utilization_coverage": "none",
+      "unsupported_fields": [
+        "all consensus fields"
+      ],
+      "valuation_consequence": "blocks valuation",
+      "downgrade_trigger": "must not be cited",
+      "claims_supported": [
+        "iFinD probe failed with forbidden response",
+        "supports no consensus fields"
+      ]
+    }
+  ]
+}

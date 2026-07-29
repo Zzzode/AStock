@@ -1,0 +1,49 @@
+{
+  "cycle": "R1_model",
+  "status": "BLOCKED",
+  "open_s_count": 2,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "baseline_verifier": "37 PASS / 2 FAIL",
+  "repair_groups": [
+    {
+      "owner_skill": "valuation",
+      "owner_agents": [
+        "valuation-specialist",
+        "valuation-auditor",
+        "valuation-modeler"
+      ],
+      "issues": ["R1-S-004"],
+      "required_artifacts": [
+        "data/current_valuation_model_20260718.json",
+        "analysis/valuation_model.md",
+        "analysis/valuation_audit.md",
+        "analysis/valuation_coverage_reconciliation.md",
+        "sections/ch07_valuation.tex"
+      ],
+      "acceptance": "Each ticker uses a genuinely business-model-specific primary method and an independently evidenced secondary anchor. Bespoke P/S bands that reverse-solve the former PEG component target are insufficient; the corrected targets must be recalculated from disclosed peers, history or business economics."
+    },
+    {
+      "owner_skill": "growth-earnings-model",
+      "owner_agents": [
+        "growth-earnings-modeler"
+      ],
+      "issues": [
+        "R1-S-003"
+      ],
+      "required_artifacts": [
+        "analysis/growth_earnings_model.md",
+        "analysis/segment_forecast_bridge.md",
+        "analysis/implied_growth_sensitivity.md",
+        "data/growth_driver_model.json"
+      ],
+      "acceptance": "Every credited growth case traces a real base/growth split through segment revenue or proxy, recognition, margin, opex/tax, NP and EPS; unavailable cases lose high-growth multiple credit and are downgraded."
+    }
+  ],
+  "verified_findings": ["R1-S-001", "R1-S-002", "R1-S-005", "R1-A-001", "R1-A-002", "R1-B-001"],
+  "final_acceptance": [
+    "Independent R1_model re-review closes every S-Level and A-Level issue.",
+    "Case verifier reaches 39 PASS / 0 FAIL only after findings are genuinely closed and final sign-off exists.",
+    "Industry-chain and repo research gates pass without suppressing or editing verifier logic."
+  ]
+}

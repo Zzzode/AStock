@@ -1,0 +1,248 @@
+{
+  "case_id": "yahua-group-20260723",
+  "as_of": "2026-07-23",
+  "owner_scope": "industry_price_peer_evidence_only",
+  "classification_rule": {
+    "confirmed": "可追溯至本包 L1/L2/L3 原始文件或案例既有 L1 披露；不超出该来源直接表述。",
+    "inference": "由多项已确认事实推导，明确不是来源的直接结论。",
+    "unverified": "发行人未披露、没有独立数据，或来源不足以支持归因/量化。"
+  },
+  "commodity_price": {
+    "product": "电池级碳酸锂现货",
+    "currency_unit": "CNY_per_tonne",
+    "h1_2026_path": [
+      {
+        "period": "2026-01 monthly average",
+        "value": 156000,
+        "classification": "confirmed",
+        "source_id": "PRICE-SMM-26H1",
+        "model_use": "可以作为 2026Q1 的行业价格环境背景；不可映射为雅化实际 ASP。"
+      },
+      {
+        "period": "2026-02 monthly average",
+        "value": 149600,
+        "classification": "confirmed",
+        "source_id": "PRICE-SMM-26H1",
+        "model_use": "可以作为价格波动区间的校验点；不可年化。"
+      },
+      {
+        "period": "2026-03",
+        "value": "SMM称月均价环比约+5%，未在本包原文给出绝对均价",
+        "classification": "confirmed",
+        "source_id": "PRICE-SMM-26H1",
+        "model_use": "可作方向验证，不能作为精确单吨假设。"
+      },
+      {
+        "period": "2026-04",
+        "value": "SMM称月均价环比约+6%，未在本包原文给出绝对均价",
+        "classification": "confirmed",
+        "source_id": "PRICE-SMM-26H1",
+        "model_use": "可作方向验证，不能作为精确单吨假设。"
+      },
+      {
+        "period": "2026-05",
+        "value": "SMM称月均价环比约+12%；另有转述称期货主力月中一度突破CNY200,000/t、月末CNY179,740/t",
+        "classification": "confirmed",
+        "source_id": "PRICE-SMM-26H1;PRICE-MKT-26H1",
+        "model_use": "可作为价格弹性高、非线性风险的情景边界；期货点位不是现货 ASP。"
+      },
+      {
+        "period": "2026-06",
+        "value": "SMM称价格中枢回落至约CNY160,000/t附近；未给出可供复算的月均绝对值",
+        "classification": "confirmed",
+        "source_id": "PRICE-SMM-26H1",
+        "model_use": "可作为 Q2 末价格状态的方向性锚；不可替代月均实际结算价。"
+      }
+    ],
+    "latest_explicit_captured_spot": {
+      "date": "2026-07-01",
+      "range_cny_per_tonne": [155100, 165100],
+      "mid_cny_per_tonne": 160100,
+      "classification": "confirmed",
+      "source_id": "PRICE-CNMN-26J",
+      "limitation": "这是公开来源中本次抓取到的最新明确现货数字，不能称为7月23日实时点位，也不能当作雅化实际销售均价。"
+    },
+    "cross_period_reference": {
+      "date": "2025-12-31",
+      "mid_cny_per_tonne": 118500,
+      "date_2026_07_01_mid_cny_per_tonne": 160100,
+      "simple_change_pct": 35.1055,
+      "classification": "inference",
+      "source_id": "PRICE-SMM-25D;PRICE-CNMN-26J",
+      "limitation": "两个来源、两个单点报价的机械比较；不代表H1平均涨幅、雅化ASP涨幅或利润弹性。"
+    },
+    "scenario_eligibility": {
+      "eligible": [
+        "把约CNY150,000-CNY160,000/t描述为2026H1价格中枢的区间性背景，而不是单一确定价格。",
+        "设置价格维持、回到2026年1-2月中枢、继续上行或下行的敏感性测试，但必须分别披露销量、单位成本和套保假设来源。",
+        "把2026年6-7月约CNY160,000/t作为估值模型的市场观察日，而非公司收入或利润的输入。"
+      ],
+      "not_eligible": [
+        "用CNY160,100/t直接乘雅化销量生成收入、毛利或EPS。",
+        "将现货报价等同于氢氧化锂、长协结算价、产品组合ASP或已实现价格。",
+        "把SMM月度供需/预测直接当成公司订单、库存或客户排产。"
+      ]
+    }
+  },
+  "demand_supply": {
+    "confirmed": [
+      {
+        "fact": "2026H1中国新能源汽车产量743.8万辆、销量744.6万辆；新能源汽车出口235.5万辆。",
+        "source_id": "DEMAND-CAAM-26H1",
+        "model_use": "锂电终端需求方向背景，不可转换为碳酸锂需求或雅化销量。"
+      },
+      {
+        "fact": "SMM回顾称2026H1国内碳酸锂累计产出约62.2万吨；5月产量约11.33万吨、6月约11.53万吨，5月碳酸锂进口37,555吨、累计进口15.3万吨，同比+53%。",
+        "source_id": "PRICE-SMM-26H1",
+        "model_use": "可用于供给压力和价格波动的情景讨论；L3行业口径，不能作为公司产量或库存。"
+      },
+      {
+        "fact": "SMM回顾称6月价格中枢回落同时伴随进口处于高位、广期所仓单约5万吨量级；该文将其归因为价格上行压力减弱的重要背景。",
+        "source_id": "PRICE-SMM-26H1",
+        "model_use": "可作为熊市价格情景的机制说明，不能断言未来供需失衡。"
+      }
+    ],
+    "inference": [
+      "终端新能源车与行业锂盐需求仍提供正向需求底座，但H1价格并非单边上涨：供给、进口和库存会显著改变价格对公司利润的传导。",
+      "因此，雅化业绩不能只用新能源汽车销量增长解释；价格、资源成本、产品组合和套保/非经常损益需要单独拆分。"
+    ],
+    "unverified": [
+      "雅化2026H1锂盐销量、产品结构、实际ASP、单位完全成本、长协/现货比例、套保敞口和期末库存结构。",
+      "雅化客户的实际采购量及其对2026H2的排产、订单与价格接受度。"
+    ]
+  },
+  "peer_q1_operations": [
+    {
+      "company": "天齐锂业",
+      "ticker": "002466.SZ",
+      "revenue_cny_mn": 5128.048,
+      "attributable_np_cny_mn": 1876.028,
+      "revenue_yoy_pct": 98.44,
+      "attributable_np_yoy_pct": 1699.12,
+      "direct_driver": "公司披露主要锂产品销售均价同比明显增长；同时披露SQM预计业绩增长的投资收益影响。",
+      "classification": "confirmed",
+      "source_id": "PEER-TQ-Q1",
+      "comparability_limit": "含联营公司SQM投资收益，不能用于雅化锂盐经营利润的逐元映射。"
+    },
+    {
+      "company": "盛新锂能",
+      "ticker": "002240.SZ",
+      "revenue_cny_mn": 3284.049,
+      "attributable_np_cny_mn": 464.036,
+      "revenue_yoy_pct": 378.58,
+      "attributable_np_yoy_pct": "from -154.737 CNY mn to +464.036 CNY mn",
+      "direct_driver": "公司披露锂盐销售价格同比显著上涨，并叠加印尼工厂销售出货、量价齐升。",
+      "classification": "confirmed",
+      "source_id": "PEER-SX-Q1",
+      "comparability_limit": "印尼工厂出货为该公司特有驱动，不能视为雅化的行业共性。"
+    },
+    {
+      "company": "赣锋锂业",
+      "ticker": "002460.SZ",
+      "attributable_np_cny_mn": "Q1 preliminary range 1600-2100",
+      "direct_driver": "公司预告称下游锂盐需求增长、销售价格同比显著上涨和资源项目产能释放优化成本；另有约CNY259mn PLS股票公允价值变动收益。",
+      "classification": "confirmed",
+      "source_id": "PEER-GF-P",
+      "comparability_limit": "为业绩预告而非最终季报，且包含公允价值收益，不能当作纯主业利润。"
+    }
+  ],
+  "peer_2026e_secondary_aggregates": [
+    {
+      "company": "天齐锂业",
+      "ticker": "002466.SZ",
+      "net_profit_cny_mn": 6425.873,
+      "eps_cny": 3.7611,
+      "revenue_cny_mn": 23749.964,
+      "contributing_analyst_count": 9,
+      "classification": "confirmed_secondary_aggregate",
+      "source_id": "PEER-EST-TQ"
+    },
+    {
+      "company": "赣锋锂业",
+      "ticker": "002460.SZ",
+      "net_profit_cny_mn": 7360.0,
+      "eps_cny": 3.51,
+      "revenue_cny_mn": 46106.909,
+      "contributing_analyst_count": 11,
+      "classification": "confirmed_secondary_aggregate",
+      "source_id": "PEER-EST-GF"
+    },
+    {
+      "company": "盛新锂能",
+      "ticker": "002240.SZ",
+      "net_profit_cny_mn": 1923.0,
+      "eps_cny": 2.102,
+      "revenue_cny_mn": 13465.8,
+      "contributing_analyst_count": 5,
+      "classification": "confirmed_secondary_aggregate",
+      "source_id": "PEER-EST-SX"
+    }
+  ],
+  "civil_explosives": {
+    "confirmed": [
+      {
+        "fact": "工信部2025年通知要求民爆企业推进工业控制系统转型升级、严格隐患治理与监管执法，并要求完成行业转型升级目标任务。",
+        "source_id": "MINEPOL-MIIT-25",
+        "model_use": "可说明行业政策环境及安全/合规成本约束；不能证明雅化市场份额、订单或盈利。"
+      },
+      {
+        "fact": "锡林郭勒盟2025年工业炸药产量23,999.2吨、同比+8.61%，当地炸药/雷管/导爆索销售均增长。",
+        "source_id": "MINEACT-XLGL-25",
+        "model_use": "仅为区域矿业活动的正向样本；不可外推为全国民爆景气或雅化收入。"
+      }
+    ],
+    "unverified": [
+      "雅化2026H1民爆产品销量、爆破服务订单、新签矿山项目、区域份额、价格及利润率。",
+      "全国民爆行业2026H1销售额、产量或爆破服务工作量的统一可比统计。"
+    ]
+  },
+  "external_expectation_for_yahua": {
+    "confirmed": [
+      {
+        "fact": "案例已归档三份完整券商PDF的2026E雅化归母净利润区间为CNY2,315mn-CNY3,031.65mn，EPS区间CNY2.01-CNY2.63；东吴单一目标价为CNY42，基于16x 2026E PE，报告日价格CNY24.65。",
+        "source_path": "data/broker_street_consensus_20260723.md",
+        "classification": "confirmed_external_view",
+        "model_use": "可作为市场已有盈利预期和分歧的外部参考；不是雅化指引、AStock预测或当前目标价。"
+      },
+      {
+        "fact": "以案例市场快照2026-07-22收盘CNY16.79除以三家券商2026E EPS CNY2.01-CNY2.63，得到约6.38x-8.35x的机械前瞻PE区间。",
+        "source_path": "data/verified_market_data.md;data/broker_street_consensus_20260723.md",
+        "classification": "inference",
+        "model_use": "仅用于定位现价相对外部EPS预期，不能倒推出雅化目标价或买卖结论。"
+      }
+    ],
+    "unverified": [
+      "市场将雅化上涨完全归因于锂价、硫化锂、资源自给或民爆业务的比例。",
+      "东吴、国信、开源报告中的假设是否仍在7月23日后有效。"
+    ]
+  },
+  "attribution_conclusion": {
+    "confirmed": "锂盐行业β存在：2026Q1天齐、盛新、赣锋均在发行人披露中把锂产品价格同比上涨列为业绩改善因素；雅化自身H1预告也将锂盐量价增长列为原因。",
+    "inference": "雅化H1大幅改善最合理的现阶段表述是“行业价格/需求β与公司经营因素共同作用”，而非单一公司特异性反转。行业β的证据更强；公司层面的效率、资源/采购平衡和成本改善目前主要来自雅化自身表述，尚不能独立量化其贡献。",
+    "unverified": "雅化H1利润增量中价格、销量、单位成本、资源自供、民爆、套保和非经常损益各自的金额贡献；因此不能把H1预告机械外推到H2或全年。"
+  },
+  "testable_variants": [
+    {
+      "variant": "利润改善主要是行业价格β，而非公司已形成可持续的单位成本优势。",
+      "evidence_now": "同业Q1普遍将锂价上涨列为主因；雅化尚无2026H1分部销量、ASP和单位成本披露。",
+      "validation_trigger": "雅化2026H1中报披露锂盐销量/收入/毛利率，或公司投资者关系记录给出可复算的单位成本、自给率和套保信息。",
+      "falsifier": "在锂价回落时雅化仍能以经披露的单位成本下降、稳定销量/毛利显著跑赢同业；反之则支持β主导。",
+      "model_treatment": "不得在基准EPS中给予未披露的成本优势信用；仅设为上行情景并写明验证条件。"
+    },
+    {
+      "variant": "价格约CNY160,000/t附近已足以维持行业盈利修复。",
+      "evidence_now": "2026H1价格中枢约CNY160,000/t；但6月进口和仓单高位对应价格回落压力。",
+      "validation_trigger": "后续现货/期货价格、库存、进口和公司实际ASP同步披露。",
+      "falsifier": "价格回到约CNY150,000/t或以下后，公司季度毛利/现金流显著下滑；或公司ASP与市场背离。",
+      "model_treatment": "只能用作价格敏感性边界，不能用单点价格乘产量。"
+    },
+    {
+      "variant": "民爆业务可在锂价波动时提供稳定底座。",
+      "evidence_now": "雅化2025年民爆有业务基础；政策要求转型升级，区域样本显示矿业区活动正向，但没有雅化2026订单/利润数据。",
+      "validation_trigger": "2026H1分部收入/毛利、爆破服务订单或公司可核验项目进展。",
+      "falsifier": "民爆分部收入/毛利下降，或安全/监管事件导致产能/服务受限。",
+      "model_treatment": "基准模型不得上调民爆利润；可保持2025已披露水平作为待验证观察项。"
+    }
+  ],
+  "source_manifest": "sources/rebuild-industry-peer-20260723/capture_manifest.md"
+}

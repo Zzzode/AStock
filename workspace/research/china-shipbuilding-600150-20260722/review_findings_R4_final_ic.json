@@ -1,0 +1,198 @@
+{
+  "cycle": "R4_final_ic",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "review_date": "2026-07-23",
+  "cycle_status": "PASS",
+  "publishability_status": "PASS",
+  "institutional_status": "INSTITUTIONAL_PASS",
+  "publishability_score": 92,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "review_scope": [
+    "main.pdf",
+    "main_current_text.txt",
+    "review_findings_R0_evidence.json through review_findings_R3_render_compliance.json",
+    "review_log.md",
+    "analysis/valuation_model.md",
+    "analysis/valuation_audit.md",
+    "analysis/house_view.md",
+    "data/current_valuation_model_20260722.json",
+    "data/growth_driver_model.json",
+    "data/growth_earnings_model_current.json",
+    "analysis/growth_earnings_model.md",
+    "analysis/chain_earnings_bridge.md",
+    "analysis/risk_framework.md",
+    "governance/exhibit_format_review_R1_20260722.md"
+  ],
+  "findings": [
+    {
+      "issue_id": "R4-S-001",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "house-view-analyst",
+      "artifact": "analysis/house_view.md",
+      "evidence": "The first R4 read found stale statements that no final target had been set and independent valuation was incomplete, contradicting the final CNY33.07 target, CNY31.64-35.96 range and completed R1 model.",
+      "fix_required": "Synchronize the House thesis, action table and concluding valuation questions to the frozen final valuation and H1 thresholds.",
+      "blocking_gate": "final_thesis_valuation_consistency",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R4 maker-checker re-read",
+      "verification_evidence": "analysis/house_view.md now states CNY33.02 current price, CNY33.07 target, +0.15% return, CNY31.64-35.96 range, CNY11.21/33.08/48.34 scenarios, hold/wait action and the complete 101/99, 11.72%, 92/90, 10.5% and OCF/NP 0.8x gates. Searches find no old no-target or valuation-incomplete language."
+    },
+    {
+      "issue_id": "R4-A-001",
+      "severity": "A",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "data/current_valuation_model_20260722.json",
+      "evidence": "The first R4 read found r1_status=CONDITIONAL_PASS_PENDING_MAKER_CHECKER although the R1 maker-checker had already closed all S/A issues and the valuation audit passed.",
+      "fix_required": "Synchronize the canonical structured valuation status to the verified R1 lifecycle without changing any model values.",
+      "blocking_gate": "canonical_valuation_status_consistency",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R4 maker-checker re-read",
+      "verification_evidence": "data/current_valuation_model_20260722.json now reports r1_status=PASS_MAKER_CHECKER_VERIFIED; all price, forecast, scenario, target, weight and action fields are unchanged and remain reproducible."
+    },
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "owner_skill": "exhibit-format-reviewer",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf pages 26, 35 and 47",
+      "evidence": "Three chapter- or appendix-ending pages have low content density, while every box/conclusion is complete and no investment conclusion is clipped or detached.",
+      "fix_required": "Accept at cutoff as presentation-only residual; reopen on any later pagination change.",
+      "blocking_gate": "orphan_page_and_layout_density",
+      "status": "waived",
+      "waived": true,
+      "waiver_reason": "Non-blocking whitespace only; content, hierarchy and legibility are intact.",
+      "approver": "R4 final IC maker-checker"
+    },
+    {
+      "issue_id": "R3-B-002",
+      "severity": "B",
+      "owner_skill": "exhibit-format-reviewer",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf pages 42-43",
+      "evidence": "A short Appendix A sentence crosses pages 42-43 with its first line at the prior-page foot; no text is lost and the source conclusion remains unambiguous.",
+      "fix_required": "Accept at cutoff as a pagination-polish residual; add a local Needspace guard in any future rebuild.",
+      "blocking_gate": "paragraph_widow_orphan_control",
+      "status": "waived",
+      "waived": true,
+      "waiver_reason": "Reading continuity is mildly reduced but evidence meaning and source traceability are intact.",
+      "approver": "R4 final IC maker-checker"
+    },
+    {
+      "issue_id": "R3-B-003",
+      "severity": "B",
+      "owner_skill": "exhibit-format-reviewer",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf page 38",
+      "evidence": "The six-column risk matrix is print-dense at scriptsize but remains readable, bounded and followed by prose synthesis; no threshold, sensitivity or action is omitted.",
+      "fix_required": "Accept at cutoff as a print-density residual; split the exhibit or shorten repeated wording in a future edition.",
+      "blocking_gate": "risk_matrix_print_readability",
+      "status": "waived",
+      "waived": true,
+      "waiver_reason": "The risk conclusion remains readable and is repeated in full-size prose/action exhibits.",
+      "approver": "R4 final IC maker-checker"
+    }
+  ],
+  "final_ic_checks": {
+    "current_price_CNY": 33.02,
+    "final_target_CNY": 33.07,
+    "published_upside_pct": 0.15,
+    "base_fair_value_range_CNY": [
+      31.64,
+      35.96
+    ],
+    "rating_action": "中性偏多（持有/等待验证）",
+    "rating_target_consistent": true,
+    "bear_base_bull_CNY": [
+      11.21,
+      33.08,
+      48.34
+    ],
+    "scenario_forecast_year": 2027,
+    "base_forecast_2026_2028_parent_np_CNY100m": [
+      172.762156,
+      216.489959,
+      246.810914
+    ],
+    "base_forecast_2026_2028_eps_CNY": [
+      2.295653,
+      2.876705,
+      3.279608
+    ],
+    "model_reproducibility": "PASS",
+    "cosco_project_correct_amount": "approximately CNY50bn / CNY500 hundred million, 87 vessels",
+    "cosco_incremental_revenue_eps_target_credit": 0,
+    "military_credit": 0,
+    "hudong_zhonghua_credit": 0,
+    "unallocated_group_order_credit": 0,
+    "asset_injection_credit": 0,
+    "h1_positive_gate_parent_adjusted_np_CNY100m": "at least 101 / 99",
+    "h1_hard_downgrade_parent_adjusted_np_CNY100m": "below 92 / 90",
+    "core_gross_margin_positive_gate": "at least 11.72%",
+    "core_gross_margin_hard_downgrade": "below 10.5%",
+    "full_year_ocf_parent_np_floor": "0.8x",
+    "h1_annualized": false,
+    "broker_target_weight": 0,
+    "sole_valuation_parent": "600150.SH"
+  },
+  "confirmed_strengths": [
+    "The current-price action is investable and falsifiable: approximately zero target upside leads to hold/wait, not an unsupported Buy action.",
+    "Bear/Base/Bull values and 2026E-2028E revenue, parent profit, EPS, cash conversion and valuation math trace from the frozen growth JSON through the valuation audit to the PDF appendix.",
+    "The approximately CNY50bn/87-vessel COSCO project is correctly attributed to 600150 subsidiaries, de-duplicated against aggregate orders/backlog and assigned zero incremental valuation credit.",
+    "Military, Hudong-Zhonghua, unallocated group orders, asset injection and weak target-price leads remain zero-credit in every scenario.",
+    "Catalysts, positive gates, hard invalidation thresholds, Bear switching logic and monitoring behavior are mutually consistent across House, valuation, Chapter 1 and Chapter 13.",
+    "R0-R3 S/A findings are closed; the three R3 B findings are explicitly accepted as presentation-only residuals and do not obscure the IC conclusion."
+  ],
+  "residual_risks": [
+    {
+      "risk": "Ship-level ASP, schedule, unified yard utilization, payment milestones and cost pass-through remain unavailable.",
+      "why_non_blocking": "They block ship/yard SOTP and direct backlog conversion. The report uses only consolidated scenarios, labels the growth model CONDITIONAL and makes hold/wait contingent on H1 margin, delivery and cash evidence."
+    },
+    {
+      "risk": "No archived original broker PDF provides a usable target price.",
+      "why_non_blocking": "Broker target weight is zero; the final target is independently reproduced from an 85% fundamental and 15% observable-market anchor, and the action is already downgraded to hold/wait versus positive broker ratings."
+    },
+    {
+      "risk": "2026H1 remains an unaudited preview and 2027-2028 earnings duration is a House scenario.",
+      "why_non_blocking": "The preview is not annualized; the report publishes Q2/H2 residuals, gross-margin/cash gates and hard downgrade thresholds. This uncertainty supports the current wait-for-validation action rather than contradicting it."
+    },
+    {
+      "risk": "Three R3 B-Level pagination/print-density findings remain in the frozen PDF.",
+      "why_non_blocking": "No content is missing, clipped or unreadable; valuation, recommendation, evidence and risk conclusions remain visible and are reinforced in prose."
+    }
+  ],
+  "downgrade_status": "downgrade_not_required_at_cutoff",
+  "verifier_summary": {
+    "historical_pre_remediation_case_local_verifier": "39 PASS / 0 FAIL on 2026-07-22; applies only to the prior 50-page PDF and pre-remediation review state.",
+    "historical_pre_remediation_shared_research_gate": "133 PASS / 0 FAIL / RESULT PASS on 2026-07-22; applies only to the prior 50-page PDF and pre-remediation review state.",
+    "historical_pre_remediation_workflow_evaluator": "95/95 checks passed, score 100.0, zero blocking failures; applies only to the prior review state.",
+    "current_case_local_verifier": "39 PASS / 0 FAIL on 2026-07-23 against the current 51-page PDF and review state.",
+    "current_shared_research_gate": "137 PASS / 0 FAIL / RESULT PASS on 2026-07-23 against the current review state.",
+    "current_workflow_evaluator": "99/99 checks passed, score 100.0, zero blocking failures, publishable=true on 2026-07-23.",
+    "current_render_refresh": "51-page A4 PDF rendered to 51 PNGs under rendered/current-51; critical market-data, appendix and end-matter pages visually rechecked.",
+    "industry_chain_verifier": "NOT_APPLICABLE: single-stock deep dive with one valuation parent; the embedded chain module is non-full-chain."
+  },
+  "required_next_actions": [
+    "Re-run the rendered-set refresh and all project-native gates after any material report, model or source change."
+  ],
+  "market_data_remediation_recheck": {
+    "reviewed_at": "2026-07-23",
+    "pdf_sha256": "847ce2676eb646fba6520ae1f0bf77aa96200918fb6db87f687ef0577dc04052",
+    "page_count": 51,
+    "open_s_count": 0,
+    "open_a_count": 0,
+    "ic_consistency_result": "PASS",
+    "evidence_and_action_checks": [
+      "PR-02 supplies a labelled fqt=1 727-day series, dated price/liquidity/turnover/circulating-share snapshot and archived source hashes.",
+      "PR-03 supplies dated margin, quarterly Shanghai Connect, quarterly public-fund and Dragon-Tiger query evidence; frequency restrictions are explicit in Chapter 12 and Appendix A.",
+      "Strict free float and daily Shanghai Connect net holding change are not omitted data: each has a specific archived source boundary, and neither is used to manufacture an execution or valuation claim.",
+      "The market package does not create extra valuation credit. CNY33.02 current price, CNY33.07 target, CNY31.64-35.96 range, 11.21/33.08/48.34 scenario values and hold/wait action remain consistent.",
+      "No quarter-end ownership stock or Dragon-Tiger negative result is presented as real-time institutional flow or as evidence of zero market activity."
+    ],
+    "finalization_boundary": "This is an independent institutional recheck with no unclosed S/A finding. The current PDF/review state completed the rendered-set refresh, case-local verifier, shared research gate and workflow evaluation on 2026-07-23."
+  }
+}

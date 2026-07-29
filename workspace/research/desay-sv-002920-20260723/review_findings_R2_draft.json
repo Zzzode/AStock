@@ -1,0 +1,52 @@
+{
+  "cycle": "R2_draft",
+  "cycle_status": "PASS",
+  "publishability_status": "PASS_FOR_RENDER_STAGE",
+  "publishability_score": 96,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "findings": [
+    {
+      "issue_id": "R2-B-003",
+      "cycle": "R2_draft",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch05a_physical_ai.tex",
+      "evidence": "The initial reader-facing conclusion could be read as a near-term fair-value report only, despite a future-opportunity mandate. The first Physical AI chapter still left the displayed final valuation at CNY86.4, so the option was visible but not formalised in the investment reference.",
+      "fix_required": "Add a dedicated Physical AI chapter, a two-layer value table, three-path map, commercialisation gates, conditional scale sensitivity and an event scorecard; label CNY86.4 as the base-business anchor only, show CNY2.49 as a distinct risk-adjusted option layer, and show the CNY88.9 combined reference in the dashboard and valuation section.",
+      "blocking_gate": "future_opportunity_reader_traceability",
+      "status": "closed",
+      "verifier_ref": "sections/ch01_dashboard.tex; sections/ch05a_physical_ai.tex; sections/ch07_valuation.tex; main_current_text.txt",
+      "reopened_count": 2
+    },
+    {
+      "issue_id": "R2-B-001",
+      "cycle": "R2_draft",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "artifact": "main.tex",
+      "evidence": "The draft must keep historic reported facts, external earnings cross-checks, house scenarios and absent fields visibly separated for a reader who does not inspect the workpapers.",
+      "fix_required": "Add an explicit decision-workpaper appendix and carry the zero-credit boundary for non-disclosed items into the IC summary, valuation bridge and monitoring matrix.",
+      "blocking_gate": "reader_traceability",
+      "status": "closed",
+      "verifier_ref": "sections/app_decision_workpapers.tex; sections/ch01_dashboard.tex; sections/ch07_valuation.tex",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-B-002",
+      "cycle": "R2_draft",
+      "severity": "B",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-auditor",
+      "artifact": "analysis/valuation_model.md",
+      "evidence": "The published original broker corpus provides earnings ranges but does not provide a current auditable target-price-and-method anchor.",
+      "fix_required": "Keep the Street price-anchor weight at zero and show only the report's fundamental and market-implied calculation path.",
+      "blocking_gate": "street_anchor_boundary",
+      "status": "closed",
+      "verifier_ref": "data/consensus_analysis.md; source_exhaustion_log.md; sections/app_evidence_workpapers.tex",
+      "reopened_count": 0
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "schema_version": "source_exhaustion.v2",
+  "rows": [
+    {
+      "topic": "2026H1 earnings guidance",
+      "sources_checked": "official announcement list through 2026-07-13",
+      "found": "no H1 preview or flash report",
+      "missing": "H1 revenue/profit and compute segment disclosure",
+      "model_policy": "retain Q1 actuals and original-broker full-year denominator",
+      "next_verification_path": "2026 interim report"
+    },
+    {
+      "topic": "compute contract economics",
+      "sources_checked": "three official contract PDFs",
+      "found": "amount, term, billing, acceptance conditions, A/B acceptance and revenue recognition",
+      "missing": "recognized amount, server count, unit rent, capex, margin, financing cost and cash collection",
+      "model_policy": "explicit recognition-ratio and net-margin scenarios only",
+      "next_verification_path": "interim report and C-contract acceptance announcement"
+    },
+    {
+      "topic": "transaction completion and placement",
+      "sources_checked": "transaction draft, shareholder resolution and dilution statement",
+      "found": "shareholder approval, purchase shares, placement ceiling and pro-forma financials",
+      "missing": "SSE approval, CSRC registration, placement price/size and closing date",
+      "model_policy": "scenario-specific share denominators and event discount",
+      "next_verification_path": "SSE transaction review and registration announcements"
+    },
+    {
+      "topic": "daily technical history",
+      "sources_checked": "AStock/Baostock/AkShare/Sina/Eastmoney adapters and public quote pages",
+      "found": "full realtime quote and public financing snapshots",
+      "missing": "stable clean 20/60/120-day series",
+      "model_policy": "publish event price map, not fabricated indicators",
+      "next_verification_path": "Wind/Choice/iFinD or exchange history export"
+    }
+  ]
+}

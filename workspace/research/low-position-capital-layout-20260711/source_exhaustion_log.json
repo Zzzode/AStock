@@ -1,0 +1,238 @@
+{
+  "schema_version": "astock.source_exhaustion.refresh.v1",
+  "data_cutoff": "2026-07-15",
+  "entries": [
+    {
+      "probe": "Eastmoney push2 industry-flow endpoint",
+      "result": "bypassed",
+      "reason": "RemoteDisconnected at push2/push2his API layer in this network",
+      "fallback": "DataBao public daily/weekly tables with 31/31 coverage; SWS official index history for price state",
+      "impact": "industry stages are observed through 2026-07-14, not claimed as 2026-07-15 intraday"
+    },
+    {
+      "probe": "Continuous-flow universe",
+      "result": "partial",
+      "reason": "The public syndicated article claims 112 names but exposes only 30 ranked rows",
+      "fallback": "retain 30 rows with 30/112 coverage and do not extend to the claimed universe",
+      "impact": "continuous inflow is auxiliary evidence only and cannot support a complete 112-name screen"
+    },
+    {
+      "probe": "Broker metadata/PDF refresh",
+      "result": "partial",
+      "reason": "5 candidate broker PDF probes failed or were unavailable",
+      "fallback": "zero Street weight; keep Q1/official preview evidence and House screening range",
+      "impact": "no weak source is used as positive Street consensus"
+    },
+    {
+      "probe": "Formal target anchor coverage",
+      "result": "closed",
+      "reason": "4 formal pool candidates have current original-PDF target/range fields",
+      "fallback": "House-only high-space priority models remain non-formal validation candidates",
+      "impact": "formal pool is bounded to auditable external-anchor rows"
+    },
+    {
+      "probe": "Section 4.3 six-ticker high-upside evidence closure",
+      "result": "closed_with_zero_formal_upgrades",
+      "reason": "6/6 tickers have original API metadata, archived original-PDF review, target-field classification, Q1 cash-flow evidence and a final admission decision; current positive-weight original targets=0",
+      "fallback": "historical original targets, media reposts and failed third-party probes remain zero-weight counterevidence; verified non-disclosure closes the source gap without fabricating a target",
+      "impact": "all six rows remain non-formal; three stay in the priority validation pool and three stay candidate-only until future earnings, cash-flow, order/price-cycle and pool-admission events are observed",
+      "tickers": [
+        "002432",
+        "000623",
+        "600739",
+        "000685",
+        "600150",
+        "301308"
+      ],
+      "ticker_results": [
+        {
+          "ticker": "002432",
+          "metadata_report_count": 2,
+          "archived_original_pdf_count": 2,
+          "current_original_target_count": 0,
+          "accepted_anchor": {
+            "status": "found",
+            "target_low": 70.28,
+            "target_high": 70.28,
+            "target_midpoint": 70.28,
+            "report_date": "2024-12-23",
+            "age_days_at_cutoff": 569,
+            "broker": "东吴证券",
+            "source_class": "historical_original_pdf",
+            "source_path": "refresh-20260715/sources/broker-reports-20260715/002432-九安医疗/2024-12-23-东吴证券-立足iHealth系列-展望O-O互联网医疗.pdf",
+            "extract": "FCFF估值测算得到公司市值344.47亿元，对应每股价值70.28元。",
+            "derivation": null,
+            "valuation_weight": 0.0,
+            "implied_upside_vs_current": 0.0491,
+            "target_to_house_probability_value": 0.2478
+          },
+          "q1_ocf_100mn": -0.9248,
+          "final_admission_code": "retain_candidate_not_priority_not_formal",
+          "next_verification": [
+            "重新满足优先池的价格位置与行业阶段规则",
+            "H2扣非利润持续性与经营现金流转正",
+            "2026-04-01之后原始券商目标价或合理价值区间"
+          ]
+        },
+        {
+          "ticker": "000623",
+          "metadata_report_count": 2,
+          "archived_original_pdf_count": 2,
+          "current_original_target_count": 0,
+          "accepted_anchor": {
+            "status": "found",
+            "target_low": 18.02,
+            "target_high": 18.02,
+            "target_midpoint": 18.02,
+            "report_date": "2024-03-27",
+            "age_days_at_cutoff": 840,
+            "broker": "国元证券",
+            "source_class": "historical_original_pdf_derived_per_share",
+            "source_path": "refresh-20260715/sources/broker-reports-20260715/000623-吉林敖东/2024-03-27-国元证券-首次覆盖报告-医药主业持续发力-金融赋能-老牌药企迎来新发展.pdf",
+            "extract": "公司目标总市值223.7亿元；A股总股本1,241.07百万股。",
+            "derivation": "223.7亿元 / 12.4107亿股 = 18.02元/股",
+            "valuation_weight": 0.0,
+            "implied_upside_vs_current": -0.0343,
+            "target_to_house_probability_value": 0.2316
+          },
+          "q1_ocf_100mn": 0.107,
+          "final_admission_code": "retain_priority_not_formal",
+          "next_verification": [
+            "2026-04-01之后原始券商目标价或合理价值区间",
+            "H2扣非利润持续性与投资收益质量",
+            "经营现金流持续为正"
+          ]
+        },
+        {
+          "ticker": "600739",
+          "metadata_report_count": 4,
+          "archived_original_pdf_count": 4,
+          "current_original_target_count": 0,
+          "accepted_anchor": {
+            "status": "found",
+            "target_low": 22.79,
+            "target_high": 22.79,
+            "target_midpoint": 22.79,
+            "report_date": "2017-10-30",
+            "age_days_at_cutoff": 3180,
+            "broker": "太平洋证券",
+            "source_class": "stale_original_pdf",
+            "source_path": "refresh-20260715/sources/broker-reports-20260715/600739-辽宁成大/2017-10-30-太平洋-辽宁成大2017年三季报点评-单季业绩暴增-投资收益稳定.pdf",
+            "extract": "目标价22.79元。",
+            "derivation": null,
+            "valuation_weight": 0.0,
+            "implied_upside_vs_current": 1.0813,
+            "target_to_house_probability_value": 0.5203
+          },
+          "q1_ocf_100mn": -1.7588,
+          "final_admission_code": "retain_priority_not_formal",
+          "next_verification": [
+            "2026-04-01之后原始券商目标价或合理价值区间",
+            "H2扣非利润持续性与广发证券投资收益质量",
+            "经营现金流转正"
+          ]
+        },
+        {
+          "ticker": "000685",
+          "metadata_report_count": 6,
+          "archived_original_pdf_count": 6,
+          "current_original_target_count": 0,
+          "accepted_anchor": {
+            "status": "found",
+            "target_low": 10.5,
+            "target_high": 11.11,
+            "target_midpoint": 10.805,
+            "report_date": "2025-03-04",
+            "age_days_at_cutoff": 498,
+            "broker": "国信证券",
+            "source_class": "historical_original_pdf",
+            "source_path": "refresh-20260715/sources/broker-reports-20260715/000685-中山公用/2025-03-04-国信证券-攻守兼备的珠三角公用事业平台-长期破净估值有望修复.pdf",
+            "extract": "合理估值10.50-11.11元。",
+            "derivation": null,
+            "valuation_weight": 0.0,
+            "implied_upside_vs_current": -0.0344,
+            "target_to_house_probability_value": 0.3674
+          },
+          "q1_ocf_100mn": -0.2693,
+          "final_admission_code": "retain_candidate_not_priority_not_formal",
+          "next_verification": [
+            "重新满足优先池的价格位置与行业阶段规则",
+            "H2扣非利润与投资收益可持续性",
+            "经营现金流转正",
+            "当前原始券商目标价或合理价值区间"
+          ]
+        },
+        {
+          "ticker": "600150",
+          "metadata_report_count": 56,
+          "archived_original_pdf_count": 8,
+          "current_original_target_count": 0,
+          "accepted_anchor": {
+            "status": "found",
+            "target_low": 31.36,
+            "target_high": 31.36,
+            "target_midpoint": 31.36,
+            "report_date": "2023-03-27",
+            "age_days_at_cutoff": 1206,
+            "broker": "国金证券",
+            "source_class": "stale_original_api_metadata",
+            "source_path": "sources/high-upside-evidence-20260716/eastmoney-report-metadata/600150_report_list.json",
+            "extract": "indvAimPriceL=31.36; indvAimPriceT=31.36",
+            "derivation": null,
+            "valuation_weight": 0.0,
+            "implied_upside_vs_current": -0.086,
+            "target_to_house_probability_value": 0.3763
+          },
+          "q1_ocf_100mn": 81.5153,
+          "final_admission_code": "retain_priority_not_formal",
+          "next_verification": [
+            "当前原始券商目标价或合理价值区间",
+            "H2订单交付、船价、利润率与应收回款",
+            "集团整合后的持续盈利与现金流"
+          ]
+        },
+        {
+          "ticker": "301308",
+          "metadata_report_count": 12,
+          "archived_original_pdf_count": 8,
+          "current_original_target_count": 0,
+          "accepted_anchor": {
+            "status": "not_disclosed",
+            "target_low": null,
+            "target_high": null,
+            "target_midpoint": null,
+            "report_date": null,
+            "age_days_at_cutoff": null,
+            "broker": null,
+            "source_class": "not_found_in_original_corpus",
+            "source_path": null,
+            "extract": null,
+            "derivation": null,
+            "valuation_weight": 0.0,
+            "implied_upside_vs_current": null,
+            "target_to_house_probability_value": null
+          },
+          "q1_ocf_100mn": -28.7454,
+          "final_admission_code": "retain_candidate_not_priority_not_formal",
+          "next_verification": [
+            "重新满足优先池的价格位置与行业阶段规则",
+            "当前原始券商目标价或合理价值区间",
+            "H2存储价格、出货、毛利率与库存周期",
+            "经营现金流显著改善"
+          ]
+        }
+      ]
+    },
+    {
+      "probe": "Priority pool original broker target search for 000737 and 600120",
+      "result": "exhausted_public_sources",
+      "reason": "AkShare/Eastmoney report metadata returned no usable original broker PDF path for 000737 and 600120; web search found news, user-generated valuation, AI analysis, or generic quote pages rather than auditable broker target-price reports.",
+      "fallback": "keep the two tickers as conditional/risk observations with zero external-anchor weight and explicit external data request rows",
+      "impact": "no user article, AI valuation page, search snippet, or news article is used as a positive broker/Street anchor",
+      "tickers": [
+        "000737",
+        "600120"
+      ]
+    }
+  ]
+}

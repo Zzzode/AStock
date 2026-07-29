@@ -1,0 +1,97 @@
+# Research Workflow Evaluation
+
+- Publishable: True
+- Score: 100.0
+- Passed: 87/87
+- Blocking failures: 0
+- Status: excellent
+
+## Checks
+
+- PASS | S | case directory exists | workspace/research/dongyangguang-600673-20260710
+- PASS | S | exists research_brief.md | research_brief.md
+- PASS | S | exists gate_manifest.json | gate_manifest.json
+- PASS | S | exists artifact_contract.json | artifact_contract.json
+- PASS | S | exists review_log.md | review_log.md
+- PASS | S | exists final_signoff.json | final_signoff.json
+- PASS | A | md/json pair present: gate_manifest | gate_manifest
+- PASS | A | md/json pair present: artifact_contract | artifact_contract
+- PASS | A | md/json pair present: final_signoff | final_signoff
+- PASS | A | md/json pair present: source_exhaustion_log | source_exhaustion_log
+- PASS | A | md/json pair present: data/source_registry | data/source_registry
+- PASS | A | md/json pair present: data/claim_audit | data/claim_audit
+- PASS | S | gate manifest json parses | 
+- PASS | S | artifact contract json parses | 
+- PASS | S | final sign-off json parses | 
+- PASS | S | required artifact exists: analysis/broker_target_trend.md | analysis/broker_target_trend.md
+- PASS | S | required artifact exists: analysis/delta_audit.md | analysis/delta_audit.md
+- PASS | S | required artifact exists: analysis/exhibit_plan.md | analysis/exhibit_plan.md
+- PASS | S | required artifact exists: analysis/growth_earnings_model.md | analysis/growth_earnings_model.md
+- PASS | S | required artifact exists: analysis/house_view.md | analysis/house_view.md
+- PASS | S | required artifact exists: analysis/implied_growth_sensitivity.md | analysis/implied_growth_sensitivity.md
+- PASS | S | required artifact exists: analysis/risk_framework.md | analysis/risk_framework.md
+- PASS | S | required artifact exists: analysis/secondary_market_analysis.md | analysis/secondary_market_analysis.md
+- PASS | S | required artifact exists: analysis/segment_forecast_bridge.md | analysis/segment_forecast_bridge.md
+- PASS | S | required artifact exists: analysis/segment_valuation_model.md | analysis/segment_valuation_model.md
+- PASS | S | required artifact exists: analysis/template_brief.md | analysis/template_brief.md
+- PASS | S | required artifact exists: analysis/valuation_audit.md | analysis/valuation_audit.md
+- PASS | S | required artifact exists: analysis/valuation_model.md | analysis/valuation_model.md
+- PASS | S | required artifact exists: analysis/value_chain_economics.md | analysis/value_chain_economics.md
+- PASS | S | required artifact exists: analysis/variant_perception.md | analysis/variant_perception.md
+- PASS | S | required artifact exists: data/broker_street_consensus_20260713.json | data/broker_street_consensus_20260713.json
+- PASS | S | required artifact exists: data/broker_street_consensus_20260713.md | data/broker_street_consensus_20260713.md
+- PASS | S | required artifact exists: data/claim_audit.json | data/claim_audit.json
+- PASS | S | required artifact exists: data/claim_audit.md | data/claim_audit.md
+- PASS | S | required artifact exists: data/compute_contract_bridge_20260713.json | data/compute_contract_bridge_20260713.json
+- PASS | S | required artifact exists: data/current_valuation_model_20260713.json | data/current_valuation_model_20260713.json
+- PASS | S | required artifact exists: data/growth_driver_model.json | data/growth_driver_model.json
+- PASS | S | required artifact exists: data/source_registry.json | data/source_registry.json
+- PASS | S | required artifact exists: data/source_registry.md | data/source_registry.md
+- PASS | S | required artifact exists: data/transaction_dilution_model_20260713.json | data/transaction_dilution_model_20260713.json
+- PASS | S | required artifact exists: final_signoff.json | final_signoff.json
+- PASS | S | required artifact exists: final_signoff.md | final_signoff.md
+- PASS | S | required artifact exists: main.pdf | main.pdf
+- PASS | S | required artifact exists: main.tex | main.tex
+- PASS | S | required artifact exists: main_current_text.txt | main_current_text.txt
+- PASS | S | required artifact exists: research_brief.md | research_brief.md
+- PASS | S | required artifact exists: research_workflow_eval.json | research_workflow_eval.json
+- PASS | S | required artifact exists: research_workflow_eval.md | research_workflow_eval.md
+- PASS | S | required artifact exists: review_log.md | review_log.md
+- PASS | S | required artifact exists: source_exhaustion_log.json | source_exhaustion_log.json
+- PASS | S | required artifact exists: source_exhaustion_log.md | source_exhaustion_log.md
+- PASS | A | gate manifest depth gates complete | all depth gates present
+- PASS | A | artifact contract declares required fields and depth gates | 
+- PASS | S | review findings present | review_findings_*.json
+- PASS | S | review findings parse: review_findings_R0_evidence.json | 
+- PASS | A | repair plan pair present: R0_evidence | R0_evidence
+- PASS | S | review findings parse: review_findings_R1_model.json | 
+- PASS | A | repair plan pair present: R1_model | R1_model
+- PASS | S | review findings parse: review_findings_R2_draft.json | 
+- PASS | A | repair plan pair present: R2_draft | R2_draft
+- PASS | S | review findings parse: review_findings_R3_render_compliance.json | 
+- PASS | A | repair plan pair present: R3_render_compliance | R3_render_compliance
+- PASS | S | review findings parse: review_findings_R4_final_ic.json | 
+- PASS | S | no open S-Level findings | 0
+- PASS | A | no open unwaived A-Level findings | 0
+- PASS | S | publishability score present | review_log.md
+- PASS | S | publishability score >= 90 | 96
+- PASS | S | valuation model reproducibility pass | analysis/valuation_audit.md
+- PASS | S | valuation model required sections complete | all valuation sections present
+- PASS | S | valuation model structured rows present | rows=1
+- PASS | S | valuation model row fields complete | 
+- PASS | S | valuation model target/upside recalculates | 
+- PASS | S | single-stock valuation model institutional depth | segment valuation and secondary-market artifacts present
+- PASS | S | broker/street consensus json present | data/broker_street_consensus_<YYYYMMDD>.json
+- PASS | S | broker/street consensus md pair present | data/broker_street_consensus_20260710.md
+- PASS | S | broker/street consensus json parses | 
+- PASS | S | broker/street consensus rows present | rows=2
+- PASS | S | broker/street consensus covers valuation universe | covered=1
+- PASS | S | broker/street consensus row fields complete | 
+- PASS | S | broker/street consensus values usable for valuation anchor | 
+- PASS | S | broker/street weak sources are zero-weight or unavailable | 
+- PASS | S | broker/street positive-weight auditable anchor covers valuation universe | 
+- PASS | S | broker/street external positive anchor covers valuation universe | 
+- PASS | A | broker/street gaps recorded in source exhaustion | source_exhaustion_log.md must record broker target-price gaps
+- PASS | S | broker/street consensus complete before PASS sign-off | PASS cannot coexist with incomplete broker/Street target-price coverage
+- PASS | S | final sign-off status pass | pass
+- PASS | S | final sign-off residual risks do not conflict with PASS | material residual risk cannot be hidden in a PASS sign-off

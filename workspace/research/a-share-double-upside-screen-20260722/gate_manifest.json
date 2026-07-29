@@ -1,0 +1,72 @@
+{
+  "case_id": "a-share-double-upside-screen-20260722",
+  "report_type": "full-market opportunity screen with multi-stock valuation capsules",
+  "data_cutoff": "2026-07-22",
+  "screen_scope": "custom cross-sectional high-upside screen",
+  "required_skills": [
+    "equity-research",
+    "reports",
+    "operating-driver research",
+    "growth-earnings-model",
+    "valuation",
+    "research-report-review",
+    "pdf"
+  ],
+  "required_artifacts": [
+    "research_brief.md",
+    "analysis/template_brief.md",
+    "data/verified_market_data.md",
+    "data/verified_financials.md",
+    "data/source_registry.md",
+    "data/source_registry.json",
+    "data/claim_audit.md",
+    "data/claim_audit.json",
+    "source_exhaustion_log.md",
+    "source_exhaustion_log.json",
+    "data/broker_street_consensus_20260722.md",
+    "data/broker_street_consensus_20260722.json",
+    "analysis/company_fundamental_cards.md",
+    "analysis/value_chain_economics.md",
+    "analysis/growth_earnings_model.md",
+    "analysis/house_view.md",
+    "analysis/variant_perception.md",
+    "analysis/valuation_model.md",
+    "analysis/valuation_audit.md",
+    "analysis/risk_framework.md",
+    "analysis/exhibit_plan.md",
+    "analysis/narrative_blueprint.md",
+    "main.tex",
+    "main.pdf"
+  ],
+  "review_cycles": [
+    "R0_evidence",
+    "R1_model",
+    "R2_draft",
+    "R3_render_compliance",
+    "R4_final_ic"
+  ],
+  "verifiers": [
+    "tools/verify_research_workspace.py",
+    "workspace/research/tools/run_research_gates.py"
+  ],
+  "depth_gates": [
+    "evidence_depth",
+    "broker_consensus_depth",
+    "model_depth",
+    "valuation_depth",
+    "ic_readiness"
+  ],
+  "pass_conditions": [
+    "zero open S-Level findings",
+    "zero open unwaived A-Level findings",
+    "publishability score >= 90",
+    "Model Reproducibility: PASS",
+    "PDF visual review PASS",
+    "all verifiers PASS"
+  ],
+  "downgrade_path": [
+    "watchlist only",
+    "evidence memo",
+    "no-qualified-double conclusion"
+  ]
+}

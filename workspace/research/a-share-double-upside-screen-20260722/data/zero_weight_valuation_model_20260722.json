@@ -1,0 +1,37 @@
+{
+  "schema_version": "astock.zero_weight_valuation.v1",
+  "case_id": "a-share-double-upside-screen-20260722",
+  "data_cutoff": "2026-07-22",
+  "rows": [
+    {
+      "ticker": "600150", "company": "中国船舶", "current_price": 33.02, "price_date": "2026-07-22", "shares_100mn": 75.2562, "market_cap_100mn_cny": 2484.96,
+      "bear": 29.0, "base": 50.1, "bull": 68.9, "scenario_nature": "AStock house diagnostic", "external_target": null, "external_target_weight": 0.0,
+      "source_quality": "official financials and original broker forecasts; no explicit current point target", "missing_fields": ["explicit current target", "dated year-end target", "integration realization evidence"],
+      "hard_gate": "missing explicit external target", "recovery_loop_status": "search exhausted at cutoff", "action": "quality backup; no formal target", "downgrade_action": "downgrade if delivery margin or operating cash flow weakens"
+    },
+    {
+      "ticker": "301308", "company": "江波龙", "current_price": 388.45, "price_date": "2026-07-22", "shares_100mn": 4.23061, "market_cap_100mn_cny": 1643.38,
+      "bear": 300.0, "base": 500.0, "bull": 780.0, "scenario_nature": "AStock house diagnostic", "external_target": null, "external_target_weight": 0.0,
+      "source_quality": "official H1 earnings range and broker forecast; cash conversion and sustainable unit economics unresolved", "missing_fields": ["explicit current target", "product ASP", "inventory cost-layer bridge", "positive operating cash conversion"],
+      "hard_gate": "peak-cycle denominator and negative Q1 operating cash flow", "recovery_loop_status": "target search exhausted; waits for H1/Q3 cash evidence", "action": "observation only", "downgrade_action": "delete double range if H2 profit and cash remain divergent"
+    },
+    {
+      "ticker": "002812", "company": "恩捷股份", "current_price": 47.84, "price_date": "2026-07-22", "shares_100mn": 9.8132, "market_cap_100mn_cny": 469.46,
+      "bear": 30.96, "base": 67.08, "bull": 103.20, "scenario_nature": "Dongwu-derived mechanical PE sensitivity using one 2027E EPS denominator", "external_target": 103.0, "external_target_horizon": "not disclosed", "external_target_weight": 0.0,
+      "source_quality": "official recovery direction plus one original broker model; key volume, unit-profit and utilization inputs are single-source", "missing_fields": ["company-level shipment", "realized unit profit", "effective utilization", "new-line yield", "named customer price evidence"],
+      "hard_gate": "blocks_valuation=true in customer-chain audit", "recovery_loop_status": "await company-level H1/Q3 operating evidence", "action": "zero-weight sensitivity; no formal target or probability", "downgrade_action": "delete CNY103 sensitivity if price recovery, yield, utilization or cash evidence deteriorates"
+    },
+    {
+      "ticker": "002240", "company": "盛新锂能", "current_price": 27.65, "price_date": "2026-07-22", "shares_100mn": 9.1507, "market_cap_100mn_cny": 253.02,
+      "bear": 21.6, "base": 39.2, "bull": 59.0, "scenario_nature": "AStock house diagnostic", "external_target": null, "external_target_weight": 0.0,
+      "source_quality": "official turnaround plus original broker forecasts; realized tonnage, ASP and cash evidence incomplete", "missing_fields": ["explicit current target", "realized shipment", "realized ASP", "positive operating cash conversion"],
+      "hard_gate": "commodity-cycle sensitivity and negative Q1 operating cash flow", "recovery_loop_status": "target search exhausted; waits for H1/Q3 operating bridge", "action": "cycle backup; no formal target", "downgrade_action": "remove bull range if lithium price, self-supply or cash weakens"
+    },
+    {
+      "ticker": "300390", "company": "天华新能", "current_price": 55.88, "price_date": "2026-07-22", "shares_100mn": 8.30751, "market_cap_100mn_cny": 464.22,
+      "bear": 56.4, "base": 79.8, "bull": 102.4, "scenario_nature": "AStock house diagnostic", "external_target": null, "external_target_weight": 0.0,
+      "source_quality": "official recovery evidence and original broker forecasts; no explicit current point target", "missing_fields": ["explicit current target", "realized lithium ASP", "customer order detail"],
+      "hard_gate": "bull value below CNY111.76 double threshold", "recovery_loop_status": "rejected at current-price double hurdle", "action": "observation; not a current double candidate", "downgrade_action": "retain rejection unless earnings or current-price hurdle changes materially"
+    }
+  ]
+}

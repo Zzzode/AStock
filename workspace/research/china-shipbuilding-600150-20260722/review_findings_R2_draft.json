@@ -1,0 +1,188 @@
+{
+  "cycle": "R2_draft",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "review_date": "2026-07-23",
+  "cycle_status": "PASS",
+  "publishability_status": "PENDING_FINAL_GATE_REFRESH",
+  "institutional_status": "INSTITUTIONAL_PASS_PENDING_FINAL_GATE_REFRESH",
+  "publishability_score": 94,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "review_scope": [
+    "main.tex",
+    "sections/abstract.tex",
+    "sections/ch01_ic_summary.tex",
+    "sections/ch02_evidence.tex",
+    "sections/ch03_perimeter.tex",
+    "sections/ch04_company_capability.tex",
+    "sections/ch05_cycle.tex",
+    "sections/ch06_chain_competition.tex",
+    "sections/ch07_orders.tex",
+    "sections/ch08_financial_quality.tex",
+    "sections/ch09_forecast.tex",
+    "sections/ch10_consensus.tex",
+    "sections/ch11_valuation.tex",
+    "sections/ch12_secondary_market.tex",
+    "sections/ch13_risk_monitoring.tex",
+    "sections/appA_sources.tex",
+    "sections/appB_model.tex",
+    "sections/appC_disclosures.tex"
+  ],
+  "review_lenses": [
+    "investment thesis and first-chapter IC actionability",
+    "conclusion, target, upside and action consistency",
+    "source-ID integration and evidence hierarchy",
+    "market-data remediation: adjustment, frequency, circulating-share and capital-positioning boundaries",
+    "H1 preview and no-annualization control",
+    "COSCO project de-duplication and valuation-parent boundary",
+    "growth-model and valuation reproducibility in the reader-facing draft",
+    "market-expectation bridge and broker-source quality",
+    "risk thresholds and financial sensitivity",
+    "prose-led chapter flow, table readability and chapter completeness",
+    "placeholder and untranslated-logic scan"
+  ],
+  "verifier_summary": {
+    "historical_pre_remediation_case_local_verifier": "36 PASS / 3 FAIL after the 2026-07-22 R2 closure; historical only.",
+    "historical_pre_remediation_shared_research_gate": "97 PASS / 30 FAIL after the 2026-07-22 R2 closure; historical only.",
+    "current_market_data_recheck": "The reviewer reread the updated secondary-market draft, valuation/House/risk interfaces and Appendix A source mapping. No verifier was run after the 51-page remediation PDF and current review-file changes."
+  },
+  "findings": [
+    {
+      "issue_id": "R2-S-001",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch01_ic_summary.tex; sections/ch11_valuation.tex",
+      "evidence": "The first frozen draft distributed valuation fields across several exhibits and did not contain one complete final valuation exhibit with price/date, market cap, forecasts, method, scenarios, target/range, upside, action, catalysts, invalidation and evidence quality.",
+      "fix_required": "Add one consolidated final valuation exhibit for the sole valuation parent, 600150.SH, containing every required institutional field and preserving all zero-credit boundaries.",
+      "blocking_gate": "complete_final_valuation_table",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R2 final maker-checker",
+      "verification_evidence": "sections/ch11_valuation.tex lines 3-35 now provide one final valuation exhibit containing 33.02 yuan at 2026-07-22, CNY2484.96 hundred million market cap, 2026E-2028E NP/EPS, 2027E normalized PE, Bear/Base/Bull values, 33.07 target, 31.64-35.96 range, +0.15% return, action, catalysts, invalidation, evidence quality and zero-credit boundaries."
+    },
+    {
+      "issue_id": "R2-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch06_chain_competition.tex; sections/ch08_financial_quality.tex; sections/ch09_forecast.tex",
+      "evidence": "The first draft showed CNY18.617 billion of disclosed principal equipment/electromechanical/other revenue but labeled a CNY20.699 billion model residual almost identically without reconciling the CNY2.082 billion difference.",
+      "fix_required": "State explicitly that Base is consolidated revenue less Growth and equals CNY18.617 billion of disclosed principal product revenue plus CNY2.082 billion of other operating revenue; do not present it as a disclosed segment.",
+      "blocking_gate": "forecast_perimeter_consistency",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R2 final maker-checker",
+      "verification_evidence": "sections/ch09_forecast.tex lines 5-18 now show 206.99=186.17+20.82 and consistently label Base as the analytical residual of consolidated revenue less Growth."
+    },
+    {
+      "issue_id": "R2-A-002",
+      "severity": "A",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch09_forecast.tex; sections/appB_model.tex",
+      "evidence": "The first draft jumped from gross profit, operating expenses, impairment and other net income to parent net profit without publishing the tax and minority-interest assumptions required to reproduce the result.",
+      "fix_required": "Publish the full 2026E-2028E Base PBT-to-tax-to-consolidated-net-profit-to-minority-interest-to-parent-net-profit/EPS bridge and disclose Bear/Bull tax and minority assumptions.",
+      "blocking_gate": "reader_facing_model_reproducibility",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R2 final maker-checker",
+      "verification_evidence": "sections/ch09_forecast.tex lines 36-60 and sections/appB_model.tex lines 82-117 now disclose PBT, tax rates/tax, consolidated net profit, minority shares/minority profit, parent net profit and EPS for Base, plus Bear/Base/Bull tax and attribution assumptions."
+    },
+    {
+      "issue_id": "R2-A-003",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch13_risk_monitoring.tex",
+      "evidence": "The first risk matrix used only categorical probability and impact labels, lacked defined probability bands and did not connect the highest-priority risks to quantified financial or valuation sensitivities.",
+      "fix_required": "Define probability/impact bands, add hard thresholds and quantify available earnings/value sensitivities; label genuinely unavailable sensitivities as not estimable and unsupported options as zero credit.",
+      "blocking_gate": "risk_threshold_and_sensitivity_depth",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R2 final maker-checker",
+      "verification_evidence": "sections/ch13_risk_monitoring.tex lines 3-28 now define probability and impact bands and connect margin, H1, delivery and cash risks to hard thresholds and quantified P&L/value sensitivities, with unavailable items explicitly marked not estimable/zero-credit."
+    },
+    {
+      "issue_id": "R2-A-004",
+      "severity": "A",
+      "owner_skill": "valuation",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch11_valuation.tex",
+      "evidence": "The first market-expectation bridge reported House forecasts and current-price-implied profit gaps but omitted the House fair value and upside/downside at each observation multiple.",
+      "fix_required": "Add expectation-multiple-implied House value and return versus CNY33.02 while retaining the current-price-implied profit/EPS and driver attribution.",
+      "blocking_gate": "market_expectation_valuation_bridge",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R2 final maker-checker",
+      "verification_evidence": "sections/ch11_valuation.tex lines 85-113 now show 2026E-2028E revenue/growth, NP/EPS, observation multiples, House values, returns, current-price-implied NP/EPS, gaps and margin/duration requirements."
+    },
+    {
+      "issue_id": "R2-A-005",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch09_forecast.tex",
+      "evidence": "The initial rendered three-scenario table overflowed its right edge, obscuring a core growth/valuation conclusion.",
+      "fix_required": "Remove the nonessential narrative column and rebalance widths so all scenario metrics remain inside the exhibit boundary.",
+      "blocking_gate": "core_exhibit_layout",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 source freeze and parent render repair",
+      "verification_evidence": "sections/ch09_forecast.tex lines 66-84 now use a seven-column table within exhibitboxwidth and move the investment implication into prose immediately below the exhibit."
+    },
+    {
+      "issue_id": "R2-A-006",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch10_consensus.tex",
+      "evidence": "The initial rendered current-broker comparison overflowed at the right-side quality column.",
+      "fix_required": "Remove the redundant row-level quality column, preserve original-PDF quality in the source note and keep the valuation-method/target field visible.",
+      "blocking_gate": "broker_exhibit_layout",
+      "status": "closed",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 parent render repair and R2 source reread",
+      "verification_evidence": "sections/ch10_consensus.tex lines 7-22 now use seven bounded columns; the source note states that BR-01 to BR-05 are original PDFs and the table retains ratings, forecasts, EPS and target/method."
+    }
+  ],
+  "confirmed_controls": [
+    "The approved approximately one-page English abstract is an explicit research-brief requirement and does not replace the Chinese investment-committee chapter; it is not an R2 language finding.",
+    "Current price CNY33.02, independent base value CNY33.08, published target CNY33.07, fair-value range CNY31.64-35.96, published upside about +0.15% and the neutral-positive hold/wait action are consistent across cover, IC chapter, valuation, risk conclusion and appendix.",
+    "The report treats the 2026H1 numbers only as an unaudited preview, does not annualize Q1 or H1 and publishes Q2/H2 residual checks instead.",
+    "The approximately CNY50 billion/87-vessel COSCO project is attributed to 600150 subsidiaries, identified as already included in aggregate orders/backlog and assigned zero incremental revenue, EPS and target-price credit.",
+    "600150.SH is the sole valuation parent. Consolidated yards do not receive separate SOTP values; military, Hudong-Zhonghua, unallocated group orders, postal/cruise optionality and weak target-price leads receive zero valuation credit.",
+    "All reader-facing source IDs used in main.tex/sections resolve in the source registry/source appendix; no TODO, TBD, placeholder or pending-fill token remains.",
+    "Every main-body chapter opens with thesis prose, major exhibit clusters have surrounding synthesis, and the first chapter translates the view into current-price action, next-result thresholds, invalidation and monitoring-equivalent portfolio behavior.",
+    "Broker ratings remain clearly identified as third-party ratings, while AStock's own action is separately labeled and reconciled to near-zero target upside."
+  ],
+  "missing_institutional_tables_or_exhibits": [],
+  "residual_constraints": [
+    "R2 is a draft-cycle PASS, not publication sign-off. Formal R3 rendered-page inspection, R4 final IC review, workflow evaluation and final_signoff.md/json remain incomplete.",
+    "The mandatory case-local verifier is not yet at 39 PASS / 0 FAIL because checks 36-38 remain downstream; publication therefore remains BLOCKED.",
+    "Ship-level ASP, schedule, utilization, payment milestones, customer financing and cost pass-through remain unavailable, so only consolidated scenario valuation is allowed.",
+    "No usable original broker target-price anchor exists; broker target weight must remain zero through final sign-off."
+  ],
+  "required_next_fixes": [
+    "Refresh all final gates and workflow artifacts after the reviewer-file updates; do not reuse any 50-page PDF or pre-remediation verifier result.",
+    "R3 final refresh must operate on the 51-page PDF with SHA-256 847ce2676eb646fba6520ae1f0bf77aa96200918fb6db87f687ef0577dc04052."
+  ],
+  "market_data_remediation_recheck": {
+    "reviewed_at": "2026-07-23",
+    "status": "PASS_PENDING_FINAL_GATE_REFRESH",
+    "open_s_count": 0,
+    "open_a_count": 0,
+    "draft_controls_verified": [
+      "Chapter 12 uses an explicitly labelled fqt=1 front-adjusted 727-trading-day series and does not mix fqt=0/1/2 calculations.",
+      "The 75.2562-billion-share field is consistently labelled circulating A shares; the report explicitly rejects an unsupported strict-free-float backsolve.",
+      "Margin is dated 2026-07-21; Shanghai Connect and public-fund observations are dated 2026-06-30 quarterly stock; Dragon-Tiger is a defined one-year negative query. The draft does not compress them into same-day fund flow.",
+      "PR-02/PR-03 appear in Chapter 12, the source appendix, claim audit and source registry; the market evidence changes execution discipline only and carries zero incremental fundamental-valuation credit.",
+      "The unchanged CNY33.02 current price, CNY33.07 final target, CNY31.64-35.96 fair-value range and hold/wait action remain mutually consistent with the updated market evidence."
+    ],
+    "unresolved_but_not_omissions": [
+      "strict_free_float_shares_and_market_cap",
+      "daily_shanghai_connect_net_holding_change"
+    ]
+  }
+}

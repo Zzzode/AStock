@@ -1,0 +1,80 @@
+{
+  "cycle": "R2_draft",
+  "publishability_status": "PASS",
+  "publishability_score": 94,
+  "review_mode": "independent content review with separate numeric-consistency audit and post-repair verification",
+  "findings": [
+    {
+      "issue_id": "R2-S-001",
+      "severity": "S",
+      "artifact": "main.tex",
+      "evidence": "The pre-repair PDF contained a full English abstract with valuation and rating logic in an otherwise Chinese report.",
+      "fix_required": "Remove the English abstract and retain only a short English disclaimer where required.",
+      "blocking_gate": "reader_language_consistency",
+      "status": "closed",
+      "verifier_ref": "main.tex; main_current_text.txt"
+    },
+    {
+      "issue_id": "R2-S-002",
+      "severity": "S",
+      "artifact": "data/current_valuation_model_20260722.json",
+      "evidence": "CNY58.44325bn based on disclosed-dilution shares had been labeled as quoted market capitalization, while quoted legal-share market capitalization was CNY57.55273bn.",
+      "fix_required": "Separate quoted legal-share market capitalization from the disclosed-dilution capitalization sensitivity and add the quoted value to the final valuation table.",
+      "blocking_gate": "market_cap_basis",
+      "status": "closed",
+      "verifier_ref": "data/current_valuation_model_20260722.json; analysis/valuation_audit.md; sections/ch01_ic_summary.tex"
+    },
+    {
+      "issue_id": "R2-A-001",
+      "severity": "A",
+      "artifact": "analysis/earnings_forecast.md",
+      "evidence": "The pre-repair three-quarter threshold did not distinguish Q3, nine-month cumulative profit and the Q4 residual.",
+      "fix_required": "Create a Q2 implied range and explicit bear/base/bull Q3E-Q4E bridge that sums exactly to each H2 scenario.",
+      "blocking_gate": "quarterly_forecast_bridge",
+      "status": "closed",
+      "verifier_ref": "analysis/earnings_forecast.md; sections/ch10_earnings_forecast.tex; sections/ch14_risk_catalysts.tex"
+    },
+    {
+      "issue_id": "R2-A-002",
+      "severity": "A",
+      "artifact": "sections/ch11_share_capital.tex",
+      "evidence": "The pre-repair report discussed employee-plan participation and 231.026272m remaining treasury shares only qualitatively.",
+      "fix_required": "Add 0/50/100 percent employee-plan and remaining-treasury-share cash-share-expense-per-share sensitivities.",
+      "blocking_gate": "treasury_share_sensitivity",
+      "status": "closed",
+      "verifier_ref": "sections/ch11_share_capital.tex; data/current_valuation_model_20260722.json"
+    },
+    {
+      "issue_id": "R2-A-003",
+      "severity": "A",
+      "artifact": "analysis/house_view.md",
+      "evidence": "Several passages used direct position language rather than research-priority and monitoring language.",
+      "fix_required": "Translate all house actions into research upgrade, maintain observation, lower priority or reassessment language.",
+      "blocking_gate": "research_execution_boundary",
+      "status": "closed",
+      "verifier_ref": "analysis/house_view.md; analysis/secondary_market_analysis.md; sections/ch01_ic_summary.tex; sections/ch13_secondary_market.tex; sections/ch14_risk_catalysts.tex"
+    },
+    {
+      "issue_id": "R2-B-001",
+      "severity": "B",
+      "artifact": "sections/ch10_earnings_forecast.tex",
+      "evidence": "The pre-repair forecast table mixed 2025 reported accounting EPS with forecast valuation-dilution EPS in one row.",
+      "fix_required": "Separate the two denominator bases.",
+      "blocking_gate": "eps_basis_clarity",
+      "status": "closed",
+      "verifier_ref": "sections/ch10_earnings_forecast.tex; analysis/earnings_forecast.md"
+    },
+    {
+      "issue_id": "R2-B-002",
+      "severity": "B",
+      "artifact": "sections/ch04_business_asset_map.tex",
+      "evidence": "Polyester gross profit was shown as CNY2.431bn rather than the CNY2.434bn revenue-minus-cost result.",
+      "fix_required": "Use the audited revenue-minus-cost presentation consistently.",
+      "blocking_gate": "display_rounding_consistency",
+      "status": "closed",
+      "verifier_ref": "sections/ch04_business_asset_map.tex; analysis/chain_earnings_bridge.md"
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0
+}

@@ -1,0 +1,76 @@
+{
+  "cycle": "R3_render_compliance",
+  "review_date": "2026-07-18",
+  "review_mode": "independent read-only maker-checker review",
+  "publishability_status": "CONDITIONAL",
+  "formal_publication_status": "BLOCKED_PENDING_FINAL_GOVERNANCE",
+  "institutional_status": "INSTITUTIONAL_PASS",
+  "publishability_score": 96,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 1,
+  "review_scope": [
+    "main.pdf (38 pages)",
+    "main_current_text.txt",
+    "visual_review.md",
+    "rendered/full-20260718-r2-final/page-01.png through page-38.png",
+    "seven Mermaid source/render pairs under exhibits/",
+    "two complete final valuation matrices",
+    "source appendix, model disclosure and disclaimer"
+  ],
+  "verification_results": {
+    "pdf_metadata": "PASS: 38 A4 pages, 1,398,478 bytes, PDF 1.7",
+    "font_embedding": "PASS: all Chinese, Latin and math fonts embedded",
+    "ghostscript_parse": "PASS",
+    "text_parity": "PASS: pdftotext -layout output matches main_current_text.txt byte-for-byte",
+    "visual_contact_sheet": "PASS: complete 38-page sequence inspected",
+    "original_resolution_spot_checks": "PASS: pages 5, 20, 21, 26, 30, 31 and 38, covering the quantitative IC bridge, per-ticker sentiment bridge, valuation-growth map, risk heatmap, evidence-action map, three-dimensional company reconciliation and disclaimer",
+    "case_local_verifier_before_final_governance": "37 PASS / 2 FAIL; check 38 reflects R1/R2 findings that had not yet been re-closed on the 38-page snapshot, and check 39 reflects the not-yet-created final-governance artifacts",
+    "repository_generic_gate": "NOT_APPLICABLE_TO_CASE: run_research_gates.py crashes because a current-case field packet has no rows key while the runner assumes a prior AIDC schema",
+    "repository_industry_chain_template": "NOT_APPLICABLE_TO_CASE: verifier requires valuation_triage_20260630.json and fixed 173/58-row thresholds from a prior case"
+  },
+  "findings": [
+    {
+      "issue_id": "R3-PASS-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf; rendered/full-20260718-r2-final/; visual_review.md",
+      "issue": "Final render and compliance package is publication-grade within the declared research scope.",
+      "evidence": "The 38-page sequence has stable margins, readable tables, embedded fonts, seven legible Mermaid exhibits, intact page breaks, Chinese reader-facing logic, source-quality disclosures and an explicit non-recommendation disclaimer. The new per-ticker sentiment bridge, valuation-growth map, risk heatmap and three-dimensional company reconciliation are all readable. No clipping, overlap, missing glyph, broken table or unfinished marker was found.",
+      "fix_required": "No report or PDF repair required.",
+      "blocking_gate": "none",
+      "status": "verified",
+      "verifier_ref": "pdfinfo; pdffonts; Ghostscript; pdftotext parity; complete rendered-sequence review",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "owner_skill": "research-report-review",
+      "owner_agent": "internal-control",
+      "artifact": "workspace/research/tools/run_research_gates.py; workspace/research/templates/industry_chain_verify_research_workspace.py",
+      "issue": "The shared generic gates are coupled to a prior AIDC case and cannot evaluate this case without crashing.",
+      "evidence": "The industry-chain template hard-codes valuation_triage_20260630.json plus 173/58-row thresholds. The generic runner raises TypeError at field_rows iteration. The case-local verifier independently checks the actual 50-node, 8-block, 15-relationship, 12-model contract and reached 37/39 before final-governance files existed.",
+      "fix_required": "Refactor shared gates to discover dated artifacts and use case-declared minimum depths. Until then, treat the case-local 39-check verifier as authoritative and keep the final sign-off CONDITIONAL rather than PASS.",
+      "blocking_gate": "shared_verifier_portability",
+      "status": "open",
+      "verifier_ref": "industry_chain_verify_research_workspace.py:106,163-166; run_research_gates.py:1349-1352",
+      "reopened_count": 0,
+      "publication_implication": "Governance debt only; it does not invalidate PDF rendering, evidence boundaries or valuation arithmetic. It prevents an unconditional repository-wide PASS label."
+    }
+  ],
+  "confirmed_strengths": [
+    "The cover and first chapter lead with the investable conclusion, current prices, targets, downside/upside and monitoring behavior.",
+    "The roadmap/physical-system distinction and 256 TB address-space boundary are visually prominent.",
+    "Both valuation matrices remain readable across the page break and expose method, weights, catalysts and invalidation.",
+    "The reader-facing per-ticker sentiment bridge exposes embedded growth, forecast growth, gap, event-day move, liquidity proxy and price-to-fundamental-base premium/discount for all 12 modeled issuers.",
+    "The three-dimensional company reconciliation separates Atlas relationship evidence, broader-business valuation eligibility and research action for all 12 modeled issuers.",
+    "The primary current-share P/E and independent business-specific forward P/S methods are disclosed separately; PEG is retained only as a zero-weight expectation diagnostic.",
+    "The disclaimer distinguishes AStock model targets from external broker ratings and states that the report is not a securities recommendation."
+  ],
+  "required_next_fixes": [
+    "Create final governance artifacts and rerun the case-local verifier to 39 PASS / 0 FAIL.",
+    "Do not label the final sign-off PASS while the shared generic gates remain case-incompatible; use CONDITIONAL and disclose the governance residual."
+  ]
+}

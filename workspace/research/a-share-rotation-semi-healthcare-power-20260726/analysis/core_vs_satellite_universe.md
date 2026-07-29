@@ -1,0 +1,19 @@
+# Core Versus Satellite Universe
+
+## Gate conclusion: `CONDITIONAL`; core valuation pool = none
+
+The research brief requires relationship evidence, value-chain economics, a ticker earnings bridge and current-price valuation before a core designation. The retained sources do not meet that standard for any provisional name. No EPS, target-price, rating or action may be produced from this package.
+
+| Pool | Company / node | Directness and source count | Why it is classified here | Missing evidence and valuation consequence | Upgrade trigger |
+|---|---|---:|---|---|---|
+| Core valuation | **None** | 0 | None meets all three core tests: product/process, relationship/certification/order, economics. | No core valuation credit exists. | Issuer primary package closes all relationship/economics fields, then financial/market/valuation gates separately pass. |
+| Satellite watch — semiconductor | 北方华创 (002371.SZ) | indirect/thematic only; 3 context sources | Equipment universe/sector context exists. No company-level relationship is adopted. | Fab qualification, customer/platform, order/acceptance, ASP, capacity/utilization, margin/cash all absent; `blocks_valuation: true`. | Dated issuer filing/IR plus product-process-fab evidence, order/acceptance and economics. |
+| Satellite watch — semiconductor | 中微公司 (688012.SH) | indirect/thematic only; 3 context sources | Same evidence boundary as above; no pooled sector economics. | Same blockers; `blocks_valuation: true`. | Same issuer-level evidence, individually. |
+| Satellite watch — innovative drugs | 恒瑞医药 (600276.SH) | official disclosed counterpart; 1 primary source | SRC-05 supports a GSK agreement only where terms are disclosed. | Recognition, cash, asset probability, costs, royalty base and EPS absent; headline consideration gets zero credit. | Agreement/accounting notes, partner update, asset regulatory status and cost/recognition bridge. |
+| Satellite watch — innovative drugs | 百奥赛图 (688506.SH) | not found; 0 retained primary sources | It is a provisional platform test name, not a confirmed partner/BD beneficiary. | Partner, asset, contract, clinical status, economics and cash conversion absent; `blocks_valuation: true`. | Issuer/partner primary evidence that closes asset-to-economics bridge. |
+| Satellite watch — power | 思源电气 (002028.SZ) | demand-context only; 5 policy/index sources | Grid context is not a supplier mapping. | Tender qualification/award, backlog, delivery, acceptance, price, margin, receivable/cash absent; `blocks_valuation: true`. | Issuer and tender/order-to-cash primary records. |
+| Satellite watch — power | 国电南瑞 (600406.SH) | demand-context only; 5 policy/index sources | Grid context is not a supplier mapping. | Tender qualification/award, backlog, delivery, acceptance, price, margin, receivable/cash absent; `blocks_valuation: true`. | Issuer and tender/order-to-cash primary records. |
+| Demand anchors | CSPs/foundries/IDMs; patients/payers/global pharma; grid/utilities/developers | context only | Explain demand, not supplier revenue. GSK is a counterparty for one Hengrui agreement. | Must not become a sector-wide upstream-revenue or order assertion. | Supplier/asset-specific qualification, contract or acceptance disclosure. |
+| Excluded / unavailable | materials; OSAT; CRO/CDMO; commercial nodes; storage/power-electronics nodes; private and low-purity nodes | unavailable / low purity | Mapping and/or evidence is absent, private, overseas-only or thematic. | No valuation credit. | Public entity/product/customer/economics evidence. |
+
+`satellite_watch` means a monitored research candidate, not an investable beneficiary label. The resulting gate is conditional rather than pass because the map and explicit gaps exist; it would become `BLOCKED` if the full-chain universe or company-level distinction were removed.

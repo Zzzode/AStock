@@ -1,0 +1,24 @@
+{
+  "case_id": "hengyi-petrochemical-000703-20260722",
+  "data_cutoff": "2026-07-22 CST",
+  "claims": [
+    {"claim_id": "C01", "claim": "2026H1 parent net profit is guided at CNY5.5-6.0bn", "classification": "confirmed_disclosure", "sources": ["HY-OFF-2026H1P"], "adopted_wording": "公司预告且未经审计", "valuation_use": "scenario starting point"},
+    {"claim_id": "C02", "claim": "2026H1 improvement is mainly core operations", "classification": "supported_inference", "sources": ["HY-OFF-2026H1P"], "adopted_wording": "扣非区间接近归母，但仍缺项目级拆分", "valuation_use": "supports non-one-off framing"},
+    {"claim_id": "C03", "claim": "Brunei phase 1 is the largest 2026 earnings driver", "classification": "company_stated_driver_plus_inference", "sources": ["HY-OFF-2026H1P", "HY-OFF-2025AR", "IND-IEA-202607"], "adopted_wording": "主要驱动之一，未披露分部利润", "valuation_use": "scenario sensitivity only"},
+    {"claim_id": "C04", "claim": "2026Q1 cash conversion is weak", "classification": "confirmed_disclosure", "sources": ["HY-OFF-2026Q1"], "adopted_wording": "归母19.95亿元而OCF为-25.73亿元", "valuation_use": "multiple constraint"},
+    {"claim_id": "C05", "claim": "minority interests materially reduce group-to-parent conversion", "classification": "confirmed_disclosure", "sources": ["HY-OFF-2026Q1", "HY-OFF-2025AR"], "adopted_wording": "Q1少数股东损益8.23亿元，占合并净利润约29%", "valuation_use": "parent-profit bridge"},
+    {"claim_id": "C06", "claim": "balance-sheet leverage remains high", "classification": "confirmed_disclosure", "sources": ["HY-OFF-2026Q1", "HY-OFF-RATING"], "adopted_wording": "Q1资产负债率约71.5%，2025末刚债约699.5亿元", "valuation_use": "PE discount and risk"},
+    {"claim_id": "C07", "claim": "Brunei phase 2 will add 12mtpa and target end-2028", "classification": "confirmed_project_disclosure", "sources": ["HY-OFF-P2"], "adopted_wording": "规划/目标工期，不等同按时投产保证", "valuation_use": "long-term option, no base earnings"},
+    {"claim_id": "C08", "claim": "Brunei phase-2 financing is fully closed", "classification": "not_confirmed", "sources": ["HY-OFF-P2"], "adopted_wording": "仅有意向函和股东贷款承诺，未确认完整金融交割", "valuation_use": "zero positive valuation credit"},
+    {"claim_id": "C09", "claim": "PTA economics improved in June 2026", "classification": "industry_proxy", "sources": ["IND-PTA-202606"], "adopted_wording": "行业加工费与库存阶段性修复，不能直接映射恒逸单吨利润", "valuation_use": "validation indicator"},
+    {"claim_id": "C10", "claim": "polyester downstream demand is fully recovered", "classification": "contradicted_or_unconfirmed", "sources": ["IND-NBS", "IND-PTA-202606"], "adopted_wording": "聚酯与织机开工、长丝库存仍显示终端偏弱", "valuation_use": "limits bull case"},
+    {"claim_id": "C11", "claim": "the current price is CNY15.06", "classification": "confirmed_market_snapshot", "sources": ["HY-MKT-QUOTE"], "adopted_wording": "2026-07-22 13:52盘中价，非收盘", "valuation_use": "current-price anchor"},
+    {"claim_id": "C12", "claim": "disclosed-dilution shares are about 3.881bn", "classification": "derived_from_official", "sources": ["HY-OFF-CB", "HY-OFF-DIV", "HY-OFF-ESOP7"], "adopted_wording": "法定股本减库存股、加剩余转债潜在转股、加第七期员工计划上限；同步计入票息和受让现金", "valuation_use": "EPS and target denominator"},
+    {"claim_id": "C13", "claim": "2026E parent net profit is CNY7.91bn", "classification": "external_broker_forecast", "sources": ["HY-BRK-GUOXIN"], "adopted_wording": "外部券商基准，经AStock情景校准", "valuation_use": "base scenario"},
+    {"claim_id": "C14", "claim": "Street target midpoint is CNY17.05 before share normalization", "classification": "external_broker_forecast", "sources": ["HY-BRK-GUOXIN", "HY-OFF-ESOP7"], "adopted_wording": "一份可审计原始PDF的16.5-17.6元中值，纳入员工计划股份/现金并归一后锚为16.31元", "valuation_use": "20% anchor weight"},
+    {"claim_id": "C15", "claim": "CNY20+ is the base fair value", "classification": "house_view_rejected", "sources": ["HY-BRK-GUOXIN", "HY-OFF-2026H1P", "HY-OFF-2026Q1"], "adopted_wording": "20元以上仅为高景气与现金流同时兑现的牛情景", "valuation_use": "tail only"},
+    {"claim_id": "C16", "claim": "the market already discounts most of the 2026 base case", "classification": "house_model_inference", "sources": ["HY-MKT-QUOTE", "HY-OFF-CB", "HY-OFF-DIV", "HY-OFF-ESOP7", "HY-BRK-GUOXIN"], "adopted_wording": "15.06元按7.5倍PE反推：未转股/只加转债股数/员工计划上限约69.1/74.9/75.4亿元；后两者是稀释敏感性", "valuation_use": "rating rationale"},
+    {"claim_id": "C17", "claim": "northbound and institutional flows are bullish", "classification": "not_collected", "sources": [], "adopted_wording": "未取得可审计序列，不作方向性判断", "valuation_use": "zero"},
+    {"claim_id": "C18", "claim": "customer orders provide backlog visibility", "classification": "not_disclosed", "sources": ["HY-OFF-2025AR"], "adopted_wording": "商品销售以库存/现货与日度价格为主，未披露制造业式backlog", "valuation_use": "zero"}
+  ]
+}

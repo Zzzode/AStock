@@ -1,0 +1,301 @@
+{
+  "schema_version": "1.0",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "ticker": "600150.SH",
+  "company": "中国船舶",
+  "as_of_date": "2026-07-22",
+  "currency": "CNY",
+  "currency_unit": "CNY100m except per-share values",
+  "r1_status": "PASS_MAKER_CHECKER_VERIFIED",
+  "rows": [
+    {
+      "ticker": "600150.SH",
+      "company": "中国船舶",
+      "current_price": 33.02,
+      "price_date": "2026-07-22",
+      "shares_100mn": 75.25621288,
+      "market_cap_100mn_cny": 2484.9601492976,
+      "revenue_2026e_100mn": 1775.0,
+      "np_2026e_100mn": 172.762156,
+      "eps_2026e": 2.295653,
+      "method": "2027E cycle-normalized PE on consolidated parent EPS; 2026E/2028E PE and cash-quality cross-check",
+      "bear": 11.20761,
+      "base": 33.0821075,
+      "bull": 48.342034,
+      "market_implied_anchor": 33.02,
+      "fundamental_weight": 0.85,
+      "market_weight": 0.15,
+      "broker_weight": 0.0,
+      "final_target": 33.07,
+      "upside": 0.0015142337977,
+      "action": "中性偏多（持有/等待验证） / event-driven validation",
+      "evidence_quality": "medium-high: R0 PASS and reproducible arithmetic; scenario multiples remain House assumptions; Street target-price weight is zero"
+    }
+  ],
+  "market_data": {
+    "current_price": 33.02,
+    "price_basis": "unadjusted post-close spot snapshot",
+    "shares": 7525621288,
+    "shares_100m": 75.25621288,
+    "market_cap_cny": 248496014929.76,
+    "market_cap_cny_100m": 2484.9601492976,
+    "market_cap_formula": "33.02 x 7,525,621,288 = CNY248,496,014,929.76",
+    "trading_amount_cny_100m": 36.04353059,
+    "daily_return_pct": 0.18,
+    "trading_value_percentile": null,
+    "trading_value_percentile_status": "not disclosed"
+  },
+  "frozen_growth_model": {
+    "source": "data/growth_driver_model.json",
+    "share_denominator_100m": 75.25621288,
+    "bear": {
+      "2026": {"revenue": 1652.487134, "parent_net_profit": 112.071122, "eps": 1.489194, "gross_margin": 0.141906, "ocf_conversion": 0.55},
+      "2027": {"revenue": 1641.275854, "parent_net_profit": 93.715809, "eps": 1.24529, "gross_margin": 0.13762, "ocf_conversion": 0.65},
+      "2028": {"revenue": 1666.216339, "parent_net_profit": 80.197081, "eps": 1.065654, "gross_margin": 0.130971, "ocf_conversion": 0.75}
+    },
+    "base": {
+      "2026": {"revenue": 1775.0, "parent_net_profit": 172.762156, "eps": 2.295653, "gross_margin": 0.166997, "ocf_conversion": 0.85},
+      "2027": {"revenue": 2000.0, "parent_net_profit": 216.489959, "eps": 2.876705, "gross_margin": 0.173014, "ocf_conversion": 0.95},
+      "2028": {"revenue": 2150.0, "parent_net_profit": 246.810914, "eps": 3.279608, "gross_margin": 0.175179, "ocf_conversion": 1.0}
+    },
+    "bull": {
+      "2026": {"revenue": 1935.0, "parent_net_profit": 217.340737, "eps": 2.888011, "gross_margin": 0.182655, "ocf_conversion": 1.05},
+      "2027": {"revenue": 2205.0, "parent_net_profit": 279.849133, "eps": 3.718618, "gross_margin": 0.192226, "ocf_conversion": 1.1},
+      "2028": {"revenue": 2448.0, "parent_net_profit": 331.629435, "eps": 4.406672, "gross_margin": 0.199137, "ocf_conversion": 1.15}
+    }
+  },
+  "methodology": {
+    "business_model": "asset-heavy, order-driven and cyclical consolidated shipbuilding platform",
+    "valuation_parent": "600150.SH",
+    "primary_method": "2027E cycle-normalized PE on consolidated parent EPS",
+    "secondary_checks": [
+      "2026E and 2028E PE cross-check",
+      "OCF/parent net profit and simplified FCF quality gate",
+      "current-price-implied earnings and margin expectations"
+    ],
+    "blocked_methods": [
+      "yard-level SOTP",
+      "ship-type ASP valuation",
+      "military SOTP",
+      "Hudong-Zhonghua injection value",
+      "group-order option value",
+      "weak broker target-price anchoring",
+      "direct backlog-to-revenue conversion"
+    ],
+    "cash_treatment": "Cash conversion gates the selected PE; monetary funds are not mechanically added because restricted/operating cash and contract-liability economics are not separately verified.",
+    "peer_set_status": "not available in the frozen evidence set; no peer-discount claim is made"
+  },
+  "scenario_valuation": {
+    "bear": {
+      "forecast_year": 2027,
+      "eps": 1.24529,
+      "pe_multiple": 9.0,
+      "target_price": 11.20761,
+      "target_formula": "1.245290 x 9.0 = 11.207610",
+      "upside_downside_pct": -66.0581162932,
+      "trigger": "delivery or margin break plus OCF conversion remaining below the house floor"
+    },
+    "base": {
+      "forecast_year": 2027,
+      "eps": 2.876705,
+      "pe_multiple": 11.5,
+      "target_price": 33.0821075,
+      "target_formula": "2.876705 x 11.5 = 33.0821075",
+      "upside_downside_pct": 0.1880905512,
+      "trigger": "base delivery and margin bridge, OCF/NP improving toward 0.95x, and no option-value credit"
+    },
+    "bull": {
+      "forecast_year": 2027,
+      "eps": 3.718618,
+      "pe_multiple": 13.0,
+      "target_price": 48.342034,
+      "target_formula": "3.718618 x 13.0 = 48.342034",
+      "upside_downside_pct": 46.4022834646,
+      "trigger": "delivery, price/mix, margin and OCF simultaneously validate at the bull end",
+      "bias_warning": "Bull uses an explicitly optimistic sell-side-style operating and multiple combination; it is a scenario ceiling and receives no Street target-price weight."
+    },
+    "base_fair_value_range": {
+      "low_multiple": 11.0,
+      "high_multiple": 12.5,
+      "low_price": 31.643755,
+      "high_price": 35.9588125,
+      "formula": "2.876705 x 11.0 to 12.5"
+    },
+    "full_stress_band": {
+      "low_price": 11.20761,
+      "high_price": 48.342034
+    },
+    "bubble_degree_pct": -0.1877369341,
+    "bubble_degree_formula": "(33.02 / 33.0821075 - 1) x 100"
+  },
+  "multi_anchor_target": {
+    "intrinsic_anchor": 33.0821075,
+    "market_sentiment_anchor": 33.02,
+    "broker_street_anchor": null,
+    "fundamental_weight": 0.85,
+    "market_weight": 0.15,
+    "broker_weight": 0.0,
+    "weight_sum": 1.0,
+    "final_target_price": 33.072791375,
+    "published_final_target_price": 33.07,
+    "formula": "33.0821075 x 0.85 + 33.02 x 0.15 + 0 x 0 = 33.072791375",
+    "upside_downside_pct": 0.1514233798,
+    "unrounded_formula_upside_downside_pct": 0.1598775797,
+    "rating": "中性偏多（持有/等待验证）",
+    "action": "event-driven validation / hold while validating",
+    "fair_value_range": [31.643755, 35.9588125],
+    "action_logic": "fundamentally near fair value; market-supported but requires H1 margin and cash-conversion validation"
+  },
+  "current_implied_multiples": {
+    "2026_house_pe": 14.3837070977,
+    "2027_house_pe": 11.4784098607,
+    "2028_house_pe": 10.0682760908,
+    "2026_house_ps": 1.3999775489,
+    "2027_house_ps": 1.2424800746,
+    "2028_house_ps": 1.1557954183,
+    "pb": null,
+    "pb_status": "not disclosed because verified equity/BPS is unavailable",
+    "roe_status": "not disclosed"
+  },
+  "market_expectation_bridge": [
+    {
+      "year": 2026,
+      "house_revenue": 1775.0,
+      "house_revenue_growth_pct": 16.7932279151,
+      "house_parent_net_profit": 172.762156,
+      "house_eps": 2.295653,
+      "expectation_multiple": 14.0,
+      "house_expectation_fair_value": 32.139142,
+      "house_expectation_upside_downside_pct": -2.6676499091,
+      "current_price_implied_parent_net_profit": 177.497154,
+      "current_price_implied_eps": 2.3585714286,
+      "embedded_expectation_gap_pct": 2.7407606582,
+      "driver": "Growth GM about 17.16% versus 16.8% base, or equivalent profit attribution improvement"
+    },
+    {
+      "year": 2027,
+      "house_revenue": 2000.0,
+      "house_revenue_growth_pct": 12.676056338,
+      "house_parent_net_profit": 216.489959,
+      "house_eps": 2.876705,
+      "expectation_multiple": 11.0,
+      "house_expectation_fair_value": 31.643755,
+      "house_expectation_upside_downside_pct": -4.1679133858,
+      "current_price_implied_parent_net_profit": 225.905468,
+      "current_price_implied_eps": 3.0018181818,
+      "embedded_expectation_gap_pct": 4.3491672928,
+      "driver": "total GM about 17.85% versus 17.30% base and continued cycle duration"
+    },
+    {
+      "year": 2028,
+      "house_revenue": 2150.0,
+      "house_revenue_growth_pct": 7.5,
+      "house_parent_net_profit": 246.810914,
+      "house_eps": 3.279608,
+      "expectation_multiple": 9.0,
+      "house_expectation_fair_value": 29.516472,
+      "house_expectation_upside_downside_pct": -10.610320,
+      "current_price_implied_parent_net_profit": 276.106683,
+      "current_price_implied_eps": 3.6688888889,
+      "embedded_expectation_gap_pct": 11.8697223357,
+      "driver": "total GM about 19.13% versus 17.52% base, requiring longer high-price-order duration"
+    }
+  ],
+  "relative_peg_psg": [
+    {"year": 2026, "pe": 14.3837070977, "ps": 1.3999775489, "parent_np_growth_pct": 120.1246067667, "revenue_growth_pct": 16.7932279151, "peg": 0.1197400833, "psg": 0.0833655916, "verdict": "low-base cycle rebound; PEG is mechanically cheap and not decision-grade"},
+    {"year": 2027, "pe": 11.4784098607, "ps": 1.2424800746, "parent_np_growth_pct": 25.3109847088, "revenue_growth_pct": 12.676056338, "peg": 0.4534948547, "psg": 0.0980178726, "verdict": "primary normalized year; still requires cash-quality validation"},
+    {"year": 2028, "pe": 10.0682760908, "ps": 1.1557954183, "parent_np_growth_pct": 14.0057099486, "revenue_growth_pct": 7.5, "peg": 0.7188694567, "psg": 0.1541060558, "verdict": "duration-sensitive; Street forecasts are materially higher than House"}
+  ],
+  "seasonality": {
+    "2026_q1_parent_net_profit": 48.32,
+    "2025_restated_q1_parent_net_profit": 13.742,
+    "2025_full_year_parent_net_profit": 78.4838,
+    "historical_q1_share_pct": 17.509346136,
+    "mechanical_seasonal_full_year_stress": 275.966905835,
+    "mechanical_annualization_status": "stress test only; prohibited as final forecast",
+    "model_full_year_parent_net_profit": 172.762156,
+    "model_full_year_eps": 2.295653,
+    "calibrated_2026_pe": 14.3837070977,
+    "h1_preview_parent_net_profit_range": [92.0, 110.0]
+  },
+  "next_quarter_threshold": {
+    "event": "formal 2026H1 results, including Q2 residual",
+    "q2_parent_net_profit_disclosed_range": [43.68, 61.68],
+    "q2_parent_net_profit_base_validation_minimum": 52.68,
+    "h1_parent_net_profit_base_validation_minimum": 101.0,
+    "q2_adjusted_parent_net_profit_base_validation_minimum": 51.33,
+    "h1_adjusted_parent_net_profit_base_validation_minimum": 99.0,
+    "core_business_gross_margin_floor": 0.1172,
+    "hard_downgrade_gross_margin": 0.105,
+    "ocf_requirement": "positive and not accompanied by abnormal inventory/contract-asset expansion",
+    "full_year_ocf_to_parent_np_floor": 0.8
+  },
+  "broker_street": {
+    "direct_target_price_status": "not disclosed in all 13 archived original PDFs",
+    "all_target_price_valuation_weights_zero": true,
+    "broker_weight": 0.0,
+    "street_forecast_2026_median": {"revenue": 1782.37, "parent_net_profit": 176.38, "eps": 2.34},
+    "street_forecast_2027_median": {"revenue": 2014.07, "parent_net_profit": 235.38, "eps": 3.13},
+    "street_forecast_2028_median": {"revenue": 2235.62, "parent_net_profit": 299.43, "eps": 3.98},
+    "weak_target_leads": [
+      {"broker": "华泰证券", "date": "2026-05-03", "target_price": 58.96, "source_quality": "third_party_preview", "valuation_weight": 0.0},
+      {"broker": "国泰海通证券", "date": null, "target_price": null, "source_quality": "not_found", "valuation_weight": 0.0}
+    ]
+  },
+  "sentiment_anchor": {
+    "regime": "positive-rating concentration with event-driven validation",
+    "rating_concentration": "13/13 archived original reports are Buy or Strongly Recommended, but represent only four brokers with repeated updates",
+    "target_dispersion": "not measurable from original PDFs",
+    "momentum_context": "+0.18% on the valuation date with CNY3.604bn trading amount; no percentile or multi-period momentum evidence in the frozen packet",
+    "market_anchor": 33.02,
+    "market_anchor_rationale": "observable current consensus price; no separate durable option premium is credited",
+    "premium_discount_to_intrinsic_pct": -0.1877369341,
+    "break_trigger": "H1 below preview floor, core GM below 10.5%, OCF/inventory divergence, or material delivery/cancellation/customer-financing issue"
+  },
+  "growth_dependency": {
+    "valuation_credit": "consolidated earnings credit only",
+    "base_growth_split_source": "analysis/segment_forecast_bridge.md",
+    "unit_proxy": "effective delivered million DWT",
+    "price_proxy": "2025 revenue-intensity proxy x price/mix index; not vessel ASP",
+    "recognized_revenue_ratio": "scenario coefficient, not contract completion percentage",
+    "standalone_growth_eps": "not disclosed and not valued",
+    "cosco_approximately_cny50bn_project_incremental_credit": 0.0,
+    "military_credit": 0.0,
+    "hudong_zhonghua_credit": 0.0,
+    "group_option_credit": 0.0
+  },
+  "full_chain_dependency": {
+    "r0_cycle_status": "PASS",
+    "only_core_valuation_node": "N15 / 600150.SH",
+    "valuation_parent": "600150.SH",
+    "operating_subsidiaries": "consolidated components, not separate investable tickers",
+    "sotp_status": "blocked because yard-level revenue, net profit, utilization, ship-type ASP and cash-flow attribution are not disclosed",
+    "eligible_valuation_use": "consolidated cycle-normalized earnings and cash-quality sensitivity only"
+  },
+  "recovery_fields": {
+    "valuation_recovery_status": "completed with consolidated cycle-normalized PE and market-implied expectation checks",
+    "direct_broker_anchor": "not disclosed; zero weight",
+    "public_consensus_anchor": "forecast comparison only; zero target-price weight",
+    "peer_set": "not available in frozen evidence",
+    "peer_metrics": "not disclosed",
+    "market_implied_metric": "2027E PE 11.4784x on House Base EPS",
+    "alternative_method": "2026E/2028E PE and OCF conversion cross-check",
+    "normalized_denominator": "2027E consolidated parent EPS 2.876705",
+    "scenario_range": [11.20761, 48.342034],
+    "confidence": "medium-high for arithmetic; medium for scenario assumptions",
+    "upgrade_trigger": "H1 above midpoint with core GM at least 11.72%, positive OCF and delivery on plan",
+    "downgrade_trigger": "H1 below 92/90, core GM below 10.5%, material delivery break, or full-year OCF/NP below 0.8x without recovery"
+  },
+  "evidence_controls": {
+    "r0_cycle": "PASS",
+    "broker_target_price_weight": 0.0,
+    "cosco_project_use": "de-duplicated order-quality evidence only",
+    "option_credit": {
+      "military": 0.0,
+      "hudong_zhonghua": 0.0,
+      "group_orders": 0.0,
+      "weak_target_prices": 0.0
+    },
+    "model_reproducibility": "PASS"
+  }
+}

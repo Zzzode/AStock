@@ -1,0 +1,78 @@
+{
+  "case_id": "china-shipbuilding-600150-20260722",
+  "report_type": "single_stock_full_research",
+  "data_cutoff": "2026-07-22",
+  "review_date": "2026-07-23",
+  "pdf_path": "main.pdf",
+  "pdf_sha256": "847ce2676eb646fba6520ae1f0bf77aa96200918fb6db87f687ef0577dc04052",
+  "page_count": 51,
+  "institutional_recheck_score": 94,
+  "publishability_score": 94,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "signoff_status": "PASS",
+  "preliminary": false,
+  "investment_conclusion": {
+    "current_price_CNY": 33.02,
+    "final_target_CNY": 33.07,
+    "upside_pct": 0.15,
+    "fair_value_range_CNY": [
+      31.64,
+      35.96
+    ],
+    "bear_base_bull_CNY": [
+      11.21,
+      33.08,
+      48.34
+    ],
+    "rating_action": "中性偏多（持有/等待验证）",
+    "downgrade_status": "downgrade_not_required_at_cutoff"
+  },
+  "market_data_recheck": {
+    "status": "INSTITUTIONAL_PASS",
+    "PR_02": "727-day fqt=1 front-adjusted series, dated price/liquidity/turnover/circulating-share snapshot, raw responses and SHA-256 manifests reviewed.",
+    "PR_03": "Dated SSE margin, quarterly Shanghai Connect, quarterly public-fund and defined Dragon-Tiger query evidence reviewed; reader-facing frequency boundaries verified.",
+    "strict_free_float": {
+      "status": "UNAVAILABLE_WITH_ARCHIVED_BOUNDARY",
+      "meaning": "The report publishes circulating A shares, not a fabricated strict free-float figure. Public archived fields lack a uniform immediately-tradeable-holder classification."
+    },
+    "daily_shanghai_connect_flow": {
+      "status": "UNAVAILABLE_WITH_ARCHIVED_BOUNDARY",
+      "meaning": "Official single-security holdings are quarterly and the attempted 2026-07-21 daily endpoint returned no data. Quarterly stock is not used as daily flow."
+    },
+    "valuation_treatment": "zero incremental fundamental valuation credit; evidence is used only for execution and monitoring discipline",
+    "critical_pdf_pages_rechecked": [36, 37, 38, 39],
+    "new_s_or_a_findings": 0
+  },
+  "residual_risks": [
+    {
+      "risk": "Granular operating inputs remain outside the forecast model.",
+      "non_blocking_control": "Only consolidated scenarios receive credit; direct conversion shortcuts remain disabled."
+    },
+    {
+      "risk": "External published-price views have no model weight.",
+      "non_blocking_control": "The final value remains independently reproduced from the House framework."
+    },
+    {
+      "risk": "2026H1 remains an unaudited preview and 2027-2028 duration remains a House scenario.",
+      "non_blocking_control": "No annualization; explicit positive gates, hard downgrade thresholds and OCF/NP floor remain in force."
+    },
+    {
+      "risk": "Strict free float and daily Shanghai Connect net holding change are not publicly verifiable at the required definition/frequency.",
+      "non_blocking_control": "Both have source-specific archived boundaries and are neither inferred nor presented as missing data."
+    }
+  ],
+  "verifier_results": {
+    "case_local": "39 PASS / 0 FAIL on 2026-07-23 against the current 51-page PDF.",
+    "shared_research_gate": "137 PASS / 0 FAIL / RESULT PASS on 2026-07-23 against the current review state.",
+    "workflow_evaluator": "99/99 checks passed; score 100.0; zero blocking failures; publishable=true on 2026-07-23.",
+    "full_51_page_render_refresh": "51 PNGs in rendered/current-51; PDF is 51 A4 pages; critical market-data pages and end matter directly rechecked without clipping, overlap or glyph corruption."
+  },
+  "historical_pre_remediation_verifier_results": {
+    "case_local": "39 PASS / 0 FAIL on 2026-07-22; applies only to the prior 50-page PDF and review state.",
+    "shared_research_gate": "133 PASS / 0 FAIL / RESULT PASS on 2026-07-22; applies only to the prior 50-page PDF and review state.",
+    "workflow_evaluator": "95/95 checks passed; score 100.0; applies only to the prior review state."
+  },
+  "promotion_condition": "Satisfied on 2026-07-23. Re-run the render refresh, case-local verifier, shared research gate and workflow evaluator before any material report or evidence change is published."
+}

@@ -1,0 +1,73 @@
+{
+  "cycle": "R2_draft",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "recheck": 2,
+  "cycle_status": "PASS",
+  "institutional_status": "INSTITUTIONAL_PASS",
+  "publishability_status": "PENDING_FINAL_GATE_REFRESH",
+  "publishability_score": 94,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "closed_issue_ids": [
+    "R2-S-001",
+    "R2-A-001",
+    "R2-A-002",
+    "R2-A-003",
+    "R2-A-004",
+    "R2-A-005",
+    "R2-A-006"
+  ],
+  "groups": [],
+  "confirmed_draft_controls": {
+    "current_price_CNY": 33.02,
+    "published_final_target_CNY": 33.07,
+    "published_upside_decimal": 0.0015142337977,
+    "fair_value_range_CNY": [
+      31.64,
+      35.96
+    ],
+    "bear_base_bull_CNY": [
+      11.21,
+      33.08,
+      48.34
+    ],
+    "action": "中性偏多（持有/等待验证）",
+    "valuation_parent": "600150.SH",
+    "h1_annualized": false,
+    "cosco_incremental_credit": 0,
+    "broker_target_weight": 0,
+    "military_hudong_group_weak_target_credit": 0
+  },
+  "residual_constraints": [
+    "The current PDF and review artifacts require a fresh final render, gate and workflow refresh; historical 50-page gate results are not current evidence.",
+    "Only consolidated scenario valuation is allowed while ship-level ASP, schedule, utilization, payment, customer-financing and cost-pass-through evidence remains unavailable.",
+    "No usable original Street target price exists; broker target-price weight remains zero."
+  ],
+  "required_next_actions": [
+    "Refresh R3 against the current 51-page PDF and recheck all visual defects.",
+    "Refresh dependent manifests, checksums and inventories, then obtain current case-local/shared-gate/workflow evidence."
+  ],
+  "reopen_triggers": [
+    "price, target, upside, fair-value range, scenario values or action changes without model regeneration",
+    "complete final valuation exhibit loses a required field",
+    "Base residual or PBT-to-EPS bridge becomes ambiguous or inconsistent",
+    "Q1 or H1 is annualized",
+    "backlog or COSCO project receives incremental revenue or EPS credit",
+    "military, Hudong-Zhonghua, group orders or weak target leads receive non-zero value",
+    "a second valuation parent or yard/ship-type SOTP is introduced",
+    "risk thresholds or sensitivities are weakened",
+    "a core exhibit overflows, clips or becomes recommendation-critical table-only content",
+    "strict free float is inferred from circulating share data or quarterly Shanghai Connect stock is presented as daily flow"
+  ],
+  "market_data_remediation_recheck": {
+    "reviewed_at": "2026-07-23",
+    "status": "DRAFT_RECHECK_PASS_PENDING_FINAL_GATE_REFRESH",
+    "verified_reader_controls": [
+      "PR-02 and PR-03 citations, dates, frequency boundaries and reader-facing caveats reconcile across Chapter 12 and Appendix A.",
+      "New market evidence affects only execution/monitoring discipline; it does not add a fundamental target-price credit.",
+      "The CNY33.02/CNY33.07/31.64-35.96/hold-wait package remains coherent."
+    ],
+    "required_final_refresh": "Current 51-page PDF, review artifacts and workflow outputs must be validated together by the main agent."
+  }
+}

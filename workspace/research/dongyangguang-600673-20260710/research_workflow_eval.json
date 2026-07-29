@@ -1,0 +1,546 @@
+{
+  "success": true,
+  "quality": {
+    "schema_version": "quality.research_case.v1",
+    "case_dir": "workspace/research/dongyangguang-600673-20260710",
+    "score": 100.0,
+    "passed_count": 87,
+    "check_count": 87,
+    "blocking_failure_count": 0,
+    "requires_industry_chain": false,
+    "publishable": true,
+    "status": "excellent",
+    "checks": [
+      {
+        "name": "case directory exists",
+        "passed": true,
+        "severity": "S",
+        "detail": "workspace/research/dongyangguang-600673-20260710"
+      },
+      {
+        "name": "exists research_brief.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_brief.md"
+      },
+      {
+        "name": "exists gate_manifest.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "gate_manifest.json"
+      },
+      {
+        "name": "exists artifact_contract.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "artifact_contract.json"
+      },
+      {
+        "name": "exists review_log.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_log.md"
+      },
+      {
+        "name": "exists final_signoff.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "final_signoff.json"
+      },
+      {
+        "name": "md/json pair present: gate_manifest",
+        "passed": true,
+        "severity": "A",
+        "detail": "gate_manifest"
+      },
+      {
+        "name": "md/json pair present: artifact_contract",
+        "passed": true,
+        "severity": "A",
+        "detail": "artifact_contract"
+      },
+      {
+        "name": "md/json pair present: final_signoff",
+        "passed": true,
+        "severity": "A",
+        "detail": "final_signoff"
+      },
+      {
+        "name": "md/json pair present: source_exhaustion_log",
+        "passed": true,
+        "severity": "A",
+        "detail": "source_exhaustion_log"
+      },
+      {
+        "name": "md/json pair present: data/source_registry",
+        "passed": true,
+        "severity": "A",
+        "detail": "data/source_registry"
+      },
+      {
+        "name": "md/json pair present: data/claim_audit",
+        "passed": true,
+        "severity": "A",
+        "detail": "data/claim_audit"
+      },
+      {
+        "name": "gate manifest json parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "artifact contract json parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "final sign-off json parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "required artifact exists: analysis/broker_target_trend.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/broker_target_trend.md"
+      },
+      {
+        "name": "required artifact exists: analysis/delta_audit.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/delta_audit.md"
+      },
+      {
+        "name": "required artifact exists: analysis/exhibit_plan.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/exhibit_plan.md"
+      },
+      {
+        "name": "required artifact exists: analysis/growth_earnings_model.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/growth_earnings_model.md"
+      },
+      {
+        "name": "required artifact exists: analysis/house_view.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/house_view.md"
+      },
+      {
+        "name": "required artifact exists: analysis/implied_growth_sensitivity.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/implied_growth_sensitivity.md"
+      },
+      {
+        "name": "required artifact exists: analysis/risk_framework.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/risk_framework.md"
+      },
+      {
+        "name": "required artifact exists: analysis/secondary_market_analysis.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/secondary_market_analysis.md"
+      },
+      {
+        "name": "required artifact exists: analysis/segment_forecast_bridge.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/segment_forecast_bridge.md"
+      },
+      {
+        "name": "required artifact exists: analysis/segment_valuation_model.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/segment_valuation_model.md"
+      },
+      {
+        "name": "required artifact exists: analysis/template_brief.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/template_brief.md"
+      },
+      {
+        "name": "required artifact exists: analysis/valuation_audit.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/valuation_audit.md"
+      },
+      {
+        "name": "required artifact exists: analysis/valuation_model.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/valuation_model.md"
+      },
+      {
+        "name": "required artifact exists: analysis/value_chain_economics.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/value_chain_economics.md"
+      },
+      {
+        "name": "required artifact exists: analysis/variant_perception.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/variant_perception.md"
+      },
+      {
+        "name": "required artifact exists: data/broker_street_consensus_20260713.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/broker_street_consensus_20260713.json"
+      },
+      {
+        "name": "required artifact exists: data/broker_street_consensus_20260713.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/broker_street_consensus_20260713.md"
+      },
+      {
+        "name": "required artifact exists: data/claim_audit.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/claim_audit.json"
+      },
+      {
+        "name": "required artifact exists: data/claim_audit.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/claim_audit.md"
+      },
+      {
+        "name": "required artifact exists: data/compute_contract_bridge_20260713.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/compute_contract_bridge_20260713.json"
+      },
+      {
+        "name": "required artifact exists: data/current_valuation_model_20260713.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/current_valuation_model_20260713.json"
+      },
+      {
+        "name": "required artifact exists: data/growth_driver_model.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/growth_driver_model.json"
+      },
+      {
+        "name": "required artifact exists: data/source_registry.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/source_registry.json"
+      },
+      {
+        "name": "required artifact exists: data/source_registry.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/source_registry.md"
+      },
+      {
+        "name": "required artifact exists: data/transaction_dilution_model_20260713.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/transaction_dilution_model_20260713.json"
+      },
+      {
+        "name": "required artifact exists: final_signoff.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "final_signoff.json"
+      },
+      {
+        "name": "required artifact exists: final_signoff.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "final_signoff.md"
+      },
+      {
+        "name": "required artifact exists: main.pdf",
+        "passed": true,
+        "severity": "S",
+        "detail": "main.pdf"
+      },
+      {
+        "name": "required artifact exists: main.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "main.tex"
+      },
+      {
+        "name": "required artifact exists: main_current_text.txt",
+        "passed": true,
+        "severity": "S",
+        "detail": "main_current_text.txt"
+      },
+      {
+        "name": "required artifact exists: research_brief.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_brief.md"
+      },
+      {
+        "name": "required artifact exists: research_workflow_eval.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_workflow_eval.json"
+      },
+      {
+        "name": "required artifact exists: research_workflow_eval.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_workflow_eval.md"
+      },
+      {
+        "name": "required artifact exists: review_log.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_log.md"
+      },
+      {
+        "name": "required artifact exists: source_exhaustion_log.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "source_exhaustion_log.json"
+      },
+      {
+        "name": "required artifact exists: source_exhaustion_log.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "source_exhaustion_log.md"
+      },
+      {
+        "name": "gate manifest depth gates complete",
+        "passed": true,
+        "severity": "A",
+        "detail": "all depth gates present"
+      },
+      {
+        "name": "artifact contract declares required fields and depth gates",
+        "passed": true,
+        "severity": "A",
+        "detail": ""
+      },
+      {
+        "name": "review findings present",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_findings_*.json"
+      },
+      {
+        "name": "review findings parse: review_findings_R0_evidence.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R0_evidence",
+        "passed": true,
+        "severity": "A",
+        "detail": "R0_evidence"
+      },
+      {
+        "name": "review findings parse: review_findings_R1_model.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R1_model",
+        "passed": true,
+        "severity": "A",
+        "detail": "R1_model"
+      },
+      {
+        "name": "review findings parse: review_findings_R2_draft.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R2_draft",
+        "passed": true,
+        "severity": "A",
+        "detail": "R2_draft"
+      },
+      {
+        "name": "review findings parse: review_findings_R3_render_compliance.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R3_render_compliance",
+        "passed": true,
+        "severity": "A",
+        "detail": "R3_render_compliance"
+      },
+      {
+        "name": "review findings parse: review_findings_R4_final_ic.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "no open S-Level findings",
+        "passed": true,
+        "severity": "S",
+        "detail": "0"
+      },
+      {
+        "name": "no open unwaived A-Level findings",
+        "passed": true,
+        "severity": "A",
+        "detail": "0"
+      },
+      {
+        "name": "publishability score present",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_log.md"
+      },
+      {
+        "name": "publishability score >= 90",
+        "passed": true,
+        "severity": "S",
+        "detail": "96"
+      },
+      {
+        "name": "valuation model reproducibility pass",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/valuation_audit.md"
+      },
+      {
+        "name": "valuation model required sections complete",
+        "passed": true,
+        "severity": "S",
+        "detail": "all valuation sections present"
+      },
+      {
+        "name": "valuation model structured rows present",
+        "passed": true,
+        "severity": "S",
+        "detail": "rows=1"
+      },
+      {
+        "name": "valuation model row fields complete",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "valuation model target/upside recalculates",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "single-stock valuation model institutional depth",
+        "passed": true,
+        "severity": "S",
+        "detail": "segment valuation and secondary-market artifacts present"
+      },
+      {
+        "name": "broker/street consensus json present",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/broker_street_consensus_<YYYYMMDD>.json"
+      },
+      {
+        "name": "broker/street consensus md pair present",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/broker_street_consensus_20260710.md"
+      },
+      {
+        "name": "broker/street consensus json parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "broker/street consensus rows present",
+        "passed": true,
+        "severity": "S",
+        "detail": "rows=2"
+      },
+      {
+        "name": "broker/street consensus covers valuation universe",
+        "passed": true,
+        "severity": "S",
+        "detail": "covered=1"
+      },
+      {
+        "name": "broker/street consensus row fields complete",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "broker/street consensus values usable for valuation anchor",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "broker/street weak sources are zero-weight or unavailable",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "broker/street positive-weight auditable anchor covers valuation universe",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "broker/street external positive anchor covers valuation universe",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "broker/street gaps recorded in source exhaustion",
+        "passed": true,
+        "severity": "A",
+        "detail": "source_exhaustion_log.md must record broker target-price gaps"
+      },
+      {
+        "name": "broker/street consensus complete before PASS sign-off",
+        "passed": true,
+        "severity": "S",
+        "detail": "PASS cannot coexist with incomplete broker/Street target-price coverage"
+      },
+      {
+        "name": "final sign-off status pass",
+        "passed": true,
+        "severity": "S",
+        "detail": "pass"
+      },
+      {
+        "name": "final sign-off residual risks do not conflict with PASS",
+        "passed": true,
+        "severity": "S",
+        "detail": "material residual risk cannot be hidden in a PASS sign-off"
+      }
+    ],
+    "blocking_failures": [],
+    "review_summary": {
+      "finding_file_count": 5,
+      "parse_failure_count": 0,
+      "open_s_count": 0,
+      "open_unwaived_a_count": 0,
+      "publishability_score": 96
+    }
+  }
+}

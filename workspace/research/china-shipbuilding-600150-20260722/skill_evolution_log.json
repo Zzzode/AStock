@@ -1,0 +1,17 @@
+{
+  "case_id": "china-shipbuilding-600150-20260722",
+  "date": "2026-07-22",
+  "failure_mode": "source-backed secondary-market data coverage was omitted from a single-stock full report",
+  "root_cause": "single-stock market-depth gate checked generic keywords rather than dated field coverage",
+  "affected": [
+    "equity-research",
+    "data-collector",
+    "data-verifier",
+    "market-analyst",
+    "research-report-reviewer"
+  ],
+  "report_repair": "delta audit completed; labelled 727-day front-adjusted K-line, turnover/circulating shares, daily margin, quarterly Shanghai Connect/fund and Dragon-Tiger query packets collected and integrated; PDF rebuild, R2-R4 re-review and final gate rerun remain",
+  "proposed_prevention_rule": "require dated and sourced continuous adjusted K-line, free float, turnover, margin trading, Stock Connect, fund ownership and Dragon-Tiger List coverage or archived negative-query evidence",
+  "prompt_changes_applied": false,
+  "reason_prompt_changes_not_applied": "user requested report remediation, not reusable prompt changes"
+}

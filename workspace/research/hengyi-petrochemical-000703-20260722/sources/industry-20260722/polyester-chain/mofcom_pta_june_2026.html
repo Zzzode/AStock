@@ -1,0 +1,325 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>商品价格网</title>
+	<meta name="keywords" content="MOFCOM,商务部,国内外市场价格数据,货运物流数据,宏观经济数据,金融数据,行情资讯,研究报告,统计资讯,金属矿产,能源化工,粮农土畜,商品价格指数,货运物流报价和指数,各国汇率,历史数据,图表信息,商务部公共商务信息服务体系的重要组成部分">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="主要宗旨是为社会提供公共服务，为公众提供大宗商品的国内外市场价格数据、货运物流数据、宏观经济数据、 金融数据以及相关的行情资讯、研究报告和统计资讯。">
+    <meta name="SiteName" content="商务部网站" />
+    <meta name="SiteDomain" content="www.mofcom.gov.cn" />
+    <meta name="SiteIDCode" content="bm22000001" />
+    <meta name="ColumnName" content="价格查询" />
+    <meta name="ColumnDescription" content="主要内容上涵盖金属矿产、能源化工、粮农土畜三大类近千种国内外商品的市场价格与重要商品价格指数、 货运物流报价和指数" />
+    <meta name="ColumnType" content="价格查询" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="renderer" content="webkit">
+	<meta name="keywords" content="your keywords">
+	<meta name="description" content="your description">
+	<meta name="author" content="hl,haolei@ec.com.cn">
+	<meta name="robots" content="index,follow">
+	<link rel="stylesheet" href="/css/style.css" />
+	<script type="text/javascript" src="/js/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="/js/script.js"></script>
+	<script type="text/javascript" src="/js/jpage.js"></script>
+	<script type="text/javascript" src="/util_js/nav_scrop.js"></script>
+	<link rel="stylesheet" href="/css/top.css" />
+	<script type="text/javascript" src="/js/top.js"></script>
+	<script type="text/javascript" src="/util_js/ajaxutil.js"></script>
+	<script type="text/javascript" src="/util_js/renew.js"></script>
+	 <!--[if IE]>
+		<script src="js/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<style>
+.n-hd {
+	background: #86BDE3;
+	overflow: hidden;
+}
+.gh_logo img {
+	vertical-align: middle;
+}
+</style>
+<header class="header n-hd">
+
+		<div class="top wrapper clearfix">
+			<div class="fl">
+				<a class="gh_logo" href="http://www.mofcom.gov.cn/" target="_blank"><img src="/img/bg/logo1.png"></a>
+			</div>
+			<div class="fr loginBox">
+				<a class="txt_01" style="padding-right: 103px;">本站今日更新商品价格<span  id="renew_data" style="color: #ff6600;font-style: normal;"></span>条</a>
+				<label>建议使用谷歌、火狐、IE9及以上浏览器</label>
+			</div>
+			
+			<!-- <div class="fr loginBox">
+				<form method="post" action="">
+					<label for="userName">用户名：</label><input id="userName" class="ipt_txt_01 clsResIpt" type="text" name="" value="" />
+					<label for="userPwd">密码：</label><input id="userPwd" class="ipt_txt_01 clsResIpt" type="text" name="" value="" />
+					<a class="forgetPwd" href="">忘记密码</a>
+					<input class="public_icons_01 btn_login" type="botton"value="">
+					<input class="public_icons_01 btn_reg" type="botton"  value="">
+				</form>
+			</div> -->
+		</div>
+	</header>
+	<div class="logoBox">
+	  <div class="wrapper">
+	     <div class="logo clearfix">
+			<img class="fl mt8" src="/img/bg/logo.png" alt="logo">
+			<img class="fr" src="/img/bg/ad_478x74_01.png" alt="">
+		</div>
+	  </div>
+	</div>
+<div class="placeholder"></div>
+ <div class="nav_scroll">
+	<nav class="nav">
+		<div class="mainNavBox wrapper">
+			<ul class="menu clearfix">
+			   <li class="home">
+					<a href="/index.shtml">首  页</a>
+				</li>
+				<li class="s">|</li>
+				<li>
+					<a href="/pricequotation/pricequotation.shtml">价格行情</a>
+					<ul class="menu_01 dsn">
+						<li><a href="/pricequotation/morepricequotation.shtml?flag=qh&prod_type=lntx">期货-粮农土畜</a></li>
+						<li><a href="/pricequotation/morepricequotation.shtml?flag=qh&prod_type=nyhg">期货-能源化工</a></li>
+						<li><a href="/pricequotation/morepricequotation.shtml?flag=qh&prod_type=jskc">期货-金属矿产</a></li>
+						<li><a href="/pricequotation/morepricequotation.shtml?flag=xh&prod_type=lntx">现货-粮农土畜</a></li>
+						<li><a href="/pricequotation/morepricequotation.shtml?flag=xh&prod_type=nyhg">现货-能源化工</a></li>
+						<li><a href="/pricequotation/morepricequotation.shtml?flag=xh&prod_type=jskc">现货-金属矿产</a></li>
+					</ul>
+				</li>
+				<li class="s">|</li>
+			    <li>
+			       <a href="/yjzx/yjzx_index.shtml">研究资讯</a>
+			      <ul class="menu_01 dsn">
+			          <li><a href="/list/yjzx/yjbg/1/cateinfo1.html">研究报告</a></li>
+			          <li><a href="/list/yjzx/jczb/1/cateinfo.html">监测周报</a></li>
+			          <li><a href="/list/yjzx/jmjx/1/cateinfo.html">经贸简讯</a></li>
+			          <li><a href="/list/yjzx/hyzx/1/cateinfo1.html">行业资讯</a></li>
+			      </ul>
+			    </li>
+			    <li class="s">|</li>
+			   
+			     <li>
+			        <a href="/trafficgoods/trafficgoods.shtml">货运物流</a>  
+			      <ul class="menu_01 dsn">
+			          <li><a href="/trafficgoods/moretrafficgoods.shtml?flag=hy&w_m_y=day">海运-日报价</a></li>
+			          <li><a href="/trafficgoods/moretrafficgoods.shtml?flag=ky&w_m_y=month">空运-月报价</a></li>
+			          <li><a href="/trafficgoods/moretrafficgoods.shtml?flag=ky&w_m_y=year">空运-年报价</a></li>
+			          <li><a href="/trafficgoods/moretrafficgoods.shtml?flag=ly&w_m_y=week">陆运-周报价</a></li>
+			          <li><a href="/trafficgoods/moretrafficgoods.shtml?flag=ly&w_m_y=month">陆运-月报价</a></li>
+			          <li><a href="/trafficgoods/moretrafficgoods.shtml?flag=ly&w_m_y=year">陆运-年报价</a></li>
+			          <li><a href="/trafficgoods/moretrafficgoods.shtml?flag=sy&w_m_y=month">水运-月报价</a></li>
+			      </ul>
+			    </li>
+			    <li class="s">|</li>
+				<li>
+			       <a href="/financialdynamic/financialdynamic.shtml">金融动态</a>  
+			      <ul class="menu_01 dsn">
+			          <li><a href="/financialdynamic/morefinancialdynamic.shtml?flag=exch">汇率每日报价</a></li>
+			          <li><a href="/financialdynamic/morefinancialdynamic.shtml?flag=index">指数每日指数</a></li>
+			      </ul>
+			    </li>
+			    <li class="s">|</li>
+			    
+			    <li>
+			        <a href="/acountinfo/acountinfo.shtml">统计资讯</a>   
+			      <ul class="menu_01 dsn">
+			          <li><a href="/list/tjzx/ncpl/1/cateinfo.html">粮农土畜</a></li>
+			          <li><a href="/list/tjzx/nyhgl/1/cateinfo.html">能源化工</a></li>
+			          <li><a href="/list/tjzx/jskcl/1/cateinfo.html">金属矿产</a></li>
+			      </ul>
+			    </li>
+			    <li class="s">|</li>
+				<li> <a href="/channel/about.shtml">关于我们</a></li>
+				
+			</ul>
+		</div>
+	</nav>
+</div>
+	<a href="#" onclick="gotoTop();return false;" class="totop"></a>
+	<section class="main blank clearfix wrapper">
+		<section class="">
+			<nav class="subnav wrapper">
+				当前位置：<a href="/" class="a1">首页</a>
+				 &gt; <a href="/list/yjzx/1/cateinfoindex.html">研究资讯</a> &gt; <a href="/list/yjzx/hyzx/1/cateinfo1.html">行业资讯</a> &gt; <a href="/list/yjzx/hyzx/nyhg/1/cateinfo.html">能源化工</a>
+
+			</nav>
+
+			<section class="main wrapper clearfix">
+				<div class="articleBox">
+					<article class="article_01">
+						<h2 class="tit_01" id="article_title">文章标题</h2>
+					    <p class="p3 mt15">
+<span class="author" id = "source"></span>
+<span class="time" id="publishTime"></span></p>
+					<div class="con">
+						<script type="text/javascript">
+			var articleId = '64836';
+			var title = '成本支撑减弱 PTA偏弱运行为主';
+			var subTitle = '';
+			var shortTitle = '';
+			var titleColor = '';
+			var source = '期货日报';
+			var imageUrl = '';
+			var publishTime = '2026-06-26';
+			var cuid = '53d8a9ef9ef2a3ba019ef367a0dd0018';
+			var siteId = 'price';
+			var commentFlag = '';
+			var executiveEditor = '杨丽';
+		</script><p style="text-indent:2em;">受地缘紧张局势缓和影响，国际原油价格承压回落，原料成本对PTA的支撑力度将持续走弱。</p><div><p style="text-indent:2em;">PTA行业长期处于供大于求格局，价格中枢基本围绕生产成本波动。今年2月底，美以伊冲突爆发，市场担忧霍尔木兹海峡航运受阻，国际原油价格大幅拉涨，直接推高PTA原料成本，带动PTA价格快速上行。然而，随着市场对霍尔木兹海峡封锁预期充分消化，原油价格上涨动能逐步消退，PTA价格随即转入震荡下行通道。</p><p style="text-indent:2em;">近期，美伊达成停战谅解备忘录，这份备忘录约定双方即刻停火、恢复霍尔木兹海峡通航，并开启为期60天的全面谈判。另外，当地时间6月22日，伊朗谈判代表团媒体委员会发布了美伊日内瓦首轮谈判中达成的关键内容与协议要点。受地缘紧张局势缓和影响，国际原油价格承压回落，原料成本对PTA的支撑力度将持续走弱。</p><p style="text-indent:2em;">由于下游采购意愿减弱，4月以来，国内累计有9套共计2145万吨／年产能的PTA装置实施检修。据资讯机构披露，二季度已公布的检修计划涉及产能达2730万吨／年，预计将造成PTA产量减少约100万吨。</p><p style="text-indent:2em;">受装置大面积停车影响，国内PTA开工负荷降至历史低位。截至6月18日，国内PTA装置开工率为66.39%，较去年同期下滑14.89个百分点。目前，国内PTA周产量已降至128万吨左右，市场存在约5.5万吨／周的供应缺口，但该缺口较5月已有所收窄。随着近期PTA价格走高，生产企业经营状况明显改善，当前加工费已回升至665元／吨，产品利润约265元／吨。利润修复将促使前期检修装置加快复产进程。</p><p style="text-indent:2em;">随着供应收缩，国内PTA行业已步入去库阶段。截至6月18日，行业总库存为320.37万吨，较上周下降5.65万吨，环比下滑1.73%，已低于往年同期水平。其中，PTA工厂库存可用天数为4.52天，同比上升0.37天；聚酯工厂PTA原料库存可用天数为10.42天，同比上升2.82天。</p><p style="text-indent:2em;">前期受PX供应偏紧、加工费承压等影响，PTA企业集中检修，开工负荷降至历史低位，供应出现明显缺口，这是推动本轮去库的直接原因。不过，后续市场或面临变局。一方面，随着美伊进入和谈阶段，国际能源贸易有望恢复，进口PX供应将逐步回归；另一方面，当前供应缺口导致的加工费显著回升，亦将吸引前期检修装置加快复产。二者叠加，PTA去库节奏或放缓，供应紧张格局可能逐步缓解。</p><p style="text-indent:2em;">从下游聚酯环节来看，目前行业整体利润尚可，除聚酯切片和涤纶长丝DTY外，其余产品均有200~300元／吨的盈利空间。尽管当前正值终端消费淡季，但近期订单出现回暖迹象。截至6月18日，国内聚酯行业平均开工负荷为80.19%，较去年同期下降8.44个百分点，对应PTA周需求量约134万吨。同期，织造业开工负荷为57%，同比下降13个百分点。</p><p style="text-indent:2em;">受终端采购意愿减弱影响，涤纶长丝库存持续攀升。截至6月18日，POY、DTY、FDY库存可用天数分别为26.5天、38.3天和30.7天，较去年同期分别增加10.2天、12.7天和10.9天，同比增幅达62.58%、49.61%和55.05%。</p><p style="text-indent:2em;">综合来看，当前国内企业开工负荷处于历史低位，PTA市场短期表现出一定的抗跌性。但需警惕的是，产能过剩格局并未根本性扭转，且随着加工费修复至高位，前期检修装置复产预期正在升温。因此，短期缺口难抵中长期供应回归压力，PTA价格重心下移概率较大。</p></div><p><br /></p>
+
+						
+<span class="fr" id="executiveEditor"></span> 
+                     </div>
+					</article>
+				</div>
+			</section>
+		</section>
+		<div class="mt10 clearfix" style="height: 208px;">
+			<div class="msgPic fl">
+				<img src="/img/qr.jpg" alt="">
+			</div>
+			<div class="service_01 fr">
+				<ul class="tit_list_01">
+					<li>
+						<h3> 相关链接</h3>
+						<div class="link_01">
+						    <a href="http://www.mofcom.gov.cn/">商务部</a><br>
+						    <a href="http://dzsws.mofcom.gov.cn/">电子商务和信息化司</a><br>
+							<a href="http://www.caitec.org.cn/">国际贸易经济合作研究院</a><br>
+							<a href="http://data.mofcom.gov.cn/">商务数据中心</a>
+						</div>
+					</li>
+					<li>
+						<h3> 关于我们</h3>
+						<div class="info_01">
+							<span>电话：010-85093217  010-85093214</span><br>
+							<span>邮箱：infobusi@163.com</span><br>
+							<span style="margin-left:50px;">shangqingchu@caitec.org.cn</span>
+						</div>
+					</li>
+					<li>					   
+						<h3> 问卷调查</h3>
+						 <div class="info_02">
+						  <script type="text/javascript">
+                          function voteSubmit(id){
+			       if($("#" + id).find("[name='choices']:checked").length>0){
+				$("#" + id).find("[type='submit']").attr("disabled",true);
+ 				$.ajax({
+ 					url:$("#" + id).attr("action"),
+ 					data:$("#" + id).serialize(),
+ 					dataType:"html",
+					type:"post",
+					success:function(result){
+						if(result=="success"){
+							alert("提交成功！");
+						}else if(result=="repeat"){
+								 alert("您已经参与了调查，不能再次参与");
+						}else{
+							alert("提交失败！");
+							$("#" + id).find("[type='submit']").attr("disabled",false);
+						}		
+					}
+				});
+			}else{
+				alert("请先选择！");
+			}
+			return false;
+		}
+	</script><form action="/datamofcom/front/price/survey/vote" name="voteForm" id="ff8080815804d9b3015808fc7c840037">
+<input type="hidden" name="fdid" value="ff8080815804d9b3015808fc7c840037">
+<table class="table_03" width="100%">
+<tr>
+<th >您关注的栏目：</th><th ><input class="public_icons_01 btn_submit_01" type="button" onclick="voteSubmit('ff8080815804d9b3015808fc7c840037')" value=""><th>
+</tr>
+<tr>
+<td width="50%"><input type="checkbox" name="choices" value="52999709584bb7cd01584bd7ecf80002"><label for="">价格行情</label></td><td width="50%"><input type="checkbox" name="choices" value="52999709584bb7cd01584bd7ecf80003"><label for="">研究资讯</label></td>
+</tr>
+<tr>
+<td width="50%"><input type="checkbox" name="choices" value="52999709584bb7cd01584bd7ecf80004"><label for="">货运物流</label></td><td width="50%"><input type="checkbox" name="choices" value="52999709584bb7cd01584bd7ecf80005"><label for="">金融动态</label></td>
+</tr>
+<tr>
+<td width="50%"><input type="checkbox" name="choices" value="52999709584bb7cd01584bd7ecf80006"><label for="">统计资讯</label></td><td width="50%"><input type="checkbox" name="choices" value="52999709584bb7cd01584bd7ecf90007"><label for="">重要专题</label></td>
+</tr>
+<tr>
+</table>
+</form>
+
+						</div> 
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		
+	</section>
+	<style>
+	.copyright{
+		color: #000;
+		position: relative;
+	}
+	.copyright span, .copyright a{
+		display: inline-block;
+		margin-right: 20px;
+		color: #000;
+	}
+	.copyright .pos-img{
+		position: absolute;
+		right: 0;
+		top: 32px;
+	}
+	.copyright .pos-img span, .copyright .pos-img a{
+		margin-right: 0;
+	}
+	.copyright .link-line{
+		padding-left: 20px;
+	}
+</style>
+<footer class="footer mt10">
+		 <div class="copyright wrapper clearfix">
+			<!-- <p class="fl">版权所有：<a href="http://www.mofcom.gov.cn/" style="color: #01559d;">中华人民共和国商务部</a><br>ICP备案编号：京ICP备05004093号<br><img src="/img/imgBeian.png"><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11040102700091">京公网安备 11040102700091号</a></p>
+			<p class="fr">主办单位：<a href="http://www.caitec.org.cn/" style="color: #01559d;">商务部国际贸易经济合作研究院</a><br>技术支持：<a href="http://ciecc.mofcom.gov.cn/" style="color: #01559d;">中国国际电子商务中心</a></p> -->
+			
+			<!-- <p class="fl">
+			主办单位：中华人民共和国商务部    网站标识码bm22000001  <br>
+			<a href="https://beian.miit.gov.cn" target="_blank">京ICP备05004093号-1</a> <a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11040102700091" target="_blank"><img class="beian" src="http://www.mofcom.gov.cn/img/imgBeian.png" />京公网安备 11040102700091号</a><br>
+			网站管理：<a href="http://dzsws.mofcom.gov.cn/">商务部电子商务和信息化司</a> 技术支持：<a href="https://ciecc.ec.com.cn/">中国国际电子商务中心</a><br>
+			技术支持电话：010-85093026  网站服务电话：010-85093020<br>
+			统一平台技术支持电话：010-67870108 邮箱：<a href="https://user.mofcom.gov.cn/login">商务部邮箱</a>
+			
+			
+			
+		    </p> -->
+		    <div class="pos-img">
+		    	<script id="_jiucuo_" sitecode='bm22000001' src='https://pucha.kaipuyun.cn/exposure/jiucuo.js'></script>
+		    	<span id="_ideConac"></span>
+		    </div>
+		    <div class="link-line"><span>主办单位：中华人民共和国商务部</span><span>网站标识码bm22000001</span><a href="https://beian.miit.gov.cn" target="_blank">京ICP备05004093号-1</a></div>
+			<div class="link-line"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=11040102700091" target="_blank"><img class="beian" src="http://www.mofcom.gov.cn/img/imgBeian.png" />京公网安备 11040102700091号</a>网站管理：<a href="http://dzsws.mofcom.gov.cn/">商务部电子商务和信息化司</a> 技术支持：<a href="https://ciecc.ec.com.cn/">中国国际电子商务中心</a></div>
+		 	<div class="link-line"><span>技术支持电话：010-85093026</span><span>网站服务电话：010-85093020</span><span>统一平台技术支持电话：010-67870108</span>邮箱：<a href="https://user.mofcom.gov.cn/login">商务部邮箱</a></div>
+		 </div>
+	
+		 	<script type="text/javascript" src="/js/zf_monitor.js"></script>
+		 	
+	</footer>
+
+	
+
+	<script type="text/javascript">
+	$(function() {
+		$("#article_title").html(title);
+		$("#publishTime").html("　　发布日期："+publishTime);
+        if(executiveEditor != ""){
+		     $("#executiveEditor").html("责编："+executiveEditor);	
+        }	
+		if(source != ""){
+			$("#source").html("来源："+source);
+		}
+	});
+</script>
+</body>
+</html>

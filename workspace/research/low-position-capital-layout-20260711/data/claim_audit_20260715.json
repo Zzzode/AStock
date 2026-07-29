@@ -1,0 +1,53 @@
+{
+  "schema_version": "astock.claim_audit.refresh.v1",
+  "data_cutoff": "2026-07-15",
+  "claims": [
+    {
+      "claim_id": "RC01",
+      "claim": "Official H1 preview table contains 4429 metrics and 1680 companies after A-share scope processing.",
+      "source_ids": [
+        "R01"
+      ],
+      "status": "verified",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC02",
+      "claim": "Unified screen produces 142 high-impact candidates and 42 priority names.",
+      "source_ids": [
+        "R01",
+        "R02",
+        "R04"
+      ],
+      "status": "verified",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC03",
+      "claim": "Candidate financial coverage is 142/142 and broker PDF coverage is 138/142.",
+      "source_ids": [
+        "R03"
+      ],
+      "status": "verified_with_source_gaps",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC04",
+      "claim": "The three formal models have current auditable broker target/range fields and are separated from House-only priority models.",
+      "source_ids": [
+        "R03"
+      ],
+      "status": "verified",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC05",
+      "claim": "Industry stages are bounded as latest-available fallback because live industry-flow endpoints were unavailable.",
+      "source_ids": [
+        "R04"
+      ],
+      "status": "bounded",
+      "materiality": "high"
+    }
+  ]
+}

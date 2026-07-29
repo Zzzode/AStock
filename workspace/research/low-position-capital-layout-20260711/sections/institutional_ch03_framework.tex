@@ -1,0 +1,71 @@
+\chapter{估值框架与情景分析}
+
+估值不是把同一PE模板扩展到142只股票。我们先判断利润属于周期、成长、金融资产、常规经营还是恢复性分母，再选择对应的估值方法。所有外部目标价均按来源质量加权；没有可审计当前锚时，模型只能是条件性本机构区间。
+
+\noindent
+\begin{exhibitbox}[图表 5｜估值方法选择矩阵]
+\small
+\begin{tabularx}{\textwidth}{L{1.0cm}L{2.2cm}R{1.0cm}X L{4.0cm}}
+\toprule
+\textbf{代码} & \textbf{方法} & \textbf{覆盖} & \textbf{核心公式} & \textbf{为何使用} \\
+\midrule
+M1 & 周期调整扣非EPS/PE & 53 & \(EPS_s=EPS_{H1}^d(1+r_s);\ V_s=EPS_s\times PE_s\) & 商品、价差、运价和利用率主导的盈利不能被单一半年度利润代表。 \\
+M2 & 成长盈利情景PE & 42 & \(EPS_s=EPS_{H1}^d(1+r_s);\ V_s=EPS_s\times PE_s\) & 仅对已进入盈利桥接的成长持续期赋予更高情景倍数。 \\
+M3 & PB/ROE与盈利混合 & 18 & \(V_s=0.65(BPS\times PB_s)+0.35(EPS_s\times PE_s)\) & 金融资产需要同时锚定资产负债表与盈利能力。 \\
+M4 & 常规扣非EPS/PE & 16 & \(EPS_s=EPS_{H1}^d(1+r_s);\ V_s=EPS_s\times PE_s\) & 正扣非分母且未触发低基数或项目结算阻断。 \\
+R1 & 恢复模型 & 12 & \(V_s=EPS_{norm}\times PE_s\) 或 \(BPS\times PB_s\) 或 \(R_{2026E}/Shares\times PS_s\) & 低基数、结算型、近零EPS必须先更换分母。 \\
+B1 & 上市边界 & 1 & \(P_{target}=\text{不适用}\) & 无二级市场价格时不制造伪精确目标。 \\
+\bottomrule
+\end{tabularx}
+\normalsize
+\sourcenote{方法分布来自142只候选的逐票估值审计包；每只的变量代入、依据和证据路径见附录B。}
+\end{exhibitbox}
+
+\section{情景权重与目标价治理}
+
+\begin{align*}
+V_{\mathrm{prob}} &= 0.30V_{\mathrm{bear}}+0.50V_{\mathrm{base}}+0.20V_{\mathrm{bull}}, \\
+P_{\mathrm{target}} &= V_{\mathrm{prob}}(1-w_{\mathrm{external}})+P_{\mathrm{external}}w_{\mathrm{external}}, \\
+\mathrm{Upside} &= \frac{P_{\mathrm{target}}}{P_{\mathrm{current}}}-1.
+\end{align*}
+50%基准权重反映“正常兑现”是最常见路径；30%熊市权重强制保留周期、现金流和分母失效的风险；20%牛市权重仅在盈利、现金流和外部证据同步改善时才有意义。权重是统一的本机构情景先验，不是回归模型估计出的客观概率。
+
+\noindent
+\begin{sourcequalitybox}[外部锚与本机构区间的边界]
+原始券商PDF或可审计共识快照可作为外部锚；摘要、转载、陈旧目标价和用户估值文章仅提供背景，权重为零。本机构区间的作用是定义验证顺序和风险边界，不替代当前、可审计的市场一致目标价。
+\end{sourcequalitybox}
+
+模型升级已在第一章的行动分层中固化：正式模型要求当前价格、分母、外部锚和失效条件同步可核；条件性区间仅用于安排验证优先级；上市或证据边界标的在形成有效交易价格或补齐关键证据前不进入目标价模型。
+
+\noindent
+\begin{exhibitbox}[图表 6｜概率值不是承诺：三项不可放松的估值约束]
+\small
+\begin{tabularx}{\textwidth}{L{2.2cm}X L{4.6cm}}
+\toprule
+\textbf{约束} & \textbf{模型含义} & \textbf{行动后果} \\
+\midrule
+分母约束 & H2扣非、现金流和周期变量必须支撑熊/基准/牛的情景分母；半年度利润不等同于全年盈利。 & 分母失效先下调EPS或切换正常化口径，不以提高估值倍数补偿。 \\
+外部锚约束 & 只有当前、可审计的原始研报或共识快照可获得正权重；摘要、转载和陈旧目标价仅保留为背景。 & 弱来源权重归零，条件性本机构区间不升级为可复核正向验证。 \\
+价格约束 & 概率值相对现价的空间只是情景结果；价格位置、估值拥挤度和失效条件决定是否可执行。 & 概率值低于现价或证据时效不足时不追价，转入估值纪律观察。 \\
+\bottomrule
+\end{tabularx}
+\normalsize
+\sourcenote{概率值用于比较风险调整后的情景价值，不构成收益承诺；逐票输入、权重与公式代入见附录B。}
+\end{exhibitbox}
+
+\noindent
+\begin{exhibitbox}[图表 7｜正式模型的概率值桥接：本机构情景与外部锚分层计入]
+\small
+\begin{tabularx}{\textwidth}{L{2.5cm}R{2.4cm}L{4.1cm}R{2.4cm}}
+\toprule
+\textbf{标的} & \textbf{本机构概率值} & \textbf{外部锚及权重} & \textbf{最终概率值} \\
+\midrule
+恒逸石化（000703） & 24.13元 & 17.05元 × 10\% & 23.42元 \\
+宏桥控股（002379） & 25.45元 & 29.00元 × 10\% & 25.80元 \\
+亿纬锂能（300014） & 58.59元 & 77.00元 × 10\% & 60.43元 \\
+川能动力（000155） & 8.88元 & 20.43元 × 10\% & 10.04元 \\
+\bottomrule
+\end{tabularx}
+\normalsize
+\sourcenote{最终概率值=本机构概率值×（1－外部锚权重）＋外部目标价×外部锚权重。外部锚的正权重仅限于当前、可审计的原始研报字段。}
+\end{exhibitbox}

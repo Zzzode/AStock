@@ -1,0 +1,24 @@
+flowchart LR
+  subgraph U["八大产业链模块"]
+    U1["算力芯片"]
+    U2["服务器/整柜"]
+    U3["供电"]
+    U4["液冷"]
+    U5["光/网络/铜连接"]
+    U6["HBM/存储"]
+    U7["PCB/CCL/连接器"]
+    U8["IDC/模型应用"]
+  end
+  U1 & U2 & U3 & U4 & U5 & U6 & U7 & U8 --> G1["平台/客户认证"]
+  G1 --> G2["订单与公司份额"]
+  G2 --> G3["交付/验收/收入"]
+  G3 --> G4["ASP/毛利/现金流"]
+  G4 --> V["估值信用"]
+  X["当前公开证据止步于\n架构/能力/一般关系"] -.-> G1
+  X -.-> Z["Atlas 专属收入/NP/EPS = 0"]
+  classDef gate fill:#d9eaf7,stroke:#1f4e79,color:#17365d;
+  classDef stop fill:#f4cccc,stroke:#990000,color:#660000,stroke-width:2px;
+  classDef value fill:#d9ead3,stroke:#38761d,color:#274e13,stroke-width:2px;
+  class G1,G2,G3,G4 gate;
+  class X,Z stop;
+  class V value;

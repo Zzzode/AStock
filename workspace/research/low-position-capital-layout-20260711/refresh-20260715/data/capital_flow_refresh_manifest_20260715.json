@@ -1,0 +1,19 @@
+{
+  "schema_version": "astock.capital_flow_refresh_manifest.v1",
+  "data_cutoff": "2026-07-15",
+  "industry_daily": "data/raw_daily_tables_20260714.json",
+  "industry_weekly": "data/raw_weekly_tables_20260710_refresh.json",
+  "continuous_inflow": "data/raw_continuous_tables_20260714.json",
+  "daily_observation_date": "2026-07-14",
+  "weekly_observation_end": "2026-07-10",
+  "continuous_observation_date": "2026-07-14",
+  "daily_coverage": "31/31",
+  "weekly_coverage": "31/31",
+  "continuous_coverage": "30/112",
+  "continuous_public_table_status": "partial",
+  "parse_status": "industry_complete_continuous_partial",
+  "eastmoney_push2_probe": {
+    "status": "failed_remote_disconnect",
+    "boundary": "probe only; not used as the sole data source"
+  }
+}

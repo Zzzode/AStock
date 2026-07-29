@@ -1,0 +1,63 @@
+{
+  "cycle": "R4_final_ic",
+  "review_date": "2026-07-18",
+  "review_mode": "independent final investment-committee review",
+  "publishability_status": "CONDITIONAL",
+  "formal_publication_status": "BLOCKED_PENDING_FINAL_GOVERNANCE_AND_SHARED_GATE_PORTABILITY",
+  "institutional_status": "INSTITUTIONAL_PASS_WITH_DECLARED_SCOPE_DOWNGRADE",
+  "publishability_score": 96,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 1,
+  "recommended_signoff_status": "CONDITIONAL",
+  "publication_judgment": "The upgraded 40-page report is suitable for delivery as an evidence-gated thematic research report, but not for an unconditional PASS label. Its conclusions, monitoring actions, valuation anchors and residual risks are mutually consistent because no company receives Atlas-specific revenue, profit or EPS credit, missing Street target prices receive zero weight, and every modeled issuer now has a reader-facing sentiment bridge, three-dimensional classification and independent justified-P/B cross-check; Talkweb and Aerospace Electric now have full evidence-gated company cards.",
+  "scope_boundary_assessment": {
+    "atlas_specific_2026e_credit": "CNY 0 for all 12 modeled issuers",
+    "missing_street_target_prices": "9 of 12 modeled issuers",
+    "street_weight_treatment": "0% for every missing explicit target",
+    "sufficiency_for_declared_scope": "YES. The final targets are broader-business values supported by official FY2025 reconciliation, original broker earnings forecasts, mature-business current-share P/E, an independent justified-P/B cross-check from official equity and normalized ROE, and current-market anchors; the report explicitly avoids using Atlas economics or absent Street targets as positive support. PEG is only a zero-weight expectation diagnostic.",
+    "sufficiency_for_unconditional_publication": "NO. The report must remain CONDITIONAL while the shared generic gates are case-incompatible and before final governance artifacts close the case-local 39-check verifier."
+  },
+  "findings": [
+    {
+      "issue_id": "R4-PASS-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "house-view-analyst",
+      "artifact": "main.pdf; data/current_valuation_model_20260718.json; data/market_sentiment_bridge_20260718.json; data/company_level_reconciliation_20260718.json; sections/ch01_dashboard.tex; sections/ch06_sentiment.tex; sections/ch07_valuation.tex; sections/ch09_full_chain.tex; sections/ch10_recommendation.tex",
+      "issue": "The final IC conclusion is internally consistent and falsifiable within its declared zero-Atlas-credit scope.",
+      "evidence": "The report ranks relationship strength separately from valuation attractiveness, publishes no buy/sell/hold rating, provides current price and final target for all 12 modeled names, withholds a target for Talkweb, ties actions to quantitative next-disclosure thresholds and invalidation, and states that only Woer retains a marginal positive model space while all other complete models are negative. It now shows per-ticker embedded expectations, a three-dimensional classification reconciliation and independently derived mature-business P/E plus justified-P/B targets.",
+      "fix_required": "No report-content repair required; preserve the zero-credit and zero-Street-weight boundaries.",
+      "blocking_gate": "none",
+      "status": "verified",
+      "verifier_ref": "main_current_text.txt; valuation reproducibility checks 13/13 PASS; 40-page IC dashboard, sentiment, valuation, classification and final recommendation cross-check",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-B-001",
+      "severity": "B",
+      "owner_skill": "research-report-review",
+      "owner_agent": "internal-control",
+      "artifact": "shared repository gate tooling",
+      "issue": "Unconditional publication remains unavailable because shared gates are not portable to this case.",
+      "evidence": "Both shared gate commands fail before evaluating the case contract; the case-local verifier is the only executable, case-specific acceptance path.",
+      "fix_required": "Retain CONDITIONAL sign-off and disclose the shared-gate limitation. Repair shared tooling separately; do not fabricate prior-case artifacts.",
+      "blocking_gate": "unconditional_repository_publication",
+      "status": "open",
+      "verifier_ref": "R3-B-001",
+      "reopened_count": 0,
+      "residual_risk": "Governance portability, not investment-model arithmetic or report rendering."
+    }
+  ],
+  "residual_risks": [
+    "Atlas 950 customer allocation, supplier BOM, platform certification, order size, ASP, utilization, revenue recognition and margin remain undisclosed; this is neutralized in the model by zero Atlas-specific credit.",
+    "Nine modeled issuers lack explicit original-PDF Street target prices; this is neutralized by zero Street target weight and a CONDITIONAL rather than PASS sign-off.",
+    "2026Q1 observations are monitoring-only and are excluded from target arithmetic pending complete official-original reconciliation.",
+    "Shared repository gates are coupled to a prior case and cannot provide an unconditional cross-case publication PASS."
+  ],
+  "downgrade_status": "The report is downgraded from investable supplier-chain call to evidence-gated thematic research and monitoring. No issuer is presented as a confirmed Atlas 950 upstream supplier or as a buy recommendation.",
+  "required_next_fixes": [
+    "Complete final governance artifacts and obtain 39 PASS / 0 FAIL from the case-local verifier.",
+    "Keep final sign-off CONDITIONAL, not PASS, until the shared generic gates become case-portable and execute successfully."
+  ]
+}

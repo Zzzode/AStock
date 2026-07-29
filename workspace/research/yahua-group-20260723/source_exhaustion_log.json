@@ -1,0 +1,16 @@
+{
+  "case_id": "yahua-group-20260723",
+  "as_of": "2026-07-23",
+  "probes": [
+    {"topic":"exact intraday H1-preview release time","sources_checked":["FIN-26H1P","DISC-CNINFO-H1"],"result":"date confirmed; exact time not confirmed","next_verification_path":"exchange time-of-day metadata or issuer-server archive","blocks":"announcement-price causality statement"},
+    {"topic":"formal 2026H1 financial statements","sources_checked":["DISC-CNINFO-H1","FIN-26H1P"],"result":"not found in query period; preview only","next_verification_path":"2026 interim report","blocks":"H1 revenue, cash flow, balance sheet and FCF facts"},
+    {"topic":"2026H2 lithium volume, ASP, unit cost, inventory and hedging","sources_checked":["FIN-25A","FIN-26Q1","FIN-26H1P","IR-25"],"result":"not disclosed","next_verification_path":"H1 report, formal IR or project disclosure","blocks":"unqualified base EPS; requires assumptions and sensitivity"},
+    {"topic":"resource self-supply ratio, mine delivery, grade and cash cost","sources_checked":["FIN-25A","FIN-26Q1","FIN-26H1P","IR-25"],"result":"not disclosed","next_verification_path":"mine operating statistics or issuer disclosure","blocks":"self-supply premium"},
+    {"topic":"customer revenue, order quantity, duration and pricing","sources_checked":["FIN-25A","IR-25","FIN-26H1P"],"result":"not disclosed","next_verification_path":"issuer/customer contract or audited note","blocks":"named-customer revenue credit"},
+    {"topic":"2026 civil-explosives segment and Longhai contribution","sources_checked":["FIN-25A","FIN-26Q1","FIN-26H1P"],"result":"2025 base and transaction known; current-period economics not disclosed","next_verification_path":"H1 segment note or acquisition accounting","blocks":"Q2/H2 civil-explosives uplift as fact"},
+    {"topic":"normalized peer valuation schedule","sources_checked":["PEER-TQ-Q1","PEER-GF-P","PEER-SX-Q1","PEER-EST-TQ","PEER-EST-GF","PEER-EST-SX"],"result":"incomplete EV/net-debt/resource/non-operating normalization","next_verification_path":"peer interim reports and structured market-cap/net-debt snapshot","blocks":"direct peer-multiple transfer"},
+    {"topic":"multi-broker target-price consensus","sources_checked":["BRK-DW-26","BRK-GX-26","BRK-KY-26"],"result":"one explicit target only","next_verification_path":"new original broker reports with targets and methods","blocks":"Street target average"},
+    {"topic":"intraday event study, northbound/margin/fund-flow and institutional position","sources_checked":["MKT-YH-Q-0723","MKT-EVT-0723"],"result":"not archived","next_verification_path":"exchange, CSDC or vendor data with timestamp and method","blocks":"causal market narrative"},
+    {"topic":"cutoff-date lithium spot and company realized pricing","sources_checked":["PRICE-LI-26","FIN-26H1P"],"result":"public spot evidence is L3/stale and issuer ASP not disclosed","next_verification_path":"validated price series and issuer product pricing disclosure","blocks":"direct ASP/margin input"}
+  ]
+}

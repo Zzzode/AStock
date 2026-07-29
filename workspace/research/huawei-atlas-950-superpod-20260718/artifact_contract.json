@@ -1,0 +1,122 @@
+{
+  "case_id": "huawei-atlas-950-superpod-20260718",
+  "artifacts": [
+    {
+      "artifact": "data/source_registry.md/json",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "stage": "R0 evidence",
+      "required_for": "claim admissibility",
+      "required_fields": ["source_id", "title", "publisher", "date", "local_path", "original_url", "source_type", "source_quality", "evidence_tier", "limitations"],
+      "minimum_depth": "Every material official, filing, broker, market, and failed-probe source is registered.",
+      "blocking_conditions": "A high-impact claim lacks a registered source or weak evidence is upgraded to primary evidence.",
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "source registry and JSON twin present",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/claim_audit.md/json",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "stage": "R0 evidence",
+      "required_for": "valuation claim control",
+      "required_fields": ["claim", "company", "customer_or_platform", "source", "source_quality", "confidence", "used_in_valuation", "adopted_wording"],
+      "minimum_depth": "All named-customer, order, certification, capacity, ASP, utilization, margin, and platform claims are audited.",
+      "blocking_conditions": "An unaudited high-impact claim supports core status, EPS, or valuation.",
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "claim audit and JSON twin present",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/full_chain_universe_20260718.md/json",
+      "owner_skill": "supply-chain-research",
+      "owner_agent": "supply-chain-analyst",
+      "stage": "R0 evidence",
+      "required_for": "full-chain gate",
+      "required_fields": ["node_id", "chain_block", "subsegment", "node_name", "node_type", "chain_role", "evidence_status", "source_count", "classification", "valuation_status", "evidence_gap", "next_verification_path", "upgrade_trigger"],
+      "minimum_depth": "All eight AIDC blocks include listed, overseas/private, demand-anchor, low-purity, and unavailable nodes where relevant.",
+      "blocking_conditions": "A mandatory block is missing or the universe is only a listed-stock table.",
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "industry-chain full-universe schema",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/supply_chain_model.md and data/supply_chain_relationships.md/json",
+      "owner_skill": "supply-chain-research",
+      "owner_agent": "supply-chain-analyst",
+      "stage": "R0 evidence",
+      "required_for": "core/satellite classification",
+      "required_fields": ["ticker", "chain_layer", "upstream_input", "product_or_process", "downstream_customer_or_platform", "relationship_type", "confidence", "source_tier", "revenue_exposure", "order_visibility", "ASP_or_price_proxy", "margin_or_earnings_impact", "valuation_eligibility"],
+      "minimum_depth": "Every covered ticker has at least one traceable relationship row and a valuation consequence.",
+      "blocking_conditions": "A core ticker lacks company-level product/customer economics or relies on demand-anchor inference.",
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "supply-chain artifacts and relationship schema",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/value_chain_economics.md and analysis/chain_earnings_bridge.md",
+      "owner_skill": "supply-chain-research",
+      "owner_agent": "supply-chain-analyst",
+      "stage": "R1 model",
+      "required_for": "revenue and margin conversion",
+      "required_fields": ["value_amount_or_proxy", "ASP_or_price_proxy", "margin_pool", "capacity", "utilization_or_yield", "customer_certification", "order_visibility", "valuation_credit", "next_quarter_threshold"],
+      "minimum_depth": "Block-level economics plus ticker-level revenue, margin, EPS, and validation bridges for every core candidate.",
+      "blocking_conditions": "Generic demand or capacity supports EPS/valuation without conversion evidence.",
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "value-chain and earnings-bridge sections present",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/growth_earnings_model.md, analysis/segment_forecast_bridge.md, analysis/implied_growth_sensitivity.md, data/growth_driver_model.json",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "growth-earnings-modeler",
+      "stage": "R1 model",
+      "required_for": "AI growth valuation credit",
+      "required_fields": ["base_business", "growth_segment", "unit_or_proxy", "ASP_or_price", "recognized_revenue_ratio", "gross_margin", "incremental_opex", "net_profit", "EPS", "bear", "base", "bull", "current_price_implied_growth", "valuation_credit"],
+      "minimum_depth": "Every AI/order/ASP-dependent core candidate receives a driver bridge or an explicit watchlist downgrade.",
+      "blocking_conditions": "High-growth valuation credit lacks unit/order/ASP-proxy-to-EPS math.",
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "growth artifacts and driver JSON present",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/valuation_model.md, analysis/valuation_audit.md, data/current_valuation_model_20260718.json",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "stage": "R1 model",
+      "required_for": "investable conclusion",
+      "required_fields": ["current_price_date", "shares", "market_cap", "forecast_revenue", "forecast_net_profit", "EPS", "method", "bear", "base", "bull", "final_target_or_range", "upside_downside", "market_anchor", "Street_anchor", "weights", "catalyst", "invalidation"],
+      "minimum_depth": "Each investable ticker has business-model-matched primary and secondary methods, market/Street reconciliation, and disclosed scenario math.",
+      "blocking_conditions": "Missing current-price target/range, method mismatch, unreconciled arithmetic, or missing Model Reproducibility: PASS.",
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "valuation artifacts, structured JSON, and reproducibility PASS",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "main.tex, sections/*.tex, main.pdf",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "stage": "R2 draft and R3 render",
+      "required_for": "reader deliverable",
+      "required_fields": ["IC_summary", "technology", "full_chain", "company_evidence", "competitive_landscape", "growth_model", "valuation", "variant_view", "risk", "sources"],
+      "minimum_depth": "Chinese prose-led chapters, decision-ready first chapter, readable sourced exhibits, and a complete compiled PDF.",
+      "blocking_conditions": "Table-only core chapters, untranslated recommendation logic, missing valuation summary, or render defects.",
+      "reviewer_cycle": "R2_draft and R3_render_compliance",
+      "verifier_check": "XeLaTeX build, extracted-text review, and rendered-page inspection",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "review_findings_R0-R4, review_log.md, final_signoff.md/json",
+      "owner_skill": "research-report-review",
+      "owner_agent": "research-report-reviewer",
+      "stage": "R0-R4",
+      "required_for": "publication",
+      "required_fields": ["cycle", "severity", "owner_skill", "artifact", "evidence", "fix_required", "blocking_gate", "status", "publishability_score", "open_issue_counts", "verifier_results", "residual_risks", "signoff_status"],
+      "minimum_depth": "Maker-checker review at every gate with fixed/verified/closed lifecycle and final IC consistency check.",
+      "blocking_conditions": "Open S, open unwaived A, score below 90, failed verifier, material residual-risk conflict, or missing final sign-off.",
+      "reviewer_cycle": "R0_evidence through R4_final_ic",
+      "verifier_check": "review lifecycle and final-signoff checks",
+      "blocking_if_missing": true
+    }
+  ]
+}

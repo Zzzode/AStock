@@ -1,0 +1,34 @@
+{
+  "schema_version": "astock.external_data_request.refresh.v1",
+  "data_cutoff": "2026-07-15",
+  "requests": [
+    {
+      "ticker": "000737",
+      "company": "北方铜业",
+      "missing_field": "current original broker PDF or auditable consensus target/range",
+      "sources_checked": [
+        "akshare.stock_research_report_em",
+        "Eastmoney broker metadata",
+        "web search: 北方铜业 000737 研报 目标价 2026",
+        "web search: 000737 北方铜业 2026 研报 PDF 目标价"
+      ],
+      "public_result": "No current auditable broker report target/range found; visible public results are news, user articles, AI valuation pages, or quote/discussion pages.",
+      "required_external_evidence": "Original broker PDF, broker official page, Wind/Choice/iFinD consensus snapshot, or company-covered research note with date, broker, rating, forecast EPS/revenue/net profit, valuation method and target/range.",
+      "current_report_treatment": "conditional_high_upside_watch; zero external-anchor weight"
+    },
+    {
+      "ticker": "600120",
+      "company": "浙江东方",
+      "missing_field": "current original broker PDF or auditable consensus target/range",
+      "sources_checked": [
+        "akshare.stock_research_report_em",
+        "Eastmoney broker metadata",
+        "web search: 浙江东方 600120 研报 目标价 2026",
+        "web search: 600120 浙江东方 2026 研报 PDF 目标价"
+      ],
+      "public_result": "No current auditable broker report target/range found; visible public results are stock-diagnosis pages, user articles, quote pages, or generic valuation widgets.",
+      "required_external_evidence": "Original broker PDF, broker official page, Wind/Choice/iFinD consensus snapshot, or company-covered research note with date, broker, rating, forecast EPS/revenue/net profit, valuation method and target/range.",
+      "current_report_treatment": "conditional_margin_watch; zero external-anchor weight"
+    }
+  ]
+}

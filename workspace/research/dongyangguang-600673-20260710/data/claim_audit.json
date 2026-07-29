@@ -1,0 +1,88 @@
+{
+  "schema_version": "claim_audit.v2",
+  "rows": [
+    {
+      "claim_id": "C01",
+      "claim": "The three compute contracts total CNY39-46bn including VAT over five years.",
+      "evidence": "Official A/B/C announcements disclose CNY16-19bn, CNY10-12bn and CNY13-15bn.",
+      "source_ids": [
+        "S06",
+        "S07",
+        "S08"
+      ],
+      "confidence": "high",
+      "model_impact": "Annualized gross midpoint CNY8.5bn; base 2026 recognition uses only 25% of annual ex-VAT run-rate.",
+      "formal_boundary": "accepted server count, unit monthly rent, hardware cost and segment margin are not disclosed"
+    },
+    {
+      "claim_id": "C02",
+      "claim": "Prior compute contracts have moved beyond framework status.",
+      "evidence": "The 2026-07-11 official announcement states prior contracts were delivered on schedule, accepted by customers and had recognized revenue.",
+      "source_ids": [
+        "S08"
+      ],
+      "confidence": "high",
+      "model_impact": "Base compute profit credit rises from zero to CNY0.8bn, but the C-contract remains conditional.",
+      "formal_boundary": "recognized revenue amount, margin and cash collection are not disclosed"
+    },
+    {
+      "claim_id": "C03",
+      "claim": "The Qinhuai transaction has shareholder approval but is not completed.",
+      "evidence": "All shareholder-meeting proposals passed; the transaction still needs SSE review and CSRC registration.",
+      "source_ids": [
+        "S03",
+        "S04"
+      ],
+      "confidence": "high",
+      "model_impact": "Base and bull cases include purchase/placement dilution; bear case retains existing shares.",
+      "formal_boundary": "review timing, registration, placement price and closing date remain unknown"
+    },
+    {
+      "claim_id": "C04",
+      "claim": "Qinhuai is profitable and highly utilized, but leveraged and concentrated.",
+      "evidence": "Official filing: 2025 revenue CNY6.372bn, parent NP CNY0.949bn, gross margin 45.15%, 799MW operating capacity, 91.25% utilization, 71.31% debt ratio and 90.12% revenue from the largest customer.",
+      "source_ids": [
+        "S03"
+      ],
+      "confidence": "high",
+      "model_impact": "Qinhuai receives earnings credit with leverage and customer-concentration haircuts.",
+      "formal_boundary": "2026 full-year EBITDA, post-closing financing cost and integration capex are not disclosed"
+    },
+    {
+      "claim_id": "C05",
+      "claim": "The old CNY43 target overstated optionality and omitted dilution.",
+      "evidence": "The official plan issues 409.05mn purchase shares and permits placement shares; Dongshu transaction equity is CNY11.5bn, versus the old house option value of CNY51bn.",
+      "source_ids": [
+        "S03",
+        "S05"
+      ],
+      "confidence": "high",
+      "model_impact": "Rebuilt fundamental anchor CNY31.26; market-adjusted final target CNY38.35.",
+      "formal_boundary": "actual placement amount and price remain unknown"
+    },
+    {
+      "claim_id": "C06",
+      "claim": "The latest original broker denominator is higher than the old report's public-consensus denominator.",
+      "evidence": "Guojin 2026-04-10 original PDF forecasts CNY1.947bn NP and EPS CNY0.647, excluding Qinhuai.",
+      "source_ids": [
+        "S09"
+      ],
+      "confidence": "high",
+      "model_impact": "Legacy base profit is reset to CNY1.947bn.",
+      "formal_boundary": "no post-contract broker model was published by the cutoff"
+    },
+    {
+      "claim_id": "C07",
+      "claim": "Current price already reflects most event value.",
+      "evidence": "CNY38.99 spot versus CNY38.35 market-adjusted target and CNY45.16 event anchor.",
+      "source_ids": [
+        "S01",
+        "S10",
+        "S12"
+      ],
+      "confidence": "high",
+      "model_impact": "Action is Neutral/Hold/Event-driven watch rather than pullback accumulation.",
+      "formal_boundary": "intraday price can move before the next close"
+    }
+  ]
+}

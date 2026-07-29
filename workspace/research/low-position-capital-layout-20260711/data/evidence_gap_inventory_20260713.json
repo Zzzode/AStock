@@ -1,0 +1,69 @@
+{
+  "schema_version": "astock.evidence_boundary_inventory.v2",
+  "as_of": "2026-07-13",
+  "row_count": 3,
+  "open_gap_count": 0,
+  "rows": [
+    {
+      "ticker": "000063",
+      "company": "中兴通讯",
+      "source_pool": "legacy_theme_only",
+      "model_tier": "linked_conditional_watch_model",
+      "closure_status": "closed_with_valuation_downgrade",
+      "evidence_quality": "medium-high",
+      "direct_evidence": "linked formal/conditional model and its audited source packet",
+      "proxy_evidence": "Compute demand and customer classes are directly evidenced: 2025 compute-related revenue increased about 150% to 24.6% of revenue, server/storage revenue increased more than 200%, data-center products increased 50%, and 2026Q1 compute mix reached 27%, serving leading internet, operator, government and financial customers. The company does not separately publish compute units, contract ASP or segment margin, so the model uses consolidated earnings only; Q1 profit and operating cash flow also require H2 validation.",
+      "checked_sources": "official filing/preview, original broker reports, market data and explicit conditional scenario model",
+      "source_paths": [
+        "data/conditional_watch_models_20260712.json",
+        "sources/core-broker-reports-20260711/000063-中兴通讯/01-2026-05-05-国金证券-连接-算力双轮驱动-利润筑底回升.pdf",
+        "sources/core-broker-reports-20260711/000063-中兴通讯/02-2026-03-10-开源证券-公司信息更新报告-算力业务跨越式增长-研发投入夯实长期竞争力.pdf",
+        "sources/launched-official-20260711/000063_2026Q1_official.pdf"
+      ],
+      "formal_boundary": "Named end customers, compute units, contract ASP and compute-segment gross margin are not separately published in the checked company filing and original reports.",
+      "valuation_consequence": "No separate high-growth compute multiple is applied. Bear/base/bull values use consolidated EPS and consolidated PE, and the probability value remains below price.",
+      "target_or_boundary": 35.78,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "301308",
+      "company": "江波龙",
+      "source_pool": "h1_high_impact_candidate",
+      "model_tier": "linked_conditional_watch_model",
+      "closure_status": "closed_with_valuation_downgrade",
+      "evidence_quality": "medium-high",
+      "direct_evidence": "linked formal/conditional model and its audited source packet",
+      "proxy_evidence": "H1 delivery is strong and the operating chain is directly evidenced by renewed LTA/MOU wafer-supply agreements, in-house high-end packaging, self-developed SPU/HLC, AMD joint optimization that lowers DRAM usage by about 40%, platform certifications and entry into communications, financial and internet customer supply chains. Exact contract prices and H2 named-customer orders are not public; Q1 operating cash flow was negative, so cycle duration remains the binding risk.",
+      "checked_sources": "official filing/preview, original broker reports, market data and explicit conditional scenario model",
+      "source_paths": [
+        "data/conditional_watch_models_20260712.json",
+        "sources/earnings-previews-20260711/301308_preview.pdf",
+        "sources/core-broker-reports-20260711/301308-江波龙/01-2026-05-07-国信证券-1Q26归母净利润同比增长2644.05-端侧应用多维拓展.pdf",
+        "sources/core-broker-reports-20260711/301308-江波龙/02-2026-05-07-爱建证券-2025年报-2026Q1点评-国产存储模组龙头进入业绩爆发期.pdf"
+      ],
+      "formal_boundary": "Supplier contract prices, inventory cost layers and H2 named-customer order values are not separately published in the checked announcement and original reports.",
+      "valuation_consequence": "The model applies 11x/14x/17x cycle PE rather than a structural-growth multiple, retains a 35% bear probability and stays conditional because probability value is below current price.",
+      "target_or_boundary": 511.75,
+      "unresolved_material_gap": false
+    },
+    {
+      "ticker": "688825",
+      "company": "长鑫科技",
+      "source_pool": "h1_high_impact_candidate",
+      "model_tier": "ipo_prepricing_boundary",
+      "closure_status": "formal_timing_boundary",
+      "evidence_quality": "high_boundary",
+      "direct_evidence": "linked formal/conditional model and its audited source packet",
+      "proxy_evidence": "H1/Q1 financial disclosure is retained for operating review, but it cannot substitute for an issue price or post-listing price discovery.",
+      "checked_sources": "SSE/official IPO notice and Eastmoney official-announcement mirror",
+      "source_paths": [
+        "sources/official-filings-20260713/688825-长鑫科技/2026-07-09-招股意向书提示性公告.pdf",
+        "sources/official-filings-20260713/688825-长鑫科技/2026-07-09-招股意向书提示性公告-api.json"
+      ],
+      "formal_boundary": "Formal timing boundary: issue price is scheduled for 2026-07-15, after the report data cutoff; secondary-market price history does not exist.",
+      "valuation_consequence": "No secondary-market fair value, upside or action rating before the 2026-07-15 issue-price announcement and post-listing trading history.",
+      "target_or_boundary": "IPO pre-pricing boundary; no secondary-market target",
+      "unresolved_material_gap": false
+    }
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "case_id": "dongyangguang-600673-20260710",
+  "artifacts": [
+    {
+      "artifact": "data/source_registry.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "Evidence",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/claim_audit.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "Evidence",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/broker_street_consensus_20260713.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "Evidence",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/current_valuation_model_20260713.json",
+      "owner_skill": "valuation",
+      "owner_agent": "orchestrator",
+      "stage": "Evidence",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/transaction_dilution_model_20260713.json",
+      "owner_skill": "valuation",
+      "owner_agent": "orchestrator",
+      "stage": "Evidence",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/compute_contract_bridge_20260713.json",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "orchestrator",
+      "stage": "Evidence",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/growth_driver_model.json",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "orchestrator",
+      "stage": "Evidence",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/growth_earnings_model.md",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "orchestrator",
+      "stage": "Modeling",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/segment_forecast_bridge.md",
+      "owner_skill": "growth-earnings-model",
+      "owner_agent": "orchestrator",
+      "stage": "Modeling",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/valuation_model.md",
+      "owner_skill": "valuation",
+      "owner_agent": "orchestrator",
+      "stage": "Modeling",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/valuation_audit.md",
+      "owner_skill": "valuation",
+      "owner_agent": "orchestrator",
+      "stage": "Modeling",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/secondary_market_analysis.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "Modeling",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "main.pdf",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "Modeling",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "final_signoff.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "Modeling",
+      "required_fields": [
+        "current evidence",
+        "model consequence",
+        "formal boundary"
+      ],
+      "minimum_depth": "Current-price, official-source and dilution-aware single-stock research depth.",
+      "blocking_conditions": [
+        "stale price",
+        "contract amount converted directly into EPS",
+        "dilution omitted",
+        "weak source presented as original PDF"
+      ],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    }
+  ]
+}

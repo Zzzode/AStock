@@ -1,0 +1,198 @@
+{
+  "schema_version": "astock.broker_street_consensus.v1",
+  "case_id": "desay-sv-002920-20260723",
+  "collection_date": "2026-07-23",
+  "data_cutoff": "2026-07-23",
+  "scope": "002920.SZ 德赛西威；近90天优先，2026-01-05 辉立证券首次覆盖为必要的近一年扩展。",
+  "unit_policy": {
+    "revenue_E": "CNY million",
+    "net_profit_E": "CNY million attributable net profit",
+    "EPS_E": "CNY per share",
+    "target_price": "CNY per share",
+    "implied_upside": "decimal; only against the report-stated reference price when no current-price calculation is justified"
+  },
+  "governance_boundary": "Three current original-PDF reports preserve ratings and 2026E/2027E forecasts but disclose neither a point target nor an explicit target-price valuation method. Twelve current broker/date/rating/NP/EPS observations come from an archived public Eastmoney structured forecast snapshot; it does not disclose revenue, target price, method, or the underlying original PDF, so every such row has valuation_weight 0. The only recovered point target is the 2026-01-05 Phillip report; it applies 35.7x 2025E EPS and is stale at the cutoff, so it also has valuation_weight 0. No row is a current usable Street price anchor.",
+  "summary": {
+    "original_pdf_rows": 4,
+    "auditable_consensus_snapshot_rows": 12,
+    "formal_rows": 16,
+    "rows_with_explicit_target": 1,
+    "current_usable_target_anchor_count": 0,
+    "positive_valuation_weight_rows": 0,
+    "selected_2026e_eps_range": [4.41, 5.2],
+    "selected_2027e_eps_range": [5.12, 6.23],
+    "selected_2026e_net_profit_range_cny_mn": [2632, 3105],
+    "selected_2027e_net_profit_range_cny_mn": [3053, 3719],
+    "recent_rating_distribution_note": "Eastmoney's 2026-07-23 public aggregate shows 13 rating organizations in the prior three months: 8 买入 and 5 增持. This is a rating count, not a target-price consensus."
+  },
+  "rows": [
+    {
+      "ticker": "002920.SZ",
+      "company": "德赛西威",
+      "broker": "辉立证券（香港）",
+      "analyst": "章晶",
+      "date": "2026-01-05",
+      "report_date": "2026-01-05",
+      "publish_date": "2026-01-07",
+      "title": "智能化业务快速发展，国际化布局进程加速",
+      "type": "initiation",
+      "rating": "买入（首次）",
+      "target_price": 147.0,
+      "target_horizon": "not disclosed",
+      "target_year_basis": "2025E",
+      "revenue_E": {"2026E": 39245, "2027E": 47957},
+      "net_profit_E": {"2026E": 3120, "2027E": 3956},
+      "EPS_E": {"2026E": 5.23, "2027E": 6.63},
+      "method": "P/E: report states CNY147 target corresponding to 35.7x/28.1x/22.2x 2025E/2026E/2027E P/E; arithmetic target basis is 35.7x 2025E EPS CNY4.12.",
+      "implied_upside": 0.2219,
+      "implied_upside_reference_price": 120.3,
+      "implied_upside_reference_date": "2025-12-31",
+      "source_form": "original_pdf",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "primary",
+      "source_url": "https://pdf.dfcfw.com/pdf/H3_AP202601071816554435_1.pdf",
+      "source_path": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/04-phillip-20260107-intelligentization-international-expansion.pdf",
+      "local_text": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/04-phillip-20260107-intelligentization-international-expansion.txt",
+      "valuation_weight": 0.0,
+      "valuation_weight_reason": "The target was issued more than six months before the 2026-07-23 cutoff and is mechanically based on FY2025E EPS, now an actual period. It is retained as historical Street evidence only.",
+      "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ",
+      "company": "德赛西威",
+      "broker": "开源证券",
+      "analyst": "邓健全, 赵悦媛, 赵旭杨",
+      "date": "2026-03-08",
+      "report_date": "2026-03-08",
+      "publish_date": "2026-03-09",
+      "title": "公司信息更新报告：全球布局加速推进，持续推动AI创新",
+      "type": "follow_up",
+      "rating": "买入（维持）",
+      "target_price": "not disclosed",
+      "target_horizon": "not disclosed",
+      "target_year_basis": "not disclosed",
+      "revenue_E": {"2026E": 38400, "2027E": 45720},
+      "net_profit_E": {"2026E": 2914, "2027E": 3504},
+      "EPS_E": {"2026E": 4.88, "2027E": 5.87},
+      "method": "not disclosed; the report shows report-date P/E but no target price or target-construction instruction.",
+      "implied_upside": "not disclosed",
+      "source_form": "original_pdf",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "primary",
+      "source_url": "https://pdf.dfcfw.com/pdf/H3_AP202603091820401664_1.pdf",
+      "source_path": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/01-kaiyuan-20260308-global-expansion-ai-innovation.pdf",
+      "local_text": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/01-kaiyuan-20260308-global-expansion-ai-innovation.txt",
+      "valuation_weight": 0.0,
+      "valuation_weight_reason": "No explicit target price or target method.",
+      "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ",
+      "company": "德赛西威",
+      "broker": "东吴证券",
+      "analyst": "黄细里, 孙仁昊",
+      "date": "2026-03-10",
+      "report_date": "2026-03-10",
+      "publish_date": "2026-03-10",
+      "title": "2025年年报点评：智驾业务增速领跑，无人车+机器人业务进展亮眼",
+      "type": "earnings_review",
+      "rating": "买入（维持）",
+      "target_price": "not disclosed",
+      "target_horizon": "not disclosed",
+      "target_year_basis": "not disclosed",
+      "revenue_E": {"2026E": 38350, "2027E": 46012},
+      "net_profit_E": {"2026E": 2800, "2027E": 3415},
+      "EPS_E": {"2026E": 4.69, "2027E": 5.72},
+      "method": "not disclosed; the report gives 2026E/2027E report-date P/E but no target price.",
+      "implied_upside": "not disclosed",
+      "source_form": "original_pdf",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "primary",
+      "source_url": "https://pdf.dfcfw.com/pdf/H3_AP202603101820461699_1.pdf",
+      "source_path": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/03-dongwu-20260310-fy2025-driving-unmanned-robot.pdf",
+      "local_text": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/03-dongwu-20260310-fy2025-driving-unmanned-robot.txt",
+      "valuation_weight": 0.0,
+      "valuation_weight_reason": "No explicit target price or target method.",
+      "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ",
+      "company": "德赛西威",
+      "broker": "中银证券",
+      "analyst": "杨思睿, 郑静文",
+      "date": "2026-03-31",
+      "report_date": "2026-03-31",
+      "publish_date": "2026-03-31",
+      "title": "智驾业务快速增长，发力无人车+机器人",
+      "type": "earnings_review",
+      "rating": "买入（维持）",
+      "target_price": "not disclosed",
+      "target_horizon": "not disclosed",
+      "target_year_basis": "not disclosed",
+      "revenue_E": {"2026E": 38883, "2027E": 45414},
+      "net_profit_E": {"2026E": 2957, "2027E": 3565},
+      "EPS_E": {"2026E": 4.96, "2027E": 5.97},
+      "method": "not disclosed; the report gives 2026E/2027E report-date P/E but no target price.",
+      "implied_upside": "not disclosed",
+      "source_form": "original_pdf",
+      "source_quality": "original_broker_pdf",
+      "evidence_tier": "primary",
+      "source_url": "https://pdf.dfcfw.com/pdf/H3_AP202603311820923719_1.pdf",
+      "source_path": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/02-zhongyin-20260331-ad-smart-driving-unmanned-robot.pdf",
+      "local_text": "workspace/research/desay-sv-002920-20260723/sources/broker-reports/2026-07-23/02-zhongyin-20260331-ad-smart-driving-unmanned-robot.txt",
+      "valuation_weight": 0.0,
+      "valuation_weight_reason": "No explicit target price or target method.",
+      "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "申万宏源", "analyst": "洪依真, 刘洋", "date": "2026-06-25", "report_date": "2026-06-25", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2867, "2027E": 3389}, "EPS_E": {"2026E": 4.8, "2027E": 5.68}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "兴业证券", "analyst": "蒋佳霖, 孙乾, 陈鑫", "date": "2026-06-10", "report_date": "2026-06-10", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "增持", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2923, "2027E": 3447}, "EPS_E": {"2026E": 4.9, "2027E": 5.78}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "财通证券", "analyst": "吴晓飞, 李康桥, 王妍丹", "date": "2026-06-01", "report_date": "2026-06-01", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "增持", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2767.42, "2027E": 3514.82}, "EPS_E": {"2026E": 4.64, "2027E": 5.89}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "华创证券", "analyst": "吴鸣远", "date": "2026-05-17", "report_date": "2026-05-17", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2771, "2027E": 3250}, "EPS_E": {"2026E": 4.64, "2027E": 5.44}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "国海证券", "analyst": "戴畅, 陈飞宇", "date": "2026-05-06", "report_date": "2026-05-06", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2632, "2027E": 3053}, "EPS_E": {"2026E": 4.41, "2027E": 5.12}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "中金公司", "analyst": "李诗雯, 朱镜榆, 陈昊, 彭虎, 郑欣怡", "date": "2026-05-03", "report_date": "2026-05-03", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "增持", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2746, "2027E": 3238}, "EPS_E": {"2026E": 4.6, "2027E": 5.43}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "中国银河", "analyst": "石金漫, 秦智坤", "date": "2026-05-03", "report_date": "2026-05-03", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2965, "2027E": 3488}, "EPS_E": {"2026E": 4.97, "2027E": 5.85}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "东方证券", "analyst": "姜雪晴, 袁俊轩, 刘宇浩", "date": "2026-04-30", "report_date": "2026-04-30", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2821, "2027E": 3425}, "EPS_E": {"2026E": 4.73, "2027E": 5.74}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "国联民生", "analyst": "崔琰, 完颜尚文", "date": "2026-04-29", "report_date": "2026-04-29", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2648, "2027E": 2914}, "EPS_E": {"2026E": 4.44, "2027E": 4.88}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "甬兴证券", "analyst": "黄伯乐", "date": "2026-03-17", "report_date": "2026-03-17", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 3014, "2027E": 3531}, "EPS_E": {"2026E": 5.05, "2027E": 5.92}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "中原证券", "analyst": "龙羽洁", "date": "2026-03-11", "report_date": "2026-03-11", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "增持", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 2875, "2027E": 3310}, "EPS_E": {"2026E": 4.82, "2027E": 5.55}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    },
+    {
+      "ticker": "002920.SZ", "company": "德赛西威", "broker": "国盛证券", "analyst": "孙行臻, 陈泽青", "date": "2026-03-09", "report_date": "2026-03-09", "title": "not disclosed in the structured snapshot", "type": "not disclosed", "rating": "买入", "target_price": "not disclosed", "target_horizon": "not disclosed", "target_year_basis": "not disclosed", "revenue_E": "not disclosed", "net_profit_E": {"2026E": 3105, "2027E": 3719}, "EPS_E": {"2026E": 5.2, "2027E": 6.23}, "method": "not disclosed", "implied_upside": "not disclosed", "source_form": "auditable_consensus_snapshot", "source_quality": "auditable_consensus_snapshot", "evidence_tier": "secondary", "source_url": "https://emweb.eastmoney.com/PC_HSF10/ProfitForecast/PageAjax?code=SZ002920", "source_path": "workspace/research/desay-sv-002920-20260723/sources/probe-20260723/eastmoney-profit-forecast-response.json", "valuation_weight": 0.0, "valuation_weight_reason": "Underlying original report, revenue, target and method are not public in this snapshot.", "confidence": "medium"
+    }
+  ],
+  "consensus_snapshot": {
+    "rating_aggregate": {"as_of": "2026-07-23", "lookback": "three months", "buy": 8, "accumulate": 5, "neutral": 0, "sell": 0, "source": "Eastmoney pjtj public structured response"},
+    "public_estimate_average": {"as_of": "2026-07-23", "lookback": "six months", "EPS_2026E": 4.84, "EPS_2027E": 5.765, "source": "Eastmoney jgyc public structured response", "valuation_use": "context only"},
+    "key_consensus_views": [
+      "Selected recent ratings are 买入 or 增持; the aggregate is not an independent survey and is not a target-price consensus.",
+      "All three current archived original reports forecast 2026E-2027E revenue and attributable profit growth, but do not publish a point target.",
+      "The selected public broker/date observations span CNY2.632bn-CNY3.105bn 2026E attributable net profit and CNY3.053bn-CNY3.719bn in 2027E."
+    ],
+    "key_divergence_points": [
+      "Snapshot 2026E EPS spans CNY4.41-CNY5.20 and 2027E EPS spans CNY5.12-CNY6.23; it is not appropriate to collapse this range into a single valuation input without the original assumptions.",
+      "The only explicit target (CNY147, Phillip) uses 2025E earnings and a 2025-12-31 reference price; it is historical evidence, not a 2026-07-23 target anchor.",
+      "No archived current original report discloses an explicit target price; current Street upside is therefore not established."
+    ]
+  }
+}

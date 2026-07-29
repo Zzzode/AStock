@@ -1,0 +1,35 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+\newcommand{\reporttitle}{A股盈利修复的再定价机会}
+\newcommand{\reportsubtitle}{从2026H1预告扩散到可执行的行业与个股验证框架}
+\newcommand{\reportkicker}{A股策略研究}
+\newcommand{\reportscope}{中国A股 | 1,680家预告公司 | 39只优先池 | 4只可复核模型}
+\newcommand{\reportdate}{2026年7月15日}
+\newcommand{\reportdatacutoff}{官方预告与个股行情截至2026年7月15日；行业资金观察至2026年7月14日}
+\newcommand{\reporttype}{A股策略与行业配置}
+\newcommand{\reportauthor}{AStock策略研究}
+\newcommand{\reporthouseview}{盈利预告改善并不等于全面风险偏好开启。当前更具可执行性的机会集中在分母可信、现金流可验证、价格尚未充分反映且能够获得当前外部证据支持的样本。}
+\newcommand{\reportquality}{官方预告覆盖1,680家；高影响候选142只；优先池39只；Q1财务142/142；候选研报PDF 137/142；行业资金日/周表31/31。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，不构成任何证券买卖建议。}
+\input{../../../.agents/templates/preamble.tex}
+\sloppy
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdfauthor={\reportauthor},pdftitle={\reporttitle}}
+\usepackage{amsmath}
+\begin{document}
+\astockcover
+\tableofcontents
+\clearpage
+\input{sections/institutional_ch01_decision}
+\input{sections/institutional_ch02_market}
+\input{sections/institutional_ch03_framework}
+\input{sections/institutional_ch04_focus}
+\input{sections/institutional_ch05_risk}
+\input{sections/institutional_ch06_data}
+\input{sections/institutional_ch07_sources}
+\clearpage
+\appendix
+\input{sections/institutional_appx_a_universe}
+\input{sections/institutional_appx_b_valuation_ledger}
+\input{sections/institutional_appx_c_priority_bridge}
+\end{document}

@@ -1,0 +1,15 @@
+# Artifact Contract
+
+| Artifact | Owner | Stage | Required fields and minimum depth | Blocking conditions | Review/verifier |
+|---|---|---|---|---|---|
+| `data/source_registry.md/json` | equity-research / source-governance | R0 | Full source identity, URL/path, type, quality, tier, scope, extraction state, limitations for every material source | Unregistered high-impact claim or weak source upgraded to primary | R0; source-registry twin check |
+| `data/claim_audit.md/json` | equity-research / source-governance | R0 | Named-customer, order, certification, capacity, ASP, utilization, margin, and platform claims with valuation consequence and adopted wording | Unaudited claim supports core status, EPS, or valuation | R0; claim-audit twin check |
+| `data/full_chain_universe_20260718.md/json` | supply-chain-research | R0 | All eight AIDC blocks; listed, overseas/private, demand-anchor, low-purity and unavailable nodes; full row schema | Missing block or concept-stock-only universe | R0; industry-chain schema check |
+| `analysis/supply_chain_model.md` and relationship twins | supply-chain-research | R0 | At least one company-level relationship row per ticker with product, customer/platform, evidence confidence, economics, gap and valuation eligibility | Core ticker lacks product/customer economics or relies on demand-anchor inference | R0; relationship schema check |
+| Value-chain economics and chain earnings bridge | supply-chain-research | R1 | Value/ASP proxy, margin pool, capacity/utilization, certification/orders, ticker revenue-margin-EPS bridge and validation threshold | Generic demand or capacity supports EPS/valuation | R1; depth review |
+| Growth-earnings package | growth-earnings-model | R1 | Base/growth split, unit/order/ASP proxy, recognition, margin, opex, EPS, scenarios, current-price-implied growth and credit decision | AI growth valuation lacks driver-to-EPS math | R1; growth artifact check |
+| Valuation package and JSON | valuation | R1 | Current price/shares/market cap, forecasts, matched method, three scenarios, final target/range, market and Street anchors, weights, catalyst and invalidation | Missing current-price range, method mismatch, failed arithmetic, or missing reproducibility PASS | R1; valuation verifier |
+| LaTeX sections and PDF | equity-research / latex-writer | R2-R3 | Chinese prose-led chapters, complete IC page and valuation summary, readable sourced exhibits, compiled PDF | Table-only chapters, untranslated recommendation logic, missing valuation summary or render defect | R2-R3; XeLaTeX/text/render checks |
+| R0-R4 findings, review log and final sign-off | research-report-review | R0-R4 | Maker-checker findings, lifecycle, score, verifier results, residual risks and IC status | Open S/A, score below 90, verifier failure, material residual-risk conflict or missing sign-off | R0-R4; lifecycle/final-signoff checks |
+
+The machine-readable contract in `artifact_contract.json` is authoritative. A file's existence is not completion; field depth and blocking conditions govern pass/fail.

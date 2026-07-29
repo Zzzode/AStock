@@ -1,0 +1,16 @@
+flowchart LR
+  T0["2026-07-17\n1,024 卡实物展示"] --> T1["2026H2\n公司 H1/Q3 业绩\n订单/毛利/现金验证"]
+  T1 --> T2["2026-10\n科大讯飞旗舰模型\n性能/成本验证"]
+  T2 --> T3["2026Q4\n950DT/8,192 卡\n可用性与客户交付窗"]
+  T3 --> T4["2027\n验收/收入/利润确认"]
+  R1["风险：路线图延期"] -.-> T3
+  R2["风险：BOM/供应商不公开"] -.-> T3
+  R3["风险：订单有、毛利和现金差"] -.-> T4
+  C1["升级：客户验收"] -.-> T3
+  C2["升级：公司点名产品/订单/ASP"] -.-> T4
+  classDef event fill:#d9eaf7,stroke:#1f4e79,color:#17365d;
+  classDef risk fill:#f4cccc,stroke:#990000,color:#660000;
+  classDef catalyst fill:#d9ead3,stroke:#38761d,color:#274e13;
+  class T0,T1,T2,T3,T4 event;
+  class R1,R2,R3 risk;
+  class C1,C2 catalyst;

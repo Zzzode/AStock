@@ -1,0 +1,74 @@
+{
+  "case_id": "hengyi-petrochemical-000703-20260722",
+  "report_type": "single_stock_full_research",
+  "data_cutoff": "2026-07-22 CST",
+  "required_skills": [
+    "equity-research",
+    "reports",
+    "valuation",
+    "research-report-review",
+    "pdf"
+  ],
+  "required_artifacts": [
+    "research_brief.md",
+    "analysis/template_brief.md",
+    "data/source_registry.md",
+    "data/source_registry.json",
+    "data/claim_audit.md",
+    "data/claim_audit.json",
+    "source_exhaustion_log.md",
+    "source_exhaustion_log.json",
+    "data/verified_financials.md",
+    "data/verified_market_data.md",
+    "data/broker_street_consensus_20260722.md",
+    "data/broker_street_consensus_20260722.json",
+    "analysis/house_view.md",
+    "analysis/variant_perception.md",
+    "analysis/valuation_model.md",
+    "analysis/valuation_audit.md",
+    "data/current_valuation_model_20260722.json",
+    "analysis/risk_framework.md",
+    "analysis/exhibit_plan.md",
+    "analysis/narrative_blueprint.md",
+    "main.tex",
+    "main.pdf",
+    "review_log.md",
+    "final_signoff.md",
+    "final_signoff.json"
+  ],
+  "review_cycles": [
+    "R0_evidence",
+    "R1_model",
+    "R2_draft",
+    "R3_render_compliance",
+    "R4_final_ic"
+  ],
+  "verifiers": [
+    "tools/verify_research_workspace.py",
+    "workspace/research/tools/run_research_gates.py"
+  ],
+  "depth_gates": [
+    "evidence_depth",
+    "broker_consensus_depth",
+    "model_depth",
+    "valuation_depth",
+    "ic_readiness"
+  ],
+  "pass_conditions": [
+    "zero open S-Level findings",
+    "zero open unwaived A-Level findings",
+    "Model Reproducibility: PASS",
+    "XeLaTeX clean build",
+    "case verifier PASS",
+    "research gate PASS",
+    "visual PDF review has zero blocking defects"
+  ],
+  "downgrade_path": "watchlist only / insufficient evidence, or CONDITIONAL if original Street coverage or normalized earnings evidence remains incomplete",
+  "pre_publish_self_checklist": {
+    "evidence_depth": "official filings, project disclosures, industry price/spread data and original broker sources are archived and source-tiered",
+    "broker_consensus_depth": "each Street row preserves broker/date/rating/target/forecast/method/source quality; weak rows have zero weight",
+    "model_depth": "reported-to-normalized earnings bridge separates Brunei, PTA/polyester and financing/minority effects",
+    "valuation_depth": "SOTP plus EV/EBITDA or PB/ROE sanity check, three scenarios, market-implied anchor and reproducibility audit",
+    "ic_readiness": "action, price discipline, catalysts, invalidation, next-result thresholds, leverage risk and monitoring plan are explicit"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "cycle": "R2_draft",
+  "review_date": "2026-07-22",
+  "reviewer_role": "research-report-reviewer",
+  "review_mode": "targeted post-repair R2 content verification",
+  "publishability_status": "PASS",
+  "publishability_score": 93,
+  "review_scope": [
+    "002812 valuation eligibility and conclusion consistency",
+    "six-name scoring and hard-gate definitions",
+    "first-page decision completeness",
+    "target-weight policy consistency",
+    "catalyst threshold provenance",
+    "reader-facing editorial repair"
+  ],
+  "lens_results": {
+    "thesis_and_conclusion": {
+      "status": "pass",
+      "note": "Chinese and English abstracts, the body and the structured valuation consistently keep 002812 at zero weight with no house target or probability."
+    },
+    "tiering_and_actionability": {
+      "status": "pass",
+      "note": "All six component-score totals reproduce under the stated weights, hard gates override totals explicitly, and tier definitions are operational."
+    },
+    "operating_driver_evidence": {
+      "status": "pass",
+      "note": "002812 is removed from the formal valuation universe; its CNY103 reference and mechanical PE range are explicitly single-source, zero-weight sensitivities."
+    },
+    "first_page_contract": {
+      "status": "pass",
+      "note": "The rebuilt first rendered page shows both primary names with price, formal status, external bull reference, evidence grade, validation and invalidation."
+    },
+    "target_weight_policy": {
+      "status": "pass",
+      "note": "The cover and method now distinguish missing point targets from explicit targets with undisclosed horizons and condition capped weight on company-driver eligibility."
+    },
+    "single_broker_parameter_boundary": {
+      "status": "pass",
+      "note": "Chapter 8 now adds a source-nature column and an explicit warning that broker-derived thresholds are neither company guidance nor achieved facts."
+    },
+    "contrarian_case_and_risk": {
+      "status": "pass",
+      "note": "The counter-thesis, cash risks, timing risks, downgrade triggers and stress scenarios remain consistent with the repaired tiering."
+    },
+    "reader_language_and_editorial": {
+      "status": "pass",
+      "note": "The valuation-range typo and duplicated equation lead-in are both removed from the rebuilt report."
+    }
+  },
+  "findings": [
+    {
+      "issue_id": "R2-S-001",
+      "severity": "S",
+      "owner_skill": "valuation and equity-research",
+      "owner_agent": "valuation-modeler and latex-writer",
+      "artifact": "main.tex",
+      "section": "English abstract versus repaired 002812 valuation status",
+      "evidence": "The repaired English abstract states that 002497 alone has a judgmental 20% bull probability and that 002812 is a zero-weight external sensitivity with no house target or probability (main.tex:24). This matches the Chinese abstract, Chapters 1/5/7, analysis/valuation_model.md and the one-row formal valuation JSON. The rebuilt PDF and extracted text contain the same wording.",
+      "fix_required": "No further repair required.",
+      "blocking_gate": "cross_language_primary_conclusion_consistency",
+      "status": "closed",
+      "closure_evidence": "Cross-language conclusion and formal valuation eligibility are consistent in source, PDF, extracted text and structured valuation.",
+      "verifier_ref": "main.tex:22-24; sections/ch01_decision.tex:47-54; sections/ch05_enjie.tex:39-43; sections/ch07_valuation.tex:46-48; data/current_valuation_model_20260722.json",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "house-view-analyst",
+      "artifact": "sections/ch03_screen_method.tex; analysis/house_view.md",
+      "section": "six-name scorecard and tier definitions",
+      "evidence": "The repaired scorecard shows component scores, totals, evidence grades, hard gates and final tiers for all six names (sections/ch03_screen_method.tex:17-34). The totals reproduce under the stated 30%/25%/20%/15%/10% weights, and analysis/house_view.md:9-20 matches the same scores and tier logic.",
+      "fix_required": "No further repair required.",
+      "blocking_gate": "tiering_reproducibility_and_ic_actionability",
+      "status": "closed",
+      "closure_evidence": "All six totals reproduced; hard-gate and tier definitions are explicit and consistent across the report and house view.",
+      "verifier_ref": "sections/ch03_screen_method.tex:15-34; analysis/house_view.md:9-20",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-002",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "main.tex; sections/ch01_decision.tex; main.pdf",
+      "section": "first rendered page decision dashboard",
+      "evidence": "The rebuilt first page uses main.tex:11-12 to show 002497 at CNY16.79 as B+ conditional core with CNY25-26 formal range, CNY42 external reference, H2 profit/OCF validation and explicit invalidation; it shows 002812 at CNY47.84 as C-grade zero-weight sensitivity with no formal target, CNY103 external reference and the company-driver blocker. The evidence policy is adjacent on the same page.",
+      "fix_required": "No further repair required.",
+      "blocking_gate": "first_page_decision_completeness",
+      "status": "closed",
+      "closure_evidence": "The 2026-07-22 17:32 rebuilt PDF first page satisfies the approved primary-name decision fields and matches the repaired source.",
+      "verifier_ref": "analysis/template_brief.md:7-10; main.tex:19-28; sections/ch01_decision.tex:9-22; main.pdf page 1",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-003",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "main.tex; sections/ch01_decision.tex; sections/ch03_screen_method.tex; sections/ch07_valuation.tex",
+      "section": "target-price evidence policy",
+      "evidence": "The repaired wording is consistent: main.tex:12, sections/ch01_decision.tex:42,47, sections/ch03_screen_method.tex:54-58, sections/ch07_valuation.tex:60-61 and sections/ch09_risks.tex:21 all state that missing explicit point targets get zero weight, while missing-horizon targets receive capped weight only after company-driver eligibility passes. The policy gives 002497 capped weight and 002812 zero weight.",
+      "fix_required": "No further repair required.",
+      "blocking_gate": "target_evidence_policy_consistency",
+      "status": "closed",
+      "closure_evidence": "The same eligibility-conditioned target-weight policy appears in the cover, methodology, valuation and risk layers.",
+      "verifier_ref": "main.tex:12; sections/ch01_decision.tex:42-47; sections/ch03_screen_method.tex:54-58; sections/ch07_valuation.tex:60-61; sections/ch09_risks.tex:21",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-B-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch08_catalysts.tex",
+      "section": "company catalyst thresholds and Exhibit 10",
+      "evidence": "Exhibit 10 now contains a dedicated threshold-nature column for every name (sections/ch08_catalysts.tex:37-50), and the chapter adds an explicit warning that broker-derived thresholds are not company guidance or achieved facts (line 51). The narrative also states that 002812 parameters remain only in the broker model (line 31).",
+      "fix_required": "No further repair required.",
+      "blocking_gate": "consolidated_catalyst_source_labeling",
+      "status": "closed",
+      "closure_evidence": "Threshold provenance is visible at the consolidated decision layer and the company chapters retain named-broker attribution.",
+      "verifier_ref": "sections/ch04_yahua.tex:23-24,35,66; sections/ch05_enjie.tex:19,27-36,50; sections/ch08_catalysts.tex:31,37-51",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-B-002",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch01_decision.tex",
+      "section": "Exhibit 1 data-quality note",
+      "evidence": "The repaired note now says '概率与估值区间均为情景判断' (sections/ch01_decision.tex:42); the prior '房价区间' typo is absent.",
+      "fix_required": "No further repair required.",
+      "blocking_gate": "reader_facing_editorial_accuracy",
+      "status": "closed",
+      "closure_evidence": "Correct valuation terminology is present in the source.",
+      "verifier_ref": "sections/ch01_decision.tex:42",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-B-003",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch07_valuation.tex",
+      "section": "002497 formal-target equation lead-in",
+      "evidence": "The repaired source now has one lead-in, '审计值计算为：', followed directly by the equation (sections/ch07_valuation.tex:38-42). No duplicated '正式目标计算为：' remains in source or extracted text.",
+      "fix_required": "No further repair required.",
+      "blocking_gate": "reader_facing_editorial_accuracy",
+      "status": "closed",
+      "closure_evidence": "One equation lead-in remains in the rebuilt source and report text.",
+      "verifier_ref": "sections/ch07_valuation.tex:38-42",
+      "reopened_count": 0
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "closed_s_count": 1,
+  "closed_a_count": 3,
+  "closed_b_count": 3,
+  "verification": {
+    "method": "targeted source, structured-model, rebuilt first-page PDF and extracted-text inspection",
+    "json_formal_universe": "002497 only",
+    "pdf_rebuild_verified": "main.pdf and main_current_text.txt rebuilt at 2026-07-22 17:32",
+    "case_gate_rerun": false,
+    "source_files_modified": false
+  }
+}

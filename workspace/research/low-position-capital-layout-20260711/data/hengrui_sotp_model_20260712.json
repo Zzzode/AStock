@@ -1,0 +1,40 @@
+{
+  "schema_version": "astock.hengrui_sotp.v2",
+  "ticker": "600276",
+  "company": "恒瑞医药",
+  "shares_100mn": 66.37199874,
+  "source_anchor": "Huatai original PDF dated 2026-03-26: innovative-drug DCF CNY540.8bn, generics and other CNY19.2bn, licensing CNY31.7bn, total CNY591.8bn, WACC 7.4%, terminal growth 2.5% and target CNY89.16",
+  "scenarios": {
+    "bear": {
+      "innovative_drug_dcf_100mn": 2900.0,
+      "generic_and_other_100mn": 150.0,
+      "licensing_100mn": 200.0,
+      "equity_value_100mn": 3250.0,
+      "per_share_value": 48.97
+    },
+    "base": {
+      "innovative_drug_dcf_100mn": 4050.0,
+      "generic_and_other_100mn": 180.0,
+      "licensing_100mn": 319.0,
+      "equity_value_100mn": 4549.0,
+      "per_share_value": 68.54
+    },
+    "bull": {
+      "innovative_drug_dcf_100mn": 4747.0,
+      "generic_and_other_100mn": 192.0,
+      "licensing_100mn": 317.0,
+      "equity_value_100mn": 5256.0,
+      "per_share_value": 79.19
+    }
+  },
+  "probabilities": {
+    "bear": 0.3,
+    "base": 0.5,
+    "bull": 0.2
+  },
+  "limitations": [
+    "Product-level peak sales and phase-by-phase probability of success are not disclosed.",
+    "All AStock scenarios apply explicit haircuts to the original-PDF innovative-drug DCF; the unhaircut CNY591.8bn SOTP remains a separate Street anchor.",
+    "Licensing income is valued separately because timing and recurrence differ from product sales."
+  ]
+}

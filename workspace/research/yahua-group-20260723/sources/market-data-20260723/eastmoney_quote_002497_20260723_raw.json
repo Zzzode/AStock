@@ -1,0 +1,42 @@
+{
+  "capture_date": "2026-07-23",
+  "request_url": "https://push2.eastmoney.com/api/qt/stock/get?secid=0.002497&fields=f43,f44,f45,f46,f47,f48,f50,f57,f58,f60,f84,f85,f116,f117,f124,f162,f167,f168,f169,f170",
+  "response": {
+    "rc": 0,
+    "rt": 4,
+    "svr": 183124579,
+    "lt": 1,
+    "full": 1,
+    "dlmkts": "",
+    "dsc": "0",
+    "data": {
+      "f43": 1775,
+      "f44": 1809,
+      "f45": 1686,
+      "f46": 1713,
+      "f47": 476322,
+      "f48": 836782228.09,
+      "f50": 160,
+      "f57": "002497",
+      "f58": "雅化集团",
+      "f60": 1679,
+      "f84": 1152562520.0,
+      "f85": 1059587615.0,
+      "f116": 20457984730.0,
+      "f117": 18807680166.25,
+      "f124": 0,
+      "f162": 1509,
+      "f167": 187,
+      "f168": 450,
+      "f169": 96,
+      "f170": 572
+    }
+  },
+  "field_scaling": {
+    "f43_f44_f45_f46_f60_f169_f170": "divide by 100 for CNY or percent fields",
+    "f168": "divide by 100 for turnover percent",
+    "f47": "lots, 100 shares per lot",
+    "f48_f116_f117": "CNY"
+  },
+  "limitations": "f124 is 0 in the response; capture date and final daily bar establish the as-of date but not a provider timestamp."
+}

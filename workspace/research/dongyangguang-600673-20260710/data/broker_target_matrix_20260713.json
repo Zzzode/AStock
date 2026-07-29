@@ -1,0 +1,65 @@
+{
+  "schema_version": "broker_target_matrix.v2",
+  "rows": [
+    {
+      "ticker": "600673.SH",
+      "broker": "国金证券",
+      "report_date": "2026-03-15",
+      "rating": "买入",
+      "target_price": 50.9,
+      "revenue_E": 180.75,
+      "net_profit_E": 19.15,
+      "EPS_E": 0.636,
+      "method": "2026E 80x PE / cross-business comparable median",
+      "implied_upside": 0.3055,
+      "source_quality": "original_pdf",
+      "source_path": "sources/broker-refresh-20260713/2026-03-15-国金证券-全链AI算力领军平台扬帆.pdf",
+      "valuation_weight": 0.2
+    },
+    {
+      "ticker": "600673.SH",
+      "broker": "国投证券",
+      "report_date": "2026-05-02",
+      "rating": "买入-A",
+      "target_price": 38.86,
+      "revenue_E": 179.7,
+      "net_profit_E": 16.62,
+      "EPS_E": 0.55,
+      "method": "2027E 58x PE",
+      "implied_upside": -0.0033,
+      "source_quality": "auditable_broker_repost",
+      "source_path": "https://quote.cfi.cn/ybdata.aspx?id=20260502000149",
+      "valuation_weight": 0.05
+    },
+    {
+      "ticker": "600673.SH",
+      "broker": "国金证券",
+      "report_date": "2026-04-10",
+      "rating": "买入",
+      "target_price": "not disclosed",
+      "revenue_E": 187.62,
+      "net_profit_E": 19.47,
+      "EPS_E": 0.647,
+      "method": "2026E 48.7x PE at report price; excludes Qinhuai consolidation",
+      "implied_upside": "not applicable",
+      "source_quality": "original_pdf_no_point_target",
+      "source_path": "sources/broker-refresh-20260713/2026-04-10-国金证券-传统利润快速提升-AI智算共启新篇.pdf",
+      "valuation_weight": 0.0
+    },
+    {
+      "ticker": "600673.SH",
+      "broker": "Futu aggregate",
+      "report_date": "2026-07-11",
+      "rating": "100% buy / strong recommendation",
+      "target_price": 39.68,
+      "revenue_E": "not disclosed",
+      "net_profit_E": "not disclosed",
+      "EPS_E": "not disclosed",
+      "method": "average target; high CNY50.90 / low CNY34.77",
+      "implied_upside": 0.0177,
+      "source_quality": "auditable_consensus_snapshot",
+      "source_path": "https://www.futunn.com/stock/600673-SH/forecast",
+      "valuation_weight": 0.0
+    }
+  ]
+}

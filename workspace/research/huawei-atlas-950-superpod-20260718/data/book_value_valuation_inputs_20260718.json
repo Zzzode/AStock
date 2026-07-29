@@ -1,0 +1,267 @@
+{
+  "case_id": "huawei-atlas-950-superpod-20260718",
+  "formula": "justified P/B = (normalized ROE - terminal growth) / (cost of equity - terminal growth)",
+  "scenario_parameters": {
+    "bear": {
+      "cost_of_equity": 0.11,
+      "terminal_growth": 0.02,
+      "roe_cap": 0.23,
+      "pb_floor": 0.6
+    },
+    "base": {
+      "cost_of_equity": 0.1,
+      "terminal_growth": 0.03,
+      "roe_cap": 0.25,
+      "pb_floor": 0.7
+    },
+    "bull": {
+      "cost_of_equity": 0.09,
+      "terminal_growth": 0.04,
+      "roe_cap": 0.27,
+      "pb_floor": 0.8
+    }
+  },
+  "reverse_solved_from_prior_targets": false,
+  "rows": [
+    {
+      "ticker": "000034",
+      "company": "神州数码",
+      "official_source": "sources/official-filings-20260718/000034-digital-china-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 110.0644406737,
+      "current_shares_100mn": 10.1674,
+      "book_value_per_share": 10.8252,
+      "np_2026e_100mn": 9.03,
+      "forward_roe_2026e": 0.082043,
+      "justified_pb_scenarios": [
+        0.6,
+        0.7435,
+        1.0049
+      ],
+      "secondary_targets": {
+        "bear": 6.5,
+        "base": 8.05,
+        "bull": 10.88
+      }
+    },
+    {
+      "ticker": "000988",
+      "company": "华工科技",
+      "official_source": "sources/official-filings-20260718/000988-hgtech-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 110.5718060923,
+      "current_shares_100mn": 10.055,
+      "book_value_per_share": 10.9967,
+      "np_2026e_100mn": 23.74,
+      "forward_roe_2026e": 0.214702,
+      "justified_pb_scenarios": [
+        1.9725,
+        2.6386,
+        3.8376
+      ],
+      "secondary_targets": {
+        "bear": 21.69,
+        "base": 29.02,
+        "bull": 42.2
+      }
+    },
+    {
+      "ticker": "600183",
+      "company": "生益科技",
+      "official_source": "sources/official-filings-20260718/600183-shengyi-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 167.2350122633,
+      "current_shares_100mn": 24.29,
+      "book_value_per_share": 6.8849,
+      "np_2026e_100mn": 55.683,
+      "forward_roe_2026e": 0.332965,
+      "justified_pb_scenarios": [
+        2.3333,
+        3.1429,
+        4.6
+      ],
+      "secondary_targets": {
+        "bear": 16.06,
+        "base": 21.64,
+        "bull": 31.67
+      }
+    },
+    {
+      "ticker": "002916",
+      "company": "深南电路",
+      "official_source": "sources/official-filings-20260718/002916-shennan-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 171.4943052985,
+      "current_shares_100mn": 6.8117,
+      "book_value_per_share": 25.1765,
+      "np_2026e_100mn": 54.706,
+      "forward_roe_2026e": 0.318994,
+      "justified_pb_scenarios": [
+        2.3333,
+        3.1429,
+        4.6
+      ],
+      "secondary_targets": {
+        "bear": 58.74,
+        "base": 79.13,
+        "bull": 115.81
+      }
+    },
+    {
+      "ticker": "002463",
+      "company": "沪电股份",
+      "official_source": "sources/official-filings-20260718/002463-wus-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 151.12704642,
+      "current_shares_100mn": 19.2437,
+      "book_value_per_share": 7.8533,
+      "np_2026e_100mn": 57.198,
+      "forward_roe_2026e": 0.378478,
+      "justified_pb_scenarios": [
+        2.3333,
+        3.1429,
+        4.6
+      ],
+      "secondary_targets": {
+        "bear": 18.32,
+        "base": 24.68,
+        "bull": 36.13
+      }
+    },
+    {
+      "ticker": "300476",
+      "company": "胜宏科技",
+      "official_source": "sources/official-filings-20260718/300476-victory-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 166.1760844357,
+      "current_shares_100mn": 9.8279,
+      "book_value_per_share": 16.9087,
+      "np_2026e_100mn": 88.98,
+      "forward_roe_2026e": 0.535456,
+      "justified_pb_scenarios": [
+        2.3333,
+        3.1429,
+        4.6
+      ],
+      "secondary_targets": {
+        "bear": 39.45,
+        "base": 53.14,
+        "bull": 77.78
+      }
+    },
+    {
+      "ticker": "002837",
+      "company": "英维克",
+      "official_source": "sources/official-filings-20260718/002837-envicool-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 34.4564100879,
+      "current_shares_100mn": 12.7435,
+      "book_value_per_share": 2.7038,
+      "np_2026e_100mn": 11.43,
+      "forward_roe_2026e": 0.331723,
+      "justified_pb_scenarios": [
+        2.3333,
+        3.1429,
+        4.6
+      ],
+      "secondary_targets": {
+        "bear": 6.31,
+        "base": 8.5,
+        "bull": 12.44
+      }
+    },
+    {
+      "ticker": "301018",
+      "company": "申菱环境",
+      "official_source": "sources/official-filings-20260718/301018-shenling-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 27.2683591797,
+      "current_shares_100mn": 3.7429,
+      "book_value_per_share": 7.2854,
+      "np_2026e_100mn": 4.28,
+      "forward_roe_2026e": 0.156958,
+      "justified_pb_scenarios": [
+        1.3474,
+        1.8137,
+        2.6531
+      ],
+      "secondary_targets": {
+        "bear": 9.82,
+        "base": 13.21,
+        "bull": 19.33
+      }
+    },
+    {
+      "ticker": "002335",
+      "company": "科华数据",
+      "official_source": "sources/official-filings-20260718/002335-kehua-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 64.0655347915,
+      "current_shares_100mn": 7.5442,
+      "book_value_per_share": 8.492,
+      "np_2026e_100mn": 6.946,
+      "forward_roe_2026e": 0.10842,
+      "justified_pb_scenarios": [
+        0.8861,
+        1.1203,
+        1.5419
+      ],
+      "secondary_targets": {
+        "bear": 7.52,
+        "base": 9.51,
+        "bull": 13.09
+      }
+    },
+    {
+      "ticker": "002130",
+      "company": "沃尔核材",
+      "official_source": "sources/official-filings-20260718/002130-woer-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 64.9711281378,
+      "current_shares_100mn": 13.9987,
+      "book_value_per_share": 4.6412,
+      "np_2026e_100mn": 18.8,
+      "forward_roe_2026e": 0.289359,
+      "justified_pb_scenarios": [
+        2.3333,
+        3.1429,
+        4.6
+      ],
+      "secondary_targets": {
+        "bear": 10.83,
+        "base": 14.59,
+        "bull": 21.35
+      }
+    },
+    {
+      "ticker": "002230",
+      "company": "科大讯飞",
+      "official_source": "sources/official-filings-20260718/002230-iflytek-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 187.9446216869,
+      "current_shares_100mn": 24.0209,
+      "book_value_per_share": 7.8242,
+      "np_2026e_100mn": 12.07,
+      "forward_roe_2026e": 0.064221,
+      "justified_pb_scenarios": [
+        0.6,
+        0.7,
+        0.8
+      ],
+      "secondary_targets": {
+        "bear": 4.69,
+        "base": 5.48,
+        "bull": 6.26
+      }
+    },
+    {
+      "ticker": "002025",
+      "company": "航天电器",
+      "official_source": "sources/official-filings-20260718/002025-aerospace-electric-2025-annual-cninfo.pdf",
+      "fy2025_attributable_equity_100mn": 66.0377009246,
+      "current_shares_100mn": 4.5401,
+      "book_value_per_share": 14.5453,
+      "np_2026e_100mn": 3.797,
+      "forward_roe_2026e": 0.057505,
+      "justified_pb_scenarios": [
+        0.6,
+        0.7,
+        0.8
+      ],
+      "secondary_targets": {
+        "bear": 8.73,
+        "base": 10.18,
+        "bull": 11.64
+      }
+    }
+  ]
+}

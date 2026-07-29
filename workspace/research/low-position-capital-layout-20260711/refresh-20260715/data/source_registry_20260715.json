@@ -1,0 +1,69 @@
+{
+  "schema_version": "astock.source_registry.refresh.v1",
+  "data_cutoff": "2026-07-15",
+  "sources": [
+    {
+      "source_id": "R01",
+      "source": "Eastmoney datacenter paginated official H1 preview table",
+      "type": "official_structured_disclosure",
+      "date": "2026-07-15",
+      "quality": "L1",
+      "path": "refresh-20260715/data/raw_a_share_h1_2026_preview_20260715.json",
+      "boundary": "company-level unaudited preview; no segment/customer/ASP proof"
+    },
+    {
+      "source_id": "R02",
+      "source": "Tencent quote and adjusted K-line refresh",
+      "type": "market_data_adapter",
+      "date": "2026-07-15",
+      "quality": "L1-L2",
+      "path": "refresh-20260715/sources/market-20260715/; refresh-20260715/data/market/",
+      "boundary": "price/history only; no investor-identity inference"
+    },
+    {
+      "source_id": "R03",
+      "source": "Q1 financial and broker evidence refresh",
+      "type": "financial_packet_and_broker_pdf",
+      "date": "2026-07-15",
+      "quality": "L1-L3 by ticker",
+      "path": "refresh-20260715/data/financials/; refresh-20260715/sources/broker-reports-20260715/",
+      "boundary": "Q1 coverage 142/142; broker PDF coverage 137/142"
+    },
+    {
+      "source_id": "R04",
+      "source": "DataBao public industry-flow tables plus Shenwan official index histories",
+      "type": "public_structured_flow_and_index_history",
+      "date": "2026-07-14 daily; week ending 2026-07-10",
+      "quality": "L1-L2",
+      "path": "data/raw_daily_tables_20260714.json; data/raw_weekly_tables_20260710_refresh.json; data/sector_scan_20260715.json",
+      "boundary": "31/31 daily and weekly industry coverage; continuous-inflow table is separately partial at 30/112"
+    },
+    {
+      "source_id": "R05",
+      "source": "Securities Times/DataBao continuous-inflow article syndicated by Toutiao",
+      "type": "partial_structured_flow_table",
+      "date": "2026-07-14",
+      "quality": "L2 partial",
+      "path": "data/raw_continuous_tables_20260714.json",
+      "boundary": "article claims 112 names but public table exposes top 30 only; not used as a complete universe"
+    },
+    {
+      "source_id": "R06",
+      "source": "Valuation-recovery packet: public consensus, earnings forecasts, peer methods and market-implied metrics for exceptional-denominator candidates",
+      "type": "auditable_recovery_packet",
+      "date": "2026-07-15",
+      "quality": "L2-L3 by ticker",
+      "path": "refresh-20260715/data/valuation_recovery_601360_000042_20260715.json; refresh-20260715/sources/valuation-recovery-20260715/; refresh-20260715/sources/broker-reports-20260715/",
+      "boundary": "conditional House recovery ranges; public targets and weak abstracts are labeled, and weak sources receive zero Street weight"
+    },
+    {
+      "source_id": "R07",
+      "source": "Section 4.3 high-upside ticker-level evidence closure",
+      "type": "original_api_original_pdf_and_zero_weight_cross_check",
+      "date": "2026-07-16 evidence review; 2026-07-15 data cutoff",
+      "quality": "L1-L3 by source class",
+      "path": "refresh-20260715/data/high_upside_evidence_closure_20260716.json; sources/high-upside-evidence-20260716/; refresh-20260715/sources/broker-reports-20260715/",
+      "boundary": "six of six gaps closed by direct evidence, counterevidence, or documented non-disclosure; historical targets, media reposts, third-party pages and failed probes receive zero valuation weight"
+    }
+  ]
+}

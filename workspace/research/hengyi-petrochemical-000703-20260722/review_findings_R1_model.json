@@ -1,0 +1,50 @@
+{
+  "cycle": "R1_model",
+  "publishability_status": "PASS",
+  "publishability_score": 93,
+  "review_mode": "independent valuation-auditor recalculation followed by house-model repair",
+  "findings": [
+    {
+      "issue_id": "R1-S-001",
+      "severity": "S",
+      "artifact": "data/current_valuation_model_20260722.json",
+      "evidence": "The initial model added convertible shares without resolving effective-interest treatment and omitted approved treasury-share reissuance.",
+      "fix_required": "Use a three-level share bridge, include disclosed employee-plan dilution and cash, and avoid unsupported interest add-back.",
+      "blocking_gate": "capital_structure_reproducibility",
+      "status": "closed",
+      "verifier_ref": "analysis/valuation_audit.md; data/current_valuation_model_20260722.json"
+    },
+    {
+      "issue_id": "R1-A-001",
+      "severity": "A",
+      "artifact": "analysis/valuation_model.md",
+      "evidence": "The external target used 3.603bn forecast shares and was not comparable with the house diluted denominator.",
+      "fix_required": "Convert the external target to total equity value, add disclosed plan cash, and divide by the house disclosed-dilution shares.",
+      "blocking_gate": "street_anchor_comparability",
+      "status": "closed",
+      "verifier_ref": "analysis/valuation_model.md; data/broker_street_consensus_20260722.json"
+    },
+    {
+      "issue_id": "R1-A-002",
+      "severity": "A",
+      "artifact": "analysis/valuation_model.md",
+      "evidence": "The original house base duplicated the same CNY7.91bn external forecast used in the Street anchor.",
+      "fix_required": "Construct an independent CNY7.75bn house base from H1 midpoint plus CNY2.0bn H2 normalization and retain the broker forecast only as an external comparison.",
+      "blocking_gate": "anchor_independence",
+      "status": "closed",
+      "verifier_ref": "analysis/earnings_forecast.md; analysis/valuation_model.md"
+    },
+    {
+      "issue_id": "R1-B-001",
+      "severity": "B",
+      "artifact": "analysis/valuation_model.md",
+      "evidence": "A technical support level had been presented as the fair-value lower bound and the market anchor lacked a formula.",
+      "fix_required": "Derive the core range from the house base and multiples, keep technical support separate, and define the market anchor from five-session VWAP and current price.",
+      "blocking_gate": "valuation_range_provenance",
+      "status": "closed",
+      "verifier_ref": "analysis/valuation_model.md; analysis/secondary_market_analysis.md"
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0
+}

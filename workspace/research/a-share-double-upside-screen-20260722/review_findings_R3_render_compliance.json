@@ -1,0 +1,99 @@
+{
+  "cycle": "R3_render_compliance",
+  "review_date": "2026-07-22",
+  "reviewer_role": "research-report-reviewer",
+  "review_mode": "independent R3 render and compliance verification",
+  "publishability_status": "PASS",
+  "institutional_status": "INSTITUTIONAL_PASS",
+  "publishability_score": 93,
+  "review_scope": [
+    "main.pdf rebuilt at 2026-07-22 17:32",
+    "main_current_text.txt",
+    "rendered/page-01.png through rendered/page-26.png",
+    "readability, clipping, tables, fonts, colors and source-note presentation",
+    "cover decision card, obsolete-number residue, disclaimer, target horizon and zero-weight semantics"
+  ],
+  "artifact_state": {
+    "pdf_page_count": 26,
+    "pdf_file_size_bytes": 511298,
+    "rendered_png_count": 26,
+    "rendered_png_complete": true,
+    "fonts_embedded": true,
+    "fonts_unicode": true
+  },
+  "lens_results": {
+    "page_completeness": {
+      "status": "pass",
+      "note": "All 26 PDF pages have matching rendered PNGs."
+    },
+    "readability_clipping_tables_colors": {
+      "status": "pass",
+      "note": "The cover and the valuation, 002812 and risk pages reviewed at original render size show no clipping, overlap, corrupted glyph, invisible text or table-width failure. Typography and blue-grey color hierarchy remain consistent."
+    },
+    "font_integrity": {
+      "status": "pass",
+      "note": "pdffonts reports embedded fonts with Unicode mappings."
+    },
+    "cover_decision_card": {
+      "status": "pass",
+      "note": "The cover states the current prices, 002497 formal range, 002812 no-formal-target status, evidence grades, validation conditions, invalidation conditions and evidence policy."
+    },
+    "obsolete_number_residue": {
+      "status": "pass",
+      "note": "main_current_text.txt contains no obsolete 6-12 month target-horizon attribution and no superseded CNY26.29 or CNY64.41 formal target."
+    },
+    "target_horizon_and_zero_weight_semantics": {
+      "status": "pass",
+      "note": "The reader-facing report consistently states that external target horizons are undisclosed. 002497 uses a CNY25-26 reader range with a capped CNY42 external reference; 002812 remains a zero-weight sensitivity with no house target or probability."
+    },
+    "disclaimer_and_recommendation_boundary": {
+      "status": "pass",
+      "note": "The report presents the dated research-snapshot and no-securities-trading-advice boundary and does not convert the zero-weight sensitivity into a house recommendation."
+    }
+  },
+  "findings": [
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf",
+      "section_or_line": "selected chapter-ending pages",
+      "issue": "Several chapter-ending pages retain more white space than the surrounding pages.",
+      "evidence": "The white space is visible but does not clip content, split a material table, obscure a source note or interrupt reading order.",
+      "fix_required": "Optional next-edition pagination polish only: rebalance nearby paragraph and exhibit placement without shrinking body text or source notes.",
+      "blocking_gate": "none",
+      "status": "open",
+      "accepted_residual": true,
+      "residual_rationale": "The issue is cosmetic and has no effect on readability, valuation meaning, risk interpretation or compliance.",
+      "verifier_ref": "visual inspection of the current 26-page render",
+      "reopened_count": 0,
+      "publication_implication": "None. Accepted for publication."
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 1,
+  "accepted_residual_count": 1,
+  "confirmed_strengths": [
+    "The 26-page PDF and 26 rendered pages are complete and internally synchronized for R3 review.",
+    "All inspected decision, valuation, 002812 and risk pages are readable without clipping or overlap.",
+    "Fonts are embedded and Unicode-enabled.",
+    "The cover decision card exposes the required price, target/status, evidence, validation and invalidation fields.",
+    "Obsolete valuation numbers and unsupported target-horizon wording are absent from extracted reader text.",
+    "Target-horizon uncertainty and zero-weight semantics are consistent across the reader-facing report.",
+    "The disclaimer and recommendation boundary remain visible."
+  ],
+  "verification": {
+    "method": "PDF metadata and font inspection, rendered-page visual review and extracted-text residue search",
+    "case_gate_rerun": false,
+    "case_gate_note": "The full case gate was outside this assigned independent R3 scope and was not rerun or claimed here.",
+    "source_files_modified": false,
+    "report_files_modified": false,
+    "review_artifacts_modified": [
+      "review_findings_R3_render_compliance.json",
+      "repair_plan_R3_render_compliance.md",
+      "repair_plan_R3_render_compliance.json"
+    ]
+  }
+}

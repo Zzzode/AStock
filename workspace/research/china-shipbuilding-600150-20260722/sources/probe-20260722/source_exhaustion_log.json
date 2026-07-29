@@ -1,0 +1,42 @@
+{
+  "as_of": "2026-07-22",
+  "ticker": "600150.SH",
+  "items": [
+    {
+      "evidence_sought": "Explicit target prices in 13 archived original PDFs",
+      "status": "not_disclosed",
+      "treatment": "Do not infer targets from PE tables",
+      "next_path": "Broker-authorized reports or auditable terminal export"
+    },
+    {
+      "evidence_sought": "华泰证券 2026-05-03 original PDF",
+      "status": "original_not_obtained",
+      "available_evidence": "Public structured snapshot: EPS 2.68/3.66/4.80, 22x 2026E PE, target 58.96",
+      "source_quality": "auditable_consensus_snapshot",
+      "valuation_weight": 0,
+      "next_path": "Broker official portal or authorized Wind/Choice/iFinD export"
+    },
+    {
+      "evidence_sought": "国泰海通证券 2026-05-19 original PDF",
+      "status": "original_not_obtained",
+      "available_evidence": "Third-party visible abstract: EPS 2.35/3.19/4.17, 20x 2026E PE, target 47.00",
+      "source_quality": "third_party_preview",
+      "valuation_weight": 0,
+      "next_path": "Broker official portal or authorized terminal export"
+    },
+    {
+      "evidence_sought": "Current market capitalization from project quote capability",
+      "status": "field_missing",
+      "available_evidence": "Price 33.02 and company disclosed shares 7,525,621,288",
+      "treatment": "Recomputed CNY 248.49601492976 billion",
+      "next_path": "Same-timestamp exchange market-cap packet"
+    },
+    {
+      "evidence_sought": "Same-timestamp current free float",
+      "status": "not_verified",
+      "available_evidence": "Exact total shares at 2026-03-31",
+      "treatment": "Do not publish current free-float market capitalization",
+      "next_path": "2026H1 filing or SSE capital-structure snapshot"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "code": "600673",
+  "name": "东阳光",
+  "price": 38.99,
+  "prev_close": 37.15,
+  "open": 37.32,
+  "volume": 725825.0,
+  "change": 1.84,
+  "change_percent": 4.95,
+  "high": 39.9,
+  "low": 37.16,
+  "amount": 2823252547.0,
+  "bid_price": 38.99,
+  "ask_price": 39.0,
+  "pe": 0.0,
+  "pb": 0.0,
+  "pe_ttm": 0.0,
+  "total_market_value": 0.0,
+  "circulating_market_value": 0.0,
+  "turnover_rate": 0.0,
+  "volume_ratio": 0.0,
+  "data_quality": "full_realtime",
+  "provenance": {
+    "schema_version": "data_provenance.v1",
+    "source": "astock.quote_service",
+    "timestamp": "2026-07-13T11:38:27.899689+08:00",
+    "quality_tier": "realtime",
+    "quality_rank": 100,
+    "latency_ms": null,
+    "fallback_path": [],
+    "warnings": [],
+    "errors": [],
+    "ok": true
+  },
+  "market_events": [
+    {
+      "id": "mevt_e4053d14b7af466038d62e3f",
+      "schema_version": "market_event.v1",
+      "event_type": "price_move",
+      "title": "600673 东阳光 price move +4.95%",
+      "observed_at": "1970-01-01T00:00:00+00:00",
+      "severity": "watch",
+      "direction": "bullish",
+      "subject": {
+        "type": "stock",
+        "code": "600673",
+        "name": "东阳光",
+        "market": "A-share",
+        "key": "600673"
+      },
+      "quality": {
+        "level": "full",
+        "source": "astock.quote_service",
+        "confidence": 1.0,
+        "as_of": "1970-01-01T00:00:00+00:00",
+        "latency_seconds": null,
+        "warnings": [
+          "missing_observed_at"
+        ],
+        "missing_fields": []
+      },
+      "source": "astock.quote_service",
+      "metrics": {
+        "price": 38.99,
+        "prev_close": 37.15,
+        "change_pct": 4.95,
+        "change_amount": 1.84
+      },
+      "context": {
+        "raw_change_pct": 4.95
+      },
+      "tags": [
+        "quote",
+        "price"
+      ],
+      "dedupe_key": "price_move"
+    }
+  ]
+}

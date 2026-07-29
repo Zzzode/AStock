@@ -1,0 +1,37 @@
+{
+  "schema_version": "valuation_model.v2",
+  "data_cutoff": "2026-07-13 11:33 CST",
+  "rows": [
+    {
+      "ticker": "600673.SH",
+      "company": "东阳光",
+      "current_price": 38.99,
+      "price_date": "2026-07-13 11:33 CST",
+      "shares_100mn": 30.095551,
+      "market_cap_100mn_cny": 1173.43,
+      "revenue_2026e_100mn": 187.62,
+      "np_2026e_100mn": 19.47,
+      "eps_2026e": 0.647,
+      "method": "dilution-adjusted scenario PE plus official transaction SOTP, original-PDF Street anchor and market-implied event anchor",
+      "bear": 22.1,
+      "base": 32.95,
+      "bull": 48.87,
+      "scenario_expected_value": 34.76,
+      "official_sotp_per_share": 24.7559,
+      "fundamental_anchor": 31.2586,
+      "market_implied_anchor": 45.16,
+      "broker_anchor": 48.492,
+      "fundamental_weight": 0.55,
+      "market_weight": 0.2,
+      "broker_weight": 0.25,
+      "final_target": 38.35,
+      "upside": -0.0164,
+      "action": "中性 / 持有 / 事件驱动观察 / 不追高",
+      "evidence_quality": "official filings, original broker PDFs, realtime quote and explicit dilution/contract assumptions",
+      "catalysts": "SSE review and CSRC registration, placement pricing, C-contract acceptance, interim compute revenue/margin disclosure",
+      "invalidation": "transaction delay, financing stress, compute acceptance failure, HFC margin reversal or negative operating cash-flow surprise",
+      "next_quarter_threshold": "H1/Q2 revenue above CNY8.5bn, gross margin at least 20%, operating cash flow positive, and compute revenue or accepted server capacity separately disclosed",
+      "bubble_degree_vs_fundamental": 0.2473
+    }
+  ]
+}

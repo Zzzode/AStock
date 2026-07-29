@@ -1,0 +1,12 @@
+{
+  "cycle": "R1_model",
+  "status": "complete",
+  "repairs": [
+    {"issue_id": "R1-S-001", "status": "verified", "artifact": "data/current_valuation_model_20260722.json", "verification": "three-level share bridge and conservative reported-profit treatment reproduce"},
+    {"issue_id": "R1-A-001", "status": "verified", "artifact": "analysis/valuation_model.md", "verification": "Street anchor normalized to CNY16.3130"},
+    {"issue_id": "R1-A-002", "status": "verified", "artifact": "analysis/earnings_forecast.md", "verification": "house base is CNY7.75bn and external base remains CNY7.91bn"},
+    {"issue_id": "R1-B-001", "status": "verified", "artifact": "analysis/valuation_model.md", "verification": "core range and market anchor have reproducible formulas"}
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0
+}

@@ -1,0 +1,24 @@
+{
+  "cycle": "R4_final_ic",
+  "cycle_status": "PASS",
+  "publishability_status": "PUBLISHABLE",
+  "publishability_score": 96,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "findings": [
+    {
+      "issue_id": "R4-B-001",
+      "cycle": "R4_final_ic",
+      "severity": "B",
+      "owner_skill": "research-report-review",
+      "owner_agent": "orchestrator",
+      "artifact": "final_signoff.json",
+      "evidence": "The refreshed conclusion separates the CNY86.4 base-business value from a CNY2.49 low-confidence, FY2028 risk-adjusted Physical AI option, producing a CNY88.9 combined reference and approximately 6.5% displayed upside. The report keeps the option outside 2026E EPS and discloses its 55%/35%/10% house weights, 12% discount rate, evidence gates and conditional economics.",
+      "fix_required": "Retain the time-bound price/financial cutoff, the base-versus-option distinction, probability/discount disclosure, the event scorecard and the non-advisory disclaimer in the final PDF.",
+      "blocking_gate": "ic_actionability",
+      "status": "closed",
+      "verifier_ref": "sections/ch01_dashboard.tex; sections/ch05a_physical_ai.tex; sections/ch07_valuation.tex; sections/ch08_risks.tex",
+      "reopened_count": 2
+    }
+  ]
+}

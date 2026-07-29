@@ -1,0 +1,61 @@
+{
+  "as_of": "2026-07-23",
+  "purpose": "external_lithium_cycle_pe_calibration_only",
+  "model_weight_cap": 0.2,
+  "eligible_for_standalone_target_price": false,
+  "peers": [
+    {
+      "ticker": "002466.SZ",
+      "name": "天齐锂业",
+      "q1_source_id": "PEER-TQ-Q1",
+      "forecast_source_id": "PEER-EST-TQ",
+      "q1_revenue_cny": 5128047632.11,
+      "q1_parent_np_cny": 1876028010.28,
+      "forward_2026_eps": 3.761111111111,
+      "forward_2026_pe": 11.709622140854,
+      "forward_2027_pe": 10.248223027248,
+      "forward_2026_revenue_cny": 23749964444.4444,
+      "forward_2026_parent_np_cny": 6425873333.33333,
+      "comparability_warning": "SQM investment income and resource mix prevent direct margin or multiple transfer."
+    },
+    {
+      "ticker": "002460.SZ",
+      "name": "赣锋锂业",
+      "q1_source_id": "PEER-GF-P",
+      "forecast_source_id": "PEER-EST-GF",
+      "q1_revenue_cny": null,
+      "q1_parent_np_cny_range": [1600000000, 2100000000],
+      "forward_2026_eps": 3.51,
+      "forward_2026_pe": 13.511714073603,
+      "forward_2027_pe": 11.207158956222,
+      "forward_2026_revenue_cny": 46106909090.9091,
+      "forward_2026_parent_np_cny": 7360000000,
+      "comparability_warning": "Q1 is a preview and includes PLS fair-value effects; not clean operating comparability."
+    },
+    {
+      "ticker": "002240.SZ",
+      "name": "盛新锂能",
+      "q1_source_id": "PEER-SX-Q1",
+      "forecast_source_id": "PEER-EST-SX",
+      "q1_revenue_cny": 3284000000,
+      "q1_parent_np_cny": 464000000,
+      "forward_2026_eps": 2.102,
+      "forward_2026_pe": 13.160621716485,
+      "forward_2027_pe": 10.176065766305,
+      "forward_2026_revenue_cny": 13465800000,
+      "forward_2026_parent_np_cny": 1923000000,
+      "comparability_warning": "Indonesia capacity and resource/product mix differ from Yahua."
+    }
+  ],
+  "statistics": {
+    "forward_2026_pe_simple_mean": 12.793985976981,
+    "forward_2026_pe_median": 13.160621716485,
+    "forward_2027_pe_simple_mean": 10.543815016592,
+    "forward_2027_pe_median": 10.248223027248
+  },
+  "hard_limits": [
+    "L2 aggregate data cannot create a positive company premium.",
+    "No direct transfer of peer margins, volume growth, resource cost or target price.",
+    "Use only after a house EPS bridge and a documented premium-discount rationale."
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "cycle": "R3_render_compliance",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "cycle_status": "PARTIAL_RECHECK_NO_BLOCKER_PENDING_FULL_RENDER_REFRESH",
+  "institutional_status": "INSTITUTIONAL_PASS_PENDING_FINAL_RENDER_REFRESH",
+  "publishability_status": "PENDING_FINAL_GATE_REFRESH",
+  "publishability_score": 92,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "accepted_issue_ids": [
+    "R3-B-001",
+    "R3-B-002",
+    "R3-B-003"
+  ],
+  "groups": [],
+  "confirmed_render_controls": {
+    "page_count": 51,
+    "page_size": "A4",
+    "pdf_sha256": "847ce2676eb646fba6520ae1f0bf77aa96200918fb6db87f687ef0577dc04052",
+    "critical_page_recheck": "Physical pages 36-39 rendered from the current PDF; no clipping/overlap/broken glyph in Chapter 12 tables or the following chapter opening.",
+    "full_render_set_status": "PENDING_MAIN_AGENT_REFRESH",
+    "full_pdf_metadata_and_overfull_status": "PENDING_MAIN_AGENT_REFRESH",
+    "current_price_CNY": 33.02,
+    "published_final_target_CNY": 33.07,
+    "fair_value_range_CNY": [
+      31.64,
+      35.96
+    ],
+    "published_upside": "+0.15%",
+    "action": "中性偏多（持有/等待验证）",
+    "final_disclaimer_visible": true
+  },
+  "residual_constraints": [
+    "The inherited R3-B findings remain historical, waived presentation-only items and must be rechecked if pagination changes further.",
+    "A complete 51-page rendered-set inspection, metadata/text-snapshot refresh and project-native final gates remain pending; this targeted check is not a substitute."
+  ],
+  "required_next_actions": [
+    "Refresh the complete rendered set directly from the 51-page current PDF, then recheck all pages.",
+    "Refresh text snapshot, font/overfull evidence, dependent manifests/checksums/inventories and all mandatory project-native verifiers."
+  ],
+  "reopen_triggers": [
+    "main.pdf hash, page count, page size or rendered-page set changes",
+    "main_current_text.txt no longer matches fresh pdftotext extraction",
+    "any core table, TikZ, longtable, target/action field or disclaimer clips, overlaps or becomes unreadable",
+    "a blank page or detached single-line orphan appears",
+    "an overfull box exceeds 20pt, a font is not embedded or Unicode mapping is lost",
+    "current price, target, upside, fair-value range or action changes without synchronized model and report refresh",
+    "the strict-free-float or daily-Connect source boundary disappears from the reader-facing chapter"
+  ],
+  "market_data_remediation_recheck": {
+    "reviewed_at": "2026-07-23",
+    "new_s_or_a_findings": 0,
+    "critical_pages": [36, 37, 38, 39],
+    "conclusion": "No visual blocker was found in the changed market-data chapter. Final R3 requires a current full-page render refresh."
+  }
+}

@@ -1,0 +1,12 @@
+flowchart LR
+  A["2025-09 路线图\n950DT / UnifiedBus"] --> B["2026-07 实物系统\n1,024 卡\nFP8 1 EFLOPS / FP4 2 EFLOPS"]
+  B --> C["2026Q4 最大设计\n8,192 卡\n128 计算柜 + 32 互联柜"]
+  C --> D["SuperCluster\n64 个 SuperPoD\n超过 52 万卡"]
+  B --- E["256 TB\n全局统一地址空间\n不是 HBM 容量"]
+  C --- F["路线图状态\n尚无公开客户验收"]
+  classDef physical fill:#d9ead3,stroke:#38761d,color:#17365d,stroke-width:2px;
+  classDef roadmap fill:#fff2cc,stroke:#bf9000,color:#7f6000,stroke-width:2px;
+  classDef boundary fill:#f4cccc,stroke:#990000,color:#660000,stroke-width:2px;
+  class B physical;
+  class A,C,D roadmap;
+  class E,F boundary;

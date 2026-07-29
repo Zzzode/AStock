@@ -1,0 +1,27 @@
+{
+  "case_id": "yahua-group-20260723",
+  "report_type": "single_stock_full_note",
+  "data_cutoff": "market and research 2026-07-23; financial history through 2026Q1 plus the 2026H1 preliminary profit disclosure",
+  "pdf_path": "main.pdf",
+  "page_count": 40,
+  "pdf_sha256": "1c16f402475b4c0dd99bd6b0b18f5a076a6b13da642c3f5954a141fe6552e899",
+  "report_expiry": "refresh immediately on the formal 2026H1 report",
+  "publishability_score": 95,
+  "score_note": "Institutional full-note score after final command outputs; no open S/A issue remains.",
+  "verifier_results": {
+    "case_verifier": "39 PASS / 0 FAIL",
+    "generic_quality_evaluator": "100.0 score; 97 / 97 checks; 0 blocking failures; publishable=true",
+    "repository_runner": "135 PASS / 0 FAIL; RESULT PASS; industry-chain verifier correctly skipped for single-stock report",
+    "visual_exhibit_review": "PASS; 40-page r3 render reviewed"
+  },
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "waived_issues": [],
+  "residual_risks": [
+    "正式 H1 三张表尚未发布；该时间点限制已通过中低模型置信度、情景概率和现金折价体现。",
+    "周期价格、现金转换和下半年单位经济仍可能使归母落在熊市或牛市路径；正式披露后须按同一模型重算。"
+  ],
+  "downgrade_status": "none; formal H1 refresh is required by the report horizon",
+  "signoff_status": "PASS"
+}

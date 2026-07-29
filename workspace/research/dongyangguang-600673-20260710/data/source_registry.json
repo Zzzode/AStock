@@ -1,0 +1,113 @@
+{
+  "schema_version": "source_registry.v2",
+  "rows": [
+    {
+      "source_id": "S01",
+      "source_type": "local_capability_quote",
+      "date": "2026-07-13 11:33 CST",
+      "quality_tier": "full_realtime",
+      "path": "sources/market-refresh-20260713/quote_packet_20260713.json",
+      "use_in_model": "current price, amount, intraday range and price date",
+      "limitation": "daily-history adapters failed; no fabricated rolling indicators"
+    },
+    {
+      "source_id": "S02",
+      "source_type": "local_capability_financials",
+      "date": "through 2026Q1",
+      "quality_tier": "full",
+      "path": "sources/market-refresh-20260713/financial_packet_20260713.json",
+      "use_in_model": "2025 and 2026Q1 revenue, profit, cash flow and leverage",
+      "limitation": "no company H1 guidance was published by the 2026-07-13 cutoff"
+    },
+    {
+      "source_id": "S03",
+      "source_type": "official_transaction_report",
+      "date": "2026-06-16",
+      "quality_tier": "official_pdf",
+      "path": "sources/official-refresh-20260713/2026-06-16-重组报告书草案.pdf",
+      "use_in_model": "Qinhuai financials, CNY29.063bn appraisal, CNY11.5bn Dongshu transaction equity, debt, customer concentration, capacity and risks",
+      "limitation": "transaction still requires SSE review and CSRC registration"
+    },
+    {
+      "source_id": "S04",
+      "source_type": "official_shareholder_resolution",
+      "date": "2026-07-11",
+      "quality_tier": "official_pdf",
+      "path": "sources/official-refresh-20260713/2026-07-11-第一次临时股东会决议.pdf",
+      "use_in_model": "shareholder approval of purchase and placement plan",
+      "limitation": "shareholder approval is not regulatory registration or closing"
+    },
+    {
+      "source_id": "S05",
+      "source_type": "official_dilution_statement",
+      "date": "2026-06-16",
+      "quality_tier": "official_pdf",
+      "path": "sources/official-refresh-20260713/2026-06-16-摊薄即期回报说明.pdf",
+      "use_in_model": "pro-forma revenue, profit, EPS and transaction dilution",
+      "limitation": "placement shares are excluded from the official pro-forma table"
+    },
+    {
+      "source_id": "S06",
+      "source_type": "official_compute_contract",
+      "date": "2026-05-06",
+      "quality_tier": "official_pdf",
+      "path": "sources/official-refresh-20260713/2026-05-06-A公司算力服务框架合同.pdf",
+      "use_in_model": "A-contract CNY16-19bn, 60 months, monthly billing after acceptance",
+      "limitation": "recognized revenue, hardware cost and margin are not quantified"
+    },
+    {
+      "source_id": "S07",
+      "source_type": "official_compute_contract",
+      "date": "2026-06-02",
+      "quality_tier": "official_pdf",
+      "path": "sources/official-refresh-20260713/2026-06-02-B公司算力服务采购合同.pdf",
+      "use_in_model": "B-contract CNY10-12bn and 10% prepayment structure",
+      "limitation": "recognized revenue, financing cost and margin are not quantified"
+    },
+    {
+      "source_id": "S08",
+      "source_type": "official_compute_contract",
+      "date": "2026-07-11",
+      "quality_tier": "official_pdf",
+      "path": "sources/official-refresh-20260713/2026-07-11-算力服务采购合同公告.pdf",
+      "use_in_model": "C-contract CNY13-15bn and confirmation that prior contracts were delivered, accepted and recognized as revenue",
+      "limitation": "C-contract still needs delivery, inspection and acceptance"
+    },
+    {
+      "source_id": "S09",
+      "source_type": "original_broker_pdf",
+      "date": "2026-04-10",
+      "quality_tier": "original_pdf",
+      "path": "sources/broker-refresh-20260713/2026-04-10-国金证券-传统利润快速提升-AI智算共启新篇.pdf",
+      "use_in_model": "latest legacy-business forecast: CNY18.762bn revenue / CNY1.947bn NP / EPS CNY0.647",
+      "limitation": "forecast excludes Qinhuai consolidation and predates three contracts"
+    },
+    {
+      "source_id": "S10",
+      "source_type": "original_broker_pdf",
+      "date": "2026-03-15",
+      "quality_tier": "original_pdf",
+      "path": "sources/broker-refresh-20260713/2026-03-15-国金证券-全链AI算力领军平台扬帆.pdf",
+      "use_in_model": "CNY50.90 original target and segment forecast cross-check",
+      "limitation": "forecast excludes Qinhuai consolidation and predates contracts"
+    },
+    {
+      "source_id": "S11",
+      "source_type": "official_policy_archive",
+      "date": "2026",
+      "quality_tier": "official_archive",
+      "path": "../tungsten-wf6-fluorochem-20260628/sources/official-policy-hfc-quota-2026/mee-2026-hfc-quota-attachment2.txt",
+      "use_in_model": "HFC quota evidence for the legacy earnings anchor",
+      "limitation": "realized ASP, volume and product gross margin still require filings"
+    },
+    {
+      "source_id": "S12",
+      "source_type": "public_market_snapshot",
+      "date": "2026-07-13",
+      "quality_tier": "auditable_public_snapshot",
+      "path": "sources/market-refresh-20260713/cfi_quote_20260713.html",
+      "use_in_model": "quote cross-check and public valuation/crowding snapshot",
+      "limitation": "intraday snapshot, not a full historical terminal export"
+    }
+  ]
+}

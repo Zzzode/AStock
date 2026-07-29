@@ -1,0 +1,51 @@
+{
+  "schema_version": "astock.multi_stock_valuation.v1",
+  "case_id": "a-share-double-upside-screen-20260722",
+  "data_cutoff": "2026-07-22",
+  "currency": "CNY",
+  "formal_valuation_universe_policy": "A formal blended target requires current official financial evidence, company-level operating-driver eligibility, and a complete auditable external target-price model. An explicit target with an undisclosed horizon may receive at most 10% external-anchor weight only after the company-level valuation gate passes.",
+  "rows": [
+    {
+      "ticker": "002497",
+      "company": "雅化集团",
+      "current_price": 16.79,
+      "price_date": "2026-07-22",
+      "shares_100mn": 11.5256,
+      "market_cap_100mn_cny": 193.52,
+      "revenue_2026e_100mn": 170.52,
+      "np_2026e_100mn": 30.32,
+      "eps_2026e": 2.63,
+      "method": "cycle-adjusted operating-driver EPS/PE with explicit year-end rerating constraint",
+      "operating_scenarios": {
+        "bear": {"lithium_shipments_10kt": 9.0, "lithium_price_proxy_10k_cny_per_t": 12.0, "revenue_100mn": 120.0, "gross_margin": 0.20, "gross_profit_100mn": 24.0, "opex_tax_other_100mn": 10.9, "net_profit_100mn": 13.1, "eps": 1.14, "pe": 8.0},
+        "base": {"lithium_shipments_10kt": 12.0, "lithium_price_proxy_10k_cny_per_t": 16.5, "revenue_100mn": 170.52, "gross_margin": 0.2704, "gross_profit_100mn": 46.11, "opex_tax_other_100mn": 15.76, "net_profit_100mn": 30.35, "eps": 2.63, "pe": 10.0},
+        "bull": {"lithium_shipments_10kt": 13.0, "lithium_price_proxy_10k_cny_per_t": 18.0, "revenue_100mn": 195.0, "gross_margin": 0.285, "gross_profit_100mn": 55.58, "opex_tax_other_100mn": 17.08, "net_profit_100mn": 38.5, "eps": 3.34, "pe": 12.6}
+      },
+      "normalization": "Civil-explosives parent-profit floor is CNY0.50/0.575/0.60bn; lithium normalized net contribution is CNY0.9/2.05/2.50 ten-thousand per tonne. Inventory gains and hedge P&L receive zero normalized credit.",
+      "bear": 9.12,
+      "base": 26.30,
+      "bull": 42.08,
+      "scenario_probabilities": {"bear": 0.30, "base": 0.50, "bull": 0.20},
+      "fundamental_probability_value": 24.302,
+      "market_implied_anchor": 16.79,
+      "broker_anchor": 42.00,
+      "broker_target_horizon": "not disclosed",
+      "source_overlap": "The base operating assumptions and CNY42 target come from the same Dongwu report; the broker anchor is not independent confirmation.",
+      "fundamental_weight": 0.80,
+      "market_weight": 0.10,
+      "broker_weight": 0.10,
+      "final_target": 25.32,
+      "reader_facing_range": "CNY25-26",
+      "upside": 0.508041,
+      "weight_sensitivities": {"zero_broker_weight_renormalized": 23.47, "70_fundamental_20_market_10_broker": 24.57},
+      "double_threshold_price": 33.58,
+      "double_threshold_multiple": "12.77x base 2026E EPS",
+      "double_scenario_probability": 0.20,
+      "action": "条件核心；基准情景不翻倍，牛市情景具备翻倍弹性",
+      "evidence_quality": "medium-high: official filings plus original broker PDF; H2 cash conversion and target horizon remain unverified",
+      "validation_trigger": "H2 net profit of at least CNY1.73bn, positive cash conversion, lithium shipment delivery, and no renewed hedge drag",
+      "invalidation": "lithium-price reversal, H2 profit below the bridge, inventory/hedge effects dominating profit, or operating cash flow remaining materially negative"
+    }
+  ],
+  "structured_zero_weight_companion": "data/zero_weight_valuation_model_20260722.json"
+}

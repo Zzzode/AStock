@@ -1,0 +1,126 @@
+{
+  "cycle": "R1_model",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "review_date": "2026-07-22",
+  "cycle_status": "PASS",
+  "publishability_status": "BLOCKED",
+  "institutional_status": "R1_INSTITUTIONAL_PASS_DOWNSTREAM_INCOMPLETE",
+  "publishability_score": 95,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "review_scope": [
+    "analysis/growth_earnings_model.md",
+    "analysis/growth_model_audit.md",
+    "analysis/segment_forecast_bridge.md",
+    "analysis/implied_growth_sensitivity.md",
+    "data/growth_driver_model.json",
+    "data/growth_earnings_model_20260722.json",
+    "data/growth_earnings_model_current.json",
+    "analysis/valuation_model.md",
+    "analysis/segment_valuation_model.md",
+    "analysis/valuation_audit.md",
+    "data/current_valuation_model_20260722.json",
+    "data/broker_street_consensus_20260722.md/json",
+    "analysis/chain_earnings_bridge.md",
+    "analysis/value_chain_economics.md",
+    "data/verified_financials.md",
+    "data/verified_market_data.md"
+  ],
+  "verifier_summary": {
+    "case_local_verifier": "32 PASS / 7 FAIL after R1 review artifacts; checks 17-31 and check 39 pass, including all growth, valuation, target/upside, scenario, weight and segment-model checks. Remaining failures are downstream main.tex/PDF, extracted report, full R0-R4 lifecycle, final sign-off and workflow evaluation.",
+    "shared_research_gate": "88 PASS / 37 FAIL after R1 review artifacts. R1 findings and repair-plan lifecycle, valuation reproducibility, required sections, structured row, target/upside arithmetic, single-stock institutional depth, broker zero-weight controls and placeholder checks pass. Remaining failures are downstream publication artifacts/cycles, unusable original Street target-price anchors by design, the literal source-exhaustion token check, final sign-off/workflow evaluation and the non-final case verifier result.",
+    "r1_maker_checker": "Independent field-level reread and arithmetic recalculation completed after all four valuation artifacts were frozen; 0 S / 0 A / 0 B remain open."
+  },
+  "findings": [
+    {
+      "issue_id": "R1-S-001",
+      "severity": "S",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "data/current_valuation_model_20260722.json",
+      "evidence": "The first valuation JSON draft had no rows array and therefore could not satisfy the case verifier's one-row valuation contract or expose the required current-price, scenario, weight, final-target and upside fields in the canonical row.",
+      "fix_required": "Add exactly one rows[0] for 600150.SH with company, current price/date, shares, market cap, 2026E forecast, method, bear/base/bull, market anchor, three weights, final target, decimal upside, action and evidence quality; recalculate target/upside and rerun the native verifier.",
+      "blocking_gate": "structured_valuation_and_reproducibility",
+      "status": "closed",
+      "verifier_ref": "case-local verifier checks 19-25 and shared valuation model checks",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R1 final maker-checker",
+      "verification_evidence": "Final JSON lines 10-34 contain exactly one 600150.SH row including company. The row reports target 33.07, upside 0.0015142337977, 85%/15%/0% weights, and the case-local verifier passes checks 19-25."
+    },
+    {
+      "issue_id": "R1-A-001",
+      "severity": "A",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "data/current_valuation_model_20260722.json; analysis/valuation_model.md; analysis/valuation_audit.md",
+      "evidence": "The first Bull scenario warning claimed a 50-100% optimism-bias risk and historical 12-month target achievement below 40% without any frozen source supporting either statistic.",
+      "fix_required": "Delete both unsupported statistics from every valuation artifact. Retain only a qualitative, evidence-bounded statement that Bull combines optimistic operating assumptions and a higher multiple and receives zero Street target-price weight.",
+      "blocking_gate": "source_hierarchy_and_fake_precision",
+      "status": "closed",
+      "verifier_ref": "R1 source scan and valuation fake-precision review",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R1 final maker-checker",
+      "verification_evidence": "The unsupported percentages and achievement-rate claim are absent from all four valuation artifacts. The final JSON Bull warning is qualitative and valuation_model.md states only that Bull is a scenario ceiling with zero Street target-price weight."
+    },
+    {
+      "issue_id": "R1-A-002",
+      "severity": "A",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "analysis/valuation_model.md; analysis/segment_valuation_model.md; analysis/valuation_audit.md; data/current_valuation_model_20260722.json",
+      "evidence": "An unqualified positive action label would conflict with a published target of CNY33.07 versus CNY33.02 current price, only about 0.15% expected return.",
+      "fix_required": "Use the same current-price-consistent action across all valuation artifacts: neutral-positive, hold/wait for validation, event-driven validation; do not present an AStock Buy action.",
+      "blocking_gate": "valuation_action_consistency",
+      "status": "closed",
+      "verifier_ref": "final-target/action consistency review",
+      "reopened_count": 0,
+      "verified_at": "2026-07-22 R1 final maker-checker",
+      "verification_evidence": "All four artifacts now use 中性偏多（持有/等待验证） / event-driven validation. Published target upside is +0.1514%, and segment_valuation_model.md explicitly states that the action is not Buy."
+    }
+  ],
+  "confirmed_model_results": {
+    "growth_base_parent_net_profit_2026_2028_CNY100m": [
+      172.762156,
+      216.489959,
+      246.810914
+    ],
+    "shares_100mn": 75.25621288,
+    "current_price_CNY": 33.02,
+    "market_cap_CNY100m": 2484.9601492976,
+    "valuation_scenarios_CNY_per_share": {
+      "bear": 11.20761,
+      "base": 33.0821075,
+      "bull": 48.342034
+    },
+    "final_weights": {
+      "fundamental": 0.85,
+      "market": 0.15,
+      "broker": 0.0
+    },
+    "published_final_target_CNY": 33.07,
+    "published_upside_decimal": 0.0015142337977,
+    "action": "中性偏多（持有/等待验证） / event-driven validation"
+  },
+  "confirmed_controls": [
+    "The dated and current growth JSON twins are byte-identical; all nine scenario EPS values recalculate from parent net profit divided by 75.25621288 within six-decimal rounding tolerance.",
+    "The order-to-delivery-to-profit bridge uses effective delivery DWT, a clearly labeled revenue-intensity proxy, price/mix, recognition, gross margin, expenses, tax and minority interest; gross backlog is not converted directly into revenue or EPS.",
+    "Q1 and the unaudited H1 preview are not annualized into the final forecast. H1 is used only as a validation anchor and Q2/H2 residual check.",
+    "The approximately CNY50bn/87-vessel COSCO project is officially attributed to 600150 subsidiaries but is de-duplicated against aggregate orders/backlog and receives zero incremental revenue, EPS or target-price credit.",
+    "There is exactly one valuation parent, 600150.SH. Subsidiaries are consolidated components; yard, ship-type, military and Hudong-Zhonghua SOTP methods are blocked.",
+    "Military, Hudong-Zhonghua, unallocated group orders and weak target-price leads receive zero credit in Bear, Base and Bull.",
+    "All archived original broker PDFs lack usable target prices, so broker_weight=0. Weak or unavailable target leads remain zero-weight and do not enter the final target.",
+    "The 33.07 target, 0.0015142337977 upside and 85%/15%/0% weights reproduce exactly from the disclosed current price and anchors."
+  ],
+  "residual_constraints": [
+    "The growth model remains CONDITIONAL because ship-level ASP, delivery schedule, unified yard utilization, payment milestones and cost pass-through are not disclosed; only consolidated scenario earnings credit is allowed.",
+    "No usable original Street target-price anchor exists. The valuation model correctly assigns zero broker weight, but the full report cannot receive final PASS until this residual constraint is explicitly preserved in R4 or new original evidence is collected.",
+    "The shared research gate still fails its literal source-exhaustion token check even though EX-01 to EX-03 and the conclusion section record the broker target-price gap in Chinese; this machine-gate mismatch must be resolved before publication without weakening the verifier.",
+    "R2-R4, main.tex/main.pdf, extracted text, workflow evaluation and final sign-off do not yet exist, so report publishability remains BLOCKED despite R1 cycle PASS."
+  ],
+  "required_next_fixes": [
+    "R2 must propagate the frozen CNY33.07 target, +0.15% upside, CNY31.64-35.96 fair-value range and hold/wait-for-validation action without upgrading it to Buy.",
+    "R2 must retain the one-parent/no-SOTP boundary, COSCO de-duplication, no-H1-annualization rule and zero option/Street target-price weights.",
+    "Before R4, resolve all case-local and shared research-gate failures at their underlying artifacts and obtain the mandatory final verifier state."
+  ]
+}

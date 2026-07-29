@@ -1,0 +1,10 @@
+{
+  "cycle":"R0_evidence",
+  "publishability_status":"CONDITIONAL",
+  "publishability_score":64,
+  "findings":[
+    {"issue_id":"R0-S-001","cycle":"R0_evidence","severity":"S","owner_skill":"data-collector","owner_agent":"data-collector","artifact":"data/verified_market_data.md","evidence":"No reproducible 2026-07-24 current-price/turnover data package for the six samples.","fix_required":"Freeze one-provider market exports after candidate selection.","blocking_gate":"current_price_valuation","status":"open","verifier_ref":"valuation skill","reopened_count":0},
+    {"issue_id":"R0-S-002","cycle":"R0_evidence","severity":"S","owner_skill":"supply-chain-research","owner_agent":"supply-chain-analyst","artifact":"analysis/core_vs_satellite_universe.md","evidence":"Core valuation pool is empty; all six samples remain watchlist only.","fix_required":"Collect company-level customer/order/ASP/utilization/margin/cash evidence.","blocking_gate":"core_valuation_eligibility","status":"open","verifier_ref":"supply-chain-research skill","reopened_count":0},
+    {"issue_id":"R0-S-003","cycle":"R0_evidence","severity":"S","owner_skill":"reports","owner_agent":"report-analyzer","artifact":"data/broker_street_consensus_20260726.json","evidence":"All six Street rows have valuation_weight 0; five lack target prices and the remaining visible target is stale.","fix_required":"Collect dated original or auditable broker/consensus anchors for any proposed core candidate.","blocking_gate":"broker_street_consensus","status":"open","verifier_ref":"reports skill","reopened_count":0}
+  ]
+}

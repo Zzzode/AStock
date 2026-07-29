@@ -1,0 +1,53 @@
+{
+  "cycle": "R0_evidence",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "recheck": 3,
+  "cycle_status": "PASS",
+  "publishability_status": "PENDING_FINAL_GATE_REFRESH",
+  "publishability_score": 96,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "closed_issue_ids": [
+    "R0-S-001",
+    "R0-S-002",
+    "R0-A-001",
+    "R0-A-002",
+    "R0-A-003",
+    "R0-A-004",
+    "R0-A-005",
+    "R0-A-006",
+    "R0-A-007",
+    "R0-B-001",
+    "R0-B-002"
+  ],
+  "groups": [],
+  "residual_evidence_constraints": [
+    "No usable original broker target price; Street target-price valuation weight remains zero.",
+    "Ship-type ASP, delivery schedule, unified yard utilization and payment terms remain method-specific blocks.",
+    "Backlog is not revenue; military, Hudong-Zhonghua and unsupported group options remain excluded from base valuation.",
+    "Strict free float is not calculated because the archived public evidence does not provide a uniform immediately-tradeable-holder classification; circulating A shares remain a valid separately labelled field.",
+    "Daily Shanghai Connect net holding change is not calculated because the official single-security disclosure is quarterly and the archived attempted daily query has a source-specific no-data response."
+  ],
+  "reopen_triggers": [
+    "a weak broker lead is assigned positive target-price valuation weight",
+    "group or Hudong-Zhonghua orders enter listed-company revenue without official attribution",
+    "backlog is directly converted into revenue or EPS",
+    "new official evidence changes the 601989 legal-status or asset-transfer conclusion",
+    "circulating A shares are relabelled as strict free float, or quarterly Shanghai Connect holdings are recast as daily flow",
+    "an adjusted price history is used without its fqt label and archived raw response"
+  ],
+  "market_data_remediation_recheck": {
+    "reviewed_at": "2026-07-23",
+    "status": "SOURCE_RECHECK_PASS_PENDING_FINAL_GATE_REFRESH",
+    "closed_scope": [
+      "PR-02 fqt=1 727-trading-day price/turnover/circulating-share package",
+      "PR-03 dated margin, quarterly Shanghai Connect, quarterly fund and Dragon-Tiger query package",
+      "Chapter 12, source registry, claim audit, source-exhaustion log and Appendix A consistency"
+    ],
+    "remaining_actions": [
+      "Refresh case-local verifier, shared research gate and workflow evaluation after current reviewer artifacts are included.",
+      "Do not carry forward any pre-remediation 50-page PDF or verifier result as current evidence."
+    ]
+  }
+}

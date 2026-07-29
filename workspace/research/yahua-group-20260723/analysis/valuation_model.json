@@ -1,0 +1,41 @@
+{
+  "schema_version": "3.0",
+  "case_id": "yahua-group-20260723",
+  "artifact": "house_valuation_summary",
+  "source_of_truth": "data/current_valuation_model_20260723.json",
+  "as_of": "2026-07-23",
+  "current_price_cny": 17.75,
+  "price_date": "2026-07-23",
+  "shares_100m": 11.5256252,
+  "forecast": {
+    "2026e": {
+      "bear": {"revenue_100m": 108.85, "parent_np_100m": 15.0, "eps_cny": 1.3014},
+      "base": {"revenue_100m": 133.3, "parent_np_100m": 20.1, "eps_cny": 1.7439},
+      "bull": {"revenue_100m": 152.5, "parent_np_100m": 24.7, "eps_cny": 2.143}
+    },
+    "2027e": {
+      "bear": {"revenue_100m": 100.2, "parent_np_100m": 11.7, "eps_cny": 1.0152},
+      "base": {"revenue_100m": 114.2, "parent_np_100m": 14.2625, "eps_cny": 1.2374},
+      "bull": {"revenue_100m": 129.9, "parent_np_100m": 18.6, "eps_cny": 1.6138}
+    }
+  },
+  "scenario_values": {
+    "bear": {"probability_pct": 30, "cycle_pe_value_cny": 10.03, "pb_roe_value_cny": 10.79, "fundamental_value_cny": 10.26},
+    "base": {"probability_pct": 50, "cycle_pe_value_cny": 17.27, "pb_roe_value_cny": 17.42, "fundamental_value_cny": 17.32},
+    "bull": {"probability_pct": 20, "cycle_pe_value_cny": 26.28, "pb_roe_value_cny": 25.60, "fundamental_value_cny": 26.07}
+  },
+  "final_valuation": {
+    "probability_weighted_fundamental_cny": 16.95,
+    "fundamental_weight_pct": 85,
+    "market_anchor_cny": 17.75,
+    "market_weight_pct": 15,
+    "street_weight_pct": 0,
+    "final_target_cny": 17.07,
+    "display_target_cny": 17.0,
+    "upside_pct": -3.8,
+    "action": "reduce_avoid_new_position_pending_h1_validation",
+    "confidence": "medium_low"
+  },
+  "model_reproducibility": "PASS",
+  "publication_boundary": "Target price is a disclosed public-data scenario valuation, not a claim that H1 unit economics or cash conversion has already been verified."
+}

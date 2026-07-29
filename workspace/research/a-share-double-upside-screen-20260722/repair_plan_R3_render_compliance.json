@@ -1,0 +1,35 @@
+{
+  "cycle": "R3_render_compliance",
+  "status": "complete",
+  "publishability_status": "PASS",
+  "publishability_score": 93,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 1,
+  "accepted_residual_count": 1,
+  "required_repairs": [],
+  "accepted_residuals": [
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "status": "open",
+      "accepted_residual": true,
+      "artifact": "main.pdf",
+      "issue": "Several chapter-ending pages retain extra white space.",
+      "residual_rationale": "The issue is cosmetic and does not affect readability, valuation meaning, risk interpretation, source-note visibility or compliance.",
+      "optional_next_fix": "Rebalance nearby paragraph and exhibit placement in a future edition without shrinking body text or source notes."
+    }
+  ],
+  "verified_checks": [
+    "26-page PDF present at 511298 bytes",
+    "26 of 26 rendered PNG pages present",
+    "fonts embedded and Unicode-enabled",
+    "no clipping or overlap on reviewed cover, valuation, 002812 and risk pages",
+    "no obsolete 6-12 month target-horizon attribution",
+    "no superseded CNY26.29 or CNY64.41 formal target",
+    "cover decision card complete",
+    "target-horizon and zero-weight semantics consistent",
+    "disclaimer and recommendation boundary present"
+  ],
+  "verification_scope": "Independent R3 render/compliance review only; the full case gate was not rerun or claimed."
+}

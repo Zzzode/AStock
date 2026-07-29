@@ -1,0 +1,173 @@
+{
+  "schema_version": "1.0",
+  "case_id": "yahua-group-20260723",
+  "as_of": "2026-07-23",
+  "purpose": "Company operating and earnings evidence rebuild; no annualization and no undisclosed assumption filling.",
+  "source_index": "sources/rebuild-company-20260723/source_manifest.md",
+  "q2_profit_bridge": {
+    "currency": "CNY",
+    "q1_parent_np_actual": 338821317.99,
+    "h1_parent_np_low_preliminary": 1100000000,
+    "h1_parent_np_high_preliminary": 1300000000,
+    "q2_parent_np_low_directly_disclosed": 761178682.01,
+    "q2_parent_np_high_directly_disclosed": 961178682.01,
+    "q2_qoq_growth_low_directly_disclosed_pct": 124.65,
+    "q2_qoq_growth_high_directly_disclosed_pct": 183.68,
+    "q1_deducted_parent_np_actual": 356555349.32,
+    "h1_deducted_parent_np_low_preliminary": 1125000000,
+    "h1_deducted_parent_np_high_preliminary": 1315000000,
+    "q2_deducted_parent_np_low_derived": 768444650.68,
+    "q2_deducted_parent_np_high_derived": 958444650.68,
+    "method": "H1 preliminary range minus Q1 reported actual. Q2 parent NP range is also directly stated in the H1 preview; Q2 deducted NP is a derived, not directly disclosed, figure.",
+    "quality": "L1_preliminary_unaudited",
+    "limits": [
+      "H1 preview is unaudited and subject to the subsequent half-year report.",
+      "No H2, full-year, revenue, cash-flow, or segment result may be inferred from this bridge."
+    ],
+    "sources": [
+      {"id": "RCE-02", "pages": [2]},
+      {"id": "RCE-03", "pages": [1]}
+    ]
+  },
+  "disclosed_mechanisms": [
+    {
+      "id": "MECH-01",
+      "topic": "Lithium price, ASP, and volume",
+      "fact": "The company states that lithium prices continued to rise and that lithium-product sales volume and average selling price both increased in H1.",
+      "evidence_level": "L1_company_disclosure",
+      "q2_relevance": "Direct qualitative driver disclosed for H1/Q2 profit improvement.",
+      "cannot_support": ["Q2 sales volume", "actual ASP", "price contribution", "product mix", "full-year revenue"],
+      "sources": [{"id": "RCE-03", "pages": [1]}]
+    },
+    {
+      "id": "MECH-02",
+      "topic": "Lithium operating base",
+      "fact": "In 2025, lithium-product sales volume was 69,493.81 tonnes, production was 68,615.26 tonnes, and period-end inventory was 7,821.45 tonnes. The company attributed volume growth to new line commissioning and customer orders.",
+      "evidence_level": "L1_audited_annual_report",
+      "q2_relevance": "Proves a prior-year production and customer-absorption base; it is not 2026Q2 actual performance.",
+      "cannot_support": ["2026Q2/H1 volume", "2026 utilisation", "order coverage", "2026 inventory change"],
+      "sources": [{"id": "RCE-01", "pages": [44]}]
+    },
+    {
+      "id": "MECH-03",
+      "topic": "Lithium price and cost baseline",
+      "fact": "2025 lithium revenue was CNY4.8236bn, cost CNY4.2344bn, gross margin 12.22%; materials cost was CNY3.7615bn. Derived full-year blended revenue/cost/gross profit per sales tonne were about CNY69,410/CNY60,931/CNY8,479.",
+      "evidence_level": "L1_audited_base_plus_arithmetic",
+      "q2_relevance": "Shows materials are the principal historical cost driver and provides a clearly labelled 2025 reference point.",
+      "cannot_support": ["Q2 unit economics", "Q2 cash cost", "Q2 gross margin", "hedging impact"],
+      "sources": [{"id": "RCE-01", "pages": [38, 40, 44]}]
+    },
+    {
+      "id": "MECH-04",
+      "topic": "Resource and supply framework",
+      "fact": "The company holds 37.25% of Energy Investment Lithium and a priority lithium-concentrate supply right for LiJiagou; it describes KMC as having 2.30m tonnes of ore-processing capacity and 350kt of lithium-concentrate capacity, together with external offtake arrangements.",
+      "evidence_level": "L1_company_annual_report",
+      "q2_relevance": "Supports the existence of a supply-security framework.",
+      "cannot_support": ["Q2 mine output", "deliveries to Yahua", "equity tonnes", "self-supply ratio", "grade", "cash cost", "actual export quota use"],
+      "sources": [{"id": "RCE-01", "pages": [13, 30]}]
+    },
+    {
+      "id": "MECH-05",
+      "topic": "Civil explosives base",
+      "fact": "2025 civil-explosives revenue was CNY3.3162bn. Product revenue was CNY2.1412bn at 47.22% margin and blasting-service revenue was CNY1.1750bn at 19.67% margin. Industrial-explosive permitted capacity was 262.5kt at 83.74% utilisation; the report notes 330kt permitted capacity by April 2026.",
+      "evidence_level": "L1_audited_annual_report",
+      "q2_relevance": "Establishes a profitable historical non-lithium base and a disclosed permit expansion.",
+      "cannot_support": ["2026Q2 civil-explosives revenue", "2026Q2 profit", "new-permit utilisation", "Q2 contribution to group profit"],
+      "sources": [{"id": "RCE-01", "pages": [39]}]
+    },
+    {
+      "id": "MECH-06",
+      "topic": "Longhai Anfang acquisition",
+      "fact": "The board approved the acquisition of 51% of Longhai Anfang on 2026-04-10 and the company completed the registration change on 2026-04-23.",
+      "evidence_level": "L1_company_quarterly_report",
+      "q2_relevance": "The transaction was completed during Q2 and is a follow-up item for civil-explosives integration.",
+      "cannot_support": ["purchase price allocation", "consolidation start date", "Q2 revenue", "Q2 profit", "cash-flow contribution"],
+      "sources": [{"id": "RCE-02", "pages": [5]}]
+    },
+    {
+      "id": "MECH-07",
+      "topic": "Cash-conversion constraint",
+      "fact": "2026Q1 operating cash flow was negative CNY430.6m. Receivables were CNY1.9801bn (+CNY654.5m from year-end) and inventory was CNY1.8728bn (+CNY177.0m).",
+      "evidence_level": "L1_company_quarterly_report",
+      "q2_relevance": "Makes cash conversion and working capital mandatory earnings-quality checks.",
+      "cannot_support": ["H1 operating cash flow", "Q2 collection improvement", "H1 inventory release"],
+      "sources": [{"id": "RCE-02", "pages": [2, 3, 8, 12]}]
+    }
+  ],
+  "external_broker_hypotheses_not_used_in_house_model": {
+    "broker": "Dongwu Securities",
+    "report_date": "2026-07-07",
+    "items": [
+      "2026Q2 lithium shipment estimate: 20kt to 30kt",
+      "2026Q2 lithium segment profit-per-tonne estimate: CNY26k to CNY34k",
+      "2026 full-year equity self-supply ratio estimate: 25%",
+      "2026Q2 civil-explosives profit estimate: about CNY100m"
+    ],
+    "treatment": "External L2 estimates only. They identify diligence questions but have zero weight in company actuals, the house earnings model, and valuation.",
+    "sources": [{"id": "RCE-04", "pages": [1]}]
+  },
+  "broker_full_year_comparison_for_event_research_only": [
+    {
+      "broker": "Guosen Securities",
+      "report_date": "2026-04-30",
+      "revenue_2026e_cny_mn": 16164,
+      "parent_np_2026e_cny_mn": 2315,
+      "h1_preview_coverage_of_annual_np_pct_low": 47.52,
+      "h1_preview_coverage_of_annual_np_pct_high": 56.16,
+      "implied_h2_parent_np_cny_mn_low": 1015,
+      "implied_h2_parent_np_cny_mn_high": 1215,
+      "implied_h2_quarterly_average_cny_mn_low": 507.5,
+      "implied_h2_quarterly_average_cny_mn_high": 607.5,
+      "source": {"id": "RCE-05", "pages": [1]}
+    },
+    {
+      "broker": "Kaiyuan Securities",
+      "report_date": "2026-04-29",
+      "revenue_2026e_cny_mn": 16818,
+      "parent_np_2026e_cny_mn": 2569,
+      "h1_preview_coverage_of_annual_np_pct_low": 42.82,
+      "h1_preview_coverage_of_annual_np_pct_high": 50.60,
+      "implied_h2_parent_np_cny_mn_low": 1269,
+      "implied_h2_parent_np_cny_mn_high": 1469,
+      "implied_h2_quarterly_average_cny_mn_low": 634.5,
+      "implied_h2_quarterly_average_cny_mn_high": 734.5,
+      "source": {"id": "RCE-06", "pages": [1]}
+    },
+    {
+      "broker": "Soochow Securities",
+      "report_date": "2026-07-07",
+      "revenue_2026e_cny_mn": 17052,
+      "parent_np_2026e_cny_mn": 3031.65,
+      "h1_preview_coverage_of_annual_np_pct_low": 36.28,
+      "h1_preview_coverage_of_annual_np_pct_high": 42.88,
+      "implied_h2_parent_np_cny_mn_low": 1731.65,
+      "implied_h2_parent_np_cny_mn_high": 1931.65,
+      "implied_h2_quarterly_average_cny_mn_low": 865.825,
+      "implied_h2_quarterly_average_cny_mn_high": 965.825,
+      "source": {"id": "RCE-04", "pages": [1, 2]}
+    }
+  ],
+  "formal_h1_financial_statements_status": {
+    "as_of": "2026-07-23",
+    "status": "not_disclosed_in_archived_company_primary_sources",
+    "available_latest_half_year_document": "2026 H1 earnings preview dated 2026-07-07",
+    "available_fields": ["H1 parent NP range", "H1 deducted parent NP range", "H1 EPS range", "Q2 parent NP range", "qualitative drivers"],
+    "unavailable_fields": ["H1 revenue", "H1 cost", "H1 segment revenue", "H1 segment margin", "H1 operating cash flow", "H1 balance sheet", "H1 lithium volume", "H1 ASP", "H1 unit cost"],
+    "sources": [{"id": "RCE-00", "pages": []}, {"id": "RCE-03", "pages": [1]}]
+  },
+  "mandatory_disclosures_before_house_full_year_forecast": [
+    "H1 lithium sales volume, production, and inventory by product",
+    "H1 lithium revenue, cost, gross margin, hedging result, and impairment",
+    "KMC and LiJiagou actual output, deliveries, equity tonnes, self-supply ratio, and unit cost",
+    "H1 operating cash flow and movement in receivables, inventory, and contract assets",
+    "Longhai Anfang consolidation scope and H1 financial contribution",
+    "H1 civil-explosives product/service revenue, margin, and actual permitted-capacity utilisation"
+  ],
+  "permitted_house_conclusion": "Q2 parent net profit is directly disclosed at CNY761.2m to CNY961.2m and is materially above Q1. The company attributes H1 improvement to lithium price, volume, ASP, and operational efficiency. Public disclosures do not quantify the 2026Q2/H1 unit economics or cash conversion, so no H1 annualisation, house full-year EPS, target price, or upside is permitted.",
+  "prohibited_conclusions": [
+    "Treating design capacity as Q2 production, sales, or self-supply",
+    "Treating broker shipment, unit-profit, self-supply, or civil-explosives estimates as company actuals",
+    "Claiming hedging release or low-cost inventory gains without company disclosure",
+    "Issuing a house full-year earnings forecast or target price from the H1 preview"
+  ]
+}

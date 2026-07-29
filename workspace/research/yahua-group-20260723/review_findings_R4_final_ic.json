@@ -1,0 +1,25 @@
+{
+  "cycle": "R4_final_ic",
+  "report_type": "single_stock_full_note",
+  "findings": [
+    {
+      "issue_id": "R4-001",
+      "severity": "S",
+      "finding": "A publication decision requires the evidence, House model, valuation, 40-page PDF and R0–R3 closures to use the same 2026-07-23 price date.",
+      "repair": "Final materials use CNY17.75, 11.5256252 hundred-million shares, a CNY17.0 displayed target and the same H1 validation boundary. The independent visual/exhibit review is clean and final automated gates are recorded in the sign-off.",
+      "evidence": "main.pdf, main_current_text.txt, data/current_valuation_model_20260723.json, analysis/valuation_audit.md, visual_review.md",
+      "status": "closed"
+    },
+    {
+      "issue_id": "R4-002",
+      "severity": "A",
+      "finding": "The most important uncertainty is whether H1 profit converts to cash and supports H2 unit economics, not a missing report section.",
+      "repair": "Kept the report publishable with a medium-low model confidence, 30% bear probability, 0% external-target weight and explicit formal-H1 reassessment actions.",
+      "evidence": "sections/ch08_valuation.tex, sections/ch09_risks.tex, sections/ch13_reassessment.tex",
+      "status": "closed"
+    }
+  ],
+  "open_s": 0,
+  "open_a": 0,
+  "open_b": 0
+}

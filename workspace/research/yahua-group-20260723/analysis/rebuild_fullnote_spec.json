@@ -1,0 +1,154 @@
+{
+  "case_id": "yahua-group-20260723",
+  "document_type": "rebuild_specification",
+  "version": "1.0-historical-full-note-spec",
+  "current_delivery": {
+    "report_type": "earnings_preview_event_research",
+    "rationale": "Formal H1 statements and company-level H2 unit-economics bridge are unavailable. This full-note specification is a post-H1 re-entry requirement, not the current report identity."
+  },
+  "current_verdict": {
+    "claimed_type": "single_stock_full_note",
+    "actual_type": "evidence-boundary watchlist memo",
+    "institutional_status": "MECHANICAL_PASS_INSTITUTIONAL_FAIL",
+    "core_failure": "The report documents why it declines to form an investment view instead of answering what the current price implies, what drives earnings, what differs from expectations, and what an investor should do."
+  },
+  "non_negotiable_questions": [
+    {
+      "id": "Q1",
+      "question": "What is the quality of the 2026H1 earnings preview?",
+      "required_answer": "Bridge attributable and recurring profit to revenue, gross margin, opex, tax, working capital and operating cash flow; compare with every archived broker forecast."
+    },
+    {
+      "id": "Q2",
+      "question": "Can lithium earnings persist through H2 and 2027?",
+      "required_answer": "Quantify volume, realized ASP, raw-material/processing cost, inventory and utilization in bear/base/bull scenarios."
+    },
+    {
+      "id": "Q3",
+      "question": "What does civil explosives contribute in a lithium downturn?",
+      "required_answer": "Bridge products, services and logistics from revenue to margin, cash conversion and EPS floor."
+    },
+    {
+      "id": "Q4",
+      "question": "Does resource access change unit cost and volatility?",
+      "required_answer": "Separate designed capacity, equity interest, priority supply, delivered volume, recovery and cost; give zero credit where actual evidence is absent."
+    },
+    {
+      "id": "Q5",
+      "question": "How is Yahua different from relevant lithium peers?",
+      "required_answer": "Compare resource self-supply, product mix, volume, cost/margin, cash conversion, customer position, civil-explosives buffer and valuation."
+    },
+    {
+      "id": "Q6",
+      "question": "What does the current price imply?",
+      "required_answer": "Map the price date, share count and market cap to own scenario EPS and peer valuation; explain the source of any discount or premium."
+    },
+    {
+      "id": "Q7",
+      "question": "What is the variant perception?",
+      "required_answer": "State Street/market premise, our differentiated variables and probability, strongest counterargument, falsification evidence and next data point."
+    },
+    {
+      "id": "Q8",
+      "question": "What should the investor do now?",
+      "required_answer": "Give a defined action, time horizon, target or explicit event-study boundary, position discipline, catalysts, risks and exit conditions."
+    }
+  ],
+  "minimum_evidence_contract": {
+    "full_note_prerequisites": [
+      "Formal H1 financial statements or equivalent auditable income, revenue, cash-flow and working-capital evidence.",
+      "Lithium volume-price-cost-to-profit bridge with direct disclosure or explicitly labelled, source-backed scenario inputs.",
+      "Civil-explosives revenue-margin-cash bridge and a conservative forward assumption.",
+      "Segment-to-attributable-NP-to-EPS model including tax, finance cost, minority interests and diluted shares.",
+      "Dated lithium price series, peer set and complete broker forecast extraction for cross-checking.",
+      "Two independent valuation methods and probability-weighted bear/base/bull outputs."
+    ],
+    "input_metadata_required": [
+      "source_id",
+      "source_date",
+      "source_tier",
+      "unit_and_accounting_scope",
+      "direct_or_proxy",
+      "scenario_applicability",
+      "EPS_sensitivity",
+      "falsification_or_expiry_condition"
+    ],
+    "source_tiers": {
+      "tier_1": "Issuer filings, exchange announcements, audited accounts and official industry statistics; required for core facts and preferred model inputs.",
+      "tier_2": "Complete attributable broker PDFs and traceable commodity/industry databases; usable for labelled cross-checks and scenarios, never silently recast as company guidance.",
+      "tier_3": "Media, abstracts and search snippets; leads only and excluded from model inputs."
+    }
+  },
+  "required_model": {
+    "structure": [
+      "Lithium: volume x realized ASP -> revenue -> raw-material and processing cost -> segment profit/cash conversion.",
+      "Civil explosives: products, services and logistics revenue -> gross margin -> opex/project collection -> segment profit/cash conversion.",
+      "Consolidation: segment results -> finance cost/tax/minority interests -> attributable NP -> diluted EPS.",
+      "Scenarios: bear/base/bull with explicit volume, ASP, cost, civil-explosives, EPS, multiple, price, probability, upside/downside, catalyst and invalidation inputs."
+    ],
+    "validation": [
+      "Reconcile 2025A and H1 actuals before forecasting H2.",
+      "Reconcile H1 result with each broker's published H1/H2/FY assumptions.",
+      "Cross-check current-price valuation against at least three relevant peers.",
+      "Use two non-duplicative valuation approaches, such as SOTP/normalized PE plus peer-relative valuation."
+    ]
+  },
+  "required_pdf_sections": [
+    "IC summary with action, target/fair-value range, upside/downside, probability, time horizon, catalysts, risks and position discipline.",
+    "Variant-perception matrix and earnings-preview versus Street bridge.",
+    "Lithium volume-ASP-cost-profit bridge and sensitivity matrix.",
+    "Civil-explosives downside-protection and cash-conversion bridge.",
+    "Quarterly financial, inventory, receivables, OCF and capex bridge.",
+    "Peer, resource and customer-verification scorecard.",
+    "Dual-method valuation, scenario probabilities and broker divergence table.",
+    "Catalyst calendar, risk heatmap and action triggers.",
+    "Reader-readable source appendix mapping citations to issuer/broker title, date and page."
+  ],
+  "prohibited_shortcuts": [
+    "Do not encode no house target as final_target=current_price, identical scenarios or zero upside.",
+    "Do not mark model reproducibility PASS merely because market cap or a placeholder row can be recomputed.",
+    "Do not use all-zero fundamental, market and broker weights as an acceptable full-note valuation conclusion.",
+    "Do not substitute evidence-gap prose, design capacity, customer names, commodity spot price or policy direction for an earnings bridge.",
+    "Do not call broker forecasts consensus without report-date, assumptions, dispersion and actual-result comparison.",
+    "Do not annualize H1 combined NP or translate H1 guidance directly into EPS/target price.",
+    "Do not include rewrite process, gating mechanics or interface-field language in reader-facing chapters.",
+    "Do not sign R4 PASS for a full note that has no actionable valuation conclusion."
+  ],
+  "delivery_decision": {
+    "path_a_full_note": {
+      "use_when": "All full-note prerequisites and the required model are complete.",
+      "must_output": "An investable action, a source-backed target/fair-value range, scenario probabilities, upside/downside and a 12-month or explicitly stated horizon."
+    },
+    "path_b_event_memo": {
+      "use_when": "Formal H1 statements, segment unit economics or a defensible H2 bridge remain unavailable.",
+      "required_title": "雅化集团：H1业绩预告事件研究——利润预告相对卖方预期、现金流验证与正式半年报交易条件",
+      "must_output": [
+        "H1 low/mid/high preview versus each broker's H1, FY and implied H2 expectation.",
+        "Current price cross-check against broker EPS range, explicitly not a house target price.",
+        "Three formal-H1 outcomes with trading/monitoring action, evidence thresholds and cancellation conditions.",
+        "Calendar for lithium price, inventory, receivables, OCF and civil-explosives project-collection validation.",
+        "A fixed expiry at the formal H1 release, after which the full-note model must be rebuilt."
+      ],
+      "must_not_claim": [
+        "single_stock_full_note",
+        "house target price",
+        "buy rating",
+        "full-year fundamental valuation"
+      ]
+    }
+  },
+  "review_acceptance": {
+    "R0": "Every high-impact model input has tier, date, unit, directness, scenario, sensitivity and expiry metadata.",
+    "R1": "A reconstructible segment-to-EPS H2/FY model and dual-method valuation exist; current-price placeholders do not count.",
+    "R2": "The first page states a decision, price consequence, probability, catalysts, countercase and action rather than a research limitation.",
+    "R3": "All exhibits are legible and citations are understandable without internal source IDs; data dates are consistent.",
+    "R4": "Report type, conclusion, model, risk, action and signoff are mutually consistent. A full note without an actionable valuation fails."
+  },
+  "priority_sequence": [
+    "Choose path A or path B and align brief, template, signoff and cover before drafting.",
+    "Collect/verify formal H1 data and extract H1/H2 assumptions from the archived broker PDFs.",
+    "Build structured segment model, scenarios and valuation before writing narrative.",
+    "Draft reader-facing decision narrative and exhibits from the model, then produce a reader-readable source appendix.",
+    "Rerun R0-R4 against judgment depth and model integrity, not artifact presence."
+  ]
+}

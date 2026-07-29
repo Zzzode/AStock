@@ -1,0 +1,122 @@
+{
+  "schema_version": "astock.claim_audit.refresh.v1",
+  "data_cutoff": "2026-07-15",
+  "claims": [
+    {
+      "claim_id": "RC01",
+      "claim": "Official H1 preview table contains 4429 metrics and 1680 companies after A-share scope processing.",
+      "source_ids": [
+        "R01"
+      ],
+      "status": "verified",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC02",
+      "claim": "Unified screen produces 142 high-impact candidates and 39 priority names.",
+      "source_ids": [
+        "R01",
+        "R02",
+        "R04"
+      ],
+      "status": "verified",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC03",
+      "claim": "Candidate financial coverage is 142/142 and broker PDF coverage is 137/142.",
+      "source_ids": [
+        "R03"
+      ],
+      "status": "verified_with_source_gaps",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC04",
+      "claim": "The 4 formal models have current auditable broker target/range fields and are separated from House-only priority models.",
+      "source_ids": [
+        "R03"
+      ],
+      "status": "verified",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC05",
+      "claim": "Industry stages use complete 31/31 daily and weekly public tables observed on 2026-07-14 and the week ending 2026-07-10; the continuous-flow article is partial at 30/112.",
+      "source_ids": [
+        "R04",
+        "R05"
+      ],
+      "status": "verified_with_boundary",
+      "materiality": "high"
+    },
+    {
+      "claim_id": "RC06",
+      "claim": "12 exceptional-denominator candidates are recovered through conditional alternative valuation models after checking earnings references, peer methods and market-implied metrics; the recovery ranges are not formal Street targets.",
+      "source_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R06"
+      ],
+      "status": "verified_with_boundary",
+      "materiality": "high",
+      "recovery_tickers": [
+        "601360",
+        "000042",
+        "002460",
+        "600037",
+        "002048",
+        "600688",
+        "001309",
+        "300390",
+        "002812",
+        "002240",
+        "600736",
+        "000415"
+      ],
+      "weak_source_rule": "Broker abstracts, old targets and user-generated estimates receive zero Street weight."
+    },
+    {
+      "claim_id": "RC07",
+      "claim": "All 6 candidate rows with model upside above 100% have ticker-level evidence closure (6/6): original API metadata, archived original PDFs, target-price fields, Q1 operating cash flow and pool admission were checked. Current positive-weight original targets=0 and formal upgrades=0.",
+      "source_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R07"
+      ],
+      "status": "verified_closed_with_downgrade",
+      "materiality": "high",
+      "high_upside_tickers": [
+        "002432",
+        "000623",
+        "600739",
+        "000685",
+        "600150",
+        "301308"
+      ],
+      "formal_count": 0,
+      "closure_rule": "Missing current targets are closed as verified non-disclosure, not left blank. H2 earnings, cash flow, orders and price-cycle conditions remain future events."
+    },
+    {
+      "claim_id": "RC08",
+      "claim": "All 48 formerly medium-evidence rows are classified after evidence upgrade into formal, priority validation, margin watch, expanded watch, or not-admitted buckets; no formerly medium row enters the formal model pool.",
+      "source_ids": [
+        "R01",
+        "R02",
+        "R03",
+        "R06"
+      ],
+      "status": "verified_with_boundary",
+      "materiality": "high",
+      "status_counts": {
+        "expanded_event_validation_candidate": 11,
+        "not_admitted": 22,
+        "priority_event_validation_candidate": 6,
+        "priority_margin_watch": 3,
+        "priority_valuation_risk_watch": 6
+      }
+    }
+  ]
+}

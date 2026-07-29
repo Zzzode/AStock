@@ -1,0 +1,48 @@
+\section{主要来源}
+
+\begin{longtable}{L{1.0cm}L{3.2cm}L{1.5cm}L{7.4cm}}
+\toprule
+\textbf{ID} & \textbf{来源} & \textbf{质量} & \textbf{用途与边界} \\
+\midrule
+S01 & 申万研究指数历史接口 & L1 & 行业价格历史；7月10日点位按7月9日收盘和官方日涨跌幅推算 \\
+S02 & 乐咕乐股申万行业估值总览 & L2 & 2026-07-10 PE/PB/股息率及历史分位 \\
+S03 & 证券时报数据宝日/周资金表 & L2 & 31行业资金流；主力为成交单分类 \\
+S04 & 数据宝连续流入个股表 & L2 & 连续流入天数、金额、同期涨跌 \\
+S05 & AStock新浪市场快照 & L1 & 2026-07-10个股收盘价、成交额和振幅 \\
+S06 & 三家公司2026Q1官方报告 & L1 & 营收、利润、EPS、BPS、现金流和资产质量 \\
+S07 & 原始券商PDF/可审计完整转载 & L2--L3 & 2026E预测、目标价、方法和风险；弱来源零权重 \\
+S08 & 交易所两融数据公开转载 & L2 & 融资余额与流通市值占比；不证明机构持仓 \\
+S09 & 已启动核心官方财务与业绩预告 & L1 & 中兴Q1、江波龙H1预告、恒瑞Q1；江波龙预告未经审计 \\
+S10 & 已启动核心券商PDF/可审计报告页 & L2--L3 & 2026E预测、SOTP/PE目标和风险；内部目标不冒充Street \\
+S11 & 已启动核心7月10日行情 & L1 & 最新现价、成交与价格位置 \\
+S12 & 16只H1预告及正式公告归档 & L1--L2 & 隐含Q2、一次性、H1 EPS/旧全年EPS；预告未经审计 \\
+S13 & 54只研报元数据与56份原始PDF & L2--L3 & 28只优先池逐票原文、预测与风险；预告前报告标记过时 \\
+S14 & 工业富联预告后华泰/华创完整报告页 & L2 & 华泰93元目标与560.1亿元净利；华创仅作盈利交叉验证 \\
+\bottomrule
+\end{longtable}
+
+\section{关键文件索引}
+
+\begin{itemize}
+  \item 全行业机器表：\texttt{data/sector\_scan\_20260710.json}
+  \item 连续流入表：\texttt{data/continuous\_inflow\_candidates\_20260710.json}
+  \item 当前估值模型：\texttt{data/current\_valuation\_model\_20260711.json}
+  \item 高增长驱动模型：\texttt{data/growth\_driver\_model.json}
+  \item 54只公司卡：\texttt{data/company\_cards\_20260711.json}
+  \item 16只预告质量：\texttt{data/earnings\_preview\_quality\_20260711.json}
+  \item 16份预告原文清单：\texttt{data/earnings\_preview\_archive\_20260711.json}
+  \item 54只研报目录：\texttt{data/core\_broker\_report\_catalog\_20260711.json}
+  \item 28只研报原文摘要：\texttt{data/core\_broker\_report\_digests\_20260711.json}
+  \item 券商共识包：\texttt{data/broker\_street\_consensus\_20260711.json}
+  \item 来源注册表：\texttt{data/source\_registry.json}
+  \item 主张审计：\texttt{data/claim\_audit.json}
+  \item 数据源失败与降级：\texttt{source\_exhaustion\_log.json}
+\end{itemize}
+
+\section{口径冲突}
+
+证券时报当日资金报道存在两个不同的大单/主力统计口径，例如全市场净流出额和军工净流入额有差异。本报告的31行业表统一采用可完整解析、覆盖31行业的数据宝“资金流向日报”表；另一个口径只用于个股和尾盘行为交叉验证，不进行混加。
+
+\section{模型审计}
+
+七只核心标的的当前价格、股本、市值、2026E收入/净利润/EPS、熊/基准/牛目标、多锚权重、最终目标和上行空间均存于结构化JSON。四只已启动核心另有增长驱动JSON，记录代理变量、收入/利润/EPS桥、当前价格隐含门槛和降级条件。54只公司均有处置卡，16只预告均有正式公告PDF和盈利质量拆解，28只优先标的共56份原始券商PDF。模型复算结论：\textbf{Model Reproducibility: PASS}。

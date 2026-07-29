@@ -1,0 +1,54 @@
+{
+  "cycle": "R2_draft",
+  "status": "complete",
+  "publishability_status": "PASS",
+  "publishability_score": 93,
+  "repairs": [
+    {
+      "issue_id": "R2-S-001",
+      "status": "verified",
+      "artifact": "main.tex; main.pdf; main_current_text.txt; data/current_valuation_model_20260722.json",
+      "verification": "002812 is zero-weight with no formal target or house probability in both abstracts, the rebuilt report and structured valuation."
+    },
+    {
+      "issue_id": "R2-A-001",
+      "status": "verified",
+      "artifact": "sections/ch03_screen_method.tex; analysis/house_view.md",
+      "verification": "All six weighted totals reproduce; evidence grades, hard gates and tier definitions are explicit."
+    },
+    {
+      "issue_id": "R2-A-002",
+      "status": "verified",
+      "artifact": "main.tex; main.pdf page 1",
+      "verification": "The rebuilt first page shows price, formal status, external bull reference, evidence grade, validation and invalidation for both primary names."
+    },
+    {
+      "issue_id": "R2-A-003",
+      "status": "verified",
+      "artifact": "main.tex; sections/ch01_decision.tex; sections/ch03_screen_method.tex; sections/ch07_valuation.tex; sections/ch09_risks.tex",
+      "verification": "Target-weight wording is consistent and conditioned on company-driver eligibility."
+    },
+    {
+      "issue_id": "R2-B-001",
+      "status": "verified",
+      "artifact": "sections/ch08_catalysts.tex",
+      "verification": "Catalyst thresholds have source-nature labels and an explicit non-guidance warning."
+    },
+    {
+      "issue_id": "R2-B-002",
+      "status": "verified",
+      "artifact": "sections/ch01_decision.tex",
+      "verification": "The reader-facing note uses '估值区间'."
+    },
+    {
+      "issue_id": "R2-B-003",
+      "status": "verified",
+      "artifact": "sections/ch07_valuation.tex; main_current_text.txt",
+      "verification": "The duplicated equation lead-in is removed."
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "verification_scope": "Targeted R2 closure review only; the full case gate was not rerun."
+}

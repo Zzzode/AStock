@@ -1,0 +1,50 @@
+{
+  "case_id": "desay-sv-002920-20260723",
+  "as_of": "2026-07-23",
+  "purpose": "Physical AI conditional sensitivity and separately risk-adjusted FY2028 real-option layer; not a forecast or 2026E EPS input",
+  "shares_millions": 596.8,
+  "base_target_cny": 86.4,
+  "base_target_includes_physical_ai_incremental_eps": false,
+  "formula": {
+    "incremental_eps": "revenue_cny_bn * net_margin / 0.5968",
+    "conditional_value_per_share": "incremental_eps * post_proof_pe"
+  },
+  "sensitivity_cases": [
+    {"revenue_cny_bn": 0.5, "net_margin": 0.05, "post_proof_pe": 20, "incremental_eps_cny": 0.0419, "conditional_value_cny": 0.84},
+    {"revenue_cny_bn": 0.5, "net_margin": 0.08, "post_proof_pe": 22, "incremental_eps_cny": 0.0670, "conditional_value_cny": 1.48},
+    {"revenue_cny_bn": 0.5, "net_margin": 0.10, "post_proof_pe": 25, "incremental_eps_cny": 0.0838, "conditional_value_cny": 2.1},
+    {"revenue_cny_bn": 1.0, "net_margin": 0.05, "post_proof_pe": 20, "incremental_eps_cny": 0.0838, "conditional_value_cny": 1.68},
+    {"revenue_cny_bn": 1.0, "net_margin": 0.08, "post_proof_pe": 22, "incremental_eps_cny": 0.1340, "conditional_value_cny": 2.95},
+    {"revenue_cny_bn": 1.0, "net_margin": 0.10, "post_proof_pe": 25, "incremental_eps_cny": 0.1676, "conditional_value_cny": 4.19},
+    {"revenue_cny_bn": 2.0, "net_margin": 0.05, "post_proof_pe": 20, "incremental_eps_cny": 0.1676, "conditional_value_cny": 3.35},
+    {"revenue_cny_bn": 2.0, "net_margin": 0.08, "post_proof_pe": 22, "incremental_eps_cny": 0.2681, "conditional_value_cny": 5.9},
+    {"revenue_cny_bn": 2.0, "net_margin": 0.10, "post_proof_pe": 25, "incremental_eps_cny": 0.3351, "conditional_value_cny": 8.38},
+    {"revenue_cny_bn": 5.0, "net_margin": 0.05, "post_proof_pe": 20, "incremental_eps_cny": 0.4189, "conditional_value_cny": 8.38},
+    {"revenue_cny_bn": 5.0, "net_margin": 0.08, "post_proof_pe": 22, "incremental_eps_cny": 0.6702, "conditional_value_cny": 14.74},
+    {"revenue_cny_bn": 5.0, "net_margin": 0.10, "post_proof_pe": 25, "incremental_eps_cny": 0.8378, "conditional_value_cny": 20.94}
+  ],
+  "risk_adjusted_option_valuation": {
+    "valuation_horizon": "FY2028 outcome, discounted two years to the 2026-07-23 valuation date",
+    "discount_rate": 0.12,
+    "discount_factor": 0.7972,
+    "probability_basis": "AStock house underwriting, not company guidance or consensus: product/nomination/planned-delivery evidence supports a non-zero commercialisation case, while missing named customers, actual deliveries, units, revenue, margin and cash evidence requires a majority no-conversion branch and a low platform-scale branch.",
+    "mutually_exclusive_scenarios": [
+      {"scenario":"No measurable commercial conversion by FY2028","probability":0.55,"revenue_cny_bn":0.0,"net_margin":0.0,"post_proof_pe":0.0,"fy2028_value_cny":0.0,"present_value_cny":0.0,"probability_weighted_value_cny":0.0},
+      {"scenario":"First commercial scale","probability":0.35,"revenue_cny_bn":1.0,"net_margin":0.08,"post_proof_pe":22.0,"fy2028_value_cny":2.95,"present_value_cny":2.35,"probability_weighted_value_cny":0.82},
+      {"scenario":"Replicable platform scale","probability":0.10,"revenue_cny_bn":5.0,"net_margin":0.10,"post_proof_pe":25.0,"fy2028_value_cny":20.94,"present_value_cny":16.69,"probability_weighted_value_cny":1.67}
+    ],
+    "risk_adjusted_option_value_cny":2.49,
+    "base_business_multi_anchor_value_cny":86.44,
+    "blended_house_value_cny":88.93,
+    "displayed_blended_target_cny":88.9,
+    "displayed_upside_vs_83_48":0.06493,
+    "valuation_treatment":"Separate real-option layer. It does not alter the 2026E base EPS, P/E anchor or reported automotive earnings bridge."
+  },
+  "probability_policy": "Numeric probabilities are permitted only as explicitly labelled AStock house underwriting in the separate real-option layer. They are scenario weights, not company guidance, consensus or evidence of current revenue; they must be reduced to zero if issuer evidence is contradicted and refreshed on G1-G3 milestones.",
+  "quality": "illustrative_sensitivity_plus_risk_adjusted_house_option",
+  "warnings": [
+    "No customer, unit, ASP, recognised revenue, margin or cash-conversion assumption in this model is company-disclosed for Physical AI paths.",
+    "The CNY2.49 option value is a low-confidence, probability-weighted house assumption. It must be shown separately from the CNY86.4 base-business value and never represented as disclosed earnings.",
+    "P/E is a post-proof valuation assumption, not evidence of current market valuation."
+  ]
+}

@@ -1,0 +1,174 @@
+{
+  "sources": [
+    {
+      "source_id": "S01",
+      "source": "Shenwan index history and 31-industry stage packet",
+      "type": "official_index_history_and_derived_stage",
+      "date": "through 2026-07-10",
+      "quality": "L1-L2",
+      "path": "data/sector_scan_20260710.json",
+      "use": "31-industry price, valuation, flow and stage classification",
+      "boundary": "stage labels are AStock classifications, not proof of investor identity"
+    },
+    {
+      "source_id": "S02",
+      "source": "Securities Times/DataBao daily, weekly and continuous-flow tables",
+      "type": "structured_public_market_table",
+      "date": "2026-07-10",
+      "quality": "L2",
+      "path": "data/raw_daily_tables_20260710.json; data/raw_weekly_tables_20260710.json",
+      "use": "industry and stock transaction-size fund-flow observations",
+      "boundary": "main-fund labels classify trade size and do not identify final beneficial owners"
+    },
+    {
+      "source_id": "S03",
+      "source": "A-share 2026H1 earnings-preview structured capture",
+      "type": "public_disclosure_aggregate",
+      "date": "through 2026-07-11",
+      "quality": "L1-L2",
+      "path": "data/raw_a_share_h1_2026_preview_20260711.json",
+      "use": "949 raw metric rows; after excluding 4 B-share securities and 12 metric rows, the eligible A-share universe contains 364 parent-profit preview companies",
+      "boundary": "the full-market table is structured disclosure data; B shares are excluded and not all 364 attachments were archived individually"
+    },
+    {
+      "source_id": "S04",
+      "source": "Shenwan official historical stock-classification workbook",
+      "type": "official_classification_file",
+      "date": "classification effective through 2026-07-11",
+      "quality": "L1_content_L2_transport",
+      "path": "sources/full-market-preview-20260712/StockClassifyUse_stock_20260712.xls",
+      "use": "map all 364 eligible A-share preview companies to 31 Shenwan first-level industries",
+      "boundary": "TLS certificate verification failed locally; the archived 1,161,216-byte workbook was downloaded with verify=False and hash-checked"
+    },
+    {
+      "source_id": "S05",
+      "source": "Tencent quotes and adjusted daily K-lines",
+      "type": "market_data_adapter",
+      "date": "2026-07-10 close",
+      "quality": "L1-L2",
+      "path": "data/full_market_preview_candidates_20260712.json",
+      "use": "current price, 20/60-day return, one-year position and drawdown",
+      "boundary": "market history does not establish future trend durability"
+    },
+    {
+      "source_id": "S06",
+      "source": "Priority-pool 2026Q1 structured financial packets",
+      "type": "financial_statement_packet",
+      "date": "2026Q1",
+      "quality": "L1-L2",
+      "path": "data/full_market_priority_financials/",
+      "use": "Q1 revenue, parent profit, deducted profit, operating cash flow and gross margin",
+      "boundary": "financial packets are historical and do not supply a forward target"
+    },
+    {
+      "source_id": "S07",
+      "source": "Latest original broker PDFs for the 16-name priority evidence pool",
+      "type": "original_broker_pdf",
+      "date": "latest available through 2026-07-13 collection",
+      "quality": "L2",
+      "path": "sources/full-market-priority-20260712/broker-reports/",
+      "use": "forecast recency, EPS/PE comparison, thesis and risk review",
+      "boundary": "15 of 16 names have a PDF; Zhejiang Orient metadata failed with KeyError('infoCode')"
+    },
+    {
+      "source_id": "S08",
+      "source": "Official and validated H1 preview attachments for the legacy theme subset",
+      "type": "official_company_announcement",
+      "date": "through 2026-07-11",
+      "quality": "L1",
+      "path": "sources/earnings-previews-20260711/",
+      "use": "official EPS, deducted-profit and implied-Q2 validation for 16 deeply reviewed names",
+      "boundary": "guidance is unaudited and cannot be mechanically annualized"
+    },
+    {
+      "source_id": "S09",
+      "source": "Five ticker-matched original-PDF Street target reports",
+      "type": "original_broker_pdf",
+      "date": "2024-11 to 2026-03",
+      "quality": "L2",
+      "path": "sources/repaired-street-targets-20260712/; sources/target-price-exhaustion-20260712/",
+      "use": "source-pure 5%-10% Street anchors for the formal valuation pool",
+      "boundary": "stale original targets receive only 5% weight; current price receives zero target weight"
+    },
+    {
+      "source_id": "S10",
+      "source": "Detailed current-year broker repost pages",
+      "type": "third_party_detailed_repost",
+      "date": "through 2026-07-10",
+      "quality": "L3",
+      "path": "sources/broker-reports/; sources/launched-broker-reports-20260711/; sources/core-broker-reports-20260711/",
+      "use": "zero-weight target-direction and post-preview forecast cross-checks",
+      "boundary": "reposts do not masquerade as original PDFs and receive zero Street target weight"
+    },
+    {
+      "source_id": "S11",
+      "source": "Legacy 54-name thematic company cards and 56-PDF report archive",
+      "type": "thematic_research_archive",
+      "date": "through 2026-07-11",
+      "quality": "L2-L3",
+      "path": "data/company_cards_20260711.json; sources/core-broker-reports-20260711/",
+      "use": "deep thematic appendix across nine research groups",
+      "boundary": "this archive is not the full-market mother universe"
+    },
+    {
+      "source_id": "S12",
+      "source": "Four-name high-growth disclosure and original-report package",
+      "type": "official_company_disclosure_and_original_broker_pdf",
+      "date": "2026Q1 and 2026H1 preview",
+      "quality": "L1-L2",
+      "path": "sources/earnings-previews-20260711/; sources/launched-official-20260711/; sources/core-broker-reports-20260711/",
+      "use": "direct disclosures, operating proxies and revenue-to-EPS bridges for Hengrui, Industrial Fulian, ZTE and Jiangbolong",
+      "boundary": "every non-public field is recorded with checked sources, a formal boundary and a valuation consequence"
+    },
+    {
+      "source_id": "S13",
+      "source": "Full-market candidate financial and broker evidence collection",
+      "type": "financial_packet_and_original_broker_pdf",
+      "date": "through 2026-07-13 collection",
+      "quality": "L1-L3",
+      "path": "data/full_market_valuation_evidence_20260712.json; sources/full-market-valuation-20260712/",
+      "use": "73/73 Q1 financial packets, 71 report metadata rows, 71 original PDFs and explicit broker target extraction",
+      "boundary": "broker target fields are used only when explicitly extracted from original PDF text"
+    },
+    {
+      "source_id": "S14",
+      "source": "AStock full-market valuation models",
+      "type": "house_model",
+      "date": "2026-07-13 model build",
+      "quality": "house_model_auditable",
+      "path": "data/full_market_priority_valuation_20260712.json; data/full_market_candidate_valuation_20260712.json; data/report_wide_valuation_ledger_20260712.json",
+      "use": "16 full priority models, 73 H1 candidate ranges and 117-name deduplicated valuation ledger",
+      "boundary": "House probability targets are labeled as internal models and never presented as broker or Street targets"
+    },
+    {
+      "source_id": "S15",
+      "source": "Theme-only financial and original-report evidence refresh",
+      "type": "financial_packet_and_original_broker_pdf",
+      "date": "through 2026-07-13 collection",
+      "quality": "L1-L3",
+      "path": "data/theme_only_evidence_20260713.json; sources/theme-only-evidence-20260713/",
+      "use": "44/44 Q1 financial packets, 44/44 valid original PDFs and 42 positive 2026E EPS denominators for names unique to the thematic appendix",
+      "boundary": "DeepTech and Tom Cat lack original-PDF positive 2026E EPS; DeepTech uses a detailed report body at zero target weight and Tom Cat uses official Q1 data as a low-confidence screening denominator"
+    },
+    {
+      "source_id": "S16",
+      "source": "Report-wide evidence closure ledger",
+      "type": "house_evidence_governance",
+      "date": "2026-07-13",
+      "quality": "auditable_house_governance",
+      "path": "data/report_wide_evidence_closure_20260713.json",
+      "use": "117 ticker-level rows with direct evidence, checked sources, proxy evidence, formal boundary and valuation consequence",
+      "boundary": "formal non-disclosure and IPO timing boundaries are acceptable only when the linked valuation is explicitly downgraded or withheld"
+    },
+    {
+      "source_id": "S17",
+      "source": "Incremental official 2026H1 preview announcements for nine thematic names",
+      "type": "official_company_announcement_and_pdf",
+      "date": "2026-07-12 to 2026-07-15",
+      "quality": "L1",
+      "path": "data/earnings_preview_update_20260715.json; sources/earnings-previews-20260715/",
+      "use": "refresh Beijing Junzheng, China Satellite, Huatian Technology, Kaiying Network, Demingli, Tongfu Microelectronics, JCET, AVIC Shenyang Aircraft and AECC Aero-Engine H1 preview status, deducted profit and implied Q2",
+      "boundary": "official previews are preliminary and unaudited; the incremental packet does not rebuild the full 364-company market screen or create new target prices"
+    }
+  ]
+}

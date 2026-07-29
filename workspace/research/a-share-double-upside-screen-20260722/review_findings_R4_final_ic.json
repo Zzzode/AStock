@@ -1,0 +1,56 @@
+{
+  "cycle": "R4_final_ic",
+  "review_date": "2026-07-22",
+  "reviewer_role": "research-report-reviewer",
+  "review_mode": "independent final investment-committee consistency review",
+  "review_scope": [
+    "main.pdf and main_current_text.txt",
+    "data/current_valuation_model_20260722.json",
+    "data/zero_weight_valuation_model_20260722.json",
+    "analysis/valuation_model.md and analysis/valuation_audit.md",
+    "analysis/house_view.md and analysis/variant_perception.md",
+    "review_findings_R0_evidence.json through review_findings_R3_render_compliance.json"
+  ],
+  "publishability_status": "PASS",
+  "institutional_status": "INSTITUTIONAL_PASS",
+  "publishability_score": 93,
+  "findings": [],
+  "checks": {
+    "cross_cycle_closure": "PASS: R0 through R3 each report PASS, score 93, open S-Level 0 and open A-Level 0.",
+    "final_conclusion": "PASS: the report states that no validated name offers a high-confidence base-case double by 2026 year-end.",
+    "formal_valuation_universe": "PASS: 002497 is the sole positive-weight formal valuation row and sole conditional-core name.",
+    "002497_valuation_and_action": "PASS: current price CNY16.79, formal reader range CNY25-26, formal upside about 51%, and judgmental bull probability 20% are consistent across the report, model and audit.",
+    "002812_downgrade": "PASS: 002812 is a zero-weight sensitivity with no house target and no probability; CNY103 is an external reference only.",
+    "share_count_and_market_cap": "PASS: current share-count and market-cap bases reconcile within disclosed rounding, including 002497 at 1.15256bn shares/CNY19.352bn and 002812 at 0.98132bn shares/CNY46.946bn.",
+    "target_horizon": "PASS: the report horizon is 2026-12-31, while the CNY42 and CNY103 external target horizons are explicitly undisclosed and are not relabeled as year-end targets.",
+    "validation_and_invalidation": "PASS: 002497 validation requires H2 profit, cash conversion and operating delivery; its downgrade triggers cover negative cash flow, inventory or hedge dominance and lithium-cycle reversal. 002812 remains blocked until company-level price, shipment, utilization, yield, unit-profit and cash evidence is available.",
+    "pdf_and_text": "PASS: main.pdf contains 26 pages and its extracted text is synchronized with main_current_text.txt.",
+    "recommendation_boundary": "PASS: action labels are research-priority tiers rather than securities trading instructions."
+  },
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 2,
+  "accepted_residuals": [
+    {
+      "source_issue_id": "R0-B-001",
+      "status": "accepted_residual",
+      "summary": "Exact immutable raw quote-provider responses were not retained; the two-source price match, timestamps and arithmetic reconciliation remain usable."
+    },
+    {
+      "source_issue_id": "R3-B-001",
+      "status": "accepted_residual",
+      "summary": "Several chapter-ending pages retain cosmetic white space without clipping, overlap or loss of readability."
+    }
+  ],
+  "residual_risks": [
+    "The 2026H1 earnings previews are unaudited and require formal interim-report confirmation.",
+    "002497 still requires H2 operating-cash-flow, inventory and hedge normalization evidence; these are explicit monitoring and downgrade conditions rather than missing support for the cutoff-date conditional-core conclusion.",
+    "002812 lacks company-level shipment, realized price, utilization, yield, unit-profit and customer evidence; it therefore remains zero weight with no house target or probability.",
+    "The archived original broker-report set is positively selected, so broker agreement is not treated as independent consensus evidence.",
+    "Immutable raw quote-provider responses were not retained, although two-source prices and market-cap arithmetic reconcile.",
+    "Minor chapter-ending white space remains in the 26-page render without affecting readability or meaning."
+  ],
+  "downgrade_status": "Downgrade applied: 002812 remains a zero-weight sensitivity with no house target or probability; all other non-002497 names remain backup, cycle-watch or observation names without formal targets.",
+  "verifier_results": "Final generic workspace verifier rerun pending by the root orchestrator after R4 governance artifacts are refreshed; no verifier failure is being waived.",
+  "required_next_fixes": []
+}

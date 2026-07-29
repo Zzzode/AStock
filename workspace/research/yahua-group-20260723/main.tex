@@ -1,0 +1,74 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{雅化集团（002497.SZ）}
+\newcommand{\reportsubtitle}{业绩拐点已确认，现金与单位经济决定估值能否上修}
+\newcommand{\reportkicker}{INSTITUTIONAL EQUITY RESEARCH}
+\newcommand{\reportscope}{CHINA A-SHARES | 锂盐与民爆}
+\newcommand{\reportdate}{2026年7月23日}
+\newcommand{\reportdatacutoff}{行情截至 2026-07-23；财务截至 2026Q1 与 2026H1 业绩预告}
+\newcommand{\reporttype}{完整单票覆盖｜12个月业绩验证窗口}
+\newcommand{\reportauthor}{AStock Research}
+\newcommand{\reporthouseview}{雅化的 Q2 利润弹性已经由公司预告确认，但市场对 H2 持续性和现金转换仍给出明显折价。我们以 2025 年经审计的锂盐与民爆经营底座建立审慎的自有情景：基准情景不给未披露的客户份额、资源自给率或项目订单正向信用，正式 H1 的现金、营运资本和单位经济将决定目标价能否上修或观点是否降级。}
+\newcommand{\reportquality}{核心事实来自公司年报、2026Q1 报告、H1 业绩预告及权益分派公告；完整券商 PDF 仅作外部预测与目标价锚；商品和同行资料用于周期及情景交叉验证。正式 H1 三张表尚未披露，所有前瞻判断均标示为自有假设或外部预测。}
+\newcommand{\reportdisclaimer}{本报告以公开资料和情景模型为基础，仅供研究讨论，不构成证券买卖建议。}
+
+\input{../../../.agents/templates/preamble.tex}
+\hypersetup{pdfauthor={\reportauthor}, pdftitle={\reporttitle}}
+
+\begin{document}
+\astockcover
+{\footnotesize\tableofcontents}
+\clearpage
+
+\chapter{投资委员会摘要：评级、目标与行动纪律}
+\input{sections/ch01_dashboard}
+\chapter{核心预期差：H1 已验证什么，H2 仍须兑现什么}
+\input{sections/ch02_variant}
+\chapter{锂盐盈利引擎：销量、实现价格、成本与库存}
+\input{sections/ch03_lithium}
+\chapter{民爆与矿服：防御性利润池的边界}
+\input{sections/ch04_minblast}
+\chapter{财务质量：利润到现金的转换}
+\input{sections/ch05_financials}
+\chapter{竞争、资源和客户：哪些优势可以进入估值}
+\input{sections/ch06_competition}
+\chapter{市场位置与外部预期：现价已经支付了什么}
+\input{sections/ch07_market}
+\chapter{估值：三情景、多锚与目标价}
+\input{sections/ch08_valuation}
+\chapter{催化剂、风险与监控触发器}
+\input{sections/ch09_risks}
+\chapter{行业周期与需求：价格反弹如何、又为何不能直接进入 EPS}
+\input{sections/ch10_cycle}
+\chapter{完整盈利模型：2026 高点与 2027 周期归一化}
+\input{sections/ch11_model_detail}
+\chapter{相对估值与资本约束：为什么同业低 PE 不能替代安全边际}
+\input{sections/ch12_peer}
+\chapter{正式 H1 的重估框架：从披露到行动}
+\input{sections/ch13_reassessment}
+
+\appendix
+\chapter{模型假设、口径与复算说明}
+\input{sections/app_model_disclosure}
+\chapter{来源与证据边界}
+\input{sections/app_source_audit}
+\chapter{历史财务、现金与资本结构补充}
+\input{sections/app_historical}
+\chapter{完整模型输入与敏感性补充}
+\input{sections/app_model_inputs}
+\chapter{资源、客户与民爆项目的证据矩阵}
+\input{sections/app_relationships}
+\chapter{治理、会计口径与披露控制清单}
+\input{sections/app_governance}
+\chapter{关键数字复算实例}
+\input{sections/app_reconciliation}
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[免责声明]
+\small
+\reportdisclaimer\par
+本报告的自有情景、评级和目标价与外部券商观点严格分开。公司正式披露 2026H1 三张表后，应以实际收入、现金流、应收、存货和分部说明重新校准模型。
+\end{disclosurebox}
+\end{document}

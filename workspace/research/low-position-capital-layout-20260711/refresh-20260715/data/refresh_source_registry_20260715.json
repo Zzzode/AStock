@@ -1,0 +1,39 @@
+{
+  "sources": [
+    {
+      "source_id": "R01",
+      "source": "Eastmoney datacenter paginated 2026H1 preview table",
+      "path": "data/raw_a_share_h1_2026_preview_20260715.json",
+      "quality": "L1 structured official capture",
+      "boundary": "company-level preliminary preview; no segment/customer/ASP proof"
+    },
+    {
+      "source_id": "R02",
+      "source": "Tencent quotes and adjusted K-lines",
+      "path": "sources/market-20260715/; data/market/",
+      "quality": "L1-L2 market adapter",
+      "boundary": "stock price and history only; not beneficial-owner identity"
+    },
+    {
+      "source_id": "R03",
+      "source": "Q1 financial packets and latest broker metadata/PDFs",
+      "path": "data/financials/; sources/broker-reports-20260715/",
+      "quality": "L1-L3 mixed by ticker",
+      "boundary": "failed/old broker sources receive no positive Street weight"
+    },
+    {
+      "source_id": "R04",
+      "source": "DataBao public industry-flow tables and Shenwan official index histories",
+      "path": "data/raw_daily_tables_20260714.json; data/raw_weekly_tables_20260710_refresh.json; data/sector_scan_20260715.json",
+      "quality": "L1-L2",
+      "boundary": "31/31 daily and weekly industry coverage; daily observed 2026-07-14 and weekly observed through 2026-07-10"
+    },
+    {
+      "source_id": "R05",
+      "source": "Securities Times/DataBao continuous-inflow article syndicated by Toutiao",
+      "path": "data/raw_continuous_tables_20260714.json",
+      "quality": "L2 partial",
+      "boundary": "30/112 public rows; not treated as a complete 112-name universe"
+    }
+  ]
+}

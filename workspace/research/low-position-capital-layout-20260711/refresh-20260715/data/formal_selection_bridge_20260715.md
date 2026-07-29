@@ -1,0 +1,43 @@
+# Formal Model Selection Bridge Through 2026-07-15
+
+- Priority pool: 39
+- Formal audit models: 4
+- 000623 吉林敖东 | conditional_high_upside_watch | upside=3.1704 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间
+- 600739 辽宁成大 | conditional_high_upside_watch | upside=3.0 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01
+- 600150 中国船舶 | conditional_high_upside_watch | upside=1.4287 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间
+- 000703 恒逸石化 | formal_audit_model | upside=0.6174 | reasons=正式模型：当前价格、情景估值、外部锚和原始研报证据均可复核
+- 601061 中信金属 | conditional_high_upside_watch | upside=0.6054 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01
+- 601600 中国铝业 | conditional_high_upside_watch | upside=0.5668 | reasons=基础证据链不足以支持正式模型; 缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 公开源检索未取得可审计外部目标价/合理价值区间; 公开源检索未取得本地原始研报证据路径
+- 601360 三六零 | conditional_high_upside_watch | upside=0.4556 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01
+- 002379 宏桥控股 | formal_audit_model | upside=0.3826 | reasons=正式模型：当前价格、情景估值、外部锚和原始研报证据均可复核
+- 002048 宁波华翔 | conditional_high_upside_watch | upside=0.3299 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间
+- 000737 北方铜业 | conditional_high_upside_watch | upside=0.2078 | reasons=基础证据链不足以支持正式模型; 缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 公开源检索未取得可审计外部目标价/合理价值区间; 公开源检索未取得本地原始研报证据路径
+- 000567 海德股份 | conditional_high_upside_watch | upside=0.2075 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间
+- 601336 新华保险 | conditional_high_upside_watch | upside=0.1968 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间
+- 002602 世纪华通 | conditional_high_upside_watch | upside=0.1578 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间
+- 300014 亿纬锂能 | formal_audit_model | upside=0.1559 | reasons=正式模型：当前价格、情景估值、外部锚和原始研报证据均可复核
+- 002558 巨人网络 | conditional_margin_watch | upside=0.1499 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间
+- 600026 中远海能 | conditional_margin_watch | upside=0.1023 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01
+- 601688 华泰证券 | conditional_margin_watch | upside=0.0936 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间
+- 000042 中洲控股 | conditional_margin_watch | upside=0.0648 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01
+- 600489 中金黄金 | conditional_margin_watch | upside=0.0517 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间
+- 000975 山金国际 | conditional_margin_watch | upside=0.0502 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间
+- 002460 赣锋锂业 | conditional_margin_watch | upside=0.0423 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间
+- 600120 浙江东方 | conditional_margin_watch | upside=0.0224 | reasons=基础证据链不足以支持正式模型; 缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 公开源检索未取得可审计外部目标价/合理价值区间; 公开源检索未取得本地原始研报证据路径
+- 000987 越秀资本 | conditional_margin_watch | upside=0.0142 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01
+- 601377 兴业证券 | valuation_risk_or_watch | upside=-0.0081 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 000858 五粮液 | valuation_risk_or_watch | upside=-0.0149 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 000301 东方盛虹 | valuation_risk_or_watch | upside=-0.037 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 002756 永兴材料 | valuation_risk_or_watch | upside=-0.0624 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 600918 中泰证券 | valuation_risk_or_watch | upside=-0.063 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 002466 天齐锂业 | valuation_risk_or_watch | upside=-0.0639 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 600346 恒力石化 | valuation_risk_or_watch | upside=-0.0676 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 600688 上海石化 | valuation_risk_or_watch | upside=-0.081 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 概率目标低于当前价，仅保留为下行风险对照
+- 000155 川能动力 | formal_audit_model | upside=-0.0947 | reasons=正式下行风险对照：证据链完整，但概率目标低于当前价
+- 600037 歌华有线 | valuation_risk_or_watch | upside=-0.1735 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 002738 中矿资源 | valuation_risk_or_watch | upside=-0.2041 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 000426 兴业银锡 | valuation_risk_or_watch | upside=-0.2291 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 001339 智微智能 | valuation_risk_or_watch | upside=-0.2666 | reasons=缺少当前可正权使用的外部估值锚; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 601069 西部黄金 | valuation_risk_or_watch | upside=-0.4451 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照
+- 600095 湘财股份 | valuation_risk_or_watch | upside=-0.4622 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 概率目标低于当前价，仅保留为下行风险对照
+- 600292 电投水电 | valuation_risk_or_watch | upside=-0.4752 | reasons=缺少当前可正权使用的外部估值锚; 最新研报缺失或早于2026-04-01; 原始研报已归档但未披露目标价/合理价值区间; 概率目标低于当前价，仅保留为下行风险对照

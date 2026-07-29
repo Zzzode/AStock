@@ -1,0 +1,23 @@
+{
+  "cycle": "R3_render_compliance",
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 1,
+  "report_regeneration_required": false,
+  "owner_groups": [
+    {
+      "owner_skill": "research-report-review",
+      "owner_agent": "internal-control",
+      "issue_ids": [
+        "R3-B-001"
+      ],
+      "artifacts": [
+        "workspace/research/tools/run_research_gates.py",
+        "workspace/research/templates/industry_chain_verify_research_workspace.py"
+      ],
+      "required_action": "Make shared gates case-declared and schema-tolerant; do not change this report to mimic a prior case's 20260630 filenames or 173/58-row thresholds.",
+      "blocking_for_case_content": false,
+      "blocking_for_unconditional_repository_pass": true
+    }
+  ]
+}

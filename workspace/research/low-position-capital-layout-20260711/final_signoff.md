@@ -1,0 +1,16 @@
+# Final Sign-Off — Full-Market Refresh
+
+- case_id: low-position-capital-layout-20260711
+- report_type: full-market sector-rotation and low-position capital-layout refresh
+- data_cutoff: 2026-07-15 official preview/quote cutoff; industry-flow observed through 2026-07-14
+- pdf_path: workspace/research/low-position-capital-layout-20260711/main.pdf
+- page_count: 53
+- publishability_score: 95
+- verifier_results: {'refresh_verifier': '131 PASS / 0 FAIL', 'research_gates': '129 PASS / 0 FAIL', 'workflow_eval': 'publishable / zero blocking failures', 'preview_companies': 1680, 'mapped_companies': 1678, 'high_impact_candidates': 142, 'priority_rows': 39, 'formal_rows': 4, 'candidate_evidence_high_count': 138, 'candidate_evidence_medium_count': 0, 'candidate_financial_coverage': 142, 'candidate_broker_pdf_coverage': 137, 'candidate_target_extract_count': 33, 'high_upside_evidence_closure': '6/6', 'high_upside_current_positive_anchor_count': 0, 'high_upside_formal_upgrade_count': 0, 'overfull_hbox': 0}
+- industry_chain_verifier_results: not applicable: full-market sector-rotation refresh
+- open_s_count: 0
+- open_a_count: 0
+- waived_issues: []
+- residual_risks: ['Industry daily and weekly flow tables are complete at 31/31 but observed through 2026-07-14 and week ending 2026-07-10; continuous-flow public coverage is partial at 30/112.', '5 candidate broker PDF probes failed or were unavailable; weak rows have zero Street weight.', 'Formal current-price model is a refreshed screening/valuation layer; independent company deep dives remain required before strong action language.', 'Section 4.3 evidence gaps are closed, but all six high-upside rows remain non-formal because none has a current positive-weight original target; H2 earnings, cash flow, orders, prices and pool re-entry remain future events.']
+- downgrade_status: Downgrade applied: House-only high-space priority models remain validation candidates; formal pool restricted to current auditable broker target/range rows.
+- signoff_status: PASS

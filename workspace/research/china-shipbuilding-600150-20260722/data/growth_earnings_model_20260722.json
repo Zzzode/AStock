@@ -1,0 +1,703 @@
+{
+  "schema_version": "1.0",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "ticker": "600150.SH",
+  "company": "中国船舶",
+  "data_cutoff": "2026-07-22",
+  "report_language": "zh-CN",
+  "currency_unit": "CNY100m",
+  "applies": true,
+  "gate_status": "CONDITIONAL",
+  "model_reproducibility": "PASS",
+  "r0_dependency": {
+    "review_file": "review_findings_R0_evidence.json",
+    "required_before_final": "open_s_count=0 and open_a_count=0",
+    "status_at_model_build": "R0_PASS_95_SCORE_0S_0A_CONFIRMED"
+  },
+  "perimeter": {
+    "basis": "restated continuing company after common-control merger",
+    "accounting_combination_date": "2025-09-30",
+    "current_share_count_shares": 7525621288,
+    "current_share_count_100m": 75.25621288,
+    "forecast_eps_denominator_100m": 75.25621288,
+    "historical_2025_eps_denominator_shares": 6329638855,
+    "legacy_and_current_forecast_mixing_allowed": false
+  },
+  "market_anchor": {
+    "price_date": "2026-07-22",
+    "current_price_cny": 33.02,
+    "derived_market_cap_CNY100m": 2484.960149,
+    "formula": "33.02 * 75.25621288",
+    "source_ids": ["PR-01", "CF-04"]
+  },
+  "official_anchors": {
+    "restated_2024A": {
+      "revenue": 1333.5084,
+      "parent_net_profit": 42.1957
+    },
+    "restated_2025A": {
+      "revenue": 1519.7799,
+      "gross_profit": 191.194073,
+      "gross_margin": 0.125804,
+      "parent_net_profit": 78.4838,
+      "ocf": 77.6683,
+      "cash_capex": 34.4508,
+      "contract_liabilities": 1522.1426,
+      "inventory": 749.206,
+      "contract_assets": 179.7836
+    },
+    "2026Q1A": {
+      "revenue": 433.1241,
+      "gross_profit": 75.689596,
+      "gross_margin": 0.17475,
+      "parent_net_profit": 48.3228,
+      "ocf": 81.5153,
+      "annualized_in_model": false
+    },
+    "2026H1_preview": {
+      "parent_net_profit_low": 92,
+      "parent_net_profit_high": 110,
+      "adjusted_parent_net_profit_low": 90,
+      "adjusted_parent_net_profit_high": 108,
+      "unaudited": true,
+      "annualized_in_model": false
+    },
+    "orders_and_delivery": {
+      "2025_civil_offshore_new_orders": 1758.36,
+      "2025_civil_offshore_backlog": 4674.51,
+      "2025_delivered_vessels": 161,
+      "2025_delivered_m_dwt": 13.6775,
+      "2026_management_plan_vessels": 168,
+      "2026_management_plan_m_dwt": 16.5,
+      "2026_management_plan_revenue_floor": 1650,
+      "gross_backlog_direct_revenue_credit": 0
+    }
+  },
+  "base_growth_split_2025A": {
+    "split_type": "analytical_not_reported_valuation_segments",
+    "growth_business": {
+      "description": "shipbuilding repair and offshore engineering",
+      "revenue": 1312.7873,
+      "gross_margin": 0.1172,
+      "gross_profit": 153.858666,
+      "evidence_type": "official_filing",
+      "source_ids": ["CF-03"]
+    },
+    "base_business": {
+      "description": "marine equipment electromechanical and other revenue",
+      "revenue": 206.9926,
+      "gross_profit": 37.335407,
+      "gross_margin": 0.180371,
+      "evidence_type": "official_filing_plus_arithmetic",
+      "source_ids": ["CF-03"]
+    },
+    "revenue_sum": 1519.7799,
+    "gross_profit_sum": 191.194073,
+    "segment_purity_proven": false,
+    "standalone_growth_multiple_allowed": false
+  },
+  "growth_driver": {
+    "driver_type": ["order_related", "shipment_related", "price_mix_related", "segment_mix_related"],
+    "is_AI_related": false,
+    "formula": "effective_delivery_m_dwt * revenue_intensity_proxy * price_mix_index * recognized_revenue_ratio",
+    "unit_volume_or_proxy": "effective delivered million DWT constrained by official actual or management plan",
+    "ASP_or_price": "price_mix_index applied to 2025 revenue intensity; not vessel ASP",
+    "recognized_revenue_ratio": "scenario coefficient relative to 2025 revenue recognition intensity; not disclosed contract completion percentage",
+    "revenue_intensity_proxy_CNY100m_per_m_dwt": 95.981524,
+    "revenue_intensity_formula": "1312.7873 / 13.6775",
+    "value_amount_or_proxy": "2025 listed-company civil and offshore backlog CNY467.451bn used only as coverage check",
+    "capacity_or_utilization": "unified utilization not disclosed; effective deliveries used as observable proxy",
+    "certification_or_customer_qualification": "aggregate listed-company order and yard capability evidenced; ship-level customer certification not disclosed",
+    "supply_demand_state": "high backlog and tight slots, but new orders and mix remain cyclical",
+    "evidence_gap": [
+      "ship-level ASP",
+      "ship-level delivery schedule",
+      "unified yard utilization",
+      "payment milestones",
+      "cost pass-through clauses",
+      "FX allocation",
+      "cancellation and price-adjustment clauses"
+    ]
+  },
+  "profit_bridge_formula": {
+    "growth_gross_profit": "growth_revenue * growth_gross_margin",
+    "base_gross_profit": "base_revenue * base_gross_margin",
+    "profit_before_tax": "growth_gross_profit + base_gross_profit - operating_expenses - impairment + finance_investment_other_net",
+    "consolidated_net_profit": "profit_before_tax * (1 - tax_rate)",
+    "parent_net_profit": "consolidated_net_profit * (1 - minority_share)",
+    "EPS": "parent_net_profit / 75.25621288",
+    "growth_EPS": "not separately disclosed; only pre-overhead gross-profit contribution is modeled and consolidated EPS receives valuation credit"
+  },
+  "scenarios": {
+    "bear": {
+      "valuation_credit": "earnings credit - consolidated downside scenario only",
+      "2026": {
+        "effective_delivery_m_dwt": 15.5,
+        "price_mix_index": 1.01,
+        "recognized_revenue_ratio": 0.96,
+        "growth_revenue": 1442.487134,
+        "base_revenue": 210,
+        "total_revenue": 1652.487134,
+        "growth_gross_margin": 0.14,
+        "base_gross_margin": 0.155,
+        "growth_gross_profit": 201.948199,
+        "base_gross_profit": 32.55,
+        "gross_profit": 234.498199,
+        "gross_margin": 0.141906,
+        "operating_expenses": 120,
+        "impairment": 8,
+        "finance_investment_other_net": 40,
+        "profit_before_tax": 146.498199,
+        "tax_rate": 0.1,
+        "consolidated_net_profit": 131.848379,
+        "minority_share": 0.15,
+        "parent_net_profit": 112.071122,
+        "EPS": 1.489194,
+        "current_price_PE": 22.173064,
+        "cash": {
+          "OCF_conversion": 0.55,
+          "OCF": 61.639117,
+          "D_and_A": 48,
+          "other_non_cash_and_reclassification": -15,
+          "working_capital_investment": 103.209262,
+          "cash_capex": 45,
+          "simplified_FCF": 16.639117
+        }
+      },
+      "2027": {
+        "effective_delivery_m_dwt": 15.8,
+        "price_mix_index": 0.99,
+        "recognized_revenue_ratio": 0.95,
+        "growth_revenue": 1426.275854,
+        "base_revenue": 215,
+        "total_revenue": 1641.275854,
+        "growth_gross_margin": 0.135,
+        "base_gross_margin": 0.155,
+        "growth_gross_profit": 192.54724,
+        "base_gross_profit": 33.325,
+        "gross_profit": 225.87224,
+        "gross_margin": 0.13762,
+        "operating_expenses": 119,
+        "impairment": 12,
+        "finance_investment_other_net": 35,
+        "profit_before_tax": 129.87224,
+        "tax_rate": 0.12,
+        "consolidated_net_profit": 114.287572,
+        "minority_share": 0.18,
+        "parent_net_profit": 93.715809,
+        "EPS": 1.24529,
+        "current_price_PE": 26.515912,
+        "cash": {
+          "OCF_conversion": 0.65,
+          "OCF": 60.915276,
+          "D_and_A": 50,
+          "other_non_cash_and_reclassification": -16,
+          "working_capital_investment": 87.372296,
+          "cash_capex": 45,
+          "simplified_FCF": 15.915276
+        }
+      },
+      "2028": {
+        "effective_delivery_m_dwt": 16.3,
+        "price_mix_index": 0.98,
+        "recognized_revenue_ratio": 0.94,
+        "growth_revenue": 1441.216339,
+        "base_revenue": 225,
+        "total_revenue": 1666.216339,
+        "growth_gross_margin": 0.128,
+        "base_gross_margin": 0.15,
+        "growth_gross_profit": 184.475691,
+        "base_gross_profit": 33.75,
+        "gross_profit": 218.225691,
+        "gross_margin": 0.130971,
+        "operating_expenses": 120,
+        "impairment": 15,
+        "finance_investment_other_net": 32,
+        "profit_before_tax": 115.225691,
+        "tax_rate": 0.13,
+        "consolidated_net_profit": 100.246351,
+        "minority_share": 0.2,
+        "parent_net_profit": 80.197081,
+        "EPS": 1.065654,
+        "current_price_PE": 30.985668,
+        "cash": {
+          "OCF_conversion": 0.75,
+          "OCF": 60.147811,
+          "D_and_A": 52,
+          "other_non_cash_and_reclassification": -18,
+          "working_capital_investment": 74.098541,
+          "cash_capex": 50,
+          "simplified_FCF": 10.147811
+        }
+      }
+    },
+    "base": {
+      "valuation_credit": "earnings credit - consolidated scenario only",
+      "2026": {
+        "effective_delivery_m_dwt": 16.2,
+        "price_mix_index": 1.04,
+        "recognized_revenue_ratio": 0.96,
+        "growth_revenue": 1552.412854,
+        "base_revenue": 222.587146,
+        "total_revenue": 1775,
+        "growth_gross_margin": 0.168,
+        "base_gross_margin": 0.16,
+        "growth_gross_profit": 260.80536,
+        "base_gross_profit": 35.613943,
+        "gross_profit": 296.419303,
+        "gross_margin": 0.166997,
+        "operating_expenses": 128,
+        "impairment": 3,
+        "finance_investment_other_net": 36.5,
+        "profit_before_tax": 201.919303,
+        "tax_rate": 0.08,
+        "consolidated_net_profit": 185.765759,
+        "minority_share": 0.07,
+        "parent_net_profit": 172.762156,
+        "EPS": 2.295653,
+        "current_price_PE": 14.383707,
+        "cash": {
+          "OCF_conversion": 0.85,
+          "OCF": 146.847832,
+          "D_and_A": 50,
+          "other_non_cash_and_reclassification": -15,
+          "working_capital_investment": 73.917926,
+          "cash_capex": 50,
+          "simplified_FCF": 96.847832
+        },
+        "H1_anchor": {
+          "H1_low": 92,
+          "H2_residual_at_H1_low": 80.762156,
+          "H1_mid": 101,
+          "H2_residual_at_H1_mid": 71.762156,
+          "H1_high": 110,
+          "H2_residual_at_H1_high": 62.762156
+        }
+      },
+      "2027": {
+        "effective_delivery_m_dwt": 17.5,
+        "price_mix_index": 1.07,
+        "recognized_revenue_ratio": 0.99,
+        "growth_revenue": 1779.281504,
+        "base_revenue": 220.718496,
+        "total_revenue": 2000,
+        "growth_gross_margin": 0.175,
+        "base_gross_margin": 0.157,
+        "growth_gross_profit": 311.374263,
+        "base_gross_profit": 34.652804,
+        "gross_profit": 346.027067,
+        "gross_margin": 0.173014,
+        "operating_expenses": 137,
+        "impairment": 3,
+        "finance_investment_other_net": 47,
+        "profit_before_tax": 253.027067,
+        "tax_rate": 0.08,
+        "consolidated_net_profit": 232.784902,
+        "minority_share": 0.07,
+        "parent_net_profit": 216.489959,
+        "EPS": 2.876705,
+        "current_price_PE": 11.478408,
+        "cash": {
+          "OCF_conversion": 0.95,
+          "OCF": 205.665461,
+          "D_and_A": 52,
+          "other_non_cash_and_reclassification": -18,
+          "working_capital_investment": 61.119441,
+          "cash_capex": 55,
+          "simplified_FCF": 150.665461
+        }
+      },
+      "2028": {
+        "effective_delivery_m_dwt": 18.6,
+        "price_mix_index": 1.09,
+        "recognized_revenue_ratio": 0.985,
+        "growth_revenue": 1916.740484,
+        "base_revenue": 233.259516,
+        "total_revenue": 2150,
+        "growth_gross_margin": 0.178,
+        "base_gross_margin": 0.152,
+        "growth_gross_profit": 341.179806,
+        "base_gross_profit": 35.455446,
+        "gross_profit": 376.635253,
+        "gross_margin": 0.175179,
+        "operating_expenses": 136,
+        "impairment": 4,
+        "finance_investment_other_net": 55,
+        "profit_before_tax": 291.635253,
+        "tax_rate": 0.09,
+        "consolidated_net_profit": 265.38808,
+        "minority_share": 0.07,
+        "parent_net_profit": 246.810914,
+        "EPS": 3.279608,
+        "current_price_PE": 10.068275,
+        "cash": {
+          "OCF_conversion": 1,
+          "OCF": 246.810914,
+          "D_and_A": 55,
+          "other_non_cash_and_reclassification": -20,
+          "working_capital_investment": 53.577166,
+          "cash_capex": 60,
+          "simplified_FCF": 186.810914
+        }
+      }
+    },
+    "bull": {
+      "valuation_credit": "earnings credit - consolidated upside scenario only",
+      "2026": {
+        "effective_delivery_m_dwt": 16.8,
+        "price_mix_index": 1.07,
+        "recognized_revenue_ratio": 0.99,
+        "growth_revenue": 1708.110244,
+        "base_revenue": 226.889756,
+        "total_revenue": 1935,
+        "growth_gross_margin": 0.185,
+        "base_gross_margin": 0.165,
+        "growth_gross_profit": 316.000395,
+        "base_gross_profit": 37.43681,
+        "gross_profit": 353.437205,
+        "gross_margin": 0.182655,
+        "operating_expenses": 145,
+        "impairment": 4,
+        "finance_investment_other_net": 39,
+        "profit_before_tax": 243.437205,
+        "tax_rate": 0.07,
+        "consolidated_net_profit": 226.396601,
+        "minority_share": 0.04,
+        "parent_net_profit": 217.340737,
+        "EPS": 2.888011,
+        "current_price_PE": 11.433476,
+        "cash": {
+          "OCF_conversion": 1.05,
+          "OCF": 228.207773,
+          "D_and_A": 52,
+          "other_non_cash_and_reclassification": -14,
+          "working_capital_investment": 36.188827,
+          "cash_capex": 55,
+          "simplified_FCF": 173.207773
+        }
+      },
+      "2027": {
+        "effective_delivery_m_dwt": 18.4,
+        "price_mix_index": 1.11,
+        "recognized_revenue_ratio": 1,
+        "growth_revenue": 1960.326654,
+        "base_revenue": 244.673346,
+        "total_revenue": 2205,
+        "growth_gross_margin": 0.195,
+        "base_gross_margin": 0.17,
+        "growth_gross_profit": 382.263698,
+        "base_gross_profit": 41.594469,
+        "gross_profit": 423.858166,
+        "gross_margin": 0.192226,
+        "operating_expenses": 155,
+        "impairment": 2,
+        "finance_investment_other_net": 50,
+        "profit_before_tax": 316.858166,
+        "tax_rate": 0.08,
+        "consolidated_net_profit": 291.509513,
+        "minority_share": 0.04,
+        "parent_net_profit": 279.849133,
+        "EPS": 3.718618,
+        "current_price_PE": 8.879642,
+        "cash": {
+          "OCF_conversion": 1.1,
+          "OCF": 307.834046,
+          "D_and_A": 56,
+          "other_non_cash_and_reclassification": -16,
+          "working_capital_investment": 23.675467,
+          "cash_capex": 65,
+          "simplified_FCF": 242.834046
+        }
+      },
+      "2028": {
+        "effective_delivery_m_dwt": 20,
+        "price_mix_index": 1.14,
+        "recognized_revenue_ratio": 1,
+        "growth_revenue": 2188.378756,
+        "base_revenue": 259.621244,
+        "total_revenue": 2448,
+        "growth_gross_margin": 0.202,
+        "base_gross_margin": 0.175,
+        "growth_gross_profit": 442.052509,
+        "base_gross_profit": 45.433718,
+        "gross_profit": 487.486226,
+        "gross_margin": 0.199137,
+        "operating_expenses": 170,
+        "impairment": 2,
+        "finance_investment_other_net": 60,
+        "profit_before_tax": 375.486226,
+        "tax_rate": 0.08,
+        "consolidated_net_profit": 345.447328,
+        "minority_share": 0.04,
+        "parent_net_profit": 331.629435,
+        "EPS": 4.406672,
+        "current_price_PE": 7.493183,
+        "cash": {
+          "OCF_conversion": 1.15,
+          "OCF": 381.37385,
+          "D_and_A": 60,
+          "other_non_cash_and_reclassification": -18,
+          "working_capital_investment": 6.073478,
+          "cash_capex": 75,
+          "simplified_FCF": 306.37385
+        }
+      }
+    }
+  },
+  "street_comparison": {
+    "sample": "five post-Q1 original broker reports on post-merger share basis",
+    "2026": {
+      "house_revenue": 1775,
+      "street_mean_revenue": 1811.31,
+      "street_median_revenue": 1782.37,
+      "house_revenue_vs_mean": -0.020046,
+      "house_parent_net_profit": 172.762156,
+      "street_mean_parent_net_profit": 179.02,
+      "street_median_parent_net_profit": 176.38,
+      "house_parent_np_vs_mean": -0.034956,
+      "house_parent_np_vs_median": -0.020512
+    },
+    "2027": {
+      "house_revenue": 2000,
+      "street_mean_revenue": 2079.71,
+      "street_median_revenue": 2014.07,
+      "house_revenue_vs_mean": -0.038327,
+      "house_parent_net_profit": 216.489959,
+      "street_mean_parent_net_profit": 238.55,
+      "street_median_parent_net_profit": 235.38,
+      "house_parent_np_vs_mean": -0.092476,
+      "house_parent_np_vs_median": -0.080253
+    },
+    "2028": {
+      "house_revenue": 2150,
+      "street_mean_revenue": 2286.35,
+      "street_median_revenue": 2235.62,
+      "house_revenue_vs_mean": -0.059637,
+      "house_parent_net_profit": 246.810914,
+      "street_mean_parent_net_profit": 298.08,
+      "street_median_parent_net_profit": 299.43,
+      "house_parent_np_vs_mean": -0.171998,
+      "house_parent_np_vs_median": -0.175731
+    },
+    "pre_merger_reports_weight": 0,
+    "weak_target_price_weight": 0
+  },
+  "current_price_implied_growth": {
+    "purpose": "expectation check only, not a target price",
+    "2026_at_14x_PE": {
+      "implied_parent_net_profit": 177.497154,
+      "implied_EPS": 2.358571,
+      "required_growth_gross_margin": 0.171565,
+      "house_base_growth_gross_margin": 0.168
+    },
+    "2027_at_11x_PE": {
+      "implied_parent_net_profit": 225.905468,
+      "implied_EPS": 3.001818,
+      "required_total_gross_margin": 0.178516,
+      "house_base_total_gross_margin": 0.173014
+    },
+    "2028_at_9x_PE": {
+      "implied_parent_net_profit": 276.106683,
+      "implied_EPS": 3.668889,
+      "required_total_gross_margin": 0.19128,
+      "house_base_total_gross_margin": 0.175179
+    }
+  },
+  "sensitivity_key": "2026 recognized revenue ratio x growth gross margin",
+  "sensitivity_2026": [
+    {"recognized_revenue_ratio": 0.92, "growth_gross_margin": 0.158, "parent_net_profit": 150.735435, "EPS": 2.002963},
+    {"recognized_revenue_ratio": 0.92, "growth_gross_margin": 0.168, "parent_net_profit": 163.464444, "EPS": 2.172106},
+    {"recognized_revenue_ratio": 0.92, "growth_gross_margin": 0.178, "parent_net_profit": 176.193454, "EPS": 2.341248},
+    {"recognized_revenue_ratio": 0.96, "growth_gross_margin": 0.158, "parent_net_profit": 159.479711, "EPS": 2.119157},
+    {"recognized_revenue_ratio": 0.96, "growth_gross_margin": 0.168, "parent_net_profit": 172.762156, "EPS": 2.295653},
+    {"recognized_revenue_ratio": 0.96, "growth_gross_margin": 0.178, "parent_net_profit": 186.0446, "EPS": 2.472149},
+    {"recognized_revenue_ratio": 1, "growth_gross_margin": 0.158, "parent_net_profit": 168.223987, "EPS": 2.23535},
+    {"recognized_revenue_ratio": 1, "growth_gross_margin": 0.168, "parent_net_profit": 182.059867, "EPS": 2.4192},
+    {"recognized_revenue_ratio": 1, "growth_gross_margin": 0.178, "parent_net_profit": 195.895746, "EPS": 2.603051}
+  ],
+  "r0_gap_consumption": [
+    {
+      "row_key": "consolidated",
+      "blocked_method": "ship-level schedule/ASP model",
+      "allowed_valuation_use": "consolidated revenue/margin scenario",
+      "required_sensitivity": "delivery and margin downside",
+      "model_consumption": "effective delivery DWT, recognition ratio and growth gross margin"
+    },
+    {
+      "row_key": "upstream",
+      "blocked_method": "supplier/SKU pass-through model",
+      "allowed_valuation_use": "gross-margin sensitivity only",
+      "required_sensitivity": "equipment and steel cost shock",
+      "model_consumption": "growth gross margin and impairment sensitivity"
+    },
+    {
+      "row_key": "midstream_yards",
+      "blocked_method": "yard SOTP and utilization model",
+      "allowed_valuation_use": "consolidated delivery scenario",
+      "required_sensitivity": "delivery delay",
+      "model_consumption": "bear/base/bull effective DWT; no yard SOTP"
+    },
+    {
+      "row_key": "product_mix",
+      "blocked_method": "ship-type ASP/margin model",
+      "allowed_valuation_use": "aggregate mix direction",
+      "required_sensitivity": "gross-margin range",
+      "model_consumption": "price_mix_index and growth gross margin; proxy explicitly not ASP"
+    },
+    {
+      "row_key": "high_end_order",
+      "blocked_method": "standalone contract margin valuation",
+      "allowed_valuation_use": "de-duplicated backlog-quality evidence",
+      "required_sensitivity": "cancellation and margin",
+      "model_consumption": "no standalone contract earnings; only aggregate mix and margin scenarios"
+    },
+    {
+      "row_key": "working_capital",
+      "blocked_method": "contract-level cash-flow model",
+      "allowed_valuation_use": "consolidated cash conversion",
+      "required_sensitivity": "OCF/net-profit and working capital",
+      "model_consumption": "OCF conversion and explicit working-capital investment"
+    },
+    {
+      "row_key": "repair_mro",
+      "blocked_method": "repair standalone SOTP",
+      "allowed_valuation_use": "consolidated revenue only",
+      "required_sensitivity": "dock utilization and margin",
+      "model_consumption": "included only in consolidated growth revenue and gross-margin scenarios"
+    },
+    {
+      "row_key": "equipment",
+      "blocked_method": "equipment standalone SOTP",
+      "allowed_valuation_use": "consolidated revenue only",
+      "required_sensitivity": "equipment margin",
+      "model_consumption": "base-business gross margin; no independent multiple"
+    },
+    {
+      "row_key": "China Power",
+      "blocked_method": "consolidated-revenue attribution",
+      "allowed_valuation_use": "equity-boundary context only",
+      "required_sensitivity": "no supplier revenue assumed",
+      "model_consumption": "no direct supplier revenue or EPS"
+    },
+    {
+      "row_key": "Hudong-Zhonghua",
+      "blocked_method": "LNG order attribution and asset-injection value",
+      "allowed_valuation_use": "perimeter exclusion only",
+      "required_sensitivity": "zero credit",
+      "model_consumption": "zero credit in bear base and bull"
+    },
+    {
+      "row_key": "COSCO project",
+      "blocked_method": "incremental order/EPS addition",
+      "allowed_valuation_use": "de-duplicated customer/order-quality evidence",
+      "required_sensitivity": "firm/intended split and delivery",
+      "model_consumption": "official listed-company attribution recognized; project contains intended orders, is already inside aggregate orders/backlog and receives zero incremental credit"
+    },
+    {
+      "row_key": "policy_option",
+      "blocked_method": "policy-premium valuation",
+      "allowed_valuation_use": "monitoring optionality only",
+      "required_sensitivity": "zero base-case credit",
+      "model_consumption": "zero base-case premium"
+    },
+    {
+      "row_key": "aggregate backlog",
+      "blocked_method": "backlog-to-revenue direct conversion",
+      "allowed_valuation_use": "visibility proxy",
+      "required_sensitivity": "delivery, cancellation and margin",
+      "model_consumption": "coverage check only; no backlog roll-forward or direct EPS"
+    },
+    {
+      "row_key": "new orders",
+      "blocked_method": "order-value-to-EPS direct conversion",
+      "allowed_valuation_use": "replenishment and mix direction",
+      "required_sensitivity": "order quality and margin",
+      "model_consumption": "order quality informs price_mix_index; no direct EPS"
+    },
+    {
+      "row_key": "2026 delivery program",
+      "blocked_method": "ship-by-ship schedule model",
+      "allowed_valuation_use": "consolidated revenue constraint",
+      "required_sensitivity": "delivery delay and price/mix",
+      "model_consumption": "2026 effective DWT constrained around 16.5m management plan"
+    },
+    {
+      "row_key": "military/state",
+      "blocked_method": "military SOTP",
+      "allowed_valuation_use": "capability context only",
+      "required_sensitivity": "zero credit",
+      "model_consumption": "zero credit in bear base and bull"
+    },
+    {
+      "row_key": "cruise",
+      "blocked_method": "cruise standalone valuation",
+      "allowed_valuation_use": "capability option only",
+      "required_sensitivity": "zero base-case premium",
+      "model_consumption": "no standalone cruise valuation or base-case premium"
+    }
+  ],
+  "prohibited_credits": {
+    "military_orders_or_margin": 0,
+    "unallocated_CSSC_group_orders": 0,
+    "Hudong_Zhonghua_injection": 0,
+    "weak_target_prices": 0,
+    "COSCO_approximately_CNY50bn_87_vessel_project_incremental_credit": 0,
+    "COSCO_project_note": "officially attributed to 600150 subsidiaries but includes intended orders and is already inside aggregate order/backlog disclosures; no double count"
+  },
+  "valuation_credit": {
+    "decision": "earnings credit - consolidated scenario only",
+    "standalone_growth_segment_credit": "blocked",
+    "military_credit": "watchlist only / insufficient economics",
+    "asset_injection_credit": "zero until official transaction and earnings bridge",
+    "downgrade_triggers": [
+      "formal H1 parent net profit below CNY9.2bn or adjusted parent net profit below CNY9.0bn",
+      "shipbuilding repair offshore gross margin below 10.5%",
+      "material delivery delay cancellation customer-financing failure or warranty loss",
+      "2026 OCF to parent net profit below 0.8x without a verifiable next-period recovery path",
+      "inventory and contract assets outgrow revenue while contract liabilities and cash conversion weaken"
+    ],
+    "upgrade_evidence": [
+      "formal H1 results at or above preview midpoint with quality cash conversion",
+      "shipbuilding repair offshore margin at or above 2025 level and improving",
+      "delivery near or above the 2026 management plan",
+      "auditable ship-type schedule value and margin evidence"
+    ]
+  },
+  "source_quality": {
+    "official_financial_and_order_anchors": "A1",
+    "management_plan": "A1 company IR, forward-looking and not guaranteed",
+    "market_price": "B1 realtime packet plus A1 share count",
+    "street_forecasts": "B1 original broker PDFs, comparison only",
+    "model_assumptions": "house estimates, explicitly scenario-labeled"
+  },
+  "sources": [
+    "CF-03",
+    "CF-04",
+    "CF-05",
+    "CF-17",
+    "PR-01",
+    "BR-01",
+    "BR-02",
+    "BR-03",
+    "BR-04",
+    "BR-05"
+  ],
+  "validation": {
+    "tolerance_CNY100m": 0.01,
+    "tolerance_EPS": 0.0001,
+    "scenario_year_combinations_checked": 9,
+    "equations_checked": [
+      "growth_revenue + base_revenue = total_revenue",
+      "growth_GP + base_GP = gross_profit",
+      "gross_profit / total_revenue = gross_margin",
+      "gross_profit - operating_expenses - impairment + finance_investment_other_net = profit_before_tax",
+      "profit_before_tax * (1-tax_rate) = consolidated_net_profit",
+      "consolidated_net_profit * (1-minority_share) = parent_net_profit",
+      "parent_net_profit / 75.25621288 = EPS",
+      "33.02 / EPS = current_price_PE",
+      "parent_net_profit * OCF_conversion = OCF",
+      "OCF - cash_capex = simplified_FCF"
+    ],
+    "result": "PASS"
+  }
+}

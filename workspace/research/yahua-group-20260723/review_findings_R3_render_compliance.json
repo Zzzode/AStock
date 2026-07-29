@@ -1,0 +1,25 @@
+{
+  "cycle": "R3_render_compliance",
+  "report_type": "single_stock_full_note",
+  "findings": [
+    {
+      "issue_id": "R3-001",
+      "severity": "S",
+      "finding": "The former 25-page event PDF was not the required full-note deliverable and could not be signed with the new model.",
+      "repair": "Compiled the rewritten XeLaTeX source to a 40-page PDF, regenerated extracted text and rendered the complete final set at 150 dpi.",
+      "evidence": "main.pdf, main_current_text.txt, rendered/full-note-20260723-r3/",
+      "status": "closed"
+    },
+    {
+      "issue_id": "R3-002",
+      "severity": "A",
+      "finding": "Appendix exhibit labels duplicated and one source note exceeded the printable width in an earlier final-render candidate.",
+      "repair": "Renumbered A-1 through A-11 contiguously and replaced overlong file-path citations with concise auditable source references; rerendered and visually rechecked.",
+      "evidence": "governance/exhibit_format_review_R1.md, visual_review.md, rendered/full-note-20260723-r3/",
+      "status": "closed"
+    }
+  ],
+  "open_s": 0,
+  "open_a": 0,
+  "open_b": 0
+}

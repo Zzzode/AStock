@@ -1,0 +1,16 @@
+flowchart LR
+    A["高概率×高影响<br/>供应商/BOM误归因 80%<br/>传闻过度归因 80%<br/>估值拥挤 60%"]
+    B["中概率×高影响<br/>8,192卡扩展 55%<br/>软件利用率 50%<br/>客户验收 50%<br/>950DT/HBM良率 50%"]
+    C["较低概率×高影响<br/>路线图转交付 45%<br/>客户集中度 40%"]
+    D["风险处置<br/>专属盈利为0<br/>只保留催化期权<br/>证据升级后再重估"]
+    A --> D
+    B --> D
+    C --> D
+    classDef severe fill:#f4cccc,stroke:#a61c00,color:#5c1205
+    classDef elevated fill:#fce5cd,stroke:#b45f06,color:#5b2d00
+    classDef watch fill:#fff2cc,stroke:#bf9000,color:#5b4500
+    classDef action fill:#d9ead3,stroke:#38761d,color:#1b3b13
+    class A severe
+    class B elevated
+    class C watch
+    class D action

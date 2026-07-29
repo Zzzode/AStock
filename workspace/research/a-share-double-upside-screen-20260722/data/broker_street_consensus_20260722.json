@@ -1,0 +1,163 @@
+{
+  "schema_version": "astock.broker_street_consensus.v1",
+  "collection_date": "2026-07-22",
+  "data_cutoff": "2026-07-22T16:29:49+08:00",
+  "scope": "auditable original-PDF point-target evidence for the deep-model pool; valuation eligibility is separate",
+  "governance_boundary": "The packet contains rows with an auditable original broker PDF, rating, explicit target price, forecasts and a disclosed valuation method. Only 002497 receives positive house anchor weight. 002812 is retained as point-target evidence but receives zero house weight because the company-driver valuation gate is blocked. Target gaps for 600150, 301308, 002240 and 300390 are documented in report_catalog.md and consensus_analysis.md.",
+  "unit_policy": {
+    "revenue_E": "CNY million",
+    "net_profit_E": "CNY million attributable net profit",
+    "EPS_E": "CNY per share",
+    "target_price": "CNY per share",
+    "implied_upside": "decimal"
+  },
+  "summary": {
+    "source_archive_report_count": 14,
+    "formal_row_count": 2,
+    "formal_ticker_count": 2,
+    "auditable_point_target_count": 2,
+    "positive_weight_row_count": 1,
+    "usable_target_anchor_count": 1,
+    "target_anchor_tickers": [
+      "002497"
+    ],
+    "target_price_average": 72.5,
+    "target_price_range": [
+      42.0,
+      103.0
+    ],
+    "explicit_year_end_target_count": 0
+  },
+  "quote_references": [
+    {
+      "ticker": "002497",
+      "company": "雅化集团",
+      "price": 16.79,
+      "price_date": "2026-07-22",
+      "timestamp": "2026-07-22T16:29:49.678386+08:00",
+      "source": "astock.quote_service",
+      "data_quality": "full_realtime"
+    },
+    {
+      "ticker": "002812",
+      "company": "恩捷股份",
+      "price": 47.84,
+      "price_date": "2026-07-22",
+      "timestamp": "2026-07-22T16:21:37.554909+08:00",
+      "source": "astock.quote_service",
+      "data_quality": "full_realtime"
+    }
+  ],
+  "rows": [
+    {
+      "ticker": "002497",
+      "company": "雅化集团",
+      "broker": "东吴证券",
+      "analyst": "曾朵红,阮巧燕",
+      "report_date": "2026-07-07",
+      "publish_date": "2026-07-08",
+      "title": "26H1业绩预告点评：Q2锂盐量利齐升，略超我们预期",
+      "rating": "买入（维持）",
+      "target_price": 42.0,
+      "target_price_low": 42.0,
+      "target_price_high": 42.0,
+      "target_horizon": "not disclosed",
+      "target_year_basis": "2026E",
+      "year_end_applicability": "not established by the report",
+      "revenue_E": {
+        "2026E": 17052,
+        "2027E": 22215
+      },
+      "net_profit_E": {
+        "2026E": 3031.65,
+        "2027E": 3575.28
+      },
+      "EPS_E": {
+        "2026E": 2.63,
+        "2027E": 3.1
+      },
+      "method": "Apply 16x PE to 2026E EPS of CNY2.63; implied value CNY42.08, rounded by the broker to target price CNY42.",
+      "method_quote": "给予26年16x估值，对应目标价42元",
+      "implied_upside": 1.501489,
+      "implied_upside_percent": 150.15,
+      "implied_upside_reference_price": 16.79,
+      "source_quality": "original_pdf",
+      "source_form": "original_pdf",
+      "evidence_tier": "primary",
+      "download_status": "downloaded",
+      "source_url": "https://data.eastmoney.com/report/zw_stock.jshtml?infocode=AP202607071826780391",
+      "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202607071826780391_1.pdf",
+      "source_path": "workspace/research/a-share-double-upside-screen-20260722/sources/broker-reports/2026-07-22/002497-雅化集团/2026-07-08-东吴证券-26H1业绩预告点评-Q2锂盐量利齐升-略超我们预期.pdf",
+      "local_text": "workspace/research/a-share-double-upside-screen-20260722/sources/broker-reports/2026-07-22/002497-雅化集团/2026-07-08-东吴证券-26H1业绩预告点评-Q2锂盐量利齐升-略超我们预期.txt",
+      "valuation_weight": 0.1,
+      "confidence": "high",
+      "exhaustion_reason": null
+    },
+    {
+      "ticker": "002812",
+      "company": "恩捷股份",
+      "broker": "东吴证券",
+      "analyst": "曾朵红,阮巧燕,岳斯瑶",
+      "report_date": "2026-07-10",
+      "publish_date": "2026-07-10",
+      "title": "26H1业绩预告点评：Q2业绩超我们预期，隔膜供需紧张盈利持续提升",
+      "rating": "买入（维持）",
+      "target_price": 103.0,
+      "target_price_low": 103.0,
+      "target_price_high": 103.0,
+      "target_horizon": "not disclosed",
+      "target_year_basis": "2027E",
+      "year_end_applicability": "not established by the report",
+      "revenue_E": {
+        "2026E": 20058,
+        "2027E": 31115
+      },
+      "net_profit_E": {
+        "2026E": 2279.37,
+        "2027E": 5068.27
+      },
+      "EPS_E": {
+        "2026E": 2.32,
+        "2027E": 5.16
+      },
+      "method": "Apply 20x PE to 2027E EPS of CNY5.16; implied value CNY103.20, rounded by the broker to target price CNY103.",
+      "method_quote": "给予27年20x估值，对应目标价103元",
+      "implied_upside": 1.15301,
+      "implied_upside_percent": 115.3,
+      "implied_upside_reference_price": 47.84,
+      "source_quality": "original_pdf",
+      "source_form": "original_pdf",
+      "evidence_tier": "primary",
+      "download_status": "downloaded",
+      "source_url": "https://data.eastmoney.com/report/zw_stock.jshtml?infocode=AP202607101826872306",
+      "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202607101826872306_1.pdf",
+      "source_path": "workspace/research/a-share-double-upside-screen-20260722/sources/broker-reports/2026-07-22/002812-恩捷股份/2026-07-10-东吴证券-26H1业绩预告点评-Q2业绩超我们预期-隔膜供需紧张盈利持续提升.pdf",
+      "local_text": "workspace/research/a-share-double-upside-screen-20260722/sources/broker-reports/2026-07-22/002812-恩捷股份/2026-07-10-东吴证券-26H1业绩预告点评-Q2业绩超我们预期-隔膜供需紧张盈利持续提升.txt",
+      "valuation_weight": 0.0,
+      "confidence": "high",
+      "exhaustion_reason": null
+    }
+  ],
+  "consensus_snapshot": {
+    "bullish_count": 2,
+    "neutral_count": 0,
+    "bearish_count": 0,
+    "avg_target_price": 72.5,
+    "target_range": [
+      42.0,
+      103.0
+    ],
+    "key_consensus_views": [
+      "雅化集团：锂盐量利齐升、权益资源贡献和套保拖累消退支撑 2026E 盈利弹性。",
+      "恩捷股份：隔膜供需趋紧、价格修复和出货增长支撑 2027E 盈利跃升。"
+    ],
+    "key_divergence_points": [
+      "雅化集团目标价使用 2026E PE，恩捷股份目标价使用 2027E PE，不能直接横向比较估值年份。",
+      "两份原始报告均未披露目标价期限；它们不是有明文支持的 2026-12-31 年末目标。"
+    ]
+  },
+  "zero_weight_gap_documents": [
+    "workspace/research/a-share-double-upside-screen-20260722/data/report_catalog.md",
+    "workspace/research/a-share-double-upside-screen-20260722/data/consensus_analysis.md"
+  ]
+}

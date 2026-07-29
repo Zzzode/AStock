@@ -1,0 +1,16 @@
+flowchart LR
+    A["现价隐含增长高于预测<br/>科大讯飞 +52ppt<br/>航天电器 +27ppt<br/>申菱环境 +25ppt<br/>华工科技 +22ppt"]
+    B["接近预测<br/>深南电路 +7ppt<br/>科华数据 -1ppt<br/>神州数码 -3ppt"]
+    C["预测增长高于现价要求<br/>沪电股份 -9ppt<br/>沃尔核材 -25ppt<br/>胜宏科技 -47ppt"]
+    D["投资含义<br/>高正缺口=更依赖兑现<br/>大负缺口=可能有安全边际<br/>但不等于 Atlas 纯度"]
+    A --> D
+    B --> D
+    C --> D
+    classDef high fill:#f4cccc,stroke:#a61c00,color:#5c1205
+    classDef neutral fill:#fff2cc,stroke:#bf9000,color:#5b4500
+    classDef low fill:#d9ead3,stroke:#38761d,color:#1b3b13
+    classDef conclusion fill:#d9eaf7,stroke:#3d6d91,color:#15324a
+    class A high
+    class B neutral
+    class C low
+    class D conclusion

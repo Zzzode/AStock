@@ -1,0 +1,4 @@
+# Missing Data Request Pack — 2026-07-15 Refresh
+
+- 000737 北方铜业 | missing: current original broker PDF or auditable consensus target/range | treatment: conditional_high_upside_watch; zero external-anchor weight | required: Original broker PDF, broker official page, Wind/Choice/iFinD consensus snapshot, or company-covered research note with date, broker, rating, forecast EPS/revenue/net profit, valuation method and target/range.
+- 600120 浙江东方 | missing: current original broker PDF or auditable consensus target/range | treatment: conditional_margin_watch; zero external-anchor weight | required: Original broker PDF, broker official page, Wind/Choice/iFinD consensus snapshot, or company-covered research note with date, broker, rating, forecast EPS/revenue/net profit, valuation method and target/range.

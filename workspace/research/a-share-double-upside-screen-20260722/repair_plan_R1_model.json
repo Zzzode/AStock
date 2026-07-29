@@ -1,0 +1,27 @@
+{
+  "cycle": "R1_model",
+  "status": "COMPLETE",
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 0,
+  "baseline_verifier": "Not rerun in this repair review by instruction. Targeted broker-summary, row-weight, PDF timestamp and extracted-text checks passed.",
+  "repair_groups": [],
+  "closed_findings": [
+    "R1-S-001",
+    "R1-A-001",
+    "R1-A-002",
+    "R1-A-003",
+    "R1-A-004",
+    "R1-B-001",
+    "R1-B-002"
+  ],
+  "accepted_open_b_findings": [],
+  "final_acceptance": [
+    "Independent R1_model re-review confirms zero open S-Level and A-Level findings.",
+    "All positive-weight scenario values reproduce from disclosed operating-driver and EPS assumptions.",
+    "Every deep-model ticker has a contract-compliant structured valuation or explicit zero-weight/insufficient-evidence row.",
+    "The exact Model Reproducibility: PASS marker is restored only after the complete institutional audit passes.",
+    "The case-local verifier and repository research gates pass without hard-coded exceptions that contradict the artifact contract.",
+    "No R1_model finding remains open."
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "cycle": "R0_evidence",
+  "publishability_status": "PASS",
+  "publishability_score": 94,
+  "review_mode": "official-source, broker-source and industry-proxy cross-verification",
+  "findings": [
+    {
+      "issue_id": "R0-A-001",
+      "severity": "A",
+      "artifact": "data/source_registry.json",
+      "evidence": "The initial evidence packet treated all treasury shares as economically absent but had not archived the approved seventh employee share plan.",
+      "fix_required": "Archive the latest official plan, add the maximum transfer shares, price, cash proceeds and share-payment uncertainty to the registry and claims.",
+      "blocking_gate": "share_source_completeness",
+      "status": "closed",
+      "verifier_ref": "sources/official-20260722/2026_seventh_employee_share_plan.pdf; data/source_registry.json"
+    },
+    {
+      "issue_id": "R0-B-001",
+      "severity": "B",
+      "artifact": "data/verified_market_data.md",
+      "evidence": "An earlier intraday capture at CNY15.10 was superseded by a later verified CNY15.06 snapshot.",
+      "fix_required": "Freeze the latest captured price and timestamp consistently across the model and report inputs.",
+      "blocking_gate": "current_price_consistency",
+      "status": "closed",
+      "verifier_ref": "sources/market-20260722/astock_market_snapshot_000703_20260722.json"
+    },
+    {
+      "issue_id": "R0-B-002",
+      "severity": "B",
+      "artifact": "data/claim_audit.json",
+      "evidence": "The H1 preview is unaudited and its prior-year comparison is subject to a same-control restatement.",
+      "fix_required": "Label the preview and restatement boundary in all adopted wording and prohibit mechanical annualization.",
+      "blocking_gate": "forecast_evidence_boundary",
+      "status": "closed",
+      "verifier_ref": "data/claim_audit.json; data/verified_financials.md"
+    }
+  ],
+  "open_s_count": 0,
+  "open_a_count": 0
+}

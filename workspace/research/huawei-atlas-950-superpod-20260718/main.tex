@@ -1,0 +1,59 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{华为 Atlas 950 SuperPoD 全产业链深度研究}
+\newcommand{\reportsubtitle}{1,024 卡实物验证、8,192 卡路线图与 A 股证据门槛}
+\newcommand{\reportkicker}{机构股票研究}
+\newcommand{\reportscope}{中国 A 股 | 国产算力与 AIDC 基础设施}
+\newcommand{\reportdate}{2026 年 7 月 18 日}
+\newcommand{\reportdatacutoff}{市场价格至 2026-07-17 收盘；财务数据至 2026Q1/2025A；业绩预告至 2026-07-17}
+\newcommand{\reporttype}{产业链深度研究}
+\newcommand{\reportauthor}{AStock 研究代理团队}
+\newcommand{\reporthouseview}{华为首次公开展示的是 1,024 卡 Atlas 950 实物系统，而 8,192 卡仍是计划于 2026Q4 可用的最大设计，并非已经交付、验收的整机。公开证据足以确认国产多机柜 scale-up 架构从路线图进入实物阶段，却不足以确认任何 A 股上游公司的 Atlas 950 专属订单、BOM、ASP 或利润贡献。因此，本报告对所有覆盖公司给予 2026E Atlas 专属收入信用 0 元，只按已披露的更广义 AIDC 业务建模。高关联度公司中，申菱环境、科大讯飞、拓维信息分别提供了华为客户、昇腾 950 协同或昇腾生态关系证据，但均未形成 Atlas 订单闭环；保守估值中仅沃尔核材保留约 +1.4\% 微弱空间，且 Atlas 纯度低。结论是“产业方向成立、订单证据不足、价格分化显著”，当前更适合分层跟踪和等待验证，不适合按概念无差别追高。}
+\newcommand{\reportquality}{来源注册表 105 条；华为官方来源 4 组；官方竞品、政策和产业链来源 28 组；12 家建模公司 FY2025 交易所完整年报原件逐项核对；原始卖方 PDF 38 份；2026-07-17 收盘价覆盖 22/22。2026Q1 结构化观察只用于监测，不进入目标价。所有 Atlas 专属供应商、订单、ASP、收入和利润声明均执行一级证据门槛；传闻、投资者提问前提和通用 AIDC 能力不得升级为 Atlas 供应关系。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，仅供研究和监测参考，不构成任何证券买卖建议。}
+
+\input{../../../.agents/templates/preamble.tex}
+\hypersetup{pdfauthor={\reportauthor},pdftitle={\reporttitle}}
+
+\begin{document}
+\astockcover
+\tableofcontents
+\clearpage
+
+\chapter{投资委员会概要}
+\input{sections/ch01_dashboard}
+\chapter{证据治理与事实校准}
+\input{sections/ch02_evidence}
+\chapter{技术架构、竞争格局与价值池}
+\input{sections/ch03_industry}
+\chapter{全产业链映射与盈利传导}
+\input{sections/ch04_supply_chain}
+\chapter{重点公司、财务兑现与证据卡}
+\input{sections/ch05_companies}
+\chapter{卖方一致预期、市场分歧与反身性}
+\input{sections/ch06_sentiment}
+\chapter{估值模型、目标区间与安全边际}
+\input{sections/ch07_valuation}
+\chapter{风险矩阵、催化剂与验证清单}
+\input{sections/ch08_risks}
+\chapter{全景池、观察池与排除项}
+\input{sections/ch09_full_chain}
+\chapter{结论与分层跟踪建议}
+\input{sections/ch10_recommendation}
+
+\appendix
+\chapter{来源注册表与声明审计}
+\input{sections/app_source_audit}
+\chapter{模型假设与披露}
+\input{sections/app_model_disclosure}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[免责声明]
+\small
+\reportdisclaimer\par
+本报告中的 AStock 目标价、情景区间与动作标签均为公开信息基础上的研究模型，不代表外部券商评级、投资顾问意见、交易指令或组合管理建议。Atlas 950 的产品节奏、供应链分配和公司盈利预测均可能快速变化，任何判断必须由后续订单、交付、验收、收入、毛利率和现金流重新验证。
+\end{disclosurebox}
+\end{document}

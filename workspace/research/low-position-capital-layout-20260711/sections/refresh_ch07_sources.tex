@@ -1,0 +1,18 @@
+\chapter{来源、数据质量与复现索引}
+
+\begin{itemize}
+\item 官方全量预告：\texttt{refresh-20260715/data/raw\_a\_share\_h1\_2026\_preview\_20260715.json}。
+\item 全量筛选：\texttt{refresh-20260715/data/full\_market\_preview\_screen\_20260715.json}。
+\item 候选行情：\texttt{refresh-20260715/data/full\_market\_candidates\_20260715.json}。
+\item 候选证据：\texttt{refresh-20260715/data/full\_market\_valuation\_evidence\_20260715.json}。
+\item 优先池模型：\texttt{refresh-20260715/data/full\_market\_priority\_valuation\_20260715.json}。
+\item 正式模型选择桥：\texttt{refresh-20260715/data/formal\_selection\_bridge\_20260715.json}。
+\item 正式模型：\texttt{refresh-20260715/data/current\_valuation\_model\_20260715.json}。
+\item 估值恢复包：\texttt{refresh-20260715/data/valuation\_recovery\_601360\_000042\_20260715.json}及其对应的\texttt{sources/valuation-recovery-20260715/}原文归档。
+\item Q1财务包：\texttt{refresh-20260715/data/financials/}。
+\item 研报原件：\texttt{refresh-20260715/sources/broker-reports-20260715/}。
+\end{itemize}
+
+候选证据覆盖：财务142/142，研报元数据138/142，PDF138/142，可抽取目标价15/142。
+
+\textbf{Refresh Model Reproducibility: PASS}：所有候选的现价、股本、H1分母、H2比例、熊/基准/牛、概率值和空间均由结构化刷新包计算；正式池在此基础上保留独立审计边界。

@@ -1,0 +1,99 @@
+造船价值链把船东需求转化为设计、认证、设备采购、总装交付和后市场服务。600150位于最直接的总装与工程管理环节，能够确认大额收入，也承担延期、返工、质保和营运资金风险。产业链研究的目的不是扩散概念股，而是解释利润池为何取决于船位、技术准入、采购与交付。
+
+\section{E08｜全链条与利润传导}
+
+\begin{exhibitbox}[从需求锚到现金回收的链条]
+\centering
+\begin{tikzpicture}[
+  node distance=0.30cm and 0.30cm,
+  box/.style={rounded corners=2pt,draw=rulegrey,fill=lightgrey,align=center,text width=2.1cm,minimum height=1.15cm,font=\scriptsize},
+  core/.style={box,draw=navy,fill=accentblue!10,very thick},
+  arrow/.style={-{Latex},thick,draw=steelgrey}
+]
+\node[box] (demand) {需求锚\\船队更新、贸易、政策};
+\node[box,right=of demand] (owner) {船东与融资\\询价、预付款};
+\node[box,right=of owner] (design) {设计/船级/认证\\技术准入};
+\node[core,right=of design] (yard) {600150船厂总装\\船位、工程管理};
+\node[box,below=of design] (supply) {上游材料与设备\\钢材、动力、航电};
+\node[box,right=of yard] (delivery) {交付与确认\\验收、收入、毛利};
+\node[box,right=of delivery] (service) {质保/修船/改装\\现金回收与后市场};
+\draw[arrow] (demand)--(owner);
+\draw[arrow] (owner)--(design);
+\draw[arrow] (design)--(yard);
+\draw[arrow] (supply)--(yard);
+\draw[arrow] (yard)--(delivery);
+\draw[arrow] (delivery)--(service);
+\end{tikzpicture}
+\sourcenote{全链条分类与供应链模型；需求锚仅说明需求方向，不证明公司订单。}
+\end{exhibitbox}
+
+总装环节的收入规模最大，但并不意味着利润率最高。船厂以船位、客户认证和工程组织换取定价，同时承担材料设备锁价、长周期建设、汇率、缺陷整改和交付融资风险。合同负债为生产提供预付款，存货和合同资产又会吸收现金；利润池必须在完整履约后才能确认。
+
+\section{价值链经济性：哪些变量有数，哪些只能做敏感性}
+
+600150披露的最强经济性证据是合并收入、主业毛利率、聚合新签/在手、交付与营运资金。设备等收入186.17亿元、年末装备手持129.63亿元可进入合并结果，但产品级价格、毛利和认证不足以支持独立倍数。高端气体船、邮轮、海工与军品同样只在合并层面获得信用。
+
+\begin{exhibitbox}[价值链经济性与估值许可]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{2.8cm}L{3.6cm}L{3.5cm}X}
+\toprule
+\textbf{区块} & \textbf{价值/价格代理} & \textbf{利润与供需} & \textbf{估值信用} \\
+\midrule
+全球新造船 & 1,860亿美元/5,800万CGT & 新签回落、价值量仍高 & 行业背景，不直接估值公司 \\
+材料与外购设备 & 合计约工业成本65\% & 钢价较稳、设备价格上升 & Growth毛利敏感性，不给供应商信用 \\
+常规商船总装 & 船型ASP未披露 & 2025核心业务毛利率11.72\% & 合并收入/毛利情景可用 \\
+高端气体/绿色船 & 聚合结构与重大合同金额可见 & 独立毛利、系统国产率未披露 & 订单质量，不给高端独立倍数 \\
+大型邮轮 & 在建进度可见，国产化约35\% & 学习曲线与单船利润未披露 & 能力期权，基础信用0 \\
+军品 & 订单、价格、利润均未披露 & 透明度不足 & 禁止军品SOTP \\
+修船/改装 & 2025完工产值61.13亿元 & 独立毛利和坞期利用率未披露 & 合并周期平滑项 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{CF-03、CF-17、II-07、II-08；价值量和许可边界来自R0审计。}
+\end{exhibitbox}
+
+该表的“所以呢”是：能够进入估值的变量集中在合并交付和毛利，无法支持船型/船厂SOTP。缺少细分数据并不意味着假设其为零，而是把不确定性放入Bear/Base/Bull的交付、价格/结构和毛利率区间。
+
+\section{竞争格局：国家集中、产品分层、公司份额未披露}
+
+全球商船建造集中于中国、韩国、日本。中国在广谱常规船型与数量上领先，韩国三大船企在LNG、FLNG和高端海工积累深，欧洲船企在邮轮、军船和复杂特种船上具有长期实绩。600150合并后的多基地产品矩阵具有较强护城河，但公司级CR3/CR5未披露，不能把CSSC group全球第一写成600150公司第一。
+
+\begin{exhibitbox}[产品层竞争与国产化边界]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{2.8cm}L{3.8cm}L{3.5cm}X}
+\toprule
+\textbf{产品层} & \textbf{主要竞争者} & \textbf{600150能力} & \textbf{边界/替代风险} \\
+\midrule
+集装箱/油轮/散货 & 中国头部、韩国三大、扬子江等 & 江南、大船、外高桥、广船、澄西、北海广泛覆盖 & 标准船型竞争与成本效率重要 \\
+高端气体船 & HD HHI、Samsung、Hanwha、CSSC体系 & 江南覆盖多类气体船 & 围护/燃料系统许可和实绩逐项目验证 \\
+大型邮轮 & Fincantieri等欧洲龙头 & 外高桥形成国产邮轮能力 & 高价值系统外部依赖、学习曲线较长 \\
+海工/复杂工程 & 韩国船企及全球工程链 & 大连、外高桥、江南、武昌具备能力 & 项目制波动、延期和减值风险 \\
+动力与设备 & 国际许可方、中国动力体系 & 合并范围有部分设备单位 & 中国动力为参股；核心许可与认证仍是边界 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{CF-03、CF-12、II-06--II-12及海外公司公开能力资料。}
+\end{exhibitbox}
+
+竞争格局对估值有两层影响。近期，船位与订单覆盖支撑价格，但外购设备和复杂项目会侵蚀毛利；长期，高端能力与客户认证决定价格持续期，而民营船厂扩产和韩国实绩限制溢价上限。本报告因此采用周期正常化PE，不使用“集团龙头”永久高倍数。
+
+\section{核心、卫星、需求锚与覆盖缺口}
+
+核心估值池只有600150。中国动力、扬子江船业、韩国三大船企、Fincantieri及沪东中华是卫星或边界观察节点；全球贸易、班轮资本开支、能源运输、汽车出口、IMO规则和国防需求是需求锚。需求锚不证明任何公司获得订单，卫星节点也不分享600150的订单或估值。
+
+\begin{exhibitbox}[全链条投资分类]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{2.8cm}L{4.2cm}L{3.5cm}X}
+\toprule
+\textbf{分类} & \textbf{节点} & \textbf{用途} & \textbf{动作} \\
+\midrule
+核心估值 & 600150.SH & 合并盈利、现金与估值 & 中性偏多，持有等待验证 \\
+合并组成 & 七家主要船厂及部分设备单位 & 解释交付、结构和效率 & 不独立交易或估值 \\
+卫星观察 & 中国动力、海外船企 & 竞争、成本和高端实绩对标 & 主题跟踪，证据不足不评级 \\
+上市体外 & 沪东中华等集团单位 & 集团能力边界 & 正式注入/合同公告前零信用 \\
+需求锚 & 贸易、船队更新、能源、政策 & 解释为何可能下单 & 不作为订单归属证明 \\
+覆盖缺口 & ASP、排程、利用率、认证、军品经济性 & 限定方法和置信度 & 通过敏感性或零计价处理 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{Full-chain universe、core-versus-satellite与coverage gap matrix。}
+\end{exhibitbox}
+
+本章结论是：产业链宽度提高了600150承接行业景气的能力，却没有创造额外估值母体。价值最终仍要经过上市公司合并利润与现金；上游、卫星、集团外资产和需求锚只提供验证，不提供目标价加项。

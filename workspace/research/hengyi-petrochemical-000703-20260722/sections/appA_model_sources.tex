@@ -1,0 +1,114 @@
+\section{核心模型公式}
+
+本附录只保留复算所需公式，不新增正文以外的盈利或估值判断。金额以亿元、股本以亿股、价格以元／股计；详细小数用于审计，发布数字按可读性四舍五入。
+
+\begin{exhibitbox}[股本、盈利与目标价复算]
+\scriptsize
+\setlength{\jot}{2pt}
+\begin{align*}
+\text{\songti 经济股本}
+  &=38.21562147-3.81840072=34.39722075,\\
+\text{\songti 转债潜在新增}
+  &=29.944338\div10.32=2.90158314,\\
+\text{\songti 已披露稀释股本}
+  &=34.39722075+2.90158314+1.50813800=38.80694189,\\
+\text{\songti 员工计划最高现金}
+  &=1.50813800\times12.43=18.746155,\\
+\text{\songti 2026E基准EPS}
+  &=77.5\div38.80694189=1.997065,\\
+\text{\songti 熊情景价值}
+  &=(65\times6+18.746155)\div38.80694189=10.532810,\\
+\text{\songti 基准情景价值}
+  &=(77.5\times7.5+18.746155)\div38.80694189=15.461052,\\
+\text{\songti 牛情景价值}
+  &=(95\times9+18.746155)\div38.80694189=22.515203,\\
+\text{\songti 基本面锚}
+  &=10.532810\times25\%+15.461052\times55\%+22.515203\times20\%=15.639822,\\
+\text{\songti 市场锚}
+  &=(14.655506+15.06)\div2=14.857753\approx14.86,\\
+\text{\songti 归一化Street锚}
+  &=(17.05\times36.03+18.746155)\div38.80694189=16.313000,\\
+\text{\songti 最终模型值}
+  &=15.639822\times65\%+14.86\times15\%+16.313000\times20\%=15.657484,\\
+\text{\songti 发布目标空间}
+  &=15.7\div15.06-1=4.2497\%\approx4.3\%.
+\end{align*}
+\end{exhibitbox}
+\sourcenote{HY-OFF-CB；HY-OFF-DIV；HY-OFF-ESOP7；HY-MKT-QUOTE；HY-MKT-KLINE；HY-BRK-GUOXIN；analysis/valuation\_audit.md，截止2026-07-22。}
+
+主模型不回加可转债有效利息，因为实际利率法折价摊销和税务影响未量化；不回加员工计划股份支付，因为费用总额和2026摊销未披露。38.80694189亿股为估值敏感性分母，不替代历史会计加权平均股本。
+
+\section{其他派生公式与使用限制}
+
+\begin{exhibitbox}[财务与市场派生]
+\small
+\noindent\begin{tabularx}{\textwidth}{L{3.4cm}L{5.1cm}X}
+\toprule
+\textbf{项目} & \textbf{公式／结果} & \textbf{限制} \\
+\midrule
+2025简单FCF代理 & $46.25-55.02=-8.76$亿元 & 仅OCF减购建支出，非公司正式FCF \\
+2026Q1简单FCF代理 & $-25.73-14.43=-40.17$亿元 & 未含处置与其他投资现金流 \\
+2025年末粗略净债务 & $396.96+95.72+130.83+27.44-107.49=543.46$亿元 & 未调整全部受限现金、租赁和票据 \\
+2026Q1粗略净债务 & $427.69+77.74+167.10+27.71-126.26=573.98$亿元 & 同上 \\
+当前经济股本隐含利润 & $15.06\times34.3972\div7.5=69.07$亿元 & 未转股视角 \\
+转债股数隐含利润 & $15.06\times37.2988\div7.5=74.90$亿元 & 不回加有效利息的敏感性 \\
+已披露稀释隐含利润 & $(15.06\times38.8069-18.7462)\div7.5=75.42$亿元 & 扣员工现金，非会计if-converted \\
+PTA行业加工费 & $PTA-0.655\times PX$ & 工艺近似，不是恒逸实际成本 \\
+聚酯／瓶片原料代理 & 产品价$-0.855\times PTA-0.335\times MEG$ & 理论物耗，不发布公司单吨利润 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{HY-OFF-2025AR；HY-OFF-2026Q1；IND-CZCE；analysis/valuation\_audit.md。所有派生均标明限制。}
+
+\section{来源登记}
+
+\begin{exhibitbox}[核心来源ID与证据边界]
+\scriptsize
+\noindent\begin{tabularx}{\textwidth}{L{2.65cm}L{3.2cm}L{2.55cm}X}
+\toprule
+\textbf{ID} & \textbf{来源} & \textbf{主要用途} & \textbf{关键边界} \\
+\midrule
+HY-OFF-2025AR & 2025年报 & 财务、分部、产能、治理、担保 & 行业数据含公司转引 \\
+HY-OFF-2026Q1 & 2026Q1报告 & 利润、现金、存货、债务 & 无项目利润拆分 \\
+HY-OFF-2026H1P & H1业绩预告 & 55--60亿元归母与驱动 & 未经审计、待半年报 \\
+HY-OFF-P2 & 文莱二期进展 & 产能、工期、融资文件 & 意向／承诺不等于完整交割 \\
+HY-OFF-CB & Q2转股公告 & 股本、本金、转股价 & Q3后转股未知 \\
+HY-OFF-DIV & 分红实施 & 回购库存股口径 & 登记日后可能变化 \\
+HY-OFF-ESOP7 & 第七期员工计划 & 股数、12.43元、会计处理 & 认购、过户与费用未知 \\
+HY-OFF-RATING & 跟踪评级 & 刚债、项目投入与融资风险 & 非审计列报口径 \\
+HY-MKT-QUOTE & AStock行情快照 & 15.06元盘中价 & 非收盘；零值估值剔除 \\
+HY-MKT-KLINE & 前复权历史行情 & VWAP、年度高低 & 非交易所官方文件 \\
+HY-BRK-GUOXIN & 国信原始PDF & 预测、目标区间、FCFE & 券商判断，需股本归一 \\
+IND-IEA-202607 & IEA公开摘要 & 全球油品与裂解环境 & 非公司利润 \\
+IND-EIA-202607 & EIA STEO & Brent情景 & 预测而非实现 \\
+IND-NBS／IND-PTA-202606 & 统计局／行业转载 & 产量、开工、库存、加工费 & 不等于恒逸装置 \\
+IND-CZCE & 郑商所方法材料 & 物耗和价差公式 & 理论公式 \\
+IND-PEERS & 五家同行年报 & 产能与模式比较 & 口径不同，不直接排名利润 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{来源登记及官方、市场、行业三类抓取清单，资料截止2026-07-22。}
+
+\section{主张审计与最终披露}
+
+\begin{exhibitbox}[高影响主张的最终状态]
+\scriptsize
+\noindent\begin{tabularx}{\textwidth}{L{4.0cm}L{2.25cm}X}
+\toprule
+\textbf{主张} & \textbf{状态} & \textbf{报告处理} \\
+\midrule
+H1归母55--60亿元 & 公司预告 & 未经审计，作为情景起点 \\
+文莱一期是主要驱动之一 & 公司原因+推断 & 不反算项目净利 \\
+行业价差可直接等于恒逸利润 & 拒绝 & 只作方向与阈值 \\
+House 2026E归母77.5亿元 & AStock预测 & H1中值57.5+H2正常化20.0 \\
+国信79.1亿元是House基准 & 拒绝 & 只作Street对照 \\
+二期已完整金融交割 & 未确认 & 基准零信用 \\
+剩余2.31亿库存股将注销 & 未确认 & 不给注销溢价 \\
+员工计划股份支付费用为零 & 未确认 & 不回加、不虚构 \\
+北向／机构资金看多 & 未收集 & 不判断，权重为零 \\
+\bottomrule
+\end{tabularx}
+\end{exhibitbox}
+\sourcenote{data/claim\_audit.md；source\_exhaustion\_log.md，审计截止2026-07-22。}
+
+本报告门禁状态为CONDITIONAL：模型可复算，估值审计为Model Reproducibility: PASS；但文莱2026分部利润、税惠起止、二期完整融资、员工计划费用和其余库存股用途仍是正式缺口。因此结论为中性／观察，不将尾部牛情景、规划产能或行业代理写成确定收益。

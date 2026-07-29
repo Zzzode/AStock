@@ -1,0 +1,115 @@
+{
+  "cycle": "R3_render_compliance",
+  "case_id": "china-shipbuilding-600150-20260722",
+  "review_date": "2026-07-23",
+  "cycle_status": "PARTIAL_RECHECK_NO_BLOCKER_PENDING_FULL_RENDER_REFRESH",
+  "publishability_status": "PENDING_FINAL_GATE_REFRESH",
+  "institutional_status": "INSTITUTIONAL_PASS_PENDING_FINAL_RENDER_REFRESH",
+  "publishability_score": 92,
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "open_b_count": 3,
+  "review_mode": "Historical 50-page page-by-page visual review retained; 2026-07-23 independent remediation recheck covers the current PDF metadata/text and critical changed pages, with a full 51-page rendered-set refresh still required before publication.",
+  "review_scope": [
+    "main.pdf (51 pages, SHA-256 847ce2676eb646fba6520ae1f0bf77aa96200918fb6db87f687ef0577dc04052)",
+    "main_current_text.txt",
+    "direct pdftoppm render of current PDF physical pages 36-39 (Chapter 12 and Chapter 13 opening)",
+    "Appendix A source mapping in main_current_text.txt",
+    "main.tex and sections/*.tex",
+    "governance/exhibit_format_review_R1_20260722.md"
+  ],
+  "review_lenses": [
+    "cover, contents, chapter-open and final-page presentation",
+    "all wide tabularx, longtable, TikZ and pgfplots exhibits",
+    "clipping, overflow, overlap, blank/orphan pages and whitespace",
+    "font embedding, Unicode mapping, glyph integrity and text extraction",
+    "header, footer, page numbering and A4 page geometry",
+    "final target, fair-value range, action and disclaimer visibility",
+    "XeLaTeX build diagnostics and overfull-box materiality"
+  ],
+  "findings": [
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "owner_skill": "exhibit-format-reviewer",
+      "owner_agent": "maker-checker reviewer",
+      "artifact": "main.pdf pages 26, 35 and 47; sections/ch08_financial_quality.tex lines 90-94; sections/ch11_valuation.tex lines 143-147; sections/appB_model.tex lines 165-167",
+      "evidence": "Pages 26 and 35 retain only a terminal control box/conclusion with about three quarters of the page blank; page 47 contains only the model-prohibition box with more than four fifths blank before Appendix C. The content is complete and not clipped or misleading, so the defect is non-blocking, but these are genuine low-density orphan pages.",
+      "fix_required": "Recover the terminal material onto the preceding page by modestly enlarging the prior page or reducing exhibit/paragraph spacing; do not solve it by shrinking body text.",
+      "blocking_gate": "orphan_page_and_layout_density",
+      "status": "open",
+      "waived": false,
+      "verifier_ref": "rendered/page-01.png through rendered/page-50.png; main.pdf"
+    },
+    {
+      "issue_id": "R3-B-002",
+      "severity": "B",
+      "owner_skill": "exhibit-format-reviewer",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf pages 42-43; sections/appA_sources.tex line 88",
+      "evidence": "The final paragraph on page 42 leaves its first line at the foot of the page and resumes at the top of page 43 with '向但来自四家券商…', creating a conspicuous sentence-level widow/orphan across the appendix source discussion.",
+      "fix_required": "Keep the short paragraph together with a three-line Needspace guard or equivalent local pagination control.",
+      "blocking_gate": "paragraph_widow_orphan_control",
+      "status": "open",
+      "waived": false,
+      "verifier_ref": "rendered/page-42.png; rendered/page-43.png; main.pdf"
+    },
+    {
+      "issue_id": "R3-B-003",
+      "severity": "B",
+      "owner_skill": "exhibit-format-reviewer",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf page 38; sections/ch13_risk_monitoring.tex lines 7-25",
+      "evidence": "The six-column, ten-row core risk matrix fits without clipping, but scriptsize long-form cells and tight leading make print-scale reading materially denser than the surrounding report.",
+      "fix_required": "Split the exhibit into threshold/probability and financial-sensitivity/action tables, or remove repeated not-estimable/zero-credit wording into one source note so the body can return to small size.",
+      "blocking_gate": "risk_matrix_print_readability",
+      "status": "open",
+      "waived": false,
+      "verifier_ref": "rendered/page-38.png; main.pdf"
+    }
+  ],
+  "render_checks": {
+    "page_count": 51,
+    "page_size": "A4",
+    "pdf_size_bytes": 748816,
+    "pdf_sha256": "847ce2676eb646fba6520ae1f0bf77aa96200918fb6db87f687ef0577dc04052",
+    "critical_page_render": "physical pages 36-39 rendered directly from the current PDF at 150 dpi; Chapter 12 tables and the following Chapter 13 opening show no clipping, overlap or broken glyphs.",
+    "appendix_source_mapping_text_recheck": "PR-02/PR-03 source rows and the key-claim mapping are present in main_current_text.txt.",
+    "full_render_set_status": "PENDING_MAIN_AGENT_REFRESH",
+    "full_pdf_font_and_overfull_status": "PENDING_MAIN_AGENT_REFRESH",
+    "full_text_snapshot_byte_identity_status": "PENDING_MAIN_AGENT_REFRESH"
+  },
+  "confirmed_controls": [
+    "The cover, first investment-committee chapter and valuation chapter visibly preserve current price CNY33.02, target CNY33.07, approximately +0.15% upside, fair-value range CNY31.64-35.96 and the hold/wait action.",
+    "The repaired ch09 Bear/Base/Bull forecast table and ch10 broker matrix fit inside their exhibit boundaries with all essential columns visible.",
+    "All four TikZ diagrams are connected, legible and free of node, arrow or text collisions; the cycle chart retains readable labels and units.",
+    "All five longtables continue cleanly across pages with repeated headers where needed and no right-edge clipping.",
+    "Headers, footers and page numbering are consistent; chapter-opening pages intentionally omit running heads without creating blank pages.",
+    "The final important-statement page is intentionally minimal, fully visible and separated from the research body.",
+    "The project build record states two-pass MacTeX XeLaTeX and final CLI success at 50 pages; the only remaining overfull diagnostic is 0.24898pt in Appendix A, which is visually undetectable and non-material."
+  ],
+  "missing_institutional_tables_or_exhibits": [],
+  "verifier_summary": {
+    "historical_pre_remediation_case_local_verifier": "36 PASS / 3 FAIL after the 2026-07-22 R3 artifacts; historical only.",
+    "historical_pre_remediation_shared_research_gate": "100 PASS / 29 FAIL after the 2026-07-22 R3 artifacts; historical only.",
+    "current_remediation_recheck": "Current PDF metadata and critical changed pages were independently checked. No final case-local verifier, shared research gate, workflow evaluator, full rendered-set audit or post-remediation font/overfull audit was run by this reviewer."
+  },
+  "residual_constraints": [
+    "R3 is a render-compliance cycle PASS, not final publication sign-off. R4 final IC review, workflow evaluation and final_signoff.md/json remain incomplete.",
+    "Three non-blocking B-Level presentation findings remain: low-density orphan pages, one split appendix paragraph and a dense risk matrix.",
+    "The chapter-ending whitespace must be rechecked after any PDF rebuild or pagination change.",
+    "Any change to the PDF, source sections, fonts, target/action fields or disclaimer reopens R3 and requires a fresh 50-page render review."
+  ],
+  "required_next_fixes": [
+    "Refresh the case rendered-page set from the exact 51-page PDF and perform the final full-render audit before publication.",
+    "Refresh text-snapshot, font/overfull, inventories/checksums, case-local verifier, shared research gate and workflow evaluation after all reviewer artifacts are written.",
+    "Do not reuse the historical 50-page render or its SHA-256 as current evidence."
+  ],
+  "market_data_remediation_recheck": {
+    "reviewed_at": "2026-07-23",
+    "new_s_or_a_findings": 0,
+    "critical_visual_result": "PASS: Chapter 12 pages visibly fit their price, liquidity and capital-positioning tables, carry readable PR-02/PR-03 notes, and do not clip or overlap.",
+    "reader_facing_boundary_result": "PASS: strict free float and daily Shanghai Connect net flow are described as source-bounded unavailable fields, not as missing research inputs.",
+    "finalization_requirement": "A full 51-page render refresh remains mandatory; this partial recheck cannot be represented as a completed R3 final render gate."
+  }
+}

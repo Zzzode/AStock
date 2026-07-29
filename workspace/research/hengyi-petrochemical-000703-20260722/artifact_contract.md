@@ -1,0 +1,14 @@
+# Artifact Contract
+
+| Artifact | Owner | Stage | Required fields | Minimum depth | Blocking conditions | Review | Verifier |
+|---|---|---|---|---|---|---|---|
+| `data/source_registry.md/json` | source-governance-analyst | R0 | source ID, title, date, type, quality, path/URL, claims, limitations | All material claims registered | Weak evidence used as primary support | R0 | Source integrity |
+| `data/verified_financials.md` | data-verifier | R0 | 2023A-2025A, 2026Q1, H1 preview, segments, cash flow, debt, capex, minorities, reconciliation | Official figures reconciled; derivations labeled | Unreconciled profit/share/debt/cash flow | R0 | Official-source paths |
+| `analysis/value_chain_economics.md` | supply-chain-research | R0 | feedstock, refining/PX/PTA/polyester spreads, capacity, utilization, inventory, freight, pass-through, valuation credit | Price-spread-volume-cost bridge per profit pool | Generic cycle prose supports earnings | R0 | Cyclical coverage pack |
+| `data/broker_street_consensus_20260722.md/json` | reports | R0 | ticker, broker, date, rating, target, forecasts, method, upside, quality, path, weight | Original or official sources prioritized; weak rows zero-weight | Snippet/repost treated as original | R0 | Coverage and exhaustion |
+| `analysis/valuation_model.md` | valuation | R1 | price, shares, market cap, forecasts, methods, scenarios, anchors, weights, target/range, return, catalysts, invalidation | Cycle-normalized diluted-equity framework | Single-quarter annualization or unreconciled inputs | R1 | Arithmetic reproduction |
+| `data/current_valuation_model_20260722.json` | valuation | R1 | structured row, share bridge, scenarios, anchors, weights, target and upside | Machine-reproducible disclosure of the final model | Missing/stale fields or arithmetic mismatch | R1 | Structured-field checks |
+| `analysis/valuation_audit.md` | valuation-auditor | R1 | reconciliation, method fit, scenarios, weights, fake precision, reproducibility | Every final number recalculated | Reproducibility not PASS | R1 | Literal PASS and math |
+| `main.tex` | latex-writer | R2 | IC summary, company, chain, cycle, financials, forecast, valuation, market, risks, sources | 40-60 page source plan, prose-led Chinese report | Missing chapters, language or placeholder defect | R2 | Source and content review |
+| `main.pdf` | latex-writer | R3 | 40-60 pages, embedded fonts, readable exhibits, extractable text | Clean XeLaTeX build and visual review | Compile, clipping or readability defect | R3 | Metadata, extract, render |
+| `final_signoff.md/json` | research-report-reviewer | R4 | cutoff, PDF, pages, score, verifiers, issues, residual risks, downgrade, status | Conclusion and residual risks mutually consistent | PASS with issue/verifier/risk conflict | R4 | Research gate |

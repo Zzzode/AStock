@@ -1,0 +1,890 @@
+{
+  "schema_version": "astock.valuation_recovery.v2",
+  "data_cutoff": "2026-07-15",
+  "methodology": {
+    "rule": "A missing direct broker target triggers consensus, peer, market-implied and alternative-method checks before downgrade.",
+    "weak_source_rule": "Broker abstracts, media reposts and user-generated estimates are evidence context only and receive zero Street weight."
+  },
+  "rows": [
+    {
+      "ticker": "601360",
+      "company": "三六零",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": {
+        "source": "Futu analyst aggregation",
+        "date": "2026-07-15",
+        "analyst_count": 3,
+        "target_average": 14.44,
+        "target_low": 13.7,
+        "target_high": 15.17,
+        "rating_mix": {
+          "strong_buy": 0.6667,
+          "buy": 0.3333,
+          "hold": 0.0,
+          "sell": 0.0
+        },
+        "source_quality": "auditable_consensus_snapshot",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/360_futu_forecast.html"
+      },
+      "earnings_consensus": {
+        "source": "同花顺F10",
+        "date": "2026-07-15",
+        "institution_count": 3,
+        "eps_2026_mean": 0.06,
+        "net_profit_2026_mean_100mn": 4.4,
+        "eps_2027_mean": 0.08,
+        "net_profit_2027_mean_100mn": 5.56,
+        "source_quality": "auditable_consensus_snapshot",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/360_10jqka_worth.html"
+      },
+      "peer_set": [
+        "昆仑万维",
+        "启明星辰",
+        "金山办公"
+      ],
+      "peer_metrics": {
+        "method": "PS",
+        "disclosed_in_source": true,
+        "source": "国泰海通/慧博摘要",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/360_hibor.html"
+      },
+      "market_implied_metric": {
+        "current_price": 9.0,
+        "market_cap_100mn": 629.96,
+        "revenue_2025_100mn": 86.93,
+        "revenue_2026_consensus_100mn": 95.91,
+        "ps_2025": 7.25,
+        "ps_2026_consensus": 6.57,
+        "simple_h1_annualized_pe": 196.86,
+        "sentiment": "AI+安全重估，但资金参与度偏弱、融资余额低于一年30%分位",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/360_10jqka_worth.html"
+      },
+      "alternative_method": {
+        "primary": "PS on 2026E revenue",
+        "revenue_2026E_100mn": 95.91,
+        "multiples": {
+          "bear": 7.5,
+          "base": 10.0,
+          "bull": 11.0
+        },
+        "fair_value": {
+          "bear": 10.28,
+          "base": 13.7,
+          "bull": 15.07
+        },
+        "calculation": "2026E revenue 95.91亿元 / 70.00亿股 × PS multiple",
+        "secondary_check": "2026E EPS consensus 0.06元; current price implies 150x consensus PE before any AI premium."
+      },
+      "normalized_denominator": "2026E revenue consensus and recurring AI/security monetization, not H1 turnaround EPS",
+      "scenario_range": [
+        10.28,
+        13.7,
+        15.07
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.1,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "2026E revenue near 95.91亿元, recurring AI/security monetization, EPS consensus >=0.06, cash flow turns positive",
+      "downgrade_trigger": "AI product monetization fails, 2026E EPS falls below 0.03, OCF remains negative, or PS falls below peer-supported range"
+    },
+    {
+      "ticker": "000042",
+      "company": "中洲控股",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": {
+        "source": "同花顺研报摘要",
+        "date": "2026-04-24",
+        "broker": "not disclosed in accessible excerpt",
+        "target_price": 11.84,
+        "eps_2026": 1.32,
+        "eps_2027": 1.52,
+        "multiple": 9.0,
+        "rating": "增持",
+        "source_quality": "broker_abstract",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/000042_20260424_10jqka.html",
+        "valuation_weight": 0.0
+      },
+      "public_consensus_anchor": {
+        "source": "证券之星/公开盈利预测",
+        "date": "2026-07-14",
+        "eps_2026": 0.93,
+        "eps_2027": 1.2,
+        "eps_2028": 1.53,
+        "source_quality": "auditable_public_snapshot",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/zhongzhou_gw.html"
+      },
+      "earnings_consensus": {
+        "source": "同花顺F10",
+        "date": "2026-07-15",
+        "institution_count": 0,
+        "status": "本年度暂无机构正式预测",
+        "source_quality": "auditable_consensus_snapshot",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/zhongzhou_10jqka_worth.html"
+      },
+      "peer_set": [
+        "保利发展",
+        "招商蛇口",
+        "滨江集团",
+        "越秀地产"
+      ],
+      "peer_metrics": {
+        "method": "PB/NAV and normalized PE",
+        "industry_context": "high leverage and private-developer risk require a material discount to high-quality developers",
+        "source_quality": "public_market_snapshot"
+      },
+      "market_implied_metric": {
+        "current_price": 8.02,
+        "market_cap_100mn": 53.32,
+        "q1_bps": 3.4089,
+        "q1_pb": 2.35,
+        "market_pb_reference_cfi": 2.94,
+        "sentiment": "业绩预告刺激有限，7/15主力净流出约1473万元、连续2日减仓；地产高负债和项目结算风险压制估值",
+        "source_path": "refresh-20260715/sources/valuation-recovery-20260715/zhongzhou_sina.html"
+      },
+      "alternative_method": {
+        "primary": "normalized EPS / PE with project settlement scenarios",
+        "normalized_eps_2026": {
+          "bear": 0.8,
+          "base": 1.1,
+          "bull": 1.5
+        },
+        "multiples": {
+          "bear": 6.0,
+          "base": 8.0,
+          "bull": 9.0
+        },
+        "fair_value": {
+          "bear": 4.8,
+          "base": 8.8,
+          "bull": 13.5
+        },
+        "calculation": "bear 0.80×6=4.80; base 1.10×8=8.80; bull 1.50×9=13.50; H1 1.4891元 EPS is not annualized directly",
+        "secondary_check": "Q1 BPS 3.41元 and current price 8.02元 imply ~2.35x PB; high leverage and settlement/tax/interest uncertainty prevent high-quality-developer multiples.",
+        "project_sensitivity": "迎玺一期结算、土地增值税预提、利息资本化停止、车位延后结转 are key variables"
+      },
+      "normalized_denominator": "recurring/normalized EPS after project settlement and tax/interest normalization",
+      "scenario_range": [
+        4.8,
+        8.8,
+        13.5
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_low_medium",
+      "upgrade_trigger": "2026E EPS at least 1.10, project settlement/tax provisions confirmed, debt and cash-flow pressure improves, and price holds above 8",
+      "downgrade_trigger": "settlement profit reverses, land appreciation tax/interest provisions rise, sales/collection weaken, or net debt/liquidity worsens"
+    },
+    {
+      "ticker": "002460",
+      "company": "赣锋锂业",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "东吴证券原始PDF",
+        "date": "2026-07-15",
+        "institution_count": 1,
+        "eps_2026_mean": 4.45,
+        "eps_2027_mean": 5.35,
+        "eps_2028_mean": 6.03,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002460-赣锋锂业/2026-07-15-东吴证券-2026H1业绩预告点评-业绩符合我们预期-锂价上行贡献弹性.txt"
+      },
+      "peer_set": [
+        "天齐锂业",
+        "中矿资源",
+        "盛新锂能"
+      ],
+      "peer_metrics": {
+        "method": "cycle-adjusted EPS / PE",
+        "source": "东吴证券原始PDF及锂盐上市公司可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002460-赣锋锂业/2026-07-15-东吴证券-2026H1业绩预告点评-业绩符合我们预期-锂价上行贡献弹性.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 51.5,
+        "current_implied_h1_annualized_pe": 15.0,
+        "sentiment": "锂价上行带来盈利弹性，但周期持续性和海外资源兑现仍需验证",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002460-赣锋锂业/2026-07-15-东吴证券-2026H1业绩预告点评-业绩符合我们预期-锂价上行贡献弹性.txt"
+      },
+      "alternative_method": {
+        "primary": "cycle-adjusted EPS / PE",
+        "normalized_eps_2026": {
+          "bear": 4.0,
+          "base": 4.45,
+          "bull": 5.35
+        },
+        "multiples": {
+          "bear": 10.0,
+          "base": 12.0,
+          "bull": 14.0
+        },
+        "fair_value": {
+          "bear": 40.0,
+          "base": 53.4,
+          "bull": 74.9
+        },
+        "calculation": "2026E EPS 4.45元来自当期原始研报；熊/基准/牛采用锂价持续性和资源兑现敏感的10/12/14倍PE",
+        "secondary_check": "当前价对应H1扣非利润简单年化约15倍PE；不能把周期高点EPS视为永久分母"
+      },
+      "normalized_denominator": "2026E cycle-adjusted EPS, not H1 turnaround annualization",
+      "scenario_range": [
+        40.0,
+        53.4,
+        74.9
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "锂价、产量、资源自给率和H2经营现金流共同验证2026E EPS 4.45元",
+      "downgrade_trigger": "锂价回落、资源项目延期、库存减值或现金流弱于利润",
+      "evidence_quality": "medium-high"
+    },
+    {
+      "ticker": "600037",
+      "company": "歌华有线",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "中邮证券原始PDF",
+        "date": "2026-03-23",
+        "institution_count": 1,
+        "eps_2026_mean": 0.03,
+        "eps_2027_mean": 0.03,
+        "eps_2028_mean": 0.05,
+        "source_quality": "aging_original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600037-歌华有线/2026-03-23-中邮证券-全年业绩扭亏为盈-通信业务新增低空发展机遇.txt"
+      },
+      "peer_set": [
+        "东方明珠",
+        "电广传媒",
+        "新媒股份"
+      ],
+      "peer_metrics": {
+        "method": "normalized EPS / PE",
+        "source": "中邮证券原始PDF及传媒运营可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600037-歌华有线/2026-03-23-中邮证券-全年业绩扭亏为盈-通信业务新增低空发展机遇.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 6.8,
+        "current_implied_2026e_pe": 226.67,
+        "sentiment": "扭亏预期已被部分交易，通信业务转型和盈利持续性仍弱",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600037-歌华有线/2026-03-23-中邮证券-全年业绩扭亏为盈-通信业务新增低空发展机遇.txt"
+      },
+      "alternative_method": {
+        "primary": "normalized EPS / PE with turnaround discount",
+        "normalized_eps_2026": {
+          "bear": 0.02,
+          "base": 0.03,
+          "bull": 0.05
+        },
+        "multiples": {
+          "bear": 120.0,
+          "base": 180.0,
+          "bull": 220.0
+        },
+        "fair_value": {
+          "bear": 2.4,
+          "base": 5.4,
+          "bull": 11.0
+        },
+        "calculation": "公开预测EPS 0.03/0.03/0.05元，按扭亏持续性和高估值风险采用120/180/220倍PE",
+        "secondary_check": "当前价对应2026E EPS约227倍PE，市场已经对持续扭亏给予高溢价"
+      },
+      "normalized_denominator": "2026E recurring EPS after turnaround, not H1 profit annualization",
+      "scenario_range": [
+        2.4,
+        5.4,
+        11.0
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_low",
+      "upgrade_trigger": "通信业务收入、现金流和全年EPS达到公开预测并连续两个季度验证",
+      "downgrade_trigger": "扭亏由一次性收益驱动、通信业务不及预期或现金流转弱",
+      "evidence_quality": "medium"
+    },
+    {
+      "ticker": "002048",
+      "company": "宁波华翔",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "国金证券原始PDF",
+        "date": "2025-10-30",
+        "institution_count": 1,
+        "eps_2026_mean": 1.976,
+        "eps_2027_mean": 2.205,
+        "source_quality": "stale_original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002048-宁波华翔/2025-10-30-国金证券-Q3业绩超预期-机器人布局加速.txt"
+      },
+      "peer_set": [
+        "华域汽车",
+        "福耀玻璃",
+        "拓普集团"
+      ],
+      "peer_metrics": {
+        "method": "normalized EPS / PE",
+        "source": "国金证券原始PDF及汽车零部件可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002048-宁波华翔/2025-10-30-国金证券-Q3业绩超预期-机器人布局加速.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 21.43,
+        "current_implied_h1_annualized_pe": 16.3,
+        "sentiment": "汽车零部件和机器人业务提供弹性，但预测时点较旧",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002048-宁波华翔/2025-10-30-国金证券-Q3业绩超预期-机器人布局加速.txt"
+      },
+      "alternative_method": {
+        "primary": "normalized EPS / PE",
+        "normalized_eps_2026": {
+          "bear": 1.6,
+          "base": 1.976,
+          "bull": 2.2
+        },
+        "multiples": {
+          "bear": 12.0,
+          "base": 15.0,
+          "bull": 18.0
+        },
+        "fair_value": {
+          "bear": 19.2,
+          "base": 29.64,
+          "bull": 39.6
+        },
+        "calculation": "2026E EPS 1.976元来自研报，按汽车零部件业务和机器人弹性采用12/15/18倍PE",
+        "secondary_check": "H1扣非EPS 0.66元不能直接替代全年EPS，当前价已隐含利润恢复"
+      },
+      "normalized_denominator": "2026E normalized EPS after auto-cycle and robot-order verification",
+      "scenario_range": [
+        19.2,
+        29.64,
+        39.6
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "汽车订单、机器人批量供货和H2扣非利润验证2026E EPS 1.976元",
+      "downgrade_trigger": "主机厂降价、机器人订单延迟或扣非利润低于预期",
+      "evidence_quality": "medium"
+    },
+    {
+      "ticker": "600688",
+      "company": "上海石化",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": {
+        "source": "西南证券原始PDF",
+        "date": "2023-03-30",
+        "target_price": 4.06,
+        "source_quality": "stale_original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600688-上海石化/2023-03-30-西南证券-原油价格振荡回落-需求回暖支撑炼厂利润.txt",
+        "valuation_weight": 0.0
+      },
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "历史原始研报，当前无有效年度共识",
+        "date": "2023-03-30",
+        "institution_count": 0,
+        "source_quality": "stale_original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600688-上海石化/2023-03-30-西南证券-原油价格振荡回落-需求回暖支撑炼厂利润.txt"
+      },
+      "peer_set": [
+        "中国石化",
+        "恒力石化",
+        "华锦股份"
+      ],
+      "peer_metrics": {
+        "method": "PB / cycle-adjusted asset value",
+        "source": "西南证券原始PDF及炼化可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600688-上海石化/2023-03-30-西南证券-原油价格振荡回落-需求回暖支撑炼厂利润.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 2.84,
+        "q1_bps": 2.2324,
+        "current_implied_pb": 1.27,
+        "sentiment": "炼化周期和现金流承压，历史目标价不能作为当前Street锚",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600688-上海石化/2023-03-30-西南证券-原油价格振荡回落-需求回暖支撑炼厂利润.txt"
+      },
+      "alternative_method": {
+        "primary": "PB / cycle-adjusted asset value",
+        "normalized_bps_2026": {
+          "bear": 2.2324,
+          "base": 2.2324,
+          "bull": 2.2324
+        },
+        "multiples": {
+          "bear": 0.9,
+          "base": 1.2,
+          "bull": 1.5
+        },
+        "fair_value": {
+          "bear": 2.01,
+          "base": 2.68,
+          "bull": 3.35
+        },
+        "calculation": "Q1 BPS 2.2324元 × 0.90/1.20/1.50倍PB；历史4.06元目标权重为0%",
+        "secondary_check": "H1扣非利润简单年化约49倍PE，不能用于炼化周期估值"
+      },
+      "normalized_denominator": "Q1 BPS and cycle-adjusted asset value",
+      "scenario_range": [
+        2.01,
+        2.68,
+        3.35
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_low_medium",
+      "upgrade_trigger": "炼化价差、经营现金流和资产负债表改善，且新一期机构预测恢复",
+      "downgrade_trigger": "炼化价差继续收窄、现金流恶化或资产减值上升",
+      "evidence_quality": "medium"
+    },
+    {
+      "ticker": "001309",
+      "company": "德明利",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "国信证券原始PDF",
+        "date": "2026-04-21",
+        "institution_count": 1,
+        "eps_2026_mean": 39.16,
+        "eps_2027_mean": 40.58,
+        "eps_2028_mean": 41.1,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/001309-德明利/2026-04-21-国信证券-1Q26预计归母净利润同比增长4659--5383-企业级产品加速放量.txt"
+      },
+      "peer_set": [
+        "江波龙",
+        "兆易创新",
+        "北京君正"
+      ],
+      "peer_metrics": {
+        "method": "forward EPS / PE with memory-cycle discount",
+        "source": "国信证券原始PDF及存储可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/001309-德明利/2026-04-21-国信证券-1Q26预计归母净利润同比增长4659--5383-企业级产品加速放量.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 662.4,
+        "current_implied_h1_annualized_pe": 12.42,
+        "sentiment": "存储价格和企业级产品景气强，但周期反转后利润回撤风险高",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/001309-德明利/2026-04-21-国信证券-1Q26预计归母净利润同比增长4659--5383-企业级产品加速放量.txt"
+      },
+      "alternative_method": {
+        "primary": "forward EPS / PE with memory-cycle discount",
+        "normalized_eps_2026": {
+          "bear": 30.0,
+          "base": 39.16,
+          "bull": 45.0
+        },
+        "multiples": {
+          "bear": 11.0,
+          "base": 13.1,
+          "bull": 14.0
+        },
+        "fair_value": {
+          "bear": 330.0,
+          "base": 513.0,
+          "bull": 630.0
+        },
+        "calculation": "2026E EPS 39.16元来自原始研报；按存储周期和估值消化采用11/13.1/14倍PE",
+        "secondary_check": "当前价对应H1扣非简单年化约12.4倍PE，不代表全年利润可持续"
+      },
+      "normalized_denominator": "2026E memory-cycle-adjusted EPS, not H1 annualized EPS",
+      "scenario_range": [
+        330.0,
+        513.0,
+        630.0
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "存储价格、企业级产品出货和H2现金流确认2026E EPS 39.16元",
+      "downgrade_trigger": "存储价格反转、库存减值、客户集中或经营现金流持续为负",
+      "evidence_quality": "medium-high"
+    },
+    {
+      "ticker": "300390",
+      "company": "天华新能",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "华源证券原始PDF",
+        "date": "2026-06-06",
+        "institution_count": 1,
+        "eps_2026_mean": 5.7,
+        "eps_2027_mean": 6.4,
+        "eps_2028_mean": 7.78,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/300390-天华新能/2026-06-06-华源证券-氢氧化锂龙头-深度绑定大客户-锂资源加速布局.txt"
+      },
+      "peer_set": [
+        "赣锋锂业",
+        "盛新锂能",
+        "天齐锂业"
+      ],
+      "peer_metrics": {
+        "method": "cycle-adjusted EPS / PE",
+        "source": "华源证券原始PDF及锂盐可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/300390-天华新能/2026-06-06-华源证券-氢氧化锂龙头-深度绑定大客户-锂资源加速布局.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 60.01,
+        "current_implied_h1_annualized_pe": 11.02,
+        "sentiment": "锂盐价格恢复和大客户绑定带来弹性，但周期延续性仍需验证",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/300390-天华新能/2026-06-06-华源证券-氢氧化锂龙头-深度绑定大客户-锂资源加速布局.txt"
+      },
+      "alternative_method": {
+        "primary": "cycle-adjusted EPS / PE",
+        "normalized_eps_2026": {
+          "bear": 4.7,
+          "base": 5.7,
+          "bull": 6.4
+        },
+        "multiples": {
+          "bear": 12.0,
+          "base": 14.0,
+          "bull": 16.0
+        },
+        "fair_value": {
+          "bear": 56.4,
+          "base": 79.8,
+          "bull": 102.4
+        },
+        "calculation": "2026E EPS约5.70元来自原始研报；可比公司PE约16/13/11倍，采用12/14/16倍情景",
+        "secondary_check": "当前价对应H1扣非简单年化约11倍PE，已反映部分锂价修复"
+      },
+      "normalized_denominator": "2026E cycle-adjusted EPS and lithium-price sensitivity",
+      "scenario_range": [
+        56.4,
+        79.8,
+        102.4
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "氢氧化锂价格、客户采购、产量和H2经营现金流确认2026E EPS 5.70元",
+      "downgrade_trigger": "锂价回落、客户集中风险暴露或经营现金流继续弱于利润",
+      "evidence_quality": "medium-high"
+    },
+    {
+      "ticker": "002812",
+      "company": "恩捷股份",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": {
+        "source": "东吴证券原始PDF",
+        "date": "2026-07-10",
+        "target_price": 103.0,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002812-恩捷股份/2026-07-10-东吴证券-26H1业绩预告点评-Q2业绩超我们预期-隔膜供需紧张盈利持续提升.pdf",
+        "valuation_weight": 0.1
+      },
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "东吴证券原始PDF",
+        "date": "2026-07-10",
+        "institution_count": 1,
+        "eps_2026_mean": 2.32,
+        "eps_2027_mean": 5.16,
+        "eps_2028_mean": 6.31,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002812-恩捷股份/2026-07-10-东吴证券-26H1业绩预告点评-Q2业绩超我们预期-隔膜供需紧张盈利持续提升.txt"
+      },
+      "peer_set": [
+        "星源材质",
+        "中材科技",
+        "沧州明珠"
+      ],
+      "peer_metrics": {
+        "method": "forward EPS / PE with capacity-cycle normalization",
+        "source": "东吴证券原始PDF及隔膜可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002812-恩捷股份/2026-07-10-东吴证券-26H1业绩预告点评-Q2业绩超我们预期-隔膜供需紧张盈利持续提升.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 54.96,
+        "current_implied_h1_annualized_pe": 31.9,
+        "sentiment": "隔膜供需改善和涨价预期强化，但2027E利润跳升尚需订单和价格验证",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002812-恩捷股份/2026-07-10-东吴证券-26H1业绩预告点评-Q2业绩超我们预期-隔膜供需紧张盈利持续提升.txt"
+      },
+      "alternative_method": {
+        "primary": "forward EPS / PE with capacity-cycle normalization",
+        "normalized_eps_2026": {
+          "bear": 1.8,
+          "base": 5.16,
+          "bull": 6.31
+        },
+        "multiples": {
+          "bear": 12.0,
+          "base": 20.0,
+          "bull": 20.0
+        },
+        "fair_value": {
+          "bear": 21.6,
+          "base": 103.2,
+          "bull": 126.2
+        },
+        "calculation": "熊情景用2026E EPS 1.80元；基准/牛情景用2027E EPS 5.16/6.31元×20倍，目标价103元作为原始PDF交叉锚",
+        "secondary_check": "H1扣非EPS 0.86元不能直接年化，需用隔膜价格和供需修复验证2027E盈利"
+      },
+      "normalized_denominator": "2027E normalized EPS after separator price and utilization recovery",
+      "scenario_range": [
+        21.6,
+        103.2,
+        126.2
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.1,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "隔膜涨价、产能利用率、海外/3C订单和H2现金流确认2027E EPS 5.16元",
+      "downgrade_trigger": "供需修复不及预期、价格回落、客户集中或产能利用率不足",
+      "evidence_quality": "high"
+    },
+    {
+      "ticker": "002240",
+      "company": "盛新锂能",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "东吴证券原始PDF",
+        "date": "2026-07-09",
+        "institution_count": 1,
+        "eps_2026_mean": 2.45,
+        "eps_2027_mean": 3.28,
+        "eps_2028_mean": 3.98,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002240-盛新锂能/2026-07-09-东吴证券-26H1业绩预告点评-Q2锂盐出货高增-自有矿贡献利润.txt"
+      },
+      "peer_set": [
+        "赣锋锂业",
+        "天齐锂业",
+        "天华新能"
+      ],
+      "peer_metrics": {
+        "method": "cycle-adjusted EPS / PE",
+        "source": "东吴证券原始PDF及锂盐可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002240-盛新锂能/2026-07-09-东吴证券-26H1业绩预告点评-Q2锂盐出货高增-自有矿贡献利润.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 31.11,
+        "current_implied_h1_annualized_pe": 10.17,
+        "sentiment": "锂价和自有矿贡献改善，但H1经营现金流为负、周期持续性仍是核心变量",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/002240-盛新锂能/2026-07-09-东吴证券-26H1业绩预告点评-Q2锂盐出货高增-自有矿贡献利润.txt"
+      },
+      "alternative_method": {
+        "primary": "cycle-adjusted EPS / PE",
+        "normalized_eps_2026": {
+          "bear": 1.8,
+          "base": 2.45,
+          "bull": 3.28
+        },
+        "multiples": {
+          "bear": 12.0,
+          "base": 16.0,
+          "bull": 18.0
+        },
+        "fair_value": {
+          "bear": 21.6,
+          "base": 39.2,
+          "bull": 59.04
+        },
+        "calculation": "2026E EPS 2.45元来自原始研报，按锂价和自有矿兑现采用12/16/18倍PE",
+        "secondary_check": "当前价对应H1扣非简单年化约10倍PE，但经营现金流为负，不能将H1利润直接视为稳定盈利"
+      },
+      "normalized_denominator": "2026E cycle-adjusted EPS with lithium-price and cash-flow bridge",
+      "scenario_range": [
+        21.6,
+        39.2,
+        59.04
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "锂价、出货、自有矿贡献和H2经营现金流验证2026E EPS 2.45元",
+      "downgrade_trigger": "锂价回落、现金流持续为负或资源项目贡献不及预期",
+      "evidence_quality": "medium-high"
+    },
+    {
+      "ticker": "600736",
+      "company": "苏州高新",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "东吴证券原始PDF",
+        "date": "2026-04-28",
+        "institution_count": 1,
+        "eps_2026_mean": 0.14,
+        "eps_2027_mean": 0.15,
+        "eps_2028_mean": 0.15,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600736-苏州高新/2026-04-28-东吴证券-2025年年报点评-投资收益增厚利润-园区产业转型提速.txt"
+      },
+      "peer_set": [
+        "张江高科",
+        "陆家嘴",
+        "外高桥"
+      ],
+      "peer_metrics": {
+        "method": "normalized EPS / PB cross-check",
+        "source": "东吴证券原始PDF及园区地产可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600736-苏州高新/2026-04-28-东吴证券-2025年年报点评-投资收益增厚利润-园区产业转型提速.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 6.87,
+        "q1_bps": 6.4747,
+        "current_implied_pb": 1.06,
+        "sentiment": "产业园和投资收益提供支撑，但地产结算波动和现金流承压",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/600736-苏州高新/2026-04-28-东吴证券-2025年年报点评-投资收益增厚利润-园区产业转型提速.txt"
+      },
+      "alternative_method": {
+        "primary": "normalized EPS / PE with PB cross-check",
+        "normalized_eps_2026": {
+          "bear": 0.12,
+          "base": 0.14,
+          "bull": 0.16
+        },
+        "multiples": {
+          "bear": 35.0,
+          "base": 55.0,
+          "bull": 65.0
+        },
+        "fair_value": {
+          "bear": 4.2,
+          "base": 7.7,
+          "bull": 10.4
+        },
+        "calculation": "2026E EPS 0.14元来自原始研报，按地产结算和产业园转型采用35/55/65倍PE",
+        "secondary_check": "当前价约1.06倍Q1 PB；H1结算利润不能直接年化"
+      },
+      "normalized_denominator": "2026E normalized EPS after property settlement and investment-income normalization",
+      "scenario_range": [
+        4.2,
+        7.7,
+        10.4
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_low_medium",
+      "upgrade_trigger": "产业园利润、地产结算、投资收益和经营现金流共同验证2026E EPS 0.14元",
+      "downgrade_trigger": "地产结算延期、投资收益回落或经营现金流继续为负",
+      "evidence_quality": "medium-high"
+    },
+    {
+      "ticker": "000415",
+      "company": "渤海租赁",
+      "valuation_recovery_status": "recovered_conditional",
+      "direct_broker_anchor": null,
+      "public_consensus_anchor": null,
+      "earnings_consensus": {
+        "source": "西南证券原始PDF",
+        "date": "2026-07-09",
+        "institution_count": 1,
+        "eps_2026_mean": 0.77,
+        "eps_2027_mean": 0.67,
+        "eps_2028_mean": 0.68,
+        "source_quality": "original_pdf",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/000415-渤海租赁/2026-07-09-西南证券-航空租赁需求持续旺盛-公司把握机遇加大布局.txt"
+      },
+      "peer_set": [
+        "中银航空租赁",
+        "中国飞机租赁",
+        "国银租赁"
+      ],
+      "peer_metrics": {
+        "method": "normalized EPS / PE with PB cross-check",
+        "source": "西南证券原始PDF及航空租赁可比框架",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/000415-渤海租赁/2026-07-09-西南证券-航空租赁需求持续旺盛-公司把握机遇加大布局.txt"
+      },
+      "market_implied_metric": {
+        "current_price": 4.45,
+        "q1_bps": 4.8279,
+        "current_implied_pb": 0.92,
+        "sentiment": "航空租赁景气改善，但资产质量、汇率和杠杆仍压制估值",
+        "source_path": "refresh-20260715/sources/broker-reports-20260715/000415-渤海租赁/2026-07-09-西南证券-航空租赁需求持续旺盛-公司把握机遇加大布局.txt"
+      },
+      "alternative_method": {
+        "primary": "normalized EPS / PE with PB cross-check",
+        "normalized_eps_2026": {
+          "bear": 0.6,
+          "base": 0.77,
+          "bull": 0.85
+        },
+        "multiples": {
+          "bear": 5.0,
+          "base": 6.0,
+          "bull": 7.0
+        },
+        "fair_value": {
+          "bear": 3.0,
+          "base": 4.62,
+          "bull": 5.95
+        },
+        "calculation": "2026E EPS 0.77元来自原始研报，按航空租赁资产质量和杠杆采用5/6/7倍PE",
+        "secondary_check": "当前价约0.92倍Q1 PB；目标价字段为——元，未作为Street锚"
+      },
+      "normalized_denominator": "2026E normalized EPS after lease income, asset quality and FX normalization",
+      "scenario_range": [
+        3.0,
+        4.62,
+        5.95
+      ],
+      "scenario_probabilities": {
+        "bear": 0.3,
+        "base": 0.5,
+        "bull": 0.2
+      },
+      "consensus_weight": 0.0,
+      "confidence": "conditional_medium",
+      "upgrade_trigger": "租赁收入、资产质量、汇率和H2现金流确认2026E EPS 0.77元",
+      "downgrade_trigger": "飞机减值、汇率损失、融资成本或现金流风险上升",
+      "evidence_quality": "medium-high"
+    }
+  ]
+}

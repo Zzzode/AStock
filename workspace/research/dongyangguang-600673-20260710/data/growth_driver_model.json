@@ -1,0 +1,59 @@
+{
+  "schema_version": "growth_driver_model.v1",
+  "data_cutoff": "2026-07-13 11:33 CST",
+  "drivers": [
+    {
+      "ticker": "600673.SH",
+      "company": "东阳光",
+      "growth_driver": "three compute contracts plus Qinhuai consolidation",
+      "base_business": "Guojin 2026E legacy revenue CNY18.762bn and NP CNY1.947bn",
+      "growth_segment": "Qinhuai IDC economics and Dongyangguang Cloud Compute contracts",
+      "unit_order_asp_proxy": "CNY39-46bn five-year contracts; 800MW Qinhuai capacity and 91.25% utilization",
+      "recognized_revenue_ratio": "house base 25% of annualized ex-VAT contract midpoint for 2026; bull 40%",
+      "gross_margin": "Qinhuai 2025 45.15%; compute-service margin not disclosed",
+      "incremental_opex_and_financing": "captured through 4%-7.5% compute net-margin assumptions and dilution cases",
+      "net_profit_eps_scenarios": [
+        {
+          "scenario": "bear",
+          "legacy_net_profit_100mn": 16.0,
+          "qinhuai_net_profit_credit_100mn": 3.0,
+          "compute_contract_net_profit_100mn": 0.0,
+          "shares_100mn": 30.095551,
+          "multiple": 35.0,
+          "assumption": "交易完成延后，公司仅保留现有30%经济权益；算力合同不计可靠全年利润，传统主业低于券商基准。",
+          "net_profit_100mn": 19.0,
+          "eps": 0.6313,
+          "value_per_share": 22.1
+        },
+        {
+          "scenario": "base",
+          "legacy_net_profit_100mn": 19.47,
+          "qinhuai_net_profit_credit_100mn": 6.64,
+          "compute_contract_net_profit_100mn": 0.8,
+          "shares_100mn": 36.75085970492177,
+          "multiple": 45.0,
+          "assumption": "主业达到国金最新原始PDF预测；秦淮采用2025备考归母增量；三单年化未税收入的25%在2026年确认，净利率4%；计入购买资产发股和按监管价格下限完成的80亿元配套融资。",
+          "net_profit_100mn": 26.91,
+          "eps": 0.7322,
+          "value_per_share": 32.95
+        },
+        {
+          "scenario": "bull",
+          "legacy_net_profit_100mn": 22.0,
+          "qinhuai_net_profit_credit_100mn": 8.0,
+          "compute_contract_net_profit_100mn": 2.4,
+          "shares_100mn": 36.465886349930464,
+          "multiple": 55.0,
+          "assumption": "材料主业超预期、秦淮整合顺利；三单年化未税收入40%在2026年确认，净利率7.5%；配套融资价格为现价90%。",
+          "net_profit_100mn": 32.4,
+          "eps": 0.8885,
+          "value_per_share": 48.87
+        }
+      ],
+      "current_price_implied_growth": "CNY38.99 exceeds the rebuilt fundamental anchor CNY31.26 and needs event/Street premium.",
+      "formal_boundary": "C-contract acceptance, actual compute revenue/margin, placement price, integration capex and post-closing financing cost",
+      "valuation_credit": "earnings credit only in explicit bear/base/bull scenarios; no contract amount is converted one-for-one into equity value",
+      "next_quarter_validation_threshold": "H1/Q2 revenue above CNY8.5bn, gross margin at least 20%, operating cash flow positive, and compute revenue or accepted server capacity separately disclosed"
+    }
+  ]
+}
