@@ -2,6 +2,7 @@
 
 from .user_config import (
     ConfigManager,
+    DecisionCadence,
     MarketDataMode,
     RiskLevel,
     TradingStyle,
@@ -12,6 +13,7 @@ from .email_config import EmailConfig
 __all__ = [
     "UserConfig",
     "ConfigManager",
+    "DecisionCadence",
     "MarketDataMode",
     "RiskLevel",
     "TradingStyle",

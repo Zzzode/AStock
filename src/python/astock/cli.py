@@ -29,7 +29,7 @@ from .monitor.service_status import (
     get_uptime_info,
     format_duration,
 )
-from .config import ConfigManager, MarketDataMode, TradingStyle, RiskLevel, EmailConfig
+from .config import ConfigManager, DecisionCadence, MarketDataMode, TradingStyle, RiskLevel, EmailConfig
 from .learning import StyleAnalyzer
 from .utils import DataSourceError, ValidationError
 
@@ -887,6 +887,7 @@ def recommend_config(
         config_data["alert_time_start"] = config.alert_time_start.isoformat()
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
+        config_data["decision_cadence"] = config.decision_cadence.value
         config_data["risk_level"] = config.risk_level.value
         config_data["market_data_mode"] = config.market_data_mode.value
         _print_json(config_data)
@@ -894,6 +895,7 @@ def recommend_config(
         panel_content = f"""
 User ID: {config.user_id}
 Trading style: {config.trading_style.value}
+Decision cadence: {config.decision_cadence.value}
 Risk level: {config.risk_level.value}
 Max positions: {config.max_positions}
 Position size: {config.position_size:.0%}
@@ -942,12 +944,14 @@ def config_show(
         config_data["alert_time_start"] = config.alert_time_start.isoformat()
         config_data["alert_time_end"] = config.alert_time_end.isoformat()
         config_data["trading_style"] = config.trading_style.value
+        config_data["decision_cadence"] = config.decision_cadence.value
         config_data["risk_level"] = config.risk_level.value
         _print_json(config_data)
     else:
         panel_content = f"""
 User ID: {config.user_id}
 Trading style: {config.trading_style.value}
+Decision cadence: {config.decision_cadence.value}
 Risk level: {config.risk_level.value}
 Max positions: {config.max_positions}
 Position size: {config.position_size:.0%}
@@ -1006,6 +1010,12 @@ def _parse_config_value(key: str, value: str) -> Optional[object]:
         for s in TradingStyle:
             if s.value == value:
                 return s
+        return None
+
+    if key == "decision_cadence":
+        for cadence in DecisionCadence:
+            if cadence.value == value:
+                return cadence
         return None
 
     if key == "market_data_mode":

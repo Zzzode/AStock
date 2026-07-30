@@ -11,15 +11,21 @@ from astock.market_desk.playbooks import (
 )
 
 
-def _evidence_for(name: str, *, include_intraday: bool = True) -> dict[str, dict[str, object]]:
+def _evidence_for(name: str) -> dict[str, dict[str, object]]:
     payload: dict[str, dict[str, object]] = {}
     for requirement in PLAYBOOKS[name].evidence_requirements:
         item: dict[str, object] = {
             "source": "fixture:verified-source",
             "as_of": "2026-07-29T14:50:00+08:00",
         }
-        if requirement.level == EvidenceLevel.REPRODUCIBLE_INTRADAY_EXECUTION and include_intraday:
-            item.update({"reproducible": True, "capture_ref": "fixture:auction-sequence-7"})
+        if requirement.key == "next_session_plan":
+            item.update(
+                {
+                    "entry_condition": "Only participate if the stated opening condition holds.",
+                    "rejection_condition": "Cancel when the opening condition fails.",
+                    "review_at": "2026-07-30T15:05:00+08:00",
+                }
+            )
         payload[requirement.key] = item
     payload["completed_roles"] = list(PLAYBOOKS[name].required_team_roles)  # type: ignore[assignment]
     payload["eligibility"] = _eligibility()  # type: ignore[assignment]
@@ -53,16 +59,36 @@ def test_exactly_eight_named_playbooks_have_complete_contracts() -> None:
         assert definition.required_team_roles and definition.decision_eligibility_conditions
 
 
-@pytest.mark.parametrize("name", ["theme_ignition_first_board", "leader_continuation"])
-def test_ultra_short_requires_reproducible_intraday_execution_data(name: str) -> None:
+@pytest.mark.parametrize("name", ["theme_ignition_first_board", "leader_continuation", "emotion_repair_rebound"])
+def test_ultra_short_daily_preplan_does_not_require_intraday_execution_data(name: str) -> None:
     result = evaluate_playbook(
         name,
-        _evidence_for(name, include_intraday=False),
+        _evidence_for(name),
         MarketRegime.TREND_RISK_ON,
     )
 
+    assert result["decision"] == PlaybookDecision.ALLOWED.value
+
+
+@pytest.mark.parametrize("name", ["theme_ignition_first_board", "leader_continuation", "emotion_repair_rebound"])
+def test_ultra_short_daily_preplan_requires_dated_next_session_conditions(name: str) -> None:
+    evidence = _evidence_for(name)
+    del evidence["next_session_plan"]
+
+    result = evaluate_playbook(name, evidence, MarketRegime.TREND_RISK_ON)
+
     assert result["decision"] == PlaybookDecision.WATCH.value
-    assert "auction_and_trade_quality" in result["failed_requirements"]
+    assert result["failed_requirements"] == ["next_session_plan"]
+
+
+def test_ultra_short_daily_preplan_requires_entry_rejection_and_review_conditions() -> None:
+    evidence = _evidence_for("leader_continuation")
+    del evidence["next_session_plan"]["rejection_condition"]
+
+    result = evaluate_playbook("leader_continuation", evidence, MarketRegime.TREND_RISK_ON)
+
+    assert result["decision"] == PlaybookDecision.WATCH.value
+    assert result["failed_requirements"] == ["next_session_plan"]
 
 
 def test_regime_restriction_rejects_new_risk() -> None:

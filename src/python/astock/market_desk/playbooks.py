@@ -109,10 +109,6 @@ def _public(key: str, description: str) -> EvidenceRequirement:
     return EvidenceRequirement(key, EvidenceLevel.TIMESTAMPED_PUBLIC, description)
 
 
-def _intraday(key: str, description: str) -> EvidenceRequirement:
-    return EvidenceRequirement(key, EvidenceLevel.REPRODUCIBLE_INTRADAY_EXECUTION, description)
-
-
 _ULTRA_SHORT_RISK = PlaybookRiskDefaults(0.10, 0.035, 2, True)
 _SHORT_TERM_RISK = PlaybookRiskDefaults(0.15, 0.060, 7, True)
 _SWING_RISK = PlaybookRiskDefaults(0.20, 0.080, 30, False)
@@ -127,9 +123,10 @@ PLAYBOOKS: dict[str, PlaybookDefinition] = {
             _public("new_catalyst", "Timestamped public disclosure or policy catalyst."),
             _public("theme_breadth", "Timestamped participation breadth across the named theme."),
             _public("leader_identity", "Timestamped evidence that the candidate is a liquid thematic leader."),
-            _intraday("auction_and_trade_quality", "Reproducible auction and intraday trade record for the confirmation."),
+            _public("price_limit_ecology", "Timestamped price-limit hierarchy, breadth, and trading-status context."),
+            _public("next_session_plan", "Dated next-session entry, rejection, and review conditions."),
         ),
-        confirmation="Catalyst, breadth, and reproducible opening-to-intraday acceptance remain aligned.",
+        confirmation="Catalyst, breadth, leader identity, and the closing price-limit ecology agree before a conditional next-session plan is published.",
         invalidation="The catalyst is disproved, breadth fails, or the confirmed leader loses acceptance.",
         time_stop="Exit the paper thesis after two sessions without continuation.",
         risk_defaults=_ULTRA_SHORT_RISK,
@@ -144,9 +141,10 @@ PLAYBOOKS: dict[str, PlaybookDefinition] = {
             _public("theme_breadth", "Timestamped theme breadth and continuation evidence."),
             _public("leader_identity", "Timestamped market-wide leadership and liquidity evidence."),
             _public("prior_session_acceptance", "Timestamped prior-session acceptance and turnover record."),
-            _intraday("auction_and_trade_quality", "Reproducible auction and intraday acceptance record."),
+            _public("price_limit_ecology", "Timestamped price-limit hierarchy, breadth, and trading-status context."),
+            _public("next_session_plan", "Dated next-session entry, rejection, and review conditions."),
         ),
-        confirmation="The established leader retains theme leadership and intraday acceptance after a planned review.",
+        confirmation="The established leader retains theme leadership and closing acceptance before a conditional next-session plan is published.",
         invalidation="Theme breadth contracts materially or the leader fails its acceptance condition.",
         time_stop="Review daily; expire after two sessions without continuation.",
         risk_defaults=_ULTRA_SHORT_RISK,
@@ -179,7 +177,7 @@ PLAYBOOKS: dict[str, PlaybookDefinition] = {
             _public("repair_breadth", "Timestamped evidence of broad rather than isolated repair."),
             _public("core_liquidity", "Timestamped liquidity and turnover evidence for the candidate."),
             _public("catalyst_validity", "Timestamped catalyst or narrative validity evidence."),
-            _intraday("repair_trade_quality", "Reproducible intraday trade record confirming broad repair rather than an isolated print."),
+            _public("next_session_plan", "Dated next-session entry, rejection, and review conditions."),
         ),
         confirmation="Repair expands beyond a single name and the selected liquid core holds acceptance.",
         invalidation="Repair breadth fades, new downside damage appears, or the catalyst fails.",
@@ -345,7 +343,7 @@ def evaluate_playbook(
     passed.append("market_regime")
 
     for requirement in definition.evidence_requirements:
-        if _valid_evidence(evidence.get(requirement.key), requirement.level):
+        if _valid_requirement(requirement, evidence.get(requirement.key)):
             passed.append(requirement.key)
         else:
             failed.append(requirement.key)
@@ -402,6 +400,21 @@ def _valid_evidence(value: Any, level: EvidenceLevel) -> bool:
         return True
     capture_reference = value.get("capture_ref") or value.get("sequence_ref")
     return value.get("reproducible") is True and bool(str(capture_reference or "").strip())
+
+
+def _valid_requirement(requirement: EvidenceRequirement, value: Any) -> bool:
+    """Validate generic provenance plus the actionable EOD plan contract."""
+
+    if not _valid_evidence(value, requirement.level):
+        return False
+    if requirement.key != "next_session_plan":
+        return True
+    assert isinstance(value, Mapping)
+    return (
+        bool(str(value.get("entry_condition") or "").strip())
+        and bool(str(value.get("rejection_condition") or "").strip())
+        and _valid_timestamp(value.get("review_at"))
+    )
 
 
 def _valid_timestamp(value: Any) -> bool:

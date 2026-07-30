@@ -30,6 +30,13 @@ class MarketDataMode(str, Enum):
     LICENSED_EOD = "licensed_eod"
 
 
+class DecisionCadence(str, Enum):
+    """The desk's analysis and execution-planning cadence."""
+
+    EOD_PREPLANNED = "eod_preplanned"
+    INTRADAY_MICROSTRUCTURE = "intraday_microstructure"
+
+
 class UserConfig(BaseModel):
     """User configuration"""
 
@@ -38,6 +45,7 @@ class UserConfig(BaseModel):
     # Risk preference
     risk_level: RiskLevel = RiskLevel.MODERATE
     trading_style: TradingStyle = TradingStyle.SWING
+    decision_cadence: DecisionCadence = DecisionCadence.EOD_PREPLANNED
 
     # Position control
     max_positions: int = 10  # Maximum number of positions
@@ -140,6 +148,7 @@ class ConfigManager:
         data["alert_time_end"] = config.alert_time_end.isoformat()
         data["risk_level"] = config.risk_level.value
         data["trading_style"] = config.trading_style.value
+        data["decision_cadence"] = config.decision_cadence.value
         data["market_data_mode"] = config.market_data_mode.value
 
         with open(config_path, "w", encoding="utf-8") as f:

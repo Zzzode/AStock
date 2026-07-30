@@ -17,6 +17,7 @@ Manage the current user's trading preference configuration.
 .venv/bin/python -m astock.cli config show
 .venv/bin/python -m astock.cli config set risk_level aggressive
 .venv/bin/python -m astock.cli config set trading_style swing
+.venv/bin/python -m astock.cli config set decision_cadence eod_preplanned
 .venv/bin/python -m astock.cli config set market_data_mode public_observation
 .venv/bin/python -m astock.cli config style
 .venv/bin/python -m astock.cli config reset
@@ -38,6 +39,7 @@ Do NOT reference TypeScript config files that don't exist in this repository.
 |------|------------|
 | `risk_level` | `conservative` / `moderate` / `aggressive` |
 | `trading_style` | `day_trading` / `swing` / `trend_following` / `value_investing` |
+| `decision_cadence` | `eod_preplanned` (default: review after close and publish next-session conditions) / `intraday_microstructure` (requires reproducible intraday evidence) |
 | `max_positions` | Maximum number of positions |
 | `position_size` | Single position size ratio |
 | `min_price` | Minimum price filter |
