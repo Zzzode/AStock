@@ -22,16 +22,27 @@
 \renewcommand{\baselinestretch}{1.12}
 \raggedbottom
 
-% ============ 字体（macOS） ============
-\setCJKmainfont[BoldFont={Heiti SC}]{STSong}
-\setCJKsansfont{Heiti SC}
-\setCJKmonofont{Heiti SC}
-\setmainfont{Times New Roman}
-
-% CJK 字体别名（兼容 ctex 风格命令）
-\newcommand{\kaishu}{\CJKfontspec{STKaiti}}
-\newcommand{\heiti}{\CJKfontspec{Heiti SC}}
-\newcommand{\songti}{\CJKfontspec{STSong}}
+% ============ Fonts ============
+% Prefer the installed Noto CJK family when available (for Linux builds).
+% Otherwise retain the original MacTeX typography. This avoids platform
+% probing via shell escape and keeps the source portable across both engines.
+\IfFontExistsTF{Noto Serif CJK SC}{
+  \setCJKmainfont{Noto Serif CJK SC}
+  \setCJKsansfont{Noto Sans CJK SC}
+  \setCJKmonofont{Noto Sans CJK SC}
+  \setmainfont{Liberation Serif}
+  \newcommand{\kaishu}{\CJKfontspec{Noto Serif CJK SC}}
+  \newcommand{\heiti}{\CJKfontspec{Noto Sans CJK SC}}
+  \newcommand{\songti}{\CJKfontspec{Noto Serif CJK SC}}
+}{
+  \setCJKmainfont[BoldFont={Heiti SC}]{STSong}
+  \setCJKsansfont{Heiti SC}
+  \setCJKmonofont{Heiti SC}
+  \setmainfont{Times New Roman}
+  \newcommand{\kaishu}{\CJKfontspec{STKaiti}}
+  \newcommand{\heiti}{\CJKfontspec{Heiti SC}}
+  \newcommand{\songti}{\CJKfontspec{STSong}}
+}
 
 % ============ 颜色（IB Navy/Grey palette） ============
 \usepackage{xcolor}
@@ -108,7 +119,7 @@
 % ============ 其他工具 ============
 \usepackage{enumitem}
 \setlist{nosep, leftmargin=2em}
-\usepackage{fontawesome5}
+\IfFileExists{fontawesome5.sty}{\usepackage{fontawesome5}}{}
 % ============ Class B 全局兜底（xeCJK + 缺字 fallback 阻断）：
 % 当 fontawesome5 因 Times New Roman 缺字 / \FA 命名空间失败时，
 % 禁止输出 aExclamationTriangle / aCloud 裸文本，一律降级为 amssymb 原生符号。
@@ -237,7 +248,7 @@
 \end{tikzpicture}
 \vspace*{0.62cm}
 {\color{white}\sffamily\bfseries\small \reportkicker}\\[0.18cm]
-{\color{white}\sffamily\scriptsize \reportscope \quad|\quad \reporttype \quad|\quad \reportdate}\\[1.0cm]
+{\color{steelgrey}\sffamily\scriptsize \reportscope \quad|\quad \reporttype \quad|\quad \reportdate}\\[1.0cm]
 {\fontsize{25}{30}\selectfont\bfseries\color{navy}\reporttitle}\\[0.25cm]
 {\fontsize{13}{17}\selectfont\color{steelgrey}\reportsubtitle}\\[0.75cm]
 \begin{dashboardbox}[决策摘要]
@@ -254,6 +265,6 @@
 \end{sourcequalitybox}
 \end{dashboardbox}
 \vfill
-{\scriptsize\color{white}\reportdisclaimer}
+{\scriptsize\color{steelgrey}\reportdisclaimer}
 \end{titlepage}
 }

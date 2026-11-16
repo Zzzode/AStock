@@ -2076,7 +2076,9 @@ def build_pdf(
     ),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
-    """Compile LaTeX to PDF using XeLaTeX (two passes for TOC/refs)"""
+    """Compile LaTeX to PDF using XeLaTeX (two passes for TOC/refs)."""
+    import hashlib
+    import platform
     import shutil
     import subprocess
 
@@ -2100,7 +2102,11 @@ def build_pdf(
 
     xelatex = shutil.which("xelatex")
     if not xelatex:
-        msg = "xelatex not found. Install TeX Live: brew install --cask mactex-no-gui"
+        msg = (
+            "xelatex not found. Install a XeLaTeX-capable TeX distribution "
+            "for this host and ensure xelatex is on PATH "
+            "(for example TeX Live, MacTeX, or MiKTeX)."
+        )
         if json_output:
             _print_json({"success": False, "error": msg})
         else:
@@ -2113,6 +2119,21 @@ def build_pdf(
 
     if not json_output:
         console.print(f"[blue]Compiling {tex_path}...[/blue]")
+
+    source_sha256 = hashlib.sha256(tex_path.read_bytes()).hexdigest()
+    try:
+        engine_probe = subprocess.run(
+            [xelatex, "--version"],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        engine_version = next(
+            (line.strip() for line in engine_probe.stdout.splitlines() if line.strip()),
+            "unknown",
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        engine_version = "unavailable"
 
     success = True
     error_msg = ""
@@ -2146,6 +2167,33 @@ def build_pdf(
         except Exception:
             pass
 
+    log_path = work_dir / tex_name.replace(".tex", ".log")
+    log_content = log_path.read_text(errors="replace") if log_path.exists() else ""
+    pdf_sha256 = (
+        hashlib.sha256(pdf_path.read_bytes()).hexdigest()
+        if success and pdf_path.exists()
+        else None
+    )
+    build_provenance = {
+        "engine": "XeLaTeX",
+        "engine_path": xelatex,
+        "engine_version": engine_version,
+        "host_platform": platform.platform(),
+        "timestamp": datetime.now().astimezone().isoformat(),
+        "command": cmd,
+        "working_directory": str(work_dir.resolve()),
+        "source_sha256": source_sha256,
+        "pdf_sha256": pdf_sha256,
+        "page_count": page_count,
+        "diagnostics": {
+            "fatal_error_count": sum(
+                1 for line in log_content.splitlines() if line.startswith("!")
+            ),
+            "overfull_hbox_count": log_content.count("Overfull \\hbox"),
+            "missing_character_count": log_content.count("Missing character:"),
+        },
+    }
+
     if clean and success:
         stem = tex_name.replace(".tex", "")
         for ext in artifacts:
@@ -2160,6 +2208,7 @@ def build_pdf(
                 "pdf": str(pdf_path) if success else None,
                 "pages": page_count,
                 "error": error_msg if not success else None,
+                "build_provenance": build_provenance,
             }
         )
     else:

@@ -235,4 +235,4 @@ case_id | report_type | data_cutoff | pdf_path | page_count | publishability_sco
 - Do not pass a report whose main body reads like a PPT deck or chartbook. Appendices may be dense; main chapters must be prose-led.
 - Do not pass any report with open S-Level issues, open unwaived A-Level issues, publishability score below 90, missing final sign-off, or failing verifier.
 - Do not mark a repair complete from the author's assertion; re-read the artifact and rerun the relevant review cycle.
-- Preserve project policy: research deliverables are LaTeX/PDF compiled with MacTeX XeLaTeX on macOS.
+- Preserve project policy: research deliverables are LaTeX/PDF compiled with XeLaTeX; record host, distribution/version and artifact provenance. MacTeX on macOS is supported, not a release criterion.

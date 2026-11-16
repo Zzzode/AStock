@@ -1,7 +1,8 @@
 % !TEX program = xelatex
 % Brief institutional note template for team/analyze/backtest/recommend outputs.
 % Usage: copy to workspace/<type>/<slug>/report.tex and fill metadata/content.
-% Compile: PATH="/Library/TeX/texbin:$PATH" .venv/bin/python -m astock.cli build-pdf <directory>
+% Compile: .venv/bin/python -m astock.cli build-pdf <directory>
+% On macOS, add /Library/TeX/texbin to PATH only if xelatex is not already available.
 \documentclass[a4paper,11pt,fontset=none]{ctexart}
 
 \newcommand{\reporttitle}{<Brief Report Title>}

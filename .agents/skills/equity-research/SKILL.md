@@ -403,7 +403,7 @@ If source quality is weak, title the section "Publicly Available Research Sentim
 
 **Language gate:** When the requested report language is Chinese, all reader-facing narrative, table descriptions, valuation explanations, risk statements, catalysts, invalidation triggers, and source summaries must be written in Chinese. English is allowed only for proper nouns, ticker names, technical abbreviations, formulas, source titles, URLs, and short bilingual captions. Untranslated English sentences in the main body or appendix are A-Level; untranslated English valuation or recommendation logic is S-Level.
 
-**macOS compiler rule:** Use MacTeX's XeLaTeX toolchain only. If `xelatex` is not on `PATH`, check `/Library/TeX/texbin/xelatex` and run compile commands with `PATH="/Library/TeX/texbin:$PATH"`. Do not try `tectonic`, `typst`, `pdflatex`, `lualatex`, or any other non-MacTeX substitute for project research reports.
+**XeLaTeX compiler rule:** Use XeLaTeX on any supported host. Record the host OS, executable/version and TeX distribution, resolved CJK font, build command, source SHA-256, PDF SHA-256, page count and material diagnostics in R3 release evidence. On macOS, `/Library/TeX/texbin/xelatex` is an optional `PATH` fallback, not a release criterion. Do not replace XeLaTeX with `tectonic`, `typst`, `pdflatex`, `lualatex` or another engine for project research reports.
 
 ## Phase 4.5: RENDERED PDF VISUAL REVIEW
 
@@ -415,7 +415,7 @@ After first compile, render or inspect actual PDF pages. Do not rely only on TeX
 
 **Quality gate:** Clipped diagrams, overlapping tables, unreadable appendices, table-only main-body chapters, or missing exhibits for core conclusions block publication.
 
-**macOS compiler rule:** Use MacTeX's XeLaTeX toolchain only. If `xelatex` is not on `PATH`, check `/Library/TeX/texbin/xelatex` and run compile commands with `PATH="/Library/TeX/texbin:$PATH"`. Do not try `tectonic`, `typst`, `pdflatex`, `lualatex`, or any other non-MacTeX substitute for project research reports.
+**XeLaTeX compiler rule:** Use XeLaTeX on any supported host. Record the host OS, executable/version and TeX distribution, resolved CJK font, build command, source SHA-256, PDF SHA-256, page count and material diagnostics in R3 release evidence. On macOS, `/Library/TeX/texbin/xelatex` is an optional `PATH` fallback, not a release criterion. Do not replace XeLaTeX with `tectonic`, `typst`, `pdflatex`, `lualatex` or another engine for project research reports.
 
 ## Phase 5: REVIEW AND REPAIR CYCLES
 
@@ -463,7 +463,7 @@ Residual-risk rule: `final_signoff.md/json` must not mark `signoff_status: PASS`
 
 ```bash
 .venv/bin/python -m astock.cli build-pdf workspace/research/<topic-slug>-<YYYYMMDD>/
-# If macOS PATH has not loaded MacTeX:
+# Optional macOS fallback if `xelatex` is not already on PATH:
 PATH="/Library/TeX/texbin:$PATH" .venv/bin/python -m astock.cli build-pdf workspace/research/<topic-slug>-<YYYYMMDD>/
 .venv/bin/python - <<'PY'
 import json
