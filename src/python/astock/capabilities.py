@@ -118,6 +118,24 @@ from .research import (
 from .services import AnalysisService, TeamAnalysisService
 from .stock_picker import ScreenResult, StockScreener
 from .storage import Database
+from .strategy import (
+    FuturesInstrumentSpec,
+    PersonalAccessProfile,
+    allocate_multi_sleeve as _allocate_multi_sleeve,
+    build_ashare_factor_tilt_proposal as _build_ashare_factor_tilt_proposal,
+    build_earnings_event_repricing_proposal as _build_earnings_event_repricing_proposal,
+    build_public_domestic_futures_cta_input as _build_public_domestic_futures_cta_input,
+    list_personal_strategy_catalog as _list_personal_strategy_catalog,
+    record_run as _record_strategy_run,
+    register_definition as _register_strategy_definition,
+    run_frozen_public_domestic_futures_cta_backtest as _run_frozen_public_domestic_futures_cta_backtest,
+    transition_lifecycle as _transition_strategy_lifecycle,
+)
+from .strategy.crypto import _build_crypto_time_series_momentum_proposal
+from .strategy.cta import (
+    _build_domestic_futures_cta_proposal,
+    _run_domestic_futures_cta_backtest,
+)
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
 DEFAULT_DB_PATH = PROJECT_ROOT / "data" / "stocks.db"
@@ -126,6 +144,367 @@ DEFAULT_MARKET_EVENT_STORE_PATH = PROJECT_ROOT / "data" / "market-events.jsonl"
 DEFAULT_MARKET_MAP_PATH = PROJECT_ROOT / "data" / "market-map.json"
 DEFAULT_RESTRICTED_LIST_PATH = PROJECT_ROOT / "data" / "restricted-list.json"
 DEFAULT_PORTFOLIO_PATH = PROJECT_ROOT / "data" / "portfolio.json"
+
+
+def list_personal_investment_strategies(
+    access_profile: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """List portable and non-portable institutional strategy families.
+
+    This is a boundary-aware catalog, not a promise that every global
+    institutional return stream can be implemented by a personal account.
+    """
+
+    profile = PersonalAccessProfile.from_mapping(access_profile)
+    return {
+        "schema_version": "personal_strategy_catalog.v1",
+        "profile": profile.to_dict(),
+        "strategies": _list_personal_strategy_catalog(profile),
+        "research_only": True,
+        "no_order_execution": True,
+    }
+
+
+def build_domestic_futures_cta_proposal(
+    market_data: Mapping[str, Any],
+    instruments: Mapping[str, Any],
+    *,
+    capital: float,
+    access_profile: Mapping[str, Any],
+    config: Mapping[str, Any] | None = None,
+    as_of: str | None = None,
+    previous_contracts: Mapping[str, int] | None = None,
+    source_archive_ids: Sequence[str] = (),
+) -> dict[str, Any]:
+    """Build a signed CTA research target after account/product access gating."""
+
+    profile = PersonalAccessProfile.from_mapping(access_profile)
+    evidence = _validate_futures_access_profile(profile, instruments)
+    result = _build_domestic_futures_cta_proposal(
+        market_data,
+        instruments,
+        capital=capital,
+        config=config,
+        as_of=as_of,
+        previous_contracts=previous_contracts,
+        source_archive_ids=source_archive_ids,
+    )
+    result["access_gate"] = {
+        "status": "research_only",
+        "profile_id": profile.profile_id,
+        "futures_eligible": True,
+        "evidence": evidence.to_dict(),
+        "notice": "Dated broker/exchange eligibility evidence is a research gate, not an order permission.",
+    }
+    return result
+
+
+def _validate_futures_access_profile(
+    profile: PersonalAccessProfile,
+    instruments: Mapping[str, Any],
+) -> Any:
+    if not isinstance(instruments, Mapping) or not instruments:
+        raise ValueError("CTA instruments must be a non-empty mapping")
+    specs: list[FuturesInstrumentSpec] = []
+    for key, raw_spec in instruments.items():
+        spec = raw_spec if isinstance(raw_spec, FuturesInstrumentSpec) else FuturesInstrumentSpec.from_mapping(raw_spec)
+        if str(key).strip() != spec.instrument_id:
+            raise ValueError("CTA instrument mapping keys must match instrument_id")
+        specs.append(spec)
+    return profile.validate_futures_access(specs)
+
+
+def build_crypto_time_series_momentum_proposal(
+    market_data: Mapping[str, Any],
+    assets: Mapping[str, Any],
+    *,
+    as_of: str,
+    access_profile: Mapping[str, Any],
+    config: Mapping[str, Any] | None = None,
+    funding_data: Mapping[str, Any] | None = None,
+    previous_weights: Mapping[str, float] | None = None,
+    source_refs: Sequence[str] = (),
+    source_archive_ids: Sequence[str] = (),
+) -> dict[str, Any]:
+    """Build a crypto paper proposal only after an explicit legal-access gate.
+
+    The self-attested profile fact never establishes legal availability.  It
+    only prevents this personal-investor capability from treating absent or
+    inferred access as a valid route into a crypto market.
+    """
+
+    profile = PersonalAccessProfile.from_mapping(access_profile)
+    # Validate the profile's dated jurisdiction/venue/custody/data artifact
+    # before even invoking the raw calculation engine.  This is still a
+    # research gate only, never an execution or legal-clearance determination.
+    profile.validate_crypto_access(())
+    if not isinstance(assets, Mapping) or not assets:
+        raise ValueError("crypto assets must be a non-empty mapping")
+    asset_records: list[Mapping[str, Any]] = []
+    for raw_asset in assets.values():
+        if isinstance(raw_asset, Mapping):
+            asset_records.append(raw_asset)
+        elif hasattr(raw_asset, "to_dict"):
+            value = raw_asset.to_dict()
+            if not isinstance(value, Mapping):
+                raise TypeError("crypto asset specification must serialize to an object")
+            asset_records.append(value)
+        else:
+            raise TypeError("crypto asset specification must be an object")
+    evidence = profile.validate_crypto_access(asset_records)
+    result = _build_crypto_time_series_momentum_proposal(
+        market_data,
+        assets,
+        as_of=as_of,
+        config=config,
+        funding_data=funding_data,
+        previous_weights=previous_weights,
+        source_refs=source_refs,
+        source_archive_ids=source_archive_ids,
+    )
+    _assert_crypto_target_integrity(result)
+    profile.validate_crypto_access(
+        [target for target in result.get("targets", []) if isinstance(target, Mapping)]
+    )
+    result["access_gate"] = {
+        "status": "research_only",
+        "profile_id": profile.profile_id,
+        "lawful_crypto_market_access": True,
+        "residency_jurisdiction": profile.residency_jurisdiction,
+        "evidence": evidence.to_dict(),
+        "notice": (
+            "Self-attestation is not a legal conclusion and does not establish lawful availability "
+            "in the China mainland or any other regulated jurisdiction."
+        ),
+    }
+    result.setdefault("warnings", []).append(
+        "This proposal cannot be treated as a China-mainland crypto access route or as an execution instruction."
+    )
+    return result
+
+
+def _assert_crypto_target_integrity(result: Mapping[str, Any]) -> None:
+    """Forbid waivable data controls on any target-bearing crypto proposal."""
+
+    targets = result.get("targets")
+    if not isinstance(targets, Sequence) or isinstance(targets, (str, bytes)) or not targets:
+        return
+    if str(result.get("data_quality") or "") != "point_in_time_verified":
+        raise ValueError(
+            "target-bearing crypto research requires point_in_time_verified data; relaxed configuration is not allowed"
+        )
+    blockers = result.get("blockers")
+    if blockers:
+        raise ValueError("target-bearing crypto research cannot contain unresolved blockers")
+    archive_ids = result.get("source_archive_ids")
+    if (
+        not isinstance(archive_ids, Sequence)
+        or isinstance(archive_ids, (str, bytes))
+        or not archive_ids
+        or any(not str(value).startswith("sha256:") for value in archive_ids)
+    ):
+        raise ValueError(
+            "target-bearing crypto research requires immutable sha256 source archive ids"
+        )
+    for target in targets:
+        if not isinstance(target, Mapping):
+            raise TypeError("crypto targets must be objects")
+        if str(target.get("market_type") or "") == "perpetual":
+            funding = target.get("funding")
+            if not isinstance(funding, Mapping) or funding.get("status") != "verified":
+                raise ValueError(
+                    "target-bearing perpetual crypto research requires verified dated funding observations"
+                )
+
+
+def build_ashare_factor_tilt_proposal(
+    universe: Sequence[Mapping[str, Any]],
+    *,
+    config: Mapping[str, Any] | None = None,
+    as_of: str | None = None,
+    source_refs: Sequence[str] = (),
+) -> dict[str, Any]:
+    """Build a source-labelled long-only A-share factor-tilt paper proposal."""
+
+    return _build_ashare_factor_tilt_proposal(
+        universe,
+        config=config,
+        as_of=as_of,
+        source_refs=source_refs,
+    )
+
+
+def build_earnings_event_repricing_proposal(
+    announcements: Sequence[Mapping[str, Any]],
+    *,
+    config: Mapping[str, Any] | None = None,
+    as_of: str | None = None,
+    source_refs: Sequence[str] = (),
+) -> dict[str, Any]:
+    """Build a public-announcement long-only event paper proposal."""
+
+    return _build_earnings_event_repricing_proposal(
+        announcements,
+        config=config,
+        as_of=as_of,
+        source_refs=source_refs,
+    )
+
+
+def allocate_personal_strategy_sleeves(
+    sleeve_proposals: Mapping[str, Mapping[str, Any]],
+    *,
+    security_ledger: Mapping[str, Any] | None = None,
+    futures_ledger: Mapping[str, Any] | None = None,
+    crypto_ledger: Mapping[str, Any] | None = None,
+    risk_budget: Mapping[str, Any] | None = None,
+    previous_state: Mapping[str, Any] | None = None,
+    as_of: str | None = None,
+    policy: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Combine individual strategy proposals into segregated paper ledgers."""
+
+    return _allocate_multi_sleeve(
+        sleeve_proposals,
+        security_ledger=security_ledger,
+        futures_ledger=futures_ledger,
+        crypto_ledger=crypto_ledger,
+        risk_budget=risk_budget,
+        previous_state=previous_state,
+        as_of=as_of,
+        policy=policy,
+    )
+
+
+def register_personal_strategy_definition(
+    registry_path: str | Path,
+    definition: Mapping[str, Any],
+    *,
+    source_ids: Sequence[str],
+    registered_by: str = "agent",
+) -> dict[str, Any]:
+    """Persist an immutable strategy-definition version for later audit."""
+
+    return _register_strategy_definition(
+        registry_path,
+        definition,
+        source_ids=source_ids,
+        registered_by=registered_by,
+    )
+
+
+def transition_personal_strategy_lifecycle(
+    registry_path: str | Path,
+    strategy_id: str,
+    version: str,
+    to_lifecycle: str,
+    *,
+    evidence: Mapping[str, Any],
+    actor: str = "agent",
+) -> dict[str, Any]:
+    """Append an evidence-bound lifecycle transition; it never authorises trading."""
+
+    return _transition_strategy_lifecycle(
+        registry_path,
+        strategy_id,
+        version,
+        to_lifecycle,
+        evidence=evidence,
+        actor=actor,
+    )
+
+
+def record_personal_strategy_run(
+    registry_path: str | Path,
+    strategy_id: str,
+    version: str,
+    run: Mapping[str, Any],
+    *,
+    source_ids: Sequence[str],
+    run_type: str = "paper",
+) -> dict[str, Any]:
+    """Record an immutable research/backtest run without changing lifecycle."""
+
+    return _record_strategy_run(
+        registry_path,
+        strategy_id,
+        version,
+        run,
+        source_ids=source_ids,
+        run_type=run_type,
+    )
+
+
+def run_domestic_futures_cta_backtest(
+    market_data: Mapping[str, Any],
+    instruments: Mapping[str, Any],
+    *,
+    initial_capital: float,
+    access_profile: Mapping[str, Any],
+    config: Mapping[str, Any] | None = None,
+    execution: Mapping[str, Any] | None = None,
+    source_archive_ids: Sequence[str] = (),
+) -> dict[str, Any]:
+    """Run a gated, actual-contract domestic-futures paper replay."""
+
+    profile = PersonalAccessProfile.from_mapping(access_profile)
+    evidence = _validate_futures_access_profile(profile, instruments)
+    result = _run_domestic_futures_cta_backtest(
+        market_data,
+        instruments,
+        initial_capital=initial_capital,
+        config=config,
+        execution=execution,
+        source_archive_ids=source_archive_ids,
+    )
+    result["access_gate"] = {
+        "status": "research_only",
+        "profile_id": profile.profile_id,
+        "futures_eligible": True,
+        "evidence": evidence.to_dict(),
+        "notice": "Dated broker/exchange eligibility evidence is a research gate, not an order permission.",
+    }
+    return result
+
+
+def run_frozen_public_domestic_futures_cta_backtest(
+    replay_input: Mapping[str, Any],
+    *,
+    source_archive_path: str | Path | None = None,
+    initial_capital: float,
+    config: Mapping[str, Any] | None = None,
+    execution: Mapping[str, Any] | None = None,
+) -> dict[str, Any]:
+    """Replay an immutable public CTA input without refetching market data."""
+
+    return _run_frozen_public_domestic_futures_cta_backtest(
+        replay_input,
+        source_archive_path=str(source_archive_path) if source_archive_path is not None else None,
+        initial_capital=initial_capital,
+        config=config,
+        execution=execution,
+    )
+
+
+async def build_public_domestic_futures_cta_input(
+    symbols: Sequence[str],
+    *,
+    start_date: str,
+    end_date: str,
+    instrument_overrides: Mapping[str, Mapping[str, Any]] | None = None,
+    archive_directory: str | Path | None = None,
+    observed_at: str | datetime | None = None,
+) -> dict[str, Any]:
+    """Fetch and freeze bounded public continuous-futures CTA research data."""
+
+    return await _build_public_domestic_futures_cta_input(
+        symbols,
+        start_date=start_date,
+        end_date=end_date,
+        instrument_overrides=instrument_overrides,
+        archive_directory=archive_directory,
+        observed_at=observed_at,
+    )
 
 
 def _resolve_db_path(db_path: Optional[Path] = None) -> Path:

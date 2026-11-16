@@ -60,6 +60,17 @@ def _load_json_object(path: Path, *, label: str) -> dict[str, Any]:
     return value
 
 
+def _load_json_array(path: Path, *, label: str) -> list[dict[str, Any]]:
+    """Load a JSON array of objects for a strategy-universe input."""
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as error:
+        raise typer.BadParameter(f"{label} must be valid JSON: {error}") from error
+    if not isinstance(value, list) or any(not isinstance(item, dict) for item in value):
+        raise typer.BadParameter(f"{label} must be a JSON array of objects")
+    return value
+
+
 def _json_stdout_guard(enabled: bool):
     """In JSON mode, redirect third-party stdout noise to stderr."""
     return redirect_stdout(sys.stderr) if enabled else nullcontext()
@@ -1339,6 +1350,443 @@ app.add_typer(portfolio_app, name="portfolio")
 
 
 app.add_typer(watch_app, name="watch")
+
+
+# ============ Personal Strategy Research Commands ============
+
+
+strategy_app = typer.Typer(
+    name="strategy",
+    help="Personal-investor strategy research and paper-replay capabilities",
+)
+app.add_typer(strategy_app, name="strategy")
+
+
+@strategy_app.command("catalog")
+def strategy_catalog(
+    access_profile_path: Optional[Path] = typer.Option(
+        None,
+        "--access-profile-path",
+        help="Optional JSON access/profile facts; never contains credentials.",
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """List institutional strategy families and personal replicability gates."""
+    try:
+        profile = (
+            _load_json_object(access_profile_path, label="access profile")
+            if access_profile_path is not None
+            else None
+        )
+        result = capabilities.list_personal_investment_strategies(profile)
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    table = Table(title="Personal Strategy Research Catalog")
+    table.add_column("Strategy", style="cyan")
+    table.add_column("Availability", style="yellow")
+    table.add_column("Paper eligibility", style="green")
+    table.add_column("Boundary", style="white")
+    for entry in result["strategies"]:
+        eligibility = entry["eligibility"]
+        table.add_row(
+            str(entry["name"]),
+            str(entry["availability"]),
+            str(eligibility["status"]),
+            str(entry["personal_translation"]),
+        )
+    console.print(table)
+
+
+@strategy_app.command("cta-proposal")
+def strategy_cta_proposal(
+    market_data_path: Path = typer.Option(
+        ..., "--market-data-path", help="JSON mapping of instrument ids to dated futures bars."
+    ),
+    instruments_path: Path = typer.Option(
+        ..., "--instruments-path", help="JSON mapping of dated contract specifications."
+    ),
+    access_profile_path: Path = typer.Option(
+        ...,
+        "--access-profile-path",
+        help="Required dated broker/exchange futures eligibility profile; it never authorises an order.",
+    ),
+    capital: float = typer.Option(..., "--capital", min=0.01, help="Paper risk capital."),
+    config_path: Optional[Path] = typer.Option(
+        None, "--config-path", help="Optional predeclared CTA configuration JSON."
+    ),
+    as_of: Optional[str] = typer.Option(None, "--as-of", help="Signal date YYYY-MM-DD."),
+    previous_contracts_path: Optional[Path] = typer.Option(
+        None, "--previous-contracts-path", help="Optional signed paper holdings JSON."
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Generate a domestic-futures CTA paper target; no broker orders are created."""
+    try:
+        market_data = _load_json_object(market_data_path, label="market data")
+        instruments = _load_json_object(instruments_path, label="instrument specifications")
+        access_profile = _load_json_object(access_profile_path, label="futures access profile")
+        config = _load_json_object(config_path, label="CTA configuration") if config_path else None
+        previous = (
+            _load_json_object(previous_contracts_path, label="previous contracts")
+            if previous_contracts_path
+            else None
+        )
+        result = capabilities.build_domestic_futures_cta_proposal(
+            market_data,
+            instruments,
+            capital=capital,
+            access_profile=access_profile,
+            config=config,
+            as_of=as_of,
+            previous_contracts=previous,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(Panel(
+        f"As of: {result['as_of']}\n"
+        f"Targets: {len(result['targets'])}\n"
+        f"Gross margin: {result['gross_margin']:,.2f}\n"
+        "Research-only paper target; no order was created.",
+        title="Domestic Futures CTA Proposal",
+    ))
+
+
+@strategy_app.command("crypto-proposal")
+def strategy_crypto_proposal(
+    market_data_path: Path = typer.Option(
+        ..., "--market-data-path", help="JSON mapping of crypto asset ids to dated OHLCV bars."
+    ),
+    assets_path: Path = typer.Option(
+        ..., "--assets-path", help="JSON mapping of dated crypto asset and venue eligibility facts."
+    ),
+    access_profile_path: Path = typer.Option(
+        ...,
+        "--access-profile-path",
+        help="Required dated non-Mainland jurisdiction, venue, custody and data-access research profile; it never establishes legality.",
+    ),
+    as_of: str = typer.Option(
+        ..., "--as-of", help="Timezone-aware signal cutoff, for example 2026-08-15T00:00:00Z."
+    ),
+    funding_data_path: Optional[Path] = typer.Option(
+        None, "--funding-data-path", help="Optional JSON mapping of dated perpetual funding observations."
+    ),
+    config_path: Optional[Path] = typer.Option(
+        None, "--config-path", help="Optional predeclared crypto strategy configuration JSON."
+    ),
+    previous_weights_path: Optional[Path] = typer.Option(
+        None, "--previous-weights-path", help="Optional prior signed paper weights by asset id."
+    ),
+    source_refs: list[str] = typer.Option(
+        [], "--source-ref", help="Proposal-level source reference; repeatable."
+    ),
+    source_archive_ids: list[str] = typer.Option(
+        [], "--source-archive-id", help="Frozen archive identifier; repeatable."
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Generate a 24/7 crypto paper proposal; it never creates exchange orders."""
+    try:
+        market_data = _load_json_object(market_data_path, label="crypto market data")
+        assets = _load_json_object(assets_path, label="crypto asset specifications")
+        access_profile = _load_json_object(access_profile_path, label="crypto access profile")
+        funding_data = (
+            _load_json_object(funding_data_path, label="crypto funding data")
+            if funding_data_path
+            else None
+        )
+        config = _load_json_object(config_path, label="crypto strategy configuration") if config_path else None
+        previous_weights = (
+            _load_json_object(previous_weights_path, label="previous crypto weights")
+            if previous_weights_path
+            else None
+        )
+        result = capabilities.build_crypto_time_series_momentum_proposal(
+            market_data,
+            assets,
+            as_of=as_of,
+            access_profile=access_profile,
+            config=config,
+            funding_data=funding_data,
+            previous_weights=previous_weights,
+            source_refs=source_refs,
+            source_archive_ids=source_archive_ids,
+        )
+    except (TypeError, ValueError) as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(Panel(
+        f"As of: {result['as_of']}\n"
+        f"Paper targets: {len(result['targets'])}\n"
+        f"Data assurance: {result['data_quality']}\n"
+        f"Blockers: {len(result['blockers'])}\n"
+        "Research-only 24/7 paper proposal; no exchange, custody, wallet, or broker instruction was created.",
+        title="Crypto Time-Series Momentum Data Gate",
+    ))
+
+
+@strategy_app.command("factor-proposal")
+def strategy_factor_proposal(
+    universe_path: Path = typer.Option(
+        ..., "--universe-path", help="JSON array of source-labelled A-share universe records."
+    ),
+    config_path: Optional[Path] = typer.Option(
+        None, "--config-path", help="Optional predeclared factor configuration JSON."
+    ),
+    as_of: Optional[str] = typer.Option(
+        None,
+        "--as-of",
+        help="Timezone-aware trading-state cutoff, for example 2026-08-15T07:00:00Z.",
+    ),
+    source_refs: list[str] = typer.Option(
+        [], "--source-ref", help="Proposal-level source reference; repeatable."
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Generate a liquid long-only A-share factor-tilt paper proposal."""
+    try:
+        universe = _load_json_array(universe_path, label="factor universe")
+        config = _load_json_object(config_path, label="factor configuration") if config_path else None
+        result = capabilities.build_ashare_factor_tilt_proposal(
+            universe,
+            config=config,
+            as_of=as_of,
+            source_refs=source_refs,
+        )
+    except (TypeError, ValueError) as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(Panel(
+        f"As of: {result['as_of']}\n"
+        f"Paper targets: {len(result['targets'])}\n"
+        f"Hard vetoes: {len(result['hard_vetoes'])}\n"
+        "Long-only research proposal; no order was created.",
+        title="A-share Factor Tilt Proposal",
+    ))
+
+
+@strategy_app.command("earnings-proposal")
+def strategy_earnings_proposal(
+    announcements_path: Path = typer.Option(
+        ..., "--announcements-path", help="JSON array of timestamped public-announcement records."
+    ),
+    config_path: Optional[Path] = typer.Option(
+        None, "--config-path", help="Optional predeclared event configuration JSON."
+    ),
+    as_of: Optional[str] = typer.Option(
+        None,
+        "--as-of",
+        help="Timezone-aware public-information cutoff, for example 2026-08-15T07:00:00Z.",
+    ),
+    source_refs: list[str] = typer.Option(
+        [], "--source-ref", help="Proposal-level source reference; repeatable."
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Generate a public-announcement earnings repricing paper proposal."""
+    try:
+        announcements = _load_json_array(announcements_path, label="announcements")
+        config = _load_json_object(config_path, label="event configuration") if config_path else None
+        result = capabilities.build_earnings_event_repricing_proposal(
+            announcements,
+            config=config,
+            as_of=as_of,
+            source_refs=source_refs,
+        )
+    except (TypeError, ValueError) as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(Panel(
+        f"As of: {result['as_of']}\n"
+        f"Paper targets: {len(result['targets'])}\n"
+        f"Hard vetoes: {len(result['hard_vetoes'])}\n"
+        "Public-information research proposal; no order was created.",
+        title="Earnings Event Repricing Proposal",
+    ))
+
+
+@strategy_app.command("allocate")
+def strategy_allocate(
+    sleeves_path: Path = typer.Option(
+        ..., "--sleeves-path", help="JSON mapping of sleeve names to paper proposals."
+    ),
+    policy_path: Optional[Path] = typer.Option(
+        None, "--policy-path", help="Optional multi-sleeve risk-budget JSON."
+    ),
+    risk_budget_path: Optional[Path] = typer.Option(
+        None, "--risk-budget-path", help="Optional current portfolio risk/veto JSON."
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Combine source-labelled strategy proposals into segregated paper ledgers."""
+    try:
+        sleeves = _load_json_object(sleeves_path, label="sleeve proposals")
+        policy = _load_json_object(policy_path, label="allocation policy") if policy_path else None
+        risk_budget = _load_json_object(risk_budget_path, label="risk budget") if risk_budget_path else None
+        result = capabilities.allocate_personal_strategy_sleeves(
+            sleeves,
+            policy=policy,
+            risk_budget=risk_budget,
+        )
+    except (TypeError, ValueError) as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(Panel(
+        f"State: {result['state']}\n"
+        f"Security targets: {len(result['ledgers']['security']['targets'])}\n"
+        f"Futures targets: {len(result['ledgers']['futures']['targets'])}\n"
+        "Paper allocation only; no order was created.",
+        title="Personal Multi-sleeve Allocation",
+    ))
+
+
+@strategy_app.command("freeze-public-cta")
+def strategy_freeze_public_cta(
+    symbols: str = typer.Argument(..., help="Comma-separated Sina continuous-futures identifiers, e.g. RB0,M0,AU0."),
+    start_date: str = typer.Option(..., "--start-date", help="YYYY-MM-DD"),
+    end_date: str = typer.Option(..., "--end-date", help="YYYY-MM-DD"),
+    instruments_path: Path = typer.Option(
+        ..., "--instruments-path", help="JSON mapping of symbol to dated contract facts."
+    ),
+    archive_directory: Path = typer.Option(
+        DB_PATH.parent / "futures-cta-replay-archives",
+        "--archive-directory",
+        help="Directory for immutable public CTA research input archives.",
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Fetch and freeze public continuous-futures data for CTA research only."""
+    try:
+        instruments = _load_json_object(instruments_path, label="instrument overrides")
+        result = _run_async(
+            capabilities.build_public_domestic_futures_cta_input(
+                [symbol.strip() for symbol in symbols.split(",") if symbol.strip()],
+                start_date=start_date,
+                end_date=end_date,
+                instrument_overrides=instruments,
+                archive_directory=archive_directory,
+            ),
+            json_output,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(
+        "Frozen public CTA research input: "
+        + str(result.get("replay_input_path", "not written"))
+    )
+
+
+@strategy_app.command("cta-backtest")
+def strategy_cta_backtest(
+    market_data_path: Path = typer.Option(
+        ..., "--market-data-path", help="JSON mapping of instrument ids to dated futures bars."
+    ),
+    instruments_path: Path = typer.Option(
+        ..., "--instruments-path", help="JSON mapping of dated contract specifications."
+    ),
+    access_profile_path: Path = typer.Option(
+        ...,
+        "--access-profile-path",
+        help="Required dated broker/exchange futures eligibility profile; it never authorises an order.",
+    ),
+    capital: float = typer.Option(..., "--capital", min=0.01, help="Initial paper capital."),
+    config_path: Optional[Path] = typer.Option(
+        None, "--config-path", help="Optional predeclared CTA configuration JSON."
+    ),
+    execution_path: Optional[Path] = typer.Option(
+        None, "--execution-path", help="Optional paper execution-assumption JSON."
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Run a settlement-to-settlement domestic-futures CTA paper replay."""
+    try:
+        market_data = _load_json_object(market_data_path, label="market data")
+        instruments = _load_json_object(instruments_path, label="instrument specifications")
+        access_profile = _load_json_object(access_profile_path, label="futures access profile")
+        config = _load_json_object(config_path, label="CTA configuration") if config_path else None
+        execution = _load_json_object(execution_path, label="CTA execution assumptions") if execution_path else None
+        result = capabilities.run_domestic_futures_cta_backtest(
+            market_data,
+            instruments,
+            initial_capital=capital,
+            access_profile=access_profile,
+            config=config,
+            execution=execution,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    console.print(Panel(
+        f"Total return: {result['total_return']:.2%}\n"
+        f"Annualized volatility: {result['annualized_volatility']:.2%}\n"
+        f"Max drawdown: {result['max_drawdown']:.2%}\n"
+        "Research-only paper replay; no order was created.",
+        title="Domestic Futures CTA Backtest",
+    ))
+
+
+@strategy_app.command("run-frozen-public-cta")
+def strategy_run_frozen_public_cta(
+    replay_input_path: Path = typer.Argument(..., help="Frozen .cta.replay.json input manifest."),
+    capital: float = typer.Option(..., "--capital", min=0.01, help="Initial paper capital."),
+    config_path: Optional[Path] = typer.Option(
+        None, "--config-path", help="Optional predeclared CTA configuration JSON."
+    ),
+    execution_path: Optional[Path] = typer.Option(
+        None, "--execution-path", help="Optional paper execution-assumption JSON."
+    ),
+    source_archive_path: Optional[Path] = typer.Option(
+        None,
+        "--source-archive-path",
+        help="Optional immutable raw archive; defaults to the sibling content-addressed JSON file.",
+    ),
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
+) -> None:
+    """Replay one frozen public CTA input without refetching market data."""
+    try:
+        replay_input = _load_json_object(replay_input_path, label="CTA replay input")
+        manifest = replay_input.get("source_manifest")
+        archive_id = str(manifest.get("archive_id") or "") if isinstance(manifest, dict) else ""
+        archive = source_archive_path or replay_input_path.parent / (archive_id.removeprefix("sha256:") + ".json")
+        config = _load_json_object(config_path, label="CTA configuration") if config_path else None
+        execution = _load_json_object(execution_path, label="CTA execution assumptions") if execution_path else None
+        result = capabilities.run_frozen_public_domestic_futures_cta_backtest(
+            replay_input,
+            source_archive_path=archive,
+            initial_capital=capital,
+            config=config,
+            execution=execution,
+        )
+    except ValueError as error:
+        raise typer.BadParameter(str(error)) from error
+    if json_output:
+        _print_json(result)
+        return
+    archive_status = result["data_assurance"].get("archive_assurance", {}).get("status", "unknown")
+    console.print(Panel(
+        f"Archive bytes: {archive_status}\n"
+        f"Replay eligibility: {result['data_assurance']['status']}\n"
+        "Public continuous-series P&L replay is blocked until dated actual-contract and roll data are supplied.",
+        title="Frozen Domestic Futures CTA Data Gate",
+    ))
 
 
 # ============ Team Feedback Command ============
