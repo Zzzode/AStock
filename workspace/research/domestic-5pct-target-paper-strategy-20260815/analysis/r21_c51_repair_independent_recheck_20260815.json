@@ -1,0 +1,255 @@
+{
+  "schema_version": "d5pt_r21_c51_repair_independent_recheck.v1",
+  "artifact_id": "D5PT-R21-C51-REPAIR-INDEPENDENT-RECHECK-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "reviewer": {
+    "role": "data-verifier",
+    "mode": "independent_maker_checker",
+    "review_type": "separate_read_only_repair_recheck"
+  },
+  "scope": {
+    "artifacts": [
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.md",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c51-sse-etf-option-collar-scope-20260815/manifest.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c51-sse-etf-option-collar-scope-20260815/*",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c51_capture_sse_etf_option_collar_sources.py",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c51_build_sse_etf_option_collar_scope_screen.py",
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c13_etf_option_covered_call_feasibility_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r20_c51_initial_independent_source_audit_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r20_c51_repair_plan_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json"
+    ],
+    "not_performed": [
+      "Historical performance reconstruction",
+      "Broker, account, entitlement, suitability, fill or settlement verification",
+      "Product, code, term, calendar or threshold selection",
+      "External action or order authorization"
+    ]
+  },
+  "review_snapshot": {
+    "c51_builder_sha256": "46b3db92d616686b7262e842a25b844700c0b45d1d6df34983fc4e119937d939",
+    "c51_capture_script_sha256": "02b2c8f5477138d26846330693a426bedd4676f67ac82af74be57308918edae7",
+    "c51_json_sha256": "114d4ee9795ba94f50a23b3aecd321fe15b8ebdc2decacfb6dc5d1023ff86f1c",
+    "c51_markdown_sha256": "0685ee9cc64983dbc431ef0ee40dab97f522369db3ccae19f91238a1861de734",
+    "source_manifest_sha256": "993e481ff1f04a03e1f1e02c2ed1253dd64f5a31e32a15c2df4cebd8c2934914",
+    "predecessor_c13_sha256": "f2859c71d8cbd57eeb6eee211a1e3700c7d16e3694ed3127ce12c07931ada434",
+    "r20_initial_audit_sha256": "39138800597b10565efb6c8e8c58dfe03d20041706635fa2db7dc9a117d14cdf",
+    "r20_repair_plan_sha256": "c17c5b00db19e075c74253df3b01d8c9a0c365585753ade3fde21e99af5762c8",
+    "c48_sha256": "dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce",
+    "recheck_rule": "Any post-snapshot change to a listed C51 file requires another independent recheck; this record does not pre-accept later bytes."
+  },
+  "r20_and_repair_plan_binding": {
+    "r20_initial_audit": {
+      "path": "analysis/r20_c51_initial_independent_source_audit_20260815.json",
+      "sha256": "39138800597b10565efb6c8e8c58dfe03d20041706635fa2db7dc9a117d14cdf",
+      "initial_finding_counts": {
+        "S": 0,
+        "A": 1,
+        "B": 1,
+        "M": 4
+      },
+      "initial_open_findings": [
+        "R20-A-001",
+        "R20-B-001"
+      ],
+      "historical_record_preserved": true
+    },
+    "repair_plan": {
+      "path": "analysis/r20_c51_repair_plan_20260815.json",
+      "sha256": "c17c5b00db19e075c74253df3b01d8c9a0c365585753ade3fde21e99af5762c8",
+      "references_exact_r20_hash": true,
+      "owner_status": "repairs_implemented_pending_independent_R21_recheck",
+      "current_output_hashes_match_review_snapshot": true
+    }
+  },
+  "source_control_recheck": {
+    "manifest_digest_pinned_and_matched": true,
+    "expected_source_identity_controls": "The current builder fixes the five source IDs, filenames, official URLs and SHA-256 values; it verifies the exact manifest digest, exact source-ID set, every manifest identity field and every raw-file digest before output construction.",
+    "raw_file_integrity_and_live_official_url_recheck": [
+      {
+        "source_id": "C51-S01",
+        "filename": "sse_option_investor_suitability_page.html",
+        "byte_count": 32555,
+        "sha256": "e79cda6747d18ae145fbb2de8e6dd0bbc909969c2af4717976d7a6644c53a5c0",
+        "official_live_url_match": true
+      },
+      {
+        "source_id": "C51-S02",
+        "filename": "sse_option_investor_suitability_guideline.docx",
+        "byte_count": 30489,
+        "sha256": "81992a8ec243c6829fbc43f194836d05277905cda551dbaccab961e4447a28a0",
+        "official_live_url_match": true
+      },
+      {
+        "source_id": "C51-S03",
+        "filename": "sse_stock_option_trading_rule_page.html",
+        "byte_count": 32955,
+        "sha256": "ddafdc569fe845cfb5e612e07006288629680433d9dd72bdb4e5ff5a2956b540",
+        "official_live_url_match": true
+      },
+      {
+        "source_id": "C51-S04",
+        "filename": "sse_stock_option_trading_rule.docx",
+        "byte_count": 60393,
+        "sha256": "fff3aaeb338da5d1e1a5892ab7601d79393dd33659b01cb0595b214e2df4a8a9",
+        "official_live_url_match": true
+      },
+      {
+        "source_id": "C51-S05",
+        "filename": "sse_market_data_file_exchange_specification.pdf",
+        "byte_count": 986805,
+        "sha256": "233d98bdc1faf26cd3940495bac37f6603b6b328e049a2e81244efc394a154c2",
+        "official_live_url_match": true
+      }
+    ],
+    "negative_control_tests_without_file_modification": [
+      {
+        "control": "manifest digest",
+        "result": "PASS",
+        "observed_failure_when_mutated_in_memory": "C51 source manifest digest mismatch"
+      },
+      {
+        "control": "fixed source-ID set",
+        "result": "PASS",
+        "observed_failure_when_mutated_in_memory": "C51 source manifest coverage mismatch"
+      },
+      {
+        "control": "fixed filename",
+        "result": "PASS",
+        "observed_failure_when_mutated_in_memory": "C51 manifest C51-S04 filename mismatch"
+      },
+      {
+        "control": "fixed official URL",
+        "result": "PASS",
+        "observed_failure_when_mutated_in_memory": "C51 manifest C51-S01 url mismatch"
+      },
+      {
+        "control": "fixed source hash",
+        "result": "PASS",
+        "observed_failure_when_mutated_in_memory": "C51 manifest C51-S05 sha256 mismatch"
+      }
+    ],
+    "pdf_semantic_assertions": {
+      "pdf_text_extraction_required": true,
+      "asserted_terms": [
+        "期权基础信息文件",
+        "期权交易系统行情文件",
+        "期权收盘价格文件",
+        "期权组合策略文件"
+      ],
+      "all_terms_present_in_retained_pdf": true,
+      "negative_control_result": "PASS: removing the combination-strategy term in memory causes the builder to reject the packet.",
+      "allowed_interpretation": "The terms support only a statement that the interface specification presents the four data-file categories. They do not establish historical-data rights, an executable collar, a selected series, a fill record or a replay capability."
+    }
+  },
+  "predecessor_c13_recheck": {
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c13_etf_option_covered_call_feasibility_20260815.json",
+    "sha256_pinned_and_matched": true,
+    "status": "RESEARCH_CANDIDATE_NOT_ACTION_READY",
+    "strict_5pct_test_status": "NOT_FEASIBLE_FOR_RETURN_CLAIM",
+    "builder_negative_control_result": "PASS: changing the expected predecessor hash in memory causes the builder to reject the packet.",
+    "non_duplication_boundary": "A protective put makes the collar a distinct abstract payoff family, while merely changing ETF, strike, expiry or venue does not reopen C13. This preserves C13's no-admission disposition."
+  },
+  "payoff_math_recheck": {
+    "general_formula": "min(S_T, K_C) + max(K_P - S_T, 0) + C - P",
+    "independent_direct_leg_expression": "S_T - max(S_T - K_C, 0) + max(K_P - S_T, 0) + C - P",
+    "formula_provenance": "Generic derivative payoff algebra only; it is not an SSE rule, market-data-interface or exchange formula.",
+    "universal_identity_test": "PASS over integer grid S_T, K_C and K_P from 0 through 250 in increments of 5, with C=7 and P=3.",
+    "compact_formula": "max(K_P, min(S_T, K_C)) + C - P",
+    "compact_formula_condition": "K_P <= K_C",
+    "conditioned_identity_test": "PASS over the same grid whenever K_P <= K_C.",
+    "nonordered_counterexample_preserved": {
+      "K_P": 150,
+      "K_C": 100,
+      "S_T": 200,
+      "C": 0,
+      "P": 0,
+      "direct_and_general_value": 100,
+      "compact_value": 150
+    },
+    "return_boundary": "The formula bounds an abstract terminal payoff only. It neither supplies a positive return floor nor establishes a historical, cost-adjusted or executable result."
+  },
+  "generated_artifact_and_boundary_checks": {
+    "builder_result_matches_current_json_exactly": true,
+    "markdown_function_matches_current_markdown_exactly": true,
+    "current_status": "NOT_ADMITTED_OPTIONS_FAMILY_NO_NEW_USABLE_ROUTE",
+    "research_only": true,
+    "formal_decision_eligible": false,
+    "external_orders": false,
+    "portfolio_q": 0,
+    "decision_action": "NO_ACTION",
+    "no_selection_of_etf_contract_strike_expiry_size_broker_calendar_or_threshold": true,
+    "combo_schema_limitation_explicit": true,
+    "reader_facing_prohibited_principal_term_present": false,
+    "invented_historical_result_present": false,
+    "personal_account_entitlement_claim_present": false,
+    "trade_instruction_present": false
+  },
+  "r20_finding_disposition": {
+    "R20-A-001": {
+      "initial_status": "OPEN",
+      "R21_status": "CLOSED_BY_INDEPENDENT_RECHECK",
+      "basis": "The repaired builder and outputs use the universal formula, constrain the compact expression to K_P <= K_C, state formula provenance, reproduce exactly, and pass independent direct-leg/grid tests.",
+      "closure_scope": "Closes only the initial payoff-formula correctness defect; it does not establish a return, account entitlement, product selection or actionability."
+    },
+    "R20-B-001": {
+      "initial_status": "OPEN",
+      "R21_status": "CLOSED_BY_INDEPENDENT_RECHECK",
+      "basis": "The repaired builder now pins and enforces manifest digest, source-ID set, filename, official URL and source hash; retained raw files and live official URLs match; PDF semantic assertions are present and fault-tested.",
+      "closure_scope": "Closes only the prior self-referential future-builder source-control defect; it does not turn the retained rule/interface packet into an entitlement, historical dataset or executable route."
+    }
+  },
+  "findings": {
+    "S": [],
+    "A": [],
+    "B": [],
+    "M": [
+      {
+        "finding_id": "R21-M-001",
+        "limitation": "A combination-strategy data-file category does not prove that an SSE collar is currently enabled as a formal combination or can be submitted and executed simultaneously.",
+        "treatment": "Require a separately retained official implementation notice and broker-operational evidence before any availability assertion."
+      },
+      {
+        "finding_id": "R21-M-002",
+        "limitation": "Rule-level individual conditions, covered opening and put-buying categories do not prove an individual's account permission, contract, front-end control or routing capability.",
+        "treatment": "Retain NO_ACTION unless a correctly scoped account and broker evidence packet is independently verified."
+      },
+      {
+        "finding_id": "R21-M-003",
+        "limitation": "No dated complete option-contract master, point-in-time bid/ask/depth, fills, rejections, costs, settlement, corporate-action mapping or frozen roll protocol is retained.",
+        "treatment": "No historical, annual or rolling return test and no execution conclusion may be admitted."
+      },
+      {
+        "finding_id": "R21-M-004",
+        "limitation": "The generic payoff algebra is not exchange evidence and cannot demonstrate a positive return floor, stable performance or an outcome after costs and execution frictions.",
+        "treatment": "Preserve the formula-provenance and no-return boundary; do not elevate the payoff identity into a strategy claim."
+      }
+    ]
+  },
+  "finding_counts": {
+    "S": 0,
+    "A": 0,
+    "B": 0,
+    "M": 4
+  },
+  "c48_binding": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json",
+    "sha256": "dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce",
+    "status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+    "portfolio_q": 0,
+    "action": "NO_ACTION",
+    "unchanged": true,
+    "C51_does_not_close_C48": true
+  },
+  "final_decision": {
+    "audit_recommendation": "PASS_SOURCE_AND_REPAIR_BOUNDED_ONLY",
+    "actionability_status": "VETO",
+    "review_acceptance_is_not_route_admission": true,
+    "strategy_admitted": false,
+    "external_action_authorized": false,
+    "statement": "R21 independently verifies the specific repairs to R20-A-001 and R20-B-001 for the exact snapshot listed here. This PASS is limited to source integrity, source-control repair, payoff-expression correctness and boundary wording. It is not a strategy PASS: C51 remains not admitted, no product or account conclusion is made, C48 remains unchanged, and no external action is authorized."
+  }
+}

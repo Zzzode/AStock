@@ -1,0 +1,483 @@
+{
+  "schema_version": "c24_direct_ashare_equity_data_feasibility.v1",
+  "artifact_id": "D5PT-C24-DIRECT-ASHARE-EQUITY-DATA-FEASIBILITY-v1",
+  "as_of": "2026-08-15",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "product_selected": false,
+  "universe_frozen": false,
+  "return_test_run": false,
+  "return_result": null,
+  "external_action": false,
+  "purpose": "Bounded source-route research for a future reproducible direct mainland-equity paper-research protocol. The base scope is Shanghai/Shenzhen A shares; Beijing Stock Exchange equities are a separately explicit domestic-stock coverage gate and are not assumed to be terminologically identical to A shares. This artifact is not a data acquisition, universe definition, stock selection, portfolio construction, backtest, recommendation, or action instruction.",
+  "status": "CONDITIONAL_LAWFUL_MULTI_SOURCE_ROUTE_IDENTIFIED_NOT_TEST_ADMITTED",
+  "current_route_status": "not_testable",
+  "answer": "A lawful and reproducible data stack is plausible in principle only through written permissions plus a multi-source, point-in-time reconstruction. No public end-to-end or already licensed stack was established in this case. The absence of a verified Beijing Stock Exchange historical-data route is a hard blocker for any future full-scope domestic-equity claim that includes BSE; BSE is a separately explicit domestic-stock gate, not automatically treated as terminologically identical to A shares. No stock, universe, portfolio, return result, or action is admitted.",
+  "scope": {
+    "asset_route": "direct mainland listed equities; base scope is Shanghai/Shenzhen A shares, with BSE treated as a separately explicit domestic-stock coverage gate",
+    "base_scope": [
+      "Shanghai Stock Exchange Main Board",
+      "Shanghai Stock Exchange STAR Market",
+      "Shenzhen Stock Exchange Main Board",
+      "Shenzhen Stock Exchange ChiNext Market"
+    ],
+    "separately_explicit_domestic_stock_coverage_gate": [
+      "Beijing Stock Exchange"
+    ],
+    "non_silent_exclusion_rule": "A frozen future protocol must explicitly record a dated, auditable reason for every excluded market, board, or security class before any computation. If it claims to cover BSE or a full domestic-stock scope, BSE must be covered by verified data; if it is limited to Shanghai/Shenzhen A shares, that scope limitation must be explicit. Current listings, surviving names, and data scarcity may not silently define the historical universe.",
+    "no_stock_selection": true
+  },
+  "source_retention_note": "Per the assigned scope, this artifact records public source locators and product/right observations only. No raw source batch, licensed extract, field dictionary, data sample, contract, or data acquisition was retained or obtained. A URL is not a data right, coverage proof, or reproducible-input freeze.",
+  "rights_principle": "Where a publicly readable webpage and an exchange or authorized-operator information-rights statement could be read differently, apply the stricter written-permission standard for batch retrieval, local retention, calculation, derived outputs, and redistribution. This is a research-control rule, not legal advice.",
+  "candidate_routes": [
+    {
+      "route_id": "C24-R1",
+      "provider": "Shanghai Stock Exchange / Shanghai Stock Exchange Information Network",
+      "scope": "Licensed SSE historical-market-data and reference-data route, supplemented by official public stock-list, delisting, announcement, and dividend/bonus locators.",
+      "primary_urls": [
+        "https://english.sse.com.cn/markets/dataservice/products/",
+        "https://www.sse.com.cn/market/publicdata/",
+        "https://www.sse.com.cn/assortment/stock/list/delisting/",
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/"
+      ],
+      "access_rights_observed": "The historical-data product page describes yearly-subscription historical data for research and market analysis. It does not establish a domestic-use contract, actual data delivery, local-retention right, derived-output right, or a product-specific field matrix for this case.",
+      "fields_observed_or_described": [
+        "Shanghai A-share historical day-end closing data",
+        "historical Level-1 and Level-2 snapshots, ticks, and order-book data at stated product tiers",
+        "stock lists, suspended/terminated-listing locators, daily/periodic market pages, and dividend/bonus public-data locators"
+      ],
+      "coverage_observed": "The SSE historical-data page states an earliest date of 1990-12-19 for the named product. It does not prove point-in-time full-universe security-master coverage, corporate-action completeness, revision history, availability timestamps, or an entitlement for this case.",
+      "can_potentially_fill": {
+        "sse_market_price_volume": "CONDITIONAL_YES",
+        "sse_trading_status": "PARTIAL_CONDITIONAL",
+        "sse_point_in_time_universe": "PARTIAL_CONDITIONAL",
+        "sse_corporate_actions_and_adjustment_chain": "NOT_PROVEN",
+        "sse_filing_evidence": "PARTIAL_CONDITIONAL"
+      },
+      "mandatory_confirmation": [
+        "Written license for exact historical data tiers, internal research, local retention, reproducible calculation, and permitted derived outputs.",
+        "Field dictionary, dates of availability, status codes, update/correction rules, identifiers, record counts, and coverage report for every target date.",
+        "A corporate-action ledger and independent reconciliation to original SSE/issuer disclosures before calculating any adjusted series."
+      ]
+    },
+    {
+      "route_id": "C24-R2",
+      "provider": "Shenzhen Stock Exchange / Shenzhen Securities Information Co., Ltd. (SSIC)",
+      "scope": "Licensed SZSE market-data, company-data, and corporate-actions route, supplemented by SZSE public disclosure pages and CNINFO document records.",
+      "primary_urls": [
+        "https://investor.szse.cn/English/services/dataServices/index.html",
+        "https://www.szse.cn/disclosure/notice/company/",
+        "https://www.cninfo.com.cn/new/index"
+      ],
+      "access_rights_observed": "SSIC is publicly described as the authorized manager and distributor of SZSE securities information. The service description is not a contract, a historical delivery, a data-quality certificate, or a permission for this case to retain or derive outputs.",
+      "fields_observed_or_described": [
+        "Level-1 end-of-day security code, name, close, high, low, and outstanding-share fields",
+        "Level-2 depth, tick-by-tick trades and orders",
+        "corporate actions including profit distribution, dividend implementation, rights issue, suspension/resumption, risk warning, ST, delisting, periodic reports, name and code changes",
+        "company profile, governance, and financial-statement service categories"
+      ],
+      "coverage_observed": "The public service page identifies field types and delivery formats, but no case-specific license, historical date range, point-in-time universe extract, revision log, adjustment method, or actual sample has been reviewed.",
+      "can_potentially_fill": {
+        "szse_market_price_volume": "CONDITIONAL_YES",
+        "szse_trading_status": "CONDITIONAL_YES",
+        "szse_corporate_actions": "CONDITIONAL_YES",
+        "szse_point_in_time_universe": "PARTIAL_CONDITIONAL",
+        "szse_adjusted_return_chain": "NOT_PROVEN",
+        "szse_filing_evidence": "PARTIAL_CONDITIONAL"
+      },
+      "mandatory_confirmation": [
+        "Confirm exact board coverage, historical span, status and corporate-action field definitions, original-availability timestamps, correction policy, permitted use, and local-retention rights.",
+        "Verify whether an adjustment factor is supplied, how it is calculated, and whether every underlying event is retained and reproducible.",
+        "Reconcile a frozen sample of corporate actions, suspension/resumption, and filings to original SZSE/CNINFO documents."
+      ]
+    },
+    {
+      "route_id": "C24-R3",
+      "provider": "Beijing Stock Exchange / China Securities Market Data Co., Ltd. (authorized operator stated by BSE guide)",
+      "scope": "BSE market-data authorization and public security-master/document locators.",
+      "primary_urls": [
+        "https://www.bse.cn/application/guide.html",
+        "https://www.bse.cn/nq/listedcompany.html",
+        "https://www.bse.cn/service/code_mapping.html",
+        "https://www.bse.cn/cxjg_list/200025668.html"
+      ],
+      "access_rights_observed": "The BSE authorization guide states that BSE/National Equities Exchange and Quotations market information is managed and operated by its authorized operator and that use requires permission. The publicly reviewed guide concerns real-time Level-1 authorization; it does not grant or document the historical data required here.",
+      "fields_observed_or_described": [
+        "current stock-list locator",
+        "new/old code mapping locator",
+        "public suspension/resumption rule and disclosure locators",
+        "authorization boundary for use of market information"
+      ],
+      "coverage_observed": "No public case-specific evidence of BSE historic day-end, tick, status, corporate-action, point-in-time-universe, or adjustment-data delivery was obtained in this bounded review.",
+      "can_potentially_fill": {
+        "bse_historical_market_price_volume": "NOT_PROVEN",
+        "bse_historical_status": "NOT_PROVEN",
+        "bse_point_in_time_universe": "NOT_PROVEN",
+        "bse_corporate_actions_and_adjustment_chain": "NOT_PROVEN",
+        "bse_public_document_evidence": "PARTIAL_CONDITIONAL"
+      },
+      "mandatory_confirmation": [
+        "Obtain an authorized historical-data product, contract, field dictionary, sample, coverage report, and permitted-use confirmation before a protocol can claim a full domestic-stock scope including BSE.",
+        "Retain and reconcile historic listing, transfer/code-change, suspension, delisting, corporate-action, and disclosure-time records rather than relying on a current list."
+      ]
+    },
+    {
+      "route_id": "C24-R4",
+      "provider": "CSRC, exchange disclosure systems, and CNINFO",
+      "scope": "Primary-document evidence for financial reports, temporary announcements, governance, regulatory, corporate-action, suspension, and delisting facts.",
+      "primary_urls": [
+        "https://www.csrc.gov.cn/csrc/c106256/c1653948/content.shtml",
+        "https://www.cninfo.com.cn/new/index",
+        "https://www.sse.com.cn/assortment/stock/list/info/announcement/",
+        "https://www.szse.cn/disclosure/notice/company/",
+        "https://www.bse.cn/disclosure/"
+      ],
+      "access_rights_observed": "CSRC rules establish disclosure obligations and exchange/qualified-media publication. Public document access supports read-only source verification, but this review did not obtain an end-to-end machine-readable historic document index, a full correction chain, batch-reuse permission, or a point-in-time availability ledger.",
+      "fields_observed_or_required": [
+        "annual, interim, and other periodic reports",
+        "temporary announcements and material-event disclosures",
+        "corporate-action, governance, audit-opinion, risk-warning, suspension, resumption, listing, and delisting documentation"
+      ],
+      "can_potentially_fill": {
+        "original_document_evidence": "CONDITIONAL_YES",
+        "financial_statement_evidence": "CONDITIONAL_YES",
+        "machine_readable_point_in_time_event_ledger": "NOT_PROVEN",
+        "complete_correction_and_availability_chain": "NOT_PROVEN"
+      },
+      "mandatory_confirmation": [
+        "Freeze document identifiers, original publication timestamps, retrieval timestamps, corrections, withdrawals, and a document-version policy.",
+        "Use primary documents to verify every material input for each future included stock; do not treat an aggregator's summary as the only evidence.",
+        "Do not infer a historical trading status, actual fill, or adjustment event from a document title alone."
+      ]
+    },
+    {
+      "route_id": "C24-R5",
+      "provider": "CSMAR",
+      "scope": "Commercial normalized Chinese market, company, financial, event, and research-data candidate.",
+      "primary_urls": [
+        "https://file.csmar.com/group1/M00/AA/99/CuIKV2XAnKiABeLbAB4nDGC5Ano840.pdf",
+        "https://csmar.com/en/"
+      ],
+      "access_rights_observed": "The public documentation says the China Stock Market Trading Database starts in 1990 and lists product directions for market trading, suspension/resumption, special treatment, financial statements, audit opinions, dividends, and announcements. Those statements do not demonstrate that this case has a license or that a particular subscription supports full-market, point-in-time reconstruction.",
+      "can_potentially_fill": {
+        "normalized_historical_market_data": "CONDITIONAL_YES",
+        "suspension_and_special_treatment": "CONDITIONAL_YES",
+        "financials_and_announcement_dates": "CONDITIONAL_YES",
+        "corporate_actions": "CONDITIONAL_YES",
+        "declared_scope_including_BSE_and_as_of_coverage": "NOT_PROVEN",
+        "rights_for_local_retention_and_derived_outputs": "NOT_PROVEN"
+      },
+      "mandatory_confirmation": [
+        "A signed license and product-level entitlement matrix covering the intended internal research, historical range, local retention, reproducible computation, and permitted output use.",
+        "Data dictionaries and coverage confirmation for all five future exchange/board groups, including delisted names, mappings, availability time, adjustments, corrections, and missing-data policy.",
+        "Independent reconciliation to original exchange/issuer documents and exchange market data for a frozen multiyear sample."
+      ]
+    },
+    {
+      "route_id": "C24-R6",
+      "provider": "Wind and comparable licensed commercial data suppliers",
+      "scope": "Commercial market-data, reference-data, financial-data, corporate-action, and announcement-delivery candidates.",
+      "primary_urls": [
+        "https://www.wind.com.cn/portal/zh/Home/",
+        "https://www.wind.com.cn/portal/zh/WFT/index.html"
+      ],
+      "access_rights_observed": "Wind publicly describes delivery through FTP, Filesync, API, and other services and describes stock basics, IPOs, refinancing, dividends, and announcements. The public page does not prove the exact historic field definition, universe coverage, point-in-time availability, correction policy, or license scope required for this case.",
+      "can_potentially_fill": {
+        "normalized_historical_market_and_reference_data": "CONDITIONAL_YES",
+        "financial_and_event_data": "CONDITIONAL_YES",
+        "point_in_time_full_universe_and_adjustment_chain": "NOT_PROVEN",
+        "case_specific_rights": "NOT_PROVEN"
+      },
+      "mandatory_confirmation": [
+        "Obtain a contract, field dictionary, sample delivery, historic coverage report, update/correction policy, and exact usage/retention/derived-output permission.",
+        "Do not regard terminal visibility, generic API language, or a brand name as evidence that a strategy can be reproduced."
+      ]
+    },
+    {
+      "route_id": "C24-R7",
+      "provider": "China Securities Depository and Clearing Co., Ltd., Ministry of Finance/State Taxation Administration, and exchange rule archives",
+      "scope": "Date-versioned clearing-fee, tax, market-rule, and execution-assumption evidence.",
+      "primary_urls": [
+        "https://www.chinaclear.cn/zdjs/editor_file/20220701154723234.pdf",
+        "https://fgk.chinatax.gov.cn/zcfgk/c102416/c5211343/content.html",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/fund/trading/c/c_20260424_10817739.shtml",
+        "https://investor.szse.cn/lawrules/rule/trade/t20260424_620190.html",
+        "https://www.bse.cn/jygl_list/200028217.html"
+      ],
+      "access_rights_observed": "The sources establish current or dated rule/fee/tax facts. They are not a complete historical cost dataset, a broker-specific fee schedule, an account-eligibility conclusion, or an executable-fill record.",
+      "can_potentially_fill": {
+        "exchange_rule_versions": "PARTIAL_CONDITIONAL",
+        "clearing_fee_versions": "PARTIAL_CONDITIONAL",
+        "tax_change_evidence": "PARTIAL_CONDITIONAL",
+        "broker_commission_and_minimum_fee_history": "NOT_PROVEN",
+        "spread_impact_and_actual_fill": "NO"
+      },
+      "mandatory_confirmation": [
+        "Retain historical versions for every test date, including exchange/board rules, tax/clearing fee schedules, and relevant public broker tariff documents.",
+        "Predeclare non-personal research execution assumptions for order timing, price limits, no-fill, partial fill, spread, impact, and settlement; do not infer them from closing prices or volume."
+      ]
+    }
+  ],
+  "field_coverage_matrix": [
+    {
+      "field_group": "point-in-time declared domestic-stock universe and security master",
+      "required_fields": [
+        "unique security identifier",
+        "exchange and board",
+        "listing, termination, and status dates",
+        "name and code changes",
+        "risk-warning and tradability status",
+        "availability timestamp",
+        "delisted and inactive securities"
+      ],
+      "best_candidate": "licensed exchange/reference data across SSE, SZSE, and BSE or a licensed normalized provider verified against official lists and notices",
+      "status": "BLOCKED",
+      "gap": "No licensed full historical universe, BSE historic route for a BSE-including scope, record-count audit, code-map history, or survivorship-control evidence has been obtained."
+    },
+    {
+      "field_group": "raw market price, volume, and status",
+      "required_fields": [
+        "open, high, low, close, prior close",
+        "volume and turnover",
+        "no-trade flags",
+        "suspension/resumption and limit-state flags",
+        "timestamp, time zone, correction, and missing-data metadata"
+      ],
+      "best_candidate": "SSE/SSIC licensed history plus confirmed BSE historical delivery, or a contractually verified normalized provider",
+      "status": "CONDITIONAL",
+      "gap": "SSE/SZSE service directions are credible but no contract/sample/coverage report is held; BSE historical delivery has not been verified."
+    },
+    {
+      "field_group": "corporate actions, dividends, and adjustment chain",
+      "required_fields": [
+        "cash distribution, stock dividend, rights issue, placement, split/consolidation, and share-change events",
+        "record, ex, payment, and effective dates",
+        "event correction/cancellation chain",
+        "tax-treatment metadata",
+        "raw event record, adjustment factor, algorithm, and version"
+      ],
+      "best_candidate": "licensed corporate-action history reconciled to original exchange/issuer documents and an independent event source",
+      "status": "BLOCKED",
+      "gap": "No complete historical event ledger, adjustment-definition document, factor version, or independent reconciliation was obtained. Provider-adjusted prices may not be used as a black box."
+    },
+    {
+      "field_group": "filings, financials, and availability time",
+      "required_fields": [
+        "original document identifier",
+        "reporting period",
+        "first-publication timestamp",
+        "retrieval and strategy-availability timestamp",
+        "correction/restatement/withdrawal chain",
+        "financial-statement, audit, governance, and material-event evidence"
+      ],
+      "best_candidate": "exchange/CNINFO/BSE disclosure records plus contractually verified structured filing data",
+      "status": "PARTIAL_CONDITIONAL",
+      "gap": "Public documents provide primary evidence but this case has no complete point-in-time indexed archive or machine-replay quality audit."
+    },
+    {
+      "field_group": "suspension, resumption, risk warning, and delisting",
+      "required_fields": [
+        "effective time and announcement time",
+        "reason and rule version",
+        "ST/*ST and other warning status",
+        "intraday and full-day suspension flags",
+        "delisting-transition and final-termination events"
+      ],
+      "best_candidate": "licensed status history plus official notices and historical rule archive",
+      "status": "CONDITIONAL",
+      "gap": "No all-market, date-by-date status table or dated rule-version package is retained."
+    },
+    {
+      "field_group": "cost, tax, settlement, and execution assumptions",
+      "required_fields": [
+        "dated commission schedule and minimum charge",
+        "transfer and clearing fees",
+        "tax schedule",
+        "lot, tick, price limit, trading session, and settlement rules",
+        "order timing, no-fill, partial-fill, spread, impact, and rejection treatment"
+      ],
+      "best_candidate": "versioned exchange rules, CSDC and tax records, public broker tariff history, and predeclared paper-execution protocol",
+      "status": "BLOCKED_FOR_NET_EXECUTION",
+      "gap": "Current rules and generic official fee/tax documents do not supply a complete historic cost/execution ledger or any actual personal fill/access result."
+    },
+    {
+      "field_group": "stock-level institutional diligence",
+      "required_fields": [
+        "business and supply-chain evidence",
+        "financial and earnings bridge",
+        "governance and risk evidence",
+        "valuation inputs and audit",
+        "contrary thesis, catalysts, monitoring triggers, and invalidation conditions"
+      ],
+      "best_candidate": "full equity-research evidence package for every future included stock",
+      "status": "NOT_STARTED_BY_DESIGN",
+      "gap": "C24 selects no stocks. A data stack cannot substitute for per-stock institutional diligence."
+    }
+  ],
+  "point_in_time_controls": [
+    "Construct the complete eligible universe before any selection and preserve delisted, inactive, renamed, transferred, suspended, and risk-warning securities.",
+    "Store separate original-publication, retrieval, correction, and strategy-availability timestamps for every filing, announcement, status, and corporate-action record.",
+    "Keep raw prices, event records, adjustment factors, calculation algorithm, and algorithm version separate; regenerate adjusted series from the retained inputs.",
+    "Treat no trade, suspension, price limit, temporary halt, delisting transition, and code migration as statuses, not as executable prices.",
+    "Freeze the paper-execution protocol before observing results; a same-day close may not be used when the input became available after the relevant trading deadline.",
+    "Preserve daily record counts, hashes, source/version metadata, time zone, missing-data reasons, and correction log for every venue.",
+    "Require an independent party to reconstruct the universe, events, and research inputs from retained raw delivery."
+  ],
+  "product_level_diligence_gates": [
+    {
+      "gate": "security identity and eligibility",
+      "requirement": "Verify exchange/board, listing, suspension, risk, termination, code/name-change, and historical availability status for the proposed stock before it can enter a rule."
+    },
+    {
+      "gate": "primary evidence chain",
+      "requirement": "Retain original prospectus, periodic and temporary reports, audit opinions, regulatory documents, and correction chain with source/timestamp metadata."
+    },
+    {
+      "gate": "business and industry research",
+      "requirement": "Establish product/process, supply-chain position, customer/application, competition, supply-demand, and evidence gaps from primary sources rather than concept labels."
+    },
+    {
+      "gate": "financial quality and earnings bridge",
+      "requirement": "Reconcile financial statements, revenue/profit/cash-flow drivers, balance sheet, operating data, and reporting versus availability timing."
+    },
+    {
+      "gate": "governance and downside diligence",
+      "requirement": "Review control, related parties, ownership changes, pledges, litigation, enforcement, audit quality, regulatory risk, and material event history."
+    },
+    {
+      "gate": "valuation and variant view",
+      "requirement": "Use point-in-time price, share, financial, and peer inputs in an auditable valuation with contrary case, assumption gap, falsification evidence, catalysts, and monitoring triggers."
+    },
+    {
+      "gate": "tradability and cost",
+      "requirement": "Record rules, liquidity, price limits, suspension risk, fees, taxes, settlement, no-fill and partial-fill treatment; never infer them from closing data."
+    },
+    {
+      "gate": "independent review",
+      "requirement": "A writer cannot self-admit a stock. Failed evidence, valuation, or execution gates require watchlist_only / insufficient_evidence status."
+    }
+  ],
+  "minimum_contract_and_data_acceptance_gate": [
+    "Written permission from every data owner or authorized operator for exact data products, historical range, internal research, local retention, reproducible computation, permitted derived outputs, and redistribution limits.",
+    "Hashable raw sample deliveries, complete data dictionaries, versions, daily/venue record counts, identifiers, time zone, availability timestamps, corrections, adjustments, and missing-value policies.",
+    "A complete point-in-time universe across all predeclared boards. If a future protocol includes BSE or claims a full domestic-stock scope, it must retain BSE listings, terminations, suspensions, warning status, code/name changes, and inactive securities; otherwise a Shanghai/Shenzhen A-share limitation must be explicit.",
+    "An independently reconciled corporate-action and status ledger that preserves original event documents, effective dates, corrections, adjustment methods, and all divergences.",
+    "A date-versioned rules, fees, tax, settlement, and paper-execution record that does not substitute closing price, volume, or a generic fee for an actual executable result.",
+    "Full equity-research diligence and valuation/risk review for every stock that could later be included; no data availability shortcut is acceptable.",
+    "A predeclared universe, selection, timing, valuation, execution, suspension, delisting, cost, tax, and invalidation protocol frozen before any computation.",
+    "Independent reconstruction from retained raw deliveries before any future research paper test is considered."
+  ],
+  "current_disposition": {
+    "state": "NO_STOCK_SELECTION_NO_UNIVERSE_FREEZE_NO_DATA_ACQUISITION_NO_BACKTEST_NO_ACTION",
+    "research_conclusion": "C24 identifies conditional data-source directions only. It does not make the direct-A-share route paper-testable today, and it does not weaken the requirement for full institutional diligence on every future included stock.",
+    "prohibitions": [
+      "Do not select a stock, industry, board, or portfolio from this feasibility artifact.",
+      "Do not treat a current list, a surviving-stock list, an adjusted price, a public webpage, or a vendor brand as a point-in-time research dataset.",
+      "Do not calculate, forecast, or claim a return.",
+      "Do not infer personal account access, suitability, costs, tax outcome, liquidity, order acceptance, settlement, or fill quality.",
+      "Do not contact a provider, request a license, download restricted data, open or change an account, submit suitability material, sign a risk document, transfer funds, buy, sell, or place an order under this artifact."
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "C24-S01",
+      "publisher": "Shanghai Stock Exchange / authorized information-service path",
+      "url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "publisher_date": "not stated on page",
+      "retrieved_date": "2026-08-15",
+      "evidence": "SSE historical-data product categories, stated earliest date, subscription and field direction",
+      "quality_and_limit": "high_authority_for_service_existence; not a case-specific license or full-field/coverage proof"
+    },
+    {
+      "source_id": "C24-S02",
+      "publisher": "Shanghai Stock Exchange",
+      "url": "https://www.sse.com.cn/market/publicdata/",
+      "publisher_date": "not stated on page",
+      "retrieved_date": "2026-08-15",
+      "evidence": "public locators for stock lists, suspended/terminated listings, dividends/bonuses, and market data",
+      "quality_and_limit": "high_authority_for_public_locator; not a historic point-in-time master-universe delivery"
+    },
+    {
+      "source_id": "C24-S03",
+      "publisher": "Shenzhen Stock Exchange / Shenzhen Securities Information Co., Ltd.",
+      "url": "https://investor.szse.cn/English/services/dataServices/index.html",
+      "publisher_date": "not stated on page",
+      "retrieved_date": "2026-08-15",
+      "evidence": "authorized data-service role and stated market-data, company-data, and corporate-action field directions",
+      "quality_and_limit": "high_authority_for_service_existence; not a case-specific license, sample, or point-in-time coverage proof"
+    },
+    {
+      "source_id": "C24-S04",
+      "publisher": "Beijing Stock Exchange / China Securities Market Data Co., Ltd.",
+      "url": "https://www.bse.cn/application/guide.html",
+      "publisher_date": "2022-11-04",
+      "retrieved_date": "2026-08-15",
+      "evidence": "BSE/National Equities Exchange and Quotations market-information authorization boundary",
+      "quality_and_limit": "high_authority_for_rights_boundary; no historical delivery proof"
+    },
+    {
+      "source_id": "C24-S05",
+      "publisher": "China Securities Regulatory Commission",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653948/content.shtml",
+      "publisher_date": "2021-03-18",
+      "retrieved_date": "2026-08-15",
+      "evidence": "listed-company disclosure obligations and exchange/qualified-media publication requirement",
+      "quality_and_limit": "high_authority_for_disclosure_obligation; not a normalized historic dataset"
+    },
+    {
+      "source_id": "C24-S06",
+      "publisher": "CNINFO / Shenzhen Securities Information Co., Ltd.",
+      "url": "https://www.cninfo.com.cn/new/index",
+      "publisher_date": "not stated on page",
+      "retrieved_date": "2026-08-15",
+      "evidence": "CNINFO platform status and public disclosure locators",
+      "quality_and_limit": "high_authority_for_document_locator; not a complete point-in-time event-index or data-use grant"
+    },
+    {
+      "source_id": "C24-S07",
+      "publisher": "CSMAR",
+      "url": "https://file.csmar.com/group1/M00/AA/99/CuIKV2XAnKiABeLbAB4nDGC5Ano840.pdf",
+      "publisher_date": "2024-02-05",
+      "retrieved_date": "2026-08-15",
+      "evidence": "stated trading-database starting date and product documentation",
+      "quality_and_limit": "commercial_provider_statement; entitlement, precise fields, BSE coverage, and point-in-time properties unverified"
+    },
+    {
+      "source_id": "C24-S08",
+      "publisher": "Wind",
+      "url": "https://www.wind.com.cn/portal/zh/Home/",
+      "publisher_date": "not stated on page",
+      "retrieved_date": "2026-08-15",
+      "evidence": "public description of data delivery routes and financial-market data categories",
+      "quality_and_limit": "commercial_provider_statement; not a field-level or case-specific rights confirmation"
+    },
+    {
+      "source_id": "C24-S09",
+      "publisher": "China Securities Depository and Clearing Co., Ltd.",
+      "url": "https://www.chinaclear.cn/zdjs/editor_file/20220701154723234.pdf",
+      "publisher_date": "not stated in captured result",
+      "retrieved_date": "2026-08-15",
+      "evidence": "Shanghai-market A-share transfer-fee document",
+      "quality_and_limit": "high_authority_for_fee_document; cannot be extrapolated across dates, markets, or broker charges"
+    },
+    {
+      "source_id": "C24-S10",
+      "publisher": "Ministry of Finance / State Taxation Administration",
+      "url": "https://fgk.chinatax.gov.cn/zcfgk/c102416/c5211343/content.html",
+      "publisher_date": "2023-08-27",
+      "retrieved_date": "2026-08-15",
+      "evidence": "securities-transaction stamp-tax change effective 2023-08-28",
+      "quality_and_limit": "high_authority_for_tax_change; not a full historic tax/cost ledger"
+    },
+    {
+      "source_id": "C24-S11",
+      "publisher": "Shanghai, Shenzhen, and Beijing Stock Exchanges",
+      "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/fund/trading/c/c_20260424_10817739.shtml; https://investor.szse.cn/lawrules/rule/trade/t20260424_620190.html; https://www.bse.cn/jygl_list/200028217.html",
+      "publisher_date": "current 2026 rule pages",
+      "retrieved_date": "2026-08-15",
+      "evidence": "current trading-rule entry points",
+      "quality_and_limit": "high_authority_for_current_rules; historical research requires the dated rule version for every test period"
+    }
+  ]
+}

@@ -1,0 +1,197 @@
+{
+  "schema_version": "missing_data_request_pack.v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "purpose": "Specify external data and documentation required to move a research route from not-testable to protocol-ready. No request has been sent and no acquisition is authorized by this document.",
+  "status": "external_data_or_rights_required_before_any_strategy_test",
+  "requirements": [
+    {
+      "id": "c34_five_etf_total_return_event_and_execution_evidence",
+      "route": "C34",
+      "title": "Five-ETF point-in-time total-return, event and paper-implementation evidence",
+      "required_fields": [
+        "date-aligned market-price, NAV/IOPV where applicable, distribution, tax, split, conversion, suspension, code/name and other fund-event treatment with adjustment conventions",
+        "source availability timestamps, revisions, field definitions and lawful internal-research retention rights for every historical observation",
+        "current legal document and temporary-announcement review, market state, bid/ask/depth, lot/tick, fee/tax, settlement and explicit no-fill/partial-fill fields for each forward paper cycle"
+      ],
+      "periods": ["every C34 historical observation date and every future monthly paper cycle"],
+      "preferred_sources": ["rights-cleared exchange/manager/custodian historical delivery with primary-document reconciliation", "dated venue and broker operational documentation without personal account records"],
+      "current_public_status": "C31/C36 provide dated product facts and C34 retains retrospective market-price rows, but no complete point-in-time total-return/event ledger or date-specific implementation record is retained.",
+      "completion_test": "An independent reviewer can reproduce the frozen C34 inputs and distinguish price, NAV/IOPV, distributions, events, fees, taxes, settlement and no-action outcomes. Completion does not override C34's existing limited proxy-screen failure."
+    },
+    {
+      "id": "c18_sse_company_bond_historical_market_and_master",
+      "route": "C18",
+      "title": "Point-in-time SSE public-company-bond master and historical market records",
+      "required_fields": [
+        "daily as-of security master with listing, termination, redemption, code mapping, product classification and trading/suitability state",
+        "historic trades, price, volume, turnover, no-trade and trading-status observations",
+        "field definitions, units, timestamps, revision policy and coverage exceptions"
+      ],
+      "periods": ["every candidate research date across the proposed test history"],
+      "preferred_sources": ["SSE Info authorized historical-data delivery under written internal-research rights"],
+      "current_public_status": "Public SSE Info pages and interface documentation describe possible product and field concepts, but no licensed extract, data dictionary or coverage test is retained.",
+      "completion_test": "A licensed sample and data dictionary demonstrate complete as-of membership and documented market-field coverage before a broad historical extract is used."
+    },
+    {
+      "id": "c18_company_bond_full_price_cashflow_credit_events",
+      "route": "C18",
+      "title": "Company-bond full-price, cash-flow and credit-event ledger",
+      "required_fields": [
+        "full price, accrued-interest convention, valuation date and revision treatment",
+        "prospectus terms, coupon schedule, payment confirmations, redemption and option events",
+        "external-rating history, trustee notices, default, delinquency, restructuring and other material-credit events",
+        "issuer-group mapping and source timestamps"
+      ],
+      "periods": ["every candidate bond and date in the proposed test history"],
+      "preferred_sources": ["ChinaBond or Shanghai Clearing licensed historical valuation delivery", "licensed reference/event data reconciled to issuer and exchange disclosures"],
+      "current_public_status": "ChinaBond public pages display field concepts and methodology but do not establish an acquired security-level historical event ledger or use right.",
+      "completion_test": "A retained, versioned ledger reconciles a documented sample against dated primary disclosures without filling missing events by assumption."
+    },
+    {
+      "id": "c18_generic_broker_implementation_evidence",
+      "route": "C18",
+      "title": "Dated generic broker implementation documentation",
+      "required_fields": [
+        "per-bond or product-class ordinary-investor permission process and status treatment",
+        "minimum trading unit, fees, taxes, settlement, quote, no-fill and partial-fill treatment",
+        "document effective date and exclusions"
+      ],
+      "periods": ["each proposed test and forward-observation date"],
+      "preferred_sources": ["dated broker public documentation or written generic operational confirmation without personal account records"],
+      "current_public_status": "Venue rules establish only general differentiated mechanisms and suitability boundaries.",
+      "completion_test": "The documented implementation rules can be applied consistently without inferring an individual's permission or retaining sensitive personal records."
+    },
+    {
+      "id": "c20_public_reit_point_in_time_total_return_universe",
+      "route": "C20",
+      "title": "Point-in-time domestic public-REIT universe and total-return ledger",
+      "required_fields": [
+        "as-of universe with listing, termination, expansion, corporate action and trading-status history",
+        "price, NAV, distribution, record-date, cash-credit, tax and adjustment conventions",
+        "source availability timestamps and revision policy"
+      ],
+      "periods": ["every candidate research date across the proposed test history"],
+      "preferred_sources": ["SSE/SZSE authorized historical-market/reference/announcement data or licensed normalized historical data with primary-disclosure reconciliation"],
+      "current_public_status": "A nonselective source probe has daily price and distribution rows but an empty captured NAV endpoint and no auditable total-return ledger.",
+      "completion_test": "The complete market universe and total-return treatment can be independently reconstructed without mixing price, NAV and cash distribution."
+    },
+    {
+      "id": "c20_public_reit_execution_and_eligibility",
+      "route": "C20",
+      "title": "Dated public-REIT implementation and eligibility evidence",
+      "required_fields": [
+        "fund-level and investor-level dated fee and tax treatment",
+        "bid/ask, depth, execution, no-fill, partial-fill, suspension and settlement evidence",
+        "non-sensitive broker/venue eligibility and risk-disclosure path documentation"
+      ],
+      "periods": ["each proposed test and forward-observation date"],
+      "preferred_sources": ["SSE and manager disclosures plus dated broker operational documentation"],
+      "current_public_status": "Current rules establish general mechanics but do not prove historic fill quality, costs or a specific person's permission.",
+      "completion_test": "All fields are documented without using closing price or volume as a proxy for actual executable outcomes."
+    },
+    {
+      "id": "c23_open_ended_fund_point_in_time_total_return_and_operability",
+      "route": "C23",
+      "title": "Point-in-time public open-ended-fund universe, share-class return/event and operability records",
+      "required_fields": [
+        "daily as-of fund and share-class universe including inception, closure, merger, code/name and status history",
+        "non-money-market NAV/accumulated NAV or money-market income, distribution, split, conversion, liquidation, disclosure and availability timestamps",
+        "effective-dated fund/channel fee schedules, subscription/redemption/holding-period, cutoff, confirmation, payment, limit and suspension status",
+        "field definitions, revision policy, source version, export/API and internal-research retention rights"
+      ],
+      "periods": ["every candidate research date across the proposed test history"],
+      "preferred_sources": ["licensed fund master and historical-data delivery with written internal-research rights", "manager/custodian/CSRC primary-disclosure sample reconciliation"],
+      "current_public_status": "Regulatory disclosure obligations and public locators exist, but no historic full-universe, share-class event/fee/status data delivery or reproducible right is retained.",
+      "completion_test": "C23-GATE-1 receives a rights-cleared sample including inactive funds, data dictionaries and primary-source reconciliation, then an independent reviewer can reproduce the accepted inputs."
+    },
+    {
+      "id": "c24_direct_equity_point_in_time_data_and_diligence",
+      "route": "C24",
+      "title": "Declared-scope direct-equity universe, market/event and availability data",
+      "required_fields": [
+        "point-in-time security master for every declared market/board, including listings, terminations, suspensions, warning status, code/name changes and inactive securities",
+        "raw prices, volume, no-trade/status, corporate actions, adjustment factors/algorithm, filing first-publication and availability timestamps, revisions and missing-data rules"
+      ],
+      "periods": ["every candidate research date across the proposed test history and every future included stock"],
+      "preferred_sources": ["SSE/SZSE authorized historical data plus primary disclosures", "BSE historical delivery if the declared scope includes BSE", "contractually verified normalized provider with primary-document reconciliation"],
+      "current_public_status": "Conditional market-data and public-disclosure paths exist. C40-C42 now retain limited issuer/exchange files for three non-admitted subjects, but no rights-cleared point-in-time declared-scope dataset, BSE historic coverage for a BSE-including scope, complete event chain or G0-G9-complete per-stock diligence package is retained.",
+      "completion_test": "A retained and independently reproducible declared-scope data package passes source, event and availability checks before any paper protocol is frozen."
+    },
+    {
+      "id": "c24_direct_equity_cost_execution_and_per_stock_diligence",
+      "route": "C24",
+      "title": "Date-versioned direct-equity cost/execution records and per-stock institutional diligence",
+      "required_fields": [
+        "dated trading, settlement, clearing-fee, tax, commission and paper-execution assumptions",
+        "full equity-research evidence, valuation, risk, governance, industry-chain and tradability package for every future included stock",
+        "independent-review record, source hashes and exceptions for every included stock"
+      ],
+      "periods": ["every candidate research date and every future included stock"],
+      "preferred_sources": ["exchange/clearing/tax archives and public broker tariff history", "case-scoped full equity-research source packs and independent review artifacts"],
+      "current_public_status": "Current rules and fee documents do not provide complete historic implementation records. C40-C42 are partial non-admitted dossiers, not complete per-stock valuation, liquidity, total-return, execution or independent-review packages.",
+      "completion_test": "An independent reviewer can rebuild declared costs and confirm that every future included stock passed full institutional equity-research diligence before the paper protocol is frozen."
+    },
+    {
+      "id": "c37_new_etf_historical_total_return_event_and_execution_contract",
+      "route": "C37",
+      "title": "New domestic ETF hypothesis: rights-cleared investor-total-return/event and execution dataset",
+      "required_fields": [
+        "date-specific ETF/share-class universe with listing, termination, merger, suspension, status and survivorship history",
+        "unambiguous market-price/NAV/accumulated-NAV/total-return/net-return convention, complete distributions/splits/conversions/fee/term events and effective dates",
+        "published_at, available_at, revision history, source version, raw object hash, parser version and written retention/replay/derived-analysis/independent-review rights",
+        "decision-time bid/ask or a conservative predeclared fill/no-fill convention, depth, limits, status, fees, taxes and settlement treatment"
+      ],
+      "periods": ["every universe, event and observation date in a prospective frozen ETF hypothesis"],
+      "preferred_sources": ["written-rights exchange/manager/custodian historical delivery with primary-document reconciliation", "official index-provider files only as separately labelled benchmark inputs"],
+      "current_public_status": "C37 records official public routes and retained limited observations, but none closes every historical investor-total-return/event/execution/right gate.",
+      "completion_test": "An independent reviewer can replay the point-in-time universe, return/event ledger, cost/execution treatment and data provenance without treating OHLCV, NAV or an index benchmark as an ETF investor return."
+    },
+    {
+      "id": "c39_preregistered_equity_cohort_data_execution_and_forward_record",
+      "route": "C39",
+      "title": "C39 audited cash-flow realization cohort: locked data, execution and forward-observation package",
+      "required_fields": [
+        "rights-cleared point-in-time universe including inactive, renamed, suspended, risk-warning and delisted non-financial common shares across SSE/SZSE/BSE",
+        "audited filings and first-public/available-at records, industry map, corporate-action/event ledger, accounting-restatement chain and frozen extraction dictionary for every eligibility input",
+        "decision-time displayed side quotes/depth, limits, status, no-fill, fee/tax/settlement rules and source versions for each formation and outcome observation",
+        "immutable code/data manifest, independent reconstruction log, all P1-P4 integrity metrics and two full annual-report cycles of F1 forward observations"
+      ],
+      "periods": ["all preregistered historical formation/outcome dates and every F1 observation through the two-cycle forward requirement"],
+      "preferred_sources": ["contractually permitted exchange/reference/filing delivery with primary-document reconciliation", "dated authoritative fee/tax/settlement records and an independently retained evidence archive"],
+      "current_public_status": "C39 is preregistered only. C40-C42 partial issuer archives do not supply C39's universal point-in-time cohort, total-return, execution or forward-record requirements.",
+      "completion_test": "Before any calculation, an independent reviewer accepts every C39 field and provenance gate; after that, the frozen P1-P4 and F1 sequence can run without product substitution, retuning or a portfolio-action inference."
+    },
+    {
+      "id": "new_calendar_relative_value_actual_contract_execution_and_rights_contract",
+      "route": "future distinct calendar/relative-value research only",
+      "title": "Actual-contract calendar-pair execution, lifecycle and rights package",
+      "required_fields": [
+        "point-in-time actual-contract master, final-trading-day, delivery-state, offset eligibility, dynamic margin, position-limit and risk-control records for both legs",
+        "decision-time two-sided quotes, depth, limits, no-fill/partial-fill, legging treatment, fees, taxes, settlement, collateral and broker-product eligibility records",
+        "published-at, available-at, revision history, source version, raw-object hash and written retention/replay/derived-analysis/independent-review rights",
+        "a preregistered pair-continuity, stop, roll and reconciliation specification that does not amend C46"
+      ],
+      "periods": ["every formation, holding, roll, delivery-boundary and forward-observation date of a newly frozen route"],
+      "preferred_sources": ["contractually permitted exchange/reference/broker operational delivery reconciled to official contract and risk-control notices", "independently retained primary source archive"],
+      "current_public_status": "C45/C46/C47 establish only a limited historical source-field audit and a closed no-result route. They do not create a data contract or reopen C46.",
+      "completion_test": "An independent reviewer can verify both legs' eligible state, executable/no-fill treatment, cost and source timing before a new economically distinct protocol is frozen."
+    },
+    {
+      "id": "current_environment_formal_strategy_data_rights_and_acceptance",
+      "route": "any new formal domestic historical strategy research",
+      "title": "Written-rights point-in-time, total-return, availability/revision and execution data acceptance package",
+      "required_fields": [
+        "rights-cleared point-in-time investable universe including inactive, renamed, suspended, risk-warning and delisted instruments",
+        "complete corporate-action, distribution, rights, merger, spin-off, delisting, restatement and total-return ledger",
+        "published-at, available-at, revision/version, raw-object hash, field dictionary and written retention/replay/derived-analysis/independent-review rights",
+        "decision-time quote/depth/status/limit/no-fill, cost, tax and settlement records or a conservatively accepted no-fill protocol"
+      ],
+      "periods": ["every historical decision, outcome, event and forward-observation date in a new route"],
+      "preferred_sources": ["user-authorized licensed data delivery with written internal-research rights", "independent primary-document reconciliation archive"],
+      "current_public_status": "C48 finds that the present public-observation environment does not jointly meet these field, timing, rights and execution requirements.",
+      "completion_test": "A source-governance reviewer accepts the full data contract before any new protocol is frozen; the delivery must not be inferred from public OHLCV or archive hashes."
+    }
+  ],
+  "boundary": "This request specification does not select a product, imply a data purchase, close a research blocker or authorize external action."
+}

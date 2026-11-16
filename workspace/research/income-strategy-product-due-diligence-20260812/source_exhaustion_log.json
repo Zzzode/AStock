@@ -1,0 +1,15 @@
+{
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "data_cutoff": "2026-08-12",
+  "status": "open_implementation_blockers_preserved_for_evidence_memo",
+  "items": [
+    {"gap":"Same-session manager NAV/IOPV and creation/redemption state for all three ETFs","impact":"No valid same-day ETF premium/discount or executable valuation conclusion.","next_path":"Collect manager/exchange same-session NAV/IOPV and creation/redemption records at a future review."},
+    {"gap":"Same-session REIT NAV / project valuation bridge for all seven REITs","impact":"Price-to-annual-NAV is historical diagnostic only; no current fair-value conclusion.","next_path":"Obtain current valuation dates, asset changes, debt/capex, lease/traffic/energy KPI and a reconciled NAV bridge."},
+    {"gap":"Bid-ask spread, quote depth, market-maker quality, free float and 20-session capacity","impact":"Observed turnover cannot establish tradable capacity or change q from zero.","next_path":"Collect timestamped order-book/market-maker and multi-session liquidity data with intended trade-size analysis."},
+    {"gap":"Investor account, tax, settlement, custody, eligibility and capital-purpose facts","impact":"No after-tax cash or suitability finding is possible.","next_path":"Run a separate account/suitability review after the user authorizes and provides relevant facts."},
+    {"gap":"Original full broker research or auditable Street forecast/target coverage for each named product","impact":"No broker valuation anchor; all weak or unavailable rows must have zero valuation weight.","next_path":"Retry accessible broker official pages/PDFs at a later date; retain all failed probes and do not infer targets."},
+    {"gap":"Full historical product-level total-return, distributions, corporate actions, constituent/project history and cost/tax series","impact":"No point-in-time strategy replay can test the 5% total-return or 3% settled-net-cash objective.","next_path":"Freeze a final product universe and run an independently reviewed historical replay with benchmarks and capacity."},
+    {"gap":"Named protected-liquidity instrument","impact":"Current 100% fallback cannot be called a specific eligible product or assigned a yield.","next_path":"Name deposit/direct-sovereign candidates and test legal claim, bank aggregation, maturity, redemption, tax, rate and account eligibility."},
+    {"gap":"Named defensive diversifier","impact":"No diversification benefit, correlation assumption, stress input or allocation role may be modeled.","next_path":"Define non-leveraged selection criteria and a finite candidate list, then repeat full product due diligence."}
+  ]
+}

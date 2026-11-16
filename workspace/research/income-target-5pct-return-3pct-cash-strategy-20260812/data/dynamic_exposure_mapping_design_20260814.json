@@ -1,0 +1,105 @@
+{
+  "schema_version": "dynamic_exposure_mapping_design.v2",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "rulebook_parent": "OU-TR5-v1",
+  "hypothesis_parent": "dynamic_rulebook_design.v2",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_methodology",
+  "status": "draft_test_only_strategy_mapping_not_authorized_or_source_tested",
+  "portfolio_q": 0,
+  "purpose": "Draft test-only strategy mapping that maps H1-H3 members to unitized weights, residuals, receipt state and no-fill states. It names no product, imposes no asset-class quota, sets no cash-income constraint and authorizes no action.",
+  "mapping_authorization_status": {
+    "exists_as_draft": true,
+    "authorized": false,
+    "source_tested": false,
+    "independently_approved": false,
+    "hard_gate": "No formal replay or performance claim until authorization, source testing, R1/R2 review and independent risk approval."
+  },
+  "open_universe_rule": "Every qualifying onshore public instrument may be assessed under a frozen PIT rule. Every decision date still needs finite members and deterministic weights; this is not a fixed list or retrospective selection.",
+  "unitized_accounting": {
+    "initial_marked_value": 1.0,
+    "interpretation": "Return-measurement convention only; not a cash-income objective or reinvestment instruction.",
+    "cost_rule": "All costs are proportional and dated. Lots, minimum commissions and holder-specific tax conclusions are outside this mapping."
+  },
+  "common_mapping_engine": {
+    "status": "draft_pending_R1_field_dictionary_and_group_taxonomy",
+    "volatility_input": "annualised 63-session realised total-return volatility ending prior official close",
+    "score_requirements": "a_i must be positive and finite; zero, missing or invalid sigma_63 fails eligibility.",
+    "initial_weight": "w_i = a_i / sum(a_i) for active members",
+    "waterfall": ["10% per listed security", "20% per PIT controller_or_issuer_group", "20% per PIT economic_underlying_group", "reallocate excess pro rata by a_i to uncapped members", "unallocable excess is residual"],
+    "economic_underlying_examples": ["look-through issuer", "benchmark constituent", "project", "sponsor_or_manager", "tenant_or_offtaker", "other declared common-risk entity"],
+    "not_asset_class_quotas": true
+  },
+  "protected_liquidity_function": {
+    "name": "PL(t)",
+    "status": "draft_unavailable_not_source_tested",
+    "type": "deterministic eligibility function, not a named holding",
+    "formal_scope": ["A_shares", "listed_ETFs", "public_REITs", "direct_sovereign_bonds", "direct_interbank_bonds"],
+    "required_fields": ["historical_legal_operational_access_classification", "security_or_return_stream_id", "source_archive_id", "as_of", "available_at", "issuer_id", "guarantor_id", "product_terms", "remaining_term", "modified_duration", "valuation_price_NAV_accrued_interest_basis_and_timestamp", "settlement_terms", "dated_proportional_cost_tax_fields", "trading_suspension_default_like_stale_valuation_state", "coupon_distribution_redemption_action_records"],
+    "pass_rule": "Record is classified within formal_scope; all required fields exist; return can be marked under strategy total-return convention; and issuer/guarantor cap is not breached.",
+    "draft_tie_breakers": ["shortest remaining term", "lower modified duration", "stable source ID ascending"],
+    "unavailable_rule": "Missing required field or no eligible record means PL(t)=unavailable; affected replay is invalid and no synthetic return is assigned."
+  },
+  "receipt_state_rule": {
+    "applies_identically_to": ["strategy", "B0", "B1"],
+    "covered_receipts": ["dividend", "fund_distribution", "REIT_distribution", "coupon", "redemption"],
+    "ledger_fields": ["event_id", "instrument_id", "entitlement_timestamp", "ex_or_effective_date", "payment_or_settlement_timestamp", "gross_amount", "tax_or_fee_amount", "net_amount", "source_reference", "return_basis_flag"],
+    "credit_rule": "Credit net amount once to internal marked receipt state at actual payment/settlement timestamp.",
+    "through_tested_oos_cohort": "Nominal marked value through the tested OOS cohort, with no assumed interim return or automatic reinvestment.",
+    "later_scheduled_decision": "Draft mapping does not reassign receipt state. A different treatment requires a new frozen rulebook revision before testing.",
+    "external_flow_boundary": "External withdrawal is outside this test-only design and requires a separately documented TWRR subperiod break.",
+    "not_a_cash_target_or_reinvestment_mandate": true
+  },
+  "no_fill_exit_event_state": {
+    "decision_to_target": "Calculate after designated close; paper target no earlier than next permitted session.",
+    "no_fill_states": ["halt", "price_limit_lock", "missing_valid_opening_mark", "settlement_restriction", "participation_shortfall"],
+    "rule": "Prior marked state remains; unfilled difference stays residual or receipt state. No synthetic fill, substitute, stop exit or retrospective exit.",
+    "delisting": "Requires source-labelled cash settlement.",
+    "unsupported_actions": "Rights, mergers, spin-offs, conversions, restructurings and unsupported actions block replay until source-tested adapters exist."
+  },
+  "mappings": [
+    {
+      "hypothesis_id": "H1_pit_ashare_qvim_membership",
+      "status": "draft_not_authorized",
+      "scope": ["A_shares"],
+      "membership_mapping_consistency": "Membership must require QVIM > 0 and top-decile rank; then a_i = QVIM_i / sigma_63,i. No non-positive-QVIM member reaches mapping.",
+      "draft_rebalance_clock": "quarter_end_close_then_next_permitted_session",
+      "B1": "H1 base-eligible PIT universe before QVIM rank, a_i = 1 / sigma_63,i, identical caps/receipt/cost/PL(t).",
+      "required_lookthrough_fields": ["security_id", "controller_or_issuer_group_id", "exposure_type", "underlying_id", "PIT_underlying_weight", "source_archive_id", "as_of", "available_at"],
+      "current_q0_reason": ["QVIM dictionary unfrozen", "no PIT archive/group map/cost/receipt ledger", "PL(t) unavailable", "B0/B1 unavailable", "no R1/R2/risk approval"]
+    },
+    {
+      "hypothesis_id": "H2_timestamped_earnings_repricing_membership",
+      "status": "draft_not_authorized",
+      "scope": ["A_shares"],
+      "membership_mapping_consistency": "After frozen positive-surprise eligibility, a_i = positive_surprise_i / sigma_63,i.",
+      "draft_rebalance_clock": "valid_public_event_then_next_permitted_session_with_official_close_refresh",
+      "B1": "Same PIT base event universe and frozen active window without surprise rank, a_i = 1 / sigma_63,i, identical caps/receipt/cost/PL(t).",
+      "required_lookthrough_fields": ["H1_required_lookthrough_fields", "immutable_announcement_id", "complete_publication_revision_linkage"],
+      "current_q0_reason": ["surprise dictionary and PIT consensus/publication archive unfrozen/unavailable", "no action/cost/receipt ledger", "PL(t)/B0/B1 unavailable", "no R1/R2/risk approval"]
+    },
+    {
+      "hypothesis_id": "H3_total_return_trend_membership",
+      "status": "draft_not_authorized",
+      "scope": ["A_shares", "listed_ETFs", "public_REITs", "direct_sovereign_bonds", "direct_interbank_bonds"],
+      "scope_change_rule": "Another instrument class requires a new authorized data contract and frozen rulebook revision.",
+      "membership_mapping_consistency": "After frozen strictly-positive 252-minus-21-session total-return eligibility, a_i = TR_(252_minus_21)_i / sigma_63,i.",
+      "draft_rebalance_clock": "month_end_close_then_next_permitted_session",
+      "B1": "Same PIT base eligible universe with valid lookback but no trend filter, a_i = 1 / sigma_63,i, identical caps/receipt/cost/PL(t).",
+      "required_lookthrough_fields": ["H1_required_lookthrough_fields", "benchmark_constituent_ids_and_PIT_weights_for_pooled_instruments", "project_sponsor_manager_tenant_offtaker_refinancing_counterparty_ids_and_PIT_weights_when_material"],
+      "missing_lookthrough_rule": "Missing required field means ineligible, not independent.",
+      "current_q0_reason": ["no cross-instrument total-return/coupon/action archive", "no look-through map/instrument adapter/cost/receipt ledger", "PL(t)/B0/B1 unavailable", "no R1/R2/risk approval"]
+    }
+  ],
+  "benchmarks": {
+    "B0": "100% PL(t) functional comparator with identical receipt, valuation and proportional-cost rules; unavailable and not frozen.",
+    "B1": "Hypothesis-specific matched comparator above; unavailable and not frozen."
+  },
+  "admission_gates": {
+    "R1": ["formula hash", "field definitions", "cap waterfall", "group taxonomy", "PL(t)", "receipt state", "no-fill state", "B0/B1 algorithms"],
+    "R2": ["authorised immutable PIT archives", "source-tested action adapters", "dated costs", "unitized-engine reconciliation", "walk-forward dry run"],
+    "additional": ["mapping authorization", "independent approval", "independent risk gate"],
+    "current_state": "q=0 until all gates pass"
+  },
+  "paired_markdown": "workspace/research/income-target-5pct-return-3pct-cash-strategy-20260812/analysis/dynamic_exposure_mapping_design_20260814.md"
+}

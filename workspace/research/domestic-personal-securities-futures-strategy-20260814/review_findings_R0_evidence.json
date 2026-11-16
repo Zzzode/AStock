@@ -1,0 +1,148 @@
+{
+  "schema_version": "r0_evidence_review.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "cycle": "R0_evidence",
+  "reviewed_at": "2026-08-14",
+  "reviewer": "independent research-report-review workflow",
+  "initial_publishability_status": "BLOCKED",
+  "initial_publishability_score": 42,
+  "post_repair_status": "pass_evidence_governance_only_not_investable",
+  "final_repair_check": {
+    "status": "PASS",
+    "scope": "R0 evidence-governance and documentation repairs only",
+    "verified_closed_issue_ids": ["R0-S-001", "R0-S-002", "R0-S-003", "R0-A-001", "R0-A-002", "R0-A-003", "R0-A-004", "R0-A-005", "R0-B-001", "R0-B-002"],
+    "verification_summary": "Source manifests passed with 35 files; all twelve futures sample rows remain manifest-bound and retrospective; q=0/no-action boundaries remain intact; source verifiers pass from repository and case roots.",
+    "continuing_blockers": ["UR01", "UR02", "UR03", "UR04", "UR05"]
+  },
+  "findings": [
+    {
+      "issue_id": "R0-S-001",
+      "severity": "S",
+      "subject": "ETF public-series basis contradicted downstream description",
+      "initial_evidence": "The frozen replay input declares price_basis=forward_adjusted_or_unknown, while downstream artifacts described it as unadjusted and price-only.",
+      "required_repair": "Reclassify the input as an unresolved-basis frozen public daily-bar series and regenerate all derived disclosures.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": [
+        "tools/replay_etf_price_falsification.py",
+        "data/etf_public_price_falsification_20260814.json",
+        "data/etf_public_price_falsification_20260814.md",
+        "sources/probe-public-etf-price-r0-20260814/manifest.json",
+        "data/claim_audit.json",
+        "analysis/etf_r1_product_diligence_20260814.md"
+      ]
+    },
+    {
+      "issue_id": "R0-S-002",
+      "severity": "S",
+      "subject": "Six-date futures claims lacked all underlying raw files",
+      "initial_evidence": "The derived probe reported six sampled dates for each exchange, while the local source directory initially retained only the 2026-08-13 files.",
+      "required_repair": "Archive, hash and manifest all twelve raw samples or reduce the claim to one date.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": [
+        "sources/probe-exchange-data-r0-20260814/manifest.json",
+        "sources/probe-exchange-data-r0-20260814/shfe_actual_contract_daily_20160104.json",
+        "sources/probe-exchange-data-r0-20260814/czce_actual_contract_daily_20160104.txt",
+        "tools/probe_exchange_actual_contract_coverage.py",
+        "data/futures_exchange_data_access_probe_20260814.json"
+      ],
+      "continuing_boundary": "All historical samples were retrieved retrospectively on 2026-08-14 and do not establish original-date point-in-time availability."
+    },
+    {
+      "issue_id": "R0-S-003",
+      "severity": "S",
+      "subject": "Required R0 lifecycle artifacts were absent",
+      "initial_evidence": "The gate manifest required a finding set, repair-plan twins and review-log record, but none existed.",
+      "required_repair": "Create the lifecycle artifacts and rerun independent review; do not infer a pass from artifact existence.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": [
+        "review_findings_R0_evidence.json",
+        "repair_plan_R0_evidence.json",
+        "repair_plan_R0_evidence.md",
+        "review_log.md"
+      ]
+    },
+    {
+      "issue_id": "R0-A-001",
+      "severity": "A",
+      "subject": "Exploratory dynamic ETF diagnostic was called predeclared",
+      "initial_evidence": "The rulebook was explicitly draft/not frozen, but the interim memo described the dynamic diagnostic as predeclared.",
+      "required_repair": "Label it exploratory/post-source and prohibit formal-performance inference.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": [
+        "tools/replay_etf_price_falsification.py",
+        "data/interim_evidence_memo_20260814.json",
+        "data/rulebook_r0_20260814.json"
+      ]
+    },
+    {
+      "issue_id": "R0-A-002",
+      "severity": "A",
+      "subject": "Vendor documentation manifest had incomplete per-file provenance",
+      "initial_evidence": "The batch was hash-bound, but individual records lacked publisher and explicit retrieval/effective-date convention and use boundary.",
+      "required_repair": "Normalize every vendor-document row while retaining its documentation-only status.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": ["sources/vendor-data-r0-20260814/manifest.json", "tools/verify_source_manifests.py"]
+    },
+    {
+      "issue_id": "R0-A-003",
+      "severity": "A",
+      "subject": "Futures diligence lacked distinct AU/CU/TA cards",
+      "initial_evidence": "The prior R1 file used a shared checklist instead of separate structure, missing-field and R2-gate treatment for each family.",
+      "required_repair": "Add separate cards that preserve unavailable rule fields rather than filling them with generic assumptions.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": ["analysis/futures_r1_feasibility_20260814.md"]
+    },
+    {
+      "issue_id": "R0-A-004",
+      "severity": "A",
+      "subject": "Failed AU/CU/PTA rule captures had no reproducible metadata record",
+      "initial_evidence": "The WAF/404 boundary was described in prose but lacked URL, attempt time, response classification and non-retention metadata.",
+      "required_repair": "Create a metadata-only failed-probe manifest without retaining challenge content.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": ["sources/probe-contract-rule-r0-20260814/manifest.json", "data/source_registry.json", "source_exhaustion_log.json"]
+    },
+    {
+      "issue_id": "R0-B-001",
+      "severity": "B",
+      "subject": "Claim audit used opaque source-ID ranges",
+      "initial_evidence": "C07 stored source ranges rather than resolvable individual IDs.",
+      "required_repair": "Expand the IDs in the machine-readable claim audit.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": ["data/claim_audit.json"]
+    },
+    {
+      "issue_id": "R0-A-005",
+      "severity": "A",
+      "subject": "Futures derived probe needed source-level and sample-level retrospective provenance",
+      "initial_evidence": "The source manifest disclosed retrospective retrieval, but the generated JSON/Markdown and its generator did not persist that boundary.",
+      "required_repair": "Persist retrieval_basis and manifest-derived retrieved_at in every sample and top-level provenance; refuse a regenerated result when its raw sample is absent from or differs from the manifest.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": [
+        "tools/probe_exchange_actual_contract_coverage.py",
+        "data/futures_exchange_data_access_probe_20260814.json",
+        "data/futures_exchange_data_access_probe_20260814.md",
+        "tools/verify_r0_evidence_repair.py"
+      ]
+    },
+    {
+      "issue_id": "R0-B-002",
+      "severity": "B",
+      "subject": "R0 verification tools needed cwd-independent source-path resolution",
+      "initial_evidence": "Repo-relative source paths could be resolved against the caller working directory rather than the repository root.",
+      "required_repair": "Anchor workspace paths to the repository root inferred from CASE_DIR and verify execution from both repository root and case root.",
+      "repair_status": "implemented_pending_reverification",
+      "repair_evidence": [
+        "tools/verify_source_manifests.py",
+        "tools/verify_r0_evidence_repair.py"
+      ]
+    }
+  ],
+  "non_remediable_at_current_stage": [
+    "UR01: authorized point-in-time ETF total-return/event archive",
+    "UR02: authorized point-in-time actual-contract futures archive",
+    "UR03: dated cost and execution evidence",
+    "UR04: frozen formal rule/test protocol",
+    "UR05: independent review plus prospective paper reconciliation"
+  ],
+  "current_decision": "The case remains a non-investable evidence memo with q=0. A clean rerun can close the documentation defects only; it cannot make the strategy usable."
+}

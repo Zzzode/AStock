@@ -1,0 +1,42 @@
+{
+  "cycle": "R4_final_ic",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "reviewed_at": "2026-08-14T02:00:00+08:00",
+  "reviewer": "current-release-final-ic-review",
+  "reviewed_source_sha256": "f2d183941fa29e909bd204364c0aabea62826e129bd2e2fa865a681acf971e13",
+  "reviewed_source_graph_sha256": "aadf38f2f864caef97777fe61b26a905eb54ca5442d5caa9d5406647f9c54ea1",
+  "reviewed_pdf_sha256": "d7d8ecfb802336b5aedc65c50198f07bddbede40cc26b2ead64b889cbb4dc467",
+  "reviewed_text_sha256": "c5512f5bc8e0295619274696a0401e187e22265cac9bce6129dc708d197ac792",
+  "reviewed_render_dir": "rendered/final-20260814-total-return-only",
+  "reviewed_page_count": 20,
+  "findings": [
+    {
+      "issue_id": "R4-S-001",
+      "severity": "S",
+      "status": "resolved",
+      "artifact": "research_brief.md; main.tex; data/portfolio_return_model_20260812.json; gate_manifest.json; final_signoff.json",
+      "evidence": "The previous mandate retained a separate cash-receipt condition after the user removed that requirement.",
+      "fix_required": "Migrate the entire active framework to one conditional total-return objective and prevent retired cash-target metadata from satisfying release controls.",
+      "resolution": "The v3 model, reader, governance records and validators require cash_objective_not_required=true, remove legacy target disclosures, and prohibit cash thresholds, coverage formulas, hit rates, failure rules and repair allocations."
+    },
+    {
+      "issue_id": "R4-S-002",
+      "severity": "S",
+      "status": "resolved_at_research_framework_scope",
+      "artifact": "data/return_evidence_20260812.json; data/risk_budget_20260812.json; data/execution_eligibility_policy_20260812.json",
+      "evidence": "No formal strategy replay, approved portfolio risk budget, suitability record or current execution packet exists.",
+      "fix_required": "Keep publication strictly at research-framework scope and preserve four independent implementation blocks.",
+      "resolution": "T1 remains open but T2/T3/T4 remain empty, q=0, and return evidence, risk budget, suitability and execution are not approved."
+    },
+    {
+      "issue_id": "R4-B-001",
+      "severity": "B",
+      "status": "closed",
+      "artifact": "main.pdf; rendered/final-20260814-total-return-only; sections/app_glossary.tex",
+      "evidence": "Reader-critical pages were inspected after the single-objective migration.",
+      "fix_required": "None for research-framework publication; repeat the identity-bound render review after any reader-source change.",
+      "resolution": "The 20-page XeLaTeX render is readable with no clipping, overlap, table truncation, broken CJK glyph or overfull hbox. The glossary and accounting sections distinguish distribution facts from objectives and implementation authority."
+    }
+  ],
+  "verdict": "RESEARCH_FRAMEWORK_PASS / IMPLEMENTATION_NOT_APPROVED only. This is not an investable allocation, order authorization, suitability conclusion, target price, calendar-year return guarantee or cash-receipt guarantee."
+}

@@ -1,0 +1,243 @@
+{
+  "schema_version": "r4_candidate_etf_diligence.v1",
+  "artifact_id": "DPSFS-R4-ETF-DIL-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "language": "zh-CN",
+  "artifact_type": "primary_source_product_diligence_packet",
+  "research_only": true,
+  "portfolio_q": 0,
+  "status": "representative_product_facts_verified_no_observation_cohort_or_action_plan",
+  "scope": {
+    "representative_research_references": ["510300", "510500", "510880", "511010", "511990", "518880"],
+    "selection_boundary": "这六只代码是为产品事实和类别机制建立的代表性研究参照；510880 另作为 R5 代理规则权益袖套的事实参照输入。它们不是全体产品、观察队列、优先级、准入清单、持有清单或行动清单。",
+    "excluded_claims": [
+      "价格或业绩表现",
+      "5% 或任何其他数值结果",
+      "个人账户结果",
+      "配置、权重、持有或外部指令",
+      "个人适当性、券商权限或可成交性结论"
+    ]
+  },
+  "evidence_quality": {
+    "primary_raw_capture": "sources/official-r4-candidate-etf-diligence-20260815/manifest.json",
+    "verified_fields": [
+      "上交所主表响应中的代码、管理人、上市日和标的指数/分类字段（适用时）",
+      "产品资料概要中的基金类型、合同生效/上市日、投资目标、范围、复制方法、费用和风险揭示",
+      "上交所 FAQ 的类别层面 T+0/T+1 与最小交易单位描述"
+    ],
+    "unverified_fields": [
+      "当前二级市场价格、价差、深度、成交、做市和容量",
+      "逐日市场价、NAV、IOPV、分派、税费、公司行动和可用时间账本",
+      "产品/券商/账户的当日交易、结算、申赎、适当性和风险匹配状态",
+      "正式回放所需的资料留存、归一化、衍生分析和独立复核权"
+    ],
+    "date_boundary": "产品资料概要的文件日期分别为 2025-06-21 至 2026-07-29；主表响应在 2026-08-15 接收。资料概要自身提示其内容可能滞后，必须以其后公告和完整法律文件复核。"
+  },
+  "r4_observation_and_action_boundary": {
+    "protocol_artifact": "analysis/r4_predeclared_public_observation_protocol_20260815.json",
+    "protocol_state": "predeclared_design_only_not_started",
+    "cohort_id": "C-PUB-LF-v1",
+    "cohort_status": "not_built",
+    "rule_for_any_named_product": "只有未来一次冻结的来源面板机械枚举到该代码、类别标签符合协议且记录状态完整时，该代码才可能成为受控的来源行；这不是由本尽调包作出的产品选择。",
+    "personal_action_plan_status": "not_established_for_all_six",
+    "action_boundary": "不存在产品准入、个人适当性、配置、持有、买卖、转换或外部动作。"
+  },
+  "category_mechanics_boundary": {
+    "source": "sources/official-r4-candidate-etf-diligence-20260815/sse_etf_faq_20260815.html",
+    "observed_category_statement": "上交所 FAQ 说明部分债券、黄金和货币 ETF 可支持 T+0，而股票 ETF 实施 T+1；ETF 买卖最低为一手（100 份），最小价格变动单位为 CNY0.001。",
+    "limitation": "这是类别层面教育说明，不能证明任一代码在任一券商、任一日期的权限、交易状态、结算、申赎、费用或成交。"
+  },
+  "candidates": [
+    {
+      "code": "510300",
+      "name": "华泰柏瑞沪深300ETF",
+      "primary_sources": [
+        "sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_510300_20260815.json",
+        "sources/official-r4-candidate-etf-diligence-20260815/510300_product_summary_20251124.pdf pp. 1-4"
+      ],
+      "issuer_manager": "华泰柏瑞基金管理有限公司",
+      "legal_product_type": "股票型、普通开放式 ETF；人民币计价。",
+      "history": {
+        "fund_contract_effective": "2012-05-04",
+        "sse_listing_date": "2012-05-28"
+      },
+      "exposure_and_method": "标的指数为沪深300指数；以成份股和备选成份股为主要对象，指数成份及备选成份占基金资产净值不低于 95%，采用完全复制法；资料概要还披露可参与转融通证券出借业务。",
+      "documented_benchmark": "沪深300指数。",
+      "disclosed_fees": {
+        "management_fee_annual": "0.15%",
+        "custody_fee_annual": "0.05%",
+        "comprehensive_operating_fee_annual": "0.20%",
+        "subscription_redemption_agent_commission_disclosed_ceiling": "申购和赎回代理券商可按不超过 0.5% 收取佣金；这不等于二级市场交易成本。"
+      },
+      "product_mechanics_and_risks": [
+        "资料概要列示股票市场、指数波动、跟踪偏离、指数变更、二级市场交易价格折溢价、IOPV 参考/计算错误、退市、申购或赎回失败、成份券停牌及第三方服务、管理、操作和技术等风险。",
+        "股票 ETF 的 T+1 描述仅来自上交所类别 FAQ；具体代码和券商状态未核验。",
+        "没有采集到逐日市场价—NAV—IOPV、成交或盘口资料，因而无法判断实际流动性、折溢价、成交或可成交成本。"
+      ],
+      "distribution_and_return_mechanics_caveat": "本包没有建立分派、公司行动、价格/NAV 或税费账本。资料概要中的跟踪目标和基金费用不能替代持有人总回报，也不能说明分派频率、金额或处理方式。",
+      "r4_public_observation_status": "not_assessed_until_C-PUB-LF-v1_panel_freeze; 若未来机械枚举，仅可作为受控公开来源行。",
+      "personal_action_plan_status": "not_established"
+    },
+    {
+      "code": "510500",
+      "name": "南方中证500ETF",
+      "primary_sources": [
+        "sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_510500_20260815.json",
+        "sources/official-r4-candidate-etf-diligence-20260815/510500_product_summary_20260729.pdf pp. 1-8"
+      ],
+      "issuer_manager": "南方基金管理股份有限公司",
+      "legal_product_type": "股票型、普通开放式 ETF；人民币计价。",
+      "history": {
+        "fund_contract_effective": "2013-02-06",
+        "sse_listing_date": "2013-03-15"
+      },
+      "exposure_and_method": "标的指数为中证500指数；以成份股和备选成份股为主要对象，相关比例不低于基金资产净值的 95%，采用完全复制法。",
+      "documented_benchmark": "标的指数，即中证500指数。",
+      "disclosed_fees": {
+        "management_fee_annual": "0.15%",
+        "custody_fee_annual": "0.05%",
+        "comprehensive_operating_fee_annual": "0.23%",
+        "subscription_redemption_agent_commission_disclosed_ceiling": "申购或赎回代理券商可按不超过 0.5% 收取佣金；场内交易费用以证券公司实际收取为准。"
+      },
+      "product_mechanics_and_risks": [
+        "资料概要披露二级市场不保证活跃，可能暂停或终止上市；市场交易价格可受供求影响而高于或低于份额净值。",
+        "资料概要列示 IOPV 与实时净值可能存在差异或计算错误、申赎失败、赎回对价变现、成份股停牌/摘牌、指数服务、第三方机构、操作与技术等风险。",
+        "股票 ETF 的 T+1 描述仅来自类别 FAQ；实际账户、券商与时点状态均未核验。"
+      ],
+      "distribution_and_return_mechanics_caveat": "本包不含分派或公司行动完整账本，不能将指数跟踪、公告或基金费用转换为持有人总回报、可成交表现或任何分派处理假设。",
+      "r4_public_observation_status": "not_assessed_until_C-PUB-LF-v1_panel_freeze; 若未来机械枚举，仅可作为受控公开来源行。",
+      "personal_action_plan_status": "not_established"
+    },
+    {
+      "code": "510880",
+      "name": "华泰柏瑞上证红利ETF",
+      "reference_role": "R5_proxy_rule_equity_sleeve_fact_reference_only; this diligence does not validate, alter, or operationalize the R5 proxy rule.",
+      "primary_sources": [
+        "sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_510880_20260815.json",
+        "sources/official-r4-candidate-etf-diligence-20260815/510880_product_summary_20260619.pdf pp. 1-4"
+      ],
+      "issuer_manager": "华泰柏瑞基金管理有限公司",
+      "legal_product_type": "股票型、普通开放式 ETF；人民币计价。",
+      "history": {
+        "fund_contract_effective": "2006-11-17",
+        "sse_listing_date": "2007-01-18"
+      },
+      "exposure_and_method": "标的指数为上证红利指数；以成份股和备选成份股为主要对象，相关比例不低于基金资产净值的 95%，采用完全复制法。",
+      "documented_benchmark": "上证红利指数收益率。",
+      "disclosed_fees": {
+        "management_fee_annual": "0.50%",
+        "custody_fee_annual": "0.10%",
+        "comprehensive_operating_fee_annual": "0.60%",
+        "subscription_redemption_agent_commission_disclosed_ceiling": "申购和赎回代理券商可按不超过 0.5% 收取佣金；这不等于二级市场交易成本。"
+      },
+      "product_mechanics_and_risks": [
+        "资料概要列示指数波动、跟踪偏离、指数回报与股票市场平均回报偏离、指数变更、二级市场价格折溢价、IOPV 参考/计算错误、退市、申赎失败、赎回对价变现、第三方服务、管理、操作和技术等风险。",
+        "资料概要还列示成份券停牌、指数服务停止和跟踪误差控制未达目标的风险；“红利”名称不证明收益分配频率、金额、稳定性或风险属性。",
+        "股票 ETF 的 T+1 描述仅来自类别 FAQ；没有产品、券商、账户和当日交易状态的核验，也没有实际流动性、价差或成交质量证据。"
+      ],
+      "distribution_and_return_mechanics_caveat": "本包没有分派、公司行动、市场价—NAV—IOPV、税费或成交账本。指数名称、基金跟踪目标和披露费用不能替代持有人总回报、可成交表现或分派处理规则。",
+      "r4_public_observation_status": "not_assessed_until_C-PUB-LF-v1_panel_freeze; 若未来机械枚举，仅可作为受控公开来源行。",
+      "personal_action_plan_status": "not_established"
+    },
+    {
+      "code": "511010",
+      "name": "国泰上证5年期国债ETF",
+      "primary_sources": [
+        "sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_511010_20260815.json",
+        "sources/official-r4-candidate-etf-diligence-20260815/511010_product_summary_20260319.pdf pp. 1-7"
+      ],
+      "issuer_manager": "国泰基金管理有限公司",
+      "legal_product_type": "债券型、交易型开放式 ETF；人民币计价。",
+      "history": {
+        "fund_contract_effective": "2013-03-05",
+        "sse_listing_date": "2013-03-25"
+      },
+      "exposure_and_method": "标的为上证5年期国债指数；主要投资成份国债和备选成份国债，相关比例不低于基金资产净值的 90%，采用优化抽样复制法。",
+      "documented_benchmark": "上证5年期国债指数收益率。",
+      "disclosed_fees": {
+        "management_fee_annual": "0.15%",
+        "custody_fee_annual": "0.05%",
+        "comprehensive_operating_fee_annual": "0.21%",
+        "subscription_redemption_agent_commission_disclosed_ceiling": "申购或赎回代理券商可按不超过 0.4% 收取佣金；场内交易费用以证券公司实际收取为准。"
+      },
+      "product_mechanics_and_risks": [
+        "资料概要明确列示指数下跌、优化抽样和取价/估值差异导致的跟踪偏离、成份券停牌或违约、指数服务中止、流动性、申赎失败/暂停、IOPV 差异或错误、结算制度调整及第三方服务等风险。",
+        "上交所 FAQ 的债券 ETF 说明区分场外净值与由二级市场供求形成的场内价格；这不构成该代码的实时折溢价或成交质量证据。",
+        "债券 ETF 可支持 T+0 仅是 FAQ 的类别表述；产品和券商的实际资格、结算与交易状态未获核验。"
+      ],
+      "distribution_and_return_mechanics_caveat": "本包没有逐笔收益分配、债券应计、净价/全价、市场价、NAV 或税费的统一时间序列，不能推断持有人总回报、收益来源、分派频率或处理方式。",
+      "r4_public_observation_status": "not_assessed_until_C-PUB-LF-v1_panel_freeze; 若未来机械枚举，仅可作为受控公开来源行。",
+      "personal_action_plan_status": "not_established"
+    },
+    {
+      "code": "511990",
+      "name": "华宝现金添益ETF（A类份额）",
+      "primary_sources": [
+        "sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_511990_20260815.json",
+        "sources/official-r4-candidate-etf-diligence-20260815/511990_product_summary_20250621.pdf pp. 1-4"
+      ],
+      "issuer_manager": "华宝基金管理有限公司",
+      "legal_product_type": "货币市场基金、普通开放式；上交所 A 类份额代码 511990，人民币计价。",
+      "history": {
+        "fund_contract_effective": "2012-12-27",
+        "sse_listing_date": "2013-01-28"
+      },
+      "exposure_and_method": "投资范围包括存款、债券回购、央行票据、同业存单、剩余期限受限的非金融企业债务融资工具、债券、资产支持证券及其他良好流动性的货币市场工具；资料概要列示久期、收益率曲线、类属配置、套利、逆回购和流动性管理等策略。",
+      "documented_benchmark": "同期七天通知存款利率（税后）。",
+      "disclosed_fees": {
+        "management_fee_annual": "0.35%",
+        "custody_fee_annual": "0.09%",
+        "sales_service_fee_annual": "0.25%",
+        "comprehensive_operating_fee_annual": "0.69%",
+        "secondary_market_fee_boundary": "场内交易费用以证券公司实际收取为准；资料概要未把该项量化为本包可用的成本。"
+      },
+      "product_mechanics_and_risks": [
+        "资料概要提示交易费用和二级市场流动性可影响持有人结果，二级市场价格可能因供求高于或低于份额净值；上交所可按管理人要求对当日赎回申请实行总量控制。",
+        "资料概要列示市场、信用、估值、当日收益为负、流动性、操作/技术及销售机构风险评价可能与法律文件描述不一致等风险。",
+        "货币 ETF 可支持 T+0 仅是上交所 FAQ 的类别层面说明；不应据此把本产品称为账户结算替代品或认定当日可用。"
+      ],
+      "distribution_and_return_mechanics_caveat": "本包未取得每份收益入账、估值、市场价、赎回限制、税费或任何外部处理规则的完整时间账本；产品目标和基准不能替代持有人总回报或固定结果。",
+      "r4_public_observation_status": "not_assessed_until_C-PUB-LF-v1_panel_freeze; 若未来机械枚举，仅可作为受控公开来源行。",
+      "personal_action_plan_status": "not_established"
+    },
+    {
+      "code": "518880",
+      "name": "华安黄金ETF",
+      "primary_sources": [
+        "sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_518880_20260815.json",
+        "sources/official-r4-candidate-etf-diligence-20260815/518880_product_summary_20260317.pdf pp. 1-4"
+      ],
+      "issuer_manager": "华安基金管理有限公司",
+      "legal_product_type": "其他类型、普通开放式 ETF；人民币计价。",
+      "history": {
+        "fund_contract_effective": "2013-07-18",
+        "sse_listing_date": "2013-07-29"
+      },
+      "exposure_and_method": "目标为紧密跟踪国内黄金现货价格；主要投资上海黄金交易所挂牌交易的黄金现货合约等黄金品种，黄金现货合约占基金资产不低于 90%。",
+      "documented_benchmark": "国内黄金现货价格收益率。",
+      "disclosed_fees": {
+        "management_fee_annual": "0.50%",
+        "custody_fee_annual": "0.10%",
+        "comprehensive_operating_fee_annual": "0.67%",
+        "subscription_redemption_mode_commission_disclosed_ceiling": "办理申购或赎回时，销售机构对相关模式可按不超过 0.5% 或 0.1% 收取费用/佣金；这不是二级市场交易成本。"
+      },
+      "product_mechanics_and_risks": [
+        "资料概要列示上海黄金交易所场内黄金现货市场、基金净值与黄金价格偏离、汇率、通胀、折溢价、IOPV 参考/计算错误、境内外交易时间不一致、申赎/结算规则差异和调整、流动性等风险。",
+        "资料概要说明基金与境内外黄金市场交易时间不完全一致，极端国际价格波动时份额净值可能不能及时反映市场变动。",
+        "黄金 ETF 可支持 T+0 仅是上交所 FAQ 的类别表述；实际交易、结算、券商支持和成交质量没有被本包验证。"
+      ],
+      "distribution_and_return_mechanics_caveat": "本包没有市场价—NAV—IOPV、黄金现货、申赎/结算、税费或事件账本；国内黄金现货跟踪目标不能替代持有人总回报、可成交表现或任何分派处理结论。",
+      "r4_public_observation_status": "not_assessed_until_C-PUB-LF-v1_panel_freeze; 若未来机械枚举，仅可作为受控公开来源行。",
+      "personal_action_plan_status": "not_established"
+    }
+  ],
+  "cross_product_gates_before_any_future_upgrade": [
+    "R4 协议要求先建立 C-PUB-LF-v1 的来源面板、单一来源路线证书、原始哈希链和例外日志；当前均未建立。",
+    "所有产品仍需要获权、可留存的点时市场价/NAV/IOPV/事件资料和完整总回报账本，且要保留来源可得时间与修订链。",
+    "所有产品仍需要产品、券商和账户层面的适当性、权限、费用、交易状态、结算、报价/成交或无成交事实；场所 FAQ 不能替代这些事实。",
+    "正式回放、独立复核和前瞻纸面核对的 UR01--UR05 门槛没有因本产品尽调而关闭。"
+  ],
+  "conclusion": "本工件把六只代表性 ETF 的身份、产品结构、费用披露与主要风险落到可追溯的上交所/管理人原始来源。510880 的附加角色仅是 R5 代理规则权益袖套的事实参照；它不验证或改变该规则。所有产品仍只是事实卡，未成为观察队列成员，更不建立个人可执行方案。"
+}

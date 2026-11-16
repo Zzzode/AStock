@@ -1,0 +1,410 @@
+{
+  "schema_version": "r2_candidate_prioritization_and_next_test.v1",
+  "artifact_id": "DPSFS-R2-CPNT-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "language": "zh-CN",
+  "status": "research_queue_only_not_admission_not_replayable",
+  "research_only": true,
+  "portfolio_q": 0,
+  "purpose": "Prioritize falsifiable hypothesis research and define next data, replay, independent holdout and paper-reconciliation gates without approving an instrument, contract, allocation, holding or action.",
+  "decision_boundary": {
+    "candidate_definition": "A candidate is a hypothesis and test sequence only, never a security, product, contract, allocation or action.",
+    "continue_definition": "May proceed only to data-contract, rule-freeze and audit preparation; it does not authorize performance iteration or admission.",
+    "pause_definition": "No result-driven parameter search or replay is permitted until stated prerequisites are accepted.",
+    "retire_definition": "Ends the named exploratory test definition only; it does not remove an asset class from U0 or reject a broader economic hypothesis.",
+    "no_action": "No current product, contract, allocation, holding, order, execution instruction or return conclusion exists."
+  },
+  "evidence_basis": [
+    {
+      "artifact_id": "DPSFS-R2-HYP-v1",
+      "path": "analysis/r2_strategy_hypothesis_pack_20260814.json",
+      "usable_fact": "Defines H1, H2 and H3 as unfrozen, unreplayed and unusable hypotheses with existing field and falsifier requirements.",
+      "non_inference": "Does not establish performance, eligibility or personal execution."
+    },
+    {
+      "artifact_id": "DPSFS-U0-v2",
+      "path": "data/u0_domestic_universe_registry_20260814.json",
+      "usable_fact": "Keeps ten domestic listed security and derivative classes in the open research population.",
+      "non_inference": "Does not admit any class or item into T2."
+    },
+    {
+      "artifact_id": "DPSFS-R2-MAEF-v1",
+      "path": "analysis/r2_market_access_and_execution_feasibility_20260814.json",
+      "usable_fact": "Venue rules, personal entitlement, execution and replay readiness are separate questions for all ten U0 classes.",
+      "non_inference": "Venue rules do not prove a person's account permission, broker route, fee terms or fillability."
+    },
+    {
+      "artifact_id": "R2-PUBLIC-ETF-EXTENDED-PROBE",
+      "path": "analysis/r2_public_series_extended_probe_20260814.json",
+      "usable_fact": "Across the reported 0-, 10-, 20- and 50-bps sensitivities, all seven H01--H07 variants in the four-ETF public-price exploratory sample have at least one rolling five-year arithmetic endpoint below 0.05.",
+      "non_inference": "The limited public-price sample is not U0, T2, a total-return ledger, an execution result or a test of H3."
+    },
+    {
+      "artifact_id": "DPSFS-R2-PSIA-20260814-v2",
+      "path": "analysis/r2_public_series_independent_audit_20260814.json",
+      "usable_fact": "The repaired public-series screen passed independent review of its disclosed monthly self-financing accounting, annual carry-forward arithmetic and case-local sealed-source controls.",
+      "non_inference": "That narrow accounting/integrity pass does not validate historical source timing, total return, execution or strategy eligibility."
+    },
+    {
+      "artifact_id": "DPSFS-R2-H1H3-ODR-v1",
+      "path": "analysis/r2_h1_h3_official_data_readiness_20260814.json",
+      "usable_fact": "Fifteen retained SSE samples identify selected H1 disclosure/action/status and H3 REIT, ETF and convertible field routes for the next source inquiry.",
+      "non_inference": "Selected current or retrospectively retrieved fields do not establish complete point-in-time inputs, total return, execution or strategy eligibility."
+    },
+    {
+      "artifact_id": "DPSFS-R3-H1-FPDRA-v1",
+      "path": "analysis/r3_h1_first_party_data_route_assessment_20260814.json",
+      "usable_fact": "Official H1 procurement, disclosure and authorization routes are identified, including a Shanghai historical-data subscription route, but no accepted delivery or written right exists in the case.",
+      "non_inference": "A public or uncontracted route does not establish complete SH/SZ/BJ coverage, point-in-time financials/events, replay rights or H1 eligibility."
+    },
+    {
+      "artifact_id": "DPSFS-R3-H3-FPDRA-v1",
+      "path": "analysis/r3_h3_first_party_data_route_assessment_20260814.json",
+      "usable_fact": "Official H3 market-data, fixed-income and rights-inquiry routes are identified, but no accepted dual-venue delivery, event/terms package or written right exists in the case.",
+      "non_inference": "A service, price or display-authorization page does not establish point-in-time total-return inputs, execution evidence or H3 eligibility."
+    },
+    {
+      "artifact_id": "DPSFS-R3-FOR-v1",
+      "path": "analysis/r3_forward_observation_readiness_20260814.json",
+      "usable_fact": "A research-only forward-intake and later formal-paper-observation control sequence is defined.",
+      "non_inference": "A design or future intake record does not establish an accepted input, a replay, a recommendation or strategy eligibility."
+    },
+    {
+      "artifact_id": "DPSFS-RP0-v10",
+      "path": "data/formal_replay_protocol_requirements_20260814.json",
+      "usable_fact": "Defines frozen replay, endpoint, ledger, holdout and prospective-coverage hard controls.",
+      "non_inference": "Requirements alone are not a runnable or passing replay."
+    }
+  ],
+  "strict_historical_hurdle": {
+    "scope": "A future, predeclared combined rulebook only; never an isolated module label or a future-return assertion.",
+    "threshold": 0.05,
+    "complete_calendar_year_rule": "Every complete calendar year's net TWRR must be greater than or equal to 0.05.",
+    "rolling_five_year_rule": "Every eligible rolling five-year endpoint's annualized net TWRR must be greater than or equal to 0.05.",
+    "required_endpoint_state": "FAIL, INCOMPLETE and INVALID endpoint counts must each equal zero.",
+    "required_accounting": [
+      "Use unit NAV or an equivalent chain-linked unit NAV rather than a total-NAV ratio when external flows exist.",
+      "Retain all verified costs, taxes, spreads, impact, no-fill, settlement, corporate-action, margin and collateral effects.",
+      "Retain every failure endpoint and data revision."
+    ],
+    "non_inference": "Passing a historical test would not guarantee, forecast, establish a floor for or assign a probability to future returns."
+  },
+  "research_queue": [
+    {
+      "queue_id": "RQ-H1",
+      "hypothesis_id": "H1",
+      "title": "A-share quality-trend cross-sectional research",
+      "scope_u0_classes": [
+        "DIRECT_A_SHARE_EQUITIES"
+      ],
+      "research_priority": "P1",
+      "disposition": "continue_data_and_rule_preparation_only",
+      "rationale": "Official samples and route archives identify report-index, distribution, capitalization, suspension and future procurement routes, but point-in-time fundamentals, full status history, complete corporate actions, written rights, costs and executable-state evidence are not accepted.",
+      "next_allowed_output": "A population-status-fundamental-availability-execution-cost data contract and gap audit, with no security names or performance result.",
+      "module_falsification_thresholds": [
+        {
+          "test": "PIT ranking inputs",
+          "threshold": "Every ranking input used for every included or excluded security has a source, raw hash, revision and available_at not later than decision_at; critical missing count equals 0.",
+          "failure_effect": "Affected month is INCOMPLETE or INVALID; it cannot be repaired by silent removal."
+        },
+        {
+          "test": "Breadth",
+          "threshold": "A rebalance with fewer than 20 qualified securities is LOW_COVERAGE and cannot be cured by relaxing the threshold.",
+          "failure_effect": "A primary-holdout occurrence without a pre-frozen LOW_COVERAGE disposition makes affected endpoints ineligible."
+        },
+        {
+          "test": "State and execution",
+          "threshold": "Lot, T+1, limit, halt, cost, fill/no-fill and settlement states are present for every generated transaction path; unresolved count equals 0.",
+          "failure_effect": "No H1 performance result may be reported."
+        }
+      ]
+    },
+    {
+      "queue_id": "RQ-H3",
+      "hypothesis_id": "H3",
+      "title": "REIT, bond/convertible-bond and listed-fund valuation-trend research",
+      "scope_u0_classes": [
+        "PUBLIC_REITS",
+        "LISTED_EQUITY_ETFS",
+        "BOND_AND_MONEY_MARKET_ETFS",
+        "GOLD_AND_OTHER_COMMODITY_ETFS",
+        "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES"
+      ],
+      "research_priority": "P2",
+      "disposition": "continue_category_neutral_event_and_total_return_data_preparation_only",
+      "rationale": "Official samples and route archives identify selected REIT NAV/distribution, ETF PCF/snapshot, convertible terms/event and future service routes, but the four-ETF public-price sample, service pages and local fields cannot represent the full product population, event ledger or execution accounting.",
+      "next_allowed_output": "A category master, market-price/NAV/event reconciliation design, bond-term and REIT-operating-field data acceptance plan, with no security selection or result.",
+      "module_falsification_thresholds": [
+        {
+          "test": "Total-return event completeness",
+          "threshold": "For each applicable product or bond, unexplained market-price, NAV/accumulated-NAV, distribution/coupon, redemption, conversion, maturity, issuance-expansion, credit or status-event differences equal 0 after the pre-frozen reconciliation rule.",
+          "failure_effect": "Affected item or class is not replayable; a close price or static yield cannot substitute."
+        },
+        {
+          "test": "Point-in-time terms",
+          "threshold": "Every valuation, term, underlying-operating and credit input has version and available_at no later than its decision timestamp; critical missing count equals 0.",
+          "failure_effect": "Affected endpoint is INCOMPLETE or INVALID."
+        },
+        {
+          "test": "Executable state",
+          "threshold": "Trading, redemption, halt, lot, settlement, fee, tax and route terms are resolved for every generated path; unresolved count equals 0.",
+          "failure_effect": "No H3 result may be promoted beyond data preparation."
+        }
+      ]
+    },
+    {
+      "queue_id": "RQ-H2",
+      "hypothesis_id": "H2",
+      "title": "Domestic commodity and financial futures actual-contract trend research",
+      "scope_u0_classes": [
+        "COMMODITY_FUTURES",
+        "FINANCIAL_FUTURES"
+      ],
+      "research_priority": "P3",
+      "disposition": "pause_pending_actual_contract_and_margin_feasibility_evidence",
+      "rationale": "Actual-contract selection, roll, daily margining, delivery, price limits and session controls cannot be reconstructed from the current limited retrospective probes.",
+      "next_allowed_output": "A data-availability and rule-version proof for actual-contract lifecycle, settlement, margin, limit, delivery and session records; no trend result.",
+      "module_falsification_thresholds": [
+        {
+          "test": "Actual contract eligibility",
+          "threshold": "Each selected contract is an actual listed contract and has days to last trade or delivery greater than or equal to max(15 trading days, the then-effective delivery buffer).",
+          "failure_effect": "That product has no eligible observation; an old, continuous or ex-post lead contract cannot replace it."
+        },
+        {
+          "test": "Daily margin and rule completeness",
+          "threshold": "Settlement, multiplier, margin, limit, position limit, fee, session, roll and delivery fields have critical missing count equal to 0 for each selected-contract day.",
+          "failure_effect": "Affected day or endpoint is INCOMPLETE or INVALID."
+        },
+        {
+          "test": "Execution and settlement stress",
+          "threshold": "No unresolved or failed state exists for a generated execution, margin, forced-risk, settlement or delivery path.",
+          "failure_effect": "Affected endpoint is INVALID."
+        }
+      ]
+    },
+    {
+      "queue_id": "RQ-H2-OPTION-EXTENSION",
+      "hypothesis_id": "H2_OPTION_EXTENSION",
+      "title": "Listed-option independent extension",
+      "scope_u0_classes": [
+        "LISTED_OPTIONS"
+      ],
+      "research_priority": "P0",
+      "disposition": "pause_no_independent_hypothesis_or_complete_ledger",
+      "rationale": "H2 does not depend on options, and option permission, margin, exercise, assignment, volatility and settlement facts are not accepted.",
+      "next_allowed_output": "An independent-hypothesis prerequisite checklist only.",
+      "module_falsification_thresholds": [
+        {
+          "test": "Prerequisite completeness",
+          "threshold": "Independent hypothesis, contract master, entitlement, margin, exercise/assignment and settlement ledgers are all accepted before any replay design.",
+          "failure_effect": "Remain paused; do not borrow H2 inputs or results."
+        }
+      ]
+    },
+    {
+      "queue_id": "RQ-LI",
+      "hypothesis_id": "LEVERAGED_INVERSE_INDEPENDENT_ROUTE",
+      "title": "Leveraged and inverse listed-product independent route",
+      "scope_u0_classes": [
+        "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS"
+      ],
+      "research_priority": "P0",
+      "disposition": "pause_pending_class_master_and_independent_hypothesis",
+      "rationale": "The class has no accepted unified population, daily-reset terms or broker-support facts and cannot be inferred from its name.",
+      "next_allowed_output": "A class-master and term-fact checklist only.",
+      "module_falsification_thresholds": [
+        {
+          "test": "Class and term completeness",
+          "threshold": "Class master, daily-reset/risk terms, event history, entitlement and execution-state fields are accepted before an independent hypothesis is proposed.",
+          "failure_effect": "Remain outside H1-H3 replay design while remaining in U0."
+        }
+      ]
+    }
+  ],
+  "retired_exploratory_family": {
+    "family_id": "H01-H07_PUBLIC_FOUR_ETF_PRICE_VARIANTS",
+    "scope": "Four-ETF public-price exploratory observation only, not an asset universe or a product list.",
+    "disposition": "retire_current_definition",
+    "observed_stop_signal": "Across the reported 0-, 10-, 20- and 50-bps public-price sensitivities, every H01-H07 variant has at least one rolling five-year arithmetic endpoint below 0.05.",
+    "independent_audit_status": "PASS for the disclosed research-only monthly self-financing accounting and case-local source-integrity controls; it remains non-PIT, non-total-return and non-execution evidence.",
+    "prohibited_follow_up": [
+      "Do not search for a survivor by changing lookback, risk budget, breadth, cost sensitivity or date window in the same sample.",
+      "Do not cite the current arithmetic output as an investor total return, formal replay or H3 verdict."
+    ],
+    "reconsideration_preconditions": [
+      "A newly accepted, written-rights, point-in-time and event-complete data package.",
+      "A different rulebook frozen before its results are visible.",
+      "Independent review and the complete formal replay protocol."
+    ]
+  },
+  "u0_coverage": [
+    {
+      "u0_class": "DIRECT_A_SHARE_EQUITIES",
+      "route": "H1",
+      "queue_state": "P1_continue_data_and_rule_preparation_only"
+    },
+    {
+      "u0_class": "PUBLIC_REITS",
+      "route": "H3",
+      "queue_state": "P2_continue_event_and_total_return_data_preparation_only"
+    },
+    {
+      "u0_class": "LISTED_EQUITY_ETFS",
+      "route": "H3; public H01-H07 family retired in its current definition",
+      "queue_state": "P2_continue_data_preparation_only"
+    },
+    {
+      "u0_class": "BOND_AND_MONEY_MARKET_ETFS",
+      "route": "H3",
+      "queue_state": "P2_continue_event_and_total_return_data_preparation_only"
+    },
+    {
+      "u0_class": "GOLD_AND_OTHER_COMMODITY_ETFS",
+      "route": "H3",
+      "queue_state": "P2_continue_event_and_total_return_data_preparation_only"
+    },
+    {
+      "u0_class": "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+      "route": "H3",
+      "queue_state": "P2_continue_term_event_and_total_return_data_preparation_only"
+    },
+    {
+      "u0_class": "COMMODITY_FUTURES",
+      "route": "H2",
+      "queue_state": "P3_pause_pending_actual_contract_feasibility_evidence"
+    },
+    {
+      "u0_class": "FINANCIAL_FUTURES",
+      "route": "H2",
+      "queue_state": "P3_pause_pending_actual_contract_feasibility_evidence"
+    },
+    {
+      "u0_class": "LISTED_OPTIONS",
+      "route": "H2 independent extension",
+      "queue_state": "P0_pause_pending_independent_hypothesis_and_ledger"
+    },
+    {
+      "u0_class": "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS",
+      "route": "Independent future hypothesis",
+      "queue_state": "P0_pause_pending_class_master_and_term_facts"
+    }
+  ],
+  "shared_hard_gates": [
+    {
+      "gate_id": "G1_RIGHTS_AND_PROVENANCE",
+      "threshold": "Written rights cover retention, normalization, replay, derivative analysis and independent review; critical-field, rights and source-version unresolved counts each equal 0.",
+      "failure_effect": "INVALID; public pages, downloads or interface documentation cannot substitute."
+    },
+    {
+      "gate_id": "G2_PIT_POPULATION",
+      "threshold": "Every decision input has available_at not later than decision_at; expected population equals actual unique population; count_residual and silent-exclusion counts each equal 0.",
+      "failure_effect": "INCOMPLETE or INVALID."
+    },
+    {
+      "gate_id": "G3_EXECUTION_AND_SETTLEMENT",
+      "threshold": "Prospective coverage has zero UNRESOLVED, FAILED, non-PASS and missing expected tuples; any FAILED settlement exists in zero rows.",
+      "failure_effect": "Any affected endpoint is INVALID."
+    },
+    {
+      "gate_id": "G4_REPRODUCTION_AND_RECONCILIATION",
+      "threshold": "Input hashes, frozen rules, environment, unit NAV, fees, taxes, events, positions and residuals reconcile exactly; unexplained discrepancy count equals 0.",
+      "failure_effect": "INVALID."
+    },
+    {
+      "gate_id": "G5_STRICT_HISTORICAL_ENDPOINTS",
+      "threshold": "For a predeclared combined rulebook, every complete calendar year and eligible rolling five-year endpoint meets the 0.05 net-TWRR threshold, with zero FAIL, INCOMPLETE and INVALID endpoints.",
+      "failure_effect": "The frozen rulebook fails the strict historical research hurdle."
+    },
+    {
+      "gate_id": "G6_PRIMARY_HOLDOUT",
+      "threshold": "PRIMARY_HOLDOUT actual endpoint count equals frozen expected count and is at least 126; every endpoint is PASS; CROSSING does not substitute.",
+      "failure_effect": "Out-of-sample failure."
+    },
+    {
+      "gate_id": "G7_PROSPECTIVE_PAPER_RECONCILIATION",
+      "threshold": "For each U0 parent class ultimately sent to paper testing, at least 60 calendar days and 10 distinct eligible observations are recorded, with zero unresolved state, cost or reconciliation exception.",
+      "failure_effect": "Incomplete or failed paper reconciliation; q remains 0."
+    }
+  ],
+  "next_test_design": {
+    "stages": [
+      {
+        "stage": 0,
+        "name": "data_acceptance",
+        "pre_result_requirements": [
+          "Written rights and immutable delivery manifest.",
+          "U0 population, point-in-time availability and execution/entitlement facts accepted."
+        ],
+        "stop_rule": "Any critical package failure stops before replay."
+      },
+      {
+        "stage": 1,
+        "name": "freeze_before_results",
+        "pre_result_requirements": [
+          "Freeze U0-to-T2 derivation, parameters, development and primary-holdout windows, calendar, execution/cost/settlement model, risk package and endpoint roster.",
+          "Bind source, code, environment and commands to one run record."
+        ],
+        "stop_rule": "A post-result change requires a new run identifier and cannot overwrite the locked run."
+      },
+      {
+        "stage": 2,
+        "name": "development",
+        "pre_result_requirements": [
+          "Use only the designated development partition for implementation and predeclared fault diagnosis.",
+          "Retain every candidate, failure endpoint and exclusion reason."
+        ],
+        "stop_rule": "Development output cannot reset primary-holdout parameters."
+      },
+      {
+        "stage": 3,
+        "name": "primary_holdout",
+        "pre_result_requirements": [
+          "Re-run from a lockbox start state using the frozen roster and complete daily ledger.",
+          "Reconcile expected and actual endpoint populations."
+        ],
+        "stop_rule": "Any count shortfall, contamination, FAIL, INCOMPLETE or INVALID endpoint is an out-of-sample failure."
+      },
+      {
+        "stage": 4,
+        "name": "independent_review",
+        "pre_result_requirements": [
+          "A reviewer separate from the model author recomputes hashes, endpoints, TWRR, events, costs and residuals in an isolated working directory.",
+          "Record whether the source copy is independently sourced or only reproducibly archived."
+        ],
+        "stop_rule": "Any unexplained difference is a failure; a shared source copy may not be described as independent source validation."
+      },
+      {
+        "stage": 5,
+        "name": "prospective_paper_reconciliation",
+        "pre_result_requirements": [
+          "Begin after freeze and record observation time, quote/depth, simulated submission, fill/no-fill, fees, taxes, settlement, margin/collateral, events and risk state without transmitting a live instruction.",
+          "Meet G7 duration, observation and reconciliation requirements."
+        ],
+        "stop_rule": "Any unresolved exception leaves the design unusable and q at 0."
+      }
+    ],
+    "independence_boundary": "Model author, data acceptance/review and endpoint reproduction must be segregated. A repeated calculation on the same mutable public source is neither an independent sample nor an independent data validation."
+  },
+  "public_source_non_substitution": [
+    "Four public ETF price series are not a point-in-time, class-neutral U0 population or a T2 derivation audit.",
+    "Retrospective retrieval without available_at, revision chain and written rights cannot establish historical availability or permitted replay use.",
+    "Unverified adjusted closing prices without a market-price/NAV/IOPV/distribution/corporate-action chain cannot establish total return or unitization.",
+    "The sources do not provide a full trading-state, calendar, price-limit, T+1, depth, fill/no-fill, fee, tax, settlement, margin or personal-route ledger.",
+    "The current public-screen model's disclosed self-financing, complete-year and case-local source controls passed independent re-audit, but the public inputs remain non-PIT, non-total-return and non-execution evidence.",
+    "A second public price path with close arithmetic results is path corroboration only, not independent source, model or execution validation."
+  ],
+  "current_conclusion": {
+    "continue": [
+      "H1 data and rule preparation at P1.",
+      "H3 category-neutral event and total-return data preparation at P2."
+    ],
+    "pause": [
+      "H2 actual-contract research at P3 pending feasibility evidence.",
+      "Listed-options extension and leveraged/inverse independent route at P0."
+    ],
+    "retire": "H01-H07 four-ETF public-price exploratory family in its current definition.",
+    "open_universe": "All ten U0 classes remain in the research population; no class is admitted into T2 by this artifact.",
+    "strategy_status": "No formal replay, independent sample-out result, paper reconciliation, product, contract, allocation, holding, action or return conclusion exists; portfolio_q remains 0."
+  }
+}

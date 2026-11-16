@@ -1,0 +1,934 @@
+{
+  "schema_version": "research-ledger.v1",
+  "updated_at": "2026-08-14T19:48:33.232706+00:00",
+  "entries": [
+    {
+      "entry_id": "research-20260815-5c0b9f1e033a",
+      "title": "C14 public infrastructure REIT representative-route feasibility",
+      "thesis": "The fixed 508000 public infrastructure REIT zero-cost cash diagnostic is below the strict 5% hurdle in 2023, 2024 and 2025 and in all 40 available rolling five-year windows. It is not a personal net-after-cost return result and does not decide the full public-REIT universe.",
+      "targets": [
+        "508000"
+      ],
+      "target_type": "public_infrastructure_reit_strategy_proxy",
+      "status": "invalidated",
+      "catalysts": [
+        "A documented-rights, point-in-time full public-REIT universe with price/NAV/distribution/corporate-action data.",
+        "A separately frozen cost, execution, account-route and independent all-endpoint study."
+      ],
+      "risks": [
+        "Official day-price response has no verified adjustment basis.",
+        "Distribution, NAV, market price and personal cash receipt are distinct records.",
+        "No dated personal fee/tax, broker, custody, transfer, quote/depth, fill or settlement ledger.",
+        "One representative product cannot characterize the full REIT universe."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "c14_universe_and_net_ledger_gate",
+          "condition": "Open a new public-REIT hypothesis only after an entire eligible universe, point-in-time total-return inputs, personal cost/execution path and protocol are frozen before calculation.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C14 feasibility and rulebook artifacts"
+        }
+      ],
+      "invalidation_conditions": [
+        "The fixed 508000 zero-cost cash diagnostic has 2023, 2024 and 2025 complete-year changes below 5%.",
+        "All 40 available rolling five-year zero-cost cash diagnostic endpoints are below 5%.",
+        "The diagnostic cannot be promoted to personal net-after-cost return while the required ledger is absent."
+      ],
+      "tags": [
+        "dpsfs",
+        "c14",
+        "public-reit",
+        "infrastructure-reit",
+        "price-distribution-diagnostic"
+      ],
+      "data_quality": {
+        "rules_product_disclosure": "PRIMARY_OFFICIAL",
+        "price_distribution_diagnostic": "PRIMARY_OFFICIAL_PUBLIC_RETROSPECTIVE",
+        "personal_net_after_cost_return": "NOT_ESTABLISHED",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C14-SOURCE",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/manifest.json"
+        },
+        {
+          "id": "C14-FEASIBILITY",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c14_public_reit_feasibility_20260815.json"
+        },
+        {
+          "id": "C14-RULEBOOK",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c14_public_reit_rulebook_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true,
+        "formal_decision_eligible": false,
+        "strict_test_state": "NOT_FEASIBLE_FOR_STRICT_5PCT_OR_PERSONAL_EXECUTION"
+      },
+      "observations": [
+        {
+          "observation_type": "strict_hurdle_diagnostic_and_feasibility_failure",
+          "note": "The fixed 508000 zero-cost cash diagnostic is -30.67% in 2023, 3.11% in 2024 and 3.84% in 2025; all 40 available rolling five-year windows are below 5%. Required personal net-cost, execution and account inputs remain absent.",
+          "observed_at": "2026-08-15T03:48:33.232259+00:00",
+          "evidence": {
+            "feasibility_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c14_public_reit_feasibility_20260815.json",
+            "rulebook_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c14_public_reit_rulebook_20260815.json",
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T03:48:33.230938+00:00",
+      "updated_at": "2026-08-15T03:48:33.232259+00:00"
+    },
+    {
+      "entry_id": "research-20260815-5173b9825f7d",
+      "title": "C8 convertible-bond ETF fixed-allocation price proxy",
+      "thesis": "The fixed C8 convertible-bond ETF price proxy fails the strict 5% hurdle in 2022 and 2023 and at 123 of 187 rolling five-year endpoints. It remains a bounded proxy, not a total-return or personal execution result.",
+      "targets": [
+        "511180",
+        "511380",
+        "511010"
+      ],
+      "target_type": "convertible_bond_etf_strategy_proxy",
+      "status": "invalidated",
+      "catalysts": [
+        "A separately frozen product/event/total-return/execution study that treats the current proxy as a past hypothesis rather than a result."
+      ],
+      "risks": [
+        "Public price input lacks complete event and total-return treatment.",
+        "Distribution, trading status, fee, tax, depth, fill and account conditions are unresolved.",
+        "The candidate was defined after product identities were observed."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "c8_new_protocol_gate",
+          "condition": "Re-open only under a new protocol that is frozen before data capture and has point-in-time total-return and execution inputs.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C8 and R7 artifacts"
+        }
+      ],
+      "invalidation_conditions": [
+        "The current price proxy has 2022 and 2023 complete-year changes below 5%.",
+        "123 of 187 rolling 1260-observation endpoints are below 5%."
+      ],
+      "tags": [
+        "dpsfs",
+        "c8",
+        "convertible-bond-etf",
+        "price-proxy",
+        "falsified"
+      ],
+      "data_quality": {
+        "market_price_proxy": "EXPLORATORY_NEGATIVE_EVIDENCE",
+        "total_return_execution": "FAIL",
+        "independent_arithmetic_audit": "PASS",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C8-RESULT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c8_convertible_bond_etf_fixed_allocation_price_proxy_20260815.json"
+        },
+        {
+          "id": "R7-AUDIT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r7_c7_c8_independent_audit_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true,
+        "formal_decision_eligible": false,
+        "strict_test_state": "PRICE_PROXY_HURDLE_FALSIFIED"
+      },
+      "observations": [
+        {
+          "observation_type": "strict_hurdle_proxy_failure",
+          "note": "The fixed C8 price proxy has complete-year changes below 5% in 2022 and 2023, and 123 of 187 rolling 1260-observation endpoints below 5%. It is not total-return or personal execution evidence.",
+          "observed_at": "2026-08-15T03:38:25.908635+00:00",
+          "evidence": {
+            "result_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c8_convertible_bond_etf_fixed_allocation_price_proxy_20260815.json",
+            "audit_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r7_c7_c8_independent_audit_20260815.json",
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T03:38:25.907461+00:00",
+      "updated_at": "2026-08-15T03:38:25.908635+00:00"
+    },
+    {
+      "entry_id": "research-20260815-63762052b6db",
+      "title": "C7 static multi-asset ETF core-satellite price diagnostic",
+      "thesis": "The fixed C7 ETF core-satellite market-price diagnostic has five of twelve complete calendar years and 1,428 of 1,952 rolling five-year endpoints below the strict 5% hurdle. It is not total return, personal execution or action evidence.",
+      "targets": [
+        "510300",
+        "510500",
+        "510880",
+        "511010",
+        "511990",
+        "518880"
+      ],
+      "target_type": "multi_asset_etf_strategy_proxy",
+      "status": "invalidated",
+      "catalysts": [
+        "A separately frozen, entitled point-in-time total-return, events, cost and execution data package.",
+        "A new protocol fixed before any result is viewed."
+      ],
+      "risks": [
+        "The exchange public price endpoint has unresolved adjustment basis.",
+        "No distribution/event, bid/ask, depth, fee, tax, settlement, account or fill evidence.",
+        "The fixed composition is an exploratory research candidate, not an open-universe selection result."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "c7_formal_total_return_gate",
+          "condition": "Open a new C7-style hypothesis only when point-in-time total-return and execution inputs are retained with rights and frozen before calculation.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C7 and R7 artifacts"
+        }
+      ],
+      "invalidation_conditions": [
+        "The current market-price diagnostic contains five complete calendar years and 1,428 rolling-five-year endpoints below 5%.",
+        "A later total-return replay is a new hypothesis and cannot convert this diagnostic into a validated strategy."
+      ],
+      "tags": [
+        "dpsfs",
+        "c7",
+        "etf",
+        "core-satellite",
+        "market-price-diagnostic"
+      ],
+      "data_quality": {
+        "market_price_diagnostic": "PRIMARY_OFFICIAL_PUBLIC_RETROSPECTIVE",
+        "total_return_execution": "FAIL",
+        "independent_arithmetic_audit": "PASS",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C7-RESULT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c7_static_core_satellite_price_diagnostic_20260815.json"
+        },
+        {
+          "id": "R7-AUDIT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r7_c7_c8_independent_audit_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true,
+        "formal_decision_eligible": false,
+        "strict_test_state": "MARKET_PRICE_DIAGNOSTIC_NEGATIVE_NOT_TOTAL_RETURN"
+      },
+      "observations": [
+        {
+          "observation_type": "strict_hurdle_diagnostic_failure",
+          "note": "The fixed C7 official public market-price diagnostic has five of twelve complete calendar years and 1,428 of 1,952 rolling five-year endpoints below 5%. The result is not total return or personal execution evidence.",
+          "observed_at": "2026-08-15T03:38:25.906475+00:00",
+          "evidence": {
+            "result_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c7_static_core_satellite_price_diagnostic_20260815.json",
+            "audit_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r7_c7_c8_independent_audit_20260815.json",
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T03:38:25.905076+00:00",
+      "updated_at": "2026-08-15T03:38:25.906475+00:00"
+    },
+    {
+      "entry_id": "research-20260815-1df62bb143f3",
+      "title": "C12 Treasury cash-futures basis feasibility",
+      "thesis": "The C12 Treasury cash-futures basis route documents actual T/TF contract observations and dated exchange mechanics, but lacks the complete matched cash, delivery, financing, cost, fill and personal-route evidence needed to test or claim the strict 5% hurdle.",
+      "targets": [
+        "T",
+        "TF",
+        "511260"
+      ],
+      "target_type": "cash_futures_basis_strategy_family",
+      "status": "invalidated",
+      "catalysts": [
+        "A licensed or authorized point-in-time T/TF, delivery-basket, conversion-factor and cash-bond data package.",
+        "Dated broker, custody, financing and paired-execution documentation followed by a separately frozen replay and maker-checker audit."
+      ],
+      "risks": [
+        "An optimized-sampling Treasury ETF is not a deliverable bond and cannot be treated as a convergence lock.",
+        "Six retrospective actual-contract samples are not a five-year point-in-time population.",
+        "Two-leg liquidity, funding, margin, custody, delivery and personal account conditions remain unverified."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "c12_full_basis_ledger_gate",
+          "condition": "Re-open only after all actual-contract, deliverable-bond, financing, cost, execution and account inputs are retained with rights and frozen before calculation.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C12 feasibility and R10 audit artifacts"
+        }
+      ],
+      "invalidation_conditions": [
+        "The current record cannot produce full calendar-year or rolling-five-year net-return endpoints after costs.",
+        "A later complete data package is a new research state and cannot convert the current route observation into a result."
+      ],
+      "tags": [
+        "dpsfs",
+        "c12",
+        "treasury-futures",
+        "cash-futures-basis",
+        "data-feasibility"
+      ],
+      "data_quality": {
+        "dated_exchange_mechanics": "PRIMARY_OFFICIAL",
+        "actual_contract_source_route": "PARTIAL_RETROSPECTIVE_SAMPLE",
+        "independent_route_audit": "PASS",
+        "historical_return_execution": "FAIL",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C12-SOURCE",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c12-official-cash-futures-basis-20260815/manifest.json"
+        },
+        {
+          "id": "C12-RESULT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c12_cash_futures_basis_feasibility_20260815.json"
+        },
+        {
+          "id": "R10-AUDIT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r10_c12_independent_route_audit_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true,
+        "formal_decision_eligible": false,
+        "strict_test_state": "NOT_FEASIBLE_FOR_STRICT_5PCT_OR_PERSONAL_EXECUTION"
+      },
+      "observations": [
+        {
+          "observation_type": "strict_hurdle_or_feasibility_failure",
+          "note": "Independent raw-file review confirms actual T/TF source-route observations but not a complete point-in-time cash-futures basis ledger. Delivery basket, financing, costs, paired fills and personal route remain missing; no strict 5% test or action is admissible.",
+          "observed_at": "2026-08-15T03:22:01.123583+00:00",
+          "evidence": {
+            "result_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c12_cash_futures_basis_feasibility_20260815.json",
+            "audit_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r10_c12_independent_route_audit_20260815.json",
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T03:22:01.122229+00:00",
+      "updated_at": "2026-08-15T03:22:01.123583+00:00"
+    },
+    {
+      "entry_id": "research-20260815-a7d671ac5fc0",
+      "title": "C9 actual-contract commodity trend feasibility",
+      "thesis": "The C9 CU/AU/RU actual-contract trend rule has exchange-documented mechanics, but the retained evidence cannot calculate a complete cost-aware return history or establish personal operability; it therefore cannot support the strict 5% hurdle.",
+      "targets": [
+        "CU",
+        "AU",
+        "RU"
+      ],
+      "target_type": "commodity_futures_strategy_family",
+      "status": "invalidated",
+      "catalysts": [
+        "A separately authorized and point-in-time full actual-contract data package with lifecycle, cost and execution inputs.",
+        "A fresh pre-frozen replay and independent endpoint audit after the data and account gates close."
+      ],
+      "risks": [
+        "Six retrospective samples are not a complete contract population.",
+        "Continuous-contract substitution would invalidate the actual-contract selection and delivery controls.",
+        "Margin, limit, fee, liquidity, fill and individual account evidence is absent."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "c9_formal_replay_gate",
+          "condition": "Re-open only if all actual-contract lifecycle, pricing, rule, cost, execution and account inputs are retained with documented rights before any result is calculated.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C9 feasibility artifact"
+        }
+      ],
+      "invalidation_conditions": [
+        "The current evidence has no full point-in-time actual-contract population or net execution ledger.",
+        "A later formal study is a distinct hypothesis and cannot recast the present record as a validated result."
+      ],
+      "tags": [
+        "dpsfs",
+        "c9",
+        "commodity-futures",
+        "actual-contract",
+        "data-feasibility"
+      ],
+      "data_quality": {
+        "dated_exchange_rules": "PRIMARY_OFFICIAL",
+        "actual_contract_source_route": "PARTIAL_RETROSPECTIVE_SAMPLE",
+        "historical_return_execution": "FAIL",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C9-SOURCE",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c9-official-shfe-commodity-contracts-20260815/manifest.json"
+        },
+        {
+          "id": "C9-RESULT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c9_commodity_actual_contract_feasibility_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true,
+        "formal_decision_eligible": false,
+        "strict_test_state": "NOT_FEASIBLE_FOR_RETURN_CLAIM_OR_PERSONAL_ACTION_YET"
+      },
+      "observations": [
+        {
+          "observation_type": "strict_hurdle_or_feasibility_failure",
+          "note": "C9 has a detailed CU/AU/RU actual-contract rulebook, but only six retrospective official daily samples and no complete lifecycle, cost, fill or personal-access package. No strict 5% return test or action is admissible.",
+          "observed_at": "2026-08-15T03:22:01.120871+00:00",
+          "evidence": {
+            "result_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c9_commodity_actual_contract_feasibility_20260815.json",
+            "source_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c9-official-shfe-commodity-contracts-20260815/manifest.json",
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T03:22:01.119109+00:00",
+      "updated_at": "2026-08-15T03:22:01.120871+00:00"
+    },
+    {
+      "entry_id": "research-20260815-59f13c044a0f",
+      "title": "C10 direct A-share quality and distribution diagnostic",
+      "thesis": "The ex-post four-name C10 direct-A-share gross-cash diagnostic fails the strict 5% calendar-year hurdle in 2022 and 2025. It is not PIT total return, a full-universe screen, an execution result, or personal action.",
+      "targets": [
+        "600519",
+        "600900",
+        "601398",
+        "601088"
+      ],
+      "target_type": "direct_equity_strategy_proxy",
+      "status": "invalidated",
+      "catalysts": [
+        "A separate pre-frozen all-A-share PIT universe, total-return and execution study.",
+        "A future independent paper observation after data and market-access gates close."
+      ],
+      "risks": [
+        "Post-observation name selection.",
+        "Unresolved raw-price adjustment basis and incomplete corporate-action accounting.",
+        "No full universe or all-market status history.",
+        "No quote, depth, fee, tax, fill, settlement or account evidence."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "c10_formal_data_gate",
+          "condition": "Only open a new direct-equity study when all-universe PIT status, corporate-action/total-return, execution and account inputs are hash-frozen before a selection result is viewed.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C10 and R9 artifacts"
+        }
+      ],
+      "invalidation_conditions": [
+        "The fixed four-name diagnostic has complete calendar years below 5%: 2022 and 2025.",
+        "A later formal all-universe study is a new hypothesis and cannot make the ex-post basket a validated rule."
+      ],
+      "tags": [
+        "dpsfs",
+        "c10",
+        "direct-equity",
+        "quality-distribution",
+        "falsified"
+      ],
+      "data_quality": {
+        "issuer_diligence": "PRIMARY_OFFICIAL",
+        "gross_cash_diagnostic": "EXPLORATORY_NEGATIVE_EVIDENCE",
+        "pit_total_return_execution": "FAIL",
+        "independent_arithmetic_audit": "PASS",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C10-ISSUER-SOURCES",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-first-party-20260815/manifest.json"
+        },
+        {
+          "id": "C10-PRICE-DIVIDEND-SOURCES",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/manifest.json"
+        },
+        {
+          "id": "C10-CANDIDATE",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c10_direct_equity_quality_distribution_candidate_20260815.json"
+        },
+        {
+          "id": "R9-AUDIT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r9_c10_independent_diagnostic_audit_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "strict_gate_state": "NO_STRICT_GATE_PASS",
+        "research_only": true,
+        "formal_decision_eligible": false
+      },
+      "observations": [
+        {
+          "observation_type": "strict_calendar_year_failure",
+          "note": "Independent raw-file arithmetic audit confirmed the four-name gross-cash diagnostic results: 2022 -0.15%, 2023 13.02%, 2024 26.15%, 2025 2.05%; 2022 and 2025 are below 5%.",
+          "observed_at": "2026-08-15T03:13:56.481169+00:00",
+          "evidence": {
+            "candidate_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c10_direct_equity_quality_distribution_candidate_20260815.json",
+            "audit_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r9_c10_independent_diagnostic_audit_20260815.json",
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T03:13:56.475885+00:00",
+      "updated_at": "2026-08-15T03:13:56.481169+00:00"
+    },
+    {
+      "entry_id": "research-20260815-dc6482f5e51e",
+      "title": "C13 SSE CSI 300 ETF covered-call feasibility",
+      "thesis": "The fixed 510300 covered-call rule has exchange-documented mechanics but lacks a point-in-time actual-contract and execution package, so it cannot support a strict 5% return claim or personal action.",
+      "targets": [
+        "510300",
+        "SSE_300ETF_CALL_OPTIONS"
+      ],
+      "target_type": "option_strategy_family",
+      "status": "invalidated",
+      "catalysts": [
+        "A new separately frozen actual-contract lifecycle, quote, settlement, cost and execution data package.",
+        "Independent confirmation of account and covered-reservation feasibility."
+      ],
+      "risks": [
+        "Underlying ETF drawdown remains.",
+        "Corporate-action adjustment can alter multiplier and delivery reserve.",
+        "Bid/ask, depth, fee, tax, settlement and fill evidence is absent.",
+        "Account eligibility and broker process are not assumed."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "actual_option_package",
+          "condition": "Re-open only when the complete actual-contract, adjustment, quote, settlement, fee and execution package is hash-frozen before a replay protocol is viewed.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C13 feasibility artifact"
+        }
+      ],
+      "invalidation_conditions": [
+        "The candidate cannot pass a strict net-return test while required actual-contract and execution inputs remain absent.",
+        "A later data package creates a new research state and cannot turn the current record into a result."
+      ],
+      "tags": [
+        "dpsfs",
+        "c13",
+        "etf-options",
+        "covered-call",
+        "data-feasibility"
+      ],
+      "data_quality": {
+        "rules_and_contract_mechanics": "PRIMARY_OFFICIAL",
+        "actual_contract_execution_replay": "FAIL",
+        "individual_action_feasibility": "NOT_VERIFIED",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C13-SOURCE",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c13-sse-etf-option-rules-20260815/manifest.json"
+        },
+        {
+          "id": "C13-RESULT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c13_etf_option_covered_call_feasibility_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true,
+        "formal_decision_eligible": false,
+        "strict_test_state": "NOT_FEASIBLE_FOR_RETURN_CLAIM"
+      },
+      "observations": [
+        {
+          "observation_type": "strict_hurdle_or_feasibility_failure",
+          "note": "The fixed 510300 covered-call rule has exchange-documented mechanics but lacks a point-in-time actual-contract and execution package, so it cannot support a strict 5% return claim or personal action.",
+          "observed_at": "2026-08-15T02:58:53.648345+00:00",
+          "evidence": {
+            "source_refs": [
+              {
+                "id": "C13-SOURCE",
+                "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c13-sse-etf-option-rules-20260815/manifest.json"
+              },
+              {
+                "id": "C13-RESULT",
+                "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c13_etf_option_covered_call_feasibility_20260815.json"
+              }
+            ],
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T02:58:53.647419+00:00",
+      "updated_at": "2026-08-15T02:58:53.648345+00:00"
+    },
+    {
+      "entry_id": "research-20260815-2862e8b3fde8",
+      "title": "C11 manager-published market-neutral fund NAV proxy falsification",
+      "thesis": "The fixed 008856 official cumulative-NAV proxy fails the strict 5% complete-calendar-year and 1260-observation rolling hurdle. It is not a personal dealing result or action conclusion.",
+      "targets": [
+        "008856"
+      ],
+      "target_type": "fund_strategy_proxy",
+      "status": "invalidated",
+      "catalysts": [
+        "A future, separately frozen product and execution study would be a new hypothesis, not a repair of this fixed proxy."
+      ],
+      "risks": [
+        "Published NAV differs from holder dealing results.",
+        "Periodic dealing, channel and account state are not inferred.",
+        "Complete-year and rolling strict-hurdle failures."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "c11_source_or_rule_change",
+          "condition": "Only open a new candidate if a different product and a new pre-frozen protocol are independently reviewed.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "C11 source and audit artifacts"
+        }
+      ],
+      "invalidation_conditions": [
+        "2022, 2024 and 2025 complete-calendar-year proxy changes are below 5%.",
+        "All 204 available 1260-observation rolling endpoints are below 5%."
+      ],
+      "tags": [
+        "dpsfs",
+        "c11",
+        "market-neutral-fund",
+        "official-nav-proxy",
+        "falsified"
+      ],
+      "data_quality": {
+        "tier": "primary_manager_published_cumulative_nav_proxy",
+        "point_in_time": false,
+        "holder_executable_result": false,
+        "independent_arithmetic_audit": "PASS",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "C11-SOURCE",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c11-market-neutral-fund-20260815/manifest.json"
+        },
+        {
+          "id": "C11-RESULT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c11_market_neutral_fund_nav_proxy_20260815.json"
+        },
+        {
+          "id": "R8-AUDIT",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r8_c11_independent_audit_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true,
+        "formal_decision_eligible": false,
+        "strict_proxy_state": "OFFICIAL_NAV_PROXY_HURDLE_FALSIFIED"
+      },
+      "observations": [
+        {
+          "observation_type": "strict_hurdle_or_feasibility_failure",
+          "note": "The fixed 008856 official cumulative-NAV proxy fails the strict 5% complete-calendar-year and 1260-observation rolling hurdle. It is not a personal dealing result or action conclusion.",
+          "observed_at": "2026-08-15T02:58:53.646526+00:00",
+          "evidence": {
+            "source_refs": [
+              {
+                "id": "C11-SOURCE",
+                "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c11-market-neutral-fund-20260815/manifest.json"
+              },
+              {
+                "id": "C11-RESULT",
+                "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c11_market_neutral_fund_nav_proxy_20260815.json"
+              },
+              {
+                "id": "R8-AUDIT",
+                "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r8_c11_independent_audit_20260815.json"
+              }
+            ],
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T02:58:53.645346+00:00",
+      "updated_at": "2026-08-15T02:58:53.646526+00:00"
+    },
+    {
+      "entry_id": "research-20260815-ba4e9049a1c3",
+      "title": "H2 actual-contract futures public-route feasibility",
+      "thesis": "The current public/official H2 evidence cannot support an actual-contract, roll-aware domestic futures test or personal action; a continuous series cannot substitute for an actual-contract settlement ledger.",
+      "targets": [
+        "CFFEX_T_REFERENCE_FAMILY"
+      ],
+      "target_type": "strategy_family",
+      "status": "invalidated",
+      "catalysts": [
+        "Authorized actual-contract historical data and lifecycle delivery",
+        "Dated broker account/execution feasibility confirmation"
+      ],
+      "risks": [
+        "Missing actual-contract and point-in-time lifecycle history",
+        "Missing effective margin, limit and fee chronology",
+        "Missing broker fill/slippage and personal-account evidence"
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "actual_contract_data_delivery",
+          "condition": "Re-open only if actual contract, lifecycle, risk parameter, cost and fill data are hash-frozen before any rule is viewed.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "H2 evidence ledger"
+        }
+      ],
+      "invalidation_conditions": [
+        "The current public-route predeclared-test hypothesis is invalidated by missing actual-contract, lifecycle, risk/cost/execution and account feasibility evidence.",
+        "A new authorized data package would create a new research state, not rewrite this finding."
+      ],
+      "tags": [
+        "dpsfs",
+        "h2",
+        "futures",
+        "actual-contract",
+        "data-feasibility"
+      ],
+      "data_quality": {
+        "actual_contract_return_ledger": "FAIL",
+        "cost_and_execution": "FAIL",
+        "personal_action_feasibility": "UNKNOWN",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "E10",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-h2-cffex-treasury-futures-20260815/manifest.json"
+        },
+        {
+          "id": "P09",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-h2-cffex-public-route-20260815/manifest.json"
+        },
+        {
+          "id": "H2",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/h2_cffex_actual_contract_futures_feasibility_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true
+      },
+      "observations": [
+        {
+          "observation_type": "actual_contract_feasibility_failure",
+          "note": "No actual-contract PIT lifecycle, effective risk/cost, fill/slippage or personal-account evidence is available. No roll-aware test or action may start.",
+          "observed_at": "2026-08-14T16:00:00+00:00",
+          "evidence": {
+            "memo_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/h2_cffex_actual_contract_futures_feasibility_20260815.json",
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T01:31:44.267310+00:00",
+      "updated_at": "2026-08-14T17:31:44.267839+00:00"
+    },
+    {
+      "entry_id": "research-20260815-b63757218d3a",
+      "title": "H1 direct A-share quality/value data feasibility",
+      "thesis": "A direct A-share quality/value family remains a distinct research candidate, but no historical PIT total-return-aware validation or individual action conclusion is currently supported.",
+      "targets": [
+        "A_SHARE_DIRECT_UNIVERSE"
+      ],
+      "target_type": "strategy_family",
+      "status": "monitoring",
+      "catalysts": [
+        "A formally licensed and hash-frozen cross-venue PIT data delivery",
+        "A separately frozen forward-observation protocol"
+      ],
+      "risks": [
+        "Survivorship and venue bias without a daily all-venue universe",
+        "Financial statement revisions and corporate-action gaps",
+        "Unverified individual account execution feasibility"
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "historical_data_acceptance",
+          "condition": "Only advance if each PIT, total-return, rights and account feasibility acceptance test passes.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "H1 evidence ledger"
+        }
+      ],
+      "invalidation_conditions": [
+        "The current historical-screen feasibility assertion is invalidated: each required data block is FAIL.",
+        "A future forward observation is a new prospective study, not a retrospective repair."
+      ],
+      "tags": [
+        "dpsfs",
+        "h1",
+        "direct-equity",
+        "quality-value",
+        "data-feasibility"
+      ],
+      "data_quality": {
+        "historical_pit_total_return_screen": "FAIL",
+        "forward_observation": "CONDITIONAL_RESEARCH_ONLY",
+        "individual_action_feasibility": "NOT_VERIFIED",
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "DPSFS-H1-DSPF-v1",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/h1_direct_stock_quality_value_pit_feasibility_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "research_only": true
+      },
+      "observations": [
+        {
+          "observation_type": "data_feasibility_review",
+          "note": "Historical PIT/total-return screen is FAIL. A forward paper observation may be designed but is not started and has no action permission.",
+          "observed_at": "2026-08-14T16:00:00+00:00",
+          "evidence": {
+            "memo_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/h1_direct_stock_quality_value_pit_feasibility_20260815.json",
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T01:31:44.266549+00:00",
+      "updated_at": "2026-08-14T17:31:44.267090+00:00"
+    },
+    {
+      "entry_id": "research-20260815-d0839482c9a5",
+      "title": "R5 public NAV proxy fixed-rule falsification",
+      "thesis": "The fixed R5 public accumulated-NAV absolute-momentum proxy must not be described as a stable 5% strategy. This is an exploratory negative proxy record only, not an investor-return or action conclusion.",
+      "targets": [
+        "510300",
+        "510880",
+        "511010",
+        "511990",
+        "518880"
+      ],
+      "target_type": "strategy_proxy",
+      "status": "invalidated",
+      "catalysts": [
+        "Refreshed independent arithmetic/control audit"
+      ],
+      "risks": [
+        "Retrospectively captured public accumulated NAV is not a point-in-time total-return ledger.",
+        "Displayed fund NAV is not an executable exchange-market price or individual-account result.",
+        "The five instruments are representative research inputs, not a decision universe.",
+        "Related public NAV fields were viewed before the protocol, so positive evidence is prohibited."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "independent_audit_refresh",
+          "condition": "Refresh audit only if an R5 control or derivation artifact changes.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "case-local R5 audit artifacts"
+        }
+      ],
+      "invalidation_conditions": [
+        "The strict R5 proxy test is invalidated because at least one complete calendar year and at least one rolling five-year endpoint are below 5%.",
+        "A different source, market-price ledger, or strategy family is a new hypothesis and cannot revive this fixed R5 proxy result."
+      ],
+      "tags": [
+        "dpsfs",
+        "r5",
+        "exploratory",
+        "public-nav-proxy",
+        "falsified"
+      ],
+      "data_quality": {
+        "tier": "tier_3_public_aggregated_retrospective_nav_proxy",
+        "point_in_time": false,
+        "executable": false,
+        "formal_decision_eligible": false
+      },
+      "source_refs": [
+        {
+          "id": "P08",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r5-public-etf-nav-20260815/manifest.json"
+        },
+        {
+          "id": "DPSFS-R5-PNAV-RESULT-v1",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_public_nav_absolute_momentum_probe_20260815.json"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-personal-securities-futures-strategy-20260814",
+        "portfolio_q": 0,
+        "strict_proxy_state": "PUBLIC_NAV_PROXY_HURDLE_FALSIFIED",
+        "research_only": true,
+        "formal_decision_eligible": false
+      },
+      "observations": [
+        {
+          "observation_type": "fixed_rule_hurdle_failure",
+          "note": "The fixed exploratory proxy has complete-year failures (2016, 2018, 2021, 2022, 2023) and rolling-five-year failures; it cannot be promoted as a stable 5% strategy.",
+          "observed_at": "2026-08-14T16:00:00+00:00",
+          "evidence": {
+            "result_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_public_nav_absolute_momentum_probe_20260815.json",
+            "strict_proxy_state": "PUBLIC_NAV_PROXY_HURDLE_FALSIFIED",
+            "formal_decision_eligible": false,
+            "portfolio_q": 0
+          },
+          "status_after": "invalidated"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T01:12:02.034443+00:00",
+      "updated_at": "2026-08-14T17:12:02.034978+00:00"
+    }
+  ]
+}

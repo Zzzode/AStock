@@ -1,0 +1,48 @@
+{
+  "cycle": "R0_evidence",
+  "review_date": "2026-08-15",
+  "review_scope": "Source hierarchy, claim discipline, institutional-description limits and China/crypto boundary.",
+  "publishability_status": "CONDITIONAL_PENDING_DRAFT_AND_RENDER",
+  "publishability_score": 92,
+  "findings": [
+    {
+      "issue_id": "R0-B-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance analyst",
+      "artifact": "data/source_registry.json",
+      "evidence": "Public manager pages S02-S08 are mandate descriptions rather than independently auditable model or performance disclosures.",
+      "fix_required": "Keep source-level limitations and label any personal protocol as analytical translation.",
+      "blocking_gate": "claim_traceability",
+      "status": "verified",
+      "verification_evidence": "Every corresponding claim in C02-C06 contains a limitation and the translation packet uses fact_vs_translation.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-B-002",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "risk analyst",
+      "artifact": "data/crypto_applicability_packet_20260815.json",
+      "evidence": "The current CSRC-hosted 2026 notice must not be simplified into an individual legal opinion or a blanket DLT claim.",
+      "fix_required": "Use it solely as the China-mainland implementation boundary and preserve the legal-scope caveat.",
+      "blocking_gate": "crypto_scope_control",
+      "status": "verified",
+      "verification_evidence": "C12 and the crypto packet state no mainland route, no workaround and no individual legal conclusion.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-B-003",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "data verifier",
+      "artifact": "source_exhaustion_log.json",
+      "evidence": "No contract-level futures, point-in-time factor/event data, personal balance-sheet or crypto access evidence is in the case.",
+      "fix_required": "Treat each absence as an activation blocker rather than an estimate.",
+      "blocking_gate": "source_exhaustion",
+      "status": "verified",
+      "verification_evidence": "The source exhaustion log, return model and research brief keep all exposure at q=0.",
+      "reopened_count": 0
+    }
+  ]
+}

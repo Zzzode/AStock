@@ -1,0 +1,23 @@
+{
+  "cycle": "R3_render_compliance",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "reviewed_at": "2026-08-14T02:00:00+08:00",
+  "reviewer": "render-and-format-check",
+  "reviewed_source_sha256": "f2d183941fa29e909bd204364c0aabea62826e129bd2e2fa865a681acf971e13",
+  "reviewed_source_graph_sha256": "aadf38f2f864caef97777fe61b26a905eb54ca5442d5caa9d5406647f9c54ea1",
+  "reviewed_pdf_sha256": "d7d8ecfb802336b5aedc65c50198f07bddbede40cc26b2ead64b889cbb4dc467",
+  "reviewed_text_sha256": "c5512f5bc8e0295619274696a0401e187e22265cac9bce6129dc708d197ac792",
+  "reviewed_render_dir": "rendered/final-20260814-total-return-only",
+  "reviewed_page_count": 20,
+  "findings": [
+    {
+      "issue_id": "R3-S-001",
+      "severity": "S",
+      "status": "resolved",
+      "artifact": "main.pdf; rendered/final-20260814-total-return-only; visual_review.md; governance/exhibit_format_review_R3_20260812.md",
+      "evidence": "The former render belonged to a superseded dual-objective release and could not certify the corrected reader source.",
+      "fix_required": "Build, extract, render, inspect and identity-bind the total-return-only release.",
+      "resolution": "The current 20-page release was built twice, text-extracted and visually inspected. No clipping, overlap, unreadable CJK glyph, table truncation or overfull hbox was observed."
+    }
+  ]
+}

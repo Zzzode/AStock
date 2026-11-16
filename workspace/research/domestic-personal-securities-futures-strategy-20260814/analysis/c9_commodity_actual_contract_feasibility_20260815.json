@@ -1,0 +1,149 @@
+{
+  "schema_version": "c9_commodity_actual_contract_feasibility.v1",
+  "artifact_class": "research_feasibility_assessment",
+  "as_of_date": "2026-08-15",
+  "candidate_id": "C9-SHFE-ACTUAL-COMMODITY-TREND",
+  "portfolio_q": 0,
+  "status": "NOT_FEASIBLE_FOR_RETURN_CLAIM_OR_PERSONAL_ACTION_YET",
+  "formal_decision_eligible": false,
+  "return_result": null,
+  "backtest_run": false,
+  "conclusion": "A detailed actual-contract rulebook exists, but six retrospective SHFE EOD samples plus dated product rules cannot establish a historical return, drawdown, cost, fill or personal-use result. The 5% annualized hurdle remains untested.",
+  "evidence_observed": {
+    "official_rule_text": {
+      "status": "PASS_FOR_DATED_CONTRACT_FACTS_ONLY",
+      "files": [
+        "sources/c9-official-shfe-commodity-contracts-20260815/shfe_cu_contract_rules_20260101.html",
+        "sources/c9-official-shfe-commodity-contracts-20260815/shfe_au_contract_rules_20260101.html",
+        "sources/c9-official-shfe-commodity-contracts-20260815/shfe_ru_contract_rules_20260101.html",
+        "sources/c9-official-shfe-commodity-contracts-20260815/shfe_risk_control_rules_20260706.html"
+      ],
+      "supports": [
+        "The CU, AU and RU unit, tick, listed-month, scheduled last-trading-day, base margin and base price-limit parameters in the rulebook.",
+        "The premise that SHFE can adjust risk controls, so base figures cannot be extrapolated as historic or broker-specific requirements."
+      ],
+      "does_not_support": [
+        "A personal account or short-selling eligibility conclusion.",
+        "A session-specific broker margin, commission, limit, fee, delivery cutoff or fill.",
+        "A return, drawdown, capacity or 5% annualized result."
+      ]
+    },
+    "actual_contract_eod_route": {
+      "status": "PARTIAL_SOURCE_ROUTE_ONLY",
+      "source_manifest": "sources/c9-official-shfe-commodity-contracts-20260815/manifest.json",
+      "six_trade_dates": [
+        "2016-01-04",
+        "2018-01-02",
+        "2020-01-02",
+        "2022-01-04",
+        "2024-01-02",
+        "2026-08-14"
+      ],
+      "families_observed_each_date": [
+        "CU",
+        "AU",
+        "RU"
+      ],
+      "fields_observed_each_date": [
+        "delivery month",
+        "prior settlement",
+        "OHLC",
+        "settlement",
+        "volume",
+        "open interest"
+      ],
+      "schema_note": "TURNOVER is present in the 2022, 2024 and 2026 samples but absent in the retained 2016, 2018 and 2020 schema; absence is not treated as zero.",
+      "supports": [
+        "The public official route currently returns identified actual contract rows rather than a preconstructed continuous series.",
+        "A future data room could use these fields as inputs to an actual-contract settlement ledger."
+      ],
+      "does_not_support": [
+        "Complete coverage of every trading date and every listed/expired contract.",
+        "What data or contract lifecycle state was available on original decision dates.",
+        "Historical risk-control, broker, fee, quote, fill, delivery or account state.",
+        "A valid return test or trade."
+      ]
+    },
+    "dated_selection_illustration": {
+      "status": "REPRODUCIBLE_OBSERVATION_ONLY",
+      "source_artifact": "analysis/c9_actual_contract_snapshot_20260815.json",
+      "date": "2026-08-14",
+      "selected_actual_contracts": [
+        "CU2612",
+        "AU2612",
+        "RU2701"
+      ],
+      "does_not_support": [
+        "The 65-session same-contract signal history required by the rulebook.",
+        "Account access, broker margin/fee, live bid/ask, capacity or a fill.",
+        "A present order or position."
+      ]
+    }
+  },
+  "blocking_requirements": [
+    {
+      "id": "C9-B1",
+      "requirement": "Complete actual-contract historical data",
+      "missing": "A hash-bound every-session archive for all CU, AU and RU listed and expired contracts, with the same source fields and original identifiers.",
+      "why_blocking": "Six retrospectively fetched dates cannot construct the complete endpoint population, signal history, roll ledger, drawdown or annual-return test."
+    },
+    {
+      "id": "C9-B2",
+      "requirement": "Point-in-time lifecycle and calendar master",
+      "missing": "Listing, expiry, exchange-adjusted last-trading dates, holiday/exception calendar, suspension and delivery-status history per contract/session.",
+      "why_blocking": "The rule selects actual contracts and enforces a delivery firewall. A generic 15th-day convention cannot prove which contracts were eligible at each historical decision."
+    },
+    {
+      "id": "C9-B3",
+      "requirement": "Effective-session margin, limit, position and fee records",
+      "missing": "Historical exchange notices and parameters, plus the actual broker add-on margin and commission/fee schedule for the route.",
+      "why_blocking": "Current base rules explicitly permit adjustments. Using base figures through history would misstate risk and could turn an infeasible position into a false fill."
+    },
+    {
+      "id": "C9-B4",
+      "requirement": "Executable quote and fill policy",
+      "missing": "Historical bid/ask, limit-lock, depth/capacity, rejected/partial-fill states and a predeclared no-fill convention.",
+      "why_blocking": "A settlement-only curve cannot prove that a limit order, a stop or a two-leg roll would have filled."
+    },
+    {
+      "id": "C9-B5",
+      "requirement": "Personal-route confirmation",
+      "missing": "A separate confirmation from a licensed futures company of the person's ordinary-commodity contract access, short-side permission, fees, margin, delivery/force-close cutoff and applicable suitability steps.",
+      "why_blocking": "Exchange rule text never proves an individual account is eligible or configured to trade. No personal information is requested or retained in this case."
+    },
+    {
+      "id": "C9-B6",
+      "requirement": "Pre-result frozen protocol and independent audit",
+      "missing": "A signed rule version, data dictionary, source-cutoff record, unitized ledger, full rolling five-year endpoint policy, and a maker-checker audit before any performance result is read.",
+      "why_blocking": "The current rulebook was written after public observations in this case. A positive replay now would be exploratory, not independent confirmation."
+    }
+  ],
+  "permitted_next_research_gate": {
+    "status": "NOT_STARTED",
+    "steps": [
+      "Obtain a lawful, retained full actual-contract data package with documented rights and source timestamps; do not use an anonymous continuous series as a substitute.",
+      "Freeze a dated contract/corporate-event-style master covering listings, expiry, holiday adjustments, delivery and trading status for every candidate contract.",
+      "Archive effective exchange margin/limit/fee notices plus broker route schedules and an explicit conservative no-fill/partial-fill convention.",
+      "Confirm account-specific commodity-futures access externally without placing personal data in the research workspace.",
+      "Freeze this rulebook, a unitized marked-to-market ledger, actual close/open rolls, cost policy, risk-event logic and endpoint population before calculating any P&L.",
+      "Have an independent reviewer test source coverage, selections, each roll, margin changes, no-fill cases, return arithmetic and the full drawdown/endpoint population."
+    ],
+    "prohibitions": [
+      "No historical performance calculation from a continuous series.",
+      "No return, 5% stability, position, allocation, holding or order claim before the blockers are closed.",
+      "No assumption that a failure to fill, a limit lock or a margin change is harmless."
+    ]
+  },
+  "distinctness": {
+    "versus_R5": "R5 used a public ETF accumulated-NAV proxy with monthly signal/rebalance logic and has already falsified a stable-year hurdle. C9 begins from SHFE actual CU, AU and RU contract identifiers, a same-contract signal, explicit close/open rolls and delivery firewalls. C9 has no return result and cannot rehabilitate R5.",
+    "versus_H2": "H2 examined CFFEX 10-year Treasury futures and could not validate a dated official actual-contract route. C9 uses three SHFE commodity families, retains current SHFE product/risk rules and six actual-contract daily-file samples. That stronger route is still not a complete historical or personal execution proof."
+  },
+  "data_quality": {
+    "tier": "mixed_primary_official_rule_text_and_retrospective_eod_source_samples",
+    "warnings": [
+      "Source samples are retrospective; they do not prove original-date availability or revision state.",
+      "No private/paid data entitlement, broker data or personal account evidence is held.",
+      "No performance computation was run."
+    ]
+  }
+}

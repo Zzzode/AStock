@@ -1,0 +1,73 @@
+{
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "data_cutoff": "2026-08-11",
+  "portfolio_principal_cny": 200000,
+  "model_type": "strategic allocation planning range; no point expected-return or cash-distribution forecast",
+  "active_base_core": [
+    {"asset": "组合内受保障流动性", "weight": 0.20, "amount_cny": 40000, "role": "defensive liquidity"},
+    {"asset": "交易现金", "weight": 0.05, "amount_cny": 10000, "role": "staging and rebalancing buffer"},
+    {"asset": "高质量人民币利率债", "weight": 0.35, "amount_cny": 70000, "role": "rate-risk and defensive sleeve"},
+    {"asset": "红利权益ETF", "weight": 0.30, "amount_cny": 60000, "role": "diversified equity/dividend exposure"},
+    {"asset": "非杠杆黄金ETF", "weight": 0.10, "amount_cny": 20000, "role": "macro-risk diversifier"},
+    {"asset": "公募REITs", "weight": 0.00, "amount_cny": 0, "role": "inactive unless separate project gates pass"},
+    {"asset": "直接高股息股票", "weight": 0.00, "amount_cny": 0, "role": "watchlist only; later ETF replacement capped at 15% aggregate"}
+  ],
+  "designated_model_instrument_packet": "data/model_portfolio_implementation_20260812.json",
+  "designated_model_instrument_boundary": "The named instruments and cash/deposit implementation are model targets with target notionals and staged actions. They are not broker orders, live-price instructions, target prices, return forecasts or suitability conclusions.",
+  "planning_return_range": {
+    "annualized_total_return_pct": {"lower": 3.0, "upper": 6.0},
+    "horizon": "five years or longer",
+    "status": "planning_sensitivity_not_forecast",
+    "excluded_inputs": ["point asset returns", "future dividend yield", "fixed coupon", "fixed cash distribution", "target price", "tax and transaction-cost forecast"]
+  },
+  "formula_only_total_return_sensitivity": {
+    "parameter_r_definition": "r is a hypothetical annualized nominal total-return parameter before tax, transaction costs and fund fees; it is not a forecast, cash-distribution estimate or record of realized cash.",
+    "formula": "V_10 = 200000 * (1 + r)^10",
+    "inputs": ["fixed initial principal only", "no annual contributions", "no withdrawal", "no timing or path assumption"],
+    "output_boundary": "The formula output is gross arithmetic sensitivity only. It does not populate D0 or any future cash-flow ledger."
+  },
+  "actual_cash_ledger_contract": {
+    "D0_definition": "sum of past-12-month actual after-tax, after-fee cash receipts",
+    "status": "empty_until_actual_receipts_are_recorded",
+    "required_record_fields": ["receipt_date", "source_sleeve", "gross_cash_cny", "tax_cny", "fee_cny", "net_cash_cny", "settlement_or_evidence_reference", "data_quality"],
+    "Dh_rule": "D_h = D0 * (1 - h) may be calculated only from a populated actual D0 ledger for h in {0, 0.25, 0.50, 1.00}; it is not derived from r.",
+    "forward_boundary": "No forward distribution, withdrawal or household-income forecast is produced."
+  },
+  "activation_controls": {
+    "direct_high_dividend_stocks": {
+      "initial_weight": 0.0,
+      "only_replaces": "红利权益ETF",
+      "aggregate_cap": 0.15,
+      "single_issuer_cap": 0.05,
+      "required_independent_review": ["price", "valuation", "dividend coverage", "cash flow", "tax", "industry and concentration", "liquidity"],
+      "current_model_treatment": "excluded from active_base_core, planning_return_range, cash_distribution_policy and compounding illustrations"
+    },
+    "public_reits": {
+      "initial_weight": 0.0,
+      "activation_requires_independent_projects": 3,
+      "per_project_cap": 0.02,
+      "aggregate_cap": 0.05,
+      "funding_source_on_activation": "高质量人民币利率债",
+      "required_checks": ["project cash flow", "debt", "occupancy or revenue", "valuation premium", "liquidity", "minimum trading-unit, spread and fee economics", "no single project or manager concentration red line"],
+      "inactive_behavior": "REIT weight remains zero and the full 35% rate-bond allocation remains in place; no automatic purchase or rotation is permitted"
+    }
+  },
+  "compounding_illustrations": {
+    "formula": "V_10 = 200000 * (1 + r)^10",
+    "formula_only": true,
+    "cash_ledger_link": "none; r sensitivity and D0 ledger are separate",
+    "cases": [
+      {"annual_rate_pct": 3.0, "year_10_value_cny": 268783.28, "gain_cny": 68783.28},
+      {"annual_rate_pct": 4.5, "year_10_value_cny": 310593.88, "gain_cny": 110593.88},
+      {"annual_rate_pct": 6.0, "year_10_value_cny": 358169.54, "gain_cny": 158169.54}
+    ]
+  },
+  "cash_distribution_policy": {
+    "actual_measure": "D0 = sum of past-12-month after-tax, after-fee cash receipts",
+    "forward_fixed_distribution_cny": null,
+    "default_use": "reinvest through active weight/cap/eligibility rules",
+    "boundary": "A future spending or withdrawal plan requires a separate after-tax cash-flow model."
+  },
+  "stress_model_reference": "analysis/scenario_model.md; base-core common-stress result -16.30%, or CNY32600 on fixed principal, is a scenario output only and does not trigger observed-drawdown controls",
+  "supersedes": ["4.73% point portfolio return", "3.53% point cash yield", "CNY7060 annual cash distribution", "CNY9460 annual return", "CNY317499 ten-year value"]
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": "d5pt_c34_dual_horizon_inverse_vol_protocol.v1",
+  "artifact_id": "D5PT-C34-PROTOCOL-v1",
+  "recorded_before_calculation": "2026-08-15",
+  "status": "frozen_for_research_only_calculation",
+  "research_only": true,
+  "external_orders": false,
+  "source": {
+    "manifest_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/manifest.json",
+    "quality": "primary_official_public_retrospective_market_price_observation",
+    "allowed_codes": ["510300", "510880", "511010", "518880", "511990"],
+    "price_basis": "Unadjusted-or-undisclosed SSE market-price proxy only; not total return, NAV return, point-in-time data, or execution evidence."
+  },
+  "sleeves": {
+    "equity": {
+      "codes": ["510300", "510880"],
+      "component_weights": [0.5, 0.5],
+      "score_return": "0.5 * return_510300 + 0.5 * return_510880 at each horizon",
+      "daily_return_for_volatility": "0.5 * daily_return_510300 + 0.5 * daily_return_510880"
+    },
+    "bond": {"code": "511010"},
+    "gold": {"code": "518880"},
+    "fallback": {"code": "511990", "warmup_target_weight": 1.0}
+  },
+  "base_rule": {
+    "score_horizons_common_observations": [126, 252],
+    "score": "arithmetic mean of each sleeve's horizon returns",
+    "eligibility": "risk_sleeve_score > fallback_score, strictly",
+    "realized_volatility": {
+      "return_observations": 60,
+      "return_type": "one-session simple market-price returns",
+      "ddof": 1,
+      "weighting": "active sleeve weights proportional to inverse realized volatility"
+    },
+    "equity_target_split": [0.5, 0.5],
+    "none_active_target": {"511990": 1.0},
+    "warmup": "100 percent fallback until both score horizons and all required realized-volatility observations exist",
+    "automatic_substitution": false,
+    "leverage": false,
+    "shorting": false,
+    "futures": false,
+    "options": false,
+    "borrowing": false
+  },
+  "timing": {
+    "decision": "final common market-price close of each calendar month",
+    "execution": "following common session at reported open only",
+    "sequence": "existing holdings receive decision-close-to-effective-open move; target and illustrative cost apply at effective open; new target receives effective-open-to-effective-close move",
+    "same_session_close_execution": false,
+    "same_bar_lookahead": false
+  },
+  "illustrative_cost": {
+    "one_way_bps": 20.0,
+    "formula": "one_way_turnover * 20 / 10000 deducted from pre-trade proxy value, including initial fallback entry",
+    "not_observed": ["commission", "tax", "bid_ask_spread", "impact", "fund_fee", "settlement", "fill"]
+  },
+  "windows": {
+    "development": {"start": "2014-12-31", "end": "2019-12-31"},
+    "holdout": {"start": "2020-01-01", "end": "2025-12-31"},
+    "full_sample": "all common price sessions through retained source cutoff"
+  },
+  "research_hurdle": {
+    "annualized_rate": 0.05,
+    "meaning": "Research hurdle only; not a promise, floor, prediction, or suitability result.",
+    "limited_proxy_failure": "Any complete calendar-year or rolling five-calendar-year price-proxy endpoint below 5 percent is reported as a limited proxy failure; no rule change is permitted."
+  },
+  "mutations": [
+    {"id": "score_126_only", "score_horizons_common_observations": [126], "volatility_return_observations": 60, "eligibility_threshold_excess": 0.0},
+    {"id": "score_252_only", "score_horizons_common_observations": [252], "volatility_return_observations": 60, "eligibility_threshold_excess": 0.0},
+    {"id": "vol_48", "score_horizons_common_observations": [126, 252], "volatility_return_observations": 48, "eligibility_threshold_excess": 0.0},
+    {"id": "vol_72", "score_horizons_common_observations": [126, 252], "volatility_return_observations": 72, "eligibility_threshold_excess": 0.0}
+  ],
+  "forward_paper_order_protection": {
+    "lot_size_reference": 100,
+    "price_increment_reference": 0.001,
+    "buy": "displayed ask <= IOPV * 1.003",
+    "sell": "displayed bid >= IOPV * 0.997",
+    "failure": "no_action; preserve prior paper holdings; no assumed fill or automatic substitution"
+  },
+  "no_action_conditions": [
+    "Missing current product, legal-document, temporary-announcement, market-status, account, fee, tax, settlement, quote, depth, IOPV where applicable, or reconciliation evidence.",
+    "Halt, delisting, price limit, material product change, account or settlement failure, unavailable shares/funds, invalid price/score/volatility, or either equity leg not checked.",
+    "Lot/tick failure, partial fill, rejection, no fill, or inability to reconcile a prior paper ledger."
+  ],
+  "expected_disposition": {
+    "risk_model_status": "VETO",
+    "reason": [
+      "No point-in-time total-return, distribution, or fund-event ledger.",
+      "No dated bid/ask, depth, halt, price-limit, cost, tax, fill, settlement, or capacity ledger.",
+      "No user risk budget, position limit, liquidity need, or forward-paper verification record."
+    ]
+  }
+}

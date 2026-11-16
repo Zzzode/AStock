@@ -1,0 +1,59 @@
+{
+  "capture_batch": "probe-public-etf-extended-r2-20260814",
+  "captured_at": "2026-08-14T14:01:57.358656+00:00",
+  "dependencies": [
+    {
+      "bytes": 1077983,
+      "dependency_role": "descriptive_overlap_only",
+      "limitations": "The dependency is a public, non-entitled observation and cannot enter a formal replay or strategy decision.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-public-etf-price-r0-20260814/e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda.portfolio.replay.json",
+      "purpose": "A prior public observation is read only to expose cross-capture close differences; it does not validate price basis, total return, availability or execution.",
+      "sha256": "8829c0a065aa688c874212500c345c7dd92aff6c88b2bba760f7de7921b15217",
+      "source_quality": "tier_3_frozen_public_observation"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 3189058,
+      "capture_note": "Immutable after first capture. It is a public-observation input with unverified adjustment and availability basis.",
+      "document_date": "2026-08-13",
+      "format": "json",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-public-etf-extended-r2-20260814/public_sina_etf_eod_observation.json",
+      "publisher": "Sina public market-data endpoint via AkShare adapter",
+      "sha256": "c08eeb5f45417d96e5fa8dc19b9d6fb559382a7f4dc5cace84faca36a4c3aabd",
+      "title": "Public ETF EOD observation through AkShare Sina adapter",
+      "url": "upstream endpoint accessed through akshare.fund_etf_hist_sina"
+    }
+  ],
+  "freeze_migration_boundary": "The original capture pre-dated the explicit hash-control migration. Original capture runtime provenance is unavailable; the migration provenance is retained in source_freeze.runtime_provenance.",
+  "limitations": [
+    "The source is a public aggregation observation, not an official or licensed point-in-time archive.",
+    "No source-provided available_at, revision chain, corporate-action ledger, NAV ledger, IOPV ledger, halt/limit ledger, trading calendar, fee/tax record, bid/ask record, or execution evidence is present.",
+    "A public close cannot be interpreted here as investor total return, tradable fill, or proof that the observation was available on its historical date."
+  ],
+  "purpose": "Frozen extended public ETF daily-bar observation for research-only hypothesis falsification. It cannot establish total return, point-in-time availability, formal replay, product admission, allocation, holding or action.",
+  "source_freeze": {
+    "boundary": "Case-local hash control only. It detects a raw-source mismatch during scripted verification, but does not establish external notarization, data rights, point-in-time availability, total return or execution quality.",
+    "frozen_files": [
+      {
+        "bytes": 3189058,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-public-etf-extended-r2-20260814/public_sina_etf_eod_observation.json",
+        "sha256": "c08eeb5f45417d96e5fa8dc19b9d6fb559382a7f4dc5cace84faca36a4c3aabd"
+      }
+    ],
+    "runtime_provenance": {
+      "adapter": "AkShare fund_etf_hist_sina",
+      "adapter_version": "1.18.91",
+      "git_commit_at_runtime": "6dc78acf75a67fcaf30ce75fc12038313926061e",
+      "pandas_version": "3.0.5",
+      "platform": "Linux-5.15.152.bsk.4-amd64-x86_64-with-glibc2.39",
+      "python_version": "3.13.1",
+      "script_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/tools/run_r2_extended_public_series_probe.py",
+      "script_sha256": "9fac968f20a85310a2dc74df649809ad181fad5e806781b902b5d76f10068399"
+    },
+    "schema_version": "research_source_freeze_control.v1",
+    "seal_status": "explicit_post_capture_migration",
+    "sealed_at": "2026-08-14T14:44:20.991562+00:00"
+  },
+  "source_quality": "tier_3_public_aggregation_observation"
+}

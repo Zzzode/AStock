@@ -1,0 +1,88 @@
+{
+  "schema_version": "r6_strategy_candidate_disposition.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-15",
+  "artifact_class": "research_candidate_disposition",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "objective_boundary": {
+    "long_run_annualized_hurdle": 0.05,
+    "meaning": "research hurdle only",
+    "prohibited": [
+      "return guarantee",
+      "forecast",
+      "annual floor claim",
+      "allocation",
+      "holding",
+      "order or external execution"
+    ]
+  },
+  "candidate_disposition": [
+    {
+      "id": "R5",
+      "family": "representative ETF public accumulated-NAV absolute-momentum proxy",
+      "status": "INVALIDATED_FIXED_PROXY_RULE",
+      "evidence": "PUBLIC_NAV_PROXY_HURDLE_FALSIFIED",
+      "strategy_eligible": false,
+      "reason": [
+        "At least one complete calendar-year proxy result is below the 5% hurdle.",
+        "At least one rolling-five-year proxy endpoint is below the 5% hurdle.",
+        "The public retrospective accumulated-NAV input is not PIT, a verified total-return ledger, or executable market-price evidence."
+      ],
+      "next_state": "Do not tune or reuse as a positive strategy evidence family."
+    },
+    {
+      "id": "H1",
+      "family": "direct A-share quality/value",
+      "status": "FORWARD_OBSERVATION_ONLY",
+      "evidence": "historical_PIT_total_return_screen_FAIL",
+      "strategy_eligible": false,
+      "reason": [
+        "No all-venue point-in-time universe including terminated securities.",
+        "No versioned point-in-time financial and corporate-action ledger.",
+        "No total-return/tradeability/cost/fill record or individual account feasibility evidence."
+      ],
+      "next_state": "A separately frozen prospective paper-observation protocol may be researched; no stock is selected."
+    },
+    {
+      "id": "H2",
+      "family": "domestic actual-contract financial futures",
+      "status": "NOT_FEASIBLE_FOR_PREDECLARED_TEST_OR_PERSONAL_ACTION",
+      "strategy_eligible": false,
+      "reason": [
+        "No complete actual-contract and point-in-time lifecycle history.",
+        "No session-effective margin, limit, fee, broker cost or fill/slippage archive.",
+        "No separate personal account and route feasibility evidence."
+      ],
+      "next_state": "Only reopen under a new, authorized, hash-frozen actual-contract data and feasibility package."
+    }
+  ],
+  "current_decision": {
+    "approved_strategy": null,
+    "products": [],
+    "weights": [],
+    "trading_actions": [],
+    "research_status": "CONTINUE_WITH_NEW_EVIDENCE_OR_FORWARD_OBSERVATION_ONLY"
+  },
+  "permitted_next_paths": [
+    {
+      "id": "P1",
+      "name": "prospective controlled paper observation",
+      "condition": "Freeze the H1 universe, fields, event and trade-state evidence policy, cost/no-fill treatment and stop rules before the first observation.",
+      "does_not_establish": ["historical proof", "immediate 5% outcome", "personal action permission"]
+    },
+    {
+      "id": "P2",
+      "name": "authorized-data acceptance followed by a new independent hypothesis",
+      "condition": "Accept a hash-frozen cross-venue PIT, corporate-action, tradeability and rights package; for futures also accept actual-contract lifecycle, risk/cost/fill and account-route evidence.",
+      "does_not_establish": ["a guarantee", "permission to revive R5/H1/H2 results"]
+    }
+  ],
+  "source_artifacts": [
+    "analysis/r5_public_nav_absolute_momentum_probe_20260815.json",
+    "analysis/r5_public_nav_proxy_independent_audit_20260815.json",
+    "analysis/h1_direct_stock_quality_value_pit_feasibility_20260815.json",
+    "analysis/h2_cffex_actual_contract_futures_feasibility_20260815.json"
+  ]
+}

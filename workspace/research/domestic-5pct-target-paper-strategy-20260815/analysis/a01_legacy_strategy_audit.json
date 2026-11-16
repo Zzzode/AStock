@@ -1,0 +1,254 @@
+{
+  "schema_version": "a01_legacy_strategy_audit.v1",
+  "audit_id": "a01_legacy_strategy_audit_20260815",
+  "audit_date": "2026-08-15",
+  "legacy_case": "workspace/research/stable-income-multi-asset-strategy-20260811",
+  "new_case": "workspace/research/domestic-5pct-target-paper-strategy-20260815",
+  "scope": {
+    "purpose": "Assess which legacy strategy content can enter the domestic personal paper-strategy case under the current reader-facing constraints.",
+    "reader_facing_constraints": {
+      "fixed_amount_mentions": "prohibited",
+      "cash_distribution_or_reinvestment_target": "prohibited",
+      "instrument_universe": "open_with_role_matched_alternatives",
+      "implementation": "personally_operable_domestic_products_and_actions_required",
+      "annualized_goal_language": "non_guaranteed_planning_goal_only"
+    }
+  },
+  "overall_decision": {
+    "legacy_use": "controls_and_historical_candidate_screening_only",
+    "legacy_is_live_implementation_template": false,
+    "legacy_execution_status": "not_run_q0",
+    "new_case_release_gate": "current_product_market_account_and_lookthrough_evidence_required",
+    "required_return_language": "非保证性规划目标；以总回报和风险约束表述，不承诺保本、保收益或固定分配。"
+  },
+  "decision_table": [
+    {
+      "id": "A01-D01",
+      "legacy_item": "Non-guarantee boundary and the distinction between distribution, NAV and total return.",
+      "classification": "inherit",
+      "new_case_treatment": "Use as a hard disclosure and product-screening boundary. The annualized goal must remain a non-guaranteed planning goal.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/risk_framework.md",
+          "line_ranges": [[48, 50]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/variant_perception.md",
+          "line_ranges": [[5, 11]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/sources/official-20260811/official_source_capture_index.md",
+          "line_ranges": [[9, 13]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D02",
+      "legacy_item": "Same-session product, market, account and look-through eligibility controls; missing evidence means no implementation.",
+      "classification": "inherit_with_refresh",
+      "new_case_treatment": "Rebuild a product-by-product current eligibility card. Preserve the failure-to-no-action principle, but recalibrate legacy thresholds rather than presenting them as current facts.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/data/execution_eligibility_policy_20260812.md",
+          "line_ranges": [[5, 12], [17, 36]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/secondary_market_analysis.md",
+          "line_ranges": [[1, 7]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D03",
+      "legacy_item": "Actual drawdown measurement, concentration, leverage and asset-quality controls.",
+      "classification": "inherit_methodology_only",
+      "new_case_treatment": "Reparameterize triggers, limits and stress inputs from the new mandate and actual products. Do not copy legacy weights, thresholds or scenario output.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/risk_framework.md",
+          "line_ranges": [[14, 42]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/scenario_model.md",
+          "line_ranges": [[39, 57]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D04",
+      "legacy_item": "Fixed-amount mapping, prescribed sleeve weights, caps, staged allocation amounts and related arithmetic.",
+      "classification": "retire",
+      "new_case_treatment": "Do not transfer into reader-facing materials. Rebuild the paper strategy in weights, conditions and actions without stated fixed amounts.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/research_brief.md",
+          "line_ranges": [[6, 16], [24, 40]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/allocation_model.md",
+          "line_ranges": [[3, 13], [56, 93]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/data/portfolio_return_model_20260811.json",
+          "line_ranges": [[4, 16], [55, 72]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D05",
+      "legacy_item": "Distribution receipt ledger, distribution-cut sensitivity and default reinvestment regime.",
+      "classification": "retire_as_strategy_target",
+      "new_case_treatment": "Keep only the warning that distribution is not total return. Do not set a distribution, withdrawal or reinvestment target and do not use distribution yield to validate the annualized goal.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/cashflow_and_tax.md",
+          "line_ranges": [[3, 32]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/scenario_model.md",
+          "line_ranges": [[59, 79]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D06",
+      "legacy_item": "Named domestic fund examples for rate bonds, dividend/low-volatility equity, gold and money-market roles.",
+      "classification": "historical_candidates_only",
+      "new_case_treatment": "Start an open, role-based candidate universe. A historical code may be screened but may not be made the default or approved product without current evidence and a role-matched alternative.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/product_universe.md",
+          "line_ranges": [[3, 28]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/data/model_portfolio_implementation_20260812.md",
+          "line_ranges": [[5, 23]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/data/source_registry.md",
+          "line_ranges": [[14, 21]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D07",
+      "legacy_item": "Public REIT and direct-stock sleeves were inactive and lacked current project or issuer evidence.",
+      "classification": "non_actionable_for_starter_universe",
+      "new_case_treatment": "Exclude both from the minimum starter set. Allow them only as later satellites after separate project-level or issuer-level research has passed.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/analysis/product_universe.md",
+          "line_ranges": [[12, 13], [19, 28]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/source_exhaustion_log.md",
+          "line_ranges": [[5, 10]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D08",
+      "legacy_item": "Long-horizon total-return sensitivity and compounding illustrations.",
+      "classification": "retire_as_target_evidence",
+      "new_case_treatment": "Retain only the discipline that a sensitivity is not a forecast. Do not use the legacy range, formula output or any annualized figure to evidence the new goal or imply a guarantee.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/research_brief.md",
+          "line_ranges": [[35, 40]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/data/portfolio_return_model_20260811.json",
+          "line_ranges": [[17, 35], [55, 72]]
+        }
+      ]
+    },
+    {
+      "id": "A01-D09",
+      "legacy_item": "Conditional research sign-off and all ETF eligibility states remaining not run.",
+      "classification": "non_actionable_for_current_implementation",
+      "new_case_treatment": "Record as proof of historical framework review only. A new current-session evidence packet is mandatory before a product can enter the paper implementation card.",
+      "source_refs": [
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/final_signoff.md",
+          "line_ranges": [[9, 30]]
+        },
+        {
+          "path": "workspace/research/stable-income-multi-asset-strategy-20260811/research_workflow_eval.md",
+          "line_ranges": [[3, 13]]
+        }
+      ]
+    }
+  ],
+  "minimal_implementation_universe": {
+    "open_universe": true,
+    "selection_rule": "Each active role requires a current qualified primary candidate and a role-matched alternative. Historical examples are screening seeds, not defaults.",
+    "roles": [
+      {
+        "role": "liquidity_and_settlement",
+        "historical_candidate_examples": ["qualified domestic deposit", "direct government bond", "511880"],
+        "historical_candidate_status": "historical_candidate_only",
+        "minimum_current_action": "Verify institution or custodian, term, redemption, product risk and current trading conditions before use.",
+        "starter_universe_status": "eligible_after_current_check"
+      },
+      {
+        "role": "rate_bond_core",
+        "historical_candidate_examples": ["511010"],
+        "historical_candidate_status": "historical_candidate_only",
+        "minimum_current_action": "Compare domestic government-bond ETFs by current legal document, duration, fee, premium/discount, spread and liquidity; select only qualified candidates.",
+        "starter_universe_status": "eligible_after_current_check"
+      },
+      {
+        "role": "equity_core",
+        "historical_candidate_examples": ["510880", "512890"],
+        "historical_candidate_status": "historical_candidate_only",
+        "minimum_current_action": "Screen dividend-quality, broad-market and low-overlap equity ETFs; verify sector, issuer-group and constituent overlap before selection.",
+        "starter_universe_status": "eligible_after_current_check"
+      },
+      {
+        "role": "gold_diversifier",
+        "historical_candidate_examples": ["518880"],
+        "historical_candidate_status": "historical_candidate_only",
+        "minimum_current_action": "Compare unlevered domestic spot-gold ETFs on current legal document, fee, premium/discount and liquidity; exclude futures, financing and leveraged products.",
+        "starter_universe_status": "eligible_after_current_check"
+      },
+      {
+        "role": "public_reit_satellite",
+        "historical_candidate_examples": [],
+        "historical_candidate_status": "no_current_project_candidate",
+        "minimum_current_action": "Complete project cash-flow, debt, valuation-premium, trading-liquidity and minimum-lot research before considering any candidate.",
+        "starter_universe_status": "deferred"
+      },
+      {
+        "role": "direct_stock_satellite",
+        "historical_candidate_examples": [],
+        "historical_candidate_status": "no_inheritable_issuer_valuation",
+        "minimum_current_action": "Complete standalone valuation, cash-flow coverage, capital-structure, sector-cycle and liquidity research before considering any candidate.",
+        "starter_universe_status": "deferred"
+      }
+    ],
+    "personal_action_sequence": [
+      "Confirm horizon, drawdown capacity, account permission and tax boundary before selecting active roles.",
+      "Create a dated eligibility card for every candidate: formal document and fee, same-session market evidence, account feasibility, minimum lot, look-through and source timestamp.",
+      "Choose a primary product only from qualified candidates and retain a role-matched alternative; failed, suspended, anomalously priced or undocumented candidates receive no action.",
+      "Track the paper strategy through pre-disclosed weights, staging logic and observed drawdown, not short-term price movement, historical distributions or the annualized goal.",
+      "Keep REITs and direct stocks behind their separate research gates; never add them merely to fill a target."
+    ],
+    "explicit_exclusions": [
+      "No stated fixed amount in reader-facing material.",
+      "No cash-distribution, withdrawal or reinvestment target.",
+      "No closed code list or historical-product default.",
+      "No capital-protection, return-guarantee or fixed-income claim."
+    ]
+  },
+  "required_current_evidence": [
+    "Current formal document, fee, benchmark or underlying and holdings for each actual candidate.",
+    "Same-session price reference, premium/discount, bid-ask spread, liquidity or executable depth, timestamp and raw-record hash.",
+    "Account suitability, minimum-lot and settlement feasibility for the intended domestic personal account.",
+    "Equity look-through overlap; REIT project evidence; standalone issuer valuation where those satellites are proposed.",
+    "A total-return stress test incorporating fees, taxes, liquidity and account-value-loss risk without using distribution yield or legacy sensitivity as a proxy."
+  ],
+  "self_check": {
+    "command": "python3 tools/a01_verify_legacy_strategy_audit.py",
+    "result": "PASS: a01 legacy strategy audit is structurally complete; source anchors resolve; no prohibited amount-language token detected."
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "schema_version": "research_build_provenance.v1",
+  "case_id": "stable-income-multi-asset-strategy-20260811",
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "status": "built_author_qa_pending_independent_review",
+  "source": "local XeLaTeX build packet after final source-scope, model, prose and pagination repair",
+  "timestamp": "2026-08-12T04:57:57+08:00",
+  "quality_tier": "derived",
+  "fallback_path": "Direct /usr/bin/xelatex was used because the workspace .venv lacks the astock and typer runtime dependencies required by the CLI adapter.",
+  "warnings": [
+    "This packet records author-performed build and full-render visual QA; it is not itself an independent R1--R4 review or execution authorization.",
+    "The active reader source archive is complete at 15 successful / 0 partial / 0 failed through declared scope retirement. Historical S14, M01 and D01--D08 raw-byte gaps remain unrecovered and prohibited from active use.",
+    "The execution-eligibility policy is not_run: all ETF qualification states remain q=0 until dated current-session fields and required look-through pass."
+  ],
+  "errors": [],
+  "host": {
+    "platform": "Linux 5.15.152.bsk.4-amd64 x86_64 GNU/Linux"
+  },
+  "engine": {
+    "name": "XeLaTeX",
+    "executable": "/usr/bin/xelatex",
+    "version": "XeTeX 3.141592653-2.6-0.999994 (TeX Live 2022/Debian)",
+    "distribution": "TeX Live 2022/Debian"
+  },
+  "cjk": {
+    "configured_fonts": [
+      "Noto Serif CJK SC",
+      "Noto Sans CJK SC"
+    ],
+    "ctexrep": "/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexrep.cls",
+    "xeCJK": "/usr/share/texlive/texmf-dist/tex/xelatex/xecjk/xeCJK.sty"
+  },
+  "build": {
+    "command": "/usr/bin/xelatex -interaction=nonstopmode -halt-on-error main.tex",
+    "passes": 2,
+    "working_directory": ".",
+    "source_sha256": "04ba969991bb6cb70e21da378ff4b1c93ea8dd100fc0dedf884f05260a55f94d",
+    "source_graph_sha256": "8dc0c58118162f8e456caf8ec025ed9312c5c900b97c5f3ee94af0a2c00302e4"
+  },
+  "artifacts": {
+    "pdf_path": "main.pdf",
+    "pdf_sha256": "ece9c8436ca4117889587a17177251a1ba93cf3af945e05ecd75bb20098a50f9",
+    "page_count": 14,
+    "page_size": "A4 (595.28 x 841.89 pts)",
+    "text_path": "main_current_text.txt",
+    "text_sha256": "374cc0f1dd2c6b6fbb00aeedff324c6b93a094f03b4702508f34c3e9b360435b",
+    "render_dir": "rendered/full-20260812-0457",
+    "rendered_page_count": 14,
+    "render_dimensions": "1241 x 1754 px per A4 page (150 DPI PNG)"
+  },
+  "diagnostics": {
+    "fatal_error_count": 0,
+    "undefined_control_sequence_count": 0,
+    "missing_character_count": 0,
+    "overfull_hbox_count": 0,
+    "underfull_hbox_count": 1,
+    "underfull_hbox_note": "One cover-page source-line underfull hbox; author visual review found no reader-visible clipping.",
+    "embedded_fonts_verified": true
+  },
+  "author_visual_inspection": {
+    "inspected_pages": "all 14 rendered pages",
+    "focus": "target/action cards, risk-budget and staged-allocation tables, actual-drawdown controls, source appendix, disclosure, pagination, clipping, overlap and glyph rendering",
+    "result": "No clipping, overlap, table truncation, glyph fallback or unintended near-empty continuation page observed. Independent R1--R4 sign-off is maintained separately."
+  }
+}

@@ -1,0 +1,344 @@
+{
+  "schema_version": "domestic_5pct_target_personal_operation_and_risk_design.v1",
+  "artifact_id": "D5PT-C32-v1",
+  "as_of": "2026-08-15",
+  "artifact_class": "research_only_personal_operation_and_risk_design",
+  "status": "research_only_not_admitted",
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "broker_or_account_mutation": false,
+  "data_quality": {
+    "tier": "derived_design_from_frozen_2026_08_15_artifacts",
+    "live_quote_or_account_check": false,
+    "limitations": [
+      "No live product-change, account-access, fee, tax, quote, depth, price-limit, fill, or settlement fact is asserted.",
+      "Every action-date field must be re-evidenced; a missing field is no_action."
+    ],
+    "degradation": "Intentional fail-closed design: dated source evidence defines controls but does not establish a present operating right."
+  },
+  "long_run_research_objective": "annualized return above 5 percent",
+  "annual_or_rolling_floor": "not asserted",
+  "primary_recommendation": {
+    "status": "NO_ACTION",
+    "meaning": "Maintain the named ETF core only as a controlled paper-observation candidate, do not activate an external transaction, and retain a zero-weight futures switch.",
+    "not_an_ic_portfolio_decision": true
+  },
+  "current_evidence_reconciliation": {
+    "current_case_disposition": "NO_ADMITTED_USABLE_STRATEGY",
+    "r01_status": "paper_benchmark_only_not_stable_return_admission",
+    "m01_strict_hurdle_state": "HURDLE_NOT_MET_IN_EXPLORATORY_PRICE_PROXY",
+    "m01_complete_calendar_years_below_5pct": [2016, 2018, 2021, 2022],
+    "m01_rolling_five_year_endpoints_at_or_above_5pct": "37/81",
+    "m01_maximum_drawdown_proxy": -0.2493562145,
+    "interpretation": "The defined R01 paper benchmark, C16, and C17 do not establish a stable outcome, an investor result, personal operability, or a current action. This bounded finding does not preclude a future separately evidenced domestic hypothesis."
+  },
+  "candidate_universe": {
+    "rule_id": "D5PT-R01-v1",
+    "universe_status": "frozen_paper_benchmark_only",
+    "instruments": [
+      {
+        "code": "510300",
+        "conditional_role": "one half of the equity sleeve",
+        "action_gate": "must pass atomically with 510880"
+      },
+      {
+        "code": "510880",
+        "conditional_role": "one half of the equity sleeve",
+        "action_gate": "must pass atomically with 510300"
+      },
+      {
+        "code": "511010",
+        "conditional_role": "bond sleeve"
+      },
+      {
+        "code": "518880",
+        "conditional_role": "gold sleeve"
+      },
+      {
+        "code": "511990",
+        "conditional_role": "defensive fallback only when no risk sleeve is selected"
+      }
+    ],
+    "excluded_with_zero_weight": [
+      "futures",
+      "options",
+      "financed exposure",
+      "short exposure",
+      "direct stocks",
+      "public REITs",
+      "direct bonds",
+      "open-ended funds",
+      "other ETFs or substitutes"
+    ],
+    "automatic_substitution": false,
+    "c30_relationship": "D5PT-C30-PROTOCOL-v1 is a separate non-admitted semiannual fixed-weight research protocol. It cannot replace the R01 action card, cadence, target map, or product universe.",
+    "c31_alignment": "C31 keeps the same five exact codes as the C30 core and keeps 510500, 511180, and 511380 outside it. Its dated product refresh does not establish action-date terms, access, quote, fill, or settlement."
+  },
+  "strategy_version_separation": {
+    "c32_action_card_rule": "D5PT-R01-v1",
+    "c30_protocol": "D5PT-C30-PROTOCOL-v1",
+    "mix_r01_signal_with_c30_weights_or_cadence": "prohibited",
+    "c30_as_future_action_card": "requires a separate matching operation design, independent review, and forward-paper validation"
+  },
+  "target_map": {
+    "equity_bond_gold": {"510300": 0.1666666667, "510880": 0.1666666667, "511010": 0.3333333333, "518880": 0.3333333333, "511990": 0.0},
+    "equity_bond": {"510300": 0.25, "510880": 0.25, "511010": 0.5, "518880": 0.0, "511990": 0.0},
+    "equity_gold": {"510300": 0.25, "510880": 0.25, "511010": 0.0, "518880": 0.5, "511990": 0.0},
+    "bond_gold": {"510300": 0.0, "510880": 0.0, "511010": 0.5, "518880": 0.5, "511990": 0.0},
+    "equity": {"510300": 0.5, "510880": 0.5, "511010": 0.0, "518880": 0.0, "511990": 0.0},
+    "bond": {"510300": 0.0, "510880": 0.0, "511010": 1.0, "518880": 0.0, "511990": 0.0},
+    "gold": {"510300": 0.0, "510880": 0.0, "511010": 0.0, "518880": 1.0, "511990": 0.0},
+    "none": {"510300": 0.0, "510880": 0.0, "511010": 0.0, "518880": 0.0, "511990": 1.0}
+  },
+  "calendar_and_actions": {
+    "observation_cadence": "after the final common trading-session close of each calendar month",
+    "signal": "strictly positive trailing change over 252 common observations; equity is the fixed-base equal-weight level of 510300 and 510880",
+    "target_timing": "signal is frozen after D close and may be considered no earlier than next common trading session E",
+    "same_session_action": "prohibited",
+    "intramonth_discretionary_override": "prohibited",
+    "permitted_paper_ledger_labels": ["paper_increase", "paper_reduce", "paper_exit", "paper_hold", "no_action", "suspended"],
+    "current_available_labels": ["paper_hold", "no_action", "suspended"],
+    "post_cycle_reconciliation": "required for every monthly cycle"
+  },
+  "paper_order_controls": {
+    "paper_only": true,
+    "market_order": "prohibited",
+    "required_fields": [
+      "rule version",
+      "source hash",
+      "observation timestamp",
+      "decision timestamp",
+      "legal-document and temporary-announcement check",
+      "venue and market state",
+      "action and side",
+      "prior and target weight",
+      "quantity before, target quantity, rounded quantity, and residual",
+      "lot and tick evidence",
+      "bid, ask, IOPV when applicable, and depth",
+      "price-limit and halt state",
+      "settlement and availability fields",
+      "expected fee and tax fields",
+      "result or no-action reason"
+    ],
+    "dated_category_reference": {
+      "source": "P01 core ETF diligence, which cites the SSE ETF FAQ captured 2026-08-15",
+      "normal_lot_reference": 100,
+      "tick_reference_cny": 0.001,
+      "boundary": "A category reference only; every paper action must retain product-, venue-, account-, and date-specific evidence."
+    },
+    "rounding": {
+      "method": "floor each target to the verified lot",
+      "below_one_lot_change": "no_action",
+      "residual": "separately recorded and never redirected"
+    },
+    "limit_price_protection": {
+      "buy_cap": "IOPV * 1.003, rounded to verified tick",
+      "sell_floor": "IOPV * 0.997, rounded to verified tick",
+      "paper_buy_recording_condition": "displayed ask is at or below buy_cap",
+      "paper_sell_recording_condition": "displayed bid is at or above sell_floor",
+      "missing_iopv_or_two_sided_quote": "no_action for the entire scheduled rebalance",
+      "interpretation": "A paper protection rule, not evidence of executable liquidity or a fill."
+    },
+    "price_limit_and_halt": {
+      "required_fields": ["price_limit_state", "applicable_rule_version", "halt_state", "market_session", "visible_two_sided_depth"],
+      "limit_locked_halted_or_unknown_state": "no_action",
+      "universal_limit_percentage": "not asserted",
+      "close_or_indicative_quote_as_fill": "prohibited"
+    },
+    "atomic_equity_pair": "Any planned equity action fails for the entire scheduled rebalance if either 510300 or 510880 fails a required control.",
+    "partial_fill": {
+      "visible_depth_as_fill_proof": "prohibited",
+      "current_method": "No partial paper fill may be invented. An incomplete planned rebalance is no_action until a future independent protocol supplies a frozen partial-fill method.",
+      "future_method_minimum_fields": ["filled quantity", "unfilled residual", "evidence source", "cancellation status"]
+    }
+  },
+  "settlement_controls": {
+    "equity_etf": {
+      "codes": ["510300", "510880"],
+      "dated_category_reference": "P01 records the SSE ETF FAQ captured 2026-08-15 as classifying equity ETFs as T+1.",
+      "paper_rule": "newly acquired paper units have an earliest-sellable field no earlier than the next trading session; same-session reversal is prohibited"
+    },
+    "bond_gold_money_etfs": {
+      "codes": ["511010", "518880", "511990"],
+      "dated_category_reference": "P01 records the same FAQ as saying these ETF categories may support T+0.",
+      "paper_rule": "same_day_roundtrip_allowed defaults to false unless specific product, venue, account, settlement, and availability evidence is retained on E"
+    },
+    "all_instruments": {
+      "required_fields": ["sellable_at", "settlement_status", "availability_status", "source_version"],
+      "missing_or_contradictory_evidence": "no_action for the entire scheduled rebalance",
+      "same_day_reuse_presumption": "prohibited"
+    }
+  },
+  "instrument_admission_and_exit": {
+    "current_admission": "none",
+    "necessary_gates_before_future_paper_action": [
+      "unchanged independently reproducible rule plus D-source hashes, timestamps, and E decision record",
+      "current dated product document, temporary-announcement, code/name, objective, fee, listing/trading status, and material-change check for each planned product",
+      "action-date individual-operability evidence: product access, verified lot/tick, settlement/availability, fee/tax fields, and usable market session",
+      "bid, ask, IOPV when applicable, depth, price-limit/halt state, and price-protection checks",
+      "complete target integrity, including the atomic equity pair and no substitution",
+      "reconciled prior paper ledger, no unresolved exception, no stop, and maker-checker release",
+      "at least six uninterrupted monthly paper observations and independent review"
+    ],
+    "suspension_triggers": [
+      "material legal-document, fee, objective, underlying, listing, or trading-status change",
+      "delisting or extended halt",
+      "source or data-semantic change",
+      "missing price, IOPV, or status evidence",
+      "account or settlement failure",
+      "unreconciled ledger",
+      "price-limit lock",
+      "unapproved rule, target-map, or product-universe change"
+    ],
+    "suspension_response": "suspended or no_action; no substitute, artificial exit, historic quote, NAV, close, or parameter revision",
+    "resumption": "dated evidence refresh, cause-and-remedy record, reconciled ledger, and independent release",
+    "version_change": "requires a new version and restarts the forward-paper observation clock"
+  },
+  "diversification_and_caps": {
+    "economic_sleeve_count": 3,
+    "defensive_fallback_count": 1,
+    "named_etf_candidate_count": 5,
+    "equity_pair_rule": "510300 and 510880 are one equity sleeve and each remains 50 percent of that sleeve",
+    "excluded_exposure_weight": {
+      "futures": 0.0,
+      "options": 0.0,
+      "financed_exposure": 0.0,
+      "short_exposure": 0.0,
+      "direct_stocks": 0.0,
+      "public_REITs": 0.0,
+      "direct_bonds": 0.0,
+      "open_ended_funds": 0.0,
+      "other_ETFs_or_substitutes": 0.0
+    },
+    "single_instrument_target_states": ["bond", "gold", "none"],
+    "single_instrument_control": "A 100 percent state in the frozen R01 map is a concentration exposure, not diversification. A future paper action requires a current single-instrument concentration review; failure is no_action with no substitute.",
+    "ad_hoc_lower_cap": "prohibited because it would change the frozen R01 rule; any such change requires a new version, independent reconstruction, and new forward-paper observation",
+    "combine_with_other_strategy": "prohibited while no strategy is admitted"
+  },
+  "drawdown_and_operational_stops": {
+    "measurement": "DD_t = U_t / max(U_0 ... U_t) - 1 from a reconciled paper unit ledger after recorded fees, taxes, events, and valid paper results",
+    "amber_threshold": -0.12,
+    "amber_response": "independent input, document, cost, quote, settlement, event, and reconciliation review before the next scheduled cycle; no signal, weight, or stop-sale change",
+    "red_threshold": -0.18,
+    "red_response": "red_operational_pause blocks new candidate paper actions until independent control release; preserve ledger and evidence; do not manufacture a liquidation or modify the target map",
+    "hard_operational_exception_response": "suspended or no_action for data, documentation, account, settlement, quote, IOPV, price-limit, halt, reconciliation, or version-control failure",
+    "loss_limit_claim": "not asserted"
+  },
+  "futures_switch": {
+    "state": "off",
+    "futures_weight": 0.0,
+    "futures_action": "no_action",
+    "decision": "excluded",
+    "basis": {
+      "c16": {
+        "annualized_gross_settlement_mark_change": 0.01967191,
+        "rolling_endpoints_at_or_above_5pct": "0/24",
+        "source_covered_years_below_5pct": [2021, 2022, 2023, 2024]
+      },
+      "c17": {
+        "annualized_gross_settlement_mark_change": 0.0207779366,
+        "rolling_endpoints_at_or_above_5pct": "0/24",
+        "source_covered_years_below_5pct": [2020, 2022, 2023, 2024, 2025]
+      },
+      "boundary": "Both are gross settlement-mark diagnostics that omit fills, costs, margin, account access, price-limit locks, delivery, and other execution facts. Independent audit validates bounded arithmetic only."
+    },
+    "reconsideration_conditions": [
+      "a distinct pre-calculation hypothesis rather than a retune of C16 or C17",
+      "actual-contract product and lifecycle diligence",
+      "dated contract multiplier, tick, price-limit, margin, position-limit, fee, session, and settlement records",
+      "delivery/last-trade and roll buffers",
+      "account eligibility and access evidence",
+      "quote/depth and no-fill treatment",
+      "fixed sizing and exposure-aggregation method",
+      "independently reproducible research with all recorded frictions",
+      "uninterrupted forward paper observation and independent review"
+    ]
+  },
+  "minimum_monthly_paper_records": [
+    "D-date signal packet with raw rows, hashes, source/available-at time, eligibility, positive sleeves, and target map",
+    "E-date control packet with product evidence, individual-operability fields, bid/ask, IOPV, depth, price-limit/halt/market state, lot/tick, price protection, and expected cost fields",
+    "candidate-action packet with prior state, target state, rounded quantities, residual, result or no-action reason, exception reason, and no-substitution attestation",
+    "reconciliation packet with event, fee/tax, settlement, ledger-unit, drawdown, stop status, reviewer, and release or escalation record"
+  ],
+  "evidence_references": [
+    {
+      "id": "E01",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/p01_core_etf_product_diligence_20260815.json",
+      "as_of": "2026-08-15",
+      "source_scope": "dated official product diligence; product source dates range from 2025-06-21 to 2026-06-19; SSE ETF FAQ captured 2026-08-15",
+      "supports": "named product roles and category-level lot/tick/T+1/T+0 context",
+      "does_not_support": "current quote, fill, fee, account eligibility, settlement result, or individual suitability"
+    },
+    {
+      "id": "E02",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r01_monthly_dynamic_etf_paper_rulebook_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "monthly D/E timing, target map, IOPV gates, lot rounding, no substitution, review thresholds, and suspension triggers",
+      "does_not_support": "stable result or execution proof"
+    },
+    {
+      "id": "E03",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/m01_dynamic_market_price_proxy_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "bounded historical close-price proxy results and non-admission screen",
+      "does_not_support": "total return, investor outcome, individual access, implementation quality, or future result"
+    },
+    {
+      "id": "E04",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r02_independent_m01_r01_audit_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "independent reconstruction of bounded M01/R01 arithmetic",
+      "does_not_support": "a stable or usable strategy"
+    },
+    {
+      "id": "E05",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r07_current_open_universe_disposition_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "bounded current conclusion that no usable strategy is admitted",
+      "does_not_support": "a claim that every future domestic strategy fails"
+    },
+    {
+      "id": "E06",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c16_actual_contract_settlement_diagnostic_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "C16 gross actual-contract diagnostic failure",
+      "does_not_support": "net result, account access, execution, or future outcome"
+    },
+    {
+      "id": "E07",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c17_diversified_actual_contract_settlement_diagnostic_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "C17 gross actual-contract diagnostic failure",
+      "does_not_support": "net result, account access, execution, or future outcome"
+    },
+    {
+      "id": "E08",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r04_independent_c16_audit_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "independent C16 bounded arithmetic reconstruction",
+      "does_not_support": "a usable future strategy"
+    },
+    {
+      "id": "E09",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r05_independent_c17_audit_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "independent C17 bounded arithmetic reconstruction",
+      "does_not_support": "a usable future strategy"
+    },
+    {
+      "id": "E10",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c30_etf_candidate_protocol_20260815.json",
+      "as_of": "2026-08-15",
+      "supports": "the separate frozen C30 semiannual fixed-weight research protocol and its non-admission boundary",
+      "does_not_support": "an alternate R01 action map or an admitted strategy"
+    },
+    {
+      "id": "E11",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c31_etf_product_diligence_refresh_20260815.md",
+      "as_of": "2026-08-15",
+      "supports": "the same five-code core and dated product/venue evidence boundary",
+      "does_not_support": "action-date terms, access, quote, fill, or settlement"
+    }
+  ],
+  "decision_use_restriction": "This C32 design requires later C33/R15 integration, a completed shared packet, product refresh, independent review, and forward-paper evidence before any eligibility or portfolio conclusion can be considered. It cannot authorize an external transaction."
+}

@@ -1,0 +1,87 @@
+{
+  "schema_version": "dynamic_rulebook_design.v2",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "rulebook_parent": "OU-TR5-v1",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_methodology",
+  "status": "draft_not_frozen_not_formally_testable",
+  "portfolio_q": 0,
+  "purpose": "Document draft dynamic strategy hypotheses and their hard freeze/data gates. It names no product, sets no asset-class quota or cash target, and authorizes no action.",
+  "open_universe_rule": "Every qualifying onshore public instrument may be considered under a frozen point-in-time rule. A formal test still needs a finite PIT member set at every decision date; this is not a fixed asset list or retrospective selection.",
+  "objective": {
+    "definition": "Every predeclared complete rolling five-year OOS window has annualised net TWRR of at least 5%.",
+    "not_a_claim": ["future guarantee", "calendar-year floor", "forecast", "probability estimate", "action authorization"]
+  },
+  "pre_registration_status": {
+    "H1_pit_ashare_qvim_membership": "draft_not_frozen",
+    "H2_timestamped_earnings_repricing_membership": "draft_not_frozen",
+    "H3_total_return_trend_membership": "draft_not_frozen",
+    "hard_rule": "No hypothesis may be labelled pre-registered or executable until all frozen_fields and all admission gates pass."
+  },
+  "common_frozen_fields_required": [
+    "exact field names, sources, units and transformations",
+    "winsorisation, standardisation, invalid-value and missing-data rules",
+    "universe filters, thresholds and stable tie-breakers",
+    "information lags and venue decision/session calendars",
+    "exact start/end dates, non-overlapping OOS cohorts and rolling-window endpoints",
+    "dated proportional cost and tax convention",
+    "PIT source manifest, archive IDs, as_of and available_at"
+  ],
+  "common_controls": {
+    "return_basis": "Raw prices plus complete event ledger, or one verified total-return series. Never add a receipt to an adjusted/total-return series.",
+    "mapping_status": "The companion artifact is a draft test-only strategy mapping: it maps members to unitized weights and residuals but is not authorised, source-tested or independently approved.",
+    "no_fill_rule": "Missing data, halt, limit lock, settlement restriction, participation shortfall or unsupported action creates explicit no-fill/partial-fill state; no synthetic fill or automatic substitute.",
+    "scale_neutrality": "Formal replay needs unitized mapping and proportional dated costs; lots, minimum commissions and holder-specific tax are not substitutes.",
+    "B0_B1_rule": "Freeze B0/B1 with identical valuation dates, receipt treatment, cost convention and PIT eligibility evidence."
+  },
+  "receipt_state_rule": {
+    "applies_to": ["strategy", "B0", "B1"],
+    "covered_receipts": ["dividend", "fund distribution", "REIT distribution", "coupon", "redemption"],
+    "ledger_fields": ["event_id", "instrument_id", "entitlement_timestamp", "ex_or_effective_date", "payment_or_settlement_timestamp", "gross_amount", "tax_or_fee_amount", "net_amount", "source_reference", "return_basis_flag"],
+    "credit_rule": "Credit net amount once to an internal marked receipt state on actual payment/settlement timestamp.",
+    "through_tested_oos_cohort": "Mark at nominal value through the tested OOS cohort, with no assumed interim return or automatic reinvestment.",
+    "later_scheduled_decision": "The draft mapping does not reassign the receipt state. A different treatment requires a new frozen rulebook revision before testing.",
+    "external_flow_boundary": "External withdrawal is outside this test design and requires a separately documented TWRR subperiod break.",
+    "not_a_cash_policy": true
+  },
+  "hypotheses": [
+    {
+      "id": "H1_pit_ashare_qvim_membership",
+      "status": "draft_not_frozen",
+      "scope": ["A_shares"],
+      "concept_not_evidence": "Liquid A-share QVIM membership may differ from a passive eligible-universe comparator after cost; no factor premium or target attainment is asserted.",
+      "draft_inputs": ["PIT listing/ST/trade state", "raw bars/volume/halts/limits/delistings/actions", "original financial statement timestamps", "controller/issuer maps"],
+      "frozen_fields_missing": ["quality/value/investment/momentum field dictionary", "accounting definitions and units", "reporting-period/restatement/negative/missing rules", "transforms/standardisation/ties", "minimum listing age/liquidity formula/top-decile population", "decision calendar and OOS cohorts"],
+      "draft_lag_and_membership": "Financial input no earlier than first official session after full public timestamp plus one session; market input ends prior close. When frozen, membership requires QVIM > 0 and top-decile cutoff, with stable PIT security-ID ascending ties.",
+      "mapping_consistency": "H1 membership QVIM > 0 is required before mapping score QVIM/sigma_63 is calculated; no non-positive-QVIM member reaches mapping.",
+      "current_q0_reason": ["no authorised PIT archive", "no receipt/cost/B0/B1 archive", "draft mapping not authorised/source-tested/independently approved", "no R1/R2 or independent risk approval"]
+    },
+    {
+      "id": "H2_timestamped_earnings_repricing_membership",
+      "status": "draft_not_frozen",
+      "scope": ["A_shares"],
+      "concept_not_evidence": "Timestamped public earnings information may differ from a passive event comparator after cost; consensus availability, drift and exit price are not assumed.",
+      "draft_inputs": ["immutable exchange/CNINFO ID", "full publication timestamp/time-zone", "original reported metric", "historical consensus timestamp", "PIT status/bar/volume/halt/limit/controller/action data"],
+      "frozen_fields_missing": ["reported metric and consensus statistic", "units/sign/share/one-off adjustments", "denominator/zero rule", "batch definition/standardisation/ties", "holiday/freshness/expiry/invalidation rules", "OOS cohorts"],
+      "draft_lag_and_membership": "Use only latest consensus demonstrably available strictly before full publication time; no target before next permitted official session. When frozen, membership requires positive_surprise > 0 and top-decile within a fully defined batch, with stable announcement-ID ascending ties.",
+      "current_q0_reason": ["no licensed consensus/revision-time archive", "no complete event/cost/B0/B1 archive", "draft mapping not authorised/source-tested/independently approved", "no R1/R2 or independent risk approval"]
+    },
+    {
+      "id": "H3_total_return_trend_membership",
+      "status": "draft_not_frozen",
+      "scope": ["A_shares", "listed_ETFs", "public_REITs", "direct_sovereign_bonds", "direct_interbank_bonds"],
+      "scope_change_rule": "Any added instrument class requires a new authorised data contract and frozen rulebook revision.",
+      "concept_not_evidence": "Total-return trend across only the stated classes may differ from a passive eligible-universe comparator after cost; no predictive claim or class quota is made.",
+      "draft_inputs": ["PIT access/security master", "raw price plus events or verified total-return series", "halts/limits/delistings/liquidity", "ETF/REIT distributions", "bond coupon/accrued-interest/maturity/redemption/valuation records", "PIT look-through map"],
+      "frozen_fields_missing": ["exact 252/21 calculation", "venue-calendar/non-common-calendar treatment", "stale-price/accrued-interest/new-listing/missing-bar treatment", "tie rule", "selection universe/calendar/OOS cohorts"],
+      "draft_lag_and_membership": "Inputs end at prior official close; only events available at cut-off are usable. When frozen, membership requires strictly positive signal, full valid lookback and stable security-ID ascending ties where ranking is needed.",
+      "current_q0_reason": ["no authorised cross-instrument total-return/coupon/action/PIT archive", "no look-through data", "no costs/B0/B1", "draft mapping not authorised/source-tested/independently approved", "no R1/R2 or independent risk approval"]
+    }
+  ],
+  "precise_missing_PL_fields": ["historical legal/operational access classification", "security_or_return_stream_id", "source_archive_id", "as_of", "available_at", "issuer_id", "guarantor_id", "remaining_term", "modified_duration", "product_terms", "valuation_price_NAV_accrued_interest_basis_and_timestamp", "settlement_terms", "dated_proportional_cost_tax_fields", "trading_suspension_default_like_stale_valuation_state", "coupon_distribution_redemption_action_records"],
+  "precise_missing_lookthrough_fields": ["security_id", "controller_or_issuer_group_id", "exposure_type", "underlying_id", "PIT_underlying_weight", "benchmark_constituent_ids_and_weights", "project_sponsor_manager_tenant_offtaker_refinancing_counterparty_ids_and_weights_when_material", "source_archive_id", "as_of", "available_at"],
+  "lookthrough_missing_rule": "Missing required look-through field means ineligible, not independent.",
+  "formal_admission": ["frozen rules and OOS schedule", "authorised source manifest/archive bytes", "receipt reconciliation", "source-tested action adapters", "authorised and independently approved draft mapping", "frozen B0/B1", "R1/R2 and independent risk gates"],
+  "current_state": "q=0 until every admission gate passes",
+  "paired_markdown": "workspace/research/income-target-5pct-return-3pct-cash-strategy-20260812/analysis/dynamic_rulebook_design_20260814.md"
+}

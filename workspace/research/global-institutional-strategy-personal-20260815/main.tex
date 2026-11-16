@@ -1,0 +1,86 @@
+% !TEX program = xelatex
+% Reader-facing source only. This memo intentionally has no live execution path.
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{全球机构策略的可迁移边界：\newline 中国个人投资者的战略配置证据备忘录}
+\newcommand{\reportsubtitle}{借用研究纪律，不复制机构收益、杠杆、专属数据或交易通道}
+\newcommand{\reportkicker}{STRATEGIC ALLOCATION RESEARCH}
+\newcommand{\reportscope}{GLOBAL STRATEGIES \textbar\ CHINA MARKETS}
+\newcommand{\reportdate}{2026年8月15日}
+\newcommand{\reportdatacutoff}{公开资料截至 2026年8月15日}
+\newcommand{\reporttype}{战略配置与操作规则证据备忘录（研究限定）}
+\newcommand{\reportauthor}{AStock Research Agent}
+\newcommand{\reporthouseview}{全球机构的名称不能被翻译成个人账户的收益承诺或可执行组合。个人可以借用的只有可审计的研究顺序、风险预算语言、数据时间戳、失效条件与独立反方审查；控制权、主经纪商融资、稳定借券、低延迟执行、私募发起与专属交易均不具备可复制性。当前所有市场类别、产品、合约与策略输出均保持零数量、\texttt{q=0}。}
+\newcommand{\reportquality}{机构官网与公开学术文献用于界定策略类别和经济机制；交易所、结算与监管材料用于界定中国市场的制度边界。管理人自述不被用作业绩归因、收益预测或适当性依据；未使用用户账户、实时行情、持仓、个人风险偏好或外部交易接口。}
+\newcommand{\reportdisclaimer}{本报告仅供研究与教育使用，不构成证券、期货、基金、虚拟资产或其他产品的买卖建议、配置建议、收益预测、适当性意见或执行指令。}
+
+\input{../../../.agents/templates/preamble.tex}
+\setlength{\headheight}{20pt}
+\AtBeginEnvironment{tabularx}{\setlength{\linewidth}{\dimexpr\linewidth-21.9pt\relax}}
+
+\newcommand{\qzero}{\texttt{q=0}}
+\newcommand{\noaction}{\texttt{NO\_ACTION}}
+\newcommand{\researchonly}{\texttt{RESEARCH\_ONLY}}
+
+\hypersetup{
+  pdfauthor={\reportauthor},
+  pdftitle={\reporttitle}
+}
+
+\begin{document}
+
+\astockcover
+
+\tableofcontents
+\clearpage
+
+\chapter{结论与使用边界}
+\input{sections/ch01_scope}
+
+\chapter{机构策略分类：先识别经济引擎}
+\input{sections/ch02_taxonomy}
+
+\chapter{代表机构的公开方法与不可复制能力}
+\input{sections/ch03_institution_map}
+
+\chapter{中国个人的市场适用性矩阵}
+\input{sections/ch04_applicability}
+
+\chapter{国内期货 CTA：可审计的纸面规则}
+\input{sections/ch05_cta_rulebook}
+
+\chapter{A 股因子：长多研究规则与市场中性边界}
+\input{sections/ch06_factor_rulebook}
+
+\chapter{公告事件：时间戳优先于叙事}
+\input{sections/ch07_event_rulebook}
+
+\chapter{共同 NAV、风险门禁与研究账本}
+\input{sections/ch08_common_controls}
+
+\chapter{监管、账户与产品边界}
+\input{sections/ch09_regulatory_boundary}
+
+\chapter{个人研究运营：从资料到纸面复核}
+\input{sections/ch10_operating_protocol}
+
+\chapter{红队：何时应拒绝这套框架}
+\input{sections/ch11_red_team}
+
+\appendix
+\chapter{来源、证据等级与引用边界}
+\input{sections/app_sources}
+
+\chapter{术语、状态与非执行披露}
+\input{sections/app_terms}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[重要披露]
+\small
+\reportdisclaimer\par
+本备忘录的全部市场类别、潜在产品、合约和策略均为 \researchonly{}，并维持 \qzero{}。它的技术边界止于研究资料与纸面记录；券商、期货公司、交易所、钱包、托管机构和订单路由系统均不在连接范围内。当前输出仅为 \qzero{} 研究状态，外部委托、非零配置、目标价、收益目标和个人适当性判断均未生成。未来如需研究任何对象，仍须独立完成资料权利、当时可得性、账户权限、产品条款、税务、成本、流动性、风险预算及法律/合规复核。
+\end{disclosurebox}
+
+\end{document}

@@ -1,0 +1,65 @@
+\section{分类的目的：先找回报来自哪里}
+
+机构策略名称常常把完全不同的经济机制混在一起。“宏观”“量化”“多策略”或“另类”不构成可直接交易的信号。对个人研究而言，分类的价值在于把每种方法拆为五个问题：收益是否来自承担系统性风险、捕捉行为延续、提供流动性、获得结构化条款、改善经营，还是来自数据与执行优势？所需资本、数据、合同和市场准入是什么？在公开信息下能否复核？最后，失败时损失如何发生、能否在市场制度下处置？
+
+\begin{exhibitbox}[Exhibit 2：全球机构策略的经济引擎与个人边界]
+\scriptsize
+\begin{tabularx}{\exhibitboxwidth}{L{2.35cm} L{2.1cm} X L{2.65cm} L{2.6cm}}
+\toprule
+\textbf{策略簇} & \textbf{公开代表} & \textbf{主要经济引擎} & \textbf{机构能力依赖} & \textbf{个人研究状态} \\
+\midrule
+风险平衡 / 战略资产配置 & Bridgewater 类框架 & 跨增长、通胀、利率、流动性等风险来源分散；风险是分析单位，名义金额不足以单独构成分析单位。 & 多资产可得性、衍生品、融资、持续再平衡与长期资本。 & 可借用风险语言；不可将其称为完整的机构风险平价复制。 \\
+系统化趋势 / CTA & Man AHL 类框架 & 多市场、多个速度的趋势延续；以波动率和相关性控制风险。 & 广泛合约池、连续数据、换月/保证金系统、跨市场执行。 & 境内实际合约可做低频纸面研究；任何实盘资格与合约均待核验。 \\
+风格溢价 / 因子 & AQR 类框架 & 价值、质量、动量、投资、低风险、carry 等特征的分散暴露。 & 全市场点时数据、空头/融资、交易成本模型、容量管理。 & A 股可做长多公开信息研究；不能据此称为市场中性或复制多空风格溢价。 \\
+全球宏观 / 相对价值 & Citadel FIM 等 & 政策、利率、通胀、信用与跨资产相对定价的变化。 & 场外工具、融资、研究团队、实时风险与对手方管理。 & 只可研究情景及变量；不生成跨资产交易表达。 \\
+统计套利 / 做市 & Two Sigma 等 & 微观结构、横截面关系、订单流与执行质量中的小幅定价偏离。 & 专有数据、低延迟、借券、交易成本与容量控制。 & 不可等价复制；相关性、网格或单一技术指标无法替代这些能力。 \\
+私募股权 / 实物资产 & Blackstone 等 & 控制权、运营改善、长期资本、资本结构和退出。 & 项目来源、董事会权利、投后团队、融资与锁定期资本。 & 可借用公开公司承保和 KPI 复核；不可复制收购或控制权。 \\
+私募信贷 / 特殊信贷 & Apollo 等 & 契约、担保、优先级、现金流覆盖与流动性溢价。 & 发起渠道、法律文件、尽调、资产服务和长期负债。 & 可借用信用审查顺序；不可将票息或高分派视作无风险替代。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{S01--S10。机构页面主要证明策略/业务的公开定位；“个人研究状态”为本报告的边界判断，未提供业绩或适当性结论。}
+\end{exhibitbox}
+
+\section{机构化依赖相互配合的能力组合}
+
+一个看似简单的策略在机构内部往往连接着研究、数据工程、交易、风险、法务、运营、融资和治理。即使公开论文披露了一个信号，论文中的“收益”也未必包含个人面对的交易单位、保证金、停复牌、价格限制、税费、汇率、借券供给、市场冲击、平台风险或信息时滞。下图将机构化理解为一个互相依赖的系统；可下载的参数组不能涵盖这个系统：
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.55cm and 0.65cm, every node/.style={font=\small, align=center}]
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=2.75cm, minimum height=1.05cm] (thesis) {经济假设\\与研究覆盖};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=2.75cm, minimum height=1.05cm, right=of thesis] (data) {点时数据\\与模型治理};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=2.75cm, minimum height=1.05cm, right=of data] (trade) {执行、融资\\与对手方};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=2.75cm, minimum height=1.05cm, below=of data] (risk) {风险、流动性\\与压力测试};
+\node[draw=accentblue, fill=accentblue!12, rounded corners, minimum width=4.8cm, minimum height=1.08cm, below=of risk] (outcome) {机构结果由整个系统共同决定\\单一信号不足以决定结果};
+\draw[-{Stealth[length=2mm]}, thick, navy] (thesis.south) |- (risk.west);
+\draw[-{Stealth[length=2mm]}, thick, navy] (data.south) -- (risk.north);
+\draw[-{Stealth[length=2mm]}, thick, navy] (trade.south) |- (risk.east);
+\draw[-{Stealth[length=2mm]}, thick, navy] (risk.south) -- (outcome.north);
+\end{tikzpicture}
+\end{center}
+\sourcenote{S02--S08；图为本报告的系统性归纳，未对任一机构历史业绩作因果分解。}
+
+\section{可迁移性有四个层级}
+
+\begin{dashboardbox}[从“可学习”到“不可等价复制”]
+\begin{tabularx}{\textwidth}{L{2.5cm}X L{4.25cm}}
+\toprule
+\textbf{层级} & \textbf{含义} & \textbf{例子与约束} \\
+\midrule
+\textcolor{riskgreen}{研究纪律} & 个人可直接采用，因为它不依赖特权交易能力。 & 预先写假设、区分基准/熊市、核验公告时间戳、记录数据版本、独立反方审查。 \\
+\textcolor{riskamber}{条件研究} & 只有在具体市场、产品、合约、账户与资料权利逐项验证后才能纸面测试。 & 国内实际合约 CTA、A 股长多因子、公告事件、期限结构研究。验证失败即回到 \qzero{}。 \\
+\textcolor{riskamber}{部分映射} & 可借用经济解释，但个人只能使用不同的公开市场代理，且不能宣称同一回报来源。 & 风险平衡、公开公司承保、信用式下行审查。 \\
+\textcolor{riskred}{不可等价复制} & 策略本体依赖个人无法合理取得的法律、资本、数据或执行基础设施。 & 做市、稳定统计套利、私募直贷发起、LBO、稳定多空、场外波动率套利。 \\
+\bottomrule
+\end{tabularx}
+\end{dashboardbox}
+
+\section{分类之后仍需防止的三种误读}
+
+\begin{enumerate}
+  \item \textbf{把风险因子当成资产类别。} 例如，商品、股票、债券或代币的名称不能说明其在增长、通胀、美元流动性或行为因子上的真实暴露。个人应先识别共同风险来源；代码数量本身不能反映真实暴露。
+  \item \textbf{把多策略当作天然分散。} 多个袖套可能同时依赖流动性充裕、融资稳定或同一宏观方向；危机时相关性与保证金需求可能同时上升。
+  \item \textbf{把“量化”当作客观。} 点时数据缺失、幸存者偏差、修订财报、连续合约拼接、成本假设和人为调参都会使一个看似精确的模型失去可复核性。
+\end{enumerate}
+
+因此，本报告后续的规则章节不会从“哪个策略更好”出发，而从“一个策略若要进入纸面研究，最少需要哪些可验证事实”出发。

@@ -1,0 +1,359 @@
+{
+  "schema_version": "r09_research_control_record_audit.v1",
+  "artifact_id": "D5PT-R09-CONTROL-RECORD-AUDIT-v1",
+  "as_of": "2026-08-15",
+  "result": "PASS",
+  "result_interpretation": "control_record_consistency_only_not_route_admission",
+  "scope": "source registry, claim audit, C16/C17/C18/C20/C23/C24/C34/C38/C39/C46/C50/C51/C53 ledger state, R07/R14 controls, C33-C53 integration/non-admission controls, R16/R17 repair closure, R18/R19 source audits, R20/R21 C51 repair controls, R22 C52 frozen-source audit, R23 governance-registration follow-up, source-archive integrity and reader-facing amount-language exclusion",
+  "source_record_count": 64,
+  "claim_count": 37,
+  "checks": [
+    {
+      "name": "unique source IDs",
+      "passed": true,
+      "detail": "count=64"
+    },
+    {
+      "name": "registered source files and stated hashes",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "claim sources resolve",
+      "passed": true,
+      "detail": "claims=62 sources=64"
+    },
+    {
+      "name": "source markdown mirrors IDs",
+      "passed": true,
+      "detail": "all present"
+    },
+    {
+      "name": "claim markdown mirrors IDs",
+      "passed": true,
+      "detail": "all present"
+    },
+    {
+      "name": "C16/C17/C18/C20/C23/C24/C34/C38/C39/C46/C50/C51/C53 ledger lifecycle and action boundary",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "R07 source controls",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "R07 no-admission decision",
+      "passed": true,
+      "detail": "NO_ADMITTED_USABLE_STRATEGY"
+    },
+    {
+      "name": "R07 action boundary",
+      "passed": true,
+      "detail": "research_only/formal_decision_eligible/external_orders/portfolio_q"
+    },
+    {
+      "name": "R14 open-universe feasibility boundary audit",
+      "passed": true,
+      "detail": "PASS"
+    },
+    {
+      "name": "research-blocker governance artifacts",
+      "passed": true,
+      "detail": "all present"
+    },
+    {
+      "name": "source exhaustion retains open blockers",
+      "passed": true,
+      "detail": "open_research_blockers_preserved_no_strategy_admitted"
+    },
+    {
+      "name": "request pack does not authorize acquisition",
+      "passed": true,
+      "detail": "external_data_or_rights_required_before_any_strategy_test"
+    },
+    {
+      "name": "unresolved requirements retain no-admission blocker",
+      "passed": true,
+      "detail": "research_building_no_strategy_admitted"
+    },
+    {
+      "name": "artifact contract remains non-release",
+      "passed": true,
+      "detail": "not_publish_bound"
+    },
+    {
+      "name": "C37 public-primary historical-test no-go boundary",
+      "passed": true,
+      "detail": "ledger=NO_GO_PUBLIC_PRIMARY_HISTORICAL_TEST; gates=['not_closed', 'not_closed', 'not_closed', 'not_closed', 'not_closed', 'not_closed', 'not_established', 'specification_possible_actual_test_not_certifiable']"
+    },
+    {
+      "name": "C38 direct-equity queue non-admission boundary",
+      "passed": true,
+      "detail": "status=CONDITIONAL_RESEARCH_QUEUE_ONLY_NOT_ADMITTED; subjects=['NON_ADMITTED_RESEARCH_SUBJECT', 'NON_ADMITTED_RESEARCH_SUBJECT', 'NON_ADMITTED_RESEARCH_SUBJECT']; admission=NO_ACTION"
+    },
+    {
+      "name": "C39 preregistered no-action protocol boundary",
+      "passed": true,
+      "detail": "status=NO_ACTION; risk=VETO; splits=['P0', 'P1', 'P2', 'P3', 'P4', 'F1']"
+    },
+    {
+      "name": "C53 equity-led draft protocol remains non-admitted and fail-closed",
+      "passed": true,
+      "detail": "status=DRAFT_PAPER_PROTOCOL_NOT_ADMITTED; weights={'510300': 0.25, '510880': 0.25, '511010': 0.25, '518880': 0.1, '511990': 0.15}; action=NO_ACTION"
+    },
+    {
+      "name": "C43/C44 source-control invalidation boundary",
+      "passed": true,
+      "detail": "C43=INVALIDATED_PRECALCULATION_SOURCE_CONTROL_GAP; C44=VOID_PRECALCULATION_SOURCE_CONTROL_GAP"
+    },
+    {
+      "name": "C45 five-family limited source-field readiness",
+      "passed": true,
+      "detail": "result=PASS; families=['AU', 'CU', 'RB', 'RU', 'SP']"
+    },
+    {
+      "name": "C46 frozen source-control binding",
+      "passed": true,
+      "detail": "status=FROZEN_BEFORE_CALCULATION; C45 binding=4b8b7cb02eed1ce92722199e080d7d6520c798270fb39e0f9ae1723fb153d36e"
+    },
+    {
+      "name": "C47 source-controlled frozen-pair stop and no-result boundary",
+      "passed": true,
+      "detail": "status=NOT_DECIDABLE_INCOMPLETE_MONTHLY_PAIR; stop=2024-06-28"
+    },
+    {
+      "name": "C48 current-environment formal-data boundary",
+      "passed": true,
+      "detail": "status=NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT; mode=public_observation"
+    },
+    {
+      "name": "C49 retained-source archive integrity",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "C49 official authorized-route boundary",
+      "passed": true,
+      "detail": "status=CONDITIONAL_AUTHORIZED_DATA_ROUTE_DISCOVERY_NO_CURRENT_ACCEPTED_DELIVERY; C48=NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT"
+    },
+    {
+      "name": "C50 primary-source yield-floor and non-admission boundary",
+      "passed": true,
+      "detail": "status=NOT_ADMITTED_NO_STABLE_5PCT_YIELD_FLOOR; C50 source failures=[]"
+    },
+    {
+      "name": "C51 distinct collar source, formula and non-admission boundary",
+      "passed": true,
+      "detail": "status=NOT_ADMITTED_OPTIONS_FAMILY_NO_NEW_USABLE_ROUTE; source failures=[]; predecessor=True"
+    },
+    {
+      "name": "C52 public-source archive, historical-data boundary and no-action controls",
+      "passed": true,
+      "detail": "status=PUBLIC_SSE_OPTION_SOURCE_ROUTE_INSUFFICIENT_FOR_C51_REPLAY; source failures=[]; dependency failures=[]"
+    },
+    {
+      "name": "C52/R22 source-registry and claim-audit registration",
+      "passed": true,
+      "detail": "registry=['S61', 'S62']; claims=['CL34', 'CL35']"
+    },
+    {
+      "name": "R16/R17 independent repair-closure boundary",
+      "passed": true,
+      "detail": "plan=all_repairs_independently_verified_closed; recheck=True"
+    },
+    {
+      "name": "R18 independent C49 source-audit boundary",
+      "passed": true,
+      "detail": "findings={'S': 0, 'A': 0, 'B': 0}; C48 unchanged=True"
+    },
+    {
+      "name": "R19 independent C50 source-audit boundary",
+      "passed": true,
+      "detail": "findings={'S': 0, 'A': 0, 'B': 0, 'M': 3}; actionability=VETO; C48 unchanged=True"
+    },
+    {
+      "name": "R20 C51 initial audit preserves open findings and required R21",
+      "passed": true,
+      "detail": "findings={'S': 0, 'A': 1, 'B': 1, 'M': 4}; audit=FAIL_PENDING_REPAIR_AND_INDEPENDENT_RECHECK; next=R21"
+    },
+    {
+      "name": "R20 C51 repair plan preserves independent-closure boundary",
+      "passed": true,
+      "detail": "plan=repairs_implemented_pending_independent_R21_recheck; repairs=['R20-A-001', 'R20-B-001', 'R20-M-001', 'R20-M-004']"
+    },
+    {
+      "name": "R21 independent C51 formula/source-control recheck boundary",
+      "passed": true,
+      "detail": "findings={'S': 0, 'A': 0, 'B': 0, 'M': 4}; audit=PASS_SOURCE_AND_REPAIR_BOUNDED_ONLY; actionability=VETO"
+    },
+    {
+      "name": "R22 independent C52 frozen-snapshot, source-integrity and VETO boundary",
+      "passed": true,
+      "detail": "snapshot failures=[]; raw failures=[]; dependency failures=[]; findings={'S': 0, 'A': 0, 'B': 0, 'M': 4}; actionability=VETO"
+    },
+    {
+      "name": "R23 governance-registration historical audit, limited closure and VETO boundary",
+      "passed": true,
+      "detail": "R22 historical=True; R09 historical=True; findings={'S': 0, 'A': 0, 'B': 0, 'M': 3}; actionability=VETO; gate_registration=True"
+    },
+    {
+      "name": "C53 source, claim, gate and artifact-contract registration",
+      "passed": true,
+      "detail": "registry=0b1be55eb38b310d1914e0e7d3acb45ef6b836153e4e806c2035c174a175dca7; claim=['S38', 'S40', 'S41', 'S53', 'S64']; gate=['analysis/c53_equity_led_domestic_target_strategy_protocol_20260815.json', 'analysis/c53_equity_led_domestic_target_strategy_protocol_20260815.md']; contract=R09 C53 non-admission, source-registration and fail-closed control"
+    },
+    {
+      "name": "C40/C41/C42 G0-G9 non-admission and action boundary",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "C40 H1 query-response retention versus availability boundary",
+      "passed": true,
+      "detail": "The raw query response is case-archived and hash-verified; 2026-08-14 20:41:27 is displayed for H1/policy-change records, but timestamp semantics, announced-PDF content, and same-session availability are not validated."
+    },
+    {
+      "name": "C40 zero-capture probe hygiene",
+      "passed": true,
+      "detail": "sources/probe-sse-600519-announcement-query-20260815/manifest.json"
+    },
+    {
+      "name": "C40/C41/C42 source-archive manifest and file integrity",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "C33 exact five-code set",
+      "passed": true,
+      "detail": "['510300', '510880', '511010', '518880', '511990']"
+    },
+    {
+      "name": "C33 C34 strict-screen and action boundary",
+      "passed": true,
+      "detail": "C33 research-only/NO_ACTION/strict-screen state"
+    },
+    {
+      "name": "C34 reported strict-screen failure",
+      "passed": true,
+      "detail": "full rolling failures and chronological robustness slice"
+    },
+    {
+      "name": "C35/C36 actionability boundary",
+      "passed": true,
+      "detail": "C35 research-only and C36 dated-source PASS/actionability VETO"
+    },
+    {
+      "name": "C33 evidence hashes",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "C33 forward ledger remains incomplete",
+      "passed": true,
+      "detail": "template_only_no_observations"
+    },
+    {
+      "name": "C34 source-exhaustion entry",
+      "passed": true,
+      "detail": "C16 and C17 actual SHFE contract diagnostics, C18 direct SSE-listed public company-bond ladder, C20 domestic public-REIT route, C23 domestic publicly offered open-ended fund route, C24 direct mainland-equity route, C34 five-ETF dual-horizon inverse-volatility candidate, C37 domestic ETF investor-total-return source route, C39 audited cash-flow realization cohort hypothesis, C46/C47 five-family actual-contract calendar-curve route, C48 current-environment formal historical research capability, C50 SSE general pledged reverse-repo yield-floor screen, C51 SSE ETF-collar option non-duplication and data-contract screen, C52 SSE public ETF-option historical-source route screen, R01 five-ETF monthly paper benchmark"
+    },
+    {
+      "name": "C34 missing-data request",
+      "passed": true,
+      "detail": "c18_company_bond_full_price_cashflow_credit_events, c18_generic_broker_implementation_evidence, c18_sse_company_bond_historical_market_and_master, c20_public_reit_execution_and_eligibility, c20_public_reit_point_in_time_total_return_universe, c23_open_ended_fund_point_in_time_total_return_and_operability, c24_direct_equity_cost_execution_and_per_stock_diligence, c24_direct_equity_point_in_time_data_and_diligence, c34_five_etf_total_return_event_and_execution_evidence, c37_new_etf_historical_total_return_event_and_execution_contract, c39_preregistered_equity_cohort_data_execution_and_forward_record, current_environment_formal_strategy_data_rights_and_acceptance, new_calendar_relative_value_actual_contract_execution_and_rights_contract"
+    },
+    {
+      "name": "C34 unresolved gates",
+      "passed": true,
+      "detail": "c18_point_in_time_data_and_implementation_fields, c20_public_reit_total_return_and_universe_fields, c23_open_ended_fund_data_rights_and_sample_acceptance, c24_direct_equity_declared_scope_data_and_diligence, c34_forward_paper_observation_record, c34_total_return_and_execution_evidence, c37_etf_total_return_event_execution_and_rights, c39_preregistered_cohort_data_execution_and_forward_record, c50_general_repo_yield_floor_and_execution_evidence, c51_sse_etf_option_collar_data_and_execution_evidence, current_environment_formal_data_rights_total_return_execution_acceptance, no_admitted_usable_strategy, publication_and_pdf_release"
+    },
+    {
+      "name": "C37/C39 source-exhaustion entries",
+      "passed": true,
+      "detail": "C16 and C17 actual SHFE contract diagnostics, C18 direct SSE-listed public company-bond ladder, C20 domestic public-REIT route, C23 domestic publicly offered open-ended fund route, C24 direct mainland-equity route, C34 five-ETF dual-horizon inverse-volatility candidate, C37 domestic ETF investor-total-return source route, C39 audited cash-flow realization cohort hypothesis, C46/C47 five-family actual-contract calendar-curve route, C48 current-environment formal historical research capability, C50 SSE general pledged reverse-repo yield-floor screen, C51 SSE ETF-collar option non-duplication and data-contract screen, C52 SSE public ETF-option historical-source route screen, R01 five-ETF monthly paper benchmark"
+    },
+    {
+      "name": "C37/C39 missing-data requests",
+      "passed": true,
+      "detail": "c18_company_bond_full_price_cashflow_credit_events, c18_generic_broker_implementation_evidence, c18_sse_company_bond_historical_market_and_master, c20_public_reit_execution_and_eligibility, c20_public_reit_point_in_time_total_return_universe, c23_open_ended_fund_point_in_time_total_return_and_operability, c24_direct_equity_cost_execution_and_per_stock_diligence, c24_direct_equity_point_in_time_data_and_diligence, c34_five_etf_total_return_event_and_execution_evidence, c37_new_etf_historical_total_return_event_and_execution_contract, c39_preregistered_equity_cohort_data_execution_and_forward_record, current_environment_formal_strategy_data_rights_and_acceptance, new_calendar_relative_value_actual_contract_execution_and_rights_contract"
+    },
+    {
+      "name": "C37/C39 unresolved gates",
+      "passed": true,
+      "detail": "c18_point_in_time_data_and_implementation_fields, c20_public_reit_total_return_and_universe_fields, c23_open_ended_fund_data_rights_and_sample_acceptance, c24_direct_equity_declared_scope_data_and_diligence, c34_forward_paper_observation_record, c34_total_return_and_execution_evidence, c37_etf_total_return_event_execution_and_rights, c39_preregistered_cohort_data_execution_and_forward_record, c50_general_repo_yield_floor_and_execution_evidence, c51_sse_etf_option_collar_data_and_execution_evidence, current_environment_formal_data_rights_total_return_execution_acceptance, no_admitted_usable_strategy, publication_and_pdf_release"
+    },
+    {
+      "name": "C46/C47 source-exhaustion entry",
+      "passed": true,
+      "detail": "C16 and C17 actual SHFE contract diagnostics, C18 direct SSE-listed public company-bond ladder, C20 domestic public-REIT route, C23 domestic publicly offered open-ended fund route, C24 direct mainland-equity route, C34 five-ETF dual-horizon inverse-volatility candidate, C37 domestic ETF investor-total-return source route, C39 audited cash-flow realization cohort hypothesis, C46/C47 five-family actual-contract calendar-curve route, C48 current-environment formal historical research capability, C50 SSE general pledged reverse-repo yield-floor screen, C51 SSE ETF-collar option non-duplication and data-contract screen, C52 SSE public ETF-option historical-source route screen, R01 five-ETF monthly paper benchmark"
+    },
+    {
+      "name": "C48 source-exhaustion entry",
+      "passed": true,
+      "detail": "C16 and C17 actual SHFE contract diagnostics, C18 direct SSE-listed public company-bond ladder, C20 domestic public-REIT route, C23 domestic publicly offered open-ended fund route, C24 direct mainland-equity route, C34 five-ETF dual-horizon inverse-volatility candidate, C37 domestic ETF investor-total-return source route, C39 audited cash-flow realization cohort hypothesis, C46/C47 five-family actual-contract calendar-curve route, C48 current-environment formal historical research capability, C50 SSE general pledged reverse-repo yield-floor screen, C51 SSE ETF-collar option non-duplication and data-contract screen, C52 SSE public ETF-option historical-source route screen, R01 five-ETF monthly paper benchmark"
+    },
+    {
+      "name": "C49 source-exhaustion evidence",
+      "passed": true,
+      "detail": "['analysis/c48_current_environment_data_capability_audit_20260815.json', 'analysis/c49_official_authorized_data_route_recheck_20260815.json']"
+    },
+    {
+      "name": "C46/C48 missing-data requests",
+      "passed": true,
+      "detail": "c18_company_bond_full_price_cashflow_credit_events, c18_generic_broker_implementation_evidence, c18_sse_company_bond_historical_market_and_master, c20_public_reit_execution_and_eligibility, c20_public_reit_point_in_time_total_return_universe, c23_open_ended_fund_point_in_time_total_return_and_operability, c24_direct_equity_cost_execution_and_per_stock_diligence, c24_direct_equity_point_in_time_data_and_diligence, c34_five_etf_total_return_event_and_execution_evidence, c37_new_etf_historical_total_return_event_and_execution_contract, c39_preregistered_equity_cohort_data_execution_and_forward_record, current_environment_formal_strategy_data_rights_and_acceptance, new_calendar_relative_value_actual_contract_execution_and_rights_contract"
+    },
+    {
+      "name": "C48 unresolved gate",
+      "passed": true,
+      "detail": "c18_point_in_time_data_and_implementation_fields, c20_public_reit_total_return_and_universe_fields, c23_open_ended_fund_data_rights_and_sample_acceptance, c24_direct_equity_declared_scope_data_and_diligence, c34_forward_paper_observation_record, c34_total_return_and_execution_evidence, c37_etf_total_return_event_execution_and_rights, c39_preregistered_cohort_data_execution_and_forward_record, c50_general_repo_yield_floor_and_execution_evidence, c51_sse_etf_option_collar_data_and_execution_evidence, current_environment_formal_data_rights_total_return_execution_acceptance, no_admitted_usable_strategy, publication_and_pdf_release"
+    },
+    {
+      "name": "C50 source-exhaustion entry",
+      "passed": true,
+      "detail": "C16 and C17 actual SHFE contract diagnostics, C18 direct SSE-listed public company-bond ladder, C20 domestic public-REIT route, C23 domestic publicly offered open-ended fund route, C24 direct mainland-equity route, C34 five-ETF dual-horizon inverse-volatility candidate, C37 domestic ETF investor-total-return source route, C39 audited cash-flow realization cohort hypothesis, C46/C47 five-family actual-contract calendar-curve route, C48 current-environment formal historical research capability, C50 SSE general pledged reverse-repo yield-floor screen, C51 SSE ETF-collar option non-duplication and data-contract screen, C52 SSE public ETF-option historical-source route screen, R01 five-ETF monthly paper benchmark"
+    },
+    {
+      "name": "C50 unresolved gate",
+      "passed": true,
+      "detail": "c18_point_in_time_data_and_implementation_fields, c20_public_reit_total_return_and_universe_fields, c23_open_ended_fund_data_rights_and_sample_acceptance, c24_direct_equity_declared_scope_data_and_diligence, c34_forward_paper_observation_record, c34_total_return_and_execution_evidence, c37_etf_total_return_event_execution_and_rights, c39_preregistered_cohort_data_execution_and_forward_record, c50_general_repo_yield_floor_and_execution_evidence, c51_sse_etf_option_collar_data_and_execution_evidence, current_environment_formal_data_rights_total_return_execution_acceptance, no_admitted_usable_strategy, publication_and_pdf_release"
+    },
+    {
+      "name": "C51 source-exhaustion entry",
+      "passed": true,
+      "detail": "C16 and C17 actual SHFE contract diagnostics, C18 direct SSE-listed public company-bond ladder, C20 domestic public-REIT route, C23 domestic publicly offered open-ended fund route, C24 direct mainland-equity route, C34 five-ETF dual-horizon inverse-volatility candidate, C37 domestic ETF investor-total-return source route, C39 audited cash-flow realization cohort hypothesis, C46/C47 five-family actual-contract calendar-curve route, C48 current-environment formal historical research capability, C50 SSE general pledged reverse-repo yield-floor screen, C51 SSE ETF-collar option non-duplication and data-contract screen, C52 SSE public ETF-option historical-source route screen, R01 five-ETF monthly paper benchmark"
+    },
+    {
+      "name": "C51 unresolved gate",
+      "passed": true,
+      "detail": "c18_point_in_time_data_and_implementation_fields, c20_public_reit_total_return_and_universe_fields, c23_open_ended_fund_data_rights_and_sample_acceptance, c24_direct_equity_declared_scope_data_and_diligence, c34_forward_paper_observation_record, c34_total_return_and_execution_evidence, c37_etf_total_return_event_execution_and_rights, c39_preregistered_cohort_data_execution_and_forward_record, c50_general_repo_yield_floor_and_execution_evidence, c51_sse_etf_option_collar_data_and_execution_evidence, current_environment_formal_data_rights_total_return_execution_acceptance, no_admitted_usable_strategy, publication_and_pdf_release"
+    },
+    {
+      "name": "C52 source-exhaustion entry",
+      "passed": true,
+      "detail": "C16 and C17 actual SHFE contract diagnostics, C18 direct SSE-listed public company-bond ladder, C20 domestic public-REIT route, C23 domestic publicly offered open-ended fund route, C24 direct mainland-equity route, C34 five-ETF dual-horizon inverse-volatility candidate, C37 domestic ETF investor-total-return source route, C39 audited cash-flow realization cohort hypothesis, C46/C47 five-family actual-contract calendar-curve route, C48 current-environment formal historical research capability, C50 SSE general pledged reverse-repo yield-floor screen, C51 SSE ETF-collar option non-duplication and data-contract screen, C52 SSE public ETF-option historical-source route screen, R01 five-ETF monthly paper benchmark"
+    },
+    {
+      "name": "C52 source-exhaustion and R22 VETO evidence",
+      "passed": true,
+      "detail": "['analysis/c52_sse_etf_option_history_route_screen_20260815.json', 'analysis/r22_c52_independent_source_audit_20260815.json', 'analysis/r23_c52_governance_registration_independent_recheck_20260815.json', 'sources/c52-sse-etf-option-history-route-20260815/manifest.json', 'analysis/c48_current_environment_data_capability_audit_20260815.json', 'analysis/c49_official_authorized_data_route_recheck_20260815.json', 'analysis/c51_sse_etf_option_collar_scope_screen_20260815.json']"
+    },
+    {
+      "name": "C52/R22 gate-manifest and artifact-contract registration",
+      "passed": true,
+      "detail": "required=['analysis/c52_sse_etf_option_history_route_screen_20260815.json', 'analysis/c52_sse_etf_option_history_route_screen_20260815.md', 'analysis/r22_c52_independent_source_audit_20260815.json', 'analysis/r22_c52_independent_source_audit_20260815.md']; contract=['analysis/c52_sse_etf_option_history_route_screen_20260815.*', 'analysis/r22_c52_independent_source_audit_20260815.*']"
+    },
+    {
+      "name": "gate-manifest required artifacts exist",
+      "passed": true,
+      "detail": "all present"
+    },
+    {
+      "name": "reader-facing amount-language exclusion",
+      "passed": true,
+      "detail": "no prohibited terms"
+    }
+  ],
+  "failures": [],
+  "boundary": "A PASS is a control-record consistency result only, not route or strategy admission. This audit does not admit a strategy, select a product, calculate an investor result or authorize an external action."
+}

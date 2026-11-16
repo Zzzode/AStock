@@ -1,0 +1,33 @@
+# C12 Official Cash/Futures-Basis Evidence — Manifest
+
+- Capture batch: `c12-official-cash-futures-basis-20260815`
+- Captured at: `2026-08-14T19:04:22.964774+00:00`
+- Source quality: `primary_official_rule_product_disclosure_and_retrospective_actual_contract_samples`
+- Purpose: rules, product structure, investor-suitability context and six retrospective actual-contract EOD source-route samples for a research-only C12 cash/futures-basis candidate.
+- Boundary: no return series, order, position, allocation, account decision, personal eligibility decision or performance claim.
+
+| File | Publisher | Document date | SHA-256 | Evidence use |
+|---|---|---|---|---|
+| cffex_10y_treasury_futures_product_current.html | China Financial Futures Exchange | current page captured 2026-08-15 | `ff48387288fbc3dda99f9b831eb8a493d982486cedd1745ea636dec4dcfdc3a0` | Current exchange product-page terms for the T family, including actual physical delivery, quotation, expiry and base margin framing. |
+| cffex_t_contract_rules_20200720.pdf | China Financial Futures Exchange | 2020-06-12 | `1221bd17962406d2cd659bf2c9b1d8e66a8af88b96f6e9578ca89bfc1fbeee5f` | Dated official T-family contract terms: deliverable-bond class, actual physical delivery, final-trading-day logic, settlement, base margin and limits. |
+| cffex_treasury_futures_delivery_rules_20200720.pdf | China Financial Futures Exchange | 2020-06-12 | `b47c8014b48ea3323ebd49777c09c145c5082ed44e79bd0c84c0e4020c1bfa54` | Dated official delivery-account, eligible-bond, conversion-factor, custody, delivery-invoice and forced-close mechanics. |
+| cffex_trader_suitability_management_20191214.pdf | China Financial Futures Exchange | 2019-12-14 | `63b893ed254308542d8498791b65fe8e400398609ac61573f13b3c544209a4ae` | Exchange-level individual-customer trading-code conditions. It is not proof that any particular person or broker route qualifies. |
+| cffex_treasury_futures_strategy_education_undated.pdf | China Financial Futures Exchange | undated official educational material; archive-path date is not treated as a publication-date assertion | `867d17183f120deb824b2ca9ad6e2fcbc3bf8357acf285aa1f6ed8c9d4dfa4a1` | Official educational definition of clean-price basis, conversion-factor adjustment, carry and the buy-cash/sell-futures long-basis structure. It is education, not a current rule or action instruction. |
+| sse_bond_investor_suitability_2023_page.html | Shanghai Stock Exchange | 2023-10-20 | `bcb146a1ec6e0b726313223366ba6dc822c4317817d9143c103bb91890c01111` | Official notice and effective-date context for the attached bond-investor suitability rule. |
+| sse_bond_investor_suitability_2023.docx | Shanghai Stock Exchange | 2023-10-20 | `344c48bad2b7a8551d53c75538340f113e83b97801f748f5d63ab1b15470e6cd` | Official scope showing that ordinary investors may trade listed Treasury bonds, subject to the rule and intermediary controls. It does not establish custody-account approval for futures delivery. |
+| sse_511260_annual_report_2023.pdf | Shanghai Stock Exchange disclosure; fund-manager filing | 2024-03-29 | `e3a7318ab0d9988bd4562e41738b844082ac97070769cc214e3fe895db1bba83` | Official exchange disclosure identifying 511260 as an exchange-traded fund that uses optimized sampling of index constituent Treasury bonds and targets tracking, rather than a single deliverable bond. |
+| cffex_actual_contract_daily_20160104.csv | China Financial Futures Exchange | 2016-01-04 | `3e5fc25f4e1a86fdb1c85193fa2d013fa9fab20137f81609bb084923f4164a47` | Retrospectively captured official actual listed-contract rows for T/TF (and, when present, TS/TL) with EOD OHLC, settlement, volume and open interest fields. It is a source-route sample only. |
+| cffex_actual_contract_daily_20180102.csv | China Financial Futures Exchange | 2018-01-02 | `1a9d514f714c37b52f2b0fc015325c93d7193f69ddf34835ba2d977944296ce7` | Retrospectively captured official actual listed-contract rows for T/TF (and, when present, TS/TL) with EOD OHLC, settlement, volume and open interest fields. It is a source-route sample only. |
+| cffex_actual_contract_daily_20200102.csv | China Financial Futures Exchange | 2020-01-02 | `19c11ecdb6a4915790979ff803f851f281abc92ca94fdf961658ec6efa3caef8` | Retrospectively captured official actual listed-contract rows for T/TF (and, when present, TS/TL) with EOD OHLC, settlement, volume and open interest fields. It is a source-route sample only. |
+| cffex_actual_contract_daily_20220104.csv | China Financial Futures Exchange | 2022-01-04 | `8855e0243618e47c9a7d6082ac52d6492c5a3c6ade6b73b7af6613074b9867e3` | Retrospectively captured official actual listed-contract rows for T/TF (and, when present, TS/TL) with EOD OHLC, settlement, volume and open interest fields. It is a source-route sample only. |
+| cffex_actual_contract_daily_20240102.csv | China Financial Futures Exchange | 2024-01-02 | `9d274534c754dd1c5685f460aa4f23ff3268f07b1ce6686310185855fddfc007` | Retrospectively captured official actual listed-contract rows for T/TF (and, when present, TS/TL) with EOD OHLC, settlement, volume and open interest fields. It is a source-route sample only. |
+| cffex_actual_contract_daily_20260814.csv | China Financial Futures Exchange | 2026-08-14 | `085c9885190773a5c064e53c92916da590116e70a4d0a9550e2a94c4c21de542` | Retrospectively captured official actual listed-contract rows for T/TF (and, when present, TS/TL) with EOD OHLC, settlement, volume and open interest fields. It is a source-route sample only. |
+
+## Limitations
+
+- The six CSV observations are individual dates spread across 2016--2026, not a complete every-session actual-contract archive, point-in-time contract master, delivery-status archive or five-calendar-year ledger.
+- All historical daily files were retrieved retrospectively. Current path reachability does not prove original-decision-date availability, immutability, revision history, entitlement or data rights.
+- Rule and product materials provide exchange-level terms. They do not establish effective daily broker margin, personal commission, custody-account approval, a personal trading-code result, bid/ask, queue state, partial fill, rejected order, execution or strategy return.
+- The ETF annual report describes a fund using optimized sampling and index tracking. It does not establish that an ETF share is a deliverable Treasury bond or that it locks a delivery basis.
+- The legacy CFFEX actual-contract daily route is plain HTTP. The local hash freeze controls subsequent local-file mismatch only; it does not convert that transport into point-in-time or authenticated evidence.
+- No continuous futures series, invented fill, return, allocation, holding or action is generated from this batch.

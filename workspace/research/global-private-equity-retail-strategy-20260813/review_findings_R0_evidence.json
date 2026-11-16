@@ -1,0 +1,43 @@
+{
+  "cycle": "R0_evidence",
+  "reviewer": "independent framework red-team",
+  "review_date": "2026-08-13",
+  "findings": [
+    {
+      "id": "R0-01",
+      "severity": "S",
+      "title": "SSE rule release pages were initially archived without their operative attachments",
+      "status": "resolved",
+      "evidence": "S09 and S14 initially pointed to release HTML pages; operative DOCX attachments and S09 deferred-provisions attachment were subsequently archived and checksummed.",
+      "repair": "Added sse_trading_rules_2026.docx, sse_trading_rules_2026_deferred.docx and sse_margin_rules_2023.docx; updated registry and claim audit.",
+      "verification": "Local source paths exist; S09 3.1.4–3.1.5 and S14 detailed-rule conditions were read from the archived attachments."
+    },
+    {
+      "id": "R0-02",
+      "severity": "A",
+      "title": "Historical CSRC margin page risked being labelled as a current operative rule",
+      "status": "resolved",
+      "evidence": "S08 is a 2014 page.",
+      "repair": "Reclassified S08 as historical educational/regulatory context only; current financing-rule statements use S14 operative detailed rules.",
+      "verification": "Registry, source appendix and main text distinguish the historical source."
+    },
+    {
+      "id": "R0-03",
+      "severity": "S",
+      "title": "Public REIT source labels initially omitted operative attachments and misidentified the issuance/listing guide",
+      "status": "resolved",
+      "evidence": "S10 and S11 initially retained only release pages in the registry; the S11 operative attachment is titled Shanghai Stock Exchange Guidelines No. 1 for Publicly Offered Real Estate Investment Trusts (REITs) — Issuance and Listing Administration (June 2026 revision), not an infrastructure-REIT guide.",
+      "repair": "Archived and checksummed both operative DOCX attachments; corrected the registry, claim audit, China chapter and source appendix to use public-real-estate-REIT issuance/listing wording and product-specific scope.",
+      "verification": "Local operative attachments exist, registry title/path/hash reconcile, and reader-facing text requires underlying-asset, rule and product-document confirmation."
+    },
+    {
+      "id": "R0-04",
+      "severity": "S",
+      "title": "Manager process descriptions were at risk of being read as causal return attribution",
+      "status": "resolved",
+      "evidence": "The initial matrix and strategy packet used causal language and lacked field-level source locators; Bain's source supports a manager-described operating-transformation approach, not a fixed menu of operating levers.",
+      "repair": "Added documented-fact locators, evidence classes and analytical-inference fields to every manager row; removed causal outcome wording and narrowed the Bain row.",
+      "verification": "The packet, matrix source note, claim audit and case verifier now distinguish official structure/self-description from analytical translation and explicitly reject causal attribution."
+    }
+  ]
+}

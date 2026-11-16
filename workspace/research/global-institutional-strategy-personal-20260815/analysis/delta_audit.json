@@ -1,0 +1,72 @@
+{
+  "schema_version": "research.delta_audit.v1",
+  "case_id": "global-institutional-strategy-personal-20260815",
+  "audit_type": "post-publication style feedback",
+  "date": "2026-08-15",
+  "user_correction": "禁止不是 - 而是 最难 而非这种写作方法，写进研报规则里面",
+  "follow_up_correction": "User identified a remaining double-denial construction and required repair.",
+  "second_follow_up_correction": "User identified a remaining paired-negative 没有 construction and required repair.",
+  "scope_decision": {
+    "authorized_change": "Durable research-report workflow rule update plus full reader-facing report rewrite and exhaustive authored-不是 / 没有 repair",
+    "historical_pdf_rewrite_authorized": true,
+    "historical_pdf_disposition": "Reissued from revised TeX three times; R2/R3/R4 and all case gates reopened for the current rewritten PDF."
+  },
+  "original_miss": "The workflow used a generic formulaic-contrast instruction without named prohibited patterns, a lexical scan, a style-audit artifact, or an R2 blocking threshold. The first repair scan then remained too narrow because it did not require disposition of every authored 不是 occurrence, and the next repair scope did not yet include every authored 没有 occurrence or paired-negative stack.",
+  "legacy_examples": [
+    {
+      "file": "sections/ch08_common_controls.tex",
+      "line": 33,
+      "pattern": "contrast-template sentence",
+      "disposition": "rewritten and verified clear"
+    },
+    {
+      "file": "sections/ch03_institution_map.tex",
+      "line": 41,
+      "pattern": "最难…… plus 而非",
+      "disposition": "rewritten and verified clear"
+    },
+    {
+      "file": "sections/ch04_applicability.tex",
+      "line": 24,
+      "pattern": "最重要……不是……而是……",
+      "disposition": "rewritten and verified clear"
+    },
+    {
+      "file": "sections/ch07_event_rulebook.tex",
+      "line": 1,
+      "pattern": "不是……而是…… title",
+      "disposition": "rewritten and verified clear"
+    }
+  ],
+  "responsible_workflow": {
+    "skills": [
+      "research-prose-polish",
+      "equity-research",
+      "research-report-review"
+    ],
+    "roles": [
+      "latex-writer",
+      "research-report-reviewer"
+    ],
+    "missing_gate": "R2 reader-prose hard gate with zero eligible-hit threshold"
+  },
+  "prevention_rule": "Named Chinese contrast-template patterns, every authored 不是 occurrence, every authored 没有 occurrence, and paired-negative stacks are governed in reader-facing text. Immutable quotations, legal/regulatory text, and source titles are allowed only when clearly labeled. A literal scan and prose_style_audit are required before R2; non-exempt hits are A-Level reader_prose_template_ban findings.",
+  "changed_files": [
+    ".agents/skills/research-prose-polish/SKILL.md",
+    ".codex/skills/research-prose-polish/SKILL.md",
+    ".agents/skills/equity-research/SKILL.md",
+    ".codex/skills/equity-research/SKILL.md",
+    ".agents/skills/research-report-review/SKILL.md",
+    ".codex/skills/research-report-review/SKILL.md",
+    ".agents/team/latex-writer.md",
+    ".codex/agents/latex-writer.toml",
+    ".agents/team/research-report-reviewer.md",
+    ".codex/agents/research-report-reviewer.toml",
+    ".agents/skills/evolve/anti-patterns.md",
+    ".codex/skills/evolve/anti-patterns.md",
+    "src/python/astock/quality/__tests__/test_research_prose_rules.py",
+    "main.tex",
+    "sections/*.tex"
+  ],
+  "validation_reference": "skill_evolution_log.md/json"
+}

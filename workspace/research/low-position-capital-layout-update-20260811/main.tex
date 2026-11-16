@@ -1,0 +1,37 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+\newcommand{\reporttitle}{低位与大幅上行空间：8月11日证据刷新}
+\newcommand{\reportsubtitle}{对2026年7月低位重估与高弹性筛选结论的市场、财报和券商证据复核}
+\newcommand{\reportkicker}{A股策略研究 | 估值更新}
+\newcommand{\reportscope}{中国A股 | 13只历史候选 | 2026年8月10日收盘}
+\newcommand{\reportdate}{2026年8月11日}
+\newcommand{\reportdatacutoff}{市场：8月10日收盘（8月11日盘前快照）；财务：截至8月11日已披露年报、一季报、中报或业绩预告}
+\newcommand{\reporttype}{估值更新与证据复核}
+\newcommand{\reportauthor}{AStock研究体系}
+\newcommand{\reporthouseview}{没有一只标的仍可被称为“低位且有高确定性大幅上行空间”。雅化、宏桥和亿纬仅保留为下一次财报的事件验证优先级；恒逸因价格已处于一年高位而移出低位名单。没有新的AStock目标价。}
+\newcommand{\reportquality}{市场数据为腾讯与搜狐公共端点交叉核验；8月11日为盘前零成交快照，全部价格结论使用8月10日收盘。财务以CNINFO原始公告为准：两份实际中报、九份业绩预告和两项H1缺口。券商锚仅使用归档原始PDF，且不等同于一致预期。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，仅作研究参考，不构成任何证券买卖建议。}
+\input{../../../.agents/templates/preamble.tex}
+\sloppy
+\setlength{\emergencystretch}{3em}
+\hypersetup{pdfauthor={\reportauthor},pdftitle={\reporttitle}}
+\begin{document}
+\astockcover
+\begin{abstract}
+本报告更新2026年7月两份关于“低位重估”和“高弹性/翻倍空间”的研究。核心结论不是把旧模型的空间滚动到新价格，而是验证旧结论在最新可得行情、年报、一季报、中报或业绩预告之后是否仍满足条件。结论为：没有一只标的具有“低位 + 高确定性基准翻倍”的组合；也没有新的AStock自有目标价。雅化集团、宏桥控股与亿纬锂能保留为下一份实际财报的事件验证优先级，恒逸石化则因接近一年高位而移出低位清单。六只历史高空间样本均因利润质量、现金、H1实际性或当前估值锚不足而维持观察。
+
+\textbf{阅读提示。} 本报告将实际中报、发行人业绩预告、券商外部锚和AStock研究结论分开呈现；任何未通过证据门槛的项目只保留为下一次披露的验证任务。
+\end{abstract}
+\tableofcontents
+\clearpage
+\input{sections/ch01_decision}
+\input{sections/ch02_method}
+\input{sections/ch03_market}
+\input{sections/ch04_financials}
+\input{sections/ch05_primary}
+\input{sections/ch06_historical_recheck}
+\input{sections/ch07_risk_triggers}
+\input{sections/ch08_sources}
+\appendix
+\input{sections/app_a_anchor_math}
+\end{document}

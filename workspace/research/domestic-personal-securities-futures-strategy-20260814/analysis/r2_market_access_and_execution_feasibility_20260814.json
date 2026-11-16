@@ -1,0 +1,296 @@
+{
+  "schema_version": "r2_market_access_and_execution_feasibility.v1",
+  "artifact_id": "DPSFS-R2-MAEF-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "language": "zh-CN",
+  "status": "rule_routes_researched_personal_access_execution_and_replay_unverified",
+  "research_only": true,
+  "portfolio_q": 0,
+  "purpose": "Separate authoritative market-rule observations from broker, account, product and actual-execution facts for all ten U0 domestic classes. This is not legal advice, an account-opening guide, a product admission, an allocation, a holding, an order or an investment action.",
+  "boundary": {
+    "t0_t1_definition": "T+0/T+1 labels describe the documented round-trip or settlement mechanism only. They do not guarantee liquidity, fillability, price, withdrawal timing or market access.",
+    "rule_vs_entitlement": "An exchange or regulatory rule can establish a market mechanism but cannot prove an individual's account permission, broker support, live fee, margin add-on, order acceptance or fill.",
+    "freeze_requirement": "Every product/contract rule must be verified again at the formal freeze date using the then-effective venue rule, product legal document, broker agreement, account status and raw evidence."
+  },
+  "source_register": [
+    {
+      "source_id": "MRF-01",
+      "title": "CSRC Measures for the Suitability Management of Securities and Futures Investors",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653849/content.shtml",
+      "publisher": "China Securities Regulatory Commission",
+      "source_type": "regulator",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Suitability framework for securities, funds, futures and derivatives.",
+        "Individual permission must be assessed by the operating institution."
+      ]
+    },
+    {
+      "source_id": "MRF-02",
+      "title": "Shanghai Stock Exchange Trading Rules (2026 revision)",
+      "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/exchange/c/c_20260424_10816482.shtml",
+      "publisher": "Shanghai Stock Exchange",
+      "source_type": "exchange_rule",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Effective date 2026-07-06.",
+        "Base 100-share/unit competitive-buy order rule.",
+        "General price-limit and special-rule-precedence framework."
+      ]
+    },
+    {
+      "source_id": "MRF-03",
+      "title": "SZSE ChiNext Trading Special Provisions and BSE Trading Rules",
+      "url": "https://www.szse.cn/lawrules/rule/repeal/rules/P020231230545310237980.pdf; https://www.bse.cn/jygl_list/200010919.html",
+      "publisher": "Shenzhen Stock Exchange; Beijing Stock Exchange",
+      "source_type": "exchange_rule",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "ChiNext board price-limit and first-five-session exception framework.",
+        "BSE 100-share minimum, 30% price-limit and first-day exception framework."
+      ]
+    },
+    {
+      "source_id": "MRF-04",
+      "title": "SSE ETF Investor Questions and Answers",
+      "url": "https://www.sse.com.cn/assortment/fund/etf/question/",
+      "publisher": "Shanghai Stock Exchange",
+      "source_type": "exchange_investor_education",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "ETF account path, 100-unit minimum and 0.001 price increment.",
+        "Stock ETF T+1 versus named categories of ETF that support T+0."
+      ]
+    },
+    {
+      "source_id": "MRF-05",
+      "title": "SSE Bond ETF Business Guide",
+      "url": "https://www.sse.com.cn/lawandrules/guide/jjznlc/c/c_20200722_3986154.shtml",
+      "publisher": "Shanghai Stock Exchange",
+      "source_type": "exchange_guide",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Bond-ETF same-day sell/redemption examples, collateral and separate trading/creation-redemption halt mechanics."
+      ],
+      "caution": "Guide date is 2020-07-22; its mechanism must be rechecked at freeze and cannot prove broker enablement."
+    },
+    {
+      "source_id": "MRF-06",
+      "title": "SSE REITs temporary-report guidance and SZSE REITs trading guide",
+      "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/reits/c/c_20251231_10803760.shtml; https://docs.static.szse.cn/www/lawrules/service/reits/W020210618784638469645.pdf",
+      "publisher": "Shanghai Stock Exchange; Shenzhen Stock Exchange",
+      "source_type": "exchange_rule_and_guide",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "REITs abnormal-move disclosure/halts, 100-unit order and 0.001 price increment routes."
+      ]
+    },
+    {
+      "source_id": "MRF-07",
+      "title": "SZSE investor Q&A on infrastructure-fund resale timing",
+      "url": "https://investor.szse.cn/knowledge/reits/t20210707_586812.html",
+      "publisher": "Shenzhen Stock Exchange",
+      "source_type": "exchange_investor_education",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "On-market infrastructure-fund shares bought on day T may be sold on T+1."
+      ]
+    },
+    {
+      "source_id": "MRF-08",
+      "title": "SSE Convertible Bond Trading Detailed Rules (March 2025 revision)",
+      "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/convertible/trading/c/c_20250606_10782995.shtml",
+      "publisher": "Shanghai Stock Exchange",
+      "source_type": "exchange_rule",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Public convertible-bond matching, order unit, same-day multilateral net settlement, price-limit, temporary-halt and event rules.",
+        "Professional-investor boundary for specific-object convertible-bond transfer."
+      ]
+    },
+    {
+      "source_id": "MRF-09",
+      "title": "Futures Trading Administration Regulations and SHFE 2026 rule announcement",
+      "url": "https://www.shfe.com.cn/regulation/futureslaw/201803/t20180321_793033.html; https://www.shfe.com.cn/publicnotice/notice/202605/t20260529_831862.html",
+      "publisher": "State Council rule route; Shanghai Futures Exchange",
+      "source_type": "regulatory_and_exchange_rule",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Margin, daily mark-to-market, price limit, position limit, forced liquidation and delivery framework.",
+        "SHFE revised rules effective 2026-06-12."
+      ]
+    },
+    {
+      "source_id": "MRF-10",
+      "title": "CFFEX rules index and 2026 trading/clearing rules announcement",
+      "url": "https://www.cffex.com.cn/cn/jysgz.html; https://www.cffex.com.cn/en_new/Notices/20260410/47561.html",
+      "publisher": "China Financial Futures Exchange",
+      "source_type": "exchange_rule",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Financial futures/options trading, clearing, risk control and suitability-rule routes.",
+        "2026-04-10 rules release and effective-date route."
+      ]
+    },
+    {
+      "source_id": "MRF-11",
+      "title": "CFFEX risk-control measures and clearing detailed rules",
+      "url": "https://www.cffex.com.cn/cn/ssxz/20230414/43079.html; https://www.cffex.com.cn/ssxz/20250107/43078.html",
+      "publisher": "China Financial Futures Exchange",
+      "source_type": "exchange_rule",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Margin, position and transaction limits, forced liquidation, price controls and daily settlement mechanism."
+      ]
+    },
+    {
+      "source_id": "MRF-12",
+      "title": "SSE stock-option trading rules and investor-suitability guidance",
+      "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/option/c/c_20250610_10781448.shtml; https://www.sse.com.cn/lawandrules/sselawsrules2025/option/c/c_20250610_10781453.shtml",
+      "publisher": "Shanghai Stock Exchange",
+      "source_type": "exchange_rule",
+      "accessed_at": "2026-08-14",
+      "supports": [
+        "Stock-option premium/margin/covered mechanics, exercise validation, next-session exercise settlement and graded suitability."
+      ]
+    }
+  ],
+  "class_matrix": [
+    {
+      "u0_class": "DIRECT_A_SHARE_EQUITIES",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "Treat as next-session resale unless a dated product/venue rule explicitly allows round-trip. Direct A shares must not be modeled as a generic T+0 instrument.",
+      "unit_and_price_controls": "Base SSE competitive buy order is 100 shares/units; STAR, ChiNext and BSE have board-specific order rules. Generic 10% SSE price control is not universal: STAR and ChiNext use 20% frameworks, BSE 30%, and new-listing/delisting exceptions exist.",
+      "margin_exercise_delivery": "Not applicable as a base cash-equity trade; financing/securities-lending requires separate permission and ledger.",
+      "suitability_and_access": "Main-board account access is not evidence of board, margin, securities-lending or broker order-route access.",
+      "liquidity_restrictions": "Limit prices, halts, special status, board rules, no fill and auction/session constraints can prevent exit.",
+      "delisting_and_corporate_actions": "Listings, delistings, halts, resumptions, distributions, rights, splits, mergers and tax/settlement must be dated events.",
+      "replay_fields": ["board_rule_version", "lot_size", "odd_lot_exit", "price_limit_state", "halt_state", "next_sellable_at", "corporate_action_event"],
+      "current_decision": "q0_no_security_or_action_admitted"
+    },
+    {
+      "u0_class": "PUBLIC_REITS",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "SZSE investor education describes on-market infrastructure-fund purchases as sellable on T+1. REITs are closed-end listed funds and are not assumed to have ETF primary-market redemption.",
+      "unit_and_price_controls": "SZSE REIT guide states 100 units or integer multiples, odd-lot exit and 0.001 price increment. Venue materials describe a 30% listing-day and 10% subsequent-day price-control framework, subject to current-rule recheck.",
+      "margin_exercise_delivery": "No option exercise. Transfer, custody, fund-platform and pledge/repo routes are distinct and not assumed.",
+      "suitability_and_access": "First participation requires risk disclosure/suitability matching, but individual account route and permissions remain unverified.",
+      "liquidity_restrictions": "Liquidity-service provision does not guarantee fill; price-limit, temporary-halt, strategic lock-up, expansion and event notices matter.",
+      "delisting_and_corporate_actions": "Underlying-operating events, expansion, related-party events, lock-up release, ownership disclosure and fund termination/transfer rules are material.",
+      "replay_fields": ["account_route", "transfer_status", "next_sellable_at", "limit_halt_event", "lock_up_status", "underlying_operating_event"],
+      "current_decision": "q0_no_fund_or_action_admitted"
+    },
+    {
+      "u0_class": "LISTED_EQUITY_ETFS",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "SSE ETF Q&A states stock ETFs use T+1. Secondary trading and primary creation/redemption are distinct.",
+      "unit_and_price_controls": "ETF minimum secondary-market trade is 100 units and tick is 0.001, subject to product/venue rules.",
+      "margin_exercise_delivery": "No exercise. Creation/redemption basket, cash substitution and unit size need product-level confirmation.",
+      "suitability_and_access": "A securities or fund account route does not prove a particular ETF, creation/redemption service or broker order type is accessible.",
+      "liquidity_restrictions": "Market price, NAV, IOPV, constituent-market state, premium/discount, fund halt and creation/redemption halt may diverge.",
+      "delisting_and_corporate_actions": "Distribution, split, liquidation, termination, index-methodology and constituent-rebalance events must be retained.",
+      "replay_fields": ["lot_size", "tick_size", "intraday_roundtrip_allowed", "market_price", "nav", "iopv", "premium_discount", "creation_redemption_state", "underlying_halt_state"],
+      "current_decision": "q0_no_fund_or_action_admitted"
+    },
+    {
+      "u0_class": "BOND_AND_MONEY_MARKET_ETFS",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "SSE ETF Q&A lists bond and money-market ETFs among categories supporting T+0; the bond-ETF guide notes same-day mechanisms may depend on broker technical readiness.",
+      "unit_and_price_controls": "General ETF 100-unit and 0.001 tick facts apply only subject to the contemporaneous fund/venue rule.",
+      "margin_exercise_delivery": "No exercise. Pledge/repo, creation/redemption and collateral are separate services with their own permissions.",
+      "suitability_and_access": "A listed-fund account does not prove repo, primary-market, collateral or every bond/money ETF permission.",
+      "liquidity_restrictions": "Market price and NAV can diverge; trading, creation and redemption can be halted separately.",
+      "delisting_and_corporate_actions": "Interest, distribution, share adjustment, termination and underlying credit events require an event ledger.",
+      "replay_fields": ["product_specific_roundtrip_rule", "settlement_cycle", "nav", "iopv", "creation_redemption_state", "collateral_status", "underlying_credit_event"],
+      "current_decision": "q0_no_fund_or_action_admitted"
+    },
+    {
+      "u0_class": "GOLD_AND_OTHER_COMMODITY_ETFS",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "SSE ETF Q&A names gold ETFs among categories supporting T+0. Other commodity ETF mechanisms cannot be inferred from their label and need product-specific verification.",
+      "unit_and_price_controls": "Use ETF 100-unit and 0.001 tick only where the current product/venue rules confirm them.",
+      "margin_exercise_delivery": "No option exercise. Cash/physical basket, custody and redemption terms are product-specific.",
+      "suitability_and_access": "General fund-account availability does not prove product, redemption or cross-venue access.",
+      "liquidity_restrictions": "ETF market price, NAV, underlying-market hours/holidays, custody valuation and creation/redemption constraints can diverge.",
+      "delisting_and_corporate_actions": "Fund suspension, share adjustment, termination and underlying custody/valuation events are material.",
+      "replay_fields": ["product_specific_roundtrip_rule", "underlying_market_state", "market_price", "nav", "premium_discount", "custody_valuation_event", "no_fill"],
+      "current_decision": "q0_no_fund_or_action_admitted"
+    },
+    {
+      "u0_class": "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "Bond settlement and same-day resale depend on venue, trade method and offering type. SSE public convertible bonds are in same-day multilateral net settlement; this cannot be generalized to every bond.",
+      "unit_and_price_controls": "SSE public convertible-bond matching is in 1,000 yuan face-value increments. Listing-day limits are +57.3%/-43.3% and subsequently 20%, with temporary-halt rules. Other bonds and venues require their own current rules.",
+      "margin_exercise_delivery": "Convertible bonds have conversion, put/call, redemption, maturity and interest events; bonds may have coupon, principal, credit and settlement events.",
+      "suitability_and_access": "Specific-object convertible transfer has a professional-investor boundary. Individual eligibility for a particular bond/route is not inferred.",
+      "liquidity_restrictions": "No continuous quotes, temporary halt, stopped trading, conversion/redemption window and credit event can block exit.",
+      "delisting_and_corporate_actions": "Corporate conversion-price adjustments, stop-trading, conversion, redemption, put, coupon and maturity must be dated.",
+      "replay_fields": ["offering_type", "trade_method", "face_value_lot", "settlement_cycle", "price_limit_state", "conversion_event", "put_call_redemption_event", "credit_event"],
+      "current_decision": "q0_no_security_or_action_admitted"
+    },
+    {
+      "u0_class": "COMMODITY_FUTURES",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "Use venue/session/contract-specific intraday close handling, not stock T+1. Daily mark-to-market, including close-today P&L mechanics in some rules, is distinct from cash-securities settlement.",
+      "unit_and_price_controls": "Multiplier, tick, price limit, margin, position limit and transaction limit are product/contract/date-specific. Exchanges may adjust them for risk.",
+      "margin_exercise_delivery": "Daily margin, variation margin, forced liquidation and physical or cash delivery are mandatory accounting states.",
+      "suitability_and_access": "Futures-company account, suitability, contract permission, broker route and delivery capability must be externally confirmed.",
+      "liquidity_restrictions": "Limit-move no-fill, margin increase, restricted opening, forced reduction, session disruption and delivery proximity can prevent exit.",
+      "delisting_and_corporate_actions": "Contract listing, expiry, delivery, rule/parameter change, holiday schedule and warehouse/receipt rules must be retained.",
+      "replay_fields": ["actual_contract_id", "session_id", "open_close_flag", "close_today_flag", "multiplier", "tick", "margin_term", "limit_term", "position_limit", "variation_margin", "delivery_state", "no_fill"],
+      "current_decision": "q0_no_contract_or_action_admitted"
+    },
+    {
+      "u0_class": "FINANCIAL_FUTURES",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "CFFEX uses margin and daily mark-to-market; cash-equity T+1 assumptions do not apply. Exact day-session and close-today treatment must be captured by contract and broker.",
+      "unit_and_price_controls": "CFFEX price controls, margin, limits, transaction limits and forced-liquidation controls are product-specific and may be adjusted.",
+      "margin_exercise_delivery": "Daily margin and either cash settlement or product-specific delivery/expiry events are required.",
+      "suitability_and_access": "CFFEX suitability system and broker product permission must be independently evidenced.",
+      "liquidity_restrictions": "Limit moves, higher margin, restricted opening/withdrawal, forced closure/reduction and no-fill are possible.",
+      "delisting_and_corporate_actions": "Contract expiry, settlement, rule changes, trade-limit notices and calendar changes need a dated ledger.",
+      "replay_fields": ["actual_contract_id", "session_id", "settlement_price", "variation_margin", "margin_term", "price_control_term", "position_transaction_limit", "expiry_settlement_event", "broker_permission"],
+      "current_decision": "q0_no_contract_or_action_admitted"
+    },
+    {
+      "u0_class": "LISTED_OPTIONS",
+      "rule_status": "partial_authoritative_rule_facts_current_access_unknown",
+      "roundtrip_and_settlement": "Stock, financial-futures and commodity-futures options have separate trading, exercise and settlement rules. A stock-option exercise settlement is next session under SSE rules; do not equate exercise with an ordinary close.",
+      "unit_and_price_controls": "Contract units, strikes, expiry, price limits and adjustment terms are contract-specific and can change for corporate actions.",
+      "margin_exercise_delivery": "Buyers pay premium; sellers/covered writers face margin or underlying-lock requirements. Exercise needs sufficient contracts/underlying/funds and can lead to assignment or specified cash settlement.",
+      "suitability_and_access": "SSE suitability guidance requires assessment, knowledge/simulation and tiered permissions. No individual permission, selling-open authority or strategy-level access is assumed.",
+      "liquidity_restrictions": "Wide/no quotes, contract halt, expiry, adjustment, assignment, front-end control and insufficient exercise assets can block the intended path.",
+      "delisting_and_corporate_actions": "Expired-chain retention, contract adjustment, exercise/assignment and underlying corporate-action synchronization are mandatory.",
+      "replay_fields": ["option_contract_id", "multiplier", "strike", "expiry", "exercise_style", "adjustment_event", "premium", "writer_margin", "covered_lock", "exercise_instruction", "assignment_state", "settlement_state"],
+      "current_decision": "q0_no_option_or_action_admitted"
+    },
+    {
+      "u0_class": "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS",
+      "rule_status": "class_population_and_structure_unverified",
+      "roundtrip_and_settlement": "No class-wide domestic product population or unified mechanism has been verified. No T+0/T+1 conclusion is allowed.",
+      "unit_and_price_controls": "If a specific product is verified as an exchange-listed fund, its current product and venue rules—not ordinary ETF inference—govern units and prices.",
+      "margin_exercise_delivery": "Leverage, inverse payoff, reset, derivatives, financing, creation/redemption and collateral are product-specific.",
+      "suitability_and_access": "No personal access conclusion is available.",
+      "liquidity_restrictions": "Depth, maker support, reset, suspension, liquidation and path dependence must be separately evidenced.",
+      "delisting_and_corporate_actions": "Product termination, reset, adjustment, underlying derivative and valuation events require a dedicated ledger.",
+      "replay_fields": ["structure_type", "leverage_reset_rule", "underlying_derivative_exposure", "product_rule_version", "market_price", "nav", "liquidity_state", "termination_event"],
+      "current_decision": "q0_no_product_or_action_admitted"
+    }
+  ],
+  "mandatory_execution_field_groups": {
+    "identity_and_rule": ["u0_class", "venue", "board", "security_or_actual_contract_id", "rule_version", "effective_from", "effective_to", "lot_size", "tick_size", "price_limit_rule", "halt_rule"],
+    "time_and_order": ["trading_day", "session_id", "order_timestamp", "earliest_submit_at", "earliest_cancel_at", "next_sellable_or_closeable_at", "earliest_settlement_at", "order_type", "price_protection"],
+    "trading_and_liquidity": ["bid_ask_or_conservative_proxy", "volume", "open_interest_if_derivative", "depth", "participation_cap", "partial_fill", "no_fill", "halt_state", "limit_state", "lock_up_state"],
+    "cost_and_settlement": ["broker_fee", "venue_fee", "tax_levy", "cash_security_settlement", "margin", "variation_margin", "collateral", "exercise_delivery_assignment", "failed_settlement_state"],
+    "permission_and_suitability": ["rule_source", "product_legal_document", "broker_route_confirmation", "account_permission_confirmation", "suitability_status", "confirmation_timestamp", "evidence_hash"],
+    "events": ["listing", "termination_or_delisting", "expiry", "delivery", "exercise", "conversion", "redemption_or_put", "halt_resume", "distribution", "share_adjustment", "contract_parameter_change", "margin_change"]
+  },
+  "failure_state_rule": "No quote, price-limit no-fill, halt, missing permission, delivery proximity, insufficient margin, insufficient exercise assets, lock-up, failed settlement or unknown rule version must create an explicit failure state. The formal replay must not substitute a favorable price, delay without rule support or treat the event as a zero-cost close.",
+  "current_conclusion": {
+    "rule_research": "partially_complete_for_all_10_U0_classes",
+    "personal_execution": "unverified_for_all_classes",
+    "data_and_replay": "not_ready",
+    "strategy_status": "q0_no_product_contract_allocation_holding_action_or_return_conclusion"
+  }
+}

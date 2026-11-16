@@ -1,0 +1,13 @@
+{
+  "as_of_rule": "one dated close packet; missing field equals incomplete/fail; only project_direct and platform_exposure tiers may support project-main-theme gates",
+  "required_row_fields": ["ticker", "board", "mapping_tier", "mapping_source_id", "close", "prior_close", "change_pct", "amount_cny", "limit_status", "board_count", "trading_status"],
+  "gates": [
+    {"gate":"continuous_catalyst","field_definition":"timestamped primary project or industry event","pass_test":"by D+1 or D+2, one new official platform, producer, regulator or company source contains post-launch feedback or a second traceable event","cadence":"D+1 and D+2 close","decision_if_failed":"WATCH"},
+    {"gate":"core_anchor","field_definition":"company-level project/platform linkage","pass_test":"Mango TV programme-page hosting exposure remains verified; replacement needs primary company project source","cadence":"D+1 and D+2 close","decision_if_failed":"remove replacement narrative"},
+    {"gate":"vertical_ladder","field_definition":"project_direct main-board board_count and mapping status","pass_test":"one project_direct main-board name board_count >= 2 and one new project_direct main-board name board_count = 1","cadence":"D+1 and D+2 close","decision_if_failed":"REJECTED"},
+    {"gate":"mainboard_capacity","field_definition":"project_direct main-board amount rank, close acceptance, limit state","pass_test":"project_direct main-board candidate ranks top two by amount for two consecutive closes; close >= prior_close; not all-day one-word","cadence":"D+1 and D+2 close","decision_if_failed":"broad-content diffusion observation only"},
+    {"gate":"market_permission","field_definition":"qualified-cohort breadth and market-state flags","pass_test":"three qualified rows; at least two-thirds positive; no risk-release or execution-block flag","cadence":"D+1 and D+2 close","decision_if_failed":"no paper-plan upgrade"}
+  ],
+  "upgrade_rule": "all five gates pass at the same close",
+  "output_state": "CONDITIONAL_PAPER_RESEARCH only; no order execution"
+}

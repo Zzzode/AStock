@@ -1,0 +1,1755 @@
+{
+  "schema_version": "research-ledger.v1",
+  "updated_at": "2026-08-15T08:27:35Z",
+  "entries": [
+    {
+      "entry_id": "research-20260815-7438e75568ff",
+      "title": "C34 五 ETF 双期限逆波动纸面候选",
+      "thesis": "五只精确 ETF 的月度双期限评分与逆波动规则已冻结并可复算，但其回溯市场价代理在严格 5% 筛查中失败，且缺总回报、当前条款、执行和前瞻纸面证据；因此维持研究/观察状态与 NO_ACTION。",
+      "targets": [
+        "510300",
+        "510880",
+        "511010",
+        "518880",
+        "511990"
+      ],
+      "target_type": "strategy",
+      "status": "monitoring",
+      "catalysts": [
+        "C34-IMPLEMENTATION-GATE: a rights-cleared point-in-time total-return/event ledger and dated implementation fields are independently accepted.",
+        "C34-FORWARD-GATE: six uninterrupted monthly forward paper records complete without rule drift and pass independent review."
+      ],
+      "risks": [
+        "The full-sample price proxy has 43 of 98 rolling five-year endpoints below 5 percent and cannot support a stable-5-percent claim.",
+        "The 2020-2025 chronological robustness slice annualizes to 4.69 percent and is not a clean unseen out-of-sample test.",
+        "Current terms, quote/depth, IOPV where applicable, fees, taxes, settlement, fills and total-return/event history are not established."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "C34 implementation evidence acceptance",
+          "condition": "Total-return/event and current implementation evidence is complete, date-aligned and independently reproducible for every core code.",
+          "direction": "watch",
+          "metric": "c34_implementation_gate_completion",
+          "threshold": 1.0,
+          "source": "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.json"
+        },
+        {
+          "name": "C34 forward paper completion",
+          "condition": "Six uninterrupted monthly C34 paper records contain source, status, quote/IOPV, fee/tax, settlement, result or no_action and reconciliation fields under unchanged rule version.",
+          "direction": "watch",
+          "metric": "c34_forward_paper_months",
+          "threshold": 6.0,
+          "source": "data/c33_forward_paper_ledger_template_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Do not retune C34 horizons, volatility window, threshold, timing or products after the observed failure.",
+        "Do not represent market-price proxy arithmetic as total return, a fill, stable result, future result or external action.",
+        "Do not replace a core code with 510500, 511180, 511380 or another product without a separate frozen hypothesis and full evidence path."
+      ],
+      "tags": [
+        "c34",
+        "domestic-etf",
+        "five-etf",
+        "inverse-volatility",
+        "paper-only",
+        "strict-screen-failed",
+        "research-only"
+      ],
+      "data_quality": {
+        "source": "C31/C36/C34/C35",
+        "timestamp": "2026-08-15",
+        "quality_tier": "exploratory_retrospective_market_price_proxy_with_dated_product_facts_and_missing_execution_evidence",
+        "fallback_path": "maintain NO_ACTION; observe C34 implementation and forward-paper gates",
+        "warnings": [
+          "Strict limited proxy screen failed.",
+          "No total-return or execution conclusion.",
+          "No external orders."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "S38",
+          "path": "analysis/c31_etf_product_diligence_refresh_20260815.json",
+          "quality_tier": "dated_primary_product_fact_synthesis",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S39",
+          "path": "analysis/c36_c31_source_crosscheck_20260815.json",
+          "quality_tier": "independent_dated_product_source_audit",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S40",
+          "path": "analysis/c34_dual_horizon_inverse_vol_etf_protocol_20260815.json",
+          "quality_tier": "pre_formal_recompute_protocol",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S41",
+          "path": "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.json",
+          "quality_tier": "exploratory_retrospective_market_price_proxy",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S42",
+          "path": "analysis/c35_c34_operational_action_card_20260815.json",
+          "quality_tier": "derived_fail_closed_paper_operation_design",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "artifact_id": "D5PT-C33-INTEGRATED-C34-v1",
+        "rule_version": "D5PT-C34-PROTOCOL-v1",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0,
+        "current_action": "NO_ACTION"
+      },
+      "observations": [
+        {
+          "observation_type": "integrated_candidate_and_strict_screen_review",
+          "note": "C33 integrated the exact five-code C34 candidate, C31 dated product cards, C36 source crosscheck and C35 operation card. C34 is reproducible but fails the limited strict 5% proxy screen (43/98 rolling five-year endpoints below 5%; 2020-2025 slice annualized 4.69%). The route remains monitoring/research-only with NO_ACTION.",
+          "observed_at": "2026-08-15T08:55:00+00:00",
+          "evidence": {
+            "source_refs": [
+              "analysis/c33_integrated_candidate_strategy_20260815.json",
+              "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.json",
+              "analysis/c35_c34_operational_action_card_20260815.json"
+            ],
+            "strict_proxy_screen": "REJECTED_BY_LIMITED_PRICE_PROXY_SCREEN",
+            "external_orders": false,
+            "portfolio_q": 0,
+            "current_action": "NO_ACTION"
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "codex",
+      "created_at": "2026-08-15T09:00:21.781815+00:00",
+      "updated_at": "2026-08-15T08:55:00+00:00"
+    },
+    {
+      "entry_id": "research-20260815-ac280640439a",
+      "title": "C23 境内公募开放式基金数据与纸面测试可行性",
+      "thesis": "开放式公募基金未被排除在研究池外，但现有资料没有有权使用的逐时点总体、份额类别总回报和公司行动、历史费率/申购赎回状态及可复现数据包，故路线不可测且无动作。",
+      "targets": [
+        "domestic-open-ended-public-funds"
+      ],
+      "target_type": "strategy",
+      "status": "monitoring",
+      "catalysts": [
+        "C23-GATE-1 obtains written data rights, a field dictionary, a representative historic sample and primary-disclosure reconciliation.",
+        "A pre-frozen limited or full universe can be independently reconstructed with share-class, fee, event and availability-time controls."
+      ],
+      "risks": [
+        "Displayed NAV, fee or sales status is not investor total return or execution evidence.",
+        "Current surviving funds and current fee pages cannot define the historic universe or costs.",
+        "Open-ended subscription/redemption timing, confirmation, payment, limits and suspensions are fund- and channel-specific."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "C23-GATE-1 data rights and sample acceptance",
+          "condition": "Written rights, point-in-time universe sample, share-class events, fee/status history and independent primary-source reconciliation all pass.",
+          "direction": "watch",
+          "metric": "c23_gate_1_completion",
+          "threshold": 1.0,
+          "source": "analysis/c23_open_ended_public_fund_data_feasibility_20260815.json"
+        },
+        {
+          "name": "pre-frozen fund protocol eligibility",
+          "condition": "A product-neutral protocol can be frozen before any return calculation after all C23 evidence gates pass.",
+          "direction": "watch",
+          "metric": "pretest_gate_completion",
+          "threshold": 1.0,
+          "source": "analysis/c23_open_ended_public_fund_data_feasibility_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Do not select a fund, calculate a result or infer access before C23-GATE-1 and a frozen protocol exist.",
+        "Do not treat unit NAV, accumulated NAV, distributions, platform fee displays or open status as interchangeable with investor total return or execution."
+      ],
+      "tags": [
+        "open-ended-fund",
+        "source-feasibility",
+        "not-testable",
+        "paper-only",
+        "five-percent-target"
+      ],
+      "data_quality": {
+        "source": "C23 open-ended public-fund source-route research",
+        "timestamp": "2026-08-15",
+        "quality_tier": "conditional_product_level_data_path_research",
+        "fallback_path": "monitor C23-GATE-1; no action",
+        "warnings": [
+          "No fund selected.",
+          "No return calculation.",
+          "No eligibility inference."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "C23",
+          "path": "analysis/c23_open_ended_public_fund_data_feasibility_20260815.json",
+          "quality_tier": "conditional_product_level_data_path_research",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "artifact_id": "D5PT-C23-FEASIBILITY-v1",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0
+      },
+      "observations": [
+        {
+          "observation_type": "source_route_preflight",
+          "note": "C23 confirmed conditional primary-disclosure and licensed-data paths for open-ended public funds, but no rights-cleared point-in-time universe, share-class total-return/event ledger, historic fee/status package or independent reconstruction exists. The route remains not testable and no action is admitted.",
+          "observed_at": "2026-08-15T07:55:00+00:00",
+          "evidence": {
+            "source_ref": {
+              "source_id": "C23",
+              "path": "analysis/c23_open_ended_public_fund_data_feasibility_20260815.json",
+              "quality_tier": "conditional_product_level_data_path_research",
+              "timestamp": "2026-08-15"
+            },
+            "current_route_status": "not_testable",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "codex",
+      "created_at": "2026-08-15T07:47:30.149624+00:00",
+      "updated_at": "2026-08-15T07:55:00+00:00"
+    },
+    {
+      "entry_id": "research-20260815-3befa1079cf1",
+      "title": "C24 境内直接股票数据与纸面研究可行性",
+      "thesis": "直接境内股票未被排除：沪深 A 股具备条件性数据路径，北交所为单列覆盖闸门；但没有已获权的点时点数据、公司行动和执行账本，也没有任何股票完成完整机构尽调，故路线不可测且无动作。",
+      "targets": [
+        "direct-mainland-equities"
+      ],
+      "target_type": "strategy",
+      "status": "monitoring",
+      "catalysts": [
+        "Written historical-data rights and a point-in-time universe/event package cover the predeclared stock-market scope.",
+        "Every future included stock completes full equity-research diligence and independent review before a paper protocol is frozen."
+      ],
+      "risks": [
+        "Current listings, surviving names and provider-adjusted prices create survivorship, availability and adjustment risks.",
+        "BSE remains a hard evidence gap for any route claiming a full domestic-stock scope that includes BSE.",
+        "Stock-level business, valuation, governance and execution evidence cannot be substituted by an index or vendor data page."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "declared market-scope data acceptance",
+          "condition": "Licensed point-in-time master, prices, status, corporate actions, availability timestamps and cost-rule history pass for every declared market/board.",
+          "direction": "watch",
+          "metric": "declared_scope_data_completeness",
+          "threshold": 1.0,
+          "source": "analysis/c24_direct_ashare_equity_data_feasibility_20260815.json"
+        },
+        {
+          "name": "per-stock institutional diligence eligibility",
+          "condition": "Every future included stock has a complete equity-research evidence, valuation, risk and tradability package independently reviewed before rule freeze.",
+          "direction": "watch",
+          "metric": "stock_diligence_completion",
+          "threshold": 1.0,
+          "source": "analysis/c24_direct_ashare_equity_data_feasibility_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Do not select a stock, freeze a universe or calculate a result before the declared-scope data and per-stock diligence gates pass.",
+        "Do not silently omit BSE from a claimed broad domestic-stock universe or infer historical availability from current listings, adjusted prices or vendor labels."
+      ],
+      "tags": [
+        "direct-equity",
+        "ashare",
+        "bse-coverage-gate",
+        "source-feasibility",
+        "not-testable",
+        "paper-only",
+        "five-percent-target"
+      ],
+      "data_quality": {
+        "source": "C24 direct mainland-equity source-route research",
+        "timestamp": "2026-08-15",
+        "quality_tier": "conditional_lawful_multi_source_data_route_research",
+        "fallback_path": "monitor rights and diligence gates; no action",
+        "warnings": [
+          "No stock selected.",
+          "No universe frozen.",
+          "No return calculation."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "C24",
+          "path": "analysis/c24_direct_ashare_equity_data_feasibility_20260815.json",
+          "quality_tier": "conditional_lawful_multi_source_data_route_research",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "artifact_id": "D5PT-C24-DIRECT-MAINLAND-EQUITY-FEASIBILITY-v1",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0
+      },
+      "observations": [
+        {
+          "observation_type": "source_route_preflight",
+          "note": "C24 confirmed conditional historical-data and primary-document routes for Shanghai/Shenzhen A shares, with BSE treated as a separate explicit domestic-stock coverage gate. No stock or universe is selected, no full data stack or per-stock institutional diligence package exists, and the route remains not testable and no action is admitted.",
+          "observed_at": "2026-08-15T07:55:00+00:00",
+          "evidence": {
+            "source_ref": {
+              "source_id": "C24",
+              "path": "analysis/c24_direct_ashare_equity_data_feasibility_20260815.json",
+              "quality_tier": "conditional_lawful_multi_source_data_route_research",
+              "timestamp": "2026-08-15"
+            },
+            "current_route_status": "not_testable",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "codex",
+      "created_at": "2026-08-15T07:47:30.151537+00:00",
+      "updated_at": "2026-08-15T07:55:00+00:00"
+    },
+    {
+      "entry_id": "research-20260815-5b19f65ea2d0",
+      "title": "C20 境内公募 REIT 路线严格研究测试准备度",
+      "thesis": "境内公募 REIT 是开放研究池中的独立资产类别，但现有一手来源只能支持有限产品层输入核查；没有逐时点全市场总体、可审计总回报/NAV处理、日期明确成本、执行或资格记录，故路线未测试、未准入且无动作。",
+      "targets": [
+        "domestic-public-reits"
+      ],
+      "target_type": "strategy",
+      "status": "monitoring",
+      "catalysts": [
+        "A lawful point-in-time public-REIT universe and complete product-event history are retained.",
+        "Auditable price/NAV/distribution treatment, dated costs, execution evidence and non-sensitive eligibility evidence all pass independent checks."
+      ],
+      "risks": [
+        "Price, NAV and cash distribution cannot be substituted for investor total return.",
+        "A single historical field probe cannot represent a whole market universe.",
+        "General venue rules do not establish a specific investor’s access or fill outcome."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "public REIT dataset complete",
+          "condition": "All C20 pre-test field groups are lawfully retained with point-in-time coverage and hashes.",
+          "direction": "watch",
+          "metric": "required_field_completeness",
+          "threshold": 1.0,
+          "source": "analysis/c20_domestic_public_reit_strategy_feasibility_20260815.json"
+        },
+        {
+          "name": "protocol eligibility",
+          "condition": "A product-neutral protocol can be frozen before any result calculation after source and implementation gates pass.",
+          "direction": "watch",
+          "metric": "pretest_gate_completion",
+          "threshold": 1.0,
+          "source": "analysis/c20_domestic_public_reit_strategy_feasibility_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Do not select a product or run a return calculation before every required evidence field and a frozen protocol exist.",
+        "Do not infer access, liquidity or total return from a listing, closing price, volume, NAV, distribution or fund-level fee."
+      ],
+      "tags": [
+        "public-reit",
+        "source-feasibility",
+        "not-testable",
+        "paper-only",
+        "five-percent-target"
+      ],
+      "data_quality": {
+        "source": "C20 and inherited primary-source probe",
+        "timestamp": "2026-08-15",
+        "quality_tier": "limited_product_level_primary_source_preflight",
+        "fallback_path": "monitor source acquisition; no action",
+        "warnings": [
+          "No product selected.",
+          "No return calculation.",
+          "No eligibility inference."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "C20",
+          "path": "analysis/c20_domestic_public_reit_strategy_feasibility_20260815.json",
+          "quality_tier": "bounded_product_level_readiness_assessment",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "C14-probe",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/manifest.json",
+          "quality_tier": "retained_primary_source_field_probe",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "artifact_id": "D5PT-C20-FEASIBILITY-v1",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0
+      },
+      "observations": [
+        {
+          "observation_type": "source_readiness_gate",
+          "note": "C20 product-level preflight is partial only: price and distribution field probes exist, but total-return/NAV treatment, costs, execution, eligibility and point-in-time universe records are incomplete. The route remains untested, unadmitted and no-action.",
+          "observed_at": "2026-08-15T06:34:32.370564+00:00",
+          "evidence": {
+            "source_ref": {
+              "source_id": "C20",
+              "path": "analysis/c20_domestic_public_reit_strategy_feasibility_20260815.json"
+            },
+            "return_test_run": false,
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "source_governance_finding_and_remediation",
+          "note": "R10 identified URL-only current-rule evidence in C20 v1. C20 v2 now retains the four exchange pages and two referenced rule bodies in a source batch; independent verification of the amendment remains required. The route stays untested, unadmitted and no-action.",
+          "observed_at": "2026-08-15T06:56:48.060764+00:00",
+          "evidence": {
+            "r10_source_ref": {
+              "source_id": "R10",
+              "path": "analysis/r10_independent_c20_public_reit_feasibility_audit_20260815.json"
+            },
+            "remediation_source_ref": {
+              "source_id": "C20-current-rule-capture",
+              "path": "sources/c20-current-sse-rule-text-20260815/manifest.json"
+            },
+            "c20_artifact_id": "D5PT-C20-FEASIBILITY-v2",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "source_control_remediation_verified",
+          "note": "R12 verified that C20 v2 binds the retained current SSE rule pages and rule bodies after R10-SC-01. This closes the rule-text retention gap only; C20 remains untested, unadmitted and no-action because total-return, universe, cost, execution and eligibility evidence are still incomplete.",
+          "observed_at": "2026-08-15T07:07:17.908190+00:00",
+          "evidence": {
+            "source_refs": [
+              {
+                "source_id": "R10",
+                "path": "analysis/r10_independent_c20_public_reit_feasibility_audit_20260815.json"
+              },
+              {
+                "source_id": "R12",
+                "path": "analysis/r12_c20_rule_text_remediation_verification_20260815.json"
+              }
+            ],
+            "c20_artifact_id": "D5PT-C20-FEASIBILITY-v2",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "audit_provenance_correction_and_rule_text_verification",
+          "note": "R13 documented that the retained legacy R10 failure was caused solely by applying its v1 URL-only assertion to C20 v2 after the rule texts had been retained. R12 independently passes the current rule-text retention remediation. This corrects provenance only; C20 remains untested, unadmitted and no-action because total-return, universe, cost, execution and eligibility evidence is incomplete.",
+          "observed_at": "2026-08-15T07:25:01+00:00",
+          "evidence": {
+            "source_refs": [
+              {
+                "source_id": "R13",
+                "path": "analysis/r13_r10_v1_scope_mismatch_correction_20260815.json",
+                "quality_tier": "audit_provenance_scope_correction",
+                "timestamp": "2026-08-15"
+              },
+              {
+                "source_id": "R12",
+                "path": "analysis/r12_c20_rule_text_remediation_verification_20260815.json",
+                "quality_tier": "post_audit_source_control_verification",
+                "timestamp": "2026-08-15"
+              }
+            ],
+            "current_route_status": "not_testable",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "codex",
+      "created_at": "2026-08-15T06:34:32.369486+00:00",
+      "updated_at": "2026-08-15T07:25:01+00:00"
+    },
+    {
+      "entry_id": "research-20260815-be5b5d358eb0",
+      "title": "C18 上交所公开公司债短久期信用梯可行性",
+      "thesis": "直接公开公司债的票息、到期偿还和信用利差是一条不同的研究假设，但现有留存资料没有逐时点债券总体、全价、现金流、信用事件、流动性和执行字段，故路线不可测且没有动作。",
+      "targets": [
+        "SSE-public-company-bonds"
+      ],
+      "target_type": "strategy",
+      "status": "monitoring",
+      "catalysts": [
+        "A lawful, retainable point-in-time data package covers every blocking field.",
+        "An independent check verifies source integrity, rule definitions and no-fill treatment before a protocol is frozen."
+      ],
+      "risks": [
+        "Investor suitability is bond-, date- and account-specific.",
+        "Historic full-price, cash-flow, liquidity and credit-event inputs are not retained.",
+        "Broker fees, units, settlement and no-fill treatment are not evidenced."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "historical source package complete",
+          "condition": "Every C18 blocking field has a lawful retained point-in-time source and hash.",
+          "direction": "watch",
+          "metric": "blocking_field_completeness",
+          "threshold": 1.0,
+          "source": "analysis/c18_direct_sse_company_bond_ladder_feasibility_20260815.json"
+        },
+        {
+          "name": "eligibility evidence verified",
+          "condition": "Per-bond, per-date ordinary-investor eligibility is independently verifiable without inferring it from a name or rating.",
+          "direction": "watch",
+          "metric": "eligibility_field_completeness",
+          "threshold": 1.0,
+          "source": "analysis/c18_direct_sse_company_bond_ladder_feasibility_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Do not select a bond or calculate a result before all blocking evidence and a frozen protocol exist.",
+        "Do not infer access or total return from a listing, name, rating, coupon or portal quote."
+      ],
+      "tags": [
+        "company-bond",
+        "source-feasibility",
+        "not-testable",
+        "paper-only",
+        "five-percent-target"
+      ],
+      "data_quality": {
+        "source": "C18/R06/R08",
+        "timestamp": "2026-08-15",
+        "quality_tier": "dated_primary_rule_sources_with_missing_historical_test_fields",
+        "fallback_path": "monitor source acquisition; no action",
+        "warnings": [
+          "No bond selected.",
+          "No historical return test.",
+          "No access inference."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "C18",
+          "path": "analysis/c18_direct_sse_company_bond_ladder_feasibility_20260815.json",
+          "quality_tier": "bounded_source_feasibility_assessment",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "R06",
+          "path": "analysis/r06_independent_c18_source_preflight_audit_20260815.json",
+          "quality_tier": "independent_source_governance_audit",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "R08",
+          "path": "analysis/r08_independent_c18_rule_text_augmentation_audit_20260815.json",
+          "quality_tier": "independent_source_governance_audit",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "artifact_id": "D5PT-C18-FEASIBILITY-v2",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0
+      },
+      "observations": [
+        {
+          "observation_type": "independent_research_gate",
+          "note": "Primary-source preflight plus two independent source audits retain NOT_TESTABLE_FOR_RETURN and no-action boundaries; source acquisition remains the only next gate.",
+          "observed_at": "2026-08-15T06:17:49.059403+00:00",
+          "evidence": {
+            "source_refs": [
+              {
+                "source_id": "C18",
+                "path": "analysis/c18_direct_sse_company_bond_ladder_feasibility_20260815.json",
+                "quality_tier": "bounded_source_feasibility_assessment",
+                "timestamp": "2026-08-15"
+              },
+              {
+                "source_id": "R06",
+                "path": "analysis/r06_independent_c18_source_preflight_audit_20260815.json",
+                "quality_tier": "independent_source_governance_audit",
+                "timestamp": "2026-08-15"
+              },
+              {
+                "source_id": "R08",
+                "path": "analysis/r08_independent_c18_rule_text_augmentation_audit_20260815.json",
+                "quality_tier": "independent_source_governance_audit",
+                "timestamp": "2026-08-15"
+              }
+            ],
+            "portfolio_q": 0,
+            "external_orders": false
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "source_acquisition_feasibility",
+          "note": "C19 identified conditional lawful data-acquisition paths through an exchange-authorized historical-data route, a valuation-data route and possible licensed reference/event data. No license, data dictionary, sample or coverage proof is retained; C18 remains not_testable and no action is admitted.",
+          "observed_at": "2026-08-15T06:22:02.584723+00:00",
+          "evidence": {
+            "source_ref": {
+              "source_id": "C19",
+              "path": "analysis/c19_bond_historical_data_source_feasibility_20260815.json",
+              "quality_tier": "conditional_source_acquisition_feasibility",
+              "timestamp": "2026-08-15"
+            },
+            "current_route_status": "not_testable",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "independent_source_feasibility_audit",
+          "note": "R11 independently verified C19’s six retained public source files, manifest binding and conditional-data-path boundary. It did not add a data license, coverage proof or historical test input; C18 remains not_testable and no-action.",
+          "observed_at": "2026-08-15T07:07:17.907057+00:00",
+          "evidence": {
+            "source_ref": {
+              "source_id": "R11",
+              "path": "analysis/r11_independent_c19_data_source_feasibility_audit_20260815.json"
+            },
+            "current_route_status": "not_testable",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "multi_source_historical_data_route_research",
+          "note": "C22 extended the company-bond data-route research across valuation, market-data, event and point-in-time universe layers. It found only conditional lawful multi-source paths pending written rights, historical samples, field dictionaries, coverage tests and a reconciled realized-event ledger. No bond is selected, no backtest is admitted and no action is permitted.",
+          "observed_at": "2026-08-15T07:25:00+00:00",
+          "evidence": {
+            "source_ref": {
+              "source_id": "C22",
+              "path": "analysis/c22_company_bond_historical_data_route_research_20260815.json",
+              "quality_tier": "conditional_multi_source_data_route_research",
+              "timestamp": "2026-08-15"
+            },
+            "current_route_status": "not_testable",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "codex",
+      "created_at": "2026-08-15T06:17:49.058797+00:00",
+      "updated_at": "2026-08-15T07:25:00+00:00"
+    },
+    {
+      "entry_id": "research-20260815-e1d56c9080c7",
+      "title": "C17 五类上期所实际合约周度趋势诊断",
+      "thesis": "作为与 C16 不同的五类经济暴露假设，C17 在实际合约结算价毛额标记口径下同样未通过既定严格研究门槛，不能作为可用策略。",
+      "targets": [
+        "AU",
+        "CU",
+        "RB",
+        "RU",
+        "SP"
+      ],
+      "target_type": "strategy",
+      "status": "closed",
+      "catalysts": [
+        "Only a separately frozen distinct hypothesis may be researched; C17 itself must not be retuned after the result."
+      ],
+      "risks": [
+        "Gross settlement-mark annualized result is below the stated hurdle.",
+        "Most source-covered calendar years are below the stated hurdle.",
+        "Costs, margin, access, fills, tax and settlement are not included."
+      ],
+      "monitoring_triggers": [],
+      "invalidation_conditions": [
+        "Do not alter the frozen five-family C17 rule after observing its result.",
+        "Do not represent gross marks as investor net results or an external action plan."
+      ],
+      "tags": [
+        "actual-contract",
+        "shfe",
+        "diversified-hypothesis",
+        "paper-only",
+        "five-percent-target",
+        "strict-screen-failed"
+      ],
+      "data_quality": {
+        "source": "C15/P03/C17/R05",
+        "timestamp": "2026-08-15",
+        "quality_tier": "retained_actual_contract_settlement_marks_with_independent_reconstruction",
+        "fallback_path": "closed research route; no action",
+        "warnings": [
+          "Gross mark diagnostic only.",
+          "No execution eligibility or net investor result."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "C17",
+          "path": "analysis/c17_diversified_actual_contract_settlement_diagnostic_20260815.json",
+          "quality_tier": "derived_gross_actual_contract_diagnostic",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "R05",
+          "path": "analysis/r05_independent_c17_audit_20260815.json",
+          "quality_tier": "independent_derivation_audit",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "rulebook_id": "D5PT-C17-v2",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0
+      },
+      "observations": [
+        {
+          "observation_type": "independent_research_gate",
+          "note": "Frozen diversified actual-contract diagnostic and independent reconstruction both preserve the strict-screen failure; no action is admitted.",
+          "observed_at": "2026-08-15T06:17:49.058293+00:00",
+          "evidence": {
+            "source_refs": [
+              {
+                "source_id": "C17",
+                "path": "analysis/c17_diversified_actual_contract_settlement_diagnostic_20260815.json",
+                "quality_tier": "derived_gross_actual_contract_diagnostic",
+                "timestamp": "2026-08-15"
+              },
+              {
+                "source_id": "R05",
+                "path": "analysis/r05_independent_c17_audit_20260815.json",
+                "quality_tier": "independent_derivation_audit",
+                "timestamp": "2026-08-15"
+              }
+            ],
+            "portfolio_q": 0,
+            "external_orders": false
+          },
+          "status_after": "closed"
+        }
+      ],
+      "created_by": "codex",
+      "created_at": "2026-08-15T06:17:49.057750+00:00",
+      "updated_at": "2026-08-15T06:17:49.058293+00:00"
+    },
+    {
+      "entry_id": "research-20260815-4bc3961ca06c",
+      "title": "C16 三类上期所实际合约周度趋势诊断",
+      "thesis": "以留存的实际合约结算价运行的冻结三类品种诊断，在毛额标记口径下未通过既定的严格年度和滚动五年研究门槛，因此不能作为可用策略。",
+      "targets": [
+        "AU",
+        "CU",
+        "RU"
+      ],
+      "target_type": "strategy",
+      "status": "closed",
+      "catalysts": [
+        "Only a separately frozen new hypothesis with complete implementation evidence could start a new research route."
+      ],
+      "risks": [
+        "Gross settlement-mark annualized result is below the stated hurdle.",
+        "Several source-covered calendar years are below the stated hurdle.",
+        "Costs, margin, access, fills, tax and settlement are not included."
+      ],
+      "monitoring_triggers": [],
+      "invalidation_conditions": [
+        "Do not reopen C16 by changing its frozen universe, parameters, signal or mark after the result.",
+        "Do not describe the diagnostic as an investor return or external action plan."
+      ],
+      "tags": [
+        "actual-contract",
+        "shfe",
+        "paper-only",
+        "five-percent-target",
+        "strict-screen-failed"
+      ],
+      "data_quality": {
+        "source": "C15/P02/C16/R04",
+        "timestamp": "2026-08-15",
+        "quality_tier": "retained_actual_contract_settlement_marks_with_independent_reconstruction",
+        "fallback_path": "closed research route; no action",
+        "warnings": [
+          "Gross mark diagnostic only.",
+          "No execution eligibility or net investor result."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "C16",
+          "path": "analysis/c16_actual_contract_settlement_diagnostic_20260815.json",
+          "quality_tier": "derived_gross_actual_contract_diagnostic",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "R04",
+          "path": "analysis/r04_independent_c16_audit_20260815.json",
+          "quality_tier": "independent_derivation_audit",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "rulebook_id": "D5PT-C16-v1",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0
+      },
+      "observations": [
+        {
+          "observation_type": "independent_research_gate",
+          "note": "Frozen gross actual-contract diagnostic and independent reconstruction both preserve the strict-screen failure; no action is admitted.",
+          "observed_at": "2026-08-15T06:17:49.056991+00:00",
+          "evidence": {
+            "source_refs": [
+              {
+                "source_id": "C16",
+                "path": "analysis/c16_actual_contract_settlement_diagnostic_20260815.json",
+                "quality_tier": "derived_gross_actual_contract_diagnostic",
+                "timestamp": "2026-08-15"
+              },
+              {
+                "source_id": "R04",
+                "path": "analysis/r04_independent_c16_audit_20260815.json",
+                "quality_tier": "independent_derivation_audit",
+                "timestamp": "2026-08-15"
+              }
+            ],
+            "portfolio_q": 0,
+            "external_orders": false
+          },
+          "status_after": "closed"
+        }
+      ],
+      "created_by": "codex",
+      "created_at": "2026-08-15T06:17:49.056298+00:00",
+      "updated_at": "2026-08-15T06:17:49.056991+00:00"
+    },
+    {
+      "entry_id": "research-20260815-c46be64b5fc9",
+      "title": "R01 月度动态 ETF 纸面基准",
+      "thesis": "A fixed five-ETF monthly rule can be audited as paper research, but current official close-price proxy evidence does not support a stable annual or rolling-five-year five-percent claim.",
+      "targets": [
+        "510300",
+        "510880",
+        "511010",
+        "518880",
+        "511990"
+      ],
+      "target_type": "strategy",
+      "status": "active",
+      "catalysts": [
+        "six months of complete forward paper records",
+        "current product and quote/IOPV data capture"
+      ],
+      "risks": [
+        "annual and rolling proxy results below five percent",
+        "price proxy lacks total-return and execution data",
+        "account, cost, settlement, and fill facts are unverified"
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "monthly paper evidence complete",
+          "condition": "A monthly ledger row has all R01 required fields.",
+          "direction": "watch",
+          "metric": "required_field_completeness",
+          "threshold": 1.0,
+          "source": "data/r01_paper_observation_ledger_template.json"
+        },
+        {
+          "name": "rule suspension",
+          "condition": "A material product, data, account, or settlement failure occurs.",
+          "direction": "risk",
+          "metric": null,
+          "threshold": null,
+          "source": "analysis/r01_monthly_dynamic_etf_paper_rulebook_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "A source or implementation change breaks the fixed rule.",
+        "The paper ledger cannot record actual quote, cost, settlement, or no-action evidence.",
+        "The strategy is represented as a stable return or external execution plan."
+      ],
+      "tags": [
+        "domestic-etf",
+        "paper-only",
+        "five-percent-target",
+        "not-stable-return-admission"
+      ],
+      "data_quality": {
+        "source": "P01/M01/R02",
+        "timestamp": "2026-08-15",
+        "quality_tier": "research_only_proxy_and_product_facts",
+        "fallback_path": "no action and retain research-only status",
+        "warnings": [
+          "No promised return.",
+          "No execution eligibility."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "P01",
+          "path": "analysis/p01_core_etf_product_diligence_20260815.json",
+          "quality_tier": "primary_official_venue_and_issuer_disclosure",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "M01",
+          "path": "analysis/m01_dynamic_market_price_proxy_20260815.json",
+          "quality_tier": "official_retrospective_market_price_proxy",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "R02",
+          "path": "analysis/r02_independent_m01_r01_audit_20260815.json",
+          "quality_tier": "independent_reconstruction_of_proxy",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "rulebook_id": "D5PT-R01-v1",
+        "paper_only": true,
+        "external_orders": false,
+        "evidence_packet": {
+          "packet_id": "epkt_22c136101a3e973ff66e",
+          "schema_version": "research_evidence.v1",
+          "title": "R01 monthly dynamic ETF research evidence",
+          "targets": [
+            "510300",
+            "510880",
+            "511010",
+            "518880",
+            "511990"
+          ],
+          "collected_at": "2026-08-14T20:29:53.354250+00:00",
+          "source_refs": [
+            {
+              "source_id": "P01",
+              "path": "analysis/p01_core_etf_product_diligence_20260815.json",
+              "quality_tier": "primary_official_venue_and_issuer_disclosure",
+              "timestamp": "2026-08-15"
+            },
+            {
+              "source_id": "M01",
+              "path": "analysis/m01_dynamic_market_price_proxy_20260815.json",
+              "quality_tier": "official_retrospective_market_price_proxy",
+              "timestamp": "2026-08-15"
+            },
+            {
+              "source_id": "R02",
+              "path": "analysis/r02_independent_m01_r01_audit_20260815.json",
+              "quality_tier": "independent_reconstruction_of_proxy",
+              "timestamp": "2026-08-15"
+            }
+          ],
+          "data_quality": {
+            "source": "dated official product documents plus official price proxy",
+            "quality_tier": "mixed_primary_product_and_proxy_market_data",
+            "warnings": [
+              "not total return",
+              "not execution evidence",
+              "not a stable return admission"
+            ],
+            "errors": []
+          },
+          "provenance": [],
+          "market_events": [],
+          "notes": [
+            "Paper benchmark only; no external orders."
+          ],
+          "tags": [
+            "paper-benchmark",
+            "monthly-rule"
+          ],
+          "items": [
+            {
+              "item_id": "evid_ca9c7f315e945d3c4696",
+              "schema_version": "research_evidence.v1",
+              "title": "M01/R02 dynamic ETF proxy and independent audit",
+              "item_type": "strategy_diagnostic",
+              "source_refs": [
+                {
+                  "source_id": "M01",
+                  "path": "analysis/m01_dynamic_market_price_proxy_20260815.json",
+                  "quality_tier": "official_retrospective_market_price_proxy",
+                  "timestamp": "2026-08-15"
+                },
+                {
+                  "source_id": "R02",
+                  "path": "analysis/r02_independent_m01_r01_audit_20260815.json",
+                  "quality_tier": "independent_reconstruction_of_proxy",
+                  "timestamp": "2026-08-15"
+                }
+              ],
+              "collected_at": "2026-08-14T20:29:53.354020+00:00",
+              "data_quality": {
+                "source": "official SSE retrospective close responses",
+                "quality_tier": "proxy_only_not_total_return_or_execution",
+                "warnings": [
+                  "annual and rolling diagnostics fall below five percent",
+                  "no investor execution ledger"
+                ],
+                "errors": []
+              },
+              "provenance": [],
+              "market_events": [],
+              "notes": [
+                "The fixed candidate cannot be promoted as a stable-return strategy."
+              ],
+              "tags": [
+                "domestic-etf",
+                "five-percent-target",
+                "paper-only"
+              ],
+              "stance": "contradicts",
+              "payload": {}
+            }
+          ],
+          "metadata": {}
+        }
+      },
+      "observations": [],
+      "created_by": "codex",
+      "created_at": "2026-08-15T04:29:53.354456+00:00",
+      "updated_at": "2026-08-15T04:29:53.354462+00:00"
+    },
+    {
+      "entry_id": "research-20260815-c71d51877cb7",
+      "title": "C38 provisional direct-equity institutional research queue",
+      "thesis": "Three named SSE issuers are provisional document-led research subjects only; none is selected, allocated, valued, or authorized pending G0-G9 evidence and independent review.",
+      "targets": [
+        "600519",
+        "600900",
+        "601088"
+      ],
+      "target_type": "stock",
+      "status": "monitoring",
+      "catalysts": [
+        "Primary filing archive and issuer-specific diligence completion"
+      ],
+      "risks": [
+        "Point-in-time data rights absent",
+        "No valuation or liquidity evidence",
+        "No strategy admission"
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "G0-G9 evidence completion",
+          "condition": "Each provisional subject has all required primary evidence and an independent review.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "analysis/c38_direct_equity_institutional_research_route_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Any required G0-G9 field remains unresolved.",
+        "A subject cannot be supported with primary, dated evidence."
+      ],
+      "tags": [
+        "C38",
+        "direct_equity",
+        "research_only",
+        "no_action"
+      ],
+      "data_quality": {
+        "tier": "primary_disclosure_locator_only",
+        "status": "conditional_research_queue_only_not_admitted",
+        "warnings": [
+          "No point-in-time universe, market/event, cost, execution, valuation, or independent-review package."
+        ]
+      },
+      "source_refs": [
+        {
+          "artifact": "analysis/c38_direct_equity_institutional_research_route_20260815.json",
+          "role": "conditional document-led queue and G0-G9 admission gates"
+        }
+      ],
+      "metadata": {
+        "external_orders": false,
+        "portfolio_q": 0,
+        "no_weights": true
+      },
+      "observations": [
+        {
+          "observation_type": "initial_route_definition",
+          "note": "C38 established a three-subject, non-admitted research queue and preserved NO_ACTION pending G0-G9 and independent review.",
+          "observed_at": "2026-08-15T09:49:34.717327+00:00",
+          "evidence": {
+            "artifact": "analysis/c38_direct_equity_institutional_research_route_20260815.json",
+            "subjects": [
+              "600519",
+              "600900",
+              "601088"
+            ],
+            "status": "CONDITIONAL_RESEARCH_QUEUE_ONLY_NOT_ADMITTED"
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "C40_issuer_diligence_completed",
+          "note": "C40 completed 600519 issuer-specific primary-source diligence. Status remains NON_ADMITTED_RESEARCH_SUBJECT / NO_ACTION: G0-G5 partial, G6-G9 blocked; a partial case-local primary archive is retained but market, valuation, corporate-action and independent-review gates remain open.",
+          "observed_at": "2026-08-15T02:30:00+00:00",
+          "evidence": {
+            "artifact": "analysis/c40_600519_equity_diligence_20260815.json",
+            "sha256": "5ec903073713e75289e2e96d38879fbe10329beb14ece441e109b7e2955dba2d",
+            "status": "NON_ADMITTED_RESEARCH_SUBJECT",
+            "current_action": "NO_ACTION",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "C41_issuer_diligence_completed",
+          "note": "C41 completed 600900 issuer-specific primary-source diligence. Status remains NON_ADMITTED_RESEARCH_SUBJECT / NO_ACTION: G0-G5 partial, G6-G8 blocked and G9 not performed; six issuer PDFs are case-archived but point-in-time, market, valuation and independent-review gates remain open.",
+          "observed_at": "2026-08-15T02:30:00+00:00",
+          "evidence": {
+            "artifact": "analysis/c41_600900_equity_diligence_20260815.json",
+            "sha256": "d5995da8e2577d4500927c30d1bb76881fbf19ad158391bd070cd71314813e9e",
+            "status": "NON_ADMITTED_RESEARCH_SUBJECT",
+            "current_action": "NO_ACTION",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "C42_issuer_diligence_completed",
+          "note": "C42 completed 601088 issuer-specific primary-source diligence. Status remains NON_ADMITTED_RESEARCH_SUBJECT / NO_ACTION: 0/10 G0-G9 gates passed; seven HKEX files are case-archived, while A-share event, point-in-time, market, valuation and independent-review gates remain open.",
+          "observed_at": "2026-08-15T02:30:00+00:00",
+          "evidence": {
+            "artifact": "analysis/c42_601088_equity_diligence_20260815.json",
+            "sha256": "583a8fbf787a9000074da6b007b9769ed41cd55ebe537c810f6e45bb6cff04a3",
+            "status": "NON_ADMITTED_RESEARCH_SUBJECT",
+            "current_action": "NO_ACTION",
+            "external_orders": false,
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "equity-research-orchestrator",
+      "created_at": "2026-08-15T09:49:34.715877+00:00",
+      "updated_at": "2026-08-15T02:30:01.504242+00:00"
+    },
+    {
+      "entry_id": "research-20260815-55f24ca743db",
+      "title": "C39 audited cash-flow realization cohort hypothesis",
+      "thesis": "C39 preregisters an audited cash-flow realization cohort hypothesis for China domestic non-financial common shares. It has no admitted product, performance result, portfolio construction, or execution permission until all point-in-time, total-return, execution, independent-review, and forward-paper gates are met.",
+      "targets": [
+        "C39-domestic-non-financial-common-share-cohort"
+      ],
+      "target_type": "research_cohort",
+      "status": "monitoring",
+      "catalysts": [
+        "A rights-cleared, point-in-time audited filing and corporate-action dataset becomes available.",
+        "The preregistered P1-P4 protocol can be reconstructed without evidence exceptions.",
+        "The two-annual-report-cycle F1 forward observation ledger is completed and independently reviewed."
+      ],
+      "risks": [
+        "Point-in-time, historical quote/depth, fee/tax, or corporate-action evidence may remain unavailable.",
+        "Any preregistered partition may fail its strict hurdle or integrity reconciliation.",
+        "No portfolio loss budget, liquidity/capacity evidence, admitted product, or execution record exists."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "C39 evidence package verified",
+          "condition": "All C39 source-right, point-in-time, total-return, and execution fields are independently validated.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "analysis/c39_independent_strategy_hypothesis_protocol_20260815.json"
+        },
+        {
+          "name": "C39 protocol failure",
+          "condition": "Any integrity, partition, or forward-paper gate fails.",
+          "direction": "risk",
+          "metric": null,
+          "threshold": null,
+          "source": "analysis/c39_independent_strategy_hypothesis_protocol_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Any missing required historical, point-in-time, total-return, or execution record.",
+        "Any failure of preregistered M1-M5 or F1 gate.",
+        "Any unapproved change to the C39 code/data manifest after outcome access."
+      ],
+      "tags": [
+        "C39",
+        "research_only",
+        "preregistered_hypothesis",
+        "no_action"
+      ],
+      "data_quality": {
+        "quality_tier": "protocol_only",
+        "source": "C39 independent strategy-hypothesis protocol",
+        "timestamp": "2026-08-15",
+        "fallback_path": "Maintain NO_ACTION; do not calculate a substitute proxy result.",
+        "warnings": [
+          "No historical result or forward observation exists.",
+          "Risk model status is VETO pending all required evidence and a separate portfolio-and-risk protocol."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "artifact_id": "D5PT-C39-AUDITED-CASH-FLOW-REALIZATION-v1",
+          "path": "analysis/c39_independent_strategy_hypothesis_protocol_20260815.json",
+          "status": "NO_ACTION"
+        }
+      ],
+      "metadata": {
+        "current_action": "NO_ACTION",
+        "risk_model_status": "VETO",
+        "external_orders": false,
+        "external_orders_allowed": false,
+        "portfolio_q": 0
+      },
+      "observations": [
+        {
+          "observation_type": "protocol_registered",
+          "note": "C39 was registered as an economically distinct, preregistered research hypothesis. It carries NO_ACTION and a risk-model VETO pending locked evidence, independent reconstruction, and F1 forward observation.",
+          "observed_at": "2026-08-14T16:00:00+00:00",
+          "evidence": {
+            "artifact_id": "D5PT-C39-AUDITED-CASH-FLOW-REALIZATION-v1",
+            "risk_model_status": "VETO",
+            "current_action": "NO_ACTION"
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T09:57:53.709417+00:00",
+      "updated_at": "2026-08-15T01:57:53.711593+00:00"
+    },
+    {
+      "entry_id": "research-20260815-c46-calendar-curve",
+      "title": "C46 five-family SHFE calendar-curve actual-contract diagnostic",
+      "thesis": "C46 is a source-controlled same-product calendar-curve research diagnostic, economically distinct from the C16/C17 directional momentum routes. Under its frozen five-family eligibility and pair-completeness rules, C47 stopped as not decidable before any performance result could be produced.",
+      "targets": ["AU", "CU", "RB", "RU", "SP"],
+      "target_type": "domestic_futures_research_route",
+      "status": "closed",
+      "catalysts": [
+        "None. This frozen route is closed after its pair-completeness stop."
+      ],
+      "risks": [
+        "C47 did not produce a continuous diagnostic because frozen monthly pairs were incomplete.",
+        "Actual execution evidence, trading-state data, fees, margin, delivery, account eligibility and a forward record remain unavailable."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "Frozen route closure",
+          "condition": "C47 has status NOT_DECIDABLE_INCOMPLETE_MONTHLY_PAIR.",
+          "direction": "risk",
+          "metric": null,
+          "threshold": null,
+          "source": "analysis/c47_source_controlled_calendar_curve_diagnostic_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Any attempt to change the C46 family set, delivery window, thresholds, ranking, marking rule, or pair-completeness stop in order to continue the route.",
+        "Any attempt to treat C43/C44's void preliminary output as a result."
+      ],
+      "tags": ["C46", "C47", "calendar_curve", "research_only", "no_action", "closed"],
+      "data_quality": {
+        "quality_tier": "actual_contract_settlement_fields_only",
+        "source": "C45/C46/C47 case-local controls",
+        "timestamp": "2026-08-15",
+        "fallback_path": "Preserve the stop and do not relax, replace, or infer a pair.",
+        "warnings": [
+          "The C45 PASS is limited to source-field readiness.",
+          "No performance, investor return, or execution result was produced."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "artifact_id": "D5PT-C45-v1",
+          "path": "analysis/c45_five_family_actual_contract_source_readiness_20260815.json",
+          "status": "PASS"
+        },
+        {
+          "artifact_id": "D5PT-C46-PROTOCOL-v1",
+          "path": "analysis/c46_actual_contract_calendar_curve_source_control_protocol_20260815.json",
+          "status": "FROZEN_BEFORE_CALCULATION"
+        },
+        {
+          "artifact_id": "D5PT-C47-v1",
+          "path": "analysis/c47_source_controlled_calendar_curve_diagnostic_20260815.json",
+          "status": "NOT_DECIDABLE_INCOMPLETE_MONTHLY_PAIR"
+        }
+      ],
+      "metadata": {
+        "current_action": "NO_ACTION",
+        "external_orders": false,
+        "external_orders_allowed": false,
+        "portfolio_q": 0,
+        "route_disposition": "closed_no_substitution_or_retuning"
+      },
+      "observations": [
+        {
+          "observation_type": "source_controlled_route_stop",
+          "note": "C45 passed limited field readiness. C46 retained its original rule after C43/C44 invalidation. C47 then stopped on incomplete frozen monthly pairs; the route is closed without a result or action.",
+          "observed_at": "2026-08-15T16:00:00+00:00",
+          "evidence": {
+            "artifact_id": "D5PT-C47-v1",
+            "status": "NOT_DECIDABLE_INCOMPLETE_MONTHLY_PAIR",
+            "current_action": "NO_ACTION"
+          },
+          "status_after": "closed"
+        }
+      ],
+      "created_by": "root",
+      "created_at": "2026-08-15T16:00:00+00:00",
+      "updated_at": "2026-08-15T16:00:00+00:00"
+    },
+    {
+      "entry_id": "research-20260815-c50-general-repo-yield-floor",
+      "title": "C50 SSE general-repo yield-floor screen",
+      "thesis": "C50 screens the SSE general pledged reverse-repo mechanism as a distinct low-volatility funding-rate route. The dated official one-day 204001 fixing is below the five-percent research hurdle and no rule-based or contractual five-percent floor is evidenced, so this yield-floor proposition is closed without any action.",
+      "targets": [
+        "SSE-general-repo-204001-dated-observation"
+      ],
+      "target_type": "domestic_securities_research_mechanism",
+      "status": "closed",
+      "catalysts": [
+        "None for the closed stable-yield-floor proposition. A different pre-frozen timing or term hypothesis would be a new route, not a repair."
+      ],
+      "risks": [
+        "A quoted annualized rate is not a full-year investor result.",
+        "No personal brokerage route, permission, fee, order-state, fill or settlement evidence is retained.",
+        "No complete point-in-time historical record or pre-frozen calendar/threshold protocol is available for a formal test."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "New general-repo hypothesis proposal",
+          "condition": "A separately pre-frozen rule and complete rights-cleared data/execution package are presented for independent acceptance.",
+          "direction": "watch",
+          "metric": null,
+          "threshold": null,
+          "source": "analysis/c50_sse_general_repo_yield_floor_screen_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Any attempt to turn the dated fixing into a multi-year result or a stable-return promise.",
+        "Any selection of a repo code, term, broker, calendar or threshold without a new frozen protocol and independent evidence acceptance."
+      ],
+      "tags": [
+        "C50",
+        "general_repo",
+        "yield_floor_screen",
+        "research_only",
+        "no_action",
+        "closed"
+      ],
+      "data_quality": {
+        "quality_tier": "bounded_primary_mechanism_and_dated_yield_floor_screen",
+        "source": "C50 retained SSE primary sources",
+        "timestamp": "2026-08-15",
+        "fallback_path": "Maintain NO_ACTION; do not convert a dated annualized quote into a strategy result.",
+        "warnings": [
+          "This is not a historical performance test or a personal-account entitlement record.",
+          "C48 remains open for point-in-time, version, execution and rights evidence."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "artifact_id": "D5PT-C50-v1",
+          "path": "analysis/c50_sse_general_repo_yield_floor_screen_20260815.json",
+          "status": "NOT_ADMITTED_NO_STABLE_5PCT_YIELD_FLOOR"
+        },
+        {
+          "artifact_id": "D5PT-R19-C50-INDEPENDENT-SOURCE-AUDIT-v1",
+          "path": "analysis/r19_c50_independent_source_audit_20260815.json",
+          "status": "PASS_SOURCE_BOUNDED_ACTIONABILITY_VETO"
+        }
+      ],
+      "metadata": {
+        "current_action": "NO_ACTION",
+        "external_orders": false,
+        "external_orders_allowed": false,
+        "portfolio_q": 0,
+        "route_disposition": "closed_yield_floor_proposition_no_substitution_or_retuning"
+      },
+      "observations": [
+        {
+          "observation_type": "dated_primary_yield_floor_screen",
+          "note": "C50 retained SSE mechanism material and the 2026-08-14 public fixing. The 204001 one-day annualized fixing was 1.391 percent, below the five-percent research hurdle; no five-percent floor or formal execution test exists.",
+          "observed_at": "2026-08-15T04:41:48+00:00",
+          "evidence": {
+            "artifact_id": "D5PT-C50-v1",
+            "status": "NOT_ADMITTED_NO_STABLE_5PCT_YIELD_FLOOR",
+            "current_action": "NO_ACTION",
+            "quoted_annualized_rate_pct": 1.391
+          },
+          "status_after": "closed"
+        },
+        {
+          "observation_type": "independent_source_audit",
+          "note": "R19 independently confirmed C50 source integrity, rate labels and arithmetic. Its PASS accepts the bounded screen only; route admission remains fail, actionability remains VETO and C48 remains unchanged.",
+          "observed_at": "2026-08-15T05:10:25+00:00",
+          "evidence": {
+            "artifact_id": "D5PT-R19-C50-INDEPENDENT-SOURCE-AUDIT-v1",
+            "audit_recommendation": "PASS",
+            "actionability_status": "VETO",
+            "current_action": "NO_ACTION"
+          },
+          "status_after": "closed"
+        }
+      ],
+      "created_by": "equity-research-orchestrator",
+      "created_at": "2026-08-15T04:41:48+00:00",
+      "updated_at": "2026-08-15T05:10:25+00:00"
+    },
+    {
+      "entry_id": "research-20260815-c51-sse-etf-collar-scope",
+      "title": "C51 SSE ETF-collar option non-duplication and data-contract screen",
+      "thesis": "C51 identifies an SSE ETF collar as an economically distinct payoff family from the previously closed C13 covered call, but only at rule level. It has no selected instrument, rule-based positive five-percent floor, rights-cleared historical option chain, cost/account evidence or execution record, so it remains research-only and NO_ACTION.",
+      "targets": [
+        "SSE-ETF-collar-unselected-route-class"
+      ],
+      "target_type": "domestic_options_research_route",
+      "status": "monitoring",
+      "catalysts": [
+        "C51 evidence package acceptance: written-rights point-in-time option master, quote/depth/trade/settlement history, underlying total-return/event mapping and dated cost/account evidence are independently accepted.",
+        "C51 protocol readiness: a distinct pre-frozen selection, strike, expiry, roll, no-fill and cost protocol is accepted before any calculation."
+      ],
+      "risks": [
+        "The payoff definition does not create a positive five-percent return floor or a historical net result.",
+        "R21 independently confirmed the repaired universal C51 payoff formula and frozen source-control snapshot only; C52/R22 and the R23 governance follow-up leave the historical market, event, execution, cost and account evidence absent.",
+        "C13 cannot be reopened by substituting ETF, strike, expiry or venue, and C48 remains open for point-in-time, execution and rights evidence."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "C51 option data and rights acceptance",
+          "condition": "The independent source-acceptance review verifies every required historical contract, quote, execution, event, cost and rights field for the predeclared scope.",
+          "direction": "watch",
+          "metric": "c51_option_data_acceptance",
+          "threshold": 1.0,
+          "source": "analysis/c51_sse_etf_option_collar_scope_screen_20260815.json"
+        },
+        {
+          "name": "C51 frozen-protocol eligibility",
+          "condition": "An independently accepted data contract exists before any ETF, option series, strike, expiry, size or roll rule is frozen.",
+          "direction": "watch",
+          "metric": "c51_precalculation_protocol_eligibility",
+          "threshold": 1.0,
+          "source": "unresolved_requirements.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Any attempt to relabel the closed C13 covered-call structure as C51 by changing ETF, strike, expiry or venue.",
+        "Any attempt to treat rule text, an interface specification or the payoff formula as an account entitlement, fill, settlement record, stable return or action authorization.",
+        "Any product or parameter selection before the complete C51 evidence package and a separate frozen protocol are independently accepted."
+      ],
+      "tags": [
+        "C51",
+        "SSE",
+        "ETF-collar",
+        "options",
+        "nonduplicate-route",
+        "research-only",
+        "no-action"
+      ],
+      "data_quality": {
+        "source": "C51 retained SSE primary rule/data-interface sources plus C52 retained public source coverage, R22 independent source audit and R23 independent governance follow-up",
+        "timestamp": "2026-08-15",
+        "quality_tier": "bounded_primary_rule_scope_and_nonadmission_screen",
+        "fallback_path": "Maintain NO_ACTION and preserve C13 closure; R21 passes only the fixed source/formula repair snapshot, R22 accepts C52 only as a bounded source-control audit, and R23 closes only its governance-registration follow-up while C48 and substantive option-data/execution blockers remain.",
+        "warnings": [
+          "No option chain, execution, account or cost evidence is retained.",
+          "No annual or rolling net-return result is calculated.",
+          "C48 remains unchanged.",
+          "C52/R22 do not establish a replay right, data entitlement or formal historical route.",
+          "R23 does not close the three substantive C52 limitations."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "S58",
+          "artifact_id": "D5PT-C51-v1",
+          "path": "analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+          "quality_tier": "bounded_primary_rule_scope_and_nonadmission_screen",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S59",
+          "artifact_id": "D5PT-R20-C51-INITIAL-INDEPENDENT-SOURCE-AUDIT-v1",
+          "path": "analysis/r20_c51_initial_independent_source_audit_20260815.json",
+          "quality_tier": "independent_initial_audit_with_open_repair_findings",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S60",
+          "artifact_id": "D5PT-R21-C51-REPAIR-INDEPENDENT-RECHECK-v1",
+          "path": "analysis/r21_c51_repair_independent_recheck_20260815.json",
+          "quality_tier": "independent_repair_recheck_bounded_source_and_formula_control",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S61",
+          "artifact_id": "D5PT-C52-v1",
+          "path": "analysis/c52_sse_etf_option_history_route_screen_20260815.json",
+          "quality_tier": "bounded_public_source_coverage_and_nonadmission_screen",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S62",
+          "artifact_id": "D5PT-R22-C52-INDEPENDENT-SOURCE-AUDIT-v1",
+          "path": "analysis/r22_c52_independent_source_audit_20260815.json",
+          "quality_tier": "independent_bounded_public_source_control_audit",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S63",
+          "artifact_id": "D5PT-R23-C52-GOVERNANCE-REGISTRATION-INDEPENDENT-RECHECK-v1",
+          "path": "analysis/r23_c52_governance_registration_independent_recheck_20260815.json",
+          "quality_tier": "independent_governance_registration_follow_up_recheck",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "current_action": "NO_ACTION",
+        "external_orders": false,
+        "external_orders_allowed": false,
+        "portfolio_q": 0,
+        "route_disposition": "monitoring_distinct_scope_screen_no_selection_or_admission"
+      },
+      "observations": [
+        {
+          "observation_type": "rule_level_nonduplicate_option_scope_screen",
+          "note": "C51 retained current SSE rule and interface material and separated an ETF collar payoff from C13's closed covered-call structure. It selected no instrument or parameter, evidenced no stable five-percent floor, and left C48 unchanged. An initial independent review identified a conditional-formula issue; its repair was subsequently checked separately in R21.",
+          "observed_at": "2026-08-15T05:37:35Z",
+          "evidence": {
+            "artifact_id": "D5PT-C51-v1",
+            "status": "NOT_ADMITTED_OPTIONS_FAMILY_NO_NEW_USABLE_ROUTE",
+            "current_action": "NO_ACTION",
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "initial_independent_audit_and_repair_hold",
+          "note": "R20 independently retained C51 source integrity and no-action boundaries but left one A-level formula issue and one B-level future-builder integrity issue OPEN. The repair plan documents implemented fixes, but neither the repair owner nor R20 can close them; independent R21 is required. C48 and the C13 non-reopen boundary remain unchanged.",
+          "observed_at": "2026-08-15T06:05:50Z",
+          "evidence": {
+            "artifact_id": "D5PT-R20-C51-INITIAL-INDEPENDENT-SOURCE-AUDIT-v1",
+            "audit_recommendation": "FAIL_PENDING_REPAIR_AND_INDEPENDENT_RECHECK",
+            "actionability_status": "VETO",
+            "current_action": "NO_ACTION",
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "independent_repair_recheck_bounded_pass",
+          "note": "R21 independently closed R20-A-001 and R20-B-001 only for a hash-pinned C51 snapshot: the universal formula, source controls, PDF semantic assertions and C13 binding passed. Actionability remains VETO, no product is selected, C48 remains unchanged, and the option-data/execution evidence gaps remain open.",
+          "observed_at": "2026-08-15T06:21:07Z",
+          "evidence": {
+            "artifact_id": "D5PT-R21-C51-REPAIR-INDEPENDENT-RECHECK-v1",
+            "audit_recommendation": "PASS_SOURCE_AND_REPAIR_BOUNDED_ONLY",
+            "actionability_status": "VETO",
+            "current_action": "NO_ACTION",
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "public_option_history_source_screen_and_independent_audit",
+          "note": "C52 checked six retained public SSE sources and found that current-day contract fields and dated adjustment events do not close the C51 historical replay contract. R22 independently verified the frozen raw-source, manifest, dependency and output controls, but accepted only this bounded source-control conclusion: actionability remains VETO, C48/C49/C51 remain unchanged, and four M-level limitations remain.",
+          "observed_at": "2026-08-15T07:18:38Z",
+          "evidence": {
+            "artifact_ids": [
+              "D5PT-C52-v1",
+              "D5PT-R22-C52-INDEPENDENT-SOURCE-AUDIT-v1"
+            ],
+            "audit_recommendation": "PASS_SOURCE_CONTROL_AND_BOUNDARY_ONLY",
+            "actionability_status": "VETO",
+            "current_action": "NO_ACTION",
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        },
+        {
+          "observation_type": "independent_governance_registration_follow_up_recheck",
+          "note": "R23 independently verified that C52/R22 are required, contract-defined, source/claim-linked and R09-checked. It closes R22-M-004 only; its three continuing limitations preserve the C48/C49/C51 blockers, VETO and NO_ACTION.",
+          "observed_at": "2026-08-15T07:55:19Z",
+          "evidence": {
+            "artifact_id": "D5PT-R23-C52-GOVERNANCE-REGISTRATION-INDEPENDENT-RECHECK-v1",
+            "audit_recommendation": "PASS_GOVERNANCE_REGISTRATION_FOLLOW_UP_CLOSED_ONLY",
+            "actionability_status": "VETO",
+            "current_action": "NO_ACTION",
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "equity-research-orchestrator",
+      "created_at": "2026-08-15T05:37:35Z",
+      "updated_at": "2026-08-15T07:55:19Z"
+    },
+    {
+      "entry_id": "research-20260815-c53-equity-led-draft",
+      "title": "C53 权益主导五 ETF 季度纸面协议草案",
+      "thesis": "长期五个百分点研究目标需要由国内权益的企业盈利、现金流、分配和估值变化承担；国债、黄金和货币市场工具仅承担分散与操作缓冲。C53 将五个精确 ETF、固定权重、季度带宽与异常动作写明，但仍无总回报、执行、个人资格或前瞻记录，故维持研究状态和 NO_ACTION。",
+      "targets": [
+        "510300",
+        "510880",
+        "511010",
+        "518880",
+        "511990"
+      ],
+      "target_type": "strategy",
+      "status": "monitoring",
+      "catalysts": [
+        "C53-DATA-GATE: rights-cleared point-in-time total-return, event, quote, status, fee, tax and settlement data are independently accepted.",
+        "C53-FORWARD-GATE: six uninterrupted quarterly paper cycles complete with unchanged products, weights, band and exception controls.",
+        "C53-EQUITY-ENGINE-GATE: the separate C39 audited cash-flow route is accepted or explicitly closed without being substituted by ad hoc individual names."
+      ],
+      "risks": [
+        "No public-market route establishes a stable annual five-percent floor; C30/C34 already retain adverse limited price-proxy observations.",
+        "The two equity ETFs are one economic equity sleeve, not proven independent diversifiers.",
+        "Bond, gold and money-market ETF price, NAV, IOPV, liquidity, fee, tax, settlement and access facts remain product- and date-specific.",
+        "A drawdown review or operational pause cannot guarantee an exit when the market is halted, limit-locked or illiquid."
+      ],
+      "monitoring_triggers": [
+        {
+          "name": "C53 formal data acceptance",
+          "condition": "Every required point-in-time return, event, execution and rights field is accepted for each planned product and review date.",
+          "direction": "watch",
+          "metric": "c53_data_gate_completion",
+          "threshold": 1.0,
+          "source": "analysis/c48_current_environment_data_capability_audit_20260815.json"
+        },
+        {
+          "name": "C53 quarterly forward-paper completion",
+          "condition": "Six complete quarterly cycles retain product terms, state, quote/depth, IOPV where applicable, fee/tax, settlement, result or no_action and reconciliation under unchanged C53 v1.",
+          "direction": "watch",
+          "metric": "c53_forward_paper_quarters",
+          "threshold": 6.0,
+          "source": "analysis/c53_equity_led_domestic_target_strategy_protocol_20260815.json"
+        }
+      ],
+      "invalidation_conditions": [
+        "Do not treat a fixed target map as a historical optimum, a total-return result or a personal recommendation.",
+        "Do not change the five codes, weights, quarterly cadence, five-percentage-point band, price-protection formula or exception handling after results are visible.",
+        "Do not add futures, options, leverage, a direct stock, a REIT, a bond or a substitute ETF as a return patch without a separate preregistered and independently reviewed route.",
+        "Do not describe a long-run research hurdle as a natural-year return floor."
+      ],
+      "tags": [
+        "c53",
+        "domestic-etf",
+        "equity-led",
+        "strategic-allocation",
+        "paper-only",
+        "research-only",
+        "no-action"
+      ],
+      "data_quality": {
+        "source": "C31 product facts; C30/C34 limited price-proxy counterevidence; C48 environment boundary; C53 draft protocol",
+        "timestamp": "2026-08-15",
+        "quality_tier": "draft_paper_protocol_with_dated_product_facts_and_no_formal_return_or_execution_evidence",
+        "fallback_path": "Maintain NO_ACTION and retain the fixed draft for a later rights-cleared, independently reviewed test.",
+        "warnings": [
+          "No annual return floor is established.",
+          "No total-return or investor net-result calculation is admitted.",
+          "No personal account eligibility or external order is inferred."
+        ],
+        "errors": []
+      },
+      "source_refs": [
+        {
+          "source_id": "S38",
+          "path": "analysis/c31_etf_product_diligence_refresh_20260815.json",
+          "quality_tier": "dated_primary_product_fact_synthesis",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S40",
+          "path": "analysis/c34_dual_horizon_inverse_vol_etf_protocol_20260815.json",
+          "quality_tier": "pre_formal_recompute_protocol",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S41",
+          "path": "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.json",
+          "quality_tier": "exploratory_retrospective_market_price_proxy",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S53",
+          "path": "analysis/c48_current_environment_data_capability_audit_20260815.json",
+          "quality_tier": "current_environment_capability_boundary",
+          "timestamp": "2026-08-15"
+        },
+        {
+          "source_id": "S64",
+          "path": "analysis/c53_equity_led_domestic_target_strategy_protocol_20260815.json",
+          "quality_tier": "draft_paper_protocol_with_no_strategy_admission",
+          "timestamp": "2026-08-15"
+        }
+      ],
+      "metadata": {
+        "case_id": "domestic-5pct-target-paper-strategy-20260815",
+        "artifact_id": "D5PT-C53-EQUITY-LED-PAPER-PROTOCOL-v1",
+        "rule_version": "D5PT-C53-EQUITY-LED-PAPER-PROTOCOL-v1",
+        "paper_only": true,
+        "external_orders": false,
+        "portfolio_q": 0,
+        "current_action": "NO_ACTION"
+      },
+      "observations": [
+        {
+          "observation_type": "equity_led_strategy_architecture_selection",
+          "note": "The instrument-family review found that reverse repo, bonds, gold, money-market tools, futures and options cannot honestly supply a stable five-percent return floor. C53 therefore specifies domestic broad/dividend equity ETFs as the sole prospective return engine and keeps the other three asset sleeves defensive. The specification is a closed, fixed-weight paper draft with no admission, no result and no external action.",
+          "observed_at": "2026-08-15T08:27:35Z",
+          "evidence": {
+            "artifact_id": "D5PT-C53-EQUITY-LED-PAPER-PROTOCOL-v1",
+            "status": "DRAFT_PAPER_PROTOCOL_NOT_ADMITTED",
+            "current_action": "NO_ACTION",
+            "portfolio_q": 0
+          },
+          "status_after": "monitoring"
+        }
+      ],
+      "created_by": "equity-research-orchestrator",
+      "created_at": "2026-08-15T08:27:35Z",
+      "updated_at": "2026-08-15T08:27:35Z"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "case_id": "low-position-capital-layout-update-20260811",
+  "as_of": "2026-08-11",
+  "probes": [
+    {"probe_id":"DATA-LOCAL-01","scope":"Preferred local market adapter","attempt":".venv/bin/python capability adapter","result":"unavailable","impact":"Public market endpoints were used and cross-checked.","mitigation":"Disclosed as a fallback in every market packet."},
+    {"probe_id":"H1-600739","scope":"辽宁成大 2026H1","attempt":"CNINFO interim-report and title-matched preview queries","result":"not_found","impact":"No H1 valuation update is permitted.","mitigation":"Watchlist-only status."},
+    {"probe_id":"H1-600150","scope":"中国船舶 2026H1","attempt":"CNINFO interim-report and title-matched preview queries","result":"not_found","impact":"No H1 valuation update is permitted.","mitigation":"Watchlist-only status."},
+    {"probe_id":"BRK-002432","scope":"九安医疗 broker target","attempt":"Eastmoney public report directory, 2026-04-01 to 2026-08-11","result":"not_found","impact":"No public target anchor.","mitigation":"Zero broker weight; no current target published."},
+    {"probe_id":"BRK-000623","scope":"吉林敖东 broker target","attempt":"Eastmoney public report directory, 2026-04-01 to 2026-08-11","result":"not_found","impact":"No public target anchor.","mitigation":"Zero broker weight; no current target published."},
+    {"probe_id":"BRK-600739","scope":"辽宁成大 broker target","attempt":"Eastmoney public report directory, 2026-04-01 to 2026-08-11","result":"not_found","impact":"No public target anchor.","mitigation":"Zero broker weight; no current target published."},
+    {"probe_id":"BRK-FORECAST-ONLY","scope":"000685, 600150, 301308, 002240, 300390","attempt":"Archived original broker PDFs","result":"target_not_disclosed","impact":"Forecasts cannot become price targets.","mitigation":"Zero broker target weight for those reports."},
+    {"probe_id":"BRK-300014-DISPERSION","scope":"亿纬锂能 external targets","attempt":"Two original broker PDFs","result":"material_dispersion","impact":"CNY77 and CNY103 are not a consensus and cannot be averaged.","mitigation":"Use only the lower CNY77 as a capped external anchor; retain CNY103 as a bull sensitivity."},
+    {"probe_id":"RENDER-XELATEX","scope":"Persistent report PDF","attempt":"MacTeX XeLaTeX lookup","result":"unavailable_in_current_runtime","impact":"PDF compilation and visual sign-off cannot be truthfully completed here.","mitigation":"Prepare LaTeX source and leave render gate explicitly conditional; do not substitute another engine."}
+  ]
+}

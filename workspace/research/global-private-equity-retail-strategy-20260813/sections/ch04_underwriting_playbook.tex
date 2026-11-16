@@ -1,0 +1,60 @@
+\section{核心方法：五票全过，才有资格进入候选池}
+
+个人版的私募式公开市场承保应像一个小型投资委员会，而不是一个因价格波动而不断改口的交易计划。每个候选对象必须同时通过五票；任何一票否决，最合理的结果都是“不买”或“继续研究”。这不是为了制造复杂度，而是为了让乐观故事必须同时经受财务、治理、估值和可执行性的约束。
+
+\begin{exhibitbox}[Exhibit 4：五票承保卡]
+\small
+\begin{tabularx}{\exhibitboxwidth}{L{2.1cm} X L{3.55cm}}
+\toprule
+\textbf{投票} & \textbf{必须回答的问题} & \textbf{一票否决或降级信号} \\
+\midrule
+业务 & 公司如何赚钱？客户为何持续付费？核心假设如何被公开证伪？ & 只能用政策口号、价格走势或宏大主题解释盈利。 \\
+现金与负债 & 利润是否变成现金？应收、库存、资本开支、净负债、担保和再融资是否经得起熊市？ & 现金长期背离利润且无可信解释；债务/担保足以击穿熊市假设。 \\
+治理 & 审计、控股股东质押/减持、关联交易、激励和监管问询是否可解释？ & 非标审计、资金占用、重大治理恶化或无法定价的关联风险。 \\
+估值 & 熊/基/乐观情景中，收入、利润率、资本开支和估值锚是什么？ & 仅靠历史市盈率（PE）、券商目标价或远期可触达市场规模（TAM）；基准情景需依赖多重扩张。 \\
+验证与流动性 & 以与公司披露节奏匹配的观察期、哪个公开关键经营指标（KPI）证明或否定？正常市场下如何减仓？ & 没有公开证明点；假设可以随时按理想价格退出。 \\
+\bottomrule
+\end{tabularx}
+\sourcenote{C03--C05；完整字段见\ \texttt{analysis/retail\_underwriting\_scorecard.md}。}
+\end{exhibitbox}
+
+\section{价值创造桥：只给已可见的动作估值信用}
+
+定价、采购、渠道、产能、成本、营运资本、资产处置或管理激励，是企业可能采用的经营动作，并非本报告对某一管理人的固定价值创造清单。个人没有权利启动这些行动，所以应将“管理层可能改善”与“已披露、已量化、可追踪的改善”严格分开。一个合格的公开市场价值桥至少写清：
+
+\begin{itemize}
+  \item 机制：收入、销量、价格、产品组合、毛利率、费用率、营运资本或资本开支中的哪一项会变化；
+  \item 基线：上一年或最近披露期的数值、口径和财务报表位置；
+  \item 行动：谁已宣布什么行动，何时开始，是否需要监管、客户或融资条件；
+  \item 关键经营指标（KPI）：下一份或未来若干份公开报告中可验证的指标；
+  \item 估值信用：若 KPI 没有兑现，模型必须自动退回到无改善的保守情景。
+\end{itemize}
+
+这套规则尤其适合把“转型故事”从估值模型中剥离出来。研究者可以相信管理层，但模型不应提前把信念变成利润。
+
+\section{从信用视角看股票：先问最坏情况下谁付账}
+
+Apollo 的披露描述了信贷、资产支持与长期负债语境；KKR 对 Global Atlantic 保险业务披露了资产负债现金流匹配 [S02--S03]。这些机构语境提醒投资者，资本结构和期限不是配角。即使研究的是权益，也应先像债权人一样问：经营现金流是否覆盖利息和必要资本开支？债务到期是否集中？再融资是否依赖脆弱的市场环境？有无担保、质押、表外承诺或应收回款风险？企业的资产是否在下行周期仍有可变现或可经营价值？
+
+这不是要求每家企业都低杠杆，而是要求杠杆风险可以被理解、建模并纳入熊市场景。高增长、高分派或低市净率不能替代这一步。
+
+\section{分期资金投放：把“资本调用”改为公开证据调用}
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.42cm, every node/.style={font=\small, align=center}]
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=3.0cm, minimum height=1cm] (a) {初始承保\\五票通过};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=3.0cm, minimum height=1cm, right=of a] (b) {下一份报告\\验证核心指标};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=3.0cm, minimum height=1cm, right=of b] (c) {现金流/利润率\\验证机制};
+\node[draw=accentblue, fill=accentblue!12, rounded corners, minimum width=3.0cm, minimum height=1cm, below=of b] (d) {重新承保：\\估值仍有余量？};
+\draw[-{Stealth[length=2mm]}, thick, navy] (a) -- (b);
+\draw[-{Stealth[length=2mm]}, thick, navy] (b) -- (c);
+\draw[-{Stealth[length=2mm]}, thick, navy] (c.south) |- (d.east);
+\draw[-{Stealth[length=2mm]}, thick, navy] (d.west) -| (a.south);
+\end{tikzpicture}
+\end{center}
+
+每一步都应由新的公开证据触发；若证据没有增强，正确的结果是维持、缩小或归零，而不是因为价格下跌而自动摊薄成本。具体的初始仓位、单名上限和风险预算必须由个人资金需求和熊市损失承受能力决定，本报告不把示例比例伪装成适合所有人的配置。
+
+\section{核心分散化与可为零的研究卫星}
+
+私募基金带来的一个事实是，单一项目风险通常由组合和持续尽调稀释。个人无法得到同样的项目池，因此可把低成本、流动性充足的广泛公开市场工具作为基础分散化候选，把真正需要大量研究的直接股票、公募 REIT 或正式公告事件限制在可为零的研究卫星中。这样做的目的不是提高交易频率，而是避免把全部财务结果押在少数自认为理解的企业上。任何实际比例均须等账户、生活现金、风险承受能力、交易型开放式指数基金（ETF）穿透重叠和当前流动性完成后才能批准。

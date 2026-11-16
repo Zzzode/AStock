@@ -1,0 +1,98 @@
+{
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "status": "material_evidence_gaps_open_q0",
+  "items": [
+    {
+      "id": "SX01",
+      "category": "ETF total return",
+      "status": "open",
+      "sources_checked": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "P01", "D01"],
+      "result": "Product documents and a public daily-bar series with unresolved adjustment basis do not form a point-in-time market-price, NAV, distribution and corporate-action ledger.",
+      "impact": "All listed-fund candidates remain q=0.",
+      "next_path": "Obtain an entitled/frozen ETF price, NAV, event, status and IOPV archive with available_at/revision fields."
+    },
+    {
+      "id": "SX02",
+      "category": "ETF execution and cost",
+      "status": "open",
+      "sources_checked": ["E06", "E07", "E08", "D01"],
+      "result": "No dated broker fee, tax, spread/depth, T+1, limit, halt or fill evidence exists.",
+      "impact": "No historical or current ETF execution claim is possible.",
+      "next_path": "Capture a broker-route fee schedule and source-consistent quote/status history before replay."
+    },
+    {
+      "id": "SX03",
+      "category": "Actual-contract history",
+      "status": "partially_observed",
+      "sources_checked": ["F02", "F05", "F06", "D01"],
+      "result": "Twelve retrospectively retrieved raw samples show actual-contract daily-file paths on six dates, but no complete point-in-time daily archive or lifecycle master exists.",
+      "impact": "No actual-contract P&L/roll result is possible.",
+      "next_path": "Archive every trading-day full contract cross-section and PIT master for the future eligible futures population."
+    },
+    {
+      "id": "SX04",
+      "category": "Futures rule versions",
+      "status": "open",
+      "sources_checked": ["F01", "F02", "F03", "F04", "PX01", "PX02", "PX03"],
+      "result": "Metadata-only direct probes record WAF/challenge responses for AU/CU and HTTP 404 for the PTA URL; no response body was retained as evidence.",
+      "impact": "Contract multiplier, delivery, margin, limit and position-limit terms cannot close R1 for any contract.",
+      "next_path": "Use normal-browser official capture or a permitted archival/official source, bind each rule version to its effective date and hash it."
+    },
+    {
+      "id": "SX05",
+      "category": "Futures execution and access",
+      "status": "open",
+      "sources_checked": ["F01", "F02", "F03", "F04", "D01"],
+      "result": "No user-specific suitability, broker route, broker fees/margin, historical bid/ask, price-limit lock, delivery eligibility or fills are present.",
+      "impact": "Every futures family remains q=0 and no live action can be proposed.",
+      "next_path": "Record dated broker and suitability evidence; establish a predeclared no-fill model and a paper reconciliation period."
+    },
+    {
+      "id": "SX06",
+      "category": "Data rights and provenance",
+      "status": "open",
+      "sources_checked": ["E08", "F03", "F04", "D01"],
+      "result": "A data-service path is documented, but the workspace has no subscription/token, rights confirmation, response retention/derivation permission, data owner or revision archive.",
+      "impact": "No formal point-in-time replay can pass source governance.",
+      "next_path": "Obtain an appropriate data entitlement and freeze raw responses, as_of/available_at, hashes and revision treatment under DPSFS-DAC-v12."
+    },
+    {
+      "id": "SX07",
+      "category": "Risk and prospective validation",
+      "status": "open",
+      "sources_checked": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "F01", "F02", "F03", "F04", "F05", "F06", "D01", "P01"],
+      "claim_dependencies": ["C01", "C02", "C03", "C04", "C05", "C06"],
+      "result": "No accepted cost-aware replay, all-window disclosure, frozen risk-and-feasibility control pack, current liquidity review or untouched paper-validation period exists.",
+      "impact": "The case cannot become a usable strategy report.",
+      "next_path": "Complete the data/replay gate, freeze and test the risk/feasibility controls, then run independent R0/R1/risk review and prospective paper reconciliation."
+    },
+    {
+      "id": "SX08",
+      "category": "Open-universe population and class symmetry",
+      "status": "open",
+      "sources_checked": ["E01", "E02", "E03", "E04", "E05", "F05", "F06"],
+      "result": "The case has illustrative ETF and commodity-futures probes but no dated class-wide population master for direct equities, public REITs, bonds/convertibles, financial futures or options, and no all-commodity census.",
+      "impact": "A finite convenient probe cannot be frozen as a class-neutral decision universe.",
+      "next_path": "Capture primary venue/product population masters and retain lifecycle/status history under the U0 registry before any T2 universe freeze."
+    },
+    {
+      "id": "SX09",
+      "category": "Formal replay specification",
+      "status": "open",
+      "sources_checked": ["P01", "D01", "F05", "F06"],
+      "result": "DPSFS-RP0-v10 defines requirements, but no result-blind rulebook resolves all scores, weights, risk/feasibility limits, execution state transitions, development/holdout intervals, holdout predicate, canonical freeze crosswalk and reference inputs.",
+      "impact": "No historical output can be represented as a formal test of the 5% research criterion.",
+      "next_path": "After U0 population and entitled data acceptance, freeze a versioned rulebook and deterministic replay bundle before viewing outcomes."
+    },
+    {
+      "id": "SX10",
+      "category": "U0-to-T2 derivation and cross-class module coverage",
+      "status": "open",
+      "sources_checked": ["E01", "E02", "E03", "E04", "E05", "F05", "F06"],
+      "result": "No frozen U0 snapshot, class counts, item-level derivation audit or accepted class-specific data/replay module exists. The current ETF/AU/CU/TA rows are only a draft probe.",
+      "impact": "No result may be called an open domestic multi-asset test; any future limited run is coverage-restricted.",
+      "next_path": "Generate DPSFS-U0T2-v1 from a frozen U0 population and require each represented class to pass its data/replay module gate."
+    }
+  ]
+}

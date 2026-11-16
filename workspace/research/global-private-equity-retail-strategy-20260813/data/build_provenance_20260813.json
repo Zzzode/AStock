@@ -1,0 +1,22 @@
+{
+  "schema_version": "build_provenance.v1",
+  "case_id": "global-private-equity-retail-strategy-20260813",
+  "build_timestamp": "2026-08-14T00:39:46+08:00",
+  "host_os": "Linux (Debian-based container)",
+  "engine_executable": "/usr/bin/xelatex",
+  "engine_version": "XeTeX 3.141592653-2.6-0.999994 (TeX Live 2022/Debian)",
+  "resolved_cjk_font": "Noto Serif CJK SC (NotoSerifCJK-Regular.ttc)",
+  "build_command": "xelatex -interaction=nonstopmode -halt-on-error main.tex (run twice); pdftotext -layout main.pdf main_current_text.txt; pdftoppm -png -r 110 main.pdf rendered/release-page",
+  "source_sha256": "7ff1ce34b8274a6b76db510087305ed50cf74b18b10e2277129f6184e5043f8b",
+  "pdf_sha256": "a5b8b28c8594113c35c477f7063e2f5c52a0ffb48d496f68b253e01fc9767340",
+  "page_count": 20,
+  "data_quality": "PDF built directly with XeLaTeX because the project CLI adapter could not start in the local environment: declared Python dependency typer is missing. This is a tooling degradation only; the report's source registry remains local and auditable.",
+  "diagnostics": {
+    "fatal_errors": 0,
+    "unresolved_cross_references": 0,
+    "known_minor_warnings": [
+      "Cover metadata contains an intentionally narrow English scope field that produces non-material underfull hbox messages.",
+      "No overfull hbox diagnostics remain after narrowing two tabularx environments; representative release renders were inspected."
+    ]
+  }
+}

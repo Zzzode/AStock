@@ -1,0 +1,265 @@
+{
+  "schema_version": "r11_independent_c19_data_source_feasibility_audit.v1",
+  "artifact_id": "D5PT-R11-C19-DATA-SOURCE-AUDIT-v1",
+  "as_of": "2026-08-15",
+  "audit_scope": {
+    "independent_of_c19_capture_verifier": true,
+    "checks": [
+      "frozen C19 manifest hash and capture metadata",
+      "all six retained raw-file sizes and SHA-256 values",
+      "direct retained HTML/PDF structure and text-presence checks",
+      "C19 source-control binding to the retained manifest",
+      "conditional-data-path, not-testable, and no-action controls",
+      "C19 markdown alignment with the retained source URLs and boundaries"
+    ],
+    "not_performed": [
+      "data-license acquisition",
+      "protected-endpoint retrieval",
+      "bond selection",
+      "performance calculation",
+      "access or eligibility inference",
+      "external action"
+    ]
+  },
+  "result": "PASS",
+  "bounded_disposition": "C19 remains a conditional lawful data-acquisition diligence path. C18 remains not_testable; no bond, investor access conclusion, return result, or external action is admitted.",
+  "source_manifest": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/manifest.json",
+    "expected_sha256": "77e337a09c80906a143b15dcfc72f60631847a3f44d63aeea5a9e0a531ac9d41",
+    "actual_sha256": "77e337a09c80906a143b15dcfc72f60631847a3f44d63aeea5a9e0a531ac9d41",
+    "expected_hash_match": true,
+    "manifest_metadata_ok": true,
+    "record_count": 6,
+    "record_key_set_match": true,
+    "raw_file_set_exact_match": true
+  },
+  "raw_file_integrity": [
+    {
+      "source_key": "chinabond_valuation_query_surface",
+      "expected_filename": "chinabond_valuation_query_surface.html",
+      "manifest_filename": "chinabond_valuation_query_surface.html",
+      "expected_bytes": 81823,
+      "manifest_bytes": 81823,
+      "actual_bytes": 81823,
+      "expected_sha256": "22e05769ac1d440a8d6a8c11262ce0603d5682adf14b021a256a23c4a6d2e2ef",
+      "manifest_sha256": "22e05769ac1d440a8d6a8c11262ce0603d5682adf14b021a256a23c4a6d2e2ef",
+      "actual_sha256": "22e05769ac1d440a8d6a8c11262ce0603d5682adf14b021a256a23c4a6d2e2ef",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "chinabond_yield_methodology_surface",
+      "expected_filename": "chinabond_yield_methodology_surface.html",
+      "manifest_filename": "chinabond_yield_methodology_surface.html",
+      "expected_bytes": 9676,
+      "manifest_bytes": 9676,
+      "actual_bytes": 9676,
+      "expected_sha256": "478dbbf6b532f12f0a48f2275820a87d704fa34cac41386bd1574fc47c4e8d60",
+      "manifest_sha256": "478dbbf6b532f12f0a48f2275820a87d704fa34cac41386bd1574fc47c4e8d60",
+      "actual_sha256": "478dbbf6b532f12f0a48f2275820a87d704fa34cac41386bd1574fc47c4e8d60",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_authorization_statement",
+      "expected_filename": "sseinfo_authorization_statement.html",
+      "manifest_filename": "sseinfo_authorization_statement.html",
+      "expected_bytes": 19410,
+      "manifest_bytes": 19410,
+      "actual_bytes": 19410,
+      "expected_sha256": "728c5f7d0bf41cdaef1008906f7ee57254b212f435545b21a5b1ecac697d35e4",
+      "manifest_sha256": "728c5f7d0bf41cdaef1008906f7ee57254b212f435545b21a5b1ecac697d35e4",
+      "actual_sha256": "728c5f7d0bf41cdaef1008906f7ee57254b212f435545b21a5b1ecac697d35e4",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_fixed_income_market_data_product",
+      "expected_filename": "sseinfo_fixed_income_market_data_product.html",
+      "manifest_filename": "sseinfo_fixed_income_market_data_product.html",
+      "expected_bytes": 23118,
+      "manifest_bytes": 23118,
+      "actual_bytes": 23118,
+      "expected_sha256": "107c10a3a506b405c41108f2726598c4e12cf4731fe0bccc661b74aa0d865b55",
+      "manifest_sha256": "107c10a3a506b405c41108f2726598c4e12cf4731fe0bccc661b74aa0d865b55",
+      "actual_sha256": "107c10a3a506b405c41108f2726598c4e12cf4731fe0bccc661b74aa0d865b55",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_historical_data_interface_specification",
+      "expected_filename": "sseinfo_historical_data_interface_specification.pdf",
+      "manifest_filename": "sseinfo_historical_data_interface_specification.pdf",
+      "expected_bytes": 726725,
+      "manifest_bytes": 726725,
+      "actual_bytes": 726725,
+      "expected_sha256": "45497cd472c5cd52e7aa5e5c989d8f56350397a5277ea7798aefc9dc208d8988",
+      "manifest_sha256": "45497cd472c5cd52e7aa5e5c989d8f56350397a5277ea7798aefc9dc208d8988",
+      "actual_sha256": "45497cd472c5cd52e7aa5e5c989d8f56350397a5277ea7798aefc9dc208d8988",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_historical_market_data_product",
+      "expected_filename": "sseinfo_historical_market_data_product.html",
+      "manifest_filename": "sseinfo_historical_market_data_product.html",
+      "expected_bytes": 23029,
+      "manifest_bytes": 23029,
+      "actual_bytes": 23029,
+      "expected_sha256": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f",
+      "manifest_sha256": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f",
+      "actual_sha256": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    }
+  ],
+  "source_content_presence": [
+    {
+      "source_key": "chinabond_valuation_query_surface",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/chinabond_valuation_query_surface.html",
+      "format": "html",
+      "structure_ok": true,
+      "text_extraction_error": null,
+      "text_characters": 69881,
+      "required_terms": [
+        "估值日期",
+        "日终估价全价",
+        "日终应计利息",
+        "估价净价"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "chinabond_yield_methodology_surface",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/chinabond_yield_methodology_surface.html",
+      "format": "html",
+      "structure_ok": true,
+      "text_extraction_error": null,
+      "text_characters": 6660,
+      "required_terms": [
+        "中债收益率曲线",
+        "交易所债券的成交数据",
+        "交易所固定收益平台报价和成交数据"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_authorization_statement",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/sseinfo_authorization_statement.html",
+      "format": "html",
+      "structure_ok": true,
+      "text_extraction_error": null,
+      "text_characters": 16888,
+      "required_terms": [
+        "授权声明",
+        "未经证券交易所许可",
+        "申请许可",
+        "接收、使用或经营"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_fixed_income_market_data_product",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/sseinfo_fixed_income_market_data_product.html",
+      "format": "html",
+      "structure_ok": true,
+      "text_extraction_error": null,
+      "text_characters": 20660,
+      "required_terms": [
+        "固定收益行情",
+        "公司债现券",
+        "即时非匹配成交行情信息",
+        "业务申请"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_historical_data_interface_specification",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/sseinfo_historical_data_interface_specification.pdf",
+      "format": "pdf",
+      "structure_ok": true,
+      "text_extraction_error": null,
+      "text_characters": 34417,
+      "required_terms": [
+        "上海证券交易所历史数据接口说明书",
+        "BondTick.csv",
+        "产品状态订单",
+        "自2021年12月1日启用"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sseinfo_historical_market_data_product",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/sseinfo_historical_market_data_product.html",
+      "format": "html",
+      "structure_ok": true,
+      "text_extraction_error": null,
+      "text_characters": 20487,
+      "required_terms": [
+        "行情历史数据",
+        "快照数据",
+        "逐笔成交",
+        "日K线",
+        "业务申请"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    }
+  ],
+  "c19_feasibility_binding": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c19_bond_historical_data_source_feasibility_20260815.json",
+    "expected_sha256": "c251dff603184f4fd6312f2a60764a5cfe97341051031fa6b39ec8338b1bb49f",
+    "actual_sha256": "c251dff603184f4fd6312f2a60764a5cfe97341051031fa6b39ec8338b1bb49f",
+    "expected_hash_match": true,
+    "manifest_binding_ok": true,
+    "capture_scope_ok": true,
+    "tier_structure_ok": true,
+    "captured_urls_referenced_ok": true,
+    "unretained_t2_candidate_urls": [
+      "https://www.wind.com.cn/mobile/WFT/zh.html",
+      "https://www.wind.com.cn/portal/zh/ClientApi/index.html"
+    ],
+    "unretained_t2_disclosed_candidate_only_ok": true,
+    "required_field_matrix_ok": true,
+    "acceptance_tests_ok": true,
+    "source_control_amendment_ok": true
+  },
+  "bounded_controls": {
+    "action_boundary_ok": true,
+    "conditional_data_path_ok": true,
+    "not_testable_ok": true,
+    "source_capture_boundary_ok": true,
+    "executive_boundary_ok": true,
+    "no_action_prohibitions_ok": true,
+    "next_research_gate_ok": true,
+    "observed_research_result": "CONDITIONAL_LAWFUL_SOURCE_PATHS_IDENTIFIED",
+    "observed_route_status": "not_testable"
+  },
+  "markdown_alignment": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c19_bond_historical_data_source_feasibility_20260815.md",
+    "exists": true,
+    "sha256": "657adca8a291a8783f3b10b1b9e22d3181926616c68413d6066f0b4acd4654b0",
+    "required_text_ok": true,
+    "missing_required_text": [],
+    "captured_urls_referenced_ok": true,
+    "missing_captured_urls": []
+  },
+  "failures": []
+}

@@ -1,0 +1,399 @@
+{
+  "schema_version": "direct_equity_institutional_research_route.v1",
+  "artifact_id": "D5PT-C38-DIRECT-EQUITY-RESEARCH-ROUTE-v1",
+  "as_of_date": "2026-08-15",
+  "status": "CONDITIONAL_RESEARCH_QUEUE_ONLY_NOT_ADMITTED",
+  "research_only": true,
+  "external_orders": false,
+  "no_weights": true,
+  "no_actions": true,
+  "no_return_forecast": true,
+  "portfolio_q": 0,
+  "scope": {
+    "coverage": "Three provisional Shanghai Main Board, non-financial A-share research subjects only.",
+    "excluded_interpretations": [
+      "No all-A-share universe claim.",
+      "No Shenzhen or Beijing Stock Exchange coverage claim.",
+      "No backtest, paper rule, valuation conclusion, liquidity certification, or strategy admission."
+    ],
+    "relationship_to_existing_work": {
+      "c24": "C24 remains the controlling direct-A-share data-rights and point-in-time feasibility boundary.",
+      "c34": "This route does not repair, replace, re-parameterize, or infer a result from C34.",
+      "unchanged_artifacts": [
+        "C33",
+        "C34",
+        "C35",
+        "C36",
+        "R15"
+      ]
+    }
+  },
+  "decision": {
+    "document_level_candidate_queue": "CONDITIONALLY_YES",
+    "quality_income_screen": "NO",
+    "liquidity_screen": "NO",
+    "valuation_conclusion": "NO",
+    "historical_test_or_strategy_admission": "NO_ACTION",
+    "rationale": "Official exchange disclosures support a narrow issuer-by-issuer evidence queue. They do not close C24's licensed point-in-time universe, corporate-action, market-data, cost, execution, or independent-reconstruction gaps."
+  },
+  "candidate_subjects": [
+    {
+      "ticker": "600519",
+      "issuer": "贵州茅台",
+      "exchange": "SSE",
+      "board": "Main Board",
+      "candidate_status": "NON_ADMITTED_RESEARCH_SUBJECT",
+      "not_a_quality_or_income_conclusion": true,
+      "not_liquidity_verified": true,
+      "research_questions": [
+        "Can consumer-brand, channel, price, inventory, cash-conversion, and distribution evidence be reconciled from primary disclosures?",
+        "Can accounting-policy changes and period comparability be independently reconciled before any financial-quality or valuation work?"
+      ],
+      "initial_primary_source_ids": [
+        "C38-S02",
+        "C38-S03",
+        "C38-S04"
+      ],
+      "hard_gaps": [
+        "Cash-flow and dividend-coverage audit not performed.",
+        "Governance and negative-evidence review not performed.",
+        "As-of market data, liquidity, valuation, and independent review not performed."
+      ]
+    },
+    {
+      "ticker": "600900",
+      "issuer": "长江电力",
+      "exchange": "SSE",
+      "board": "Main Board",
+      "candidate_status": "NON_ADMITTED_RESEARCH_SUBJECT",
+      "not_a_quality_or_income_conclusion": true,
+      "not_liquidity_verified": true,
+      "research_questions": [
+        "How do hydrology, generation, tariff, project capital expenditure, and financing translate into cash-flow resilience?",
+        "Can the disclosed distribution history be reconciled to cash sources, investment needs, debt, and regulatory conditions without extrapolation?"
+      ],
+      "initial_primary_source_ids": [
+        "C38-S05",
+        "C38-S06",
+        "C38-S07"
+      ],
+      "hard_gaps": [
+        "Free-cash-flow, debt, and distribution-coverage audit not performed.",
+        "Hydrology, tariff, project, related-party, and governance review not performed.",
+        "As-of market data, liquidity, valuation, and independent review not performed."
+      ]
+    },
+    {
+      "ticker": "601088",
+      "issuer": "中国神华",
+      "exchange": "SSE",
+      "board": "Main Board",
+      "candidate_status": "NON_ADMITTED_RESEARCH_SUBJECT",
+      "not_a_quality_or_income_conclusion": true,
+      "not_liquidity_verified": true,
+      "research_questions": [
+        "How do coal volume/price, transport, power generation, capex, safety, and environmental constraints affect cash-flow durability?",
+        "Can cyclical cash generation and disclosed distributions be differentiated from a sustainable cash-flow conclusion?"
+      ],
+      "initial_primary_source_ids": [
+        "C38-S08",
+        "C38-S09",
+        "C38-S10"
+      ],
+      "hard_gaps": [
+        "Cyclical cash-flow and dividend-coverage audit not performed.",
+        "Policy, safety, environmental, capital-allocation, related-party, and governance review not performed.",
+        "As-of market data, liquidity, valuation, and independent review not performed."
+      ]
+    }
+  ],
+  "gate_sequence": [
+    {
+      "id": "G0",
+      "name": "Scope and security identity",
+      "evidence": [
+        "Exchange security identity/listing records",
+        "Code/name changes",
+        "Listing, suspension, risk-warning, delisting, share-capital and free-float records",
+        "Frozen research-range table"
+      ],
+      "proof": "The security is demonstrably inside a disclosed scope at the stated as_of time, with no unprocessed status or mapping ambiguity.",
+      "failure_disposition": "Do not enter the comparable research sample; never backfill history from today's list."
+    },
+    {
+      "id": "G1",
+      "name": "Complete statutory disclosure archive",
+      "evidence": [
+        "At least three audited annual reports",
+        "Latest interim and quarterly reports",
+        "Earnings notices/preliminary reports",
+        "Corrections, accounting-policy changes, audit reports, internal-control reports, and material announcements",
+        "Exchange or CNINFO original PDFs"
+      ],
+      "proof": "Financial statements and material events are traceable by reporting period, first-public availability, document version, and source hash.",
+      "failure_disposition": "insufficient_primary_financial_evidence"
+    },
+    {
+      "id": "G2",
+      "name": "Business and operating drivers",
+      "evidence": [
+        "Annual-report business sections",
+        "Issuer formal operating disclosures",
+        "Project/capacity/licence evidence",
+        "Primary regulatory and demand-side evidence"
+      ],
+      "proof": "Products/services, volume/price drivers, customers/channels, capacity/projects, competition, and risks have source-specific support.",
+      "failure_disposition": "No earnings-driver conclusion from a concept label, media summary, or one operating metric."
+    },
+    {
+      "id": "G3",
+      "name": "Earnings quality and balance sheet",
+      "evidence": [
+        "Audited statements and notes",
+        "Segment details",
+        "Revenue-recognition, inventory, receivables, prepayments, impairment, capitalization, and non-recurring items",
+        "Debt maturities, restricted cash, off-balance-sheet commitments, related parties, and audit opinion"
+      ],
+      "proof": "Profit, operating cash flow, working capital, one-offs, leverage, and accounting judgments can be reconciled and independently re-extracted.",
+      "failure_disposition": "no_quality_assessment"
+    },
+    {
+      "id": "G4",
+      "name": "Dividend and cash-flow coverage",
+      "evidence": [
+        "Profit-distribution proposal",
+        "Board and shareholder resolutions",
+        "Implementation notice with record, ex, and payment dates",
+        "Tax treatment",
+        "Historical cash dividends, operating cash flow, capex, debt, and restricted-cash evidence"
+      ],
+      "proof": "Each disclosed distribution can be separated into proposal, approval, implementation, timing, tax, and funding coverage; no extrapolation is used.",
+      "failure_disposition": "no_income_coverage_assessment"
+    },
+    {
+      "id": "G5",
+      "name": "Governance, control, and compliance",
+      "evidence": [
+        "Articles of association, board/committee/independent-director materials",
+        "Controlling shareholder and ultimate-controller disclosures",
+        "Pledge/share-change, related-party, funds-occupation, guarantee, auditor, and internal-control evidence",
+        "CSRC/exchange discipline, litigation, and negative-search log"
+      ],
+      "proof": "Control, related-party, audit, minority-protection, and adverse-evidence questions have a dated two-sided search record.",
+      "failure_disposition": "governance_not_cleared"
+    },
+    {
+      "id": "G6",
+      "name": "Valuation and disconfirmation",
+      "evidence": [
+        "Same-as_of unadjusted closing price and trading status",
+        "Verified total/free-float shares, net debt, contingent liabilities, and non-controlling interests",
+        "Comparable-company disclosures, historical valuation definitions, model inputs and sensitivities",
+        "Original broker PDFs/official pages or auditable consensus snapshot"
+      ],
+      "proof": "Market capitalization, enterprise value, denominators, comparisons, assumptions, and counter-case can be independently rebuilt.",
+      "failure_disposition": "valuation_not_admitted; no target-price or upside/downside conclusion"
+    },
+    {
+      "id": "G7",
+      "name": "Liquidity and tradable status",
+      "evidence": [
+        "Written rights to use SSE historical price/turnover/status data",
+        "Daily unadjusted price, volume, value, no-trade, suspension, price-limit, and free-float data",
+        "Calendar, field dictionary, revision log, coverage report"
+      ],
+      "proof": "A pre-frozen observation window supports reconstruction of turnover distribution, no-trade/suspension days, limits, free float, concentrated ownership, and status exceptions.",
+      "failure_disposition": "liquidity_unverified; this artifact fixes no threshold"
+    },
+    {
+      "id": "G8",
+      "name": "Point-in-time and corporate actions",
+      "evidence": [
+        "First-public time and retrieval time for every material document",
+        "Unadjusted prices",
+        "Cash dividend, rights, issuance, split/consolidation, share-capital, and status-event ledger",
+        "Adjustment factors/algorithm and restatement/withdrawal chain"
+      ],
+      "proof": "What was available at each as_of moment, and every price/share/event transformation, can be reconstructed from preserved inputs.",
+      "failure_disposition": "point_in_time_blocked"
+    },
+    {
+      "id": "G9",
+      "name": "Independent review",
+      "evidence": [
+        "Independent re-extraction of key financial numbers",
+        "Cash-flow/distribution coverage recalc",
+        "Valuation rebuild",
+        "Governance negative-search review",
+        "Version/hash verification and finding log"
+      ],
+      "proof": "A reviewer other than the writer rebuilds the core evidence and no S-level or unwaived A-level issue remains.",
+      "failure_disposition": "independent_review_not_passed; author cannot self-sign PASS"
+    }
+  ],
+  "point_in_time_controls": [
+    "Preserve first-public time, retrieval time, report period, URL, source hash, and correction/withdrawal chain for every material document.",
+    "Do not use a same-session document unless its first-public availability is independently evidenced; otherwise defer usability to the next valid session.",
+    "Store raw prices, corporate actions, adjustment factors, and algorithms separately.",
+    "Treat trading status independently from a displayed closing price.",
+    "Public webpages are evidence locators, not a substitute for licensed historical data, rights, or reproducible delivery."
+  ],
+  "minimum_future_artifacts": [
+    "company_evidence_card",
+    "financial_quality_bridge",
+    "dividend_cashflow_audit",
+    "governance_negative_search_log",
+    "asof_market_and_corporate_action_manifest",
+    "valuation_model_and_audit",
+    "independent_review_findings"
+  ],
+  "sources": [
+    {
+      "id": "C38-S01",
+      "publisher": "Shanghai Stock Exchange",
+      "title": "Listed company announcement query entry point",
+      "publication_date": "dynamic page",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/",
+      "source_quality": "primary_official_locator",
+      "supports": "Official announcement-location route only",
+      "does_not_support": "Historical completeness, data rights, or reproducible market-data delivery"
+    },
+    {
+      "id": "C38-S02",
+      "publisher": "贵州茅台 via Shanghai Stock Exchange",
+      "title": "贵州茅台2025年年度报告",
+      "publication_date": "2026-04-17",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-17/600519_20260417_9QS4.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Primary annual-report locator",
+      "does_not_support": "Quality, valuation, liquidity, or future-distribution conclusion"
+    },
+    {
+      "id": "C38-S03",
+      "publisher": "贵州茅台 via Shanghai Stock Exchange",
+      "title": "贵州茅台2026年半年度报告",
+      "publication_date": "2026-08-15",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-15/600519_20260815_UXBN.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Primary interim-report locator",
+      "does_not_support": "Same-session availability without retained timestamp; any positive investment conclusion"
+    },
+    {
+      "id": "C38-S04",
+      "publisher": "贵州茅台 via Shanghai Stock Exchange",
+      "title": "贵州茅台关于会计政策变更的公告",
+      "publication_date": "2026-08-15",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-15/600519_20260815_6KZK.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Accounting-comparability review trigger",
+      "does_not_support": "A conclusion about the size or sign of any impact"
+    },
+    {
+      "id": "C38-S05",
+      "publisher": "长江电力 via Shanghai Stock Exchange",
+      "title": "长江电力2025年年度报告",
+      "publication_date": "2026-04-30",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-30/600900_20260430_WC8R.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Primary annual-report locator",
+      "does_not_support": "Free-cash-flow, governance, valuation, or liquidity conclusion"
+    },
+    {
+      "id": "C38-S06",
+      "publisher": "长江电力 via Shanghai Stock Exchange",
+      "title": "长江电力2025年年度权益分派实施公告",
+      "publication_date": "2026-07-10",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-10/600900_20260710_T5C7.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Disclosed distribution-event locator",
+      "does_not_support": "Future distribution promise, total return, or cash-flow coverage conclusion"
+    },
+    {
+      "id": "C38-S07",
+      "publisher": "长江电力 via Shanghai Stock Exchange",
+      "title": "长江电力2026年半年度发电量完成情况公告",
+      "publication_date": "2026-07-07",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-07-07/600900_20260707_GHOM.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Operating-driver evidence starting point",
+      "does_not_support": "Audited earnings or forecast"
+    },
+    {
+      "id": "C38-S08",
+      "publisher": "中国神华 via Shanghai Stock Exchange",
+      "title": "中国神华2025年度报告",
+      "publication_date": "2026-03-31",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-03-31/601088_20260331_8EXD.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Primary annual-report locator",
+      "does_not_support": "Cycle position, cash-flow coverage, or valuation conclusion"
+    },
+    {
+      "id": "C38-S09",
+      "publisher": "中国神华 via Shanghai Stock Exchange",
+      "title": "中国神华2026年第一季度报告",
+      "publication_date": "2026-04-25",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-04-25/601088_20260425_84U9.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Primary quarterly-report locator",
+      "does_not_support": "A replacement for subsequent reporting periods"
+    },
+    {
+      "id": "C38-S10",
+      "publisher": "中国神华 via Shanghai Stock Exchange",
+      "title": "中国神华2026年7月份主要运营数据公告",
+      "publication_date": "2026-08-14",
+      "access_date": "2026-08-15",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-14/601088_20260814_HSL7.pdf",
+      "source_quality": "primary_exchange_filing",
+      "supports": "Monthly operating-data evidence starting point",
+      "does_not_support": "Audited profit, governance, valuation, or liquidity conclusion"
+    },
+    {
+      "id": "C38-S11",
+      "publisher": "Shanghai Stock Exchange Information Co.",
+      "title": "Historical data products",
+      "publication_date": "not stated on page",
+      "access_date": "2026-08-15",
+      "url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "source_quality": "official_service_existence",
+      "supports": "Potential licensed historical-data route",
+      "does_not_support": "This case has a licence, delivery, field dictionary, point-in-time completeness, or retention right"
+    },
+    {
+      "id": "C38-S12",
+      "publisher": "China Securities Regulatory Commission",
+      "title": "Measures for the Administration of Information Disclosure by Listed Companies",
+      "publication_date": "current official page",
+      "access_date": "2026-08-15",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653948/content.shtml",
+      "source_quality": "primary_regulatory_rule",
+      "supports": "Statutory disclosure route",
+      "does_not_support": "Issuer-specific completeness or a reproducible data set"
+    }
+  ],
+  "data_quality": {
+    "tier": "primary_disclosure_locator_only",
+    "source_capture_state": "URL locators were checked; no raw PDFs, licensed market data, field dictionary, or data-rights agreement was archived under this bounded artifact.",
+    "warnings": [
+      "No candidate has passed quality, income, governance, liquidity, valuation, point-in-time, or independent-review gates.",
+      "No market-data licence or point-in-time historical delivery has been obtained or asserted.",
+      "Official disclosure availability does not establish tradability, total return, individual tax treatment, or future outcomes.",
+      "A full future research case must archive primary documents beneath sources/ and perform source-governance and independent review."
+    ],
+    "confidence": 45,
+    "confidence_scope": "Feasibility of beginning a narrow issuer-by-issuer primary-document research queue only"
+  },
+  "current_disposition": "NO_STOCK_SELECTION_NO_UNIVERSE_FREEZE_NO_DATA_ACQUISITION_NO_BACKTEST_NO_ACTION",
+  "permitted_next_step": "Create evidence cards and a source registry for the named non-admitted subjects only after preserving original primary documents and defining independent review; no external data procurement or market action is authorized.",
+  "downgrade_rule": "Any missing G0-G9 hard field keeps the issuer at watchlist_only / insufficient_evidence. Do not substitute current lists, adjusted prices, web snippets, or unverified terminal screenshots for the missing evidence."
+}

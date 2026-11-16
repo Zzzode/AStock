@@ -1,0 +1,45 @@
+{
+  "schema_version": "d5pt_review_repair_plan.v1",
+  "artifact_id": "D5PT-R16-PARALLEL-ROUTE-REPAIR-PLAN-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "review_cycle": "parallel_independent_review",
+  "source_review": "analysis/r16_parallel_route_independent_review_20260815.json",
+  "plan_status": "all_repairs_independently_verified_closed",
+  "independent_recheck_artifact": "analysis/r17_r16_repair_independent_recheck_20260815.json",
+  "boundary": "Repairs address disclosure-language, source-record consistency and source-tree hygiene only. They do not alter C37, C39, C40-C42 admission status, calculate a result, select an instrument or authorize an external action.",
+  "items": [
+    {
+      "issue_id": "R16-S-001",
+      "severity": "S",
+      "owner_skill": "research-prose-polish",
+      "owner_agent": "research-prose-polish",
+      "artifact": "analysis/c40_600519_equity_diligence_20260815.md",
+      "repair": "Translate reader-facing substantive English prose, headings, tables and explanatory labels into Chinese while preserving all facts, numbers, sources, qualifications, risks, G0-G9 status and NO_ACTION boundary.",
+      "verification": "Independent reviewer rescans reader-facing prose and confirms the fact-preservation boundary.",
+      "status": "verified_closed"
+    },
+    {
+      "issue_id": "R16-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "analysis/c40_600519_equity_diligence_20260815.json; data/source_registry.json",
+      "repair": "Correct the C40 point-in-time field to distinguish retained, hash-verified query response from unvalidated timestamp semantics, announced-PDF content and same-session availability; update the source-registry hash only after the JSON change.",
+      "verification": "Independent reviewer validates C40-S05, the archive manifest, the JSON field and the S46 registry hash together.",
+      "status": "verified_closed"
+    },
+    {
+      "issue_id": "R16-B-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "sources/probe-sse-600519-announcement-query-20260815/manifest.json",
+      "repair": "Add a zero-capture manifest stating that the empty staging directory is not an evidence source and that the relevant retained anti-bot probes live elsewhere.",
+      "verification": "Independent reviewer confirms the batch remains empty, unreferenced and non-evidentiary.",
+      "status": "verified_closed"
+    }
+  ],
+  "recheck_required": false,
+  "completion_rule": "No item can be marked verified or closed by its repair author. R17 records a read-only independent recheck of the changed artifacts and verifies all three items. This closure does not admit a security, strategy, data route, valuation, action or publication."
+}

@@ -1,0 +1,18 @@
+{
+  "case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "report_type": "strategic_allocation_total_return_research_framework",
+  "data_cutoff": "2026-08-12",
+  "purpose": "First-round REIT candidate records with announced or historical cash-distribution evidence. This is not an exclusive investment universe or eligible implementation list; distribution evidence informs product mechanics, valuation and risk review but does not establish a selection threshold or implementation eligibility.",
+  "candidates": [
+    {"ticker": "508069", "name": "华夏南京交通高速公路REIT", "sector": "收费公路", "manager": "华夏基金", "evidence_status": "historical annual report plus 2026 announced cash distribution", "observed_fact": "2025 annualized cash-flow distribution rate 9.19%; reported internal rate of return 1.44%; 2026 first distribution CNY1.4980 per 10 units.", "source_ids": ["R02", "R03"], "eligibility": "watch_only_pending_current_validation"},
+    {"ticker": "508011", "name": "嘉实物美消费REIT", "sector": "消费基础设施", "manager": "嘉实基金", "evidence_status": "2026 announced cash distribution", "observed_fact": "2025-12-31 distribution-basis amount CNY35.8781m; proposed CNY35.2400m; CNY0.8810 per 10 units.", "source_ids": ["R04"], "eligibility": "watch_only_pending_current_validation"},
+    {"ticker": "508068", "name": "华夏北京保障房REIT", "sector": "保障性租赁住房", "manager": "华夏基金", "evidence_status": "2026 announced cash distribution", "observed_fact": "2025 combined distributable amount CNY74.8239m; distribution CNY0.6000 per 10 units.", "source_ids": ["R05"], "eligibility": "watch_only_pending_current_validation"},
+    {"ticker": "508077", "name": "华夏华润有巢租赁住房REIT", "sector": "租赁住房", "manager": "华夏基金", "evidence_status": "2026 announced cash distribution", "observed_fact": "2025 combined distributable amount CNY50.5599m; distribution CNY0.1462 per 10 units.", "source_ids": ["R06"], "eligibility": "watch_only_pending_current_validation"},
+    {"ticker": "508055", "name": "汇添富上海地产租赁住房REIT", "sector": "租赁住房", "manager": "汇添富基金", "evidence_status": "2026 announced cash distribution", "observed_fact": "2026 first distribution CNY0.5154 per 10 units; proposed amount was 99.9853% of the distribution-basis amount.", "source_ids": ["R07"], "eligibility": "watch_only_pending_current_validation"},
+    {"ticker": "508080", "name": "中金亦庄产业园REIT", "sector": "产业园", "manager": "中金基金", "evidence_status": "2026 announced cash distribution", "observed_fact": "2026 first distribution CNY0.9000 per 10 units.", "source_ids": ["R08"], "eligibility": "watch_only_pending_current_validation"},
+    {"ticker": "508096", "name": "中航京能光伏REIT", "sector": "新能源", "manager": "中航基金", "evidence_status": "2026 announced cash distribution", "observed_fact": "2025 second distribution CNY3.3178 per 10 units; the notice states cash distribution and no minimum-return guarantee.", "source_ids": ["R09"], "eligibility": "watch_only_pending_current_validation"}
+  ],
+  "portfolio_construction_rule": "At least five independently eligible candidates, no more than 5% of portfolio per REIT and 10% per manager. No use of a one-quarter annualization, forecast distribution or historical rate as a current eligibility substitute.",
+  "warnings": ["Public REITs are closed-end exchange-traded funds; cash distributions may reduce NAV.", "The candidate pool has more than one rental-housing exposure and must be screened for sector correlation before activation.", "Historical cash-flow distribution rate is not total return and cannot support a future 5% return claim."]
+}

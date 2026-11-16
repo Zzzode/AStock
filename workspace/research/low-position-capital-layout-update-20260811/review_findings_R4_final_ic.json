@@ -1,0 +1,163 @@
+{
+  "cycle": "R4_final_ic",
+  "reviewed_at": "2026-08-11",
+  "publishability_status": "BLOCKED",
+  "institutional_status": "BLOCKED",
+  "publishability_score": 30,
+  "open_s_count": 2,
+  "open_a_count": 0,
+  "review_scope": {
+    "files_reviewed": [
+      "gate_manifest.md",
+      "gate_manifest.json",
+      "artifact_contract.md",
+      "artifact_contract.json",
+      "main.tex",
+      "main_current_text.txt",
+      "sections/ch01_decision.tex",
+      "sections/ch08_sources.tex",
+      "analysis/house_view.md",
+      "analysis/valuation_model.md",
+      "analysis/valuation_audit.md",
+      "analysis/risk_framework.md",
+      "analysis/variant_perception.md",
+      "data/current_valuation_model_20260811.json",
+      "data/broker_street_consensus_20260811.json",
+      "data/source_registry.json",
+      "data/claim_audit.json",
+      "source_exhaustion_log.md",
+      "review_findings_R0_evidence.json",
+      "review_findings_R1_model.json",
+      "review_findings_R2_draft.json",
+      "review_findings_R3_render_compliance.json"
+    ],
+    "not_applicable": [
+      "Full-chain supply-chain suite: the gate manifest and R1 review classify this case as a cross-sector valuation refresh, not a full industry-chain report.",
+      "Growth-earnings model suite: this update issues no AI/order/ASP/segment-growth valuation credit or AStock target."
+    ],
+    "final_signoff_handling": "No final_signoff.md/json was written or endorsed because the required R3 build, render, verifier, and issue closures are absent."
+  },
+  "verifier_summary": {
+    "case_verifier_command": "python3 tools/verify_research_workspace.py",
+    "case_verifier_result": "36 PASS / 3 FAIL",
+    "case_verifier_failures": [
+      "required MacTeX XeLaTeX is available: not available in this runtime",
+      "PDF deliverable exists: not generated",
+      "rendered-page review material exists: no page PNGs"
+    ],
+    "repository_gate_command": "python3 workspace/research/tools/run_research_gates.py workspace/research/low-position-capital-layout-update-20260811",
+    "repository_gate_result": "84 PASS / 27 FAIL",
+    "repository_gate_open_s_count": 5,
+    "repository_gate_open_unwaived_a_count": 0,
+    "publication_gate": "FAIL",
+    "relevant_failures": [
+      "main.pdf absent",
+      "generic case verifier fails because MacTeX, the PDF, and rendered pages are unavailable",
+      "final sign-off correctly remains absent while material blockers are open",
+      "workflow evaluation is explicitly blocked until the R3 build/render chain passes"
+    ]
+  },
+  "findings": [
+    {
+      "issue_id": "R4-S-001",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "review_findings_R3_render_compliance.json:R3-S-001; main.pdf; rendered/",
+      "evidence": "R3 remains open: the source report has not been compiled to main.pdf and there are no rendered pages. As a result, R4 cannot verify page count, final reader-facing text, visual integrity, source-note legibility, or whether the decision/valuation exhibits are institutionally readable.",
+      "fix_required": "Close R3-S-001 through a MacTeX XeLaTeX build and page-by-page R3 render review before reopening R4.",
+      "blocking_gate": "R3_render_compliance",
+      "status": "open",
+      "verifier_ref": "gate_manifest.json; artifact_contract.json; review_findings_R3_render_compliance.json",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-S-002",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "internal-control",
+      "artifact": "tools/verify_research_workspace.py; review_findings_R0_evidence.json:R0-S-002",
+      "evidence": "The case-local verifier is present and runnable, but returns 36 PASS / 3 FAIL because MacTeX XeLaTeX is unavailable, main.pdf is not generated, and no page PNGs exist. The repository research gate is therefore 72 PASS / 35 FAIL rather than a publication pass.",
+      "fix_required": "Resolve the three underlying build/render failures, refresh the underlying case artifacts rather than bypassing checks, obtain 39 PASS / 0 FAIL from the case directory, and re-run the repository research gate.",
+      "blocking_gate": "generic_case_verifier_pass",
+      "status": "open",
+      "verifier_ref": "workspace/research/tools/run_research_gates.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-S-003",
+      "severity": "S",
+      "owner_skill": "reports",
+      "owner_agent": "report-collector",
+      "artifact": "data/broker_street_consensus_20260811.json:27-35; data/current_valuation_model_20260811.json",
+      "evidence": "Resolved and re-verified. data/current_valuation_model_20260811.json now has 13 explicit zero-house-weight no-target dispositions, and all eight former flat broker rows carry explicit no-target/not-disclosed fields rather than null values. The case verifier passes `13 current valuation dispositions`; the repository gate passes both broker row-completeness and broker-anchor-usability checks without inventing targets or upside.",
+      "fix_required": "Completed. Preserve explicit no-target field values, zero broker/house weights, source-exhaustion links, and the full 13-name coverage when either packet is refreshed.",
+      "blocking_gate": "none",
+      "status": "verified",
+      "verification_evidence": "python3 tools/verify_research_workspace.py: PASS 23 13 current valuation dispositions; workspace/research/tools/run_research_gates.py: PASS broker/street consensus row fields complete and PASS broker/street consensus values usable for valuation anchor",
+      "verifier_ref": "tools/verify_research_workspace.py; workspace/research/tools/run_research_gates.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-S-004",
+      "severity": "S",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "review_findings_R1_model.json:R1-S-001; data/current_valuation_model_20260811.json",
+      "evidence": "Resolved and re-verified by the R1 owner. review_findings_R1_model.json now records R1-S-001 and R1-S-002 as resolved, with case-local checks 23-26 and the repository valuation checks as verification evidence. The 13-name valuation disposition, explicit no-target fields, and zero house weights are all present; no legacy open R1 S-Level lifecycle item remains.",
+      "fix_required": "Completed. Preserve R1 field-level verification whenever the valuation-disposition or broker packets change, and reopen R1 only if a new model defect is introduced.",
+      "blocking_gate": "none",
+      "status": "verified",
+      "verification_evidence": "review_findings_R1_model.json:R1-S-001,R1-S-002 status=resolved; tools/verify_research_workspace.py PASS 23-26; workspace/research/tools/run_research_gates.py valuation checks PASS",
+      "verifier_ref": "review_findings_R1_model.json; tools/verify_research_workspace.py; workspace/research/tools/run_research_gates.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "internal-control",
+      "artifact": "review_log.md; repair_plan_R0_evidence.md/json; repair_plan_R1_model.md/json; repair_plan_R3_render_compliance.md/json; research_workflow_eval.md/json",
+      "evidence": "Resolved and re-verified. All R0/R1/R3 repair-plan MD/JSON pairs, review_log.md, and research_workflow_eval.md/json now exist. The log and workflow packet explicitly state BLOCKED/not publishable with score 30 and the same three R3 environment failures. final_signoff.md/json remains absent deliberately because publication conditions are not met, rather than being a missing PASS artifact.",
+      "fix_required": "Completed for the blocked state. Refresh the log, workflow evaluation, repair plans, and inventories after a future PDF rebuild; issue final_signoff.md/json only after all publication gates pass.",
+      "blocking_gate": "none",
+      "status": "verified",
+      "verification_evidence": "repair_plan_R0_evidence.md/json; repair_plan_R1_model.md/json; repair_plan_R3_render_compliance.md/json; review_log.md:5-24; research_workflow_eval.md:3-7; research_workflow_eval.json:20-24",
+      "verifier_ref": "workspace/research/tools/run_research_gates.py required-artifact, review-lifecycle, and workflow-evaluation checks",
+      "reopened_count": 0
+    }
+  ],
+  "confirmed_strengths": [
+    {
+      "claim": "The current source documents preserve the no-house-target boundary and do not substitute historical or broker values for an AStock target.",
+      "evidence": "main.tex:18-23; data/current_valuation_model_20260811.json:1-9; review_findings_R2_draft.json confirmed_correct"
+    },
+    {
+      "claim": "The evidence path is auditable enough to support a future R3/R4 rerun once build and governance prerequisites are supplied.",
+      "evidence": "sections/ch08_sources.tex:5-22; source_exhaustion_log.md:5-12; data/source_registry.json; data/claim_audit.json"
+    },
+    {
+      "claim": "R2 narrative findings are verified but appropriately not treated as final publication clearance.",
+      "evidence": "review_findings_R2_draft.json: open_s_count=0, open_a_count=0, deferred_checks"
+    },
+    {
+      "claim": "The all-covered-ticker no-target disposition is now structurally complete without fabricating a broker or AStock target.",
+      "evidence": "data/current_valuation_model_20260811.json: 13 rows; data/broker_street_consensus_20260811.json; case verifier PASS 23; repository-gate broker checks PASS"
+    },
+    {
+      "claim": "The R0/R1/R3 repair lifecycle and blocked-state governance are now complete enough for an honest non-publication record.",
+      "evidence": "repair_plan_R0_evidence.md/json; repair_plan_R1_model.md/json; repair_plan_R3_render_compliance.md/json; review_log.md; research_workflow_eval.md/json"
+    }
+  ],
+  "required_next_fixes": [
+    "Resolve the three case-verifier build/render failures and then pass the authoritative case verifier at 39 PASS / 0 FAIL.",
+    "Compile with MacTeX XeLaTeX, generate rendered pages, refresh every PDF-dependent audit artifact, and close R3 through visual inspection.",
+    "Re-run the repository gate to PASS after the render closure and complete a fresh R4 issue-closure review.",
+    "Only after zero open S-Level and unwaived A-Level issues, a clean verifier/gate result, score at least 90, and no material residual-risk conflict may final_signoff.md/json be written."
+  ],
+  "final_signoff": {
+    "issued": false,
+    "signoff_status": "NOT_ISSUED",
+    "reason": "Publication is blocked by unresolved R3 render and verifier gates."
+  }
+}

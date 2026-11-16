@@ -1,0 +1,35 @@
+{
+  "artifact_id": "D5PT-R02-v1",
+  "as_of": "2026-08-15",
+  "audit_scope": "sealed-source reconstruction of M01 plus R01 boundary validation",
+  "conclusion": "The published proxy arithmetic is independently reproducible, but its stated limitations remain binding: no total-return, execution, personal-access or stable-return conclusion follows from this result.",
+  "failures": [],
+  "independent_reconstruction": {
+    "annualized_market_price_proxy_change_after_illustrative_cost": 0.0729205473,
+    "complete_year_count": 11,
+    "final_unit_value": 2.2510029664,
+    "max_drawdown": -0.2493562145,
+    "rebalance_events": 144,
+    "rolling_endpoint_count": 81,
+    "total_one_way_turnover": 15.4373631514
+  },
+  "r01_boundary": {
+    "annual_or_rolling_floor": "not asserted",
+    "external_orders": false,
+    "status": "paper_benchmark_only_not_stable_return_admission"
+  },
+  "result": "PASS",
+  "schema_version": "independent_m01_r01_audit.v1",
+  "source_control": {
+    "codes": [
+      "510300",
+      "510880",
+      "511010",
+      "511990",
+      "518880"
+    ],
+    "common_observations": 3173,
+    "manifest": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/manifest.json",
+    "manifest_sha256": "bb0550c4eaa207ece0eaa00c2410eff13516ade63bc859136a7848f1891822b0"
+  }
+}

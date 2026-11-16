@@ -1,0 +1,70 @@
+{
+  "schema_version": "c16_actual_contract_settlement_diagnostic_protocol.v1",
+  "artifact_id": "D5PT-C16-PROTOCOL-v2",
+  "as_of": "2026-08-15",
+  "status": "FROZEN_BEFORE_CALCULATION",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "purpose": "A bounded, gross, actual-contract settlement-mark diagnostic. It tests whether a predeclared signal can be reconstructed from retained exchange EOD responses; it is not an executable futures strategy or investor-return test.",
+  "source_dependency": {
+    "manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest.json",
+    "manifest_sha256": "34e23ddf886bd1f1f6cb88610d8d730bd757c981b92b0aa51720c5471b1186d7",
+    "readiness_audit_path": "analysis/c15_shfe_actual_contract_eod_source_readiness_20260815.json",
+    "readiness_audit_sha256": "5413d17d4db0654432d1e25e462dd51fd9c2a4591e94ee573f5cf4da70885470"
+  },
+  "source_control_amendment": {
+    "reason": "The C15 manifest was regenerated from unchanged raw gzip responses to replace a static UI field with each response's report_date. No raw response hash, URL, retrieval record or signal rule changed.",
+    "previous_manifest_sha256": "e965c01fbd3ad1a8758c64074ae322f5412c39613d9671332fabc1a3122bd732",
+    "recalculation_required": true
+  },
+  "universe": {
+    "families": ["AU", "CU", "RU"],
+    "contract_identity": "Each observation and held mark uses an actual listed contract code constructed from product family and delivery month. No continuous or dominant-contract series is allowed.",
+    "scheduled_delivery_boundary": "The eligibility screen uses the calendar 15th of the delivery month derived from the contract code. This is a conservative research approximation only; it is not an exchange-adjusted last-trading-day or delivery-state record."
+  },
+  "weekly_signal": {
+    "signal_session": "The last retained exchange response in each ISO calendar week.",
+    "effectiveness": "The next retained exchange response after the signal session, marked at that response's settlement price only.",
+    "eligible_scheduled_days_to_delivery": {"minimum": 90, "maximum": 270},
+    "required_current_fields_positive": ["SETTLEMENTPRICE", "VOLUME", "OPENINTEREST"],
+    "required_history": {
+      "same_actual_contract_valid_settlement_observations_including_signal": 66,
+      "same_actual_contract_valid_ohlc_observations": 20,
+      "same_actual_contract_volume_median_observations": 20,
+      "minimum_median_volume": 1000,
+      "minimum_current_open_interest": 5000
+    },
+    "selection_rank": ["open_interest_desc", "volume_desc", "delivery_month_asc"],
+    "slow_signal": {"lookback_valid_observations": 65, "long_at_or_above": 0.04, "short_at_or_below": -0.04},
+    "fast_signal": {"lookback_valid_observations": 20, "long_at_or_above": 0.0, "short_at_or_below": 0.0},
+    "direction": {
+      "long": "slow >= 4% and fast >= 0%",
+      "short": "slow <= -4% and fast <= 0%",
+      "flat": "all other cases, or any incomplete selection/history check"
+    },
+    "parameter_search": "prohibited"
+  },
+  "unitized_settlement_mark": {
+    "position_weight_per_active_family": 0.3333333333333333,
+    "weight_method": "Every active family receives one equal notional diagnostic sleeve; unassigned sleeve weight has a zero mark. Fractional exposure is a calculation device, not an order size.",
+    "daily_mark": "For every held actual contract, apply the signed settlement-price change from the prior retained response to the current retained response. First mark the prior held book; then replace it with the target produced by any effective weekly signal.",
+    "unitization": "The diagnostic value index begins at 1.0 on its first marked session and evolves only from the defined gross settlement marks.",
+    "missing_mark_policy": "If a held actual contract lacks a valid prior or current settlement mark, stop the diagnostic as not decidable. Do not forward-fill, substitute a contract or infer a fill.",
+    "cost_margin_collateral_policy": "No broker commission, exchange fee, bid/ask, slippage, margin, collateral return, tax, limit-lock, delivery, funding or account condition is imputed. The resulting series is therefore gross and non-executable."
+  },
+  "evaluation": {
+    "source_covered_calendar_year": "A year is reported only if every retained response in that year is marked, a prior retained response exists for the opening mark, the first retained response is in the first seven calendar days of January, and the last retained response is in the final eight calendar days of December. This is source coverage, not a verified exchange-calendar completeness claim.",
+    "rolling_five_year": "Use monthly retained-response endpoints. For each endpoint, compare to the last retained response on or before the same calendar date five years earlier; annualize using actual calendar days. Endpoints with fewer than 1200 retained response points inclusive of both endpoints are excluded.",
+    "research_screen": {
+      "threshold": 0.05,
+      "rule": "Any source-covered calendar year or eligible rolling-five-year endpoint below 5% makes this gross diagnostic non-positive for the strict screen. A positive result would still not admit an executable strategy."
+    }
+  },
+  "prohibitions": [
+    "No use of a continuous, back-adjusted or dominant-contract series.",
+    "No use of an account-specific condition, order, holding, broker route, allocation or external action.",
+    "No inference of exchange-adjusted final trading days, historical margin, fees, limit state, fill or personal access from the retained EOD responses.",
+    "No promotion to stable five-percent, net return or usable-strategy status irrespective of the diagnostic output."
+  ]
+}

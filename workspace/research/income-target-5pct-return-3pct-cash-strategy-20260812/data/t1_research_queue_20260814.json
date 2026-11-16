@@ -1,0 +1,187 @@
+{
+  "schema_version": "t1_research_nomination_queue.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_evidence",
+  "purpose": "A compact, structure-diverse T1 research queue for an open China public-market universe. It is not a dated T2 decision universe, approved investable universe, portfolio, trade list, distribution objective or allocation instruction.",
+  "current_state": {
+    "tier": "T1_open_research_universe",
+    "all_candidates_q": 0,
+    "formal_decision_eligible": false,
+    "investment_implementation_approved": false,
+    "direct_equity_selection_complete": false,
+    "current_action": "continue_diligence_only"
+  },
+  "source_boundary": {
+    "evidence_status": "R0 primary-source capture is complete for the initial 11-item queue. Evidence-limited R1 diligence now exists for the direct-equity, fund/sovereign and REIT groups, but no item has passed R1; R2 valuation, market and execution work remains pending for every item.",
+    "quality_tier": "tier_1_primary_links_for_nomination_only",
+    "archive_boundary": "The pre-existing official-20260812 source archive remains unchanged. The initial queue has separately captured source batches in sources/official-continuation-20260814/, sources/official-fund-sovereign-continuation-20260814/, sources/official-fund-sovereign-r1-20260814/ and sources/official-reit-continuation-20260814/. Capture establishes R0 facts and evidence-limited R1 framing only; each later admission claim requires independently reconciled R1/R2 and current-market evidence.",
+    "prohibited_inferences": [
+      "A linked filing or product disclosure makes a candidate investable.",
+      "A fund NAV result, distribution rate, coupon, price history or cash-flow distribution rate is investor total return.",
+      "A current eligibility, liquidity, tax, valuation, suitability or execution conclusion can be inferred from historical reports.",
+      "The queue permanently excludes candidates not listed here."
+    ]
+  },
+  "common_admission_gates": [
+    "Freeze a dated T2 decision universe with selection, substitution, weighting, rebalancing and available-at rules before reading a result as strategy evidence.",
+    "Capture an authoritative or licensed point-in-time total-return, corporate-action, calendar, halt, price-limit, delisting and liquidity archive.",
+    "Complete a structure-appropriate R0-R4 item dossier, including current valuation where applicable and a dated source registry.",
+    "Reconcile instrument-specific costs, taxes, settlement, account access, market price versus NAV/reference value and capacity.",
+    "Pass portfolio-level overlap, common-risk, stress, concentration and independent risk-budget review.",
+    "Obtain a current-session market and suitability packet before any future implementation review."
+  ],
+  "candidates": [
+    {
+      "code": "600036.SH",
+      "name": "招商银行",
+      "asset_class": "direct_a_share_equity",
+      "research_rationale": "Interest-rate, credit-quality, capital and provisioning dynamics provide a distinct bank-specific research case and diversify the first issuer queue from manufacturing and hydroelectricity.",
+      "official_sources": [
+        {"title": "FY2025 audited annual results", "url": "https://s3gw.cmbimg.com/lb5001-cmbweb-prd-1255000097/cmbir/20260330/46cdb2dc-a9ea-4211-b745-d47c9bbabaa4.pdf"},
+        {"title": "Q1 2026 report", "url": "https://s3gw.cmbimg.com/lb5001-cmbweb-prd-1255000097/cmbir/20260429/6b01837c-2145-4974-a14a-b13582376c56.pdf"}
+      ],
+      "remaining_item_blockers": ["PB-ROTE-cost-of-equity valuation", "net-interest-margin, credit-quality, provisioning and capital model", "property and retail-credit exposure", "regulatory and related-party review", "post-Q1 announcement scan", "dated float, liquidity, suspension, price-limit and corporate-action packet"],
+      "r0_evidence_artifact": "data/direct_equity_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "600900.SH",
+      "name": "长江电力",
+      "asset_class": "direct_a_share_equity",
+      "research_rationale": "Hydrology, tariff and operating-asset exposure form a distinct issuer-level cash-flow and operating-risk case.",
+      "official_sources": [
+        {"title": "FY2025 annual report", "url": "https://www.cypc.com.cn/cypc/attachDir/2026/05/2026051815345898336.pdf"},
+        {"title": "Q1 2026 report", "url": "https://www.ctg.com.cn/cypc/attachDir/2026/05/2026051815335596092.pdf"}
+      ],
+      "remaining_item_blockers": ["hydrology/inflow and tariff sensitivity", "debt, related-party and asset-acquisition bridge", "current-price valuation", "governance review", "dated float/liquidity and corporate-action packet", "issuer and sector overlap review"],
+      "r0_evidence_artifact": "data/direct_equity_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "000333.SZ",
+      "name": "美的集团",
+      "asset_class": "direct_a_share_equity",
+      "research_rationale": "Consumer appliances, industrial technology and overseas operations add a different earnings, FX, inventory and supply-chain case.",
+      "official_sources": [
+        {"title": "FY2025 annual report", "url": "https://disc.static.szse.cn/download/disc/disk03/finalpage/2026-03-31/70e81c5f-97d4-4c87-8e4b-fcc5a3bcd361.PDF"},
+        {"title": "Q1 2026 report", "url": "https://disc.static.szse.cn/disc/disk03/finalpage/2026-04-30/94fd7f9f-c1f7-4a30-8d6a-5a366aeec23b.PDF"}
+      ],
+      "remaining_item_blockers": ["segment and geography earnings bridge", "FX, tariff and export sensitivity", "inventory and cash-conversion review", "A/H share-count reconciliation", "current-price valuation and governance review", "dated liquidity and corporate-action packet"],
+      "r0_evidence_artifact": "data/direct_equity_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "512500.SH",
+      "name": "华夏中证500ETF",
+      "asset_class": "listed_equity_etf",
+      "research_rationale": "Broad listed mid-cap equity exposure is a transparent benchmark and overlap comparison candidate.",
+      "official_sources": [
+        {"title": "Manager disclosure archive", "url": "https://www.chinaamc.com.cn/product/publishGgList.do?fundcode=512500"},
+        {"title": "Official NAV and holdings page", "url": "https://www.chinaamc.com.cn/fund/512500/zichanzuhe.shtml?source=click"}
+      ],
+      "remaining_item_blockers": ["freeze dated constituents and weights", "direct-equity overlap", "market price, NAV and IOPV reconciliation", "tracking, securities lending and derivatives review", "creation/redemption mechanics", "spread, depth, fees, tax and settlement"],
+      "r0_evidence_artifact": "data/fund_sovereign_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "510880.SH",
+      "name": "华泰柏瑞上证红利ETF",
+      "asset_class": "listed_equity_etf",
+      "research_rationale": "Dividend-factor equity exposure must compete on total-return and holdings-overlap evidence, not on a distribution label.",
+      "official_sources": [
+        {"title": "FY2025 annual report", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-31/510880_20260331_JVU4.pdf"},
+        {"title": "2026 distribution notice", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-01-16/510880_20260116_DSHH.pdf"}
+      ],
+      "remaining_item_blockers": ["dated holdings and industry concentration", "overlap with direct stocks and REITs", "receipt, tax and capital-component ledger", "market price versus NAV", "current spread, depth and capacity", "total-return reconstruction without double counting", "the captured 2024 five-year fund-NAV figure is stale and excludes holder trading/subscription costs"],
+      "r0_evidence_artifact": "data/fund_sovereign_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "260008",
+      "name": "2026年记账式附息国债08",
+      "asset_class": "direct_sovereign",
+      "research_rationale": "A direct sovereign structure can be compared with a Treasury ETF without assuming that the two share access, settlement or liquidity characteristics.",
+      "official_sources": [
+        {"title": "Ministry of Finance issue notice", "url": "https://zwgls.mof.gov.cn/ywgg/202604/t20260414_3987577.htm"},
+        {"title": "CFETS/ChinaMoney listing", "url": "https://www.chinamoney.com.cn/chinese/ltss1/20260416/3317300.html"}
+      ],
+      "remaining_item_blockers": ["account and custody access", "current clean/dirty price and accrued-interest ledger", "bid/offer and settlement method", "fees and tax", "duration and realized-sale risk", "portfolio rate-stress contribution", "hard five-year-history failure: this specific security was issued in April 2026"],
+      "r0_evidence_artifact": "data/fund_sovereign_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "511010.SH",
+      "name": "国泰上证5年期国债ETF",
+      "asset_class": "listed_treasury_etf",
+      "research_rationale": "Listed five-year Treasury-index exposure is structurally different from direct sovereign ownership and needs its own price/NAV and rate-risk review.",
+      "official_sources": [
+        {"title": "2026 product summary", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-19/511010_20260319_W8OE.pdf"},
+        {"title": "FY2025 annual report", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-30/511010_20260330_8BME.pdf"}
+      ],
+      "remaining_item_blockers": ["current index basket, duration, DV01 and convexity", "market price/NAV/IOPV", "tracking and creation/redemption", "spread, depth, fee, tax and settlement", "rate-stress review", "total-return ledger"],
+      "r0_evidence_artifact": "data/fund_sovereign_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "511880.SH",
+      "name": "银华日利货币ETF",
+      "asset_class": "listed_money_market_etf",
+      "research_rationale": "A money-market ETF is a candidate for comparison with protected liquidity, not a protected-liquidity assertion by default.",
+      "official_sources": [
+        {"title": "Product summary", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2024-06-28/511880_20240628_XXKU.pdf"},
+        {"title": "Q1 2026 report", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-04-21/511880_20260421_RXR8.pdf"}
+      ],
+      "remaining_item_blockers": ["current portfolio, repo and counterparty exposure", "trading and primary-market mechanics", "premium/discount and capacity", "fees, tax and account eligibility", "same-day turnover rule", "comparison with an actually eligible protected-liquidity alternative"],
+      "r0_evidence_artifact": "data/fund_sovereign_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "508069.SH",
+      "name": "华夏南京交通高速公路REIT",
+      "asset_class": "public_reit",
+      "research_rationale": "A toll-road project provides traffic, concession and financing economics distinct from rental-housing and energy projects.",
+      "official_sources": [
+        {"title": "FY2025 annual report", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-27/508069_20260327_816L.pdf"},
+        {"title": "2026 distribution notice", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-06-10/508069_20260610_JCQ1.pdf"}
+      ],
+      "remaining_item_blockers": ["traffic, toll and concession model", "debt and shareholder-loan bridge", "project NAV valuation date", "2026 operating KPIs", "current price/spread/lot/free-float/tax/capacity", "market-price total-return ledger", "hard five-year-history failure: listed 2024-11-01"],
+      "r0_evidence_artifact": "data/reit_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "508068.SH",
+      "name": "华夏北京保障房REIT",
+      "asset_class": "public_reit",
+      "research_rationale": "Rental housing is a different operating case and the 2025 follow-on offering makes historical comparability a specific research question.",
+      "official_sources": [
+        {"title": "SSE REIT periodic-disclosure portal", "url": "https://www.sse.com.cn/reits/announcements/periodic/"},
+        {"title": "2026 distribution notice", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-05-13/508068_20260513_2QMJ.pdf"},
+        {"title": "SSE follow-on-offering release", "url": "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20250625_10783026.shtml"}
+      ],
+      "remaining_item_blockers": ["pre/post-follow-on comparability", "occupancy, rent collection, lease expiry, capex and debt", "NAV timing", "current price/liquidity/free-float", "rental-housing cluster overlap", "distribution classification and tax", "hard five-year-history failure: listed 2022-08-31"],
+      "r0_evidence_artifact": "data/reit_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "508096.SH",
+      "name": "中航京能国际能源REIT",
+      "asset_class": "public_reit",
+      "research_rationale": "Energy-project exposure requires asset-inventory, tariff, generation and receivable analysis; the name change after added hydropower assets makes identity control material.",
+      "official_sources": [
+        {"title": "FY2025 annual report", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-31/508096_20260331_UYPB.pdf"},
+        {"title": "Official name-change notice", "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-02-13/508096_20260213_XUHW.pdf"}
+      ],
+      "remaining_item_blockers": ["current asset inventory", "generation, tariff and subsidy-receivable model", "working-capital/debt/refinancing", "valuation/NAV date", "current price/spread/liquidity", "common-offtaker and sector-correlation review", "hard five-year-history failure: listed 2023-03-29"],
+      "r0_evidence_artifact": "data/reit_r0_fact_pack_20260814.json",
+      "status": "T1_watch_only_q0"
+    }
+  ],
+  "next_research_order": [
+    "Close the documented R1 legal, operating, governance and driver gaps and complete R2 valuation/market-access dossiers for every current nominee, including current-price/NAV, valuation or appropriate risk-return model, catalyst/invalidation and cross-holding analysis.",
+    "Reject or replace candidates that mechanically cannot support a five-year observed-history test, including 260008 and the current short-history REIT nominees; do not conceal the history gap with fund-NAV or distribution proxies.",
+    "Build the authorised point-in-time total-return/event, cost, tax, market-status and execution data path specified in data/replay_feasibility_and_gap_assessment_20260814.json.",
+    "Only then freeze a finite T2 comparison set and an OU-TR5-v1 rulebook for a separate, source-consistent unitized replay.",
+    "China Mobile is deferred pending a fully captured FY2025 and Q1 2026 primary-document packet; this is a sequencing choice, not a permanent exclusion."
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "schema_version": "domestic_5pct_target_paper_observation_ledger.v1",
+  "rulebook_id": "D5PT-R01-v1",
+  "purpose": "Monthly evidence ledger for a paper-only ETF rule. One row is required for each calendar-month observation, including no-action outcomes.",
+  "required_fields": ["observation_month", "signal_date", "effective_date", "source_hashes", "available_at", "signal_equity", "signal_bond", "signal_gold", "selected_sleeves", "target_510300", "target_510880", "target_511010", "target_518880", "target_511990", "product_document_check", "account_eligibility_check", "market_status_check", "iopv_check", "bid_ask_timestamp", "fee_record", "lot_and_settlement_check", "scheduled_action", "paper_fill_status", "no_action_reason", "actual_weight_510300", "actual_weight_510880", "actual_weight_511010", "actual_weight_518880", "actual_weight_511990", "settlement_residual", "distribution_or_event_record", "reconciliation_status", "review_notes"],
+  "allowed_paper_fill_status": ["filled", "partially_filled", "no_action", "cancelled", "suspended"],
+  "invariant": "No missing required field is converted into an estimated fill, price, fee or settlement state."
+}

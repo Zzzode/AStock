@@ -1,0 +1,88 @@
+{
+  "schema_version": "c17_diversified_actual_contract_settlement_protocol.v1",
+  "artifact_id": "D5PT-C17-PROTOCOL-v2",
+  "as_of": "2026-08-15",
+  "status": "FROZEN_BEFORE_CALCULATION",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "purpose": "A separate, predeclared gross actual-contract settlement-mark diagnostic across five economically distinct SHFE families. It tests a fixed signal reconstruction from retained exchange EOD responses. It is not an executable futures strategy, investor-return test or action instruction.",
+  "hypothesis_governance": {
+    "relationship_to_c16": "C17 is a new hypothesis, not an amendment, optimization or repair of C16 after its strict-screen failure.",
+    "universe_rationale": "AU, CU, RB, RU and SP were selected before calculation to span precious metals, nonferrous industrial metals, construction steel, natural rubber and softwood pulp. All five have valid rows throughout the retained 2019--2025 SHFE response set.",
+    "parameter_search": "prohibited",
+    "post_result_rule": "No parameter, family or evaluation change may be made to repair the C17 result. A distinct later hypothesis requires a new frozen protocol and independent review."
+  },
+  "source_dependency": {
+    "actual_contract_manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest.json",
+    "actual_contract_manifest_sha256": "34e23ddf886bd1f1f6cb88610d8d730bd757c981b92b0aa51720c5471b1186d7",
+    "source_readiness_audit_path": "analysis/c15_shfe_actual_contract_eod_source_readiness_20260815.json",
+    "source_readiness_audit_sha256": "5413d17d4db0654432d1e25e462dd51fd9c2a4591e94ee573f5cf4da70885470",
+    "legacy_product_diligence_path": "analysis/p02_shfe_actual_contract_product_diligence_20260815.json",
+    "legacy_product_diligence_artifact_id": "D5PT-P02-v1",
+    "legacy_product_diligence_sha256": "603c6bc79de06b40913f7ad48c18346ecb19dad0c09fe9493de90c9b90357499",
+    "expanded_product_diligence_path": "analysis/p03_shfe_expanded_actual_contract_product_diligence_20260815.json",
+    "expanded_product_diligence_sha256": "bf7deea405abc9957e2ef857921606d0488285a269dd5127e43dcc1b540dd9c6",
+    "expanded_product_source_manifest_sha256": "dbc39e8c0d3789cb88d2267dca285b1b4cf58f1ca65e235471e0c250d8c12ec8"
+  },
+  "source_control_amendment": {
+    "reason": "C17 v1 froze the P03 primary-source manifest but identified P02 and P03 only by artifact ID. This v2 amendment binds the unchanged product-diligence artifact bytes by SHA-256. It changes no universe, signal, weight, mark, evaluation or raw-source rule.",
+    "previous_protocol_sha256": "b4f1cc80832017062513adcebd9f5af455c53e7d8d5f51b7dc8170787e3d8d3d",
+    "recalculation_required": true
+  },
+  "universe": {
+    "families": ["AU", "CU", "RB", "RU", "SP"],
+    "family_economic_roles": {
+      "AU": "precious metal",
+      "CU": "nonferrous industrial metal",
+      "RB": "construction steel",
+      "RU": "natural rubber",
+      "SP": "softwood pulp"
+    },
+    "contract_identity": "Each observation and held mark must use an actual listed contract code constructed from product family and delivery month. Continuous, back-adjusted, dominant-contract and stitched series are forbidden.",
+    "scheduled_delivery_boundary": "The eligibility screen uses the calendar 15th of the delivery month derived from the contract code. This is a conservative research approximation only; it is not an exchange-adjusted final-trading-day, delivery-state or position-limit record."
+  },
+  "weekly_signal": {
+    "signal_session": "The last retained exchange response in each ISO calendar week.",
+    "effectiveness": "The next retained exchange response after the signal session, marked at that response's settlement price only.",
+    "eligible_scheduled_days_to_delivery": {"minimum": 90, "maximum": 270},
+    "required_current_fields_positive": ["SETTLEMENTPRICE", "VOLUME", "OPENINTEREST"],
+    "required_history": {
+      "same_actual_contract_valid_settlement_observations_including_signal": 66,
+      "same_actual_contract_valid_ohlc_observations": 20,
+      "same_actual_contract_volume_median_observations": 20,
+      "minimum_median_volume": 1000,
+      "minimum_current_open_interest": 5000
+    },
+    "selection_rank": ["open_interest_desc", "volume_desc", "delivery_month_asc"],
+    "slow_signal": {"lookback_valid_observations": 65, "long_at_or_above": 0.04, "short_at_or_below": -0.04},
+    "fast_signal": {"lookback_valid_observations": 20, "long_at_or_above": 0.0, "short_at_or_below": 0.0},
+    "direction": {
+      "long": "slow >= 4% and fast >= 0%",
+      "short": "slow <= -4% and fast <= 0%",
+      "flat": "all other cases, or any incomplete selection/history check"
+    }
+  },
+  "unitized_settlement_mark": {
+    "position_weight_per_active_family": 0.2,
+    "weight_method": "Every active family receives one equal-notional diagnostic sleeve; an unassigned sleeve has a zero mark. Fractional exposure is a calculation device, not an order size.",
+    "daily_mark": "For every held actual contract, apply the signed settlement-price change from the prior retained response to the current retained response. First mark the prior held book; then replace it with the target produced by any effective weekly signal.",
+    "unitization": "The diagnostic value index begins at 1.0 on its first marked session and evolves only from the defined gross settlement marks.",
+    "missing_mark_policy": "If a held actual contract lacks a valid prior or current settlement mark, stop the diagnostic as not decidable. Do not forward-fill, substitute a contract or infer a fill.",
+    "cost_margin_collateral_policy": "No broker commission, exchange fee, bid/ask, slippage, margin, collateral return, tax, limit-lock, delivery, funding or account condition is imputed. The resulting series is therefore gross and non-executable."
+  },
+  "evaluation": {
+    "source_covered_calendar_year": "A year is reported only if every retained response in that year is marked, a prior retained response exists for the opening mark, the first retained response is in the first seven calendar days of January, and the last retained response is in the final eight calendar days of December. This is source coverage, not a verified exchange-calendar completeness claim.",
+    "rolling_five_year": "Use monthly retained-response endpoints. For each endpoint, compare to the last retained response on or before the same calendar date five years earlier; annualize using actual calendar days. Endpoints with fewer than 1200 retained response points inclusive of both endpoints are excluded.",
+    "research_screen": {
+      "threshold": 0.05,
+      "rule": "Any source-covered calendar year or eligible rolling-five-year endpoint below 5% makes this gross diagnostic non-positive for the strict screen. A positive result would still not admit an executable strategy."
+    }
+  },
+  "prohibitions": [
+    "No use of a continuous, back-adjusted or dominant-contract series.",
+    "No use of an account-specific condition, order, holding, broker route, allocation or external action.",
+    "No inference of exchange-adjusted final trading days, historical margin, fees, limit state, fill or personal access from the retained EOD responses.",
+    "No promotion to stable five-percent, net return or usable-strategy status irrespective of the diagnostic output."
+  ]
+}

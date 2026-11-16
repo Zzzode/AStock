@@ -1,0 +1,355 @@
+{
+  "artifact_id": "DPSFS-C10-DIRECT-EQUITY-DILIGENCE-v1",
+  "artifact_class": "direct_equity_candidate_diligence_and_strict_gate_refutation",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-15",
+  "research_status": "research_only_no_action",
+  "portfolio_q": 0,
+  "mandate_interpretation": {
+    "return_hurdle": "5% is a non-guaranteed research hurdle. It is not a promise, forecast, or suitability conclusion.",
+    "cash_distribution_treatment": "Issuer distributions are examined as security facts and return components only. This track has no retained-cash or reinvestment objective.",
+    "scope": "Personally accessible domestic direct A-share research, with no leverage, short exposure, derivatives, brokerage action, or order execution."
+  },
+  "direct_equity_answer": {
+    "conclusion": "Direct equities should not be excluded from a broad domestic-universe research process. They remain a distinct quality, valuation and distribution route, but the observed C10 basket cannot be admitted as a strategy that meets the strict 5% annual condition.",
+    "what_this_does_not_claim": [
+      "The four names are not the best available A shares.",
+      "The four-name basket is not an approved allocation or an action instruction.",
+      "A reported distribution, trailing earnings multiple, volume field, or past return does not establish a future return or an executable fill."
+    ]
+  },
+  "strict_return_gate": {
+    "criterion": "Every complete calendar year and every complete rolling five-year annualized endpoint must be at or above 5% after all relevant investor-level effects.",
+    "verdict": "NO_STRICT_GATE_PASS",
+    "calendar_year_condition": "falsified_for_the_exploratory_gross_cash_diagnostic",
+    "falsifying_years": [
+      2022,
+      2025
+    ],
+    "rolling_five_year_condition": "not_adjudicated",
+    "why_rolling_five_year_is_not_adjudicated": "Only four complete calendar years are represented, the security set was selected after those observations, and SSE raw closes plus gross distribution events are not a point-in-time investor total-return and execution ledger.",
+    "source_artifact": "analysis/c10_stock_gross_cash_dividend_diagnostic_20260815.json"
+  },
+  "negative_evidence": {
+    "diagnostic_definition": "For arithmetic only, fixed research weights are reset at each prior calendar-year close. Each component result equals (year-end raw SSE close + gross cash distributions with ex-dates in the year) / prior year-end raw SSE close - 1.",
+    "annual_gross_cash_results": [
+      {
+        "year": 2022,
+        "fixed_target_weight_gross_cash_dividend_return": -0.0015359487341136888,
+        "fixed_target_weight_price_only_return": -0.051424195717448454
+      },
+      {
+        "year": 2023,
+        "fixed_target_weight_gross_cash_dividend_return": 0.13022341426359382,
+        "fixed_target_weight_price_only_return": 0.07885754201108314
+      },
+      {
+        "year": 2024,
+        "fixed_target_weight_gross_cash_dividend_return": 0.26154797397185703,
+        "fixed_target_weight_price_only_return": 0.21467293400591345
+      },
+      {
+        "year": 2025,
+        "fixed_target_weight_gross_cash_dividend_return": 0.02048252591528108,
+        "fixed_target_weight_price_only_return": -0.02665311513618432
+      }
+    ],
+    "interpretation": "The two sub-5% years are adverse evidence against this exact ex-post basket. They are not a proof that no possible equity rule can ever satisfy the hurdle.",
+    "non_waivable_limits": [
+      "The SSE price response is retrospective and its adjustment basis is not disclosed.",
+      "The event query is not a complete entitlement, payment, tax or corporate-action ledger.",
+      "No bid/ask, depth, suspension history, broker fee, tax, fill, settlement or account record is included.",
+      "The candidate was chosen after the observed interval, so even positive observations would not validate a prospective rule."
+    ]
+  },
+  "fixed_diligence_basket": {
+    "status": "bounded research basket only; no allocation approval",
+    "selection_basis": "Four SSE issuers from distinct business buckets were selected solely so every component can receive issuer-level primary-source diligence. This is not a current all-A-share screen.",
+    "weights_for_diagnostic_only": {
+      "600519": 0.3,
+      "600900": 0.3,
+      "601398": 0.25,
+      "601088": 0.15
+    },
+    "weight_policy": "The weights are frozen for the historical diagnostic and paper protocol. They are not optimized, individually suitable, or a direction to establish positions."
+  },
+  "excluded_probe": {
+    "code": "600941",
+    "name": "中国移动",
+    "status": "excluded_from_the_four-name_basket_and_strict_return_test",
+    "reason": "The official 2025 annual report states that its RMB ordinary shares were listed on the SSE on 5 January 2022. It cannot supply five completed pre-screen A-share fiscal/calendar years for the frozen future-screen requirement, so its annual report and narrow daily-price response are retained only as a source-route and issuer-diligence probe.",
+    "not_an_inference": "This exclusion is a history-availability rule, not a negative fundamental or valuation view on China Mobile.",
+    "source_locator": "sources/c10-direct-equity-first-party-20260815/600941_china_mobile_2025_annual_report.pdf (2025 annual report, company profile stating SSE A-share listing on 5 January 2022)"
+  },
+  "diligence_cards": [
+    {
+      "code": "600519",
+      "name": "贵州茅台",
+      "business_bucket": "spirits / branded consumer goods",
+      "business_and_financial_quality": {
+        "business": "The 2025 annual report describes the principal business as the production and sale of Moutai liquor and series liquor.",
+        "audit": "The 2025 annual report states that Tianjian issued a standard unqualified audit opinion.",
+        "revenue_rmb": 168838102514.79,
+        "attributable_net_profit_rmb": 82320067101.68,
+        "operating_cash_flow_rmb": 61522204989.35,
+        "basic_eps_rmb": 65.66,
+        "weighted_average_roe_pct": 32.53,
+        "year_on_year_context": "2025 revenue, attributable profit and operating cash flow were lower than the respective 2024 figures in the annual-report comparison table; quality is not equivalent to uninterrupted growth."
+      },
+      "return_mechanism_and_snapshot": {
+        "mechanism": "Potential economic return can come from changes in earnings and valuation plus any implemented shareholder distribution. Neither component is fixed.",
+        "sse_raw_close_date": "2026-08-14",
+        "sse_raw_close_rmb": 1341.99,
+        "trailing_price_to_reported_eps_proxy": 20.438471,
+        "trailing_earnings_yield_proxy": 0.048927,
+        "formula_boundary": "Raw close divided by the latest disclosed basic EPS is a cross-date mechanical snapshot, not fair value, a forward estimate, or a target price."
+      },
+      "distribution_fact": {
+        "2025_annual_distribution_status": "Board-approved annual-report proposal; its implementation depends on the record-date share count and the stated process.",
+        "proposed_rmb_per_share_including_tax": 27.993,
+        "proposed_total_rmb_including_tax": 35032568759.73,
+        "raw_close_distribution_proxy": 0.020859,
+        "boundary": "This is proposal-per-share divided by the 2026-08-14 raw close. It is not a promised yield, an entitlement record, or a personal after-tax amount."
+      },
+      "liquidity_and_market_structure_observation": {
+        "lookback": "last 20 returned SSE daily rows ending 2026-08-14",
+        "median_raw_volume_field": 3679858.5,
+        "median_intraday_amplitude_pct": 1.8792,
+        "boundary": "The exchange response is a raw daily volume field and OHLC observation. It does not establish volume units, spread, depth, queue position, fill probability, suspension status at an intended time, or capacity."
+      },
+      "events_to_monitor": [
+        "The next audited annual report and interim report.",
+        "The final outcome of the 2025 annual distribution proposal and any later distribution notice.",
+        "Disclosure on product mix, inventory and the four material-risk categories identified by the issuer."
+      ],
+      "issuer_disclosed_risks": [
+        "macroeconomic risk",
+        "safety risk",
+        "public-opinion / reputation risk",
+        "environmental-protection risk"
+      ],
+      "candidate_invalidation_triggers": [
+        "A modified audit opinion, risk-warning / delisting-warning status, or a material trading suspension must change the name to not-actionable pending review.",
+        "A full-year attributable loss, a withdrawn or materially changed distribution proposal, or a material disclosed break in the stated business facts requires a fresh issuer review; no automatic replacement is allowed."
+      ],
+      "primary_source_locators": [
+        "sources/c10-direct-equity-price-dividend-probe-20260815/600519_kweichow_moutai_2025_annual_report.pdf (2025 annual report, pp. 2, 6-8, and risk section)",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_600519_latest2000.jsonp",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2022.jsonp through sse_dividend_600519_2025.jsonp"
+      ]
+    },
+    {
+      "code": "600900",
+      "name": "长江电力",
+      "business_bucket": "hydroelectric utility",
+      "business_and_financial_quality": {
+        "business": "The 2025 annual report describes large hydropower operation as the core business and reports 71.795 GW of controllable hydropower capacity at year end, of which 71.695 GW was domestic.",
+        "audit": "The 2025 annual report states that ShineWing issued a standard unqualified audit opinion.",
+        "revenue_rmb": 86241940222.2,
+        "attributable_net_profit_rmb": 34502809176.39,
+        "operating_cash_flow_rmb": 60562925570.41,
+        "basic_eps_rmb": 1.4101,
+        "weighted_average_roe_pct": 15.9,
+        "year_on_year_context": "The annual-report comparison table shows 2025 revenue, attributable profit and operating cash flow higher than the stated 2024 comparison figures. Hydrological and market exposures still make this a variable operating outcome."
+      },
+      "return_mechanism_and_snapshot": {
+        "mechanism": "Potential economic return depends on electricity output and pricing, operating and financing conditions, valuation changes, and any implemented distribution.",
+        "sse_raw_close_date": "2026-08-14",
+        "sse_raw_close_rmb": 28.1,
+        "trailing_price_to_reported_eps_proxy": 19.927665,
+        "trailing_earnings_yield_proxy": 0.050181,
+        "formula_boundary": "The EPS snapshot has no forecast, tax, fee, price-adjustment or execution content."
+      },
+      "distribution_fact": {
+        "2025_distribution_status": "RMB0.21 per ten shares was stated as already paid interim distribution; RMB0.79 per ten shares was a final proposal subject to the 2025 annual general meeting. Total stated annual amount is RMB1.00 per share including tax.",
+        "stated_rmb_per_share_including_tax": 1.0,
+        "raw_close_distribution_proxy": 0.035587,
+        "boundary": "The ratio is not a forward distribution or return assurance."
+      },
+      "liquidity_and_market_structure_observation": {
+        "lookback": "last 20 returned SSE daily rows ending 2026-08-14",
+        "median_raw_volume_field": 125095737.0,
+        "median_intraday_amplitude_pct": 2.2495,
+        "boundary": "No order book, spread, capacity, fee, tax, suspension-history or fill evidence is supplied."
+      },
+      "events_to_monitor": [
+        "Hydrological conditions and realized generation in periodic issuer disclosures.",
+        "Power-market reform, volume/price realization and investment-control disclosures.",
+        "The final disposition of the proposed annual distribution."
+      ],
+      "issuer_disclosed_risks": [
+        "Yangtze inflow risk",
+        "production and dam-safety risk",
+        "electricity-market risk",
+        "investment-control and overseas-market risk"
+      ],
+      "candidate_invalidation_triggers": [
+        "A modified audit opinion, risk-warning / delisting-warning status, or material suspension makes the name not-actionable pending review.",
+        "A full-year attributable loss, a material cancellation or change in the final distribution proposal, or disclosed deterioration in core operating conditions requires a fresh review; no automatic replacement is allowed."
+      ],
+      "primary_source_locators": [
+        "sources/c10-direct-equity-first-party-20260815/600900_china_yangtze_power_2025_annual_report.pdf (2025 annual report, pp. 2, 6-7, 11, and 27)",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_600900_latest2000.jsonp",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2022.jsonp through sse_dividend_600900_2025.jsonp"
+      ]
+    },
+    {
+      "code": "601398",
+      "name": "工商银行",
+      "business_bucket": "commercial banking",
+      "business_and_financial_quality": {
+        "business": "A commercial bank; its reported operating cash flow must not be treated as an industrial-company cash-conversion test because deposit, loan and financial-asset flows have different economic meanings.",
+        "audit": "The 2025 A-share annual report states that the China and international-standard financial reports received standard unqualified audit opinions.",
+        "operating_revenue_rmb_million": 838270,
+        "attributable_net_profit_rmb_million": 368562,
+        "basic_eps_rmb": 1.0,
+        "book_value_per_share_rmb": 10.83,
+        "nonperforming_loan_ratio_pct": 1.31,
+        "core_tier_1_capital_adequacy_ratio_pct": 13.57,
+        "total_capital_adequacy_ratio_pct": 18.76,
+        "year_on_year_context": "The report shows 2025 attributable profit above the stated 2024 figure, while net interest margin was 1.15%, below the stated 2024 1.23%; bank quality cannot be summarized by one payout or price ratio."
+      },
+      "return_mechanism_and_snapshot": {
+        "mechanism": "Potential return depends on earnings, credit costs, net interest margin, capital management, valuation changes and any implemented distribution.",
+        "sse_raw_close_date": "2026-08-14",
+        "sse_raw_close_rmb": 7.56,
+        "trailing_price_to_reported_eps_proxy": 7.56,
+        "trailing_price_to_book_proxy": 0.698061,
+        "trailing_earnings_yield_proxy": 0.132275,
+        "formula_boundary": "The EPS and book-value arithmetic is a dated reported-fact snapshot, not a valuation conclusion or a forecast of credit outcomes."
+      },
+      "distribution_fact": {
+        "2025_distribution_status": "RMB1.414 per ten shares was paid as the 2025 interim ordinary-share distribution. The Board recommended RMB1.689 per ten shares as final distribution and stated that the full RMB3.103 per ten shares plan would be submitted for shareholder approval.",
+        "stated_rmb_per_share_including_tax": 0.3103,
+        "raw_close_distribution_proxy": 0.041045,
+        "boundary": "The ratio does not include tax, fees, entitlement, final approval, payment, price change or credit-cycle risk."
+      },
+      "liquidity_and_market_structure_observation": {
+        "lookback": "last 20 returned SSE daily rows ending 2026-08-14",
+        "median_raw_volume_field": 428557899.0,
+        "median_intraday_amplitude_pct": 1.9548,
+        "boundary": "The raw daily observation cannot certify accessible liquidity or any individual transaction outcome."
+      },
+      "events_to_monitor": [
+        "Periodic asset-quality, capital, margin and provision disclosures.",
+        "Real-estate, local-debt and small-financial-institution risk disclosures identified in the credit-risk discussion.",
+        "The final outcome of the annual distribution proposal."
+      ],
+      "issuer_disclosed_risks": [
+        "credit risk",
+        "market risk",
+        "banking-book interest-rate risk",
+        "liquidity risk",
+        "operational, reputational, country, strategic and information-technology / cyber-security risks"
+      ],
+      "candidate_invalidation_triggers": [
+        "A modified audit opinion, risk-warning / delisting-warning status, or material suspension makes the name not-actionable pending review.",
+        "A full-year attributable loss, a reported capital or asset-quality breach against the frozen future-screen rule, or a material distribution-plan change requires a fresh review; no automatic replacement is allowed."
+      ],
+      "primary_source_locators": [
+        "sources/c10-direct-equity-first-party-20260815/601398_icbc_2025_annual_report_a.pdf (2025 A-share annual report, pp. 6, 9-11 and risk-management section)",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_601398_latest2000.jsonp",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2022.jsonp through sse_dividend_601398_2025.jsonp"
+      ]
+    },
+    {
+      "code": "601088",
+      "name": "中国神华",
+      "business_bucket": "integrated coal, power and transport",
+      "business_and_financial_quality": {
+        "business": "The Group reports coal and electricity production and sales, railway, port and shipping transport, and coal-to-olefins operations. Its stated integrated model is production, transport and conversion.",
+        "audit": "The 2025 annual report states that KPMG issued a standard unqualified independent auditor's report under IFRS Accounting Standards.",
+        "revenue_rmb_million": 294916,
+        "ifrs_profit_attributable_rmb_million": 54218,
+        "ifrs_basic_eps_rmb": 2.729,
+        "prc_accounting_basic_eps_rmb": 2.66,
+        "operating_cash_flow_rmb_million": 75059,
+        "return_on_net_assets_pct": 13.1,
+        "year_on_year_context": "The IFRS comparison table reports lower 2025 revenue, attributable profit and operating cash flow than its stated 2024 restated figures."
+      },
+      "return_mechanism_and_snapshot": {
+        "mechanism": "Potential return is exposed to coal and power volumes/prices, integrated logistics and operating costs, policy, valuation changes, and any implemented distribution.",
+        "sse_raw_close_date": "2026-08-14",
+        "sse_raw_close_rmb": 44.72,
+        "trailing_price_to_prc_accounting_eps_proxy": 16.81203,
+        "trailing_earnings_yield_proxy": 0.059481,
+        "formula_boundary": "The snapshot uses the PRC-accounting EPS separately disclosed in the annual report. It is not a valuation target or a price forecast."
+      },
+      "distribution_fact": {
+        "2025_distribution_status": "The report states a RMB0.98 per share 2025 interim dividend was distributed. The Board proposed a RMB1.03 per share final dividend after the stated supporting-fund share issuance process, with the share count on the implementation record date relevant to the total amount.",
+        "stated_paid_and_proposed_rmb_per_share_including_tax": 2.01,
+        "raw_close_distribution_proxy": 0.044946,
+        "plan_context": "The 2025-2027 shareholder-return plan states a minimum annual distribution ratio of 65% of attributable net profit for the relevant years, subject to the governing conditions. It is not a return guarantee.",
+        "boundary": "Paid-plus-proposed amount divided by a later raw close is only a fact-based proxy and cannot substitute for an entitlement, payment, tax or investor total-return record."
+      },
+      "liquidity_and_market_structure_observation": {
+        "lookback": "last 20 returned SSE daily rows ending 2026-08-14",
+        "median_raw_volume_field": 32602417.5,
+        "median_intraday_amplitude_pct": 2.4804,
+        "boundary": "No live quote, depth, spread, availability, cost, fill or settlement inference is permitted from this observation."
+      },
+      "events_to_monitor": [
+        "Coal/power supply-demand and price disclosures.",
+        "Safety, environmental, project, policy, international-operation and acquisition/funding disclosures.",
+        "The approval and implementation status of the final distribution proposal."
+      ],
+      "issuer_disclosed_risks": [
+        "coal and power supply-demand risk",
+        "coal and electricity price fluctuations",
+        "safety and environmental-protection risk",
+        "investment, compliance, project-management, competition, policy and international-operation risks"
+      ],
+      "candidate_invalidation_triggers": [
+        "A modified audit opinion, risk-warning / delisting-warning status, or material suspension makes the name not-actionable pending review.",
+        "A full-year attributable loss, a material change to the stated distribution plan, or material deterioration in the disclosed operating chain requires a fresh review; no automatic replacement is allowed."
+      ],
+      "primary_source_locators": [
+        "sources/c10-direct-equity-first-party-20260815/601088_china_shenhua_2025_annual_report.pdf (2025 annual report, pp. 1, 7-8, 24-25 and 149-150)",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_601088_latest2000.jsonp",
+        "sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2022.jsonp through sse_dividend_601088_2025.jsonp"
+      ]
+    }
+  ],
+  "frozen_future_paper_protocol": {
+    "status": "not activated; it becomes a prospective paper protocol only after the data and market-access gates below are closed",
+    "intended_universe": "All ordinary A shares listed on the Shanghai and Shenzhen exchanges that have the required five completed fiscal years, point-in-time membership/status history and issuer filings. C10 does not possess that full universe or Shenzhen trading-rule evidence, so it cannot represent this as a completed screen.",
+    "selection_rules_to_run_on_the_frozen_universe": [
+      "Exclude a name if it lacks five completed fiscal years, has a risk-warning/delisting-warning flag or suspension at the screen timestamp, or lacks a timely audited annual report.",
+      "Require a standard unqualified audit opinion and three consecutive completed years of positive attributable profit.",
+      "For non-financial issuers, require positive operating cash flow in each of those three years. For banks, do not use operating cash flow as a cash-conversion substitute; instead require a reported non-performing-loan ratio no greater than 1.5% and a reported common-equity Tier 1 capital ratio of at least 10.0%. These are frozen research thresholds, not regulatory minima or safety guarantees.",
+      "Require at least three actual cash-distribution events in the preceding five completed fiscal years after corporate-action and entitlement reconciliation.",
+      "Require a screen-date trailing reported-EPS price multiple no greater than 22.5x, calculated only from records that were available at that timestamp.",
+      "Limit to one issuer in each of four business buckets and cap a name at 30% of the research basket. The currently researched buckets are spirits, hydroelectric utility, commercial banking and integrated coal/power/transport."
+    ],
+    "current_basket_relation_to_rules": "The names were researched before an eligible full-universe, point-in-time run exists. They therefore cannot be certified as rule-selected or ranked against the intended universe.",
+    "review_and_rebalance_calendar": {
+      "annual_review": "First exchange trading day after 30 April, after every candidate's annual report and required universe/status data have been archived and frozen.",
+      "interim_review": "First exchange trading day after 31 August, after every candidate's interim report and required event/status data have been archived.",
+      "reconstitution_rule": "If a name fails a frozen eligibility rule, change its research status to not-actionable and conduct a documented universe re-screen. No automatic substitute and no automatic external transaction are permitted.",
+      "price_rule": "There is deliberately no price-only stop or take-profit rule. Such a rule is not validated by this source set."
+    },
+    "SSE_mechanics_for_a_future_paper_execution_record": {
+      "source": "sources/c10-direct-equity-first-party-20260815/sse_trading_rules_2026.docx; effective 2026-07-06",
+      "permitted_paper_record_window": "For a normal SSE A-share, record a hypothetical change only during continuous auction 09:30-11:30 or 13:00-14:57 on an exchange trading day. Do not use the no-cancellation intervals 09:20-09:25 or 14:57-15:00 as a paper fill assumption.",
+      "price_and_lot_controls": "Limit price only; verify the security's live price-limit status; use the RMB0.01 minimum price increment and 100-share buy-lot rule stated in the exchange rules.",
+      "settlement_control": "Do not assume a same-day resale right for A shares. The exchange rule states that purchased securities may not be sold before settlement except for the enumerated T+0 classes; A shares are not listed among those exceptions.",
+      "blocking_conditions": [
+        "No contemporaneous exchange status, live quote, bid/ask, depth, account-permission, broker-fee, tax or settlement evidence.",
+        "Suspension, risk-warning/delisting-warning condition, special price-limit condition, or a discrepancy in code/security identity.",
+        "Any missing audit, corporate-action, price-adjustment or point-in-time availability field needed to reconstruct the candidate's result."
+      ],
+      "boundary": "These are controls for a future paper record, not instructions to submit an order."
+    }
+  },
+  "admission_gates_still_open": [
+    "A complete point-in-time A-share universe with listing, suspension, risk-warning and delisting history.",
+    "A point-in-time adjusted total-return and corporate-action/entitlement dataset sufficient to calculate all investor-level effects for at least five rolling years.",
+    "A pre-registered selection date, holdout period and independent replication; the current basket is ex post.",
+    "Contemporaneous code-level market-status, bid/ask/depth and transaction-cost records, plus account and broker eligibility verification.",
+    "A formal replay that passes the 5% hard gate after all documented taxes, fees, fills, settlement and corporate-action treatment."
+  ],
+  "source_manifests": [
+    "sources/c10-direct-equity-first-party-20260815/manifest.json",
+    "sources/c10-direct-equity-price-dividend-probe-20260815/manifest.json"
+  ]
+}

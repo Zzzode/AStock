@@ -1,0 +1,26 @@
+{
+  "cycle": "R2_draft",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "reviewed_at": "2026-08-14T02:00:00+08:00",
+  "reviewer": "research-prose-polish-and-ic-clarity-check",
+  "findings": [
+    {
+      "issue_id": "R2-S-001",
+      "severity": "S",
+      "status": "resolved",
+      "artifact": "main.tex; sections/ch01_decision.tex; sections/ch02_cash_mechanics.tex; sections/ch04_reinvestment.tex; sections/ch07_evidence.tex",
+      "evidence": "The prior reader language could retain a second cash-performance requirement after the user removed it.",
+      "fix_required": "State the single total-return objective, define distributions as accounting/product-diligence facts, and remove any cash success test or default disposition.",
+      "resolution": "The reader now leads with the sole conditional 5% TWRR objective, distribution-once accounting, investor-directed cash use and no automatic or mandatory reinvestment."
+    },
+    {
+      "issue_id": "R2-A-001",
+      "severity": "A",
+      "status": "resolved",
+      "artifact": "main.tex; sections/ch03_candidate_pool.tex; sections/ch05_risk.tex; sections/ch06_activation.tex; sections/app_glossary.tex",
+      "evidence": "A candidate queue can be mistaken for an allocation menu, and product cash mechanisms can be mistaken for return assurances.",
+      "fix_required": "Keep T0/T1/T2/T3/T4, q=0, current non-action, item-level research and glossary boundaries reader-facing.",
+      "resolution": "The report distinguishes the open research universe from a finite approval set, retains the glossary, and makes no purchase, holding, cash-use or implementation instruction."
+    }
+  ]
+}

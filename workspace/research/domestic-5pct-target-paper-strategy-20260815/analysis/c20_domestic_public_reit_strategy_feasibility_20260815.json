@@ -1,0 +1,210 @@
+{
+  "schema_version": "c20_domestic_public_reit_strategy_feasibility.v1",
+  "artifact_id": "D5PT-C20-FEASIBILITY-v2",
+  "as_of": "2026-08-15",
+  "status": "PRODUCT_LEVEL_SOURCE_PREFLIGHT_PARTIAL_PASS_STRATEGY_TOTAL_RETURN_AND_OPERABILITY_NOT_READY",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "route": "domestic exchange-listed public REIT research route; no product selected",
+  "scope_control": {
+    "product_selected": false,
+    "universe_selected": false,
+    "historical_strategy_selected": false,
+    "return_test_run": false,
+    "return_result": null,
+    "performance_claim": false,
+    "eligibility_inference": false,
+    "reason": "This is a readiness audit only. A retained, pre-existing source probe is used solely to audit evidence fields; it neither selects the underlying product nor imports any prior return calculation."
+  },
+  "overall_conclusion": {
+    "answer": "NO",
+    "statement": "The route presently satisfies only a limited product-level source preflight. It does not satisfy the rigorous strategy-test readiness gate because investor-level total return, dated after-cost execution, eligibility, and point-in-time universe evidence are incomplete.",
+    "disposition": "NO_STRATEGY_TEST_ADMISSION_NO_PRODUCT_SELECTION_NO_ACTION"
+  },
+  "source_control": {
+    "retained_nonselective_probe": {
+      "role": "Historical source-field probe only; not a product selection, recommendation, or performance input in this C20 artifact.",
+      "manifest_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/manifest.json",
+      "manifest_sha256": "9a92989970e231562dd570b4f68685ed689362ce119cf8d219438e82b9ba19ea",
+      "captured_at": "2026-08-14T19:36:22.838413+00:00",
+      "quality_tier": "high_authority_retained_primary_source",
+      "limitations": [
+        "The retained market-data responses are retrospective public responses, not point-in-time investor records.",
+        "Hashes establish local file integrity only; they do not establish historical availability, adjustment convention, personal costs, eligibility, or execution."
+      ]
+    },
+    "current_rule_capture_manifest": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c20-current-sse-rule-text-20260815/manifest.json",
+      "sha256": "f0e710ef25872489d4ee697c58fb0bf73abd8c180f0d4115ce10aaf69e278829",
+      "role": "Retained current SSE rule pages and rule bodies used only for C20 version and general-mechanics context."
+    },
+    "r13_r10_v1_scope_correction": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r13_r10_v1_scope_mismatch_correction_20260815.json",
+      "sha256": "59ef545fc892f645f9a5c68f01e9b6983698d5ab89968e276faa96a78936e0d8",
+      "role": "Corrects the audit provenance after the legacy R10 v1 checker was re-executed against C20 v2. It documents why the resulting sole URL-only assertion failure is not a current v2 source-control regression."
+    },
+    "legacy_r10_v1_verifier_reexecution_trace": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r10_independent_c20_public_reit_feasibility_audit_20260815.json",
+      "sha256": "3d3d7b897981269d96b64bf447911a07e32e9c65f9be43734433db6fb4026f8c",
+      "role": "Retained legacy-v1 verifier output produced after C20 v2. It is a scope-mismatch trace only and must not be read as a current C20 v2 audit failure."
+    },
+    "live_primary_rule_recheck": [
+      {
+        "source": "Shanghai Stock Exchange current public REIT business rule",
+        "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/reits/c/c_20251231_10803729.shtml",
+        "effective_date": "2025-12-31",
+        "finding": "The current rule states that the SSE's 2021 public-infrastructure-REIT business rule was simultaneously repealed. Its investor and trading provisions describe generic participation, risk-disclosure and venue mechanics.",
+        "retention_state": "retained_in_c20_current_rule_source_batch",
+        "quality_tier": "high_authority_retained_primary_source",
+        "boundary": "The rule-level route and risk-disclosure conditions do not demonstrate a particular person's broker permission, suitability, order acceptance, or settlement."
+      },
+      {
+        "source": "Shanghai Stock Exchange repealed 2021 public-infrastructure-REIT business-rule page",
+        "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/repeal/rules/c/c_20250609_10804035.shtml",
+        "finding": "The page marks the 2021 rule as repealed.",
+        "retention_state": "retained_in_c20_current_rule_source_batch",
+        "quality_tier": "high_authority_retained_primary_source"
+      },
+      {
+        "source": "Shanghai Stock Exchange infrastructure public-REIT investor-education material",
+        "url": "https://edu.sse.com.cn/REITS/document/c/10608582/files/1b8f787ec537440db979406640606415.pdf",
+        "finding": "It provides general venue mechanics for account use, order-size increments and minimum price variation.",
+        "retention_state": "retained_in_c20_current_rule_source_batch",
+        "quality_tier": "high_authority_retained_primary_source",
+        "boundary": "General market mechanics do not prove a particular person's current broker access, suitability, order acceptance or settlement."
+      },
+      {
+        "source": "Shanghai Stock Exchange trading rules",
+        "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/exchange/c/c_20260424_10816482.shtml",
+        "effective_date": "2026-07-06",
+        "finding": "The fund competitive-trading provision specifies an order quantity of 100 units or whole multiples, with an odd residual sellable in one order. Together with the current REIT rule's fund-trading reference, this is general lot-mechanics evidence.",
+        "retention_state": "retained_in_c20_current_rule_source_batch",
+        "quality_tier": "high_authority_retained_primary_source",
+        "boundary": "This is not a product-specific broker order-acceptance or liquidity record."
+      }
+    ]
+  },
+  "source_control_amendment": {
+    "reason": "R10-SC-01 found that the four current-rule rechecks in v1 were URL-only. v2 retains the four public pages and two linked rule bodies in a separate immutable source batch and binds its manifest. The legacy R10 v1 checker was later re-executed against v2; R13 preserves and corrects that scope mismatch rather than treating its obsolete URL-only assertion as a new defect. This changes no route, product selection, universe, return test, result, eligibility inference or action boundary.",
+    "previous_feasibility_sha256": "21f4ce8c90c68ed1acca106ea7261e109dd184736a2f7b4a8f19a81eec649f4a",
+    "reassessment_required": true
+  },
+  "retained_probe_observations": {
+    "rule_and_product_history": [
+      "Retained primary materials include a 2020 CSRC guideline announcement, a 2021 SSE infrastructure-REIT business rule, a 2021 listing announcement, and date-labelled product disclosures from 2024 through the 2025 annual-report disclosure published in 2026.",
+      "The retained 2021 venue rule is launch-era historical evidence only; the live 2025 rule recheck establishes that it is no longer the current rule."
+    ],
+    "daily_market_price": {
+      "record_count": 1250,
+      "first_observation_date": "2021-06-21",
+      "last_observation_date": "2026-08-14",
+      "fields": ["date", "open", "high", "low", "close", "volume"],
+      "what_it_supports": "A future, predeclared price-only diagnostic can locate complete-calendar-year boundaries for 2022 through 2025 and has more than a nominal five-year span.",
+      "what_it_does_not_support": [
+        "A certified complete trading-calendar record or point-in-time availability history.",
+        "An adjusted-price, investor-total-return, NAV, tax, or execution ledger.",
+        "Bid/ask, depth, fill, partial-fill, no-fill, suspension, correction, or settlement evidence."
+      ]
+    },
+    "distribution_history": {
+      "record_count": 9,
+      "first_exright_date": "2022-04-13",
+      "last_exright_date": "2026-04-17",
+      "fields": ["rights_registration_date", "exright_date", "cash_distribution_per_share"],
+      "what_it_supports": "Identification of disclosed cash-distribution events for a future ledger design.",
+      "what_it_does_not_support": [
+        "Investor-specific entitlement, cash-credit date, tax, reinvestment, transfer, or settlement records.",
+        "A conclusion that cash distributions equal total return or NAV return."
+      ]
+    },
+    "nav_endpoint": {
+      "captured_rows": 0,
+      "interpretation": "The queried SSE historical-NAV endpoint returned no rows in the retained capture. This is an endpoint observation only; it neither proves that historical NAV is unavailable elsewhere nor substitutes for a total-return ledger."
+    }
+  },
+  "gate_matrix": [
+    {
+      "gate_id": "C20-G1",
+      "gate": "product-rule history",
+      "status": "PARTIAL_PASS",
+      "evidence": "Launch-era CSRC/SSE materials, date-labelled product disclosures, and a live primary-source recheck showing the 2025 rule transition.",
+      "blocking_gap": "No retained, date-by-date complete effective rule, fee, broker-access, and account-eligibility version package across a proposed test period.",
+      "disposition": "Historical context only; no rule-continuity certification."
+    },
+    {
+      "gate_id": "C20-G2",
+      "gate": "continuous historical series and annual/rolling assessment length",
+      "status": "LIMITED_PASS_FOR_PRICE_ONLY_INPUT",
+      "evidence": "1,250 retained official daily OHLCV rows span 2021-06-21 to 2026-08-14, allowing future annual-boundary and nominal five-year price-diagnostic design.",
+      "blocking_gap": "No certified calendar completeness, historical available-at field, adjustment convention, corporate-action ledger, or executable fill data.",
+      "disposition": "No return calculation is admitted from this input alone."
+    },
+    {
+      "gate_id": "C20-G3",
+      "gate": "total-return, NAV, and distribution treatment",
+      "status": "BLOCKED",
+      "evidence": "Nine retained distribution rows identify per-share cash and ex-right dates; the captured historical-NAV endpoint returned zero rows.",
+      "blocking_gap": "Daily prices do not state adjustment treatment; distribution rows do not establish entitlement, cash receipt, tax, reinvestment, or investor accounting; an auditable NAV/total-return series is absent.",
+      "disposition": "Do not combine or substitute price, NAV, cash distribution, cash-flow distribution rate, or investor total return."
+    },
+    {
+      "gate_id": "C20-G4",
+      "gate": "costs and tax",
+      "status": "BLOCKED",
+      "evidence": "Date-labelled fund disclosures contain fund-level fee information; current venue rules can be checked for venue-level arrangements.",
+      "blocking_gap": "No dated investor-specific broker commission, tax, account, custody/transfer, cash-transfer, spread, slippage, rejected-order, or failed-fill cost ledger.",
+      "disposition": "No after-cost result or net-return test."
+    },
+    {
+      "gate_id": "C20-G5",
+      "gate": "lot, liquidity, and execution",
+      "status": "PARTIAL_MECHANICS_ONLY",
+      "evidence": "The current REIT rule and the 2026 SSE trading rule establish a general rule chain for 100-unit competitive orders/whole multiples, odd-residual sales, and fund trading mechanics; official education materials and retained daily data further describe mechanism and volume.",
+      "blocking_gap": "No historical bid/ask, depth, trade-by-trade fills, partial/no-fill, trading-status, suspension, or settlement ledger.",
+      "disposition": "Do not equate closing price or volume with executable liquidity."
+    },
+    {
+      "gate_id": "C20-G6",
+      "gate": "account, risk disclosure, and eligibility",
+      "status": "BLOCKED",
+      "evidence": "The current REIT rule describes generic public-investor participation via securities firms or off-exchange sales agents and risk-disclosure before an ordinary investor's first subscription or purchase.",
+      "blocking_gap": "No dated broker-level permission, account type, risk-disclosure completion, suitability result, transfer-custody path, or settlement confirmation for any person.",
+      "disposition": "No actual eligibility inference."
+    },
+    {
+      "gate_id": "C20-G7",
+      "gate": "point-in-time route universe and strategy governance",
+      "status": "BLOCKED",
+      "evidence": "Only one nonselective retained source probe is available to this audit.",
+      "blocking_gap": "No complete historic public-REIT universe with listing, termination, expansion, corporate action, availability, eligibility, prices, NAVs, distributions, and uniform costs; no predeclared selection/rebalance/exit rule.",
+      "disposition": "No product or route strategy may be selected or tested."
+    }
+  ],
+  "strict_test_boundary": {
+    "five_percent_role": "A hypothetical future research hurdle only; not a promised, forecast, stable, or minimum return.",
+    "current_result": "NOT_TESTED_NOT_ADMITTED",
+    "return_test_run": false,
+    "return_result": null,
+    "reason": "The total-return/NAV/distribution, dated after-cost execution, eligibility, and point-in-time-universe fields required for a rigorous test are not all present."
+  },
+  "required_before_any_future_test": [
+    "A lawfully retainable, point-in-time public-REIT master universe with listing, termination, expansion, corporate-action, and trade-status history.",
+    "A dated and documented price/NAV/distribution/corporate-action ledger with adjustment basis, availability timestamps, cash-credit and tax/reinvestment treatment.",
+    "Dated fund-level and investor-level cost records, including broker, tax, account, transfer, spread, slippage, no-fill, partial-fill, and settlement treatment.",
+    "Dated, non-sensitive broker/venue records establishing the relevant eligibility and risk-disclosure path without inferring any person's suitability.",
+    "A predeclared non-product-selective universe rule, selection calendar, execution, valuation, suspension, and exit protocol, followed by independent reconstruction."
+  ],
+  "current_disposition": {
+    "state": "NO_STRATEGY_TEST_ADMISSION_NO_PRODUCT_SELECTION_NO_ACTION",
+    "next_research_gate": "Obtain and hash the missing point-in-time total-return, cost, execution, eligibility, and universe records before defining or calculating any strategy.",
+    "prohibitions": [
+      "Do not select a public REIT product or infer that the retained probe is a candidate.",
+      "Do not calculate, state, forecast, or promise a return from this C20 readiness artifact.",
+      "Do not treat closing price, volume, NAV, cash distribution, or a fund-level fee as a personal executable net result.",
+      "Do not infer access, suitability, liquidity, or order fill for any person.",
+      "Do not open an account, complete risk disclosure, transfer custody, subscribe, redeem, buy, sell, place an order, contact a broker, or move cash."
+    ]
+  }
+}

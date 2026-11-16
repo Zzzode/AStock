@@ -1,0 +1,44 @@
+{
+  "as_of": "2026-08-15",
+  "audit_boundary": "A local source-hash and arithmetic audit does not establish point-in-time data, investor total return, an executable fill, suitability, return guarantee, allocation, holding, or external action.",
+  "audit_id": "DPSFS-R9-C10-INDEPENDENT-v1",
+  "audit_status": "PASS",
+  "below_5pct_years": [
+    2022,
+    2025
+  ],
+  "comparison": {
+    "failure_count": 0,
+    "failures": [],
+    "match_count": 9
+  },
+  "independence_boundary": "The audit directly parses frozen C10 raw files and does not import C10 code.",
+  "independent_result": [
+    {
+      "fixed_target_weight_gross_cash_dividend_return": -0.0015359487341136888,
+      "fixed_target_weight_price_only_return": -0.05142419571744846,
+      "year": 2022
+    },
+    {
+      "fixed_target_weight_gross_cash_dividend_return": 0.13022341426359382,
+      "fixed_target_weight_price_only_return": 0.07885754201108314,
+      "year": 2023
+    },
+    {
+      "fixed_target_weight_gross_cash_dividend_return": 0.26154797397185703,
+      "fixed_target_weight_price_only_return": 0.21467293400591345,
+      "year": 2024
+    },
+    {
+      "fixed_target_weight_gross_cash_dividend_return": 0.02048252591528108,
+      "fixed_target_weight_price_only_return": -0.02665311513618432,
+      "year": 2025
+    }
+  ],
+  "raw_source_manifest": {
+    "capture_batch": "c10-direct-equity-price-dividend-probe-20260815",
+    "file_count": 21,
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/manifest.json",
+    "sha256": "8a6a264d4c57d85569557ef45ead77572b745772b460f5ed384db21af7d9f308"
+  }
+}

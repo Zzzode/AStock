@@ -1,0 +1,72 @@
+{
+  "schema_version": "research.skill_evolution_log.v1",
+  "case_id": "global-institutional-strategy-personal-20260815",
+  "date": "2026-08-15",
+  "trigger": "User feedback requiring a ban on specified Chinese contrast-template writing in research reports.",
+  "failure_mode": "Generic formulaic-contrast guidance did not name, scan, assign, or block the prohibited patterns, so the earlier R2 review did not test them. The first fixed-pattern repair also did not require disposition of every authored 不是 occurrence, and the next scope did not govern every authored 没有 occurrence or paired-negative stack.",
+  "root_cause": {
+    "skills": [
+      "research-prose-polish",
+      "equity-research",
+      "research-report-review"
+    ],
+    "roles": [
+      "latex-writer",
+      "research-report-reviewer"
+    ],
+    "control_gap": "No deterministic scan, prose_style_audit artifact, or R2 zero-hit gate."
+  },
+  "prompt_changes": [
+    "Named Chinese rhetorical-template prohibition",
+    "Immutable-text exception protocol",
+    "Literal source and release-text scan",
+    "A-Level reader_prose_template_ban closure rule",
+    "R2/R3/R4 publication block until zero eligible hits",
+    "Conservative authored-不是 scan with an exception disposition requirement",
+    "Conservative authored-没有 and paired-negative-stack scan with an exception disposition requirement"
+  ],
+  "anti_pattern_id": "AP-004",
+  "regression": {
+    "test": "src/python/astock/quality/__tests__/test_research_prose_rules.py",
+    "prohibited_samples": [
+      "不是……而是……",
+      "最难……",
+      "最重要……不是……",
+      "而非",
+      "而不是",
+      "并非/绝非……而是……",
+      "真正/关键……不是……",
+      "不是……也不是……",
+      "every authored 不是 occurrence",
+      "没有……也没有……",
+      "every authored 没有 occurrence",
+      "既不……也不……"
+    ],
+    "permitted_samples": [
+      "Direct evidence-led sentence",
+      "Conditional research conclusion"
+    ]
+  },
+  "validation": {
+    "status": "passed",
+    "commands": [
+      "pytest -q src/python/astock/quality/__tests__/test_research_prose_rules.py",
+      "astock.capabilities.check_system_prompt_drift",
+      "python3 tools/verify_research_workspace.py",
+      "python3 workspace/research/tools/run_research_gates.py <case>"
+    ],
+    "results": {
+      "focused_rule_regression": "2 passed",
+      "affected_quality_tests": "28 passed",
+      "prompt_drift": "20 mirror pairs checked; 0 drift",
+      "case_workspace_verifier": "74 PASS / 0 FAIL",
+      "generic_research_gates": "140 PASS / 0 FAIL"
+    },
+    "scope_note": "The report was exhaustively rewritten and re-reviewed under the authored-不是 / 没有 rule; current source/PDF scans, R2/R3/R4, and release gates are recorded for the third reissue."
+  },
+  "historical_case_disposition": {
+    "pdf_rewritten": true,
+    "reason": "The user subsequently requested a complete rewrite, then required exhaustive repairs after identifying a remaining double-denial construction and a paired-negative 没有 frame.",
+    "reopen_requirement": "Completed three times: R2, R3, R4, workspace verifier, and generic research gates were reopened for the current reissued PDF."
+  }
+}

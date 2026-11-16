@@ -1,0 +1,756 @@
+{
+  "schema_version": "research_workflow_evaluation.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "evaluation_method": "astock.capabilities.evaluate_research_case_quality was attempted after installing the declared pandas dependency, but the environment could not download it before timeout; the identical repository evaluator astock.quality.checks.evaluate_research_case_quality was therefore invoked directly and serialized verbatim",
+  "capability_import_status": "BLOCKED_ENVIRONMENT_DEPENDENCY_PANDAS_DOWNLOAD_TIMEOUT",
+  "data_cutoff": "2026-08-12",
+  "quality": {
+    "schema_version": "quality.research_case.v1",
+    "case_dir": "workspace/research/income-strategy-product-due-diligence-20260812",
+    "score": 100.0,
+    "passed_count": 121,
+    "check_count": 121,
+    "blocking_failure_count": 0,
+    "requires_industry_chain": false,
+    "publishable": true,
+    "status": "research_framework_pass_implementation_not_approved",
+    "checks": [
+      {
+        "name": "case directory exists",
+        "passed": true,
+        "severity": "S",
+        "detail": "workspace/research/income-strategy-product-due-diligence-20260812"
+      },
+      {
+        "name": "exists research_brief.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_brief.md"
+      },
+      {
+        "name": "exists gate_manifest.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "gate_manifest.json"
+      },
+      {
+        "name": "exists artifact_contract.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "artifact_contract.json"
+      },
+      {
+        "name": "exists review_log.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_log.md"
+      },
+      {
+        "name": "exists final_signoff.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "final_signoff.json"
+      },
+      {
+        "name": "md/json pair present: gate_manifest",
+        "passed": true,
+        "severity": "A",
+        "detail": "gate_manifest"
+      },
+      {
+        "name": "md/json pair present: artifact_contract",
+        "passed": true,
+        "severity": "A",
+        "detail": "artifact_contract"
+      },
+      {
+        "name": "md/json pair present: final_signoff",
+        "passed": true,
+        "severity": "A",
+        "detail": "final_signoff"
+      },
+      {
+        "name": "md/json pair present: source_exhaustion_log",
+        "passed": true,
+        "severity": "A",
+        "detail": "source_exhaustion_log"
+      },
+      {
+        "name": "md/json pair present: data/source_registry",
+        "passed": true,
+        "severity": "A",
+        "detail": "data/source_registry"
+      },
+      {
+        "name": "md/json pair present: data/claim_audit",
+        "passed": true,
+        "severity": "A",
+        "detail": "data/claim_audit"
+      },
+      {
+        "name": "gate manifest json parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "artifact contract json parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "final sign-off json parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "required artifact exists: analysis/cash_coverage_assessment.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/cash_coverage_assessment.md"
+      },
+      {
+        "name": "required artifact exists: analysis/cross_product_overlap.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/cross_product_overlap.md"
+      },
+      {
+        "name": "required artifact exists: analysis/delta_audit.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/delta_audit.md"
+      },
+      {
+        "name": "required artifact exists: analysis/execution_liquidity_assessment.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/execution_liquidity_assessment.md"
+      },
+      {
+        "name": "required artifact exists: analysis/exhibit_plan.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/exhibit_plan.md"
+      },
+      {
+        "name": "required artifact exists: analysis/house_view.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/house_view.md"
+      },
+      {
+        "name": "required artifact exists: analysis/narrative_blueprint.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/narrative_blueprint.md"
+      },
+      {
+        "name": "required artifact exists: analysis/product_selection_matrix.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/product_selection_matrix.md"
+      },
+      {
+        "name": "required artifact exists: analysis/risk_framework.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/risk_framework.md"
+      },
+      {
+        "name": "required artifact exists: analysis/template_brief.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/template_brief.md"
+      },
+      {
+        "name": "required artifact exists: analysis/valuation_audit.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/valuation_audit.md"
+      },
+      {
+        "name": "required artifact exists: analysis/valuation_model.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/valuation_model.md"
+      },
+      {
+        "name": "required artifact exists: analysis/variant_perception.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "analysis/variant_perception.md"
+      },
+      {
+        "name": "required artifact exists: data/broker_street_consensus_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/broker_street_consensus_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/broker_street_consensus_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/broker_street_consensus_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/build_provenance_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/build_provenance_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/build_provenance_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/build_provenance_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/claim_audit.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/claim_audit.json"
+      },
+      {
+        "name": "required artifact exists: data/claim_audit.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/claim_audit.md"
+      },
+      {
+        "name": "required artifact exists: data/consensus_analysis.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/consensus_analysis.md"
+      },
+      {
+        "name": "required artifact exists: data/current_product_valuation_model_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/current_product_valuation_model_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/current_product_valuation_model_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/current_product_valuation_model_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/etf_lookthrough_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/etf_lookthrough_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/etf_lookthrough_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/etf_lookthrough_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/legal_document_manifest_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/legal_document_manifest_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/legal_document_manifest_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/legal_document_manifest_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/main_text_20260812.txt",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/main_text_20260812.txt"
+      },
+      {
+        "name": "required artifact exists: data/portfolio_return_model_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/portfolio_return_model_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/portfolio_return_model_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/portfolio_return_model_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/product_universe_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/product_universe_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/product_universe_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/product_universe_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/raw_etf_fundamentals_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/raw_etf_fundamentals_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/raw_etf_fundamentals_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/raw_etf_fundamentals_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/raw_market_data_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/raw_market_data_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/raw_market_data_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/raw_market_data_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/raw_reit_fundamentals_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/raw_reit_fundamentals_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/raw_reit_fundamentals_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/raw_reit_fundamentals_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/reit_lookthrough_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/reit_lookthrough_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/reit_lookthrough_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/reit_lookthrough_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/reit_project_cards_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/reit_project_cards_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/reit_project_cards_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/reit_project_cards_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/report_catalog.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/report_catalog.md"
+      },
+      {
+        "name": "required artifact exists: data/source_registry.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/source_registry.json"
+      },
+      {
+        "name": "required artifact exists: data/source_registry.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/source_registry.md"
+      },
+      {
+        "name": "required artifact exists: data/verified_etf_fundamentals_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/verified_etf_fundamentals_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/verified_etf_fundamentals_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/verified_etf_fundamentals_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/verified_market_data_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/verified_market_data_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/verified_market_data_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/verified_market_data_20260812.md"
+      },
+      {
+        "name": "required artifact exists: data/verified_reit_fundamentals_20260812.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/verified_reit_fundamentals_20260812.json"
+      },
+      {
+        "name": "required artifact exists: data/verified_reit_fundamentals_20260812.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/verified_reit_fundamentals_20260812.md"
+      },
+      {
+        "name": "required artifact exists: final_signoff.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "final_signoff.json"
+      },
+      {
+        "name": "required artifact exists: final_signoff.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "final_signoff.md"
+      },
+      {
+        "name": "required artifact exists: main.pdf",
+        "passed": true,
+        "severity": "S",
+        "detail": "main.pdf"
+      },
+      {
+        "name": "required artifact exists: main.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "main.tex"
+      },
+      {
+        "name": "required artifact exists: research_brief.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_brief.md"
+      },
+      {
+        "name": "required artifact exists: research_workflow_eval.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_workflow_eval.json"
+      },
+      {
+        "name": "required artifact exists: research_workflow_eval.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "research_workflow_eval.md"
+      },
+      {
+        "name": "required artifact exists: review_log.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_log.md"
+      },
+      {
+        "name": "required artifact exists: sections/app_glossary.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/app_glossary.tex"
+      },
+      {
+        "name": "required artifact exists: sections/app_sources.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/app_sources.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch01_decision.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch01_decision.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch02_method.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch02_method.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch03_treasury_etf.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch03_treasury_etf.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch04_dividend_etfs.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch04_dividend_etfs.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch05_reits_traffic_consumer.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch05_reits_traffic_consumer.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch06_reits_rental.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch06_reits_rental.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch07_reits_industrial_energy.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch07_reits_industrial_energy.tex"
+      },
+      {
+        "name": "required artifact exists: sections/ch08_portfolio_gate.tex",
+        "passed": true,
+        "severity": "S",
+        "detail": "sections/ch08_portfolio_gate.tex"
+      },
+      {
+        "name": "required artifact exists: source_exhaustion_log.json",
+        "passed": true,
+        "severity": "S",
+        "detail": "source_exhaustion_log.json"
+      },
+      {
+        "name": "required artifact exists: source_exhaustion_log.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "source_exhaustion_log.md"
+      },
+      {
+        "name": "required artifact exists: sources/broker-reports/2026-08-12/index.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "sources/broker-reports/2026-08-12/index.md"
+      },
+      {
+        "name": "required artifact exists: visual_review.md",
+        "passed": true,
+        "severity": "S",
+        "detail": "visual_review.md"
+      },
+      {
+        "name": "gate manifest depth gates complete",
+        "passed": true,
+        "severity": "A",
+        "detail": "all depth gates present"
+      },
+      {
+        "name": "artifact contract declares required fields and depth gates",
+        "passed": true,
+        "severity": "A",
+        "detail": ""
+      },
+      {
+        "name": "review findings present",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_findings_*.json"
+      },
+      {
+        "name": "review findings parse: review_findings_R0_evidence.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R0_evidence",
+        "passed": true,
+        "severity": "A",
+        "detail": "R0_evidence"
+      },
+      {
+        "name": "review findings parse: review_findings_R1_model.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R1_model",
+        "passed": true,
+        "severity": "A",
+        "detail": "R1_model"
+      },
+      {
+        "name": "review findings parse: review_findings_R2_draft.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R2_draft",
+        "passed": true,
+        "severity": "A",
+        "detail": "R2_draft"
+      },
+      {
+        "name": "review findings parse: review_findings_R3_render_compliance.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "repair plan pair present: R3_render_compliance",
+        "passed": true,
+        "severity": "A",
+        "detail": "R3_render_compliance"
+      },
+      {
+        "name": "review findings parse: review_findings_R4_final_ic.json",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "no open S-Level findings",
+        "passed": true,
+        "severity": "S",
+        "detail": "0"
+      },
+      {
+        "name": "no open unwaived A-Level findings",
+        "passed": true,
+        "severity": "A",
+        "detail": "0"
+      },
+      {
+        "name": "publishability score present",
+        "passed": true,
+        "severity": "S",
+        "detail": "review_log.md"
+      },
+      {
+        "name": "publishability score >= 90",
+        "passed": true,
+        "severity": "S",
+        "detail": "94"
+      },
+      {
+        "name": "strategic allocation manifest controls",
+        "passed": true,
+        "severity": "S",
+        "detail": "strategy_controls"
+      },
+      {
+        "name": "strategic allocation direct-stock scope is zero and capped",
+        "passed": true,
+        "severity": "S",
+        "detail": "initial=0.0; aggregate_cap=0.0; single_cap=0.0"
+      },
+      {
+        "name": "strategic allocation declares exactly one return model",
+        "passed": true,
+        "severity": "S",
+        "detail": "data/portfolio_return_model_20260812.json"
+      },
+      {
+        "name": "strategic allocation return model parses",
+        "passed": true,
+        "severity": "S",
+        "detail": ""
+      },
+      {
+        "name": "strategic allocation return-model weights sum to 100%",
+        "passed": true,
+        "severity": "S",
+        "detail": "1.000000"
+      },
+      {
+        "name": "strategic allocation has no point return forecast",
+        "passed": true,
+        "severity": "S",
+        "detail": "strategic allocation planning range — research-only product diligence, no point return forecast"
+      },
+      {
+        "name": "strategic allocation cash and total-return measurement are explicit",
+        "passed": true,
+        "severity": "S",
+        "detail": "cash and total-return controls"
+      },
+      {
+        "name": "strategic allocation return evidence explicitly blocks implementation",
+        "passed": true,
+        "severity": "S",
+        "detail": "return_evidence implementation boundary"
+      },
+      {
+        "name": "strategic allocation risk budget explicitly blocks implementation",
+        "passed": true,
+        "severity": "S",
+        "detail": "risk_budget implementation boundary"
+      },
+      {
+        "name": "strategic allocation REIT activation controls are non-forcing",
+        "passed": true,
+        "severity": "S",
+        "detail": "REIT eligibility and fallback"
+      },
+      {
+        "name": "strategic allocation research-framework sign-off status pass",
+        "passed": true,
+        "severity": "S",
+        "detail": "signoff=research_framework_pass; framework=pass"
+      },
+      {
+        "name": "strategic allocation implementation explicitly not approved",
+        "passed": true,
+        "severity": "S",
+        "detail": "not_approved"
+      },
+      {
+        "name": "strategic allocation live execution explicitly unauthorized",
+        "passed": true,
+        "severity": "S",
+        "detail": "False"
+      },
+      {
+        "name": "strategic allocation return-evidence and risk-budget gates block implementation",
+        "passed": true,
+        "severity": "S",
+        "detail": "return_evidence=blocked_pending_formal_test; risk_budget=not_approved; suitability=pending_account_facts; execution=not_authorized"
+      },
+      {
+        "name": "strategic allocation execution eligibility remains inactive",
+        "passed": true,
+        "severity": "S",
+        "detail": "status=not_authorized; q=0.0; live_execution_authorized=False"
+      },
+      {
+        "name": "strategic allocation material claims are explicitly disclosed",
+        "passed": true,
+        "severity": "S",
+        "detail": "all structured boundaries disclosed"
+      },
+      {
+        "name": "strategic allocation residual implementation blockers are disclosed",
+        "passed": true,
+        "severity": "S",
+        "detail": "return evidence, risk budget and authorization blockers disclosed"
+      },
+      {
+        "name": "strategic allocation workflow implementation explicitly not approved",
+        "passed": true,
+        "severity": "S",
+        "detail": "NOT_APPROVED"
+      }
+    ],
+    "blocking_failures": [],
+    "implementation_status": "NOT_APPROVED",
+    "review_summary": {
+      "finding_file_count": 5,
+      "parse_failure_count": 0,
+      "open_s_count": 0,
+      "open_unwaived_a_count": 0,
+      "publishability_score": 94
+    }
+  },
+  "boundary": "A publishable quality result may certify only the research framework; it cannot authorize allocation or live execution."
+}

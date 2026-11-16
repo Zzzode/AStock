@@ -1,0 +1,5270 @@
+{
+  "artifact_class": "exploratory_retrospective_market_price_proxy",
+  "artifact_id": "D5PT-M01-v1",
+  "as_of": "2026-08-15",
+  "candidate_state": "research_only_not_paper_operable",
+  "complete_calendar_years": [
+    {
+      "at_or_above_5pct_diagnostic": null,
+      "complete": false,
+      "market_price_proxy_change_after_illustrative_cost": null,
+      "year": 2014
+    },
+    {
+      "at_or_above_5pct_diagnostic": true,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.0888543148,
+      "year": 2015
+    },
+    {
+      "at_or_above_5pct_diagnostic": false,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": -0.0976795693,
+      "year": 2016
+    },
+    {
+      "at_or_above_5pct_diagnostic": true,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.1248396913,
+      "year": 2017
+    },
+    {
+      "at_or_above_5pct_diagnostic": false,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": -0.06155817,
+      "year": 2018
+    },
+    {
+      "at_or_above_5pct_diagnostic": true,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.0780073133,
+      "year": 2019
+    },
+    {
+      "at_or_above_5pct_diagnostic": true,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.0759665841,
+      "year": 2020
+    },
+    {
+      "at_or_above_5pct_diagnostic": false,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.0030078173,
+      "year": 2021
+    },
+    {
+      "at_or_above_5pct_diagnostic": false,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": -0.0027332529,
+      "year": 2022
+    },
+    {
+      "at_or_above_5pct_diagnostic": true,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.0978635476,
+      "year": 2023
+    },
+    {
+      "at_or_above_5pct_diagnostic": true,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.1405831877,
+      "year": 2024
+    },
+    {
+      "at_or_above_5pct_diagnostic": true,
+      "complete": true,
+      "market_price_proxy_change_after_illustrative_cost": 0.1880119548,
+      "year": 2025
+    },
+    {
+      "at_or_above_5pct_diagnostic": null,
+      "complete": false,
+      "market_price_proxy_change_after_illustrative_cost": null,
+      "year": 2026
+    }
+  ],
+  "coverage": {
+    "common_daily_close_observations": 3173,
+    "common_end": "2026-08-14",
+    "common_start": "2013-07-29",
+    "excluded_rows_after_common_intersection": {
+      "510300": 283,
+      "510880": 1584,
+      "511010": 82,
+      "511990": 117,
+      "518880": 0
+    },
+    "source_rows_by_code": {
+      "510300": 3456,
+      "510880": 4757,
+      "511010": 3255,
+      "511990": 3290,
+      "518880": 3173
+    }
+  },
+  "five_percent_research_diagnostic": {
+    "allowed_interpretation": "This is a negative/positive screen only inside a retrospective close-price proxy. It cannot prove stable performance, investor return, personal access, implementation quality or a future result.",
+    "failures": [
+      "At least one complete calendar-year market-price proxy is below 5%.",
+      "At least one rolling-five-year market-price proxy is below 5%."
+    ],
+    "state": "HURDLE_NOT_MET_IN_EXPLORATORY_PRICE_PROXY",
+    "threshold": 0.05
+  },
+  "fixed_rule": {
+    "equity_sleeve": {
+      "codes": [
+        "510300",
+        "510880"
+      ],
+      "signal_level": "fixed-base buy-and-hold equal-weight level",
+      "weights": [
+        0.5,
+        0.5
+      ]
+    },
+    "leverage_derivatives_relative_ranking_parameter_search": "prohibited",
+    "other_risk_sleeves": {
+      "bond": "511010",
+      "gold": "518880"
+    },
+    "paper_trade_cost": {
+      "boundary": "Illustrative recurrence only; not an observed fee, tax, bid/ask, impact, fill, settlement or capacity measure.",
+      "one_way_bps": 20.0
+    },
+    "signal": "On each calendar-month final common close, compare each sleeve value with the close 252 common observations earlier; positive means greater than zero.",
+    "target": "Equal weight among positive equity, bond and gold sleeves; if none is positive, 100% 511990 fallback.",
+    "timing": "A signal formed after the month-end close applies no earlier than the next common trading session, before that session's proxy close-to-close movement."
+  },
+  "formal_decision_eligible": false,
+  "full_period_metrics": {
+    "annualized_market_price_proxy_change_after_illustrative_cost": 0.0729205473,
+    "end_date": "2026-08-14",
+    "final_unit_value": 2.2510029664,
+    "max_drawdown": -0.2493562145,
+    "observation_intervals": 2905,
+    "start_date": "2014-09-01"
+  },
+  "hard_limitations": [
+    "The official SSE responses were captured retrospectively; they do not establish point-in-time availability, revisions, data rights or an adjusted total-return series.",
+    "Daily close is not a tradable fill and omits distributions, fund events, NAV/IOPV, bid/ask, depth, price limits, suspensions, fees, taxes, settlement, account eligibility and no-fill outcomes.",
+    "This rule was fixed after related public observations existed; it is not a clean preregistration and cannot support an out-of-sample performance claim.",
+    "A five-percent screen does not turn a long-run target into a minimum return, and the result does not authorize an external action."
+  ],
+  "portfolio_q": 0,
+  "rebalances": [
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.0,
+        "511990": 1.0,
+        "518880": 0.0
+      },
+      "effective_date": "2014-09-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.002,
+      "one_way_turnover": 1.0,
+      "signal_date": "2014-08-29",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.02029509,
+        "equity": 0.006911193,
+        "gold": -0.0668615272
+      },
+      "unit_value_after_cost": 0.998,
+      "unit_value_before_cost": 1.0
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2532754736,
+        "510880": 0.2565867123,
+        "511010": 0.490137814,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2014-10-08",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 1.97244e-05,
+      "one_way_turnover": 0.009862186,
+      "signal_date": "2014-09-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0345645925,
+        "equity": 0.005145688,
+        "gold": -0.0689919509
+      },
+      "unit_value_after_cost": 1.0297185411,
+      "unit_value_before_cost": 1.0297388521
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2506633746,
+        "510880": 0.2523169417,
+        "511010": 0.4970196837,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2014-11-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 5.9606e-06,
+      "one_way_turnover": 0.0029803163,
+      "signal_date": "2014-10-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.051079144,
+        "equity": 0.052489742,
+        "gold": -0.0947976879
+      },
+      "unit_value_after_cost": 1.0529608788,
+      "unit_value_before_cost": 1.0529671552
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.262566756,
+        "510880": 0.2609348961,
+        "511010": 0.4764983479,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2014-12-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 4.70033e-05,
+      "one_way_turnover": 0.0235016521,
+      "signal_date": "2014-11-28",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0854535975,
+        "equity": 0.1729627541,
+        "gold": -0.0591763295
+      },
+      "unit_value_after_cost": 1.1187062372,
+      "unit_value_before_cost": 1.1187588226
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2820669373,
+        "510880": 0.2710902681,
+        "511010": 0.4468427946,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-01-05",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2014-12-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.07818561,
+        "equity": 0.5272813883,
+        "gold": 0.0298889838
+      },
+      "unit_value_after_cost": 1.2425788213,
+      "unit_value_before_cost": 1.2434077598
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1583273138,
+        "510880": 0.1560824294,
+        "511010": 0.3369435593,
+        "511990": 0.0,
+        "518880": 0.3486466975
+      },
+      "effective_date": "2015-02-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.78472e-05,
+      "one_way_turnover": 0.0189235901,
+      "signal_date": "2015-01-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0972504402,
+        "equity": 0.5289168361,
+        "gold": 0.0337535584
+      },
+      "unit_value_after_cost": 1.2519844712,
+      "unit_value_before_cost": 1.2520318571
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1728958059,
+        "510880": 0.1679362254,
+        "511010": 0.3368526716,
+        "511990": 0.0,
+        "518880": 0.3223152971
+      },
+      "effective_date": "2015-03-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0006446306,
+      "one_way_turnover": 0.3223152971,
+      "signal_date": "2015-02-27",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0971883834,
+        "equity": 0.5159228806,
+        "gold": -0.0504622496
+      },
+      "unit_value_after_cost": 1.2547525804,
+      "unit_value_before_cost": 1.255561954
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.26502275,
+        "510880": 0.2743756724,
+        "511010": 0.4606015776,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-04-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 7.87968e-05,
+      "one_way_turnover": 0.0393984224,
+      "signal_date": "2015-03-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0753214315,
+        "equity": 0.8697763326,
+        "gold": -0.1171641791
+      },
+      "unit_value_after_cost": 1.3404960475,
+      "unit_value_before_cost": 1.3406016826
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.267076013,
+        "510880": 0.2691271788,
+        "511010": 0.4637968083,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-05-04",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 7.24064e-05,
+      "one_way_turnover": 0.0362031917,
+      "signal_date": "2015-04-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0880550369,
+        "equity": 1.1214022369,
+        "gold": -0.0659170221
+      },
+      "unit_value_after_cost": 1.475071683,
+      "unit_value_before_cost": 1.4751784953
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2531779179,
+        "510880": 0.253037381,
+        "511010": 0.4937847011,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-06-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 1.24306e-05,
+      "one_way_turnover": 0.0062152989,
+      "signal_date": "2015-05-29",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.073815945,
+        "equity": 1.2422933713,
+        "gold": -0.0817585808
+      },
+      "unit_value_after_cost": 1.480819071,
+      "unit_value_before_cost": 1.4808374787
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2370306132,
+        "510880": 0.2556234698,
+        "511010": 0.507345917,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-07-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 2.59388e-05,
+      "one_way_turnover": 0.0129693868,
+      "signal_date": "2015-06-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0599399399,
+        "equity": 1.1471235466,
+        "gold": -0.0821596244
+      },
+      "unit_value_after_cost": 1.4535337178,
+      "unit_value_before_cost": 1.4535714217
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2288250847,
+        "510880": 0.2267651028,
+        "511010": 0.5444098125,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-08-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 8.88196e-05,
+      "one_way_turnover": 0.0444098125,
+      "signal_date": "2015-07-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0926720873,
+        "equity": 0.7595857029,
+        "gold": -0.169095092
+      },
+      "unit_value_after_cost": 1.3637376374,
+      "unit_value_before_cost": 1.3638587748
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2340598532,
+        "510880": 0.2320685155,
+        "511010": 0.5338716313,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-09-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 6.77433e-05,
+      "one_way_turnover": 0.0338716313,
+      "signal_date": "2015-08-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0876817536,
+        "equity": 0.4303581741,
+        "gold": -0.0895289996
+      },
+      "unit_value_after_cost": 1.2840464823,
+      "unit_value_before_cost": 1.2841334737
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.243791033,
+        "510880": 0.2426418551,
+        "511010": 0.5135671119,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-10-08",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 2.71342e-05,
+      "one_way_turnover": 0.0135671119,
+      "signal_date": "2015-09-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0816101105,
+        "equity": 0.3280368451,
+        "gold": -0.0496919918
+      },
+      "unit_value_after_cost": 1.2492293762,
+      "unit_value_before_cost": 1.249263274
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2638035501,
+        "510880": 0.2616623075,
+        "511010": 0.4745341424,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-11-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 5.09317e-05,
+      "one_way_turnover": 0.0254658576,
+      "signal_date": "2015-10-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0566054226,
+        "equity": 0.4460398308,
+        "gold": -0.039624183
+      },
+      "unit_value_after_cost": 1.3175826776,
+      "unit_value_before_cost": 1.3176497878
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2504003456,
+        "510880": 0.2531671815,
+        "511010": 0.4964324729,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2015-12-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 7.1351e-06,
+      "one_way_turnover": 0.0035675271,
+      "signal_date": "2015-11-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0456178196,
+        "equity": 0.3974819325,
+        "gold": -0.0670940171
+      },
+      "unit_value_after_cost": 1.3242731828,
+      "unit_value_before_cost": 1.3242826317
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2559819334,
+        "510880": 0.2492488232,
+        "511010": 0.4947692434,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2016-01-04",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 1.19639e-05,
+      "one_way_turnover": 0.0059819334,
+      "signal_date": "2015-12-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0645339484,
+        "equity": 0.1008659851,
+        "gold": -0.0753935377
+      },
+      "unit_value_after_cost": 1.3538737065,
+      "unit_value_before_cost": 1.3538899042
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2182806557,
+        "510880": 0.2190084067,
+        "511010": 0.5627109376,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2016-02-01",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0008745781,
+      "one_way_turnover": 0.4372890624,
+      "signal_date": "2016-01-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.040341835,
+        "equity": -0.1096636017,
+        "gold": -0.0805447471
+      },
+      "unit_value_after_cost": 1.201513318,
+      "unit_value_before_cost": 1.2025650551
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2016-03-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.001,
+      "one_way_turnover": 0.5,
+      "signal_date": "2016-02-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0364927174,
+        "equity": -0.1232718381,
+        "gold": 0.0331469649
+      },
+      "unit_value_after_cost": 1.2065097974,
+      "unit_value_before_cost": 1.2077175149
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5061799897,
+        "511990": 0.0,
+        "518880": 0.4938200103
+      },
+      "effective_date": "2016-04-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.236e-05,
+      "one_way_turnover": 0.0061799897,
+      "signal_date": "2016-03-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0478357767,
+        "equity": -0.1754264837,
+        "gold": 0.0732940185
+      },
+      "unit_value_after_cost": 1.2031777724,
+      "unit_value_before_cost": 1.2031926439
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4875801781,
+        "511990": 0.0,
+        "518880": 0.5124198219
+      },
+      "effective_date": "2016-05-03",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.48396e-05,
+      "one_way_turnover": 0.0124198219,
+      "signal_date": "2016-04-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0372199368,
+        "equity": -0.3036677139,
+        "gold": 0.1087953314
+      },
+      "unit_value_after_cost": 1.2255902812,
+      "unit_value_before_cost": 1.2256207252
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5084770837,
+        "511990": 0.0,
+        "518880": 0.4915229163
+      },
+      "effective_date": "2016-06-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.69542e-05,
+      "one_way_turnover": 0.0084770837,
+      "signal_date": "2016-05-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0368877751,
+        "equity": -0.3350347632,
+        "gold": 0.070211882
+      },
+      "unit_value_after_cost": 1.207336696,
+      "unit_value_before_cost": 1.2073571657
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4790663085,
+        "511990": 0.0,
+        "518880": 0.5209336915
+      },
+      "effective_date": "2016-07-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.18674e-05,
+      "one_way_turnover": 0.0209336915,
+      "signal_date": "2016-06-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.051243392,
+        "equity": -0.3819287502,
+        "gold": 0.1940677966
+      },
+      "unit_value_after_cost": 1.2676311586,
+      "unit_value_before_cost": 1.2676842332
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4983109461,
+        "511990": 0.0,
+        "518880": 0.5016890539
+      },
+      "effective_date": "2016-08-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.3781e-06,
+      "one_way_turnover": 0.0016890539,
+      "signal_date": "2016-07-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0370753037,
+        "equity": -0.2199772676,
+        "gold": 0.274632189
+      },
+      "unit_value_after_cost": 1.2817401364,
+      "unit_value_before_cost": 1.2817444663
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5040048267,
+        "511990": 0.0,
+        "518880": 0.4959951733
+      },
+      "effective_date": "2016-09-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 8.0097e-06,
+      "one_way_turnover": 0.0040048267,
+      "signal_date": "2016-08-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0474620656,
+        "equity": -0.121867675,
+        "gold": 0.2033248082
+      },
+      "unit_value_after_cost": 1.2758093551,
+      "unit_value_before_cost": 1.275819574
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4990317034,
+        "511990": 0.0,
+        "518880": 0.5009682966
+      },
+      "effective_date": "2016-10-10",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.9366e-06,
+      "one_way_turnover": 0.0009682966,
+      "signal_date": "2016-09-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0441052991,
+        "equity": -0.0001160185,
+        "gold": 0.2113336174
+      },
+      "unit_value_after_cost": 1.2823621307,
+      "unit_value_before_cost": 1.2823646141
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5055587453,
+        "511990": 0.0,
+        "518880": 0.4944412547
+      },
+      "effective_date": "2016-11-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.11175e-05,
+      "one_way_turnover": 0.0055587453,
+      "signal_date": "2016-10-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.044884841,
+        "equity": -0.0538669114,
+        "gold": 0.1650647723
+      },
+      "unit_value_after_cost": 1.2716777433,
+      "unit_value_before_cost": 1.2716918813
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.508573314,
+        "511990": 0.0,
+        "518880": 0.491426686
+      },
+      "effective_date": "2016-12-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.71466e-05,
+      "one_way_turnover": 0.008573314,
+      "signal_date": "2016-11-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0340888049,
+        "equity": -0.0499369544,
+        "gold": 0.1940567312
+      },
+      "unit_value_after_cost": 1.2307267551,
+      "unit_value_before_cost": 1.2307478583
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.499320982,
+        "511990": 0.0,
+        "518880": 0.500679018
+      },
+      "effective_date": "2017-01-03",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.358e-06,
+      "one_way_turnover": 0.000679018,
+      "signal_date": "2016-12-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0109385415,
+        "equity": -0.1143069433,
+        "gold": 0.1778373548
+      },
+      "unit_value_after_cost": 1.2216408624,
+      "unit_value_before_cost": 1.2216425215
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4998804958,
+        "511990": 0.0,
+        "518880": 0.5001195042
+      },
+      "effective_date": "2017-02-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2017-01-26",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0053314957,
+        "equity": 0.088490183,
+        "gold": 0.1462673611
+      },
+      "unit_value_after_cost": 1.2228498436,
+      "unit_value_before_cost": 1.2236656207
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1655846903,
+        "510880": 0.1660820468,
+        "511010": 0.3263426372,
+        "511990": 0.0,
+        "518880": 0.3419906257
+      },
+      "effective_date": "2017-03-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.73146e-05,
+      "one_way_turnover": 0.0086572924,
+      "signal_date": "2017-02-28",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0092817118,
+        "equity": 0.1609905374,
+        "gold": 0.0951440979
+      },
+      "unit_value_after_cost": 1.2518958844,
+      "unit_value_before_cost": 1.2519175609
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1672305961,
+        "510880": 0.1680778848,
+        "511010": 0.3326651499,
+        "511990": 0.0,
+        "518880": 0.3320263692
+      },
+      "effective_date": "2017-04-05",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.9503e-06,
+      "one_way_turnover": 0.0019751475,
+      "signal_date": "2017-03-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0009845187,
+        "equity": 0.1009968641,
+        "gold": 0.0718167702
+      },
+      "unit_value_after_cost": 1.2509288681,
+      "unit_value_before_cost": 1.2509338097
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1654475219,
+        "510880": 0.1646797487,
+        "511010": 0.3306063788,
+        "511990": 0.0,
+        "518880": 0.3392663506
+      },
+      "effective_date": "2017-05-02",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006612128,
+      "one_way_turnover": 0.3306063788,
+      "signal_date": "2017-04-28",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.010391924,
+        "equity": 0.0769065966,
+        "gold": 0.0975800156
+      },
+      "unit_value_after_cost": 1.2509277497,
+      "unit_value_before_cost": 1.2517554264
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2529613243,
+        "510880": 0.2560725358,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.49096614
+      },
+      "effective_date": "2017-06-01",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.80677e-05,
+      "one_way_turnover": 0.00903386,
+      "signal_date": "2017-05-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0161403635,
+        "equity": 0.170243949,
+        "gold": 0.0296846011
+      },
+      "unit_value_after_cost": 1.2571598829,
+      "unit_value_before_cost": 1.2571825973
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2606126129,
+        "510880": 0.2566025409,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.4827848462
+      },
+      "effective_date": "2017-07-03",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 0.0009655697,
+      "one_way_turnover": 0.4827848462,
+      "signal_date": "2017-06-30",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0134414644,
+        "equity": 0.2147487593,
+        "gold": -0.0003683241
+      },
+      "unit_value_after_cost": 1.2721379249,
+      "unit_value_before_cost": 1.2733674499
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.4989801668,
+        "510880": 0.5010198332,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2017-08-01",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 2.0397e-06,
+      "one_way_turnover": 0.0010198332,
+      "signal_date": "2017-07-31",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0211774785,
+        "equity": 0.1742605195,
+        "gold": -0.0429319372
+      },
+      "unit_value_after_cost": 1.3114134185,
+      "unit_value_before_cost": 1.3114160933
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.5054604342,
+        "510880": 0.4945395658,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2017-09-01",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 1.09209e-05,
+      "one_way_turnover": 0.0054604342,
+      "signal_date": "2017-08-31",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0273325131,
+        "equity": 0.1402573997,
+        "gold": -0.0417246175
+      },
+      "unit_value_after_cost": 1.3294062913,
+      "unit_value_before_cost": 1.3294208097
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.4994206659,
+        "510880": 0.5005793341,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2017-10-09",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 1.1587e-06,
+      "one_way_turnover": 0.0005793341,
+      "signal_date": "2017-09-29",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0265964987,
+        "equity": 0.1787173687,
+        "gold": -0.0314376545
+      },
+      "unit_value_after_cost": 1.3371150138,
+      "unit_value_before_cost": 1.337116563
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.5048310919,
+        "510880": 0.4951689081,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2017-11-01",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 9.6622e-06,
+      "one_way_turnover": 0.0048310919,
+      "signal_date": "2017-10-31",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0381402554,
+        "equity": 0.192146493,
+        "gold": -0.0155740674
+      },
+      "unit_value_after_cost": 1.378609074,
+      "unit_value_before_cost": 1.3786223945
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.5000723007,
+        "510880": 0.4999276993,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2017-12-01",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.001,
+      "one_way_turnover": 0.5,
+      "signal_date": "2017-11-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0300158118,
+        "equity": 0.1455018605,
+        "gold": 0.0040605389
+      },
+      "unit_value_after_cost": 1.3743193181,
+      "unit_value_before_cost": 1.3756950131
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2513872908,
+        "510880": 0.2507579785,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.4978547307
+      },
+      "effective_date": "2018-01-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2017-12-29",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0018684399,
+        "equity": 0.1899980693,
+        "gold": 0.0411380238
+      },
+      "unit_value_after_cost": 1.3732358954,
+      "unit_value_before_cost": 1.3741519967
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1713327044,
+        "510880": 0.1699936893,
+        "511010": 0.3283926447,
+        "511990": 0.0,
+        "518880": 0.3302809615
+      },
+      "effective_date": "2018-02-01",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006567853,
+      "one_way_turnover": 0.3283926447,
+      "signal_date": "2018-01-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0093433501,
+        "equity": 0.2114298242,
+        "gold": 0.0251124438
+      },
+      "unit_value_after_cost": 1.3988259834,
+      "unit_value_before_cost": 1.3997453155
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2440077286,
+        "510880": 0.245657898,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5103343734
+      },
+      "effective_date": "2018-03-01",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 0.0010206687,
+      "one_way_turnover": 0.5103343734,
+      "signal_date": "2018-02-28",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0012186205,
+        "equity": 0.1534902272,
+        "gold": -0.0164413592
+      },
+      "unit_value_after_cost": 1.3475754851,
+      "unit_value_before_cost": 1.3489523186
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.5034622774,
+        "510880": 0.4965377226,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-04-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.001,
+      "one_way_turnover": 0.5,
+      "signal_date": "2018-03-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0039086478,
+        "equity": 0.0950851924,
+        "gold": -0.0214467466
+      },
+      "unit_value_after_cost": 1.2957301173,
+      "unit_value_before_cost": 1.2970271445
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2442593961,
+        "510880": 0.243518561,
+        "511010": 0.5122220429,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-05-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 2.44441e-05,
+      "one_way_turnover": 0.0122220429,
+      "signal_date": "2018-04-27",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0159041591,
+        "equity": 0.0527671024,
+        "gold": -0.0531129089
+      },
+      "unit_value_after_cost": 1.277815015,
+      "unit_value_before_cost": 1.2778462508
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.251134514,
+        "510880": 0.2539946261,
+        "511010": 0.49487086,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-06-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 1.02583e-05,
+      "one_way_turnover": 0.00512914,
+      "signal_date": "2018-05-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0323183416,
+        "equity": 0.0879171746,
+        "gold": -0.0352011494
+      },
+      "unit_value_after_cost": 1.2886328399,
+      "unit_value_before_cost": 1.2886460592
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2398090591,
+        "510880": 0.2412521996,
+        "511010": 0.5189387414,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-07-02",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0009621225,
+      "one_way_turnover": 0.4810612586,
+      "signal_date": "2018-06-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0243061228,
+        "equity": -0.0254295756,
+        "gold": -0.0298942763
+      },
+      "unit_value_after_cost": 1.2482291119,
+      "unit_value_before_cost": 1.2494312178
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-08-01",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0,
+      "one_way_turnover": 0.0,
+      "signal_date": "2018-07-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0338170416,
+        "equity": -0.0684586272,
+        "gold": -0.0129246677
+      },
+      "unit_value_after_cost": 1.2544450398,
+      "unit_value_before_cost": 1.2544450398
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-09-03",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0,
+      "one_way_turnover": 0.0,
+      "signal_date": "2018-08-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0321304138,
+        "equity": -0.104130052,
+        "gold": -0.0374681702
+      },
+      "unit_value_after_cost": 1.254898515,
+      "unit_value_before_cost": 1.254898515
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-10-08",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0,
+      "one_way_turnover": 0.0,
+      "signal_date": "2018-09-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0337593397,
+        "equity": -0.0859115598,
+        "gold": -0.0489485134
+      },
+      "unit_value_after_cost": 1.2578737545,
+      "unit_value_before_cost": 1.2578737545
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-11-01",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0,
+      "one_way_turnover": 0.0,
+      "signal_date": "2018-10-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0419781222,
+        "equity": -0.1731160443,
+        "gold": 0.0
+      },
+      "unit_value_after_cost": 1.264255588,
+      "unit_value_before_cost": 1.264255588
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2018-12-03",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0,
+      "one_way_turnover": 0.0,
+      "signal_date": "2018-11-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0509565807,
+        "equity": -0.2082806162,
+        "gold": -0.003646973
+      },
+      "unit_value_after_cost": 1.2692327545,
+      "unit_value_before_cost": 1.2692327545
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2019-01-02",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.001,
+      "one_way_turnover": 0.5,
+      "signal_date": "2018-12-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0653892194,
+        "equity": -0.1942762523,
+        "gold": 0.0568436799
+      },
+      "unit_value_after_cost": 1.2882721527,
+      "unit_value_before_cost": 1.2895617145
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4993095165,
+        "511990": 0.0,
+        "518880": 0.5006904835
+      },
+      "effective_date": "2019-02-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.381e-06,
+      "one_way_turnover": 0.0006904835,
+      "signal_date": "2019-01-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.066810463,
+        "equity": -0.2355433682,
+        "gold": 0.0282711127
+      },
+      "unit_value_after_cost": 1.2915013519,
+      "unit_value_before_cost": 1.2915031355
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.499752308,
+        "511990": 0.0,
+        "518880": 0.500247692
+      },
+      "effective_date": "2019-03-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.954e-07,
+      "one_way_turnover": 0.000247692,
+      "signal_date": "2019-02-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0582066358,
+        "equity": -0.0899337531,
+        "gold": 0.0570895522
+      },
+      "unit_value_after_cost": 1.2890412032,
+      "unit_value_before_cost": 1.2890418418
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5048985954,
+        "511990": 0.0,
+        "518880": 0.4951014046
+      },
+      "effective_date": "2019-04-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 9.7972e-06,
+      "one_way_turnover": 0.0048985954,
+      "signal_date": "2019-03-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0545684249,
+        "equity": -0.043655453,
+        "gold": 0.037202381
+      },
+      "unit_value_after_cost": 1.2811045848,
+      "unit_value_before_cost": 1.2811171361
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4993184004,
+        "511990": 0.0,
+        "518880": 0.5006815996
+      },
+      "effective_date": "2019-05-06",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2019-04-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0319128131,
+        "equity": 0.0281469397,
+        "gold": 0.0183351669
+      },
+      "unit_value_after_cost": 1.2734633274,
+      "unit_value_before_cost": 1.2743128693
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1563113515,
+        "510880": 0.1582802241,
+        "511010": 0.3378654352,
+        "511990": 0.0,
+        "518880": 0.3475429891
+      },
+      "effective_date": "2019-06-03",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006291832,
+      "one_way_turnover": 0.3145915756,
+      "signal_date": "2019-05-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0438119718,
+        "equity": -0.0709718793,
+        "gold": 0.0885022693
+      },
+      "unit_value_after_cost": 1.2650224392,
+      "unit_value_before_cost": 1.2658188711
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4811496409,
+        "511990": 0.0,
+        "518880": 0.5188503591
+      },
+      "effective_date": "2019-07-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.77007e-05,
+      "one_way_turnover": 0.0188503591,
+      "signal_date": "2019-06-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0451930025,
+        "equity": -0.0026451757,
+        "gold": 0.1613746731
+      },
+      "unit_value_after_cost": 1.3168601963,
+      "unit_value_before_cost": 1.3169098447
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4967380469,
+        "511990": 0.0,
+        "518880": 0.5032619531
+      },
+      "effective_date": "2019-08-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2019-07-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0389209135,
+        "equity": 0.0836120883,
+        "gold": 0.198938992
+      },
+      "unit_value_after_cost": 1.3305821805,
+      "unit_value_before_cost": 1.331469827
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1600374324,
+        "510880": 0.1575199809,
+        "511010": 0.3243512393,
+        "511990": 0.0,
+        "518880": 0.3580913474
+      },
+      "effective_date": "2019-09-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.9516e-05,
+      "one_way_turnover": 0.024758014,
+      "signal_date": "2019-08-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.04933679,
+        "equity": 0.1126982173,
+        "gold": 0.350269438
+      },
+      "unit_value_after_cost": 1.3731823917,
+      "unit_value_before_cost": 1.3732503896
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1684013111,
+        "510880": 0.1695256401,
+        "511010": 0.3366977104,
+        "511990": 0.0,
+        "518880": 0.3253753384
+      },
+      "effective_date": "2019-10-08",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.5916e-05,
+      "one_way_turnover": 0.0079579949,
+      "signal_date": "2019-09-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0470189774,
+        "equity": 0.1039762994,
+        "gold": 0.2786144578
+      },
+      "unit_value_after_cost": 1.3618319623,
+      "unit_value_before_cost": 1.3618536376
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1701243743,
+        "510880": 0.1669677188,
+        "511010": 0.3324566223,
+        "511990": 0.0,
+        "518880": 0.3304512846
+      },
+      "effective_date": "2019-11-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 7.5175e-06,
+      "one_way_turnover": 0.0037587598,
+      "signal_date": "2019-10-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0303983229,
+        "equity": 0.1772663084,
+        "gold": 0.2354886113
+      },
+      "unit_value_after_cost": 1.3603502622,
+      "unit_value_before_cost": 1.3603604887
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1660640509,
+        "510880": 0.1672619155,
+        "511010": 0.3394129165,
+        "511990": 0.0,
+        "518880": 0.3272611172
+      },
+      "effective_date": "2019-12-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.33497e-05,
+      "one_way_turnover": 0.0066748319,
+      "signal_date": "2019-11-29",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0279277876,
+        "equity": 0.1020147174,
+        "gold": 0.2061322497
+      },
+      "unit_value_after_cost": 1.3451961074,
+      "unit_value_before_cost": 1.3452140655
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1699479463,
+        "510880": 0.1702687319,
+        "511010": 0.3254746225,
+        "511990": 0.0,
+        "518880": 0.3343086993
+      },
+      "effective_date": "2020-01-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.57174e-05,
+      "one_way_turnover": 0.0078587108,
+      "signal_date": "2019-12-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.034536038,
+        "equity": 0.1881351075,
+        "gold": 0.225642883
+      },
+      "unit_value_after_cost": 1.3901351094,
+      "unit_value_before_cost": 1.3901569591
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1642621834,
+        "510880": 0.1550053114,
+        "511010": 0.3394092955,
+        "511990": 0.0,
+        "518880": 0.3413232097
+      },
+      "effective_date": "2020-02-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.81317e-05,
+      "one_way_turnover": 0.0140658385,
+      "signal_date": "2020-01-23",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0362697412,
+        "equity": 0.1370044765,
+        "gold": 0.2228163993
+      },
+      "unit_value_after_cost": 1.3760096655,
+      "unit_value_before_cost": 1.3760483761
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1620088248,
+        "510880": 0.157876587,
+        "511010": 0.3323827836,
+        "511990": 0.0,
+        "518880": 0.3477318046
+      },
+      "effective_date": "2020-03-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.87969e-05,
+      "one_way_turnover": 0.0143984713,
+      "signal_date": "2020-02-28",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0418218471,
+        "equity": 0.0700842049,
+        "gold": 0.2663404404
+      },
+      "unit_value_after_cost": 1.393213015,
+      "unit_value_before_cost": 1.3932531364
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1589105227,
+        "510880": 0.1597565226,
+        "511010": 0.3441226499,
+        "511990": 0.0,
+        "518880": 0.3372103048
+      },
+      "effective_date": "2020-04-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006373341,
+      "one_way_turnover": 0.3186670453,
+      "signal_date": "2020-03-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0586956335,
+        "equity": -0.10783952,
+        "gold": 0.2702798441
+      },
+      "unit_value_after_cost": 1.3622615623,
+      "unit_value_before_cost": 1.3631303317
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4955813355,
+        "511990": 0.0,
+        "518880": 0.5044186645
+      },
+      "effective_date": "2020-05-06",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 8.8373e-06,
+      "one_way_turnover": 0.0044186645,
+      "signal_date": "2020-04-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0912833703,
+        "equity": -0.1136789549,
+        "gold": 0.3616866594
+      },
+      "unit_value_after_cost": 1.4105646924,
+      "unit_value_before_cost": 1.4105771581
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4871697082,
+        "511990": 0.0,
+        "518880": 0.5128302918
+      },
+      "effective_date": "2020-06-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.56606e-05,
+      "one_way_turnover": 0.0128302918,
+      "signal_date": "2020-05-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0626935316,
+        "equity": -0.0276069018,
+        "gold": 0.3538892782
+      },
+      "unit_value_after_cost": 1.4185594571,
+      "unit_value_before_cost": 1.4185958591
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4929307427,
+        "511990": 0.0,
+        "518880": 0.5070692573
+      },
+      "effective_date": "2020-07-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2020-06-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0426741195,
+        "equity": 0.0196520518,
+        "gold": 0.3121019108
+      },
+      "unit_value_after_cost": 1.4159383489,
+      "unit_value_before_cost": 1.4168829375
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1781193943,
+        "510880": 0.1716397697,
+        "511010": 0.3127237116,
+        "511990": 0.0,
+        "518880": 0.3375171243
+      },
+      "effective_date": "2020-08-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.12192e-05,
+      "one_way_turnover": 0.0206096217,
+      "signal_date": "2020-07-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0353225285,
+        "equity": 0.1109147422,
+        "gold": 0.3448165869
+      },
+      "unit_value_after_cost": 1.5062225893,
+      "unit_value_before_cost": 1.5062846772
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.170998532,
+        "510880": 0.1732320754,
+        "511010": 0.3298252392,
+        "511990": 0.0,
+        "518880": 0.3259441533
+      },
+      "effective_date": "2020-09-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.17945e-05,
+      "one_way_turnover": 0.0108972741,
+      "signal_date": "2020-08-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0173945351,
+        "equity": 0.1632942149,
+        "gold": 0.2059081603
+      },
+      "unit_value_after_cost": 1.5063572218,
+      "unit_value_before_cost": 1.5063900529
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1630925665,
+        "510880": 0.1642867525,
+        "511010": 0.342794588,
+        "511990": 0.0,
+        "518880": 0.3298260929
+      },
+      "effective_date": "2020-10-09",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.89225e-05,
+      "one_way_turnover": 0.0094612547,
+      "signal_date": "2020-09-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.021271555,
+        "equity": 0.05827892,
+        "gold": 0.1664220722
+      },
+      "unit_value_after_cost": 1.4673307502,
+      "unit_value_before_cost": 1.4673585163
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1708528947,
+        "510880": 0.1674269976,
+        "511010": 0.3344540733,
+        "511990": 0.0,
+        "518880": 0.3272660345
+      },
+      "effective_date": "2020-11-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.21346e-05,
+      "one_way_turnover": 0.0060672989,
+      "signal_date": "2020-10-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0222257904,
+        "equity": 0.074135351,
+        "gold": 0.1550088915
+      },
+      "unit_value_after_cost": 1.4655583127,
+      "unit_value_before_cost": 1.4655760969
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1760695273,
+        "510880": 0.1814741361,
+        "511010": 0.3324790299,
+        "511990": 0.0,
+        "518880": 0.3099773068
+      },
+      "effective_date": "2020-12-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.84207e-05,
+      "one_way_turnover": 0.02421033,
+      "signal_date": "2020-11-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0208331573,
+        "equity": 0.1809391346,
+        "gold": 0.1101591187
+      },
+      "unit_value_after_cost": 1.4671272753,
+      "unit_value_before_cost": 1.467198318
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.171794364,
+        "510880": 0.1528715184,
+        "511010": 0.3283757502,
+        "511990": 0.0,
+        "518880": 0.3469583674
+      },
+      "effective_date": "2021-01-04",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.75055e-05,
+      "one_way_turnover": 0.0187527314,
+      "signal_date": "2020-12-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0218156702,
+        "equity": 0.1399395109,
+        "gold": 0.1684370258
+      },
+      "unit_value_after_cost": 1.4957063354,
+      "unit_value_before_cost": 1.4957624347
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1718460447,
+        "510880": 0.1546898682,
+        "511010": 0.3400463711,
+        "511990": 0.0,
+        "518880": 0.333417716
+      },
+      "effective_date": "2021-02-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.39536e-05,
+      "one_way_turnover": 0.0119767985,
+      "signal_date": "2021-01-29",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0147265312,
+        "equity": 0.0725957954,
+        "gold": 0.1092190252
+      },
+      "unit_value_after_cost": 1.4673280756,
+      "unit_value_before_cost": 1.4673632242
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.166963586,
+        "510880": 0.177166303,
+        "511010": 0.335388256,
+        "511990": 0.0,
+        "518880": 0.320481855
+      },
+      "effective_date": "2021-03-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.5703e-05,
+      "one_way_turnover": 0.0128514783,
+      "signal_date": "2021-02-26",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0013597818,
+        "equity": 0.1921386952,
+        "gold": 0.0340583858
+      },
+      "unit_value_after_cost": 1.4594773923,
+      "unit_value_before_cost": 1.4595149062
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1598177705,
+        "510880": 0.1754264552,
+        "511010": 0.3384771488,
+        "511990": 0.0,
+        "518880": 0.3262786255
+      },
+      "effective_date": "2021-04-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.78072e-05,
+      "one_way_turnover": 0.013903604,
+      "signal_date": "2021-03-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0011741426,
+        "equity": 0.2676386308,
+        "gold": 0.0508117859
+      },
+      "unit_value_after_cost": 1.4422967836,
+      "unit_value_before_cost": 1.442336891
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1663065728,
+        "510880": 0.1646128499,
+        "511010": 0.3293429872,
+        "511990": 0.0,
+        "518880": 0.3397375901
+      },
+      "effective_date": "2021-05-06",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 0.0013381612,
+      "one_way_turnover": 0.6690805773,
+      "signal_date": "2021-04-30",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0182889722,
+        "equity": 0.247946689,
+        "gold": -0.0119923685
+      },
+      "unit_value_after_cost": 1.4657809196,
+      "unit_value_before_cost": 1.4677449989
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.5048289003,
+        "510880": 0.4951710997,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2021-06-01",
+      "eligible_sleeves": [
+        "equity"
+      ],
+      "illustrative_cost_fraction": 9.6578e-06,
+      "one_way_turnover": 0.0048289003,
+      "signal_date": "2021-05-31",
+      "target_weights": {
+        "510300": 0.5,
+        "510880": 0.5,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0175856501,
+        "equity": 0.2703734121,
+        "gold": -0.025210084
+      },
+      "unit_value_after_cost": 1.5111974695,
+      "unit_value_before_cost": 1.5112120645
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.4928657315,
+        "510880": 0.5071342685,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2021-07-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.001,
+      "one_way_turnover": 0.5,
+      "signal_date": "2021-06-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0085815533,
+        "equity": 0.2448927508,
+        "gold": -0.0666666667
+      },
+      "unit_value_after_cost": 1.5080122666,
+      "unit_value_before_cost": 1.5095217884
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2358744554,
+        "510880": 0.2498259213,
+        "511010": 0.5142996233,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2021-08-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 2.85992e-05,
+      "one_way_turnover": 0.0142996233,
+      "signal_date": "2021-07-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0270110167,
+        "equity": 0.0266556288,
+        "gold": -0.0522292994
+      },
+      "unit_value_after_cost": 1.481506205,
+      "unit_value_before_cost": 1.4815485762
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2431238826,
+        "510880": 0.2705207899,
+        "511010": 0.4863553275,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2021-09-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 4.10416e-05,
+      "one_way_turnover": 0.0205207899,
+      "signal_date": "2021-08-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0300107093,
+        "equity": 0.0549979931,
+        "gold": -0.1165908547
+      },
+      "unit_value_after_cost": 1.5255328882,
+      "unit_value_before_cost": 1.525595501
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2524329181,
+        "510880": 0.2471687347,
+        "511010": 0.5003983472,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2021-10-08",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 5.6625e-06,
+      "one_way_turnover": 0.0028312653,
+      "signal_date": "2021-09-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0387321318,
+        "equity": 0.0824982587,
+        "gold": -0.1333170254
+      },
+      "unit_value_after_cost": 1.5281622789,
+      "unit_value_before_cost": 1.5281709322
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2576220727,
+        "510880": 0.234592188,
+        "511010": 0.5077857394,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2021-11-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 3.08156e-05,
+      "one_way_turnover": 0.015407812,
+      "signal_date": "2021-10-29",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0349017687,
+        "equity": 0.0310804919,
+        "gold": -0.0897856242
+      },
+      "unit_value_after_cost": 1.4967263881,
+      "unit_value_before_cost": 1.496772512
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2475218238,
+        "510880": 0.246983628,
+        "511010": 0.5054945482,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2021-12-01",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0009890109,
+      "one_way_turnover": 0.4945054518,
+      "signal_date": "2021-11-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0410519245,
+        "equity": -0.0259425619,
+        "gold": -0.0711156918
+      },
+      "unit_value_after_cost": 1.4889927588,
+      "unit_value_before_cost": 1.4904668467
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2022-01-04",
+      "eligible_sleeves": [
+        "equity",
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.001,
+      "one_way_turnover": 0.5,
+      "signal_date": "2021-12-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0481742993,
+        "equity": 0.0031709421,
+        "gold": -0.0508077124
+      },
+      "unit_value_after_cost": 1.4987611534,
+      "unit_value_before_cost": 1.5002614148
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2343632459,
+        "510880": 0.2461674212,
+        "511010": 0.5194693329,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2022-02-07",
+      "eligible_sleeves": [
+        "bond"
+      ],
+      "illustrative_cost_fraction": 0.0009610613,
+      "one_way_turnover": 0.4805306671,
+      "signal_date": "2022-01-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0459871984,
+        "equity": -0.1036544261,
+        "gold": -0.0504623514
+      },
+      "unit_value_after_cost": 1.4524261318,
+      "unit_value_before_cost": 1.4538233452
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 1.0,
+        "511990": 0.0,
+        "518880": 0.0
+      },
+      "effective_date": "2022-03-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.001,
+      "one_way_turnover": 0.5,
+      "signal_date": "2022-02-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0470376813,
+        "equity": -0.0552042131,
+        "gold": 0.0202047414
+      },
+      "unit_value_after_cost": 1.4458397922,
+      "unit_value_before_cost": 1.4472870793
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4969087922,
+        "511990": 0.0,
+        "518880": 0.5030912078
+      },
+      "effective_date": "2022-04-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 6.1824e-06,
+      "one_way_turnover": 0.0030912078,
+      "signal_date": "2022-03-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0440559786,
+        "equity": -0.0624375101,
+        "gold": 0.0635405105
+      },
+      "unit_value_after_cost": 1.454401384,
+      "unit_value_before_cost": 1.4544103758
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4937824155,
+        "511990": 0.0,
+        "518880": 0.5062175845
+      },
+      "effective_date": "2022-05-05",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.24352e-05,
+      "one_way_turnover": 0.0062175845,
+      "signal_date": "2022-04-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0417078975,
+        "equity": -0.08834195,
+        "gold": 0.0913621262
+      },
+      "unit_value_after_cost": 1.4773706143,
+      "unit_value_before_cost": 1.4773889859
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5050420128,
+        "511990": 0.0,
+        "518880": 0.4949579872
+      },
+      "effective_date": "2022-06-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.0084e-05,
+      "one_way_turnover": 0.0050420128,
+      "signal_date": "2022-05-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0402320831,
+        "equity": -0.1099618505,
+        "gold": 0.0264760392
+      },
+      "unit_value_after_cost": 1.4677967624,
+      "unit_value_before_cost": 1.4678115638
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5036262788,
+        "511990": 0.0,
+        "518880": 0.4963737212
+      },
+      "effective_date": "2022-07-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 7.2526e-06,
+      "one_way_turnover": 0.0036262788,
+      "signal_date": "2022-06-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0389467776,
+        "equity": -0.0474119975,
+        "gold": 0.0238669885
+      },
+      "unit_value_after_cost": 1.456009209,
+      "unit_value_before_cost": 1.4560197689
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5060695005,
+        "511990": 0.0,
+        "518880": 0.4939304995
+      },
+      "effective_date": "2022-08-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.2139e-05,
+      "one_way_turnover": 0.0060695005,
+      "signal_date": "2022-07-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0360984341,
+        "equity": -0.1060330936,
+        "gold": 0.0075248589
+      },
+      "unit_value_after_cost": 1.4472465619,
+      "unit_value_before_cost": 1.4472641303
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5013559391,
+        "511990": 0.0,
+        "518880": 0.4986440609
+      },
+      "effective_date": "2022-09-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.7119e-06,
+      "one_way_turnover": 0.0013559391,
+      "signal_date": "2022-08-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0358568286,
+        "equity": -0.0717909638,
+        "gold": 0.0273373428
+      },
+      "unit_value_after_cost": 1.4546618118,
+      "unit_value_before_cost": 1.4546657566
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.496933144,
+        "511990": 0.0,
+        "518880": 0.503066856
+      },
+      "effective_date": "2022-10-10",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 6.1337e-06,
+      "one_way_turnover": 0.003066856,
+      "signal_date": "2022-09-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0317670152,
+        "equity": -0.1673314481,
+        "gold": 0.0338890407
+      },
+      "unit_value_after_cost": 1.4554029086,
+      "unit_value_before_cost": 1.4554118357
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.500136921,
+        "511990": 0.0,
+        "518880": 0.499863079
+      },
+      "effective_date": "2022-11-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.738e-07,
+      "one_way_turnover": 0.000136921,
+      "signal_date": "2022-10-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0424143032,
+        "equity": -0.2032246962,
+        "gold": 0.0634078212
+      },
+      "unit_value_after_cost": 1.4650370214,
+      "unit_value_before_cost": 1.4650374226
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4889167813,
+        "511990": 0.0,
+        "518880": 0.5110832187
+      },
+      "effective_date": "2022-12-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.21664e-05,
+      "one_way_turnover": 0.0110832187,
+      "signal_date": "2022-11-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0264299236,
+        "equity": -0.08539913,
+        "gold": 0.0602150538
+      },
+      "unit_value_after_cost": 1.484811714,
+      "unit_value_before_cost": 1.4848446277
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4985085886,
+        "511990": 0.0,
+        "518880": 0.5014914114
+      },
+      "effective_date": "2023-01-03",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.9828e-06,
+      "one_way_turnover": 0.0014914114,
+      "signal_date": "2022-12-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0260192323,
+        "equity": -0.123820069,
+        "gold": 0.0983742078
+      },
+      "unit_value_after_cost": 1.4961563582,
+      "unit_value_before_cost": 1.496160821
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.494332361,
+        "511990": 0.0,
+        "518880": 0.505667639
+      },
+      "effective_date": "2023-02-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.13353e-05,
+      "one_way_turnover": 0.005667639,
+      "signal_date": "2023-01-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0181602655,
+        "equity": -0.1040945711,
+        "gold": 0.1212455222
+      },
+      "unit_value_after_cost": 1.5101750758,
+      "unit_value_before_cost": 1.5101921942
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5035649076,
+        "511990": 0.0,
+        "518880": 0.4964350924
+      },
+      "effective_date": "2023-03-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 7.1298e-06,
+      "one_way_turnover": 0.0035649076,
+      "signal_date": "2023-02-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0150900919,
+        "equity": -0.0549061059,
+        "gold": 0.0729556387
+      },
+      "unit_value_after_cost": 1.5008233997,
+      "unit_value_before_cost": 1.5008341004
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4849848655,
+        "511990": 0.0,
+        "518880": 0.5150151345
+      },
+      "effective_date": "2023-04-03",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.00303e-05,
+      "one_way_turnover": 0.0150151345,
+      "signal_date": "2023-03-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0186853389,
+        "equity": -0.0150394616,
+        "gold": 0.1116593093
+      },
+      "unit_value_after_cost": 1.5535535977,
+      "unit_value_before_cost": 1.5536002527
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5002706932,
+        "511990": 0.0,
+        "518880": 0.4997293068
+      },
+      "effective_date": "2023-05-04",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 5.414e-07,
+      "one_way_turnover": 0.0002706932,
+      "signal_date": "2023-04-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.021989241,
+        "equity": -0.0055448217,
+        "gold": 0.0834383665
+      },
+      "unit_value_after_cost": 1.5605668385,
+      "unit_value_before_cost": 1.5605676833
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4982048322,
+        "511990": 0.0,
+        "518880": 0.5017951678
+      },
+      "effective_date": "2023-06-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2023-05-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0256534517,
+        "equity": 0.0014048754,
+        "gold": 0.1337662338
+      },
+      "unit_value_after_cost": 1.5781712021,
+      "unit_value_before_cost": 1.5792240181
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1701249055,
+        "510880": 0.163830847,
+        "511010": 0.3340277731,
+        "511990": 0.0,
+        "518880": 0.3320164744
+      },
+      "effective_date": "2023-07-03",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006679115,
+      "one_way_turnover": 0.3339557525,
+      "signal_date": "2023-06-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0297424254,
+        "equity": -0.0481457793,
+        "gold": 0.122612287
+      },
+      "unit_value_after_cost": 1.5775684725,
+      "unit_value_before_cost": 1.5786228528
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4969506045,
+        "511990": 0.0,
+        "518880": 0.5030493955
+      },
+      "effective_date": "2023-08-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 6.0988e-06,
+      "one_way_turnover": 0.0030493955,
+      "signal_date": "2023-07-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.02960786,
+        "equity": -0.0002011713,
+        "gold": 0.2129298487
+      },
+      "unit_value_after_cost": 1.5896284751,
+      "unit_value_before_cost": 1.58963817
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4964039386,
+        "511990": 0.0,
+        "518880": 0.5035960614
+      },
+      "effective_date": "2023-09-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 7.1921e-06,
+      "one_way_turnover": 0.0035960614,
+      "signal_date": "2023-08-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.022,
+        "equity": -0.0365019664,
+        "gold": 0.1948949747
+      },
+      "unit_value_after_cost": 1.6086929515,
+      "unit_value_before_cost": 1.6087045215
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5023638111,
+        "511990": 0.0,
+        "518880": 0.4976361889
+      },
+      "effective_date": "2023-10-09",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.7276e-06,
+      "one_way_turnover": 0.0023638111,
+      "signal_date": "2023-09-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0208138212,
+        "equity": -0.0132432095,
+        "gold": 0.1899141631
+      },
+      "unit_value_after_cost": 1.5954662586,
+      "unit_value_before_cost": 1.5954738014
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4901894039,
+        "511990": 0.0,
+        "518880": 0.5098105961
+      },
+      "effective_date": "2023-11-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.96212e-05,
+      "one_way_turnover": 0.0098105961,
+      "signal_date": "2023-10-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0218188571,
+        "equity": -0.0283642359,
+        "gold": 0.2151499211
+      },
+      "unit_value_after_cost": 1.6296362899,
+      "unit_value_before_cost": 1.6296682659
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5017493813,
+        "511990": 0.0,
+        "518880": 0.4982506187
+      },
+      "effective_date": "2023-12-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.4988e-06,
+      "one_way_turnover": 0.0017493813,
+      "signal_date": "2023-11-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0269045398,
+        "equity": -0.0233708556,
+        "gold": 0.1594239515
+      },
+      "unit_value_after_cost": 1.6243791544,
+      "unit_value_before_cost": 1.6243848377
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4991832677,
+        "511990": 0.0,
+        "518880": 0.5008167323
+      },
+      "effective_date": "2024-01-02",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.6335e-06,
+      "one_way_turnover": 0.0008167323,
+      "signal_date": "2023-12-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0380947933,
+        "equity": -0.0684102433,
+        "gold": 0.1872286079
+      },
+      "unit_value_after_cost": 1.6425777436,
+      "unit_value_before_cost": 1.6425804267
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5012953315,
+        "511990": 0.0,
+        "518880": 0.4987046685
+      },
+      "effective_date": "2024-02-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.5907e-06,
+      "one_way_turnover": 0.0012953315,
+      "signal_date": "2024-01-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0427350427,
+        "equity": -0.0892299859,
+        "gold": 0.1471893491
+      },
+      "unit_value_after_cost": 1.6486114529,
+      "unit_value_before_cost": 1.6486157239
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5011056285,
+        "511990": 0.0,
+        "518880": 0.4988943715
+      },
+      "effective_date": "2024-03-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.2113e-06,
+      "one_way_turnover": 0.0011056285,
+      "signal_date": "2024-02-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0427733755,
+        "equity": -0.0257436608,
+        "gold": 0.1611694153
+      },
+      "unit_value_after_cost": 1.6501308062,
+      "unit_value_before_cost": 1.6501344551
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4760525975,
+        "511990": 0.0,
+        "518880": 0.5239474025
+      },
+      "effective_date": "2024-04-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.78948e-05,
+      "one_way_turnover": 0.0239474025,
+      "signal_date": "2024-03-29",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0429556452,
+        "equity": -0.0219072399,
+        "gold": 0.2280785817
+      },
+      "unit_value_after_cost": 1.736943986,
+      "unit_value_before_cost": 1.7370271806
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4930361477,
+        "511990": 0.0,
+        "518880": 0.5069638523
+      },
+      "effective_date": "2024-05-06",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.39277e-05,
+      "one_way_turnover": 0.0069638523,
+      "signal_date": "2024-04-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0431806092,
+        "equity": -0.0303507815,
+        "gold": 0.2107191938
+      },
+      "unit_value_after_cost": 1.7665312786,
+      "unit_value_before_cost": 1.7665558827
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.498619636,
+        "511990": 0.0,
+        "518880": 0.501380364
+      },
+      "effective_date": "2024-06-03",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.7607e-06,
+      "one_way_turnover": 0.001380364,
+      "signal_date": "2024-05-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0404656998,
+        "equity": -0.0138386381,
+        "gold": 0.2274293591
+      },
+      "unit_value_after_cost": 1.780659295,
+      "unit_value_before_cost": 1.7806642109
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5037756453,
+        "511990": 0.0,
+        "518880": 0.4962243547
+      },
+      "effective_date": "2024-07-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 7.5513e-06,
+      "one_way_turnover": 0.0037756453,
+      "signal_date": "2024-06-28",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0395550156,
+        "equity": -0.0154408523,
+        "gold": 0.2071558797
+      },
+      "unit_value_after_cost": 1.7787474028,
+      "unit_value_before_cost": 1.7787608348
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4949121356,
+        "511990": 0.0,
+        "518880": 0.5050878644
+      },
+      "effective_date": "2024-08-01",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.01757e-05,
+      "one_way_turnover": 0.0050878644,
+      "signal_date": "2024-07-31",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.043423885,
+        "equity": -0.030415971,
+        "gold": 0.2293080054
+      },
+      "unit_value_after_cost": 1.8070176942,
+      "unit_value_before_cost": 1.8070360821
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4963010027,
+        "511990": 0.0,
+        "518880": 0.5036989973
+      },
+      "effective_date": "2024-09-02",
+      "eligible_sleeves": [
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 7.398e-06,
+      "one_way_turnover": 0.0036989973,
+      "signal_date": "2024-08-30",
+      "target_weights": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.5,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.040750812,
+        "equity": -0.0702307962,
+        "gold": 0.2467825694
+      },
+      "unit_value_after_cost": 1.822111984,
+      "unit_value_before_cost": 1.8221254641
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.0,
+        "510880": 0.0,
+        "511010": 0.4918694002,
+        "511990": 0.0,
+        "518880": 0.5081305998
+      },
+      "effective_date": "2024-10-08",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2024-09-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0443993211,
+        "equity": 0.1141620039,
+        "gold": 0.2523590081
+      },
+      "unit_value_after_cost": 1.8517892721,
+      "unit_value_before_cost": 1.8530246218
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1560683072,
+        "510880": 0.1539822478,
+        "511010": 0.3341308878,
+        "511990": 0.0,
+        "518880": 0.3558185572
+      },
+      "effective_date": "2024-11-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 4.65656e-05,
+      "one_way_turnover": 0.0232827783,
+      "signal_date": "2024-10-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0510713906,
+        "equity": 0.0467698665,
+        "gold": 0.3622767857
+      },
+      "unit_value_after_cost": 1.855055846,
+      "unit_value_before_cost": 1.8551422317
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1684265885,
+        "510880": 0.1700861472,
+        "511010": 0.3370204041,
+        "511990": 0.0,
+        "518880": 0.3244668601
+      },
+      "effective_date": "2024-12-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.77329e-05,
+      "one_way_turnover": 0.0088664732,
+      "signal_date": "2024-11-29",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0543260622,
+        "equity": 0.0816721416,
+        "gold": 0.2940790911
+      },
+      "unit_value_after_cost": 1.8495072961,
+      "unit_value_before_cost": 1.8495400939
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1653958865,
+        "510880": 0.1722423504,
+        "511010": 0.333019362,
+        "511990": 0.0,
+        "518880": 0.3293424011
+      },
+      "effective_date": "2025-01-02",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.11514e-05,
+      "one_way_turnover": 0.0055756837,
+      "signal_date": "2024-12-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0653148056,
+        "equity": 0.1498161814,
+        "gold": 0.291503268
+      },
+      "unit_value_after_cost": 1.8734787269,
+      "unit_value_before_cost": 1.873499619
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1620523363,
+        "510880": 0.1545756667,
+        "511010": 0.3343060254,
+        "511990": 0.0,
+        "518880": 0.3490659717
+      },
+      "effective_date": "2025-02-05",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.34107e-05,
+      "one_way_turnover": 0.0167053304,
+      "signal_date": "2025-01-27",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0602127978,
+        "equity": 0.0939227077,
+        "gold": 0.3392355863
+      },
+      "unit_value_after_cost": 1.8716690284,
+      "unit_value_before_cost": 1.8717315642
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1689096789,
+        "510880": 0.1601750168,
+        "511010": 0.3275600856,
+        "511990": 0.0,
+        "518880": 0.3433552186
+      },
+      "effective_date": "2025-03-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.45298e-05,
+      "one_way_turnover": 0.0122648976,
+      "signal_date": "2025-02-28",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.04649202,
+        "equity": 0.1026759101,
+        "gold": 0.390891431
+      },
+      "unit_value_after_cost": 1.8878925086,
+      "unit_value_before_cost": 1.8879388193
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1610486024,
+        "510880": 0.1648320863,
+        "511010": 0.3227514281,
+        "511990": 0.0,
+        "518880": 0.3513678832
+      },
+      "effective_date": "2025-04-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.60691e-05,
+      "one_way_turnover": 0.0180345499,
+      "signal_date": "2025-03-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0425073064,
+        "equity": 0.0553378091,
+        "gold": 0.4377691204
+      },
+      "unit_value_after_cost": 1.9487882699,
+      "unit_value_before_cost": 1.9488585635
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1589344207,
+        "510880": 0.1619200588,
+        "511010": 0.3301319866,
+        "511990": 0.0,
+        "518880": 0.3490135339
+      },
+      "effective_date": "2025-05-06",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 3.13604e-05,
+      "one_way_turnover": 0.0156802005,
+      "signal_date": "2025-04-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0428559829,
+        "equity": 0.0102286493,
+        "gold": 0.3703228173
+      },
+      "unit_value_after_cost": 1.9830074377,
+      "unit_value_before_cost": 1.9830696276
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1700674272,
+        "510880": 0.1706642745,
+        "511010": 0.331658181,
+        "511990": 0.0,
+        "518880": 0.3276101174
+      },
+      "effective_date": "2025-06-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.47967e-05,
+      "one_way_turnover": 0.0073983683,
+      "signal_date": "2025-05-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0394176503,
+        "equity": 0.0259044233,
+        "gold": 0.3603470556
+      },
+      "unit_value_after_cost": 1.9900737766,
+      "unit_value_before_cost": 1.9901032236
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1674214446,
+        "510880": 0.1680539176,
+        "511010": 0.33410053,
+        "511990": 0.0,
+        "518880": 0.3304241078
+      },
+      "effective_date": "2025-07-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 5.8185e-06,
+      "one_way_turnover": 0.0029092255,
+      "signal_date": "2025-06-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0389740955,
+        "equity": 0.0419920408,
+        "gold": 0.3875924872
+      },
+      "unit_value_after_cost": 1.9925997376,
+      "unit_value_before_cost": 1.9926113315
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.171952425,
+        "510880": 0.1678775526,
+        "511010": 0.3289619513,
+        "511990": 0.0,
+        "518880": 0.331208071
+      },
+      "effective_date": "2025-08-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.29933e-05,
+      "one_way_turnover": 0.0064966443,
+      "signal_date": "2025-07-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0314892809,
+        "equity": 0.0836699351,
+        "gold": 0.3181492109
+      },
+      "unit_value_after_cost": 2.0152301075,
+      "unit_value_before_cost": 2.0152562923
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.180490881,
+        "510880": 0.1618781652,
+        "511010": 0.3256092003,
+        "511990": 0.0,
+        "518880": 0.3320217535
+      },
+      "effective_date": "2025-09-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.76484e-05,
+      "one_way_turnover": 0.0138242143,
+      "signal_date": "2025-08-29",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0257848837,
+        "equity": 0.1747653146,
+        "gold": 0.3753444791
+      },
+      "unit_value_after_cost": 2.0605697751,
+      "unit_value_before_cost": 2.0606267482
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.165959925,
+        "510880": 0.1556551961,
+        "511010": 0.3195623899,
+        "511990": 0.0,
+        "518880": 0.358822489
+      },
+      "effective_date": "2025-10-09",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 5.09783e-05,
+      "one_way_turnover": 0.0254891557,
+      "signal_date": "2025-09-30",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0082733891,
+        "equity": 0.2495892981,
+        "gold": 0.486717775
+      },
+      "unit_value_after_cost": 2.1322023956,
+      "unit_value_before_cost": 2.1323110972
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1625080525,
+        "510880": 0.1703002835,
+        "511010": 0.3255227415,
+        "511990": 0.0,
+        "518880": 0.3416689226
+      },
+      "effective_date": "2025-11-03",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 2.39384e-05,
+      "one_way_turnover": 0.011969206,
+      "signal_date": "2025-10-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0155409746,
+        "equity": 0.0860693197,
+        "gold": 0.4792262405
+      },
+      "unit_value_after_cost": 2.1936320619,
+      "unit_value_before_cost": 2.1936845752
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1615846367,
+        "510880": 0.1652911821,
+        "511010": 0.3312240057,
+        "511990": 0.0,
+        "518880": 0.3419001755
+      },
+      "effective_date": "2025-12-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.71337e-05,
+      "one_way_turnover": 0.0085668421,
+      "signal_date": "2025-11-28",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0092864581,
+        "equity": 0.0792865538,
+        "gold": 0.5954601443
+      },
+      "unit_value_after_cost": 2.205021965,
+      "unit_value_before_cost": 2.2050597458
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.169318856,
+        "510880": 0.1627126679,
+        "511010": 0.3292153795,
+        "511990": 0.0,
+        "518880": 0.3387530966
+      },
+      "effective_date": "2026-01-05",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006584308,
+      "one_way_turnover": 0.3292153795,
+      "signal_date": "2025-12-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0060941435,
+        "equity": 0.0618976631,
+        "gold": 0.567936615
+      },
+      "unit_value_after_cost": 2.224274449,
+      "unit_value_before_cost": 2.2257399446
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2280537717,
+        "510880": 0.2272677791,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5446784492
+      },
+      "effective_date": "2026-02-02",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 8.93569e-05,
+      "one_way_turnover": 0.0446784492,
+      "signal_date": "2026-01-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0057631175,
+        "equity": 0.0890848068,
+        "gold": 0.7982685397
+      },
+      "unit_value_after_cost": 2.4165601162,
+      "unit_value_before_cost": 2.4167760718
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2496721789,
+        "510880": 0.2558999833,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.4944278378
+      },
+      "effective_date": "2026-03-02",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 1.18e-05,
+      "one_way_turnover": 0.0058999833,
+      "signal_date": "2026-02-27",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0037457427,
+        "equity": 0.1162238878,
+        "gold": 0.6640791476
+      },
+      "unit_value_after_cost": 2.4268953224,
+      "unit_value_before_cost": 2.42692396
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2535916187,
+        "510880": 0.2700570002,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.4763513811
+      },
+      "effective_date": "2026-04-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2026-03-31",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0051867591,
+        "equity": 0.0732121434,
+        "gold": 0.4525984724
+      },
+      "unit_value_after_cost": 2.2583518476,
+      "unit_value_before_cost": 2.2598584199
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.176919304,
+        "510880": 0.1682109703,
+        "511010": 0.3282191229,
+        "511990": 0.0,
+        "518880": 0.3266506028
+      },
+      "effective_date": "2026-05-06",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006564382,
+      "one_way_turnover": 0.3282191229,
+      "signal_date": "2026-04-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.003473303,
+        "equity": 0.1637526512,
+        "gold": 0.2898840464
+      },
+      "unit_value_after_cost": 2.2980547106,
+      "unit_value_before_cost": 2.2995642325
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2602015694,
+        "510880": 0.2446664482,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.4951319823
+      },
+      "effective_date": "2026-06-01",
+      "eligible_sleeves": [
+        "equity",
+        "bond",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006666667,
+      "one_way_turnover": 0.3333333333,
+      "signal_date": "2026-05-29",
+      "target_weights": {
+        "510300": 0.1666666667,
+        "510880": 0.1666666667,
+        "511010": 0.3333333333,
+        "511990": 0.0,
+        "518880": 0.3333333333
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": 0.0032757362,
+        "equity": 0.1242528351,
+        "gold": 0.3306428774
+      },
+      "unit_value_after_cost": 2.2517665906,
+      "unit_value_before_cost": 2.2532687698
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.1787915053,
+        "510880": 0.1595083867,
+        "511010": 0.3489909172,
+        "511990": 0.0,
+        "518880": 0.3127091908
+      },
+      "effective_date": "2026-07-01",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 0.0006979818,
+      "one_way_turnover": 0.3489909172,
+      "signal_date": "2026-06-30",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0045040268,
+        "equity": 0.0898479307,
+        "gold": 0.1077614703
+      },
+      "unit_value_after_cost": 2.138500541,
+      "unit_value_before_cost": 2.139994218
+    },
+    {
+      "drifted_weights_before_paper_trade": {
+        "510300": 0.2276004492,
+        "510880": 0.2781696711,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.4942298797
+      },
+      "effective_date": "2026-08-03",
+      "eligible_sleeves": [
+        "equity",
+        "gold"
+      ],
+      "illustrative_cost_fraction": 5.63393e-05,
+      "one_way_turnover": 0.0281696711,
+      "signal_date": "2026-07-31",
+      "target_weights": {
+        "510300": 0.25,
+        "510880": 0.25,
+        "511010": 0.0,
+        "511990": 0.0,
+        "518880": 0.5
+      },
+      "trailing_252_observation_market_price_change": {
+        "bond": -0.0042241184,
+        "equity": 0.07999804,
+        "gold": 0.1400567798
+      },
+      "unit_value_after_cost": 2.1775475464,
+      "unit_value_before_cost": 2.1776702349
+    }
+  ],
+  "research_only": true,
+  "rolling_five_year_endpoints": [
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.056437058,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2019-11-29",
+      "observation_intervals": 1260,
+      "start_date": "2014-09-26"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0565526595,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2019-12-31",
+      "observation_intervals": 1260,
+      "start_date": "2014-11-04"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0456918724,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-01-23",
+      "observation_intervals": 1260,
+      "start_date": "2014-11-26"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0318064718,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-02-28",
+      "observation_intervals": 1260,
+      "start_date": "2014-12-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0134250831,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-03-31",
+      "observation_intervals": 1260,
+      "start_date": "2015-01-27"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0246649979,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-04-30",
+      "observation_intervals": 1260,
+      "start_date": "2015-03-04"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0094916186,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-05-29",
+      "observation_intervals": 1260,
+      "start_date": "2015-03-30"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": -0.0076747777,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-06-30",
+      "observation_intervals": 1260,
+      "start_date": "2015-04-28"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": -0.0022085647,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-07-31",
+      "observation_intervals": 1260,
+      "start_date": "2015-06-01"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0136368649,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-08-31",
+      "observation_intervals": 1260,
+      "start_date": "2015-07-01"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.014736698,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-09-30",
+      "observation_intervals": 1260,
+      "start_date": "2015-07-31"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0304317914,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-10-30",
+      "observation_intervals": 1260,
+      "start_date": "2015-08-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0302894061,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-11-30",
+      "observation_intervals": 1260,
+      "start_date": "2015-09-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0279323874,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2020-12-31",
+      "observation_intervals": 1260,
+      "start_date": "2015-11-03"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0208559636,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-01-29",
+      "observation_intervals": 1260,
+      "start_date": "2015-12-01"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0124690796,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-02-26",
+      "observation_intervals": 1260,
+      "start_date": "2015-12-22"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0310812167,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-03-31",
+      "observation_intervals": 1260,
+      "start_date": "2016-01-25"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0382702227,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-04-30",
+      "observation_intervals": 1260,
+      "start_date": "2016-03-01"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.046710533,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-05-31",
+      "observation_intervals": 1260,
+      "start_date": "2016-03-25"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0465394368,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-06-30",
+      "observation_intervals": 1260,
+      "start_date": "2016-04-26"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0416163014,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-07-30",
+      "observation_intervals": 1260,
+      "start_date": "2016-05-27"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0377330825,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-08-31",
+      "observation_intervals": 1260,
+      "start_date": "2016-06-30"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0352456142,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-09-30",
+      "observation_intervals": 1260,
+      "start_date": "2016-07-28"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0304674213,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-10-29",
+      "observation_intervals": 1260,
+      "start_date": "2016-08-19"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0302318257,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-11-30",
+      "observation_intervals": 1260,
+      "start_date": "2016-09-22"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0331711665,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2021-12-31",
+      "observation_intervals": 1260,
+      "start_date": "2016-11-01"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.032299648,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-01-28",
+      "observation_intervals": 1260,
+      "start_date": "2016-11-28"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0373126758,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-02-28",
+      "observation_intervals": 1260,
+      "start_date": "2016-12-20"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0333402641,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-03-31",
+      "observation_intervals": 1260,
+      "start_date": "2017-01-23"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0334430884,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-04-29",
+      "observation_intervals": 1260,
+      "start_date": "2017-02-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0324470308,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-05-31",
+      "observation_intervals": 1260,
+      "start_date": "2017-03-23"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0305769246,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-06-30",
+      "observation_intervals": 1260,
+      "start_date": "2017-04-25"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0285496555,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-07-29",
+      "observation_intervals": 1260,
+      "start_date": "2017-05-25"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0260897971,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-08-31",
+      "observation_intervals": 1260,
+      "start_date": "2017-06-29"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0215681397,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-09-30",
+      "observation_intervals": 1260,
+      "start_date": "2017-07-28"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0234748635,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-10-31",
+      "observation_intervals": 1260,
+      "start_date": "2017-08-21"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0216673241,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-11-30",
+      "observation_intervals": 1260,
+      "start_date": "2017-09-20"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0153544253,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2022-12-30",
+      "observation_intervals": 1260,
+      "start_date": "2017-10-27"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0123141788,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-01-31",
+      "observation_intervals": 1260,
+      "start_date": "2017-11-20"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0208060214,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-02-28",
+      "observation_intervals": 1260,
+      "start_date": "2017-12-18"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0195539405,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-03-31",
+      "observation_intervals": 1260,
+      "start_date": "2018-01-19"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0282222828,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-04-28",
+      "observation_intervals": 1260,
+      "start_date": "2018-02-22"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0339762088,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-05-31",
+      "observation_intervals": 1260,
+      "start_date": "2018-03-22"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0433147469,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-06-30",
+      "observation_intervals": 1260,
+      "start_date": "2018-04-23"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0424717052,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-07-31",
+      "observation_intervals": 1260,
+      "start_date": "2018-05-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0535255735,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2023-08-31",
+      "observation_intervals": 1260,
+      "start_date": "2018-06-27"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0496283174,
+      "at_or_above_5pct_diagnostic": false,
+      "end_date": "2023-09-28",
+      "observation_intervals": 1260,
+      "start_date": "2018-07-25"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0551932623,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2023-10-31",
+      "observation_intervals": 1260,
+      "start_date": "2018-08-17"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0537309622,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2023-11-30",
+      "observation_intervals": 1260,
+      "start_date": "2018-09-18"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0537647621,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2023-12-29",
+      "observation_intervals": 1260,
+      "start_date": "2018-10-25"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0538253295,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-01-31",
+      "observation_intervals": 1260,
+      "start_date": "2018-11-26"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0520544849,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-02-29",
+      "observation_intervals": 1260,
+      "start_date": "2018-12-17"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0621281056,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-03-29",
+      "observation_intervals": 1260,
+      "start_date": "2019-01-17"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0629008997,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-04-30",
+      "observation_intervals": 1260,
+      "start_date": "2019-02-21"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0665663631,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-05-31",
+      "observation_intervals": 1260,
+      "start_date": "2019-03-21"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0701900835,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-06-28",
+      "observation_intervals": 1260,
+      "start_date": "2019-04-18"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0752628086,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-07-31",
+      "observation_intervals": 1260,
+      "start_date": "2019-05-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.067123447,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-08-30",
+      "observation_intervals": 1260,
+      "start_date": "2019-06-26"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0695077317,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-09-30",
+      "observation_intervals": 1260,
+      "start_date": "2019-07-23"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.064995464,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-10-31",
+      "observation_intervals": 1260,
+      "start_date": "2019-08-16"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0615163954,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-11-29",
+      "observation_intervals": 1260,
+      "start_date": "2019-09-17"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0654750191,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2024-12-31",
+      "observation_intervals": 1260,
+      "start_date": "2019-10-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0666045831,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-01-27",
+      "observation_intervals": 1260,
+      "start_date": "2019-11-19"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0685502611,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-02-28",
+      "observation_intervals": 1260,
+      "start_date": "2019-12-13"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0686019939,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-03-31",
+      "observation_intervals": 1260,
+      "start_date": "2020-01-14"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0716432673,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-04-30",
+      "observation_intervals": 1260,
+      "start_date": "2020-02-20"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0848243007,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-05-30",
+      "observation_intervals": 1260,
+      "start_date": "2020-03-18"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0732383423,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-06-30",
+      "observation_intervals": 1260,
+      "start_date": "2020-04-16"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0717118487,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-07-31",
+      "observation_intervals": 1260,
+      "start_date": "2020-05-22"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0786182065,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-08-29",
+      "observation_intervals": 1260,
+      "start_date": "2020-06-22"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0759022131,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-09-30",
+      "observation_intervals": 1260,
+      "start_date": "2020-07-24"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0751028142,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-10-31",
+      "observation_intervals": 1260,
+      "start_date": "2020-08-18"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0812461601,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-11-28",
+      "observation_intervals": 1260,
+      "start_date": "2020-09-15"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0866711282,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2025-12-31",
+      "observation_intervals": 1260,
+      "start_date": "2020-10-26"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0998907102,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2026-01-30",
+      "observation_intervals": 1260,
+      "start_date": "2020-11-23"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.1056594501,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2026-02-27",
+      "observation_intervals": 1260,
+      "start_date": "2020-12-11"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0845860792,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2026-03-31",
+      "observation_intervals": 1260,
+      "start_date": "2021-01-13"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0920020432,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2026-04-30",
+      "observation_intervals": 1260,
+      "start_date": "2021-02-18"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0918228119,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2026-05-29",
+      "observation_intervals": 1260,
+      "start_date": "2021-03-16"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0800806943,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2026-06-30",
+      "observation_intervals": 1260,
+      "start_date": "2021-04-15"
+    },
+    {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0821267544,
+      "at_or_above_5pct_diagnostic": true,
+      "end_date": "2026-07-31",
+      "observation_intervals": 1260,
+      "start_date": "2021-05-21"
+    }
+  ],
+  "schema_version": "domestic_5pct_target_dynamic_market_price_proxy.v1",
+  "simulation": {
+    "common_panel_end": "2026-08-14",
+    "common_panel_start": "2013-07-29",
+    "first_effective_date": "2014-09-01",
+    "first_signal_date": "2014-08-29",
+    "last_rebalance_effective_date": "2026-08-03",
+    "terminal_panel_observation_date": "2026-08-14"
+  },
+  "source_dependency": {
+    "manifest_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/manifest.json",
+    "manifest_sha256": "bb0550c4eaa207ece0eaa00c2410eff13516ade63bc859136a7848f1891822b0",
+    "records": [
+      {
+        "bytes": 169699,
+        "code": "510300",
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/sse_etf_dayk_510300_begin0_end5000.jsonp",
+        "sha256": "9838250fb4fdaab55d8a0b6102ad8c9cf3d42c77ed1323b413b53ff8e2527a3b"
+      },
+      {
+        "bytes": 227339,
+        "code": "510880",
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/sse_etf_dayk_510880_begin0_end5000.jsonp",
+        "sha256": "63e71acfc5cf6d87e4f5ad5792d521c238927ff58e967767e32408924bae0859"
+      },
+      {
+        "bytes": 177148,
+        "code": "511010",
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/sse_etf_dayk_511010_begin0_end5000.jsonp",
+        "sha256": "a739e95a8cf5a526db283fa44173e672c05be429514e7a06d1e5923d799bbd81"
+      },
+      {
+        "bytes": 180288,
+        "code": "511990",
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/sse_etf_dayk_511990_begin0_end5000.jsonp",
+        "sha256": "23a6e129d8f8449aaf778906ba35271a1d7edcb92c37995b03d219fd951d4a05"
+      },
+      {
+        "bytes": 154655,
+        "code": "518880",
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/sse_etf_dayk_518880_begin0_end5000.jsonp",
+        "sha256": "05be8fb74d456c0975ac72804fa314db92273b568bee932bebf5670393733633"
+      }
+    ],
+    "source_quality": "primary_official_public_retrospective_market_price_observation"
+  },
+  "turnover_and_cost_summary": {
+    "boundary": "The simple sum is not a compounded result or an executable-cost estimate.",
+    "rebalance_events": 144,
+    "simple_sum_of_illustrative_cost_fractions": 0.0308747269,
+    "total_one_way_turnover": 15.4373631507,
+    "zero_turnover_events": 5
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "artifact": "reit_lookthrough",
+  "as_of": "2026-08-12",
+  "method": "Classify the seven named REITs by look-through cash-flow driver, geography, operator and structural diligence issue. This is an exposure map, not a correlation estimate or an allocation recommendation.",
+  "clusters": [
+    {
+      "cluster": "transportation_toll_road",
+      "members": ["508069"],
+      "cash_flow_driver": "traffic volume, tolling rules, route competition and project financing",
+      "concentration_observation": "single asset / single metropolitan road network",
+      "evidence": "508069_2026q2.txt:131-151,531-586"
+    },
+    {
+      "cluster": "community_retail",
+      "members": ["508011"],
+      "cash_flow_driver": "commercial tenancy, rent, property-management fees and tenant credit",
+      "concentration_observation": "four Beijing assets but disclosed top-five tenants represent 53.02% of rent income",
+      "evidence": "508011_2026q2.txt:95-121,619-633"
+    },
+    {
+      "cluster": "rental_housing",
+      "members": ["508068", "508077", "508055"],
+      "cash_flow_driver": "occupancy, effective rent, collections, lease renewal, operating costs and policy structure",
+      "concentration_observation": "three products expose the candidate sleeve to rental-housing economics; 508068 is public-rental / government-guided, whereas 508077 and 508055 retain market-rental characteristics",
+      "evidence": "508068_2026q2.txt:122-196,442-495; 508077_2026q2.txt:120-148,475-559; 508055_2026q2.txt:94-106,322-461"
+    },
+    {
+      "cluster": "industrial_park",
+      "members": ["508080"],
+      "cash_flow_driver": "industrial tenant demand, rent, occupancy, lease duration and tenant concentration",
+      "concentration_observation": "two assets in one development zone; largest tenant represented 44.04% of rent income",
+      "evidence": "508080_2026q2.txt:113-131,304-344,660-667"
+    },
+    {
+      "cluster": "renewable_energy",
+      "members": ["508096"],
+      "cash_flow_driver": "generation resource, power pricing, dispatch/transmission, receivable collection, factoring and project financing",
+      "concentration_observation": "four assets across solar and hydropower, but linked to power-market and resource risks rather than real-estate rent cycles",
+      "evidence": "508096_2026q2.txt:164-233,381-411; 508096_2025_annual.txt:699-708,757-779"
+    }
+  ],
+  "common_terms": {
+    "distribution_policy": "Each Q2 product overview states that at least 90% of annual distributable amount is to be distributed in cash, subject to the fund terms and distribution conditions. This is a legal policy statement, not a fixed cash-yield guarantee.",
+    "quarterly_amount_caveat": "Each Q2 report labels its financial data unaudited. The reports state that quarterly distributable amount does not represent final distribution and is not to be simply annualised because income and expenses are not evenly incurred through the year.",
+    "pricing_caveat": "This map contains no same-date NAV, IOPV, bid-ask or market-depth series and therefore does not establish an executable purchase price."
+  },
+  "implementation_blockers": [
+    "No independently reconciled current NAV / appraisal package for all seven products.",
+    "No 20-trading-day turnover, bid-ask spread, order-book depth or capacity analysis in this artifact.",
+    "No full debt maturity, interest-rate, covenant and security package by project company.",
+    "No complete third-party broker/Street coverage or target-price anchor is attached here.",
+    "508096 annual-report per-unit NAV reconciliation remains open."
+  ],
+  "status": "RESEARCH_LOOKTHROUGH_COMPLETE__IMPLEMENTATION_NOT_APPROVED"
+}

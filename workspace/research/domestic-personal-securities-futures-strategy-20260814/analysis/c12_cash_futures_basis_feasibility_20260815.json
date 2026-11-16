@@ -1,0 +1,131 @@
+{
+  "artifact_class": "research_feasibility_conclusion",
+  "backtest_run": false,
+  "blocking_requirements": [
+    {
+      "blocker": "complete actual-contract historical population",
+      "id": "C12-B1",
+      "impact": "No full-calendar-year or rolling-five-year selection, roll or return population can be computed.",
+      "missing": "Every-session T contract rows, listings, expiries, delivery state and exchange-adjusted calendar are not frozen point in time."
+    },
+    {
+      "blocker": "cash-bond/delivery-basket history",
+      "id": "C12-B2",
+      "impact": "No matched cash-and-carry ledger or CTD decision can be reproduced.",
+      "missing": "Dated official deliverable lists, conversion factors, cash clean/dirty prices, coupon/accrual, custody and transfer state for each candidate contract."
+    },
+    {
+      "blocker": "ETF/futures mapping",
+      "id": "C12-B3",
+      "impact": "An ETF alternative cannot support a delivery-basis or hard-return claim.",
+      "missing": "A predeclared duration/convexity/basket/NAV-premium/fund-fee/execution mapping and proof it is not treated as deliverable."
+    },
+    {
+      "blocker": "financing and repo path",
+      "id": "C12-B4",
+      "impact": "Net carry is unknown; assuming a favorable fixed rate would be fabrication.",
+      "missing": "Effective cash financing or repo, cash settlement, coupon reinvestment and funding-cash treatment across every session."
+    },
+    {
+      "blocker": "margin, price-limit and position-limit path",
+      "id": "C12-B5",
+      "impact": "The dated base margin and limit rules cannot be projected into a five-year ledger.",
+      "missing": "Effective-session exchange risk parameters, delivery-month controls and broker margin overlays across every session."
+    },
+    {
+      "blocker": "fee, custody and transfer-cost path",
+      "id": "C12-B6",
+      "impact": "Net return is unknown; exchange-level base fees do not prove the individual total cost.",
+      "missing": "Effective exchange fees, broker commissions, cash-bond/ETF costs, custody/transfer charges and taxes for every ledger session."
+    },
+    {
+      "blocker": "personal suitability and delivery route",
+      "id": "C12-B7",
+      "impact": "Case evidence cannot authorize or call the route personally operable.",
+      "missing": "Individual trading-code result, broker route, risk match, current account terms and Treasury custody-account/delivery confirmation."
+    },
+    {
+      "blocker": "two-leg fills and liquidity",
+      "id": "C12-B8",
+      "impact": "Daily settlements and reported volume cannot be converted into an executable paired transaction.",
+      "missing": "Dated cash-bond/ETF and actual-futures bid/ask, depth, paired timing, partial-fill/no-fill and rejection handling."
+    },
+    {
+      "blocker": "strict-target endpoint population and independent check",
+      "id": "C12-B9",
+      "impact": "The hard 5% annual and rolling-five-year standard is untestable.",
+      "missing": "A frozen unit-NAV ledger, complete annual and rolling-five-year endpoint list, and maker-checker recomputation."
+    },
+    {
+      "blocker": "rule-version continuity",
+      "id": "C12-B10",
+      "impact": "Dated base rules cannot be silently projected across a five-year outcome test.",
+      "missing": "Complete effective-date history of CFFEX delivery, margin, limit, fee and operational notices plus the broker's overlays."
+    }
+  ],
+  "conclusion": {
+    "cash_bond_delivery_route": "NOT_FEASIBLE under case evidence: the actual delivery relationship requires the exact official deliverable bond, conversion factor, approved custody route, cash-bond pricing/carry and delivery process. Those dated inputs are not present for a reproducible ledger.",
+    "etf_substitute": "NOT_FEASIBLE as a cash-and-carry lock: the disclosed ETF is a fund using optimized sampling, not a contract-deliverable bond. It may be studied only as an unvalidated relative-value hedge, not as a convergence guarantee.",
+    "personal_execution": "NOT_FEASIBLE under case evidence: exchange-level rules show a possible customer/delivery framework, but this case holds no individual trading-code, broker-route, custody-account, delivery-process, commission, margin or execution evidence.",
+    "strict_target": "NOT_FEASIBLE: the case cannot establish, and must not claim, that every full calendar year or the annualized net return of every completed rolling five-calendar-year window clears 5% after costs.",
+    "why_actual_contract_samples_do_not_close_the_gap": "The frozen CFFEX CSV files prove a currently reachable source route for actual contracts on six retrospective dates. They are neither complete point-in-time history nor executable two-leg evidence, so they cannot support a return test."
+  },
+  "formal_decision_eligible": false,
+  "next_research_gate": [
+    "Acquire a licensed or authorized point-in-time dataset covering actual T contracts, lifecycle/calendar, delivery basket and conversion factors, eligible cash-bond pricing/accrual/coupon data, and a documented data right.",
+    "Obtain dated broker documentation for commission, margin, cash-bond/ETF route, custody and delivery operations; do not store personal data in the case.",
+    "Freeze the exact paired-leg/no-fill/cost/roll/marking rules before looking at a result, then independently recompute every eligible annual and rolling-five-year window.",
+    "If any required field remains missing, retain NO_ACTION_AND_NOT_TESTABLE rather than substituting a continuous series, generic ETF return or invented fill."
+  ],
+  "no_action_statement": "No external order, account opening, broker contact, cash-bond/ETF purchase, futures sale, short sale, repo, delivery submission or allocation is authorized by this research artifact.",
+  "orders_or_positions": "none",
+  "portfolio_q": 0,
+  "research_only": true,
+  "return_result": null,
+  "schema_version": "c12_cash_futures_basis_feasibility.v1",
+  "source_scope": {
+    "actual_contract_source_scope": "Six retrospectively captured official CFFEX daily CSV samples, 2016--2026, each carrying actual listed contracts. This is a route observation rather than a full historical replay dataset.",
+    "primary_batch": "sources/c12-official-cash-futures-basis-20260815/manifest.json",
+    "rule_sources": [
+      "CFFEX current T product page",
+      "CFFEX dated T contract and Treasury-futures delivery rules",
+      "CFFEX trader-suitability measures",
+      "CFFEX official basis-strategy education material",
+      "SSE 2023 bond-investor suitability rule",
+      "SSE 511260 annual report"
+    ]
+  },
+  "status": "NOT_FEASIBLE_FOR_STRICT_5PCT_OR_PERSONAL_EXECUTION",
+  "verified_mechanics": [
+    {
+      "evidence": "Six official CSV samples contain actual T/TF rows; the dated 2026-08-14 T screen selects T2612 under the frozen 60--150-calendar-day research filter.",
+      "scope": "source-route observation only",
+      "topic": "actual CFFEX contract identity"
+    },
+    {
+      "evidence": "CFFEX educational material defines clean-price basis as cash clean price less futures price times conversion factor, and net basis as basis less holding cost.",
+      "scope": "mechanical definition only; no live basis or return has been calculated",
+      "topic": "basis, conversion factor and carry concept"
+    },
+    {
+      "evidence": "CFFEX delivery rules specify physical delivery, a deliverable book-entry Treasury, conversion factor, accrued interest and custody-account review; an unapproved account faces delivery-month position controls.",
+      "scope": "dated exchange rule; no customer account outcome is inferred",
+      "topic": "physical delivery and custody"
+    },
+    {
+      "evidence": "The 2020-effective T rule states a 2% base minimum margin, 3% from settlement two trading days before delivery, and client single-side limits of 4,000 lots from listing and 1,200 lots from the trading day before the delivery month. The current CFFEX product page also displays a 2% base minimum margin.",
+      "scope": "Dated/product-page exchange framing only; it is not a complete effective-session history or a broker-specific margin/limit result.",
+      "topic": "dated margin and position-limit framework"
+    },
+    {
+      "evidence": "The 2023 SSE rule says ordinary investors may trade listed Treasury bonds, while intermediaries must apply suitability and transaction controls.",
+      "scope": "generic market-rule context only; no exact delivery bond, stock availability, settlement or custody match is established",
+      "topic": "exchange-listed cash bond access"
+    },
+    {
+      "evidence": "SSE disclosure describes 511260 as an ETF using optimized sampling of index constituent Treasuries with a tracking objective.",
+      "scope": "does not make an ETF share a delivery instrument or validate an ETF/futures return",
+      "topic": "ETF distinction"
+    }
+  ]
+}

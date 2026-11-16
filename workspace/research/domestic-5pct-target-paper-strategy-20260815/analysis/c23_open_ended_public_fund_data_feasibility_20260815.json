@@ -1,0 +1,309 @@
+{
+  "artifact_id": "D5PT-C23-FEASIBILITY-v1",
+  "as_of": "2026-08-15",
+  "title": "Domestic publicly offered open-ended fund data, rights, and paper-test feasibility",
+  "scope": {
+    "route": "Domestic publicly offered open-ended funds",
+    "subroutes": [
+      "fund of funds",
+      "mixed funds",
+      "bond funds",
+      "money market funds"
+    ],
+    "selected_products": [],
+    "product_selection_performed": false,
+    "return_test_run": false,
+    "return_result": null,
+    "action_authorized": false,
+    "portfolio_q": 0
+  },
+  "status": "CONDITIONAL_PRODUCT_LEVEL_DATA_PATHS_IDENTIFIED_NOT_YET_TESTABLE",
+  "formal_decision_eligible": false,
+  "research_hurdle_policy": {
+    "five_percent": "A long-run research hurdle only; not a guarantee, minimum return, or product promise.",
+    "distribution_policy": "No distribution or reinvestment requirement is imposed. Actual distributions, if any, must be handled under the contemporaneous fund documents and share-class rules in a future total-return calculation."
+  },
+  "conclusion": {
+    "summary": "Regulatory disclosure creates a plausible product-level primary-source path, but the present case has neither a validated historical point-in-time universe nor a rights-cleared total-return, fee, and operability data package. It is therefore not a usable strategy and not eligible for a return test.",
+    "public_path": "A pre-frozen, limited universe could in principle be reconstructed from retained primary disclosures after version, timestamp, and terms-of-use checks. This is not evidence that a complete or bulk-downloadable historical archive is available.",
+    "licensed_path": "Wind, Choice, and iFinD are identified as candidate licensable sources only. No contract, data dictionary, delivery sample, coverage proof, or retention/export right has been obtained.",
+    "decision": "NO_PRODUCT_SELECTION_NO_RETURN_TEST_NO_ACTION"
+  },
+  "source_records": [
+    {
+      "id": "C23-S01",
+      "title": "公开募集证券投资基金信息披露管理办法",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653985/content.shtml",
+      "publisher": "China Securities Regulatory Commission",
+      "tier": "T1_regulator",
+      "facts_used": [
+        "Specified websites include fund manager, custodian, and CSRC fund electronic disclosure websites.",
+        "Specified websites should provide fund disclosure service free of charge.",
+        "Open-end funds disclose unit NAV and accumulated NAV no later than the next day after each open day.",
+        "Subscription/redemption calculation method and fees must be stated in fund disclosure documents."
+      ],
+      "rights_boundary": "Public investor access and copying of disclosure materials do not themselves establish rights for bulk extraction, database redistribution, or long-term programmatic storage.",
+      "access_check": "Page read on 2026-08-15."
+    },
+    {
+      "id": "C23-S02",
+      "title": "公开募集证券投资基金运作管理办法",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653978/content.shtml",
+      "publisher": "China Securities Regulatory Commission",
+      "tier": "T1_regulator",
+      "facts_used": [
+        "Fund contracts and prospectuses must state open days and times.",
+        "Subscription/redemption prices use the applicable open-day NAV plus or minus fees; NAV is calculated after the open-day close.",
+        "Confirmation normally occurs within three working days and valid redemption payment within seven working days, subject to special products.",
+        "Large redemptions may be deferred or payment delayed under the rule and fund documents.",
+        "The regulation distinguishes stock, bond, money market, FOF, and mixed funds by investment proportions.",
+        "Open-end fund distributions are governed by the fund contract."
+      ],
+      "rights_boundary": "Regulatory mechanics do not establish an individual's account eligibility, channel availability, or historical execution capability.",
+      "access_check": "Page read on 2026-08-15."
+    },
+    {
+      "id": "C23-S03",
+      "title": "中国证监会基金信息披露网站于2009年7月20日正式上线",
+      "url": "https://www.csrc.gov.cn/csrc/c100028/c1002707/content.shtml",
+      "publisher": "China Securities Regulatory Commission",
+      "tier": "T1_regulator",
+      "facts_used": [
+        "CSRC stated that fund daily NAV and periodic-report XBRL documents were displayed through the fund disclosure website.",
+        "The announcement states that daily NAV XBRL documents were reported from 2009-01-01."
+      ],
+      "rights_boundary": "The announcement supports the existence and intended public use of a disclosure channel, not the current completeness, bulk access, or reuse rights of every historical file.",
+      "endpoint": "https://eid.csrc.gov.cn/fund/",
+      "access_check": "Direct machine fetch of the endpoint timed out on 2026-08-15; this is not treated as evidence of absence or availability."
+    },
+    {
+      "id": "C23-S04",
+      "title": "货币市场基金监督管理办法（中国证券监督管理委员会令第120号）",
+      "url": "https://www.csrc.gov.cn/heilongjiang/c105404/c1268904/content.shtml",
+      "publisher": "China Securities Regulatory Commission",
+      "tier": "T1_regulator",
+      "facts_used": [
+        "Money market fund valuation and liquidity measures differ from ordinary open-end funds.",
+        "Specified stress conditions can trigger a mandatory redemption fee and rules may permit deferred redemption handling or payment delay."
+      ],
+      "rights_boundary": "This rule establishes risk and mechanics conditions; it does not supply a complete historical money-market-fund return or execution dataset.",
+      "access_check": "Page read on 2026-08-15."
+    },
+    {
+      "id": "C23-S05",
+      "title": "中国基金业协会公募基金市场统计及产品查询入口",
+      "urls": [
+        "https://www.amac.org.cn/sjtj/tjbg/",
+        "https://www.amac.org.cn/fwdt/wyc/jgcprycx/cpcx/"
+      ],
+      "publisher": "Asset Management Association of China",
+      "tier": "T1_self_regulatory_organization",
+      "facts_used": [
+        "AMAC provides monthly public-fund market statistics and a product-query service entry."
+      ],
+      "rights_boundary": "The reviewed pages do not prove a historic daily public-fund constituent archive, inactive-product coverage, or share-class event history.",
+      "access_check": "Pages read on 2026-08-15."
+    },
+    {
+      "id": "C23-S06",
+      "title": "Wind data services and fund research platform",
+      "urls": [
+        "https://www.wind.com.cn/portal/zh/Home/",
+        "https://www.wind.com.cn/portal/zh/WFT/index.html"
+      ],
+      "publisher": "Wind Information",
+      "tier": "T2_commercial_vendor",
+      "facts_used": [
+        "Wind publicly describes FTP, Filesync, API, and other data-delivery modes and fund-data coverage."
+      ],
+      "rights_boundary": "Candidate licensable source only. Exact fund fields, historic coverage, retained-data rights, and redistribution limits must be confirmed in writing before use.",
+      "access_check": "Marketing pages read on 2026-08-15."
+    },
+    {
+      "id": "C23-S07",
+      "title": "Choice data services and end-user license agreement",
+      "urls": [
+        "https://www.choice-china.com/",
+        "https://choiceqyttest.eastmoney.com/Html/userprotocol/userprotocol.html"
+      ],
+      "publisher": "Eastmoney Choice",
+      "tier": "T2_commercial_vendor",
+      "facts_used": [
+        "Choice publicly advertises financial terminal and data-API products.",
+        "The published user agreement indicates that product use is subject to contractual terms."
+      ],
+      "rights_boundary": "Candidate licensable source only. No proof exists in this case for the required fund fields, historical revision policy, API/export scope, or reproducible internal-research right.",
+      "access_check": "Pages read on 2026-08-15."
+    },
+    {
+      "id": "C23-S08",
+      "title": "同花顺数据接口",
+      "url": "https://quantapi.5ifind.cn/gwstatic/static/ds_web/quantapi-web/",
+      "publisher": "iFinD / Tonghuashun",
+      "tier": "T2_commercial_vendor",
+      "facts_used": [
+        "The public page describes support for funds and historical market-data interfaces."
+      ],
+      "rights_boundary": "Candidate licensable source only. It does not establish that the relevant open-end fund NAV, distributions, status events, fees, and retention rights are included.",
+      "access_check": "Search-result content reviewed on 2026-08-15; direct page machine fetch timed out."
+    },
+    {
+      "id": "C23-S09",
+      "title": "天天基金开放式基金净值表",
+      "url": "https://fund.eastmoney.com/Fund.html",
+      "publisher": "Tiantian Fund / Eastmoney",
+      "tier": "T3_sales_platform",
+      "facts_used": [
+        "The page displays fund codes, NAV fields, subscription/redemption status, and fee fields and identifies Choice as a source."
+      ],
+      "rights_boundary": "The page itself says its information is for reference and should be verified. It is retained only as a weak display-field cross-check, not as a primary total-return, universe, or rights source.",
+      "access_check": "Page read on 2026-08-15."
+    }
+  ],
+  "field_readiness": [
+    {
+      "field": "Point-in-time universe, share classes, inception, closure, merger, and code/name history",
+      "status": "BLOCKED",
+      "candidate_source": "Licensed fund master/status data plus primary-announcement verification",
+      "gap": "No historic daily universe or inactive-product proof has been obtained."
+    },
+    {
+      "field": "Non-money-market daily unit NAV, accumulated NAV, disclosure time, and availability time",
+      "status": "CONDITIONAL_SOURCE_PATH_ONLY",
+      "candidate_source": "CSRC electronic disclosure, fund manager/custodian disclosures, licensed data",
+      "gap": "Disclosure obligations are verified but continuous data, timestamps, revisions, and rights are not."
+    },
+    {
+      "field": "Money-market daily income, annualized-yield fields, holiday treatment, and valuation convention",
+      "status": "CONDITIONAL_SOURCE_PATH_ONLY",
+      "candidate_source": "Money-market income notices, legal documents, licensed data",
+      "gap": "No normalized historical income and event package exists in this case."
+    },
+    {
+      "field": "Distributions, splits, conversions, liquidation, and total-return adjustment",
+      "status": "BLOCKED",
+      "candidate_source": "Primary notices plus licensed corporate-action or total-return data",
+      "gap": "Unit NAV, accumulated NAV, and investor total return cannot be presumed equivalent."
+    },
+    {
+      "field": "Historical fund and investor-facing fee schedules",
+      "status": "BLOCKED",
+      "candidate_source": "Dated legal documents, rate-change notices, and a licensed historical fee table",
+      "gap": "Current web rates and platform discounts cannot be used to backfill historical costs."
+    },
+    {
+      "field": "Subscription/redemption availability, cutoff, confirmation, payment, limits, suspension, and stress handling",
+      "status": "BLOCKED",
+      "candidate_source": "Fund documents, announcements, sales/registration data, and historical status events",
+      "gap": "General regulations do not provide fund- and channel-specific historical operability."
+    },
+    {
+      "field": "Internal research storage, export/API, reproducibility, and source version",
+      "status": "BLOCKED",
+      "candidate_source": "Written vendor license and retained original files",
+      "gap": "No rights-cleared data contract or data package exists."
+    }
+  ],
+  "route_controls": {
+    "fof": {
+      "status": "not_testable",
+      "required_controls": [
+        "underlying-fund changes",
+        "fund-level and underlying-fee treatment",
+        "share-class mapping",
+        "benchmark and allocation-history changes"
+      ]
+    },
+    "mixed": {
+      "status": "not_testable",
+      "required_controls": [
+        "time-varying asset allocation",
+        "holding-period and availability restrictions",
+        "style-drift and benchmark-history controls"
+      ]
+    },
+    "bond": {
+      "status": "not_testable",
+      "required_controls": [
+        "duration and credit exposure",
+        "valuation-change treatment",
+        "liquidity and redemption restrictions",
+        "share-class and fee history"
+      ]
+    },
+    "money_market": {
+      "status": "not_testable",
+      "required_controls": [
+        "daily income rather than a substituted ordinary-NAV series",
+        "holiday and share-class treatment",
+        "confirmation/payment/limit history",
+        "stress redemption fee and deferral rules"
+      ]
+    }
+  },
+  "gates": [
+    {
+      "id": "G1",
+      "name": "Point-in-time universe",
+      "status": "BLOCKED",
+      "pass_evidence": "Dated universe snapshots or a licensed master file including inactive funds, share-class changes, closures, mergers, and status history."
+    },
+    {
+      "id": "G2",
+      "name": "Continuous NAV/income history",
+      "status": "CONDITIONAL_SOURCE_PATH_ONLY",
+      "pass_evidence": "Source-labelled daily series with disclosure/availability timestamps, revisions, and missing-data rules; money-market series separate."
+    },
+    {
+      "id": "G3",
+      "name": "Total return and distributions",
+      "status": "BLOCKED",
+      "pass_evidence": "Recomputable adjusted return or dated distribution, split, conversion, fee, and field-definition records by share class."
+    },
+    {
+      "id": "G4",
+      "name": "Fees and operability",
+      "status": "BLOCKED",
+      "pass_evidence": "Effective-dated rate and status history for subscription, redemption, conversion, holding period, cutoff, confirmation, payment, suspension, and limits."
+    },
+    {
+      "id": "G5",
+      "name": "Data rights and reproducibility",
+      "status": "BLOCKED",
+      "pass_evidence": "Written permission or documented primary-file rights covering internal research, retention, export/API, source version, and reproducible hashes."
+    },
+    {
+      "id": "G6",
+      "name": "Pre-frozen rulebook and independent recomputation",
+      "status": "BLOCKED",
+      "pass_evidence": "A rulebook frozen before results, including universe, signal, timing, costs, missing-data treatment, and stop conditions, then independently recomputed."
+    }
+  ],
+  "next_gate": {
+    "id": "C23-GATE-1",
+    "name": "Data rights and sample acceptance",
+    "purpose": "Internal data diligence only; it does not choose a fund or determine an investment action.",
+    "requirements": [
+      "Written vendor terms for internal research, storage, reproducible export/API, duration, redistribution restrictions, sources, and revision policy.",
+      "A sample demonstrating historic point-in-time universe coverage, including inactive funds and share-class/state events.",
+      "Daily NAV or money-market income, distributions/splits/conversions, disclosure and availability timestamps, revision and missingness status by share class.",
+      "Effective-dated fees and historic subscription/redemption/holding-period/status mechanics.",
+      "Cross-check of a non-selected sample against original legal documents, notices, and NAV disclosures.",
+      "Independent recomputation from retained raw export, source hashes, and an exception log."
+    ],
+    "pass_outcome": "May enter a rule-pre-frozen paper-test design stage only; it does not establish performance, liquidity, suitability, or strategy admission.",
+    "fail_outcome": "Remain not_testable with no product selection, no return calculation, and no action."
+  },
+  "prohibited_inferences": [
+    "A disclosure obligation does not prove complete, bulk-accessible, rights-cleared historical data.",
+    "A displayed NAV, fee, or open status does not prove a person's eligibility, ability to transact, or execution price.",
+    "Unit NAV, accumulated NAV, and investor total return must not be treated as interchangeable without field definitions and dated event records.",
+    "No strategy performance, hurdle satisfaction, allocation, or action may be inferred before all gates pass."
+  ],
+  "no_action_boundary": [
+    "No fund is selected.",
+    "No account, suitability, or sales-channel action is authorized.",
+    "No subscription, redemption, conversion, transfer, payment, or external transaction is authorized.",
+    "No data purchase or external contact is authorized by this memo."
+  ]
+}

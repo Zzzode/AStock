@@ -1,0 +1,93 @@
+{
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "report_type": "interim_evidence_memo",
+  "data_cutoff": "2026-08-14",
+  "coverage_pack": "custom_domestic_personal_multiasset",
+  "required_skills": [
+    "equity-research",
+    "source-governance",
+    "research-report-review"
+  ],
+  "required_artifacts": [
+    "research_brief.md",
+    "gate_manifest.md",
+    "gate_manifest.json",
+    "artifact_contract.md",
+    "artifact_contract.json",
+    "sources/*/manifest.md",
+    "sources/*/manifest.json",
+    "data/source_registry.md",
+    "data/source_registry.json",
+    "data/claim_audit.md",
+    "data/claim_audit.json",
+    "source_exhaustion_log.md",
+    "source_exhaustion_log.json",
+    "data/t2_candidate_universe_20260814.md",
+    "data/t2_candidate_universe_20260814.json",
+    "data/rulebook_r0_20260814.md",
+    "data/rulebook_r0_20260814.json",
+    "data/data_acquisition_contract_20260814.md",
+    "data/data_acquisition_contract_20260814.json",
+    "data/data_access_feasibility_20260814.md",
+    "data/data_access_feasibility_20260814.json",
+    "data/u0_domestic_universe_registry_20260814.md",
+    "data/u0_domestic_universe_registry_20260814.json",
+    "data/formal_replay_protocol_requirements_20260814.md",
+    "data/formal_replay_protocol_requirements_20260814.json",
+    "data/replay_data_dictionary_template_20260814.md",
+    "data/replay_data_dictionary_template_20260814.json",
+    "data/u0_to_t2_derivation_audit_requirements_20260814.md",
+    "data/u0_to_t2_derivation_audit_requirements_20260814.json",
+    "data/futures_exchange_data_access_probe_20260814.md",
+    "data/futures_exchange_data_access_probe_20260814.json",
+    "analysis/etf_r1_product_diligence_20260814.md",
+    "analysis/futures_r1_feasibility_20260814.md",
+    "analysis/return_source_feasibility_20260814.md",
+    "analysis/r1_open_universe_coverage_gap_20260814.md",
+    "analysis/r1_primary_source_route_catalog_20260814.md",
+    "data/interim_evidence_memo_20260814.md",
+    "data/interim_evidence_memo_20260814.json",
+    "missing_data_request_pack.md",
+    "missing_data_request_pack.json",
+    "missing_data_request_pack.csv",
+    "unresolved_requirements.json",
+    "review_findings_R0_evidence.json",
+    "repair_plan_R0_evidence.md",
+    "repair_plan_R0_evidence.json",
+    "review_findings_R1_model.json",
+    "repair_plan_R1_model.md",
+    "repair_plan_R1_model.json",
+    "review_log.md",
+    "data_room_index.md"
+  ],
+  "review_cycles": ["R0_evidence", "R1_model", "R2_draft", "R3_render_compliance", "R4_final_ic"],
+  "verifiers": [
+    "manual JSON parsing and source-hash verification during interim evidence stage",
+    "tools/verify_research_design_controls.py for draft data, universe and replay controls",
+    "workspace verifier and repository research-gate runner only when a publish-bound report is proposed"
+  ],
+  "depth_gates": {
+    "evidence_depth": "R0 evidence-governance repairs and R1 static design controls passed; product/data/access evidence and entitlement remain incomplete",
+    "broker_consensus_depth": "not applicable: no direct-equity valuation pool is admitted",
+    "model_depth": "static replay-accounting design passed, but data, universe and replay protocol are unfrozen and no accepted performance model exists",
+    "valuation_depth": "not started; no investable conclusion",
+    "ic_readiness": "blocked"
+  },
+  "pass_conditions": {
+    "interim_evidence_memo": [
+      "Every material claim maps to a local source or is explicitly marked unverified.",
+      "Every product and futures family remains q=0.",
+      "The public ETF-price observation is labeled a falsification diagnostic, not total return.",
+      "The actual-contract source probe is labeled a data-access finding, not a backtest.",
+      "No return, allocation, holding or order claim is made."
+    ],
+    "upgrade_to_publishable_strategy": [
+      "Authorized, frozen point-in-time data and complete event ledger.",
+      "Pre-registered rulebook, U0-derived T2 decision universe and substitution/no-fill rules.",
+      "Cost-aware, actual-contract/all-event replay with every rolling-window result disclosed.",
+      "Current product/contract, broker-route, suitability, liquidity and pre-frozen risk/feasibility evidence, with a passing paper-reconciliation audit.",
+      "Independent R0-R4 review and workspace/research gate PASS."
+    ]
+  },
+  "downgrade_path": "Remain a non-investable interim evidence memo with q=0 and no PDF release."
+}

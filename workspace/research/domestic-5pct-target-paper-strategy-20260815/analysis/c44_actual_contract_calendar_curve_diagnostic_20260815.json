@@ -1,0 +1,19 @@
+{
+  "schema_version": "c44_actual_contract_calendar_curve_diagnostic_void.v1",
+  "artifact_id": "D5PT-C44-VOID-v1",
+  "as_of": "2026-08-15",
+  "status": "VOID_PRECALCULATION_SOURCE_CONTROL_GAP",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "action": "NO_ACTION",
+  "invalidated_input_protocol_path": "analysis/c43_actual_contract_calendar_curve_protocol_20260815.json",
+  "original_preliminary_output_sha256": "1004b4bb9ace1aebf0dd0cf9f82f8b520393fe289a4e2c574559bd2eac46a641",
+  "reason": "C43 did not bind a five-family field-readiness audit before calculation. The preliminary calculation must not be used as a diagnostic result, screen, performance record, or action basis.",
+  "required_next_control": "Use C45 as the five-family source-field readiness record, then freeze a new protocol with unchanged rules before any fresh calculation.",
+  "limitations": [
+    "This void record contains no performance, position, allocation, or execution result.",
+    "No external action is authorized."
+  ]
+}

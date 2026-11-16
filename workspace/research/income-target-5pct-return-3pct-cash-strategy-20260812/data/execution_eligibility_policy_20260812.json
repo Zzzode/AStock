@@ -1,0 +1,217 @@
+{
+  "schema_version": "total_return_execution_eligibility.v3",
+  "case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "report_type": "strategic_allocation_total_return_research_framework",
+  "as_of": "2026-08-12",
+  "status": "not_run",
+  "purpose": "Current-session research-qualification policy. It is not execution authorization, an order instruction, a suitability conclusion, or a promise of cash or return.",
+  "current_state": {
+    "portfolio_q": 0,
+    "market_sleeves_q": 0,
+    "approved_model_allocation": "none",
+    "account_holding_inference": "none",
+    "reason": "No finite cross-asset decision universe, approved portfolio risk budget or current-session item, market-quality, account, concentration and correlation packets."
+  },
+  "effective_q_formula": "q_effective_i = q_portfolio * q_risk_state * q_research_i * q_valuation_i * q_market_quality_i * q_concentration_i * q_account_i; any zero results in q_effective_i = 0.",
+  "freshness_policy": {
+    "product_documents": "current as of the validation date",
+    "market_fields": "captured in one China market session for the proposed research tranche; market timestamps may not be mixed across sessions",
+    "trailing_history": "20 completed China-market sessions for spread, traded-value and relative-premium controls; 60 completed observations for the REIT correlation screen unless the documented structural-history exception is resolved as q=0",
+    "distribution_fields": "TTM settled distribution notices reconciled to a dated current market price and receipt/tax convention",
+    "reit_nav_fields": "latest disclosed NAV/date plus intervening project-event review; disclosed NAV is not treated as a live IOPV",
+    "missing_or_stale_field_result": "fail_q_0"
+  },
+  "common_record_fields": [
+    "validation_date",
+    "market_session",
+    "source_name",
+    "source_locator",
+    "capture_timestamp",
+    "raw_record_hash",
+    "decision_universe_id",
+    "research_dossier_version",
+    "named_T3_direct_equity_registry_match",
+    "valuation_record_match",
+    "broker_street_record_match",
+    "product_document_version_or_hash",
+    "trading_status",
+    "market_price",
+    "market_price_timestamp",
+    "iopv_or_nav_reference",
+    "iopv_or_nav_reference_timestamp",
+    "premium_discount_pct",
+    "best_bid",
+    "best_ask",
+    "spread_pct",
+    "same_session_traded_value_cny",
+    "same_session_executable_depth_cny",
+    "trailing_20_session_median_traded_value_cny",
+    "trailing_20_session_median_spread_pct",
+    "trailing_20_session_premium_discount_p95_abs_pct",
+    "minimum_lot",
+    "account_eligibility",
+    "available_cash_at_review",
+    "tax_and_settlement_convention",
+    "proposed_model_tranche_notional",
+    "target_shortfall_notional",
+    "market_quality_calculation",
+    "q_research",
+    "q_valuation",
+    "q_market_quality",
+    "q_concentration",
+    "q_account",
+    "q_effective",
+    "failure_reason",
+    "fallback_result"
+  ],
+  "reit_record_fields": [
+    "ticker",
+    "TTM_gross_cash_distribution_cny_per_unit",
+    "TTM_gross_cash_distribution_yield_pct",
+    "historic_distribution_source_set",
+    "current_price_source",
+    "latest_disclosed_nav",
+    "latest_disclosed_nav_date",
+    "intervening_project_event_review",
+    "operating_KPI_source",
+    "debt_and_capex_reserve_source",
+    "manager_name",
+    "sponsor_group",
+    "sector",
+    "cash_flow_driver",
+    "region_or_regulatory_regime",
+    "key_tenant_or_offtaker_cluster",
+    "refinancing_risk_cluster",
+    "rolling_60_observation_return_correlation_matrix_reference",
+    "portfolio_weight_after_tranche_pct",
+    "manager_sponsor_weight_after_tranche_pct",
+    "sector_cash_flow_driver_region_cluster_weight_after_tranche_pct",
+    "shared_equity_etf_reit_operating_risk_cluster_weight_after_tranche_pct"
+  ],
+  "direct_equity_record_fields": [
+    "ticker",
+    "issuer_legal_identity",
+    "industry_and_value_chain_evidence",
+    "audited_financial_periods",
+    "revenue_to_EPS_driver_bridge",
+    "governance_and_capital_allocation_review",
+    "current_price_and_timestamp",
+    "bull_base_bear_valuation_and_invalidation",
+    "dividend_and_free_cash_flow_coverage",
+    "free_float",
+    "suspension_price_limit_and_corporate_action_status",
+    "issuer_group_industry_factor_common_risk_map",
+    "same_session_liquidity_depth_and_capacity",
+    "portfolio_marginal_stress_and_weight_after_tranche_pct"
+  ],
+  "portfolio_gate": {
+    "q": 0,
+    "risk_budget_reference": "data/risk_budget_20260812.json",
+    "required_checks": [
+      "frozen_T2_cross_asset_decision_universe",
+      "approved_candidate_specific_portfolio_risk_budget",
+      "reproducible_total_return_replay_and_B0_B1_benchmarks",
+      "documented_investment_horizon_liquidity_need_and_loss_capacity_confirmation",
+      "dated_external_flow_adjusted_drawdown_record",
+      "drawdown_state_allows_new_risk_capital"
+    ],
+    "failure_result": "q_portfolio_0_no_model_market_allocation_is_approved_and_no_account_holding_is_inferred"
+  },
+  "dynamic_market_quality_controls": {
+    "premium_discount": {
+      "policy_hard_ceiling_abs_pct": 1.0,
+      "formula": "abs(current_premium_discount_pct) <= min(policy_hard_ceiling_abs_pct, candidate_valuation_tolerance_abs_pct, trailing_20_session_premium_discount_p95_abs_pct + 0.25 percentage points)",
+      "candidate_valuation_tolerance_requirement": "Must be documented by product type. For public REITs it must account for latest disclosed NAV date and intervening project events; missing tolerance fails q_0.",
+      "failure_result": "q_market_quality_0"
+    },
+    "spread": {
+      "policy_hard_ceiling_pct_of_mid": 0.5,
+      "formula": "current_spread_pct <= min(policy_hard_ceiling_pct_of_mid, all_in_cost_budget_pct, max(trailing_20_session_median_spread_pct * 1.5, trailing_20_session_median_spread_pct + 0.10 percentage points))",
+      "all_in_cost_budget_requirement": "Must include documented commissions, taxes and estimated market impact appropriate to the product. Missing budget fails q_0.",
+      "failure_result": "q_market_quality_0"
+    },
+    "model_tranche_capacity": {
+      "same_session_participation_cap_pct": 5.0,
+      "trailing_20_session_participation_cap_pct": 2.0,
+      "displayed_depth_participation_cap_pct": 10.0,
+      "formula": "proposed_model_tranche_notional <= min(target_shortfall_notional, 5% * same_session_traded_value_cny, 2% * trailing_20_session_median_traded_value_cny, 10% * same_session_executable_depth_cny)",
+      "minimum_data_rule": "All four inputs must be positive, same-currency and retained in the validation record. A missing or non-positive input fails q_0; zero observed depth is not replaced by traded value.",
+      "remainder_rule": "Any notional above the capacity calculation is not deferred into another risk sleeve. A later independent validation is required before any model allocation can be considered."
+    },
+    "market_event_rule": "Suspension, material product event, stale reference value, absent normal trading, unresolved abnormal premium/discount, or a source conflict sets q_market_quality_0 regardless of numerical thresholds."
+  },
+  "cash_flow_accounting_controls": {
+    "purpose": "Reconcile cash distributions consistently with total return; this is not a cash-budget gate or sleeve-selection threshold.",
+    "receipt_types": ["settled interest", "settled dividend", "settled ETF distribution", "settled REIT cash distribution"],
+    "non_receipt_types": ["asset sale proceeds", "unsettled receivables", "unrealized gains", "NAV accretion", "external contributions"],
+    "account_reconciliation_requirement": "Holder-specific tax, fee, settlement and receipt-convention evidence must be retained whenever cash distributions enter total-return attribution. Missing evidence leaves the relevant attribution component unresolved; it may not be replaced by a headline yield.",
+    "capital_repayment_like_component_rule": "An issuer-labelled or economically similar capital-repayment component requires a separate ledger flag and predeclared accounting/tax treatment. It is not labelled investment return or double counted.",
+    "cash_disposition_boundary": "Retaining, withdrawing or taking no action is investor-directed and separately recorded. A later market allocation requires a fresh T1-to-T4 review; no automatic deployment is permitted."
+  },
+  "concentration_and_correlation_controls": {
+    "preapproved_asset_class_caps": "none; all future caps require a frozen T2 candidate set and portfolio-risk approval",
+    "minimum_independent_reit_projects": 5,
+    "minimum_manager_or_sponsor_groups": 3,
+    "minimum_operating_cash_flow_sectors": 3,
+    "pairwise_reit_correlation_cluster_threshold": 0.7,
+    "pairwise_reit_correlation_lookback_completed_observations": 60,
+    "correlation_rule": "Missing, inadequate or structurally unreliable history does not establish independence; it requires a qualitative common-driver review and remains q_0 if unresolved. Numerical cluster caps must be set in the approved T4 risk budget rather than inherited from the retired fixed vector.",
+    "cross_sleeve_overlap_rule": "Before any T4 proposal, map direct equities, ETFs, REITs and sovereign/cash tools for common issuer group, industry, factor, property/rental, regulated revenue, customer, financing and rate exposures. An unresolvable map sets the affected candidate q_concentration_0.",
+    "failure_result": "q_concentration_0_and_no_model_allocation_for_the_failed_candidate"
+  },
+  "sleeve_controls": {
+    "protected_liquidity": {
+      "q": 0,
+      "required_checks": ["eligible institution or direct sovereign-bond identity", "term and withdrawal or maturity terms", "aggregate deposit-insurance exposure where applicable"],
+      "boundary": "The reserve is the sole fallback destination; it is not a portfolio return guarantee."
+    },
+    "511010": {
+      "q": 0,
+      "required_checks": ["identity_and_current_document", "normal_trading", "same_session_price_reference", "dynamic_premium_discount", "dynamic_spread", "dynamic_tranche_capacity", "account_lot_cash_feasibility", "duration_fit_to_approved_risk_budget"],
+      "boundary": "Five-year Treasury ETF exposure is not protected liquidity."
+    },
+    "direct_equities": {
+      "q": 0,
+      "required_checks": ["named_T2_candidate", "named_T3_registry_to_current_valuation_and_broker_street_one_to_one_reconciliation", "company_industry_governance_dossier", "audited_financials_and_revenue_to_EPS_bridge", "current_price_bull_base_bear_valuation", "dividend_free_cash_flow_and_catalyst_invalidation", "free_float_suspension_price_limit_corporate_action", "same_session_liquidity_depth_capacity", "issuer_group_industry_factor_common_risk_mapping", "account_tax_settlement"],
+      "boundary": "Open-universe membership, a stock screen or a dividend yield does not establish direct-equity eligibility."
+    },
+    "510880": {
+      "q": 0,
+      "required_checks": ["identity_and_current_document", "normal_trading", "same_session_price_reference", "dynamic_premium_discount", "dynamic_spread", "dynamic_tranche_capacity", "account_lot_cash_feasibility", "TTM_settled_cash_distribution_reconciliation", "issuer_group_industry_and_REIT_overlap_look_through"],
+      "boundary": "Index dividend yield does not establish ETF cash receipts."
+    },
+    "public_reits": {
+      "q": 0,
+      "required_checks": ["at_least_five_independent_eligible_projects", "at_least_three_manager_or_sponsor_groups", "at_least_three_operating_cash_flow_sectors", "current_TTM_settled_cash_distribution_calculation", "latest_NAV_date_and_intervening_project_event_review", "candidate_valuation_tolerance", "operating_KPI", "debt_capex_and_refinancing", "same_session_dynamic_liquidity_spread_lot_capacity", "manager_sector_region_tenant_refinancing_cluster_caps", "verified_correlation_or_qualitative_common_driver_review", "equity_ETF_REIT_overlap_map", "tax_and_settlement"],
+      "boundary": "Candidate-pool membership, a historical distribution rate, a quarterly annualisation, or five tickers alone cannot pass this sleeve."
+    },
+    "sovereign_or_cash_candidates": {
+      "q": 0,
+      "required_checks": ["named_T2_candidate", "issuer_or_protection_identity", "term_withdrawal_or_maturity", "cash_flow_tax_and_account_convention", "concentration_and_investment_purpose", "does_not_assume_total_return_objective_coverage"],
+      "boundary": "Cash tools are researchable but no product is assumed to meet the total-return objective."
+    }
+  },
+  "risk_state_controls": {
+    "measurement": "DD_t = flow-adjusted current marked account value / flow-adjusted high-water mark - 1; a dated account record is required.",
+    "caution_lock_at_or_below_pct": -12.0,
+    "caution_action": "q_risk_state_0_for_new_risk_allocation; pause scheduled risk tranches pending re-underwriting. Any cash disposition remains investor-directed and separately recorded.",
+    "risk_stop_at_or_below_pct": -18.0,
+    "risk_stop_action": "q_risk_state_0_for_all_market_candidates; cancel unexecuted model proposals; require an incident and non-automatic de-risk/recovery proposal before any later approval. Any cash disposition remains investor-directed and separately recorded.",
+    "release_rule": "Dated re-underwriting, independent risk approval, refreshed portfolio-risk-budget gate and fresh candidate evidence are all required. A market rebound or a distribution is insufficient."
+  },
+  "failure_waterfall": {
+    "failed_or_missing_check_result": "q_0_no_T3_or_T4_admission_for_affected_candidate",
+    "destination": "no_model_allocation_or_account_holding_inference",
+    "substitution_rule": "No automatic substitution into a higher-yield, leveraged, lower-credit, correlated or direct-equity candidate. A new candidate may be nominated only through a later T1-to-T2 research cycle.",
+    "reit_force_fill_rule": "If REIT independence, correlation/overlap, or any required current field fails, the candidate remains q=0; no REIT allocation is force-filled.",
+    "risk_budget_rule": "If the portfolio risk budget or drawdown-state gate fails, every market candidate remains q=0 regardless of a passed item-level screen.",
+    "retry_rule": "A fresh complete validation is required at the next scheduled review. There is no catch-up trade, automatic allocation, or target-repair allocation. Cash disposition remains a separate investor-directed decision."
+  },
+  "execution_authorization": "none",
+  "warnings": [
+    "This policy cannot prove an annual minimum return.",
+    "Cash distributions are reconciled for total-return accounting and are not a separate target, qualification threshold, or promise.",
+    "No open-universe candidate is approved merely because it fits a product category; item and portfolio evidence must be current and independently reviewed."
+  ]
+}

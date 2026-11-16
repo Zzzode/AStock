@@ -1,0 +1,485 @@
+{
+  "capture_batch": "c10-direct-equity-price-dividend-probe-20260815",
+  "captured_at": "2026-08-14T18:50:14.008192+00:00",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "files": [
+    {
+      "authority": "official_issuer_investor_relations_disclosure",
+      "bytes": 1082847,
+      "capture_note": "Dated issuer annual report captured read-only. It does not establish current price, tax, account eligibility, liquidity, fill, settlement, allocation, holding, or action.",
+      "code": "600519",
+      "document_date": "2026-04-17",
+      "format": "pdf",
+      "issuer": "Kweichow Moutai Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/600519_kweichow_moutai_2025_annual_report.pdf",
+      "publisher": "Kweichow Moutai Co., Ltd.",
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288",
+      "title": "Kweichow Moutai Co., Ltd. 2025 Annual Report",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-04/17/07cf01cc11a14ea18cfadf9ebe2a4eb3.pdf"
+    },
+    {
+      "bytes": 116898,
+      "capture_note": "Official retrospective daily market-price response. Adjustment basis, historic available_at, corporate-action completeness, bid/ask, depth, market status, costs, tax, fills, settlement, account permission and entitlement are not supplied.",
+      "code": "600519",
+      "document_date": "retrospective response captured 2026-08-15",
+      "first_row_date": "20180522",
+      "format": "jsonp",
+      "issuer": "Kweichow Moutai Co., Ltd.",
+      "last_row_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_600519_latest2000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/price-trends/stocks/",
+      "response_rows": 2000,
+      "response_total": 5983,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "0512d9b19f2cba2a4fe0fcae408a07450a7fc2b18cdc0e58dc07adaa527567c1",
+      "title": "SSE A-share daily market-price response for 600519, latest 2,000 returned rows",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/600519?callback=c10tr&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=3983&end=5983"
+    },
+    {
+      "bytes": 2052,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600519",
+      "document_date": "record-date filter 2022; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Kweichow Moutai Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2022.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 2,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "c318456ae2d645c45c32fa8d6ec0bbe0c3d5126fd3779322a136a30343c08076",
+      "title": "SSE A-share cash-dividend event query for 600519, record-date year 2022",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600519&A_REG_DATE=2022&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 2046,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600519",
+      "document_date": "record-date filter 2023; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Kweichow Moutai Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2023.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 2,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "a7814e2b0eb58f7007a1a8677e595cba1b49fb21e1baad8388701a42fda27fea",
+      "title": "SSE A-share cash-dividend event query for 600519, record-date year 2023",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600519&A_REG_DATE=2023&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 2046,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600519",
+      "document_date": "record-date filter 2024; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Kweichow Moutai Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2024.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 2,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "e5b8532290a21664a81ccb117e174591655844badade3fb5b771dbe1b49315b2",
+      "title": "SSE A-share cash-dividend event query for 600519, record-date year 2024",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600519&A_REG_DATE=2024&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 2046,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600519",
+      "document_date": "record-date filter 2025; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Kweichow Moutai Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2025.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 2,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "20f90bde5f669c36dd3a5412da055b2f6d405ac1ae4273d32491b9c30b752391",
+      "title": "SSE A-share cash-dividend event query for 600519, record-date year 2025",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600519&A_REG_DATE=2025&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 104265,
+      "capture_note": "Official retrospective daily market-price response. Adjustment basis, historic available_at, corporate-action completeness, bid/ask, depth, market status, costs, tax, fills, settlement, account permission and entitlement are not supplied.",
+      "code": "600900",
+      "document_date": "retrospective response captured 2026-08-15",
+      "first_row_date": "20180507",
+      "format": "jsonp",
+      "issuer": "China Yangtze Power Co., Ltd.",
+      "last_row_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_600900_latest2000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/price-trends/stocks/",
+      "response_rows": 2000,
+      "response_total": 5100,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "0ca3cfc1f5f28b55e5947be37b2d51dd7ced93efe68d3753c95843f63a3417f1",
+      "title": "SSE A-share daily market-price response for 600900, latest 2,000 returned rows",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/600900?callback=c10tr&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=3100&end=5100"
+    },
+    {
+      "bytes": 1292,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600900",
+      "document_date": "record-date filter 2022; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Yangtze Power Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2022.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "1db6a7468c311ec84c0c73cf0e1b642c27373055f8a6a6a3d60e131b39ec949e",
+      "title": "SSE A-share cash-dividend event query for 600900, record-date year 2022",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600900&A_REG_DATE=2022&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 1278,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600900",
+      "document_date": "record-date filter 2023; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Yangtze Power Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2023.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "cc99fd22c04363d797ba692cbdbf644e9e3b87d6734f4233844ddfd96fd50cbf",
+      "title": "SSE A-share cash-dividend event query for 600900, record-date year 2023",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600900&A_REG_DATE=2023&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 1278,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600900",
+      "document_date": "record-date filter 2024; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Yangtze Power Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2024.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "7621ade2e51f98d34bca9fb8ae5766bead73e3b8d25234c62e9ac1a65ad05bb6",
+      "title": "SSE A-share cash-dividend event query for 600900, record-date year 2024",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600900&A_REG_DATE=2024&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 2050,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "600900",
+      "document_date": "record-date filter 2025; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Yangtze Power Co., Ltd.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2025.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 2,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "ef7823d300c5be569dea498f56733fabee04afb023bfb21a4a2cff9be80f3418",
+      "title": "SSE A-share cash-dividend event query for 600900, record-date year 2025",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=600900&A_REG_DATE=2025&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 97974,
+      "capture_note": "Official retrospective daily market-price response. Adjustment basis, historic available_at, corporate-action completeness, bid/ask, depth, market status, costs, tax, fills, settlement, account permission and entitlement are not supplied.",
+      "code": "601398",
+      "document_date": "retrospective response captured 2026-08-15",
+      "first_row_date": "20180522",
+      "format": "jsonp",
+      "issuer": "Industrial and Commercial Bank of China Limited",
+      "last_row_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_601398_latest2000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/price-trends/stocks/",
+      "response_rows": 2000,
+      "response_total": 4791,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "61c533999d2b63c3a6a322caa6371f3d4248fc8b9bc216a930c92a77b3472bd4",
+      "title": "SSE A-share daily market-price response for 601398, latest 2,000 returned rows",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/601398?callback=c10tr&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=2791&end=4791"
+    },
+    {
+      "bytes": 1292,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601398",
+      "document_date": "record-date filter 2022; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Industrial and Commercial Bank of China Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2022.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "dbab095d0397e95d4ac3513083f079acdec2a711f4010a18dff17afeb9edadad",
+      "title": "SSE A-share cash-dividend event query for 601398, record-date year 2022",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601398&A_REG_DATE=2022&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 1278,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601398",
+      "document_date": "record-date filter 2023; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Industrial and Commercial Bank of China Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2023.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "a934e11cc03fb752942a93ca88945da482b498e23cc2c2ce7e04b3ce90341312",
+      "title": "SSE A-share cash-dividend event query for 601398, record-date year 2023",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601398&A_REG_DATE=2023&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 1278,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601398",
+      "document_date": "record-date filter 2024; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Industrial and Commercial Bank of China Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2024.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "9f98c7252dd936419eb0054f7fe322f109f9e7f3a599f35a855ae35f43f0b322",
+      "title": "SSE A-share cash-dividend event query for 601398, record-date year 2024",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601398&A_REG_DATE=2024&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 2822,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601398",
+      "document_date": "record-date filter 2025; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "Industrial and Commercial Bank of China Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2025.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 3,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "d1b0fe5fe76d8c3f5ed817f88219abd44f2b9679a9f0d5ae6614e52894c2dfe8",
+      "title": "SSE A-share cash-dividend event query for 601398, record-date year 2025",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601398&A_REG_DATE=2025&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 104004,
+      "capture_note": "Official retrospective daily market-price response. Adjustment basis, historic available_at, corporate-action completeness, bid/ask, depth, market status, costs, tax, fills, settlement, account permission and entitlement are not supplied.",
+      "code": "601088",
+      "document_date": "retrospective response captured 2026-08-15",
+      "first_row_date": "20180508",
+      "format": "jsonp",
+      "issuer": "China Shenhua Energy Company Limited",
+      "last_row_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_601088_latest2000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/price-trends/stocks/",
+      "response_rows": 2000,
+      "response_total": 4505,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "f71ef84368e214ef8e530e813a5debbd905dc3ba585af45a6241f1074c364f51",
+      "title": "SSE A-share daily market-price response for 601088, latest 2,000 returned rows",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/601088?callback=c10tr&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=2505&end=4505"
+    },
+    {
+      "bytes": 1292,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601088",
+      "document_date": "record-date filter 2022; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Shenhua Energy Company Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2022.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "be366d9afc2072d03bd69241b8a1c1ef5a209c193d5c11f896b228b0e3127baf",
+      "title": "SSE A-share cash-dividend event query for 601088, record-date year 2022",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601088&A_REG_DATE=2022&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 1278,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601088",
+      "document_date": "record-date filter 2023; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Shenhua Energy Company Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2023.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "075bb281d9192c2c2ecac3a8513a84fefbdf67843f2dc5c1ce47fcdd8c7ed260",
+      "title": "SSE A-share cash-dividend event query for 601088, record-date year 2023",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601088&A_REG_DATE=2023&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 1278,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601088",
+      "document_date": "record-date filter 2024; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Shenhua Energy Company Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2024.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 1,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "966cc88a75b99f13c0404a746f84f4be81c3a29bd5c0f904616ce962390b0876",
+      "title": "SSE A-share cash-dividend event query for 601088, record-date year 2024",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601088&A_REG_DATE=2024&page_size=100&page_no=1&isPagination=true"
+    },
+    {
+      "bytes": 2050,
+      "capture_note": "Official retrospective event-query response. It is a code/year response, not a complete corporate-action, tax, payment, reinvestment, adjustment, investor-lot, or execution ledger.",
+      "code": "601088",
+      "document_date": "record-date filter 2025; retrospective response captured 2026-08-15",
+      "format": "jsonp",
+      "issuer": "China Shenhua Energy Company Limited",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2025.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/market/stockdata/dividends/dividend/index_his.shtml",
+      "response_rows": 2,
+      "retrieved_at": "2026-08-14T18:50:14.008192+00:00",
+      "sha256": "86f9f806d105d0491fbafb874c2c3135187b0f2d58997d59b5c1daec916d1662",
+      "title": "SSE A-share cash-dividend event query for 601088, record-date year 2025",
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=c10div&sqlId=COMMON_SSE_SJ_GPSJ_FHSG_SSGSFHQK_L&CONDITION_AG=1&A_STOCK_CODE=601088&A_REG_DATE=2025&page_size=100&page_no=1&isPagination=true"
+    }
+  ],
+  "formal_replay_eligible": false,
+  "limitations": [
+    "The records are retrieved after the observation periods and do not establish original-date availability, revisions, or a point-in-time research dataset.",
+    "The raw daily-price endpoint does not disclose its adjustment convention; a calculated price-plus-cash result is only a diagnostic, not investor total return.",
+    "The dividend endpoint does not establish complete corporate actions, payment success, tax, reinvestment, or entitlement at an investor-lot level.",
+    "There is no cost, spread, market-impact, no-fill, settlement, account-permission, or broker ledger; positive results may not be treated as validation."
+  ],
+  "purpose": "C10 exploratory historical gross cash-dividend diagnostic for a fixed four-name direct A-share research candidate.",
+  "research_only": true,
+  "source_freeze": {
+    "boundary": "Case-local hash control detects a raw-file mismatch only. It is not external notarization, entitlement, a point-in-time proof, total-return validation, or execution validation.",
+    "frozen_files": [
+      {
+        "bytes": 1082847,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/600519_kweichow_moutai_2025_annual_report.pdf",
+        "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288"
+      },
+      {
+        "bytes": 116898,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_600519_latest2000.jsonp",
+        "sha256": "0512d9b19f2cba2a4fe0fcae408a07450a7fc2b18cdc0e58dc07adaa527567c1"
+      },
+      {
+        "bytes": 2052,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2022.jsonp",
+        "sha256": "c318456ae2d645c45c32fa8d6ec0bbe0c3d5126fd3779322a136a30343c08076"
+      },
+      {
+        "bytes": 2046,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2023.jsonp",
+        "sha256": "a7814e2b0eb58f7007a1a8677e595cba1b49fb21e1baad8388701a42fda27fea"
+      },
+      {
+        "bytes": 2046,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2024.jsonp",
+        "sha256": "e5b8532290a21664a81ccb117e174591655844badade3fb5b771dbe1b49315b2"
+      },
+      {
+        "bytes": 2046,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600519_2025.jsonp",
+        "sha256": "20f90bde5f669c36dd3a5412da055b2f6d405ac1ae4273d32491b9c30b752391"
+      },
+      {
+        "bytes": 104265,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_600900_latest2000.jsonp",
+        "sha256": "0ca3cfc1f5f28b55e5947be37b2d51dd7ced93efe68d3753c95843f63a3417f1"
+      },
+      {
+        "bytes": 1292,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2022.jsonp",
+        "sha256": "1db6a7468c311ec84c0c73cf0e1b642c27373055f8a6a6a3d60e131b39ec949e"
+      },
+      {
+        "bytes": 1278,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2023.jsonp",
+        "sha256": "cc99fd22c04363d797ba692cbdbf644e9e3b87d6734f4233844ddfd96fd50cbf"
+      },
+      {
+        "bytes": 1278,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2024.jsonp",
+        "sha256": "7621ade2e51f98d34bca9fb8ae5766bead73e3b8d25234c62e9ac1a65ad05bb6"
+      },
+      {
+        "bytes": 2050,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_600900_2025.jsonp",
+        "sha256": "ef7823d300c5be569dea498f56733fabee04afb023bfb21a4a2cff9be80f3418"
+      },
+      {
+        "bytes": 97974,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_601398_latest2000.jsonp",
+        "sha256": "61c533999d2b63c3a6a322caa6371f3d4248fc8b9bc216a930c92a77b3472bd4"
+      },
+      {
+        "bytes": 1292,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2022.jsonp",
+        "sha256": "dbab095d0397e95d4ac3513083f079acdec2a711f4010a18dff17afeb9edadad"
+      },
+      {
+        "bytes": 1278,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2023.jsonp",
+        "sha256": "a934e11cc03fb752942a93ca88945da482b498e23cc2c2ce7e04b3ce90341312"
+      },
+      {
+        "bytes": 1278,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2024.jsonp",
+        "sha256": "9f98c7252dd936419eb0054f7fe322f109f9e7f3a599f35a855ae35f43f0b322"
+      },
+      {
+        "bytes": 2822,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601398_2025.jsonp",
+        "sha256": "d1b0fe5fe76d8c3f5ed817f88219abd44f2b9679a9f0d5ae6614e52894c2dfe8"
+      },
+      {
+        "bytes": 104004,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dayk_601088_latest2000.jsonp",
+        "sha256": "f71ef84368e214ef8e530e813a5debbd905dc3ba585af45a6241f1074c364f51"
+      },
+      {
+        "bytes": 1292,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2022.jsonp",
+        "sha256": "be366d9afc2072d03bd69241b8a1c1ef5a209c193d5c11f896b228b0e3127baf"
+      },
+      {
+        "bytes": 1278,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2023.jsonp",
+        "sha256": "075bb281d9192c2c2ecac3a8513a84fefbdf67843f2dc5c1ce47fcdd8c7ed260"
+      },
+      {
+        "bytes": 1278,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2024.jsonp",
+        "sha256": "966cc88a75b99f13c0404a746f84f4be81c3a29bd5c0f904616ce962390b0876"
+      },
+      {
+        "bytes": 2050,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c10-direct-equity-price-dividend-probe-20260815/sse_dividend_601088_2025.jsonp",
+        "sha256": "86f9f806d105d0491fbafb874c2c3135187b0f2d58997d59b5c1daec916d1662"
+      }
+    ],
+    "runtime_provenance": {
+      "git_commit_at_runtime": "6dc78acf75a67fcaf30ce75fc12038313926061e",
+      "platform": "Linux-5.15.152.bsk.4-amd64-x86_64-with-glibc2.39",
+      "python_version": "3.13.1",
+      "requests_version": "2.34.2",
+      "script_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/tools/c10_capture_stock_total_return_probe.py",
+      "script_sha256": "6163041b99d712a493957b75e82f6ff97dbd9b98e2fb82625b09b70fd0f803e8"
+    },
+    "schema_version": "research_source_freeze_control.v1",
+    "seal_status": "case_local_hash_control_only",
+    "sealed_at": "2026-08-14T18:50:14.008192+00:00"
+  },
+  "source_quality": "primary_official_issuer_exchange_retrospective_price_and_event_observation"
+}

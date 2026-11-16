@@ -1,0 +1,107 @@
+{
+  "document_id": "DPSFS-C8-PRODUCT-DD-v1",
+  "as_of_date": "2026-08-15",
+  "portfolio_q": 0,
+  "purpose": "Dated product-level diligence for the exact three C8-T1 ETF identifiers; not a product ranking, suitability finding, allocation approval, or action.",
+  "source_manifest": {
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c8-official-product-and-price-20260815/manifest.json",
+    "raw_documents": [
+      "511180_product_summary_20250324.pdf",
+      "511380_product_summary_20260626.pdf",
+      "511010_product_summary_20260319.pdf",
+      "sse_950041_investment_grade_cb_methodology.pdf",
+      "csi_931078_convertible_exchangeable_factsheet_20260130.pdf",
+      "sse_bond_etf_guide_20200722.html",
+      "sse_etf_faq_20260815.html",
+      "sse_convertible_redemption_index_rule_20190906.html"
+    ],
+    "boundary": "Documents support dated product and category facts only; they do not establish current account access, current terms, liquidity, premium/discount, total return, fills, allocation, holding, action, or a stable return."
+  },
+  "supplemental_source_manifest": {
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c8-official-511180-product-refresh-20260815/manifest.json",
+    "purpose": "Dated 2025-12-09 issuer product-summary refresh used for 511180 current-in-pack fee and structural facts."
+  },
+  "fixed_c8_t1_weights": {"511180": 0.5, "511380": 0.25, "511010": 0.25},
+  "products": [
+    {
+      "code": "511180",
+      "name": "Haifutong SSE Investment Grade Convertible Bond and Exchangeable Bond ETF",
+      "role": "investment_grade_convertible_bond_core",
+      "fund_manager": "Haifutong Fund Management Co., Ltd.",
+      "custodian": "CITIC Securities Co., Ltd.",
+      "fund_contract_effective_date": "2020-07-13",
+      "sse_listing_date": "2020-08-26",
+      "product_summary_document_date": "2025-12-09",
+      "fund_type": "bond_ETF_RMB",
+      "benchmark": "SSE Investment Grade Convertible Bond and Exchangeable Bond Index",
+      "replication": "stratified_sampling",
+      "required_index_constituent_or_alternate_ratio": {"net_assets_minimum": 0.9, "non_cash_assets_minimum": 0.8},
+      "tracking_objective": {"daily_tracking_deviation_absolute_target_max": 0.0025, "annual_tracking_error_target_max": 0.03, "not_a_guarantee": true},
+      "fees_disclosed": {"management_fee_annual": 0.0025, "custody_fee_annual": 0.0005, "annual_composite_expense_estimate": 0.0031, "creation_redemption_broker_commission_ceiling": 0.005, "secondary_market_fee": "actual_broker_charge_not_disclosed"},
+      "index_methodology": {
+        "exchange_scope": "Shanghai Stock Exchange listed convertible and exchangeable bonds",
+        "issuer_rating_minimum": "AA",
+        "issuer_rating_outlook": "non_negative",
+        "outstanding_balance_minimum": "CNY200m",
+        "selection": "all eligible sample-space bonds, market-cap weighted",
+        "regular_adjustment": "biweekly first trading day, data cut two trading days before effective date"
+      },
+      "material_risks": ["credit_or_settlement_default", "constituent_suspension", "redemption_put_conversion_equity", "tracking_deviation", "index_change", "IOPV_error_or_difference", "creation_redemption_failure", "delisting", "secondary_market_premium_discount", "liquidity"],
+      "no_action_conditions": ["suspension", "termination_or_delisting", "benchmark_or_contract_change", "unverifiable_price_NAV_IOPV", "material_credit_or_redemption_event_pending_audit", "unsupported_account_route"]
+    },
+    {
+      "code": "511380",
+      "name": "Bosera CSI Convertible Bond and Exchangeable Bond ETF",
+      "role": "broad_convertible_bond_satellite",
+      "fund_manager": "Bosera Fund Management Co., Ltd.",
+      "custodian": "China Merchants Bank Co., Ltd.",
+      "fund_contract_effective_date": "2020-03-06",
+      "sse_listing_date": "2020-04-07",
+      "product_summary_document_date": "2026-06-26",
+      "fund_type": "bond_ETF_RMB",
+      "benchmark": "CSI Convertible Bond and Exchangeable Bond Index",
+      "replication": "sampling_replication_and_permitted_substitutes",
+      "required_index_constituent_or_alternate_ratio": {"net_assets_minimum": 0.8, "non_cash_assets_minimum": 0.8},
+      "tracking_objective": {"daily_tracking_deviation_absolute_target_max": 0.003, "annual_tracking_error_target_max": 0.04, "not_a_guarantee": true},
+      "fees_disclosed": {"management_fee_annual": 0.0015, "custody_fee_annual": 0.0005, "annual_composite_expense_estimate": 0.002, "creation_redemption_broker_commission_ceiling": 0.005, "secondary_market_fee": "actual_broker_charge_not_disclosed"},
+      "fund_scope_notes": ["May hold a limited amount of other bonds, money-market instruments, repos, deposits, certificates of deposit, and Treasury futures as permitted by its documents.", "Stock obtained through conversion/exchange must be sold within ten tradable days according to the product summary."],
+      "index_snapshot_2026_01_30": {"index_code": "931078", "sample_count": 289, "rebalancing_frequency": "monthly", "largest_listed_top_ten_weight": 0.0778, "boundary": "Snapshot only, not historical constituent or concentration replay data."},
+      "material_risks": ["credit_or_settlement_default", "redemption_put_conversion_equity", "interest_rate_and_equity_valuation", "market_cap_concentration", "sampling_and_substitution", "tracking_deviation", "premium_discount", "IOPV_error", "creation_redemption_failure", "delisting", "liquidity"],
+      "no_action_conditions": ["suspension", "termination_or_delisting", "benchmark_or_contract_change", "unverifiable_price_NAV_IOPV", "material_credit_or_redemption_event_pending_audit", "unsupported_account_route"]
+    },
+    {
+      "code": "511010",
+      "name": "Guotai SSE 5-Year Treasury Bond ETF",
+      "role": "five_year_government_bond_rate_buffer",
+      "fund_manager": "Guotai Fund Management Co., Ltd.",
+      "custodian": "China Construction Bank Corporation",
+      "fund_contract_effective_date": "2013-03-05",
+      "sse_listing_date": "2013-03-25",
+      "product_summary_document_date": "2026-03-19",
+      "fund_type": "bond_ETF_RMB",
+      "benchmark": "SSE 5-Year Treasury Bond Index",
+      "replication": "optimized_sampling",
+      "required_index_constituent_or_alternate_ratio": {"net_assets_minimum": 0.9},
+      "tracking_objective": {"daily_tracking_deviation_absolute_target_max": 0.002, "annual_tracking_error_target_max": 0.02, "not_a_guarantee": true},
+      "fees_disclosed": {"management_fee_annual": 0.0015, "custody_fee_annual": 0.0005, "annual_composite_expense_estimate": 0.0021, "creation_redemption_broker_commission_ceiling": 0.004, "secondary_market_fee": "actual_broker_charge_not_disclosed"},
+      "material_risks": ["interest_rate_loss", "index_decline", "tracking_deviation", "constituent_suspension_or_liquidity", "IOPV_error_or_difference", "creation_redemption_failure", "index_service_change", "distribution_NAV_change"],
+      "no_action_conditions": ["suspension", "termination_or_delisting", "benchmark_or_contract_change", "unverifiable_price_NAV_IOPV", "unsupported_account_route"]
+    }
+  ],
+  "index_event_rule": {
+    "source_date": "2019-09-06",
+    "fact": "For the stated convertible and exchangeable-bond indices, a constituent is removed on the fifth trading day after an issuer redemption announcement.",
+    "boundary": "An index event rule is not an ETF fill, loss-control, liquidity, or successful exit guarantee."
+  },
+  "generic_sse_bond_etf_mechanics": {
+    "category_level_t0": "SSE FAQ states that bond ETFs are among domestic ETF categories supporting same-day trading.",
+    "minimum_secondary_market_lot": 100,
+    "minimum_price_increment_cny": 0.001,
+    "two_value_systems": ["secondary_market_price", "off-exchange_NAV"],
+    "IOPV": "Can be fixed or dynamically calculated; fund managers may choose whether to publish it.",
+    "boundary": "Category-level mechanics must be confirmed product-by-product, broker-by-broker and session-by-session."
+  },
+  "direct_bond_boundary": "C8 does not directly hold a convertible bond. Individual-bond selection is blocked until PIT issuer/terms/rating/redemption/put/conversion/event/liquidity data and issuer-level diligence are available.",
+  "blocking_gaps_before_action": ["PIT total-return and distribution/split history", "fund/index corporate-action and status history", "broker cost/spread/impact/fill ledger", "account route and suitability evidence", "independent entitled-data rerun", "prospective paper record including nonfills"],
+  "conclusion": "Product identity and dated structural facts are established, but the strategy remains non-actionable and portfolio_q remains zero."
+}

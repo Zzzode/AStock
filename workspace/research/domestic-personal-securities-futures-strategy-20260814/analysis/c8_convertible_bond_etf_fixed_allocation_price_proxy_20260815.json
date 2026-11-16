@@ -1,0 +1,1111 @@
+{
+  "allowed_interpretation": "This frozen exploratory result is only a public official market-price arithmetic proxy. It cannot show total return, stable 5% performance, suitability, allocation, holding, order execution, or a personal action.",
+  "derived_runtime_provenance": {
+    "git_commit_at_runtime": "6dc78acf75a67fcaf30ce75fc12038313926061e",
+    "platform": "Linux-5.15.152.bsk.4-amd64-x86_64-with-glibc2.39",
+    "python_version": "3.13.1",
+    "requests_version": "2.34.2",
+    "script_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/tools/c8_capture_and_replay.py",
+    "script_sha256": "d62440ece089700fae90af106d7d1aa8c662941857f00e88114766bbdd50a890"
+  },
+  "protocol": {
+    "document_id": "DPSFS-C8-CB-ETFR-v1",
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c8_convertible_bond_etf_fixed_allocation_protocol_20260815.json",
+    "portfolio_q": 0,
+    "sha256": "bc93d4e99c367ae912066a90209264b955fcc0920fa110b2469ce7926f4777ec",
+    "status": "exploratory_after_identity_document_discovery_before_full_price_capture"
+  },
+  "result": {
+    "annualized_net_unitized_change": 0.03928600496293111,
+    "complete_calendar_years": [
+      {
+        "complete": false,
+        "first_observation": "2020-08-26",
+        "last_observation": "2020-12-31",
+        "net_unitized_change": null,
+        "year": 2020
+      },
+      {
+        "complete": true,
+        "first_observation": "2021-01-04",
+        "last_observation": "2021-12-31",
+        "net_unitized_change": 0.10339908731364944,
+        "year": 2021
+      },
+      {
+        "complete": true,
+        "first_observation": "2022-01-04",
+        "last_observation": "2022-12-30",
+        "net_unitized_change": -0.05311470342768465,
+        "year": 2022
+      },
+      {
+        "complete": true,
+        "first_observation": "2023-01-03",
+        "last_observation": "2023-12-29",
+        "net_unitized_change": 0.011660584598902846,
+        "year": 2023
+      },
+      {
+        "complete": true,
+        "first_observation": "2024-01-02",
+        "last_observation": "2024-12-31",
+        "net_unitized_change": 0.07096596649341591,
+        "year": 2024
+      },
+      {
+        "complete": true,
+        "first_observation": "2025-01-02",
+        "last_observation": "2025-12-31",
+        "net_unitized_change": 0.10733128201897246,
+        "year": 2025
+      },
+      {
+        "complete": false,
+        "first_observation": "2026-01-05",
+        "last_observation": "2026-08-14",
+        "net_unitized_change": null,
+        "year": 2026
+      }
+    ],
+    "complete_year_failure_count": 2,
+    "complete_year_failures": [
+      {
+        "complete": true,
+        "first_observation": "2022-01-04",
+        "last_observation": "2022-12-30",
+        "net_unitized_change": -0.05311470342768465,
+        "year": 2022
+      },
+      {
+        "complete": true,
+        "first_observation": "2023-01-03",
+        "last_observation": "2023-12-29",
+        "net_unitized_change": 0.011660584598902846,
+        "year": 2023
+      }
+    ],
+    "cost_rate_sum_not_compounded": 0.0033358841698022585,
+    "effective_return_start_date": "2020-08-27",
+    "input_failures": [],
+    "max_drawdown": -0.07441997604613715,
+    "net_unitized_change_from_baseline": 0.2474624385380797,
+    "one_way_turnover_sum": 1.111961389934086,
+    "panel_first_date": "2020-08-26",
+    "panel_last_date": "2026-08-14",
+    "panel_observations": 1447,
+    "portfolio_q": 0,
+    "rebalance_count_including_initial": 25,
+    "rebalance_rows": [
+      {
+        "cost_rate_on_nav": 0.003,
+        "effective_close_date": "2020-08-26",
+        "formation_date": "2020-08-26",
+        "kind": "initial_build_at_baseline_close",
+        "nav_after_cost": 0.997,
+        "nav_before_cost": 1.0,
+        "one_way_turnover": 1.0
+      },
+      {
+        "cost_rate_on_nav": 4.737340923960221e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.2515791136413201,
+          "511180": 0.4995161324984643,
+          "511380": 0.2489047538602156
+        },
+        "effective_close_date": "2020-10-09",
+        "formation_date": "2020-09-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 0.9889157743053592,
+        "nav_before_cost": 0.9889204591587208,
+        "one_way_turnover": 0.0015791136413200735
+      },
+      {
+        "cost_rate_on_nav": 6.354444176032856e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.24788185194132237,
+          "511180": 0.5016337818347604,
+          "511380": 0.25048436622391723
+        },
+        "effective_close_date": "2021-01-04",
+        "formation_date": "2020-12-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0023331464601566,
+        "nav_before_cost": 1.002339515770655,
+        "one_way_turnover": 0.0021181480586776186
+      },
+      {
+        "cost_rate_on_nav": 6.23364029457367e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.25139740406206074,
+          "511180": 0.5006804760361305,
+          "511380": 0.24792211990180882
+        },
+        "effective_close_date": "2021-04-01",
+        "formation_date": "2021-03-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0031412887099311,
+        "nav_before_cost": 1.0031475419708702,
+        "one_way_turnover": 0.002077880098191223
+      },
+      {
+        "cost_rate_on_nav": 1.397450559578739e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.2500307821437748,
+          "511180": 0.4995341831468071,
+          "511380": 0.25043503470941814
+        },
+        "effective_close_date": "2021-07-01",
+        "formation_date": "2021-06-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0160580683777045,
+        "nav_before_cost": 1.0160594882706049,
+        "one_way_turnover": 0.000465816853192913
+      },
+      {
+        "cost_rate_on_nav": 1.9534840496564206e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.24348838650114524,
+          "511180": 0.5020020032120406,
+          "511380": 0.2545096102868141
+        },
+        "effective_close_date": "2021-10-08",
+        "formation_date": "2021-09-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.057259288277358,
+        "nav_before_cost": 1.0572799420723866,
+        "one_way_turnover": 0.006511613498854735
+      },
+      {
+        "cost_rate_on_nav": 2.2834762706151564e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.24238841243128278,
+          "511180": 0.5015761910924584,
+          "511380": 0.2560353964762587
+        },
+        "effective_close_date": "2022-01-04",
+        "formation_date": "2021-12-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.1015006260789506,
+        "nav_before_cost": 1.1015257791587325,
+        "one_way_turnover": 0.0076115875687171874
+      },
+      {
+        "cost_rate_on_nav": 3.453618721402414e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.2615120624046747,
+          "511180": 0.4927817186503919,
+          "511380": 0.2457062189449334
+        },
+        "effective_close_date": "2022-04-01",
+        "formation_date": "2022-03-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0589387191470125,
+        "nav_before_cost": 1.058975292115956,
+        "one_way_turnover": 0.011512062404674714
+      },
+      {
+        "cost_rate_on_nav": 1.5473790571123955e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.24531808361440557,
+          "511180": 0.49952398619521976,
+          "511380": 0.25515793019037464
+        },
+        "effective_close_date": "2022-07-01",
+        "formation_date": "2022-06-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.085693292564309,
+        "nav_before_cost": 1.085710092614903,
+        "one_way_turnover": 0.005157930190374652
+      },
+      {
+        "cost_rate_on_nav": 2.3323064299083748e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.2577743547663613,
+          "511180": 0.49636266512579075,
+          "511380": 0.24586298010784804
+        },
+        "effective_close_date": "2022-10-10",
+        "formation_date": "2022-09-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0618399371004865,
+        "nav_before_cost": 1.0618647030392325,
+        "one_way_turnover": 0.0077743547663612494
+      },
+      {
+        "cost_rate_on_nav": 1.277897096045455e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.2542596569868182,
+          "511180": 0.4971436941264591,
+          "511380": 0.24859664888672273
+        },
+        "effective_close_date": "2023-01-03",
+        "formation_date": "2022-12-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0446606364351032,
+        "nav_before_cost": 1.0446739862936372,
+        "one_way_turnover": 0.004259656986818183
+      },
+      {
+        "cost_rate_on_nav": 1.2417306253279123e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.2458608979155736,
+          "511180": 0.5015832868110496,
+          "511380": 0.2525558152733768
+        },
+        "effective_close_date": "2023-04-03",
+        "formation_date": "2023-03-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0655511826222364,
+        "nav_before_cost": 1.0655644140618983,
+        "one_way_turnover": 0.004139102084426374
+      },
+      {
+        "cost_rate_on_nav": 6.796350886454958e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.25226545029548497,
+          "511180": 0.49922497611296046,
+          "511380": 0.24850957359155454
+        },
+        "effective_close_date": "2023-07-03",
+        "formation_date": "2023-06-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0732577579372686,
+        "nav_before_cost": 1.0732650522231577,
+        "one_way_turnover": 0.002265450295484986
+      },
+      {
+        "cost_rate_on_nav": 4.870550674521412e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.2510849204963815,
+          "511180": 0.5005385963951257,
+          "511380": 0.24837648310849286
+        },
+        "effective_close_date": "2023-10-09",
+        "formation_date": "2023-09-28",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.071895906054205,
+        "nav_before_cost": 1.0719011268029612,
+        "one_way_turnover": 0.0016235168915071374
+      },
+      {
+        "cost_rate_on_nav": 1.9557645695567048e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.25651921523185567,
+          "511180": 0.4967597976420542,
+          "511380": 0.2467209871260901
+        },
+        "effective_close_date": "2024-01-02",
+        "formation_date": "2023-12-29",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0545982849380433,
+        "nav_before_cost": 1.0546189108010446,
+        "one_way_turnover": 0.006519215231855682
+      },
+      {
+        "cost_rate_on_nav": 9.419256985797055e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.25016982264818727,
+          "511180": 0.5029699296804118,
+          "511380": 0.246860247671401
+        },
+        "effective_close_date": "2024-04-01",
+        "formation_date": "2024-03-29",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0667322849634227,
+        "nav_before_cost": 1.0667423328835937,
+        "one_way_turnover": 0.0031397523285990186
+      },
+      {
+        "cost_rate_on_nav": 8.832336717352883e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.24879015231655172,
+          "511180": 0.5029441122391176,
+          "511380": 0.24826573544433064
+        },
+        "effective_close_date": "2024-07-01",
+        "formation_date": "2024-06-28",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.0861676365197437,
+        "nav_before_cost": 1.0861772300027737,
+        "one_way_turnover": 0.002944112239117627
+      },
+      {
+        "cost_rate_on_nav": 1.0025925502703538e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.24818162087451662,
+          "511180": 0.49847640395791554,
+          "511380": 0.25334197516756785
+        },
+        "effective_close_date": "2024-10-08",
+        "formation_date": "2024-09-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.1030648523812963,
+        "nav_before_cost": 1.1030759117382112,
+        "one_way_turnover": 0.0033419751675678455
+      },
+      {
+        "cost_rate_on_nav": 5.985334914064181e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.2519951116380214,
+          "511180": 0.49995754250496954,
+          "511380": 0.24804734585700908
+        },
+        "effective_close_date": "2025-01-02",
+        "formation_date": "2024-12-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.1230829472993116,
+        "nav_before_cost": 1.1230896693671213,
+        "one_way_turnover": 0.0019951116380213935
+      },
+      {
+        "cost_rate_on_nav": 2.1713917817272735e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.24276202739424244,
+          "511180": 0.5016845052612122,
+          "511380": 0.25555346734454537
+        },
+        "effective_close_date": "2025-04-01",
+        "formation_date": "2025-03-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.146474812175446,
+        "nav_before_cost": 1.1464997071758651,
+        "one_way_turnover": 0.007237972605757578
+      },
+      {
+        "cost_rate_on_nav": 1.5802545123243917e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.24473248495891864,
+          "511180": 0.5034842325943274,
+          "511380": 0.25178328244675385
+        },
+        "effective_close_date": "2025-07-01",
+        "formation_date": "2025-06-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.1832548940038656,
+        "nav_before_cost": 1.183273592738208,
+        "one_way_turnover": 0.005267515041081305
+      },
+      {
+        "cost_rate_on_nav": 4.2563278546673065e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.2358122404844423,
+          "511180": 0.5047955751171053,
+          "511380": 0.2593921843984524
+        },
+        "effective_close_date": "2025-10-09",
+        "formation_date": "2025-09-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.2410366107602855,
+        "nav_before_cost": 1.2410894355956341,
+        "one_way_turnover": 0.014187759515557688
+      },
+      {
+        "cost_rate_on_nav": 1.3015109264481836e-05,
+        "drift_weights_before_trade": {
+          "511010": 0.24566163024517276,
+          "511180": 0.5028676109015991,
+          "511380": 0.25147075885322817
+        },
+        "effective_close_date": "2026-01-05",
+        "formation_date": "2025-12-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.2615127426431036,
+        "nav_before_cost": 1.261529161582982,
+        "one_way_turnover": 0.004338369754827279
+      },
+      {
+        "cost_rate_on_nav": 9.364499225273298e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.25280239626145923,
+          "511180": 0.49687850025824226,
+          "511380": 0.25031910348029857
+        },
+        "effective_close_date": "2026-04-01",
+        "formation_date": "2026-03-31",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.2512602699474609,
+        "nav_before_cost": 1.2512719874830183,
+        "one_way_turnover": 0.003121499741757766
+      },
+      {
+        "cost_rate_on_nav": 8.315619994025885e-06,
+        "drift_weights_before_trade": {
+          "511010": 0.24899433857223569,
+          "511180": 0.4982337880964223,
+          "511380": 0.25277187333134193
+        },
+        "effective_close_date": "2026-07-01",
+        "formation_date": "2026-06-30",
+        "kind": "quarterly_rebalance_at_effective_close",
+        "nav_after_cost": 1.2585586736492038,
+        "nav_before_cost": 1.2585691394319036,
+        "one_way_turnover": 0.002771873331341962
+      }
+    ],
+    "rolling_failure_count": 123,
+    "rolling_failures": [
+      {
+        "annualized_net_unitized_change": 0.04715794842753862,
+        "end_date": "2025-11-10",
+        "start_date": "2020-08-26"
+      },
+      {
+        "annualized_net_unitized_change": 0.047408652459449474,
+        "end_date": "2025-11-11",
+        "start_date": "2020-08-27"
+      },
+      {
+        "annualized_net_unitized_change": 0.04601849291794924,
+        "end_date": "2025-11-12",
+        "start_date": "2020-08-28"
+      },
+      {
+        "annualized_net_unitized_change": 0.04682079192026811,
+        "end_date": "2025-11-13",
+        "start_date": "2020-08-31"
+      },
+      {
+        "annualized_net_unitized_change": 0.04567255686245919,
+        "end_date": "2025-11-14",
+        "start_date": "2020-09-01"
+      },
+      {
+        "annualized_net_unitized_change": 0.04514735607537257,
+        "end_date": "2025-11-17",
+        "start_date": "2020-09-02"
+      },
+      {
+        "annualized_net_unitized_change": 0.04492992763410575,
+        "end_date": "2025-11-18",
+        "start_date": "2020-09-03"
+      },
+      {
+        "annualized_net_unitized_change": 0.04557171723774234,
+        "end_date": "2025-11-19",
+        "start_date": "2020-09-04"
+      },
+      {
+        "annualized_net_unitized_change": 0.0465725704775779,
+        "end_date": "2025-11-20",
+        "start_date": "2020-09-07"
+      },
+      {
+        "annualized_net_unitized_change": 0.045168435339325574,
+        "end_date": "2025-11-21",
+        "start_date": "2020-09-08"
+      },
+      {
+        "annualized_net_unitized_change": 0.045992772158185424,
+        "end_date": "2025-11-24",
+        "start_date": "2020-09-09"
+      },
+      {
+        "annualized_net_unitized_change": 0.046572415210980544,
+        "end_date": "2025-11-25",
+        "start_date": "2020-09-10"
+      },
+      {
+        "annualized_net_unitized_change": 0.045026760785488396,
+        "end_date": "2025-11-26",
+        "start_date": "2020-09-11"
+      },
+      {
+        "annualized_net_unitized_change": 0.04398471859280506,
+        "end_date": "2025-11-27",
+        "start_date": "2020-09-14"
+      },
+      {
+        "annualized_net_unitized_change": 0.04492522012583677,
+        "end_date": "2025-11-28",
+        "start_date": "2020-09-15"
+      },
+      {
+        "annualized_net_unitized_change": 0.04538909141446901,
+        "end_date": "2025-12-01",
+        "start_date": "2020-09-16"
+      },
+      {
+        "annualized_net_unitized_change": 0.04484063678119621,
+        "end_date": "2025-12-02",
+        "start_date": "2020-09-17"
+      },
+      {
+        "annualized_net_unitized_change": 0.0442419142998316,
+        "end_date": "2025-12-03",
+        "start_date": "2020-09-18"
+      },
+      {
+        "annualized_net_unitized_change": 0.04405743249797278,
+        "end_date": "2025-12-04",
+        "start_date": "2020-09-21"
+      },
+      {
+        "annualized_net_unitized_change": 0.04622170502218159,
+        "end_date": "2025-12-05",
+        "start_date": "2020-09-22"
+      },
+      {
+        "annualized_net_unitized_change": 0.04638742451166977,
+        "end_date": "2025-12-08",
+        "start_date": "2020-09-23"
+      },
+      {
+        "annualized_net_unitized_change": 0.04723182502765089,
+        "end_date": "2025-12-09",
+        "start_date": "2020-09-24"
+      },
+      {
+        "annualized_net_unitized_change": 0.04812876813467182,
+        "end_date": "2025-12-10",
+        "start_date": "2020-09-25"
+      },
+      {
+        "annualized_net_unitized_change": 0.0479622172098475,
+        "end_date": "2025-12-11",
+        "start_date": "2020-09-28"
+      },
+      {
+        "annualized_net_unitized_change": 0.046931463992373024,
+        "end_date": "2025-12-12",
+        "start_date": "2020-09-29"
+      },
+      {
+        "annualized_net_unitized_change": 0.04650929522413105,
+        "end_date": "2025-12-15",
+        "start_date": "2020-09-30"
+      },
+      {
+        "annualized_net_unitized_change": 0.044766107456350346,
+        "end_date": "2025-12-16",
+        "start_date": "2020-10-09"
+      },
+      {
+        "annualized_net_unitized_change": 0.04450271268965866,
+        "end_date": "2025-12-17",
+        "start_date": "2020-10-12"
+      },
+      {
+        "annualized_net_unitized_change": 0.04432359190750468,
+        "end_date": "2025-12-18",
+        "start_date": "2020-10-13"
+      },
+      {
+        "annualized_net_unitized_change": 0.044681732720159184,
+        "end_date": "2025-12-19",
+        "start_date": "2020-10-14"
+      },
+      {
+        "annualized_net_unitized_change": 0.04551341752922422,
+        "end_date": "2025-12-22",
+        "start_date": "2020-10-15"
+      },
+      {
+        "annualized_net_unitized_change": 0.04506003688271032,
+        "end_date": "2025-12-23",
+        "start_date": "2020-10-16"
+      },
+      {
+        "annualized_net_unitized_change": 0.04649673279549971,
+        "end_date": "2025-12-24",
+        "start_date": "2020-10-19"
+      },
+      {
+        "annualized_net_unitized_change": 0.04674699595114373,
+        "end_date": "2025-12-25",
+        "start_date": "2020-10-20"
+      },
+      {
+        "annualized_net_unitized_change": 0.046596084005086524,
+        "end_date": "2025-12-26",
+        "start_date": "2020-10-21"
+      },
+      {
+        "annualized_net_unitized_change": 0.04562848297676281,
+        "end_date": "2025-12-29",
+        "start_date": "2020-10-22"
+      },
+      {
+        "annualized_net_unitized_change": 0.0468588010932538,
+        "end_date": "2025-12-30",
+        "start_date": "2020-10-23"
+      },
+      {
+        "annualized_net_unitized_change": 0.04763986870181047,
+        "end_date": "2025-12-31",
+        "start_date": "2020-10-26"
+      },
+      {
+        "annualized_net_unitized_change": 0.048927082587938875,
+        "end_date": "2026-01-05",
+        "start_date": "2020-10-27"
+      },
+      {
+        "annualized_net_unitized_change": 0.04900390689466194,
+        "end_date": "2026-03-17",
+        "start_date": "2020-12-29"
+      },
+      {
+        "annualized_net_unitized_change": 0.04983894522207355,
+        "end_date": "2026-03-18",
+        "start_date": "2020-12-30"
+      },
+      {
+        "annualized_net_unitized_change": 0.04652706541981777,
+        "end_date": "2026-03-19",
+        "start_date": "2020-12-31"
+      },
+      {
+        "annualized_net_unitized_change": 0.04443752214053931,
+        "end_date": "2026-03-20",
+        "start_date": "2021-01-04"
+      },
+      {
+        "annualized_net_unitized_change": 0.04273892582386729,
+        "end_date": "2026-03-23",
+        "start_date": "2021-01-05"
+      },
+      {
+        "annualized_net_unitized_change": 0.045325015441968874,
+        "end_date": "2026-03-24",
+        "start_date": "2021-01-06"
+      },
+      {
+        "annualized_net_unitized_change": 0.04613931304782137,
+        "end_date": "2026-03-25",
+        "start_date": "2021-01-07"
+      },
+      {
+        "annualized_net_unitized_change": 0.044268038755499894,
+        "end_date": "2026-03-26",
+        "start_date": "2021-01-08"
+      },
+      {
+        "annualized_net_unitized_change": 0.04519986735805537,
+        "end_date": "2026-03-27",
+        "start_date": "2021-01-11"
+      },
+      {
+        "annualized_net_unitized_change": 0.04314462401562502,
+        "end_date": "2026-03-30",
+        "start_date": "2021-01-12"
+      },
+      {
+        "annualized_net_unitized_change": 0.041692664379008315,
+        "end_date": "2026-03-31",
+        "start_date": "2021-01-13"
+      },
+      {
+        "annualized_net_unitized_change": 0.04453321640158947,
+        "end_date": "2026-04-01",
+        "start_date": "2021-01-14"
+      },
+      {
+        "annualized_net_unitized_change": 0.04280429646251882,
+        "end_date": "2026-04-02",
+        "start_date": "2021-01-15"
+      },
+      {
+        "annualized_net_unitized_change": 0.04277386434437913,
+        "end_date": "2026-04-03",
+        "start_date": "2021-01-18"
+      },
+      {
+        "annualized_net_unitized_change": 0.043534810339243,
+        "end_date": "2026-04-07",
+        "start_date": "2021-01-19"
+      },
+      {
+        "annualized_net_unitized_change": 0.04736771725885491,
+        "end_date": "2026-04-08",
+        "start_date": "2021-01-20"
+      },
+      {
+        "annualized_net_unitized_change": 0.0461593395600528,
+        "end_date": "2026-04-09",
+        "start_date": "2021-01-21"
+      },
+      {
+        "annualized_net_unitized_change": 0.045747398344185175,
+        "end_date": "2026-04-10",
+        "start_date": "2021-01-22"
+      },
+      {
+        "annualized_net_unitized_change": 0.04519340400794003,
+        "end_date": "2026-04-13",
+        "start_date": "2021-01-25"
+      },
+      {
+        "annualized_net_unitized_change": 0.04790583754199296,
+        "end_date": "2026-04-14",
+        "start_date": "2021-01-26"
+      },
+      {
+        "annualized_net_unitized_change": 0.04699968309681668,
+        "end_date": "2026-04-15",
+        "start_date": "2021-01-27"
+      },
+      {
+        "annualized_net_unitized_change": 0.04975470365557211,
+        "end_date": "2026-05-14",
+        "start_date": "2021-03-01"
+      },
+      {
+        "annualized_net_unitized_change": 0.04874673301717625,
+        "end_date": "2026-05-15",
+        "start_date": "2021-03-02"
+      },
+      {
+        "annualized_net_unitized_change": 0.04753324619977861,
+        "end_date": "2026-05-18",
+        "start_date": "2021-03-03"
+      },
+      {
+        "annualized_net_unitized_change": 0.04997403739193129,
+        "end_date": "2026-05-20",
+        "start_date": "2021-03-05"
+      },
+      {
+        "annualized_net_unitized_change": 0.049564580894030597,
+        "end_date": "2026-05-21",
+        "start_date": "2021-03-08"
+      },
+      {
+        "annualized_net_unitized_change": 0.0487874199661511,
+        "end_date": "2026-05-26",
+        "start_date": "2021-03-11"
+      },
+      {
+        "annualized_net_unitized_change": 0.0474720713354746,
+        "end_date": "2026-05-27",
+        "start_date": "2021-03-12"
+      },
+      {
+        "annualized_net_unitized_change": 0.048829979798953316,
+        "end_date": "2026-05-28",
+        "start_date": "2021-03-15"
+      },
+      {
+        "annualized_net_unitized_change": 0.047547683833083276,
+        "end_date": "2026-05-29",
+        "start_date": "2021-03-16"
+      },
+      {
+        "annualized_net_unitized_change": 0.0485122017703874,
+        "end_date": "2026-06-01",
+        "start_date": "2021-03-17"
+      },
+      {
+        "annualized_net_unitized_change": 0.0487472550038861,
+        "end_date": "2026-06-02",
+        "start_date": "2021-03-18"
+      },
+      {
+        "annualized_net_unitized_change": 0.04861493496842573,
+        "end_date": "2026-06-03",
+        "start_date": "2021-03-19"
+      },
+      {
+        "annualized_net_unitized_change": 0.04749012261645591,
+        "end_date": "2026-06-04",
+        "start_date": "2021-03-22"
+      },
+      {
+        "annualized_net_unitized_change": 0.047512094232391666,
+        "end_date": "2026-06-05",
+        "start_date": "2021-03-23"
+      },
+      {
+        "annualized_net_unitized_change": 0.04736947729993446,
+        "end_date": "2026-06-08",
+        "start_date": "2021-03-24"
+      },
+      {
+        "annualized_net_unitized_change": 0.04816452208761568,
+        "end_date": "2026-06-09",
+        "start_date": "2021-03-25"
+      },
+      {
+        "annualized_net_unitized_change": 0.046072304084638915,
+        "end_date": "2026-06-10",
+        "start_date": "2021-03-26"
+      },
+      {
+        "annualized_net_unitized_change": 0.0460139522977685,
+        "end_date": "2026-06-11",
+        "start_date": "2021-03-29"
+      },
+      {
+        "annualized_net_unitized_change": 0.047035553304554334,
+        "end_date": "2026-06-12",
+        "start_date": "2021-03-30"
+      },
+      {
+        "annualized_net_unitized_change": 0.04927694269069671,
+        "end_date": "2026-06-15",
+        "start_date": "2021-03-31"
+      },
+      {
+        "annualized_net_unitized_change": 0.04946703172721989,
+        "end_date": "2026-06-16",
+        "start_date": "2021-04-01"
+      },
+      {
+        "annualized_net_unitized_change": 0.04877119043292777,
+        "end_date": "2026-06-17",
+        "start_date": "2021-04-02"
+      },
+      {
+        "annualized_net_unitized_change": 0.04794943903508009,
+        "end_date": "2026-06-18",
+        "start_date": "2021-04-06"
+      },
+      {
+        "annualized_net_unitized_change": 0.047937326628085364,
+        "end_date": "2026-06-22",
+        "start_date": "2021-04-07"
+      },
+      {
+        "annualized_net_unitized_change": 0.046724988522035105,
+        "end_date": "2026-06-23",
+        "start_date": "2021-04-08"
+      },
+      {
+        "annualized_net_unitized_change": 0.04699288125684142,
+        "end_date": "2026-06-24",
+        "start_date": "2021-04-09"
+      },
+      {
+        "annualized_net_unitized_change": 0.04616831179367953,
+        "end_date": "2026-06-25",
+        "start_date": "2021-04-12"
+      },
+      {
+        "annualized_net_unitized_change": 0.04530896324428335,
+        "end_date": "2026-06-26",
+        "start_date": "2021-04-13"
+      },
+      {
+        "annualized_net_unitized_change": 0.04512680671323177,
+        "end_date": "2026-06-29",
+        "start_date": "2021-04-14"
+      },
+      {
+        "annualized_net_unitized_change": 0.04674905110546512,
+        "end_date": "2026-06-30",
+        "start_date": "2021-04-15"
+      },
+      {
+        "annualized_net_unitized_change": 0.046739556053732256,
+        "end_date": "2026-07-01",
+        "start_date": "2021-04-16"
+      },
+      {
+        "annualized_net_unitized_change": 0.04575760849479282,
+        "end_date": "2026-07-02",
+        "start_date": "2021-04-19"
+      },
+      {
+        "annualized_net_unitized_change": 0.046403774116006824,
+        "end_date": "2026-07-03",
+        "start_date": "2021-04-20"
+      },
+      {
+        "annualized_net_unitized_change": 0.04672447622099907,
+        "end_date": "2026-07-06",
+        "start_date": "2021-04-21"
+      },
+      {
+        "annualized_net_unitized_change": 0.045333700079559724,
+        "end_date": "2026-07-07",
+        "start_date": "2021-04-22"
+      },
+      {
+        "annualized_net_unitized_change": 0.045551041593981934,
+        "end_date": "2026-07-08",
+        "start_date": "2021-04-23"
+      },
+      {
+        "annualized_net_unitized_change": 0.046038574764659,
+        "end_date": "2026-07-09",
+        "start_date": "2021-04-26"
+      },
+      {
+        "annualized_net_unitized_change": 0.04602034251304965,
+        "end_date": "2026-07-10",
+        "start_date": "2021-04-27"
+      },
+      {
+        "annualized_net_unitized_change": 0.04456458449454703,
+        "end_date": "2026-07-13",
+        "start_date": "2021-04-28"
+      },
+      {
+        "annualized_net_unitized_change": 0.04536700562364748,
+        "end_date": "2026-07-14",
+        "start_date": "2021-04-29"
+      },
+      {
+        "annualized_net_unitized_change": 0.045200195887238115,
+        "end_date": "2026-07-15",
+        "start_date": "2021-04-30"
+      },
+      {
+        "annualized_net_unitized_change": 0.044534996290066076,
+        "end_date": "2026-07-16",
+        "start_date": "2021-05-06"
+      },
+      {
+        "annualized_net_unitized_change": 0.04419859324258146,
+        "end_date": "2026-07-17",
+        "start_date": "2021-05-07"
+      },
+      {
+        "annualized_net_unitized_change": 0.0444673548354213,
+        "end_date": "2026-07-20",
+        "start_date": "2021-05-10"
+      },
+      {
+        "annualized_net_unitized_change": 0.045986585391110335,
+        "end_date": "2026-07-21",
+        "start_date": "2021-05-11"
+      },
+      {
+        "annualized_net_unitized_change": 0.04469667476913153,
+        "end_date": "2026-07-22",
+        "start_date": "2021-05-12"
+      },
+      {
+        "annualized_net_unitized_change": 0.04554913070880451,
+        "end_date": "2026-07-23",
+        "start_date": "2021-05-13"
+      },
+      {
+        "annualized_net_unitized_change": 0.04424166872262392,
+        "end_date": "2026-07-24",
+        "start_date": "2021-05-14"
+      },
+      {
+        "annualized_net_unitized_change": 0.04510775084308438,
+        "end_date": "2026-07-27",
+        "start_date": "2021-05-17"
+      },
+      {
+        "annualized_net_unitized_change": 0.04385927500365394,
+        "end_date": "2026-07-28",
+        "start_date": "2021-05-18"
+      },
+      {
+        "annualized_net_unitized_change": 0.044893369921937154,
+        "end_date": "2026-07-29",
+        "start_date": "2021-05-19"
+      },
+      {
+        "annualized_net_unitized_change": 0.04468323215018377,
+        "end_date": "2026-07-30",
+        "start_date": "2021-05-20"
+      },
+      {
+        "annualized_net_unitized_change": 0.045454030915855315,
+        "end_date": "2026-07-31",
+        "start_date": "2021-05-21"
+      },
+      {
+        "annualized_net_unitized_change": 0.04490233993697301,
+        "end_date": "2026-08-03",
+        "start_date": "2021-05-24"
+      },
+      {
+        "annualized_net_unitized_change": 0.04503532806794208,
+        "end_date": "2026-08-04",
+        "start_date": "2021-05-25"
+      },
+      {
+        "annualized_net_unitized_change": 0.04533088569241617,
+        "end_date": "2026-08-05",
+        "start_date": "2021-05-26"
+      },
+      {
+        "annualized_net_unitized_change": 0.044631810365796776,
+        "end_date": "2026-08-06",
+        "start_date": "2021-05-27"
+      },
+      {
+        "annualized_net_unitized_change": 0.04512127475214811,
+        "end_date": "2026-08-07",
+        "start_date": "2021-05-28"
+      },
+      {
+        "annualized_net_unitized_change": 0.04440404739611137,
+        "end_date": "2026-08-10",
+        "start_date": "2021-05-31"
+      },
+      {
+        "annualized_net_unitized_change": 0.0436706979395185,
+        "end_date": "2026-08-11",
+        "start_date": "2021-06-01"
+      },
+      {
+        "annualized_net_unitized_change": 0.04299280587225707,
+        "end_date": "2026-08-12",
+        "start_date": "2021-06-02"
+      },
+      {
+        "annualized_net_unitized_change": 0.04147473925377132,
+        "end_date": "2026-08-13",
+        "start_date": "2021-06-03"
+      },
+      {
+        "annualized_net_unitized_change": 0.04120617703770346,
+        "end_date": "2026-08-14",
+        "start_date": "2021-06-04"
+      }
+    ],
+    "rolling_max_annualized_net_unitized_change": 0.058463683981639925,
+    "rolling_min_annualized_net_unitized_change": 0.04120617703770346,
+    "rolling_pass_count": 64,
+    "rolling_window_count": 187,
+    "rolling_window_observations": 1260,
+    "status": "PRICE_PROXY_HURDLE_FALSIFIED",
+    "terminal_unit_nav": 1.2474624385380797,
+    "unexecuted_terminal_rebalance": null
+  },
+  "rule": {
+    "cost_stress_rate": 0.003,
+    "effective_trade_timing": "next_common_observation_close_after_formation_close",
+    "no_lookahead_note": "Each quarterly rebalance uses that effective close after the day under old holdings; new holdings affect subsequent observations only.",
+    "quarterly_formation_months": [
+      3,
+      6,
+      9,
+      12
+    ],
+    "target_weights": {
+      "511010": 0.25,
+      "511180": 0.5,
+      "511380": 0.25
+    }
+  },
+  "source_boundary": {
+    "basis": "SSE public dayk close, retrospective capture",
+    "not_proven": [
+      "point_in_time_availability",
+      "adjustment_or_total_return_basis",
+      "NAV_IOPV",
+      "distributions",
+      "corporate_actions",
+      "market_status",
+      "costs",
+      "depth",
+      "fills",
+      "account_eligibility",
+      "action"
+    ],
+    "quality": "primary_official_public_retrospective_market_price_observation"
+  },
+  "source_manifest": {
+    "capture_batch": "c8-official-product-and-price-20260815",
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c8-official-product-and-price-20260815/manifest.json",
+    "sha256": "543227fd74f8fb7c2197d4e3c254e76569a1d539edd73d990b50bb813611c2bb"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "artifact_id": "D5PT-C52-SOURCES-v1",
+  "entries": [
+    {
+      "byte_count": 27119,
+      "filename": "sse_option_daily_contract_page.html",
+      "purpose": "Current SSE daily-option-contract display used to identify the public contract fields and to test whether an historical as-of interface is evidenced.",
+      "retrieval_mode": "public_primary_source_get",
+      "sha256": "174776f4d6a0c205565d540b747fca6058a9717753588cd35564eb799c7072e1",
+      "source_id": "C52-S01",
+      "url": "https://www.sse.com.cn/assortment/options/disclo/preinfo/"
+    },
+    {
+      "byte_count": 28397,
+      "filename": "sse_option_listing_adjustment_page.html",
+      "purpose": "SSE listing, delisting and adjustment disclosure page used only for dated contract-event evidence.",
+      "retrieval_mode": "public_primary_source_get",
+      "sha256": "e8d9755ee343ab44724ecfa95a681216a8f564b6e1c2b20a3d369b0a604912cb",
+      "source_id": "C52-S02",
+      "url": "https://www.sse.com.cn/assortment/options/disclo/info/"
+    },
+    {
+      "byte_count": 27349,
+      "filename": "sse_option_market_price_page.html",
+      "purpose": "Current SSE option-market display used to distinguish live/current fields from a date-queryable historical close or settlement panel.",
+      "retrieval_mode": "public_primary_source_get",
+      "sha256": "5b7f88565d943aa1503811b774b98e9d82815e67dc0be0f79669e2fe1b04091e",
+      "source_id": "C52-S03",
+      "url": "https://www.sse.com.cn/assortment/options/price/"
+    },
+    {
+      "byte_count": 48079,
+      "filename": "sse_option_information_query_script.js",
+      "purpose": "Official client-side query implementation used to inspect public listing/adjustment and daily-contract query parameters.",
+      "retrieval_mode": "public_primary_source_get",
+      "sha256": "d3fe735a30cad061375ce03441522dcbe48b32a899b67b09fee08412a6452eb7",
+      "source_id": "C52-S04",
+      "url": "https://www.sse.com.cn/xhtml/home/2021public/querySearch/search_stockOptionInformation_2021.js"
+    },
+    {
+      "byte_count": 33470,
+      "filename": "sse_20161128_50etf_dividend_option_adjustment_notice.html",
+      "purpose": "Dated SSE example of an ETF dividend-related option-contract adjustment; it is an event record, not a normalized total-return ledger.",
+      "retrieval_mode": "public_primary_source_get",
+      "sha256": "a968a1a9a30897a5a1e7c796d3e8a3357c672f694004cd1a047bc88668a1e38d",
+      "source_id": "C52-S05",
+      "url": "https://www.sse.com.cn/assortment/options/guide/c/c_20161128_4207559.shtml"
+    },
+    {
+      "byte_count": 23029,
+      "filename": "sseinfo_historical_data_product_page.html",
+      "purpose": "SSE information-operator historical-data product page used only to distinguish a possible licensed future route from public current-page access.",
+      "retrieval_mode": "public_primary_source_get",
+      "sha256": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f",
+      "source_id": "C52-S06",
+      "url": "https://www.sseinfo.com/services/assortment/historical/"
+    }
+  ],
+  "retrieved_at_utc": "2026-08-15T06:41:33+00:00",
+  "schema_version": "c52_sse_etf_option_history_source_manifest.v1",
+  "scope": "Primary-source capture for a public SSE ETF-option historical-data coverage screen only. It is not an option-chain delivery, a total-return ledger, a replay-right grant, an account record, or an action authorization."
+}

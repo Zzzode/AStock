@@ -1,0 +1,125 @@
+{
+  "cycle": "R3_render_compliance",
+  "reviewed_at": "2026-08-11",
+  "publishability_status": "BLOCKED",
+  "institutional_status": "BLOCKED",
+  "publishability_score": 35,
+  "open_s_count": 2,
+  "open_a_count": 0,
+  "review_scope": {
+    "files_reviewed": [
+      "gate_manifest.md",
+      "gate_manifest.json",
+      "artifact_contract.md",
+      "artifact_contract.json",
+      "main.tex",
+      "sections/ch01_decision.tex",
+      "sections/ch02_method.tex",
+      "sections/ch03_market.tex",
+      "sections/ch04_financials.tex",
+      "sections/ch05_primary.tex",
+      "sections/ch06_historical_recheck.tex",
+      "sections/ch07_risk_triggers.tex",
+      "sections/ch08_sources.tex",
+      "sections/app_a_anchor_math.tex",
+      "source_exhaustion_log.md",
+      "data/source_registry.json",
+      "data/claim_audit.json",
+      "review_findings_R0_evidence.json",
+      "review_findings_R1_model.json",
+      "review_findings_R2_draft.json"
+    ],
+    "static_source_checks": [
+      "main.tex and all nine referenced section sources are present and non-empty",
+      "main.tex declares the required XeLaTeX program and uses the shared preamble",
+      "the source appendix candidly states that a render has not been produced"
+    ],
+    "not_performed": [
+      "PDF compilation",
+      "page-count or PDF-metadata verification",
+      "rendered-page visual inspection",
+      "clipping, overlap, table-fit, source-note-legibility, and visual-hierarchy sign-off"
+    ]
+  },
+  "render_state": {
+    "main_pdf": "missing",
+    "rendered_directory": "present but empty",
+    "source_pdf_distinction": "The 39 official and 12 broker PDFs under sources/ are evidence archives, not the report deliverable.",
+    "required_build_tools": {
+      "xelatex": "not found",
+      "latexmk": "not found",
+      "pdfinfo": "not found",
+      "pdftoppm": "not found",
+      "/Library/TeX/texbin/xelatex": "not present"
+    }
+  },
+  "verifier_summary": {
+    "case_verifier_command": "python3 tools/verify_research_workspace.py",
+    "case_verifier_result": "36 PASS / 3 FAIL",
+    "case_verifier_failures": [
+      "required MacTeX XeLaTeX is available: not available in this runtime",
+      "PDF deliverable exists: not generated",
+      "rendered-page review material exists: no page PNGs"
+    ],
+    "repository_gate_command": "python3 workspace/research/tools/run_research_gates.py workspace/research/low-position-capital-layout-update-20260811",
+    "repository_gate_result": "84 PASS / 27 FAIL",
+    "repository_gate_relevant_failures": [
+      "main.pdf absent",
+      "generic case verifier does not pass because MacTeX, the PDF, and rendered pages are unavailable",
+      "R3 repair-plan pair is absent",
+      "final-signoff, workflow-evaluation, and review-lifecycle artifacts incomplete"
+    ]
+  },
+  "findings": [
+    {
+      "issue_id": "R3-S-001",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "main.pdf; rendered/; sections/ch08_sources.tex:20-22",
+      "evidence": "The gate manifest requires main.pdf at R3, but no report PDF exists and rendered/ contains no page images. xelatex, latexmk, pdfinfo, pdftoppm, and the required MacTeX path are unavailable in this Linux runtime. The LaTeX source itself correctly discloses this limitation, so no visual result has been fabricated.",
+      "fix_required": "In a MacTeX XeLaTeX environment, compile the unchanged reviewed source to main.pdf, create the required current render set, inspect every rendered page for clipping, overlap, table fit, source-note legibility, and visual hierarchy, then refresh all PDF-dependent audit artifacts before re-running R3.",
+      "blocking_gate": "main_pdf_and_render_review",
+      "status": "open",
+      "verifier_ref": "gate_manifest.json required artifact main.pdf; artifact_contract.json R3 main.pdf contract; sections/ch08_sources.tex:20-22",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R3-S-002",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "internal-control",
+      "artifact": "tools/verify_research_workspace.py",
+      "evidence": "The authoritative case-local verifier is now present and runnable, but it returns 36 PASS / 3 FAIL: MacTeX XeLaTeX is unavailable, main.pdf is not generated, and no page PNGs exist. The repository research gate correspondingly remains 84 PASS / 27 FAIL.",
+      "fix_required": "Resolve the three underlying build/render failures in the mandated MacTeX environment, refresh the verifier's dependent inventories, manifests, checksums, PDF metadata, and render evidence, then run it from the case directory to 39 PASS / 0 FAIL and re-run the repository research gate.",
+      "blocking_gate": "generic_case_verifier_pass",
+      "status": "open",
+      "verifier_ref": "workspace/research/tools/run_research_gates.py",
+      "reopened_count": 0
+    }
+  ],
+  "confirmed_strengths": [
+    {
+      "claim": "The report source has a sensible, honest R3 path rather than a fabricated render claim.",
+      "evidence": "main.tex:1,14,27-36; sections/ch08_sources.tex:20-22; source_exhaustion_log.md:10"
+    },
+    {
+      "claim": "Evidence archives and reader-facing provenance documentation are available for a later render review.",
+      "evidence": "39 official PDFs and 12 broker PDFs under sources/; data/source_registry.json contains 19 source records; data/claim_audit.json contains 20 claim records; sections/ch08_sources.tex:5-18"
+    },
+    {
+      "claim": "R2 is narrative-pass only and correctly deferred visual and publication assertions to R3/R4.",
+      "evidence": "review_findings_R2_draft.json deferred_checks; analysis/reviewer_draft_review.md:32-36"
+    }
+  ],
+  "required_next_fixes": [
+    "Obtain the mandated MacTeX XeLaTeX environment and build the report.",
+    "Re-run the authoritative case-local verifier to 39 PASS / 0 FAIL after the build and dependent-artifact refresh.",
+    "Refresh PDF/render-dependent governance artifacts after the build, then repeat R3 visual/compliance review.",
+    "Do not issue final_signoff.md/json while either S-Level blocker remains open."
+  ],
+  "final_signoff": {
+    "issued": false,
+    "reason": "R3 render and mandatory-verifier gates are not available or passed."
+  }
+}

@@ -1,0 +1,135 @@
+{
+  "schema_version": "strategy_replay_feasibility_assessment.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_methodology",
+  "status": "veto_formal_replay_not_currently_testable",
+  "portfolio_q": 0,
+  "objective": "Evaluate, ex post and without a guarantee claim, whether each predeclared complete rolling five-year cohort has annualised cost-aware time-weighted total return of at least 5%.",
+  "current_evidence": {
+    "public_price_diagnostic": {
+      "artifact": "data/public_price_screening_replay_20260814.json",
+      "status": "negative_discovery_diagnostic_only",
+      "reason": "The public unadjusted-price four-ETF vector has 207 of 633 complete rolling five-year price windows below 5% and has no total-return, cost, tax, market-status or execution coverage."
+    },
+    "official_index_discovery": {
+      "artifact": "data/official_index_discovery_20260814.json",
+      "status": "negative_discovery_cross_check_only",
+      "reason": "Each of six predeclared official CSI index-value paths has at least one rolling five-year miss; the closest 30/70 published reference has 32 misses of 999 and a 4.43% minimum. Index values remain weaker than investor-level net TWRR."
+    },
+    "licensed_data_configuration": {
+      "status": "not_configured",
+      "finding": "No source entitlement, accountable data-owner attestation or configured Tushare, JQData or Wind research-data path is available in this case."
+    },
+    "replay_engine": {
+      "status": "not_fit_for_scale_neutral_objective",
+      "finding": "The existing portfolio engine applies discrete 100-share lots. It is not a unitized, scale-neutral performance engine."
+    },
+    "cross_asset_adapter_coverage": {
+      "status": "incomplete",
+      "finding": "The current Tushare adapter covers listed-stock daily bars, limits, suspensions, dividends and listing status, but not the required ETF fund price/distribution, REIT event, bond coupon/redemption and non-standard corporate-action domains."
+    }
+  },
+  "formal_data_hierarchy": [
+    {
+      "tier": "system_of_record",
+      "requirement": "One contractually authorised point-in-time EOD source with a named data owner and immutable raw-response archive.",
+      "required_domains": [
+        "venue calendar",
+        "raw OHLCV",
+        "security master and historical listing/delisting/special-status",
+        "halts and daily price limits",
+        "corporate actions",
+        "ETF and REIT market-price/NAV/distribution events",
+        "bond coupon/redemption events where applicable",
+        "dated availability of every selection input"
+      ]
+    },
+    {
+      "tier": "primary_reconciliation",
+      "requirement": "Reconcile sampled return events and product mechanics to SSE/SZSE/CNINFO, fund or REIT manager, ChinaClear, venue and broker documents.",
+      "boundary": "Primary documents validate events and mechanics but do not alone form a scalable point-in-time cross-asset history."
+    },
+    {
+      "tier": "public_observation",
+      "requirement": "Frozen public observations may support discovery and sensitivity checks only.",
+      "boundary": "They cannot upgrade a replay to formal evidence."
+    }
+  ],
+  "required_build_sequence": [
+    "Hash-freeze the OU-TR5 rulebook, including universe, selection/replacement logic, availability and publication-lag rules, target exposure/rebalance/drift, no-fill treatment, costs/taxes, event accounting and B0/B1 definitions before seeing an outcome.",
+    "Probe and attest the chosen data source field-by-field; archive every raw response with source, as_of, available_at, owner and content hash.",
+    "Implement a unitized scale-neutral replay layer separate from any discrete-lot/minimum-fee feasibility simulator.",
+    "Add structure-specific event adapters and reject any unhandled rights, merger, spin-off, conversion, non-cash delisting, fund/REIT distribution or bond redemption event rather than synthesize a return.",
+    "Run an adversarial reconciliation set spanning a cash distribution, share distribution, non-standard action, halt, limit lock, delisting and fund/REIT event before a broad replay.",
+    "Use a predeclared training/holdout and walk-forward design; disclose every complete overlapping and non-overlapping five-year result, including failures.",
+    "Perform independent B0/B1 reconciliation and candidate-specific concentration, liquidity, cost and execution review before any T3/T4 consideration."
+  ],
+  "acceptance_gates": [
+    {
+      "gate": "rulebook",
+      "pass_condition": "A versioned, hashed rulebook exists before any performance output.",
+      "current_status": "partially specified; no deterministic T2 rule"
+    },
+    {
+      "gate": "data_authority",
+      "pass_condition": "All required domains are contractually authorised, archived and assigned to an accountable data owner.",
+      "current_status": "blocked"
+    },
+    {
+      "gate": "point_in_time",
+      "pass_condition": "Every decision date has a member list, availability timestamp, historical market state and exclusion record.",
+      "current_status": "blocked"
+    },
+    {
+      "gate": "return_accounting",
+      "pass_condition": "One return convention is used: raw price plus complete event ledger, or a verified total-return series; distributions are never double counted.",
+      "current_status": "blocked"
+    },
+    {
+      "gate": "scale_neutral_replay",
+      "pass_condition": "A unitized daily value series records proportional costs and residual/no-fill states without a fixed-lot assumption.",
+      "current_status": "blocked"
+    },
+    {
+      "gate": "objective_reporting",
+      "pass_condition": "All predeclared complete five-year out-of-sample windows are reported; every miss remains in the record.",
+      "current_status": "not_started"
+    },
+    {
+      "gate": "implementation",
+      "pass_condition": "Separate current-session access, suitability, tax, lot, fee, liquidity and capacity evidence is complete for named candidates.",
+      "current_status": "blocked; q=0"
+    }
+  ],
+  "scope_control": {
+    "strategy_catalog_review": "A-share factor tilt and earnings-event repricing are draft, research-only target constructors without point-in-time total-return evidence. Domestic-futures CTA is a separate conditional scope whose public continuous series is intentionally blocked from P&L replay. None may be substituted for the present evidence gap.",
+    "scope_expansion": "Adding futures, options, offshore or institutional long-short strategies would require a separate mandate and legal/access/data review.",
+    "no_order_execution": true,
+    "no_allocation": true,
+    "no_cash_receipt_objective": true
+  },
+  "authoritative_reference_urls": [
+    {
+      "topic": "CSI total-return index methodology",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/en/000300_Index_Methodology_en.pdf"
+    },
+    {
+      "topic": "ChinaBond total-return index query",
+      "url": "https://yield.chinabond.com.cn/cbweb-mn/indices/single_index_query"
+    },
+    {
+      "topic": "Tushare daily-data documentation",
+      "url": "https://tushare.pro/document/1?doc_id=27"
+    },
+    {
+      "topic": "SZSE data-services overview",
+      "url": "https://www.szse.cn/English/services/dataServices/index.html"
+    },
+    {
+      "topic": "SSE public market-data catalogue",
+      "url": "https://www.sse.com.cn/market/publicdata/"
+    }
+  ],
+  "conclusion": "No usable strategy allocation, historical 5% result, expected return, probability or execution conclusion is available. Continue only through the gated licensed-data and scale-neutral-replay path; retain q=0."
+}

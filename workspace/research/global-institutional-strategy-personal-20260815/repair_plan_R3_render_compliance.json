@@ -1,0 +1,30 @@
+{
+  "cycle": "R3_render_compliance",
+  "status": "completed_and_verified",
+  "owners": [
+    {
+      "owner_skill": "latex-writer",
+      "artifacts": ["main.tex", "sections/ch05_cta_rulebook.tex", "sections/ch07_event_rulebook.tex", "sections/ch08_common_controls.tex", "sections/app_terms.tex"],
+      "actions": ["Replace incompatible absolute-value commands.", "Fit long status codes locally with no semantic abbreviation.", "Shorten the cover scope label.", "Rebuild with XeLaTeX and regenerate text/render artifacts."],
+      "verification": "Final XeLaTeX build completed with 31 pages, 0 fatal errors, 0 overfull hboxes and 0 missing-character reports; sampled PNG pages are recorded in visual_review.md."
+    },
+    {
+      "owner_skill": "latex-writer",
+      "artifacts": ["main.pdf", "main_current_text.txt", "rendered/current-20260815/", "data/build_provenance_20260815.md", "data/build_provenance_20260815.json", "visual_review.md"],
+      "actions": ["Rebuild the rewritten TeX with XeLaTeX.", "Regenerate all release text and rendered evidence.", "Reconcile final PDF/source/text hashes and perform final visual samples."],
+      "verification": "The 2026-08-15T14:21:02.341259+08:00 release is 31 A4 pages with zero fatal errors, overfull hboxes and missing-character reports; provenance and visual review reference the current render set."
+    },
+    {
+      "owner_skill": "latex-writer",
+      "artifacts": ["main.pdf", "main_current_text.txt", "rendered/current-20260815/", "data/build_provenance_20260815.md", "data/build_provenance_20260815.json", "visual_review.md"],
+      "actions": ["Rebuild the exhaustive reader-prose repair with XeLaTeX.", "Regenerate all release text and rendered evidence.", "Reconcile final PDF/source/text hashes and visually inspect pages with the changed scope and CTA text."],
+      "verification": "The 2026-08-15T15:22:57.740073+08:00 release is 31 A4 pages with zero fatal errors, overfull hboxes and missing-character reports; pages 04 and 12 passed visual inspection."
+    },
+    {
+      "owner_skill": "latex-writer",
+      "artifacts": ["main.pdf", "main_current_text.txt", "rendered/current-20260815/", "data/build_provenance_20260815.md", "data/build_provenance_20260815.json", "visual_review.md"],
+      "actions": ["Rebuild the paired-negative reader-prose repair with XeLaTeX.", "Regenerate all release text and rendered evidence.", "Reconcile final PDF/source/text hashes and visually inspect pages with the revised reader-use and disclosure text."],
+      "verification": "The 2026-08-15T16:01:29.796743+08:00 release is 31 A4 pages with zero fatal errors, overfull hboxes and missing-character reports; pages 05 and 31 passed visual inspection."
+    }
+  ]
+}

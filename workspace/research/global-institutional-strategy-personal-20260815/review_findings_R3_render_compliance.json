@@ -1,0 +1,87 @@
+{
+  "cycle": "R3_render_compliance",
+  "review_date": "2026-08-15",
+  "review_scope": "XeLaTeX build, PDF identity, text extraction, visual samples, tables, formula/status labels, disclosure visibility, and reissued reader-prose release identity.",
+  "publishability_status": "CONDITIONAL_PENDING_FINAL_IC",
+  "publishability_score": 95,
+  "findings": [
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "owner_skill": "latex-writer",
+      "owner_agent": "latex writer",
+      "artifact": "sections/ch05_cta_rulebook.tex; sections/ch07_event_rulebook.tex",
+      "evidence": "The first XeLaTeX attempt encountered an undefined \"\\lvert\" control sequence under the shared template.",
+      "fix_required": "Use base-LaTeX-compatible absolute-value notation without changing formulas.",
+      "blocking_gate": "xelatex_build",
+      "status": "verified",
+      "verification_evidence": "Final build provenance records 0 fatal errors; all absolute-value notation compiles as \\vert.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R3-B-002",
+      "severity": "B",
+      "owner_skill": "latex-writer",
+      "owner_agent": "latex writer",
+      "artifact": "sections/ch05_cta_rulebook.tex; sections/ch08_common_controls.tex; sections/app_terms.tex",
+      "evidence": "Long ELIGIBILITY_UNRESOLVED labels initially overflowed narrow table cells.",
+      "fix_required": "Reduce only the local monospaced label size while retaining the full state code.",
+      "blocking_gate": "visual_readability",
+      "status": "verified",
+      "verification_evidence": "Final build provenance records 0 overfull hboxes; final rendered pages 14 and 31 show complete readable labels.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R3-B-003",
+      "severity": "B",
+      "owner_skill": "latex-writer",
+      "owner_agent": "latex writer",
+      "artifact": "main.tex",
+      "evidence": "The original English coverage label on the cover hyphenated awkwardly in a narrow summary field.",
+      "fix_required": "Shorten the label without losing global-strategy/China-market meaning.",
+      "blocking_gate": "cover_readability",
+      "status": "verified",
+      "verification_evidence": "Final page-01 render shows GLOBAL STRATEGIES | CHINA MARKETS without broken English words.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R3-A-004",
+      "severity": "A",
+      "owner_skill": "latex-writer",
+      "owner_agent": "release engineer",
+      "artifact": "main.pdf; main_current_text.txt; rendered/current-20260815/; data/build_provenance_20260815.json; visual_review.md",
+      "evidence": "The reader-facing source changed under the reopened R2 cycle, invalidating the earlier PDF identity, text extraction, visual samples, and build-provenance hashes.",
+      "fix_required": "Rebuild with XeLaTeX, regenerate extracted text and all render evidence, refresh provenance, and inspect the final release visually.",
+      "blocking_gate": "release_identity",
+      "status": "closed",
+      "verification_evidence": "The final XeLaTeX build at 2026-08-15T14:21:02.341259+08:00 produced 31 A4 pages with 0 fatal errors, 0 overfull hboxes, and 0 missing-character reports; provenance, text, renders and sampled visual review reconcile to the reissued PDF.",
+      "reopened_count": 1
+    },
+    {
+      "issue_id": "R3-A-005",
+      "severity": "A",
+      "owner_skill": "latex-writer",
+      "owner_agent": "release engineer",
+      "artifact": "main.pdf; main_current_text.txt; rendered/current-20260815/; data/build_provenance_20260815.json; visual_review.md",
+      "evidence": "The exhaustive R2 reader-prose repair revised sections across the report and invalidated the immediately prior release identity.",
+      "fix_required": "Rebuild with XeLaTeX, regenerate all text/render evidence, refresh provenance, and inspect pages containing the revised scope and CTA text.",
+      "blocking_gate": "release_identity",
+      "status": "closed",
+      "verification_evidence": "The final XeLaTeX build at 2026-08-15T15:22:57.740073+08:00 produced 31 A4 pages with 0 fatal errors, 0 overfull hboxes, and 0 missing-character reports; final pages 04 and 12 were visually reviewed and all release artifacts reconcile.",
+      "reopened_count": 2
+    },
+    {
+      "issue_id": "R3-A-006",
+      "severity": "A",
+      "owner_skill": "latex-writer",
+      "owner_agent": "release engineer",
+      "artifact": "main.pdf; main_current_text.txt; rendered/current-20260815/; data/build_provenance_20260815.json; visual_review.md",
+      "evidence": "The paired-negative R2 repair changed main.tex and multiple report sections, superseding the immediately prior release identity.",
+      "fix_required": "Rebuild with XeLaTeX, regenerate all text/render evidence, refresh provenance, and inspect pages containing the revised reader-use and final-disclosure text.",
+      "blocking_gate": "release_identity",
+      "status": "closed",
+      "verification_evidence": "The final XeLaTeX build at 2026-08-15T16:01:29.796743+08:00 produced 31 A4 pages with 0 fatal errors, 0 overfull hboxes, and 0 missing-character reports; final pages 05 and 31 were visually reviewed and all release artifacts reconcile.",
+      "reopened_count": 3
+    }
+  ]
+}

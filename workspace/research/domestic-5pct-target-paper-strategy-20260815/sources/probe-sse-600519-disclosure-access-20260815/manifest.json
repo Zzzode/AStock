@@ -1,0 +1,26 @@
+{
+  "schema_version": "sse_600519_disclosure_access_probe_manifest.v1",
+  "capture_batch": "probe-sse-600519-disclosure-access-20260815",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "captured_at": "2026-08-15T10:20:32+08:00",
+  "purpose": "Preserve failed direct retrieval responses for the C40-S05 SSE disclosure URLs. These files are anti-bot challenge pages, not issuer announcements.",
+  "result": "ANTIBOT_RESPONSE_NOT_ANNOUNCEMENT",
+  "files": [
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/probe-sse-600519-disclosure-access-20260815/sse_600519_20260815_h1_antibot_response.html.gz",
+      "requested_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-15/600519_20260815_UXBN.pdf",
+      "bytes": 3872,
+      "sha256": "ee402abe15966f7f1898f2434225d8a99760a43a8ff8c2e9ed5e384e91592e37",
+      "content_type_observed": "gzip-compressed HTML anti-bot challenge",
+      "use_limit": "It proves neither announced-PDF content nor same-session availability."
+    },
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/probe-sse-600519-disclosure-access-20260815/sse_600519_20260815_policy_change_antibot_response.html.gz",
+      "requested_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-15/600519_20260815_6KZK.pdf",
+      "bytes": 3872,
+      "sha256": "1c684b5452c35d8417e147e6457d49942575753d9727e68d275e7049f7fac782",
+      "content_type_observed": "gzip-compressed HTML anti-bot challenge",
+      "use_limit": "It proves neither announced-PDF content nor same-session availability."
+    }
+  ]
+}

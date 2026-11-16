@@ -1,0 +1,76 @@
+{
+  "schema_version": "c48_current_environment_data_capability_audit.v1",
+  "artifact_id": "D5PT-C48-v1",
+  "as_of": "2026-08-15",
+  "status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "scope": "Read-only audit of the current local market-data profile, installed capability paths, and retained local archives. No live market fetch, credential inspection beyond presence checks, procurement, configuration change, or external action occurred.",
+  "environment_findings": {
+    "configured_market_data_mode": "public_observation",
+    "licensed_provider_credentials_or_attestation_present": false,
+    "licensed_provider_packages_available": false,
+    "local_market_cache_available_for_new_history": false,
+    "local_licensed_provider_archives_found": false
+  },
+  "route_matrix": [
+    {
+      "route": "AkShare/EastMoney daily history",
+      "credential_free": true,
+      "current_state": "available_for_public_observation_research",
+      "evidence": "src/python/astock/quote/akshare_client.py; src/python/astock/capabilities.py build_akshare_daily_portfolio_replay_input",
+      "hard_limit": "Forward-adjusted or unknown price basis and no approved point-in-time universe, corporate-action/event, known-at/revision, or validated execution ledger."
+    },
+    {
+      "route": "BaoStock daily history",
+      "credential_free": true,
+      "current_state": "available_as_direct_public_client_but_not_normal_daily_service_path",
+      "evidence": "src/python/astock/quote/baostock_client.py; src/python/astock/quote/quote_service.py",
+      "hard_limit": "Forward-adjusted daily bars only; no governance-approved point-in-time, action, known-at/revision, or execution data package."
+    },
+    {
+      "route": "Existing frozen public/local archives",
+      "credential_free": true,
+      "current_state": "available_for_exact-byte_research_replay_only",
+      "evidence": "src/python/astock/market_data/archive.py and local archive inventory",
+      "hard_limit": "Integrity proves retained bytes, not source completeness. Public replay inputs explicitly leave actions, halts, limits, delistings, and price basis unverified."
+    },
+    {
+      "route": "Tushare Pro EOD",
+      "credential_free": false,
+      "current_state": "unavailable_in_current_environment",
+      "evidence": "src/python/astock/market_data/tushare_pro.py; src/python/astock/capabilities.py licensed-mode gates",
+      "hard_limit": "Requires an authorized licensed-data profile, provider credential, data-owner attestation, and package. Even then, the implementation lacks a complete known-at/revision model and full execution evidence."
+    },
+    {
+      "route": "JQData minute observation",
+      "credential_free": false,
+      "current_state": "unavailable_in_current_environment",
+      "evidence": "src/python/astock/market_data/jqdata.py; src/python/astock/capabilities.py licensed-mode gates",
+      "hard_limit": "Requires authorized credentials and attestation; implemented output is minute OHLCV only and expressly does not establish queue or fill evidence."
+    },
+    {
+      "route": "Wind",
+      "credential_free": false,
+      "current_state": "no_implemented_adapter",
+      "evidence": "src/python/astock/source_governance.py; src/python/astock/market_data/__init__.py",
+      "hard_limit": "Registry reference only; no local market-data adapter is implemented."
+    }
+  ],
+  "formal_gaps": [
+    "rights-cleared point-in-time investable universe, including inactive, renamed, suspended, risk-warning, and delisted instruments",
+    "complete corporate-action, distribution, rights, merger, spin-off, delisting, restatement, and total-return treatment",
+    "published-at, available-at, revision/version, raw-object hash, and retention/replay rights for every historical decision input",
+    "decision-time quote/depth/status/limit/no-fill, fee/tax/settlement, and product or broker eligibility records",
+    "independent reconstruction and forward paper-observation evidence"
+  ],
+  "decision": {
+    "state": "NO_FORMAL_STRATEGY_TEST_OR_ADMISSION",
+    "action": "NO_ACTION",
+    "why": "The local public-observation routes are useful for hypothesis exploration only. No current route closes the combined point-in-time, total-return, availability/revision, and execution evidence gates needed to turn a historical result into a usable-strategy conclusion.",
+    "next_verification_path": "Only after the user authorizes an appropriately licensed data route and its written usage rights can a source acceptance review determine whether a newly frozen historical or forward research protocol is allowed. This audit neither requests nor authorizes such procurement."
+  },
+  "boundary": "This is a local capability audit, not a product selection, a strategy recommendation, a performance forecast, or an instruction to take any external action."
+}

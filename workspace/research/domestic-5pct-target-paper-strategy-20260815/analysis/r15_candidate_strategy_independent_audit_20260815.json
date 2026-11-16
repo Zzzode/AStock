@@ -1,0 +1,294 @@
+{
+  "schema_version": "d5pt_r15_candidate_strategy_independent_audit.v1",
+  "artifact_id": "D5PT-R15-C34-INDEPENDENT-AUDIT-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "review_cycle": "R4_final_ic",
+  "reviewer": {
+    "role": "research-report-reviewer",
+    "mode": "independent_read_only_maker_checker"
+  },
+  "scope": [
+    "artifact contract and gate manifest",
+    "C31 dated product diligence",
+    "C36 source crosscheck",
+    "C34 frozen protocol and diagnostic",
+    "C35 action card",
+    "C33 integrated candidate",
+    "forward-paper ledger template",
+    "source registry, claim audit, source exhaustion, and open-universe boundary"
+  ],
+  "verdicts": {
+    "research_only_internal_consistency": "PASS",
+    "mechanical_consistency": "PASS",
+    "institutional_status": "MECHANICAL_PASS_INSTITUTIONAL_FAIL",
+    "publishability_status": "BLOCKED",
+    "publication_readiness_score": 25,
+    "actionability_status": "VETO",
+    "current_action": "NO_ACTION",
+    "portfolio_q": 0,
+    "external_actions_authorized": false,
+    "paper_operable": false,
+    "strict_five_percent_limited_proxy_screen": "FAIL",
+    "event_adjusted_return_ledger": "MISSING",
+    "case_release_status": "not_publish_bound",
+    "case_workspace_verifier_39_pass_result": "NOT_AVAILABLE"
+  },
+  "checks": [
+    {
+      "check_id": "R15-C-001",
+      "name": "C34 frozen-protocol byte-identical recomputation",
+      "result": "PASS",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/C34_run_dual_horizon_inverse_vol_etf_proxy.py --verify",
+      "evidence": "C34 recomputes byte-identically from the frozen protocol and hash-checked SSE inputs."
+    },
+    {
+      "check_id": "R15-C-002",
+      "name": "C35 action-card validator",
+      "result": "PASS",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c35_validate_c34_operational_action_card.py",
+      "evidence": "Validates rule, sources, strict equality, invalid-volatility, D/E, protection, excluded futures, and the incomplete six-month gate."
+    },
+    {
+      "check_id": "R15-C-003",
+      "name": "C33 integration validator",
+      "result": "PASS",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c33_validate_integrated_candidate_strategy.py",
+      "evidence": "C31/C34/C35/C36 bind to the exact five-code research-only packet and retain NO_ACTION."
+    },
+    {
+      "check_id": "R15-C-004",
+      "name": "Independent C34 reconstruction",
+      "result": "PASS",
+      "method": "Independent read-only parsing of the five hash-fixed SSE JSONP responses; no import from the C34 runner.",
+      "results": {
+        "common_panel_observations": 3173,
+        "common_panel_start": "2013-07-29",
+        "common_panel_end": "2026-08-14",
+        "annualized_market_price_proxy_change_after_illustrative_cost": 0.055543116112461,
+        "rolling_five_year_below_research_line": "43/98",
+        "chronological_slice_2020_2025_annualized_market_price_proxy_change": 0.046852659717273,
+        "monthly_signal_events_including_initial_entry": 158
+      },
+      "formula_checks": {
+        "strict_risk_score_greater_than_fallback": true,
+        "inverse_60_common_return_volatility_ddof_1": true,
+        "equity_sleeve_split_50_50": true,
+        "decision_D_to_following_common_session_E": true,
+        "futures_weight_zero": true
+      }
+    },
+    {
+      "check_id": "R15-C-005",
+      "name": "JSON, source, and hash binding",
+      "result": "PASS",
+      "results": {
+        "relevant_json_parse": "13/13",
+        "source_registry_hashes": "42/42",
+        "c31_core_source_links": "10/10",
+        "c33_evidence_hashes": "6/6",
+        "c33_direct_master_manifest_binding": "PASS",
+        "c35_source_link_hashes": "3/3",
+        "claim_source_resolution": "20 claims; all referenced source IDs resolve",
+        "markdown_json_identifier_mirrors": "PASS"
+      }
+    },
+    {
+      "check_id": "R15-C-006",
+      "name": "Exact instrument-set and boundary scan",
+      "result": "PASS",
+      "results": {
+        "frozen_codes": ["510300", "510880", "511010", "518880", "511990"],
+        "non_core_codes_not_admitted": ["510500", "511180", "511380"],
+        "futures_weight": 0,
+        "forward_ledger_status": "template_only_no_observations",
+        "minimum_forward_months": 6,
+        "open_research_universe_preserved": true
+      }
+    },
+    {
+      "check_id": "R15-C-007",
+      "name": "Reader-facing language scan",
+      "result": "PASS",
+      "scope": "Markdown and TeX outside sources/",
+      "results": {
+        "restricted_amount_language_hits": [],
+        "affirmative_five_percent_assurance_hits": [],
+        "negative_boundary_or_failure_disclosures_only": true
+      }
+    },
+    {
+      "check_id": "R15-C-008",
+      "name": "Repository publication-gate runner",
+      "result": "CONTROLLED_FAIL",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/tools/run_research_gates.py workspace/research/domestic-5pct-target-paper-strategy-20260815",
+      "evidence": {
+        "summary": "43 PASS / 36 FAIL",
+        "result": "RESULT FAIL",
+        "warning": "industry-chain verifier skipped: case not marked as full-chain",
+        "traceback_observed": false,
+        "failure_interpretation": "The controlled failure list identifies absent publication-bound artifacts, release metadata, and the case-local generic verifier in this not_publish_bound case; it is not a publication pass."
+      }
+    },
+    {
+      "check_id": "R15-C-009",
+      "name": "Post-C31-clarity-repair dependency revalidation",
+      "result": "PASS",
+      "evidence": {
+        "c31_json_sha256": "939b57fa0ec19ed55500a99c82c3eaba73f8b8572204bc4eef814fd272ad2fcd",
+        "c35_json_sha256": "10f8e0c46e64e7bd2d7b7950efc5f6f3de99a8f06fd1d7f78eb58f86d30f059a",
+        "c33_json_sha256": "676a94848bea5c7dafe2472b5277a11b34948bb37d917d35c3600ec3b7f1eb80",
+        "c36_json_sha256": "1f6668da5de9611f540ca0248ef984028c16be619505fb8a20161dbeb1594938",
+        "c35_validator": "PASS",
+        "c33_integration_validator": "PASS",
+        "source_registry_hashes": "42/42 PASS"
+      }
+    }
+  ],
+  "findings": [
+    {
+      "issue_id": "R15-S-001",
+      "severity": "S",
+      "scope": "actionability_and_publication",
+      "status": "open",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-collector",
+      "artifact": "analysis/c36_c31_source_crosscheck_20260815.md",
+      "evidence": "C36-S-001 and C36-S-002 retain missing current terms, announcements, status, bid/ask, depth, applicable IOPV, account access, fee/tax, lot/tick, settlement, and result/no_action evidence. C31 supports dated facts only.",
+      "fix_required": "For future research periods, retain the required current and action-date fields per planned leg; missing evidence must retain NO_ACTION.",
+      "blocking_gate": "current_product_and_execution_evidence",
+      "status_effect": "VETO/NO_ACTION remains required"
+    },
+    {
+      "issue_id": "R15-S-002",
+      "severity": "S",
+      "scope": "actionability_and_publication",
+      "status": "open",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "analysis/c36_c31_source_crosscheck_20260815.md",
+      "evidence": "C36-S-003 leaves the distribution, event, and tax treatment ledger unverified; C34 uses a retrospective market-price proxy only.",
+      "fix_required": "Retain an independently reconciled, rights-cleared point-in-time distribution/event/tax ledger before any future research result is evaluated beyond a price proxy.",
+      "blocking_gate": "event_adjusted_return_evidence",
+      "status_effect": "VETO/NO_ACTION remains required"
+    },
+    {
+      "issue_id": "R15-S-003",
+      "severity": "S",
+      "scope": "actionability",
+      "status": "open",
+      "owner_skill": "quant-risk-modeling",
+      "owner_agent": "quant-risk-modeler",
+      "artifact": "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.md",
+      "evidence": "The independently reconstructed and reported full-sample rolling result is 43/98 below the research line; the chronological 2020-2025 slice is 4.69% annualized.",
+      "fix_required": "Do not alter parameters, select a mutation, substitute a product, or add futures to offset the result. Retain the failed frozen version; any future research must be a new, economically distinct frozen hypothesis.",
+      "blocking_gate": "strict_five_percent_limited_proxy_screen",
+      "status_effect": "VETO/NO_ACTION remains required"
+    },
+    {
+      "issue_id": "R15-S-004",
+      "severity": "S",
+      "scope": "actionability_and_publication",
+      "status": "open",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "artifact": "data/c33_forward_paper_ledger_template_20260815.json",
+      "evidence": "The ledger is template_only_no_observations and C35 records zero of six uninterrupted independently reviewed monthly periods.",
+      "fix_required": "For future research only, record six complete unchanged periods with source inputs, targets, state, quote/IOPV, fee/tax, settlement, result/no_action, reconciliation, and independent review. This does not close R15-S-003.",
+      "blocking_gate": "six_month_forward_paper_record",
+      "status_effect": "paper_operable remains false"
+    },
+    {
+      "issue_id": "R15-S-005",
+      "severity": "S",
+      "scope": "publication",
+      "status": "open",
+      "owner_skill": "research-report-review",
+      "owner_agent": "internal-control",
+      "artifact": "tools/verify_research_workspace.py",
+      "evidence": "No case-local generic verifier exists, so no 39 PASS / 0 FAIL result is available. The repaired repository runner now completes without a traceback and reports 43 PASS / 36 FAIL plus an industry-chain-verifier-skipped warning; its controlled failures identify absent publication-bound artifacts, release metadata, and the case-local verifier rather than substituting for the required release result.",
+      "fix_required": "Before any publish-bound review, provide the standard read-only case verifier without weakening gates, supply the required publication-bound artifacts and release metadata, and rerun the full release gate to 39 PASS / 0 FAIL.",
+      "blocking_gate": "workspace_publication_gate",
+      "status_effect": "publishability remains BLOCKED"
+    },
+    {
+      "issue_id": "R15-A-001",
+      "severity": "A",
+      "scope": "governance_clarity",
+      "status": "verified",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "artifact": "gate_manifest.md",
+      "evidence": "The remediated Markdown manifest now states a frozen five-ETF dynamic research candidate with futures at zero weight in the open research universe; its C31/C36 row states that the five codes are specified frozen research candidates and cannot be upgraded to current operability or admission. The JSON coverage_pack matches the five-ETF dynamic-candidate/open-research-universe scope.",
+      "fix_required": "Completed: manifest wording and its matching JSON governance scope were refreshed.",
+      "blocking_gate": "none",
+      "initial_status": "open",
+      "repair_verification": "Read-only check of gate_manifest.md lines 6 and 13, gate_manifest.json coverage_pack, and C36 lines 70-74 confirms the frozen-candidate/actionability distinction and futures zero-weight boundary."
+    },
+    {
+      "issue_id": "R15-A-002",
+      "severity": "A",
+      "scope": "publication_governance",
+      "status": "verified",
+      "owner_skill": "research-report-review",
+      "owner_agent": "internal-control",
+      "artifact": "workspace/research/tools/run_research_gates.py",
+      "evidence": "The generic coverage_pack token was removed from the repository runner and the duplicated quality classifier. Direct calls with only generic coverage metadata return non-industry in both implementations. Missing field-evidence payload handling now produces structured failures rather than an exception, and the actual case run completes with 43 PASS / 36 FAIL, RESULT FAIL, and the industry-chain-verifier-skipped warning.",
+      "fix_required": "Completed: classification and null handling were repaired; the controlled failure list is now available for the remaining publication blocker.",
+      "blocking_gate": "none",
+      "initial_status": "open",
+      "repair_verification": "Read-only actual runner execution had no traceback. Direct duplicate-classifier check returned False/False for generic coverage metadata; temporary missing-payload invocation recorded failures without an exception."
+    },
+    {
+      "issue_id": "R15-B-001",
+      "severity": "B",
+      "scope": "source_packaging",
+      "status": "open",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "analysis/c31_etf_product_diligence_refresh_20260815.json",
+      "evidence": "C31 and C34 raw source paths point to a sibling research case. Current hashes match, so this is not a calculation discrepancy, but the case is not self-contained for a release package.",
+      "fix_required": "For any publish-bound version, archive byte-identical primary evidence under this case's sources tree with explicit provenance linkage.",
+      "blocking_gate": "case_self_containment"
+    },
+    {
+      "issue_id": "R15-B-002",
+      "severity": "B",
+      "scope": "reader_clarity",
+      "status": "verified",
+      "owner_skill": "research-prose-polish",
+      "owner_agent": "research-prose-polish",
+      "artifact": "analysis/c31_etf_product_diligence_refresh_20260815.md",
+      "evidence": "The preliminary wording could be read as a sixth core candidate. The refreshed C31 now states five actual-core codes plus non-core 510500 at the evidence and source-register summaries; dependent hashes and validators were rechecked.",
+      "fix_required": "Completed and independently revalidated during R15.",
+      "blocking_gate": "none",
+      "initial_status": "open",
+      "repair_verification": "C35 and C33 validators PASS after the C31 JSON, C35, C33, and source-registry refresh."
+    }
+  ],
+  "finding_counts": {
+    "S_open": 5,
+    "A_open": 0,
+    "A_verified": 2,
+    "B_open": 1,
+    "B_verified": 1
+  },
+  "confirmed_strengths": [
+    "Exact five-code binding is consistent across C31, C34, C35, C36, and C33; non-core codes are excluded.",
+    "C31/C36 separate dated product facts from current action eligibility, and source hashes match their stated files.",
+    "The C31 six-code wording repair and dependent hash refresh were independently revalidated.",
+    "C34 formula, D/E timing, illustrative-cost boundary, exploratory-formalization disclosure, and mutation reporting are mutually consistent.",
+    "C35 preserves all-leg fail-closed controls, no substitution, no assumed fill, operational pause, and reconciliation controls.",
+    "C33 preserves futures zero weight, the open-universe boundary, the failed strict screen, and NO_ACTION.",
+    "The remediated gate manifest now distinguishes the frozen five-ETF research candidate, futures zero-weight open-research path, and current actionability VETO.",
+    "The repository gate runner now emits a controlled non-industry failure summary rather than aborting."
+  ],
+  "required_next_fixes": [
+    "Preserve the failed C34 strict screen and VETO/NO_ACTION; do not retune the frozen version.",
+    "Before any publish-bound review, provide the standard case verifier and the required release artifacts, then obtain 39 PASS / 0 FAIL.",
+    "For any future research period, close current product/market/execution and event-ledger evidence gaps through retained evidence, not inference.",
+    "Complete six independently reviewed, unchanged forward periods before reconsidering the stated transition gate.",
+    "For any publish-bound version, complete self-contained source packaging and rerun the independent review."
+  ],
+  "boundary": "This audit records research controls and blockers only. It does not select products, forecast outcomes, create an external instruction, or change the current VETO/NO_ACTION disposition."
+}

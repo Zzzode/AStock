@@ -1,0 +1,33 @@
+{
+  "cycle": "R1_model",
+  "publishability_status": "PASS_AT_RESEARCH_FRAMEWORK_SCOPE",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R1-A-001",
+      "severity": "A",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "data/current_product_valuation_model_20260812.json",
+      "evidence": "A market snapshot and historical NAV are at different dates; 508096 has three unreconciled annual-report NAV figures.",
+      "fix_required": "Use only dated diagnostics for the nine comparable rows and block any 508096 price/NAV calculation; publish no target/fair value.",
+      "blocking_gate": "valuation_date_comparability",
+      "status": "closed",
+      "closure_evidence": "Ten-row valuation diagnostic labels date gaps, no target, and the 508096 NAV reconciliation blocker.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-A-002",
+      "severity": "A",
+      "owner_skill": "risk",
+      "owner_agent": "risk-analyst",
+      "artifact": "data/portfolio_return_model_20260812.json",
+      "evidence": "The 5% total-return and 3% cash figures could be confused with a promise unless cash, return and failure rules are explicit.",
+      "fix_required": "Set q=0, distinguish settled net cash from total return, prevent double counting, and block implementation pending formal replay and risk-budget approval.",
+      "blocking_gate": "return_and_risk_budget",
+      "status": "closed",
+      "closure_evidence": "Portfolio return model and cash coverage assessment define TWRR/MWRR, eligible receipts, exclusions and no-repair rule.",
+      "reopened_count": 0
+    }
+  ]
+}

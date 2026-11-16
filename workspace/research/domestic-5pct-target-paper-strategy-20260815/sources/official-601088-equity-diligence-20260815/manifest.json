@@ -1,0 +1,87 @@
+{
+  "schema_version": "official_601088_equity_diligence_manifest.v1",
+  "capture_batch": "official-601088-equity-diligence-20260815",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "captured_at": "2026-08-15T10:15:42+08:00",
+  "timezone": "Asia/Shanghai",
+  "purpose": "Retain the HKEX primary filings used in C42's bounded issuer-specific research. The batch supports document integrity and the stated historical facts only; it does not establish a complete A-share disclosure chain, point-in-time tradability, valuation, total return, liquidity, strategy admission, or external action.",
+  "source_quality": "primary_exchange_filing",
+  "limitations": [
+    "The original HKEX publication timestamps are reproduced from the filings; this retrieval does not establish every associated SSE availability time or a complete correction/withdrawal chain.",
+    "The 2025/2024 annual-report history, A-share implementation notices, full legal-document inventory, and all company-action events remain incomplete.",
+    "The batch contains no rights-cleared A-share market price, depth, fill, cost, tax, settlement, free-float, or adjustment-factor ledger.",
+    "No retained filing selects the issuer, implies an investment-quality conclusion, forecasts a distribution, establishes total return, or permits an external action."
+  ],
+  "files": [
+    {
+      "source_id": "C42-S01",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-601088-equity-diligence-20260815/601088_2025_annual_report_hkex.pdf",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "kind": "annual_report",
+      "publication_timestamp": "2026-03-30T22:41:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033003712.pdf",
+      "bytes": 8479182,
+      "sha256": "491e701a90b1ece239b95ce3f3de27053f420583f2458d81cbe5b21b4607fdc9"
+    },
+    {
+      "source_id": "C42-S02",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-601088-equity-diligence-20260815/601088_2026_q1_report_hkex.pdf",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "kind": "quarterly_report",
+      "publication_timestamp": "2026-04-24T21:23:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042403241.pdf",
+      "bytes": 135225,
+      "sha256": "462f7b8fa18a032e412a6b21792814c3d04bbd3c8212dc05260aed1c7476443b"
+    },
+    {
+      "source_id": "C42-S03",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-601088-equity-diligence-20260815/601088_2026_may_operating_data_hkex.pdf",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "kind": "operating_data_announcement",
+      "publication_timestamp": "2026-06-17T17:08:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/2026061700844.pdf",
+      "bytes": 158101,
+      "sha256": "f362517e7249b79e268a584181ac94619cb1c4a51faf79a04f92fc1be8025c80"
+    },
+    {
+      "source_id": "C42-S04",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-601088-equity-diligence-20260815/601088_2025_final_distribution_hkex.pdf",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "kind": "distribution_announcement",
+      "publication_timestamp": "2026-03-30T22:43:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033003796.pdf",
+      "bytes": 45348,
+      "sha256": "7f2d0c8d4d03ecc6bdb0d1320c50792a720e1143799e9fbc04cdac3ff8a1b227"
+    },
+    {
+      "source_id": "C42-S05",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-601088-equity-diligence-20260815/601088_2025_agm_voting_results_hkex.pdf",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "kind": "shareholder_meeting_results",
+      "publication_date": "2026-06-26",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062603359.pdf",
+      "bytes": 70972,
+      "sha256": "4ae6d53c5b0edb8fb6eb04803dd1704b874065c812ca9dc0b62e01f2772ad0d3"
+    },
+    {
+      "source_id": "C42-S06",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-601088-equity-diligence-20260815/601088_2026_specific_issuance_hkex.pdf",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "kind": "share_capital_change_announcement",
+      "publication_date": "2026-04-08",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0408/2026040802758.pdf",
+      "bytes": 200793,
+      "sha256": "a68583fec8282ae53594ccc3648e0e972943e166e244d44fa6a45061b8a4d499"
+    },
+    {
+      "source_id": "C42-S07",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-601088-equity-diligence-20260815/601088_2026_auditor_change_hkex.pdf",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "kind": "auditor_change_announcement",
+      "publication_date": "2026-06-26",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062602823.pdf",
+      "bytes": 51688,
+      "sha256": "2bf6b7de8d21d70587182962879a4f70790447690202e8a077611c9de4c294c4"
+    }
+  ]
+}

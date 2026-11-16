@@ -1,0 +1,61 @@
+{
+  "cycle": "R4_final_ic",
+  "review_date": "2026-08-15",
+  "review_scope": "Final research-framework publishability, issue closure, source/risk consistency, implementation boundary, and reissued release identity.",
+  "publishability_status": "PASS_RESEARCH_FRAMEWORK_IMPLEMENTATION_NOT_APPROVED",
+  "publishability_score": 95,
+  "findings": [
+    {
+      "issue_id": "R4-B-001",
+      "severity": "B",
+      "owner_skill": "research-report-review",
+      "owner_agent": "independent reviewer",
+      "artifact": "final_signoff.json",
+      "evidence": "A framework with q=0 could be mistaken for a delayed implementation approval if residual blockers are omitted from final sign-off.",
+      "fix_required": "State return-evidence, risk-budget, suitability, execution and crypto access blockers in the final release record.",
+      "blocking_gate": "research_vs_implementation",
+      "status": "verified",
+      "verification_evidence": "Final sign-off preserves research_framework_pass, not_approved, live_execution_authorized=false and q=0 with explicit residual blockers.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-A-002",
+      "severity": "A",
+      "owner_skill": "research-report-review",
+      "owner_agent": "independent reviewer",
+      "artifact": "final_signoff.json; final_signoff.md; analysis/prose_style_audit.md; data/build_provenance_20260815.json",
+      "evidence": "The former final sign-off recorded the pre-rewrite PDF identity and preceded the reopened R2/R3 review cycle.",
+      "fix_required": "Refresh final sign-off against the rewritten release, confirm the style-audit closure, retain no open S/A finding, and preserve the research-only implementation boundary.",
+      "blocking_gate": "final_release_governance",
+      "status": "closed",
+      "verification_evidence": "Final sign-off now reconciles to the reissued 31-page PDF and source tree, R2/R3/R4 findings are closed or verified, and the release remains research_framework_pass with implementation not approved and q=0.",
+      "reopened_count": 1
+    },
+    {
+      "issue_id": "R4-A-003",
+      "severity": "A",
+      "owner_skill": "research-report-review",
+      "owner_agent": "independent reviewer",
+      "artifact": "final_signoff.json; final_signoff.md; analysis/prose_style_audit.md/json; data/build_provenance_20260815.json",
+      "evidence": "The user-directed exhaustive R2 repair and R3 rebuild superseded the prior final release identity and required a new final-IC confirmation.",
+      "fix_required": "Reconcile final sign-off to the current source/PDF identity, confirm the strict prose-audit closure and keep the research-only implementation boundary explicit.",
+      "blocking_gate": "final_release_governance",
+      "status": "closed",
+      "verification_evidence": "Final sign-off reconciles to the 2026-08-15T15:22:57.740073+08:00 31-page release; R2/R3/R4 findings are closed or verified; implementation remains not approved and q=0.",
+      "reopened_count": 2
+    },
+    {
+      "issue_id": "R4-A-004",
+      "severity": "A",
+      "owner_skill": "research-report-review",
+      "owner_agent": "independent reviewer",
+      "artifact": "final_signoff.json; final_signoff.md; analysis/prose_style_audit.md/json; data/build_provenance_20260815.json",
+      "evidence": "The user-directed paired-negative repair and R3 rebuild superseded the prior final release identity and required a new final-IC confirmation.",
+      "fix_required": "Reconcile final sign-off to the current source/PDF identity, confirm the strict prose-audit closure and keep the research-only implementation boundary explicit.",
+      "blocking_gate": "final_release_governance",
+      "status": "closed",
+      "verification_evidence": "Final sign-off reconciles to the 2026-08-15T16:01:29.796743+08:00 31-page release; R2/R3/R4 findings are closed or verified; implementation remains not approved and q=0.",
+      "reopened_count": 3
+    }
+  ]
+}

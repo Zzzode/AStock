@@ -1,0 +1,77 @@
+{
+  "artifact_id": "D5PT-C50-v1",
+  "as_of": "2026-08-15",
+  "boundary": "This screen is an evidence-bound research artifact. It does not provide a yield promise, allocation, account recommendation, personal suitability conclusion, or order instruction.",
+  "dated_official_observation": {
+    "instrument": "204001 / one-day general repo fixing",
+    "interpretation": "The 1.391% figure is an annualized quote for a one-day term, not a one-year realized portfolio return.",
+    "one_day_interest_fraction_before_broker_specific_costs": 3.810958904109589e-05,
+    "one_day_interest_pct_before_broker_specific_costs": 0.0038109589041095894,
+    "quoted_annualized_rate_pct": 1.391,
+    "same_response_rate_7day_label": "The separate RATE_7DAY field returned by the same SSE public query; it is not labeled as an 204001 quote.",
+    "same_response_rate_7day_pct": 1.414,
+    "source_date": "2026-08-14",
+    "source_displayed_timestamp": "2026-08-14 22:30:00"
+  },
+  "decision": {
+    "action": "NO_ACTION",
+    "reason": "Do not select a repo code, broker, term, schedule, or transaction. C50 is not admitted as a usable strategy and cannot satisfy the requested stable-5% characterization."
+  },
+  "economic_mechanism": {
+    "distinct_from_prior_routes": "A short-term collateralized funding-rate mechanism, not an ETF allocation, direct-credit ladder, commodity trend, commodity calendar curve, Treasury cash-futures basis, or covered-call route.",
+    "official_mechanics_verified": [
+      "SSE states that an individual investor may participate as the reverse-repo funding side.",
+      "SSE describes matching and multilateral net settlement for the general-repo mechanism.",
+      "SSE states that its general-repo transaction fee is temporarily waived.",
+      "The current guideline lists standardized terms including one day and identifies general-repo codes with the 204 prefix.",
+      "The guideline describes one trade with two settlement legs and a maturity amount based on the quoted annual rate and actual days.",
+      "SSE publishes a daily fixing calculated from transaction prices and volumes; a no-trade fixing carries forward the prior trading day's fixing."
+    ],
+    "personal_access_boundary": "The exchange-level statement that individuals may participate does not verify any particular brokerage account, permission, route, fee schedule, order acceptance, fill, or settlement outcome.",
+    "route": "SSE general pledged reverse repo as the funding side"
+  },
+  "external_orders": false,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "relationship_to_c48": {
+    "c48_status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+    "effect": "C50 adds a distinct mechanism screen but does not close C48's point-in-time, availability/version, execution, and rights gates."
+  },
+  "required_but_missing_before_any_formal_test": [
+    "每个决策日均有完整、权利明确的逐时点定盘利率、报价、委托状态与结算历史。",
+    "在查看利率前冻结期限、日历或阈值规则，并明确闲置资金、节假日、未成交和结算处理。",
+    "带日期的券商路径、账户权限、费税、委托受理、成交与结算记录；交易所费率暂免说明不是完整的个人成本账本。",
+    "每项历史输入均有发布时间、可得时间、版本/修订、原始哈希和字段字典证据。",
+    "独立重建完整自然年和滚动五年窗口，并完成连续的前瞻纸面观察。"
+  ],
+  "research_only": true,
+  "schema_version": "c50_sse_general_repo_yield_floor_screen.v1",
+  "scope": "A primary-source mechanism and dated-yield-floor pre-screen for SSE general pledged reverse repo. It does not compute a multi-year result, select a broker, verify an account, or authorize an external action.",
+  "source_control": {
+    "manifest": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c50-sse-general-repo-screen-20260815/manifest.json",
+    "source_hashes": {
+      "C50-S01": "c88c6551cf434da52382c322ce96e1c880c9e74be595ac8e36fe86fbef0fb4d5",
+      "C50-S02": "b5a14f9d76076a8c03538f9a6df935c60d081ef9ae4737d0dc633cd09fa14380",
+      "C50-S03": "ceae0b84f02283dab66f16ab6855154d6f1e6c27505123ce1013efd28b20f19a",
+      "C50-S04": "74d55edad71e976d01cdd7891844fe2f4bc1e37602457ee08b5f70726cdf62a0",
+      "C50-S05": "b148bd3ce4e9fae7bce6d4328cfa4caf95999e068fa29f03d9a65f74550d1844"
+    },
+    "source_ids": [
+      "C50-S01",
+      "C50-S02",
+      "C50-S03",
+      "C50-S04",
+      "C50-S05"
+    ]
+  },
+  "status": "NOT_ADMITTED_NO_STABLE_5PCT_YIELD_FLOOR",
+  "strict_hurdle_screen": {
+    "admission_result": "fail",
+    "contractual_or_rule_based_5pct_floor_evidenced": false,
+    "current_official_one_day_quote_below_5pct": true,
+    "current_official_same_response_rate_7day_below_5pct": true,
+    "historical_full_year_or_rolling_five_year_test_performed": false,
+    "hurdle": "A research target above 5% annualized, not a promised or guaranteed outcome.",
+    "reason": "A market-determined daily fixing below 5% at the dated observation and the absence of any evidenced yield floor mean this route cannot be presented as a stable 5% yield-floor strategy. The limited public observation also cannot establish a formal historical return test."
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "allowed_interpretation": "这是受来源约束的可行性与规则设计记录，不能证明稳定收益、预测、适当性、配置、持有、经纪商指令或外部行动。",
+  "artifact_id": "DPSFS-C13-ETF-OPTION-CC-v1",
+  "as_of": "2026-08-15",
+  "candidate": {
+    "exchange_terms_from_frozen_listing_notice": {
+      "contract_multiplier": "公司行动调整前为 10,000 份 ETF",
+      "exercise": "欧式，到期日行权",
+      "expiry_months": "当月、下月及随后两个季月",
+      "settlement": "实物交割，除非交易所规则另有规定",
+      "standard_expiry": "到期月份第四个星期三；遇休市按规则顺延"
+    },
+    "mechanism": "备兑认购研究协议：只能以经纪商确认的备兑开仓方式、针对当期精确可交割 ETF 数量卖出认购；不得卖出裸认购或认沽。",
+    "option_product": "SSE CSI 300 ETF call options",
+    "underlying_etf": {
+      "code": "510300",
+      "name": "Huatai-PineBridge CSI 300 ETF"
+    }
+  },
+  "fixed_research_protocol": {
+    "expiry_and_adjustment_rule": "在交易所最后交易／到期日前，以及每次标的分配或合约调整公告后，逐项核对合约代码、单位、行权价、交割物锁定、交收日和经纪商持仓状态。核对失败即停止该候选，不得虚构换月。",
+    "forbidden": [
+      "uncovered_call",
+      "short_put",
+      "assumed_broker_permission",
+      "assumed_fill_or_quote",
+      "synthetic_continuous_option_chain",
+      "post_hoc_contract_or_strike_selection",
+      "external_order_or_action"
+    ],
+    "formation_gate": [
+      "操作者独立确认当前适当性、权限等级、账户路由和经纪商备兑开仓功能；公开规则不能替代账户确认。",
+      "当期交易所合约记录须证明精确合约、调整后单位、行权价、到期日、交易状态与交割条款。",
+      "经纪商能够锁定精确的可交割 ETF 数量作为备兑备用证券；不允许裸卖或以保证金替代备兑。",
+      "留存带时间戳的买卖报价、深度、交易状态、经纪商费税表和结算日历；任一字段缺失即 NO_ACTION。"
+    ],
+    "order_rule": "仅在备兑锁定和报价质量门槛通过后使用限价委托。部分成交或未成交均保留为未完成状态，不得在研究中视为完成卖出。",
+    "quantity_rule": "经纪商锁定的每一份当前精确合约单位的可交割 ETF，仅对应一张备兑认购；不得超过经纪商确认的备兑数量。",
+    "selection": "固定标的仅为 510300，期权仅限上交所挂钩该 ETF 的沪深300ETF认购期权；不得事后在 ETF、行权价、到期日、交易所或期权品种之间替换。",
+    "series_rule": "上一标准到期日完成结算后，检查当期交易所合约清单；在未调整的下月认购中，选择行权价不低于前一日 ETF 收盘价的最低挂牌行权价。没有合格存续合约，或公司行动改变交割物时，记录 NO_ACTION，不得改用其他规则。"
+  },
+  "portfolio_q": 0,
+  "risk_register": [
+    "underlying_equity_drawdown",
+    "upside_cap_and_opportunity_cost",
+    "option_assignment_and_physical_delivery",
+    "contract_adjustment_and_changed_multiplier",
+    "liquidity_spread_depth_and_no_fill",
+    "account_permission_and_broker_process",
+    "settlement_and_corporate_action_timing",
+    "model_selection_and_backtest_data_gap"
+  ],
+  "source_manifest": {
+    "capture_batch": "c13-sse-etf-option-rules-20260815",
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c13-sse-etf-option-rules-20260815/manifest.json",
+    "sha256": "b987cbf1c745fbaf6a94e9b3c6d7a3da3e73cba9055c51a7801e48ece74bfca7"
+  },
+  "status": "RESEARCH_CANDIDATE_NOT_ACTION_READY",
+  "strict_5pct_test": {
+    "decision": "不计算年度或滚动收益。按当前证据，该候选不能进入严格 5% 策略或个人操作。",
+    "definition": "每个完整自然年的净结果及每个滚动五年的年化净结果均须不低于 5%；任一实际合约或执行输入缺失即不通过准入门槛。",
+    "hurdle": 0.05,
+    "observed_source_scope": "冻结的上交所材料确立了合约／规则机制与数据字段要求，但未提供所需的完整时点正确实际合约和执行数据包。",
+    "required_input": [
+      "point_in_time_actual_contract_master_with_adjustments_and_lifecycle",
+      "historical_option_bid_ask_depth_trades_and_official_settlement_by_contract",
+      "underlying_total_return_distribution_and_trading_status_history",
+      "dated_exchange_and_broker_fee_tax_margin_and_covered_reservation_rules",
+      "execution_state_and_partial_fill_evidence",
+      "account_permission_and_settlement_feasibility_evidence",
+      "pre_frozen_replay_protocol_and_independent_audit"
+    ],
+    "status": "NOT_FEASIBLE_FOR_RETURN_CLAIM"
+  }
+}

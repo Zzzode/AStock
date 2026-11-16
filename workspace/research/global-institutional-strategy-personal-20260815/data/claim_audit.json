@@ -1,0 +1,160 @@
+{
+  "schema_version": "claim_audit.v1",
+  "case_id": "global-institutional-strategy-personal-20260815",
+  "data_cutoff": "2026-08-15",
+  "claims": [
+    {
+      "claim_id": "C01",
+      "claim": "HFR uses Macro, Event-Driven, Relative Value and Equity Hedge as broad hedge-fund classifications.",
+      "source_ids": ["S01"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "A classification does not show implementation, return, capacity or retail availability.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C02",
+      "claim": "Bridgewater publicly describes All Weather through risk balance across growth and inflation environments.",
+      "source_ids": ["S02"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "Manager-authored description; it is not a disclosure of the current portfolio or a personal replication recipe.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C03",
+      "claim": "Man AHL publicly describes systematic programmes that use repeatable patterns including momentum and carry.",
+      "source_ids": ["S03"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "The public page does not disclose the exact model, instruments, risk scaling, costs or execution.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C04",
+      "claim": "AQR's public style-premia material identifies value, momentum, carry and defensive styles with global long/short implementation.",
+      "source_ids": ["S04"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "This does not establish a China-mainland personal-account equivalent.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C05",
+      "claim": "Citadel describes macro and relative-value activity across multiple asset groups, while Two Sigma describes a data, modelling and execution platform.",
+      "source_ids": ["S05", "S06"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "Both sources are high-level manager materials and do not expose proprietary infrastructure or performance.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C06",
+      "claim": "Blackstone describes private-equity due diligence and operational support; Apollo describes credit underwriting across credit and asset-backed finance.",
+      "source_ids": ["S07", "S08"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "Manager descriptions do not transfer control rights, origination access or covenants to an individual public-market account.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C07",
+      "claim": "Time-series momentum is a primary academic reference for liquid-futures trend research.",
+      "source_ids": ["S09"],
+      "type": "fact",
+      "materiality": "medium",
+      "limitation": "It is not proof of future performance in a domestic-contract universe after roll, margin and trading costs.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C08",
+      "claim": "The five-factor paper is used only as terminology for profitability and investment factors.",
+      "source_ids": ["S10"],
+      "type": "fact",
+      "materiality": "medium",
+      "limitation": "It is not an A-share stock-selection recommendation or an implementation proof.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C09",
+      "claim": "CFFEX suitability rules require suitability assessment and do not constitute a universal strategy or contract approval.",
+      "source_ids": ["S11"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "Actual eligibility depends on the current account, broker, product and exchange state.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C10",
+      "claim": "Domestic futures rules use margin, price-limit and position-limit mechanisms, and risk controls may vary by contract and conditions.",
+      "source_ids": ["S12", "S15"],
+      "type": "fact",
+      "materiality": "high",
+      "limitation": "No static parameter in this report may be treated as a current contract rule.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C11",
+      "claim": "An ordinary China stock purchase should not be modelled as having an assured same-day exit; product-specific rules must be checked separately.",
+      "source_ids": ["S13"],
+      "type": "fact_with_scope_limit",
+      "materiality": "high",
+      "limitation": "This is deliberately not a blanket settlement statement for every ETF, bond, option or cross-border product.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C12",
+      "claim": "The 2026 joint notice published by CSRC says virtual currency does not have legal-tender status and strictly prohibits virtual-currency-related business activities in China; it also addresses illegal overseas service provision to domestic entities.",
+      "source_ids": ["S14"],
+      "type": "fact_with_legal_scope_limit",
+      "materiality": "critical",
+      "limitation": "This report is not legal advice and does not infer an individual's legal position; it simply declines to offer a mainland crypto implementation route.",
+      "status": "verified_for_limited_use"
+    },
+    {
+      "claim_id": "C13",
+      "claim": "A personal domestic-futures CTA can research a transparent, delayed-data trend rule, but it is a research proxy rather than a Man AHL-equivalent programme.",
+      "source_ids": ["S03", "S09", "S11", "S12", "S15"],
+      "type": "analytical_translation",
+      "materiality": "high",
+      "limitation": "Requires a point-in-time paper replay, current contract data, risk budget and suitability evidence before any separate decision.",
+      "status": "methodology_not_performance_claim"
+    },
+    {
+      "claim_id": "C14",
+      "claim": "An A-share factor portfolio can use delayed, point-in-time accounting and liquidity screens, but long/short style premia, borrow and global diversification are not assumed portable.",
+      "source_ids": ["S04", "S10", "S13"],
+      "type": "analytical_translation",
+      "materiality": "high",
+      "limitation": "No factor premium, target return or named security is asserted.",
+      "status": "methodology_not_performance_claim"
+    },
+    {
+      "claim_id": "C15",
+      "claim": "Public filing/earnings-event research can be made timestamped and delayed, but it cannot be called a portable event-driven or merger-arbitrage book without financing, borrow, legal and deal-specific evidence.",
+      "source_ids": ["S01", "S05", "S13"],
+      "type": "analytical_translation",
+      "materiality": "high",
+      "limitation": "No event data vendor, real-time timestamp or deal funding has been established in this case.",
+      "status": "methodology_not_performance_claim"
+    },
+    {
+      "claim_id": "C16",
+      "claim": "Statistical arbitrage, HFT market making, volatility dispersion, global carry/RV, private equity and private credit remain structurally non-equivalent for this personal framework.",
+      "source_ids": ["S05", "S06", "S07", "S08", "S11", "S12", "S15"],
+      "type": "analytical_translation",
+      "materiality": "critical",
+      "limitation": "This is a scope-control conclusion based on absent infrastructure and rights, not a claim that no individual can ever research related economic concepts.",
+      "status": "blocked_as_equivalence_claim"
+    },
+    {
+      "claim_id": "C17",
+      "claim": "The defensible current allocation state is 100% protected liquidity, not because cash is forecast to outperform, but because the required individual evidence and risk approval are absent.",
+      "source_ids": ["S11", "S12", "S13", "S14", "S15"],
+      "type": "scope_control",
+      "materiality": "critical",
+      "limitation": "It is not personalised financial advice or an asset-allocation recommendation; it is the only non-fabricated state under this report's evidence boundary.",
+      "status": "q0_framework_boundary"
+    }
+  ]
+}

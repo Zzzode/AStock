@@ -1,0 +1,300 @@
+{
+  "schema_version": "d5pt_c39_independent_strategy_hypothesis_protocol.v1",
+  "artifact_id": "D5PT-C39-AUDITED-CASH-FLOW-REALIZATION-v1",
+  "registered_on": "2026-08-15",
+  "status": "NO_ACTION",
+  "status_reason": "Preregistration only; no evidence package, test result, product admission, portfolio construction, or forward-paper record is complete.",
+  "risk_model_status": "VETO",
+  "risk_model_status_reason": "No portfolio loss budget, liquidity/capacity evidence, admitted product, total-return ledger, execution record, or forward observation exists from which loss can be bounded.",
+  "research_only": true,
+  "external_orders": false,
+  "live_product_selection": false,
+  "actionable_weights_or_notionals": false,
+  "performance_stated": false,
+  "purpose": {
+    "research_question": "Among a complete point-in-time universe of domestic non-financial common shares, do issuers whose audited operating cash flow and simple free-cash-flow proxy remain positive for two reported fiscal years, and whose contemporaneous free-cash-flow yield is no worse than their industry peer median, subsequently show a net total-return outcome above a long-run 5% research hurdle and above a mechanically matched control cohort?",
+    "hurdle": {
+      "annualized_rate": 0.05,
+      "meaning": "Research hurdle only; not a promise, floor, prediction, suitability conclusion, alpha claim, or future result."
+    },
+    "economic_rationale": "The proposed return source is possible disclosure-based cash-flow realization: audited cash generation may be slower for the market to separate from accrual earnings, headline growth, or narrative risk when it is priced at no premium to comparable domestic issuers. It is not momentum, volatility targeting, asset-class rotation, carry, a guaranteed dividend, or a cash-payment objective.",
+    "failure_channels": [
+      "Cash flow is cyclical or temporarily boosted by working capital.",
+      "Cash flow is committed to unproductive capital expenditure.",
+      "Governance or reporting quality impairs interpretation.",
+      "The information is already reflected in price."
+    ]
+  },
+  "relationship_to_c34": {
+    "type": "economically_distinct_replacement_research_route",
+    "c34_status_unchanged": "failed_on_its_own_record",
+    "prohibitions": [
+      "Do not repair, sensitivity-test, reparameterize, substitute products into, or continue C34.",
+      "Do not use C34 products, monthly rotation, relative-momentum comparison, dual-horizon score, inverse-volatility sizing, defensive sleeve, fixed price-proxy cost load, sample splits, diagnostics, results, or parameters.",
+      "Do not inherit candidate names from another route."
+    ]
+  },
+  "open_research_universe": {
+    "project_level": "China domestic listed equities, ETFs, listed funds, public REITs, bonds, futures, options, and other public instruments with adequate evidence remain eligible for separately registered research.",
+    "c39_first_test_family": "CNY-denominated domestic common shares listed on SSE, SZSE, and BSE.",
+    "reason_for_product_boundary": "The C39 cash-flow proxy and total-return mechanics are defined for non-financial common shares. Other product types are not rejected; they require a separately preregistered hypothesis and cannot be substituted into C39 after results are known."
+  },
+  "universe_construction": {
+    "base_universe": "Every historical and then-current CNY-denominated domestic common-share line listed on SSE, SZSE, or BSE at each formation timestamp, including delisted, renamed, suspended, special-treatment, and later-delistable lines.",
+    "membership_controls": [
+      "An exchange that had not yet opened is represented as a dated zero-member exchange, not silently omitted.",
+      "Index membership, current listings, popularity, broker coverage, and later survival cannot define membership.",
+      "Banks, insurers, brokers, trusts, and other financial institutions are outside this first cash-flow hypothesis only; they remain in the open project-level research universe."
+    ],
+    "candidate_eligibility": [
+      {
+        "id": "E1",
+        "rule": "Retain legal issuer/security mapping, share-class history, listing/status history, and first-public timestamp for the latest annual report."
+      },
+      {
+        "id": "E2",
+        "rule": "Retain primary-source latest two fiscal-year annual reports with unmodified audit opinion, no unresolved material going-concern qualification, and all required cash-flow-statement fields."
+      },
+      {
+        "id": "E3",
+        "rule": "Operating cash flow is strictly positive in each of the latest two fiscal years."
+      },
+      {
+        "id": "E4",
+        "rule": "Simple FCF proxy is strictly positive in each of the latest two fiscal years.",
+        "formula": "cash received from operating activities minus cash paid to acquire or construct fixed assets, intangible assets, and other long-lived assets",
+        "missing_or_noncomparable_treatment": "data_gate_fail; do not estimate or substitute a proxy"
+      },
+      {
+        "id": "E5",
+        "rule": "At formation, latest-audited FCF proxy divided by total market capitalization is at least the median of the contemporaneous CSRC two-digit-industry peer set.",
+        "peer_set_minimum_data_complete_lines": 15,
+        "insufficient_peer_set_treatment": "not_evaluable; do not change industry or ranking rule"
+      },
+      {
+        "id": "E6",
+        "rule": "Pass all product, data, total-return, and execution admission gates before an outcome is counted."
+      }
+    ],
+    "not_a_portfolio": "There is no composite score, rank selection, top-N list, discretionary exception, target weight, position size, notional, capital allocation, or capacity estimate. Passing lines are research observations only."
+  },
+  "timing_and_outcomes": {
+    "formation": {
+      "rule": "Fourth eligible trading session after the independently evidenced first-public timestamp of the eligible annual report.",
+      "quote_snapshot": "timestamped side-aware quote snapshot at 14:30 Asia/Shanghai",
+      "purpose": "Research measurement convention that prevents same-session disclosure use; not an order instruction."
+    },
+    "outcome_horizon": {
+      "calendar_months": 18,
+      "non_trading_day_rule": "first subsequent eligible trading session",
+      "intermediate_actions": "No rebalance, reinvestment rule, stop, take-profit, or discretionary intervention."
+    },
+    "repeat_observations": "An issuer may enter later annual cohorts only by independently passing the unchanged rules at the later formation; all observations retain issuer and formation-date identity."
+  },
+  "test_splits": [
+    {
+      "id": "P0",
+      "name": "pipeline_validation",
+      "report_first_public_start": "2008-01-01",
+      "report_first_public_end": "2011-12-31",
+      "use": "Schema, point-in-time, event-ledger, and code-path validation only; return outputs remain masked.",
+      "hypothesis_test": false
+    },
+    {
+      "id": "P1",
+      "name": "frozen_historical_test",
+      "report_first_public_start": "2012-01-01",
+      "report_first_public_end": "2015-12-31",
+      "use": "First released test after independent reconstruction.",
+      "hypothesis_test": true
+    },
+    {
+      "id": "P2",
+      "name": "frozen_historical_confirmation",
+      "report_first_public_start": "2016-01-01",
+      "report_first_public_end": "2019-12-31",
+      "use": "Confirmation with unchanged rule.",
+      "hypothesis_test": true
+    },
+    {
+      "id": "P3",
+      "name": "frozen_historical_confirmation",
+      "report_first_public_start": "2020-01-01",
+      "report_first_public_end": "2022-12-31",
+      "use": "Confirmation across a distinct market period with unchanged rule.",
+      "hypothesis_test": true
+    },
+    {
+      "id": "P4",
+      "name": "final_historical_holdout",
+      "report_first_public_start": "2023-01-01",
+      "report_first_public_end": "2024-12-31",
+      "use": "Final historical release; do not access if P1, P2, or P3 trigger failure stop.",
+      "hypothesis_test": true
+    },
+    {
+      "id": "F1",
+      "name": "prospective_paper_observation",
+      "report_first_public_start": "after_2026-08-15",
+      "use": "Forward observation only after historical gates; cover two complete annual-report disclosure cycles and every related 18-month outcome.",
+      "hypothesis_test": false
+    }
+  ],
+  "release_controls": {
+    "masking": "The rule author cannot view P1-P4 historical returns, matched-control results, or aggregate statistics before data acceptance, executable-code hash, synthetic tests, and independent reconstruction are frozen.",
+    "release_order": ["P1", "P2", "P3", "P4"],
+    "stop_on_failure": true,
+    "no_roll_forward_or_recut": true
+  },
+  "return_methodology": {
+    "per_security_formula": "net_total_return_i = (terminal_bid_value_i + net_cash_distribution_ledger_i - formation_ask_value_i - documented_entry_and_exit_levies_i) / formation_ask_value_i",
+    "annualization_formula": "annualized_net_return_i = (1 + net_total_return_i)^(365 / elapsed_calendar_days_i) - 1",
+    "cash_distribution_rule": "Cash distributions are recorded net of the predeclared documented research tax profile and remain in a non-interest-bearing cash ledger until outcome; they are not assumed to reinvest.",
+    "corporate_action_rule": "Evolve share count only through a complete retained corporate-action ledger. Missing or non-reconcilable events make the observation unresolved.",
+    "adjusted_price_prohibition": "A vendor adjusted-price series cannot substitute for raw event ledger, source, entitlement, and calculation evidence."
+  },
+  "matched_control": {
+    "method": "One-for-one without replacement: non-candidate in same exchange and CSRC two-digit industry with nearest free-float market capitalization at formation.",
+    "tie_break": "permanent security identifier ascending lexical order",
+    "no_valid_control": "unresolved; do not change exchange, industry, timing, or select an outcome-based substitute",
+    "same_return_and_execution_rules": true
+  },
+  "metrics_and_thresholds": [
+    {
+      "id": "M1",
+      "definition": "Median annualized_net_return_i across all resolved candidates in the partition.",
+      "threshold": "strictly greater than 0.05 in every P1-P4 partition",
+      "meaning": "Long-run research hurdle only; never a promise or floor."
+    },
+    {
+      "id": "M2",
+      "definition": "Median candidate-minus-matched-control annualized net-total-return difference.",
+      "threshold": "strictly greater than 0 in every P1-P4 partition"
+    },
+    {
+      "id": "M3",
+      "definition": "Resolved candidate/control pair count.",
+      "threshold": "at least 150 in every P1-P4 partition"
+    },
+    {
+      "id": "M4",
+      "definition": "Candidate and control outcome reconciliation rate across corporate actions, quotes, fees, taxes, status, and exit evidence.",
+      "threshold": "100 percent; unresolved results are not imputed"
+    },
+    {
+      "id": "M5",
+      "definition": "Ten worst individual annualized net outcomes, full outcome distribution, and unresolved/security-status log.",
+      "threshold": "disclosure only; cannot be offset by a median result"
+    }
+  ],
+  "statistical_boundary": {
+    "permitted_description": "A clustered-by-issuer and formation-year nonparametric bootstrap interval for M2 may be disclosed as robustness description.",
+    "prohibitions": [
+      "A pooled result cannot rescue a failed partition.",
+      "A bootstrap interval cannot create a pass or establish alpha.",
+      "Do not infer VaR, correlation, capacity, or a risk budget from cohort data."
+    ]
+  },
+  "admission_gates": {
+    "product_diligence": {
+      "required": [
+        "Permanent identifier, issuer, share class, exchange, currency, listing/renaming/delisting chain, and historical status.",
+        "Suspension, special-treatment, price-limit, ex-rights/ex-dividend, delisting, and cash-equity availability status.",
+        "Primary annual-report, audit-opinion, correction/restatement, ownership/share-capital, and material-event files with URL, first-public timestamp, retrieval timestamp, SHA-256, and source quality.",
+        "Dated exchange trading, lot, tick, settlement, transfer, tax, investor-eligibility, and account-restriction rules."
+      ],
+      "failure_status": "PRODUCT_DILIGENCE_FAIL"
+    },
+    "data_and_point_in_time": {
+      "required": [
+        "Rights-cleared point-in-time membership for SSE, SZSE, and BSE, including inactive and delisted records, identifier mappings, and coverage report.",
+        "Coverage of at least 99 percent of contemporaneous line count and 99.5 percent of free-float market capitalization for every operating exchange, with every gap named and quantified.",
+        "Primary filings, first-public timestamps, correction chains, CSRC classification history, share/free-float inputs, and exact cash-flow mapping.",
+        "Calendar, status, price-limit, unadjusted bid/ask/depth, and tradeability fields for formation and outcome.",
+        "Data dictionary, license/right record, raw-file checksums, deterministic run manifest, code version, and independent blinded reconstruction."
+      ],
+      "failure_status": "DATA_OR_POINT_IN_TIME_FAIL"
+    },
+    "total_return": {
+      "required": [
+        "Unadjusted prices, cash dividends, tax treatment under research profile, rights/placements, stock dividends, splits/consolidations, capital changes, mergers, tender offers, delisting payments, status events, and corrections.",
+        "Effective date, first-public availability, entitlement/record dates where relevant, source file/hash, and calculation version for every event.",
+        "Reconciled cash and share count from formation through terminal outcome."
+      ],
+      "prohibitions": [
+        "Do not assume adjusted close equals total return.",
+        "Do not assume declared dividend was paid or can be reinvested at an unknown price.",
+        "Do not value a delisted line at its last displayed close."
+      ],
+      "failure_status": "TOTAL_RETURN_FAIL"
+    },
+    "execution_and_cost": {
+      "formation_side": "timestamped displayed best offer",
+      "terminal_side": "timestamped displayed best bid",
+      "required": [
+        "Quote sizes, price limits, trading status, board-lot/tick constraints, T+1/settlement status, and dated fee/rule schedule.",
+        "Documented statutory levies, exchange/transfer fees, and predeclared research account-profile commission applied on legally relevant side.",
+        "Evidence of valid side quote/depth and reconciliation through settlement."
+      ],
+      "no_fill_treatment": "Suspension, locked price limit, missing valid side quote/depth, ineligible account/status, partial fill, rejected fill, no fill, or unreconciled settlement is EXECUTION_FAIL; do not use close price or automatic substitution.",
+      "capacity_claim": false
+    },
+    "forward_paper": {
+      "preconditions": [
+        "P1-P4 complete without failure stop.",
+        "Historical evidence independently reconstructed.",
+        "C39 code/data manifest immutable."
+      ],
+      "minimum_duration": "two complete annual-report disclosure cycles plus every associated 18-month outcome",
+      "record_before_formation": [
+        "Universe snapshot, source files/hashes, corporate-action ledger, eligibility decision, product status, account-profile assumption, quotes/depth, price-limit, settlement, tax, fee rules, and no_action or unresolved reason."
+      ],
+      "record_during_outcome": [
+        "Every distribution, status change, corporate action, missing-data incident, and reconciliation."
+      ],
+      "failure_conditions": [
+        "Omitted record.",
+        "Rule or data-version drift.",
+        "Silent product substitution.",
+        "Unapproved correction.",
+        "Independent-review failure."
+      ],
+      "failure_status": "FORWARD_PAPER_NOT_ADMITTED / NO_ACTION"
+    }
+  },
+  "anti_data_snooping_controls": [
+    "Freeze eligibility logic, industry mapping, formation delay, horizon, partitions, metrics, and thresholds before outcome access.",
+    "Prohibit parameter sweep, alternative score, top-N, alternate cash-flow definition, sector/exchange carve-out, horizon change, cost relaxation, or event-treatment change.",
+    "Retain all base-universe members and every failure in a denominator log; no survivor, delisting, halt, special-treatment, rename, or unavailable-line deletion.",
+    "Label every descriptive sensitivity or subgroup analysis non-decisive; it cannot replace a criterion or convert failure into pass.",
+    "Require new identifier, economically distinct rationale, preregistration before outcome access, and independent gates for any future route after a C39 failure."
+  ],
+  "failure_taxonomy": [
+    {
+      "condition": "Any M1-M4 threshold fails in P1, P2, P3, or P4.",
+      "disposition": "HYPOTHESIS_NOT_SUPPORTED; stop later releases and do not retune."
+    },
+    {
+      "condition": "Any product, source-right, point-in-time, corporate-action, total-return, quote/depth, fee/tax, or execution evidence is incomplete.",
+      "disposition": "UNMEASURABLE / NO_ACTION; do not calculate substitute proxy result."
+    },
+    {
+      "condition": "Code, data, calendar, accounting mapping, or event-handling defect after a release.",
+      "disposition": "Invalidate release, record defect, and rerun only identical frozen criterion with independently approved data correction; no criterion change."
+    },
+    {
+      "condition": "F1 incomplete, drifted, or independently rejected.",
+      "disposition": "FORWARD_PAPER_NOT_ADMITTED / NO_ACTION."
+    },
+    {
+      "condition": "All historical and F1 gates pass.",
+      "disposition": "SUPPORTED_FOR_FURTHER_RESEARCH_ONLY / NO_ACTION; separate portfolio-and-risk protocol remains mandatory."
+    }
+  ],
+  "current_disposition": {
+    "status": "NO_ACTION",
+    "statement": "C39 contains no selected live product, actionable weight or size, evaluated performance, or permission to trade. Its present function is only to make a future economic hypothesis falsifiable without reopening C34 or narrowing the open research universe after results.",
+    "actionability_confidence_percent": 0,
+    "confidence_interpretation": "Declared evidence boundary, not a return estimate."
+  }
+}

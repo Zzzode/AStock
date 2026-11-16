@@ -1,0 +1,1133 @@
+{
+  "as_of": "2026-08-15",
+  "audit_boundary": "A local hash and arithmetic audit cannot establish historical publication timing, a holder result, dealing availability, suitability, a return guarantee, or action.",
+  "audit_id": "DPSFS-R8-C11-INDEPENDENT-v1",
+  "audit_status": "PASS",
+  "comparison": {
+    "failure_count": 0,
+    "failures": [],
+    "match_count": 20
+  },
+  "independence_boundary": "The audit parses frozen raw NAV directly and does not import C11 capture/replay code.",
+  "independent_result": {
+    "annualized_cumulative_nav_change": 0.037200096161877916,
+    "complete_calendar_years": [
+      {
+        "complete": false,
+        "cumulative_nav_change": null,
+        "first_observation": "2020-06-05",
+        "last_observation": "2020-12-31",
+        "year": 2020
+      },
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.06445783132530125,
+        "first_observation": "2021-01-04",
+        "last_observation": "2021-12-31",
+        "year": 2021
+      },
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.01839275608375779,
+        "first_observation": "2022-01-04",
+        "last_observation": "2022-12-31",
+        "year": 2022
+      },
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.10734463276836137,
+        "first_observation": "2023-01-03",
+        "last_observation": "2023-12-31",
+        "year": 2023
+      },
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.014302442288390615,
+        "first_observation": "2024-01-02",
+        "last_observation": "2024-12-31",
+        "year": 2024
+      },
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.009647893131029983,
+        "first_observation": "2025-01-02",
+        "last_observation": "2025-12-31",
+        "year": 2025
+      },
+      {
+        "complete": false,
+        "cumulative_nav_change": null,
+        "first_observation": "2026-01-05",
+        "last_observation": "2026-08-14",
+        "year": 2026
+      }
+    ],
+    "complete_year_failure_count": 3,
+    "complete_year_failures": [
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.01839275608375779,
+        "first_observation": "2022-01-04",
+        "last_observation": "2022-12-31",
+        "year": 2022
+      },
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.014302442288390615,
+        "first_observation": "2024-01-02",
+        "last_observation": "2024-12-31",
+        "year": 2024
+      },
+      {
+        "complete": true,
+        "cumulative_nav_change": 0.009647893131029983,
+        "first_observation": "2025-01-02",
+        "last_observation": "2025-12-31",
+        "year": 2025
+      }
+    ],
+    "elapsed_calendar_days": 2261,
+    "first_cumulative_nav": 1.0,
+    "first_observation": "2020-06-05",
+    "input_failures": [],
+    "last_observation": "2026-08-14",
+    "maximum_drawdown_from_published_cumulative_nav": -0.07959743824336685,
+    "nav_observations": 1464,
+    "rolling_failure_count": 204,
+    "rolling_failures": [
+      {
+        "annualized_cumulative_nav_change": 0.04017895108914282,
+        "end_date": "2025-10-16",
+        "start_date": "2020-06-05"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.039960460549884,
+        "end_date": "2025-10-17",
+        "start_date": "2020-06-12"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04048628721934722,
+        "end_date": "2025-10-20",
+        "start_date": "2020-06-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.040564089589104624,
+        "end_date": "2025-10-21",
+        "start_date": "2020-06-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04055560160759253,
+        "end_date": "2025-10-22",
+        "start_date": "2020-06-30"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0424243952144272,
+        "end_date": "2025-10-23",
+        "start_date": "2020-07-03"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04007519893176115,
+        "end_date": "2025-10-24",
+        "start_date": "2020-07-10"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03815110406418998,
+        "end_date": "2025-10-27",
+        "start_date": "2020-07-17"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03759347631484844,
+        "end_date": "2025-10-28",
+        "start_date": "2020-07-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.037154302185470334,
+        "end_date": "2025-10-29",
+        "start_date": "2020-07-31"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03750244977371908,
+        "end_date": "2025-10-30",
+        "start_date": "2020-08-07"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03622403298132393,
+        "end_date": "2025-10-31",
+        "start_date": "2020-08-14"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03674905492521874,
+        "end_date": "2025-11-03",
+        "start_date": "2020-08-20"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03732750749953273,
+        "end_date": "2025-11-04",
+        "start_date": "2020-08-21"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03704546393478325,
+        "end_date": "2025-11-05",
+        "start_date": "2020-08-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03718822427891011,
+        "end_date": "2025-11-06",
+        "start_date": "2020-08-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03741593991135206,
+        "end_date": "2025-11-07",
+        "start_date": "2020-08-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03744274902717604,
+        "end_date": "2025-11-10",
+        "start_date": "2020-08-27"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03793568928342639,
+        "end_date": "2025-11-11",
+        "start_date": "2020-08-28"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.038598482625178177,
+        "end_date": "2025-11-12",
+        "start_date": "2020-08-31"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03833893229287977,
+        "end_date": "2025-11-13",
+        "start_date": "2020-09-01"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03831615088457774,
+        "end_date": "2025-11-14",
+        "start_date": "2020-09-02"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03842548105553778,
+        "end_date": "2025-11-17",
+        "start_date": "2020-09-03"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03874541471312454,
+        "end_date": "2025-11-18",
+        "start_date": "2020-09-04"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03886997682775317,
+        "end_date": "2025-11-19",
+        "start_date": "2020-09-07"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.038892386634276965,
+        "end_date": "2025-11-20",
+        "start_date": "2020-09-08"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03866032834931299,
+        "end_date": "2025-11-21",
+        "start_date": "2020-09-09"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.038548221609151945,
+        "end_date": "2025-11-24",
+        "start_date": "2020-09-10"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03819309265247095,
+        "end_date": "2025-11-25",
+        "start_date": "2020-09-11"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.037917174630922146,
+        "end_date": "2025-11-26",
+        "start_date": "2020-09-14"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.037916790687155366,
+        "end_date": "2025-11-27",
+        "start_date": "2020-09-15"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03836941112256942,
+        "end_date": "2025-11-28",
+        "start_date": "2020-09-16"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03878447644988481,
+        "end_date": "2025-12-01",
+        "start_date": "2020-09-17"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03900581492270927,
+        "end_date": "2025-12-02",
+        "start_date": "2020-09-18"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03981278047280079,
+        "end_date": "2025-12-03",
+        "start_date": "2020-09-21"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03879543445222411,
+        "end_date": "2025-12-04",
+        "start_date": "2020-09-22"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.037845319098217756,
+        "end_date": "2025-12-05",
+        "start_date": "2020-09-23"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03821041945636705,
+        "end_date": "2025-12-08",
+        "start_date": "2020-09-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03828982560505678,
+        "end_date": "2025-12-09",
+        "start_date": "2020-09-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.038320819800588435,
+        "end_date": "2025-12-10",
+        "start_date": "2020-09-28"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03819361297692425,
+        "end_date": "2025-12-11",
+        "start_date": "2020-09-29"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.036889092254278166,
+        "end_date": "2025-12-12",
+        "start_date": "2020-09-30"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03711350926408574,
+        "end_date": "2025-12-15",
+        "start_date": "2020-10-09"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03725952839824864,
+        "end_date": "2025-12-16",
+        "start_date": "2020-10-12"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03789904593342919,
+        "end_date": "2025-12-17",
+        "start_date": "2020-10-13"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.038487564802081486,
+        "end_date": "2025-12-18",
+        "start_date": "2020-10-14"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03950910755280623,
+        "end_date": "2025-12-19",
+        "start_date": "2020-10-15"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.038814016869643364,
+        "end_date": "2025-12-22",
+        "start_date": "2020-10-16"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03929497610555033,
+        "end_date": "2025-12-23",
+        "start_date": "2020-10-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03863531090379868,
+        "end_date": "2025-12-24",
+        "start_date": "2020-10-20"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03861771156108751,
+        "end_date": "2025-12-25",
+        "start_date": "2020-10-21"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03882064113522876,
+        "end_date": "2025-12-26",
+        "start_date": "2020-10-22"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.039941903380012134,
+        "end_date": "2025-12-29",
+        "start_date": "2020-10-23"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.039851718316227025,
+        "end_date": "2025-12-30",
+        "start_date": "2020-10-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04007598322975703,
+        "end_date": "2025-12-31",
+        "start_date": "2020-10-27"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.039983878079690616,
+        "end_date": "2026-01-05",
+        "start_date": "2020-10-28"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04034868457280383,
+        "end_date": "2026-01-06",
+        "start_date": "2020-10-29"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03966330620697334,
+        "end_date": "2026-01-07",
+        "start_date": "2020-10-30"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03934337022665613,
+        "end_date": "2026-01-08",
+        "start_date": "2020-11-02"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03815411949752723,
+        "end_date": "2026-01-09",
+        "start_date": "2020-11-03"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.036213101345279775,
+        "end_date": "2026-01-12",
+        "start_date": "2020-11-04"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.036964892836206964,
+        "end_date": "2026-01-13",
+        "start_date": "2020-11-05"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03733411318367508,
+        "end_date": "2026-01-14",
+        "start_date": "2020-11-06"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.039060971476331696,
+        "end_date": "2026-01-15",
+        "start_date": "2020-11-09"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0395494718431908,
+        "end_date": "2026-01-16",
+        "start_date": "2020-11-10"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04108602768126279,
+        "end_date": "2026-01-19",
+        "start_date": "2020-11-11"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04195210953201878,
+        "end_date": "2026-01-20",
+        "start_date": "2020-11-12"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04159272364462696,
+        "end_date": "2026-01-21",
+        "start_date": "2020-11-13"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.041876715231024875,
+        "end_date": "2026-01-22",
+        "start_date": "2020-11-16"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.041510490514489184,
+        "end_date": "2026-01-23",
+        "start_date": "2020-11-17"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04260038113906783,
+        "end_date": "2026-01-26",
+        "start_date": "2020-11-18"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.041607130516095436,
+        "end_date": "2026-01-27",
+        "start_date": "2020-11-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04319763147502065,
+        "end_date": "2026-01-28",
+        "start_date": "2020-11-20"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.043622363077932214,
+        "end_date": "2026-01-29",
+        "start_date": "2020-11-23"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04367757912773884,
+        "end_date": "2026-01-30",
+        "start_date": "2020-11-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04396525285463526,
+        "end_date": "2026-02-02",
+        "start_date": "2020-11-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04340594144171561,
+        "end_date": "2026-02-03",
+        "start_date": "2020-11-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04442525931653951,
+        "end_date": "2026-02-04",
+        "start_date": "2020-11-27"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04619526666103568,
+        "end_date": "2026-02-05",
+        "start_date": "2020-11-30"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.044531610238779606,
+        "end_date": "2026-02-06",
+        "start_date": "2020-12-01"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0451661093214073,
+        "end_date": "2026-02-09",
+        "start_date": "2020-12-02"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04510796128815242,
+        "end_date": "2026-02-10",
+        "start_date": "2020-12-03"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04465436436898407,
+        "end_date": "2026-02-11",
+        "start_date": "2020-12-04"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04468607511310707,
+        "end_date": "2026-02-12",
+        "start_date": "2020-12-07"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.044516359228083946,
+        "end_date": "2026-02-13",
+        "start_date": "2020-12-08"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04556295332485516,
+        "end_date": "2026-02-24",
+        "start_date": "2020-12-09"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04442722836090485,
+        "end_date": "2026-02-25",
+        "start_date": "2020-12-10"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04389734594943184,
+        "end_date": "2026-02-26",
+        "start_date": "2020-12-11"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04319159397696959,
+        "end_date": "2026-02-27",
+        "start_date": "2020-12-14"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0438387241105096,
+        "end_date": "2026-03-02",
+        "start_date": "2020-12-15"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.043747849294163865,
+        "end_date": "2026-03-03",
+        "start_date": "2020-12-16"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04344274918323521,
+        "end_date": "2026-03-04",
+        "start_date": "2020-12-17"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.044727243700896535,
+        "end_date": "2026-03-05",
+        "start_date": "2020-12-18"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04484823721663389,
+        "end_date": "2026-03-06",
+        "start_date": "2020-12-21"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.045329234634102544,
+        "end_date": "2026-03-09",
+        "start_date": "2020-12-22"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04420442121435353,
+        "end_date": "2026-03-10",
+        "start_date": "2020-12-23"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04508105646074112,
+        "end_date": "2026-03-11",
+        "start_date": "2020-12-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04467646634126465,
+        "end_date": "2026-03-12",
+        "start_date": "2020-12-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04472687504245498,
+        "end_date": "2026-03-13",
+        "start_date": "2020-12-28"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04448880307429115,
+        "end_date": "2026-03-16",
+        "start_date": "2020-12-29"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04314259295252487,
+        "end_date": "2026-03-17",
+        "start_date": "2020-12-30"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04327726384890762,
+        "end_date": "2026-03-18",
+        "start_date": "2020-12-31"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04345886839550239,
+        "end_date": "2026-03-19",
+        "start_date": "2021-01-04"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04204282685397942,
+        "end_date": "2026-03-20",
+        "start_date": "2021-01-05"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.042110688821605846,
+        "end_date": "2026-03-23",
+        "start_date": "2021-01-06"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.042538264600423314,
+        "end_date": "2026-03-24",
+        "start_date": "2021-01-07"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0444364572890088,
+        "end_date": "2026-03-25",
+        "start_date": "2021-01-08"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.044541585610228474,
+        "end_date": "2026-03-26",
+        "start_date": "2021-01-11"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.043828719978546316,
+        "end_date": "2026-03-27",
+        "start_date": "2021-01-12"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.045771327145049945,
+        "end_date": "2026-03-30",
+        "start_date": "2021-01-13"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04574584918314084,
+        "end_date": "2026-03-31",
+        "start_date": "2021-01-14"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.044910660064264585,
+        "end_date": "2026-04-01",
+        "start_date": "2021-01-15"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04498363071881295,
+        "end_date": "2026-04-02",
+        "start_date": "2021-01-18"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04276914761105477,
+        "end_date": "2026-04-03",
+        "start_date": "2021-01-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.042472351539958764,
+        "end_date": "2026-04-07",
+        "start_date": "2021-01-20"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0428850841319548,
+        "end_date": "2026-04-08",
+        "start_date": "2021-01-21"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04155259403458733,
+        "end_date": "2026-04-09",
+        "start_date": "2021-01-22"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04047315413782737,
+        "end_date": "2026-04-10",
+        "start_date": "2021-01-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04136016754489824,
+        "end_date": "2026-04-13",
+        "start_date": "2021-01-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.040749852311490864,
+        "end_date": "2026-04-14",
+        "start_date": "2021-01-27"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0405320574211272,
+        "end_date": "2026-04-15",
+        "start_date": "2021-01-28"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04011960703242967,
+        "end_date": "2026-04-16",
+        "start_date": "2021-01-29"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03998237589100739,
+        "end_date": "2026-04-17",
+        "start_date": "2021-02-01"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04003241524199974,
+        "end_date": "2026-04-20",
+        "start_date": "2021-02-02"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04120684220556736,
+        "end_date": "2026-04-21",
+        "start_date": "2021-02-03"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04101405129394586,
+        "end_date": "2026-04-22",
+        "start_date": "2021-02-04"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.040789271600190524,
+        "end_date": "2026-04-23",
+        "start_date": "2021-02-05"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04016138084256471,
+        "end_date": "2026-04-24",
+        "start_date": "2021-02-08"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04027624685456255,
+        "end_date": "2026-04-27",
+        "start_date": "2021-02-09"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.04088682770724983,
+        "end_date": "2026-04-28",
+        "start_date": "2021-02-10"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.038958451981804476,
+        "end_date": "2026-04-29",
+        "start_date": "2021-02-18"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03793979325529495,
+        "end_date": "2026-04-30",
+        "start_date": "2021-02-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03801659309220873,
+        "end_date": "2026-05-06",
+        "start_date": "2021-02-22"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.037181209205338295,
+        "end_date": "2026-05-07",
+        "start_date": "2021-02-23"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03659481092486838,
+        "end_date": "2026-05-08",
+        "start_date": "2021-02-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03692874243606137,
+        "end_date": "2026-05-11",
+        "start_date": "2021-02-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03756557433215746,
+        "end_date": "2026-05-12",
+        "start_date": "2021-02-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03661626658106276,
+        "end_date": "2026-05-13",
+        "start_date": "2021-03-01"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03611382539002839,
+        "end_date": "2026-05-14",
+        "start_date": "2021-03-02"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.036631740830527226,
+        "end_date": "2026-05-15",
+        "start_date": "2021-03-03"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03747931998230869,
+        "end_date": "2026-05-18",
+        "start_date": "2021-03-04"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03808111397924363,
+        "end_date": "2026-05-19",
+        "start_date": "2021-03-05"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03863386190498597,
+        "end_date": "2026-05-20",
+        "start_date": "2021-03-08"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03748216332571719,
+        "end_date": "2026-05-21",
+        "start_date": "2021-03-09"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03897073112027605,
+        "end_date": "2026-05-22",
+        "start_date": "2021-03-10"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03742427812831628,
+        "end_date": "2026-05-25",
+        "start_date": "2021-03-11"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03806106112894381,
+        "end_date": "2026-05-26",
+        "start_date": "2021-03-12"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03811630249103737,
+        "end_date": "2026-05-27",
+        "start_date": "2021-03-15"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.037177357226405805,
+        "end_date": "2026-05-28",
+        "start_date": "2021-03-16"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.036826853084800604,
+        "end_date": "2026-05-29",
+        "start_date": "2021-03-17"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03572891920822174,
+        "end_date": "2026-06-01",
+        "start_date": "2021-03-18"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03567730791385326,
+        "end_date": "2026-06-02",
+        "start_date": "2021-03-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03607152454956508,
+        "end_date": "2026-06-03",
+        "start_date": "2021-03-22"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03609049804929221,
+        "end_date": "2026-06-04",
+        "start_date": "2021-03-23"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.037147336974647116,
+        "end_date": "2026-06-05",
+        "start_date": "2021-03-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.035851337213611334,
+        "end_date": "2026-06-08",
+        "start_date": "2021-03-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03624949947660361,
+        "end_date": "2026-06-09",
+        "start_date": "2021-03-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03544521308737658,
+        "end_date": "2026-06-10",
+        "start_date": "2021-03-29"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.034677542403025896,
+        "end_date": "2026-06-11",
+        "start_date": "2021-03-30"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03460454294815385,
+        "end_date": "2026-06-12",
+        "start_date": "2021-03-31"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03583807132919903,
+        "end_date": "2026-06-15",
+        "start_date": "2021-04-01"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0350508041200186,
+        "end_date": "2026-06-16",
+        "start_date": "2021-04-02"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03517551056450463,
+        "end_date": "2026-06-17",
+        "start_date": "2021-04-06"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03476248011187111,
+        "end_date": "2026-06-18",
+        "start_date": "2021-04-07"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03535294657934629,
+        "end_date": "2026-06-22",
+        "start_date": "2021-04-08"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.034770127154797326,
+        "end_date": "2026-06-23",
+        "start_date": "2021-04-09"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03521911784831078,
+        "end_date": "2026-06-24",
+        "start_date": "2021-04-12"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.034531633693617,
+        "end_date": "2026-06-25",
+        "start_date": "2021-04-13"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0325510944703189,
+        "end_date": "2026-06-26",
+        "start_date": "2021-04-14"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0324127819744795,
+        "end_date": "2026-06-29",
+        "start_date": "2021-04-15"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.032569336401851556,
+        "end_date": "2026-06-30",
+        "start_date": "2021-04-16"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03283507167911259,
+        "end_date": "2026-07-01",
+        "start_date": "2021-04-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03108056978886009,
+        "end_date": "2026-07-02",
+        "start_date": "2021-04-20"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03219188401900985,
+        "end_date": "2026-07-03",
+        "start_date": "2021-04-21"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03131030647754507,
+        "end_date": "2026-07-06",
+        "start_date": "2021-04-22"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.030735943278520805,
+        "end_date": "2026-07-07",
+        "start_date": "2021-04-23"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.029294216321126942,
+        "end_date": "2026-07-08",
+        "start_date": "2021-04-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.030157039031623478,
+        "end_date": "2026-07-09",
+        "start_date": "2021-04-27"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.027767178122888536,
+        "end_date": "2026-07-10",
+        "start_date": "2021-04-28"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.027097495394944104,
+        "end_date": "2026-07-13",
+        "start_date": "2021-04-29"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03019518741626781,
+        "end_date": "2026-07-14",
+        "start_date": "2021-04-30"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.030130304901928362,
+        "end_date": "2026-07-15",
+        "start_date": "2021-05-06"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.02979290955695668,
+        "end_date": "2026-07-16",
+        "start_date": "2021-05-07"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.028320362803916144,
+        "end_date": "2026-07-17",
+        "start_date": "2021-05-10"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03002131935534802,
+        "end_date": "2026-07-20",
+        "start_date": "2021-05-11"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.029127548149884053,
+        "end_date": "2026-07-21",
+        "start_date": "2021-05-12"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.028321196155351336,
+        "end_date": "2026-07-22",
+        "start_date": "2021-05-13"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.030317115352246127,
+        "end_date": "2026-07-23",
+        "start_date": "2021-05-14"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.028984109871982078,
+        "end_date": "2026-07-24",
+        "start_date": "2021-05-17"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03131868927405823,
+        "end_date": "2026-07-27",
+        "start_date": "2021-05-18"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.029787583078283664,
+        "end_date": "2026-07-28",
+        "start_date": "2021-05-19"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.029286681426605288,
+        "end_date": "2026-07-29",
+        "start_date": "2021-05-20"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.027610372549773388,
+        "end_date": "2026-07-30",
+        "start_date": "2021-05-21"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.02837382834957758,
+        "end_date": "2026-07-31",
+        "start_date": "2021-05-24"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.029136391098679493,
+        "end_date": "2026-08-03",
+        "start_date": "2021-05-25"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.030129635831698698,
+        "end_date": "2026-08-04",
+        "start_date": "2021-05-26"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.031070407162527403,
+        "end_date": "2026-08-05",
+        "start_date": "2021-05-27"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03213892384727868,
+        "end_date": "2026-08-06",
+        "start_date": "2021-05-28"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.0330534010807817,
+        "end_date": "2026-08-07",
+        "start_date": "2021-05-31"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03300076103794525,
+        "end_date": "2026-08-10",
+        "start_date": "2021-06-01"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03233698490020487,
+        "end_date": "2026-08-11",
+        "start_date": "2021-06-02"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03375281906438388,
+        "end_date": "2026-08-12",
+        "start_date": "2021-06-03"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.032143243518719666,
+        "end_date": "2026-08-13",
+        "start_date": "2021-06-04"
+      },
+      {
+        "annualized_cumulative_nav_change": 0.03294961117456463,
+        "end_date": "2026-08-14",
+        "start_date": "2021-06-07"
+      }
+    ],
+    "rolling_max_annualized_cumulative_nav_change": 0.04619526666103568,
+    "rolling_min_annualized_cumulative_nav_change": 0.027097495394944104,
+    "rolling_pass_count": 0,
+    "rolling_window_count": 204,
+    "rolling_window_observations": 1260,
+    "status": "OFFICIAL_NAV_PROXY_HURDLE_FALSIFIED",
+    "terminal_cumulative_nav": 1.2537
+  },
+  "raw_source_manifest": {
+    "capture_batch": "c11-market-neutral-fund-20260815",
+    "file_count": 4,
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c11-market-neutral-fund-20260815/manifest.json",
+    "sha256": "ab3bb3225bcf902d05ea9187c73315ef6c52e3a837ad721d3ee0e38f01c28ec7"
+  }
+}

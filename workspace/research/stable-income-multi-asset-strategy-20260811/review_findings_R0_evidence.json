@@ -1,0 +1,73 @@
+{
+  "cycle": "R0_evidence",
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "reviewed_source_sha256": "04ba969991bb6cb70e21da378ff4b1c93ea8dd100fc0dedf884f05260a55f94d",
+  "reviewed_source_graph_sha256": "8dc0c58118162f8e456caf8ec025ed9312c5c900b97c5f3ee94af0a2c00302e4",
+  "independent_reviewed_at": "2026-08-12T05:09:15+08:00",
+  "reviewer": "independent_final_ic_review",
+  "publishability_status": "PASS_CONDITIONAL_RESEARCH_FRAMEWORK",
+  "publishability_score": 95,
+  "review_summary": "Independent R0 review hash-validated all 15 active archived payloads against the two active manifests. The active reader relies only on S01--S13 and S15--S16. S14, M01 and D01--D08 remain unrecovered where historical records were incomplete, but are expressly retired and prohibited from active conclusions.",
+  "findings": [
+    {
+      "issue_id": "R0-S-001",
+      "cycle": "R0_evidence",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance",
+      "artifact": "sources/official-20260811/official_source_capture_index.md; data/source_registry.json",
+      "evidence": "The dated source index contains official links and retrieval metadata, but no immutable local primary-document capture with hash, page/section locator and successful retrieval record for every material source.",
+      "fix_required": "Archive each original primary source in the dated official-source batch, record local path, SHA-256, title, locator and capture status in the registry, then independently re-verify cited claims.",
+      "blocking_gate": "primary-source archival",
+      "status": "superseded",
+      "verifier_ref": "independent R0 evidence review",
+      "reopened_count": 0,
+      "superseded_by": "R0-S-003"
+    },
+    {
+      "issue_id": "R0-S-002",
+      "cycle": "R0_evidence",
+      "severity": "S",
+      "owner_skill": "research-report-review",
+      "owner_agent": "orchestrator",
+      "artifact": "review findings, repair plans, review_log.md, final_signoff.*, research_workflow_eval.*",
+      "evidence": "The original review found the governance lifecycle absent. The artifacts have now been created but require independent re-read and an updated gate run before closure.",
+      "fix_required": "Independently verify the complete lifecycle and gate output after all repairs; close only when every required artifact and review status is confirmed.",
+      "blocking_gate": "review lifecycle",
+      "status": "verified",
+      "verifier_ref": "workspace/research/tools/run_research_gates.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-A-001",
+      "cycle": "R0_evidence",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "artifact": "analysis/cashflow_and_tax.md; sections/ch04_product_mechanics.tex; sections/ch05_cashflow.tex; data/claim_audit.*",
+      "evidence": "The prior wording implied an absolute absence of gold-ETF cash distributions, while the cited product document permits a conditional fund distribution mechanism.",
+      "fix_required": "State that gold itself does not generate interest, while any fund distribution is conditional, non-fixed and excluded from a fixed-income assumption; independently confirm the correction against S11.",
+      "blocking_gate": "claim-scope audit",
+      "status": "verified",
+      "verifier_ref": "independent R0 evidence re-read",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-S-003",
+      "cycle": "R0_evidence",
+      "scope_id": "strategic-allocation-etf-first-v2-20260811",
+      "severity": "S",
+      "owner_skill": "source-governance",
+      "owner_agent": "data-verifier",
+      "artifact": "data/source_archive_status.json; data/source_registry.json; data/dividend_evidence_20260811.json; sources/official-20260811/archive/*/manifest.json",
+      "evidence": "Independent R0 review verified the declared active scope: S01--S13 and S15--S16 are 15 successful records with local paths and SHA-256 values in the two active manifests; all 15 payload hashes matched their manifest records. The final reader identifies that active scope and expressly excludes S14, M01 and D01--D08. Historical raw-byte gaps were not recovered and cannot support active targets, allocation, valuation, cash or execution conclusions.",
+      "fix_required": "No active-scope action remains. Reopen this finding before any retired legacy record is reintroduced into an active reader conclusion; such a change requires a valid original, locator and fresh independent claim review.",
+      "blocking_gate": "none for the declared active scope",
+      "status": "resolved",
+      "verifier_ref": "data/source_archive_status.json active_scope; sources/official-20260811/archive/s01-s08/manifest.json; sources/official-20260811/archive/s09-s16/manifest.json; independent hash check 2026-08-12",
+      "reopened_count": 1,
+      "resolved_at": "2026-08-12T05:09:15+08:00",
+      "resolution_basis": "Active-scope closure is by transparent retirement of non-decisive legacy evidence, not by a claim that missing historical bytes were recovered."
+    }
+  ]
+}

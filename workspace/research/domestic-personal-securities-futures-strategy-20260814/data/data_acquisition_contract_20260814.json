@@ -1,0 +1,2099 @@
+{
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "contract_id": "DPSFS-DAC-v12",
+  "schema_version": "data_acquisition_contract.v12",
+  "version": 12,
+  "as_of": "2026-08-14",
+  "status": "draft_not_frozen_no_entitlement_no_replay",
+  "research_only": true,
+  "portfolio_q": 0,
+  "purpose": "Specify the testable data, entitlement, provenance and acceptance package required before a cost-aware paper replay. This is not a data licence, a performance result, an allocation or an investment action.",
+  "owners": {
+    "contract_owner": "research_orchestrator",
+    "data_owner": "future_entitled_data_operator",
+    "independent_verifier": "future_R0_R1_risk_reviewer"
+  },
+  "data_dictionary_template": {
+    "dictionary_id": "DPSFS-DD-v8",
+    "schema_version": "replay_data_dictionary_template.v8",
+    "path": "data/replay_data_dictionary_template_20260814.json",
+    "status": "template_not_frozen_no_data",
+    "required_control_tables": [
+      "replay_run_freeze_record",
+      "replay_candidate_endpoint_roster",
+      "replay_endpoint_population_audit",
+      "frozen_fx_quote_conversion",
+      "master_calendar_daily_valuation_coverage",
+      "frozen_unitization_method_definition",
+      "portfolio_unitization_ledger",
+      "portfolio_position_lot_mark_ledger",
+      "portfolio_cashflow_pnl_ledger",
+      "replay_reconciliation_residual",
+      "execution_fill_ledger",
+      "cash_margin_collateral_transfer_pair",
+      "broker_fee_term",
+      "tax_levy_term",
+      "prospective_state_configuration_coverage_audit"
+    ],
+    "boundary": "The template supplies normalized field names and controls only. A freeze record must bind DPSFS-DD-v8, its schema version, approved source mapping and SHA-256 before replay; a different dictionary is not an implicit substitute."
+  },
+  "source_dependencies": [
+    "E08",
+    "F02",
+    "F04",
+    "F05",
+    "F06",
+    "D01"
+  ],
+  "definitions": {
+    "as_of": "The economic or trading-session time to which a source record refers.",
+    "available_at": "The earliest documented timestamp at which the source made the specific record available to the research process; vendor publication time and local receipt time are stored separately.",
+    "retrospective": "A historic record fetched after its as_of date without a vendor-provided historical available_at/vintage record. It cannot be represented as point-in-time evidence.",
+    "no_fill": "A predeclared state in which a required transaction cannot occur under documented market, route or contract conditions. It is not a zero-cost close fill.",
+    "source_revision": "A supplier-defined revision/version identifier or, if none exists, an append-only local revision sequence tied to the raw-response hash.",
+    "replay_run_freeze_record": "The single immutable, signed, hash-addressed run-binding entity keyed by replay_run_id. Its replay_run_freeze_record_sha256 is the only permissible run-binding hash for a formal replay.",
+    "bound_row": "A replay-run-scoped row that carries replay_run_id and replay_run_freeze_record_sha256 and whose values equal the canonical frozen run-binding entity byte-for-byte.",
+    "execution_state": "The lifecycle state of the order/fill attempt. It is distinct from settlement_state; SUBMITTED and FAILED are execution states, not evidence of settlement.",
+    "settlement_state": "The lifecycle state of cash, delivery or clearing settlement after a fill. Settlement FAILED is distinct from execution FAILED because it is stored in the separate settlement-state domain.",
+    "fill_leg": "One immutable incremental execution for an order, keyed by order and sequence, carrying delta, cumulative and residual quantity plus its own price, cost components and settlement allocation."
+  },
+  "freeze_control": {
+    "state": "not_frozen",
+    "effective_from": null,
+    "supersedes": "DPSFS-DAC-v11-draft",
+    "draft_boundary": "No raw data package, rulebook version, universe, allocation, replay result or action is approved by this draft.",
+    "required_freeze_record": {
+      "artifact": "governance/data_contract_freeze_record.json",
+      "required_fields": [
+        "replay_run_id",
+        "canonical_freeze_record_artifact",
+        "canonical_freeze_record_sha256",
+        "replay_run_freeze_record_schema_version",
+        "replay_run_freeze_record_sha256",
+        "data_contract_freeze_record_sha256",
+        "data_contract_sha256",
+        "protocol_id",
+        "protocol_version",
+        "protocol_sha256",
+        "freeze_timestamp",
+        "supersedes_if_any",
+        "freeze_status",
+        "contract_id",
+        "contract_version",
+        "contract_sha256",
+        "rulebook_id",
+        "rulebook_version",
+        "rulebook_sha256",
+        "formal_replay_protocol_id",
+        "formal_replay_protocol_version",
+        "formal_replay_protocol_sha256",
+        "decision_universe_sha256",
+        "u0_snapshot_sha256",
+        "u0_to_t2_derivation_audit_sha256",
+        "data_dictionary_artifact",
+        "data_dictionary_id",
+        "data_dictionary_schema_version",
+        "data_dictionary_sha256",
+        "primary_holdout_window_predicate_id",
+        "primary_holdout_window_predicate_sha256",
+        "primary_holdout_start_state_policy_sha256",
+        "conditional_submission_path_timestamp_policy_sha256",
+        "cash_collateral_role_applicability_policy_sha256",
+        "cash_collateral_scope_resolution_policy_sha256",
+        "order_transition_chain_invariant_policy_sha256",
+        "cash_margin_settlement_ledger_event_schema_sha256",
+        "execution_model_and_tradability_policy_sha256",
+        "partial_fill_terminal_state_policy_sha256",
+        "fee_tax_provenance_and_currency_policy_sha256",
+        "endpoint_result_schema_sha256",
+        "end_of_run_carry_cancel_policy_sha256",
+        "endpoint_calculation_population_policy_sha256",
+        "master_calendar_id",
+        "master_calendar_sha256",
+        "evaluation_interval_start",
+        "evaluation_interval_end",
+        "raw_data_coverage_start",
+        "raw_data_coverage_end",
+        "candidate_generation_rule_id",
+        "candidate_generation_rule_sha256",
+        "candidate_endpoint_roster_id",
+        "candidate_endpoint_roster_sha256",
+        "expected_development_count",
+        "expected_crossing_count",
+        "endpoint_status_rule_id",
+        "endpoint_status_rule_sha256",
+        "reconciliation_expected_matrix_id",
+        "reconciliation_expected_matrix_sha256",
+        "fill_event_link_allocation_rule_id",
+        "fill_event_link_allocation_rule_sha256",
+        "fx_conversion_policy_id",
+        "fx_conversion_policy_sha256",
+        "master_calendar_daily_coverage_rule_id",
+        "master_calendar_daily_coverage_rule_sha256",
+        "unitization_method_id",
+        "unitization_method_version",
+        "unitization_method_sha256",
+        "portfolio_unitization_positions_lots_cashflow_reconciliation_policy_sha256",
+        "fill_leg_partial_fill_allocation_policy_sha256",
+        "broker_tax_component_policy_sha256",
+        "execution_settlement_state_policy_sha256",
+        "prospective_state_configuration_coverage_policy_sha256",
+        "lockbox_holdout_start",
+        "lockbox_holdout_end",
+        "maximum_input_lookback_or_warmup",
+        "input_manifest_sha256",
+        "source_revision_cutoff",
+        "replay_code_commit",
+        "runtime_environment_lock_or_hash",
+        "exact_run_command",
+        "first_permitted_outcome_view_at",
+        "risk_feasibility_control_sha256",
+        "order_state_transition_matrix_sha256",
+        "entitlement_evidence_hashes",
+        "expected_candidate_endpoint_count",
+        "expected_primary_holdout_candidate_endpoint_count",
+        "development_interval_start",
+        "development_interval_end",
+        "reporting_interval_start",
+        "reporting_interval_end",
+        "approver_roles",
+        "approved_at",
+        "effective_from",
+        "change_control_policy"
+      ]
+    },
+    "change_control": {
+      "before_freeze": "Changes require a version increment, a documented rationale and an independent R0 review.",
+      "after_freeze": "Any material field, timing, universe, cost, acceptance-threshold or rule change creates a new contract/rulebook version and invalidates comparability with the frozen replay until separately reviewed.",
+      "prohibited": [
+        "Editing a frozen raw file in place.",
+        "Replacing a failed observation with a forward-filled price, inferred fill or undisclosed vendor revision.",
+        "Changing an acceptance threshold after viewing the result it evaluates."
+      ]
+      }
+    },
+    "canonical_replay_freeze_crosswalk": {
+      "single_authoritative_artifact": "governance/data_contract_freeze_record.json",
+      "cross_bound_artifacts": [
+        "data-acquisition contract",
+        "formal replay protocol",
+        "rulebook",
+        "replay-run freeze record and bound-row admission policy",
+        "U0 snapshot and U0-to-T2 derivation audit",
+        "data dictionary and input manifest",
+        "primary-holdout predicate and lockbox definition",
+        "primary-holdout start-state policy and integrity audit",
+        "order-state-transition matrix",
+        "conditional submission-path and timestamp policy",
+        "cash/collateral role-applicability policy",
+        "cash/collateral scope-resolution policy",
+        "order-transition-chain invariant and cash/margin/settlement event schema",
+        "endpoint calculation/population roster and count-audit schema",
+        "unitization, position/lot/mark, cashflow/P&L and reconciliation controls",
+        "execution-model/tradability, execution-versus-settlement state, end-of-run carry/cancel, fill-leg/partial-fill allocation, fee-tax/currency and endpoint-result controls",
+        "dated broker/tax component-term foreign keys and exact event-type-to-application-role mapping",
+        "prospective state/configuration coverage-audit schema and zero-blocking-row assertion",
+        "risk-and-feasibility control pack"
+      ],
+      "equality_rule": "The canonical record stores each referenced ID, version and SHA-256 exactly once. The replay runtime, protocol report, daily ledger and endpoint table must echo those values byte-for-byte. A missing, duplicated-with-different-value or unmatched binding is INVALID; no result or holdout label may be released.",
+      "timing_rule": "The canonical record must state the source_revision_cutoff, replay_code_commit, runtime_environment_lock_or_hash, exact_run_command, lockbox_holdout_start/end, maximum_input_lookback_or_warmup and first_permitted_outcome_view_at. It also binds the primary-holdout start-state, conditional submission-path/timestamp, cash/collateral role-applicability, scope-resolution, transition-chain, event-schema, endpoint calculation/population, unitization/lot/reconciliation, execution-model/tradability, execution-settlement separation, end-of-run carry/cancel, fill-leg allocation, broker-tax component FK, event-role mapping, fee-tax/currency, prospective-coverage and endpoint-result policies before any outcome view."
+    },
+  "frozen_run_binding_and_bound_row_control": {
+    "dictionary_table": "replay_run_freeze_record",
+    "schema_version": "replay_run_freeze_record.v2",
+    "canonical_artifact": "governance/data_contract_freeze_record.json",
+    "binding_identity": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256"
+    ],
+    "immutability_rule": "Exactly one signed canonical record is active for one replay_run_id. replay_run_freeze_record_sha256 is computed from the canonical freeze serialization excluding that hash field itself (or from the separately named canonical freeze artifact), never from a self-referential row hash. After approval, every material field, referenced SHA-256 and that canonical serialization is immutable. A correction requires a new replay_run_id and new signed record; no in-place mutation, alias or post-result rebinding is permitted.",
+    "required_entity_fields": [
+      "replay_run_id",
+      "canonical_freeze_record_artifact",
+      "canonical_freeze_record_sha256",
+      "replay_run_freeze_record_schema_version",
+      "replay_run_freeze_record_sha256",
+      "data_contract_freeze_record_sha256",
+      "data_contract_sha256",
+      "protocol_id",
+      "protocol_version",
+      "protocol_sha256",
+      "freeze_timestamp",
+      "supersedes_if_any",
+      "freeze_status",
+      "contract_id",
+      "contract_version",
+      "formal_replay_protocol_id",
+      "formal_replay_protocol_version",
+      "rulebook_id",
+      "rulebook_version",
+      "data_dictionary_id",
+      "data_dictionary_schema_version",
+      "data_dictionary_sha256",
+      "master_calendar_id",
+      "master_calendar_sha256",
+      "evaluation_interval_start",
+      "evaluation_interval_end",
+      "raw_data_coverage_start",
+      "raw_data_coverage_end",
+      "candidate_generation_rule_id",
+      "candidate_generation_rule_sha256",
+      "candidate_endpoint_roster_id",
+      "candidate_endpoint_roster_sha256",
+      "expected_development_count",
+      "expected_crossing_count",
+      "endpoint_status_rule_id",
+      "endpoint_status_rule_sha256",
+      "reconciliation_expected_matrix_id",
+      "reconciliation_expected_matrix_sha256",
+      "fill_event_link_allocation_rule_id",
+      "fill_event_link_allocation_rule_sha256",
+      "fx_conversion_policy_id",
+      "fx_conversion_policy_sha256",
+      "master_calendar_daily_coverage_rule_id",
+      "master_calendar_daily_coverage_rule_sha256",
+      "unitization_method_id",
+      "unitization_method_version",
+      "unitization_method_sha256",
+      "input_manifest_sha256",
+      "source_revision_cutoff",
+      "replay_code_commit",
+      "runtime_environment_lock_or_hash",
+      "exact_run_command",
+      "approved_at",
+      "development_interval_start",
+      "development_interval_end",
+      "reporting_interval_start",
+      "reporting_interval_end",
+      "first_permitted_outcome_view_at"
+    ],
+    "bound_row_policy": {
+      "applies_to_dictionary_tables": [
+        "execution_order_ledger",
+        "execution_order_state_transition",
+        "execution_order_settlement_transition",
+        "execution_fill_ledger",
+        "execution_fill_ledger_event_link",
+      "execution_fee_tax_component",
+      "execution_feasibility_reservation",
+      "frozen_fx_quote_conversion",
+        "master_calendar_daily_valuation_coverage",
+        "frozen_unitization_method_definition",
+        "daily_portfolio_ledger",
+        "portfolio_unitization_ledger",
+        "portfolio_position_lot_mark_ledger",
+      "portfolio_cashflow_pnl_ledger",
+      "replay_reconciliation_residual",
+      "execution_cash_margin_settlement_ledger_event",
+      "cash_margin_collateral_transfer_pair",
+      "cash_collateral_role_applicability_audit",
+        "primary_holdout_start_state_manifest",
+        "primary_holdout_start_state_component",
+        "frozen_roll_delivery_expiry_parameter_state",
+        "replay_candidate_endpoint_roster",
+        "replay_endpoint_population_audit",
+        "replay_endpoint_result",
+        "endpoint_unit_nav_chain_member",
+        "prospective_state_configuration_coverage_audit"
+      ],
+      "required_row_foreign_keys": [
+        "replay_run_id",
+        "replay_run_freeze_record_sha256"
+      ],
+      "equality_rule": "Every bound-row replay_run_id resolves to exactly one canonical record, and the row's replay_run_freeze_record_sha256 binding field must equal that parent record's replay_run_freeze_record_sha256 byte-for-byte. Independent row/content hashes remain their own values and must not be forced to equal the parent binding hash. A row may not mix input, dictionary, policy, source-cutoff or code bindings from another run.",
+      "admission_rule": "A run-scoped row without both foreign keys, with an unmatched hash, a duplicate primary identity under different binding hashes, or a binding created after first outcome view is rejected from formal replay and counted as INVALID rather than omitted.",
+      "cross_table_rule": "All foreign keys between run-scoped tables must preserve the same replay_run_id and replay_run_freeze_record_sha256. Cross-run joins, inferred binding from file location and narrative-only binding are prohibited."
+    },
+    "failure_rule": "A missing, mutable, noncanonical or unequal run binding, or a row admitted without the required bound-row foreign keys, is INVALID and blocks all endpoint, holdout and usable-strategy labels."
+  },
+  "fx_calendar_and_unitization_method_control": {
+    "dictionary_tables": [
+      "frozen_fx_quote_conversion",
+      "master_calendar_daily_valuation_coverage",
+      "frozen_unitization_method_definition",
+      "daily_portfolio_ledger"
+    ],
+    "frozen_parent_fields": [
+      "fx_conversion_policy_id",
+      "fx_conversion_policy_sha256",
+      "master_calendar_daily_coverage_rule_id",
+      "master_calendar_daily_coverage_rule_sha256",
+      "unitization_method_id",
+      "unitization_method_version",
+      "unitization_method_sha256"
+    ],
+    "frozen_fx_quote_conversion_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "fx_quote_id",
+      "fx_conversion_policy_id",
+      "fx_conversion_policy_sha256",
+      "from_currency",
+      "to_currency",
+      "fx_conversion_rate",
+      "fx_observation_at",
+      "fx_source_reference",
+      "fx_source_revision",
+      "conversion_basis",
+      "rounding_mode",
+      "rounding_decimal_places",
+      "source_quote_raw_sha256",
+      "fx_quote_sha256",
+      "source_reference"
+    ],
+    "master_calendar_daily_valuation_coverage_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "coverage_scope_type",
+      "coverage_scope_id",
+      "candidate_endpoint_id",
+      "master_calendar_id",
+      "master_calendar_sha256",
+      "master_calendar_daily_coverage_rule_id",
+      "master_calendar_daily_coverage_rule_sha256",
+      "master_calendar_session_at",
+      "coverage_interval_start",
+      "coverage_interval_end",
+      "daily_ledger_id",
+      "coverage_status",
+      "coverage_reason",
+      "coverage_row_sha256"
+    ],
+    "frozen_unitization_method_definition_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "unitization_method_id",
+      "unitization_method_version",
+      "unitization_method_sha256",
+      "external_flow_timing",
+      "opening_state_rule_id",
+      "opening_state_rule_sha256",
+      "rounding_mode",
+      "rounding_decimal_places",
+      "formula_definition",
+      "method_source_reference",
+      "method_row_sha256"
+    ],
+    "daily_portfolio_ledger_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "daily_ledger_id",
+      "valuation_at",
+      "ledger_currency",
+      "cash_balance",
+      "debit_balance",
+      "collateral_balance",
+      "margin_balance",
+      "total_nav",
+      "fx_conversion_policy_id",
+      "fx_conversion_policy_sha256",
+      "fx_quote_set_sha256",
+      "fx_source_reference",
+      "fx_observation_at",
+      "unitization_ledger_id",
+      "positions_lots_marks_sha256",
+      "cashflow_pnl_set_sha256",
+      "event_balance_routing_set_sha256",
+      "nav_bridge_input_set_sha256",
+      "expected_reconciliation_row_count",
+      "actual_reconciliation_residual_row_count",
+      "expected_reconciliation_matrix_set_sha256",
+      "reconciliation_residual_set_sha256",
+      "ledger_state_sha256"
+    ],
+    "fx_conversion_rule": "Every non-ledger-currency amount in a position mark, cashflow/P&L row, fee/tax component or cash/margin/settlement event must reference one frozen_fx_quote_conversion row by fx_quote_id/fx_quote_sha256 and use its frozen rate, observation time, policy, basis and rounding. For execution_fee_tax_component, amount must equal term_calculated_amount times the selected frozen rate under fx_rounding_mode/fx_rounding_decimal_places, or be the declared identity-currency case with the same explicit quote/basis evidence. The from/to currencies, converted ledger_currency_amount and daily fx_quote_set_sha256 must reconcile exactly; a null, reused incompatible, inferred or post-cutoff rate is INVALID.",
+    "calendar_coverage_rule": "The frozen master_calendar_daily_coverage_rule_id/SHA governs one bound daily valuation-coverage row for every required session in each candidate endpoint and evaluation warmup interval. Roster/result endpoint_window_coverage_row_count, endpoint_window_covered_count, endpoint_window_coverage_set_sha256 and endpoint_window_coverage_status must resolve exactly to those rows; population evaluation_warmup coverage fields must reconcile to the same bound calendar. Missing, duplicate, out-of-range or non-covered sessions make the candidate INCOMPLETE or INVALID, never silently shortened.",
+    "unitization_nav_bridge_rule": "Every portfolio_unitization_ledger row references the frozen method ID/version/SHA. The unique first OPENING row has prior_unitization_ledger_id null and opening_units zero. Every non-OPENING row references exactly one immediately prior row ordered by valuation_at then unitization_ledger_id, with prior valuation_at strictly earlier and opening_units exactly equal to that prior closing_units; reset, gap, reversal or alternate predecessor paths are INVALID. The declared external_flow_timing, external_flow_pricing_unit_nav, unit issuance/redemption, prior/current NAV and unit NAV must be reproducible from frozen_unitization_method_definition and unitization_calculation_input_set_sha256. daily_portfolio_ledger.nav_bridge_input_set_sha256 binds the unit, positions/lots/marks, cashflow/P&L and event-balance inputs; external flows cannot be converted into performance.",
+    "event_balance_and_time_order_rule": "Each execution_cash_margin_settlement_ledger_event carries balance_effect_bucket/sign, ledger_currency_amount, exact FX quote/rounding, formula/input-set hash and, when applicable, prior/current settlement price, calculation quantity, settlement-obligation status and cashflow_pnl_id. Its effective_at and linked source/transition/fill times must be causally ordered; daily event_balance_routing_set_sha256 and reconciliation residuals must prove that every signed event posts once to the stated balance bucket. Gross notional, variation/final settlement and unpaid obligations may not be netted away.",
+    "failure_rule": "A missing frozen parent field, FX quote, calendar-coverage row, unitization-method row, NAV bridge, event-balance routing, formula input set or causal timestamp ordering is INVALID and blocks endpoint, holdout and usable-strategy labels."
+  },
+  "endpoint_calculation_and_population_audit_control": {
+    "dictionary_tables": [
+      "replay_candidate_endpoint_roster",
+      "replay_endpoint_population_audit",
+      "replay_endpoint_result",
+      "endpoint_unit_nav_chain_member"
+    ],
+    "candidate_roster_key": [
+      "replay_run_id",
+      "candidate_endpoint_id"
+    ],
+    "candidate_roster_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "candidate_endpoint_roster_id",
+      "candidate_endpoint_roster_sha256",
+      "candidate_endpoint_id",
+      "candidate_input_manifest_sha256",
+      "master_calendar_id",
+      "master_calendar_sha256",
+      "candidate_generation_rule_id",
+      "candidate_generation_rule_sha256",
+      "master_calendar_daily_coverage_rule_id",
+      "master_calendar_daily_coverage_rule_sha256",
+      "calendar_anchor_at",
+      "selected_start_valuation_at",
+      "endpoint_end_valuation_at",
+      "elapsed_calendar_days",
+      "required_window_calendar_days",
+      "window_start",
+      "window_end",
+      "start_daily_ledger_id",
+      "end_daily_ledger_id",
+      "start_unitization_ledger_id",
+      "end_unitization_ledger_id",
+      "endpoint_window_coverage_row_count",
+      "endpoint_window_covered_count",
+      "endpoint_window_coverage_set_sha256",
+      "endpoint_window_coverage_status",
+      "expected_partition",
+      "candidate_status",
+      "candidate_reason",
+      "assigned_endpoint_id",
+      "candidate_row_sha256"
+    ],
+    "endpoint_result_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "endpoint_id",
+      "candidate_endpoint_id",
+      "candidate_endpoint_roster_id",
+      "candidate_endpoint_roster_sha256",
+      "candidate_input_manifest_sha256",
+      "master_calendar_id",
+      "master_calendar_sha256",
+      "master_calendar_daily_coverage_rule_id",
+      "master_calendar_daily_coverage_rule_sha256",
+      "calendar_anchor_at",
+      "selected_start_valuation_at",
+      "endpoint_end_valuation_at",
+      "elapsed_calendar_days",
+      "required_window_calendar_days",
+      "window_start",
+      "window_end",
+      "start_daily_ledger_id",
+      "end_daily_ledger_id",
+      "start_unitization_ledger_id",
+      "end_unitization_ledger_id",
+      "endpoint_window_coverage_row_count",
+      "endpoint_window_covered_count",
+      "endpoint_window_coverage_set_sha256",
+      "endpoint_window_coverage_status",
+      "start_total_nav",
+      "end_total_nav",
+      "start_unit_nav",
+      "end_unit_nav",
+      "twrr_calculation_method",
+      "twrr_unit_nav_chain_sha256",
+      "twrr_unit_nav_chain_member_count",
+      "endpoint_partition",
+      "endpoint_status_rule_id",
+      "endpoint_status_rule_sha256",
+      "endpoint_status",
+      "annualized_net_twrr",
+      "primary_holdout_window_id",
+      "primary_holdout_start_state_manifest_sha256",
+      "primary_holdout_predicate_audit_reference",
+      "partition_reason",
+      "endpoint_input_manifest_sha256",
+      "endpoint_calculation_sha256"
+    ],
+    "endpoint_unit_nav_chain_member_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "endpoint_id",
+      "chain_sequence",
+      "chain_member_role",
+      "twrr_unit_nav_chain_sha256",
+      "unitization_ledger_id",
+      "valuation_at",
+      "unit_nav",
+      "prior_unitization_ledger_id",
+      "prior_unit_nav",
+      "link_return_factor",
+      "chain_member_hash_sha256"
+    ],
+    "anchor_start_end_rule": "For every rostered candidate, calendar_anchor_at is the canonical five-calendar-year anchor a, selected_start_valuation_at is the deterministic master-calendar valuation selection s at or before a, endpoint_end_valuation_at is the canonical endpoint e, window_start must equal s and window_end must equal e, and elapsed_calendar_days is the positive day difference from s to e. required_window_calendar_days must equal the frozen five-calendar-year rule. The start/end daily-ledger foreign keys must resolve to the stated valuation dates and total/unit NAVs. annualized_net_twrr is computed from end_unit_nav divided by start_unit_nav (or an equivalently chain-linked unit-NAV series), never from a total-NAV ratio when external cash flows exist; endpoint_calculation_sha256 covers the unit-NAV inputs, flow treatment and formula. A prose table, inferred date or recomputed alternate anchor is not an endpoint calculation record.",
+    "roster_membership_and_partition_equality_rule": {
+      "frozen_parent_fields": [
+        "candidate_endpoint_roster_id",
+        "candidate_endpoint_roster_sha256",
+        "expected_development_count",
+        "expected_primary_holdout_candidate_endpoint_count",
+        "expected_crossing_count"
+      ],
+      "roster_identity_rule": "Every replay_candidate_endpoint_roster row has candidate_endpoint_roster_id and candidate_endpoint_roster_sha256 equal byte-for-byte to replay_run_freeze_record. Candidate generation, membership, calendar_anchor_at, selected_start_valuation_at, endpoint_end_valuation_at, elapsed_calendar_days and expected_partition are frozen row values; no regenerated, filtered or alternate roster is admissible.",
+      "result_to_roster_equality": [
+        ["candidate_endpoint_roster_id", "candidate_endpoint_roster_id"],
+        ["candidate_endpoint_roster_sha256", "candidate_endpoint_roster_sha256"],
+        ["candidate_input_manifest_sha256", "candidate_input_manifest_sha256"],
+        ["master_calendar_id", "master_calendar_id"],
+        ["master_calendar_sha256", "master_calendar_sha256"],
+        ["calendar_anchor_at", "calendar_anchor_at"],
+        ["selected_start_valuation_at", "selected_start_valuation_at"],
+        ["endpoint_end_valuation_at", "endpoint_end_valuation_at"],
+        ["elapsed_calendar_days", "elapsed_calendar_days"],
+        ["window_start", "window_start"],
+        ["window_end", "window_end"],
+        ["endpoint_partition", "expected_partition"]
+      ],
+      "partition_count_rule": "The count of roster rows by expected_partition must equal expected_development_count, expected_primary_holdout_candidate_endpoint_count and expected_crossing_count respectively; replay_endpoint_result.endpoint_partition must equal the joined roster.expected_partition for every candidate_endpoint_id. Any missing, duplicate, mismatched, reclassified or unrepresented candidate is INVALID.",
+      "failure_status": "INVALID"
+    },
+    "population_audit_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "endpoint_population_audit_id",
+      "candidate_endpoint_roster_id",
+      "candidate_endpoint_roster_sha256",
+      "candidate_input_manifest_sha256",
+      "evaluation_interval_start",
+      "evaluation_interval_end",
+      "raw_data_coverage_start",
+      "raw_data_coverage_end",
+      "master_calendar_id",
+      "master_calendar_sha256",
+      "candidate_generation_rule_id",
+      "candidate_generation_rule_sha256",
+      "master_calendar_daily_coverage_rule_id",
+      "master_calendar_daily_coverage_rule_sha256",
+      "evaluation_warmup_coverage_row_count",
+      "evaluation_warmup_covered_count",
+      "evaluation_warmup_coverage_set_sha256",
+      "evaluation_warmup_coverage_status",
+      "endpoint_status_rule_id",
+      "endpoint_status_rule_sha256",
+      "expected_candidate_endpoint_count",
+      "actual_candidate_endpoint_count",
+      "expected_development_count",
+      "actual_development_count",
+      "expected_primary_holdout_count",
+      "actual_primary_holdout_count",
+      "expected_crossing_count",
+      "actual_crossing_count",
+      "pass_count",
+      "fail_count",
+      "incomplete_count",
+      "invalid_count",
+      "status_count_total",
+      "zero_candidate_status",
+      "count_residual",
+      "population_reconciliation_status",
+      "exception_reference",
+      "population_audit_sha256"
+    ],
+    "endpoint_status_validation": {
+      "rule_id": "DPSFS-ENDPOINT-STATUS-v1",
+      "frozen_policy_hash_field": "endpoint_calculation_population_policy_sha256",
+      "frozen_parent_fields": [
+        "endpoint_status_rule_id",
+        "endpoint_status_rule_sha256"
+      ],
+      "result_table": "replay_endpoint_result",
+      "roster_table": "replay_candidate_endpoint_roster",
+      "result_status_field": "endpoint_status",
+      "status_rule_id_field": "endpoint_status_rule_id",
+      "status_rule_sha256_field": "endpoint_status_rule_sha256",
+      "metric_field": "annualized_net_twrr",
+      "threshold": 0.05,
+      "pass_operator": "greater_than_or_equal",
+      "fail_operator": "less_than",
+      "required_twrr_methods": [
+        "UNIT_NAV_RATIO",
+        "CHAIN_LINKED_UNIT_NAV"
+      ],
+      "precedence": [
+        "INVALID",
+        "INCOMPLETE",
+        "PASS",
+        "FAIL"
+      ],
+    "invalid_predicates": [
+      "run_binding_or_roster_foreign_key_invalid",
+      "endpoint_calculation_or_unit_nav_chain_hash_invalid",
+      "twrr_calculation_method_not_in_required_twrr_methods",
+      "total_nav_ratio_used_when_external_cashflow_amount_exists",
+      "no-failed-settlement-in-endpoint-state",
+      "failed-settlement-contract-pass"
+    ],
+      "incomplete_predicates": [
+        "candidate_status_not_ELIGIBLE",
+        "required_endpoint_input_or_daily_ledger_link_missing",
+        "annualized_net_twrr_missing_after_valid_calculation"
+      ],
+      "validation_rule": "After INVALID and INCOMPLETE precedence checks, endpoint_status is PASS if annualized_net_twrr >= 0.05 and FAIL if annualized_net_twrr < 0.05. The signed endpoint_calculation_sha256 binds the metric inputs, external-cashflow treatment and formula; a status not mechanically equal to this rule is INVALID."
+    },
+    "count_reconciliation_rule": "The signed population audit must show expected_candidate_endpoint_count equals actual_candidate_endpoint_count equals the unique roster count; expected and actual DEVELOPMENT, PRIMARY_HOLDOUT and CROSSING counts reconcile; status_count_total equals pass_count plus fail_count plus incomplete_count plus invalid_count and equals actual_candidate_endpoint_count; and count_residual is zero with population_reconciliation_status PASS. Missing candidate rows, duplicate roster keys, missing anchor/start/end/elapsed evidence, or any zero/shortfall/mismatch remains visible and is INCOMPLETE or INVALID under the protocol; it cannot be repaired by shrinking the population.",
+    "failure_rule": "An endpoint result without a canonical roster row, start/end ledger foreign keys, calculation audit or matching population audit is INVALID and cannot contribute to a Boolean hurdle."
+  },
+  "unitization_positions_lots_marks_cashflow_reconciliation_control": {
+    "dictionary_tables": [
+      "portfolio_unitization_ledger",
+      "portfolio_position_lot_mark_ledger",
+      "portfolio_cashflow_pnl_ledger",
+      "replay_reconciliation_residual"
+    ],
+    "unitization_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "unitization_ledger_id",
+      "daily_ledger_id",
+      "valuation_at",
+      "ledger_currency",
+      "unitization_event_type",
+      "unitization_method_id",
+      "unitization_method_version",
+      "unitization_method_sha256",
+      "prior_unitization_ledger_id",
+      "prior_unit_nav",
+      "opening_units",
+      "units_issued",
+      "units_redeemed",
+      "closing_units",
+      "external_cashflow_amount",
+      "external_flow_pricing_unit_nav",
+      "nav_before_external_cashflow",
+      "nav_after_external_cashflow",
+      "unit_nav",
+      "unitization_calculation_input_set_sha256",
+      "unitization_state_sha256"
+    ],
+    "position_lot_mark_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "daily_ledger_id",
+      "valuation_at",
+      "position_id",
+      "lot_id",
+      "instrument_or_contract_id",
+      "instrument_category",
+      "position_side",
+      "lot_origin_type",
+      "origin_fill_id",
+      "lot_opened_at",
+      "available_to_sell_from",
+      "economic_opening_quantity",
+      "economic_quantity_opened",
+      "economic_quantity_closed",
+      "economic_closing_quantity",
+      "eligible_to_sell_quantity",
+      "active_sell_reservation_quantity",
+      "available_to_sell_quantity",
+      "quantity_unit",
+      "cost_basis_per_unit",
+      "cost_basis_currency",
+      "mark_price",
+      "mark_price_currency",
+      "mark_at",
+      "mark_source_reference",
+      "futures_contract_multiplier",
+      "futures_contract_master_effective_from",
+      "futures_contract_master_source_revision",
+      "valuation_formula_type",
+      "marked_value",
+      "mark_value_currency",
+      "futures_daily_margin_notional_reference",
+      "ledger_currency",
+      "marked_value_ledger_currency",
+      "fx_quote_id",
+      "fx_quote_sha256",
+      "fx_conversion_rate",
+      "fx_rounding_mode",
+      "fx_rounding_decimal_places",
+      "realized_pnl",
+      "unrealized_pnl",
+      "pnl_currency",
+      "position_lot_mark_sha256"
+    ],
+    "economic_position_and_reservation_rule": "economic_closing_quantity and marked NAV reflect actual filled economic positions only. An unfilled sell reservation reduces available_to_sell capacity but must not reduce economic_closing_quantity, marked value or NAV. ETF position_side may be LONG or FLAT only: ETF SHORT inventory, OPEN_SHORT/CLOSE_SHORT order paths and borrow assumptions are out of scope. execution_feasibility_reservation aggregates by cash, margin and lot pool; aggregate active reservations cannot exceed the same pool's eligible before-balance or reserve the same lot/cash/margin twice.",
+    "reservation_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "reservation_id",
+      "order_id",
+      "reservation_type",
+      "reservation_context_type",
+      "fill_id",
+      "context_at",
+      "feasibility_observed_at",
+      "reservation_pool_type",
+      "reservation_pool_id",
+      "reservation_pool_snapshot_id",
+      "reservation_pool_snapshot_at",
+      "reservation_pool_snapshot_unit_or_currency",
+      "reservation_pool_snapshot_sequence",
+      "reservation_status",
+      "active_immediately_before_context",
+      "effective_from_at",
+      "effective_to_at",
+      "position_id",
+      "lot_id",
+      "lot_allocation_sequence",
+      "available_to_sell_from",
+      "required_quantity_or_amount",
+      "eligible_pool_balance_before",
+      "preexisting_active_reservation_quantity_or_amount",
+      "new_reservation_quantity_or_amount",
+      "eligible_pool_balance_after",
+      "unit_or_currency",
+      "feasibility_status",
+      "broker_route_terms_id",
+      "broker_terms_source_revision",
+      "capacity_snapshot_sha256",
+      "source_reference"
+    ],
+    "cashflow_pnl_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "cashflow_pnl_id",
+      "daily_ledger_id",
+      "effective_at",
+      "component_type",
+      "component_origin_type",
+      "amount",
+      "currency",
+      "ledger_currency",
+      "ledger_currency_amount",
+      "fx_quote_id",
+      "fx_quote_sha256",
+      "fx_conversion_rate",
+      "fx_source_reference",
+      "fx_observation_at",
+      "fx_rounding_mode",
+      "fx_rounding_decimal_places",
+      "ledger_event_id",
+      "fill_id",
+      "position_id",
+      "lot_id",
+      "source_reference",
+      "component_hash_sha256"
+    ],
+    "reconciliation_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "reconciliation_residual_id",
+      "daily_ledger_id",
+      "reconciliation_matrix_row_id",
+      "reconciliation_scope",
+      "reconciliation_component",
+      "reconciliation_formula_id",
+      "reconciliation_formula_sha256",
+      "expected_source_set_sha256",
+      "expected_amount",
+      "actual_amount",
+      "residual_amount",
+      "currency",
+      "tolerance_amount",
+      "reconciliation_status",
+      "exception_reference",
+      "reconciliation_input_sha256"
+    ],
+    "reconciliation_expected_matrix_control": {
+      "frozen_parent_fields": [
+        "reconciliation_expected_matrix_id",
+        "reconciliation_expected_matrix_sha256"
+      ],
+      "daily_ledger_table": "daily_portfolio_ledger",
+      "residual_table": "replay_reconciliation_residual",
+      "expected_row_identity": [
+        "replay_run_id",
+        "daily_ledger_id",
+        "reconciliation_matrix_row_id"
+      ],
+      "mandatory_matrix_row_ids": [
+        "CASH_BALANCE",
+        "DEBIT_BALANCE",
+        "COLLATERAL_MARGIN",
+        "POSITION_MARKED_VALUE",
+        "UNITIZATION_NAV"
+      ],
+      "conditional_matrix_row_ids": [
+        "FX_TRANSLATION",
+        "ORDER_FILL",
+        "FEE_TAX"
+      ],
+      "row_required_fields": [
+        "reconciliation_matrix_row_id",
+        "reconciliation_formula_id",
+        "reconciliation_formula_sha256",
+        "expected_source_set_sha256",
+        "expected_amount",
+        "actual_amount",
+        "residual_amount",
+        "currency"
+      ],
+      "set_reconciliation_rule": "expected_reconciliation_row_count equals the mandatory row count plus applicable conditional rows; actual_reconciliation_residual_row_count equals expected_reconciliation_row_count; expected_reconciliation_matrix_set_sha256 is the generated expected-row hash; and reconciliation_residual_set_sha256 is the actual set hash with exact expected-matrix membership. Any mismatch is INVALID."
+    },
+    "start_state_rule": "Each PRIMARY_HOLDOUT start-state manifest must have normalized primary_holdout_start_state_component rows foreign-keying every declared unit, position/lot/mark, cashflow/P&L and reconciliation component to a bound ledger row at state_reset_at or window_start. A neutral reset is valid only when its zero/initial values, unit count and no-position/no-obligation status are explicit and reconciled; an aggregate NAV, hashes without component membership rows or an unexplained reset is insufficient.",
+    "transaction_time_feasibility_rule": "At every DECISION, SUBMISSION and FILL context_at, execution_feasibility_reservation records the applicable cash, collateral, margin or lot pool. A FILL row carries its fill_id; a listed-security sale links position_id, lot_id and available_to_sell_from to the dated T+1 rule, with eligible_to_sell_quantity, active_sell_reservation_quantity and available_to_sell_quantity resolved in portfolio_position_lot_mark_ledger. Before/preexisting/new/after reservation balances must reconcile and may not double-reserve the same cash, margin or T+1 lot. economic_closing_quantity and NAV remain economic quantities and are not reduced by an unfilled sell reservation. Released/cancelled/carry reservation entries are timestamped. Fractional economic unitization does not waive integer lot, T+1, cash or margin feasibility evidence.",
+    "failure_rule": "A missing unitization phase, lot/mark, cashflow/P&L component, reconciliation residual, start-state foreign key, reservation or T+1 eligibility link is INVALID; an unreconciled residual cannot be netted away."
+  },
+  "fill_leg_partial_fill_settlement_and_fee_allocation_control": {
+    "dictionary_table": "execution_fill_ledger",
+    "fill_leg_key": [
+      "replay_run_id",
+      "fill_id"
+    ],
+    "required_fill_leg_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "fill_id",
+      "order_id",
+      "fill_sequence",
+      "fill_at",
+      "execution_side",
+      "instrument_category",
+      "fill_quantity",
+      "cumulative_filled_quantity",
+      "remaining_submitted_quantity",
+      "execution_transition_sequence",
+      "execution_transition_from_state",
+      "execution_transition_to_state",
+      "execution_transition_at",
+      "quantity_unit",
+      "fill_price",
+      "fill_price_currency",
+      "contract_multiplier",
+      "contract_master_effective_from",
+      "contract_master_source_revision",
+      "gross_notional",
+      "gross_notional_currency",
+      "notional_sign_convention",
+      "execution_price_basis",
+      "quote_timestamp",
+      "quote_source_revision",
+      "conservative_execution_proxy_id",
+      "liquidity_capacity_basis",
+      "liquidity_capacity_snapshot_id",
+      "capacity_instrument_or_contract_id",
+      "capacity_side",
+      "capacity_snapshot_as_of",
+      "capacity_snapshot_source_revision",
+      "capacity_partition_id",
+      "capacity_consumption_sequence",
+      "opposite_side_available_quantity",
+      "prior_consumed_quantity",
+      "incremental_consumed_quantity",
+      "remaining_opposite_side_capacity",
+      "capacity_quantity_unit",
+      "quote_depth_source_reference",
+      "impact_model_or_proxy_id",
+      "impact_source_reference",
+      "fill_hash_sha256",
+      "settlement_state",
+      "settlement_event_set_sha256",
+      "fee_tax_component_set_sha256"
+    ],
+    "execution_fill_ledger_event_link_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "fill_id",
+      "ledger_event_id",
+      "link_role",
+      "linked_amount",
+      "linked_currency",
+      "link_hash_sha256"
+    ],
+    "execution_cash_margin_settlement_ledger_event_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "ledger_event_id",
+      "event_origin_type",
+      "order_id",
+      "event_allocation_basis",
+      "fill_id",
+      "daily_ledger_id",
+      "event_type",
+      "balance_effect_bucket",
+      "balance_effect_sign",
+      "pricing_reference_type",
+      "application_role",
+      "effective_at",
+      "broker_route_terms_id",
+      "broker_terms_source_revision",
+      "broker_route_id",
+      "clearing_or_account_entity_id",
+      "currency",
+      "ledger_currency",
+      "ledger_currency_amount",
+      "posted_balance_effect_ledger_currency_amount",
+      "fx_quote_id",
+      "fx_quote_sha256",
+      "fx_conversion_rate",
+      "fx_rounding_mode",
+      "fx_rounding_decimal_places",
+      "instrument_or_contract_id",
+      "instrument_category",
+      "futures_non_notional_adjustment_amount",
+      "futures_non_notional_adjustment_reference",
+      "contract_multiplier",
+      "contract_master_effective_from",
+      "contract_master_source_revision",
+      "cash_collateral_term_set_id",
+      "cash_collateral_term_id",
+      "cash_collateral_terms_source_revision",
+      "broker_fee_term_id",
+      "broker_fee_term_source_revision",
+      "tax_levy_term_id",
+      "tax_levy_term_source_revision",
+      "tax_jurisdiction_id",
+      "tax_jurisdiction_effective_from",
+      "tax_jurisdiction_source_revision",
+      "fee_tax_component_id",
+      "fee_tax_component_type",
+      "amount",
+      "event_calculation_formula_id",
+      "event_calculation_formula_sha256",
+      "event_calculation_input_set_sha256",
+      "prior_settlement_price",
+      "current_settlement_price",
+      "calculation_quantity_or_contracts",
+      "transfer_pair_id",
+      "transfer_leg_type",
+      "settlement_obligation_status",
+      "settlement_outstanding_direction",
+      "settlement_gross_obligation_ledger_currency_amount",
+      "settlement_posted_or_paid_ledger_currency_amount",
+      "settlement_outstanding_ledger_currency_amount",
+      "unsettled_obligation_ledger_currency_amount",
+      "unsettled_receivable_ledger_currency_amount",
+      "unsettled_net_nav_ledger_currency_amount",
+      "cashflow_pnl_id",
+      "fill_event_link_set_sha256",
+      "source_reference",
+      "event_hash_sha256"
+    ],
+    "fill_event_link_allocation_control": {
+      "frozen_parent_fields": [
+        "fill_event_link_allocation_rule_id",
+        "fill_event_link_allocation_rule_sha256"
+      ],
+      "link_table": "execution_fill_ledger_event_link",
+      "event_table": "execution_cash_margin_settlement_ledger_event",
+      "event_type_link_role_matrix": {
+        "CASH_ACCRUAL": [],
+        "DEBIT_ACCRUAL": [],
+        "COLLATERAL_ACCRUAL": [],
+        "COLLATERAL_TRANSFER": [],
+        "MARGIN_TRANSFER_CASH_LEG": [],
+        "TRADE_SETTLEMENT": ["TRADE_PRINCIPAL"],
+        "INITIAL_MARGIN": ["INITIAL_MARGIN"],
+        "MAINTENANCE_MARGIN": ["MAINTENANCE_MARGIN"],
+        "VARIATION_MARGIN": ["VARIATION_MARGIN"],
+        "FINAL_SETTLEMENT": ["FINAL_SETTLEMENT"],
+        "FEES_TAX": ["FEE_TAX"]
+      },
+      "nonlinkable_event_types": ["CASH_ACCRUAL", "DEBIT_ACCRUAL", "COLLATERAL_ACCRUAL", "COLLATERAL_TRANSFER", "MARGIN_TRANSFER_CASH_LEG"],
+      "nonlinkable_event_rule": "Each listed event has zero execution_fill_ledger_event_link rows and fill_event_link_set_sha256 equal to the canonical empty set hash; an allocation link on a nonlinkable event is INVALID.",
+      "event_conservation": {
+        "group_by": ["replay_run_id", "ledger_event_id", "linked_currency"],
+        "left_expression": "SUM(execution_fill_ledger_event_link.linked_amount)",
+        "operator": "equals",
+        "event_amount_field": "amount",
+        "currency_equality": ["linked_currency", "currency"],
+        "link_set_hash_field": "fill_event_link_set_sha256"
+      },
+      "fill_role_obligation_conservation": [
+        {"link_role": "TRADE_PRINCIPAL", "obligation_source": "selected_event_formula_output", "event_type": "TRADE_SETTLEMENT", "formula_ids": ["TRADE_SETTLEMENT_ETF_FROM_FILL_NOTIONAL", "TRADE_SETTLEMENT_FUTURES_NON_NOTIONAL_ADJUSTMENT_ONLY"], "operator": "equals_signed_calculated_obligation"},
+        {"link_role": "INITIAL_MARGIN", "obligation_event_type": "INITIAL_MARGIN", "operator": "equals"},
+        {"link_role": "MAINTENANCE_MARGIN", "obligation_event_type": "MAINTENANCE_MARGIN", "operator": "equals"},
+        {"link_role": "VARIATION_MARGIN", "obligation_event_type": "VARIATION_MARGIN", "operator": "equals"},
+        {"link_role": "FINAL_SETTLEMENT", "obligation_event_type": "FINAL_SETTLEMENT", "operator": "equals"},
+        {"link_role": "FEE_TAX", "obligation_table": "execution_fee_tax_component", "obligation_field": "amount", "operator": "equals_sum"}
+      ],
+      "duplicate_allocation_rule": {
+        "group_by": ["replay_run_id", "fill_id", "ledger_event_id", "link_role", "linked_currency"],
+        "operator": "unique_exactly_one"
+      },
+      "failure_status": "INVALID"
+    },
+    "aggregation_rule": "Fill sequences are immutable, start at one and are contiguous. The order filled quantity equals the sum of fill quantities, each cumulative_filled_quantity equals the prior cumulative plus the current fill, remaining_submitted_quantity equals submitted less cumulative, and order-level price, fee/tax components and settlement totals equal the exact sum of its fills in stated unit and currency. Every fill_id must reference or sequence-bind the matching execution_order_state_transition; fill timestamp, cumulative and remaining quantities reconcile to that transition, and cancellation/expiry cannot precede a later fill. Allocations may not use a later aggregate fee or settlement amount to overwrite a fill.",
+    "partial_fill_rule": "A PARTIAL execution has positive cumulative filled quantity below submitted quantity and retains its residual through explicit open, PARTIAL_EXPIRED, PARTIAL_CANCELLED or frozen end-of-run disposition; PARTIAL->FAILED is forbidden. Filled legs retain their own settlement and component-fee allocations even when the residual is cancelled or expires; a partial order cannot be relabeled NO_FILL or settled as its submitted quantity.",
+    "failure_rule": "A missing leg, noncontiguous sequence, invalid delta/cumulative/residual arithmetic, unallocated leg settlement/fee, or mismatch between leg and order aggregation is INVALID."
+  },
+  "paired_transfer_settlement_and_futures_mtm_control": {
+    "dictionary_tables": [
+      "execution_cash_margin_settlement_ledger_event",
+      "cash_margin_collateral_transfer_pair",
+      "cash_collateral_terms",
+      "portfolio_position_lot_mark_ledger",
+      "daily_portfolio_ledger",
+      "portfolio_cashflow_pnl_ledger"
+    ],
+    "cash_margin_collateral_transfer_pair_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "transfer_pair_id",
+      "daily_ledger_id",
+      "transfer_kind",
+      "cash_leg_ledger_event_id",
+      "reserve_leg_ledger_event_id",
+      "cash_leg_ledger_currency_amount",
+      "reserve_leg_ledger_currency_amount",
+      "net_nav_effect",
+      "transfer_pair_status",
+      "transfer_pair_sha256"
+    ],
+    "cash_collateral_terms_required_fields": [
+      "cash_collateral_term_id",
+      "broker_route_id",
+      "clearing_or_account_entity_id",
+      "scope_type",
+      "scope_value",
+      "applicable_instrument_category_or_contract_id",
+      "currency",
+      "term_type",
+      "rate_or_timing_value",
+      "rate_or_timing_value_unit",
+      "day_count_basis",
+      "compounding_convention",
+      "accrual_start_at",
+      "accrual_end_at",
+      "transfer_cutoff_at",
+      "effective_from",
+      "effective_to",
+      "tax_scope",
+      "source_revision",
+      "source_reference"
+    ],
+    "event_routing_contract": "CASH_ACCRUAL, TRADE_SETTLEMENT, FEES_TAX and MARGIN_TRANSFER_CASH_LEG post only to CASH; DEBIT is permitted only for DEBIT_ACCRUAL and is a nonnegative liability increase. COLLATERAL_TRANSFER posts only to COLLATERAL; INITIAL_MARGIN and MAINTENANCE_MARGIN post to MARGIN. Every event has exactly one daily balance bucket and signed posted_balance_effect_ledger_currency_amount. The daily NAV bridge formula is daily_nav_bridge_from_balances_translated_marks_and_signed_unsettled_residuals.",
+    "paired_transfer_conservation_contract": {
+      "pair_table": "cash_margin_collateral_transfer_pair",
+      "pair_key": ["replay_run_id", "transfer_pair_id"],
+      "event_matrix": [
+        {"reserve_event_type": "INITIAL_MARGIN", "transfer_kind": "INITIAL_MARGIN", "reserve_bucket": "MARGIN", "cash_event_type": "MARGIN_TRANSFER_CASH_LEG", "cash_bucket": "CASH"},
+        {"reserve_event_type": "MAINTENANCE_MARGIN", "transfer_kind": "MAINTENANCE_MARGIN", "reserve_bucket": "MARGIN", "cash_event_type": "MARGIN_TRANSFER_CASH_LEG", "cash_bucket": "CASH"},
+        {"reserve_event_type": "COLLATERAL_TRANSFER", "transfer_kind": "COLLATERAL_TRANSFER", "reserve_bucket": "COLLATERAL", "cash_event_type": "MARGIN_TRANSFER_CASH_LEG", "cash_bucket": "CASH"}
+      ],
+      "conservation_rule": "Each transfer pair has exactly one negative CASH_LEG and exactly one positive MARGIN_LEG or COLLATERAL_LEG in the same replay run, daily ledger, ledger currency and effective time. cash_leg_ledger_currency_amount plus reserve_leg_ledger_currency_amount equals zero; net_nav_effect equals zero; transfer_pair_status is PAIRED; and both legs enter their distinct daily-balance formulas exactly once. An INITIAL_MARGIN, MAINTENANCE_MARGIN or COLLATERAL_TRANSFER event without exactly one such immutable pair is INVALID.",
+      "dated_collateral_source_rule": "For COLLATERAL_TRANSFER, the resolved cash_collateral_terms row has term_type COLLATERAL_TRANSFER, a positive rate_or_timing_value in the declared currency unit, dated effective/source_revision/source_reference evidence, and event effective_at equal to the frozen transfer term. The exact negative cash leg is then required in the same pair; neither an inferred reserve nor an unpriced balance transfer is admissible."
+    },
+    "unsettled_settlement_payable_receivable_contract": "For a settlement event, settlement_obligation_status is NOT_APPLICABLE, UNSETTLED, PARTIALLY_SETTLED, SETTLED or FAILED. Gross, posted-or-paid and outstanding ledger-currency amounts reconcile as gross minus posted equals outstanding; outstanding direction is PAYABLE or RECEIVABLE when unsettled/partially settled and NONE when not applicable/settled. unsettled_obligation_ledger_currency_amount is the payable component, unsettled_receivable_ledger_currency_amount the receivable component, and unsettled_net_nav_ledger_currency_amount equals receivable minus payable, so the daily NAV bridge records each residual exactly once. FAILED requires zero posted/paid balance effect, outstanding equal to gross, a PAYABLE/RECEIVABLE direction, a final settlement transition FAILED and source/exception evidence; it cannot be represented as settled, delivery/position-close effect or a passing endpoint.",
+    "futures_daily_mtm_contract": "For instrument_category FUTURES, valuation_formula_type is FUTURES_DAILY_MARGINED: marked_value and marked_value_ledger_currency are zero, unrealized_pnl is zero, and futures_daily_margin_notional_reference is exposure-only and never enters NAV or TWRR. Variation/final settlement uses prior/current settlement price, calculation_quantity_or_contracts and dated contract multiplier, with the P&L/cashflow linked once to the event. A FUTURES TRADE_SETTLEMENT principal amount is zero unless it is a separately typed futures_non_notional_adjustment_amount with a source reference; it never substitutes fill gross_notional for cash or NAV.",
+    "endpoint_invalidation_contract": "The frozen endpoint status rule includes no-failed-settlement-in-endpoint-state and failed-settlement-contract-pass predicates. A FAILED settlement or a failed paired-transfer/unsettled-settlement assertion over an endpoint's state makes endpoint_status INVALID, blocks PASS and is retained in population counts.",
+    "failure_rule": "A wrong bucket, hidden debit funding, unpaired transfer, nonzero transfer net NAV, missing dated collateral term, double-posted or unsigned settlement residual, FAILED settlement treated as completed, futures notional in NAV, or endpoint PASS with a failed settlement is INVALID."
+  },
+  "broker_tax_component_fk_and_event_role_mapping_control": {
+    "dictionary_tables": [
+      "execution_broker_terms",
+      "broker_fee_term",
+      "tax_jurisdiction",
+      "tax_levy_term",
+      "execution_fee_tax_component",
+      "execution_cash_margin_settlement_ledger_event"
+    ],
+    "execution_broker_terms_required_fields": [
+      "broker_route_terms_id",
+      "broker_route_id",
+      "clearing_or_account_entity_id",
+      "scope_type",
+      "scope_value",
+      "instrument_category",
+      "route_jurisdiction_id",
+      "route_jurisdiction_effective_from",
+      "route_jurisdiction_source_revision",
+      "settlement_rule",
+      "available_to_sell_from_rule",
+      "lot_size",
+      "lot_size_unit",
+      "cash_reservation_rule",
+      "margin_reservation_rule",
+      "initial_margin_requirement",
+      "maintenance_margin_requirement",
+      "margin_add_on_or_requirement",
+      "margin_requirement_currency_or_rate_base",
+      "effective_from",
+      "effective_to",
+      "source_revision"
+    ],
+    "broker_fee_term_required_fields": [
+      "broker_fee_term_id",
+      "broker_route_terms_id",
+      "broker_terms_source_revision",
+      "scope_type",
+      "scope_value",
+      "fee_component_type",
+      "calculation_method",
+      "rate_or_amount",
+      "rate_or_amount_unit",
+      "fee_currency_or_rate_base",
+      "minimum_fee_amount",
+      "minimum_fee_currency",
+      "effective_from",
+      "effective_to",
+      "source_revision",
+      "source_reference"
+    ],
+    "tax_levy_term_required_fields": [
+      "tax_levy_term_id",
+      "broker_route_terms_id",
+      "broker_terms_source_revision",
+      "tax_jurisdiction_id",
+      "tax_jurisdiction_effective_from",
+      "tax_jurisdiction_source_revision",
+      "scope_type",
+      "scope_value",
+      "tax_component_type",
+      "calculation_method",
+      "rate_or_amount",
+      "rate_or_amount_unit",
+      "tax_currency_or_rate_base",
+      "taxpayer_scope",
+      "effective_from",
+      "effective_to",
+      "source_revision",
+      "source_reference"
+    ],
+    "tax_jurisdiction_required_fields": [
+      "tax_jurisdiction_id",
+      "jurisdiction_code",
+      "jurisdiction_name",
+      "tax_authority",
+      "taxpayer_scope",
+      "effective_from",
+      "effective_to",
+      "source_revision"
+    ],
+    "execution_fee_tax_component_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "fee_tax_component_id",
+      "order_id",
+      "fill_id",
+      "charge_basis",
+      "order_level_exception_reference",
+      "order_level_source_reference",
+      "order_level_charge_at",
+      "order_level_allocation_rule_id",
+      "order_level_allocation_rule_sha256",
+      "component_type",
+      "term_calculated_amount",
+      "term_output_currency",
+      "amount",
+      "currency",
+      "currency_conversion_required",
+      "fx_quote_id",
+      "fx_conversion_rate",
+      "fx_source_reference",
+      "fx_observation_at",
+      "fx_quote_sha256",
+      "fx_rounding_mode",
+      "fx_rounding_decimal_places",
+      "fx_calculation_basis",
+      "broker_fee_term_id",
+      "broker_fee_term_source_revision",
+      "tax_levy_term_id",
+      "tax_levy_term_source_revision",
+      "tax_jurisdiction_id",
+      "tax_jurisdiction_effective_from",
+      "tax_jurisdiction_source_revision",
+      "ledger_event_id",
+      "component_at",
+      "component_hash_sha256"
+    ],
+    "component_foreign_key_rule": "Each fee/tax component is an execution_fee_tax_component directly allocated to one fill_id (or an explicit order-level exception path), uses exactly one component_type from COMMISSION, EXCHANGE_FEE, CLEARING_FEE, OTHER_FEE, TAX or LEVY, and references the effective dated broker_fee_term or tax_levy_term by ID/source revision. Terms must deterministically match dated route, account, instrument-or-product scope, currency and, for TAX/LEVY, jurisdiction. term_calculated_amount in term_output_currency converts to amount/currency only through the frozen_fx_quote_conversion identified by fx_quote_id/fx_quote_sha256, fx_conversion_rate and declared rounding; amount must equal the rounded multiplication, while an identity-currency case remains explicitly evidenced rather than implied. Combined, inferred-zero, null-currency, generic-term-without-effective-scope or unresolved-jurisdiction components are prohibited.",
+    "event_type_to_application_role_mapping": {
+      "TRADE_SETTLEMENT": "TRADE_SETTLEMENT",
+      "INITIAL_MARGIN": "INITIAL_MARGIN",
+      "MAINTENANCE_MARGIN": "MAINTENANCE_MARGIN",
+      "VARIATION_MARGIN": "VARIATION_MARGIN",
+      "FINAL_SETTLEMENT": "FINAL_SETTLEMENT",
+      "CASH_ACCRUAL": "CASH_BALANCE",
+      "DEBIT_ACCRUAL": "DEBIT_BALANCE",
+      "COLLATERAL_ACCRUAL": "COLLATERAL",
+      "COLLATERAL_TRANSFER": "COLLATERAL",
+      "MARGIN_TRANSFER_CASH_LEG": "CASH_BALANCE",
+      "FEES_TAX": "NOT_APPLICABLE_FEE_TAX"
+    },
+    "mapping_rule": "Every cashflow/P&L and cash/margin/settlement event carries exactly one event_type and its mapped application_role above. The recorded role, resolved term family and event amount/currency must agree with that mapping. FEES_TAX is mapped to NOT_APPLICABLE_FEE_TAX while its separate CASH_BALANCE role applicability is independently audited; its components use broker/tax terms and are not priced by a cash-yield, debit, collateral or margin term.",
+    "failure_rule": "A missing or non-effective component foreign key, ambiguous component type, absent currency/jurisdiction, wrong route/account/scope match, or event-role mapping mismatch is INVALID and blocks usable-strategy status."
+  },
+  "execution_settlement_state_and_end_of_run_control": {
+    "execution_state_enum": [
+      "CREATED",
+      "SUBMITTED",
+      "PARTIAL",
+      "PARTIAL_EXPIRED",
+      "PARTIAL_CANCELLED",
+      "FILLED",
+      "NO_FILL",
+      "EXPIRED",
+      "CANCELLED",
+      "REJECTED",
+      "NOT_SUBMITTED",
+      "FAILED"
+    ],
+    "settlement_state_enum": [
+      "NOT_APPLICABLE",
+      "PENDING",
+      "PARTIALLY_SETTLED",
+      "SETTLED",
+      "FAILED"
+    ],
+    "execution_transition_row_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "order_id",
+      "transition_sequence",
+      "from_execution_state",
+      "to_execution_state",
+      "transition_at",
+      "transition_reason_code",
+      "partial_failure_or_cancellation_code",
+      "transition_reason",
+      "source_reference"
+    ],
+    "settlement_transition_row_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "order_id",
+      "settlement_transition_sequence",
+      "from_settlement_state",
+      "to_settlement_state",
+      "transition_at",
+      "transition_reason_code",
+      "instantaneous_clearing_source_reference",
+      "transition_reason",
+      "source_reference"
+    ],
+    "separation_rule": "execution_state records whether and how an order was attempted or filled; settlement_state records the subsequent clearing, delivery or cash status. SUBMITTED and FAILED are valid execution states. A filled order with a settlement problem remains execution_state FILLED and settlement_state FAILED; no unqualified FAILED state may merge the two domains. Direct NOT_APPLICABLE->SETTLED is permitted only for DOCUMENTED_INSTANTANEOUS_CLEARING at a positive fill time with linked settlement event and source evidence; otherwise a positive fill starts PENDING.",
+    "end_of_run_rule": "At replay end every order has one end_of_run_order_disposition. Terminal orders use NO_OPEN_ORDER. Any nonterminal CREATED, SUBMITTED or PARTIAL order is CANCELLED_AT_RUN_END or EXPIRED_AT_RUN_END unless CARRIED_WITH_OPENING_STATE is explicitly permitted by the frozen policy and links a hash-bound next-run opening-state manifest. Carry does not imply a fill or settlement and cannot cross into PRIMARY_HOLDOUT; cancellation/expiry does not erase filled-leg obligations. A formal endpoint must disclose all dispositions and cannot silently mark an open row closed.",
+    "failure_rule": "A row with only one overloaded state, a missing SUBMITTED/FAILED execution treatment, an unclassified settlement state, or an unrecorded end-of-run carry/cancel disposition is INVALID."
+  },
+  "primary_holdout_start_state_control": {
+    "dictionary_tables": [
+      "primary_holdout_start_state_manifest",
+      "primary_holdout_start_state_component",
+      "frozen_roll_delivery_expiry_parameter_state"
+    ],
+    "state_components": [
+      "unit NAV and unit count",
+      "positions, lots and marked values",
+      "cash, debit, accrued income, fees and tax",
+      "initial/maintenance/variation margin and collateral",
+      "pending or unsettled cashflows and obligations",
+      "open orders, partial fills and order-state transitions",
+      "roll, delivery, expiry and forced-reduction state",
+      "any parameter, eligibility or signal state that affects a decision"
+    ],
+    "frozen_roll_delivery_expiry_parameter_state_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "roll_delivery_expiry_parameter_state_id",
+      "parameter_domain",
+      "parameter_name",
+      "parameter_value_canonical_json",
+      "effective_at",
+      "source_available_at",
+      "post_lockbox_provenance_status",
+      "source_reference",
+      "parameter_state_sha256"
+    ],
+    "per_primary_window_requirement": "Every PRIMARY_HOLDOUT candidate endpoint requires one hash-bound start-state manifest and normalized primary_holdout_start_state_component membership rows. Each component row carries the frozen run binding, manifest foreign key, component type, source interval, ledger/lot/cashflow/reconciliation foreign key or explicit neutral-reset evidence and integrity status. At window_start, every component must either be a deterministic neutral reset at or after lockbox_holdout_start or be reconstructed solely from post-lockbox source records and rule-generated actions during the declared warmup. Carrying development-period state is prohibited.",
+    "failure_rule": "A missing manifest, a component with pre-lockbox provenance, an unexplained state carry, a mismatch between component hashes and the daily/order ledger, or a failed integrity status makes the candidate CROSSING or INVALID under the frozen protocol; it cannot be PRIMARY_HOLDOUT."
+  },
+  "cash_collateral_role_applicability_control": {
+    "required_audit": "For every order or dated ledger event, a role-applicability audit must evaluate CASH_BALANCE, DEBIT_BALANCE, COLLATERAL, TRADE_SETTLEMENT, INITIAL_MARGIN, MAINTENANCE_MARGIN, VARIATION_MARGIN and FINAL_SETTLEMENT against frozen route, account, contract, currency and ledger-state triggers.",
+    "minimum_trigger_rules": "A submitted order requires CASH_BALANCE and requires TRADE_SETTLEMENT when the route or contract transfers transaction cash. A filled derivative requires each applicable INITIAL_MARGIN, MAINTENANCE_MARGIN and VARIATION_MARGIN role. DEBIT_BALANCE, COLLATERAL and FINAL_SETTLEMENT are required exactly when their dated ledger/contract trigger is present.",
+    "not_applicable_boundary": "A role may be NOT_APPLICABLE only with a source-proven route, contract or rule reason tied to the effective timestamp. Null, an empty role list or an undefined funding_or_margin_terms_apply flag cannot imply not applicable.",
+    "failure_rule": "A missing audit row, unsupported not-applicable conclusion, unresolved role, wrong term-set member or route/account/scope/currency mismatch is material and blocks usable-strategy status."
+  },
+  "cash_collateral_scope_resolution_control": {
+    "scope_types": ["ACCOUNT_WIDE", "INSTRUMENT_CATEGORY", "INSTRUMENT", "CONTRACT"],
+    "priority": ["CONTRACT", "INSTRUMENT", "INSTRUMENT_CATEGORY", "ACCOUNT_WIDE"],
+    "resolution_rule": "At an effective timestamp, select the one highest-priority term matching route, account, currency, term type and scope. ACCOUNT_WIDE has a null scope value. Two effective terms at the same priority, a lower-priority override, a scope-type/value mismatch or no match is INVALID.",
+    "failure_rule": "No role, cash accrual, margin or settlement amount may be reconciled until scope resolution has one deterministic effective term."
+  },
+  "order_transition_and_event_reconciliation_control": {
+    "transition_chain_rule": "For each order, transitions are contiguous from sequence 1, begin at CREATED, link adjacent to_state/from_state, use only frozen allowed edges and reconcile their timestamps, quantities and terminal execution/settlement states exactly to the order ledger.",
+    "typed_event_rule": "Every cash, debit, collateral, trade-settlement, initial/maintenance/variation-margin or final-settlement event maps to a dated daily portfolio ledger row and, when order-linked, to its order. It records route, account, currency, instrument/category context, resolved term, source revision and amount. Aggregate ledger currency and any conversion source/time are explicit.",
+    "failure_rule": "A side chain, sequence gap, orphan event, missing aggregate-link, unreferenced conversion, state/quantity/timestamp mismatch or unsupported scope resolution is INVALID."
+  },
+  "execution_model_partial_fill_fee_tax_and_endpoint_control": {
+    "execution_legality_rule": "Every order binds an execution-model ID/basis, an ETF or futures tradability-session composite key and a legal-session/price-limit outcome. For instrument_category ETF, execution_order_ledger.intended_execution_side/execution_side and execution_fill_ledger.execution_side must never be OPEN_SHORT or CLOSE_SHORT, and portfolio_position_lot_mark_ledger.position_side must never be SHORT; no borrow model is assumed. Quote, proxy and no-fill evidence are mutually exclusive as specified by that basis. The frozen model also binds liquidity capacity basis, quote/depth source, consumed and remaining capacity, impact-model or conservative-proxy foreign key and hash; each fill quantity must not exceed remaining displayed/model capacity, and FILL_TIME_QUOTE cannot bypass capacity. A submitted fill cannot bypass halted, limit-locked, delivery-restricted or no-quote status.",
+    "partial_fill_rule": "A partial fill has positive filled quantity below submitted quantity and remains open only with a later retained transition. Its terminal residual is explicitly PARTIAL_EXPIRED or PARTIAL_CANCELLED, with residual amount, timestamp, reason and filled-portion settlement events. A zero-fill NO_FILL/EXPIRED state is not a substitute for a partial-fill terminal state.",
+    "fee_tax_rule": "Commission and tax/levy components carry dated source references, amounts and currencies. Their ledger events use broker/tax pricing rather than cash-yield/margin terms, reconcile exactly to the order and daily cash ledger, and never double count an investor cost or assume a currency.",
+    "endpoint_rule": "Every endpoint is a normalized keyed result row with window, partition, status and input hash. Each PRIMARY_HOLDOUT endpoint explicitly links its predicate audit and post-lockbox start-state manifest/hash; no Boolean hurdle may be computed from an unkeyed narrative table.",
+    "failure_rule": "A missing execution/tradability link, ambiguous quote/proxy path, illegal fill, partial-fill misclassification, untraced fee/tax/currency, quantity violation, or unkeyed endpoint mapping is INVALID."
+  },
+  "revision_history": [
+    {
+      "version": 3,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Add primary-holdout count controls plus immutable cash-collateral term-set and order-state-transition requirements before any outcome is viewed."
+    },
+    {
+      "version": 4,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Bind robust interpretation, primary-holdout predicate/invalidation, explicit state-transition matrix and conjunctive usable-strategy/risk-feasibility controls before any outcome is viewed."
+    },
+    {
+      "version": 5,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Make the canonical replay-freeze crosswalk complete and require prospective state/configuration coverage before any usable-strategy label."
+    },
+    {
+      "version": 6,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Adopt the v3 order-to-term schema and clarify strict primary-holdout plus effective route/account/scope/currency paper-state controls before any outcome is viewed."
+    },
+    {
+      "version": 7,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Require post-lockbox primary-holdout start-state provenance and conditional pre-submit rejection/not-submitted timestamp controls before any outcome is viewed."
+    },
+    {
+      "version": 8,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Make cash, margin, collateral and settlement role applicability deterministic rather than nullable before any outcome is viewed."
+    },
+    {
+      "version": 9,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Make order-transition chains, cash/margin/settlement event linkage, currency conversion and term-scope precedence machine-checkable before any outcome is viewed."
+    },
+    {
+      "version": 10,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Close execution-model/tradability, partial-fill, fee/tax-currency and keyed endpoint-result controls before any outcome is viewed."
+    },
+    {
+      "version": 11,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Add immutable replay-run binding and bound-row admission, canonical endpoint/population audits, unitized lot/mark/cashflow reconciliation, fill-leg allocation, dated broker-tax component keys, separate execution/settlement states, end-run disposition and zero-blocking prospective coverage controls before any outcome is viewed."
+    },
+    {
+      "version": 12,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Align frozen-run, endpoint, state, fee-component, reservation and normalized holdout-component controls to DPSFS-DD-v8 before any outcome is viewed."
+    }
+  ],
+  "entitlement_control": {
+    "state": "not_obtained",
+    "required_evidence_per_provider": [
+      "Provider legal entity and data-product identity.",
+      "Written entitlement or terms version with effective and expiry dates.",
+      "Permission scope for local retention, normalization, backtesting, derived analytics and independent review.",
+      "Historic-vintage/available_at policy and revision policy.",
+      "Redistribution, audit and deletion/retention conditions.",
+      "Credential custody record without storing the credential in the research case.",
+      "Renewal, lapse and data-use cessation procedure."
+    ],
+    "acceptance_boundary": "Documentation pages, public product pages, an API schema, a token, a successful request or a payment receipt alone do not prove the full entitlement required by this contract."
+  },
+  "universe_coverage_control": {
+    "u0_to_t2_derivation_requirement": "A future T2 freeze must bind a U0 snapshot hash and a derivation audit that reports per-class population/qualified counts, every T2 parent_class_id, inclusion/exclusion reason, rule ID and approved exception.",
+    "class_module_requirement": "Every U0 class represented in a formal T2 universe requires a class-specific accepted data package, event/lifecycle accounting and replay-protocol module.",
+    "restricted_scope_rule": "If a run excludes an in-scope U0 class because its module or evidence is incomplete, the run is coverage-restricted and must disclose omitted classes. It cannot be named an open domestic multi-asset test.",
+    "manual_nomination_prohibition": "No product, issuer, contract or option series can enter T2 through manual nomination without the frozen U0 derivation audit."
+  },
+  "global_provenance_controls": {
+    "directories": {
+      "raw": "sources/entitled-data/<provider>/<package_id>/<retrieval-date>/",
+      "normalized": "data/normalized/<package_id>/<contract-version>/",
+      "derived": "data/derived/<analysis-id>/<contract-version>/",
+      "audit": "governance/data-audit/<package_id>/<contract-version>/"
+    },
+    "raw_manifest_required_fields": [
+      "package_id",
+      "provider",
+      "provider_product",
+      "source_url_or_endpoint",
+      "request_parameters_or_query_hash",
+      "request_started_at",
+      "response_received_at",
+      "as_of",
+      "available_at",
+      "vendor_publication_at",
+      "source_revision",
+      "local_revision_sequence",
+      "content_type",
+      "bytes",
+      "sha256",
+      "entitlement_evidence_ref",
+      "retrieval_operator",
+      "expected_page_or_row_count",
+      "actual_page_or_row_count",
+      "quality_status"
+    ],
+    "lineage_required_fields": [
+      "input_raw_manifest_sha256",
+      "normalization_code_commit",
+      "runtime_environment_lock_or_hash",
+      "normalization_schema_version",
+      "output_sha256",
+      "transformation_timestamp",
+      "operator_or_service_identity"
+    ],
+    "run_scoped_output_lineage_required_fields": [
+      "replay_run_id",
+      "replay_run_freeze_record_sha256",
+      "data_dictionary_id",
+      "data_dictionary_schema_version",
+      "input_manifest_sha256",
+      "source_revision_cutoff",
+      "replay_code_commit",
+      "runtime_environment_lock_or_hash",
+      "output_sha256"
+    ],
+    "run_scoped_output_lineage_rule": "Every derived run-scoped table, audit and report listed in frozen_run_binding_and_bound_row_control is emitted only after the canonical replay_run_freeze_record exists and carries the identical binding tuple. File paths, case ID or a later report-level hash cannot substitute for row-level lineage.",
+    "revision_policy": [
+      "Raw files are append-only. Later corrections create a new raw object and point to the superseded hash.",
+      "A normalized record carries the exact raw hash and source revision used.",
+      "A replay chooses a declared revision cut-off and reports every subsequent restatement separately."
+    ],
+    "calendar_and_time": {
+      "timezone": "Asia/Shanghai",
+      "trading_calendar_source_required": true,
+      "session_definition_required_before_collection": true,
+      "late_or_missing_arrival": "Record the failed or late retrieval attempt, retry policy and final status. Do not silently substitute a later observation."
+    },
+    "cross_source_reconciliation": {
+      "required_when_available": true,
+      "minimum_record": [
+        "primary_source",
+        "secondary_source",
+        "join_key",
+        "field",
+        "tolerance_or_exact_match_rule",
+        "difference",
+        "resolution_status",
+        "reviewer"
+      ],
+      "unresolved_conflict": "Exclude the affected record from the formal replay or classify it as failed data quality; never choose the favorable value ad hoc."
+    }
+  },
+  "packages": [
+    {
+      "package_id": "ETF_PIT_EVENT_LEDGER",
+      "governs_requirements": [
+        "UR01",
+        "UR03"
+      ],
+      "scope": "Every ETF in the frozen decision universe. The current comparison codes 511010.SH, 510300.SH, 510880.SH, 518880.SH and 511990.SH remain illustrative only and are not admitted by this contract.",
+      "status": "not_collected",
+      "documented_endpoint_family": {
+        "source_id": "D01",
+        "endpoints": [
+          "etf_basic",
+          "fund_daily",
+          "fund_nav",
+          "fund_div",
+          "fund_adj"
+        ],
+        "boundary": "The local evidence documents field families only. It does not evidence entitlement, an archive, retention permission, revision history or point-in-time vintage."
+      },
+      "record_schema": {
+        "timezone": "Asia/Shanghai",
+        "primary_keys": {
+          "instrument_master": [
+            "security_identifier",
+            "effective_from",
+            "source_revision"
+          ],
+          "market_session": [
+            "security_identifier",
+            "session_date",
+            "source_revision"
+          ],
+          "nav_event": [
+            "security_identifier",
+            "nav_date",
+            "announcement_timestamp",
+            "source_revision"
+          ],
+          "corporate_action": [
+            "security_identifier",
+            "action_type",
+            "ex_date",
+            "record_date",
+            "payment_date",
+            "source_revision"
+          ],
+          "tradability": [
+            "security_identifier",
+            "session_date",
+            "session_phase",
+            "source_revision"
+          ]
+        },
+        "required_fields": [
+          {
+            "name": "security_identifier",
+            "type": "string",
+            "null_policy": "never_null"
+          },
+          {
+            "name": "exchange",
+            "type": "string",
+            "null_policy": "never_null"
+          },
+          {
+            "name": "universe_effective_from_and_to",
+            "type": "date_range",
+            "null_policy": "never_null_for_active_instrument"
+          },
+          {
+            "name": "session_date",
+            "type": "date",
+            "null_policy": "never_null_for_expected_trading_session"
+          },
+          {
+            "name": "open_high_low_close_prior_close",
+            "type": "decimal_cny_per_unit",
+            "null_policy": "reject_missing_or_non_positive_except_documented_special_state"
+          },
+          {
+            "name": "volume_and_amount",
+            "type": "decimal_units_and_cny",
+            "null_policy": "zero_is_not_missing; null_requires_exception_record"
+          },
+          {
+            "name": "nav_and_accumulated_or_adjusted_nav",
+            "type": "decimal_cny_per_unit",
+            "null_policy": "missing_requires_source_status_and_exclusion_rule"
+          },
+          {
+            "name": "IOPV",
+            "type": "decimal_cny_per_unit_or_explicit_unavailable_state",
+            "null_policy": "explicit_unavailable_state_only; no inferred_value"
+          },
+          {
+            "name": "nav_date_and_announcement_timestamp",
+            "type": "date_and_timestamp",
+            "null_policy": "never_null_when_nav_present"
+          },
+          {
+            "name": "action_type_ex_record_payment_dates_amount_and_adjustment_factor",
+            "type": "structured_event",
+            "null_policy": "every_cash_or_adjustment_event_once"
+          },
+          {
+            "name": "halt_limit_session_phase_and_tradability_status",
+            "type": "enumeration",
+            "null_policy": "never_null_for_expected_session"
+          },
+          {
+            "name": "as_of_available_at_vendor_publication_at_retrieval_timestamp_source_revision_raw_hash",
+            "type": "provenance_tuple",
+            "null_policy": "never_null"
+          }
+        ],
+        "unit_currency_precision_policy": "Declare unit, currency, decimal precision and rounding policy per source field in the frozen data dictionary. The default local currency label is CNY only when the raw source says so.",
+        "available_at_definition": "Store vendor publication time if available, local response receipt time, and the documented earliest usable availability. The formal decision engine may use only the latter."
+      },
+      "collection_and_quality": {
+        "cadence": "Historical import and forward collection cadence must be declared in the freeze record. Each expected session must have a success, no-data, delayed, holiday or failed-attempt record.",
+        "coverage_test": "For every active frozen-universe instrument and expected session, require one canonical market row or a documented exchange/source exception. Duplicate primary keys fail.",
+        "event_reconciliation": "Reconcile adjusted/accumulated NAV to an independent distribution/action ledger. Every cash event is booked exactly once; adjusted series cannot be combined with separate cash without an explicit reconciliation.",
+        "conflict_test": "Price, NAV, event and status conflicts follow the global reconciliation protocol.",
+        "failure_handling": "A missing price, action timestamp, tradability state or provenance tuple makes the affected decision/replay observation ineligible under the frozen no-fill/exclusion rule."
+      },
+      "acceptance_tests": [
+        "Entitlement record passes the entitlement_control checklist.",
+        "Raw and normalized manifest hash chains resolve for 100% of records used in replay.",
+        "Primary keys are unique; required provenance fields are complete.",
+        "Session coverage equals the frozen calendar/instrument expectation after documented exceptions.",
+        "Every adjustment is reconciled to an event ledger without duplicate cash recognition.",
+        "No decision uses a record before available_at."
+      ]
+    },
+    {
+      "package_id": "FUTURES_ACTUAL_CONTRACT_LEDGER",
+      "governs_requirements": [
+        "UR02",
+        "UR03"
+      ],
+      "scope": "Every actual listed AU, CU and TA contract in the frozen universe on each decision session. No continuous, retrospectively labeled main-contract or vendor-synthesized series may substitute for contract selection, roll or P&L.",
+      "status": "not_collected",
+      "documented_endpoint_family": {
+        "source_ids": [
+          "D01",
+          "F05",
+          "F06"
+        ],
+        "endpoints": [
+          "fut_basic",
+          "fut_daily",
+          "fut_settle",
+          "ft_limit"
+        ],
+        "boundary": "Retained exchange samples demonstrate a current source path but were retrieved retrospectively. They do not establish full historical point-in-time availability, entitlement, a lifecycle master or rulebook coverage."
+      },
+      "record_schema": {
+        "timezone": "Asia/Shanghai",
+        "primary_keys": {
+          "contract_master": [
+            "contract_id",
+            "effective_from",
+            "source_revision"
+          ],
+          "session_cross_section": [
+            "contract_id",
+            "session_date",
+            "source_revision"
+          ],
+          "rule_margin_limit": [
+            "contract_id_or_product",
+            "effective_from",
+            "field_name",
+            "source_revision"
+          ],
+          "trading_delivery_status": [
+            "contract_id",
+            "session_date",
+            "session_phase",
+            "source_revision"
+          ]
+        },
+        "required_fields": [
+          {
+            "name": "contract_id_exchange_product_listing_date_last_trade_date_delivery_and_position_restriction_dates",
+            "type": "contract_lifecycle",
+            "null_policy": "never_null_for_eligible_contract"
+          },
+          {
+            "name": "effective_rule_version_and_effective_period",
+            "type": "rule_reference",
+            "null_policy": "never_null_for_rule_dependent_session"
+          },
+          {
+            "name": "contract_multiplier_tick_quote_unit_price_currency_trading_session_and_final_settlement_method",
+            "type": "contract_specification",
+            "null_policy": "never_null_for_eligible_contract"
+          },
+          {
+            "name": "prior_settlement_open_high_low_close_settlement",
+            "type": "decimal_cny_per_contract_unit",
+            "null_policy": "reject_missing_or_non_positive_except_documented_special_state"
+          },
+          {
+            "name": "volume_turnover_open_interest",
+            "type": "decimal",
+            "null_policy": "zero_is_not_missing; null_requires_exception_record"
+          },
+          {
+            "name": "exchange_and_broker_margin_fee_upper_limit_lower_limit_and_position_limit",
+            "type": "dated_terms",
+            "null_policy": "never_null_for_replay_eligible_contract"
+          },
+          {
+            "name": "initial_margin_maintenance_margin_variation_margin_transfer_timestamp_final_settlement_or_delivery_cashflow",
+            "type": "dated_clearing_terms",
+            "null_policy": "never_null_for_replay_eligible_contract"
+          },
+          {
+            "name": "trading_status_limit_lock_delivery_status_and_eligible_successor_state",
+            "type": "enumeration",
+            "null_policy": "never_null_for_expected_session"
+          },
+          {
+            "name": "as_of_available_at_vendor_publication_at_retrieval_timestamp_source_revision_raw_hash",
+            "type": "provenance_tuple",
+            "null_policy": "never_null"
+          }
+        ],
+        "available_at_definition": "The decision engine may use only contract, cross-section, limit, margin and status values documented as available before the next eligible action. Historic data without that record remains retrospective."
+      },
+      "collection_and_quality": {
+        "cadence": "Capture full official or entitled cross-sections and effective terms for every declared trading session. Retain pagination and expected contract count.",
+        "coverage_test": "For each product/session, reconcile observed contracts to the contemporaneous lifecycle master. An unexplained missing or added contract fails coverage.",
+        "roll_test": "Contract choice and roll must use the same-day full cross-section and lifecycle state, then execute no earlier than the next eligible session.",
+        "marking_test": "Variation P&L is marked at actual daily settlement. Close remains a separate field and cannot silently replace settlement.",
+        "failure_handling": "Delivery-buffer breach, limit lock, suspension, unavailable successor, missing liquidity, missing term or missing provenance produces the predeclared no-fill/hold/exclusion state."
+      },
+      "acceptance_tests": [
+        "Entitlement record passes the entitlement_control checklist.",
+        "Every replay contract/session resolves to a raw hash, lifecycle record and effective rule/margin/fee/limit record.",
+        "Full cross-section coverage reconciles to the contract master for every expected session.",
+        "No contract selection, roll, fill or settlement mark uses a continuous-series substitute.",
+        "No decision uses data before available_at or a rule outside its effective period."
+      ]
+    },
+    {
+      "package_id": "EXECUTION_AND_COST_LEDGER",
+      "governs_requirements": [
+        "UR03",
+        "UR05"
+      ],
+      "scope": "Dated broker-route, exchange/session, tax and liquidity evidence for each instrument considered in a paper replay or prospective reconciliation.",
+      "status": "not_collected",
+      "record_schema": {
+        "timezone": "Asia/Shanghai",
+        "primary_keys": {
+          "replay_run_freeze_record": [
+            "replay_run_id"
+          ],
+          "broker_fee_term": [
+            "broker_fee_term_id",
+            "source_revision"
+          ],
+          "tax_levy_term": [
+            "tax_levy_term_id",
+            "source_revision"
+          ],
+          "execution_order_ledger": [
+            "replay_run_id",
+            "order_id"
+          ],
+          "execution_order_state_transition": [
+            "replay_run_id",
+            "order_id",
+            "transition_sequence"
+          ],
+          "execution_fill_ledger": [
+            "replay_run_id",
+            "fill_id"
+          ],
+          "broker_term_legacy_source_key": [
+            "broker_route_id",
+            "instrument_or_product",
+            "effective_from",
+            "source_revision"
+          ],
+          "execution_snapshot": [
+            "instrument_or_contract_id",
+            "quote_timestamp",
+            "source_revision"
+          ],
+          "cash_collateral_term": [
+            "cash_collateral_term_id",
+            "source_revision"
+          ],
+          "cash_collateral_term_set_membership": [
+            "cash_collateral_term_set_id",
+            "application_role",
+            "cash_collateral_term_id",
+            "cash_collateral_terms_source_revision"
+          ],
+          "daily_portfolio_ledger": [
+            "replay_run_id",
+            "daily_ledger_id"
+          ],
+          "execution_cash_margin_settlement_ledger_event": [
+            "replay_run_id",
+            "ledger_event_id"
+          ],
+          "prospective_state_configuration_coverage_audit": [
+            "replay_run_id",
+            "coverage_row_id"
+          ]
+        },
+        "required_fields": [
+          {
+            "name": "replay_run_id_replay_run_freeze_record_sha256_data_dictionary_id_schema_version_and_input_manifest_hash_on_every_run_scoped_order_transition_fill_event_ledger_audit_start_manifest_and_endpoint_row",
+            "type": "immutable_run_binding_foreign_key_tuple",
+            "null_policy": "never_null_for_run_scoped_record; unmatched_or_cross_run_value_is_invalid"
+          },
+          {
+            "name": "broker_route_identity_commission_minimum_fee_tax_levy_and_effective_dates",
+            "type": "dated_cost_terms",
+            "null_policy": "never_null_for_replay_eligible_transaction"
+          },
+          {
+            "name": "broker_fee_term_id_source_revision_route_account_scope_type_scope_value_instrument_or_product_effective_from_effective_to_currency_and_pricing_rule",
+            "type": "dated_broker_fee_term_foreign_key",
+            "null_policy": "never_null_for_each_COMMISSION_component"
+          },
+          {
+            "name": "tax_levy_term_id_source_revision_jurisdiction_route_account_scope_type_scope_value_instrument_or_product_effective_from_effective_to_currency_and_pricing_rule",
+            "type": "dated_tax_levy_term_foreign_key",
+            "null_policy": "never_null_for_each_TAX_or_LEVY_component"
+          },
+          {
+            "name": "ETF_lot_tick_trade_date_settlement_date_available_to_sell_from_T_plus_1_halt_and_limit_mechanics",
+            "type": "dated_market_mechanics",
+            "null_policy": "never_null_for_replay_eligible_ETF_transaction"
+          },
+          {
+            "name": "futures_brokerage_fee_initial_maintenance_margin_add_on_order_position_restriction_delivery_and_final_settlement_handling",
+            "type": "dated_broker_terms",
+            "null_policy": "never_null_for_replay_eligible_futures_transaction"
+          },
+          {
+            "name": "quote_timestamp_quote_age_bid_ask_bid_size_ask_size_or_predeclared_conservative_impact_and_no_fill_method",
+            "type": "execution_input",
+            "null_policy": "never_null_for_replay_eligible_transaction"
+          },
+          {
+            "name": "cash_yield_debit_financing_collateral_yield_margin_and_settlement_transfer_timing",
+            "type": "dated_financing_and_clearing_terms",
+            "null_policy": "never_null_for_replay_eligible_transaction"
+          },
+          {
+            "name": "cash_collateral_term_id_term_set_role_applicability_audit_scope_type_precedence_route_account_day_count_compounding_accrual_period_and_transfer_cutoff",
+            "type": "dated_financing_and_clearing_application_terms",
+            "null_policy": "never_null_for_replay_eligible_transaction"
+          },
+          {
+            "name": "dated_daily_ledger_cash_debit_collateral_margin_and_settlement_event_with_typed_order_link_currency_and_fx_reconciliation",
+            "type": "typed_cash_margin_settlement_ledger_event",
+            "null_policy": "never_null_or_explicit_not_applicable_exception"
+          },
+          {
+            "name": "intended_execution_side_submission_path_submitted_rejected_filled_expiry_settlement_quote_snapshot_composite_key_and_state_transition_ledger",
+            "type": "order_quote_route_causality",
+            "null_policy": "never_null_or_explicit_not_applicable_exception"
+          },
+          {
+            "name": "execution_state_settlement_state_settlement_failure_domain_end_of_run_order_disposition_timestamp_residual_or_unsettled_amount_and_reservation_release_or_carry_link",
+            "type": "separate_execution_and_settlement_state_machine",
+            "null_policy": "never_null_for_order_or_settlement_record"
+          },
+          {
+            "name": "immutable_execution_fill_ledger_fill_id_fill_sequence_fill_at_fill_quantity_cumulative_filled_quantity_remaining_submitted_quantity_execution_transition_quantity_unit_price_currency_quote_or_proxy_capacity_impact_fee_tax_component_and_settlement_event_allocation",
+            "type": "execution_fill_ledger",
+            "null_policy": "never_null_for_each_positive_fill"
+          },
+          {
+            "name": "execution_model_quote_or_proxy_basis_legal_tradability_session_quantity_partial_fill_and_rejection_stage_code_reference",
+            "type": "machine_checkable_execution_legality",
+            "null_policy": "never_null_or_explicit_not_applicable_exception"
+          },
+          {
+            "name": "direct_fill_id_component_type_COMMISSION_EXCHANGE_FEE_CLEARING_FEE_OTHER_FEE_TAX_or_LEVY_amount_output_currency_broker_or_tax_term_foreign_key_jurisdiction_FX_and_daily_cash_reconciliation",
+            "type": "fee_tax_provenance_and_currency",
+            "null_policy": "never_null_or_explicit_not_applicable_exception"
+          },
+          {
+            "name": "transaction_time_cash_collateral_margin_reservation_position_lot_id_settled_available_to_sell_quantity_T_plus_1_eligibility_and_release_or_carry_reconciliation",
+            "type": "transaction_time_lot_and_funding_feasibility",
+            "null_policy": "never_null_for_replay_eligible_transaction"
+          },
+          {
+            "name": "prospective_coverage_audit_id_row_id_event_type_application_role_execution_state_settlement_state_end_of_run_disposition_evidence_disposition_blocking_status_and_zero_blocking_row_assertion",
+            "type": "prospective_coverage_audit_schema",
+            "null_policy": "never_null_for_applicable_coverage_row"
+          },
+          {
+            "name": "tax_scope_generic_statutory_or_individual_specific_unverified",
+            "type": "tax_scope_classification",
+            "null_policy": "never_null"
+          },
+          {
+            "name": "session_phase_market_status_as_of_available_at_source_revision_raw_hash",
+            "type": "provenance_tuple",
+            "null_policy": "never_null"
+          }
+        ]
+      },
+      "collection_and_quality": {
+        "embedded_fee_control": "Fund expenses embedded in NAV are recorded as such and cannot be charged again as investor transaction cost.",
+        "fill_control": "Every assumed transaction requires a legal session, documented typed tradability state, frozen execution-model/quote-or-proxy basis, frozen quote/depth/capacity/impact or proxy evidence, intended execution side, submission path, route, immutable cash-collateral term-set ID, deterministic cash/collateral role-applicability and scope-resolution audit, quote/submit/reject/fill/expiry causal trail, typed cash/margin/settlement event linkage and separate contiguous execution and settlement transition chains. SUBMITTED and FAILED are valid execution states; settlement uses NOT_APPLICABLE, PENDING, PARTIALLY_SETTLED, SETTLED or FAILED. Every positive fill has an immutable fill_id/sequence, cumulative_filled_quantity, remaining_submitted_quantity, direct fee/tax component and settlement allocations, and a matching execution-state transition; fill quantity cannot exceed remaining capacity. Quantities must satisfy target/submitted/filled bounds. A partial fill must remain open or reach an explicit partial-expired/cancelled/failed residual state; it cannot be recast as zero-fill. At end-of-run every order has NO_OPEN_ORDER, CANCELLED_AT_RUN_END, EXPIRED_AT_RUN_END or permitted CARRIED_WITH_OPENING_STATE treatment. A pre-submit rejection or not-submitted decision must retain its decision-to-rejection/not-submitted stage, code and reference without inventing a submission timestamp. A close is not an assumed fill unless the rule explicitly supports it with evidence.",
+        "cost_change_control": "A cost or tax change is effective only from its documented effective date.",
+        "prospective_reconciliation": {
+          "minimum_calendar_duration_days": 60,
+          "minimum_distinct_observations": 10,
+          "minimum_observation_rule": "Before any usable-strategy upgrade, both thresholds are required: at least 60 calendar days must elapse from the first eligible decision AND at least 10 distinct eligible decision, roll, settlement or no-fill observations must be retained, with at least one observation for every admitted U0 parent class.",
+          "state_configuration_coverage_matrix": {
+            "dictionary_table": "prospective_state_configuration_coverage_audit",
+            "schema_version": "prospective_state_configuration_coverage_audit.v1",
+            "primary_key": [
+              "replay_run_id",
+              "coverage_row_id"
+            ],
+            "required_dimensions": [
+              "replay_run_id",
+              "replay_run_freeze_record_sha256",
+              "coverage_row_id",
+              "configuration_tuple_sha256",
+              "parent_class_id",
+              "instrument_category",
+              "broker_route_terms_id",
+              "broker_terms_source_revision",
+              "cash_collateral_term_set_id",
+              "cash_collateral_term_id",
+              "cash_collateral_terms_source_revision",
+              "scope_type",
+              "scope_value",
+              "application_role",
+              "material_transaction_type",
+              "event_type",
+              "execution_model_id",
+              "tradability_path",
+              "execution_state",
+              "settlement_state",
+              "residual_disposition",
+              "end_of_run_order_disposition",
+              "coverage_disposition",
+              "observation_count",
+              "first_observed_at",
+              "last_observed_at",
+              "evidence_reference",
+              "review_status",
+              "exception_reference"
+            ],
+            "applicable_cases": [
+              "created/submitted/partial/filled/no-fill/expired/rejected/not-submitted/failed execution states and separate pending/partially-settled/settled/settlement-failed/end-run-carried/end-run-cancelled settlement or disposition paths, including pre-submit rejection and not-submitted paths",
+              "cash/collateral term-set, role-applicability, scope-resolution, broker-route and currency-conversion changes or exceptions",
+              "cash/debit/collateral/margin/settlement events and their exact event_type-to-application_role mapping and order-to-daily-ledger reconciliation",
+              "execution-model, legal-session/tradability, quote/proxy/no-fill, partial-fill fill-leg allocation, fee/tax component-term FK and currency/jurisdiction states",
+              "futures roll, variation-margin, maintenance-margin, delivery/expiry and forced-reduction states where the represented class can encounter them",
+              "halt, price-limit, stale-quote, depth shortfall, transaction-time cash/margin reservation, T+1 eligible-lot and other no-fill/partial-fill states where the represented class can encounter them"
+            ],
+            "permitted_dispositions": [
+              "OBSERVED",
+              "ACCEPTED_CONSERVATIVE",
+              "SOURCE_PROVEN_NOT_APPLICABLE",
+              "UNRESOLVED",
+              "FAILED"
+            ],
+            "coverage_rule": "Exactly one configuration_tuple_sha256 row is required for every frozen applicable parent class, broker route/terms revision, cash-collateral term set/term/scope/role, material transaction/event, execution-model/tradability, execution/settlement/residual/end-of-run path. A row is admissible only when coverage_disposition is OBSERVED, ACCEPTED_CONSERVATIVE or SOURCE_PROVEN_NOT_APPLICABLE, it has evidence_reference and review_status PASS. UNRESOLVED, FAILED, a missing expected tuple or non-PASS review is blocking; rare events must not be manufactured.",
+            "uniqueness_rule": "coverage_row_id is unique within replay_run_id and configuration_tuple_sha256 is unique within replay_run_id. A duplicate, missing configuration tuple or differing bound-run hash is INVALID rather than a way to reduce the blocking count.",
+            "pass_rule": "The 60-day and 10-observation minimum is necessary but not sufficient. The zero-blocking assertion is derived only from the hash-bound rows: count(coverage_disposition in UNRESOLVED,FAILED) + count(review_status != PASS) + missing expected configuration tuple count must equal 0. A narrative declaration, omitted tuple or aggregate netting cannot make the audit pass."
+          },
+          "comparison_fields": ["decision timestamp", "intended execution side", "submission path", "submitted/rejected/fill/expiry timestamps", "order/fill state", "fill quantity", "execution price", "quote age", "spread/impact", "fee/tax", "margin/collateral", "market status", "no-fill or rejection reason"],
+          "unit_consistency_rule": "Every tolerance compares values in the same stated unit and currency. A cross-unit comparison is prohibited unless a separately frozen conversion source, timestamp and rounding rule are bound.",
+          "materiality_by_field": {
+            "order_state_and_quantity": "Any status mismatch, unmodeled no-fill/partial fill or quantity mismatch beyond the documented lot size is material.",
+            "execution_price": "An absolute observed-versus-modeled execution-price difference greater than the larger of one documented tick and 25% of the modeled per-unit price-impact component, both expressed in the same quote-price unit, is material. If the modeled per-unit component is unavailable, the comparison is unresolved and material.",
+            "fees_and_tax": "Any observed-versus-modeled fee or tax difference greater than the dated source rounding increment in the same currency is material.",
+            "margin_collateral_and_funding": "Any unmatched route, account, scope, effective term, rate, day-count, compounding, accrual timing, transfer cutoff or margin state is material; same-term monetary reconciliation must be within the documented source rounding increment.",
+            "quote_and_impact": "A quote snapshot mismatch, quote older than the frozen maximum age, missing depth where the model requires depth, or impact-method mismatch is material.",
+            "route_and_market_status": "An unavailable route/term, legal-session mismatch or market-status mismatch is material."
+          },
+          "material_difference_definition": "A difference is material if any materiality_by_field condition is met. No aggregate offset may net a material difference away.",
+          "tolerance_and_escalation": "Every material difference blocks admission until independently classified, corrected under a new frozen version if needed, and re-observed. No unresolved material difference is permitted.",
+          "override_policy": "Overrides require a reason, approver, timestamp, source reference and independent risk review."
+        }
+      },
+      "acceptance_tests": [
+        "Each replay transaction and run-scoped ledger/audit row has the canonical replay_run_id/replay_run_freeze_record_sha256 binding and maps to dated broker_fee_term and tax_levy_term foreign keys, typed session-status/tradability, fill-leg cost/allocation, deterministic cash/collateral role-applicability/scope-resolution, exact event-type-to-application-role mapping, typed cash/margin/settlement event, fee/tax currency/jurisdiction and separate execution/settlement transition evidence.",
+        "No transaction has an implicit zero commission, zero tax, zero spread or guaranteed fill.",
+        "Every positive fill has contiguous immutable fill legs whose quantity, price, component fee/tax and settlement allocations reconcile exactly to the order; every open execution/pending settlement has an explicit end-of-run carry/cancel disposition.",
+        "Each transaction-time sale and derivative exposure has a reconciled lot/T+1 eligibility and cash/collateral/margin reservation record; unitization does not bypass integer-lot or funding feasibility.",
+        "Fund-level expense and investor-level transaction cost are not double counted.",
+        "Prospective paper-reconciliation log meets both duration and observation-count thresholds, compares all mandatory fields using same-unit tolerances, completes the hash-bound applicable state/configuration coverage audit and has zero unvalidated blocking rows, zero missing required rows and no unresolved material difference before any strategy upgrade."
+      ]
+    }
+  ],
+  "requirement_closure_matrix": [
+    {
+      "id": "UR01",
+      "status": "open",
+      "owner": "future_entitled_data_operator",
+      "evidence_artifacts": [
+        "ETF_PIT_EVENT_LEDGER raw and normalized manifests",
+        "provider entitlement record",
+        "ETF event-reconciliation report",
+        "coverage and available_at audit"
+      ],
+      "acceptance_test": "All frozen-universe ETF sessions and cash/action events reconcile with declared availability, provenance, coverage and no-double-count controls.",
+      "pass_threshold": "100% of replay-used observations trace to an authorized raw response; 0 unresolved duplicate, missing-provenance or double-counted event exceptions.",
+      "verifier": "future data-contract verifier plus independent R0 reviewer",
+      "exit_condition": "UR01 becomes eligible for closure only after the freeze record, entitlement audit and replay-input reconciliation pass."
+    },
+    {
+      "id": "UR02",
+      "status": "open",
+      "owner": "future_entitled_data_operator",
+      "evidence_artifacts": [
+        "FUTURES_ACTUAL_CONTRACT_LEDGER raw and normalized manifests",
+        "contract lifecycle master",
+        "effective rule/margin/limit/fee archive",
+        "full-cross-section coverage audit"
+      ],
+      "acceptance_test": "Every product/session/contract used in replay is linked to actual-contract fields, lifecycle, effective terms and documented available_at.",
+      "pass_threshold": "100% of replay-used contract/session rows reconcile to raw data, lifecycle and effective terms; 0 continuous-series substitutions or unexplained coverage gaps.",
+      "verifier": "future data-contract verifier plus independent R0/R1 reviewer",
+      "exit_condition": "UR02 becomes eligible for closure only after entitlement, lifecycle, cross-section and term audits pass."
+    },
+    {
+      "id": "UR03",
+      "status": "open",
+      "owner": "future_execution_evidence_owner",
+      "evidence_artifacts": [
+        "EXECUTION_AND_COST_LEDGER",
+        "dated broker-term archive",
+        "tax and market-mechanics archive",
+        "fill/no-fill methodology audit",
+        "conditional submission-path/timestamp audit",
+        "cash/collateral role-applicability/scope-resolution audit",
+        "execution-model/tradability and partial-fill audit",
+        "fee/tax provenance-currency and daily-cash reconciliation audit",
+        "replay-run binding and bound-row equality audit",
+        "fill-leg/partial-fill settlement-allocation audit",
+        "execution-versus-settlement/end-of-run carry-cancel audit",
+        "broker-tax component-term FK and event-role mapping audit",
+        "transaction-time lot/T+1/reservation feasibility audit"
+      ],
+      "acceptance_test": "Every paper transaction is legally/session feasible and fully costed with a canonical run binding; traceable submitted, pre-submit-rejected or not-submitted path; separate execution and settlement states; immutable fill-leg and partial-fill settlement/fee allocation; deterministic cash/collateral role/scope and exact event-role mapping; dated broker-tax component FKs with currency/jurisdiction; and transaction-time lot/T+1/reservation reconciliation.",
+      "pass_threshold": "0 replay transactions or dependent rows with missing/mismatched run binding, route/cost/status/quote-or-proxy/tradability input, conditional-path timestamp, execution/settlement/end-run state, fill leg/allocation, required cash/collateral role/scope/event mapping, dated broker-tax FK/currency/jurisdiction, lot/T+1/reservation evidence or fee/tax daily-cash reconciliation; 0 unsupported not-applicable conclusion, implicit zero-cost or guaranteed-fill assumption.",
+      "verifier": "independent risk and execution reviewer",
+      "exit_condition": "UR03 becomes eligible for closure only after cost audit and prospective reconciliation design pass."
+    },
+    {
+      "id": "UR04",
+      "status": "open",
+      "owner": "research_orchestrator",
+      "evidence_artifacts": [
+        "frozen rulebook",
+        "frozen formal replay protocol ID/version/SHA-256",
+        "frozen decision-universe manifest",
+        "frozen U0 snapshot and U0-to-T2 derivation audit",
+        "frozen data dictionary",
+        "immutable replay_run_freeze_record and bound-row equality audit",
+        "development/holdout partition record",
+        "canonical candidate-endpoint roster and endpoint-population/count audit",
+        "unitization, position-lot-mark, cashflow/P&L and reconciliation ledgers",
+        "expected/actual candidate-endpoint count record",
+        "expected/actual primary-holdout candidate-endpoint count record",
+        "primary-holdout predicate and post-freeze invalidation audit",
+        "non-overlapping-window and regime/stress classification specification",
+        "allowed order-state-transition matrix and reconciliation record",
+        "execution-versus-settlement state and end-of-run carry/cancel policy",
+        "immutable fill-leg and partial-fill settlement/fee-allocation audit",
+        "dated broker-fee/tax-levy component-term FK and event-type/application-role mapping audit",
+        "transaction-time position-lot/T+1/cash-margin reservation feasibility audit",
+        "prospective state/configuration coverage-audit schema and zero-blocking-row assertion",
+        "parameter, tie, calendar, lag, event, risk and no-fill specification",
+        "hash-bound risk-and-feasibility control pack with per-control limits, measurement, escalation and pass/fail rules",
+        "canonical replay-freeze crosswalk with lockbox, predicate, primary-holdout start-state policy, conditional submission-path/timestamp, role/scope, transition/event, endpoint/population, unitization/lot/reconciliation, execution-model/tradability, execution-settlement/end-run, fill-leg, broker-tax/event-role, prospective coverage, fee/tax-currency and endpoint-result policies, input/revision/code/runtime/command and first-outcome-view bindings"
+      ],
+      "acceptance_test": "A clean reviewer can reproduce decision dates, eligible universe, signals, weights, substitutions, risk constraints, event treatment, canonical rostered anchor/start/end/elapsed endpoint calculations and counts, primary-holdout predicate/partition/start state, unit/lot/mark/cashflow/P&L/reconciliation state, run-bound execution and settlement paths, fill legs, component-term foreign keys, event-role mapping, transaction-time feasibility and zero-blocking prospective coverage from the single canonical freeze record without reading result-dependent notes.",
+      "pass_threshold": "0 unbound parameter, discretionary override, post-result selection rule, unbound protocol/dictionary/run-binding version, zero or expected-versus-actual candidate-endpoint mismatch pass, zero/shortfall/mismatch primary-holdout pass, missing primary-holdout predicate/start-state/invalidation/keyed endpoint/anchor-start-end-elapsed/ledger FK, missing lot/mark/cashflow/reconciliation, unbound execution/settlement/end-run/fill-leg/broker-tax/event-role/coverage policy, missing overlap/regime disclosure, missing canonical freeze crosswalk field/equality, or missing timing/risk/no-fill/feasibility specification.",
+      "verifier": "independent R1 model reviewer",
+      "exit_condition": "UR04 becomes eligible for closure only when one immutable replay_run_freeze_record approves and cross-binds the rulebook, formal replay protocol, U0 derivation audit, DPSFS-DD-v8, input/revision/code/runtime/command bundle, primary-holdout predicate/lockbox/start-state policy, canonical endpoint/population audit, unitization/lot/reconciliation, conditional submission-path/timestamp, cash/collateral role/scope and event-role mapping, transition/event, execution-model/tradability, execution-settlement/end-run, fill-leg, broker-tax component FK, prospective coverage, fee/tax-currency and keyed endpoint-result policies, state-transition matrix and risk-feasibility control pack before outcome inspection; every run-scoped row must pass the bound-row equality audit."
+    },
+    {
+      "id": "UR05",
+      "status": "open",
+      "owner": "independent_review_lead",
+      "evidence_artifacts": [
+        "R0/R1/risk review findings",
+        "current product/contract fact pack",
+        "liquidity, overlap and stress analysis",
+        "risk-and-feasibility control pass/fail audit",
+        "prospective paper-reconciliation ledger",
+        "prospective state/configuration coverage matrix and evidence dispositions",
+        "hash-bound prospective coverage audit with zero-blocking-row assertion",
+        "exception and override log"
+      ],
+      "acceptance_test": "Independent reviewers confirm input lineage, product/contract eligibility, risk aggregation, stress coverage, usable-strategy conjunctive status, run-binding equality, endpoint/population audits, unit/lot/mark/reconciliation, fill-leg/component allocation, execution-settlement/end-run treatment, transaction-time feasibility, prospective state/configuration coverage and observed-versus-paper implementation results against the frozen minimum observation and material-difference rules.",
+      "pass_threshold": "No unresolved severity-S/A finding; both the 60-calendar-day and 10-distinct-observation thresholds are met for every admitted parent class; every applicable state/configuration matrix row has an accepted disposition; the hash-bound coverage table has zero rows with coverage_disposition UNRESOLVED or FAILED, zero rows with review_status other than PASS, and zero missing expected configuration_tuple_sha256 values; every frozen risk-and-feasibility control passes; and there are zero unresolved material paper-versus-observed differences.",
+      "verifier": "independent R0/R1/risk review panel",
+      "exit_condition": "UR05 becomes eligible for closure only after the defined prospective period and final independent review."
+    }
+  ],
+  "entry_gate_to_formal_replay": [
+    "All three data packages are entitled, retained, hash-bound, complete against their frozen coverage expectations and independently reconciled.",
+    "One immutable replay_run_freeze_record binds this contract, the formal replay protocol, the rulebook, DPSFS-DD-v8, input/revision/code/runtime/command bundle, U0 snapshot, U0-to-T2 derivation audit, primary-holdout predicate/lockbox/start-state policy, canonical endpoint/population audit, unitization/lot/reconciliation, conditional submission-path/timestamp, cash/collateral role/scope and event-role mapping, execution/settlement/end-run, fill-leg, broker-tax component FKs, prospective coverage and risk-feasibility pack before outcome inspection; every bound row and echoed binding must match exactly.",
+    "The freeze record binds expected all-history and primary-holdout endpoint counts and the hash-bound candidate roster/population audit; a formal validated result requires the protocol's nonempty all-history and primary-holdout conditions.",
+    "The freeze record binds the primary-holdout predicate/start-state/invalidation, non-overlapping and regime/stress summary rules, the allowed separate execution/settlement state matrix and end-run carry/cancel policy, conditional submission-path/timestamp, fill-leg allocation, broker-tax component FK, cash/collateral role/applicability/scope/event mapping and risk-feasibility policies before any outcome is viewed.",
+    "Every U0 parent class represented in T2 has an accepted class-specific data/replay module; otherwise the result is coverage-restricted and labeled as such.",
+    "UR01, UR02 and UR03 have passed their package acceptance tests; UR04 has a verified pre-result freeze record and bound-row audit; no usable-strategy status is permitted until UR05 also confirms every frozen risk/feasibility, state/configuration coverage, zero-blocking-row and paper-reconciliation condition.",
+    "Any failure remains visible in the exception log and applies the frozen no-fill/exclusion treatment.",
+    "Until then all candidates remain q=0 and no return, allocation, holding or action conclusion is permitted."
+  ],
+  "current_decision": "This contract is a design artifact only. UR01 through UR05 remain open; no entitlement, formal replay, product admission, allocation, holding or action is authorized."
+}

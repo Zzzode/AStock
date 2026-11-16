@@ -1,0 +1,29 @@
+{
+  "schema_version": "astock.verified_market_data.v1",
+  "case_id": "low-position-capital-layout-update-20260811",
+  "as_of": "2026-08-11T09:22:52+08:00",
+  "completed_session": "2026-08-10",
+  "data_quality": "high_with_local_adapter_fallback",
+  "source_packet": "data/raw_market_data_20260811.json",
+  "method": "Close, adjusted one-year price position, returns and trading value were cross-checked between Tencent adjusted K-line / quote endpoints and Sohu daily observations. The 2026-08-11 snapshot was pre-open and is excluded from all close-based calculations.",
+  "warnings": [
+    "The local astock CLI adapter was unavailable because .venv/bin/python was absent.",
+    "The 2026-08-11 quote was a zero-trade pre-open observation, not a close.",
+    "One-year position uses Tencent adjusted closes; turnover values use direct Sohu daily turnover values."
+  ],
+  "rows": [
+    {"ticker":"000703","company":"恒逸石化","close_cny":18.18,"shares_100mn":38.215621,"market_cap_100mn_cny":694.76,"one_year_position_pct":99.96,"drawdown_from_one_year_high_pct":-0.03,"return_5d_pct":12.22,"return_20d_pct":37.52,"return_60d_pct":22.88,"return_120d_pct":45.03,"trading_value_20260810_cny":2074413000,"source_id":"MKT-RAW"},
+    {"ticker":"002379","company":"宏桥控股","close_cny":19.76,"shares_100mn":130.311182,"market_cap_100mn_cny":2574.95,"one_year_position_pct":30.94,"drawdown_from_one_year_high_pct":-38.79,"return_5d_pct":5.72,"return_20d_pct":24.28,"return_60d_pct":-6.48,"return_120d_pct":-34.66,"trading_value_20260810_cny":1251000000,"source_id":"MKT-RAW"},
+    {"ticker":"300014","company":"亿纬锂能","close_cny":55.22,"shares_100mn":21.732969,"market_cap_100mn_cny":1200.09,"one_year_position_pct":22.45,"drawdown_from_one_year_high_pct":-39.16,"return_5d_pct":1.30,"return_20d_pct":6.73,"return_60d_pct":-16.05,"return_120d_pct":-12.76,"trading_value_20260810_cny":2194000000,"source_id":"MKT-RAW"},
+    {"ticker":"002497","company":"雅化集团","close_cny":19.09,"shares_100mn":11.525625,"market_cap_100mn_cny":220.02,"one_year_position_pct":32.67,"drawdown_from_one_year_high_pct":-38.46,"return_5d_pct":6.41,"return_20d_pct":5.35,"return_60d_pct":-26.01,"return_120d_pct":-23.73,"trading_value_20260810_cny":946000000,"source_id":"MKT-RAW"},
+    {"ticker":"002432","company":"九安医疗","close_cny":72.28,"shares_100mn":4.658939,"market_cap_100mn_cny":336.75,"one_year_position_pct":65.29,"drawdown_from_one_year_high_pct":-20.80,"return_20d_pct":30.56,"source_id":"MKT-RAW"},
+    {"ticker":"000623","company":"吉林敖东","close_cny":18.28,"shares_100mn":11.958954,"market_cap_100mn_cny":218.61,"one_year_position_pct":38.75,"drawdown_from_one_year_high_pct":-15.08,"return_20d_pct":4.46,"source_id":"MKT-RAW"},
+    {"ticker":"600739","company":"辽宁成大","close_cny":10.90,"shares_100mn":15.223159,"market_cap_100mn_cny":165.93,"one_year_position_pct":28.86,"drawdown_from_one_year_high_pct":-18.29,"return_20d_pct":9.00,"source_id":"MKT-RAW"},
+    {"ticker":"000685","company":"中山公用","close_cny":11.26,"shares_100mn":14.677311,"market_cap_100mn_cny":165.27,"one_year_position_pct":43.25,"drawdown_from_one_year_high_pct":-19.77,"return_20d_pct":4.89,"source_id":"MKT-RAW"},
+    {"ticker":"600150","company":"中国船舶","close_cny":34.83,"shares_100mn":75.256213,"market_cap_100mn_cny":2621.17,"one_year_position_pct":41.61,"drawdown_from_one_year_high_pct":-15.88,"return_20d_pct":2.91,"source_id":"MKT-RAW"},
+    {"ticker":"301308","company":"江波龙","close_cny":412.50,"shares_100mn":4.230610,"market_cap_100mn_cny":1745.13,"one_year_position_pct":51.26,"drawdown_from_one_year_high_pct":-42.95,"return_20d_pct":-20.98,"source_id":"MKT-RAW"},
+    {"ticker":"002812","company":"恩捷股份","close_cny":55.95,"shares_100mn":9.813185,"market_cap_100mn_cny":549.05,"one_year_position_pct":44.01,"drawdown_from_one_year_high_pct":-36.09,"return_20d_pct":6.31,"source_id":"MKT-RAW"},
+    {"ticker":"002240","company":"盛新锂能","close_cny":32.84,"shares_100mn":9.152939,"market_cap_100mn_cny":300.58,"one_year_position_pct":35.69,"drawdown_from_one_year_high_pct":-47.15,"return_20d_pct":2.02,"source_id":"MKT-RAW"},
+    {"ticker":"300390","company":"天华新能","close_cny":62.46,"shares_100mn":8.307508,"market_cap_100mn_cny":518.89,"one_year_position_pct":45.06,"drawdown_from_one_year_high_pct":-45.54,"return_20d_pct":-2.50,"source_id":"MKT-RAW"}
+  ]
+}

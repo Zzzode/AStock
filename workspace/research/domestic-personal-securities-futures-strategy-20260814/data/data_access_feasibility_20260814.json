@@ -1,0 +1,298 @@
+{
+  "artifact_class": "derived_research_evidence",
+  "schema_version": "data_access_feasibility.v1",
+  "assessment_id": "DPSFS-DAF-20260814",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "research_only": true,
+  "portfolio_q": 0,
+  "scope": "Assessment of credential-free and already archived routes represented in this case's source registry and retained evidence. It does not assert that no provider anywhere can supply the required data under a future entitlement.",
+  "authoritative_design_references": [
+    {
+      "id": "DPSFS-DAC-v12",
+      "role": "current data-acquisition contract",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/data_acquisition_contract_20260814.json",
+      "status": "draft_not_frozen_no_entitlement_no_replay"
+    },
+    {
+      "id": "DPSFS-U0-v2",
+      "role": "current domestic-universe population-governance registry",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/u0_domestic_universe_registry_20260814.json",
+      "status": "draft_population_governance_only"
+    }
+  ],
+  "data_quality": {
+    "source": "case-local archived evidence and design controls",
+    "timestamp": "2026-08-14",
+    "quality_tier": "audit_assessment_incomplete_not_entitled",
+    "fallback_path": "none; a formal replay cannot substitute retrospective samples, public adjusted-or-unknown bars, documentation, or failed probes for an authorized point-in-time archive.",
+    "warnings": [
+      "This is a route-feasibility conclusion, not a live vendor-entitlement inquiry.",
+      "Historic observations retrieved on 2026-08-14 without source-provided historic availability remain retrospective.",
+      "No existing evidence establishes a user-specific broker route, suitability, tax treatment, or permission to trade."
+    ],
+    "errors": []
+  },
+  "formal_replay_decision": {
+    "credential_free_route_qualifies": false,
+    "already_archived_route_qualifies": false,
+    "formal_replay_ready": false,
+    "decision": "no_replay_no_product_admission_no_allocation_no_holding_no_action",
+    "reason": "No reviewed route simultaneously satisfies DAC package acceptance for UR01, UR02, and UR03 and the U0 population/derivation controls. All current classes and items remain q=0."
+  },
+  "nonqualifying_routes": [
+    {
+      "route_id": "OFFICIAL_PRODUCT_AND_GENERIC_MECHANICS_DOCUMENTS",
+      "credential_free": true,
+      "already_archived": true,
+      "evidence_ids": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "F01", "F02", "F03", "F04"],
+      "observed_value": "Product facts, generic ETF mechanics, service descriptions, futures field definitions, suitability/rules context and information-rights context.",
+      "failure_boundary": "Documentation does not establish entitlement, retained raw responses, point-in-time available_at/revision history, complete archives, broker-route execution evidence, or a class-wide U0 population."
+    },
+    {
+      "route_id": "RETRIEVED_OFFICIAL_FUTURES_DAILY_FILE_SAMPLES",
+      "credential_free": true,
+      "already_archived": true,
+      "evidence_ids": ["F05", "F06"],
+      "observed_value": "Twelve retrospectively retrieved SHFE/CZCE sample sessions demonstrate actual-contract daily-file paths and selected EOD fields.",
+      "failure_boundary": "The samples are not an entitled, complete point-in-time archive and lack a lifecycle master, dated effective terms, full-session coverage, historic availability, execution evidence and reconciliation required for actual-contract selection, roll or P&L."
+    },
+    {
+      "route_id": "FROZEN_PUBLIC_ETF_DAILY_BAR_DIAGNOSTIC",
+      "credential_free": true,
+      "already_archived": true,
+      "evidence_ids": ["P01"],
+      "observed_value": "A fixed exploratory four-ETF daily-bar observation with price_basis=forward_adjusted_or_unknown.",
+      "failure_boundary": "It is neither an official point-in-time market-price/NAV/event ledger nor historical execution evidence; it cannot establish investor total return or UR01/UR03 compliance."
+    },
+    {
+      "route_id": "DOCUMENTED_VENDOR_SUBSCRIPTION_CANDIDATE",
+      "credential_free": false,
+      "already_archived": true,
+      "evidence_ids": ["D01"],
+      "observed_value": "Documentation names ETF and actual-futures endpoint families that could supply relevant fields.",
+      "failure_boundary": "No token, paid entitlement, provider-rights attestation, raw response archive, retention/derivation permission, data owner, available_at/revision archive or acceptance-test result exists. Documentation alone is not a qualifying route."
+    },
+    {
+      "route_id": "FAILED_CONTRACT_RULE_PROBES",
+      "credential_free": true,
+      "already_archived": true,
+      "evidence_ids": ["PX01", "PX02", "PX03"],
+      "observed_value": "Metadata-only WAF/challenge or not-found probe records.",
+      "failure_boundary": "No response body or contract fact was retained; these records cannot close a rule, lifecycle or access requirement."
+    }
+  ],
+  "prospective_official_acquisition_paths": [
+    {
+      "path_id": "CFFEX_HISTORICAL_DATA_SERVICE",
+      "source_url": "https://www.cffex.com.cn/lssjfw/",
+      "related_official_application_path": "https://www.cffex.com.cn/zlxz/",
+      "scope_observed_in_read_only_reconnaissance": "Official historical-data service described for CFFEX-listed products/contracts, including historical market-data databases and snapshot data.",
+      "potential_future_role": "Potential procurement candidate for a financial-futures actual-contract module only, subject to a written product-specific entitlement and data-contract acceptance.",
+      "does_not_establish": [
+        "Any current entitlement, retention, normalization, replay, derived-analytics or independent-review right.",
+        "Original available_at timestamps, historic-vintage/revision lineage, immutable delivery manifests or full lifecycle/term reconciliation.",
+        "ETF, commodity-futures, listed-security, broker-route or execution/cost coverage."
+      ],
+      "gate_effect": "Does not close UR02, UR03 or U0; it only narrows a future financial-futures procurement inquiry."
+    },
+    {
+      "path_id": "SSE_SZSE_FORWARD_CAPTURE_PATHS",
+      "source_urls": [
+        "https://etf.sse.com.cn/fundlist/funddetail/index.shtml",
+        "https://www.sse.com.cn/disclosure/fund/etflist/",
+        "https://fund.szse.cn/marketdata/trade/index.html",
+        "https://www.szse.cn/disclosure/fund/etf/index.html"
+      ],
+      "scope_observed_in_read_only_reconnaissance": "Official current ETF market, disclosure and PCF paths that can inform a forward raw-capture clock and source hierarchy.",
+      "potential_future_role": "Prospective daily capture and event reconciliation design after entitlement/retention review; not a reconstruction shortcut.",
+      "does_not_establish": [
+        "A retained historical OHLCV/NAV/IOPV/event/status archive with original release time and revision lineage.",
+        "Permission to retain, normalize, formally replay or independently review the data.",
+        "Broker-specific execution, cost, no-fill or settlement evidence."
+      ],
+      "gate_effect": "Does not close UR01 or UR03 and does not admit a listed-fund class."
+    },
+    {
+      "path_id": "COMMODITY_EXCHANGE_DATE_QUERY_AND_RULE_ARCHIVE_PATHS",
+      "source_urls": [
+        "https://www.shfe.com.cn/reports/tradedata/dailyandweeklydata/",
+        "https://www.shfe.com.cn/reports/businessdata/prmsummary/",
+        "https://www.shfe.com.cn/regulation/exchangerules/productrules/",
+        "https://www.czce.com.cn/cn/uploadfile/2023/04/27/20230427112409129.pdf"
+      ],
+      "scope_observed_in_read_only_reconnaissance": "Official dated commodity daily-data, parameter-query and rule-version paths; CZCE rules describe daily contract-level fields and post-session release.",
+      "potential_future_role": "Evidence leads for effective-rule reconstruction and prospective capture, subject to a formal data/rights review.",
+      "does_not_establish": [
+        "Complete historical actual-contract cross-sections, lifecycle and original available_at/revision lineage.",
+        "An authorized archive, retention/replay right or broker execution record.",
+        "A substitute for retained full-day raw delivery manifests."
+      ],
+      "gate_effect": "Does not close UR02 or UR03; current retrospective samples remain non-PIT source probes."
+    }
+  ],
+  "required_packages": [
+    {
+      "package_id": "ETF_PIT_EVENT_LEDGER",
+      "governs_requirements": ["UR01", "UR03"],
+      "required_scope": "Every ETF in the future frozen decision universe; the five current ETF codes are illustrative only.",
+      "required_contents": [
+        "Dated instrument identity, exchange, listing/status and universe-effective dates.",
+        "One canonical session OHLC, prior close, volume and amount row for every expected active-instrument/session, subject only to documented exceptions.",
+        "NAV, accumulated or adjusted NAV, NAV date, announcement timestamp and IOPV or an explicit unavailable state.",
+        "Distribution/corporate-action type, ex/record/payment dates, amount and adjustment factor, reconciled so every cash event is recognized once.",
+        "Halt, price-limit, session-phase and tradability status.",
+        "Per-record as_of, available_at, vendor-publication time, retrieval time, revision and raw hash, with no decision before available_at.",
+        "Entitlement, raw/normalized hash-chain, coverage, primary-key, event-reconciliation and conflict acceptance tests."
+      ],
+      "existing_evidence_ids": ["E01", "E02", "E03", "E04", "E05", "E06", "E07", "E08", "D01", "P01"],
+      "gaps": [
+        "No entitlement record with retention, normalization, replay, derived-analytics and independent-review rights.",
+        "No complete class-wide point-in-time ETF price/NAV/IOPV/event/status archive, source-vintage history or raw manifest chain.",
+        "No verified adjustment-to-event reconciliation or source-consistent trading-status history.",
+        "No dated broker-route, quote/depth, cost, tax or fill evidence needed where this ledger touches UR03."
+      ],
+      "status": "not_collected_not_accepted"
+    },
+    {
+      "package_id": "FUTURES_ACTUAL_CONTRACT_LEDGER",
+      "governs_requirements": ["UR02", "UR03"],
+      "required_scope": "Every actual listed AU, CU and TA contract in the future frozen universe on every decision session; continuous, retrospectively labeled main-contract and vendor-synthesized series are prohibited for selection, roll and P&L.",
+      "required_contents": [
+        "Contract lifecycle: contract, exchange/product, listing, last-trade, delivery and position-restriction dates.",
+        "Effective rule/specification: multiplier, tick, quote unit/currency, sessions and final-settlement/delivery method.",
+        "Full daily cross-section with prior settlement, OHLC, settlement, volume, turnover and open interest, reconciled to the contemporaneous lifecycle master.",
+        "Dated exchange/broker margin, fee, upper/lower limit and position-limit terms; variation and final-settlement timing.",
+        "Trading, limit-lock, delivery and eligible-successor state.",
+        "Per-record as_of, available_at, vendor-publication time, retrieval time, revision and raw hash, plus expected-contract-count and pagination retention.",
+        "Entitlement, lifecycle/term, full-cross-section, actual-contract, roll, marking and availability acceptance tests."
+      ],
+      "existing_evidence_ids": ["F01", "F02", "F03", "F04", "F05", "F06", "D01", "PX01", "PX02", "PX03"],
+      "gaps": [
+        "F05/F06 are only six retrospectively retrieved dates per exchange, not a complete point-in-time archive or a full futures population census.",
+        "No retained lifecycle master, effective historical rule/margin/fee/limit/position/delivery terms, historic available_at or contract-count reconciliation.",
+        "No entitlement/retention/replay right, raw delivery manifest chain, historical bid/ask/depth or broker-route fill evidence.",
+        "Failed rule probes contain no admissible contract facts."
+      ],
+      "status": "not_collected_not_accepted"
+    },
+    {
+      "package_id": "EXECUTION_AND_COST_LEDGER",
+      "governs_requirements": ["UR03", "UR05"],
+      "required_scope": "Dated broker-route, exchange/session, tax and liquidity evidence for every instrument considered in paper replay or prospective reconciliation.",
+      "required_contents": [
+        "Broker-route identity, commission, minimum fee, tax/levy and effective dates.",
+        "ETF lot, tick, trade date, settlement date, available-to-sell-from, T+1, halt and limit mechanics; futures brokerage fee, margin, restrictions, delivery and final-settlement handling.",
+        "Quote timestamp/age, bid/ask and depth, or a predeclared conservative impact/no-fill method supported by source evidence.",
+        "Route/account/scope-specific cash, debit, collateral, margin and settlement-transfer terms, including day-count, compounding, accrual and immutable term-set identity.",
+        "Execution side plus quote, submission, fill, expiry and settlement causality with a monotonic state-transition ledger.",
+        "Session phase/status and as_of, available_at, revision and raw-hash provenance.",
+        "A later prospective reconciliation must retain at least 60 calendar days and 10 distinct eligible observations, including one per admitted U0 parent class."
+      ],
+      "existing_evidence_ids": ["E06", "E07", "E08", "F01", "F02", "F03", "F04", "D01"],
+      "gaps": [
+        "No dated broker route, fee, tax, margin, quote/depth, market-status or order/fill/settlement evidence exists.",
+        "No immutable cash-collateral term set or monotonic order-state-transition ledger exists.",
+        "No accepted conservative fill/no-fill methodology is bound to source evidence.",
+        "No prospective paper-reconciliation period or observed-versus-modelled exception ledger exists."
+      ],
+      "status": "not_collected_not_accepted"
+    },
+    {
+      "package_id": "U0_POPULATION_AND_DERIVATION_CONTROL",
+      "governs_requirements": ["U0", "UR04"],
+      "package_type": "population-governance module, not a DAC data package",
+      "required_scope": "All in-scope domestic classes before a future decision-universe/T2 freeze; a convenient ETF/AU/CU/TA subset cannot become the open domestic multi-asset universe.",
+      "required_contents": [
+        "Class-wide primary population records containing asset class, venue, identifier, lifecycle, trading status, as_of, available_at, revision and raw hash, retaining delisted, expired, terminated, suspended, merged and renamed items.",
+        "A frozen U0 snapshot bound to registry ID/version/SHA-256, population-source manifests, query definition, source-revision cutoff, approver roles and freeze timestamp.",
+        "A U0-to-T2 derivation audit containing per-class population/qualified/excluded counts, each T2 parent class, pre-frozen inclusion rule, inclusion/exclusion reason and approved exceptions.",
+        "An accepted class-specific data/replay module for every U0 parent class represented in T2; otherwise any future test is explicitly coverage-restricted."
+      ],
+      "existing_evidence_ids": ["E01", "E02", "E03", "E04", "E05", "F05", "F06"],
+      "gaps": [
+        "No dated class-wide point-in-time population master for direct equities, public REITs, bonds/convertibles, financial futures, options or all commodity futures exists in the case.",
+        "No frozen U0 snapshot, source-population manifest, class counts or item-level U0-to-T2 audit exists.",
+        "No represented class has an accepted data/replay module; the current ETF/AU/CU/TA rows remain illustrative probes."
+      ],
+      "status": "draft_governance_only_not_accepted"
+    }
+  ],
+  "existing_evidence_catalog": [
+    {
+      "evidence_ids": ["E01", "E02", "E03", "E04", "E05"],
+      "description": "Five primary-official ETF product summaries.",
+      "does_not_establish": "Current route, market quality/liquidity, total return, execution quality, suitability or allocation."
+    },
+    {
+      "evidence_ids": ["E06", "E07"],
+      "description": "Primary-official generic ETF and bond-ETF mechanics guidance.",
+      "does_not_establish": "Product- and broker-specific session, fee, tax, fill or route assumptions."
+    },
+    {
+      "evidence_ids": ["E08", "D01"],
+      "description": "Exchange service description and vendor interface documentation describing possible data products/endpoints.",
+      "does_not_establish": "A subscription/token, entitlement, permitted retention/derivation/replay/review use, data-owner attestation, raw delivery or revision archive."
+    },
+    {
+      "evidence_ids": ["F01", "F02", "F03", "F04"],
+      "description": "Primary-official futures suitability, field-definition, information-rights and service-context materials.",
+      "does_not_establish": "User eligibility, historic archive completeness, current research permission, broker route, fills or effective contract terms for replay."
+    },
+    {
+      "evidence_ids": ["F05", "F06"],
+      "description": "Primary-official raw SHFE/CZCE actual-contract daily-file samples for six retrospectively retrieved dates each.",
+      "does_not_establish": "Original-date availability, continuous complete coverage, lifecycle/rule terms, entitlement or execution."
+    },
+    {
+      "evidence_ids": ["P01"],
+      "description": "Tier-3 frozen public four-ETF daily-bar observation.",
+      "does_not_establish": "Point-in-time investor total return, market-price/NAV/event classification or execution."
+    },
+    {
+      "evidence_ids": ["PX01", "PX02", "PX03"],
+      "description": "Metadata-only failed contract-rule probes.",
+      "does_not_establish": "Any contract rule or lifecycle fact."
+    }
+  ],
+  "least_expansive_external_prerequisite": {
+    "status": "required_before_any_data-package-transition",
+    "principle": "Do not expand the research universe or infer a result from public samples. First obtain one auditable entitlement-and-delivery bundle for the explicitly frozen prospective scope; if one lawful provider cannot cover every module, obtain equivalent module-level bundles with the same controls. The CFFEX historical-data service is a documented future financial-futures procurement lead, not a present authorization or a complete multi-asset solution.",
+    "minimum_external_bundle": [
+      "A provider legal-entity/product identity and written permission covering retention, normalization, formal replay, derived analytics and independent review, together with terms version, effective/expiry dates, redistribution/audit/deletion rules and credential-custody/lapse procedure.",
+      "An immutable raw delivery/archive and manifest for ETF_PIT_EVENT_LEDGER, FUTURES_ACTUAL_CONTRACT_LEDGER and EXECUTION_AND_COST_LEDGER, with source as_of, documented available_at, vendor-publication time, retrieval time, revision, raw hash, coverage expectation and response/page/row counts.",
+      "Primary venue/product population masters sufficient to create and freeze the U0 snapshot and a class-neutral U0-to-T2 derivation audit; every class represented in a future test must receive its accepted data/replay module.",
+      "Dated broker-route and, where relevant, suitability evidence without assuming the user's access; the later paper period remains a separate UR05 requirement."
+    ],
+    "explicitly_not_sufficient": [
+      "A credential, successful request, payment receipt, API schema or data-service page alone.",
+      "Retrospective download of a historic row without source-provided historic availability.",
+      "A public adjusted-or-unknown daily-bar series, a continuous futures series, or a finite convenient probe universe.",
+      "Any entitlement/delivery bundle by itself: UR04 must still be frozen before outcomes are viewed and UR05 must still pass before a usable-strategy upgrade.",
+      "An unarchived source-link reconnaissance result: it is not a local raw source and cannot close a gate until the corresponding primary evidence and written terms are retained."
+    ],
+    "current_effect": "Until the bundle is accepted against the package tests and U0 controls, no data collection result can be treated as a formal replay input; q remains 0."
+  },
+  "open_follow_on_gates": [
+    {
+      "requirement_id": "UR04",
+      "status": "open",
+      "boundary": "A hash-bound, result-blind formal replay protocol/rulebook/U0 snapshot/U0-to-T2 audit/data dictionary must be frozen before outcome inspection."
+    },
+    {
+      "requirement_id": "UR05",
+      "status": "open",
+      "boundary": "Independent R0/R1/risk review and the prospective paper-reconciliation thresholds remain required after the data and protocol gates."
+    }
+  ],
+  "source_references": [
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/data_acquisition_contract_20260814.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/u0_domestic_universe_registry_20260814.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/formal_replay_protocol_requirements_20260814.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/source_registry.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/futures_exchange_data_access_probe_20260814.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/etf_public_price_falsification_20260814.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/source_exhaustion_log.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/unresolved_requirements.json"
+  ]
+}

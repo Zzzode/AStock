@@ -1,0 +1,156 @@
+{
+  "cycle": "R0_evidence",
+  "reviewed_at": "2026-08-11",
+  "publishability_status": "BLOCKED",
+  "institutional_status": "BLOCKED",
+  "publishability_score": 67,
+  "cycle_disposition": "R0_EVIDENCE_CLOSED_PENDING_R3_R4",
+  "review_scope": {
+    "files_reviewed": [
+      "research_brief.md",
+      "gate_manifest.md",
+      "artifact_contract.md",
+      "data/raw_market_data_20260811.json",
+      "data/verified_market_data_20260811.json",
+      "data/raw_financials_20260811.json",
+      "data/verified_financials_20260811.json",
+      "data/source_registry.json",
+      "data/claim_audit.json",
+      "data/broker_street_consensus_20260811.json",
+      "data/current_valuation_model_20260811.json",
+      "analysis/house_view.md",
+      "analysis/valuation_model.md",
+      "analysis/valuation_audit.md",
+      "main.tex",
+      "sections/ch01_decision.tex",
+      "sections/ch02_method.tex",
+      "sections/ch04_financials.tex",
+      "sections/ch05_primary.tex",
+      "tools/verify_research_workspace.py"
+    ],
+    "boundary_tests": [
+      "2026-08-11 pre-open indications are not treated as completed-session closes",
+      "issuer H1 previews are not treated as actual interim reports",
+      "broker targets remain external references rather than AStock house targets",
+      "historical scenarios are not reused as current targets"
+    ]
+  },
+  "verifier_summary": {
+    "case_local_command": "python3 tools/verify_research_workspace.py",
+    "case_local_result": "36 PASS / 3 FAIL",
+    "r0_relevant_result": "PASS: market, financial, source-registry, broker-coverage, source-quality, pre-open, H1-actuality, and historical-scenario checks all passed.",
+    "remaining_case_local_failures": [
+      "36 required MacTeX XeLaTeX is available: not available in this runtime",
+      "37 PDF deliverable exists: not generated",
+      "38 rendered-page review material exists: no page PNGs"
+    ],
+    "failure_ownership": "The three remaining case-local failures are R3_render_compliance/R4_final_ic matters and are not waived or reclassified as R0 evidence passes.",
+    "repository_gate_command": "python3 workspace/research/tools/run_research_gates.py workspace/research/low-position-capital-layout-update-20260811",
+    "repository_gate_result": "75 PASS / 32 FAIL",
+    "note": "The repository gate remains an overall publication snapshot. Its unresolved governance, final-signoff, workflow and render failures keep the case BLOCKED but do not reopen a source-evidence finding that was re-verified by the case-local checks."
+  },
+  "findings": [
+    {
+      "issue_id": "R0-S-001",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "analysis/house_view.md:9-12",
+      "evidence": "Resolved and re-verified. The house view states 002497 H1 preview CNY1.10-1.30bn, 002379 preview CNY15.0-16.0bn, and 000703 actual H1 CNY5.902bn. These match data/claim_audit.json C03/C06/C14 and the current valuation disposition. The prior tenfold unit errors are no longer present.",
+      "fix_required": "Keep the corrected bn units synchronized with the CNY100m presentation in data/verified_financials_20260811.md whenever the house view or LaTeX is refreshed.",
+      "blocking_gate": "financial fact consistency",
+      "status": "resolved",
+      "verification_evidence": "analysis/house_view.md:9-12; data/claim_audit.json:C03,C06,C14; data/current_valuation_model_20260811.json:37,139",
+      "verifier_ref": "manual source-to-house-view reconciliation",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-S-002",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "internal-control",
+      "artifact": "tools/verify_research_workspace.py",
+      "evidence": "Resolved and re-verified. The case-local verifier now exists and was run from the case directory. It returned 36 PASS / 3 FAIL, with all evidence/source checks passing. The three failures truthfully identify only unavailable MacTeX, missing PDF and missing rendered pages; they are R3/R4 work, not a missing-verifier bypass.",
+      "fix_required": "No R0 repair remains. R3/R4 must complete the mandated MacTeX build, rendered-page review and final publication gate; the verifier must continue to fail truthfully until then.",
+      "blocking_gate": "generic_case_verifier_presence_and_truthful_execution",
+      "status": "resolved",
+      "verification_evidence": "tools/verify_research_workspace.py; command output on 2026-08-11: PASS 01-35 and 39; FAIL 36-38 only",
+      "verifier_ref": "python3 tools/verify_research_workspace.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-collector",
+      "artifact": "research_brief.md:9; gate_manifest.md:7",
+      "evidence": "Resolved and re-verified. Both artifacts state the 2026-08-11 09:21-09:22 CST pre-open collection window, consistent with data/source_registry.json MKT-RAW (09:21:09-09:22:52) and data/raw_market_data_20260811.md:3-4.",
+      "fix_required": "Preserve this exact boundary in future cutoff, inventory and render-metadata refreshes.",
+      "blocking_gate": "timestamp_provenance",
+      "status": "resolved",
+      "verification_evidence": "research_brief.md:9; gate_manifest.md:7; data/source_registry.json:MKT-RAW",
+      "verifier_ref": "case-local checks 12-15 and 27",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-A-002",
+      "severity": "A",
+      "owner_skill": "reports",
+      "owner_agent": "report-collector",
+      "artifact": "data/broker_street_consensus_20260811.json:4-14",
+      "evidence": "Resolved and re-verified. The packet defines implied_upside as broker report-date arithmetic, excludes it from current conclusions, and separately labels refreshed 2026-08-10 external-anchor arithmetic. A stale report-date percentage cannot be read as current upside.",
+      "fix_required": "Retain the field definition and separate refreshed arithmetic in future broker refreshes; never relabel broker report-date upside as a current-price output.",
+      "blocking_gate": "broker_upside_date_basis",
+      "status": "resolved",
+      "verification_evidence": "data/broker_street_consensus_20260811.json:4-14; analysis/valuation_audit.md:20-26",
+      "verifier_ref": "manual broker-date-basis reconciliation",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-B-001",
+      "severity": "B",
+      "owner_skill": "reports",
+      "owner_agent": "report-collector",
+      "artifact": "data/broker_street_consensus_20260811.json:31,35,303-326,423-446",
+      "evidence": "Resolved and re-verified. Both the flat machine source-of-record rows and the detailed ticker-report rows now label 600150 and 300390 as re_scoped_original_unverified and assign valuation/street weight 0.0. The paired Markdown preserves the incomplete predecessor-provenance limitation rather than calling either record primary evidence.",
+      "fix_required": "Keep the flat and detailed schemas synchronized. A predecessor path and checksum are still required before either report can be upgraded from zero-weight re-scoped evidence.",
+      "blocking_gate": "none",
+      "status": "resolved",
+      "verification_evidence": "data/broker_street_consensus_20260811.json:31,35,305-326,425-446; data/broker_street_consensus_20260811.md:20,24,39-40; case-local check 22",
+      "verifier_ref": "case-local check 22 plus flat-to-detailed schema reconciliation",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-B-002",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "data/source_registry.json:MKT-RAW",
+      "evidence": "Resolved and re-verified. MKT-RAW now explicitly scopes all 13 2026-08-10 completed-session closes, price-position and turnover observations, plus separately labelled 2026-08-11 pre-open indications. Its warning continues to prohibit use of the pre-open observation as a close.",
+      "fix_required": "Retain the completed-session/pre-open split in every future source-registry refresh.",
+      "blocking_gate": "none",
+      "status": "resolved",
+      "verification_evidence": "data/source_registry.json:6; data/raw_market_data_20260811.json; case-local checks 13,15,27",
+      "verifier_ref": "case-local completed-session boundary checks",
+      "reopened_count": 0
+    }
+  ],
+  "confirmed_correct": [
+    {
+      "claim": "No 8/11 pre-open indication is used as a completed-session close.",
+      "evidence": "data/raw_market_data_20260811.md:3-4,24-28; data/claim_audit.json:C01; sections/ch02_method.tex:5; case-local checks 13,15,27"
+    },
+    {
+      "claim": "Only 000703 and 301308 are treated as actual H1 reports; the other nine observations remain issuer previews and 600739/600150 retain official-search gaps.",
+      "evidence": "data/raw_financials_20260811.md:7-10,45-59; sections/ch04_financials.tex:20-22; case-local checks 16-19"
+    },
+    {
+      "claim": "Positive-weight broker anchors are archived original-PDF evidence; re-scoped or forecast-only records are zero-weight and remain external references, not AStock targets or a vendor consensus.",
+      "evidence": "data/broker_street_consensus_20260811.json; data/broker_street_consensus_20260811.md:3-7,20,24,38-43; analysis/valuation_model.md:41-45; case-local checks 20-22"
+    },
+    {
+      "claim": "Historical scenario values are not reused as current house targets.",
+      "evidence": "research_brief.md:46-50; data/current_valuation_model_20260811.json; main.tex:21-23; sections/ch01_decision.tex:3-5; case-local check 28"
+    }
+  ]
+}

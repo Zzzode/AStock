@@ -1,0 +1,103 @@
+{
+  "capture_batch": "probe-r3-first-party-route-rights-20260814",
+  "captured_at_range": {
+    "start": "2026-08-14T23:58:48+08:00",
+    "end": "2026-08-14T23:58:50+08:00"
+  },
+  "purpose": "Read-only retention of a bounded set of first-party official route and website-terms pages used to assess future H1/H3 data procurement and rights inquiry. These pages are not a historical data delivery, a user entitlement, a point-in-time archive, or an execution record.",
+  "source_quality": "primary_official_route_and_terms_documentation",
+  "research_only": true,
+  "formal_replay_eligible": false,
+  "data_rights_status": "not_established_by_this_capture",
+  "quantity": 0,
+  "method": {
+    "access": "Unauthenticated HTTPS GET with a generic research-only browser user-agent. No credentials, account, subscription, purchase, rate bypass, broker action or order action was used.",
+    "time_boundary": "Local retrieval time records only when the page was obtained. It does not establish a data-product historical available_at field, a contract start date, a rights grant or a service-level commitment.",
+    "use_boundary": "The retained content supports only the narrow existence and stated boundary of public route/terms pages. It cannot establish an applicant's eligibility, an executed license, dataset coverage, retention, normalization, replay, derived-analysis, independent-review or execution rights.",
+    "content_boundary": "HTML pages may change after retrieval. The source-freeze below protects only this case-local captured copy; it is not external notarization or an authorization to reuse market data."
+  },
+  "files": [
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_market_data_products.html",
+      "publisher": "Shanghai Stock Exchange",
+      "title": "SSE Market Data Products — Historical Data",
+      "url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "retrieved_at": "2026-08-14T23:58:48+08:00",
+      "format": "html",
+      "response_scope": "Official product page describing a historical-data subscription route and selected product categories for Shanghai market data.",
+      "use_boundary": "Product-page descriptions do not establish this case's delivery, applicant eligibility, exact field coverage, point-in-time history or contracted rights.",
+      "bytes": 78352,
+      "sha256": "97ae19ecd969ec017290252e3cc5ca65f47054c1bd9edb40c594795fcbcd6a96"
+    },
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_website_legal_statement.html",
+      "publisher": "Shanghai Stock Exchange",
+      "title": "SSE Website Legal Statement",
+      "url": "https://www.sse.com.cn/home/legal/",
+      "retrieved_at": "2026-08-14T23:58:49+08:00",
+      "format": "html",
+      "response_scope": "Official website-terms page describing non-commercial browsing/download and restrictions on profit-oriented use without written permission.",
+      "use_boundary": "Website terms do not themselves grant a data-product license or the retention/replay/derived-analysis/review rights required by this case.",
+      "bytes": 29964,
+      "sha256": "a19b622fc5b5baa6bea83804476dc908ff426ef244f3d3c589741a36419382e6"
+    },
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sseinfo_historical_data_service.html",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "SSE Information — Historical Market Data Service",
+      "url": "https://www.sseinfo.com/services/assortment/historical/",
+      "retrieved_at": "2026-08-14T23:58:49+08:00",
+      "format": "html",
+      "response_scope": "Official service landing page for historical market-data inquiry.",
+      "use_boundary": "A service landing page does not establish historical delivery scope, data dictionary, licensing or a right to retain/normalize/replay/derive/review data.",
+      "bytes": 23029,
+      "sha256": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f"
+    },
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sseinfo_fixed_income_service.html",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "SSE Information — Fixed-Income Market Data Service",
+      "url": "https://www.sseinfo.com/services/assortment/income/",
+      "retrieved_at": "2026-08-14T23:58:50+08:00",
+      "format": "html",
+      "response_scope": "Official fixed-income market-data service landing page.",
+      "use_boundary": "The service page cannot establish a point-in-time historical archive, event/term package, replay license or execution evidence.",
+      "bytes": 23118,
+      "sha256": "107c10a3a506b405c41108f2726598c4e12cf4731fe0bccc661b74aa0d865b55"
+    },
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/szse_website_legal_statement.html",
+      "publisher": "Shenzhen Stock Exchange",
+      "title": "SZSE Website Legal Statement",
+      "url": "https://www.szse.cn/application/laws/",
+      "retrieved_at": "2026-08-14T23:58:50+08:00",
+      "format": "html",
+      "response_scope": "Official website-terms page describing non-commercial browsing/download and restrictions on profit-oriented use without written permission.",
+      "use_boundary": "Website terms do not grant a historical data contract, a data-product entitlement or the rights required for formal replay and independent review.",
+      "bytes": 10063,
+      "sha256": "5398c463263421a98cbf90918dcaa16d6d70ef80f2052a9d0c19c1606ab27936"
+    }
+  ],
+  "source_freeze": {
+    "schema_version": "source_freeze.v1",
+    "sealed_at": "2026-08-14T23:59:25+08:00",
+    "frozen_files": [
+      {"path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_market_data_products.html", "bytes": 78352, "sha256": "97ae19ecd969ec017290252e3cc5ca65f47054c1bd9edb40c594795fcbcd6a96"},
+      {"path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_website_legal_statement.html", "bytes": 29964, "sha256": "a19b622fc5b5baa6bea83804476dc908ff426ef244f3d3c589741a36419382e6"},
+      {"path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sseinfo_historical_data_service.html", "bytes": 23029, "sha256": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f"},
+      {"path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sseinfo_fixed_income_service.html", "bytes": 23118, "sha256": "107c10a3a506b405c41108f2726598c4e12cf4731fe0bccc661b74aa0d865b55"},
+      {"path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/szse_website_legal_statement.html", "bytes": 10063, "sha256": "5398c463263421a98cbf90918dcaa16d6d70ef80f2052a9d0c19c1606ab27936"}
+    ],
+    "runtime_provenance": {
+      "host_os": "Linux",
+      "retrieval_method": "curl HTTPS GET with generic research-only user-agent",
+      "credentials_used": false,
+      "external_action": "none"
+    }
+  },
+  "limitations": [
+    "The capture contains official route and terms pages only; it contains no historical market-data delivery, account evidence, contract, API token, trade instruction or execution record.",
+    "No page establishes a user-specific entitlement, full class/venue coverage, source-side available_at, revision history, retention/normalization/replay/derived-analysis/independent-review rights or broker execution facts.",
+    "No product admission, allocation, holding, trading, order, return or performance conclusion may be derived from this capture. quantity remains 0."
+  ]
+}

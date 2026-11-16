@@ -1,0 +1,105 @@
+{
+  "schema_version": "strategic_allocation_execution_eligibility.v1",
+  "case_id": "stable-income-multi-asset-strategy-20260811",
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "as_of": "2026-08-12",
+  "status": "not_run",
+  "purpose": "controlled model-policy template; no execution-day observation or trade authorization",
+  "data_quality": {
+    "tier": "controlled_policy_no_current_market_packet",
+    "warnings": [
+      "No current price, IOPV, premium/discount, spread, liquidity, holdings or account field has been evaluated.",
+      "No historical price snapshot is an execution-day field or can satisfy any control in this packet."
+    ],
+    "errors": []
+  },
+  "record_requirements": {
+    "common_fields": [
+      "validation_date",
+      "market_session",
+      "source_name",
+      "source_locator",
+      "capture_timestamp",
+      "raw_record_sha256",
+      "product_document_version_or_hash",
+      "product_fee",
+      "trading_status",
+      "market_price",
+      "market_price_timestamp",
+      "iopv_or_reference_value",
+      "iopv_or_reference_timestamp",
+      "premium_discount_pct",
+      "best_bid",
+      "best_ask",
+      "spread_pct",
+      "same_session_traded_value_or_executable_depth_cny",
+      "account_eligibility",
+      "minimum_lot",
+      "cash_feasibility",
+      "q",
+      "failure_reason",
+      "fallback_result"
+    ],
+    "protected_liquidity_fields": [
+      "institution_name",
+      "insured_status",
+      "aggregate_qualifying_deposit_exposure_cny",
+      "term_or_maturity",
+      "withdrawal_or_liquidity_terms"
+    ],
+    "combined_holdings_fields": [
+      "fund_holdings_as_of",
+      "holdings_source_locator",
+      "combined_sector_weight_of_total_portfolio_pct",
+      "top_ten_issuer_group_weight_of_equity_sleeve_pct"
+    ]
+  },
+  "freshness_policy": {
+    "product_documents": "current as of validation date",
+    "market_fields": "captured in the same China market session as the proposed tranche",
+    "missing_or_stale_field_result": "fail_q_0"
+  },
+  "thresholds": {
+    "premium_discount_abs_max_pct": 1.0,
+    "quoted_spread_max_pct_of_mid": 0.5,
+    "proposed_tranche_max_pct_of_same_session_traded_value_or_executable_depth": 10.0,
+    "staging_cash_hard_cap_cny": 10000,
+    "dividend_equity_hard_cap_pct_of_portfolio": 35.0,
+    "gold_hard_cap_pct_of_portfolio": 12.0,
+    "rate_bond_hard_cap_pct_of_portfolio": 60.0,
+    "combined_sector_max_pct_of_total_portfolio": 25.0,
+    "top_ten_issuer_group_max_pct_of_equity_sleeve": 35.0
+  },
+  "sleeve_controls": {
+    "511010": {
+      "required_checks": ["identity_and_current_document", "normal_trading", "price_reference", "premium_discount", "spread", "liquidity", "account_lot_cash_feasibility", "duration_fit"],
+      "q": 0,
+      "reason": "not_run_no_current_market_packet"
+    },
+    "510880": {
+      "required_checks": ["identity_and_current_document", "normal_trading", "price_reference", "premium_discount", "spread", "liquidity", "account_lot_cash_feasibility"],
+      "q": 0,
+      "reason": "not_run_no_current_market_packet"
+    },
+    "512890": {
+      "required_checks": ["identity_and_current_document", "normal_trading", "price_reference", "premium_discount", "spread", "liquidity", "account_lot_cash_feasibility", "dated_combined_holdings_look_through"],
+      "q": 0,
+      "reason": "not_run_no_current_market_packet"
+    },
+    "518880": {
+      "required_checks": ["identity_and_current_document", "normal_trading", "non_levered_gold_spot_exposure", "price_reference", "premium_discount", "spread", "liquidity", "account_lot_cash_feasibility"],
+      "q": 0,
+      "reason": "not_run_no_current_market_packet"
+    }
+  },
+  "failure_waterfall": {
+    "failed_or_missing_check_result": "q_0_no_trade_for_affected_sleeve",
+    "destination": "eligible_protected_liquidity_reserve",
+    "staging_cash_rule": "staging cash remains at or below CNY10000; deferred capital is never routed to staging cash above this cap",
+    "substitution_rule": "no automatic substitution into 511010, another ETF, REITs or direct stocks",
+    "retry_rule": "fresh complete validation is required at the next scheduled tranche or rebalancing review; no catch-up trade",
+    "capital_conservation_test": "all deferred capital remains within the fixed CNY200000 portfolio and protected-liquidity sleeve may temporarily exceed its 20% target without breaching its 100% hard cap"
+  },
+  "source_references": ["S05", "S08", "S09", "S10", "S11", "S12", "S16"],
+  "execution_authorization": "none"
+}

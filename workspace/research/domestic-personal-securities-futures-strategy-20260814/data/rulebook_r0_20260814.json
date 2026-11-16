@@ -1,0 +1,38 @@
+{
+  "schema_version": "domestic_personal_multiasset_rulebook.v1",
+  "version": "DPSFS-R0-v1",
+  "as_of": "2026-08-14",
+  "status": "draft_not_frozen_not_testable",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "objective_boundary": "The sole performance criterion, if an authorized test is later run, is ex-post cost-aware rolling-five-year TWRR at or above 5%. It is not a guarantee, forecast, probability, annual floor or action.",
+  "listed_fund_hypothesis": {
+    "eligible_set": ["510300.SH", "510880.SH", "518880.SH", "511010.SH"],
+    "decision_frequency": "first observed session of a calendar month after close",
+    "information_lag": "use information available through the preceding observed close; marked target cannot become effective until the following observed session",
+    "risk_filter": "positive 252-observation total-return momentum and total-return level above its 200-observation moving average",
+    "selection": "rank eligible 510300/510880/518880 and select at most two; apply a frozen overlap-risk cluster rule before any mapping",
+    "test_mapping": "An exploratory post-source public daily-bar diagnostic mechanically used 50% combined selected risk sleeves and 511010 for the remainder. Its unresolved adjustment basis makes it non-admissible; a formal total-return test must be pre-registered independently before results are viewed.",
+    "event_accounting": "Record each distribution, interest, coupon, redemption, split and correction exactly once at its actual available/settled time. No automatic reinvestment is assumed.",
+    "execution": "Use dated price/NAV, broker fee, tax, T+1, spread/depth, halt, limit and no-fill inputs. A missing input leaves the candidate ineligible."
+  },
+  "commodity_futures_hypothesis": {
+    "candidate_families": ["AU", "CU", "TA"],
+    "instrument_basis": "actual listed contracts only; continuous series are disallowed for P&L or roll proof",
+    "signal": "weighted time-series momentum using 21/63/126 prior observed settlement returns with weights 0.45/0.35/0.20; 60-session volatility estimate",
+    "decision_timing": "observed close to no-earlier-than-next-available-session effect",
+    "contract_gate": "On each decision date require a verified actual contract code, lifecycle/last-trade record, delivery buffer, price-limit and trading-status record, volume/open-interest threshold, margin/fee record, position-limit record and broker-route confirmation.",
+    "risk_mapping": "Use unitized-NAV volatility sizing with pre-approved portfolio/group/instrument risk limits. No numeric limit has been approved in this draft.",
+    "roll_and_failure": "Choose and roll only between contemporaneously eligible actual contracts under a pre-registered rule. If price limit, suspension, missing liquidity or delivery restriction prevents a fill, record no-fill and retain the risk; do not manufacture a transaction.",
+    "accounting": "Mark variation P&L at observed daily settlement; separately record collateral convention, exchange/broker fees, spread/impact and roll difference. No automatic reinvestment assumption is used."
+  },
+  "common_freeze_gates": [
+    "Authorized data entitlement, raw archive, as_of/available_at timestamps and revision treatment.",
+    "Predeclared eligible universe, substitutions, ties, calendar, lookbacks, costs, taxes and no-fill behavior.",
+    "Complete event ledger for listed funds and actual-contract lifecycle/limit/margin history for futures.",
+    "Development/holdout separation plus every complete rolling-five-year endpoint disclosed.",
+    "Current product/contract facts, broker route, suitability, liquidity and independent R0/R1/risk review."
+  ],
+  "current_decision": "No rule is frozen, tested as formal total return or approved for action."
+}

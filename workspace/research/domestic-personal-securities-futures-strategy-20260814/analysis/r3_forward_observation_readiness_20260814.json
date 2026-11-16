@@ -1,0 +1,517 @@
+{
+  "schema_version": "r3_forward_observation_readiness.v1",
+  "artifact_id": "DPSFS-R3-FOR-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "language": "zh-CN",
+  "artifact_type": "research_only_forward_observation_design",
+  "research_only": true,
+  "portfolio_q": 0,
+  "status": "not_ready_for_formal_forward_paper_observation",
+  "current_verdict": {
+    "actionable_strategy_today": false,
+    "formal_replay_input_status": "absent_or_unaccepted",
+    "formal_paper_observation_status": "not_started",
+    "reason": [
+      "UR01、UR02 与 UR03 的有权利、可审计、点时可得原始数据包尚未收集和独立验收。",
+      "DPSFS-RP0-v10、数据合同、U0 至 T2 推导、规则簿及运行绑定记录均未形成可签署的正式冻结组合。",
+      "不存在正式回放、锁箱检验、独立复算或前瞻纸面核对结果。"
+    ],
+    "permitted_today": [
+      "保留 q=0，并建立不含观察值的前瞻接收、谱系、例外和核对设计。",
+      "在未来取得书面权利后，按本设计做前瞻原始资料接收质量控制；该阶段的资料一律标记为 intake_only_unaccepted，直至独立验收。"
+    ],
+    "prohibited_outputs": [
+      "任何标的、合约或类别的准入结论",
+      "任何方向、数量、仓位、配置或执行指令",
+      "任何业绩、收益、适配性或推荐结论",
+      "把回溯样本、公开页面或后得资料倒灌为前瞻点时证据"
+    ]
+  },
+  "predecessor_boundary": {
+    "predecessor_case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+    "treatment": "frozen_non_inheritable_framework_release",
+    "rule": "前案的 PDF、验证结果、审阅结论、资料或任何冻结状态均不得被本案继承为数据包验收、规则冻结、正式回放或前瞻观察的通过证据。"
+  },
+  "definitions": {
+    "forward_intake_observation": "对未来到达的原始资料、可得时间、版本和覆盖度作追加式记录与质量控制。它不运行策略规则，不生成标的选择，也不形成正式回放输入。",
+    "formal_paper_observation": "仅在已验收数据包、已签署正式冻结、正式回放和独立复算均通过后，按已冻结的观察日历记录确定性研究状态及覆盖证据的前瞻阶段。它不向外发送指令，也不是推荐。",
+    "recommendation": "需要本案范围外、独立且后续的证据、审阅和治理决定；任何前瞻接收或纸面观察里程碑均不自动产生该结论。"
+  },
+  "mode_separation": [
+    {
+      "mode": "MODE_0_DESIGN_ONLY",
+      "permitted_content": "空白模板、字段字典映射、来源路径、预期日历、例外代码和冻结草案。",
+      "input_status": "no_accepted_raw_rows",
+      "output_status": "design_only",
+      "promotion_rule": "不得称为资料验收、前瞻数据集、正式回放或纸面观察。"
+    },
+    {
+      "mode": "MODE_1_FORWARD_INTAKE_QA",
+      "entry_condition": "未来已取得适用的书面接收、留存、规范化、研究衍生和独立复核权利；每次接收均有不可变原始对象和清单。",
+      "permitted_content": "前瞻原始资料接收、字段完整性、点时可得性、版本和预期覆盖核对。",
+      "required_label": "intake_only_unaccepted",
+      "output_status": "source_quality_evidence_only",
+      "promotion_rule": "未经数据包验收、U0/T2 审计及正式冻结，任何行不得进入规则运行、历史回放或正式纸面观察。"
+    },
+    {
+      "mode": "MODE_2_FORMAL_PAPER_OBSERVATION",
+      "entry_condition": "UR01--UR04 已独立通过；已完成冻结后的正式回放、锁箱检验和独立复算；正式观察开始时间晚于签署冻结时间。",
+      "permitted_content": "已冻结观察日历内的确定性研究状态、来源到达、覆盖元组和例外核对。",
+      "output_status": "research_observation_only",
+      "promotion_rule": "即使完成前瞻纸面核对，q 仍为 0；其结果只能形成后续审阅的研究证据，不能自动变成推荐。"
+    }
+  ],
+  "freeze_sequence": [
+    {
+      "sequence": 0,
+      "freeze_id": "FORWARD_INTAKE_BOUNDARY_FREEZE",
+      "purpose": "冻结本案的非行动边界、模式定义、源资料接收用途和禁止输出。",
+      "required_fields": [
+        "case_id",
+        "portfolio_q",
+        "mode",
+        "observation_scope_description",
+        "prohibited_output_set",
+        "timezone",
+        "freeze_timestamp",
+        "canonical_serialization_sha256",
+        "change_control_owner",
+        "independent_reviewer"
+      ],
+      "current_state": "design_can_be_frozen_but_does_not_create_a_formal_run",
+      "failure_effect": "缺少边界或哈希时，任何接收资料只能作为未受控草稿，不能称为前瞻观察。"
+    },
+    {
+      "sequence": 1,
+      "freeze_id": "FORWARD_INTAKE_PROTOCOL_FREEZE",
+      "purpose": "在第一笔未来资料到达前冻结来源范围、权利证明、预期观察日历、字段映射、时钟语义、例外分类、重试和保留规则。",
+      "required_fields": [
+        "source_package_ids",
+        "source_route_ids",
+        "written_rights_reference",
+        "u0_snapshot_reference_or_explicit_scope_gap",
+        "expected_coverage_calendar_sha256",
+        "field_mapping_version",
+        "timezone",
+        "availability_definition",
+        "revision_policy",
+        "raw_manifest_schema_version",
+        "exception_taxonomy_version",
+        "collection_cadence",
+        "freeze_timestamp",
+        "canonical_serialization_sha256"
+      ],
+      "current_state": "blocked_on_future_rights_and_source_package_definition",
+      "failure_effect": "未经此冻结而到达的资料可保留为探针，但不得计入 MODE_1 的合格前瞻覆盖。"
+    },
+    {
+      "sequence": 2,
+      "freeze_id": "FORMAL_REPLAY_RUN_FREEZE",
+      "purpose": "在任何正式规则结果或 MODE_2 观察前，使用唯一的 replay_run_freeze_record 交叉绑定已验收数据、U0/T2 推导、规则簿、协议、数据字典、输入清单、日历、锁箱、风险控制、代码、运行环境和命令。",
+      "required_fields": [
+        "replay_run_id",
+        "replay_run_freeze_record_sha256",
+        "data_contract_freeze_record_sha256",
+        "u0_snapshot_sha256",
+        "u0_to_t2_derivation_audit_sha256",
+        "rulebook_sha256",
+        "formal_replay_protocol_sha256",
+        "data_dictionary_sha256",
+        "input_manifest_sha256",
+        "source_revision_cutoff",
+        "master_calendar_sha256",
+        "prospective_state_configuration_coverage_policy_sha256",
+        "risk_feasibility_control_sha256",
+        "replay_code_commit",
+        "runtime_environment_lock_or_hash",
+        "exact_run_command",
+        "first_permitted_outcome_view_at"
+      ],
+      "current_state": "not_frozen",
+      "failure_effect": "MODE_2 不得开始；不得用文件路径、案例名称或事后报告哈希替代行级运行绑定。"
+    },
+    {
+      "sequence": 3,
+      "freeze_id": "FORMAL_FORWARD_OBSERVATION_START_RECORD",
+      "purpose": "在 MODE_2 首个观察时点前冻结观察起止规则、预期配置元组、观察日历、独立核对责任人及停止条件，并引用已签署的正式运行绑定。",
+      "required_fields": [
+        "replay_run_id",
+        "replay_run_freeze_record_sha256",
+        "observation_start_at",
+        "expected_configuration_tuple_set_sha256",
+        "observation_calendar_sha256",
+        "minimum_calendar_duration_rule",
+        "minimum_distinct_observation_rule",
+        "exception_escalation_policy_sha256",
+        "independent_reconciliation_plan_sha256",
+        "no_external_instruction_attestation"
+      ],
+      "current_state": "not_eligible_until_sequences_0_to_2_and_independent_replay_review_pass",
+      "failure_effect": "任何较早记录只能保留为 MODE_1 接收质量证据，不能回标为正式纸面观察。"
+    }
+  ],
+  "source_capture": {
+    "capture_principles": [
+      "原始对象只追加，不原地覆盖；更正以新对象、新版本和 supersedes_reference 表达。",
+      "每个预期时点都必须有成功、无资料、延迟、休市、失败尝试或来源例外之一；不得静默缺行。",
+      "任何历史日期但在之后才取得且不能证明当时可得的对象，必须标为 retrospective，不能作为点时证据。",
+      "凭证和敏感访问资料不得写入案例；只保留权利证明引用和保管责任记录。",
+      "任何标的或合约标识仅是数据键，不表示准入或研究优先级。"
+    ],
+    "raw_manifest_required_fields": [
+      "package_id",
+      "provider",
+      "provider_product",
+      "source_url_or_endpoint",
+      "request_parameters_or_query_hash",
+      "request_started_at",
+      "response_received_at",
+      "as_of",
+      "available_at",
+      "vendor_publication_at",
+      "source_revision",
+      "local_revision_sequence",
+      "content_type",
+      "bytes",
+      "sha256",
+      "entitlement_evidence_ref",
+      "retrieval_operator",
+      "expected_page_or_row_count",
+      "actual_page_or_row_count",
+      "quality_status"
+    ],
+    "normalized_point_in_time_required_fields": [
+      "record_key",
+      "parent_class_id",
+      "instrument_or_contract_id",
+      "field_name",
+      "raw_value_or_explicit_unavailable_state",
+      "unit_or_currency",
+      "effective_or_session_at",
+      "source_event_id_or_null",
+      "as_of",
+      "available_at",
+      "vendor_publication_at",
+      "response_received_at",
+      "source_revision",
+      "local_revision_sequence",
+      "raw_object_sha256",
+      "raw_manifest_sha256",
+      "normalization_schema_version",
+      "normalization_code_commit",
+      "normalized_row_sha256",
+      "availability_test_status",
+      "quality_status",
+      "exception_reference_or_null"
+    ],
+    "minimum_future_fact_families": [
+      {
+        "family": "universe_and_lifecycle",
+        "requirement": "保留母类别、身份、有效期、状态和终止记录；当前名单不得替代历史人口。"
+      },
+      {
+        "family": "listed_fund_market_nav_event_status",
+        "requirement": "市场资料、NAV 或明确不可用状态、事件、状态和相应的点时谱系必须可逐条核对。"
+      },
+      {
+        "family": "actual_futures_contract_lifecycle_and_session",
+        "requirement": "仅使用实际挂牌合约的生命周期、逐日横截面、有效条款、保证金/限制、交割和会话状态；连续或事后主力序列不得替代。"
+      },
+      {
+        "family": "implementation_terms_and_observable_state",
+        "requirement": "保留有效日期、范围、来源版本及可观测的报价、深度、状态、费用、税费、结算和保证金事实；缺失必须显式进入例外账。"
+      }
+    ],
+    "storage_and_lineage": {
+      "raw_path_pattern": "sources/entitled-data/<provider>/<package_id>/<retrieval-date>/",
+      "normalized_path_pattern": "data/normalized/<package_id>/<contract-version>/",
+      "audit_path_pattern": "governance/data-audit/<package_id>/<contract-version>/",
+      "lineage_required_fields": [
+        "input_raw_manifest_sha256",
+        "normalization_code_commit",
+        "runtime_environment_lock_or_hash",
+        "normalization_schema_version",
+        "output_sha256",
+        "transformation_timestamp",
+        "operator_or_service_identity"
+      ]
+    }
+  },
+  "ledger_architecture": [
+    {
+      "ledger": "forward_observation_register",
+      "purpose": "登记每个观察批次的模式、范围、开始时间、冻结引用、q 状态和发布限制。",
+      "minimum_fields": [
+        "observation_cohort_id",
+        "mode",
+        "scope_reference",
+        "portfolio_q",
+        "freeze_reference_or_null",
+        "started_at",
+        "ended_at_or_null",
+        "status",
+        "publication_restriction",
+        "row_sha256"
+      ]
+    },
+    {
+      "ledger": "raw_receipt_ledger",
+      "purpose": "逐对象记录原始资料到达、权利、大小、哈希、版本和接收结果。",
+      "minimum_fields": [
+        "receipt_id",
+        "observation_cohort_id",
+        "package_id",
+        "raw_manifest_sha256",
+        "request_started_at",
+        "response_received_at",
+        "as_of",
+        "available_at",
+        "source_revision",
+        "quality_status",
+        "supersedes_reference_or_null",
+        "row_sha256"
+      ]
+    },
+    {
+      "ledger": "expected_coverage_ledger",
+      "purpose": "逐母类别、来源、字段族和预期会话登记期望对象，并把实际对象、无资料或失败尝试一一关联。",
+      "minimum_fields": [
+        "expected_coverage_id",
+        "observation_cohort_id",
+        "parent_class_id",
+        "field_family",
+        "expected_at",
+        "source_route_id",
+        "expected_count",
+        "actual_count",
+        "coverage_status",
+        "exception_reference_or_null",
+        "row_sha256"
+      ]
+    },
+    {
+      "ledger": "normalized_pit_fact_ledger",
+      "purpose": "保存可复核的逐字段点时事实与原始对象、版本、可得性测试和规范化谱系。",
+      "minimum_fields": [
+        "record_key",
+        "observation_cohort_id",
+        "parent_class_id",
+        "instrument_or_contract_id",
+        "field_name",
+        "effective_or_session_at",
+        "as_of",
+        "available_at",
+        "source_revision",
+        "raw_object_sha256",
+        "normalized_row_sha256",
+        "availability_test_status",
+        "quality_status",
+        "row_sha256"
+      ]
+    },
+    {
+      "ledger": "exception_and_revision_ledger",
+      "purpose": "保留迟到、缺失、冲突、重复、版本替换、不可用和保留期限例外，不允许通过删除或覆盖清除。",
+      "minimum_fields": [
+        "exception_id",
+        "observation_cohort_id",
+        "exception_type",
+        "severity",
+        "detected_at",
+        "affected_key",
+        "evidence_reference",
+        "disposition",
+        "resolution_owner",
+        "independent_review_status",
+        "row_sha256"
+      ]
+    },
+    {
+      "ledger": "cross_source_reconciliation_ledger",
+      "purpose": "对可获得的主、次来源按同一键、字段和预冻结容差做差异核对。",
+      "minimum_fields": [
+        "reconciliation_id",
+        "observation_cohort_id",
+        "primary_source",
+        "secondary_source",
+        "join_key",
+        "field_name",
+        "tolerance_or_exact_match_rule",
+        "difference",
+        "resolution_status",
+        "reviewer",
+        "evidence_set_sha256",
+        "row_sha256"
+      ]
+    },
+    {
+      "ledger": "formal_paper_observation_ledger",
+      "purpose": "仅 MODE_2 使用：记录已冻结规则在既定观察时点的可运行性、输入集和结果发布锁定状态，而不记录外部指令。",
+      "minimum_fields": [
+        "paper_observation_id",
+        "replay_run_id",
+        "replay_run_freeze_record_sha256",
+        "observation_at",
+        "input_manifest_sha256",
+        "source_revision_cutoff",
+        "evaluation_status",
+        "coverage_status",
+        "exception_reference_or_null",
+        "result_publication_lock_status",
+        "row_sha256"
+      ]
+    },
+    {
+      "ledger": "prospective_configuration_coverage_ledger",
+      "purpose": "仅 MODE_2 使用：按已冻结的母类别、路径、条款集、状态和结束处置组合记录观察覆盖和复核状态。",
+      "minimum_fields": [
+        "configuration_tuple_sha256",
+        "replay_run_id",
+        "replay_run_freeze_record_sha256",
+        "parent_class_id",
+        "tradability_path",
+        "execution_state",
+        "settlement_state",
+        "residual_disposition",
+        "end_of_run_order_disposition",
+        "coverage_disposition",
+        "observation_count",
+        "first_observed_at",
+        "last_observed_at",
+        "evidence_reference",
+        "review_status",
+        "exception_reference_or_null"
+      ]
+    }
+  ],
+  "reconciliation_controls": [
+    {
+      "control_id": "RC01_RECEIPT_AND_MANIFEST",
+      "test": "每个原始对象的清单、字节数、SHA-256、来源版本、权利引用和预期/实际页或行数均完整且唯一。",
+      "failure_effect": "标为 INCOMPLETE 或 INVALID；不能规范化为可用点时事实。"
+    },
+    {
+      "control_id": "RC02_POINT_IN_TIME",
+      "test": "对每个用于正式研究的事实，available_at 不晚于其允许评估时点；as_of、发布、接收和版本时点的因果顺序可审计。",
+      "failure_effect": "迟到或不能证明原始可得时间的事实保留为 retrospective 或 exception，不能用作正式观察输入。"
+    },
+    {
+      "control_id": "RC03_EXPECTED_COVERAGE",
+      "test": "预冻结的日历、人口/类别、字段族和来源路径的 expected_count 与 actual_count 可逐项核对，缺口均有明确例外。",
+      "failure_effect": "不得用方便获得的子集替代范围；受影响模式或类别保持 coverage_restricted。"
+    },
+    {
+      "control_id": "RC04_REVISION_AND_IMMUTABILITY",
+      "test": "每次更正新建原始对象和版本链；规范化事实可追溯至唯一原始哈希，历史行不被原地修改。",
+      "failure_effect": "版本链断裂或事后覆盖使受影响资料 INVALID。"
+    },
+    {
+      "control_id": "RC05_CROSS_SOURCE",
+      "test": "可用时对主、次来源按预冻结匹配规则核对；冲突必须有证据、处理状态和独立复核。",
+      "failure_effect": "未解决冲突不能任意选择有利数值，受影响事实不得进入正式观察。"
+    },
+    {
+      "control_id": "RC06_FORMAL_BINDING",
+      "test": "MODE_2 的每个观察、覆盖和例外行均带相同的 replay_run_id 与 replay_run_freeze_record_sha256，并与唯一签署父记录逐字节一致。",
+      "failure_effect": "缺少、失配或事后绑定使行和相关观察 INVALID。"
+    },
+    {
+      "control_id": "RC07_PROSPECTIVE_CONFIGURATION_COVERAGE",
+      "test": "每个预期配置元组均恰有一行；只有 OBSERVED、ACCEPTED_CONSERVATIVE 或 SOURCE_PROVEN_NOT_APPLICABLE 且 review_status=PASS 可满足要求。",
+      "failure_effect": "UNRESOLVED、FAILED、缺失元组或非 PASS 复核阻断 MODE_2 完成和任何可用性标签。"
+    },
+    {
+      "control_id": "RC08_INDEPENDENT_RECONCILIATION",
+      "test": "独立审阅者从不可变来源副本重算清单、时间可得性、覆盖、版本、哈希和例外状态，并记录差异。",
+      "failure_effect": "任何未解释差异保持开放；不得以模型作者自证替代独立核对。"
+    }
+  ],
+  "forward_milestones": [
+    {
+      "milestone": "F0_DESIGN_REGISTERED",
+      "earliest_time": "now",
+      "evidence_required": "本文件及其 JSON/Markdown 镜像；q=0、模式边界和禁止输出被确认。",
+      "allowed_conclusion": "仅可称为前瞻观察设计已登记。",
+      "does_not_establish": "资料包、前瞻数据集、正式回放、纸面观察或推荐。"
+    },
+    {
+      "milestone": "F1_RIGHTS_AND_INTAKE_PROTOCOL_FROZEN",
+      "earliest_time": "after_future_written_rights",
+      "evidence_required": "书面权利证明、来源包定义、预期日历、字段映射、例外规则和 FORWARD_INTAKE_PROTOCOL_FREEZE。",
+      "allowed_conclusion": "可开始 MODE_1 的前瞻接收质量控制。",
+      "does_not_establish": "数据包验收或正式研究输入。"
+    },
+    {
+      "milestone": "F2_FIRST_FORWARD_RECEIPT_VALIDATED",
+      "earliest_time": "after_F1_and_first_future_receipt",
+      "evidence_required": "原始对象、完整清单、时间元组、哈希、版本、预期覆盖行和接收核对。",
+      "allowed_conclusion": "已验证第一笔前瞻接收的技术谱系。",
+      "does_not_establish": "历史 PIT、完整覆盖、策略结果或正式纸面观察。"
+    },
+    {
+      "milestone": "F3_FORWARD_COVERAGE_QUALITY_REVIEW",
+      "earliest_time": "after_predeclared_intake_period",
+      "evidence_required": "已冻结期间内所有预期行、失败尝试、版本链和交叉来源核对的独立审阅。",
+      "allowed_conclusion": "前瞻接收质量可被评估，且未验收行仍保持 intake_only_unaccepted。",
+      "does_not_establish": "UR01--UR03 已关闭或任何正式运行资格。"
+    },
+    {
+      "milestone": "F4_FORMAL_INPUT_AND_RUN_FREEZE_ELIGIBILITY",
+      "earliest_time": "after_UR01_to_UR04_independent_acceptance",
+      "evidence_required": "验收的数据包、冻结 U0 快照及 U0/T2 推导、规则簿、正式协议、数据字典、输入清单和唯一签署运行冻结记录。",
+      "allowed_conclusion": "可按冻结程序进行正式回放和独立复算。",
+      "does_not_establish": "前瞻纸面观察已经开始或推荐。"
+    },
+    {
+      "milestone": "F5_FORMAL_PAPER_OBSERVATION_BEGINS",
+      "earliest_time": "after_formal_replay_and_independent_review_pass",
+      "evidence_required": "FORMAL_FORWARD_OBSERVATION_START_RECORD、已冻结观察日历、预期配置元组集和零外部指令声明。",
+      "allowed_conclusion": "可开始 MODE_2 的研究专用观察。",
+      "does_not_establish": "q 变化、适配性、收益结论或推荐。"
+    },
+    {
+      "milestone": "F6_PROSPECTIVE_RECONCILIATION_COMPLETE",
+      "earliest_time": "after_at_least_60_calendar_days_and_10_distinct_eligible_observations_per_represented_parent_class",
+      "evidence_required": "全部预期配置元组、持续时间、观察数、例外账和 RC01--RC08 的独立核对；零未解决阻断行。",
+      "allowed_conclusion": "UR05 的前瞻纸面核对可提交独立审阅。",
+      "does_not_establish": "自动的策略可用性、准入或推荐；q 仍为 0，除非本案之外的后续治理另有独立决定。"
+    }
+  ],
+  "stop_and_restart_rules": [
+    "缺少权利、清单、哈希、点时可得性、预期覆盖、版本链、冻结绑定或独立复核时，停止受影响模式并保留例外行。",
+    "任何范围、字段、来源、规则、日历、容差或时间语义的实质变更都创建新版本和新冻结；不得覆盖旧批次或把后续版本回写至旧观察。",
+    "未验收资料、MODE_1 资料或已失效冻结下的资料不得回标为 MODE_2。",
+    "任何类别或来源路径的不完整性必须作为 coverage_restricted 明示，不能以便利子集或事后替代物消除。"
+  ],
+  "source_references": [
+    {
+      "path": "research_brief.md",
+      "use": "q=0、前案冻结边界和升级路径。"
+    },
+    {
+      "path": "unresolved_requirements.json",
+      "use": "UR01--UR05 的未关闭条件。"
+    },
+    {
+      "path": "data/data_access_feasibility_20260814.json",
+      "use": "当前正式回放输入和资格均不足。"
+    },
+    {
+      "path": "data/data_acquisition_contract_20260814.json",
+      "use": "清单、点时谱系、资料包验收和来源核对字段。"
+    },
+    {
+      "path": "data/formal_replay_protocol_requirements_20260814.json",
+      "use": "正式冻结、行级运行绑定、独立复算和前瞻覆盖控制。"
+    },
+    {
+      "path": "data/replay_data_dictionary_template_20260814.json",
+      "use": "前瞻配置覆盖元组和 PASS/INCOMPLETE/INVALID 语义。"
+    },
+    {
+      "path": "analysis/r2_candidate_prioritization_and_next_test_20260814.json",
+      "use": "阶段顺序及 60 日/10 次前瞻纸面核对门槛。"
+    }
+  ]
+}

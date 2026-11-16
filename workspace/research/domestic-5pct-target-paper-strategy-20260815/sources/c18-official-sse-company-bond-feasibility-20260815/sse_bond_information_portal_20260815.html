@@ -1,0 +1,1703 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head><!-- 站点属性 --><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+<meta name="format-detection" content="telephone=no"/>
+<!-- 数字去除下划线 -->
+<meta name="renderer" content="webkit">
+<!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<link rel="shortcut icon" href="/xhtml/images/favicon.ico"><meta name="others" content="页面生成时间 2024-11-13 11:00:31">
+<title>上证债券信息网</title>
+<script>
+    var channelId = "9363";
+    var channelCode = "home";
+    var displayName = "首页";
+    var channelName = "首页";
+    var shortPathName = "";
+    var extConfPath = "";
+    var extJsPath = "";
+    var extClassName = "";
+    var url = "/home/index.shtml";
+
+    var pChannelId = "";
+    var pChannelCode = "";
+    var pDisplayName = "";
+    var pChannelName = "";
+    var pShortPathName = "";
+    var pExtConfPath = "";
+    var pExtJsPath = "";
+    var pExtClassName = "";
+    var pUrl = "";
+
+    var website = "bond";
+    var websiteId = "26";
+    var contentTitle = ''
+
+    var col_id = channelId;
+    var col_old_id = channelId;
+    var pageTitle = channelName;
+</script>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<meta name="format-detection" content="telephone=no" />
+<!-- 数字去除下划线 -->
+<meta name="renderer" content="webkit">
+<!-- 让IE浏览器用最高级内核渲染页面 还有用 Chrome 框架的页面用webkit 内核 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<!-- IOS6全屏 Chrome高版本全屏-->
+<!--[if lt IE 9]>
+　　<script src="//cdn.bootcss.com/respond.js/1.4.2/respond.js"></script>
+ 　　<script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+<![endif]-->
+  <!--style>
+      html {
+filter: progid:DXImageTransform.Microsoft.BasicImage(grayscale=1);
+
+-webkit-filter: grayscale(100%);}
+  </style-->
+<link href="/xhtml/css/style.css?v=V3.1.7_20260613" rel="stylesheet" type="text/css"/>
+<link href="/xhtml/css/detailtable.css" rel="stylesheet" type="text/css"/>
+<link href="/xhtml/css/slider.css" rel="stylesheet" type="text/css"/>
+
+<link href="/xhtml/css/index_mb.css?v=V3.1.7_20260613" rel="stylesheet" type="text/css" media="screen and (max-width:768px)" />
+<script type="text/javascript" src="/xhtml/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="/xhtml/js/common.js"></script>
+<script type="text/javascript" src="/xhtml/js/public.js"></script>
+<script type="text/javascript" src="/xhtml/js/DatePicker/WdatePicker.js"></script>
+<script type="text/javascript" src="/xhtml/js/tabs.js"></script>
+<script type="text/javascript" src="/xhtml/js/slider.js"></script>
+<script type="text/javascript" src="/xhtml/js/bond_left.js?v=20260613"></script>
+<script type="text/javascript" src="/disclosure/info/tb/allBonds.js"></script>
+<script type="text/javascript" src="/xhtml/js/s_suggest.js"></script>
+<script type="text/javascript">
+  var flag = "false";
+  var t = 0;
+  var siteUrl = "//www.sse.com.cn/";
+  var staticBondUrl = "//static.sse.com.cn";
+  try {
+    readtree();
+    window.onload = function () {
+      initTree();
+    };
+  } catch (e) {}
+
+  function readtree(arrayName) {
+    var arrayName = "LeftMenu";
+    findid(arrayName);
+  }
+  function findid(arrayName) {
+    var category = eval(arrayName);
+
+    for (var i = 0; i < category.length; i++) {
+      var subcolum = category[i][3];
+      var flash = category[i][1];
+      var len = category[i][1].length;
+      var col = category[i][2];
+      var nodisplay = category[i][6];
+      if (subcolum == 0) {
+      } else if (subcolum == 1) {
+        arrayName = "LeftMenu_" + category[i][1];
+        findid(arrayName);
+      }
+      if (nodisplay != "") {
+        parts = nodisplay.split(",");
+        for (var j = 0; j < parts.length; j++) {
+          if (parts[j] == col_id) {
+            flash_id = flash;
+            colmain_id = col;
+            if (flash_id.length == "4") {
+              fcol_id = col;
+              readtree_m();
+            }
+            var f_arrayName = "LeftMenu_" + flash_id.substr(0, 2);
+            findid_f(f_arrayName);
+          }
+        }
+      }
+      if (col_id == col && flash != "01") {
+        flash_id = flash;
+        colmain_id = col;
+        if (flash_id.length == "4") {
+          fcol_id = col;
+          readtree_m();
+        }
+        var f_arrayName = "LeftMenu_" + flash_id.substr(0, 2);
+        findid_f(f_arrayName);
+      }
+    }
+  }
+
+  function findid_f(f_arrayName) {
+    var f = eval(f_arrayName);
+    for (var j = 0; j < f.length; j++) {
+      var subcolum_f = f[j][3];
+      if (subcolum_f == 0) {
+      } else if (subcolum_f == 1) {
+        f_arrayName = "LeftMenu_" + f[j][1];
+        findid_f(f_arrayName);
+      }
+      for (var k = 1; k < flash_id.length / 2 - 1; k++) {
+        if (f[j][1] == flash_id.substr(0, flash_id.length - 2 * k)) {
+          fcol_id = f[j][2];
+        }
+      }
+    }
+  }
+  function readtree_m(arrayName_m) {
+    var arrayName_m = "MainMenu";
+    findid_m(arrayName_m);
+  }
+  function findid_m(arrayName_m) {
+    var tree_m = eval(arrayName_m);
+    for (var i = 0; i < tree_m.length; i++) {
+      var subcolum_m = tree_m[i][3];
+      var flash_m = tree_m[i][1];
+      var len_m = tree_m[i][1].length;
+      var col_m = tree_m[i][2];
+
+      if (subcolum_m == 0) {
+      } else if (subcolum_m == 1) {
+        arrayName_m = "MainMenu_" + tree_m[i][1];
+        findid_m(arrayName_m);
+      }
+      if (colmain_id == col_m && flash_m != "01") {
+        mainflash_id = flash_m;
+        flag = "true";
+      }
+      if (flag == "false") {
+        var aa = "false";
+        if (fcol_id == col_m && flash_m != "01") {
+          t = t + 1;
+          if (t == 1) {
+            mainflash_id = flash_m;
+          }
+        }
+      }
+    }
+  }
+</script>
+
+<script src="//www.sse.com.cn/js/lib/gdp-full.js"></script>
+<script type='text/javascript'>
+  gdp('init', 'ba17301551dcbaf9', 'ba571a8b8092eb55', {
+    host: 'prod-ua.sseinfo.com',
+    version: '1.0.0',
+    scheme: 'https',
+    debug: false
+  });
+  gdp('send');
+</script>
+ </head>
+ <body>
+  <div id="wrap">
+  <!-- header start --> 
+  <div class="header">
+  <a href="/home/"><h1 class="logo"></h1></a>
+  <div class="top_right">
+    <div class="top_right_t">
+	 <ul>
+	   <li><a href="/home/">首页</a></li>
+	   <li> | </li>
+	   <li><a href="http://www.sse.com.cn" target="_blank">上海证券交易所</a></li>
+	   <!--li> | </li>
+	   <li><a href="">QFII</a></li-->
+	   <li> | </li>
+	   <li><script type="text/javascript">
+	var sug = {};
+	var globalSch = function(){
+		var bondCode = $("#searchCode").val();
+		var result = getAllBonds();
+		var codeRule = /^\d{6}$/;    // 六位数字
+		var zyhgCode = /^204\d{3}$/; // 204开头六位数字
+	    if(codeRule.test(bondCode)){
+	        if(result[bondCode] == null || result[bondCode] == undefined){
+				window.open("/data/quote/indexb.shtml?BONDCODE=" + bondCode , "_blank"); // 竞价行情
+			}else if(zyhgCode.test(bondCode)){
+				window.open("/data/quote/indexc.shtml?BONDCODE=" + bondCode , "_blank"); // 质押式回购行情
+			}else{
+				window.open("/disclosure/info/index.shtml?BONDCODE=" + bondCode , "_blank"); // 债券基本要素
+			}
+	    }else{
+	    	alert("请输入正确的证券代码或简称");
+	    }
+	}
+	var blurFunc = function(){
+		var value = $("#searchCode").val();
+		if (value ==''){value='搜索'};
+		clearSuggest();
+	}
+</script>
+<div class="search_bar" style="+width:170px">
+	<input type="text" class="search_text" style="width:130px" id="searchCode" onkeyup="callSuggest(this.value,event,this);"  value="搜索"  onfocus="if (value =='搜索'){value =''}" onblur="blurFunc()" />
+	<input type="button"  class="search_btn" value="搜索"  onclick="globalSch()"/>
+</div></li>
+	 </ul>
+	  </div><div class="clearboth"></div>
+	<link href="/xhtml/css/nav.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/xhtml/js/bond_map.js?v=20260613"></script>
+<script type="text/javascript" src="/xhtml/js/bond_menu.js?v=20260613"></script>
+<script type="text/javascript" src="/xhtml/js/nav.js?v=20260613"></script>
+
+<script type="text/javascript" src="/xhtml/js/modernizr.custom.js"></script>
+<script type="text/javascript" src="/xhtml/js/jquery.dlmenu.js"></script>
+<script type="text/javascript">
+var windwoS = window.screen.width;//屏幕分辨率宽度
+
+if(windwoS < 769 || windwoS == 1080){
+    /* ========== 一级菜单 ========== */
+    document.write("<div class='container demo-3'><div class='main clearfix'><div class='column'><div id='dl-menu' class='dl-menuwrapper'><button>Open Menu</button><ul class='dl-menu'>"); //输出html内容
+    var arrayName = "MapMenu_00"; //声明变量：数组名称（字符串）
+    var arrayData = eval(arrayName); //将字符串转为数据：数组
+    for (i = 0; i < arrayData.length; i++) { //循环：输出各一级导航
+        document.write("<li><a href=" + arrayData[i][4] + ">" + arrayData[i][0] + "</a>"); //输出html内容：数组栏目名
+          var hasChild = arrayData[i][3]; //声明变量：是否有子导航
+          if(arrayData[i][4] == "/home/"){
+              hasChild = 0;
+          }
+          if (hasChild != 0) { //如果有子导航
+            /* ========== 二级菜单 ========== */
+            document.write("<ul class='dl-submenu'><li class='dl-back'><a href='#'>返回</a></li><li><a href=" + arrayData[i][4] + ">" + arrayData[i][0] + "</a></li>"); //输出html内容
+              var arrayName1 = "MapMenu_" + arrayData[i][1]; //声明变量：获取二级导航名称 
+              var arrayData1 = eval(arrayName1);
+              for (j = 0; j < arrayData1.length; j++) {
+                document.write("<li><a href=" + arrayData1[j][4] + ">" + arrayData1[j][0] + "</a>");
+                var hasChild1 = arrayData1[j][3]; //声明变量：是否有子导航
+                var arrayHref = arrayData1[j][4];
+                var flag = (arrayHref.indexOf('disclosure/ppb') != -1 || arrayHref.indexOf('techrules') != -1 || arrayHref.indexOf('fees') != -1 || arrayHref.indexOf('eligibility') != -1);
+                  if(flag){
+                    document.write("<ul class='dl-submenu'><li class='dl-back'><a href='#'>返回</a></li><li><a href=" + arrayData1[j][4] + ">" + arrayData1[j][0] + "</a></li></ul>");
+                  }
+                  if (hasChild1 != 0) {
+                      /* ========== 三级菜单 ========== */
+                      // document.write("<ul class='dl-submenu'><li class='dl-back'><a href='#'>返回</a></li><li><a href=" + arrayData1[j][4] + ">" + arrayData1[j][0] + "</a></li>");
+                      document.write("<ul class='dl-submenu'><li class='dl-back'><a href='#'>返回</a></li>"); 
+                      var arrayName2 = "MapMenu_" + arrayData1[j][1];
+                      var arrayData2 = eval(arrayName2);
+                      for (k = 0; k < arrayData2.length; k++) {
+                          document.write("<li><a href=" + arrayData2[k][4] + ">" + arrayData2[k][0]  + "</a>"); //输出html内容
+                          var hasChild2 = arrayData2[k][3]; //声明变量：是否有子导航
+                          if(hasChild2 != 0){
+                            /* ========== 四级菜单 ========== */
+                            document.write("<ul class='dl-submenu'><li class='dl-back'><a href='#'>返回</a></li>");
+                            var arrayName3 = "MapMenu_" + arrayData2[k][1];
+                              var arrayData3 = eval(arrayName3);
+                              for(m = 0; m < arrayData3.length; m++){
+                                  document.write("<li><a href=" + arrayData3[m][4] + ">" + arrayData3[m][0] + "</a></li>");
+                              }
+                            document.write("</ul>"); //输出html内容
+                          }
+                          document.write("</li>"); //输出html内容
+                        }
+                      document.write("</ul>"); //输出html内容
+                    }
+                document.write("</li>"); //输出html内容
+              }
+              document.write("</ul>"); //输出html内容
+          }
+
+        document.write("</li>"); //输出html内容
+    }
+    document.write("</ul></div></div></div></div>"); //输出html内容
+}else{
+    document.write("<div class='top_right_menu'><ul class='clearfix'>"); //输出html内容
+    var arrayName = "MMenu_00"; //声明变量：数组名称（字符串）
+    var arrayData = eval(arrayName); //将字符串转为数据：数组
+    for(i=0;i<arrayData.length;i++){ //循环：输出各一级导航
+      document.write('<li><a href="'+arrayData[i][4]+'" ' + (arrayData[i][5] == '1' ? 'target="_blank"' : '') +'>'+arrayData[i][0]+'</a>'); //输出html内容：数组栏目名
+
+      /* ========== 下拉子菜单 ========== */
+      var arrayData0 = arrayData[i][3]; //声明变量：是否有子导航
+      if(arrayData0!=0){ //如果有子导航
+          document.write("<div class='sub_menu clearfix' style='display: none;'>"); //输出html内容
+
+          var arrayName1 = "MMenu_"+arrayData[i][1]; //声明变量：获取二级导航名称
+          var arrayData1 = eval(arrayName1);
+          for(j=0;j<arrayData1.length;j++){
+            document.write('<dl><dt><a href="'+arrayData1[j][4]+'" ' + (arrayData1[j][5] == '1' ? 'target="_blank"' : '') +'>'+arrayData1[j][0]+'</a></dt>');
+
+            /* ========== 三级菜单 ========== */
+            var arrayData2 = arrayData1[j][3]; //声明变量：是否有子导航
+            if(arrayData2!=0){
+                var arrayName3 = "MMenu_"+arrayData1[j][1];
+                var arrayData3 = eval(arrayName3);
+                for(k=0;k<arrayData3.length;k++){
+                    document.write('<dd><a href="'+arrayData3[k][4]+'" ' + (arrayData3[k][5] == '1' ? 'target="_blank"' : '') +'>'+arrayData3[k][0]+'</a></dd>');
+                }
+            }
+            /* ========== 三级菜单 ========== */
+
+            document.write("</dl>");
+            }
+
+          document.write("</div>"); //输出html内容
+        }
+      /* ========== 下拉子菜单 ==========*/
+
+      document.write("</li>"); //输出html内容
+    }
+    document.write("</ul></div>"); //输出html内容
+}
+
+$('#dl-menu').dlmenu({
+    animationClasses: { 'in' : 'dl-animate-in-5','out': 'dl-animate-out-5'}
+});
+
+</script>
+  </div>
+</div> 
+  <!-- header end -->
+  
+  <!-- main start -->
+  <!-- bannerbar start -->
+
+ 
+ 
+  <div class="bannerbar">
+   <div class="banner"><script type="text/javascript" src="/xhtml/js/lib/jquery.min.js"></script>
+<link href="/xhtml/css/slider.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/xhtml/js/slider.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        $('.flexslider').flexslider({
+            animation: "slide"
+        });
+    });
+</script>
+<div class="flexslider">
+    <ul class="slides">
+                    <li>
+                <div class="img">
+                    <a href="/disclosure/announ/other/c/c_20260727_10826860.shtml" target="_blank">
+                        <img src="/home/slide/c/10826861/images/c424588889904460b7f0250564139ac7.jpg
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="/home/important/c/c_20260715_10825559.shtml" target="_blank">
+                        <img src="/home/slide/c/10825560/images/26aaf1e891324b88a5dd9bad866f51ae.jpg
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="/home/important/c/c_20260401_10813777.shtml" target="_blank">
+                        <img src="/home/slide/c/10813780/images/c1af89415e404a5d942f50d38bd0dd7b.jpg
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="/zqzs/" target="_blank">
+                        <img src="/home/slide/c/10608785/images/3540dcca19ad4470be2f515e73c6e7bc.jpg
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="https://survey.sse.com.cn/q/9q6EKx" target="_blank">
+                        <img src="/home/slide/c/10608787/images/a69d01ea987b4bc78e149699f5dcb9a0.jpg
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="http://bond.sse.com.cn/bridge/information/index.shtml?type=3" target="_blank">
+                        <img src="/home/slide/c/10745861/images/b0a619d052cd411094eed08b174d5cac.jpg
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="https://one.sse.com.cn/investor/#/privatePlacement" target="_blank">
+                        <img src="/home/slide/c/10608789/images/58d199036c004c31ad252aee89e2b000.png
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="/market/Products/abs/" target="_blank">
+                        <img src="/home/slide/c/10608792/images/55342d892c69476a8cd7fb61076a2dba.png
+" alt="">
+                    </a>
+                </div>
+            </li>
+            <li>
+                <div class="img">
+                    <a href="/disclosure/announ/other/c/c_20200731_5166227.shtml" target="_blank">
+                        <img src="/home/slide/c/10820414/images/7702b7f953404532bca519a01e73d35c.png
+" alt="">
+                    </a>
+                </div>
+            </li>
+
+    </ul>
+</div>
+   </div>
+   <div class="homemain_right">
+    <div class="datebox">
+     <h3><a href="/disclosure/more/" target="_blank">更多<span>&gt;</span></a>业务提示</h3><link href="/xhtml/css/jquery-ui.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="/xhtml/js/jquery-ui.js"></script>
+
+<style type="text/css">
+    #preview{ display:none; position:absolute; border:2px solid #b4ebff; background:rgba(201,240,254,0.9);color: #333; padding:5px;text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1); text-align: center;border-radius: 5px;box-shadow: 1px 1px 2px rgba(0,0,0,0.1);-webkit-transition: all 0.3s ease-in-out;-moz-transition: all 0.3s ease-in-out;-o-transition: all 0.3s ease-in-out;-ms-transition: all 0.3s ease-in-out;transition: all 0.3s ease-in-out; z-index:1;}
+    #preview:before,#preview:after{
+    	content: '';
+    	position: absolute;
+    	right: 0;
+    	top:10%;
+    	margin-right: -10px;
+    	width: 0;
+    	height: 0;
+    	border-top: 10px solid transparent;
+    	border-bottom: 10px solid transparent;
+    	border-left: 10px solid rgba(0,0,0,0.1);
+    }
+    #preview:after{
+        right: 0;
+    	margin-right: -10px;
+    	border-left: 10px solid #b4ebff;
+    }
+</style>
+
+<span id="staticDate" style="display:none">2026-08-14 20:45:00</span>
+<div id="dateList" style="display:none">
+    <table id="ywts" class="home_center_table" border="0" cellspacing="0" cellpadding="0">
+        
+ <tr>
+ <td id="startdate">2026-08-01 </td>
+ <td id="bondcode">245615,245660,245679,245680,245707,245743 </td>
+ <td id="bondabbr">26甬投Y2,26浦能K2,26疏浚K1,26疏浚K2,26浙创01,华能YK30 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-02 </td>
+ <td id="bondcode">245615,245660,245679,245680,245707,245743 </td>
+ <td id="bondabbr">26甬投Y2,26浦能K2,26疏浚K1,26疏浚K2,26浙创01,华能YK30 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-03 </td>
+ <td id="bondcode">245615,245660,245672,245679,245680,245707 </td>
+ <td id="bondabbr">26甬投Y2,26浦能K2,26海投01,26疏浚K1,26疏浚K2,26浙创01 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-04 </td>
+ <td id="bondcode">237537,237538,245672,245708,245776,245777 </td>
+ <td id="bondabbr">26河北43,26河北44,26海投01,26中企02,26太新Y3,26太新Y4 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-05 </td>
+ <td id="bondcode">237539,237540,237541,237542,237543,237544 </td>
+ <td id="bondabbr">26湖南28,26湖南29,26湖南30,26天津54,26天津55,26天津56 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-06 </td>
+ <td id="bondcode">020828,020829,237547,237548,237549,237550 </td>
+ <td id="bondabbr">26贴债47,26贴债48,26安徽79,26安徽80,26安徽81,26安徽82 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-07 </td>
+ <td id="bondcode">237551,237552,237553,237554,237555,237556 </td>
+ <td id="bondabbr">26吉林28,26吉林29,26吉林30,26吉林31,26吉林32,26龙江22 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-08 </td>
+ <td id="bondcode">245798,245814,245825,245826,245827,245837 </td>
+ <td id="bondabbr">26中保Y2,26恒健01,26河西Y1,26杭交03,26杭交04,26中证S7 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-09 </td>
+ <td id="bondcode">245798,245814,245825,245826,245827,245837 </td>
+ <td id="bondabbr">26中保Y2,26恒健01,26河西Y1,26杭交03,26杭交04,26中证S7 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-10 </td>
+ <td id="bondcode">237565,237566,237567,245798,245814,245825 </td>
+ <td id="bondabbr">26云南34,26云南35,26云南36,26中保Y2,26恒健01,26河西Y1 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-11 </td>
+ <td id="bondcode">137208,237568,237569,237570,237571,237572 </td>
+ <td id="bondabbr">26AQKEB,26广东39,26广东40,26广东41,26广东42,26广东43 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-12 </td>
+ <td id="bondcode">137208,237584,237585,237586,237587,237588 </td>
+ <td id="bondabbr">26AQKEB,26河南58,26河南59,26河南60,26河南61,26广东44 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-13 </td>
+ <td id="bondcode">020830,020831,237591,237592,237593,237594 </td>
+ <td id="bondabbr">26贴债49,26贴债50,26山东83,26山东84,26山东85,26山东86 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-14 </td>
+ <td id="bondcode">245782,245794,245802,245803,245835,245836 </td>
+ <td id="bondabbr">26国发04,26杭租02,26渝高Y1,26渝高Y2,26松国01,26济控03 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-15 </td>
+ <td id="bondcode">245835,245845,245846,245888,245890,258591 </td>
+ <td id="bondabbr">26松国01,26华创C1,26华创C2,26中证Y5,26亦庄K5,25江海01 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-16 </td>
+ <td id="bondcode">245835,245845,245846,245888,245890,258591 </td>
+ <td id="bondabbr">26松国01,26华创C1,26华创C2,26中证Y5,26亦庄K5,25江海01 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-17 </td>
+ <td id="bondcode">245819,245835,245845,245846,245871,245874 </td>
+ <td id="bondabbr">GC核融V3,26松国01,26华创C1,26华创C2,26浙港04,26泉发01 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-18 </td>
+ <td id="bondcode">245617,245812,245813,245819,245857,245870 </td>
+ <td id="bondabbr">26苏创K2,26赣铁03,26赣铁04,GC核融V3,26国民C4,26金城G1 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-19 </td>
+ <td id="bondcode">245617,245812,245813,245857,245870,245895 </td>
+ <td id="bondabbr">26苏创K2,26赣铁03,26赣铁04,26国民C4,26金城G1,26榕资02 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-20 </td>
+ <td id="bondcode">258591,268907,268908,268909,268910,269681 </td>
+ <td id="bondabbr">25江海01,尚亦024A,尚亦024B,尚亦024C,尚亦024D,先锋10A3 </td>
+ <td id="action">债券发行,债券发行,债券发行,债券发行,债券发行,债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-21 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-22 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-23 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-24 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-25 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-26 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-27 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-28 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-29 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-30 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+ <tr>
+ <td id="startdate">2026-08-31 </td>
+ <td id="bondcode">258591 </td>
+ <td id="bondabbr">25江海01 </td>
+ <td id="action">债券发行 </td>
+ </tr>
+
+    </table>
+</div>
+
+<div id="datepicker"></div>
+<script>
+	$("#datepicker").datepicker({
+		hideIfNoPrevNext:true,
+                dateFormat:"mm-dd-yy",
+		maxDate:new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0),
+		minDate:new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+                onSelect:function(date){
+			window.location.href="/disclosure/more/index.shtml?keyword=" + date.replace(/\//g,"-") ;
+		}
+	});
+    var xOffset = 18;
+    var yOffset =185;
+    $("a.ui-state-default").hover(function(e){
+            var monthvalue=parseInt(this.parentElement.getAttribute("data-month"))+parseInt("1");
+
+            if(parseInt(monthvalue)<10){
+                monthvalue="0"+monthvalue;
+            }
+
+           var days = this.textContent;
+
+            if(parseInt(days)<10){
+                days ="0"+days;
+            }
+
+            var dt = this.parentElement.getAttribute("data-year")+"-"+monthvalue+"-"+days;
+            var info=getywts(dt);
+            var content ="<div id='preview'>"+info+"</div>";
+            if($("#preview").length>0){
+                $("#preview").remove();
+            }
+            if(info){
+                $("#datepicker").append(content);
+            }
+            $("#preview").css("top",(e.pageY - xOffset) + "px") .css("left",(e.pageX - yOffset - 6) + "px").fadeIn("normal");
+        },
+        function(){
+            $("#preview").fadeOut("fast");}
+    );
+    $("a.ui-state-default").each(function(){
+        var monthvalue=parseInt(this.parentElement.getAttribute("data-month"))+parseInt("1");
+
+        if(parseInt(monthvalue)<10){
+            monthvalue="0"+monthvalue;
+        }
+
+        var days = this.textContent;
+
+        if(parseInt(days)<10){
+            days ="0"+days;
+        }
+
+        var dt = this.parentElement.getAttribute("data-year")+"-"+monthvalue+"-"+days;
+        var info=getywts(dt);
+        if(info.length > 0){
+            $(this).css('color','red');
+        };
+    });
+    $("a.ui-state-default").mousemove(function(e){
+        $("#preview")
+                .css("top",(e.pageY - xOffset) + "px")
+                .css("left",(e.pageX - yOffset - 5) + "px");
+    });
+
+    function  getywts(dt){
+        var v="";
+        $("#ywts tr td:nth-child(1)").each(function(){
+
+			if($(this).text().trim()==dt.trim()) {
+				var no = $(this).parent().index();
+				var bondcodes = $("#ywts tr:eq("+no+")  td:eq(1)").text();
+				var bondabbrs =$("#ywts tr:eq("+no+")  td:eq(2)").text();
+				var actions =   $("#ywts tr:eq("+no+")  td:eq(3)").text();
+				var bondcodesArr=  bondcodes.split(",");
+				var bondabbrsArr=  bondabbrs.split(",");
+				var actionsArr=  actions.split(",");
+				for(var x=0;x<bondcodesArr.length&&x<5;x++){
+					v = v+bondcodesArr[x] +"  "+bondabbrsArr[x] +"  "+ actionsArr[x]+"<p>";
+				}
+				if(bondcodesArr.length>5){
+					v = v+"......";
+				}
+			}
+        });
+        return v;
+    }
+
+</script>
+    </div>
+   </div>
+   <div class="clearboth"></div>
+  </div><!-- main start -->
+  <div class="homemain">
+   <div class="homemain_left">
+    <div class="trendbox" style="margin:0;">
+     <ul class="tabs2 clearfix">
+      <li class="tab2"><span>指数走势</span><a class="more" href="/data/standard/indecies/tbindex/" target="_blank">更多<code>&gt;</code></a></li>
+      <li class="tab2"><span>收益率曲线</span><a class="more" href="/data/standard/yieldcurve/tbyield/" target="_blank">更多<code>&gt;</code></a></li>
+     </ul>
+     <div class="tab2-contents">
+      <div class="tab2-content"><script type="text/javascript" src="/xhtml/js/home.highstock.js"></script>
+<script type="text/javascript" src="/xhtml/js/common_hq.js"></script>
+<script type="text/javascript">
+  var timerHomeHq;
+
+  var changeTab = function () {
+    //点击标签执行……
+    $(this)
+      .parent("li")
+      .addClass("tab3-on")
+      .siblings(".tab3-on")
+      .removeClass("tab3-on"); //添加样式，移除其它样式
+    window.clearInterval(timerHomeHq);
+    emptyChart(0, "ticker01");
+    var clickNum = $(this).parent("li").index(); //声明变量：获取当前标签序号
+    var codeArr = ["000012", "000013", "000022", "000061"];
+    if(codeArr[clickNum] == "000013"){
+      var zsUrl = hqHostURI + "/v1/csip/line/" + codeArr[clickNum];
+      chart(codeArr[clickNum], zsUrl, "ticker01","M");
+    } else {
+      var zsUrl = hqHostURI + "/v1/sh1/line/" + codeArr[clickNum];
+      chart(codeArr[clickNum], zsUrl, "ticker01","N");
+    }
+    timerHomeHq = window.setInterval(function () {
+      if(codeArr[clickNum] == "000013"){
+        var zsUrl = hqHostURI + "/v1/csip/line/" + codeArr[clickNum];
+        chart(codeArr[clickNum], zsUrl, "ticker01","M");
+      } else {
+        var zsUrl = hqHostURI + "/v1/sh1/line/" + codeArr[clickNum];
+        chart(codeArr[clickNum], zsUrl, "ticker01","N");
+      }
+    }, 60000);
+  };
+
+  $(function () {
+    emptyChart(0, "ticker01","N");
+    $("#zs").delegate("li span", "click", changeTab);
+    chart("000012", hqHostURI + "/v1/sh1/line/" + "000012", "ticker01","N");
+    timerHomeHq = window.setInterval(function () {
+      chart("000012", hqHostURI + "/v1/sh1/line/" + "000012", "ticker01","N");
+    }, 60000);
+  });
+</script>
+
+<ul class="tabs3 clearfix" id="zs">
+    <li class="tab3 tab3-on"><span>国债指数</span></li>
+    <li class="tab3"><span>企债指数</span></li>
+    <li class="tab3"><span>沪公司债</span></li>
+    <li class="tab3"><span>沪企债30</span></li>
+</ul>
+<div id="ticker01" style="height:180px"></div>
+      </div>
+      <div class="tab2-content"><script type="text/javascript" src="//www.sse.com.cn/js/common/systemDate_global.js"></script>
+<div id="echart" style="height:200px"></div>
+<script src="/xhtml/js/echarts/echart.js"></script>
+<script type="text/javascript">
+	var echarturl = destinationHostURI + "/commonQuery.do?jsonCallBack=?";//action地址
+	
+	var params = {
+		'isPagination' : false,
+		'sqlId' : "COMMON_BOND_SCSJ_JZZB_SYLQX_YHJGZ_L"
+	};
+	
+	var myChart = echarts.init(document.getElementById('echart'));
+	var option = {
+		title : {
+			text : '银行间国债收益率',
+                        subtext:'',
+                        itemGap:0,
+			padding:5,
+			textStyle : {
+				fontSize : 12,
+				color : '#8C8C8C'
+			},subtextStyle: {
+				fontSize : 11,
+				color : '#8C8C8C'
+			}
+		},
+		legend:{
+			orient:'horizontal',
+			itemGap:5,
+			x:'right',
+			y:'top',
+			borderWidth:0,
+			padding:5,
+			data:[{name:'远期'  ,textStyle:{color:'blue'}},{name:'即期' ,textStyle:{color:'red'}},{name:'到期' ,textStyle:{color:'green'}}]
+		},
+		grid:{
+			x:40,
+			y:40,
+			x2:40,
+			y2:30
+		},
+		tooltip : {
+			show : true,
+			trigger : 'axis',
+			showDelay : 0,
+			transitionDuration : 0
+		},
+		lineStyle : {
+			color : 'black',
+			type : 'solid',
+			width : 1
+		},
+		xAxis : [ {
+			type : 'category',
+			boundaryGap : false,
+			axisLine : {
+				lineStyle : {
+					color : 'black',
+					type : 'solid'
+				}
+			},
+			axisLabel:{
+				interval:function(index,data){
+					var x = [1,3,5,7,10,15,20,30,50];		
+					for(var i = 0; i < x.length ;i++){
+						if(String(data) == String(x[i]))
+							return true;
+					}
+					return false;
+				}			
+			},
+			data:[]
+		} ],
+		yAxis : [ {
+			type : 'value',
+			boundaryGap:[0,0.15],
+			min:0,
+			axisLine : {
+				lineStyle : {
+					color : 'black',
+					type : 'solid'
+				}
+			},
+			splitNumber : 5
+		} ],
+		series : [ {
+			name : "远期",
+			type : "line",
+			symbol: 'none',
+			itemStyle : {
+				normal : {
+					color : "blue",
+					lineStyle : {
+						width : 1
+					}
+				}
+			},
+			data:[]} ,
+		{
+			name : "即期",
+			type : "line",
+			symbol: 'none',
+			itemStyle : {
+				normal : {
+					color : "red",
+					lineStyle : {
+						width : 1
+					}
+				}
+			},
+			data:[]
+		},
+		{
+			name : "到期",
+			type : "line",
+			symbol: 'none',
+			itemStyle : {
+				normal : {
+					color : "green",
+					lineStyle : {
+						width : 1
+					}
+				}
+			},
+			data:[]
+		}],
+		noDataLoadingOption:{
+			effect:'bubble',
+			text:'暂时无数据！',
+			effectOption : {
+				effect: {
+					n: 0
+				}
+			}
+		}
+	};
+	
+	var uniqueArr = function(arr) {
+	    var result = [], hash = {};
+	    for (var i = 0, elem; (elem = arr[i]) != null; i++) {
+	        if (!hash[elem]) {
+	            result.push(elem);
+	            hash[elem] = true;
+	        }
+	    }
+	    return result;
+	}
+	
+	var mapToArr = function(map1,map2,map3){
+		var keyArr1 = map1.entrys();
+		var keyArr2 = map2.entrys();
+		var keyArr3 = map3.entrys();
+		
+		var keyArr = uniqueArr(keyArr1.concat(keyArr2,keyArr3))
+		
+		var valueArr = [];
+		var tempArr1 = new Array();
+		for(var i = 0;i < keyArr.length;i++){
+			var val = map1.get(keyArr[i]);
+			if(val == null || val == undefined || val.length <= 0){
+				val = 0;
+			}
+			tempArr1.push(val);
+		}
+		valueArr.push(tempArr1);
+		
+		var tempArr2 = new Array();
+		for(var i = 0;i < keyArr.length;i++){
+			var val = map2.get(keyArr[i]);
+			if(val == null || val == undefined || val.length <= 0){
+				val = 0;
+			}
+			tempArr2.push(val);
+		}
+		valueArr.push(tempArr2);
+		
+		var tempArr3 = new Array();
+		for(var i = 0;i < keyArr.length;i++){
+			var val = map3.get(keyArr[i]);
+			if(val == null || val == undefined || val.length <= 0){
+				val = 0;
+			}
+			tempArr3.push(val);
+		}
+		valueArr.push(tempArr3);
+		
+		valueArr.push(keyArr);
+		
+		
+		return valueArr;
+	};
+
+	var doDynamicRequest = function(path,param){
+        var lastDate;
+		var mapF = new zMap();
+		var mapS = new zMap();
+		var mapY = new zMap();
+		utils.getJSON(path,param, function(data){
+			if (!(data.result === null || data.result[0] === undefined)){
+				lastDate = data.result[0].VALID_DATE;
+				for(var i = 0;i < data.result.length;i++){
+					mapF.put(data.result[i].TERM_YEAR,data.result[i].FORWARD_RATE);
+					mapS.put(data.result[i].TERM_YEAR,data.result[i].SPOT_RATE);
+					mapY.put(data.result[i].TERM_YEAR,data.result[i].YIELD_TO_MATURITY);
+				}
+			}
+			if(!(lastDate==undefined||lastDate==null||lastDate=="")){
+				option.title.subtext = lastDate;
+				$("#tradeDate").val(lastDate);
+	        }
+			var arr = mapToArr(mapF,mapS , mapY);
+			option.series[0].data = arr[0];
+			option.series[1].data = arr[1];
+			option.series[2].data = arr[2];
+			option.xAxis[0].data = arr[3];
+			myChart.hideLoading();
+			myChart.clear();
+			myChart.setOption(option);
+				
+		});		
+	};
+
+	$(document).ready(function(){
+		myChart.setOption(option);
+		doDynamicRequest(echarturl ,params);
+	});
+</script>
+      </div>
+     </div>
+    </div>
+    <div class="marketbox">
+     <div class="marketbox_b">
+      <a href="/data/statistics/overview/turnover/" target="_blank">更多<span>&gt;</span></a>
+      <h3>债券市场概况</h3>
+     </div><span id="staticDate" style="display:none">2026-08-14 22:05:00</span>
+<div id="dateList">
+	<table class="home_center_table" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<th scope="col">债券类型</th>
+			<th scope="col">当日成交笔数</th>
+			<th scope="col">当日成交金额(万元)</th>
+		</tr>	
+         
+		<tr>
+			<td>记账式国债 </td>
+			<td class="table_right">74804 </td>
+			<td class="table_right">9207229.12 </td>
+		</tr>
+ 
+		<tr>
+			<td>地方政府债 </td>
+			<td class="table_right">2894 </td>
+			<td class="table_right">355416.48 </td>
+		</tr>
+ 
+		<tr>
+			<td>金融债 </td>
+			<td class="table_right">18 </td>
+			<td class="table_right">380.66 </td>
+		</tr>
+ 
+		<tr>
+			<td>公开发行公司债券（含企业债券） </td>
+			<td class="table_right">7588 </td>
+			<td class="table_right">1410237.43 </td>
+		</tr>
+ 
+		<tr>
+			<td>非公开发行公司债券（含企业债券） </td>
+			<td class="table_right">1834 </td>
+			<td class="table_right">2813303.47 </td>
+		</tr>
+ 
+		<tr>
+			<td>可转债 </td>
+			<td class="table_right">4447530 </td>
+			<td class="table_right">4268815.35 </td>
+		</tr>
+ 
+		<tr>
+			<td>可交换债 </td>
+			<td class="table_right">955 </td>
+			<td class="table_right">44419.22 </td>
+		</tr>
+ 
+		<tr>
+			<td>分离债 </td>
+			<td class="table_right">0 </td>
+			<td class="table_right">0.00 </td>
+		</tr>
+ 
+		<tr>
+			<td>企业资产支持证券 </td>
+			<td class="table_right">118 </td>
+			<td class="table_right">210552.68 </td>
+		</tr>
+ 
+		<tr>
+			<td>信贷资产支持证券 </td>
+			<td class="table_right">0 </td>
+			<td class="table_right">0.00 </td>
+		</tr>
+ 
+		<tr>
+			<td>其他债券 </td>
+			<td class="table_right">0 </td>
+			<td class="table_right">0.00 </td>
+		</tr>
+ 
+		<tr>
+			<td>合计 </td>
+			<td class="table_right">4535741 </td>
+			<td class="table_right">18310354.40 </td>
+		</tr>
+		
+	</table>
+</div>
+
+    </div>
+   </div>
+   <div class="homemain_center">
+    <div class="home_list_box">
+     <div class="list_t">
+      <a href="/disclosure/announ/tb/" target="_blank">更多<span>&gt;</span></a>
+      <h2>债券公告</h2>
+     </div><script type="text/javascript" src="/xhtml/js/bondConfig.js"></script>
+<script type="text/javascript">
+    var allBond = {};
+    allBond.listLen = 7;
+    allBond.url1 = destinationHostURI + "/commonSoaQuery.do?jsonCallBack=?"; //action地址
+    allBond.params1 = {
+        isPagination: true,
+        "pageHelp.pageSize": allBond.listLen,
+        sqlId: "BS_ZQ_GGLL",
+        orgBulletinType: "",
+        title: "",
+        securityCode: "",
+        order: "sseDate|desc,securityCode|asc,bulletinId|asc",
+    }; //传递到后台参数
+
+    allBond.url2 =
+        destinationHostURI + "/infodisplay/queryBulletinKflTipsNew.do?"; //action地址
+    allBond.url3 =
+        destinationHostURI + "/infodisplay/queryBulletinKzzTipsNew.do?"; //action地址
+    allBond.params2 = {
+        isPagination: true,
+        "pageHelp.pageSize": allBond.listLen,
+        flag: "1",
+    }; //传递到后台参数
+
+    var allB = [];
+    // allBond.filePath = "//www.sse.com.cn";
+    allBond.dateFormatter = function (d) {
+        var ds = jQuery.trim(d).replace(" ", ":").replace(/\:/g, "-").split("-");
+        if (ds[1].length == 1) {
+            ds[1] = "0" + ds[1];
+        }
+        if (ds[2].length == 1) {
+            ds[2] = "0" + ds[2];
+        }
+        return ds[0] + "-" + ds[1] + "-" + ds[2];
+    };
+
+    var flag1 = (flag2 = flag3 = false);
+
+    allBond.titleLen = 200;
+    allBond.subTitle = function (title) {
+        allBond.subTitles = "";
+        allBond.count = 0;
+        for (var i = 0; allBond.count < allBond.titleLen && i < title.length; i++) {
+            var single = title.charCodeAt(i);
+            if (
+                !(single >= 0x0001 && single <= 0x007e) &&
+                !(0xff60 <= single && single <= 0xff9f)
+            ) {
+                allBond.count += 8;
+            } else {
+                allBond.count += 5;
+            }
+
+            if (allBond.count >= allBond.titleLen) {
+                allBond.subTitles += "...";
+                break;
+            }
+            allBond.subTitles += String.fromCharCode(single);
+        }
+
+        return allBond.subTitles;
+    };
+    var openerURLs = {};
+    allBond.openNewHtml = function (urls, title) {
+        window.open(
+            "/disclosure/announ/s_announ_content.shtml?content=" +
+            utils.decToHex(urls),
+            "_blank"
+        );
+    };
+    allBond.appendHtml = function () {
+        if (flag1 && flag2 && flag3) {
+            var listHtml = "";
+            if (allB.length <= 0) {
+                listHtml = "暂无公告";
+            } else {
+                allB.sort(function (a, b) {
+                    if (a.date == b.date) {
+                        return Number(a.code) - Number(b.code);
+                    } else {
+                        return utils.dateCompare(a.date, b.date) == true ? 1 : -1;
+                    }
+                });
+                listHtml += "<ul class='list_ul'>";
+                for (var i = 0; i < allB.length && i < allBond.listLen; i++) {
+                    var bulletinUrl = allB[i].url;
+                    listHtml +=
+                        "<li><span style='float:right;'>" +
+                        allB[i].date.substring(5) +
+                        "</span><a target='_blank' href='" +
+                        allB[i].url +
+                        "' title = '" +
+                        allB[i].title +
+                        "'>" +
+                        allBond.subTitle(allB[i].title) +
+                        "</a></li>";
+                }
+                listHtml += "</ul>";
+            }
+            $("#allbasic_data_container").empty();
+            $("#allbasic_data_container").append(listHtml);
+        }
+    };
+
+    allBond.snapAjax = function (url, params, callback, i) {
+        var flag = false;
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: params,
+            dataType: "jsonp",
+            async: true,
+            cache: false,
+            jsonp: "jsonCallBack",
+            jsonpCallback: "jsonpCallback" + Math.floor(Math.random() * (100000 + 1)),
+            timeout: 30000,
+            success: callback,
+            complete: function () {
+                eval("flag" + i + "=true");
+                allBond.appendHtml();
+            },
+        });
+    };
+
+    allBond.snapAjax(
+        allBond.url1,
+        allBond.params1,
+        function (data) {
+            var result = data.result;
+            for (var i = 0; i < result.length && i < allBond.listLen; i++) {
+                var bulletinUrl = "";
+                if (result[i].url.match(/.*?\.(s)?htm(l)?/gi)) {
+                    bulletinUrl = siteUrl + result[i].url;
+                } else {
+                    bulletinUrl = staticBondUrl + result[i].url;
+                }
+                allB.push({
+                    title: result[i].title,
+                    url: bulletinUrl,
+                    date: allBond.dateFormatter(result[i].createTime),
+                    code: result[i].securityCode,
+                });
+            }
+        },
+        1
+    );
+    allBond.snapAjax(
+        allBond.url2,
+        utils.mergeJson(allBond.params2, {bulletinType: "kfl"}),
+        function (data) {
+            var result = data.result;
+            for (var i = 0; i < result.length && i < allBond.listLen; i++) {
+                var bulletinUrl = "";
+                if (result[i].URL.match(/.*?\.(s)?htm(l)?/gi)) {
+                    bulletinUrl = siteUrl + result[i].URL;
+                } else {
+                    bulletinUrl = staticBondUrl + result[i].URL;
+                }
+                allB.push({
+                    title: result[i].title,
+                    url: bulletinUrl,
+                    date: result[i].SSEDate,
+                    code: result[i].security_Code,
+                });
+            }
+        },
+        2
+    );
+    allBond.snapAjax(
+        allBond.url3,
+        allBond.params2,
+        function (data) {
+            var result = data.result;
+            for (var i = 0; i < result.length && i < allBond.listLen; i++) {
+                var bulletinUrl = "";
+                if (result[i].URL.match(/.*?\.(s)?htm(l)?/gi)) {
+                    bulletinUrl = siteUrl + result[i].URL;
+                } else {
+                    bulletinUrl = staticBondUrl + result[i].URL;
+                }
+                allB.push({
+                    title: result[i].title,
+                    url: bulletinUrl,
+                    date: result[i].SSEDate,
+                    code: result[i].security_Code,
+                });
+            }
+        },
+        3
+    );
+</script>
+<div id="alllistT">
+    <div id="allbasic_data_container"></div>
+</div>
+    </div>
+    <div class="home_list_box2">
+     <ul class="tabs1 clearfix">
+      <h3>成交行情</h3>
+      <li class="tab1"><span>非匹配成交行情</span><a class="more" href="/data/quote/tradeinfo/price/" target="_blank">更多<code>&gt;</code></a></li>
+      <li class="tab1"><span>匹配成交行情</span><a class="more" href="/data/quote/tradeinfo/bidding/" target="_blank">更多<code>&gt;</code></a></li>
+      <li class="tab1"><span>大宗行情</span><a class="more" href="/data/quote/tradeinfo/block/" target="_blank">更多<code>&gt;</code></a></li>
+     </ul>
+     <div class="tab1-contents">
+      <div class="tab1-content"><script type="text/javascript">
+	var bjurl = hqHostURI +"/v2/shfi/list/exchange/all";
+	var bjparam = {
+				'select': "code,name,last,volume",
+				'order': "volume",
+				'begin':0,'end':-1};
+	var bjcontentLink = function(data){
+		return "<a target='_self'  href='/data/quote/indexp.shtml?BONDCODE="+ data[0]+"'>" +data[1] + "</a>";
+	};
+
+	var transTime = function(time){
+		var staTime = time + "";
+		if(staTime.length < 6){
+			staTime = '0'+staTime;
+		}
+
+		var hour = staTime.substring(0,2);
+		var minute = staTime.substring(2,4);
+		var second = staTime.substring(4,6);
+
+		return hour + ":" + minute + ":" + second;
+	};
+
+	var formatter = function(f){
+		if(isNaN(f)){
+			return "-"
+		};
+
+		if(f >= 100000000){
+			return (f/100000000).toFixed(2) + "亿";
+		}else if(f >= 10000){
+			return (f/10000).toFixed(2) + "万";
+		}
+
+		return f;
+	};
+	var bjFilling = function(dateList,targerId){
+		var listHtml = "";
+		var end = 0;
+		for(var i = 0; end < 7 ; i++){
+			if(i%2 == 0){
+				listHtml += "<tr class='table_bj'>";
+			}else{
+				listHtml += "<tr>";
+			}
+
+			if(dateList == null || dateList === undefined || dateList.length <= 0 || i >= dateList.length){
+				listHtml += "<td>-</td> <td class='table_right'>-</td> <td class='table_right'>-</td> </tr>";
+			}else{
+				if(dateList[i][2] == 0){
+            listHtml += "<td>" + bjcontentLink(dateList[i]) + 
+                    "</td> <td class='table_right'>" + "-" + 
+                    "</td> <td class='table_right'>" + "-" + "</td></tr>";
+        }else{
+            listHtml += "<td>" + bjcontentLink(dateList[i]) + 
+                    "</td> <td class='table_right'>" + dateList[i][2].toFixed(3) + 
+                    "</td> <td class='table_right'>" + formatter(dateList[i][3]) + "</td></tr>";
+        }
+			}	
+			end++;
+		}
+		
+		$("#" + targerId + " tbody").empty();
+		$("#" + targerId + " tbody").append(listHtml);
+	};
+	var bjGetDate = function(){
+		var targerId = "bjhq";
+		$.ajax({
+				type: 'POST',
+				url: bjurl,
+				data:bjparam,
+				dataType: "jsonp",
+				jsonp: "callback",
+				jsonpCallback: "callback" + Math.floor(Math.random() * (100000 + 1)),
+				timeout: 30000,
+				contentType: "application/json; charset=utf-8",
+				success: function(result){
+					bjFilling(result.list,targerId);
+				},
+				error:function(jqXHR, textStatus, errorThrown) {
+					if(jqXHR.status === 0 || jqXHR.status === 400 || jqXHR.status === 404){
+						bjFilling([],targerId,"-");
+						return;
+					}
+				}
+		});
+	};
+	$(document).ready(function(){
+		bjGetDate();
+		window.setInterval(function(){
+			bjGetDate();
+		},5000);
+	});
+</script>
+<div class="mb_table mb_home_bjhq">
+	<table class="home_center_table" border="0" cellspacing="0" cellpadding="0" id="bjhq">    
+		<thead>
+			<tr>
+				<th>债券简称</th>
+				<th>最新成交价</th>
+				<th>成交量（千元面额）</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+</div>
+
+      </div>
+      <div class="tab1-content"><script type="text/javascript">
+
+
+	var jjurl = hqHostURI + _get_global_setting()['bond_url'];
+	var jjparam = {
+		'select': "code,name,last,chg_rate,amount",
+		'order': "chg_rate",
+		'begin': 0, 'end': -1
+	};
+	var jjcontentLink = function (data) {
+		return "<a target='_self'  href='/data/quote/indexb.shtml?BONDCODE=" + data[0] + "'>" + data[1] + "</a>";
+	};
+
+	var transTime = function (time) {
+		var staTime = time + "";
+		if (staTime.length < 6) {
+			staTime = '0' + staTime;
+		}
+
+		var hour = staTime.substring(0, 2);
+		var minute = staTime.substring(2, 4);
+		var second = staTime.substring(4, 6);
+
+		return hour + ":" + minute + ":" + second;
+	};
+
+	var formatter1 = function (f) {
+		return f.toFixed(2) + "%";
+	};
+	var formatter2 = function (f) {
+		if (isNaN(f) || f == 0) {
+			return "-"
+		};
+
+		if (f >= 100000000) {
+			return (f / 100000000).toFixed(2) + "亿";
+		} else if (f >= 10000) {
+			return (f / 10000).toFixed(2) + "万";
+		}
+
+		return f;
+	};
+
+	var jjFilling = function (dateList, targerId, time) {
+		var listHtml = "";
+		var end = 0;
+		for (var i = 0; end < 7; i++) {
+			if (i % 2 == 0) {
+				listHtml += "<tr class='table_bj'>";
+			} else {
+				listHtml += "<tr>";
+			}
+
+			if (dateList == null || dateList === undefined || dateList.length <= 0 || i >= dateList.length) {
+				listHtml += "<td>-</td> <td class='table_right'>-</td> <td class='table_right'>-</td> <td class='table_right'>-</td> <td class='table_right'>-</td></tr>";
+			} else {
+				var _last = dateList[i][2];
+				var _chg_rate = dateList[i][3];
+				if (_last == 0) {
+					_last = "-";
+					_chg_rate = "-";
+				} else {
+					_last = _last.toFixed(3);
+					_chg_rate = formatter1(_chg_rate);
+				}
+				listHtml += "<td>" + jjcontentLink(dateList[i]) +
+					"</td> <td class='table_right'>" + _last +
+					"</td> <td class='table_right'>" + formatter2(dateList[i][4]) +
+					"</td> <td class='table_right'>" + _chg_rate +
+					"</td> <td class='table_right'>" + transTime(time) + "</td></tr>";
+			}
+			end++;
+		}
+
+		$("#" + targerId + " tbody").empty();
+		$("#" + targerId + " tbody").append(listHtml);
+	};
+	var jjGetDate = function () {
+		var targerId = "jjhq";
+		$.ajax({
+			type: 'POST',
+			url: jjurl,
+			data: jjparam,
+			dataType: "jsonp",
+			jsonp: "callback",
+			jsonpCallback: "callback" + Math.floor(Math.random() * (100000 + 1)),
+			timeout: 30000,
+			contentType: "application/json; charset=utf-8",
+			success: function (result) {
+				jjFilling(result.list, targerId, result.time);
+			},
+			error: function (jqXHR, textStatus, errorThrown) {
+				if (jqXHR.status === 0 || jqXHR.status === 400 || jqXHR.status === 404) {
+					jjFilling([], targerId, "-");
+					return;
+				}
+			}
+		});
+	};
+	$(document).ready(function () {
+		jjGetDate();
+		window.setInterval(function () {
+			jjGetDate();
+		}, 5000);
+	});
+</script>
+
+
+<table class="home_center_table" border="0" cellspacing="0" cellpadding="0" id="jjhq">    
+	<thead>
+		<tr>
+			<th scope="col">债券简称</th>
+			<th scope="col">最新成交价</th>
+			<th scope="col">总成交量</th>
+			<th scope="col">涨幅%</th>
+			<th scope="col">时间</th>
+		</tr>
+	</thead>
+	<tbody></tbody>
+</table>
+      </div>
+      <div class="tab1-content"><span id="staticDate" style="display:none">2026-08-14 18:49:00</span>
+<div id="dateList">
+	<table class="home_center_table" border="0" cellspacing="0" cellpadding="0">
+		<tr>
+			<th scope="col">交易日期</th>
+			<th scope="col">债券简称</th>
+			<th scope="col">成交价</th>
+			<th scope="col">成交量</th>
+		</tr>	
+        <tr><td colspan="50">未找到，只有0条数据！</td></tr>		
+	</table>
+</div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <div class="homemain_right">
+    <div><ul>
+            <li>
+            <a href="http://bond.sse.com.cn/bridge/home/" target="_blank">
+                <img src="/home/littlerightbanner/c/10745856/images/23400133717d46268565412cc9f0076d.jpg
+" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="https://one.sse.com.cn/investor/#/privatePlacement" target="_blank">
+                <img src="/home/littlerightbanner/c/10608750/images/b8f04ce1be904191bf3808b57e38ffbd.png
+" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="https://survey.sse.com.cn/q/9q6EKx" target="_blank">
+                <img src="/home/littlerightbanner/c/10608751/images/cd8feeb44f9c486398b41e7c791d75eb.jpg
+" alt="">
+            </a>
+        </li>
+
+</ul>
+    </div>
+    <div class="right_banner"><ul>
+            <li>
+            <a href="https://120.204.69.12/" target="_blank">
+                <img src="/home/srightbanner/c/10608666/images/fa94ce2957a14ec5b75876c75a2d1632.jpg
+" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="http://www.sse.com.cn/services/tradingservice/tbondp/home/" target="_blank">
+                <img src="/home/srightbanner/c/10608667/images/0e22e9473e6d4498b9a87d6786ce5b2c.jpg
+" alt="">
+            </a>
+        </li>
+
+</ul>
+    </div>
+    <div class="home_right_lx">
+     <h3>联系我们</h3><p>上海证券交易所债券热线：4008888400转6后，拨分机号1959进行业务咨询，如为在审项目，可直接联系反馈意见中列示的项目审核人员<br>咨询时间为交易日8:45-11:30，13:00-17:00<br><br>微信公众号：上交所债券(sse_bond)<br><img style="width: 212px; height: 191px" alt="" src="/home/contact/c/10754167/images/28f0680791554f668d4d7109befb828b.jpg"></p><br>
+
+    </div>
+   </div>
+   <div class="clearboth"></div>
+  </div>
+ 
+
+  <!-- main end -->
+  
+  <!-- footer start -->
+  <div class="footer">
+
+<div class="footer_links"><b>相关链接：</b><a href="http://www.csrc.gov.cn/" target="_blank">证监会</a>|<a href="http://www.mof.gov.cn/" target="_blank">财政部</a>|<a href="http://www.pbc.gov.cn/" target="_blank">人民银行</a>|<a href="http://www.nfra.gov.cn/cn/view/pages/index/index.html" target="_blank">银监会</a>|<a href="http://www.amac.org.cn/" target="_blank">基金业协会</a>|<a href="http://www.sac.net.cn/" target="_blank">证券业协会</a>|<a href="http://www.chinaclear.cn/" target="_blank">中证登</a>|<a href="http://www.chinabond.com.cn/" target="_blank">中央国债公司</a>|<a href="http://www.nafmii.org.cn/" target="_blank">交易商协会</a>|<a href="http://www.chinamoney.com.cn/" target="_blank">外汇交易中心</a>|<a href="http://www.sseinfo.com/" target="_blank">上证所信息网络公司</a>
+</div>
+
+<div class="footer_copy">
+	<!--p><a  href="/home/map/">网站地图</a>
+	| <a href="#">法律声明</a>
+	| <a href="#">联系方式</a>
+	| <a href="#" target="_blank">反馈意见</a></p-->
+    <span class=" mbShow">本网站现已支持 <img src="/xhtml/images/IPV6.png"><br/> ©上海证券交易所版权所有<br />2015<a style="color:#8C8C8C; " target="_blank" href="https://beian.miit.gov.cn/">沪ICP备05004045号-2</a><br /><a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502016333" style="display:inline-block;text-decoration:none;"><img src="/xhtml/images/beian.png" style="float:left;"/><span style="margin: 0px 0px 0px 5px; color:#8C8C8C; display:inline-block;">沪公网安备 31011502016333号</span></a>
+</span>
+	<span class="mbHidden">本网站现已支持 <img src="/xhtml/images/IPV6.png">&nbsp;&nbsp;&nbsp; ©上海证券交易所版权所有<br /> 2015<a style="color:#8C8C8C; " target="_blank" href="https://beian.miit.gov.cn/">沪ICP备05004045号-2</a> <a target="_blank" href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=31011502016333" style="display:inline-block;text-decoration:none;"><img src="/xhtml/images/beian.png" style="float:left;"/><span style="margin: 0px 0px 0px 5px; color:#8C8C8C;display:inline-block; ">沪公网安备 31011502016333号</span></a>
+</span>
+</div>
+
+
+<div class="clearboth"></div>
+
+</div>
+  <!-- footer end -->
+  </div>
+ </body>
+</html>

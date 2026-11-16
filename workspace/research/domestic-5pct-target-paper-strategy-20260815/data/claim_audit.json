@@ -1,0 +1,265 @@
+{
+  "schema_version": "research_claim_audit.v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "claims": [
+    {
+      "claim_id": "C01",
+      "claim": "The fixed paper-rule universe contains 510300, 510880, 511010, 518880 and 511990, with the stated product roles and dated product facts.",
+      "source_ids": ["S01", "S02"],
+      "status": "supported_with_current-document-recheck",
+      "boundary": "Product facts are dated; they do not admit a current action."
+    },
+    {
+      "claim_id": "C02",
+      "claim": "The M01 fixed market-price proxy has four complete years below five percent and 37 of 81 rolling-five-year endpoints at or above five percent.",
+      "source_ids": ["S03", "S04", "S05"],
+      "status": "supported_as_proxy_only",
+      "boundary": "The observation is unadjusted, retrospective market-price arithmetic, not total return or execution."
+    },
+    {
+      "claim_id": "C03",
+      "claim": "R01 is a fully specified monthly paper procedure with next-session timing, a target matrix, quote/IOPV gates, lot rounding and no-action handling.",
+      "source_ids": ["S01", "S02", "S04", "S05"],
+      "status": "supported_as_rule_definition",
+      "boundary": "A rule definition is not proof that an individual can trade it or that any paper quote fills."
+    },
+    {
+      "claim_id": "C04",
+      "claim": "R01 must not be represented as a stable annual or rolling-five-year five-percent strategy.",
+      "source_ids": ["S04", "S05"],
+      "status": "supported",
+      "boundary": "This does not establish that all domestic strategies are unable to meet a five-percent target."
+    },
+    {
+      "claim_id": "C05",
+      "claim": "No core product is automatically substituted when a product, quote, IOPV, account or settlement check fails.",
+      "source_ids": ["S01", "S02"],
+      "status": "supported_as_governance_rule",
+      "boundary": "It is a paper-risk control rather than an observed liquidity claim."
+    },
+    {
+      "claim_id": "C06",
+      "claim": "No previously researched representative route or current R01 paper benchmark is admitted under the stated strict annual and rolling-five-year research gate.",
+      "source_ids": ["S04", "S05", "S07", "S08", "S23"],
+      "status": "supported_as_bounded_current_disposition",
+      "boundary": "The conclusion is limited to the researched routes and does not rule out a future, separately evidenced domestic strategy."
+    },
+    {
+      "claim_id": "C07",
+      "claim": "C16's frozen three-family actual-contract settlement diagnostic fails the stated strict screen in gross arithmetic, with no eligible rolling-five-year endpoint and several source-covered calendar years below five percent.",
+      "source_ids": ["S09", "S10", "S11", "S12", "S13"],
+      "status": "supported_as_gross_actual_contract_diagnostic",
+      "boundary": "This is not an investor net-return, accessibility or future-performance claim."
+    },
+    {
+      "claim_id": "C08",
+      "claim": "C17 is a separately frozen five-family actual-contract hypothesis and it also fails the stated strict screen before costs, margin, fills and other execution constraints.",
+      "source_ids": ["S09", "S10", "S14", "S15", "S16", "S17"],
+      "status": "supported_as_gross_actual_contract_diagnostic",
+      "boundary": "The independent reconstruction verifies the defined gross calculation, not a usable strategy."
+    },
+    {
+      "claim_id": "C09",
+      "claim": "C18 is not testable for return and admits no selected bond or action because the retained materials lack the required point-in-time historic bond universe, cash-flow, price, liquidity, credit-event and execution fields.",
+      "source_ids": ["S18", "S19", "S20", "S21", "S22", "S24", "S25", "S30", "S34"],
+      "status": "supported_as_source_feasibility_boundary",
+      "boundary": "Official rule text does not establish per-bond, per-date, per-investor access or historical total return."
+    },
+    {
+      "claim_id": "C10",
+      "claim": "The current case has no admitted usable strategy; the conclusion is a bounded disposition of R01, C30, C34, C16, C17, C18, C20, C23, C24, the source-controlled C46/C47 calendar-curve route, the C48/C49 formal-data-route boundary, the C50 general-repo yield-floor screen, the C51 SSE ETF-collar option-family scope screen, and the C52 public SSE option-history route screen, not a statement that every future domestic strategy fails.",
+      "source_ids": ["S12", "S13", "S16", "S17", "S20", "S21", "S22", "S23", "S27", "S33", "S34", "S35", "S36", "S37", "S39", "S40", "S41", "S42", "S43", "S44", "S45", "S46", "S47", "S48", "S49", "S50", "S51", "S52", "S53", "S54", "S55", "S56", "S57", "S58", "S59", "S60", "S61", "S62"],
+      "status": "supported_as_bounded_current_disposition",
+      "boundary": "A distinct route can be researched only through a new pre-calculation protocol, product diligence, complete data and independent review."
+    },
+    {
+      "claim_id": "C11",
+      "claim": "C19 identifies conditional licensed data-acquisition paths for portions of the C18 field stack, but no license, data dictionary, historical sample or coverage test is retained, so C18 remains not testable.",
+      "source_ids": ["S24", "S25", "S30"],
+      "status": "supported_as_conditional_source_path_only",
+      "boundary": "A public product page or authorization route is not data delivery, a use entitlement or an investor result."
+    },
+    {
+      "claim_id": "C12",
+      "claim": "C20's domestic public-REIT route passes only a limited product-level source preflight and remains untested and unadmitted because total-return, dated cost, execution, eligibility and point-in-time universe evidence is incomplete.",
+      "source_ids": ["S26", "S27", "S28", "S29", "S31", "S33"],
+      "status": "supported_as_bounded_readiness_assessment",
+      "boundary": "The inherited probe is nonselective and does not establish a product, historical result, access or action."
+    },
+    {
+      "claim_id": "C13",
+      "claim": "The historical R10-v1 URL-only current-rule source-control finding for C20 is closed for retained rule-text evidence in C20 v2; R13 prevents a scope-mismatched legacy re-execution from being misread as a current failure, and the closure still does not make the public-REIT route testable or admitted.",
+      "source_ids": ["S27", "S28", "S29", "S31"],
+      "status": "supported_as_source_control_remediation_only",
+      "boundary": "The closure concerns retained current rule text only; it does not supply the missing universe, total-return, cost, execution or eligibility evidence."
+    },
+    {
+      "claim_id": "CL14",
+      "claim": "C21 identifies conditional licensed public-REIT historical-data routes, but no rights-cleared full-universe, total-return, corporate-action, cost or execution package is retained, so C20 remains not paper-testable.",
+      "source_ids": ["S27", "S33", "S37"],
+      "status": "supported_as_conditional_source_path_only",
+      "boundary": "A public product page or an authorization route is not a data delivery, a rights grant, a product selection or a strategy result."
+    },
+    {
+      "claim_id": "CL15",
+      "claim": "C22 identifies conditional company-bond valuation, market, event and universe data routes, but no integrated rights-cleared historical delivery or realized-event ledger is retained, so C18 remains not testable.",
+      "source_ids": ["S25", "S34", "S37"],
+      "status": "supported_as_conditional_source_path_only",
+      "boundary": "Conditional source routes do not select a bond, establish investor eligibility, calculate a return or create an action."
+    },
+    {
+      "claim_id": "CL16",
+      "claim": "C23 establishes that open-ended public funds are not excluded from the research universe, but the route is not testable without a rights-cleared point-in-time universe, share-class total-return/events, historical fees/status and independent reconstruction.",
+      "source_ids": ["S35", "S37"],
+      "status": "supported_as_open_universe_feasibility_boundary",
+      "boundary": "No fund is selected and disclosure/NAV visibility is not treated as access, execution, total return or a strategy result."
+    },
+    {
+      "claim_id": "CL17",
+      "claim": "C24 establishes that direct mainland equities are not excluded: Shanghai/Shenzhen A shares have a conditional data path and BSE is a separate explicit coverage gate, while every future included stock still requires full institutional equity research before any paper rule.",
+      "source_ids": ["S36", "S37"],
+      "status": "supported_as_open_universe_feasibility_boundary",
+      "boundary": "No stock or universe is selected, and a data-source map does not replace per-stock diligence, a historic test, access evidence or an action."
+    },
+    {
+      "claim_id": "CL18",
+      "claim": "C31/C36 support dated product facts for the five exact C34 ETF codes without silent substitution, while current terms, real-time execution and total-return evidence remain VETO blockers.",
+      "source_ids": ["S38", "S39"],
+      "status": "supported_as_dated_product_source_integrity_only",
+      "boundary": "A dated product-fact PASS is not a current operability, fill, total-return or result conclusion."
+    },
+    {
+      "claim_id": "CL19",
+      "claim": "The C34 full-sample market-price proxy annualized change is 5.55 percent with a -8.64 percent maximum proxy drawdown, but 43 of 98 rolling five-year endpoints are below 5 percent and the 2020-2025 chronological slice annualizes to 4.69 percent.",
+      "source_ids": ["S40", "S41"],
+      "status": "supported_as_exploratory_retrospective_market_price_proxy_only",
+      "boundary": "It is not total return, a clean out-of-sample test, investor net result, stable 5 percent result or future-performance evidence."
+    },
+    {
+      "claim_id": "CL20",
+      "claim": "C35 supplies a C34 D/E paper-record, price-protection, no-fill, pause and six-month forward-ledger framework, but the current allowed action is NO_ACTION.",
+      "source_ids": ["S38", "S39", "S40", "S41", "S42"],
+      "status": "supported_as_fail_closed_paper_operation_design",
+      "boundary": "A defined and validated paper-operation design is not a current trading permission, fill or external action."
+    },
+    {
+      "claim_id": "CL21",
+      "claim": "C37 finds no accepted public-primary source combination that closes every hard gate for a historical domestic ETF investor-total-return/event-ledger test as of the cutoff.",
+      "source_ids": ["S43"],
+      "status": "supported_as_bounded_public_primary_source_route_no_go",
+      "boundary": "This is not a universal nonexistence claim, an ETF/index selection, a historical return result or an actionability conclusion."
+    },
+    {
+      "claim_id": "CL22",
+      "claim": "C38 and the C40-C42 issuer dossiers establish only a non-admitted direct-equity research queue for 600519, 600900 and 601088; none is selected, weighted, valued, tested or actionable.",
+      "source_ids": ["S44", "S46", "S47", "S48"],
+      "status": "supported_as_individual_diligence_non_admission",
+      "boundary": "Partial primary-document preservation and reported facts do not close G0-G9, a declared-scope data stack, valuation, total return, liquidity, execution or independent review."
+    },
+    {
+      "claim_id": "CL23",
+      "claim": "C39 is a preregistered, economically distinct audited cash-flow realization hypothesis that remains NO_ACTION with a risk-model VETO until its data, reconstruction, execution and forward-observation gates are met.",
+      "source_ids": ["S45"],
+      "status": "supported_as_preregistration_only",
+      "boundary": "No product, historical result, allocation, loss budget, external action or C34 rescue is implied."
+    },
+    {
+      "claim_id": "CL24",
+      "claim": "The C40-C42 raw-document archive upgrades preserve issuer/exchange source integrity for specified files, while failed SSE direct retrieval is retained as an anti-bot probe and does not count as an announcement capture.",
+      "source_ids": ["S46", "S47", "S48"],
+      "status": "supported_as_source_preservation_remediation_only",
+      "boundary": "Archive preservation does not establish complete disclosure lineage, availability, data rights, valuation, market execution or strategy admission."
+    },
+    {
+      "claim_id": "CL25",
+      "claim": "After C45 passed a limited five-family source-field readiness audit, C46 retained the C43 rule unchanged and C47 stopped on 2024-06-28 because CU, RU and SP did not form complete frozen monthly pairs; no performance result was produced.",
+      "source_ids": ["S49", "S50", "S51", "S52"],
+      "status": "supported_as_source_controlled_not_decidable_diagnostic",
+      "boundary": "The result is neither a negative performance finding nor a reason to relax thresholds, replace families, carry an old pair, infer a fill, or take an action."
+    },
+    {
+      "claim_id": "CL26",
+      "claim": "The current environment has no formal historical data route that simultaneously closes the point-in-time, total-return, availability/revision and execution evidence gates required for strategy admission.",
+      "source_ids": ["S53"],
+      "status": "supported_as_current_environment_capability_boundary",
+      "boundary": "This is not a claim that no provider or future route exists, and it does not request procurement or select a product."
+    },
+    {
+      "claim_id": "CL27",
+      "claim": "Official provider and regulatory pages make conditional future authorized-data categories more concrete, but no current written right, historical delivery, field acceptance, point-in-time/version ledger or execution complement exists; C48 therefore remains unchanged.",
+      "source_ids": ["S53", "S54", "S55"],
+      "status": "supported_as_conditional_future_data_route_recheck",
+      "boundary": "A public authorization or product page is not a license, delivered dataset, data-acceptance decision, strategy test, product selection or external action."
+    },
+    {
+      "claim_id": "CL28",
+      "claim": "R18 independently verified C49's retained-source integrity, locator treatment, no-entitlement boundary and consistency with C48, with no new S/A/B finding.",
+      "source_ids": ["S54", "S55"],
+      "status": "supported_as_independent_bounded_source_audit",
+      "boundary": "Independent confirmation of a route-discovery boundary is not data acceptance, strategy admission, performance evidence or action authorization."
+    },
+    {
+      "claim_id": "CL29",
+      "claim": "C50 confirms a distinct SSE general-repo mechanism and individual inverse-repo participation statement, but the dated 2026-08-14 204001 one-day annualized fixing of 1.391 percent is below five percent and no contractual or rule-based five-percent floor is evidenced; C50 is therefore not admitted as a stable-five-percent strategy.",
+      "source_ids": ["S56"],
+      "status": "supported_as_bounded_primary_mechanism_and_dated_yield_floor_screen",
+      "boundary": "A dated annualized quote is not a full-year result, personal-account entitlement, execution record, cost ledger, historical backtest, future outcome or external action."
+    },
+    {
+      "claim_id": "CL30",
+      "claim": "R19 independently confirms C50's raw-source hashes, 204001 one-day label and 1.391-percent arithmetic, while preserving the route-admission fail, actionability VETO and unchanged C48 boundary.",
+      "source_ids": ["S56", "S57"],
+      "status": "supported_as_independent_bounded_source_audit",
+      "boundary": "R19 PASS accepts evidence integrity and boundary discipline only; it is not a stable-five-percent strategy, account entitlement, historical result, product selection or action authorization."
+    },
+    {
+      "claim_id": "CL31",
+      "claim": "C51 treats an SSE ETF collar as economically distinct from the closed C13 covered-call route, but only rule-level definable and not testable in the current environment: no selected instrument, historical chain, execution/cost/account evidence or rule-based positive five-percent floor is retained, and C48 remains unchanged.",
+      "source_ids": ["S07", "S08", "S53", "S58"],
+      "status": "supported_as_bounded_nonduplicate_options_scope_screen",
+      "boundary": "The universal payoff expression is a structure definition, not a return result. C51 does not reopen C13, select a collar, establish suitability, calculate a net return or authorize an action."
+    },
+    {
+      "claim_id": "CL32",
+      "claim": "R20 independently preserved C51's source integrity and no-action boundary but found one open A-level payoff-formula defect and one open B-level future-builder integrity defect; until a separate R21 recheck, the audit is FAIL_PENDING_REPAIR_AND_INDEPENDENT_RECHECK and C51 remains unadmitted with C48 unchanged.",
+      "source_ids": ["S53", "S58", "S59"],
+      "status": "supported_as_initial_independent_audit_with_open_findings",
+      "boundary": "Passing raw-source subchecks and repair-owner local validation are not independent closure, strategy admission, product selection, account entitlement, historical result or action authorization."
+    },
+    {
+      "claim_id": "CL33",
+      "claim": "R21 independently closes R20-A-001 and R20-B-001 only for the exact repaired C51 snapshot: the universal payoff formula, fixed source controls, PDF semantic checks and C13 binding pass, while actionability remains VETO, no strategy is admitted and C48 remains unchanged.",
+      "source_ids": ["S53", "S58", "S59", "S60"],
+      "status": "supported_as_independent_repair_recheck_bounded_only",
+      "boundary": "R21 source-and-repair PASS is not evidence of a stable five-percent return, selected option route, account entitlement, historical test, cost/fill result or external action; later C51 changes need a new recheck."
+    },
+    {
+      "claim_id": "CL34",
+      "claim": "C52 finds that retained public SSE pages can support current-day option-contract field checks and dated adjustment-event cross-checks, but do not demonstrate a complete point-in-time option master, historical quote/depth/fill panel, normalized ETF total-return/event ledger, execution/account record or accepted replay right; C48, C49 and C51 therefore remain unchanged.",
+      "source_ids": ["S53", "S54", "S58", "S61"],
+      "status": "supported_as_bounded_public_source_coverage_screen",
+      "boundary": "This conclusion applies to the retained public pages and client-side query only. It does not assert that no other official route exists, and it does not select a product, calculate historical performance, grant data rights, admit a strategy or authorize an action."
+    },
+    {
+      "claim_id": "CL35",
+      "claim": "R22 independently verifies the exact C52 raw-source, manifest, C48/C49/C51 dependency and generated-output hashes; it accepts only source control and bounded public-query semantics, while actionability remains VETO with four M-level limitations.",
+      "source_ids": ["S53", "S54", "S58", "S61", "S62"],
+      "status": "supported_as_independent_bounded_public_source_audit",
+      "boundary": "R22 PASS_SOURCE_CONTROL_AND_BOUNDARY_ONLY does not prove a historical option interface, grant data rights, establish a positive five-percent floor, admit C51, select a product or authorize an action."
+    },
+    {
+      "claim_id": "CL36",
+      "claim": "R23 independently closes only R22-M-004's governance-registration follow-up: C52/R22 are required, contract-defined, source/claim-linked and R09-checked. The three substantive R22 limitations, C48/C49/C51 non-admission and actionability VETO remain unchanged.",
+      "source_ids": ["S53", "S54", "S58", "S61", "S62", "S63"],
+      "status": "supported_as_independent_governance_follow_up_recheck",
+      "boundary": "R23 governance-registration PASS does not accept historical replay, data rights, a positive five-percent floor or result, a product, an account conclusion, strategy admission or external action."
+    },
+    {
+      "claim_id": "CL37",
+      "claim": "C53 specifies a separate equity-led five-ETF quarterly paper protocol with fixed target weights and fail-closed controls, but it is not admitted, does not establish an annual five-percent outcome, and remains bound by the C30/C34 negative evidence and C48 formal-data limitation.",
+      "source_ids": ["S38", "S40", "S41", "S53", "S64"],
+      "status": "supported_as_draft_paper_protocol_only",
+      "boundary": "A concrete candidate map and operational card are not a total-return test, personal suitability conclusion, trading permission, fill record, return forecast, strategy admission or external action."
+    }
+  ]
+}

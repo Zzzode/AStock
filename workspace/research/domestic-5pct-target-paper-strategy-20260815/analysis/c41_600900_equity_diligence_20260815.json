@@ -1,0 +1,544 @@
+{
+  "schema_version": "equity_diligence_dossier.v1",
+  "artifact_id": "D5PT-C41-600900-EQUITY-DILIGENCE-v1",
+  "as_of_date": "2026-08-15",
+  "issuer": {
+    "ticker": "600900",
+    "exchange": "SSE",
+    "security_type": "A-share common stock",
+    "issuer_name_zh": "中国长江电力股份有限公司",
+    "issuer_short_name_zh": "长江电力"
+  },
+  "status": "NON_ADMITTED_RESEARCH_SUBJECT",
+  "research_controls": {
+    "research_only": true,
+    "external_orders": false,
+    "portfolio_q": 0,
+    "no_weights": true,
+    "no_trade_instruction": true,
+    "no_target_price": true,
+    "no_return_forecast": true,
+    "no_stock_selection": true,
+    "strategy_admission": "VETO",
+    "action_status": "NO_ACTION"
+  },
+  "relationship_to_case": {
+    "upstream_route": "C38 direct equity institutional research route",
+    "scope": "Issuer-level primary-source diligence only",
+    "does_not_change": [
+      "C24 direct-equity data-rights and point-in-time boundary",
+      "C34 failed ETF proxy candidate",
+      "C33-C36 integrated ETF research-only status",
+      "R15 publication and actionability veto"
+    ]
+  },
+  "decision": {
+    "primary_document_work_can_begin": "CONDITIONALLY_YES",
+    "quality_or_income_conclusion": "NO",
+    "liquidity_or_execution_conclusion": "NO",
+    "valuation_or_total_return_conclusion": "NO",
+    "strategy_admission": "VETO",
+    "rationale": "Case-archived issuer PDFs permit a bounded issuer evidence card. Full point-in-time disclosure/version lineage, market-data rights, corporate-action ledger, total-return inputs, execution evidence, valuation inputs, and independent review are incomplete."
+  },
+  "availability_discipline": {
+    "as_of_date": "2026-08-15",
+    "source_capture_state": "C41-S01--S06 PDFs were archived and hash-verified in sources/official-600900-equity-diligence-20260815/ at 2026-08-15T10:10:42+08:00; disclosure pages, original first-public timestamps and complete version/correction lineage remain unarchived.",
+    "annual_report_available_at_status": "UNRESOLVED",
+    "annual_report_date_signals": {
+      "C38_prior_SSE_locator_path_date": "2026-04-30",
+      "issuer_investor_relations_index_date": "2026-05-06",
+      "issuer_pdf_http_last_modified": "2026-05-18",
+      "audit_report_date": "2026-04-28"
+    },
+    "interpretation": "No date signal above is treated as a retained first-public timestamp. Same-session information availability and document version lineage are not established."
+  },
+  "sources": [
+    {
+      "id": "C41-S01",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "title": "中国长江电力股份有限公司2025年年度报告",
+      "document_type": "annual_report",
+      "reporting_period": "FY2025",
+      "audit_date": "2026-04-28",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/05/2026051815345898336.pdf",
+      "source_quality": "issuer_official_primary_pdf",
+      "observed_content_length_bytes": 1616683,
+      "observed_sha256": "12e0dd671bce6a02298adace6cba12f0749d398a25fe4c68b1149c9932d0d64c",
+      "retrieval_date": "2026-08-15",
+      "archive_status": "case_archived_pdf_20260815",
+      "case_archive_path": "sources/official-600900-equity-diligence-20260815/600900_2025_annual_report.pdf",
+      "supports": [
+        "Audited FY2025 financial and operating disclosures",
+        "Business, risk, governance, related-party, capital-expenditure and distribution-plan disclosures"
+      ],
+      "does_not_support": [
+        "A current market price or liquidity conclusion",
+        "A valuation, target price, total-return or future-distribution conclusion",
+        "Point-in-time same-session availability"
+      ]
+    },
+    {
+      "id": "C41-S02",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "title": "中国长江电力股份有限公司2026年第一季度报告",
+      "document_type": "quarterly_report",
+      "reporting_period": "2026Q1",
+      "financials_audited": false,
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/05/2026051815335596092.pdf",
+      "source_quality": "issuer_official_primary_pdf",
+      "observed_content_length_bytes": 204971,
+      "observed_sha256": "100ecd959c633b08a4adf9805ff21547b025a985ff4793f7c11ceb8d7baf5c3e",
+      "retrieval_date": "2026-08-15",
+      "archive_status": "case_archived_pdf_20260815",
+      "case_archive_path": "sources/official-600900-equity-diligence-20260815/600900_2026_q1_report.pdf",
+      "supports": [
+        "Latest located financial-period update",
+        "Management-reported drivers for Q1 changes"
+      ],
+      "does_not_support": [
+        "Audited interim results",
+        "A forecast or valuation conclusion"
+      ]
+    },
+    {
+      "id": "C41-S03",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "title": "中国长江电力股份有限公司2026年半年度发电量完成情况公告",
+      "document_type": "operating_data_announcement",
+      "publication_date": "2026-07-07",
+      "data_status": "preliminary_statistics",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/07/2026070717535934489.pdf",
+      "source_quality": "issuer_official_primary_pdf",
+      "observed_content_length_bytes": 113448,
+      "observed_sha256": "e5283743ebdf893dbd61e192de5f653ff6fb214553cfa63c67b924a5c95a4a18",
+      "retrieval_date": "2026-08-15",
+      "archive_status": "case_archived_pdf_20260815",
+      "case_archive_path": "sources/official-600900-equity-diligence-20260815/600900_2026_h1_generation_notice.pdf",
+      "supports": [
+        "Hydrology and generation-volume monitoring"
+      ],
+      "does_not_support": [
+        "Audited revenue, profit, cash-flow or full-year result"
+      ]
+    },
+    {
+      "id": "C41-S04",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "title": "中国长江电力股份有限公司2025年年度权益分派实施公告",
+      "document_type": "distribution_implementation_announcement",
+      "publication_date": "2026-07-09",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/07/2026070917081273023.pdf",
+      "source_quality": "issuer_official_primary_pdf",
+      "observed_content_length_bytes": 150126,
+      "observed_sha256": "65b71ce51cb6533ef6a81db63f5b0fd0512ffc727b20220ce42f24f09c98f6d9",
+      "retrieval_date": "2026-08-15",
+      "archive_status": "case_archived_pdf_20260815",
+      "case_archive_path": "sources/official-600900-equity-diligence-20260815/600900_2025_distribution_implementation.pdf",
+      "supports": [
+        "A specific executed distribution's record, ex-date, payment date and tax-rule disclosure"
+      ],
+      "does_not_support": [
+        "A future-distribution promise",
+        "An individual after-tax cash-flow or total-return calculation"
+      ]
+    },
+    {
+      "id": "C41-S05",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "title": "中国长江电力股份有限公司2024年年度报告",
+      "document_type": "annual_report",
+      "reporting_period": "FY2024",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2025/05/2025050612554995408.pdf",
+      "source_quality": "issuer_official_primary_pdf",
+      "observed_content_length_bytes": 1786053,
+      "observed_sha256": "d4610a53996ef1a741c5b87d586c833fe96a0f152c4ab523442144d46cdd8358",
+      "retrieval_date": "2026-08-15",
+      "archive_status": "case_archived_pdf_20260815",
+      "case_archive_path": "sources/official-600900-equity-diligence-20260815/600900_2024_annual_report.pdf",
+      "supports": [
+        "Prior audited-report locator"
+      ],
+      "does_not_support": [
+        "A reconciled multi-period series without restatement review"
+      ]
+    },
+    {
+      "id": "C41-S06",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "title": "中国长江电力股份有限公司2023年年度报告",
+      "document_type": "annual_report",
+      "reporting_period": "FY2023",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2024/11/2024110610344566091.pdf",
+      "source_quality": "issuer_official_primary_pdf",
+      "observed_content_length_bytes": 1799710,
+      "observed_sha256": "a32aa92211f533bef9bd426a29158060d6bed4a31fca6c9f6805fd8659c90d38",
+      "retrieval_date": "2026-08-15",
+      "archive_status": "case_archived_pdf_20260815",
+      "case_archive_path": "sources/official-600900-equity-diligence-20260815/600900_2023_annual_report.pdf",
+      "supports": [
+        "Prior audited-report locator"
+      ],
+      "does_not_support": [
+        "A reconciled multi-period series without restatement review"
+      ]
+    },
+    {
+      "id": "C41-S07",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "title": "Investor relations page",
+      "document_type": "issuer_ir_index",
+      "url": "https://www.cypc.com.cn/cypc/tzzgx43/index.html",
+      "source_quality": "issuer_official_locator",
+      "retrieval_date": "2026-08-15",
+      "supports": [
+        "Official announcement and report index"
+      ],
+      "does_not_support": [
+        "A retained document version chain or exact first-public timestamp"
+      ]
+    },
+    {
+      "id": "C41-S08",
+      "publisher": "Shanghai Stock Exchange",
+      "title": "Listed-company announcement query entry point",
+      "document_type": "exchange_disclosure_locator",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/",
+      "source_quality": "primary_official_locator",
+      "retrieval_date": "2026-08-15",
+      "supports": [
+        "Statutory disclosure-location route"
+      ],
+      "does_not_support": [
+        "This case has preserved the full disclosure history or timestamps"
+      ]
+    },
+    {
+      "id": "C41-S09",
+      "publisher": "Shanghai Stock Exchange Information Co.",
+      "title": "Historical data products",
+      "document_type": "official_service_existence",
+      "url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "source_quality": "official_service_existence",
+      "retrieval_date": "2026-08-15",
+      "supports": [
+        "Potential licensed historical-data route"
+      ],
+      "does_not_support": [
+        "A licence, data delivery, field dictionary, revision log or retention right for this case"
+      ]
+    }
+  ],
+  "reported_facts": {
+    "business_and_operations": {
+      "source_id": "C41-S01",
+      "six_domestic_cascade_hydropower_stations": true,
+      "controlled_hydropower_capacity_2025_end_mw": 71795000,
+      "domestic_controlled_hydropower_capacity_2025_end_mw": 71695000,
+      "domestic_generation_2025_billion_kwh": 3071.9440,
+      "domestic_generation_yoy_pct": 3.82,
+      "grid_delivered_energy_2025_billion_kwh": 3055.5521,
+      "domestic_hydropower_revenue_2025_cny_bn": 75.662,
+      "reported_grid_tariff_2025_cny_per_mwh": 280.28,
+      "market_traded_energy_2025_billion_kwh": 1104.5,
+      "market_traded_energy_share_2025_pct": 36.1,
+      "market_traded_energy_share_2024_pct": 38.6,
+      "interpretation_limit": "Reported production and tariff metrics are operating inputs, not a forecast or valuation conclusion."
+    },
+    "audited_fy2025_financials": {
+      "source_id": "C41-S01",
+      "currency": "CNY",
+      "revenue": 86241940222.20,
+      "profit_attributable_to_owners": 34502809176.39,
+      "profit_attributable_to_owners_excluding_nonrecurring": 33445575299.94,
+      "operating_cash_flow": 60562925570.41,
+      "total_assets": 559208340046.84,
+      "equity_attributable_to_owners": 221338010639.92,
+      "basic_eps_cny": 1.4101,
+      "weighted_average_roe_pct": 15.90,
+      "comparative_series_status": "The FY2025 annual report states that a same-control business combination occurred and comparative data were retrospectively adjusted.",
+      "interpretation_limit": "No independent financial-quality, free-cash-flow, debt or sustainability conclusion has been made."
+    },
+    "capital_expenditure_and_projects": {
+      "source_id": "C41-S01",
+      "fixed_asset_investment_2025_cny_bn": 9.443,
+      "fixed_asset_purchase_2025_cny_bn": 0.075,
+      "infrastructure_investment_2025_cny_bn": 9.368,
+      "project_examples": [
+        "Gezhouba navigation capacity expansion",
+        "Zhangye pumped-storage power station",
+        "Youxian Guanghanping pumped-storage power station",
+        "Fengjie Caiziba pumped-storage power station",
+        "Gongyi Housihe pumped-storage power station",
+        "Xunwu Lizhuang pumped-storage power station"
+      ],
+      "interpretation_limit": "Reported fixed-asset investment cannot be used as maintenance capital expenditure or free cash flow without a project-by-project reconciliation."
+    },
+    "q1_2026_financial_update": {
+      "source_id": "C41-S02",
+      "financials_audited": false,
+      "currency": "CNY",
+      "revenue": 18111540767.50,
+      "revenue_yoy_pct": 6.44,
+      "profit_attributable_to_owners": 6761006898.48,
+      "profit_attributable_yoy_pct": 30.50,
+      "operating_cash_flow": 11710663090.90,
+      "operating_cash_flow_yoy_pct": -1.15,
+      "basic_eps_cny": 0.2763,
+      "issuer_reported_driver": "Higher electricity sales revenue and unrealized gains on financial assets were cited for profit changes.",
+      "interpretation_limit": "Unaudited quarterly numbers are only an evidence-collection prompt and cannot be extrapolated."
+    },
+    "h1_2026_generation_update": {
+      "source_id": "C41-S03",
+      "data_status": "preliminary_statistics",
+      "wudongde_inflow_yoy_pct": -16.94,
+      "three_gorges_inflow_yoy_pct": 28.74,
+      "six_station_generation_billion_kwh": 1327.4407,
+      "six_station_generation_yoy_pct": 4.81,
+      "station_generation_yoy_pct": {
+        "Wudongde": -16.76,
+        "Baihetan": -5.05,
+        "Xiluodu": -4.51,
+        "Xiangjiaba": -3.73,
+        "Three_Gorges": 31.62,
+        "Gezhouba": 11.05
+      },
+      "interpretation_limit": "Operating statistics do not prove H1 earnings, cash flow, full-year outcome or future distributions."
+    },
+    "fy2025_distribution_event": {
+      "source_id": "C41-S04",
+      "share_count_basis": 24468217716,
+      "final_gross_cash_dividend_per_share_cny": 0.79,
+      "interim_gross_cash_dividend_per_share_cny": 0.21,
+      "fy2025_gross_cash_dividend_per_share_cny": 1.00,
+      "final_gross_cash_dividend_total_cny": 19329891995.64,
+      "fy2025_gross_cash_dividend_total_cny": 24468217716.00,
+      "record_date": "2026-07-16",
+      "ex_date": "2026-07-17",
+      "payment_date": "2026-07-17",
+      "tax_treatment_status": "Tax treatment varies by holder type and, for natural persons/securities funds, holding period.",
+      "interpretation_limit": "This is a specific past implementation event, not a future-distribution, after-tax-cash-flow or total-return conclusion."
+    },
+    "governance_and_control_observations": {
+      "source_id": "C41-S01",
+      "controlling_shareholder": "China Three Gorges Corporation",
+      "controlling_shareholder_share_and_vote_pct": 43.47,
+      "ultimate_controller": "State-owned Assets Supervision and Administration Commission of the State Council",
+      "audit_opinion_fy2025": "standard unqualified",
+      "fy2025_financial_statement_auditor": "ShineWing Certified Public Accountants LLP",
+      "fy2025_internal_control_auditor": "Grant Thornton China",
+      "issuer_reported_major_litigation_or_arbitration": "none during the reporting year",
+      "issuer_reported_penalty_or_rectification": "none during the reporting year",
+      "interpretation_limit": "Issuer disclosures and a standard audit opinion do not replace an independent governance, related-party, enforcement, litigation or auditor-change review."
+    }
+  },
+  "gate_assessment": [
+    {
+      "gate_id": "G0",
+      "name": "Scope and security identity",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": [
+        "C41-S01 security identity disclosure",
+        "C41-S07 issuer identity index"
+      ],
+      "unresolved": [
+        "No retained as-of security-status, suspension, risk-warning, delisting, name-mapping, restriction or free-float primary record."
+      ],
+      "failure_disposition": "Do not backfill historical eligibility from a current code or issuer page."
+    },
+    {
+      "gate_id": "G1",
+      "name": "Complete statutory disclosure archive",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": [
+        "C41-S01 FY2025 annual report",
+        "C41-S02 2026Q1 report",
+        "C41-S05 FY2024 annual report",
+        "C41-S06 FY2023 annual report"
+      ],
+      "unresolved": [
+        "Raw documents, disclosure pages, first-public timestamps, hashes in an archival manifest, correction chain, earnings notices, internal-control original reports and material-announcement inventory are not retained in the case."
+      ],
+      "failure_disposition": "insufficient_primary_financial_evidence"
+    },
+    {
+      "gate_id": "G2",
+      "name": "Business and operating drivers",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": [
+        "C41-S01 operating, tariff, market-transaction, capacity and project disclosures",
+        "C41-S03 hydrology and station-level generation disclosure"
+      ],
+      "unresolved": [
+        "No reproducible hydrology-to-generation-to-tariff-to-revenue-to-cash-flow bridge; incomplete primary regulatory, project-permit, market-settlement and demand-side evidence."
+      ],
+      "failure_disposition": "No earnings-driver conclusion from a utility label, single generation metric or corporate narrative."
+    },
+    {
+      "gate_id": "G3",
+      "name": "Earnings quality and balance sheet",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": [
+        "C41-S01 audited annual statements and notes locator",
+        "C41-S02 unaudited quarterly update"
+      ],
+      "unresolved": [
+        "No independent extraction/reconciliation of revenue recognition, operating cash flow, working capital, financial-asset gains, impairment, restricted assets, debt maturity, contingencies, related parties or same-control-combination effects."
+      ],
+      "failure_disposition": "no_quality_assessment"
+    },
+    {
+      "gate_id": "G4",
+      "name": "Dividend and cash-flow coverage",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": [
+        "C41-S04 FY2025 distribution implementation and tax disclosure",
+        "C41-S01 annual cash-flow and capex disclosures"
+      ],
+      "unresolved": [
+        "No complete distribution proposal/approval/implementation/tax ledger; no independent bridge to maintenance versus growth capex, debt service, restricted cash and funding sources."
+      ],
+      "failure_disposition": "no_income_coverage_assessment"
+    },
+    {
+      "gate_id": "G5",
+      "name": "Governance, control and compliance",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": [
+        "C41-S01 control, audit, related-party and issuer-reported litigation/penalty disclosures"
+      ],
+      "unresolved": [
+        "No preserved articles, board/independent-director materials, pledge and guarantee ledger, complete related-party analysis, regulatory/enforcement search, litigation search, internal-control report or independent audit-firm-change review."
+      ],
+      "failure_disposition": "governance_not_cleared"
+    },
+    {
+      "gate_id": "G6",
+      "name": "Valuation and disconfirmation",
+      "status": "BLOCKED",
+      "evidence": [
+        "C41-S01 and C41-S04 report historical shares and financial facts only"
+      ],
+      "unresolved": [
+        "No same-as_of unadjusted market price, trading status, reconciled shares/net debt/contingencies, comparables, original broker research or auditable consensus snapshot."
+      ],
+      "failure_disposition": "valuation_not_admitted; no target price, upside/downside, fair value or cheap/expensive conclusion"
+    },
+    {
+      "gate_id": "G7",
+      "name": "Liquidity and tradable status",
+      "status": "BLOCKED",
+      "evidence": [
+        "C41-S09 service-existence page only"
+      ],
+      "unresolved": [
+        "No written data rights, daily unadjusted prices, turnover, no-trade, suspension, limit, free-float, calendar, field dictionary, revision log, coverage report or pre-frozen observation rule."
+      ],
+      "failure_disposition": "liquidity_unverified"
+    },
+    {
+      "gate_id": "G8",
+      "name": "Point-in-time and corporate actions",
+      "status": "BLOCKED",
+      "evidence": [
+        "URLs, document labels, selected dates and stream hashes are available"
+      ],
+      "unresolved": [
+        "No first-public timestamp, preserved exchange page, unadjusted prices, corporate-action ledger, adjustment algorithm, share-capital ledger, correction/withdrawal chain or retained download timestamp."
+      ],
+      "failure_disposition": "point_in_time_blocked"
+    },
+    {
+      "gate_id": "G9",
+      "name": "Independent review",
+      "status": "NOT_PERFORMED",
+      "evidence": [],
+      "unresolved": [
+        "No non-author review using archived originals has re-extracted financial facts, reconciled cash-flow/distribution coverage, rebuilt valuation inputs or reviewed governance searches."
+      ],
+      "failure_disposition": "independent_review_not_passed"
+    }
+  ],
+  "valuation_total_return_execution": {
+    "valuation_status": "NOT_STARTED_BLOCKED",
+    "target_price": null,
+    "upside_downside": null,
+    "total_return_status": "NOT_COMPUTABLE",
+    "execution_status": "NOT_CERTIFIED",
+    "hard_missing_inputs": [
+      "Same-as_of unadjusted close and security status",
+      "Reconciled share capital, net debt, contingencies and comparables",
+      "Original broker reports or auditable consensus snapshot",
+      "Corporate-action and tax ledger",
+      "Historical liquidity, order/fill, cost, failed-fill and settlement records"
+    ],
+    "rule": "A past distribution event or adjusted price cannot substitute for investor total return, valuation, liquidity or execution evidence."
+  },
+  "risk_and_contrarian_protocol": {
+    "positive_thesis_status": "NONE; no investment thesis is admitted.",
+    "research_risks": [
+      {
+        "risk": "Hydrology and dispatch concentration",
+        "evidence": "C41-S03 station-level generation divergence in H1 2026",
+        "research_test": "Archive monthly hydrology, dispatch, generation, curtailment and settlement data before a driver conclusion."
+      },
+      {
+        "risk": "Electricity-market and tariff change",
+        "evidence": "C41-S01 market-traded energy share and market-reform discussion",
+        "research_test": "Obtain primary transaction/settlement rules and quantity-price-fee bridge."
+      },
+      {
+        "risk": "Project, capital-expenditure and integration complexity",
+        "evidence": "C41-S01 pumped-storage and other construction-project disclosures",
+        "research_test": "Reconcile approval, cost, schedule, funding, consolidation and project economics."
+      },
+      {
+        "risk": "Debt, interest-rate, foreign-currency and overseas exposure",
+        "evidence": "C41-S01 financial-statement notes and overseas business disclosures",
+        "research_test": "Independently rebuild debt maturity, collateral, currency, interest-rate, hedge and restricted-cash schedules."
+      },
+      {
+        "risk": "Control and related-party governance",
+        "evidence": "C41-S01 controlling-shareholder and related-party disclosures",
+        "research_test": "Complete a dated two-sided governance and adverse-evidence search."
+      },
+      {
+        "risk": "Accounting comparability",
+        "evidence": "C41-S01 same-control business-combination and comparative-restatement disclosure",
+        "research_test": "Build a pre/post-combination, period-by-period reconciliation before multi-year quality or valuation work."
+      }
+    ],
+    "research_only_monitoring": [
+      "Document version/correction and first-public-time preservation",
+      "Audited or statutory 2026 interim financial reporting when formally available",
+      "Hydrology, station generation, tariff and market-settlement evidence",
+      "Project capex, debt, related-party and governance evidence"
+    ],
+    "monitoring_not_a_trade_trigger": true
+  },
+  "minimum_remediation_before_reassessment": [
+    "C41-S01 through C41-S06 PDFs are archived with retrieval time, URL, byte count and hash; retain original disclosure pages, first-public time, version/correction chain and source-use boundary before reassessment.",
+    "Create an independently reproducible financial-quality bridge covering income, operating cash flow, working capital, financial-asset gains, capex, debt, restricted cash and same-control combinations.",
+    "Create a distribution and cash-flow audit for every relevant event without projecting past events forward.",
+    "Create an auditable governance/negative-search record covering control, related parties, pledges, guarantees, auditor changes, enforcement, litigation and internal control.",
+    "Obtain licensed point-in-time market/corporate-action/security-status data and freeze the data dictionary, revisions, observation window and execution-cost record before inspecting results.",
+    "Require a non-author independent review of primary evidence, calculations and all unresolved findings."
+  ],
+  "data_quality": {
+    "tier": "case_archived_primary_pdfs_incomplete_availability_lineage",
+    "confidence_scope": "Limited historical facts explicitly reported in official issuer documents and the existence of evidence gaps",
+    "does_not_cover": [
+      "Investment quality",
+      "Liquidity or execution",
+      "Valuation",
+      "Investor total return",
+      "Future distributions",
+      "Strategy usability"
+    ],
+    "warnings": [
+      "Case-archived PDFs and hashes do not replace disclosure-page history, legal data rights or point-in-time reproducibility.",
+      "The annual-report first-public availability is unresolved because observed official date signals conflict and no original disclosure event is retained.",
+      "No G0-G9 gate is fully passed; G6-G9 are blocked or not performed."
+    ]
+  },
+  "current_disposition": "NO_STOCK_SELECTION_NO_UNIVERSE_FREEZE_NO_BACKTEST_NO_ACTION"
+}

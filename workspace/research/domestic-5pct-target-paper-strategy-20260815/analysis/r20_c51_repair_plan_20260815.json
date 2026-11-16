@@ -1,0 +1,74 @@
+{
+  "schema_version": "d5pt_r20_c51_repair_plan.v1",
+  "artifact_id": "D5PT-R20-C51-REPAIR-PLAN-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "source_audit": {
+    "path": "analysis/r20_c51_initial_independent_source_audit_20260815.json",
+    "sha256": "39138800597b10565efb6c8e8c58dfe03d20041706635fa2db7dc9a117d14cdf",
+    "audit_recommendation": "FAIL_PENDING_REPAIR_AND_INDEPENDENT_RECHECK",
+    "open_findings": [
+      "R20-A-001",
+      "R20-B-001"
+    ]
+  },
+  "plan_status": "repairs_implemented_pending_independent_R21_recheck",
+  "items": [
+    {
+      "finding_id": "R20-A-001",
+      "severity": "A",
+      "status": "implemented_pending_independent_R21_recheck",
+      "repair": "Replaced the unqualified compact collar payoff with the universally valid expression `min(S_T, K_C) + max(K_P - S_T, 0) + C - P`; retained the compact form only in a separately named field explicitly conditioned on `K_P <= K_C`; added formula-provenance language that labels both as generic derivative algebra rather than an SSE formula.",
+      "affected_artifacts": [
+        "tools/c51_build_sse_etf_option_collar_scope_screen.py",
+        "analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+        "analysis/c51_sse_etf_option_collar_scope_screen_20260815.md"
+      ],
+      "current_output_hashes": {
+        "builder": "46b3db92d616686b7262e842a25b844700c0b45d1d6df34983fc4e119937d939",
+        "json": "114d4ee9795ba94f50a23b3aecd321fe15b8ebdc2decacfb6dc5d1023ff86f1c",
+        "markdown": "0685ee9cc64983dbc431ef0ee40dab97f522369db3ccae19f91238a1861de734"
+      },
+      "closure_condition": "An independent R21 reviewer must recompute the payoff, check the stated condition and confirm the regenerated JSON/Markdown exactly reflect the repaired builder."
+    },
+    {
+      "finding_id": "R20-B-001",
+      "severity": "B",
+      "status": "implemented_pending_independent_R21_recheck",
+      "repair": "Pinned the manifest digest and each C51 source ID, filename, official URL and SHA-256 in the builder; validates raw bytes against those values; extracts the retained PDF via pdftotext and asserts the option reference, real-time, closing-price and combination-strategy terms used in the output boundary.",
+      "affected_artifacts": [
+        "tools/c51_build_sse_etf_option_collar_scope_screen.py",
+        "analysis/c51_sse_etf_option_collar_scope_screen_20260815.json"
+      ],
+      "closure_condition": "An independent R21 reviewer must verify the pins, manifest/raw integrity, semantic PDF assertions and successful rebuild without treating source integrity as strategy admission."
+    },
+    {
+      "finding_id": "R20-M-001",
+      "severity": "M",
+      "status": "boundary_strengthened_not_a_closure_requirement",
+      "repair": "Clarified that a combination-strategy file category does not prove an enabled collar-combination facility or simultaneous-combination execution route; no such availability is claimed.",
+      "closure_condition": "This remains a standing evidence limitation until a separately retained official implementation notice and broker-operational evidence are independently accepted."
+    },
+    {
+      "finding_id": "R20-M-004",
+      "severity": "M",
+      "status": "implemented_pending_independent_R21_recheck",
+      "repair": "Added a path, SHA-256 and strict-test-status binding to the predecessor C13 artifact in the C51 builder and generated JSON.",
+      "closure_condition": "R21 must verify the predecessor binding and preserve the rule that changing ETF, strike, expiry or venue does not reopen C13."
+    }
+  ],
+  "unresolved_limitations_preserved": [
+    "R20-M-002 personal account and broker entitlement evidence",
+    "R20-M-003 point-in-time contract, quote/depth, fill, cost, settlement, event and roll evidence",
+    "C48 current-environment formal historical data-route blocker"
+  ],
+  "validation_run_by_repair_owner": {
+    "commands": [
+      "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -m py_compile workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c51_build_sse_etf_option_collar_scope_screen.py",
+      "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c51_build_sse_etf_option_collar_scope_screen.py",
+      "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/r09_verify_research_control_records.py"
+    ],
+    "result": "local_repair_validation_passed_not_independent_closure"
+  },
+  "boundary": "This repair plan records implementation work only. It does not close R20 findings, admit C51, select any product or parameter, establish account suitability, calculate a return or authorize an external action."
+}

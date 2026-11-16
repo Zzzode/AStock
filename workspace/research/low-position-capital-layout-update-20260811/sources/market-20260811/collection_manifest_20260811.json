@@ -1,0 +1,266 @@
+{
+  "schema_version": "astock.market_collection_manifest.v1",
+  "collection_date": "2026-08-11",
+  "created_at": "2026-08-11T09:22:52+08:00",
+  "collector": "sources/market-20260811/collect_market_data_20260811.py",
+  "raw_source_count": 28,
+  "source_records": [
+    {
+      "path": "sources/market-20260811/tencent_quote_preopen_20260811_raw.txt",
+      "bytes": 5643,
+      "sha256": "aeae244f0d4d79704f7fcd8c999950ba82e218dc3e960aaf2d6b90800d12afd0",
+      "source": "Tencent batch quote",
+      "url": "https://qt.gtimg.cn/q=sz000703,sz002379,sz300014,sz002497,sz002432,sz000623,sh600739,sz000685,sh600150,sz301308,sz002812,sz002240,sz300390",
+      "retrieved_at": "2026-08-11T09:22:48+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/sina_quote_preopen_20260811_raw.txt",
+      "bytes": 2627,
+      "sha256": "5608d7e49dd313653a5ec34cac203eeb128a8e88c6cb061f328704ac1a7fdab1",
+      "source": "Sina batch quote",
+      "url": "https://hq.sinajs.cn/list=sz000703,sz002379,sz300014,sz002497,sz002432,sz000623,sh600739,sz000685,sh600150,sz301308,sz002812,sz002240,sz300390",
+      "retrieved_at": "2026-08-11T09:22:48+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_000703_20250811_20260811.json",
+      "bytes": 16823,
+      "sha256": "1d0238c1ce701784d793657a280628b606c3d03f092a03026766580c2d935f17",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz000703,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:48+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_000703_20250811_20260811.json",
+      "bytes": 22068,
+      "sha256": "484816e4c79266d1166330e4c9fd423cc0d4ba7e0a669c70475bafc8832d9626",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_000703&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:48+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_002379_20250811_20260811.json",
+      "bytes": 17182,
+      "sha256": "894229343c1dba8017e3a7c0e1eb185aa01bcc005392e611a1ddae96d4215f9a",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz002379,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:49+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_002379_20250811_20260811.json",
+      "bytes": 22442,
+      "sha256": "2622cadcd353c05d53b420f1ae49667b825234cbfea8ea7bbd6fcb4344732714",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_002379&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:49+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_300014_20250811_20260811.json",
+      "bytes": 17327,
+      "sha256": "7566ed6f2e1c857b3aca23d2fd055fde72b57d0924714d125c8b1cdc6d495629",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300014,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:49+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_300014_20250811_20260811.json",
+      "bytes": 24378,
+      "sha256": "aeabc545f1f9aec51af9a5dd1aea071ee1a81b1f9bd9ddb4fbb62953a854958d",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_300014&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:49+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_002497_20250811_20260811.json",
+      "bytes": 17196,
+      "sha256": "51cb7e100a3be6f0d67d33826f56134db4ec942f1c6143d572cd9a5f884ae551",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz002497,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:49+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_002497_20250811_20260811.json",
+      "bytes": 22550,
+      "sha256": "e1beb794080365b2509f0e585997ab88e80e82887e8a59aef3b61c60ac0e7f9e",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_002497&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:49+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_002432_20250811_20260811.json",
+      "bytes": 17089,
+      "sha256": "ead6a70c0097eddd97c8520a70ace506ab3d00f7c2b375bd9a91ec9105d6c4f0",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz002432,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:49+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_002432_20250811_20260811.json",
+      "bytes": 22441,
+      "sha256": "ff4989a6d2c024207a66ea4cfa3c39f66f5fc6f05a8bb65474540a89c81a3ac4",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_002432&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:50+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_000623_20250811_20260811.json",
+      "bytes": 17212,
+      "sha256": "9bcb5bc824a91034c511fc328dbba0960506bff01f65e7dffae4675af5f6bc75",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz000623,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:50+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_000623_20250811_20260811.json",
+      "bytes": 22317,
+      "sha256": "52dfe0cc64d01cb263e69b0f1a291fe42fac1adec77009aee73a5338a168b4da",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_000623&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:50+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_600739_20250811_20260811.json",
+      "bytes": 17032,
+      "sha256": "47c9545c262ee05ed3df5c525006310710b1b11baa7df0a52dff7a473d4917b5",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600739,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:50+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_600739_20250811_20260811.json",
+      "bytes": 22301,
+      "sha256": "587dd2a564b5c25bc8e5fedbd5b350ec3c02912c184eb4a8e19791e6fac46e65",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_600739&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:50+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_000685_20250811_20260811.json",
+      "bytes": 17045,
+      "sha256": "6554b7e1a5560da74a5cff33ff40cbed42c4b9f2c6b5302458501bdbbdf68362",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz000685,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:50+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_000685_20250811_20260811.json",
+      "bytes": 22330,
+      "sha256": "9a8a5ff59862c980b316953031df692326b1ae4ef18038baedd8990d3260c63b",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_000685&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:50+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_600150_20250811_20260811.json",
+      "bytes": 17020,
+      "sha256": "d17305c6c1a575460c756ad97a6f4299fbfe782eac1bb7ef3e62e6a5c2fb4d6d",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh600150,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:51+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_600150_20250811_20260811.json",
+      "bytes": 22385,
+      "sha256": "62abc72649a5c5e04efacfd42c17c09454b2157a164406cc6c3d32ebada4b922",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_600150&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:51+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_301308_20250811_20260811.json",
+      "bytes": 18055,
+      "sha256": "2ba8715cb8c51959f2f5d46083876a29703beabea1cfd38e897d9865fd92cb8d",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz301308,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:51+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_301308_20250811_20260811.json",
+      "bytes": 25282,
+      "sha256": "b2d48cf4b04a0da75bfdce2ce126d4eb8e881bc2c3ef60efbcb405062d058d91",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_301308&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:51+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_002812_20250811_20260811.json",
+      "bytes": 16438,
+      "sha256": "1eda5da0d123657a05dbbb7d5ffc2b0db17494e9d06e538f1b5a9f71db5c8c48",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz002812,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:51+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_002812_20250811_20260811.json",
+      "bytes": 21666,
+      "sha256": "42c99a50054ee06b916f42bbebdaffe95c6ece46e0974338212277d8e62b2ef9",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_002812&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:51+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_002240_20250811_20260811.json",
+      "bytes": 17107,
+      "sha256": "b3e0c7b017e3038c2b5a0d5b0881872a572940fce6ab0e25192f8f7e0b65c267",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz002240,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:51+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_002240_20250811_20260811.json",
+      "bytes": 22656,
+      "sha256": "6f7fd5388de3eb6c5bfb97cb7e5deb4fa2245478487c01c536b1619fe39a883f",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_002240&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:52+08:00",
+      "encoding": "gbk"
+    },
+    {
+      "path": "sources/market-20260811/tencent_qfq_300390_20250811_20260811.json",
+      "bytes": 17131,
+      "sha256": "948ad75909c6fd9f404cb744889cf099c6040b711efb3ab31286dba07bcc4ef6",
+      "source": "Tencent adjusted daily K-line",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz300390,day,2025-08-11,2026-08-11,400,qfq",
+      "retrieved_at": "2026-08-11T09:22:52+08:00",
+      "encoding": "utf-8"
+    },
+    {
+      "path": "sources/market-20260811/sohu_daily_300390_20250811_20260811.json",
+      "bytes": 24380,
+      "sha256": "3a5e95d8ef9229d1f74b15c039e3a63e034823f6d305444bad6049d808d3ff7f",
+      "source": "Sohu daily OHLCV / trading value history",
+      "url": "https://q.stock.sohu.com/hisHq?code=cn_300390&start=20250811&end=20260811&stat=1&order=D&period=d",
+      "retrieved_at": "2026-08-11T09:22:52+08:00",
+      "encoding": "gbk"
+    }
+  ],
+  "errors": [],
+  "normalized_outputs": [
+    "data/raw_market_data_20260811.json",
+    "data/raw_market_data_20260811.md"
+  ]
+}

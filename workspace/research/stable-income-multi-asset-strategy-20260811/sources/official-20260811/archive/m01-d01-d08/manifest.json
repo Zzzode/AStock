@@ -1,0 +1,110 @@
+{
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "retrieval_batch": "2026-08-11T19:11:14+08:00",
+  "purpose": "Attempted immutable archival of the dated third-party quote payload and issuer-distribution originals used only by the historical direct-stock observation table.",
+  "records": [
+    {
+      "source_id": "M01",
+      "url": "https://qt.gtimg.cn/q=sh601398,sh601939,sh601288,sh601988,sh601088,sh600028,sh600900,sh600941,sh510880,sh512890,sh511010,sh518880,sh511880",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "failed",
+      "http_status": null,
+      "content_type": null,
+      "local_path": "data/raw_quote_snapshot_20260811.json",
+      "sha256": null,
+      "failure_reason": "The original GB18030 response bytes with recorded SHA-256 9e2dbfb25255657e6bc8ac754098c63f6f27a505dd898b7a48a8645da9477b08 were not retained. The endpoint is real-time, so a later request cannot honestly recreate the original dated payload."
+    },
+    {
+      "source_id": "D01",
+      "url": "https://v.icbc.com.cn/userfiles/resources/icbcltd/download/2026/2026032704.pdf",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "success",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "local_path": "sources/official-20260811/archive/m01-d01-d08/D01.source",
+      "headers_path": "sources/official-20260811/archive/m01-d01-d08/D01.headers",
+      "sha256": "75fcd5915ad2175693859cbc0ffddf8125c2da778517e356e70763cea99b31d5"
+    },
+    {
+      "source_id": "D02",
+      "url": "https://www2.ccb.com/chn/attachDir/2026/03/2026032721294561705.pdf",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "success",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "local_path": "sources/official-20260811/archive/m01-d01-d08/D02_ssl.raw",
+      "sha256": "18f6993fd29b7e9e5dfdec9e223e037fb53e338127c5fd43ae1d5da347315c7b",
+      "format_note": "Full immutable HTTP response capture. Its headers declare application/pdf and the body begins with %PDF-1.7; curl could not negotiate the server's legacy TLS renegotiation."
+    },
+    {
+      "source_id": "D03",
+      "url": "https://www.abchina.com/cn/aboutabc/investor_relations/announcements/a-announcement/202603/P020260330742228371781.pdf",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "success",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "local_path": "sources/official-20260811/archive/m01-d01-d08/D03.source",
+      "headers_path": "sources/official-20260811/archive/m01-d01-d08/D03.headers",
+      "sha256": "a838db06e633983fc500a16cd548bec2a9bd572a66254cf22653f42bd0971c3f"
+    },
+    {
+      "source_id": "D04",
+      "url": "https://pic.bankofchina.com/bocappd/report/202603/P020260330667290066226.pdf",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "success",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "local_path": "sources/official-20260811/archive/m01-d01-d08/D04.source",
+      "headers_path": "sources/official-20260811/archive/m01-d01-d08/D04.headers",
+      "sha256": "18ffda8eaad12737438d1c3a246e457f8b11417e2f67dd404ae17809d9eb872c"
+    },
+    {
+      "source_id": "D05",
+      "url": "https://www.sinopec.com/listco/en/000/000/041/41877.shtml",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "failed",
+      "http_status": null,
+      "content_type": null,
+      "local_path": null,
+      "sha256": null,
+      "failure_reason": "The official host did not accept a TLS connection after retries with a browser user agent and referer. No content bytes were archived."
+    },
+    {
+      "source_id": "D06",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/05/2026051815072554604.pdf",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "success",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "local_path": "sources/official-20260811/archive/m01-d01-d08/D06.source",
+      "headers_path": "sources/official-20260811/archive/m01-d01-d08/D06.headers",
+      "sha256": "0be099c0e2c215918d3bcbf8130d8ba24d4a6a52163e27be5c781c33ad5c8db9"
+    },
+    {
+      "source_id": "D07",
+      "url": "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-25/600941_20260625_TL7M.pdf",
+      "related_url": "https://static.cninfo.com.cn/finalpage/2025-08-26/1224565033.PDF",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "partial",
+      "http_status": 200,
+      "content_type": "application/pdf (interim only)",
+      "local_path": "sources/official-20260811/archive/m01-d01-d08/D07_interim.source",
+      "headers_path": "sources/official-20260811/archive/m01-d01-d08/D07_interim.headers",
+      "sha256": "39e7bc34da5655997eca96a0b0458a62b81bffd89866c2af5513b9ac11ce3bd1",
+      "failure_reason": "The SSE final-distribution URL returned an HTTP 200 bot-denial HTML response (Tengine x-tengine-error: denied by bot), not the PDF. The captured denial payload and headers are retained as D07_final.source/D07_final.headers."
+    },
+    {
+      "source_id": "D08",
+      "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033004106_c.pdf",
+      "retrieved_at": "2026-08-11T19:11:14+08:00",
+      "archive_status": "success",
+      "http_status": 200,
+      "content_type": "application/pdf",
+      "local_path": "sources/official-20260811/archive/m01-d01-d08/D08.source",
+      "headers_path": "sources/official-20260811/archive/m01-d01-d08/D08.headers",
+      "sha256": "2d2a471b399109547874962af298e290e784241296721c2bc2c0715bd0e76e14"
+    }
+  ],
+  "batch_status": "partial",
+  "release_boundary": "This batch improves traceability for six issuer records but cannot make the case's source archive complete because M01, D05 and the D07 final document remain unavailable as valid original bytes."
+}

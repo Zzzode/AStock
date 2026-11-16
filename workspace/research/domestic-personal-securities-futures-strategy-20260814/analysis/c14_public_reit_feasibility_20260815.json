@@ -1,0 +1,168 @@
+{
+  "artifact_class": "research_feasibility_conclusion",
+  "as_of": "20260815",
+  "backtest_definition": "已运行固定品种、固定端点、成本为零且现金不再投资的有限历史诊断；它不是个人净后成本回测，也不是策略或行动资格。",
+  "backtest_run": true,
+  "blocking_requirements": [
+    {
+      "blocker": "validated investor total-return ledger",
+      "id": "C14-B1",
+      "impact": "不能把本次公开日价与分配行诊断升级为个人净总回报。",
+      "missing": "逐日明确复权口径的二级市场价格或净值、公司行为、除权、现金到账与再投资／现金持有的可审计账本。",
+      "reader_label_cn": "可验证的个人总回报账本"
+    },
+    {
+      "blocker": "dated personal after-cost ledger",
+      "id": "C14-B2",
+      "impact": "严格门槛要求净后成本，零成本诊断不能代替。",
+      "missing": "每个相关时期的个人经纪佣金、交易所及登记结算费用、适用税负、转托管、现金划转、账户维护、点差和未成交处理。",
+      "reader_label_cn": "日期明确的个人净成本账本"
+    },
+    {
+      "blocker": "personal account and broker-route confirmation",
+      "id": "C14-B3",
+      "impact": "公开规则只描述市场机制，不能认定个人能够操作。",
+      "missing": "具体个人账户、风险揭示、券商会员路径、权限、适当性、转托管和结算的日期明确证明。",
+      "reader_label_cn": "个人账户与券商路径确认"
+    },
+    {
+      "blocker": "execution and liquidity ledger",
+      "id": "C14-B4",
+      "impact": "官方收盘价和成交量不能转化为个人实际可成交价格。",
+      "missing": "逐笔可验证的买卖报价、深度、成交、部分成交、拒单、停牌和结算状态。",
+      "reader_label_cn": "执行与流动性账本"
+    },
+    {
+      "blocker": "dated fee and rule-version continuity",
+      "id": "C14-B5",
+      "impact": "不能以一份更新产品资料概要或单年年报反推五年净成本。",
+      "missing": "基金费率／费用公式、交易规则、税费和券商条款在所有检验日的有效版本。",
+      "reader_label_cn": "费用和规则版本连续性"
+    },
+    {
+      "blocker": "universe-level admissibility",
+      "id": "C14-B6",
+      "impact": "单一代表品种不能推出整个公募 REITs 市场存在或不存在符合严格标准的路线。",
+      "missing": "覆盖公募 REITs 全部候选、上市时间、存续／扩募、历史价格与分配数据及统一成本规则的时点正确总体。",
+      "reader_label_cn": "全市场总体准入性"
+    },
+    {
+      "blocker": "gross diagnostic failure witness",
+      "id": "C14-B7",
+      "impact": "它只能作为额外否决信号；严格净后成本结果仍因其他阻断项而未建立，代表路线不准入。",
+      "missing": "这不是净回报证明：固定 508000 路线在本次公开价格加现金分配、成本为零的诊断中，多个完整年度和全部可得滚动五年窗口低于 5%。",
+      "reader_label_cn": "宽松诊断下的失败见证"
+    }
+  ],
+  "formal_decision_eligible": false,
+  "nav_endpoint_observation": {
+    "captured_endpoint_result_rows": 0,
+    "interpretation": "该上交所公开查询在本次抓取时返回空记录。它只构成端点观察，不能证明其他位置不存在历史净值，也不能替代逐日净值账本。"
+  },
+  "next_research_gate": [
+    "仅在取得有权使用、时点正确且复权口径明确的公募 REITs 价格／净值／分配／公司行动总体后，才能建立统一的单品种或全市场回放总体。",
+    "在查看任何结果前，冻结现金分配处理、再投资或现金持有、交易时点、停牌、费用、税费、点差、部分成交、转托管和异常状态规则。",
+    "取得日期明确且不含个人敏感信息的券商费率、账户路径和结算说明；缺任一字段继续保持 q=0。",
+    "由独立复核方逐年和逐个滚动五年窗口重算净后成本结果；任一窗口低于 5% 或数据不可验证即不准入。"
+  ],
+  "no_action_statement": "本工件不授权开户、风险测评、转托管、购买、出售、委托、联系券商、现金划转或任何外部行动。",
+  "orders_or_positions": "none",
+  "portfolio_q": 0,
+  "representative_product_diligence": {
+    "account_and_trading_boundary": "公开文件表明这是一条可能存在的场内基金交易路径，但产品为封闭式；场外认购份额需转托管至场内证券经营机构才能场内交易。具体个人证券账户、风险揭示、券商产品权限、费率、转托管时效、订单可成交性和结算状态均未由本研究验证，不能据公开规则认定个人可操作。",
+    "distribution_and_cash_flow": {
+      "cash_flow_readthrough": "现金流主要来自园区租赁及相关收入。2025 年整体期末出租率为 87.38%，张江光大园为 80.50%，对应 2024 年分别为 91.90% 和 91.37%；租金、出租率、续租和费用都会影响可供分配金额与估值。",
+      "legal_distribution_mechanism": "在符合条件前提下，年度可供分配金额的 90% 以上以现金形式分配，原则上每年不少于一次；这是分配约束，不是回报下限。",
+      "reported_2024_income_cny": 162730347.5,
+      "reported_2024_operating_cash_flow_cny": 103567336.23,
+      "reported_2025_actual_distribution_per_share_cny": 0.125,
+      "reported_2025_cash_flow_distribution_rate_pct": 4.65,
+      "reported_2025_distributable_amount_cny": 112685654.5,
+      "reported_2025_distributable_amount_per_share_cny": 0.1173,
+      "reported_2025_income_cny": 142324217.65,
+      "reported_2025_operating_cash_flow_cny": 105192467.08,
+      "separation_rule": "4.65% 的年化现金流分派率和 0.1250 元的单位实际分配均不是二级市场总回报，也不能与收盘价、净值或个人净后成本互相替代。"
+    },
+    "fees": {
+      "dated_2024_product_summary": "2024-06-28 产品资料概要列示首发项目固定管理费公式含 E×P1×0.55%/年，扩募项目含 E×P2×0.15%/年，另有项目现金流挂钩的浮动管理费；托管费为最近一期经审计基金净资产的 0.01%/年，审计和信息披露费用以年金额列示，证券交易、账户和税负按实际发生额承担。",
+      "dated_2025_annual_report": "2025 年报披露的本期计提口径含基金管理人项目权重 0.10% 与 0.12%、两家专项计划管理人 0.05% 与 0.03%、托管费 0.01%，以及运营管理机构固定费和浮动费；本期计提管理费、专项计划管理费、托管费和运营管理费均有实际金额披露。",
+      "fee_boundary": "不同日期披露的费率／公式并非可机械拼成一条个人总成本曲线；基金层费用也不包括个人经纪佣金、税费、点差、转托管和成交失败成本。"
+    },
+    "product": {
+      "code": "508000",
+      "name": "华安张江产业园封闭式基础设施证券投资基金",
+      "route": "上交所上市的封闭式基础设施 REITs 场内份额；不开放常规申购、赎回。",
+      "structure": "基金主要投资基础设施资产支持证券并持有其全部份额，经专项计划和项目公司取得不动产项目权益。2025 年报披露项目为张江光大园和张润大厦；份额持有人持有基金份额而非直接持有项目物业。"
+    },
+    "risks": [
+      "二级市场价格波动、流动性不足、做市与可交易份额不足风险",
+      "封闭式运作、不开放常规申购赎回、可能终止上市或停牌的风险",
+      "张江区域租赁需求、租金、出租率、租户续约与集中度风险",
+      "物业改造、资本开支、运营管理、关联交易和扩募／新购项目风险",
+      "评估值、现金流预测、税收政策及项目处置风险",
+      "个人账户适当性、风险揭示、券商费用、报价深度、部分成交和结算路径风险"
+    ]
+  },
+  "research_only": true,
+  "return_result": null,
+  "return_result_reason": "个人净后成本回报不可测：冻结来源没有个人账户费税、经纪佣金、报价、成交、转托管、现金到账或数据复权口径的完整历史账本。",
+  "schema_version": "c14_public_reit_feasibility.v1",
+  "source_manifest": {
+    "capture_batch": "c14-public-infrastructure-reit-508000-20260815",
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/manifest.json",
+    "sha256": "9a92989970e231562dd570b4f68685ed689362ce119cf8d219438e82b9ba19ea"
+  },
+  "status": "NOT_FEASIBLE_FOR_STRICT_5PCT_OR_PERSONAL_EXECUTION",
+  "strict_5pct_test": {
+    "gross_cost_free_diagnostic": {
+      "annual_failure_count": 3,
+      "annual_failures": [
+        {
+          "gross_cost_free_cash_return": -0.30670434112509637,
+          "year": 2023
+        },
+        {
+          "gross_cost_free_cash_return": 0.031084706784208604,
+          "year": 2024
+        },
+        {
+          "gross_cost_free_cash_return": 0.03843075715967048,
+          "year": 2025
+        }
+      ],
+      "boundary": "此诊断不把现金分配、现金流分派率或净值当作总回报，也不把成本为零的结果当作个人净回报。上交所日价端点未披露复权口径，故这些失败是进一步否决信号，而不是已验证个人净后成本绩效。",
+      "first_available_rolling_five_year_row": {
+        "cash_distribution_per_share_cny": 0.55092,
+        "cash_event_count": 9,
+        "end_close_cny": 2.206,
+        "end_observation_date": "2026-06-18",
+        "gross_cost_free_cash_annualized_return": -0.027291635007043347,
+        "gross_cost_free_cash_annualized_return_pct": -2.7291635007043347,
+        "gross_cost_free_cash_value_factor": 0.8707896399241946,
+        "meets_5pct_gross_diagnostic": false,
+        "nominal_five_year_end_date": "2026-06-21",
+        "start_close_cny": 3.166,
+        "start_observation_date": "2021-06-21"
+      },
+      "rolling_five_year_failure_count": 40,
+      "rolling_five_year_window_count": 40,
+      "status": "FAILS_IN_MULTIPLE_COMPLETE_YEARS_AND_ALL_AVAILABLE_FIVE_YEAR_WINDOWS",
+      "worst_rolling_five_year_gross_row": {
+        "cash_distribution_per_share_cny": 0.55092,
+        "cash_event_count": 9,
+        "end_close_cny": 1.718,
+        "end_observation_date": "2026-08-11",
+        "gross_cost_free_cash_annualized_return": -0.05439308904833451,
+        "gross_cost_free_cash_annualized_return_pct": -5.439308904833451,
+        "gross_cost_free_cash_value_factor": 0.7560546484505165,
+        "meets_5pct_gross_diagnostic": false,
+        "nominal_five_year_end_date": "2026-08-11",
+        "start_close_cny": 3.001,
+        "start_observation_date": "2021-08-11"
+      }
+    },
+    "hurdle": 0.05,
+    "net_after_cost_decision": "没有任何净后成本年度或滚动五年结果可通过严格门槛；因此 q=0。",
+    "net_after_cost_status": "NOT_ESTABLISHED_AND_NOT_ADMITTED"
+  }
+}

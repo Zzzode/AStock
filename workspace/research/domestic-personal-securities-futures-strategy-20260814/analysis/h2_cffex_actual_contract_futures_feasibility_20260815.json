@@ -1,0 +1,290 @@
+{
+  "schema_version": "h2_cffex_actual_contract_futures_feasibility.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-15",
+  "artifact_class": "evidence_memo",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "research_family": {
+    "id": "H2",
+    "name": "actual-contract domestic financial-futures feasibility",
+    "materially_distinct_from": [
+      "R5 public accumulated-NAV ETF proxy",
+      "R1 commodity-futures source samples"
+    ],
+    "reference_product_only": {
+      "exchange": "CFFEX",
+      "family": "10-year Treasury futures",
+      "code": "T",
+      "status": "documentation_reference_only_not_selected_not_admitted"
+    },
+    "objective_boundary": "A 5% annualized outcome is a research hurdle, not a guaranteed, predicted, or currently tested return."
+  },
+  "decision": {
+    "status": "NOT_FEASIBLE_FOR_PREDECLARED_TEST_OR_PERSONAL_ACTION",
+    "action": "none",
+    "allocation": "none",
+    "contract_selection": "none",
+    "direction": "none",
+    "risk_budget": "none",
+    "performance_result": "none"
+  },
+  "data_provenance": {
+    "source": "CFFEX and CSRC primary official material, plus a documented local transport probe",
+    "timestamp": "2026-08-15T01:15:37+08:00",
+    "quality_tier": "primary_official_rules_plus_unverified_public_route_discovery",
+    "fallback_path": "No fallback market-data source is permitted. A future test requires separately authorized, hash-frozen actual-contract data.",
+    "warnings": [
+      "Direct access to the live www.cffex.com.cn site timed out from this environment; this is a local transport observation only.",
+      "The CFFEX product, historical-data, fee, calendar, risk-control and delivery pages discovered through the official index were not retained as complete raw pages in this H2 batch.",
+      "No user account, broker, suitability, delivery-account or execution information was observed."
+    ],
+    "errors": [
+      "No complete point-in-time actual-contract market-data archive is available in the case.",
+      "No historical effective margin, limit, broker-fee, broker-margin, bid/ask, capacity or fill archive is available in the case."
+    ]
+  },
+  "source_records": [
+    {
+      "id": "H2-O01",
+      "quality": "primary_official_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "中国金融期货交易所10年期国债期货合约交易细则",
+      "document_date": "2020-06-12",
+      "effective_from": "2020-07-20",
+      "url": "https://e-cffex.com.cn/u/cms/www/202007/08152235b2ys.pdf",
+      "canonical_url": "https://www.e-cffex.com.cn/u/cms/www/202007/08152235b2ys.pdf",
+      "path": "sources/official-h2-cffex-treasury-futures-20260815/ecffex_t_contract_rules_20200612.pdf",
+      "sha256": "1221bd17962406d2cd659bf2c9b1d8e66a8af88b96f6e9578ca89bfc1fbeee5f",
+      "supports": [
+        "T contract multiplier/quote/tick mechanics",
+        "three-nearest-quarterly-month structure and last-trading-day rule",
+        "daily settlement P&L basis",
+        "physical delivery, dated base margin, price-limit and position-limit terms"
+      ],
+      "does_not_support": [
+        "a selected or liquid contract on any session",
+        "a complete historical lifecycle or status history",
+        "historical dynamic margin/limit changes",
+        "personal broker cost or execution"
+      ]
+    },
+    {
+      "id": "H2-O02",
+      "quality": "primary_official_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "中国金融期货交易所交易者适当性制度管理办法",
+      "document_date": "2019-12-14",
+      "url": "https://e-cffex.com.cn/u/cms/www/202001/17095435qklr.pdf",
+      "canonical_url": "https://www.e-cffex.com.cn/u/cms/www/202001/17095435qklr.pdf",
+      "path": "sources/official-h2-cffex-treasury-futures-20260815/ecffex_trader_suitability_management_20191214.pdf",
+      "sha256": "63b893ed254308542d8498791b65fe8e400398609ac61573f13b3c544209a4ae",
+      "supports": [
+        "exchange-level personal trading-code suitability gate categories",
+        "the need for knowledge, experience, available-funds and record checks"
+      ],
+      "does_not_support": [
+        "any named person's eligibility",
+        "broker-specific current onboarding result",
+        "risk-grade match or execution approval"
+      ]
+    },
+    {
+      "id": "H2-O03",
+      "quality": "primary_official_archived",
+      "publisher": "China Securities Regulatory Commission",
+      "title": "证券期货投资者适当性管理办法",
+      "document_date": "2016-12-12",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653849/content.shtml",
+      "path": "sources/official-h2-cffex-treasury-futures-20260815/csrc_investor_suitability_20161212.html",
+      "sha256": "6c7fd3017f0c7e0f6f3baa4e6a887d66d0e723f666207c7c96c613a45337a79d",
+      "supports": [
+        "investor information collection, classification and risk matching",
+        "heightened obligations for ordinary investors receiving high-risk products/services"
+      ],
+      "does_not_support": [
+        "CFFEX trading-code entitlement",
+        "an individual account result"
+      ]
+    },
+    {
+      "id": "H2-W01",
+      "quality": "primary_official_web_discovery_not_raw_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "10年期国债期货 product page",
+      "url": "https://www.cffex.com.cn/10tf/",
+      "supports": [
+        "current product-specification discovery cross-check"
+      ],
+      "does_not_support": [
+        "a frozen historical contract master or action"
+      ],
+      "archive_status": "Direct request timed out from this environment."
+    },
+    {
+      "id": "H2-W02",
+      "quality": "primary_official_web_discovery_not_raw_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "日统计",
+      "url": "https://www.cffex.com.cn/fzjy/mrhq/",
+      "supports": [
+        "public page advertises actual-contract OHLC, prior settlement, settlement, volume and open interest fields"
+      ],
+      "does_not_support": [
+        "a retained dated response, query contract, full historical coverage or point-in-time availability"
+      ]
+    },
+    {
+      "id": "H2-W03",
+      "quality": "primary_official_web_discovery_not_raw_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "历史数据服务",
+      "url": "https://www.cffex.com.cn/lssjfw/",
+      "supports": [
+        "existence of a historical-data product/application route"
+      ],
+      "does_not_support": [
+        "public-observation entitlement, raw data delivery or usage right"
+      ]
+    },
+    {
+      "id": "H2-W04",
+      "quality": "primary_official_web_discovery_not_raw_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "风险控制管理办法",
+      "url": "https://www.cffex.com.cn/cn/ssxz/20230414/43079.html",
+      "supports": [
+        "risk controls can alter margin, limit and other parameters"
+      ],
+      "does_not_support": [
+        "a complete historical parameter archive"
+      ]
+    },
+    {
+      "id": "H2-W05",
+      "quality": "primary_official_web_discovery_not_raw_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "中国金融期货交易所收费一览表",
+      "url": "https://www.cffex.com.cn/cn/zjssf/20240701/39212.html",
+      "supports": [
+        "exchange fees are published to settlement members"
+      ],
+      "does_not_support": [
+        "personal broker commission, historic fee intervals or total execution cost"
+      ]
+    },
+    {
+      "id": "H2-W06",
+      "quality": "primary_official_web_discovery_not_raw_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "关于2026年部分节假日休市安排的通知",
+      "url": "https://www.cffex.com.cn/jystz/20251217/46425.html",
+      "supports": [
+        "a current annual closure-calendar route"
+      ],
+      "does_not_support": [
+        "a complete historical trading calendar"
+      ]
+    },
+    {
+      "id": "H2-W07",
+      "quality": "primary_official_web_discovery_not_raw_archived",
+      "publisher": "China Financial Futures Exchange",
+      "title": "关于提示国债期货交割相关事项的通知",
+      "url": "https://www.cffex.com.cn/jystz/20241115/41436.html",
+      "supports": [
+        "delivery-account status can lead to forced close around delivery"
+      ],
+      "does_not_support": [
+        "a historical per-contract delivery eligibility archive"
+      ]
+    }
+  ],
+  "requirements": {
+    "actual_contract_return_ledger": {
+      "status": "FAIL",
+      "required": [
+        "every-session actual-contract settlement data",
+        "point-in-time contract master/lifecycle/status",
+        "explicit close/open roll events",
+        "daily variation-margin and collateral ledger",
+        "delivery/force-close event treatment"
+      ],
+      "available": []
+    },
+    "continuous_series_policy": {
+      "status": "NOT_PERMITTED_AS_PORTFOLIO_RETURN",
+      "rule": "A continuous or back-adjusted series may be diagnostic only. It cannot replace actual-contract close/open, settlement, margin, limit, delivery or no-fill accounting."
+    },
+    "risk_parameter_history": {
+      "status": "FAIL",
+      "missing": [
+        "effective-session exchange margin changes",
+        "price-limit and position-limit changes",
+        "holiday and exceptional risk measures",
+        "broker margin add-ons"
+      ]
+    },
+    "cost_and_execution": {
+      "status": "FAIL",
+      "missing": [
+        "historical broker commissions and exchange-fee pass-through",
+        "bid/ask and depth",
+        "limit-lock, capacity, rejected-order and fill records",
+        "frozen conservative no-fill/slippage policy"
+      ]
+    },
+    "personal_action_feasibility": {
+      "status": "UNKNOWN",
+      "known_gate_categories": [
+        "exchange trading-code suitability",
+        "broker account and risk-grade match",
+        "knowledge and experience conditions",
+        "available-funds and record checks",
+        "delivery-account and routing conditions where applicable"
+      ],
+      "observed_user_evidence": "none"
+    },
+    "predeclared_rulebook": {
+      "status": "NOT_STARTED_BY_DESIGN",
+      "missing": [
+        "universe and eligibility rule",
+        "signal and decision timestamp",
+        "contract selection and roll rule",
+        "delivery buffer",
+        "long/short permission and leverage ceiling",
+        "collateral and unitization policy",
+        "cost/no-fill policy",
+        "risk/invalidation rules"
+      ]
+    }
+  },
+  "blocking_conditions": [
+    "No hash-bound full actual-contract historical data archive.",
+    "No point-in-time master calendar, lifecycle, delivery or status archive.",
+    "No historical effective risk parameter, broker margin or broker fee archive.",
+    "No executable-fill/slippage evidence or frozen conservative proxy.",
+    "No personal account feasibility evidence.",
+    "No predeclared rulebook or independently audited result population."
+  ],
+  "next_permitted_gate": {
+    "status": "AUTHORISED_EVIDENCE_ACQUISITION_ONLY",
+    "must_precede_any_result": [
+      "licensed/authorized market-data acquisition and retention-right documentation",
+      "hash-frozen data delivery manifest",
+      "point-in-time rules/calendar/lifecycle/risk-parameter archive",
+      "broker-route cost/margin confirmation",
+      "separate account-specific confirmation by a licensed broker",
+      "signed rulebook before opening any historical result",
+      "independent population and endpoint audit"
+    ],
+    "prohibited": [
+      "contract ranking",
+      "parameter optimization",
+      "continuous-series performance substitution",
+      "allocation or action recommendation"
+    ]
+  },
+  "conclusion": "H2 supplies a credible official-rules and authorized-data discovery route, but not a public, point-in-time, cost-aware, actual-contract or personally executable strategy route. It remains q=0 and cannot be used to meet the requested objective."
+}

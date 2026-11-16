@@ -1,0 +1,50 @@
+{
+  "case_id": "low-position-capital-layout-update-20260811",
+  "report_type": "valuation update / market and financial refresh",
+  "data_cutoff": "2026-08-11 09:21–09:22 CST pre-open snapshot; 2026-08-10 close for completed-session market measures; FY2025, 2026Q1, and 2026H1 disclosures available by 2026-08-11",
+  "scope_definition": "cross-sector low-position earnings-recovery update",
+  "required_skills": [
+    "equity-research",
+    "reports",
+    "valuation",
+    "research-report-review",
+    "agent-resilience"
+  ],
+  "required_artifacts": [
+    "research_brief.md",
+    "data/raw_market_data_20260811.json",
+    "data/raw_financials_20260811.json",
+    "data/broker_street_consensus_20260811.json",
+    "data/source_registry_20260811.json",
+    "data/claim_audit_20260811.json",
+    "data/verified_market_data_20260811.json",
+    "data/verified_financials_20260811.json",
+    "analysis/house_view.md",
+    "analysis/variant_perception.md",
+    "analysis/valuation_model.md",
+    "analysis/valuation_audit.md",
+    "analysis/risk_framework.md",
+    "main.tex",
+    "main.pdf",
+    "review_findings_R0_evidence.json",
+    "review_findings_R1_model.json",
+    "review_findings_R2_draft.json",
+    "review_findings_R3_render_compliance.json",
+    "review_findings_R4_final_ic.json",
+    "final_signoff.json",
+    "research_workflow_eval.json"
+  ],
+  "review_cycles": ["R0_evidence", "R1_model", "R2_draft", "R3_render_compliance", "R4_final_ic"],
+  "verifiers": ["tools/verify_research_workspace.py", "workspace/research/tools/run_research_gates.py", "MacTeX XeLaTeX"],
+  "depth_gates": ["evidence_depth", "broker_consensus_depth", "model_depth", "valuation_depth", "ic_readiness"],
+  "pass_conditions": [
+    "All 13 covered tickers have a timestamped market-data row or an explicit unavailable label.",
+    "All financial observations are linked to official evidence or explicitly labelled unavailable.",
+    "Broker evidence preserves source quality and weak evidence has zero valuation weight.",
+    "Every primary candidate has a reproducible current-price valuation-eligibility decision or an explicit event-validation/watchlist-only boundary.",
+    "No historic model upside is presented as a current target without refreshed evidence.",
+    "All review cycles have zero open S-Level and unwaived A-Level issues.",
+    "The case verifier reports 39 PASS / 0 FAIL and the repository research gate passes."
+  ],
+  "downgrade_path": ["core review -> event-driven validation", "event-driven validation -> watchlist only", "high-upside historical model -> watchlist only unless refreshed gates pass"]
+}

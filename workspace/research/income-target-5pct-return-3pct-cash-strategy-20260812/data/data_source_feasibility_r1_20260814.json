@@ -1,0 +1,198 @@
+{
+  "schema_version": "cross_asset_pit_data_source_feasibility.v1",
+  "as_of": "2026-08-14",
+  "status": "not_authorized_or_accepted",
+  "portfolio_q": 0,
+  "formal_scope": {
+    "included_instrument_classes": ["A-shares", "listed ETFs", "public REITs", "direct sovereign/interbank bonds"],
+    "scope_rule": "This field-acceptance framework admits formal-replay data only for the listed instrument classes. Other instruments, proxies and substitutions are out of scope unless the formal scope is separately amended and re-gated."
+  },
+  "objective": "A unitized, scale-neutral, ex-post replay of predeclared rolling five-year cohorts in the formal scope using net time-weighted total return. No allocation, product selection, cash-income objective, automatic reinvestment assumption, or execution authorization is created.",
+  "entitlement_boundary": "No subscription, licence, API right, authorized vendor relationship, or right to archive/derive/redistribute data is asserted by this research. Each must be evidenced before ingesting data for a formal replay.",
+  "official_documentation_evidence": [
+    {
+      "source": "Shanghai Stock Exchange public-data catalogue",
+      "path": "sources/probe-data-source-continuation-20260814/sse_public_data_catalogue.html",
+      "coverage_documented": ["market calendar", "suspension/resumption", "stock dividends/bonus issues", "fund transaction/size data", "ETF creation-redemption lists", "public-REIT NAV and market information", "bond basic information and market statistics"],
+      "formal_replay_boundary": "A public catalogue establishes that the fields are disclosed; it does not evidence a contractually authorized historical PIT archive, a service level, revision history, bulk-download right, or derived-data right."
+    },
+    {
+      "source": "Shenzhen Stock Exchange technical services page",
+      "path": "sources/probe-data-source-continuation-20260814/szse_technical_data_services.html",
+      "coverage_documented": ["market-data interfaces", "historical material and technical-service channels"],
+      "formal_replay_boundary": "This documentation does not demonstrate that this research has permission to ingest, retain, or derive a complete PIT history for Shenzhen-listed instruments."
+    },
+    {
+      "source": "CSI 300 Index Methodology",
+      "path": "sources/probe-data-source-continuation-20260814/csi_300_methodology_202309.pdf",
+      "coverage_documented": ["daily closing total-return and net-total-return index variants", "before-tax and after-tax cash-dividend treatment", "corporate-action reference-price adjustments", "scheduled constituent review and temporary maintenance"],
+      "formal_replay_boundary": "An index methodology is suitable to test index-event and dividend conventions. It does not evidence product-level investor return, executable cost, or access to a versioned historical constituent and index data archive."
+    },
+    {
+      "source": "CFETS Market Data Services",
+      "path": "sources/probe-data-source-continuation-20260814/cfets_market_data_services.html",
+      "coverage_documented": ["interbank bond-market quotation, basic, benchmark, historic and trade-related market data"],
+      "formal_replay_boundary": "CFETS states that use requires an application and written licence/authorization, and restricts copying, saving, use and derived work without written permission. Thus public notices cannot be substituted for licensed historical bond pricing or quote data."
+    },
+    {
+      "source": "ChinaBond indices legal notice and data instructions",
+      "path": "sources/probe-data-source-continuation-20260814/chinabond_index_data_terms.html",
+      "coverage_documented": ["ChinaBond index data", "reference to ChinaBond data products and authorized data vendors"],
+      "formal_replay_boundary": "ChinaBond requests separate written application for use of its information products or indices in product/benchmark contexts and directs users to additional data products or authorized vendors for more detail. Formal ingestion requires a written-use and retention-right confirmation for the exact fields and purpose."
+    },
+    {
+      "source": "ChinaClear Beijing market data interface specification",
+      "path": "sources/probe-data-source-continuation-20260814/chinaclear_beijing_market_data_interface_v2.pdf",
+      "coverage_documented": ["corporate-action broadcast categories", "record date", "distribution amount or ratio", "interest and bond-redemption fields", "security-conversion fields"],
+      "formal_replay_boundary": "The captured document is a clearing-participant interface specification. It proves field semantics, not public access or research entitlement to a historical event archive."
+    }
+  ],
+  "field_acceptance_matrix": [
+    {
+      "field_group": "PIT security master and eligible-universe history",
+      "minimum_fields": ["stable security identifier", "venue", "instrument structure", "currency", "listing date", "delisting date and reason", "historical name/code changes", "board or special-treatment status", "active/inactive status", "as_of", "available_at", "revision timestamp"],
+      "officially_documented_or_publicly_reconcilable": "SSE public catalogue documents stock/fund/bond lists and suspended/terminated listings; SZSE publishes market-data technical services. Issuer and exchange disclosures can reconcile individual changes.",
+      "requires_authorized_or_licensed_archive": "Yes. A formal replay needs a complete versioned historical master and contemporaneous availability timestamps, not a current web list.",
+      "acceptance_evidence": ["field dictionary", "coverage inventory by venue and instrument", "historical-version sample", "archive hash and retrieval log", "written right to store and derive internal research outputs"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "Protected-liquidity selector PL(t)",
+      "minimum_fields": ["stable security identifier", "evaluation timestamp t", "formal-scope classification", "legal/operational access classification and status flag", "default-like/credit-event state and status flag", "remaining term or taxonomy-coded not-applicable state", "duration value and duration definition or taxonomy-coded not-applicable state", "event-staleness flag and source-event timestamp", "valuation-staleness flag, valuation timestamp and applicable staleness threshold", "as_of", "available_at", "revision timestamp"],
+      "officially_documented_or_publicly_reconcilable": "Issuer, manager, exchange and market-infrastructure disclosures can reconcile isolated maturity, duration, event and valuation facts. They do not establish a complete PIT selector input history or the contemporaneous freshness state required at every t.",
+      "requires_authorized_or_licensed_archive": "Yes. A formal replay requires an entitled PIT field history that permits PL(t) to be evaluated at each cohort-formation and rebalance timestamp without carrying forward unstated values.",
+      "acceptance_evidence": ["field dictionary defining the formal-scope, legal/operational-access and default-like/credit-event classifications", "taxonomy-approved not-applicable codes by instrument class", "PIT source timestamps and revision history", "event and valuation staleness thresholds with raw supporting timestamps", "sample reconstruction of PL(t) at multiple historical dates"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "Common-risk and 20% issuer/controller/look-through mapping",
+      "minimum_fields": ["stable security identifier", "issuer identifier", "guarantor identifier", "controller identifier", "beneficial-owner identifier", "underlying constituent identifier and weight", "fund/REIT sponsor identifier", "fund/REIT manager identifier", "fund/REIT project identifier", "fund/REIT tenant identifier", "fund/REIT offtaker identifier", "fund/REIT refinancing-counterparty identifier", "relationship role", "relationship effective-from and effective-to", "identifier crosswalk version", "aggregation taxonomy and version", "as_of", "available_at", "revision timestamp"],
+      "officially_documented_or_publicly_reconcilable": "Fund/REIT legal documents, issuer disclosures, exchange notices and individual project disclosures can reconcile selected relationships and ownership facts. They do not establish a complete versioned relationship graph or a stable cross-source aggregation taxonomy.",
+      "requires_authorized_or_licensed_archive": "Yes. A formal replay requires an entitled, versioned PIT relationship and constituent archive that supports issuer, controller and look-through aggregation at every t.",
+      "acceptance_evidence": ["identifier crosswalk with source-specific IDs and effective dates", "relationship-graph schema and source-document links", "historical constituent/weight snapshots with residual-weight treatment", "controller and beneficial-owner hierarchy methodology", "aggregation taxonomy/version, including 20% issuer/controller/look-through bucket rules", "sample cap reconstruction at multiple historical dates"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "A-share and listed ETF/public-REIT EOD market data",
+      "minimum_fields": ["trade date", "unadjusted open/high/low/close", "volume", "turnover", "trade count or valid substitute", "pre-close", "halt flag", "limit-up and limit-down", "auction/continuous-session flag", "correction flag", "as_of", "available_at"],
+      "officially_documented_or_publicly_reconcilable": "SSE public catalogue identifies market-price, fund and public-REIT information; SSE/SZSE public pages can reconcile sampled prices and market status.",
+      "requires_authorized_or_licensed_archive": "Yes for a complete, versioned, reproducible PIT EOD archive and any required historical market-data use rights. Public observation is only a reconciliation/discovery layer.",
+      "acceptance_evidence": ["field-level vendor coverage confirmation for SSE and SZSE", "written historical/PIT/internal-research licence", "raw payload archive", "revision/correction policy", "sample reconciliation to official exchange page"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "Corporate actions, cash distributions and non-standard events",
+      "minimum_fields": ["event identifier", "security identifier", "announcement timestamp", "ex-date", "record date", "payment/settlement date", "cash amount and currency", "tax basis", "share ratio", "rights terms", "merger/spin-off/conversion/delisting terms", "source document ID", "available_at", "correction/cancellation flag"],
+      "officially_documented_or_publicly_reconcilable": "Exchange and issuer disclosures are primary event evidence. ChinaClear's interface specification documents fields for equity distributions, interest and bond redemption, and conversions.",
+      "requires_authorized_or_licensed_archive": "Yes for normalized, comprehensive historical coverage. The participant specification does not convey a public historical-event entitlement.",
+      "acceptance_evidence": ["event taxonomy and field dictionary", "event-to-source-document link", "sample cash/share/right/delisting reconciliation", "historical completeness report", "correction and late-announcement treatment"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "ETF and public-REIT fund mechanics",
+      "minimum_fields": ["official NAV and accumulated NAV date", "market close", "distribution declaration/ex/payment dates", "distribution amount and tax/capital-component flag", "fund split/consolidation", "creation-redemption list and effective date", "IOPV where used", "manager/manager-change status", "REIT project capital event and offering terms", "available_at"],
+      "officially_documented_or_publicly_reconcilable": "SSE public catalogue documents ETF creation-redemption lists and public-REIT NAV/market information. Fund managers and REIT managers publish legal documents, NAV/distribution and project-event disclosures.",
+      "requires_authorized_or_licensed_archive": "Yes for a complete PIT archive that joins product mechanics with exchange prices and preserves document availability time. Public manager/exchange documents remain the primary reconciliation source.",
+      "acceptance_evidence": ["fund/REIT identifier crosswalk", "daily NAV and market-price reconciliation", "distribution-payment ledger", "creation-redemption and split history", "archived source documents and timestamps"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "Direct sovereign/interbank-bond market data",
+      "minimum_fields": ["bond identifier", "issuer", "issue/reopening date", "coupon and frequency", "day-count", "accrual convention", "maturity/redemption", "EOD clean and dirty price", "accrued interest", "yield", "trade/quote source", "bid/ask where required", "as_of", "available_at"],
+      "officially_documented_or_publicly_reconcilable": "Ministry of Finance and CFETS/ChinaMoney notices can establish issuance, coupon and redemption terms. CFETS documents broad interbank market-data coverage, including historic data. ChinaBond publicly displays selected valuations and index information.",
+      "requires_authorized_or_licensed_archive": "Yes. CFETS expressly requires written authorization for use of its market data. ChinaBond documentation directs users to licensed data products or authorized vendors for more detail; exact use, retention and derivation rights must be documented.",
+      "acceptance_evidence": ["CFETS or authorized-provider entitlement letter/contract", "ChinaBond data-use confirmation if ChinaBond pricing/index data are used", "bond price/accrual/coupon field dictionary", "sample coupon/redemption and price reconciliation", "immutable raw archive"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "Benchmark total-return and membership data",
+      "minimum_fields": ["benchmark identifier and version", "price/total-return/net-total-return classification", "close level", "constituent identifier", "weight", "effective date", "announcement timestamp", "available_at", "corporate-action and tax convention"],
+      "officially_documented_or_publicly_reconcilable": "CSI methodology documents daily close TRI/NTRI calculation, before-tax/after-tax dividend treatment and constituent-maintenance mechanics.",
+      "requires_authorized_or_licensed_archive": "Usually yes for a complete historical constituent and value archive. Methodology access does not establish a data-download, retention or derived-use entitlement.",
+      "acceptance_evidence": ["index provider's coverage and usage confirmation", "historical constituent snapshots", "methodology version archive", "TRI/NTRI field definition", "revision/announcement history"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "Execution feasibility and cost inputs",
+      "minimum_fields": ["then-effective commission schedule", "exchange/registration/clearing charges", "tax rate and effective date", "bid/ask or executable quote", "spread convention", "slippage/impact methodology", "daily volume and participation cap", "settlement cycle", "trading calendar", "halt and limit-lock state", "no-fill/partial-fill record"],
+      "officially_documented_or_publicly_reconcilable": "Exchange fee/tax rules and product documents can support selected mechanics. SSE/SZSE and CFETS documentation identifies market-data channels; individual disclosures can reconcile event dates.",
+      "requires_authorized_or_licensed_archive": "Yes. Historical executable quotes/depth and actual applicable fee terms are not established by public product disclosures. The replay must use an authorized broker fee schedule and an entitled market-data source.",
+      "acceptance_evidence": ["dated fee schedule authorization", "venue fee/tax rule archive", "licensed EOD/intraday quote coverage where used", "predeclared spread/slippage method", "sample fill/no-fill reconciliation"],
+      "status": "blocked"
+    },
+    {
+      "field_group": "PIT availability, provenance and audit trail",
+      "minimum_fields": ["source owner", "source URL or vendor request ID", "as_of", "available_at", "retrieval timestamp", "ingestion timestamp", "raw-response hash", "schema version", "revision/correction flag", "licence reference", "retention expiry", "permitted internal use"],
+      "officially_documented_or_publicly_reconcilable": "Official disclosures expose individual publication dates and documents, but do not by themselves supply a complete machine-readable availability/revision archive.",
+      "requires_authorized_or_licensed_archive": "Yes. The data owner/provider must attest field coverage, publication lag, corrections and archive retrieval rights.",
+      "acceptance_evidence": ["named accountable data owner", "contract/licence scope", "availability-lag statement", "raw payload and hash manifest", "reproducible re-extraction test"],
+      "status": "blocked"
+    }
+  ],
+  "hard_field_level_acceptance_block": {
+    "gate": "protected_liquidity_and_common_risk_look_through",
+    "applies_to": ["A-shares", "listed ETFs", "public REITs", "direct sovereign/interbank bonds"],
+    "rule": "At every cohort-formation, rebalance and valuation timestamp t, PL(t) and the 20% issuer/controller/look-through cap assessment must use the exact PIT fields below. A PL(t) candidate must have a versioned formal-scope classification that is one of A-shares, listed ETFs, public REITs or direct sovereign/interbank bonds. A field is acceptable only when it is populated from an entitled source or explicitly taxonomy-coded not-applicable with a documented source basis; an unknown, carried-forward, stale, unmapped or unversioned value is a missing field.",
+    "protected_liquidity_selector_fields": [
+      {"field": "formal_scope_classification", "requirement": "PIT instrument-class classification, taxonomy version and source linking the candidate to exactly one permitted formal-scope class: A-shares, listed ETFs, public REITs or direct sovereign/interbank bonds."},
+      {"field": "legal_operational_access_classification", "requirement": "PIT legal/operational access definition, classification and status flag for the stated venue/route, with source, effective timestamp and revision history. The flag must distinguish eligible, restricted, suspended, unavailable and unknown states; it does not assert that this research has data or trading entitlement."},
+      {"field": "default_like_credit_event_state", "requirement": "PIT definition, status flag, source-event timestamp and revision history for default-like or credit-event states, including a source-coded not-applicable state only where the instrument taxonomy permits it."},
+      {"field": "remaining_term", "requirement": "Remaining contractual term measured at t, with maturity/redemption date and calculation convention; use a documented not-applicable code only where the instrument taxonomy makes the field inapplicable."},
+      {"field": "duration", "requirement": "Duration value, definition, source date and effective timestamp at t; use a documented not-applicable code only where the instrument taxonomy makes the field inapplicable."},
+      {"field": "event_staleness_flag", "requirement": "PIT flag, threshold, latest relevant event timestamp and source status showing whether a material event record is stale, pending, corrected or unavailable at t."},
+      {"field": "valuation_staleness_flag", "requirement": "PIT flag, threshold, valuation/NAV/price timestamp, valuation source and revision status showing whether the valuation input is stale at t."}
+    ],
+    "common_risk_look_through_mapping_fields": [
+      {"field": "issuer_guarantor_controller_beneficial_owner", "requirement": "Stable identifiers for issuer, guarantor, controller and beneficial owner, each with relationship role, effective dates, source and revision history."},
+      {"field": "underlying_constituent_weights", "requirement": "PIT underlying constituent identifiers, weights, effective date, total-coverage check and residual-weight treatment for every relevant listed ETF or public REIT."},
+      {"field": "fund_reit_relationships", "requirement": "PIT identifiers and effective dates for each applicable fund/REIT sponsor, manager, project, tenant, offtaker and refinancing counterparty, with relationship role and source."},
+      {"field": "identifier_crosswalk", "requirement": "Versioned crosswalk joining venue security IDs, fund/REIT IDs, issuer/entity IDs, project IDs and counterparty IDs, with effective dates and source lineage."},
+      {"field": "aggregation_taxonomy_version", "requirement": "Versioned aggregation taxonomy defining issuer, controller and look-through buckets, relationship hierarchy, alias treatment, control/beneficial-owner treatment and the 20% cap calculation rule."}
+    ],
+    "cohort_failure": "If any required applicable field lacks an entitled PIT value, an accepted taxonomy-coded not-applicable state, a valid formal-scope classification, a legal/operational-access classification, a default-like/credit-event state, a valid identifier crosswalk, or a current aggregation-taxonomy version at t, the affected cohort is blocked. An out-of-scope candidate also blocks the cohort. It may not be partially admitted, proxy-filled, carried forward or treated as passing the 20% issuer/controller/look-through caps.",
+    "status": "blocked; no entitlement evidenced; q=0"
+  },
+  "hard_acceptance_gates": [
+    {
+      "gate": "entitlement",
+      "must_pass": "Written evidence names the authorized user, provider or authorized intermediary, asset classes, exact fields, historical and PIT coverage, purpose of internal unitized research replay, retention period, archival permission, derived-output permission, redistribution prohibition, user/API limits and expiry.",
+      "failure": "Do not ingest as formal-replay data; retain q=0."
+    },
+    {
+      "gate": "cross_asset_field_coverage",
+      "must_pass": "One source hierarchy covers every matrix field for the formal scope only: A-shares, listed ETFs, public REITs and direct sovereign/interbank bonds, with a documented fallback that does not change return convention.",
+      "failure": "No formal replay; an uncovered event or field blocks the affected cohort."
+    },
+    {
+      "gate": "protected_liquidity_and_look_through_fields",
+      "must_pass": "For each applicable instrument and timestamp t, the hard field-level acceptance block supplies a formal-scope classification within the four permitted classes, legal/operational-access classification, default-like/credit-event state, remaining term, duration, event/valuation-staleness flags, relationship identities, underlying weights, fund/REIT relationship fields, identifier crosswalk and aggregation taxonomy/version. The exact PL(t) and 20% issuer/controller/look-through rule must be reproducible from those versioned fields.",
+      "failure": "The affected cohort is blocked. No out-of-scope candidate, proxy, stale carry-forward, partial look-through or unversioned aggregation may be used; retain q=0."
+    },
+    {
+      "gate": "point_in_time",
+      "must_pass": "Every input has both as_of and available_at; announcements, revisions, membership changes, halts and event records are retrievable in historical versions and stored with raw hashes.",
+      "failure": "No PIT claim; no formal replay."
+    },
+    {
+      "gate": "return_reconciliation",
+      "must_pass": "Raw prices plus the complete event ledger, or one verified total-return source, are reconciled across samples of cash distribution, share action, rights/non-standard event, fund/REIT distribution, halt/limit lock and bond coupon/redemption without double counting.",
+      "failure": "Return accounting invalid; retain q=0."
+    },
+    {
+      "gate": "cost_and_execution",
+      "must_pass": "The scale-neutral engine applies the then-effective authorized fee/tax inputs and a frozen, entitled quote/spread/slippage method. It records settlement and no-fill states without synthetic fills.",
+      "failure": "Cost-aware TWRR not testable; retain q=0."
+    },
+    {
+      "gate": "independent_reproducibility",
+      "must_pass": "A second reviewer can recreate a selected cohort from immutable raw records, rulebook version and manifests, and can identify every source, revision and field transformation.",
+      "failure": "Research-only documentation, not T2 evidence."
+    }
+  ],
+  "what_public_primary_sources_can_and_cannot_do": {
+    "can_do": ["establish individual product/instrument terms", "reconcile sampled market status and corporate events", "supply fund/REIT/issuer notices and official dates", "document CSI dividend and corporate-action convention", "document that SSE publicly discloses relevant categories"],
+    "cannot_do_alone": ["prove authorization to bulk ingest/store/derive historical market data", "supply a complete revisioned PIT archive for the formal scope", "supply the dynamic PL(t) inputs or the versioned issuer/controller/look-through graph required for 20% caps", "supply historical executable bid/ask or fill-quality data", "supply then-effective broker fee terms", "convert fund NAV, coupon, distribution rate or index methodology into investor cost-aware TWRR"]
+  },
+  "next_authorized_probe": ["Obtain written entitlement evidence before any protected data request.", "Request a field-level coverage statement and schema sample from the proposed authorized source or intermediary, including the PL(t), relationship-graph, identifier-crosswalk and aggregation-taxonomy fields.", "Run a six-event reconciliation pilot only after acceptance of entitlement: cash dividend, share action, rights/non-standard event, ETF/REIT distribution, halt/limit lock and bond coupon/redemption.", "Reconstruct PL(t) and the 20% issuer/controller/look-through mapping at multiple historical timestamps before evaluating a cohort.", "Archive each raw response with source owner, as_of, available_at, retrieval timestamp, licence reference and SHA-256."],
+  "conclusion": "Public official sources are sufficient for structure/event reconciliation and for defining required fields. They are insufficient to establish an authorized PIT total-return replay for A-shares, listed ETFs, public REITs and direct sovereign/interbank bonds. No entitlement is evidenced, the protected-liquidity and look-through field block is not passed, q remains 0, and the formal unitized scale-neutral replay remains blocked."
+}

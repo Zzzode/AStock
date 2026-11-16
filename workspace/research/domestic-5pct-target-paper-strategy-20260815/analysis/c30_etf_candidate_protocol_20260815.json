@@ -1,0 +1,116 @@
+{
+  "schema_version": "d5pt_c30_etf_candidate_protocol.v1",
+  "artifact_id": "D5PT-C30-PROTOCOL-v1",
+  "recorded_before_calculation": "2026-08-15",
+  "status": "frozen_for_research_only_calculation",
+  "research_only": true,
+  "external_investment_action_authorized": false,
+  "candidate": {
+    "name": "C30 five-ETF balanced strategic basket",
+    "selection_basis": "Economic exposure budget fixed before calculations; not selected from historical score.",
+    "target_weights": {
+      "510300": 0.2,
+      "510880": 0.2,
+      "511010": 0.4,
+      "518880": 0.1,
+      "511990": 0.1
+    },
+    "weights_sum": 1.0,
+    "rebalance_months": [6, 12],
+    "rebalance_style": "Restore the fixed target vector at each scheduled event; do not use a market-data signal or discretionary override.",
+    "leverage": false,
+    "borrowing": false,
+    "shorting": false,
+    "derivative_overlay": false,
+    "automatic_substitution": false
+  },
+  "economic_rationale": "Use a limited domestic equity sleeve, a five-year government-bond sleeve, a small domestic-gold sleeve, and a money-market ETF sleeve for exposure diversification and operational liquidity; no correlation, protection, liquidity, or 5 percent outcome is asserted.",
+  "source": {
+    "manifest_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/manifest.json",
+    "allowed_codes": ["510300", "510880", "511010", "518880", "511990"],
+    "quality": "primary_official_public_retrospective_market_price_observation",
+    "basis": "Unadjusted-or-undisclosed SSE market-price proxy only; not total return, NAV return, execution, or point-in-time data."
+  },
+  "timing": {
+    "decision_sessions": "Final common close in June and December; initialization decision is the first common close.",
+    "effective_sessions": "Strictly the following common session at reported open.",
+    "overnight_sequence": "Existing holdings receive decision-close to effective-open proxy move before trade; post-trade targets receive effective-open to effective-close proxy move.",
+    "same_session_close_execution": false,
+    "same_bar_lookahead": false
+  },
+  "illustrative_cost": {
+    "base_one_way_bps": 20.0,
+    "formula": "one_way_turnover * bps / 10000 deducted from pre-trade proxy NAV, including initial one-way entry",
+    "not_claimed": ["broker commission", "tax", "bid_ask_spread", "market_impact", "fund_fee", "settlement", "fill"]
+  },
+  "research_hurdle": {
+    "annualized_rate": 0.05,
+    "meaning": "Long-run research objective only; not a guarantee, annual floor, prediction, or suitability conclusion.",
+    "limited_proxy_screen": "Reject if any complete calendar-year or monthly-end rolling-five-year price proxy falls below 5 percent; passing could not admit the strategy."
+  },
+  "required_outputs": [
+    "full-period annualized market-price proxy change",
+    "complete calendar-year outcomes",
+    "monthly-end rolling five-year annualized outcomes",
+    "maximum drawdown and daily/20-session price-proxy loss observations",
+    "turnover and illustrative-cost arithmetic",
+    "predeclared mutation results",
+    "explicit execution and loss-bound limitations"
+  ],
+  "mutations": [
+    {
+      "id": "low_equity_30",
+      "target_weights": {"510300": 0.15, "510880": 0.15, "511010": 0.5, "518880": 0.1, "511990": 0.1},
+      "rebalance_months": [6, 12],
+      "one_way_bps": 20.0
+    },
+    {
+      "id": "high_equity_50",
+      "target_weights": {"510300": 0.25, "510880": 0.25, "511010": 0.3, "518880": 0.1, "511990": 0.1},
+      "rebalance_months": [6, 12],
+      "one_way_bps": 20.0
+    },
+    {
+      "id": "annual_cadence",
+      "target_weights": {"510300": 0.2, "510880": 0.2, "511010": 0.4, "518880": 0.1, "511990": 0.1},
+      "rebalance_months": [12],
+      "one_way_bps": 20.0
+    },
+    {
+      "id": "quarterly_cadence",
+      "target_weights": {"510300": 0.2, "510880": 0.2, "511010": 0.4, "518880": 0.1, "511990": 0.1},
+      "rebalance_months": [3, 6, 9, 12],
+      "one_way_bps": 20.0
+    },
+    {
+      "id": "zero_cost",
+      "target_weights": {"510300": 0.2, "510880": 0.2, "511010": 0.4, "518880": 0.1, "511990": 0.1},
+      "rebalance_months": [6, 12],
+      "one_way_bps": 0.0
+    },
+    {
+      "id": "cost_stress_50bp",
+      "target_weights": {"510300": 0.2, "510880": 0.2, "511010": 0.4, "518880": 0.1, "511990": 0.1},
+      "rebalance_months": [6, 12],
+      "one_way_bps": 50.0
+    }
+  ],
+  "no_action_conditions": [
+    "Missing current product, legal-document, temporary-announcement, market-status, account, fee, tax, settlement, quote, depth, IOPV where applicable, or reconciliation evidence.",
+    "Halt, delisting, price limit, material product change, account or settlement failure, unavailable funds/shares, or either equity leg not checked.",
+    "Lot/tick failure, partial fill, rejection, no fill, or inability to reconcile a prior paper ledger."
+  ],
+  "forward_paper_order_protection": {
+    "lot_size_reference": 100,
+    "price_increment_reference": 0.001,
+    "buy": "displayed ask <= IOPV * 1.003",
+    "sell": "displayed bid >= IOPV * 0.997",
+    "failure": "no_action; preserve prior paper holdings; no substitution or assumed fill"
+  },
+  "expected_quant_risk_status": "VETO",
+  "veto_basis": [
+    "No point-in-time total-return or corporate-action ledger.",
+    "No dated bid/ask, depth, halt, price-limit, cost, tax, fill, settlement, or capacity ledger.",
+    "No portfolio value, loss budget, user risk limits, or forward-paper verification record."
+  ]
+}

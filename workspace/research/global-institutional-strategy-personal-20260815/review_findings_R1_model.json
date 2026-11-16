@@ -1,0 +1,48 @@
+{
+  "cycle": "R1_model",
+  "review_date": "2026-08-15",
+  "review_scope": "Strategy translation logic, time semantics, cash accounting, futures/risk controls and crypto admission blocks.",
+  "publishability_status": "CONDITIONAL_PENDING_DRAFT_AND_RENDER",
+  "publishability_score": 93,
+  "findings": [
+    {
+      "issue_id": "R1-B-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "risk modeler",
+      "artifact": "data/portfolio_return_model_20260815.json",
+      "evidence": "A future return study could double-count receipts or imply a cash-yield target without explicit ledger definitions.",
+      "fix_required": "Define eligible and excluded cash receipts, return-of-capital treatment, no automatic reinvestment and once-only total-return reconciliation.",
+      "blocking_gate": "cash_accounting",
+      "status": "verified",
+      "verification_evidence": "cash_ledger_and_accounting and total_return_measurement are populated; protected liquidity has no return forecast.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-B-002",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "market-risk analyst",
+      "artifact": "analysis/risk_framework.md",
+      "evidence": "Treating ordinary stock disposal, a stop order, cross-margin or a historical futures parameter as certain would invalidate a personal replay.",
+      "fix_required": "State product-specific mechanics, unavailable-fill risk and dated contract/broker controls.",
+      "blocking_gate": "market_mechanics",
+      "status": "verified",
+      "verification_evidence": "The framework distinguishes ordinary stock caution from product-specific rules and lists margin/limits/delivery/fill stress controls.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-B-003",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "risk analyst",
+      "artifact": "data/crypto_applicability_packet_20260815.json",
+      "evidence": "Crypto is a separate legal/access, venue/custody and liquidity regime; it cannot inherit A-share or domestic-futures controls.",
+      "fix_required": "Require a separate zero-weight packet with future dossier items and prohibit circumvention.",
+      "blocking_gate": "crypto_admission",
+      "status": "verified",
+      "verification_evidence": "The packet carries q=0, zero named items, ten future controls and a circumvention prohibition.",
+      "reopened_count": 0
+    }
+  ]
+}

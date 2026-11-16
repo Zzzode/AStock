@@ -1,0 +1,170 @@
+{
+  "schema_version": "data_access_probe.v1",
+  "artifact_id": "DPSFS-R1-OFFICIAL-DATA-ACCESS-PROBE-20260814",
+  "artifact_class": "derived_research_evidence",
+  "as_of": "2026-08-14",
+  "research_only": true,
+  "formal_replay_eligible": false,
+  "portfolio_q": 0,
+  "raw_manifest": "sources/probe-official-multiclass-data-r1-20260814/manifest.json",
+  "scope": {
+    "objective": "Independently test whether selected public official/exchange URLs actually return a small cross-class sample that could inform a future data-acquisition route.",
+    "successful_classes": [
+      "LISTED_EQUITY_ETFS",
+      "DIRECT_A_SHARE_EQUITIES",
+      "PUBLIC_REITS",
+      "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+      "LISTED_OPTIONS",
+      "COMMODITY_FUTURES"
+    ],
+    "unconfirmed_class_route": "FINANCIAL_FUTURES",
+    "out_of_scope": [
+      "No U0 population construction or freeze.",
+      "No T2 derivation, product diligence, suitability conclusion, allocation, holding, order, or trade.",
+      "No historical replay, performance computation, or forecast."
+    ]
+  },
+  "method": {
+    "access": "Unauthenticated read-only HTTPS GET; generic browser user-agent; official-page Referer; no credentials, account, purchase, rate bypass, or external action.",
+    "capture_range_local_time": "2026-08-14T22:01:10.474430491+08:00 through 2026-08-14T22:03:37.386485645+08:00",
+    "success_definition": "A same-day call returned HTTP 200 with a parseable or otherwise expected response body that was retained with a SHA-256 digest.",
+    "time_boundary": "Local retrieval time is not source-side available_at. A queryable historic trade date is not evidence that the record, its exact version, or a decision-useful event was available at that historic time."
+  },
+  "test_results": [
+    {
+      "class": "LISTED_EQUITY_ETFS",
+      "probe_identifiers": ["510300"],
+      "successful_endpoints": [
+        {
+          "endpoint_type": "current_master_list",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_etf_master_current_5.jsonp",
+          "response_observation": "The current FUND_LIST query returned five ETF rows and reported pageHelp.total=893.",
+          "fields_observed": ["fundCode", "fundAbbr", "secNameFull", "listingDate", "companyName", "fundType", "subClass", "INDEX_CODE", "INDEX_NAME", "TRUSTEE_NAME"]
+        },
+        {
+          "endpoint_type": "historical_day_k_index_windows",
+          "raw_artifacts": [
+            "sources/probe-official-multiclass-data-r1-20260814/sse_etf_dayk_510300_begin0_end5.jsonp",
+            "sources/probe-official-multiclass-data-r1-20260814/sse_etf_dayk_510300_begin100_end105.jsonp"
+          ],
+          "response_observation": "The first response reported total=3456 and begin=0/end=5. A second response honored begin=100/end=105 and returned a different five-row window.",
+          "fields_observed": ["code", "total", "begin", "end", "kline"],
+          "not_established": ["Complete historical extraction", "NAV", "IOPV", "distribution/corporate-action/event ledger", "market status", "source-side available_at or revision chain", "rights"]
+        }
+      ]
+    },
+    {
+      "class": "DIRECT_A_SHARE_EQUITIES",
+      "probe_identifiers": ["600000"],
+      "successful_endpoints": [
+        {
+          "endpoint_type": "current_filtered_master_list",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_astock_master_current_5.jsonp",
+          "response_observation": "The filtered current list returned five rows and reported pageHelp.total=1699.",
+          "fields_observed": ["A_STOCK_CODE", "SEC_NAME_CN", "SEC_NAME_FULL", "LIST_DATE", "DELIST_DATE", "PRODUCT_STATUS", "COMPANY_CODE", "CSRC_CODE", "LIST_BOARD", "STATE_CODE"]
+        },
+        {
+          "endpoint_type": "historical_day_k_index_window",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_astock_dayk_600000_begin0_end5.jsonp",
+          "response_observation": "The response reported total=6368 and begin=0/end=5, with five retrieved rows beginning on 1999-11-10.",
+          "fields_observed": ["code", "total", "begin", "end", "kline"],
+          "not_established": ["All listed/delisted population history", "corporate-action and share-capital event ledger", "trade status and price-limit history", "source-side available_at or revision chain", "rights"]
+        }
+      ]
+    },
+    {
+      "class": "PUBLIC_REITS",
+      "probe_identifiers": ["508000"],
+      "successful_endpoints": [
+        {
+          "endpoint_type": "current_master_list",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_reits_master_current_5.jsonp",
+          "response_observation": "The current public-REIT list returned five rows and reported pageHelp.total=61.",
+          "fields_observed": ["fundCode", "fundAbbr", "secNameFull", "listingDate", "companyName", "fundManager", "TRUSTEE_NAME", "LAW_FIRM"]
+        },
+        {
+          "endpoint_type": "historical_day_k_index_window",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_reit_dayk_508000_begin0_end5.jsonp",
+          "response_observation": "The response reported total=1250 and begin=0/end=5, with five retrieved rows beginning on 2021-06-21.",
+          "fields_observed": ["code", "total", "begin", "end", "kline"],
+          "not_established": ["All-market lifecycle population", "NAV/premium-discount and distribution event ledger", "underlying asset operating/cash-flow history", "source-side available_at or revision chain", "rights"]
+        }
+      ]
+    },
+    {
+      "class": "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+      "probe_identifiers": ["019766"],
+      "successful_endpoints": [
+        {
+          "endpoint_type": "historical_day_k_index_window",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_bond_dayk_019766_begin0_end5.jsonp",
+          "response_observation": "The response reported total=238 and begin=0/end=5, with five retrieved rows beginning on 2025-01-21.",
+          "fields_observed": ["code", "total", "begin", "end", "kline"],
+          "not_established": ["Security identity and full universe history", "clean/dirty-price and accrued-interest history", "coupon/redemption/put/conversion/default events", "liquidity and settlement data", "source-side available_at or revision chain", "rights"]
+        }
+      ]
+    },
+    {
+      "class": "LISTED_OPTIONS",
+      "probe_identifiers": ["510050C2608M02750", "510300C2508M04700"],
+      "successful_endpoints": [
+        {
+          "endpoint_type": "current_contract_list",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_options_current_contracts_5.jsonp",
+          "response_observation": "The current contract query returned five rows and reported pageHelp.total=754. Returned fields included security and contract IDs, terms, settlement price, underlying close, a date-only TIMESAVE field, and margin-related parameters.",
+          "fields_observed": ["SECURITY_ID", "CONTRACT_ID", "CONTRACT_SYMBOL", "START_DATE", "END_DATE", "EXERCISE_DATE", "DELIVERY_DATE", "EXERCISE_PRICE", "CONTRACT_UNIT", "SETTL_PRICE", "TIMESAVE", "MARGIN_RATIO_PARAM1", "MARGIN_RATIO_PARAM2", "MARGIN_UNIT"]
+        },
+        {
+          "endpoint_type": "retrospective_historical_listing_adjustment_query",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/sse_options_listing_adjust_20250814.jsonp",
+          "response_observation": "A date-filtered request for 2025-08-14 returned eight result records. Because it set isPagination=false, the response's pageHelp.total=0 is not a population count.",
+          "fields_observed": ["ADJUST_DATE", "UPDATE_TYPE", "SECURITY_ID", "CONTRACT_ID", "CONTRACT_SYMBOL", "START_DATE", "END_DATE", "EXERCISE_DATE", "DELIVERY_DATE", "EXERCISE_PRICE", "CONTRACT_UNIT", "MARGIN_RATIO_PARAM1", "MARGIN_RATIO_PARAM2"],
+          "not_established": ["Complete active and expired option chain lifecycle", "historic bid/ask/depth/volatility/risk-parameter history", "assignment/exercise and account-margin records", "source-side available_at or revision chain", "rights"]
+        }
+      ]
+    },
+    {
+      "class": "COMMODITY_FUTURES",
+      "probe_identifiers": ["SHFE daily actual-contract file 2026-08-14"],
+      "successful_endpoints": [
+        {
+          "endpoint_type": "daily_actual_contract_file",
+          "raw_artifact": "sources/probe-official-multiclass-data-r1-20260814/shfe_actual_contract_daily_20260814.json",
+          "response_observation": "The one-day file reported report_date=20260814, update_date=20260814 15:28:18, and 333 o_curinstrument rows. A CU 2609 row demonstrates a delivery-month-specific record in this one file.",
+          "fields_observed": ["PRODUCTGROUPID", "DELIVERYMONTH", "PRESETTLEMENTPRICE", "OPENPRICE", "HIGHESTPRICE", "LOWESTPRICE", "CLOSEPRICE", "SETTLEMENTPRICE", "VOLUME", "TURNOVER", "OPENINTEREST", "OPENINTERESTCHG"],
+          "not_established": ["Complete every-trading-day actual-contract archive", "contract lifecycle", "historic margin/fee/limit/delivery rules", "source-side available_at or revision chain", "rights", "execution/cost ledger"]
+        }
+      ]
+    }
+  ],
+  "unconfirmed_or_failed_route_tests": [
+    {
+      "class": "FINANCIAL_FUTURES",
+      "endpoint": "https://www.cffex.com.cn/lssjfw/",
+      "attempted_at": "2026-08-14T22:03:37+08:00",
+      "result": "TCP connection timed out after 8 seconds; curl exit 28; HTTP 0; no response body retained.",
+      "inference_boundary": "This environment-level failure proves neither the presence nor absence of a CFFEX product or lawful data route. It does not admit CFFEX data."
+    }
+  ],
+  "what_the_probe_supports": [
+    "At the local capture time, selected SSE and SHFE public endpoints actually returned small machine-readable responses for multiple domestic asset classes.",
+    "In the sampled ETF endpoint, two non-overlapping begin/end windows returned the requested index windows. This is a route-discovery observation, not a declaration of full-history quality.",
+    "The sampled option endpoints separately returned a current contract snapshot and a retrospective date-filtered listing-adjustment result."
+  ],
+  "what_the_probe_does_not_support": [
+    "A complete point-in-time archive, historical availability timestamps, immutable source versions, or a correction/revision chain.",
+    "Data rights for retention, normalization, formal replay, derived analysis, or independent review.",
+    "The ETF_PIT_EVENT_LEDGER, FUTURES_ACTUAL_CONTRACT_LEDGER, EXECUTION_AND_COST_LEDGER, or U0 population-and-derivation control required by the case.",
+    "Any return result, product admission, investment choice, suitability conclusion, allocation, holding, trade, order, or performance claim."
+  ],
+  "gate_effect": {
+    "UR01": "Open: public ETF price/master samples do not provide the complete PIT price-NAV-IOPV-event-status ledger or rights.",
+    "UR02": "Open: one SHFE daily actual-contract file does not provide complete actual-contract lifecycle, PIT rules, or rights.",
+    "UR03": "Open: no execution-and-cost ledger or authorized replay inputs were obtained.",
+    "U0": "Open: current/filter query snapshots and individual-code samples do not form a frozen all-class population or a U0-to-T2 derivation audit.",
+    "UR04": "Open: no signed input freeze, rulebook freeze, or formal replay run was created.",
+    "UR05": "Open: no prospective paper reconciliation or independent execution/risk review was performed.",
+    "decision": "The case remains q=0 and is not usable as an investment strategy."
+  },
+  "next_safe_research_step": "Use these URLs only as named discovery routes in a future written rights-and-delivery inquiry. Before any replay, obtain a contractual, immutable, PIT-aware package that covers the selected class, including available_at/vintage/revision evidence, complete population and event reconciliation, and an execution-and-cost ledger; then freeze U0, U0-to-T2 derivation, rulebook, and inputs before seeing results."
+}

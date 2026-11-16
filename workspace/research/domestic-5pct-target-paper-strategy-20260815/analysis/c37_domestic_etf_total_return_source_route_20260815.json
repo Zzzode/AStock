@@ -1,0 +1,688 @@
+{
+  "schema_version": "c37_domestic_etf_total_return_source_route.v1",
+  "artifact_id": "D5PT-C37-ETF-TR-ROUTE-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "research_only": true,
+  "external_orders": false,
+  "no_product_selection": true,
+  "no_index_selection": true,
+  "no_return_calculation_run": true,
+  "scope": {
+    "question": "Whether a lawful, reproducible, public-primary-source route exists to build a point-in-time total-return/event ledger for a new domestic ETF/index research hypothesis.",
+    "excluded": [
+      "Investment recommendation, product selection, allocation, holding, external action, or performance forecast",
+      "Any re-test, amendment, rescue, or substitution for an existing candidate protocol",
+      "A claim that a public webpage automatically grants retention, normalization, replay, derived-analysis, or independent-review rights"
+    ],
+    "cutoff_rule": "Only source routes reviewed no later than 2026-08-15 are considered. A source URL without a retained body is recorded as route evidence, not as an accepted reproducible data delivery."
+  },
+  "decision": {
+    "historical_etf_investor_total_return_event_ledger": {
+      "status": "NO_GO_PUBLIC_PRIMARY_HISTORICAL_TEST",
+      "reason": "No reviewed public-primary source combination closes every hard gate for a point-in-time ETF investor-total-return/event ledger.",
+      "permitted_conclusion": "No actual historical test, return claim, valuation input, or strategy-operability conclusion."
+    },
+    "historical_official_total_return_index_benchmark": {
+      "status": "CONDITIONAL_NOT_ACCEPTED",
+      "reason": "No exact index variant, historical level delivery, methodology/version record, point-in-time vintage, or rights package was accepted.",
+      "permitted_conclusion": "May later be a separately labelled benchmark only; it cannot be treated as ETF investor return."
+    },
+    "prospective_public_primary_observation_ledger": {
+      "status": "CONDITIONAL_OBSERVATION_ONLY",
+      "reason": "Forward capture can begin only after required use rights are confirmed and raw objects are retained with timing/version metadata.",
+      "permitted_conclusion": "Observation only; it cannot repair missing historical point-in-time data or create a present action."
+    },
+    "licensed_exchange_or_provider_delivery": {
+      "status": "OUTSIDE_PUBLIC_ONLY_SCOPE",
+      "reason": "A historical data product page is not a contract, entitlement, field delivery, or rights grant.",
+      "permitted_conclusion": "Potential later procurement route only after written contract and field-level acceptance."
+    },
+    "current_action": "NO_ACTION",
+    "nonexistence_boundary": "This is not a universal assertion that no source exists. It is an evidence-bound finding that no accepted source combination was identified and retained by the cutoff."
+  },
+  "hard_gates": [
+    {
+      "gate_id": "G1",
+      "name": "point_in_time_universe_and_survivorship",
+      "required": "Eligible universe at each decision time, listing/delisting, merger, termination, suspension/resumption, share-class and eligibility history.",
+      "status": "not_closed",
+      "why_required": "A current list cannot show products that disappeared or were unavailable on the original date."
+    },
+    {
+      "gate_id": "G2",
+      "name": "unambiguous_return_basis",
+      "required": "Explicit market-price, NAV, accumulated-NAV, total-return, net-return, adjustment and reinvestment conventions.",
+      "status": "not_closed",
+      "why_required": "Adjusted price plus separately reinvested cash distributions may double count; NAV is not automatically a secondary-market investor return."
+    },
+    {
+      "gate_id": "G3",
+      "name": "dated_events_and_terms",
+      "required": "Versioned distributions, splits/consolidations, fund-share changes, termination, fee, benchmark and material-contract events.",
+      "status": "not_closed",
+      "why_required": "Independent return reproduction requires event/effective dates and source precedence."
+    },
+    {
+      "gate_id": "G4",
+      "name": "cost_tax_and_settlement",
+      "required": "Historic fund costs, transaction fees, taxes, settlement and scoped investor/account assumptions.",
+      "status": "not_closed",
+      "why_required": "Generic disclosures do not establish cash outcomes for a specific investor/account or historical trade."
+    },
+    {
+      "gate_id": "G5",
+      "name": "executable_market_path",
+      "required": "Decision-time price, bid/ask or conservative pre-declared fill rule, depth/liquidity, status, price limits, no-fill and settlement handling.",
+      "status": "not_closed",
+      "why_required": "End-of-day OHLCV alone cannot establish a fill or failure to fill."
+    },
+    {
+      "gate_id": "G6",
+      "name": "point_in_time_availability_and_revisions",
+      "required": "published_at, available_at, correction/revision history, retrieval metadata, raw object hash and parser version.",
+      "status": "not_closed",
+      "why_required": "Retrospective values do not prove what was known at the decision time."
+    },
+    {
+      "gate_id": "G7",
+      "name": "rights_and_auditability",
+      "required": "Written terms or contract permitting retrieval, retention, normalization, replay, derived analysis and independent review.",
+      "status": "not_established",
+      "why_required": "Website browsing/download terms are not a data-product license or audit-right grant."
+    },
+    {
+      "gate_id": "G8",
+      "name": "pre_specification",
+      "required": "Frozen universe, field dictionary, event precedence, cost assumptions, execution convention, test window, holdout and failure rule before final dataset access.",
+      "status": "specification_possible_actual_test_not_certifiable",
+      "why_required": "A later data choice must not silently choose the result."
+    }
+  ],
+  "source_quality_enum_note": "The required source_quality enum lacks official_exchange and official_regulator. official_filing is used for Tier-1 official exchange/regulator records while source_type preserves the exact authority; it does not describe exchange market data as an issuer filing.",
+  "source_registry": [
+    {
+      "source_id": "S01",
+      "title": "SSE ETF daily market-price endpoint",
+      "publisher": "Shanghai Stock Exchange",
+      "date": "captured 2026-08-14/15 in referenced sibling manifest",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/manifest.json",
+      "original_url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/{fundCode}?callback=c7probe&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=0&end=5000",
+      "source_type": "official_exchange_market_data_endpoint",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_for_captured_market_price_fields",
+      "coverage_scope": "Retrospective daily OHLCV observation for sampled SSE ETFs.",
+      "downloaded_or_captured": "Referenced retained sibling manifest; manifest SHA-256 bb0550c4eaa207ece0eaa00c2410eff13516ade63bc859136a7848f1891822b0.",
+      "extraction_status": "Parsed/validated in prior case only; no C37 historical return computation.",
+      "limitations": "No adjustment basis, event ledger, NAV/IOPV, availability/revision history, status, depth/fills, costs/tax or rights.",
+      "valuation_consequence": "watchlist only",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "retrospective endpoint response captured for samples",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "adjustment basis",
+          "distribution/corporate actions",
+          "published_at/available_at/revisions",
+          "bid/ask/depth/fill",
+          "cost/tax/settlement",
+          "rights"
+        ],
+        "downgrade_trigger": "Any use as total return, executable return or point-in-time data."
+      }
+    },
+    {
+      "source_id": "S02",
+      "title": "SSE fund list / FUND_LIST endpoint",
+      "publisher": "Shanghai Stock Exchange",
+      "date": "captured 2026-08-15 in referenced sibling manifest",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/manifest.json",
+      "original_url": "https://query.sse.com.cn/commonSoaQuery.do",
+      "source_type": "official_exchange_listing_endpoint",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_for_captured_listing_fields",
+      "coverage_scope": "Current live fund listing enumeration, identity/classification and selected listing-date fields.",
+      "downloaded_or_captured": "Referenced retained sibling manifest; manifest SHA-256 908a1d8dffa5aafa8894411609d53642ecae588bbd2ffefc67b6030d2ba1d5ad.",
+      "extraction_status": "Small-page live sample captured in prior case; full historical universe not retained.",
+      "limitations": "No historical as-of snapshot, lifecycle/status, delisting, suspension, stable version/cursor, or full historical cohort.",
+      "valuation_consequence": "blocks valuation",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "current live endpoint only",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "point-in-time cohort",
+          "delisted products",
+          "lifecycle/status history",
+          "source version"
+        ],
+        "downgrade_trigger": "Any use as historical eligible universe or survivorship control."
+      }
+    },
+    {
+      "source_id": "S03",
+      "title": "CSRC Measures for Information Disclosure of Publicly Offered Securities Investment Funds",
+      "publisher": "China Securities Regulatory Commission",
+      "date": "official rule; URL consulted by cutoff",
+      "local_path": "not retained in this C37 case",
+      "original_url": "https://www.csrc.gov.cn/csrc/c106256/c1653985/content.shtml",
+      "source_type": "official_regulatory_rule",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_route_not_locally_archived",
+      "coverage_scope": "Disclosure route, including daily NAV and accumulated-NAV expectation for ordinary open funds subject to the rule.",
+      "downloaded_or_captured": "Primary URL consulted; raw body not copied into this case.",
+      "extraction_status": "Route/obligation only; not a collected historical data file.",
+      "limitations": "Does not establish complete product/share-class historical data, event mapping, secondary-market investor total return, point-in-time vintage or rights.",
+      "valuation_consequence": "watchlist only",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "official public rule route",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "normalized historical NAV data",
+          "event history",
+          "market-price investor return",
+          "revisions/available_at",
+          "rights"
+        ],
+        "downgrade_trigger": "Any use as proof of a complete historical ledger."
+      }
+    },
+    {
+      "source_id": "S04",
+      "title": "CSRC notice identifying the fund electronic-disclosure route",
+      "publisher": "China Securities Regulatory Commission",
+      "date": "official 2020 notice; URL consulted by cutoff",
+      "local_path": "not retained in this C37 case",
+      "original_url": "https://www.csrc.gov.cn/csrc/c101950/c1047975/1047975/files/%E9%99%84%E4%BB%B61_%E4%B8%AD%E5%9B%BD%E8%AF%81%E7%9B%91%E4%BC%9A%E5%86%B3%E5%AE%9A%E4%BF%AE%E6%94%B9%E7%9A%84%E8%A7%84%E8%8C%83%E6%80%A7%E6%96%87%E4%BB%B6.pdf",
+      "source_type": "official_regulatory_notice",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_route_not_locally_archived",
+      "coverage_scope": "Identifies the CSRC fund electronic-disclosure route (http://eid.csrc.gov.cn/fund).",
+      "downloaded_or_captured": "Primary URL consulted; no accepted EID archive/schema/rights capture.",
+      "extraction_status": "Potential route only.",
+      "limitations": "Completeness, immutable historical access, schema, timestamps, revision history and permitted reuse are not established.",
+      "valuation_consequence": "blocks valuation",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "official public notice",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "complete historic event archive",
+          "machine-readable schema",
+          "available_at/revision history",
+          "rights"
+        ],
+        "downgrade_trigger": "Any claim that EID alone closes the ledger."
+      }
+    },
+    {
+      "source_id": "S05",
+      "title": "SSE ETF PCF disclosure page",
+      "publisher": "Shanghai Stock Exchange",
+      "date": "route observed by cutoff",
+      "local_path": "not retained in this C37 case",
+      "original_url": "https://www.sse.com.cn/disclosure/fund/etflist/",
+      "source_type": "official_exchange_disclosure_page",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_route_not_locally_archived",
+      "coverage_scope": "Forward daily PCF source hierarchy.",
+      "downloaded_or_captured": "Route observed; no full historical PCF/version archive accepted.",
+      "extraction_status": "Prospective route only.",
+      "limitations": "No accepted full historical archive, revision trail, event mapping, or replay rights.",
+      "valuation_consequence": "watchlist only",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "current official disclosure route",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "historical PCF",
+          "versions/corrections",
+          "investor distributions",
+          "IOPV history",
+          "rights"
+        ],
+        "downgrade_trigger": "Any substitution of PCF for a total-return event ledger."
+      }
+    },
+    {
+      "source_id": "S06",
+      "title": "China Securities Index governance / methodology route",
+      "publisher": "China Securities Index Co., Ltd.",
+      "date": "route observed by cutoff",
+      "local_path": "not retained in this C37 case",
+      "original_url": "https://www.csindex.com.cn/#/about/governance/?lang=zh",
+      "source_type": "official_index_provider_route",
+      "source_quality": "industry_database",
+      "evidence_tier": "tier_1_primary_route_not_locally_archived",
+      "coverage_scope": "Official index-provider route through which an exact price/total-return/net-return series definition would need to be obtained.",
+      "downloaded_or_captured": "Route observed; no per-index file, historical levels, methodology version or rights record retained.",
+      "extraction_status": "Context only.",
+      "limitations": "No exact index code/variant, historical level delivery, constituent/rebalance/corporate-action file, vintage or rights package.",
+      "valuation_consequence": "context only",
+      "evidence_depth": {
+        "source_tier": "Tier 1 route",
+        "original_availability": "official provider route",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "selected index",
+          "historical total/net levels",
+          "methodology versions",
+          "published_at/available_at",
+          "rights"
+        ],
+        "downgrade_trigger": "Any treatment as ETF investor total return or an accepted benchmark dataset."
+      }
+    },
+    {
+      "source_id": "S07",
+      "title": "SSE Market Data Products — Historical Data",
+      "publisher": "Shanghai Stock Exchange",
+      "date": "captured 2026-08-14 in referenced sibling manifest",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_market_data_products.html",
+      "original_url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "source_type": "official_exchange_data_product_page",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_for_route_and_terms_only",
+      "coverage_scope": "Historical-data subscription route and stated market-data categories.",
+      "downloaded_or_captured": "Referenced sibling file SHA-256 97ae19ecd969ec017290252e3cc5ca65f47054c1bd9edb40c594795fcbcd6a96.",
+      "extraction_status": "Route/terms evidence only; no data product delivered.",
+      "limitations": "Does not establish ETF/event coverage, exact fields, point-in-time history, revisions, price/execution data or a contract.",
+      "valuation_consequence": "blocks valuation",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "official product page",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "contract",
+          "delivery",
+          "ETF coverage",
+          "event fields",
+          "PIT data",
+          "rights"
+        ],
+        "downgrade_trigger": "Any inference of entitlement from a product-page description."
+      }
+    },
+    {
+      "source_id": "S08",
+      "title": "SSE and SZSE website legal statements",
+      "publisher": "Shanghai Stock Exchange; Shenzhen Stock Exchange",
+      "date": "captured 2026-08-14 in referenced sibling manifest",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_website_legal_statement.html; workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/szse_website_legal_statement.html",
+      "original_url": "https://www.sse.com.cn/home/legal/ ; https://www.szse.cn/application/laws/",
+      "source_type": "official_exchange_terms_page",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_for_terms_only",
+      "coverage_scope": "Website browsing/download conditions and stated restrictions.",
+      "downloaded_or_captured": "Referenced sibling file SHA-256 a19b622fc5b5baa6bea83804476dc908ff426ef244f3d3c589741a36419382e6 and 5398c463263421a98cbf90918dcaa16d6d70ef80f2052a9d0c19c1606ab27936.",
+      "extraction_status": "Terms evidence only.",
+      "limitations": "Does not grant retention, replay, derivation, normalization or independent-review rights; no illegality conclusion is inferred.",
+      "valuation_consequence": "blocks valuation",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "official website terms pages",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "data-product license",
+          "storage/normalization permission",
+          "replay/derived-use permission",
+          "independent-review permission"
+        ],
+        "downgrade_trigger": "Any claim that public visibility establishes the required rights."
+      }
+    },
+    {
+      "source_id": "S09",
+      "title": "AMAC public-fund disclosure rule route",
+      "publisher": "Asset Management Association of China",
+      "date": "official rule route consulted by cutoff",
+      "local_path": "not retained in this C37 case",
+      "original_url": "https://fg.amac.org.cn/governmentrules_3854/zcgz_gfxwj/gfxwj_gmjj/gfxwj_gmjj_xxpl/202003/t20200312_24756.html",
+      "source_type": "official_industry_rule",
+      "source_quality": "official_filing",
+      "evidence_tier": "tier_1_primary_route_not_locally_archived",
+      "coverage_scope": "Periodic disclosure expectations for distributions and tax-related items.",
+      "downloaded_or_captured": "Primary URL consulted; no normalized historic event data retained.",
+      "extraction_status": "Route/obligation only.",
+      "limitations": "Not a complete transaction-date product/share-class/investor-specific event or tax ledger.",
+      "valuation_consequence": "watchlist only",
+      "evidence_depth": {
+        "source_tier": "Tier 1",
+        "original_availability": "official public rule route",
+        "customer_order_ASP_utilization_coverage": "not_applicable_to_ETF_source_route",
+        "unsupported_fields": [
+          "complete dated distribution events",
+          "investor-specific tax treatment",
+          "revisions",
+          "rights"
+        ],
+        "downgrade_trigger": "Any use as a full event/tax ledger."
+      }
+    }
+  ],
+  "coverage_matrix": [
+    {
+      "field": "point_in_time_ETF_universe_lifecycle_survivorship",
+      "public_primary_route_observed": "SSE FUND_LIST",
+      "status": "partial",
+      "unresolved_reason": "No historical as-of snapshot, lifecycle/status, delisting or stable source version.",
+      "gate_effect": ["G1"],
+      "valuation_consequence": "blocks valuation"
+    },
+    {
+      "field": "daily_secondary_market_OHLCV",
+      "public_primary_route_observed": "SSE dayk endpoint",
+      "status": "partial",
+      "unresolved_reason": "No adjustment/event/available_at semantics and no executable transaction path.",
+      "gate_effect": ["G2", "G5", "G6"],
+      "valuation_consequence": "watchlist only"
+    },
+    {
+      "field": "NAV_and_accumulated_NAV",
+      "public_primary_route_observed": "CSRC disclosure rule and fund disclosure routes",
+      "status": "partial",
+      "unresolved_reason": "Disclosure obligation does not establish a complete, versioned historical product/share-class file.",
+      "gate_effect": ["G2", "G3", "G6"],
+      "valuation_consequence": "watchlist only"
+    },
+    {
+      "field": "distributions_splits_term_changes_termination",
+      "public_primary_route_observed": "Fund-manager, trustee, exchange notices, EID and PCF routes",
+      "status": "partial",
+      "unresolved_reason": "No complete event inventory, source-precedence rule, historical archive or revision history accepted.",
+      "gate_effect": ["G3", "G6"],
+      "valuation_consequence": "blocks valuation"
+    },
+    {
+      "field": "fund_fees_and_historic_terms",
+      "public_primary_route_observed": "Potential prospectus/contract/manager disclosures",
+      "status": "partial",
+      "unresolved_reason": "No historical fee/term ledger with effective dates and accrual conventions frozen.",
+      "gate_effect": ["G3", "G4"],
+      "valuation_consequence": "blocks valuation"
+    },
+    {
+      "field": "tax",
+      "public_primary_route_observed": "Fund and regulatory disclosure routes",
+      "status": "missing_for_required_use",
+      "unresolved_reason": "No investor/account/date-specific tax dataset or treatment hierarchy established.",
+      "gate_effect": ["G4"],
+      "valuation_consequence": "blocks valuation"
+    },
+    {
+      "field": "total_or_net_return_index_levels",
+      "public_primary_route_observed": "CSI/index-provider route and possible licensed historical-data route",
+      "status": "partial",
+      "unresolved_reason": "No exact variant, historical levels, methodology/event version, vintage or rights package.",
+      "gate_effect": ["G2", "G3", "G6", "G7"],
+      "valuation_consequence": "context only"
+    },
+    {
+      "field": "IOPV_status_halts_limits_microstructure",
+      "public_primary_route_observed": "Exchange ETF/market route surfaces and PCF route",
+      "status": "partial",
+      "unresolved_reason": "No historical versioned IOPV/status/depth or decision-time executable record accepted.",
+      "gate_effect": ["G5", "G6"],
+      "valuation_consequence": "blocks valuation"
+    },
+    {
+      "field": "bid_ask_depth_fills_costs_settlement",
+      "public_primary_route_observed": "No accepted public-primary historical ledger",
+      "status": "missing",
+      "unresolved_reason": "Closing OHLCV is not a fill; account-specific commission/tax/settlement cannot be inferred.",
+      "gate_effect": ["G4", "G5"],
+      "valuation_consequence": "blocks valuation"
+    },
+    {
+      "field": "retention_replay_derivation_independent_review_rights",
+      "public_primary_route_observed": "SSE/SZSE terms and SSE data-product route",
+      "status": "not_established",
+      "unresolved_reason": "No written grant/contract defines permitted retention, replay, derivation, normalization or review.",
+      "gate_effect": ["G7"],
+      "valuation_consequence": "blocks valuation"
+    }
+  ],
+  "unresolved_source_probes": [
+    {
+      "probe_id": "E01",
+      "query_or_target": "Historical status-qualified domestic ETF universe",
+      "source_attempted": "SSE FUND_LIST",
+      "result": "Current endpoint enumeration demonstrated; no historical snapshot accepted.",
+      "reason_unresolved": "No source as-of version, lifecycle, delisting or full historical cohort.",
+      "artifacts_saved": "Sibling R4 manifest, SHA-256 908a1d8dffa5aafa8894411609d53642ecae588bbd2ffefc67b6030d2ba1d5ad.",
+      "next_verification_path": "Obtain an authorized, date-stamped historical master with lifecycle events and replay rights.",
+      "blocks_valuation": true,
+      "owner": "Future data-governance owner"
+    },
+    {
+      "probe_id": "E02",
+      "query_or_target": "Secondary-market return basis and adjustment events",
+      "source_attempted": "SSE dayk endpoint",
+      "result": "Retrospective OHLCV observation demonstrated.",
+      "reason_unresolved": "Adjustment convention, events, availability/revisions and executable path absent.",
+      "artifacts_saved": "Sibling C7 manifest, SHA-256 bb0550c4eaa207ece0eaa00c2410eff13516ade63bc859136a7848f1891822b0.",
+      "next_verification_path": "Obtain provider field dictionary plus dated event/adjustment and available-at history.",
+      "blocks_valuation": true,
+      "owner": "Future market-data owner"
+    },
+    {
+      "probe_id": "E03",
+      "query_or_target": "NAV, accumulated NAV, distribution and fund-event ledger",
+      "source_attempted": "CSRC rule, EID route and fund-manager notices",
+      "result": "Disclosure obligations and routes identified.",
+      "reason_unresolved": "No complete product/share-class event archive, source precedence, dates or version history accepted.",
+      "artifacts_saved": "Official URLs recorded in C37; no raw C37 archive.",
+      "next_verification_path": "Before product selection, retain complete official notices, terms and NAV history with hashes and timestamps.",
+      "blocks_valuation": true,
+      "owner": "Future fund-disclosure owner"
+    },
+    {
+      "probe_id": "E04",
+      "query_or_target": "Total/net-return index benchmark series",
+      "source_attempted": "CSI route and historical-data route",
+      "result": "Concept and provider route identified.",
+      "reason_unresolved": "No exact index variant, levels, methodology/corporate-action version, vintage or rights package.",
+      "artifacts_saved": "Official URLs recorded in C37; no accepted per-index archive.",
+      "next_verification_path": "Obtain per-index official historical delivery and methodology/version files under accepted rights.",
+      "blocks_valuation": true,
+      "owner": "Future index-data owner"
+    },
+    {
+      "probe_id": "E05",
+      "query_or_target": "Retention, replay, derivation and audit rights",
+      "source_attempted": "SSE/SZSE terms and SSE/SSEInfo data-service routes",
+      "result": "Public terms and potential paid route identified.",
+      "reason_unresolved": "Neither establishes a user-specific data license or audit rights.",
+      "artifacts_saved": "Sibling R3 manifest, SHA-256 91a2c228275a017421e966e94a5fbdc8ac05d05e33d3eebbdd876a448f5d9f45.",
+      "next_verification_path": "Written permission/contract defining scope, storage, derived use, replay and reviewer access.",
+      "blocks_valuation": true,
+      "owner": "Future legal/data-governance owner"
+    },
+    {
+      "probe_id": "E06",
+      "query_or_target": "Decision-time executable price, costs, settlement and no-fill",
+      "source_attempted": "Exchange market surfaces; no broker/account record",
+      "result": "No accepted historical transaction-level ledger.",
+      "reason_unresolved": "Closing OHLCV is not a fill; account-specific commission/tax/settlement cannot be inferred.",
+      "artifacts_saved": "None.",
+      "next_verification_path": "Freeze conservative fill/no-fill rule and obtain permitted source records; account-specific facts remain outside public-only proof.",
+      "blocks_valuation": true,
+      "owner": "Future execution-data owner"
+    },
+    {
+      "probe_id": "E07",
+      "query_or_target": "Historical IOPV, status, halts/resumptions and limits",
+      "source_attempted": "Exchange ETF/market pages and PCF route",
+      "result": "Current/forward route surface observed.",
+      "reason_unresolved": "No historic versioned IOPV/status archive or replay evidence.",
+      "artifacts_saved": "No accepted archive.",
+      "next_verification_path": "Forward-capture raw daily objects and seek historical delivery.",
+      "blocks_valuation": true,
+      "owner": "Future market-data owner"
+    },
+    {
+      "probe_id": "E08",
+      "query_or_target": "Investor-specific tax treatment",
+      "source_attempted": "Regulatory and fund disclosure routes",
+      "result": "General disclosure route only.",
+      "reason_unresolved": "Treatment can vary by instrument, date, investor/account and transaction; no governing ledger frozen.",
+      "artifacts_saved": "Official URLs recorded in C37; no tax ledger.",
+      "next_verification_path": "Obtain dated authoritative tax treatment and explicitly scoped account assumptions before any test.",
+      "blocks_valuation": true,
+      "owner": "Future tax-governance owner"
+    }
+  ],
+  "pre_specification_assessment": {
+    "status": "SPECIFICATION_ONLY_NOT_HISTORICAL_TEST_READY",
+    "can_be_frozen_now": [
+      "Hypothesis, universe definition, start/end dates, decision timing, reconstitution, holdout and failure/no-action rules",
+      "Field dictionary and primary/fallback source map",
+      "Mutually exclusive return-basis convention and anti-double-count rule",
+      "Event precedence and reconciliation schema",
+      "Execution/no-fill/cost/tax/settlement convention"
+    ],
+    "cannot_be_certified_now": [
+      "Point-in-time universe and source availability",
+      "Complete event and term history",
+      "Historical execution and investor cost/tax data",
+      "Rights sufficient for reproducible replay",
+      "A clean holdout using a closed final dataset"
+    ],
+    "minimum_data_contract": [
+      "Retain URL, document id, published_at, available_at, retrieved_at, HTTP metadata, raw hash, parser version and source version for every field.",
+      "Maintain a universe lifecycle ledger, event ledger, cost/tax ledger, execution ledger and revision log.",
+      "Forbid a historical computation until all hard gates are independently signed off.",
+      "Do not combine an adjusted market-price series and separately reinvested distributions unless the provider documents the same convention.",
+      "Preserve immutable raw and normalized archives plus an independent rerun procedure."
+    ]
+  },
+  "conditional_prospective_capture": {
+    "status": "CONDITIONAL_OBSERVATION_ONLY",
+    "precondition": "Written terms must permit retrieval, retention, normalization, replay, derived analysis and independent review.",
+    "records": [
+      {
+        "object": "universe_and_status",
+        "primary_route": "Exchange listing and trading-status records",
+        "minimum_fields": ["code/share class", "status", "lifecycle event", "source timestamp/version"],
+        "boundary": "Capture disappeared products and corrections, not current rows only."
+      },
+      {
+        "object": "market_observation",
+        "primary_route": "Exchange quote/market data",
+        "minimum_fields": ["timestamped price", "bid/ask if available", "volume/turnover", "limits", "halt/status"],
+        "boundary": "Not executable without a pre-declared fill/no-fill rule and sufficient fields."
+      },
+      {
+        "object": "fund_value_observation",
+        "primary_route": "Fund-manager and official fund-disclosure route",
+        "minimum_fields": ["NAV", "accumulated NAV", "share class", "publication time", "source document/version"],
+        "boundary": "Do not equate with secondary-market investor return absent an explicit return basis."
+      },
+      {
+        "object": "PCF_and_exchange_announcement",
+        "primary_route": "SSE PCF and controlling exchange announcement",
+        "minimum_fields": ["PCF version", "publication time", "source precedence", "changes/corrections"],
+        "boundary": "PCF is not a substitute for investor distributions, costs or historical IOPV."
+      },
+      {
+        "object": "corporate_action_and_distribution",
+        "primary_route": "Manager, trustee and exchange official notices",
+        "minimum_fields": ["event type", "announce/ex/record/pay/effective dates", "amount", "tax basis", "terms", "correction link"],
+        "boundary": "Reconcile every event before any return calculation."
+      },
+      {
+        "object": "index_benchmark",
+        "primary_route": "Index-provider methodology and level file",
+        "minimum_fields": ["exact variant", "level date", "publication time", "methodology/version", "rebalance/event record"],
+        "boundary": "Benchmark only; never relabel as ETF investor total return."
+      }
+    ],
+    "non_remediation_statement": "Forward capture cannot repair past survivorship, revisions, availability, event history, execution, or rights gaps."
+  },
+  "claim_audit": [
+    {
+      "claim": "C37-CL-01: The retained SSE endpoint evidence supports retrospective daily OHLCV observation for sampled ETFs.",
+      "company": "No issuer/fund selected",
+      "customer/platform": "SSE ETF market-data endpoint",
+      "source file": "Sibling C7 manifest, SHA-256 bb0550c4eaa207ece0eaa00c2410eff13516ade63bc859136a7848f1891822b0",
+      "original URL": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/{fundCode}?callback=c7probe&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=0&end=5000",
+      "source type": "official_exchange_market_data_endpoint",
+      "source_quality": "official_filing",
+      "confidence": "high",
+      "used in valuation?": "no — blocks investor-return valuation",
+      "adopted wording": "The retained SSE endpoint evidence supports retrospective daily OHLCV observation for sampled ETFs; it does not establish a point-in-time total-return, event, execution, or rights ledger."
+    },
+    {
+      "claim": "C37-CL-02: The captured SSE endpoint supports a current live listing enumeration.",
+      "company": "No issuer/fund selected",
+      "customer/platform": "SSE FUND_LIST",
+      "source file": "Sibling R4 manifest, SHA-256 908a1d8dffa5aafa8894411609d53642ecae588bbd2ffefc67b6030d2ba1d5ad",
+      "original URL": "https://query.sse.com.cn/commonSoaQuery.do",
+      "source type": "official_exchange_listing_endpoint",
+      "source_quality": "official_filing",
+      "confidence": "high",
+      "used in valuation?": "no — blocks universe admission",
+      "adopted wording": "The captured endpoint supports a current live listing enumeration, not a date-specific eligible universe or survivorship history."
+    },
+    {
+      "claim": "C37-CL-03: The CSRC rule supports an official NAV/accumulated-NAV disclosure route for ordinary open funds.",
+      "company": "No issuer/fund selected",
+      "customer/platform": "CSRC fund-disclosure system",
+      "source file": "Not locally retained in C37; official rule URL recorded",
+      "original URL": "https://www.csrc.gov.cn/csrc/c106256/c1653985/content.shtml",
+      "source type": "official_regulatory_rule",
+      "source_quality": "official_filing",
+      "confidence": "medium_high",
+      "used in valuation?": "no — watchlist only",
+      "adopted wording": "The rule supports an official NAV/accumulated-NAV disclosure route for ordinary open funds; it does not by itself supply a complete historical product-level investor total-return ledger."
+    },
+    {
+      "claim": "C37-CL-04: The official index-provider route identifies where an exact index series definition would need to be obtained.",
+      "company": "No issuer/index selected",
+      "customer/platform": "China Securities Index",
+      "source file": "Not locally retained in C37; official route URL recorded",
+      "original URL": "https://www.csindex.com.cn/#/about/governance/?lang=zh",
+      "source type": "official_index_provider_route",
+      "source_quality": "industry_database",
+      "confidence": "medium",
+      "used in valuation?": "no — benchmark conditional only",
+      "adopted wording": "The official index-provider route identifies where an exact index series definition would need to be obtained; no exact price/total-return/net-return variant, historical level file, vintage, or rights package has been accepted here."
+    },
+    {
+      "claim": "C37-CL-05: No reviewed public-primary source combination closes all hard gates for the historical ETF investor-total-return/event-ledger test.",
+      "company": "No issuer/fund selected",
+      "customer/platform": "All reviewed routes",
+      "source file": "This C37 gate, source registry and exhaustion record",
+      "original URL": "See S01-S09",
+      "source type": "synthesized_source_governance_assessment",
+      "source_quality": "corpus_gap",
+      "confidence": "high",
+      "used in valuation?": "no — blocks valuation/test",
+      "adopted wording": "As of the cutoff, no reviewed public-primary source combination closes all hard gates for an actual historical ETF investor-total-return/event-ledger test."
+    },
+    {
+      "claim": "C37-CL-06: C37 selects no product or index and gives no allocation, transaction, recommendation or return expectation.",
+      "company": "No issuer/fund/index selected",
+      "customer/platform": "Not applicable",
+      "source file": "Research brief and this C37",
+      "original URL": "Not applicable",
+      "source type": "scope_control",
+      "source_quality": "corpus_gap",
+      "confidence": "high",
+      "used in valuation?": "no",
+      "adopted wording": "C37 selects no product or index and gives no allocation, transaction, recommendation, or return expectation."
+    }
+  ],
+  "broker_forecast_governance": {
+    "status": "not_applicable",
+    "statement": "No broker forecast, target price, rating, 2026E/2027E revenue, net profit, EPS, valuation method or Street-consensus claim was used."
+  },
+  "limitations": [
+    "This is not a legal opinion. It records that required rights were not established from reviewed public pages; it does not label any use unlawful.",
+    "No full historical ETF universe, event archive, broker cost file, investor tax ledger or market microstructure dataset was purchased, requested or received.",
+    "A primary URL without a retained raw body is weaker reproducibility evidence than a hashed local capture and is not treated as a closed field.",
+    "No inference about future availability, performance, suitability or investability is permitted."
+  ]
+}

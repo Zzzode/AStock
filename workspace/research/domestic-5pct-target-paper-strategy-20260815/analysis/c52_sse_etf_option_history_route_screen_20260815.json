@@ -1,0 +1,128 @@
+{
+  "artifact_id": "D5PT-C52-v1",
+  "as_of": "2026-08-15",
+  "boundary": "This is a public-source coverage assessment, not a product recommendation, return forecast, historical-performance result, account-suitability conclusion, portfolio allocation or order instruction.",
+  "coverage_matrix": [
+    {
+      "finding": "Current daily-contract fields plus dated listing/delisting/adjustment queries can support limited checks, but not a demonstrated complete historical as-of master.",
+      "formal_gate_closed": false,
+      "public_coverage": "partial_event_evidence_only",
+      "required_component": "Point-in-time actual option contract master"
+    },
+    {
+      "finding": "The retained public market page is current-market labelled; the retained daily-contract query has no captured historical as-of parameter. No complete historical quote/depth/fill panel is evidenced.",
+      "formal_gate_closed": false,
+      "public_coverage": "not_demonstrated",
+      "required_component": "Historical option close/settlement and decision-time bid/ask/depth panel"
+    },
+    {
+      "finding": "Dated adjustment records can inform a manual cross-check, but they are not a normalized total-return, cash-flow or immutable timing ledger.",
+      "formal_gate_closed": false,
+      "public_coverage": "partial_event_evidence_only",
+      "required_component": "ETF distribution, option-adjustment and lifecycle mapping"
+    },
+    {
+      "finding": "The historical-data product page is not a written delivery, usage right or accepted data contract.",
+      "formal_gate_closed": false,
+      "public_coverage": "conditional_future_product_category_only",
+      "required_component": "Historical data rights, available-at/version chain and independent replay rights"
+    },
+    {
+      "finding": "None of the retained public sources is an account, broker-routing, execution-cost or settlement record.",
+      "formal_gate_closed": false,
+      "public_coverage": "absent",
+      "required_component": "Broker/account eligibility, order state, fills, fees, settlement and cash movements"
+    }
+  ],
+  "decision": {
+    "action": "NO_ACTION",
+    "reason": "Do not select an ETF, contract, strike, expiry, size, broker, calendar or threshold. Any future formal C51 study still requires a user-authorized, written-rights delivery plus accepted point-in-time, total-return/event and execution evidence.",
+    "state": "NO_PUBLIC_REPLAY_OR_ADMISSION_PATH"
+  },
+  "external_orders": false,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "public_source_findings": {
+    "adjustment_event_example": {
+      "not_established": "A normalized ETF distribution, cash-flow, total-return or investor-settlement ledger.",
+      "usable_for": "An example that corporate-action mapping is economically material and must be retained in any later option lifecycle ledger.",
+      "what_is_evidenced": "The 2016-11-28 SSE notice says a 50ETF distribution would trigger adjustment of unexpired option contracts, including contract unit and prior-settlement adjustments and relisting of new contracts."
+    },
+    "current_market_display": {
+      "not_established": "A public, date-queryable historical close or settlement panel, a historical bid/ask/depth tape, or an order/fill record.",
+      "what_is_evidenced": "The retained SSE page is labelled '行情'."
+    },
+    "daily_contract_display": {
+      "bounded_interpretation": "The retained public implementation supports a current-day contract view filtered by expiry and underlying. It is not evidence of a complete, immutable historical as-of contract-master archive. This is a statement about the captured query only; it does not claim that no other SSE route could exist.",
+      "captured_query_parameters": [
+        "expireDate",
+        "securityId",
+        "pagination"
+      ],
+      "historical_as_of_parameter_in_captured_daily_query": false,
+      "what_is_evidenced": "The SSE page is explicitly labelled '当日合约'. Its retained client query renders contract code, trading code, name, underlying, call/put, exercise price, unit, exercise/delivery/expiry dates, new-listing flag, price limits, prior settlement, adjustment and delisting fields."
+    },
+    "historical_data_product_page": {
+      "bounded_interpretation": "This identifies a possible future licensed-data category only. It does not prove current written rights, a delivered field set, point-in-time version/available-at coverage, replay rights, account records or C48 closure.",
+      "what_is_evidenced": "The SSE information operator describes a historical-data product covering stock options and categories including snapshots, trades, daily/minute bars and reference files, with a business-application link."
+    },
+    "listing_delisting_adjustment_disclosures": {
+      "not_established": "A normalized, complete point-in-time master; immutable versions or available-at history; full lifecycle completeness across every contract and date.",
+      "usable_for": "Dated, contract-event cross-checks and selected adjustment-event reconstruction.",
+      "what_is_evidenced": "The SSE '挂牌信息' page presents new-listing, delisting and adjustment sections, and its retained query implementation accepts adjustDate for each of those categories."
+    }
+  },
+  "relationship_to_existing_controls": {
+    "c48_status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+    "c49_status": "CONDITIONAL_AUTHORIZED_DATA_ROUTE_DISCOVERY_NO_CURRENT_ACCEPTED_DELIVERY",
+    "c51_status": "NOT_ADMITTED_OPTIONS_FAMILY_NO_NEW_USABLE_ROUTE",
+    "effect": "C52 adds source-level precision to C51's historical-data gap. It does not close C48, alter C49's conditional future-route conclusion, reopen C13, or admit C51."
+  },
+  "research_only": true,
+  "schema_version": "c52_sse_etf_option_history_route_screen.v1",
+  "scope": "A read-only coverage screen of retained public SSE pages and their client-side query implementation. It asks whether those pages close C51's historical data contract; it does not test, select or operate a collar or any other option position.",
+  "source_control": {
+    "dependencies": {
+      "c48": {
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json",
+        "sha256": "dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce",
+        "status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT"
+      },
+      "c49": {
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c49_official_authorized_data_route_recheck_20260815.json",
+        "sha256": "990a20b9ab5a8d855656b3e642848d55f17b4394f28c07568cdbedfc9f5317b3",
+        "status": "CONDITIONAL_AUTHORIZED_DATA_ROUTE_DISCOVERY_NO_CURRENT_ACCEPTED_DELIVERY"
+      },
+      "c51": {
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+        "sha256": "114d4ee9795ba94f50a23b3aecd321fe15b8ebdc2decacfb6dc5d1023ff86f1c",
+        "status": "NOT_ADMITTED_OPTIONS_FAMILY_NO_NEW_USABLE_ROUTE"
+      }
+    },
+    "manifest": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c52-sse-etf-option-history-route-20260815/manifest.json",
+    "manifest_sha256": "92fdb7356454e21c203ea88baf6d3a7fee1d03e7fde576901d2e1ccc50de0c76",
+    "source_hashes": {
+      "C52-S01": "174776f4d6a0c205565d540b747fca6058a9717753588cd35564eb799c7072e1",
+      "C52-S02": "e8d9755ee343ab44724ecfa95a681216a8f564b6e1c2b20a3d369b0a604912cb",
+      "C52-S03": "5b7f88565d943aa1503811b774b98e9d82815e67dc0be0f79669e2fe1b04091e",
+      "C52-S04": "d3fe735a30cad061375ce03441522dcbe48b32a899b67b09fee08412a6452eb7",
+      "C52-S05": "a968a1a9a30897a5a1e7c796d3e8a3357c672f694004cd1a047bc88668a1e38d",
+      "C52-S06": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f"
+    },
+    "source_ids": [
+      "C52-S01",
+      "C52-S02",
+      "C52-S03",
+      "C52-S04",
+      "C52-S05",
+      "C52-S06"
+    ]
+  },
+  "status": "PUBLIC_SSE_OPTION_SOURCE_ROUTE_INSUFFICIENT_FOR_C51_REPLAY",
+  "strict_hurdle_boundary": {
+    "contractual_or_rule_based_positive_five_percent_floor_evidenced": false,
+    "historical_net_total_return_test_performed": false,
+    "hurdle": "Long-run annualized return above 5% is a research objective only, not a promise or guarantee.",
+    "reason": "Public source coverage does not establish the history, total-return/event, execution/cost, account or rights inputs needed to calculate a net collar outcome."
+  }
+}

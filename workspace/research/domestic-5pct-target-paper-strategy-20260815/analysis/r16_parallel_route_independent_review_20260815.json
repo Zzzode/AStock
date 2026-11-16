@@ -1,0 +1,229 @@
+{
+  "schema_version": "d5pt_r16_parallel_route_independent_review.v1",
+  "artifact_id": "D5PT-R16-PARALLEL-ROUTE-INDEPENDENT-REVIEW-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "review_cycle": "parallel_independent_review",
+  "reviewer": {
+    "role": "research-report-reviewer",
+    "mode": "independent_read_only_maker_checker"
+  },
+  "scope": {
+    "artifacts": [
+      "analysis/c37_domestic_etf_total_return_source_route_20260815.md",
+      "analysis/c38_direct_equity_institutional_research_route_20260815.md",
+      "analysis/c39_independent_strategy_hypothesis_protocol_20260815.md",
+      "analysis/c40_600519_equity_diligence_20260815.md",
+      "analysis/c41_600900_equity_diligence_20260815.md",
+      "analysis/c42_601088_equity_diligence_20260815.md",
+      "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.json"
+    ],
+    "lenses": [
+      "C37 public-primary historical-test boundary",
+      "C39 economic and data separation from C34",
+      "C38 G0-G9 non-admission compliance for C40-C42",
+      "source manifest, hash, and anti-bot boundary integrity",
+      "legacy-objective and affirmative-action language boundary",
+      "Markdown/JSON twin validation"
+    ],
+    "out_of_scope": [
+      "New model calculation or performance result",
+      "Investment recommendation, security selection, valuation, or action",
+      "Repairing any artifact other than this independent review pair"
+    ]
+  },
+  "verdicts": {
+    "review_scope_publishability_status": "BLOCKED",
+    "scope_limited_review_score": 55,
+    "score_scope": "R16 review only; the inherited case-wide R15 publication baseline remains 25/100 and BLOCKED.",
+    "strategy_admitted": false,
+    "c37_historical_etf_index_test_admitted": false,
+    "c39_usable_strategy_admitted": false,
+    "c39_current_action": "NO_ACTION",
+    "c39_risk_model_status": "VETO",
+    "individual_security_admissions": {
+      "600519": false,
+      "600900": false,
+      "601088": false
+    },
+    "external_actions_authorized": false,
+    "recommendation_or_guarantee_issued": false
+  },
+  "checks": [
+    {
+      "check_id": "R16-C-001",
+      "name": "C37 public-primary historical ETF/index total-return route",
+      "status": "verified",
+      "result": "PASS",
+      "evidence": "C37 states NO_GO_PUBLIC_PRIMARY_HISTORICAL_TEST; G1-G6 are not closed, G7 is not established, and G8 is specification-only. It selects no ETF/index and runs no historical return test.",
+      "admission_effect": "No historical ETF investor-total-return test, valuation input, or strategy-operability conclusion is admitted."
+    },
+    {
+      "check_id": "R16-C-002",
+      "name": "C37 sibling-manifest provenance integrity",
+      "status": "verified",
+      "result": "PASS",
+      "evidence": {
+        "c7_manifest_sha256": "bb0550c4eaa207ece0eaa00c2410eff13516ade63bc859136a7848f1891822b0",
+        "c7_entries_checked": "6/6",
+        "r4_manifest_sha256": "908a1d8dffa5aafa8894411609d53642ecae588bbd2ffefc67b6030d2ba1d5ad",
+        "r4_entries_checked": "6/6",
+        "r3_manifest_sha256": "91a2c228275a017421e966e94a5fbdc8ac05d05e33d3eebbdd876a448f5d9f45",
+        "r3_entries_checked": "5/5"
+      },
+      "boundary": "C37 explicitly labels these as sibling evidence and does not silently convert them into a case-local licensed data delivery."
+    },
+    {
+      "check_id": "R16-C-003",
+      "name": "C39 independence from C34 and risk veto",
+      "status": "verified",
+      "result": "PASS",
+      "evidence": "C39 prohibits reuse of C34 products, rotation, relative momentum, dual-horizon score, inverse-volatility sizing, sleeves, price-proxy cost load, samples, diagnostics, results, and parameters. The actual C34 ETF codes have zero hits in C39 Markdown/JSON, and the remaining C34 mechanics mentions are prohibitions.",
+      "admission_effect": "C34 remains failed on its own record; C39 remains preregistration-only, NO_ACTION, and risk-model VETO."
+    },
+    {
+      "check_id": "R16-C-004",
+      "name": "C38 G0-G9 discipline for C40-C42",
+      "status": "verified",
+      "result": "PASS",
+      "evidence": {
+        "C40": "G0-G5 PARTIAL_NOT_CLEARED; G6-G9 BLOCKED; NON_ADMITTED_RESEARCH_SUBJECT / NO_ACTION",
+        "C41": "G0-G5 PARTIAL_NOT_CLEARED; G6-G8 BLOCKED; G9 NOT_PERFORMED; NON_ADMITTED_RESEARCH_SUBJECT / NO_ACTION",
+        "C42": "0/10 passed; G0-G5 PARTIAL_UNCLEARED; G6-G9 BLOCKED; NON_ADMITTED_RESEARCH_SUBJECT / NO_ACTION"
+      },
+      "admission_effect": "No issuer is valued, selected, weighted, liquidity-certified, total-return-tested, or authorized for external action."
+    },
+    {
+      "check_id": "R16-C-005",
+      "name": "C40-C42 source-manifest and dossier binding integrity",
+      "status": "verified",
+      "result": "PASS",
+      "evidence": {
+        "C40_dossier_to_manifest_bindings": "9/9",
+        "C41_dossier_to_manifest_bindings": "6/6",
+        "C42_dossier_to_manifest_bindings": "7/7",
+        "local_primary_and_probe_files_byte_and_sha256_checked": "25/25"
+      },
+      "boundary": "Primary-document retention is a bounded source-integrity upgrade only; it does not close disclosure lineage, availability, market-data, valuation, liquidity, total-return, execution, or independent-review gates."
+    },
+    {
+      "check_id": "R16-C-006",
+      "name": "SSE anti-bot probe classification",
+      "status": "verified",
+      "result": "PASS",
+      "evidence": {
+        "probe_files": [
+          "sources/probe-sse-600519-disclosure-access-20260815/sse_600519_20260815_h1_antibot_response.html.gz",
+          "sources/probe-sse-600519-disclosure-access-20260815/sse_600519_20260815_policy_change_antibot_response.html.gz",
+          "sources/probe-sse-601088-disclosure-access-20260815/sse_601088_20260814_antibot_response.html.gz"
+        ],
+        "gzip_integrity": "3/3 PASS",
+        "payload_classification": "HTML/JavaScript anti-bot challenge, not an announcement PDF"
+      },
+      "boundary": "No probe is used as an announcement capture, financial fact, PDF hash, or same-session availability proof."
+    },
+    {
+      "check_id": "R16-C-007",
+      "name": "Legacy objective and affirmative action-language scan",
+      "status": "verified",
+      "result": "PASS",
+      "evidence": {
+        "exact_non_url_3_percent_objective_hits": [],
+        "principal_or_capital_preservation_objective_hits": [],
+        "cash_reinvestment_objective_hits": [],
+        "affirmative_buy_sell_hold_allocation_guarantee_or_permission_hits": []
+      },
+      "boundary": "C39's 5% hurdle is expressly a research hurdle rather than a promise/floor/forecast. Its non-interest-bearing cash ledger and no-reinvestment treatment are return-accounting controls, not an objective. NO_ACTION and negative recommendation/action references are governance boundaries only."
+    },
+    {
+      "check_id": "R16-C-008",
+      "name": "Markdown/JSON pair and decision-field validation",
+      "status": "verified_with_open_semantic_exception",
+      "result": "CONDITIONAL",
+      "evidence": {
+        "markdown_json_pairs_present": "6/6",
+        "json_parse": "6/6",
+        "artifact_id_cutoff_and_top_level_non_admission_alignment": "6/6",
+        "semantic_exception": "R16-A-001: C40's later raw-query-response statement conflicts with its retained manifest/path/hash declaration."
+      }
+    },
+    {
+      "check_id": "R16-C-009",
+      "name": "Current repository publication-gate runner",
+      "status": "verified",
+      "result": "CONTROLLED_FAIL",
+      "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/tools/run_research_gates.py workspace/research/domestic-5pct-target-paper-strategy-20260815",
+      "evidence": "57 PASS / 36 FAIL; RESULT FAIL. The case lacks publish-bound artifacts and a case-local generic verifier.",
+      "inherited_finding": "R15-S-005 remains the relevant existing publication-gate blocker and is not duplicated by R16."
+    }
+  ],
+  "findings": [
+    {
+      "issue_id": "R16-S-001",
+      "severity": "S",
+      "scope": "reader_facing_chinese_language_compliance",
+      "status": "open",
+      "lifecycle": "open -> fixed -> verified -> closed",
+      "owner_skill": "research-prose-polish",
+      "owner_agent": "research-prose-polish",
+      "artifact": "analysis/c40_600519_equity_diligence_20260815.md",
+      "location": "lines 16-30",
+      "evidence": "C40 declares document_language zh-CN but contains English Fundamental-analyst record prose with Catalyst Calendar, Valuation Context, Thesis Breakers, and substantive evidence-risk logic.",
+      "fix_required": "Translate the English block into Chinese without changing facts, figures, evidence status, gate logic, or the non-admission conclusion; then independently re-read it.",
+      "blocking_gate": "chinese_reader_facing_valuation_risk_catalyst_language",
+      "status_effect": "C40 cannot be released as a Chinese reader-facing dossier. 600519 remains NON_ADMITTED_RESEARCH_SUBJECT / NO_ACTION."
+    },
+    {
+      "issue_id": "R16-A-001",
+      "severity": "A",
+      "scope": "source_record_and_twin_consistency",
+      "status": "open",
+      "lifecycle": "open -> fixed -> verified -> closed",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "analysis/c40_600519_equity_diligence_20260815.json",
+      "location": "lines 166-169 and 509",
+      "evidence": "C40-S05 declares an archived raw SSE query response with path and SHA-256 ac3d7cfbc5cdcbc818af1cde3ea9aee599da7e5d513d0031549d762a477eeffd, while a later field says the raw response is not retained. The manifest and Markdown confirm the raw query response is retained; only PDF content, timestamp semantics, and a complete availability chain are unverified.",
+      "fix_required": "Correct the later field to state that the query response is retained but its timestamp semantics, announced-PDF content, and same-session availability are not validated. Preserve the G1/G8 non-admission boundary and rerun the source-binding check.",
+      "blocking_gate": "source_record_consistency",
+      "status_effect": "The error is conservative, not a silent admission. It does not permit C40 valuation, liquidity, total-return, execution, or strategy use."
+    },
+    {
+      "issue_id": "R16-B-001",
+      "severity": "B",
+      "scope": "source_tree_hygiene",
+      "status": "open",
+      "lifecycle": "open -> fixed -> verified -> closed",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "artifact": "sources/probe-sse-600519-announcement-query-20260815/",
+      "evidence": "The named probe directory is empty, unreferenced, and has no manifest. C40 instead correctly references probe-sse-600519-disclosure-access-20260815 for the two retained anti-bot responses.",
+      "fix_required": "Add a minimal zero-capture manifest explaining an intentionally abandoned batch, or remove the empty staging directory after confirming it is not needed. Do not treat it as an announcement source.",
+      "blocking_gate": "none",
+      "status_effect": "No hash, evidence claim, gate, or admission conclusion currently depends on this directory."
+    }
+  ],
+  "finding_counts": {
+    "S_open": 1,
+    "A_open": 1,
+    "B_open": 1,
+    "fixed_pending_verification": 0,
+    "verified_closed_in_this_cycle": 0
+  },
+  "inherited_case_blockers_not_duplicated": [
+    "R15-S-001 through R15-S-005 remain open in the prior independent audit.",
+    "The repository publication-gate runner currently returns RESULT FAIL.",
+    "No case-local 39 PASS / 0 FAIL generic verifier result is available."
+  ],
+  "final_decision": {
+    "strategy_admitted": false,
+    "c37_etf_index_historical_test_admitted": false,
+    "c39_hypothesis_admitted_as_usable_strategy": false,
+    "600519_admitted": false,
+    "600900_admitted": false,
+    "601088_admitted": false,
+    "external_action_authorized": false,
+    "statement": "No strategy or individual security is admitted. This review issues no investment recommendation, target, allocation, performance result, guarantee, or external instruction."
+  }
+}

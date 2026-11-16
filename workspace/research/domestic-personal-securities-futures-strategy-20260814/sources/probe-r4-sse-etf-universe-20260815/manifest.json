@@ -1,0 +1,211 @@
+{
+  "schema_version": "r4_sse_etf_universe_probe_manifest.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "capture_batch": "probe-r4-sse-etf-universe-20260815",
+  "capture_date_local": "2026-08-15",
+  "purpose": "Research-only R4 test of whether a broad current SSE ETF listing cohort can be mechanically enumerated from a public first-party master/listing endpoint. No product selection, allocation, holding, order, or return conclusion is permitted.",
+  "source": {
+    "authority": "Shanghai Stock Exchange",
+    "endpoint": "https://query.sse.com.cn/commonSoaQuery.do",
+    "source_page": "https://www.sse.com.cn/assortment/fund/list/",
+    "method": "GET",
+    "sql_id": "FUND_LIST",
+    "authentication": "none",
+    "cookies_or_credentials": "none",
+    "access_mode": "unauthenticated, read-only, first-party SSE endpoint",
+    "request_headers": {
+      "Referer": "https://www.sse.com.cn/assortment/fund/list/",
+      "Accept": "application/json, text/javascript, */*; q=0.01",
+      "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/123 Safari/537.36"
+    }
+  },
+  "filter": {
+    "fundType": "00",
+    "subClass_master_filter": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "06",
+      "08",
+      "09",
+      "31",
+      "32",
+      "33",
+      "34",
+      "35",
+      "36",
+      "37",
+      "38"
+    ],
+    "interpretation_boundary": "The API exposes objective fundType/subClass codes, but its captured JSON has no textual codebook."
+  },
+  "capture_integrity": {
+    "response_http_status": 200,
+    "response_content_type": "application/json;charset=UTF-8",
+    "storage_normalization": "The HTTP bodies were one-line JSON. Repository storage adds exactly one terminal LF byte. raw_http_body_sha256 is calculated before the LF; stored_file_sha256 is calculated over the on-disk file.",
+    "raw_body_verification": "SHA-256 of each local source file after removing exactly its final LF equals raw_http_body_sha256; JSON syntax was validated."
+  },
+  "requests": [
+    {
+      "id": "master_page_1",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/fund_list_master_page_1.json",
+      "url": "https://query.sse.com.cn/commonSoaQuery.do?isPagination=true&sqlId=FUND_LIST&fundType=00&subClass=01%2C02%2C03%2C04%2C06%2C08%2C09%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38&pageHelp.pageSize=5&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1",
+      "requested_at_utc": "2026-08-14T16:17:22.609632432Z",
+      "received_at_utc": "2026-08-14T16:17:23.286953319Z",
+      "raw_http_body_bytes": 4010,
+      "raw_http_body_sha256": "04c5b1cf4b3439765927e91d0b481609c9e8422f1b63feeffc5c01495b3fd0e1",
+      "stored_file_bytes": 4011,
+      "stored_file_sha256": "07b3bd29cbee0c219a3b52be53d787af05c1541bf07ef9e4bee785379c8a77ea",
+      "pagination": {
+        "page_size": 5,
+        "page_no": 1,
+        "page_count": 179,
+        "total": 893,
+        "returned_rows": 5
+      }
+    },
+    {
+      "id": "master_page_2",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/fund_list_master_page_2.json",
+      "url": "https://query.sse.com.cn/commonSoaQuery.do?isPagination=true&sqlId=FUND_LIST&fundType=00&subClass=01%2C02%2C03%2C04%2C06%2C08%2C09%2C31%2C32%2C33%2C34%2C35%2C36%2C37%2C38&pageHelp.pageSize=5&pageHelp.pageNo=2&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=2",
+      "requested_at_utc": "2026-08-14T16:17:23.360346605Z",
+      "received_at_utc": "2026-08-14T16:17:24.076102092Z",
+      "raw_http_body_bytes": 4022,
+      "raw_http_body_sha256": "89a025f6f1e68c152844af93b4e149a85cde4a748c39e3534eaf54308e2c345f",
+      "stored_file_bytes": 4023,
+      "stored_file_sha256": "49b1426a4c1f1635c4ade9c0f24379ad7fa6cf35a3c8d82792e3d42b93936edc",
+      "pagination": {
+        "page_size": 5,
+        "page_no": 2,
+        "page_count": 179,
+        "total": 893,
+        "returned_rows": 5,
+        "page_1_page_2_disjoint_sample": true
+      }
+    },
+    {
+      "id": "equity_partition_page_1",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/fund_list_equity_family_page_1.json",
+      "url": "https://query.sse.com.cn/commonSoaQuery.do?isPagination=true&sqlId=FUND_LIST&fundType=00&pageHelp.pageSize=5&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&subClass=01%2C03%2C08%2C09%2C31",
+      "requested_at_utc": "2026-08-14T16:16:14.575552467Z",
+      "received_at_utc": "2026-08-14T16:16:15.295551756Z",
+      "raw_http_body_bytes": 4010,
+      "raw_http_body_sha256": "399a976ace0b646cb3f95511c34daa70f13bdbc47a33f84381db43c92de4c111",
+      "stored_file_bytes": 4011,
+      "stored_file_sha256": "904de2abbd57a32a35eeb5ef63c2437ee19110d9d0ec9070f42587df209c8c99",
+      "pagination": {
+        "page_size": 5,
+        "page_no": 1,
+        "page_count": 145,
+        "total": 725,
+        "returned_rows": 5
+      }
+    },
+    {
+      "id": "bond_partition_page_1",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/fund_list_bond_family_page_1.json",
+      "url": "https://query.sse.com.cn/commonSoaQuery.do?isPagination=true&sqlId=FUND_LIST&fundType=00&pageHelp.pageSize=5&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&subClass=02%2C32%2C36%2C37",
+      "requested_at_utc": "2026-08-14T16:16:15.368164073Z",
+      "received_at_utc": "2026-08-14T16:16:16.078630041Z",
+      "raw_http_body_bytes": 4303,
+      "raw_http_body_sha256": "a924dad498314e8f30c8fffcac7eeb08ba4232caf3e443fdc1a0e1869e072088",
+      "stored_file_bytes": 4304,
+      "stored_file_sha256": "446c2e2e875830cffb8f39471a031efac67286df75c5c3f09264a9da43baa426",
+      "pagination": {
+        "page_size": 5,
+        "page_no": 1,
+        "page_count": 7,
+        "total": 34,
+        "returned_rows": 5
+      }
+    },
+    {
+      "id": "crossborder_partition_page_1",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/fund_list_crossborder_family_page_1.json",
+      "url": "https://query.sse.com.cn/commonSoaQuery.do?isPagination=true&sqlId=FUND_LIST&fundType=00&pageHelp.pageSize=5&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&subClass=33%2C34%2C35",
+      "requested_at_utc": "2026-08-14T16:16:16.160396490Z",
+      "received_at_utc": "2026-08-14T16:16:16.823149987Z",
+      "raw_http_body_bytes": 4075,
+      "raw_http_body_sha256": "417601d5ffb82c33f9d385c6c9a9075fedbcc99b85c5d642f731f17355957434",
+      "stored_file_bytes": 4076,
+      "stored_file_sha256": "b543ae57c76546988f2b1c72dd1e4e4d156344dc8d71d45c1f2674f33bf120e3",
+      "pagination": {
+        "page_size": 5,
+        "page_no": 1,
+        "page_count": 26,
+        "total": 126,
+        "returned_rows": 5
+      }
+    },
+    {
+      "id": "commodity_partition_page_1",
+      "local_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/fund_list_commodity_family_page_1.json",
+      "url": "https://query.sse.com.cn/commonSoaQuery.do?isPagination=true&sqlId=FUND_LIST&fundType=00&pageHelp.pageSize=5&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=1&subClass=06%2C38",
+      "requested_at_utc": "2026-08-14T16:16:16.899961187Z",
+      "received_at_utc": "2026-08-14T16:16:17.646999229Z",
+      "raw_http_body_bytes": 3724,
+      "raw_http_body_sha256": "f794561441a96d82fa87cf4d7781014561032a39f4aeca92efb3857a43299054",
+      "stored_file_bytes": 3725,
+      "stored_file_sha256": "142c02b14ed701dc14f20b5a09c7d22952d70e1fd259d8bcebabc1b9b29527b3",
+      "pagination": {
+        "page_size": 5,
+        "page_no": 1,
+        "page_count": 2,
+        "total": 8,
+        "returned_rows": 5
+      }
+    }
+  ],
+  "field_coverage": {
+    "row_fields_observed": [
+      "fundCode",
+      "fundType",
+      "subClass",
+      "listingDate",
+      "fundAbbr",
+      "secNameFull",
+      "companyName",
+      "fundManager",
+      "TRUSTEE_NAME",
+      "INDEX_CODE",
+      "INDEX_NAME",
+      "LAW_FIRM",
+      "CONTACT_MOBILE"
+    ],
+    "available": "Identity/classification and manager/trustee fields were non-empty in every sampled row. INDEX_CODE and INDEX_NAME were blank in all five commodity sample rows. LAW_FIRM and CONTACT_MOBILE were blank in every sampled row.",
+    "absent": [
+      "Explicit listing/trading/lifecycle status; delisting date; suspension/resumption status.",
+      "Source as-of timestamp/version: queryDate is empty and pageHelp.searchDate/startDate/endDate are null.",
+      "Price, NAV, IOPV, volume, bid/ask, depth, holdings, shares/float, market maker, fees, distributions, corporate actions, historical events, investor rights, broker access, settlement, and tax."
+    ]
+  },
+  "enumeration_result": {
+    "master_total": 893,
+    "master_page_count_at_page_size_5": 179,
+    "partition_totals": {
+      "subClass_01_03_08_09_31": 725,
+      "subClass_02_32_36_37": 34,
+      "subClass_33_34_35": 126,
+      "subClass_06_38": 8
+    },
+    "partition_sum": 893,
+    "partition_sum_matches_master": true,
+    "finding": "The public endpoint supports deterministic live listing enumeration by fundType/subClass and page number. It cannot determine a date-specific status-qualified, eligible, or executable cohort."
+  },
+  "quality": {
+    "quality_tier": "tier_1_primary_for_captured_listing_fields",
+    "data_quality": "first-party public current-list snapshot; not point-in-time complete",
+    "warnings": [
+      "This is a small-page live sample; the full 893 rows were not archived.",
+      "No source as-of timestamp/version or stable pagination cursor is returned.",
+      "No fallback source was used and no challenge body was stored."
+    ]
+  },
+  "research_only": true,
+  "no_product_selection": true,
+  "no_allocations": true,
+  "no_holdings": true,
+  "no_orders": true,
+  "no_return_claims": true
+}

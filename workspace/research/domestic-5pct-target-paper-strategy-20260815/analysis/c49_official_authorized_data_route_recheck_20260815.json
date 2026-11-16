@@ -1,0 +1,97 @@
+{
+  "schema_version": "c49_official_authorized_data_route_recheck.v1",
+  "artifact_id": "D5PT-C49-OFFICIAL-AUTHORIZED-DATA-ROUTE-RECHECK-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "status": "CONDITIONAL_AUTHORIZED_DATA_ROUTE_DISCOVERY_NO_CURRENT_ACCEPTED_DELIVERY",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "scope": "Dated primary-provider and regulatory route recheck. It maps possible future authorized data-delivery categories without applying for data, accepting a delivery, inspecting credentials, selecting an instrument, calculating a result, or authorizing an external action.",
+  "source_control": {
+    "retained_primary_manifest": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c49-official-authorized-data-route-20260815/manifest.json",
+      "sha256": "adf276e19924b0f4c5138f049b9c1188177b2f00b7ae0e9bf91e41d3a5bc5fa9",
+      "retained_records": 3,
+      "nonretained_locator_records": 2
+    },
+    "prior_current_environment_audit": {
+      "path": "analysis/c48_current_environment_data_capability_audit_20260815.json",
+      "sha256": "dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce"
+    }
+  },
+  "route_matrix": [
+    {
+      "route": "SSE/SZSE authorized historical market-data delivery",
+      "retained_evidence": ["sseinfo_authorization_statement", "sseinfo_historical_data_product"],
+      "what_is_proven": "The retained authorization statement says that receiving, using or operating SSE/SZSE market information requires permission from their authorized information operators. The retained product description lists historical snapshots, transactions, daily/minute bars, auction data, security basic information and ETF IOPV as historical product categories and provides an application route.",
+      "what_is_not_proven": [
+        "A current license, delivery, lawful internal-research/replay/derivation right or an accepted entitlement",
+        "Point-in-time universe, delisting/status history, corporate-action or investor-total-return ledger",
+        "published_at/available_at, revision/version, raw-object or field-dictionary coverage for a delivered history",
+        "Broker-specific cost, order state, no-fill/partial-fill or settlement evidence"
+      ],
+      "current_disposition": "conditional_future_candidate_not_currently_accepted"
+    },
+    {
+      "route": "CFFEX historical-data service locator",
+      "retained_evidence": [],
+      "locator_urls": [
+        "https://www.cffex.com.cn/lssjfw/",
+        "https://www.cffex.com.cn/zlxz/"
+      ],
+      "what_is_proven": "Only that official CFFEX historical-data and application-material URLs were identified as possible future diligence leads. The case-local capture returned connection errors and retained no CFFEX source object.",
+      "what_is_not_proven": [
+        "Any historical field, contract-master, delivery-state, margin, position-limit, revision, license or entitlement coverage",
+        "Two-sided quotes, legging/no-fill treatment, broker/FCM costs, settlement or personal product eligibility"
+      ],
+      "current_disposition": "unretained_locator_only_not_evidence_for_data_acceptance"
+    },
+    {
+      "route": "Public fund disclosure facts",
+      "retained_evidence": ["csrc_public_fund_disclosure_rule"],
+      "what_is_proven": "The retained CSRC rule covers public disclosure of NAV, cumulative NAV, reports, material events and distribution matters.",
+      "what_is_not_proven": [
+        "A complete point-in-time fund/share-class universe and status history",
+        "A standardized investor-total-return, actual cash-flow, fee, tax, settlement or execution ledger",
+        "Historical availability/version chain and written replay/derived-analysis rights"
+      ],
+      "current_disposition": "primary_fact_reconciliation_only"
+    },
+    {
+      "route": "Broker or futures-company implementation records",
+      "retained_evidence": [],
+      "what_is_proven": "No current authorized record is present in this environment.",
+      "what_is_not_proven": [
+        "Account/product eligibility, costs, margins, order acceptance/rejection, partial fills, no fills, settlement and tax treatment"
+      ],
+      "current_disposition": "required_but_absent"
+    }
+  ],
+  "required_composite_acceptance_package": [
+    "Written provider entitlement covering retention, replay, derived analysis and independent review for the exact research use.",
+    "Point-in-time investable universe and status history, including inactive, renamed, suspended, risk-warning and delisted instruments where relevant.",
+    "Complete cash-flow, corporate-action, distribution, rights, merger, delisting and restatement treatment with a documented return convention.",
+    "published_at, available_at, revision/version, raw-object hash and field dictionary for every historical decision and outcome input.",
+    "Decision-time quote/depth/status/limit/no-fill and cost/tax/settlement records, or a separately accepted conservative no-fill protocol.",
+    "For futures, an actual-contract master plus final-trading-day, delivery-state, dynamic margin, position-limit and risk-control records for each leg.",
+    "An independent source-governance acceptance before any new protocol is frozen."
+  ],
+  "current_gate_recheck": {
+    "C48_status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+    "rights": "not_closed",
+    "point_in_time": "not_closed",
+    "total_return_or_cash_flow": "not_closed",
+    "availability_revision": "not_closed",
+    "execution": "not_closed",
+    "independent_source_acceptance": "not_started"
+  },
+  "decision": {
+    "state": "NO_FORMAL_STRATEGY_TEST_OR_ADMISSION",
+    "action": "NO_ACTION",
+    "why": "The official materials make a conditional future authorized-data route more concrete, but they do not provide an existing written right, historical delivery, field acceptance or execution record. C48 therefore remains unchanged.",
+    "only_next_path": "If the user expressly authorizes review of a particular licensed delivery, source governance must first accept its written rights, field dictionary, coverage, point-in-time/version provenance and execution complement. No new strategy protocol may be frozen before that acceptance."
+  },
+  "boundary": "C49 does not request procurement, infer an entitlement from a public page, select an asset, calculate a return, assert a stable outcome, or authorize an external action."
+}

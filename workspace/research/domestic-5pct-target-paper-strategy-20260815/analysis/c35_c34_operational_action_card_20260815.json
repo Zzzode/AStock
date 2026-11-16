@@ -1,0 +1,197 @@
+{
+  "schema_version": "d5pt_c35_c34_operational_action_card.v1",
+  "artifact_id": "D5PT-C35-v1",
+  "as_of": "2026-08-15",
+  "status": "research_only_forward_ledger_incomplete",
+  "research_only": true,
+  "paper_operable": false,
+  "external_orders": false,
+  "broker_or_account_mutation": false,
+  "scope": "Separate paper-operation card for D5PT-C34-PROTOCOL-v1 only; it does not amend, replace, or combine C34 with R01 or C30.",
+  "data_quality": {
+    "tier": "derived_action_design_from_frozen_research_and_dated_product_cards",
+    "price_basis": "retrospective retained common SSE market-price proxy",
+    "not_asserted": [
+      "total return",
+      "NAV return",
+      "IOPV availability",
+      "executable quote or fill",
+      "current account or product access",
+      "current fee, tax, or settlement outcome",
+      "future result"
+    ],
+    "fail_closed_rule": "Every action-date field must be re-evidenced. Missing or failed evidence is no_action."
+  },
+  "current_action": {
+    "state": "NO_ACTION",
+    "meaning": "No action exists outside a future controlled paper-observation cycle. This record cannot create, route, amend, or cancel an external order."
+  },
+  "source_links": {
+    "c34_protocol": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c34_dual_horizon_inverse_vol_etf_protocol_20260815.json",
+      "sha256": "9d853055ef102e148fd5d265bbaadca56642f7c8de0da985ae00a315a8c25ac5",
+      "artifact_id": "D5PT-C34-PROTOCOL-v1",
+      "status": "frozen_for_research_only_calculation"
+    },
+    "c31_product_cards": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c31_etf_product_diligence_refresh_20260815.json",
+      "sha256": "939b57fa0ec19ed55500a99c82c3eaba73f8b8572204bc4eef814fd272ad2fcd",
+      "artifact_id": "D5PT-C31-ETF-DIL-v1",
+      "status": "dated_product_facts_verified_current_terms_and_execution_not_verified_research_only"
+    },
+    "forward_paper_ledger_template": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/data/c33_forward_paper_ledger_template_20260815.json",
+      "sha256": "229014d774cf5e94e5218023d2b0a40b34b5f773183f3626afe387ec9fd887d4",
+      "status": "template_only_no_observations",
+      "minimum_months": 6
+    }
+  },
+  "rule_version_separation": {
+    "c34_only": true,
+    "mix_with_r01_monthly_target_map": false,
+    "mix_with_c30_semiannual_static_weights": false,
+    "rule_change_effect": "requires a separate version and new observation history"
+  },
+  "product_map": {
+    "closed_codes": ["510300", "510880", "511010", "518880", "511990"],
+    "equity": {
+      "codes": ["510300", "510880"],
+      "component_weights_within_equity_sleeve": [0.5, 0.5],
+      "action_rule": "both legs must pass; no single-leg expansion or substitution"
+    },
+    "bond": {"code": "511010"},
+    "gold": {"code": "518880"},
+    "fallback": {"code": "511990"},
+    "excluded": {
+      "leverage": false,
+      "shorting": false,
+      "futures": false,
+      "options": false,
+      "borrowing": false,
+      "automatic_substitution": false
+    },
+    "dated_category_reference": {
+      "source": "C31 records an SSE ETF FAQ captured 2026-08-15",
+      "minimum_lot_reference": "100 fund units",
+      "minimum_tick_reference": "CNY0.001",
+      "stock_etf": "T+1 category reference only",
+      "bond_gold_money_etf": "T+0-supported category reference only",
+      "operational_boundary": "A product-, venue-, account-, and date-specific check is mandatory before a paper action."
+    }
+  },
+  "dynamic_target_math": {
+    "observation_price_basis": "common retained market-price observations only",
+    "score_horizons_common_observations": [126, 252],
+    "sleeve_return": {
+      "equity": "0.5 * return_510300 + 0.5 * return_510880 at each horizon",
+      "bond": "return_511010",
+      "gold": "return_518880",
+      "fallback": "return_511990"
+    },
+    "score": "0.5 * return_126 + 0.5 * return_252",
+    "eligibility": "risk sleeve score > fallback score, strictly; equality is inactive",
+    "realized_volatility": {
+      "return_observations": 60,
+      "return_type": "one-session simple market-price returns",
+      "ddof": 1,
+      "equity_daily_return": "0.5 * daily_return_510300 + 0.5 * daily_return_510880",
+      "requirement": "finite and strictly positive for every active risk sleeve"
+    },
+    "active_sleeve_weight": "(1 / volatility_sleeve) / sum(1 / volatility_active_sleeves)",
+    "instrument_target_map": {
+      "510300": "0.5 * active_equity_sleeve_weight",
+      "510880": "0.5 * active_equity_sleeve_weight",
+      "511010": "active_bond_sleeve_weight",
+      "518880": "active_gold_sleeve_weight",
+      "511990": "1.0 only in warmup or if no risk sleeve is active; otherwise 0.0"
+    },
+    "warmup": "100 percent 511990 until 252-observation scores and all required realized-volatility observations exist",
+    "invalid_input_after_warmup": "no_action; do not replace a product or coerce fallback",
+    "target_constraints": ["all target weights are non-negative", "target-weight sum equals 1.0 within documented calculation precision"]
+  },
+  "timing": {
+    "decision": "after the final common market-price close D of each calendar month",
+    "earliest_effective": "following common session E at reported open only",
+    "same_session_close_execution": false,
+    "same_bar_lookahead": false,
+    "proxy_sequence": [
+      "existing paper holdings receive D-close-to-E-open proxy move",
+      "target change and illustrative one-way 20 bp turnover load apply at E open",
+      "new target receives E-open-to-E-close proxy move"
+    ],
+    "illustrative_cost_boundary": "20 bp is an arithmetic load only, not observed fee, tax, spread, impact, settlement, or fill"
+  },
+  "pre_action_checks": {
+    "all_planned_legs_required": true,
+    "required_fields": [
+      "current legal document and temporary-announcement review",
+      "product identity, objective, fee, and material-change status",
+      "venue, valid session, tradable/halt state, price-limit state, and applicable rule version",
+      "timestamped bid, ask, visible two-sided depth, and quote source",
+      "IOPV source/value and applicability determination where IOPV is required",
+      "product-, venue-, account-, and date-specific lot and tick",
+      "sellable-at, settlement status, and availability fields",
+      "current documented fee and tax treatment",
+      "account and product-access evidence",
+      "complete D inputs, scores, active set, volatilities, and target-sum validation"
+    ],
+    "equity_pair": "510300 and 510880 are atomic for any planned equity action",
+    "settlement_defaults": {
+      "stock_etf_same_session_reversal": "prohibited until product-specific action-date evidence confirms the field; C35 does not treat category guidance as sufficient",
+      "bond_gold_money_same_day_functionality": "default unavailable unless the product, venue, account, settlement, and availability fields establish it"
+    },
+    "failure": "no_action for the entire scheduled rebalance; no substitute, close, NAV, historic quote, later quote, or inferred field may be used"
+  },
+  "price_protection": {
+    "market_order": "prohibited",
+    "buy_cap": "IOPV * 1.003 rounded to verified tick",
+    "sell_floor": "IOPV * 0.997 rounded to verified tick",
+    "paper_buy_eligible_only_if": "contemporaneous displayed ask <= buy_cap",
+    "paper_sell_eligible_only_if": "contemporaneous displayed bid >= sell_floor",
+    "market_constraints": ["halt", "limit lock", "missing two-sided quote", "missing IOPV where required", "unusable depth"],
+    "market_constraint_response": "no_action",
+    "universal_daily_limit_percentage": "not asserted",
+    "fill_claim": "not asserted"
+  },
+  "partial_no_fill_and_reconciliation": {
+    "full_branch": "Record target, prior paper state, rounded quantities, quote/IOPV/limit calculation, fee/tax/settlement fields, and paper evidence; target remains distinct from a fill.",
+    "partial_rejected_or_unfilled_branch": "Entire scheduled rebalance is no_action; retain prior paper state; record failed leg, reason, timestamps, evidence, and unfilled quantity; do not fabricate a partial target or intraday catch-up.",
+    "lot_or_tick_branch": "no_action; residual is not redirected to another sleeve",
+    "equity_leg_failure_branch": "no_action for the entire scheduled rebalance; surviving equity leg is not enlarged",
+    "reconciliation_required_fields": ["prior paper state", "intended target", "recorded result or no_action", "rounded quantities and residuals", "fee/tax/event fields", "settlement state", "reviewer and timestamp"],
+    "reconciliation_failure": "operational_pause until the exception is resolved, ledger is reconciled, and independent release is recorded",
+    "visible_depth_as_partial_fill_proof": "prohibited"
+  },
+  "operational_pause_and_review": {
+    "review_cadence": "every monthly D/E cycle and after every exception",
+    "review_fields": ["source hashes", "D/E timestamps", "target arithmetic", "current documents and market state", "quote/IOPV/depth", "lot/tick/settlement", "fee/tax/account terms", "result or no-action", "reconciliation"],
+    "pause_triggers": [
+      "unresolved source or hash discrepancy",
+      "invalid or incomplete rule input",
+      "product or legal-status change",
+      "access or settlement failure",
+      "halt or price-limit lock",
+      "missing or invalid quote, depth, or IOPV where required",
+      "partial, rejected, or unfilled paper action",
+      "unreconciled paper ledger",
+      "attempt to modify C34 universe, horizons, volatility window, eligibility threshold, timing, or protection formula"
+    ],
+    "pause_effect": "blocks later candidate actions; does not create a sale, substitute, changed target, or retroactive fill",
+    "numerical_drawdown_trigger": "not specified by C34; C35 adds none",
+    "resumption": "dated evidence refresh, resolved/reconciled exception record, and independent release under unchanged C34 version"
+  },
+  "forward_paper_gate": {
+    "minimum_uninterrupted_months": 6,
+    "current_ledger_state": "template_only_no_observations",
+    "current_outcome": "research_only",
+    "paper_operable_transition": "not permitted by C35 or its validator",
+    "required_before_any_future_discussion": ["six uninterrupted monthly observations", "no rule drift", "complete source/quote/state/fee/tax/settlement/result/reconciliation records", "independent review"]
+  },
+  "validator": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c35_validate_c34_operational_action_card.py",
+    "command": "PYTHONDONTWRITEBYTECODE=1 .venv/bin/python workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c35_validate_c34_operational_action_card.py",
+    "mode": "read_only_structural_validation",
+    "checks": ["C34/C31/C35 source links and hashes", "five-code core and C31 source-card links", "dual-horizon score and inverse-volatility target math", "strict equality and invalid-volatility branches", "D/E timing separation", "price protection", "no-leverage/no-short/no-futures controls", "incomplete six-month forward-paper gate"],
+    "cannot_do": ["calculate a return result", "treat market price as total return", "elevate paper_operable", "authorize an external action"]
+  }
+}

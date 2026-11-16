@@ -1,0 +1,406 @@
+{
+  "schema_version": "r3_h1_first_party_data_route_assessment.v1",
+  "artifact_id": "DPSFS-R3-H1-FPDRA-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "timezone": "Asia/Shanghai",
+  "language": "zh-CN",
+  "status": "first_party_routes_identified_no_formal_replay_gate_closed",
+  "research_only": true,
+  "portfolio_q": 0,
+  "purpose": "Assess first-party official routes for the H1 direct-A-share data contract and distinguish public page/document access from written data-use, retention, derived-analysis, replay and independent-review rights. This is not a data delivery, data acceptance, replay, investment conclusion or execution instruction.",
+  "scope": {
+    "hypothesis_id": "H1",
+    "u0_class": "DIRECT_A_SHARE_EQUITIES",
+    "required_domains": [
+      "complete historical A-share universe",
+      "point-in-time financials",
+      "corporate actions",
+      "historical trade state",
+      "data-use, retention, replay and independent-review rights"
+    ],
+    "providers_reviewed": [
+      "Shanghai Stock Exchange / SSE InfoNet",
+      "Shenzhen Stock Exchange / Shenzhen Securities Information",
+      "Beijing Stock Exchange",
+      "CNINFO / Shenzhen Securities Information",
+      "China Securities Regulatory Commission"
+    ]
+  },
+  "method_and_boundary": {
+    "primary_sources_only": true,
+    "new_raw_source_capture_retained": true,
+    "new_probe_source_directory_created": true,
+    "source_capture_boundary": "P06 retains five official route/service/website-terms pages after the route assessment. It contains no historical data delivery, contract, entitlement, point-in-time archive or execution record.",
+    "allowed_inference": "A first-party page may establish that an official disclosure, product, authorization or application route exists and may state a narrow product or use condition.",
+    "prohibited_inference": [
+      "Public access proves complete historical coverage.",
+      "An announcement timestamp or page date proves model available_at semantics.",
+      "A web route proves an executed license, eligibility, retention, normalization, derived-analysis, replay or independent-review rights.",
+      "A local field sample proves all-universe coverage, no revisions, event completeness or formal replay readiness."
+    ],
+    "access_degradation": [
+      {
+        "route": "BSE public application/list/quotation pages",
+        "observation": "The execution environment returned 403 Forbidden for a direct request and the browser experienced a redirect loop.",
+        "treatment": "Record the official route and the first-party search-indexed route description only; do not claim field-level verification or contract terms."
+      },
+      {
+        "route": "CNINFO Data Service and some SZSE dynamic pages",
+        "observation": "The routes are JavaScript/login based or timed out in the browser.",
+        "treatment": "Treat them as inquiry routes, not as verified API documentation, delivery or entitlement."
+      }
+    ]
+  },
+  "source_routes": [
+    {
+      "route_id": "SSE-01",
+      "provider": "Shanghai Stock Exchange",
+      "title": "SSE Market Data Products — Historical Data",
+      "url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "source_quality": "primary_official_product_page",
+      "public_page_access": true,
+      "dataset_delivery_status": "subscription route described; no delivery received",
+      "observed_facts": [
+        "The page says historical data covers Shanghai A shares, Shanghai B shares and indices.",
+        "It lists Level-1 historical data, Level-2 intraday snapshot history, historical tick data and historical order-book data among its content descriptions.",
+        "It states an earliest available date of 1990-12-19, daily issue basis, yearly subscription basis and CSV format.",
+        "It states only qualified vendors are authorized to redistribute or use the stated real-time Level-1 and Level-2 data."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Shanghai-venue price, volume, tick and selected order-book history inquiry.",
+        "A possible procurement route for a portion of historical trade-state inputs."
+      ],
+      "not_established": [
+        "All-venue or all-security historical universe, including delisted objects and decision-date status.",
+        "Financial-statement line items, corporate-action ledger, source-side available_at, revision chain or coverage reconciliation.",
+        "This case's executed entitlement to retain, normalize, derive, replay or submit data to independent review."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "SSE-02",
+      "provider": "Shanghai Stock Exchange",
+      "title": "SSE Market-data service / authorization and application route",
+      "url": "https://star.sse.com.cn/transparency/services/",
+      "source_quality": "primary_official_service_page",
+      "public_page_access": true,
+      "dataset_delivery_status": "application route described; no application or contract obtained",
+      "observed_facts": [
+        "The page directs market institutions to product descriptions, authorization licenses, fee schedules and business documents, and says applications can be handled through the business platform."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Request a precise historical dataset specification and contractual use rights from the official data-service channel."
+      ],
+      "not_established": [
+        "Applicant qualification.",
+        "Data package coverage, historical status fields, delivery manifest or contract rights."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "SSE-03",
+      "provider": "Shanghai Stock Exchange",
+      "title": "SSE website legal statement",
+      "url": "https://www.sse.com.cn/home/legal/",
+      "source_quality": "primary_official_terms_page",
+      "public_page_access": true,
+      "dataset_delivery_status": "not_a_dataset_delivery_route",
+      "observed_facts": [
+        "The page states that website-content rights remain with SSE, permits non-commercial browsing/download subject to the statement, and restricts profit-oriented use without written permission."
+      ],
+      "possible_h1_use_if_entitled": [],
+      "not_established": [
+        "Retention or reproducible archival rights from public web access.",
+        "Any exception for normalized historical replay or independent review."
+      ],
+      "written_right_status": "public_terms_do_not_grant_required_rights"
+    },
+    {
+      "route_id": "SZSE-01",
+      "provider": "Shenzhen Stock Exchange",
+      "title": "SZSE company market-data and historical XBRL routes",
+      "urls": [
+        "https://www.szse.cn/market/stock/company/",
+        "https://www.szse.cn/English/about/news/szse/t20090217_558668.html"
+      ],
+      "source_quality": "primary_official_market_data_and_disclosure_route",
+      "public_page_access": true,
+      "dataset_delivery_status": "public-page route only; no historical delivery received",
+      "observed_facts": [
+        "The market-data route lists listed companies, stock lists, basic indicators, rankings and name changes.",
+        "The historical XBRL notice states that the platform then offered standardized report data query/display for all 740 Shenzhen-listed companies for 2004–2008, with analysis, comparison and download functions."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Investigate Shenzhen issuer identity/disclosure routes and whether a current structured financial product provides a full PIT delivery."
+      ],
+      "not_established": [
+        "A complete continuous all-A-share financial history.",
+        "All listed/delisted Shenzhen objects, document versions, source available_at or restatement lineage.",
+        "Any current contractual replay entitlement."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "SZSE-02",
+      "provider": "Shenzhen Stock Exchange",
+      "title": "SZSE legal statement",
+      "url": "https://www.szse.cn/application/laws/",
+      "source_quality": "primary_official_terms_page",
+      "public_page_access": "non-commercial browsing/download stated",
+      "dataset_delivery_status": "not_a_dataset_delivery_route",
+      "observed_facts": [
+        "The statement says intellectual-property rights in website materials, including market quotes, listed-company information and market statistics, belong to SZSE unless otherwise provided by law or agreement.",
+        "It permits non-commercial browsing/download subject to the statement, but says that without SZSE written permission, for-profit use may not include copying, downloading, storage, scraping, conversion, reproduction or dissemination."
+      ],
+      "possible_h1_use_if_entitled": [],
+      "not_established": [
+        "Long-term archival, normalized-data, derived-analysis, replay or independent-review rights for this case."
+      ],
+      "written_right_status": "public_terms_do_not_grant_required_rights"
+    },
+    {
+      "route_id": "SZSE-03",
+      "provider": "Shenzhen Stock Exchange / Shenzhen Securities Information",
+      "title": "SZSE market-data authorization and enhanced-market-data application route",
+      "urls": [
+        "https://www.szse.cn/English/about/contactus/index.html",
+        "https://www.szsi.cn/cpfw/fwsq/hq/sqlc-3.htm?COLLCC=1146308961"
+      ],
+      "source_quality": "primary_official_authorization_route",
+      "public_page_access": true,
+      "dataset_delivery_status": "authorization/application route described; no contract received",
+      "observed_facts": [
+        "SZSE lists Shenzhen Securities Information as its market-data authorization contact.",
+        "The enhanced-market-data guidance describes self-use/non-display authorization, application, acceptance and contract-signing steps, and identifies specified institutional applicant classes for non-display self-use."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Ask the first-party provider for historical Shenzhen market-data scope, data dictionary and license terms."
+      ],
+      "not_established": [
+        "The case applicant's eligibility.",
+        "Historical coverage, PIT financials, corporate-action scope or rights for archive/replay/independent review."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "BSE-01",
+      "provider": "Beijing Stock Exchange",
+      "title": "BSE stock list, quotation and statistics routes",
+      "urls": [
+        "https://www.bse.cn/nq/listedcompany.html",
+        "https://www.bse.cn/nq/quotation.html",
+        "https://www.bse.cn/static/statisticdata.html"
+      ],
+      "source_quality": "primary_official_public_route",
+      "public_page_access": "public route, but direct request blocked in this execution environment",
+      "dataset_delivery_status": "not observed",
+      "observed_facts": [
+        "The official routes are titled Stock List, Stock Quotation and Stock Statistics and are market-data discovery routes."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Ask BSE for historical universe and trade-state delivery specifications."
+      ],
+      "not_established": [
+        "Field-level query output in this run.",
+        "Complete historical security lifecycle, PIT financials, corporate actions, no-trade state or replay rights."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "BSE-02",
+      "provider": "Beijing Stock Exchange",
+      "title": "BSE domestic market-data authorization / Level-1 application process",
+      "urls": [
+        "https://www.bse.cn/application/guide.html",
+        "https://www.bse.cn/uploads/6/file/public/202510/20251010174635_llxchqf8pc.pdf"
+      ],
+      "source_quality": "primary_official_authorization_route",
+      "public_page_access": true,
+      "dataset_delivery_status": "application, review, agreement and license-issuance route described; no agreement obtained",
+      "observed_facts": [
+        "The official guide and its Level-1 process attachment describe an application workflow that includes review, agreement signing and issuance of a license-use agreement."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Obtain a BSE-specific written proposal for historical scope and applicable data-use rights."
+      ],
+      "not_established": [
+        "Historical product scope, complete-universe coverage, field dictionary, storage, derived-analysis, replay, audit and post-termination retention rights."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "CNINFO-01",
+      "provider": "CNINFO / Shenzhen Securities Information",
+      "title": "CNINFO public disclosure portal",
+      "urls": [
+        "https://www.cninfo.com.cn/new/index",
+        "https://list.cninfo.com.cn/cninfo/new/index"
+      ],
+      "source_quality": "primary_official_disclosure_route",
+      "public_page_access": true,
+      "dataset_delivery_status": "public disclosure/document route; no bulk delivery received",
+      "observed_facts": [
+        "The portal presents announcement categories for Shenzhen, Shanghai and Beijing markets, as well as periodic reports, historical dividends, share-capital/lock-up, termination/delisting, issuance and other disclosure discovery categories.",
+        "The portal states it is operated by Shenzhen Securities Information, a wholly owned subsidiary of SZSE, and carries a disclaimer that it does not guarantee accuracy or completeness."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Find original issuer disclosure documents and investigate corporate-action/financial data product coverage."
+      ],
+      "not_established": [
+        "A comprehensive structured PIT financial or corporate-action delivery.",
+        "Source-side available_at, version/revision history, coverage reconciliation or data-use/replay rights."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "CNINFO-02",
+      "provider": "CNINFO / Shenzhen Securities Information",
+      "title": "CNINFO Data Service",
+      "url": "https://webapi.cninfo.com.cn/",
+      "source_quality": "primary_official_data_service_route",
+      "public_page_access": "landing page visible; data service is JavaScript/login based",
+      "dataset_delivery_status": "data-market/API route visible; no API documentation, entitlement or delivery received",
+      "observed_facts": [
+        "The platform route presents data services, data market, API documentation/help, data browser, financial analysis, announcement information and market-data sections."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Request a cross-market data catalogue and a contract explicitly covering H1 historical financial and event inputs."
+      ],
+      "not_established": [
+        "Product fields, historical start/end dates, all-venue/delisted coverage, available_at/revision semantics or contractual replay rights."
+      ],
+      "written_right_status": "not_proven"
+    },
+    {
+      "route_id": "CSRC-01",
+      "provider": "China Securities Regulatory Commission",
+      "title": "CSRC notice on designated ChiNext disclosure websites",
+      "url": "https://www.csrc.gov.cn/csrc/c100028/c1002699/content.shtml",
+      "source_quality": "primary_official_regulatory_notice",
+      "public_page_access": true,
+      "dataset_delivery_status": "not_a_dataset_delivery_route",
+      "observed_facts": [
+        "The notice identifies CNINFO as an SZSE-affiliated designated disclosure website for ChiNext and says designated sites would freely publish prospectuses, listing announcements, ad hoc announcements, periodic reports and relevant CSRC/SZSE rules."
+      ],
+      "possible_h1_use_if_entitled": [
+        "Establish CNINFO's authority as a disclosure route for the stated segment."
+      ],
+      "not_established": [
+        "A cross-market historical data license, database entitlement, record-retention right, replay right or independent-review right."
+      ],
+      "written_right_status": "not_a_rights_grant"
+    }
+  ],
+  "h1_gate_assessment": [
+    {
+      "gate": "PIT universe",
+      "state": "FAIL",
+      "official_route_observed": "SSE historical-data subscription route; SZSE/BSE public list/quotation and authorization routes.",
+      "missing_for_acceptance": [
+        "All SH/SZ/BJ securities with unique identity and lifecycle, including delisted/transferred/suspended/special-status/no-trade records.",
+        "Decision-date state, source-side available_at, revisions, coverage reconciliation and immutable delivery manifest."
+      ]
+    },
+    {
+      "gate": "PIT financials",
+      "state": "FAIL",
+      "official_route_observed": "CNINFO/venue disclosures and CNINFO Data Service are inquiry routes; SZSE historical XBRL notice demonstrates limited historical structured-report functionality.",
+      "missing_for_acceptance": [
+        "Complete-population structured line items with accounting definitions and source-document hashes.",
+        "First-publication available_at, amendments/restatements/withdrawals, field-level version lineage and written rights."
+      ]
+    },
+    {
+      "gate": "corporate_action_and_trade_state_ledger",
+      "state": "FAIL",
+      "official_route_observed": "Existing R2 SSE samples show local dividend, bonus and suspension fields; CNINFO provides disclosure/category discovery; SSE product description includes historical trading-data categories.",
+      "missing_for_acceptance": [
+        "Complete cross-venue event taxonomy and effective-dated ledger for distributions, rights, splits, mergers, restructurings, delistings, suspensions, price limits, special treatment and no-trade states.",
+        "Event versions, source available_at, price-adjustment method and population/event coverage reconciliation."
+      ]
+    },
+    {
+      "gate": "historical_market_and_execution_state",
+      "state": "FAIL",
+      "official_route_observed": "SSE historical product and SZSE/BSE authorization routes provide possible venue-level market-data procurement paths.",
+      "missing_for_acceptance": [
+        "Full SH/SZ/BJ historical delivery and security/date field dictionary.",
+        "Trading eligibility, depth/capacity or frozen conservative proxy, order/fill/no-fill and settlement evidence."
+      ]
+    },
+    {
+      "gate": "rights_and_provenance",
+      "state": "FAIL",
+      "official_route_observed": "SSE, SZSE and BSE show authorization or agreement mechanisms; public SSE/SZSE terms reserve rights or constrain public-page reproduction/storage.",
+      "missing_for_acceptance": [
+        "Executed provider-by-provider written agreement naming dataset ID, historical scope, delivery, retention, normalization, derived analysis, replay, audit/independent review, confidentiality, duration and post-termination archive treatment.",
+        "Delivery manifest, file hashes, version/revision policy and a coverage reconciliation."
+      ]
+    },
+    {
+      "gate": "execution_cost_settlement",
+      "state": "FAIL",
+      "official_route_observed": "No exchange, CNINFO or CSRC route reviewed supplies the necessary account-specific historical broker route, fee, tax, fill/no-fill and settlement ledger.",
+      "missing_for_acceptance": [
+        "Effective-dated broker/clearing terms, account permissions, fill/no-fill evidence, fees, taxes, settlement and failure-state ledger, plus applicable rights."
+      ]
+    }
+  ],
+  "formal_replay_conclusion": {
+    "formal_h1_replay_input": false,
+    "any_single_route_closes_h1_gate": false,
+    "any_uncontracted_combination_closes_h1_gate": false,
+    "reason": "The reviewed first-party pages establish useful procurement/disclosure/authorization routes but do not supply a complete SH/SZ/BJ PIT universe, PIT financials, full corporate-action and trade-state ledger, delivery lineage, written data rights, or execution/cost/settlement evidence.",
+    "specific_sse_limitation": "Even an eventual SSE historical market-data delivery would be Shanghai-venue scoped and would not by itself supply Shenzhen/Beijing population, PIT financials, complete events, rights or broker execution evidence."
+  },
+  "minimum_next_request_package": [
+    {
+      "request_id": "H1-RIGHTS-01",
+      "required_from": "Each appointed primary data provider",
+      "request": "Executed data contract or signed entitlement letter explicitly granting raw and normalized retention, derived analysis, historical replay, freeze, audit and independent-review rights, with dataset IDs, scope, duration and post-termination treatment."
+    },
+    {
+      "request_id": "H1-UNIVERSE-02",
+      "required_from": "SSE, SZSE and BSE or a first-party-authorized cross-venue provider with explicit authority",
+      "request": "Historical master and every-decision-date state for all listed, delisted, transferred, suspended, special-status and no-trade objects, with unique identifiers, coverage reconciliation and hashes."
+    },
+    {
+      "request_id": "H1-FINANCIALS-03",
+      "required_from": "CNINFO/SZSE/SSE/BSE disclosure-data provider with explicit authority",
+      "request": "Original reports and standardized field-level financials for the complete population, including available_at, initial/amended/restated/withdrawn versions, source hashes, accounting definitions and missing-data rules."
+    },
+    {
+      "request_id": "H1-EVENTS-04",
+      "required_from": "Venue/disclosure provider with explicit authority",
+      "request": "Complete effective-dated corporate-action and trading-status ledger, including distributions, capital actions, restructuring/delisting treatment, suspensions, price limits, special treatment and no-trade state, plus version and adjustment methodology."
+    },
+    {
+      "request_id": "H1-EXECUTION-05",
+      "required_from": "Applicable broker, clearing and rule/cost providers",
+      "request": "Effective-dated fees/taxes, account-route permissions, conservative execution/depth policy or source data, fills/no-fills, settlement and failure records with retention/replay/audit rights."
+    },
+    {
+      "request_id": "H1-ACCEPTANCE-06",
+      "required_from": "Independent data-governance review",
+      "request": "Immutable delivery manifest, hashes, coverage-gap reconciliation, available_at/version tests and acceptance under DPSFS-DAC-v12 before any protocol freeze under DPSFS-RP0-v10."
+    }
+  ],
+  "decision_boundary": {
+    "data_acceptance": false,
+    "formal_replay": false,
+    "security_selection": false,
+    "portfolio_allocation": false,
+    "holding": false,
+    "trading_or_order": false,
+    "performance_claim": false,
+    "allowed_next_step": "Primary-source entitlement inquiry and data-contract design only."
+  },
+  "related_case_artifacts": [
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/manifest.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r1_primary_source_route_catalog_20260814.md",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r2_h1_h3_official_data_readiness_20260814.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/formal_replay_protocol_requirements_20260814.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/data_acquisition_contract_20260814.json"
+  ]
+}

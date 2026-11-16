@@ -1,0 +1,237 @@
+{
+  "schema_version": "etf_lookthrough.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "as_of": "2026-08-12",
+  "artifact_status": "dated look-through complete for reported annual and Q2 tables; not a current holding file or portfolio recommendation",
+  "purpose": "Converts the archived official holdings and sector tables for 511010, 510880 and 512890 into a dated, traceable look-through record. It deliberately avoids inferred issuer, sector, REIT or factor overlap beyond the published tables.",
+  "data_quality": {
+    "source": "Official 2025 annual reports and 2026 Q2 reports listed in data/raw_etf_fundamentals_20260812.json",
+    "timestamp": "2026-08-12",
+    "quality_tier": "tier_1_primary_dated_holdings",
+    "fallback_path": "none; no vendor holding file or inferred classification used",
+    "warnings": [
+      "2026 Q2 holdings and sector records are unaudited by express report disclaimer.",
+      "Annual and Q2 holdings are dated snapshots, not current holdings as of 2026-08-12.",
+      "Top-ten weight sums use published percentage weights and can differ slightly from unrounded sums.",
+      "A stock's sector label in this artifact follows the fund report's CSRC-style industry table; no issuer-group or economic exposure inference is made.",
+      "No REIT overlap, current index constituent overlap, correlation, factor attribution or diversification conclusion has been calculated."
+    ],
+    "errors": []
+  },
+  "lookthroughs": [
+    {
+      "ticker": "511010",
+      "product_type": "Treasury bond ETF",
+      "annual_2025_audited": {
+        "as_of": "2025-12-31",
+        "audit_status": "audited annual report",
+        "asset_mix": {
+          "bonds_cny": 2998414892.97,
+          "bonds_pct_of_total_assets": 99.2,
+          "government_bonds_cny": 2998414892.97,
+          "government_bonds_pct_of_net_assets": 99.24,
+          "bank_deposits_and_settlement_cny": 5592550.54,
+          "bank_deposits_and_settlement_pct_of_total_assets": 0.19,
+          "equities": "none reported"
+        },
+        "top_holdings": [
+          {"rank": 1, "code": "250020", "name": "25附息国债20", "quantity": 7400000, "fair_value_cny": 742913167.12, "pct_of_net_assets": 24.59},
+          {"rank": 2, "code": "019793", "name": "25国债20", "quantity": 7159530, "fair_value_cny": 718771500.99, "pct_of_net_assets": 23.79},
+          {"rank": 3, "code": "250014", "name": "25附息国债14", "quantity": 5500000, "fair_value_cny": 553296986.3, "pct_of_net_assets": 18.31},
+          {"rank": 4, "code": "019786", "name": "25国债14", "quantity": 5189630, "fair_value_cny": 522073934.34, "pct_of_net_assets": 17.28},
+          {"rank": 5, "code": "019774", "name": "25注特01", "quantity": 2675480, "fair_value_cny": 268744269.42, "pct_of_net_assets": 8.9}
+        ],
+        "concentration": {
+          "top_five_pct_of_net_assets": 92.87,
+          "calculation": "24.59 + 23.79 + 18.31 + 17.28 + 8.90",
+          "interpretation_boundary": "This is concentration across dated government-bond line items, not a credit-risk, duration-risk or liquidity conclusion."
+        },
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2025_annual.txt", "anchors": "L2555-L2576; L2615-L2663"}
+      },
+      "q2_2026_unaudited": {
+        "as_of": "2026-06-30",
+        "audit_status": "unaudited",
+        "asset_mix": {
+          "bonds_cny": 5060489774.03,
+          "bonds_pct_of_total_assets": 97.7,
+          "government_bonds_pct_of_net_assets": 98.89,
+          "bank_deposits_and_settlement_cny": 30292019.79,
+          "bank_deposits_and_settlement_pct_of_total_assets": 0.58,
+          "equities": "none reported"
+        },
+        "top_holdings": [
+          {"rank": 1, "code": "250020", "name": "25附息国债20", "quantity": 10400000, "fair_value_cny": 1061756515.07, "pct_of_net_assets": 20.75},
+          {"rank": 2, "code": "019793", "name": "25国债20", "quantity": 10361050, "fair_value_cny": 1057780032.71, "pct_of_net_assets": 20.67},
+          {"rank": 3, "code": "019834", "name": "26国债08", "quantity": 9082590, "fair_value_cny": 914402812.28, "pct_of_net_assets": 17.87},
+          {"rank": 4, "code": "260008", "name": "26附息国债08", "quantity": 8300000, "fair_value_cny": 835614438.36, "pct_of_net_assets": 16.33},
+          {"rank": 5, "code": "019829", "name": "26国债03", "quantity": 5905070, "fair_value_cny": 597607320.89, "pct_of_net_assets": 11.68}
+        ],
+        "concentration": {
+          "top_five_pct_of_net_assets": 87.3,
+          "calculation": "20.75 + 20.67 + 17.87 + 16.33 + 11.68",
+          "interpretation_boundary": "Unaudited dated line-item concentration only; no duration, rate-shock or liquidity conclusion."
+        },
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2026q2.txt", "anchors": "L413-L445; L465-L510"}
+      },
+      "lookthrough_gap": ["No duration, modified duration, DV01, convexity or constituent maturity schedule in this artifact.", "No current holdings file after 2026-06-30."]
+    },
+    {
+      "ticker": "510880",
+      "product_type": "Dividend equity ETF",
+      "annual_2025_audited": {
+        "as_of": "2025-12-31",
+        "audit_status": "audited annual report",
+        "asset_mix": {"equities_cny": 19174001392.26, "equities_pct_of_total_assets": 99.46, "index_equity_industry_total_pct_of_net_assets": 99.53},
+        "sector_exposure_pct_of_net_assets": [
+          {"sector": "采矿业", "pct": 30.98},
+          {"sector": "金融业", "pct": 32.78},
+          {"sector": "制造业", "pct": 16.33},
+          {"sector": "交通运输、仓储和邮政业", "pct": 12.97},
+          {"sector": "租赁和商务服务业", "pct": 4.3},
+          {"sector": "建筑业", "pct": 2.17}
+        ],
+        "top_holdings": [
+          {"rank": 1, "code": "601919", "name": "中远海控", "quantity": 66660645, "fair_value_cny": 1011908591.1, "pct_of_net_assets": 5.25},
+          {"rank": 2, "code": "600256", "name": "广汇能源", "quantity": 117966960, "fair_value_cny": 580397443.2, "pct_of_net_assets": 3.01},
+          {"rank": 3, "code": "603565", "name": "中谷物流", "quantity": 50286270, "fair_value_cny": 504874150.8, "pct_of_net_assets": 2.62},
+          {"rank": 4, "code": "600546", "name": "山煤国际", "quantity": 49314130, "fair_value_cny": 497579571.7, "pct_of_net_assets": 2.58},
+          {"rank": 5, "code": "601699", "name": "潞安环能", "quantity": 42132700, "fair_value_cny": 497165860.0, "pct_of_net_assets": 2.58},
+          {"rank": 6, "code": "601666", "name": "平煤股份", "quantity": 63082464, "fair_value_cny": 496458991.68, "pct_of_net_assets": 2.58},
+          {"rank": 7, "code": "600295", "name": "鄂尔多斯", "quantity": 39478341, "fair_value_cny": 487952294.76, "pct_of_net_assets": 2.53},
+          {"rank": 8, "code": "601225", "name": "陕西煤业", "quantity": 21673382, "fair_value_cny": 462076504.24, "pct_of_net_assets": 2.4},
+          {"rank": 9, "code": "600188", "name": "兖矿能源", "quantity": 33710529, "fair_value_cny": 443293456.35, "pct_of_net_assets": 2.3},
+          {"rank": 10, "code": "601168", "name": "西部矿业", "quantity": 15866300, "fair_value_cny": 438544532.0, "pct_of_net_assets": 2.28}
+        ],
+        "concentration": {
+          "top_ten_pct_of_net_assets": 28.13,
+          "calculation": "5.25 + 3.01 + 2.62 + 2.58 + 2.58 + 2.58 + 2.53 + 2.40 + 2.30 + 2.28",
+          "largest_reported_sector_pct_of_net_assets": 32.78,
+          "largest_reported_sector": "金融业",
+          "second_largest_reported_sector_pct_of_net_assets": 30.98,
+          "second_largest_reported_sector": "采矿业",
+          "interpretation_boundary": "Published sector and constituent exposure only; no sector valuation, dividend durability or diversification conclusion."
+        },
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2025_annual.txt", "anchors": "L2889-L3001; L3003-L3064"}
+      },
+      "q2_2026_unaudited": {
+        "as_of": "2026-06-30",
+        "audit_status": "unaudited",
+        "asset_mix": {"equities_cny": 22100821608.54, "equities_pct_of_total_assets": 98.73, "index_equity_industry_total_pct_of_net_assets": 99.21},
+        "sector_exposure_pct_of_net_assets": [
+          {"sector": "采矿业", "pct": 33.95},
+          {"sector": "金融业", "pct": 31.34},
+          {"sector": "制造业", "pct": 14.73},
+          {"sector": "交通运输、仓储和邮政业", "pct": 13.74},
+          {"sector": "租赁和商务服务业", "pct": 3.64},
+          {"sector": "建筑业", "pct": 1.82}
+        ],
+        "top_holdings": [
+          {"rank": 1, "code": "601919", "name": "中远海控", "quantity": 80936313, "fair_value_cny": 1073215510.38, "pct_of_net_assets": 4.82},
+          {"rank": 2, "code": "603565", "name": "中谷物流", "quantity": 76686349, "fair_value_cny": 752293083.69, "pct_of_net_assets": 3.38},
+          {"rank": 3, "code": "601699", "name": "潞安环能", "quantity": 51437872, "fair_value_cny": 734532812.16, "pct_of_net_assets": 3.3},
+          {"rank": 4, "code": "600188", "name": "兖矿能源", "quantity": 41211738, "fair_value_cny": 732332584.26, "pct_of_net_assets": 3.29},
+          {"rank": 5, "code": "600256", "name": "广汇能源", "quantity": 144622702, "fair_value_cny": 714436147.88, "pct_of_net_assets": 3.21},
+          {"rank": 6, "code": "600546", "name": "山煤国际", "quantity": 60162568, "fair_value_cny": 657576868.24, "pct_of_net_assets": 2.95},
+          {"rank": 7, "code": "600985", "name": "淮北矿业", "quantity": 42891056, "fair_value_cny": 602619336.8, "pct_of_net_assets": 2.71},
+          {"rank": 8, "code": "601666", "name": "平煤股份", "quantity": 77225761, "fair_value_cny": 552164191.15, "pct_of_net_assets": 2.48},
+          {"rank": 9, "code": "601225", "name": "陕西煤业", "quantity": 26389806, "fair_value_cny": 537032552.1, "pct_of_net_assets": 2.41},
+          {"rank": 10, "code": "601168", "name": "西部矿业", "quantity": 19668937, "fair_value_cny": 533814950.18, "pct_of_net_assets": 2.4}
+        ],
+        "concentration": {
+          "top_ten_pct_of_net_assets": 30.95,
+          "calculation": "4.82 + 3.38 + 3.30 + 3.29 + 3.21 + 2.95 + 2.71 + 2.48 + 2.41 + 2.40",
+          "largest_reported_sector_pct_of_net_assets": 33.95,
+          "largest_reported_sector": "采矿业",
+          "second_largest_reported_sector_pct_of_net_assets": 31.34,
+          "second_largest_reported_sector": "金融业",
+          "interpretation_boundary": "Unaudited dated exposure only."
+        },
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2026q2.txt", "anchors": "L395-L452; L496-L511"}
+      },
+      "lookthrough_gap": ["No full holding file after 2026-06-30.", "No issuer-group aggregation, current index reconstitution or REIT-overlap calculation.", "No security-level dividend, valuation, cash-flow or risk review in this artifact."]
+    },
+    {
+      "ticker": "512890",
+      "product_type": "Dividend low-volatility equity ETF",
+      "annual_2025_audited": {
+        "as_of": "2025-12-31",
+        "audit_status": "audited annual report",
+        "asset_mix": {"equities_cny": 26518247339.08, "equities_pct_of_total_assets": 99.02, "index_equity_industry_total_pct_of_net_assets": 99.12},
+        "sector_exposure_pct_of_net_assets": [
+          {"sector": "金融业", "pct": 54.48},
+          {"sector": "制造业", "pct": 19.57},
+          {"sector": "电力、热力、燃气及水生产和供应业", "pct": 5.28},
+          {"sector": "建筑业", "pct": 5.26},
+          {"sector": "采矿业", "pct": 3.99},
+          {"sector": "交通运输、仓储和邮政业", "pct": 3.49},
+          {"sector": "文化、体育和娱乐业", "pct": 3.41},
+          {"sector": "房地产业", "pct": 2.01},
+          {"sector": "信息传输、软件和信息技术服务业", "pct": 1.62}
+        ],
+        "top_holdings": [
+          {"rank": 1, "code": "601229", "name": "上海银行", "quantity": 77417842, "fair_value_cny": 781920204.2, "pct_of_net_assets": 2.92},
+          {"rank": 2, "code": "601009", "name": "南京银行", "quantity": 65355411, "fair_value_cny": 747012347.73, "pct_of_net_assets": 2.79},
+          {"rank": 3, "code": "000001", "name": "平安银行", "quantity": 62428893, "fair_value_cny": 712313669.13, "pct_of_net_assets": 2.66},
+          {"rank": 4, "code": "601825", "name": "沪农商行", "quantity": 75833646, "fair_value_cny": 704494571.34, "pct_of_net_assets": 2.63},
+          {"rank": 5, "code": "600737", "name": "中粮糖业", "quantity": 40124918, "fair_value_cny": 690549838.78, "pct_of_net_assets": 2.58},
+          {"rank": 6, "code": "600016", "name": "民生银行", "quantity": 165917912, "fair_value_cny": 635465602.96, "pct_of_net_assets": 2.38},
+          {"rank": 7, "code": "000651", "name": "格力电器", "quantity": 15673498, "fair_value_cny": 630388089.56, "pct_of_net_assets": 2.36},
+          {"rank": 8, "code": "601369", "name": "陕鼓动力", "quantity": 61665286, "fair_value_cny": 617269512.86, "pct_of_net_assets": 2.31},
+          {"rank": 9, "code": "600750", "name": "江中药业", "quantity": 26328367, "fair_value_cny": 610028263.39, "pct_of_net_assets": 2.28},
+          {"rank": 10, "code": "601577", "name": "长沙银行", "quantity": 60957381, "fair_value_cny": 591286595.7, "pct_of_net_assets": 2.21}
+        ],
+        "concentration": {
+          "top_ten_pct_of_net_assets": 25.12,
+          "calculation": "2.92 + 2.79 + 2.66 + 2.63 + 2.58 + 2.38 + 2.36 + 2.31 + 2.28 + 2.21",
+          "largest_reported_sector_pct_of_net_assets": 54.48,
+          "largest_reported_sector": "金融业",
+          "interpretation_boundary": "Published sector and constituent exposure only; it is not a factor-risk or diversification conclusion."
+        },
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2025_annual.txt", "anchors": "L2980-L3047; L3096-L3156"}
+      },
+      "q2_2026_unaudited": {
+        "as_of": "2026-06-30",
+        "audit_status": "unaudited",
+        "asset_mix": {"equities_cny": 30628450191.87, "equities_pct_of_total_assets": 97.77, "index_equity_industry_total_pct_of_net_assets": 97.88},
+        "sector_exposure_pct_of_net_assets": [
+          {"sector": "金融业", "pct": 54.13},
+          {"sector": "制造业", "pct": 17.76},
+          {"sector": "电力、热力、燃气及水生产和供应业", "pct": 5.53},
+          {"sector": "建筑业", "pct": 4.81},
+          {"sector": "交通运输、仓储和邮政业", "pct": 4.57},
+          {"sector": "采矿业", "pct": 4.17},
+          {"sector": "文化、体育和娱乐业", "pct": 3.16},
+          {"sector": "房地产业", "pct": 2.22},
+          {"sector": "信息传输、软件和信息技术服务业", "pct": 1.54}
+        ],
+        "top_holdings": [
+          {"rank": 1, "code": "601229", "name": "上海银行", "quantity": 101852776, "fair_value_cny": 884082095.68, "pct_of_net_assets": 2.83},
+          {"rank": 2, "code": "601009", "name": "南京银行", "quantity": 85249614, "fair_value_cny": 843118682.46, "pct_of_net_assets": 2.69},
+          {"rank": 3, "code": "000001", "name": "平安银行", "quantity": 82870993, "fair_value_cny": 832853479.65, "pct_of_net_assets": 2.66},
+          {"rank": 4, "code": "601838", "name": "成都银行", "quantity": 46320402, "fair_value_cny": 819871115.4, "pct_of_net_assets": 2.62},
+          {"rank": 5, "code": "000651", "name": "格力电器", "quantity": 20690098, "fair_value_cny": 775878675.0, "pct_of_net_assets": 2.48},
+          {"rank": 6, "code": "600919", "name": "江苏银行", "quantity": 70903820, "fair_value_cny": 764343179.6, "pct_of_net_assets": 2.44},
+          {"rank": 7, "code": "600350", "name": "山东高速", "quantity": 67288922, "fair_value_cny": 748925701.86, "pct_of_net_assets": 2.39},
+          {"rank": 8, "code": "601825", "name": "沪农商行", "quantity": 98890027, "fair_value_cny": 740686302.23, "pct_of_net_assets": 2.37},
+          {"rank": 9, "code": "601369", "name": "陕鼓动力", "quantity": 78703473, "fair_value_cny": 712266430.65, "pct_of_net_assets": 2.28},
+          {"rank": 10, "code": "600016", "name": "民生银行", "quantity": 219012817, "fair_value_cny": 705221270.74, "pct_of_net_assets": 2.25}
+        ],
+        "concentration": {
+          "top_ten_pct_of_net_assets": 25.01,
+          "calculation": "2.83 + 2.69 + 2.66 + 2.62 + 2.48 + 2.44 + 2.39 + 2.37 + 2.28 + 2.25",
+          "largest_reported_sector_pct_of_net_assets": 54.13,
+          "largest_reported_sector": "金融业",
+          "interpretation_boundary": "Unaudited dated exposure only."
+        },
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2026q2.txt", "anchors": "L318-L375; L418-L438"}
+      },
+      "lookthrough_gap": ["No full holding file after 2026-06-30.", "No issuer-group aggregation, current index reconstitution or REIT-overlap calculation.", "No security-level dividend, valuation, cash-flow or risk review in this artifact."]
+    }
+  ],
+  "cross_product_overlap_status": {
+    "510880_vs_512890": "not_calculated; a dated visual comparison is insufficient for an issuer-group or weight-adjusted overlap result",
+    "ETF_vs_REIT_sleeve": "not_calculated; REIT candidate research and a common dated constituent file are required",
+    "portfolio_conclusion": "not available"
+  },
+  "usage_boundary": "This look-through supports later diligence only. It does not identify a preferred product, produce a cash forecast or permit an investment action."
+}

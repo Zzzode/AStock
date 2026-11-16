@@ -1,0 +1,22 @@
+\chapter{数据来源、质量和可复核路径}
+
+\section{证据包}
+
+\begin{itemize}
+  \item 市场：\texttt{data/raw\_market\_data\_20260811.json} 与 \texttt{data/verified\_market\_data\_20260811.md}，保存端点URL、时间戳、哈希和13只代码/名称核验。
+  \item 财务：\texttt{data/raw\_financials\_20260811.json} 与官方PDF归档，保存公告ID、公告日、页码、精确CNY值与H1实际性标签。
+  \item 券商：\texttt{data/broker\_street\_consensus\_20260811.json} 与原始PDF归档；明确哪些报告有目标、哪些只有预测、哪些未找到。
+  \item 历史对照：7月15日低位重估报告及7月22日高弹性筛选报告，只用于差异审计，绝不作为当前价格或当前目标来源。
+\end{itemize}
+
+\section{数据质量说明}
+
+市场包的准确质量标签为\texttt{high\_with\_local\_adapter\_fallback}：本地AStock命令适配器因运行环境缺少虚拟环境而不可用，故采用公共端点双源交叉核验。财务没有媒体替代：两份实际H1、九份官方预告、两项官方检索缺口被逐一保留。券商资料只对可归档原始PDF给予外部比较资格。
+
+\section{读者证据索引}
+
+F-000703-H1为恒逸2026-08-11 CNINFO公告1225467439第10页；F-002379-H1、F-300014-H1和F-002497-H1分别为2026-07-11、2026-06-15和2026-07-07的CNINFO预告PDF第1--2页；F-301308-H1为2026-08-11公告1225467150第11页。B-000703、B-002379、B-300014-DW、B-300014-QY、B-002497和B-002812映射到原始券商PDF及其日期；完整路径、质量和警告在\texttt{data/source\_registry.json}中。FIN-RAW、MKT-RAW和PROBE-H1是覆盖全样本的财务、市场和检索缺口包。
+
+\section{渲染状态}
+
+本报告源文件按照XeLaTeX模板编写。当前Linux运行环境没有项目要求的MacTeX XeLaTeX，故本案不伪造PDF、页图或视觉审签结果；在可用MacTeX环境中编译后，需重新执行案例核验与版式审查。

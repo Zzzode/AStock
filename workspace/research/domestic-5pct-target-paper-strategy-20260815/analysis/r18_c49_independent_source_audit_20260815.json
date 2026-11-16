@@ -1,0 +1,61 @@
+{
+  "schema_version": "d5pt_r18_c49_independent_source_audit.v1",
+  "artifact_id": "D5PT-R18-C49-INDEPENDENT-SOURCE-AUDIT-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "reviewer": {
+    "role": "source-governance-analyst",
+    "mode": "independent_read_only_maker_checker"
+  },
+  "scope": {
+    "artifacts": [
+      "analysis/c49_official_authorized_data_route_recheck_20260815.json",
+      "analysis/c49_official_authorized_data_route_recheck_20260815.md",
+      "sources/c49-official-authorized-data-route-20260815/manifest.json",
+      "analysis/c48_current_environment_data_capability_audit_20260815.json"
+    ],
+    "out_of_scope": [
+      "Data procurement, credential inspection or configuration change",
+      "New strategy calculation, product selection, valuation, allocation or external action"
+    ]
+  },
+  "checks": [
+    {
+      "check_id": "R18-C-001",
+      "name": "C49 retained-source and C48 binding integrity",
+      "result": "PASS",
+      "evidence": "C49's retained manifest hash adf276e19924b0f4c5138f049b9c1188177b2f00b7ae0e9bf91e41d3a5bc5fa9 and C48 cross-reference hash dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce match. All three manifested primary captures have matching bytes and SHA-256 values; the two CFFEX entries are explicitly non-retained locator records."
+    },
+    {
+      "check_id": "R18-C-002",
+      "name": "Conditional route versus entitlement boundary",
+      "result": "PASS",
+      "evidence": "C49 treats SSE/SZSE authorization/product material as a conditional future application and diligence route only. It excludes a current license, delivery, replay/derivation right, field dictionary, point-in-time/version chain and execution evidence. The CSRC rule is confined to public-fact reconciliation."
+    },
+    {
+      "check_id": "R18-C-003",
+      "name": "No strategy or action inference",
+      "result": "PASS",
+      "evidence": "C49 is research_only with formal_decision_eligible=false, external_orders=false and portfolio_q=0. Its decision is NO_FORMAL_STRATEGY_TEST_OR_ADMISSION / NO_ACTION."
+    },
+    {
+      "check_id": "R18-C-004",
+      "name": "C48 current-environment conclusion",
+      "result": "PASS",
+      "evidence": "C49 adds no accepted entitlement or evidence that closes C48's rights, point-in-time, return/cash-flow, availability/revision or execution gates. C48's NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT remains logically supported."
+    }
+  ],
+  "finding_counts": {
+    "S": 0,
+    "A": 0,
+    "B": 0
+  },
+  "final_decision": {
+    "c49_source_boundary_accepted": true,
+    "c48_status_unchanged": true,
+    "strategy_admitted": false,
+    "external_action_authorized": false,
+    "statement": "C49 is accepted only as a bounded route-discovery record. It does not provide data entitlement, strategy admission, a result or action authority."
+  }
+}

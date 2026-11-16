@@ -1,0 +1,40 @@
+{
+  "schema_version": "quality.research_case.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "case_dir": "/home/zhangdi.zode/Develop/AStock/workspace/research/income-target-5pct-return-3pct-cash-strategy-20260812",
+  "quality": {
+    "status": "RESEARCH_FRAMEWORK_PASS_IMPLEMENTATION_NOT_APPROVED",
+    "publishable": true,
+    "score": 100.0,
+    "passed_count": 98,
+    "check_count": 98,
+    "blocking_failure_count": 0,
+    "root_blocker_count": 0,
+    "requires_industry_chain": false,
+    "implementation_status": "NOT_APPROVED",
+    "source": "evaluate_research_case_quality completed 98/98 checks with no blocking failures for the current total-return-only release."
+  },
+  "generated_at": "2026-08-14T02:25:00+08:00",
+  "artifact_identity_status": "current_release_reviewed",
+  "artifact_identity": {
+    "source_sha256": "f2d183941fa29e909bd204364c0aabea62826e129bd2e2fa865a681acf971e13",
+    "source_graph_sha256": "aadf38f2f864caef97777fe61b26a905eb54ca5442d5caa9d5406647f9c54ea1",
+    "pdf_sha256": "d7d8ecfb802336b5aedc65c50198f07bddbede40cc26b2ead64b889cbb4dc467",
+    "text_sha256": "c5512f5bc8e0295619274696a0401e187e22265cac9bce6129dc708d197ac792",
+    "page_count": 20,
+    "render_dir": "rendered/final-20260814-total-return-only"
+  },
+  "review_cycles": {
+    "R0_evidence": "pass_primary_archive_hash_verified_historical_and_mechanism_scope_only",
+    "R1_model": "resolved_single_objective_total_return_model",
+    "R2_draft": "pass_reader_single_objective_and_action_boundary",
+    "R3_render_compliance": "pass_current_20_page_total_return_only_render_visually_checked",
+    "R4_final_ic": "research_framework_pass_implementation_not_approved"
+  },
+  "limitations": [
+    "T1 is open, but T2/T3/T4 are empty and all market-traded implementation eligibility remains q=0.",
+    "No current price/NAV, operating, liquidity, tax, fee, settlement or account packet was created, so the report makes no live allocation claim.",
+    "The sole 5% rolling-five-year TWRR objective is conditional and not a guarantee; no separate cash-receipt objective exists.",
+    "Distribution use is investor-directed with no default action; accounting records each eligible receipt once within total return."
+  ]
+}

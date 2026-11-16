@@ -1,0 +1,29 @@
+{
+  "artifact_id": "D5PT-R04-v2",
+  "as_of": "2026-08-15",
+  "boundary": "The audit validates a bounded gross settlement-mark calculation only. It does not establish fills, costs, margin, account access, investor net result, stable return or external action.",
+  "failures": [],
+  "independent_reconstruction": {
+    "complete_year_below_5pct": [
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "final_unit_value": 1.145998051437666,
+    "maximum_drawdown": -0.15248856562243096,
+    "rolling_endpoint_at_or_above_5pct": 0,
+    "rolling_endpoint_count": 24,
+    "selected_actual_contract_direction_checks": 1035,
+    "weekly_signals": 358
+  },
+  "result": "PASS",
+  "schema_version": "independent_c16_actual_contract_audit.v1",
+  "source_control": {
+    "manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest.json",
+    "manifest_sha256": "34e23ddf886bd1f1f6cb88610d8d730bd757c981b92b0aa51720c5471b1186d7",
+    "protocol_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c16_actual_contract_settlement_diagnostic_protocol_20260815.json",
+    "protocol_sha256": "132c34e21eaf868ff50d8654277296059faba9aa54f93498b8d4d571a0f4814c",
+    "raw_dates_reconstructed": 1699
+  }
+}

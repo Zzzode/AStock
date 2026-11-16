@@ -1,0 +1,135 @@
+{
+  "capture_batch": "probe-official-sse-etf-price-r2-20260814",
+  "captured_at": "2026-08-14T14:16:29.307121+00:00",
+  "dependencies": [
+    {
+      "bytes": 3189058,
+      "dependency_role": "descriptive_cross_source_overlap_only",
+      "limitations": "P02 is a non-entitled public observation and cannot be used for formal replay or strategy admission.",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-public-etf-extended-r2-20260814/public_sina_etf_eod_observation.json",
+      "purpose": "P02 is read only to show close differences between public source paths; it cannot validate price basis, total return, historical availability or execution.",
+      "sha256": "c08eeb5f45417d96e5fa8dc19b9d6fb559382a7f4dc5cace84faca36a4c3aabd",
+      "source_quality": "tier_3_public_aggregation_observation"
+    }
+  ],
+  "files": [
+    {
+      "bytes": 169697,
+      "capture_note": "Retrospectively retrieved official public response. It is not evidence of historical available_at, version lineage, data rights, total return, or execution.",
+      "content_type_expected": "application/json;charset=UTF-8",
+      "document_date": "2026-08-13",
+      "first_trade_date": "20120528",
+      "format": "jsonp",
+      "last_trade_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_510300_begin0_end5000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/assortment/fund/etf/price/",
+      "response_rows": 3456,
+      "response_total": 3456,
+      "retrieved_at": "retained_immutable_source_reused",
+      "sha256": "1e69b85008c1e9159c4042dcf9ac5f838a4aeb35076a8fe80cd9b368e474a79b",
+      "title": "SSE ETF daily market-price response for 510300",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/510300?callback=probe&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=0&end=5000"
+    },
+    {
+      "bytes": 227337,
+      "capture_note": "Retrospectively retrieved official public response. It is not evidence of historical available_at, version lineage, data rights, total return, or execution.",
+      "content_type_expected": "application/json;charset=UTF-8",
+      "document_date": "2026-08-13",
+      "first_trade_date": "20070118",
+      "format": "jsonp",
+      "last_trade_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_510880_begin0_end5000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/assortment/fund/etf/price/",
+      "response_rows": 4757,
+      "response_total": 4757,
+      "retrieved_at": "retained_immutable_source_reused",
+      "sha256": "a9fd44e5cbac886d40b9964c0daecb12a11410a44dd6c85ae5b9b8d119e4edfa",
+      "title": "SSE ETF daily market-price response for 510880",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/510880?callback=probe&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=0&end=5000"
+    },
+    {
+      "bytes": 154653,
+      "capture_note": "Retrospectively retrieved official public response. It is not evidence of historical available_at, version lineage, data rights, total return, or execution.",
+      "content_type_expected": "application/json;charset=UTF-8",
+      "document_date": "2026-08-13",
+      "first_trade_date": "20130729",
+      "format": "jsonp",
+      "last_trade_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_518880_begin0_end5000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/assortment/fund/etf/price/",
+      "response_rows": 3173,
+      "response_total": 3173,
+      "retrieved_at": "retained_immutable_source_reused",
+      "sha256": "564fe8b85756a8f7e4f8b233cd4bb62c8bd2541c3f0bf24979813885bb56f585",
+      "title": "SSE ETF daily market-price response for 518880",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/518880?callback=probe&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=0&end=5000"
+    },
+    {
+      "bytes": 177146,
+      "capture_note": "Retrospectively retrieved official public response. It is not evidence of historical available_at, version lineage, data rights, total return, or execution.",
+      "content_type_expected": "application/json;charset=UTF-8",
+      "document_date": "2026-08-13",
+      "first_trade_date": "20130325",
+      "format": "jsonp",
+      "last_trade_date": "20260814",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_511010_begin0_end5000.jsonp",
+      "publisher": "Shanghai Stock Exchange",
+      "referer": "https://www.sse.com.cn/assortment/fund/etf/price/",
+      "response_rows": 3255,
+      "response_total": 3255,
+      "retrieved_at": "retained_immutable_source_reused",
+      "sha256": "05cb174414a62f259a08b34d09c3f55c0ea0433b26ed05b5a258a0e597e6e32d",
+      "title": "SSE ETF daily market-price response for 511010",
+      "url": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/511010?callback=probe&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=0&end=5000"
+    }
+  ],
+  "freeze_migration_boundary": "The original capture pre-dated the explicit hash-control migration. Original capture runtime provenance is unavailable; the migration provenance is retained in source_freeze.runtime_provenance.",
+  "limitations": [
+    "The historical rows were retrieved on the capture date, not preserved as evidence of their original-date availability or revision history.",
+    "The exchange endpoint does not establish a disclosed adjustment basis, NAV/IOPV, distributions, corporate actions, trading status, price limits, tax/fees, bid/ask, capacity, settlement, broker route or fills.",
+    "Public access to an endpoint does not establish permission to retain, normalize, formally replay, derive from or independently review an entitled data product."
+  ],
+  "purpose": "Frozen official SSE public daily market-price observations for an R2 research-only hypothesis screen. The inputs are not entitled/PIT data and cannot establish total return, product admission, allocation, holding or action.",
+  "source_freeze": {
+    "boundary": "Case-local hash control only. It detects a raw-source mismatch during scripted verification, but does not establish external notarization, data rights, point-in-time availability, total return or execution quality.",
+    "frozen_files": [
+      {
+        "bytes": 169697,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_510300_begin0_end5000.jsonp",
+        "sha256": "1e69b85008c1e9159c4042dcf9ac5f838a4aeb35076a8fe80cd9b368e474a79b"
+      },
+      {
+        "bytes": 227337,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_510880_begin0_end5000.jsonp",
+        "sha256": "a9fd44e5cbac886d40b9964c0daecb12a11410a44dd6c85ae5b9b8d119e4edfa"
+      },
+      {
+        "bytes": 154653,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_518880_begin0_end5000.jsonp",
+        "sha256": "564fe8b85756a8f7e4f8b233cd4bb62c8bd2541c3f0bf24979813885bb56f585"
+      },
+      {
+        "bytes": 177146,
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_511010_begin0_end5000.jsonp",
+        "sha256": "05cb174414a62f259a08b34d09c3f55c0ea0433b26ed05b5a258a0e597e6e32d"
+      }
+    ],
+    "runtime_provenance": {
+      "adapter": "requests HTTPS JSONP fetch from SSE public endpoint",
+      "adapter_version": "2.34.2",
+      "git_commit_at_runtime": "6dc78acf75a67fcaf30ce75fc12038313926061e",
+      "pandas_version": "3.0.5",
+      "platform": "Linux-5.15.152.bsk.4-amd64-x86_64-with-glibc2.39",
+      "python_version": "3.13.1",
+      "script_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/tools/run_r2_official_sse_etf_price_probe.py",
+      "script_sha256": "ad9a8f9257990b44f35254ebc3b3e76d282e4b261b365d7ec921cecbca019f97"
+    },
+    "schema_version": "research_source_freeze_control.v1",
+    "seal_status": "explicit_post_capture_migration",
+    "sealed_at": "2026-08-14T14:44:32.009395+00:00"
+  },
+  "source_quality": "primary_official_public_retrospective_market_price_observation"
+}

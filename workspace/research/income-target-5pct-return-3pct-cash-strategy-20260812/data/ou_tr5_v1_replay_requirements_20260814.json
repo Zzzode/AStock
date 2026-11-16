@@ -1,0 +1,78 @@
+{
+  "schema_version": "ou_tr5_formal_replay_requirements.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "rulebook_id": "OU-TR5-v1",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_methodology",
+  "status": "not_testable_formally",
+  "portfolio_q": 0,
+  "purpose": "A pre-performance protocol for testing a scale-neutral, open-universe China public-market total-return strategy. It does not contain an approved portfolio, allocation or performance claim.",
+  "objective": {
+    "definition": "For each predeclared complete rolling five-year out-of-sample cohort, annualised net time-weighted total return is at least 5%.",
+    "not_a_claim": ["future guarantee", "calendar-year floor", "probability estimate", "account-level tax result", "capacity claim", "execution authorization"]
+  },
+  "freeze_before_test": [
+    "T0 eligibility boundary and dated T2 construction including availability timestamps, exclusions and substitutions.",
+    "Candidate-selection inputs, publication lags and deterministic rank/selection rule.",
+    "Target weights, cash residual, concentration, reconstitution, drift and risk-event rules.",
+    "Order timing, partial/no-fill, stale-order and settlement rules by instrument structure.",
+    "Distribution, external-flow and corporate-action accounting convention.",
+    "All parameter values, cost schedule, source hierarchy, start/end rule and benchmark definitions."
+  ],
+  "point_in_time_universe": {
+    "required_per_decision_date": ["member list", "source reference and immutable archive ID", "as_of and available_at", "filter decisions and exclusions", "legal/account-access classification", "listing, suspension, price-limit and special-treatment state"],
+    "rule": "A later listing or substitution must be permitted by a predeclared rule; it may not be backfilled after history is observed.",
+    "failure_result": "formal replay blocked"
+  },
+  "data_hierarchy": [
+    {"tier": "tier_1_primary", "use": "exchange, regulator, fund-manager, REIT-manager, sovereign and issuer structure/corporate-action/distribution records"},
+    {"tier": "licensed_or_authoritative_point_in_time", "use": "raw prices, calendars, halts, limits, delistings, historical membership, liquidity, bid/ask and execution evidence"},
+    {"tier": "independent_cross_check", "use": "reconcile selected dates/events; discrepancies are investigated rather than averaged"},
+    {"tier": "frozen_public_observation", "use": "discovery and sensitivity work only; cannot upgrade a formal replay"}
+  ],
+  "total_return_accounting": {
+    "formula": "TWRR = product over subperiods of (V_pre_flow_end / V_post_flow_start) - 1",
+    "rolling_formula": "R_5Y(t) = (U_t / U_(t-5Y))^(365 / elapsed_days) - 1",
+    "rules": [
+      "Use raw unadjusted prices plus an event ledger, or one verified vendor total-return series; never combine an adjusted/total-return series with separately added receipts.",
+      "Interest, dividend and fund/REIT distribution enters marked portfolio cash once on its settlement/payment date.",
+      "A receipt leaving the portfolio is an external flow at its exact timestamp and is not counted a second time.",
+      "Rights, mergers, spin-offs, restructurings, conversions and delistings require source-tested event treatment or block the affected replay."
+    ]
+  },
+  "execution_and_cost_rules": [
+    "A target observed on D cannot trade before the next permitted venue session under its specific rules.",
+    "No-fill or partial-fill states apply to suspension, missing valid quote, limit lock and permitted-volume shortfall. Cash remains unallocated; no synthetic fill or automatic substitute is allowed.",
+    "Apply then-effective broker, exchange, registration, transfer, clearing, settlement, tax, spread, adverse-selection and impact assumptions without double deducting fund expenses embedded in NAV.",
+    "A unitized proportional-cost replay does not establish lots, minimum fees, capacity or market impact; those require a separately evidenced account-specific feasibility review.",
+    "The formal return engine must be scale-neutral and must not accept an integer-lot rule or holder-specific minimum-fee assumption as a substitute for unitized performance."
+  ],
+  "benchmarks": [
+    {"id": "B0", "definition": "actual eligible protected-liquidity alternative, net of its own terms and tax", "status": "not_selected"},
+    {"id": "B1", "definition": "frozen T2/T4 passive strategic comparator using separately predeclared weights/rebalancing", "status": "not_computable"},
+    {"id": "B2", "definition": "diagnostic sleeve references only", "status": "not_selected"}
+  ],
+  "required_reporting": [
+    "Every predeclared out-of-sample five-year cohort and every complete rolling window, including failures.",
+    "Net total return, drawdown, drawdown duration/recovery, volatility, downside deviation, turnover, cost drag and cash drag.",
+    "Partial/no-fill days, order age, participation, days-to-liquidate, suspension/limit-lock exposure and settlement shortfalls.",
+    "Concentrations by asset, issuer, manager/sponsor, sector, project, geography, tenant/offtaker, refinancing cluster and look-through holdings.",
+    "Stress scenarios for equity gap/limit lock/suspension, rate shocks, ETF discount/spread widening, REIT operations/refinancing and correlated liquidity failure."
+  ],
+  "acceptance_gates": [
+    {"gate": "rulebook", "pass": "versioned and frozen before test", "failure": "no performance calculation or claim"},
+    {"gate": "data", "pass": "complete authorised point-in-time archive and source manifest", "failure": "research-only at best"},
+    {"gate": "mechanics", "pass": "raw-price/event reconciliation, correct costs/settlement and no synthetic fills", "failure": "invalid replay"},
+    {"gate": "return evidence", "pass": "all predeclared complete OOS cohorts and windows disclosed; each objective miss retained", "failure": "objective not observed"},
+    {"gate": "risk budget", "pass": "independent candidate-specific stress/liquidity/concentration approval", "failure": "q remains 0"},
+    {"gate": "implementation", "pass": "current access/suitability/lots/fees/taxes/capacity check", "failure": "no allocation authorization"}
+  ],
+  "current_blockers": [
+    "No frozen deterministic T2 or T4 portfolio rule exists.",
+    "No authorised point-in-time total-return/event archive covers all required domains.",
+    "No B0 or B1 comparator is frozen.",
+    "No independent candidate-specific risk budget or current execution/suitability packet exists.",
+    "The public static price screen failed as a weaker proxy and cannot be repurposed as a formal result.",
+    "The existing discrete-lot portfolio engine cannot directly evaluate this scale-neutral objective; a unitized replay layer and cross-asset event adapters are required."
+  ]
+}

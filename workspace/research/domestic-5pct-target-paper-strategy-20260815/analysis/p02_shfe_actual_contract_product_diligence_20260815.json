@@ -1,0 +1,72 @@
+{
+  "schema_version": "shfe_actual_contract_product_diligence.v1",
+  "artifact_id": "D5PT-P02-v1",
+  "as_of": "2026-08-15",
+  "status": "dated_exchange_product_facts_verified; not_admitted_for_action",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "source_manifest": {
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c9-official-shfe-commodity-contracts-20260815/manifest.json",
+    "sha256": "a639271b0159f5ce26bf5bd6efaf996e2b6722de16cf5d5efbda721f18bb4cd4",
+    "quality": "dated_primary_exchange_product_rules_and_risk_control_text"
+  },
+  "common_boundary": {
+    "role_in_c16": "Each family is only a fractional, equal-notional settlement-mark sleeve in a gross diagnostic. It is not a selected position, contract quantity, allocation or order.",
+    "current_rule_date_boundary": "The rule pages are dated 2026 and document exchange-level base terms. They cannot be projected backward as session-specific historical margin, limit, fee, calendar, delivery or broker conditions.",
+    "execution_boundary": "A daily settlement field is not a bid/ask quote or fill. Personal access, short permission, broker margin add-ons, commission, forced-close timing, delivery controls and taxes remain unverified."
+  },
+  "products": [
+    {
+      "family": "CU",
+      "name": "沪铜期货",
+      "economic_exposure": "Industrial copper price exposure, linked to global and domestic industrial demand, inventory, supply, currency and macro-cycle conditions.",
+      "dated_contract_terms": {
+        "contract_unit": "5 metric tonnes per lot",
+        "minimum_tick": "CNY 10 per tonne; CNY 50 per lot",
+        "listed_months": "January through December",
+        "scheduled_last_trading_day": "15th day of the delivery month, subject to exchange holiday adjustment",
+        "dated_base_margin_and_limit_framework": "5% base margin; rule text states staged increases near delivery and a CNY 3% daily price-limit framework."
+      },
+      "c16_data_role": "Actual CU delivery-month rows may be selected only when the frozen liquidity, history and 90--270 scheduled-day tests pass.",
+      "material_risks": ["industrial-cycle and macro shocks", "roll migration and contract-specific liquidity", "price-limit and dynamic-margin changes", "delivery and forced-close risk", "settlement mark versus executable price divergence"],
+      "what_is_not_valued": "A futures contract is not an equity claim with a standalone target-price valuation. C16 does not infer fair value, expected return or a holding recommendation."
+    },
+    {
+      "family": "AU",
+      "name": "黄金期货",
+      "economic_exposure": "Domestic gold-price exposure, affected by bullion prices, currency, liquidity, inflation and risk sentiment rather than a corporate cash-flow claim.",
+      "dated_contract_terms": {
+        "contract_unit": "1,000 grams per lot",
+        "minimum_tick": "CNY 0.02 per gram; CNY 20 per lot",
+        "listed_months": "Three nearest consecutive months plus bimonthly months within thirteen months",
+        "scheduled_last_trading_day": "15th day of the delivery month, subject to exchange holiday adjustment",
+        "dated_base_margin_and_limit_framework": "4% base margin; rule text states staged increases near delivery and a CNY 3% daily price-limit framework."
+      },
+      "c16_data_role": "Actual AU delivery-month rows may be selected only when the frozen liquidity, history and 90--270 scheduled-day tests pass.",
+      "material_risks": ["gold-price and currency sensitivity", "roll migration and contract-specific liquidity", "price-limit and dynamic-margin changes", "natural-person physical-delivery restriction", "settlement mark versus executable price divergence"],
+      "what_is_not_valued": "C16 does not treat gold futures as a substitute for physical custody, a fund holding, a cash-flow asset or a target-price valuation."
+    },
+    {
+      "family": "RU",
+      "name": "天然橡胶期货",
+      "economic_exposure": "Natural-rubber price exposure, affected by tire and automotive demand, supply, weather, inventory, energy inputs and trade conditions.",
+      "dated_contract_terms": {
+        "contract_unit": "10 metric tonnes per lot",
+        "minimum_tick": "CNY 5 per tonne; CNY 50 per lot",
+        "listed_months": "January and March through November, excluding February and December",
+        "scheduled_last_trading_day": "15th day of the delivery month, subject to exchange holiday adjustment",
+        "dated_base_margin_and_limit_framework": "5% base margin; rule text states staged increases near delivery and a CNY 3% daily price-limit framework."
+      },
+      "c16_data_role": "Actual RU delivery-month rows may be selected only when the frozen liquidity, history and 90--270 scheduled-day tests pass.",
+      "material_risks": ["commodity supply-demand and weather shocks", "contract-specific liquidity and roll migration", "price-limit and dynamic-margin changes", "delivery and forced-close risk", "settlement mark versus executable price divergence"],
+      "what_is_not_valued": "C16 does not infer an expected commodity price, fair value, net carry or a target return from the rule text or settlement data."
+    }
+  ],
+  "required_before_any_future_paper_action": [
+    "Current exchange rule and contract-status verification, including adjusted last-trading days and delivery restrictions.",
+    "Dated broker confirmation of product access, long/short permission, margin, fees, forced-close and delivery procedures without placing personal records in this case.",
+    "Current bid/ask, depth, limit state and no-fill/partial-fill record at every paper decision.",
+    "Independent review of actual-contract selection, roll and daily settlement accounting."
+  ],
+  "conclusion": "The three product cards provide dated mechanism and risk diligence for the C16 research universe. They do not close historical execution, net-result or personal-action evidence gaps."
+}

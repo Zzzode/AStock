@@ -1,0 +1,63 @@
+{
+  "schema_version": "research_build_provenance.v1",
+  "case_id": "stable-income-multi-asset-strategy-20260811",
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "status": "built_unreviewed",
+  "source": "local XeLaTeX build packet after reader-facing model-portfolio actionability revision",
+  "timestamp": "2026-08-12T00:57:26+08:00",
+  "quality_tier": "derived",
+  "fallback_path": "Direct /usr/bin/xelatex was used because the workspace .venv lacks the astock and typer runtime dependencies required by the CLI adapter.",
+  "warnings": [
+    "This packet records an author-performed build and targeted visual inspection; it is not an independent R2/R3 review or publication sign-off.",
+    "The report remains blocked by incomplete primary-source archival and open R0--R4 findings.",
+    "512890 remains a conditional model target until the dated combined-holdings, industry and issuer-group look-through test passes."
+  ],
+  "errors": [],
+  "host": {
+    "platform": "Linux 5.15.152.bsk.4-amd64 x86_64 GNU/Linux"
+  },
+  "engine": {
+    "name": "XeLaTeX",
+    "executable": "/usr/bin/xelatex",
+    "version": "XeTeX 3.141592653-2.6-0.999994 (TeX Live 2022/Debian)",
+    "distribution": "TeX Live 2022/Debian"
+  },
+  "cjk": {
+    "resolved_fonts": [
+      "Noto Serif CJK SC",
+      "Noto Sans CJK SC"
+    ],
+    "ctexrep": "/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexrep.cls",
+    "xeCJK": "/usr/share/texlive/texmf-dist/tex/xelatex/xecjk/xeCJK.sty"
+  },
+  "build": {
+    "command": "/usr/bin/xelatex -interaction=nonstopmode -halt-on-error main.tex",
+    "passes": 2,
+    "working_directory": ".",
+    "source_sha256": "ff771a67bcefc9f1c22987f3115c6caca56c4dbc3c40aa91e79969e01f031a13",
+    "source_graph_sha256": "d208de98baeacae25ec56fcca51b2685aa45721c7c715f7f7880a255cacf7e55"
+  },
+  "artifacts": {
+    "pdf_path": "main.pdf",
+    "pdf_sha256": "d485b96227d0caca0abcb79b263b7a26301ee2d4e0395cb6ad39f41227d93102",
+    "page_count": 18,
+    "page_size": "A4 (595.28 x 841.89 pts)",
+    "text_path": "main_current_text.txt",
+    "text_sha256": "171c58b604fac021ffae3ecc2733319c581a9509864855bce1144e3290c2085a",
+    "render_dir": "rendered/full-20260812-0057",
+    "rendered_page_count": 18,
+    "render_dimensions": "1241 x 1754 px per A4 page (150 DPI PNG)"
+  },
+  "diagnostics": {
+    "fatal_error_count": 0,
+    "undefined_control_sequence_count": 0,
+    "missing_character_count": 0,
+    "overfull_hbox_count": 0,
+    "embedded_fonts_verified": true
+  },
+  "author_visual_inspection": {
+    "inspected_pages": [5, 6, 9, 10, 15],
+    "focus": "reader-facing target/action cards, staged-allocation tables and implementation controls",
+    "result": "No clipping, overlap or table truncation observed in the inspected pages. Independent full-render review remains required."
+  }
+}

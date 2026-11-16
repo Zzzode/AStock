@@ -1,0 +1,201 @@
+{
+  "schema_version": "r2_public_series_independent_audit.v2",
+  "artifact_id": "DPSFS-R2-PSIA-20260814-v2",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "review_type": "independent_remediation_reaudit_of_research_only_numeric_screen",
+  "previous_audit": {
+    "artifact_id": "DPSFS-R2-PSIA-20260814-v1",
+    "result": "FAIL_FOR_RESEARCH_ONLY_NUMERIC_SCREEN_RELIANCE",
+    "disposition": "superseded_by_verified_remediation_reaudit"
+  },
+  "scope": {
+    "reviewed_artifacts": [
+      "analysis/r2_public_series_extended_probe_20260814.md",
+      "analysis/r2_public_series_extended_probe_20260814.json",
+      "tools/run_r2_extended_public_series_probe.py",
+      "sources/probe-public-etf-extended-r2-20260814/manifest.md",
+      "sources/probe-public-etf-extended-r2-20260814/manifest.json",
+      "sources/probe-public-etf-extended-r2-20260814/public_sina_etf_eod_observation.json",
+      "analysis/r2_official_sse_etf_public_price_probe_20260814.md",
+      "analysis/r2_official_sse_etf_public_price_probe_20260814.json",
+      "tools/run_r2_official_sse_etf_price_probe.py",
+      "sources/probe-official-sse-etf-price-r2-20260814/manifest.md",
+      "sources/probe-official-sse-etf-price-r2-20260814/manifest.json",
+      "sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_510300_begin0_end5000.jsonp",
+      "sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_510880_begin0_end5000.jsonp",
+      "sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_511010_begin0_end5000.jsonp",
+      "sources/probe-official-sse-etf-price-r2-20260814/sse_etf_dayk_518880_begin0_end5000.jsonp",
+      "data/source_registry.json"
+    ],
+    "excluded_from_review": [
+      "Data entitlement, point-in-time availability, adjustment basis, distributions, NAV/IOPV, execution, capacity, product diligence, suitability, allocation and order decisions.",
+      "Any assertion that the four-ETF observation is an open U0 universe, total-return replay or usable strategy."
+    ]
+  },
+  "research_only_classification": {
+    "result": "PASS_FOR_RESEARCH_ONLY_NUMERIC_SCREEN_ACCOUNTING_AND_INTEGRITY",
+    "boundary_compliance": "PASS",
+    "formal_strategy_eligibility": "NOT_ELIGIBLE",
+    "portfolio_q": 0,
+    "reason": "The repaired artifacts pass the narrow audit of disclosed monthly self-financing arithmetic, drift-based turnover, annual carry-forward, sealed-source verification and source-path independence disclosure. This is not a pass for a strategy, product, allocation, holding, cash-receipt objective, dividend-reinvestment objective, total-return replay or execution."
+  },
+  "accounting_cash_boundary": {
+    "result": "PASS",
+    "meaning": "cash is only the accounting cash leg and residual portfolio weight inside the self-financing simulation.",
+    "not_a_user_objective": [
+      "cash receipt",
+      "income distribution",
+      "dividend objective",
+      "automatic reinvestment objective"
+    ]
+  },
+  "source_integrity": {
+    "P02": {
+      "manifest_path": "sources/probe-public-etf-extended-r2-20260814/manifest.json",
+      "manifest_sha256": "c19651550f49052e6b16e8fbb527f29928f22e09c50f712e4a03960cd1c251cf",
+      "seal_status": "explicit_post_capture_migration",
+      "raw_count": 1,
+      "raw_sha256": "c08eeb5f45417d96e5fa8dc19b9d6fb559382a7f4dc5cace84faca36a4c3aabd",
+      "dependency": {
+        "role": "descriptive_overlap_only",
+        "sha256": "8829c0a065aa688c874212500c345c7dd92aff6c88b2bba760f7de7921b15217"
+      },
+      "registry_seal_check": "PASS"
+    },
+    "P03": {
+      "manifest_path": "sources/probe-official-sse-etf-price-r2-20260814/manifest.json",
+      "manifest_sha256": "53e181497040c4888eda1091800df4f536c34ebf61cff9795bda0f39921d8e8a",
+      "seal_status": "explicit_post_capture_migration",
+      "raw_count": 4,
+      "raw_sha256_by_code": {
+        "510300": "1e69b85008c1e9159c4042dcf9ac5f838a4aeb35076a8fe80cd9b368e474a79b",
+        "510880": "a9fd44e5cbac886d40b9964c0daecb12a11410a44dd6c85ae5b9b8d119e4edfa",
+        "511010": "05cb174414a62f259a08b34d09c3f55c0ea0433b26ed05b5a258a0e597e6e32d",
+        "518880": "564fe8b85756a8f7e4f8b233cd4bb62c8bd2541c3f0bf24979813885bb56f585"
+      },
+      "dependency": {
+        "role": "descriptive_cross_source_overlap_only",
+        "sha256": "c08eeb5f45417d96e5fa8dc19b9d6fb559382a7f4dc5cace84faca36a4c3aabd"
+      },
+      "registry_seal_check": "PASS"
+    },
+    "registry_sha256": "41885e0a4504db619c8362dfde537407aa0f9827403a057caa18d22038d91dfa",
+    "boundary": "The controls are case-local hash checks. Their explicit post-capture migration status does not establish external notarization, entitlement, point-in-time availability, total return or execution quality."
+  },
+  "verified_checks": [
+    {
+      "id": "R2-CHK-101",
+      "result": "PASS",
+      "check": "Monthly decision timing and selection",
+      "evidence": "Independent reconstruction from frozen open/close records matched all H01-H07 monthly ledgers: first observed session of each eligible calendar month uses closes only through the prior observed session, then executes at the next observed session open. Event counts are H01=144, H02=144, H03=144, H04=147, H05=138, H06=144, H07=144."
+    },
+    {
+      "id": "R2-CHK-102",
+      "result": "PASS",
+      "check": "Units, accounting cash leg, drift and one-way turnover",
+      "evidence": "Independent replay over public and SSE raw panels matched all 7 hypotheses x 4 cost sensitivities. Between monthly events units and accounting cash remain unchanged; close values drift with observed closes; rebalance turnover is computed from drifted pre-trade securities plus cash weights to targets. Every first rebalance has one_way_turnover=1.0."
+    },
+    {
+      "id": "R2-CHK-103",
+      "result": "PASS",
+      "check": "Self-financing and annual carry-forward",
+      "evidence": "For all 56 replay paths, independently recomputed pre-trade open NAV minus stated cost equals post-trade open NAV. Maximum disclosed absolute self-financing error is at most 4.440892098500626e-16. Annual rows use prior-session NAV; initial and cutoff calendar fragments are flagged incomplete and included_in_any_annual_hurdle=false."
+    },
+    {
+      "id": "R2-CHK-104",
+      "result": "PASS",
+      "check": "Daily-state retention is compact without losing auditability",
+      "evidence": "H01/20 bps retains 2,903 daily units/cash/close-NAV states in cost_sensitivity only. primary_20bps is the same path with daily_position_state removed. H02-H07 retain complete monthly rebalance ledgers for all stated cost sensitivities, which were independently replayed."
+    },
+    {
+      "id": "R2-CHK-105",
+      "result": "PASS",
+      "check": "Sealed source, manifest dependency and registry verification",
+      "evidence": "P02/P03 raw file hashes, source_freeze entries, manifest file entries, dependency records and source_registry sealed_manifest_sha256 records all matched. The scripts enforce these checks in public lines 324-374 and SSE lines 269-326."
+    },
+    {
+      "id": "R2-CHK-106",
+      "result": "PASS",
+      "check": "verify-only is non-mutating for reviewed case artifacts",
+      "evidence": "Both scripts completed verify-only with PYTHONDONTWRITEBYTECODE=1. Before/after SHA-256 values of each source manifest, source manifest Markdown, derived JSON/Markdown and source_registry were identical. Public derived JSON SHA-256=7da423204daae0a3a33242cab5895241526f02ed33026ca2ebe5c553bcf63cb5; SSE derived JSON SHA-256=4db6e56aea46c78b6529e1ca8d78460741cc3d2d1466db97e3c0855742e15c7e."
+    },
+    {
+      "id": "R2-CHK-107",
+      "result": "PASS",
+      "check": "refresh-derived source immutability",
+      "evidence": "Static branch review confirms that after sealed-source loading, refresh-derived writes only derived JSON/Markdown and contains no manifest write: public lines 1012-1017, SSE lines 675-680. It was not executed because this audit was authorized to change only audit artifacts."
+    },
+    {
+      "id": "R2-CHK-108",
+      "result": "PASS",
+      "check": "SSE is labeled source-path triangulation, not an independent model",
+      "evidence": "SSE imports the public model and calls public_screen._market_panels, _build_rebalance_schedule and _evaluate at SSE lines 27, 448, 451 and 456. Its Markdown and JSON explicitly state that common calculation functions prevent independent model validation."
+    },
+    {
+      "id": "R2-CHK-109",
+      "result": "PASS",
+      "check": "Current derived outputs reproduce from their sealed input and checked scripts",
+      "evidence": "Current public _result and SSE _screen payloads each exactly matched the stored JSON after sealed-source validation; no output divergence was observed."
+    }
+  ],
+  "findings": [
+    {
+      "issue_id": "R2-S-001",
+      "prior_severity": "S",
+      "status": "verified_closed",
+      "closure_evidence": "Monthly self-financing units-and-accounting-cash model is independently replayed for both source paths and all 7 x 4 cost paths; drifted component-weight turnover and cost reconciliation match the stored ledgers."
+    },
+    {
+      "issue_id": "R2-A-001",
+      "prior_severity": "A",
+      "status": "verified_closed",
+      "closure_evidence": "Annual arithmetic carries the prior observed-session NAV and excludes incomplete boundary years from a separate annual hurdle."
+    },
+    {
+      "issue_id": "R2-A-002",
+      "prior_severity": "A",
+      "status": "verified_closed",
+      "closure_evidence": "Manifest raw/dependency hashes and P02/P03 registry seals are verified before calculation; verify-only was observed not to alter reviewed case artifacts; refresh-derived contains no manifest write."
+    },
+    {
+      "issue_id": "R2-A-003",
+      "prior_severity": "A",
+      "status": "verified_closed",
+      "closure_evidence": "Both descriptive overlap inputs are now recorded as hash-bound dependencies with explicit descriptive-only roles and verified at runtime."
+    },
+    {
+      "issue_id": "R2-B-001",
+      "prior_severity": "B",
+      "status": "verified_closed",
+      "closure_evidence": "Protocol now calls the exercise exploratory and not independently pre-registered, and specifies the full-lookback monthly-boundary warm-up rule."
+    },
+    {
+      "issue_id": "R2-B-002",
+      "prior_severity": "B",
+      "status": "verified_closed",
+      "closure_evidence": "Both outputs retain all-date, per-asset present/unknown source-state rows and common-valid-observation flags."
+    }
+  ],
+  "open_findings": [],
+  "residual_limitations_not_defects_in_this_scope": [
+    "Public historical prices are not entitled point-in-time total-return or execution data.",
+    "The observation covers four comparison ETFs only and is not an open U0 or approved decision universe.",
+    "SSE triangulates publisher path only because its accounting model is intentionally shared with P02.",
+    "Rolling five-year public-price windows overlap and cannot establish independent performance evidence.",
+    "A case-local post-capture hash seal does not prove original capture-time provenance."
+  ],
+  "required_status_after_audit": {
+    "portfolio_q": 0,
+    "formal_strategy_status": "not_usable",
+    "allowed_conclusion": "The R2 public-price research screen has passed this limited accounting and integrity re-audit.",
+    "prohibited_conclusions": [
+      "strategy approved",
+      "5 percent return achieved or guaranteed",
+      "cash receipt, dividend or reinvestment objective achieved",
+      "product admission",
+      "allocation, holding or trade action",
+      "total-return or execution replay pass"
+    ]
+  }
+}

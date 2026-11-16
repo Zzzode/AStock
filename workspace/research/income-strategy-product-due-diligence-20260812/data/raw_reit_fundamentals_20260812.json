@@ -1,0 +1,530 @@
+{
+  "artifact": "raw_reit_fundamentals",
+  "as_of": "2026-08-12",
+  "data_cutoff": "2026-06-30 for latest periodic operating and financial data; 2025-12-31 for audited annual data",
+  "currency": "CNY",
+  "scope_note": "This is a source-faithful extraction. Fund-level financial metrics and project-company metrics are deliberately kept separate. No current-price valuation, forecast, recommendation, or annualisation has been added.",
+  "source_quality": {
+    "annual_2025": "primary_official_audited",
+    "quarterly_2026_q2": "primary_official_unaudited",
+    "prospectus_and_pds": "primary_official_archived_for_terms_and_risk_follow_up"
+  },
+  "products": [
+    {
+      "ticker": "508069",
+      "legal_name": "华夏南京交通高速公路封闭式基础设施证券投资基金",
+      "short_name": "华夏南京交通高速公路 REIT / 南京交通",
+      "asset_type": "toll road infrastructure REIT",
+      "product_participants": {
+        "fund_manager": "华夏基金管理有限公司",
+        "custodian": "招商银行股份有限公司",
+        "asset_backed_security_manager": "中信证券股份有限公司",
+        "operators": ["南京公路发展（集团）有限公司（统筹）", "南京绕越高速公路东南段有限责任公司（实施）"]
+      },
+      "assets": [{
+        "asset": "南京绕越高速公路东南段项目",
+        "project_company": "南京绕越东南段高速公路有限责任公司",
+        "location": "南京市雨花台区及江宁区；连接宁芜、宁宣、长深及沪宁高速",
+        "business_model": "toll revenue and ancillary rental revenue"
+      }],
+      "shares": {"value": 500000000.0, "date": "2026-06-30", "source": "sources/official-20260812/508069_2026q2.txt:73-113"},
+      "annual_2025_fund_metrics": {
+        "period": "2025-01-01 to 2025-12-31",
+        "revenue": 490114089.13,
+        "net_profit": 94492879.07,
+        "operating_cash_flow": 331087969.67,
+        "manager_reported_cash_distribution_rate_pct": 9.19,
+        "fund_total_assets": 2770281271.71,
+        "fund_net_assets": 2448478701.41,
+        "nav_per_unit": 4.8970,
+        "source": "sources/official-20260812/508069_2025_annual.txt:329-374"
+      },
+      "q2_2026_unaudited_fund_metrics": {
+        "period": "2026-04-01 to 2026-06-30",
+        "revenue": 113090079.97,
+        "net_profit": 17698036.67,
+        "operating_cash_flow": 61291799.81,
+        "manager_reported_cash_distribution_rate_pct": 2.14,
+        "manager_reported_annualised_cash_distribution_rate_pct": 9.75,
+        "distributable_amount": 59459819.14,
+        "distributable_amount_per_unit": 0.1189,
+        "actual_distribution": 164400003.26,
+        "actual_distribution_per_unit": 0.3288,
+        "source": "sources/official-20260812/508069_2026q2.txt:199-288"
+      },
+      "q2_2026_unaudited_project_company_metrics": {
+        "total_assets": 2478495864.48,
+        "total_liabilities": 2178167532.68,
+        "revenue": 112890503.41,
+        "ebitda": 77799601.27,
+        "long_term_payable": 1816933333.33,
+        "long_term_bank_loan_excluding_current_portion": 263700000.0,
+        "current_portion_of_long_term_bank_loan": 16500000.0,
+        "toll_revenue": 112746370.12,
+        "toll_revenue_yoy_pct": -8.20,
+        "source": "sources/official-20260812/508069_2026q2.txt:495-529,531-586"
+      },
+      "q2_2026_reported_fees": {
+        "fund_manager_fee": 610442.56,
+        "asset_backed_security_manager_fee": 610442.56,
+        "custodian_fee": 61044.62,
+        "operator_service_fee": 1665808.14,
+        "source": "sources/official-20260812/508069_2026q2.txt:306-314"
+      },
+      "risk_evidence": [
+        "Q2 toll revenue fell 8.20% year on year; the report attributes the distributable-amount decline partly to lower toll income and working-capital movements.",
+        "The project company reported substantial long-term payables and bank borrowings; these are project-company balance-sheet facts, not a fund-level leverage ratio.",
+        "The issuer states that the quarterly distributable amount is not the final distribution and cannot be linearly extrapolated because income and expenses are not even through the year."
+      ],
+      "critical_limitations": [
+        "Q2 financial data are unaudited.",
+        "No same-date NAV, IOPV, bid-ask spread, depth, or 20-day execution-capacity evidence is contained in this artifact.",
+        "2026-Q3 operating data and a current independent valuation were not available at the cutoff."
+      ]
+    },
+    {
+      "ticker": "508011",
+      "legal_name": "嘉实物美消费封闭式基础设施证券投资基金",
+      "short_name": "嘉实物美消费 REIT / 物美消费",
+      "asset_type": "Beijing community retail infrastructure REIT",
+      "product_participants": {
+        "fund_manager": "嘉实基金管理有限公司",
+        "custodian": "北京银行股份有限公司",
+        "asset_backed_security_manager": "嘉实资本管理有限公司",
+        "operator": "北京物美商业集团股份有限公司"
+      },
+      "assets": [
+        {"asset": "大成项目", "project_company": "北京玉蜓桥物美科技发展有限公司", "location": "北京市丰台区大成路6号院1号楼", "business_model": "commercial leasing and property management"},
+        {"asset": "玉蜓桥项目", "project_company": "北京玉蜓桥物美科技发展有限公司", "location": "北京市丰台区蒲方路9号院8号楼", "business_model": "commercial leasing and property management"},
+        {"asset": "华天项目", "project_company": "北京物美小马厂商业有限公司", "location": "北京市海淀区北小马厂6号", "business_model": "commercial leasing and property management"},
+        {"asset": "德胜门项目", "project_company": "北京美廉美连锁商业有限公司", "location": "北京市西城区安德路118号楼", "business_model": "commercial leasing and property management"}
+      ],
+      "shares": {"value": 400000000.0, "date": "2026-06-30", "source": "sources/official-20260812/508011_2026q2.txt:51-93"},
+      "annual_2025_fund_metrics": {
+        "period": "2025-01-01 to 2025-12-31",
+        "revenue": 105051075.60,
+        "net_profit": 31349858.18,
+        "operating_cash_flow": 77269682.76,
+        "manager_reported_cash_distribution_rate_pct": 4.38,
+        "fund_total_assets": 978376705.28,
+        "fund_net_assets": 923561824.55,
+        "nav_per_unit": 2.3089,
+        "source": "sources/official-20260812/508011_2025_annual.txt:349-384,2863"
+      },
+      "q2_2026_unaudited_fund_metrics": {
+        "period": "2026-04-01 to 2026-06-30",
+        "revenue": 27423726.23,
+        "net_profit": 6591862.82,
+        "operating_cash_flow": 12980054.72,
+        "manager_reported_cash_distribution_rate_pct": 1.25,
+        "manager_reported_annualised_cash_distribution_rate_pct": 5.03,
+        "distributable_amount": 18114006.23,
+        "distributable_amount_per_unit": 0.0453,
+        "actual_distribution": 35239998.20,
+        "actual_distribution_per_unit": 0.0881,
+        "source": "sources/official-20260812/508011_2026q2.txt:163-259"
+      },
+      "q2_2026_unaudited_project_company_metrics": {
+        "total_assets": 700154424.77,
+        "total_liabilities": 752178102.59,
+        "revenue": 26988877.84,
+        "ebitda": 21614512.34,
+        "long_term_loans_by_project_company": {
+          "北京玉蜓桥物美科技发展有限公司": 438611789.16,
+          "北京物美小马厂商业有限公司": 107880546.19,
+          "北京美廉美连锁商业有限公司": 88490044.58
+        },
+        "portfolio_occupancy_pct": 93.66,
+        "portfolio_weighted_remaining_lease_years": 5.94,
+        "top_five_tenant_rent_share_pct": 53.02,
+        "source": "sources/official-20260812/508011_2026q2.txt:414-469,619-686,709-742"
+      },
+      "q2_2026_reported_fees": {
+        "fund_manager_fee": 552618.98,
+        "asset_backed_security_manager_fee": 138154.74,
+        "custodian_fee": 23025.73,
+        "operator_management_fee": 1018448.22,
+        "fee_terms_explicit": "fixed fee 0.3% of prior disclosed NAV, base operator fee 4% of project operating revenue, with a performance-linked floating component",
+        "source": "sources/official-20260812/508011_2026q2.txt:282-342"
+      },
+      "risk_evidence": [
+        "Portfolio occupancy was 93.66%, down 2.01 percentage points year on year; the 大成 project occupancy was 89.32%.",
+        "Top five tenants accounted for 53.02% of rent income, indicating a disclosed tenant-concentration observation.",
+        "Project-company total liabilities exceeded total assets in the Q2 table; this must not be recast as a fund-level leverage metric without reconciliation.",
+        "The report states quarterly distributable amount is not final distribution and cannot be simply annualised."
+      ],
+      "critical_limitations": [
+        "Q2 financial and operating data are unaudited.",
+        "Customer identities are anonymised in the periodic disclosure, preventing counterparty credit diligence from this source alone.",
+        "No current independent appraisal or same-date NAV/market microstructure evidence was extracted."
+      ]
+    },
+    {
+      "ticker": "508068",
+      "legal_name": "华夏北京保障房中心租赁住房封闭式基础设施证券投资基金",
+      "short_name": "华夏北京保障房 REIT / 京保REIT",
+      "asset_type": "Beijing public rental housing REIT",
+      "product_participants": {
+        "fund_manager": "华夏基金管理有限公司",
+        "custodian": "中国建设银行股份有限公司",
+        "asset_backed_security_manager": "中信证券股份有限公司",
+        "operators": ["北京保障房中心有限公司", "北京市燕房保障性住房建设投资有限公司", "北京市燕东保障性住房建设投资有限公司"]
+      },
+      "assets": [
+        {"asset": "文龙家园公租房", "project_company": "北京燕保宜居住房租赁有限公司", "location": "北京市海淀区文龙家园一里", "business_model": "government-guided public rental housing"},
+        {"asset": "熙悦尚郡公租房", "project_company": "北京燕保宜居住房租赁有限公司", "location": "北京市朝阳区朝阳北路82号院", "business_model": "government-guided public rental housing"},
+        {"asset": "朗悦嘉园", "project_company": "北京京保宜居住房租赁有限公司", "location": "北京市房山区阜盛东街58号院", "business_model": "government-guided public rental housing"},
+        {"asset": "光机电", "project_company": "北京京保宜居住房租赁有限公司", "location": "北京市通州区兴光三街9号院", "business_model": "government-guided public rental housing"},
+        {"asset": "盛悦家园", "project_company": "北京京保宜居住房租赁有限公司", "location": "北京市大兴区旧忠路10号院4号楼", "business_model": "government-guided public rental housing"},
+        {"asset": "温泉凯盛家园", "project_company": "北京京保宜居住房租赁有限公司", "location": "北京市海淀区温泉凯盛家园一区、二区", "business_model": "government-guided public rental housing"}
+      ],
+      "shares": {"value": 724218009.0, "date": "2026-06-30", "source": "sources/official-20260812/508068_2026q2.txt:66-119"},
+      "capital_event": {"event": "first follow-on offering", "date": "2025-06-11", "amount": 946199997.98, "listing_date": "2025-06-25", "source": "sources/official-20260812/508068_2026q2.txt:198-207"},
+      "annual_2025_fund_metrics": {
+        "period": "2025-01-01 to 2025-12-31",
+        "revenue": 104846651.43,
+        "net_profit": 45376170.55,
+        "operating_cash_flow": 72049043.96,
+        "manager_reported_cash_distribution_rate_pct": 2.53,
+        "fund_total_assets": 2348942578.10,
+        "fund_net_assets": 2167379232.49,
+        "nav_per_unit": 2.9927,
+        "source": "sources/official-20260812/508068_2025_annual.txt:405-450,3103"
+      },
+      "q2_2026_unaudited_fund_metrics": {
+        "period": "2026-04-01 to 2026-06-30",
+        "revenue": 32292407.22,
+        "net_profit": 13723909.10,
+        "operating_cash_flow": 24875689.68,
+        "manager_reported_cash_distribution_rate_pct": 0.78,
+        "manager_reported_annualised_cash_distribution_rate_pct": 3.13,
+        "distributable_amount": 22429830.91,
+        "distributable_amount_per_unit": 0.0310,
+        "actual_distribution": 43453080.54,
+        "actual_distribution_per_unit": 0.0600,
+        "source": "sources/official-20260812/508068_2026q2.txt:271-378"
+      },
+      "q2_2026_unaudited_project_company_metrics": {
+        "total_assets": 1973201755.43,
+        "total_liabilities": 1689637568.34,
+        "portfolio_available_units": 4264,
+        "portfolio_leasable_area_sqm": 241509.97,
+        "portfolio_occupancy_pct": 94.07,
+        "portfolio_rent_collection_pct": 96.30,
+        "source": "sources/official-20260812/508068_2026q2.txt:442-495,896-902"
+      },
+      "q2_2026_reported_fees": {
+        "fund_manager_fee": 540360.73,
+        "asset_backed_security_manager_fee": 540360.73,
+        "custodian_fee": 54035.80,
+        "operator_management_fee": 6012057.21,
+        "source": "sources/official-20260812/508068_2026q2.txt:423-431"
+      },
+      "risk_evidence": [
+        "The rent level is government-guided and is not adjusted during a lease term, limiting immediate pricing flexibility.",
+        "Q2 year-on-year distributable amount rose because newly acquired assets entered consolidation after the 2025 follow-on offering; the comparison is therefore not like-for-like.",
+        "The manager reports that distributable amount is not final distribution and cannot be simply annualised.",
+        "Project-company liabilities and future capital/operating reserves are material diligence fields and should not be confused with fund-level net assets."
+      ],
+      "critical_limitations": [
+        "Q2 financial data are unaudited.",
+        "No current independent appraisal, project-level debt schedule, or same-date NAV/market microstructure package was extracted.",
+        "Public-housing policy and rent-setting constraints require current regulatory follow-up before an implementation decision."
+      ]
+    },
+    {
+      "ticker": "508077",
+      "legal_name": "华夏基金华润有巢租赁住房封闭式基础设施证券投资基金",
+      "short_name": "华夏基金华润有巢 REIT / 华润有巢",
+      "asset_type": "Shanghai market-oriented rental housing REIT",
+      "product_participants": {
+        "fund_manager": "华夏基金管理有限公司",
+        "custodian": "上海浦东发展银行股份有限公司",
+        "asset_backed_security_manager": "中信证券股份有限公司",
+        "operator": "有巢住房租赁（深圳）有限公司"
+      },
+      "assets": [
+        {"asset": "有巢泗泾", "project_company": "上海有巢优厦房屋租赁有限公司", "location": "上海市松江区泗泾镇米易路216弄", "business_model": "rental apartments and parking"},
+        {"asset": "有巢东部经开区", "project_company": "有巢房屋租赁（上海）有限公司", "location": "上海市松江区书林路600弄", "business_model": "rental apartments and parking"},
+        {"asset": "有巢马桥", "project_company": "润灏房屋租赁（上海）有限公司", "location": "上海市闵行区中青路588弄1-8号等", "business_model": "rental apartments and parking"}
+      ],
+      "shares": {"value": 947803412.0, "date": "2026-06-30", "source": "sources/official-20260812/508077_2026q2.txt:65-116"},
+      "capital_event": {"event": "first follow-on offering", "date": "2025-12-18", "amount": 1132942632.36, "listing_date": "2026-01-12", "source": "sources/official-20260812/508077_2026q2.txt:150-158"},
+      "annual_2025_fund_metrics": {
+        "period": "2025-01-01 to 2025-12-31",
+        "revenue": 79052093.04,
+        "net_profit": 11479864.78,
+        "operating_cash_flow": 52832336.93,
+        "manager_reported_cash_distribution_rate_pct": 1.80,
+        "fund_total_assets": 2362792745.41,
+        "fund_net_assets": 2220782496.34,
+        "nav_per_unit": 2.3431,
+        "source": "sources/official-20260812/508077_2025_annual.txt:316-365,3017"
+      },
+      "q2_2026_unaudited_fund_metrics": {
+        "period": "2026-04-01 to 2026-06-30",
+        "revenue": 34867542.03,
+        "net_profit": 4463822.09,
+        "operating_cash_flow": 21147666.18,
+        "manager_reported_cash_distribution_rate_pct": 0.87,
+        "manager_reported_annualised_cash_distribution_rate_pct": 3.48,
+        "distributable_amount": 22767056.24,
+        "distributable_amount_per_unit": 0.0240,
+        "actual_distribution": 22538761.19,
+        "actual_distribution_per_unit": 0.0238,
+        "source": "sources/official-20260812/508077_2026q2.txt:207-321"
+      },
+      "q2_2026_unaudited_project_company_metrics": {
+        "total_assets": 1630144075.23,
+        "total_liabilities": 1700025916.48,
+        "portfolio_occupancy_area_basis_pct": 94.98,
+        "portfolio_average_rent_cny_per_sqm_per_day": 2.12,
+        "portfolio_weighted_remaining_lease_years": 0.49,
+        "portfolio_rent_collection_pct": 99.92,
+        "source": "sources/official-20260812/508077_2026q2.txt:475-559,802-808"
+      },
+      "q2_2026_reported_fees": {
+        "fund_manager_fee": 553674.03,
+        "asset_backed_security_manager_fee": 553674.94,
+        "custodian_fee": 55367.13,
+        "operator_management_fee": 4641728.92,
+        "source": "sources/official-20260812/508077_2026q2.txt:367-375"
+      },
+      "risk_evidence": [
+        "Portfolio average rent was CNY2.12 per square metre per day, down 2.30% year on year, while occupancy remained high.",
+        "The fund expanded in late 2025 and the newly acquired asset affects comparison with prior-year operating statistics.",
+        "The portfolio weighted remaining lease term was 0.49 years, requiring continuous reletting and rent-reset diligence.",
+        "The issuer states that distributable amount does not represent final distribution and cannot be simply annualised."
+      ],
+      "critical_limitations": [
+        "Q2 data are unaudited and prior-year comparison excludes the subsequently acquired 马桥 asset.",
+        "No current independent appraisal, same-date NAV, tenant credit file, or debt maturity schedule was extracted.",
+        "The project-company assets/liabilities table requires legal-entity reconciliation before use in a leverage conclusion."
+      ]
+    },
+    {
+      "ticker": "508055",
+      "legal_name": "汇添富上海地产租赁住房封闭式基础设施证券投资基金",
+      "short_name": "汇添富上海地产租赁住房 REIT / 地产租住",
+      "asset_type": "Shanghai affordable rental housing REIT",
+      "product_participants": {
+        "fund_manager": "汇添富基金管理股份有限公司",
+        "custodian": "中国银行股份有限公司",
+        "asset_backed_security_manager": "汇添富资本管理有限公司",
+        "operator": "上海城方租赁住房运营管理有限公司"
+      },
+      "assets": [
+        {"asset": "江月路项目", "project_company": "上海华辙实业有限公司", "location": "上海市闵行区南江洲路55号、91号、125号", "business_model": "affordable rental housing plus ancillary commercial leasing"},
+        {"asset": "虹桥项目", "project_company": "上海尚淦实业有限公司", "location": "上海市闵行区申虹路1500弄1-2、6-7、9-11号等", "business_model": "affordable rental housing plus ancillary commercial and parking income"}
+      ],
+      "shares": {"value": 500000000.0, "date": "2026-06-30", "source": "sources/official-20260812/508055_2026q2.txt:51-91"},
+      "annual_2025_fund_metrics": {
+        "period": "2025-03-21 to 2025-12-31; partial first financial year",
+        "revenue": 63123498.68,
+        "net_profit": 16625949.93,
+        "operating_cash_flow": 51074453.45,
+        "manager_reported_cash_distribution_rate_pct": 2.90,
+        "manager_reported_annualised_cash_distribution_rate_pct": 3.70,
+        "fund_total_assets": 1437777259.68,
+        "fund_net_assets": 1340530950.84,
+        "nav_per_unit": 2.6811,
+        "source": "sources/official-20260812/508055_2025_annual.txt:373-416,2170,2344"
+      },
+      "q2_2026_unaudited_fund_metrics": {
+        "period": "2026-04-01 to 2026-06-30",
+        "revenue": 18247748.67,
+        "net_profit": 3021426.00,
+        "operating_cash_flow": 13310836.05,
+        "manager_reported_cash_distribution_rate_pct": 0.84,
+        "manager_reported_annualised_cash_distribution_rate_pct": 3.27,
+        "distributable_amount": 13898903.24,
+        "distributable_amount_per_unit": 0.0278,
+        "actual_distribution": 25769998.27,
+        "actual_distribution_per_unit": 0.0515,
+        "source": "sources/official-20260812/508055_2026q2.txt:189-291"
+      },
+      "q2_2026_unaudited_project_company_metrics": {
+        "total_assets": 1302037878.50,
+        "total_liabilities": 1019765328.87,
+        "investment_property_by_project_company": {"上海华辙实业有限公司": 836415477.30, "上海尚淦实业有限公司": 345630678.03},
+        "long_term_payable_by_project_company": {"上海华辙实业有限公司": 636000000.44, "上海尚淦实业有限公司": 257223136.79},
+        "portfolio_occupancy_pct": 96.43,
+        "portfolio_average_rent_cny_per_sqm_per_day": 2.79,
+        "portfolio_rent_collection_pct": 99.32,
+        "source": "sources/official-20260812/508055_2026q2.txt:322-370,469-498"
+      },
+      "q2_2026_reported_fees": {
+        "fund_manager_fee": 401057.93,
+        "asset_backed_security_manager_fee": 267371.65,
+        "custodian_fee": 33421.57,
+        "operator_management_fee": 2706122.59,
+        "source": "sources/official-20260812/508055_2026q2.txt:307-314"
+      },
+      "risk_evidence": [
+        "The 2025 annual period was a partial first financial year, making full-year growth or distribution comparison inappropriate.",
+        "Portfolio occupancy was 96.43%; the 虹桥 project occupancy was 93.16%, lower than 江月路 at 97.69%.",
+        "Project-company long-term payables and future capital/operating reserves are material cash-flow claims that need legal and maturity analysis.",
+        "The issuer explicitly says the quarterly distributable amount is not final distribution and cannot be simply annualised."
+      ],
+      "critical_limitations": [
+        "Q2 data are unaudited.",
+        "Fund history is short; there is no comparable full prior fiscal year in the archived data.",
+        "No current independent appraisal, same-date NAV/IOPV, debt maturity schedule, or price-discovery depth evidence was extracted."
+      ]
+    },
+    {
+      "ticker": "508080",
+      "legal_name": "中金亦庄产业园封闭式基础设施证券投资基金",
+      "short_name": "中金亦庄产业园 REIT / 北京亦庄",
+      "asset_type": "Beijing industrial park REIT",
+      "product_participants": {
+        "fund_manager": "中金基金管理有限公司",
+        "custodian": "中国农业银行股份有限公司",
+        "asset_backed_security_manager": "中国国际金融股份有限公司",
+        "operator": "北京盛芯运营管理有限公司"
+      },
+      "assets": [
+        {"asset": "高端汽车及新能源汽车关键零配件产业园N12", "project_company": "北京盛擎科技服务有限公司", "location": "北京经济技术开发区融兴北一街11号院", "business_model": "factory leasing, property management and integrated services"},
+        {"asset": "高端汽车及新能源汽车关键零配件产业园N20", "project_company": "北京盛擎科技服务有限公司", "location": "北京经济技术开发区融兴北一街4号院", "business_model": "factory leasing, property management and integrated services"}
+      ],
+      "shares": {"value": 400000000.0, "date": "2026-06-30", "source": "sources/official-20260812/508080_2026q2.txt:57-109"},
+      "annual_2025_fund_metrics": {
+        "period": "2025-06-16 to 2025-12-31; partial first financial year",
+        "revenue": 61901232.31,
+        "net_profit": 5002443.41,
+        "operating_cash_flow": 57521934.95,
+        "manager_reported_cash_distribution_rate_pct": 2.43,
+        "manager_reported_annualised_cash_distribution_rate_pct": 4.45,
+        "fund_total_assets": 1157010488.69,
+        "fund_net_assets": 1093002443.41,
+        "nav_per_unit": 2.7325,
+        "source": "sources/official-20260812/508080_2025_annual.txt:318-353,1919"
+      },
+      "q2_2026_unaudited_fund_metrics": {
+        "period": "2026-04-01 to 2026-06-30",
+        "revenue": 24165592.77,
+        "net_profit": -1760863.71,
+        "operating_cash_flow": 19030393.01,
+        "manager_reported_cash_distribution_rate_pct": 1.46,
+        "manager_reported_annualised_cash_distribution_rate_pct": 5.90,
+        "distributable_amount": 17110598.70,
+        "distributable_amount_per_unit": 0.0428,
+        "actual_distribution": 36000000.00,
+        "actual_distribution_per_unit": 0.0900,
+        "source": "sources/official-20260812/508080_2026q2.txt:175-294"
+      },
+      "q2_2026_unaudited_project_company_metrics": {
+        "total_assets": 1035136255.74,
+        "total_liabilities": 736668773.86,
+        "investment_property": 935773291.57,
+        "long_term_payable": 649090923.78,
+        "portfolio_building_area_sqm": 128643.86,
+        "portfolio_leasable_area_sqm": 122897.63,
+        "portfolio_occupancy_pct": 87.74,
+        "portfolio_average_rent_cny_per_sqm_per_day": 2.62,
+        "portfolio_rent_collection_pct": 90.11,
+        "top_tenant_rent_share_pct": 44.04,
+        "source": "sources/official-20260812/508080_2026q2.txt:304-344,523-557,660-667"
+      },
+      "q2_2026_reported_fees": {
+        "fund_manager_fee": 463253.70,
+        "asset_backed_security_manager_fee": 82120.50,
+        "custodian_and_asp_custodian_fee": 27249.95,
+        "operator_management_fee": 4147293.47,
+        "fee_terms_explicit": "operator fee has a revenue-based base component and a cash-flow-performance-linked floating component; under-collection can reduce the annual base fee",
+        "source": "sources/official-20260812/508080_2026q2.txt:273-298"
+      },
+      "risk_evidence": [
+        "Occupancy was 87.74% and cumulative rent collection was 90.11%; the report discusses inventory digestion pressure and intensifying regional competition.",
+        "The largest tenant represented 44.04% of rent income, a material disclosed concentration exposure.",
+        "Q2 net profit was negative while operating cash flow and distributable amount were positive; cash-flow analysis must not substitute for earnings analysis.",
+        "The fund was established in June 2025, so the prior-year comparison is a short stub period and not economically comparable."
+      ],
+      "critical_limitations": [
+        "Q2 figures are unaudited.",
+        "The case lacks a current tenant covenant pack, lease-expiry schedule, detailed capex plan, independent appraisal, and current execution-liquidity evidence.",
+        "No conclusion on distribution durability is permitted from a partial first fiscal year and one unaudited quarter."
+      ]
+    },
+    {
+      "ticker": "508096",
+      "legal_name": "中航京能国际能源封闭式基础设施证券投资基金",
+      "short_name": "中航京能国际能源 REIT / 京能国际",
+      "asset_type": "renewable-energy infrastructure REIT",
+      "product_participants": {
+        "fund_manager": "中航基金管理有限公司",
+        "custodian": "华夏银行股份有限公司",
+        "asset_backed_security_manager": "中航证券有限公司",
+        "operators": ["内蒙古京能新能源科技有限公司", "保山能源发展股份有限公司", "保山腾冲保能和顺能源科技有限公司"]
+      },
+      "assets": [
+        {"asset": "榆林市榆阳区300MWp光伏发电项目", "project_company": "榆林市江山永宸新能源有限公司", "location": "陕西省榆林市榆阳区小壕兔乡", "business_model": "centralised solar power generation and electricity-sales revenue"},
+        {"asset": "湖北随州100MWp光伏发电项目", "project_company": "湖北晶泰光伏电力有限公司", "location": "湖北省随州市淅河镇", "business_model": "centralised solar power generation and electricity-sales revenue"},
+        {"asset": "苏家河口水电站", "project_company": "云南保山腾冲市京能两河水电开发有限责任公司", "location": "云南省保山市腾冲市猴桥镇", "business_model": "run-of-river hydropower and electricity-sales revenue"},
+        {"asset": "松山河口水电站", "project_company": "云南保山腾冲市京能两河水电开发有限责任公司", "location": "云南省保山市腾冲市猴桥镇", "business_model": "run-of-river hydropower and electricity-sales revenue"}
+      ],
+      "shares": {"value": 600880354.0, "date": "2026-06-30", "source": "sources/official-20260812/508096_2026q2.txt:120-161"},
+      "capital_event": {"event": "first follow-on offering", "date": "2025-12-25", "amount": 2922149998.24, "listing_date": "2026-01-15", "source": "sources/official-20260812/508096_2026q2.txt:224-233"},
+      "annual_2025_fund_metrics": {
+        "period": "2025-01-01 to 2025-12-31",
+        "revenue": 307500968.53,
+        "net_profit": 100890454.70,
+        "operating_cash_flow": 239235337.70,
+        "manager_reported_cash_distribution_rate_pct": 5.33,
+        "fund_total_assets": 5979759012.10,
+        "fund_net_assets": 5511248504.32,
+        "nav_per_unit_in_key_metrics_table": 9.1720,
+        "fair_value_reference_nav_per_unit": 8.1264,
+        "separate_financial_statement_note_nav_per_unit": 8.8388,
+        "nav_reconciliation_status": "unresolved: two 2025 annual-report disclosures differ and must be reconciled against the underlying calculation / post-distribution timing before valuation use",
+        "source": "sources/official-20260812/508096_2025_annual.txt:523-589,600-608,3820-3824"
+      },
+      "q2_2026_unaudited_fund_metrics": {
+        "period": "2026-04-01 to 2026-06-30",
+        "revenue": 167554328.89,
+        "net_profit": 55654748.49,
+        "operating_cash_flow": 93770740.48,
+        "manager_reported_cash_distribution_rate_pct": 2.25,
+        "manager_reported_annualised_cash_distribution_rate_pct": 10.12,
+        "distributable_amount": 125623212.41,
+        "distributable_amount_per_unit": 0.2091,
+        "actual_distribution": 210073784.16,
+        "actual_distribution_per_unit": 0.3496,
+        "source": "sources/official-20260812/508096_2026q2.txt:300-411"
+      },
+      "q2_2026_unaudited_project_company_metrics": {
+        "total_assets": 4746696138.84,
+        "total_liabilities": 3469846776.75,
+        "revenue": 167372755.58,
+        "ebitda": 137461823.99,
+        "hubei_jingtai_short_term_borrowing": 85580343.44,
+        "hubei_jingtai_long_term_payable": 321100000.00,
+        "yulin_jiangshan_yongchen_short_term_borrowing": 353808669.78,
+        "yulin_jiangshan_yongchen_long_term_payable": 1200600000.00,
+        "yulin_short_term_borrowing_yoy_pct": 36.07,
+        "source": "sources/official-20260812/508096_2026q2.txt:1027-1068"
+      },
+      "q2_2026_reported_fees": {
+        "fund_management_fee_including_asp_manager_fee": 3954059.95,
+        "asset_backed_security_manager_component": 480913.05,
+        "custodian_fee": 137403.73,
+        "operator_cost_and_service_fee": {"湖北晶泰": 1632440.97, "江山永宸": 2905117.92, "两河水电": 11694968.56},
+        "incentive_operator_fee_accrued": 0.0,
+        "source": "sources/official-20260812/508096_2026q2.txt:414-430"
+      },
+      "risk_evidence": [
+        "Q2 cash-flow distribution rate is explicitly affected by quarterly operations and factoring arrangements; it is not a durable yield estimate.",
+        "The Q2 distributable amount included CNY95.725m of receivables-factoring borrowing and contributions from assets acquired at the end of 2025, impairing comparability.",
+        "2025 annual disclosure attributes lower initial-asset distributable amount partly to solar-resource conditions, power supply-demand imbalance and transmission pressure; newly acquired hydropower assets missed forecasted distributable amount because inflows declined.",
+        "Short-term borrowings at two solar project companies and large long-term payables are explicit balance-sheet exposures.",
+        "The annual report contains conflicting per-unit NAV disclosures (9.1720 in the key metrics table; 8.8388 in a financial-statement note), which is a valuation blocker pending reconciliation."
+      ],
+      "critical_limitations": [
+        "Q2 data are unaudited.",
+        "The expansion changed the asset base in late 2025/early 2026, so historical per-unit metrics cannot be mechanically compared or annualised.",
+        "No current independent asset valuation, feed-in / power-price sensitivity model, receivable-aging pack, bid-ask / depth data, or reconciled current NAV was available in this extraction."
+      ]
+    }
+  ],
+  "universal_cash_flow_caveat": "Each Q2 report is unaudited. Issuers state that distributable amount is not final distribution and that income and expenses are not evenly incurred throughout the year; reported quarterly or year-to-date annualised cash-distribution rates are issuer formulas, not a promised return or forecast."
+}

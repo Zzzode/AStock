@@ -1,0 +1,56 @@
+{
+  "date": "2026-08-11",
+  "change_id": "portable-xelatex-cjk-policy",
+  "trigger": "User challenged the macOS-only render requirement.",
+  "root_cause": [
+    "Repository policy and mirrored skills made macOS/MacTeX a brand/host requirement.",
+    "The case verifier tested a literal MacTeX phrase instead of build provenance."
+  ],
+  "policy": {
+    "required_engine": "XeLaTeX",
+    "supported_hosts": "Any host with functioning XeLaTeX, required CJK packages and resolved CJK fonts.",
+    "macos_path": "/Library/TeX/texbin is optional executable discovery only.",
+    "r3_provenance": ["host OS", "engine path", "engine version/distribution", "selected CJK font", "build command", "source SHA-256", "PDF SHA-256", "page count", "diagnostics"]
+  },
+  "regression_evidence": {
+    "host": "Linux 5.15.152.bsk.4-amd64 x86_64 GNU/Linux",
+    "xelatex": "/usr/bin/xelatex; XeTeX 3.141592653-2.6-0.999994 (TeX Live 2022/Debian)",
+    "ctexrep": "/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexrep.cls",
+    "xeCJK": "/usr/share/texlive/texmf-dist/tex/xelatex/xecjk/xeCJK.sty",
+    "fonts": ["Noto Serif CJK SC", "Noto Sans CJK SC"],
+    "source_sha256": "b7756913ec376f7b6262bfd215490aa2e9751f555f97055b019ce08933d7faf7",
+    "source_graph_sha256": "187ed27fbd7b473e6c352e8f911eed6c296b00bf0ba884dcffe540f8c28b6cc5",
+    "build": "two successful XeLaTeX passes to an isolated temporary output directory",
+    "command": "/usr/bin/xelatex -interaction=nonstopmode -halt-on-error -output-directory=<isolated-directory> main.tex",
+    "result": "18-page A4 PDF",
+    "pdf_sha256": "27d838031f86ac92a4e76a4bd0cb63dc9a232ef186dfeac0d9c82c10c2d7c630",
+    "release_eligible": false,
+    "diagnostic": "Overfull \\hbox 76.82506pt; isolated artifact is not a durable R3 release record."
+  },
+  "current_build": {
+    "date": "2026-08-12",
+    "status": "built_unreviewed",
+    "source_sha256": "ff771a67bcefc9f1c22987f3115c6caca56c4dbc3c40aa91e79969e01f031a13",
+    "source_graph_sha256": "d208de98baeacae25ec56fcca51b2685aa45721c7c715f7f7880a255cacf7e55",
+    "pdf": {
+      "path": "main.pdf",
+      "sha256": "d485b96227d0caca0abcb79b263b7a26301ee2d4e0395cb6ad39f41227d93102",
+      "page_count": 18
+    },
+    "provenance": "data/build_provenance_20260812_actionability.json",
+    "diagnostics": "0 fatal errors, 0 undefined-control-sequence errors, 0 missing-character records and 0 Overfull hbox records",
+    "residual": "Author build and targeted action-card inspection only; independent R2/R3 review and R0--R4 closure remain required."
+  },
+  "actionability_feedback": {
+    "date": "2026-08-12",
+    "trigger": "User challenged a configuration strategy that did not name targets or actions.",
+    "failure_mode": "Reader-facing source contained sleeve weights but called the named ETFs representative examples; detailed product mapping was not reader-facing.",
+    "root_cause": "The strategic-allocation artifact contract did not require designated implementation, staged action and fallback per active sleeve.",
+    "case_repair": ["data/model_portfolio_implementation_20260812.md", "data/model_portfolio_implementation_20260812.json", "sections/ch01_decision.tex", "sections/ch03_portfolio.tex", "sections/ch07_execution.tex"],
+    "prompt_or_skill_change_applied": false,
+    "reason_no_prompt_change": "User did not authorize a skill, prompt or agent change.",
+    "regression_proposal": "Fail strategic-allocation actionability if an active sleeve lacks a reader-facing designated instrument or explicit cash/deposit implementation, target notional, staged action, validation gate and fallback destination.",
+    "residual": "Author repair awaits independent R2 and R3 review; existing evidence gates remain open."
+  },
+  "residual_status": "blocked"
+}

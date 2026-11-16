@@ -1,0 +1,64 @@
+{
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "audit_id": "DPSFS-U0T2-v1",
+  "schema_version": "u0_to_t2_derivation_audit_requirements.v1",
+  "as_of": "2026-08-14",
+  "status": "requirements_only_not_generated_not_frozen",
+  "research_only": true,
+  "portfolio_q": 0,
+  "purpose": "Define the immutable audit needed to derive a future T2 decision universe from a frozen U0 population without manual nomination or convenience bias. It is not a T2 universe, selection, allocation or action.",
+  "required_snapshot_fields": [
+    "u0_registry_id",
+    "u0_registry_version",
+    "u0_snapshot_timestamp",
+    "u0_snapshot_sha256",
+    "population_source_manifest_hashes",
+    "population_query_definition",
+    "expected_and_actual_population_counts",
+    "source_revision_cutoff",
+    "reviewer_and_freeze_timestamp"
+  ],
+  "required_class_summary_fields": [
+    "parent_class_id",
+    "population_count",
+    "qualified_count",
+    "unqualified_count_by_gate",
+    "unresearched_count",
+    "out_of_scope_count_and_reason",
+    "accepted_data_module_id_or_missing_state",
+    "accepted_protocol_module_id_or_missing_state",
+    "coverage_status"
+  ],
+  "required_item_audit_fields": [
+    "item_identifier",
+    "parent_class_id",
+    "u0_membership_key",
+    "selection_rule_id_and_sha256",
+    "rule_evaluation_timestamp",
+    "eligible_or_excluded_state",
+    "every_failed_gate_or_inclusion_reason",
+    "source_and_lineage_references",
+    "manual_override_id_or_null",
+    "review_status"
+  ],
+  "exception_policy": {
+    "default": "Manual inclusion, exclusion, substitution or class bypass is prohibited.",
+    "permitted_exception": "Only a documented operational correction may be proposed. It requires an immutable exception ID, reason, source evidence, independent R0/R1/risk approval and a new freeze record.",
+    "disclosure": "Every exception is reported in the T2 audit output and cannot be hidden in a generic notes field."
+  },
+  "coverage_scope_rule": {
+    "open_universe_label": "A result may use an open domestic multi-asset label only when every in-scope U0 class has a reconciled population and an accepted data/replay module, or is explicitly out of scope with a dated independently approved reason.",
+    "restricted_label": "If any in-scope class lacks a population, data module or protocol module, the run must be labeled coverage-restricted by included and omitted class. It cannot imply that omitted classes were economically rejected.",
+    "t2_class_gate": "No item may appear in T2 unless its parent U0 class has an accepted module and the item-level audit passes the frozen rule."
+  },
+  "acceptance_tests": [
+    "U0 snapshot hash and source manifests resolve and class counts reconcile.",
+    "Every T2 item maps to exactly one U0 parent_class_id and U0 membership key.",
+    "Every U0 item has an inclusion/exclusion/unfinished status; no silent disappearance.",
+    "Every inclusion/exclusion uses a pre-frozen rule ID; overrides resolve to reviewed exception IDs.",
+    "Per-class data/protocol module state is explicit and drives coverage label.",
+    "Independent reviewer can reproduce T2 from the U0 snapshot and item audit."
+  ],
+  "pass_threshold": "0 unmapped T2 item, 0 silent U0 omission, 0 manual nomination, 0 unresolved exception and 0 open-universe label where coverage is restricted.",
+  "current_decision": "No U0 snapshot or T2 derivation audit has been generated. The current finite comparison list remains a draft probe with q=0."
+}

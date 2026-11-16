@@ -1,0 +1,74 @@
+{
+  "schema_version": "research.prose_style_audit.v3",
+  "case_id": "global-institutional-strategy-personal-20260815",
+  "cycle": "R2_reopen_3",
+  "trigger": "User-directed expansion to paired-negative and exhaustive authored-没有 review.",
+  "scope": {
+    "source_files": [
+      "main.tex",
+      "sections/*.tex"
+    ],
+    "release_text": "main_current_text.txt",
+    "reader_facing_elements": [
+      "titles",
+      "body prose",
+      "captions",
+      "table introductions and cells",
+      "callout boxes",
+      "TikZ node text"
+    ]
+  },
+  "patterns": {
+    "authored_not_token": "不是",
+    "authored_no_token": "没有",
+    "hardest": "最难",
+    "rather_than": "而非|而不是",
+    "not_but_variants": "(?:并非|绝非)[^。！？；\\n]{0,96}(?:而是|也(?:不是|非|不))",
+    "negative_stack_variants": "既非[^。！？；\\n]{0,96}也非|(?:既)?不[^。！？；\\n]{0,96}也不|(?:无|未)[^。！？；\\n]{0,96}也(?:无|未)"
+  },
+  "repair_history": [
+    {
+      "reopen": "first_rewrite",
+      "literal_match_count": 29,
+      "literal_match_line_count": 27,
+      "residual_close_variant_count": 14,
+      "disposition": "All eligible matches were rewritten and the initial expanded scan cleared."
+    },
+    {
+      "reopen": "authored_not_token_expansion",
+      "reader_facing_line_count": 33,
+      "all_hits_author_written": true,
+      "immutable_text_exceptions": [],
+      "disposition": "All remaining author-written contrastive negative constructions were rewritten into direct statements."
+    },
+    {
+      "reopen": "authored_no_token_and_negative_stack_expansion",
+      "authored_no_token_line_count": 17,
+      "all_hits_author_written": true,
+      "immutable_text_exceptions": [],
+      "disposition": "All remaining paired-negative constructions and authored 没有 occurrences were rewritten into direct statements."
+    }
+  ],
+  "final_scan": {
+    "tex_source_eligible_hit_count": 0,
+    "pdf_text_eligible_hit_count": 0,
+    "normalized_pdf_text_scan": true,
+    "immutable_text_exception_count": 0,
+    "status": "PASS"
+  },
+  "fact_preservation": {
+    "status": "PASS",
+    "preserved": [
+      "numbers and dates",
+      "source IDs and citations",
+      "LaTeX formulas and table logic",
+      "q=0, RESEARCH_ONLY, and NO_ACTION boundaries",
+      "risk and implementation limitations"
+    ]
+  },
+  "r2_disposition": {
+    "eligible_hit_count": 0,
+    "status": "closed",
+    "finding_type": "reader_prose_template_ban"
+  }
+}

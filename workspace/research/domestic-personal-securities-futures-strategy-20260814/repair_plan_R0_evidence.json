@@ -1,0 +1,21 @@
+{
+  "schema_version": "r0_repair_plan.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "cycle": "R0_evidence",
+  "status": "r0_evidence_governance_repairs_passed_not_investable",
+  "tasks": [
+    {"id":"RP01","finding":"R0-S-001","action":"Reclassify and regenerate the ETF diagnostic as unresolved-basis exploratory public-series evidence.","status":"implemented","verification":"Inspect source price_basis and regenerated JSON/Markdown/source-governance references."},
+    {"id":"RP02","finding":"R0-S-002","action":"Retain and hash all twelve six-date SHFE/CZCE source samples; disclose retrospective retrieval boundary.","status":"implemented","verification":"Recompute manifest hashes and trace each derived date to a retained file."},
+    {"id":"RP03","finding":"R0-S-003","action":"Create R0 findings, repair-plan twins and review log.","status":"implemented","verification":"Check required artifact existence and request an independent rerun."},
+    {"id":"RP04","finding":"R0-A-001","action":"Remove the unsupported predeclared assertion from the dynamic public-series diagnostic.","status":"implemented","verification":"Search memo, rulebook and tool output for diagnostic protocol status."},
+    {"id":"RP05","finding":"R0-A-002","action":"Normalize vendor-document row-level provenance and validate it mechanically.","status":"implemented","verification":"Run tools/verify_source_manifests.py."},
+    {"id":"RP06","finding":"R0-A-003","action":"Add distinct AU, CU and TA R1 cards with exact unavailable fields and gates.","status":"implemented","verification":"Review analysis/futures_r1_feasibility_20260814.md for three cards and q=0."},
+    {"id":"RP07","finding":"R0-A-004","action":"Capture metadata-only failed-probe records without response bodies.","status":"implemented","verification":"Validate metadata manifest and source-exhaustion links."},
+    {"id":"RP08","finding":"R0-B-001","action":"Expand C07 source IDs.","status":"implemented","verification":"Parse claim_audit.json and verify all IDs resolve."},
+    {"id":"RP09","finding":"post_repair","action":"Obtain a fresh independent R0 review.","status":"conditional_review_completed","verification":"The reviewer verified prior repairs and added R0-A-005/R0-B-002."},
+    {"id":"RP10","finding":"R0-A-005","action":"Persist manifest-derived retrospective provenance in the futures result and make the generator reject unmanifested or changed raw samples.","status":"implemented","verification":"Run the generator and inspect top-level plus every sample retrieval_basis/retrieved_at field."},
+    {"id":"RP11","finding":"R0-B-002","action":"Anchor verifier paths to REPO_ROOT and run both from repo root and case root.","status":"implemented","verification":"Run both verifier scripts from both working directories."},
+    {"id":"RP12","finding":"post_conditional_repair","action":"Obtain a final independent R0 repair check.","status":"verified_completed","verification":"Reviewer marked all R0 documentation repairs closed; UR01-UR05 remain independent strategy blockers."}
+  ],
+  "hard_boundary": "No repair task may make a return, allocation, holding, product-admission or execution claim. The case stays q=0 pending UR01-UR05."
+}

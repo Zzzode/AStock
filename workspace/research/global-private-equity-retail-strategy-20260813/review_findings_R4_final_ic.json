@@ -1,0 +1,25 @@
+{
+  "cycle": "R4_final_ic",
+  "reviewer": "independent framework red-team",
+  "review_date": "2026-08-14",
+  "findings": [
+    {
+      "id": "R4-00",
+      "severity": "S",
+      "title": "Prior final sign-off preceded newly discovered source and prose defects",
+      "status": "closed",
+      "evidence": "The prior R4/sign-off predated manager-attribution, REIT-guide-title, attachment and reader-language repairs. The final evidence packet now limits Blackstone control language to specified control-oriented PE investments, KKR asset/liability matching to Global Atlantic insurance context, and Apollo to structured-capital/asset-supported underwriting context.",
+      "repair": "Withdrew the prior conclusion; corrected source registry, claim audit, strategy packet and reader-facing PDF; rebuilt the release; refreshed lifecycle artifacts and reran both verifiers.",
+      "verification": "Independent framework red-team rechecked the primary-text locators and current release renders. The refreshed final-signoff records actual case-local 86 PASS / 0 FAIL and repository 130 PASS / 0 FAIL results; no remaining S/A issue was identified at research-framework scope."
+    },
+    {
+      "id": "R4-01",
+      "severity": "B",
+      "title": "The memo has no personalised implementation evidence",
+      "status": "resolved_at_research_framework_scope",
+      "evidence": "No user capital, cash needs, risk capacity, account permissions, tax inputs, holdings, named issuer or current liquidity record was supplied.",
+      "repair": "Final sign-off retains q=0, no live execution authority and an implementation NOT_APPROVED status.",
+      "verification": "Gate manifest, return model, PDF and sign-off use the same boundary."
+    }
+  ]
+}

@@ -1,0 +1,257 @@
+{
+  "boundary": "This discovery screen measures published index values only. It does not establish investor TWRR, an executable product, a portfolio, an allocation, a cash-receipt objective or an order.",
+  "capture_manifest": "sources/probe-csi-index-20260814/capture_manifest.json",
+  "capture_manifest_sha256": "9ae519cf8cc24d188ed237d1c2aa35d662eeecb42b5f3f6d5d61d26fa20757c7",
+  "captured_at": "2026-08-14T04:05:17.090893+00:00",
+  "formal_decision_eligible": false,
+  "method": {
+    "no_costs": true,
+    "no_product_tracking_or_execution": true,
+    "no_taxes": true,
+    "return_metric": "annualised close-to-close index-value return over each complete rolling five-year calendar interval",
+    "threshold": 0.05,
+    "window_algorithm": "For each observed end date D, select the latest observed close on or before D minus five calendar years. Retain the window only if elapsed days are at least 1,825 and no more than 1,832; annualise as (close_D / close_start)^(365 / elapsed_days) - 1."
+  },
+  "portfolio_q": 0,
+  "protocol_id": "CSI-PUBLIC-DISCOVERY-v1",
+  "protocol_sha256": "d35270bda54d3a9ecddfccf54f67425e1b2989e9eaf43cd1c1c1e9022c8e7bbd",
+  "quality_tier": "public_official_index_observation",
+  "results": [
+    {
+      "index_code": "H00300",
+      "name": "CSI 300 Total Return Index",
+      "raw_response_file": "sources/probe-csi-index-20260814/H00300.3ce4580462e08284ed2a3ac45c1065d98b05b6b2b344410cc08eac78b65ca573.raw.json",
+      "raw_response_sha256": "3ce4580462e08284ed2a3ac45c1065d98b05b6b2b344410cc08eac78b65ca573",
+      "role": "broad-equity total-return reference",
+      "selection_basis": "Published CSI total-return version of a broad A-share benchmark.",
+      "status": "evaluated_public_index_observation_only",
+      "summary": {
+        "complete_rolling_five_year_windows": 999,
+        "first_date": "2017-06-30",
+        "full_sample_annualised_index_value_return": 0.0513401095,
+        "full_sample_cumulative_index_value_return": 0.5791716688,
+        "full_sample_elapsed_days": 3331,
+        "last_date": "2026-08-13",
+        "observations": 2217,
+        "rolling_five_year_all_windows_at_or_above_5pct": false,
+        "rolling_five_year_max_annualised_index_value_return": 0.0663663366,
+        "rolling_five_year_min_annualised_index_value_return": -0.0228743383,
+        "rolling_five_year_windows_at_or_above_5pct": 39,
+        "rolling_five_year_windows_below_5pct": 960,
+        "window_samples": [
+          {
+            "annualised_index_value_return": 0.0631376081,
+            "at_or_above_5pct": true,
+            "elapsed_days": 1826,
+            "end_date": "2022-06-30",
+            "start_date": "2017-06-30"
+          },
+          {
+            "annualised_index_value_return": 0.0132867984,
+            "at_or_above_5pct": false,
+            "elapsed_days": 1826,
+            "end_date": "2026-08-13",
+            "start_date": "2021-08-13"
+          }
+        ]
+      }
+    },
+    {
+      "index_code": "H00922",
+      "name": "CSI Dividend Total Return Index",
+      "raw_response_file": "sources/probe-csi-index-20260814/H00922.613fa8c645bbfedaeb637398362a7a67eb2022d79ae10c0cc4bd7b6794a348fa.raw.json",
+      "raw_response_sha256": "613fa8c645bbfedaeb637398362a7a67eb2022d79ae10c0cc4bd7b6794a348fa",
+      "role": "dividend-factor equity total-return reference",
+      "selection_basis": "Published CSI total-return version of the dividend equity index used by the published cross-asset rules below.",
+      "status": "evaluated_public_index_observation_only",
+      "summary": {
+        "complete_rolling_five_year_windows": 999,
+        "first_date": "2017-06-30",
+        "full_sample_annualised_index_value_return": 0.0695120607,
+        "full_sample_cumulative_index_value_return": 0.8465002616,
+        "full_sample_elapsed_days": 3331,
+        "last_date": "2026-08-13",
+        "observations": 2217,
+        "rolling_five_year_all_windows_at_or_above_5pct": false,
+        "rolling_five_year_max_annualised_index_value_return": 0.1231987052,
+        "rolling_five_year_min_annualised_index_value_return": 0.0357069165,
+        "rolling_five_year_windows_at_or_above_5pct": 953,
+        "rolling_five_year_windows_below_5pct": 46,
+        "window_samples": [
+          {
+            "annualised_index_value_return": 0.0680768767,
+            "at_or_above_5pct": true,
+            "elapsed_days": 1826,
+            "end_date": "2022-06-30",
+            "start_date": "2017-06-30"
+          },
+          {
+            "annualised_index_value_return": 0.0650826693,
+            "at_or_above_5pct": true,
+            "elapsed_days": 1826,
+            "end_date": "2026-08-13",
+            "start_date": "2021-08-13"
+          }
+        ]
+      }
+    },
+    {
+      "index_code": "932410",
+      "name": "CSI Dividend Equity and Bond Risk Parity Index",
+      "raw_response_file": "sources/probe-csi-index-20260814/932410.8b1ddfbd45f25fb60aa91866c4dd513492451f64b002e1a6ad55d8880c3a1713.raw.json",
+      "raw_response_sha256": "8b1ddfbd45f25fb60aa91866c4dd513492451f64b002e1a6ad55d8880c3a1713",
+      "role": "published equity-bond risk-parity rule reference",
+      "selection_basis": "Published CSI methodology combines H00922 with a 0-5 year investment-grade credit-bond coupon strategy through a risk-parity rule.",
+      "status": "evaluated_public_index_observation_only",
+      "summary": {
+        "complete_rolling_five_year_windows": 999,
+        "first_date": "2017-06-30",
+        "full_sample_annualised_index_value_return": 0.0463141586,
+        "full_sample_cumulative_index_value_return": 0.5116,
+        "full_sample_elapsed_days": 3331,
+        "last_date": "2026-08-13",
+        "observations": 2216,
+        "rolling_five_year_all_windows_at_or_above_5pct": false,
+        "rolling_five_year_max_annualised_index_value_return": 0.0529996545,
+        "rolling_five_year_min_annualised_index_value_return": 0.0402179341,
+        "rolling_five_year_windows_at_or_above_5pct": 170,
+        "rolling_five_year_windows_below_5pct": 829,
+        "window_samples": [
+          {
+            "annualised_index_value_return": 0.0524561865,
+            "at_or_above_5pct": true,
+            "elapsed_days": 1826,
+            "end_date": "2022-06-30",
+            "start_date": "2017-06-30"
+          },
+          {
+            "annualised_index_value_return": 0.0402179341,
+            "at_or_above_5pct": false,
+            "elapsed_days": 1826,
+            "end_date": "2026-08-13",
+            "start_date": "2021-08-13"
+          }
+        ]
+      }
+    },
+    {
+      "index_code": "932411",
+      "name": "CSI Dividend Equity and Bond Constant Proportion 10/90 Index",
+      "raw_response_file": "sources/probe-csi-index-20260814/932411.9ed4ff68a734cceb0640013cb2514cb93f8a63a9ab0f6751b3f5c69deca5353a.raw.json",
+      "raw_response_sha256": "9ed4ff68a734cceb0640013cb2514cb93f8a63a9ab0f6751b3f5c69deca5353a",
+      "role": "published constant-mix reference",
+      "selection_basis": "First member of the published 10/90, 20/80 and 30/70 constant-proportion family.",
+      "status": "evaluated_public_index_observation_only",
+      "summary": {
+        "complete_rolling_five_year_windows": 999,
+        "first_date": "2017-06-30",
+        "full_sample_annualised_index_value_return": 0.0480619205,
+        "full_sample_cumulative_index_value_return": 0.5348,
+        "full_sample_elapsed_days": 3331,
+        "last_date": "2026-08-13",
+        "observations": 2216,
+        "rolling_five_year_all_windows_at_or_above_5pct": false,
+        "rolling_five_year_max_annualised_index_value_return": 0.0547705178,
+        "rolling_five_year_min_annualised_index_value_return": 0.0416884953,
+        "rolling_five_year_windows_at_or_above_5pct": 395,
+        "rolling_five_year_windows_below_5pct": 604,
+        "window_samples": [
+          {
+            "annualised_index_value_return": 0.0538728336,
+            "at_or_above_5pct": true,
+            "elapsed_days": 1826,
+            "end_date": "2022-06-30",
+            "start_date": "2017-06-30"
+          },
+          {
+            "annualised_index_value_return": 0.0419454597,
+            "at_or_above_5pct": false,
+            "elapsed_days": 1826,
+            "end_date": "2026-08-13",
+            "start_date": "2021-08-13"
+          }
+        ]
+      }
+    },
+    {
+      "index_code": "932412",
+      "name": "CSI Dividend Equity and Bond Constant Proportion 20/80 Index",
+      "raw_response_file": "sources/probe-csi-index-20260814/932412.f3d620ed647d135f3773a609e9ab9c8cbdc0ede81cef4979e1fa461c759625e1.raw.json",
+      "raw_response_sha256": "f3d620ed647d135f3773a609e9ab9c8cbdc0ede81cef4979e1fa461c759625e1",
+      "role": "published constant-mix reference",
+      "selection_basis": "Second member of the published constant-proportion family.",
+      "status": "evaluated_public_index_observation_only",
+      "summary": {
+        "complete_rolling_five_year_windows": 999,
+        "first_date": "2017-06-30",
+        "full_sample_annualised_index_value_return": 0.0511728215,
+        "full_sample_cumulative_index_value_return": 0.57688,
+        "full_sample_elapsed_days": 3331,
+        "last_date": "2026-08-13",
+        "observations": 2216,
+        "rolling_five_year_all_windows_at_or_above_5pct": false,
+        "rolling_five_year_max_annualised_index_value_return": 0.0611188696,
+        "rolling_five_year_min_annualised_index_value_return": 0.0431190524,
+        "rolling_five_year_windows_at_or_above_5pct": 914,
+        "rolling_five_year_windows_below_5pct": 85,
+        "window_samples": [
+          {
+            "annualised_index_value_return": 0.0562486894,
+            "at_or_above_5pct": true,
+            "elapsed_days": 1826,
+            "end_date": "2022-06-30",
+            "start_date": "2017-06-30"
+          },
+          {
+            "annualised_index_value_return": 0.045250539,
+            "at_or_above_5pct": false,
+            "elapsed_days": 1826,
+            "end_date": "2026-08-13",
+            "start_date": "2021-08-13"
+          }
+        ]
+      }
+    },
+    {
+      "index_code": "932413",
+      "name": "CSI Dividend Equity and Bond Constant Proportion 30/70 Index",
+      "raw_response_file": "sources/probe-csi-index-20260814/932413.b90bfa4cca071b2f2062c7e9b6a33854df2628009fe1c7c5e4c6f176f569ea75.raw.json",
+      "raw_response_sha256": "b90bfa4cca071b2f2062c7e9b6a33854df2628009fe1c7c5e4c6f176f569ea75",
+      "role": "published constant-mix reference",
+      "selection_basis": "Third member of the published constant-proportion family.",
+      "status": "evaluated_public_index_observation_only",
+      "summary": {
+        "complete_rolling_five_year_windows": 999,
+        "first_date": "2017-06-30",
+        "full_sample_annualised_index_value_return": 0.0541028747,
+        "full_sample_cumulative_index_value_return": 0.61745,
+        "full_sample_elapsed_days": 3331,
+        "last_date": "2026-08-13",
+        "observations": 2216,
+        "rolling_five_year_all_windows_at_or_above_5pct": false,
+        "rolling_five_year_max_annualised_index_value_return": 0.068822458,
+        "rolling_five_year_min_annualised_index_value_return": 0.0443325173,
+        "rolling_five_year_windows_at_or_above_5pct": 967,
+        "rolling_five_year_windows_below_5pct": 32,
+        "window_samples": [
+          {
+            "annualised_index_value_return": 0.0584266355,
+            "at_or_above_5pct": true,
+            "elapsed_days": 1826,
+            "end_date": "2022-06-30",
+            "start_date": "2017-06-30"
+          },
+          {
+            "annualised_index_value_return": 0.0483719481,
+            "at_or_above_5pct": false,
+            "elapsed_days": 1826,
+            "end_date": "2026-08-13",
+            "start_date": "2021-08-13"
+          }
+        ]
+      }
+    }
+  ],
+  "schema_version": "official_index_discovery_result.v1",
+  "scope_id": "total-return-open-universe-v3-20260814"
+}

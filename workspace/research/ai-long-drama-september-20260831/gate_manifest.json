@@ -1,0 +1,14 @@
+{
+  "case_id": "ai-long-drama-september-20260831",
+  "report_type": "catalyst_driven_tactical_theme_research_memo",
+  "data_cutoff": "2026-08-31T15:00:00+08:00",
+  "coverage_pack": "custom_ai_content_event_to_commercialisation",
+  "required_skills": ["equity-research", "market-desk", "research-report-review"],
+  "required_artifacts": ["research_brief.md", "data/source_registry.md", "data/claim_audit.md", "data/raw_market_data.md", "analysis/tactical_preplan.md", "main.tex", "main.pdf"],
+  "review_cycles": ["R0_evidence", "R2_draft", "R3_render_compliance", "R4_final_ic"],
+  "depth_gates": ["evidence_depth", "broker_consensus_depth", "model_depth", "valuation_depth", "ic_readiness"],
+  "pass_conditions": ["watchlist_only", "no_open_S_or_A_report_quality_findings", "valid_pdf"],
+  "downgrade_path": "evidence_memo_watchlist_only",
+  "research_only": true,
+  "no_order_execution": true
+}

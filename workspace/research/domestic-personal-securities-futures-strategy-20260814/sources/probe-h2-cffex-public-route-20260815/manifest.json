@@ -1,0 +1,95 @@
+{
+  "capture_batch": "probe-h2-cffex-public-route-20260815",
+  "captured_at": "2026-08-15T01:15:37+08:00",
+  "purpose": "Transport and public-route discovery only for the H2 CFFEX actual-contract feasibility memo. It intentionally did not request a price series or run a return calculation.",
+  "source_quality": "route_probe_not_market_data",
+  "files": [
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-h2-cffex-public-route-20260815/ecffex_daily_stats_alias_response.html",
+      "requested_url": "https://www.e-cffex.com.cn/cn/rtj.html",
+      "bytes": 2132,
+      "sha256": "7f3f0a9c9177e8f4b6cc3b0453f50d20febff1bc9e1097e916c38e8e9ca6eb4b",
+      "observed_result": "Generic alias error page; not a daily-statistics data response.",
+      "evidence_use": "Shows that the e-cffex alias does not substitute for the live CFFEX daily-statistics route in this environment."
+    },
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-h2-cffex-public-route-20260815/ecffex_historical_service_alias_response.html",
+      "requested_url": "https://www.e-cffex.com.cn/lssjfw/",
+      "bytes": 2132,
+      "sha256": "7f3f0a9c9177e8f4b6cc3b0453f50d20febff1bc9e1097e916c38e8e9ca6eb4b",
+      "observed_result": "Generic alias error page; not a historical-data service response.",
+      "evidence_use": "Shows that the e-cffex alias does not substitute for the live CFFEX historical-data route in this environment."
+    },
+    {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-h2-cffex-public-route-20260815/ecffex_fee_alias_response.html",
+      "requested_url": "https://www.e-cffex.com.cn/zjssf/20240701/39212.html",
+      "bytes": 2132,
+      "sha256": "7f3f0a9c9177e8f4b6cc3b0453f50d20febff1bc9e1097e916c38e8e9ca6eb4b",
+      "observed_result": "Generic alias error page; not an exchange fee-schedule response.",
+      "evidence_use": "Shows that the e-cffex alias does not substitute for the live CFFEX fee route in this environment."
+    }
+  ],
+  "unarchived_primary_web_routes": [
+    {
+      "url": "https://www.cffex.com.cn/10tf/",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "Current product page showing T-family specification fields.",
+      "archive_status": "Not raw-archived: direct IPv4 request from this environment timed out after 15 seconds."
+    },
+    {
+      "url": "https://www.cffex.com.cn/fzjy/mrhq/",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "Daily statistics page advertises actual-contract OHLC, settlement, prior-settlement, volume and open-interest fields.",
+      "archive_status": "No dated response was requested or retained; query parameters, range coverage, retention and original-date availability remain unverified."
+    },
+    {
+      "url": "https://www.cffex.com.cn/lssjfw/",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "Historical-data service describes Level-1/Level-2 and one-/five-minute historical products with an application process.",
+      "archive_status": "No procurement, entitlement or raw historical data were obtained."
+    },
+    {
+      "url": "https://www.cffex.com.cn/cn/ssxz/20230414/43079.html",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "Risk-control rules state the exchange can adjust margin and price-limit parameters for risk conditions.",
+      "archive_status": "Not raw-archived from this environment; no session-level historical change archive obtained."
+    },
+    {
+      "url": "https://www.cffex.com.cn/ssxz/20250107/43078.html",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "Settlement rules describe daily mark-to-market and client account ledger concepts.",
+      "archive_status": "Not raw-archived from this environment; no customer-specific settlement ledger obtained."
+    },
+    {
+      "url": "https://www.cffex.com.cn/cn/zjssf/20240701/39212.html",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "Exchange fee schedule; the listed recipient is the settlement member, not a personal broker commission confirmation.",
+      "archive_status": "Not raw-archived from this environment; historical effective fee intervals and broker pass-through are unavailable."
+    },
+    {
+      "url": "https://www.cffex.com.cn/jystz/20251217/46425.html",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "2026 holiday closure schedule only.",
+      "archive_status": "Not raw-archived from this environment; a complete historical trading calendar is unavailable."
+    },
+    {
+      "url": "https://www.cffex.com.cn/jystz/20241115/41436.html",
+      "publisher": "China Financial Futures Exchange",
+      "observed_via": "official search index, 2026-08-15",
+      "scope": "Delivery reminder: customers without the required bond-custody-account review may be forcibly closed from the specified delivery-period threshold.",
+      "archive_status": "Not raw-archived from this environment; delivery-account status and all historical notices are unavailable."
+    }
+  ],
+  "limitations": [
+    "This probe is not market data and contains no actual-contract price, return, ranking, selection, roll or execution result.",
+    "A search-index observation of a CFFEX page is source discovery, not a retained complete rule or data archive.",
+    "Network access to the live www.cffex.com.cn site timed out in this environment. That transport observation is not evidence that the exchange site or its data are unavailable to an entitled user."
+  ]
+}

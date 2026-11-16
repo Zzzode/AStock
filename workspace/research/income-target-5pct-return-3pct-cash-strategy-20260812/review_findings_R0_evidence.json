@@ -1,0 +1,17 @@
+{
+  "cycle": "R0_evidence",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "reviewed_at": "2026-08-14T02:00:00+08:00",
+  "reviewer": "source-governance-and-author-check",
+  "findings": [
+    {
+      "issue_id": "R0-A-001",
+      "severity": "A",
+      "status": "resolved",
+      "artifact": "data/source_registry.json; sources/official-20260812/manifest.json; data/claim_audit.json",
+      "evidence": "All active factual claims resolve to locally archived CSRC, SSE or fund-manager primary PDFs; the 14-record archive manifest still matches every registered record.",
+      "fix_required": "Do not translate historical distributions, fund performance or product labels into a forward return, cash-receipt or implementation claim.",
+      "resolution": "Each source is bounded to historical fact or product mechanism. The active framework has one conditional total-return objective, no cash-receipt objective, and q=0 for all market candidates."
+    }
+  ]
+}

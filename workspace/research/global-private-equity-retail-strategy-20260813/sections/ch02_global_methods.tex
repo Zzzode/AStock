@@ -1,0 +1,53 @@
+\section{先纠正一个概念：参考管理人不是单一“收购策略”}
+
+把本报告参考的七家管理人一概称为“私募”，容易掩盖它们之间的差异。Blackstone 的官方披露覆盖房地产、私募股权、信贷与保险、多资产、基础设施、生命科学和成长策略，并使用不同期限的资本载体 [S01]；KKR 覆盖私募股权、实物资产、信贷与流动策略、资本市场及保险相关业务 [S02]；Apollo 的核心语境则明显偏向发起、资产支持和多信用策略以及退休服务 [S03]。Brookfield 更强调实物资产的所有者兼经营者模式 [S04]；Carlyle 同时拥有全球私募、全球信贷与 AlpInvest 等基金解决方案 [S05]；TPG 则按资本、成长、影响力、信贷、房地产与市场解决方案等平台组织 [S07]。
+
+\begin{exhibitbox}[Exhibit 2：七家机构披露的结构与本报告的研究转换]
+\scriptsize
+\begin{longtable}{L{2.0cm} L{3.4cm} L{4.0cm} L{4.0cm}}
+\toprule
+\textbf{机构} & \textbf{官方材料所描述的业务/方法} & \textbf{披露所反映的机构结构/能力} & \textbf{本报告的公开市场研究转换} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{机构} & \textbf{官方材料所描述的业务/方法} & \textbf{披露所反映的机构结构/能力} & \textbf{本报告的公开市场研究转换} \\
+\midrule
+\endhead
+Blackstone & 多策略平台；私募、房地产、信贷/保险、基础设施和长期资本载体。 & 披露呈现多策略平台、长期资本，以及部分控制型私募策略中的控制/所有权。 & 购买前先写经营价值桥：收入、利润率、营运资本、维持性资本开支与债务服务；不把估值扩张当成唯一收益来源。 \\
+KKR & 私募、实物资产、信贷/流动策略、资本市场与保险相关资本。 & 披露呈现投后运营资源、长期资金与资本结构；Global Atlantic 保险业务有资产负债现金流匹配语境。 & 先问债务期限、利息负担、抵押/担保和再融资，再讨论上行；投资期限必须匹配自己的现金需求。 \\
+Apollo & 直投发起、资产支持、多信用、机会型信贷与退休服务。 & 披露呈现发起渠道、结构化资本解决方案、优先级与资产支持的承保语境，以及长期负债。 & 对股票也采用“债权人先问”的下行测试：企业的可持续现金是否能穿越压力期并覆盖义务？ \\
+Brookfield & 基础设施、能源转型、房地产、私募与信贷；强调经营型实物资产。 & 管理人材料呈现运营业务、长期私募基金以及所有者兼经营者的经验。 & 对上市运营资产或公募不动产投资信托基金（REIT），研究合同/监管现金流、维护资本开支、杠杆、续约/出租率/业务量，而非只看分派率。 \\
+Carlyle & 全球私募、全球信贷、基金一级/二级/共同投资与组合融资。 & 披露呈现全球网络和跨基金方案。 & 只跟踪与投资假设直接相连的少量披露关键经营指标（KPI）：订单、交付、利用率、入住率、预订或回款。 \\
+Bain Capital & 私募及相邻资本策略；强调运营转型与价值创造。 & 管理人自述的运营转型方法与公司访问条件；并未在本来源中证明固定的动作清单或收益因果。 & 只有管理层已公开启动、可量化且能按季验证的改善，才可获得估值信用；不能为个人无权推动的改造提前付钱。 \\
+TPG & 资本、成长、影响力、信贷、房地产、市场解决方案等平台。 & 披露呈现六个多策略平台；项目来源表述限于管理人自述。 & 用因果链做主题研究：主题 $\rightarrow$ 供需 $\rightarrow$ 收入/利润 $\rightarrow$ 估值 $\rightarrow$ 可证伪 KPI；主题本身不构成交易理由。 \\
+\bottomrule
+\end{longtable}
+\sourcenote{S01--S07。前两列为官方材料的结构性描述或管理人自述；末列是本报告的分析转换。它们不构成各管理人收益的因果归因，也不证明个人可以复制回报。}
+\end{exhibitbox}
+
+\section{共同的机构能力组合：不是一个选股信号}
+
+\begin{center}
+\begin{tikzpicture}[node distance=0.55cm and 0.6cm, every node/.style={font=\small, align=center}]
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=3.15cm, minimum height=1.15cm] (price) {价格与\\风险承保};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=3.15cm, minimum height=1.15cm, right=of price] (control) {控制权与\\投后运营};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=3.15cm, minimum height=1.15cm, right=of control] (source) {专属项目源与\\结构化条款};
+\node[draw=navy, fill=lightgrey, rounded corners, minimum width=3.15cm, minimum height=1.15cm, below=of control] (capital) {匹配期限的资本\\与风险承受能力};
+\node[draw=accentblue, fill=accentblue!12, rounded corners, minimum width=5.1cm, minimum height=1.1cm, below=of capital] (outcome) {机构流程的分析框架：\\资产选择、投后行动、资本结构与期限共同参与};
+\draw[-{Stealth[length=2mm]}, thick, navy] (price.south) |- (outcome.west);
+\draw[-{Stealth[length=2mm]}, thick, navy] (control.south) -- (capital.north);
+\draw[-{Stealth[length=2mm]}, thick, navy] (source.south) |- (outcome.east);
+\draw[-{Stealth[length=2mm]}, thick, navy] (capital.south) -- (outcome.north);
+\end{tikzpicture}
+\end{center}
+\sourcenote{S01--S06；框图为跨机构流程归纳，不是历史业绩的因果拆解。}
+
+其中，个人最容易观察到的是价格、财报和公开关键经营指标（KPI）；最难、也最不应假装拥有的是控制权、条款、发起渠道和低成本长期资本。这正是本报告后文把“承保”放在中心、把“模仿交易”放在禁区的原因。上述组合只是对披露信息的分析归纳，不是管理人回报的因果解释。
+
+\section{为什么不能直接比较私募内部收益率（IRR）与个人账户收益}
+
+私募基金的 IRR 受资本调用和分配时间、未上市资产估值、基金费用、项目杠杆、退出时点和流动性限制影响；个人账户更接近每天可见市值、连续交易成本和可变现金流的时间加权回报。两者都可能是有效的度量，但不是同一个问题。因此，管理规模、品牌、历史 IRR 或某一项目的传奇案例，不能被推导成中国个人账户的预期收益率。本报告只把管理人的官方材料用于回答“它们如何描述自己的业务和流程”，并把收益归因结论保留为未证实。
+
+\begin{sourcequalitybox}[证据边界]
+S01--S07 的级别足以支持机构结构与自述流程；其中 Bain 等运营价值创造表述尤其应被理解为管理人自述，而不是独立审计的因果证明。真正需要个人验证的不是“某家机构是否优秀”，而是未来某一个公开标的能否通过五票承保。
+\end{sourcequalitybox}

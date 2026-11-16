@@ -1,0 +1,23 @@
+{
+  "as_of": "2026-08-11",
+  "source_id": "M01",
+  "active_scope": false,
+  "scope_status": "retired_from_active_scope",
+  "active_use": "cannot be used for a target, allocation, valuation, cash or execution conclusion",
+  "source": "Tencent public quotation endpoint",
+  "retrieved_at": "2026-08-11T18:13:10+08:00",
+  "data_quality": "tier_3_third_party_snapshot",
+  "raw_response_sha256_gb18030": "9e2dbfb25255657e6bc8ac754098c63f6f27a505dd898b7a48a8645da9477b08",
+  "raw_payload_archived": false,
+  "archive_manifest": "sources/official-20260811/archive/m01-d01-d08/manifest.json",
+  "structured_capture": "data/raw_quote_snapshot_20260811.json",
+  "fields_available": ["last_price", "source_timestamp", "selected turnover fields"],
+  "fields_not_verified": ["exchange-certified close", "NAV", "IOPV", "premium_discount", "bid_offer_spread", "execution capacity", "market breadth"],
+  "warnings": [
+    "Third-party quote snapshot is not a transaction or execution-data record.",
+    "The original response checksum is retained but the original GB18030 bytes were not preserved; primary issuer/product files are also not yet fully archived locally.",
+    "No price, flow, liquidity or timing claim may enter the strategic allocation conclusion."
+  ],
+  "errors": [],
+  "use_in_conclusion": "none; retired_from_active_scope"
+}

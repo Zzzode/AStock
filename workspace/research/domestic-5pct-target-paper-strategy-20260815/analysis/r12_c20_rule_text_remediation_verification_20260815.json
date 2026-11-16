@@ -1,0 +1,88 @@
+{
+  "schema_version": "r12_c20_rule_text_remediation_verification.v1",
+  "artifact_id": "D5PT-R12-C20-REMEDIATION-VERIFICATION-v1",
+  "as_of": "2026-08-15",
+  "verification_type": "post-R10 deterministic remediation verification; it does not replace the historical v1 audit and uses R13 to prevent a post-remediation legacy rerun from being misread",
+  "result": "PASS",
+  "r10_gap": "R10-SC-01 URL-only current-rule source control",
+  "remediation_state": "CLOSED_FOR_CURRENT_RULE_TEXT_RETENTION",
+  "checks": [
+    {
+      "name": "manifest frozen hash",
+      "passed": true,
+      "detail": "f0e710ef25872489d4ee697c58fb0bf73abd8c180f0d4115ce10aaf69e278829"
+    },
+    {
+      "name": "six expected source keys",
+      "passed": true,
+      "detail": "keys=6"
+    },
+    {
+      "name": "raw file size and hash integrity",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "retained HTML text presence",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "retained DOCX body text presence",
+      "passed": true,
+      "detail": "all matched"
+    },
+    {
+      "name": "retained education PDF container",
+      "passed": true,
+      "detail": "two-page scanned source; text is not machine-extractable"
+    },
+    {
+      "name": "C20 v2 identifier",
+      "passed": true,
+      "detail": "D5PT-C20-FEASIBILITY-v2"
+    },
+    {
+      "name": "C20 binds current-rule manifest",
+      "passed": true,
+      "detail": "{'path': 'workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c20-current-sse-rule-text-20260815/manifest.json', 'sha256': 'f0e710ef25872489d4ee697c58fb0bf73abd8c180f0d4115ce10aaf69e278829', 'role': 'Retained current SSE rule pages and rule bodies used only for C20 version and general-mechanics context.'}"
+    },
+    {
+      "name": "C20 binds R13 scope correction",
+      "passed": true,
+      "detail": "{'path': 'workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r13_r10_v1_scope_mismatch_correction_20260815.json', 'sha256': '59ef545fc892f645f9a5c68f01e9b6983698d5ab89968e276faa96a78936e0d8', 'role': 'Corrects the audit provenance after the legacy R10 v1 checker was re-executed against C20 v2. It documents why the resulting sole URL-only assertion failure is not a current v2 source-control regression.'}"
+    },
+    {
+      "name": "R13 correctly qualifies the legacy R10 re-execution",
+      "passed": true,
+      "detail": "PASS_SCOPE_MISMATCH_DOCUMENTED"
+    },
+    {
+      "name": "C20 retains the legacy R10 scope-mismatch trace",
+      "passed": true,
+      "detail": "{'path': 'workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r10_independent_c20_public_reit_feasibility_audit_20260815.json', 'sha256': '3d3d7b897981269d96b64bf447911a07e32e9c65f9be43734433db6fb4026f8c', 'role': 'Retained legacy-v1 verifier output produced after C20 v2. It is a scope-mismatch trace only and must not be read as a current C20 v2 audit failure.'}"
+    },
+    {
+      "name": "R10-SC-01 remediation recorded",
+      "passed": true,
+      "detail": "{'reason': 'R10-SC-01 found that the four current-rule rechecks in v1 were URL-only. v2 retains the four public pages and two linked rule bodies in a separate immutable source batch and binds its manifest. The legacy R10 v1 checker was later re-executed against v2; R13 preserves and corrects that scope mismatch rather than treating its obsolete URL-only assertion as a new defect. This changes no route, product selection, universe, return test, result, eligibility inference or action boundary.', 'previous_feasibility_sha256': '21f4ce8c90c68ed1acca106ea7261e109dd184736a2f7b4a8f19a81eec649f4a', 'reassessment_required': True}"
+    },
+    {
+      "name": "all four rule references are retained",
+      "passed": true,
+      "detail": "retained=4"
+    },
+    {
+      "name": "C20 retains no-selection/no-test/no-action boundary",
+      "passed": true,
+      "detail": "scope and disposition fields"
+    },
+    {
+      "name": "R13 preserves the historical R10 source-gap provenance",
+      "passed": true,
+      "detail": "PASS_WITH_OPEN_SOURCE_CONTROL_GAP"
+    }
+  ],
+  "failures": [],
+  "boundary": "Closing the rule-text retention gap does not create a point-in-time universe, total-return ledger, cost record, fill record, individual eligibility conclusion, product selection, return result or external action."
+}

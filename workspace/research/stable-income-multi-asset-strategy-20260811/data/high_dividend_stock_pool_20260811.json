@@ -1,0 +1,34 @@
+{
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "data_cutoff": "2026-08-11",
+  "active_scope": false,
+  "scope_status": "retired_from_active_scope",
+  "purpose": "retired historical direct-stock observation packet retained only for audit history",
+  "active_use": "cannot be used for a target, allocation, valuation, cash or execution conclusion",
+  "active_direct_stock_weight": 0.0,
+  "market_source_id": "M01",
+  "dividend_evidence_file": "data/dividend_evidence_20260811.json",
+  "method": "historical_gross_yield_pct = annual_cash_dps_cny / M01_last_price_cny * 100; no tax, fee, future dividend, valuation or execution adjustment",
+  "stocks": [
+    {"ticker": "601398", "name": "工商银行", "industry": "银行", "last_price_cny": 7.60, "annual_cash_dps_cny": 0.3103, "historical_gross_yield_pct": 4.0829, "source_ids": ["M01", "D01"], "status": "watchlist_only"},
+    {"ticker": "601939", "name": "建设银行", "industry": "银行", "last_price_cny": 10.23, "annual_cash_dps_cny": 0.3887, "historical_gross_yield_pct": 3.7996, "source_ids": ["M01", "D02"], "status": "watchlist_only"},
+    {"ticker": "601288", "name": "农业银行", "industry": "银行", "last_price_cny": 6.48, "annual_cash_dps_cny": 0.2495, "historical_gross_yield_pct": 3.8503, "source_ids": ["M01", "D03"], "status": "watchlist_only"},
+    {"ticker": "601988", "name": "中国银行", "industry": "银行", "last_price_cny": 5.88, "annual_cash_dps_cny": 0.2263, "historical_gross_yield_pct": 3.8486, "source_ids": ["M01", "D04"], "status": "watchlist_only"},
+    {"ticker": "600028", "name": "中国石化", "industry": "石油石化", "last_price_cny": 5.11, "annual_cash_dps_cny": null, "historical_gross_yield_pct": null, "source_ids": ["M01", "D05"], "status": "watchlist_only_pending_complete_annual_evidence"},
+    {"ticker": "600900", "name": "长江电力", "industry": "公用事业", "last_price_cny": 28.31, "annual_cash_dps_cny": 1.0000, "historical_gross_yield_pct": 3.5323, "source_ids": ["M01", "D06"], "status": "watchlist_only"},
+    {"ticker": "600941", "name": "中国移动", "industry": "通信", "last_price_cny": 96.42, "annual_cash_dps_cny": 4.7037, "historical_gross_yield_pct": 4.8783, "source_ids": ["M01", "D07"], "status": "watchlist_only"},
+    {"ticker": "601088", "name": "中国神华", "industry": "煤炭", "last_price_cny": 44.70, "annual_cash_dps_cny": null, "historical_gross_yield_pct": null, "source_ids": ["M01", "D08"], "status": "watchlist_only_noncomparable_share_basis"}
+  ],
+  "observation_only_summary": {
+    "comparable_tickers": ["601398", "601939", "601288", "601988", "600900", "600941"],
+    "simple_unweighted_historical_gross_yield_pct": 3.9987,
+    "interpretation": "Descriptive arithmetic only; not a portfolio expected return, cash-distribution estimate, target or allocation input."
+  },
+  "data_quality": "mixed_tier_1_url_locators_and_tier_3_price_snapshot",
+  "warnings": [
+    "Historical distributions can be reduced, omitted or changed.",
+    "No current valuation, execution cost, tax or liquidity assessment is included.",
+    "Primary issuer documents have not yet been fully archived locally."
+  ],
+  "use_in_conclusion": "none; retired_from_active_scope"
+}

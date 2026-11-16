@@ -1,0 +1,219 @@
+{
+  "schema_version": "d5pt_integrated_candidate_strategy.v1",
+  "artifact_id": "D5PT-C33-INTEGRATED-C34-v1",
+  "as_of": "2026-08-15",
+  "status": "research_only_not_paper_operable_not_admitted",
+  "current_action": "NO_ACTION",
+  "external_orders": false,
+  "portfolio_q": 0,
+  "objective_boundary": {
+    "long_run_research_hurdle": "annualized return above 5 percent",
+    "return_guarantee": false,
+    "cash_distribution_or_reinvestment_target": "none"
+  },
+  "candidate_identity": {
+    "name": "C34 dual-horizon inverse-volatility five-ETF paper candidate",
+    "rule_version": "D5PT-C34-PROTOCOL-v1",
+    "closed_actual_instrument_set": [
+      "510300",
+      "510880",
+      "511010",
+      "518880",
+      "511990"
+    ],
+    "not_an_admission": true
+  },
+  "actual_instruments": [
+    {
+      "code": "510300",
+      "name": "华泰柏瑞沪深300ETF",
+      "sleeve": "equity",
+      "dynamic_target": "0.5 * w_equity when equity is active",
+      "dated_product_evidence": "PASS",
+      "current_operability": "not verified"
+    },
+    {
+      "code": "510880",
+      "name": "华泰柏瑞上证红利ETF",
+      "sleeve": "equity",
+      "dynamic_target": "0.5 * w_equity when equity is active",
+      "dated_product_evidence": "PASS",
+      "current_operability": "not verified"
+    },
+    {
+      "code": "511010",
+      "name": "国泰上证5年期国债ETF",
+      "sleeve": "bond",
+      "dynamic_target": "w_bond when bond is active",
+      "dated_product_evidence": "PASS",
+      "current_operability": "not verified"
+    },
+    {
+      "code": "518880",
+      "name": "华安黄金ETF",
+      "sleeve": "gold",
+      "dynamic_target": "w_gold when gold is active",
+      "dated_product_evidence": "PASS",
+      "current_operability": "not verified"
+    },
+    {
+      "code": "511990",
+      "name": "华宝现金添益ETF（A类）",
+      "sleeve": "fallback",
+      "dynamic_target": "100 percent only in warm-up or when no risk sleeve is active",
+      "dated_product_evidence": "PASS",
+      "current_operability": "not verified"
+    }
+  ],
+  "dynamic_rule": {
+    "observation": "after the final common market-price close in each calendar month",
+    "score": "for every sleeve, equal mean of 126- and 252-common-observation market-price returns; equity is the equal mean of the two component returns at each horizon",
+    "eligibility": "risk sleeve score strictly greater than fallback score; equality is inactive",
+    "weighting": "active risk sleeves proportional to inverse trailing-60-common-one-session-return sample volatility (ddof=1)",
+    "equity_split": {
+      "510300": 0.5,
+      "510880": 0.5
+    },
+    "warmup_or_no_active_sleeve": {
+      "511990": 1.0
+    },
+    "invalid_input": "NO_ACTION; invalid input does not create an automatic fallback target",
+    "prohibited": [
+      "automatic ETF substitution",
+      "leverage",
+      "short sale",
+      "borrowing",
+      "futures",
+      "options",
+      "discretionary override",
+      "same-session close execution"
+    ]
+  },
+  "timing_and_actions": {
+    "decision_session": "D: final common monthly close",
+    "earliest_effective_session": "E: following common session at reported open; D must precede E",
+    "historical_proxy_cost": "20 bp times one-way turnover, illustrative only",
+    "paper_labels": [
+      "paper_rebalance_candidate",
+      "paper_hold",
+      "NO_ACTION",
+      "operational_pause"
+    ],
+    "current_action": "NO_ACTION"
+  },
+  "pre_action_controls": {
+    "all_required": [
+      "current legal document and temporary-announcement review",
+      "product identity and trading status",
+      "timestamped bid, ask and visible two-sided depth",
+      "time-matched IOPV when applicable",
+      "product-, venue-, account- and date-specific lot, tick and settlement facts",
+      "current fee and tax treatment",
+      "valid rule inputs and prior reconciliation"
+    ],
+    "price_protection": {
+      "buy": "displayed ask <= IOPV * 1.003",
+      "sell": "displayed bid >= IOPV * 0.997"
+    },
+    "fail_closed": "Any missing or failed condition, partial fill, no fill, rejection, suspension, price-limit lock, or unreconciled record is NO_ACTION; no code substitution or synthetic fill."
+  },
+  "historical_proxy_evidence": {
+    "basis": "retrospective SSE market-price observations with undisclosed adjustment basis; not total return, NAV return, executable quote, fill or investor result",
+    "formula_integrity": "pre_formal_recompute_not_true_preregistration; formula was formalized after prior exploratory observation",
+    "base_full_sample": {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.05554311611246043,
+      "maximum_drawdown_proxy": -0.08644792392204315,
+      "complete_calendar_years_below_5pct": "7/12",
+      "rolling_five_year_endpoints_below_5pct": "43/98",
+      "limited_proxy_screen": "REJECTED_BY_LIMITED_PRICE_PROXY_SCREEN"
+    },
+    "chronological_robustness_slice_2020_2025": {
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.046852659717272704,
+      "complete_calendar_years_below_5pct": "4/6",
+      "rolling_five_year_endpoints_below_5pct": "10/12",
+      "interpretation": "not clean unseen out-of-sample validation"
+    },
+    "formal_total_return_and_execution_verdict": "NOT_ADJUDICABLE"
+  },
+  "risk_and_invalidation": {
+    "risk_model_status": "VETO",
+    "concentration": "A target can concentrate in one bond or gold sleeve; inverse volatility is not a correlation, capacity or diversification proof.",
+    "unquantified_execution_stress": [
+      "price limit",
+      "halt",
+      "depth",
+      "fill",
+      "settlement",
+      "capacity"
+    ],
+    "operational_pause": "Source/hash discrepancy, invalid rule input, product or legal-status change, access or settlement failure, missing/invalid quote or IOPV, partial/no-fill event, unreconciled ledger, or rule change.",
+    "futures": {
+      "weight": 0.0,
+      "reason": "C16/C17 strict diagnostics failed and do not supply implementation evidence."
+    }
+  },
+  "open_universe_boundary": {
+    "open_for_research": [
+      "direct stocks",
+      "public funds",
+      "public REITs",
+      "company bonds",
+      "futures",
+      "options",
+      "other evidenced public-market products"
+    ],
+    "this_rule_only": "All products outside the exact five-code set have zero weight in this rule version; this is not a permanent universe exclusion.",
+    "entry_requirements": {
+      "direct_stocks": "full equity-research, valuation, risk, governance, industry-chain, tradability and independent-review package per stock",
+      "funds_reits_bonds": "point-in-time universe, total-return/event, fee, status and execution evidence",
+      "derivatives": "contract, margin, limit, roll or exercise, fee, settlement, quote, no-fill and forward-paper evidence"
+    }
+  },
+  "admission": {
+    "dated_product_facts": "PASS via C31/C36",
+    "rule_reproducibility": "PASS via C34 verifier",
+    "operational_card_structure": "PASS via C35 validator",
+    "strict_five_percent_proxy_hurdle": "FAIL",
+    "current_terms_market_execution_and_total_return": "VETO",
+    "forward_paper_months_completed": 0,
+    "forward_paper_months_required": 6,
+    "result": "NO_ADMITTED_USABLE_STRATEGY"
+  },
+  "evidence_refs": [
+    {
+      "artifact": "analysis/c31_etf_product_diligence_refresh_20260815.json",
+      "sha256": "939b57fa0ec19ed55500a99c82c3eaba73f8b8572204bc4eef814fd272ad2fcd",
+      "use": "dated five-code product facts",
+      "upstream_venue_master_manifest": {
+        "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/manifest.json",
+        "sha256": "fa0a864bebca0881b9809176038e88d64cc87563038737a554609b255afa73db",
+        "scope": "Six R4 master-response codes: five actual-core codes 510300, 510880, 511010, 518880 and 511990, plus non-core 510500."
+      }
+    },
+    {
+      "artifact": "analysis/c36_c31_source_crosscheck_20260815.json",
+      "sha256": "1f6668da5de9611f540ca0248ef984028c16be619505fb8a20161dbeb1594938",
+      "use": "independent source integrity and remaining actionability blockers"
+    },
+    {
+      "artifact": "analysis/c34_dual_horizon_inverse_vol_etf_protocol_20260815.json",
+      "sha256": "9d853055ef102e148fd5d265bbaadca56642f7c8de0da985ae00a315a8c25ac5",
+      "use": "frozen formal-recompute rule"
+    },
+    {
+      "artifact": "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.json",
+      "sha256": "3ade90cb19c67ca46a66ee5efd45e4b1a04a3cbd4cfac2fa58cb9eaccec5c217",
+      "use": "historical limited price-proxy diagnostic"
+    },
+    {
+      "artifact": "analysis/c35_c34_operational_action_card_20260815.json",
+      "sha256": "10f8e0c46e64e7bd2d7b7950efc5f6f3de99a8f06fd1d7f78eb58f86d30f059a",
+      "use": "paper operation and fail-closed controls"
+    },
+    {
+      "artifact": "data/c33_forward_paper_ledger_template_20260815.json",
+      "sha256": "229014d774cf5e94e5218023d2b0a40b34b5f773183f3626afe387ec9fd887d4",
+      "use": "required six-month forward-paper record template"
+    }
+  ]
+}

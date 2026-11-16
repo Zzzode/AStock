@@ -1,0 +1,51 @@
+{
+  "schema_version": "research_final_signoff.v2",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "report_type": "strategic_allocation_product_due_diligence_evidence_memo",
+  "data_cutoff": "2026-08-12",
+  "pdf_path": "workspace/research/income-strategy-product-due-diligence-20260812/main.pdf",
+  "page_count": 22,
+  "pdf_sha256": "c5de7442f7806660c1a8ef07adc0fe6a1079f8399078df8dd751bded2474c55f",
+  "publishability_score": 94,
+  "verifier_results": {
+    "case_local_verifier": "42 PASS / 0 FAIL; RESULT PASS; original 22-page verifier run against the final PDF identity",
+    "repository_research_gate": "165 PASS / 0 FAIL; RESULT PASS; executed after current-build provenance, workflow and signoff synchronization",
+    "independent_review": "Independent final rerun PASS: final source/PDF/text identities reconcile with provenance; case verifier 42 PASS / 0 FAIL and repository gate 165 PASS / 0 FAIL. R4 closure records corrected 508080 arithmetic, atomic source manifest, Chinese disclosure and three non-predictive visuals."
+  },
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "waived_issues": [],
+  "framework_status": "PASS",
+  "implementation_status": "NOT_APPROVED",
+  "live_execution_authorized": false,
+  "implementation_gates": {
+    "return_evidence": "BLOCKED_PENDING_FORMAL_TEST",
+    "risk_budget": "NOT_APPROVED",
+    "suitability": "PENDING_ACCOUNT_FACTS",
+    "execution": "NOT_AUTHORIZED"
+  },
+  "execution_eligibility": {
+    "status": "NOT_AUTHORIZED",
+    "q": 0,
+    "live_execution_authorized": false,
+    "reason": "All named products lack current matched NAV or IOPV, executable spread/depth/capacity evidence, and account/tax/settlement/suitability facts."
+  },
+  "material_claim_disclosure": {
+    "return_target_not_guarantee": true,
+    "cash_target_not_guarantee": true,
+    "return_evidence_not_sufficient_for_implementation": true,
+    "risk_budget_not_approved": true,
+    "implementation_not_authorized": true
+  },
+  "decision": "Research framework pass only. The 5% total-return objective and 3% settled-net-cash objective are not guaranteed, and implementation is not approved.",
+  "implementation_rationale": "The memo establishes product research and source controls, but it is not authorized for allocation: no frozen-point-in-time return replay, risk-budget approval, suitability review, current matched valuation, or executable liquidity packet exists.",
+  "residual_risks": [
+    "Return evidence is incomplete: a fixed product-set, point-in-time TWRR and settled-net-cash replay with relevant benchmarks has not been run.",
+    "Risk budget is not approved: common-factor, drawdown, concentration, liquidity-capacity and stress-loss limits require formal approval.",
+    "Implementation is not approved and live execution is not authorized: account, tax, settlement, suitability, current NAV or IOPV, spread, depth and capacity facts remain unavailable.",
+    "The two unnamed categories are not investable products until a finite eligible-product list receives separate due diligence."
+  ],
+  "downgrade_status": "EVIDENCE_MEMO_WATCHLIST_ONLY",
+  "signoff_status": "RESEARCH_FRAMEWORK_PASS",
+  "signoff_scope": "Publication as a source-indexed cross-asset product due-diligence evidence memo only."
+}

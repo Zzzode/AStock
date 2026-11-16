@@ -1,0 +1,338 @@
+{
+  "schema_version": "income_strategy_product_universe.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "as_of": "2026-08-12",
+  "source_strategy_case": "workspace/research/income-target-5pct-return-3pct-cash-strategy-20260812",
+  "purpose": "Initial universe freeze for product due diligence. It identifies every named product and every unnamed allocation category in the legacy reference design; it is not a portfolio, investment recommendation, suitability conclusion, or execution instruction.",
+  "universe_status": "intake_frozen_for_research_only",
+  "counts": {
+    "named_products": 10,
+    "unnamed_categories": 2,
+    "current_eligible_market_products": 0
+  },
+  "global_investability_boundary": {
+    "current_market_sleeve_qualification": "q=0",
+    "implementation_status": "not_authorized",
+    "rule": "No named product may be selected, assigned a target price, used to support the cash objective, or treated as an implementation candidate until its required R0-R4 research artifacts and the portfolio-level return, risk, suitability, account and current-session market gates are independently passed.",
+    "excluded_from_universe": [
+      "direct equities",
+      "derivatives",
+      "margin financing",
+      "futures",
+      "leveraged products",
+      "lower-credit yield substitutes"
+    ]
+  },
+  "status_definitions": {
+    "active_research_universe_watch_only": "A named object explicitly used as a reference anchor or public-REIT candidate in the legacy strategy. It must be fully researched but is not eligible for allocation.",
+    "conditional_research_candidate_watch_only": "A named object mentioned only as a secondary or contingent candidate. It must be fully researched if retained; it has no approved allocation role.",
+    "unnamed_category_not_researchable": "A legacy allocation category without a product identity. It cannot be diligenced, valued, or selected until a finite candidate list is frozen."
+  },
+  "named_products": [
+    {
+      "universe_id": "ETF-511010",
+      "ticker": "511010",
+      "legal_or_display_name": "国泰上证5年期国债交易型开放式指数证券投资基金（国泰上证5年期国债ETF）",
+      "product_type": "Treasury bond ETF",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Five-year Treasury ETF research anchor; rate exposure, not protected liquidity.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": 15.0,
+        "conditional_reference_amount_cny": 30000,
+        "individual_target_weight_pct": null
+      },
+      "required_evidence_modules": [
+        "current legal documents, manager/custodian, mandate, fees, risks and trading mechanics",
+        "index methodology, constituent sovereign-bond exposure and rebalancing rules",
+        "duration, modified duration or DV01, convexity, yield-curve and rate-shock sensitivity",
+        "historical NAV, tracking difference, distributions and fund-cost reconciliation",
+        "current price, NAV/IOPV reference, premium/discount, bid-ask spread, 20-session liquidity and executable depth",
+        "account tax, settlement, lot-size, capacity and all-in implementation-cost assessment",
+        "peer Treasury-ETF comparison, portfolio stress contribution, correlation and invalidation triggers"
+      ],
+      "no_investability_boundary": "A Treasury ETF is not protected liquidity and no current product, duration, market-quality, account or portfolio-risk pass exists. It remains q=0."
+    },
+    {
+      "universe_id": "ETF-510880",
+      "ticker": "510880",
+      "legal_or_display_name": "华泰柏瑞上证红利交易型开放式指数证券投资基金（华泰柏瑞上证红利ETF）",
+      "product_type": "Dividend equity ETF",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "High-dividend equity ETF research anchor; equity cash-flow and total-return exposure.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": 40.0,
+        "conditional_reference_amount_cny": 80000,
+        "individual_target_weight_pct": null
+      },
+      "required_evidence_modules": [
+        "current legal documents, manager/custodian, index methodology, rebalancing rules, fees and distribution policy",
+        "full dated holdings file, sector, issuer-group and factor exposure; material constituent and cross-sleeve overlap cards",
+        "dividend quality, payout and distribution history, dividend-cut risk and distinction between index yield and settled ETF cash",
+        "historical NAV, tracking difference, drawdown, style-cycle and peer-ETF comparison",
+        "current price, NAV/IOPV reference, premium/discount, bid-ask spread, 20-session liquidity and executable depth",
+        "account tax, settlement, lot-size, capacity and all-in implementation-cost assessment",
+        "REIT overlap map, portfolio stress contribution, catalysts, risks and invalidation triggers"
+      ],
+      "no_investability_boundary": "Historical distributions or an index dividend label do not establish future holder cash. No current holdings, TTM cash, market-quality, overlap, account or portfolio-risk pass exists; it remains q=0."
+    },
+    {
+      "universe_id": "ETF-512890",
+      "ticker": "512890",
+      "legal_or_display_name": "华泰柏瑞中证红利低波动交易型开放式指数证券投资基金（华泰柏瑞中证红利低波ETF）",
+      "product_type": "Dividend low-volatility equity ETF",
+      "research_status": "conditional_research_candidate_watch_only",
+      "legacy_role": "Secondary dividend-ETF candidate only; it is not an automatic income substitute.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "individual_target_weight_pct": null
+      },
+      "required_evidence_modules": [
+        "current legal documents, manager/custodian, index methodology, rebalancing rules, fees and distribution policy",
+        "full dated holdings file, sector, issuer-group and factor exposure; material constituent and cross-sleeve overlap cards",
+        "actual ETF distribution history and TTM settled-cash reconciliation; no use of index yield as cash evidence",
+        "historical NAV, tracking difference, drawdown, low-volatility factor behavior and peer-ETF comparison",
+        "current price, NAV/IOPV reference, premium/discount, bid-ask spread, 20-session liquidity and executable depth",
+        "account tax, settlement, lot-size, capacity and all-in implementation-cost assessment",
+        "conditional role test against 510880 and REIT overlap, portfolio stress, catalysts, risks and invalidation triggers"
+      ],
+      "no_investability_boundary": "This is a conditional research candidate with no approved portfolio weight. It cannot be used to repair the income target or replace a failed sleeve; it remains q=0 unless independently qualified."
+    },
+    {
+      "universe_id": "REIT-508069",
+      "ticker": "508069",
+      "legal_or_display_name": "华夏南京交通高速公路封闭式基础设施证券投资基金（华夏南京交通高速公路REIT）",
+      "product_type": "Public infrastructure REIT — toll road",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Public-REIT candidate for a diversified real-asset income sleeve.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "aggregate_public_reit_sleeve_weight_pct": 25.0,
+        "single_project_hard_cap_pct_of_total_portfolio": 5.0
+      },
+      "required_evidence_modules": [
+        "current fund legal documents, prospectus, annual and interim reports, manager, sponsor, operator, governance and related-party review",
+        "complete project inventory, legal rights, concession term, valuation reports and expansion or disposal history",
+        "traffic volume, toll tariff, road-network competition, concession renewal or expiry, operating KPI and industry-economics analysis",
+        "three-year-or-available reported revenue, EBITDA, distributable cash, capex, debt, refinancing and distribution-history bridge without quarterly annualisation",
+        "current market price versus dated NAV, project cash-flow valuation, P/NAV or yield sanity checks and listed-REIT peer comparison",
+        "current premium/discount, bid-ask spread, 20-session liquidity, depth, lot, lock-up or free-float and capacity review",
+        "manager, sponsor, region, traffic-driver, tenant or counterparty and refinancing-cluster mapping; ETF overlap; bull/base/bear, risks, catalysts and invalidation"
+      ],
+      "no_investability_boundary": "Legacy annual-report and distribution evidence does not establish current valuation, cash coverage, liquidity or independence. It remains q=0 and may not be treated as a selected REIT."
+    },
+    {
+      "universe_id": "REIT-508011",
+      "ticker": "508011",
+      "legal_or_display_name": "嘉实物美消费封闭式基础设施证券投资基金（嘉实物美消费REIT）",
+      "product_type": "Public infrastructure REIT — consumer infrastructure",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Public-REIT candidate for a diversified real-asset income sleeve.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "aggregate_public_reit_sleeve_weight_pct": 25.0,
+        "single_project_hard_cap_pct_of_total_portfolio": 5.0
+      },
+      "required_evidence_modules": [
+        "current fund legal documents, prospectus, annual and interim reports, manager, sponsor, operator, governance and related-party review",
+        "complete project inventory, legal rights, valuation reports and expansion or disposal history",
+        "footfall, sales linkage where disclosed, lease terms, tenant concentration, occupancy, rental economics and consumer-infrastructure competition",
+        "three-year-or-available reported revenue, EBITDA, distributable cash, capex, debt, refinancing and distribution-history bridge without quarterly annualisation",
+        "current market price versus dated NAV, project cash-flow valuation, P/NAV or yield sanity checks and listed-REIT peer comparison",
+        "current premium/discount, bid-ask spread, 20-session liquidity, depth, lot, lock-up or free-float and capacity review",
+        "manager, sponsor, region, tenant, consumer-demand and refinancing-cluster mapping; ETF overlap; bull/base/bear, risks, catalysts and invalidation"
+      ],
+      "no_investability_boundary": "A distribution notice alone is not product or project due diligence. It remains q=0 and may not be counted toward the required five independent REIT projects."
+    },
+    {
+      "universe_id": "REIT-508068",
+      "ticker": "508068",
+      "legal_or_display_name": "华夏北京保障房中心租赁住房封闭式基础设施证券投资基金（华夏北京保障房REIT）",
+      "product_type": "Public infrastructure REIT — affordable rental housing",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Public-REIT candidate for a diversified real-asset income sleeve.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "aggregate_public_reit_sleeve_weight_pct": 25.0,
+        "single_project_hard_cap_pct_of_total_portfolio": 5.0
+      },
+      "required_evidence_modules": [
+        "current fund legal documents, prospectus, annual and interim reports, manager, sponsor, operator, governance and related-party review",
+        "complete project inventory, legal rights, valuation reports and expansion or disposal history",
+        "occupancy, rent, lease duration and expiry, tenant profile, affordable-housing policy, local supply and rental-market analysis",
+        "three-year-or-available reported revenue, EBITDA, distributable cash, capex, debt, refinancing and distribution-history bridge without quarterly annualisation",
+        "current market price versus dated NAV, project cash-flow valuation, P/NAV or yield sanity checks and listed-REIT peer comparison",
+        "current premium/discount, bid-ask spread, 20-session liquidity, depth, lot, lock-up or free-float and capacity review",
+        "manager, sponsor, region, rental-housing, policy, tenant and refinancing-cluster mapping; ETF overlap; bull/base/bear, risks, catalysts and invalidation"
+      ],
+      "no_investability_boundary": "A distribution notice alone is not product or project due diligence. It remains q=0 and cannot be presumed independent from other rental-housing REITs."
+    },
+    {
+      "universe_id": "REIT-508077",
+      "ticker": "508077",
+      "legal_or_display_name": "华夏基金华润有巢租赁住房封闭式基础设施证券投资基金（华夏华润有巢租赁住房REIT）",
+      "product_type": "Public infrastructure REIT — rental housing",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Public-REIT candidate for a diversified real-asset income sleeve.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "aggregate_public_reit_sleeve_weight_pct": 25.0,
+        "single_project_hard_cap_pct_of_total_portfolio": 5.0
+      },
+      "required_evidence_modules": [
+        "current fund legal documents, prospectus, annual and interim reports, manager, sponsor, operator, governance and related-party review",
+        "complete project inventory, legal rights, valuation reports and expansion or disposal history",
+        "occupancy, rent, lease duration and expiry, tenant profile, local supply and rental-market analysis",
+        "three-year-or-available reported revenue, EBITDA, distributable cash, capex, debt, refinancing and distribution-history bridge without quarterly annualisation",
+        "current market price versus dated NAV, project cash-flow valuation, P/NAV or yield sanity checks and listed-REIT peer comparison",
+        "current premium/discount, bid-ask spread, 20-session liquidity, depth, lot, lock-up or free-float and capacity review",
+        "manager, sponsor, region, rental-housing, tenant and refinancing-cluster mapping; ETF overlap; bull/base/bear, risks, catalysts and invalidation"
+      ],
+      "no_investability_boundary": "A distribution notice alone is not product or project due diligence. It remains q=0 and cannot be presumed independent from other rental-housing REITs."
+    },
+    {
+      "universe_id": "REIT-508055",
+      "ticker": "508055",
+      "legal_or_display_name": "汇添富上海地产租赁住房封闭式基础设施证券投资基金（汇添富上海地产租赁住房REIT）",
+      "product_type": "Public infrastructure REIT — rental housing",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Public-REIT candidate for a diversified real-asset income sleeve.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "aggregate_public_reit_sleeve_weight_pct": 25.0,
+        "single_project_hard_cap_pct_of_total_portfolio": 5.0
+      },
+      "required_evidence_modules": [
+        "current fund legal documents, prospectus, annual and interim reports, manager, sponsor, operator, governance and related-party review",
+        "complete project inventory, legal rights, valuation reports and expansion or disposal history",
+        "occupancy, rent, lease duration and expiry, tenant profile, Shanghai rental-market supply and policy analysis",
+        "three-year-or-available reported revenue, EBITDA, distributable cash, capex, debt, refinancing and distribution-history bridge without quarterly annualisation",
+        "current market price versus dated NAV, project cash-flow valuation, P/NAV or yield sanity checks and listed-REIT peer comparison",
+        "current premium/discount, bid-ask spread, 20-session liquidity, depth, lot, lock-up or free-float and capacity review",
+        "manager, sponsor, region, rental-housing, tenant and refinancing-cluster mapping; ETF overlap; bull/base/bear, risks, catalysts and invalidation"
+      ],
+      "no_investability_boundary": "A distribution notice alone is not product or project due diligence. It remains q=0 and cannot be presumed independent from other rental-housing REITs."
+    },
+    {
+      "universe_id": "REIT-508080",
+      "ticker": "508080",
+      "legal_or_display_name": "中金亦庄产业园封闭式基础设施证券投资基金（中金亦庄产业园REIT）",
+      "product_type": "Public infrastructure REIT — industrial park",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Public-REIT candidate for a diversified real-asset income sleeve.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "aggregate_public_reit_sleeve_weight_pct": 25.0,
+        "single_project_hard_cap_pct_of_total_portfolio": 5.0
+      },
+      "required_evidence_modules": [
+        "current fund legal documents, prospectus, annual and interim reports, manager, sponsor, operator, governance and related-party review",
+        "complete project inventory, legal rights, valuation reports and expansion or disposal history",
+        "occupancy, lease duration and expiry, tenant concentration, industrial-park demand, local supply and rental economics",
+        "three-year-or-available reported revenue, EBITDA, distributable cash, capex, debt, refinancing and distribution-history bridge without quarterly annualisation",
+        "current market price versus dated NAV, project cash-flow valuation, P/NAV or yield sanity checks and listed-REIT peer comparison",
+        "current premium/discount, bid-ask spread, 20-session liquidity, depth, lot, lock-up or free-float and capacity review",
+        "manager, sponsor, region, tenant, industrial-demand and refinancing-cluster mapping; ETF overlap; bull/base/bear, risks, catalysts and invalidation"
+      ],
+      "no_investability_boundary": "A distribution notice alone is not product or project due diligence. It remains q=0 and may not be treated as a cash-reinvestment vehicle or a selected REIT."
+    },
+    {
+      "universe_id": "REIT-508096",
+      "ticker": "508096",
+      "legal_or_display_name": "中航京能国际能源封闭式基础设施证券投资基金（中航京能国际能源REIT）",
+      "legacy_name": "中航京能光伏REIT",
+      "name_change_status": "The fund name, on-market short name and expanded short name changed effective 2026-02-13; the legacy photovoltaic-only name must not be used as the current product name.",
+      "name_change_source": "Shanghai Stock Exchange notice 508096_20260213_XUHW.pdf; archive this primary notice during R0.",
+      "product_type": "Public infrastructure REIT — international energy infrastructure; current project inventory must be verified",
+      "research_status": "active_research_universe_watch_only",
+      "legacy_role": "Public-REIT candidate for a diversified real-asset income sleeve.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": null,
+        "conditional_reference_amount_cny": null,
+        "aggregate_public_reit_sleeve_weight_pct": 25.0,
+        "single_project_hard_cap_pct_of_total_portfolio": 5.0
+      },
+      "required_evidence_modules": [
+        "current fund legal documents, prospectus, annual and interim reports, manager, sponsor, operator, governance and related-party review",
+        "official name-change and expansion history; complete current project inventory, legal rights, valuation reports and expansion or disposal history",
+        "energy-project operating analysis, including generation, tariff, offtaker, curtailment, degradation, hydrology or other asset-specific drivers only when confirmed by primary documents",
+        "three-year-or-available reported revenue, EBITDA, distributable cash, capex, debt, refinancing and distribution-history bridge without quarterly annualisation",
+        "current market price versus dated NAV, project cash-flow valuation, P/NAV or yield sanity checks and listed-REIT peer comparison",
+        "current premium/discount, bid-ask spread, 20-session liquidity, depth, lot, lock-up or free-float and capacity review",
+        "manager, sponsor, region, energy-driver, offtaker, regulatory and refinancing-cluster mapping; ETF overlap; bull/base/bear, risks, catalysts and invalidation"
+      ],
+      "no_investability_boundary": "A legacy photovoltaic distribution notice cannot establish the current product scope, valuation, cash coverage, liquidity or diversification status. It remains q=0 and may not be treated as a selected REIT."
+    }
+  ],
+  "unnamed_categories": [
+    {
+      "universe_id": "CATEGORY-PROTECTED-LIQUIDITY",
+      "name": "Eligible protected liquidity or direct very-short sovereign exposure",
+      "product_type": "Unspecified reserve category",
+      "research_status": "unnamed_category_not_researchable",
+      "legacy_role": "Current fallback destination and post-approval liquidity reserve; it is not an assumed return source.",
+      "legacy_scope": {
+        "current_state_weight_pct": 100.0,
+        "current_state_amount_cny": 200000,
+        "conditional_reference_weight_pct": 10.0,
+        "conditional_reference_amount_cny": 20000
+      },
+      "required_evidence_modules": [
+        "freeze the exact bank deposit, direct sovereign instrument or finite candidate list before any product research begins",
+        "issuer or sovereign identity, legal claim, deposit-insurance aggregation where applicable and counterparty review",
+        "maturity, withdrawal or redemption, settlement, available-cash and forced-sale constraints",
+        "rate, fee, tax and net-cash treatment; no assumed yield",
+        "current product terms, account eligibility and fallback-role validation"
+      ],
+      "no_investability_boundary": "This is a category, not an identified product. It cannot be labelled eligible, used as a benchmark or treated as protected until a specific arrangement and account facts are independently verified."
+    },
+    {
+      "universe_id": "CATEGORY-DEFENSIVE-DIVERSIFIER",
+      "name": "Defensive diversifier",
+      "product_type": "Unspecified non-leveraged diversifier category",
+      "research_status": "unnamed_category_not_researchable",
+      "legacy_role": "Diversification only; it has no cash-target repair role.",
+      "legacy_scope": {
+        "current_state_weight_pct": 0.0,
+        "conditional_reference_weight_pct": 10.0,
+        "conditional_reference_amount_cny": 20000
+      },
+      "required_evidence_modules": [
+        "approve non-leveraged selection criteria and freeze a finite named candidate universe before product research begins",
+        "for each named candidate, collect current legal documents, mandate, price or reference, liquidity, tax, settlement and capacity evidence",
+        "calculate candidate-specific common stress, drawdown, correlation and common-driver overlap against the Treasury ETF, dividend ETF and REIT candidates",
+        "verify a zero cash-budget assumption and confirm that the product is not a yield-repair substitute",
+        "complete product-level valuation or risk-method fit, peer comparison, catalysts, risks and invalidation"
+      ],
+      "no_investability_boundary": "No generic stress input, placeholder allocation or implied cash yield is permitted. Until a named product independently passes research and portfolio gates, this category remains q=0."
+    }
+  ],
+  "portfolio_selection_constraints": {
+    "public_reit_requirement": "A final public-REIT sleeve requires at least five independently eligible projects, at least three manager or sponsor groups and at least three operating cash-flow sectors.",
+    "public_reit_caps": {
+      "aggregate_pct_of_total_portfolio": 25.0,
+      "single_project_pct_of_total_portfolio": 5.0,
+      "manager_or_sponsor_group_pct_of_total_portfolio": 10.0,
+      "common_risk_cluster_pct_of_total_portfolio": 10.0,
+      "shared_dividend_etf_reit_operating_risk_cluster_pct_of_total_portfolio": 15.0
+    },
+    "selection_rule": "Passing an individual product note is necessary but not sufficient. The master allocation case must still pass dated portfolio return evidence, risk budget, suitability, account and current-session market gates."
+  },
+  "intake_evidence_boundary": "This file records the scope only. Existing strategy-case distribution notices, annual reports and product disclosures are not treated as a completed R0 evidence review, a current market packet, a valuation conclusion or an investability decision in this due-diligence case."
+}

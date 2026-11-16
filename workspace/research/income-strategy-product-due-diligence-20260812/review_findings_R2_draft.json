@@ -1,0 +1,33 @@
+{
+  "cycle": "R2_draft",
+  "publishability_status": "PASS_AT_RESEARCH_FRAMEWORK_SCOPE",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R2-B-001",
+      "severity": "B",
+      "owner_skill": "research-prose-polish",
+      "owner_agent": "editorial-review",
+      "artifact": "sections/ch01_decision.tex",
+      "evidence": "The draft needed an explicit distinction between product research completion and allocation approval in the reader-facing opening.",
+      "fix_required": "Lead with q=0 and evidence-memo scope, then show the ten-product matrix.",
+      "blocking_gate": "reader_boundary",
+      "status": "closed",
+      "closure_evidence": "Chapter 1 opens with current action, target definition and research-framework/implementation distinction.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-B-002",
+      "severity": "B",
+      "owner_skill": "research-prose-polish",
+      "owner_agent": "editorial-review",
+      "artifact": "sections/ch03_treasury_etf.tex through sections/ch08_portfolio_gate.tex",
+      "evidence": "Product facts needed causal interpretation rather than table-only presentation.",
+      "fix_required": "Add pre- and post-exhibit prose explaining cash engine, risk, valuation boundary and upgrade trigger for each product group.",
+      "blocking_gate": "narrative_flow",
+      "status": "closed",
+      "closure_evidence": "Every product chapter contains prose-led product analysis, an evidence table and a reader-facing implication.",
+      "reopened_count": 0
+    }
+  ]
+}

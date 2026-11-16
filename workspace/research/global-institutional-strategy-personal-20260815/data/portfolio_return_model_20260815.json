@@ -1,0 +1,113 @@
+{
+  "schema_version": "strategic_allocation_return_model.v2",
+  "case_id": "global-institutional-strategy-personal-20260815",
+  "model_type": "Strategic allocation planning range — research-only framework, no point return forecast",
+  "as_of": "2026-08-15",
+  "active_base_core": [
+    {
+      "asset": "protected liquidity",
+      "weight": 1.0,
+      "role": "Evidence-preserving inactive fallback while account, contract, data, risk-budget and jurisdiction gates are unresolved.",
+      "implementation_status": "NOT_APPROVED for any market exposure"
+    },
+    {"asset":"domestic futures CTA research sleeve","weight":0.0,"role":"future paper-replay candidate only","implementation_status":"BLOCKED_PENDING_FORMAL_TEST"},
+    {"asset":"A-share factor research sleeve","weight":0.0,"role":"future point-in-time research candidate only","implementation_status":"BLOCKED_PENDING_FORMAL_TEST"},
+    {"asset":"public-information event research sleeve","weight":0.0,"role":"future timestamped research candidate only","implementation_status":"BLOCKED_PENDING_FORMAL_TEST"},
+    {"asset":"calendar/RV research sleeve","weight":0.0,"role":"future contract-dossier candidate only","implementation_status":"BLOCKED_PENDING_FORMAL_TEST"},
+    {"asset":"crypto economic research sleeve","weight":0.0,"role":"economic research only","implementation_status":"NOT_APPROVED"}
+  ],
+  "activation_controls": {
+    "direct_equities": {
+      "initial_weight": 0.0,
+      "aggregate_cap": null,
+      "single_issuer_cap": null,
+      "current_model_treatment": "open item-level admission only; no current direct-equity model exposure",
+      "required_independent_review": [
+        "named issuer and business definition",
+        "dated public filings and accounting availability",
+        "point-in-time financial history",
+        "liquidity and ordinary-stock exit mechanics",
+        "corporate-action and trading-status checks",
+        "valuation and target-price evidence if T3 issuer is named",
+        "tax and account suitability review",
+        "approved risk budget, loss limit and independent challenge"
+      ]
+    },
+    "public_reits": {
+      "initial_weight": 0.0,
+      "activation_requires_independent_projects": 1,
+      "aggregate_cap": null,
+      "inactive_behavior": "remain in protected liquidity until project-specific dossier is complete",
+      "required_checks": [
+        "named vehicle and independently researched underlying project",
+        "cash-flow and distribution definitions",
+        "asset/operator and concession risks",
+        "leverage and refinancing",
+        "governance and related-party matters",
+        "liquidity, valuation and market mechanics",
+        "tax, suitability, approved risk budget and independent review"
+      ]
+    },
+    "domestic_futures_cta": {
+      "initial_weight": 0.0,
+      "activation_status": "BLOCKED_PENDING_FORMAL_TEST",
+      "required_checks": [
+        "broker and exchange account/product eligibility",
+        "dated contract lifecycle, roll and delivery evidence",
+        "margin, price-limit, position-limit and forced-close treatment",
+        "point-in-time continuous-data construction",
+        "next-session fill, costs, slippage and unavailable-exit replay",
+        "approved risk budget, daily loss limit and independent review"
+      ]
+    },
+    "crypto_assets_or_products": {
+      "initial_weight": 0.0,
+      "aggregate_cap": null,
+      "single_asset_cap": null,
+      "current_model_treatment": "economic research only; China-mainland implementation not approved",
+      "required_independent_review": [
+        "jurisdiction and legal/access evidence",
+        "exact vehicle or product identity",
+        "venue, counterparty, custody and recovery rights",
+        "independent price/mark source and data retention",
+        "liquidity, capacity and withdrawal stress",
+        "token/protocol, governance and smart-contract risks where relevant",
+        "no leverage, funding, lending, staking or rehypothecation shortcut",
+        "tax and recordkeeping treatment",
+        "approved risk budget and loss limit",
+        "independent red-team review"
+      ],
+      "circumvention_or_cross_border_workaround_prohibited": true
+    }
+  },
+  "cash_distribution_policy": {
+    "automatic_reinvestment": false,
+    "mandatory_retention": false,
+    "current_treatment": "No cash-yield objective is set. Protected liquidity is an inactive evidence boundary, not a forecasted income sleeve."
+  },
+  "cash_ledger_and_accounting": {
+    "eligible_receipt_types": ["interest credited", "cash dividend actually received", "realised trading proceeds net of documented costs"],
+    "not_receipt_types": ["unrealised price change", "headline yield", "announced but unpaid distribution", "borrowed funds", "margin released but not realised return"],
+    "capital_repayment_like_component": "Return of capital, principal repayment or similar cash movement is recorded separately from income and not automatically classified as investment return."
+  },
+  "total_return_measurement": {
+    "formula": "For a future approved paper or live study, total return = change in marked portfolio value plus eligible cash receipts minus documented fees, taxes, financing and trading costs, with external flows excluded from TWRR periods.",
+    "reinvestment_rule": "Cash is recorded on its actual receipt date; any later reinvestment is a separately dated flow and is not assumed automatically.",
+    "cash_receipt_accounting_rule": "Each eligible cash receipt is recognised once in the cash ledger and once only in total-return reconciliation; it must not also be embedded in a duplicated price-return series."
+  },
+  "return_evidence": {
+    "implementation_status": "BLOCKED_PENDING_FORMAL_TEST",
+    "formal_test_requirement": "Run a point-in-time, roll-aware, costed paper replay with declared data availability, execution timing, outages, price-limit/halts, margin and failed-exit scenarios before a separate review.",
+    "benchmark_requirement": "Compare every candidate sleeve with a clearly defined no-action and relevant passive or cash benchmark; report distribution of outcomes rather than a target return."
+  },
+  "risk_budget": {
+    "implementation_status": "NOT_APPROVED",
+    "approval_requirement": "A personal risk-capital statement, account/product permissions, tax context, liquidity needs and independent challenge must be documented before any allocation decision.",
+    "loss_limit": "No loss limit has been approved. A future limit must state NAV basis, daily/weekly and drawdown controls, margin-call response and a freeze/escalation owner."
+  },
+  "crypto_legal_blocker": {
+    "source_id": "S14",
+    "status": "NOT_APPROVED",
+    "policy": "No China-mainland crypto implementation route or workaround is provided."
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "capture_batch": "probe-public-etf-price-r0-20260814",
+  "captured_at": "2026-08-14T14:03:53+08:00",
+  "purpose": "Frozen tier-3 public ETF daily-bar observation whose replay input declares price_basis=forward_adjusted_or_unknown. It is retained only as a non-admissible exploratory diagnostic, not official, point-in-time total-return or execution evidence.",
+  "source_quality": "tier_3_frozen_public_observation",
+  "files": [
+    {"path":"workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-public-etf-price-r0-20260814/e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda.json","publisher":"AkShare public observation adapter / Eastmoney endpoint","title":"Frozen ETF price source archive","document_date":"2026-08-13","url":"upstream endpoint: Eastmoney fund_etf_hist_em","format":"json","bytes":1076804,"sha256":"8c5c676fc9c795ac48a166397054e72f720922bea4317b81132ce93d5e0d4f29","capture_note":"Byte-identical successor copy of a frozen predecessor raw capture."},
+    {"path":"workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-public-etf-price-r0-20260814/e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda.portfolio.replay.json","publisher":"Case-local frozen observation input","title":"Frozen ETF price replay input","document_date":"2026-08-13","url":"derived from the adjacent frozen source archive","format":"json","bytes":1077983,"sha256":"8829c0a065aa688c874212500c345c7dd92aff6c88b2bba760f7de7921b15217","capture_note":"Byte-identical successor copy; its chain and limitations are preserved."}
+  ],
+  "limitations": [
+    "The data are public aggregation observations and not an official or licensed point-in-time archive.",
+    "The replay input has an unresolved adjustment basis and no independently verified market-price, NAV, distribution or corporate-action ledger.",
+    "They cannot confirm or reject investor total return in either direction and cannot pass a strategy or product-admission gate."
+  ]
+}

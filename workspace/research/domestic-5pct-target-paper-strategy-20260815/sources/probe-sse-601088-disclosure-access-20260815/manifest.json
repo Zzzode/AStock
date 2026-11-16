@@ -1,0 +1,18 @@
+{
+  "schema_version": "sse_601088_disclosure_access_probe_manifest.v1",
+  "capture_batch": "probe-sse-601088-disclosure-access-20260815",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "captured_at": "2026-08-15T10:15:42+08:00",
+  "purpose": "Preserve the failed direct retrieval response for the C42-S08 SSE locator. It is a data-access probe, not the issuer announcement.",
+  "result": "ANTIBOT_RESPONSE_NOT_ANNOUNCEMENT",
+  "files": [
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/probe-sse-601088-disclosure-access-20260815/sse_601088_20260814_antibot_response.html.gz",
+      "requested_url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-14/601088_20260814_HSL7.pdf",
+      "bytes": 3872,
+      "sha256": "2640d1d1167a3cd3e951d68e4b00aa51a25b7ce4067a2181706f1212625af72a",
+      "content_type_observed": "gzip-compressed HTML anti-bot challenge",
+      "use_limit": "It proves neither the contents nor the publication availability of the requested announcement."
+    }
+  ]
+}

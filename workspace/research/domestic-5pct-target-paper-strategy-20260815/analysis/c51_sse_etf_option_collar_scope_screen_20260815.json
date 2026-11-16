@@ -1,0 +1,94 @@
+{
+  "artifact_id": "D5PT-C51-v1",
+  "as_of": "2026-08-15",
+  "boundary": "This evidence-bound screen is not a recommendation, return forecast, account-suitability conclusion, portfolio allocation or order instruction.",
+  "decision": {
+    "action": "NO_ACTION",
+    "reason": "Do not select an ETF, option contract, strike, expiry, size, broker, calendar or threshold. C51 does not admit a stable-five-percent strategy or any personal execution path."
+  },
+  "external_orders": false,
+  "formal_decision_eligible": false,
+  "payoff_boundary": {
+    "collar_compact_terminal_value_only_when_K_P_le_K_C": "max(K_P, min(S_T, K_C)) + C - P",
+    "collar_terminal_value": "min(S_T, K_C) + max(K_P - S_T, 0) + C - P",
+    "covered_call_terminal_value": "min(S_T, K_C) + C",
+    "formula_provenance": "Generic derivative payoff algebra only; it is not an SSE rule, market-data-interface or exchange formula.",
+    "interpretation": "For normalized same-expiry legs, the general collar formula creates a bounded terminal payoff but does not impose a positive five-percent return floor. The compact max(K_P, min(S_T, K_C)) expression is equivalent only when K_P <= K_C; C51 selects no strikes and therefore uses the general formula. Without a pre-frozen K_P, K_C, C, P and S_0 relationship, no 5% conclusion can be made; even a selected formula would require complete execution and cost accounting.",
+    "not_a_return_result": true
+  },
+  "portfolio_q": 0,
+  "relationship_to_c48": {
+    "c48_status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+    "effect": "C51 maps a distinct payoff family but does not close C48's point-in-time, total-return/event, availability/version, execution or rights gates."
+  },
+  "required_but_missing_before_any_formal_test": [
+    "逐日点时点完整的实际 ETF 期权合约主表，包括上市、摘牌、行权价、合约单位、除权调整、停复牌、到期和行权/交收状态。",
+    "每个冻结决策时点的逐合约双边报价、五档深度、成交、拒单、部分成交、未成交和官方结算记录。",
+    "标的 ETF 的总回报、分配、公司行动、交易状态及与期权调整的可审计映射。",
+    "带日期的交易所费率、券商佣金、保证金或备兑锁定、行权与交收成本及账户流程证据。",
+    "在查看结果前冻结的标的、到期、行权价、保护腿、换月、无成交和成本规则，以及独立重建全部年度和滚动五年端点。",
+    "匿名但可审计的账户权限、券商路由、备兑锁定、组合处理和结算可行性证据；公开规则不能替代这些记录。",
+    "若未来主张正式组合策略或同步组合委托，还需保留对应的交易所实施通知、实际可用性和券商工作流证据；本工件不作此主张。"
+  ],
+  "research_only": true,
+  "rule_evidence": {
+    "sse_market_data_interface": "The retained SSE interface specification presents option reference, real-time, closing-price and combination-strategy data-file categories. A technical specification neither establishes that a collar is a currently enabled formal combination strategy nor provides a rights-cleared point-in-time historical option chain, bid/ask/depth tape, order/fill record or replay right.",
+    "sse_suitability": "The current SSE guideline contains individual-investor conditions and first-level permission categories for covered opening with the underlying held and for corresponding put-buying opening with the underlying held. This is a category-level rule fact only, not an account entitlement.",
+    "sse_trading": "The current SSE trading rule contains covered-security lock and order-validity mechanics, and the retained text contains corporate-action adjustment terminology. This does not establish a selected contract, fill, cost, exercise or settlement outcome."
+  },
+  "schema_version": "c51_sse_etf_option_collar_scope_screen.v1",
+  "scope": "A rule-level, no-selection screen of whether an SSE ETF collar is economically distinct from the previously reviewed covered-call route. It is not a product choice, option-series selection, historical test, account decision or action instruction.",
+  "source_control": {
+    "manifest": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c51-sse-etf-option-collar-scope-20260815/manifest.json",
+    "manifest_sha256": "993e481ff1f04a03e1f1e02c2ed1253dd64f5a31e32a15c2df4cebd8c2934914",
+    "predecessor_c13": {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c13_etf_option_covered_call_feasibility_20260815.json",
+      "sha256": "f2859c71d8cbd57eeb6eee211a1e3700c7d16e3694ed3127ce12c07931ada434",
+      "status": "RESEARCH_CANDIDATE_NOT_ACTION_READY",
+      "strict_5pct_test_status": "NOT_FEASIBLE_FOR_RETURN_CLAIM"
+    },
+    "source_hashes": {
+      "C51-S01": "e79cda6747d18ae145fbb2de8e6dd0bbc909969c2af4717976d7a6644c53a5c0",
+      "C51-S02": "81992a8ec243c6829fbc43f194836d05277905cda551dbaccab961e4447a28a0",
+      "C51-S03": "ddafdc569fe845cfb5e612e07006288629680433d9dd72bdb4e5ff5a2956b540",
+      "C51-S04": "fff3aaeb338da5d1e1a5892ab7601d79393dd33659b01cb0595b214e2df4a8a9",
+      "C51-S05": "233d98bdc1faf26cd3940495bac37f6603b6b328e049a2e81244efc394a154c2"
+    },
+    "source_ids": [
+      "C51-S01",
+      "C51-S02",
+      "C51-S03",
+      "C51-S04",
+      "C51-S05"
+    ]
+  },
+  "status": "NOT_ADMITTED_OPTIONS_FAMILY_NO_NEW_USABLE_ROUTE",
+  "strict_hurdle_screen": {
+    "admission_result": "fail",
+    "contractual_or_rule_based_positive_five_percent_floor_evidenced": false,
+    "historical_full_year_or_rolling_five_year_test_performed": false,
+    "hurdle": "Long-run annualized return above 5% as a research objective only, not a promise or guarantee.",
+    "pre_frozen_contract_selection_and_roll_rule_present": false,
+    "reason": "The rule evidence allows a bounded collar definition but supplies neither a five-percent floor nor the complete, rights-cleared historical and execution inputs required to test net outcomes."
+  },
+  "taxonomy": {
+    "cffex_index_option_overlay": {
+      "boundary": "A possible index-option overlay is not treated as an ETF covered position and is not developed here. It would require separately retained rule evidence and a complete point-in-time contract, quote, execution and account data package before any new protocol could be registered.",
+      "current_disposition": "UNREGISTERED_FUTURE_CLASS_NO_ACTION"
+    },
+    "existing_covered_call_C13": {
+      "current_disposition": "RETAIN_CLOSED_NOT_TESTABLE_FOR_RETURN_CLAIM",
+      "no_reopen_rule": "Do not rename, retune or substitute the covered-call structure into a new candidate.",
+      "relationship": "The prior 510300 plus covered call family is the same economic structure. Changing ETF, strike, expiry or venue does not create a new route."
+    },
+    "short_option_premium": {
+      "current_disposition": "NOT_A_STABLE_FIVE_PERCENT_CANDIDATE",
+      "reason": "Premium income is compensation for nonlinear downside and assignment risk rather than a contractual positive return floor. No naked or cash-secured short-option structure is selected, tested or made actionable."
+    },
+    "sse_etf_collar": {
+      "distinctness": "A collar changes the payoff by paying for downside protection; it is economically distinct from a covered call, but it still depends on the same option-chain, eligibility, quotation, adjustment, settlement and execution infrastructure.",
+      "economic_structure": "Long a single ETF, sell a covered call and buy a put on the same normalized option exposure and expiry. No ETF, option contract, strike, expiry, size, weight or roll calendar is selected here.",
+      "rule_level_feasibility": "The retained SSE suitability guideline contains covered-opening and corresponding put-buying permission categories, while the trading rule contains covered-security locking and order-validity mechanics. Neither establishes any particular person's eligibility, broker workflow, collar-combination availability or simultaneous-combination execution path."
+    }
+  }
+}

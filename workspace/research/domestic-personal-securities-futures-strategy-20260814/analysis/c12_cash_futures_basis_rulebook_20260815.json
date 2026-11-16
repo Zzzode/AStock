@@ -1,0 +1,161 @@
+{
+  "artifact_class": "research_specification",
+  "candidate_route": {
+    "actual_futures_leg": {
+      "contractual_basis": "CFFEX educational material defines clean-price basis as cash clean price minus futures price times the conversion factor, and describes buy-cash/sell-futures as long-basis exposure.",
+      "dated_source_observation": {
+        "close": 109.43,
+        "contract": "T2612",
+        "eligible_for_dated_research_screen": true,
+        "family": "T",
+        "high": 109.465,
+        "low": 109.345,
+        "open": 109.385,
+        "open_interest": 118795.0,
+        "open_interest_change": 17981.0,
+        "previous_settlement": 109.365,
+        "scheduled_days_to_last_trade": 119,
+        "scheduled_last_trade_date": "2026-12-11",
+        "settlement": 109.435,
+        "turnover": 5518472.185,
+        "volume": 50434.0
+      },
+      "direction_for_long_basis_research": "buy one exact eligible cash Treasury bond and sell the selected actual T contract only after all no-action gates pass",
+      "exchange": "China Financial Futures Exchange",
+      "family": "10-year Treasury bond futures (T)"
+    },
+    "cash_bond_delivery_route": {
+      "delivery_link": "physical delivery only; the CFFEX delivery rules specify delivery invoice, conversion factor, accrued interest and custody-account procedures",
+      "required_custody": "an approved CCDC or CSDC Treasury custody account declared through the futures member before delivery-month controls apply",
+      "required_instrument": "one currently CFFEX-eligible book-entry fixed-coupon Treasury bond from the selected actual T contract's official deliverable list",
+      "status": "NOT_VERIFIED_FOR_THIS_CASE"
+    },
+    "exchange_traded_etf_substitute": {
+      "classification": "RELATIVE_VALUE_HEDGE_ONLY_NOT_DELIVERY_LINKED",
+      "illustrative_product": "SSE 511260, an exchange-traded 10-year Treasury-bond fund",
+      "reason": "A fund share is not the exact book-entry Treasury bond specified for futures delivery. It therefore cannot be treated as a delivery-basis lock; it retains index-tracking, duration, basket, ETF price-versus-NAV, fund-fee and execution differences.",
+      "source_fact": "Its exchange disclosure says it uses optimized sampling to track an index of Treasury-bond constituents."
+    },
+    "name": "C12 domestic Treasury cash/futures basis study"
+  },
+  "fixed_mechanics": {
+    "basis_and_carry_accounting": {
+      "boundary": "These are frozen research accounting fields, not a realized return, fill or yield assertion.",
+      "clean_price_basis": "B_i,t = P_clean_i,t - F_t * CF_i",
+      "daily_accounting": "Use actual contract settlement marks and separately recorded cash-bond/ETF marks. Daily futures variation and any margin-cash funding must be ledgered; neither may be assumed away.",
+      "delivery_invoice_reference": "Delivery invoice must follow the dated CFFEX delivery-rule equation using delivery settlement, conversion factor, accrued interest, delivery quantity and contract face amount.",
+      "net_basis_concept": "NB_i,t = B_i,t - H_i,t, where H is carry/having-cost accounting that must include coupon accrual, funding or repo, cash settlement, futures exchange and broker fees, custody/transfer, margin-cash financing, taxes if applicable, and separately observed execution costs."
+    },
+    "cash_bond_screen": {
+      "missing_field_action": "NO_ACTION_AND_NOT_TESTABLE",
+      "required_fields": [
+        "official selected-contract deliverable-bond identifier",
+        "official conversion factor for that bond and delivery month",
+        "cash clean price, accrued interest, coupon schedule and actual settlement convention from a dated permitted source",
+        "custody location and transferability consistent with the delivery rule",
+        "observed executable cash-bond bid/ask or a predeclared no-fill treatment"
+      ],
+      "selection": "Evaluate every officially eligible bond on the same dated information set; do not infer a cheapest-to-deliver bond from maturity alone."
+    },
+    "contract_screen": {
+      "continuous_series_policy": "prohibited for accounting, selection, return, roll or target validation",
+      "data_source": "frozen official CFFEX actual-contract daily CSV rows only",
+      "delivery_firewall": "No new research action after the last-trade schedule enters the 60-calendar-day screen boundary. Delivery-month use requires a separately verified custody-account approval and exchange-adjusted calendar.",
+      "eligible_contract": "actual T row with positive settlement, volume and open interest and 60--150 unadjusted calendar days to the second-Friday scheduled last-trade date",
+      "ranking": [
+        "open_interest_desc",
+        "volume_desc",
+        "contract_code_asc"
+      ]
+    },
+    "paired_execution_policy": {
+      "allowed_state": "no state is executable under the current case evidence",
+      "future_test_requirement": "A prospective or licensed historical ledger must predeclare same-window paired-leg instructions, timestamp, quote source, partial-fill state, cancellation state, no-fill state, spread/impact treatment and reconciliation of cash, futures and margin cash flows.",
+      "prohibited": [
+        "using daily settlement as an assumed two-leg fill",
+        "using a continuous futures series",
+        "inventing cash-bond, ETF or futures fills",
+        "backfilling a deliverable basket or conversion factor from hindsight"
+      ]
+    }
+  },
+  "formal_decision_eligible": false,
+  "no_action_gates": [
+    {
+      "current_state": "FAIL",
+      "gate": "actual-contract and lifecycle evidence",
+      "id": "C12-G1",
+      "pass_condition": "Complete hash-bound, point-in-time actual T contract history and contract master for every test session; all selected contracts and rolls are actual codes."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "cash-bond/delivery-basket match",
+      "id": "C12-G2",
+      "pass_condition": "Dated official deliverable-bond list, conversion factors, accrued interest/coupon inputs, cash settlement data and custody/transfer state exist for each selected contract."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "ETF substitute boundary",
+      "id": "C12-G3",
+      "pass_condition": "If ETF is used, it is independently labelled relative-value only and its basket, duration, NAV premium/discount, fees and execution differences are fully ledgered; it cannot receive delivery-basis treatment."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "financing and repo evidence",
+      "id": "C12-G4",
+      "pass_condition": "Effective-session cash financing or repo, cash settlement and coupon-reinvestment treatment are source-bound for every ledger session."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "margin and position-limit evidence",
+      "id": "C12-G5",
+      "pass_condition": "Effective-session exchange margin, price-limit, position-limit, delivery-month control and the broker's margin overlay are source-bound for every ledger session."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "fee and transfer-cost evidence",
+      "id": "C12-G6",
+      "pass_condition": "Exchange fees, broker commissions, cash-bond/ETF costs, custody/transfer charges and taxes are source-bound for every ledger session."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "personal route and delivery-account evidence",
+      "id": "C12-G7",
+      "pass_condition": "A licensed futures broker confirms the current trading-code route and the applicable custody-account/delivery process for the individual, without recording personal information in this case."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "executable paired-leg evidence",
+      "id": "C12-G8",
+      "pass_condition": "Dated bid/ask, depth or a conservative no-fill convention plus actual permissible broker cost data allow a two-leg execution ledger without invented fills."
+    },
+    {
+      "current_state": "FAIL",
+      "gate": "strict annual and rolling-five-year outcome test",
+      "id": "C12-G9",
+      "pass_condition": "A frozen unit-NAV ledger produces the complete population of full-calendar-year and rolling five-calendar-year windows after costs and independently recomputes the hard 5% standard."
+    }
+  ],
+  "orders_or_positions": "none",
+  "portfolio_q": 0,
+  "research_only": true,
+  "schema_version": "c12_cash_futures_basis_rulebook.v1",
+  "source_scope": {
+    "actual_contract_source_scope": "Six retrospectively captured official CFFEX daily CSV samples, 2016--2026, each carrying actual listed contracts. This is a route observation rather than a full historical replay dataset.",
+    "primary_batch": "sources/c12-official-cash-futures-basis-20260815/manifest.json",
+    "rule_sources": [
+      "CFFEX current T product page",
+      "CFFEX dated T contract and Treasury-futures delivery rules",
+      "CFFEX trader-suitability measures",
+      "CFFEX official basis-strategy education material",
+      "SSE 2023 bond-investor suitability rule",
+      "SSE 511260 annual report"
+    ]
+  },
+  "status": "RESEARCH_SPECIFICATION_NOT_ACTION_READY",
+  "target_requirement": {
+    "calculation_boundary": "Any eventual test must use a unit-NAV ledger with actual contracts, dated cash-bond inputs and recorded costs. A continuous futures return proxy is prohibited.",
+    "evidence_status": "not measured; no guarantee; no complete actual-contract/cash-bond/cost/fill ledger",
+    "hard_standard": "each full calendar-year net return >= 5% AND annualized net return for every completed rolling five-calendar-year window >= 5%"
+  }
+}

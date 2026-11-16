@@ -1,0 +1,71 @@
+{
+  "schema_version": "official_600900_equity_diligence_manifest.v1",
+  "capture_batch": "official-600900-equity-diligence-20260815",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "captured_at": "2026-08-15T10:10:42+08:00",
+  "timezone": "Asia/Shanghai",
+  "purpose": "Retain primary issuer PDFs used by the C41 600900 diligence dossier. The capture supports bounded historical facts and document integrity only; it does not establish first-publication time, a complete disclosure/version chain, market-data rights, valuation, total return, liquidity, strategy admission, or external action.",
+  "source_quality": "issuer_official_primary_pdf",
+  "limitations": [
+    "The issuer-hosted PDF retrieval time is not the original exchange publication time or an accepted available_at timestamp.",
+    "Disclosure landing pages, corrections, withdrawals, all temporary announcements and the complete legal-document lineage are not retained in this batch.",
+    "This batch contains no market price, corporate-action algorithm, bid/ask, depth, fill, fee, tax, settlement, rights, or account-specific record.",
+    "The retained documents do not select the issuer, imply a valuation conclusion, forecast a distribution, establish total return, or authorize an external action."
+  ],
+  "files": [
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600900-equity-diligence-20260815/600900_2023_annual_report.pdf",
+      "kind": "issuer_annual_report",
+      "reporting_period": "FY2023",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2024/11/2024110610344566091.pdf",
+      "bytes": 1799710,
+      "sha256": "a32aa92211f533bef9bd426a29158060d6bed4a31fca6c9f6805fd8659c90d38"
+    },
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600900-equity-diligence-20260815/600900_2024_annual_report.pdf",
+      "kind": "issuer_annual_report",
+      "reporting_period": "FY2024",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2025/05/2025050612554995408.pdf",
+      "bytes": 1786053,
+      "sha256": "d4610a53996ef1a741c5b87d586c833fe96a0f152c4ab523442144d46cdd8358"
+    },
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600900-equity-diligence-20260815/600900_2025_annual_report.pdf",
+      "kind": "issuer_annual_report",
+      "reporting_period": "FY2025",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/05/2026051815345898336.pdf",
+      "bytes": 1616683,
+      "sha256": "12e0dd671bce6a02298adace6cba12f0749d398a25fe4c68b1149c9932d0d64c"
+    },
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600900-equity-diligence-20260815/600900_2026_q1_report.pdf",
+      "kind": "issuer_quarterly_report",
+      "reporting_period": "2026Q1",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/05/2026051815335596092.pdf",
+      "bytes": 204971,
+      "sha256": "100ecd959c633b08a4adf9805ff21547b025a985ff4793f7c11ceb8d7baf5c3e"
+    },
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600900-equity-diligence-20260815/600900_2026_h1_generation_notice.pdf",
+      "kind": "issuer_operating_data_announcement",
+      "publication_date": "2026-07-07",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/07/2026070717535934489.pdf",
+      "bytes": 113448,
+      "sha256": "e5283743ebdf893dbd61e192de5f653ff6fb214553cfa63c67b924a5c95a4a18"
+    },
+    {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600900-equity-diligence-20260815/600900_2025_distribution_implementation.pdf",
+      "kind": "issuer_distribution_implementation_announcement",
+      "publication_date": "2026-07-09",
+      "publisher": "China Yangtze Power Co., Ltd.",
+      "url": "https://www.cypc.com.cn/cypc/attachDir/2026/07/2026070917081273023.pdf",
+      "bytes": 150126,
+      "sha256": "65b71ce51cb6533ef6a81db63f5b0fd0512ffc727b20220ce42f24f09c98f6d9"
+    }
+  ]
+}

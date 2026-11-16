@@ -1,0 +1,33 @@
+{
+  "cycle": "R3_render_compliance",
+  "publishability_status": "PASS_AT_RESEARCH_FRAMEWORK_SCOPE",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R3-B-001",
+      "severity": "B",
+      "owner_skill": "latex-writer",
+      "owner_agent": "render-review",
+      "artifact": "main.pdf",
+      "evidence": "An early render emitted a sub-1pt overfull paragraph warning in the total-return section.",
+      "fix_required": "Tighten the TWRR/MWRR wording, rebuild with XeLaTeX and refresh text/render evidence.",
+      "blocking_gate": "render_hygiene",
+      "status": "closed",
+      "closure_evidence": "The paragraph was reflowed and the final 2026-08-12 18:34 CST two-pass XeLaTeX build has no overfull-hbox diagnostics; visual_review.md records no material clipping or overlap.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R3-B-002",
+      "severity": "B",
+      "owner_skill": "latex-writer",
+      "owner_agent": "render-review",
+      "artifact": "sections/app_glossary.tex",
+      "evidence": "The prior strategy report lacked a reader-facing REIT definition.",
+      "fix_required": "Add a dedicated glossary including REIT, ETF, NAV, IOPV, cash distributions, TWRR/MWRR and q=0.",
+      "blocking_gate": "reader_accessibility",
+      "status": "closed",
+      "closure_evidence": "Appendix A contains the defined terms and visually reviewed longtable.",
+      "reopened_count": 0
+    }
+  ]
+}

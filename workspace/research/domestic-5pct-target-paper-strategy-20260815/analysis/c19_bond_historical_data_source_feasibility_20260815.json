@@ -1,0 +1,221 @@
+{
+  "schema_version": "c19_bond_historical_data_source_feasibility.v1",
+  "artifact_id": "D5PT-C19-v2",
+  "as_of": "2026-08-15",
+  "purpose": "Independently assess whether lawful official or clearly tiered data sources can supply the historical inputs needed to test a direct SSE-listed company-bond ladder. This memo is a data-source feasibility review only.",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "source_capture_status": "Six public product, interface, valuation-methodology and authorization pages were retained in a separate immutable source batch. No subscription was obtained, no protected endpoint was queried, and no historical market-data extract was received.",
+  "source_control": {
+    "primary_source_capture_manifest": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c19-official-bond-data-source-feasibility-20260815/manifest.json",
+      "sha256": "77e337a09c80906a143b15dcfc72f60631847a3f44d63aeea5a9e0a531ac9d41"
+    },
+    "capture_scope": "Public descriptions of candidate data products, field concepts and authorization boundaries only; not a license, data dictionary, historical delivery, individual eligibility record or return input."
+  },
+  "source_control_amendment": {
+    "reason": "v2 retains the public primary-source pages cited in this feasibility review after v1 recorded only canonical URLs. It does not change the candidate routes, field-gap assessment, testability state or action boundary.",
+    "previous_feasibility_sha256": "9f595dfb467fbcc815661aa18ea7ad2725c7658c9693033492fe249cb8dbaaf7"
+  },
+  "research_result": "CONDITIONAL_LAWFUL_SOURCE_PATHS_IDENTIFIED",
+  "current_route_status": "not_testable",
+  "executive_conclusion": "There are lawful, tiered candidate sources for parts of the required data stack, but no source contract, data dictionary, licensed extract or independent coverage test in this case proves a complete point-in-time dataset. The direct SSE company-bond ladder therefore remains not_testable. The public sources support a future data-acquisition diligence path; they do not support bond selection, performance calculation, access inference or an external action.",
+  "source_tiers": [
+    {
+      "source_id": "S19-01",
+      "name": "SSE Info historical market-data product",
+      "tier": "T1_exchange_authorized_data_operator",
+      "url": "https://www.sseinfo.com/services/assortment/historical/",
+      "retrieved_on": "2026-08-15",
+      "verified_public_scope": [
+        "The product describes historical security-market data, including security basic-information files, snapshots, tick trades, daily K lines, minute K lines and auction data.",
+        "The public page directs users to a business-application process."
+      ],
+      "potential_relevance": [
+        "Could be a lawful exchange-data route for historical transaction, quote, daily-close, volume and status observations if the licensed delivery covers the required SSE company-bond universe and dates."
+      ],
+      "not_proven_by_public_page": [
+        "A point-in-time historical master for all eligible public company bonds, including listings, delistings and product classifications.",
+        "Coverage dates, complete field delivery, data revisions, point-in-time reference snapshots or a right to use the data for this historical test.",
+        "Coupon terms, payment and redemption events, rating history, credit-event history, broker fees, settlement handling or investor-suitability history."
+      ],
+      "admission_status": "candidate_only_pending_license_and_sample_coverage_test"
+    },
+    {
+      "source_id": "S19-02",
+      "name": "SSE historical-data interface specification",
+      "tier": "T1_exchange_technical_documentation",
+      "url": "https://www.sseinfo.com/services/assortment/document/interface/c/10759166/files/4f38cae1022a4cfa8410bbc2702e2b95.pdf",
+      "retrieved_on": "2026-08-15",
+      "verified_public_scope": [
+        "The specification describes CSV historical snapshots, tick data and daily/minute K lines.",
+        "It distinguishes bond units in the market fields and documents a BondTick file with security code, time, order/trade type, price, quantity, trade amount, direction and product-status messages; the document says this file began on 2021-12-01, subject to actual business launch timing.",
+        "The documented product-status values include unlisted, suspension and end-of-trading states."
+      ],
+      "potential_relevance": [
+        "Provides a concrete field-level candidate for the transaction and market-status portion of a historical test after rights and actual delivery are verified."
+      ],
+      "not_proven_by_public_specification": [
+        "That all required public company bonds or all required historical dates are present in a licensable delivery.",
+        "That displayed prices are a complete dirty-price series or can replace a valuation and accrued-interest convention.",
+        "Any bond terms, cash-flow event ledger, rating/credit-event history, broker costs, settlement outcome or ordinary-investor access record."
+      ],
+      "admission_status": "candidate_only_pending_entitlement_and_file_sample"
+    },
+    {
+      "source_id": "S19-03",
+      "name": "SSE Info fixed-income market-data product",
+      "tier": "T1_exchange_authorized_data_operator",
+      "url": "https://www.sseinfo.com/services/assortment/income/",
+      "retrieved_on": "2026-08-15",
+      "verified_public_scope": [
+        "The page says the product covers real-time non-matched fixed-income trading in the SSE new fixed-income system and explicitly lists company-bond cash bonds.",
+        "It describes pre-open security basic-information files plus snapshots and tick data containing price, quantity, trade count, amount and trade method.",
+        "The page provides an authorization-application route."
+      ],
+      "potential_relevance": [
+        "Can be a future source for contemporaneous market-data and product-reference checks."
+      ],
+      "not_proven_by_public_page": [
+        "A historical backfill, point-in-time security-master archive, cash-flow event record or historical eligibility record."
+      ],
+      "admission_status": "current_or_contemporaneous_candidate_not_historical_test_evidence"
+    },
+    {
+      "source_id": "S19-04",
+      "name": "ChinaBond valuation query and data-service notice",
+      "tier": "T1_first_party_valuation_and_data_service_surface",
+      "url": "https://indices.chinabond.com.cn/cbweb-mn/val/val_query_list?locale=zh_CN",
+      "retrieved_on": "2026-08-15",
+      "verified_public_scope": [
+        "The query surface displays a valuation date, bond name/code, venue, full price, accrued-interest field, net price, yield, liquidity fields, an implied-rating field and an ISIN field.",
+        "The public notice directs users seeking more detailed data to the ChinaBond data-download/data-access route and provides a data-service contact."
+      ],
+      "potential_relevance": [
+        "Could supply or reconcile date-specific valuation fields for SSE-traded bonds, subject to a licensed historical extract and a documented valuation methodology."
+      ],
+      "not_proven_by_public_page": [
+        "A complete archived date range, all required SSE public company bonds, point-in-time membership, coupon and redemption schedules, payment confirmations, external-rating history, credit-event history or exchange transaction tape.",
+        "The exact use rights for this research, a reproducible bulk delivery, or continuity and revision treatment of each historical field."
+      ],
+      "admission_status": "candidate_only_pending_data_dictionary_rights_and_historical_sample"
+    },
+    {
+      "source_id": "S19-05",
+      "name": "ChinaBond methodology and rights notices",
+      "tier": "T1_first_party_methodology_and_usage_boundary",
+      "url": "https://valuation.chinabond.com.cn/cbweb-mn/int/int_yield_syl_doc",
+      "retrieved_on": "2026-08-15",
+      "verified_public_scope": [
+        "The methodology says ChinaBond curves use exchange-bond transaction data and exchange fixed-income-platform quotes and transactions among their source inputs.",
+        "ChinaBond public pages direct users to a detailed-data route and state that certain downstream uses require a written application."
+      ],
+      "potential_relevance": [
+        "Supports the provenance case for a licensed valuation-data request, not a conclusion that the public webpage itself is a complete backtest dataset."
+      ],
+      "not_proven_by_public_page": [
+        "The full security-level historical dataset, its exact terms, or a blanket right to download, store, reproduce or use it in a historical model."
+      ],
+      "admission_status": "provenance_support_only"
+    },
+    {
+      "source_id": "S19-06",
+      "name": "Wind financial terminal and Client API",
+      "tier": "T2_commercial_vendor_vendor_declared_scope",
+      "urls": [
+        "https://www.wind.com.cn/mobile/WFT/zh.html",
+        "https://www.wind.com.cn/portal/zh/ClientApi/index.html"
+      ],
+      "retrieved_on": "2026-08-15",
+      "verified_public_scope": [
+        "Wind describes coverage of bonds with transactions, quotes, credit monitoring and third-party valuation tools.",
+        "Its Client API page describes historical daily, tick and minute replay across market assets and licensed API access."
+      ],
+      "potential_relevance": [
+        "A commercial normalized-data candidate for joining bond reference data, prices, corporate events and credit information, if a written field-level delivery contract and sample validate the exact SSE-company-bond universe."
+      ],
+      "not_proven_by_public_page": [
+        "Whether the licensed package contains every C18 field at every historical date, all retired securities, point-in-time corrections, complete external-rating history, payment/redemption events, or any broker-specific field.",
+        "The right to redistribute raw data or to treat a product-page description as an audit-ready data dictionary."
+      ],
+      "admission_status": "candidate_only_pending_contract_dictionary_and_independent_reconciliation"
+    }
+  ],
+  "rights_boundary": {
+    "source_id": "S19-07",
+    "name": "SSE Info authorization statement",
+    "tier": "T1_exchange_rights_statement",
+    "url": "https://www.sseinfo.com/aboutus/authstatement/",
+    "retrieved_on": "2026-08-15",
+    "finding": "The statement says SSE market information may not be copied, transmitted, transferred, used or used to develop products without exchange permission, and directs institutions and individuals seeking to receive or use it to apply to the authorized operator.",
+    "effect_on_c19": "The presence of public webpages is not a data-use entitlement. Any historical extract must be obtained under written rights and retained with provenance and usage restrictions."
+  },
+  "required_field_matrix": [
+    {
+      "field_group": "Point-in-time SSE public company-bond security master",
+      "best_candidate_path": "SSE Info historical/basic-information delivery plus a licensed normalized reference-data source",
+      "public_evidence_strength": "partial",
+      "current_case_coverage": "not_captured",
+      "blocking_gap": "No data dictionary or sample proves as-of membership, listing/delisting states, product classifications, code changes or coverage of retired bonds."
+    },
+    {
+      "field_group": "Historical market price, volume, turnover, no-trade and status observations",
+      "best_candidate_path": "SSE Info historical market data, with a contract and file-level validation",
+      "public_evidence_strength": "partial_to_strong_for_field_concepts",
+      "current_case_coverage": "not_captured",
+      "blocking_gap": "The specification establishes possible files and fields, but not licensed date coverage, universe completeness, price convention or an acquired extract."
+    },
+    {
+      "field_group": "Historical full price and accrued-interest convention",
+      "best_candidate_path": "ChinaBond valuation data under confirmed historical rights, reconciled to the exchange-data route",
+      "public_evidence_strength": "strong_for_displayed_field_concepts_partial_for_historical_delivery",
+      "current_case_coverage": "not_captured",
+      "blocking_gap": "No historical bulk data, valuation-revision policy or security-level coverage proof is in the case."
+    },
+    {
+      "field_group": "Coupon terms, payment confirmations, maturity and redemption events",
+      "best_candidate_path": "Licensed reference/event dataset cross-checked to issuer and exchange disclosures",
+      "public_evidence_strength": "not_verified_in_this_source_review",
+      "current_case_coverage": "not_captured",
+      "blocking_gap": "No normalized historical event ledger, source hierarchy or point-in-time availability proof was found in the reviewed public product descriptions."
+    },
+    {
+      "field_group": "External-rating history and credit-event timeline",
+      "best_candidate_path": "Licensed credit/reference dataset cross-checked to dated rating-agency and issuer disclosures",
+      "public_evidence_strength": "not_verified_in_this_source_review",
+      "current_case_coverage": "not_captured",
+      "blocking_gap": "A portal rating field or a vendor credit-monitoring description is not a complete dated external-rating or credit-event record."
+    },
+    {
+      "field_group": "Broker fee, tax, order-size, quote, partial-fill and settlement treatment",
+      "best_candidate_path": "Dated broker documentation and lawful account-route evidence, separated from market-data vendors",
+      "public_evidence_strength": "not_verified_as_generic_market_data",
+      "current_case_coverage": "not_captured",
+      "blocking_gap": "These inputs are broker-, account-, product- and time-specific; generic exchange data cannot establish them."
+    },
+    {
+      "field_group": "Ordinary-investor suitability and permission by bond and date",
+      "best_candidate_path": "Dated venue rule, per-bond status and broker permission evidence",
+      "public_evidence_strength": "not_verified_as_historical_dataset",
+      "current_case_coverage": "not_captured",
+      "blocking_gap": "No generic data product reviewed here proves a person's permission or historical eligibility for a specific bond."
+    }
+  ],
+  "data_acquisition_acceptance_tests": [
+    "Obtain written rights that permit the intended internal historical research use; record access scope, storage period, redistribution restriction and data version.",
+    "Receive a data dictionary and a small licensed sample before any broad acquisition; record field definitions, units, time zone, price convention, status codes and revision policy.",
+    "Demonstrate an as-of security master for every research date, including listing, delisting, product classification, code mapping and the treatment of inactive securities.",
+    "Demonstrate the full historical date coverage and completeness of market price, volume, turnover, no-trade and trading-status fields for the intended universe.",
+    "Reconcile a documented full-price/accrued-interest series to the chosen market-price convention without filling missing observations by assumption.",
+    "Obtain a dated coupon, payment, maturity/redemption, option and material-credit-event ledger, then cross-check a sampled set against primary disclosures.",
+    "Obtain dated external-rating history and a source-stamped credit-event timeline; distinguish a vendor-implied field from an external rating.",
+    "Keep broker fees, settlement handling, order constraints and suitability records as a separate implementation gate; do not infer them from exchange or valuation data."
+  ],
+  "not_allowed": [
+    "Treat a public product description, a portal field or a vendor marketing page as proof that the entire historical dataset is available or licensed.",
+    "Choose bonds, calculate performance, infer access, state a return expectation or create an external action from this source-feasibility memo.",
+    "Replace missing event, fee, settlement or suitability data with assumptions and call the direct-ladder route tested."
+  ],
+  "next_research_gate": "A separate frozen protocol may be considered only after all acceptance tests pass and independently verified, lawful extracts are stored with source, timestamp, entitlement, schema and hash metadata. Until then, the C18 direct company-bond route stays not_testable."
+}

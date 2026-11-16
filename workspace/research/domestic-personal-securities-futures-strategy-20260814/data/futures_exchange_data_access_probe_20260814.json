@@ -1,0 +1,303 @@
+{
+  "artifact_class": "derived_research_evidence",
+  "conclusion": {
+    "next_gate": "Archive every trading-day raw response plus contract lifecycle, fees/margin/limit records and a pre-registered selection/roll/no-fill rule before an actual-contract replay.",
+    "not_supported": [
+      "A complete frozen historical archive or a point-in-time contract master.",
+      "Original-date availability of the historical files or their contents.",
+      "Historical bid/ask, fills, broker charges, broker margin, limit locks, position limits or delivery eligibility.",
+      "A futures return result, allocation or action."
+    ],
+    "supported": "Twelve locally retained, retrospectively retrieved official daily-file samples returned actual listed-contract rows across six sampled dates from 2016 to 2026."
+  },
+  "czce": [
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/czce_actual_contract_daily_20160104.txt",
+      "date": "2016-01-04",
+      "raw_sha256": "e1641478a562d88ad90eabcb58620ec1029ff37bbb659e0e22d27c7f077f1d25",
+      "required_fields_observed": [
+        "previous settlement",
+        "OHLC",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "url": "https://www.czce.com.cn/cn/DFSStaticFiles/Future/2016/20160104/FutureDataDaily.txt",
+      "wanted_contract_rows": 30,
+      "wanted_varieties": [
+        "CF",
+        "MA",
+        "TA"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/czce_actual_contract_daily_20180102.txt",
+      "date": "2018-01-02",
+      "raw_sha256": "2036f847d44bf72adba451679bde25052605445075d868dda33f6246ee037942",
+      "required_fields_observed": [
+        "previous settlement",
+        "OHLC",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "url": "https://www.czce.com.cn/cn/DFSStaticFiles/Future/2018/20180102/FutureDataDaily.txt",
+      "wanted_contract_rows": 30,
+      "wanted_varieties": [
+        "CF",
+        "MA",
+        "TA"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/czce_actual_contract_daily_20200102.txt",
+      "date": "2020-01-02",
+      "raw_sha256": "22d028fbdf72987ba5215fa29263d4c5cfd24e160071e84f12ad9a9628f6e887",
+      "required_fields_observed": [
+        "previous settlement",
+        "OHLC",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "url": "https://www.czce.com.cn/cn/DFSStaticFiles/Future/2020/20200102/FutureDataDaily.txt",
+      "wanted_contract_rows": 30,
+      "wanted_varieties": [
+        "CF",
+        "MA",
+        "TA"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/czce_actual_contract_daily_20220104.txt",
+      "date": "2022-01-04",
+      "raw_sha256": "d7e8b84f677d0110c21b16af27b767b489ed960e6e2a12413191e147edd0f3af",
+      "required_fields_observed": [
+        "previous settlement",
+        "OHLC",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "url": "https://www.czce.com.cn/cn/DFSStaticFiles/Future/2022/20220104/FutureDataDaily.txt",
+      "wanted_contract_rows": 30,
+      "wanted_varieties": [
+        "CF",
+        "MA",
+        "TA"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/czce_actual_contract_daily_20240102.txt",
+      "date": "2024-01-02",
+      "raw_sha256": "cce80985453e21f9b07557945ddecf6d8c8397a181f3d6cc86c041920eaf2bc2",
+      "required_fields_observed": [
+        "previous settlement",
+        "OHLC",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "url": "https://www.czce.com.cn/cn/DFSStaticFiles/Future/2024/20240102/FutureDataDaily.txt",
+      "wanted_contract_rows": 30,
+      "wanted_varieties": [
+        "CF",
+        "MA",
+        "TA"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/czce_actual_contract_daily_20260813.txt",
+      "date": "2026-08-13",
+      "raw_sha256": "10ea70ec744861b09e20866238b02099db53ea6caec1fd4f107bfbd86c5ffebc",
+      "required_fields_observed": [
+        "previous settlement",
+        "OHLC",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "url": "https://www.czce.com.cn/cn/DFSStaticFiles/Future/2026/20260813/FutureDataDaily.txt",
+      "wanted_contract_rows": 30,
+      "wanted_varieties": [
+        "CF",
+        "MA",
+        "TA"
+      ]
+    }
+  ],
+  "formal_decision_eligible": false,
+  "historical_provenance": {
+    "boundary": "The historical files were requested after their trade dates. Their retention proves present source-path availability, not what was available on each original decision date.",
+    "classification": "retrospective_source_access_sample",
+    "retrieval_basis": "retrospective_source_access_sample",
+    "revalidated_at": "2026-08-14T07:07:34.823238+00:00",
+    "source_archive_retrieved_at": [
+      "2026-08-14T14:41:26+08:00"
+    ]
+  },
+  "portfolio_q": 0,
+  "research_only": true,
+  "revalidated_at": "2026-08-14T07:07:34.823238+00:00",
+  "schema_version": "futures_exchange_data_access_probe.v2",
+  "scope": "official daily-file availability sample for AU/CU/RB and TA/CF/MA; initial research focus remains AU/CU/TA",
+  "shfe": [
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/shfe_actual_contract_daily_20160104.json",
+      "date": "2016-01-04",
+      "raw_sha256": "67cbbb7460a242a43c2a08ed1726f2b4499e39a4e3ba2ab17a749d5de763158e",
+      "required_fields_observed": [
+        "OHLC",
+        "previous settlement",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "total_contract_rows": 176,
+      "url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20160104.dat",
+      "wanted_contract_rows": 32,
+      "wanted_varieties": [
+        "AU",
+        "CU",
+        "RB"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/shfe_actual_contract_daily_20180102.json",
+      "date": "2018-01-02",
+      "raw_sha256": "9a56121cb641d06c8490810a69f9c05dc96aa90e03fe1a7519df241ebceeab72",
+      "required_fields_observed": [
+        "OHLC",
+        "previous settlement",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "total_contract_rows": 176,
+      "url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20180102.dat",
+      "wanted_contract_rows": 32,
+      "wanted_varieties": [
+        "AU",
+        "CU",
+        "RB"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/shfe_actual_contract_daily_20200102.json",
+      "date": "2020-01-02",
+      "raw_sha256": "6008ecb9fdfcfc25fb43cc264621a5e6e367fb31e6b4d6c3482f8d5a914f203a",
+      "required_fields_observed": [
+        "OHLC",
+        "previous settlement",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "total_contract_rows": 236,
+      "url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20200102.dat",
+      "wanted_contract_rows": 32,
+      "wanted_varieties": [
+        "AU",
+        "CU",
+        "RB"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/shfe_actual_contract_daily_20220104.json",
+      "date": "2022-01-04",
+      "raw_sha256": "a200cc2f07a8b3c818f56a82cc1745c7abbf9c2a7ae80ea8e459c3020f4ddc9a",
+      "required_fields_observed": [
+        "OHLC",
+        "previous settlement",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "total_contract_rows": 266,
+      "url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20220104.dat",
+      "wanted_contract_rows": 32,
+      "wanted_varieties": [
+        "AU",
+        "CU",
+        "RB"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/shfe_actual_contract_daily_20240102.json",
+      "date": "2024-01-02",
+      "raw_sha256": "158fc4b72d97fba974c149134133d1a9cc6e021d3b32661eaa5941e67db50964",
+      "required_fields_observed": [
+        "OHLC",
+        "previous settlement",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "total_contract_rows": 304,
+      "url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20240102.dat",
+      "wanted_contract_rows": 32,
+      "wanted_varieties": [
+        "AU",
+        "CU",
+        "RB"
+      ]
+    },
+    {
+      "archive_path": "sources/probe-exchange-data-r0-20260814/shfe_actual_contract_daily_20260813.json",
+      "date": "2026-08-13",
+      "raw_sha256": "9d7579f1e3611efa1c4c1530d46bddb25958e1a539286d606efb9e9739e4ef02",
+      "required_fields_observed": [
+        "OHLC",
+        "previous settlement",
+        "settlement",
+        "volume",
+        "open interest",
+        "turnover"
+      ],
+      "retrieval_basis": "retrospective_source_access_sample",
+      "retrieved_at": "2026-08-14T14:41:26+08:00",
+      "total_contract_rows": 333,
+      "url": "https://www.shfe.com.cn/data/tradedata/future/dailydata/kx20260813.dat",
+      "wanted_contract_rows": 32,
+      "wanted_varieties": [
+        "AU",
+        "CU",
+        "RB"
+      ]
+    }
+  ],
+  "status": "actual_contract_eod_paths_observed_not_replay_ready"
+}

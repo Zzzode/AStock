@@ -1,0 +1,120 @@
+{
+  "schema_version": "direct_equity_r1_diligence.v1",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_evidence",
+  "scope": ["000333.SZ", "600900.SH", "600036.SH"],
+  "authority": "research-only; all candidates q=0; no recommendation, allocation, valuation target, trading action, cash objective, or automatic reinvestment",
+  "source_boundary": {
+    "allowed_sources": "existing issuer/exchange disclosures in sources/official-continuation-20260814/manifest.json",
+    "new_sources_added": false
+  },
+  "r1_status": "partial_evidence_limited; no issuer may progress to valuation or market-access review",
+  "issuers": [
+    {
+      "ticker": "000333.SZ",
+      "name": "美的集团",
+      "source_ids": ["CE01", "CE02"],
+      "business_earnings_drivers": {
+        "business_matrix": ["smart home", "industrial technology", "building technology", "robotics and automation", "new energy", "healthcare", "smart logistics"],
+        "fy2025_revenue_rmb_bn": 456.452,
+        "fy2025_revenue_yoy_pct": 12.11,
+        "fy2025_attributable_profit_rmb_bn": 43.945,
+        "fy2025_attributable_profit_yoy_pct": 14.03,
+        "fy2025_overseas_revenue_rmb_bn": 195.9,
+        "fy2025_overseas_revenue_yoy_pct": 16.0,
+        "fy2025_tob_revenue_rmb_bn": 122.8,
+        "fy2025_tob_revenue_yoy_pct": 17.5,
+        "q1_2026_segment_revenue_rmb_bn": {"building_technology": 10.8, "robotics_automation": 8.2, "industrial_technology": 6.8},
+        "q1_2026_segment_revenue_yoy_pct": {"building_technology": 10.1, "robotics_automation": 11.8, "industrial_technology": -11.7}
+      },
+      "quality_cashflow_capital": {
+        "fy2025_operating_cash_flow_rmb_bn": 53.346,
+        "fy2025_operating_cash_flow_yoy_pct": -11.84,
+        "fy2025_cash_rmb_bn": 85.247,
+        "fy2025_short_term_borrowings_rmb_bn": 43.905,
+        "fy2025_long_term_borrowings_rmb_bn": 12.659,
+        "fy2025_asset_liability_ratio_pct": 61.17,
+        "audit_status": "standard unqualified opinion reported"
+      },
+      "required_r1_completion": ["segment/geography margin and cash-conversion bridge", "non-recurring financial/investment-item reconciliation", "working-capital, debt maturity, restricted-cash, lease and acquisition bridge", "official peer/sector and governance/post-Q1 evidence"],
+      "risk_inputs": ["consumer/building demand", "overseas tariff/FX/localisation", "technology cyclicality", "working capital", "financial-asset and non-recurring items", "leverage and integration"],
+      "current_market_valuation_status": "not captured; valuation and market access blocked",
+      "q": 0
+    },
+    {
+      "ticker": "600900.SH",
+      "name": "长江电力",
+      "source_ids": ["CE03", "CE04"],
+      "business_earnings_drivers": {
+        "fy2025_controllable_hydro_capacity_gw": 71.795,
+        "fy2025_domestic_cascade_generation_twh": 307.194,
+        "fy2025_generation_yoy_pct": 3.82,
+        "fy2025_revenue_rmb_bn": 86.242,
+        "fy2025_attributable_profit_rmb_bn": 34.503,
+        "fy2025_domestic_hydropower_revenue_rmb_bn": 75.662,
+        "fy2025_domestic_hydropower_gross_margin_pct": 65.79,
+        "fy2025_reported_grid_tariff_rmb_per_mwh": 280.28,
+        "q1_2026_attributable_profit_yoy_pct": 30.5,
+        "q1_2026_profit_excluding_nonrecurring_yoy_pct": 19.2
+      },
+      "quality_cashflow_capital": {
+        "fy2025_operating_cash_flow_rmb_bn": 60.563,
+        "fy2025_fixed_asset_investment_rmb_bn": 9.443,
+        "fy2025_asset_liability_ratio_pct": 58.27,
+        "fy2025_financial_expense_rmb_bn": 9.371,
+        "fy2025_short_term_borrowings_rmb_bn": 15.181,
+        "audit_status": "standard unqualified opinion reported"
+      },
+      "required_r1_completion": ["hydrology-dispatch-generation-tariff bridge", "Q1 non-recurring-item reconciliation", "debt maturity/rate/covenant and acquisition-funding bridge", "official peer/policy, governance and post-Q1 evidence"],
+      "risk_inputs": ["hydrology", "dispatch", "tariff and power-market exposure", "outage/safety", "capex", "debt and acquisition funding", "related-party mechanics"],
+      "current_market_valuation_status": "not captured; valuation and market access blocked",
+      "q": 0
+    },
+    {
+      "ticker": "600036.SH",
+      "name": "招商银行",
+      "source_ids": ["CE05", "CE06"],
+      "business_earnings_drivers": {
+        "fy2025_net_operating_income_rmb_bn": 337.273,
+        "fy2025_attributable_profit_rmb_bn": 150.181,
+        "fy2025_net_interest_margin_pct": 1.87,
+        "q1_2026_net_interest_income_rmb_bn": 55.642,
+        "q1_2026_net_interest_income_yoy_pct": 4.99,
+        "q1_2026_net_interest_margin_pct": 1.83,
+        "q1_2026_net_interest_margin_yoy_change_bp": -8,
+        "q1_2026_fee_commission_income_rmb_bn": 20.656,
+        "q1_2026_fee_commission_income_yoy_pct": 4.87,
+        "q1_2026_wealth_management_fee_income_rmb_bn": 8.507,
+        "q1_2026_wealth_management_fee_income_yoy_pct": 25.42,
+        "q1_2026_retail_loans_rmb_bn": 3683.04,
+        "q1_2026_corporate_loans_rmb_bn": 3440.173
+      },
+      "quality_cashflow_capital": {
+        "q1_2026_npl_ratio_pct": 0.94,
+        "q1_2026_allowance_coverage_pct": 387.76,
+        "q1_2026_allowance_to_loan_pct": 3.63,
+        "fy2025_cet1_ratio_pct": 14.16,
+        "fy2025_credit_cost_ratio_pct": 0.6,
+        "q1_2026_customer_deposits_rmb_bn": 9959.197,
+        "q1_2026_property_credit_risk_exposure_rmb_bn": 347.935,
+        "q1_2026_property_development_npl_ratio_pct": 4.44,
+        "audit_status": "FY2025 H-share report says PRC and IFRS accounts received standard unqualified audit reports; Chinese A-share filing cross-check remains open",
+        "q1_status": "unaudited; captured H-share report says Chinese version prevails in case of discrepancy"
+      },
+      "required_r1_completion": ["Chinese A-share filing reconciliation", "NIM-credit-provision-capital/ROTE bridge", "property and retail-credit stress", "official peer, governance, related-party and post-Q1 evidence"],
+      "risk_inputs": ["NIM compression", "retail and housing demand", "property/wholesale/local-government credit", "fee sensitivity", "provisioning and capital", "regulation and funding competition"],
+      "current_market_valuation_status": "not captured; PB-ROTE-cost-of-equity valuation and market access blocked",
+      "q": 0
+    }
+  ],
+  "r0_to_r1_pass_gates": [
+    "Primary-record integrity and, for 600036, Chinese A-share filing reconciliation.",
+    "A source-backed, sector-appropriate operating-to-financial driver bridge with downside/base/upside cases and unavailable fields left unavailable.",
+    "Reconciliation of reported versus adjusted earnings; working capital/debt/capex for industrial issuers; and NIM/credit/provision/capital for the bank.",
+    "Official post-period announcement, governance, related-party, regulatory and material-event review with falsifiable invalidation conditions.",
+    "Official sector/peer evidence adequate to distinguish issuer from sector effects.",
+    "Refresh to latest financial/operating disclosure before decision date."
+  ],
+  "r2_prerequisites": ["dated official price/share-count/market-cap/float/liquidity/market-status packet", "documented transaction and tax costs", "sector-appropriate valuation framework only after R1 pass"],
+  "warnings": ["Historical filing data is not a forecast, total-return result or investment conclusion.", "No current price, valuation, target, allocation or market-access conclusion is present.", "No cash-receipt objective, automatic reinvestment or execution instruction is authorised."]
+}

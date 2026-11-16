@@ -1,0 +1,48 @@
+{
+  "capture_batch": "probe-contract-rule-r0-20260814",
+  "captured_at": "2026-08-14T14:49:31+08:00",
+  "purpose": "Metadata-only record of failed direct product-rule capture attempts. No response body is retained or treated as evidence.",
+  "source_quality": "metadata_only_failed_probe",
+  "files": [],
+  "attempts": [
+    {
+      "probe_id": "PX01",
+      "family": "AU",
+      "authority": "Shanghai Futures Exchange",
+      "attempted_at": "2026-08-14T14:49:31+08:00",
+      "url": "https://www.shfe.com.cn/regulation/exchangerules/productrules/202512/t20251231_829960.html",
+      "http_status": 200,
+      "content_type": "text/html",
+      "downloaded_bytes_observed_not_retained": 10648,
+      "response_classification": "waf_or_challenge_detected_not_retained",
+      "response_body_retained": false,
+      "use_boundary": "No product-rule field, effective date or contract term may be inferred from this failed capture."
+    },
+    {
+      "probe_id": "PX02",
+      "family": "CU",
+      "authority": "Shanghai Futures Exchange",
+      "attempted_at": "2026-08-14T14:49:31+08:00",
+      "url": "https://www.shfe.com.cn/regulation/exchangerules/historicalversion/202508/t20250807_828528.html",
+      "http_status": 200,
+      "content_type": "text/html",
+      "downloaded_bytes_observed_not_retained": 10648,
+      "response_classification": "waf_or_challenge_detected_not_retained",
+      "response_body_retained": false,
+      "use_boundary": "No product-rule field, effective date or contract term may be inferred from this failed capture."
+    },
+    {
+      "probe_id": "PX03",
+      "family": "TA",
+      "authority": "Zhengzhou Commodity Exchange",
+      "attempted_at": "2026-08-14T14:49:31+08:00",
+      "url": "https://www.czce.com.cn/cn/uploadfile/2024/11/19/20241119163530748.pdf",
+      "http_status": 404,
+      "content_type": "text/html; charset=utf-8",
+      "downloaded_bytes_observed_not_retained": 709,
+      "response_classification": "not_found_not_retained",
+      "response_body_retained": false,
+      "use_boundary": "No product-rule field, effective date or contract term may be inferred from this failed capture."
+    }
+  ]
+}

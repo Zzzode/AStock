@@ -1,0 +1,33 @@
+{
+  "cycle": "R0_evidence",
+  "publishability_status": "PASS_AT_RESEARCH_FRAMEWORK_SCOPE",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R0-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "artifact": "data/product_universe_20260812.json",
+      "evidence": "The strategy framework originally treated two categories as if they could provide portfolio roles without named products.",
+      "fix_required": "Freeze both as unnamed_category_not_researchable; bar yield, correlation and eligibility assumptions until a finite product list is supplied.",
+      "blocking_gate": "scope_control",
+      "status": "closed",
+      "closure_evidence": "data/product_universe_20260812.md and source_exhaustion_log.md record both categories as non-researchable and q=0.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R0-A-002",
+      "severity": "A",
+      "owner_skill": "reports",
+      "owner_agent": "report-analyzer",
+      "artifact": "data/broker_street_consensus_20260812.json",
+      "evidence": "No complete original product-level broker target/forecast/method anchor exists for the ten-product universe.",
+      "fix_required": "Retain every row as zero valuation weight and downgrade the release to evidence memo / watchlist only.",
+      "blocking_gate": "broker_source_quality",
+      "status": "closed",
+      "closure_evidence": "Ten-row broker packet, source-exhaustion log and report disclosure retain valuation_weight=0 with no consensus claim.",
+      "reopened_count": 0
+    }
+  ]
+}

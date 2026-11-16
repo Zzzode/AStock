@@ -1,0 +1,47 @@
+{
+  "schema_version": "reit_r1_diligence.v1",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_evidence",
+  "authority": "research-only; q=0 for every candidate; no allocation, named holding, cash/income objective, reinvestment, valuation target, or action",
+  "source_manifest": "sources/official-reit-continuation-20260814/capture_manifest.json",
+  "source_boundary": "official issuer/exchange records already archived; no new source directory added",
+  "r1_status": "not_passed_for_all_candidates",
+  "candidates": [
+    {
+      "ticker": "508069",
+      "name": "华夏南京交通高速公路REIT",
+      "asset_economics": {"asset": "Nanjing Ring Expressway Southeast Section", "fy2025_toll_income_including_tax_rmb_mn": 503.142, "fy2025_project_revenue_forecast_completion_pct": 99.12, "fy2025_project_net_cashflow_forecast_completion_pct": 103.81},
+      "manager_governance_roles": {"fund_manager": "华夏基金", "custodian": "招商银行", "abs_manager": "中信证券", "operating_coordinator": "南京公路发展（集团）", "operating_implementation": "Nanjing Ring Expressway Southeast project company"},
+      "capital_risk_facts": {"fy2025_bank_loan_principal_balance_rmb_mn": 286.8, "loan_maturity": "2031-10-22", "security": "pledge of toll rights", "fy2025_shareholder_loan_interest_cash_outflow_rmb_mn": 409.456, "fy2025_capex_rmb_mn": 3.369},
+      "contract_counterparty_gaps": ["concession/right remaining term", "toll tariff and discount legal documents", "traffic and network data", "full debt waterfall/covenants", "related-party fee and approval matrix"],
+      "operating_risk_inputs": ["traffic volume and mix", "toll policy", "network diversion", "maintenance", "interest rates and debt service"],
+      "valuation_market_access": "FY2025 NAV/appraisal is historical only; no as-of-date price, premium/discount, bid/ask, depth, turnover, float, lock-up or costs captured",
+      "q": 0
+    },
+    {
+      "ticker": "508068",
+      "name": "华夏北京保障房REIT",
+      "asset_economics": {"assets": 6, "rentable_units": 4264, "rentable_area_sqm": 241509.97, "fy2025_occupancy_pct": 94.45, "fy2025_rent_collection_pct": 98.53, "fy2025_project_revenue_forecast_completion_pct": 103.68, "fy2025_project_net_cashflow_forecast_completion_pct": 106.63, "lease_term_general_years": 3},
+      "manager_governance_roles": {"fund_manager": "华夏基金", "custodian": "China Construction Bank", "abs_manager": "中信证券", "operating_managers": ["北京保障房中心", "北京市燕房保障性住房建设投资", "北京市燕东保障性住房建设投资"]},
+      "capital_risk_facts": {"fy2025_added_assets_purchase_price_rmb_mn": 943.54, "acquired_assets_total_liabilities_rmb_mn": 35.013, "receivables_gross_rmb_mn": 2.854, "receivables_loss_allowance_rmb_mn": 1.158, "receivables_expected_loss_rate_pct": 40.57, "shengyue_bulk_lease_area_pct": 72.42},
+      "contract_counterparty_gaps": ["government rent-approval source records", "allocation-policy documentation", "project-level tenant/bulk-tenant and lease-expiry data", "complete debt/funding/waterfall", "related-party fee and approval matrix"],
+      "operating_risk_inputs": ["rent policy", "occupancy", "collection and arrears", "bulk-tenant concentration", "lease renewal", "capex", "follow-on-offering comparability"],
+      "valuation_market_access": "FY2025 NAV/appraisal is historical only; no as-of-date price, premium/discount, bid/ask, depth, turnover, float, lock-up or costs captured",
+      "q": 0
+    },
+    {
+      "ticker": "508096",
+      "name": "中航京能国际能源REIT",
+      "asset_economics": {"assets": ["Jingtai PV", "Yulin PV", "Sujiahekou hydropower", "Songshanhekou hydropower"], "pv_design_life_years": 25, "hydropower_design_life_years": 40, "fy2025_legacy_pv_revenue_forecast_completion_pct": 78.36, "fy2025_legacy_pv_net_cashflow_forecast_completion_pct": 78.6, "q2_2026_jingtai_settlement_electricity_yoy_pct": -33.96, "q2_2026_jingtai_settlement_fee_yoy_pct": -24.95, "q2_2026_data_status": "official preliminary/unaudited; June settlement estimated"},
+      "manager_governance_roles": {"fund_manager": "中航基金", "custodian": "华夏银行", "abs_manager": "中航证券", "pv_operator": "内蒙古京能新能源科技", "hydropower_operators": ["保山能源发展", "保山腾冲保能和顺"]},
+      "capital_risk_facts": {"fy2025_factoring_principal_rmb_mn": 335.154, "fy2025_factoring_accrued_interest_rmb_mn": 7.914, "fy2025_new_factoring_borrowing_rmb_mn": 255.868, "fy2025_factoring_repayment_rmb_mn": 143.977, "fy2025_capex_reserve_rmb_mn": 16.597, "fy2025_operating_liability_reserve_rmb_mn": 110.351},
+      "contract_counterparty_gaps": ["electricity sale/offtaker agreements", "grid and transmission-line lease terms", "subsidy receivable ageing and collection", "factoring terms and waterfall", "related-party approval and termination/renewal evidence"],
+      "operating_risk_inputs": ["irradiation", "inflow", "generation", "curtailment and export capacity", "marketised electricity price", "subsidy receivable", "asset ageing", "factoring"],
+      "valuation_market_access": "FY2025 NAV/fair-value-reference-NAV/appraisal is historical only; no as-of-date price, premium/discount, bid/ask, depth, turnover, float, lock-up or costs captured",
+      "q": 0
+    }
+  ],
+  "t1_to_r1_pass_gates": ["legal asset and contract map for asset rights/term, toll/rent/power-sale terms and counterparty rights", "latest source-backed project revenue-to-cash bridge, keeping distributions separate", "sponsor-manager-operator-custodian-ABS-manager and related-party fee/conflict/approval map", "complete debt, capex, collateral, covenant and waterfall stress evidence", "sector-specific adverse-case evidence and dated financial freshness"],
+  "r1_to_r2_gates": ["same-timestamp official price, units, market capitalisation, bid/ask/depth, turnover/ADTV, float and lock-up record", "same-date NAV/appraisal and premium/discount bridge", "transaction/tax/settlement/lot/suspension/price-limit packet", "adjusted price plus every distribution ex-date/cash-date series for total-return analysis", "completion of all T1-to-R1 gates"],
+  "warnings": ["distributions are accounting/product facts, not market-price return or cash objective", "no candidate has current valuation or market-access evidence", "no allocation, recommendation, price target, execution or investor outcome is authorised"]
+}

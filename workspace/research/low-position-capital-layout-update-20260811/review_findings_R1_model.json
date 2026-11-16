@@ -1,0 +1,122 @@
+{
+  "cycle": "R1_model",
+  "reviewed_at": "2026-08-11",
+  "publishability_status": "BLOCKED",
+  "institutional_status": "BLOCKED",
+  "publishability_score": 67,
+  "cycle_disposition": "R1_MODEL_CLOSED_PENDING_R3_R4",
+  "review_scope": {
+    "files_reviewed": [
+      "analysis/valuation_model.md",
+      "analysis/valuation_audit.md",
+      "analysis/valuation_independent_check.md",
+      "analysis/segment_valuation_model.md",
+      "analysis/secondary_market_analysis.md",
+      "data/current_valuation_model_20260811.json",
+      "data/current_valuation_model_20260811.md",
+      "data/high_upside_recheck_20260811.json",
+      "data/broker_street_consensus_20260811.json",
+      "data/verified_market_data_20260811.json",
+      "data/verified_financials_20260811.json",
+      "data/claim_audit.json",
+      "sections/ch01_decision.tex",
+      "sections/ch05_primary.tex",
+      "sections/app_a_anchor_math.tex",
+      "tools/verify_research_workspace.py"
+    ],
+    "not_applicable": [
+      "Full-chain supply-chain artifact suite: this is explicitly a focused valuation refresh rather than a full industry-chain report.",
+      "Growth-earnings model suite: no AI/order/ASP/segment-growth valuation credit or AStock target is issued in this update."
+    ]
+  },
+  "verifier_summary": {
+    "case_local_command": "python3 tools/verify_research_workspace.py",
+    "case_local_result": "36 PASS / 3 FAIL",
+    "r1_relevant_result": "PASS: all 13 current valuation dispositions reconcile to the market universe; no-target fields, zero house weights, market-implied diagnostic bridge, historical-scenario boundary, valuation narrative and reproducibility checks passed.",
+    "remaining_case_local_failures": [
+      "36 required MacTeX XeLaTeX is available: not available in this runtime",
+      "37 PDF deliverable exists: not generated",
+      "38 rendered-page review material exists: no page PNGs"
+    ],
+    "failure_ownership": "The three residual case-local failures are R3/R4 render/publication gates. They prevent overall PASS but do not invalidate the re-verified R1 no-target disposition.",
+    "repository_gate_command": "python3 workspace/research/tools/run_research_gates.py workspace/research/low-position-capital-layout-update-20260811",
+    "repository_gate_result": "83 PASS / 28 FAIL",
+    "note": "The repository gate remains globally BLOCKED by final workflow/signoff and rendering prerequisites. This review does not waive those failures."
+  },
+  "findings": [
+    {
+      "issue_id": "R1-S-001",
+      "severity": "S",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "artifact": "data/current_valuation_model_20260811.json:13-429; data/current_valuation_model_20260811.md:3-23",
+      "evidence": "Resolved and re-verified. The valuation disposition now contains one complete no-target row for every one of the 13 covered tickers. Each row has current price/date, shares, market cap, explicit forecast/denominator disposition, method, bear/base/bull disposition, market-implied anchor, three zero house-target weights, final_target=not_published, upside=not_published, action, evidence quality, blockers and next validation. No external broker target is copied into a house target.",
+      "fix_required": "Preserve the 13-name reconciliation and explicit not_published/zero-weight policy on every refresh. Do not convert an external anchor, preview or historic scenario into a house target without a new independently reproducible valuation bridge.",
+      "blocking_gate": "valuation_model_row_fields_complete",
+      "status": "resolved",
+      "verification_evidence": "data/current_valuation_model_20260811.json; data/current_valuation_model_20260811.md:3,14-23; case-local checks 23-26; repository gate valuation-model checks",
+      "verifier_ref": "python3 tools/verify_research_workspace.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-S-002",
+      "severity": "S",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-auditor",
+      "artifact": "data/current_valuation_model_20260811.json:22,90,124",
+      "evidence": "Resolved before sign-off and re-verified. The explanatory external-NP strings initially expressed 7,910/6,454/7,230/3,031.65 CNY million with a tenfold bn label. They now correctly state CNY7.910bn for 000703, CNY6.454bn/CNY7.230bn for 300014, and CNY3.032bn for 002497, consistent with the broker packet and valuation bridge.",
+      "fix_required": "Maintain unit reconciliation whenever a CNY-million broker field is rendered as CNYbn or CNY100m in a model explanation.",
+      "blocking_gate": "valuation_source_unit_consistency",
+      "status": "resolved",
+      "verification_evidence": "data/current_valuation_model_20260811.json:22,90,124; data/broker_street_consensus_20260811.json:23,25-26; analysis/valuation_model.md:24-26",
+      "verifier_ref": "manual unit reconciliation against broker CNY-million fields",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "internal-control",
+      "artifact": "tools/verify_research_workspace.py:164",
+      "evidence": "Resolved and re-verified. The newly introduced case-local check initially assumed exactly four valuation rows, while the stated coverage requirement and current model require a complete 13-name disposition. It now tests both row count=13 and exact equality to the raw-market universe. This is a stronger coverage assertion, not a suppression of the valuation check, and it passes.",
+      "fix_required": "Keep the verifier's 13-name universe reconciliation synchronized with the declared case coverage and retain its required-field, target and zero-weight checks.",
+      "blocking_gate": "valuation_universe_reconciliation",
+      "status": "resolved",
+      "verification_evidence": "tools/verify_research_workspace.py:164-167; data/current_valuation_model_20260811.json; data/raw_market_data_20260811.json; case-local checks 23-26",
+      "verifier_ref": "python3 tools/verify_research_workspace.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-B-001",
+      "severity": "B",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-auditor",
+      "artifact": "data/current_valuation_model_20260811.json:28,62,96,130; analysis/valuation_model.md:47-49",
+      "evidence": "Resolved and re-verified. Each primary row now combines the dated 8/10 close, external-EPS diagnostic or denominator limitation, range position, 8/10 trading value and relevant 20/60-day momentum: 000703 CNY2.07bn/+37.52% 20-day; 002379 CNY1.25bn/+24.28% 20-day; 300014 CNY2.19bn/+6.73% 20-day/-16.05% 60-day; and 002497 CNY0.95bn/+5.35% 20-day/-26.01% 60-day. The revised valuation narrative synthesizes the same values and explicitly retains a diagnostic-only, zero-house-weight no-target boundary.",
+      "fix_required": "Retain this dated market-implied bridge in future refreshes. Do not turn its range, turnover or external-EPS diagnostics into a target without a reconciled denominator and independent valuation bridge.",
+      "blocking_gate": "none",
+      "status": "resolved",
+      "verification_evidence": "data/current_valuation_model_20260811.json:28,62,96,130; data/verified_market_data_20260811.json:15-18; analysis/valuation_model.md:47-49",
+      "verifier_ref": "manual institutional valuation-method review and source-to-model reconciliation",
+      "reopened_count": 0
+    }
+  ],
+  "confirmed_correct": [
+    {
+      "claim": "Model Reproducibility: PASS is present and disclosed current-price/external-anchor arithmetic recalculates.",
+      "evidence": "analysis/valuation_audit.md:7-38; analysis/valuation_model.md:20-26,39-45; case-local check 30"
+    },
+    {
+      "claim": "All 13 covered names have an explicit current-price no-target disposition; final targets and upside are not_published and all three house blend weights are zero.",
+      "evidence": "data/current_valuation_model_20260811.json:13-429; data/current_valuation_model_20260811.md:3,14-23; case-local checks 23-26"
+    },
+    {
+      "claim": "Previews are not annualized and no historic scenario is rolled into a current target.",
+      "evidence": "analysis/valuation_model.md:22-37; analysis/valuation_independent_check.md:3-18,29-67; case-local checks 27-28"
+    },
+    {
+      "claim": "The 300014 CNY77/CNY103 references are not averaged, the 002379 adjusted-NP denominator is not substituted for statutory NP, and re-scoped broker records carry zero valuation weight.",
+      "evidence": "analysis/valuation_model.md:14-16,24-26,43-45; data/broker_street_consensus_20260811.json; case-local check 22"
+    }
+  ]
+}

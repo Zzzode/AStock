@@ -1,0 +1,83 @@
+{
+  "schema_version": "income_strategy_product_due_diligence.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "as_of": "2026-08-12",
+  "model_type": "strategic allocation planning range — research-only product diligence, no point return forecast",
+  "portfolio_principal_cny": 200000,
+  "active_base_core": [
+    {"asset": "eligible protected liquidity (unnamed category)", "weight": 1.0, "amount_cny": 200000, "status": "category_not_researchable_q0"},
+    {"asset": "5-year Treasury ETF", "weight": 0.0, "amount_cny": 0, "status": "watch_only"},
+    {"asset": "dividend equity ETFs", "weight": 0.0, "amount_cny": 0, "status": "watch_only"},
+    {"asset": "public REITs", "weight": 0.0, "amount_cny": 0, "status": "watch_only"},
+    {"asset": "defensive diversifier (unnamed category)", "weight": 0.0, "amount_cny": 0, "status": "category_not_researchable_q0"},
+    {"asset": "direct high-dividend stocks", "weight": 0.0, "amount_cny": 0, "status": "excluded"}
+  ],
+  "conditional_reference_vector_after_independent_approval": [
+    {"asset": "eligible protected liquidity (named and passed product required)", "weight": 0.1, "amount_cny": 20000},
+    {"asset": "511010 or separately passed duration-controlled sovereign exposure", "weight": 0.15, "amount_cny": 30000},
+    {"asset": "510880 or separately passed dividend equity exposure", "weight": 0.4, "amount_cny": 80000},
+    {"asset": "public REIT sleeve, only passed projects", "weight": 0.25, "amount_cny": 50000},
+    {"asset": "defensive diversifier, named and passed product required", "weight": 0.1, "amount_cny": 20000},
+    {"asset": "direct high-dividend stocks", "weight": 0.0, "amount_cny": 0}
+  ],
+  "cash_measurement": {
+    "objective": "At least 3% cash available for reinvestment is a future rolling-twelve-month settled net-cash objective, not a product promise.",
+    "net_cash_yield_formula": "eligible settled cash receipts after withholding/transaction taxes, receipt fees, expected recurring implementation costs and documented distribution-cut haircuts divided by beginning portfolio capital; no receipt may be counted twice.",
+    "eligible_receipts": ["cash fund distributions when actually settled", "REIT cash distributions when actually settled", "interest/coupon receipts when actually settled"],
+    "excluded_receipts": ["asset sale proceeds", "unrealized mark-to-market gains", "NAV appreciation", "external contributions", "borrowed cash", "return of principal unless legally verified and separately disclosed"],
+    "default_use": "Reinvest only after the recipient product and the portfolio pass their own eligibility gates; otherwise retain in protected liquidity.",
+    "failure_rule": "A shortfall is recorded as a shortfall. It cannot be repaired by leverage, lower credit quality, forced REIT purchases, concentrated equity exposure or sale of principal labelled as income."
+  },
+  "total_return_measurement": {
+    "objective": "At least 5% total return is a research objective, not an annual floor or forecast.",
+    "formula": "TWRR is chain-linked across external-flow subperiods and includes price/NAV changes plus eligible cash distributions; investor MWRR/XIRR is separately calculated from actual dated cash flows.",
+    "reinvestment_rule": "Cash distributions are part of total return once; reinvestment changes the next-period capital base and cannot create a second return entry.",
+    "failure_rule": "No strategy return claim may be made without a reproducible point-in-time replay including historical constituents/projects, costs, taxes, liquidity/capacity assumptions and benchmark comparison."
+  },
+  "cash_distribution_policy": {
+    "actual_measure": "No D0 is claimed in this product-due-diligence memo; periodic product cash data are historical observations only.",
+    "forward_fixed_distribution_cny": null
+  },
+  "return_evidence": {
+    "implementation_status": "BLOCKED_PENDING_FORMAL_TEST",
+    "formal_test_requirement": "Run an independent, point-in-time total-return and settled-net-cash replay only after the exact product set, rebalance method, tax/account assumptions and historical product data are available.",
+    "benchmark_requirement": "Compare against protected liquidity, duration-matched sovereign exposure and relevant multi-asset alternatives; report drawdown, hit rate, capacity, turnover and cash shortfall frequency."
+  },
+  "risk_budget": {
+    "implementation_status": "NOT_APPROVED",
+    "approval_requirement": "Approve scenario stresses, factor correlations, drawdown actions, concentration caps, liquidity capacity and investor suitability before any nonzero market exposure.",
+    "loss_limit": "No loss budget is approved. The reference framework uses a -12% caution review and -18% mandatory risk action only after a real, external-flow-adjusted portfolio series exists."
+  },
+  "activation_controls": {
+    "direct_high_dividend_stocks": {
+      "initial_weight": 0.0,
+      "aggregate_cap": 0.0,
+      "single_issuer_cap": 0.0,
+      "current_model_treatment": "excluded; direct equities are outside this product research universe",
+      "only_replaces": "not applicable",
+      "required_independent_review": [
+        "finite ticker list", "audited financial statements", "current price", "earnings bridge", "valuation method", "broker/Street audit", "liquidity/tax/account eligibility"
+      ]
+    },
+    "public_reits": {
+      "initial_weight": 0.0,
+      "activation_requires_independent_projects": 5,
+      "minimum_manager_or_sponsor_groups": 3,
+      "minimum_operating_cash_flow_sectors": 3,
+      "per_project_cap": 0.05,
+      "aggregate_cap": 0.25,
+      "target_weight_after_activation": 0.25,
+      "inactive_behavior": "Remain in protected liquidity until all product and portfolio gates pass.",
+      "funding_source_on_activation": "Only an independently approved portfolio allocation process; this memo provides none.",
+      "required_checks": [
+        "current legal/product identity", "project rights and current asset inventory", "audited financial and operating evidence", "current price/NAV or valuation inputs", "settled cash distribution quality", "bid-ask/depth and 20-session capacity", "common-risk and sponsor concentration", "tax, settlement, account and suitability", "portfolio risk budget approval"
+      ]
+    }
+  },
+  "data_quality": "research_framework_only",
+  "warnings": [
+    "The protected-liquidity and defensive-diversifier categories are unnamed and cannot be assessed as products.",
+    "The conditional reference vector is not a current allocation, a recommendation or a return forecast.",
+    "All market-traded products remain q=0."
+  ]
+}

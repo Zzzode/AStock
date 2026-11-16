@@ -1,0 +1,318 @@
+{
+  "schema_version": "r2_h1_h3_official_data_readiness.v1",
+  "artifact_id": "DPSFS-R2-H1H3-ODR-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "language": "zh-CN",
+  "status": "field_level_official_samples_partial_not_formal_replay_input",
+  "research_only": true,
+  "portfolio_q": 0,
+  "purpose": "Record, at field level, whether bounded first-party SSE samples actually returned a H1 or H3 input, only exposed a disclosure/rule route, did not reveal the field, or still requires written authorization. This is not data acceptance, product due diligence, a replay, or a strategy result.",
+  "decision_boundary": {
+    "formal_replay_input": false,
+    "product_admission": false,
+    "security_or_contract_selection": false,
+    "allocation_or_holding": false,
+    "trading_or_order": false,
+    "performance_conclusion": false,
+    "allowed_next_step": "source/right inquiry and data-contract design only"
+  },
+  "status_legend": {
+    "已被样本访问到": "A retained official response directly contains the field or a recognizable local record for the stated code/window/page only.",
+    "只见规则路径": "A rule, landing page, disclosure index, or PDF route is known, but no directly usable structured field sample was retained in this bounded probe.",
+    "未见": "The bounded request set did not reveal the field or a sufficient substitute. It does not prove the field does not exist elsewhere.",
+    "需授权": "Formal historical use still requires written rights, complete delivery, coverage explanation, retention/replay/derived-analysis permission and independent-review permission."
+  },
+  "source_evidence": [
+    {
+      "artifact_id": "R2-H1H3-OFFICIAL-RAW-SAMPLE",
+      "source_id": "P05",
+      "path": "sources/probe-r2-h1-h3-official-readiness-20260814/manifest.json",
+      "source_quality": "primary_official_raw_sample",
+      "usable_fact": "Fifteen small SSE response bodies record locally observed field availability for H1 and H3.",
+      "non_inference": "They do not demonstrate completeness, point-in-time availability, rights, version lineage, replay readiness or execution feasibility."
+    },
+    {
+      "artifact_id": "R1-OFFICIAL-MULTICLASS-RAW-SAMPLE",
+      "path": "sources/probe-official-multiclass-data-r1-20260814/manifest.json",
+      "source_quality": "primary_official_raw_sample",
+      "usable_fact": "Retains current SSE master-list and limited day-k samples for A-shares, REITs, ETFs and exchange bonds.",
+      "non_inference": "Current/retrospective sample access is not a full historical population or a total-return/replay input."
+    },
+    {
+      "artifact_id": "DPSFS-R2-HYP-v1",
+      "path": "analysis/r2_strategy_hypothesis_pack_20260814.json",
+      "usable_fact": "Defines H1 and H3 input, event, execution and falsification requirements before any formal replay.",
+      "non_inference": "A hypothesis definition does not admit a product or establish performance."
+    },
+    {
+      "artifact_id": "DPSFS-R2-MAEF-v1",
+      "path": "analysis/r2_market_access_and_execution_feasibility_20260814.json",
+      "usable_fact": "Separates venue rules from individual authorization, broker execution and settlement facts.",
+      "non_inference": "A venue rule does not establish an account route or fillability."
+    }
+  ],
+  "h1": {
+    "hypothesis_id": "H1",
+    "scope_u0_class": "DIRECT_A_SHARE_EQUITIES",
+    "status": "data_contract_preparation_only_not_formal_replay_input",
+    "fields": [
+      {
+        "field_id": "H1_CURRENT_IDENTITY_STATUS",
+        "required_for": "Universe identity and a starting listing/status reference",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "R1 SSE current A-share master includes A_STOCK_CODE, LIST_DATE, DELIST_DATE, PRODUCT_STATUS, board and issuer identity fields.",
+        "source_path": "sources/probe-official-multiclass-data-r1-20260814/sse_astock_master_current_5.jsonp",
+        "formal_replay_gap": "No all-venue, historical, decision-date population or population reconciliation."
+      },
+      {
+        "field_id": "H1_HISTORICAL_ALL_VENUE_UNIVERSE",
+        "required_for": "Survivorship-safe cross-sectional ranking",
+        "source_status": "未见",
+        "sample_evidence": "No retained SZSE/BSE historical master or all-venue daily constituent delivery exists in this bounded probe.",
+        "formal_replay_gap": "Must retain listed, delisted, suspended, special-status and no-trade objects at every decision date."
+      },
+      {
+        "field_id": "H1_OHLCV",
+        "required_for": "t-252 to t-21 trend and liquidity calculations",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "R1 day-k sample for 600000 contains date/open/high/low/close/volume rows.",
+        "source_path": "sources/probe-official-multiclass-data-r1-20260814/sse_astock_dayk_600000_begin0_end5.jsonp",
+        "formal_replay_gap": "No full-universe adjusted/total-return convention, daily status, revision or source-side availability sequence."
+      },
+      {
+        "field_id": "H1_REPORT_DISCOVERY_METADATA",
+        "required_for": "Locate periodic-report source documents",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "Annual-report index for 600000 returns ADDDATE, SSEDATE, title and URL metadata.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_regular_report_index_600000_2025_2026.jsonp",
+        "formal_replay_gap": "The observed metadata does not establish the model's available_at semantic, content version, amendment chain or structured statement values."
+      },
+      {
+        "field_id": "H1_FINANCIAL_STATEMENT_VALUES",
+        "required_for": "Operating-cash-flow/net-income, ROIC and earnings-stability factors",
+        "source_status": "只见规则路径",
+        "sample_evidence": "The retained report index provides PDF discovery paths but no statement line-item fields.",
+        "formal_replay_gap": "Need normalized line items, source hashes, accounting definitions, report versions, available_at and missing-data treatment across the complete population."
+      },
+      {
+        "field_id": "H1_BALANCE_SHEET_ACCRUAL_DILUTION",
+        "required_for": "Net-debt, accrual and dilution factors",
+        "source_status": "只见规则路径",
+        "sample_evidence": "Periodic-report document route is observed; no structured debt, equity, accrual or dilution fields are retained.",
+        "formal_replay_gap": "Need point-in-time balance-sheet and capital-change data with restatement/version handling."
+      },
+      {
+        "field_id": "H1_PER_SHARE_DISTRIBUTION_EVENTS",
+        "required_for": "Total-return and corporate-action ledger",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "600000 query returns A_BEFR_TAX_DIV, A_AFTR_TAX_DIV, A_REG_DATE, A_DIV_DATE and DIVIDEND_DATE.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_dividend_600000_2024.jsonp",
+        "formal_replay_gap": "One code/year sample does not prove payment, tax, adjustment, availability, revision or full-population event completeness."
+      },
+      {
+        "field_id": "H1_BONUS_CAPITALIZATION_EVENTS",
+        "required_for": "Share-count adjustment and corporate-action ledger",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "2024 page-one query returns A_REG_DATE, A_DERIGHTS_DATE, BONUS_RATIO and CONVERT_RATIO.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_bonus_2024_first5.jsonp",
+        "formal_replay_gap": "Rights issues, mergers, splits, restructurings and delisting treatment are not a complete event taxonomy."
+      },
+      {
+        "field_id": "H1_SUSPENSION_RESUMPTION",
+        "required_for": "Trading eligibility and exclusion ledger",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "2025-01 query returns product code/name, control type, start/end dates, time, reasons and business type; its records include stock rows.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_suspension_20250101_20250131.jsonp",
+        "formal_replay_gap": "No all-history state lifecycle, effective decision-time status, price-limit state or broker-order linkage."
+      },
+      {
+        "field_id": "H1_PRICE_LIMIT_LOT_TPLUS1_CALENDAR",
+        "required_for": "Executable trade-state model",
+        "source_status": "只见规则路径",
+        "sample_evidence": "Venue-rule routes are recorded in the market-access matrix, not as security/date-level data in this probe.",
+        "formal_replay_gap": "Need effective-dated, machine-readable security/venue/board rules and broker front-end constraints."
+      },
+      {
+        "field_id": "H1_EXECUTION_COST_SETTLEMENT",
+        "required_for": "Costed execution and settlement replay",
+        "source_status": "未见",
+        "authorization_status": "需授权",
+        "sample_evidence": "No broker, quote-depth, order, partial-fill, fee, tax or settlement response was queried or retained.",
+        "formal_replay_gap": "Need written route/rights plus cost terms, fill/no-fill records and settlement-state evidence."
+      },
+      {
+        "field_id": "H1_RIGHTS_PROVENANCE",
+        "required_for": "Retention, normalization, replay, derivative analysis and independent review",
+        "source_status": "需授权",
+        "sample_evidence": "Unauthenticated public endpoint access only.",
+        "formal_replay_gap": "No written data-use, retention, replay, derived-analysis, audit or independent-review right is established."
+      }
+    ],
+    "formal_replay_gates": [
+      {"gate": "PIT universe", "state": "FAIL", "reason": "No full SH/SZ/BJ historical universe, daily status or source-side available_at."},
+      {"gate": "PIT fundamentals", "state": "FAIL", "reason": "No structured report line items, available_at, restatement or version chain."},
+      {"gate": "Corporate-action/status ledger", "state": "FAIL", "reason": "Only selected local samples; no complete taxonomy, coverage reconciliation or price-adjustment rule."},
+      {"gate": "Execution/cost/settlement", "state": "FAIL", "reason": "No account, broker, pricing-depth, fill, fee, tax or settlement evidence."},
+      {"gate": "Rights and provenance", "state": "FAIL", "reason": "No written permissions or immutable historical delivery manifest."}
+    ]
+  },
+  "h3": {
+    "hypothesis_id": "H3",
+    "scope_u0_classes": ["PUBLIC_REITS", "LISTED_EQUITY_ETFS", "BOND_AND_MONEY_MARKET_ETFS", "GOLD_AND_OTHER_COMMODITY_ETFS", "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES"],
+    "status": "category_neutral_data_contract_preparation_only_not_formal_replay_input",
+    "fields": [
+      {
+        "field_id": "H3_REIT_IDENTITY_AND_MARKET_PRICE",
+        "required_for": "REIT market-price, liquidity and product-life-cycle starting point",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "R1 stores SSE current REIT master fields and a 508000 day-k sample.",
+        "source_path": "sources/probe-official-multiclass-data-r1-20260814/sse_reits_master_current_5.jsonp",
+        "formal_replay_gap": "No complete dual-venue historical master, daily status or consistent price adjustment basis."
+      },
+      {
+        "field_id": "H3_REIT_NAV",
+        "required_for": "Market-price versus NAV premium/discount",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "REITS_JZ returns fundCode, fund names, appraiseDate and fundUnitnetWorth; the default sample reports 2025-12-31 appraisal-date rows.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_reits_nav_snapshot_2025_12_31.jsonp",
+        "formal_replay_gap": "No synchronized historical NAV curve, available_at, version/revision lineage or verified NAV definition for total-return use."
+      },
+      {
+        "field_id": "H3_REIT_DISTRIBUTION_EVENTS",
+        "required_for": "REIT total-return events",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "REITS_FH for 508000 returns fundDividends, year, rightsRegistDate and exrightDate across nine local rows.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_reits_distribution_508000.jsonp",
+        "formal_replay_gap": "No payment completion, taxes, full coverage, event revision or market/NAV reconciliation."
+      },
+      {
+        "field_id": "H3_REIT_TRADE_STATUS",
+        "required_for": "REIT tradeability state",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "Fund suspension endpoint returns 508000 start/end dates, reason, source, type and stop-time fields.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_reits_suspension_508000_20240101_20260814.jsonp",
+        "formal_replay_gap": "No all-history or decision-time state, price-limit, quote-depth or execution linkage."
+      },
+      {
+        "field_id": "H3_REIT_OPERATING_EXPANSION_EVENTS",
+        "required_for": "Underlying operating trend and event-quality scoring",
+        "source_status": "只见规则路径",
+        "sample_evidence": "REITS_BULLETIN provides title/date/PDF discovery metadata, including periodic and property-operation announcement titles.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_reits_bulletin_index_508000.jsonp",
+        "formal_replay_gap": "Need normalized property operations, financing, cost, expansion and event data with PIT document versions."
+      },
+      {
+        "field_id": "H3_ETF_PCF_NAV_CREATION_REDEMPTION",
+        "required_for": "ETF NAV, basket and creation/redemption state",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "510300 PCF basic response returns NAV, trading dates, PUBLISH_IOPV flag, creation/redemption state/limits, NAVPERCU and component values.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_etf_pcf_510300.jsonp",
+        "formal_replay_gap": "Current PCF sample has no full historical PCF/NAV/accumulated-NAV, numeric IOPV history, publication timing or event sequence."
+      },
+      {
+        "field_id": "H3_ETF_CURRENT_COMPONENTS",
+        "required_for": "Look-through/concentration input",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "510300 PCF constituent page returns instrument identity, quantity and substitution-related fields; retained page has three of 300 rows.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_etf_pcf_components_510300_first3.jsonp",
+        "formal_replay_gap": "No historic holdings, rebalances, index-methodology versions, weights or underlying security state."
+      },
+      {
+        "field_id": "H3_ETF_MARKET_NAV_IOPV",
+        "required_for": "Trend and premium/discount quality",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "R1 has limited ETF day-k OHLCV; current 510300 snapshot was requested with nav/iopv positions and returns a positional snap payload with date/time/state/volume/amount context.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_etf_snap_510300.jsonp",
+        "formal_replay_gap": "No synchronized historical market-price/NAV/IOPV sequence, sampling convention, revision history or total-return adjustment ledger."
+      },
+      {
+        "field_id": "H3_ETF_EVENT_DISCLOSURE",
+        "required_for": "ETF legal/event discovery",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "ETF bulletin index returns SSEDATE, title, type and PDF URL metadata for 510300.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_etf_bulletin_index_510300.jsonp",
+        "formal_replay_gap": "No normalized split, termination, distribution, suspension or index-change event ledger with effective timing."
+      },
+      {
+        "field_id": "H3_EXCHANGE_BOND_MARKET_PRICE",
+        "required_for": "Bond price trend and liquidity",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "R1 retains a limited exchange-bond day-k sample; the current batch retains a convertible day-k sample with date/open/high/low/close/volume positions.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_convertible_dayk_113052_first5.jsonp",
+        "formal_replay_gap": "No all-venue population, trade-method identity, clean/dirty-price meaning, accrued interest, quote depth, no-trade state or total-return ledger."
+      },
+      {
+        "field_id": "H3_BOND_COUPON_ACCRUAL_YIELD_CREDIT",
+        "required_for": "Duration/credit/accrual-adjusted yield quality",
+        "source_status": "只见规则路径",
+        "sample_evidence": "SSE bond data/listing routes are documented; this probe did not retain a structured single-bond accrued-interest, clean/dirty-price or yield response.",
+        "formal_replay_gap": "Need effective-dated coupon/redemption, accrued interest, price convention, yield, rating/credit-event and settlement fields for every instrument."
+      },
+      {
+        "field_id": "H3_CONVERTIBLE_BASIC_TERMS",
+        "required_for": "Convertible valuation starting facts",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "113052 basic terms response includes FACE_RATE, PAY_TYPE, FACE_VALUE, ISSUE_PRICE, TERM_YEAR, dates, issue value, credit level, issuer and interest type.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_convertible_terms_113052.jsonp",
+        "formal_replay_gap": "No conversion price/period, call/put/downward-adjustment history, clean/dirty pricing, accrued interest or PIT terms version chain."
+      },
+      {
+        "field_id": "H3_CONVERTIBLE_EVENT_DISCOVERY_AND_STATUS",
+        "required_for": "Term-event quality and tradeability",
+        "source_status": "已被样本访问到",
+        "sample_evidence": "Convertible bulletin metadata for issuer 600903 includes a conversion-price downward-adjustment and suspension/resumption title plus ADDDATE, SSEDate and PDF URL; the stock/convertible suspension endpoint also returns convertible business-type rows in its local window.",
+        "source_path": "sources/probe-r2-h1-h3-official-readiness-20260814/sse_h3_convertible_event_index_600903_20260801_20260814.jsonp",
+        "formal_replay_gap": "No normalized effective event terms, complete population/lifecycle, payment/conversion/redemption outcomes or event-time price reconciliation."
+      },
+      {
+        "field_id": "H3_CREDIT_PAYMENT_RESTRUCTURING_EVENTS",
+        "required_for": "Bond/convertible credit and total-return accounting",
+        "source_status": "只见规则路径",
+        "sample_evidence": "Venue disclosure routes exist, but this bounded probe retained no structured default, payment, restructuring, recovery or settlement result fields.",
+        "formal_replay_gap": "Need complete PIT credit, payment, default/restructuring, recovery and settlement ledger."
+      },
+      {
+        "field_id": "H3_EXECUTION_COST_SETTLEMENT_RIGHTS",
+        "required_for": "Costed and authorized listed-fund/bond/convertible replay",
+        "source_status": "未见",
+        "authorization_status": "需授权",
+        "sample_evidence": "No account permission, broker route, quote depth, order/fill, fee, tax or settlement response was queried or retained.",
+        "formal_replay_gap": "Need product-specific written authorization, route, costs, fills/no-fills, settlement and data-use rights."
+      }
+    ],
+    "formal_replay_gates": [
+      {"gate": "Historical product/bond universe", "state": "FAIL", "reason": "No complete dual-venue/product-class lifecycle and daily status delivery."},
+      {"gate": "Synchronized total-return inputs", "state": "FAIL", "reason": "No market-price/NAV/IOPV/coupon/distribution/event reconciliation at decision timestamps."},
+      {"gate": "Economic and contractual PIT inputs", "state": "FAIL", "reason": "REIT operations, ETF history/methodology, bond accrual/credit and full convertible-term chains are absent."},
+      {"gate": "Execution/cost/settlement", "state": "FAIL", "reason": "No individual eligibility, route, depth, fill, fee, tax or settlement evidence."},
+      {"gate": "Rights and provenance", "state": "FAIL", "reason": "No written rights or immutable, complete historical delivery manifest."}
+    ]
+  },
+  "formal_replay_conclusion": {
+    "h1": "NO",
+    "h3": "NO",
+    "reason": "Both hypotheses fail mandatory PIT-population, field-version/available_at, event-ledger, rights and execution/cost/settlement gates. No performance calculation or candidate generation is permitted from these samples.",
+    "q": 0
+  },
+  "next_data_inquiry": {
+    "h1": [
+      "Obtain an all-venue historical security universe with daily listing, delisting, status, halt and no-trade coverage.",
+      "Obtain structured financial fields with document hash, available_at, restatement/version and missing-data treatment.",
+      "Obtain a complete corporate-action/adjustment ledger and effective-dated execution/cost/settlement fields.",
+      "Obtain written rights covering retention, normalization, replay, derivative analysis and independent review."
+    ],
+    "h3": [
+      "Obtain dual-venue historical product/bond masters and lifecycle reconciliation for every H3 class.",
+      "Obtain synchronized market-price, NAV/accumulated-NAV, IOPV, time-stamp, definition and revision data.",
+      "Obtain PIT REIT operating/expansion, ETF holdings/index-methodology, bond accrual/credit and full convertible-term/event ledgers.",
+      "Obtain product-specific trade state, depth, cost, tax, settlement, account-route and written data-use evidence."
+    ]
+  },
+  "prohibited_inferences": [
+    "Do not treat ADDDATE, SSEDATE, appraisalDate, record date, ex-right date or local retrieval time as available_at without a source semantic and version record.",
+    "Do not treat a current master, a retrospective day-k window, PCF page, disclosure index or event snippet as a complete historical ledger.",
+    "Do not infer personal eligibility, fillability, cost, tax, settlement or a data-use right from public endpoint accessibility.",
+    "Do not derive a security list, product admission, allocation, holding, order, performance result or return claim from this artifact."
+  ]
+}

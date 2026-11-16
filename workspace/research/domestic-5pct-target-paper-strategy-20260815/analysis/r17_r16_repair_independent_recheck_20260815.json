@@ -1,0 +1,70 @@
+{
+  "schema_version": "d5pt_r16_repair_independent_recheck.v1",
+  "artifact_id": "D5PT-R17-R16-REPAIR-INDEPENDENT-RECHECK-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "reviewer": {
+    "role": "research-report-reviewer",
+    "mode": "independent_read_only_maker_checker"
+  },
+  "scope": {
+    "source_review": "analysis/r16_parallel_route_independent_review_20260815.json",
+    "repair_plan": "analysis/r16_parallel_route_repair_plan_20260815.json",
+    "changed_artifacts": [
+      "analysis/c40_600519_equity_diligence_20260815.md",
+      "analysis/c40_600519_equity_diligence_20260815.json",
+      "data/source_registry.json",
+      "sources/probe-sse-600519-announcement-query-20260815/manifest.json"
+    ],
+    "out_of_scope": [
+      "New model calculation or performance result",
+      "Security selection, valuation, allocation or external action",
+      "Changing C37, C39 or C40-C42 admission status"
+    ]
+  },
+  "checks": [
+    {
+      "issue_id": "R16-S-001",
+      "severity": "S",
+      "result": "PASS",
+      "status": "verified_closed",
+      "evidence": "C40's title, body, analyst record and risk/catalyst/valuation-limit logic are Chinese. Residual English is limited to source-link titles, entity names, field codes and status identifiers rather than untranslated substantive research prose."
+    },
+    {
+      "issue_id": "R16-A-001",
+      "severity": "A",
+      "result": "PASS",
+      "status": "verified_closed",
+      "evidence": "C40 states that the query response is case-archived and hash-verified while preserving the unvalidated timestamp semantics, announced-PDF content and same-session availability limits. C40-S04/S05/S07 archive files, the source manifest and the updated S46 C40 hash are mutually consistent."
+    },
+    {
+      "issue_id": "R16-B-001",
+      "severity": "B",
+      "result": "PASS",
+      "status": "verified_closed",
+      "evidence": "The zero-capture directory contains only manifest.json with files=[] and not_an_evidence_source. It is not used by C40; retained anti-bot probes remain in the separate disclosure-access directory."
+    },
+    {
+      "issue_id": "R17-C-001",
+      "severity": "CONTROL",
+      "result": "PASS",
+      "status": "verified",
+      "evidence": "The R09 research-control-record audit was rerun after the repairs and returned PASS."
+    }
+  ],
+  "finding_counts": {
+    "new_S": 0,
+    "new_A": 0,
+    "new_B": 0,
+    "verified_closed_prior_findings": 3
+  },
+  "final_decision": {
+    "repairs_closed": true,
+    "strategy_admitted": false,
+    "security_admitted": false,
+    "external_action_authorized": false,
+    "publication_status": "BLOCKED",
+    "statement": "The R16 repair items are independently verified and closed. This governance closure does not change any inherited non-admission, NO_ACTION, risk-veto or non-publish-bound conclusion."
+  }
+}

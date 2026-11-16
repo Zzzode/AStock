@@ -1,0 +1,34 @@
+{
+  "cycle": "R1_model",
+  "reviewer": "independent framework red-team",
+  "review_date": "2026-08-13",
+  "findings": [
+    {
+      "id": "R1-01",
+      "severity": "A",
+      "title": "Generic numeric sizing and loss limits risked appearing personalised",
+      "status": "resolved",
+      "evidence": "Early framework text contained numeric initial-position, loss and factor examples without user data, history or a stress test.",
+      "repair": "Removed numeric allocation/risk limits from reader-facing framework; retained only non-activated sizing logic and q=0 boundary.",
+      "verification": "Final PDF text has no generic numeric allocation advice; case verifier checks this."
+    },
+    {
+      "id": "R1-02",
+      "severity": "A",
+      "title": "Personal advantages and a 'best' core-satellite construction were stated too strongly",
+      "status": "resolved",
+      "evidence": "No comparative cost, outcome or suitability data support a universal optimum claim.",
+      "repair": "Recast all core-satellite wording as a conditional candidate subject to fee, account, liquidity, tax and personal-constraint review; removed claims of inherent personal advantage.",
+      "verification": "Decision and transferability chapters use conditional language and retain zero as a valid direct-research allocation."
+    },
+    {
+      "id": "R1-03",
+      "severity": "A",
+      "title": "Research-sleeve wording could be mistaken for an allocation instruction",
+      "status": "resolved",
+      "evidence": "Phrases such as a small satellite or evidence position were too close to a generic position-sizing prescription despite q=0.",
+      "repair": "Replaced position language with a non-activated, potentially zero research dossier or research satellite and restated that no allocation is approved.",
+      "verification": "Decision, transferability and underwriting chapters all describe a research framework rather than a live allocation."
+    }
+  ]
+}

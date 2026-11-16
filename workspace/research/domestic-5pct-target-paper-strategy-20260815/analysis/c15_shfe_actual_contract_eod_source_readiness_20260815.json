@@ -1,0 +1,90 @@
+{
+  "allowed_use": "A bounded actual-contract settlement-data diagnostic may be specified next, provided it preserves the retrospective-source and non-execution boundaries.",
+  "artifact_id": "D5PT-C15-v1",
+  "as_of": "2026-08-15",
+  "coverage": {
+    "family_days_with_observed_rows": {
+      "AU": 1699,
+      "CU": 1699,
+      "RU": 1699
+    },
+    "first_retained_trade_date": "2019-01-02",
+    "last_retained_trade_date": "2025-12-31",
+    "non_record_statuses": {
+      "http_404": 128
+    },
+    "non_records": 128,
+    "report_date_validation": "every retained response matches its requested date",
+    "retained_valid_responses": 1699,
+    "year_coverage": [
+      {
+        "non_records": 17,
+        "retained_valid_responses": 244,
+        "weekday_attempts": 261,
+        "year": 2019
+      },
+      {
+        "non_records": 19,
+        "retained_valid_responses": 243,
+        "weekday_attempts": 262,
+        "year": 2020
+      },
+      {
+        "non_records": 18,
+        "retained_valid_responses": 243,
+        "weekday_attempts": 261,
+        "year": 2021
+      },
+      {
+        "non_records": 18,
+        "retained_valid_responses": 242,
+        "weekday_attempts": 260,
+        "year": 2022
+      },
+      {
+        "non_records": 18,
+        "retained_valid_responses": 242,
+        "weekday_attempts": 260,
+        "year": 2023
+      },
+      {
+        "non_records": 20,
+        "retained_valid_responses": 242,
+        "weekday_attempts": 262,
+        "year": 2024
+      },
+      {
+        "non_records": 18,
+        "retained_valid_responses": 243,
+        "weekday_attempts": 261,
+        "year": 2025
+      }
+    ]
+  },
+  "failures": [],
+  "next_gate": "Freeze a diagnostic rule before calculation, retain every no-record date, and independently replay it. Any later usable-strategy claim still requires execution, cost, account-route and forward-paper evidence.",
+  "not_allowed": [
+    "A point-in-time, entitled historical-data claim.",
+    "A complete exchange-calendar, contract-lifecycle, delivery-state, historical margin/limit/fee or broker-route claim.",
+    "A fill, personal-access, investor net-return, stable-return or external-action conclusion."
+  ],
+  "result": "PASS",
+  "schema_version": "c15_shfe_actual_contract_source_readiness_audit.v1",
+  "source_manifest": {
+    "metadata_correction": {
+      "corrected_at": "2026-08-14T21:18:18.415150+00:00",
+      "previous_manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest_v1_pre_metadata_correction.json",
+      "previous_manifest_sha256": "e965c01fbd3ad1a8758c64074ae322f5412c39613d9671332fabc1a3122bd732",
+      "raw_response_files_changed": false,
+      "reason": "A static response UI field was previously recorded as a date-like field. The manifest now records the raw response report_date, which matches each requested trade_date.",
+      "records_revalidated": 1699,
+      "retrieval_records_changed": false,
+      "status": "completed",
+      "urls_changed": false
+    },
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest.json",
+    "protocol_status": "retrospective_source_coverage_complete_not_backtest",
+    "sha256": "34e23ddf886bd1f1f6cb88610d8d730bd757c981b92b0aa51720c5471b1186d7",
+    "source_quality": "primary_official_retrospective_actual_contract_eod_observation"
+  }
+}

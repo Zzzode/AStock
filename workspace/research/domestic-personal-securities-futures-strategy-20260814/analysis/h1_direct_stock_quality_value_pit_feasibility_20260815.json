@@ -1,0 +1,377 @@
+{
+  "document_id": "DPSFS-H1-DSPF-v1",
+  "as_of_date": "2026-08-15",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "scope": {
+    "candidate_family": "direct_a_share_quality_value",
+    "research_question": "Whether official/public sources can support a predeclared, point-in-time, total-return-aware direct A-share quality/value screen and individual-person action feasibility.",
+    "excluded_work": [
+      "security selection",
+      "backtest",
+      "parameter optimization",
+      "portfolio construction",
+      "order execution",
+      "return or yield claim"
+    ],
+    "long_run_hurdle_boundary": "A 5% long-run annualized figure is a research hurdle only. It is neither a guarantee, a forecast, nor a result of this memo."
+  },
+  "decision": {
+    "historical_pit_total_return_screen": "FAIL",
+    "forward_observation": "CONDITIONAL_RESEARCH_ONLY",
+    "individual_action_feasibility": "NOT_VERIFIED",
+    "overall_status": "NOT_READY_FOR_STRATEGY_VALIDATION_OR_ACTION",
+    "portfolio_q": 0,
+    "allocation": null,
+    "holdings": [],
+    "actions": [],
+    "recommendation": "none"
+  },
+  "evidence_boundary": {
+    "new_web_capture_performed": false,
+    "method": "The ledger re-verifies existing case-scoped, hashed official raw samples and route pages. It does not upgrade their scope, obtain entitlement, or treat sample retrieval as point-in-time delivery.",
+    "sample_limit": "A positive response for one code, page, or window is field-discovery evidence only, not coverage, revision, availability, entitlement, or execution proof.",
+    "rights_limit": "Public website access and a website legal statement are not a written license for retained raw/normalized data, historical replay, derivatives, or independent audit."
+  },
+  "required_data_blocks": [
+    {
+      "id": "U0_universe",
+      "purpose": "Prevent survivor and venue bias.",
+      "minimum_fields": [
+        "cross-venue_security_id",
+        "venue",
+        "listing_date",
+        "delisting_date",
+        "daily_listing_status",
+        "board",
+        "ST_or_risk_status",
+        "halt_status",
+        "no_trade_status",
+        "source_available_at",
+        "version"
+      ],
+      "official_routes": [
+        "SSE current A-share list and status query",
+        "SZSE listed-company/stock-list disclosure route",
+        "BSE listed-company/quotation route"
+      ],
+      "status": "FAIL",
+      "gap": "No accepted Shanghai-Shenzhen-Beijing point-in-time daily universe including terminated securities, status history, reconciliations, or revisions."
+    },
+    {
+      "id": "market_prices_and_tradeability",
+      "purpose": "Measure returns and model a feasible, conservative trade state.",
+      "minimum_fields": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "turnover",
+        "price_limit_state",
+        "halt_state",
+        "no_trade_state",
+        "bid_ask_or_predeclared_conservative_proxy",
+        "source_available_at",
+        "revision_version"
+      ],
+      "official_routes": [
+        "SSE day-k and historical market-data product route",
+        "SZSE/BSE quotation and market-data authorization routes"
+      ],
+      "status": "FAIL",
+      "gap": "A five-row sample for one SSE stock does not provide all venues, adjustment basis, total return, executable capacity, no-fills, or source-time/revision lineage."
+    },
+    {
+      "id": "PIT_financials",
+      "purpose": "Construct quality and value inputs without using later revisions at an earlier decision date.",
+      "minimum_fields": [
+        "raw_report",
+        "report_type",
+        "fiscal_period",
+        "publication_time",
+        "source_available_at",
+        "version_chain",
+        "audit_opinion",
+        "income_statement_fields",
+        "cash_flow_fields",
+        "balance_sheet_fields",
+        "shares_outstanding",
+        "diluted_shares",
+        "field_definition",
+        "source_hash"
+      ],
+      "official_routes": [
+        "SSE regular-report and company-announcement index plus PDF",
+        "SZSE/CNINFO disclosure portal",
+        "issuer investor-relations archive",
+        "Shenzhen Securities Information data-service inquiry route"
+      ],
+      "status": "FAIL",
+      "gap": "The retained index supplies metadata and PDF paths, not normalized statements, available_at proof, version/revision lineage, or all-market coverage."
+    },
+    {
+      "id": "shares_and_corporate_actions",
+      "purpose": "Create total return and per-share / value measures.",
+      "minimum_fields": [
+        "cash_dividend_before_tax",
+        "cash_dividend_after_tax_assumption",
+        "record_date",
+        "ex_date",
+        "payment_date_and_status",
+        "bonus_ratio",
+        "conversion_ratio",
+        "rights_issue",
+        "split_or_consolidation",
+        "repurchase",
+        "issuance",
+        "merger_restructuring",
+        "delisting_settlement",
+        "event_effective_time",
+        "event_version",
+        "adjustment_method"
+      ],
+      "official_routes": [
+        "SSE dividend and bonus/capitalization query routes",
+        "exchange/company announcements",
+        "CNINFO historical dividend, capital, restricted-share, issuance, and termination disclosure routes"
+      ],
+      "status": "FAIL",
+      "gap": "The dividend and bonus samples are partial. They do not constitute a complete, versioned, tax/payment-aware corporate-action ledger reconciled to prices."
+    },
+    {
+      "id": "rules_and_execution",
+      "purpose": "Keep an observed signal separate from an executable result.",
+      "minimum_fields": [
+        "venue_rule_version",
+        "effective_date",
+        "lot_size",
+        "tick_size",
+        "price_limit_rule",
+        "settlement_and_next_sellable_time",
+        "broker_fee_schedule",
+        "tax_treatment",
+        "account_permission",
+        "suitability_status",
+        "route",
+        "partial_fill",
+        "no_fill",
+        "settlement_failure"
+      ],
+      "official_routes": [
+        "CSRC investor-suitability framework",
+        "SSE/SZSE/BSE rulebooks and historical effective versions",
+        "broker and clearing-party account documentation"
+      ],
+      "status": "NOT_VERIFIED",
+      "gap": "Exchange and regulator rules do not prove a particular individual's permissions, fee terms, route support, usable balance, fills, or settlement outcome."
+    }
+  ],
+  "source_ledger": [
+    {
+      "id": "H1-E01",
+      "authority": "Shanghai Stock Exchange",
+      "source_quality": "primary_official_raw_sample",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-multiclass-data-r1-20260814/sse_astock_master_current_5.jsonp",
+      "sha256": "c2fb0c66364644ea2ac0076cf0c57f659ab639fa8e59fa359b71e7a18c2e89c6",
+      "retrieved_at": "2026-08-14T22:01:12.329456442+08:00",
+      "observed_fields": [
+        "A_STOCK_CODE",
+        "LIST_DATE",
+        "DELIST_DATE",
+        "STATE_CODE",
+        "PRODUCT_STATUS",
+        "LIST_BOARD",
+        "CSRC_CODE"
+      ],
+      "supports": "Current SSE identity/status field discovery.",
+      "does_not_support": "Historical all-venue daily universe, delisted coverage, point-in-time availability, or eligibility."
+    },
+    {
+      "id": "H1-E02",
+      "authority": "Shanghai Stock Exchange",
+      "source_quality": "primary_official_raw_sample",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-multiclass-data-r1-20260814/sse_astock_dayk_600000_begin0_end5.jsonp",
+      "sha256": "2b259997477068330963896c227fa17d437045dbb316d6c1ad0a2c88d901de81",
+      "retrieved_at": "2026-08-14T22:01:12.662461100+08:00",
+      "observed_fields": [
+        "date",
+        "open",
+        "high",
+        "low",
+        "close",
+        "volume",
+        "total",
+        "begin",
+        "end"
+      ],
+      "supports": "Single-security historical OHLCV discovery.",
+      "does_not_support": "Total return, corporate actions, all-market coverage, tradeability, capacity, or execution."
+    },
+    {
+      "id": "H1-E03",
+      "authority": "Shanghai Stock Exchange",
+      "source_quality": "primary_official_raw_sample",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_regular_report_index_600000_2025_2026.jsonp",
+      "sha256": "91be93dc97660ffbae52c578a2a4d28633daf9e8fae5362263e4dc45e28f28c8",
+      "retrieved_at": "2026-08-14T23:22:24.999414916+08:00",
+      "observed_fields": [
+        "ADDDATE",
+        "SSEDATE",
+        "BULLETIN_HEADING",
+        "BULLETIN_TYPE",
+        "BULLETIN_YEAR",
+        "SECURITY_CODE",
+        "URL"
+      ],
+      "supports": "Official financial-report/PDF discovery path.",
+      "does_not_support": "Normalized financial statements, available_at validation, field-level PIT version chain, or a full universe."
+    },
+    {
+      "id": "H1-E04",
+      "authority": "Shanghai Stock Exchange",
+      "source_quality": "primary_official_raw_sample",
+      "paths": [
+        "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_dividend_600000_2024.jsonp",
+        "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_bonus_2024_first5.jsonp"
+      ],
+      "sha256": [
+        "f1f7cfe75a5cd0e2bf9767d390d253093ffe25ed13f66a13dafc1c9cb00124eb",
+        "f39b1efbb3fb663f85c929696861725c2245f04274540c36a96453e16c10f948"
+      ],
+      "retrieved_at": "2026-08-14T23:22:25+08:00",
+      "observed_fields": [
+        "A_BEFR_TAX_DIV",
+        "A_AFTR_TAX_DIV",
+        "A_REG_DATE",
+        "A_DIV_DATE",
+        "DIVIDEND_DATE",
+        "BONUS_RATIO",
+        "CONVERT_RATIO",
+        "A_DERIGHTS_DATE"
+      ],
+      "supports": "Field-level corporate-action discovery.",
+      "does_not_support": "Complete event taxonomy, payment confirmation, taxation applicability, revisions, price reconciliation, or total return."
+    },
+    {
+      "id": "H1-E05",
+      "authority": "Shanghai Stock Exchange",
+      "source_quality": "primary_official_raw_sample",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r2-h1-h3-official-readiness-20260814/sse_h1_suspension_20250101_20250131.jsonp",
+      "sha256": "dbf7bb86b5dc3b9700f30e9fe9514749b6ca634dcd1d6577ba9e06c5707137dc",
+      "retrieved_at": "2026-08-14T23:22:25.225418064+08:00",
+      "observed_fields": [
+        "productCode",
+        "controlType",
+        "startStopDate",
+        "endStopDate",
+        "stopTime",
+        "stopReason",
+        "endStopReason",
+        "type"
+      ],
+      "supports": "Suspension/resumption state field discovery.",
+      "does_not_support": "Full daily tradeability, price-limit state, account eligibility, or fill confirmation."
+    },
+    {
+      "id": "H1-E06",
+      "authority": "Shanghai Stock Exchange",
+      "source_quality": "primary_first_party_route_page",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_market_data_products.html",
+      "sha256": "97ae19ecd969ec017290252e3cc5ca65f47054c1bd9edb40c594795fcbcd6a96",
+      "retrieved_at": "2026-08-14",
+      "observed_facts": [
+        "SSE historical data route covers Shanghai A-shares, B-shares and indices.",
+        "The page describes historical Level-1, Level-2 snapshot/tick/order-book and end-of-day categories.",
+        "The page describes yearly subscription and CSV format."
+      ],
+      "supports": "Historical data procurement/field-dictionary inquiry route.",
+      "does_not_support": "Case entitlement, actual delivery, cross-venue coverage, PIT financials/events, or executable strategy evidence."
+    },
+    {
+      "id": "H1-E07",
+      "authority": "Shanghai Stock Exchange / Shenzhen Stock Exchange",
+      "source_quality": "primary_first_party_legal_page",
+      "paths": [
+        "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/sse_website_legal_statement.html",
+        "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/szse_website_legal_statement.html"
+      ],
+      "sha256": [
+        "a19b622fc5b5baa6bea83804476dc908ff426ef244f3d3c589741a36419382e6",
+        "5398c463263421a98cbf90918dcaa16d6d70ef80f2052a9d0c19c1606ab27936"
+      ],
+      "retrieved_at": "2026-08-14",
+      "observed_facts": [
+        "Both pages state exchange ownership / intellectual-property boundaries for website information.",
+        "Both pages describe non-commercial browsing/download conditions and limitations on specified uses without written permission."
+      ],
+      "supports": "Rights-boundary and procurement-question design.",
+      "does_not_support": "A written data license for retained raw/normalized data, replay, derived analysis, or independent audit."
+    }
+  ],
+  "official_route_urls_for_revalidation": [
+    {
+      "id": "SSE_data_products",
+      "url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "purpose": "Shanghai historical market-data product inquiry"
+    },
+    {
+      "id": "SSE_regular_disclosure",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/regular/",
+      "purpose": "Shanghai regular-report discovery"
+    },
+    {
+      "id": "SZSE_company",
+      "url": "https://www.szse.cn/market/stock/company/",
+      "purpose": "Shenzhen listed-company and stock discovery"
+    },
+    {
+      "id": "BSE_listed_company",
+      "url": "https://www.bse.cn/nq/listedcompany.html",
+      "purpose": "Beijing listed-company discovery"
+    },
+    {
+      "id": "CNINFO_portal",
+      "url": "https://www.cninfo.com.cn/new/index",
+      "purpose": "Disclosure and company-action document discovery"
+    },
+    {
+      "id": "CSRC_suitability",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653849/content.shtml",
+      "purpose": "Investor-suitability regulatory framework"
+    }
+  ],
+  "forward_research_only_path": {
+    "status": "CONDITIONAL_NOT_STARTED",
+    "conditions": [
+      "Freeze the universe, factor definitions, accounting normalization, exclusions, rebalance frequency, event treatment, cost model, failure states, and stop conditions before T0.",
+      "Capture raw official universe/status snapshots and disclosure documents from T0 onward with retrieve time, source publication time when supplied, hash, version, and reviewer record.",
+      "Do not calculate returns until a complete, payment-aware corporate-action ledger is reconciled to price data; unresolved events must stop the affected calculation.",
+      "Record no-fill/unknown rather than forcing theoretical executions when tradeability, account permission, price limits, or cost data are missing.",
+      "Obtain account-specific broker confirmation before any real-world action."
+    ],
+    "prohibitions": [
+      "No historical backfill of inputs not retained at the decision time.",
+      "No parameter changes based on observed results.",
+      "No upgrading an observed candidate to an investment recommendation without complete company research, valuation, risk, and execution review.",
+      "No claim that a forward observation validates or guarantees a 5% annualized result."
+    ]
+  },
+  "company_research_route_after_universe_gate": {
+    "status": "NOT_STARTED_NO_CANDIDATES",
+    "entry_condition": "A frozen and evidenced universe gate produces a research candidate; this is not an investment action.",
+    "required_modules": [
+      "Official disclosure and version pack: annual/interim/quarterly reports, audit opinion, corrections/restatements, exchange inquiries/replies, capital changes, and major events.",
+      "Financial-quality card: reported earnings, cash flow, balance sheet, working capital, debt, accruals, capex, shares, and dilution tied to source pages/hashes.",
+      "Business/governance card: segments, customer/supplier concentration only where disclosed, capacity/orders only where disclosed, related parties, pledges, control, audit qualifications, litigation, and regulatory events.",
+      "Market/execution card: status, liquidity, price limits, halts, corporate actions, and account eligibility recorded separately from quality/value characteristics.",
+      "Valuation, contrarian, risk, catalyst, invalidation, and monitoring review only after the preceding evidence is complete."
+    ],
+    "downgrade_rule": "Any missing material financial, share-count, action, current-price, execution, or source-version evidence leaves the name watchlist-only / insufficient evidence."
+  },
+  "next_allowed_work": [
+    "Draft a separate forward-observation protocol before collecting any new H1 input or ranking any security.",
+    "Or obtain and independently accept an entitled PIT data package with universe, financial, corporate-action, market-state, execution, rights, and revision documentation.",
+    "Do not select securities, run a retrospective result, construct a portfolio, or issue an action until the applicable gates are passed."
+  ]
+}

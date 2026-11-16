@@ -1,0 +1,83 @@
+{
+  "document_id": "DPSFS-C8-CB-ETFR-v1",
+  "as_of_date": "2026-08-15",
+  "status": "exploratory_after_identity_document_discovery_before_full_price_capture",
+  "portfolio_q": 0,
+  "candidate_status": "research_candidate_not_actionable",
+  "objective": "Test one fixed convertible-bond ETF allocation candidate against a strict 5% historical price-proxy falsification hurdle; never guarantee, forecast, or claim an investor return.",
+  "pre_observation_disclosure": {
+    "identity_and_document_search_completed_before_protocol": true,
+    "full_historical_price_responses_viewed_before_protocol": false,
+    "historical_rule_calculation_completed_before_protocol": false,
+    "consequence": "Any positive output remains exploratory and is not independent out-of-sample evidence."
+  },
+  "economic_design": {
+    "distinct_from_r5": "No momentum, relative ranking, asset-selection, timing switch, or R5 input/result reuse; this is a fixed quarterly-rebalanced convertible-bond plus government-bond allocation.",
+    "products": [
+      {
+        "code": "511180",
+        "role": "investment_grade_convertible_bond_core",
+        "target_weight": 0.5,
+        "factual_assertion_to_verify": "Haifutong SSE Investment Grade Convertible Bond and Exchangeable Bond ETF; SSE Investment Grade Convertible Bond and Exchangeable Bond Index."
+      },
+      {
+        "code": "511380",
+        "role": "broad_convertible_bond_satellite",
+        "target_weight": 0.25,
+        "factual_assertion_to_verify": "Bosera CSI Convertible Bond and Exchangeable Bond ETF; CSI Convertible Bond and Exchangeable Bond Index."
+      },
+      {
+        "code": "511010",
+        "role": "five_year_government_bond_rate_buffer",
+        "target_weight": 0.25,
+        "factual_assertion_to_verify": "Guotai SSE 5-Year Treasury Bond ETF; SSE 5-Year Treasury Bond Index."
+      }
+    ],
+    "universe_claim": "The three identifiers are the complete fixed implementation of C8-T1, not an open universe, product ranking, or recommendation."
+  },
+  "data_protocol": {
+    "publisher": "Shanghai Stock Exchange",
+    "endpoint_template": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/{code}?callback=c8probe&select=date%2Copen%2Chigh%2Clow%2Cclose%2Cvolume&begin=0&end=5000",
+    "fields_used": ["date", "close"],
+    "source_quality": "primary_official_public_retrospective_market_price_observation",
+    "proxy_boundary": "Official retrospective close observations do not establish PIT availability, total return, NAV/IOPV, distributions, corporate actions, market state, costs, capacity, fill, entitlement or action."
+  },
+  "rules": {
+    "initial_unit_nav": 1.0,
+    "start_timing": "Initial targets are established at the first common observation close; only subsequent observations earn a return.",
+    "targets": {"511180": 0.5, "511380": 0.25, "511010": 0.25},
+    "rebalance": "After the last common observation in each March, June, September, and December, the next common observation first earns old-holding return and then rebalances at its close; new weights affect following observations only.",
+    "turnover": "one_way_turnover = 0.5 * sum(abs(drift_weight - target_weight))",
+    "cost_stress_rate": 0.003,
+    "cost_boundary": "Fixed 30bp times one-way turnover is an illustrative stress load, not verified personal cost.",
+    "prohibited": ["leverage", "margin_financing", "repo_financing", "futures", "options", "securities_lending", "ETF_creation_redemption_arbitrage", "discretionary_override", "direct_convertible_bond_selection"]
+  },
+  "falsification": {
+    "strict_hurdle": 0.05,
+    "requirements": [
+      "Every complete calendar-year net unitized change is at least 5%.",
+      "Every valid 1260-common-observation rolling annualized net unitized change is at least 5%.",
+      "No input, alignment, or accounting failure occurs."
+    ],
+    "pass_label": "PRICE_PROXY_HURDLE_NOT_FALSIFIED",
+    "fail_label": "PRICE_PROXY_HURDLE_FALSIFIED",
+    "positive_result_boundary": "A non-falsified price proxy cannot approve allocation, holding, action, or a return claim."
+  },
+  "paper_execution_design": {
+    "schedule": "Quarterly rebalancing only after live product and account gates are documented.",
+    "lot_rule": "Paper quantities are rounded down to 100-share ETF lots; residual is recorded as unallocated and earns no assumed return.",
+    "order_style": "Limit-order paper instruction only; no market-order chasing.",
+    "no_trade_gates": ["unknown tradable status", "suspension", "unknown NAV/IOPV or stale official reference", "unknown premium_discount", "unsupported account route", "missing evidence packet"],
+    "record_required": ["timestamp", "limit_price", "target_quantity", "visible_quote", "simulated_or_actual_fill_status", "fees", "unfilled_reason", "fund_announcement", "market_status", "NAV_IOPV_evidence"]
+  },
+  "stop_and_invalidation": {
+    "ordinary_trade": "Quarterly restoration to fixed targets only.",
+    "product_stop": ["suspension", "termination", "liquidation", "material benchmark_or_contract_change", "subscription_redemption_suspension", "unverifiable_price_NAV_IOPV", "unsupported_account_route"],
+    "event_review": ["constituent_default", "mandatory_redemption", "delisting", "rating_or_index_rule_change"],
+    "research_invalidation": ["falsification under formal entitled PIT total-return/event/execution replay", "proxy cannot account for distributions, adjustments, suspension, costs, settlement, or nonfills"],
+    "no_auto_substitution": true
+  },
+  "risk_register": ["credit_and_rating", "redemption_put_conversion_equity", "interest_rate_and_valuation", "fund_tracking_and_distribution", "market_price_NAV_IOPV_and_liquidity", "corporate_action_and_index_event", "personal_suitability_and_account_route"],
+  "action_requirements": ["entitled PIT total-return and event data", "current product and account verification", "independent rerun", "prospective paper observation with nonfill records"],
+  "allowed_output": "Research-only price-proxy result and evidence gap assessment; portfolio_q remains 0."
+}

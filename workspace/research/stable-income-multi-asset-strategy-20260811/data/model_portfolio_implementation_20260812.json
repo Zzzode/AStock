@@ -1,0 +1,167 @@
+{
+  "schema_version": "strategic_allocation_implementation.v2",
+  "case_id": "stable-income-multi-asset-strategy-20260811",
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "source": "controlled strategic-allocation implementation packet",
+  "timestamp": "2026-08-12",
+  "quality_tier": "controlled_model_with_tier_1_product_identity",
+  "execution_eligibility_policy": {
+    "path": "data/execution_eligibility_policy_20260812.json",
+    "current_status": "not_run",
+    "rule": "A missing, stale or failed execution-day field sets q=0 and prevents the affected sleeve from receiving capital."
+  },
+  "fallback_path": "Every failed or unobserved ETF allocation follows one deterministic route: no trade, then the affected notional remains in the eligible protected-liquidity reserve. Staging cash never exceeds CNY10000, and no failure automatically increases 511010, another ETF, REITs or direct stocks.",
+  "warnings": [
+    "This defines research-model target notionals and sequencing, not broker order instructions, a price target, a guaranteed return, or a suitability determination.",
+    "No historical price snapshot is used for price, share quantity, premium/discount, spread, liquidity, or timing. Each ETF currently has q=0 until a complete current execution-day packet passes.",
+    "510880 and 512890 may have overlapping sector and constituent exposures. 512890 remains conditional until the dated combined-holdings test passes."
+  ],
+  "errors": [],
+  "evidence_refs": ["S05", "S08", "S09", "S10", "S11", "S12", "S16"],
+  "portfolio_principal_cny": 200000,
+  "target_sleeves": [
+    {
+      "sleeve": "protected_liquidity",
+      "designated_model_instrument": "Eligible insured-bank deposit or a directly held China government bond matched to the required horizon",
+      "ticker": null,
+      "target_weight": 0.2,
+      "target_notional_cny": 40000,
+      "action": "Establish at T0.",
+      "validation_packet_fields": ["institution eligibility", "term and early-withdrawal terms", "aggregate institution exposure"],
+      "failure_action": "Hold as a pending protected-liquidity reserve, not as staging cash; do not label a wealth-management product or fund as protected liquidity."
+    },
+    {
+      "sleeve": "staging_cash",
+      "designated_model_instrument": "Broker settlement cash or bank demand deposit; 511880 is an optional money-market ETF only after its separate validation",
+      "ticker": null,
+      "optional_ticker": "511880",
+      "target_weight": 0.05,
+      "target_notional_cny": 10000,
+      "hard_cap_cny": 10000,
+      "action": "Retain at T0 for staging and rebalancing.",
+      "validation_packet_fields": ["cash availability", "account eligibility", "if 511880 is used: current premium/discount, fees and liquidity"],
+      "failure_action": "Keep the CNY10000 sleeve as settlement cash or bank demand deposit; no deferred ETF capital may be added to this sleeve above its hard cap."
+    },
+    {
+      "sleeve": "rate_bonds",
+      "designated_model_instrument": "国泰上证5年期国债ETF",
+      "ticker": "511010",
+      "target_weight": 0.35,
+      "target_notional_cny": 70000,
+      "action": "Establish at T0 only after q=1 in the execution eligibility packet.",
+      "validation_packet_fields": ["511010 sleeve controls in execution_eligibility_policy_20260812.json"],
+      "current_q": 0,
+      "failure_action": "No trade; keep the affected notional in eligible protected liquidity. Do not force a substitute trade or increase staging cash."
+    },
+    {
+      "sleeve": "dividend_equity_primary",
+      "designated_model_instrument": "华泰柏瑞上证红利ETF",
+      "ticker": "510880",
+      "target_weight": 0.15,
+      "target_notional_cny": 30000,
+      "action": "Build over six scheduled monthly tranches only after q=1.",
+      "validation_packet_fields": ["510880 sleeve controls in execution_eligibility_policy_20260812.json"],
+      "current_q": 0,
+      "failure_action": "No trade for the failed tranche; place it in eligible protected liquidity pending a fresh scheduled validation."
+    },
+    {
+      "sleeve": "dividend_equity_secondary",
+      "designated_model_instrument": "华泰柏瑞中证红利低波动ETF",
+      "ticker": "512890",
+      "target_weight": 0.15,
+      "target_notional_cny": 30000,
+      "action": "Build over six scheduled monthly tranches only after q=1 and the combined-holdings test passes.",
+      "validation_packet_fields": ["512890 sleeve controls and dated look-through in execution_eligibility_policy_20260812.json"],
+      "current_q": 0,
+      "failure_action": "No trade; retain the full CNY30000 secondary-equity allocation in eligible protected liquidity until the combined-holdings test passes. Do not replace it with 511010, staging cash or a high-overlap ETF."
+    },
+    {
+      "sleeve": "gold",
+      "designated_model_instrument": "华安易富黄金ETF",
+      "ticker": "518880",
+      "target_weight": 0.1,
+      "target_notional_cny": 20000,
+      "action": "Build over six scheduled monthly tranches only after q=1.",
+      "validation_packet_fields": ["518880 sleeve controls in execution_eligibility_policy_20260812.json"],
+      "current_q": 0,
+      "failure_action": "No trade for the failed tranche; retain it in eligible protected liquidity pending a fresh scheduled validation."
+    },
+    {
+      "sleeve": "public_reits",
+      "designated_model_instrument": "None at launch",
+      "ticker": null,
+      "target_weight": 0.0,
+      "target_notional_cny": 0,
+      "action": "Do not purchase at launch.",
+      "validation_packet_fields": ["three independently reviewed projects", "project cash flow, debt, valuation premium, liquidity and trade-unit economics"],
+      "failure_action": "Remain at zero; retain the 35% rate-bond target."
+    },
+    {
+      "sleeve": "direct_high_dividend_stocks",
+      "designated_model_instrument": "None at launch",
+      "ticker": null,
+      "target_weight": 0.0,
+      "target_notional_cny": 0,
+      "action": "Do not purchase at launch.",
+      "validation_packet_fields": ["independent price and valuation work", "dividend coverage and cash flow", "tax", "industry concentration and liquidity"],
+      "failure_action": "Remain at zero; any later allocation can only replace dividend-ETF exposure, up to 15% aggregate and 5% per issuer."
+    }
+  ],
+  "staged_actions": [
+    {
+      "stage": "T0 defensive core",
+      "target_notional_cny": 120000,
+      "actions": ["CNY40000 protected liquidity", "CNY10000 staging cash", "up to CNY70000 in 511010 only after q=1"],
+      "failure_action": "A failed 511010 check leaves CNY70000 in eligible protected liquidity; staging cash remains CNY10000."
+    },
+    {
+      "stage": "Months 1 to 5",
+      "target_notional_cny_per_month": 13333,
+      "actions": ["CNY5000 toward 510880 when q=1", "CNY5000 toward 512890 when q=1 and look-through passes", "CNY3333 toward 518880 when q=1"],
+      "failure_action": "Defer only the failed sleeve and route its tranche to eligible protected liquidity."
+    },
+    {
+      "stage": "Month 6",
+      "target_notional_cny": 13335,
+      "actions": ["CNY5000 toward 510880 when q=1", "CNY5000 toward 512890 when q=1 and look-through passes", "CNY3335 toward 518880 when q=1"],
+      "failure_action": "Use only validated sleeves; all failed portions remain in eligible protected liquidity and no catch-up trade is generated."
+    }
+  ],
+  "fallback_capacity_tests": [
+    {
+      "case": "failed_T0_511010",
+      "expected_protected_liquidity_cny": 110000,
+      "expected_staging_cash_cny": 10000,
+      "capital_conserved_cny": 200000,
+      "staging_cash_cap_pass": true
+    },
+    {
+      "case": "one_failed_monthly_ETF_tranche",
+      "expected_result": "failed tranche remains in protected liquidity; staging cash remains at or below CNY10000",
+      "capital_conserved_cny": 200000,
+      "staging_cash_cap_pass": true
+    },
+    {
+      "case": "failed_512890_full_allocation",
+      "expected_protected_liquidity_increment_cny": 30000,
+      "expected_result": "no substitution into 511010 or another risk sleeve",
+      "capital_conserved_cny": 200000,
+      "staging_cash_cap_pass": true
+    }
+  ],
+  "governance": {
+    "quarterly": "Measure weights, actual D0 cash receipts, product events, concentration and the documented observed drawdown.",
+    "semiannual": "Rebalance using new cash and actual distributions first; a deferred sleeve requires a fresh eligibility packet.",
+    "rebalance_review_triggers": [
+      "protected-liquidity, rate-bond or total-equity weight differs from its target by more than 5 percentage points",
+      "staging cash exceeds its CNY10000 hard cap or is below target while scheduled tranches remain",
+      "gold differs from its target by more than 2 percentage points",
+      "any product exceeds a hard cap or fails an eligibility check"
+    ],
+    "observed_drawdown_definition": "DD_t = (current portfolio market value after external-flow adjustment / documented high-water mark after external-flow adjustment) - 1, calculated from a dated account-value record. Scenario outputs do not trigger this control.",
+    "risk_actions": [
+      "If observed DD_t is at or below -12%, stop automatic additions to risk sleeves and review.",
+      "If observed DD_t is at or below -18%, review liquidity, leverage, product abnormalities and capital purpose before any risk addition."
+    ]
+  }
+}

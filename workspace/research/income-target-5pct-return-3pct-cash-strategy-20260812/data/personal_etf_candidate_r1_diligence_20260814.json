@@ -1,0 +1,115 @@
+{
+  "schema_version": "personal_etf_candidate_r1_diligence.v1",
+  "as_of": "2026-08-14",
+  "scope": {
+    "candidates": ["511990", "511010", "510880", "510300", "518880"],
+    "research_only": true,
+    "position_quantity": 0,
+    "portfolio_q": 0
+  },
+  "mandate_boundary": "This product-diligence packet does not select a current holding, set an allocation, authorize an order, promise a return, impose a cash-receipt objective or impose automatic reinvestment.",
+  "linked_price_observation": {
+    "path": "workspace/research/income-target-5pct-return-3pct-cash-strategy-20260812/data/personal_etf_strategy_public_observation_20260814.json",
+    "status": "candidate_rule_rejected_as_stable_5pct_evidence",
+    "boundary": "The linked study is a frozen unadjusted public-price observation, not a total-return or executable strategy backtest."
+  },
+  "candidates": [
+    {
+      "code": "511990",
+      "name": "华宝现金添益ETF",
+      "research_role": "Optional transaction/settlement parking instrument; no required allocation or cash objective.",
+      "structure_and_exposure": "Shanghai-listed money-market fund. Its disclosed permitted range includes cash, deposits, repos, central-bank bills, NCDs, short-dated debt instruments and ABS subject to stated limits.",
+      "documented_terms": {
+        "benchmark": "After-tax seven-day call-deposit rate",
+        "annual_management_fee": 0.0035,
+        "annual_custody_fee": 0.0009,
+        "annual_sales_service_fee": 0.0025,
+        "listed_since": "2013-01-28",
+        "exchange_category_mechanics": "SSE ETF FAQ states that some money-market ETFs support same-day trading; actual broker/product eligibility needs a dated check."
+      },
+      "key_risks": ["secondary-market premium/discount", "liquidity", "credit", "valuation", "trading-access and operating risk"],
+      "total_return_accounting": "Daily income, distributions, price/NAV and any external withdrawal must be reconciled once under a frozen convention; no headline income may stand in for portfolio return.",
+      "r2_gate": "Dated per-unit income or NAV, market price, premium/discount, spread/depth, broker fee, settlement and event data with a source-consistent total-return ledger.",
+      "source_paths": ["sources/official-personal-etf-r1-20260814/511990_product_summary_20250621.pdf", "sources/official-personal-etf-r1-20260814/sse_etf_faq.html"],
+      "status": "q=0; not selected"
+    },
+    {
+      "code": "511010",
+      "name": "国泰上证5年期国债ETF",
+      "research_role": "Defensive duration sleeve in the limited public-price observation.",
+      "structure_and_exposure": "SSE five-year Treasury-bond index ETF using optimized sampling; normally at least 90% of NAV is in constituents and substitutes after construction.",
+      "documented_terms": {
+        "annual_management_fee": 0.0015,
+        "annual_custody_fee": 0.0005,
+        "annual_comprehensive_operating_cost": 0.0021,
+        "tracking_objective": "Daily average absolute tracking deviation <=0.2% and annualized tracking error <=2% under normal conditions.",
+        "exchange_category_mechanics": "SSE bond-ETF guide describes same-day trading/redemption mechanics; the actual broker route and price remain separate checks."
+      },
+      "key_risks": ["interest-rate sensitivity", "optimized-sampling and index change", "constituent-bond liquidity/settlement", "secondary-market price/NAV divergence"],
+      "total_return_accounting": "Distributions, bond accrual and price/NAV must enter one consistent ledger exactly once.",
+      "r2_gate": "Authorized point-in-time ETF price/NAV/distribution data, index membership, bond accrual/coupon data, actual spread/commission/no-fill observations and market-status coverage.",
+      "source_paths": ["sources/official-fund-sovereign-r1-20260814/511010_product_summary_20260319.pdf", "sources/official-fund-sovereign-r1-20260814/511010_distribution_20260622.pdf", "sources/official-personal-etf-r1-20260814/sse_bond_etf_guide.html"],
+      "status": "q=0; not selected"
+    },
+    {
+      "code": "510880",
+      "name": "华泰柏瑞上证红利ETF",
+      "research_role": "Dividend-equity risk sleeve in the limited public-price observation.",
+      "structure_and_exposure": "Stock ETF tracking the SSE Dividend Index through complete replication, subject to the stated liquidity exception; normally at least 95% of NAV is in constituents and substitutes.",
+      "documented_terms": {
+        "annual_management_fee": 0.005,
+        "annual_custody_fee": 0.001,
+        "annual_comprehensive_operating_cost": 0.006,
+        "exchange_category_mechanics": "SSE ETF FAQ classifies stock ETFs as T+1 products and gives a 100-unit minimum trading lot for ETFs."
+      },
+      "key_risks": ["equity drawdown", "index/constituent and sector concentration", "T+1 sale constraint", "suspension/limit-lock", "premium/discount and tracking deviation"],
+      "total_return_accounting": "A distribution is a dated ledger event, not a cash target or reinvestment assumption; it must not be added twice to an adjusted/total-return series.",
+      "r2_gate": "Point-in-time index membership, price/NAV/distribution/action history, T+1/no-fill treatment, actual costs/spreads and a market-quality packet.",
+      "source_paths": ["sources/official-personal-etf-r1-20260814/510880_product_summary_20250621.pdf", "sources/official-fund-sovereign-r1-20260814/510880_q1_2026.pdf", "sources/official-personal-etf-r1-20260814/sse_etf_faq.html"],
+      "status": "q=0; not selected"
+    },
+    {
+      "code": "510300",
+      "name": "华泰柏瑞沪深300ETF",
+      "research_role": "Broad-A-share risk sleeve in the limited public-price observation.",
+      "structure_and_exposure": "Stock index ETF tracking CSI 300 through complete replication; normally at least 95% of NAV is in constituents and substitutes. The product summary permits limited supplementary instruments and securities-lending activity as disclosed.",
+      "documented_terms": {
+        "annual_management_fee": 0.0015,
+        "annual_custody_fee": 0.0005,
+        "annual_comprehensive_operating_cost": 0.0023,
+        "tracking_objective": "Daily average tracking deviation within 0.2% and annualized tracking error within 2% under normal conditions.",
+        "exchange_category_mechanics": "SSE ETF FAQ classifies stock ETFs as T+1 products and gives a 100-unit minimum trading lot for ETFs."
+      },
+      "key_risks": ["A-share beta", "overlap with 510880", "valuation/macro exposure", "T+1, suspension and price-limit risk", "premium/discount, liquidity and constituent-event risk"],
+      "total_return_accounting": "Dividends and corporate actions require a dated, single-count total-return convention.",
+      "r2_gate": "Point-in-time CSI 300 membership, price/NAV/dividend/action history, T+1/no-fill data, actual execution costs and a verified overlap/correlation map against 510880.",
+      "source_paths": ["sources/official-personal-etf-r1-20260814/510300_product_summary_20241122.pdf", "sources/official-personal-etf-r1-20260814/sse_etf_faq.html"],
+      "status": "q=0; not selected"
+    },
+    {
+      "code": "518880",
+      "name": "华安易富黄金ETF",
+      "research_role": "Domestic-gold risk sleeve in the limited public-price observation.",
+      "structure_and_exposure": "Gold ETF targeting domestic gold spot performance; no less than 90% of fund assets are in Shanghai Gold Exchange-listed gold spot contracts.",
+      "documented_terms": {
+        "annual_management_fee": 0.005,
+        "annual_custody_fee": 0.001,
+        "annual_comprehensive_operating_cost": 0.0068,
+        "exchange_category_mechanics": "SSE ETF FAQ lists gold ETFs among categories that may support same-day trading; actual broker/product status must be checked at the time of any paper test."
+      },
+      "key_risks": ["domestic gold-price volatility", "exchange trading and holiday effects", "premium/discount", "valuation and liquidity risk", "correlation instability versus equity and bond sleeves"],
+      "total_return_accounting": "Use one source-consistent market/NAV convention; no distribution or NAV adjustment may be double counted.",
+      "r2_gate": "Price/NAV/premium-discount history, SGE/exchange calendar and market-status records, actual spread/cost/no-fill inputs and a stress/correlation map against all other sleeves.",
+      "source_paths": ["sources/official-personal-etf-r1-20260814/518880_product_summary_20241217.pdf", "sources/official-personal-etf-r1-20260814/sse_etf_faq.html"],
+      "status": "q=0; not selected"
+    }
+  ],
+  "shared_r1_to_r2_gates": [
+    "Freeze the exact universe, selection rules, weight formula, timing and replacement policy before examining outcomes.",
+    "Use authorized point-in-time price/NAV, distribution, corporate-action, index-membership and market-status data.",
+    "Model actual broker commission, bid-ask, taxes, settlement, T+1/no-fill states and ETF premium/discount rather than fund expense ratios alone.",
+    "Reconcile price and income/distribution events exactly once; no cash-receipt target or automatic reinvestment is permitted.",
+    "Run out-of-sample total-return, drawdown, turnover and stress tests, followed by independent review and prospective paper reconciliation."
+  ],
+  "conclusion": "Selected product mechanics are now documented at R1 for a limited five-ETF research set. No candidate passes R2 or is approved for a personal strategy; the public-price candidate rule fails the all-window 5% stability condition."
+}

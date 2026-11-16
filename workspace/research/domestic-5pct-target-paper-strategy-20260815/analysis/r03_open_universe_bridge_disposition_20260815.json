@@ -1,0 +1,242 @@
+{
+  "artifact_id": "D5PT-R03-v1",
+  "as_of": "2026-08-15",
+  "current_decision": {
+    "external_orders": false,
+    "formal_decision_eligible": false,
+    "portfolio_q": 0,
+    "reason": "Every inherited representative route remains either negatively diagnosed or not testable with the required actual-contract/execution evidence. The only new fixed paper procedure also misses the strict annual and rolling diagnostic screen and has not completed forward paper validation.",
+    "status": "NO_ADMITTED_USABLE_STRATEGY"
+  },
+  "current_paper_candidate": {
+    "candidate_id": "R01",
+    "fixed_codes": [
+      "510300",
+      "510880",
+      "511010",
+      "518880",
+      "511990"
+    ],
+    "observed_proxy": {
+      "annual_failure_years": [
+        2016,
+        2018,
+        2021,
+        2022
+      ],
+      "annualized_market_price_proxy_change_after_illustrative_cost": 0.0729205473,
+      "maximum_drawdown": -0.2493562145,
+      "rolling_five_year_endpoint_count": 81,
+      "rolling_five_year_endpoints_at_or_above_5pct": 37
+    },
+    "paper_rule_boundary": {
+      "annual_or_rolling_floor": "not asserted",
+      "external_orders": false,
+      "forward_paper_months_required": 6,
+      "status": "paper_benchmark_only_not_stable_return_admission"
+    },
+    "portfolio_q": 0,
+    "reopen_or_completion_gate": [
+      "Complete the fixed six-month forward paper log without changing the rule midstream.",
+      "Retain dated product, account-route, quote, IOPV, fee, lot and settlement checks for every paper decision.",
+      "Use an independently verified total-return and execution evidence package before any higher claim is considered."
+    ],
+    "research_state": "paper_benchmark_with_negative_price_proxy_screen",
+    "route": "五代码月度动态 ETF 纸面程序",
+    "source_artifacts": [
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/m01_dynamic_market_price_proxy_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r01_monthly_dynamic_etf_paper_rulebook_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r02_independent_m01_r01_audit_20260815.json"
+    ],
+    "strict_gate_disposition": "不准入"
+  },
+  "inherited_representative_routes": [
+    {
+      "candidate_id": "C7",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "独立、获授权的点时点总回报与执行数据包。",
+        "在看结果前冻结全资产的回放和成本规则。"
+      ],
+      "research_state": "negative_proxy_or_diagnostic",
+      "route": "多资产 ETF 静态核心—卫星组合",
+      "source_artifacts": [
+        "analysis/c7_static_core_satellite_price_diagnostic_20260815.json",
+        "analysis/r7_c7_c8_independent_audit_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": {
+        "complete_year_below_5pct": 5,
+        "rolling_below_5pct": 1428
+      }
+    },
+    {
+      "candidate_id": "C8",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "仅能以全新、预冻结的产品和总回报/执行研究重新提出假设。"
+      ],
+      "research_state": "negative_proxy_or_diagnostic",
+      "route": "可转债 ETF 固定配置",
+      "source_artifacts": [
+        "analysis/c8_convertible_bond_etf_fixed_allocation_price_proxy_20260815.json",
+        "analysis/r7_c7_c8_independent_audit_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": {
+        "complete_year_below_5pct": 2,
+        "rolling_below_5pct": 123
+      }
+    },
+    {
+      "candidate_id": "C9",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "取得具有合法权利、可保留且带来源时间戳的全量实际合约数据；不得以匿名连续合约替代。",
+        "冻结逐合约的上市、到期、交易日历、交割和交易状态主表。",
+        "归档逐日交易所保证金、限额、费用及经纪端规则，并预先写明无成交/部分成交处理。",
+        "在不记录个人信息的前提下，独立确认账户可达性。",
+        "在计算前冻结逐日盯市、换月、成本、风险事件和端点总体规则，并由独立人员复核。"
+      ],
+      "research_state": "not_testable_with_current_actual_contract_or_execution_evidence",
+      "route": "商品期货实际合约趋势",
+      "source_artifacts": [
+        "analysis/c9_commodity_actual_contract_feasibility_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": "NOT_TESTABLE_FOR_RETURN"
+    },
+    {
+      "candidate_id": "C10",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "对完整 A 股母体使用预冻结的点时点状态、总回报、成本和成交数据。",
+        "把未来观察作为新假设，而不是修复既有事后篮子。"
+      ],
+      "research_state": "negative_proxy_or_diagnostic",
+      "route": "直接股票质量与分派研究篮子",
+      "source_artifacts": [
+        "analysis/c10_direct_equity_quality_distribution_candidate_20260815.json",
+        "analysis/r9_c10_independent_diagnostic_audit_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": {
+        "below_5pct_years": [
+          2022,
+          2025
+        ]
+      }
+    },
+    {
+      "candidate_id": "C11",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "不同产品须以独立预冻结方案另立假设并复核。"
+      ],
+      "research_state": "negative_proxy_or_diagnostic",
+      "route": "市场中性公募基金 NAV 代理",
+      "source_artifacts": [
+        "analysis/c11_market_neutral_fund_nav_proxy_20260815.json",
+        "analysis/r8_c11_independent_audit_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": {
+        "complete_year_below_5pct": 3,
+        "rolling_below_5pct": 204
+      }
+    },
+    {
+      "candidate_id": "C12",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "取得带权利证明的点时点 T 合约、生命周期、交割券/转换因子、现券价格/应计利息/票息数据。",
+        "获得带日期的经纪佣金、保证金、现券/ETF 路径、托管和交割操作文件。",
+        "在看到结果前冻结双腿、无成交、成本、换月和盯市规则，并独立重算全部年度和滚动五年端点。",
+        "任一字段缺失时保留“不可测且不可行动”，不得用连续合约、通用 ETF 收益或虚构成交替代。"
+      ],
+      "research_state": "not_testable_with_current_actual_contract_or_execution_evidence",
+      "route": "国债现货—期货基差",
+      "source_artifacts": [
+        "analysis/c12_cash_futures_basis_feasibility_20260815.json",
+        "analysis/r10_c12_independent_route_audit_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": "NOT_TESTABLE_FOR_RETURN"
+    },
+    {
+      "candidate_id": "C13",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "带调整与生命周期的点时点实际合约主表。",
+        "逐合约历史买卖价、深度、成交与官方结算数据。",
+        "标的总回报、分派和交易状态历史。",
+        "带日期的交易所/经纪费用、税费、保证金和备兑保留规则。",
+        "成交状态、部分成交与账户/结算可行性证据，以及预冻结的独立复核方案。"
+      ],
+      "research_state": "not_testable_with_current_actual_contract_or_execution_evidence",
+      "route": "沪深 300 ETF 备兑认购期权",
+      "source_artifacts": [
+        "analysis/c13_etf_option_covered_call_feasibility_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": "NOT_TESTABLE_FOR_RETURN"
+    },
+    {
+      "candidate_id": "C14",
+      "portfolio_q": 0,
+      "reopen_or_completion_gate": [
+        "仅在取得有权使用、时点正确且复权口径明确的公募 REITs 价格／净值／分配／公司行动总体后，才能建立统一的单品种或全市场回放总体。",
+        "在查看任何结果前，冻结现金分配处理、再投资或现金持有、交易时点、停牌、费用、税费、点差、部分成交、转托管和异常状态规则。",
+        "取得日期明确且不含个人敏感信息的券商费率、账户路径和结算说明；缺任一字段继续保持 q=0。",
+        "由独立复核方逐年和逐个滚动五年窗口重算净后成本结果；任一窗口低于 5% 或数据不可验证即不准入。"
+      ],
+      "research_state": "negative_proxy_or_diagnostic",
+      "route": "公开募集基础设施 REIT",
+      "source_artifacts": [
+        "analysis/c14_public_reit_feasibility_20260815.json",
+        "analysis/c14_public_reit_rulebook_20260815.json"
+      ],
+      "strict_gate_disposition": "不准入",
+      "verified_summary": {
+        "complete_year_below_5pct": 3,
+        "rolling_below_5pct": "40/40"
+      }
+    }
+  ],
+  "interpretation_boundary": [
+    "A negative market-price, cash-distribution or NAV proxy is not an investor net-total-return result.",
+    "A route with incomplete actual-contract or execution evidence is not rejected for economic reasons; it is simply not testable or usable at this evidence level.",
+    "An open research funnel may add a newly evidenced route, but a fixed rulebook cannot silently add a product after its rule is frozen."
+  ],
+  "next_research_priority": {
+    "boundary": "This is a research queue, not a recommended futures action or a prediction of a five-percent outcome.",
+    "preconditions": [
+      "Lawful, retainable actual-contract daily data with source timing and hashes.",
+      "Contract lifecycle, calendar, delivery-state, effective margin/limit/fee and broker-route evidence.",
+      "A frozen no-fill, cost, roll, settlement and risk-event rulebook before a result is calculated.",
+      "Independent reconstruction of every complete calendar year and rolling five-calendar-year endpoint."
+    ],
+    "route": "actual-contract domestic futures trend research",
+    "why": "It remains a distinct, open route rather than a relabeling of any failed ETF or fund proxy."
+  },
+  "research_scope": "A bounded disposition of the previously researched representative routes plus the current fixed ETF paper benchmark. It does not prove that every future domestic strategy or asset category fails.",
+  "schema_version": "open_universe_bridge_disposition.v1",
+  "source_control": {
+    "current_m01": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/m01_dynamic_market_price_proxy_20260815.json",
+    "current_r01": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r01_monthly_dynamic_etf_paper_rulebook_20260815.json",
+    "current_r02": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r02_independent_m01_r01_audit_20260815.json",
+    "predecessor_r11": {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r11_open_universe_candidate_disposition_20260815.json",
+      "sha256": "219cb4a2862111fac1920f8d84d4094e4770472a454657031530d41737f76660"
+    },
+    "predecessor_r12": {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r12_independent_r11_disposition_audit_20260815.json",
+      "sha256": "2f4cd06b789f251b336ab0b1e4f53ab0817a7c259ec3992bdd7b0753aeb296b2"
+    }
+  },
+  "strict_research_gate": {
+    "boundary": "A research admission test only; not a guarantee, forecast, allocation, holding or external-action authorization.",
+    "complete_calendar_year_net_return": ">= 5%",
+    "rolling_five_year_annualized_net_return": ">= 5%"
+  }
+}

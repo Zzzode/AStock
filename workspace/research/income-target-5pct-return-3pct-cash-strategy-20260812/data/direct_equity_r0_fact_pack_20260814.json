@@ -1,0 +1,163 @@
+{
+  "schema_version": "direct_equity_r0_fact_pack.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_evidence",
+  "purpose": "Primary-source R0 facts for three direct-equity T1 nominees. It records audited FY2025 and reported Q1 2026 facts plus the precise missing R1/R2 work. It is not a valuation, target-price, expected-return, investment recommendation or allocation decision.",
+  "source_manifest": "sources/official-continuation-20260814/manifest.json",
+  "current_state": {
+    "tier": "T1_open_research_universe",
+    "all_candidates_q": 0,
+    "r0_status": "partial_primary_facts_captured",
+    "r1_model_status": "not_started",
+    "r2_valuation_status": "blocked_no_current_price_or_market_cap_packet",
+    "t2_admission": "not_approved",
+    "t3_admission": "not_approved",
+    "t4_admission": "not_approved"
+  },
+  "issuers": [
+    {
+      "code": "000333.SZ",
+      "name": "美的集团",
+      "sector_research_model": "consumer appliances, building technology, robotics/automation, industrial technology and overseas operations",
+      "primary_sources": ["CE01", "CE02"],
+      "audit_status": {
+        "fy2025": "standard unqualified audit opinion reported in CE01",
+        "evidence": {"source_id": "CE01", "text_lines": "7767-7809"}
+      },
+      "fy2025_reported_financials": {
+        "currency": "CNY",
+        "revenue_bn": 456.451731,
+        "net_profit_attributable_bn": 43.945411,
+        "net_profit_attributable_yoy_pct": 14.03,
+        "net_profit_excluding_nonrecurring_bn": 41.267233,
+        "net_profit_excluding_nonrecurring_yoy_pct": 15.46,
+        "operating_cash_flow_bn": 53.34593,
+        "operating_cash_flow_yoy_pct": -11.84,
+        "evidence": {"source_id": "CE01", "text_lines": "368-376"}
+      },
+      "q1_2026_reported_financials": {
+        "currency": "CNY",
+        "revenue_bn": 131.098601,
+        "revenue_yoy_pct": 2.55,
+        "net_profit_attributable_bn": 12.674556,
+        "net_profit_attributable_yoy_pct": 2.03,
+        "net_profit_excluding_nonrecurring_bn": 10.961722,
+        "net_profit_excluding_nonrecurring_yoy_pct": -14.02,
+        "operating_cash_flow_bn": 14.529165,
+        "operating_cash_flow_yoy_pct": 1.45,
+        "reported_business_detail": "The Q1 report states that building technology, robotics/automation and industrial technology revenue was CNY10.8bn, CNY8.2bn and CNY6.8bn respectively, with year-on-year changes of +10.1%, +11.8% and -11.7%.",
+        "evidence": {"source_id": "CE02", "text_lines": "48-56"}
+      },
+      "r0_interpretation": "Reported Q1 attributable profit growth and the decline in profit excluding non-recurring items require a bridge before normalised earnings can be inferred. This is a diligence question, not a directional conclusion.",
+      "r1_r2_required": [
+        "Three-year segment, geography, working-capital, goodwill and cash-conversion bridge.",
+        "FX, tariff, overseas demand and supply-chain sensitivity analysis.",
+        "Current-price bull/base/bear valuation and clearly dated share-count/market-cap packet.",
+        "Governance, related-party, post-Q1 announcement, float, liquidity, suspension and price-limit review.",
+        "Broker/Street record or explicit evidence that no usable record exists; catalysts and invalidation conditions."
+      ],
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "600900.SH",
+      "name": "长江电力",
+      "sector_research_model": "hydrology, generation, dispatch, power pricing, operating assets, capital expenditure and balance-sheet management",
+      "primary_sources": ["CE03", "CE04"],
+      "audit_status": {
+        "fy2025": "standard unqualified audit opinion reported in CE03",
+        "evidence": {"source_id": "CE03", "text_lines": "34; 3632-3648"}
+      },
+      "fy2025_reported_financials": {
+        "currency": "CNY",
+        "revenue_bn": 86.24194,
+        "revenue_yoy_pct": 2.07,
+        "net_profit_attributable_bn": 34.502809,
+        "net_profit_attributable_yoy_pct": 6.17,
+        "net_profit_excluding_nonrecurring_bn": 33.445575,
+        "net_profit_excluding_nonrecurring_yoy_pct": 2.89,
+        "operating_cash_flow_bn": 60.562926,
+        "operating_cash_flow_yoy_pct": 1.53,
+        "evidence": {"source_id": "CE03", "text_lines": "206-242"}
+      },
+      "q1_2026_reported_financials": {
+        "currency": "CNY",
+        "revenue_bn": 18.111541,
+        "revenue_yoy_pct": 6.44,
+        "net_profit_attributable_bn": 6.761007,
+        "net_profit_attributable_yoy_pct": 30.5,
+        "net_profit_excluding_nonrecurring_bn": 6.237332,
+        "net_profit_excluding_nonrecurring_yoy_pct": 19.2,
+        "operating_cash_flow_bn": 11.710663,
+        "operating_cash_flow_yoy_pct": -1.15,
+        "evidence": {"source_id": "CE04", "text_lines": "41; 520"}
+      },
+      "r0_interpretation": "The gap between Q1 reported and profit-excluding-nonrecurring growth must be reconciled, including disclosed fair-value items, before any earnings run-rate conclusion. Hydrology and tariff drivers must be modelled explicitly rather than replaced by a historical cash-flow label.",
+      "r1_r2_required": [
+        "Hydrology-to-generation-to-volume-to-price bridge with downside cases.",
+        "Capacity, capital expenditure, debt, acquisition, related-party and dispatch analysis.",
+        "Current-price valuation with a sector-appropriate normalised earnings framework.",
+        "Policy, tariff, operational outage, governance and post-Q1 announcement review.",
+        "Current float/liquidity/market-status packet, broker/Street record, catalysts and invalidation conditions."
+      ],
+      "status": "T1_watch_only_q0"
+    },
+    {
+      "code": "600036.SH",
+      "name": "招商银行",
+      "sector_research_model": "net-interest margin, credit quality, provision coverage, capital, fee income, retail and wholesale banking",
+      "primary_sources": ["CE05", "CE06"],
+      "audit_status": {
+        "fy2025": "CE05 states that the PRC Accounting Standards and IFRS annual financial statements received standard auditing reports with unqualified opinions.",
+        "evidence": {"source_id": "CE05", "text_lines": "152"},
+        "limitation": "CE05 is the H-share English report and says the Chinese version prevails in the event of a discrepancy; the A-share Chinese filing remains a required cross-check."
+      },
+      "fy2025_reported_financials": {
+        "currency": "CNY",
+        "net_operating_income_bn": 337.273,
+        "net_operating_income_yoy_pct": 0.05,
+        "net_profit_attributable_bn": 150.181,
+        "net_profit_attributable_yoy_pct": 1.21,
+        "net_interest_margin_pct": 1.87,
+        "net_interest_margin_yoy_change_bp": -11,
+        "nonperforming_loan_ratio_pct": 0.94,
+        "allowance_coverage_ratio_pct": 391.79,
+        "common_equity_tier_1_ratio_pct": 14.16,
+        "evidence": {"source_id": "CE05", "text_lines": "757-847"}
+      },
+      "q1_2026_reported_financials": {
+        "currency": "CNY",
+        "net_operating_income_bn": 86.952,
+        "net_operating_income_yoy_pct": 3.85,
+        "net_profit_attributable_bn": 37.852,
+        "net_profit_attributable_yoy_pct": 1.52,
+        "net_interest_margin_pct": 1.83,
+        "net_interest_margin_yoy_change_bp": -8,
+        "nonperforming_loan_ratio_pct": 0.94,
+        "allowance_coverage_ratio_pct": 387.76,
+        "evidence": {"source_id": "CE06", "text_lines": "83-125; 317-397"},
+        "reporting_status": "unaudited quarterly report"
+      },
+      "r0_interpretation": "The bank must be modelled through PB-ROTE-cost-of-equity and NIM-credit-provision-capital mechanics; industrial-company revenue/FCF shortcuts are not a valid valuation method. Reported stable asset-quality ratios do not remove the need for granular property, retail-credit and capital stress analysis.",
+      "r1_r2_required": [
+        "Reconcile the A-share Chinese filing with the captured H-share report and collect post-Q1 disclosures.",
+        "Build a PB-ROTE-cost-of-equity valuation with NIM, credit-cost, provisions, capital and fee-income sensitivities.",
+        "Review property and retail-credit exposures, related parties, regulatory changes and concentration risks.",
+        "Capture current price, share count, market capitalisation, float, ADTV, price-limit/suspension status and account access.",
+        "Obtain broker/Street record or document absence; state catalysts, invalidation and portfolio common-risk contribution."
+      ],
+      "status": "T1_watch_only_q0"
+    }
+  ],
+  "portfolio_boundary": {
+    "direct_equity_aggregate_weight": null,
+    "individual_weights": null,
+    "reason": "R0 facts alone cannot set a weight. No current valuation, cost/tax, total-return, risk-budget, overlap, suitability or execution packet has passed."
+  },
+  "warnings": [
+    "Reported financial results are historical filing facts, not forecasts or expected returns.",
+    "No current price, target price, fair value, price objective, market-cap snapshot, broker consensus or live liquidity conclusion is supplied.",
+    "No dividend, distribution or cash-receipt threshold is used in nomination or evaluation.",
+    "No automatic reinvestment, forced allocation or order instruction is used."
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "schema_version": "domestic_personal_multiasset_candidate_universe.v2",
+  "as_of": "2026-08-14",
+  "status": "draft_comparison_universe_not_frozen",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "universe_policy": "Open to domestic instruments that pass the same dated evidence gates. This finite set is an initial reproducible probe only.",
+  "u0_derivation_audit": {
+    "required_audit_id": "DPSFS-U0T2-v1",
+    "required_registry_id": "DPSFS-U0-v2",
+    "required_registry_version": 2,
+    "status": "not_generated_no_frozen_u0_snapshot",
+    "u0_snapshot_sha256": null,
+    "coverage_label": "draft_probe_not_open_universe_test",
+    "boundary": "Current rows are linked to parent classes for governance only. They were not derived from a frozen U0 population and cannot become T2 through manual nomination."
+  },
+  "candidates": [
+    {
+      "id": "511010.SH",
+      "parent_class_id": "BOND_AND_MONEY_MARKET_ETFS",
+      "structure": "listed Treasury-bond ETF",
+      "economic_role": "Treasury-bond comparison sleeve; defensive behaviour is unproven",
+      "current_q": 0,
+      "evidence_status": "R1 product facts",
+      "hard_gates": ["total-return/event ledger", "price/NAV and liquidity history", "cost/tax/settlement/no-fill evidence", "independent review"],
+      "current_decision": "not admitted"
+    },
+    {
+      "id": "510300.SH",
+      "parent_class_id": "LISTED_EQUITY_ETFS",
+      "structure": "broad A-share ETF",
+      "economic_role": "conditional equity-risk comparison sleeve",
+      "current_q": 0,
+      "evidence_status": "R1 product facts",
+      "hard_gates": ["total-return/event ledger", "T+1 and market-status evidence", "overlap/risk-cluster analysis versus 510880", "cost/tax/no-fill evidence", "independent review"],
+      "current_decision": "not admitted"
+    },
+    {
+      "id": "510880.SH",
+      "parent_class_id": "LISTED_EQUITY_ETFS",
+      "structure": "dividend A-share ETF",
+      "economic_role": "conditional equity-risk comparison sleeve",
+      "current_q": 0,
+      "evidence_status": "R1 product facts",
+      "hard_gates": ["total-return/event ledger", "T+1 and market-status evidence", "overlap/risk-cluster analysis versus 510300", "cost/tax/no-fill evidence", "independent review"],
+      "current_decision": "not admitted"
+    },
+    {
+      "id": "518880.SH",
+      "parent_class_id": "GOLD_AND_OTHER_COMMODITY_ETFS",
+      "structure": "domestic gold ETF",
+      "economic_role": "gold-exposure comparison sleeve; diversification behaviour is unproven",
+      "current_q": 0,
+      "evidence_status": "R1 product facts",
+      "hard_gates": ["total-return/event ledger", "price/NAV and liquidity history", "exchange-holiday/market-status evidence", "cost/tax/no-fill evidence", "independent review"],
+      "current_decision": "not admitted"
+    },
+    {
+      "id": "511990.SH",
+      "parent_class_id": "BOND_AND_MONEY_MARKET_ETFS",
+      "structure": "money-market ETF",
+      "economic_role": "money-market ETF comparison; settlement functionality is unverified",
+      "current_q": 0,
+      "evidence_status": "R1 product facts",
+      "hard_gates": ["per-unit income/NAV and premium-discount convention", "route-specific trading/settlement evidence", "cost/tax/no-fill evidence", "independent review"],
+      "current_decision": "not admitted"
+    },
+    {
+      "id": "AU actual listed contracts",
+      "parent_class_id": "COMMODITY_FUTURES",
+      "structure": "SHFE gold-futures family",
+      "economic_role": "conditional commodity trend/diversification research family",
+      "current_q": 0,
+      "evidence_status": "R0 data path only",
+      "hard_gates": ["actual-contract lifecycle/master", "contract-rule version and delivery buffer", "daily margin/limit/fee data", "actual roll/no-fill replay", "suitability and broker route", "independent risk review"],
+      "current_decision": "not admitted"
+    },
+    {
+      "id": "CU actual listed contracts",
+      "parent_class_id": "COMMODITY_FUTURES",
+      "structure": "SHFE copper-futures family",
+      "economic_role": "conditional commodity trend/diversification research family",
+      "current_q": 0,
+      "evidence_status": "R0 data path only",
+      "hard_gates": ["actual-contract lifecycle/master", "contract-rule version and delivery buffer", "daily margin/limit/fee data", "actual roll/no-fill replay", "suitability and broker route", "independent risk review"],
+      "current_decision": "not admitted"
+    },
+    {
+      "id": "TA actual listed contracts",
+      "parent_class_id": "COMMODITY_FUTURES",
+      "structure": "CZCE PTA-futures family",
+      "economic_role": "conditional commodity trend/diversification research family",
+      "current_q": 0,
+      "evidence_status": "R0 data path only",
+      "hard_gates": ["actual-contract lifecycle/master", "contract-rule version and delivery buffer", "daily margin/limit/fee data", "actual roll/no-fill replay", "suitability and broker route", "independent risk review"],
+      "current_decision": "not admitted"
+    }
+  ],
+  "explicit_exclusions_at_current_stage": [
+    "No individual futures contract is selected in advance; eligibility must be evaluated on its date.",
+    "Financial futures, options, leveraged/inverse products and special varieties remain U0 unresearched, not economically rejected, pending separate access and rule dossiers.",
+    "Direct equities and public REITs remain U0 unresearched rather than rejected; they need their own current issuer/product research before comparison."
+  ],
+  "admission_rule": "No candidate may enter a frozen T2, T3 or any allocation field until all named hard gates, a common data/replay gate and the frozen U0-to-T2 derivation audit pass."
+}

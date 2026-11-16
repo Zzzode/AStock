@@ -1,0 +1,173 @@
+{
+  "cycle": "R2_draft",
+  "review_run": "re-review_after_repair",
+  "publishability_status": "CONDITIONAL",
+  "institutional_status": "R2_NARRATIVE_PASS",
+  "publishability_score": 92,
+  "score_scope": "R2 narrative, factual-consistency, evidence-integration, and recommendation-boundary review only; this is not an R3 render or R4 publication score.",
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "review_scope": {
+    "files_reviewed": [
+      "main.tex",
+      "sections/ch01_decision.tex",
+      "sections/ch03_market.tex",
+      "sections/ch04_financials.tex",
+      "sections/ch05_primary.tex",
+      "sections/ch06_historical_recheck.tex",
+      "sections/ch07_risk_triggers.tex",
+      "sections/ch08_sources.tex",
+      "sections/app_a_anchor_math.tex"
+    ],
+    "ground_truth_packets": [
+      "data/verified_market_data_20260811.json",
+      "data/verified_financials_20260811.json",
+      "data/current_valuation_model_20260811.json",
+      "data/broker_street_consensus_20260811.md",
+      "data/source_registry.json",
+      "data/high_upside_recheck_20260811.json"
+    ]
+  },
+  "verifier_summary": {
+    "r2_result": "Narrative and evidence-integration repairs were re-read and cross-checked against the current verified packets.",
+    "case_verifier": "Not assessed in this R2 re-review; the mandatory case verifier remains an R3/R4 gate.",
+    "render_review": "Deferred to R3. No MacTeX-built PDF or rendered pages are available, and this re-review makes no visual or compilation claim."
+  },
+  "findings": [
+    {
+      "issue_id": "R2-S-001",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "main.tex:20-23",
+      "evidence": "The prior English abstract carrying central valuation/recommendation logic was removed. The abstract and reader note are now Chinese; the LaTeX review found no remaining standalone English valuation, recommendation, risk, or catalyst paragraph.",
+      "fix_required": "Completed: retain Chinese-only reader-facing valuation and recommendation logic in future edits.",
+      "blocking_gate": "Chinese language localization",
+      "status": "verified",
+      "verification_evidence": "main.tex:20-23",
+      "verifier_ref": "research-report-review R2 language rule",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-001",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch01_decision.tex:25",
+      "evidence": "The decision table now defines its order as research-investment priority, gives the four evaluation axes, excludes expected-return/rating/investability/position meanings, and maps the permitted action and downgrade path. This is consistent with the no-house-target dispositions in data/current_valuation_model_20260811.json:9-12.",
+      "fix_required": "Completed: preserve this definition if Figure 1 is revised.",
+      "blocking_gate": "R2 IC decision clarity",
+      "status": "verified",
+      "verification_evidence": "sections/ch01_decision.tex:25; data/current_valuation_model_20260811.json:9-12",
+      "verifier_ref": "research-report-review R2 first-chapter standard",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-002",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch03_market.tex:5,23; sections/ch04_financials.tex:3,22; sections/ch06_historical_recheck.tex:3,25; sections/ch07_risk_triggers.tex:5,17,33",
+      "evidence": "Each formerly table-led substantive chapter now contains a pre-exhibit analytical thesis and a post-exhibit decision synthesis. The text links price, financial actuality, historical samples, and triggers back to the Figure 1 research state.",
+      "fix_required": "Completed: preserve prose-before-exhibit and decision-synthesis structure in future edits.",
+      "blocking_gate": "R2 narrative and exhibit integration",
+      "status": "verified",
+      "verification_evidence": "sections/ch03_market.tex:5,23; sections/ch04_financials.tex:3,22; sections/ch06_historical_recheck.tex:3,25; sections/ch07_risk_triggers.tex:5,17,33",
+      "verifier_ref": "research-report-review R2 narrative-flow lens",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-003",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "risk-analyst",
+      "artifact": "sections/ch07_risk_triggers.tex:21-33",
+      "evidence": "The trigger table now states a sequential and observable pathway. For 002497, actual H1 revenue/OCF and the preview-profit reconciliation precede Q3/H2 bridge checks, matching its official H1-preview status in data/verified_financials_20260811.json:12. The table explicitly labels its rules as monitoring rules rather than forecast thresholds or trading triggers.",
+      "fix_required": "Completed: refresh the sequence when the next issuer disclosure lands.",
+      "blocking_gate": "R2 actionable monitoring framework",
+      "status": "verified",
+      "verification_evidence": "sections/ch07_risk_triggers.tex:21-33; data/verified_financials_20260811.json:12",
+      "verifier_ref": "research-report-review R2 risk and IC-readiness lens",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-004",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/app_a_anchor_math.tex:3-20",
+      "evidence": "Figure A1 now puts broker/date, forecast year and method, source-quality/evidence cap, mechanical difference, and per-row AStock status together. The treatment of CNY42 (16x 2026E P/E), CNY103 for 002812 (20x 2027E P/E), and the two non-averaged 300014 references reconciles to data/broker_street_consensus_20260811.md:26-32 and data/source_registry.json:17-22.",
+      "fix_required": "Completed: preserve external-reference-only and no-AStock-target labels for every anchor.",
+      "blocking_gate": "R2 valuation communication and recommendation boundary",
+      "status": "verified",
+      "verification_evidence": "sections/app_a_anchor_math.tex:11-20; data/broker_street_consensus_20260811.md:26-32; data/source_registry.json:17-22",
+      "verifier_ref": "research-report-review R2 valuation/evidence-integration lens",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-A-005",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch04_financials.tex:11-19; sections/ch05_primary.tex:7,13,19,25; sections/ch06_historical_recheck.tex:11-22; sections/ch08_sources.tex:16-18",
+      "evidence": "Material H1, cash, and broker-anchor claims now carry source IDs, dated CNINFO/report references, and pages where available. IDs reconcile to data/source_registry.json:10-22. Actual reports, issuer previews, and official-search gaps remain visibly distinct.",
+      "fix_required": "Completed: retain source IDs and update source dates/pages if evidence packets are refreshed.",
+      "blocking_gate": "R2 evidence traceability",
+      "status": "verified",
+      "verification_evidence": "sections/ch04_financials.tex:11-19; sections/ch05_primary.tex:7,13,19,25; sections/ch06_historical_recheck.tex:11-22; sections/ch08_sources.tex:16-18; data/source_registry.json:10-22",
+      "verifier_ref": "research-report-review R2 evidence-integration lens",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-B-001",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch08_sources.tex:14",
+      "evidence": "The report now uses the exact market-packet quality label high_with_local_adapter_fallback and preserves the public-endpoint fallback explanation, consistent with data/verified_market_data_20260811.json:6,10-12.",
+      "fix_required": "Completed.",
+      "blocking_gate": "none",
+      "status": "verified",
+      "verification_evidence": "sections/ch08_sources.tex:14; data/verified_market_data_20260811.json:6,10-12",
+      "verifier_ref": "manual source-quality consistency check",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R2-B-002",
+      "severity": "B",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "artifact": "sections/ch01_decision.tex:25,29; sections/ch06_historical_recheck.tex:3,25",
+      "evidence": "The revised text gives a consistent 4 primary + 6 historical high-upside + 3 conditional/cycle-watch universe bridge and explains that the 4 and 9-name groups do not overlap.",
+      "fix_required": "Completed.",
+      "blocking_gate": "none",
+      "status": "verified",
+      "verification_evidence": "sections/ch01_decision.tex:25,29; sections/ch06_historical_recheck.tex:3,25",
+      "verifier_ref": "manual cross-chapter consistency check",
+      "reopened_count": 0
+    }
+  ],
+  "confirmed_correct": [
+    {
+      "claim": "All close-based market statements continue to use the 2026-08-10 completed-session close, not the 2026-08-11 zero-trade pre-open observation.",
+      "evidence": "sections/ch02_method.tex:5; data/verified_market_data_20260811.json:4-12"
+    },
+    {
+      "claim": "Only 000703 and 301308 are treated as actual H1 reports; nine issuer previews and the 600739/600150 official-search gaps remain clearly separated.",
+      "evidence": "sections/ch04_financials.tex:3,11-19,24-26; data/verified_financials_20260811.json:9-21"
+    },
+    {
+      "claim": "Primary-name prices, positions, returns, financial values, external anchors, and anchor arithmetic remain consistent with the verified market, financial, valuation, and broker packets.",
+      "evidence": "sections/ch01_decision.tex:13-25; sections/ch03_market.tex:11-31; sections/ch04_financials.tex:9-19; sections/ch05_primary.tex:5-25; sections/app_a_anchor_math.tex:11-20"
+    },
+    {
+      "claim": "The repaired draft makes no AStock target or formal recommendation; external broker values are explicitly labelled external references and evidence caps are not portfolio weights.",
+      "evidence": "sections/ch01_decision.tex:3-5,25,33; sections/app_a_anchor_math.tex:3,9-20,25; data/current_valuation_model_20260811.json:6-12"
+    }
+  ],
+  "deferred_checks": [
+    "R3 must compile with the required MacTeX XeLaTeX environment and inspect rendered PDF pages for clipping, overlap, table readability, source-note legibility, and visual hierarchy.",
+    "R3/R4 must run the mandatory case verifier and the repository research gate after all artifact refreshes. This R2 re-review does not claim those gates pass.",
+    "R4 must close verified R2 findings only after the full report, render, and issue lifecycle are reviewed together."
+  ]
+}

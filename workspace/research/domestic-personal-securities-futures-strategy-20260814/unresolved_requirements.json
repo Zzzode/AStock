@@ -1,0 +1,131 @@
+{
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "completion_decision": "do_not_mark_complete",
+  "requirements": [
+    {
+      "id": "UR01",
+      "requirement": "Entitled ETF total-return/event archive",
+      "fields": [
+        "market OHLCV",
+        "NAV/IOPV",
+        "distribution and action dates/amounts",
+        "status/halts/limits",
+        "as_of",
+        "available_at",
+        "revision"
+      ],
+      "blocks": [
+        "listed-fund replay",
+        "listed-fund admission"
+      ]
+    },
+    {
+      "id": "UR02",
+      "requirement": "Entitled actual-contract futures archive",
+      "fields": [
+        "contract master/lifecycle",
+        "daily full cross-section",
+        "settlement/OHLC/volume/OI/turnover",
+        "margin/fees/limits",
+        "trading/delivery status",
+        "as_of",
+        "available_at",
+        "revision"
+      ],
+      "blocks": [
+        "futures replay",
+        "futures admission"
+      ]
+    },
+    {
+      "id": "UR03",
+      "requirement": "Cost and execution evidence",
+      "fields": [
+        "broker fees",
+        "tax",
+        "bid/ask or conservative fill method",
+        "T+1",
+        "no-fill",
+        "market status",
+        "order side/timestamps/route/quote snapshot and settlement causality",
+        "cash/collateral term-set identity, route-account scope and accrual terms",
+        "monotonic order-state-transition ledger",
+        "typed broker/tax terms with route/account/instrument-or-product scope, effective range and jurisdiction",
+        "separate execution-state and settlement-state ledger with end-run carry/cancel treatment",
+        "immutable per-fill quantity/price/currency/time plus fee/tax and settlement-event linkage",
+        "event-type-to-application-role mapping and component/currency fee-tax reconciliation",
+        "per-fill transition sequence, cumulative/residual quantity, quote-depth/capacity consumption and impact/proxy evidence",
+        "dated fee/tax output-currency calculation with frozen FX conversion, source, timestamp and hash when settlement currency differs",
+        "T+1/lot/reservation and transaction-time decision/submission/fill cash/margin feasibility evidence with a non-overlapping reservation-pool audit",
+        "economic position/NAV accounting kept separate from unfilled-sale reservation and available-to-sell capacity"
+      ],
+      "blocks": [
+        "all net-return claims",
+        "current action"
+      ]
+    },
+    {
+      "id": "UR04",
+      "requirement": "Frozen rule/test protocol",
+      "fields": [
+        "PIT universe",
+        "selection/roll/substitution rules",
+        "calendar/ties/lags",
+        "event treatment",
+        "risk limits",
+        "development/holdout split",
+        "rolling-window and annualization definition",
+        "endpoint status and missing-window policy",
+        "unitized internal/external cash-flow accounting",
+        "execution/no-fill state machine",
+        "parameter log, source-revision cut-off and deterministic run bundle",
+        "formal replay protocol ID/version/SHA-256",
+        "nonpositive-NAV and no-rebase treatment",
+        "minimum candidate-endpoint count and zero-count policy",
+        "expected-versus-actual candidate-endpoint equality rule",
+        "CROSSING policy and endpoint-partition reconciliation",
+        "primary-holdout/development/crossing result populations",
+        "nonempty expected-versus-actual primary-holdout endpoint rule",
+        "executable primary-holdout window predicate and post-freeze invalidation rule",
+        "overlap-dependence boundary plus deterministic non-overlapping and regime/stress summaries",
+        "frozen allowed order-state-transition matrix and ledger reconciliation",
+        "hash-bound risk-and-feasibility control pack with numerical limits, measurement, escalation and pass/fail rules",
+        "conjunctive usable-strategy status audit",
+        "single canonical freeze-record crosswalk with predicate/lockbox/input/revision/code/runtime/command/first-view bindings",
+        "immutable frozen-run binding propagated to every replay, order, ledger and endpoint row using a non-self-referential canonical hash algorithm",
+        "endpoint a/calendar-anchor, s/selected-start-valuation and e/end-valuation semantics with unit-NAV TWRR rather than total-NAV ratio",
+        "endpoint candidate-roster, PASS/FAIL/INCOMPLETE/INVALID count, zero-candidate and partition reconciliation audit",
+        "post-lockbox primary-holdout start-state component membership bound to unitization, position/lot/mark, cashflow/P&L and reconciliation rows",
+        "unitization, economic position/lot/mark, cashflow/P&L and reconciliation-residual ledger design",
+        "U0-to-T2 derivation audit and class-module coverage label"
+      ],
+      "blocks": [
+        "formal model",
+        "performance interpretation"
+      ]
+    },
+    {
+      "id": "UR05",
+      "requirement": "Independent review and prospective paper reconciliation",
+      "fields": [
+        "R0/R1/risk findings",
+        "current product/contract facts",
+        "liquidity/overlap/stress",
+        "paper ledger versus observed execution",
+        "U0 population and class-neutral universe audit",
+        "exception/override log and severity closure",
+        "both calendar-duration and distinct-observation thresholds plus field-level material-difference and escalation policy",
+        "per-control risk/feasibility, stress, liquidity/capacity and route/suitability pass/fail review",
+        "prospective paper state/configuration coverage matrix with evidence disposition for every applicable class/route/term/transaction/state",
+        "zero unresolved blocking rows in the prospective configuration/state coverage audit",
+        "independent fill/state-transition, fee/tax/FX, settlement, reservation-pool, unitization and endpoint-population reconciliation",
+        "independent verification that run bindings, canonical hash exclusions, endpoint a/s/e semantics and execution-versus-settlement state domains are consistent"
+      ],
+      "blocks": [
+        "T2/T3/T4 admission",
+        "usable-strategy report"
+      ]
+    }
+  ]
+}

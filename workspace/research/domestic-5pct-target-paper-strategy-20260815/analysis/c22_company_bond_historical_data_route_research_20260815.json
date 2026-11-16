@@ -1,0 +1,198 @@
+{
+  "schema_version": "c22_company_bond_historical_data_route_research.v1",
+  "artifact_id": "D5PT-C22-COMPANY-BOND-HISTORICAL-DATA-ROUTE-RESEARCH-v1",
+  "as_of": "2026-08-15",
+  "research_only": true,
+  "product_selected": false,
+  "return_test_run": false,
+  "return_result": null,
+  "external_action": false,
+  "purpose": "Bounded source-route research for a future reproducible company-bond total-return protocol. This is not a data acquisition, universe definition, bond selection, backtest, or action instruction.",
+  "status": "CONDITIONAL_LAWFUL_MULTI_SOURCE_ROUTE_IDENTIFIED_NOT_TEST_ADMITTED",
+  "answer": "No public end-to-end, rights-cleared, point-in-time company-bond dataset was established in this review. A potentially lawful multi-source route is identifiable only after written data-rights confirmation, field dictionaries, historical extracts, coverage tests, and an independently reproducible event ledger are obtained.",
+  "required_protocol_fields": [
+    "dated evaluated full price, clean price, yield, and accrued interest",
+    "dated cash-flow schedule and realized coupon, redemption, default, restructuring, and recovery events",
+    "dated suspension, resumption, listing, termination, and trading-status events",
+    "dated market volume, quote, order, and transaction records",
+    "point-in-time security master, venue, terms, ratings, identifiers, and availability metadata",
+    "rights, retrieval timestamp, version, adjustment convention, and retention evidence for every input"
+  ],
+  "source_routes": [
+    {
+      "route_id": "C22-R1",
+      "provider": "ChinaBond Pricing Center / China Central Depository & Clearing Co., Ltd.",
+      "type": "official valuation-data locator with an explicitly contactable detailed-data path",
+      "primary_urls": [
+        "https://valuation.chinabond.com.cn/cbweb-mn/val/val_query_list?locale=zh_CN",
+        "https://indices.chinabond.com.cn/cbweb-mn/val/val_query_list?locale=zh_CN"
+      ],
+      "access_rights_observed": "The public valuation page states that more detailed data is available through ChinaBond data-product channels and gives data-service contacts. It separately requires written application for specified product-development or benchmark uses. The page does not itself grant bulk historical extraction, retention, internal-research, derivative-output, or redistribution rights.",
+      "fields_observed_on_public_page": [
+        "valuation date",
+        "bond name and code",
+        "bond nature and trading venue",
+        "remaining maturity",
+        "mid-day full price, accrued interest, clean price, and yield",
+        "end-of-day full price and accrued interest",
+        "remaining amount, implied rating, ISIN, and liquidity-related fields"
+      ],
+      "coverage_observed": "The public table includes rows labelled for Shanghai and Shenzhen venues as well as other venues. That is field-level evidence only, not a verified historic company-bond population or completeness statement.",
+      "can_potentially_fill": {
+        "evaluated_price_yield_accrued_interest": "CONDITIONAL_YES",
+        "security_metadata": "PARTIAL",
+        "cashflow_coupon_redemption_default": "NOT_PROVEN",
+        "suspension_and_trade_status": "NOT_PROVEN",
+        "volume_quotes": "NOT_PROVEN",
+        "point_in_time_master_universe": "NOT_PROVEN"
+      },
+      "mandatory_rights_and_coverage_confirmation": [
+        "Written permission for the requested historic date range, named use, local retention, reproducible research, and permitted derived outputs.",
+        "A delivery sample and data dictionary that define full/clean-price, accrued-interest, yield, valuation timing, venue mapping, corrections, and missing-value treatment.",
+        "Coverage proof for every C18-eligible company-bond identifier and every required date, including terminated and distressed instruments."
+      ]
+    },
+    {
+      "route_id": "C22-R2",
+      "provider": "Shanghai Clearing House valuation and index service",
+      "type": "official valuation-data route with website, authorized-data-vendor, member, direct-interface, and subscription channels",
+      "primary_urls": [
+        "https://www.shclearing.cn/cpgz/zqjqysp/jj/202209/P020260429358580150440.pdf",
+        "https://www.shclearing.cn/cpgz/zqjqysp/jj/"
+      ],
+      "access_rights_observed": "The product manual describes official-site query/download, authorized data vendors, member client access to current and historical valuation data, member direct interfaces, and email subscription. It does not establish that a non-member public user already has the requested historic bulk-data or retention rights.",
+      "fields_observed": [
+        "coverage stated for interbank and exchange markets, including Shanghai and Shenzhen exchange bonds",
+        "full price, clean price, yield, duration, convexity, remaining amount, and accrued interest",
+        "terms including call, put, rate-reset, extension, deferred-interest, amortization, and multiple day-count bases"
+      ],
+      "coverage_observed": "The manual states market-wide daily valuation coverage and exchange-market coverage, but this review did not obtain a contract, historic extract, company-bond coverage list, or a data dictionary showing the exact scope and availability date by date.",
+      "can_potentially_fill": {
+        "evaluated_price_yield_accrued_interest": "CONDITIONAL_YES",
+        "security_metadata": "PARTIAL",
+        "cashflow_coupon_redemption_default": "NOT_PROVEN",
+        "suspension_and_trade_status": "NOT_PROVEN",
+        "volume_quotes": "NOT_PROVEN",
+        "point_in_time_master_universe": "NOT_PROVEN"
+      },
+      "mandatory_rights_and_coverage_confirmation": [
+        "Confirm the lawful channel and entitlement for a non-member or relevant institutional research user, including historical exports and local retention.",
+        "Obtain a signed field list and coverage report for exchange-listed company bonds, including historical revisions and delisted or distressed instruments.",
+        "Do not substitute valuation data for tradable quote, execution, or actual cash-receipt records."
+      ]
+    },
+    {
+      "route_id": "C22-R3",
+      "provider": "Shanghai Stock Exchange Information Network / SSE market-data services",
+      "type": "officially operated and licensable market-data route for exchange transaction, quote, and reference fields",
+      "primary_urls": [
+        "https://www.sseinfo.com/services/assortment/market/hqywwd/wdcpsms/c/10782125/files/f2ba70dea74a4323bf13b76fffce0e40.pdf",
+        "https://www.sseinfo.com/services/assortment/market/hqywwd/wdzsjk/c/10800481/files/43b75567ae224148bd576acf11d30bd3.pdf",
+        "https://www.sseinfo.com/services/assortment/income/",
+        "https://www.sseinfo.com/aboutus/authstatement/"
+      ],
+      "access_rights_observed": "SSE/SZSE's joint authorization statement says exchange information may not be copied, transmitted, used, or commercialized without permission, and identifies SSE Info as SSE's exclusive authorized operator. SSE Info product pages provide a business-application path. A public webpage is therefore not an entitlement to a historical dataset.",
+      "fields_observed": [
+        "fixed-income product basic information files",
+        "snapshot fields including prices, volume, turnover, trade count, high, low, and average price",
+        "bond tick fields including identifier, order/trade time, type, price, quantity, amount, direction, order numbers, and product status",
+        "daily and minute K-line data, snapshots, and auction or post-close records depending on product tier"
+      ],
+      "coverage_observed": "The historical-data interface says the BondTick file begins on 2021-12-01 and data begin with actual business launch. The review did not obtain the licensed product matrix proving exact company-bond universe coverage, all trading methods, historical completeness, or retention rights for C18.",
+      "can_potentially_fill": {
+        "evaluated_price_yield_accrued_interest": "NO",
+        "security_metadata": "CONDITIONAL_YES",
+        "cashflow_coupon_redemption_default": "NO",
+        "suspension_and_trade_status": "PARTIAL_CONDITIONAL",
+        "volume_quotes": "CONDITIONAL_YES",
+        "point_in_time_master_universe": "PARTIAL_CONDITIONAL"
+      },
+      "mandatory_rights_and_coverage_confirmation": [
+        "Obtain a written SSE Info license covering historical files, selected data tiers, the intended internal research use, local retention, and permitted derived results.",
+        "Obtain product-specific data dictionaries and an historical coverage report for company bonds and every trade mechanism used in the protocol.",
+        "Reconcile product-status records with exchange suspension and resumption notices; do not infer fills from a close, volume, or isolated tick."
+      ]
+    },
+    {
+      "route_id": "C22-R4",
+      "provider": "Shanghai Stock Exchange company-bond disclosure and rule archive",
+      "type": "official public document-level event-evidence route",
+      "primary_urls": [
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/listing/corporatebond/c/c_20250520_10779485.shtml",
+        "https://www.sse.com.cn/lawandrules/sselawsrules2025/bond/listing/corporatebond/c/c_20250520_10779480.shtml",
+        "https://bond.sse.com.cn/disclosure/info/index.shtml"
+      ],
+      "access_rights_observed": "Public disclosure pages and rule text are available for read-only document research. In this bounded review, no official machine-readable, complete, point-in-time historic event export or data-use licence was established for full-universe replay.",
+      "fields_observed_or_required_by_rule": [
+        "issuer periodic disclosures list active or unpaid bonds with identifier, issue and maturity dates, balance, rate, repayment method, venue, and trading mechanism",
+        "pre-payment disclosure of interest or maturity-payment arrangements",
+        "put, call, rate-reset, default, credit-risk, suspension, resumption, and termination disclosures"
+      ],
+      "coverage_observed": "The rules establish document obligations and the disclosure site supports document lookup. They do not prove a normalized historic event table with original publication timestamps, complete corrections, entitlement dates, cash receipt, restructuring recoveries, or machine-readable point-in-time coverage.",
+      "can_potentially_fill": {
+        "evaluated_price_yield_accrued_interest": "NO",
+        "security_metadata": "PARTIAL_CONDITIONAL",
+        "cashflow_coupon_redemption_default": "PARTIAL_CONDITIONAL",
+        "suspension_and_trade_status": "PARTIAL_CONDITIONAL",
+        "volume_quotes": "NO",
+        "point_in_time_master_universe": "PARTIAL_CONDITIONAL"
+      },
+      "mandatory_rights_and_coverage_confirmation": [
+        "Freeze the exact document universe, document identifiers, retrieval timestamps, and a version/correction policy before extraction.",
+        "Independently reconcile scheduled and realized events with the relevant registration, clearing, or contracted corporate-action record.",
+        "Treat document-level text as event evidence, not an automatically complete cash-flow or execution ledger."
+      ]
+    }
+  ],
+  "field_coverage_matrix": [
+    {
+      "field_group": "dated evaluated price, yield, accrued interest",
+      "best_candidate": "C22-R1 or C22-R2 under written historical-data rights",
+      "status": "CONDITIONAL",
+      "gap": "No licensed historical extract, field dictionary, completeness report, or adjustment/revision convention has been reviewed."
+    },
+    {
+      "field_group": "cash-flow schedule and realized payment, default, restructuring, or recovery event",
+      "best_candidate": "C22-R4 document archive plus an independent contracted or registration/clearing corporate-action source",
+      "status": "BLOCKED",
+      "gap": "No complete normalized event ledger or evidence of realized cash receipt and recovery treatment was identified."
+    },
+    {
+      "field_group": "suspension, resumption, listing, termination, and trade status",
+      "best_candidate": "C22-R3 historical status/tick data plus C22-R4 notices",
+      "status": "PARTIAL_CONDITIONAL",
+      "gap": "No licence, coverage matrix, full date range, or reconciled status-event history has been obtained."
+    },
+    {
+      "field_group": "volume, quote, order, and transaction records",
+      "best_candidate": "C22-R3 licensed historical fixed-income or Level-2 data",
+      "status": "CONDITIONAL",
+      "gap": "C22 confirms a product path and fields, not the selected tier, contractual scope, exact company-bond coverage, or executable-fill model."
+    },
+    {
+      "field_group": "point-in-time security master and historical universe",
+      "best_candidate": "C22-R3 reference files reconciled with C22-R4 disclosure and a contracted valuation provider",
+      "status": "BLOCKED",
+      "gap": "No evidence package proves a historic complete universe, venue changes, eligibility, delistings, or survivorship control."
+    }
+  ],
+  "minimum_contract_and_data_acceptance_gate": [
+    "Written permission from every data owner or authorized operator for the exact data, historic range, use case, local retention, reproducible research, and permitted derived outputs.",
+    "Raw delivery sample for a frozen date range, complete data dictionaries, record counts by date and venue, identifiers, time zone, availability timestamp, corrections, and missing-data rules.",
+    "A dated company-bond master universe that retains additions, terminations, suspensions, trading-method changes, and event history without survivorship filtering.",
+    "An event ledger that distinguishes scheduled from realized cash flows, includes defaults and recoveries, and is independently reconciled to documentation and a clearing or contracted corporate-action record.",
+    "A predeclared valuation and execution protocol that never substitutes evaluated price, close, volume, or a quote for an actual fill or an individual access result.",
+    "Independent reconstruction from the retained raw delivery before any research performance result can be considered."
+  ],
+  "current_disposition": {
+    "state": "NO_BOND_SELECTION_NO_BACKTEST_NO_ACTION",
+    "research_conclusion": "C22 identifies conditional source routes only. C18 remains not testable unless the acceptance gate is completed and independently verified.",
+    "prohibitions": [
+      "Do not select a company bond from this route research.",
+      "Do not calculate, forecast, or claim a return.",
+      "Do not infer personal eligibility, account access, order acceptance, settlement, liquidity, or fill quality.",
+      "Do not contact a provider, enter a licence, download restricted data, open an account, place an order, or move cash under this artifact."
+    ]
+  },
+  "source_retention_note": "This C22 artifact records public source locators and research findings only. It does not retain source files, establish permissions, or create a source batch. Any future test-admission review must perform a separate lawful capture and rights audit."
+}

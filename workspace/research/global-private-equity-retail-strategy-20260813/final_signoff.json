@@ -1,0 +1,46 @@
+{
+  "case_id": "global-private-equity-retail-strategy-20260813",
+  "report_type": "strategic_allocation_global_private_equity_translation_evidence_memo",
+  "data_cutoff": "2026-08-13",
+  "pdf_path": "main.pdf",
+  "page_count": 20,
+  "publishability_score": 94,
+  "verifier_results": "Executed after final lifecycle refresh on 2026-08-14 00:47:49+08:00: case-local tools/verify_research_workspace.py = 86 PASS / 0 FAIL; repository tools/run_research_gates.py = 130 PASS / 0 FAIL. Both checked the 20-page PDF SHA-256 a5b8b28c8594113c35c477f7063e2f5c52a0ffb48d496f68b253e01fc9767340.",
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "signoff_status": "research_framework_pass",
+  "framework_status": "pass",
+  "implementation_status": "not_approved",
+  "live_execution_authorized": false,
+  "decision": "RESEARCH FRAMEWORK PASS; NOT GUARANTEED and NOT APPROVED for implementation. The memo may be released as educational research only.",
+  "implementation_rationale": "No user capital, reserve needs, risk capacity, account permissions, tax inputs, holdings, named issuer/product, current price, spread/depth, liquidity capacity, individual valuation dossier or approved risk budget has been provided. Therefore all implementation remains not approved.",
+  "implementation_gates": {
+    "return_evidence": "blocked_pending_formal_test",
+    "risk_budget": "not_approved",
+    "suitability": "not_approved",
+    "execution": "not_authorized"
+  },
+  "execution_eligibility": {
+    "status": "not_approved",
+    "q": 0.0,
+    "live_execution_authorized": false
+  },
+  "material_claim_disclosure": {
+    "return_target_not_guarantee": true,
+    "cash_target_not_guarantee": true,
+    "return_evidence_not_sufficient_for_implementation": true,
+    "risk_budget_not_approved": true,
+    "implementation_not_authorized": true
+  },
+  "residual_risks": [
+    "Return evidence is insufficient: no point-in-time, cost/tax-aware formal strategy test or benchmark comparison exists.",
+    "Risk budget is not approved because no user-specific financial capacity, holdings, factor exposure or drawdown tolerance is available.",
+    "Implementation is not approved and no execution authority exists; all market-traded exposure remains q=0.",
+    "Public disclosures, even when complete, cannot prevent information delay, governance shocks, price-limit/stop-trading events or common-factor crowding."
+  ],
+  "build_identity": {
+    "source_sha256": "7ff1ce34b8274a6b76db510087305ed50cf74b18b10e2277129f6184e5043f8b",
+    "pdf_sha256": "a5b8b28c8594113c35c477f7063e2f5c52a0ffb48d496f68b253e01fc9767340",
+    "build_timestamp": "2026-08-14T00:39:46+08:00"
+  }
+}

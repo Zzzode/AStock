@@ -1,0 +1,14 @@
+{
+  "cycle": "R2_draft",
+  "prepared_after_review": "2026-08-11",
+  "finding_actions": [
+    {"issue_id":"R2-S-001","action":"Remove the standalone English valuation/recommendation abstract and retain a Chinese-only abstract.","owner":"equity-research","verification":"No English recommendation/target logic remains in main.tex."},
+    {"issue_id":"R2-A-001","action":"Define the Figure 1 ordering as research-effort priority, not expected return, rating or portfolio action; add 4+6+3 universe bridge and downgrade mapping.","owner":"equity-research","verification":"Decision chapter states the ranking axes and permitted actions."},
+    {"issue_id":"R2-A-002","action":"Add opening thesis and post-exhibit decision synthesis to Chapters 3, 4, 6 and 7.","owner":"equity-research","verification":"Each chapter has prose before and after its principal exhibit."},
+    {"issue_id":"R2-A-003","action":"Replace generic trigger table with sequence of actual H1/OCF, reconciliation, Q3/H2 and price-condition observations; identify monitoring rules rather than invent thresholds.","owner":"equity-research","verification":"002497 starts with actual H1/OCF, then Q3/H2; all primary rows have observable status-changing events."},
+    {"issue_id":"R2-A-004","action":"Rebuild external-anchor appendix table with broker/date/year/method/source quality/evidence cap/recalculated arithmetic/house status; retain Dongwu CNY103 as zero-weight detailed reference.","owner":"equity-research","verification":"Every external figure has adjacent hierarchy fields and no AStock target status."},
+    {"issue_id":"R2-A-005","action":"Add source IDs, dated filing/report references and pages to financial table, primary sections and source chapter.","owner":"equity-research","verification":"Reader can trace each status-driving H1/OCF/anchor claim to source register IDs."},
+    {"issue_id":"R2-B-001","action":"Use exact market quality label high_with_local_adapter_fallback.","owner":"equity-research","verification":"Source chapter matches verified market packet."},
+    {"issue_id":"R2-B-002","action":"Use one consistent 4 primary + 6 historical high-upside + 3 conditional/cycle-watch universe bridge.","owner":"equity-research","verification":"Decision and historical chapters use the same grouping."}
+  ]
+}

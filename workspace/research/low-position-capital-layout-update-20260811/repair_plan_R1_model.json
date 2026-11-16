@@ -1,0 +1,43 @@
+{
+  "cycle": "R1_model",
+  "status": "completed_pending_rereview_record",
+  "updated_at": "2026-08-11",
+  "scope": "No-target valuation schema, arithmetic labels and full-universe broker disposition coverage.",
+  "actions": [
+    {
+      "issue_id": "R1-S-001",
+      "action": "Added all required valuation fields to every current disposition using explicit not_published values rather than nulls or external targets.",
+      "evidence": "data/current_valuation_model_20260811.json",
+      "status": "completed"
+    },
+    {
+      "issue_id": "R1-S-002",
+      "action": "Expanded the current disposition model from four primary names to all 13 covered tickers, each with zero house blend weights, evidence quality, blocking conditions and a re-entry validation condition.",
+      "evidence": "data/current_valuation_model_20260811.json; data/current_valuation_model_20260811.md",
+      "status": "completed"
+    },
+    {
+      "issue_id": "R1-S-003",
+      "action": "Corrected external broker NP descriptions to CNY7.910bn for 000703, CNY6.454bn/CNY7.230bn for 300014 and CNY3.032bn for 002497.",
+      "evidence": "data/current_valuation_model_20260811.json; data/broker_street_consensus_20260811.json",
+      "status": "completed"
+    },
+    {
+      "issue_id": "R1-B-001",
+      "action": "Added a dated, diagnostic-only market-implied anchor to every current disposition and retained zero valuation weight where no independent denominator is reconciled.",
+      "evidence": "data/current_valuation_model_20260811.json",
+      "status": "completed"
+    },
+    {
+      "issue_id": "R1-B-002",
+      "action": "Replaced eight genuine no-target null fields in the flat broker schema with explicit not disclosed statuses and kept all relevant evidence weights at zero.",
+      "evidence": "data/broker_street_consensus_20260811.json",
+      "status": "completed"
+    }
+  ],
+  "guardrails": [
+    "not_published is not a zero price, return, or target.",
+    "External-anchor evidence caps are not house valuation or portfolio weights.",
+    "No historic scenario value is reused as a current target."
+  ]
+}

@@ -1,0 +1,117 @@
+{
+  "schema_version": "r08_independent_c18_rule_text_augmentation_audit.v1",
+  "artifact_id": "D5PT-R08-C18-AUGMENTATION-AUDIT-v1",
+  "as_of": "2026-08-15",
+  "audit_scope": {
+    "independent_of_c18_verifier": true,
+    "checks": [
+      "frozen augmentation manifest hash and metadata",
+      "raw DOCX file size and SHA-256",
+      "direct DOCX word/document.xml text-presence checks",
+      "C18 feasibility v2 binds both source manifests",
+      "C18 feasibility v2 retains not-testable and no-action boundaries"
+    ],
+    "not_performed": [
+      "bond selection",
+      "access inference",
+      "performance calculation",
+      "external action"
+    ]
+  },
+  "result": "PASS",
+  "bounded_disposition": "C18 remains not testable and admits no bond or external action.",
+  "augmentation_manifest": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-rule-text-augmentation-20260815/manifest.json",
+    "expected_sha256": "863fc638ccd443c3f5c22355094e6b326a52967f5943d1d65eee64fc0d951a69",
+    "actual_sha256": "863fc638ccd443c3f5c22355094e6b326a52967f5943d1d65eee64fc0d951a69",
+    "expected_hash_match": true,
+    "record_key_set_match": true,
+    "all_docx_on_disk_listed": true
+  },
+  "raw_file_integrity": [
+    {
+      "source_key": "sse_company_bond_credit_risk_rule_body",
+      "expected_filename": "sse_company_bond_credit_risk_management_rule_20231020.docx",
+      "manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-rule-text-augmentation-20260815/sse_company_bond_credit_risk_management_rule_20231020.docx",
+      "expected_bytes": 91634,
+      "manifest_bytes": 91634,
+      "actual_bytes": 91634,
+      "expected_sha256": "8e0d2b23f6c973237b55d803b5ee87f532c3facae303e6c1280eff3d42729455",
+      "manifest_sha256": "8e0d2b23f6c973237b55d803b5ee87f532c3facae303e6c1280eff3d42729455",
+      "actual_sha256": "8e0d2b23f6c973237b55d803b5ee87f532c3facae303e6c1280eff3d42729455",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sse_company_bond_listing_rule_body",
+      "expected_filename": "sse_company_bond_listing_rule_20231020.docx",
+      "manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-rule-text-augmentation-20260815/sse_company_bond_listing_rule_20231020.docx",
+      "expected_bytes": 48332,
+      "manifest_bytes": 48332,
+      "actual_bytes": 48332,
+      "expected_sha256": "367614be7f44286f5022bb086eeb5b5d040fdd1c21593361c9f436ec39b6c9fd",
+      "manifest_sha256": "367614be7f44286f5022bb086eeb5b5d040fdd1c21593361c9f436ec39b6c9fd",
+      "actual_sha256": "367614be7f44286f5022bb086eeb5b5d040fdd1c21593361c9f436ec39b6c9fd",
+      "metadata_ok": true,
+      "raw_integrity_ok": true,
+      "status": "PASS"
+    }
+  ],
+  "docx_text_presence": [
+    {
+      "source_key": "sse_company_bond_credit_risk_rule_body",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-rule-text-augmentation-20260815/sse_company_bond_credit_risk_management_rule_20231020.docx",
+      "zip_container": true,
+      "word_document_xml_present": true,
+      "document_xml_bytes": 509901,
+      "paragraph_count": 455,
+      "text_characters": 28312,
+      "required_terms": [
+        "公司债券和资产支持证券信用风险管理",
+        "信用风险监测与预警",
+        "信用风险应对与处置",
+        "投资者权益保护机制安排"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    },
+    {
+      "source_key": "sse_company_bond_listing_rule_body",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-rule-text-augmentation-20260815/sse_company_bond_listing_rule_20231020.docx",
+      "zip_container": true,
+      "word_document_xml_present": true,
+      "document_xml_bytes": 197416,
+      "paragraph_count": 247,
+      "text_characters": 13411,
+      "required_terms": [
+        "上海证券交易所公司债券上市规则",
+        "分类管理",
+        "差异化的交易机制",
+        "投资者适当性制度"
+      ],
+      "missing_terms": [],
+      "text_presence_ok": true,
+      "status": "PASS"
+    }
+  ],
+  "feasibility_v2": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c18_direct_sse_company_bond_ladder_feasibility_20260815.json",
+    "expected_sha256": "4f6668c828b2e6ca4349b630150cd9a00050971e9411030444bfe2a1b5f66cfb",
+    "actual_sha256": "4f6668c828b2e6ca4349b630150cd9a00050971e9411030444bfe2a1b5f66cfb",
+    "expected_hash_match": true,
+    "structural_v2_boundary_ok": true,
+    "initial_manifest_binding_ok": true,
+    "augmentation_manifest_binding_ok": true,
+    "source_control_record_set_ok": true,
+    "source_control_amendment_ok": true,
+    "bounded_finding_controls_ok": true,
+    "not_testable_boundary_ok": true,
+    "no_action_boundary_ok": true,
+    "missing_input_and_pretest_governance_ok": true,
+    "observed_current_result": "NOT_TESTABLE_FOR_RETURN",
+    "observed_disposition": "NO_BOND_SELECTED_NO_HISTORICAL_TEST_NO_ACTION"
+  },
+  "failures": []
+}

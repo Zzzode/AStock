@@ -1,0 +1,506 @@
+{
+  "artifact_class": "derived_research_governance",
+  "schema_version": "missing_data_request_pack.v1",
+  "request_pack_id": "DPSFS-MDRP-20260814-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "language": "zh-CN",
+  "research_only": true,
+  "status": "draft_request_specification_not_sent",
+  "external_contact_initiated": false,
+  "credentials_requested": false,
+  "portfolio_q": 0,
+  "purpose": "这是供未来数据提供方或券商按字段、覆盖、权利和交付条件答复的中性研究请求说明，不是数据采购指令、授权合同、开户申请、适当性判断、回放结果或投资行动。",
+  "data_quality": {
+    "source": "DPSFS-DAC-v12、DPSFS-U0-v2、DPSFS-DAF-20260814 与 unresolved_requirements.json 的案例内设计控制。",
+    "timestamp": "2026-08-14",
+    "quality_tier": "request_specification_not_evidence_not_entitled",
+    "fallback_path": "供方如不能满足任一字段、历史点时可得性、修订链、权利或交付控制，应明确标注不可提供或缺口；不得以回溯样本、连续合约、未知复权日线或文档页面替代。",
+    "warnings": [
+      "本文件未联系任何外部方，未发送请求，也未接收数据或权利证明。",
+      "本文件不请求、记录或传输 API token、用户名、密码、账户号、个人身份资料或客户交易指令。",
+      "所有当前类别和项目仍为 q=0；本文件本身不能关闭 UR01、UR02、UR03 或 U0 控制。"
+    ],
+    "errors": []
+  },
+  "authoritative_references": [
+    {
+      "id": "DPSFS-DAC-v12",
+      "role": "当前数据获取合同；机器可读权威版本。",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/data_acquisition_contract_20260814.json",
+      "status": "draft_not_frozen_no_entitlement_no_replay"
+    },
+    {
+      "id": "DPSFS-U0-v2",
+      "role": "当前国内资产池人口治理登记册。",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/u0_domestic_universe_registry_20260814.json",
+      "status": "draft_population_governance_only"
+    },
+    {
+      "id": "DPSFS-DAF-20260814",
+      "role": "已归档和免凭证路径的案例内可行性审计。",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/data_access_feasibility_20260814.json",
+      "status": "no_qualifying_credential_free_or_archived_route"
+    },
+    {
+      "id": "UNRESOLVED-20260814",
+      "role": "UR01 至 UR05 的未决要求清单。",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/unresolved_requirements.json",
+      "status": "open"
+    }
+  ],
+  "scope_and_boundary": {
+    "timezone": "Asia/Shanghai",
+    "provisional_requested_historical_coverage": {
+      "start": "2016-01-01",
+      "end": "2026-08-14",
+      "status": "request_scope_only_not_frozen_replay_window",
+      "definition": "供方须按该区间逐项说明可覆盖日期、缺口、首末可用日、可得时间和修订历史。该区间仅用于询问覆盖能力；正式回放区间、冻结日期和未来持续采集节奏仍须依 DPSFS-DAC-v12 的冻结记录另行确定。"
+    },
+    "future_continuity_boundary": "可要求供方描述未来日常交付和修订通知能力，但本文件不启动前瞻收集，也不替代 UR05 的 60 个自然日和 10 次不同合格观察的前瞻纸面核对。",
+    "provider_response_options": [
+      "可提供：逐字段列出覆盖区间、频率、PIT/可得时间证据、修订方式、权利范围和拟交付格式。",
+      "部分可提供：逐字段列出不可用日期、例外原因、替代字段及其不能满足的 DAC 控制。",
+      "不可提供：明确写明不可提供的字段、时间、权利或交付控制；该答复不会被视为不利结论。"
+    ],
+    "not_requested": [
+      "任何凭证、登录信息、令牌、账户号、个人身份资料或个人交易历史。",
+      "账户开立、资金划转、下单、路由、交易执行、持仓、适当性结论或税务/法律意见。",
+      "将当前示例 ETF、AU、CU 或 TA 视为获准产品、合约或完整 U0 人口。"
+    ]
+  },
+  "common_response_and_delivery_requirements": {
+    "rights_proof_required_before_any_raw_delivery": [
+      "供方法律实体与数据产品身份。",
+      "书面权利或条款版本，以及生效日和到期日。",
+      "对本地留存、规范化、正式回放、衍生分析和独立复核的许可范围。",
+      "历史 vintage 或 available_at 政策及修订政策。",
+      "再分发、审计、删除和留存条件。",
+      "仅说明凭证托管和失效停用流程；不得提供或记录实际凭证。",
+      "续约、失效和停止数据使用程序。"
+    ],
+    "historical_pit_and_revision_proof": [
+      "每条记录或每个可审计批次保留 as_of、available_at、vendor_publication_at、response_received_at、source_revision、local_revision_sequence 和原始哈希。",
+      "available_at 必须说明为该具体记录最早可供研究使用的有文档时间；没有历史 vintage 或可得时间证明的回溯下载必须标为 retrospective，不能当作 PIT 证据。",
+      "原始文件仅可追加；修订以新原始对象和被替代哈希关联，规范化记录保留所用原始哈希和版本，回放须声明修订截止点。",
+      "供方须提供覆盖期内历史修订/重述清单，或明确声明该项不可提供。"
+    ],
+    "raw_delivery_and_manifest": {
+      "current_delivery_state": "本文件当前只要求供方能力、覆盖、权利和交付方案答复；没有启动原始数据传输。",
+      "future_raw_delivery_rule": "如后续在独立书面权利审查后交付，原始对象必须不可变、可校验、按包和检索批次保存；规范化和派生数据必须有单独谱系记录。",
+      "raw_manifest_required_fields": [
+        "package_id",
+        "provider",
+        "provider_product",
+        "source_url_or_endpoint",
+        "request_parameters_or_query_hash",
+        "request_started_at",
+        "response_received_at",
+        "as_of",
+        "available_at",
+        "vendor_publication_at",
+        "source_revision",
+        "local_revision_sequence",
+        "content_type",
+        "bytes",
+        "sha256",
+        "entitlement_evidence_ref",
+        "retrieval_operator",
+        "expected_page_or_row_count",
+        "actual_page_or_row_count",
+        "quality_status"
+      ],
+      "lineage_required_fields": [
+        "input_raw_manifest_sha256",
+        "normalization_code_commit",
+        "runtime_environment_lock_or_hash",
+        "normalization_schema_version",
+        "output_sha256",
+        "transformation_timestamp",
+        "operator_or_service_identity"
+      ],
+      "calendar_and_count_controls": [
+        "使用 Asia/Shanghai 时区，并在收集前声明交易日历和交易时段定义。",
+        "保留预期与实际页面/行数、分页、成功、无数据、延迟、休市和失败尝试。",
+        "出现跨源冲突时，保留主副源、连接键、字段、容差、差异、解决状态和复核人；未解决冲突不得择优使用。"
+      ]
+    },
+    "contact_and_owner_roles": {
+      "provider_commercial_or_licensing_role": "说明供方、数据产品、条款版本、权利范围、有效期、留存/审计/删除条件和凭证托管流程；不提供凭证。",
+      "provider_data_steward_or_delivery_role": "说明字段字典、覆盖矩阵、历史 available_at/vintage、修订政策、原始交付、清单、校验和和缺口。",
+      "broker_policy_or_execution_evidence_role": "仅说明日期化的公开或可审计路由、费用、税费、市场机制、报价/无成交和账户范围边界；不进行开户、适当性判断或执行。",
+      "research_data_governance_owner": "接收答复、登记来源和权利证据、维持 q=0，并将任何后续包送入独立验收。",
+      "independent_acceptance_verifier": "按 DPSFS-DAC-v12 的包测试、覆盖、谱系和 U0 控制进行只读验收；不能由供方或数据收集人自签通过。"
+    }
+  },
+  "requests": [
+    {
+      "request_id": "RQP-UR01",
+      "requirement_id": "UR01",
+      "package_id": "ETF_PIT_EVENT_LEDGER",
+      "title": "ETF 点时总回报与事件账本",
+      "governs_requirements": [
+        "UR01",
+        "UR03"
+      ],
+      "u0_class_mapping": [
+        "LISTED_EQUITY_ETFS",
+        "BOND_AND_MONEY_MARKET_ETFS",
+        "GOLD_AND_OTHER_COMMODITY_ETFS"
+      ],
+      "request_scope": "未来冻结决策范围内的每只 ETF；当前 511010.SH、510300.SH、510880.SH、518880.SH 和 511990.SH 仅为说明性代码，不能据此缩小 U0 人口或形成准入。",
+      "coverage_interval": {
+        "start": "2016-01-01",
+        "end": "2026-08-14",
+        "granularity": "每个预期交易日、每只活跃或历史终止 ETF，以及每一现金/公司行动事件。",
+        "provisional": true
+      },
+      "requested_fields": [
+        "证券标识、交易所、上市/终止与人口生效区间。",
+        "每个预期交易日的开高低收、前收、成交量和成交额。",
+        "NAV、累计或复权 NAV、NAV 日期、公告时间戳，以及 IOPV 或明确不可用状态。",
+        "分配/公司行动类型、除权日、登记日、支付日、金额和调整因子。",
+        "停牌、涨跌停、交易时段和可交易状态。",
+        "as_of、available_at、vendor_publication_at、检索时间、source_revision 和 raw_hash。"
+      ],
+      "historical_pit_revision_and_rights_proof": [
+        "逐记录证明历史 available_at/vintage 与修订链；回溯抓取且没有历史可得时间的记录必须标为 retrospective。",
+        "提供适用于本包的书面权利证明，明确本地留存、规范化、正式回放、衍生分析和独立复核是否允许。"
+      ],
+      "acceptance_tests": [
+        "权利记录通过 DPSFS-DAC-v12 entitlement_control 清单。",
+        "回放使用的 100% 记录可由原始和规范化清单哈希链解析。",
+        "主键唯一且必填谱系字段完整。",
+        "交易日覆盖等于冻结的日历/证券预期，除非存在有文档的例外。",
+        "每项调整均与事件账本对账，且没有重复确认现金事件。",
+        "没有任何决策在 available_at 之前使用记录。"
+      ],
+      "pass_threshold": "100% 的回放使用记录可追溯至有权原始响应；0 个未解决的重复、缺失谱系或重复计入事件例外。",
+      "route_and_suitability_boundary": "不要求任何个人账户、券商权限、适当性或下单；与 UR03 相关的 ETF 路由/成本/成交证据必须由单独的 EXECUTION_AND_COST_LEDGER 回答。",
+      "current_status": "not_collected_not_accepted",
+      "closure_boundary": "本包答复或未来交付本身不足以关闭 UR01；只有冻结记录、权利审计和回放输入对账均通过后，UR01 才具备关闭资格。"
+    },
+    {
+      "request_id": "RQP-UR02",
+      "requirement_id": "UR02",
+      "package_id": "FUTURES_ACTUAL_CONTRACT_LEDGER",
+      "title": "期货实际合约点时账本",
+      "governs_requirements": [
+        "UR02",
+        "UR03"
+      ],
+      "u0_class_mapping": [
+        "COMMODITY_FUTURES"
+      ],
+      "request_scope": "未来冻结范围内的每个实际上市 AU、CU、TA 合约和每个决策日；答复须把当前 AU/CU/TA 探针与完整商品期货人口区分。不得以连续合约、回溯标记主力合约或供方合成序列替代选约、展期或损益。",
+      "coverage_interval": {
+        "start": "2016-01-01",
+        "end": "2026-08-14",
+        "granularity": "每个产品/每个预期交易日的完整实际合约横截面、合约生命周期和有效规则/条款。",
+        "provisional": true
+      },
+      "requested_fields": [
+        "合约、交易所/品种、上市日、最后交易日、交割日和持仓限制日期。",
+        "有效规则版本及其有效期；乘数、最小变动价位、报价单位/币种、交易时段和最终结算/交割方式。",
+        "完整逐日实际合约横截面：前结算、开高低收、结算、成交量、成交额和持仓量。",
+        "日期化的交易所/券商保证金、费用、涨跌停和持仓限制；变动保证金与最终结算时点。",
+        "交易状态、涨跌停锁定、交割状态和合格继任合约状态。",
+        "as_of、available_at、vendor_publication_at、检索时间、source_revision、raw_hash、预期合约数和分页。"
+      ],
+      "historical_pit_revision_and_rights_proof": [
+        "逐合约/会话证明历史 available_at、有效条款期和修订链；没有这些证明的旧日文件必须标为 retrospective。",
+        "提供适用于本包的书面权利证明，明确实际合约原始数据、生命周期、条款、留存、规范化、正式回放和独立复核的许可范围。"
+      ],
+      "acceptance_tests": [
+        "权利记录通过 DPSFS-DAC-v12 entitlement_control 清单。",
+        "每个回放合约/会话可解析至原始哈希、生命周期记录和有效规则/保证金/费用/涨跌停记录。",
+        "每个预期会话的完整横截面与当期合约主表对账。",
+        "选约、展期、成交或结算标记没有使用连续序列替代品。",
+        "没有任何决策在 available_at 之前使用数据，也没有使用有效期外的规则。"
+      ],
+      "pass_threshold": "100% 的回放使用合约/会话行可对账到原始数据、生命周期和有效条款；0 个连续序列替代或未解释覆盖缺口。",
+      "route_and_suitability_boundary": "不要求开立期货账户、确认个人适当性、保证金资格或执行交易；日期化路由、费用、报价、无成交和账户范围证据只由 EXECUTION_AND_COST_LEDGER 说明。",
+      "current_status": "not_collected_not_accepted",
+      "closure_boundary": "本包答复或未来交付本身不足以关闭 UR02；只有权利、生命周期、横截面和条款审计均通过后，UR02 才具备关闭资格。"
+    },
+    {
+      "request_id": "RQP-UR03",
+      "requirement_id": "UR03",
+      "package_id": "EXECUTION_AND_COST_LEDGER",
+      "title": "成本、路由与成交/无成交证据账本",
+      "governs_requirements": [
+        "UR03",
+        "UR05"
+      ],
+      "u0_class_mapping": [
+        "LISTED_EQUITY_ETFS",
+        "BOND_AND_MONEY_MARKET_ETFS",
+        "GOLD_AND_OTHER_COMMODITY_ETFS",
+        "COMMODITY_FUTURES"
+      ],
+      "request_scope": "每个可能进入纸面回放或后续前瞻纸面核对的 ETF 或实际期货合约；供方或券商仅需说明可审计的日期化条款和证据边界，不得推断任何个人可交易性。",
+      "coverage_interval": {
+        "start": "2016-01-01",
+        "end": "2026-08-14",
+        "granularity": "日期化费用/税费/规则/市场状态/报价或保守无成交方法；未来前瞻核对须另行持续。",
+        "provisional": true
+      },
+      "requested_fields": [
+        "券商路由身份、佣金、最低费用、税费/征费及有效日期。",
+        "ETF 的手数、最小变动价位、交易日、结算日、available_to_sell_from、T+1、停牌和涨跌停机制。",
+        "期货的经纪费、初始/维持保证金、附加要求、订单/持仓限制、交割和最终结算处理。",
+        "报价时间戳/报价年龄、买卖价、买卖盘量、每成交腿的已消耗/剩余容量及冲击模型，或有来源约束的预先声明保守冲击/无成交方法。",
+        "现金收益、融资、抵押品收益、保证金和结算划转时点；不可变现金/抵押品条款集、路由/账户范围、日计数、复利、应计和划转截止。",
+        "执行方向、报价、提交、逐成交腿、到期和结算因果链；执行状态与结算状态分离的单调转换账本；每腿数量、累计/剩余量和状态迁移引用。",
+        "每一费用/税项单组件的有效条款、条款计算金额/输出币种及任何冻结 FX 转换的比率、来源、时点和哈希。",
+        "决策、提交及每一成交时点的现金、保证金、T+1/手数 reservation-pool、已占用/新增预留和剩余容量证据。",
+        "税务范围分类、交易时段/市场状态、as_of、available_at、source_revision 和 raw_hash。"
+      ],
+      "historical_pit_revision_and_rights_proof": [
+        "每个条款、报价或状态记录保留生效期、as_of、available_at、来源修订和原始哈希；缺少历史时间/修订的回溯资料不得当作已验证执行证据。",
+        "提供对日期化费用、税费、路线、市场机制、报价/无成交、留存、规范化、纸面回放和独立复核的书面权利或可审计使用范围说明。"
+      ],
+      "acceptance_tests": [
+        "每笔纸面回放交易映射到日期化券商、税费、会话状态和成交成本证据。",
+        "不存在隐含零佣金、零税费、零价差或保证成交。",
+        "基金层费用和投资者层交易成本不重复计入。",
+        "每一正成交腿可对账状态迁移、深度/代理容量、费用/税项组件和结算事件；同一现金、保证金或 T+1 可卖份额不得重复预留。",
+        "后续前瞻纸面核对日志同时满足至少 60 个自然日和 10 次不同合格观察，按同单位容差比较全部必填字段，并且没有未解决重大差异。"
+      ],
+      "pass_threshold": "0 笔回放交易缺少路由/成本/状态/报价因果输入；0 个正成交腿缺少状态、容量、组件或结算映射；0 个预留池超额或重复占用；0 个隐含零成本或保证成交假设。前瞻期门槛仍为未来 UR05 要求，不能由历史答复替代。",
+      "route_and_suitability_boundary": "不请求账户开立、个人适当性、风险承受能力、税务结论、资金、订单或执行。供方/券商必须把通用制度事实、路由/账户范围和个人特定未验证事项分开标识。",
+      "current_status": "not_collected_not_accepted",
+      "closure_boundary": "本包答复或未来交付本身不足以关闭 UR03；只有成本审计和前瞻核对设计通过后，UR03 才具备关闭资格。"
+    },
+    {
+      "request_id": "RQP-U0",
+      "requirement_id": "U0",
+      "package_id": "U0_POPULATION_AND_DERIVATION_CONTROL",
+      "title": "U0 国内资产池人口与 U0 至 T2 推导控制",
+      "governs_requirements": [
+        "U0",
+        "UR04"
+      ],
+      "package_type": "population_governance_module_not_a_DAC_data_package",
+      "u0_class_mapping": [
+        "DIRECT_A_SHARE_EQUITIES",
+        "PUBLIC_REITS",
+        "LISTED_EQUITY_ETFS",
+        "BOND_AND_MONEY_MARKET_ETFS",
+        "GOLD_AND_OTHER_COMMODITY_ETFS",
+        "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+        "COMMODITY_FUTURES",
+        "FINANCIAL_FUTURES",
+        "LISTED_OPTIONS",
+        "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS"
+      ],
+      "request_scope": "对每个在范围内的国内类别，要求供方说明其可提供的一级人口来源、覆盖边界和历史保留方式。任何单一供方的子集可被报告为子集，但不能因方便或可得性而成为完整 U0 或 T2 准入。",
+      "coverage_interval": {
+        "start": "2016-01-01",
+        "end": "2026-08-14",
+        "granularity": "每个类别的历史人口快照、生命周期/状态变化、查询定义和计数对账。",
+        "provisional": true
+      },
+      "requested_fields": [
+        "资产类别、交易场所、证券或合约标识、上市/合约生命周期、交易状态、as_of、available_at、source_revision、raw_hash、类别状态和范围外原因。",
+        "包括已退市、终止、到期、停牌、合并、改名和其他不可得项目的历史人口保留与状态。",
+        "人口来源、查询定义、刷新日历、抓取日、预期/实际计数和例外对账。",
+        "未来冻结所需的 U0 快照哈希、来源清单哈希、修订截止点、审批角色和冻结时间。",
+        "未来 U0 至 T2 推导审计所需的每类别人口/合格/排除计数、T2 父类别、预冻结规则 ID、纳入/排除原因和经批准例外。",
+        "每个未来 T2 所代表类别的类特定数据/事件/生命周期/回放模块状态。"
+      ],
+      "historical_pit_revision_and_rights_proof": [
+        "每个类别人口记录必须保留历史 as_of、available_at、修订和原始哈希；仅有当前名单或回溯网页不构成 PIT 人口。",
+        "供方按类别说明人口数据、生命周期/状态记录的书面使用权、留存、规范化、独立复核和修订/历史可得时间边界。"
+      ],
+      "acceptance_tests": [
+        "每个 U0 类别的人口记录包含要求的身份、场所、生命周期/状态和 PIT 谱系字段，且保留历史终止/不可得项目。",
+        "未来冻结的 U0 快照绑定 DPSFS-U0-v2 所需的来源清单、查询定义、修订截止点、审批角色和时间戳。",
+        "未来 U0 至 T2 审计对每个 T2 项保留父类别、预冻结规则、纳入/排除原因、计数和独立批准例外。",
+        "任何进入未来 T2 的 U0 类别均有已接受的类特定数据/事件/生命周期/回放模块；否则结果必须标为 coverage-restricted。",
+        "没有人工点名产品、发行人、合约或期权系列绕过冻结的 U0 推导审计。"
+      ],
+      "pass_threshold": "当前不设通过结论；DPSFS-U0-v2 仍是未冻结的人口治理登记册，所有类别 q=0。只有未来冻结与独立审计满足上述控制，才可讨论 U0 至 T2 推导。",
+      "route_and_suitability_boundary": "人口治理不假设个人券商接入、适当性、税务或交易许可；它不筛选、推荐、配置、持有或执行任何资产。",
+      "current_status": "draft_governance_only_not_accepted",
+      "closure_boundary": "U0 不是 UR01 至 UR03 的替代包。即使人口控制未来通过，所有被代表类别仍须分别通过其数据、成本、回放、风险和独立复核门槛。"
+    },
+    {
+      "request_id": "RQP-OPEN-CLASS-MODULES",
+      "requirement_id": "U0",
+      "package_id": "OPEN_CLASS_MODULE_DEFINITION_AND_CAPABILITY_RESPONSE",
+      "title": "未覆盖开放类别的未来模块定义与能力答复",
+      "governs_requirements": [
+        "U0",
+        "UR01",
+        "UR02",
+        "UR03",
+        "UR04"
+      ],
+      "package_type": "future_module_definition_and_capability_response_not_a_DAC_data_package",
+      "u0_class_mapping": [
+        "DIRECT_A_SHARE_EQUITIES",
+        "PUBLIC_REITS",
+        "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+        "FINANCIAL_FUTURES",
+        "LISTED_OPTIONS",
+        "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS"
+      ],
+      "request_scope": "仅要求未来供方或市场规则信息方，对这六个尚无 DPSFS-DAC-v12 类特定原始数据包的 U0 类别逐类提交模块定义与能力答复。答复必须说明可提供、部分可提供或不可提供的未来字段、人口/生命周期/事件/条款/市场状态/成本及无成交证据边界，以及未来候选原始包所需的权利、PIT、修订、交付和验收输入；它不要求、接收或使任何原始数据当前合格，也不创建、修改或批准 DAC-v12 中的任何包。",
+      "coverage_interval": {
+        "start": "2016-01-01",
+        "end": "2026-08-14",
+        "granularity": "逐类别说明未来模块可能覆盖的历史人口、生命周期、市场/事件/条款记录、可得时间与缺口；仅为能力询问，不是冻结区间或数据交付。",
+        "provisional": true
+      },
+      "requested_fields": [
+        "每个类别的候选 module_id、module_version、适用范围、预计原始包 ID、粒度、主键、单位/币种、字段字典、来源和覆盖/缺口矩阵。",
+        "人口、场所、标识、生命周期、交易状态、as_of、available_at、vendor_publication_at、response_received_at、source_revision、local_revision_sequence 和 raw_hash 的可能性与不支持情形。",
+        "所有类别的候选经济事件、规则/条款、市场状态、成本、报价/深度或有来源约束的保守无成交证据边界，以及数据质量/异常/修订处理。",
+        "DIRECT_A_SHARE_EQUITIES：上市/退市、ST、停复牌、涨跌停、公司行动、流通/流动性和发行人披露发布时间。",
+        "PUBLIC_REITS：份额和基金生命周期、NAV/市场价格/分派、底层资产经营与融资事项、管理人/发起人披露和相关事件。",
+        "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES：证券生命周期、债券条款、净价/全价/应计、票息、赎回/回售/转股、信用事件和交易/结算状态。",
+        "FINANCIAL_FUTURES：实际合约主表、保证金/限额/费用/结算条款、完整日度合约横截面、基差/展期和合约状态。",
+        "LISTED_OPTIONS：完整同期链、标的同步、执行价/到期/调整、行权/指派、保证金/限额、报价/深度和结算状态。",
+        "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS：产品生命周期、杠杆或反向收益与重置条款、估值/NAV、公司行动、市场状态及压力风险会计输入。"
+      ],
+      "historical_pit_revision_and_rights_proof": [
+        "能力答复必须逐字段说明是否能够提供历史 as_of、available_at/vintage、修订和原始哈希；不能提供时明确标为不可提供，回溯网页、当前名单或样本不得替代 PIT 说明。",
+        "答复只能说明未来可能的书面权利范围、历史可得时间、留存、规范化、独立复核和凭证托管/失效条件；它不是当前权利证明，也不请求、接收或记录实际凭证。"
+      ],
+      "acceptance_tests": [
+        "每个类别形成独立、版本控制且可哈希的模块定义，明确 module_id、版本、来源/字段映射、人口/事件/生命周期/条款/执行证据边界、数据质量规则和不支持情形。",
+        "模块定义逐类说明候选原始包的输入、输出、主键、单位、PIT/修订、预期/实际覆盖和缺口，且不得用通用产品页或单一示例代替。",
+        "任何候选原始包必须先在未来版本控制的 DAC 修订中被明确列入，并在独立权利审查、字段映射、PIT/修订、原始清单和验收测试均通过后，才可能作为合格输入。",
+        "模块能力答复、人口登记、API 模式、样本或可用性说明本身均不能使原始行、类别或产品合格，也不能关闭 U0 或任何 UR 项。"
+      ],
+      "pass_threshold": "当前不设通过结论：这六类在 DPSFS-DAC-v12 下均没有获准的类特定原始数据包，未发送请求、未获得答复、未取得权利，所有类别、项目和组合保持 q=0。未来能力答复只有在模块定义被版本控制并由独立验收接受后，才可能启动后续 DAC 包定义；它本身不使数据合格或形成正式回放资格。",
+      "route_and_suitability_boundary": "不请求个人券商账户、权限、适当性、风险承受能力、税务结论、资金、订单或执行；只允许描述通用制度事实、公开规则覆盖和未来模块能力边界。",
+      "current_status": "draft_module_definition_request_not_sent_no_DAC_package",
+      "closure_boundary": "本请求未发送，当前没有获得的模块、数据或权利。即使未来答复通过模块定义审查，也不能关闭 U0 或任何 UR 项，不能形成正式回放资格、产品准入、配置、持有、交易、下单或个人适当性结论；所有类别、项目和组合继续保持 q=0。"
+    }
+  ],
+  "common_acceptance_boundary": [
+    "供方答复、产品页面、API 模式、付款凭证、成功请求、样本行或口头说明均不单独构成完整权利证明或包验收。",
+    "答复必须将可提供、部分可提供和不可提供逐字段、逐时间区间标明；不可用项不得以推断、插值、前填或未披露修订替换。",
+    "接收任何未来材料后，研究数据治理负责人须建立来源和清单记录；独立验收人按 DPSFS-DAC-v12 测试复核，收集方和供方不能自签通过。",
+    "UR04 的结果盲冻结和 UR05 的独立审查/前瞻纸面核对仍是后续独立门槛。"
+  ],
+  "no_action_boundary": {
+    "formal_replay_ready": false,
+    "product_admission": false,
+    "allocation": false,
+    "holding": false,
+    "trade_or_order": false,
+    "personal_suitability_conclusion": false,
+    "statement": "截至 2026-08-14，UR01、UR02、UR03、UR04 和 UR05 均未关闭；DPSFS-U0-v2 未冻结；所有类别、项目和组合状态保持 q=0。不得据此进行正式回放、产品准入、配置、持有、交易、下单或个人适当性结论。"
+  },
+  "csv_projection": {
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/missing_data_request_pack.csv",
+    "row_count": 5,
+    "columns": [
+      "request_id",
+      "requirement_id",
+      "package_id",
+      "request_title",
+      "provisional_coverage_start",
+      "provisional_coverage_end",
+      "u0_class_mapping",
+      "requested_fields",
+      "pit_revision_rights_proof",
+      "acceptance_tests",
+      "raw_delivery_manifest_requirements",
+      "route_suitability_boundary",
+      "provider_broker_owner_roles",
+      "current_status",
+      "no_action_boundary"
+    ],
+    "rows": [
+      {
+        "request_id": "RQP-UR01",
+        "requirement_id": "UR01",
+        "package_id": "ETF_PIT_EVENT_LEDGER",
+        "request_title": "ETF 点时总回报与事件账本",
+        "provisional_coverage_start": "2016-01-01",
+        "provisional_coverage_end": "2026-08-14",
+        "u0_class_mapping": "LISTED_EQUITY_ETFS;BOND_AND_MONEY_MARKET_ETFS;GOLD_AND_OTHER_COMMODITY_ETFS",
+        "requested_fields": "证券身份/交易所/生命周期;逐日 OHLC/前收/量额;NAV/累计或复权 NAV/NAV 公告时间/IOPV 或明确不可用;分配及公司行动日期/金额/调整因子;停牌/涨跌停/交易时段/可交易状态;as_of/available_at/vendor_publication_at/检索时间/source_revision/raw_hash",
+        "pit_revision_rights_proof": "历史 available_at/vintage 和修订链;回溯无历史可得时间须标 retrospective;书面留存/规范化/正式回放/衍生分析/独立复核权利",
+        "acceptance_tests": "权利清单通过;100% 回放记录哈希链;主键唯一及谱系完整;交易日覆盖对账;事件一次性对账;无 available_at 前使用",
+        "raw_delivery_manifest_requirements": "不可变原始对象;DAC-v12 原始清单字段;规范化谱系字段;Asia/Shanghai 日历/分页/行数/异常记录",
+        "route_suitability_boundary": "不要求个人账户/适当性/下单;ETF 路由和成本另由 EXECUTION_AND_COST_LEDGER 说明",
+        "provider_broker_owner_roles": "供方许可角色;供方数据管家;研究数据治理负责人;独立验收人",
+        "current_status": "not_collected_not_accepted",
+        "no_action_boundary": "q=0;不得正式回放/准入/配置/持有/交易/下单"
+      },
+      {
+        "request_id": "RQP-UR02",
+        "requirement_id": "UR02",
+        "package_id": "FUTURES_ACTUAL_CONTRACT_LEDGER",
+        "request_title": "期货实际合约点时账本",
+        "provisional_coverage_start": "2016-01-01",
+        "provisional_coverage_end": "2026-08-14",
+        "u0_class_mapping": "COMMODITY_FUTURES",
+        "requested_fields": "实际合约身份/生命周期;有效规则/规格;完整逐日横截面结算/OHLC/量额/OI;日期化保证金/费用/涨跌停/持仓限制;交易/锁定/交割/继任状态;as_of/available_at/vendor_publication_at/检索时间/source_revision/raw_hash/预期合约数/分页",
+        "pit_revision_rights_proof": "逐合约/会话历史 available_at/有效期/修订链;无历史时间须标 retrospective;书面实际合约数据/条款/留存/规范化/正式回放/独立复核权利",
+        "acceptance_tests": "权利清单通过;100% 合约会话对账原始哈希/生命周期/有效条款;完整横截面对账;无连续序列替代;无 available_at 前或有效期外使用",
+        "raw_delivery_manifest_requirements": "不可变原始对象;DAC-v12 原始清单字段;规范化谱系字段;完整横截面计数/分页/异常记录",
+        "route_suitability_boundary": "不要求期货开户/适当性/保证金资格/执行;路由和成本另由 EXECUTION_AND_COST_LEDGER 说明",
+        "provider_broker_owner_roles": "供方许可角色;供方数据管家;研究数据治理负责人;独立验收人",
+        "current_status": "not_collected_not_accepted",
+        "no_action_boundary": "q=0;不得正式回放/准入/配置/持有/交易/下单"
+      },
+      {
+        "request_id": "RQP-UR03",
+        "requirement_id": "UR03",
+        "package_id": "EXECUTION_AND_COST_LEDGER",
+        "request_title": "成本、路由与成交/无成交证据账本",
+        "provisional_coverage_start": "2016-01-01",
+        "provisional_coverage_end": "2026-08-14",
+        "u0_class_mapping": "LISTED_EQUITY_ETFS;BOND_AND_MONEY_MARKET_ETFS;GOLD_AND_OTHER_COMMODITY_ETFS;COMMODITY_FUTURES",
+        "requested_fields": "日期化路由/佣金/最低费/税费;ETF T+1/available_to_sell_from/停牌/涨跌停;期货费用/保证金/限制/交割;逐成交腿报价/深度/容量消耗/剩余容量/冲击或保守无成交方法;现金/抵押品条款集;执行与结算分离状态账本/逐腿状态迁移/组件费用税项/条款输出币种及冻结 FX;决策提交成交时点 reservation-pool/T+1/现金保证金可行性;市场状态和 PIT 谱系",
+        "pit_revision_rights_proof": "条款/报价/状态的生效期/as_of/available_at/修订/原始哈希;无历史时间不得当执行证据;书面费用/路由/报价/无成交/留存/纸面回放/独立复核权利或范围",
+        "acceptance_tests": "每笔纸面交易映射日期化证据;每正成交腿有状态容量组件结算映射;预留池无超额或重复占用;无隐含零费用或保证成交;不重复计入基金费用;后续 60 日及 10 次观察无重大差异",
+        "raw_delivery_manifest_requirements": "不可变原始对象;DAC-v12 原始清单字段;规范化谱系字段;条款有效期/报价年龄/状态转换/异常记录",
+        "route_suitability_boundary": "不请求开户/适当性/风险承受/税务结论/资金/订单或执行;必须区分通用制度事实与个人未验证事项",
+        "provider_broker_owner_roles": "供方许可角色;供方数据管家;券商政策或执行证据角色;研究数据治理负责人;独立验收人",
+        "current_status": "not_collected_not_accepted",
+        "no_action_boundary": "q=0;不得正式回放/准入/配置/持有/交易/下单"
+      },
+      {
+        "request_id": "RQP-U0",
+        "requirement_id": "U0",
+        "package_id": "U0_POPULATION_AND_DERIVATION_CONTROL",
+        "request_title": "U0 国内资产池人口与 U0 至 T2 推导控制",
+        "provisional_coverage_start": "2016-01-01",
+        "provisional_coverage_end": "2026-08-14",
+        "u0_class_mapping": "DIRECT_A_SHARE_EQUITIES;PUBLIC_REITS;LISTED_EQUITY_ETFS;BOND_AND_MONEY_MARKET_ETFS;GOLD_AND_OTHER_COMMODITY_ETFS;EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES;COMMODITY_FUTURES;FINANCIAL_FUTURES;LISTED_OPTIONS;LEVERAGED_AND_INVERSE_LISTED_PRODUCTS",
+        "requested_fields": "类别/场所/标识/生命周期/状态/as_of/available_at/source_revision/raw_hash/范围外原因;历史终止项目;人口来源/查询/刷新/计数/例外;U0 快照控制;U0 至 T2 类别/规则/原因/计数/例外;类特定模块状态",
+        "pit_revision_rights_proof": "类别人口的历史 as_of/available_at/修订/raw_hash;当前名单或回溯网页不构成 PIT;按类别说明留存/规范化/独立复核和修订/历史可得时间权利",
+        "acceptance_tests": "类别人口包含 PIT 身份/状态/谱系并保留终止项;冻结 U0 绑定来源/查询/修订/审批/时间;T2 推导有类别/规则/原因/计数/例外;代表类别有接受模块或标 coverage-restricted;无人工点名绕过审计",
+        "raw_delivery_manifest_requirements": "不可变人口快照和原始清单;DAC-v12 谱系字段;来源查询/预期实际计数/修订/异常记录",
+        "route_suitability_boundary": "不假设个人券商接入/适当性/税务/交易许可;不筛选/推荐/配置/持有/执行",
+        "provider_broker_owner_roles": "供方许可角色;供方人口数据管家;研究数据治理负责人;独立验收人",
+        "current_status": "draft_governance_only_not_accepted",
+        "no_action_boundary": "q=0;U0 未冻结;不得正式回放/准入/配置/持有/交易/下单"
+      },
+      {
+        "request_id": "RQP-OPEN-CLASS-MODULES",
+        "requirement_id": "U0",
+        "package_id": "OPEN_CLASS_MODULE_DEFINITION_AND_CAPABILITY_RESPONSE",
+        "request_title": "未覆盖开放类别的未来模块定义与能力答复",
+        "provisional_coverage_start": "2016-01-01",
+        "provisional_coverage_end": "2026-08-14",
+        "u0_class_mapping": "DIRECT_A_SHARE_EQUITIES;PUBLIC_REITS;EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES;FINANCIAL_FUTURES;LISTED_OPTIONS;LEVERAGED_AND_INVERSE_LISTED_PRODUCTS",
+        "requested_fields": "逐类候选 module_id/module_version/预计原始包 ID/粒度/主键/单位/字段字典/覆盖缺口;人口/生命周期/状态/as_of/available_at/发布接收时点/修订/raw_hash;类特有事件条款市场状态成本及报价深度或保守无成交边界;A 股上市退市ST停复牌涨跌停公司行动披露;REITs NAV分派底层资产经营融资;债券可转债条款应计票息赎回回售转股信用;金融期货实际合约规则横截面结算;期权完整链行权指派调整;杠杆反向产品重置估值压力会计",
+        "pit_revision_rights_proof": "逐字段说明历史 as_of/available_at/vintage/修订/raw_hash 是否可提供;不能提供须明确标注;仅说明未来可能权利/留存/规范化/独立复核/凭证托管边界，不构成当前权利",
+        "acceptance_tests": "每类独立版本控制可哈希模块定义;逐类字段映射PIT修订覆盖缺口和不支持情形;候选原始包须先列入未来 DAC 版本并经独立权利/字段/PIT/清单/验收通过;能力答复本身不能使数据类别产品合格",
+        "raw_delivery_manifest_requirements": "本次不交付原始数据;未来仅在模块定义版本控制并被接受、且后续 DAC 包明确列入后，才可按 DAC 原始清单/谱系/覆盖/异常要求单独交付与验收",
+        "route_suitability_boundary": "不请求个人账户/权限/适当性/风险承受/税务结论/资金/订单或执行;只描述通用制度事实与未来模块能力边界",
+        "provider_broker_owner_roles": "供方许可角色;供方数据/规则管家;研究数据治理负责人;独立验收人",
+        "current_status": "draft_module_definition_request_not_sent_no_DAC_package",
+        "no_action_boundary": "q=0;无获准类特定 DAC 包;不得正式回放/准入/配置/持有/交易/下单"
+      }
+    ]
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": "r5_predeclared_public_nav_feasibility_protocol.v1",
+  "artifact_id": "DPSFS-R5-PNAV-v1",
+  "as_of": "2026-08-15",
+  "language": "zh-CN",
+  "artifact_type": "single_run_public_nav_proxy_historical_feasibility_protocol",
+  "status": "exploratory_post_observation_not_a_clean_preregistration",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "objective_boundary": {
+    "research_question": "在固定的代表性场内基金集合中，以公开页面显示累计净值作为未经独立验证的经济回报代理时，一条固定月度绝对动量规则是否会被严格历史否决线证伪。",
+    "capital_scale": "not_defined; unit_nav_starts_at_1",
+    "cash_flow_objective": "none",
+    "future_return_claim": "prohibited",
+    "formal_replay_claim": "prohibited"
+  },
+  "pre_observation_disclosure": {
+    "occurred": true,
+    "description": "Before this rule was written, the research session used akshare.fund_etf_fund_info_em to check Eastmoney historical-NAV field availability and viewed sample/history responses for at least some relevant codes. Those responses were not retained as R5 source files and no R5 rule calculation was run at that time.",
+    "effect": "This is not a clean pre-registration before any related historical response was seen. Positive outputs cannot be used as independent out-of-sample or strategy evidence; negative outputs remain exploratory only.",
+    "legacy_filename_boundary": "The filename retains predeclared for continuity only and must not be interpreted as a clean preregistration claim."
+  },
+  "preexisting_source_basis": ["E01", "E02", "E03", "E04", "E05"],
+  "source_registry_references": ["E01", "E02", "E03", "E04", "E05", "E09", "P08"],
+  "fixed_implementation_universe": {
+    "equity_sleeve": {"codes": ["510300", "510880"], "within_sleeve_weights": [0.5, 0.5]},
+    "bond_sleeve": {"codes": ["511010"], "within_sleeve_weights": [1.0]},
+    "gold_sleeve": {"codes": ["518880"], "within_sleeve_weights": [1.0]},
+    "fallback_money_market": {"codes": ["511990"], "within_sleeve_weights": [1.0]},
+    "selection_basis": "Pre-existing R0 official product dossiers, mapped mechanically into one equity, one government-bond, one gold and one fallback money-market sleeve; no post-rule R5 price, NAV, scale, turnover, manager, theme or performance data may change this mapping."
+  },
+  "implementation_binding": {
+    "equity_sleeve": {"codes": ["510300", "510880"], "within_sleeve_weights": [0.5, 0.5]},
+    "bond_sleeve": {"codes": ["511010"], "within_sleeve_weights": [1.0]},
+    "gold_sleeve": {"codes": ["518880"], "within_sleeve_weights": [1.0]},
+    "fallback_money_market": {"codes": ["511990"], "within_sleeve_weights": [1.0]},
+    "rule": {
+      "lookback_common_observations": 252,
+      "signal_timing": "last common observation of calendar month",
+      "effective_timing": "next common observation after signal",
+      "equity_signal_sleeve_convention": "fixed_base_buy_and_hold_equal_weighted_level; selected-equity targets reset to 50/50 only at strategy rebalances",
+      "eligible_rule": "absolute_momentum > 0",
+      "target_weight_rule": "equal weight across all eligible sleeves; if none is eligible, 100% fallback_money_market",
+      "relative_ranking": "prohibited",
+      "top_n_selection": "prohibited",
+      "parameter_variants": "prohibited",
+      "leverage_or_derivatives": "prohibited"
+    },
+    "accounting": {
+      "unit_nav_start": 1.0,
+      "pre_trade_drift": true,
+      "one_way_turnover": "0.5 * sum(abs(drifted_weight - target_weight))",
+      "fixed_cost_bps_one_way": 20.0,
+      "same_day_signal_and_return": "prohibited"
+    },
+    "evaluation": {
+      "rolling_five_year_observation_intervals": 1260,
+      "strict_hurdle": 0.05,
+      "terminal_calendar_year_rule": "terminal calendar year is eligible only when the final common observation is on calendar December 31",
+      "terminal_rolling_month_rule": "terminal month is eligible only when the final common observation is on its calendar month end"
+    }
+  },
+  "source_route": {
+    "route_id": "PUBLIC_ETF_ACCUMULATED_NAV_ROUTE_v1",
+    "provider": "Eastmoney public fund-history page/API via direct HTTPS request",
+    "endpoint": "https://api.fund.eastmoney.com/f10/lsjz",
+    "request_fields": ["fundCode", "pageIndex", "pageSize", "startDate", "endDate"],
+    "required_response_fields": ["FSRQ", "LJJZ"],
+    "raw_archive_requirement": "Store every response body, retrieval timestamp, request parameters and SHA-256 before derived calculation.",
+    "source_label": "retrospectively_captured_public_aggregated_nav_proxy",
+    "prohibited_inference": ["point_in_time_availability", "revision_lineage", "complete_total_return", "market_price_executability", "data_rights"]
+  },
+  "rule": {
+    "observation_panel": "intersection of all five fund date series after parsing; all cumulative NAV values must be positive and dates unique",
+    "lookback_common_observations": 252,
+    "signal_timing": "last common observation of calendar month",
+    "effective_timing": "next common observation after signal",
+    "equity_sleeve_value": "equal-weighted normalized cumulative NAV of 510300 and 510880",
+    "bond_sleeve_value": "normalized cumulative NAV of 511010",
+    "gold_sleeve_value": "normalized cumulative NAV of 518880",
+    "absolute_momentum": "sleeve_value[t] / sleeve_value[t-252] - 1",
+    "equity_signal_sleeve_convention": "fixed_base_buy_and_hold_equal_weighted_level; selected-equity targets reset to 50/50 only at strategy rebalances",
+    "eligible_rule": "absolute_momentum > 0",
+    "target_weight_rule": "equal weight across all eligible sleeves; if none is eligible, 100% fallback_money_market",
+    "relative_ranking": "prohibited",
+    "top_n_selection": "prohibited",
+    "parameter_variants": "prohibited",
+    "leverage_or_derivatives": "prohibited"
+  },
+  "accounting": {
+    "unit_nav_start": 1.0,
+    "pre_trade_drift": true,
+    "one_way_turnover": "0.5 * sum(abs(drifted_weight - target_weight))",
+    "fixed_cost_bps_one_way": 20.0,
+    "cost_boundary": "An illustrative load only; not an assertion of broker fees, tax, bid/ask, impact, fills, settlement or capacity.",
+    "same_day_signal_and_return": "prohibited"
+  },
+  "evaluation": {
+    "full_period_metrics": ["annualized_unit_nav_change", "max_drawdown", "turnover", "coverage_exceptions"],
+    "calendar_year_metric": "complete calendar-year net unitized change",
+    "rolling_five_year_metric": "annualized net unitized change over every monthly endpoint with 1260 complete common-observation intervals",
+    "rolling_five_year_observation_intervals": 1260,
+    "strict_hurdle": 0.05,
+    "terminal_calendar_year_rule": "terminal calendar year is eligible only when the final common observation is on calendar December 31",
+    "terminal_rolling_month_rule": "terminal month is eligible only when the final common observation is on its calendar month end",
+    "not_falsified_state": "PUBLIC_NAV_PROXY_HURDLE_NOT_FALSIFIED",
+    "falsified_state": "PUBLIC_NAV_PROXY_HURDLE_FALSIFIED",
+    "not_falsified_requirements": [
+      "every complete calendar-year metric >= 0.05",
+      "every eligible rolling-five-year endpoint >= 0.05",
+      "no input, timing or accounting failure"
+    ]
+  },
+  "retired_family_separation": {
+    "retired_family": "H01--H07",
+    "r5_may_not_read": ["R2 raw price observations", "H01--H07 parameter values", "H01--H07 screen outputs", "H01--H07 survivor decisions"],
+    "material_differences": ["public displayed accumulated-NAV proxy rather than public close", "absolute sleeve momentum rather than relative top-N selection", "single fixed rule rather than variant grid", "equity products locked inside one sleeve", "money-market ETF only as no-eligible-sleeve fallback"]
+  },
+  "hard_limitations": [
+    "Public, retrospectively captured rows do not establish original-date availability, revisions, field semantics or data rights.",
+    "Displayed accumulated NAV is not an executable exchange-market price and does not establish investor net return.",
+    "No market-price/NAV/IOPV, fund-event, halt, limit, lot, bid-ask, fill, fee, tax, settlement or suitability model is present.",
+    "The five-code group is not U0, historical population, a decision universe or a recommendation list.",
+    "A hurdle result cannot close UR01--UR05 or establish individual action feasibility."
+  ],
+  "post_result_audit_amendment": {
+    "amended_at": "2026-08-15T00:00:00+08:00",
+    "pre_amendment_sha256": "f31f931fcca5af03c88fed6d93ccad727ae24fd81aead170755da99f9605d4bf",
+    "reason": "Independent audit found that the implementation previously validated only the artifact identifier rather than the fixed universe, rule, timing, accounting and evaluation fields.",
+    "scope": "Adds a machine-checkable duplicate of already-stated parameters plus explicit conservative terminal-period eligibility rules. It adds no universe, threshold, source or current-result variant; the archived terminal date is 2026-08-14, so the explicit rule leaves it incomplete as before.",
+    "integrity_boundary": "This amendment occurs after observation, does not repair the prior-observation issue and cannot create a preregistration or out-of-sample claim."
+  },
+  "post_result_b_level_clarification": {
+    "clarified_at": "2026-08-15T00:00:00+08:00",
+    "reason": "The refreshed independent audit requested an explicit distinction between the equity signal's fixed-base buy-and-hold convention and the strategy's 50/50 reset target at a selected-sleeve rebalance.",
+    "scope": "Documents the calculation already implemented, adds a fail-closed synthetic self-test, and does not change the current raw inputs, rule outcome, universe, threshold, timing, accounting or result.",
+    "integrity_boundary": "This post-result clarification cannot create a preregistration, out-of-sample, investor-return or action claim."
+  },
+  "allowed_conclusion": "A single public-data proxy hypothesis is or is not falsified under its own stated arithmetic; no other conclusion is allowed."
+}

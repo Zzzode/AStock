@@ -1,0 +1,48 @@
+{
+  "schema_version": "interim_evidence_memo.v3",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-15",
+  "report_type": "non_investable_interim_evidence_memo",
+  "status": "blocked_no_current_usable_strategy_after_bounded_open_universe_study",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "strict_research_hurdle": {
+    "complete_calendar_year_net_return": ">= 5%",
+    "rolling_five_year_annualized_net_return": ">= 5%",
+    "boundary": "Research admission test only; never a guarantee, forecast, annual floor, allocation, holding or action authorization."
+  },
+  "supportable_conclusions": [
+    "C7 fixed multi-asset ETF market-price diagnostic has five of twelve complete calendar years and 1,428 of 1,952 rolling five-year endpoints below 5%; it is not total-return or execution evidence.",
+    "C8 fixed convertible-bond ETF price proxy has 2022 and 2023 below 5% and 123 of 187 rolling five-year endpoints below 5%; it is not investor net-return or execution evidence.",
+    "C10 fixed four-name direct-equity gross-cash diagnostic is -0.15% in 2022 and 2.05% in 2025; it is not a point-in-time full-universe total-return-and-execution result.",
+    "C11 fixed manager-published cumulative-NAV proxy for 008856 is below 5% in 2022, 2024 and 2025 and at all 204 available rolling 1260-observation endpoints; it is not a holder dealing result.",
+    "C14 fixed 508000 public-REIT zero-cost cash diagnostic is below 5% in 2023, 2024 and 2025 and at all 40 available rolling five-year endpoints; it is neither a personal net-after-cost result nor a public-REIT-universe conclusion.",
+    "C9 commodity actual-contract trend, C12 Treasury cash-futures basis and C13 ETF covered-call routes have documented mechanics but lack the point-in-time data and operational package needed to calculate strict net-return endpoints or establish personal operability.",
+    "Direct equities and public REITs remain open asset classes; the failure or unavailability of a bounded representative route is not an economic exclusion of its class.",
+    "No captured evidence supports a usable strategy, allocation, holding list or return expectation. The current conclusion is restricted to the bounded routes listed in R11."
+  ],
+  "rejected_shortcuts": [
+    "Do not promote public market price, gross cash distributions, distribution yield or manager cumulative NAV into personal net total return.",
+    "Do not promote exchange rules, product documents or sparse actual-contract samples into a historical replay, fill model or individual account permission.",
+    "Do not use continuous futures as actual-contract/roll P&L or treat an ETF as a Treasury-futures deliverable bond.",
+    "Do not combine invalidated diagnostics with untestable derivatives routes into a usable multi-asset strategy.",
+    "Do not generalize one representative product to an entire asset class, or infer admission from a missing dossier."
+  ],
+  "next_research_sequence": [
+    "For any reopened route, acquire documented-rights point-in-time total-return or actual-contract, event, cost/tax, quote/depth, fill and account-route data before freezing a protocol.",
+    "For an open-universe study, freeze the complete U0 population, admission rule, distribution treatment, execution/halts/partial-fill and cost rules before observing a result.",
+    "Independently recompute every complete-calendar-year and rolling-five-year endpoint and complete prospective paper reconciliation; a sub-5% endpoint or missing material field keeps q=0.",
+    "Changing the hard annual hurdle into a long-term objective requires a separately authorized research mandate, risk budget and acceptance test; it cannot be silently relaxed."
+  ],
+  "blocking_references": [
+    "analysis/r11_open_universe_candidate_disposition_20260815.json",
+    "analysis/r12_independent_r11_disposition_audit_20260815.json",
+    "data/source_registry.json",
+    "data/claim_audit.json",
+    "data/research_ledger.json",
+    "data/data_acquisition_contract_20260814.json",
+    "data/formal_replay_protocol_requirements_20260814.json"
+  ],
+  "no_action_boundary": "No subscription, redemption, purchase, sale, futures transaction, option transaction, repo, delivery, account opening, allocation or external action is authorized."
+}

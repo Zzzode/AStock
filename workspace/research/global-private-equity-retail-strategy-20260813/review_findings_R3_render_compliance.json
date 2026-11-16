@@ -1,0 +1,25 @@
+{
+  "cycle": "R3_render_compliance",
+  "reviewer": "render and compliance reviewer",
+  "review_date": "2026-08-14",
+  "findings": [
+    {
+      "id": "R3-01",
+      "severity": "S",
+      "title": "Earlier PDF was stale after evidence-boundary edits",
+      "status": "closed",
+      "evidence": "The earlier 23:56 PDF preceded source-scope, evidence-classification and reader-language corrections. The rebuilt release is 20 pages; main.tex SHA-256 is 7ff1ce34b8274a6b76db510087305ed50cf74b18b10e2277129f6184e5043f8b and main.pdf SHA-256 is a5b8b28c8594113c35c477f7063e2f5c52a0ffb48d496f68b253e01fc9767340.",
+      "repair": "Rebuilt with XeLaTeX after all source, rule-scope and manager-attribution corrections; regenerated text extraction and all 20 release-page renders from the final PDF; refreshed build provenance.",
+      "verification": "main.log has no Overfull hbox or fatal-error diagnostic; pdfinfo reports 20 pages; all twenty PNGs were regenerated at 00:47:45--00:47:49 CST from PDF SHA-256 a5b8b28c8594113c35c477f7063e2f5c52a0ffb48d496f68b253e01fc9767340; pages 01, 05, 06, 11, 13, 16 and 18 were visually reconciled with the final PDF and current provenance."
+    },
+    {
+      "id": "R3-02",
+      "severity": "B",
+      "title": "Non-material TeX box diagnostics remained",
+      "status": "closed",
+      "evidence": "The earlier build contained underfull cover metadata and box-edge overfull messages.",
+      "repair": "Adjusted header height and source-table widths; the latest rebuild removes all Overfull hbox diagnostics.",
+      "verification": "The current log has no Overfull hbox diagnostic; no clipped CJK text, overlap or broken diagram appears in final-PDF release renders sampled at pages 01, 05, 06, 11, 13, 16 and 18."
+    }
+  ]
+}

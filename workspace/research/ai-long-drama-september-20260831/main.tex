@@ -1,0 +1,52 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,fontset=none]{ctexart}
+
+\newcommand{\reporttitle}{AI长剧：9月主线能否成立，交易预案怎么做}
+\newcommand{\reportsubtitle}{先看主板梯队，再谈参与}
+\newcommand{\reportkicker}{ASTOCK TACTICAL THEME RESEARCH}
+\newcommand{\reportscope}{中国A股｜AI内容、短剧与影视传媒｜观察型研究}
+\newcommand{\reportdate}{2026年9月1日}
+\newcommand{\reportdatacutoff}{D0市场数据截至8月31日收盘；D+1盘中数据截至9月1日12:11；公告与新闻截至当日}
+\newcommand{\reporttype}{催化驱动题材调研与纸面预案}
+\newcommand{\reportauthor}{AStock研究团队}
+\newcommand{\reporthouseview}{D+1盘中，芒果超媒与四只主板AI内容扩散股继续强势，题材热度超出D0预期。新增资料把芒果超媒与项目的关系说得更清楚；但主板仍未出现项目直接关系核心。因此，AI长剧仍不是主板账户可按龙头战法参与的完整题材。}
+\newcommand{\reportquality}{项目与公司关系主要来自政府、交易所和平台资料；市场结构来自公开盘后快照，缺少完整涨跌停生态、竞价和订单簿数据。商业化、项目合同和其他上市公司受益关系尚未披露。}
+\newcommand{\reportdisclaimer}{本报告基于公开信息，仅用于研究与监控；不构成任何证券买卖建议、收益承诺或自动交易指令。}
+\input{../../../.agents/templates/preamble.tex}
+
+\hypersetup{pdfauthor={\reportauthor},pdftitle={\reporttitle},pdfsubject={AI长剧题材调研与条件化预案}}
+
+\begin{document}
+
+\begin{center}
+{\sffamily\small\bfseries\color{steelgrey} \reportkicker}\\[3pt]
+{\LARGE\bfseries\color{navy} \reporttitle}\\[5pt]
+{\large\color{steelgrey} \reportsubtitle}\\[4pt]
+{\small\color{mutedgrey} \reportscope\quad|\quad\reportdate\\\reportdatacutoff}
+\end{center}
+\vspace{0.5em}
+
+\input{sections/ch01_summary}
+
+\section{这份报告解决什么问题}
+问题只有三个：AI长剧能否成为9月主线；谁能叫龙头；无创业板权限时主板账户该等什么。当前答案很直接：题材值得观察，项目直接关系的主板龙头尚未出现，主板账户继续等结构。项目收入预测、估值和实际下单不在本报告范围内。
+
+\input{sections/ch02_evidence}
+\input{sections/ch03_mapping}
+\input{sections/ch04_gates}
+\input{sections/ch05_preplan}
+\input{sections/ch08_daily_plan}
+\input{sections/ch09_d1_update}
+\input{sections/ch07_scorecards}
+\input{sections/ch06_risk}
+\appendix
+\input{sections/app_sources}
+
+\vfill
+\begin{disclosurebox}[研究与合规边界]
+\small
+\reportdisclaimer\par
+本预案的“条件”“失效”“复核”均用于定义研究假设，不构成对任何账户的适当性判断。A股T+1、涨跌停、停牌和隔夜跳空可能使任何理论性退出或成交不可实现；读者应独立核验最新公告和行情。
+\end{disclosurebox}
+
+\end{document}

@@ -1,0 +1,71 @@
+{
+  "case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "report_type": "strategic_allocation_total_return_research_framework",
+  "data_cutoff": "2026-08-12",
+  "pdf_path": "main.pdf",
+  "pdf_sha256": "d7d8ecfb802336b5aedc65c50198f07bddbede40cc26b2ead64b889cbb4dc467",
+  "page_count": 20,
+  "text_path": "data/main_text_20260812.txt",
+  "text_sha256": "c5512f5bc8e0295619274696a0401e187e22265cac9bce6129dc708d197ac792",
+  "render_dir": "rendered/final-20260814-total-return-only",
+  "reader_source_sha256": "f2d183941fa29e909bd204364c0aabea62826e129bd2e2fa865a681acf971e13",
+  "reader_source_graph_sha256": "aadf38f2f864caef97777fe61b26a905eb54ca5442d5caa9d5406647f9c54ea1",
+  "reviewed_source_sha256": "f2d183941fa29e909bd204364c0aabea62826e129bd2e2fa865a681acf971e13",
+  "reviewed_source_graph_sha256": "aadf38f2f864caef97777fe61b26a905eb54ca5442d5caa9d5406647f9c54ea1",
+  "pdf_identity_status": "current_release_reviewed",
+  "artifact_identity_note": "R0-R4 records, visual review, build provenance and sign-off are bound to the same current 20-page total-return-only source, PDF, text and render set.",
+  "strategy_scale_policy": "scale_neutral_proportional_measurement_no_account_level_inference",
+  "publishability_score": 94,
+  "verifier_results": {
+    "case_local": "PASS — 111 PASS / 0 FAIL; current source/PDF/text identities, sole-objective mandate, inventories and q=0 controls reconcile.",
+    "repository_gate": "PASS — 140 PASS / 0 FAIL; RESULT PASS from the repository research-gate runner.",
+    "author_build_qa": "PASS — two-pass XeLaTeX build on Linux / TeX Live 2022/Debian with Noto Serif CJK SC; zero fatal errors, undefined control sequences and overfull hboxes; five underfull boxes and one non-breaking-box warning were visually reviewed.",
+    "current_release_review": "R4 reviewed the current 20-page total-return-only artifact: one conditional 5% rolling-five-year TWRR research objective; no cash-receipt objective; open T1 universe; empty T2/T3/T4 state; q=0; and four blocked implementation gates."
+  },
+  "open_s_count": 0,
+  "open_a_count": 0,
+  "active_scope_open_s_count": 0,
+  "lifecycle_review_status": {
+    "R0_evidence": "pass_primary_archive_hash_verified_historical_and_mechanism_scope_only",
+    "R1_model": "resolved_single_objective_total_return_model",
+    "R2_draft": "pass_reader_single_objective_and_action_boundary",
+    "R3_render_compliance": "pass_current_20_page_total_return_only_render_visually_checked",
+    "R4_final_ic": "research_framework_pass_implementation_not_approved"
+  },
+  "execution_eligibility": {
+    "status": "NOT_AUTHORIZED",
+    "q": 0,
+    "live_execution_authorized": false,
+    "current_implementable_state": "No model-approved market allocation exists; T1 is open but T2/T3/T4 are empty and every market candidate remains q=0. The scale-neutral framework does not infer an account balance, holding or cash destination.",
+    "effect": "No direct equity, ETF, REIT, sovereign or cash-market candidate is eligible for a live trade. A future named T3 candidate must complete its structure-specific current-price, valuation, risk, liquidity, tax, settlement and capacity evidence."
+  },
+  "implementation_gates": {
+    "return_evidence": "BLOCKED_PENDING_FORMAL_TEST",
+    "risk_budget": "NOT_APPROVED",
+    "suitability": "PENDING",
+    "execution": "NOT_AUTHORIZED"
+  },
+  "material_claim_disclosure": {
+    "return_target_not_guarantee": true,
+    "cash_objective_not_required": true,
+    "return_evidence_not_sufficient_for_implementation": true,
+    "risk_budget_not_approved": true,
+    "implementation_not_authorized": true
+  },
+  "residual_risks": [
+    "Return evidence remains blocked: no reproducible point-in-time, cost-aware portfolio replay or independently reviewed B0/B1 comparison supports a 5% strategy result, expected return or probability statement.",
+    "Risk budget is not approved because the retired reference vector has -25.00% planning stress against the -18% action boundary and no frozen T2 candidate portfolio has completed a new risk-budget review.",
+    "Suitability and execution are not approved or authorized: no account, tax, settlement, existing-holdings, same-session market or executable-liquidity packet exists.",
+    "Direct equities are open for research but none is named at T2/T3; every future issuer requires institutional equity research and a current valuation dossier before portfolio review.",
+    "Distributions are recorded once within total return and remain distinct from sales, unrealized changes, NAV movement, external flows and unresolved return-of-capital-like components; their use is investor-directed and does not create a separate performance target."
+  ],
+  "waivers": [],
+  "downgrade_status": "NONE_FOR_RESEARCH_FRAMEWORK_PUBLICATION; implementation remains not approved and not authorized",
+  "signoff_status": "RESEARCH_FRAMEWORK_PASS",
+  "framework_status": "PASS",
+  "implementation_status": "NOT_APPROVED",
+  "live_execution_authorized": false,
+  "implementation_rationale": "Research-framework publication only: the 5% objective is not guaranteed, and implementation is not approved until return evidence, risk budget, suitability and execution all pass independently.",
+  "decision": "RESEARCH FRAMEWORK PASS only. The sole conditional target is a rolling five-year, cost-aware 5% TWRR research objective, not a guarantee. No separate cash-receipt objective exists. No market allocation is approved: T2/T3/T4, formal return evidence, risk budget, suitability and current-session eligibility remain incomplete; live execution is not authorized."
+}

@@ -1,0 +1,63 @@
+{
+  "artifact_id": "DPSFS-C11-MN-FUND-v1",
+  "as_of": "2026-08-15",
+  "status": "exploratory_post_observation_not_clean_preregistration",
+  "portfolio_q": 0,
+  "candidate_status": "research_candidate_not_actionable",
+  "objective": "Test one publicly offered domestic quantitative-hedge fund against the user-derived strict 5% annual hurdle without representing any result as guaranteed, forecast, or personal return.",
+  "pre_observation_disclosure": {
+    "official_product_identity_and_public_performance_page_were_viewed_before_rule_freeze": true,
+    "consequence": "The result is exploratory; a favorable result would not be independent evidence."
+  },
+  "product": {
+    "fund_code": "008856",
+    "name": "华夏安泰对冲策略3个月定期开放灵活配置混合型发起式证券投资基金",
+    "manager": "华夏基金管理有限公司",
+    "custodian": "中国银行股份有限公司",
+    "contract_effective_date": "2020-06-05",
+    "mechanism": "Quantitative absolute-return strategies with derivatives intended to hedge market risk; the manager, not the individual holder, operates the derivatives.",
+    "open_cycle": "The product summary states that the open-period months are February, May, August, and November; the actual dates and availability require a current manager notice."
+  },
+  "fixed_personal_process": {
+    "selection": "One fixed fund only; no peer ranking, switching, performance chase, replacement, or timing rule.",
+    "entry_gate": [
+      "A current manager notice confirms an open subscription window and no suspension or scale-control block for the relevant channel.",
+      "The current product summary, prospectus, fees, sales-channel terms, risk rating, and account route are retained.",
+      "The individual independently confirms that the product's lock-up, derivative, liquidity, and loss risks fit their circumstances."
+    ],
+    "holding_review": "At each subsequently announced open window, review the latest annual or periodic report, legal documents, current dealing status, and any material hedge-method, manager, fee, scale, or termination change. No interim trading assumption exists during a closed period.",
+    "stop_or_exit_gate": [
+      "Current dealing status is suspended, restricted, unavailable to the account, or the expected next open date is not evidenced.",
+      "A material legal-document, hedge-method, fee, manager, termination, or risk-rating change is not independently accepted.",
+      "A pre-frozen total-NAV or subsequent execution test fails the strict hurdle."
+    ],
+    "no_automatic_substitute": true,
+    "no_leverage_or_derivative_action_by_holder": true,
+    "no_external_orders": true
+  },
+  "nav_proxy_test": {
+    "source": "Fund-manager published all-history cumulative NAV series",
+    "baseline_unit_nav": 1.0,
+    "return_basis": "Published cumulative NAV arithmetic before holder-specific subscription/redemption charges, dealing delays, channel constraints, taxes, and order-confirmation timing.",
+    "strict_hurdle": 0.05,
+    "requirements": [
+      "Every complete calendar-year cumulative-NAV change is at least 5%.",
+      "Every 1260-observation rolling annualized cumulative-NAV change is at least 5%.",
+      "No data or accounting exception remains unexplained."
+    ],
+    "pass_label": "OFFICIAL_NAV_PROXY_HURDLE_NOT_FALSIFIED",
+    "fail_label": "OFFICIAL_NAV_PROXY_HURDLE_FALSIFIED",
+    "scope_boundary": "Even a non-falsified result cannot establish a future return, a guaranteed outcome, personal fill/dealing result, suitability, or action."
+  },
+  "risk_register": [
+    "quantitative_model_and_hedge_failure",
+    "derivative_and_financing_risk_inside_the_fund",
+    "market_neutrality_breakdown_and_basis_risk",
+    "liquidity_and_periodic_opening_constraint",
+    "manager_key_person_and_style_drift",
+    "fund_termination_and_scale-control_risk",
+    "sales_charge_and_holder_dealing-timing_risk",
+    "published_NAV_and_personal-return_difference"
+  ],
+  "allowed_output": "A research-only product and NAV-proxy feasibility result. It cannot create a holding, subscription, redemption, allocation, or external action."
+}

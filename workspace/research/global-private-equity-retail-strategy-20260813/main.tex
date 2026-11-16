@@ -1,0 +1,66 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{全球头部另类资产管理人的方法论：\newline 中国个人投资者可迁移的公开市场框架}
+\newcommand{\reportsubtitle}{复制投资委员会，不复制收购、杠杆与专属交易}
+\newcommand{\reportkicker}{STRATEGIC INVESTMENT RESEARCH}
+\newcommand{\reportscope}{GLOBAL ALTERNATIVES \textbar\ CHINA PUBLIC MARKETS}
+\newcommand{\reportdate}{2026年8月13日}
+\newcommand{\reportdatacutoff}{资料截至 2026年8月13日}
+\newcommand{\reporttype}{研究框架证据备忘录}
+\newcommand{\reportauthor}{AStock Research Agent}
+\newcommand{\reporthouseview}{有可借用的研究方法，但它不是“私募买什么就跟什么”。个人可借用的是：窄能力圈、现金流与负债承保、可验证的经营改善、情景估值、分阶段复核和预先写下的失效条件。控制权、杠杆收购（LBO）、私募信贷发起、保险资金与专属交易是机构能力，应明确排除。}
+\newcommand{\reportquality}{以 Blackstone、KKR、Apollo、Brookfield、Carlyle、Bain Capital 与 TPG 的官方披露，以及中国证监会、沪深交易所现行规则为主。管理人材料可证明其描述的流程，不能独立证明其超额收益可被个人复制；未使用任何用户账户、实时行情或个券数据。}
+\newcommand{\reportdisclaimer}{本报告基于公开资料整理，仅供研究和教育使用，不构成任何证券买卖、产品适当性、收益或执行建议。}
+
+\input{../../../.agents/templates/preamble.tex}
+\setlength{\headheight}{20pt}
+\AtBeginEnvironment{tabularx}{\setlength{\linewidth}{\dimexpr\linewidth-21.9pt\relax}}
+
+\hypersetup{
+  pdfauthor={\reportauthor},
+  pdftitle={\reporttitle}
+}
+
+\begin{document}
+
+\astockcover
+
+\tableofcontents
+\clearpage
+
+\chapter{结论：复制投资委员会，不复制交易}
+\input{sections/ch01_decision}
+
+\chapter{全球头部私募到底在做什么}
+\input{sections/ch02_global_methods}
+
+\chapter{可迁移性：纪律、半迁移能力与禁区}
+\input{sections/ch03_transferability}
+
+\chapter{个人版核心：私募式公开市场承保}
+\input{sections/ch04_underwriting_playbook}
+
+\chapter{中国市场如何改变仓位与退出设计}
+\input{sections/ch05_china_constraints}
+
+\chapter{投后核验、再承保与失效机制}
+\input{sections/ch06_monitoring}
+
+\chapter{红队审查：这套框架在哪些情况下不值得用}
+\input{sections/ch07_red_team}
+
+\appendix
+\chapter{一手来源、证据等级与使用边界}
+\input{sections/app_sources}
+
+\clearpage
+\thispagestyle{empty}
+\vspace*{4cm}
+\begin{disclosurebox}[重要披露]
+\small
+\reportdisclaimer\par
+本备忘录通过“战略研究框架”审查，并不等同于实施批准。没有用户的资产负债、现金需求、风险承受能力、账户权限、税务条件、既有持仓、个券尽调、当前流动性或经批准的风险预算，因此任何市场交易敞口均为 \texttt{q=0}。本报告不承诺收益，也不把历史分派、私募内部收益率（IRR）、管理规模或品牌转化为未来回报预测。
+\end{disclosurebox}
+
+\end{document}

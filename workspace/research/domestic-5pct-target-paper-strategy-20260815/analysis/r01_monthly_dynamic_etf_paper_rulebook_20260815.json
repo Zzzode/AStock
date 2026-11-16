@@ -1,0 +1,72 @@
+{
+  "schema_version": "domestic_5pct_target_monthly_dynamic_etf_rulebook.v1",
+  "artifact_id": "D5PT-R01-v1",
+  "as_of": "2026-08-15",
+  "status": "paper_benchmark_only_not_stable_return_admission",
+  "research_only": true,
+  "external_orders": false,
+  "long_run_target": "annualized return above 5 percent as a research objective only",
+  "annual_or_rolling_floor": "not asserted",
+  "source_dependencies": {
+    "product_diligence": "analysis/p01_core_etf_product_diligence_20260815.json",
+    "price_proxy_diagnostic": "analysis/m01_dynamic_market_price_proxy_20260815.json"
+  },
+  "universe": {
+    "equity": {"codes": ["510300", "510880"], "within_sleeve_weights": [0.5, 0.5]},
+    "bond": {"code": "511010"},
+    "gold": {"code": "518880"},
+    "fallback": {"code": "511990"},
+    "automatic_substitution": false,
+    "other_products": "open research funnel only"
+  },
+  "signal": {
+    "calendar": "final common trading session of each calendar month after close",
+    "lookback_common_observations": 252,
+    "equity_level": "0.5 * P510300/P510300_base + 0.5 * P510880/P510880_base",
+    "selection": "strictly positive trailing price change",
+    "timing": "next common trading session only; same-session action prohibited",
+    "relative_ranking": false,
+    "top_n_selection": false,
+    "parameter_search": false
+  },
+  "target_rule": "equal weight across positive equity, bond and gold sleeves; if no sleeve is positive, 100 percent fallback; equity is split 50/50 between its two fixed products",
+  "target_matrix": {
+    "equity_bond_gold": {"510300": 0.1666666667, "510880": 0.1666666667, "511010": 0.3333333333, "518880": 0.3333333333, "511990": 0.0},
+    "equity_bond": {"510300": 0.25, "510880": 0.25, "511010": 0.5, "518880": 0.0, "511990": 0.0},
+    "equity_gold": {"510300": 0.25, "510880": 0.25, "511010": 0.0, "518880": 0.5, "511990": 0.0},
+    "bond_gold": {"510300": 0.0, "510880": 0.0, "511010": 0.5, "518880": 0.5, "511990": 0.0},
+    "equity": {"510300": 0.5, "510880": 0.5, "511010": 0.0, "518880": 0.0, "511990": 0.0},
+    "bond": {"510300": 0.0, "510880": 0.0, "511010": 1.0, "518880": 0.0, "511990": 0.0},
+    "gold": {"510300": 0.0, "510880": 0.0, "511010": 0.0, "518880": 1.0, "511990": 0.0},
+    "none": {"510300": 0.0, "510880": 0.0, "511010": 0.0, "518880": 0.0, "511990": 1.0}
+  },
+  "paper_execution": {
+    "order_type": "paper limit order using next-session displayed best bid/ask",
+    "lot_size": 100,
+    "price_increment": 0.001,
+    "buy_gate": "ask <= IOPV * 1.003",
+    "sell_gate": "bid >= IOPV * 0.997",
+    "no_iopv_quote_status_fee_or_settlement_fact": "no_action for entire scheduled rebalance",
+    "incomplete_equity_pair": "no_action for entire scheduled rebalance",
+    "rounding": "floor each target to a 100-share lot; record settlement residual separately",
+    "no_fill_assumption": "prohibited"
+  },
+  "risk_controls": {
+    "leverage": false,
+    "shorting": false,
+    "futures_or_options_overlay": false,
+    "drawdown_review_thresholds": [-0.12, -0.18],
+    "drawdown_review_effect": "data/product/cost/settlement review only; target vector is unchanged",
+    "suspension_triggers": ["material product or legal-document change", "delisting or extended halt", "data-semantic change", "account or settlement condition failure", "unreconciled paper ledger"]
+  },
+  "forward_validation": {
+    "minimum_months": 6,
+    "required_records": ["source/hash/available-at signal rows", "quote/IOPV/status evidence", "paper fill or no-action evidence", "fees/taxes/events/settlement ledger", "monthly reconciliation"],
+    "no_midstream_rule_change": true,
+    "required_review": "independent post-observation audit"
+  },
+  "m01_boundary": {
+    "diagnostic_state": "HURDLE_NOT_MET_IN_EXPLORATORY_PRICE_PROXY",
+    "meaning": "M01 does not authorize R01 as a stable-return strategy and cannot establish net investor performance."
+  }
+}

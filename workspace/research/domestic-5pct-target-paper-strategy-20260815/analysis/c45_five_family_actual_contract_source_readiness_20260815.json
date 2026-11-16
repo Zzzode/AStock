@@ -1,0 +1,81 @@
+{
+  "schema_version": "c45_five_family_actual_contract_source_readiness.v1",
+  "artifact_id": "D5PT-C45-v1",
+  "as_of": "2026-08-15",
+  "result": "PASS",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "source": {
+    "manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest.json",
+    "manifest_sha256": "34e23ddf886bd1f1f6cb88610d8d730bd757c981b92b0aa51720c5471b1186d7",
+    "first_retained_response": "2019-01-02",
+    "last_retained_response": "2025-12-31",
+    "retained_response_count": 1699,
+    "non_record_count": 128
+  },
+  "families": [
+    "AU",
+    "CU",
+    "RB",
+    "RU",
+    "SP"
+  ],
+  "required_actual_contract_fields": [
+    "OPENPRICE",
+    "HIGHESTPRICE",
+    "LOWESTPRICE",
+    "SETTLEMENTPRICE",
+    "VOLUME",
+    "OPENINTEREST"
+  ],
+  "family_stats": {
+    "AU": {
+      "response_count_with_valid_actual_contract_row": 1699,
+      "valid_actual_contract_row_count": 12957,
+      "minimum_valid_actual_contract_rows_per_response": 3,
+      "maximum_valid_actual_contract_rows_per_response": 8,
+      "first_observed_date": "2019-01-02",
+      "last_observed_date": "2025-12-31"
+    },
+    "CU": {
+      "response_count_with_valid_actual_contract_row": 1699,
+      "valid_actual_contract_row_count": 20328,
+      "minimum_valid_actual_contract_rows_per_response": 10,
+      "maximum_valid_actual_contract_rows_per_response": 12,
+      "first_observed_date": "2019-01-02",
+      "last_observed_date": "2025-12-31"
+    },
+    "RB": {
+      "response_count_with_valid_actual_contract_row": 1699,
+      "valid_actual_contract_row_count": 20194,
+      "minimum_valid_actual_contract_rows_per_response": 11,
+      "maximum_valid_actual_contract_rows_per_response": 12,
+      "first_observed_date": "2019-01-02",
+      "last_observed_date": "2025-12-31"
+    },
+    "RU": {
+      "response_count_with_valid_actual_contract_row": 1699,
+      "valid_actual_contract_row_count": 15755,
+      "minimum_valid_actual_contract_rows_per_response": 4,
+      "maximum_valid_actual_contract_rows_per_response": 10,
+      "first_observed_date": "2019-01-02",
+      "last_observed_date": "2025-12-31"
+    },
+    "SP": {
+      "response_count_with_valid_actual_contract_row": 1699,
+      "valid_actual_contract_row_count": 17529,
+      "minimum_valid_actual_contract_rows_per_response": 2,
+      "maximum_valid_actual_contract_rows_per_response": 12,
+      "first_observed_date": "2019-01-02",
+      "last_observed_date": "2025-12-31"
+    }
+  },
+  "missing_valid_row_by_date": [],
+  "limitations": [
+    "Historical response files were retrieved retrospectively. Their integrity does not prove original-date availability, immutability, revision history, or data rights.",
+    "Valid EOD rows establish only a limited actual-contract settlement-mark input. They do not establish bid/ask, depth, fills, fees, margin, collateral, limits, delivery, offset eligibility, broker access, or investor outcomes.",
+    "The 128 retained HTTP 404 responses are non-records. This audit does not infer a complete exchange calendar from them.",
+    "A PASS is a source-field readiness result only. It does not pass a performance test or admit a strategy for use."
+  ]
+}

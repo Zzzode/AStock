@@ -1,0 +1,67 @@
+{
+  "schema_version": "r13_r10_v1_scope_mismatch_correction.v1",
+  "artifact_id": "D5PT-R13-R10-V1-SCOPE-CORRECTION-v1",
+  "as_of": "2026-08-15",
+  "result": "PASS_SCOPE_MISMATCH_DOCUMENTED",
+  "correction_type": "audit-provenance correction for a legacy v1 verifier run against remediated C20 v2",
+  "legacy_artifact": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/r10_independent_c20_public_reit_feasibility_audit_20260815.json",
+    "sha256": "3d3d7b897981269d96b64bf447911a07e32e9c65f9be43734433db6fb4026f8c",
+    "interpretation": "The retained FAIL is a post-remediation scope mismatch. Its sole failed assertion expects v1 URL-only states that C20 v2 intentionally changed to retained-source states."
+  },
+  "historical_boundary": {
+    "reported_pre_amendment_result": "PASS_WITH_OPEN_SOURCE_CONTROL_GAP",
+    "historical_gap_id": "R10-SC-01",
+    "reproducibility_limit": "The immutable C20 v1 input/output pair was superseded before this correction. The reported v1 result is not reconstructed or asserted as a current independent audit; C20 v2's amendment and the retained legacy re-execution preserve the scope transition instead."
+  },
+  "current_interpretation": "Do not interpret the legacy R10 FAIL as an open C20 v2 source-control defect. R12 separately verifies the retained-rule-text remediation; neither R12 nor this correction makes C20 strategy-testable or admitted.",
+  "checks": [
+    {
+      "name": "legacy R10 re-execution retained unchanged",
+      "passed": true,
+      "detail": "3d3d7b897981269d96b64bf447911a07e32e9c65f9be43734433db6fb4026f8c"
+    },
+    {
+      "name": "legacy R10 identifies the then-current C20 v2 input",
+      "passed": true,
+      "detail": "81d6c9fae8cc7f8c6069f0e84e2a5b3a2c6ae6dcf1068bd31dc85d682b9d5fad"
+    },
+    {
+      "name": "legacy R10 failure is exclusively the obsolete URL-only assertion",
+      "passed": true,
+      "detail": "['R10-S03: C20 transparently labels all current-rule rechecks as URL-only']"
+    },
+    {
+      "name": "legacy R10 retained-source and no-action checks still passed",
+      "passed": true,
+      "detail": "inherited-source/scope status"
+    },
+    {
+      "name": "C20 remains the remediated v2 artifact",
+      "passed": true,
+      "detail": "D5PT-C20-FEASIBILITY-v2"
+    },
+    {
+      "name": "C20 records the R10-SC-01 remediation rationale",
+      "passed": true,
+      "detail": "{'reason': 'R10-SC-01 found that the four current-rule rechecks in v1 were URL-only. v2 retains the four public pages and two linked rule bodies in a separate immutable source batch and binds its manifest. The legacy R10 v1 checker was later re-executed against v2; R13 preserves and corrects that scope mismatch rather than treating its obsolete URL-only assertion as a new defect. This changes no route, product selection, universe, return test, result, eligibility inference or action boundary.', 'previous_feasibility_sha256': '21f4ce8c90c68ed1acca106ea7261e109dd184736a2f7b4a8f19a81eec649f4a', 'reassessment_required': True}"
+    },
+    {
+      "name": "C20 v2 deliberately uses retained rather than URL-only rule states",
+      "passed": true,
+      "detail": "['retained_in_c20_current_rule_source_batch', 'retained_in_c20_current_rule_source_batch', 'retained_in_c20_current_rule_source_batch', 'retained_in_c20_current_rule_source_batch']"
+    },
+    {
+      "name": "current-rule source batch remains immutable",
+      "passed": true,
+      "detail": "f0e710ef25872489d4ee697c58fb0bf73abd8c180f0d4115ce10aaf69e278829"
+    },
+    {
+      "name": "C20 v2 retains no-selection/no-test/no-action controls",
+      "passed": true,
+      "detail": "scope/disposition fields"
+    }
+  ],
+  "failures": [],
+  "boundary": "This correction preserves audit provenance only. It does not select a product, define a universe, calculate a return, infer eligibility, authorize an action, or change C20's unadmitted status."
+}

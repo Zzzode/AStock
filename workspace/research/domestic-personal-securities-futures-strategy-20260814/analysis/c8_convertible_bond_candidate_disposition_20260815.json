@@ -1,0 +1,48 @@
+{
+  "document_id": "DPSFS-C8-DISPOSITION-v1",
+  "as_of_date": "2026-08-15",
+  "candidate": "DPSFS-C8-CB-ETFR-v1",
+  "decision": "REJECTED_AS_STABLE_5_PERCENT_CANDIDATE",
+  "portfolio_q": 0,
+  "fixed_rule": {
+    "weights": {"511180": 0.5, "511380": 0.25, "511010": 0.25},
+    "rebalance": "quarterly",
+    "cost_stress_rate": 0.003,
+    "prohibited": ["leverage", "direct_convertible_bond_selection", "post_result_parameter_tuning"]
+  },
+  "falsification_evidence": {
+    "result_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c8_convertible_bond_etf_fixed_allocation_price_proxy_20260815.json",
+    "result_label": "PRICE_PROXY_HURDLE_FALSIFIED",
+    "panel_observations": 1447,
+    "panel_first_date": "2020-08-26",
+    "panel_last_date": "2026-08-14",
+    "annualized_net_unitized_change": 0.03928600496293111,
+    "max_drawdown": -0.07441997604613715,
+    "complete_year_failures": [
+      {"year": 2022, "net_unitized_change": -0.05311470342768465},
+      {"year": 2023, "net_unitized_change": 0.011660584598902846}
+    ],
+    "rolling_window_observations": 1260,
+    "rolling_window_count": 187,
+    "rolling_pass_count": 64,
+    "rolling_failure_count": 123,
+    "rolling_min_annualized_net_unitized_change": 0.04120617703770346
+  },
+  "product_diligence": {
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c8_convertible_bond_product_diligence_20260815.json",
+    "status": "dated_product_identity_structure_fee_and_risk_facts_documented",
+    "does_not_close": ["stable_return", "PIT_total_return", "execution", "account_eligibility", "action"]
+  },
+  "rule_integrity": {
+    "exploratory_status": "identity_and_document_discovery_preceded_protocol; full_three_code_price_capture_and_rule_calculation_did_not",
+    "no_positive_evidence_claim": true,
+    "no_tuning_permitted_after_result": true
+  },
+  "open_research_questions": [
+    {"question": "Whether actual tradable total return differs from the public price proxy", "required_evidence": ["entitled_PIT_total_return", "distribution_split", "NAV_IOPV", "status", "cost_fill_ledger"]},
+    {"question": "Whether a direct convertible-bond rule can be independently validated", "required_evidence": ["PIT_universe", "issuer_rating", "terms", "conversion_redemption_put_events", "company_diligence", "liquidity"]},
+    {"question": "Whether a distinct multi-asset rule can meet a long-run target", "required_evidence": ["new_pre_frozen_rule", "independent_data", "independent_audit"]}
+  ],
+  "prohibited_next_steps": ["change_C8_weights", "change_C8_rebalance_frequency", "select_start_date", "change_cost_to_remove_failures", "replace_C8_products_without_new_hypothesis"],
+  "allowed_interpretation": "The fixed C8-T1 price-proxy candidate is rejected for the stable-5% claim. This does not reject all convertible-bond research or authorize a personal investment action."
+}

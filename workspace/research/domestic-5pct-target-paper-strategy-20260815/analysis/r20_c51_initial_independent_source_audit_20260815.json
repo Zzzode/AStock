@@ -1,0 +1,232 @@
+{
+  "schema_version": "d5pt_r20_c51_initial_independent_source_audit.v1",
+  "artifact_id": "D5PT-R20-C51-INITIAL-INDEPENDENT-SOURCE-AUDIT-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "reviewer": {
+    "role": "data-verifier",
+    "mode": "independent_maker_checker"
+  },
+  "scope": {
+    "artifacts": [
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.md",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c51-sse-etf-option-collar-scope-20260815/manifest.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c51-sse-etf-option-collar-scope-20260815/*",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c51_capture_sse_etf_option_collar_sources.py",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c51_build_sse_etf_option_collar_scope_screen.py",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json"
+    ],
+    "not_performed": [
+      "Historical performance reconstruction",
+      "Broker, account, entitlement, suitability, fill or settlement verification",
+      "Product, code, term, calendar or threshold selection",
+      "External action or order authorization"
+    ]
+  },
+  "review_snapshot": {
+    "snapshot_type": "initial_pre_repair_review",
+    "reviewed_before_later_regeneration": true,
+    "reviewed_artifact_state": {
+      "json_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+      "markdown_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.md",
+      "observed_json_byte_count": 6934,
+      "observed_markdown_byte_count": 3474,
+      "observed_generation_time_local": "2026-08-15 13:30 Asia/Shanghai",
+      "artifact_hashes_not_retained_before_later_regeneration": true,
+      "payoff_formula_as_reviewed": "max(K_P, min(S_T, K_C)) + C - P",
+      "missing_condition_as_reviewed": "K_P <= K_C"
+    },
+    "first_later_regeneration_observed_but_not_accepted_or_rechecked": {
+      "reason": "The builder and generated C51 artifacts were regenerated after the initial review. A later repair cannot close this initial audit finding without a separate independent review. These values identify only the first later state observed while recording R20; they are not a current-state assertion.",
+      "observed_json_byte_count": 7184,
+      "observed_markdown_byte_count": 3671,
+      "observed_generation_time_local": "2026-08-15 13:38:38 Asia/Shanghai",
+      "observed_json_sha256": "f3bc9b968e743a2ba17179f80d8b8f58056a0582d3558f406a32c1359f6a8575",
+      "observed_markdown_sha256": "d3f66e52fbd42a5d3748f7e7596ed55dd6ba14036a7bac90eddfe32785d813a1",
+      "observed_build_script_sha256": "b7f8d6fd0bfe4e91050df6516bf89b20f63e220702f4c47d5599eb497478a484",
+      "closure_status": "NOT_REVIEWED_FOR_CLOSURE"
+    }
+  },
+  "source_manifest": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c51-sse-etf-option-collar-scope-20260815/manifest.json",
+    "sha256": "993e481ff1f04a03e1f1e02c2ed1253dd64f5a31e32a15c2df4cebd8c2934914",
+    "retrieved_at_utc": "2026-08-15T05:29:05+00:00",
+    "scope_boundary": "Primary-source capture for a rule-level ETF-collar route screen only; it is not an actual option-chain dataset, a historical-performance dataset, an account-entitlement record, or an action authorization.",
+    "raw_file_integrity": [
+      {
+        "source_id": "C51-S01",
+        "filename": "sse_option_investor_suitability_page.html",
+        "byte_count": 32555,
+        "sha256": "e79cda6747d18ae145fbb2de8e6dd0bbc909969c2af4717976d7a6644c53a5c0",
+        "official_url_match": true,
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C51-S02",
+        "filename": "sse_option_investor_suitability_guideline.docx",
+        "byte_count": 30489,
+        "sha256": "81992a8ec243c6829fbc43f194836d05277905cda551dbaccab961e4447a28a0",
+        "official_url_match": true,
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C51-S03",
+        "filename": "sse_stock_option_trading_rule_page.html",
+        "byte_count": 32955,
+        "sha256": "ddafdc569fe845cfb5e612e07006288629680433d9dd72bdb4e5ff5a2956b540",
+        "official_url_match": true,
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C51-S04",
+        "filename": "sse_stock_option_trading_rule.docx",
+        "byte_count": 60393,
+        "sha256": "fff3aaeb338da5d1e1a5892ab7601d79393dd33659b01cb0595b214e2df4a8a9",
+        "official_url_match": true,
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C51-S05",
+        "filename": "sse_market_data_file_exchange_specification.pdf",
+        "byte_count": 986805,
+        "sha256": "233d98bdc1faf26cd3940495bac37f6603b6b328e049a2e81244efc394a154c2",
+        "official_url_match": true,
+        "integrity": "PASS"
+      }
+    ]
+  },
+  "primary_source_claim_checks": [
+    {
+      "check_id": "R20-C-001",
+      "claim": "The retained batch is an authentic current official-SSE rule and interface capture.",
+      "result": "PASS",
+      "evidence": "All five retained raw-file byte counts and SHA-256 values match the manifest and independently retrieved official SSE URLs. Both rule landing pages state current effectiveness; the two DOCX archives and the PDF are structurally readable."
+    },
+    {
+      "check_id": "R20-C-002",
+      "claim": "The retained rules support only a category-level collar-leg boundary, not account entitlement or execution.",
+      "result": "PASS",
+      "evidence": "The suitability guideline provides individual conditions and first-level covered-opening and corresponding put-buying categories when the underlying is held. The trading rule provides covered-security lock, order-validity and adjustment mechanics. Neither supplies a particular account permission, broker workflow, selected ETF/series, fill, cost, exercise or settlement result."
+    },
+    {
+      "check_id": "R20-C-003",
+      "claim": "The data-interface source establishes data-file categories, not historical replay, combination availability or execution evidence.",
+      "result": "PASS",
+      "evidence": "The retained SSE interface specification presents option reference, real-time, closing-price and combination-strategy file categories. It is not a rights-cleared point-in-time historical option chain, quote/depth tape, order/fill ledger or replay-right grant."
+    },
+    {
+      "check_id": "R20-C-004",
+      "claim": "C51's C13 non-duplication framing is economically bounded and does not reopen C13.",
+      "result": "PASS_WITH_TRACEABILITY_NOTE",
+      "evidence": "C13 JSON SHA-256 f2859c71d8cbd57eeb6eee211a1e3700c7d16e3694ed3127ce12c07931ada434 fixes 510300 plus a covered call and remains not testable for a return claim. R11 and R12 retain it as not admitted with portfolio_q=0. Adding a protective put creates a distinct abstract payoff family; changing ETF, strike, expiry or venue alone does not create a new covered-call route."
+    },
+    {
+      "check_id": "R20-C-005",
+      "claim": "The initial C51 output retained no-selection and no-action boundaries.",
+      "result": "PASS",
+      "evidence": "The reviewed C51 stated research-only status, formal_decision_eligible=false, external_orders=false, portfolio_q=0 and NO_ACTION; it did not select an ETF, option contract, strike, expiry, size, broker, calendar or threshold."
+    }
+  ],
+  "generated_artifact_checks": {
+    "initial_pre_repair_build_function_match_observed": true,
+    "initial_pre_repair_markdown_function_match_observed": true,
+    "later_build_not_used_to_close_initial_findings": true,
+    "capture_script_sha256_at_initial_recording": "02b2c8f5477138d26846330693a426bedd4676f67ac82af74be57308918edae7",
+    "forbidden_claim_checks": {
+      "invented_historical_result_present": false,
+      "personal_account_entitlement_claim_present": false,
+      "trade_instruction_present": false,
+      "reader_facing_prohibited_principal_term_present": false,
+      "formal_decision_eligible": false,
+      "external_orders": false,
+      "portfolio_q": 0,
+      "route_admission_result": "fail",
+      "action": "NO_ACTION"
+    }
+  },
+  "findings": {
+    "S": [],
+    "A": [
+      {
+        "finding_id": "R20-A-001",
+        "status": "OPEN",
+        "title": "Initial C51 payoff formula was unqualified outside its valid strike-order condition.",
+        "reported": "max(K_P, min(S_T, K_C)) + C - P presented as the collar terminal value while no strikes were selected.",
+        "actual": "The generally valid terminal value is min(S_T, K_C) + max(K_P - S_T, 0) + C - P. The compact expression is equivalent only when K_P <= K_C.",
+        "evidence": "For K_P=150, K_C=100, S_T=200 and C=P=0, the actual value is 100 while the reviewed compact expression returns 150.",
+        "impact": "The audited payoff boundary was wrong or incomplete. It cannot be accepted as correct formal evidence, even though C51 does not make a return or action claim.",
+        "required_remediation": "Use the generally valid expression or state and enforce K_P <= K_C wherever the compact form is used; regenerate the two C51 outputs; then obtain a separate independent R21 repair recheck."
+      }
+    ],
+    "B": [
+      {
+        "finding_id": "R20-B-001",
+        "status": "OPEN",
+        "title": "Future builder source validation is self-referential.",
+        "evidence": "The builder fixes only expected source IDs, then accepts filenames and hashes from the mutable manifest. A coordinated raw-file and manifest substitution could pass. The PDF validation checks only the %PDF header and does not assert the interface terms used in the output boundary.",
+        "impact": "The current retained source batch independently matches official URLs, but a future rebuild would not have an immutable source-identity or semantic-validation chain.",
+        "required_remediation": "Pin expected ID, filename, URL and hash values in the builder, or bind an independently integrity-controlled manifest digest; assert extracted PDF terms relevant to the cited data categories."
+      }
+    ],
+    "M": [
+      {
+        "finding_id": "R20-M-001",
+        "limitation": "The interface specification does not prove a currently enabled formal collar-combination facility.",
+        "treatment": "Keep any combination-strategy reference as a schema/category observation only; require an official implementation notice and broker operational evidence before asserting availability."
+      },
+      {
+        "finding_id": "R20-M-002",
+        "limitation": "Rule-level eligibility conditions and leg categories do not prove a particular account's entitlement, contract, front-end controls or routing capability.",
+        "treatment": "Do not infer personal eligibility; retain NO_ACTION unless an appropriately scoped account and broker evidence packet is supplied."
+      },
+      {
+        "finding_id": "R20-M-003",
+        "limitation": "The captured material lacks dated contract masters, quote/depth tapes, fills, costs, settlement, corporate-action mapping and frozen roll rules.",
+        "treatment": "No historical or rolling return test, stable-five-percent conclusion or execution route may be admitted."
+      },
+      {
+        "finding_id": "R20-M-004",
+        "limitation": "C51's C13 relationship agrees with independently inspected C13/R11/R12 records but is not path/hash-bound inside the C51 schema.",
+        "treatment": "Add a prior-route path and SHA-256 binding in a future builder revision; this traceability improvement does not reopen C13 or admit C51."
+      }
+    ]
+  },
+  "finding_counts": {
+    "S": 0,
+    "A": 1,
+    "B": 1,
+    "M": 4
+  },
+  "c48_binding": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json",
+    "sha256": "dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce",
+    "status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+    "portfolio_q": 0,
+    "action": "NO_ACTION",
+    "unchanged": true,
+    "C51_does_not_close_C48": true
+  },
+  "required_next_control": {
+    "control_id": "R21",
+    "name": "independent_C51_repair_recheck",
+    "required": true,
+    "must_be_separate_from_R20": true,
+    "scope": [
+      "Recompute and validate the repaired payoff expression and any stated condition.",
+      "Verify the repaired C51 JSON and Markdown exactly match the repaired builder.",
+      "Recheck raw-source and C48 bindings, no-selection boundaries, and prohibited reader-facing language.",
+      "Decide independently whether A-01 and B-01 can be closed; R20 cannot close either finding."
+    ],
+    "until_completed": "No evidence acceptance, strategy admission, account conclusion, product/series selection, historical result or external action."
+  },
+  "final_decision": {
+    "audit_recommendation": "FAIL_PENDING_REPAIR_AND_INDEPENDENT_RECHECK",
+    "actionability_status": "VETO",
+    "review_acceptance_is_not_route_admission": true,
+    "strategy_admitted": false,
+    "external_action_authorized": false,
+    "statement": "R20 memorializes the initial pre-repair audit. Source-integrity subchecks passed, but A-01 and B-01 remain OPEN. A later repair has not been independently rechecked and does not alter this record. C48 remains unchanged. No evidence conclusion is a strategy approval, and no external action is authorized."
+  }
+}

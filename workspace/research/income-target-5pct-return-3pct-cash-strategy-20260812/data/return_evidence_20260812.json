@@ -1,0 +1,279 @@
+{
+  "schema_version": "total_return_evidence.v2",
+  "case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "report_type": "strategic_allocation_total_return_research_framework",
+  "as_of": "2026-08-12",
+  "artifact_class": "derived_research_evidence",
+  "purpose": "Evidence gate for whether the sole 5% total-return objective can be supported as a historical, expected, probabilistic, or investable claim. Cash distributions are reconciled only as components of total-return accounting.",
+  "gate": {
+    "name": "return_evidence",
+    "status": "fail",
+    "formal_backtest_status": "not_run_blocked",
+    "formal_decision_eligible": false,
+    "investment_implementation_approved": false,
+    "conclusion": "The case does not contain a dated, total-return-consistent and point-in-time reproducible history for the final portfolio. The 5% objective is not an evidenced expected return, probability, floor, or guarantee."
+  },
+  "objective_definition": {
+    "total_return_target_pct": 5.0,
+    "total_return_measurement": "Time-weighted return for strategy assessment; MWRR/XIRR additionally required for investor experience with external cash flows. Each eligible settled receipt is counted once, and a later investor-directed cash-use choice cannot create a second return.",
+    "cash_accounting_boundary": "Settled interest, dividends, ETF distributions and REIT distributions must be reconciled to the total-return series, holder taxes, receipt fees and settlement dates. Cash distributions are not a separate target, selection threshold, or annual success test. An issuer-labelled or economically similar capital-repayment component requires a separate ledger flag and predeclared accounting/tax treatment; it is not labelled investment return.",
+    "prohibited_interpretations": [
+      "distribution rate equals total return",
+      "historical sleeve return equals final portfolio return",
+      "NAV return equals investor market-price return",
+      "past return proves future probability or guarantee",
+      "cash disposition converts a receipt into an additional return",
+      "a capital-repayment-like component is investment return without predeclared treatment"
+    ]
+  },
+  "data_quality": {
+    "tier": "mixed_tier_1_primary_and_unavailable_portfolio_history",
+    "source": "SSE-hosted annual reports and existing case primary sources",
+    "timestamp": "2026-08-12",
+    "quality_tier": "tier_1_primary_for_sleeve_facts; insufficient_for_portfolio_backtest",
+    "fallback_path": [
+      "Existing case official source archive, including R14",
+      "Archived SSE annual-report download and pdftotext extraction",
+      "No formal replay substituted"
+    ],
+    "warnings": [
+      "Primary annual-report numbers are fund NAV performance metrics and exclude holder subscription or trading costs.",
+      "No point-in-time final portfolio, total-return series, investor tax/cost record, or licensed EOD replay archive exists.",
+      "Configured market_data_mode is public_observation; any future public-data replay is research-only and cannot support a formal decision claim."
+    ],
+    "errors": []
+  },
+  "source_documents": [
+    {
+      "source_id": "R14",
+      "authority": "Shanghai Stock Exchange / 国泰基金管理有限公司",
+      "title": "上证5年期国债交易型开放式指数证券投资基金2025年年度报告",
+      "publication_date": "2026-03-30",
+      "report_period_end": "2025-12-31",
+      "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-30/511010_20260330_8BME.pdf",
+      "local_path": "sources/official-20260812/511010_2025_annual_report.pdf",
+      "sha256": "83d9f8ef6c23c2d886b1bcc6cbf9a5f2475fc30e3106cc6899854345c2a64f10",
+      "text_path": "sources/official-20260812/511010_2025_annual_report.txt",
+      "text_sha256": "4189ab4c6055ae1aab920b4bfae3a7466ef84824b25eaff4623774c2695725ab",
+      "quality_tier": "tier_1_primary",
+      "extraction": "pdftotext -layout",
+      "evidence_lines": "Annual NAV performance and distribution table at extracted text lines approximately 285-389; holder-cost exclusion immediately following the metrics table.",
+      "limitation": "Fund NAV result, not market-price or investor account result."
+    },
+    {
+      "source_id": "R11",
+      "authority": "Shanghai Stock Exchange / 华泰柏瑞基金管理有限公司",
+      "title": "上证红利交易型开放式指数证券投资基金2025年年度报告",
+      "publication_date": "2026-03-31",
+      "report_period_end": "2025-12-31",
+      "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-03-31/510880_20260331_JVU4.pdf",
+      "local_path": "sources/official-20260812/510880_2025_annual_report.pdf",
+      "sha256": "6085ef81f4f355d7af3c59df9719152bb4af3eadcaa1e812eb33298d6ba69cb9",
+      "text_path": "sources/official-20260812/510880_2025_annual_report.txt",
+      "text_sha256": "e128daa349b444485234699f7b7cbe27cdf92eebd591de8f255557046054bc7a",
+      "quality_tier": "tier_1_primary",
+      "extraction": "pdftotext -layout",
+      "evidence_lines": "Annual NAV performance and distribution table at extracted text lines approximately 231-331; holder-cost exclusion immediately following the metrics table.",
+      "limitation": "Fund NAV result, not market-price or investor account result."
+    },
+    {
+      "source_id": "R02",
+      "authority": "Shanghai Stock Exchange / 华夏基金管理有限公司",
+      "title": "华夏南京交通高速公路封闭式基础设施证券投资基金2025年年度报告",
+      "report_period_end": "2025-12-31",
+      "local_path": "sources/official-20260812/508069_2025_annual_report.pdf",
+      "sha256": "70fa9f492a3fa34e8e5e86f73c8997f18d974b68ad84fa1ebf375676634e4af5",
+      "quality_tier": "tier_1_primary",
+      "evidence": "Annualized cash-flow distribution rate 9.19%; internal rate of return 1.44%.",
+      "limitation": "Single recently listed REIT observation only; not a final diversified basket."
+    },
+    {
+      "source_id": "R13",
+      "authority": "Shanghai Stock Exchange / 国泰基金管理有限公司",
+      "title": "上证5年期国债交易型开放式指数证券投资基金基金产品资料概要更新",
+      "local_path": "sources/official-20260812/511010_product_summary.pdf",
+      "sha256": "a239534cd25671a4dfd8eda196052ccfeee5bff1d4c8bbb049510199775c6935",
+      "quality_tier": "tier_1_primary",
+      "limitation": "Product disclosure provides no forward return forecast or asset-value guarantee."
+    }
+  ],
+  "historical_sleeve_observations": [
+    {
+      "instrument": "511010",
+      "sleeve": "five_year_treasury_etf",
+      "series_type": "fund_NAV_growth_reported",
+      "as_of": "2025-12-31",
+      "reported_returns_pct": {
+        "calendar_2023": 3.28,
+        "calendar_2024": 5.95,
+        "calendar_2025": 0.59,
+        "trailing_3y_cumulative": 10.07,
+        "trailing_5y_cumulative": 16.7
+      },
+      "derived_annualized_pct": {
+        "trailing_3y": 3.2499,
+        "trailing_5y": 3.1369
+      },
+      "reported_cash_distribution": {
+        "calendar_2023": "none_reported",
+        "calendar_2024": "none_reported",
+        "calendar_2025": "21.042_per_10_fund_units"
+      },
+      "benchmark": "SSE 5-year Treasury Index return",
+      "cost_scope": "Fund report states investor subscription/trading costs are excluded from performance figures.",
+      "evidence_source_id": "R14",
+      "allowed_inference": "A dated historical defensive-sleeve reference only.",
+      "prohibited_inference": "No inference of a 5% annual floor, current yield, or investor account return."
+    },
+    {
+      "instrument": "510880",
+      "sleeve": "high_dividend_equity_etf",
+      "series_type": "fund_NAV_growth_reported",
+      "as_of": "2025-12-31",
+      "reported_returns_pct": {
+        "calendar_2023": 7.41,
+        "calendar_2024": 19.65,
+        "calendar_2025": -0.45,
+        "trailing_3y_cumulative": 27.93,
+        "trailing_5y_cumulative": 45.43
+      },
+      "derived_annualized_pct": {
+        "trailing_3y": 8.5569,
+        "trailing_5y": 7.7782
+      },
+      "reported_cash_distribution_per_10_fund_units": {
+        "calendar_2023": 1.38,
+        "calendar_2024": 1.31,
+        "calendar_2025": 1.42
+      },
+      "benchmark": "SSE Dividend Index return",
+      "cost_scope": "Fund report states investor subscription/trading costs are excluded from performance figures.",
+      "evidence_source_id": "R11",
+      "allowed_inference": "A dated historical equity-sleeve reference with a negative latest calendar year.",
+      "prohibited_inference": "No inference of a future cash distribution, future return, or current market-price result."
+    },
+    {
+      "instrument": "508069",
+      "sleeve": "public_reit_illustrative_only",
+      "series_type": "single_REIT_reported_cash_flow_distribution_rate_and_IRR",
+      "as_of": "2025-12-31",
+      "reported_metrics_pct": {
+        "annualized_cash_flow_distribution_rate": 9.19,
+        "internal_rate_of_return": 1.44
+      },
+      "evidence_source_id": "R02",
+      "allowed_inference": "Cash-flow distribution rate and internal return are distinct measures.",
+      "prohibited_inference": "No use as portfolio return, REIT-basket forecast, or portfolio cash-yield input."
+    }
+  ],
+  "calculation_methodology": {
+    "annualization_formula": "annualized_return = (1 + cumulative_return_decimal)^(1/years) - 1",
+    "calculation_inputs": [
+      {"instrument": "511010", "period": "3Y", "cumulative_return_decimal": 0.1007, "years": 3, "result_pct": 3.2499},
+      {"instrument": "511010", "period": "5Y", "cumulative_return_decimal": 0.167, "years": 5, "result_pct": 3.1369},
+      {"instrument": "510880", "period": "3Y", "cumulative_return_decimal": 0.2793, "years": 3, "result_pct": 8.5569},
+      {"instrument": "510880", "period": "5Y", "cumulative_return_decimal": 0.4543, "years": 5, "result_pct": 7.7782}
+    ],
+    "no_portfolio_aggregation_performed": true,
+    "reason_no_aggregation": [
+      "No frozen cross-asset T2 candidate set or approved T3/T4 membership.",
+      "No approved point-in-time direct-equity, ETF, REIT, sovereign/cash basket or constituent/substitution history.",
+      "No total-return-consistent market/NAV/distribution series across sleeves.",
+      "No common period or investor cost/tax input.",
+      "A weighted blend of incomparable sleeve histories would be false precision."
+    ]
+  },
+  "benchmark_policy": {
+    "required": [
+      {
+        "id": "B0",
+        "name": "protected_liquidity_alternative",
+        "definition": "Actual eligible deposit or direct very-short sovereign return net of account terms.",
+        "status": "not_selected"
+      },
+      {
+        "id": "B1",
+        "name": "strategic_blended_benchmark",
+        "definition": "Frozen T2/T4 cross-asset weights, passively held and rebalanced under a pre-registered rule.",
+        "status": "not_computable"
+      }
+    ],
+    "current_comparison_result": "No portfolio-versus-benchmark comparison is published because no predeclared final portfolio history exists."
+  },
+  "formal_replay_specification": {
+    "status": "required_before_upgrade",
+    "data_mode": "public_observation",
+    "minimum_history": "At least five completed calendar years in which every frozen T2/T4 candidate exists, plus rolling five-year observations.",
+    "weight_rules": "Predeclared point-in-time T2/T4 weights; no hindsight substitutions; target D executes at next valid open.",
+    "return_rules": "Use a single total-return convention per sleeve and prevent distribution double counting.",
+    "execution_rules": [
+      "A-share lot size",
+      "T+1 settlement",
+      "suspensions and price-limit no-fill states",
+      "spread/slippage assumptions",
+      "volume participation cap",
+      "actual or conservative transaction costs"
+    ],
+    "required_metrics": [
+      "calendar-year net total return",
+      "rolling-five-year annualized net total return",
+      "hit rate for total return >= 5%",
+      "maximum drawdown",
+      "volatility and downside deviation",
+      "benchmark B0/B1 excess return",
+      "turnover and all costs",
+      "unfilled trade and capacity statistics",
+      "TWRR and MWRR/XIRR when external flows exist",
+      "distribution, tax and fee reconciliation to prevent double counting"
+    ],
+    "formal_reproducibility_requirements": [
+      "licensed or otherwise authoritative raw EOD source archive",
+      "point-in-time universe snapshots",
+      "corporate actions and distributions",
+      "halts, price limits and delisting data",
+      "hash-verified frozen inputs",
+      "account-specific tax and fee convention"
+    ],
+    "public_data_limit": "A frozen public-data replay may be research-only and cannot substantiate a formal investment-committee or trading claim."
+  },
+  "probability_and_scenario": {
+    "probability_of_5pct": null,
+    "probability_status": "not_estimable_from_available_evidence",
+    "reason": [
+      "No frozen final portfolio historical return series.",
+      "No defensible cross-sleeve correlation or distribution data.",
+      "No validated cost/tax assumptions.",
+      "No model specification or out-of-sample process."
+    ],
+    "existing_minus_26pct_stress_treatment": "Planning arithmetic only; not an empirical drawdown, VaR, expected shortfall or probability statement.",
+    "required_disclosure_if_model_added": [
+      "model family and randomization method",
+      "sample window and regime treatment",
+      "cash-flow / distribution assumptions",
+      "correlation and dependence assumptions",
+      "fees, taxes and execution assumptions",
+      "parameter uncertainty",
+      "out-of-sample validation"
+    ]
+  },
+  "blockers": [
+    {"id": "RE-B01", "severity": "S", "blocker": "No finite dated cross-asset T2 set exists, so the strategy has no fixed investable basket."},
+    {"id": "RE-B02", "severity": "S", "blocker": "No direct-equity, ETF, REIT, sovereign/cash candidate set has an approved historical membership, substitution history or total-return series."},
+    {"id": "RE-B03", "severity": "S", "blocker": "No point-in-time total-return-consistent portfolio data, corporate action record, execution data or cost/tax inputs exist."},
+    {"id": "RE-B04", "severity": "A", "blocker": "No predeclared B0/B1 benchmark series exists."},
+    {"id": "RE-B05", "severity": "A", "blocker": "Current public_observation policy and absent runtime dependencies prevent even a weaker research-only replay in this environment."}
+  ],
+  "upgrade_conditions": [
+    "Freeze a dated cross-asset T2 candidate set, including any direct equities, ETFs, REITs, sovereign/cash tools and substitution rules.",
+    "Complete structure-specific item research and independent T3 approval before a candidate enters the replay or risk budget.",
+    "Obtain frozen total-return, corporate-action and distribution data for every frozen T2/T4 candidate.",
+    "Build B0 and B1 from the same date, valuation and cost convention.",
+    "Supply account-specific commissions, taxes, settlement and slippage/capacity assumptions.",
+    "Run and archive a reproducible replay with explicit assurance limitations.",
+    "Report total-return outcomes and independent verification of distribution accounting."
+  ],
+  "files": {
+    "analysis_memo": "analysis/return_evidence.md"
+  }
+}

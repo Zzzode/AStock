@@ -1,0 +1,537 @@
+{
+  "schema_version": "single_equity_primary_source_diligence.v1",
+  "artifact_id": "D5PT-C42-601088-EQUITY-DILIGENCE-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of_date": "2026-08-15",
+  "issuer": {
+    "name": "中国神华能源股份有限公司",
+    "a_share_ticker": "601088",
+    "a_share_exchange": "SSE",
+    "h_share_ticker": "01088",
+    "security_identity_status": "PARTIAL_UNCLEARED",
+    "identity_evidence": "2025 annual report identifies A share 601088 and H share 01088.",
+    "identity_gaps": [
+      "No case-local, point-in-time listing, suspension, risk-warning, delisting, code-change, and free-float history is archived.",
+      "No frozen security-status ledger exists for the research cutoff."
+    ]
+  },
+  "classification": {
+    "status": "NON_ADMITTED_RESEARCH_SUBJECT",
+    "current_disposition": "NO_ACTION",
+    "research_only": true,
+    "external_orders": false,
+    "no_weights": true,
+    "no_trade_instruction": true,
+    "no_target_price": true,
+    "no_return_forecast": true,
+    "portfolio_q": 0,
+    "admission_result": "BLOCKED",
+    "admission_rationale": "Case-archived primary filings establish an issuer-by-issuer research starting point only. G0-G9 contain unresolved hard evidence gaps, especially a complete statutory archive, point-in-time corporate-action reconstruction, licensed market data, valuation, liquidity, and independent review."
+  },
+  "scope": {
+    "research_questions": [
+      "How do coal volume and price, purchased-coal mix, transportation, power, coal chemicals, project spending, and safety/environmental constraints transmit into operating cash generation?",
+      "Can 2025-2026 common-control acquisitions, restatements, financing, and share-capital changes be reconstructed without contaminating cross-period and per-share comparisons?",
+      "Can disclosed cash-distribution events be reconciled to implementation, tax, funding sources, investment needs, debt, and restricted cash without extrapolation?",
+      "Can control, related-party, audit, governance, regulatory, safety, and environmental risks pass a dated independent negative-evidence review?",
+      "Can a licensed, point-in-time market and corporate-action dataset later support independent reconstruction of valuation and liquidity?"
+    ],
+    "out_of_scope": [
+      "Stock selection, portfolio construction, universe freeze, backtest, or external market action.",
+      "Current-price, valuation-multiple, target-price, upside/downside, total-return, or liquidity conclusion.",
+      "Any assertion that past distribution events imply a future cash-flow or distribution outcome."
+    ],
+    "relationship_to_prior_case_work": {
+      "c38": "This is the issuer-specific diligence implementation of the C38 provisional research queue; it does not upgrade C38's direct-equity route.",
+      "c24": "C24 remains controlling for direct-A-share data rights, point-in-time universe, corporate actions, market data, cost, and execution feasibility.",
+      "c34": "This artifact does not repair, replace, re-parameterize, or infer a result from the failed C34 ETF proxy candidate."
+    }
+  },
+  "reported_observations": [
+    {
+      "id": "C42-O01",
+      "topic": "2025 audited financial summary",
+      "source_ids": [
+        "C42-S01"
+      ],
+      "reporting_period": "2025-01-01 to 2025-12-31",
+      "standard": "IFRS unless otherwise stated",
+      "facts": {
+        "revenue_rmb_million": 294916,
+        "revenue_yoy_percent": -13.2,
+        "profit_attributable_to_equity_holders_rmb_million": 54218,
+        "profit_attributable_yoy_percent": -8.9,
+        "net_cash_from_operating_activities_rmb_million": 75059,
+        "operating_cash_yoy_percent": -17.6,
+        "total_assets_rmb_million": 631777,
+        "total_liabilities_rmb_million": 146310,
+        "equity_attributable_to_equity_holders_rmb_million": 412576,
+        "gearing_ratio_percent": 23.2
+      },
+      "limitation": "The 2024 comparative period was restated after the Hangjin Energy common-control acquisition. These reported facts do not establish free cash flow, cycle position, financial quality, or valuation."
+    },
+    {
+      "id": "C42-O02",
+      "topic": "2025 coal sales and customer concentration",
+      "source_ids": [
+        "C42-S01"
+      ],
+      "facts": {
+        "coal_sales_million_tonnes": 430.9,
+        "coal_sales_yoy_percent": -6.4,
+        "average_coal_sales_price_rmb_per_tonne_ex_tax": 495,
+        "average_coal_sales_price_yoy_percent": -12.1,
+        "top_five_external_customers_share_of_coal_sales_percent": 46.1,
+        "china_energy_group_share_of_coal_sales_percent": 34.2
+      },
+      "limitation": "No standalone external/internal revenue, transfer-price, customer-contract, cash-collection, or sensitivity bridge is reconstructed."
+    },
+    {
+      "id": "C42-O03",
+      "topic": "2026 first-quarter result and coal economics",
+      "source_ids": [
+        "C42-S02"
+      ],
+      "reporting_period": "2026-01-01 to 2026-03-31",
+      "audit_status": "unaudited",
+      "facts": {
+        "revenue_rmb_million": 70397,
+        "revenue_yoy_percent": 1.2,
+        "profit_attributable_to_equity_holders_rmb_million": 11885,
+        "profit_attributable_yoy_percent": -11.1,
+        "net_cash_from_operating_activities_rmb_million": 17363,
+        "operating_cash_yoy_percent": -15.5,
+        "self_produced_coal_sales_million_tonnes": 78.0,
+        "self_produced_coal_sales_yoy_percent": -0.6,
+        "self_produced_coal_average_price_rmb_per_tonne_ex_tax": 469,
+        "self_produced_coal_average_price_yoy_percent": -3.3,
+        "purchased_coal_sales_million_tonnes": 25.2,
+        "purchased_coal_sales_yoy_percent": 21.2,
+        "coal_segment_gross_profit_rmb_million": 11695,
+        "coal_segment_gross_profit_yoy_percent": -11.2,
+        "coal_segment_gross_margin_percent": 22.6,
+        "coal_segment_gross_margin_prior_year_percent": 25.5
+      },
+      "limitation": "The report is unaudited and cannot be annualised or treated as a full-year outcome."
+    },
+    {
+      "id": "C42-O04",
+      "topic": "2026 first-quarter acquisition, funding, and share-capital discontinuity",
+      "source_ids": [
+        "C42-S02",
+        "C42-S06"
+      ],
+      "facts": {
+        "short_term_borrowings_at_2026_03_31_rmb_million": 92490,
+        "short_term_borrowings_at_2025_12_31_rmb_million": 6632,
+        "net_cash_used_in_investing_activities_q1_2026_rmb_million": -102346,
+        "cash_paid_for_acquisition_of_subsidiaries_and_associates_q1_2026_rmb_million": -93519,
+        "new_restricted_a_shares_registered_2026_04_07": 457665903,
+        "total_shares_before_specific_issuance": 21231768401,
+        "total_shares_after_specific_issuance": 21689434304,
+        "new_shares_lock_up_months": 6
+      },
+      "limitation": "This is a corporate-action and accounting-boundary warning, not a valuation, dilution, financing-quality, or cash-flow conclusion."
+    },
+    {
+      "id": "C42-O05",
+      "topic": "2026 May operating data",
+      "source_ids": [
+        "C42-S03"
+      ],
+      "facts": {
+        "commercial_coal_production_ytd_million_tonnes": 207.2,
+        "commercial_coal_production_ytd_yoy_percent": -4.0,
+        "coal_sales_ytd_million_tonnes": 249.7,
+        "coal_sales_ytd_yoy_percent": 3.3,
+        "self_owned_railway_turnover_ytd_billion_tonne_km": 134.8,
+        "self_owned_railway_turnover_ytd_yoy_percent": 7.1,
+        "gross_power_generation_ytd_billion_kwh": 114.08,
+        "gross_power_generation_ytd_yoy_percent": 8.4
+      },
+      "comparability_notice": "The issuer says that from April 2026 the operating data includes newly consolidated assets and that comparative data was retrospectively adjusted.",
+      "limitation": "Monthly operating data is not audited earnings, cash flow, distribution coverage, or a forecast."
+    },
+    {
+      "id": "C42-O06",
+      "topic": "2026 adjusted project-spending plan",
+      "source_ids": [
+        "C42-S02"
+      ],
+      "facts": {
+        "adjusted_2026_capex_plan_rmb_hundred_million": 559.87,
+        "previous_2026_capex_plan_rmb_hundred_million": 380.23,
+        "increase_percent": 47.2,
+        "excludes_mining_rights_and_equity_investments": true
+      },
+      "limitation": "A plan is not realised cash flow or a forward return estimate."
+    },
+    {
+      "id": "C42-O07",
+      "topic": "2025 final cash-distribution event",
+      "source_ids": [
+        "C42-S01",
+        "C42-S04",
+        "C42-S05"
+      ],
+      "facts": {
+        "final_distribution_rmb_per_share_tax_inclusive": 1.03,
+        "aggregate_final_distribution_rmb_million_approx": 22340,
+        "agreed_at_agm_date": "2026-06-26",
+        "h_share_record_date": "2026-07-10",
+        "h_share_payment_date": "2026-08-26"
+      },
+      "limitation": "The H-share payment date is after this artifact's cutoff. The current case lacks the A-share implementation notice, holder-specific tax treatment, payment reconciliation, and funding-coverage audit."
+    },
+    {
+      "id": "C42-O08",
+      "topic": "control, related parties, internal control, and proposed auditor change",
+      "source_ids": [
+        "C42-S01",
+        "C42-S06",
+        "C42-S07"
+      ],
+      "facts": {
+        "china_energy_direct_holding_percent_in_2025_annual_report": 69.52,
+        "ultimate_controller_after_specific_issuance": "SASAC of the State Council",
+        "2024_2026_connected_agreements_identified": [
+          "mutual coal supply",
+          "mutual supplies and services",
+          "financial services"
+        ],
+        "2025_audit_opinion": "standard unqualified",
+        "2026_auditor_change_status_in_located_notice": "EYHM and EY proposed, subject to general-meeting approval"
+      },
+      "limitation": "Issuer disclosures do not substitute for a dated independent negative-evidence review, related-party actual-amount reconciliation, or a final auditor-appointment record as of the cutoff."
+    }
+  ],
+  "gate_assessment": [
+    {
+      "gate": "G0",
+      "name": "scope_and_security_identity",
+      "status": "PARTIAL_UNCLEARED",
+      "evidence_ids": [
+        "C42-S01",
+        "C42-S06"
+      ],
+      "passed": false,
+      "hard_gaps": [
+        "No complete point-in-time security-status, mapping, suspension, warning, delisting, and free-float ledger."
+      ],
+      "disposition": "Do not enter a comparable research sample."
+    },
+    {
+      "gate": "G1",
+      "name": "complete_statutory_disclosure_archive",
+      "status": "PARTIAL_UNCLEARED",
+      "evidence_ids": [
+        "C42-S01",
+        "C42-S02",
+        "C42-S03",
+        "C42-S08"
+      ],
+      "passed": false,
+      "hard_gaps": [
+        "The 2023-2024 annual reports, latest interim report, correction/version chain, complete document inventory, and first-public timestamps are incomplete.",
+        "The archived C42-S01--S07 source set is partial and does not establish a complete statutory disclosure archive."
+      ],
+      "disposition": "insufficient_primary_financial_evidence"
+    },
+    {
+      "gate": "G2",
+      "name": "business_and_operating_drivers",
+      "status": "PARTIAL_UNCLEARED",
+      "evidence_ids": [
+        "C42-S01",
+        "C42-S02",
+        "C42-S03"
+      ],
+      "passed": false,
+      "hard_gaps": [
+        "No source-complete matrix for permits, reserves, projects, customers, transfer pricing, external/internal volumes, costs, competition, and policy exposure.",
+        "No independent operating-driver bridge to earnings or cash flow."
+      ],
+      "disposition": "No operating-resilience or earnings-driver conclusion."
+    },
+    {
+      "gate": "G3",
+      "name": "earnings_quality_and_balance_sheet",
+      "status": "PARTIAL_UNCLEARED",
+      "evidence_ids": [
+        "C42-S01",
+        "C42-S02"
+      ],
+      "passed": false,
+      "hard_gaps": [
+        "No independently rebuilt revenue-to-operating-cash, working-capital, capex, debt, restricted-cash, mining-right, impairment, minority-interest, and related-party bridge.",
+        "Common-control restatements and 2026 acquisition/financing effects are not reconciled."
+      ],
+      "disposition": "no_quality_assessment"
+    },
+    {
+      "gate": "G4",
+      "name": "distribution_and_cash_flow_coverage",
+      "status": "PARTIAL_UNCLEARED",
+      "evidence_ids": [
+        "C42-S01",
+        "C42-S04",
+        "C42-S05"
+      ],
+      "passed": false,
+      "hard_gaps": [
+        "No A-share implementation notice, holder-specific tax treatment, payment reconciliation, or funding-coverage audit.",
+        "No historical event ledger distinguishes proposal, approval, implementation, record, ex-rights, and payment dates."
+      ],
+      "disposition": "no_income_coverage_assessment"
+    },
+    {
+      "gate": "G5",
+      "name": "governance_control_and_compliance",
+      "status": "PARTIAL_UNCLEARED",
+      "evidence_ids": [
+        "C42-S01",
+        "C42-S06",
+        "C42-S07"
+      ],
+      "passed": false,
+      "hard_gaps": [
+        "No independent regulatory, litigation, pledge, disciplinary, safety, environmental, and negative-search log.",
+        "No reconciliation of related-party actual amounts and no final auditor-appointment evidence as of the cutoff."
+      ],
+      "disposition": "governance_not_cleared"
+    },
+    {
+      "gate": "G6",
+      "name": "valuation_and_disconfirmation",
+      "status": "BLOCKED",
+      "evidence_ids": [],
+      "passed": false,
+      "hard_gaps": [
+        "No same-as-of unadjusted price/status, verified total/free-float shares, net debt, contingent liabilities, comparable-company evidence, original broker evidence, model, or independent audit."
+      ],
+      "disposition": "valuation_not_admitted"
+    },
+    {
+      "gate": "G7",
+      "name": "liquidity_and_tradable_status",
+      "status": "BLOCKED",
+      "evidence_ids": [],
+      "passed": false,
+      "hard_gaps": [
+        "No written data-use rights or retained historical unadjusted price, volume, value, no-trade, suspension, price-limit, free-float, field-dictionary, revision-log, and coverage package."
+      ],
+      "disposition": "liquidity_unverified"
+    },
+    {
+      "gate": "G8",
+      "name": "point_in_time_and_corporate_actions",
+      "status": "BLOCKED",
+      "evidence_ids": [
+        "C42-S02",
+        "C42-S04",
+        "C42-S05",
+        "C42-S06",
+        "C42-S08"
+      ],
+      "passed": false,
+      "hard_gaps": [
+        "No complete first-public-time, raw-price, share-capital, acquisition, issuance, lock-up, distribution, adjustment-factor, algorithm, and correction/withdrawal ledger.",
+        "The 2026-08-14 SSE operating-data file has no retained binary, hash, or first-public timestamp in the case."
+      ],
+      "disposition": "point_in_time_blocked"
+    },
+    {
+      "gate": "G9",
+      "name": "independent_review",
+      "status": "BLOCKED",
+      "evidence_ids": [],
+      "passed": false,
+      "hard_gaps": [
+        "No reviewer other than the author has re-extracted financials, reconciled corporate actions, audited distribution coverage, checked negative governance evidence, or verified source hashes."
+      ],
+      "disposition": "independent_review_not_passed"
+    }
+  ],
+  "gate_summary": {
+    "pass_count": 0,
+    "total_gate_count": 10,
+    "uncleared_or_blocked_count": 10,
+    "admission_allowed": false
+  },
+  "risks_and_research_stop_conditions": [
+    {
+      "category": "commodity_and_customer_concentration",
+      "question": "Can coal price, volume, purchased-coal mix, and group/customer concentration be separated into independently evidenced gross-profit and cash-flow drivers?",
+      "stop_condition": "If internal/external revenue, costs, prices, volumes, and related-party flows cannot be separately reconciled, stop financial-quality analysis."
+    },
+    {
+      "category": "acquisition_financing_and_share_capital",
+      "question": "Can the 2025-2026 acquisition, cash payment, borrowings, issuance, restrictions, and accounting restatement be reconstructed point in time?",
+      "stop_condition": "If transaction consideration, accounting boundary, share capital, lock-up, or corporate-action timing cannot be reconstructed, retain G3/G6/G8 blocks."
+    },
+    {
+      "category": "safety_environment_projects",
+      "question": "Can safety, environmental, climate, permit, project, and regulatory evidence be independently archived and reconciled?",
+      "stop_condition": "Without a primary-source and negative-search archive, do not conclude that these risks are cleared."
+    },
+    {
+      "category": "distribution_event",
+      "question": "Can each distribution event be reconciled through proposal, approval, implementation, timing, tax, and funding coverage?",
+      "stop_condition": "Any missing implementation, tax, payment, or coverage evidence leaves G4 uncleared."
+    },
+    {
+      "category": "governance_and_related_parties",
+      "question": "Can control, related-party actuals, minority protection, auditor change, and adverse evidence pass independent review?",
+      "stop_condition": "Absent actual-amount reconciliation, negative search, and auditor appointment status, G5 remains uncleared."
+    },
+    {
+      "category": "market_data_and_execution",
+      "question": "Can an authorized data package reconstruct displayed prices, status, liquidity, and corporate actions without assuming execution?",
+      "stop_condition": "Non-authorized, non-replayable, or close-only data cannot unlock G7/G8."
+    }
+  ],
+  "required_next_artifacts": [
+    "case_local_official_source_archive",
+    "company_evidence_card",
+    "financial_quality_bridge",
+    "dividend_cashflow_audit",
+    "governance_negative_search_log",
+    "asof_market_and_corporate_action_manifest",
+    "valuation_model_and_audit",
+    "independent_review_findings"
+  ],
+  "sources": [
+    {
+      "id": "C42-S01",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "title": "2025 Annual Report",
+      "publication_timestamp": "2026-03-30T22:41:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033003712.pdf",
+      "source_quality": "primary_exchange_filing",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": "491e701a90b1ece239b95ce3f3de27053f420583f2458d81cbe5b21b4607fdc9",
+      "case_local_raw_archive": true,
+      "case_archive_path": "sources/official-601088-equity-diligence-20260815/601088_2025_annual_report_hkex.pdf",
+      "supports": "Audited 2025 financial, operational, risk, governance, connected-transaction, and distribution-plan disclosure.",
+      "does_not_support": "Future result, valuation, liquidity, total-return, or complete historic status conclusion."
+    },
+    {
+      "id": "C42-S02",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "title": "First Quarterly Report for the Year 2026",
+      "publication_timestamp": "2026-04-24T21:23:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0424/2026042403241.pdf",
+      "source_quality": "primary_exchange_filing",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": "462f7b8fa18a032e412a6b21792814c3d04bbd3c8212dc05260aed1c7476443b",
+      "case_local_raw_archive": true,
+      "case_archive_path": "sources/official-601088-equity-diligence-20260815/601088_2026_q1_report_hkex.pdf",
+      "supports": "Unaudited Q1 financials, operations, acquisition/funding effects, and adjusted 2026 operating/project-spending plan.",
+      "does_not_support": "Audited full-year, valuation, or execution conclusion."
+    },
+    {
+      "id": "C42-S03",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "title": "Announcement on the Major Operational Data of May 2026",
+      "publication_timestamp": "2026-06-17T17:08:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0617/2026061700844.pdf",
+      "source_quality": "primary_exchange_filing",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": "f362517e7249b79e268a584181ac94619cb1c4a51faf79a04f92fc1be8025c80",
+      "case_local_raw_archive": true,
+      "case_archive_path": "sources/official-601088-equity-diligence-20260815/601088_2026_may_operating_data_hkex.pdf",
+      "supports": "Monthly operating data and an explicit comparability/restatement notice.",
+      "does_not_support": "Audited earnings, cash-flow coverage, valuation, or liquidity conclusion."
+    },
+    {
+      "id": "C42-S04",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "title": "Final Dividend for the Year Ended 31 December 2025",
+      "publication_timestamp": "2026-03-30T22:43:00+08:00",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033003796.pdf",
+      "source_quality": "primary_exchange_filing",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": "7f2d0c8d4d03ecc6bdb0d1320c50792a720e1143799e9fbc04cdac3ff8a1b227",
+      "case_local_raw_archive": true,
+      "case_archive_path": "sources/official-601088-equity-diligence-20260815/601088_2025_final_distribution_hkex.pdf",
+      "supports": "H-share final-distribution proposal and announced timetable.",
+      "does_not_support": "A-share implementation, tax result, cash-flow coverage, or future-distribution conclusion."
+    },
+    {
+      "id": "C42-S05",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "title": "Voting Results of 2025 Annual General Meeting and 2026 First Class Meetings",
+      "publication_date": "2026-06-26",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062603359.pdf",
+      "source_quality": "primary_exchange_filing",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": "4ae6d53c5b0edb8fb6eb04803dd1704b874065c812ca9dc0b62e01f2772ad0d3",
+      "case_local_raw_archive": true,
+      "case_archive_path": "sources/official-601088-equity-diligence-20260815/601088_2025_agm_voting_results_hkex.pdf",
+      "supports": "Approval of the 2025 final distribution and then-current A/H share counts.",
+      "does_not_support": "Full company-action ledger or payment reconciliation."
+    },
+    {
+      "id": "C42-S06",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "title": "Update Announcement: Raising of Supporting Funds, Issuance Results and Change in Share Capital",
+      "publication_date": "2026-04-08",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0408/2026040802758.pdf",
+      "source_quality": "primary_exchange_filing",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": "a68583fec8282ae53594ccc3648e0e972943e166e244d44fa6a45061b8a4d499",
+      "case_local_raw_archive": true,
+      "case_archive_path": "sources/official-601088-equity-diligence-20260815/601088_2026_specific_issuance_hkex.pdf",
+      "supports": "Registration date, number of new restricted shares, post-issuance share capital, control, and lock-up disclosure.",
+      "does_not_support": "Historical tradability, liquidity, valuation, or actionability."
+    },
+    {
+      "id": "C42-S07",
+      "publisher": "Hong Kong Exchanges and Clearing Limited / China Shenhua",
+      "title": "Proposed Change of Accounting Firms",
+      "publication_date": "2026-06-26",
+      "url": "https://www1.hkexnews.hk/listedco/listconews/sehk/2026/0626/2026062602823.pdf",
+      "source_quality": "primary_exchange_filing",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": "2bf6b7de8d21d70587182962879a4f70790447690202e8a077611c9de4c294c4",
+      "case_local_raw_archive": true,
+      "case_archive_path": "sources/official-601088-equity-diligence-20260815/601088_2026_auditor_change_hkex.pdf",
+      "supports": "Proposed 2026 auditor change, stated reasons, and approval condition.",
+      "does_not_support": "Final effective appointment or governance clearance."
+    },
+    {
+      "id": "C42-S08",
+      "publisher": "Shanghai Stock Exchange / China Shenhua",
+      "title": "中国神华2026年7月份主要运营数据公告",
+      "publication_date": "2026-08-14",
+      "first_public_timestamp": "not_retained",
+      "url": "https://www.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-08-14/601088_20260814_HSL7.pdf",
+      "source_quality": "primary_exchange_filing_locator_only",
+      "retrieval_date": "2026-08-15",
+      "sha256_read_only": null,
+      "case_local_raw_archive": false,
+      "access_probe": "sources/probe-sse-601088-disclosure-access-20260815/manifest.json",
+      "supports": "Existence of a later official monthly-operating-data source locator only.",
+      "does_not_support": "Any extracted operating metric, same-session availability, earnings, cash-flow, valuation, liquidity, or governance conclusion."
+    }
+  ],
+  "data_quality": {
+    "tier": "primary_disclosure_partial_case_archived_incomplete",
+    "source_provenance": "Official exchange/issuer filings only for cited facts; no broker, media, terminal, or market-price evidence is used.",
+    "case_local_raw_source_archive_complete": false,
+    "point_in_time_complete": false,
+    "market_data_rights_verified": false,
+    "liquidity_verified": false,
+    "valuation_verified": false,
+    "independent_review_complete": false,
+    "warnings": [
+      "No gate is passed.",
+      "C42-S01--S07 PDFs are case-archived and hash-verified, but the historical statutory disclosure set and first-public/version chain remain incomplete.",
+      "The SSE July-2026 operating-data file remains a locator only; direct retrieval yielded an anti-bot response, not the announced PDF, and no first-public timestamp is retained.",
+      "Observed financial and operating figures are not forecasts, total return, liquidity, quality, governance, or investment conclusions."
+    ],
+    "confidence_score": 45,
+    "confidence_scope": "Feasibility of beginning issuer-specific primary-document collection only; no confidence is assigned to financial quality, governance, valuation, liquidity, performance, or strategy usability."
+  },
+  "final_disposition": "NON_ADMITTED_RESEARCH_SUBJECT_NO_ACTION"
+}

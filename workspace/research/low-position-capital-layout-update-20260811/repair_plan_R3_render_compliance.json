@@ -1,0 +1,17 @@
+{
+  "cycle": "R3_render_compliance",
+  "status": "blocked_by_environment",
+  "updated_at": "2026-08-11",
+  "blocking_conditions": [
+    "MacTeX XeLaTeX is unavailable in the current runtime.",
+    "main.pdf has therefore not been generated.",
+    "No rendered-page set exists for clipping, table-fit, legibility or visual-hierarchy review."
+  ],
+  "latest_case_verifier": {
+    "command": "python3 tools/verify_research_workspace.py",
+    "result": "36 PASS / 3 FAIL",
+    "failing_controls": ["MacTeX XeLaTeX available", "PDF deliverable exists", "rendered-page review material exists"]
+  },
+  "required_external_action": "Run the required MacTeX XeLaTeX build in a MacTeX-capable environment, generate page renders, inspect every page, then refresh PDF-dependent governance artifacts and re-run R3.",
+  "prohibited_shortcuts": ["Do not substitute another TeX engine.", "Do not represent the source-text reading copy as PDF output.", "Do not issue a PASS sign-off without page-level review."]
+}

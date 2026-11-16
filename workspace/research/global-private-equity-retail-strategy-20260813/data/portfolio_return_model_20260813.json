@@ -1,0 +1,73 @@
+{
+  "schema_version": "strategic_allocation_framework.v1",
+  "case_id": "global-private-equity-retail-strategy-20260813",
+  "as_of": "2026-08-13",
+  "model_type": "strategic allocation planning range — research-only framework, no point return forecast",
+  "portfolio_principal_cny": null,
+  "active_base_core": [
+    {"asset": "protected liquidity pending user-specific suitability and product diligence", "weight": 1.0, "amount_cny": null, "status": "framework_only_q0"},
+    {"asset": "broad diversified public-market exposure", "weight": 0.0, "amount_cny": null, "status": "future_candidate_only"},
+    {"asset": "named-issuer research sleeve", "weight": 0.0, "amount_cny": null, "status": "open_universe_not_named"},
+    {"asset": "public REITs", "weight": 0.0, "amount_cny": null, "status": "open_universe_not_named"},
+    {"asset": "formal-announcement event research", "weight": 0.0, "amount_cny": null, "status": "watch_only"}
+  ],
+  "conditional_process_not_allocation": {
+    "description": "The following are research controls, not recommended weights. Any personalised allocation requires capital needs, risk capacity, account permissions, taxes, product due diligence, current liquidity and an approved risk budget.",
+    "core_satellite_logic": "Diversified, low-cost public exposure may be a practical substitute for the broad diversification a private fund offers; a small directly researched sleeve is permitted only after the named-item gates below pass.",
+    "capital_priority": "First remove six to twelve months of essential spending and known near-term commitments from risk capital; do not borrow to close an allocation gap."
+  },
+  "cash_measurement": {
+    "objective": "No cash-yield target is claimed.",
+    "net_cash_yield_formula": "If later measured, eligible settled cash receipts net of taxes, fees and recurring costs divided by beginning capital; do not count sale proceeds, unrealised gains, borrowed cash or unverified return of principal as income.",
+    "eligible_receipts": ["settled interest/coupon", "settled fund/REIT distribution after documentation", "cash dividend after settlement"],
+    "excluded_receipts": ["asset sale proceeds", "unrealized mark-to-market gains", "NAV appreciation", "external contributions", "borrowed cash", "unverified return of principal"],
+    "default_use": "Retain in protected liquidity unless a named receiving asset independently passes all gates.",
+    "failure_rule": "A return or income shortfall cannot be repaired by leverage, lower credit quality, forced buying or concentration."
+  },
+  "total_return_measurement": {
+    "objective": "No expected return, annual floor or probability claim is made.",
+    "formula": "For a later exact strategy, report point-in-time TWRR net of documented fees/taxes/costs and investor MWRR/XIRR separately where external cash flows occur.",
+    "reinvestment_rule": "A cash receipt enters total return once; reinvestment changes later capital and is not a second return entry.",
+    "failure_rule": "No performance claim without reproducible constituent history, trading assumptions, liquidity/capacity treatment, costs/taxes, benchmarks and drawdown analysis."
+  },
+  "cash_distribution_policy": {
+    "actual_measure": "No D0 or forward distribution is claimed; historical distributions, if later collected, remain historical observations.",
+    "forward_fixed_distribution_cny": null
+  },
+  "return_evidence": {
+    "implementation_status": "BLOCKED_PENDING_FORMAL_TEST",
+    "formal_test_requirement": "Create a point-in-time, rule-complete replay only after the exact named universe, admission criteria, rebalancing, taxes, settlement and liquidity rules are frozen.",
+    "benchmark_requirement": "Compare against a suitable protected-liquidity benchmark and a broad-market alternative; disclose drawdown, turnover, capacity and all selection changes."
+  },
+  "risk_budget": {
+    "implementation_status": "NOT_APPROVED",
+    "approval_requirement": "Document investor risk capacity, time horizon, emergency reserves, factor concentration, maximum plausible loss, liquidity capacity, account permissions and tax treatment before activating any market exposure.",
+    "loss_limit": "No loss budget is approved in this generic memo. Sizing must be reverse-engineered from a documented bear case and a feasible, not assumed, exit path."
+  },
+  "activation_controls": {
+    "direct_equities": {
+      "initial_weight": 0.0,
+      "aggregate_cap": null,
+      "single_issuer_cap": null,
+      "current_model_treatment": "open research universe; no direct equity is currently named, valued, eligible or allocated",
+      "required_independent_review": [
+        "finite ticker and instrument identity", "three annual reports plus latest interim disclosures", "business model and competence-circle statement", "cash-flow conversion and balance-sheet/debt stress", "governance, related-party, pledge and audit review", "bear/base/bull valuation with no unsupported multiple expansion", "two or three observable KPIs and dated catalyst/invalidation calendar", "current liquidity, settlement, account, tax and position-risk test", "independent red-team review of the thesis"
+      ]
+    },
+    "public_reits": {
+      "initial_weight": 0.0,
+      "activation_requires_independent_projects": 1,
+      "aggregate_cap": null,
+      "inactive_behavior": "Remain in protected liquidity; high historical distribution is not an activation trigger.",
+      "required_checks": [
+        "current legal and product identity", "asset-rights and sponsor/operator mapping", "audited financial and operating disclosure", "forward distributable-cash bridge rather than historical-yield extrapolation", "project KPI set such as occupancy/WALE/collections, traffic/tariff, utilisation/price as appropriate", "debt, refinancing, maintenance capex and expansion/dilution review", "current valuation inputs, premium/discount and secondary-market liquidity", "governance, related-party, tax, settlement, account and suitability review", "portfolio common-risk and approved risk budget"
+      ]
+    }
+  },
+  "data_quality": "research_framework_only",
+  "warnings": [
+    "No user capital amount or suitability data have been provided.",
+    "The all-liquidity active state is a governance placeholder, not a product recommendation.",
+    "All named market-traded exposure remains q=0 and all implementation is not approved."
+  ]
+}

@@ -1,0 +1,133 @@
+{
+  "schema_version": "d5pt_c53_equity_led_paper_protocol.v1",
+  "artifact_id": "D5PT-C53-EQUITY-LED-PAPER-PROTOCOL-v1",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "status": "DRAFT_PAPER_PROTOCOL_NOT_ADMITTED",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "objective": {
+    "long_run_net_annualized_hurdle": ">=5%",
+    "annual_return_guarantee": false,
+    "forecast_or_floor": false,
+    "economic_engine": "Domestic equity earnings, cash-flow realization, distributions and valuation change; defensive sleeves do not manufacture the hurdle."
+  },
+  "scope": {
+    "investor_assumption": "Research default only: at least five-year horizon, domestic securities access, and tolerance for equity and rate-asset volatility. Personal eligibility, liquidity needs, taxes, fees and risk capacity are not verified.",
+    "research_universe_policy": "Open across domestic public products, but this version has a closed five-ETF operating candidate set.",
+    "excluded_from_this_version": ["direct_equities", "public_reits", "direct_bonds", "open_ended_funds", "futures", "options", "margin_financing", "short_positions"],
+    "exclusion_meaning": "Version boundary only, not a permanent research-universe exclusion."
+  },
+  "target_weights": {
+    "510300": 0.25,
+    "510880": 0.25,
+    "511010": 0.25,
+    "518880": 0.10,
+    "511990": 0.15
+  },
+  "product_roles": [
+    {
+      "code": "510300",
+      "name": "Huatai-PineBridge CSI 300 ETF",
+      "role": "broad_domestic_equity_return_engine",
+      "document_date": "2025-11-24",
+      "annual_operating_expense_ratio": "0.20%",
+      "key_boundary": "Equity exposure, not a whole-market, low-volatility, execution or return guarantee."
+    },
+    {
+      "code": "510880",
+      "name": "Huatai-PineBridge SSE Dividend ETF",
+      "role": "domestic_dividend_style_equity_return_engine",
+      "document_date": "2026-06-19",
+      "annual_operating_expense_ratio": "0.60%",
+      "key_boundary": "Dividend style is equity risk, not fixed income or a distinct hedge from 510300."
+    },
+    {
+      "code": "511010",
+      "name": "Guotai SSE 5-Year Treasury Bond ETF",
+      "role": "government_rate_defensive_sleeve",
+      "document_date": "2026-03-19",
+      "annual_operating_expense_ratio": "0.21%",
+      "key_boundary": "Secondary-market price, NAV and IOPV are distinct; rate, premium-discount and liquidity risk remain."
+    },
+    {
+      "code": "518880",
+      "name": "Huaan Gold ETF",
+      "role": "domestic_gold_related_diversifier",
+      "document_date": "2026-03-17",
+      "annual_operating_expense_ratio": "0.67%",
+      "key_boundary": "No operating cash flow or coupon; it is not an automatic equity or bond hedge."
+    },
+    {
+      "code": "511990",
+      "name": "Huabao Cash Tianyi ETF Class A",
+      "role": "money_market_operational_buffer",
+      "document_date": "2025-06-21",
+      "annual_operating_expense_ratio": "0.69%",
+      "key_boundary": "Money-market exposure, not account cash, a return floor, or a same-day availability conclusion."
+    }
+  ],
+  "operating_rule": {
+    "observation_schedule": "After close on the final common session of March, June, September and December.",
+    "earliest_effective_session": "Next common session after the observation close.",
+    "rebalance_trigger": "At least one absolute actual-weight deviation is strictly greater than 5 percentage points.",
+    "within_band_action": "paper_hold",
+    "breach_action": "paper_rebalance_candidate",
+    "atomic_equity_sleeve": ["510300", "510880"],
+    "leverage_or_derivatives": "prohibited",
+    "price_protection": {
+      "buy": "displayed ask <= IOPV * 1.003",
+      "sell": "displayed bid >= IOPV * 0.997",
+      "on_missing_or_unusable_iopv": "NO_ACTION"
+    },
+    "hard_failure_action": "NO_ACTION or operational_pause; no substitution, assumed fill, same-day close fill or invented exit price.",
+    "same_day_roundtrip": "prohibited unless a future version has product-, venue-, account- and settlement-specific evidence."
+  },
+  "forward_paper_ledger": {
+    "path": "data/c53_quarterly_paper_observation_ledger_template_20260815.json",
+    "status": "template_only_no_observations",
+    "minimum_complete_cycles": 6,
+    "normalization_basis": "A reconciled normalized paper-unit index, not an investor amount. Actual weights must be reconstructed from recorded paper units and same-timestamp valuation marks.",
+    "portfolio_reconstruction_rule": "For each recorded cycle, actual weight equals the product paper-unit value divided by the aggregate recorded paper-unit value; missing unit, mark, distribution/event or reconciliation evidence forces NO_ACTION.",
+    "required_instrument_evidence": ["current_product_terms", "trading_state", "bid_ask_depth", "iopv_when_applicable", "lot_tick", "fee_tax", "settlement", "account_access_evidence", "price_protection", "action_or_no_action", "reconciliation"]
+  },
+  "risk_controls": {
+    "amber_drawdown": -0.12,
+    "amber_action": "Independent review before next scheduled cycle; do not revise weights or claim a stop-loss execution.",
+    "red_drawdown": -0.18,
+    "red_action": "operational_pause pending independent review; no forced exit at an unverified price.",
+    "hard_exceptions": ["halt", "limit_lock", "missing_product_terms", "missing_bid_ask_or_depth", "missing_iopv_when_applicable", "account_or_settlement_failure", "fee_tax_uncertainty", "partial_or_no_fill", "unreconciled_ledger", "unapproved_rule_or_product_change"]
+  },
+  "known_boundaries": {
+    "c30_static_price_proxy": "not an admission basis; five complete calendar years were below the 5% research line.",
+    "c34_dynamic_price_proxy": "not an admission basis; seven complete calendar years and 43 of 98 rolling-five-year endpoints were below the 5% research line.",
+    "futures": "C16/C17 actual-contract diagnostics did not provide a usable return route; futures remain zero weight.",
+    "options": "C51/C52 do not provide historical chain, execution, cost or account evidence; no option income route is admitted.",
+    "reverse_repo": "C50 did not establish a 5% yield floor; it is not a return engine.",
+    "formal_data_environment": "C48 remains NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT."
+  },
+  "admission_requirements": [
+    "Rights-cleared point-in-time total-return, distribution, event, quote, depth, status, fee, tax and settlement data.",
+    "Six uninterrupted complete quarterly paper cycles without changing products, weights, bands, thresholds or cadence.",
+    "Independent reconstruction of every target, price-protection and exception branch.",
+    "Net-total-return disclosure for complete calendar years, rolling five-year periods, drawdown, worst contiguous period, non-fill rate and all recorded friction."
+  ],
+  "source_refs": [
+    "analysis/c31_etf_product_diligence_refresh_20260815.json",
+    "analysis/c30_etf_candidate_rule_and_diagnostic_20260815.json",
+    "analysis/c34_dual_horizon_inverse_vol_etf_candidate_20260815.json",
+    "analysis/c16_actual_contract_settlement_diagnostic_20260815.json",
+    "analysis/c17_diversified_actual_contract_settlement_diagnostic_20260815.json",
+    "analysis/c50_sse_general_repo_yield_floor_screen_20260815.json",
+    "analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+    "analysis/c52_sse_etf_option_history_route_screen_20260815.json",
+    "analysis/c48_current_environment_data_capability_audit_20260815.json"
+  ],
+  "decision": {
+    "state": "PAPER_PROTOCOL_DRAFT_ONLY",
+    "action": "NO_ACTION",
+    "next_research_priority": "Validate the equity return engine through the separately preregistered C39 audited-cash-flow route and a rights-cleared ETF total-return and execution package."
+  }
+}

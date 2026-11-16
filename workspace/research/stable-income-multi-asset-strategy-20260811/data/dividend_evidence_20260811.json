@@ -1,0 +1,27 @@
+{
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "data_cutoff": "2026-08-11",
+  "active_scope": false,
+  "scope_status": "retired_from_active_scope",
+  "purpose": "retired issuer-distribution evidence retained only for audit history",
+  "active_use": "cannot be used for a target, allocation, valuation, cash or execution conclusion",
+  "data_quality": "mixed_tier_1_url_locators_and_tier_3_price_snapshot",
+  "archive_status": "partial local issuer archive: D01, D02, D03, D04, D06 and D08 originals are retained; D05 is unavailable and D07 lacks its final SSE original",
+  "archive_manifest": "sources/official-20260811/archive/m01-d01-d08/manifest.json",
+  "issuer_dividend_evidence": [
+    {"source_id": "D01", "ticker": "601398", "issuer": "工商银行", "annual_cash_dps_cny": 0.3103, "components": [{"label": "interim", "dps_cny": 0.1414}, {"label": "final", "dps_cny": 0.1689}], "url": "https://v.icbc.com.cn/userfiles/resources/icbcltd/download/2026/2026032704.pdf", "status": "historical_observation_only"},
+    {"source_id": "D02", "ticker": "601939", "issuer": "建设银行", "annual_cash_dps_cny": 0.3887, "components": [{"label": "interim", "dps_cny": 0.1858}, {"label": "final", "dps_cny": 0.2029}], "url": "https://www2.ccb.com/chn/attachDir/2026/03/2026032721294561705.pdf", "status": "historical_observation_only"},
+    {"source_id": "D03", "ticker": "601288", "issuer": "农业银行", "annual_cash_dps_cny": 0.2495, "components": [{"label": "interim", "dps_cny": 0.1195}, {"label": "final", "dps_cny": 0.1300}], "url": "https://www.abchina.com/cn/aboutabc/investor_relations/announcements/a-announcement/202603/P020260330742228371781.pdf", "status": "historical_observation_only"},
+    {"source_id": "D04", "ticker": "601988", "issuer": "中国银行", "annual_cash_dps_cny": 0.2263, "components": [{"label": "interim", "dps_cny": 0.1094}, {"label": "final", "dps_cny": 0.1169}], "url": "https://pic.bankofchina.com/bocappd/report/202603/P020260330667290066226.pdf", "status": "historical_observation_only"},
+    {"source_id": "D05", "ticker": "600028", "issuer": "中国石化", "annual_cash_dps_cny": null, "confirmed_final_dps_cny": 0.1120, "url": "https://www.sinopec.com/listco/en/000/000/041/41877.shtml", "status": "annual_total_pending_complete_primary_archive"},
+    {"source_id": "D06", "ticker": "600900", "issuer": "长江电力", "annual_cash_dps_cny": 1.0000, "components": [{"label": "interim", "dps_cny": 0.2100}, {"label": "final", "dps_cny": 0.7900}], "url": "https://www.cypc.com.cn/cypc/attachDir/2026/05/2026051815072554604.pdf", "status": "historical_observation_only"},
+    {"source_id": "D07", "ticker": "600941", "issuer": "中国移动", "annual_cash_dps_cny": 4.7037, "components": [{"label": "interim A-share actual", "dps_cny": 2.5025}, {"label": "final A-share actual", "dps_cny": 2.2012}], "urls": ["https://static.cninfo.com.cn/finalpage/2025-08-26/1224565033.PDF", "https://static.sse.com.cn/disclosure/listedinfo/announcement/c/new/2026-06-25/600941_20260625_TL7M.pdf"], "status": "historical_observation_only"},
+    {"source_id": "D08", "ticker": "601088", "issuer": "中国神华", "annual_cash_dps_cny": null, "confirmed_final_dps_cny": 1.0300, "url": "https://www.hkexnews.hk/listedco/listconews/sehk/2026/0330/2026033004106_c.pdf", "status": "noncomparable_without_share_basis_reconstruction", "warning": "2026 share-capital changes prevent a simple historical cash-distribution-to-current-price yield comparison."}
+  ],
+  "warnings": [
+    "This packet is retired_from_active_scope and cannot be used for a target, allocation, valuation, cash or execution conclusion.",
+    "Historical annual distributions are not forward dividends or yield promises.",
+    "All direct-stock data remain watchlist-only; no direct-stock amount is allocated in the active model.",
+    "Issuer source archive remains incomplete: D05 is unavailable and D07 lacks its final SSE original, so no formal publication claim may rely on the combined watchlist table."
+  ]
+}

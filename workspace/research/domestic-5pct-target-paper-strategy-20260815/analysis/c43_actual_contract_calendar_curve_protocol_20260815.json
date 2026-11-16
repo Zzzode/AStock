@@ -1,0 +1,94 @@
+{
+  "schema_version": "c43_actual_contract_calendar_curve_protocol.v1",
+  "artifact_id": "D5PT-C43-PROTOCOL-v1",
+  "as_of": "2026-08-15",
+  "status": "INVALIDATED_PRECALCULATION_SOURCE_CONTROL_GAP",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "purpose": "This invalidated pre-protocol records the originally proposed gross actual-contract settlement-mark diagnostic of a same-product calendar-curve hypothesis. It is retained solely to disclose a source-control gap and is not a valid calculation contract, executable futures strategy, investor-return test, or action instruction.",
+  "invalidation": {
+    "identified_on": "2026-08-15",
+    "reason": "The original five-family protocol bound the C15 source manifest but did not bind a five-family field-readiness audit. C15's formal readiness conclusion covered AU/CU/RU only; the original C44 preliminary output therefore cannot be used as a result.",
+    "original_protocol_sha256_before_invalidation": "0e44296ac4c2c78ca6697e03a148d19f0643b2825a65a20b0087399096174efe",
+    "original_preliminary_output_sha256": "1004b4bb9ace1aebf0dd0cf9f82f8b520393fe289a4e2c574559bd2eac46a641",
+    "disposition": "C43/C44 are void for research-screen, actionability, or performance purposes. C45 provides the missing five-family field-readiness audit. Any re-run requires a newly frozen protocol that binds C45 and retains the original rule unchanged."
+  },
+  "hypothesis_governance": {
+    "relationship_to_c16_c17": "C43 is economically distinct from C16 and C17. C16/C17 test directional time-series momentum in one actual contract per family; C43 holds an equal-notional long/short pair inside each family and uses the contemporaneous term-structure sign, not a trend signal. C43 neither changes nor repairs either failed diagnostic.",
+    "universe_rationale": "AU, CU, RB, RU, and SP were fixed before C43 calculation because P02/P03 already document their exchange product mechanics and because the C15 official-response archive contains valid actual-contract rows for each across the retained 2019--2025 interval. Their roles are precious metal, nonferrous industrial metal, construction steel, natural rubber, and softwood pulp.",
+    "parameter_search": "prohibited",
+    "post_result_rule": "No threshold, family, delivery window, selection rank, mark rule, or evaluation rule may be changed to repair the C43 result. A later, economically distinct hypothesis requires its own frozen protocol and independent review."
+  },
+  "source_dependency": {
+    "actual_contract_manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest.json",
+    "actual_contract_manifest_sha256": "34e23ddf886bd1f1f6cb88610d8d730bd757c981b92b0aa51720c5471b1186d7",
+    "source_readiness_audit_path": "analysis/c15_shfe_actual_contract_eod_source_readiness_20260815.json",
+    "source_readiness_audit_sha256": "5413d17d4db0654432d1e25e462dd51fd9c2a4591e94ee573f5cf4da70885470",
+    "legacy_product_diligence_path": "analysis/p02_shfe_actual_contract_product_diligence_20260815.json",
+    "legacy_product_diligence_artifact_id": "D5PT-P02-v1",
+    "legacy_product_diligence_sha256": "603c6bc79de06b40913f7ad48c18346ecb19dad0c09fe9493de90c9b90357499",
+    "expanded_product_diligence_path": "analysis/p03_shfe_expanded_actual_contract_product_diligence_20260815.json",
+    "expanded_product_diligence_sha256": "bf7deea405abc9957e2ef857921606d0488285a269dd5127e43dcc1b540dd9c6",
+    "expanded_product_source_manifest_sha256": "dbc39e8c0d3789cb88d2267dca285b1b4cf58f1ca65e235471e0c250d8c12ec8"
+  },
+  "universe": {
+    "families": ["AU", "CU", "RB", "RU", "SP"],
+    "family_economic_roles": {
+      "AU": "precious metal",
+      "CU": "nonferrous industrial metal",
+      "RB": "construction steel",
+      "RU": "natural rubber",
+      "SP": "softwood pulp"
+    },
+    "contract_identity": "Each observation and held mark must use a contemporaneously actual listed contract code constructed from product family and delivery month. Continuous, back-adjusted, dominant-contract, synthetic spread, and stitched series are forbidden.",
+    "scheduled_delivery_boundary": "Eligibility uses the calendar 15th of the delivery month encoded by the actual contract. This is a conservative research approximation only; it is not an exchange-adjusted final-trading-day, delivery-state, position-limit, or broker close-out record."
+  },
+  "monthly_pair_signal": {
+    "signal_session": "The final retained exchange response in each calendar month.",
+    "effectiveness": "The next retained exchange response after the signal session. The target is installed only after marking the prior book at that response's settlement; it receives no same-session mark.",
+    "warmup": "Do not begin the diagnostic until a monthly signal has valid pairs for every family. The signal date itself must have at least 20 prior retained response dates inclusive of that date.",
+    "near_leg": {
+      "scheduled_days_to_delivery": {"minimum": 90, "maximum": 180}
+    },
+    "deferred_leg": {
+      "scheduled_days_to_delivery": {"minimum": 210, "maximum": 390}
+    },
+    "required_current_fields_positive": ["SETTLEMENTPRICE", "VOLUME", "OPENINTEREST"],
+    "required_same_actual_contract_history": {
+      "valid_settlement_and_volume_observations_including_signal": 20,
+      "minimum_median_volume": 1000,
+      "minimum_current_open_interest": 5000
+    },
+    "pair_selection_rank": ["minimum_open_interest_desc", "minimum_volume_desc", "near_delivery_month_asc", "deferred_delivery_month_asc"],
+    "direction": {
+      "long_near_short_deferred": "near settlement > deferred settlement",
+      "short_near_long_deferred": "near settlement < deferred settlement",
+      "flat": "equal settlements or any incomplete eligibility condition"
+    },
+    "pair_completeness": "After warmup, if any family lacks a valid pair at a monthly signal, the diagnostic stops as not decidable. It does not replace the family, relax a threshold, carry a prior pair, or infer a fill."
+  },
+  "unitized_gross_settlement_mark": {
+    "family_weight": 0.2,
+    "leg_weight": 0.1,
+    "weight_method": "Each family has an equal gross diagnostic sleeve, split equally between its two opposite-sign legs. Fractional weights are a calculation device, not order sizes or a portfolio instruction.",
+    "daily_mark": "For a held pair, apply direction × leg_weight × (near settlement change minus deferred settlement change) between two adjacent retained exchange responses. Mark the prior held book first, then replace it with any effective next-session monthly target.",
+    "unitization": "The gross settlement-mark index begins at 1.0 on its first marked response and evolves only from the defined actual-contract settlement changes.",
+    "missing_mark_policy": "If either held actual contract lacks a valid prior or current settlement mark, stop the diagnostic as not decidable. Do not forward-fill, substitute a contract, or infer a fill.",
+    "cost_margin_collateral_policy": "No exchange or broker fee, bid/ask, slippage, margin, collateral return, tax, limit-lock, delivery, funding, offset eligibility, position limit, account condition, or execution result is imputed. The result is therefore gross and non-executable."
+  },
+  "evaluation": {
+    "source_covered_calendar_year": "A year is reported only if every retained response from the first marked session through that year is marked, a prior retained response exists for the opening mark, the first retained response is within the first seven calendar days of January, and the last retained response is within the final eight calendar days of December. This is source coverage, not a verified exchange-calendar completeness claim.",
+    "rolling_five_year": "Use monthly retained-response endpoints. For each endpoint, compare with the last retained response on or before the same calendar date five years earlier and annualize using actual calendar days. Endpoints with fewer than 1200 retained response points inclusive of both endpoints are excluded.",
+    "research_screen": {
+      "threshold": 0.05,
+      "rule": "Any source-covered calendar year or eligible rolling-five-year endpoint below 5% makes this gross diagnostic non-positive for the strict research screen. A positive result would still not admit an executable strategy."
+    }
+  },
+  "prohibitions": [
+    "No use of continuous, back-adjusted, dominant-contract, synthetic, or stitched series.",
+    "No use of an account-specific condition, order, holding, broker route, allocation, or external action.",
+    "No inference of exchange-adjusted final trading days, historical margin, fees, limit state, fill, offset eligibility, or personal access from the retained EOD responses.",
+    "No promotion to stable five-percent, net return, usable-strategy, or action status irrespective of the diagnostic output."
+  ]
+}

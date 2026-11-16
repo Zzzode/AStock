@@ -1,0 +1,68 @@
+{
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "as_of": "2026-08-11",
+  "status": "complete_for_active_scope",
+  "purpose": "release-control record for the current active-source scope; retired legacy context is retained separately",
+  "locators_recorded": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S15", "S16"],
+  "archive_summary": {
+    "source_id_count": 15,
+    "success_count": 15,
+    "partial_count": 0,
+    "failed_count": 0,
+    "success_source_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S15", "S16"],
+    "partial_source_ids": [],
+    "failed_source_ids": []
+  },
+  "active_scope": {
+    "source_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S15", "S16"],
+    "source_id_count": 15,
+    "success_count": 15,
+    "partial_count": 0,
+    "failed_count": 0,
+    "success_source_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S15", "S16"],
+    "partial_source_ids": [],
+    "failed_source_ids": [],
+    "archive_status": "complete_for_active_scope",
+    "archive_batches": [
+      {
+        "manifest": "sources/official-20260811/archive/s01-s08/manifest.json",
+        "source_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08"],
+        "status": "complete_for_active_scope",
+        "retrieved_on": "2026-08-11"
+      },
+      {
+        "manifest": "sources/official-20260811/archive/s09-s16/manifest.json",
+        "source_ids": ["S09", "S10", "S11", "S12", "S13", "S15", "S16"],
+        "status": "complete_for_active_scope",
+        "retrieved_on": "2026-08-11",
+        "note": "S14 remains in the physical legacy manifest but is excluded from the active scope."
+      }
+    ]
+  },
+  "legacy_context": {
+    "scope_status": "retired_from_active_scope",
+    "retired_source_ids": ["S14", "M01", "D01", "D02", "D03", "D04", "D05", "D06", "D07", "D08"],
+    "historical_full_archive_summary": {
+      "source_id_count": 25,
+      "success_count": 21,
+      "partial_count": 1,
+      "failed_count": 3,
+      "success_source_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12", "S13", "S15", "S16", "D01", "D02", "D03", "D04", "D06", "D08"],
+      "partial_source_ids": ["D07_final"],
+      "failed_source_ids": ["S14", "M01", "D05"]
+    },
+    "legacy_manifests": [
+      "sources/official-20260811/archive/s09-s16/manifest.json",
+      "sources/official-20260811/archive/m01-d01-d08/manifest.json"
+    ],
+    "raw_bytes_recovered": false,
+    "active_use": "prohibited: legacy data cannot support a target, allocation, valuation, cash or execution conclusion"
+  },
+  "immutable_local_files_recorded": [
+    "sources/official-20260811/archive/s01-s08/manifest.json",
+    "sources/official-20260811/archive/s09-s16/manifest.json",
+    "sources/official-20260811/archive/m01-d01-d08/manifest.json"
+  ],
+  "missing_for_active_scope_completion": [],
+  "release_effect": "The archive is complete_for_active_scope. This does not authorize execution; current market data, product checks, account eligibility and independent review remain separate gates."
+}

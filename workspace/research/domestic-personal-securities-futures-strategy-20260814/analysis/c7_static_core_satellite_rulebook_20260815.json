@@ -1,0 +1,157 @@
+{
+  "artifact_id": "DPSFS-C7-RULE-v1",
+  "artifact_class": "research_candidate_rulebook",
+  "as_of": "2026-08-15",
+  "candidate_status": "frozen_exploratory_candidate_not_action_ready",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "constraints": {
+    "long_run_research_target": "5% annualized; a test line only, not a guarantee, floor, prediction, suitability outcome, or annual promise",
+    "no_external_orders": true,
+    "portfolio_q": 0
+  },
+  "distinct_from_r5": [
+    "C7 is fixed strategic allocation plus semiannual drift bands; R5 was monthly absolute-momentum sleeve selection.",
+    "C7 has no positive-sleeve gate, cross-sectional rank, defensive fallback, lookback window, parameter grid, or survivor-search logic.",
+    "C7 retains six structural sleeves including CSI 500 and does not select products from R5 results.",
+    "C7 does not use R5 NAV inputs, results, or pass/fail outcomes."
+  ],
+  "historical_protocol_status": "exploratory_post_observation_not_clean_preregistration",
+  "non_exclusion_boundary": {
+    "direct_a_shares": "not excluded or judged inferior; a separate research family",
+    "futures": "not excluded or judged inferior; actual-contract research remains a separate family",
+    "other_domestic_instruments": "not silently admitted to C7 and not rejected by C7"
+  },
+  "rule": {
+    "allocation_regime": "single fixed normal allocation; no forecast or tactical allocation switch",
+    "sleeves": [
+      {
+        "code": "510300",
+        "exposure": "CSI 300 equity index, full replication",
+        "name": "华泰柏瑞沪深300ETF",
+        "role": "core_broad_equity",
+        "source_date": "2025-11-24",
+        "target_weight": 0.3,
+        "weight_band_absolute": 0.05
+      },
+      {
+        "code": "510500",
+        "exposure": "CSI 500 equity index, full replication",
+        "name": "南方中证500ETF",
+        "role": "satellite_size_equity",
+        "source_date": "2026-07-29",
+        "target_weight": 0.1,
+        "weight_band_absolute": 0.03
+      },
+      {
+        "code": "510880",
+        "exposure": "SSE Dividend Index, full replication",
+        "name": "华泰柏瑞上证红利ETF",
+        "role": "satellite_dividend_equity",
+        "source_date": "2026-06-19",
+        "target_weight": 0.1,
+        "weight_band_absolute": 0.03
+      },
+      {
+        "code": "511010",
+        "exposure": "SSE 5-Year Treasury Bond Index, optimized sampling",
+        "name": "国泰上证5年期国债ETF",
+        "role": "core_government_bond",
+        "source_date": "2026-03-19",
+        "target_weight": 0.3,
+        "weight_band_absolute": 0.05
+      },
+      {
+        "code": "511990",
+        "exposure": "money-market instruments",
+        "name": "华宝现金添益ETF（A类）",
+        "role": "core_liquidity_sleeve",
+        "source_date": "2025-06-21",
+        "target_weight": 0.1,
+        "weight_band_absolute": 0.05
+      },
+      {
+        "code": "518880",
+        "exposure": "domestic gold spot contracts as the primary exposure",
+        "name": "华安黄金ETF",
+        "role": "satellite_gold",
+        "source_date": "2026-03-17",
+        "target_weight": 0.1,
+        "weight_band_absolute": 0.03
+      }
+    ],
+    "target_weight_sum": 1.0,
+    "calendar": {
+      "information_date": "last common trading close in March and September",
+      "minimum_effective_date": "next common trading session",
+      "rebalancing_trigger": "any sleeve's absolute difference from target exceeds its fixed weight band",
+      "rebalancing_action": "restore every eligible, tradable sleeve to the fixed target; otherwise no trade"
+    },
+    "risk_and_exception_controls": {
+      "drawdown_review_trigger": "12% decline from a verified unitized high-water mark requires a review record before the next rebalance; it does not alter target weights or act as a backtested stop/timing switch",
+      "no_automatic_substitute": "suspension, termination, material product-change, unavailable quote, missing permission, or missing required evidence sets the sleeve to not_actionable rather than selecting a replacement",
+      "no_leverage_shorting_or_derivatives": true
+    },
+    "order_controls": {
+      "order_type": "limit order only",
+      "buy_price_protection": "when verified IOPV and best offer exist, best offer must be no greater than 100.3% of IOPV",
+      "sell_price_protection": "when verified IOPV and best bid exist, best bid must be no less than 99.7% of IOPV",
+      "missing_quote_iopv_fee_or_status": "no_action",
+      "settlement": "do not presume access to unsettled sale proceeds or same-day resale of newly acquired stock ETF units",
+      "required_log_fields": [
+        "product_state",
+        "current_terms",
+        "account_permission",
+        "broker_route",
+        "broker_fee",
+        "tax",
+        "order",
+        "IOPV_if_available",
+        "quote",
+        "fill_or_no_fill",
+        "settlement_state"
+      ]
+    }
+  },
+  "source_bound_price_screen": {
+    "raw_manifest": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/manifest.json",
+    "derived_diagnostic": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/c7_static_core_satellite_price_diagnostic_20260815.json",
+    "price_input_boundary": "official SSE retrospectively retrieved close prices with undisclosed adjustment basis; neither investor total return nor executable performance",
+    "common_sessions": 3171,
+    "window": {
+      "end": "2026-08-14",
+      "start": "2013-07-29"
+    },
+    "mechanical_cost_load": "20bp per one-way turnover; arithmetic sensitivity only, not observed costs",
+    "results": {
+      "annualized_market_price_unitized_change": 0.07258417829607233,
+      "complete_calendar_years_below_5pct": 5,
+      "complete_calendar_years_count": 12,
+      "maximum_drawdown": -0.3337098435627862,
+      "rolling_five_year_below_5pct": 1428,
+      "rolling_five_year_count": 1952,
+      "rolling_five_year_range": [
+        -0.0370459215802853,
+        0.1306529093748101
+      ]
+    },
+    "5pct_verdict": "not_adjudicated: price-only numbers cannot establish total return or personal execution; they prohibit a stable-5% marketing claim"
+  },
+  "formal_test_and_disposition": {
+    "required_test": "frozen C7 rule over entitled PIT investor total return plus fund-event and execution ledger, after actual costs, taxes, partial fills, no fills, and settlement effects",
+    "strict_hurdle": "every complete calendar year and every complete rolling five-year annualized endpoint at or above 5%, with no unexplained data or accounting failure",
+    "failure_action": "invalidate C7 without retuning weights, bands, indicators, or products",
+    "current_blockers": [
+      "PIT total return and fund-event ledger absent",
+      "historical available-at and revision lineage absent",
+      "market state, IOPV, bid/ask, depth, fees, taxes, fills, and settlement ledger absent",
+      "personal account permission, suitability, and broker route absent",
+      "independent recomputation and six-month prospective paper record absent"
+    ],
+    "current_action": "no_action"
+  },
+  "source_references": [
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r4_candidate_etf_diligence_20260815.md",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/manifest.json",
+    "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c7-static-etf-price-observation-20260815/manifest.json"
+  ]
+}

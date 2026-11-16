@@ -1,0 +1,187 @@
+{
+  "schema_version": "r14_open_universe_feasibility_expansion_audit.v1",
+  "artifact_id": "D5PT-R14-OPEN-UNIVERSE-FEASIBILITY-EXPANSION-AUDIT-v1",
+  "as_of": "2026-08-15",
+  "result": "PASS",
+  "scope": "C21 public-REIT, C22 company-bond, C23 open-ended-fund, and C24 direct-mainland-equity feasibility-memo boundaries",
+  "candidate_hashes": {
+    "C21": "ef282ad26d5690133026b0aeedf352690cd7890f7b126d18ebb208b173adbf9b",
+    "C22": "ea920348f5269715ba1c7d1c6ff45a8c0de561ed5c1d98e3b2ebb39576596cf4",
+    "C23": "c01833f96313848a4a1f970a4104d44f407e61af44e24a450900625ddeeb62f3",
+    "C24": "5902ad57b94affdc1554524614fdc0a099484ffaede924a051e63c31597c2cf2"
+  },
+  "checks": [
+    {
+      "name": "C21 artifacts exist",
+      "passed": true,
+      "detail": "c21_public_reit_historical_data_route_research_20260815.json, c21_public_reit_historical_data_route_research_20260815.md"
+    },
+    {
+      "name": "C21 JSON object",
+      "passed": true,
+      "detail": "c21_public_reit_historical_data_route_research_20260815.json"
+    },
+    {
+      "name": "C21 declared conditional status",
+      "passed": true,
+      "detail": "CONDITIONAL_LAWFUL_MULTI_SOURCE_ROUTE_IDENTIFIED_NOT_C20_TEST_ADMITTED"
+    },
+    {
+      "name": "C21 Markdown mirrors no-action boundary",
+      "passed": true,
+      "detail": "c21_public_reit_historical_data_route_research_20260815.md"
+    },
+    {
+      "name": "C21 reader wording excludes restricted amount terms",
+      "passed": true,
+      "detail": "c21_public_reit_historical_data_route_research_20260815.md"
+    },
+    {
+      "name": "C21 records primary-source locators",
+      "passed": true,
+      "detail": "url_count=29"
+    },
+    {
+      "name": "C22 artifacts exist",
+      "passed": true,
+      "detail": "c22_company_bond_historical_data_route_research_20260815.json, c22_company_bond_historical_data_route_research_20260815.md"
+    },
+    {
+      "name": "C22 JSON object",
+      "passed": true,
+      "detail": "c22_company_bond_historical_data_route_research_20260815.json"
+    },
+    {
+      "name": "C22 declared conditional status",
+      "passed": true,
+      "detail": "CONDITIONAL_LAWFUL_MULTI_SOURCE_ROUTE_IDENTIFIED_NOT_TEST_ADMITTED"
+    },
+    {
+      "name": "C22 Markdown mirrors no-action boundary",
+      "passed": true,
+      "detail": "c22_company_bond_historical_data_route_research_20260815.md"
+    },
+    {
+      "name": "C22 reader wording excludes restricted amount terms",
+      "passed": true,
+      "detail": "c22_company_bond_historical_data_route_research_20260815.md"
+    },
+    {
+      "name": "C22 records primary-source locators",
+      "passed": true,
+      "detail": "url_count=11"
+    },
+    {
+      "name": "C23 artifacts exist",
+      "passed": true,
+      "detail": "c23_open_ended_public_fund_data_feasibility_20260815.json, c23_open_ended_public_fund_data_feasibility_20260815.md"
+    },
+    {
+      "name": "C23 JSON object",
+      "passed": true,
+      "detail": "c23_open_ended_public_fund_data_feasibility_20260815.json"
+    },
+    {
+      "name": "C23 declared conditional status",
+      "passed": true,
+      "detail": "CONDITIONAL_PRODUCT_LEVEL_DATA_PATHS_IDENTIFIED_NOT_YET_TESTABLE"
+    },
+    {
+      "name": "C23 Markdown mirrors no-action boundary",
+      "passed": true,
+      "detail": "c23_open_ended_public_fund_data_feasibility_20260815.md"
+    },
+    {
+      "name": "C23 reader wording excludes restricted amount terms",
+      "passed": true,
+      "detail": "c23_open_ended_public_fund_data_feasibility_20260815.md"
+    },
+    {
+      "name": "C23 records primary-source locators",
+      "passed": true,
+      "detail": "url_count=13"
+    },
+    {
+      "name": "C24 artifacts exist",
+      "passed": true,
+      "detail": "c24_direct_ashare_equity_data_feasibility_20260815.json, c24_direct_ashare_equity_data_feasibility_20260815.md"
+    },
+    {
+      "name": "C24 JSON object",
+      "passed": true,
+      "detail": "c24_direct_ashare_equity_data_feasibility_20260815.json"
+    },
+    {
+      "name": "C24 declared conditional status",
+      "passed": true,
+      "detail": "CONDITIONAL_LAWFUL_MULTI_SOURCE_ROUTE_IDENTIFIED_NOT_TEST_ADMITTED"
+    },
+    {
+      "name": "C24 Markdown mirrors no-action boundary",
+      "passed": true,
+      "detail": "c24_direct_ashare_equity_data_feasibility_20260815.md"
+    },
+    {
+      "name": "C24 reader wording excludes restricted amount terms",
+      "passed": true,
+      "detail": "c24_direct_ashare_equity_data_feasibility_20260815.md"
+    },
+    {
+      "name": "C24 records primary-source locators",
+      "passed": true,
+      "detail": "url_count=38"
+    },
+    {
+      "name": "C21 preserves no-selection/no-test/no-action fields",
+      "passed": true,
+      "detail": "C21 controls"
+    },
+    {
+      "name": "C21 treats URLs as locators rather than a rights grant",
+      "passed": true,
+      "detail": "C21 rights boundary"
+    },
+    {
+      "name": "C22 preserves no-selection/no-test/no-action fields",
+      "passed": true,
+      "detail": "C22 controls"
+    },
+    {
+      "name": "C22 keeps universe, realized-event, and rights blockers",
+      "passed": true,
+      "detail": "C22 field and source boundary"
+    },
+    {
+      "name": "C23 preserves no-selection/no-test/no-action fields",
+      "passed": true,
+      "detail": "C23 controls"
+    },
+    {
+      "name": "C23 confines the five-percent reference to a research hurdle",
+      "passed": true,
+      "detail": "A long-run research hurdle only; not a guarantee, minimum return, or product promise."
+    },
+    {
+      "name": "C23 requires data-rights/sample gate before a rule design",
+      "passed": true,
+      "detail": "C23-GATE-1"
+    },
+    {
+      "name": "C24 preserves no-selection/no-test/no-action fields",
+      "passed": true,
+      "detail": "C24 controls"
+    },
+    {
+      "name": "C24 distinguishes Shanghai/Shenzhen A shares from the separate BSE gate",
+      "passed": true,
+      "detail": "{'asset_route': 'direct mainland listed equities; base scope is Shanghai/Shenzhen A shares, with BSE treated as a separately explicit domestic-stock coverage gate', 'base_scope': ['Shanghai Stock Exchange Main Board', 'Shanghai Stock Exchange STAR Market', 'Shenzhen Stock Exchange Main Board', 'Shenzhen Stock Exchange ChiNext Market'], 'separately_explicit_domestic_stock_coverage_gate': ['Beijing Stock Exchange'], 'non_silent_exclusion_rule': 'A frozen future protocol must explicitly record a dated, auditable reason for every excluded market, board, or security class before any computation. If it claims to cover BSE or a full domestic-stock scope, BSE must be covered by verified data; if it is limited to Shanghai/Shenzhen A shares, that scope limitation must be explicit. Current listings, surviving names, and data scarcity may not silently define the historical universe.', 'no_stock_selection': True}"
+    },
+    {
+      "name": "C24 requires full per-stock institutional diligence",
+      "passed": true,
+      "detail": "gate_count=8"
+    }
+  ],
+  "failures": [],
+  "boundary": "This audit checks declared readiness controls only. It does not validate external pages, obtain data rights, establish a historic universe, choose a product, calculate a return, or authorize an action."
+}

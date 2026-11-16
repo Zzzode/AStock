@@ -75,9 +75,10 @@ data/sessions/
 workspace/.agents
 
 # Research rendered PDF rasters: only the current full render is tracked.
-# Historical full-* dirs stay on disk for audit but are gitignored to bound repo growth.
+# Historical render dirs stay on disk for audit but are gitignored to bound repo growth.
 workspace/research/*/rendered/full-*/
 workspace/research/*/rendered/reset-*/
+workspace/research/*/rendered/superseded-*/
 !workspace/research/*/rendered/full-20260620-1532/
 !workspace/research/*/rendered/full-20260620-1532/**
 

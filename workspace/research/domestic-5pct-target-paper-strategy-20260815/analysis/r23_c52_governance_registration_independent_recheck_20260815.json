@@ -1,0 +1,171 @@
+{
+  "schema_version": "d5pt_r23_c52_governance_registration_independent_recheck.v1",
+  "artifact_id": "D5PT-R23-C52-GOVERNANCE-REGISTRATION-INDEPENDENT-RECHECK-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "reviewer": {
+    "role": "research-report-reviewer",
+    "mode": "independent_read_only_governance_recheck"
+  },
+  "scope": {
+    "follow_up_only": "R22-M-004 governance-registration follow-up",
+    "artifacts_reviewed": [
+      "gate_manifest.json",
+      "gate_manifest.md",
+      "artifact_contract.json",
+      "artifact_contract.md",
+      "data/source_registry.json",
+      "data/source_registry.md",
+      "data/claim_audit.json",
+      "data/claim_audit.md",
+      "source_exhaustion_log.json",
+      "source_exhaustion_log.md",
+      "unresolved_requirements.json",
+      "data/research_ledger.json",
+      "research_brief.md",
+      "analysis/r09_research_control_record_audit_20260815.json",
+      "analysis/r09_research_control_record_audit_20260815.md",
+      "tools/r09_verify_research_control_records.py"
+    ],
+    "not_performed": [
+      "C52 raw-source re-audit or historical replay reconstruction",
+      "Data procurement, credential inspection, rights acceptance, or account verification",
+      "ETF, option, strike, expiry, size, broker, calendar, or threshold selection",
+      "Strategy admission, performance claim, portfolio allocation, order instruction, or external action"
+    ]
+  },
+  "snapshot": {
+    "r22_historical_record": {
+      "json_path": "analysis/r22_c52_independent_source_audit_20260815.json",
+      "json_byte_count": 11520,
+      "json_sha256": "4daf702ed8e2a65d135a8a5d55beb2071cbc939cd2b87f6663c416319b56fda1",
+      "markdown_path": "analysis/r22_c52_independent_source_audit_20260815.md",
+      "markdown_byte_count": 4576,
+      "markdown_sha256": "6ced9aca81d039fdf9ebcb6b641ec6dc5fc5106eb8c8d82aab7a77e86e23b358"
+    },
+    "r09_final_stable_snapshot": {
+      "stability_check": "Identical SHA-256 values observed across three reads over four seconds after the R09 writer confirmed completion.",
+      "script_path": "tools/r09_verify_research_control_records.py",
+      "script_byte_count": 84291,
+      "script_sha256": "2a03c718752cca52a721b6262129ac9368af21db14cd5065796d1085036068c1",
+      "json_path": "analysis/r09_research_control_record_audit_20260815.json",
+      "json_byte_count": 22477,
+      "json_sha256": "2b141cc83722f65b09508b7cae4e203e35de04078cc1da19ee8c2eed6040bee0",
+      "markdown_path": "analysis/r09_research_control_record_audit_20260815.md",
+      "markdown_byte_count": 18427,
+      "markdown_sha256": "98fc930a9138d781d81cccb9e2897e395e498a322ae8bf2a7f4a989f195cc33d",
+      "result": "PASS",
+      "failed_check_count": 0,
+      "total_check_count": 66
+    },
+    "governance_documents": [
+      {"path": "gate_manifest.json", "byte_count": 10743, "sha256": "f24f3e78d02c3d958f5c47b32df1fb7cc31325ccf425ee3913e48fc96bafe04b"},
+      {"path": "gate_manifest.md", "byte_count": 9688, "sha256": "7f04865bcf614de77bec599f1db307586edca6eba1c80e9f18a052b7a83b112f"},
+      {"path": "artifact_contract.json", "byte_count": 31466, "sha256": "e7fbe420155edd7a1b3d350ef94ceab29ec7f81ac9bda46f475b178d5cbbed01"},
+      {"path": "artifact_contract.md", "byte_count": 12067, "sha256": "9e0e262a091d6c4c15fdb87c383caf9841d06c676689f4a5fbe604faef786d14"},
+      {"path": "data/source_registry.json", "byte_count": 44876, "sha256": "09a200bdf5b4e92262388878e6f3c108dc8b8d8d55805ab6f45fb262d034ed9b"},
+      {"path": "data/source_registry.md", "byte_count": 14446, "sha256": "9c6462a3f77975f9b79f7270238a43eb855fdaf2a48eac45e6979db12acf4266"},
+      {"path": "data/claim_audit.json", "byte_count": 19418, "sha256": "5f1e6199399f68853299ecaf71ffd3b68762076effd5890b686b5672ab3e3773"},
+      {"path": "data/claim_audit.md", "byte_count": 10434, "sha256": "c3574a9930596fe39f740bdcb37f113a0e3da9bbd88c8ff8bed3040fa9594969"},
+      {"path": "source_exhaustion_log.json", "byte_count": 22237, "sha256": "db4974314607a4c80c239a28681f6cefdcb76528a5f4a3bbc05d8f13e94c23cd"},
+      {"path": "source_exhaustion_log.md", "byte_count": 7401, "sha256": "2a069adc68b3b6f3278b7adcbef6c08e9c55bda71c42b302ce9eab4504557c74"},
+      {"path": "unresolved_requirements.json", "byte_count": 10349, "sha256": "459330b1a47c1e33a8199076d6f1fd477d67cadd5054884dd7ee3d7171df7209"},
+      {"path": "data/research_ledger.json", "byte_count": 73851, "sha256": "b9f7328419adc7123218bb39b426cdaa25c489c7b8dff4de418b443d465cc80f"},
+      {"path": "research_brief.md", "byte_count": 9335, "sha256": "d627ae11ac4ffcbfaa17a31fc97b52e7847d9781428858d2f56431870525538b"}
+    ]
+  },
+  "checks": [
+    {
+      "check_id": "R23-C-001",
+      "name": "C52/R22 required-artifact and verifier registration",
+      "result": "PASS",
+      "evidence": "gate_manifest.{json,md} names both C52 and R22 JSON/Markdown files as required artifacts, names the C52/R22 review in its verifier coverage, and preserves the C52/R22 no-admission pass condition. artifact_contract.{json,md} contains separate C52 and R22 rows with required fields, minimum depth, blocking conditions, R0_evidence cycle, R09 verifier checks, and blocking_if_missing=true."
+    },
+    {
+      "check_id": "R23-C-002",
+      "name": "Source, claim, and exhaustion-record registration",
+      "result": "PASS",
+      "evidence": "source_registry S61/S62 pin C52 and R22 at SHA-256 49dddcdc0e1c6927df6a794464d1a7640c99bdf55d25474e6f032fed6f7609da and 4daf702ed8e2a65d135a8a5d55beb2071cbc939cd2b87f6663c416319b56fda1. claim_audit CL34/CL35 resolve to S61/S62 and retain the no-right/no-admission limits. The C52 source-exhaustion entry cites C52, R22, C48, C49, C51 and states VETO/NO_ACTION."
+    },
+    {
+      "check_id": "R23-C-003",
+      "name": "Open-gate, ledger, and reader-facing boundary consistency",
+      "result": "PASS",
+      "evidence": "unresolved_requirements keeps no_admitted_usable_strategy and c51_sse_etf_option_collar_data_and_execution_evidence open. research_ledger records C52/R22 as monitoring with actionability VETO, NO_ACTION, external_orders=false and portfolio_q=0. research_brief states that C52/R22 do not change C48/C49/C51, do not select an ETF or option, and do not calculate performance. Direct scan of requested governance artifacts found no prohibited amount-language pattern; R09's reader-facing amount-language exclusion also passes."
+    },
+    {
+      "check_id": "R23-C-004",
+      "name": "R09 current-control enforcement and final output",
+      "result": "PASS",
+      "evidence": "The final stable R09 snapshot reports PASS, zero failures and 66/66 checks passed. Its current script directly tests C52/R22 required-artifact/contract registration, R22 frozen hashes and VETO boundary, C52 source-exhaustion evidence, required-artifact existence, and reader-facing amount-language exclusion."
+    },
+    {
+      "check_id": "R23-C-005",
+      "name": "R22 historical record and substantive-boundary preservation",
+      "result": "PASS",
+      "evidence": "R22 remains byte-pinned at its original registered SHA-256 and still records all four historical M findings. The new governance references repeat the bounded PASS rather than altering C48, C49, C51, the five-percent screen, or NO_ACTION."
+    }
+  ],
+  "r22_m004_disposition": {
+    "historical_finding_id": "R22-M-004",
+    "historical_status": "PRESERVED_IN_R22",
+    "follow_up_status": "CLOSED_BY_R23_GOVERNANCE_REGISTRATION_RECHECK",
+    "closure_basis": [
+      "Required C52/R22 Markdown and JSON artifacts are in gate_manifest required_artifacts.",
+      "C52 and R22 have independent, complete, blocking artifact-contract rows.",
+      "S61/S62, CL34/CL35, the C52 source-exhaustion entry, unresolved requirements, research ledger, and research brief all reference and constrain the same bounded conclusion.",
+      "Final stable R09 explicitly validates this registration and passes."
+    ],
+    "closure_scope": "Closes only the governance-registration follow-up identified by R22-M-004. It does not amend, erase, or close R22-M-001 through R22-M-003, and it does not change any substantive C52 or C51 evidence gate."
+  },
+  "findings": {
+    "S": [],
+    "A": [],
+    "B": [],
+    "M": [
+      {
+        "finding_id": "R23-M-001",
+        "status": "CONTINUING_FROM_R22-M-001",
+        "limitation": "The market page's separately referenced client script and response schema remain unarchived; no inference about other public SSE interfaces is accepted.",
+        "treatment": "C52/R22 wording and every governance reference retain the bounded-not-demonstrated interpretation."
+      },
+      {
+        "finding_id": "R23-M-002",
+        "status": "CONTINUING_FROM_R22-M-002",
+        "limitation": "The historical-product description is not a delivered option field dictionary, written right, or option tick-trade delivery proof.",
+        "treatment": "It remains only a conditional future product-category reference."
+      },
+      {
+        "finding_id": "R23-M-003",
+        "status": "CONTINUING_FROM_R22-M-003",
+        "limitation": "Current-day fields and dated events still do not supply the complete point-in-time, total-return/event, availability/version, account, cost, settlement, or execution evidence required by C48/C51.",
+        "treatment": "The unresolved C51/C48 blockers, VETO, and NO_ACTION remain in force."
+      }
+    ]
+  },
+  "finding_counts": {
+    "S": 0,
+    "A": 0,
+    "B": 0,
+    "M": 3
+  },
+  "boundary_conclusion": {
+    "r22_m004_governance_follow_up_closed": true,
+    "r22_substantive_limitations_closed": false,
+    "c48_status_unchanged": true,
+    "c49_conditional_route_unchanged": true,
+    "c51_not_admitted_unchanged": true,
+    "historical_replay_accepted": false,
+    "positive_five_percent_floor_accepted": false,
+    "data_rights_granted": false,
+    "strategy_admitted": false,
+    "product_or_parameter_selected": false,
+    "external_action_authorized": false
+  },
+  "final_decision": {
+    "audit_recommendation": "PASS_GOVERNANCE_REGISTRATION_BOUNDARY_ONLY",
+    "actionability_status": "VETO",
+    "statement": "This independent recheck closes only R22-M-004's governance-registration follow-up. It confirms that C52/R22 are now required, contract-defined, cross-referenced, and R09-checked control artifacts. It does not grant a data right, accept historical replay, establish a five-percent floor or result, admit C51 or any strategy, select a product, or authorize an external action."
+  }
+}

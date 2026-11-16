@@ -1,0 +1,132 @@
+{
+  "schema_version": "r4_sse_etf_public_universe_readiness.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of_local": "2026-08-15",
+  "as_of_capture_window_utc": {
+    "start": "2026-08-14T16:16:14.575552467Z",
+    "end": "2026-08-14T16:17:24.076102092Z"
+  },
+  "research_only": true,
+  "source_manifest": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r4-sse-etf-universe-20260815/manifest.json",
+  "question": "Can an unauthenticated first-party SSE endpoint enumerate a broad current ETF listing cohort by objective family/status fields?",
+  "conclusion": {
+    "enumeration_readiness": "conditional_pass",
+    "status_field_readiness": "fail",
+    "pit_readiness": "fail",
+    "event_readiness": "fail",
+    "rights_readiness": "fail",
+    "execution_readiness": "fail",
+    "headline": "SSE FUND_LIST can enumerate a broad live listing snapshot by fundType/subClass and pagination. It cannot establish a date-specific status-qualified, eligible, or executable ETF cohort.",
+    "permitted_use": [
+      "Timestamped research-only discovery snapshot.",
+      "Identifier seed for later independent research."
+    ],
+    "prohibited_use": [
+      "Claiming a legally or historically complete all-current-SSE-ETF universe.",
+      "Product selection, allocation, holdings, orders, or return conclusions.",
+      "Point-in-time total-return, corporate-action, tax, rights, or execution analysis."
+    ]
+  },
+  "enumeration_evidence": {
+    "filter": {
+      "fundType": "00",
+      "subClass": [
+        "01",
+        "02",
+        "03",
+        "04",
+        "06",
+        "08",
+        "09",
+        "31",
+        "32",
+        "33",
+        "34",
+        "35",
+        "36",
+        "37",
+        "38"
+      ]
+    },
+    "master": {
+      "total": 893,
+      "page_count_at_page_size_5": 179,
+      "page_1_codes": [
+        "510010",
+        "510020",
+        "510030",
+        "510040",
+        "510050"
+      ],
+      "page_2_codes": [
+        "510060",
+        "510090",
+        "510100",
+        "510130",
+        "510140"
+      ],
+      "page_1_page_2_disjoint": true
+    },
+    "partitions": {
+      "subClass_01_03_08_09_31": 725,
+      "subClass_02_32_36_37": 34,
+      "subClass_33_34_35": 126,
+      "subClass_06_38": 8,
+      "sum": 893,
+      "sum_matches_master": true
+    },
+    "ambiguities": [
+      "The full 893 rows were not archived; only two master pages and four partition pages were captured.",
+      "No server-side snapshot ID, as-of timestamp, or stable cursor is supplied; a full live pagination run can drift.",
+      "pageHelp.data and top-level result duplicate the same rows; downstream collection must consume one only.",
+      "The response has subClass codes but no textual codebook; code labels must be independently versioned.",
+      "Partition equality supports no incremental count from subClass 04 in this capture, not a permanent zero or formal-taxonomy completeness claim."
+    ]
+  },
+  "field_assessment": {
+    "available": [
+      "fundCode",
+      "fundType",
+      "subClass",
+      "listingDate",
+      "fundAbbr",
+      "secNameFull",
+      "companyName",
+      "fundManager",
+      "TRUSTEE_NAME"
+    ],
+    "conditional": "INDEX_CODE and INDEX_NAME were populated in master/equity/bond/cross-border samples and blank in all commodity sample rows.",
+    "present_but_blank": [
+      "LAW_FIRM",
+      "CONTACT_MOBILE"
+    ],
+    "missing": [
+      "Explicit status, lifecycle, suspension/resumption, and delisting fields.",
+      "Source as-of timestamp/version and historical/effective-dated membership.",
+      "Price, NAV, IOPV, liquidity, shares/float, fund size, market maker, fees, and holdings.",
+      "Distribution, corporate-action, index-change, creation/redemption, merger, termination, and other dated events.",
+      "Investor/account eligibility, broker access, quota, settlement/currency route, tax, and subscription/redemption rights."
+    ]
+  },
+  "limitations": {
+    "pit": "No as-of/version, historical membership, effective-dated classification, or lifecycle status; cannot establish a survivorship-free formation/rebalance universe.",
+    "events": "No dated distributions, cash, splits, mergers, terminations, index changes, creations/redemptions, suspensions/resumptions, or market-status history; cannot reconcile total return.",
+    "rights": "No verified investor classification, brokerage permission, account eligibility, quota, settlement/currency, tax, or primary-market entitlement.",
+    "execution": "No tradeable price, NAV/IOPV, bid/ask, depth, volume, market status, lot, T+1/no-fill, limits, commission, slippage, fill, or capacity information."
+  },
+  "data_quality": {
+    "quality_tier": "tier_1_primary_for_captured_listing_fields",
+    "state": "first-party public current-list snapshot only",
+    "warnings": [
+      "Endpoint-returned totals are live response metadata, not a frozen full-universe archive.",
+      "Raw HTTP-body and stored-file hashes are both documented in the source manifest because local text storage adds one terminal LF.",
+      "No fallback source and no challenge body were used."
+    ]
+  },
+  "next_gate": "Obtain an authorized or independently archived PIT listing-status source, dated events/corporate actions, price/NAV and market-status data, rights confirmation, and cost/liquidity evidence before any use beyond discovery.",
+  "no_product_selection": true,
+  "no_allocations": true,
+  "no_holdings": true,
+  "no_orders": true,
+  "no_return_claims": true
+}

@@ -1,0 +1,1935 @@
+{
+  "packet_type": "raw_official_financials",
+  "as_of_cutoff": "2026-08-11",
+  "captured_at": "2026-08-11",
+  "currency": "CNY",
+  "universe_count": 13,
+  "universe": [
+    "000703",
+    "002379",
+    "300014",
+    "002497",
+    "002432",
+    "000623",
+    "600739",
+    "000685",
+    "600150",
+    "301308",
+    "002812",
+    "002240",
+    "300390"
+  ],
+  "source_policy": "Only CNINFO issuer/exchange disclosure API responses and official PDF attachments were used; no media summaries were used as financial evidence.",
+  "data_quality": "mixed",
+  "warnings": [
+    "The task text says 14 names but the supplied universe contains 13 tickers; all 13 are included.",
+    "2026H1 values are actual only for 000703 and 301308. All other available H1 rows are preliminary issuer forecasts; 600739 and 600150 have explicit H1 disclosure gaps.",
+    "CNY values are strings to preserve the exact printed amount. 600150 reports in CNY10,000; its value_cny uses the mechanical ×10,000 conversion and retains reported_value/reporting_unit.",
+    "FY2025 and Q1 YoY table fields were not mechanically re-keyed in this first-pass raw packet because restated comparative bases differ by issuer; use the cited primary-table source before making a growth claim."
+  ],
+  "source_archive_root": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811",
+  "records": [
+    {
+      "ticker": "000703",
+      "company": "恒逸石化",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "113527493619.63",
+              "reported_unit": "CNY",
+              "reported_value": "113527493619.63"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "258331586.27",
+              "reported_unit": "CNY",
+              "reported_value": "258331586.27"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "141243770.17",
+              "reported_unit": "CNY",
+              "reported_value": "141243770.17"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "4625435458.61",
+              "reported_unit": "CNY",
+              "reported_value": "4625435458.61"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225104872",
+            "announcement_date": "2026-04-15",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-15/1225104872.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000703_fy2025_annual_report_20260415_1225104872.pdf",
+            "evidence_location": "PDF p.11",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000703_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "29948073038.54",
+              "reported_unit": "CNY",
+              "reported_value": "29948073038.54"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "1994792155.15",
+              "reported_unit": "CNY",
+              "reported_value": "1994792155.15"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "1939820963.77",
+              "reported_unit": "CNY",
+              "reported_value": "1939820963.77"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-2573369108.63",
+              "reported_unit": "CNY",
+              "reported_value": "-2573369108.63"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225104881",
+            "announcement_date": "2026-04-15",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-15/1225104881.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000703_q1_2026_quarterly_report_20260415_1225104881.pdf",
+            "evidence_location": "PDF p.3",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000703_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "interim_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer interim report filed on the cutoff date",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "67309305318.81",
+              "reported_unit": "CNY",
+              "reported_value": "67309305318.81"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "5901665221.78",
+              "reported_unit": "CNY",
+              "reported_value": "5901665221.78"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "5886084675.39",
+              "reported_unit": "CNY",
+              "reported_value": "5886084675.39"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-487952906.18",
+              "reported_unit": "CNY",
+              "reported_value": "-487952906.18"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225467439",
+            "announcement_date": "2026-08-11",
+            "announcement_title": "2026年半年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467439.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000703_h1_2026_h1_report_20260811_1225467439.pdf",
+            "evidence_location": "PDF p.10",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000703_h1_2026_20260811.json"
+          },
+          "notes": [
+            "2026H1 comparatives were restated for an accounting-policy change and a same-control business combination."
+          ],
+          "gaps": []
+        }
+      ]
+    },
+    {
+      "ticker": "002379",
+      "company": "宏桥控股",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "156720854229.71",
+              "reported_unit": "CNY",
+              "reported_value": "156720854229.71"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "17863539928.79",
+              "reported_unit": "CNY",
+              "reported_value": "17863539928.79"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "-369131323.85",
+              "reported_unit": "CNY",
+              "reported_value": "-369131323.85"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "23994898583.36",
+              "reported_unit": "CNY",
+              "reported_value": "23994898583.36"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225021359",
+            "announcement_date": "2026-03-21",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-03-21/1225021359.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002379_fy2025_annual_report_20260321_1225021359.pdf",
+            "evidence_location": "PDF p.11",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002379_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "40932856974.81",
+              "reported_unit": "CNY",
+              "reported_value": "40932856974.81"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "6757771302.83",
+              "reported_unit": "CNY",
+              "reported_value": "6757771302.83"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "6795854852.29",
+              "reported_unit": "CNY",
+              "reported_value": "6795854852.29"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "9237895186.86",
+              "reported_unit": "CNY",
+              "reported_value": "9237895186.86"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225180703",
+            "announcement_date": "2026-04-25",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-25/1225180703.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002379_q1_2026_quarterly_report_20260425_1225180703.pdf",
+            "evidence_location": "PDF p.1",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002379_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "15000000000",
+                "upper": "16000000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "1500000",
+                "1600000"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "14900000000",
+                "upper": "15900000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "1490000",
+                "1590000"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225418343",
+            "announcement_date": "2026-07-11",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-11/1225418343.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002379_h1_2026_h1_forecast_20260711_1225418343.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002379_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: aluminum selling prices rose and interest expense fell; comparatives are restated after the Hontuo same-control merger. The forecast is unaudited."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "300014",
+      "company": "亿纬锂能",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "61469630776.09",
+              "reported_unit": "CNY",
+              "reported_value": "61469630776.09"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "4134303670.89",
+              "reported_unit": "CNY",
+              "reported_value": "4134303670.89"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "3095709718.80",
+              "reported_unit": "CNY",
+              "reported_value": "3095709718.80"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "7492131666.79",
+              "reported_unit": "CNY",
+              "reported_value": "7492131666.79"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225045391",
+            "announcement_date": "2026-03-28",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-03-28/1225045391.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/300014_fy2025_annual_report_20260328_1225045391.pdf",
+            "evidence_location": "PDF p.9",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_300014_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "20679868145.38",
+              "reported_unit": "CNY",
+              "reported_value": "20679868145.38"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "1446303779.36",
+              "reported_unit": "CNY",
+              "reported_value": "1446303779.36"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "1114674451.30",
+              "reported_unit": "CNY",
+              "reported_value": "1114674451.30"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-365647426.63",
+              "reported_unit": "CNY",
+              "reported_value": "-365647426.63"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225182164",
+            "announcement_date": "2026-04-25",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-25/1225182164.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/300014_q1_2026_quarterly_report_20260425_1225182164.pdf",
+            "evidence_location": "PDF p.1",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_300014_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "3130084300",
+                "upper": "3370860100"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "313008.43",
+                "337086.01"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "2429625300",
+                "upper": "2603170000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "242962.53",
+                "260317.00"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225371777",
+            "announcement_date": "2026-06-15",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-06-15/1225371777.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/300014_h1_2026_h1_forecast_20260615_1225371777.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_300014_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: the company says revenue is expected to rise about 60% YoY, while it identifies higher supply-chain costs as a pressure it is mitigating. The forecast is unaudited."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "002497",
+      "company": "雅化集团",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "8543171263.90",
+              "reported_unit": "CNY",
+              "reported_value": "8543171263.90"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "632380161.87",
+              "reported_unit": "CNY",
+              "reported_value": "632380161.87"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "693585735.36",
+              "reported_unit": "CNY",
+              "reported_value": "693585735.36"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-569778007.60",
+              "reported_unit": "CNY",
+              "reported_value": "-569778007.60"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225181781",
+            "announcement_date": "2026-04-27",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-27/1225181781.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002497_fy2025_annual_report_20260427_1225181781.pdf",
+            "evidence_location": "PDF p.10",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002497_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "2830218496.20",
+              "reported_unit": "CNY",
+              "reported_value": "2830218496.20"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "338821317.99",
+              "reported_unit": "CNY",
+              "reported_value": "338821317.99"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "356555349.32",
+              "reported_unit": "CNY",
+              "reported_value": "356555349.32"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-430615777.34",
+              "reported_unit": "CNY",
+              "reported_value": "-430615777.34"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225181791",
+            "announcement_date": "2026-04-27",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-27/1225181791.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002497_q1_2026_quarterly_report_20260427_1225181791.pdf",
+            "evidence_location": "PDF p.2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002497_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "1100000000",
+                "upper": "1300000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "110000",
+                "130000"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "1125000000",
+                "upper": "1315000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "112500",
+                "131500"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225411869",
+            "announcement_date": "2026-07-07",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-07/1225411869.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002497_h1_2026_h1_forecast_20260707_1225411869.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002497_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: lithium-salt prices, volume and ASP rose; the company also cites production-efficiency/cost-control actions. The forecast is unaudited."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "002432",
+      "company": "九安医疗",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "1365588936.68",
+              "reported_unit": "CNY",
+              "reported_value": "1365588936.68"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "2266748271.38",
+              "reported_unit": "CNY",
+              "reported_value": "2266748271.38"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "2292144672.33",
+              "reported_unit": "CNY",
+              "reported_value": "2292144672.33"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-166803216.90",
+              "reported_unit": "CNY",
+              "reported_value": "-166803216.90"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225246455",
+            "announcement_date": "2026-04-29",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225246455.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002432_fy2025_annual_report_20260429_1225246455.pdf",
+            "evidence_location": "PDF p.7",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002432_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "301482711.39",
+              "reported_unit": "CNY",
+              "reported_value": "301482711.39"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "293533252.50",
+              "reported_unit": "CNY",
+              "reported_value": "293533252.50"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "345084121.26",
+              "reported_unit": "CNY",
+              "reported_value": "345084121.26"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-92475267.73",
+              "reported_unit": "CNY",
+              "reported_value": "-92475267.73"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225246465",
+            "announcement_date": "2026-04-29",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-29/1225246465.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002432_q1_2026_quarterly_report_20260429_1225246465.pdf",
+            "evidence_location": "PDF p.2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002432_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "2800000000",
+                "upper": "3400000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "280000",
+                "340000"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "2850000000",
+                "upper": "3450000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "285000",
+                "345000"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225424699",
+            "announcement_date": "2026-07-15",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-15/1225424699.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002432_h1_2026_h1_forecast_20260715_1225424699.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002432_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: the stated driver is appreciation in underlying technology-investment valuations. The issuer explicitly warns of uncertain investment return, low liquidity and potentially prolonged/failed exits."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "000623",
+      "company": "吉林敖东",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "2335191263.80",
+              "reported_unit": "CNY",
+              "reported_value": "2335191263.80"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "2395240134.98",
+              "reported_unit": "CNY",
+              "reported_value": "2395240134.98"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "2200066967.46",
+              "reported_unit": "CNY",
+              "reported_value": "2200066967.46"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "272258821.17",
+              "reported_unit": "CNY",
+              "reported_value": "272258821.17"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225117576",
+            "announcement_date": "2026-04-18",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-18/1225117576.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000623_fy2025_annual_report_20260418_1225117576.pdf",
+            "evidence_location": "PDF p.7",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000623_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "514094926.10",
+              "reported_unit": "CNY",
+              "reported_value": "514094926.10"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "865999722.23",
+              "reported_unit": "CNY",
+              "reported_value": "865999722.23"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "869402802.47",
+              "reported_unit": "CNY",
+              "reported_value": "869402802.47"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "10701377.15",
+              "reported_unit": "CNY",
+              "reported_value": "10701377.15"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225254025",
+            "announcement_date": "2026-04-30",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225254025.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000623_q1_2026_quarterly_report_20260430_1225254025.pdf",
+            "evidence_location": "PDF p.2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000623_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "1922310000",
+                "upper": "2178620000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "192231",
+                "217862"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "2088310000",
+                "upper": "2344620000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "208831",
+                "234462"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225423188",
+            "announcement_date": "2026-07-15",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-15/1225423188.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000623_h1_2026_h1_forecast_20260715_1225423188.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000623_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: the company cites higher investment income as the main driver. The forecast is unaudited."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "600739",
+      "company": "辽宁成大",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "9901861758.74",
+              "reported_unit": "CNY",
+              "reported_value": "9901861758.74"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "736554408.16",
+              "reported_unit": "CNY",
+              "reported_value": "736554408.16"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "776150205.08",
+              "reported_unit": "CNY",
+              "reported_value": "776150205.08"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "337635427.09",
+              "reported_unit": "CNY",
+              "reported_value": "337635427.09"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225179691",
+            "announcement_date": "2026-04-25",
+            "announcement_title": "辽宁成大股份有限公司2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-25/1225179691.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/600739_fy2025_annual_report_20260425_1225179691.pdf",
+            "evidence_location": "PDF p.6",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600739_fy2025_annual_20260811.json"
+          },
+          "notes": [
+            "FY2025 disclosure attributes NP growth to higher associate-company investment income; it attributes OCF decline to trade settlement timing and lower biopharma collection, and says historical revenue was adjusted from gross to net presentation for part of trading activity."
+          ],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "1991034487.76",
+              "reported_unit": "CNY",
+              "reported_value": "1991034487.76"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "550963441.10",
+              "reported_unit": "CNY",
+              "reported_value": "550963441.10"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "554951092.47",
+              "reported_unit": "CNY",
+              "reported_value": "554951092.47"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-175879265.68",
+              "reported_unit": "CNY",
+              "reported_value": "-175879265.68"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225256597",
+            "announcement_date": "2026-04-30",
+            "announcement_title": "辽宁成大股份有限公司2026年第一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225256597.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/600739_q1_2026_quarterly_report_20260430_1225256597.pdf",
+            "evidence_location": "PDF p.1",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600739_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "not_found_in_official_search",
+          "actuality": "unavailable",
+          "data_quality": "Unavailable — no H1 interim report or title-matched H1 earnings preview was found in the archived CNINFO searches by cutoff",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "deducted_net_profit": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "searched_query_capture_paths": [
+              "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600739_h1_2026_20260811.json",
+              "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600739_h1_forecast_20260811.json"
+            ],
+            "search_cutoff": "2026-08-11"
+          },
+          "notes": [],
+          "gaps": [
+            "No selected official 2026H1 interim report or title-matched H1 earnings preview was available in the archived CNINFO query response as of the cutoff. Re-query CNINFO after the issuer files its interim report."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "000685",
+      "company": "中山公用",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "4611966487.51",
+              "reported_unit": "CNY",
+              "reported_value": "4611966487.51"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "1879358032.92",
+              "reported_unit": "CNY",
+              "reported_value": "1879358032.92"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "1786345825.48",
+              "reported_unit": "CNY",
+              "reported_value": "1786345825.48"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "297655046.67",
+              "reported_unit": "CNY",
+              "reported_value": "297655046.67"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225194087",
+            "announcement_date": "2026-04-25",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-25/1225194087.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000685_fy2025_annual_report_20260425_1225194087.pdf",
+            "evidence_location": "PDF pp.7–8",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000685_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "1005926676.26",
+              "reported_unit": "CNY",
+              "reported_value": "1005926676.26"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "583327240.07",
+              "reported_unit": "CNY",
+              "reported_value": "583327240.07"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "581445435.35",
+              "reported_unit": "CNY",
+              "reported_value": "581445435.35"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-26929243.60",
+              "reported_unit": "CNY",
+              "reported_value": "-26929243.60"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225254079",
+            "announcement_date": "2026-04-30",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225254079.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000685_q1_2026_quarterly_report_20260430_1225254079.pdf",
+            "evidence_location": "PDF p.1",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000685_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "1330955100",
+                "upper": "1546785700"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "133095.51",
+                "154678.57"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "1320224300",
+                "upper": "1534314700"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "132022.43",
+                "153431.47"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225423704",
+            "announcement_date": "2026-07-15",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-15/1225423704.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/000685_h1_2026_h1_forecast_20260715_1225423704.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_000685_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: the company cites operating efficiency and higher investment income, while noting a complex policy/competitive environment. The forecast is unaudited."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "600150",
+      "company": "中国船舶",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "151977991200",
+              "reported_unit": "CNY10,000",
+              "reported_value": "15197799.12",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "7848378200",
+              "reported_unit": "CNY10,000",
+              "reported_value": "784837.82",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "6126096600",
+              "reported_unit": "CNY10,000",
+              "reported_value": "612609.66",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "7766831700",
+              "reported_unit": "CNY10,000",
+              "reported_value": "776683.17",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225261150",
+            "announcement_date": "2026-04-30",
+            "announcement_title": "中国船舶工业股份有限公司2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225261150.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/600150_fy2025_annual_report_20260430_1225261150.pdf",
+            "evidence_location": "PDF p.7 (reported in CNY10,000)",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600150_fy2025_annual_20260811.json"
+          },
+          "notes": [
+            "FY2025 disclosure cites more/high-priced vessel deliveries and build efficiency; it separately states OCF declined as production/in-progress inputs increased. Comparative periods were restated for the China State Shipbuilding/China Shipbuilding Industry same-control merger."
+          ],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "43312405200",
+              "reported_unit": "CNY10,000",
+              "reported_value": "4331240.52",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "4832278000",
+              "reported_unit": "CNY10,000",
+              "reported_value": "483227.80",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "4767343200",
+              "reported_unit": "CNY10,000",
+              "reported_value": "476734.32",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "8151528800",
+              "reported_unit": "CNY10,000",
+              "reported_value": "815152.88",
+              "conversion_method": "reported CNY10,000 amount × 10,000 = value_cny"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225261166",
+            "announcement_date": "2026-04-30",
+            "announcement_title": "中国船舶工业股份有限公司2026年第一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225261166.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/600150_q1_2026_quarterly_report_20260430_1225261166.pdf",
+            "evidence_location": "PDF p.1 (reported in CNY10,000)",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600150_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "not_found_in_official_search",
+          "actuality": "unavailable",
+          "data_quality": "Unavailable — no H1 interim report or title-matched H1 earnings preview was found in the archived CNINFO searches by cutoff",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "deducted_net_profit": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "searched_query_capture_paths": [
+              "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600150_h1_2026_20260811.json",
+              "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_600150_h1_forecast_20260811.json"
+            ],
+            "search_cutoff": "2026-08-11"
+          },
+          "notes": [],
+          "gaps": [
+            "No selected official 2026H1 interim report or title-matched H1 earnings preview was available in the archived CNINFO query response as of the cutoff. Re-query CNINFO after the issuer files its interim report."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "301308",
+      "company": "江波龙",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "22766169990.55",
+              "reported_unit": "CNY",
+              "reported_value": "22766169990.55"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "1423298162.88",
+              "reported_unit": "CNY",
+              "reported_value": "1423298162.88"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "1289178618.90",
+              "reported_unit": "CNY",
+              "reported_value": "1289178618.90"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-1201201037.10",
+              "reported_unit": "CNY",
+              "reported_value": "-1201201037.10"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225214128",
+            "announcement_date": "2026-04-28",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-28/1225214128.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/301308_fy2025_annual_report_20260428_1225214128.pdf",
+            "evidence_location": "PDF p.10",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_301308_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "9908726244.41",
+              "reported_unit": "CNY",
+              "reported_value": "9908726244.41"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "3862236561.17",
+              "reported_unit": "CNY",
+              "reported_value": "3862236561.17"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "3942639469.07",
+              "reported_unit": "CNY",
+              "reported_value": "3942639469.07"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-2874539454.35",
+              "reported_unit": "CNY",
+              "reported_value": "-2874539454.35"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225214140",
+            "announcement_date": "2026-04-28",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-28/1225214140.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/301308_q1_2026_quarterly_report_20260428_1225214140.pdf",
+            "evidence_location": "PDF p.2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_301308_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "interim_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer interim report filed on the cutoff date",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "24088363284.95",
+              "reported_unit": "CNY",
+              "reported_value": "24088363284.95"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "10576875808.95",
+              "reported_unit": "CNY",
+              "reported_value": "10576875808.95"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "10047374676.56",
+              "reported_unit": "CNY",
+              "reported_value": "10047374676.56"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-3151429914.77",
+              "reported_unit": "CNY",
+              "reported_value": "-3151429914.77"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225467150",
+            "announcement_date": "2026-08-11",
+            "announcement_title": "2026年半年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-08-11/1225467150.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/301308_h1_2026_h1_report_20260811_1225467150.pdf",
+            "evidence_location": "PDF p.11",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_301308_h1_2026_20260811.json"
+          },
+          "notes": [
+            "2026H1 reported attributable NP is positive while reported operating cash flow is negative; this packet records the reported figures only and makes no cash-conversion conclusion."
+          ],
+          "gaps": []
+        }
+      ]
+    },
+    {
+      "ticker": "002812",
+      "company": "恩捷股份",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "13632727136.01",
+              "reported_unit": "CNY",
+              "reported_value": "13632727136.01"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "142548339.91",
+              "reported_unit": "CNY",
+              "reported_value": "142548339.91"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "110802429.81",
+              "reported_unit": "CNY",
+              "reported_value": "110802429.81"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "1143637807.97",
+              "reported_unit": "CNY",
+              "reported_value": "1143637807.97"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225148267",
+            "announcement_date": "2026-04-23",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-23/1225148267.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002812_fy2025_annual_report_20260423_1225148267.pdf",
+            "evidence_location": "PDF p.8",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002812_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "3907690531.54",
+              "reported_unit": "CNY",
+              "reported_value": "3907690531.54"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "260308751.63",
+              "reported_unit": "CNY",
+              "reported_value": "260308751.63"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "260959203.60",
+              "reported_unit": "CNY",
+              "reported_value": "260959203.60"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "206660110.96",
+              "reported_unit": "CNY",
+              "reported_value": "206660110.96"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225148276",
+            "announcement_date": "2026-04-23",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-23/1225148276.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002812_q1_2026_quarterly_report_20260423_1225148276.pdf",
+            "evidence_location": "PDF p.2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002812_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "736000000",
+                "upper": "900000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "73600.00",
+                "90000.00"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "762000000",
+                "upper": "930000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "76200.00",
+                "93000.00"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225417346",
+            "announcement_date": "2026-07-10",
+            "announcement_title": "公司2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-10/1225417346.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002812_h1_2026_h1_forecast_20260710_1225417346.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002812_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: the issuer cites battery-separator demand, higher sales volume, cost control and a price recovery; figures are unaudited preliminary data."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "002240",
+      "company": "盛新锂能",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "5064315775.69",
+              "reported_unit": "CNY",
+              "reported_value": "5064315775.69"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "-888079510.10",
+              "reported_unit": "CNY",
+              "reported_value": "-888079510.10"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "-812336830.65",
+              "reported_unit": "CNY",
+              "reported_value": "-812336830.65"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "949962734.60",
+              "reported_unit": "CNY",
+              "reported_value": "949962734.60"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225044105",
+            "announcement_date": "2026-03-28",
+            "announcement_title": "2025年年度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-03-28/1225044105.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002240_fy2025_annual_report_20260328_1225044105.pdf",
+            "evidence_location": "PDF p.7",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002240_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "3284048555.59",
+              "reported_unit": "CNY",
+              "reported_value": "3284048555.59"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "464035684.07",
+              "reported_unit": "CNY",
+              "reported_value": "464035684.07"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "622318509.18",
+              "reported_unit": "CNY",
+              "reported_value": "622318509.18"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-667158854.50",
+              "reported_unit": "CNY",
+              "reported_value": "-667158854.50"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225255367",
+            "announcement_date": "2026-04-30",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-30/1225255367.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002240_q1_2026_quarterly_report_20260430_1225255367.pdf",
+            "evidence_location": "PDF p.1",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002240_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "1000000000",
+                "upper": "1200000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "100000.00",
+                "120000.00"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "1300000000",
+                "upper": "1500000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "130000.00",
+                "150000.00"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225415616",
+            "announcement_date": "2026-07-09",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-09/1225415616.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/002240_h1_2026_h1_forecast_20260709_1225415616.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_002240_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: the issuer cites higher lithium-salt prices and release of Indonesia capacity; figures are unaudited preliminary data."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    },
+    {
+      "ticker": "300390",
+      "company": "天华新能",
+      "financials": [
+        {
+          "reporting_period": "FY2025",
+          "source_type": "annual_report_corrected",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "7548826104.54",
+              "reported_unit": "CNY",
+              "reported_value": "7548826104.54"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "402189233.13",
+              "reported_unit": "CNY",
+              "reported_value": "402189233.13"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "150340015.73",
+              "reported_unit": "CNY",
+              "reported_value": "150340015.73"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-321825657.49",
+              "reported_unit": "CNY",
+              "reported_value": "-321825657.49"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225077003",
+            "announcement_date": "2026-04-02",
+            "announcement_title": "2025年年度报告（更正后）",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-02/1225077003.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/300390_fy2025_annual_report_corrected_20260402_1225077003.pdf",
+            "evidence_location": "PDF p.8",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_300390_fy2025_annual_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026Q1",
+          "source_type": "quarterly_report",
+          "actuality": "reported",
+          "data_quality": "High — issuer/exchange statutory filing; Q1 reports are unaudited where the issuer states so",
+          "metrics": {
+            "revenue": {
+              "status": "reported",
+              "value_cny": "3200150765.28",
+              "reported_unit": "CNY",
+              "reported_value": "3200150765.28"
+            },
+            "attributable_net_profit": {
+              "status": "reported",
+              "value_cny": "968906491.73",
+              "reported_unit": "CNY",
+              "reported_value": "968906491.73"
+            },
+            "deducted_net_profit": {
+              "status": "reported",
+              "value_cny": "945718935.46",
+              "reported_unit": "CNY",
+              "reported_value": "945718935.46"
+            },
+            "operating_cash_flow": {
+              "status": "reported",
+              "value_cny": "-183248547.52",
+              "reported_unit": "CNY",
+              "reported_value": "-183248547.52"
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225160904",
+            "announcement_date": "2026-04-24",
+            "announcement_title": "2026年一季度报告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-04-24/1225160904.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/300390_q1_2026_quarterly_report_20260424_1225160904.pdf",
+            "evidence_location": "PDF p.1",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_300390_q1_2026_20260811.json"
+          },
+          "notes": [],
+          "gaps": []
+        },
+        {
+          "reporting_period": "2026H1",
+          "source_type": "official_earnings_preview",
+          "actuality": "forecast_range_not_actual",
+          "data_quality": "Medium — official issuer preliminary earnings preview; unaudited and incomplete versus an interim report",
+          "metrics": {
+            "revenue": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            },
+            "attributable_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "2200000000",
+                "upper": "2400000000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "220000.00",
+                "240000.00"
+              ]
+            },
+            "deducted_net_profit": {
+              "status": "forecast_range_not_actual",
+              "range_cny": {
+                "lower": "2161700000",
+                "upper": "2361700000"
+              },
+              "reported_unit": "CNY10,000",
+              "reported_range": [
+                "216170.00",
+                "236170.00"
+              ]
+            },
+            "operating_cash_flow": {
+              "status": "not_disclosed_in_selected_source",
+              "value_cny": null
+            }
+          },
+          "source": {
+            "issuer_disclosure_platform": "CNINFO / 巨潮资讯网",
+            "announcement_id": "1225417014",
+            "announcement_date": "2026-07-10",
+            "announcement_title": "2026年半年度业绩预告",
+            "official_pdf_url": "https://static.cninfo.com.cn/finalpage/2026-07-10/1225417014.PDF",
+            "local_archive_path": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/300390_h1_2026_h1_forecast_20260710_1225417014.pdf",
+            "evidence_location": "PDF pp.1–2",
+            "announcement_query_capture": "workspace/research/low-position-capital-layout-update-20260811/sources/official-20260811/announcements_300390_h1_forecast_20260811.json"
+          },
+          "notes": [
+            "2026H1 forecast: lithium-material volume/price improved with energy-storage and power-battery demand; comparative data are restated for a same-control acquisition, and figures are unaudited."
+          ],
+          "gaps": [
+            "No 2026H1 interim report was returned in the CNINFO 半年度报告 category by the 2026-08-11 cutoff. Revenue and operating cash flow are not disclosed in the selected earnings preview. Do not treat range endpoints as actual results."
+          ]
+        }
+      ]
+    }
+  ]
+}

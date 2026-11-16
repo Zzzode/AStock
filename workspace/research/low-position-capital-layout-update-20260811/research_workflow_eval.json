@@ -1,0 +1,25 @@
+{
+  "case_id": "low-position-capital-layout-update-20260811",
+  "evaluated_at": "2026-08-11",
+  "quality": {
+    "publishable": false,
+    "blocking_failure_count": 3,
+    "score": 30,
+    "status": "blocked_by_render_environment",
+    "blockers": [
+      "Required MacTeX XeLaTeX is unavailable in the current runtime.",
+      "The required main.pdf deliverable has not been generated.",
+      "No rendered-page material exists for page-level R3 visual review."
+    ],
+    "non_blocking_observations": [
+      "R0/R1 evidence and no-target valuation dispositions have no remaining S/A/B findings.",
+      "No AStock target, portfolio allocation or order instruction is issued."
+    ]
+  },
+  "evidence": {
+    "case_local_verifier": "36 PASS / 3 FAIL",
+    "repository_gate_snapshot": "84 PASS / 27 FAIL",
+    "r0_r1_source_model_state": "Evidence and no-target valuation schema re-verified; residual publication blockers belong to R3/R4."
+  },
+  "publication_rule": "This packet cannot be converted to publishable=true until the mandated MacTeX PDF build, rendered-page review, case verifier 39 PASS / 0 FAIL, repository gate, and R4 final IC closure all pass."
+}

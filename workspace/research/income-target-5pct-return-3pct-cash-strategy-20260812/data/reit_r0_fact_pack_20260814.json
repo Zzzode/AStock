@@ -1,0 +1,67 @@
+{
+  "as_of": "2026-08-14",
+  "stage": "R0 primary-source evidence only",
+  "scope": ["508069", "508068", "508096"],
+  "authority": "research-only; q=0; no order, allocation, or recommendation authorization",
+  "objective_boundary": "The sole conditional/ex-post objective is rolling 5-year cost-aware TWRR >=5%. Cash distribution is not a target and is not automatically reinvested.",
+  "candidates": [
+    {
+      "ticker": "508069",
+      "name": "华夏南京交通高速公路REIT",
+      "reporting_period": "FY2025, audited annual report",
+      "fund_nav_per_unit": 4.897,
+      "units_outstanding": 500000000,
+      "distributable_amount_rmb": 298654352.59,
+      "distributable_per_unit_rmb": 0.5973,
+      "actual_distribution_per_unit_rmb": 0.7718,
+      "reported_cash_flow_distribution_rate_pct": 9.19,
+      "project_valuation_rmb": 2704922000,
+      "project_valuation_method": "income approach; market approach check",
+      "annual_project_cashflow_vs_forecast_pct": 103.81,
+      "primary_risks": ["road-network / traffic forecast", "discount-rate and leverage assumptions", "debt-service and future-capex reserve"],
+      "source": "annual report pp. 8-10, 99-101"
+    },
+    {
+      "ticker": "508068",
+      "name": "华夏北京保障房REIT",
+      "reporting_period": "FY2025, audited annual report",
+      "fund_nav_per_unit": 2.9927,
+      "units_outstanding": 724218009,
+      "distributable_amount_rmb": 74823864.79,
+      "distributable_per_unit_rmb": 0.1033,
+      "actual_distribution_per_unit_rmb": 0.094,
+      "reported_cash_flow_distribution_rate_pct": 2.53,
+      "project_valuation_rmb": 2024000000,
+      "project_valuation_method": "income approach; cost approach check",
+      "annual_project_cashflow_vs_forecast_pct": 106.63,
+      "primary_risks": ["rent-adjustment cadence and approval", "occupancy / allocation policy", "collection rate", "post-follow-on-offering comparability"],
+      "source": "annual report pp. 10-12, 119-122"
+    },
+    {
+      "ticker": "508096",
+      "name": "中航京能国际能源REIT (formerly 中航京能光伏REIT)",
+      "reporting_period": "FY2025 audited annual report; Q2 2026 project-operation notice unaudited",
+      "fund_nav_per_unit": 9.172,
+      "fund_fair_value_reference_nav_per_unit": 8.1264,
+      "units_outstanding": 600880354,
+      "distributable_amount_rmb": 323360996.72,
+      "distributable_per_unit_rmb": 0.5381,
+      "actual_distribution_per_unit_rmb": 0.2372,
+      "reported_cash_flow_distribution_rate_pct": 5.33,
+      "project_valuations_rmb": {"Hubei Jingtai PV": 382000000, "Yulin PV": 1508000000, "Lianghe hydropower": 2465000000},
+      "annual_legacy_pv_project_cashflow_vs_forecast_pct": 78.6,
+      "q2_2026_operating_watch": "Jingtai PV settlement electricity -33.96% YoY and settlement fee -24.95% YoY; Q2 figures include an estimated June bill and are unaudited.",
+      "primary_risks": ["solar resource", "curtailment / export capacity", "electricity-price and settlement volatility", "hydrology", "subsidy receivable / working-capital timing", "follow-on-offering integration"],
+      "source": "annual report pp. 11-15, 131-134; Q2 2026 notice pp. 1-5"
+    }
+  ],
+  "hard_blockers_for_T2": [
+    "No timestamped 2026-08-14 official close, bid/ask, depth, turnover/ADTV, free-float and lock-up schedule, or verified transaction-cost schedule was captured; market access and cost-aware entry/exit cannot be assessed.",
+    "No same-date unit NAV / appraisal bridge and market price were captured; premium/discount to NAV and price-implied cash-flow multiple cannot be calculated at the cutoff.",
+    "No cash-distribution and adjusted-price total-return series with ex-dates, cash receipt timing and costs was captured. Distributable cash, NAV and reported cash-flow distribution rate are not investor market-price TWRR.",
+    "Observed rolling five-year TWRR is impossible at the cutoff: 508069 listed 2024-11-01, 508068 listed 2022-08-31 and 508096 listed 2023-03-29.",
+    "508069 and 508068 evidence is FY2025 as captured; issuer product lists show 2026 Q2 reports exist, but those records were not captured in this bounded R0 pack. Update before any T2 work.",
+    "508096 needs an updated post-Q2 cash-flow / valuation bridge because its Q2 project notice is preliminary and the legacy photovoltaic assets missed FY2025 cash-flow forecast."
+  ],
+  "interpretation_constraint": "No allocation, suitability, recommendation, return forecast, or order conclusion may be drawn from this R0 pack."
+}

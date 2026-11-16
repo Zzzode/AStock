@@ -1,0 +1,73 @@
+{
+  "case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "data_cutoff": "2026-08-14",
+  "status": "open_data_requirements_preserved_as_implementation_blockers",
+  "items": [
+    {
+      "gap": "Formal point-in-time portfolio total-return replay with named final sleeves",
+      "impact": "No evidence supports a historical 5% strategy result, expected return, scenario probability, hit rate or annual-floor claim.",
+      "next_path": "Freeze constituent/substitution history, total-return/distribution/corporate-action series, A-share execution rules, costs/taxes/capacity, then run independently reviewed replay."
+    },
+    {
+      "gap": "B0 protected-liquidity and B1 matched benchmark series",
+      "impact": "The draft `PL(t)` selector and matched B1 mappings are neither source-tested nor frozen, so no opportunity-cost or strategic cross-asset comparison can be published.",
+      "next_path": "Pass the `PL(t)` and look-through field contract, then independently freeze the functional benchmark, total-return convention, dates, costs, receipt state and no-fill rules alongside the replay."
+    },
+    {
+      "gap": "Candidate-specific distribution, tax, fee and settlement reconciliation",
+      "impact": "Distribution durability and investor-level total-return attribution cannot be evaluated for a specific candidate. This is an accounting and product-diligence gap, not a separate strategy-performance requirement.",
+      "next_path": "Collect product distribution and operating evidence, applicable tax, receipt fee, fund/broker/custody/rebalancing costs and settlement records for the frozen candidates."
+    },
+    {
+      "gap": "Approved candidate-specific risk-budget exception",
+      "impact": "The retired fixed vector showed -25.00% planning stress versus the -18% action boundary, and no frozen cross-asset T2 portfolio has replaced it; q_portfolio remains 0.",
+      "next_path": "Freeze the T2 candidate set, recalculate common stress and cost uncertainty, document loss capacity and time horizon, then obtain independent risk approval."
+    },
+    {
+      "gap": "Implementation suitability and existing-exposure record",
+      "impact": "No evidence confirms a five-year horizon, tax treatment or overlap with existing exposures.",
+      "next_path": "Conduct a separate suitability review when implementation is considered; this report does not make that finding."
+    },
+    {
+      "gap": "Current market prices, NAV/IOPV, premium/discount, spreads, traded value and executable depth",
+      "impact": "No market-traded sleeve can receive q=1 or an order-like instruction.",
+      "next_path": "Collect same-session exchange/manager or broker data at a future research review."
+    },
+    {
+      "gap": "REIT project-level operating, valuation, correlation and overlap diligence",
+      "impact": "No REIT candidate can enter T3/T4; no REIT amount is pre-assigned.",
+      "next_path": "Obtain project KPI, debt/capex, price/NAV, liquidity, manager/sponsor, sector, tenant/offtaker, refinancing and cross-asset overlap data for each candidate."
+    },
+    {
+      "gap": "Finite direct-equity, ETF, REIT, sovereign/cash T2 candidate set",
+      "impact": "No market allocation is authorized and no generic stress input, category quota or substitute asset may be assumed.",
+      "next_path": "Nominate named candidates through T1, freeze T2, and perform structure-specific research, valuation, risk, total-return, current execution and correlation review."
+    },
+    {
+      "gap": "Authorized point-in-time total-return, action, market-status and mapping-field ledger for a draft cross-asset rule",
+      "impact": "The frozen public four-ETF price screen is a falsification diagnostic only: 207 of 633 complete rolling five-year price windows were below 5%, and it cannot be converted into an investor total-return result.",
+      "next_path": "Complete the authorized data-source acceptance matrix, then independently freeze one deterministic draft rule and mapping before inspection. Retain raw price/event, membership, halt/limit, receipt, cost, tax, settlement, protected-liquidity and look-through records with availability timestamps."
+    },
+    {
+      "gap": "R1/R2 issuer and product work for the 2026-08-14 T1 queue",
+      "impact": "Evidence-limited R1 diligence now covers all 11 nominees, but no R1 pass, current-price valuation, source-tested catalyst/invalidation map, market-access packet or portfolio-overlap model exists.",
+      "next_path": "Close each documented R1 legal/operating/governance gap, then complete R2 scenario valuation, market/liquidity/access/tax records and cross-holding concentration review; any missing hard gate leaves q=0."
+    },
+    {
+      "gap": "Scale-neutral unitized replay engine and cross-asset event adapters",
+      "impact": "The existing portfolio engine uses discrete integer lots, so it cannot directly answer the scale-neutral strategy objective. ETF fund events, REIT events, bond coupons/redemptions, receipt states and non-standard corporate actions are not covered by one validated replay path.",
+      "next_path": "Build and test a unitized engine that preserves proportional costs, the separate receipt state and no-fill states without a fixed-lot assumption; add or explicitly reject every required event type before formal replay."
+    },
+    {
+      "gap": "Five-year realised history for current short-history nominees",
+      "impact": "The April-2026 direct sovereign 260008 and the three current REIT nominees cannot themselves support a realised rolling-five-year test at the 2026-08-14 cutoff. Their disclosure facts may inform diligence but cannot be substituted for a five-year total-return observation.",
+      "next_path": "Use only longer-lived, point-in-time eligible instruments for a historical test, or retain these candidates strictly for prospective research with explicit inception-aware treatment."
+    },
+    {
+      "gap": "No predeclared published static CSI reference has cleared every observed five-year discovery window",
+      "impact": "The official public-index cross-check records misses for broad equity, dividend equity, risk parity and all three published 10/90--30/70 constant-proportion references. The closest 30/70 reference has 32 misses among 999 windows and a 4.43% minimum, before product-level costs or execution.",
+      "next_path": "Do not optimize or select a static index mix post hoc. Test a separately frozen, dynamic T2 rule only after the licensed point-in-time and unitized replay gates are satisfied."
+    }
+  ]
+}

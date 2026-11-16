@@ -1,0 +1,11 @@
+# Strategy translation matrix
+
+| Institutional principle | Why it works in private markets | Personal listed-market equivalent | Admission evidence | Do not imitate |
+|---|---|---|---|---|
+| Control plus operating plan | Investor can appoint, incentivise or replace management and direct capital allocation | Select only companies whose management has already publicly disclosed a measurable operational action | pricing/mix/cost/capex/working-capital bridge and an observable KPI | assuming that an outside shareholder can cause a turnaround |
+| Credit-first underwriting | Institutional credit underwriting can involve negotiated seniority, asset support and refinancing analysis; the cited disclosure scope varies by manager and strategy | Test cash conversion, debt maturity, interest burden, collateral/guarantees and refinancing sensitivity before upside | three years of cash flow, debt notes, guarantees, bear-case coverage | high yield or low P/B as a substitute for solvency work |
+| Proprietary sourcing | Funds see private opportunities and negotiate terms | A narrow public-information competence circle | filings, announcements, industry data and a disprovable thesis | rumours, “channel checks” without disclosure, thematic chatter |
+| Long-duration capital | Closed-end / perpetual vehicles can tolerate delayed value creation | Match holding horizon to life needs and use only risk capital | personal liquidity reserve and written horizon | illiquidity as proof of superior return |
+| Portfolio operations | Sponsors can change price, procurement, capacity and management incentives | Monitor management's already disclosed actions | milestone calendar and quarterly KPI variance | paying in advance for an action not yet evidenced |
+| Real-asset ownership | Owner-operator controls contracts, maintenance and capex | Public REIT/project-level cash-flow research | property/traffic/energy KPI, debt, capex, governance and valuation dossier | treating high distribution as bond-like safety |
+| Capital calls / staged funding | A GP allocates capital after diligence and milestones | Evidence-triggered staged sizing | initial thesis, results validation, cash-flow validation, re-underwriting | averaging down because price fell |

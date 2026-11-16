@@ -1,0 +1,258 @@
+{
+  "schema_version": "etf_fundamentals_verified.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "as_of": "2026-08-12",
+  "artifact_status": "primary-source cross-check complete; not an investability approval",
+  "purpose": "Reconciles terms, fee rates and dated financial/holding facts for 511010, 510880 and 512890 against archived official primary disclosures. It does not substitute for current market, valuation, liquidity, tax, suitability or portfolio-risk diligence.",
+  "data_quality": {
+    "source": "data/raw_etf_fundamentals_20260812.json and referenced official PDFs",
+    "timestamp": "2026-08-12",
+    "quality_tier": "tier_1_primary_cross_checked",
+    "fallback_path": "none; discrepancies and gaps are retained rather than filled from secondary sources",
+    "warnings": [
+      "Cross-check means agreement between dated official documents, not independent audit of fund-manager statements or an independent market-price validation.",
+      "2026 Q2 quantities, NAV, performance and holdings are unaudited and must retain that label in all downstream use.",
+      "PDS operating-cost rates are stated estimates based partly on the latest annual report; use them as disclosed estimates, not guaranteed future all-in holding costs.",
+      "Historical fund distributions are realised historical payments only. They are not forecasts, target cash flow or evidence that a 3% cash objective will be met."
+    ],
+    "errors": []
+  },
+  "verification_method": {
+    "term_checks": "Fund code, manager, custodian, mandate and benchmark were compared between the 2025 annual report and the later PDS and/or 2026 Q2 report.",
+    "fee_checks": "Management and custody fee rates in PDS were cross-checked to annual-report fee-accrual notes.",
+    "financial_checks": "2025 year-end figures are retained only from audited annual reports; 2026-06-30 figures are retained only from the reports that explicitly mark their financial information unaudited.",
+    "holding_checks": "Holding and sector facts are assigned their exact report date and are not carried forward as current holdings.",
+    "calculation_checks": "Top-holding concentration is a transparent sum of the reported NAV weight percentages, subject to displayed-table rounding."
+  },
+  "verified_products": [
+    {
+      "ticker": "511010",
+      "verification_status": "terms_and_fee_rates_cross_checked; dated_financials_and_holdings_source_verified",
+      "legal_name": "上证5年期国债交易型开放式指数证券投资基金",
+      "product_type": "Treasury bond ETF",
+      "terms": {
+        "fund_code": "511010",
+        "manager": "国泰基金管理有限公司",
+        "custodian": "中国建设银行股份有限公司",
+        "inception_date": "2013-03-05",
+        "benchmark": "上证5年期国债指数收益率",
+        "replication_method": "optimised sampling of liquid constituent government bonds",
+        "minimum_index_constituent_or_alternate_government_bond_allocation_pct_of_net_assets": 90.0,
+        "term_check_sources": [
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2025_annual.txt", "anchors": "L159-L218"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2026_pds.txt", "anchors": "L9-L68"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2026q2.txt", "anchors": "L55-L114"}
+        ]
+      },
+      "fee_disclosure": {
+        "management_fee_rate_pct_per_year": 0.15,
+        "custody_fee_rate_pct_per_year": 0.05,
+        "PDS_annual_operating_cost_rate_pct": 0.21,
+        "creation_redemption_agent_commission_max_pct": 0.4,
+        "secondary_market_trading_fee": "actual broker charge; not independently quantified",
+        "verification": "PDS rates agree with annual-report rate-accrual notes.",
+        "sources": [
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2026_pds.txt", "anchors": "L84-L123"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2025_annual.txt", "anchors": "L2078-L2121"}
+        ]
+      },
+      "market_snapshot_2026_08_12": {
+        "status": "official exchange snapshot; execution-incomplete",
+        "timestamp": "2026-08-12T16:29:05+08:00",
+        "last_cny": 141.084,
+        "volume": 9533400,
+        "amount_cny": 1344941511,
+        "source": "workspace/research/income-strategy-product-due-diligence-20260812/data/raw_market_data_20260812.json row 511010",
+        "limitation": "No same-session NAV/IOPV, premium/discount, bid-ask spread, order-book depth or 20-session capacity conclusion."
+      },
+      "audited_2025": {
+        "as_of": "2025-12-31",
+        "audit_status": "audited; auditor's opinion is included in the annual report",
+        "net_assets_cny": 3021255492.97,
+        "nav_per_unit_cny": 140.027,
+        "reported_nav_return_pct": {"calendar_year_2025": 0.59, "three_year": 10.07, "five_year": 16.7},
+        "reported_distribution": {"per_10_units_cny": 21.042, "total_cash_cny": 38002509.08},
+        "portfolio_summary": {"government_bonds_pct_of_net_assets": 99.24, "equity_holdings": "none reported"},
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2025_annual.txt", "anchors": "L285-L389; L771-L804; L2555-L2663"}
+      },
+      "unaudited_2026_q2": {
+        "as_of": "2026-06-30",
+        "audit_status": "unaudited; explicit report disclosure",
+        "period_end_units": 36356287.0,
+        "net_assets_cny": 5117244931.52,
+        "nav_per_unit_cny": 140.753,
+        "reported_nav_return_pct": {"three_month": 0.78, "six_month": 1.51, "one_year": 1.9, "three_year": 9.5, "five_year": 16.91},
+        "portfolio_summary": {"bonds_pct_of_total_assets": 97.7, "government_bonds_pct_of_net_assets": 98.89, "equity_holdings": "none reported"},
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/511010_2026q2.txt", "anchors": "L26-L49; L120-L168; L413-L510"}
+      },
+      "limitations": [
+        "No current duration, modified duration, DV01 or convexity is disclosed in the extracted records.",
+        "No current market price, NAV/IOPV, premium/discount, bid-ask spread, 20-session turnover or executable depth was verified.",
+        "The product is a Treasury ETF, not protected liquidity; no cash-equivalent or capital-protection conclusion is supported by these documents."
+      ],
+      "research_gate_status": "watch_only_q0"
+    },
+    {
+      "ticker": "510880",
+      "verification_status": "terms_and_fee_rates_cross_checked; dated_financials_and_holdings_source_verified",
+      "legal_name": "上证红利交易型开放式指数证券投资基金",
+      "product_type": "Dividend equity ETF",
+      "terms": {
+        "fund_code": "510880",
+        "manager": "华泰柏瑞基金管理有限公司",
+        "custodian": "招商银行股份有限公司",
+        "inception_date": "2006-11-17",
+        "benchmark": "上证红利指数 / 上证红利指数收益率",
+        "replication_method": "full replication, subject to stated exceptional circumstances",
+        "minimum_index_constituent_or_alternate_allocation_pct_of_net_assets": 95.0,
+        "term_check_sources": [
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2025_annual.txt", "anchors": "L162-L189"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2026_pds.txt", "anchors": "L9-L54"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2026q2.txt", "anchors": "L40-L61"}
+        ]
+      },
+      "fee_disclosure": {
+        "management_fee_rate_pct_per_year": 0.5,
+        "custody_fee_rate_pct_per_year": 0.1,
+        "PDS_annual_operating_cost_rate_pct": 0.6,
+        "creation_redemption_agent_commission_listed_rate_pct": 0.5,
+        "secondary_market_trading_fee": "actual broker charge; not independently quantified",
+        "verification": "PDS rates agree with annual-report rate-accrual notes.",
+        "sources": [
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2026_pds.txt", "anchors": "L68-L117"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2025_annual.txt", "anchors": "L2161-L2190"}
+        ]
+      },
+      "market_snapshot_2026_08_12": {
+        "status": "official exchange snapshot; execution-incomplete",
+        "timestamp": "2026-08-12T16:29:05+08:00",
+        "last_cny": 3.303,
+        "volume": 118062557,
+        "amount_cny": 389653221,
+        "source": "workspace/research/income-strategy-product-due-diligence-20260812/data/raw_market_data_20260812.json row 510880",
+        "limitation": "No same-session NAV/IOPV, premium/discount, bid-ask spread, order-book depth or 20-session capacity conclusion."
+      },
+      "audited_2025": {
+        "as_of": "2025-12-31",
+        "audit_status": "audited; standard unqualified opinion",
+        "net_assets_cny": 19264935915.88,
+        "nav_per_unit_cny": 3.1813,
+        "reported_nav_return_pct": {"calendar_year_2025": -0.45, "three_year": 27.93, "five_year": 45.43},
+        "reported_distribution": {
+          "calendar_year_2025_per_10_units_cny": 1.42,
+          "calendar_year_2025_total_cash_cny": 1027536949.2,
+          "calendar_year_2024_per_10_units_cny": 1.31,
+          "calendar_year_2024_total_cash_cny": 795586016.96,
+          "calendar_year_2023_per_10_units_cny": 1.38,
+          "calendar_year_2023_total_cash_cny": 697890247.58
+        },
+        "portfolio_summary": {"equities_pct_of_total_assets": 99.46, "index_equities_pct_of_net_assets": 99.53},
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2025_annual.txt", "anchors": "L229-L325; L769-L790; L2889-L3064"}
+      },
+      "unaudited_2026_q2": {
+        "as_of": "2026-06-30",
+        "audit_status": "unaudited; explicit report disclosure",
+        "period_end_units": 7654175703.0,
+        "net_assets_cny": 22275800372.94,
+        "nav_per_unit_cny": 2.9103,
+        "reported_nav_return_pct": {"three_month": -10.36, "six_month": -4.26, "one_year": -3.3, "three_year": 13.74, "five_year": 26.53},
+        "portfolio_summary": {"equities_pct_of_total_assets": 98.73, "index_equities_pct_of_net_assets": 99.21},
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/510880_2026q2.txt", "anchors": "L18-L37; L66-L119; L395-L510"}
+      },
+      "limitations": [
+        "No current price, NAV/IOPV, premium/discount, bid-ask spread, 20-session turnover or executable depth was verified.",
+        "No TTM settled-cash reconciliation after the annual-report period was completed.",
+        "The fund's historical cash distributions cannot be converted into a future cash yield or an income-target contribution without a forward distribution and execution-cost analysis."
+      ],
+      "research_gate_status": "watch_only_q0"
+    },
+    {
+      "ticker": "512890",
+      "verification_status": "terms_and_fee_rates_cross_checked; dated_financials_and_holdings_source_verified",
+      "legal_name": "华泰柏瑞中证红利低波动交易型开放式指数证券投资基金",
+      "product_type": "Dividend low-volatility equity ETF",
+      "terms": {
+        "fund_code": "512890",
+        "manager": "华泰柏瑞基金管理有限公司",
+        "custodian": "中国建设银行股份有限公司",
+        "inception_date": "2018-12-19",
+        "benchmark": "中证红利低波动指数 / 中证红利低波动指数收益率",
+        "replication_method": "full replication, subject to stated exceptional circumstances",
+        "minimum_index_constituent_or_alternate_allocation_pct_of_net_assets": 90.0,
+        "minimum_index_constituent_or_alternate_allocation_pct_of_non_cash_assets": 80.0,
+        "term_check_sources": [
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2025_annual.txt", "anchors": "L163-L194"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2026_pds.txt", "anchors": "L9-L64"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2026q2.txt", "anchors": "L41-L65"}
+        ]
+      },
+      "fee_disclosure": {
+        "management_fee_rate_pct_per_year": 0.5,
+        "custody_fee_rate_pct_per_year": 0.1,
+        "PDS_annual_operating_cost_rate_pct": 0.6,
+        "creation_redemption_agent_commission_max_pct": 0.5,
+        "secondary_market_trading_fee": "actual broker charge; not independently quantified",
+        "verification": "PDS rates agree with annual-report rate-accrual notes.",
+        "sources": [
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2026_pds.txt", "anchors": "L83-L129"},
+          {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2025_annual.txt", "anchors": "L2095-L2122"}
+        ]
+      },
+      "market_snapshot_2026_08_12": {
+        "status": "official exchange snapshot; execution-incomplete",
+        "timestamp": "2026-08-12T16:29:05+08:00",
+        "last_cny": 1.159,
+        "volume": 447067009,
+        "amount_cny": 517863746,
+        "source": "workspace/research/income-strategy-product-due-diligence-20260812/data/raw_market_data_20260812.json row 512890",
+        "limitation": "No same-session NAV/IOPV, premium/discount, bid-ask spread, order-book depth or 20-session capacity conclusion."
+      },
+      "audited_2025": {
+        "as_of": "2025-12-31",
+        "audit_status": "audited; standard unqualified opinion",
+        "net_assets_cny": 26754281725.43,
+        "nav_per_unit_cny": 1.1745,
+        "reported_nav_return_pct": {"calendar_year_2025": 4.74, "three_year": 43.76, "five_year": 76.55},
+        "reported_distribution": {"calendar_year_2025": "none reported", "past_three_years": "annual report says none implemented"},
+        "portfolio_summary": {"equities_pct_of_total_assets": 99.02, "index_equities_pct_of_net_assets": 99.12},
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2025_annual.txt", "anchors": "L234-L326; L682-L702; L2980-L3156"}
+      },
+      "unaudited_2026_q2": {
+        "as_of": "2026-06-30",
+        "audit_status": "unaudited; explicit report disclosure",
+        "period_end_units": 29331110780.0,
+        "net_assets_cny": 31289783576.42,
+        "nav_per_unit_cny": 1.0668,
+        "reported_nav_return_pct": {"three_month": -10.83, "six_month": -9.17, "one_year": -9.98, "three_year": 17.18, "five_year": 42.17},
+        "portfolio_summary": {"equities_pct_of_total_assets": 97.77, "index_equities_pct_of_net_assets": 97.88},
+        "source": {"path": "workspace/research/income-strategy-product-due-diligence-20260812/sources/official-20260812/512890_2026q2.txt", "anchors": "L19-L38; L73-L115; L318-L438"}
+      },
+      "limitations": [
+        "No current price, NAV/IOPV, premium/discount, bid-ask spread, 20-session turnover or executable depth was verified.",
+        "The annual report's no-distribution history cannot establish future holder cash, and the Q2 report does not complete a TTM cash reconciliation.",
+        "The low-volatility index label does not eliminate equity drawdown, tracking, factor, index-change or liquidity risk."
+      ],
+      "research_gate_status": "watch_only_q0"
+    }
+  ],
+  "cross_product_observations": [
+    {
+      "observation": "511010 is disclosed as a bond index ETF and 510880/512890 as equity index ETFs; their fund-category labels and underlying asset exposures differ materially.",
+      "evidence_status": "verified from dated official disclosures",
+      "limitation": "This is a taxonomy statement, not a correlation or stress-test result."
+    },
+    {
+      "observation": "510880 and 512890 use related high-dividend selection concepts but follow different stated underlying indices and had materially different dated sector and top-holding exposures.",
+      "evidence_status": "verified from dated official disclosures",
+      "limitation": "No current overlap calculation, factor regression or portfolio diversification conclusion has been produced."
+    }
+  ],
+  "required_next_evidence": [
+    "Live or current-session market-price, NAV/IOPV, premium/discount, bid-ask, turnover and executable-depth packet for each ETF.",
+    "Current full constituent/holding files and issuer-group/REIT overlap analysis for 510880 and 512890.",
+    "Duration, modified duration, DV01, convexity and rate-shock analysis for 511010.",
+    "TTM cash distribution reconciliation, forward distribution-risk analysis and tax/account/execution-cost treatment before any income contribution is modeled.",
+    "Portfolio-level correlation, drawdown, risk-budget and feasibility review."
+  ],
+  "usage_boundary": "All three products remain q=0 / watch-only under the frozen product universe. This verification does not select a product or authorize an investment action."
+}

@@ -1,0 +1,85 @@
+{
+  "schema_version": "c18_direct_sse_company_bond_ladder_feasibility.v1",
+  "artifact_id": "D5PT-C18-FEASIBILITY-v2",
+  "as_of": "2026-08-15",
+  "status": "SOURCE_PREFLIGHT_PASS_HISTORICAL_UNIVERSE_AND_RETURN_TEST_NOT_READY",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "route": "direct SSE-listed plain-vanilla public company-bond contractual-cash-flow ladder",
+  "why_distinct": "The economic hypothesis is contractual coupon, redemption and credit-spread compensation in directly listed public company bonds. It is not a revision of the ETF/fund, direct-equity, REIT, futures-trend, basis or covered-call routes already tested.",
+  "source_control": {
+    "initial_preflight_manifest": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/manifest.json",
+      "sha256": "0ef9a473ae98c5fafcb6f4cb92e8785ab5a2eb220f3c7c0ce41e42617872b908"
+    },
+    "rule_text_augmentation_manifest": {
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-rule-text-augmentation-20260815/manifest.json",
+      "sha256": "863fc638ccd443c3f5c22355094e6b326a52967f5943d1d65eee64fc0d951a69"
+    },
+    "quality_tier": "dated_primary_regulatory_and_venue_sources",
+    "records_used": [
+      "sse_company_bond_listing_rule",
+      "sse_bond_investor_suitability_rule",
+      "csrc_company_bond_administration_measure",
+      "sse_company_bond_credit_risk_rule",
+      "sse_bond_information_portal"
+    ]
+  },
+  "source_control_amendment": {
+    "reason": "The R06 independent audit found that the initial preflight retained two SSE rule publication pages but not their linked rule-text attachments. This v2 binds the two first-party attachments in a separate immutable source batch. It changes no route, hypothesis, historical-input assessment, result, suitability inference or action boundary.",
+    "previous_feasibility_sha256": "624a3545180cd91a5286e643e1d00168ef6356c2b4072934e8b36beac84182d2",
+    "reassessment_required": true
+  },
+  "bounded_primary_source_findings": [
+    {
+      "finding": "Public company bonds listed on SSE are subject to differentiated trading mechanisms and investor-suitability arrangements; issuers must set those arrangements before issuance, and SSE can adjust them as market or credit conditions change.",
+      "source_keys": ["sse_company_bond_listing_rule", "sse_company_bond_credit_risk_rule"],
+      "boundary": "This is a venue-rule fact, not evidence that any bond is accessible or suitable on a given date."
+    },
+    {
+      "finding": "SSE distinguishes ordinary and professional investors. Ordinary investors may transact only the listed bond categories stated in the current suitability rule, including eligible public company bonds; access can be restricted after specified adverse-credit or investor-protection events.",
+      "source_keys": ["sse_bond_investor_suitability_rule", "csrc_company_bond_administration_measure"],
+      "boundary": "Eligibility must be verified per bond, investor and date through the current broker and venue record; it cannot be inferred from an issuer rating, a bond name or a historical listing alone."
+    },
+    {
+      "finding": "The official bond portal presents bond information, disclosures and quote views, but the captured preflight does not contain a point-in-time historic bond master, complete full-price/turnover tape, coupon/redemption ledger, rating-history file or credit-event history.",
+      "source_keys": ["sse_bond_information_portal"],
+      "boundary": "A portal is not a retained, complete backtest dataset."
+    }
+  ],
+  "predeclared_research_hypothesis_not_yet_frozen_for_test": {
+    "selection_calendar": "On a fixed annual research date after the ordinary annual-disclosure window, form a point-in-time universe before viewing any subsequent outcome.",
+    "provisional_eligibility_filters": [
+      "RMB-denominated, SSE-listed, publicly issued company bond whose current and historical investor-suitability record explicitly permits ordinary-investor purchase at the relevant test date.",
+      "Non-convertible, non-exchangeable, non-perpetual, non-subordinated and plain fixed-coupon with no embedded call or put; no suspended, termination-risk, late-payment, default or unresolved material-credit-event record.",
+      "One to three years to stated maturity; complete coupon, redemption, tax and full-price fields; observed trade history and a frozen liquidity threshold.",
+      "Issuer financial disclosures and a dated external rating record available before the selection timestamp; one issuer-group cap."
+    ],
+    "provisional_construction": "Six equal diagnostic sleeves ranked by a predeclared maturity yield measure only after the complete point-in-time universe, price and event records are captured. Fractional sleeves would be calculation labels rather than transaction quantities.",
+    "governance": "No historical download, bond selection, parameter search or result calculation is authorized until the universe snapshot, data-source rights, field definitions, no-fill handling, accounting and independent-review protocol are frozen."
+  },
+  "missing_blocking_evidence": [
+    "A retained point-in-time historical master of all SSE public company bonds with listing, delisting, redemption, corporate-action and investor-suitability state for each relevant date.",
+    "Per-bond historic full price, accrued-interest convention, trade/turnover observations, trading-status and suspension records with a documented source and timestamps.",
+    "Per-bond prospectus terms, coupon and redemption schedule, payment confirmations, tax treatment, issuer-group mapping, rating history, trustee notices and adverse-credit-event timeline.",
+    "Dated broker-level records for ordinary-investor access, minimum trading unit, fee, tax, settlement, quote, no-fill and partial-fill treatment without adding personal records to the case.",
+    "A frozen point-in-time universe construction, yield calculation, holding/exit, default/restructuring, delinquency, suspension, cost and valuation protocol, followed by independent reconstruction."
+  ],
+  "strict_screen_boundary": {
+    "five_percent_role": "A future long-run research hurdle only; not a guaranteed annual result, forecast, stable-return claim or action authorization.",
+    "current_result": "NOT_TESTABLE_FOR_RETURN",
+    "reason": "No preserved dataset currently supplies the required historic universe, eligibility, cash-flow, price, liquidity, credit-event and execution inputs."
+  },
+  "current_disposition": {
+    "state": "NO_BOND_SELECTED_NO_HISTORICAL_TEST_NO_ACTION",
+    "next_research_gate": "Obtain and hash a lawful, retainable point-in-time source package that satisfies every blocking field; otherwise retain not-testable status.",
+    "prohibitions": [
+      "Do not infer ordinary-investor access from a current name, rating or listing status.",
+      "Do not treat coupon rate as total return, yield, price or realized result.",
+      "Do not substitute an ETF, generic bond index, indicative yield, stale quote or synthetic series for an actual-bond historical record.",
+      "Do not select a bond, create an order, claim a return or describe this route as a usable strategy."
+    ]
+  }
+}

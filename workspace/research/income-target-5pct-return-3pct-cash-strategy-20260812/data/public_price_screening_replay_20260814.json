@@ -1,0 +1,172 @@
+{
+  "artifact_class": "derived_research_evidence",
+  "decision": {
+    "current_action": "Do not promote this static vector to T2, T3, T4 or an allocation instruction. Continue with a frozen rulebook, structure-specific dossiers and licensed or authoritative point-in-time total-return evidence.",
+    "reason": [
+      "The price-only diagnostic has complete rolling five-year windows below 5%, so even this weaker proxy does not clear the all-window threshold.",
+      "Unadjusted price observations omit or leave ambiguous distributions and corporate actions; they are not a total-return ledger.",
+      "Costs, taxes, execution, point-in-time universe membership and liquidity constraints are absent."
+    ],
+    "static_vector_supports_5pct_total_return_objective": false
+  },
+  "evaluation_window": {
+    "common_price_sessions": 1847,
+    "elapsed_days": 2780,
+    "end": "2026-08-13",
+    "start": "2019-01-02"
+  },
+  "formal_decision_eligible": false,
+  "frozen_input": {
+    "archive_id": "sha256:e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda",
+    "archive_path": "sources/probe-public-market-20260814/e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda.json",
+    "archive_sha256": "8c5c676fc9c795ac48a166397054e72f720922bea4317b81132ce93d5e0d4f29",
+    "capture_manifest_path": "sources/probe-public-market-20260814/capture_manifest.json",
+    "capture_manifest_sha256": "cacabe167460b77e3a3f84bb35a9546d8e8c0fd89cbbc331b21e4c06e224736f",
+    "provider_quality_tier": "tier_3_frozen_public_observation",
+    "replay_input_path": "sources/probe-public-market-20260814/e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda.portfolio.replay.json",
+    "replay_input_sha256": "8829c0a065aa688c874212500c345c7dd92aff6c88b2bba760f7de7921b15217"
+  },
+  "investment_implementation_approved": false,
+  "portfolio_q": 0,
+  "price_only_results": {
+    "annual_price_rows": [
+      {
+        "end": "2019-12-31",
+        "price_return": 0.18234503946827885,
+        "start": "2019-01-02",
+        "year": 2019
+      },
+      {
+        "end": "2020-12-31",
+        "price_return": 0.09478714613955774,
+        "start": "2020-01-02",
+        "year": 2020
+      },
+      {
+        "end": "2021-12-31",
+        "price_return": -0.004020308195626043,
+        "start": "2021-01-04",
+        "year": 2021
+      },
+      {
+        "end": "2022-12-30",
+        "price_return": -0.02738266284933033,
+        "start": "2022-01-04",
+        "year": 2022
+      },
+      {
+        "end": "2023-12-29",
+        "price_return": 0.024709316624532685,
+        "start": "2023-01-03",
+        "year": 2023
+      },
+      {
+        "end": "2024-12-31",
+        "price_return": 0.16232487478489643,
+        "start": "2024-01-02",
+        "year": 2024
+      },
+      {
+        "end": "2025-12-31",
+        "price_return": 0.16834183870718977,
+        "start": "2025-01-02",
+        "year": 2025
+      },
+      {
+        "end": "2026-08-13",
+        "price_return": -0.0003899447360690145,
+        "start": "2026-01-05",
+        "year": 2026
+      }
+    ],
+    "annualized_daily_price_volatility": 0.09453265056122115,
+    "annualized_price_return": 0.07771536786382027,
+    "cumulative_price_return": 0.7676482207013868,
+    "maximum_mark_to_market_drawdown": -0.10850769007880656
+  },
+  "purpose": "A frozen public price-only diagnostic that tests whether a simple, predeclared static cross-asset screen can support the existing 5% total-return research objective. It cannot do so.",
+  "research_only": true,
+  "rolling_five_year_price_diagnostic": {
+    "all_complete_windows_meet_5pct": false,
+    "maximum_annualized_price_return": 0.08042010651757026,
+    "minimum_annualized_price_return": 0.0275351631233558,
+    "overlapping_windows_warning": "These daily-end windows overlap extensively and are not independent samples.",
+    "representative_windows": [
+      {
+        "annualized_price_return": 0.05434866517715453,
+        "days": 1826,
+        "end": "2024-01-02",
+        "meets_5pct_price_threshold": true,
+        "start": "2019-01-02"
+      },
+      {
+        "annualized_price_return": 0.05072469823360981,
+        "days": 1827,
+        "end": "2024-12-31",
+        "meets_5pct_price_threshold": true,
+        "start": "2019-12-31"
+      },
+      {
+        "annualized_price_return": 0.061441512937016496,
+        "days": 1826,
+        "end": "2025-12-31",
+        "meets_5pct_price_threshold": true,
+        "start": "2020-12-31"
+      },
+      {
+        "annualized_price_return": 0.06470578795457071,
+        "days": 1826,
+        "end": "2026-08-13",
+        "meets_5pct_price_threshold": true,
+        "start": "2021-08-13"
+      }
+    ],
+    "window_count": 633,
+    "windows_below_5pct": 207,
+    "windows_meeting_5pct": 426
+  },
+  "rulebook": {
+    "cash_residual": "none; target weights sum to 100%",
+    "costs_and_taxes": "not modelled",
+    "distribution_treatment": "not modelled; no distribution is added to or inferred from the price series",
+    "execution": "no fill, lot, settlement, spread, market-impact, suspension or price-limit assertion",
+    "external_flows": "none modelled",
+    "rebalancing_mark": "first common price observation of each calendar quarter; the unitized calculation applies the marked weight only to the following price interval",
+    "return_type": "unadjusted secondary-market price return only",
+    "version": "R1-static-public-price-screen-v1",
+    "weighting": "equal 25% target weight per screened ETF"
+  },
+  "run_date": "2026-08-14",
+  "schema_version": "public_price_screening_replay.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "screening_universe": [
+    {
+      "code": "510300",
+      "label": "CSI 300 equity ETF price sleeve",
+      "weight": 0.25
+    },
+    {
+      "code": "510880",
+      "label": "SSE Dividend equity ETF price sleeve",
+      "weight": 0.25
+    },
+    {
+      "code": "511010",
+      "label": "SSE 5-year Treasury ETF price sleeve",
+      "weight": 0.25
+    },
+    {
+      "code": "518880",
+      "label": "gold ETF price sleeve",
+      "weight": 0.25
+    }
+  ],
+  "status": "screening_complete_static_vector_rejected_as_5pct_evidence",
+  "universe_boundary": "This finite four-ETF screening set is not a dated T2 decision universe, does not permanently exclude direct equities, REITs, sovereign instruments or other lawful products, and does not admit any instrument to T3 or T4.",
+  "warnings": [
+    "A favorable full-window annualized price result is not a forecast, probability estimate, return floor or guarantee.",
+    "Do not combine this price series with fund distributions or NAV returns without a single source-consistent total-return convention; that would risk double counting.",
+    "The set deliberately excludes no asset class permanently. It is a limited discovery screen only.",
+    "No cash-receipt objective or automatic reinvestment is used in this diagnostic."
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "case_id": "low-position-capital-layout-update-20260811",
+  "artifacts": [
+    {
+      "artifact": "data/raw_market_data_20260811.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-collector",
+      "stage": "R0_evidence",
+      "required_fields": ["ticker", "company", "price", "quote_timestamp", "source_url", "data_quality", "one_year_position_or_gap"],
+      "minimum_depth": "A timestamped 2026-08-10 last-completed-session close plus separately labelled 2026-08-11 pre-open snapshot, or an explicit endpoint failure for all 13 tickers, with raw responses archived.",
+      "blocking_conditions": ["missing ticker", "unattributed price", "ticker/name mismatch", "pre-open price labelled as close"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/raw_financials_20260811.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-collector",
+      "stage": "R0_evidence",
+      "required_fields": ["ticker", "announcement_date", "period", "revenue", "parent_np", "deducted_np_or_gap", "operating_cash_flow_or_gap", "source_url", "source_quality"],
+      "minimum_depth": "FY2025, 2026Q1, and the latest 2026H1 official disclosure/preview or explicit gap for each covered ticker.",
+      "blocking_conditions": ["media presented as filing", "missing source date", "mixing periods", "unsupported financial claim"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/broker_street_consensus_20260811.json",
+      "owner_skill": "reports",
+      "owner_agent": "report-collector",
+      "stage": "R0_evidence",
+      "required_fields": ["ticker", "broker", "report_date", "rating", "target_price", "source_quality", "source_path", "valuation_weight"],
+      "minimum_depth": "One source-quality-labelled current broker row or explicit not-found row per ticker.",
+      "blocking_conditions": ["weak source positive weight", "inferred target", "missing ticker coverage"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "data/source_registry_20260811.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "source-governance-analyst",
+      "stage": "R0_evidence",
+      "required_fields": ["source_id", "claim_scope", "source_url_or_path", "timestamp", "quality_tier", "warnings"],
+      "minimum_depth": "Every material market, financial, and broker source is registered with an evidence boundary.",
+      "blocking_conditions": ["unregistered material source", "quality absent", "source boundary absent"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/valuation_model.md",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-specialist",
+      "stage": "R1_model",
+      "required_fields": ["current price/date", "eligibility method", "market position", "Street anchor or explicit absence", "cash/earnings evidence", "target or event-validation boundary", "catalyst", "invalidation"],
+      "minimum_depth": "Evidence-led target-eligibility decision for four primary candidates; a scenario range is permitted only when the independent denominator and cash gates pass. All other names are explicitly classified as monitor-only or evidence-insufficient.",
+      "blocking_conditions": ["target without price", "target without normalized denominator", "method mismatch", "historic target reused as current"],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "analysis/valuation_audit.md",
+      "owner_skill": "valuation",
+      "owner_agent": "valuation-auditor",
+      "stage": "R1_model",
+      "required_fields": ["arithmetic checks", "price/share reconciliation", "scenario-band checks", "source-quality checks", "Model Reproducibility: PASS"],
+      "minimum_depth": "Each valuation line can be recomputed from disclosed inputs and incomplete evidence is downgraded.",
+      "blocking_conditions": ["arithmetic mismatch", "Model Reproducibility: FAIL", "fake precision", "unsupported action"],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    },
+    {
+      "artifact": "main.pdf",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex-writer",
+      "stage": "R3_render_compliance",
+      "required_fields": ["current-data conclusion", "ranking", "valuation table", "catalysts", "invalidation", "data-quality note", "source appendix"],
+      "minimum_depth": "Chinese, prose-led refresh note that clearly compares the 8/11 conclusion with predecessor cases.",
+      "blocking_conditions": ["PDF build error", "clipping", "table-only decision chapter", "outdated data presented as current"],
+      "reviewer_cycle": "R3_render_compliance",
+      "verifier_check": "tools/verify_research_workspace.py",
+      "blocking_if_missing": true
+    }
+  ]
+}

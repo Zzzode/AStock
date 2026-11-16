@@ -1,0 +1,2625 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script type="text/javascript">
+        var ctx="/cbweb-mn";
+        var ctxStatics="/cbweb-mn/statics";
+ </script>
+
+
+<!-- create by zwy 2014.3.18 -->
+<html>
+<head>
+	<title>ChinaBond-- ChinaBond Indices</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="keywords" content="中债,指数" />
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta http-equiv="Cache-Control" content="no-store" /><meta http-equiv="Pragma" content="no-cache" /><meta http-equiv="Expires" content="0" />
+<meta name="author" content="http://thinkgem.iteye.com"/><meta http-equiv="X-UA-Compatible" content="IE=7,IE=9,IE=10" />
+
+<script src="/cbweb-mn/statics/js/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+	
+		<link rel="stylesheet" href="/cbweb-mn/statics/css/login_zhai_en.css" type="text/css" id="css"/>	
+	
+	
+
+<link rel="stylesheet" href="/cbweb-mn/statics/css/zTreeStyle/zszTreeStyle.css" type="text/css"/>
+<script type="text/javascript" src="/cbweb-mn/statics/js/jquery-ztree/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="/cbweb-mn/statics/js/jquery-ztree/jquery.ztree.excheck-3.5.js"></script>
+<script src="/cbweb-mn/statics/My97DatePicker/WdatePicker.js" type="text/javascript"></script>
+
+	<link rel="stylesheet" type="text/css" href="/cbweb-mn/statics/css/btn.css"/>
+	<link rel="stylesheet" href="/cbweb-mn/statics/bootstrap/css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="/cbweb-mn/statics/bootstrap/css/bootstrap-datetimepicker.css" type="text/css"/>
+
+	<script type="text/javascript" src="/cbweb-mn/statics/bootstrap/js/bootstrap.js"></script>
+	<script type="text/javascript" src="/cbweb-mn/statics/bootstrap/js/bootstrap-datetimepicker.js" ></script>
+	<script type="text/javascript" src="/cbweb-mn/statics/bootstrap/js/bootstrap-datetimepicker.zh-CN.js"></script>
+	<script src="/cbweb-mn/statics/js/custom/statusCheck.js" type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/custom/changewidth1.js" type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/higchart/highstock.js" type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/common/downloadImg.js" type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/jquery/jquery.contextmenu.r2.js"></script>
+	<script src="/cbweb-mn/statics/js/higchart/rgbcolor.js"  type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/higchart/canvg.js"  type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/higchart/exporting.js"  type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/higchart/offline-exporting.js"  type="text/javascript"></script>
+	<script src="/cbweb-mn/statics/js/higchart/colorArr.js"></script>
+	<script type="text/javascript"
+			src="/cbweb-mn/statics/js/yc/commonBondYields.js"></script>
+	
+		
+			<script type="text/javascript" src="/cbweb-mn/statics/js/indices/indices_en.js"></script>
+		
+		
+	
+	
+		
+			<link rel="stylesheet" href="/cbweb-mn/statics/css/bondyield_en.css"
+				  type="text/css" id="css" />
+			<script type="text/javascript"
+					src="/cbweb-mn/statics/js/yc/bondyields_en.js"></script>
+		
+		
+	
+
+	<script type="text/javascript">
+
+		var setting = {
+			view: {
+				addDiyDom: addDiyDom
+			},
+			check: {
+				enable: true,
+				chkStyle: "radio",
+				radioType: "all"
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			},
+			callback: {
+				beforeCheck: beforeCheck,
+				onClick: onClick
+			}
+		};
+
+		function beforeCheck(treeId, treeNode) {
+			if(treeNode.isParent == true){
+				return;
+			}
+			var id = treeNode.id;
+			if (id.indexOf("_kzz") > 0) {
+				changekzzzsStatus(id);
+				kzzzshidden();
+			}else if (id.indexOf("_dzc") > 0) {
+				changedzczsStatus(id);
+				dzczshidden();
+			} else if (id.indexOf("_gpzs") > 0) {
+				changeGpzsStatus(id);
+				gpzshidden();
+			} else if(id.indexOf("_sczs") > 0){ //上传指数
+				id = id.replace("_sczs","");
+				ConvertToUploadIndex();
+				uploadIndexInit(id,"ZSZ","");
+			}else if(id.indexOf("_tpfzs") > 0){ //碳排放指数
+				id = id.replace("_tpfzs","");
+				$("#select_zszblxv option[value='ZSZ']").prop("selected",true);
+				var zszb = $("#select_zszblxv option:selected").val();
+				if(zszb==undefined){zszb="ZSZ"}
+				ConvertToTPFIndex();
+				uploadIndexInit(id,zszb,"TPFZS");
+			}else if(id.indexOf("_hbzs") > 0){ //合编指数
+				ConvertToHbIndex();
+				hbIndexQuery(id);
+			}else if(id.indexOf("_mbdqrzs") > 0){ //目标到期日指数
+				ConvertToMbdqrIndex();
+				mbdqrIndexQuery(id);
+			}else if(uploadIndex || hbIndex || mbdqrIndex){ //上传指数切换到单指数
+				ConvertToSingleIndex();
+			}
+			//投资者分类指数屏蔽指数指标
+			if(treeNode.pId === "549cc58d2eff8b59eb1919cc32b194fc") {
+				tz_mark = 1;
+				$("#select_zslx").html('<option id="CFZS" value="CFZS">Total Return</option>' +
+						'<option id="QJZS"       value="QJZS">Full Price</option>' +
+						'<option id="JJZS"       value="JJZS">Net Price</option>' +
+						'<option id="CFZSZDF"    value="CFZSZDF">Total Return Index Change(%)</option>' +
+						'<option id="QJZSZDF"    value="QJZSZDF">Full Price Index Change(%)</option>' +
+						'<option id="JJZSZDF"    value="JJZSZDF">Net Price Index Change(%)</option>');
+			} else {
+				tz_mark = 0;
+				$("#select_zslx").html('<option id="CFZS" value="CFZS">Total Return</option>' +
+						'<option id="QJZS"       value="QJZS">Full Price</option>' +
+						'<option id="JJZS"       value="JJZS">Net Price</option>' +
+						'<option id="PJSZFJQ"    value="PJSZFJQ">Cap-weighted Duration (Yrs)</option>' +
+						'<option id="PJXJLFJQ"   value="PJXJLFJQ">Average Duration(Yrs)</option>' +
+						'<option id="PJSZFTX"    value="PJSZFTX">Cap-weighted Convexity</option>' +
+						'<option id="PJXJLFTX"   value="PJXJLFTX">Average Convexity</option>' +
+						'<option id="PJDQSYL"    value="PJDQSYL">Average YTM (%)</option>' +
+						'<option id="PJSZFDQSYL" value="PJSZFDQSYL">Cap-weighted YTM (%)</option>' +
+						'<option id="PJJDJZ"     value="PJJDJZ">Cap-weighted BPV(Yuan)</option>' +
+						'<option id="PJDCQ"      value="PJDCQ">Cap-weighted Maturity(Yrs)</option>' +
+						'<option id="PJPXL"      value="PJPXL">Cap-weighted Coupon Rate(%)</option>' +
+						'<option id="ZSZSZ"      value="ZSZSZ">Market Value Outstanding (100Million)</option>' +
+						'<option id="CFZSZDF"    value="CFZSZDF">Total Return Index Change(%)</option>' +
+						'<option id="QJZSZDF"    value="QJZSZDF">Full Price Index Change(%)</option>' +
+						'<option id="JJZSZDF"    value="JJZSZDF">Net Price Index Change(%)</option>' +
+						'<option id="XQJSL"      value="XQJSL">Settlement Volume(100Million)</option>');
+			}
+
+			if(treeNode.checked){
+				return false;
+			}
+			return (treeNode.doCheck !== false);
+		}
+		var IDMark_A = "_a";
+		function addDiyDom(treeId, treeNode) {
+			var zsbm ="";
+			$.ajax({
+				type: "post",
+				url: "/cbweb-mn/selectZsbm?id="+treeNode.id+"&type=1",
+				cache:false,
+				dataType: "json",
+				success: function (data) {
+					zsbm=data;
+
+					if(treeNode.flag==1){
+						var aObj = $("#" + treeNode.tId + IDMark_A);
+						var editStr = "<span class='demoIcon' id='diyBtn_" +treeNode.id+ "' title='"+treeNode.name+"' onfocus='this.blur();'><span class='button icon01'></span></span>";
+						aObj.append(editStr);
+						var btn = $("#diyBtn_"+treeNode.id);
+						if (btn) btn.bind("click", function(){
+							$("#scyieldform").attr("action", "/cbweb-mn/indices/downloadIndexBzfa?id="+treeNode.id+"&locale=en_US");
+							$("#scyieldform").submit();
+						});
+
+						if(zsbm == 1){
+							var aObj = $("#" + treeNode.tId + IDMark_A);
+							var editStr = "<span class='demoIcon' id='diyBtn_" +treeNode.id+ "' title='"+treeNode.name+"' onfocus='this.blur();'></span><span class='button icon02' id='excelBtn_" +treeNode.id+ "' ></span>";
+							aObj.append(editStr);
+							var excelbtn=$("#excelBtn_"+treeNode.id);
+							if(excelbtn){
+								excelbtn.bind("click",function(){
+									$("#scyieldform").attr("action", "/cbweb-mn/downloadExcelDzb?id="+treeNode.id+"&locale=en_US");
+									$("#scyieldform").submit();
+								});
+							}
+						}
+
+					}else{
+						if(zsbm == 1){
+							var aObj = $("#" + treeNode.tId + IDMark_A);
+							var editStr = "<span class='demoIcon' id='diyBtn_" +treeNode.id+ "' title='"+treeNode.name+"' onfocus='this.blur();'></span><span class='button icon02' id='excelBtn_" +treeNode.id+ "' ></span>";
+							aObj.append(editStr);
+							var excelbtn=$("#excelBtn_"+treeNode.id);
+							if(excelbtn){
+								excelbtn.bind("click",function(){
+									$("#scyieldform").attr("action", "/cbweb-mn/downloadExcelDzb?id="+treeNode.id+"&locale=en_US");
+									$("#scyieldform").submit();
+								});
+							}
+						}
+					}
+				}
+			});
+		}
+
+		function onClick(e, treeId, treeNode) {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			zTree.checkNode(treeNode, !treeNode.checked, null, true);
+			return false;
+		}
+
+		function getCheckNode(){
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			var nodes = zTree.getCheckedNodes(true);
+			return nodes[0].id;
+		}
+
+		function getCheckNodeName(){
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+			var nodes = zTree.getCheckedNodes(true);
+			return nodes[0].name;
+		}
+
+		function delRadio(zNodes){
+			$.each(zNodes,function(index,object){
+				if(object.isParent=="true"){
+					object.nocheck = "true";
+				}
+			});
+		}
+
+		var zNodes =[];
+		function ajaxData(url){
+			$.ajax({
+				type: "post",
+				url: url,
+				cache:false,
+				dataType: "json",
+				success: function (data) {
+					zNodes = data;
+					delRadio(zNodes);
+					$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+					queryIndex(getCheckNode()); //初始化查询
+				}
+			});
+		}
+
+		Highcharts.setOptions({
+			global: {
+				useUTC: false
+			},
+		});
+		Highcharts.Pointer.prototype.reset = function () { //鼠标移除图形后，十字线和提示框不消失
+			return undefined;
+		};
+		Highcharts.wrap(Highcharts.Series.prototype, 'drawLegendSymbol', function (proceed, legend) {
+			proceed.call(this, legend);
+			this.legendLine.attr({
+				d: ['M', 1, 6, 'L', 1, 16, 'L',11, 16, 'L',11, 6,'L',1, 6,'Z'],
+				fill: this.color
+			})
+					.add(this.legendGroup);
+		});
+		var chart = null;
+		var uploadIndexChart = null;
+		var hbIndexChart = null;
+		var mbdqrIndexChart = null;
+		var options = {
+			chart : {
+				animation : false,
+				renderTo : 'graph',
+				height : 530,
+				plotBorderWidth : 0.1,
+				marginTop : 90, //
+				marginBottom : 10,
+
+				zoomType: 'x',
+				resetZoomButton: {
+					position: {
+						x: 0,
+						y: -30
+					}
+				}
+
+			},
+			exporting : {
+				enabled : false, //用来设置是否显示‘打印’,'导出'等功能按钮，不设置时默认为显示
+				scale : 1,
+			},
+			legend : {
+				tile : {
+				},
+				enabled : true,
+				align : 'left',
+				verticalAlign : 'top',
+				y : -15, //
+				floating : true,
+				symbolHeight : 12,
+				symbolWidth : 12,
+				symbolRadius : 2,
+				itemDistance: 50,
+				itemMarginBottom : 0,
+				itemStyle: {
+					fontWeight:"normal"
+				},
+				labelFormat: '<span style="{color}">{name}</span>'
+			},
+			navigator : {
+				height: 20,
+				top : 70, //
+				xAxis: {
+					tickWidth: 0,
+					lineWidth: 0,
+					gridLineWidth: 1,
+					// tickPixelInterval: 200,
+					labels: true,
+				},
+				series: {
+					color: "#d7d7d7",
+					lineWidth: 2,
+					fillColor:"#767676",
+				}
+			},
+			title : {
+				text : ''
+			},
+			rangeSelector : {
+				enabled : false,
+			},
+			scrollbar : {
+				enabled : false,
+			},
+
+			xAxis : {
+				minRange : 86400000,//图形最小展示范围为1天
+				tickWidth : 1,
+				gridLineWidth : 1,
+				lineWidth : 1,
+				lineColor : 'black',
+				labels : {
+					align : 'center'
+
+				},
+				tickmarkPlacement : 'between',
+				showFirstLabel : true,
+				showLastLabel : true,
+				tickLength : 0,
+				allowDecimals : true,
+				tickPixelInterval : 180,
+				dateTimeLabelFormats: {
+					day: '%Y-%m-%d',
+					week:'%Y-%m-%d',
+					month: '%Y-%m',
+					year: '%Y'
+				},
+				events: {
+					setExtremes: function(e){
+						show_showAll(e);
+					}
+				}
+			},
+			yAxis : [
+				{
+					labels : {
+						format : '{value:.,0f}',
+						padding : 50,
+
+					},
+					allowDecimals : true,//是否显示小数
+					showFirstLabel : true,
+					showLastLabel : true,
+					tickPosition : 'outside',
+					tickLength : 5,
+					opposite : false,//设置y轴在对面显示
+					lineWidth : 1,//设置y轴的线宽
+					tickWidth : 1,
+					tickColor : 'black',
+					lineColor : 'black',
+					plotLines: [{
+
+					}],
+				},
+			],
+
+			credits : {
+				enabled : false
+				//去掉higcharts.com
+			},
+			navigation : {
+				buttonOptions : {//取消导航
+					enabled : false
+				}
+			},
+			tooltip : {
+				shared : true,
+				split : true,
+				animation : true,
+				crosshairs : {
+					width : 1,
+					color : 'red',
+				},
+				distance : 3,//距离某个点的距离
+				useHTML : true,
+				borderWidth : 1,
+				headerFormat : '<small>{point.key}</small><table border="5">',
+				pointFormat : '<tr><td style="text-align: right,color:{point.color}">{point.y:4f}</td></tr>',
+				footerFormat : '</table>',
+				dateTimeLabelFormats: {
+					day: '%Y-%m-%d',
+					week:'%Y-%m-%d',
+					month: '%Y-%m',
+					year: '%Y',
+				},
+				xDateFormat : '%Y-%m-%d',
+			},
+			plotOptions : {
+				series: {
+					point : {
+						events : {
+							mouseOver : {
+
+							}
+						}
+					},
+					states:{  //屏蔽鼠标进入线加粗效果
+						hover:{
+							enabled:false,
+						}
+					}
+				},
+				scatter:{
+					marker :{
+						radius:4,
+					}
+				},
+				mouseOver : function(){
+					keyClick();
+				},
+				area : {
+					fillOpacity : 0.2,
+				},
+			},
+			series : []
+		}
+
+		var indexid = null;
+		var qxlxt = "";
+		var zslxt = "";
+		var name = "";
+		var dataObj = null;
+		var xqbs = false;
+		var data_bak = null;
+		var uploadIndex_data_bak = null;
+		var dummyIndex = false;
+		var queryChart = null;
+		var startDate = null;
+		var endDate = null;
+		var dummyIndexClick = false;
+		var showYaxis = false;
+		var widescreen = false;
+		var isIE = false;
+		var menuWidth = "56px";
+		var menuItemWidth = "48px";
+		var language = "zh-CN";
+		var ltcslx="";
+		var allZslxt="";
+		$(document).ready(function(){
+
+			if(!isPC()){
+				document.getElementById("kzpDiv").style.display="none";
+			}
+			if(!!window.ActiveXObject || "ActiveXObject" in window){ //IE浏览器
+				isIE = true;
+				document.getElementById("rqtb").style.lineHeight="10px";
+				document.getElementById("rqtb").style.Height="10px";
+
+				document.getElementById("hb_rqtb").style.lineHeight="10px";
+				document.getElementById("hb_rqtb").style.Height="10px";
+			}
+			$("#singleIndexSearchBtn").attr("disabled", "disabled");//禁用
+			$("#singleIndexSearchBtn").css("background-color", "#fff");
+			if(true){
+				document.getElementById("graph").style.marginTop = "0px";
+				document.getElementById("downLoadBtn").style.width = "85px";
+				menuWidth = "106px";
+				menuItemWidth = "98px";
+				language = "en_US";
+			}
+			$(".form_datetime").datetimepicker({
+				format: 'yyyy-mm-dd',
+				minView:'month',
+				language:language,
+				autoclose:true,
+				bootcssVer:3,
+				todayBtn:true,
+			});
+			qxlxCheckboxStyle();
+			autoChangeWidth();
+			keyClick(); //键盘事件
+			onRightClick() //鼠标右键
+			var url = "/cbweb-mn/indices/queryTree?locale=en_US";
+			ajaxData(url);
+		});
+		var tz_mark = 0;
+		//查询指数
+		function queryIndex(indexid){
+			if(dummyIndex){ //定制指数查询
+				var arrZslxAndQxlx = [];
+				arrZslxAndQxlx.push("id_CFZS_0");
+				arrZslxAndQxlx.push("jzid_CFZS_0");
+				var url = "/cbweb-mn/indices/dummyIndexQuery?indexid="+indexid+"&locale=en_US";
+				$.ajax({
+					type : "post",
+					url : url,
+					cache : false,
+					dataType:"json",
+					success : function(data){
+						if(data.emsg != null){
+							$("#showAll").css("display","none");
+							$("#rightKeyMenu").css("display","none");
+							if(data.emsg == msg.msgDqdzzsmyjsjg || data.emsg == msg.msgJzzsmyjsjg){
+								alert(data.emsg);
+							}else{
+								if(document.getElementById("init").value == "false"){
+									alert("Loading data failed"); //取得数据失败
+								}
+							}
+							$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+							$("#singleIndexSearchBtn").css("background-color", "");
+							return;
+						}
+						data_bak = data;
+						createGraphAndTableData(data,arrZslxAndQxlx);
+						$("#rightKeyMenu").css("display","block");
+						//样式调整
+						$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+						$("#singleIndexSearchBtn").css("background-color", "");
+					},
+					error : function(e){
+						$('#graph').html("");
+						$("#showAll").css("display","none");
+						$("#rightKeyMenu").css("display","none");
+						if(document.getElementById("init").value == "false"){
+							alert("Loading data failed"); //取得数据失败
+						}
+						$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+						$("#singleIndexSearchBtn").css("background-color", "");
+					}
+				});
+			}else{ //非定制指数查询
+				zslxt = "";
+				//区分流通场所和代偿期组合时是否要加上现卷结算量
+				zslxt1= "";
+				ltcslx="";
+				dataObj = null;
+				if(radio_mr.checked){ //默认
+					qxlxt = qxlxt + "00";
+					if (tz_mark === 1) {
+						zslxt = "CFZS";
+					} else {
+						zslxt = "CFZS" + "," + "XQJSL";
+					}
+					xqbs = false;
+				}else if(radio_zslx.checked){ //指数类型
+					qxlxt = $("#select_qx option:selected").val();
+					if(document.getElementById("qj").checked){
+						zslxt = "QJZS";
+					}
+					if(document.getElementById("jj").checked){
+						if(zslxt == ""){
+							zslxt = "JJZS";
+						}else{
+							zslxt = zslxt + "," + "JJZS" ;
+						}
+					}
+					if(document.getElementById("cf").checked){
+						if(zslxt == ""){
+							zslxt = "CFZS";
+						}else{
+							zslxt = zslxt + "," + "CFZS";
+						}
+					}
+					if(zslxt.length == 0){
+						alert("Please select an indicator"); //请选择指数指标
+						$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+						$("#singleIndexSearchBtn").css("background-color", "");
+						return;
+					}
+					if(zslxt.indexOf(",") == -1 && qxlxt.indexOf(",") == -1 && qxlxt !="13" ){ //仅有1个指数类型 或全价，或净价，或财富
+						if (tz_mark === 0) {
+							zslxt = zslxt + "," + "XQJSL" ;
+						}
+					}
+					xqbs=false;
+				}else{ //期限类型
+					qxlxt="";
+					ltcslx="";
+					zslxt = $("#select_zslx option:selected").val();
+					//代偿期分段数据
+						var qxlxDom = $(".dcqx_class");
+						for (let i = 0; i < qxlxDom.length; i++) {
+							if(qxlxDom[i].id=='zsqxcheckAll'){
+								continue;
+							}
+							if (qxlxDom[i].checked) {
+								if (qxlxt == "") {
+									qxlxt = qxlxDom[i].value
+								} else {
+									qxlxt = qxlxt + "," + qxlxDom[i].value
+								}
+							}
+						}
+						// 流通场所分段数据
+						var ltcslxDom = $(".ltcs_class");
+						for (let j = 0; j < ltcslxDom.length; j++) {
+							if(ltcslxDom[j].id=='ltcscheckAll'){
+								continue;
+							}
+							if (ltcslxDom[j].checked) {
+								if (ltcslx == "") {
+									ltcslx = ltcslxDom[j].value
+								} else {
+									ltcslx = ltcslx + "," + ltcslxDom[j].value
+								}
+
+							}
+						}
+					if(qxlxt.length == 0 && ltcslx.length==0 ){
+						alert("Please select a standard term or  market type");
+						$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+						$("#singleIndexSearchBtn").css("background-color", "");
+						return;
+					}
+
+					if(zslxt.indexOf("XQJSL") > -1){ //包含"XQJSL"
+						xqbs = true;
+					}else{
+						xqbs = false;
+					}
+					 zslxt1=zslxt;
+					 zslxttemp=zslxt;
+					//仅只选择1个期限类型  && 指数类型为"财富"，或为"全价"，或为"净价"。
+					if(zslxt == "CFZS" || zslxt == "QJZS"|| zslxt == "JJZS"){
+						if(qxlxt!="" && qxlxt.indexOf(",") == -1 && qxlxt != "13"){
+							if (tz_mark === 0) {
+								zslxt = zslxt + "," + "XQJSL";
+							}
+						}
+						if (ltcslx != "" && ltcslx.indexOf(",") == -1 && ltcslx != "13") {
+							if (tz_mark === 0) {
+								zslxt1 = zslxt1 + "," + "XQJSL";
+							}
+						}
+
+						if (ltcslx != "" && qxlxt != ""){
+							if (ltcslx == "00" && qxlxt == "00") {
+								if (tz_mark === 0) {
+									zslxt = zslxt + "," + "XQJSL";
+									zslxt1 = zslxt1 + "," + "XQJSL";
+								}
+							} else {
+								if (tz_mark === 0) {
+									zslxt = zslxttemp;
+									zslxt1 = zslxttemp;
+								}
+							}
+						}
+
+					}
+				}
+				var contont=zslxt1==""?zslxt:zslxt+","+zslxt1;
+				allZslxt=Array.from(new Set((contont).split(",")));
+				//异步执行查询
+				var url = "/cbweb-mn/indices/singleIndexQueryResult?indexid="+indexid+"&&qxlxt="+qxlxt+"&&ltcslx="+ltcslx+"&&zslxt="+zslxt+"&&zslxt1="+zslxt1+"&&lx=1&&locale=en_US"
+				$.ajax({
+					type : "post",
+					url : url,
+					cache : false,
+					dataType: "json",
+					success : function(data){
+						if(data.emsg != null){
+							$('#graph').html("");
+							$("#rightKeyMenu").css("display","none");
+							$("#showAll").css("display","none");
+							if(data.emsg == msg.msgDqzsmyjsjg){
+								alert(data.emsg);
+							}else{
+							    alert(data.emsg); //取得数据失败
+							}
+							$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+							$("#singleIndexSearchBtn").css("background-color", "");
+							return;
+						}
+
+						var arrZslxAndQxlx = [];
+						var arrZslx = allZslxt;
+						var arrQxlx = data.dqcList;
+						for(var i = 0; i < arrZslx.length; i++){
+							for(var j = 0; j < arrQxlx.length; j++){
+								arrZslxAndQxlx.push(arrZslx[i] + "_" + arrQxlx[j]);
+							}
+						}
+						data_bak = data;
+						createGraphAndTableData(data,arrZslxAndQxlx);
+						$("#rightKeyMenu").css("display","block");
+						//样式调整
+						$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+						$("#singleIndexSearchBtn").css("background-color", "");
+					},
+					error : function(e){
+						$('#graph').html("");
+						$("#rightKeyMenu").css("display","none");
+						if(document.getElementById("init").value == "false"){
+							alert("Loading data failed"); //取得数据失败
+						}
+						$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+						$("#singleIndexSearchBtn").css("background-color", "");
+					}
+				});
+			}
+		}
+		function createGraphAndTableData(data,arrZslxAndQxlx){
+			showYaxis = false;
+			options.series = [];
+			var j=0;
+			var array=[];
+            for(var i = 0; i < arrZslxAndQxlx.length; i++) {
+                var dataArr = generateData(arrZslxAndQxlx[i], data);
+                if (dataArr.length != 0) {
+					array.push(arrZslxAndQxlx[i]);
+                    continue;
+                }
+            }
+			arrZslxAndQxlx=array;
+			for(var i = 0; i < arrZslxAndQxlx.length; i++){
+				options.series[j] = Object();
+				options.series[j].lineWidth = 1.5;
+				options.series[j].data = generateData(arrZslxAndQxlx[i], data);
+				options.series[j].name = createName(arrZslxAndQxlx[i], data);
+				options.series[j].marker = {symbol: 'circle'};
+				options.series[j].color = colorArr_index[i];
+				options.series[j].dataGrouping = {enabled: false};
+				options.series[j].tooltip = {xDateFormat: '%Y-%m-%d'};
+				if (options.series[j].data.length == 1) {
+					options.series[j].marker = {
+						symbol: 'circle',
+						radius: 5,
+						enabled: true
+					};
+				} else {
+					options.series[j].type = "line";
+				}
+				if (arrZslxAndQxlx[i].indexOf("CFZSZDF") > -1 || arrZslxAndQxlx[i].indexOf("QJZSZDF") > -1 || arrZslxAndQxlx[i].indexOf("JJZSZDF") > -1) {
+					options.yAxis[0].plotLines[0].value = 0;
+					options.yAxis[0].plotLines[0].color = "black";
+					options.yAxis[0].plotLines[0].width = 1;
+				}
+				j++;
+			}
+			fillingEmptyDataPoints(options.series)	//补充空数据点
+			var showAllDiv = document.getElementById("showAll");
+			//现券结算量右轴展示（默认选项或单选总值下）
+			if( arrZslxAndQxlx.length === 2 && arrZslxAndQxlx[1].indexOf("XQJSL") > -1 && arrZslxAndQxlx[0].indexOf("XQJSL") < 0) {
+				options.yAxis[1] = Object();
+				options.yAxis[1].labels =  {
+					format : '{value:.,0f}',
+					padding : 50,
+				};
+				options.yAxis[1].allowDecimals = true; //是否显示小数
+				options.yAxis[1].showFirstLabel = true;
+				options.yAxis[1].showLastLabel = true;
+				options.yAxis[1].tickPosition = 'outside';
+				options.yAxis[1].tickLength = 5;
+				options.yAxis[1].opposite = true;
+				options.yAxis[1].lineWidth = 2;
+				options.yAxis[1].tickWidth = 1;
+				options.yAxis[1].tickColor = '#B0DE09';
+				options.yAxis[1].lineColor = '#B0DE09';
+
+				options.series[1].type = 'area';
+				options.series[1].yAxis = 1;
+				showYaxis = true;
+
+			}else{
+				if(typeof(options.yAxis[1]) != "undefined"){
+					options.yAxis.splice(1,1); //删除右轴
+				}
+			}
+			options.plotOptions.series.point.events.mouseOver = function(){
+				changeTime(this.x);
+			}
+			if(options.series.length>0){
+				var tempData = options.series[0].data;
+				var lastGzr = tempData[tempData.length - 1][0];
+				changeTime(lastGzr);
+			}
+			var tempOptions = {};
+			for(var i in options){
+				tempOptions[i]= options[i];
+			}
+			options.chart.renderTo = 'graph';
+			chart=new Highcharts.StockChart(options);
+			var legendHeight = chart.legend.legendHeight;//图形高度
+			tempOptions = locationChart(legendHeight,tempOptions,false,false);
+			chart = new Highcharts.StockChart(tempOptions);
+			$("#showAll").css("display","inherit");
+			if(tempData!=undefined && tempData.length >= 200){
+				queryClickChart(tempData,false); //点击查询，初始化图形
+			}
+			if(dummyIndexClick === true){
+
+			}
+		}
+		//补充空数据点
+		function fillingEmptyDataPoints(series){
+			var arr = [];
+			for(var i = 0; i < series.length; i++){
+				arr.push(series[i].data.length);
+			}
+			var max = sort(arr);
+			var maxData = null;
+			for(var j = 0; j < series.length; j++){
+				if(series[j].data.length === max){
+					maxData = series[j].data;
+					break;
+				}
+			}
+			var x = null;
+
+			for(var k = 0; k < series.length; k++){
+				var len = series[k].data.length;
+				if(len === max){
+
+				}else{
+					var dataBak = [];
+					for(var n = 0; n < series[k].data.length; n++){
+						dataBak.push([series[k].data[n][0],series[k].data[n][1]]);
+					}
+					for(var index in maxData){
+						x = maxData[index][0];
+						if((typeof(series[k].data[index]) == "undefined") || (series[k].data[index][0] != x)){
+							series[k].data[index] = [x,null];
+						}
+					}
+					for(var index2 in maxData){
+						for(var m = 0; m < dataBak.length; m++){
+							if(maxData[index2][0] == dataBak[m][0]){
+								series[k].data[index2][1] = dataBak[m][1];
+							}
+						}
+					}
+				}
+			}
+		}
+
+		//排序
+		function sort(array) {
+			var i = 0,
+					len = array.length,
+					j, d;
+			for (var i = 0; i < len; i++) {
+				for (j = 0; j < len; j++) {
+					if (array[i] < array[j]) {
+						d = array[j];
+						array[j] = array[i];
+						array[i] = d;
+					}
+				}
+			}
+			return array[array.length-1];
+		}
+
+		function locationChart(legendHeight,tempOptions,isHbIndex,isMbdqrIndex){
+			var showAllDiv;
+			if(hbIndex && isHbIndex){
+				showAllDiv = document.getElementById("hbIndexShowAll");
+			}else if(mbdqrIndex && isMbdqrIndex){
+				showAllDiv = document.getElementById("mbdqrIndexShowAll");
+			}else{
+				showAllDiv = document.getElementById("showAll");
+			}
+			tempOptions.chart.marginTop = legendHeight + 20;
+			tempOptions.navigator.top = legendHeight;
+			showAllDiv.style.top = -480 + legendHeight + "px";
+			if(showYaxis){
+				showAllDiv.style.marginRight = "60px";
+			}else{
+				showAllDiv.style.marginRight = "10px";
+			}
+			return tempOptions;
+		}
+
+		function queryClickChart(countData,isUploadIndex){
+			newData=countData.slice(-200);
+			var startDate=newData[0][0];
+			var endDate=newData[199][0];
+			if(isUploadIndex){
+				uploadIndexChart.xAxis[0].setExtremes(startDate,endDate);
+			}else{
+				chart.xAxis[0].setExtremes(startDate,endDate);
+			}
+		}
+
+		function createName(id,data){
+			var qxlx;
+			var zslx;
+			var idArr = [];
+			if(dummyIndex === false){
+				var name = getCheckNodeName();
+				idArr = id.split("_");
+				zslx = document.getElementById(idArr[0]).innerText;
+				qxlx =data.dqcName[idArr[1]];
+				if(qxlx == null){
+					return null;
+				}
+				return name + "-" + qxlx + "-" + zslx;
+			}else{ //定制指数
+				var zsmc = null;
+				idArr = id.split("_");
+				if("id" === idArr[0]){
+					zsmc = data.zsmc.zhmc;
+				}else{
+					zsmc = data.zsmc.jzmc;
+				}
+				zslx = document.getElementById(idArr[1]).innerText;
+				qxlx = document.getElementById(idArr[2]).innerText;
+				return zsmc + "-" + qxlx + "-" + zslx;
+			}
+		}
+		function generateData(arrZslxAndQxlx,data){
+			var zslx = arrZslxAndQxlx.substring(0, arrZslxAndQxlx.length-2);
+
+			var seriesData = [];
+			var obj = data[arrZslxAndQxlx];
+			for(var i in obj){
+				var arr = [];
+				arr[0] = parseInt(i);
+				arr[1] = obj[i];
+				seriesData.push(arr);
+			}
+			return seriesData;
+		}
+
+		function generateUploadIndexData(obj){
+			var seriesData = [];
+			for(var i in obj){
+				var arr = [];
+				arr[0] = parseInt(i);
+				arr[1] = obj[i];
+				seriesData.push(arr);
+			}
+			return seriesData;
+		}
+		function singleIndexQuery(){
+			uploadIndex = false;
+			hbIndex = false;
+			mbdqrIndex = false;
+			dzcIndexFlag = false;
+			displayUploadIndex = false;
+			document.getElementById("init").value = "false";
+			$("#singleIndexSearchBtn").attr("disabled", "disabled");//禁用
+			$("#singleIndexSearchBtn").css("background-color", "#fff");
+
+			qxlxt = "";
+			zslxt = "";
+			indexid = getCheckNode();
+			var url = "/cbweb-mn/indices/queryZslb?indexid="+indexid+"";
+			$.ajax({
+				type : "post",
+				url : url,
+				cache : false,
+				success : function(data){
+					if(data == true){
+						dummyIndex = true;
+					}else{
+						dummyIndex = false;
+					}
+					queryIndex(indexid);
+				},
+				error : function(e){
+					if(document.getElementById("init").value == "false"){
+						alert("Loading data failed"); //取得数据失败
+					}
+					$("#singleIndexSearchBtn").removeAttr("disabled");//可用
+					$("#singleIndexSearchBtn").css("background-color", "");
+				}
+			});
+
+		}
+
+		//键盘事件
+		function keyClick(){
+			$(document).keydown(function(e){
+				if(uploadIndex){
+					chart = uploadIndexChart;
+				}
+				if(hbIndex){
+					chart = hbIndexChart;
+				}
+				if(mbdqrIndex){
+					chart = mbdqrIndexChart;
+				}
+				if(dzcIndexFlag){
+					chart = dzschart;
+				}
+				if(chart == null){
+					return;
+				}
+				if(typeof(chart.hoverPoints) == "undefined"){
+					return;
+				}
+				var category = chart.hoverPoints[0].category;
+
+				var d = chart.xAxis[0].getExtremes();
+				startDate = d.min;
+				endDate = d.max;
+				var startIndex = null;
+				var endIndex = null;
+
+				if(endDate.toString().indexOf(".") > -1){ //小数
+					var data = chart.series[0].data;
+					for(var k = 0; k < data.length; k++){
+						if(endDate < data[k].x){
+							endDate = data[k-1].x
+							endIndex = k-1;
+							break;
+						}
+					}
+				}else{ //整数
+					var data = chart.series[0].data;
+					for(var m = 0; m < data.length; m++){
+						if(endDate == data[m].x){
+							endIndex = m;
+							break;
+						}
+					}
+				}
+
+
+				if(startDate.toString().indexOf(".") > -1){ //小数
+					var data = chart.series[0].data;
+					for(var h = 0; h < data.length; h++){
+						if(startDate < data[h].x){
+							startDate = data[h].x
+							startIndex = h;
+							break;
+						}
+					}
+				}else{ //整数
+					var data = chart.series[0].data;
+					for(var n = 0; n < data.length; n++){
+						if(startDate == data[n].x){
+							startIndex = n;
+							break;
+						}
+					}
+				}
+
+				var series = chart.series;
+				if(e.keyCode == 37){//左键
+					var arr = [];
+					for(var i = 0; i < series.length; i++){
+						if(series[i].type == 'areaspline'){
+							continue;
+						}
+						for(var j = 0; j < series[i].data.length; j++){
+							if(series[i].data[j].category == category){
+								if(j == 0 || j == startIndex){
+									j = endIndex + 1;
+								}
+								if(series[i].visible == true){
+									arr.push(chart.series[i].data[j-1]);
+								}
+								chart.series[i].data[j-1].onMouseOver(true);
+								chart.axes[0].drawCrosshair(null,chart.series[i].data[j-1]);
+								break;
+							}
+						}
+					}
+					chart.tooltip.refresh(arr);
+				}
+				if(e.keyCode == 39){ //右键
+					var arr = [];
+					for(var i = 0; i < series.length; i++){
+						if(series[i].type == 'areaspline'){
+							continue;
+						}
+						for(var j = 0; j < series[i].data.length; j++){
+							if(series[i].data[j].category == category){
+								if((j == series[i].data.length - 1) || (j == endIndex)){
+									j = startIndex - 1;
+								}
+								if(series[i].visible == true){
+									arr.push(chart.series[i].data[j+1]);
+								}
+								chart.series[i].data[j+1].onMouseOver(true);
+								chart.axes[0].drawCrosshair(null,chart.series[i].data[j+1]);
+								break;
+							}
+						}
+					}
+					chart.tooltip.refresh(arr);
+				}
+			});
+		}
+
+		function autoChangeWidth(){
+			$("#mainleft_box").mouseover(function(){
+				$(this).width(320);
+				$("#treeDemo").width(320);
+				$("#leftbox_word").width(320);
+				$("#mainright_box").width(400);
+			});
+			$("#mainleft_box").mouseout(function(){
+				$(this).width(220);
+				$("#treeDemo").width(200);
+				$("#leftbox_word").width(200);
+				$("#mainright_box").width(710);
+			});
+		}
+
+		function getServerIP()
+		{
+			var host = window.location.hostname;
+			var port = window.location.port;
+			var serverIP = "http://" + host;
+			if(port != "")
+			{
+				serverIP +=":" + port;
+			}
+			serverIP+="/cbweb-mn";
+			window.open(serverIP+"/indices/multi_index_query?locale=en_US", "_blank");
+		}
+
+		function multiIndexQuery(){
+			getServerIP();
+		}
+
+
+		function changeTime(longDate){
+			if(document.getElementById("hbIndexDiv").style.display == "inherit"){
+				$("#hbIndexDate").val(dateConvert(longDate));
+			}else if(document.getElementById("mbdqrIndexDiv").style.display == "inherit"){
+				$("#mbdqrIndexDate").val(dateConvert(longDate));
+			}else{
+				$("#queryDate").val(dateConvert(longDate));
+			}
+		}
+
+		//日期转换
+		function dateConvert(longDate){
+			var time = new Date(longDate);
+			var month=time.getMonth()+1;
+			var day = time.getDate();
+			month = month < 10 ? ("0" + month) : month;
+			day = day < 10 ? ("0" + day) : day;
+			return time.getFullYear() + "-" + month + "-" + day;
+		}
+
+		function updateCrosshairAndTooltip(){
+			var index = null;
+			var long_gzr = null;
+			var gzr;
+			var HbIndexDisplay = document.getElementById("hbIndexDiv").style.display;
+			var MbdqrIndexDisplay = document.getElementById("mbdqrIndexDiv").style.display;
+			var uploadIndexDisplay = document.getElementById("uploadIndexDiv").style.display;
+
+			if(HbIndexDisplay == "inherit"){
+				gzr = document.getElementById("hbIndexDate").value;
+				chart = hbIndexChart;
+			}else if(MbdqrIndexDisplay == "inherit"){
+				gzr = document.getElementById("mbdqrIndexDate").value;
+				chart = mbdqrIndexChart;
+			}else if(uploadIndexDisplay == "inherit"){
+				gzr = document.getElementById("rq").innerHTML;
+				chart = uploadIndexChart
+			}else{
+				gzr = document.getElementById("queryDate").value;
+			}
+			var gzrArr = gzr.split("-");
+			var long_gzr = new Date(gzrArr[0], gzrArr[1]-1, gzrArr[2]).getTime();
+			var series = chart.series;
+			var data = series[0].data;
+			for(var i = 0; i < data.length; i++){
+				if(data[i].x == long_gzr){
+					index = i;
+					break;
+				}
+			}
+
+			var arr = [];
+			for(var j = 0; j < series.length; j++){
+				if(series[j].name == "Navigator 1"){
+					continue;
+				}
+				arr.push(series[j].data[index]);
+			}
+
+			chart.tooltip.refresh(arr);
+			chart.axes[0].drawCrosshair(null,series[0].data[index]);
+		}
+
+		function queryHandle(){
+			var index = null;
+			var long_gzr = null;
+			var gzr ;
+			var HbIndexDisplay = document.getElementById("hbIndexDiv").style.display;
+			var MbdqrIndexDisplay = document.getElementById("mbdqrIndexDiv").style.display;
+			if(HbIndexDisplay == "inherit"){
+				gzr = $("#hbIndexDate").val();
+				chart = hbIndexChart
+			}else if(MbdqrIndexDisplay == "inherit"){
+				gzr = $("#mbdqrIndexDate").val();
+				chart = mbdqrIndexChart
+			}else{
+				gzr = $("#queryDate").val();
+			}
+			var gzrArr = gzr.split("-");
+			var long_gzr = new Date(gzrArr[0], gzrArr[1]-1, gzrArr[2]).getTime();
+			var series = chart.series;
+			var data = series[0].data;
+			for(var i = 0; i < data.length; i++){
+				if(data[i].x == long_gzr){
+					index = i;
+					if(typeof(data[i].key) == "undefined"){
+						data[i].key = gzr;
+					}
+					break;
+				}
+			}
+			if(index == null){
+				alert("The input date is out of the range, please correct it"); //您所输入的日期不在当前指数工作日范围内 请重新输入
+				return;
+			}
+			var arr = [];
+			for(var j = 0; j < series.length; j++){
+				if(series[j].name == "Navigator 1"){
+					continue;
+				}
+				arr.push(series[j].data[index]);
+			}
+			var d = chart.xAxis[0].getExtremes();
+			var maxCategory = d.max;
+			var minCategory = d.min;
+
+			if(maxCategory.toString().indexOf(".") > -1){
+				for(var k = 0; k < data.length; k++){
+					if(maxCategory < data[k].x){
+						maxCategory = data[k-1].x
+						break;
+					}
+				}
+			}
+			if(minCategory.toString().indexOf(".") > -1){
+				for(var h = 0; h < data.length; h++){
+					if(minCategory < data[h].x){
+						minCategory = data[h-1].x
+						break;
+					}
+				}
+			}
+
+			var MaxIndex = null;
+			var MinIndex = null;
+			for(var i = 0; i < data.length; i++){
+				if(data[i].x == minCategory){
+					MinIndex = i;
+				}
+				if(data[i].x == maxCategory){
+					MaxIndex = i;
+					break;
+				}
+			}
+			var currentChartPoints = MaxIndex - MinIndex + 1;
+			if(long_gzr >= minCategory && long_gzr <= maxCategory){ // 查询日期在当前图形X轴范围内
+				if(typeof(chart.tooltip) != "undefined"){
+					chart.tooltip.refresh(arr);
+				}
+				chart.axes[0].drawCrosshair(null,series[0].data[index]);
+				return;
+			}else if(long_gzr < minCategory){ //小于当前图形X轴最小值
+				chart.xAxis[0].setExtremes(long_gzr,data[index+currentChartPoints].x);
+			}else{ //大于当前图形X轴最大值
+				if(index+currentChartPoints <= data.length - 1){
+					chart.xAxis[0].setExtremes(long_gzr,data[index+currentChartPoints].x);
+				}else{
+					chart.xAxis[0].setExtremes(long_gzr,data[data.length - 1].x);
+				}
+			}
+			if(typeof(chart.tooltip) != "undefined"){
+				chart.tooltip.refresh(arr);
+			}
+			chart.axes[0].drawCrosshair(null,series[0].data[index]);
+		}
+
+		function onRightClick() {
+			$('div.graph').contextMenu('myMenu1', {
+				//菜单样式
+				menuStyle: {
+					width : menuWidth
+				},
+				//菜单项样式
+				itemStyle: {
+					color: 'black',
+					fontSize:"12px",
+					width: menuItemWidth
+				},
+				//菜单项鼠标放在上面样式
+				itemHoverStyle: {
+					backgroundColor: '#EBF6FB'
+				},
+				bindings: {
+					'sctp': function(t) {
+						if(uploadIndex){
+							uploadIndexChart.exportChartLocal({filename:new Date().getTime(),type:'image/jpeg'});
+						}else if(hbIndex){
+							hbIndexChart.exportChartLocal({filename:new Date().getTime(),type:'image/jpeg'});
+						}else if(mbdqrIndex){
+							mbdqrIndexChart.exportChartLocal({filename:new Date().getTime(),type:'image/jpeg'});
+						}else{
+							chart.exportChartLocal({filename:new Date().getTime(),type:'image/jpeg'});
+						}
+					}
+				}
+			});
+		}
+		var checkFlag=0;
+		//默认 radio
+		function radio_mrClick(){
+			document.getElementById("select_qx").disabled = true;
+			document.getElementById("qj").disabled = true;
+			document.getElementById("jj").disabled = true;
+			document.getElementById("cf").disabled = true;
+			document.getElementById("lab_qj").style.color = "graytext";
+			document.getElementById("lab_jj").style.color = "graytext";
+			document.getElementById("lab_cf").style.color = "graytext";
+			var objs_ltcs=$(".ltcs_class");
+			var objs_dcqx=$(".dcqx_class");
+			for (var i = 0; i <objs_ltcs.length ; i++) {
+				objs_ltcs[i].disabled=true;
+			}
+			for (var j = 0; j <objs_dcqx.length ; j++) {
+				objs_dcqx[j].disabled=true;
+			}
+			document.getElementById("select_zslx").disabled = true;
+			document.getElementById("qxlx_div_4").disabled = true;
+			document.getElementById("qxlx_div_4").style.color = "graytext";
+			document.getElementById("qxlx_div_1").disabled = true;
+			document.getElementById("qxlx_div_1").style.color = "graytext";
+
+			checkFlag=0;
+		}
+
+		//指数类型 radio
+		function radio_zslxClick(){
+			document.getElementById("select_qx").disabled = false;
+			document.getElementById("qj").disabled = false;
+			document.getElementById("jj").disabled = false;
+			document.getElementById("cf").disabled = false;
+			document.getElementById("lab_qj").style.color = "";
+			document.getElementById("lab_jj").style.color = "";
+			document.getElementById("lab_cf").style.color = "";
+			document.getElementById("select_zslx").disabled = true;
+			var objs_ltcs=$(".ltcs_class");
+			var objs_dcqx=$(".dcqx_class");
+			for (let i = 0; i <objs_ltcs.length ; i++) {
+				objs_ltcs[i].disabled=true;
+			}
+			for (let j = 0; j <objs_dcqx.length ; j++) {
+				objs_dcqx[j].disabled=true;
+			}
+			document.getElementById("qxlx_div_4").disabled = true;
+			document.getElementById("qxlx_div_4").style.color = "graytext";
+			document.getElementById("qxlx_div_1").disabled = true;
+			document.getElementById("qxlx_div_1").style.color = "graytext";
+			checkFlag=0;
+		}
+		//期限类型 radio
+		function radio_qxlxClick(){
+			document.getElementById("select_zslx").disabled = false;
+			var objs_ltcs=$(".ltcs_class");
+			var objs_dcqx=$(".dcqx_class");
+			for (let i = 0; i <objs_ltcs.length ; i++) {
+				objs_ltcs[i].disabled=false;
+			}
+			for (let j = 0; j <objs_dcqx.length ; j++) {
+				objs_dcqx[j].disabled=false;
+			}
+
+			document.getElementById("qxlx_div_4").disabled = false;
+			document.getElementById("qxlx_div_4").style.color = "";
+			document.getElementById("qxlx_div_1").disabled = false;
+			document.getElementById("qxlx_div_1").style.color = "";
+			document.getElementById("select_qx").disabled = true;
+			document.getElementById("qj").disabled = true;
+			document.getElementById("jj").disabled = true;
+			document.getElementById("cf").disabled = true;
+			document.getElementById("lab_qj").style.color = "graytext";
+			document.getElementById("lab_jj").style.color = "graytext";
+			document.getElementById("lab_cf").style.color = "graytext";
+			checkFlag=1;
+		}
+
+		function zsqxlxOnClick() {
+			if (checkFlag === 1) {
+				fxxlk("qxcheck", "qxlx", "zsqxcheckAll");
+				var objs_ltcs=$(".ltcs_class");
+				var objs_dcqx=$(".dcqx_class");
+				for (let i = 0; i < objs_ltcs.length; i++) {
+					objs_ltcs[i].disabled = false;
+				}
+				for (let j = 0; j < objs_dcqx.length; j++) {
+					objs_dcqx[j].disabled = false;
+				}
+				document.getElementById("qxlx_div_4").disabled = false;
+				document.getElementById("qxlx_div_4").style.color = "";
+				document.getElementById("qxlx_div_1").disabled = false;
+				document.getElementById("qxlx_div_1").style.color = "";
+
+			}
+		}
+
+		function zsltcsOnClick() {
+			if (checkFlag === 1) {
+				ltcs_fxxlk("ltcscheck", "ltcs", "ltcscheckAll");
+				var objs_ltcs=$(".ltcs_class");
+				var objs_dcqx=$(".dcqx_class");
+				for (let i = 0; i < objs_ltcs.length; i++) {
+					objs_ltcs[i].disabled = false;
+				}
+				for (let j = 0; j < objs_dcqx.length; j++) {
+					objs_dcqx[j].disabled = false;
+				}
+				document.getElementById("qxlx_div_1").disabled = false;
+				document.getElementById("qxlx_div_1").style.color = "";
+				document.getElementById("qxlx_div_4").disabled = false;
+				document.getElementById("qxlx_div_4").style.color = "";
+
+			}
+		}
+
+
+		function qxlxCheckboxStyle(){
+			if(true){
+				$("#lab_wq_1").remove();
+				$("#lab_qs_1").remove();
+				$("#lab_sn_1").remove();
+
+			}else{
+				$("#lab_wq_2").remove();
+				$("#lab_qs_2").remove();
+				$("#lab_sn_2").remove();
+
+			}
+		}
+
+		//宽窄屏切换
+		function changeAutoWidth(){
+			widescreen = false;
+			widthauto();
+
+			var showAllDiv;
+			var HbIndexDisplay = document.getElementById("hbIndexDiv").style.display;
+			var MbdqrIndexDisplay = document.getElementById("mbdqrIndexDiv").style.display;
+			var uploadIndexDisplay = document.getElementById("uploadIndexDiv").style.display;
+			var conditionDisplay = document.getElementById("condition").style.display;
+			if(HbIndexDisplay == "inherit"){
+				chart = hbIndexChart;
+				showAllDiv = document.getElementById("hbIndexShowAll");
+			}else if(MbdqrIndexDisplay == "inherit"){
+				chart = mbdqrIndexChart;
+				showAllDiv = document.getElementById("mbdqrIndexShowAll");
+			}else if(uploadIndexDisplay == "inherit"){
+				chart = uploadIndexChart;
+				showAllDiv = document.getElementById("uploadIndexShowAll");
+			}else{
+				showAllDiv = document.getElementById("showAll");
+			}
+
+			if(document.getElementById("switchwidth").className == "switchwidth"){
+				widescreen = true;
+				var	width = (document.getElementById("main").offsetWidth) * 0.76;
+				chart.setSize(width,530,false);
+			}else{
+				chart.setSize(755,530,false);
+			}
+
+			var legendHeight = chart.legend.legendHeight;//图形高度
+			chart.update({
+				chart : {
+					marginTop : legendHeight + 20
+				},
+				navigator : {
+					top : legendHeight
+				}
+			});
+			showAllDiv.style.top = -480 + legendHeight + "px";
+			if(showYaxis && conditionDisplay == "inherit"){
+				showAllDiv.style.marginRight = "60px";
+			}else{
+				showAllDiv.style.marginRight = "10px";
+			}
+
+			updateCrosshairAndTooltip();
+		}
+
+		//展示全部图形后，隐藏showAll
+		function showAll(){
+			if(displayUploadIndex){
+				uploadIndexChart.xAxis[0].setExtremes(null,null);
+				$("#uploadIndexShowAll").css("display","none");
+			}else if(hbIndex){
+				hbIndexChart.xAxis[0].setExtremes(null,null);
+				$("#hbIndexShowAll").css("display","none");
+			}else if(mbdqrIndex){
+				mbdqrIndexChart.xAxis[0].setExtremes(null,null);
+				$("#mbdqrIndexShowAll").css("display","none");
+			}else{
+				chart.xAxis[0].setExtremes(null,null);
+				$("#showAll").css("display","none");
+			}
+		}
+
+		//未展示全部图形时候显示showAll
+		function show_showAll(e){
+			if(displayUploadIndex){
+				$("#uploadIndexShowAll").css("display","inherit");
+			}else if(hbIndex){
+				$("#hbIndexShowAll").css("display","inherit");
+			}else if(mbdqrIndex){
+				$("#mbdqrIndexShowAll").css("display","inherit");
+			}else{
+				$("#showAll").css("display","inherit");
+			}
+		}
+		//判断访问是否来自PC设备
+		function isPC(){
+			var sUserAgent = navigator.userAgent.toLowerCase();
+			var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+			var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+			var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+			var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+			var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+			var bIsAndroid = sUserAgent.match(/android/i) == "android";
+			var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+			var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+			if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+				return false;
+			} else {
+				return true;
+			}
+		}
+
+		var uploadIndex = false;
+		var firstDate = null;
+		var lastDate = null;
+		var displayUploadIndex = false;
+		function uploadIndexInit(id,zszb,zshz){
+			uploadIndex = true;
+			displayUploadIndex = true;
+			hbIndex = false;
+			mbdqrIndex = false;
+			dzcIndexFlag = false;
+			//ConvertToUploadIndex();//切换到上传指数
+			var url = "/cbweb-mn/indices/uploadIndexInit?indexid="+id+"&zszb="+zszb+"&zshz="+zshz+"&locale=en_US";
+
+			$.ajax({
+				type : "post",
+				url : url,
+				cache : false,
+				dataType : "json",
+				success : function(data){
+					if(data.emsg != null){
+						uploadIndexChart = null;
+						$('#uploadIndexGraph').html("");
+						$("#uploadIndexShowAll").css("display","none");
+						if(data.emsg == msg.msgDqzsmyjsjg){
+							alert(data.emsg);
+						}else{
+							alert("Loading data failed"); //取得数据失败
+						}
+
+					}else{
+						uploadIndex_data_bak = data;
+						firstDate = data.firstDate;
+						lastDate = data.lastDate;
+						options.series = [];
+						options.series[0] = Object();
+						options.series[0].lineWidth = 1.5;
+						options.series[0].data = generateUploadIndexData(data.zsz);
+						options.series[0].name = data.legend;
+						options.series[0].marker = {symbol : 'circle'};
+						options.series[0].color = colorArr_index[0];
+						options.series[0].dataGrouping = {enabled : false};
+						options.series[0].tooltip = {xDateFormat : '%Y-%m-%d'};
+						options.chart.renderTo = 'uploadIndexGraph';
+						options.chart.marginTop = 49;
+						options.navigator.top = 29;
+						if(typeof(options.yAxis[1]) != "undefined"){
+							options.yAxis.splice(1,1); //删除右轴
+							showYaxis = false;
+						}
+						uploadIndexChart = new Highcharts.StockChart(options);
+						$("#uploadIndexShowAll").css("display","none");
+						$("#rightKeyMenu").css("display","block");
+						$("#isDfzfqx").css("display","none");
+						$("#isDzczs").css("display","none");
+						$("#iskzz").css("display","none");
+						$("#startDate").val(data.firstDate);
+						$("#endDate").val(data.currentDate);
+					}
+				},
+				error : function(e){
+					$('#uploadIndexGraph').html("");
+					$("#uploadIndexShowAll").css("display","none");
+					alert("Loading data failed"); //取得数据失败
+				}
+			});
+		}
+
+		function queryByzblx(){
+			id = getCheckNode();
+			id = id.replace("_tpfzs","");
+			var zszb = $("#select_zszblxv option:selected").val();
+			ConvertToTPFIndex();
+			uploadIndexInit(id,zszb,"TPFZS");
+		}
+
+
+
+		function changeGpzsStatus(id) {
+			// 渲染新页面
+			var url = "/cbweb-mn/indices/gpzs?indexId="+id+"&locale=en_US";
+			$.ajax({
+				type: "post",
+				url: url,
+				cache: false,
+				dataType: "html",
+				success: function (data) {
+					$("#isDfzfqx").html(data);
+				}
+			});
+			mark = 1;
+		}
+		/**
+		 * 多资产指数
+		 */
+		var dzcIndexFlag = false;
+		function changedzczsStatus(id) {
+			id = id.replace("_dzc","");
+			// 渲染新页面
+			var url = "/cbweb-mn/indices/dzcPage?indexId="+id+"&locale=en_US";
+			$.ajax({
+				type: "post",
+				url: url,
+				cache: false,
+				dataType: "html",
+				success: function (data) {
+					$("#isDzczs").html(data);
+					uploadIndex = false;
+					displayUploadIndex = false;
+					hbIndex = false;
+					mbdqrIndex = false;
+					dzcIndexFlag = true;
+				}
+			});
+			mark = 1;
+		}
+
+		/**
+		 * 可转债指数
+		 */
+		function changekzzzsStatus(id) {
+			id = id.replace("_kzz","");
+			// 渲染新页面
+			var url = "/cbweb-mn/indices/kzzPage?indexId="+id+"&&locale=en_US";
+			$.ajax({
+				type: "post",
+				url: url,
+				cache: false,
+				dataType: "html",
+				success: function (data) {
+					$("#iskzz").html(data);
+				}
+			});
+			mark = 1;
+		}
+		var jjhbl;
+		var lxhbl;
+		var zhbl;
+		var zsz;
+
+		/**
+		 * 可转债指数
+		 */
+		function kzzzshidden(){
+			$("#uploadIndexDiv").css("display","none");
+			$("#condition").css("display","none");
+			$("#hbIndexDiv").css("display","none");
+			$("#mbdqrIndexDiv").css("display","none");
+			$("#isDfzfqx").css("display","none");
+			$("#zszblx").css("display","none");
+			$("#isDzczs").css("display","none");
+			$("#iskzz").css("display","block");
+			if(isIE){
+				$("#dateimgS").css("paddingTop","5px");
+				$("#dateimgE").css("paddingTop","5px");
+			}
+		}
+		/**
+		 * 多资产指数
+		 */
+		function dzczshidden(){
+			$("#uploadIndexDiv").css("display","none");
+			$("#condition").css("display","none");
+			$("#hbIndexDiv").css("display","none");
+			$("#mbdqrIndexDiv").css("display","none");
+			$("#isDfzfqx").css("display","none");
+			$("#zszblx").css("display","none");
+			$("#isDzczs").css("display","block");
+			$("#iskzz").css("display","none");
+			if(isIE){
+				$("#dateimgS").css("paddingTop","5px");
+				$("#dateimgE").css("paddingTop","5px");
+			}
+		}
+		/**
+		 * 股票指数
+		 */
+		function gpzshidden(){
+			$("#uploadIndexDiv").css("display","none");
+			$("#condition").css("display","none");
+			$("#hbIndexDiv").css("display","none");
+			$("#mbdqrIndexDiv").css("display","none");
+			$("#zszblx").css("display","none");
+			$("#isDfzfqx").css("display","block");
+			$("#isDzczs").css("display","none");
+			$("#iskzz").css("display","none");
+			if(isIE){
+				$("#dateimgS").css("paddingTop","5px");
+				$("#dateimgE").css("paddingTop","5px");
+			}
+		}
+
+		function ConvertToUploadIndex(){
+			$("#uploadIndexDiv").css("display","inherit");
+			$("#condition").css("display","none");
+			$("#zszblx").css("display","none");
+			$("#hbIndexDiv").css("display","none");
+			$("#mbdqrIndexDiv").css("display","none");
+			$("#isDfzfqx").css("display","none");
+			$("#isDzczs").css("display","none");
+			$("#iskzz").css("display","none");
+			if(isIE){
+				$("#dateimgS").css("paddingTop","5px");
+				$("#dateimgE").css("paddingTop","5px");
+			}
+		}
+		function ConvertToTPFIndex(){
+			$("#uploadIndexDiv").css("display","inherit");
+			$("#condition").css("display","none");
+			$("#zszblx").css("display","block");
+			$("#hbIndexDiv").css("display","none");
+			$("#mbdqrIndexDiv").css("display","none");
+			$("#isDfzfqx").css("display","none");
+            $("#iskzz").css("display","none");
+			if(isIE){
+				$("#dateimgS").css("paddingTop","5px");
+				$("#dateimgE").css("paddingTop","5px");
+			}
+		}
+
+		function ConvertToSingleIndex(){
+			$('#graph').html("");
+			$("#showAll").css("display","none");
+			$("#zszblx").css("display","none");
+			$("#rightKeyMenu").css("display","none");
+			$("#uploadIndexDiv").css("display","none");
+			$("#hbIndexDiv").css("display","none");
+			$("#mbdqrIndexDiv").css("display","none");
+			$("#isDfzfqx").css("display","none");
+			$("#isDzczs").css("display","none");
+			$("#iskzz").css("display","none");
+			$("#condition").css("display","inherit");
+			$("#queryDate").css("display","inherit");
+			$("#queryDate").val("");
+
+		}
+
+		var hbIndex = false;
+		function hbIndexQuery(id){
+			uploadIndex = false;
+			displayUploadIndex = false;
+			hbIndex = true;
+			mbdqrIndex = false;
+			dzcIndexFlag = false;
+			var hbZslx = null;
+			if(typeof(id) == "undefined"){
+				id = getCheckNode();
+			}
+			id = id.replace("_hbzs","");
+			if(document.getElementById("hb_cf").checked){
+				hbZslx = "cfzsdw";
+			}
+			if(document.getElementById("hb_jj").checked){
+				if(hbZslx == "" || hbZslx == null){
+					hbZslx = "jjzsdw";
+				}else{
+					hbZslx = hbZslx + "," + "jjzsdw" ;
+				}
+			}
+			if(hbZslx == null){
+				alert("Please select an indicator"); //请选择指数指标
+				return
+			}
+			var url = "/cbweb-mn/indices/hbIndexQuery?indexid="+id+"&&hbZslx="+hbZslx+"&&locale=en_US"
+
+			$.ajax({
+				type : "post",
+				url : url,
+				cache : false,
+				dataType : "json",
+				success : function(data){
+					if(data.length == 0){
+						$('#hbIndexGraph').html("");
+						$("#hbIndexShowAll").css("display","none");
+						$("#rightKeyMenu").css("display","none");
+						alert("Loading data failed");
+					}else{
+						options.series = [];
+						for(var i = 0; i < data.length; i++){
+							options.series[i] = Object();
+							options.series[i].lineWidth = 1.5;
+							options.series[i].data = generateUploadIndexData(data[i].dataMap);
+							options.series[i].name = data[i].zsmc;
+							options.series[i].marker = {symbol : 'circle'};
+							options.series[i].color = colorArr_index[i];
+							options.series[i].dataGrouping = {enabled : false};
+							options.series[i].tooltip = {xDateFormat : '%Y-%m-%d'};
+						}
+
+						options.chart.renderTo = 'hbIndexGraph';
+						options.chart.marginTop = 49;
+						options.navigator.top = 29;
+						if(typeof(options.yAxis[1]) != "undefined"){
+							options.yAxis.splice(1,1); //删除右轴
+							showYaxis = false;
+						}
+						options.plotOptions.series.point.events.mouseOver = function(){
+							changeTime(this.x);
+						}
+
+						var tempOptions = {};
+						for(var i in options){
+							tempOptions[i]= options[i];
+						}
+
+						var tempData = options.series[0].data;
+						var lastDay = tempData[tempData.length-1][0];
+
+						hbIndexChart = new Highcharts.StockChart(options);
+						var legendHeight = hbIndexChart.legend.legendHeight;//图形高度
+						tempOptions = locationChart(legendHeight,tempOptions,true,false);
+
+						hbIndexChart = new Highcharts.StockChart(tempOptions);
+
+						$("#hbIndexShowAll").css("display","none");
+						$("#isDfzfqx").css("display","none");
+						$("#isDzczs").css("display","none");
+						$("#iskzz").css("display","none");
+						$("#rightKeyMenu").css("display","block");
+						$("#hbIndexDate").val(dateConvert(lastDay));
+
+					}
+				},
+				error : function(e){
+					$('#hbIndexGraph').html("");
+					$("#hbIndexShowAll").css("display","none");
+					$("#rightKeyMenu").css("display","none");
+					alert("Loading data failed"); //取得数据失败
+
+				}
+			});
+		}
+		//切换到合编指数
+		function ConvertToHbIndex(){
+			$("#condition").css("display","none");
+			$("#uploadIndexDiv").css("display","none");
+			$("#isDfzfqx").css("display","none");
+			$("#isDzczs").css("display","none");
+			$("#iskzz").css("display","none");
+			$("#hbIndexDiv").css("display","inherit");
+			$("#mbdqrIndexDiv").css("display","none");
+			document.getElementById("hb_cf").checked = true;
+			document.getElementById("hb_jj").checked = false;
+
+		}
+
+		var mbdqrIndex = false;
+		function mbdqrIndexQuery(id){
+			uploadIndex = false;
+			displayUploadIndex = false;
+			hbIndex = false;
+			mbdqrIndex = true;
+			dzcIndexFlag = false;
+			var mbdqrZslx = null;
+			if(typeof(id) == "undefined"){
+				id = getCheckNode();
+			}
+			id = id.replace("_mbdqrzs","");
+			mbdqrZslx = "cfzsdw";
+			var url = "/cbweb-mn/indices/mbdqrIndexQuery?indexid="+id+"&&mbdqrZslx="+mbdqrZslx+"&&locale=en_US"
+
+			$.ajax({
+				type : "post",
+				url : url,
+				cache : false,
+				dataType : "json",
+				success : function(data){
+					if(data.length == 0){
+						$('#mbdqrIndexGraph').html("");
+						$("#mbdqrIndexShowAll").css("display","none");
+						$("#rightKeyMenu").css("display","none");
+						alert("Loading data failed");
+					}else{
+						options.series = [];
+						for(var i = 0; i < data.length; i++){
+							options.series[i] = Object();
+							options.series[i].lineWidth = 1.5;
+							options.series[i].data = generateUploadIndexData(data[i].dataMap);
+							options.series[i].name = data[i].zsmc;
+							options.series[i].marker = {symbol : 'circle'};
+							options.series[i].color = colorArr_index[i];
+							options.series[i].dataGrouping = {enabled : false};
+							options.series[i].tooltip = {xDateFormat : '%Y-%m-%d'};
+						}
+
+						options.chart.renderTo = 'mbdqrIndexGraph';
+						options.chart.marginTop = 49;
+						options.navigator.top = 29;
+						if(typeof(options.yAxis[1]) != "undefined"){
+							options.yAxis.splice(1,1); //删除右轴
+							showYaxis = false;
+						}
+						options.plotOptions.series.point.events.mouseOver = function(){
+							changeTime(this.x);
+						}
+
+						var tempOptions = {};
+						for(var i in options){
+							tempOptions[i]= options[i];
+						}
+
+						var tempData = options.series[0].data;
+						var lastDay = tempData[tempData.length-1][0];
+
+						mbdqrIndexChart = new Highcharts.StockChart(options);
+						var legendHeight = mbdqrIndexChart.legend.legendHeight;//图形高度
+						tempOptions = locationChart(legendHeight,tempOptions,false,true);
+
+						mbdqrIndexChart = new Highcharts.StockChart(tempOptions);
+
+						$("#mbdqrIndexShowAll").css("display","none");
+						$("#isDfzfqx").css("display","none");
+						$("#isDzczs").css("display","none");
+						$("#iskzz").css("display","none");
+						$("#rightKeyMenu").css("display","block");
+						$("#mbdqrIndexDate").val(dateConvert(lastDay));
+
+					}
+				},
+				error : function(e){
+					$('#mbdqrIndexGraph').html("");
+					$("#mbdqrIndexShowAll").css("display","none");
+					$("#rightKeyMenu").css("display","none");
+					alert("Loading data failed"); //取得数据失败
+
+				}
+			});
+		}
+		//切换到目标到期日指数
+		function ConvertToMbdqrIndex(){
+			$("#condition").css("display","none");
+			$("#uploadIndexDiv").css("display","none");
+			$("#isDfzfqx").css("display","none");
+			$("#isDzczs").css("display","none");
+			$("#iskzz").css("display","none");
+			$("#hbIndexDiv").css("display","none");
+			$("#mbdqrIndexDiv").css("display","inherit");
+			document.getElementById("mbdqr_cf").checked = true;
+
+		}
+
+		function uploadIndexQuery(){
+			var indexid = getCheckNode();
+			if(indexid.indexOf("_sczs") > 0){ //上传指数
+				indexid = indexid.replace("_sczs","");
+			}else if(indexid.indexOf("_tpfzs") > 0){ //碳排放指数
+				indexid = indexid.replace("_tpfzs","");
+			}
+			var startDate = $("#startDate").val();
+			var endDate = $("#endDate").val();
+			if(startDate == ""){
+				alert("请选择开始时间");
+				return;
+			}
+			if(endDate == ""){
+				alert("请选择结束时间");
+				return;
+			}
+			if(new Date(startDate) > new Date(endDate)){
+				if(true){
+					alert("Date error, ending date (" + endDate
+							+ ")must later than beginning date(" + startDate
+							+ ")");
+				}else{
+					alert("Date error, ending date (" + startDate
+							+ ")must later than beginning date(" + endDate
+							+ ")");
+				}
+				return;
+			}
+			if(startDate == endDate){
+				//不能选择一天，请选择一段日期
+				alert("You cannot select one date,please select more dates.")
+				return;
+			}
+			if(uploadIndexChart != null){
+				var obj = {};
+				var data = uploadIndexChart.series[0].data;
+				for(var i = 0; i < data.length; i++){
+					obj[data[i].x] = data[i].y;
+				}
+
+				var start = new Date((startDate + " 00:00:00").replace(/-/g, "/")).getTime();
+				var end = new Date((endDate + " 00:00:00").replace(/-/g, "/")).getTime();
+
+				var count = 0;
+				var startTemp = start;
+				var dayMillisecond = 24*60*60*1000; //一天中的毫秒数
+				for(startTemp; startTemp < end + dayMillisecond;){
+					if(typeof(obj[startTemp]) != "undefined"){
+						count = count + 1;
+						if(count == 1){
+							start = startTemp;
+						}
+					}
+					startTemp += dayMillisecond;
+				}
+
+				if(count == 0){ //0:查询时间段内无数据；
+					alert("No index is found") //没有查询到指数结果
+					return;
+				}
+
+				var endTemp = end;
+				for(endTemp; endTemp > start - dayMillisecond;){
+					var i = 0;
+					if(typeof(obj[endTemp]) != "undefined"){
+						end = endTemp;
+						break;
+					}
+					endTemp -= dayMillisecond;
+				}
+
+				uploadIndexChart.xAxis[0].setExtremes(start,end); //更新图形
+				updateTooltip(start,uploadIndexChart);
+			}
+			if(new Date(startDate) <= new Date(firstDate)
+					&& new Date(endDate) >= new Date(lastDate)){
+				$("#uploadIndexShowAll").css("display","none");
+			}
+		}
+
+		function updateTooltip(startDate,uploadIndexChart){
+			var index = null;
+			var series = uploadIndexChart.series;
+			var data = series[0].data;
+			for(var i = 0; i < data.length; i++){
+				if(data[i].x == startDate){
+					index = i;
+					break;
+				}
+			}
+			var arr = [];
+			arr.push(series[0].data[index]);
+			uploadIndexChart.tooltip.refresh(arr);
+			uploadIndexChart.axes[0].drawCrosshair(null,series[0].data[index]);
+		}
+
+		function uploadIndexDownLoad(){
+			var indexid = getCheckNode();
+			var zshz="";
+			if(indexid.indexOf("_sczs") > 0){ //上传指数
+				indexid = indexid.replace("_sczs","");
+				zshz="SCZS"
+			}else if(indexid.indexOf("_tpfzs") > 0){ //碳排放指数
+				indexid = indexid.replace("_tpfzs","");
+				 //zshz="SCZS" //回复之前的逻辑，修改此标记
+				zshz="TPFZS"
+			}
+			var startDate = $("#startDate").val();
+			var endDate = $("#endDate").val();
+			if(startDate == ""){
+				alert("请选择开始时间");
+				return;
+			}
+			if(endDate == ""){
+				alert("请选择结束时间");
+				return;
+			}
+			if(new Date(startDate) > new Date(endDate)){
+				alert("Date error, ending date (" + startDate
+						+ ")must later than beginning date(" + endDate
+						+ ")");
+				return;
+			}
+			$("#scyieldform").attr("action", "/cbweb-mn/indices/uploadIndexDownLoad?indexid="+indexid+"&startDate="+startDate+"&endDate="+endDate+"&zshz="+zshz+"&locale=en_US");
+			$("#scyieldform").submit();
+
+		}
+
+	</script>
+	<style type="text/css">
+		.ztree li span.button.icon01{margin:0px; width:18px;height:18px; background: url(/cbweb-mn/statics/images/pdf.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+		.ztree li span.button.icon02{margin:0px; width:18px;height:18px; background: url(/cbweb-mn/statics/images/excel.png) no-repeat scroll 0 0 transparent; vertical-align:top; *vertical-align:middle}
+	</style>
+</head>
+
+<body style="-ms-overflow-style:scrollbar;" oncontextmenu='return false' ondragstart='return false' onselectstart='return false'
+	  onselect='document.selection.empty()' oncopy='document.selection.empty()'>
+
+  <div class="head">
+       <div class="fl topleft">
+           <div class="logo">
+				<span><img src="/cbweb-mn/statics/images/logo.jpg" /></span>	
+           </div>
+       </div>
+       <div class="fr topright">
+           <div class="menu">
+                <div class="fl"><img src="/cbweb-mn/statics/images/top.jpg"/></div>          
+               <div class="funicon" id="funicon">
+                   <ul>
+                       <li>
+							
+
+
+
+	
+
+	
+		<!-- 英文链接  -->
+		<a href="/cbweb-mn/yield_main?locale=en_US" class="m1" title="ChinaBond Yield Curves"/></a>
+		<a href="/cbweb-mn/val/val_query_list?locale=en_US" class="m2" title="ChinaBond Valuation"/></a>
+		<a href="/cbweb-mn/indices/single_index_query?locale=en_US" class="m3" title="ChinaBond Indices"/></a>
+		<a href="/cbweb-mn/var/var_main?locale=en_US" class="m4" title="ChinaBond VaR"/></a>
+		
+		
+			<a href="/cbweb-mn/login?locale=en_US&place=1" class="m5" title="Customer Indices"/></a>
+		
+		
+		<a href="/cbweb-mn/int/int_main?locale=en_US" class="m8" title="Instructions" target="_blank"/></a>
+	
+
+	
+
+
+
+
+
+                       </li>
+                   </ul>
+               </div>
+           </div>
+       </div>
+    </div>       
+    <!--头部部分-->
+<input id="locale" type="hidden" value="en_US" />
+<input id="init" type="hidden" value="true"/>
+<div class="clear"></div>
+<div class="daohangse">
+	<div class="fl">
+		<img src="/cbweb-mn/statics/images/dot4.gif" align="absmiddle" />
+		
+			
+				Current Location：<a target="_blank"
+														href="http://www.chinabond.com.cn/d2s/engindex.html"
+														style="text-decoration: none; color: #666;">ChinaBond</a>
+			
+			
+		
+
+		-- <a href="/cbweb-mn/indices/single_index_query?locale=en_US"><!-- 中债指数 -->ChinaBond Indices</a>
+	</div>
+	<div id="kzpDiv" class="fr qh" style="padding-top:5px;">
+		<a onclick="changeAutoWidth()" id="switchwidth" class="switchwidthzhai"
+		   href="javascript:" title="Change to wide version"><img
+				src="/cbweb-mn/statics/images/switch_width.png" /></a>
+	</div>
+	<div class="fr qh">
+		
+			
+				<input class="lButton blue medium btn" type="button" id="mybutton" value="中文" onclick="window.location = '../indices/single_index_query?locale=zh_CN'"/>
+			
+			
+		
+	</div>
+
+	<div class="clear"></div>
+</div>
+<!--导航-->
+<div id = "main" class="main">
+	<div class="width">
+		<div class="fl treeleft ztree" id="treeDemo"></div>
+		<!--左边的菜单树-->
+		<form id = "scyieldform" method = "post" ></form>
+		<div id = "rightarea" class="rightarea">
+			<div align="center">
+				<div id="zszblx" style="padding-top: 10px; padding-left:15px;height: 22px;font-size:13px; display: none">
+					<div style="float: left">
+						<label><!--指标类型 -->Analytics</label>
+						<select id="select_zszblxv"  style="height: 22px;" >
+							<option id="ZSZ" value="ZSZ"><!--指数值-->Index</option>
+							<option id="HBL" value="HBL"><!--回报率-->Index Return (%)</option>
+							<option id="CJL" value="CJL"><!--成交量（万吨）-->Trading Volumn (10 Thousand Ton)</option>
+							<option id="CJJE" value="CJJE"><!--成交金额（万元）-->Trading Value (10 Thousand YUAN)</option>
+							<option id="WAP" value="WAP"><!--加权平均成交价（元/吨）-->Weighted Average Price (YUAN per Ton)</option>
+						
+						</select>
+						<button style="width:70px; height:22px; margin-left:20px; margin-top:10px;font-size:13px; line-height: 14px;" class="" onclick="queryByzblx()"><span><!--查询 -->Search</span></button>
+					</div>
+				</div>
+				<div id = "condition" align="left" style="font-size:13px; display: inherit;">
+					<div>
+						<label><input id="radio_mr" name="lx" type="radio" value="" checked="checked" onclick="radio_mrClick()" /><!--默认 -->Default </label>
+					</div>
+					<div style="padding-top: 10px;height: 20px;">
+						<div style="float: left">
+							<label><input id="radio_zslx" name="lx" type="radio" value="" onclick="radio_zslxClick()"/><!--指数类型 -->Index Type</label>
+							<select id="select_qx" disabled="disabled" style="" >
+								
+									<option value="00">Total Value</option>
+								
+									<option value="01">Less Than 1yr</option>
+								
+									<option value="02">1-3yrs</option>
+								
+									<option value="03">3-5yrs</option>
+								
+									<option value="04">5-7yrs</option>
+								
+									<option value="05">7-10yrs</option>
+								
+									<option value="06">More Than 10yrs</option>
+								
+									<option value="07">0-3months</option>
+								
+									<option value="08">3-6months</option>
+								
+									<option value="09">6-9months</option>
+								
+									<option value="10">9-12months</option>
+								
+									<option value="11">0-6months</option>
+								
+									<option value="12">6-12months</option>
+								
+									<option value="13">Custom</option>
+								
+									<option value="14">0-2yrs</option>
+								
+									<option value="15">0-3yrs</option>
+								
+									<option value="16">0-5yrs</option>
+								
+									<option value="17">0-7yrs</option>
+								
+									<option value="18">0-10yrs</option>
+								
+									<option value="19">1-5yrs</option>
+								
+									<option value="20">1-7yrs</option>
+								
+									<option value="21">1-10yrs</option>
+								
+									<option value="22">5-10yrs</option>
+								
+									<option value="23">More Than 5yrs</option>
+								
+							</select>
+						</div>
+						<div style="float: left; margin-left: 10px;margin-top: 3px">
+							<label id="lab_qj" style="color: graytext;"><input id="qj" name="qj" type="checkbox" disabled="disabled" value="" /><!--全价 -->Full Price</label>
+							<label id="lab_jj" style="color: graytext"><input id="jj" name="jj" type="checkbox" disabled="disabled" value="" /><!--净价 -->Net Price</label>
+							<label id="lab_cf" style="color: graytext"><input id="cf" name="cf" type="checkbox" disabled="disabled" value="" /><!--财富 -->Total Return</label>
+						</div>
+						<div>
+							<button style="float:right; margin-left:10px; margin-right:15px;" onclick="multiIndexQuery()"><!--多指数查询-->Multi-Indices Search</button>
+							<button id="singleIndexSearchBtn" style="width:60px; float:right;" type="button" onclick="singleIndexQuery()"><!--查询 -->Search</button><br/>
+						</div>
+					</div>
+					<div style=" padding-top: 10px;height: 20px;min-width: 720px">
+						<div style="float: left;">
+							<label><input id="radio_qxlx" name="lx" type="radio" value="" onclick="radio_qxlxClick()" /><!--期限类型-->Analytics </label>
+							<select id="select_zslx" disabled="disabled" >
+								<option id="CFZS"       value="CFZS"><!--财富-->Total Return</option>
+								<option id="QJZS"       value="QJZS"><!--全价-->Full Price</option>
+								<option id="JJZS"       value="JJZS"><!--净价-->Net Price</option>
+								<option id="PJSZFJQ"    value="PJSZFJQ"><!--平均市值法久期（年）-->Cap-weighted Duration (Yrs)</option>
+								<option id="PJXJLFJQ"   value="PJXJLFJQ"><!--平均现金流法久期（年）-->Average Duration(Yrs)</option>
+								<option id="PJSZFTX"    value="PJSZFTX"><!--平均市值法凸性-->Cap-weighted Convexity</option>
+								<option id="PJXJLFTX"   value="PJXJLFTX"><!--平均现金流法凸性-->Average Convexity</option>
+								<option id="PJDQSYL"    value="PJDQSYL"><!--平均现金流法到期收益率（%）-->Average YTM (%)</option>
+								<option id="PJSZFDQSYL" value="PJSZFDQSYL"><!--平均市值法到期收益率（%）-->Cap-weighted YTM (%)</option>
+								<option id="PJJDJZ"     value="PJJDJZ"><!--平均基点价值（元）-->Cap-weighted BPV(Yuan)</option>
+								<option id="PJDCQ"      value="PJDCQ"><!--平均待偿期（年）-->Cap-weighted Maturity(Yrs)</option>
+								<option id="PJPXL"      value="PJPXL"><!--平均派息率（%）-->Cap-weighted Coupon Rate(%)</option>
+								<option id="ZSZSZ"      value="ZSZSZ"><!--指数上日总市值（亿元）-->Market Value Outstanding (100Million)</option>
+								<option id="CFZSZDF"    value="CFZSZDF"><!--财富指数涨跌幅（%）-->Total Return Index Change(%)</option>
+								<option id="QJZSZDF"    value="QJZSZDF"><!--全价指数涨跌幅（%）-->Full Price Index Change(%)</option>
+								<option id="JJZSZDF"    value="JJZSZDF"><!--净价指数涨跌幅（%）-->Net Price Index Change(%)</option>
+								<option id="XQJSL"      value="XQJSL"><!--现券结算量（亿元）-->Settlement Volume(100Million)</option>
+							</select>
+						</div>
+						<div  id="qxlx_div_2" style="padding-top: 3px; float: left" align="left" >
+							<label>Term Type
+								<!-- 期限类型: --></label>
+							<div class="select_checkBox" id="qxlx_div_1" disabled="disabled">
+								<div class="chartQuota" onclick="zsqxlxOnClick()">
+									<p><a href="javascript:" hidefocus="true" title="">
+										<span id="qxlx" style="white-space: nowrap;">1 selected</span>
+										<b></b>
+									   </a>
+										<img src="/cbweb-mn/statics/images/arrows.png" id="arrows">
+									</p>
+
+								</div>
+								<br>
+								<div class="chartOptionsFlowTrend">
+									<ul>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck' checked="checked" value="00"><span>Total Value</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="01"><span>Less Than 1yr</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="02"><span>1-3yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="03"><span>3-5yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="04"><span>5-7yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="05"><span>7-10yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="06"><span>More Than 10yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="07"><span>0-3months</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="08"><span>3-6months</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="09"><span>6-9months</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="10"><span>9-12months</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="11"><span>0-6months</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="12"><span>6-12months</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="13"><span>Custom</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="14"><span>0-2yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="15"><span>0-3yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="16"><span>0-5yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="17"><span>0-7yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="18"><span>0-10yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="19"><span>1-5yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="20"><span>1-7yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="21"><span>1-10yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="22"><span>5-10yrs</span></li>
+										
+											<li class=""><input class="dcqx_class" disabled="disabled" type="checkbox" name='qxcheck'  value="23"><span>More Than 5yrs</span></li>
+										
+										<li class=""><input  class="dcqx_class"  disabled="disabled" type="checkbox" id="zsqxcheckAll"><span>Select All
+											<!-- >全选 --></span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div  id="qxlx_div_3" style="padding-top: 3px; float: left" align="left">
+							<label>Market Type
+								<!-- 流通场所分段 --></label>
+							<div class="select_checkBox" id="qxlx_div_4" disabled="disabled">
+								<div class="chartQuota" onclick="zsltcsOnClick()">
+									<p><a href="javascript:" hidefocus="true" title="">
+										<span id="ltcs" style="white-space: nowrap;">1 selected</span>
+										<b></b>
+									</a>
+										<img src="/cbweb-mn/statics/images/arrows.png" id="arrows">
+									</p>
+
+								</div>
+								<br>
+								<div class="chartOptionsFlowTrend1"style="width: 210px">
+									<ul>
+										<li class=""><input class="ltcs_class" id="ltcs_zz" disabled="disabled" type="checkbox" name='ltcscheck' checked="checked" value="00"><span>Total Value<!-- 总值 --></span></li>
+										<li class=""><input class="ltcs_class" id="ltcs_yhjsc" disabled="disabled" type="checkbox" name='ltcscheck' value="MA0000000033"><span><!--银行间市场 -->China Inter-Bank Market </span></li>
+										<li class=""><input class="ltcs_class" id="ltcs_sjs" disabled="disabled" type="checkbox" name='ltcscheck' value="MA0000000078"><span><!--上交所 -->Shanghai Stock Exchange </span></li>
+										<li class=""><input class="ltcs_class" id="ltcs_shjs" disabled="disabled" type="checkbox" name='ltcscheck' value="MA0000000014"><span><!--深交所-->Shenzhen Stock Exchange</span></li>
+										<li class=""><input class="ltcs_class" id="ltcs_gt" disabled="disabled" type="checkbox" name='ltcscheck' value="MA0000000048"><span><!--柜台 -->Commercial Bank Counter Market</span></li>
+										<li class=""><input class="ltcs_class" id="ltcs_lacwsc" disabled="disabled" type="checkbox" name='ltcscheck' value="MA0000000068"><span><!--离岸场外市场 -->Offshore OTC Market</span></li>
+										<li class=""><input class="ltcs_class" id="ltcs_zdy" disabled="disabled" type="checkbox" name='ltcscheck' value="13"><span><!--自定义-->Custom</span></li>
+										<li class=""><input class="ltcs_class" disabled="disabled" type="checkbox" id="ltcscheckAll"><span>Select All<!-- >全选 --></span></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+
+
+					<div style="padding-top: 5px">
+						<div id = "graph" class="graph" align="left" style="height:500px; font-size: 13px; margin-top:10px"></div>
+						<div id = "showAll" style="position: relative; display: none; float: right;" align="left">
+							<button onclick="showAll()" style="background-color: transparent; outline: none; border: none"
+									onmouseover="this.style.backgroundColor='#b2e1ff'" onmouseout="this.style.backgroundColor='#FFFFFF'">Show All</button>
+						</div>
+					</div>
+
+					<div class="contextMenu" id="myMenu1">
+						<ul id="rightKeyMenu" style="display: none">
+							<li id="sctp"> <a id="down_button" >Generate picture</a> </li>
+						</ul>
+					</div>
+					<div class="input-group  date form_datetime" style="width: 1px; margin-top:30px; float: left">
+						<input id="queryDate" type="text" class="form-control input-sm" style="width: 70px;height: 10px; line-height: 10px; box-sizing: content-box;" readonly aria-describedby=""/>
+						<span id="dateimg" class="input-group-addon" style="height: 10px; line-height:10px; padding-bottom : 0px; padding-top: 0px;"><i id="rqtb" class="glyphicon glyphicon-calendar" style="height: 0px; top: 0px; line-height: 0;"></i></span>
+					</div>
+					<button style="width:70px; height:23px; margin-left:20px; margin-top:30px; line-height: 16px;" class="" onclick="queryHandle()"><span><!--查询 -->Search</span></button>
+
+				</div>
+
+				<div id="uploadIndexDiv" style="display: none">
+
+					<div style="padding-top: 5px">
+						<div id = "uploadIndexGraph" class="graph" align="left" style="height:500px; font-size: 13px; margin-top: 10px"></div>
+						<div id = "uploadIndexShowAll" style="position: relative; display: none; float: right; top: -450px; right: 10px;" align="left">
+							<button onclick="showAll()" style="background-color: transparent; outline: none; border: none"
+									onmouseover="this.style.backgroundColor='#b2e1ff'" onmouseout="this.style.backgroundColor='#FFFFFF'">Show All</button>
+						</div>
+					</div>
+
+					<div class="contextMenu" id="myMenu1">
+						<ul>
+							<li id="sctp"> <a id="down_button" >Generate picture</a> </li>
+						</ul>
+					</div>
+					<div class="input-group  date form_datetime" style="width: 1px; margin-top:30px; float: left">
+						<input id="startDate" type="text" class="form-control input-sm" style="width: 70px;height: 10px; line-height: 10px; box-sizing: content-box;" readonly aria-describedby=""/>
+						<span id="dateimgS" class="input-group-addon" style="height: 10px; line-height:10px; padding-bottom : 0px; padding-top: 0px;"><i id="rqtb" class="glyphicon glyphicon-calendar" style="height: 0px; top: 0px; line-height: 0;"></i></span>
+					</div>
+
+					<div style="float: left; margin-top: 30px; margin-left: 5px; margin-right: 5px;">-</div>
+
+					<div class="input-group  date form_datetime" style="width: 1px; margin-top:30px; float: left">
+						<input id="endDate" type="text" class="form-control input-sm" style="width: 70px;height: 10px; line-height: 10px; box-sizing: content-box;" readonly aria-describedby=""/>
+						<span id="dateimgE" class="input-group-addon" style="height: 10px; line-height:10px; padding-bottom : 0px; padding-top: 0px;"><i id="rqtb" class="glyphicon glyphicon-calendar" style="height: 0px; top: 0px; line-height: 0;"></i></span>
+					</div>
+					<div style="float:left;">
+						<button style="width:70px; height:23px; line-height:16px; margin-left:20px; margin-top:30px" class="" onclick="uploadIndexQuery()"><span><!--查询 -->Search</span></button>
+						<button id = "downLoadBtn" style="width:70px; height:23px; line-height:16px; margin-left:10px; margin-top:30px;"  onclick="uploadIndexDownLoad()"><span><!--下载 -->Download</span></button>
+					</div>
+
+				</div>
+
+				<!-- 合编指数div -->
+				<div id="hbIndexDiv" style="display: none">
+
+					<div style="float: left; margin-left: 10px;margin-top: 3px; font-size: 13px;">
+						<label style="margin-left: 7px;"><!--指数类型 -->Index Type：&nbsp</label>
+						<label id="hb_lab_cf" style=""><input id="hb_cf" name="hb_cf" type="checkbox"  value="" /><!--财富 -->Total Return</label>
+						<label id="hb_lab_jj" style="margin-left: 10px;"><input id="hb_jj" name="hb_jj" type="checkbox" value="" /><!--净价 -->Price Return</label>
+					</div>
+					<div>
+						<button style="height:24px; line-height:0px; float:right; margin-left:10px; margin-right:15px;" onclick="multiIndexQuery()"><!--多指数查询-->Multi-Indices Search</button>
+						<button id="hbIndexSearchBtn" style="width:60px; height:24px; line-height:0px; float:right;" type="button" onclick="hbIndexQuery()"><!--查询 -->Search</button><br/>
+					</div>
+
+					<div style="padding-top: 5px">
+						<div id = "hbIndexGraph" class="graph" align="left" style="height:500px; font-size: 13px; margin-top: 10px"></div>
+						<div id = "hbIndexShowAll" style="position: relative; display: none; float: right; top: -450px;" align="left">
+							<button onclick="showAll()" style="background-color: transparent; outline: none; border: none"
+									onmouseover="this.style.backgroundColor='#b2e1ff'" onmouseout="this.style.backgroundColor='#FFFFFF'">Show All</button>
+						</div>
+					</div>
+
+					<div class="contextMenu" id="myMenu1">
+						<ul>
+							<li id="sctp"> <a id="down_button" >Generate picture</a> </li>
+						</ul>
+					</div>
+
+					<div class="input-group  date form_datetime" style="width: 1px; margin-top:30px; float: left">
+						<input id="hbIndexDate" type="text" class="form-control input-sm" style="width: 70px;height: 10px; line-height: 10px; box-sizing: content-box;" readonly aria-describedby=""/>
+						<span id="dateimg" class="input-group-addon" style="height: 10px; line-height:10px; padding-bottom : 0px; padding-top: 0px;"><i id="hb_rqtb" class="glyphicon glyphicon-calendar" style="height: 0px; top: 0px; line-height: 0;"></i></span>
+					</div>
+					<div style="float: left;">
+						<button style="width:70px; height:23px; margin-left:20px; margin-top:30px; line-height: 16px;" class="" onclick="queryHandle()"><span><!--查询 -->Search</span></button>
+					</div>
+
+				</div>
+				<!-- 目标到期日指数div -->
+				<div id="mbdqrIndexDiv" style="display: none">
+
+					<div style="display: none;float: left; margin-left: 10px;margin-top: 3px; font-size: 13px;">
+						<label style="margin-left: 7px;"><!--指数类型 -->Index Type：&nbsp</label>
+						<label id="mbdqr_lab_cf" style=""><input id="mbdqr_cf" name="mbdqr_cf" type="checkbox"  value="" /><!--财富 -->Total Return</label>
+					</div>
+					<div>
+						<button style="height:24px; line-height:0px; float:right; margin-left:10px; margin-right:15px;" onclick="multiIndexQuery()"><!--多指数查询-->Multi-Indices Search</button>
+						<button id="mbdqrIndexSearchBtn" style="width:60px; height:24px; line-height:0px; float:right;" type="button" onclick="mbdqrIndexQuery()"><!--查询 -->Search</button><br/>
+					</div>
+
+					<div style="padding-top: 5px">
+						<div id = "mbdqrIndexGraph" class="graph" align="left" style="height:500px; font-size: 13px; margin-top: 10px"></div>
+						<div id = "mbdqrIndexShowAll" style="position: relative; display: none; float: right; top: -450px;" align="left">
+							<button onclick="showAll()" style="background-color: transparent; outline: none; border: none"
+									onmouseover="this.style.backgroundColor='#b2e1ff'" onmouseout="this.style.backgroundColor='#FFFFFF'">Show All</button>
+						</div>
+					</div>
+
+					<div class="contextMenu" id="myMenu1">
+						<ul>
+							<li id="sctp"> <a id="down_button" >Generate picture</a> </li>
+						</ul>
+					</div>
+
+					<div class="input-group  date form_datetime" style="width: 1px; margin-top:30px; float: left">
+						<input id="mbdqrIndexDate" type="text" class="form-control input-sm" style="width: 70px;height: 10px; line-height: 10px; box-sizing: content-box;" readonly aria-describedby=""/>
+						<span id="dateimg" class="input-group-addon" style="height: 10px; line-height:10px; padding-bottom : 0px; padding-top: 0px;"><i id="mbdqr_rqtb" class="glyphicon glyphicon-calendar" style="height: 0px; top: 0px; line-height: 0;"></i></span>
+					</div>
+					<div style="float: left;">
+						<button style="width:70px; height:23px; margin-left:20px; margin-top:30px; line-height: 16px;" class="" onclick="queryHandle()"><span><!--查询 -->Search</span></button>
+					</div>
+
+				</div>
+				<!-- 股票指数 -->
+				<div id = "isDfzfqx"></div>
+				<!-- 多资产指数 -->
+				<div id = "isDzczs"></div>
+				<!-- 可转债指数 -->
+				<div id = "iskzz"></div>
+				
+					<div class="note" style="margin-bottom: 0px;margin-left: 0px; float: left;">
+						<div class="notet1">Legislation</div>
+						<div class="notet2" align="left">Any Institution or Individual who intends to use ChinaBond Pricing Data Products to develop products, or use index data as benchmark, as well as to develop the passive investment products, ETF products and derivatives, shall apply to ChinaBond Pricing Center Co., Ltd. separately in writing.Contact information: 010-88170470/0475/dataservice@chinabond.com.cn&nbsp;</div>
+					</div>
+				
+				<!--使用说明-->
+				<div class="note" id = "note" style="float: left;">
+					<div class="notet1"><!-- 使用说明 -->Instructions</div>
+					<div class="notet2" style="text-align: left;">1.Tel: 86-10-88170664/4545
+2.For more data please visit ChinaBond Dr.Quant,ChinaBond datagate and authorized data vendors
+3.Email: geliang@chinabond.com.cn
+4.To use ChinaBond Index as benchmark for indexing investment or to develop derivatives or derivative indices, need to be authorized by ChinaBond Pricing Center Co., Ltd. , before applying to relevant authorities. For more details please contact: 010-88170659
+5.Internet Explorer 11 or Google Chrome is recommended
+6. For more details about iBoxx ChinaBond Indices, please refer to the following link: http://www.markit.com/Documentation/Product/IBoxx&nbsp;</div>
+				</div>
+
+			</div>
+			<!--登录中间结束-->
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script type="text/javascript">
+        var ctx="/cbweb-mn";
+        var ctxStatics="/cbweb-mn/statics";
+ </script>
+
+
+
+    <!--内容部分-->
+    <div class="foot" id="foot">
+	    <!-- 地址：北京市西城区金融大街10号 邮编：100033 网站编辑：010-88170605 -->Address: No.10, Finance Street, Xicheng District, Beijing, P.R.C Zip Code: 100033 Web Editor: 86-10-88170605<br />
+	    <!-- 中央国债登记结算有限责任公司 版权所有 未经允许 请勿转载 1998-2013 京ICP证030355号 -->CHINA CENTRAL DEPOSITORY & CLEARING CO., LTD.Copyright ©1998-2013.京ICP证030355号 
+    </div>
+    <!--底部部分-->
+</body>
+</html>

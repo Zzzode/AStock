@@ -1,0 +1,397 @@
+{
+  "schema_version": "r2_strategy_hypothesis_pack.v1",
+  "artifact_id": "DPSFS-R2-HYP-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "language": "zh-CN",
+  "status": "draft_hypotheses_not_frozen_not_replayed_not_usable",
+  "research_only": true,
+  "portfolio_q": 0,
+  "purpose": "Define falsifiable, personally operable-in-principle domestic securities and futures research hypotheses while preserving an open domestic listed universe. This artifact is not a product admission, allocation, holding, transaction instruction, performance result or return guarantee.",
+  "return_hurdle": {
+    "label": "strict_ex_post_research_hurdle_only",
+    "threshold": "5% net time-weighted return",
+    "assessment_scope": "At the combined-strategy level, every complete calendar year's net TWRR must be at least 5%, and every eligible rolling five-year endpoint's annualized net TWRR must be at least 5%, including the predeclared primary out-of-sample window.",
+    "required_accounting": [
+      "All verified fees, taxes, spreads, market impact, no-fill, settlement, corporate-action, margin and collateral effects.",
+      "All endpoint failures and data revisions retained.",
+      "No unpublished substitution of a continuous future, an adjusted-price assumption or an unavailable execution price."
+    ],
+    "non_inference": "Passing a historical hurdle would not guarantee, forecast, set a floor for, or assign a probability to future returns."
+  },
+  "cashflow_boundary": {
+    "cash_receipt_objective": "none",
+    "automatic_reinvestment_objective": "none",
+    "treatment": "Coupons, interest, fund distributions, redemption and corporate actions must be recorded once in the future total-return ledger at their actual event time. A future withdrawal requires a separate time-weighted-return subperiod."
+  },
+  "official_rule_boundary": {
+    "suitability_rule": {
+      "title": "CSRC Measures for the Suitability Management of Securities and Futures Investors",
+      "url": "https://www.csrc.gov.cn/csrc/c106256/c1653849/content.shtml",
+      "verified_observation_date": "2026-08-14",
+      "controls": [
+        "Personal suitability, product permission and broker route cannot be inferred by the research process.",
+        "Uncertain outcomes cannot be expressed as determinate judgments or guarantees."
+      ]
+    },
+    "exchange_discovery_routes": {
+      "artifact": "analysis/r1_primary_source_route_catalog_20260814.md",
+      "scope": "R01-R17 are official or first-party discovery/inquiry routes only. They do not evidence point-in-time entitlement, complete historical coverage, execution capability or a personal trading permission."
+    }
+  },
+  "common_formal_replay_controls": [
+    {
+      "id": "C-HYP-001",
+      "requirement": "Freeze U0, then derive T2 with a pre-outcome, class-neutral rule. Retain listed, delisted, expired, suspended, renamed, terminated and no-fill items in the historical record."
+    },
+    {
+      "id": "C-HYP-002",
+      "requirement": "Every input needs as_of, available_at, source revision, raw hash and written usage/retention right. Retrospective public pages, public continuous futures and unexplained adjusted fund prices are not substitutes."
+    },
+    {
+      "id": "C-HYP-003",
+      "requirement": "Orders, partial fills, no fills, fees, taxes, settlement, margin, collateral, debit and corporate actions must enter the formal ledger. Futures notional is exposure only, not portfolio NAV."
+    },
+    {
+      "id": "C-HYP-004",
+      "requirement": "Parameters, development window, lockbox out-of-sample window, execution timestamp, roll logic and risk limits must be signed before the corresponding outcome is viewed."
+    },
+    {
+      "id": "C-HYP-005",
+      "requirement": "Product facts, account permission, broker route and suitability must be separately evidenced. No research output may assume an individual can trade an instrument."
+    }
+  ],
+  "open_universe_mapping": [
+    {
+      "u0_class": "DIRECT_A_SHARE_EQUITIES",
+      "hypothesis_route": ["H1"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "PUBLIC_REITS",
+      "hypothesis_route": ["H3"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "LISTED_EQUITY_ETFS",
+      "hypothesis_route": ["H3", "H1_future_implementation_variant_only"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "BOND_AND_MONEY_MARKET_ETFS",
+      "hypothesis_route": ["H3"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "GOLD_AND_OTHER_COMMODITY_ETFS",
+      "hypothesis_route": ["H3"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+      "hypothesis_route": ["H3"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "COMMODITY_FUTURES",
+      "hypothesis_route": ["H2"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "FINANCIAL_FUTURES",
+      "hypothesis_route": ["H2"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "LISTED_OPTIONS",
+      "hypothesis_route": ["H2_independent_risk_transfer_extension_only"],
+      "current_admission": "no"
+    },
+    {
+      "u0_class": "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS",
+      "hypothesis_route": ["separate_future_structure_module_only"],
+      "current_admission": "no"
+    }
+  ],
+  "hypotheses": [
+    {
+      "id": "H1",
+      "title": "A-share quality-trend cross-sectional selection",
+      "research_question": "In a complete point-in-time domestic A-share population, can joint ranking of earnings quality, balance-sheet resilience and medium-term trend improve return/drawdown characteristics after real trading frictions versus a broad equity exposure?",
+      "economic_logic": "The market may price changes in earnings quality, financial resilience and trend with a delay. The hypothesis fails if information is incorporated quickly, accounting factors cease to work, liquidity constraints dominate or industry concentration explains the result.",
+      "admissible_instruments": {
+        "u0_classes": ["DIRECT_A_SHARE_EQUITIES"],
+        "eligibility": [
+          "Effective listed and trading-status record on the decision date.",
+          "At least 252 verified trading sessions.",
+          "Sufficient lagged, publication-timestamped accounting data for every factor.",
+          "Tradability under the frozen execution model."
+        ],
+        "recording_rule": "Missing data, halted status, special status, impending termination or no-fill condition is retained with a dated exclusion reason; it is not silently removed."
+      },
+      "selection_and_ranking": {
+        "frequency": "Monthly, on the final valid valuation day.",
+        "factor_score": [
+          {
+            "name": "medium_term_trend",
+            "weight": 0.45,
+            "definition": "Cross-sectional percentile of total return from t-252 through t-21; higher is better."
+          },
+          {
+            "name": "earnings_quality",
+            "weight": 0.3,
+            "definition": "Industry-normalized percentile composite of lagged operating-cash-flow-to-net-income, ROIC and earnings stability; higher is better."
+          },
+          {
+            "name": "financial_resilience",
+            "weight": 0.25,
+            "definition": "Industry-normalized inverse percentile composite of accruals, net-debt pressure and dilution; lower raw values are better."
+          }
+        ],
+        "selection": "Retain the top decile of composite scores. If fewer than 20 names qualify, record low coverage and do not relax the rule.",
+        "weighting": "Inverse-volatility starting weights, with a maximum of 30 names, 8% of NAV per issuer and 30% of NAV per industry. Any constraint-created residual must stay explicit in the execution ledger."
+      },
+      "entry_exit_rebalance": {
+        "signal_timing": "Generate after month-end close with only data available by that cutoff.",
+        "entry": "Attempt at the next eligible trading session using the frozen broker time window, marketable-limit rule and no-fill state.",
+        "rebalance": "Monthly.",
+        "exit": [
+          "Composite rank exits the top 30%.",
+          "Loss of eligibility or a relevant corporate-action/status risk event.",
+          "A predeclared issuer, industry, liquidity, concentration or portfolio-volatility risk rule."
+        ],
+        "discretionary_override": "prohibited"
+      },
+      "risk_limits": {
+        "ex_ante_annualized_volatility_max": "12%",
+        "twenty_day_97_5_expected_shortfall_max": "10% of NAV",
+        "required_stresses": [
+          "Price-limit scenario",
+          "Suspension scenario",
+          "No-fill scenario",
+          "Concentrated-industry shock"
+        ],
+        "failure_treatment": "A non-computable or breached risk constraint fails the endpoint; it cannot be repaired by hindsight resizing."
+      },
+      "transaction_tax_slippage_requirements": [
+        "Dated broker commission, exchange/settlement and tax/levy terms.",
+        "Minimum order unit, price-limit, halt, trading-calendar and T+1 evidence.",
+        "Bid/ask or conservative reconstructible execution data, including partial fills and no fills.",
+        "Dated corporate-action, delisting and settlement ledger."
+      ],
+      "operational_constraints": [
+        "No account access, tax treatment or product permission is assumed.",
+        "Historical fees and levies must use their effective-date terms.",
+        "A restricted sale or delayed settlement remains unresolved until the formal ledger records it."
+      ],
+      "falsifiers": [
+        "Net primary out-of-sample results fail the frozen module standard or the combined strategy fails the strict ex-post 5% hurdle.",
+        "The result appears only after deleted delistings, halts, special-status names, no-fills or corporate actions.",
+        "Permitted execution-window, liquidity-assumption or threshold variants are unstable across independent windows.",
+        "Stress, execution replay, suitability or route verification fails."
+      ],
+      "why_not_usable_now": [
+        "No accepted A-share point-in-time population, accounting availability, corporate-action, trading-status or execution/cost ledger exists.",
+        "No parameter freeze, formal replay, holdout result or paper reconciliation exists.",
+        "No issuer candidate or trading instruction is admitted."
+      ]
+    },
+    {
+      "id": "H2",
+      "title": "Actual-contract domestic commodity and financial futures trend module",
+      "research_question": "Across all eligible actual domestic commodity and financial futures contracts, can one consistent trend, contract-selection, roll and risk-budget process produce a return source distinct from equity and rate securities after daily margining and costs?",
+      "economic_logic": "Trend may reflect persistent inventory, demand, macro-risk and risk-transfer shifts, but can fail in range-bound markets, limit moves, policy shocks, basis distortion and roll cost.",
+      "admissible_instruments": {
+        "u0_classes": ["COMMODITY_FUTURES", "FINANCIAL_FUTURES"],
+        "population_rule": "Include all domestic actual listed contracts by venue and lifecycle. Do not replace the population with continuous contracts, ex-post main contracts or the AU/CU/TA probes.",
+        "contract_selector": "For each product on each weekly signal day, choose one candidate at least max(15 sessions, the contemporaneously effective contract-specific delivery buffer) from last trade/delivery among eligible contracts. Rank candidates by prior-20-session verified turnover and open interest. If none qualifies, that product is unheld.",
+        "options_boundary": "Listed options are not base-H2 positions. They can be researched only as a separately admitted risk-transfer extension with full chain, exercise/assignment, margin, volatility and payoff accounting."
+      },
+      "selection_and_ranking": {
+        "frequency": "Weekly, after the final eligible settlement.",
+        "trend_score": "0.5 times the standardized 63-session settlement-price return plus 0.5 times the standardized 252-session settlement-price return.",
+        "direction_rule": "Positive score permits long only; negative score permits short only; absolute score below 0.25 standard deviations permits no new position.",
+        "weighting": "Inverse 20-session realized-volatility weights, first normalized by product then scaled by the risk budget. Daily reconstruction must retain contract code, direction, score, roll reason and input cutoff."
+      },
+      "entry_exit_rebalance": {
+        "entry": "Attempt in the next eligible session through the frozen limit-price, participation and no-fill model.",
+        "rebalance": "Weekly.",
+        "exit_or_roll": [
+          "Direction reversal.",
+          "Absolute trend score below 0.10 standard deviations.",
+          "Loss of liquidity or delivery-buffer eligibility.",
+          "A mandatory risk reduction."
+        ],
+        "roll_accounting": "Closing the old contract and opening the new one are separate transactions; a continuous series cannot conceal the roll."
+      },
+      "risk_limits": {
+        "single_product_risk_contribution_max": "12%",
+        "economic_cluster_risk_contribution_max": "35%",
+        "single_exchange_risk_contribution_max": "50%",
+        "ex_ante_annualized_volatility_max": "10%",
+        "margin_and_stress_limit": "Initial margin plus two largest historical adverse daily variation-margin moves must not exceed 35% of NAV.",
+        "required_stresses": [
+          "Limit move and gap",
+          "Margin increase",
+          "No-fill",
+          "Forced-liquidation risk",
+          "Session/calendar disruption"
+        ]
+      },
+      "transaction_tax_slippage_requirements": [
+        "Daily actual-contract master, settlement, turnover, open interest, price limit, market status, multiplier and tick.",
+        "Effective-dated fees, margins, position limits, delivery terms, settlement rules and broker charges.",
+        "Actual trade/no-fill, margin-call and all-session calendar evidence.",
+        "Daily variation-margin and final-settlement accounting with notional as exposure only."
+      ],
+      "operational_constraints": [
+        "Personal suitability, product permission, broker route, eligible contracts and delivery path must be confirmed externally at the relevant time.",
+        "Night sessions, holidays and cross-date sessions use venue calendars rather than a static clock.",
+        "No naked short option exposure is permitted in the base module."
+      ],
+      "falsifiers": [
+        "Actual-contract, roll, margin and cost-aware results fail the frozen module standard or the combined strategy fails the strict ex-post 5% hurdle.",
+        "Results depend on continuous futures, ex-post contract choice, unrecorded night-session prices, zero slippage or ignored delivery risk.",
+        "A stress endpoint cannot settle because of margin, limit move or no fill but is nevertheless reported as passing.",
+        "A product, account permission or broker route cannot be evidenced."
+      ],
+      "why_not_usable_now": [
+        "Existing evidence is limited retrospective commodity source-path sampling, not a complete actual-contract population.",
+        "Financial-futures data, historical rules/margins, broker execution, suitability and roll ledgers are unaccepted.",
+        "No futures contract, risk budget or transaction action is admitted."
+      ]
+    },
+    {
+      "id": "H3",
+      "title": "REIT, bond, convertible and listed-fund valuation-trend rotation",
+      "research_question": "After class-specific economic and total-return modeling, can REITs, exchange-listed bonds/convertibles and listed equity/bond/money-market/commodity ETFs be selected by valuation, income quality, trend, premium/discount and liquidity more robustly than a single rate exposure?",
+      "economic_logic": "Yield labels, coupons, distributions and low-volatility marketing are not return evidence. Rates, credit, asset operations, conversion terms, premium/discount, commodity prices and liquidity can deteriorate together.",
+      "admissible_instruments": {
+        "u0_classes": [
+          "PUBLIC_REITS",
+          "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+          "LISTED_EQUITY_ETFS",
+          "BOND_AND_MONEY_MARKET_ETFS",
+          "GOLD_AND_OTHER_COMMODITY_ETFS"
+        ],
+        "admission_rule": "Each class needs an independent accepted data package and product-diligence package before it can contribute a candidate. No class is presumed defensive."
+      },
+      "selection_and_ranking": {
+        "frequency": "Monthly, on the final valid valuation day.",
+        "within_class_scores": [
+          {
+            "class": "PUBLIC_REITS",
+            "formula": "40% market-price-to-verifiable-NAV premium/discount quality + 30% underlying-operating trend + 20% six-month total-return trend + 10% liquidity."
+          },
+          {
+            "class": "EXCHANGE_LISTED_BONDS",
+            "formula": "40% maturity/credit/accrual-adjusted yield quality + 25% price trend + 20% term-and-credit-event quality + 15% liquidity."
+          },
+          {
+            "class": "CONVERTIBLES",
+            "formula": "35% complete-terms valuation using bond floor, conversion value and premium + 30% issuer credit/operating quality + 20% trend + 15% liquidity."
+          },
+          {
+            "class": "BOND_AND_MONEY_MARKET_ETFS",
+            "formula": "35% holdings/duration/credit/accrual-adjusted yield quality + 25% trend + 20% NAV-premium/discount quality + 20% liquidity."
+          },
+          {
+            "class": "LISTED_EQUITY_ETFS",
+            "formula": "35% index-look-through quality/concentration + 35% medium-term total-return trend + 15% NAV-premium/discount quality + 15% liquidity."
+          },
+          {
+            "class": "GOLD_AND_OTHER_COMMODITY_ETFS",
+            "formula": "50% medium-term total-return trend + 25% NAV-premium/discount quality + 25% liquidity and underlying-market availability."
+          }
+        ],
+        "cross_class_selection": "Convert valid within-class scores to percentiles, retain only the top quartile of each class, then select the top-scoring maximum of 12 securities across the survivors.",
+        "weighting": "Inverse 60-session total-return volatility, with 15% of NAV maximum per issuer/manager, 35% per class and 35% per REIT underlying-asset type. These are caps, not current allocations or minimum holdings."
+      },
+      "entry_exit_rebalance": {
+        "entry": "Signal at month-end; attempt next eligible trading day under the frozen broker execution rule.",
+        "rebalance": "Monthly.",
+        "exit": [
+          "Security falls below the top half of its class.",
+          "Loss of data or trading eligibility.",
+          "Corporate action, fund suspension, redemption, put/call, conversion, maturity, REIT expansion or material underlying-asset event triggers revalidation.",
+          "Risk constraint breach."
+        ],
+        "cashflow_rule": "No distribution, interest, cash-balance or automatic-reinvestment objective exists. Actual events enter only the accepted total-return, settlement and unitization ledger."
+      },
+      "risk_limits": {
+        "sixty_day_annualized_volatility_max": "8%",
+        "twenty_day_97_5_expected_shortfall_max": "7% of NAV",
+        "required_stresses": [
+          "Rate-curve shift",
+          "Credit-spread widening",
+          "REIT-operating deterioration",
+          "NAV-premium/discount expansion",
+          "Liquidity disappearance",
+          "Commodity price gap"
+        ],
+        "failure_treatment": "Missing data for a required stress or a breach fails the endpoint."
+      },
+      "transaction_tax_slippage_requirements": [
+        "Full historical product/security population, market price, NAV or accumulated NAV, IOPV, holdings and index methodology.",
+        "Coupon, distribution, redemption, put, call, conversion, maturity, expansion and credit-event ledger.",
+        "Clean/dirty price/accrual, underlying REIT operational data, trading status, quote depth, effective-dated fees and levies.",
+        "Separate reconciliation of market-price and NAV total return."
+      ],
+      "operational_constraints": [
+        "Personal market access, order size, settlement timing, T+1, trading units, costs and product risk grade are time-specific external facts.",
+        "Static yield, a single curve observation or promotional fund material cannot substitute for total-return and execution evidence.",
+        "SSE/SZSE and manager public pages can support discovery and later rule review but are not accepted replay inputs by themselves."
+      ],
+      "falsifiers": [
+        "Event-complete market-price/NAV total return after costs fails the frozen module standard or the combined strategy fails the strict ex-post 5% hurdle.",
+        "Results exist only after omitted distributions, redemption, credit events, conversions, halts or premium/discount stress.",
+        "Bond, convertible or REIT economic inputs are not available at the model timestamp.",
+        "Depth, fees, taxes, settlement or suitability cannot support the simulated execution."
+      ],
+      "why_not_usable_now": [
+        "No full population, event ledger, REIT operating record, bond/convertible terms and credit-event record, fund total-return or real execution record has been accepted.",
+        "No product list, allocation, purchase instruction or defensive/cash-equivalent conclusion is admitted."
+      ]
+    }
+  ],
+  "research_sequence_before_any_product_level_discussion": [
+    "Complete source, rights and required-field inquiries for all ten U0 classes.",
+    "Freeze each module's parameters, universe, benchmark, development period, lockbox period and execution model without viewing the result.",
+    "Run all-history and holdout replays including costs, taxes, no fills, settlement, margin and corporate actions; retain all endpoints.",
+    "Complete at least 60 calendar days and 10 observations of paper reconciliation with independent review of fills, fees, taxes, settlement, margin and risk state.",
+    "Only after data, replay, paper reconciliation, risk veto and suitability pass may a separate product-diligence or research-action discussion occur."
+  ],
+  "current_blockers": [
+    {
+      "id": "B-HYP-001",
+      "fact": "UR01-UR05 remain open; no accepted class-level point-in-time raw package exists.",
+      "effect": "All hypotheses remain q=0."
+    },
+    {
+      "id": "B-HYP-002",
+      "fact": "No signed U0/T2, rulebook or formal replay-run freeze exists.",
+      "effect": "No return, ranking or selection result may be calculated."
+    },
+    {
+      "id": "B-HYP-003",
+      "fact": "No broker route, historical cost/fee/tax, depth, fill/no-fill or settlement evidence has been accepted.",
+      "effect": "A theoretical signal cannot be called personally operable."
+    },
+    {
+      "id": "B-HYP-004",
+      "fact": "No product/contract, issuer, terms, delivery, exercise or underlying-asset diligence is complete.",
+      "effect": "No named instrument or weight may be admitted."
+    },
+    {
+      "id": "B-HYP-005",
+      "fact": "No personal suitability or account permission has been verified.",
+      "effect": "No futures, option, bond or complex-product access can be assumed."
+    },
+    {
+      "id": "B-HYP-006",
+      "fact": "No cost-aware holdout result or prospective paper reconciliation exists.",
+      "effect": "No 5% claim and no claim of stability is permitted."
+    }
+  ],
+  "current_decision": "The case now has a broader, falsifiable research architecture rather than a convenience-sample product list. It still has no usable strategy, approved instrument, allocation, holding, order, execution instruction or return conclusion."
+}

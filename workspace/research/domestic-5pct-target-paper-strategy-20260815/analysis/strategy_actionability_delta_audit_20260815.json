@@ -1,0 +1,49 @@
+{
+  "schema_version": "strategy_actionability_delta_audit.v1",
+  "artifact_id": "D5PT-DELTA-ACTIONABILITY-v1",
+  "as_of": "2026-08-15",
+  "status": "open_repair_in_progress",
+  "user_correction": "A complete personally operable domestic securities/futures strategy needs concrete instruments, weights, operating method, and risk actions; a boundary memo alone is insufficient.",
+  "original_misses": [
+    "No frozen candidate strategy connected named instruments, weights, and operating rules.",
+    "Product diligence, historical diagnostics, and personal operation controls were not linked into a reader-facing decision card.",
+    "The difference between a long-run five-percent research hurdle and a stable annual return was insufficiently structural."
+  ],
+  "repair_workstreams": [
+    {
+      "id": "C30",
+      "purpose": "Freeze and evaluate an economically motivated low-frequency ETF candidate using retained research inputs without converting a price proxy into total-return or execution evidence."
+    },
+    {
+      "id": "C31",
+      "purpose": "Refresh product-level diligence for every potential candidate ETF and identify a lean core set without a buy recommendation."
+    },
+    {
+      "id": "C32",
+      "purpose": "Specify personal-operation, transaction, no-action, and risk controls for a candidate strategy."
+    },
+    {
+      "id": "C33",
+      "purpose": "Integrate only mutually consistent C30-C32 evidence into a candidate strategy or formally downgrade it."
+    },
+    {
+      "id": "independent_review",
+      "purpose": "Verify rule implementation, arithmetic, source references, and non-guarantee language before any paper-operable status is considered."
+    }
+  ],
+  "guardrails": {
+    "five_percent": "Long-run research hurdle only; never a guarantee, annual floor, prediction, or personal outcome.",
+    "universe": "Open research universe, but each rule version freezes its actual instruments before computation.",
+    "futures": "May enter only through a separately evidenced eligibility, margin, position-limit, roll, and data gate; never to fill a return shortfall.",
+    "operating_card_required_fields": [
+      "target instruments",
+      "target weights",
+      "signal formation",
+      "earliest action date",
+      "no-action conditions",
+      "risk suspension conditions"
+    ],
+    "external_orders": false,
+    "portfolio_q": 0
+  }
+}

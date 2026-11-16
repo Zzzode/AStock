@@ -1,0 +1,14 @@
+{
+  "cycle": "R1_model",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "status": "resolved_at_research_framework_scope",
+  "resolved_at": "2026-08-14T02:00:00+08:00",
+  "actions": [
+    "Replaced the dual-objective mandate with a sole conditional 5% rolling five-year TWRR research objective.",
+    "Removed all cash-receipt thresholds, coverage formulas, cash hit rates and cash-target repair logic.",
+    "Kept TWRR/MWRR-XIRR, external-flow separation, distribution-once accounting, tax/fee/settlement treatment and return-of-capital flags.",
+    "Preserved the formal total-return replay and risk-budget blocks, q=0 state and open-universe item-admission controls.",
+    "Marked the former R1 repair record as superseded by this v3 record rather than treating its retired mandate mechanics as current controls."
+  ],
+  "implementation_blockers_preserved": ["return evidence", "risk budget", "suitability", "execution"]
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "total_return_risk_budget.v3",
+  "case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "report_type": "strategic_allocation_total_return_research_framework",
+  "as_of": "2026-08-12",
+  "status": "not_approved",
+  "purpose": "Research-governance risk budget for a conditional allocation. It is not a suitability finding, execution authorization, stop-loss promise, or forecast.",
+  "current_state": {
+    "portfolio_q": 0,
+    "market_sleeves_q": 0,
+    "reason": "No finite cross-asset decision universe, candidate-level eligibility packets, account-level drawdown record or approved portfolio risk budget."
+  },
+  "post_activation_target_vector": [],
+  "planning_common_stress": {
+    "status": "model_input_not_observed_not_forecast",
+    "known_sleeve_inputs_pct": {
+      "eligible_protected_liquidity": 0.0,
+      "five_year_treasury_etf": -5.0,
+      "high_dividend_equity_etf": -45.0,
+      "diversified_public_reits": -25.0
+    },
+    "known_sleeve_contributions_pct": {
+      "eligible_protected_liquidity": 0.0,
+      "five_year_treasury_etf": -0.75,
+      "high_dividend_equity_etf": -18.0,
+      "diversified_public_reits": -6.25
+    },
+    "known_sleeves_subtotal_pct": -25.0,
+    "defensive_diversifier": {
+      "status": "undefined_q_0",
+      "approved_stress_input_pct": null,
+      "rule": "An undefined sleeve may not receive a generic stress input or offset the known-sleeve loss."
+    },
+    "legacy_illustration_if_diversifier_is_assumed_minus_10_pct": -26.0,
+    "conclusion": "The retired fixed vector does not fit the current -18% loss-action envelope. No future portfolio may activate until a frozen T2 candidate set has a dated, candidate-specific risk budget."
+  },
+  "risk_budget_gate": {
+    "normal_risk_action_boundary_pct": -18.0,
+    "caution_boundary_pct": -12.0,
+    "exception_required": true,
+    "current_exception_status": "not_approved",
+    "exception_must_include": [
+      "frozen-T2 common-stress calculation including every proposed direct equity, ETF, REIT, sovereign/cash tool and implementation-cost uncertainty",
+      "approved planning-loss capacity at least equal to the calculated loss plus a documented uncertainty buffer",
+      "documented investment-horizon, liquidity-need and loss-capacity confirmation",
+      "independent product, liquidity, concentration, correlation, tax and settlement passes",
+      "record that the -18% line is an early risk-action boundary rather than a maximum-loss representation"
+    ],
+    "effect_of_missing_exception": "q_portfolio_0_no_model_market_allocation_is_approved_and_no_account_holding_is_inferred"
+  },
+  "observed_drawdown_actions": {
+    "measurement": "DD_t = flow-adjusted current marked account value / flow-adjusted high-water mark - 1; a dated account-value record is required.",
+    "caution_lock_at_or_below_pct": -12.0,
+    "caution_action": "Pause all new risk additions pending re-underwriting. Any cash disposition remains investor-directed and separately recorded.",
+    "risk_stop_at_or_below_pct": -18.0,
+    "risk_stop_action": "Set the global risk-addition gate to zero, cancel unexecuted model tranches, and require an incident/de-risk proposal before any later re-approval. Any cash disposition remains investor-directed and separately recorded.",
+    "stress_capacity_incident": "If an approved exception exists and observed loss reaches 90% of that approved planning-loss capacity, the risk stop remains in force and a replacement risk budget is required. No mechanical re-entry is allowed.",
+    "boundary": "These are governance actions for new allocations, not instructions to sell existing holdings and not promises that loss will stop at a threshold."
+  },
+  "candidate_specific_concentration_policy": {
+    "preapproved_asset_class_caps": null,
+    "liquidity_reserve_floor": null,
+    "future_T4_requirement": "Freeze the named T2 set, calculate issuer/group/industry/factor/property/rental/customer/financing/rate overlap and propose numerical concentration and liquidity limits for independent risk approval.",
+    "legacy_fixed_vector_caps": {
+      "eligible_protected_liquidity_floor_after_activation_pct": 10.0,
+      "high_dividend_equity_etf_pct": 45.0,
+      "public_reits_aggregate_pct": 25.0,
+      "single_reit_project_pct": 5.0,
+      "common_reit_manager_or_sponsor_group_pct": 10.0,
+      "common_reit_sector_cash_flow_driver_region_regulatory_tenant_or_refinancing_cluster_pct": 10.0,
+      "mapped_shared_equity_etf_reit_operating_risk_cluster_pct": 15.0,
+      "defensive_diversifier_pct": 10.0,
+      "status": "retired_historical_design_not_a_current_cap_schedule"
+    }
+  },
+  "reit_independence_controls": {
+    "minimum_independent_projects": 5,
+    "minimum_manager_or_sponsor_groups": 3,
+    "minimum_operating_cash_flow_sectors": 3,
+    "pairwise_correlation_rule": "A pair with verified rolling-60-observation return correlation greater than 0.70 is one risk cluster; combined exposure must stay within the 10% cluster cap.",
+    "missing_or_unreliable_history_rule": "Missing, inadequate or structurally unreliable price history cannot prove independence and requires a qualitative common-driver review; unresolved result is q_0.",
+    "cross_sleeve_requirement": "Map dividend-ETF and REIT common sponsor, issuer group, property/rental, regulated revenue, customer and financing exposures before activation."
+  },
+  "total_return_objective_policy": {
+    "total_return_target_pct": 5.0,
+    "measurement": "Rolling-five-year annualized, cost-aware TWRR; MWRR/XIRR is separately reported when external flows exist.",
+    "objective_outcome_action": "Record the outcome and refresh return evidence; do not use leverage, asset sales, lower credit quality, a forced REIT fill or higher concentration to repair it.",
+    "two_consecutive_review_period_outcomes_action": "Freeze all proposals to raise market-risk exposure until the full cross-asset risk-budget, total-return evidence, tax, liquidity and concentration review is rerun.",
+    "cash_boundary": "Cash distributions are reconciled as components of total return. They are not a separate target, risk budget, annual success/failure status, or reason to change risk exposure."
+  },
+  "execution_authorization": "none",
+  "warnings": [
+    "The planning-stress inputs are not historical estimates, probabilities, VaR, maximum losses or return forecasts.",
+    "A cash receipt is part of total return and cannot be counted as an additional return after a later cash-use choice.",
+    "An issuer-labelled or economically similar capital-repayment component requires a separate ledger flag and predeclared treatment; it is not labelled investment return or counted twice.",
+    "No value in this file proves that any current product, REIT candidate or account is eligible."
+  ]
+}

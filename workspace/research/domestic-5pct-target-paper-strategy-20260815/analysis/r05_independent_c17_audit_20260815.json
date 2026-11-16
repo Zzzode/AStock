@@ -1,0 +1,44 @@
+{
+  "artifact_id": "D5PT-R05-v1",
+  "as_of": "2026-08-15",
+  "boundary": "The audit validates a bounded gross actual-contract settlement-mark calculation only. It does not establish fills, costs, margin, account access, investor net result, usable-strategy status or external action.",
+  "failures": [],
+  "independent_reconstruction": {
+    "annualized_gross_settlement_mark_change": 0.020777936614317927,
+    "complete_year_below_5pct": [
+      2020,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "daily_curve_mismatch_counts": {},
+    "entire_daily_curve_rows_compared": 1699,
+    "final_unit_value": 1.1547219267995221,
+    "held_actual_contract_mark_pairs": 3863,
+    "maximum_drawdown": -0.1346204522029366,
+    "nonflat_direction_checks": 818,
+    "rolling_endpoint_at_or_above_5pct": 0,
+    "rolling_endpoint_count": 24,
+    "selected_actual_contract_direction_checks": 1725,
+    "selected_actual_contract_identity_checks": 1725,
+    "weekly_signals": 358
+  },
+  "result": "PASS",
+  "schema_version": "independent_c17_actual_contract_audit.v1",
+  "source_control": {
+    "compressed_hash_checks": 1699,
+    "manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c15-shfe-actual-contract-eod-2019-2025-20260815/manifest.json",
+    "manifest_records": 1699,
+    "manifest_sha256": "34e23ddf886bd1f1f6cb88610d8d730bd757c981b92b0aa51720c5471b1186d7",
+    "p02_product_diligence_sha256": "603c6bc79de06b40913f7ad48c18346ecb19dad0c09fe9493de90c9b90357499",
+    "p03_product_diligence_sha256": "bf7deea405abc9957e2ef857921606d0488285a269dd5127e43dcc1b540dd9c6",
+    "protocol_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c17_diversified_actual_contract_settlement_protocol_20260815.json",
+    "protocol_sha256": "35f4b5c07bdde384673eba9c9e92943eadd89ee5760cad59ff9b42ec4d63d0d0",
+    "published_c17_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c17_diversified_actual_contract_settlement_diagnostic_20260815.json",
+    "published_c17_sha256": "70dfbab252505aed3521ac278948620531ba5c3bb77788344289149925432ed8",
+    "raw_dates_reconstructed": 1699,
+    "raw_hash_checks": 1699,
+    "report_date_checks": 1699
+  }
+}

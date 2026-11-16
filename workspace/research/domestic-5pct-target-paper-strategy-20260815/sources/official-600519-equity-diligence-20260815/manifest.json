@@ -1,0 +1,107 @@
+{
+  "schema_version": "official_600519_equity_diligence_manifest.v1",
+  "capture_batch": "official-600519-equity-diligence-20260815",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "captured_at": "2026-08-15T10:20:32+08:00",
+  "timezone": "Asia/Shanghai",
+  "purpose": "Retain primary issuer PDFs and official SSE announcement-query responses used by C40. This capture supports bounded reported facts and locator integrity only; it does not establish a complete disclosure/version lineage, settled same-session availability, market-data rights, valuation, total return, liquidity, strategy admission, or external action.",
+  "source_quality": "primary_issuer_filing_and_exchange_query",
+  "limitations": [
+    "Issuer retrieval time is not an independently validated original exchange publication time; it does not alone establish same-session availability.",
+    "The direct SSE retrieval attempts for the 2026 H1 report and accounting-policy-change PDF returned anti-bot HTML rather than the announced PDFs; those probes are retained separately.",
+    "The full statutory disclosure inventory, complete correction/withdrawal chain, regulatory/litigation negative search, market price, corporate-action, execution, cost, tax, settlement and rights ledger remain incomplete.",
+    "No retained file selects the issuer, gives a target price, forecasts a return or distribution, establishes total return, or authorizes an external action."
+  ],
+  "files": [
+    {
+      "source_id": "C40-S01",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_ir_financial_archive.html",
+      "publisher": "Kweichow Moutai Co., Ltd.",
+      "kind": "investor_relations_financial_report_index",
+      "access_date": "2026-08-15",
+      "url": "https://www.moutaichina.com/mtgf/tzzgx/cwbg/index.html",
+      "bytes": 27143,
+      "sha256": "d11ea2423223cb584e28df0ee90d80a94bea607907aae82c36a33ac189667dcd"
+    },
+    {
+      "source_id": "C40-S02",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2025_annual_report.pdf",
+      "publisher": "Kweichow Moutai Co., Ltd.",
+      "kind": "annual_report",
+      "publication_date": "2026-04-17",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-04/17/1b9fae59825c41bf9a776892a00565f7.pdf",
+      "bytes": 1082847,
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288"
+    },
+    {
+      "source_id": "C40-S03",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2026_q1_report.pdf",
+      "publisher": "Kweichow Moutai Co., Ltd.",
+      "kind": "quarterly_report",
+      "publication_date": "2026-04-25",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-04/27/caf6cef38da94e9e9e71949ad0064f77.pdf",
+      "bytes": 158374,
+      "sha256": "ca10d0e4fb3a1e4e9f258c04fc4c62000968f337a9b0bf6f714d4f153536d363"
+    },
+    {
+      "source_id": "C40-S06",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2025_distribution_implementation.pdf",
+      "publisher": "Kweichow Moutai Co., Ltd.",
+      "kind": "distribution_implementation_announcement",
+      "publication_date": "2026-06-22",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-06/22/f7c1dbdf7142475d84269482757fd72d.pdf",
+      "bytes": 155250,
+      "sha256": "6b082b6a00db748f23b6dea166b0296cd69d8c10542d352e23d2e2c344ea516e"
+    },
+    {
+      "source_id": "C40-S08",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2024_annual_report.pdf",
+      "publisher": "Kweichow Moutai Co., Ltd.",
+      "kind": "annual_report",
+      "publication_date": "2025-04-03",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2025-04/08/8055b7bed7db41bdbc617f4c9b9ec591.pdf",
+      "bytes": 3626217,
+      "sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30"
+    },
+    {
+      "source_id": "C40-S09",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2023_annual_report.pdf",
+      "publisher": "Kweichow Moutai Co., Ltd.",
+      "kind": "annual_report",
+      "publication_date": "2024-04-03",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2024-05/07/e7471b99e4e84c7e9dcf1e591174c08e.pdf",
+      "bytes": 3563819,
+      "sha256": "2125ff97a452ea79b0d784e2432f7d224b6aecc330b644b593477d69e22f4ed1"
+    },
+    {
+      "source_id": "C40-S04",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2026_annual_package_sse_query.json",
+      "publisher": "Shanghai Stock Exchange",
+      "kind": "announcement_query_response",
+      "query_window": "2026-04-16 to 2026-04-18",
+      "url": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&productId=600519&securityType=0101,120100,020100,020200,120200&beginDate=2026-04-16&endDate=2026-04-18&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=5",
+      "bytes": 61480,
+      "sha256": "ac637bf014148dfef156efe0d1d7a3d5aac756f2a6d636c5089577178fea7354"
+    },
+    {
+      "source_id": "C40-S05",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2026_h1_package_sse_query.json",
+      "publisher": "Shanghai Stock Exchange",
+      "kind": "announcement_query_response",
+      "query_window": "2026-08-14 to 2026-08-16",
+      "url": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&productId=600519&securityType=0101,120100,020100,020200,120200&beginDate=2026-08-14&endDate=2026-08-16&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=5",
+      "bytes": 15679,
+      "sha256": "ac3d7cfbc5cdcbc818af1cde3ea9aee599da7e5d513d0031549d762a477eeffd"
+    },
+    {
+      "source_id": "C40-S07",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/official-600519-equity-diligence-20260815/600519_2026_detention_sse_query.json",
+      "publisher": "Shanghai Stock Exchange",
+      "kind": "announcement_query_response",
+      "query_window": "2026-03-13 to 2026-03-15",
+      "url": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&productId=600519&securityType=0101,120100,020100,020200,120200&beginDate=2026-03-13&endDate=2026-03-15&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=5",
+      "bytes": 3105,
+      "sha256": "a6c2e23b1b32eb5fd255be6c73f97a67f719f76bcdb0283d748c6b2a447208d1"
+    }
+  ]
+}

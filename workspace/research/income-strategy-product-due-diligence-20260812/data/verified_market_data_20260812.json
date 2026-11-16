@@ -1,0 +1,20 @@
+{
+  "schema_version": "astock.verified_market_snapshot.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "verification_date": "2026-08-12",
+  "verified_against": "10 archived Shanghai Stock Exchange snapshot JSON payloads with the same date/time schema",
+  "coverage": {"expected_named_products":10,"matched_rows":10,"missing_rows":[]},
+  "verification_checks": [
+    {"check":"ticker identity matches archived filename and payload code","status":"pass","count":10},
+    {"check":"all payload dates equal 20260812","status":"pass","count":10},
+    {"check":"all payload times equal 162905","status":"pass","count":10},
+    {"check":"last/volume/amount/OHLC copied without transformation","status":"pass","count":10},
+    {"check":"execution fields present for q eligibility","status":"fail_as_expected","missing":["bid_ask_spread","depth","IOPV_or_same_session_NAV","20_session_capacity","account_tax_settlement"]}
+  ],
+  "approved_uses": ["dated market-price observation", "intraday turnover observation", "explicitly date-mismatched historical-NAV diagnostic after separate review"],
+  "prohibited_uses": ["order or allocation instruction", "liquidity-capacity clearance", "same-day premium/discount conclusion", "current fair value", "cash-yield forecast"],
+  "q_eligibility": {"status":"NOT_APPROVED","q":0,"reason":"required current-session execution and account fields are absent"},
+  "data_quality":"verified_primary_exchange_snapshot_with_material_execution_gaps",
+  "warnings":["Verification confirms the archive, not its adequacy for implementation.","Market price date is 2026-08-12 while routine fund NAV data are 2026-06-30 or 2025-12-31; any comparison must retain both dates."],
+  "error":null
+}

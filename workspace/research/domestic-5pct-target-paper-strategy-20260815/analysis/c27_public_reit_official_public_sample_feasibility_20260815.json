@@ -1,0 +1,247 @@
+{
+  "schema_version": "c27_public_reit_official_public_sample_feasibility.v1",
+  "artifact_id": "D5PT-C27-PUBLIC-REIT-OFFICIAL-PUBLIC-SAMPLE-FEASIBILITY-v1",
+  "as_of": "2026-08-15",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "product_selected": false,
+  "return_test_run": false,
+  "return_result": null,
+  "external_action": false,
+  "purpose": "Bounded, read-only inspection of a small official SSE public-web sample for historical public-REIT field availability. It is not a data acquisition, license application, universe definition, product selection, return calculation, backtest, or action instruction.",
+  "status": "OFFICIAL_PUBLIC_FIELD_SAMPLES_OBSERVED_RIGHTS_AND_COMPLETENESS_NOT_ESTABLISHED",
+  "answer": "An official SSE public-web workflow produced small, reproducible field-level samples for one arbitrary interface fixture: recent raw daily bars, NAV observations, distribution fields, official announcement locators, and an unlock event. This establishes useful source and schema evidence only. It does not establish permission for automated or bulk use, a complete point-in-time SSE/SZSE public-REIT universe, a full historical price series, a normalized corporate-action/status ledger, actual cash receipt, or a frozen total-return research dataset. C20 remains not paper-testable and no product is admitted.",
+  "fixture_control": {
+    "fixture_code": "508000",
+    "fixture_role": "A single arbitrary public UI fixture used solely to verify endpoint fields and source-document linkage.",
+    "not_a_product_selection": true,
+    "not_a_recommendation": true,
+    "not_a_universe_definition": true
+  },
+  "rights_boundary": {
+    "official_authorization_statement_url": "https://www.sseinfo.com/aboutus/authstatement/",
+    "observed_rule": "The SSE/SZSE authorization statement says exchange securities information, including market, announcement, statistical, and research information, belongs to the exchanges; it says a person needing to receive, use, or operate that information must apply to the relevant authorized operator.",
+    "control_conclusion": "A public browser-rendered page or a UI-linked JSONP response is evidence that a field is publicly displayed. It is not evidence that this case may automate collection, make a bulk archive, retain a reproducible corpus, calculate derived outputs, or redistribute data. Written scope confirmation or a license is still required before those uses. This is a research-control conclusion, not legal advice."
+  },
+  "temporary_sample_protocol": {
+    "observed_on": "2026-08-15",
+    "public_ui_page": "https://www.sse.com.cn/reits/assortment/prices/detail/price/?code=508000",
+    "ui_script": "https://www.sse.com.cn/xhtml/reits/js/search/search_hq.js",
+    "method": "Read-only browser-equivalent GET/POST requests used by the official public UI, with a single fixture and small page sizes. Raw responses were inspected transiently outside the case directory; this artifact retains only method, counts, and SHA-256 fingerprints.",
+    "reproducibility_limit": "The request shape can be replayed to observe public display behavior, but output can change, the UI does not prove historic as-of availability, and replayability does not establish data-use rights or a frozen research input."
+  },
+  "observed_field_samples": [
+    {
+      "sample_id": "C27-SAMPLE-PRICE",
+      "official_source": "SSE public REIT price-detail UI and its UI-linked day-K endpoint",
+      "endpoint_pattern": "https://yunhq.sse.com.cn:32042/v1/sh1/dayk/{fund_code}?begin=-1000&end=-1&period=day&callback={callback}",
+      "observed_response": {
+        "code": "508000",
+        "declared_total": 1250,
+        "returned_begin": 1150,
+        "returned_end": 1250,
+        "returned_rows": 100,
+        "first_trade_date": "2026-03-23",
+        "last_trade_date": "2026-08-14",
+        "field_semantics_from_official_ui_script": [
+          "trade date",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume",
+          "amount"
+        ],
+        "sha256": "e8334f185aed303b6ad1e95d2928314cb94ed7fef146e90afa41a6e6fd7c67e4"
+      },
+      "what_it_proves": "The official public UI can display a small recent raw price/volume sample for this fixture.",
+      "what_it_does_not_prove": "It does not prove that all 1,250 internally reported rows are publicly retrievable with documented paging, that historical revisions are retained, that adjusted prices exist, or that bulk/research retention is authorized. The UI script itself states that historical display is limited to recent trading days."
+    },
+    {
+      "sample_id": "C27-SAMPLE-NAV",
+      "official_source": "SSE public REIT price-detail UI",
+      "endpoint": "https://query.sse.com.cn/commonSoaQuery.do",
+      "request_contract": {
+        "method": "POST JSONP",
+        "sql_id": "REITS_JZ",
+        "fixture_parameter": "fundCode=508000",
+        "page_size": 5,
+        "order": "appraiseDate|desc"
+      },
+      "observed_response": {
+        "declared_total": 9,
+        "sampled_rows": 5,
+        "fields": [
+          "fundCode",
+          "secNameCn",
+          "secNameFull",
+          "appraiseDate",
+          "fundUnitnetWorth"
+        ],
+        "latest_sampled_appraise_date": "2025-12-31",
+        "sha256": "a5b5f19413f567a5acb17ab21786a31399714fb043a5338f20ab2daccd0e5ed8"
+      },
+      "what_it_proves": "The official UI exposes historical NAV observations for the fixture and names both the valuation date and unit NAV fields.",
+      "what_it_does_not_prove": "It does not establish NAV publication timestamps, correction history, every required reporting date, full-universe coverage, or permission to retain/recompute from the response."
+    },
+    {
+      "sample_id": "C27-SAMPLE-DISTRIBUTION",
+      "official_source": "SSE public REIT price-detail UI",
+      "endpoint": "https://query.sse.com.cn/commonSoaQuery.do",
+      "request_contract": {
+        "method": "POST JSONP",
+        "sql_id": "REITS_FH",
+        "fixture_parameter": "fundCode=508000",
+        "page_size": 25
+      },
+      "observed_response": {
+        "declared_total": 9,
+        "returned_rows": 9,
+        "fields": [
+          "year",
+          "fundDividends",
+          "rightsRegistDate",
+          "exrightDate"
+        ],
+        "sha256": "df754ad0f655ef844d6777a91b3b8fec8cfc6fdedfb8d346a44b661030d423e4"
+      },
+      "official_document_cross_check": {
+        "announcement_url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-04-14/508000_20260414_41KN.pdf",
+        "document_sha256": "7d4055026d307f1ea7555e94141ae88bba13f40d066a83674e2e925def8f5968",
+        "cross_checked_fields": [
+          "distribution base date",
+          "unit NAV at the base date",
+          "per-unit distribution amount",
+          "record date",
+          "ex-right date",
+          "on-market cash-payment date",
+          "tax statement",
+          "cash-distribution method"
+        ]
+      },
+      "what_it_proves": "The public UI distribution rows can be linked to an official disclosure document that gives richer event terms for a sample record.",
+      "what_it_does_not_prove": "An announced payment date and stated tax treatment are not a verified investor-specific after-tax cash-receipt ledger. No universal normalized event ledger or historical correction policy was established."
+    },
+    {
+      "sample_id": "C27-SAMPLE-CORPORATE-ACTION",
+      "official_source": "SSE public REIT announcement list and linked disclosure document",
+      "announcement_list_contract": {
+        "endpoint": "https://query.sse.com.cn/commonSoaQuery.do",
+        "method": "POST JSONP",
+        "sql_id": "REITS_BULLETIN",
+        "fixture_parameter": "fundCode=508000",
+        "queried_period": "2026-01-01 to 2026-08-15",
+        "declared_total": 23,
+        "sha256": "268f69bd62e0dbf14c04ad5a21681f39021d67b7bc484f847072b3319db23632"
+      },
+      "linked_document": {
+        "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-06-11/508000_20260611_6UQI.pdf",
+        "document_sha256": "3d94d841efc1a9e34515725d20e0cb1926d6bd3e6a434d04505d7341de2610b5",
+        "observed_event_fields": [
+          "effective date",
+          "on-market unlock quantity",
+          "off-market unlock quantity",
+          "free-float quantity before and after the event",
+          "remaining restricted quantity"
+        ]
+      },
+      "what_it_proves": "Official public disclosure can provide a concrete corporate-action/event sample with material quantity and effective-date fields.",
+      "what_it_does_not_prove": "A single document does not supply a point-in-time, machine-replayable lifecycle/status ledger across every public REIT."
+    },
+    {
+      "sample_id": "C27-SAMPLE-STATUS",
+      "official_source": "SSE public UI-linked real-time snapshot plus official disclosure documents",
+      "observed_response": {
+        "endpoint_pattern": "https://yunhq.sse.com.cn:32042/v1/sh1/snap/{fund_code}?callback={callback}",
+        "response_date": "2026-08-14",
+        "sha256": "8ff3b1b422bff6399147956257979a52b182e8fdf261ce39dc172ceb8c7ac503"
+      },
+      "status": "NOT_SUFFICIENT",
+      "finding": "The inspected snapshot carried current quote and order-book values, but no self-describing historic status series. The unlock document provides an event-effective date, not a complete trading-state history. No public, frozen, point-in-time status table with halt/resumption, listing, termination, expansion, restriction, and revision history was obtained."
+    }
+  ],
+  "official_source_set": [
+    {
+      "source_id": "C27-S01",
+      "publisher": "Shanghai Stock Exchange",
+      "url": "https://www.sse.com.cn/reits/assortment/prices/detail/price/?code=508000",
+      "purpose": "Official public REIT price-detail UI that links to price, NAV, distribution, and announcement functions.",
+      "retrieved_date": "2026-08-15"
+    },
+    {
+      "source_id": "C27-S02",
+      "publisher": "Shanghai Stock Exchange",
+      "url": "https://www.sse.com.cn/xhtml/reits/js/search/search_hq.js",
+      "purpose": "Official UI script showing the request identifiers and field-display semantics used in the small read-only check.",
+      "retrieved_date": "2026-08-15",
+      "sha256": "e1b476c54486e7ea1e955833a3c0901efe424c6b87e94beac541078eac7e0315"
+    },
+    {
+      "source_id": "C27-S03",
+      "publisher": "Shanghai Stock Exchange",
+      "url": "https://www.sse.com.cn/services/tradingtech/data/c/10822594/files/2096257019bf484f9b9935fa73f94721.pdf",
+      "purpose": "Official market-data file-exchange specification identifying MD004 as fund market data including public REITs and defining price/volume field categories.",
+      "publisher_date": "2026-06",
+      "retrieved_date": "2026-08-15"
+    },
+    {
+      "source_id": "C27-S04",
+      "publisher": "Shanghai Stock Exchange / fund manager disclosure",
+      "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-04-14/508000_20260414_41KN.pdf",
+      "purpose": "Official distribution-notice source for a field-level cross-check.",
+      "publisher_date": "2026-04-14",
+      "retrieved_date": "2026-08-15"
+    },
+    {
+      "source_id": "C27-S05",
+      "publisher": "Shanghai Stock Exchange / fund manager disclosure",
+      "url": "https://www.sse.com.cn/disclosure/fund/announcement/c/new/2026-06-11/508000_20260611_6UQI.pdf",
+      "purpose": "Official unlock-event source for a corporate-action field-level cross-check.",
+      "publisher_date": "2026-06-11",
+      "retrieved_date": "2026-08-15"
+    },
+    {
+      "source_id": "C27-S06",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "url": "https://www.sseinfo.com/aboutus/authstatement/",
+      "purpose": "Official rights boundary used to avoid treating public UI display as data-use authorization.",
+      "retrieved_date": "2026-08-15",
+      "sha256": "728c5f7d0bf41cdaef1008906f7ee57254b212f435545b21a5b1ecac697d35e4"
+    }
+  ],
+  "admission_implications": {
+    "validated_for_future_contract_design": [
+      "At least one official public UI path exposes distinct raw-price, NAV, distribution, listing, announcement, and event-field categories.",
+      "A future licensed delivery should include a documented mapping for those categories and permit independent document reconciliation.",
+      "Official disclosure PDFs can serve as sample-level source checks after a licensed structured dataset is obtained."
+    ],
+    "still_blocked": [
+      "Written permission or license for automated collection, storage, bulk historic use, reproducible calculation, derived outputs, and any redistribution.",
+      "A full point-in-time SSE/SZSE public-REIT universe, including additions, terminations, expansions, code/name changes, restrictions, halts, resumptions, and correction history.",
+      "A complete and rights-cleared historical raw-price extract with documented retrieval/paging, availability timestamps, correction policy, and adjusted-price methodology.",
+      "A standardized cash-distribution/corporate-action ledger that distinguishes notice, record, ex-right, payment, correction, tax, and actual recipient treatment.",
+      "A complete historical trading-status series and an executable research-only fill/cost protocol.",
+      "Independent reconstruction from retained raw deliveries."
+    ],
+    "c20_effect": "None. C20 remains NO_STRATEGY_TEST_ADMISSION_NO_PRODUCT_SELECTION_NO_ACTION until every listed blocker is closed and independently reviewed."
+  },
+  "next_safe_gate": {
+    "gate_name": "C27-GATE-1 official-public-sample-to-licensed-dataset acceptance",
+    "requirements": [
+      "Obtain written clarification or a license from each relevant data-rights holder that explicitly covers the desired historical range, internal research, local retention, reproducible calculations, and permitted derived outputs.",
+      "Receive a hashable delivery sample and field dictionary covering both exchanges, plus date-by-date record counts, identifier/status mappings, availability timestamps, and correction policy.",
+      "Reconcile a pre-declared random event sample against official disclosure documents without changing the frozen universe or rules after inspection.",
+      "Have an independent reviewer reproduce the ingestion and field reconciliation from the retained licensed delivery."
+    ],
+    "prohibited_until_pass": [
+      "product selection",
+      "universe freeze",
+      "return calculation",
+      "backtest",
+      "investment action",
+      "external data-ordering or license-signing action under this artifact"
+    ]
+  },
+  "no_performance_claim": "No return, no cash-flow target test, and no 5% conclusion was calculated or implied. Any future 5% reference remains only a non-guaranteed long-run research hurdle after a separately admitted protocol exists."
+}

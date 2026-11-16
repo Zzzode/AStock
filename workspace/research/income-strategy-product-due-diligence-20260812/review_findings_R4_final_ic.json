@@ -1,0 +1,72 @@
+{
+  "cycle": "R4_final_ic",
+  "publishability_status": "RESEARCH_FRAMEWORK_PASS_IMPLEMENTATION_NOT_APPROVED",
+  "publishability_score": 94,
+  "findings": [
+    {
+      "issue_id": "R4-B-002",
+      "severity": "B",
+      "owner_skill": "valuation",
+      "owner_agent": "independent-review",
+      "artifact": "sections/ch07_reits_industrial_energy.tex",
+      "evidence": "Independent review recalculated 508080 price versus 2025-12-31 NAV as 2.405 / 2.7325 - 1 = -11.9854%, while an earlier reader-facing cell stated -12.72%.",
+      "fix_required": "Align the PDF product card with the valuation-model calculation and refresh the build provenance.",
+      "blocking_gate": "reader_facing_arithmetic",
+      "status": "closed",
+      "closure_evidence": "The cell now states -11.99%; the final PDF text extraction, SHA-256 and visual review were regenerated from the corrected source.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-S-003",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "independent-review",
+      "artifact": "data/build_provenance_20260812.json",
+      "evidence": "A late source/PDF rebuild changed the page identity and required governed release records to be synchronized before a release decision.",
+      "fix_required": "Refresh build provenance, render review, signoff PDF identity and gate results against the final 22-page PDF; do not alter the verifier merely to accommodate page count.",
+      "blocking_gate": "release_identity",
+      "status": "closed",
+      "closure_evidence": "Final PDF identity is main.tex SHA-256 20ad4e615c5d60c7a432c0a5ce3bf9ad3f3ffacffdf0c4f6e14469c32417260a and main.pdf SHA-256 c5de7442f7806660c1a8ef07adc0fe6a1079f8399078df8dd751bded2474c55f; it is 22 pages, rendered in full-20260812-1910, and the original verifier rule remains 22 pages.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-S-004",
+      "severity": "S",
+      "owner_skill": "research-prose-polish",
+      "owner_agent": "independent-review",
+      "artifact": "sections/ch01_decision.tex",
+      "evidence": "The cross-product q=0 conclusion was originally table-led and certain reader-facing implementation terms were English-language.",
+      "fix_required": "Add evidence-labelled non-predictive visuals and localize material decision, non-guarantee and authorization language.",
+      "blocking_gate": "reader_facing_decision_integrity",
+      "status": "closed",
+      "closure_evidence": "The final PDF adds economic-exposure, eight-gate and date/field-mismatch diagrams, and retains Chinese-language statements that objectives are not guaranteed and implementation is not approved or authorized.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-A-003",
+      "severity": "A",
+      "owner_skill": "source-governance",
+      "owner_agent": "independent-review",
+      "artifact": "data/source_registry.json",
+      "evidence": "S27 market snapshots and S28 legal documents were previously represented as bundle-level paths, while the no-action conclusion had insufficient control-artifact references.",
+      "fix_required": "Add document dates, hashes and file-level S27/S28 manifest records; link the no-action conclusion to valuation, broker, risk, cash, execution and exhaustion controls.",
+      "blocking_gate": "atomic_source_traceability",
+      "status": "closed",
+      "closure_evidence": "The source registry now records dates and hashes, data/legal_document_manifest_20260812.json contains 30 file-level records, and claim audit C10-C13 map the no-action/target boundary to the relevant control artifacts.",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R4-B-001",
+      "severity": "B",
+      "owner_skill": "monitoring",
+      "owner_agent": "independent-review",
+      "artifact": "source_exhaustion_log.md",
+      "evidence": "Implementation blockers remain material but are intentionally outside the research-framework publication scope.",
+      "fix_required": "Carry the blockers into final signoff and require a new R0/R1 packet before q can move above zero.",
+      "blocking_gate": "implementation_authorization",
+      "status": "closed",
+      "closure_evidence": "Final signoff lists return evidence, risk budget, suitability and execution as blocked; q=0 and no live execution authorization remain explicit.",
+      "reopened_count": 0
+    }
+  ]
+}

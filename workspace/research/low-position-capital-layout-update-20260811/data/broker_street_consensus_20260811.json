@@ -1,0 +1,468 @@
+{
+  "collection_date": "2026-08-11",
+  "scope": "broker / Street evidence refresh for low-position capital-layout universe",
+  "implied_upside_field_definition": "Each flat-row implied_upside value is the broker report's report-date upside, using the row's report_date and its own report-date price basis where available. It is not refreshed 2026-08-10-close upside and must not be used in this update's conclusions.",
+  "refreshed_price_arithmetic_note": "Refreshed external-anchor arithmetic uses 2026-08-10 closes and is separately calculated in analysis/valuation_audit.md and main.tex appendix. It is external-reference arithmetic, not an AStock target.",
+  "refreshed_external_anchor_arithmetic_20260810": {
+    "000703": "CNY16.50–17.60 versus CNY18.18 equals about -9% to -3%",
+    "002379": "CNY29.00 versus CNY19.76 equals about +47%",
+    "300014": "CNY77.00/CNY103.00 versus CNY55.22 equals about +39%/+87%; not averaged",
+    "002497": "CNY42.00 versus CNY19.09 equals about +120%",
+    "002812": "CNY103.00 versus CNY55.95 equals about +84%"
+  },
+  "date_window": {
+    "preferred_begin": "2026-04-01",
+    "cutoff": "2026-08-11"
+  },
+  "methodology": {
+    "directory_probe": "Eastmoney public report directory queried separately for every ticker, 2026-04-01 through 2026-08-11; raw responses are archived under sources/probe-20260811/.",
+    "weight_rule": "Only a current, archived original broker PDF with an explicit target and usable revenue, net-profit and EPS fields can carry a non-zero valuation_weight. A target with no disclosed valuation method is capped at 0.05. Forecast-only, forecast-incomplete, weak and not-found evidence have valuation_weight 0. The flat rows array excludes a target-bearing archived report if a required valuation field is unavailable; the detailed tickers archive remains complete.",
+    "interpretation": "Weights are evidence caps, not portfolio weights and not a formal vendor consensus. Do not average the two 300014 targets into a Street target."
+  },
+  "rows": [
+    {"ticker":"000703","broker":"国信证券","report_date":"2026-07-05","rating":"优于大市（首次）","target_price":17.05,"target_price_range":{"low":16.5,"high":17.6},"revenue_E":{"2026E_cny_mn":141736,"2027E_cny_mn":143521},"net_profit_E":{"2026E_cny_mn":7910,"2027E_cny_mn":7800},"EPS_E":{"2026E":2.2,"2027E":2.16},"method":"FCFE plus peer P/E; 2026E 7-8x P/E reference.","implied_upside":13.21,"source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/01-000703-guosen-20260705.pdf","source_url":"https://data.eastmoney.com/report/info/AP202607051826727558.html","valuation_weight":0.1,"street_weight":0.1},
+    {"ticker":"002379","broker":"招银国际","report_date":"2026-05-13","rating":"买入（首次）","target_price":29.0,"target_price_range":{"low":29.0,"high":29.0},"revenue_E":{"2026E_cny_mn":173916,"2027E_cny_mn":171911},"net_profit_E":{"2026E_cny_mn":28208.3,"2027E_cny_mn":26240.1,"metric":"adjusted_net_profit"},"EPS_E":{"2026E":2.16,"2027E":2.01},"method":"13.2x 2026E P/E.","implied_upside":27.6,"source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/02b-002379-cmbi-20260513.pdf","source_url":"https://data.eastmoney.com/report/info/AP202605131822269558.html","valuation_weight":0.1,"street_weight":0.1},
+    {"ticker":"300014","broker":"群益证券","report_date":"2026-06-26","rating":"买进","target_price":77.0,"target_price_range":{"low":77.0,"high":77.0},"revenue_E":{"2026E_cny_mn":95641,"2027E_cny_mn":122173},"net_profit_E":{"2026E_cny_mn":6454,"2027E_cny_mn":8625},"EPS_E":{"2026E":3.112,"2027E":4.158},"method":"not disclosed; target derivation is not stated.","implied_upside":23.8,"source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/04-300014-qunyi-20260626.pdf","source_url":"https://data.eastmoney.com/report/info/AP202606261824496040.html","forecast_gaps":["Target-price derivation not disclosed."],"valuation_weight":0.05,"street_weight":0.05},
+    {"ticker":"002497","broker":"东吴证券","report_date":"2026-07-08","rating":"买入（维持）","target_price":42.0,"target_price_range":{"low":42.0,"high":42.0},"revenue_E":{"2026E_cny_mn":17052,"2027E_cny_mn":22215},"net_profit_E":{"2026E_cny_mn":3031.65,"2027E_cny_mn":3575.28},"EPS_E":{"2026E":2.63,"2027E":3.1},"method":"16x 2026E P/E.","implied_upside":70.4,"source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/05-002497-dongwu-20260708.pdf","source_url":"https://data.eastmoney.com/report/info/AP202607071826780391.html","valuation_weight":0.1,"street_weight":0.1},
+    {"ticker":"002432","broker":"not disclosed","report_date":"not disclosed","rating":"not disclosed","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":"not disclosed","2027E_cny_mn":"not disclosed"},"net_profit_E":{"2026E_cny_mn":"not disclosed","2027E_cny_mn":"not disclosed"},"EPS_E":{"2026E":"not disclosed","2027E":"not disclosed"},"method":"not disclosed","implied_upside":"not disclosed","source_quality":"not_found","source_path":"sources/probe-20260811/eastmoney_report_list_002432_20260401_20260811.json","source_url":"https://reportapi.eastmoney.com/report/list2","valuation_weight":0.0,"street_weight":0.0},
+    {"ticker":"000623","broker":"not disclosed","report_date":"not disclosed","rating":"not disclosed","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":"not disclosed","2027E_cny_mn":"not disclosed"},"net_profit_E":{"2026E_cny_mn":"not disclosed","2027E_cny_mn":"not disclosed"},"EPS_E":{"2026E":"not disclosed","2027E":"not disclosed"},"method":"not disclosed","implied_upside":"not disclosed","source_quality":"not_found","source_path":"sources/probe-20260811/eastmoney_report_list_000623_20260401_20260811.json","source_url":"https://reportapi.eastmoney.com/report/list2","valuation_weight":0.0,"street_weight":0.0},
+    {"ticker":"600739","broker":"not disclosed","report_date":"not disclosed","rating":"not disclosed","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":"not disclosed","2027E_cny_mn":"not disclosed"},"net_profit_E":{"2026E_cny_mn":"not disclosed","2027E_cny_mn":"not disclosed"},"EPS_E":{"2026E":"not disclosed","2027E":"not disclosed"},"method":"not disclosed","implied_upside":"not disclosed","source_quality":"not_found","source_path":"sources/probe-20260811/eastmoney_report_list_600739_20260401_20260811.json","source_url":"https://reportapi.eastmoney.com/report/list2","valuation_weight":0.0,"street_weight":0.0},
+    {"ticker":"000685","broker":"国信证券","report_date":"2026-05-11","rating":"优于大市（维持）","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":4884,"2027E_cny_mn":5010},"net_profit_E":{"2026E_cny_mn":2145,"2027E_cny_mn":2378},"EPS_E":{"2026E":1.45,"2027E":1.61},"method":"No target method disclosed; current-price P/E only.","implied_upside":"not disclosed","source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/06-000685-guosen-20260511.pdf","source_url":"https://data.eastmoney.com/report/info/AP202605111822142394.html","valuation_weight":0.0,"street_weight":0.0},
+    {"ticker":"600150","broker":"华源证券","report_date":"2026-07-14","rating":"买入（维持）","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":173501,"2027E_cny_mn":197304},"net_profit_E":{"2026E_cny_mn":18198,"2027E_cny_mn":23538},"EPS_E":{"2026E":2.42,"2027E":3.13},"method":"No target method disclosed; current-price P/E only.","implied_upside":"not disclosed","source_quality":"re_scoped_original_unverified","source_path":"sources/broker-reports/2026-08-11/07-600150-huayuan-20260714.pdf","source_url":"https://data.eastmoney.com/report/info/AP202607141826961354.html","valuation_weight":0.0,"street_weight":0.0},
+    {"ticker":"301308","broker":"爱建证券","report_date":"2026-05-07","rating":"买入（维持）","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":40039,"2027E_cny_mn":49507},"net_profit_E":{"2026E_cny_mn":19969,"2027E_cny_mn":21908},"EPS_E":{"2026E":47.64,"2027E":52.27},"method":"No target method disclosed; current-price P/E only.","implied_upside":"not disclosed","source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/08-301308-aijian-20260507.pdf","source_url":"https://data.eastmoney.com/report/info/AP202605071822032328.html","valuation_weight":0.0,"street_weight":0.0},
+    {"ticker":"002812","broker":"东吴证券","report_date":"2026-07-10","rating":"买入（维持）","target_price":103.0,"target_price_range":{"low":103.0,"high":103.0},"revenue_E":{"2026E_cny_mn":20058,"2027E_cny_mn":31115},"net_profit_E":{"2026E_cny_mn":2279.37,"2027E_cny_mn":5068.27},"EPS_E":{"2026E":2.32,"2027E":5.16},"method":"20x 2027E P/E.","implied_upside":74.0,"source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/09-002812-dongwu-20260710.pdf","source_url":"https://data.eastmoney.com/report/info/AP202607101826872306.html","valuation_weight":0.1,"street_weight":0.1},
+    {"ticker":"002240","broker":"东吴证券","report_date":"2026-07-09","rating":"买入（维持）","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":15049,"2027E_cny_mn":16200},"net_profit_E":{"2026E_cny_mn":2242.53,"2027E_cny_mn":3003.75},"EPS_E":{"2026E":2.45,"2027E":3.28},"method":"No target method disclosed; current-price P/E only.","implied_upside":"not disclosed","source_quality":"original_pdf","source_path":"sources/broker-reports/2026-08-11/10-002240-dongwu-20260709.pdf","source_url":"https://data.eastmoney.com/report/info/AP202607091826841808.html","valuation_weight":0.0,"street_weight":0.0},
+    {"ticker":"300390","broker":"华源证券","report_date":"2026-06-06","rating":"买入（首次）","target_price":"not disclosed","revenue_E":{"2026E_cny_mn":21621,"2027E_cny_mn":24898},"net_profit_E":{"2026E_cny_mn":4733,"2027E_cny_mn":5315},"EPS_E":{"2026E":5.7,"2027E":6.4},"method":"Comparable-company P/E is discussed; no assigned target price.","implied_upside":"not disclosed","source_quality":"re_scoped_original_unverified","source_path":"sources/broker-reports/2026-08-11/11-300390-huayuan-20260606.pdf","source_url":"https://data.eastmoney.com/report/info/AP202606061823325911.html","valuation_weight":0.0,"street_weight":0.0}
+  ],
+  "tickers": [
+    {
+      "ticker": "000703",
+      "company": "恒逸石化",
+      "coverage_status": "current_original_pdf_target_anchor",
+      "valuation_weight_total": 0.1,
+      "reports": [
+        {
+          "broker": "国信证券",
+          "analyst": "杨林, 张歆钰",
+          "report_date": "2026-07-05",
+          "title": "文莱炼化项目盈利提升，公司上半年业绩大幅增长",
+          "rating": "优于大市（首次）",
+          "target_price": {"currency": "CNY", "low": 16.5, "high": 17.6, "midpoint": 17.05},
+          "forecast": {"revenue_2026e_cny_mn": 141736, "revenue_2027e_cny_mn": 143521, "net_profit_2026e_cny_mn": 7910, "net_profit_2027e_cny_mn": 7800, "eps_2026e": 2.2, "eps_2027e": 2.16},
+          "valuation_method": "FCFE plus peer P/E; 2026E 7-8x P/E is the relative-valuation reference.",
+          "forecast_gaps": [],
+          "source_url": "https://data.eastmoney.com/report/info/AP202607051826727558.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202607051826727558_1.pdf?1783261034000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/01-000703-guosen-20260705.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/01-000703-guosen-20260705.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": null,
+          "confidence": "high",
+          "valuation_weight": 0.1
+        }
+      ]
+    },
+    {
+      "ticker": "002379",
+      "company": "宏桥控股",
+      "coverage_status": "current_original_pdf_target_anchor",
+      "valuation_weight_total": 0.1,
+      "reports": [
+        {
+          "broker": "招银国际",
+          "analyst": "冯键嵘, CFA; 张杰",
+          "report_date": "2026-05-13",
+          "title": "高盈利弹性，高分红比例；首次覆盖给予买入评级",
+          "rating": "买入（首次）",
+          "target_price": {"currency": "CNY", "low": 29.0, "high": 29.0, "midpoint": 29.0},
+          "forecast": {"revenue_2026e_cny_mn": 173916, "revenue_2027e_cny_mn": 171911, "net_profit_2026e_cny_mn": 28208.3, "net_profit_2027e_cny_mn": 26240.1, "eps_2026e": 2.16, "eps_2027e": 2.01},
+          "valuation_method": "13.2x 2026E P/E; the report states a 20% premium to its 11x China Hongqiao target multiple.",
+          "forecast_gaps": ["The report calls the profit metric adjusted net profit; do not substitute it for company-reported attributable profit without reconciliation."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202605131822269558.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202605131822269558_1.pdf?1778691126000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/02b-002379-cmbi-20260513.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/02b-002379-cmbi-20260513.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": null,
+          "confidence": "high",
+          "valuation_weight": 0.1
+        }
+      ],
+      "notes": ["The same CMBI initiation is also archived in English dated 2026-05-12 (02-002379-cmbi-20260512.pdf); it is a duplicate view and is not an additional independent target.", "The original report states that China Hongqiao owns 89% of Hongqiao Holdings after the December 2025 backdoor listing; this is the broker's reported structure, not an inference by this collection."]
+    },
+    {
+      "ticker": "300014",
+      "company": "亿纬锂能",
+      "coverage_status": "two_current_original_pdf_targets_with_material_dispersion",
+      "valuation_weight_total": 0.05,
+      "reports": [
+        {
+          "broker": "东吴证券",
+          "analyst": "曾朵红, 阮巧燕, 岳斯瑶, 朱家佟",
+          "report_date": "2026-06-16",
+          "title": "2026年Q2盈利韧性强劲，业绩超市场预期",
+          "rating": "买入（维持）",
+          "target_price": {"currency": "CNY", "low": 103.0, "high": 103.0, "midpoint": 103.0},
+          "forecast": {"revenue_2026e_cny_mn": null, "revenue_2027e_cny_mn": null, "net_profit_2026e_cny_mn": 7230, "net_profit_2027e_cny_mn": 9520, "eps_2026e": 3.33, "eps_2027e": 4.38},
+          "valuation_method": "30x 2026E P/E.",
+          "forecast_gaps": ["Revenue forecasts were not visible in the public abstract and no independently extracted full-text table was available in this refresh."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202606161823592555.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202606161823592555_1.pdf?1781612301000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/03-300014-dongwu-20260616.pdf",
+          "local_text": null,
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": "PDF is archived; the local PDF-text extractor is unavailable in this runtime, while the visible abstract supplies the target, method and profit forecasts.",
+          "confidence": "high",
+          "valuation_weight": 0.0
+        },
+        {
+          "broker": "群益证券",
+          "analyst": "沈嘉婕",
+          "report_date": "2026-06-26",
+          "title": "公司26H1净利润翻倍增长，储能业务加快扩张，建议“买进”",
+          "rating": "买进",
+          "target_price": {"currency": "CNY", "low": 77.0, "high": 77.0, "midpoint": 77.0},
+          "forecast": {"revenue_2026e_cny_mn": 95641, "revenue_2027e_cny_mn": 122173, "net_profit_2026e_cny_mn": 6454, "net_profit_2027e_cny_mn": 8625, "eps_2026e": 3.112, "eps_2027e": 4.158},
+          "valuation_method": "not disclosed; the report gives current-price P/E, but does not state the multiple used to derive the CNY77 target.",
+          "forecast_gaps": ["Target-price derivation is not disclosed."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202606261824496040.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202606261824496040_1.pdf?1782491504000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/04-300014-qunyi-20260626.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/04-300014-qunyi-20260626.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": null,
+          "confidence": "high",
+          "valuation_weight": 0.05
+        }
+      ],
+      "notes": ["The CNY77 and CNY103 targets are not averaged. They reflect materially different 2026E net-profit assumptions (CNY6.454bn versus CNY7.230bn) and the CNY77 target method is not disclosed."]
+    },
+    {
+      "ticker": "002497",
+      "company": "雅化集团",
+      "coverage_status": "current_original_pdf_target_anchor",
+      "valuation_weight_total": 0.1,
+      "reports": [
+        {
+          "broker": "东吴证券",
+          "analyst": "曾朵红, 阮巧燕",
+          "report_date": "2026-07-08",
+          "title": "26H1业绩预告点评：Q2锂盐量利齐升，略超我们预期",
+          "rating": "买入（维持）",
+          "target_price": {"currency": "CNY", "low": 42.0, "high": 42.0, "midpoint": 42.0},
+          "forecast": {"revenue_2026e_cny_mn": 17052, "revenue_2027e_cny_mn": 22215, "net_profit_2026e_cny_mn": 3031.65, "net_profit_2027e_cny_mn": 3575.28, "eps_2026e": 2.63, "eps_2027e": 3.1},
+          "valuation_method": "16x 2026E P/E.",
+          "forecast_gaps": [],
+          "source_url": "https://data.eastmoney.com/report/info/AP202607071826780391.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202607071826780391_1.pdf?1783491468000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/05-002497-dongwu-20260708.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/05-002497-dongwu-20260708.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": null,
+          "confidence": "high",
+          "valuation_weight": 0.1
+        }
+      ]
+    },
+    {
+      "ticker": "002432",
+      "company": "九安医疗",
+      "coverage_status": "no_public_directory_row_in_preferred_window",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "not disclosed",
+          "analyst": "not disclosed",
+          "report_date": "not disclosed",
+          "title": "not disclosed",
+          "rating": "not disclosed",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": null, "revenue_2027e_cny_mn": null, "net_profit_2026e_cny_mn": null, "net_profit_2027e_cny_mn": null, "eps_2026e": null, "eps_2027e": null},
+          "valuation_method": "not disclosed",
+          "forecast_gaps": ["No 2026-04-01 to 2026-08-11 public Eastmoney directory row."],
+          "source_url": "https://reportapi.eastmoney.com/report/list2",
+          "pdf_url": null,
+          "local_pdf": null,
+          "local_text": null,
+          "source_form": "not_found",
+          "source_quality": "not_found",
+          "evidence_tier": "gap",
+          "download_status": "not_found",
+          "exhaustion_reason": "Preferred-window directory probe returned zero rows; private or licensed-terminal coverage is not excluded.",
+          "confidence": "high",
+          "valuation_weight": 0.0
+        }
+      ]
+    },
+    {
+      "ticker": "000623",
+      "company": "吉林敖东",
+      "coverage_status": "no_public_directory_row_in_preferred_window",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "not disclosed",
+          "analyst": "not disclosed",
+          "report_date": "not disclosed",
+          "title": "not disclosed",
+          "rating": "not disclosed",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": null, "revenue_2027e_cny_mn": null, "net_profit_2026e_cny_mn": null, "net_profit_2027e_cny_mn": null, "eps_2026e": null, "eps_2027e": null},
+          "valuation_method": "not disclosed",
+          "forecast_gaps": ["No 2026-04-01 to 2026-08-11 public Eastmoney directory row."],
+          "source_url": "https://reportapi.eastmoney.com/report/list2",
+          "pdf_url": null,
+          "local_pdf": null,
+          "local_text": null,
+          "source_form": "not_found",
+          "source_quality": "not_found",
+          "evidence_tier": "gap",
+          "download_status": "not_found",
+          "exhaustion_reason": "Preferred-window directory probe returned zero rows; private or licensed-terminal coverage is not excluded.",
+          "confidence": "high",
+          "valuation_weight": 0.0
+        }
+      ]
+    },
+    {
+      "ticker": "600739",
+      "company": "辽宁成大",
+      "coverage_status": "no_public_directory_row_in_preferred_window",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "not disclosed",
+          "analyst": "not disclosed",
+          "report_date": "not disclosed",
+          "title": "not disclosed",
+          "rating": "not disclosed",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": null, "revenue_2027e_cny_mn": null, "net_profit_2026e_cny_mn": null, "net_profit_2027e_cny_mn": null, "eps_2026e": null, "eps_2027e": null},
+          "valuation_method": "not disclosed",
+          "forecast_gaps": ["No 2026-04-01 to 2026-08-11 public Eastmoney directory row."],
+          "source_url": "https://reportapi.eastmoney.com/report/list2",
+          "pdf_url": null,
+          "local_pdf": null,
+          "local_text": null,
+          "source_form": "not_found",
+          "source_quality": "not_found",
+          "evidence_tier": "gap",
+          "download_status": "not_found",
+          "exhaustion_reason": "Preferred-window directory probe returned zero rows; private or licensed-terminal coverage is not excluded.",
+          "confidence": "high",
+          "valuation_weight": 0.0
+        }
+      ]
+    },
+    {
+      "ticker": "000685",
+      "company": "中山公用",
+      "coverage_status": "current_original_pdf_forecast_only",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "国信证券",
+          "analyst": "黄秀杰, 刘汉轩, 崔嘉城",
+          "report_date": "2026-05-11",
+          "title": "投资收益带动业绩高增，\"公用事业+资本+科技\"三大板块引领未来发展",
+          "rating": "优于大市（维持）",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": 4884, "revenue_2027e_cny_mn": 5010, "net_profit_2026e_cny_mn": 2145, "net_profit_2027e_cny_mn": 2378, "eps_2026e": 1.45, "eps_2027e": 1.61},
+          "valuation_method": "No target method disclosed; current-price P/E only.",
+          "forecast_gaps": ["No explicit target price."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202605111822142394.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202605111822142394_1.pdf?1778490520000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/06-000685-guosen-20260511.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/06-000685-guosen-20260511.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": "No target price in the original report.",
+          "confidence": "high",
+          "valuation_weight": 0.0
+        }
+      ]
+    },
+    {
+      "ticker": "600150",
+      "company": "中国船舶",
+      "coverage_status": "re_scoped_original_unverified_forecast_only",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "华源证券",
+          "analyst": "孙延, 刘晓宁, 曾智星, 王惠武, 张付哲",
+          "report_date": "2026-07-14",
+          "title": "26H1预告点评：Q2业绩预计同比大增，关注后续船价与集团整合",
+          "rating": "买入（维持）",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": 173501, "revenue_2027e_cny_mn": 197304, "net_profit_2026e_cny_mn": 18198, "net_profit_2027e_cny_mn": 23538, "eps_2026e": 2.42, "eps_2027e": 3.13},
+          "valuation_method": "No target method disclosed; current-price P/E only.",
+          "forecast_gaps": ["No explicit target price."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202607141826961354.html",
+          "pdf_url": null,
+          "local_pdf": "sources/broker-reports/2026-08-11/07-600150-huayuan-20260714.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/07-600150-huayuan-20260714.txt",
+          "source_form": "re_scoped_original_unverified",
+          "source_quality": "re_scoped_original_unverified",
+          "evidence_tier": "secondary_re_scoped",
+          "download_status": "re_scoped_local_archive",
+          "exhaustion_reason": "The direct page re-fetch did not expose an attach_url on 2026-08-11. A prior local PDF was re-scoped, but this case lacks a predecessor path and checksum proving byte identity; retain zero valuation weight.",
+          "confidence": "limited_provenance",
+          "valuation_weight": 0.0
+        }
+      ]
+    },
+    {
+      "ticker": "301308",
+      "company": "江波龙",
+      "coverage_status": "current_original_pdf_forecast_only",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "爱建证券",
+          "analyst": "许亮, 朱俊宇",
+          "report_date": "2026-05-07",
+          "title": "2025年报&2026Q1点评：国产存储模组龙头进入业绩爆发期",
+          "rating": "买入（维持）",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": 40039, "revenue_2027e_cny_mn": 49507, "net_profit_2026e_cny_mn": 19969, "net_profit_2027e_cny_mn": 21908, "eps_2026e": 47.64, "eps_2027e": 52.27},
+          "valuation_method": "No target method disclosed; current-price P/E only.",
+          "forecast_gaps": ["No explicit target price.", "The same-date Guosen directory row has materially lower EPS; this pack does not resolve the forecast divergence."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202605071822032328.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202605071822032328_1.pdf?1778175124000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/08-301308-aijian-20260507.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/08-301308-aijian-20260507.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": "No target price in the original report.",
+          "confidence": "high",
+          "valuation_weight": 0.0
+        }
+      ]
+    },
+    {
+      "ticker": "002812",
+      "company": "恩捷股份",
+      "coverage_status": "current_original_pdf_target_anchor",
+      "valuation_weight_total": 0.1,
+      "reports": [
+        {
+          "broker": "东吴证券",
+          "analyst": "曾朵红, 阮巧燕, 岳斯瑶",
+          "report_date": "2026-07-10",
+          "title": "26H1业绩预告点评：Q2业绩超我们预期，隔膜供需紧张盈利持续提升",
+          "rating": "买入（维持）",
+          "target_price": {"currency": "CNY", "low": 103.0, "high": 103.0, "midpoint": 103.0},
+          "forecast": {"revenue_2026e_cny_mn": 20058, "revenue_2027e_cny_mn": 31115, "net_profit_2026e_cny_mn": 2279.37, "net_profit_2027e_cny_mn": 5068.27, "eps_2026e": 2.32, "eps_2027e": 5.16},
+          "valuation_method": "20x 2027E P/E.",
+          "forecast_gaps": [],
+          "source_url": "https://data.eastmoney.com/report/info/AP202607101826872306.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202607101826872306_1.pdf?1783697756000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/09-002812-dongwu-20260710.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/09-002812-dongwu-20260710.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": null,
+          "confidence": "high",
+          "valuation_weight": 0.1
+        }
+      ]
+    },
+    {
+      "ticker": "002240",
+      "company": "盛新锂能",
+      "coverage_status": "current_original_pdf_forecast_only",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "东吴证券",
+          "analyst": "曾朵红, 阮巧燕",
+          "report_date": "2026-07-09",
+          "title": "26H1业绩预告点评：Q2锂盐出货高增，自有矿贡献利润",
+          "rating": "买入（维持）",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": 15049, "revenue_2027e_cny_mn": 16200, "net_profit_2026e_cny_mn": 2242.53, "net_profit_2027e_cny_mn": 3003.75, "eps_2026e": 2.45, "eps_2027e": 3.28},
+          "valuation_method": "No target method disclosed; current-price P/E only.",
+          "forecast_gaps": ["No explicit target price."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202607091826841808.html",
+          "pdf_url": "https://pdf.dfcfw.com/pdf/H3_AP202607091826841808_1.pdf?1783609553000.pdf",
+          "local_pdf": "sources/broker-reports/2026-08-11/10-002240-dongwu-20260709.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/10-002240-dongwu-20260709.txt",
+          "source_form": "original_pdf",
+          "source_quality": "original_pdf",
+          "evidence_tier": "primary",
+          "download_status": "downloaded",
+          "exhaustion_reason": "No target price in the original report.",
+          "confidence": "high",
+          "valuation_weight": 0.0
+        }
+      ]
+    },
+    {
+      "ticker": "300390",
+      "company": "天华新能",
+      "coverage_status": "re_scoped_original_unverified_forecast_only_directory_gap",
+      "valuation_weight_total": 0.0,
+      "reports": [
+        {
+          "broker": "华源证券",
+          "analyst": "not disclosed in captured table",
+          "report_date": "2026-06-06",
+          "title": "氢氧化锂龙头，深度绑定大客户，锂资源加速布局",
+          "rating": "买入（首次）",
+          "target_price": null,
+          "forecast": {"revenue_2026e_cny_mn": 21621, "revenue_2027e_cny_mn": 24898, "net_profit_2026e_cny_mn": 4733, "net_profit_2027e_cny_mn": 5315, "eps_2026e": 5.7, "eps_2027e": 6.4},
+          "valuation_method": "Comparable-company P/E is discussed, but the report does not state an assigned target price.",
+          "forecast_gaps": ["No explicit target price.", "The preferred-window public directory probe returned zero rows despite this locally archived June original; do not interpret that directory result as no broker coverage."],
+          "source_url": "https://data.eastmoney.com/report/info/AP202606061823325911.html",
+          "pdf_url": null,
+          "local_pdf": "sources/broker-reports/2026-08-11/11-300390-huayuan-20260606.pdf",
+          "local_text": "sources/broker-reports/2026-08-11/11-300390-huayuan-20260606.txt",
+          "source_form": "re_scoped_original_unverified",
+          "source_quality": "re_scoped_original_unverified",
+          "evidence_tier": "secondary_re_scoped",
+          "download_status": "re_scoped_local_archive",
+          "exhaustion_reason": "The direct page re-fetch did not expose report metadata/PDF on 2026-08-11. A prior local PDF was re-scoped, but this case lacks a predecessor path and checksum proving byte identity; retain zero valuation weight.",
+          "confidence": "limited_provenance",
+          "valuation_weight": 0.0
+        }
+      ]
+    }
+  ],
+  "directory_probe_paths": {
+    "000703": "sources/probe-20260811/eastmoney_report_list_000703_20260401_20260811.json",
+    "002379": "sources/probe-20260811/eastmoney_report_list_002379_20260401_20260811.json",
+    "300014": "sources/probe-20260811/eastmoney_report_list_300014_20260401_20260811.json",
+    "002497": "sources/probe-20260811/eastmoney_report_list_002497_20260401_20260811.json",
+    "002432": "sources/probe-20260811/eastmoney_report_list_002432_20260401_20260811.json",
+    "000623": "sources/probe-20260811/eastmoney_report_list_000623_20260401_20260811.json",
+    "600739": "sources/probe-20260811/eastmoney_report_list_600739_20260401_20260811.json",
+    "000685": "sources/probe-20260811/eastmoney_report_list_000685_20260401_20260811.json",
+    "600150": "sources/probe-20260811/eastmoney_report_list_600150_20260401_20260811.json",
+    "301308": "sources/probe-20260811/eastmoney_report_list_301308_20260401_20260811.json",
+    "002812": "sources/probe-20260811/eastmoney_report_list_002812_20260401_20260811.json",
+    "002240": "sources/probe-20260811/eastmoney_report_list_002240_20260401_20260811.json",
+    "300390": "sources/probe-20260811/eastmoney_report_list_300390_20260401_20260811.json"
+  }
+}

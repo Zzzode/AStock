@@ -1,0 +1,725 @@
+{
+  "schema_version": "c40_equity_diligence.v1",
+  "artifact_id": "D5PT-C40-600519-EQUITY-DILIGENCE-v1",
+  "as_of_date": "2026-08-15",
+  "document_language": "zh-CN",
+  "subject": {
+    "ticker": "600519",
+    "issuer": "贵州茅台酒股份有限公司",
+    "exchange": "SSE",
+    "share_class": "A",
+    "scope_note": "Security identity has document-level support only; C38 G0 is not cleared."
+  },
+  "status": "NON_ADMITTED_RESEARCH_SUBJECT",
+  "current_action": "NO_ACTION",
+  "research_only": true,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "weights": null,
+  "target_price": null,
+  "fair_value_range": null,
+  "upside_downside": null,
+  "return_forecast": null,
+  "return_guarantee": false,
+  "liquidity_certification": "NOT_ADMITTED",
+  "total_return_status": "UNAVAILABLE",
+  "relationship_to_c38": {
+    "route_status": "NON_ADMITTED_RESEARCH_SUBJECT",
+    "gates_required": [
+      "G0",
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G5",
+      "G6",
+      "G7",
+      "G8",
+      "G9"
+    ],
+    "does_not_modify": [
+      "C24",
+      "C33",
+      "C34",
+      "C35",
+      "C36",
+      "R15"
+    ]
+  },
+  "executive_conclusion": {
+    "conclusion": "Official issuer/SSE materials support a dated 2025 audited baseline and locate the 2026 H1 package, but C38-grade preservation, comparability, governance, valuation, liquidity, point-in-time and independent-review requirements remain open. The subject remains non-admitted with NO_ACTION.",
+    "confidence": {
+      "reported_fact_record": 55,
+      "valuation_liquidity_total_return_or_actionability": 0
+    },
+    "degradation": [
+      "Five issuer PDFs and three official SSE query responses are case-archived and hash-registered, but the complete version/availability chain and independent re-extraction remain absent.",
+      "The latest located 2026 H1 report and accounting-policy-change notice were not numerically extracted or reconciled.",
+      "No licensed same-as-of market, corporate-action, free-float, liquidity, execution or total-return dataset is available."
+    ]
+  },
+  "source_capture": {
+    "state": "partial_case_archived_primary_pdfs_and_exchange_queries_h1_pdf_unavailable",
+    "raw_files_archived_under_case_sources": true,
+    "sha256_recorded": true,
+    "manifest": "sources/official-600519-equity-diligence-20260815/manifest.json",
+    "independent_reextraction": false,
+    "important_boundary": "Document access or an exchange-query locator does not equal C38 admission-quality evidence."
+  },
+  "sources": [
+    {
+      "id": "C40-S01",
+      "publisher": "贵州茅台酒股份有限公司",
+      "title": "Investor relations financial-report archive",
+      "publication_date": "dynamic issuer page",
+      "access_date": "2026-08-15",
+      "url": "https://www.moutaichina.com/mtgf/tzzgx/cwbg/index.html",
+      "source_quality": "primary_issuer_document_locator",
+      "supports": [
+        "Issuer route to 2026 Q1 and 2025/2024/2023 annual reports",
+        "Dated archive entries"
+      ],
+      "does_not_support": [
+        "Document version/hash chain",
+        "First-public-time evidence",
+        "Market-data rights"
+      ],
+      "archive_status": "case_archived_and_hashed_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_ir_financial_archive.html",
+      "sha256": "d11ea2423223cb584e28df0ee90d80a94bea607907aae82c36a33ac189667dcd"
+    },
+    {
+      "id": "C40-S02",
+      "publisher": "贵州茅台酒股份有限公司",
+      "title": "贵州茅台2025年年度报告",
+      "publication_date": "2026-04-17",
+      "access_date": "2026-08-15",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-04/17/1b9fae59825c41bf9a776892a00565f7.pdf",
+      "source_quality": "primary_issuer_filing",
+      "read_sections": [
+        "audit opinion",
+        "three-year financial summary",
+        "business/product/channel information",
+        "financial statements and cash flow",
+        "governance/control/ownership",
+        "related-party disclosures",
+        "subsequent events"
+      ],
+      "archive_status": "case_archived_and_hashed_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2025_annual_report.pdf",
+      "sha256": "474905deeaf0f875fc0a1b097a626c0c7852c427faadc5d7fc7816cbf45ea288"
+    },
+    {
+      "id": "C40-S03",
+      "publisher": "贵州茅台酒股份有限公司",
+      "title": "贵州茅台2026年第一季度报告",
+      "publication_date": "2026-04-25",
+      "access_date": "2026-08-15",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-04/27/caf6cef38da94e9e9e71949ad0064f77.pdf",
+      "source_quality": "primary_issuer_interim_filing",
+      "audit_status": "unaudited",
+      "use_limit": "Dated interim observation only; not annualised and not treated as a substitute for the located 2026 H1 report.",
+      "archive_status": "case_archived_and_hashed_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2026_q1_report.pdf",
+      "sha256": "ca10d0e4fb3a1e4e9f258c04fc4c62000968f337a9b0bf6f714d4f153536d363"
+    },
+    {
+      "id": "C40-S04",
+      "publisher": "Shanghai Stock Exchange",
+      "title": "Company-announcement query for 2026-04-17 annual-report package",
+      "publication_date": "query result carries 2026-04-17 SSEDATE; selected records carry 2026-04-16 ADDDATE",
+      "access_date": "2026-08-15",
+      "url": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&productId=600519&securityType=0101,120100,020100,020200,120200&beginDate=2026-04-16&endDate=2026-04-18&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=5",
+      "source_quality": "primary_exchange_query_locator",
+      "located_titles": [
+        "贵州茅台2025年年度报告",
+        "贵州茅台2025年度审计报告",
+        "贵州茅台2025年度内部控制评价报告",
+        "贵州茅台2025年度内部控制审计报告",
+        "贵州茅台关于2025年年度利润分配方案及2026年中期利润分配安排的公告",
+        "贵州茅台关于贵州茅台集团财务有限公司的风险评估报告",
+        "关于贵州茅台酒股份有限公司非经营性资金占用及其他关联资金往来情况的专项审计说明",
+        "关于贵州茅台酒股份有限公司涉及财务公司关联交易的存款、贷款等金融业务的专项说明"
+      ],
+      "archive_status": "case_archived_query_response_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2026_annual_package_sse_query.json",
+      "sha256": "ac637bf014148dfef156efe0d1d7a3d5aac756f2a6d636c5089577178fea7354"
+    },
+    {
+      "id": "C40-S05",
+      "publisher": "Shanghai Stock Exchange",
+      "title": "Company-announcement query for 2026 H1 package",
+      "publication_date": "2026-08-15 SSEDATE",
+      "access_date": "2026-08-15",
+      "url": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&productId=600519&securityType=0101,120100,020100,020200,120200&beginDate=2026-08-14&endDate=2026-08-16&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=5",
+      "source_quality": "primary_exchange_query_locator",
+      "located_titles": [
+        "贵州茅台2026年半年度报告",
+        "贵州茅台2026年半年度报告摘要",
+        "贵州茅台关于会计政策变更的公告",
+        "贵州茅台关于贵州茅台集团财务有限公司的风险评估报告",
+        "贵州茅台关于召开2026年半年度业绩说明会的公告"
+      ],
+      "query_timestamp_displayed_for_h1_and_policy_change": "2026-08-14 20:41:27",
+      "timestamp_semantics_verified": false,
+      "use_limit": "No H1 numerical item, accounting-policy effect or same-session availability conclusion is admitted before raw-PDF preservation and validation.",
+      "archive_status": "query_response_case_archived_h1_pdfs_not_retrieved_due_antibot",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2026_h1_package_sse_query.json",
+      "sha256": "ac3d7cfbc5cdcbc818af1cde3ea9aee599da7e5d513d0031549d762a477eeffd",
+      "access_probe": "sources/probe-sse-600519-disclosure-access-20260815/manifest.json"
+    },
+    {
+      "id": "C40-S06",
+      "publisher": "贵州茅台酒股份有限公司",
+      "title": "贵州茅台2025年年度权益分派实施公告",
+      "publication_date": "2026-06-22",
+      "access_date": "2026-08-15",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2026-06/22/f7c1dbdf7142475d84269482757fd72d.pdf",
+      "source_quality": "primary_issuer_corporate_action_filing",
+      "archive_status": "case_archived_and_hashed_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2025_distribution_implementation.pdf",
+      "sha256": "6b082b6a00db748f23b6dea166b0296cd69d8c10542d352e23d2e2c344ea516e",
+      "use_limit": "One completed distribution only; not future-income, personal after-tax cash or total-return evidence."
+    },
+    {
+      "id": "C40-S07",
+      "publisher": "Shanghai Stock Exchange",
+      "title": "Company-announcement query for senior-management detention announcement",
+      "publication_date": "2026-03-14 SSEDATE",
+      "access_date": "2026-08-15",
+      "url": "https://query.sse.com.cn/security/stock/queryCompanyBulletin.do?isPagination=true&productId=600519&securityType=0101,120100,020100,020200,120200&beginDate=2026-03-13&endDate=2026-03-15&pageHelp.pageSize=100&pageHelp.pageNo=1&pageHelp.beginPage=1&pageHelp.cacheSize=1&pageHelp.endPage=5",
+      "source_quality": "primary_exchange_query_locator",
+      "located_title": "贵州茅台关于高级管理人员被实施留置的公告",
+      "use_limit": "The original notice, subsequent development and outcome are not retained; no attribution or financial inference is made.",
+      "archive_status": "case_archived_query_response_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2026_detention_sse_query.json",
+      "sha256": "a6c2e23b1b32eb5fd255be6c73f97a67f719f76bcdb0283d748c6b2a447208d1"
+    },
+    {
+      "id": "C40-S08",
+      "publisher": "贵州茅台酒股份有限公司",
+      "title": "贵州茅台2024年年度报告",
+      "publication_date": "2025-04-03",
+      "access_date": "2026-08-15",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2025-04/08/8055b7bed7db41bdbc617f4c9b9ec591.pdf",
+      "source_quality": "primary_issuer_filing_locator",
+      "archive_status": "case_archived_and_hashed_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2024_annual_report.pdf",
+      "sha256": "5299f4940e2ce4e91084b73dc457d558b9d335fa76fbfee6227e4254eb7f4a30"
+    },
+    {
+      "id": "C40-S09",
+      "publisher": "贵州茅台酒股份有限公司",
+      "title": "贵州茅台2023年年度报告",
+      "publication_date": "2024-04-03",
+      "access_date": "2026-08-15",
+      "url": "https://www.moutaichina.com/mtgf/articleFileDir/2024-05/07/e7471b99e4e84c7e9dcf1e591174c08e.pdf",
+      "source_quality": "primary_issuer_filing_locator",
+      "archive_status": "case_archived_and_hashed_20260815",
+      "case_archive_path": "sources/official-600519-equity-diligence-20260815/600519_2023_annual_report.pdf",
+      "sha256": "2125ff97a452ea79b0d784e2432f7d224b6aecc330b644b593477d69e22f4ed1"
+    },
+    {
+      "id": "C40-S10",
+      "publisher": "Shanghai Stock Exchange Information Co.",
+      "title": "Historical data products",
+      "publication_date": "not stated on page",
+      "access_date": "2026-08-15",
+      "url": "https://english.sse.com.cn/markets/dataservice/products/",
+      "source_quality": "official_service_existence_only",
+      "use_limit": "Does not establish a licence, delivery, field dictionary, revision log, retention right or C40 dataset."
+    }
+  ],
+  "business_model_and_operating_evidence": {
+    "source_ids": [
+      "C40-S02",
+      "C40-S03"
+    ],
+    "issuer_described_business": "Production and sale of Moutai liquor and sauce-aroma series liquor.",
+    "issuer_described_chain": {
+      "procurement": "Sorghum: company/local-government/supplier/co-operative-or-farmer model; wheat: company/supplier/co-operative-or-farm model; other materials are centrally procured against production/sales plans.",
+      "production": "Koji making, distilling, storage, blending and packaging.",
+      "sales": "Direct channels including self-operated and i Moutai; wholesale/agency including social distributors, supermarkets and e-commerce."
+    },
+    "reported_2025_product_and_channel_data": {
+      "currency": "RMB",
+      "moutai_liquor": {
+        "revenue": 146499906480.49,
+        "revenue_yoy_pct": 0.39,
+        "gross_margin_pct": 93.53,
+        "gross_margin_yoy_ppt": -0.53,
+        "production_tonnes": 58473.16,
+        "sales_tonnes": 46750.66
+      },
+      "other_series_liquor": {
+        "revenue": 22274678707.16,
+        "revenue_yoy_pct": -9.76,
+        "gross_margin_pct": 76.11,
+        "gross_margin_yoy_ppt": -3.76,
+        "production_tonnes": 57650.57,
+        "sales_tonnes": 38353.48
+      },
+      "direct_channel": {
+        "revenue": 84543031854.63,
+        "revenue_yoy_pct": 12.96,
+        "gross_margin_pct": 94.58,
+        "gross_margin_yoy_ppt": -0.75
+      },
+      "wholesale_agency_channel": {
+        "revenue": 84231553333.02,
+        "revenue_yoy_pct": -12.05,
+        "gross_margin_pct": 87.86,
+        "gross_margin_yoy_ppt": -1.56
+      },
+      "inventory_tonnes": {
+        "finished_product": 24770.35,
+        "semi_finished_including_base_liquor": 315207.51
+      }
+    },
+    "reported_capacity_note": "The 2025 annual report says new 2025 Moutai base-liquor and series-liquor capacity would release in 2026; this is a management disclosure, not a 2026 forecast in C40.",
+    "unresolved_operating_evidence": [
+      "Independent consumer demand and price evidence",
+      "Dated retail/wholesale price history",
+      "Distributor inventory and sell-through",
+      "Customer/channel concentration",
+      "Primary competitor/peer evidence",
+      "Full price-volume-mix-revenue bridge"
+    ],
+    "status": "PARTIAL_NOT_CLEARED"
+  },
+  "financial_quality": {
+    "source_ids": [
+      "C40-S02",
+      "C40-S03",
+      "C40-S04",
+      "C40-S05"
+    ],
+    "audit": {
+      "firm": "天健会计师事务所（特殊普通合伙）",
+      "opinion": "standard unqualified",
+      "key_audit_matters": [
+        "revenue recognition",
+        "related-party transactions"
+      ],
+      "interpretation_limit": "Audit opinion is material filing evidence, not a substitute for C38 independent quality/cash-flow/governance reconstruction."
+    },
+    "reported_three_year_summary": {
+      "currency": "RMB",
+      "2023": {
+        "operating_revenue": 147693604994.14,
+        "attributable_net_profit": 74734071550.75,
+        "operating_cash_flow": 66593247721.09,
+        "weighted_average_roe_pct": 34.19
+      },
+      "2024": {
+        "operating_revenue": 170899152276.34,
+        "attributable_net_profit": 86228146421.62,
+        "operating_cash_flow": 92463692168.43,
+        "weighted_average_roe_pct": 36.02
+      },
+      "2025": {
+        "operating_revenue": 168838102514.79,
+        "operating_revenue_yoy_pct": -1.21,
+        "attributable_net_profit": 82320067101.68,
+        "attributable_net_profit_yoy_pct": -4.53,
+        "operating_cash_flow": 61522204989.35,
+        "operating_cash_flow_yoy_pct": -33.46,
+        "weighted_average_roe_pct": 32.53
+      }
+    },
+    "derived_observations": {
+      "calculation_basis": "reported operating cash flow / reported attributable net profit; rounded only",
+      "ocf_to_attributable_net_profit_2025": 0.747354,
+      "ocf_to_attributable_net_profit_2024": 1.072315,
+      "interpretation_limit": "Not free cash flow, distributable cash, normalized cash conversion, valuation input or forecast."
+    },
+    "reported_2025_balance_sheet_selected_fields": {
+      "total_assets": 303834844021.44,
+      "total_liabilities": 49875590112.37,
+      "parent_attributable_equity": 244637811032.18,
+      "cash_funds_line": 51690610946.5,
+      "funds_lent_to_financial_institutions": 99096188059.75,
+      "inventories": 61427421796.18,
+      "contract_liabilities": 8006739780.94,
+      "deposits_from_customers_and_interbank": 18038383776.3,
+      "short_and_long_term_borrowing_line_amounts_displayed": "blank",
+      "normalization_limit": "Financial-subsidiary assets/deposits and cash restrictions require a separate enterprise-value and liquidity bridge; no net-cash conclusion is admitted."
+    },
+    "reported_2025_cash_flow_selected_fields": {
+      "operating_cash_flow": 61522204989.35,
+      "cash_paid_for_long_lived_assets": 3127594916.41,
+      "investment_payments": 62097000000.0,
+      "cash_flow_line_dividends_profits_or_interest_paid": 67241733345.45,
+      "classification_limit": "The dividend/profit/interest cash-flow line is not a single-period equity-dividend numerator."
+    },
+    "reported_finance_company_cash_flow_explanations": [
+      "2025 annual report: OCF decline partly attributed to lower deposits from group members and increased non-on-demand interbank deposits at the controlled finance company.",
+      "2026 Q1 report: OCF increase mainly attributed to a lower net increase in those non-on-demand interbank deposits."
+    ],
+    "working_capital_research_flags": {
+      "inventory_2024": 54343285157.47,
+      "inventory_2025": 61427421796.18,
+      "contract_liabilities_2024": 9592453014.66,
+      "contract_liabilities_2025": 8006739780.94,
+      "interpretation_limit": "These are reconciliation flags, not evidence of distributor inventory, demand deterioration or a valuation conclusion."
+    },
+    "latest_interim_status": {
+      "2026_q1": {
+        "audit_status": "unaudited",
+        "operating_revenue": 53909252220.51,
+        "operating_revenue_yoy_pct": 6.54,
+        "attributable_net_profit": 27242512886.45,
+        "attributable_net_profit_yoy_pct": 1.47,
+        "operating_cash_flow": 26909891269.13,
+        "operating_cash_flow_yoy_pct": 205.48,
+        "use_limit": "Not annualised and chronologically superseded by located but unextracted H1 disclosure."
+      },
+      "2026_h1": {
+        "status": "located_not_extracted_or_reconciled",
+        "financial_values": null,
+        "accounting_policy_change_effect": null,
+        "comparability": "NOT_CLEARED"
+      }
+    },
+    "status": "PARTIAL_NOT_CLEARED",
+    "binding_disposition": "no_quality_assessment"
+  },
+  "dividend_cash_flow_and_capital_allocation": {
+    "source_ids": [
+      "C40-S02",
+      "C40-S04",
+      "C40-S06"
+    ],
+    "2025_annual_distribution_proposal": {
+      "per_share_rmb_tax_inclusive": 27.993,
+      "eligible_shares_as_of_2026_03_31": 1251476039,
+      "proposed_total_rmb": 35032568759.73,
+      "status": "proposal_at_annual_report_date"
+    },
+    "2025_annual_distribution_implementation": {
+      "per_share_rmb_tax_inclusive": 28.02423,
+      "eligible_shares": 1250081601,
+      "total_rmb": 35032574305.19,
+      "share_record_date": "2026-06-25",
+      "ex_dividend_date": "2026-06-26",
+      "cash_payment_date": "2026-06-26",
+      "tax_treatment_disclosed": true,
+      "status": "completed_corporate_action_event"
+    },
+    "interpretation_limits": [
+      "Proposal and implementation are distinct states and use differing eligible-share/per-share figures.",
+      "No future distribution, after-tax investor cash, dividend yield, payout sustainability, total-return or income-screen conclusion is made.",
+      "Maintenance vs expansion capex, restricted cash, finance-company liquidity, debt and complete historical distribution lifecycle are not independently rebuilt."
+    ],
+    "status": "PARTIAL_NOT_CLEARED",
+    "binding_disposition": "no_income_coverage_assessment"
+  },
+  "governance_control_and_compliance": {
+    "source_ids": [
+      "C40-S02",
+      "C40-S04",
+      "C40-S07"
+    ],
+    "reported_structure": {
+      "board_members": 7,
+      "independent_directors": 3,
+      "employee_directors": 1,
+      "special_committees": 5,
+      "controlling_shareholder": "中国贵州茅台酒厂（集团）有限责任公司",
+      "ultimate_controller": "贵州省人民政府国有资产监督管理委员会",
+      "controlling_shareholder_shares_2025_year_end": 681282935,
+      "controlling_shareholder_pct_2025_year_end": 54.4,
+      "controlling_shareholder_plus_technical_development_subsidiary_shares": 709132623,
+      "combined_pct_2025_year_end": 56.63
+    },
+    "reported_control_disclosures": {
+      "internal_control_audit_opinion": "standard unqualified",
+      "reported_major_internal_control_deficiency": false,
+      "reported_non_operating_fund_occupation": false,
+      "reported_illegal_external_guarantee_decision": false,
+      "use_limit": "Issuer disclosures do not establish independent governance clearance or adverse-evidence completeness."
+    },
+    "reported_open_governance_items": [
+      "The controlling shareholder had not completed its equity-incentive-plan commitment at 2025 year-end.",
+      "Some senior managers concurrently held positions at the controlling shareholder."
+    ],
+    "adverse_event_locator": {
+      "event": "Official 2026-03-14 announcement on a senior manager being subject to detention",
+      "source_id": "C40-S07",
+      "outcome_or_financial_effect": "not available; no inference made"
+    },
+    "reported_related_party_examples_2025": {
+      "trademark_use_fee_paid_to_controlling_shareholder": 2480898552.03,
+      "product_sales_to_guizhou_moutai_group_marketing_co_ltd": 6214681149.21,
+      "audit_key_matter": "Related-party transactions were a key audit matter because of numerous related parties, transaction types and material amounts."
+    },
+    "unresolved_governance_evidence": [
+      "Dated two-sided CSRC/SSE disciplinary and litigation search log",
+      "Original detention notice and subsequent status",
+      "Related-party pricing, approvals and cash-settlement testing",
+      "Finance-company risk and related financial-business explanations",
+      "Pledge, control-change, auditor-change and remediation review",
+      "Independent governance review"
+    ],
+    "status": "PARTIAL_NOT_CLEARED",
+    "binding_disposition": "governance_not_cleared"
+  },
+  "industry_and_competition": {
+    "source_ids": [
+      "C40-S02"
+    ],
+    "issuer_statement": "The issuer describes baijiu as in an adjustment period and identifies macroeconomic, safety, public-opinion and environmental risks.",
+    "independent_industry_conclusion": null,
+    "peer_set": null,
+    "missing_evidence": [
+      "Primary demand-side evidence",
+      "Price and inventory evidence",
+      "Channel/customer concentration evidence",
+      "Competitor filings and business-model matched comparison",
+      "Independent competitive landscape"
+    ],
+    "status": "NOT_ADMITTED"
+  },
+  "valuation_data_availability": {
+    "same_as_of_unadjusted_closing_price": "NOT_AVAILABLE",
+    "same_as_of_trading_status": "NOT_AVAILABLE",
+    "same_as_of_total_shares_and_free_float": "NOT_AVAILABLE",
+    "enterprise_value_bridge": "NOT_AVAILABLE",
+    "forecast_revenue_net_profit_eps": "NOT_AVAILABLE",
+    "business_model_matched_peer_set": "NOT_AVAILABLE",
+    "original_broker_reports_or_official_pages": "NOT_AVAILABLE",
+    "auditable_consensus_snapshot": "NOT_AVAILABLE",
+    "street_valuation_weight": 0,
+    "valuation_method": null,
+    "bear_base_bull": null,
+    "market_implied_expectation_bridge": null,
+    "valuation_conclusion": "NOT_ADMITTED",
+    "binding_disposition": "valuation_not_admitted"
+  },
+  "liquidity_execution_and_point_in_time": {
+    "licensed_historical_market_data": "NOT_AVAILABLE",
+    "daily_unadjusted_price_volume_value_status_data": "NOT_AVAILABLE",
+    "free_float_history": "NOT_AVAILABLE",
+    "suspension_no_trade_price_limit_history": "NOT_AVAILABLE",
+    "data_dictionary_revision_log_coverage_report": "NOT_AVAILABLE",
+    "corporate_action_ledger": "NOT_AVAILABLE",
+    "adjustment_factors_and_algorithm": "NOT_AVAILABLE",
+    "total_return_series": "NOT_AVAILABLE",
+    "cost_tax_settlement_fill_evidence": "NOT_AVAILABLE",
+    "sse_query_timestamp_locator_only": "The raw query response is case-archived and hash-verified; 2026-08-14 20:41:27 is displayed for H1/policy-change records, but timestamp semantics, announced-PDF content, and same-session availability are not validated.",
+    "liquidity_status": "liquidity_unverified",
+    "point_in_time_status": "point_in_time_blocked",
+    "execution_status": "NO_ACTION"
+  },
+  "evidence_calendar_and_invalidation": [
+    {
+      "event": "Archive and parse 2026 H1 report plus accounting-policy-change notice",
+      "confirmation": "Preserve original documents, URL, first-public/retrieval time, SHA-256, affected-account mapping and a 2025 comparison bridge; independently re-extract.",
+      "failure_condition": "Missing version/time chain or unreconciled policy-change/comparative effect.",
+      "gates": [
+        "G1",
+        "G3",
+        "G8"
+      ],
+      "market_action": "none"
+    },
+    {
+      "event": "Rebuild cash-flow and finance-company bridge",
+      "confirmation": "Separate liquor-business receipts/working capital from finance-subsidiary deposits, placements, loans and restrictions; split maintenance and growth capex.",
+      "failure_condition": "Cash conversion or distributable cash cannot be reproduced.",
+      "gates": [
+        "G3",
+        "G4"
+      ],
+      "market_action": "none"
+    },
+    {
+      "event": "Complete dividend and corporate-action lifecycle audit",
+      "confirmation": "Retain proposal, approval, record/ex/payment dates, taxes, shares and funding bridge for each historical event.",
+      "failure_condition": "Any event is treated as future income, tax-neutral cash or total return without evidence.",
+      "gates": [
+        "G4",
+        "G8"
+      ],
+      "market_action": "none"
+    },
+    {
+      "event": "Verify product/channel economics and industry competition",
+      "confirmation": "Reconcile price/mix, volume, inventory aging, distributor changes and margins with independent industry/peer evidence.",
+      "failure_condition": "Channel/mix changes cannot be linked to primary operating evidence or independent demand/competition remains absent.",
+      "gates": [
+        "G2",
+        "G3"
+      ],
+      "market_action": "none"
+    },
+    {
+      "event": "Close governance and adverse-evidence review",
+      "confirmation": "Search and preserve original detention, commitment, related-party, finance-company, pledge, disciplinary and litigation evidence; independently review it.",
+      "failure_condition": "Material event unresolved/unlocated or related-party terms/pricing remain untested.",
+      "gates": [
+        "G5",
+        "G9"
+      ],
+      "market_action": "none"
+    },
+    {
+      "event": "Obtain licensed as-of market and corporate-action delivery",
+      "confirmation": "Retain rights, raw inputs, field dictionary, calendar/statuses, daily coverage, revisions and reconstruction algorithm.",
+      "failure_condition": "Any required licence, price, status, share/free-float, action or revision field is absent.",
+      "gates": [
+        "G6",
+        "G7",
+        "G8"
+      ],
+      "market_action": "none"
+    },
+    {
+      "event": "Independent maker-checker review",
+      "confirmation": "A non-author re-extracts financial, dividend and governance facts and clears all S-level/unwaived A-level findings.",
+      "failure_condition": "No independent review or unresolved material discrepancy.",
+      "gates": [
+        "G9"
+      ],
+      "market_action": "none"
+    }
+  ],
+  "gate_results": [
+    {
+      "gate": "G0",
+      "name": "Scope and security identity",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": "Issuer, code, SSE A-share label, ownership and historical report share facts are disclosed.",
+      "missing": [
+        "Frozen scope table",
+        "Historical security-master/status/rename/delisting records",
+        "Free-float and status chain"
+      ],
+      "disposition": "scope_identity_not_cleared"
+    },
+    {
+      "gate": "G1",
+      "name": "Complete statutory disclosure archive",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": "2023-2025 annual-report routes, 2026 Q1 report and 2026 H1/policy-change locators are identified.",
+      "missing": [
+        "2026 H1 and accounting-policy-change PDF originals",
+        "First-public/retrieval time record",
+        "Correction/withdrawal chain",
+        "Full interim/earnings/material-announcement set",
+        "Independent re-extraction"
+      ],
+      "disposition": "insufficient_primary_financial_evidence"
+    },
+    {
+      "gate": "G2",
+      "name": "Business and operating drivers",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": "2025 product, production, capacity, channel, region and management-risk disclosures extracted.",
+      "missing": [
+        "Independent demand, price, channel, customer and competition evidence",
+        "Full operating-driver bridge"
+      ],
+      "disposition": "no_earnings_driver_conclusion"
+    },
+    {
+      "gate": "G3",
+      "name": "Earnings quality and balance sheet",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": "Audited 2025 statements/audit KAMs and three-year summary read.",
+      "missing": [
+        "Independent quality bridge",
+        "Finance-company and restricted-cash normalization",
+        "Working-capital/capex/related-party reconciliation",
+        "2026 policy-change reconciliation"
+      ],
+      "disposition": "no_quality_assessment"
+    },
+    {
+      "gate": "G4",
+      "name": "Dividend and cash-flow coverage",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": "One annual distribution proposal and implementation event with dates/tax notes documented.",
+      "missing": [
+        "Complete distribution lifecycle",
+        "Funding/maintenance-capex/debt/restricted-cash bridge",
+        "Independent tax and cash-flow rebuild"
+      ],
+      "disposition": "no_income_coverage_assessment"
+    },
+    {
+      "gate": "G5",
+      "name": "Governance, control and compliance",
+      "status": "PARTIAL_NOT_CLEARED",
+      "evidence": "Ownership, board structure, audit/internal-control disclosures, related-party examples and detention-announcement locator available.",
+      "missing": [
+        "Two-sided adverse search",
+        "Related-party pricing/terms testing",
+        "Finance-company review",
+        "Subsequent governance/remediation review",
+        "Independent review"
+      ],
+      "disposition": "governance_not_cleared"
+    },
+    {
+      "gate": "G6",
+      "name": "Valuation and disconfirmation",
+      "status": "BLOCKED",
+      "evidence": "None usable as a same-as-of valuation denominator.",
+      "missing": [
+        "Price/time/status",
+        "Current shares/free float",
+        "EV bridge",
+        "Peers",
+        "Forecasts",
+        "Broker/consensus",
+        "Assumptions/sensitivities"
+      ],
+      "disposition": "valuation_not_admitted"
+    },
+    {
+      "gate": "G7",
+      "name": "Liquidity and tradable status",
+      "status": "BLOCKED",
+      "evidence": "Potential SSE historical-data route only.",
+      "missing": [
+        "Data rights",
+        "Raw price/turnover/status/free-float data",
+        "Frozen window",
+        "Dictionary/coverage/revision records"
+      ],
+      "disposition": "liquidity_unverified"
+    },
+    {
+      "gate": "G8",
+      "name": "Point in time and corporate actions",
+      "status": "BLOCKED",
+      "evidence": "SSE query shows a locator timestamp; one distribution notice provides record/ex/payment dates.",
+      "missing": [
+        "Retained query/PDF time chain",
+        "All-event corporate-action ledger",
+        "Unadjusted price history",
+        "Adjustment factors/algorithm",
+        "Share chain",
+        "Total-return reconstruction"
+      ],
+      "disposition": "point_in_time_blocked"
+    },
+    {
+      "gate": "G9",
+      "name": "Independent review",
+      "status": "BLOCKED",
+      "evidence": "None.",
+      "missing": [
+        "Independent re-extraction",
+        "Cash-flow/dividend recalculation",
+        "Valuation rebuild",
+        "Governance negative-search review",
+        "Version/hash verification"
+      ],
+      "disposition": "independent_review_not_passed"
+    }
+  ],
+  "permitted_next_step": "Preserve and hash primary sources, build the C38 evidence card/financial-quality/dividend/governance/market-action manifests, and obtain an independent review. No data procurement, stock selection, backtest, paper trade, order or account action is authorized.",
+  "downgrade_rule": "Any missing C38 G0-G9 hard field keeps the subject at watchlist_only / insufficient_evidence. Do not substitute current listings, adjusted prices, search snippets, terminal screenshots, issuer narrative or popularity for missing primary evidence."
+}

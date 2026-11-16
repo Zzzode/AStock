@@ -1,0 +1,227 @@
+{
+  "allowed_use": [
+    "记录规则层面的适当性、信用风险与信息入口边界。",
+    "把适当性记录为逐债券、逐时点、逐投资者的后续核验要求。",
+    "把缺失数据登记为历史测试的阻断项。"
+  ],
+  "artifact_id": "D5PT-R06-v1",
+  "as_of": "2026-08-15",
+  "bounded_source_findings": {
+    "bounded_findings": [
+      {
+        "boundary": "这只证明存在分类和权限管理，不证明任何人对任何具体债券在任何日期具有资格或权限。",
+        "finding": "适当性规则在规则层面区分普通投资者与专业投资者，并要求证券经营机构管理交易权限。",
+        "source_keys": [
+          "sse_bond_investor_suitability_rule",
+          "csrc_company_bond_administration_measure"
+        ]
+      },
+      {
+        "boundary": "本审计将其限定为逐债券、逐时点、逐投资者核验事项；本批次没有该类逐项记录。",
+        "finding": "适当性不是一个通用标签：债券类别、投资者分类、证券经营机构的权限管理和披露后调整都会影响可参与范围。",
+        "source_keys": [
+          "sse_bond_investor_suitability_rule",
+          "csrc_company_bond_administration_measure"
+        ]
+      },
+      {
+        "boundary": "单次门户页存档不是逐债券、跨历史区间的全价、成交和状态数据库。",
+        "finding": "门户页包含债券简称、最新成交价、成交量和交易日期等页面字段。",
+        "source_keys": [
+          "sse_bond_information_portal"
+        ]
+      },
+      {
+        "boundary": "因此不得把未入库附件中的细则当作本审计已经核验的逐债或历史数据。",
+        "finding": "两份交易所规则来源在本批次中是公告页；页面指向的规则正文附件没有作为该批次的独立原始文件保存。",
+        "source_keys": [
+          "sse_company_bond_listing_rule",
+          "sse_company_bond_credit_risk_rule"
+        ]
+      }
+    ],
+    "checks": {
+      "administration_measure_text": {
+        "missing_terms": [],
+        "ok": true
+      },
+      "credit_risk_publication_page": {
+        "missing_terms": [],
+        "ok": true
+      },
+      "listing_rule_publication_page": {
+        "missing_terms": [],
+        "ok": true
+      },
+      "portal_snapshot_fields": {
+        "missing_terms": [],
+        "ok": true
+      },
+      "suitability_rule_text": {
+        "missing_terms": [],
+        "ok": true
+      }
+    },
+    "extraction_methods": {
+      "csrc_company_bond_administration_measure": "PDF pdftotext UTF-8",
+      "sse_bond_information_portal": "captured HTML text",
+      "sse_bond_investor_suitability_rule": "DOCX word/document.xml",
+      "sse_company_bond_credit_risk_rule": "captured HTML publication page",
+      "sse_company_bond_listing_rule": "captured HTML publication page"
+    },
+    "linked_rule_attachment_control": {
+      "bounded_interpretation": "公告页与适当性办法可以支持规则层面边界；未保存的附件不能补足历史数据或逐债资格记录。",
+      "linked_attachment_filenames": [
+        "19830feba95f4053910eb9bbf994a703.docx",
+        "3fd3efb1e2724535af4ea9e9ce9c6722.docx",
+        "ba835303bc0a40119745ed67abd365eb.docx"
+      ],
+      "linked_attachment_files_captured_in_this_batch": [],
+      "linked_attachment_files_not_captured_in_this_batch": [
+        "19830feba95f4053910eb9bbf994a703.docx",
+        "3fd3efb1e2724535af4ea9e9ce9c6722.docx",
+        "ba835303bc0a40119745ed67abd365eb.docx"
+      ]
+    },
+    "portal_capture": {
+      "bounded_interpretation": "字段标签和一次页面存档不能替代历史可复算数据集。",
+      "one_captured_html_document": true,
+      "page_field_labels_verified": [
+        "债券简称",
+        "最新成交价",
+        "成交量",
+        "交易日期"
+      ],
+      "raw_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/sse_bond_information_portal_20260815.html"
+    }
+  },
+  "external_orders": false,
+  "failures": [],
+  "formal_decision_eligible": false,
+  "historical_input_coverage": [
+    {
+      "captured_in_c18_batch": false,
+      "input": "逐时点的上交所公开公司债总体与上市/终止状态",
+      "reason": "五份存档中没有逐债券、逐日期的历史总体或状态表。"
+    },
+    {
+      "captured_in_c18_batch": false,
+      "input": "逐债券历史全价与应计口径",
+      "reason": "门户页的一次字段展示不是历史全价序列；清单也明确排除 full-price record。"
+    },
+    {
+      "captured_in_c18_batch": false,
+      "input": "逐债券历史成交、成交量、无成交与停牌状态",
+      "reason": "没有逐日交易明细或可复算的历史成交带。"
+    },
+    {
+      "captured_in_c18_batch": false,
+      "input": "票息条款、支付确认与到期/赎回事件账本",
+      "reason": "没有募集说明书、条款表、支付确认或逐债券事件账本。"
+    },
+    {
+      "captured_in_c18_batch": false,
+      "input": "评级历史与逐债券信用事件时间线",
+      "reason": "规则可说明信用风险治理，不是评级历史或信用事件记录。"
+    },
+    {
+      "captured_in_c18_batch": false,
+      "input": "日期明确的券商费用、交易单位、报价和成交处理规则",
+      "reason": "没有券商费率文件、订单回执或逐时点成交处理证据。"
+    },
+    {
+      "captured_in_c18_batch": false,
+      "input": "逐债券、逐时点的登记结算与税费处理证据",
+      "reason": "监管办法提及登记结算框架，但本批次没有按债券和日期可复算的结算数据。"
+    },
+    {
+      "captured_in_c18_batch": false,
+      "input": "逐债券、逐时点、逐投资者的适当性与权限状态",
+      "reason": "规则说明分类和权限管理；本批次没有个人记录、账户权限或逐债资格历史。"
+    }
+  ],
+  "next_research_gate": "仅在获得逐债券、逐时点、具有数据权利且可独立复核的历史总体、全价、成交、现金流条款与事件、评级/信用事件、费用和结算数据后，才可另行冻结测试协议；该数据获取本身不构成选债或外部动作。",
+  "not_allowed": [
+    "从规则文本、债券名称、评级、上市状态或门户页单次字段推断任何人可买入。",
+    "选择债券、形成直接债券梯、计算历史表现、推导收益或作出外部动作。",
+    "将本审计的 PASS 解读为 C18 路线可测试、可使用或可产生任何回报。"
+  ],
+  "research_only": true,
+  "result": "PASS",
+  "review_mode": "read_focused_independent_source_feasibility_audit",
+  "route_assessment": {
+    "evidence_supports_bond_selection": false,
+    "evidence_supports_external_action": false,
+    "evidence_supports_historical_backtest": false,
+    "evidence_supports_ordinary_investor_access_inference": false,
+    "evidence_supports_performance_calculation": false,
+    "not_captured_inputs": [
+      "逐时点的上交所公开公司债总体与上市/终止状态",
+      "逐债券历史全价与应计口径",
+      "逐债券历史成交、成交量、无成交与停牌状态",
+      "票息条款、支付确认与到期/赎回事件账本",
+      "评级历史与逐债券信用事件时间线",
+      "日期明确的券商费用、交易单位、报价和成交处理规则",
+      "逐债券、逐时点的登记结算与税费处理证据",
+      "逐债券、逐时点、逐投资者的适当性与权限状态"
+    ],
+    "reason": "规则与门户页快照没有提供逐债券、逐时点、可复算的总体、价格、成交、票息、兑付、评级、信用事件、费用和结算输入。",
+    "route": "direct SSE-listed company-bond ladder",
+    "route_status": "not_testable"
+  },
+  "schema_version": "independent_c18_source_preflight_audit.v1",
+  "source_control": {
+    "actual_manifest_sha256": "0ef9a473ae98c5fafcb6f4cb92e8785ab5a2eb220f3c7c0ce41e42617872b908",
+    "all_raw_hashes_verified": true,
+    "expected_manifest_sha256": "0ef9a473ae98c5fafcb6f4cb92e8785ab5a2eb220f3c7c0ce41e42617872b908",
+    "manifest_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/manifest.json",
+    "raw_file_integrity": [
+      {
+        "actual_bytes": 33263,
+        "actual_sha256": "67f8375029ae51648a1e67c8ddc11faf11d2962a3fd47b22df926733c3fe0f5f",
+        "expected_bytes": 33263,
+        "expected_sha256": "67f8375029ae51648a1e67c8ddc11faf11d2962a3fd47b22df926733c3fe0f5f",
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/sse_company_bond_listing_rule_20231020.html",
+        "source_key": "sse_company_bond_listing_rule",
+        "status": "PASS"
+      },
+      {
+        "actual_bytes": 35027,
+        "actual_sha256": "344c48bad2b7a8551d53c75538340f113e83b97801f748f5d63ab1b15470e6cd",
+        "expected_bytes": 35027,
+        "expected_sha256": "344c48bad2b7a8551d53c75538340f113e83b97801f748f5d63ab1b15470e6cd",
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/sse_bond_investor_suitability_rule_20231020.docx",
+        "source_key": "sse_bond_investor_suitability_rule",
+        "status": "PASS"
+      },
+      {
+        "actual_bytes": 236765,
+        "actual_sha256": "dff66f911d5d57e7371a606309d2bef9a2ce254a8736a906cbe475929ebeb11a",
+        "expected_bytes": 236765,
+        "expected_sha256": "dff66f911d5d57e7371a606309d2bef9a2ce254a8736a906cbe475929ebeb11a",
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/csrc_company_bond_issuance_and_trading_measure_20210226.pdf",
+        "source_key": "csrc_company_bond_administration_measure",
+        "status": "PASS"
+      },
+      {
+        "actual_bytes": 33694,
+        "actual_sha256": "0d3314ffa0e3ecdfcdc356d81077f451d243452d90cc3034d08509431b57434b",
+        "expected_bytes": 33694,
+        "expected_sha256": "0d3314ffa0e3ecdfcdc356d81077f451d243452d90cc3034d08509431b57434b",
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/sse_company_bond_credit_risk_management_rule_20231020.html",
+        "source_key": "sse_company_bond_credit_risk_rule",
+        "status": "PASS"
+      },
+      {
+        "actual_bytes": 59744,
+        "actual_sha256": "65246c7a9024b3ce167b4f1360cbb97ae575569343e9fb614ec631db8124712a",
+        "expected_bytes": 59744,
+        "expected_sha256": "65246c7a9024b3ce167b4f1360cbb97ae575569343e9fb614ec631db8124712a",
+        "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c18-official-sse-company-bond-feasibility-20260815/sse_bond_information_portal_20260815.html",
+        "source_key": "sse_bond_information_portal",
+        "status": "PASS"
+      }
+    ],
+    "source_record_count": 5
+  }
+}

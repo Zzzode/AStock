@@ -1,0 +1,34 @@
+{
+  "schema_version": "astock.market_snapshot.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "retrieval_date": "2026-08-12",
+  "exchange": "Shanghai Stock Exchange",
+  "endpoint_pattern": "https://yunhq.sse.com.cn:32042/v1/sh1/snap/<code>?select=code,name,last,chg_rate,change,volume,amount,prev_close,open,high,low,amp_rate,cpxxtype,cpxxsubtype,cpxxextendname",
+  "snapshot_timestamp": "2026-08-12T16:29:05+08:00",
+  "source_type": "official_exchange_snapshot",
+  "field_definitions": {
+    "last": "last observed exchange price in CNY per unit",
+    "volume": "exchange-reported units traded in the snapshot payload; unit convention is exchange payload convention",
+    "amount": "exchange-reported transaction amount in CNY",
+    "amplitude_pct": "exchange-reported intraday amplitude percentage"
+  },
+  "rows": [
+    {"ticker":"511010","name":"国债ETF国泰","product_type":"ETF","last":141.084,"change_pct":0.01,"volume":9533400,"amount_cny":1344941511,"prev_close":141.07,"open":141.07,"high":141.1,"low":141.026,"amplitude_pct":0.05,"source_path":"sources/market-20260812/511010_sse_snapshot_20260812.json"},
+    {"ticker":"510880","name":"红利ETF华泰柏瑞","product_type":"ETF","last":3.303,"change_pct":-0.18,"volume":118062557,"amount_cny":389653221,"prev_close":3.309,"open":3.301,"high":3.319,"low":3.29,"amplitude_pct":0.88,"source_path":"sources/market-20260812/510880_sse_snapshot_20260812.json"},
+    {"ticker":"512890","name":"红利低波ETF华泰柏瑞","product_type":"ETF","last":1.159,"change_pct":-0.34,"volume":447067009,"amount_cny":517863746,"prev_close":1.163,"open":1.163,"high":1.164,"low":1.155,"amplitude_pct":0.77,"source_path":"sources/market-20260812/512890_sse_snapshot_20260812.json"},
+    {"ticker":"508069","name":"华夏南京交通高速公路REIT","product_type":"public_REIT","last":5.221,"change_pct":-0.23,"volume":66511,"amount_cny":346900,"prev_close":5.233,"open":5.28,"high":5.28,"low":5.199,"amplitude_pct":1.55,"source_path":"sources/market-20260812/508069_sse_snapshot_20260812.json"},
+    {"ticker":"508011","name":"嘉实物美消费REIT","product_type":"public_REIT","last":3.46,"change_pct":0.0,"volume":253300,"amount_cny":875922,"prev_close":3.46,"open":3.469,"high":3.469,"low":3.454,"amplitude_pct":0.43,"source_path":"sources/market-20260812/508011_sse_snapshot_20260812.json"},
+    {"ticker":"508068","name":"华夏北京保障房REIT","product_type":"public_REIT","last":3.863,"change_pct":-0.31,"volume":827767,"amount_cny":3197801,"prev_close":3.875,"open":3.875,"high":3.875,"low":3.853,"amplitude_pct":0.57,"source_path":"sources/market-20260812/508068_sse_snapshot_20260812.json"},
+    {"ticker":"508077","name":"华夏基金华润有巢REIT","product_type":"public_REIT","last":2.666,"change_pct":-1.84,"volume":5751515,"amount_cny":15356401,"prev_close":2.716,"open":2.72,"high":2.72,"low":2.642,"amplitude_pct":2.87,"source_path":"sources/market-20260812/508077_sse_snapshot_20260812.json"},
+    {"ticker":"508055","name":"汇添富上海地产租赁住房REIT","product_type":"public_REIT","last":3.304,"change_pct":0.18,"volume":251760,"amount_cny":829460,"prev_close":3.298,"open":3.308,"high":3.308,"low":3.28,"amplitude_pct":0.85,"source_path":"sources/market-20260812/508055_sse_snapshot_20260812.json"},
+    {"ticker":"508080","name":"中金亦庄产业园REIT","product_type":"public_REIT","last":2.405,"change_pct":0.33,"volume":1857425,"amount_cny":4455696,"prev_close":2.397,"open":2.416,"high":2.416,"low":2.381,"amplitude_pct":1.46,"source_path":"sources/market-20260812/508080_sse_snapshot_20260812.json"},
+    {"ticker":"508096","name":"中航京能国际能源REIT","product_type":"public_REIT","last":9.264,"change_pct":-0.15,"volume":328343,"amount_cny":3042921,"prev_close":9.278,"open":9.278,"high":9.349,"low":9.259,"amplitude_pct":0.97,"source_path":"sources/market-20260812/508096_sse_snapshot_20260812.json"}
+  ],
+  "data_quality": "tier_1_primary_exchange_snapshot_but_execution_incomplete",
+  "warnings": [
+    "This is a single exchange snapshot rather than a full session record or a time-series liquidity study.",
+    "The payload has no bid/ask spread, order-book depth, market-maker quote, IOPV, same-session NAV, creation/redemption status, free float, 20-session ADV or account-specific trading-cost field.",
+    "Observed turnover is not an executable-capacity determination and must not change q from zero."
+  ],
+  "error": null
+}

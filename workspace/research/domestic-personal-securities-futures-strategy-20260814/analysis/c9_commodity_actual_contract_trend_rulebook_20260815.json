@@ -1,0 +1,219 @@
+{
+  "schema_version": "c9_commodity_actual_contract_trend_rulebook.v1",
+  "artifact_class": "research_candidate_rulebook",
+  "as_of_date": "2026-08-15",
+  "candidate_id": "C9-SHFE-ACTUAL-COMMODITY-TREND",
+  "status": "RESEARCH_CANDIDATE_NOT_ACTION_READY",
+  "portfolio_q": 0,
+  "formal_decision_eligible": false,
+  "orders_or_positions": "none",
+  "return_objective": {
+    "annualized_hurdle": "5%",
+    "interpretation": "research target only; it is not a forecast, promise, floor or stable-year claim",
+    "evidence_status": "not measured because an actual-contract historical replay is not currently supported"
+  },
+  "strategy_definition": {
+    "name": "SHFE three-family actual-contract low-frequency trend candidate",
+    "market": "Shanghai Futures Exchange commodity futures",
+    "direction": "long and short only when the rule's same-contract settlement signal and all risk gates pass",
+    "frequency": "weekly decision, next regular-session execution window, daily settlement risk checks",
+    "anti_proxy_boundary": "Every signal, roll, mark and eventual P&L leg must reference an identified listed CU, AU or RU contract. A continuous series may not be substituted for P&L, fill, roll or performance evidence."
+  },
+  "product_families": [
+    {
+      "family": "CU",
+      "exchange": "Shanghai Futures Exchange",
+      "contract_name": "Copper futures",
+      "trading_unit": "5 tonnes per lot",
+      "quotation_unit": "CNY per tonne",
+      "minimum_tick": "CNY10 per tonne; CNY50 per lot",
+      "listed_months": "January through December",
+      "last_trading_day": "15th day of contract month; statutory-holiday postponement and exchange adjustments apply",
+      "base_margin_schedule": "5% from listing; 10% from first day of month before delivery; 15% from first delivery-month trading day; 20% from two trading days before last trading day",
+      "base_daily_price_limit": "±3% of prior settlement",
+      "systematic_role": "industrial-metal trend exposure; this descriptive label is not an earnings, macro or return forecast",
+      "product_risks": [
+        "Contract-specific liquidity can migrate before the scheduled roll.",
+        "Exchange or broker risk-control changes can raise margin or alter trading conditions.",
+        "Physical-delivery rules make an expiry firewall mandatory."
+      ],
+      "rule_source": "sources/c9-official-shfe-commodity-contracts-20260815/shfe_cu_contract_rules_20260101.html"
+    },
+    {
+      "family": "AU",
+      "exchange": "Shanghai Futures Exchange",
+      "contract_name": "Gold futures",
+      "trading_unit": "1,000 grams per lot",
+      "quotation_unit": "CNY per gram",
+      "minimum_tick": "CNY0.02 per gram; CNY20 per lot",
+      "listed_months": "three nearest consecutive months plus even-month contracts within the next 13 months",
+      "last_trading_day": "15th day of contract month; statutory-holiday postponement and exchange adjustments apply",
+      "base_margin_schedule": "4% from listing; 10% from first day of month before delivery; 15% from first delivery-month trading day; 20% from two trading days before last trading day",
+      "base_daily_price_limit": "±3% of prior settlement",
+      "systematic_role": "precious-metal trend exposure; this descriptive label is not an earnings, macro or return forecast",
+      "product_risks": [
+        "The official rule states that natural-person clients may not perform physical gold delivery.",
+        "A single contract has a large fixed unit, so a risk-unit calculation can result in no trade.",
+        "Exchange or broker risk-control changes can raise margin or alter trading conditions."
+      ],
+      "rule_source": "sources/c9-official-shfe-commodity-contracts-20260815/shfe_au_contract_rules_20260101.html"
+    },
+    {
+      "family": "RU",
+      "exchange": "Shanghai Futures Exchange",
+      "contract_name": "Natural-rubber futures",
+      "trading_unit": "10 tonnes per lot",
+      "quotation_unit": "CNY per tonne",
+      "minimum_tick": "CNY5 per tonne; CNY50 per lot",
+      "listed_months": "January, March, April, May, June, July, August, September, October and November",
+      "last_trading_day": "15th day of contract month; statutory-holiday postponement and exchange adjustments apply",
+      "base_margin_schedule": "5% from listing; 10% from first day of month before delivery; 15% from first delivery-month trading day; 20% from two trading days before last trading day",
+      "base_daily_price_limit": "±3% of prior settlement",
+      "systematic_role": "rubber-chain commodity trend exposure; this descriptive label is not an earnings, macro or return forecast",
+      "product_risks": [
+        "The listed-month pattern differs from CU and AU, so a family-level roll rule is required.",
+        "Far-month liquidity can be lower than the nearby active contract.",
+        "Exchange or broker risk-control changes can raise margin or alter trading conditions."
+      ],
+      "rule_source": "sources/c9-official-shfe-commodity-contracts-20260815/shfe_ru_contract_rules_20260101.html"
+    }
+  ],
+  "pretrade_state_requirements": [
+    "A licensed futures-company route confirms that the trader may trade the selected ordinary commodity-futures contracts, including the intended long and short directions. No personal eligibility is inferred by this case.",
+    "The broker displays, for the selected actual contract on the decision date, the exchange and broker margin requirement, commission schedule, exchange-fee pass-through and applicable forced-close or delivery cutoff. Missing any item creates a no-trade state.",
+    "A timestamped official daily-file archive contains at least 65 prior trading-session settlements and 20 prior OHLC observations for the same selected contract. A continuous series, a front-contract chart and a proxy do not satisfy this requirement.",
+    "The exchange-adjusted last-trading date and the current trading calendar are captured before the decision. The rule never assumes that the calendar-day 15th is final when the exchange has issued an adjustment.",
+    "The contract has positive official settlement, current-day volume and open interest, plus a 20-session median volume of at least 1,000 lots and current open interest of at least 5,000 lots."
+  ],
+  "contract_selection_and_roll": {
+    "decision_time": "The final SHFE trading session of each calendar week, after official EOD data are captured with a retrieval timestamp. Any order, if later permitted, is no earlier than the next regular daytime session.",
+    "eligible_actual_contract": [
+      "Contract family is exactly CU, AU or RU.",
+      "The exchange-adjusted last-trading day is 90 to 270 calendar days after the decision date.",
+      "The contract has a positive settlement, current-day volume and open interest, 20-session median volume of at least 1,000 lots and current open interest of at least 5,000 lots.",
+      "The same contract, not a continuous series, has 65 valid prior settlements and 20 valid OHLC observations in the frozen daily ledger.",
+      "There is no suspension, expiry-control, calendar uncertainty, delivery exception, or unverified rule/broker parameter."
+    ],
+    "ranking": [
+      "highest official EOD open interest",
+      "then highest official EOD volume",
+      "then earliest delivery month"
+    ],
+    "roll_trigger": "Roll an open family sleeve at the next permitted execution window when its current contract has 45 or fewer calendar days to its exchange-adjusted last-trading day, when the selected actual contract changes, or when a status/risk-control gate fails.",
+    "delivery_firewall": "No position may remain when 30 calendar days or fewer remain to the exchange-adjusted last-trading day. Close before that boundary; do not enter a delivery-month contract. Where the exchange or broker imposes an earlier cutoff, the earlier cutoff governs.",
+    "roll_implementation": "Close the old identified contract and open the new identified contract as separate legs with separately recorded quotes, time stamps, fees and fills. If either leg cannot be confirmed, record no-fill and do not substitute a proxy price."
+  },
+  "signal": {
+    "data_field": "official settlement for the same selected actual contract",
+    "lookbacks": {
+      "slow": "65 completed trading sessions",
+      "fast": "20 completed trading sessions"
+    },
+    "calculations": {
+      "slow_return": "settlement_t / settlement_t_minus_65 - 1",
+      "fast_return": "settlement_t / settlement_t_minus_20 - 1"
+    },
+    "decision_rule": {
+      "long": "slow_return >= +4% and fast_return >= 0%",
+      "short": "slow_return <= -4% and fast_return <= 0%",
+      "flat": "all other cases"
+    },
+    "boundary": "The thresholds are fixed before any C9 return calculation. They are an untested design choice, not a validated source of 5% return."
+  },
+  "risk_unit_and_target_position": {
+    "equity_definition": "E_t is the strategy's current end-of-day marked-to-market equity.",
+    "true_range": "TR_t = max(high_t - low_t, abs(high_t - prior_settlement_t), abs(low_t - prior_settlement_t)) for the selected actual contract.",
+    "atr": "ATR20 is the arithmetic mean of the last 20 TR observations.",
+    "one_lot_20_session_risk": "R_i = contract_multiplier_i × ATR20_i in CNY per lot.",
+    "target_lots": "N_i = floor(0.25% × E_t / R_i), then reduce N_i until all portfolio constraints pass.",
+    "portfolio_constraints": [
+      "For each family, 20-session ATR risk may not exceed 0.25% of E_t.",
+      "Total three-family 20-session ATR risk may not exceed 0.75% of E_t.",
+      "Total actual broker-required margin may not exceed 20% of E_t.",
+      "Gross futures notional, calculated as sum(abs(lots) × settlement × contract multiplier), may not exceed 125% of E_t.",
+      "If one whole lot would breach any cap, target lots for that family are zero."
+    ],
+    "daily_protective_rules": [
+      "For a long, target zero when settlement is at or below entry settlement minus 2.5 × entry ATR20. For a short, target zero when settlement is at or above entry settlement plus 2.5 × entry ATR20.",
+      "When marked-to-market strategy equity is 5% or more below its highest prior end-of-day value, target zero for all families at the next executable regular session and enter a four-week cooldown.",
+      "A protective rule is an instruction to attempt a limit exit; a limit-locked market can prevent execution. It is not a loss guarantee."
+    ]
+  },
+  "execution": {
+    "window": "Next SHFE regular daytime session, 09:05-09:15 Beijing time, after a weekly decision or an urgent delivery/risk exit.",
+    "order_type": "Limit only; no market order and no price-chasing after the window.",
+    "entry_limit": "For a buy, no higher than the displayed best ask times 1.001, rounded to the valid tick and not beyond the exchange upper limit. For a sell, no lower than the displayed best bid times 0.999, rounded to the valid tick and not beyond the exchange lower limit.",
+    "unfilled_order": "Cancel at 09:15, record a no-fill with best bid/ask, price-limit state and reason, and re-evaluate only at the next rule event. Do not replace it with a continuous-series fill.",
+    "urgent_exit": "For delivery firewall or protective exits, submit the same valid limit instruction each eligible regular session until flat. A locked or unavailable market remains a disclosed execution failure, not an assumed fill.",
+    "explicit_actions": [
+      {
+        "condition": "all pretrade gates pass and signal is long",
+        "target": "buy open N_i lots of the selected identified actual contract"
+      },
+      {
+        "condition": "all pretrade gates pass and signal is short",
+        "target": "sell open N_i lots of the selected identified actual contract"
+      },
+      {
+        "condition": "signal becomes flat or reverses",
+        "target": "close the existing actual-contract position; do not reverse until the next execution window confirms the new contract and all gates"
+      },
+      {
+        "condition": "roll trigger or 30-day delivery firewall",
+        "target": "close the old actual contract; only open the new selected contract if every pretrade gate passes"
+      },
+      {
+        "condition": "any no-trade, protective or cooldown condition",
+        "target": "zero target exposure or maintain documented no-fill state; no discretionary substitution"
+      }
+    ]
+  },
+  "mandatory_no_trade_conditions": [
+    "No broker/suitability/short-permission confirmation for the actual contract.",
+    "No timestamped same-contract price history or missing official/broker margin, fee, delivery-cutoff or calendar record.",
+    "The contract fails the 90-270 day, liquidity, data-completeness or status rules.",
+    "The signal is flat, a 30-day delivery firewall applies, or a four-week strategy cooldown is active.",
+    "A margin, gross-notional or ATR-risk cap would be exceeded.",
+    "No valid live bid/ask, a price-limit lock, suspension or an unconfirmed order state prevents a limit order."
+  ],
+  "dated_selection_illustration": {
+    "source_date": "2026-08-14",
+    "source_artifact": "analysis/c9_actual_contract_snapshot_20260815.json",
+    "selected_actual_contracts": [
+      {
+        "family": "CU",
+        "contract": "CU2612",
+        "official_settlement_cny_per_tonne": 107090.0,
+        "official_volume_lots": 5180,
+        "official_open_interest_lots": 60362,
+        "scheduled_last_trade": "2026-12-15"
+      },
+      {
+        "family": "AU",
+        "contract": "AU2612",
+        "official_settlement_cny_per_gram": 947.22,
+        "official_volume_lots": 42872,
+        "official_open_interest_lots": 98284,
+        "scheduled_last_trade": "2026-12-15"
+      },
+      {
+        "family": "RU",
+        "contract": "RU2701",
+        "official_settlement_cny_per_tonne": 17740.0,
+        "official_volume_lots": 155968,
+        "official_open_interest_lots": 110329,
+        "scheduled_last_trade": "2027-01-15"
+      }
+    ],
+    "boundary": "This is a dated selection illustration. It does not pass the same-contract 65-session data, broker, live-quote, fill or account gates and is not an order or position."
+  },
+  "source_references": [
+    "sources/c9-official-shfe-commodity-contracts-20260815/shfe_cu_contract_rules_20260101.html",
+    "sources/c9-official-shfe-commodity-contracts-20260815/shfe_au_contract_rules_20260101.html",
+    "sources/c9-official-shfe-commodity-contracts-20260815/shfe_ru_contract_rules_20260101.html",
+    "sources/c9-official-shfe-commodity-contracts-20260815/shfe_risk_control_rules_20260706.html",
+    "sources/c9-official-shfe-commodity-contracts-20260815/manifest.json",
+    "analysis/c9_actual_contract_snapshot_20260815.json"
+  ],
+  "current_conclusion": "The rulebook is operationally specified as a research candidate but is not action-ready. It cannot be represented as a stable 5% annual-return strategy until the feasibility gates and an independent actual-contract replay are complete."
+}

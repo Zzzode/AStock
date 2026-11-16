@@ -1,0 +1,56 @@
+{
+  "archive_file": "e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda.json",
+  "archive_id": "sha256:e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda",
+  "archive_sha256": "8c5c676fc9c795ac48a166397054e72f720922bea4317b81132ce93d5e0d4f29",
+  "common_price_dates": 2090,
+  "instruments": [
+    {
+      "code": "510300",
+      "first_date": "2018-01-02",
+      "label": "CSI 300 equity ETF price sleeve",
+      "last_date": "2026-08-13",
+      "rows": 2090
+    },
+    {
+      "code": "510880",
+      "first_date": "2018-01-02",
+      "label": "SSE Dividend equity ETF price sleeve",
+      "last_date": "2026-08-13",
+      "rows": 2090
+    },
+    {
+      "code": "511010",
+      "first_date": "2018-01-02",
+      "label": "SSE 5-year Treasury ETF price sleeve",
+      "last_date": "2026-08-13",
+      "rows": 2090
+    },
+    {
+      "code": "518880",
+      "first_date": "2018-01-02",
+      "label": "gold ETF price sleeve",
+      "last_date": "2026-08-13",
+      "rows": 2090
+    }
+  ],
+  "provider": "AkShare public observation adapter",
+  "quality_tier": "tier_3_frozen_public_observation",
+  "replay_input_file": "e69a5fc85d6b19f71a5ace6738bc0c3c0b32835b7829fc54fcc7d34453640dda.portfolio.replay.json",
+  "replay_input_sha256": "8829c0a065aa688c874212500c345c7dd92aff6c88b2bba760f7de7921b15217",
+  "request": {
+    "adjust": "",
+    "end_date": "20260813",
+    "period": "daily",
+    "price_interpretation": "raw or unadjusted market-price observations only",
+    "start_date": "20180101"
+  },
+  "retrieved_at": "2026-08-14T03:17:59.721575+00:00",
+  "schema_version": "public_price_screening_capture.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "upstream_endpoint": "Eastmoney fund_etf_hist_em",
+  "warnings": [
+    "This is a public aggregation capture, not an official or licensed point-in-time data archive.",
+    "The calendar is the intersection of available price dates, not an official exchange calendar.",
+    "No adjusted-price, distribution, corporate-action, halt, price-limit, delisting, bid/ask, or fill coverage is claimed."
+  ]
+}

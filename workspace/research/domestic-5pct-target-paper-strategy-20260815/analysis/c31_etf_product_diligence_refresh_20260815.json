@@ -1,0 +1,457 @@
+{
+  "schema_version": "d5pt_c31_etf_product_diligence_refresh.v1",
+  "artifact_id": "D5PT-C31-ETF-DIL-v1",
+  "data_cutoff": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "status": "dated_product_facts_verified_current_terms_and_execution_not_verified_research_only",
+  "research_only": true,
+  "external_action_authorized": false,
+  "scope": {
+    "c30_actual_instruments": ["510300", "510880", "511010", "518880", "511990"],
+    "reviewed_non_c30_instrument": ["510500"],
+    "conditional_satellites_not_in_c30": ["511180", "511380"],
+    "boundary": "This packet identifies product structure, dated disclosed costs, risks and category-level mechanics. It does not select a product, prescribe an action, forecast a result, or establish current tradability."
+  },
+  "lean_research_core": {
+    "codes": ["510300", "510880", "511010", "518880", "511990"],
+    "basis": "The exact five-code C30 set was fixed before calculation. C31 leaves it unchanged and rejects automatic substitution.",
+    "not_implied": [
+      "sufficient diversification",
+      "current tradability",
+      "low correlation",
+      "loss limitation",
+      "total return or future result"
+    ]
+  },
+  "universal_market_mechanics": {
+    "source_date": "2026-08-15",
+    "source_quality": "high_primary_official_venue_education_page",
+    "source_path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_etf_faq_20260815.html",
+    "minimum_lot_reference": "100 fund units",
+    "minimum_price_increment_reference": "CNY0.001",
+    "category_reference": {
+      "stock_etf": "T+1 category reference",
+      "bond_gold_money_etf": "T+0-supported category reference"
+    },
+    "bond_etf_value_system": "The FAQ distinguishes secondary-market price from off-exchange NAV; neither is interchangeable with IOPV.",
+    "not_product_level_confirmation": [
+      "daily trading status",
+      "quotes, depth, spread or fill quality",
+      "current IOPV or NAV",
+      "actual fees, taxes or market impact",
+      "settlement availability or timing",
+      "channel eligibility"
+    ],
+    "fail_closed_rule": "If a future paper record lacks current documents, market status, quote, IOPV where applicable, lot/tick, estimated friction or settlement fields, record no_action rather than infer the missing field."
+  },
+  "evidence_boundary": {
+    "verified": [
+      "Six R4 master-response codes—five actual-core codes plus non-core 510500—had one-row SSE FUND_LIST master responses captured on 2026-08-15.",
+      "Each product card has a first-party dated product summary for legal type, manager, trustee, exposure, replication, fees and risks.",
+      "511180 and 511380 have first-party dated product summaries, but their full current-term chain is not retained in this case."
+    ],
+    "not_verified": [
+      "current terms after each summary document date",
+      "real-time market price, NAV, IOPV, premium/discount, spread, depth, halt and price-limit state",
+      "actual secondary-market friction, taxes, fill state or settlement timing",
+      "current subscription/redemption status or channel eligibility",
+      "corporate-action and return-adjusted total-return ledger",
+      "any future result or benefit treatment"
+    ],
+    "freshness_note": "Product summaries state that material information is updated after a change and other information is generally updated annually. High source primacy therefore applies to the stated document date, not automatically to the data cutoff."
+  },
+  "products": [
+    {
+      "code": "510300",
+      "name": "华泰柏瑞沪深300ETF",
+      "c30_status": "actual_core",
+      "evidence_confidence": "high_for_document_date_facts",
+      "venue_master_captured": "2026-08-15",
+      "product_summary_date": "2025-11-24",
+      "legal_type": "股票型普通开放式ETF",
+      "issuer_manager": "华泰柏瑞基金管理有限公司",
+      "trustee": "中国工商银行股份有限公司",
+      "contract_effective_date": "2012-05-04",
+      "sse_listing_date": "2012-05-28",
+      "underlying_exposure": "沪深300指数；成份股及备选成份股通常不低于基金资产净值95%；完全复制",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.15%",
+        "trustee_fee_pa": "0.05%",
+        "annual_operating_expense_ratio": "0.20%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "index volatility and tracking deviation",
+        "constituent suspension",
+        "market-price premium or discount",
+        "IOPV reference or calculation error",
+        "subscription/redemption failure or delisting",
+        "third-party, operational and technology risks"
+      ],
+      "trading_settlement_consideration": "Stock-ETF T+1 is a category-level reference only; no daily code-level state, quote, settlement timing or execution quality is verified.",
+      "can_support": ["a broad domestic large-cap equity-index exposure label in C30"],
+      "cannot_support": ["whole-A-share representation", "low volatility", "full total return", "frictionless execution", "stable result"],
+      "source_refs": [
+        {
+          "kind": "sse_master",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_510300_20260815.json",
+          "captured": "2026-08-15"
+        },
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/510300_product_summary_20251124.pdf",
+          "document_date": "2025-11-24",
+          "pages": "1-4",
+          "sha256": "c00ceaf200a405a0e15459deff9d2ef5e1f12e8e0c88ba492169ca5f08f7b676"
+        }
+      ]
+    },
+    {
+      "code": "510880",
+      "name": "华泰柏瑞上证红利ETF",
+      "c30_status": "actual_core",
+      "evidence_confidence": "high_for_document_date_facts",
+      "venue_master_captured": "2026-08-15",
+      "product_summary_date": "2026-06-19",
+      "legal_type": "股票型普通开放式ETF",
+      "issuer_manager": "华泰柏瑞基金管理有限公司",
+      "trustee": "招商银行股份有限公司",
+      "contract_effective_date": "2006-11-17",
+      "sse_listing_date": "2007-01-18",
+      "underlying_exposure": "上证红利指数；成份股及备选成份股通常不低于基金资产净值95%；完全复制",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.50%",
+        "trustee_fee_pa": "0.10%",
+        "annual_operating_expense_ratio": "0.60%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "index and index-method change",
+        "tracking deviation and constituent suspension",
+        "market-price premium or discount",
+        "IOPV error, delisting and subscription/redemption failure",
+        "third-party, management, operational and technology risks"
+      ],
+      "trading_settlement_consideration": "Stock-ETF T+1 is a category-level reference only; no daily code-level state, quote, settlement timing or execution quality is verified.",
+      "can_support": ["a domestic dividend-style equity-index exposure label in C30"],
+      "cannot_support": ["low correlation with 510300", "fixed income stream", "lower risk", "automatic defence", "benefit-treatment assumption"],
+      "source_refs": [
+        {
+          "kind": "sse_master",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_510880_20260815.json",
+          "captured": "2026-08-15"
+        },
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/510880_product_summary_20260619.pdf",
+          "document_date": "2026-06-19",
+          "pages": "1-4",
+          "sha256": "88b104d387b2a2bc28988a3edb0da600d2333bbfbc59c29cc0fa28130376d669"
+        }
+      ]
+    },
+    {
+      "code": "511010",
+      "name": "国泰上证5年期国债ETF",
+      "c30_status": "actual_core",
+      "evidence_confidence": "high_for_document_date_facts",
+      "venue_master_captured": "2026-08-15",
+      "product_summary_date": "2026-03-19",
+      "legal_type": "债券型交易型开放式ETF",
+      "issuer_manager": "国泰基金管理有限公司",
+      "trustee": "中国建设银行股份有限公司",
+      "contract_effective_date": "2013-03-05",
+      "sse_listing_date": "2013-03-25",
+      "underlying_exposure": "上证5年期国债指数；成份国债及备选成份国债通常不低于基金资产净值90%；优化抽样复制",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.15%",
+        "trustee_fee_pa": "0.05%",
+        "annual_operating_expense_ratio": "0.21%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "index decline and interest-rate risk",
+        "sampling and valuation differences",
+        "constituent bond suspension or default",
+        "index-service interruption and liquidity risk",
+        "subscription/redemption failure or suspension",
+        "IOPV error and settlement-system change"
+      ],
+      "trading_settlement_consideration": "Bond-ETF T+0 is category-level only. Secondary-market price, off-exchange NAV and IOPV are distinct references; no daily state or execution quality is verified.",
+      "can_support": ["a five-year domestic government-bond rate-exposure label in C30"],
+      "cannot_support": ["fixed coupon", "risk hedge", "no loss", "using NAV as an executable secondary-market price"],
+      "source_refs": [
+        {
+          "kind": "sse_master",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_511010_20260815.json",
+          "captured": "2026-08-15"
+        },
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/511010_product_summary_20260319.pdf",
+          "document_date": "2026-03-19",
+          "pages": "1-7",
+          "sha256": "a239534cd25671a4dfd8eda196052ccfeee5bff1d4c8bbb049510199775c6935"
+        }
+      ]
+    },
+    {
+      "code": "518880",
+      "name": "华安黄金ETF",
+      "c30_status": "actual_core",
+      "evidence_confidence": "high_for_document_date_facts",
+      "venue_master_captured": "2026-08-15",
+      "product_summary_date": "2026-03-17",
+      "legal_type": "其他类型普通开放式ETF",
+      "issuer_manager": "华安基金管理有限公司",
+      "trustee": "中国建设银行股份有限公司",
+      "contract_effective_date": "2013-07-18",
+      "sse_listing_date": "2013-07-29",
+      "underlying_exposure": "境内黄金现货价格；上海黄金交易所挂牌黄金现货合约等黄金品种通常不低于基金资产90%",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.50%",
+        "trustee_fee_pa": "0.10%",
+        "annual_operating_expense_ratio": "0.67%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "gold-price and NAV deviation",
+        "currency and inflation exposure",
+        "market-price premium or discount and IOPV error",
+        "domestic and offshore market-hours mismatch",
+        "subscription/redemption and settlement-rule differences",
+        "liquidity risk"
+      ],
+      "trading_settlement_consideration": "Gold-ETF T+0 is category-level only. Underlying gold-market, ETF-trading and subscription/redemption hours do not fully coincide; current IOPV, quote and settlement conditions are not verified.",
+      "can_support": ["a domestic gold-spot-related exposure label in C30"],
+      "cannot_support": ["physical custody", "foreign-exchange position", "global-gold-index equivalence", "automatic stock or bond hedge", "inflation protection conclusion"],
+      "source_refs": [
+        {
+          "kind": "sse_master",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_518880_20260815.json",
+          "captured": "2026-08-15"
+        },
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/518880_product_summary_20260317.pdf",
+          "document_date": "2026-03-17",
+          "pages": "1-4",
+          "sha256": "9780e7080a42fa7935ddae16cd69db3c8721df5f80c8537170e4eae5f1874938"
+        }
+      ]
+    },
+    {
+      "code": "511990",
+      "name": "华宝现金添益ETF（A类）",
+      "c30_status": "actual_core",
+      "evidence_confidence": "high_for_document_date_facts_current_terms_not_verified",
+      "venue_master_captured": "2026-08-15",
+      "product_summary_date": "2025-06-21",
+      "legal_type": "交易型货币市场基金（A类份额）、普通开放式",
+      "issuer_manager": "华宝基金管理有限公司",
+      "trustee": "中国建设银行股份有限公司",
+      "contract_effective_date": "2012-12-27",
+      "sse_listing_date": "2013-01-28",
+      "underlying_exposure": "存款、债券回购、央行票据、同业存单、期限受限债务融资工具、债券、资产支持证券及其他货币市场工具；久期、收益率曲线、类属、套利、逆回购及流动性管理策略",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.35%",
+        "trustee_fee_pa": "0.09%",
+        "sales_service_fee_pa": "0.25%",
+        "annual_operating_expense_ratio": "0.69%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "credit, valuation and negative-daily-return risk",
+        "liquidity and transaction-cost risk",
+        "market-price versus NAV deviation",
+        "same-day redemption volume control",
+        "operational and technology risks"
+      ],
+      "trading_settlement_consideration": "Money-ETF T+0 is category-level only. The summary notes premium/discount and possible same-day redemption volume control; code-level state, settlement timing and actual friction are not verified.",
+      "can_support": ["a money-market-tool exposure label in C30"],
+      "cannot_support": ["fixed result", "same-day availability", "no loss", "benefit-treatment assumption"],
+      "source_refs": [
+        {
+          "kind": "sse_master",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_511990_20260815.json",
+          "captured": "2026-08-15"
+        },
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/511990_product_summary_20250621.pdf",
+          "document_date": "2025-06-21",
+          "pages": "1-4",
+          "sha256": "73721ddf044f1c4a2865b47d4471ccaed8b771d989ac95a63ae6543d4f4f9ecc"
+        }
+      ]
+    },
+    {
+      "code": "510500",
+      "name": "南方中证500ETF",
+      "c30_status": "reviewed_outside_c30_no_substitution",
+      "evidence_confidence": "high_for_document_date_facts",
+      "venue_master_captured": "2026-08-15",
+      "product_summary_date": "2026-07-29",
+      "legal_type": "股票型普通开放式ETF",
+      "issuer_manager": "南方基金管理股份有限公司",
+      "trustee": "中国农业银行股份有限公司",
+      "contract_effective_date": "2013-02-06",
+      "sse_listing_date": "2013-03-15",
+      "underlying_exposure": "中证500指数；成份股及备选成份股通常不低于基金资产净值95%；完全复制",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.15%",
+        "trustee_fee_pa": "0.05%",
+        "annual_operating_expense_ratio": "0.23%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "index volatility and tracking deviation",
+        "constituent suspension or delisting",
+        "market-price premium or discount and IOPV error",
+        "inactive trading, suspension or delisting",
+        "subscription/redemption failure and index-service risk",
+        "third-party, operational and technology risks"
+      ],
+      "trading_settlement_consideration": "Stock-ETF T+1 is a category-level reference only; the category label cannot establish daily liquidity, quote or settlement outcome.",
+      "can_support": ["a future standalone CSI-500 equity-index research definition"],
+      "cannot_support": ["post-hoc replacement of a C30 leg", "automatic C30 expansion", "diversification proof", "execution-quality conclusion"],
+      "source_refs": [
+        {
+          "kind": "sse_master",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_510500_20260815.json",
+          "captured": "2026-08-15"
+        },
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/510500_product_summary_20260729.pdf",
+          "document_date": "2026-07-29",
+          "pages": "1-8",
+          "sha256": "7e750c5141c3fe8d02b4b52621b4f86427ccf4fe01ed0ea5b95ab484c5de1863"
+        }
+      ]
+    },
+    {
+      "code": "511180",
+      "name": "海富通上证投资级可转债及可交换债券ETF",
+      "c30_status": "conditional_satellite_excluded_from_lean_core",
+      "evidence_confidence": "high_for_document_date_facts_current_terms_not_verified",
+      "venue_master_captured": "not retained in C31 source set",
+      "product_summary_date": "2025-12-09",
+      "legal_type": "债券型普通开放式ETF",
+      "issuer_manager": "海富通基金管理有限公司",
+      "trustee": "中信证券股份有限公司",
+      "contract_effective_date": "2020-07-13",
+      "sse_listing_date": "2020-08-26",
+      "underlying_exposure": "上证投资级可转债及可交换债券指数；成份债及备选成份债通常不低于基金资产净值90%、不低于非现金资产80%；分层抽样与替代性策略",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.25%",
+        "trustee_fee_pa": "0.05%",
+        "annual_operating_expense_ratio": "0.31%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "issuer credit and default",
+        "suspension, call, put, conversion or exchange events",
+        "index change and sampling risk",
+        "market-price premium or discount and IOPV error",
+        "subscription/redemption failure, delisting and settlement-system change"
+      ],
+      "trading_settlement_consideration": "Bond-ETF T+0 is category-level only. The document describes restricted cash substitution and limits in the creation/redemption mechanism; it does not resolve a secondary-market price deviation.",
+      "can_support": ["a separately governed convertible-bond research sleeve with credit and event data gates"],
+      "cannot_support": ["C30 lean core", "government-bond or money-market replacement", "low volatility", "no event risk"],
+      "source_refs": [
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c8-official-511180-product-refresh-20260815/511180_product_summary_20251209.pdf",
+          "document_date": "2025-12-09",
+          "pages": "1-6",
+          "sha256": "ac98c2e64ea6d126c41544cf14bd60bc5002cec6644af747cf8643d0966321a6"
+        }
+      ]
+    },
+    {
+      "code": "511380",
+      "name": "博时中证可转债及可交换债券ETF",
+      "c30_status": "conditional_satellite_excluded_from_lean_core",
+      "evidence_confidence": "high_for_document_date_facts_current_terms_not_verified",
+      "venue_master_captured": "not retained in C31 source set",
+      "product_summary_date": "2026-06-26",
+      "legal_type": "债券型普通开放式ETF",
+      "issuer_manager": "博时基金管理有限公司",
+      "trustee": "招商银行股份有限公司",
+      "contract_effective_date": "2020-03-06",
+      "sse_listing_date": "2020-04-07",
+      "underlying_exposure": "中证可转债及可交换债券指数；成份债及备选成份债通常不低于基金资产净值80%、不低于非现金资产80%；抽样复制与替代策略",
+      "costs_disclosed_as_of_document_date": {
+        "management_fee_pa": "0.15%",
+        "trustee_fee_pa": "0.05%",
+        "annual_operating_expense_ratio": "0.20%",
+        "secondary_market_friction": "not verified"
+      },
+      "key_risks": [
+        "equity sensitivity, issuer credit/default and interest-rate risk",
+        "constituent suspension, call, put or conversion events",
+        "index adjustment, sampling and substitution risk",
+        "market-price premium or discount and IOPV error",
+        "subscription/redemption failure, delisting and government-bond-futures risk"
+      ],
+      "trading_settlement_consideration": "Bond-ETF T+0 is category-level only. Creation/redemption limits, constituent liquidity and IOPV error prevent an assumption that NAV or a same-day mechanism can be realized.",
+      "can_support": ["a separately governed broad convertible-bond-index research definition"],
+      "cannot_support": ["automatic C30 expansion", "government-bond replacement", "money-market replacement", "low-complexity implementation"],
+      "source_refs": [
+        {
+          "kind": "issuer_product_summary",
+          "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c8-official-product-and-price-20260815/511380_product_summary_20260626.pdf",
+          "document_date": "2026-06-26",
+          "pages": "1-5",
+          "sha256": "6fa1ebc35cf8adc389df34d7b6c52f18b8de769f4ab32390542cc1eaa7c90670"
+        }
+      ]
+    }
+  ],
+  "source_registry": [
+    {
+      "id": "R4-M",
+      "publisher": "Shanghai Stock Exchange",
+      "date": "captured 2026-08-15",
+      "purpose": "master rows for 510300, 510500, 510880, 511010, 511990 and 518880",
+      "path_pattern": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_fund_master_<code>_20260815.json"
+    },
+    {
+      "id": "R4-P",
+      "publisher": "Shanghai Stock Exchange disclosure pages and fund managers",
+      "date": "product-specific document dates",
+      "purpose": "legal type, manager/trustee, exposure, replication, disclosed costs and risks",
+      "path_pattern": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/*_product_summary_*.pdf"
+    },
+    {
+      "id": "R4-FAQ",
+      "publisher": "Shanghai Stock Exchange",
+      "date": "captured 2026-08-15",
+      "purpose": "category-level lot, tick, T+0/T+1 and bond-ETF value-system references",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/official-r4-candidate-etf-diligence-20260815/sse_etf_faq_20260815.html"
+    },
+    {
+      "id": "C8-511180",
+      "publisher": "海富通基金管理有限公司",
+      "date": "2025-12-09",
+      "purpose": "dated 511180 product facts",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c8-official-511180-product-refresh-20260815/511180_product_summary_20251209.pdf"
+    },
+    {
+      "id": "C8-511380",
+      "publisher": "Shanghai Stock Exchange disclosure page / 博时基金管理有限公司",
+      "date": "2026-06-26",
+      "purpose": "dated 511380 product facts",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c8-official-product-and-price-20260815/511380_product_summary_20260626.pdf"
+    },
+    {
+      "id": "C30",
+      "publisher": "case-internal protocol",
+      "date": "recorded 2026-08-15",
+      "purpose": "exact C30 code scope and non-substitution rule only; not product evidence",
+      "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c30_etf_candidate_protocol_20260815.md"
+    }
+  ],
+  "conclusion": "The five exact C30 ETFs have first-party evidence sufficient to state their product exposures, document-dated costs and major risks. 510500, 511180 and 511380 also have product-level first-party evidence but are not thereby admitted to C30. Current terms, live market data, total-return records and execution records remain unverified; the C30 research-only and fail-closed boundaries remain in force."
+}

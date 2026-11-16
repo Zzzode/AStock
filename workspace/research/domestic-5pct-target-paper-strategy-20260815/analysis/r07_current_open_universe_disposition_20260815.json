@@ -1,0 +1,150 @@
+{
+  "schema_version": "current_open_universe_disposition.v1",
+  "artifact_id": "D5PT-R07-v2",
+  "as_of": "2026-08-15",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "current_decision": {
+    "state": "NO_ADMITTED_USABLE_STRATEGY",
+    "reason": "Every completed route is either negatively diagnosed under its predeclared strict screen or lacks the historic and execution evidence necessary to test it. No result is permitted to become a strategy merely because it has a positive full-period average or a plausible economic story."
+  },
+  "source_control": {
+    "r03_baseline": {"path": "analysis/r03_open_universe_bridge_disposition_20260815.json", "sha256": "5a6cea26895d5d280edf995774f9f9238a6bf548863a0eb9e996f0daf3794da7"},
+    "etf_proxy": {"path": "analysis/m01_dynamic_market_price_proxy_20260815.json", "sha256": "d7cceed62f4ff53c2b88872f0c7bb214fa3bf91eaeabca9c7a408250abd645c8"},
+    "etf_independent_audit": {"path": "analysis/r02_independent_m01_r01_audit_20260815.json", "sha256": "90d5f59ae9f3b40bbb0a9585e75ea6cb9ed52eebe3fcdcbe051043e691271436"},
+    "c16_actual_contract_diagnostic": {"path": "analysis/c16_actual_contract_settlement_diagnostic_20260815.json", "sha256": "a1d61d3e0726bebe3a34181f4ee69cad28faba6dce66daf21abedbb3f7b88e81"},
+    "c16_independent_audit": {"path": "analysis/r04_independent_c16_audit_20260815.json", "sha256": "8171795a657323b5b20363a59f4797f137b89b57b4ab227507d78ff08c6d6768"},
+    "c17_actual_contract_diagnostic": {"path": "analysis/c17_diversified_actual_contract_settlement_diagnostic_20260815.json", "sha256": "70dfbab252505aed3521ac278948620531ba5c3bb77788344289149925432ed8"},
+    "c17_independent_audit": {"path": "analysis/r05_independent_c17_audit_20260815.json", "sha256": "6e1ee6ea25aeb46c064d3c965edf7f4fe488d0ee89987572e91bea2a757ecb38"},
+    "c18_feasibility": {"path": "analysis/c18_direct_sse_company_bond_ladder_feasibility_20260815.json", "sha256": "4f6668c828b2e6ca4349b630150cd9a00050971e9411030444bfe2a1b5f66cfb"},
+    "c18_independent_source_audit": {"path": "analysis/r06_independent_c18_source_preflight_audit_20260815.json", "sha256": "cb1f81fdb3f1a3c3f378208b851f07f9632c0e1c99b15bab8f459431fe098210"},
+    "c18_independent_rule_text_augmentation_audit": {"path": "analysis/r08_independent_c18_rule_text_augmentation_audit_20260815.json", "sha256": "ab63f6e21793fca3f06dbfe0b3bfaf3757eae52a746f6ce1571505049bc2d4a6"},
+    "c19_primary_source_capture": {"path": "sources/c19-official-bond-data-source-feasibility-20260815/manifest.json", "sha256": "77e337a09c80906a143b15dcfc72f60631847a3f44d63aeea5a9e0a531ac9d41"},
+    "c19_data_source_feasibility": {"path": "analysis/c19_bond_historical_data_source_feasibility_20260815.json", "sha256": "c251dff603184f4fd6312f2a60764a5cfe97341051031fa6b39ec8338b1bb49f"},
+    "c19_independent_source_audit": {"path": "analysis/r11_independent_c19_data_source_feasibility_audit_20260815.json", "sha256": "9e6c2000917f6addf87e193e617565302f5d203acc3ba2a8f9a1bd86a6481a3f"},
+    "c22_company_bond_historical_data_route": {"path": "analysis/c22_company_bond_historical_data_route_research_20260815.json", "sha256": "ea920348f5269715ba1c7d1c6ff45a8c0de561ed5c1d98e3b2ebb39576596cf4"},
+    "c20_public_reit_feasibility": {"path": "analysis/c20_domestic_public_reit_strategy_feasibility_20260815.json", "sha256": "222d2c45a356ab5e92aee70e84b9bf9e10c751486c914d45f54a2ca01618f7ca"},
+    "c20_current_rule_source_capture": {"path": "sources/c20-current-sse-rule-text-20260815/manifest.json", "sha256": "f0e710ef25872489d4ee697c58fb0bf73abd8c180f0d4115ce10aaf69e278829"},
+    "c20_r10_v1_scope_correction": {"path": "analysis/r13_r10_v1_scope_mismatch_correction_20260815.json", "sha256": "59ef545fc892f645f9a5c68f01e9b6983698d5ab89968e276faa96a78936e0d8"},
+    "c20_legacy_r10_v1_verifier_trace": {"path": "analysis/r10_independent_c20_public_reit_feasibility_audit_20260815.json", "sha256": "3d3d7b897981269d96b64bf447911a07e32e9c65f9be43734433db6fb4026f8c"},
+    "c20_rule_text_remediation_verification": {"path": "analysis/r12_c20_rule_text_remediation_verification_20260815.json", "sha256": "5c17994653602f5880768adee1357fddcefda26cc8a8b5483ace3cb50f570023"},
+    "c21_public_reit_historical_data_route": {"path": "analysis/c21_public_reit_historical_data_route_research_20260815.json", "sha256": "ef282ad26d5690133026b0aeedf352690cd7890f7b126d18ebb208b173adbf9b"},
+    "c23_open_ended_public_fund_data_route": {"path": "analysis/c23_open_ended_public_fund_data_feasibility_20260815.json", "sha256": "c01833f96313848a4a1f970a4104d44f407e61af44e24a450900625ddeeb62f3"},
+    "c24_direct_mainland_equity_data_route": {"path": "analysis/c24_direct_ashare_equity_data_feasibility_20260815.json", "sha256": "5902ad57b94affdc1554524614fdc0a099484ffaede924a051e63c31597c2cf2"},
+    "r14_open_universe_feasibility_expansion_audit": {"path": "analysis/r14_open_universe_feasibility_expansion_audit_20260815.json", "sha256": "668b47014932ae761bc113233243416369ded5612262b5bfbbc7cf5d6463e474"}
+  },
+  "completed_current_case_routes": [
+    {
+      "candidate_id": "R01",
+      "route": "five-ETF monthly dynamic paper benchmark",
+      "evidence_state": "paper_rule_defined_negative_market_price_proxy",
+      "strict_screen": {
+        "complete_years_below_5pct": [2016, 2018, 2021, 2022],
+        "rolling_five_year_endpoints_at_or_above_5pct": "37/81"
+      },
+      "disposition": "not admitted; six months of forward paper records and execution-quality evidence remain required even for a lower claim"
+    },
+    {
+      "candidate_id": "C16",
+      "route": "three-family actual SHFE contract weekly trend diagnostic",
+      "evidence_state": "independently_reconstructed_gross_actual_contract_settlement_mark",
+      "strict_screen": {
+        "annualized_gross_settlement_mark_change": 0.01967191,
+        "maximum_drawdown": -0.15248856,
+        "source_covered_years_below_5pct": [2021, 2022, 2023, 2024],
+        "rolling_five_year_endpoints_at_or_above_5pct": "0/24"
+      },
+      "disposition": "not admitted; a gross non-executable diagnostic cannot pass, and costs or execution evidence would not repair its negative strict screen"
+    },
+    {
+      "candidate_id": "C17",
+      "route": "five-family diversified actual SHFE contract weekly trend diagnostic",
+      "evidence_state": "independently_reconstructed_gross_actual_contract_settlement_mark",
+      "strict_screen": {
+        "annualized_gross_settlement_mark_change": 0.02077794,
+        "maximum_drawdown": -0.13462045,
+        "source_covered_years_below_5pct": [2020, 2022, 2023, 2024, 2025],
+        "rolling_five_year_endpoints_at_or_above_5pct": "0/24"
+      },
+      "disposition": "not admitted; it is a separately frozen hypothesis, not a repair of C16, and it fails even before fees, margin, fills and other execution constraints"
+    },
+    {
+      "candidate_id": "C18",
+      "route": "direct SSE-listed public company-bond contractual-cash-flow ladder",
+      "evidence_state": "primary-source preflight, two independent source audits, C19/C22 conditional licensed-data route research",
+      "strict_screen": "NOT_TESTABLE_FOR_RETURN",
+      "disposition": "no bond selected and no historical test allowed until the complete point-in-time universe, suitability, cash-flow, price, liquidity, credit-event and broker-execution evidence exists"
+    },
+    {
+      "candidate_id": "C20",
+      "route": "domestic exchange-listed public REIT research route",
+      "evidence_state": "product-level primary-source preflight, retained current-rule text and C21 conditional historical-data route research; no product selected",
+      "strict_screen": "NOT_TESTED_NOT_ADMITTED",
+      "disposition": "not admitted; a point-in-time market universe, investor total-return treatment, dated costs, execution records and eligibility evidence are all required before a strategy protocol or test"
+    }
+  ],
+  "exploratory_open_universe_routes": [
+    {
+      "candidate_id": "C23",
+      "route": "domestic publicly offered open-ended fund route",
+      "evidence_state": "conditional product-level disclosure and licensed-data paths; no product selected",
+      "strict_screen": "NOT_TESTABLE_FOR_RETURN",
+      "disposition": "not admitted; point-in-time universe, total-return/corporate-action treatment, historical fees/status and rights-cleared reproducible data are required before a frozen protocol"
+    },
+    {
+      "candidate_id": "C24",
+      "route": "direct mainland-equity route: Shanghai/Shenzhen A shares with BSE as a separately explicit domestic-stock coverage gate",
+      "evidence_state": "conditional multi-source data paths and a per-stock institutional-diligence contract; no stock or universe selected",
+      "strict_screen": "NOT_TESTABLE_FOR_RETURN",
+      "disposition": "not admitted; licensed point-in-time data, corporate-action/availability history, dated execution rules, and full equity-research diligence for every future included stock are required before a frozen protocol"
+    }
+  ],
+  "inherited_route_boundary": {
+    "reference": "R03 contains the prior representative routes C7 through C14 and the R01 paper benchmark.",
+    "current_meaning": "The earlier negative or not-testable results remain bounded route findings. They do not establish that every future domestic product or strategy fails."
+  },
+  "open_universe_governance": [
+    "The research universe is open; it is not limited to ETFs or the products already tested.",
+    "Direct mainland equities are not excluded. A Shanghai/Shenzhen A-share scope and any separate BSE coverage must be explicitly frozen; every future included stock requires full equity-research diligence before it can enter a paper rule.",
+    "A fixed rulebook cannot silently add a product after its protocol is frozen. A distinct candidate must state its economic hypothesis, universe, product diligence, data source, accounting, implementation limits and independent-review plan before calculation.",
+    "No product becomes an action target through a favourable name, headline yield, full-period average or backfilled proxy.",
+    "The current case does not claim that a 5% result is guaranteed for any year, holding period, market state or individual."
+  ],
+  "next_research_queue": [
+    {
+      "candidate_id": "C18",
+      "next_gate": "C19/C22 identify conditional multi-source paths only. Obtain written rights, field dictionaries, samples and full point-in-time coverage for valuation, market, realized-event and universe fields, then independently verify that ordinary-investor eligibility can be established bond by bond and date by date.",
+      "allowed_status_before_gate": "not_testable_no_action"
+    },
+    {
+      "candidate_id": "C20",
+      "next_gate": "C21 identifies conditional SSE/SZSE licensed-data routes only. Obtain and hash the point-in-time public-REIT universe, auditable price/NAV/distribution/corporate-action history, dated cost and execution records, and non-sensitive eligibility evidence before defining a product-neutral protocol.",
+      "allowed_status_before_gate": "not_testable_no_action"
+    },
+    {
+      "candidate_id": "C23",
+      "next_gate": "Complete C23-GATE-1: written data rights, a point-in-time product/share-class sample including inactive funds, total-return/event and historical fee/status fields, and independent reconciliation to primary disclosures before a rule design.",
+      "allowed_status_before_gate": "not_testable_no_action"
+    },
+    {
+      "candidate_id": "C24",
+      "next_gate": "Obtain written historical-data rights and a point-in-time market/universe/event package for the declared stock scope, then complete full equity-research diligence and independent reconstruction for every future included stock before a rule design.",
+      "allowed_status_before_gate": "not_testable_no_action"
+    },
+    {
+      "candidate_id": "future_distinct_hypothesis",
+      "next_gate": "May be proposed only through a new pre-calculation protocol and product-level diligence; it may not alter C16 or C17 after their results.",
+      "allowed_status_before_gate": "research_design_only"
+    }
+  ],
+  "strict_research_gate": {
+    "five_percent_role": "Long-run research hurdle only, not a guarantee or forecast.",
+    "requirements_before_any_higher_status": [
+      "Every source-covered calendar year and every eligible rolling-five-calendar-year endpoint must meet the frozen threshold after the defined cost and cash-flow treatment.",
+      "Actual product, access, quote, liquidity, settlement, fee, tax, no-fill and risk-event evidence must be retained.",
+      "An independent reconstruction and a forward paper observation record must pass without rule changes."
+    ]
+  }
+}

@@ -1,0 +1,218 @@
+{
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "registry_id": "DPSFS-U0-v2",
+  "registry_version": 2,
+  "schema_version": "domestic_universe_registry.v2",
+  "as_of": "2026-08-14",
+  "status": "draft_population_governance_only",
+  "research_only": true,
+  "portfolio_q": 0,
+  "supersedes": "DPSFS-U0-v1-draft",
+  "freeze_control": {
+    "state": "not_frozen",
+    "required_freeze_fields": [
+      "registry_id",
+      "registry_version",
+      "registry_sha256",
+      "population_source_manifest_hashes",
+      "population_query_definition",
+      "source_revision_cutoff",
+      "approver_roles",
+      "freeze_timestamp"
+    ],
+    "change_control": "A class, scope, population source, status or admission-gate change requires a new registry version and pre-outcome freeze record."
+  },
+  "revision_history": [
+    {
+      "version": 2,
+      "date": "2026-08-14",
+      "state": "draft_not_frozen",
+      "reason": "Add leveraged/inverse class coverage and U0-to-T2 derivation controls before any population snapshot or outcome."
+    }
+  ],
+  "purpose": "Create a class-neutral domestic securities and derivatives discovery register so a convenient data subset cannot silently become the strategy universe. It is not an eligible universe, allocation, screen, recommendation or action.",
+  "scope_boundary": {
+    "included_research_area": "Domestic exchange-listed securities, public funds/REITs and domestic listed derivatives that may be researched subject to venue, product, route, data, suitability and risk gates.",
+    "not_an_exclusion": "An omitted product, a missing dossier or unavailable data means unresearched or evidence-pending, not economically rejected.",
+    "access_boundary": "No row assumes an individual's brokerage access, suitability, tax treatment or permission to trade."
+  },
+  "class_status_values": {
+    "unresearched": "No case-specific primary population, product or data packet has been accepted.",
+    "evidence_pending": "A discovery path or limited fact evidence exists, but no class-wide point-in-time population and admission package has passed.",
+    "data_qualified": "Reserved for a future class that has passed a frozen data and admission test. No current row has this status.",
+    "out_of_scope_with_reason": "Requires a dated legal, operational or mandate reason and independent review. No current row uses this status."
+  },
+  "population_control": {
+    "discovery_separate_from_selection": true,
+    "required_population_fields": [
+      "asset_class",
+      "venue",
+      "security_or_contract_identifier",
+      "listing_or_contract_lifecycle",
+      "trading_status",
+      "as_of",
+      "available_at",
+      "source_revision",
+      "raw_hash",
+      "class_status",
+      "out_of_scope_reason_if_any"
+    ],
+    "refresh_rule": "Before a future decision-universe snapshot, freeze a source-specific population-refresh calendar, capture date, query definition, expected count and reconciliation exception log.",
+    "survivorship_control": "Delisted, terminated, expired, suspended, merged, renamed and otherwise unavailable items remain in historical population records with their dated status; they cannot disappear because they are inconvenient.",
+    "selection_boundary": "No class or item becomes a T2 candidate merely because it appears in this registry or because another class lacks data.",
+    "u0_to_t2_derivation_requirement": "A future T2 freeze must retain the U0 snapshot hash; per-class population, qualified and excluded counts; every T2 parent_class_id; pre-frozen rule ID; inclusion/exclusion reason; and independently approved exception log."
+  },
+  "common_admission_gates": [
+    "Dated primary identity, venue and lifecycle/status record.",
+    "Authorized point-in-time data with as_of, available_at, revision and raw-hash lineage.",
+    "Complete cash-event, corporate-action, settlement and tradability history appropriate to the class.",
+    "Dated tax, cost, route, limit, suspension and no-fill evidence.",
+    "Class-specific economic/product research and risk mapping.",
+    "Historical membership and termination treatment that prevents survivorship bias.",
+    "Independent R0/R1/risk review with no user-specific access assumption."
+  ],
+  "classes": [
+    {
+      "class_id": "DIRECT_A_SHARE_EQUITIES",
+      "status": "unresearched",
+      "current_case_evidence": "No class-wide case-specific population or price/corporate-action archive.",
+      "candidate_primary_population_source": "Future official SSE/SZSE listed-security and disclosure population capture, reconciled by venue.",
+      "minimum_class_specific_evidence": [
+        "Point-in-time listed, delisted, ST, suspension and price-limit population.",
+        "OHLCV, free float/liquidity and dividend, rights, split, merger and delisting ledger.",
+        "Issuer filings with publication timestamps, governance and accounting provenance.",
+        "Dated broker route, tax, T+1 and no-fill inputs."
+      ],
+      "next_gate": "Build a U0 population master before naming issuer candidates.",
+      "q": 0
+    },
+    {
+      "class_id": "PUBLIC_REITS",
+      "status": "unresearched",
+      "current_case_evidence": "No class-wide case-specific public-REIT master or total-return/event archive.",
+      "candidate_primary_population_source": "Future official SSE/SZSE public-REIT product and disclosure population capture.",
+      "minimum_class_specific_evidence": [
+        "Fund/unit master, lifecycle, market status, NAV, price, premium/discount and distribution ledger.",
+        "Underlying asset, lease/toll/occupancy/cash-flow, sponsor/manager and expansion disclosures.",
+        "Leverage, financing, corporate action, liquidity, settlement, tax and no-fill evidence."
+      ],
+      "next_gate": "Capture the population and establish asset-type-specific economic fact packs before any comparison.",
+      "q": 0
+    },
+    {
+      "class_id": "LISTED_EQUITY_ETFS",
+      "status": "evidence_pending",
+      "current_case_evidence": "Five illustrative ETF product summaries exist, but no class-wide PIT master, constituent history, investor total-return or execution archive.",
+      "candidate_primary_population_source": "Future official exchange and manager product-master/disclosure capture plus entitled PIT data.",
+      "minimum_class_specific_evidence": [
+        "Index methodology, historic constituent/rebalance and look-through overlap records.",
+        "Market price, NAV, IOPV, event, T+1, halt, limit, spread/capacity and cost history.",
+        "Dividend, securities-lending and fund-distribution treatment reconciled into total return."
+      ],
+      "next_gate": "Pass ETF_PIT_EVENT_LEDGER and class-wide population reconciliation.",
+      "q": 0
+    },
+    {
+      "class_id": "BOND_AND_MONEY_MARKET_ETFS",
+      "status": "evidence_pending",
+      "current_case_evidence": "Illustrative Treasury-bond and money-market ETF product facts exist; defensive or cash-equivalent behavior is unproven.",
+      "candidate_primary_population_source": "Future official exchange/manager product-master capture plus entitled price, NAV and holdings/event data.",
+      "minimum_class_specific_evidence": [
+        "Index/holdings, duration, convexity, yield/accrual, credit and counterparty exposure.",
+        "Coupon/distribution, NAV/IOPV, creation/redemption, market-price/spread and settlement evidence.",
+        "Money-market income-booking, maturity, repo/counterparty and same-day route mechanics where applicable."
+      ],
+      "next_gate": "Pass ETF_PIT_EVENT_LEDGER and a class-specific stress/market-access review.",
+      "q": 0
+    },
+    {
+      "class_id": "GOLD_AND_OTHER_COMMODITY_ETFS",
+      "status": "evidence_pending",
+      "current_case_evidence": "One illustrative gold ETF product summary exists; diversification, valuation and execution behavior are unproven.",
+      "candidate_primary_population_source": "Future official exchange/manager product-master capture plus entitled underlying, NAV, market and event data.",
+      "minimum_class_specific_evidence": [
+        "Underlying exposure, custody, valuation and redemption/restriction mechanics.",
+        "NAV, IOPV, market-price, premium/discount, liquidity and holiday-mismatch history.",
+        "Tax, cost, no-fill and joint cross-asset stress evidence."
+      ],
+      "next_gate": "Pass ETF_PIT_EVENT_LEDGER and underlying-exposure reconciliation.",
+      "q": 0
+    },
+    {
+      "class_id": "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES",
+      "status": "unresearched",
+      "current_case_evidence": "No case-specific class-wide master, lifecycle or investor-return archive.",
+      "candidate_primary_population_source": "Future venue-specific official bond/convertible population and disclosure capture; access route must be independently confirmed.",
+      "minimum_class_specific_evidence": [
+        "Security lifecycle, terms, coupon/redemption/conversion/put/call and credit-event ledger.",
+        "Clean/dirty price, accrued interest, tax, settlement, quote/depth and suspension/limit evidence.",
+        "Issuer/covenant, conversion/dilution and liquidity/no-fill research."
+      ],
+      "next_gate": "Establish venue and personal-route feasibility without presuming access.",
+      "q": 0
+    },
+    {
+      "class_id": "COMMODITY_FUTURES",
+      "status": "evidence_pending",
+      "current_case_evidence": "Limited actual-contract source-path samples for AU, CU and TA exist; no all-commodity census, rule archive, full PIT cross-section or broker evidence exists.",
+      "candidate_primary_population_source": "Future official domestic commodity-exchange contract masters, dated rule archives and entitled actual-contract data.",
+      "minimum_class_specific_evidence": [
+        "Full product and actual-contract lifecycle, margin, limit, fee, delivery and position-limit history.",
+        "Daily full cross-sections, liquidity/status, contract-selection/roll/delivery-buffer and collateral treatment.",
+        "Broker route and suitability boundary, without assuming user eligibility."
+      ],
+      "next_gate": "Expand from the current probe to a class-wide population and pass FUTURES_ACTUAL_CONTRACT_LEDGER.",
+      "q": 0
+    },
+    {
+      "class_id": "FINANCIAL_FUTURES",
+      "status": "unresearched",
+      "current_case_evidence": "No case-specific master, data, rule, access or execution packet.",
+      "candidate_primary_population_source": "Future official financial-futures exchange product/contract master, rule and data capture.",
+      "minimum_class_specific_evidence": [
+        "Actual-contract lifecycle, margin, limits, fees, position restrictions and settlement type.",
+        "Basis, roll, collateral, liquidity/status and dated suitability/broker-route evidence.",
+        "Full point-in-time cross-section and no-fill accounting."
+      ],
+      "next_gate": "Build the class fact/data package before any comparison with commodity futures.",
+      "q": 0
+    },
+    {
+      "class_id": "LISTED_OPTIONS",
+      "status": "unresearched",
+      "current_case_evidence": "No case-specific chain master, option data, exercise/assignment or access packet.",
+      "candidate_primary_population_source": "Future official option-venue chain master, rule and data capture by underlying.",
+      "minimum_class_specific_evidence": [
+        "Full contemporaneous option chain including expired contracts, strikes, expiry lifecycle and corporate adjustments.",
+        "Exercise/assignment, margin, position limits, settlement, quote/spread/depth and no-fill evidence.",
+        "Underlying synchronization and defined payoff/risk accounting."
+      ],
+      "next_gate": "Build the full chain and risk-accounting package before an option series can be screened.",
+      "q": 0
+    },
+    {
+      "class_id": "LEVERAGED_AND_INVERSE_LISTED_PRODUCTS",
+      "status": "unresearched",
+      "current_case_evidence": "No case-specific product population, leverage-reset, route or risk-accounting packet.",
+      "candidate_primary_population_source": "Future official venue/product-master and rule capture by instrument structure.",
+      "minimum_class_specific_evidence": [
+        "Product lifecycle, leverage/reset or inverse payoff terms, corporate actions and daily valuation mechanics.",
+        "Point-in-time market/NAV/event history, liquidity, route, cost, tax, limits and no-fill evidence.",
+        "A separate risk-accounting and stress module that prevents a product label from becoming an allocation shortcut."
+      ],
+      "next_gate": "Classify the structure and build a dedicated data/replay module before it can be considered.",
+      "q": 0
+    }
+  ],
+  "new_class_intake": {
+    "allowed": true,
+    "required_before_status_change": [
+      "Dated scope rationale and primary population source.",
+      "Class-specific required-field and event/lifecycle schema.",
+      "Access, entitlement and execution boundary.",
+      "Independent source-governance review."
+    ],
+    "prohibited_shortcut": "A new class cannot be admitted because its marketing label, historic distribution, coupon, public continuous series or one convenient current product appears attractive."
+  },
+  "current_decision": "The registry creates no approved asset class, product, contract, allocation, holding or action. All current classes and items remain q=0."
+}

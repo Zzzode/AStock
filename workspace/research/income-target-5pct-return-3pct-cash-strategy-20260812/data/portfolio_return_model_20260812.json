@@ -1,0 +1,192 @@
+{
+  "schema_version": "total_return_strategy.v3",
+  "case_id": "income-target-5pct-return-3pct-cash-strategy-20260812",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "report_type": "strategic_allocation_total_return_research_framework",
+  "data_cutoff": "2026-08-12",
+  "portfolio_size_assumption": "none; the research framework is scale-neutral and does not infer an approved holding",
+  "model_type": "strategic allocation planning range; open research universe with no fixed asset-class allocation, point forecast, annual-floor promise, or implementation authorization",
+  "framework_status": "research_framework_pass",
+  "implementation_status": "not_approved",
+  "live_execution_authorized": false,
+  "interpretation": "The sole performance objective is a 5% rolling-five-year annualized total-return objective. Cash distributions are recorded as portfolio cash flows and are not a separate return, cash-receipt objective, cash-coverage threshold, allocation quota, or annual success test.",
+  "objectives": {
+    "literal_user_mandate": "at least 5% total return; no separate cash-receipt requirement",
+    "research_measurement_translation": "rolling five-year annualized, cost-aware TWRR objective",
+    "rolling_five_year_annualized_total_return_target_pct": 5.0,
+    "status": "conditional_ex_post_objective_not_a_guarantee_or_annual_floor",
+    "formal_return_evidence_status": "fail_not_run_blocked"
+  },
+  "current_state": {
+    "portfolio_q": 0,
+    "market_sleeves_q": 0,
+    "approved_model_allocation": "none",
+    "account_holding_inference": "none",
+    "reason": "No finite cross-asset decision universe, return-evidence replay, candidate-specific risk budget, or current-session product/account/market/concentration packets are approved.",
+    "total_return_objective_status": "not_tested_without_an_approved_model_allocation"
+  },
+  "post_approval_reference_vector": [],
+  "active_base_core": [
+    {
+      "asset": "eligible_protected_liquidity_reference",
+      "weight": 1.0,
+      "notional_only": true,
+      "role": "scale-neutral failed-gate and opportunity-cost reference only; it is not an approved allocation, account holding, return guarantee, or cash-use instruction"
+    }
+  ],
+  "open_research_universe": {
+    "T0_research_boundary": "Lawful and account-accessible direct A-share equities, ETFs/funds, public REITs, sovereign and cash products; margin, leveraged/inverse products, futures/options, private or materially illiquid assets require separate written authorization.",
+    "T1_open_research_universe": "Any T0 instrument may be nominated; a nomination is not an investment recommendation and starts at q=0.",
+    "T2_decision_universe": "A finite, dated cross-asset comparison set with identity, research question, owner, source plan and substitution rules.",
+    "T3_approved_investable_universe": "Named items that completed structure-appropriate R0-R4 research and independent evidence, valuation, risk, liquidity and operational review; each named direct equity must reconcile one-for-one to current valuation and broker/Street records.",
+    "T4_approved_portfolio": "A separately approved dynamic selection from T3 based on marginal total-return drivers, valuation, common risk, stress, concentration, capacity, liquidity, tax/settlement mechanics and suitability.",
+    "current_status": "T1 open; T2 direct-equity candidates not frozen; T3 empty; T4 empty; all market candidates q=0."
+  },
+  "cash_ledger_and_accounting": {
+    "purpose": "Record actual settled portfolio cash flows without creating a cash-yield target or selection score.",
+    "eligible_receipt_types": [
+      "settled interest",
+      "settled dividend",
+      "settled ETF distribution",
+      "settled REIT cash distribution"
+    ],
+    "not_receipt_types": [
+      "asset sale proceeds",
+      "unrealized mark-to-market gain",
+      "NAV accretion",
+      "external contribution",
+      "unsettled receivable"
+    ],
+    "record_fields": [
+      "receipt date",
+      "source sleeve",
+      "gross amount",
+      "tax",
+      "receipt fee",
+      "net amount",
+      "settlement date",
+      "source evidence"
+    ],
+    "capital_repayment_like_component": "An issuer-labelled capital repayment or economically similar distribution component must carry a separate ledger flag and a predeclared accounting and tax treatment. Until independently resolved, it is not labelled investment return and is excluded from investment-performance attribution.",
+    "distribution_history_boundary": "Distribution history may inform product mechanics, operating analysis, valuation and risk review, but it does not establish an allocation requirement, a return forecast, or a separate eligibility threshold.",
+    "data_gap_rule": "Missing receipt, tax, fee or settlement evidence makes the relevant cash-flow fact unavailable. It may not be backfilled with a headline yield or sale proceeds."
+  },
+  "cash_distribution_policy": {
+    "default_use": null,
+    "cash_use_instruction": "none; receipt eligibility and subsequent cash disposition are separate decisions. Retaining, withdrawing or taking no action needs only ledger recording; a new market allocation is a separately reviewed proposal.",
+    "cash_use_options_without_market_allocation": [
+      "retain",
+      "withdraw",
+      "no_action"
+    ],
+    "new_market_allocation_requirement": "Only a later proposal to deploy cash into a market instrument requires a dated T1-to-T4, valuation, risk, tax, liquidity, capacity and suitability review.",
+    "automatic_reinvestment": false,
+    "mandatory_retention": false,
+    "cash_use_record_requirement": "Record the investor-directed disposition separately from the receipt ledger. A withdrawal is recorded as an external flow at its timestamp; retaining or taking no action does not require investment approval.",
+    "boundary": "No cash-use choice creates a second return, a default allocation, or a cash-receipt objective."
+  },
+  "total_return_measurement": {
+    "strategy_measure": "TWRR",
+    "formula": "Split the account at every external flow: r_j = V_pre_flow_end_j / V_post_flow_start_j - 1; TWRR = product_j(1 + r_j) - 1. Retained cash remains in marked value.",
+    "subperiod_formula": "r_j = V_pre_flow_end_j / V_post_flow_start_j - 1; TWRR = product_j(1 + r_j) - 1. Split periods at each external flow; retained cash remains in marked value.",
+    "investor_measure": "MWRR_XIRR",
+    "investor_formula": "0 = sum_k(CF_k/(1+r)^(t_k/365)) + V_terminal/(1+r)^(T/365), using actual dated external cash flows and consistent signs.",
+    "external_flow_rule": "Use a daily unitized marked-value series that neutralizes every external contribution or withdrawal at its immediately pre-flow marked value. A settled receipt retained in the portfolio is not an external flow. A later withdrawal changes only the subsequent portfolio path, TWRR and future cash capacity.",
+    "cash_receipt_accounting_rule": "Each eligible settled receipt is counted once. If it remains in the account it is embedded in marked value; if it leaves the account it is recorded as an external flow at the disposition timestamp. A later cash-use choice cannot create a second return.",
+    "cash_disposition_rule": "Cash disposition is investor-directed and is neither automatic nor a condition of performance assessment. Retaining, withdrawing or taking no action needs ledger recording only; a later new market allocation requires its own dated review.",
+    "capital_repayment_like_component_rule": "A separately flagged capital-repayment-like component follows its predeclared accounting and tax treatment, is not labelled investment return, and is never double counted.",
+    "reinvestment_rule": "Compatibility validation field: no automatic deployment or mandatory reinvestment is permitted. A settled receipt is accounted for once only; a later investor-directed cash-use choice cannot create a second return.",
+    "objective_outcome_rule": "A rolling-five-year annualized TWRR below 5% is recorded as an objective outcome, not repaired by relabelling distributions, taking additional risk, or using a catch-up allocation. The objective is conditional and not an annual floor."
+  },
+  "benchmark_and_attribution": {
+    "B0_protected_liquidity": "Required opportunity-cost comparator; cannot be frozen until the eligible account instrument and its total-return convention are identified.",
+    "B1_reference_vector": "Required point-in-time, cost-aware rebalanced total-return comparator for the frozen T2 direct-equity, ETF, REIT, sovereign/cash candidate set; currently not computable because no finite decision universe, weights or substitution history is frozen.",
+    "attribution_requirement": "Reconcile market price/NAV change, gross cash distributions, taxes/fees, trading costs, allocation/rebalancing effect and residual. Any unexplained residual is a model failure."
+  },
+  "return_evidence_gate": {
+    "status": "fail_not_run_blocked",
+    "required_before_implementation": [
+      "a frozen T2 cross-asset candidate set, including any direct equities, ETFs, REITs, sovereign/cash tools and substitution history",
+      "frozen total-return/distribution/corporate-action data and cost-tax-capacity assumptions",
+      "B0 and B1 benchmark series",
+      "reproducible replay with calendar and rolling-five-year TWRR, drawdown, turnover and cost reporting",
+      "independent no-double-counting validation"
+    ]
+  },
+  "return_evidence": {
+    "implementation_status": "blocked_pending_formal_test",
+    "formal_test_requirement": "Freeze named final sleeves, point-in-time constituent/substitution history, total-return/distribution/corporate-action series, costs, taxes, capacity, A-share execution constraints and run an independently reviewed reproducible replay.",
+    "benchmark_requirement": "Freeze B0 protected liquidity and B1 frozen T2/T4 cross-asset comparator with the same date, valuation-time, cash and cost convention before comparing results.",
+    "source_packet": "data/return_evidence_20260812.json",
+    "boundary": "Fund-level history is not a portfolio backtest, expected return, probability estimate or implementation approval."
+  },
+  "risk_budget": {
+    "implementation_status": "not_approved",
+    "approval_requirement": "A dated T2 candidate-specific package must recalculate common stress and cost uncertainty, document loss capacity and no-forced-withdrawal horizon, and independently pass item research, valuation, liquidity, correlation, concentration, tax and settlement gates.",
+    "loss_limit": "The retired fixed vector created a -25.00% planning-stress subtotal versus the -18% mandatory risk-action boundary; q_portfolio remains 0 until a frozen T2 portfolio has an approved risk budget.",
+    "source_packet": "data/risk_budget_20260812.json"
+  },
+  "activation_controls": {
+    "direct_equities": {
+      "initial_weight": 0.0,
+      "aggregate_cap": null,
+      "single_issuer_cap": null,
+      "current_model_treatment": "open_research_universe_no_named_candidate_or_approved_weight",
+      "only_replaces": "not applicable; direct equities may compete against any T3 product only after full item diligence",
+      "required_independent_review": [
+        "company_industry_and_governance_evidence",
+        "audited_financials_and_driver_to_EPS_bridge",
+        "current_price_bull_base_bear_valuation",
+        "dividend_and_free_cash_flow_coverage",
+        "catalyst_and_invalidation",
+        "free_float_suspension_price_limit_and_liquidity",
+        "issuer_group_industry_factor_and_common_risk_mapping",
+        "tax_settlement_and_capacity"
+      ]
+    },
+    "public_reits": {
+      "initial_weight": 0.0,
+      "target_weight_after_approval": null,
+      "target_weight_after_activation": null,
+      "aggregate_cap": null,
+      "minimum_independent_projects": 5,
+      "activation_requires_independent_projects": 5,
+      "minimum_manager_or_sponsor_groups": 3,
+      "minimum_operating_cash_flow_sectors": 3,
+      "per_project_cap": null,
+      "per_manager_or_sponsor_cap": null,
+      "common_risk_cluster_cap": null,
+      "cross_sleeve_operating_risk_cluster_cap": null,
+      "required_checks": [
+        "current price and distribution/total-return accounting reconciliation",
+        "premium or discount to NAV with dated NAV/event review",
+        "operating cash flow and property/project KPI",
+        "debt, capital-expenditure reserve and refinancing",
+        "same-session liquidity, spread, minimum-lot and capacity feasibility",
+        "manager/sponsor, sector, correlation and cross-sleeve concentration",
+        "account tax, fee and settlement mechanics"
+      ],
+      "inactive_behavior": "No public-REIT amount is pre-assigned. Any proposed amount remains outside a model allocation until the named candidate and full T4 portfolio pass every applicable gate; otherwise the protected liquidity fallback remains the only model reference and no REIT allocation is force-filled."
+    }
+  },
+  "risk_controls": {
+    "risk_budget_reference": "data/risk_budget_20260812.json",
+    "risk_budget_status": "not_approved",
+    "no_leverage": true,
+    "no_futures_or_options": true,
+    "no_margin_financing": true,
+    "asset_class_quotas": "none; future concentration limits must be candidate- and portfolio-specific",
+    "legacy_fixed_vector_status": "retired_not_an_allocation_or_cap_schedule",
+    "caution_lock_pct": -12.0,
+    "mandatory_risk_stop_pct": -18.0
+  },
+  "sources": [
+    "R01", "R02", "R03", "R04", "R05", "R06", "R07", "R08", "R09", "R10", "R11", "R12", "R13", "R14"
+  ],
+  "warnings": [
+    "No market allocation can guarantee a 5% result in every calendar year.",
+    "Cash distributions are portfolio cash flows, not a separate cash-receipt objective or an additional return.",
+    "Historical fund-level records are not a cost-aware strategy backtest, expected-return estimate, scenario probability or implementation approval.",
+    "All market-traded implementation eligibility is q=0 until a finite decision universe, item-level research, portfolio evidence, account and current-session validation gates pass."
+  ]
+}

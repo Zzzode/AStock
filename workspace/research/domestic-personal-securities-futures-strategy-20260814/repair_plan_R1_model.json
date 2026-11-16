@@ -1,0 +1,65 @@
+{
+  "schema_version": "r1_model_repair_plan.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "cycle": "R1_model",
+  "status": "static_design_repairs_verified_external_gates_open_not_investable",
+  "tasks": [
+    {
+      "id": "R1-RP-001",
+      "finding": "R1-S-001",
+      "action": "Bind the same 26 run-dependent tables and composite frozen-run key in the DAC, RP and DD; reject duplicate JSON keys and inventory drift.",
+      "status": "verified",
+      "verification": "Independent static audit reports 26/26 exact bound-table equality and 38-field v2 parent crosswalk; tools/verify_research_design_controls.py passes."
+    },
+    {
+      "id": "R1-RP-002",
+      "finding": "R1-S-002",
+      "action": "Implement zero-NAV paired cash/margin/collateral transfer, dated collateral sources, exclusive balance routing and no hidden debit financing.",
+      "status": "verified",
+      "verification": "Independent static audit and tools/verify_research_design_controls.py validate pair, routing and NAV-bridge controls."
+    },
+    {
+      "id": "R1-RP-003",
+      "finding": "R1-S-003",
+      "action": "Implement daily-margined futures accounting with zero marked value and P&L only through variation/final settlement.",
+      "status": "verified",
+      "verification": "Independent static audit validates FUTURES_DAILY_MARGINED and the prohibition on gross-notional cash substitution."
+    },
+    {
+      "id": "R1-RP-004",
+      "finding": "R1-S-004",
+      "action": "Implement signed unposted settlement residuals and invalidate endpoints for FAILED settlement/transfer paths.",
+      "status": "verified",
+      "verification": "Independent static audit validates payable/receivable residual and FAILED-to-INVALID controls."
+    },
+    {
+      "id": "R1-RP-005",
+      "finding": "R1-S-005",
+      "action": "Acquire and independently accept the eligible UR01, UR02 and UR03 raw data packages with written rights, original availability/revision fields, coverage counts, source manifests and execution/cost evidence.",
+      "status": "external_prerequisite_open",
+      "verification": "RQP-OPEN-CLASS-MODULES has passed an independent 11-check local boundary audit as a not-sent six-class future-module specification only. Use it only to obtain a future version-controlled capability definition, then apply the package acceptance tests in data/data_acquisition_contract_20260814.json; public or retrospective substitutes cannot close the task."
+    },
+    {
+      "id": "R1-RP-006",
+      "finding": "R1-S-006",
+      "action": "Freeze U0, complete a class-neutral U0-to-T2 derivation audit, sign the replay_run_freeze_record before outcome inspection, and execute an all-endpoint reproducible formal replay.",
+      "status": "blocked_on_R1-RP-005",
+      "verification": "Require a signed canonical freeze record, accepted U0/T2 evidence and retained replay endpoint/ledger outputs."
+    },
+    {
+      "id": "R1-RP-007",
+      "finding": "R1-S-007",
+      "action": "Run the 60-calendar-day/10-observation prospective paper reconciliation and independent frozen risk/feasibility review with all exception rows retained.",
+      "status": "blocked_on_R1-RP-005_and_R1-RP-006",
+      "verification": "UR05 requires zero unresolved blocking rows and independent reconciliation of fills, fees/taxes/FX, settlement, reservation, unitization and endpoint population."
+    },
+    {
+      "id": "R1-RP-008",
+      "finding": "R1-A-001",
+      "action": "Keep the ten-class U0 coverage-gap matrix current and independently confirm first-party route coverage before any class-specific intake is proposed.",
+      "status": "verified",
+      "verification": "Independent source-route audit re-read the corrected six-class scope against DPSFS-U0-v2 and the RQP-UR01/RQP-UR02 package boundaries; 10/10 U0 classes retained q=0."
+    }
+  ],
+  "hard_boundary": "No task in this plan authorizes a product admission, allocation, holding, order, external execution, return claim or return guarantee. All classes and probes remain q=0 until every open S-level finding and UR01--UR05 is independently closed."
+}

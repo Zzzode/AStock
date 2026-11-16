@@ -1,0 +1,292 @@
+{
+  "schema_version": "r3_h3_first_party_data_route_assessment.v1",
+  "artifact_id": "DPSFS-R3-H3-FPDRA-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-14",
+  "language": "zh-CN",
+  "artifact_class": "derived_research_evidence",
+  "research_only": true,
+  "portfolio_q": 0,
+  "scope": {
+    "hypothesis_id": "H3",
+    "u0_classes": [
+      "PUBLIC_REITS",
+      "LISTED_EQUITY_ETFS",
+      "BOND_AND_MONEY_MARKET_ETFS",
+      "GOLD_AND_OTHER_COMMODITY_ETFS",
+      "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES"
+    ],
+    "assessment_question": "Whether first-party official domestic routes evidenced in this case or rechecked on official publisher sites can close H3's formal-replay data/right gate.",
+    "exclusions": [
+      "No product selection, product admission, allocation, holding, order, trade, return or performance conclusion.",
+      "No assertion of a user account, broker route, suitability permission or paid-data entitlement."
+    ]
+  },
+  "data_quality": {
+    "source": "Case-local first-party SSE raw samples plus P06 retained SSE/SSE Information/SZSE route-and-terms pages and read-only recheck of other official route pages.",
+    "timestamp": "2026-08-14",
+    "quality_tier": "primary_official_route_reconnaissance_not_entitled_not_replay_ready",
+    "fallback_path": "None. A retrospective public page or sample response cannot substitute for an authorized point-in-time delivery and rights package.",
+    "warnings": [
+      "P06 retains five official route/service/website-terms HTML pages only; it is route/rights reconnaissance, not a historical data delivery, contract, entitlement or point-in-time archive.",
+      "A public endpoint, product brochure, pricing page, interface specification or successful response does not prove historical completeness, source-side available_at, revision lineage, or a right to retain/normalize/replay/derive/review data.",
+      "The assessment is limited to first-party official publishers and first-party exchange-information subsidiaries; no vendor, broker-research or other third-party source is relied on."
+    ],
+    "errors": []
+  },
+  "formal_replay_assessment": {
+    "h3_formal_replay_gate_closed": false,
+    "current_decision": "NO_FORMAL_REPLAY_INPUT; q=0",
+    "route_that_individually_closes_h3": [],
+    "reason": "No evidenced route combines a complete dual-venue historical universe/lifecycle, synchronized PIT price-NAV-IOPV and cash-event ledger, REIT/ETF/bond/convertible economic-and-terms data, source available_at/revision/raw-manifest lineage, written replay rights, and broker execution/cost/settlement evidence.",
+    "not_an_impossibility_claim": "The record does not show that no lawful first-party package can ever be procured. It shows that no such accepted package or written entitlement is present now."
+  },
+  "gate_matrix": [
+    {
+      "gate": "Historical product and bond universe/lifecycle",
+      "state": "FAIL",
+      "missing": "Dual-venue, class-wide, dated listings, delistings/terminations, renames, suspensions, status, no-trade objects, source available_at, revision and coverage reconciliation."
+    },
+    {
+      "gate": "Synchronized total-return inputs",
+      "state": "FAIL",
+      "missing": "Decision-time synchronized market price, NAV/accumulated NAV, numeric IOPV where applicable, coupon/distribution/payment and adjustment-event reconciliation."
+    },
+    {
+      "gate": "Economic and contractual PIT inputs",
+      "state": "FAIL",
+      "missing": "REIT operating/expansion facts; ETF holdings and index-methodology history; bond accrual, clean/dirty-price, yield, credit and payment events; convertible conversion/call/put/redemption/terms-change history."
+    },
+    {
+      "gate": "Rights and provenance",
+      "state": "FAIL",
+      "missing": "Written data-owner or authorized-distributor entitlement for raw retention, normalization, formal replay, derived analysis and independent review, with effective dates, scope, audit/deletion and redistribution conditions."
+    },
+    {
+      "gate": "Execution, cost and settlement",
+      "state": "FAIL",
+      "missing": "Dated broker route, eligibility, quote/depth or approved no-fill proxy, fee/tax terms, partial/no-fill, settlement and transaction-time feasibility evidence."
+    }
+  ],
+  "first_party_route_assessment": [
+    {
+      "route_id": "SSE_PUBLIC_H3_QUERY_AND_DISCLOSURE_ROUTES",
+      "owner": "Shanghai Stock Exchange",
+      "coverage": ["PUBLIC_REITS", "LISTED_ETFS", "EXCHANGE_LISTED_BONDS_AND_CONVERTIBLES"],
+      "official_entry_points": [
+        "https://www.sse.com.cn/assortment/fund/list/",
+        "https://www.sse.com.cn/reits/assortment/prices/",
+        "https://www.sse.com.cn/disclosure/fund/etflist/",
+        "https://bond.sse.com.cn/data/",
+        "https://bond.sse.com.cn/disclosure/info/convertible/"
+      ],
+      "observed_or_documented_scope": [
+        "Case-local SSE samples show current ETF/REIT master-list rows and limited retrospective day-k rows for ETF, REIT, exchange bond and convertible examples.",
+        "Case-local SSE samples show a REIT NAV snapshot, REIT distribution rows, fund suspension rows, ETF PCF fields/current components/snapshot positions, ETF bulletin metadata, convertible basic terms and convertible bulletin metadata.",
+        "Exchange disclosure is a first-party document-discovery route for product, distribution, coupon, credit, term and status notices."
+      ],
+      "formal_replay_boundary": [
+        "The samples are code/window/page observations, not a dual-venue historical master or a complete event/status ledger.",
+        "None establishes a source-side available_at field, a historical version/revision chain, immutable delivery manifests, coverage reconciliation or a written data-use right.",
+        "Disclosure indices cannot by themselves normalize event effective time, payment completion, credit/terms history or the associated total-return adjustment."
+      ],
+      "route_status": "discovery_and_field_reconnaissance_only_not_an_accepted_h3_data_package"
+    },
+    {
+      "route_id": "SSEINFO_HISTORICAL_MARKET_DATA_SERVICE",
+      "owner": "Shanghai Stock Exchange Information Network Co., Ltd. (first-party SSE information-services entity)",
+      "coverage": ["SSE_LISTED_ETFS", "SSE_PUBLIC_REITS_SUBJECT_TO_PRODUCT_CONFIRMATION", "SSE_EXCHANGE_BONDS_AND_CONVERTIBLES_SUBJECT_TO_PRODUCT_CONFIRMATION"],
+      "official_entry_points": [
+        "https://www.sseinfo.com/services/assortment/historical/",
+        "https://www.sseinfo.com/services/assortment/document/",
+        "https://www.sseinfo.com/services/assortment/market/hqywwd/wdcpsms/c/10782125/files/f2ba70dea74a4323bf13b76fffce0e40.pdf",
+        "https://www.sseinfo.com/services/cpfwjg/"
+      ],
+      "observed_or_documented_scope": [
+        "The official historical-data description identifies securities basic-information files, snapshots, trade records, daily/minute K lines and auction data; the retained case copy states daily/minute K data include ETF IOPV.",
+        "The official historical-data product document describes Level-1 snapshot fields including ETF NAV and IOPV, and the official service/document pages identify historical-data and fixed-income interface/product materials.",
+        "The official price page describes historical-data access through agreed interfaces and a separately described daily-data/local-deployment mechanic."
+      ],
+      "formal_replay_boundary": [
+        "The public materials do not establish a user-specific entitlement, contract version, exact historical lookback, REIT and all fixed-income class coverage, raw-file retention, normalization, formal replay, derived-analysis or independent-review permission.",
+        "A SSE-only service cannot independently satisfy the dual-venue domestic H3 universe gate.",
+        "Market-data delivery alone does not close the REIT operating, ETF methodology/holding, bond coupon/accrual/credit or complete convertible-terms/event modules."
+      ],
+      "route_status": "strongest_first_party_procurement_lead_for_SSE_market_data_but_not_accepted_or_sufficient"
+    },
+    {
+      "route_id": "SSEINFO_FIXED_INCOME_MARKET_DATA_SERVICE",
+      "owner": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "coverage": ["SSE_EXCHANGE_LISTED_BONDS", "SSE_CONVERTIBLES_SUBJECT_TO_PRODUCT_SCOPE_CONFIRMATION"],
+      "official_entry_points": [
+        "https://www.sseinfo.com/services/assortment/income/",
+        "https://www.sseinfo.com/services/assortment/document/"
+      ],
+      "observed_or_documented_scope": [
+        "The official fixed-income page describes market-data interfaces, pre-open basic-information files, and snapshot/trade fields for fixed-income products.",
+        "It also presents an authorization-application path for fixed-income quotation display."
+      ],
+      "formal_replay_boundary": [
+        "The page does not evidence a historical PIT archive, full instrument lifecycle, clean/dirty-price convention, accrued-interest/yield history, payment/credit/default/restructuring ledger or a signed research/replay entitlement.",
+        "Display authorization is not evidence of retention, normalization, formal replay, derived analytics or independent-review permission.",
+        "No SZSE coverage, broker route, fees/taxes, depth, fill/no-fill or settlement records are evidenced."
+      ],
+      "route_status": "first_party_fixed_income_procurement_lead_not_an_accepted_h3_data_package"
+    },
+    {
+      "route_id": "SZSE_PUBLIC_PRODUCT_DISCLOSURE_AND_MARKET_ROUTES",
+      "owner": "Shenzhen Stock Exchange",
+      "coverage": ["SZSE_PUBLIC_REITS", "SZSE_ETFS", "SZSE_EXCHANGE_LISTED_BONDS", "SZSE_CONVERTIBLES"],
+      "official_entry_points": [
+        "https://www.szse.cn/disclosure/",
+        "https://fund.szse.cn/marketdata/trade/index.html",
+        "https://www.szse.cn/market/product/bond/REIT/index.html",
+        "https://reits.szse.cn/index/index.html"
+      ],
+      "observed_or_documented_scope": [
+        "The official disclosure portal exposes fund/ETF announcements, open-fund NAV, subscription-redemption lists, fund and bond announcements, halts/resumptions, and convertible-bond information as official discovery routes.",
+        "The official product navigation exposes REIT, ETF, bond and convertible product/data categories."
+      ],
+      "formal_replay_boundary": [
+        "This R3 assessment retained no SZSE raw response or contract that proves field semantics, full historical coverage, PIT availability, revision history or a reusable archive.",
+        "Page discovery does not solve cross-venue reconciliation, structured event normalization, terms/credit history or execution evidence."
+      ],
+      "route_status": "necessary_SZSE_first_party_inquiry_route_but_not_evidenced_as_an_accepted_h3_data_package"
+    },
+    {
+      "route_id": "SZSE_INFORMATION_DATA_LICENSING_INQUIRY",
+      "owner": "Shenzhen Securities Information Co., Ltd. (SZSE wholly owned first-party entity)",
+      "coverage": ["SZSE_MARKET_DATA_AND_LICENSE_SCOPE_TO_BE_CONTRACTUALLY_CONFIRMED"],
+      "official_entry_points": [
+        "https://www.szse.cn/aboutus/online/infonotice/t20241223_611280.html",
+        "https://investor.szse.cn/marketServices/technicalservice/index.html"
+      ],
+      "observed_or_documented_scope": [
+        "The official SZSE notice identifies the wholly owned entity as conducting market-data licensing and data services.",
+        "The official technical-service page identifies market-data technical-support and data-interface channels."
+      ],
+      "formal_replay_boundary": [
+        "Neither public page gives a product-specific H3 historical delivery, full data dictionary, licence, retention/replay/derived-analysis/review term or entitlement evidence.",
+        "It is a procurement and rights-inquiry lead, not proof that the required package is available or licensed."
+      ],
+      "route_status": "first_party_SZSE_procurement_and_rights_inquiry_lead_only"
+    }
+  ],
+  "rights_assessment": {
+    "first_party_rights_sources": [
+      {
+        "source": "CSRC Securities Exchange Administrative Measures",
+        "url": "https://www.sse.com.cn/lawandrules/regulations/csrcorder/c/10116605/files/0eaaf101f7054fac812123c9db064b85.pdf",
+        "relevant_fact": "The exchange holds rights in real-time market information and exclusive rights in market-generated base information and processed information products; commercial use and onward provision require exchange consent under the stated conditions.",
+        "formal_effect": "Public accessibility cannot be treated as a blanket data-use, retention, replay, derived-analysis or reviewer-access licence."
+      },
+      {
+        "source": "SZSE Articles of Association",
+        "url": "https://docs.static.szse.cn/www/lawrules/rule/all/W020210208587375383036.pdf",
+        "relevant_fact": "SZSE states that it holds rights in real-time information, market-generated base information and processed information products, and constrains unapproved commercial use and onward provision.",
+        "formal_effect": "A specific SZSE or authorized-distributor agreement remains required for a retained H3 archive and its permitted uses."
+      },
+      {
+        "source": "SSE Information historical-data product/pricing pages",
+        "url": "https://www.sseinfo.com/services/cpfwjg/",
+        "relevant_fact": "The page describes product delivery/access mechanics for historical and daily data, including agreed interfaces and a local-deployment option for a daily-data product.",
+        "formal_effect": "Delivery mechanics are not an evidenced entitlement for the case. The public page does not state the required archival, normalization, replay, derived-analysis and independent-review terms."
+      },
+      {
+        "source": "SSE Information fixed-income service",
+        "url": "https://www.sseinfo.com/services/assortment/income/",
+        "relevant_fact": "The page provides an authorization-application path for fixed-income quotation display.",
+        "formal_effect": "A display-authorization route cannot be reclassified as a historical research/replay licence without written scope and permitted-use terms."
+      }
+    ],
+    "rights_current_state": "not_established",
+    "minimum_written_rights_package": [
+      "Identify the data owner/authorized distributor, contracting entity, data product, venues/classes, historic period, delivery cadence and permitted users/reviewers.",
+      "Expressly permit retention of raw deliveries and retrieval metadata, normalized/hash-bound copies, correction/version retention, formal replay and storage of derived research/audit outputs.",
+      "Expressly permit independent internal review/audit access and state any external-review, redistribution, confidentiality, deletion, post-termination and credential-custody restrictions.",
+      "Attach the data dictionary and delivery SLA, including source as_of, original available_at/publication time, revision/version identifier, raw hash/file manifest, expected-row/page counts and historical coverage/reconciliation obligations.",
+      "State that the specified permitted use covers H3 research/replay rather than only display, terminal viewing or one-time download."
+    ]
+  },
+  "asset_class_missing_modules": [
+    {
+      "asset_class": "PUBLIC_REITS",
+      "missing_modules": [
+        "Dual-venue historical master/lifecycle and daily trade-status reconciliation.",
+        "Synchronized market price, NAV definition/date, distribution declaration/record/ex/payment/actual-payment/tax and revision ledger.",
+        "PIT underlying-property operating, financing, expansion and major-event data normalized from official disclosures.",
+        "Written archive/replay rights and execution/cost/settlement evidence."
+      ]
+    },
+    {
+      "asset_class": "LISTED_ETFS_AND_BOND_MONEY_COMMODITY_ETFS",
+      "missing_modules": [
+        "Dual-venue historical master/lifecycle and daily status, including terminations, suspensions and no-trade sessions.",
+        "Synchronized market price, NAV/accumulated NAV, numeric IOPV where published, PCF, shares/creation-redemption state and revision history.",
+        "Historical holdings/index methodology and distribution/split/termination/event-adjustment ledger.",
+        "Written archive/replay rights and execution/cost/settlement evidence."
+      ]
+    },
+    {
+      "asset_class": "EXCHANGE_LISTED_BONDS",
+      "missing_modules": [
+        "Dual-venue historical master/lifecycle, price convention, clean/dirty price, accrued interest, yield and liquidity/status history.",
+        "Effective-dated coupon schedule, payment/repayment/default/restructuring/credit-rating events and term-version chain.",
+        "PIT available_at/revision/raw-manifest lineage, written archive/replay rights and execution/cost/settlement evidence."
+      ]
+    },
+    {
+      "asset_class": "CONVERTIBLE_BONDS",
+      "missing_modules": [
+        "Historical master/lifecycle, prices/status and issuer-credit/operating events.",
+        "Effective-dated conversion price/period, call, put, redemption, downward-adjustment, suspension, maturity and every terms-change chain.",
+        "PIT available_at/revision/raw-manifest lineage, written archive/replay rights and execution/cost/settlement evidence."
+      ]
+    }
+  ],
+  "required_next_action_before_any_gate_retest": [
+    "Obtain written first-party or first-party-authorized entitlement packages separately for SSE and SZSE; do not substitute public webpages or browser-accessible APIs.",
+    "Require a class/venue data dictionary and a sample/full delivery manifest that can prove exact field semantics, availability timestamp, revision lineage, coverage expectations and raw hashes before loading any replay input.",
+    "Require supplemental first-party issuer/disclosure modules for REIT operations, ETF methodology/history, bond coupon/accrual/credit and convertible terms/events where the exchange market-data package does not include them.",
+    "Obtain dated broker-route, cost, tax, tradeability and settlement evidence as a separate UR03 module; exchange market data and disclosure alone cannot close it.",
+    "Only after independent package acceptance may a future team consider a result-blind U0/T2 and replay freeze; UR04 and UR05 remain separate gates."
+  ],
+  "source_references": [
+    {
+      "type": "case_local_primary_official_route_and_terms_documentation",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r3-first-party-route-rights-20260814/manifest.json",
+      "use": "Retained SSE/SSE Information/SZSE historical-data/service and website-terms route boundaries; not a data delivery or rights grant."
+    },
+    {
+      "type": "case_local_primary_official_raw_sample",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-official-multiclass-data-r1-20260814/manifest.json",
+      "use": "Limited current master and retrospective day-k field observations for SSE ETF, REIT and bond examples."
+    },
+    {
+      "type": "case_local_primary_official_raw_sample",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r2-h1-h3-official-readiness-20260814/manifest.json",
+      "use": "Limited SSE REIT NAV/distribution/status/disclosure, ETF PCF/snapshot/disclosure and convertible terms/event observations."
+    },
+    {
+      "type": "case_local_prior_assessment",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r2_h1_h3_official_data_readiness_20260814.json",
+      "use": "Predecessor field/gate boundary; not treated as an independent external source."
+    },
+    {
+      "type": "formal_requirement",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/data_acquisition_contract_20260814.json",
+      "use": "UR01/UR03 acceptance conditions and formal-replay entry conditions."
+    },
+    {
+      "type": "formal_requirement",
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/data/formal_replay_protocol_requirements_20260814.json",
+      "use": "PIT/provenance, event, execution and replay-boundary requirements."
+    }
+  ],
+  "prohibited_inferences": [
+    "Do not infer a data right from a public URL, an HTTP response, an interface document, a price list, a local-deployment feature or an authorization-application page.",
+    "Do not use announcement, appraisal, record, ex-right, trade or local-retrieval date as available_at without a source-defined availability/version record.",
+    "Do not combine partial venue endpoints into a total-return, valuation, candidate, product-admission or execution conclusion.",
+    "No H3 product selection, allocation, holding, trade, order, return or performance statement is authorized by this artifact."
+  ]
+}

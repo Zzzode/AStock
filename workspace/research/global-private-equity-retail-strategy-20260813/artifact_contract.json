@@ -1,0 +1,117 @@
+{
+  "schema_version": "research_artifact_contract.v2",
+  "case_id": "global-private-equity-retail-strategy-20260813",
+  "scope_id": "global-pe-to-china-retail-public-market-framework-v1-20260813",
+  "case_profile": "strategic_allocation",
+  "artifacts": [
+    {
+      "artifact": "research_brief.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "orchestrator",
+      "stage": "Intake",
+      "required_for": "scope freeze",
+      "required_fields": ["decision question", "data cutoff", "manager reference set", "China scope", "q=0 boundary", "non-transferable exclusions"],
+      "minimum_depth": "Separates a transferable public-market process from an allocation or product recommendation.",
+      "blocking_conditions": ["named security inferred", "return promise", "institutional control assumed available"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "scope boundary present"
+    },
+    {
+      "artifact": "data/source_registry.json",
+      "owner_skill": "source-governance",
+      "owner_agent": "source-governance analyst",
+      "stage": "Evidence",
+      "required_for": "claim traceability",
+      "required_fields": ["source id", "authority", "url", "local path", "retrieval date", "checksum", "claim use", "limitation"],
+      "minimum_depth": "Every material manager-process or China-rule claim links to a local first-party archive.",
+      "blocking_conditions": ["manager marketing treated as independent performance proof", "current rule supported only by obsolete material"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "all cited source ids resolve"
+    },
+    {
+      "artifact": "data/strategy_translation_packet_20260813.json",
+      "owner_skill": "equity-research",
+      "owner_agent": "house-view analyst",
+      "stage": "Evidence",
+      "required_for": "strategy mapping",
+      "required_fields": ["institution", "documented method", "economic advantage", "retail transfer class", "retail analogue", "prohibited shortcut", "source ids"],
+      "minimum_depth": "Covers seven managers and explicitly distinguishes high, partial and non-transferable features.",
+      "blocking_conditions": ["copying LBO or private credit", "access advantage called a public signal"],
+      "reviewer_cycle": "R0_evidence",
+      "verifier_check": "seven-manager matrix and evidence linkage"
+    },
+    {
+      "artifact": "data/portfolio_return_model_20260813.json",
+      "owner_skill": "valuation",
+      "owner_agent": "risk modeler",
+      "stage": "Modeling",
+      "required_for": "implementation boundary",
+      "required_fields": ["100 percent active fallback", "no point forecast", "cash measurement", "return measurement", "direct-equity gates", "REIT gates", "risk-budget blocker"],
+      "minimum_depth": "Keeps all named market exposure at zero while showing what evidence would be required for any future activation.",
+      "blocking_conditions": ["historical return called expected return", "nonzero implementation with no investor data", "leverage used to meet an objective"],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "weight and blocker reconciliation"
+    },
+    {
+      "artifact": "analysis/retail_underwriting_scorecard.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "portfolio manager",
+      "stage": "Modeling",
+      "required_for": "personal-process translation",
+      "required_fields": ["business", "cash and balance sheet", "governance", "scenario valuation", "KPI/catalyst", "liquidity", "invalidation"],
+      "minimum_depth": "Provides a five-vote admission test and a public-information monitoring calendar without naming a security.",
+      "blocking_conditions": ["single-multiple valuation", "price-only stop treated as sufficient", "unsupported operating improvement"],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "all scorecard gates visible"
+    },
+    {
+      "artifact": "analysis/risk_framework.md",
+      "owner_skill": "equity-research",
+      "owner_agent": "risk analyst",
+      "stage": "Modeling",
+      "required_for": "China market adaptation",
+      "required_fields": ["settlement", "price-limit/illiquidity", "zero leverage", "concentration", "public REIT risks", "governance escalation", "review cadence"],
+      "minimum_depth": "Explains why position sizing and an evidence-based exit process replace a promise of intraday stop execution.",
+      "blocking_conditions": ["T+0 assumed for ordinary equity disposal", "margin called retail LBO", "yield treated as a safety signal"],
+      "reviewer_cycle": "R1_model",
+      "verifier_check": "market-constraint boundary"
+    },
+    {
+      "artifact": "main.tex",
+      "owner_skill": "research-prose-polish",
+      "owner_agent": "latex writer",
+      "stage": "Draft",
+      "required_for": "reader-facing evidence memo",
+      "required_fields": ["bottom line", "manager matrix", "transferability map", "underwriting checklist", "China constraints", "red team", "sources"],
+      "minimum_depth": "A reader can distinguish a practical method from a manager-specific capability, and can see why no recommendation has been issued.",
+      "blocking_conditions": ["marketing language", "unqualified strategy copying", "missing risk boundary"],
+      "reviewer_cycle": "R2_draft",
+      "verifier_check": "text extraction and section coverage",
+      "active_sections": ["sections/ch01_decision.tex", "sections/ch02_global_methods.tex", "sections/ch03_transferability.tex", "sections/ch04_underwriting_playbook.tex", "sections/ch05_china_constraints.tex", "sections/ch06_monitoring.tex", "sections/ch07_red_team.tex", "sections/app_sources.tex"]
+    },
+    {
+      "artifact": "main.pdf",
+      "owner_skill": "equity-research",
+      "owner_agent": "latex writer",
+      "stage": "Render",
+      "required_for": "release",
+      "required_fields": ["XeLaTeX provenance", "PDF checksum", "page count", "text extraction", "visual review"],
+      "minimum_depth": "The final PDF is reproducible from current XeLaTeX source and has readable Chinese typography.",
+      "blocking_conditions": ["non-XeLaTeX engine", "stale PDF", "unreviewed render"],
+      "reviewer_cycle": "R3_render_compliance",
+      "verifier_check": "source/PDF identity"
+    },
+    {
+      "artifact": "final_signoff.json",
+      "owner_skill": "research-report-review",
+      "owner_agent": "independent reviewer",
+      "stage": "Sign-off",
+      "required_for": "research-framework release",
+      "required_fields": ["framework status", "implementation status", "four blocked gates", "verifier result", "open issue count", "residual risks", "PDF identity"],
+      "minimum_depth": "Permits only a framework pass; it must retain no execution authority.",
+      "blocking_conditions": ["implementation implied", "nonzero q", "open S/A finding"],
+      "reviewer_cycle": "R4_final_ic",
+      "verifier_check": "final lifecycle reconciliation"
+    }
+  ]
+}

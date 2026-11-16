@@ -1,0 +1,83 @@
+{
+  "audit_id": "DPSFS-R12-INDEPENDENT-R11-DISPOSITION-v1",
+  "as_of": "2026-08-15",
+  "audit_status": "PASS",
+  "independence_boundary": "The audit parses R11 and source candidate artifacts directly; it does not import the R11 builder.",
+  "comparison": {
+    "failure_count": 0,
+    "failures": [],
+    "checked_candidate_count": 8
+  },
+  "row_checks": {
+    "C7": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 2
+    },
+    "C8": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 2
+    },
+    "C9": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 1
+    },
+    "C10": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 2
+    },
+    "C11": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 2
+    },
+    "C12": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 2
+    },
+    "C13": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 1
+    },
+    "C14": {
+      "admission_decision": "不准入",
+      "portfolio_q": 0,
+      "source_artifact_count": 2
+    }
+  },
+  "verified_negative_or_blocked_states": {
+    "C7": {
+      "complete_year_below_5pct": 5,
+      "rolling_below_5pct": 1428
+    },
+    "C8": {
+      "complete_year_below_5pct": 2,
+      "rolling_below_5pct": 123
+    },
+    "C9": "NOT_TESTABLE_FOR_RETURN",
+    "C10": {
+      "below_5pct_years": [
+        2022,
+        2025
+      ]
+    },
+    "C11": {
+      "complete_year_below_5pct": 3,
+      "rolling_below_5pct": 204
+    },
+    "C12": "NOT_TESTABLE_FOR_RETURN",
+    "C13": "NOT_TESTABLE_FOR_RETURN",
+    "C14": {
+      "complete_year_below_5pct": 3,
+      "rolling_below_5pct": "40/40"
+    }
+  },
+  "allowed_interpretation": "The audit verifies only that the bounded R11 synthesis correctly retains each candidate's negative diagnostic or feasibility boundary. It does not establish investor total return, future performance, a universal market conclusion, allocation, holding, suitability or external action.",
+  "portfolio_q": 0,
+  "formal_decision_eligible": false
+}

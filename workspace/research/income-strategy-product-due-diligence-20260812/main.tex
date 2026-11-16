@@ -1,0 +1,66 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,openany,fontset=none]{ctexrep}
+
+\newcommand{\reporttitle}{收益目标策略：全产品尽职调查证据备忘录}
+\newcommand{\reportsubtitle}{10 个已命名产品逐项穿透；研究框架通过，实施与配置未获批准}
+\newcommand{\reportkicker}{CROSS-ASSET PRODUCT DUE DILIGENCE}
+\newcommand{\reportscope}{中国交易所交易基金与公募 REIT | 10 个已命名产品}
+\newcommand{\reportdate}{2026年8月12日}
+\newcommand{\reportdatacutoff}{市场：2026-08-12；财务：2025 年报及 2026Q2}
+\newcommand{\reporttype}{策略底层产品尽调 / 证据备忘录}
+\newcommand{\reportauthor}{AStock Research}
+\newcommand{\reporthouseview}{已完成 3 只 ETF 与 7 只公募 REIT 的一级资料产品卡、穿透暴露、历史现金与市场快照核验。结论不是“可以买什么”，而是：现有资料足以识别每一项真实经济暴露与关键缺口，但不足以证明 5\% 总回报或 3\% 净现金目标，也不足以放行任何市场交易产品。所有已命名产品维持 \textbf{q=0 / 仅观察}；两项未命名类别不可被当作已尽调标的。}
+\newcommand{\reportquality}{一级资料：产品法律文件、2025 年报、2026Q2 报告与上交所同日市场快照；Q2 财务均未经审计。卖方资料已穷尽检索，但没有可用的产品级评级、目标或预测锚，估值权重为零。市场快照不含买卖价差、深度、IOPV/NAV 或容量。}
+\newcommand{\reportdisclaimer}{本报告为公开资料研究与监控用途，不构成证券买卖建议、收益承诺或执行指令。}
+
+\input{../../../.agents/templates/preamble.tex}
+
+\hypersetup{
+  pdfauthor={\reportauthor},
+  pdftitle={\reporttitle}
+}
+
+\newcommand{\qzero}{\textbf{\textcolor{riskred}{q=0 / 仅观察}}}
+\newcommand{\blocked}{\textbf{\textcolor{riskred}{未获批准}}}
+\newcommand{\watch}{\textbf{\textcolor{riskamber}{观察清单}}}
+\newcommand{\sourceid}[1]{\evidencetag{#1}}
+
+\begin{document}
+
+\astockcover
+
+\tableofcontents
+\clearpage
+
+\chapter{结论、覆盖范围与当前动作}
+\input{sections/ch01_decision}
+
+\chapter{方法、证据层级与估值边界}
+\input{sections/ch02_method}
+
+\chapter{利率暴露产品：511010 国债 ETF}
+\input{sections/ch03_treasury_etf}
+
+\chapter{权益现金流产品：510880 与 512890}
+\input{sections/ch04_dividend_etfs}
+
+\chapter{公募 REIT：收费公路与社区商业}
+\input{sections/ch05_reits_traffic_consumer}
+
+\chapter{公募 REIT：北京与上海租赁住房}
+\input{sections/ch06_reits_rental}
+
+\chapter{公募 REIT：产业园与国际能源}
+\input{sections/ch07_reits_industrial_energy}
+
+\chapter{组合层现金、重叠风险与实施门禁}
+\input{sections/ch08_portfolio_gate}
+
+\appendix
+\chapter{名词解释}
+\input{sections/app_glossary}
+
+\chapter{来源、审计轨迹与披露}
+\input{sections/app_sources}
+
+\end{document}

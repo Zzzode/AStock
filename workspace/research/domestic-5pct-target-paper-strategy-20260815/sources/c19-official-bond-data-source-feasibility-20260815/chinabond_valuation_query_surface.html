@@ -1,0 +1,1797 @@
+<!DOCTYPE html PUBLIC "-//W3C//Dth XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/Dth/xhtml1-transitional.dth">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script type="text/javascript">
+        var ctx="/cbweb-mn";
+        var ctxStatics="/cbweb-mn/statics";
+ </script>
+
+
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>中国债券信息网-- 中债估值</title>
+    <meta name="keywords" content="中债估值"/>
+    <link rel="stylesheet" type="text/css" href="/cbweb-mn/statics/css/btn.css"/>
+    
+        
+        
+            <link rel="stylesheet" type="text/css" href="/cbweb-mn/statics/css/index_zhai.css" id="css"/>
+        
+    
+
+
+    <script type="text/javascript" src="/cbweb-mn/statics/js/custom/changewidth.js"></script>
+    <script type="text/javascript" src="/cbweb-mn/statics/js/jquery/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            if (!isPC()) {
+                document.getElementById("kzpDiv").style.display = "none";
+            }
+            if (false) {
+                $("#table2").css("width", "7200px");
+            }
+        });
+
+        function switchTable(table1, table2,a,s) {
+            var tab1 = document.getElementById(table1);
+            var tab2 = document.getElementById(table2);
+            var a1 = document.getElementById(a);
+            tab1.style.display = '';
+            tab2.style.display = 'none';
+            a1.href = "javascript:switchTable('" + table2 + "','" + table1 + "','"+a+"','"+s+"')";
+            var s1 = document.getElementById(s);
+            if (s1.innerHTML == "点击查看更多指标") {//点击查看更多指标
+                s1.innerHTML = "简单指标"; //简单指标
+                return;
+            }
+            if (s1.innerHTML == "简单指标") {//简单指标
+                s1.innerHTML = "点击查看更多指标"; //点击查看更多指标
+                return;
+            }
+        }
+
+        //判断访问是否来自PC设备
+        function isPC() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+                return false;
+            } else {
+                return true;
+            }
+        }
+    </script>
+</head>
+
+<body oncontextmenu='return false' ondragstart='return false' onselectstart='return false'
+      onselect='document.selection.empty()' oncopy='document.selection.empty()'>
+
+    <div class="head">
+       <div class="fl topleft2">
+           <div class="logo2">
+            	<span><img src="/cbweb-mn/statics/images/logo.jpg" /></span>
+           </div>
+       </div>
+       <div class="fr topright2">
+           <div class="menu">
+                <div class="fl"><img src="/cbweb-mn/statics/images/top.jpg"/></div>          
+               <div class="funicon">
+                   <ul>
+                       <li>
+							
+
+
+
+	
+		<!-- 中文链接  -->
+		<a href="/cbweb-mn/yield_main?locale=zh_CN" class="m1" title="中债收益率"/></a>
+		<a href="/cbweb-mn/val/val_query_list?locale=zh_CN" class="m2" title="中债估值"/></a>
+		<a href="/cbweb-mn/indices/single_index_query?locale=zh_CN" class="m3" title="中债指数"/></a>
+		<a href="/cbweb-mn/var/var_main?locale=zh_CN" class="m4" title="中债VaR"/></a>
+		
+		
+			<a href="/cbweb-mn/login?locale=zh_CN&place=1" class="m5" title="定制指数"/></a>
+		
+		
+		
+		
+			<a href="/cbweb-mn/login?locale=zh_CN&place=3" class="m7" title="成员估值"/></a>
+		
+		<a href="/cbweb-mn/int/int_main?locale=zh_CN" class="m8" title="编制说明" target="_blank"/></a>
+	
+
+	
+
+	
+
+
+
+
+
+                       </li>
+                   </ul>
+               </div>
+           </div>
+       </div>
+    </div>       
+    <!--头部部分-->
+<input id="locale" type="hidden" value="zh_CN"/>
+
+<!--头部部分-->
+<div class="clear"></div>
+
+<div class="daohangse">
+    <div class="fl">
+        <img src="/cbweb-mn/statics/images/dot4.gif" align="absmiddle"/>
+        当前位置：
+        
+            
+            
+                <a target="_blank" href="http://www.chinabond.com.cn"
+                   style="text-decoration: none;color:#666;">中国债券信息网</a>
+            
+        
+
+        -- <a href="/cbweb-mn/val/val_query_list?locale=zh_CN"
+              style="text-decoration: none;color:#666;">中债估值</a>
+    </div>
+
+    <div id="kzpDiv" class="fr qh" style="line-height:-1px; margin-top: -2px;">
+        <a onclick="widthauto()" id="switchwidth" class="switchwidthzhai" href="javascript:;"
+           title="切换到宽版">
+            <img src="/cbweb-mn/statics/images/switch_width.png" align="absmiddle"/></a>
+    </div>
+
+    <div class="fr qh" style="margin-top: -2px;">
+        
+            
+            
+                <input class="lButton blue medium btn" type="button" id="mybutton" value="English"
+                       onclick="window.location = '../val/val_query_list?locale=en_US'"/>
+            
+        
+    </div>
+
+    <div class="clear"></div>
+</div>
+<!--导航-->
+<div class="sewidth">
+    <div class="mar5" style="margin-bottom:20px;margin-top:20px;">
+        <center>
+            <img src="/cbweb-mn/statics/images/upload18.jpg" align="absmiddle"/>&nbsp;
+            <span class="uptitle"><!-- 中债估值 -->中债估值</span>
+        </center>
+    </div>
+    <div class="zhibiao"><img src="/cbweb-mn/statics/images/upload19.jpg" align="absmiddle"/>
+        <a id="a1" href="javascript:switchTable('div_tab','table1','a1','s1')">
+            <span id="s1">点击查看更多指标</span>
+        </a>
+    </div>
+
+    <div class="mar5">
+        <!--表格-->
+        <table id="table1" border="0" cellspacing="1" cellpadding="0" class="table1">
+            <tr>
+                <th width="8%"><!-- 估值日期 -->估值日期</th>
+                <th width="11%"><!--债券简称-->债券简称</th>
+                <th width="7%"><!--债券代码-->债券代码</th>
+                <th width="14%"><!--流通场所-->流通场所</th>
+                <th width="8%"><!--待偿期（年）-->待偿期(年)</th>
+                <th width="11%"><!--日间估价全价（元）-->日间估价全价(元)</th>
+                <th width="12%"><!--日间应计利息（元）-->日间应计利息(元)</th>
+                <th width="9%"><!--估价净价（元）-->估价净价(元)</th>
+                <th width="9%"><!--估值收益率（%）-->估价收益率(%)</th>
+                <th width="11%"><!--中债市场隐含评级-->中债市场隐含评级-债券债项评级</th>
+            </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>03三峡债</td>
+                    <!-- 债券代码 -->
+                    <td>038006</td>
+                    <!-- 流通场所 -->
+                    <td>银行间债券市场</td>
+                    <!-- 代偿期 -->
+                    <td>6.9644</td>
+                    <!-- 日间估价全价 -->
+                    <td>119.4417</td>
+                    <!-- 日间应计利息 -->
+                    <td>0.1731</td>
+                    <!-- 估价净价 -->
+                    <td>119.2686</td>
+                    <!-- 估价收益率 -->
+                    <td>1.8818</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AAA</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>01国开21</td>
+                    <!-- 债券代码 -->
+                    <td>010221</td>
+                    <!-- 流通场所 -->
+                    <td>柜台</td>
+                    <!-- 代偿期 -->
+                    <td>5.4137</td>
+                    <!-- 日间估价全价 -->
+                    <td>115.5716</td>
+                    <!-- 日间应计利息 -->
+                    <td>0.4053</td>
+                    <!-- 估价净价 -->
+                    <td>115.1663</td>
+                    <!-- 估价收益率 -->
+                    <td>1.5837</td>
+                    <!--中债市场隐含评级 -->
+                    <td></td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>25新余城建CP001</td>
+                    <!-- 债券代码 -->
+                    <td>042500106</td>
+                    <!-- 流通场所 -->
+                    <td>银行间债券市场</td>
+                    <!-- 代偿期 -->
+                    <td>0.0027</td>
+                    <!-- 日间估价全价 -->
+                    <td>101.8768</td>
+                    <!-- 日间应计利息 -->
+                    <td>1.8848</td>
+                    <!-- 估价净价 -->
+                    <td>99.9920</td>
+                    <!-- 估价收益率 -->
+                    <td>1.5748</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AA(2)</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>17招路02</td>
+                    <!-- 债券代码 -->
+                    <td>112563</td>
+                    <!-- 流通场所 -->
+                    <td>深交所</td>
+                    <!-- 代偿期 -->
+                    <td>0.9808</td>
+                    <!-- 日间估价全价 -->
+                    <td>103.4164</td>
+                    <!-- 日间应计利息 -->
+                    <td>0.0955</td>
+                    <!-- 估价净价 -->
+                    <td>103.3209</td>
+                    <!-- 估价收益率 -->
+                    <td>1.5329</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AAA-</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>02国债05</td>
+                    <!-- 债券代码 -->
+                    <td>020005</td>
+                    <!-- 流通场所 -->
+                    <td>银行间债券市场</td>
+                    <!-- 代偿期 -->
+                    <td>5.7753</td>
+                    <!-- 日间估价全价 -->
+                    <td>109.0688</td>
+                    <!-- 日间应计利息 -->
+                    <td>0.6462</td>
+                    <!-- 估价净价 -->
+                    <td>108.4226</td>
+                    <!-- 估价收益率 -->
+                    <td>1.3780</td>
+                    <!--中债市场隐含评级 -->
+                    <td></td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>07豫投债2</td>
+                    <!-- 债券代码 -->
+                    <td>078012</td>
+                    <!-- 流通场所 -->
+                    <td>柜台</td>
+                    <!-- 代偿期 -->
+                    <td>0.7562</td>
+                    <!-- 日间估价全价 -->
+                    <td>103.4213</td>
+                    <!-- 日间应计利息 -->
+                    <td>1.1265</td>
+                    <!-- 估价净价 -->
+                    <td>102.2948</td>
+                    <!-- 估价收益率 -->
+                    <td>1.5327</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AAA</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>25工商银行CD242</td>
+                    <!-- 债券代码 -->
+                    <td>112502242</td>
+                    <!-- 流通场所 -->
+                    <td>银行间债券市场</td>
+                    <!-- 代偿期 -->
+                    <td>0.0110</td>
+                    <!-- 日间估价全价 -->
+                    <td>99.9850</td>
+                    <!-- 日间应计利息 -->
+                    <td>1.5863</td>
+                    <!-- 估价净价 -->
+                    <td>98.3987</td>
+                    <!-- 估价收益率 -->
+                    <td>1.3650</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AAA</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>13青国投MTN001</td>
+                    <!-- 债券代码 -->
+                    <td>101354012</td>
+                    <!-- 流通场所 -->
+                    <td>银行间债券市场</td>
+                    <!-- 代偿期 -->
+                    <td>2.0000</td>
+                    <!-- 日间估价全价 -->
+                    <td>107.8430</td>
+                    <!-- 日间应计利息 -->
+                    <td>0.0000</td>
+                    <!-- 估价净价 -->
+                    <td>107.8430</td>
+                    <!-- 估价收益率 -->
+                    <td>2.3214</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AA-</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>23浙江01</td>
+                    <!-- 债券代码 -->
+                    <td>101900</td>
+                    <!-- 流通场所 -->
+                    <td>上交所</td>
+                    <!-- 代偿期 -->
+                    <td>3.5014</td>
+                    <!-- 日间估价全价 -->
+                    <td>106.9912</td>
+                    <!-- 日间应计利息 -->
+                    <td>1.4809</td>
+                    <!-- 估价净价 -->
+                    <td>105.5103</td>
+                    <!-- 估价收益率 -->
+                    <td>1.3468</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AAA+</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 债券简称 -->
+                    <td>16沂南城建PPN001</td>
+                    <!-- 债券代码 -->
+                    <td>031695001</td>
+                    <!-- 流通场所 -->
+                    <td>银行间债券市场</td>
+                    <!-- 代偿期 -->
+                    <td>0.3589</td>
+                    <!-- 日间估价全价 -->
+                    <td>25.7762</td>
+                    <!-- 日间应计利息 -->
+                    <td>0.6010</td>
+                    <!-- 估价净价 -->
+                    <td>25.1752</td>
+                    <!-- 估价收益率 -->
+                    <td>1.7430</td>
+                    <!--中债市场隐含评级 -->
+                    <td>AA</td>
+                </tr>
+            
+        </table>
+        <div id="div_tab" style="display:none" class="tablediv2">
+            <table id="table2" border="0" cellspacing="1" cellpadding="0" class="table1"
+                   style="width:4200px;margin-top:0px;">
+                <tr>
+                    <th><!-- 估值日期 -->估值日期</th>
+                    <th><!--债券简称-->债券简称</th>
+                    <th><!--债券代码-->债券代码</th>
+                    <th><!--债券性质-->债券性质</th>
+                    <th><!--流通场所-->流通场所</th>
+                    <th><!--待偿期（年）-->待偿期(年)</th>
+                    <th><!--日间估价全价（元）-->日间估价全价(元)</th>
+                    <th><!--日间应计利息（元）-->日间应计利息(元)</th>
+                    <th><!--估价净价（元）-->估价净价(元)</th>
+                    <th><!--估值收益率（%）-->估价收益率(%)</th>
+                    <th><!--估价修正久期-->估价修正久期</th>
+                    <th><!--估价凸性-->估价凸性</th>
+                    <th><!--估价基点价值-->估价基点价值</th>
+                    <th><!--估价利差久期-->估价利差久期</th>
+                    <th><!--估价利差凸性-->估价利差凸性</th>
+                    <th><!--加权平均<br>结算全价(元)-->加权平均结算全价（元）</th>
+                    <th><!--加权平均<br>结算净价(元)-->加权平均结算净价(元）</th>
+                    <th><!--加权平均<br>结算价收益率(％)-->加权平均结算价收益率(％)</th>
+                    <th><!--加权平均<br>结算价修正久期-->加权平均结算价修正久期</th>
+                    <th><!--加权平均<br>结算价凸性-->加权平均结算价凸性</th>
+                    <th><!--加权平均<br>结算价基点价值-->加权平均结算价基点价值</th>
+                    <th><!--加权平均<br>结算价利差久期-->加权平均结算价利差久期</th>
+                    <th><!--加权平均<br>结算价利差凸性-->加权平均结算价利差凸性</th>
+                    <th><!--可信度-->可信度</th>
+                    <th><!--估价利率久期-->估价利率久期</th>
+                    <th><!--估价利率凸性-->估价利率凸性</th>
+                    <th><!--加权平均<br>结算价利率久期-->加权平均结算价利率久期</th>
+                    <th><!--加权平均<br>结算价利率凸性-->加权平均结算价利率凸性</th>
+                    <th><!--日终估价<br>全价(元)-->日终估价全价(元)</th>
+                    <th><!--日终应计利息(元)-->日终应计利息(元)</th>
+                    <th><!--剩余本金(元)-->剩余本金(元)</th>
+                    <th><!--点差收益率(％)-->点差收益率(%)</th>
+                    <th><!--绝对流动性系数-->绝对流动性系数</th>
+                    <th><!--位置百分比-->位置百分比</th>
+                    <th><!--相对流动性系数-->相对流动性系数</th>
+                    <th><!--相对流动性取值-->相对流动性取值</th>
+                    <th><!--中债市场隐含评级-->中债市场隐含评级-债券债项评级</th>
+                    <th><!--ISIN码-->ISIN代码</th>
+                </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>03三峡债</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>038006</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>中央企业债</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>银行间债券市场</td>
+                        <!-- 代偿期 -->
+                        <td>6.9644</td>
+                        <!-- 日间估价全价 -->
+                        <td>119.4417</td>
+                        <!-- 日间应计利息 -->
+                        <td>0.1731</td>
+                        <!-- 估价净价 -->
+                        <td>119.2686</td>
+                        <!-- 估价收益率 -->
+                        <td>1.8818</td>
+                        <!-- 估价修正久期 -->
+                        <td>6.04</td>
+                        <!-- 估价凸性 -->
+                        <td>45.16</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0721</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>119.4550</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>0.1864</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AAA</td>
+                        <!-- ISIN码 -->
+                        <td>CND0000004T5</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>01国开21</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>010221</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>政策性银行普通债券</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>柜台</td>
+                        <!-- 代偿期 -->
+                        <td>5.4137</td>
+                        <!-- 日间估价全价 -->
+                        <td>115.5716</td>
+                        <!-- 日间应计利息 -->
+                        <td>0.4053</td>
+                        <!-- 估价净价 -->
+                        <td>115.1663</td>
+                        <!-- 估价收益率 -->
+                        <td>1.5837</td>
+                        <!-- 估价修正久期 -->
+                        <td>4.85</td>
+                        <!-- 估价凸性 -->
+                        <td>27.47</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0561</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>115.5839</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>0.4176</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td></td>
+                        <!-- ISIN码 -->
+                        <td>CND0000002K8</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>25新余城建CP001</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>042500106</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>短期融资券（CP）</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>银行间债券市场</td>
+                        <!-- 代偿期 -->
+                        <td>0.0027</td>
+                        <!-- 日间估价全价 -->
+                        <td>101.8768</td>
+                        <!-- 日间应计利息 -->
+                        <td>1.8848</td>
+                        <!-- 估价净价 -->
+                        <td>99.9920</td>
+                        <!-- 估价收益率 -->
+                        <td>1.5748</td>
+                        <!-- 估价修正久期 -->
+                        <td>0.01</td>
+                        <!-- 估价凸性 -->
+                        <td>0.00</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0001</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>101.8820</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>1.8900</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AA(2)</td>
+                        <!-- ISIN码 -->
+                        <td>CND10009MJQ2</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>17招路02</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>112563</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>公开发行公司债券</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>深交所</td>
+                        <!-- 代偿期 -->
+                        <td>0.9808</td>
+                        <!-- 日间估价全价 -->
+                        <td>103.4164</td>
+                        <!-- 日间应计利息 -->
+                        <td>0.0955</td>
+                        <!-- 估价净价 -->
+                        <td>103.3209</td>
+                        <!-- 估价收益率 -->
+                        <td>1.5329</td>
+                        <!-- 估价修正久期 -->
+                        <td>0.97</td>
+                        <!-- 估价凸性 -->
+                        <td>1.89</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0100</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>103.4301</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>0.1092</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AAA-</td>
+                        <!-- ISIN码 -->
+                        <td></td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>02国债05</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>020005</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>记账式国债</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>银行间债券市场</td>
+                        <!-- 代偿期 -->
+                        <td>5.7753</td>
+                        <!-- 日间估价全价 -->
+                        <td>109.0688</td>
+                        <!-- 日间应计利息 -->
+                        <td>0.6462</td>
+                        <!-- 估价净价 -->
+                        <td>108.4226</td>
+                        <!-- 估价收益率 -->
+                        <td>1.3780</td>
+                        <!-- 估价修正久期 -->
+                        <td>5.31</td>
+                        <!-- 估价凸性 -->
+                        <td>32.32</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0580</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>109.0767</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>0.6541</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td></td>
+                        <!-- ISIN码 -->
+                        <td>CND0000002T9</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>07豫投债2</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>078012</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>地方企业债</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>柜台</td>
+                        <!-- 代偿期 -->
+                        <td>0.7562</td>
+                        <!-- 日间估价全价 -->
+                        <td>103.4213</td>
+                        <!-- 日间应计利息 -->
+                        <td>1.1265</td>
+                        <!-- 估价净价 -->
+                        <td>102.2948</td>
+                        <!-- 估价收益率 -->
+                        <td>1.5327</td>
+                        <!-- 估价修正久期 -->
+                        <td>0.75</td>
+                        <!-- 估价凸性 -->
+                        <td>1.12</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0077</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>103.4340</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>1.1392</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AAA</td>
+                        <!-- ISIN码 -->
+                        <td>CND100000JJ9</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>25工商银行CD242</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>112502242</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>同业存单</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>银行间债券市场</td>
+                        <!-- 代偿期 -->
+                        <td>0.0110</td>
+                        <!-- 日间估价全价 -->
+                        <td>99.9850</td>
+                        <!-- 日间应计利息 -->
+                        <td>1.5863</td>
+                        <!-- 估价净价 -->
+                        <td>98.3987</td>
+                        <!-- 估价收益率 -->
+                        <td>1.3650</td>
+                        <!-- 估价修正久期 -->
+                        <td>0.01</td>
+                        <!-- 估价凸性 -->
+                        <td>0.00</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0001</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>99.9894</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>1.5907</td>
+                        <!-- 剩余本金(元)-->
+                        <td>98.3961</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AAA</td>
+                        <!-- ISIN码 -->
+                        <td>CND10009N1Y0</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>13青国投MTN001</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>101354012</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>中期票据（MTN）</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>银行间债券市场</td>
+                        <!-- 代偿期 -->
+                        <td>2.0000</td>
+                        <!-- 日间估价全价 -->
+                        <td>107.8430</td>
+                        <!-- 日间应计利息 -->
+                        <td>0.0000</td>
+                        <!-- 估价净价 -->
+                        <td>107.8430</td>
+                        <!-- 估价收益率 -->
+                        <td>2.3214</td>
+                        <!-- 估价修正久期 -->
+                        <td>1.90</td>
+                        <!-- 估价凸性 -->
+                        <td>5.51</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0205</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>107.8604</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>0.0175</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AA-</td>
+                        <!-- ISIN码 -->
+                        <td>CND100011881</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>23浙江01</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>101900</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>地方政府债</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>上交所</td>
+                        <!-- 代偿期 -->
+                        <td>3.5014</td>
+                        <!-- 日间估价全价 -->
+                        <td>106.9912</td>
+                        <!-- 日间应计利息 -->
+                        <td>1.4809</td>
+                        <!-- 估价净价 -->
+                        <td>105.5103</td>
+                        <!-- 估价收益率 -->
+                        <td>1.3468</td>
+                        <!-- 估价修正久期 -->
+                        <td>3.29</td>
+                        <!-- 估价凸性 -->
+                        <td>14.44</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0352</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>106.9994</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>1.4891</td>
+                        <!-- 剩余本金(元)-->
+                        <td>100.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AAA+</td>
+                        <!-- ISIN码 -->
+                        <td>CND100063JB4</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 债券简称 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>16沂南城建PPN001</td>
+                        <!-- 债券代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>031695001</td>
+                        <!-- 债券性质 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>非公开定向债务融资工具（PPN）</td>
+                        <!-- 流通场所 -->
+                        <td nowrap>银行间债券市场</td>
+                        <!-- 代偿期 -->
+                        <td>0.3589</td>
+                        <!-- 日间估价全价 -->
+                        <td>25.7762</td>
+                        <!-- 日间应计利息 -->
+                        <td>0.6010</td>
+                        <!-- 估价净价 -->
+                        <td>25.1752</td>
+                        <!-- 估价收益率 -->
+                        <td>1.7430</td>
+                        <!-- 估价修正久期 -->
+                        <td>0.36</td>
+                        <!-- 估价凸性 -->
+                        <td>0.25</td>
+                        <!-- 估价基点价值 -->
+                        <td>0.0009</td>
+                        <!-- 估价利差久期 -->
+                        <td></td>
+                        <!--估价利差凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算全价(元) -->
+                        <td></td>
+                        <!-- 加权平均结算净价(元) -->
+                        <td></td>
+                        <!--加权平均结算价收益率(％) -->
+                        <td></td>
+                        <!-- 加权平均结算价修正久期 -->
+                        <td></td>
+                        <!--加权平均结算价凸性 -->
+                        <td></td>
+                        <!-- 加权平均结算价基点价值-->
+                        <td></td>
+                        <!-- 加权平均结算价利差久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利差凸性-->
+                        <td></td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                        <!-- 估价利率久期-->
+                        <td></td>
+                        <!-- 估价利率凸性-->
+                        <td></td>
+                        <!-- 加权平均结算价利率久期 -->
+                        <td></td>
+                        <!-- 加权平均结算价利率凸性 -->
+                        <td></td>
+                        <!-- 日终估价全价(元)-->
+                        <td>25.7788</td>
+                        <!-- 日终应计利息(元) -->
+                        <td>0.6036</td>
+                        <!-- 剩余本金(元)-->
+                        <td>25.0000</td>
+                        <!-- 点差收益率(％)-->
+                        <td></td>
+                        <!-- 绝对流动性系数-->
+                        <td></td>
+                        <!--位置百分比-->
+                        <td></td>
+                        <!-- 相对流动性系数 -->
+                        <td></td>
+                        <!-- 相对流动性取值-->
+                        <td></td>
+                        <!-- 中债市场隐含评级 -->
+                        <td>AA</td>
+                        <!-- ISIN码 -->
+                        <td>CND100013TG7</td>
+                    </tr>
+                
+            </table>
+        </div>
+    </div>
+    <br><br>
+    <div class="clear"></div>
+</div>
+
+<!--中保登估值-->
+<div class="sewidth">
+    <div class="mar5" style="margin-bottom:20px;margin-top:20px;">
+        <center>
+            <img src="/cbweb-mn/statics/images/upload18.jpg" align="absmiddle"/>&nbsp;
+            <span class="uptitle"><!-- 中债-中保登保险资产管理产品估值 -->中债-中保登保险资产管理产品估值</span>
+        </center>
+    </div>
+    <div class="zhibiao"><img src="/cbweb-mn/statics/images/upload19.jpg" align="absmiddle"/>
+        <a id="zbd_a" href="javascript:switchTable('zbd_div_tab','zbd_table1','zbd_a','zbd_s')">
+            <span id="zbd_s">点击查看更多指标</span>
+        </a>
+    </div>
+
+    <div class="mar5">
+        <!--表格-->
+        <table id="zbd_table1" border="0" cellspacing="1" cellpadding="0" class="table1">
+            <tr>
+                <th width="10%"><!-- 估值日期 -->估值日期</th>
+                <th width="12%"><!--资产代码-->资产代码</th>
+                <th width="10%"><!--待偿期(年)-->待偿期(年)</th>
+                <th width="15%"><!--日间估价全价（元/百元）-->日间估价全价（元/百元）</th>
+                <th width="15%"><!--日间应计利息（元/百元）-->日间应计利息（元/百元）</th>
+                <th width="15%"><!--估价净价（元/百元）-->估价净价（元/百元）</th>
+                <th width="13%"><!--估值收益率（%）-->估价收益率(%)</th>
+                <th width="10%"><!--可信度-->可信度</th>
+            </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10914000146</td>
+                    <!-- 待偿期(年) -->
+                    <td>3.1753</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>112.0722</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.7700</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>111.3022</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.6257</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10914000199</td>
+                    <!-- 待偿期(年) -->
+                    <td></td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>103.0664</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.5405</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>102.5259</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.3582</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10915000010</td>
+                    <!-- 待偿期(年) -->
+                    <td>4.3644</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>112.2846</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.7357</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>111.5489</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.6945</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10915000010</td>
+                    <!-- 待偿期(年) -->
+                    <td>9.3644</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>127.4073</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.7357</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>126.6717</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.4597</td>
+                    <!--可信度 -->
+                    <td></td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10915000020</td>
+                    <!-- 待偿期(年) -->
+                    <td>3.5863</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>114.0356</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.8400</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>113.1956</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.6558</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10916000014</td>
+                    <!-- 待偿期(年) -->
+                    <td>0.2219</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>100.6308</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.1389</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>100.4919</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.7961</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10916000015</td>
+                    <!-- 待偿期(年) -->
+                    <td>0.2438</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>43.5762</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.0120</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>43.5642</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.7982</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10916000016</td>
+                    <!-- 待偿期(年) -->
+                    <td>0.3589</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>101.4606</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.6888</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>100.7718</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.7873</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10916000016</td>
+                    <!-- 待偿期(年) -->
+                    <td>5.3589</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>116.9793</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.6888</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>116.2905</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.1857</td>
+                    <!--可信度 -->
+                    <td></td>
+                </tr>
+            
+                <tr>
+                    <!-- 估值日期 -->
+                    <td>2026-08-14</td>
+                    <!-- 资产代码 -->
+                    <td>10916000017</td>
+                    <!-- 待偿期(年) -->
+                    <td>0.3589</td>
+                    <!-- 日间估价全价（元/百元） -->
+                    <td>101.4606</td>
+                    <!-- 日间应计利息（元/百元） -->
+                    <td>0.6888</td>                    
+                    <!-- 估价净价（元/百元） -->
+                    <td>100.7718</td>
+                    <!-- 估值收益率（%） -->
+                    <td>2.7873</td>
+                    <!--可信度 -->
+                    <td>推荐</td>
+                </tr>
+            
+        </table>
+        <div id="zbd_div_tab" style="display:none" class="tablediv2">
+            <table id="zbd_table2" border="0" cellspacing="1" cellpadding="0" class="table1"
+                   style="width:1200px;margin-top:0px;">
+                <tr>
+                    <th><!--估值日期-->估值日期</th>
+                    <th><!--资产代码-->资产代码</th>
+                    <th><!--待偿期(年)-->待偿期(年)</th>
+                    <th><!--日间估价全价（元/百元）-->日间估价全价（元/百元）</th>
+                    <th><!--日间应计利息（元/百元）-->日间应计利息（元/百元）</th>
+                    <th><!--估价净价（元/百元）-->估价净价（元/百元）</th>                    
+                    <th><!--估价收益率（%）-->估价收益率(%)</th>
+                    <th><!--日终估价全价（元/百元）-->日终估价全价（元/百元）</th>
+                    <th><!--日终应计利息（元/百元）-->日终应计利息（元/百元）</th>
+                    <th><!--可信度-->可信度</th>
+                </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10914000146</td>
+                        <!-- 待偿期(年) -->
+                        <td>3.1753</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>112.0722</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.7700</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>111.3022</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.6257</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>112.0897</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.7875</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10914000199</td>
+                        <!-- 待偿期(年) -->
+                        <td></td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>103.0664</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.5405</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>102.5259</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.3582</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>103.0792</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.5534</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10915000010</td>
+                        <!-- 待偿期(年) -->
+                        <td>4.3644</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>112.2846</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.7357</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>111.5489</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.6945</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>112.2996</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.7507</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10915000010</td>
+                        <!-- 待偿期(年) -->
+                        <td>9.3644</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>127.4073</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.7357</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>126.6717</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.4597</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>127.4223</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.7507</td>
+                        <!-- 可信度 -->
+                        <td></td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10915000020</td>
+                        <!-- 待偿期(年) -->
+                        <td>3.5863</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>114.0356</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.8400</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>113.1956</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.6558</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>114.0511</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.8556</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10916000014</td>
+                        <!-- 待偿期(年) -->
+                        <td>0.2219</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>100.6308</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.1389</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>100.4919</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.7961</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>100.6447</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.1528</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10916000015</td>
+                        <!-- 待偿期(年) -->
+                        <td>0.2438</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>43.5762</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.0120</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>43.5642</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.7982</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>43.5822</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.0181</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10916000016</td>
+                        <!-- 待偿期(年) -->
+                        <td>0.3589</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>101.4606</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.6888</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>100.7718</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.7873</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>101.4741</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.7024</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10916000016</td>
+                        <!-- 待偿期(年) -->
+                        <td>5.3589</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>116.9793</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.6888</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>116.2905</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.1857</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>116.9928</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.7024</td>
+                        <!-- 可信度 -->
+                        <td></td>
+                    </tr>
+                
+                    <tr>
+                        <!-- 估值日期 -->
+                        <td nowrap>2026-08-14</td>
+                        <!-- 资产代码 -->
+                        <td align="center" bgcolor="#FFFFFF" nowrap>10916000017</td>
+                        <!-- 待偿期(年) -->
+                        <td>0.3589</td>
+                        <!-- 日间估价全价（元/百元） -->
+                        <td>101.4606</td>
+                        <!-- 日间应计利息（元/百元）-->
+                        <td>0.6888</td>
+                        <!-- 估价净价（元/百元） -->
+                        <td>100.7718</td>
+                        <!-- 估值收益率（%） -->
+                        <td>2.7873</td>
+                        <!-- 日终估价全价（元/百元） -->
+                        <td>101.4741</td>
+                        <!--日终应计利息（元/百元） -->
+                        <td>0.7024</td>
+                        <!-- 可信度 -->
+                        <td>推荐</td>
+                    </tr>
+                
+            </table>
+        </div>
+    </div>
+	<div class="zhibiao" style="float:left;text-align:left">
+		<span >中债金融估值中心和中保登联合发布中债-中保登保险资产管理产品估值。</span>
+	</div>
+
+    <div class="clear"></div>
+    <br><br><br><br>
+    
+        <div class="note">
+            <div class="notet1">法律说明</div>
+            <div class="notet2" align="left">任何机构或者个人如需使用中债信息产品开发演绎产品，或者使用中债指数数据作为业绩比较基准，开发被动投资产品、ETF产品和衍生产品，需向中债估值中心提出书面申请。申请联系方式：010-88170470/0475/dataservice@chinabond.com.cn&nbsp;</div>
+        </div>
+    
+    <div class="note">
+        <div class="notet1"><!-- 使用说明 -->使用说明</div>
+        <div class="notet2" style="margin-top:4px;">1.估值组联系电话: 010-88174538/4537/0640  质量控制部联系电话:021-60813561、021-60813562、010-88174536、010-88174551、010-88174712
+2.更多明细数据请点击&ldquo;中债数据-产品下载-数据获取介绍&rdquo;查看。如需更多信息，请联系客服电话：400-898-8989；邮箱dataservice@ccdc.com.cn
+3.建议使用Internet Explorer 11浏览器或者Google Chrome浏览器进行浏览&nbsp;</div>
+    </div>
+    <!--使用说明-->
+</div>
+<div class="clear"></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script type="text/javascript">
+        var ctx="/cbweb-mn";
+        var ctxStatics="/cbweb-mn/statics";
+ </script>
+
+
+
+    <!--内容部分-->
+    <div class="foot" id="foot">
+	    <!-- 地址：北京市西城区金融大街10号 邮编：100033 网站编辑：010-88170605 -->地址：北京市西城区金融大街10号 邮编：100033 网站编辑：010-88170605<br />
+	    <!-- 中央国债登记结算有限责任公司 版权所有 未经允许 请勿转载 1998-2013 京ICP证030355号 -->中央国债登记结算有限责任公司 版权所有 未经允许 请勿转载 1998-2013 京ICP证030355号
+    </div>
+    <!--底部部分-->
+</body>
+</html>

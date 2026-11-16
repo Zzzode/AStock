@@ -1,0 +1,76 @@
+{
+  "schema_version": "c33_forward_paper_ledger_template.v1",
+  "artifact_id": "D5PT-C33-FORWARD-PAPER-LEDGER-TEMPLATE-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "status": "template_only_no_observations",
+  "purpose": "Six consecutive monthly forward paper observations after a frozen C33 candidate strategy and independent review.",
+  "research_only": true,
+  "external_orders": false,
+  "portfolio_q": 0,
+  "minimum_observation_months": 6,
+  "record_schema": {
+    "period_id": "YYYY-MM",
+    "rule_version": "frozen C33 strategy version and SHA-256",
+    "signal_timestamp": "ISO 8601 with Asia/Shanghai offset after the final common-session close",
+    "source_inputs": [
+      {
+        "instrument": "string",
+        "field": "signal price or eligibility input",
+        "value": null,
+        "source": "string",
+        "source_timestamp": "ISO 8601",
+        "source_hash": "SHA-256"
+      }
+    ],
+    "signal_result": {
+      "eligible_sleeves": [],
+      "target_weights": {},
+      "calculation_hash": "SHA-256"
+    },
+    "earliest_action_timestamp": "ISO 8601; never signal-session execution",
+    "pre_action_checks": {
+      "product_terms_current": false,
+      "trading_status_verified": false,
+      "account_permission_verified": false,
+      "lot_and_tick_verified": false,
+      "settlement_verified": false,
+      "quote_verified": false,
+      "iopv_verified_when_applicable": false,
+      "fee_and_tax_verified": false
+    },
+    "paper_execution": [
+      {
+        "instrument": "string",
+        "action": "buy | sell | hold | no_action",
+        "target_weight": null,
+        "requested_units": null,
+        "rounded_units": null,
+        "limit_price": null,
+        "quote_timestamp": null,
+        "fill_status": "not_recorded | filled | partial | not_filled | no_action",
+        "reason": "string"
+      }
+    ],
+    "fees_and_settlement": {
+      "documented_fee": null,
+      "tax": null,
+      "funds_or_units_available_timestamp": null,
+      "exception": null
+    },
+    "reconciliation": {
+      "period_end_state": {},
+      "exceptions_open": [],
+      "reviewer": null,
+      "review_timestamp": null,
+      "reconciled": false
+    }
+  },
+  "admission_rules": [
+    "A missing required field produces no_action for the affected planned action.",
+    "A target weight is not a fill and cannot be booked as a holding without an explicit fill record.",
+    "No substitute instrument, inferred quote, reconstructed fee, or same-session execution is permitted.",
+    "An unreconciled month does not count toward the six-month forward observation requirement."
+  ],
+  "boundary": "This template does not provide a return result, eligibility finding, product admission, or external investment action."
+}

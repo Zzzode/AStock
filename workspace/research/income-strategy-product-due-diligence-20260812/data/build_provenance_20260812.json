@@ -1,0 +1,36 @@
+{
+  "schema_version": "research_build_provenance.v1",
+  "case_id": "income-strategy-product-due-diligence-20260812",
+  "build_status": "final_release_candidate",
+  "host_os": "Linux",
+  "engine": "XeLaTeX",
+  "xelatex_executable": "/usr/bin/xelatex",
+  "xelatex_version": "XeTeX 3.141592653-2.6-0.999994; TeX Live 2022/Debian",
+  "resolved_cjk_font": "Noto Serif CJK SC",
+  "build_command": "xelatex -interaction=nonstopmode -halt-on-error main.tex (two passes)",
+  "source_path": "workspace/research/income-strategy-product-due-diligence-20260812/main.tex",
+  "pdf_path": "workspace/research/income-strategy-product-due-diligence-20260812/main.pdf",
+  "source_sha256": "20ad4e615c5d60c7a432c0a5ce3bf9ad3f3ffacffdf0c4f6e14469c32417260a",
+  "pdf_sha256": "c5de7442f7806660c1a8ef07adc0fe6a1079f8399078df8dd751bded2474c55f",
+  "pdf_creation_date": "Wed Aug 12 19:04:56 2026 CST",
+  "page_count": 22,
+  "page_size": "A4 (595.28 x 841.89 points)",
+  "text_extraction": "data/main_text_20260812.txt and main_current_text.txt generated using pdftotext -layout",
+  "render_directory": "rendered/full-20260812-1910",
+  "diagnostics": {
+    "fatal_errors": 0,
+    "material_overfull_hbox": 0,
+    "non_material_diagnostics": [
+      "The final two-pass 22-page build has no overfull hbox diagnostics.",
+      "Noto Serif CJK SC has no italic shape; XeLaTeX substituted upright CJK in one emphatic category label without affecting readability."
+    ]
+  },
+  "data_cutoff": "2026-08-12",
+  "implementation_status": "NOT_APPROVED",
+  "warning": "This provenance describes a research-only evidence memo. It does not authorize live execution. It must be refreshed after any subsequent source edit or PDF rebuild.",
+  "release_notes": [
+    "The reader-facing 508080 historical price/NAV diagnostic is -11.99%, reconciled to the valuation-control packet.",
+    "The final source adds three non-predictive, evidence-labelled visuals: economic exposure, eight implementation gates, and date/field mismatch.",
+    "The final reader-facing compliance boundary is Chinese-language and states that objectives are not guaranteed and implementation is not approved or authorized."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "cycle": "R1_model",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "reviewed_at": "2026-08-14T02:00:00+08:00",
+  "reviewer": "valuation-risk-and-performance-model-check",
+  "findings": [
+    {
+      "issue_id": "R1-S-001",
+      "severity": "S",
+      "status": "resolved",
+      "artifact": "data/portfolio_return_model_20260812.json; data/return_evidence_20260812.json; sections/ch01_decision.tex; sections/ch02_cash_mechanics.tex",
+      "evidence": "The prior dual-target framing could be read as a separate income requirement beside total return.",
+      "fix_required": "Retain one conditional rolling five-year, cost-aware 5% TWRR objective and remove every cash-receipt threshold, coverage test, hit rate and repair rule.",
+      "resolution": "The active model records settled distributions once within total return, separately flags capital-repayment-like components, reports TWRR and MWRR/XIRR, and leaves retention, withdrawal or no action to the investor without automatic deployment."
+    },
+    {
+      "issue_id": "R1-S-002",
+      "severity": "S",
+      "status": "resolved_at_research_framework_scope",
+      "artifact": "data/return_evidence_20260812.json; analysis/return_evidence.md; sections/ch07_evidence.tex",
+      "evidence": "No cost-aware, point-in-time portfolio replay or frozen benchmark comparison supports a 5% strategy result, expected return or probability claim.",
+      "fix_required": "Do not present sleeve history as strategy performance; preserve the implementation block until an independent formal replay is complete.",
+      "resolution": "The reporting issue is closed by a clear FAIL / NOT RUN / BLOCKED gate. The unperformed replay remains an implementation blocker, not a completed test."
+    },
+    {
+      "issue_id": "R1-S-003",
+      "severity": "S",
+      "status": "resolved_at_research_framework_scope",
+      "artifact": "data/risk_budget_20260812.json; analysis/risk_framework.md; sections/ch05_risk.tex",
+      "evidence": "The retired reference vector has -25.00% planning stress against a -18% action boundary and lacks a frozen candidate portfolio risk budget.",
+      "fix_required": "Keep portfolio q=0, reject preset weights, and require a new candidate-specific risk approval before T4 can change.",
+      "resolution": "The old vector is explicitly non-operative. Drawdown actions and exception controls remain, while no market allocation is approved."
+    },
+    {
+      "issue_id": "R1-A-001",
+      "severity": "A",
+      "status": "resolved_at_research_framework_scope",
+      "artifact": "data/execution_eligibility_policy_20260812.json; data/reit_candidate_pool_20260812.json; analysis/execution_protocol.md",
+      "evidence": "Product labels and historical distributions cannot substitute for current valuation, liquidity, operating, tax, settlement and correlation evidence.",
+      "fix_required": "Maintain structure-specific T2/T3/T4 diligence and non-forcing REIT/direct-equity controls.",
+      "resolution": "All candidates remain watch-only and q=0; direct equities are open for research but no issuer is named at T3."
+    }
+  ]
+}

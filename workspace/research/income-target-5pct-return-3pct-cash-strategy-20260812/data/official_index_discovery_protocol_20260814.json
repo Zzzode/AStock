@@ -1,0 +1,49 @@
+{
+  "schema_version": "official_index_discovery_protocol.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "protocol_id": "CSI-PUBLIC-DISCOVERY-v1",
+  "frozen_at": "2026-08-14T12:15:00+08:00",
+  "status": "pre_result_protocol",
+  "purpose": "A public-source discovery and falsification screen of already published CSI index rules. It is not a formal strategy replay, an investable universe, a product recommendation or a selection of target weights.",
+  "source": {
+    "provider": "China Securities Index official public history endpoint",
+    "endpoint_template": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode={index_code}&startDate={start_date}&endDate={end_date}",
+    "quality_tier": "public_official_index_observation",
+    "limitations": [
+      "The capture does not establish an authorised point-in-time product-level market-data feed.",
+      "Index values do not establish the availability, cost, tax, liquidity, account access or executable tracking of an actual investor product.",
+      "Historical values that predate an index's publication, if returned, are treated as methodology back-history rather than live investable history unless independently established otherwise."
+    ]
+  },
+  "fixed_window": {
+    "start_date": "2017-06-30",
+    "end_date": "2026-08-14",
+    "return_metric": "annualised close-to-close index-value return over each complete rolling five-year calendar interval",
+    "threshold": 0.05,
+    "treatment": "Evaluate each published index independently. No optimization, blending, substitution, cost assumption, tax assumption or investor cash-flow is applied.",
+    "window_algorithm": "For each observed end date D, select the latest observed close on or before D minus five calendar years. Retain the window only if elapsed days are at least 1,825 and no more than 1,832; annualise as (close_D / close_start)^(365 / elapsed_days) - 1."
+  },
+  "predeclared_indices": [
+    {"code": "H00300", "name": "CSI 300 Total Return Index", "role": "broad-equity total-return reference", "selection_basis": "Published CSI total-return version of a broad A-share benchmark."},
+    {"code": "H00922", "name": "CSI Dividend Total Return Index", "role": "dividend-factor equity total-return reference", "selection_basis": "Published CSI total-return version of the dividend equity index used by the published cross-asset rules below."},
+    {"code": "932410", "name": "CSI Dividend Equity and Bond Risk Parity Index", "role": "published equity-bond risk-parity rule reference", "selection_basis": "Published CSI methodology combines H00922 with a 0-5 year investment-grade credit-bond coupon strategy through a risk-parity rule."},
+    {"code": "932411", "name": "CSI Dividend Equity and Bond Constant Proportion 10/90 Index", "role": "published constant-mix reference", "selection_basis": "First member of the published 10/90, 20/80 and 30/70 constant-proportion family."},
+    {"code": "932412", "name": "CSI Dividend Equity and Bond Constant Proportion 20/80 Index", "role": "published constant-mix reference", "selection_basis": "Second member of the published constant-proportion family."},
+    {"code": "932413", "name": "CSI Dividend Equity and Bond Constant Proportion 30/70 Index", "role": "published constant-mix reference", "selection_basis": "Third member of the published constant-proportion family."}
+  ],
+  "decision_rules": [
+    "Preserve the raw official response, request URL, retrieval timestamp and SHA-256 before calculating a metric.",
+    "A missing, malformed or incomplete response is reported as unavailable and is not filled from a third-party source.",
+    "Every index with at least one complete five-year window is reported; no result is dropped because it conflicts with the 5% threshold.",
+    "A value at or above 5% only means that this cost-free public index observation passes this weak discovery condition. It cannot promote an index, fund, ETF or portfolio to T2/T3/T4.",
+    "A value below 5% rejects that published index as support for the stronger objective over the observed window."
+  ],
+  "prohibited_inferences": [
+    "A 5% future return, guarantee, probability or annual floor.",
+    "An investor total-return result after actual fund tracking, spreads, brokerage fees, taxes or account constraints.",
+    "A selection of a real product, target allocation, reinvestment rule or order.",
+    "A conclusion about direct equities, REITs, futures, offshore instruments or any asset not represented by the exact published index rule."
+  ],
+  "no_order_execution": true,
+  "portfolio_q": 0
+}

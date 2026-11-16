@@ -1,0 +1,210 @@
+{
+  "schema_version": "d5pt_r22_c52_independent_source_audit.v1",
+  "artifact_id": "D5PT-R22-C52-INDEPENDENT-SOURCE-AUDIT-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "reviewer": {
+    "role": "research-report-reviewer",
+    "mode": "independent_read_only_maker_checker"
+  },
+  "scope": {
+    "artifacts": [
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c52_capture_sse_etf_option_history_sources.py",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c52_build_sse_etf_option_history_route_screen.py",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c52-sse-etf-option-history-route-20260815/manifest.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c52-sse-etf-option-history-route-20260815/*",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c52_sse_etf_option_history_route_screen_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c52_sse_etf_option_history_route_screen_20260815.md",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c49_official_authorized_data_route_recheck_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/gate_manifest.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/artifact_contract.json"
+    ],
+    "not_performed": [
+      "Live-data collection, data procurement, credential inspection, or configuration change",
+      "Historical return reconstruction or a five-percent performance test",
+      "Account, entitlement, suitability, broker, fill, cost, or settlement verification",
+      "ETF, option, strike, expiry, size, broker, calendar, or threshold selection",
+      "Strategy admission, portfolio allocation, order instruction, or external action"
+    ]
+  },
+  "review_snapshot": {
+    "capture_script": {
+      "path": "tools/c52_capture_sse_etf_option_history_sources.py",
+      "byte_count": 6227,
+      "sha256": "2903bdc210124935f1a37ed4a86583986ba6cb741893ba64b25b8d962bdaedbc"
+    },
+    "builder_script": {
+      "path": "tools/c52_build_sse_etf_option_history_route_screen.py",
+      "byte_count": 21857,
+      "sha256": "b0f77fd085167336c0b079f0f7b39e617c50350dd68b4ba2564b982c7a324404"
+    },
+    "c52_json": {
+      "path": "analysis/c52_sse_etf_option_history_route_screen_20260815.json",
+      "byte_count": 8615,
+      "sha256": "49dddcdc0e1c6927df6a794464d1a7640c99bdf55d25474e6f032fed6f7609da"
+    },
+    "c52_markdown": {
+      "path": "analysis/c52_sse_etf_option_history_route_screen_20260815.md",
+      "byte_count": 4128,
+      "sha256": "f890d10257a943684f330b336f9d9d37cea3ec3beaefbebe2518de5a33812312"
+    }
+  },
+  "source_manifest": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c52-sse-etf-option-history-route-20260815/manifest.json",
+    "artifact_id": "D5PT-C52-SOURCES-v1",
+    "retrieved_at_utc": "2026-08-15T06:41:33+00:00",
+    "byte_count": 3411,
+    "sha256": "92fdb7356454e21c203ea88baf6d3a7fee1d03e7fde576901d2e1ccc50de0c76",
+    "raw_file_integrity": [
+      {
+        "source_id": "C52-S01",
+        "filename": "sse_option_daily_contract_page.html",
+        "byte_count": 27119,
+        "sha256": "174776f4d6a0c205565d540b747fca6058a9717753588cd35564eb799c7072e1",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C52-S02",
+        "filename": "sse_option_listing_adjustment_page.html",
+        "byte_count": 28397,
+        "sha256": "e8d9755ee343ab44724ecfa95a681216a8f564b6e1c2b20a3d369b0a604912cb",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C52-S03",
+        "filename": "sse_option_market_price_page.html",
+        "byte_count": 27349,
+        "sha256": "5b7f88565d943aa1503811b774b98e9d82815e67dc0be0f79669e2fe1b04091e",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C52-S04",
+        "filename": "sse_option_information_query_script.js",
+        "byte_count": 48079,
+        "sha256": "d3fe735a30cad061375ce03441522dcbe48b32a899b67b09fee08412a6452eb7",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C52-S05",
+        "filename": "sse_20161128_50etf_dividend_option_adjustment_notice.html",
+        "byte_count": 33470,
+        "sha256": "a968a1a9a30897a5a1e7c796d3e8a3357c672f694004cd1a047bc88668a1e38d",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C52-S06",
+        "filename": "sseinfo_historical_data_product_page.html",
+        "byte_count": 23029,
+        "sha256": "dbae0135ca890931f4161f0b9c239029096dddb55015738f0c988fd92005a85f",
+        "integrity": "PASS"
+      }
+    ]
+  },
+  "dependency_integrity": {
+    "c48": {
+      "path": "analysis/c48_current_environment_data_capability_audit_20260815.json",
+      "byte_count": 4981,
+      "sha256": "dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce",
+      "status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+      "integrity": "PASS"
+    },
+    "c49": {
+      "path": "analysis/c49_official_authorized_data_route_recheck_20260815.json",
+      "byte_count": 6576,
+      "sha256": "990a20b9ab5a8d855656b3e642848d55f17b4394f28c07568cdbedfc9f5317b3",
+      "status": "CONDITIONAL_AUTHORIZED_DATA_ROUTE_DISCOVERY_NO_CURRENT_ACCEPTED_DELIVERY",
+      "integrity": "PASS"
+    },
+    "c51": {
+      "path": "analysis/c51_sse_etf_option_collar_scope_screen_20260815.json",
+      "byte_count": 8134,
+      "sha256": "114d4ee9795ba94f50a23b3aecd321fe15b8ebdc2decacfb6dc5d1023ff86f1c",
+      "status": "NOT_ADMITTED_OPTIONS_FAMILY_NO_NEW_USABLE_ROUTE",
+      "integrity": "PASS"
+    }
+  },
+  "checks": [
+    {
+      "check_id": "R22-C-001",
+      "name": "Frozen source, manifest, and dependency integrity",
+      "result": "PASS",
+      "evidence": "The manifest, all six raw source files, and the C48/C49/C51 JSON dependencies match the exact SHA-256 pins in the C52 builder and C52 output. A read-only invocation of build() completed all source and dependency assertions."
+    },
+    {
+      "check_id": "R22-C-002",
+      "name": "Generated-output reproducibility",
+      "result": "PASS",
+      "evidence": "Read-only build() output equals the frozen C52 JSON byte-for-byte; markdown(result) equals the frozen C52 Markdown byte-for-byte. No C52 output was regenerated or modified during this review."
+    },
+    {
+      "check_id": "R22-C-003",
+      "name": "Public-query semantics and interface-absence wording",
+      "result": "PASS_WITH_LIMITATION",
+      "evidence": "C52-S04's dayContractParam contains only expireDate, securityId, pagination and SQL ID; its separate listing/delisting/adjustment objects accept adjustDate. C52 confines the negative finding to the retained daily query and says historical coverage is not demonstrated/evidenced. C52-S03 itself loads a different, unretained client script, search_productStockOptions_2021.js, so the evidence cannot establish that no other public SSE interface exists; C52 does not make that overclaim."
+    },
+    {
+      "check_id": "R22-C-004",
+      "name": "Derived source conclusions",
+      "result": "PASS",
+      "evidence": "The 2016-11-28 SSE notice supports only a dated example of adjustment/relisting and prior-settlement/contract-unit effects. The SSEInfo product page is only a historical-data product/application description, not a written entitlement or delivered data contract. C52 correctly retains partial-event and conditional-future-category labels rather than treating either as a complete point-in-time or execution record."
+    },
+    {
+      "check_id": "R22-C-005",
+      "name": "Five-percent and non-action boundary",
+      "result": "PASS",
+      "evidence": "C52 has historical_net_total_return_test_performed=false and contractual_or_rule_based_positive_five_percent_floor_evidenced=false. It is research_only, formal_decision_eligible=false, external_orders=false, portfolio_q=0 and NO_ACTION; C48/C49/C51 retain the same non-admission direction."
+    }
+  ],
+  "findings": {
+    "S": [],
+    "A": [],
+    "B": [],
+    "M": [
+      {
+        "finding_id": "R22-M-001",
+        "limitation": "The retained market page references search_productStockOptions_2021.js, but that client script and its response schema are not in the C52 source manifest.",
+        "treatment": "This is not an overclaim in C52 because the output says not demonstrated/evidenced and explicitly confines daily-query reasoning to the captured query. If a later audit wants to characterize the market-page interface itself, it must freeze that script, response samples, provenance, and rights separately."
+      },
+      {
+        "finding_id": "R22-M-002",
+        "limitation": "The SSEInfo page distinguishes availability by product type: its option row shows snapshots and daily/minute bars, while the page's generic tick-trade description is not a field dictionary or proof of option tick-trade delivery.",
+        "treatment": "C52 correctly treats the page as a conditional future product category only. No option-chain, delivered field, replay, or execution inference is accepted."
+      },
+      {
+        "finding_id": "R22-M-003",
+        "limitation": "Dated adjustment disclosures and a current-day contract display cannot establish a complete point-in-time master, ETF total-return/event ledger, available-at/version chain, or broker/account execution record.",
+        "treatment": "C52 preserves every C51 formal-test gap and keeps C48 unchanged; this limitation is a continuing no-admission gate, not an audit defect."
+      },
+      {
+        "finding_id": "R22-M-004",
+        "limitation": "C52 and this R22 record are not yet named in the currently read gate_manifest.json or artifact_contract.json.",
+        "treatment": "This review does not alter governance files. If either artifact is later relied on as a release control, its required-artifact and verifier registration must be performed by the governance owner and independently rechecked; this does not admit C51 or alter C48 now."
+      }
+    ]
+  },
+  "finding_counts": {
+    "S": 0,
+    "A": 0,
+    "B": 0,
+    "M": 4
+  },
+  "boundary_conclusion": {
+    "c48_status_unchanged": true,
+    "c49_conditional_route_unchanged": true,
+    "c51_not_admitted_unchanged": true,
+    "positive_five_percent_floor_accepted": false,
+    "historical_result_accepted": false,
+    "data_rights_granted": false,
+    "strategy_admitted": false,
+    "product_or_parameter_selected": false,
+    "external_action_authorized": false
+  },
+  "final_decision": {
+    "audit_recommendation": "PASS_SOURCE_CONTROL_AND_BOUNDARY_ONLY",
+    "actionability_status": "VETO",
+    "statement": "C52 is accepted only as an exact-hash, public-source coverage screen whose source semantics support non-admission. This PASS verifies frozen-source integrity, bounded query interpretation, and no-action controls. It grants no data right, does not close C48, does not alter C49, does not admit C51, does not establish a positive five-percent floor or historical result, and does not select a product or authorize an external action."
+  }
+}

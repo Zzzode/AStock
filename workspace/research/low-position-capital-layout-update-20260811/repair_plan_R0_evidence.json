@@ -1,0 +1,36 @@
+{
+  "cycle": "R0_evidence",
+  "status": "completed_pending_rereview_record",
+  "updated_at": "2026-08-11",
+  "scope": "Source and data-boundary repairs only.",
+  "actions": [
+    {
+      "issue_id": "R0-S-001",
+      "action": "Corrected the 000703, 002379 and 002497 H1 units in the house-facing source artifacts and rechecked them against official packets.",
+      "evidence": "analysis/house_view.md; data/claim_audit.json; data/current_valuation_model_20260811.json",
+      "status": "completed"
+    },
+    {
+      "issue_id": "R0-S-002",
+      "action": "Added a case-local verifier with 39 explicit controls. Its remaining failures are only MacTeX/PDF/render availability and belong to R3.",
+      "evidence": "tools/verify_research_workspace.py; latest result 36 PASS / 3 FAIL",
+      "status": "completed_for_R0"
+    },
+    {
+      "issue_id": "R0-B-001",
+      "action": "Downgraded 600150 and 300390 in both the detailed and flat broker schemas to re_scoped_original_unverified and retained zero valuation weight.",
+      "evidence": "data/broker_street_consensus_20260811.json",
+      "status": "completed"
+    },
+    {
+      "issue_id": "R0-B-002",
+      "action": "Made MKT-RAW scope explicit: 2026-08-10 completed-session closes plus separately labelled 2026-08-11 pre-open indications.",
+      "evidence": "data/source_registry.json; data/source_registry.md",
+      "status": "completed"
+    }
+  ],
+  "non_goals": [
+    "No PDF compilation or render sign-off is claimed in this R0 plan.",
+    "No external broker target is converted into an AStock target."
+  ]
+}

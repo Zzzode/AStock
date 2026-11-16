@@ -1,0 +1,173 @@
+{
+  "schema_version": "d5pt_r19_c50_independent_source_audit.v1",
+  "artifact_id": "D5PT-R19-C50-INDEPENDENT-SOURCE-AUDIT-v1",
+  "case_id": "domestic-5pct-target-paper-strategy-20260815",
+  "as_of": "2026-08-15",
+  "timezone": "Asia/Shanghai",
+  "reviewer": {
+    "role": "data-verifier",
+    "mode": "independent_maker_checker"
+  },
+  "scope": {
+    "artifacts": [
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c50-sse-general-repo-screen-20260815/manifest.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c50-sse-general-repo-screen-20260815/*",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c50_capture_sse_general_repo_sources.py",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/c50_build_sse_general_repo_yield_floor_screen.py",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c50_sse_general_repo_yield_floor_screen_20260815.json",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c50_sse_general_repo_yield_floor_screen_20260815.md",
+      "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json"
+    ],
+    "not_performed": [
+      "Historical performance reconstruction",
+      "Broker, account, entitlement, suitability, fill or settlement verification",
+      "Product, code, term, calendar or threshold selection",
+      "External action or order authorization"
+    ]
+  },
+  "source_manifest": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c50-sse-general-repo-screen-20260815/manifest.json",
+    "sha256": "46ad261a99d9777bd59db7b80fc2d93611dfad6e6cc58e56188ace91088d7eaf",
+    "retrieved_at_utc": "2026-08-15T04:41:48+00:00",
+    "scope_boundary": "Primary-source mechanism and dated-yield-floor pre-screen only; not an execution record, personal-account entitlement record, or historical-performance dataset.",
+    "raw_file_integrity": [
+      {
+        "source_id": "C50-S01",
+        "filename": "sse_general_repo_personal_inverse_participation.html",
+        "byte_count": 23380,
+        "sha256": "c88c6551cf434da52382c322ce96e1c880c9e74be595ac8e36fe86fbef0fb4d5",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C50-S02",
+        "filename": "sse_general_repo_trading_guideline.html",
+        "byte_count": 32861,
+        "sha256": "b5a14f9d76076a8c03538f9a6df935c60d081ef9ae4737d0dc633cd09fa14380",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C50-S03",
+        "filename": "sse_204001_curve_page_20260814.html",
+        "byte_count": 29682,
+        "sha256": "ceae0b84f02283dab66f16ab6855154d6f1e6c27505123ce1013efd28b20f19a",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C50-S04",
+        "filename": "sse_204001_fixing_query_20260814.jsonp",
+        "byte_count": 1086,
+        "sha256": "74d55edad71e976d01cdd7891844fe2f4bc1e37602457ee08b5f70726cdf62a0",
+        "integrity": "PASS"
+      },
+      {
+        "source_id": "C50-S05",
+        "filename": "sse_general_repo_trading_guideline.docx",
+        "byte_count": 20302,
+        "sha256": "b148bd3ce4e9fae7bce6d4328cfa4caf95999e068fa29f03d9a65f74550d1844",
+        "integrity": "PASS"
+      }
+    ],
+    "live_query_crosscheck": {
+      "url": "https://query.sse.com.cn/commonQuery.do?jsonCallBack=callback&isPagination=false&sqlId=COMMON_BOND_HGDPSYLQX_L&TRADEDATE=2026-08-14",
+      "live_response_sha256": "74d55edad71e976d01cdd7891844fe2f4bc1e37602457ee08b5f70726cdf62a0",
+      "matches_frozen_C50_S04": true
+    }
+  },
+  "primary_source_claim_checks": [
+    {
+      "check_id": "R19-C-001",
+      "claim": "An individual investor may participate as the inverse-repo funding side, subject to the stated boundary.",
+      "result": "PASS",
+      "evidence": "C50-S01, sse_general_repo_personal_inverse_participation.html:425-427 defines the borrower/lender sides, states that individual investors may participate as the inverse-repo funding side, and separately says SSE temporarily waives its general-repo transaction fee. C50 markdown:9-11 and JSON economic_mechanism.personal_access_boundary do not convert that statement into account-specific access, fills or settlement."
+    },
+    {
+      "check_id": "R19-C-002",
+      "claim": "The documented general-repo mechanics, settlement and formula are described accurately.",
+      "result": "PASS",
+      "evidence": "C50-S02, sse_general_repo_trading_guideline.html:322-336 marks the linked guideline current and effective. C50-S05 Article 13 lists standard terms; Article 14 maps 204*** suffixes to days; Article 24 states one trade/two settlements and central-counterparty multilateral net settlement; Article 25 gives the actual-day/365 maturity formula; Article 26 gives the volume-weighted daily fixing and no-trade carry-forward."
+    },
+    {
+      "check_id": "R19-C-003",
+      "claim": "The dated 2026-08-14 values and their labels are not overstated.",
+      "result": "PASS",
+      "evidence": "C50-S03, sse_204001_curve_page_20260814.html:651 and :666-668 displays 2026-08-14 22:30:00 and 204001 one-day rate 1.391. C50-S04 JSONP:1 independently returns TRADE_DATE=2026-08-14, RATE_1DAY=1.391 and the distinct RATE_7DAY=1.414 field. C50 markdown:15 and JSON dated_official_observation explicitly state that RATE_7DAY is not labelled as a 204001 quote."
+    },
+    {
+      "check_id": "R19-C-004",
+      "claim": "The 0.003811% one-day before-broker-cost illustration is arithmetically correct and bounded.",
+      "result": "PASS",
+      "evidence": "1.391 / 100 / 365 = 0.000038109589041096 as a fraction, or 0.003810958904109589% per day. This equals the generated JSON value and the rounded markdown figure. C50-S05 Article 25 provides the actual-days/365 formula; markdown:15 calls it a one-day annualized-quote illustration before broker-specific costs, not a realized annual result."
+    },
+    {
+      "check_id": "R19-C-005",
+      "claim": "The stable-5% conclusion is a bounded non-admission, rather than an unsupported return assertion.",
+      "result": "PASS",
+      "evidence": "Both dated fields are below 5%, while the retained rule material evidences no contractual or rule-based 5% floor. C50 JSON strict_hurdle_screen sets current comparisons true, contractual_or_rule_based_5pct_floor_evidenced=false, historical_full_year_or_rolling_five_year_test_performed=false and admission_result=fail. C50 markdown:17 and :31 therefore reject a stable-5% yield-floor characterization and route admission."
+    }
+  ],
+  "generated_artifact_checks": {
+    "build_script_sha256": "e43b418b6ea39c6066c1c944cd3aeb65c7e6f84ae219bec9001e2b3256c0db07",
+    "capture_script_sha256": "e6037d2063009b4c9fa4485e17171355075abdd02b2f8e45c732481289fea88f",
+    "output_json_sha256": "5eb3f078d3daba73535e463018aa1761a07178d19f71897636c21932dcd40884",
+    "output_markdown_sha256": "6b42f526709ec22cce3db03e55e23ff4802a61c865087df3c89b82e0c06af661",
+    "all_expected_source_hashes_rechecked": true,
+    "build_function_matches_generated_json_exactly": true,
+    "markdown_function_matches_generated_markdown_exactly": true,
+    "build_console_status_distinguishes_artifact_success_from_route_failure": true,
+    "forbidden_claim_checks": {
+      "invented_historical_result_present": false,
+      "personal_account_entitlement_claim_present": false,
+      "trade_instruction_present": false,
+      "reader_facing_prohibited_principal_term_present": false,
+      "formal_decision_eligible": false,
+      "external_orders": false,
+      "portfolio_q": 0,
+      "route_admission_result": "fail",
+      "action": "NO_ACTION"
+    },
+    "r09_research_control_record_audit": "PASS"
+  },
+  "findings": {
+    "S": [],
+    "A": [],
+    "B": [],
+    "M": [
+      {
+        "finding_id": "R19-M-001",
+        "limitation": "The retained fixing response contains five observations only; it cannot establish a historical floor, persistence, rolling reinvestment result or fill availability.",
+        "treatment": "Correctly disclosed by C50; it remains a formal-test blocker, not an audit defect."
+      },
+      {
+        "finding_id": "R19-M-002",
+        "limitation": "Exchange-level individual participation and an SSE fee statement do not evidence a particular broker/account agreement, permission, all-in cost, order acceptance, fill or settlement.",
+        "treatment": "Correctly preserved as a boundary by C50; no account conclusion is admitted."
+      },
+      {
+        "finding_id": "R19-M-003",
+        "limitation": "The same response's RATE_7DAY field is distinct from the 204001 one-day field and has no 204001 label in that response.",
+        "treatment": "The prior ambiguity was repaired. C50 now labels the field precisely and does not use it as a direct 204001 quote."
+      }
+    ]
+  },
+  "finding_counts": {
+    "S": 0,
+    "A": 0,
+    "B": 0,
+    "M": 3
+  },
+  "c48_binding": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c48_current_environment_data_capability_audit_20260815.json",
+    "sha256": "dd61020103246458545b3bf1367115529c9285c4a80c07c853f3a3706731f4ce",
+    "status": "NO_FORMAL_HISTORICAL_ROUTE_AVAILABLE_IN_CURRENT_ENVIRONMENT",
+    "unchanged": true,
+    "C50_does_not_close_C48": true
+  },
+  "final_decision": {
+    "audit_recommendation": "PASS",
+    "actionability_status": "VETO",
+    "review_acceptance_is_not_route_admission": true,
+    "strategy_admitted": false,
+    "external_action_authorized": false,
+    "statement": "C50 is accepted only as a source-bounded, non-admitted mechanism and dated-yield-floor screen. The PASS confirms evidence integrity and boundary discipline; it does not approve a stable 5% strategy, a personal account, a historical result, a product selection or an external action. C48 remains unchanged."
+  }
+}

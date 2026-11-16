@@ -1,0 +1,28 @@
+{
+  "schema_version": "pdf_build_provenance.v2",
+  "case_id": "global-institutional-strategy-personal-20260815",
+  "build_timestamp": "2026-08-15T16:01:29.796743+08:00",
+  "host_platform": "Linux-5.15.152.bsk.4-amd64-x86_64-with-glibc2.39",
+  "engine": "XeLaTeX",
+  "engine_path": "/usr/bin/xelatex",
+  "engine_version": "XeTeX 3.141592653-2.6-0.999994 (TeX Live 2022/Debian)",
+  "command": ["/usr/bin/xelatex", "-interaction=nonstopmode", "-halt-on-error", "main.tex"],
+  "working_directory": "workspace/research/global-institutional-strategy-personal-20260815",
+  "source_sha256": "88f22110ac877a3fcf4627602bdd630e5e366daff7b638b9c2a71d82493139a4",
+  "source_tree_sha256": "ae589656bc52cbdc661a2b5dd8034806e802412d70e019a3e8dacb6a315d6824",
+  "source_tree_definition": "SHA-256 over sorted lines of '<file SHA-256><two spaces><case-relative path>' for main.tex and every sections/*.tex file.",
+  "source_capture_notes_sha256": "81980db7f8492fcda7aa55129aa6f5e68969b2ce6712b7de0ee9c8c5b2967cec",
+  "pdf_path": "main.pdf",
+  "pdf_sha256": "b17b6165b022fa1c00b4a0483722e66f229e9ab4cbad3e75010a57a183646cb8",
+  "page_count": 31,
+  "text_extraction_path": "main_current_text.txt",
+  "text_extraction_sha256": "3537ce0d33e9353701ba2c908c19ab5ca89478855aed932261e6795106a5bee0",
+  "render_directory": "rendered/current-20260815",
+  "rendered_page_count": 31,
+  "diagnostics": {
+    "fatal_error_count": 0,
+    "overfull_hbox_count": 0,
+    "missing_character_count": 0
+  },
+  "release_identity": "The PDF is reproducible from the declared XeLaTeX source tree at the stated timestamp. This provenance proves document identity, not strategy performance, implementation permission or investment suitability."
+}

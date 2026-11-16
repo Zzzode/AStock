@@ -1,0 +1,80 @@
+% !TEX program = xelatex
+\documentclass[a4paper,11pt,fontset=none]{ctexart}
+\input{../../../.agents/templates/preamble.tex}
+\usepackage{amsmath}
+\setlength{\parskip}{0.35em}
+\sloppy
+\setlength{\emergencystretch}{2em}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{center}
+{\LARGE\bfseries 20万元稳健组合：读者版研究模板\par}
+\vspace{0.35em}
+{\small 2026年8月11日｜先做风险预算，再讨论任何产品\par}
+\end{center}
+
+\begin{houseviewbox}[先说结论]
+这20万元在本模型中是五年以上的全额投资本金，不是固定生活费账户。组合采用ETF/资产层优先的方式：直接股票和公募REITs开始时均为0\%。长期年化3\%--6\%只是复利敏感性区间，不是保证；在共同承压的规划测试中，20万元可能出现约CNY32,600的账面损失，实际情况也可能更差。
+\end{houseviewbox}
+
+\section*{一、这20万元在模型里怎么安排}
+
+\begin{tabularx}{\dimexpr\linewidth-4\tabcolsep\relax}{L{2.7cm}R{2.0cm}L{4.0cm}X}
+\toprule
+\textbf{金额} & \textbf{目标权重} & \textbf{资产层} & \textbf{要记住的边界} \\
+\midrule
+CNY40,000 & 20\% & 组合内受保障流动性 & 只包括合格存款或到期前直接政府债；它属于这20万元内部，不是另外要求一笔外部备用金。 \\
+CNY10,000 & 5\% & 交易现金 & 用于分阶段实施和再平衡；货币工具不自动等同于受保障存款。 \\
+CNY70,000 & 35\% & 高质量人民币利率债 & 国债ETF仍有久期、净值和流动性风险，不能当作到期保本存款。 \\
+CNY60,000 & 30\% & 红利权益ETF & 可拆成两只、各CNY30,000；先看合并持仓和行业重叠，分配不固定。 \\
+CNY20,000 & 10\% & 非杠杆黄金ETF & 用于风险分散；黄金不承担固定利息或家用现金任务。 \\
+CNY0 & 0\% & 直接高股息股票与公募REITs & 第一阶段不启用；不能为了“高分红”绕过估值、现金流和集中度审查。 \\
+\bottomrule
+\end{tabularx}
+
+\section*{二、怎样做分阶段研究}
+
+\begin{enumerate}[leftmargin=1.7em,itemsep=0.2em]
+  \item 先确认这20万元在未来五年以上不需要改作刚性支出，并核对产品文件、费用、交易规则和适当性。
+  \item 模型先建立CNY120,000防守层：CNY40,000受保障流动性、CNY10,000交易现金、CNY70,000利率债。
+  \item 红利权益ETF和黄金合计CNY80,000按六个月研究节奏分阶段补足，每月约CNY13,333，最后一个月按余额校正。
+  \item 如果出现产品资料缺失、异常折溢价、停牌、明显价差或流动性不足，当月只延后；不以另一只高相关资产替代。
+\end{enumerate}
+
+这是一张研究模板，不提供外部下单时间、价格、数量或通道。示例产品必须在实施日前重新核对法律文件、净值相关数据、折溢价、价差、流动性和组合穿透。
+
+\section*{三、可能的长期结果怎样读}
+
+\begin{tabularx}{\dimexpr\linewidth-4\tabcolsep\relax}{L{3.0cm}L{3.5cm}X}
+\toprule
+\textbf{十年算术敏感性参数} & \textbf{CNY200,000全部再投资的终值} & \textbf{这代表什么} \\
+\midrule
+3.0\% & 约CNY268,783 & 规划端点，不是下一年收益或任何产品的承诺。 \\
+4.5\% & 约CNY310,594 & 中间算术点，不是“基准预测”。 \\
+6.0\% & 约CNY358,170 & 较高规划端点，不是目标收益或可提取现金。 \\
+\bottomrule
+\end{tabularx}
+
+\smallskip
+\textbf{先接受坏情况：} 基准稳健核心的共同压力测试是-16.30\%，即20万元约减少CNY32,600。这个数字不是预测，也不是最大损失保证；它提醒你这不是存款替代品。
+
+\section*{四、能不能给家人固定现金}
+
+不能在今天预先承诺。每季度只记录过去12个月已经到账、税后并扣费后的现金 $D_0$；实际分配减少时，首先只是再投资现金减少，并不应该靠卖出防守资产、杠杆或追高来补足。若未来需要为家人提供固定生活费、教育费或医疗费，应先另行建立用途、期限、税后现金流和风险承受计划，不能把历史股息率当作工资。
+
+\section*{五、什么时候暂停}
+
+\begin{itemize}
+  \item 资金用途从长期积累改为三年内刚性支出时；
+  \item 总权益、流动性或利率债偏离目标5个百分点，或黄金偏离目标2个百分点时；
+  \item 组合账面损失达到12\%复核线时，停止自动增加风险资产；
+  \item 想增加直接股票或REITs时，尚未完成独立估值、现金流、集中度、流动性和税务审查时。
+\end{itemize}
+
+\vfill
+\footnotesize
+本页依据本案的战略配置、情景和来源登记制作。任何ETF或直接股票均须在实施日重新核对法律文件、价格、净值相关数据、折溢价、买卖价差、费用和适当性。本文仅作研究与教育参考，不构成收益、本金、现金分配或证券买卖保证。
+\end{document}
+

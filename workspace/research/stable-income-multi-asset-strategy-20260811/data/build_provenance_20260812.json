@@ -1,0 +1,60 @@
+{
+  "schema_version": "research_build_provenance.v1",
+  "case_id": "stable-income-multi-asset-strategy-20260811",
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "status": "superseded",
+  "source": "local XeLaTeX build packet (superseded)",
+  "timestamp": "2026-08-12T00:10:36+08:00",
+  "quality_tier": "derived",
+  "fallback_path": "Direct /usr/bin/xelatex was used because the workspace .venv lacks the astock and typer runtime dependencies required by the CLI adapter.",
+  "warnings": [
+    "This packet records an author-performed build and spot check; it is not an independent R3 visual review or publication sign-off.",
+    "The report remains blocked by incomplete primary-source archival and open R0--R4 findings.",
+    "This build was superseded by the 2026-08-12 reader-facing model-portfolio actionability revision."
+  ],
+  "errors": [],
+  "host": {
+    "platform": "Linux 5.15.152.bsk.4-amd64 x86_64 GNU/Linux"
+  },
+  "engine": {
+    "name": "XeLaTeX",
+    "executable": "/usr/bin/xelatex",
+    "version": "XeTeX 3.141592653-2.6-0.999994 (TeX Live 2022/Debian)",
+    "distribution": "TeX Live 2022/Debian"
+  },
+  "cjk": {
+    "resolved_fonts": [
+      "Noto Serif CJK SC",
+      "Noto Sans CJK SC"
+    ],
+    "ctexrep": "/usr/share/texlive/texmf-dist/tex/latex/ctex/ctexrep.cls",
+    "xeCJK": "/usr/share/texlive/texmf-dist/tex/xelatex/xecjk/xeCJK.sty"
+  },
+  "build": {
+    "command": "/usr/bin/xelatex -interaction=nonstopmode -halt-on-error main.tex",
+    "passes": 2,
+    "working_directory": ".",
+    "source_sha256": "cf5d712284859b46340069d61d216f5a6c58b5cfe1ffbe419be0bf157a742ceb",
+    "source_graph_sha256": "c2c05f87c4a51ce7caacc5eb6ee48036640283077660d317a39be5fe6a9f37ed"
+  },
+  "artifacts": {
+    "pdf_path": "rendered/superseded-20260812-0010/main.pdf",
+    "pdf_sha256": "f6c9318abd5672515e0be4a34da2ccefc60294687ab336f0ae39608356bf1cf3",
+    "page_count": 18,
+    "page_size": "A4 (595.28 x 841.89 pts)",
+    "text_path": null,
+    "text_sha256": "258a45b24198db927e740fb25e6df9fc624651379c35e468acd337af25aa6d61",
+    "text_retention_note": "The superseded text extraction was replaced by the current build; its historical checksum is retained.",
+    "render_dir": "rendered/superseded-20260812-0010/pages",
+    "rendered_page_count": 18,
+    "render_dimensions": "1241 x 1754 px per A4 page (150 DPI PNG)"
+  },
+  "diagnostics": {
+    "fatal_error_count": 0,
+    "undefined_control_sequence_count": 0,
+    "missing_character_count": 0,
+    "overfull_hbox_count": 0,
+    "embedded_fonts_verified": true
+  },
+  "superseded_by": "data/build_provenance_20260812_actionability.json"
+}

@@ -1,0 +1,125 @@
+{
+  "as_of": "2026-08-14",
+  "scope": {
+    "candidates": ["512500", "510880", "511010", "511880", "260008"],
+    "position_quantity": 0,
+    "objective": "rolling 5-year cost-aware TWRR >= 5%, assessed conditionally and ex post only",
+    "exclusions": ["cash-income target", "automatic reinvestment", "allocation", "recommendation", "order authorization"]
+  },
+  "data_quality": "High for the product/instrument facts below because each fact is from an issuer, exchange, or official market-infrastructure disclosure; insufficient for T2 return validation.",
+  "fallback_path": "The preferred astock CLI could not load because the current virtual environment lacks the astock module. Primary issuer/exchange/official-market disclosures were used instead.",
+  "candidates": [
+    {
+      "code": "512500",
+      "name": "华夏中证500ETF",
+      "instrument_type": "equity ETF",
+      "official_product_facts": {
+        "manager": "华夏基金管理有限公司",
+        "custodian": "中国建设银行股份有限公司",
+        "fund_inception": "2015-05-05",
+        "listing": "Shanghai Stock Exchange, 2015-05-29",
+        "benchmark": "中证500指数",
+        "investment_requirement": "Normally at least 90% of fund NAV in index constituents and substitute constituents.",
+        "risk_characterization": "Equity fund; higher risk and expected return than mixed, bond, and money-market funds.",
+        "fund_level_fees": "management 0.15% p.a.; custody 0.05% p.a.",
+        "published_investor_cost_boundary": "On-market transaction cost is broker-specific. The product summary also describes off-market cash creation/redemption charges, which are not a substitute for executed secondary-market costs."
+      },
+      "observed_performance_boundary": "The 2026 Q2 report states a five-year fund net-value growth rate of 43.79% through 2026-06-30. This is a fund NAV disclosure, not a validated investor-level, cost-aware rolling five-year TWRR; it does not close T2.",
+      "source_paths": [
+        "sources/official-fund-sovereign-continuation-20260814/512500_product_summary_20260529.pdf (pp. 1-3)",
+        "sources/official-fund-sovereign-continuation-20260814/512500_q2_2026.pdf (p. 3, reported five-year net-value growth)"
+      ],
+      "T2_status": "blocked"
+    },
+    {
+      "code": "510880",
+      "name": "华泰柏瑞上证红利ETF",
+      "instrument_type": "equity ETF",
+      "official_product_facts": {
+        "manager": "华泰柏瑞基金管理有限公司",
+        "custodian": "招商银行股份有限公司",
+        "fund_inception": "2006-11-17",
+        "operation": "exchange-traded open-end fund",
+        "benchmark": "上证红利指数",
+        "investment_method": "complete replication, subject to stated liquidity exception",
+        "risk_characterization": "Equity fund; report describes risk/return above mixed, bond, and money-market funds."
+      },
+      "observed_performance_boundary": "The 2024 Q4 report states a five-year fund net-value growth rate of 45.05% as of 2024-12-31 and expressly says the published fund indicators exclude holder subscription or trading costs. It is also outside the 2026 data cutoff. It cannot be used as cost-aware investor TWRR.",
+      "source_paths": [
+        "sources/official-fund-sovereign-continuation-20260814/510880_q4_2024.pdf (pp. 2-3)"
+      ],
+      "T2_status": "blocked"
+    },
+    {
+      "code": "511010",
+      "name": "国泰上证5年期国债ETF",
+      "instrument_type": "government-bond ETF",
+      "official_product_facts": {
+        "manager": "国泰基金管理有限公司",
+        "custodian": "中国建设银行股份有限公司",
+        "fund_inception": "2013-03-05",
+        "listing": "Shanghai Stock Exchange, 2013-03-25",
+        "benchmark": "上证5年期国债指数收益率",
+        "investment_requirement": "At least 90% of fund NAV in index constituent and substitute government bonds after portfolio construction.",
+        "method": "optimized sampling replication",
+        "risk_characterization": "Bond fund; lower expected risk/return than equity and mixed funds, higher than money-market funds.",
+        "fund_level_fees": "management 0.15% p.a.; custody 0.05% p.a.; disclosed estimated comprehensive operating expense ratio 0.22% p.a.",
+        "published_investor_cost_boundary": "On-market transaction fee is broker-specific; creation/redemption commission is no more than 0.4% according to the cited product summary."
+      },
+      "observed_performance_boundary": "The product summary contains historical net-value-performance charts, but no investor-specific secondary-market total-return series or cost observations were captured. Product-level fee disclosures do not establish actual investor execution costs.",
+      "source_paths": [
+        "sources/official-fund-sovereign-continuation-20260814/511010_product_summary_20250321.pdf (pp. 1-4)"
+      ],
+      "T2_status": "blocked"
+    },
+    {
+      "code": "511880",
+      "name": "银华日利 / 银华交易型货币市场基金 A类",
+      "instrument_type": "exchange-traded money-market fund",
+      "official_product_facts": {
+        "manager": "银华基金管理股份有限公司",
+        "custodian": "中国建设银行股份有限公司",
+        "fund_inception": "2013-04-01",
+        "listing": "Shanghai Stock Exchange, 2013-04-18",
+        "benchmark": "税后活期存款利率",
+        "investable_universe": "cash; short-dated deposits, repos, central-bank bills and negotiable certificates of deposit; debt, non-financial debt instruments and ABS with remaining term no more than 397 days; other permitted liquid money-market instruments.",
+        "risk_characterization": "Money-market fund; lower expected risk and return than bond, mixed, and equity funds.",
+        "fund_level_fees_for_511880": "management 0.30% p.a.; custody 0.09% p.a.; sales service 0.25% p.a.; disclosed comprehensive operating expense ratio 0.64% p.a."
+      },
+      "observed_performance_boundary": "The product summary's annual net-value charts stop at 2023-12-31. It warns that secondary-market price may differ from NAV, and that transaction costs and secondary-market liquidity can affect secondary-market investor returns. This is not an investor total-return series.",
+      "source_paths": [
+        "sources/official-fund-sovereign-continuation-20260814/511880_product_summary_20240628.pdf (pp. 1-5)"
+      ],
+      "T2_status": "blocked"
+    },
+    {
+      "code": "260008",
+      "name": "26附息国债08 / 2026年记账式附息(八期)国债",
+      "instrument_type": "sovereign fixed-rate bond",
+      "official_instrument_facts": {
+        "issuer": "中华人民共和国财政部",
+        "face_value": "CNY100",
+        "term": "5 years",
+        "coupon": "1.5000% fixed rate",
+        "coupon_frequency": "annual",
+        "day_count": "actual/actual",
+        "interest_start": "2026-04-15",
+        "maturity_and_redemption": "2031-04-15",
+        "latest_captured_reopening_price": "CNY100.6600 per CNY100 on 2026-06-17 reopening",
+        "latest_captured_interbank_listing": "2026-06-23; interbank-market investors"
+      },
+      "observed_performance_boundary": "The instrument was first issued in April 2026. As of the case cutoff it cannot supply a five-year realized history for this specific security. Coupon and reopening price are instrument terms, not an investor total-return history and not a TWRR pass.",
+      "source_paths": [
+        "sources/official-fund-sovereign-continuation-20260814/260008_listing_20260623.html"
+      ],
+      "T2_status": "blocked_hard_insufficient_history"
+    }
+  ],
+  "shared_T2_blockers": [
+    "No candidate has an archived, dated investor-level daily/periodic total-return series that reconciles NAV, exchange price where relevant, distributions, and corporate actions under the report's no-automatic-reinvestment convention.",
+    "No candidate has actual historical executable cost inputs for the tested route: broker commission schedule, bid-ask spread, slippage/market impact, creation-redemption or custody costs where applicable, and applicable taxes/fees. Published fund expense ratios are not a substitute for these inputs.",
+    "No reproducible rolling five-year methodology, observation window, timing convention, rebalancing convention, or TWRR cash-flow treatment has been supplied. The product disclosures therefore cannot test the stated cost-aware objective.",
+    "260008 has a hard history-length failure because its April 2026 first issuance predates the cutoff by less than five years."
+  ],
+  "conclusion_boundary": "All quantities remain q=0. This pack records product and sovereign facts only and makes no allocation, recommendation, cash-income, automatic-reinvestment, or execution claim."
+}

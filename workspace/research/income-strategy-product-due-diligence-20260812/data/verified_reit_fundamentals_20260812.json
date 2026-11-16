@@ -1,0 +1,65 @@
+{
+  "artifact": "verified_reit_fundamentals",
+  "verification_date": "2026-08-12",
+  "method": "Cross-read the archived official 2025 annual reports and 2026 Q2 reports. Annual values are accepted as audited primary disclosure; Q2 values are accepted only as unaudited primary disclosure and tagged accordingly. No derived investment conclusion is verified here.",
+  "coverage": {
+    "products_expected": 7,
+    "products_verified": 7,
+    "numeric_fields_reconciled_to_primary_text": "All fields published in this artifact",
+    "unresolved_high_materiality_items": [
+      "508096 has differing 2025 per-unit NAV figures in its annual report; no one of them may be used for a current valuation until reconciled.",
+      "All seven products lack a same-date current NAV/IOPV and a current independent appraisal in the archived package.",
+      "Q2 tables frequently report project-company assets/liabilities rather than fund-level leverage; no leverage ratio is certified by this artifact."
+    ]
+  },
+  "verification_status": "CONDITIONAL_PRIMARY_EVIDENCE_ONLY",
+  "products": [
+    {
+      "ticker": "508069",
+      "annual_2025": {"status": "verified_audited", "revenue": 490114089.13, "net_profit": 94492879.07, "operating_cash_flow": 331087969.67, "cash_distribution_rate_pct": 9.19, "total_assets": 2770281271.71, "net_assets": 2448478701.41, "nav_per_unit": 4.8970, "anchor": "508069_2025_annual.txt:329-374"},
+      "q2_2026": {"status": "verified_primary_unaudited", "revenue": 113090079.97, "net_profit": 17698036.67, "operating_cash_flow": 61291799.81, "cash_distribution_rate_pct": 2.14, "issuer_annualised_rate_pct": 9.75, "distributable_amount": 59459819.14, "actual_distribution": 164400003.26, "anchor": "508069_2026q2.txt:199-288"},
+      "verification_limit": "The 9.75% is an issuer-defined year-to-date annualised ratio, not an independent expected return."
+    },
+    {
+      "ticker": "508011",
+      "annual_2025": {"status": "verified_audited", "revenue": 105051075.60, "net_profit": 31349858.18, "operating_cash_flow": 77269682.76, "cash_distribution_rate_pct": 4.38, "total_assets": 978376705.28, "net_assets": 923561824.55, "nav_per_unit": 2.3089, "anchor": "508011_2025_annual.txt:349-384,2863"},
+      "q2_2026": {"status": "verified_primary_unaudited", "revenue": 27423726.23, "net_profit": 6591862.82, "operating_cash_flow": 12980054.72, "cash_distribution_rate_pct": 1.25, "issuer_annualised_rate_pct": 5.03, "distributable_amount": 18114006.23, "actual_distribution": 35239998.20, "anchor": "508011_2026q2.txt:163-259"},
+      "verification_limit": "Q2 project-company liabilities exceed assets in the reported aggregation; no fund-level leverage conclusion is valid without structural reconciliation."
+    },
+    {
+      "ticker": "508068",
+      "annual_2025": {"status": "verified_audited", "revenue": 104846651.43, "net_profit": 45376170.55, "operating_cash_flow": 72049043.96, "cash_distribution_rate_pct": 2.53, "total_assets": 2348942578.10, "net_assets": 2167379232.49, "nav_per_unit": 2.9927, "anchor": "508068_2025_annual.txt:405-450,3103"},
+      "q2_2026": {"status": "verified_primary_unaudited", "revenue": 32292407.22, "net_profit": 13723909.10, "operating_cash_flow": 24875689.68, "cash_distribution_rate_pct": 0.78, "issuer_annualised_rate_pct": 3.13, "distributable_amount": 22429830.91, "actual_distribution": 43453080.54, "anchor": "508068_2026q2.txt:271-378"},
+      "verification_limit": "The 2025 expansion makes simple year-on-year cash-flow comparison non-like-for-like."
+    },
+    {
+      "ticker": "508077",
+      "annual_2025": {"status": "verified_audited", "revenue": 79052093.04, "net_profit": 11479864.78, "operating_cash_flow": 52832336.93, "cash_distribution_rate_pct": 1.80, "total_assets": 2362792745.41, "net_assets": 2220782496.34, "nav_per_unit": 2.3431, "anchor": "508077_2025_annual.txt:316-365,3017"},
+      "q2_2026": {"status": "verified_primary_unaudited", "revenue": 34867542.03, "net_profit": 4463822.09, "operating_cash_flow": 21147666.18, "cash_distribution_rate_pct": 0.87, "issuer_annualised_rate_pct": 3.48, "distributable_amount": 22767056.24, "actual_distribution": 22538761.19, "anchor": "508077_2026q2.txt:207-321"},
+      "verification_limit": "The late-2025 expansion means the 2026 asset base differs from the prior-year comparable base."
+    },
+    {
+      "ticker": "508055",
+      "annual_2025": {"status": "verified_audited_partial_first_year", "revenue": 63123498.68, "net_profit": 16625949.93, "operating_cash_flow": 51074453.45, "cash_distribution_rate_pct": 2.90, "issuer_annualised_rate_pct": 3.70, "total_assets": 1437777259.68, "net_assets": 1340530950.84, "nav_per_unit": 2.6811, "anchor": "508055_2025_annual.txt:373-416,2170,2344"},
+      "q2_2026": {"status": "verified_primary_unaudited", "revenue": 18247748.67, "net_profit": 3021426.00, "operating_cash_flow": 13310836.05, "cash_distribution_rate_pct": 0.84, "issuer_annualised_rate_pct": 3.27, "distributable_amount": 13898903.24, "actual_distribution": 25769998.27, "anchor": "508055_2026q2.txt:189-291"},
+      "verification_limit": "The 2025 annual period starts at fund inception, so it is not a full fiscal-year comparison base."
+    },
+    {
+      "ticker": "508080",
+      "annual_2025": {"status": "verified_audited_partial_first_year", "revenue": 61901232.31, "net_profit": 5002443.41, "operating_cash_flow": 57521934.95, "cash_distribution_rate_pct": 2.43, "issuer_annualised_rate_pct": 4.45, "total_assets": 1157010488.69, "net_assets": 1093002443.41, "nav_per_unit": 2.7325, "anchor": "508080_2025_annual.txt:318-353,1919"},
+      "q2_2026": {"status": "verified_primary_unaudited", "revenue": 24165592.77, "net_profit": -1760863.71, "operating_cash_flow": 19030393.01, "cash_distribution_rate_pct": 1.46, "issuer_annualised_rate_pct": 5.90, "distributable_amount": 17110598.70, "actual_distribution": 36000000.00, "anchor": "508080_2026q2.txt:175-294"},
+      "verification_limit": "The prior-year comparator is a two-week stub because the fund was established in June 2025."
+    },
+    {
+      "ticker": "508096",
+      "annual_2025": {"status": "verified_audited_with_nav_reconciliation_blocker", "revenue": 307500968.53, "net_profit": 100890454.70, "operating_cash_flow": 239235337.70, "cash_distribution_rate_pct": 5.33, "total_assets": 5979759012.10, "net_assets": 5511248504.32, "key_metrics_table_nav_per_unit": 9.1720, "fair_value_reference_nav_per_unit": 8.1264, "financial_statement_note_nav_per_unit": 8.8388, "anchor": "508096_2025_annual.txt:523-589,600-608,3820-3824"},
+      "q2_2026": {"status": "verified_primary_unaudited", "revenue": 167554328.89, "net_profit": 55654748.49, "operating_cash_flow": 93770740.48, "cash_distribution_rate_pct": 2.25, "issuer_annualised_rate_pct": 10.12, "distributable_amount": 125623212.41, "actual_distribution": 210073784.16, "anchor": "508096_2026q2.txt:300-411"},
+      "verification_limit": "Different annual-report NAV figures and the post-expansion asset base block any price-to-NAV conclusion until reconciled."
+    }
+  ],
+  "universal_validation": {
+    "quarterly_audit_status": "All seven Q2 reports state that financial information is unaudited.",
+    "annualisation_status": "Not verified as a forecast. Every issuer's rate is retained only as issuer-reported historical arithmetic.",
+    "investment_action_status": "NOT_APPROVED_FROM_THIS_ARTIFACT"
+  }
+}

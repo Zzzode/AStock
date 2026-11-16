@@ -1,0 +1,304 @@
+{
+  "schema_version": "r5_public_nav_proxy_independent_audit.v3",
+  "artifact_id": "DPSFS-R5-PNAV-INDEPENDENT-AUDIT-v1",
+  "as_of": "2026-08-15",
+  "audit_state": "CONDITIONAL",
+  "audit_score": 92,
+  "scope": {
+    "review_type": "read_only_independent_recalculation_and_control_audit",
+    "case_id": "domestic-personal-securities-futures-strategy-20260814",
+    "reviewed_artifacts": [
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_predeclared_public_nav_feasibility_protocol_20260815.md",
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_predeclared_public_nav_feasibility_protocol_20260815.json",
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/tools/run_r5_public_nav_absolute_momentum_probe.py",
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r5-public-etf-nav-20260815/",
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_public_nav_absolute_momentum_probe_20260815.md",
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_public_nav_absolute_momentum_probe_20260815.json"
+    ],
+    "write_scope": [
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_public_nav_proxy_independent_audit_20260815.md",
+      "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_public_nav_proxy_independent_audit_20260815.json"
+    ]
+  },
+  "verdict": {
+    "sealed_source_integrity": "PASS",
+    "result_level_arithmetic_and_rule_implementation": "PASS",
+    "reported_proxy_hurdle_state": "PASS",
+    "reported_proxy_hurdle_state_value": "PUBLIC_NAV_PROXY_HURDLE_FALSIFIED",
+    "formal_feasibility_or_strategy_evidence": "FAIL",
+    "overall": "CONDITIONAL",
+    "conclusion": "The negative public-NAV proxy result independently reconciles within the stated arithmetic. It is not formal feasibility, investor-return, or action evidence."
+  },
+  "input_snapshot": {
+    "protocol_json": {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_predeclared_public_nav_feasibility_protocol_20260815.json",
+      "sha256": "35cb84604e6440d49c9d126003535ff4f120189c0f21ad00ba3c856e4e07217a",
+      "status": "exploratory_post_observation_not_a_clean_preregistration"
+    },
+    "result_json": {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/analysis/r5_public_nav_absolute_momentum_probe_20260815.json",
+      "sha256": "9fa785b03db884ed1d0518e0682d7f45fb6536e13dc1ad5353b71deeb3050d1b"
+    },
+    "source_manifest_json": {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/probe-r5-public-etf-nav-20260815/manifest.json",
+      "sha256": "017b3a69a9a9e40c2d0511d3e254551c61b565150d6c85b62282107ea08334cb"
+    },
+    "current_derivation_script": {
+      "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/tools/run_r5_public_nav_absolute_momentum_probe.py",
+      "sha256": "9f835e8ccf3524d501e6028c4ba31a822a0afe3f837dd749a3cb3f47f7d9d5a8"
+    },
+    "result_links_current_protocol_manifest_and_derivation_script": true
+  },
+  "verifier_summary": {
+    "tools/verify_source_manifests.py": "PASS (104 files)",
+    "tools/verify_research_design_controls.py": "PASS (draft governance only; no entitlement, replay, admission, allocation or action)"
+  },
+  "exploratory_status": {
+    "state": "exploratory_post_observation_not_a_clean_preregistration",
+    "pre_observation_disclosure_present": true,
+    "post_result_binding_amendment_disclosed": true,
+    "post_result_b_level_convention_clarification_disclosed": true,
+    "positive_result_interpretation_prohibited": true,
+    "negative_result_interpretation": "Exploratory negative proxy record only; it may prevent the fixed proxy rule from being described as stable 5%, but does not establish feasibility or strategy evidence."
+  },
+  "source_archive_validation": {
+    "state": "PASS",
+    "checks": {
+      "manifest_file_and_freeze_hashes_match_raw_bundles": true,
+      "manifest_markdown_rows_match_manifest_json": true,
+      "all_pages_have_expected_request_template": true,
+      "all_pages_have_http_200": true,
+      "all_page_sequences_and_response_page_indexes_are_valid": true,
+      "all_stored_raw_response_hashes_are_valid": true,
+      "all_response_total_counts_match_bundle_totals": true,
+      "all_fsrq_dates_are_parseable_and_unique": true,
+      "all_ljjz_values_are_positive_and_finite": true,
+      "all_capture_timestamps_are_nondecreasing": true
+    },
+    "bundles": [
+      {
+        "code": "510300",
+        "bytes": 1073109,
+        "pages": 174,
+        "rows": 3472,
+        "displayed_first_date": "2012-05-04",
+        "displayed_last_date": "2026-08-14",
+        "sha256": "cfba6bbc259309f3e295d1b875f3e541ed7496336ea2478fba7486177eeb67c5"
+      },
+      {
+        "code": "510880",
+        "bytes": 1251206,
+        "pages": 203,
+        "rows": 4048,
+        "displayed_first_date": "2010-01-04",
+        "displayed_last_date": "2026-08-14",
+        "sha256": "c92835538bf3bda69b8103930a0a56129ea435cec345df402d2691f37c2529bf"
+      },
+      {
+        "code": "511010",
+        "bytes": 1016954,
+        "pages": 164,
+        "rows": 3269,
+        "displayed_first_date": "2013-03-05",
+        "displayed_last_date": "2026-08-14",
+        "sha256": "367dff59ee1d5e8b1db5dc6c4e6680ef7f217c5be1235779a1259e7f43351d72"
+      },
+      {
+        "code": "511990",
+        "bytes": 1243376,
+        "pages": 201,
+        "rows": 4003,
+        "displayed_first_date": "2012-12-28",
+        "displayed_last_date": "2026-08-14",
+        "sha256": "6d99aa8f6e221c5a42cb238dbb3af478c93b32a36a2dc14d9852f32589ff9a31"
+      },
+      {
+        "code": "518880",
+        "bytes": 985818,
+        "pages": 160,
+        "rows": 3186,
+        "displayed_first_date": "2013-07-18",
+        "displayed_last_date": "2026-08-14",
+        "sha256": "481cfbfea4de1979cbfd7a789ce8bfdd6b75bded53f3d53a3e562abfc9e9521f"
+      }
+    ]
+  },
+  "independent_reconciliation": {
+    "implementation_binding": {
+      "state": "PASS",
+      "protocol_binding_matches_fixed_implementation": true,
+      "parallel_protocol_fields_match_binding": true,
+      "result_binding_matches_fixed_implementation": true,
+      "post_result_amendment_does_not_claim_to_restore_preregistration": true,
+      "equity_signal_convention_is_explicit_and_machine_bound": true,
+      "month_boundary_fixture_passes": true,
+      "month_boundary_fixture_rejects_monthly_target_rebalanced_counterfactual": true,
+      "month_boundary_fixture_rejects_monthly_base_reset_counterfactual": true,
+      "equity_selected_target_reset_fixture_passes": true,
+      "equity_selected_target_reset_fixture_rejects_70_30_drift_preservation": true,
+      "equity_selected_target_reset_integration_fixture_exercises_genuine_unequal_pretrade_state": true,
+      "equity_selected_target_reset_integration_fixture_invokes_target_application_in_simulation": true,
+      "equity_selected_target_reset_integration_fixture_validates_effective_date_reset_derived_weights": true,
+      "equity_selected_target_reset_integration_fixture_rejects_drift_preserving_70_30_mutation": true,
+      "in_memory_rederivation_is_byte_identical_to_stored_result": true
+    },
+    "common_panel": {
+      "state": "PASS",
+      "start": "2013-07-18",
+      "end": "2026-08-14",
+      "positive_common_observations": 3186,
+      "source_rows_by_code": {
+        "510300": 3472,
+        "510880": 4048,
+        "511010": 3269,
+        "511990": 4003,
+        "518880": 3186
+      },
+      "excluded_rows_by_code_after_common_intersection": {
+        "510300": 286,
+        "510880": 862,
+        "511010": 83,
+        "511990": 817,
+        "518880": 0
+      },
+      "all_excluded_rows_are_pre_common_start": true
+    },
+    "rebalances": {
+      "state": "PASS",
+      "records_reconciled": 144,
+      "first_signal_date": "2014-08-29",
+      "first_effective_date": "2014-09-01",
+      "last_signal_date": "2026-07-31",
+      "last_rebalance_effective_date": "2026-08-03",
+      "terminal_panel_observation_date": "2026-08-14",
+      "all_signals_are_last_common_observation_of_month": true,
+      "all_effective_dates_are_next_common_observation": true,
+      "all_targets_and_eligible_sleeves_reconcile": true,
+      "all_turnover_cost_and_drift_recurrences_reconcile": true
+    },
+    "turnover_and_cost_summary": {
+      "state": "PASS",
+      "rebalance_events": 144,
+      "zero_turnover_events": 5,
+      "total_one_way_turnover": 15.4270565569,
+      "sum_simple_cost_fractions": 0.0308541138,
+      "not_a_compounded_drag_or_execution_cost_estimate": true
+    },
+    "full_period_metrics": {
+      "state": "PASS",
+      "start_date": "2014-09-01",
+      "end_date": "2026-08-14",
+      "observation_intervals": 2913,
+      "final_unit_nav": 2.2666887367,
+      "annualized_net_unitized_change": 0.0733577818,
+      "max_drawdown": -0.2281766581
+    },
+    "complete_calendar_years": {
+      "state": "PASS",
+      "incomplete_years": [2014, 2026],
+      "complete_years": {
+        "2015": 0.0901668612,
+        "2016": -0.0704016221,
+        "2017": 0.1031500916,
+        "2018": -0.0387367832,
+        "2019": 0.0797632259,
+        "2020": 0.1018895491,
+        "2021": 0.0186507968,
+        "2022": 0.0137692237,
+        "2023": 0.0339722994,
+        "2024": 0.1088675094,
+        "2025": 0.201805931
+      },
+      "terminal_year_rule_checked": true,
+      "all_classifications_and_values_match": true
+    },
+    "rolling_five_year_endpoints": {
+      "state": "PASS",
+      "endpoint_count": 82,
+      "observation_intervals_each": 1260,
+      "annualization_exponent": "252 / 1260",
+      "first_endpoint": {
+        "start_date": "2014-09-03",
+        "end_date": "2019-10-31",
+        "annualized_net_unitized_change": 0.0674843088
+      },
+      "last_endpoint": {
+        "start_date": "2021-05-26",
+        "end_date": "2026-07-31",
+        "annualized_net_unitized_change": 0.0677519626
+      },
+      "partial_terminal_month_excluded": true,
+      "minimum_annualized_net_unitized_change": 0.0060388692,
+      "maximum_annualized_net_unitized_change": 0.0910668931,
+      "strict_hurdle_pass_count": 45,
+      "all_records_match": true
+    },
+    "hurdle_logic": {
+      "state": "PASS",
+      "threshold": 0.05,
+      "reported_state": "PUBLIC_NAV_PROXY_HURDLE_FALSIFIED",
+      "independently_reconstructed_state": "PUBLIC_NAV_PROXY_HURDLE_FALSIFIED",
+      "complete_year_failure_present": true,
+      "rolling_endpoint_failure_present": true,
+      "logic_and_reported_failures_match": true
+    }
+  },
+  "verified_repairs": [
+    "The final rebalance effective date and terminal panel observation date are separately and correctly reported.",
+    "The protocol is machine-bound to the fixed implementation and verified before derivation.",
+    "Malformed source date/NAV fields fail before any row drop.",
+    "Aggregate turnover and non-executable simple cost disclosure are present in Markdown and JSON.",
+    "Terminal-period eligibility tests actual calendar completion.",
+    "The equity signal convention is explicit, machine-bound, and protected by a passing January 31-to-February 1 fixture that rejects both monthly target-rebalanced and monthly base-reset counterfactuals.",
+    "A second passing equity-only selector fixture requires 50/50 constituent targets and rejects a 70/30 selector counterfactual. A third passing 310-business-day integration fixture invokes the simulator, creates unequal pre-trade equity drift, and validates reset-derived effective-date weights."
+  ],
+  "remaining_conditions": [
+    {
+      "condition_id": "R5-C-001",
+      "state": "DISCLOSED_UNRESOLVED",
+      "artifact": "sources/probe-r5-public-etf-nav-20260815/manifest.json",
+      "evidence": "Capture-time script SHA 224681fd02cb1bc39704b5d6e8ce46ffe70e22d1d50af53483934119f0c75b58 is retained, but that source file is not separately retained. The manifest/result accurately state capture_script_version_not_retained and do not claim equivalence to the current derive script.",
+      "effect": "Does not invalidate current raw byte integrity or independent recalculation, but prevents a stronger claim that the capture implementation is fully reproducible."
+    }
+  ],
+  "findings": [
+    {
+      "issue_id": "R5-B-001",
+      "severity": "B",
+      "status": "closed_verified",
+      "artifact": "analysis/r5_predeclared_public_nav_feasibility_protocol_20260815.md; analysis/r5_predeclared_public_nav_feasibility_protocol_20260815.json; tools/run_r5_public_nav_absolute_momentum_probe.py; analysis/r5_public_nav_absolute_momentum_probe_20260815.json",
+      "evidence": "The protocol and machine binding explicitly require a fixed-base buy-and-hold equal-weighted equity signal, distinct from 50/50 selected-equity target resets. The January 31-to-February 1 fixture passes at (1.0, 1.25, 2.125); independent mutation checks confirm it rejects monthly target-rebalanced (1.5625) and monthly base-reset (1.25) counterfactuals.",
+      "fix_required": "Completed and independently verified in the current frozen tuple.",
+      "effect_on_current_result": "None; the present calculation independently reproduces."
+    },
+    {
+      "issue_id": "R5-B-002",
+      "severity": "B",
+      "status": "closed_verified",
+      "artifact": "tools/run_r5_public_nav_absolute_momentum_probe.py",
+      "evidence": "The 310-business-day integration fixture invokes `_simulate()`, produces three equity-only rebalances, and at the second observes genuine pre-trade constituent drift of 510300/510880 = 0.5515660021/0.4484339979. It records 50/50 target weights and verifies the effective-date post-return weights equal the recurrence from a reset 50/50 target. An independent drift-preserving 70/30 target-application mutation raises `integration fixture did not apply the reset target before the effective-date return`.",
+      "fix_required": "Completed and independently verified in the current frozen tuple.",
+      "effect_on_current_result": "None; the current frozen result and all 144 recorded target rows independently reconcile."
+    }
+  ],
+  "fundamental_limitations": [
+    "Retrospective public aggregated rows do not establish point-in-time availability, revision lineage, field semantics, data rights, or a complete total-return ledger.",
+    "Displayed LJJZ accumulated NAV is not an executable exchange-market price; market-price/NAV/IOPV, bid/ask, depth, fills, halts, price limits, lots, creation/redemption, fees, taxes, settlement, and suitability are not modeled.",
+    "The five fixed codes are representative research inputs, not U0, a historical population, a decision universe, or an allocation list; survivorship and current-availability bias remain.",
+    "The pre-observation disclosure means the exercise is exploratory post-observation; positive results cannot be independent out-of-sample or strategy evidence."
+  ],
+  "recommendation_boundary": {
+    "strategy_recommendation": "prohibited",
+    "return_forecast": "prohibited",
+    "product_admission_or_allocation": "prohibited",
+    "formal_decision_eligible": false,
+    "permitted_conclusion": "The fixed public-NAV proxy arithmetic is falsified by its own stated 5% hurdle."
+  },
+  "publishability": {
+    "status": "CONDITIONAL",
+    "open_s_level": 0,
+    "open_a_level": 0,
+    "open_b_level": 0,
+    "required_next_step": "Keep the non-waivable source/market-price limitations attached to this record. No change converts this historical public-NAV proxy into executable market-return evidence."
+  }
+}

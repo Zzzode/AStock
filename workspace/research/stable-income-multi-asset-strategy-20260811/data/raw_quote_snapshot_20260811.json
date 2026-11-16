@@ -1,0 +1,37 @@
+{
+  "scope_id": "strategic-allocation-etf-first-v2-20260811",
+  "source_id": "M01",
+  "active_scope": false,
+  "scope_status": "retired_from_active_scope",
+  "active_use": "cannot be used for a target, allocation, valuation, cash or execution conclusion",
+  "request_url": "https://qt.gtimg.cn/q=sh601398,sh601939,sh601288,sh601988,sh601088,sh600028,sh600900,sh600941,sh510880,sh512890,sh511010,sh518880,sh511880",
+  "retrieved_at": "2026-08-11T18:13:10+08:00",
+  "source_timestamps_local": "2026-08-11T16:14:39+08:00 to 2026-08-11T16:14:58+08:00",
+  "response_encoding": "GB18030",
+  "raw_response_sha256": "9e2dbfb25255657e6bc8ac754098c63f6f27a505dd898b7a48a8645da9477b08",
+  "raw_payload_archived": false,
+  "archive_manifest": "sources/official-20260811/archive/m01-d01-d08/manifest.json",
+  "data_quality": "tier_3_third_party_snapshot",
+  "quotes": [
+    {"symbol": "601398", "name": "工商银行", "last_price_cny": 7.60, "source_timestamp": "20260811161454"},
+    {"symbol": "601939", "name": "建设银行", "last_price_cny": 10.23, "source_timestamp": "20260811161443"},
+    {"symbol": "601288", "name": "农业银行", "last_price_cny": 6.48, "source_timestamp": "20260811161447"},
+    {"symbol": "601988", "name": "中国银行", "last_price_cny": 5.88, "source_timestamp": "20260811161439"},
+    {"symbol": "601088", "name": "中国神华", "last_price_cny": 44.70, "source_timestamp": "20260811161455"},
+    {"symbol": "600028", "name": "中国石化", "last_price_cny": 5.11, "source_timestamp": "20260811161444"},
+    {"symbol": "600900", "name": "长江电力", "last_price_cny": 28.31, "source_timestamp": "20260811161452"},
+    {"symbol": "600941", "name": "中国移动", "last_price_cny": 96.42, "source_timestamp": "20260811161439"},
+    {"symbol": "510880", "name": "红利ETF华泰柏瑞", "last_price_cny": 3.309, "source_timestamp": "20260811161458"},
+    {"symbol": "512890", "name": "红利低波ETF华泰柏瑞", "last_price_cny": 1.163, "source_timestamp": "20260811161457"},
+    {"symbol": "511010", "name": "国债ETF国泰", "last_price_cny": 141.070, "source_timestamp": "20260811161449"},
+    {"symbol": "518880", "name": "黄金ETF华安", "last_price_cny": 9.009, "source_timestamp": "20260811161455"},
+    {"symbol": "511880", "name": "银华日利ETF", "last_price_cny": 100.704, "source_timestamp": "20260811161446"}
+  ],
+  "warnings": [
+    "This packet is retired_from_active_scope and cannot be used for a target, allocation, valuation, cash or execution conclusion.",
+    "Prices are not execution prices and must not be used for order placement.",
+    "ETF price fields do not establish NAV, IOPV, premium/discount, spread or capacity.",
+    "The source is used only as a dated denominator in a non-decisive historical stock-yield observation.",
+    "The original GB18030 response body was not retained, so the recorded checksum cannot be independently rehashed from this workspace."
+  ]
+}

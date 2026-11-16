@@ -1,0 +1,43 @@
+{
+  "cycle": "R2_draft",
+  "reviewer": "research prose and boundary review",
+  "review_date": "2026-08-13",
+  "findings": [
+    {
+      "id": "R2-01",
+      "severity": "A",
+      "title": "ETF and settlement language was too broad",
+      "status": "resolved",
+      "evidence": "Category-specific ETF rules cannot support an all-ETF T+0/T+1 claim; exchange language supports settlement-before-sale with specified reverse-trading exceptions rather than a universal shorthand.",
+      "repair": "Changed the report to settlement-before-sale wording, required product-specific checks and stated that category-specific ETF mechanics cannot be generalised.",
+      "verification": "Final reader text explicitly contains the category-specific and settlement caveats."
+    },
+    {
+      "id": "R2-02",
+      "severity": "A",
+      "title": "Price-limit discussion could be read as a universal percentage rule",
+      "status": "resolved",
+      "evidence": "Board, fund category, special status and listing stage vary.",
+      "repair": "Added explicit heterogeneous price-limit wording and the warning that no price limit does not imply exit liquidity.",
+      "verification": "China-constraint chapter and case verifier contain the exact boundary."
+    },
+    {
+      "id": "R2-03",
+      "severity": "S",
+      "title": "Chinese reader-facing text used critical foreign investment abbreviations without first-use definitions",
+      "status": "resolved",
+      "evidence": "LBO, KPI, IRR, PE, TAM, ALM and alpha appeared in decision, valuation, risk and catalyst logic without Chinese first-use explanations.",
+      "repair": "Added first-use Chinese definitions for leverage buyout, key performance indicator, internal rate of return, price-to-earnings, total addressable market, asset-liability management and alpha; retained abbreviations only after definition.",
+      "verification": "Reader-text and case-verifier checks confirm the required definitions are present."
+    },
+    {
+      "id": "R2-04",
+      "severity": "B",
+      "title": "Unverified ranking language could imply a proven manager or strategy hierarchy",
+      "status": "resolved",
+      "evidence": "Terms such as top, strongest, best and optimal appeared without a ranking methodology or performance comparison.",
+      "repair": "Recast the language to the report's reference managers and its own framework, retaining the no-alpha/no-performance-proof boundary.",
+      "verification": "Current reader-facing chapters avoid a ranking conclusion."
+    }
+  ]
+}

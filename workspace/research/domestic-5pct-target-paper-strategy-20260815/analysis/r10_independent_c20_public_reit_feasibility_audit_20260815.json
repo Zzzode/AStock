@@ -1,0 +1,570 @@
+{
+  "schema_version": "r10_independent_c20_public_reit_feasibility_audit.v1",
+  "artifact_id": "D5PT-R10-INDEPENDENT-C20-PUBLIC-REIT-AUDIT-v1",
+  "as_of": "2026-08-15",
+  "result": "FAIL",
+  "audit_scope": {
+    "included": [
+      "C20 JSON/Markdown boundary consistency",
+      "C14 inherited manifest hash, raw-file hashes, freeze agreement, and source-response shape",
+      "C20 current-rule URL retention classification"
+    ],
+    "excluded": [
+      "product selection",
+      "universe definition",
+      "return or total-return computation",
+      "performance result or forecast",
+      "individual eligibility, account, broker, settlement, or execution inference",
+      "external action"
+    ]
+  },
+  "c20_artifacts": {
+    "json_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c20_domestic_public_reit_strategy_feasibility_20260815.json",
+    "json_sha256": "81d6c9fae8cc7f8c6069f0e84e2a5b3a2c6ae6dcf1068bd31dc85d682b9d5fad",
+    "markdown_path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c20_domestic_public_reit_strategy_feasibility_20260815.md",
+    "markdown_sha256": "9129bae1a8cc5121861050b6159fe54e89993ce3d950b2c4745b681a9530ffe3"
+  },
+  "inherited_source_manifest": {
+    "path": "workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/manifest.json",
+    "expected_sha256": "9a92989970e231562dd570b4f68685ed689362ce119cf8d219438e82b9ba19ea",
+    "actual_sha256": "9a92989970e231562dd570b4f68685ed689362ce119cf8d219438e82b9ba19ea",
+    "integrity_status": "PASS",
+    "source_file_count": 10,
+    "frozen_file_count": 10,
+    "verified_source_files": 10,
+    "retained_data_shape": {
+      "daily_market_price": {
+        "record_count": 1250,
+        "first_observation_date": "2021-06-21",
+        "last_observation_date": "2026-08-14",
+        "calendar_years_present": [
+          2021,
+          2022,
+          2023,
+          2024,
+          2025,
+          2026
+        ],
+        "ordered_fields_confirmed_by_manifest_url": [
+          "date",
+          "open",
+          "high",
+          "low",
+          "close",
+          "volume"
+        ]
+      },
+      "distribution_history": {
+        "record_count": 9,
+        "first_exright_date": "2022-04-13",
+        "last_exright_date": "2026-04-17",
+        "observed_raw_fields": [
+          "rightsRegistDate",
+          "exrightDate",
+          "fundDividends"
+        ]
+      },
+      "nav_endpoint": {
+        "captured_rows": 0
+      }
+    },
+    "scope_limit": "The integrity result validates retained local files only. It does not establish historical availability, adjustment basis, total return, costs, eligibility, or execution."
+  },
+  "c20_scope_boundary": {
+    "status": "PASS",
+    "scope_control": {
+      "product_selected": false,
+      "universe_selected": false,
+      "historical_strategy_selected": false,
+      "return_test_run": false,
+      "return_result": null,
+      "performance_claim": false,
+      "eligibility_inference": false
+    },
+    "strict_test_boundary": {
+      "five_percent_role": "A hypothetical future research hurdle only; not a promised, forecast, stable, or minimum return.",
+      "current_result": "NOT_TESTED_NOT_ADMITTED",
+      "return_test_run": false,
+      "return_result": null
+    },
+    "portfolio_q": 0,
+    "formal_decision_eligible": false,
+    "current_disposition": "NO_STRATEGY_TEST_ADMISSION_NO_PRODUCT_SELECTION_NO_ACTION",
+    "finding": "No C20 field turns the retained nonselective probe into a selected product, return result, eligibility inference, or action."
+  },
+  "unsupported_assertions": {
+    "status": "NONE_IDENTIFIED_WITHIN_RETAINED_AUDIT_SCOPE",
+    "finding": "No C20 assertion was directly contradicted by the retained manifest or retained raw-response shape checks. This finding does not elevate URL-only current-rule material to frozen evidence."
+  },
+  "source_control_gap": {
+    "gap_id": "R10-SC-01",
+    "status": "OPEN",
+    "summary": "C20 对四项现行规则复核仅保留 URL，未在 C20 案例中存档网页或附件原件、内容哈希、抓取元数据或冻结文本。",
+    "affected_scope": "当前规则版本、一般交易机制，以及 C20 Markdown 引用的具体规则文字。",
+    "impact": "这些链接可定位一手来源，但不是冻结证据包。它们不能证明未来测试区间的规则连续性，也不能支持个人访问、执行、成本或资格结论。",
+    "closure_condition": "任何后续依赖规则的测试准入审查前，应保留适用规则网页及附件、抓取元数据、哈希、生效日和带日期的规则版本映射；同时维持不对个人作推断的边界。",
+    "c20_disclosure_quality": "C20 已将这些项目标为 url_only_read_only_recheck_not_c20_raw_capture，因此该缺口已披露而非隐藏。"
+  },
+  "checks": [
+    {
+      "id": "R10-A00",
+      "status": "PASS",
+      "message": "required artifact exists: workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c20_domestic_public_reit_strategy_feasibility_20260815.json"
+    },
+    {
+      "id": "R10-A00",
+      "status": "PASS",
+      "message": "required artifact exists: workspace/research/domestic-5pct-target-paper-strategy-20260815/analysis/c20_domestic_public_reit_strategy_feasibility_20260815.md"
+    },
+    {
+      "id": "R10-A00",
+      "status": "PASS",
+      "message": "required artifact exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/manifest.json"
+    },
+    {
+      "id": "R10-A01",
+      "status": "PASS",
+      "message": "C20 JSON parses as an object"
+    },
+    {
+      "id": "R10-A02",
+      "status": "PASS",
+      "message": "C20 Markdown is nonempty"
+    },
+    {
+      "id": "R10-A03",
+      "status": "PASS",
+      "message": "C14 manifest parses as an object"
+    },
+    {
+      "id": "R10-M01",
+      "status": "PASS",
+      "message": "C14 manifest SHA-256 matches the C20-declared immutable digest"
+    },
+    {
+      "id": "R10-M02",
+      "status": "PASS",
+      "message": "C14 manifest retains exactly ten source entries"
+    },
+    {
+      "id": "R10-M03",
+      "status": "PASS",
+      "message": "C14 source freeze retains exactly ten entries"
+    },
+    {
+      "id": "R10-M04",
+      "status": "PASS",
+      "message": "C14 manifest source paths are unique"
+    },
+    {
+      "id": "R10-M05",
+      "status": "PASS",
+      "message": "C14 frozen source paths are unique"
+    },
+    {
+      "id": "R10-M06",
+      "status": "PASS",
+      "message": "manifest and source-freeze path sets match"
+    },
+    {
+      "id": "R10-M07",
+      "status": "PASS",
+      "message": "C14 manifest has the expected ten source identities"
+    },
+    {
+      "id": "R10-M08-01",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/csrc_public_infrastructure_reit_guideline_announcement_20200807.html"
+    },
+    {
+      "id": "R10-M09-01",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/csrc_public_infrastructure_reit_guideline_announcement_20200807.html"
+    },
+    {
+      "id": "R10-M10-01",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/csrc_public_infrastructure_reit_guideline_announcement_20200807.html"
+    },
+    {
+      "id": "R10-M11-01",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/csrc_public_infrastructure_reit_guideline_announcement_20200807.html"
+    },
+    {
+      "id": "R10-M08-02",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_public_infrastructure_reit_business_rules_20210129.html"
+    },
+    {
+      "id": "R10-M09-02",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_public_infrastructure_reit_business_rules_20210129.html"
+    },
+    {
+      "id": "R10-M10-02",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_public_infrastructure_reit_business_rules_20210129.html"
+    },
+    {
+      "id": "R10-M11-02",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_public_infrastructure_reit_business_rules_20210129.html"
+    },
+    {
+      "id": "R10-M08-03",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_first_public_reits_listing_20210621.html"
+    },
+    {
+      "id": "R10-M09-03",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_first_public_reits_listing_20210621.html"
+    },
+    {
+      "id": "R10-M10-03",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_first_public_reits_listing_20210621.html"
+    },
+    {
+      "id": "R10-M11-03",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_first_public_reits_listing_20210621.html"
+    },
+    {
+      "id": "R10-M08-04",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_updated_prospectus_20241104.pdf"
+    },
+    {
+      "id": "R10-M09-04",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_updated_prospectus_20241104.pdf"
+    },
+    {
+      "id": "R10-M10-04",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_updated_prospectus_20241104.pdf"
+    },
+    {
+      "id": "R10-M11-04",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_updated_prospectus_20241104.pdf"
+    },
+    {
+      "id": "R10-M08-05",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_product_summary_20240628.pdf"
+    },
+    {
+      "id": "R10-M09-05",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_product_summary_20240628.pdf"
+    },
+    {
+      "id": "R10-M10-05",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_product_summary_20240628.pdf"
+    },
+    {
+      "id": "R10-M11-05",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_product_summary_20240628.pdf"
+    },
+    {
+      "id": "R10-M08-06",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2025_annual_report_20260327.pdf"
+    },
+    {
+      "id": "R10-M09-06",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2025_annual_report_20260327.pdf"
+    },
+    {
+      "id": "R10-M10-06",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2025_annual_report_20260327.pdf"
+    },
+    {
+      "id": "R10-M11-06",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2025_annual_report_20260327.pdf"
+    },
+    {
+      "id": "R10-M08-07",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2024_distribution_announcement_20250415.pdf"
+    },
+    {
+      "id": "R10-M09-07",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2024_distribution_announcement_20250415.pdf"
+    },
+    {
+      "id": "R10-M10-07",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2024_distribution_announcement_20250415.pdf"
+    },
+    {
+      "id": "R10-M11-07",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/508000_2024_distribution_announcement_20250415.pdf"
+    },
+    {
+      "id": "R10-M08-08",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_daily_market_price_begin0_end5000.jsonp"
+    },
+    {
+      "id": "R10-M09-08",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_daily_market_price_begin0_end5000.jsonp"
+    },
+    {
+      "id": "R10-M10-08",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_daily_market_price_begin0_end5000.jsonp"
+    },
+    {
+      "id": "R10-M11-08",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_daily_market_price_begin0_end5000.jsonp"
+    },
+    {
+      "id": "R10-M08-09",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_distribution_history_page1.jsonp"
+    },
+    {
+      "id": "R10-M09-09",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_distribution_history_page1.jsonp"
+    },
+    {
+      "id": "R10-M10-09",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_distribution_history_page1.jsonp"
+    },
+    {
+      "id": "R10-M11-09",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_distribution_history_page1.jsonp"
+    },
+    {
+      "id": "R10-M08-10",
+      "status": "PASS",
+      "message": "retained source exists: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_nav_history_page1.jsonp"
+    },
+    {
+      "id": "R10-M09-10",
+      "status": "PASS",
+      "message": "retained source byte count matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_nav_history_page1.jsonp"
+    },
+    {
+      "id": "R10-M10-10",
+      "status": "PASS",
+      "message": "retained source SHA-256 matches: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_nav_history_page1.jsonp"
+    },
+    {
+      "id": "R10-M11-10",
+      "status": "PASS",
+      "message": "retained source agrees with frozen entry: workspace/research/domestic-personal-securities-futures-strategy-20260814/sources/c14-public-infrastructure-reit-508000-20260815/sse_508000_nav_history_page1.jsonp"
+    },
+    {
+      "id": "R10-D01",
+      "status": "PASS",
+      "message": "daily-market response identifies the retained probe code"
+    },
+    {
+      "id": "R10-D02",
+      "status": "PASS",
+      "message": "daily-market response has 1,250 rows"
+    },
+    {
+      "id": "R10-D03",
+      "status": "PASS",
+      "message": "every daily-market row has the expected ordered OHLCV shape"
+    },
+    {
+      "id": "R10-D04",
+      "status": "PASS",
+      "message": "daily-market response first date matches"
+    },
+    {
+      "id": "R10-D05",
+      "status": "PASS",
+      "message": "daily-market response last date matches"
+    },
+    {
+      "id": "R10-D06",
+      "status": "PASS",
+      "message": "daily-market response has observations in each 2022-2025 calendar year"
+    },
+    {
+      "id": "R10-D07",
+      "status": "PASS",
+      "message": "distribution response has nine rows"
+    },
+    {
+      "id": "R10-D08",
+      "status": "PASS",
+      "message": "every distribution row has registration-date, ex-right-date, and per-share-cash fields"
+    },
+    {
+      "id": "R10-D09",
+      "status": "PASS",
+      "message": "distribution response first ex-right date matches"
+    },
+    {
+      "id": "R10-D10",
+      "status": "PASS",
+      "message": "distribution response last ex-right date matches"
+    },
+    {
+      "id": "R10-D11",
+      "status": "PASS",
+      "message": "captured NAV query reports zero rows"
+    },
+    {
+      "id": "R10-C01",
+      "status": "PASS",
+      "message": "C20 status retains a preflight-only state"
+    },
+    {
+      "id": "R10-C02",
+      "status": "PASS",
+      "message": "C20 is research-only"
+    },
+    {
+      "id": "R10-C03",
+      "status": "PASS",
+      "message": "C20 remains formally ineligible"
+    },
+    {
+      "id": "R10-C04",
+      "status": "PASS",
+      "message": "C20 does not authorize external orders"
+    },
+    {
+      "id": "R10-C05",
+      "status": "PASS",
+      "message": "C20 portfolio quantity remains zero"
+    },
+    {
+      "id": "R10-C06",
+      "status": "PASS",
+      "message": "C20 names the inherited manifest path"
+    },
+    {
+      "id": "R10-C07",
+      "status": "PASS",
+      "message": "C20 names the verified inherited manifest digest"
+    },
+    {
+      "id": "R10-B-product_selected",
+      "status": "PASS",
+      "message": "C20 scope control keeps product_selected at the required boundary"
+    },
+    {
+      "id": "R10-B-universe_selected",
+      "status": "PASS",
+      "message": "C20 scope control keeps universe_selected at the required boundary"
+    },
+    {
+      "id": "R10-B-historical_strategy_selected",
+      "status": "PASS",
+      "message": "C20 scope control keeps historical_strategy_selected at the required boundary"
+    },
+    {
+      "id": "R10-B-return_test_run",
+      "status": "PASS",
+      "message": "C20 scope control keeps return_test_run at the required boundary"
+    },
+    {
+      "id": "R10-B-return_result",
+      "status": "PASS",
+      "message": "C20 scope control keeps return_result at the required boundary"
+    },
+    {
+      "id": "R10-B-performance_claim",
+      "status": "PASS",
+      "message": "C20 scope control keeps performance_claim at the required boundary"
+    },
+    {
+      "id": "R10-B-eligibility_inference",
+      "status": "PASS",
+      "message": "C20 scope control keeps eligibility_inference at the required boundary"
+    },
+    {
+      "id": "R10-B08",
+      "status": "PASS",
+      "message": "C20 confines the five-percent reference to a hypothetical future research hurdle"
+    },
+    {
+      "id": "R10-B09",
+      "status": "PASS",
+      "message": "C20 does not state a test result"
+    },
+    {
+      "id": "R10-B10",
+      "status": "PASS",
+      "message": "strict-test fields do not contain a return computation or result"
+    },
+    {
+      "id": "R10-B11",
+      "status": "PASS",
+      "message": "C20 current disposition prohibits test admission, selection, and action"
+    },
+    {
+      "id": "R10-B12",
+      "status": "PASS",
+      "message": "C20 lists explicit no-action prohibitions"
+    },
+    {
+      "id": "R10-P01",
+      "status": "PASS",
+      "message": "C20 Markdown matches JSON no-test fields"
+    },
+    {
+      "id": "R10-P02",
+      "status": "PASS",
+      "message": "C20 Markdown preserves no-selection and no-eligibility-inference boundaries"
+    },
+    {
+      "id": "R10-P03",
+      "status": "PASS",
+      "message": "C20 Markdown contains the no-action disposition"
+    },
+    {
+      "id": "R10-P04",
+      "status": "PASS",
+      "message": "Markdown-only G8 is a conservative explanatory addition, not a conflicting structured gate"
+    },
+    {
+      "id": "R10-S01",
+      "status": "PASS",
+      "message": "C20 identifies four current-rule URL rechecks"
+    },
+    {
+      "id": "R10-S02",
+      "status": "PASS",
+      "message": "C20 current-rule URL set is complete and ordered"
+    },
+    {
+      "id": "R10-S03",
+      "status": "FAIL",
+      "message": "C20 transparently labels all current-rule rechecks as URL-only"
+    },
+    {
+      "id": "R10-W01",
+      "status": "PASS",
+      "message": "previous reader-facing R10 output omits restricted language"
+    }
+  ],
+  "failure_count": 1,
+  "failures": [
+    "R10-S03: C20 transparently labels all current-rule rechecks as URL-only"
+  ],
+  "generated_by": "workspace/research/domestic-5pct-target-paper-strategy-20260815/tools/r10_independent_c20_public_reit_feasibility_audit.py"
+}

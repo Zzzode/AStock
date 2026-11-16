@@ -1,0 +1,36 @@
+{
+  "schema_version": "source_exhaustion_log.v1",
+  "case_id": "global-private-equity-retail-strategy-20260813",
+  "as_of": "2026-08-13",
+  "attempts": [
+    {
+      "topic": "institutional strategy and process",
+      "result": "complete for structural description",
+      "sources": ["S01", "S02", "S03", "S04", "S05", "S06", "S07"],
+      "limitation": "The official materials are primarily manager-authored or issuer filings. They do not provide a common, independently audited attribution study proving that any manager's historical return can be reproduced by a China retail investor."
+    },
+    {
+      "topic": "China trading and leverage rules",
+      "result": "complete for framework-level official-rule boundary after archiving SSE operative and deferred-provisions attachments",
+      "sources": ["S08", "S09", "S10", "S11", "S12", "S13", "S14"],
+      "limitation": "Current account eligibility, product suitability, tax, order-book depth, bid-ask spread and specific instrument exceptions were not requested and cannot be concluded from static rules. The SSE 2026 deferred-provisions attachment was checked; its listed deferrals concern specified block-trade implementation elements, not the general reverse-trading wording used in this memo."
+    },
+    {
+      "topic": "broker/Street target prices and consensus",
+      "result": "not applicable / deliberately not collected",
+      "sources": [],
+      "limitation": "No named issuer or security appears in the frozen scope; there is no valuation universe to which a broker target-price gate could apply. Any later named T3 direct equity requires issuer-specific broker/Street evidence or an explicit evidence-quality disposition."
+    },
+    {
+      "topic": "user portfolio, risk profile and implementation",
+      "result": "not supplied",
+      "sources": [],
+      "limitation": "No capital amount, cash-flow needs, experience, risk capacity, account permissions or existing holdings were provided. The framework must therefore retain q=0 and implementation NOT_APPROVED."
+    }
+  ],
+  "warnings": [
+    "Manager marketing or AUM rankings were not used as performance proof.",
+    "No live price, quote, order book, ETF constituent or public-REIT project snapshot has been used.",
+    "No direct domestic private-fund recommendation has been made."
+  ]
+}

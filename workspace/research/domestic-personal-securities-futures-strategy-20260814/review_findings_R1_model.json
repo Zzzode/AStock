@@ -1,0 +1,204 @@
+{
+  "schema_version": "r1_model_review.v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "cycle": "R1_model",
+  "reviewed_at": "2026-08-14",
+  "reviewer": "independent quant-risk static audit plus research-report-review orchestration",
+  "initial_publishability_status": "BLOCKED",
+  "initial_publishability_score": 18,
+  "post_repair_status": "BLOCKED",
+  "post_repair_publishability_score": 30,
+  "review_scope": [
+    "DPSFS-DAC-v12 data-acquisition contract",
+    "DPSFS-RP0-v10 formal replay protocol",
+    "DPSFS-DD-v8 replay data dictionary",
+    "U0 population and class-coverage controls",
+    "current data-access and paper-reconciliation readiness"
+  ],
+  "final_repair_check": {
+    "status": "PASS_FOR_STATIC_DESIGN_CONTROLS_ONLY",
+    "reviewer": "independent quant-risk static audit",
+    "verification_summary": "The independent audit found no remaining S-level schema or cross-artifact defect: all three JSON files reject duplicate keys; the same 26 run-dependent tables are bound with the composite frozen-run key; the v2 parent crosswalk has 38 fields; 14 static accounting and valuation checks passed; the case design-controls verifier passed.",
+    "verified_closed_issue_ids": [
+      "R1-S-001",
+      "R1-S-002",
+      "R1-S-003",
+      "R1-S-004"
+    ],
+    "continuing_blockers": [
+      "R1-S-005",
+      "R1-S-006",
+      "R1-S-007",
+      "UR01",
+      "UR02",
+      "UR03",
+      "UR04",
+      "UR05"
+    ],
+    "non_inference": "Static design validation does not establish a data entitlement, a signed freeze record, a formal replay, a risk result, a product admission, an allocation, a holding or an investment action."
+  },
+  "source_route_repair_check": {
+    "status": "PASS_FOR_OPEN_UNIVERSE_SOURCE_ROUTE_BOUNDARY_ONLY",
+    "reviewer": "independent quant-risk local consistency audit",
+    "verified_closed_issue_ids": ["R1-A-001"],
+    "verification_summary": "All ten U0 classes appear once in both R1 matrices and map only to R01--R17 discovery/inquiry routes. The corrected six-class statement is consistent with the three ETF package paths and the current AU/CU/TA-only commodity-futures scope. No route is presented as entitlement, PIT input, replay evidence or investment action.",
+    "non_inference": "The local route audit did not test current external URL availability, usage terms, data rights, PIT coverage or any product/strategy outcome."
+  },
+  "open_class_request_pack_check": {
+    "status": "PASS_FOR_REQUEST_SPECIFICATION_BOUNDARY_ONLY",
+    "reviewer": "independent quant-risk local consistency audit",
+    "verification_summary": "Eleven static checks passed. RQP-OPEN-CLASS-MODULES maps exactly the six U0 classes outside the three ETF paths and the current AU/CU/TA-limited commodity-futures path. JSON, Markdown, CSV and the JSON CSV projection agree; the request is not sent, does not create a current DAC-v12 package, and remains q=0.",
+    "continuing_finding_status": "R1-S-005 remains open because neither a future provider capability response nor data rights, original inputs, PIT lineage, package acceptance or a replay exists.",
+    "non_inference": "The local check did not test any future provider capability, current external data right, external response, product eligibility or strategy outcome."
+  },
+  "findings": [
+    {
+      "issue_id": "R1-S-001",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-governance repair owner",
+      "artifact": "data/data_acquisition_contract_20260814.{md,json}; data/formal_replay_protocol_requirements_20260814.{md,json}; data/replay_data_dictionary_template_20260814.{md,json}",
+      "evidence": "The repair-cycle audit identified that a new cash_margin_collateral_transfer_pair row model was not yet bound by every artifact, so a formal run could have a governed dictionary table that the protocol did not require.",
+      "fix_required": "Make the bound-table inventory exactly equal across DAC, RP and DD; require replay_run_id plus replay_run_freeze_record_sha256 on every run-dependent table; add a machine check for equality and duplicates.",
+      "blocking_gate": "frozen_run_binding",
+      "status": "closed",
+      "verification_evidence": [
+        "data/replay_data_dictionary_template_20260814.json",
+        "data/data_acquisition_contract_20260814.json",
+        "data/formal_replay_protocol_requirements_20260814.json",
+        "tools/verify_research_design_controls.py",
+        "independent quant-risk static audit: 26/26 bound tables and 38-field parent crosswalk"
+      ],
+      "verifier_ref": "tools/verify_research_design_controls.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-S-002",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-governance repair owner",
+      "artifact": "data/replay_data_dictionary_template_20260814.{md,json}; data/data_acquisition_contract_20260814.{md,json}; data/formal_replay_protocol_requirements_20260814.{md,json}",
+      "evidence": "Cash, debit, margin and collateral postings did not previously force an immutable two-leg transfer representation with a zero net-NAV effect and a dated source for collateral movement.",
+      "fix_required": "Require one negative CASH transfer leg and one positive MARGIN or COLLATERAL leg for each initial-margin, maintenance-margin or collateral transfer; restrict DEBIT to nonnegative debit accrual; route every posted effect into exactly one balance bucket.",
+      "blocking_gate": "economic_nav_conservation",
+      "status": "closed",
+      "verification_evidence": [
+        "cash_margin_collateral_transfer_pair",
+        "paired_transfer_conservation_contract",
+        "COLLATERAL_TRANSFER_FROM_DATED_TERM",
+        "daily_nav_bridge_from_balances_translated_marks_and_signed_unsettled_residuals",
+        "independent quant-risk static audit: paired cash/margin/collateral zero-NAV checks passed"
+      ],
+      "verifier_ref": "tools/verify_research_design_controls.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-S-003",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-governance repair owner",
+      "artifact": "data/replay_data_dictionary_template_20260814.{md,json}; data/data_acquisition_contract_20260814.{md,json}; data/formal_replay_protocol_requirements_20260814.{md,json}",
+      "evidence": "A futures design that allows contract notional or an unrealized marked position to enter NAV alongside variation margin can create an artificial profit or loss path.",
+      "fix_required": "Use FUTURES_DAILY_MARGINED: zero marked value and unrealized P&L, exposure-only futures_daily_margin_notional_reference, and P&L only through linked variation-margin or final-settlement events; prohibit gross notional as futures trade cash principal.",
+      "blocking_gate": "futures_daily_mtm",
+      "status": "closed",
+      "verification_evidence": [
+        "position_mark_valuation_contract",
+        "futures_daily_mtm_contract",
+        "TRADE_SETTLEMENT_FUTURES_NON_NOTIONAL_ADJUSTMENT_ONLY",
+        "independent quant-risk static audit: FUTURES_DAILY_MARGINED zero-marked-value checks passed"
+      ],
+      "verifier_ref": "tools/verify_research_design_controls.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-S-004",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "data-governance repair owner",
+      "artifact": "data/replay_data_dictionary_template_20260814.{md,json}; data/data_acquisition_contract_20260814.{md,json}; data/formal_replay_protocol_requirements_20260814.{md,json}",
+      "evidence": "Unsettled and failed settlement states needed signed payable/receivable accounting and an endpoint invalidation path; otherwise a failed delivery or transfer could be silently treated as completed.",
+      "fix_required": "Store gross, posted-or-paid, outstanding and signed residual values; only unposted payable/receivable residuals enter NAV; require FAILED to have zero posted/paid effect and make it invalidate the affected endpoint and block PASS.",
+      "blocking_gate": "settlement_and_endpoint_integrity",
+      "status": "closed",
+      "verification_evidence": [
+        "unsettled_settlement_payable_receivable_contract",
+        "no-failed-settlement-in-endpoint-state",
+        "failed-settlement-contract-pass",
+        "independent quant-risk static audit: signed unposted payable/receivable and FAILED-to-INVALID checks passed"
+      ],
+      "verifier_ref": "tools/verify_research_design_controls.py",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-S-005",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "source-governance",
+      "owner_agent": "research data-governance owner",
+      "artifact": "data/data_access_feasibility_20260814.{md,json}; missing_data_request_pack.{md,json,csv}; unresolved_requirements.json",
+      "evidence": "No case-local route has passed entitlement, point-in-time, revision, complete-event and execution/cost acceptance for ETF, actual-futures or class-wide population data. Public bars, retrospective futures samples, documentation and failed probes are explicitly nonqualifying.",
+      "fix_required": "Obtain and independently accept authorized raw packages for UR01, UR02 and UR03, including written data rights, original availability and revision lineage, coverage reconciliation, event/term records, and route-specific execution evidence.",
+      "blocking_gate": "entitled_point_in_time_inputs",
+      "status": "open",
+      "planning_evidence": [
+        "missing_data_request_pack.json: RQP-OPEN-CLASS-MODULES describes the six currently uncovered U0 classes as future module-definition/capability responses only",
+        "analysis/r1_primary_source_route_catalog_20260814.md"
+      ],
+      "verifier_ref": "data/data_access_feasibility_20260814.json; unresolved_requirements.json",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-S-006",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "equity-research",
+      "owner_agent": "formal replay owner",
+      "artifact": "data/rulebook_r0_20260814.{md,json}; data/u0_domestic_universe_registry_20260814.{md,json}; data/u0_to_t2_derivation_audit_requirements_20260814.{md,json}; data/formal_replay_protocol_requirements_20260814.{md,json}",
+      "evidence": "The protocol, U0 registry, T2 comparison set and data dictionary are requirements-only, not frozen. There is no signed replay_run_freeze_record, no accepted U0 snapshot or U0-to-T2 derivation audit, and no formal run or endpoint result.",
+      "fix_required": "After accepted inputs exist, freeze the class-neutral U0 snapshot and derivation audit, pre-register the run bundle and risk controls, sign the canonical freeze record before outcomes are viewed, and execute a reproducible replay with all endpoints retained.",
+      "blocking_gate": "frozen_formal_replay",
+      "status": "open",
+      "verifier_ref": "DPSFS-DAC-v12; DPSFS-RP0-v10; DPSFS-DD-v8",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-S-007",
+      "cycle": "R1_model",
+      "severity": "S",
+      "owner_skill": "research-report-review",
+      "owner_agent": "independent reviewer and paper-reconciliation owner",
+      "artifact": "unresolved_requirements.json; data/data_acquisition_contract_20260814.{md,json}; data/formal_replay_protocol_requirements_20260814.{md,json}",
+      "evidence": "There is no observed paper ledger, no 60-calendar-day/10-observation reconciliation, no class/route/term/state coverage audit based on observations, and no passing frozen risk-and-feasibility pack.",
+      "fix_required": "Run the prospective paper-reconciliation and independent risk/feasibility review only after an admitted replay universe and execution/cost evidence are available; retain all exception rows and require zero unresolved blocking rows.",
+      "blocking_gate": "prospective_reconciliation_and_risk_veto",
+      "status": "open",
+      "verifier_ref": "UR05 acceptance test",
+      "reopened_count": 0
+    },
+    {
+      "issue_id": "R1-A-001",
+      "cycle": "R1_model",
+      "severity": "A",
+      "owner_skill": "equity-research",
+      "owner_agent": "open-universe research owner",
+      "artifact": "analysis/r1_open_universe_coverage_gap_20260814.md",
+      "evidence": "Earlier research was concentrated in a finite ETF/AU/CU/TA probe, which could have been misread as an open domestic multi-asset opportunity set.",
+      "fix_required": "Maintain a class-by-class U0 matrix stating evidence, economic/structural/history/execution/risk gaps, source path and q=0 outcome for all ten in-scope categories.",
+      "blocking_gate": "open_universe_coverage",
+      "status": "closed",
+      "verification_evidence": [
+        "analysis/r1_open_universe_coverage_gap_20260814.md",
+        "analysis/r1_primary_source_route_catalog_20260814.md",
+        "independent source-route audit: 10/10 U0 classes, R01--R17 boundary retained; six-class package-gap arithmetic corrected and re-read"
+      ],
+      "verifier_ref": "U0 class-count/manual review",
+      "reopened_count": 0
+    }
+  ],
+  "current_decision": "Static replay design controls are repaired and independently checked, but the case is still a non-investable q=0 evidence memo. No product, contract, allocation, holding, execution instruction or return result is admitted."
+}

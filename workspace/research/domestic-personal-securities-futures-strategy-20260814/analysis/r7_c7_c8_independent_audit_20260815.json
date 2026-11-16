@@ -1,0 +1,51 @@
+{
+  "allowed_interpretation": "Independent arithmetic consistency only. It does not establish a total-return result, stable 5% result, suitability, allocation, holding, order, or action.",
+  "artifact_id": "DPSFS-R7-INDEPENDENT-C7-C8-v1",
+  "as_of": "2026-08-15",
+  "failures": {
+    "C7": [],
+    "C8": []
+  },
+  "findings": [
+    {
+      "description": "年度指标曾漏计每年首个共同观察日；修复、回归夹具和独立复算均已通过，低于 5% 的年份数不变。",
+      "id": "R7-C7-001",
+      "status": "closed"
+    },
+    {
+      "description": "全期年化分母曾抵消建仓 30bp 载荷；已改按单位净值基线复算，C8 否决结论不变。",
+      "id": "R7-C8-001",
+      "status": "closed"
+    },
+    {
+      "description": "两条路径都只有回溯公开市场价，缺少 PIT 总回报与执行账本；该边界阻止行动化或稳定收益主张。",
+      "id": "R7-SCOPE-001",
+      "status": "open_non_waivable"
+    }
+  ],
+  "status": "PASS_WITH_NON_ACTIONABLE_SCOPE_LIMITATIONS",
+  "tracks": {
+    "C7": {
+      "annual_baseline_check": "PASS; complete-year returns use the preceding observed unit-NAV value, including the first in-year session return.",
+      "annualized_market_price_proxy": 0.07258417829607233,
+      "common_sessions": 3171,
+      "complete_years_below_5pct": 5,
+      "max_drawdown": -0.3337098435627862,
+      "rolling_window_count": 1952,
+      "rolling_windows_below_5pct": 1428,
+      "scope": "Official retrospective market-price arithmetic only; not total return or executable performance.",
+      "status": "PASS"
+    },
+    "C8": {
+      "annualized_market_price_proxy": 0.03928600496293111,
+      "baseline_cost_check": "PASS; all-period annualization starts from the unit-NAV baseline before the 30bp build load.",
+      "common_sessions": 1447,
+      "complete_years_below_5pct": 2,
+      "max_drawdown": -0.07441997604613715,
+      "rolling_window_count": 187,
+      "rolling_windows_below_5pct": 123,
+      "scope": "Official retrospective market-price arithmetic only; not total return or executable performance.",
+      "status": "PASS"
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "schema_version": "cross_asset_execution_gate_extension.v1",
+  "scope_id": "total-return-open-universe-v3-20260814",
+  "as_of": "2026-08-14",
+  "artifact_class": "derived_research_evidence",
+  "purpose": "Structure-specific access, settlement, liquidity and suitability gates for the T1 continuation queue. It explains why a research nominee cannot be converted into a usable allocation without current evidence.",
+  "current_state": {
+    "status": "blocked",
+    "all_candidates_q": 0,
+    "execution_authorization": "none",
+    "reason": "No named candidate has a current, source-labelled access, suitability, tax, settlement, price/NAV, spread/depth, market-status and adverse-unwind packet."
+  },
+  "primary_policy_links": [
+    {"id": "X01", "authority": "Shanghai Stock Exchange", "title": "Trading Rules, effective 2026-07-06", "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/stocks/exchange/c/c_20260424_10816482.shtml"},
+    {"id": "X02", "authority": "Shanghai Stock Exchange", "title": "ETF implementation rules", "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/fund/trading/c/c_20250606_10781071.shtml"},
+    {"id": "X03", "authority": "Shanghai Stock Exchange", "title": "Public REIT trading rules", "url": "https://www.sse.com.cn/lawandrules/sselawsrules2025/reits/c/c_20251231_10803729.shtml"},
+    {"id": "X04", "authority": "China Securities Regulatory Commission", "title": "Investor suitability rule", "url": "https://www.csrc.gov.cn/csrc/c106256/c1653849/content.shtml"},
+    {"id": "X05", "authority": "State Administration of Foreign Exchange", "title": "Individual foreign-exchange FAQ", "url": "https://www.safe.gov.cn/hainan/2019/0610/964.html"},
+    {"id": "X06", "authority": "BlackRock", "title": "iShares 0-3 Month Treasury Bond ETF (SGOV) product page", "url": "https://www.ishares.com/us/products/314116/ishares-0-3-month-Treasury-bond-etf"}
+  ],
+  "common_required_packet": [
+    "Current legal identity, venue, securities/fund account eligibility, investor-product risk matching and any product-specific authority.",
+    "Dated gross-to-net ledger: fees, taxes, settlement dates, distribution/interest event treatment and holder-type assumptions.",
+    "Same-session market state: trading/suspension/corporate-action status, prior close, applicable limit prices, last price, bid/ask, visible depth, turnover and traded value.",
+    "For funds and REITs: NAV/IOPV/reference-value timestamp, premium/discount and creation/redemption status where applicable.",
+    "A bounded, adverse unwind test based on observable liquidity. No queue priority, full displayed-depth availability, same-day exit or normal trading through a limit/suspension event may be assumed.",
+    "A separate account-specific feasibility review for lots, minimum fees, intended participation and tax status; a scale-neutral model is insufficient for these checks and no default amount is substituted."
+  ],
+  "structure_specific_gates": [
+    {
+      "group": "600036, 600900, 000333 direct A-shares",
+      "material_mechanics": ["A-share market-status, price-limit, suspension and resale constraints", "free float and observable depth", "corporate actions"],
+      "additional_gates": ["current valuation and catalyst/invalidation dossier", "board and price-limit status", "current float/turnover/depth", "issuer/sector overlap and concentration"],
+      "status": "blocked_q0"
+    },
+    {
+      "group": "512500 and 510880 equity ETFs",
+      "material_mechanics": ["ETF trading/settlement classification is product-specific", "market price versus NAV/IOPV", "creation/redemption and underlying-market risks"],
+      "additional_gates": ["current holdings/index methodology and overlap", "tracking, securities lending and derivatives where material", "premium/discount, spread/depth and exact same-day turnover rule"],
+      "status": "blocked_q0"
+    },
+    {
+      "group": "511010 Treasury ETF and 511880 money-market ETF",
+      "material_mechanics": ["do not infer generic ETF T+0", "market price/NAV/reference-value and underlying duration or counterparty risks"],
+      "additional_gates": ["verify current ETF classification and settlement", "Treasury duration/DV01 or money-market repo/counterparty review", "premium/discount, capacity, fee/tax and protected-liquidity comparison"],
+      "status": "blocked_q0"
+    },
+    {
+      "group": "260008 direct Treasury candidate",
+      "material_mechanics": ["listing/identifier is not proof of a particular individual's access", "venue, custody, clean/dirty price, accrued interest and settlement can differ"],
+      "additional_gates": ["demonstrate lawful accessible venue and custody", "current bid/offer and settlement method", "duration, realized-sale and tax treatment"],
+      "status": "blocked_q0"
+    },
+    {
+      "group": "508069, 508068 and 508096 public REITs",
+      "material_mechanics": ["listing-day and subsequent price-limit rules differ from ordinary equity assumptions", "project events, valuations, capital raises and shallow secondary liquidity can impair exits"],
+      "additional_gates": ["latest project NAV and intervening events", "operating KPIs, debt/refinancing/capex and manager/sponsor/tenant/offtaker exposures", "free float, spread/depth, distribution classification and tax"],
+      "status": "blocked_q0"
+    }
+  ],
+  "sgov_boundary": {
+    "conclusion": "SGOV is not a generally onshore-available substitute for a mainland listed cash or sovereign product.",
+    "basis": ["X06 identifies SGOV as a USD NYSE-listed U.S. Treasury-bill ETF.", "X05 describes restrictions on using individual foreign exchange for overseas securities investment."],
+    "required_if_an_existing_lawful_offshore_route_is_claimed": ["custody and funding/FX legality", "USD cash and tax documentation", "broker fees, market-hours/holiday mismatch and settlement", "China tax treatment", "product-specific liquidity and price/NAV evidence"],
+    "status": "not_admitted_q0"
+  },
+  "warnings": [
+    "A source link must be archived and checked against then-effective rules before it is used in a T2 or T3 decision packet.",
+    "No single settlement convention, tax rule or ETF turnover rule is assumed across asset structures.",
+    "This gate matrix does not provide orders, quantities, timing, tax advice, suitability certification or an execution recommendation."
+  ]
+}

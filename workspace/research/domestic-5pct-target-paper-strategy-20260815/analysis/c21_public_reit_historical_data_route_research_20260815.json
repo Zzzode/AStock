@@ -1,0 +1,398 @@
+{
+  "schema_version": "c21_public_reit_historical_data_route_research.v1",
+  "artifact_id": "D5PT-C21-PUBLIC-REIT-HISTORICAL-DATA-ROUTE-RESEARCH-v1",
+  "as_of": "2026-08-15",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "portfolio_q": 0,
+  "product_selected": false,
+  "return_test_run": false,
+  "return_result": null,
+  "external_action": false,
+  "purpose": "Bounded, read-only research of lawful historical-data routes for a future mainland public-REIT paper test. This artifact is not a data acquisition, license application, universe definition, product selection, backtest, or action instruction.",
+  "status": "CONDITIONAL_LAWFUL_MULTI_SOURCE_ROUTE_IDENTIFIED_NOT_C20_TEST_ADMITTED",
+  "answer": "No currently available public end-to-end or already licensed route was established for C20. SSE Info and Shenzhen Securities Information provide credible licensed historical-market-data routes, but no reviewed contract or delivery proves a full point-in-time mainland public-REIT total-return, cash-distribution, corporate-action, NAV, cost, and execution data stack. C20 therefore remains not paper-testable today.",
+  "source_retention_note": "Per the assigned scope, this artifact records URL locators, stated dates, and access observations only. No new source batch, raw downloaded source, data sample, or license has been retained or obtained in this case. A URL is not a grant of data rights or a reproducible-input freeze.",
+  "rights_principle": "Where a public webpage permits reading or non-commercial download but an exchange authorization statement requires permission to receive or use exchange information, apply the stricter written-permission standard. This is a research-control rule, not legal advice.",
+  "candidate_routes": [
+    {
+      "route_id": "C21-R1",
+      "provider": "Shanghai Stock Exchange Information Network Co., Ltd. (SSE Info)",
+      "scope": "SSE Smart Data plus SSE historical Level-1/Level-2 market-data route",
+      "primary_urls": [
+        "https://www.sseinfo.com/services/sseai/aidata/",
+        "https://www.sseinfo.com/services/sseai/aidata/doc/c/10010668/files/3cdf382b87374f85b3f654bdd9ddf7ee.pdf",
+        "https://www.sseinfo.com/services/assortment/market/hqywwd/wdcpsms/c/10782125/files/f2ba70dea74a4323bf13b76fffce0e40.pdf",
+        "https://www.sseinfo.com/services/assortment/market/hqywwd/wdzsjk/c/10824356/files/4ddcd5a592f9429f9288b0d2cb0c9549.pdf",
+        "https://www.sseinfo.com/services/assortment/historical/"
+      ],
+      "publisher_dates": [
+        "Smart Data public service page date not stated",
+        "2021-07-30 Smart Data product manual",
+        "2025-06-12 product manual",
+        "2026-03-27 interface manual",
+        "public product page date not stated"
+      ],
+      "retrieved_date": "2026-08-15",
+      "access_rights_observed": "SSE Smart Data describes historical-market review, strategy-model validation, and simulated-trading uses, including historical, reference, and announcement data. The SSE/SZSE joint authorization statement nevertheless requires a person needing to receive, use, or operate exchange securities information to apply to the relevant authorized operator. The public product materials and application path do not establish that this case has any license, historical delivery, local-retention right, or derived-output right.",
+      "observed_fields_or_capabilities": [
+        "Smart Data states that historical market, basic/static/reference, and announcement data are service components and that its cloud service can support historical review, strategy-model validation, and simulated-trading tests",
+        "historical Level-1 and Level-2 snapshots, trades, daily K-lines, and minute K-lines",
+        "security identifier, timestamp, prior close, open, high, low, last/close, volume, and amount",
+        "trade status and order-book or tick fields at higher data tiers",
+        "interface units explicitly distinguish funds from stocks, bonds, and indices"
+      ],
+      "coverage_observed": "A generic exchange security/fund schema and an integrated historical/reference/announcement product direction are documented. Neither certifies that a contracted historical extract includes every SSE public REIT, every historic date, delisted or changed instruments, an adjustment chain, or the required point-in-time reference universe.",
+      "can_potentially_fill": {
+        "sse_raw_price_volume_status": "CONDITIONAL_YES",
+        "sse_point_in_time_security_master": "PARTIAL_CONDITIONAL",
+        "product_level_adjusted_total_return": "NOT_PROVEN",
+        "cash_distribution_and_corporate_actions": "NOT_PROVEN",
+        "reit_nav_history": "NOT_PROVEN",
+        "personal_cost_execution_eligibility": "NO"
+      },
+      "mandatory_admission_evidence": [
+        "Written license covering the precise historic range, internal research, local retention, reproducible calculation, and permitted derived outputs.",
+        "A public-REIT-specific delivery sample, field dictionary, date-by-date coverage report, identifier mapping, correction history, and availability timestamps.",
+        "A documented adjustment and corporate-action method; never infer it from OHLCV alone."
+      ],
+      "current_status": "conditional_candidate_only"
+    },
+    {
+      "route_id": "C21-R2",
+      "provider": "Shanghai Stock Exchange Information Network Co., Ltd. (SSE Info)",
+      "scope": "SSE financial-database and fund-announcement document route",
+      "primary_urls": [
+        "https://www.sseinfo.com/services/data/szjr/",
+        "https://www.sseinfo.com/aboutus/authstatement/"
+      ],
+      "publisher_dates": [
+        "public service page date not stated",
+        "joint authorization statement dated 2003-12-24"
+      ],
+      "retrieved_date": "2026-08-15",
+      "access_rights_observed": "The public service page lists fund announcements, states that announcement-file service covers Shanghai equity, bond, and fund announcements, and shows a business-application path. No right for bulk extraction, normalized event use, local retention, or derived research output was obtained in this review.",
+      "observed_fields_or_capabilities": [
+        "fund announcements",
+        "announcement-file service with more than 400 detailed announcement classifications",
+        "officially sourced announcement information"
+      ],
+      "coverage_observed": "Document-service existence is established, but no public-REIT event taxonomy, full historical extract, correction policy, event-field dictionary, or actual-payment ledger has been reviewed.",
+      "can_potentially_fill": {
+        "source_document_validation": "CONDITIONAL_YES",
+        "cash_distribution_notice": "PARTIAL_CONDITIONAL",
+        "standardized_ex_record_pay_tax_event_ledger": "NOT_PROVEN",
+        "corporate_action_history": "NOT_PROVEN",
+        "actual_cash_receipt": "NO"
+      },
+      "mandatory_admission_evidence": [
+        "A contract and field dictionary that explicitly cover public-REIT fund announcements and the desired normalized-history use.",
+        "Evidence that event records distinguish announcement, ex-right, record, payment, correction, and actual cash treatment.",
+        "Independent reconciliation of a sample to original disclosure and a clearing, payment, or contracted corporate-action record."
+      ],
+      "current_status": "conditional_candidate_only"
+    },
+    {
+      "route_id": "C21-R3",
+      "provider": "Shenzhen Securities Information Co., Ltd.",
+      "scope": "SZSE historical enhanced-market-data route",
+      "primary_urls": [
+        "https://www.szsi.cn/cpfw/fwsq/hq/yw-2.htm",
+        "https://www.szsi.cn/cpfw/fwsq/hq/sqlc-3.htm?COLLCC=1146308961",
+        "https://www.sseinfo.com/aboutus/authstatement/"
+      ],
+      "publisher_dates": [
+        "public authorization-page date not stated",
+        "public non-display self-use process page date not stated",
+        "joint authorization statement dated 2003-12-24"
+      ],
+      "retrieved_date": "2026-08-15",
+      "access_rights_observed": "The source is an authorization page. It describes historic enhanced data as a service for strategy research and model backtesting; its non-display self-use process page describes application, system validation, and a signed self-use data license. A specific licensed product and contract remain required. The joint statement identifies Shenzhen Securities Information as SZSE's exclusive authorized operator for securities information.",
+      "observed_fields_or_capabilities": [
+        "SZSE full market and all security types, explicitly including funds",
+        "history stated as available from 2008-01-01",
+        "historical order, trade, snapshot, security-information, security-status, and index-snapshot data",
+        "local-server delivery described for authorized historical enhanced-data users"
+      ],
+      "coverage_observed": "The page supports the existence of a fund-capable historical route, not the actual public-REIT coverage, rights, adjustment factors, event history, NAV availability, revision policy, or point-in-time availability required by C20.",
+      "can_potentially_fill": {
+        "szse_raw_price_volume_status": "CONDITIONAL_YES",
+        "szse_point_in_time_security_master": "PARTIAL_CONDITIONAL",
+        "product_level_adjusted_total_return": "NOT_PROVEN",
+        "cash_distribution_and_corporate_actions": "NOT_PROVEN",
+        "reit_nav_history": "NOT_PROVEN",
+        "personal_cost_execution_eligibility": "NO"
+      },
+      "mandatory_admission_evidence": [
+        "Written permission covering exact historic data, intended internal research, local storage, reproducible output, and permitted derivatives.",
+        "A sample showing public-REIT identifiers, historic coverage, status-code definitions, revisions, and all required dates.",
+        "A separate event and cash-distribution ledger rather than an inference from price, turnover, or status fields."
+      ],
+      "current_status": "conditional_candidate_only"
+    },
+    {
+      "route_id": "C21-R4",
+      "provider": "SZSE public-REIT disclosure platform and CNINFO public disclosure platform",
+      "scope": "Official public document locators for event-evidence reconciliation",
+      "primary_urls": [
+        "https://reits.szse.cn/disclosure/index.html",
+        "https://www.cninfo.com.cn/?lang=zh",
+        "https://docs.static.szse.cn/www/lawrules/service/reits/W020241129646399798931.pdf",
+        "https://www.szse.cn/application/laws/"
+      ],
+      "publisher_dates": [
+        "public platform dates not stated",
+        "public platform dates not stated",
+        "2024-11 revision of the public-REIT continuing-business guide",
+        "legal-statement page date not stated"
+      ],
+      "retrieved_date": "2026-08-15",
+      "access_rights_observed": "The SZSE legal statement permits non-commercial browsing and download of website content subject to its terms, while reserving intellectual-property rights in market information. No full-universe machine-readable export, automated extraction permission, long-term retention permission, or calculation/republication entitlement was established. The stricter authorization rule is therefore applied.",
+      "observed_fields_or_capabilities": [
+        "public-REIT disclosure and fund-list locators",
+        "official disclosure documents for manual source checking",
+        "CNINFO stated as an SZSE statutory information-disclosure platform",
+        "SZSE's continuing-business guide specifies distribution-announcement fields including record date, distribution base date, cash-payment date, distributable amount, and contractually required distribution amount, as well as workflows for halts, resumptions, and unlocking"
+      ],
+      "coverage_observed": "The portals and continuing-business guide locate official documents and define material event fields, but do not prove a complete, normalized, point-in-time historic cash-distribution or corporate-action database.",
+      "can_potentially_fill": {
+        "original_disclosure_cross_check": "CONDITIONAL_YES",
+        "fund_list_locator": "PARTIAL_CONDITIONAL",
+        "machine_readable_event_ledger": "NO",
+        "total_return_history": "NO",
+        "cost_execution_eligibility": "NO"
+      },
+      "mandatory_admission_evidence": [
+        "An explicitly permitted extraction and retention method, if documents are to be used beyond individual manual checking.",
+        "A frozen document universe, identifiers, original publication times, correction records, and a policy for later revisions.",
+        "Independent reconciliation of announced versus realized distributions and relevant corporate actions."
+      ],
+      "current_status": "document_evidence_only"
+    },
+    {
+      "route_id": "C21-R5",
+      "provider": "China Securities Index Co., Ltd.",
+      "scope": "CSI REITs Total Return Index methodology as a benchmark concept only",
+      "primary_urls": [
+        "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/932047_Index_Methodology_cn.pdf"
+      ],
+      "publisher_dates": [
+        "2024-06, version 1.1"
+      ],
+      "retrieved_date": "2026-08-15",
+      "access_rights_observed": "A public methodology document was observed. No historical index-series license, constituent and corporate-action input history, local-retention right, or product-level total-return data entitlement was obtained.",
+      "observed_fields_or_capabilities": [
+        "methodology states that constituent distributions are included in index return",
+        "index base date is 2021-09-30",
+        "sample universe excludes REITs with less than three months of listing and applies liquidity screening"
+      ],
+      "coverage_observed": "This is a market benchmark methodology, not a full-market, point-in-time public-REIT universe or an individual-product total-return/cashflow record. At the cutoff date its stated base date does not yet yield a full five-year period.",
+      "can_potentially_fill": {
+        "benchmark_definition": "YES",
+        "product_level_total_return": "NO",
+        "point_in_time_full_universe": "NO",
+        "cash_distribution_and_corporate_actions": "NO",
+        "strict_net_return": "NO"
+      },
+      "mandatory_admission_evidence": [
+        "A separately licensed index series if used as a benchmark.",
+        "Do not use index construction or index level as a substitute for C20 product-level source data, costs, execution, or eligibility."
+      ],
+      "current_status": "benchmark_methodology_only"
+    }
+  ],
+  "field_coverage_matrix": [
+    {
+      "field_group": "point-in-time mainland public-REIT universe, identifier mapping, listing, termination, expansion, and status history",
+      "best_candidate": "C21-R1 plus C21-R3 licensed reference/status files, reconciled with C21-R2/C21-R4 documents",
+      "status": "BLOCKED",
+      "gap": "No licensed delivery, historic universe snapshots, event history, date-by-date record counts, or survivorship-control evidence was reviewed."
+    },
+    {
+      "field_group": "raw market price, volume, turnover, trade status, quote, and transaction data",
+      "best_candidate": "C21-R1 for SSE and C21-R3 for SZSE, under written historical-data rights",
+      "status": "CONDITIONAL",
+      "gap": "No C20 license, public-REIT-specific sample, coverage report, field dictionary, correction policy, or executable-fill protocol exists in this review."
+    },
+    {
+      "field_group": "product-level price adjustment / total-return chain",
+      "best_candidate": "Licensed raw market data plus a separately validated cash-distribution and corporate-action ledger",
+      "status": "BLOCKED",
+      "gap": "No observed source delivers or defines a public-REIT-adjusted historical price chain, adjustment factors, reinvestment convention, or revision policy."
+    },
+    {
+      "field_group": "cash distributions: announcement, ex-right, record, payment, per-unit amount, tax, and realized cash treatment",
+      "best_candidate": "C21-R2 and C21-R4 document evidence plus a contracted corporate-action, clearing, or payment record",
+      "status": "BLOCKED",
+      "gap": "Announcement documents and public page fields do not prove a complete standardized event ledger or actual after-tax cash receipt."
+    },
+    {
+      "field_group": "expansion, unit changes, suspension/resumption, termination, and other corporate actions",
+      "best_candidate": "C21-R1/C21-R3 status files plus C21-R2/C21-R4 disclosure archive",
+      "status": "BLOCKED",
+      "gap": "No full historic, point-in-time, machine-replayable corporate-action record and correction policy was established."
+    },
+    {
+      "field_group": "NAV or valuation and the time it became available",
+      "best_candidate": "A future contract that expressly covers public-REIT NAV/valuation history, reconciled with official disclosure",
+      "status": "NOT_PROVEN",
+      "gap": "Generic exchange schema references to ETF IOPV/NAV do not establish populated public-REIT NAV history, field semantics, or rights."
+    },
+    {
+      "field_group": "personal fees, taxes, eligibility, quotes, fills, partial fills, settlement, and account path",
+      "best_candidate": "Dated broker, account, and execution evidence outside the market-data route",
+      "status": "BLOCKED_OUTSIDE_MARKET_DATA_ROUTE",
+      "gap": "Market-data and disclosure providers cannot substitute for individual cost, eligibility, or execution evidence."
+    }
+  ],
+  "time_coverage_context": {
+    "official_market_start_sources": [
+      "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20210621_5495045.shtml",
+      "https://reits.szse.cn/reits/announcement/news/t20210621_586502.html"
+    ],
+    "official_market_start_date": "2021-06-21",
+    "benchmark_base_date": "2021-09-30",
+    "finding": "The market-start date does not prove contractual historical coverage. The public CSI total-return-index methodology begins on 2021-09-30 and therefore does not provide a full five-year benchmark period as of 2026-08-15. No return or threshold calculation was run."
+  },
+  "minimum_contract_and_data_acceptance_gate": [
+    "Written rights from each relevant data owner or authorized operator for exact data, historic range, internal research, local retention, reproducible calculation, allowed derived outputs, and redistribution restrictions.",
+    "A retained, hashable raw-delivery sample; complete field dictionaries; date-by-date counts; identifier mappings; time zone; original availability time; correction log; and missing-data rules.",
+    "A full point-in-time SSE/SZSE public-REIT master universe that retains listings, delistings, suspensions, expansions, status changes, and unit changes without survivorship filtering.",
+    "A normalized event ledger that separates announcement, ex-right, record, payment, tax, correction, actual cash treatment, and other corporate actions, independently reconciled to original disclosure and clearing/payment or contracted corporate-action evidence.",
+    "A predeclared adjustment, cash-holding/reinvestment, no-trade, halt, bid-ask, partial-fill, cost, and execution protocol that never substitutes close, yield, distribution rate, NAV, volume, or an index level for an actual personal result.",
+    "Separate dated evidence for C20 cost, tax, broker, settlement, account, suitability, and eligibility gates.",
+    "Independent reconstruction from the retained raw delivery before any future paper-test admission or research-result discussion."
+  ],
+  "current_disposition": {
+    "state": "NO_PRODUCT_SELECTION_NO_DATA_ACQUISITION_NO_BACKTEST_NO_ACTION",
+    "c20_implication": "C21 identifies conditional future due-diligence routes only. It does not cure C20 G3-G8, does not create a product-level total-return input, and does not change C20's existing no-test-admission status.",
+    "prohibitions": [
+      "Do not select or rank a public REIT from this route research.",
+      "Do not calculate, forecast, or claim a return, distribution yield, total return, net return, or threshold result.",
+      "Do not infer personal eligibility, account access, order acceptance, liquidity, execution quality, settlement, or tax treatment.",
+      "Do not contact a provider, apply for or sign a license, download restricted data, open an account, transfer funds, subscribe, redeem, buy, sell, or place an order under this artifact."
+    ]
+  },
+  "source_registry": [
+    {
+      "source_id": "C21-S01",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "SSE/SZSE Joint Authorization Statement",
+      "url": "https://www.sseinfo.com/aboutus/authstatement/",
+      "published_or_stated_date": "2003-12-24",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_rights_boundary",
+      "limitations": "Not a license for this case."
+    },
+    {
+      "source_id": "C21-S02",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "SSE Historical Data Product Manual v2.0.0",
+      "url": "https://www.sseinfo.com/services/assortment/market/hqywwd/wdcpsms/c/10782125/files/f2ba70dea74a4323bf13b76fffce0e40.pdf",
+      "published_or_stated_date": "2025-06-12",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_product_fields",
+      "limitations": "Does not prove public-REIT delivery coverage, total-return adjustment, or license scope."
+    },
+    {
+      "source_id": "C21-S03",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "SSE Historical Data Interface Manual v1.1.5",
+      "url": "https://www.sseinfo.com/services/assortment/market/hqywwd/wdzsjk/c/10824356/files/4ddcd5a592f9429f9288b0d2cb0c9549.pdf",
+      "published_or_stated_date": "2026-03-27",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_schema",
+      "limitations": "Schema evidence only; no REIT-specific event or NAV guarantee."
+    },
+    {
+      "source_id": "C21-S04",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "Financial Database / Fund Announcement Service",
+      "url": "https://www.sseinfo.com/services/data/szjr/",
+      "published_or_stated_date": "not stated",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_service_existence",
+      "limitations": "Not a standardized event-history contract or grant of use rights."
+    },
+    {
+      "source_id": "C21-S05",
+      "publisher": "Shenzhen Securities Information Co., Ltd.",
+      "title": "SZSE Market-Data Authorization / Historical Enhanced Data",
+      "url": "https://www.szsi.cn/cpfw/fwsq/hq/yw-2.htm",
+      "published_or_stated_date": "not stated",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_service_existence",
+      "limitations": "No contract, actual public-REIT delivery sample, or scope confirmation was obtained."
+    },
+    {
+      "source_id": "C21-S06",
+      "publisher": "Shenzhen Stock Exchange",
+      "title": "Legal Statement",
+      "url": "https://www.szse.cn/application/laws/",
+      "published_or_stated_date": "not stated",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_public_page_terms",
+      "limitations": "Public-page terms do not establish a full data-feed or derived-research entitlement."
+    },
+    {
+      "source_id": "C21-S07",
+      "publisher": "Shenzhen Stock Exchange / Shenzhen Securities Information Co., Ltd.",
+      "title": "Public REIT Disclosure Platform and CNINFO",
+      "url": "https://reits.szse.cn/disclosure/index.html",
+      "published_or_stated_date": "not stated",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_document_locator",
+      "limitations": "Does not establish a complete machine-readable historic event ledger."
+    },
+    {
+      "source_id": "C21-S08",
+      "publisher": "China Securities Index Co., Ltd.",
+      "title": "CSI REITs Total Return Index Methodology v1.1",
+      "url": "https://oss-ch.csindex.com.cn/static/html/csindex/public/uploads/indices/detail/files/zh_CN/932047_Index_Methodology_cn.pdf",
+      "published_or_stated_date": "2024-06",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_benchmark_methodology",
+      "limitations": "Methodology, not a licensed product-level total-return history."
+    },
+    {
+      "source_id": "C21-S09",
+      "publisher": "Shanghai Stock Exchange and Shenzhen Stock Exchange",
+      "title": "First Public Infrastructure REIT Listings",
+      "url": "https://www.sse.com.cn/aboutus/mediacenter/hotandd/c/c_20210621_5495045.shtml",
+      "published_or_stated_date": "2021-06-21",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_market_start_context",
+      "limitations": "Does not prove data coverage, rights, or execution feasibility."
+    },
+    {
+      "source_id": "C21-S10",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "SSE Smart Data Service",
+      "url": "https://www.sseinfo.com/services/sseai/aidata/",
+      "published_or_stated_date": "not stated",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_service_existence",
+      "limitations": "Does not prove public-REIT field coverage, delivery, or license scope."
+    },
+    {
+      "source_id": "C21-S11",
+      "publisher": "Shanghai Stock Exchange Information Network Co., Ltd.",
+      "title": "SSE Smart Data Product Manual v1.1.1",
+      "url": "https://www.sseinfo.com/services/sseai/aidata/doc/c/10010668/files/3cdf382b87374f85b3f654bdd9ddf7ee.pdf",
+      "published_or_stated_date": "2021-07-30",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_product_scope",
+      "limitations": "Historic product documentation, not a contract or a verified public-REIT delivery."
+    },
+    {
+      "source_id": "C21-S12",
+      "publisher": "Shenzhen Stock Exchange",
+      "title": "Public Infrastructure REIT Continuing-Business Guide (2024 revision)",
+      "url": "https://docs.static.szse.cn/www/lawrules/service/reits/W020241129646399798931.pdf",
+      "published_or_stated_date": "2024-11",
+      "retrieved_date": "2026-08-15",
+      "quality": "high_authority_for_event_field_map",
+      "limitations": "Defines expected event-disclosure fields and processes; it is not a historic event database."
+    }
+  ]
+}

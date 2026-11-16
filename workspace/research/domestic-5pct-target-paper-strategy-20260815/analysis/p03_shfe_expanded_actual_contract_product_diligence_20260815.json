@@ -1,0 +1,57 @@
+{
+  "schema_version": "shfe_expanded_actual_contract_product_diligence.v1",
+  "artifact_id": "D5PT-P03-v1",
+  "as_of": "2026-08-15",
+  "status": "dated_exchange_product_facts_verified; not_admitted_for_action",
+  "research_only": true,
+  "formal_decision_eligible": false,
+  "source_manifest": {
+    "path": "workspace/research/domestic-5pct-target-paper-strategy-20260815/sources/c17-official-shfe-expanded-product-diligence-20260815/manifest.json",
+    "sha256": "dbc39e8c0d3789cb88d2267dca285b1b4cf58f1ca65e235471e0c250d8c12ec8",
+    "quality": "dated_primary_exchange_product_rules"
+  },
+  "universe_role": "RB and SP are added only to a separate five-family C17 research candidate. They are not amendments to C16, and neither product is a selected position, contract quantity, allocation or order.",
+  "products": [
+    {
+      "family": "RB",
+      "name": "螺纹钢期货",
+      "economic_exposure": "Construction and steel-cycle exposure, affected by property/infrastructure activity, steel output, iron inputs, inventory, policy and macro demand.",
+      "dated_contract_terms": {
+        "contract_unit": "10 metric tonnes per lot",
+        "minimum_tick": "CNY 1 per tonne; CNY 10 per lot",
+        "listed_months": "January through December",
+        "scheduled_last_trading_day": "15th day of the delivery month, subject to exchange holiday adjustment",
+        "dated_base_margin": "5% of contract value",
+        "dated_base_price_limit": "plus or minus 3% of the prior settlement price"
+      },
+      "risk_and_implementation_boundary": ["steel-cycle and policy shocks", "contract-specific liquidity migration", "delivery-month quantity and position constraints", "dynamic exchange and broker risk control changes", "settlement mark is not an executable price"],
+      "c17_role": "One potential actual-contract signal family with a fractional one-fifth diagnostic sleeve only when frozen data checks pass."
+    },
+    {
+      "family": "SP",
+      "name": "漂白硫酸盐针叶木浆期货",
+      "economic_exposure": "Softwood-pulp exposure, affected by forest supply, global pulp flows, shipping, paper and packaging demand, inventory, currency and macro conditions.",
+      "dated_contract_terms": {
+        "contract_unit": "10 metric tonnes per lot",
+        "minimum_tick": "CNY 2 per tonne; CNY 20 per lot",
+        "listed_months": "January through December",
+        "scheduled_last_trading_day": "15th day of the delivery month, subject to exchange holiday adjustment",
+        "dated_base_margin": "4% of contract value",
+        "dated_base_price_limit": "plus or minus 3% of the prior settlement price"
+      },
+      "risk_and_implementation_boundary": ["pulp supply-demand, freight and currency shocks", "contract-specific liquidity migration", "delivery and forced-close constraints", "dynamic exchange and broker risk control changes", "settlement mark is not an executable price"],
+      "c17_role": "One potential actual-contract signal family with a fractional one-fifth diagnostic sleeve only when frozen data checks pass."
+    }
+  ],
+  "common_evidence_boundary": [
+    "The retained 2026 rule texts document current exchange-level terms, not historical effective-session terms across the 2019--2025 diagnostic period.",
+    "Neither rule page confirms individual account eligibility, short permission, broker fees, margin add-ons, limit-locks, fill, tax, capacity, delivery access or a net result.",
+    "Futures contracts are not equity claims. This diligence does not generate target prices, enterprise valuations, expected returns or a holding recommendation."
+  ],
+  "required_before_any_future_paper_action": [
+    "Current exchange-adjusted calendar, contract status and delivery boundary.",
+    "Dated broker route confirmation for product access, long/short permission, margin, fees and forced-close procedures without adding personal records to the case.",
+    "Contemporaneous bid/ask, depth, limit status and a no-fill/partial-fill record.",
+    "Independent reconciliation of actual-contract selection, roll and settlement records."
+  ]
+}

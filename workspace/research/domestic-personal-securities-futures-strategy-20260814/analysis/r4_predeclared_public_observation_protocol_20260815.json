@@ -1,0 +1,319 @@
+{
+  "schema_version": "r4_predeclared_public_observation_protocol.v1",
+  "artifact_id": "DPSFS-R4-PUBOBS-v1",
+  "case_id": "domestic-personal-securities-futures-strategy-20260814",
+  "as_of": "2026-08-15",
+  "language": "zh-CN",
+  "artifact_type": "predeclared_research_only_public_observation_protocol",
+  "research_only": true,
+  "portfolio_q": 0,
+  "status": "predeclared_design_only_not_started",
+  "current_state": {
+    "cohort_built": false,
+    "public_observation_started": false,
+    "formal_forward_intake_mode": "not_entered",
+    "formal_paper_observation_mode": "not_entered",
+    "formal_replay_input_status": "prohibited",
+    "result_status": "no_result"
+  },
+  "research_question": "在事先冻结、来源可见但覆盖受限的国内上市基金观察面板中，未经验证的公开收盘价是否呈现可重复记录的跨类别广度状态；该问题只描述公开数据可观察性。",
+  "capital_cash_and_reinvestment_boundary": {
+    "capital_base": "NOT_DEFINED",
+    "funding": "NOT_MODELED",
+    "cash_receipt_objective": "NONE",
+    "distribution_receipt": "NOT_MODELED",
+    "reinvestment": "NOT_MODELED",
+    "cash_balance": "NOT_MODELED",
+    "return_objective": "NONE",
+    "accounting_boundary": "不建立单位、资产、负债或现金流账；任何公开价描述均不是个人资金结果，也不能与现金领取或再投资目标相联系。"
+  },
+  "feasibility_vs_action_boundary": {
+    "public_data_observability": "来源返回一条可记录的公开价；这不证明 PIT、完整性、权利或历史可得性。",
+    "descriptive_process_feasibility": "面板、哈希、月度状态和停止规则可以按本协议记录；这只证明描述性研究流程可运行。",
+    "action_feasibility": "需要 UR01--UR05、获权的 PIT/事件/执行资料、正式回放和独立复核；本协议不能提供，也没有任何行动可行性结论。",
+    "current_action_feasibility_status": "not_established"
+  },
+  "evidence_basis": [
+    {
+      "artifact": "analysis/r2_public_series_extended_probe_20260814.md",
+      "use": "证明既有公开日线不具备经验证的调整口径、历史可得时间、基金事件、NAV/IOPV、交易状态、费用、税费、盘口或成交信息。",
+      "boundary": "不是本协议的输入、暖启动、校准或结果来源。"
+    },
+    {
+      "artifact": "analysis/r2_candidate_prioritization_and_next_test_20260814.md",
+      "use": "确定已停止 H01--H07，不得以调参、成本敏感性或事后窗口寻找幸存者。",
+      "boundary": "不把停止结论外推至 U0 或本协议的描述性问题。"
+    },
+    {
+      "artifact": "analysis/r3_forward_observation_readiness_20260814.md",
+      "use": "确认正式接收和正式纸面观察需要独立的资料、冻结和核对门槛。",
+      "boundary": "本协议不进入 R3 MODE_1 或 MODE_2。"
+    },
+    {
+      "artifact": "analysis/r3_h3_first_party_data_route_assessment_20260814.md",
+      "use": "确认公开入口不能代替历史、PIT、权利、事件和执行资料。",
+      "boundary": "不把页面可访问性视为数据许可。"
+    },
+    {
+      "artifact": "data/u0_domestic_universe_registry_20260814.md",
+      "use": "保持十个 U0 父类开放且全部 q=0。",
+      "boundary": "本协议的上市基金面板不是 U0 或 U0→T2 推导。"
+    }
+  ],
+  "retired_hypothesis_separation": {
+    "retired_family": "H01--H07",
+    "retired_family_characteristics": [
+      "四条受限公开序列的月度相对动量筛查",
+      "多个回看长度、入选数量和风险预算变体",
+      "有限风险袖套、映射防守袖套和月度再平衡的单位—现金算术"
+    ],
+    "this_protocol_prohibitions": [
+      "不排序、不设置前N名、不设置风险预算、不设置对象权重或替代袖套",
+      "不建立单位净值、持仓、换手、再平衡、成交、结算、费用或税费账本",
+      "不计算组合表现、回撤、风险调整指标、年度化指标或任何可执行结果",
+      "不使用 R2 历史档案、H01--H07 参数或输出作为输入、比较、校准或验证"
+    ],
+    "distinct_output": "仅允许跨类别聚合的原始公开收盘价广度状态和覆盖状态。"
+  },
+  "u0_boundary": {
+    "registry_id": "DPSFS-U0-v2",
+    "all_parent_classes_remain_open": true,
+    "all_parent_classes_remain_q_zero": true,
+    "observation_panel_is_not": [
+      "U0 proxy",
+      "U0-to-T2 derivation",
+      "economic exclusion list",
+      "decision universe",
+      "product candidate list"
+    ],
+    "outside_panel_status_policy": "每个不属于上市基金观察类型或未被公共来源覆盖的 U0 父类必须保留 OUTSIDE_THIS_OBSERVATION_TYPE 或 PUBLIC_SOURCE_COVERAGE_GAP；该标签不构成经济否定。"
+  },
+  "candidate_observation_cohort": {
+    "cohort_id": "C-PUB-LF-v1",
+    "cohort_status": "not_built",
+    "cohort_freeze_rule": "在协议日期之后、第一条观察值之前，以一次且仅一次的公共来源面板快照建立；快照必须保存原始对象、查询定义、接收时间、字节数和 SHA-256。",
+    "identity_inclusion_rule": [
+      "来源元数据标为境内交易场所上市的公募基金份额或公募 REIT 份额。",
+      "来源元数据机械映射至权益 ETF、债券/货币市场 ETF、商品 ETF或公募 REIT之一。",
+      "行具有来源给出的唯一标识、场所和类别标签。"
+    ],
+    "prohibited_selection_inputs": [
+      "历史或当期价格变化",
+      "价格水平",
+      "规模",
+      "成交额",
+      "管理人",
+      "主题",
+      "上市年限",
+      "媒体叙事",
+      "任何主观判断"
+    ],
+    "row_statuses": [
+      "IN_SCOPE_OBSERVED",
+      "IN_SCOPE_INSUFFICIENT_PUBLIC_HISTORY",
+      "IN_SCOPE_MISSING_FIELD",
+      "UNCLASSIFIED_SOURCE_ROW",
+      "SOURCE_EXCEPTION"
+    ],
+    "no_silent_removal": true,
+    "fixed_observation_period": "从面板冻结开始至第二个完整自然年结束；新增、终止、停牌或无法查询的行只能保留状态和例外，不能替换或静默移除。",
+    "metric_ready_category_rule": {
+      "minimum_objects_with_required_history": 2,
+      "required_successful_close_records_per_object": 64,
+      "label_when_not_met": "COVERAGE_INSUFFICIENT"
+    },
+    "cross_category_metric_rule": {
+      "minimum_metric_ready_categories": 3,
+      "label_when_not_met": "COVERAGE_INSUFFICIENT"
+    }
+  },
+  "public_source_only_boundary": {
+    "source_route_id": "PUBLIC_LISTED_FUND_EOD_ROUTE_v1",
+    "source_path_count": 1,
+    "source_path_policy": "只能使用面板冻结时记录的一条公开日线来源路径；不能以第二来源、手工补价、回溯下载或源端替换补足。",
+    "source_route_certificate": {
+      "must_be_finalized_before": "面板快照或任何价格响应可见之前",
+      "independent_reviewer_required": true,
+      "required_fields": [
+        "provider",
+        "public_endpoint_or_page",
+        "query_template",
+        "adapter_or_parser_version",
+        "identifier_namespace",
+        "expected_venue_and_category_labels",
+        "terms_reference",
+        "failure_status_dictionary",
+        "certificate_sha256"
+      ],
+      "allowed_selection_evidence": "仅公开条款和字段说明；不得使用任何已返回的价格路径、覆盖结果或汇总状态。",
+      "failure_effect": "缺少证书时协议不得开始。"
+    },
+    "required_raw_fields": [
+      "instrument_identifier",
+      "source_displayed_date",
+      "public_close",
+      "retrieved_at",
+      "raw_response_sha256",
+      "explicit_missing_or_failure_status"
+    ],
+    "known_unresolved_fields": [
+      "source_available_at",
+      "revision_chain",
+      "adjustment_basis",
+      "NAV_or_IOPV",
+      "cash_event_ledger",
+      "trading_status",
+      "bid_ask_or_fill_evidence",
+      "fees_and_taxes"
+    ],
+    "data_label": "non_pit_public_observation_not_total_return",
+    "retrieved_at_boundary": "retrieved_at 只表示案例何时看到响应，不证明该数值在其历史日期可获得。",
+    "late_or_revision_policy": "迟到或修订发现一律新增例外行；不回写旧行，并使受影响月度状态为 SOURCE_EXCEPTION。",
+    "permission_boundary": "公开可访问性不等于留存或使用许可；若适用条款不能支持所需留存，协议不得采集新资料并保持 design_only。"
+  },
+  "timing": {
+    "timezone": "Asia/Shanghai",
+    "predeclared_on": "2026-08-15",
+    "first_possible_start": "仅在新的面板快照已冻结且原始留存许可边界已单独确认之后。",
+    "receipt_cadence": "每个来源显示的有效日追加一次原始响应或显式失败/缺失记录。",
+    "monthly_anchor": "每个日历月最后一条成功接收且来源显示有效日期的原始收盘价行。",
+    "monthly_publication_rule": "只有月末锚点后才形成当月描述行；缺失或未解决例外时仅输出状态和覆盖计数。",
+    "intra_month_rule_change": "禁止；期中观察不能改变规则，也不能被解释为方向、行动或结果。"
+  },
+  "single_predeclared_rule": {
+    "object_price_change_name": "unverified_public_close_change",
+    "lookback_successful_close_intervals": 63,
+    "lookback_successful_close_records": 64,
+    "object_formula": "g_i_m = P_i_m / P_i_m_minus_63 - 1",
+    "object_formula_boundary": "g 只表示未经验证公开收盘价变化；不得称为总回报、净回报、可成交回报或收益。",
+    "category_aggregation": "G_c_m = median(g_i_m) within a mechanically mapped category",
+    "category_state_rule": {
+      "positive": "G_c_m > 0 -> +1",
+      "zero": "G_c_m = 0 -> 0",
+      "negative": "G_c_m < 0 -> -1"
+    },
+    "cross_category_breadth_formula": "B_m = (N_positive - N_negative) / (N_positive + N_negative)",
+    "all_zero_category_rule": "若所有 METRIC_READY_CATEGORY 的状态均为零，则机械记 B_m = 0 并附 ALL_ZERO_CATEGORY_STATE；不进行除零或替代计算。",
+    "cross_category_breadth_boundary": "只有至少三个 METRIC_READY_CATEGORY 时才计算；零状态类别保留在审计行但不进入分母。B 只是 -1 至 +1 的类别状态描述，不是信号、分数或方向判断。",
+    "prohibited_uses_of_outputs": [
+      "对象筛选",
+      "排序",
+      "权重",
+      "后续规则",
+      "组合表现计算",
+      "执行或成本模拟"
+    ]
+  },
+  "anti_parameter_mining_controls": {
+    "fixed_elements": [
+      "63 条成功接收记录的窗口",
+      "每类至少两条对象级记录",
+      "至少三类才计算 B",
+      "月度锚点定义",
+      "对象公式、类别中位数、状态规则与 B 公式",
+      "单一来源路径和例外处理"
+    ],
+    "prohibited_variations": [
+      "其他窗口",
+      "分位数或均值替代",
+      "其他阈值",
+      "类别并组",
+      "数据来源替换",
+      "缺失补点",
+      "对象范围调整",
+      "根据结果挑选版本"
+    ],
+    "retired_data_lockout": "R2 历史公开档案、H01--H07 参数和输出不能成为输入、暖启动、样本内开发、比较、校准或验证。",
+    "change_control": "任何实质变更必须新建协议版本、新写研究问题、新建面板并在新的未观察期间开始；旧版本已看到的行不得用于选择新版本参数。"
+  },
+  "cost_sensitivity": {
+    "cost_sensitivity_status": "NOT_APPLICABLE_NO_EXECUTION",
+    "one_way_turnover": "NOT_CALCULATED",
+    "fees_taxes_bid_ask_impact": "NOT_CALCULATED",
+    "permitted_cost_scenarios": [],
+    "reason": "协议没有执行、持仓、单位净值、换手或现金流；任意成本数字都会把描述性观察改造成未经批准的组合或执行模拟。",
+    "invalidating_event": "若输出从 g 或 B 中扣除任何成本数字，该输出状态必须为 INVALID_FOR_THIS_PROTOCOL，而不是保守情景。"
+  },
+  "assessment": {
+    "annual": {
+      "period": "完整自然年",
+      "required_fields": [
+        "expected_month_count",
+        "valid_B_month_count",
+        "COVERAGE_INSUFFICIENT_month_count",
+        "SOURCE_EXCEPTION_month_count",
+        "object_count_range_by_category",
+        "median_B",
+        "positive_B_month_count"
+      ],
+      "prohibited_calculations": [
+        "compounding",
+        "annualization",
+        "return calculation",
+        "benchmark comparison"
+      ]
+    },
+    "rolling": {
+      "window_calendar_months": 12,
+      "minimum_valid_B_months": 9,
+      "permitted_fields": [
+        "rolling_median_B",
+        "rolling_positive_B_month_count",
+        "valid_B_month_count",
+        "state_counts"
+      ],
+      "insufficient_status": "ROLLING_COVERAGE_INSUFFICIENT",
+      "dependence_disclosure": "重叠滚动窗口不是独立观察，不能替代正式样本外、回放或前瞻纸面核对。"
+    }
+  },
+  "negative_result_and_stopping_rule": {
+    "assessment_start": "完成暖启动后的首个完整自然年结束。",
+    "planned_duration": "两个连续完整自然年；第二年结束时自动终止，不允许因结果延长。",
+    "stopping_conditions": [
+      {
+        "condition": "任一年度 valid_B_month_count < 9",
+        "terminal_status": "STOPPED_INSUFFICIENT_PUBLIC_COVERAGE"
+      },
+      {
+        "condition": "两个连续完整自然年均有至少九个有效月，且两个年度 median_B 均小于或等于零",
+        "terminal_status": "STOPPED_NEGATIVE_BREADTH_OBSERVATION"
+      },
+      {
+        "condition": "面板快照、单一来源路径、哈希链或月度例外记录不能按协议建立",
+        "terminal_status": "STOPPED_PROTOCOL_INTEGRITY_FAILURE"
+      }
+    ],
+    "completion_without_stop": "COMPLETED_DESCRIPTIVE_ONLY",
+    "post_stop_rule": "只能封存描述记录和缺口；不得修改窗口、类别门槛、来源或汇总方法以重新寻找正结果。"
+  },
+  "exact_non_inferences": [
+    "不证明 PIT 可得性、数据授权、历史完整性、复权正确性、NAV/IOPV 一致性或现金事件完整性。",
+    "不证明投资者总回报、净回报、成本后结果、可成交价格、容量、结算、税费、风险、回撤或适当性。",
+    "不产生任一对象、类别或 U0 父类的优先级、准入、经济价值、相对吸引力、预测或推荐。",
+    "不产生任何产品级清单、权重、组合、持有、转换、执行或外部指令。",
+    "不证明正的公开收盘价广度可重复、可持续、可复制，或对未来期间有解释力。",
+    "不关闭 UR01--UR05，不进入正式回放，不替代独立复算，也不改变 q=0。"
+  ],
+  "permitted_outputs_if_started": [
+    "面板状态计数",
+    "来源、哈希和例外清单",
+    "类别级聚合 G",
+    "B 与年度/滚动状态",
+    "本协议的限制标签"
+  ],
+  "reader_facing_output_controls": [
+    "不得展示对象级排名。",
+    "不得把对象标识组织为候选清单。",
+    "每个结果行必须同时展示 non_pit_public_observation_not_total_return 标签和覆盖状态。"
+  ],
+  "start_conditions": [
+    "新的面板快照",
+    "单一来源路径说明",
+    "追加式原始接收记录",
+    "缺失和修订例外日志",
+    "冻结的月锚点日历定义",
+    "本协议双份的独立复核",
+    "适用的公开来源使用与留存许可边界已单独确认"
+  ],
+  "failure_to_start": "若公开来源条款不能支持所需留存，或任一开始前条件缺失，唯一合规状态是 predeclared_design_only_not_started。"
+}

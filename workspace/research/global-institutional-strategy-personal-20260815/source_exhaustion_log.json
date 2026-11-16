@@ -1,0 +1,49 @@
+{
+  "schema_version": "source_exhaustion_log.v1",
+  "case_id": "global-institutional-strategy-personal-20260815",
+  "as_of": "2026-08-15",
+  "items": [
+    {
+      "topic": "Manager alpha, current holdings, execution logic and financing",
+      "attempted_sources": ["public manager pages S02-S08"],
+      "result": "not publicly disclosed at an auditable personal-replication level",
+      "treatment": "No model equivalence or expected-return claim; use only public archetypes."
+    },
+    {
+      "topic": "Current domestic-futures contract parameters, roll calendar, broker margin, position limits and account permission",
+      "attempted_sources": ["CFFEX/CZCE rules S11-S12/S15"],
+      "result": "Rules establish mechanisms, but the user has not supplied date-specific contract/broker/account evidence.",
+      "treatment": "All futures sleeves remain q=0 and only a paper-replay specification is provided."
+    },
+    {
+      "topic": "A-share point-in-time factor history, borrow availability, taxes, slippage and corporate-action database",
+      "attempted_sources": ["public taxonomy and exchange material S04/S10/S13"],
+      "result": "No auditable, licensed point-in-time dataset is available in this case.",
+      "treatment": "No backtest, factor premium, stock list or deployment authorisation is claimed."
+    },
+    {
+      "topic": "Event timestamp feed and merger-arbitrage deal data",
+      "attempted_sources": ["public taxonomy S01/S05"],
+      "result": "No complete primary timestamp or deal-document universe is in the case file.",
+      "treatment": "Event rules are research timing controls only; no trade instructions or expected returns."
+    },
+    {
+      "topic": "Crypto venue, custody, funding, counterparty and jurisdiction evidence",
+      "attempted_sources": ["CSRC-hosted notice S14"],
+      "result": "The report does not establish a lawful China-mainland implementation pathway and does not seek a workaround.",
+      "treatment": "Crypto remains an economic research category only; implementation is blocked."
+    },
+    {
+      "topic": "Individual risk capital, tax status, holdings, objectives and loss budget",
+      "attempted_sources": ["user conversation only"],
+      "result": "Not provided and not inferred.",
+      "treatment": "No personalised allocation, suitability finding, product selection, order or execution approval."
+    },
+    {
+      "topic": "Broker/Street target-price coverage",
+      "attempted_sources": ["not applicable: no named direct equity or valuation universe"],
+      "result": "No broker target or valuation anchor is collected because no issuer has entered the T3 decision universe.",
+      "treatment": "A named direct equity would trigger a separate source, valuation and broker-target review; q remains zero here."
+    }
+  ]
+}
