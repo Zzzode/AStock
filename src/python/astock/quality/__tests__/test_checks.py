@@ -240,7 +240,6 @@ def test_evaluate_research_case_quality_flags_shallow_industry_pass(
             "signoff_status": "PASS",
         },
     )
-
     result = evaluate_research_case_quality(case_dir)
 
     assert result["publishable"] is False
@@ -384,6 +383,598 @@ def test_evaluate_research_case_quality_blocks_open_s_issue(tmp_path: Path) -> N
     assert result["review_summary"]["open_s_count"] == 1
     assert any(
         check["name"] == "no open S-Level findings" and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_ignores_generic_coverage_pack_metadata(
+    tmp_path: Path,
+) -> None:
+    case_dir = tmp_path / "multi-asset-candidate-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "gate_manifest.json",
+        {
+            "report_type": "domestic_multi_asset_personal_strategy_research",
+            "coverage_pack": "custom_domestic_five_etf_dynamic_candidate",
+            "review_cycles": ["R0_evidence", "R4_final_ic"],
+            "depth_gates": [
+                "evidence_depth",
+                "broker_consensus_depth",
+                "model_depth",
+                "valuation_depth",
+                "ic_readiness",
+            ],
+            "required_artifacts": ["analysis/valuation_audit.md"],
+        },
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["requires_industry_chain"] is False
+
+
+def test_evaluate_research_case_quality_accepts_research_only_strategic_signoff(
+    tmp_path: Path,
+) -> None:
+    case_dir = tmp_path / "strategic-allocation-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    _write_json(
+        case_dir / "gate_manifest.json",
+        {
+            "case_profile": "strategic_allocation",
+            "report_type": "strategic_allocation_income_target_research_note",
+            "depth_gates": [
+                "evidence_depth",
+                "model_depth",
+                "allocation_model_depth",
+                "risk_tax_depth",
+                "product_structure_depth",
+                "scope_control_depth",
+            ],
+            "strategy_controls": {
+                "research_universe_mode": "open_with_item_level_admission",
+                "research_universe_policy": "open T1 direct equities, ETFs, public REITs, sovereign and cash tools; T2/T3/T4 gated",
+                "initial_direct_stock_weight": 0.0,
+                "direct_stock_aggregate_cap": None,
+                "direct_stock_single_issuer_cap": None,
+                "issuer_target_price_policy": "required_for_each_named_T3_direct_equity",
+                "named_t3_direct_equity_count": 0,
+                "named_t3_direct_equity_tickers": [],
+                "reit_initial_weight": 0.0,
+                "cash_objective_required": False,
+            },
+            "required_artifacts": ["data/portfolio_return_model_20260812.json"],
+        },
+    )
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        {
+            "model_type": "strategic allocation planning range; no point forecast",
+            "active_base_core": [
+                {"asset": "eligible_protected_liquidity", "weight": 1.0}
+            ],
+            "cash_ledger_and_accounting": {
+                "eligible_receipt_types": ["settled interest"],
+                "not_receipt_types": ["asset sale", "unrealized gain", "NAV accretion", "external contribution"],
+                "capital_repayment_like_component": "flag and exclude from investment return until resolved",
+            },
+            "total_return_measurement": {
+                "formula": "time-weighted return",
+                "reinvestment_rule": "do not double count",
+                "cash_receipt_accounting_rule": "count each receipt once",
+            },
+            "cash_distribution_policy": {
+                "automatic_reinvestment": False,
+                "mandatory_retention": False,
+            },
+            "return_evidence": {
+                "implementation_status": "BLOCKED_PENDING_FORMAL_TEST",
+                "formal_test_requirement": "point-in-time total-return backtest",
+                "benchmark_requirement": "risk-matched benchmark",
+            },
+            "risk_budget": {
+                "implementation_status": "NOT_APPROVED_PENDING_IC",
+                "approval_requirement": "investment-committee approval",
+                "loss_limit": "explicit maximum drawdown budget",
+            },
+            "activation_controls": {
+                "direct_equities": {
+                    "initial_weight": 0.0,
+                    "aggregate_cap": None,
+                    "single_issuer_cap": None,
+                    "current_model_treatment": "open_research_universe_no_named_candidate_or_approved_weight",
+                    "required_independent_review": [
+                        "company_industry",
+                        "audited_financials",
+                        "EPS_bridge",
+                        "valuation",
+                        "cash_coverage",
+                        "invalidation",
+                        "liquidity",
+                        "overlap",
+                    ],
+                },
+                "public_reits": {
+                    "initial_weight": 0.0,
+                    "aggregate_cap": None,
+                    "required_checks": ["liquidity"],
+                    "inactive_behavior": "remain in protected liquidity",
+                }
+            },
+        },
+    )
+    _write_json(
+        case_dir / "final_signoff.json",
+        {
+            "signoff_status": "RESEARCH_FRAMEWORK_PASS",
+            "framework_status": "PASS",
+            "implementation_status": "NOT_APPROVED",
+            "live_execution_authorized": False,
+            "implementation_gates": {
+                "return_evidence": "BLOCKED_PENDING_FORMAL_TEST",
+                "risk_budget": "NOT_APPROVED_PENDING_IC",
+                "suitability": "NOT_APPROVED_PENDING_CLIENT_FACTS",
+                "execution": "NOT_AUTHORIZED",
+            },
+            "execution_eligibility": {
+                "status": "NOT_RUN",
+                "q": 0,
+                "live_execution_authorized": False,
+            },
+            "material_claim_disclosure": {
+                "return_target_not_guarantee": True,
+                "cash_objective_not_required": True,
+                "return_evidence_not_sufficient_for_implementation": True,
+                "risk_budget_not_approved": True,
+                "implementation_not_authorized": True,
+            },
+            "decision": "Research framework pass only; return target is not guaranteed and implementation is not approved.",
+            "residual_risks": [
+                "Formal return evidence is pending; the risk budget is not approved and live execution is not authorized."
+            ],
+        },
+    )
+    _write_json(
+        case_dir / "research_workflow_eval.json",
+        {
+            "quality": {
+                "implementation_status": "NOT_APPROVED",
+            }
+        },
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is True
+    assert any(
+        check["name"]
+        == "strategic allocation research-framework sign-off status pass"
+        and check["passed"] is True
+        for check in result["checks"]
+    )
+
+
+def test_single_objective_strategy_rejects_legacy_cash_target_disclosure(
+    tmp_path: Path,
+) -> None:
+    case_dir = tmp_path / "single-objective-disclosure-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    _write_json(case_dir / "gate_manifest.json", _open_universe_strategic_manifest())
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        _open_universe_strategic_return_model(),
+    )
+    signoff = _research_only_strategic_signoff()
+    disclosure = signoff["material_claim_disclosure"]
+    assert isinstance(disclosure, dict)
+    disclosure.pop("cash_objective_not_required")
+    disclosure["cash_target_not_guarantee"] = True
+    _write_json(case_dir / "final_signoff.json", signoff)
+    _write_json(
+        case_dir / "research_workflow_eval.json",
+        {"quality": {"implementation_status": "NOT_APPROVED"}},
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"] == "strategic allocation material claims are explicitly disclosed"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_blocks_strategic_implementation_approval(
+    tmp_path: Path,
+) -> None:
+    case_dir = tmp_path / "strategic-allocation-live-claim"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    _write_json(
+        case_dir / "gate_manifest.json",
+        {
+            "case_profile": "strategic_allocation",
+            "publication_status": "research_framework_pass_implementation_not_approved",
+            "depth_gates": [
+                "evidence_depth",
+                "model_depth",
+                "allocation_model_depth",
+                "risk_tax_depth",
+                "product_structure_depth",
+                "scope_control_depth",
+            ],
+            "strategy_controls": {
+                "initial_direct_stock_weight": 0.0,
+                "direct_stock_aggregate_cap": 0.0,
+                "direct_stock_single_issuer_cap": 0.0,
+                "issuer_target_price_policy": "none",
+                "reit_initial_weight": 0.0,
+                "cash_objective_required": False,
+            },
+            "required_artifacts": ["data/portfolio_return_model_20260812.json"],
+        },
+    )
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        {
+            "model_type": "strategic allocation planning range; no point forecast",
+            "active_base_core": [{"asset": "cash", "weight": 1.0}],
+            "cash_ledger_and_accounting": {
+                "eligible_receipt_types": ["interest"],
+                "not_receipt_types": ["asset sale", "unrealized gain", "NAV accretion", "external contribution"],
+                "capital_repayment_like_component": "flag and exclude from investment return until resolved",
+            },
+            "total_return_measurement": {
+                "formula": "time-weighted return",
+                "reinvestment_rule": "no double count",
+                "cash_receipt_accounting_rule": "count each receipt once",
+            },
+            "cash_distribution_policy": {
+                "automatic_reinvestment": False,
+                "mandatory_retention": False,
+            },
+            "return_evidence": {
+                "implementation_status": "BLOCKED_PENDING_FORMAL_TEST",
+                "formal_test_requirement": "formal test",
+                "benchmark_requirement": "benchmark",
+            },
+            "risk_budget": {
+                "implementation_status": "NOT_APPROVED_PENDING_IC",
+                "approval_requirement": "IC approval",
+                "loss_limit": "drawdown limit",
+            },
+            "activation_controls": {
+                "public_reits": {
+                    "initial_weight": 0.0,
+                    "required_checks": ["liquidity"],
+                    "inactive_behavior": "protected liquidity",
+                }
+            },
+        },
+    )
+    _write_json(
+        case_dir / "final_signoff.json",
+        {
+            "signoff_status": "RESEARCH_FRAMEWORK_PASS",
+            "framework_status": "PASS",
+            "implementation_status": "APPROVED",
+            "live_execution_authorized": True,
+            "implementation_gates": {
+                "return_evidence": "BLOCKED_PENDING_FORMAL_TEST",
+                "risk_budget": "NOT_APPROVED_PENDING_IC",
+                "suitability": "NOT_APPROVED_PENDING_CLIENT_FACTS",
+                "execution": "NOT_AUTHORIZED",
+            },
+            "execution_eligibility": {
+                "status": "NOT_RUN",
+                "q": 0,
+                "live_execution_authorized": False,
+            },
+            "material_claim_disclosure": {
+                "return_target_not_guarantee": True,
+                "cash_objective_not_required": True,
+                "return_evidence_not_sufficient_for_implementation": True,
+                "risk_budget_not_approved": True,
+                "implementation_not_authorized": True,
+            },
+            "decision": "Research framework pass only; return is not guaranteed and implementation is not approved.",
+            "residual_risks": [
+                "Formal return evidence is pending; the risk budget is not approved and live execution is not authorized."
+            ],
+        },
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"] == "strategic allocation implementation explicitly not approved"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_accepts_open_universe_research_only_strategy(
+    tmp_path: Path,
+) -> None:
+    """Open research eligibility must not be mistaken for live allocation."""
+
+    case_dir = tmp_path / "open-universe-strategic-allocation-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    _write_json(
+        case_dir / "gate_manifest.json",
+        _open_universe_strategic_manifest(),
+    )
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        _open_universe_strategic_return_model(),
+    )
+    _write_json(case_dir / "final_signoff.json", _research_only_strategic_signoff())
+    _write_json(
+        case_dir / "research_workflow_eval.json",
+        {"quality": {"implementation_status": "NOT_APPROVED"}},
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is True
+    assert any(
+        check["name"]
+        == "strategic allocation open research universe has item-level direct-equity admission"
+        and check["passed"] is True
+        for check in result["checks"]
+    )
+    assert any(
+        check["name"]
+        == "strategic allocation direct-equity dossier is complete before T3"
+        and check["passed"] is True
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_blocks_open_universe_without_direct_equity_dossier(
+    tmp_path: Path,
+) -> None:
+    case_dir = tmp_path / "open-universe-missing-dossier-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    _write_json(case_dir / "gate_manifest.json", _open_universe_strategic_manifest())
+    model = _open_universe_strategic_return_model()
+    model["activation_controls"]["direct_equities"]["required_independent_review"] = [
+        "current_price_valuation"
+    ]
+    _write_json(case_dir / "data/portfolio_return_model_20260812.json", model)
+    _write_json(case_dir / "final_signoff.json", _research_only_strategic_signoff())
+    _write_json(
+        case_dir / "research_workflow_eval.json",
+        {"quality": {"implementation_status": "NOT_APPROVED"}},
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"]
+        == "strategic allocation direct-equity dossier is complete before T3"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_requires_issuer_packets_for_named_open_t3_direct_equity(
+    tmp_path: Path,
+) -> None:
+    """A named T3 direct issuer cannot inherit the q=0 universe exemption."""
+
+    case_dir = tmp_path / "open-universe-named-t3-direct-equity-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    manifest = _open_universe_strategic_manifest()
+    manifest["strategy_controls"]["named_t3_direct_equity_count"] = 1
+    manifest["strategy_controls"]["named_t3_direct_equity_tickers"] = ["600000"]
+    _write_json(case_dir / "gate_manifest.json", manifest)
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        _open_universe_strategic_return_model(),
+    )
+    _write_json(case_dir / "final_signoff.json", _research_only_strategic_signoff())
+    _write_json(
+        case_dir / "research_workflow_eval.json",
+        {"quality": {"implementation_status": "NOT_APPROVED"}},
+    )
+    for rel in (
+        "data/current_valuation_model_20260630.json",
+        "data/broker_street_consensus_20260630.json",
+        "data/broker_street_consensus_20260630.md",
+    ):
+        (case_dir / rel).unlink()
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"] == "valuation model structured rows present"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+    assert any(
+        check["name"] == "broker/street consensus json present"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_reconciles_every_named_open_t3_direct_equity(
+    tmp_path: Path,
+) -> None:
+    """A direct-equity count alone cannot hide an unrepresented T3 issuer."""
+
+    case_dir = tmp_path / "open-universe-t3-registry-reconciliation-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    manifest = _open_universe_strategic_manifest()
+    manifest["strategy_controls"]["named_t3_direct_equity_count"] = 2
+    manifest["strategy_controls"]["named_t3_direct_equity_tickers"] = [
+        "000001",
+        "000002",
+    ]
+    _write_json(case_dir / "gate_manifest.json", manifest)
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        _open_universe_strategic_return_model(),
+    )
+    _write_json(case_dir / "final_signoff.json", _research_only_strategic_signoff())
+    _write_json(
+        case_dir / "research_workflow_eval.json",
+        {"quality": {"implementation_status": "NOT_APPROVED"}},
+    )
+    _write_json(
+        case_dir / "data/current_valuation_model_20260630.json",
+        _valuation_packet(row_count=1),
+    )
+    _write_json(
+        case_dir / "data/broker_street_consensus_20260630.json",
+        _broker_consensus_packet(source_quality="original_pdf", valuation_weight=0.2),
+    )
+    for packet in (
+        case_dir / "data/current_valuation_model_20260630.json",
+        case_dir / "data/broker_street_consensus_20260630.json",
+    ):
+        payload = json.loads(packet.read_text(encoding="utf-8"))
+        payload["rows"][0]["ticker"] = "000001"
+        _write_json(packet, payload)
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"]
+        == "strategic named T3 direct-equity registry reconciles to valuation universe"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+    assert any(
+        check["name"]
+        == "strategic named T3 direct-equity registry reconciles to broker/Street universe"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_rejects_spoofed_open_t3_issuer_policy(
+    tmp_path: Path,
+) -> None:
+    """Substring matches must not turn a non-policy into an admission policy."""
+
+    case_dir = tmp_path / "open-universe-spoofed-issuer-policy-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    manifest = _open_universe_strategic_manifest()
+    manifest["strategy_controls"]["issuer_target_price_policy"] = "not_required_for_t3"
+    _write_json(case_dir / "gate_manifest.json", manifest)
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        _open_universe_strategic_return_model(),
+    )
+    _write_json(case_dir / "final_signoff.json", _research_only_strategic_signoff())
+    _write_json(
+        case_dir / "research_workflow_eval.json",
+        {"quality": {"implementation_status": "NOT_APPROVED"}},
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is False
+    assert any(
+        check["name"]
+        == "strategic allocation open research universe has item-level direct-equity admission"
+        and check["passed"] is False
+        for check in result["checks"]
+    )
+    assert any(
+        check["name"] == "broker/street consensus json present"
+        and check["passed"] is True
+        for check in result["checks"]
+    )
+
+
+def test_evaluate_research_case_quality_keeps_legacy_strategic_pass_compatible(
+    tmp_path: Path,
+) -> None:
+    """The new framework schema must not break a closed-universe legacy memo."""
+
+    case_dir = tmp_path / "legacy-strategic-allocation-case"
+    _minimal_case(case_dir)
+    _write_json(
+        case_dir / "review_findings_R4_final_ic.json",
+        {"findings": [{"severity": "B", "status": "closed"}]},
+    )
+    _write_json(
+        case_dir / "gate_manifest.json",
+        {
+            "case_profile": "strategic_allocation",
+            "depth_gates": [
+                "evidence_depth",
+                "model_depth",
+                "allocation_model_depth",
+                "risk_tax_depth",
+                "product_structure_depth",
+                "scope_control_depth",
+            ],
+            "strategy_controls": {
+                "initial_direct_stock_weight": 0.0,
+                "direct_stock_aggregate_cap": 0.15,
+                "direct_stock_single_issuer_cap": 0.05,
+                "issuer_target_price_policy": "none",
+                "reit_initial_weight": 0.0,
+            },
+            "required_artifacts": ["data/portfolio_return_model_20260812.json"],
+        },
+    )
+    _write_json(
+        case_dir / "data/portfolio_return_model_20260812.json",
+        {"model_type": "strategic allocation planning range; no point forecast"},
+    )
+    _write_json(
+        case_dir / "final_signoff.json",
+        {"signoff_status": "PASS", "publishability_score": 93, "residual_risks": []},
+    )
+
+    result = evaluate_research_case_quality(case_dir)
+
+    assert result["publishable"] is True
+    assert all(
+        check["name"]
+        != "strategic allocation direct-equity dossier is complete before T3"
         for check in result["checks"]
     )
 
@@ -591,6 +1182,129 @@ def _minimal_case(case_dir: Path) -> None:
     )
     _write(case_dir / "repair_plan_R0_evidence.md", "repair")
     _write_json(case_dir / "repair_plan_R0_evidence.json", {"status": "open"})
+
+
+def _open_universe_strategic_manifest() -> dict[str, object]:
+    return {
+        "case_profile": "strategic_allocation",
+        "report_type": "strategic_allocation_income_target_research_note",
+        "depth_gates": [
+            "evidence_depth",
+            "model_depth",
+            "allocation_model_depth",
+            "risk_tax_depth",
+            "product_structure_depth",
+            "scope_control_depth",
+        ],
+        "strategy_controls": {
+            "research_universe_mode": "open_with_item_level_admission",
+            "research_universe_policy": "open T1 research universe across direct equities, ETFs, public REITs, sovereign and cash products; T2/T3/T4 are finite and gated",
+            "initial_direct_stock_weight": 0.0,
+            "direct_stock_aggregate_cap": None,
+            "direct_stock_single_issuer_cap": None,
+            "issuer_target_price_policy": "required_for_each_named_T3_direct_equity",
+            "named_t3_direct_equity_count": 0,
+            "named_t3_direct_equity_tickers": [],
+            "reit_initial_weight": 0.0,
+            "cash_objective_required": False,
+        },
+        "required_artifacts": ["data/portfolio_return_model_20260812.json"],
+    }
+
+
+def _open_universe_strategic_return_model() -> dict[str, object]:
+    direct_dossier = [
+        "company_industry_and_governance_evidence",
+        "audited_financials_and_driver_to_EPS_bridge",
+        "current_price_bull_base_bear_valuation",
+        "dividend_and_free_cash_flow_coverage",
+        "catalyst_and_invalidation",
+        "free_float_suspension_price_limit_and_liquidity",
+        "issuer_group_industry_factor_and_common_risk_mapping",
+        "tax_settlement_and_capacity",
+    ]
+    return {
+        "model_type": "strategic allocation planning range; open research universe; no point forecast",
+        "active_base_core": [{"asset": "eligible_protected_liquidity", "weight": 1.0}],
+        "cash_ledger_and_accounting": {
+            "eligible_receipt_types": ["settled interest"],
+            "not_receipt_types": ["asset sale", "unrealized gain", "NAV accretion", "external contribution"],
+            "capital_repayment_like_component": "flag and exclude from investment return until resolved",
+        },
+        "total_return_measurement": {
+            "formula": "time-weighted return",
+            "reinvestment_rule": "do not double count",
+            "cash_receipt_accounting_rule": "count each receipt once",
+        },
+        "cash_distribution_policy": {
+            "automatic_reinvestment": False,
+            "mandatory_retention": False,
+        },
+        "return_evidence": {
+            "implementation_status": "BLOCKED_PENDING_FORMAL_TEST",
+            "formal_test_requirement": "point-in-time cross-asset replay",
+            "benchmark_requirement": "frozen B0/B1 benchmark set",
+        },
+        "risk_budget": {
+            "implementation_status": "NOT_APPROVED_PENDING_IC",
+            "approval_requirement": "candidate-specific portfolio risk approval",
+            "loss_limit": "approved loss budget",
+        },
+        "activation_controls": {
+            "direct_equities": {
+                "initial_weight": 0.0,
+                "aggregate_cap": None,
+                "single_issuer_cap": None,
+                "current_model_treatment": "open_research_universe_no_named_candidate_or_approved_weight",
+                "required_independent_review": direct_dossier,
+            },
+            "public_reits": {
+                "initial_weight": 0.0,
+                "aggregate_cap": None,
+                "required_checks": [
+                    "current_price",
+                    "NAV",
+                    "operating_KPI",
+                    "liquidity",
+                    "debt",
+                    "overlap",
+                    "tax",
+                ],
+                "inactive_behavior": "remain in protected liquidity",
+            },
+        },
+    }
+
+
+def _research_only_strategic_signoff() -> dict[str, object]:
+    return {
+        "signoff_status": "RESEARCH_FRAMEWORK_PASS",
+        "framework_status": "PASS",
+        "implementation_status": "NOT_APPROVED",
+        "live_execution_authorized": False,
+        "implementation_gates": {
+            "return_evidence": "BLOCKED_PENDING_FORMAL_TEST",
+            "risk_budget": "NOT_APPROVED_PENDING_IC",
+            "suitability": "NOT_APPROVED_PENDING_CLIENT_FACTS",
+            "execution": "NOT_AUTHORIZED",
+        },
+        "execution_eligibility": {
+            "status": "NOT_RUN",
+            "q": 0,
+            "live_execution_authorized": False,
+        },
+        "material_claim_disclosure": {
+            "return_target_not_guarantee": True,
+            "cash_objective_not_required": True,
+            "return_evidence_not_sufficient_for_implementation": True,
+            "risk_budget_not_approved": True,
+            "implementation_not_authorized": True,
+        },
+        "decision": "Research framework pass only; return target is not guaranteed and implementation is not approved.",
+        "residual_risks": [
+            "Formal return evidence is pending; the risk budget is not approved and live execution is not authorized."
+        ],
+    }
 
 
 def _gate_runner_case(case_dir: Path, *, industry: bool = False) -> None:

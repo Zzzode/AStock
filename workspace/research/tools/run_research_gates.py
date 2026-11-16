@@ -26,7 +26,18 @@ EXPECTED_REVIEW_CYCLES = (
     "R4_final_ic",
 )
 
-CLOSED_REVIEW_STATUSES = {"closed", "verified", "resolved", "pass", "passed"}
+CLOSED_REVIEW_STATUSES = {
+    "closed",
+    "verified",
+    "resolved",
+    "resolved_at_framework_scope",
+    "resolved_at_research_framework_scope",
+    "resolved at framework scope",
+    "resolved at research framework scope",
+    "pass",
+    "passed",
+    "superseded",
+}
 
 REQUIRED_ROOT_ARTIFACTS = (
     "research_brief.md",
@@ -109,6 +120,57 @@ GATE_MANIFEST_DEPTH_GATES = (
     "model_depth",
     "valuation_depth",
     "ic_readiness",
+)
+
+STRATEGIC_ALLOCATION_DEPTH_GATES = (
+    "evidence_depth",
+    "model_depth",
+    "allocation_model_depth",
+    "risk_tax_depth",
+    "product_structure_depth",
+    "scope_control_depth",
+)
+
+# A research-framework publication is deliberately narrower than an
+# implementation approval.  Keep these states separate so a strategic
+# allocation case cannot make a q=0 / evidence-pending design look like a
+# live investment authorization.  Non-strategic reports retain the legacy
+# PASS-only contract below.
+LEGACY_PASS_SIGNOFF_STATUSES = {
+    "pass",
+    "passed",
+    "approved",
+    "signed",
+    "publishable",
+}
+
+STRATEGIC_RESEARCH_FRAMEWORK_SIGNOFF_STATUSES = {
+    "research_framework_pass",
+    "research framework pass",
+}
+
+IMPLEMENTATION_BLOCKED_STATUSES = {
+    "blocked",
+    "not_approved",
+    "not approved",
+}
+
+INACTIVE_EXECUTION_STATUSES = {
+    "blocked",
+    "not_approved",
+    "not approved",
+    "not_authorized",
+    "not authorized",
+    "not_run",
+    "not run",
+    "pending",
+}
+
+STRATEGIC_MATERIAL_DISCLOSURE_KEYS = (
+    "return_target_not_guarantee",
+    "return_evidence_not_sufficient_for_implementation",
+    "risk_budget_not_approved",
+    "implementation_not_authorized",
 )
 
 INDUSTRY_CHAIN_DEPTH_GATES = (
@@ -399,7 +461,14 @@ class GateRunner:
         artifact_contract = self.load_json("artifact_contract.json")
         final_signoff = self.load_json("final_signoff.json")
         workflow_eval = self.load_json("research_workflow_eval.json")
-        industry_case = case_requires_industry_chain(gate_manifest, self.case_text())
+        strategic_allocation_case = case_is_strategic_allocation(gate_manifest)
+        # A manifest-declared strategic allocation is a mutually exclusive case
+        # type.  Its prose can legitimately say that it is *not* an industry
+        # chain study; do not turn that negated wording into an industry gate.
+        industry_case = (
+            not strategic_allocation_case
+            and case_requires_industry_chain(gate_manifest, self.case_text())
+        )
 
         if industry_case:
             for stem in INDUSTRY_CHAIN_MD_JSON_PAIRS:
@@ -421,23 +490,56 @@ class GateRunner:
         self.check_gate_manifest_depth(
             gate_manifest,
             INDUSTRY_CHAIN_DEPTH_GATES if industry_case else (),
+            base_required_gates=(
+                STRATEGIC_ALLOCATION_DEPTH_GATES
+                if strategic_allocation_case
+                else GATE_MANIFEST_DEPTH_GATES
+            ),
         )
         self.check_artifact_contract_depth(artifact_contract)
         self.check_review_lifecycle(gate_manifest)
         self.check_source_governance()
-        self.check_valuation_reproducibility()
-        self.check_valuation_model_depth()
+        if strategic_allocation_case:
+            self.check_strategic_allocation_depth(gate_manifest)
+        else:
+            self.check_valuation_reproducibility()
+            self.check_valuation_model_depth()
+
         if industry_case:
             self.check_valuation_coverage_reconciliation()
             self.check_supply_chain_chapter_prose_led()
-        else:
+        elif not strategic_allocation_case:
             self.check_single_stock_depth()
-        self.check_broker_street_consensus(
+        if strategic_allocation_case:
+            self.check(
+                "issuer broker/target-price gate correctly skipped",
+                strategic_allocation_can_skip_issuer_broker_gate(gate_manifest),
+                "strategic cases may skip issuer targets only when direct equities are either permanently excluded or no named T3 issuer has entered the decision universe",
+            )
+            if not strategic_allocation_can_skip_issuer_broker_gate(gate_manifest):
+                self.check_valuation_reproducibility()
+                self.check_valuation_model_depth()
+                self.check_broker_street_consensus(
+                    final_signoff,
+                    allow_zero_weight_exhaustion=False,
+                )
+                self.check_strategic_named_direct_equity_reconciliation(
+                    gate_manifest
+                )
+        else:
+            self.check_broker_street_consensus(
+                final_signoff,
+                allow_zero_weight_exhaustion=not industry_case,
+            )
+        self.check_final_signoff(
             final_signoff,
-            allow_zero_weight_exhaustion=not industry_case,
+            gate_manifest=gate_manifest,
+            strategic_allocation_case=strategic_allocation_case,
         )
-        self.check_final_signoff(final_signoff)
-        self.check_workflow_eval(workflow_eval)
+        self.check_workflow_eval(
+            workflow_eval,
+            strategic_allocation_case=strategic_allocation_case,
+        )
         self.check_case_verifier()
         self.check_reader_facing_no_generic_placeholders()
 
@@ -531,7 +633,10 @@ class GateRunner:
         )
 
     def check_gate_manifest_depth(
-        self, gate_manifest: Any, extra_required_gates: Sequence[str] = ()
+        self,
+        gate_manifest: Any,
+        extra_required_gates: Sequence[str] = (),
+        base_required_gates: Sequence[str] = GATE_MANIFEST_DEPTH_GATES,
     ) -> None:
         if not isinstance(gate_manifest, Mapping):
             self.check("gate manifest depth gates complete", False, "not an object")
@@ -543,7 +648,7 @@ class GateRunner:
             self.check("gate manifest depth gates complete", False, "missing depth_gates")
             return
         normalized_gates = {normalize(gate) for gate in depth_gates}
-        required_gates = (*GATE_MANIFEST_DEPTH_GATES, *extra_required_gates)
+        required_gates = (*base_required_gates, *extra_required_gates)
         missing = [gate for gate in required_gates if gate not in normalized_gates]
         self.check(
             "gate manifest depth gates complete",
@@ -595,6 +700,332 @@ class GateRunner:
         ):
             self.load_json(rel)
         self.check("sources directory present", (self.case_dir / "sources").exists())
+
+    def check_strategic_allocation_depth(self, gate_manifest: Any) -> None:
+        if not isinstance(gate_manifest, Mapping):
+            self.check("strategic allocation manifest controls", False, "not an object")
+            return
+
+        controls = gate_manifest.get("strategy_controls")
+        if not isinstance(controls, Mapping):
+            self.check("strategic allocation manifest controls", False, "missing strategy_controls")
+            return
+
+        scope_id = str(gate_manifest.get("scope_id") or "").strip()
+        open_item_admission = strategic_allocation_uses_open_item_admission(
+            gate_manifest
+        )
+        self.check("strategic allocation scope ID declared", bool(scope_id), scope_id)
+        direct_weight = first_float(controls.get("initial_direct_stock_weight"))
+        self.check(
+            "strategic allocation initial direct-stock weight zero",
+            direct_weight == 0.0,
+            str(direct_weight),
+        )
+        direct_aggregate_cap = first_float(controls.get("direct_stock_aggregate_cap"))
+        direct_single_cap = first_float(controls.get("direct_stock_single_issuer_cap"))
+        if open_item_admission:
+            research_policy = normalize(controls.get("research_universe_policy"))
+            issuer_policy = normalize(controls.get("issuer_target_price_policy"))
+            raw_tickers = controls.get("named_t3_direct_equity_tickers")
+            named_tickers = (
+                [str(ticker).strip() for ticker in raw_tickers if str(ticker).strip()]
+                if isinstance(raw_tickers, Sequence)
+                and not isinstance(raw_tickers, (str, bytes, bytearray))
+                else []
+            )
+            named_count = int_value(controls.get("named_t3_direct_equity_count"))
+            self.check(
+                "strategic allocation open research universe is explicitly gated",
+                direct_aggregate_cap is None
+                and direct_single_cap is None
+                and "open" in research_policy
+                and "direct" in research_policy
+                and issuer_policy == "required_for_each_named_t3_direct_equity"
+                and named_count is not None
+                and named_count == len(named_tickers)
+                and len(named_tickers) == len(set(named_tickers)),
+                f"aggregate={direct_aggregate_cap}; single={direct_single_cap}; issuer_policy={issuer_policy or 'missing'}; named_t3={named_count}; tickers={len(named_tickers)}",
+            )
+        else:
+            self.check(
+                "strategic allocation direct-stock caps are legal",
+                direct_aggregate_cap is not None
+                and direct_single_cap is not None
+                and 0.0 <= direct_single_cap <= direct_aggregate_cap <= 1.0,
+                f"aggregate={direct_aggregate_cap}; single={direct_single_cap}",
+            )
+            self.check(
+                "strategic allocation issuer target-price policy absent",
+                normalize(controls.get("issuer_target_price_policy")) in {"none", "not applicable"},
+                str(controls.get("issuer_target_price_policy")),
+            )
+        self.check(
+            "strategic allocation REIT initial weight zero",
+            first_float(controls.get("reit_initial_weight")) == 0.0,
+            str(controls.get("reit_initial_weight")),
+        )
+        reit_project_count = int_value(controls.get("reit_required_independent_projects"))
+        reit_single_cap = first_float(controls.get("reit_single_project_cap"))
+        reit_aggregate_cap = first_float(controls.get("reit_aggregate_cap_after_activation"))
+        if open_item_admission:
+            self.check(
+                "strategic allocation open-universe REIT controls are non-forcing",
+                reit_project_count is not None
+                and reit_project_count >= 1
+                and reit_aggregate_cap is None,
+                f"projects={reit_project_count}; per_project={reit_single_cap}; aggregate={reit_aggregate_cap}",
+            )
+        else:
+            self.check(
+                "strategic allocation REIT activation caps are legal and feasible",
+                reit_project_count is not None
+                and reit_project_count >= 1
+                and reit_single_cap is not None
+                and reit_aggregate_cap is not None
+                and 0.0 < reit_single_cap <= reit_aggregate_cap <= 1.0
+                and reit_project_count * reit_single_cap >= reit_aggregate_cap,
+                f"projects={reit_project_count}; per_project={reit_single_cap}; aggregate={reit_aggregate_cap}",
+            )
+
+        declared_model_paths = [
+            str(item)
+            for item in (gate_manifest.get("required_artifacts") or [])
+            if isinstance(item, str)
+            and re.fullmatch(r"data/portfolio_return_model_\d{8}\.json", item)
+        ]
+        self.check(
+            "strategic allocation declares exactly one return model",
+            len(declared_model_paths) == 1,
+            ", ".join(declared_model_paths) or "missing",
+        )
+        if len(declared_model_paths) != 1:
+            return
+        return_model = self.load_json(declared_model_paths[0])
+        base_core = (
+            return_model.get("active_base_core")
+            if isinstance(return_model, Mapping)
+            else None
+        )
+        valid_rows = [row for row in base_core if isinstance(row, Mapping)] if isinstance(base_core, Sequence) else []
+        total_weight = sum(first_float(row.get("weight")) or 0.0 for row in valid_rows)
+        self.check(
+            "strategic allocation return-model weights sum to 100%",
+            abs(total_weight - 1.0) < 1e-9,
+            f"{total_weight:.6f}",
+        )
+        direct_rows = [
+            row
+            for row in valid_rows
+            if normalize(row.get("asset"))
+            in {"直接高股息股票", "direct high-dividend stocks", "direct_high_dividend_stocks", "direct equities", "direct_equities"}
+        ]
+        if open_item_admission:
+            self.check(
+                "strategic allocation current fallback has no direct-equity allocation",
+                not direct_rows,
+                f"rows={len(direct_rows)}",
+            )
+        else:
+            self.check(
+                "strategic allocation return-model direct-stock weight zero",
+                len(direct_rows) == 1 and first_float(direct_rows[0].get("weight")) == 0.0,
+                f"rows={len(direct_rows)}",
+            )
+        self.check(
+            "strategic allocation has no point return forecast",
+            isinstance(return_model, Mapping)
+            and normalize(return_model.get("model_type")).startswith("strategic allocation planning range"),
+            str(return_model.get("model_type") if isinstance(return_model, Mapping) else "missing"),
+        )
+
+        activation_controls = (
+            return_model.get("activation_controls")
+            if isinstance(return_model, Mapping)
+            else None
+        )
+        direct_activation = (
+            activation_controls.get("direct_equities")
+            if open_item_admission and isinstance(activation_controls, Mapping)
+            else activation_controls.get("direct_high_dividend_stocks")
+            if isinstance(activation_controls, Mapping)
+            else None
+        )
+        direct_review = (
+            direct_activation.get("required_independent_review")
+            if isinstance(direct_activation, Mapping)
+            else None
+        )
+        direct_review_count = (
+            len(direct_review)
+            if isinstance(direct_review, Sequence)
+            and not isinstance(direct_review, (str, bytes, bytearray))
+            else 0
+        )
+        if open_item_admission:
+            self.check(
+                "strategic allocation direct-equity dossier gates reconcile",
+                isinstance(direct_activation, Mapping)
+                and first_float(direct_activation.get("initial_weight")) == direct_weight
+                and first_float(direct_activation.get("aggregate_cap")) is None
+                and first_float(direct_activation.get("single_issuer_cap")) is None
+                and "open" in normalize(direct_activation.get("current_model_treatment"))
+                and direct_review_count >= 8,
+                f"review_items={direct_review_count}",
+            )
+        else:
+            self.check(
+                "strategic allocation return-model direct-stock activation controls reconcile",
+                isinstance(direct_activation, Mapping)
+                and first_float(direct_activation.get("initial_weight")) == direct_weight
+                and (
+                    (direct_aggregate_cap == 0.0 and direct_single_cap == 0.0
+                     and "excluded" in normalize(direct_activation.get("current_model_treatment")))
+                    or bool(str(direct_activation.get("only_replaces") or "").strip())
+                )
+                and first_float(direct_activation.get("aggregate_cap"))
+                == direct_aggregate_cap
+                and first_float(direct_activation.get("single_issuer_cap"))
+                == direct_single_cap
+                and direct_review_count >= 7,
+                f"review_items={direct_review_count}",
+            )
+
+        reit_activation = (
+            activation_controls.get("public_reits")
+            if isinstance(activation_controls, Mapping)
+            else None
+        )
+        reit_checks = (
+            reit_activation.get("required_checks")
+            if isinstance(reit_activation, Mapping)
+            else None
+        )
+        reit_check_count = (
+            len(reit_checks)
+            if isinstance(reit_checks, Sequence)
+            and not isinstance(reit_checks, (str, bytes, bytearray))
+            else 0
+        )
+        if open_item_admission:
+            self.check(
+                "strategic allocation open-universe REIT dossier controls reconcile",
+                isinstance(reit_activation, Mapping)
+                and first_float(reit_activation.get("initial_weight"))
+                == first_float(controls.get("reit_initial_weight"))
+                and int_value(reit_activation.get("activation_requires_independent_projects")) == reit_project_count
+                and reit_activation.get("aggregate_cap") is None
+                and "protected liquidity" in normalize(reit_activation.get("inactive_behavior"))
+                and reit_check_count >= 7,
+                f"check_items={reit_check_count}",
+            )
+        else:
+            self.check(
+                "strategic allocation return-model REIT activation controls reconcile",
+                isinstance(reit_activation, Mapping)
+                and first_float(reit_activation.get("initial_weight"))
+                == first_float(controls.get("reit_initial_weight"))
+                and int_value(reit_activation.get("activation_requires_independent_projects")) == reit_project_count
+                and first_float(reit_activation.get("per_project_cap"))
+                == reit_single_cap
+                and first_float(
+                    reit_activation.get("aggregate_cap"),
+                    reit_activation.get("target_weight_after_activation"),
+                )
+                == reit_aggregate_cap
+                and (
+                    bool(str(reit_activation.get("funding_source_on_activation") or "").strip())
+                    or (
+                        "protected liquidity" in normalize(reit_activation.get("inactive_behavior"))
+                        and "protected liquidity" in normalize(controls.get("fallback_policy"))
+                    )
+                )
+                and reit_check_count >= 7,
+                f"check_items={reit_check_count}",
+            )
+
+        cash_policy = (
+            return_model.get("cash_distribution_policy")
+            if isinstance(return_model, Mapping)
+            else None
+        )
+        actual_measure = str(cash_policy.get("actual_measure") or "") if isinstance(cash_policy, Mapping) else ""
+        legacy_d0_policy = (
+            isinstance(cash_policy, Mapping)
+            and "D0" in actual_measure
+            and "past-12-month" in actual_measure
+            and "after-tax" in actual_measure
+            and "after-fee" in actual_measure
+            and cash_policy.get("forward_fixed_distribution_cny") is None
+            and "reinvest" in normalize(cash_policy.get("default_use"))
+        )
+        cash_ledger = (
+            return_model.get("cash_ledger_and_accounting")
+            if isinstance(return_model, Mapping)
+            else None
+        )
+        total_return_measurement = (
+            return_model.get("total_return_measurement")
+            if isinstance(return_model, Mapping)
+            else None
+        )
+        total_return_cash_policy = (
+            isinstance(cash_ledger, Mapping)
+            and isinstance(total_return_measurement, Mapping)
+            and bool(cash_ledger.get("eligible_receipt_types"))
+            and bool(cash_ledger.get("not_receipt_types"))
+            and bool(str(cash_ledger.get("capital_repayment_like_component") or "").strip())
+            and bool(str(total_return_measurement.get("formula") or "").strip())
+            and bool(str(total_return_measurement.get("reinvestment_rule") or "").strip())
+            and "once" in normalize(total_return_measurement.get("cash_receipt_accounting_rule"))
+            and isinstance(cash_policy, Mapping)
+            and cash_policy.get("automatic_reinvestment") is False
+            and cash_policy.get("mandatory_retention") is False
+        )
+        total_return_schema = isinstance(cash_ledger, Mapping) or isinstance(
+            total_return_measurement, Mapping
+        )
+        self.check(
+            "strategic allocation return-model cash accounting policy",
+            total_return_cash_policy if total_return_schema else legacy_d0_policy,
+            (
+                "single-objective cash-ledger controls"
+                if total_return_schema
+                else actual_measure or "legacy cash-accounting policy missing"
+            ),
+        )
+        if total_return_schema:
+            return_evidence = (
+                return_model.get("return_evidence")
+                if isinstance(return_model, Mapping)
+                else None
+            )
+            self.check(
+                "strategic allocation return evidence explicitly blocks implementation",
+                isinstance(return_evidence, Mapping)
+                and implementation_gate_is_not_approved(
+                    normalize(return_evidence.get("implementation_status"))
+                )
+                and bool(str(return_evidence.get("formal_test_requirement") or "").strip())
+                and bool(str(return_evidence.get("benchmark_requirement") or "").strip()),
+                "return_evidence implementation boundary",
+            )
+
+            risk_budget = (
+                return_model.get("risk_budget")
+                if isinstance(return_model, Mapping)
+                else None
+            )
+            self.check(
+                "strategic allocation risk budget explicitly blocks implementation",
+                isinstance(risk_budget, Mapping)
+                and implementation_gate_is_not_approved(
+                    normalize(risk_budget.get("implementation_status"))
+                )
+                and bool(str(risk_budget.get("approval_requirement") or "").strip())
+                and bool(str(risk_budget.get("loss_limit") or "").strip()),
+                "risk_budget implementation boundary",
+            )
 
     def check_valuation_reproducibility(self) -> None:
         valuation_audit = read_text(self.case_dir / "analysis/valuation_audit.md")
@@ -662,6 +1093,56 @@ class GateRunner:
             "valuation model target/upside recalculates",
             not arithmetic_errors,
             "; ".join(arithmetic_errors[:6]),
+        )
+
+    def check_strategic_named_direct_equity_reconciliation(
+        self,
+        gate_manifest: Any,
+    ) -> None:
+        """Require every declared T3 direct issuer in valuation and Street packets."""
+
+        controls = (
+            gate_manifest.get("strategy_controls")
+            if isinstance(gate_manifest, Mapping)
+            else None
+        )
+        raw_tickers = (
+            controls.get("named_t3_direct_equity_tickers")
+            if isinstance(controls, Mapping)
+            else None
+        )
+        named_tickers = (
+            [str(ticker).strip() for ticker in raw_tickers if str(ticker).strip()]
+            if isinstance(raw_tickers, Sequence)
+            and not isinstance(raw_tickers, (str, bytes, bytearray))
+            else []
+        )
+        named_set = set(named_tickers)
+        valuation_tickers = {
+            str(row.get("ticker")).strip()
+            for row in valuation_rows(
+                self.load_first_json("data/current_valuation_model_*.json")
+            )
+            if has_items(row.get("ticker"))
+        }
+        broker_tickers = {
+            str(row.get("ticker")).strip()
+            for row in broker_consensus_rows(
+                self.load_first_json("data/broker_street_consensus_*.json")
+            )
+            if has_items(row.get("ticker"))
+        }
+        missing_valuation = sorted(named_set - valuation_tickers)
+        missing_broker = sorted(named_set - broker_tickers)
+        self.check(
+            "strategic named T3 direct-equity registry reconciles to valuation universe",
+            not missing_valuation and len(named_tickers) == len(named_set),
+            ", ".join(missing_valuation) or f"matched={len(named_tickers)}",
+        )
+        self.check(
+            "strategic named T3 direct-equity registry reconciles to broker/Street universe",
+            not missing_broker and len(named_tickers) == len(named_set),
+            ", ".join(missing_broker) or f"matched={len(named_tickers)}",
         )
 
     def check_single_stock_depth(self) -> None:
@@ -1033,7 +1514,13 @@ class GateRunner:
             "PASS cannot coexist with incomplete broker/Street target-price coverage",
         )
 
-    def check_final_signoff(self, final_signoff: Any) -> None:
+    def check_final_signoff(
+        self,
+        final_signoff: Any,
+        *,
+        gate_manifest: Any = None,
+        strategic_allocation_case: bool = False,
+    ) -> None:
         if not isinstance(final_signoff, Mapping):
             self.check("final sign-off is object", False)
             return
@@ -1045,23 +1532,104 @@ class GateRunner:
             )
 
         status = normalize(final_signoff.get("signoff_status") or final_signoff.get("status"))
-        self.check(
-            "final sign-off status pass",
-            status in {"pass", "passed", "approved", "signed", "publishable"},
-            status or "missing",
+        strategic_framework_signoff = (
+            strategic_allocation_case
+            and status in STRATEGIC_RESEARCH_FRAMEWORK_SIGNOFF_STATUSES
         )
+        if strategic_framework_signoff:
+            framework_status = normalize(final_signoff.get("framework_status"))
+            implementation_status = normalize(final_signoff.get("implementation_status"))
+            live_execution_authorized = final_signoff.get("live_execution_authorized")
+            implementation_gates = final_signoff.get("implementation_gates")
+            execution_eligibility = final_signoff.get("execution_eligibility")
+            self.check(
+                "strategic allocation research-framework sign-off status pass",
+                status in STRATEGIC_RESEARCH_FRAMEWORK_SIGNOFF_STATUSES
+                and framework_status in LEGACY_PASS_SIGNOFF_STATUSES,
+                f"signoff={status or 'missing'}; framework={framework_status or 'missing'}",
+            )
+            self.check(
+                "strategic allocation implementation explicitly not approved",
+                implementation_status in IMPLEMENTATION_BLOCKED_STATUSES,
+                implementation_status or "missing",
+            )
+            self.check(
+                "strategic allocation live execution explicitly unauthorized",
+                live_execution_authorized is False,
+                str(live_execution_authorized),
+            )
+
+            gates_ok, gates_detail = strategic_implementation_gates_are_blocking(
+                implementation_gates
+            )
+            self.check(
+                "strategic allocation return-evidence and risk-budget gates block implementation",
+                gates_ok,
+                gates_detail,
+            )
+
+            execution_ok, execution_detail = strategic_execution_is_inactive(
+                execution_eligibility
+            )
+            self.check(
+                "strategic allocation execution eligibility remains inactive",
+                execution_ok,
+                execution_detail,
+            )
+
+            strategy_controls = (
+                gate_manifest.get("strategy_controls")
+                if isinstance(gate_manifest, Mapping)
+                else None
+            )
+            cash_objective_required = (
+                strategy_controls.get("cash_objective_required")
+                if isinstance(strategy_controls, Mapping)
+                and isinstance(strategy_controls.get("cash_objective_required"), bool)
+                else None
+            )
+            disclosure_ok, disclosure_detail = strategic_material_claims_disclosed(
+                final_signoff,
+                cash_objective_required=cash_objective_required,
+            )
+            self.check(
+                "strategic allocation material claims are explicitly disclosed",
+                disclosure_ok,
+                disclosure_detail,
+            )
+        else:
+            self.check(
+                "final sign-off status pass",
+                status in LEGACY_PASS_SIGNOFF_STATUSES,
+                status or "missing",
+            )
 
         score = int_value(final_signoff.get("publishability_score"))
         self.check("final sign-off score >= 90", score is not None and score >= 90, str(score))
         self.check("final sign-off open S count zero", int_value(final_signoff.get("open_s_count")) == 0)
         self.check("final sign-off open A count zero", int_value(final_signoff.get("open_a_count")) == 0)
-        self.check(
-            "final sign-off residual risks do not conflict with PASS",
-            not final_signoff_has_material_residual_risk_conflict(final_signoff),
-            "material residual risk cannot be hidden in a PASS sign-off",
-        )
+        if strategic_framework_signoff:
+            residual_ok, residual_detail = strategic_residual_risks_disclosed(
+                final_signoff
+            )
+            self.check(
+                "strategic allocation residual implementation blockers are disclosed",
+                residual_ok,
+                residual_detail,
+            )
+        else:
+            self.check(
+                "final sign-off residual risks do not conflict with PASS",
+                not final_signoff_has_material_residual_risk_conflict(final_signoff),
+                "material residual risk cannot be hidden in a PASS sign-off",
+            )
 
-    def check_workflow_eval(self, workflow_eval: Any) -> None:
+    def check_workflow_eval(
+        self,
+        workflow_eval: Any,
+        *,
+        strategic_allocation_case: bool = False,
+    ) -> None:
         if not isinstance(workflow_eval, Mapping):
             self.check("workflow eval is object", False)
             return
@@ -1076,6 +1644,30 @@ class GateRunner:
         )
         score = int_value(quality.get("score"))
         self.check("workflow eval score >= 90", score is not None and score >= 90, str(score))
+        strategic_framework_workflow = strategic_allocation_case and (
+            "implementation_status" in quality
+            or normalize(quality.get("status"))
+            in {
+                "pass_research_framework_implementation_not_approved",
+                "research_framework_pass_implementation_not_approved",
+            }
+        )
+        if strategic_framework_workflow:
+            self.check(
+                "strategic allocation workflow status distinguishes research from implementation",
+                normalize(quality.get("status"))
+                in {
+                    "pass_research_framework_implementation_not_approved",
+                    "research_framework_pass_implementation_not_approved",
+                },
+                str(quality.get("status") or "missing"),
+            )
+            self.check(
+                "strategic allocation workflow implementation explicitly not approved",
+                normalize(quality.get("implementation_status"))
+                in IMPLEMENTATION_BLOCKED_STATUSES,
+                str(quality.get("implementation_status") or "missing"),
+            )
 
     def check_case_verifier(self) -> None:
         verifier = self.case_dir / "tools" / "verify_research_workspace.py"
@@ -1393,16 +1985,26 @@ class GateRunner:
 
     def check_proxy_field_official_collection_depth(self) -> None:
         field_payload = self.load_json("data/field_evidence_completion_20260701.json")
-        field_rows = field_payload.get("rows") if isinstance(field_payload, Mapping) else []
-        proxy_tickers = {
-            str(row.get("ticker"))
-            for row in field_rows
-            if isinstance(row, Mapping)
-            and any(
-                isinstance(cell, Mapping) and normalize(cell.get("status")) == "proxy"
-                for cell in (row.get("fields") or {}).values()
+        field_rows = field_payload.get("rows") if isinstance(field_payload, Mapping) else None
+        if not isinstance(field_rows, Sequence) or isinstance(field_rows, (str, bytes, bytearray)):
+            self.check(
+                "proxy-field source field-evidence rows structured",
+                False,
+                "rows missing",
             )
-        }
+            return
+        proxy_tickers = set()
+        for row in field_rows:
+            if not isinstance(row, Mapping):
+                continue
+            fields = row.get("fields")
+            if not isinstance(fields, Mapping):
+                continue
+            if any(
+                isinstance(cell, Mapping) and normalize(cell.get("status")) == "proxy"
+                for cell in fields.values()
+            ):
+                proxy_tickers.add(str(row.get("ticker")))
         payload = self.load_json("data/proxy_field_official_filing_collection_20260701.json")
         rows = payload.get("rows") if isinstance(payload, Mapping) else None
         if not isinstance(rows, Sequence) or isinstance(rows, (str, bytes, bytearray)):
@@ -1418,9 +2020,12 @@ class GateRunner:
         for row in rows:
             if not isinstance(row, Mapping):
                 continue
+            direct_hits = row.get("proxy_field_direct_hits")
+            if not isinstance(direct_hits, Mapping):
+                continue
             hit_cells += sum(
                 1
-                for value in (row.get("proxy_field_direct_hits") or {}).values()
+                for value in direct_hits.values()
                 if int(value or 0) > 0
             )
         self.check(
@@ -1436,7 +2041,14 @@ class GateRunner:
 
     def check_residual_proxy_field_audit_depth(self) -> None:
         field_payload = self.load_json("data/field_evidence_completion_20260701.json")
-        field_rows = field_payload.get("rows") if isinstance(field_payload, Mapping) else []
+        field_rows = field_payload.get("rows") if isinstance(field_payload, Mapping) else None
+        if not isinstance(field_rows, Sequence) or isinstance(field_rows, (str, bytes, bytearray)):
+            self.check(
+                "residual proxy-field source field-evidence rows structured",
+                False,
+                "rows missing",
+            )
+            return
         proxy_cells: list[tuple[str, str]] = []
         for row in field_rows:
             if not isinstance(row, Mapping):
@@ -1640,6 +2252,8 @@ def resolve_artifact(case_dir: Path, rel: str) -> Path:
 def case_requires_industry_chain(gate_manifest: Any, text_blob: str) -> bool:
     gate_text = ""
     if isinstance(gate_manifest, Mapping):
+        if case_is_strategic_allocation(gate_manifest):
+            return False
         report_type = normalize(gate_manifest.get("report_type"))
         # A single-stock report may embed a full value-chain module without
         # becoming a multi-company industry-chain valuation case.  The latter
@@ -1658,12 +2272,184 @@ def case_requires_industry_chain(gate_manifest: Any, text_blob: str) -> bool:
             "full_chain",
             "supply-chain",
             "supply_chain",
-            "coverage_pack",
-            "coverage pack",
             "产业链",
             "全产业链",
         )
     )
+
+
+def case_is_strategic_allocation(gate_manifest: Any) -> bool:
+    if not isinstance(gate_manifest, Mapping):
+        return False
+    return normalize(gate_manifest.get("case_profile")) == "strategic_allocation"
+
+
+def strategic_allocation_uses_open_item_admission(gate_manifest: Any) -> bool:
+    """Identify the explicit open-research / item-level-admission profile."""
+
+    if not isinstance(gate_manifest, Mapping):
+        return False
+    controls = gate_manifest.get("strategy_controls")
+    return (
+        isinstance(controls, Mapping)
+        and normalize(controls.get("research_universe_mode"))
+        == "open_with_item_level_admission"
+    )
+
+
+def strategic_allocation_can_skip_issuer_broker_gate(gate_manifest: Any) -> bool:
+    """Skip issuer consensus only when there is no issuer under review.
+
+    Legacy strategic cases can skip because direct stock exposure is expressly
+    excluded.  An open-universe case can skip only while T3 contains no named
+    direct equity; the manifest must instead require a valuation package for
+    every future named T3 issuer.
+    """
+
+    if not isinstance(gate_manifest, Mapping):
+        return False
+    controls = gate_manifest.get("strategy_controls")
+    if not isinstance(controls, Mapping):
+        return False
+    if strategic_allocation_uses_open_item_admission(gate_manifest):
+        raw_tickers = controls.get("named_t3_direct_equity_tickers")
+        named_tickers = (
+            [str(ticker).strip() for ticker in raw_tickers if str(ticker).strip()]
+            if isinstance(raw_tickers, Sequence)
+            and not isinstance(raw_tickers, (str, bytes, bytearray))
+            else []
+        )
+        return (
+            first_float(controls.get("initial_direct_stock_weight")) == 0.0
+            and normalize(controls.get("issuer_target_price_policy"))
+            == "required_for_each_named_t3_direct_equity"
+            and int_value(controls.get("named_t3_direct_equity_count")) == 0
+            and not named_tickers
+        )
+    return strategic_allocation_has_zero_direct_stock(gate_manifest)
+
+
+def strategic_allocation_has_zero_direct_stock(gate_manifest: Any) -> bool:
+    if not isinstance(gate_manifest, Mapping):
+        return False
+    controls = gate_manifest.get("strategy_controls")
+    if not isinstance(controls, Mapping):
+        return False
+    return (
+        first_float(controls.get("initial_direct_stock_weight")) == 0.0
+        and normalize(controls.get("issuer_target_price_policy")) in {"none", "not applicable"}
+    )
+
+
+def strategic_implementation_gates_are_blocking(payload: Any) -> tuple[bool, str]:
+    """Require the distinct evidence and risk gates that keep a research pass non-live."""
+
+    if not isinstance(payload, Mapping):
+        return False, "implementation_gates missing or not an object"
+
+    required = ("return_evidence", "risk_budget", "suitability", "execution")
+    values = {key: normalize(payload.get(key)) for key in required}
+    missing = [key for key, value in values.items() if not value]
+    incorrect = [key for key, value in values.items() if not implementation_is_blocked(value)]
+    detail = "; ".join(f"{key}={value or 'missing'}" for key, value in values.items())
+    return not missing and not incorrect, detail
+
+
+def strategic_execution_is_inactive(payload: Any) -> tuple[bool, str]:
+    if not isinstance(payload, Mapping):
+        return False, "execution_eligibility missing or not an object"
+
+    status = normalize(payload.get("status"))
+    q = first_float(payload.get("q"))
+    active = payload.get("live_execution_authorized")
+    return (
+        implementation_is_blocked(status) and q == 0.0 and active is False,
+        f"status={status or 'missing'}; q={q}; live_execution_authorized={active}",
+    )
+
+
+def strategic_material_claims_disclosed(
+    payload: Any,
+    *,
+    cash_objective_required: bool | None = None,
+) -> tuple[bool, str]:
+    if not isinstance(payload, Mapping):
+        return False, "final sign-off missing or not an object"
+
+    disclosure = payload.get("material_claim_disclosure")
+    if not isinstance(disclosure, Mapping):
+        return False, "material_claim_disclosure missing or not an object"
+
+    missing = [
+        key for key in STRATEGIC_MATERIAL_DISCLOSURE_KEYS if disclosure.get(key) is not True
+    ]
+    if cash_objective_required is False:
+        if disclosure.get("cash_objective_not_required") is not True:
+            missing.append("cash_objective_not_required")
+        if "cash_target_not_guarantee" in disclosure:
+            missing.append("legacy_cash_target_not_guarantee_must_be_absent")
+    elif disclosure.get("cash_target_not_guarantee") is not True:
+        missing.append("cash_target_not_guarantee")
+    disclosure_text = " ".join(
+        str(value)
+        for value in (
+            payload.get("decision"),
+            payload.get("residual_risks"),
+            payload.get("implementation_rationale"),
+        )
+    )
+    normalized_text = normalize(disclosure_text)
+    reader_boundary_present = (
+        ("not guarantee" in normalized_text or "not guaranteed" in normalized_text)
+        and ("not approved" in normalized_text or "not authorized" in normalized_text)
+    )
+    detail = ", ".join(missing) if missing else "all structured boundaries disclosed"
+    if not reader_boundary_present:
+        detail = f"{detail}; reader-facing decision/residual rationale lacks explicit not-guarantee/not-approved wording"
+    return not missing and reader_boundary_present, detail
+
+
+def strategic_residual_risks_disclosed(payload: Any) -> tuple[bool, str]:
+    if not isinstance(payload, Mapping):
+        return False, "final sign-off missing or not an object"
+    residual_risks = payload.get("residual_risks")
+    if not isinstance(residual_risks, Sequence) or isinstance(
+        residual_risks, (str, bytes, bytearray)
+    ) or not residual_risks:
+        return False, "residual_risks must list implementation blockers"
+    text = normalize(" ".join(str(item) for item in residual_risks))
+    required_concepts = (
+        ("return", "evidence"),
+        ("risk", "budget"),
+        ("not approved", "not authorized"),
+    )
+    missing = [
+        "/".join(concept)
+        for concept in required_concepts
+        if not any(term in text for term in concept)
+    ]
+    return not missing, ", ".join(missing) if missing else "return evidence, risk budget and authorization blockers disclosed"
+
+
+def implementation_is_blocked(status: str) -> bool:
+    return status in INACTIVE_EXECUTION_STATUSES or status.startswith(
+        (
+            "blocked",
+            "not_approved",
+            "not approved",
+            "not_authorized",
+            "not authorized",
+            "not_run",
+            "not run",
+            "pending",
+        )
+    )
+
+
+def implementation_gate_is_not_approved(status: str) -> bool:
+    """Accept an explicitly inactive implementation gate, including a named pending reason."""
+
+    return implementation_is_blocked(status)
 
 
 def extract_review_findings(payload: Any) -> list[Mapping[str, Any]]:
@@ -1799,6 +2585,7 @@ def extract_publishability_score(review_log: str) -> int | None:
     patterns = (
         r"publishability\s+score\D+(\d{1,3})",
         r"publishability_score\D+(\d{1,3})",
+        r"(?:publication|research[- ]framework)\s+score\D+(\d{1,3})",
     )
     for pattern in patterns:
         match = re.search(pattern, review_log, re.IGNORECASE)
