@@ -182,6 +182,7 @@ Agent: Running MA crossover backtest...
 | /team | Multi-expert collaborative analysis | "Is X worth tracking?" / "Is X a good opportunity?" |
 | /market-desk | Whole-market end-of-day trading-desk research | "What is the market regime?" / "Build a market-wide trading plan" |
 | /equity-research | Institutional research report production | "Write a research report" / "Industry chain analysis" |
+| /research-prose-polish | Evidence-preserving research prose refinement | "去 AI 味" / "去模板腔" / "润色研报" |
 | /quote | Real-time quote lookup | "What's the price of X?" / "Latest quote" |
 | /analyze | Technical analysis | "Analyze X technicals" / "Any signals on X?" |
 | /screen | Smart stock screening | "Find me some stocks" / "Screen for value" |

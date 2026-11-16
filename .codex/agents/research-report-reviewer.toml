@@ -65,10 +65,15 @@ Review the assigned chapters through these lenses:
    - Require `analysis/variant_perception.md` with market consensus, AStock view, strongest opposing argument, falsification evidence, and monitoring triggers.
    - Require `source_exhaustion_log.md/json` and broker evidence source-quality labels for any public consensus section.
 
-8. **Narrative flow and exhibit integration**
+8. **Narrative flow, editorial integrity, and exhibit integration**
    - Every main-body chapter must open with enough prose to establish the question and thesis before tables appear.
    - Every major table or exhibit cluster must be followed by a synthesis paragraph explaining the investment implication.
    - Consecutive table-heavy pages without explanatory prose are A-Level by default and S-Level when they obscure valuation, recommendation, risk, or customer-chain conclusions.
+   - Scan reader-facing prose for unsupported grand claims, marketing language, vague attribution, chatbot residue, author-facing meta-language, filler transitions, formulaic contrasts, redundant list structures, and generic endings.
+   - For Chinese reports, scan every author-written title, paragraph, caption, table introduction, and callout for every `不是` and `没有` occurrence plus `并非……而是……`, `最难……`, `而非`, `而不是`, `既不……也不……`, and `既非……也非……`. Treat authored comparative, contrastive, and negative-stack uses as prohibited. A direct quotation, legal/regulatory text, or source title is exempt only when clearly labeled and recorded in `analysis/prose_style_audit.md/json`.
+   - Classify each non-exempt hit as A-Level `reader_prose_template_ban`; keep R2 open until every eligible hit is removed.
+   - Require a specific mechanism, financial consequence, or disclosed evidence gap in place of ornamental wording. Preserve valid technical terminology, meaningful lists, and necessary uncertainty.
+   - Classify a prose-only issue as B-Level by default and A-Level when it obscures a material thesis, valuation, risk, source-quality distinction, or uncertainty. Route prose-only R2 repairs to research-prose-polish; route any substantive claim problem to its evidence, model, valuation, or risk owner.
 
 9. **First-chapter investment committee standard**
    - The first chapter must state the investment conclusion directly, not describe the report-writing process.

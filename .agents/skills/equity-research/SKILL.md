@@ -101,6 +101,7 @@ Core-pool downgrade rule: any core valuation ticker with missing customer/order/
 | Growth earnings | `growth-earnings-model`, `growth-earnings-modeler` | growth model, segment bridge, sensitivity, driver JSON |
 | Valuation | `valuation`, `valuation-specialist` | `analysis/valuation_model.md`, `analysis/valuation_audit.md`, valuation JSON |
 | Exhibit/narrative | `exhibit-architect`, `latex-writer` | `analysis/exhibit_plan.md`, `analysis/narrative_blueprint.md`, LaTeX/PDF |
+| Research prose polish | research-prose-polish, latex-writer | fact-locked reader-facing draft plus evidence pack | evidence-preserving editorial pass before R2 draft review |
 | Review and repair routing | `research-report-review`, `research-report-reviewer` | `review_findings_<cycle>.json`, `repair_plan_<cycle>.md/json`, `review_log.md` |
 | Final sign-off | `research-report-review`, orchestrator | `final_signoff.md/json` |
 
@@ -367,6 +368,7 @@ If these files exist but contain only generic summaries, repeated `not disclosed
 | Agent | Role File | Input | Output |
 |-------|-----------|-------|--------|
 | LaTeX Writer | `.agents/team/latex-writer.md` | all Phase 1-3 outputs, including supply-chain skill outputs + `.agents/templates/` | `main.tex` + `sections/*.tex` |
+| Research Prose Polish | research-prose-polish | fact-locked reader-facing draft plus source registry, claim audit, valuation, and risk outputs | evidence-preserving prose edit before R2 draft review |
 
 Templates:
 - `.agents/templates/preamble.tex` — IB-style formatting
@@ -382,6 +384,10 @@ If source quality is weak, title the section "Publicly Available Research Sentim
 - Include synthesis after every major exhibit cluster explaining the investment implication, valuation consequence, risk, or monitoring action.
 - Avoid consecutive table-heavy pages without explanatory prose.
 - Keep appendices for source registries and dense audits; do not expose workflow files or repository paths in the reader-facing PDF.
+
+**Prose polish gate:** After the first complete draft is assembled and before R2, run research-prose-polish across reader-facing narrative, captions, and table/exhibit explanations. It must remove template-like, promotional, vague, or author-facing wording while preserving every material fact, number, source-quality qualifier, valuation result, risk, and invalidation trigger. It must not invent specificity, strengthen a recommendation, or conceal an evidence gap.
+
+**Chinese rhetorical-template hard gate:** For Chinese reports, apply the research-prose-polish prohibition to every authored reader-facing `.tex` file, heading, caption, table introduction, callout box, and available release-text extraction. Write `analysis/prose_style_audit.md/json` with the scan pattern, every hit, its disposition, and any immutable-text exception. Any eligible `reader_prose_template_ban` hit is an A-Level R2 finding: R2 cannot PASS and the report cannot enter R3, R4, or publication until the eligible-hit count is zero.
 
 **First-chapter gate:** Chapter 1 must be an investment committee summary. It must include:
 
@@ -423,7 +429,7 @@ Run these cycles:
 |---|---|---|---|
 | `R0_evidence` | Before synthesis/writing | source quality, full-chain universe, claim audit, coverage gaps, source exhaustion | source collection / supply-chain research |
 | `R1_model` | Before drafting | growth model, valuation, model reproducibility, current price, method fit | growth-earnings / valuation |
-| `R2_draft` | After first draft | thesis, narrative, chapter logic, source integration, IC summary, language | owner skill in repair plan |
+| `R2_draft` | After first draft | thesis, narrative, chapter logic, source integration, IC summary, language, editorial integrity | research-prose-polish for prose-only findings; otherwise owner skill in repair plan |
 | `R3_render_compliance` | After PDF build | visual layout, exhibit integrity, compliance, language, generic + industry verifier | writer / exhibit / source governance |
 | `R4_final_ic` | Before publish | all issue closure, waivers, score, verifier summary, residual risk | repair plan or downgrade |
 

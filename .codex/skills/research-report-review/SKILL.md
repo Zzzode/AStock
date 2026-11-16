@@ -48,10 +48,15 @@ Run independent read-only reviews across these lenses. The active cycle determin
    - Verify `analysis/variant_perception.md` states consensus view, AStock's differentiated view, strongest opposing argument, falsification evidence, and monitoring triggers.
 4. **Visual exhibit quality**
    - Inspect rendered PDF pages when available. Core conclusions should be supported by readable figures, heatmaps, timelines, scorecards, or diagrams rather than dense longtables only.
-5. **Narrative flow and prose-led structure**
+5. **Narrative flow, prose-led structure, and editorial integrity**
    - Check whether each main-body chapter opens with analytical prose before tables appear.
    - Check whether each major table/exhibit cluster is embedded in text and followed by a synthesis paragraph.
    - Flag any chapter that reads like PPT/chartbook pages, a source digest, or a table stack rather than institutional equity research prose.
+   - Scan reader-facing prose for unsupported grand claims, promotional adjectives, vague attribution, chatbot residue, author-facing meta-language, filler transitions, formulaic contrasts, redundant list structures, and generic positive conclusions.
+   - Apply the Chinese Rhetorical-Template Prohibition to every author-written title, body paragraph, caption, table introduction, and callout. Re-run the literal scan defined by research-prose-polish, including its conservative authored-`不是` / `没有` scan, and inspect every hit; a direct quotation, legal/regulatory text, or source title is exempt only when clearly marked and recorded in `analysis/prose_style_audit.md/json`.
+   - Classify every non-exempt hit as A-Level `reader_prose_template_ban`. Do not close R2 or allow R3/R4 publication review while any eligible hit remains.
+   - Require a specific mechanism, financial consequence, or explicit evidence gap in place of ornamental language. Do not flag a valid technical term, a material three-item list, or a necessary uncertainty qualifier merely because it is formal.
+   - Assign prose-only repairs to research-prose-polish. Route any finding that changes evidence, source attribution, valuation, recommendation strength, or risk disclosure to its substantive owner instead.
 6. **First-chapter investment committee quality**
    - Check whether Chapter 1 gives current price, final target price or fair-value range, upside/downside, Q2E or next-quarter earnings bridge, ranking, action, and up/down triggers for primary names.
    - Check whether ranking methodology and action labels are explicit.
@@ -71,7 +76,7 @@ Use `.agents/team/research-report-reviewer.md` as the reviewer role. If this run
 |---|---|---|---|
 | `R0_evidence` | Before synthesis or drafting | template benchmark, source hierarchy, full-chain universe, coverage gaps, source exhaustion, claim audit | `review_findings_R0_evidence.json`, `repair_plan_R0_evidence.md/json` |
 | `R1_model` | Before drafting | growth model, value-chain economics, valuation model, valuation audit, current-price dependencies | `review_findings_R1_model.json`, `repair_plan_R1_model.md/json` |
-| `R2_draft` | After draft | thesis, narrative, IC summary, chapter logic, evidence integration, language | `review_findings_R2_draft.json`, `repair_plan_R2_draft.md/json` |
+| `R2_draft` | After draft | thesis, narrative, IC summary, chapter logic, evidence integration, language, editorial integrity | `review_findings_R2_draft.json`, `repair_plan_R2_draft.md/json` |
 | `R3_render_compliance` | After PDF build | rendered visual quality, compliance, source appendix, generic verifier, industry-chain verifier when applicable | `review_findings_R3_render_compliance.json`, `repair_plan_R3_render_compliance.md/json` |
 | `R4_final_ic` | Before publication | issue closure, waivers, publishability score, residual risks, final sign-off | `review_findings_R4_final_ic.json`, `final_signoff.md/json` |
 
@@ -87,11 +92,12 @@ The reviewer is read-only. It does not repair files. It writes findings, repair 
    - Lens 2: valuation, broker targets, market data, secondary-market sections.
    - Lens 3: consensus, risk, appendix, evidence and compliance.
 3. Each reviewer returns S/A/B findings with exact file/section references and concrete fixes.
+   For an R2 prose-only finding, set owner_skill to research-prose-polish; for a factual or compliance concern surfaced by wording, route the repair to the source, model, valuation, or risk owner.
 4. Merge duplicate findings and order by severity.
 5. Write `review_findings_<cycle>.json`.
 6. Write `repair_plan_<cycle>.md/json` unless the cycle is `R4_final_ic` and all gates pass.
 7. State publishability: `BLOCKED`, `CONDITIONAL`, `MECHANICAL_PASS_INSTITUTIONAL_FAIL`, or `PASS`, plus a numeric publishability score from 0 to 100 using the scoring rubric below.
-8. If the review is triggered by user feedback about a missing chain block, missing ticker, weak evidence, or bad structure, require `analysis/delta_audit.md` and check that it maps the correction to a skill/role prevention rule.
+8. If the review is triggered by user feedback about a missing chain block, missing ticker, weak evidence, bad structure, or prohibited prose template, require `analysis/delta_audit.md` and check that it maps the correction to a skill/role prevention rule.
 
 ## Finding and Repair Schema
 

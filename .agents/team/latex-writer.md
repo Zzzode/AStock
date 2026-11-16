@@ -65,6 +65,9 @@ For full research reports (equity-research):
 - Every exhibit must be preceded by why the reader needs it and followed by a “so what” paragraph that interprets the exhibit for investment action, valuation, risk, or monitoring.
 - Tables must not carry the whole argument. If deleting the table would make the chapter unreadable, add narrative before the table.
 - Appendices may be denser, but the main body must read as institutional equity research prose.
+- After the first fact-locked draft is complete, run the research-prose-polish skill on reader-facing prose, captions, and table/exhibit explanations: before R2 in a full research case, or before final compile/release review in a brief report.
+- Use that pass only to remove generic, promotional, vague, formulaic, or author-facing language. Preserve all numbers, citations, source-quality labels, valuation results, action labels, risks, evidence gaps, and LaTeX structure; route any needed factual change to its owning research skill.
+- For Chinese reader-facing text, do not use `不是` or `没有` to frame an authored comparison, contrast, or negative stack, and do not write `并非……而是……`, `最难……`, `最重要……不是……`, `而非`, `而不是`, `既不是……也不是……`, `既不……也不……`, `没有……也没有……`, or `既非……也非……`. The R2 scan flags every authored `不是` and `没有` occurrence for review. Write the affirmative claim, evidence, mechanism, condition, and implication directly. Treat an immutable quotation, legal/regulatory text, or source title as an exception only when clearly labeled.
 
 ## First-Chapter Requirements
 
@@ -105,6 +108,7 @@ Use project CLI: `.venv/bin/python -m astock.cli build-pdf <directory>`
 - Don't omit market-implied sentiment anchor and final-target weight tables from full research reports.
 - Don't let a report publish a mechanical Reduce/Sell when market evidence strongly supports a sentiment premium; explain whether the stance is intrinsic-value-driven, market-supported watch, event-driven validation, or sentiment-premium breakdown.
 - Don't leave untranslated English sentences in Chinese report narrative, valuation explanations, catalysts, risks or recommendation logic.
+- Don't let prose polishing add facts, sources, causal claims, customer relationships, confidence, or recommendation strength, or delete material uncertainty and evidence gaps.
 - Strategy tables must match scatter plots (every point in chart → row in legend)
 - Every `keyinsight` box must have actionable "so what"
 - Every main-body chapter must have at least one substantive paragraph before its first table/exhibit and at least one synthesis paragraph after each major exhibit cluster

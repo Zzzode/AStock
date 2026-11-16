@@ -72,6 +72,7 @@ Expects:
 - Layer classification in architecture diagram = section organization
 - Risk factor count in heading = actual rows in table
 - Scoring arithmetic: verify all rows sum correctly
+- Reader-facing prose is specific, evidence-preserving, and free of unsupported grand claims, promotional wording, vague attribution, chatbot residue, and author-facing meta-language. Route prose-only repairs to research-prose-polish; route a wording issue that changes evidence, valuation, risk, or recommendation logic to its substantive owner.
 
 ## Constraints
 
@@ -89,5 +90,6 @@ Expects:
 - Block publication if publishability score is below 90.
 - Compare against verified source data, not what "sounds reasonable"
 - Flag uncertainty explicitly if you can't verify something
+- Treat prose-only editorial issues as B-Level by default and A-Level when they obscure a material thesis, valuation, risk, source-quality distinction, or uncertainty.
 - One S-level issue = publication blocked — no exceptions
 - Continue review-repair cycles until all gates pass, the report is downgraded, or the user explicitly stops the workflow.

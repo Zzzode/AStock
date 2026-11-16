@@ -72,6 +72,7 @@ Use natural language in Claude Code / Codex. Python commands are machine adapter
 |-------|---------|
 | `/team` | Multi-expert investment opportunity analysis |
 | `/equity-research` | Institutional research report production |
+| `/research-prose-polish` | Evidence-preserving research prose refinement |
 | `/quote` | Real-time quote lookup |
 | `/analyze` | Technical analysis |
 | `/screen` | Stock screening |
