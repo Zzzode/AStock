@@ -10,10 +10,17 @@ from __future__ import annotations
 import hashlib
 import json
 from dataclasses import dataclass, field
-from datetime import datetime
+from datetime import datetime, timezone
 from enum import Enum
 from pathlib import Path
 from typing import Any, Optional
+
+
+def _utc_datetime(value: datetime) -> datetime:
+    """Normalize legacy naive and aware timestamps to comparable UTC values."""
+    if value.tzinfo is None:
+        return value.replace(tzinfo=timezone.utc)
+    return value.astimezone(timezone.utc)
 
 
 class ResearchStatus(str, Enum):
@@ -69,6 +76,9 @@ class ResearchObservation:
     evidence: dict[str, Any] = field(default_factory=dict)
     status_after: Optional[ResearchStatus] = None
 
+    def __post_init__(self) -> None:
+        self.observed_at = _utc_datetime(self.observed_at)
+
     def to_dict(self) -> dict[str, Any]:
         return {
             "observation_type": self.observation_type,
@@ -114,6 +124,8 @@ class ResearchEntry:
     entry_id: Optional[str] = None
 
     def __post_init__(self) -> None:
+        self.created_at = _utc_datetime(self.created_at)
+        self.updated_at = _utc_datetime(self.updated_at)
         if not self.targets:
             raise ValueError("ResearchEntry requires at least one target")
         if self.entry_id is None:
@@ -183,11 +195,7 @@ class ResearchEntry:
         self.observations.append(observation)
         if observation.status_after is not None:
             self.status = observation.status_after
-        now = (
-            datetime.now(observation.observed_at.tzinfo)
-            if observation.observed_at.tzinfo
-            else datetime.now()
-        )
+        now = datetime.now(timezone.utc)
         self.updated_at = max(now, observation.observed_at)
 
 
@@ -248,7 +256,7 @@ class ResearchLedger:
         self.data_path.parent.mkdir(parents=True, exist_ok=True)
         payload = {
             "schema_version": "research-ledger.v1",
-            "updated_at": datetime.now().isoformat(),
+            "updated_at": datetime.now(timezone.utc).isoformat(),
             "entries": [
                 entry.to_dict()
                 for entry in sorted(
@@ -360,7 +368,7 @@ class ResearchLedger:
             cards.append(_entry_index_card(entry))
 
         return ResearchLedgerIndex(
-            generated_at=datetime.now(),
+            generated_at=datetime.now(timezone.utc),
             entry_count=len(entries),
             status_counts=status_counts,
             target_counts=target_counts,
@@ -445,7 +453,7 @@ class ResearchLedger:
         if entry is None:
             raise KeyError(f"Research entry not found: {entry_id}")
         entry.status = status
-        entry.updated_at = datetime.now()
+        entry.updated_at = datetime.now(timezone.utc)
         self._save()
         return entry
 

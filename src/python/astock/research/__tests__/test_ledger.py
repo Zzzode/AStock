@@ -1,4 +1,5 @@
-from datetime import datetime
+import json
+from datetime import datetime, timezone
 from pathlib import Path
 
 import pytest
@@ -79,6 +80,38 @@ def test_ledger_create_list_and_observe(tmp_path: Path) -> None:
     entries = reloaded.list_entries(status=ResearchStatus.MONITORING)
     assert len(entries) == 1
     assert entries[0].observations[0].note.startswith("Volume confirmation failed")
+
+
+def test_ledger_normalizes_mixed_legacy_timestamp_offsets(tmp_path: Path) -> None:
+    path = tmp_path / "ledger.json"
+    legacy = ResearchEntry(
+        title="Legacy timestamp thesis",
+        thesis="A legacy JSON record may contain naive timestamps.",
+        targets=["000001"],
+        created_at=datetime(2026, 6, 12, 9, 0),
+        updated_at=datetime(2026, 6, 12, 9, 0),
+    ).to_dict()
+    legacy["created_at"] = "2026-06-12T09:00:00"
+    legacy["updated_at"] = "2026-06-12T09:00:00"
+    path.write_text(
+        json.dumps({"schema_version": "research-ledger.v1", "entries": [legacy]}),
+        encoding="utf-8",
+    )
+
+    ledger = ResearchLedger(path)
+    created = ledger.create(
+        ResearchEntry(
+            title="Aware timestamp thesis",
+            thesis="A new observation carries an explicit UTC offset.",
+            targets=["600000"],
+            created_at=datetime(2026, 6, 13, 9, 0, tzinfo=timezone.utc),
+            updated_at=datetime(2026, 6, 13, 9, 0, tzinfo=timezone.utc),
+        )
+    )
+
+    entries = ledger.list_entries()
+    assert created.entry_id in {entry.entry_id for entry in entries}
+    assert all(entry.updated_at.tzinfo == timezone.utc for entry in entries)
 
 
 def test_ledger_index_query_and_duplicate_candidates(tmp_path: Path) -> None:
