@@ -4,7 +4,9 @@ version = "0.1.0"
 description = "A-Share Agent Capability Layer"
 requires-python = ">=3.11"
 dependencies = [
-    "akshare>=1.12.0",
+    # Pinned to the 1.18 line: akshare 1.20 removed akshare.stock_feature,
+    # which market_rotation.service imports for stock_board_industry_ths.
+    "akshare>=1.18,<1.19",
     "baostock>=0.8.9",
     "pandas>=2.1.0",
     "numpy>=1.26.0",
