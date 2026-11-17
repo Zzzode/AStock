@@ -1146,6 +1146,7 @@ def test_market_desk_ic_capability_and_cli_emit_structured_decision(tmp_path) ->
     controls_path = tmp_path / "controls.json"
     candidate_path.write_text(json.dumps(candidate), encoding="utf-8")
     controls_path.write_text(json.dumps(controls), encoding="utf-8")
+    valid_until = (datetime.now(timezone.utc) + timedelta(days=365)).isoformat()
     restricted_list_path = tmp_path / "restricted-list.json"
     restricted_list_path.write_text(
         json.dumps(
@@ -1156,7 +1157,7 @@ def test_market_desk_ic_capability_and_cli_emit_structured_decision(tmp_path) ->
                     "source_ref": "compliance:2026-07-28",
                     "reviewed_by": "compliance-officer",
                     "reviewed_at": "2026-07-28T09:00:00+08:00",
-                    "expires_at": "2026-08-28T09:00:00+08:00",
+                    "expires_at": valid_until,
                 },
                 "entries": [
                     {
@@ -1167,7 +1168,7 @@ def test_market_desk_ic_capability_and_cli_emit_structured_decision(tmp_path) ->
                         "effective_at": "2026-07-28T09:00:00+08:00",
                         "reviewed_by": "compliance-officer",
                         "reviewed_at": "2026-07-28T09:00:00+08:00",
-                        "expires_at": "2026-08-28T09:00:00+08:00",
+                        "expires_at": valid_until,
                     }
                 ],
             }

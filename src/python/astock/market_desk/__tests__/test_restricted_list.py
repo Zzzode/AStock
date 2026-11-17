@@ -1,6 +1,7 @@
 """Tests for persistent, source-labelled restricted-list governance."""
 
 import json
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from astock import capabilities
@@ -9,6 +10,14 @@ from astock.market_desk import (
     RestrictedListEntry,
     RestrictedListStore,
 )
+
+# Deterministic clock inside the fixed 2026-07-28..2026-08-28 attestation window.
+_REFERENCE_NOW = datetime(2026, 8, 10, 1, 0, tzinfo=timezone.utc)
+
+
+def _far_future_expires_at() -> str:
+    """An expiry that stays in force at the real wall clock used by capability paths."""
+    return (datetime.now(timezone.utc) + timedelta(days=365)).isoformat()
 
 
 def _entry(target: str, status: str = "restricted") -> RestrictedListEntry:
@@ -20,7 +29,7 @@ def _entry(target: str, status: str = "restricted") -> RestrictedListEntry:
         effective_at="2026-07-28T09:00:00+08:00",
         reviewed_by="compliance-officer",
         reviewed_at="2026-07-28T09:00:00+08:00",
-        expires_at="2026-08-28T09:00:00+08:00",
+        expires_at=_far_future_expires_at(),
     )
 
 
@@ -30,7 +39,7 @@ def test_store_reports_missing_stale_and_current_restricted_targets(tmp_path: Pa
     assert store.health()["status"] == "missing"
 
     store.upsert(_entry("600460"))
-    health = store.health()
+    health = store.health(now=_REFERENCE_NOW)
     assert health["status"] == "current"
     assert health["active_targets"] == ["600460"]
 
@@ -46,7 +55,7 @@ def test_current_empty_list_requires_an_explicit_attestation(tmp_path: Path) -> 
             expires_at="2026-08-28T09:00:00+08:00",
         )
     )
-    health = store.health()
+    health = store.health(now=_REFERENCE_NOW)
     assert health["status"] == "current"
     assert health["active_targets"] == []
 

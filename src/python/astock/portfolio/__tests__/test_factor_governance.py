@@ -49,4 +49,8 @@ def test_context_rejects_unclassified_scenario_factor() -> None:
     context["stress_scenarios"]["growth_down"]["shocks"] = {"rate": -0.2}
 
     with pytest.raises(ValueError, match="unclassified factor"):
-        validate_factor_risk_context(context, required_codes=["600460"])
+        validate_factor_risk_context(
+            context,
+            required_codes=["600460"],
+            now=datetime(2026, 7, 28, 7, 0, tzinfo=timezone.utc),
+        )

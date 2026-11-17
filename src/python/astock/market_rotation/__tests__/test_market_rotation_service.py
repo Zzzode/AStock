@@ -216,6 +216,7 @@ async def test_cross_section_only_claims_history_for_rows_it_validates() -> None
         industry_fetcher=industries,
         concept_fetcher=concepts,
         history_fetcher=history,
+        now=lambda: datetime(2026, 7, 28, 2, 0, tzinfo=timezone.utc),
     ).build_cross_section(
         include_concepts=False,
         observation_limit=2,
@@ -260,6 +261,7 @@ async def test_history_evidence_rejects_return_tampering() -> None:
         industry_fetcher=industries,
         concept_fetcher=concepts,
         history_fetcher=history,
+        now=lambda: datetime(2026, 7, 28, 2, 0, tzinfo=timezone.utc),
     ).build_cross_section(include_concepts=False, history_validation_limit=1)
     result["rankings"]["industries"][0]["multi_horizon_return_pct"]["5d"] = 999.0
 
@@ -291,6 +293,7 @@ async def test_full_history_scope_covers_every_row_before_claiming_full_cross_se
         industry_fetcher=industries,
         concept_fetcher=concepts,
         history_fetcher=history,
+        now=lambda: datetime(2026, 7, 28, 2, 0, tzinfo=timezone.utc),
     ).build_cross_section(history_scope="full", history_concurrency=2)
 
     history_validation = result["ranking_basis"]["history_validation"]
@@ -328,6 +331,7 @@ async def test_full_history_scope_stays_partial_when_any_universe_row_fails() ->
         industry_fetcher=industries,
         concept_fetcher=concepts,
         history_fetcher=history,
+        now=lambda: datetime(2026, 7, 28, 2, 0, tzinfo=timezone.utc),
     ).build_cross_section(include_concepts=False, history_scope="full")
 
     history_validation = result["ranking_basis"]["history_validation"]
