@@ -56,9 +56,15 @@ class FrozenSignalReplayInput:
             "raw_source_records": self.raw_source_records,
         }
         if _content_hash(_archive_hash_input(payload)) != digest:
-            raise ValueError("frozen signal replay archive_id does not match raw source records")
+            raise ValueError(
+                "frozen signal replay archive_id does not match raw source records"
+            )
         canonical = json.dumps(
-            payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+            payload,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
         )
         target_directory = Path(directory)
         target_directory.mkdir(parents=True, exist_ok=True)
@@ -79,7 +85,11 @@ class FrozenSignalReplayInput:
         target_directory.mkdir(parents=True, exist_ok=True)
         target = target_directory / f"{digest}.replay.json"
         canonical = json.dumps(
-            self.to_dict(), ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+            self.to_dict(),
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
         )
         if target.exists():
             if target.read_text(encoding="utf-8") != canonical:
@@ -131,7 +141,9 @@ def build_frozen_signal_replay_input(
     )
 
 
-def parse_frozen_signal_replay_input(value: Mapping[str, Any]) -> FrozenSignalReplayInput:
+def parse_frozen_signal_replay_input(
+    value: Mapping[str, Any],
+) -> FrozenSignalReplayInput:
     """Validate an agent-safe frozen-input payload before signal replay."""
     if str(value.get("schema_version") or "") != "frozen_signal_replay_input.v1":
         raise ValueError("signal replay input must use frozen_signal_replay_input.v1")
@@ -156,7 +168,9 @@ def parse_frozen_signal_replay_input(value: Mapping[str, Any]) -> FrozenSignalRe
     if not archive_id:
         raise ValueError("signal replay input source manifest requires archive_id")
     if archive_id != packet.archive_id:
-        raise ValueError("signal replay input archive_id does not match exact market_data")
+        raise ValueError(
+            "signal replay input archive_id does not match exact market_data"
+        )
     return packet
 
 
@@ -212,5 +226,7 @@ def _archive_hash_input(payload: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _content_hash(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()

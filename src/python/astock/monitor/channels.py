@@ -51,7 +51,9 @@ class TerminalChannel(AlertChannel):
 
     async def send(self, message: AlertMessage) -> bool:
         color = self.colors.get(message.level, self.reset)
-        level_text = {1: "Critical", 2: "Important", 3: "Normal"}.get(message.level, "Unknown")
+        level_text = {1: "Critical", 2: "Important", 3: "Normal"}.get(
+            message.level, "Unknown"
+        )
 
         output = f"""
 {color}{"=" * 50}{self.reset}
@@ -89,7 +91,9 @@ class WeChatWorkChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("errcode") == 0:
-                            logger.info(f"WeCom alert sent successfully: {message.title}")
+                            logger.info(
+                                f"WeCom alert sent successfully: {message.title}"
+                            )
                             return True
                         else:
                             logger.error(f"WeCom alert failed: {result}")
@@ -107,7 +111,9 @@ class DingTalkChannel(AlertChannel):
 
     name = "dingtalk"
 
-    def __init__(self, webhook_url: Optional[str] = None, secret: Optional[str] = None) -> None:
+    def __init__(
+        self, webhook_url: Optional[str] = None, secret: Optional[str] = None
+    ) -> None:
         self.webhook_url = webhook_url
         self.secret = secret
 
@@ -157,7 +163,9 @@ class DingTalkChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("errcode") == 0:
-                            logger.info(f"DingTalk alert sent successfully: {message.title}")
+                            logger.info(
+                                f"DingTalk alert sent successfully: {message.title}"
+                            )
                             return True
                         else:
                             logger.error(f"DingTalk alert failed: {result}")
@@ -197,7 +205,9 @@ class TelegramChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("ok"):
-                            logger.info(f"Telegram alert sent successfully: {message.title}")
+                            logger.info(
+                                f"Telegram alert sent successfully: {message.title}"
+                            )
                             return True
                         else:
                             logger.error(f"Telegram alert failed: {result}")
@@ -237,7 +247,12 @@ class EmailChannel(AlertChannel):
         smtp_password = self.smtp_password
         to_addrs = self.to_addrs
 
-        if smtp_server is None or smtp_user is None or smtp_password is None or not to_addrs:
+        if (
+            smtp_server is None
+            or smtp_user is None
+            or smtp_password is None
+            or not to_addrs
+        ):
             logger.warning("Email configuration incomplete")
             return False
         from_addr = self.from_addr or smtp_user
@@ -281,7 +296,12 @@ Details:
         smtp_password = self.smtp_password
         from_addr = self.from_addr or smtp_user
         to_addrs = self.to_addrs
-        if smtp_server is None or smtp_user is None or smtp_password is None or from_addr is None:
+        if (
+            smtp_server is None
+            or smtp_user is None
+            or smtp_password is None
+            or from_addr is None
+        ):
             raise RuntimeError("Email configuration incomplete")
         with smtplib.SMTP_SSL(smtp_server, self.smtp_port) as server:
             server.login(smtp_user, smtp_password)
@@ -315,7 +335,9 @@ class PushPlusChannel(AlertChannel):
                     if resp.status == 200:
                         result = await resp.json()
                         if result.get("code") == 200:
-                            logger.info(f"PushPlus alert sent successfully: {message.title}")
+                            logger.info(
+                                f"PushPlus alert sent successfully: {message.title}"
+                            )
                             return True
                         else:
                             logger.error(f"PushPlus alert failed: {result}")

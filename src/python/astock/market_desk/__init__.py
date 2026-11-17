@@ -12,7 +12,11 @@ from .decision import (
     decide_investment_committee,
     evaluate_candidate_gate,
 )
-from .compliance import ComplianceAssessment, ComplianceStatus, assess_candidate_compliance
+from .compliance import (
+    ComplianceAssessment,
+    ComplianceStatus,
+    assess_candidate_compliance,
+)
 from .strategy_book import (
     StrategyHorizon,
     StrategyPlan,
@@ -27,7 +31,11 @@ from .restricted_list import (
     RestrictedListStore,
 )
 from .assurance import PaperDeskAssuranceReport, verify_paper_desk_release
-from .observation_action import ObservationAction, ObservationActionResult, evaluate_observation_action
+from .observation_action import (
+    ObservationAction,
+    ObservationActionResult,
+    evaluate_observation_action,
+)
 from .playbooks import (
     PLAYBOOKS,
     EvidenceLevel,

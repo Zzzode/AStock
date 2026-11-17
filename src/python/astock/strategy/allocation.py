@@ -16,7 +16,6 @@ from datetime import UTC, datetime, timedelta
 from enum import Enum
 from typing import Any
 
-
 _STRATEGY_TARGET_ASSET_CLASS = {
     "ashare_factor_tilt": "equity",
     "earnings_event_repricing": "equity",
@@ -55,7 +54,10 @@ class AllocationPolicy:
             ("max_total_equity_weight", self.max_total_equity_weight),
             ("max_total_crypto_weight", self.max_total_crypto_weight),
             ("max_total_cash_asset_weight", self.max_total_cash_asset_weight),
-            ("max_total_futures_margin_fraction", self.max_total_futures_margin_fraction),
+            (
+                "max_total_futures_margin_fraction",
+                self.max_total_futures_margin_fraction,
+            ),
             ("max_single_equity_weight", self.max_single_equity_weight),
             ("max_single_crypto_weight", self.max_single_crypto_weight),
             ("max_sleeve_budget_fraction", self.max_sleeve_budget_fraction),
@@ -72,7 +74,10 @@ class AllocationPolicy:
         if not isinstance(value, Mapping):
             raise TypeError("allocation policy must be an object")
         default = cls()
-        fields = {name: value.get(name, getattr(default, name)) for name in cls.__dataclass_fields__}
+        fields = {
+            name: value.get(name, getattr(default, name))
+            for name in cls.__dataclass_fields__
+        }
         for name in (
             "max_total_equity_weight",
             "max_total_crypto_weight",
@@ -151,7 +156,9 @@ class MultiSleeveAllocator:
             crypto.extend(parsed["crypto"])
             warnings.extend(parsed["warnings"])
 
-        allocation_capital, capital_issues = _resolve_allocation_capital(risk_budget, futures)
+        allocation_capital, capital_issues = _resolve_allocation_capital(
+            risk_budget, futures
+        )
         blockers.extend(capital_issues)
         blockers.extend(
             _sleeve_budget_issues(
@@ -196,7 +203,11 @@ class MultiSleeveAllocator:
             else:
                 state = AllocationState.ACTIVE
 
-        effective_as_of = as_of or _latest_as_of(sleeve_proposals) or datetime.now(UTC).date().isoformat()
+        effective_as_of = (
+            as_of
+            or _latest_as_of(sleeve_proposals)
+            or datetime.now(UTC).date().isoformat()
+        )
         equity_weight = sum(float(item["target_weight"]) for item in equities)
         futures_margin = sum(float(item["margin_fraction"]) for item in futures)
         crypto_gross_weight = sum(abs(float(item["target_weight"])) for item in crypto)
@@ -213,7 +224,11 @@ class MultiSleeveAllocator:
         resolved_risk_budget = {
             **self.policy.to_dict(),
             "allocation_capital": allocation_capital,
-            "capital_basis": "common_nav" if allocation_capital is not None else "weight_only_no_futures",
+            "capital_basis": (
+                "common_nav"
+                if allocation_capital is not None
+                else "weight_only_no_futures"
+            ),
         }
         return {
             "schema_version": "multi_sleeve_allocation.v3",
@@ -278,7 +293,11 @@ def allocate_multi_sleeve(
 ) -> dict[str, Any]:
     """Allocate source-labelled proposals into a reconciled paper ledger."""
 
-    resolved = policy if isinstance(policy, AllocationPolicy) else AllocationPolicy.from_mapping(policy)
+    resolved = (
+        policy
+        if isinstance(policy, AllocationPolicy)
+        else AllocationPolicy.from_mapping(policy)
+    )
     return MultiSleeveAllocator(resolved).allocate(
         sleeve_proposals,
         security_ledger=security_ledger,
@@ -299,8 +318,16 @@ def _frozen_reasons(
     for value in values:
         if not isinstance(value, Mapping):
             continue
-        if value.get("freeze") is True or value.get("hard_veto") is True or value.get("risk_off") is True:
-            reason = str(value.get("reason") or value.get("freeze_reason") or "external hard risk veto")
+        if (
+            value.get("freeze") is True
+            or value.get("hard_veto") is True
+            or value.get("risk_off") is True
+        ):
+            reason = str(
+                value.get("reason")
+                or value.get("freeze_reason")
+                or "external hard risk veto"
+            )
             reasons.append(f"allocation frozen: {reason}")
     return reasons
 
@@ -313,8 +340,13 @@ def _parse_sleeve(
     crypto_ledger: Mapping[str, Any] | None,
 ) -> tuple[dict[str, Any] | None, list[str]]:
     issues: list[str] = []
-    if proposal.get("no_order_execution") is not True or proposal.get("research_only") is not True:
-        issues.append(f"{name}: proposal lacks research-only/no-order-execution contract")
+    if (
+        proposal.get("no_order_execution") is not True
+        or proposal.get("research_only") is not True
+    ):
+        issues.append(
+            f"{name}: proposal lacks research-only/no-order-execution contract"
+        )
     if proposal.get("errors"):
         issues.append(f"{name}: proposal reports errors")
     if policy.require_source_refs and not _proposal_source_ids(proposal):
@@ -323,12 +355,16 @@ def _parse_sleeve(
         return None, issues
 
     strategy_id = str(proposal.get("strategy_id") or "").strip()
-    version = str(proposal.get("strategy_version") or proposal.get("version") or "").strip()
+    version = str(
+        proposal.get("strategy_version") or proposal.get("version") or ""
+    ).strip()
     if not strategy_id or not version:
         return None, [f"{name}: strategy_id and strategy_version are required"]
     expected_asset_class = _STRATEGY_TARGET_ASSET_CLASS.get(strategy_id)
     if expected_asset_class is None:
-        return None, [f"{name}: strategy_id is not registered for an allocatable target schema"]
+        return None, [
+            f"{name}: strategy_id is not registered for an allocatable target schema"
+        ]
     raw_targets = proposal.get("targets")
     if not isinstance(raw_targets, Sequence) or isinstance(raw_targets, (str, bytes)):
         return None, [f"{name}: targets must be a sequence"]
@@ -336,12 +372,15 @@ def _parse_sleeve(
     crypto_raw_targets = [
         raw
         for raw in raw_targets
-        if isinstance(raw, Mapping) and str(raw.get("asset_class") or "").strip().lower() == "crypto"
+        if isinstance(raw, Mapping)
+        and str(raw.get("asset_class") or "").strip().lower() == "crypto"
     ]
     crypto_artifact: Mapping[str, Any] | None = None
     if crypto_raw_targets:
         if expected_asset_class != "crypto":
-            return None, [f"{name}: crypto target is incompatible with strategy_id {strategy_id}"]
+            return None, [
+                f"{name}: crypto target is incompatible with strategy_id {strategy_id}"
+            ]
         crypto_artifact, crypto_issues = _resolve_crypto_activation_artifact(
             name,
             proposal,
@@ -360,7 +399,9 @@ def _parse_sleeve(
         asset_class = str(raw.get("asset_class") or "").strip().lower()
         if asset_class == "crypto":
             if expected_asset_class != "crypto":
-                return None, [f"{name}: crypto target is incompatible with strategy_id {strategy_id}"]
+                return None, [
+                    f"{name}: crypto target is incompatible with strategy_id {strategy_id}"
+                ]
             parsed_crypto, target_issues = _parse_crypto_target(
                 name,
                 raw,
@@ -375,7 +416,9 @@ def _parse_sleeve(
             continue
         if "target_weight" in raw:
             if expected_asset_class != "equity":
-                return None, [f"{name}: equity target is incompatible with strategy_id {strategy_id}"]
+                return None, [
+                    f"{name}: equity target is incompatible with strategy_id {strategy_id}"
+                ]
             weight = _finite_float(raw["target_weight"], f"{name}: target_weight")
             if weight < 0:
                 return None, [f"{name}: target_weight must be non-negative and finite"]
@@ -395,7 +438,9 @@ def _parse_sleeve(
                     "target_weight": weight,
                     "source_ref": source_ref,
                     "exchange": str(raw.get("exchange")).strip().lower(),
-                    "market": str(raw.get("market") or raw.get("market_type")).strip().lower(),
+                    "market": str(raw.get("market") or raw.get("market_type"))
+                    .strip()
+                    .lower(),
                     "trading_state_as_of": str(raw.get("trading_state_as_of")).strip(),
                     "rationale": str(raw.get("rationale") or "").strip(),
                 }
@@ -403,7 +448,9 @@ def _parse_sleeve(
             continue
         if "target_contracts" in raw:
             if expected_asset_class != "futures":
-                return None, [f"{name}: futures target is incompatible with strategy_id {strategy_id}"]
+                return None, [
+                    f"{name}: futures target is incompatible with strategy_id {strategy_id}"
+                ]
             parsed_future, target_issues = _parse_futures_target(
                 name,
                 raw,
@@ -442,9 +489,13 @@ def _equity_identity_issue(
     exchange = str(raw.get("exchange") or "").strip().lower()
     market = str(raw.get("market") or raw.get("market_type") or "").strip().lower()
     if exchange not in _ASHARE_EXCHANGES or market not in _ASHARE_MARKETS:
-        return f"{name}: equity target lacks verified A-share exchange and market identity"
+        return (
+            f"{name}: equity target lacks verified A-share exchange and market identity"
+        )
     try:
-        proposal_time = _parse_aware_timestamp(proposal_as_of, f"{name}: proposal as_of")
+        proposal_time = _parse_aware_timestamp(
+            proposal_as_of, f"{name}: proposal as_of"
+        )
         state_time = _parse_aware_timestamp(
             raw.get("trading_state_as_of"), f"{name}: trading_state_as_of"
         )
@@ -489,7 +540,9 @@ def _parse_crypto_target(
         return None, [f"{name}: crypto target lacks a validated allocation artifact"]
     artifact_id = str(artifact["artifact_id"])
     if str(raw.get("validation_artifact_id") or "").strip() != artifact_id:
-        return None, [f"{name}: crypto target does not bind to the validated allocation artifact"]
+        return None, [
+            f"{name}: crypto target does not bind to the validated allocation artifact"
+        ]
     leg = {
         "asset_id": asset_id,
         "symbol": symbol,
@@ -512,7 +565,9 @@ def _parse_crypto_target(
         "source_ref": source_ref,
         "validation_artifact_id": artifact_id,
         "rationale": str(raw.get("rationale") or "").strip(),
-        "funding": dict(raw["funding"]) if isinstance(raw.get("funding"), Mapping) else None,
+        "funding": (
+            dict(raw["funding"]) if isinstance(raw.get("funding"), Mapping) else None
+        ),
     }, []
 
 
@@ -533,9 +588,13 @@ def _parse_futures_target(
     active_contract = str(raw.get("active_contract") or "").strip()
     source_ref = str(raw.get("source_ref") or "").strip()
     if not instrument_id or not active_contract or not source_ref:
-        return None, [f"{name}: futures targets require instrument_id, active_contract, and source_ref"]
+        return None, [
+            f"{name}: futures targets require instrument_id, active_contract, and source_ref"
+        ]
     try:
-        contracts = _strict_integer(raw.get("target_contracts"), f"{name}: target_contracts")
+        contracts = _strict_integer(
+            raw.get("target_contracts"), f"{name}: target_contracts"
+        )
         facts, margin_per_contract = _futures_margin_facts(
             raw,
             active_contract=active_contract,
@@ -546,7 +605,9 @@ def _parse_futures_target(
         return None, [str(error)]
     expected_margin = abs(contracts) * margin_per_contract
     if raw.get("margin_required") is not None:
-        declared_margin = _finite_float(raw.get("margin_required"), f"{name}: margin_required")
+        declared_margin = _finite_float(
+            raw.get("margin_required"), f"{name}: margin_required"
+        )
         if declared_margin < 0:
             return None, [f"{name}: margin_required must be non-negative and finite"]
         if not _approximately_equal(declared_margin, expected_margin):
@@ -585,7 +646,9 @@ def _futures_margin_facts(
 
     contract_facts = raw.get("contract_facts")
     if not isinstance(contract_facts, Mapping):
-        raise ValueError(f"{name}: futures target requires dated contract_facts")  # noqa: TRY004
+        raise ValueError(
+            f"{name}: futures target requires dated contract_facts"
+        )  # noqa: TRY004
     fact_contract = str(
         contract_facts.get("active_contract") or contract_facts.get("contract_id") or ""
     ).strip()
@@ -604,15 +667,27 @@ def _futures_margin_facts(
         # contract fact carries its session-close time.  Permit facts from the
         # same calendar session, but never a later trading date.
         if fact_timestamp.date() > proposal_timestamp.date():
-            raise ValueError(f"{name}: contract_facts are later than the proposal as_of")
-    if str(contract_facts.get("data_quality") or "").strip().lower() != "point_in_time_verified":
+            raise ValueError(
+                f"{name}: contract_facts are later than the proposal as_of"
+            )
+    if (
+        str(contract_facts.get("data_quality") or "").strip().lower()
+        != "point_in_time_verified"
+    ):
         raise ValueError(f"{name}: contract_facts must be point_in_time_verified")
-    if str(contract_facts.get("point_in_time_coverage") or "").strip().lower() != "verified":
-        raise ValueError(f"{name}: contract_facts must have verified point-in-time coverage")
+    if (
+        str(contract_facts.get("point_in_time_coverage") or "").strip().lower()
+        != "verified"
+    ):
+        raise ValueError(
+            f"{name}: contract_facts must have verified point-in-time coverage"
+        )
     if str(contract_facts.get("trading_status") or "").strip().lower() != "tradable":
         raise ValueError(f"{name}: contract_facts must show a tradable contract")
 
-    margin_per_contract_raw = raw.get("margin_per_contract", contract_facts.get("margin_per_contract"))
+    margin_per_contract_raw = raw.get(
+        "margin_per_contract", contract_facts.get("margin_per_contract")
+    )
     formula_values = _futures_margin_formula_values(raw, contract_facts, name)
     if margin_per_contract_raw is None:
         if formula_values is None:
@@ -677,7 +752,9 @@ def _futures_margin_formula_values(
         )
     resolved_price = _positive_float(price, f"{name}: reference_price")
     resolved_multiplier = _positive_float(multiplier, f"{name}: contract_multiplier")
-    resolved_margin_rate = _positive_fraction(margin_rate, f"{name}: initial_margin_rate")
+    resolved_margin_rate = _positive_fraction(
+        margin_rate, f"{name}: initial_margin_rate"
+    )
     return resolved_price, resolved_multiplier, resolved_margin_rate
 
 
@@ -727,19 +804,38 @@ def _resolve_crypto_activation_artifact(
         )
     data_quality = str(proposal.get("data_quality") or "").strip().lower()
     if data_quality != "point_in_time_verified":
-        issues.append(f"{name}: crypto proposal data_quality must be point_in_time_verified")
-    if proposal.get("blockers") or proposal.get("errors") or proposal.get("degraded") is True:
-        issues.append(f"{name}: crypto proposal has blockers, errors, or degraded input")
+        issues.append(
+            f"{name}: crypto proposal data_quality must be point_in_time_verified"
+        )
+    if (
+        proposal.get("blockers")
+        or proposal.get("errors")
+        or proposal.get("degraded") is True
+    ):
+        issues.append(
+            f"{name}: crypto proposal has blockers, errors, or degraded input"
+        )
     assurance = proposal.get("data_assurance")
-    if not isinstance(assurance, Mapping) or str(assurance.get("status") or "").strip().lower() != "point_in_time_verified":
-        issues.append(f"{name}: crypto proposal lacks point-in-time-verified data assurance")
+    if (
+        not isinstance(assurance, Mapping)
+        or str(assurance.get("status") or "").strip().lower()
+        != "point_in_time_verified"
+    ):
+        issues.append(
+            f"{name}: crypto proposal lacks point-in-time-verified data assurance"
+        )
     access_gate = proposal.get("access_gate")
-    if not isinstance(access_gate, Mapping) or str(access_gate.get("status") or "").strip().lower() != "validated":
+    if (
+        not isinstance(access_gate, Mapping)
+        or str(access_gate.get("status") or "").strip().lower() != "validated"
+    ):
         issues.append(f"{name}: crypto proposal lacks a validated access gate")
         artifact_id = ""
     else:
         artifact_id = str(
-            proposal.get("crypto_allocation_artifact_id") or access_gate.get("artifact_id") or ""
+            proposal.get("crypto_allocation_artifact_id")
+            or access_gate.get("artifact_id")
+            or ""
         ).strip()
     if not artifact_id:
         issues.append(f"{name}: crypto proposal lacks crypto_allocation_artifact_id")
@@ -749,7 +845,9 @@ def _resolve_crypto_activation_artifact(
         return None, [f"{name}: crypto allocation requires a trusted validation ledger"]
     artifact = _find_crypto_artifact(crypto_ledger, artifact_id)
     if artifact is None:
-        return None, [f"{name}: validated crypto allocation artifact was not found in the validation ledger"]
+        return None, [
+            f"{name}: validated crypto allocation artifact was not found in the validation ledger"
+        ]
     artifact_issues = _validate_crypto_artifact(artifact, proposal)
     if artifact_issues:
         return None, [f"{name}: {issue}" for issue in artifact_issues]
@@ -760,10 +858,16 @@ def _resolve_crypto_activation_artifact(
         ]
     try:
         verdict = _call_crypto_validator(validator, artifact, proposal)
-    except Exception as error:  # noqa: BLE001  # pragma: no cover - defensive integration boundary
-        return None, [f"{name}: crypto artifact validator failed: {type(error).__name__}"]
+    except (
+        Exception
+    ) as error:  # noqa: BLE001  # pragma: no cover - defensive integration boundary
+        return None, [
+            f"{name}: crypto artifact validator failed: {type(error).__name__}"
+        ]
     if verdict is not True:
-        return None, [f"{name}: trusted crypto artifact validator did not approve this proposal"]
+        return None, [
+            f"{name}: trusted crypto artifact validator did not approve this proposal"
+        ]
     return artifact, []
 
 
@@ -777,9 +881,14 @@ def _find_crypto_artifact(
             return raw_artifacts
         candidate = raw_artifacts.get(artifact_id)
         return candidate if isinstance(candidate, Mapping) else None
-    if isinstance(raw_artifacts, Sequence) and not isinstance(raw_artifacts, (str, bytes)):
+    if isinstance(raw_artifacts, Sequence) and not isinstance(
+        raw_artifacts, (str, bytes)
+    ):
         for artifact in raw_artifacts:
-            if isinstance(artifact, Mapping) and str(artifact.get("artifact_id") or "").strip() == artifact_id:
+            if (
+                isinstance(artifact, Mapping)
+                and str(artifact.get("artifact_id") or "").strip() == artifact_id
+            ):
                 return artifact
     return None
 
@@ -793,24 +902,56 @@ def _validate_crypto_artifact(
         issues.append("crypto allocation artifact status is not validated")
     if artifact.get("formal_decision_eligible") is not True:
         issues.append("crypto allocation artifact is not formally decision-eligible")
-    if artifact.get("degraded") is True or artifact.get("blockers") or artifact.get("errors"):
-        issues.append("crypto allocation artifact has blockers, errors, or degraded input")
-    if str(artifact.get("data_quality") or "").strip().lower() != "point_in_time_verified":
-        issues.append("crypto allocation artifact data_quality is not point_in_time_verified")
-    for field in ("artifact_id", "validator_id", "source_ref", "artifact_hash", "validated_at", "expires_at"):
+    if (
+        artifact.get("degraded") is True
+        or artifact.get("blockers")
+        or artifact.get("errors")
+    ):
+        issues.append(
+            "crypto allocation artifact has blockers, errors, or degraded input"
+        )
+    if (
+        str(artifact.get("data_quality") or "").strip().lower()
+        != "point_in_time_verified"
+    ):
+        issues.append(
+            "crypto allocation artifact data_quality is not point_in_time_verified"
+        )
+    for field in (
+        "artifact_id",
+        "validator_id",
+        "source_ref",
+        "artifact_hash",
+        "validated_at",
+        "expires_at",
+    ):
         if not str(artifact.get(field) or "").strip():
             issues.append(f"crypto allocation artifact requires {field}")
     approved_legs = artifact.get("approved_legs")
-    if isinstance(approved_legs, (str, bytes)) or not isinstance(approved_legs, Sequence) or not approved_legs:
+    if (
+        isinstance(approved_legs, (str, bytes))
+        or not isinstance(approved_legs, Sequence)
+        or not approved_legs
+    ):
         issues.append("crypto allocation artifact requires non-empty approved_legs")
     try:
-        validated_at = _parse_timestamp(artifact.get("validated_at"), "crypto artifact validated_at")
-        expires_at = _parse_timestamp(artifact.get("expires_at"), "crypto artifact expires_at")
-        proposal_as_of = _parse_timestamp(proposal.get("as_of"), "crypto proposal as_of")
+        validated_at = _parse_timestamp(
+            artifact.get("validated_at"), "crypto artifact validated_at"
+        )
+        expires_at = _parse_timestamp(
+            artifact.get("expires_at"), "crypto artifact expires_at"
+        )
+        proposal_as_of = _parse_timestamp(
+            proposal.get("as_of"), "crypto proposal as_of"
+        )
         if validated_at > proposal_as_of:
-            issues.append("crypto allocation artifact was validated after the proposal as_of")
+            issues.append(
+                "crypto allocation artifact was validated after the proposal as_of"
+            )
         if expires_at < proposal_as_of:
-            issues.append("crypto allocation artifact expired before the proposal as_of")
+            issues.append(
+                "crypto allocation artifact expired before the proposal as_of"
+            )
     except ValueError as error:
         issues.append(str(error))
     return issues
@@ -829,7 +970,9 @@ def _call_crypto_validator(
         return validator(artifact, proposal) is True
 
 
-def _crypto_leg_is_approved(leg: Mapping[str, str], artifact: Mapping[str, Any]) -> bool:
+def _crypto_leg_is_approved(
+    leg: Mapping[str, str], artifact: Mapping[str, Any]
+) -> bool:
     raw_legs = artifact.get("approved_legs")
     if not isinstance(raw_legs, Sequence) or isinstance(raw_legs, (str, bytes)):
         return False
@@ -846,7 +989,9 @@ def _crypto_leg_is_approved(leg: Mapping[str, str], artifact: Mapping[str, Any])
     return False
 
 
-def _cap_equity_targets(targets: Sequence[Mapping[str, Any]], policy: AllocationPolicy) -> list[dict[str, Any]]:
+def _cap_equity_targets(
+    targets: Sequence[Mapping[str, Any]], policy: AllocationPolicy
+) -> list[dict[str, Any]]:
     by_code: dict[str, dict[str, Any]] = {}
     for raw in targets:
         code = str(raw["code"])
@@ -856,15 +1001,25 @@ def _cap_equity_targets(targets: Sequence[Mapping[str, Any]], policy: Allocation
         if entry is None:
             by_code[code] = dict(raw)
         else:
-            entry["target_weight"] = float(entry["target_weight"]) + float(raw["target_weight"])
+            entry["target_weight"] = float(entry["target_weight"]) + float(
+                raw["target_weight"]
+            )
             entry["sleeve"] = f"{entry['sleeve']},{raw['sleeve']}"
     merged = [
-        {**entry, "target_weight": min(float(entry["target_weight"]), policy.max_single_equity_weight)}
+        {
+            **entry,
+            "target_weight": min(
+                float(entry["target_weight"]), policy.max_single_equity_weight
+            ),
+        }
         for entry in by_code.values()
     ]
     total = sum(float(item["target_weight"]) for item in merged)
     scale = min(1.0, policy.max_total_equity_weight / total) if total else 1.0
-    return [{**item, "target_weight": round(float(item["target_weight"]) * scale, 8)} for item in merged]
+    return [
+        {**item, "target_weight": round(float(item["target_weight"]) * scale, 8)}
+        for item in merged
+    ]
 
 
 def _cap_futures_targets(
@@ -877,7 +1032,9 @@ def _cap_futures_targets(
     if not targets:
         return []
     if allocation_capital is None:  # Defensive: caller must have blocked first.
-        raise ValueError("internal error: futures allocation lacks common allocation_capital")
+        raise ValueError(
+            "internal error: futures allocation lacks common allocation_capital"
+        )
     requested_margin = sum(
         abs(int(item["requested_contracts"])) * float(item["margin_per_contract"])
         for item in targets
@@ -888,7 +1045,9 @@ def _cap_futures_targets(
     for raw in targets:
         requested_contracts = int(raw["requested_contracts"])
         scaled_count = math.floor(abs(requested_contracts) * scale + 1e-12)
-        contracts = int(math.copysign(scaled_count, requested_contracts)) if scaled_count else 0
+        contracts = (
+            int(math.copysign(scaled_count, requested_contracts)) if scaled_count else 0
+        )
         if contracts == 0:
             # A sub-lot risk budget is cash, not a zero-contract futures target.
             continue
@@ -907,7 +1066,9 @@ def _cap_futures_targets(
     # an upstream malformed fact cannot create an apparent cap-compliant book.
     final_margin = sum(float(item["margin_required"]) for item in output)
     if final_margin > margin_cap + 1e-7:
-        raise ValueError("internal error: integer-sized futures collateral exceeds configured cap")
+        raise ValueError(
+            "internal error: integer-sized futures collateral exceeds configured cap"
+        )
     return output
 
 
@@ -929,17 +1090,27 @@ def _cap_crypto_targets(
         )
         entry = by_leg.get(key)
         if entry is None:
-            entry = {**dict(raw), "direction": direction, "source_refs": [str(raw["source_ref"])]}
+            entry = {
+                **dict(raw),
+                "direction": direction,
+                "source_refs": [str(raw["source_ref"])],
+            }
             by_leg[key] = entry
             continue
-        entry["target_weight"] = float(entry["target_weight"]) + float(raw["target_weight"])
+        entry["target_weight"] = float(entry["target_weight"]) + float(
+            raw["target_weight"]
+        )
         entry["sleeve"] = f"{entry['sleeve']},{raw['sleeve']}"
-        entry["source_refs"] = sorted({*entry.get("source_refs", []), str(raw["source_ref"])})
+        entry["source_refs"] = sorted(
+            {*entry.get("source_refs", []), str(raw["source_ref"])}
+        )
     capped = [
         {
             **entry,
             "target_weight": math.copysign(
-                min(abs(float(entry["target_weight"])), policy.max_single_crypto_weight),
+                min(
+                    abs(float(entry["target_weight"])), policy.max_single_crypto_weight
+                ),
                 float(entry["target_weight"]),
             ),
         }
@@ -969,7 +1140,11 @@ def _cap_cash_asset_targets(
     total_cash_assets = sum(float(item["target_weight"]) for item in equities) + sum(
         abs(float(item["target_weight"])) for item in crypto
     )
-    scale = min(1.0, available_cash_assets / total_cash_assets) if total_cash_assets else 1.0
+    scale = (
+        min(1.0, available_cash_assets / total_cash_assets)
+        if total_cash_assets
+        else 1.0
+    )
     adjusted_equities = [
         {**dict(item), "target_weight": round(float(item["target_weight"]) * scale, 8)}
         for item in equities
@@ -980,17 +1155,25 @@ def _cap_cash_asset_targets(
     ]
     # Guard against a one-unit rounding excess.  The second scale runs only on
     # the rare boundary and preserves every leg's sign and identity.
-    final_cash_assets = sum(float(item["target_weight"]) for item in adjusted_equities) + sum(
-        abs(float(item["target_weight"])) for item in adjusted_crypto
-    )
+    final_cash_assets = sum(
+        float(item["target_weight"]) for item in adjusted_equities
+    ) + sum(abs(float(item["target_weight"])) for item in adjusted_crypto)
     if final_cash_assets > available_cash_assets + 1e-8:
-        correction = available_cash_assets / final_cash_assets if final_cash_assets else 1.0
+        correction = (
+            available_cash_assets / final_cash_assets if final_cash_assets else 1.0
+        )
         adjusted_equities = [
-            {**item, "target_weight": round(float(item["target_weight"]) * correction, 8)}
+            {
+                **item,
+                "target_weight": round(float(item["target_weight"]) * correction, 8),
+            }
             for item in adjusted_equities
         ]
         adjusted_crypto = [
-            {**item, "target_weight": round(float(item["target_weight"]) * correction, 8)}
+            {
+                **item,
+                "target_weight": round(float(item["target_weight"]) * correction, 8),
+            }
             for item in adjusted_crypto
         ]
     return adjusted_equities, adjusted_crypto
@@ -1013,7 +1196,9 @@ def _sleeve_budget_issues(
     for target in futures:
         sleeve = str(target["sleeve"])
         denominator = allocation_capital or float(target["proposal_capital"])
-        requested_margin = abs(int(target["requested_contracts"])) * float(target["margin_per_contract"])
+        requested_margin = abs(int(target["requested_contracts"])) * float(
+            target["margin_per_contract"]
+        )
         budgets[sleeve] = budgets.get(sleeve, 0.0) + requested_margin / denominator
     for target in crypto:
         sleeve = str(target["sleeve"])
@@ -1030,9 +1215,11 @@ def _total_commitment_fraction(
     crypto: Sequence[Mapping[str, Any]],
     futures: Sequence[Mapping[str, Any]],
 ) -> float:
-    return sum(float(item["target_weight"]) for item in equities) + sum(
-        abs(float(item["target_weight"])) for item in crypto
-    ) + sum(float(item["margin_fraction"]) for item in futures)
+    return (
+        sum(float(item["target_weight"]) for item in equities)
+        + sum(abs(float(item["target_weight"])) for item in crypto)
+        + sum(float(item["margin_fraction"]) for item in futures)
+    )
 
 
 def _capital_waterfall(
@@ -1057,8 +1244,12 @@ def _capital_waterfall(
         result.update(
             {
                 "equity_cash_commitment": round(allocation_capital * equity_weight, 8),
-                "crypto_gross_collateral": round(allocation_capital * crypto_gross_weight, 8),
-                "futures_margin_collateral": round(allocation_capital * futures_margin_fraction, 8),
+                "crypto_gross_collateral": round(
+                    allocation_capital * crypto_gross_weight, 8
+                ),
+                "futures_margin_collateral": round(
+                    allocation_capital * futures_margin_fraction, 8
+                ),
                 "residual_cash": round(allocation_capital * residual_weight, 8),
             }
         )
@@ -1098,7 +1289,9 @@ def _crypto_leg_exposures(targets: Sequence[Mapping[str, Any]]) -> list[dict[str
     ]
 
 
-def _crypto_counterparty_exposures(targets: Sequence[Mapping[str, Any]]) -> list[dict[str, Any]]:
+def _crypto_counterparty_exposures(
+    targets: Sequence[Mapping[str, Any]],
+) -> list[dict[str, Any]]:
     grouped: dict[str, dict[str, Any]] = {}
     for target in targets:
         venue = str(target["venue"])
@@ -1134,8 +1327,12 @@ def _crypto_counterparty_exposures(targets: Sequence[Mapping[str, Any]]) -> list
             },
             "gross_target_weight": round(float(entry["gross_target_weight"]), 8),
             "net_target_weight": round(float(entry["net_target_weight"]), 8),
-            "long_gross_target_weight": round(float(entry["long_gross_target_weight"]), 8),
-            "short_gross_target_weight": round(float(entry["short_gross_target_weight"]), 8),
+            "long_gross_target_weight": round(
+                float(entry["long_gross_target_weight"]), 8
+            ),
+            "short_gross_target_weight": round(
+                float(entry["short_gross_target_weight"]), 8
+            ),
             "market_types": sorted(entry["market_types"]),
             "asset_ids": sorted(entry["asset_ids"]),
         }
@@ -1157,11 +1354,7 @@ def _serializable_ledger_context(value: Mapping[str, Any] | None) -> dict[str, A
         return {}
     # A trusted callback is intentionally a process-bound integration, never a
     # serializable claim that a JSON client can replay as a valid verifier.
-    return {
-        str(key): item
-        for key, item in value.items()
-        if not callable(item)
-    }
+    return {str(key): item for key, item in value.items() if not callable(item)}
 
 
 def _latest_as_of(sleeves: Mapping[str, Mapping[str, Any]]) -> str | None:
@@ -1242,7 +1435,9 @@ def _parse_aware_timestamp(value: Any, name: str) -> datetime:
     try:
         parsed = datetime.fromisoformat(normalized)
     except ValueError as error:
-        raise ValueError(f"{name} must be a timezone-aware ISO-8601 timestamp") from error
+        raise ValueError(
+            f"{name} must be a timezone-aware ISO-8601 timestamp"
+        ) from error
     if parsed.tzinfo is None or parsed.utcoffset() is None:
         raise ValueError(f"{name} must be a timezone-aware ISO-8601 timestamp")
     return parsed.astimezone(UTC)

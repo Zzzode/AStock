@@ -14,7 +14,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
 
-
 PUBLIC_OBSERVATION_SOURCE = "akshare_public"
 
 
@@ -56,9 +55,15 @@ class PublicMarketObservationPacket:
             "raw_source_records": self.raw_source_records,
         }
         if _content_hash(_archive_hash_input(payload)) != digest:
-            raise ValueError("public observation archive_id does not match raw source records")
+            raise ValueError(
+                "public observation archive_id does not match raw source records"
+            )
         canonical = json.dumps(
-            payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+            payload,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
         )
         target_directory = Path(directory)
         target_directory.mkdir(parents=True, exist_ok=True)
@@ -111,7 +116,9 @@ def _normalize_timestamp(value: str | datetime | None) -> str:
         try:
             timestamp = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
         except ValueError as error:
-            raise ValueError("public observation observed_at must be ISO-8601") from error
+            raise ValueError(
+                "public observation observed_at must be ISO-8601"
+            ) from error
     if timestamp.tzinfo is None:
         raise ValueError("public observation observed_at must include a timezone")
     return timestamp.astimezone(timezone.utc).isoformat()
@@ -126,5 +133,7 @@ def _archive_hash_input(payload: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _content_hash(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()

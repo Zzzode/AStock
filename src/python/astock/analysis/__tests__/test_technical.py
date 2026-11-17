@@ -21,14 +21,16 @@ def sample_df() -> pd.DataFrame:
     open_price = close + np.random.randn(100) * 0.2
     volume = np.random.rand(100) * 1000000
 
-    return pd.DataFrame({
-        "date": dates,
-        "open": open_price,
-        "high": high,
-        "low": low,
-        "close": close,
-        "volume": volume
-    })
+    return pd.DataFrame(
+        {
+            "date": dates,
+            "open": open_price,
+            "high": high,
+            "low": low,
+            "close": close,
+            "volume": volume,
+        }
+    )
 
 
 def test_add_ma(sample_df: pd.DataFrame) -> None:

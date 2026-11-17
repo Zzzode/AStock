@@ -32,12 +32,7 @@ class TechnicalAnalyzer:
             self.df[f"ma{period}"] = talib.MA(self.close, timeperiod=period)
         return self.df
 
-    def add_macd(
-        self,
-        fast: int = 12,
-        slow: int = 26,
-        signal: int = 9
-    ) -> pd.DataFrame:
+    def add_macd(self, fast: int = 12, slow: int = 26, signal: int = 9) -> pd.DataFrame:
         """Add MACD indicator
 
         Args:
@@ -49,22 +44,14 @@ class TechnicalAnalyzer:
             DataFrame with MACD columns added
         """
         macd, signal_line, hist = talib.MACD(
-            self.close,
-            fastperiod=fast,
-            slowperiod=slow,
-            signalperiod=signal
+            self.close, fastperiod=fast, slowperiod=slow, signalperiod=signal
         )
         self.df["macd"] = macd
         self.df["macd_signal"] = signal_line
         self.df["macd_hist"] = hist
         return self.df
 
-    def add_kdj(
-        self,
-        n: int = 9,
-        m1: int = 3,
-        m2: int = 3
-    ) -> pd.DataFrame:
+    def add_kdj(self, n: int = 9, m1: int = 3, m2: int = 3) -> pd.DataFrame:
         """Add KDJ indicator
 
         Args:
@@ -81,11 +68,11 @@ class TechnicalAnalyzer:
         price_range = high_n - low_n
 
         # Calculate RSV, handle division by zero
-        with np.errstate(divide='ignore', invalid='ignore'):
+        with np.errstate(divide="ignore", invalid="ignore"):
             rsv = np.where(
                 price_range > 0,
                 (self.close - low_n) / price_range * 100,
-                50.0  # When price_range is 0, RSV defaults to neutral value 50
+                50.0,  # When price_range is 0, RSV defaults to neutral value 50
             )
 
         k = talib.EMA(rsv, timeperiod=m1)

@@ -25,7 +25,6 @@ from ..market_data import (
     verify_frozen_market_archive,
 )
 
-
 SCHEMA_VERSION = "market-desk-public-discovery.v1"
 SOURCE = EASTMONEY_A_SHARE_SPOT_SOURCE
 FALLBACK_SOURCE = SINA_A_SHARE_SPOT_SOURCE
@@ -43,7 +42,9 @@ def verify_public_market_discovery_archive(path: str | Path) -> dict[str, Any]:
         return {
             "status": "blocked",
             "archive_path": str(archive_path),
-            "failures": list(assurance.get("failures") or ["archive verification failed"]),
+            "failures": list(
+                assurance.get("failures") or ["archive verification failed"]
+            ),
         }
     try:
         archive = json.loads(archive_path.read_text(encoding="utf-8"))
@@ -53,27 +54,47 @@ def verify_public_market_discovery_archive(path: str | Path) -> dict[str, Any]:
             "archive_path": str(archive_path),
             "failures": [f"archive cannot be read: {error}"],
         }
-    records = archive.get("raw_source_records") if isinstance(archive, Mapping) else None
-    discovery = records.get("market_desk_discovery") if isinstance(records, Mapping) else None
+    records = (
+        archive.get("raw_source_records") if isinstance(archive, Mapping) else None
+    )
+    discovery = (
+        records.get("market_desk_discovery") if isinstance(records, Mapping) else None
+    )
     if not isinstance(discovery, Mapping):
-        return _blocked_discovery_archive(archive_path, "archive does not contain market_desk_discovery")
+        return _blocked_discovery_archive(
+            archive_path, "archive does not contain market_desk_discovery"
+        )
     if discovery.get("schema_version") != SCHEMA_VERSION:
-        return _blocked_discovery_archive(archive_path, "archive has an unsupported discovery schema")
-    if discovery.get("formal_decision_eligible") is not False or discovery.get("research_only") is not True or discovery.get("no_order_execution") is not True:
-        return _blocked_discovery_archive(archive_path, "archive does not retain public research-only boundaries")
+        return _blocked_discovery_archive(
+            archive_path, "archive has an unsupported discovery schema"
+        )
+    if (
+        discovery.get("formal_decision_eligible") is not False
+        or discovery.get("research_only") is not True
+        or discovery.get("no_order_execution") is not True
+    ):
+        return _blocked_discovery_archive(
+            archive_path, "archive does not retain public research-only boundaries"
+        )
     observed_at = str(discovery.get("observed_at") or "")
     if not _is_timezone_timestamp(observed_at):
-        return _blocked_discovery_archive(archive_path, "archive lacks a timezone-aware observed_at")
+        return _blocked_discovery_archive(
+            archive_path, "archive lacks a timezone-aware observed_at"
+        )
     candidates = discovery.get("candidates")
     if not isinstance(candidates, Sequence) or isinstance(candidates, (str, bytes)):
-        return _blocked_discovery_archive(archive_path, "archive candidates must be a list")
+        return _blocked_discovery_archive(
+            archive_path, "archive candidates must be a list"
+        )
     if any(
         not isinstance(candidate, Mapping)
         or candidate.get("formal_decision_eligible") is not False
         or candidate.get("no_order_execution") is not True
         for candidate in candidates
     ):
-        return _blocked_discovery_archive(archive_path, "archive candidate boundaries are invalid")
+        return _blocked_discovery_archive(
+            archive_path, "archive candidate boundaries are invalid"
+        )
     eod_validation = _validate_eod_discovery_payload(discovery, observed_at)
     return {
         "status": "pass",
@@ -91,10 +112,14 @@ def verify_public_market_discovery_archive(path: str | Path) -> dict[str, Any]:
 def list_public_market_discovery_archives(directory: str | Path) -> dict[str, Any]:
     """Audit all frozen public discovery archives without changing any state."""
     archive_directory = Path(directory)
-    records = [
-        verify_public_market_discovery_archive(path)
-        for path in sorted(archive_directory.glob("*.json"))
-    ] if archive_directory.is_dir() else []
+    records = (
+        [
+            verify_public_market_discovery_archive(path)
+            for path in sorted(archive_directory.glob("*.json"))
+        ]
+        if archive_directory.is_dir()
+        else []
+    )
     valid_records = [record for record in records if record.get("status") == "pass"]
     valid_eod_records = [
         record
@@ -160,7 +185,9 @@ def list_public_market_discovery_archives(directory: str | Path) -> dict[str, An
             day for day, count in usable_eod_daily_counts.items() if count > 1
         ),
         "valid_daily_run_counts": daily_counts,
-        "duplicate_run_dates": sorted(day for day, count in daily_counts.items() if count > 1),
+        "duplicate_run_dates": sorted(
+            day for day, count in daily_counts.items() if count > 1
+        ),
         "records": records,
         "research_only": True,
         "no_order_execution": True,
@@ -178,11 +205,20 @@ def _validate_eod_discovery_payload(
     calendar_basis = str(eod_session.get("calendar_basis") or "").strip()
     session_date = str(eod_session.get("session_date") or "").strip()
     if state != "after_close":
-        return {"status": "not_eod", "reason": f"market_session_state={state or 'missing'}"}
+        return {
+            "status": "not_eod",
+            "reason": f"market_session_state={state or 'missing'}",
+        }
     if calendar_basis != "exchange_calendar":
-        return {"status": "not_eod", "reason": f"calendar_basis={calendar_basis or 'missing'}"}
+        return {
+            "status": "not_eod",
+            "reason": f"calendar_basis={calendar_basis or 'missing'}",
+        }
     if not observed_at.startswith(session_date) or len(session_date) != 10:
-        return {"status": "not_eod", "reason": "session_date_does_not_match_observed_at"}
+        return {
+            "status": "not_eod",
+            "reason": "session_date_does_not_match_observed_at",
+        }
     return {"status": "pass", "reason": "verified_exchange_after_close"}
 
 
@@ -273,7 +309,9 @@ class PublicMarketDiscoveryService:
                         timeout=15 if source == SOURCE else 30,
                     )
                     if not isinstance(candidate, pd.DataFrame) or candidate.empty:
-                        raise ValueError("public all-market spot source returned no rows")
+                        raise ValueError(
+                            "public all-market spot source returned no rows"
+                        )
                     frame = candidate
                     active_source = source
                     break
@@ -324,7 +362,9 @@ class PublicMarketDiscoveryService:
             "schema_version": "market-desk-public-universe-snapshot.v1",
             "observed_at": observed_at,
             "source": active_source,
-            "data_quality": "public_snapshot_degraded" if used_fallback else "public_snapshot",
+            "data_quality": (
+                "public_snapshot_degraded" if used_fallback else "public_snapshot"
+            ),
             "rows": eligible_rows,
             "coverage": {
                 "source_row_count": len(frame),
@@ -358,12 +398,22 @@ class PublicMarketDiscoveryService:
 
         regime = _regime(market_overview)
         rows = universe_snapshot.get("rows")
-        source_rows = rows if isinstance(rows, Sequence) and not isinstance(rows, str) else []
+        source_rows = (
+            rows if isinstance(rows, Sequence) and not isinstance(rows, str) else []
+        )
         normalized_rows = [dict(row) for row in source_rows if isinstance(row, Mapping)]
-        liquid = [row for row in normalized_rows if _number(row.get("amount")) >= min_amount]
-        moved = [row for row in liquid if _number(row.get("change_pct")) >= min_change_pct]
+        liquid = [
+            row for row in normalized_rows if _number(row.get("amount")) >= min_amount
+        ]
+        moved = [
+            row for row in liquid if _number(row.get("change_pct")) >= min_change_pct
+        ]
         moved.sort(
-            key=lambda row: (-_number(row.get("change_pct")), -_number(row.get("amount")), str(row.get("code") or ""))
+            key=lambda row: (
+                -_number(row.get("change_pct")),
+                -_number(row.get("amount")),
+                str(row.get("code") or ""),
+            )
         )
 
         source_quality = str(universe_snapshot.get("data_quality") or "unavailable")
@@ -387,7 +437,13 @@ class PublicMarketDiscoveryService:
 
         warnings = _string_items(universe_snapshot.get("warnings"))
         warnings.extend(_string_items(rotation.get("warnings")))
-        warnings.extend(_string_items(market_overview.get("regime", {}).get("warnings") if isinstance(market_overview.get("regime"), Mapping) else []))
+        warnings.extend(
+            _string_items(
+                market_overview.get("regime", {}).get("warnings")
+                if isinstance(market_overview.get("regime"), Mapping)
+                else []
+            )
+        )
         warnings.extend(
             [
                 "Candidates are sorted only by disclosed daily change and turnover after liquidity filters; no alpha score or buy ranking is claimed.",
@@ -396,9 +452,13 @@ class PublicMarketDiscoveryService:
             ]
         )
         if regime in {"insufficient_data", "risk_off"}:
-            warnings.append("Current market regime permits no new risk; discovery output is observation only.")
+            warnings.append(
+                "Current market regime permits no new risk; discovery output is observation only."
+            )
         if not normalized_rows:
-            warnings.append("No usable public all-market rows were available; no candidate may be promoted.")
+            warnings.append(
+                "No usable public all-market rows were available; no candidate may be promoted."
+            )
 
         return {
             "schema_version": SCHEMA_VERSION,
@@ -416,8 +476,18 @@ class PublicMarketDiscoveryService:
                     "minimum_change_pct": min_change_pct,
                     "exclude_st_and_delisting_markers": True,
                 },
-                "sort": ["change_pct descending", "amount descending", "code ascending"],
-                "not_used": ["fund_flow", "crowding", "positioning", "order_book", "composite_alpha_score"],
+                "sort": [
+                    "change_pct descending",
+                    "amount descending",
+                    "code ascending",
+                ],
+                "not_used": [
+                    "fund_flow",
+                    "crowding",
+                    "positioning",
+                    "order_book",
+                    "composite_alpha_score",
+                ],
             },
             "screening_counts": {
                 "eligible_public_rows": len(normalized_rows),
@@ -467,7 +537,13 @@ def _normalise_row(row: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _candidate_card(
-    row: Mapping[str, Any], *, index: int, discovery_status: str, observed_at: str, min_amount: float, min_change_pct: float
+    row: Mapping[str, Any],
+    *,
+    index: int,
+    discovery_status: str,
+    observed_at: str,
+    min_amount: float,
+    min_change_pct: float,
 ) -> dict[str, Any]:
     code = str(row.get("code") or "")
     return {
@@ -493,7 +569,9 @@ def _candidate_card(
 
 def _rotation_context(rotation: Mapping[str, Any]) -> dict[str, Any]:
     pool = rotation.get("observation_pool")
-    observations = pool if isinstance(pool, Sequence) and not isinstance(pool, str) else []
+    observations = (
+        pool if isinstance(pool, Sequence) and not isinstance(pool, str) else []
+    )
     return {
         "schema_version": rotation.get("schema_version"),
         "observed_at": rotation.get("observed_at"),

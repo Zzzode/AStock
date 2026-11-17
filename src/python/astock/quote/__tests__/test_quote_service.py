@@ -179,7 +179,17 @@ async def test_get_daily_skips_a_hung_unbounded_primary_source_and_uses_akshare(
         raise AssertionError("unreachable")
 
     fallback_df = pd.DataFrame(
-        [{"date": "2026-03-06", "open": 10.1, "high": 10.3, "low": 9.9, "close": 10.2, "volume": 1_000, "amount": 10_200}]
+        [
+            {
+                "date": "2026-03-06",
+                "open": 10.1,
+                "high": 10.3,
+                "low": 9.9,
+                "close": 10.2,
+                "volume": 1_000,
+                "amount": 10_200,
+            }
+        ]
     )
     service.primary_client.get_daily_quotes = AsyncMock(side_effect=never_returns)
     service.fallback_client.get_daily_quotes = AsyncMock(return_value=fallback_df)
@@ -253,7 +263,9 @@ async def test_quote_service_get_daily_fallback_to_db_when_network_fails(
 
 
 @pytest.mark.asyncio
-async def test_get_daily_quotes_uses_timeout_bound_eastmoney_history(client: AkShareClient) -> None:
+async def test_get_daily_quotes_uses_timeout_bound_eastmoney_history(
+    client: AkShareClient,
+) -> None:
     history_df = pd.DataFrame(
         [
             {
@@ -292,9 +304,33 @@ async def test_get_daily_quotes_filters_string_dates_before_normalization(
 ) -> None:
     daily = pd.DataFrame(
         [
-            {"date": "2026-03-04", "open": 9.0, "high": 9.2, "low": 8.9, "close": 9.1, "volume": 1_000, "amount": 9_100},
-            {"date": "2026-03-05", "open": 10.0, "high": 10.2, "low": 9.8, "close": 10.1, "volume": 1_000, "amount": 10_100},
-            {"date": "2026-03-06", "open": 11.0, "high": 11.2, "low": 10.8, "close": 11.1, "volume": 1_000, "amount": 11_100},
+            {
+                "date": "2026-03-04",
+                "open": 9.0,
+                "high": 9.2,
+                "low": 8.9,
+                "close": 9.1,
+                "volume": 1_000,
+                "amount": 9_100,
+            },
+            {
+                "date": "2026-03-05",
+                "open": 10.0,
+                "high": 10.2,
+                "low": 9.8,
+                "close": 10.1,
+                "volume": 1_000,
+                "amount": 10_100,
+            },
+            {
+                "date": "2026-03-06",
+                "open": 11.0,
+                "high": 11.2,
+                "low": 10.8,
+                "close": 11.1,
+                "volume": 1_000,
+                "amount": 11_100,
+            },
         ]
     )
 
@@ -312,12 +348,38 @@ async def test_get_daily_quotes_filters_python_date_values_before_normalization(
 ) -> None:
     daily = pd.DataFrame(
         [
-            {"date": date(2026, 3, 4), "open": 9.0, "high": 9.2, "low": 8.9, "close": 9.1, "volume": 1_000, "amount": 9_100},
-            {"date": date(2026, 3, 5), "open": 10.0, "high": 10.2, "low": 9.8, "close": 10.1, "volume": 1_000, "amount": 10_100},
-            {"date": date(2026, 3, 6), "open": 11.0, "high": 11.2, "low": 10.8, "close": 11.1, "volume": 1_000, "amount": 11_100},
+            {
+                "date": date(2026, 3, 4),
+                "open": 9.0,
+                "high": 9.2,
+                "low": 8.9,
+                "close": 9.1,
+                "volume": 1_000,
+                "amount": 9_100,
+            },
+            {
+                "date": date(2026, 3, 5),
+                "open": 10.0,
+                "high": 10.2,
+                "low": 9.8,
+                "close": 10.1,
+                "volume": 1_000,
+                "amount": 10_100,
+            },
+            {
+                "date": date(2026, 3, 6),
+                "open": 11.0,
+                "high": 11.2,
+                "low": 10.8,
+                "close": 11.1,
+                "volume": 1_000,
+                "amount": 11_100,
+            },
         ]
     )
 
-    result = client._filter_by_date(daily, start_date=date(2026, 3, 5), end_date=date(2026, 3, 5))
+    result = client._filter_by_date(
+        daily, start_date=date(2026, 3, 5), end_date=date(2026, 3, 5)
+    )
 
     assert result["date"].tolist() == [date(2026, 3, 5)]

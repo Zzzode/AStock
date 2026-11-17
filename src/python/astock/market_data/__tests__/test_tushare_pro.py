@@ -67,14 +67,23 @@ def test_tushare_adapter_builds_raw_source_frozen_replay_input(tmp_path) -> None
     frame = packet.market_data["600460.SH"]
     assert packet.price_basis == "raw"
     assert packet.source_manifest["archive_id"].startswith("sha256:")
-    assert frame["execution_status"].tolist() == ["tradable", "limit_up_locked", "halted"]
+    assert frame["execution_status"].tolist() == [
+        "tradable",
+        "limit_up_locked",
+        "halted",
+    ]
     assert frame["volume"].tolist() == [10_000.0, 10_000.0, 0.0]
     assert packet.corporate_actions["600460.SH"][0]["cash_per_share"] == 0.2
     assert packet.corporate_actions["600460.SH"][1]["share_factor"] == 1.1
     assert packet.delisting_status["600460.SH"]["list_status"] == "L"
-    assert packet.to_dict()["market_data"]["600460.SH"][0]["date"].startswith("2026-07-01")
+    assert packet.to_dict()["market_data"]["600460.SH"][0]["date"].startswith(
+        "2026-07-01"
+    )
     archive_path = packet.write_frozen_archive(tmp_path)
-    assert archive_path.name == packet.source_manifest["archive_id"].removeprefix("sha256:") + ".json"
+    assert (
+        archive_path.name
+        == packet.source_manifest["archive_id"].removeprefix("sha256:") + ".json"
+    )
     assert packet.write_frozen_archive(tmp_path) == archive_path
     verified = verify_frozen_market_archive(
         archive_path,
@@ -82,14 +91,19 @@ def test_tushare_adapter_builds_raw_source_frozen_replay_input(tmp_path) -> None
         expected_source="tushare_pro",
     )
     assert verified["status"] == "pass"
-    assert capabilities.verify_frozen_market_data_archive(
-        archive_path,
-        expected_archive_id=packet.source_manifest["archive_id"],
-        expected_source="tushare_pro",
-    )["status"] == "pass"
+    assert (
+        capabilities.verify_frozen_market_data_archive(
+            archive_path,
+            expected_archive_id=packet.source_manifest["archive_id"],
+            expected_source="tushare_pro",
+        )["status"]
+        == "pass"
+    )
 
 
-def test_tushare_intraday_suspension_event_blocks_open_fill_when_volume_is_nonzero() -> None:
+def test_tushare_intraday_suspension_event_blocks_open_fill_when_volume_is_nonzero() -> (
+    None
+):
     class IntradaySuspensionClient(FakeTushareClient):
         def daily(self, **_: object) -> pd.DataFrame:
             frame = super().daily()
@@ -98,30 +112,54 @@ def test_tushare_intraday_suspension_event_blocks_open_fill_when_volume_is_nonze
 
     packet = TushareProBacktestAdapter(
         client=IntradaySuspensionClient(), data_owner="research-data-owner"
-    ).build_daily_replay_packet(["600460.SH"], start_date="2026-07-01", end_date="2026-07-03")
+    ).build_daily_replay_packet(
+        ["600460.SH"], start_date="2026-07-01", end_date="2026-07-03"
+    )
 
     assert packet.market_data["600460.SH"].iloc[-1]["execution_status"] == "unknown"
 
 
-def test_tushare_adapter_builds_frozen_historical_listing_universe_snapshot(tmp_path) -> None:
+def test_tushare_adapter_builds_frozen_historical_listing_universe_snapshot(
+    tmp_path,
+) -> None:
     class UniverseClient(FakeTushareClient):
         def stock_basic(self, **kwargs: object) -> pd.DataFrame:
             status = kwargs.get("list_status")
             if status == "L":
                 return pd.DataFrame(
-                    {"ts_code": ["600460.SH"], "list_status": ["L"], "list_date": ["20000801"], "delist_date": [None]}
+                    {
+                        "ts_code": ["600460.SH"],
+                        "list_status": ["L"],
+                        "list_date": ["20000801"],
+                        "delist_date": [None],
+                    }
                 )
             if status == "D":
                 return pd.DataFrame(
-                    {"ts_code": ["000001.SZ"], "list_status": ["D"], "list_date": ["19910403"], "delist_date": ["20260702"]}
+                    {
+                        "ts_code": ["000001.SZ"],
+                        "list_status": ["D"],
+                        "list_date": ["19910403"],
+                        "delist_date": ["20260702"],
+                    }
                 )
             if status == "P":
                 return pd.DataFrame(
-                    {"ts_code": ["300001.SZ"], "list_status": ["P"], "list_date": ["20260702"], "delist_date": [None]}
+                    {
+                        "ts_code": ["300001.SZ"],
+                        "list_status": ["P"],
+                        "list_date": ["20260702"],
+                        "delist_date": [None],
+                    }
                 )
             if status == "G":
                 return pd.DataFrame(
-                    {"ts_code": ["688999.SH"], "list_status": ["G"], "list_date": ["20260801"], "delist_date": [None]}
+                    {
+                        "ts_code": ["688999.SH"],
+                        "list_status": ["G"],
+                        "list_date": ["20260801"],
+                        "delist_date": [None],
+                    }
                 )
             return super().stock_basic(**kwargs)
 
@@ -131,16 +169,23 @@ def test_tushare_adapter_builds_frozen_historical_listing_universe_snapshot(tmp_
 
     assert snapshot.members == ["000001.SZ", "600460.SH"]
     assert snapshot.to_dict()["source_ref"] == "tushare_pro.stock_basic:20260701"
-    assert snapshot.write_frozen_archive(tmp_path).name == snapshot.archive_id.removeprefix("sha256:") + ".json"
+    assert (
+        snapshot.write_frozen_archive(tmp_path).name
+        == snapshot.archive_id.removeprefix("sha256:") + ".json"
+    )
 
 
 def test_adapter_fails_closed_without_authorized_access() -> None:
     with pytest.raises(ValueError, match="TUSHARE_TOKEN"):
-        TushareProBacktestAdapter(token="", data_owner="owner").build_daily_replay_packet(
+        TushareProBacktestAdapter(
+            token="", data_owner="owner"
+        ).build_daily_replay_packet(
             ["600460.SH"], start_date="2026-07-01", end_date="2026-07-03"
         )
     with pytest.raises(ValueError, match="ATTESTED_BY"):
-        TushareProBacktestAdapter(client=FakeTushareClient(), data_owner="").build_daily_replay_packet(
+        TushareProBacktestAdapter(
+            client=FakeTushareClient(), data_owner=""
+        ).build_daily_replay_packet(
             ["600460.SH"], start_date="2026-07-01", end_date="2026-07-03"
         )
 
@@ -171,10 +216,15 @@ def test_universe_snapshot_capability_is_a_thin_adapter(monkeypatch) -> None:
         "load_user_config",
         lambda user_id="default": {"market_data_mode": "licensed_eod"},
     )
-    assert capabilities.build_tushare_listing_universe_snapshot(as_of_date="2026-07-01") == expected
+    assert (
+        capabilities.build_tushare_listing_universe_snapshot(as_of_date="2026-07-01")
+        == expected
+    )
 
 
-def test_paid_market_data_capabilities_are_blocked_in_public_observation_mode(monkeypatch) -> None:
+def test_paid_market_data_capabilities_are_blocked_in_public_observation_mode(
+    monkeypatch,
+) -> None:
     monkeypatch.setattr(
         capabilities,
         "load_user_config",

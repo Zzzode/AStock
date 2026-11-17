@@ -36,8 +36,13 @@ def validate_governed_strategy_link(
         raise ValueError("governed paper trade requires an active strategy plan")
     if plan.target != str(code).strip():
         raise ValueError("strategy plan target must match the paper-trade code")
-    if not isinstance(release_assurance, Mapping) or release_assurance.get("verdict") != "pass":
-        raise ValueError("governed paper trade requires a passing independent release assurance")
+    if (
+        not isinstance(release_assurance, Mapping)
+        or release_assurance.get("verdict") != "pass"
+    ):
+        raise ValueError(
+            "governed paper trade requires a passing independent release assurance"
+        )
     return {
         "strategy_entry_id": str(entry.entry_id),
         "strategy_plan_id": plan.plan_id,
@@ -74,31 +79,49 @@ def validate_governed_paper_entry(
     )
     timestamp = _parse_timestamp(entry_observed_at, "entry-observed-at")
     normalized_refs = tuple(
-        str(reference).strip() for reference in entry_evidence_refs if str(reference).strip()
+        str(reference).strip()
+        for reference in entry_evidence_refs
+        if str(reference).strip()
     )
     if not normalized_refs:
-        raise ValueError("governed paper entry requires at least one entry-evidence-ref")
+        raise ValueError(
+            "governed paper entry requires at least one entry-evidence-ref"
+        )
     plan_as_of = _parse_timestamp(str(link["as_of"]), "strategy plan as_of")
     if timestamp < plan_as_of:
         raise ValueError("paper entry cannot precede the strategy plan as_of timestamp")
     active_at = _active_transition_timestamp(link.get("transition_history"))
     if active_at is not None and timestamp < active_at:
-        raise ValueError("paper entry cannot precede the strategy plan active transition")
+        raise ValueError(
+            "paper entry cannot precede the strategy plan active transition"
+        )
     review_at = _parse_timestamp(str(link["review_at"]), "strategy plan review_at")
     if timestamp >= review_at:
-        raise ValueError("paper entry is blocked because the strategy plan review is due")
+        raise ValueError(
+            "paper entry is blocked because the strategy plan review is due"
+        )
     time_stop_value = link.get("time_stop_at")
     if time_stop_value:
-        time_stop_at = _parse_timestamp(str(time_stop_value), "strategy plan time_stop_at")
+        time_stop_at = _parse_timestamp(
+            str(time_stop_value), "strategy plan time_stop_at"
+        )
         if timestamp >= time_stop_at:
-            raise ValueError("paper entry is blocked because the strategy plan time stop is due")
+            raise ValueError(
+                "paper entry is blocked because the strategy plan time stop is due"
+            )
 
     archive = verify_frozen_market_archive(entry_observation_archive_path)
     if archive.get("status") != "pass":
         failures = archive.get("failures") or ["unknown archive verification failure"]
-        raise ValueError(f"paper entry requires a verified frozen market observation: {failures[0]}")
-    if not any(str(archive["archive_id"]) in reference for reference in normalized_refs):
-        raise ValueError("entry-evidence-ref must explicitly include the frozen observation archive_id")
+        raise ValueError(
+            f"paper entry requires a verified frozen market observation: {failures[0]}"
+        )
+    if not any(
+        str(archive["archive_id"]) in reference for reference in normalized_refs
+    ):
+        raise ValueError(
+            "entry-evidence-ref must explicitly include the frozen observation archive_id"
+        )
 
     restricted_health = RestrictedListStore(restricted_list_path).health()
     if (
@@ -109,7 +132,9 @@ def validate_governed_paper_entry(
             "paper entry requires a current restricted-list authority with a verified compliance signature"
         )
     if str(code).strip() in {
-        str(target).strip() for target in restricted_health.get("active_targets", ()) if str(target).strip()
+        str(target).strip()
+        for target in restricted_health.get("active_targets", ())
+        if str(target).strip()
     }:
         raise ValueError("paper entry target is currently restricted")
 
@@ -165,16 +190,24 @@ def validate_governed_paper_exit(
         raise ValueError("governed paper exit requires an exit-reason")
     timestamp = _parse_timestamp(exit_observed_at, "exit-observed-at")
     normalized_refs = tuple(
-        str(reference).strip() for reference in exit_evidence_refs if str(reference).strip()
+        str(reference).strip()
+        for reference in exit_evidence_refs
+        if str(reference).strip()
     )
     if not normalized_refs:
         raise ValueError("governed paper exit requires at least one exit-evidence-ref")
     archive = verify_frozen_market_archive(exit_observation_archive_path)
     if archive.get("status") != "pass":
         failures = archive.get("failures") or ["unknown archive verification failure"]
-        raise ValueError(f"paper exit requires a verified frozen market observation: {failures[0]}")
-    if not any(str(archive["archive_id"]) in reference for reference in normalized_refs):
-        raise ValueError("exit-evidence-ref must explicitly include the frozen observation archive_id")
+        raise ValueError(
+            f"paper exit requires a verified frozen market observation: {failures[0]}"
+        )
+    if not any(
+        str(archive["archive_id"]) in reference for reference in normalized_refs
+    ):
+        raise ValueError(
+            "exit-evidence-ref must explicitly include the frozen observation archive_id"
+        )
     return {
         "strategy_entry_id": str(entry.entry_id),
         "strategy_plan_id": plan.plan_id,
@@ -224,7 +257,9 @@ def audit_paper_portfolio_governance(
                 entry_id=entry_id, code=code, ledger_path=ledger_path
             )
         except (TypeError, ValueError) as error:
-            invalid.append({"code": code, "strategy_entry_id": entry_id, "reason": str(error)})
+            invalid.append(
+                {"code": code, "strategy_entry_id": entry_id, "reason": str(error)}
+            )
             continue
         evidence_error = _validate_recorded_entry_evidence(position)
         if evidence_error:
@@ -241,9 +276,7 @@ def audit_paper_portfolio_governance(
         and not invalid
         and not entry_evidence_gaps
         and not exit_review_queue
-        else "not_ready"
-        if total == 0 and not exit_review_queue
-        else "blocked"
+        else "not_ready" if total == 0 and not exit_review_queue else "blocked"
     )
     return {
         "schema_version": "paper-portfolio-governance.v1",
@@ -273,7 +306,9 @@ def audit_paper_portfolio_governance(
     }
 
 
-def _latest_plan_and_assurance(entry: Any) -> tuple[Mapping[str, Any] | None, Mapping[str, Any] | None]:
+def _latest_plan_and_assurance(
+    entry: Any,
+) -> tuple[Mapping[str, Any] | None, Mapping[str, Any] | None]:
     plan: Mapping[str, Any] | None = (
         entry.metadata.get("strategy_plan")
         if isinstance(getattr(entry, "metadata", None), Mapping)
@@ -309,21 +344,30 @@ def _active_transition_timestamp(history: Any) -> datetime | None:
     if not isinstance(history, Sequence) or isinstance(history, str):
         return None
     for transition in reversed(history):
-        if not isinstance(transition, Mapping) or transition.get("to") != StrategyState.ACTIVE.value:
+        if (
+            not isinstance(transition, Mapping)
+            or transition.get("to") != StrategyState.ACTIVE.value
+        ):
             continue
-        return _parse_timestamp(str(transition.get("observed_at") or ""), "active transition observed_at")
+        return _parse_timestamp(
+            str(transition.get("observed_at") or ""), "active transition observed_at"
+        )
     return None
 
 
 def _validate_recorded_entry_evidence(position: Mapping[str, Any]) -> str | None:
     history = position.get("entry_evidence_history")
     if not isinstance(history, Sequence) or isinstance(history, str) or not history:
-        return "Position has a strategy link but no retained paper-entry evidence history."
+        return (
+            "Position has a strategy link but no retained paper-entry evidence history."
+        )
     for index, item in enumerate(history):
         if not isinstance(item, Mapping):
             return f"Paper-entry evidence history item {index} is malformed."
         try:
-            _parse_timestamp(str(item.get("observed_at") or ""), "entry evidence observed_at")
+            _parse_timestamp(
+                str(item.get("observed_at") or ""), "entry evidence observed_at"
+            )
         except ValueError as error:
             return str(error)
         evidence_refs = item.get("evidence_refs")
@@ -341,8 +385,12 @@ def _validate_recorded_entry_evidence(position: Mapping[str, Any]) -> str | None
             expected_source=str(archive.get("source") or "") or None,
         )
         if assurance.get("status") != "pass":
-            return f"Paper-entry evidence history item {index} archive cannot be verified."
-        if not any(str(archive["archive_id"]) in str(reference) for reference in evidence_refs):
+            return (
+                f"Paper-entry evidence history item {index} archive cannot be verified."
+            )
+        if not any(
+            str(archive["archive_id"]) in str(reference) for reference in evidence_refs
+        ):
             return f"Paper-entry evidence history item {index} does not reference its archive ID."
     return None
 
@@ -352,12 +400,19 @@ def _paper_exit_review_status(
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]]]:
     """Identify governed paper exits awaiting an explicitly anchored review."""
     raw_trades = portfolio.get("trades")
-    trades = raw_trades if isinstance(raw_trades, Sequence) and not isinstance(raw_trades, str) else ()
+    trades = (
+        raw_trades
+        if isinstance(raw_trades, Sequence) and not isinstance(raw_trades, str)
+        else ()
+    )
     ledger = ResearchLedger(ledger_path)
     due: list[dict[str, Any]] = []
     resolved: list[dict[str, Any]] = []
     for index, raw_trade in enumerate(trades):
-        if not isinstance(raw_trade, Mapping) or raw_trade.get("governance_status") != "governed_exit":
+        if (
+            not isinstance(raw_trade, Mapping)
+            or raw_trade.get("governance_status") != "governed_exit"
+        ):
             continue
         evidence = raw_trade.get("exit_evidence")
         entry_id = str(raw_trade.get("strategy_entry_id") or "").strip()
@@ -374,7 +429,9 @@ def _paper_exit_review_status(
             continue
         exit_id = str(evidence.get("exit_id") or "").strip()
         try:
-            observed_at = _parse_timestamp(str(evidence.get("observed_at") or ""), "exit evidence observed_at")
+            observed_at = _parse_timestamp(
+                str(evidence.get("observed_at") or ""), "exit evidence observed_at"
+            )
         except ValueError as error:
             due.append(
                 {
@@ -407,7 +464,9 @@ def _paper_exit_review_status(
                 }
             )
             continue
-        review = _anchored_exit_review(entry.observations, exit_id=exit_id, after=observed_at)
+        review = _anchored_exit_review(
+            entry.observations, exit_id=exit_id, after=observed_at
+        )
         item = {
             "trade_index": index,
             "strategy_entry_id": entry_id,
@@ -429,19 +488,25 @@ def _paper_exit_review_status(
     return due, resolved
 
 
-def _anchored_exit_review(observations: Sequence[Any], *, exit_id: str, after: datetime) -> str | None:
+def _anchored_exit_review(
+    observations: Sequence[Any], *, exit_id: str, after: datetime
+) -> str | None:
     for observation in observations:
         if getattr(observation, "observation_type", "") != "strategy_lifecycle_review":
             continue
         observed_at = getattr(observation, "observed_at", None)
-        if not isinstance(observed_at, datetime) or observed_at.astimezone(timezone.utc) < after:
+        if (
+            not isinstance(observed_at, datetime)
+            or observed_at.astimezone(timezone.utc) < after
+        ):
             continue
         evidence = getattr(observation, "evidence", {})
         refs = evidence.get("evidence_refs") if isinstance(evidence, Mapping) else None
         if (
             isinstance(refs, Sequence)
             and not isinstance(refs, str)
-            and exit_id in {str(reference).strip() for reference in refs if str(reference).strip()}
+            and exit_id
+            in {str(reference).strip() for reference in refs if str(reference).strip()}
         ):
             return observed_at.isoformat()
     return None

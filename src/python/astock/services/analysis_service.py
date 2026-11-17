@@ -99,7 +99,9 @@ class AnalysisService:
 
             data_quality = {
                 "daily": "daily_only",
-                "quote": quote.get("data_quality", "unavailable") if quote else "unavailable",
+                "quote": (
+                    quote.get("data_quality", "unavailable") if quote else "unavailable"
+                ),
             }
 
             return FullAnalysisResult(
@@ -136,7 +138,9 @@ class AnalysisService:
                 if np.isinf(value):
                     result[key] = None
                 else:
-                    result[key] = float(value) if isinstance(value, np.floating) else int(value)
+                    result[key] = (
+                        float(value) if isinstance(value, np.floating) else int(value)
+                    )
             elif isinstance(value, date):
                 result[key] = value.isoformat()
             elif isinstance(value, datetime):

@@ -50,17 +50,25 @@ class PublicDeskObservationRun:
         """Write an immutable content-addressed operating record."""
         payload = self.to_dict()
         canonical = json.dumps(
-            payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+            payload,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
         )
         digest = self.archive_id.removeprefix("sha256:")
         if len(digest) != 64 or _sha256(_hash_input(payload)) != digest:
-            raise ValueError("public desk observation archive_id does not match its record")
+            raise ValueError(
+                "public desk observation archive_id does not match its record"
+            )
         directory = Path(directory)
         directory.mkdir(parents=True, exist_ok=True)
         destination = directory / f"{digest}.json"
         if destination.exists():
             if destination.read_text(encoding="utf-8") != canonical:
-                raise ValueError(f"public desk observation archive collision at {destination}")
+                raise ValueError(
+                    f"public desk observation archive collision at {destination}"
+                )
             return destination
         temporary = directory / f".{digest}.tmp"
         temporary.write_text(canonical, encoding="utf-8")
@@ -99,17 +107,25 @@ class PublicDeskObservationExceptionReview:
     def write(self, directory: str | Path) -> Path:
         payload = self.to_dict()
         canonical = json.dumps(
-            payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+            payload,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
         )
         digest = self.review_id.removeprefix("sha256:")
         if len(digest) != 64 or _sha256(_exception_hash_input(payload)) != digest:
-            raise ValueError("public desk observation exception review_id does not match its record")
+            raise ValueError(
+                "public desk observation exception review_id does not match its record"
+            )
         target_directory = Path(directory)
         target_directory.mkdir(parents=True, exist_ok=True)
         destination = target_directory / f"{digest}.json"
         if destination.exists():
             if destination.read_text(encoding="utf-8") != canonical:
-                raise ValueError(f"public desk observation exception review collision at {destination}")
+                raise ValueError(
+                    f"public desk observation exception review collision at {destination}"
+                )
             return destination
         temporary = target_directory / f".{digest}.tmp"
         temporary.write_text(canonical, encoding="utf-8")
@@ -128,11 +144,16 @@ def build_public_desk_observation_run(
     rotation = dict(rotation_observation)
     readiness = dict(operational_readiness)
     snapshot = overview.get("snapshot")
-    observed_at = str(snapshot.get("observed_at") if isinstance(snapshot, Mapping) else "").strip()
+    observed_at = str(
+        snapshot.get("observed_at") if isinstance(snapshot, Mapping) else ""
+    ).strip()
     if not observed_at:
         raise ValueError("market overview must include snapshot.observed_at")
     manifest = rotation.get("source_manifest")
-    if not isinstance(manifest, Mapping) or not str(manifest.get("archive_id") or "").strip():
+    if (
+        not isinstance(manifest, Mapping)
+        or not str(manifest.get("archive_id") or "").strip()
+    ):
         raise ValueError("rotation observation must include a frozen source manifest")
     record = {
         "schema_version": "market-desk-public-observation-run.v1",
@@ -168,7 +189,9 @@ def create_public_desk_observation_exception_review(
         normalized_date = date.fromisoformat(session_date).isoformat()
     except ValueError as error:
         raise ValueError("session_date must be an ISO-8601 calendar date") from error
-    normalized_ids = tuple(sorted({str(value).strip() for value in archive_ids if str(value).strip()}))
+    normalized_ids = tuple(
+        sorted({str(value).strip() for value in archive_ids if str(value).strip()})
+    )
     canonical_id = str(canonical_archive_id).strip()
     if len(normalized_ids) < 2:
         raise ValueError("exception review requires at least two duplicate archive_ids")
@@ -176,9 +199,13 @@ def create_public_desk_observation_exception_review(
         raise ValueError("canonical_archive_id must be one of archive_ids")
     normalized_reviewer = str(reviewer).strip()
     normalized_reason = str(reason).strip()
-    normalized_refs = tuple(str(value).strip() for value in evidence_refs if str(value).strip())
+    normalized_refs = tuple(
+        str(value).strip() for value in evidence_refs if str(value).strip()
+    )
     if not normalized_reviewer or not normalized_reason or not normalized_refs:
-        raise ValueError("exception review requires reviewer, reason, and at least one evidence reference")
+        raise ValueError(
+            "exception review requires reviewer, reason, and at least one evidence reference"
+        )
     timestamp = _normalize_review_timestamp(reviewed_at)
     record = {
         "schema_version": "market-desk-public-observation-exception-review.v1",
@@ -235,7 +262,10 @@ def verify_public_desk_observation_run(path: str | Path) -> dict[str, Any]:
             "Public desk observation record has an invalid operation.",
             declared_observed_at=declared_observed_at,
         )
-    if payload.get("formal_decision_eligible") is not False or payload.get("no_order_execution") is not True:
+    if (
+        payload.get("formal_decision_eligible") is not False
+        or payload.get("no_order_execution") is not True
+    ):
         return _blocked(
             "Public desk observation record must retain research-only decision and execution boundaries.",
             declared_observed_at=declared_observed_at,
@@ -259,7 +289,11 @@ def verify_public_desk_observation_run(path: str | Path) -> dict[str, Any]:
     )
     if source_assurance.get("status") != "pass":
         failures = source_assurance.get("failures", [])
-        detail = "; ".join(str(item) for item in failures) if isinstance(failures, list) else "unknown source verification failure"
+        detail = (
+            "; ".join(str(item) for item in failures)
+            if isinstance(failures, list)
+            else "unknown source verification failure"
+        )
         return _blocked(
             f"Linked rotation source archive failed verification: {detail}",
             declared_observed_at=declared_observed_at,
@@ -282,7 +316,9 @@ def list_public_desk_observation_runs(
 ) -> dict[str, Any]:
     """Audit all immutable desk-run records in an archive directory."""
     archive_directory = Path(directory)
-    paths = sorted(archive_directory.glob("*.json")) if archive_directory.is_dir() else []
+    paths = (
+        sorted(archive_directory.glob("*.json")) if archive_directory.is_dir() else []
+    )
     records: list[dict[str, Any]] = []
     declared_daily_counts: dict[str, int] = {}
     valid_daily_counts: dict[str, int] = {}
@@ -311,7 +347,11 @@ def list_public_desk_observation_runs(
     valid_records_by_day: dict[str, list[dict[str, Any]]] = {}
     for record in records:
         observed_at = record.get("observed_at")
-        if record.get("status") == "pass" and isinstance(observed_at, str) and len(observed_at) >= 10:
+        if (
+            record.get("status") == "pass"
+            and isinstance(observed_at, str)
+            and len(observed_at) >= 10
+        ):
             valid_records_by_day.setdefault(observed_at[:10], []).append(record)
     valid_eod_records_by_day: dict[str, list[dict[str, Any]]] = {}
     for record in valid_eod_records:
@@ -321,11 +361,17 @@ def list_public_desk_observation_runs(
     valid_duplicate_days = sorted(
         day for day, day_records in valid_records_by_day.items() if len(day_records) > 1
     )
-    review_directory = Path(exception_directory) if exception_directory is not None else archive_directory.parent / "market-desk-observation-exceptions"
+    review_directory = (
+        Path(exception_directory)
+        if exception_directory is not None
+        else archive_directory.parent / "market-desk-observation-exceptions"
+    )
     reviews = _list_valid_exception_reviews(review_directory)
     resolved_duplicate_days: list[str] = []
     for day in valid_duplicate_days:
-        current_ids = {str(record.get("archive_id") or "") for record in valid_records_by_day[day]}
+        current_ids = {
+            str(record.get("archive_id") or "") for record in valid_records_by_day[day]
+        }
         if any(
             review["session_date"] == day
             and set(review["archive_ids"]) == current_ids
@@ -333,7 +379,9 @@ def list_public_desk_observation_runs(
             for review in reviews
         ):
             resolved_duplicate_days.append(day)
-    unresolved_valid_duplicate_days = sorted(set(valid_duplicate_days) - set(resolved_duplicate_days))
+    unresolved_valid_duplicate_days = sorted(
+        set(valid_duplicate_days) - set(resolved_duplicate_days)
+    )
     return {
         "schema_version": "market-desk-public-observation-history.v1",
         "archive_directory": str(archive_directory),
@@ -467,7 +515,8 @@ def _list_valid_exception_reviews(directory: Path) -> list[dict[str, Any]]:
         except KeyError:
             integrity_ok = False
         if (
-            payload.get("schema_version") != "market-desk-public-observation-exception-review.v1"
+            payload.get("schema_version")
+            != "market-desk-public-observation-exception-review.v1"
             or len(digest) != 64
             or not integrity_ok
             or payload.get("research_only") is not True
@@ -492,7 +541,9 @@ def _list_valid_exception_reviews(directory: Path) -> list[dict[str, Any]]:
 
 
 def _sha256(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 

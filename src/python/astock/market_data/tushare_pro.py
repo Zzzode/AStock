@@ -64,14 +64,22 @@ class TushareBacktestPacket:
             }
         )
         if digest != expected_digest:
-            raise ValueError("Tushare source manifest archive_id does not match raw source records")
+            raise ValueError(
+                "Tushare source manifest archive_id does not match raw source records"
+            )
         payload = {
             "schema_version": "market_data_frozen_archive.v1",
             "source": "tushare_pro",
             "archive_id": archive_id,
             "raw_source_records": self.raw_source_records,
         }
-        canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+        canonical = json.dumps(
+            payload,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
+        )
         target_directory = Path(directory)
         target_directory.mkdir(parents=True, exist_ok=True)
         target = target_directory / f"{digest}.json"
@@ -118,14 +126,22 @@ class TushareUniverseSnapshotPacket:
             }
         )
         if digest != expected_digest:
-            raise ValueError("Tushare universe snapshot archive_id does not match raw source records")
+            raise ValueError(
+                "Tushare universe snapshot archive_id does not match raw source records"
+            )
         payload = {
             "schema_version": "market_data_frozen_archive.v1",
             "source": "tushare_pro",
             "archive_id": self.archive_id,
             "raw_source_records": self.raw_source_records,
         }
-        canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+        canonical = json.dumps(
+            payload,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
+        )
         target_directory = Path(directory)
         target_directory.mkdir(parents=True, exist_ok=True)
         target = target_directory / f"{digest}.json"
@@ -150,9 +166,13 @@ class TushareProBacktestAdapter:
         client: Any | None = None,
         now: Callable[[], datetime] | None = None,
     ) -> None:
-        self._token = (token if token is not None else os.environ.get("TUSHARE_TOKEN", "")).strip()
+        self._token = (
+            token if token is not None else os.environ.get("TUSHARE_TOKEN", "")
+        ).strip()
         self._data_owner = (
-            data_owner if data_owner is not None else os.environ.get("MARKET_DATA_ATTESTED_BY", "")
+            data_owner
+            if data_owner is not None
+            else os.environ.get("MARKET_DATA_ATTESTED_BY", "")
         ).strip()
         self._client = client
         self._now = now or (lambda: datetime.now(timezone.utc))
@@ -178,9 +198,14 @@ class TushareProBacktestAdapter:
             "trade_cal",
         )
         _require_columns(calendar_frame, {"cal_date"}, "trade_cal")
-        calendar = sorted(str(item) for item in calendar_frame["cal_date"].dropna().astype(str).unique())
+        calendar = sorted(
+            str(item)
+            for item in calendar_frame["cal_date"].dropna().astype(str).unique()
+        )
         if len(calendar) < 2:
-            raise ValueError("Tushare trade calendar returned fewer than two open sessions")
+            raise ValueError(
+                "Tushare trade calendar returned fewer than two open sessions"
+            )
 
         market_data: dict[str, pd.DataFrame] = {}
         corporate_actions: dict[str, list[dict[str, Any]]] = {}
@@ -209,7 +234,9 @@ class TushareProBacktestAdapter:
                 f"dividend:{code}",
             )
             listing = _as_frame(
-                client.stock_basic(ts_code=code, fields="ts_code,list_status,delist_date"),
+                client.stock_basic(
+                    ts_code=code, fields="ts_code,list_status,delist_date"
+                ),
                 f"stock_basic:{code}",
             )
             raw_components[code] = {
@@ -219,7 +246,9 @@ class TushareProBacktestAdapter:
                 "dividend": _records(dividends),
                 "stock_basic": _records(listing),
             }
-            market_data[code] = _build_market_frame(daily, limits, suspensions, calendar)
+            market_data[code] = _build_market_frame(
+                daily, limits, suspensions, calendar
+            )
             events = _build_dividend_events(code, dividends, calendar, start, end)
             if events:
                 corporate_actions[code] = events
@@ -261,7 +290,9 @@ class TushareProBacktestAdapter:
             raw_source_records=raw_components,
         )
 
-    def build_listing_universe_snapshot(self, *, as_of_date: str) -> TushareUniverseSnapshotPacket:
+    def build_listing_universe_snapshot(
+        self, *, as_of_date: str
+    ) -> TushareUniverseSnapshotPacket:
         """Build a point-in-time listing universe from active and retired masters.
 
         This establishes listing membership, not an investable universe.  A
@@ -281,13 +312,21 @@ class TushareProBacktestAdapter:
                 ),
                 f"stock_basic:{list_status}",
             )
-            _require_columns(frame, {"ts_code", "list_status", "list_date", "delist_date"}, f"stock_basic:{list_status}")
+            _require_columns(
+                frame,
+                {"ts_code", "list_status", "list_date", "delist_date"},
+                f"stock_basic:{list_status}",
+            )
             raw_records[f"stock_basic:{list_status}"] = _records(frame)
             frames.append(frame)
-        master = pd.concat(frames, ignore_index=True).drop_duplicates("ts_code", keep="last")
+        master = pd.concat(frames, ignore_index=True).drop_duplicates(
+            "ts_code", keep="last"
+        )
         members = _listing_members_as_of(master, as_of)
         if not members:
-            raise ValueError(f"Tushare stock master produced no listing-universe members for {as_of}")
+            raise ValueError(
+                f"Tushare stock master produced no listing-universe members for {as_of}"
+            )
         archive_id = "sha256:" + _content_hash(
             {
                 "schema_version": "market_data_frozen_archive.v1",
@@ -306,16 +345,24 @@ class TushareProBacktestAdapter:
     def _resolve_client(self) -> Any:
         if self._client is not None:
             if not self._data_owner:
-                raise ValueError("MARKET_DATA_ATTESTED_BY is required for licensed Tushare replay data")
+                raise ValueError(
+                    "MARKET_DATA_ATTESTED_BY is required for licensed Tushare replay data"
+                )
             return self._client
         if not self._token:
-            raise ValueError("TUSHARE_TOKEN is required for licensed Tushare replay data")
+            raise ValueError(
+                "TUSHARE_TOKEN is required for licensed Tushare replay data"
+            )
         if not self._data_owner:
-            raise ValueError("MARKET_DATA_ATTESTED_BY is required for licensed Tushare replay data")
+            raise ValueError(
+                "MARKET_DATA_ATTESTED_BY is required for licensed Tushare replay data"
+            )
         try:
             import tushare  # type: ignore[import-not-found]
         except ImportError as error:
-            raise RuntimeError("Install the optional Tushare dependency before requesting Tushare replay data") from error
+            raise RuntimeError(
+                "Install the optional Tushare dependency before requesting Tushare replay data"
+            ) from error
         return tushare.pro_api(self._token)
 
 
@@ -324,7 +371,9 @@ def _normalize_codes(codes: Sequence[str]) -> list[str]:
     for raw_code in codes:
         code = str(raw_code).strip().upper()
         if not code or "." not in code:
-            raise ValueError("Tushare replay codes must be qualified ts_code values such as 600460.SH")
+            raise ValueError(
+                "Tushare replay codes must be qualified ts_code values such as 600460.SH"
+            )
         if code not in normalized:
             normalized.append(code)
     return normalized
@@ -346,7 +395,9 @@ def _as_frame(value: Any, name: str) -> pd.DataFrame:
 def _require_columns(frame: pd.DataFrame, columns: set[str], name: str) -> None:
     missing = columns.difference(frame.columns)
     if missing:
-        raise ValueError(f"Tushare {name} response lacks columns: {', '.join(sorted(missing))}")
+        raise ValueError(
+            f"Tushare {name} response lacks columns: {', '.join(sorted(missing))}"
+        )
 
 
 def _build_market_frame(
@@ -355,15 +406,21 @@ def _build_market_frame(
     suspensions: pd.DataFrame,
     calendar: Sequence[str],
 ) -> pd.DataFrame:
-    _require_columns(daily, {"trade_date", "open", "high", "low", "close", "vol"}, "daily")
+    _require_columns(
+        daily, {"trade_date", "open", "high", "low", "close", "vol"}, "daily"
+    )
     rows = daily.copy()
     rows["trade_date"] = rows["trade_date"].astype(str)
     rows = rows.drop_duplicates("trade_date", keep="last").set_index("trade_date")
     limit_rows = limits.copy()
     if not limit_rows.empty:
-        _require_columns(limit_rows, {"trade_date", "up_limit", "down_limit"}, "stk_limit")
+        _require_columns(
+            limit_rows, {"trade_date", "up_limit", "down_limit"}, "stk_limit"
+        )
         limit_rows["trade_date"] = limit_rows["trade_date"].astype(str)
-        limit_rows = limit_rows.drop_duplicates("trade_date", keep="last").set_index("trade_date")
+        limit_rows = limit_rows.drop_duplicates("trade_date", keep="last").set_index(
+            "trade_date"
+        )
     suspension_days = _suspension_event_days(suspensions)
     normalized: list[dict[str, Any]] = []
     for date in calendar:
@@ -385,9 +442,13 @@ def _build_market_frame(
             limit = limit_rows.loc[date]
             up_limit = _numeric_or_none(limit.get("up_limit"))
             down_limit = _numeric_or_none(limit.get("down_limit"))
-            if up_limit is not None and _same_price(open_price, high, low, close, up_limit):
+            if up_limit is not None and _same_price(
+                open_price, high, low, close, up_limit
+            ):
                 status = "limit_up_locked"
-            elif down_limit is not None and _same_price(open_price, high, low, close, down_limit):
+            elif down_limit is not None and _same_price(
+                open_price, high, low, close, down_limit
+            ):
                 status = "limit_down_locked"
         normalized.append(
             {
@@ -432,7 +493,13 @@ def _build_dividend_events(
     for index, row in frame.iterrows():
         pay_date = str(row.get("pay_date") or "").strip()
         cash = _numeric_or_none(row.get("cash_div_tax"))
-        if pay_date and pay_date in sessions and start <= pay_date <= end and cash is not None and cash > 0:
+        if (
+            pay_date
+            and pay_date in sessions
+            and start <= pay_date <= end
+            and cash is not None
+            and cash > 0
+        ):
             events.append(
                 {
                     "event_id": f"tushare:{code}:cash_dividend:{pay_date}:{index}",
@@ -449,7 +516,12 @@ def _build_dividend_events(
             _numeric_or_none(row.get("stk_co_rate")) or 0.0,
         )
         share_factor = 1 + sum(share_components)
-        if ex_date and ex_date in sessions and start <= ex_date <= end and share_factor > 1:
+        if (
+            ex_date
+            and ex_date in sessions
+            and start <= ex_date <= end
+            and share_factor > 1
+        ):
             events.append(
                 {
                     "event_id": f"tushare:{code}:share_distribution:{ex_date}:{index}",
@@ -477,7 +549,11 @@ def _normalize_listing_status(code: str, frame: pd.DataFrame) -> dict[str, Any]:
     return {
         "code": code,
         "list_status": str(row.get("list_status") or "unknown").strip().upper(),
-        "delist_date": str(raw_date).strip() if pd.notna(raw_date) and str(raw_date).strip() else None,
+        "delist_date": (
+            str(raw_date).strip()
+            if pd.notna(raw_date) and str(raw_date).strip()
+            else None
+        ),
         "source_ref": f"tushare_pro.stock_basic:{code}",
     }
 
@@ -503,7 +579,9 @@ def _records(frame: pd.DataFrame) -> list[dict[str, Any]]:
 
 
 def _content_hash(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 

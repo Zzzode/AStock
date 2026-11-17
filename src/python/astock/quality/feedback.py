@@ -135,9 +135,7 @@ class ResearchQualityReport:
     def compute_rates(self) -> None:
         """Recompute catalyst realization rate and risk foresight rate."""
         if self.catalyst_outcomes:
-            realized = sum(
-                1 for c in self.catalyst_outcomes if c.realized or c.partial
-            )
+            realized = sum(1 for c in self.catalyst_outcomes if c.realized or c.partial)
             self.overall_catalyst_rate = realized / len(self.catalyst_outcomes)
 
         all_risks = self.risk_outcomes + self.unpredicted_risks
@@ -166,8 +164,7 @@ class ResearchQualityReport:
         report = cls(
             entry_id=str(data["entry_id"]),
             catalyst_outcomes=[
-                CatalystOutcome.from_dict(c)
-                for c in data.get("catalyst_outcomes", [])
+                CatalystOutcome.from_dict(c) for c in data.get("catalyst_outcomes", [])
             ],
             risk_outcomes=[
                 RiskOutcome.from_dict(r) for r in data.get("risk_outcomes", [])
@@ -176,8 +173,7 @@ class ResearchQualityReport:
                 RiskOutcome.from_dict(r) for r in data.get("unpredicted_risks", [])
             ],
             agent_scores=[
-                AgentRoleScore.from_dict(a)
-                for a in data.get("agent_scores", [])
+                AgentRoleScore.from_dict(a) for a in data.get("agent_scores", [])
             ],
             assessed_at=datetime.fromisoformat(data["assessed_at"]),
             notes=str(data.get("notes", "")),
@@ -245,26 +241,21 @@ class QualityFeedbackStore:
         if not self._reports:
             return {"total_assessed": 0}
 
-        catalyst_rates = [
-            r.overall_catalyst_rate for r in self._reports.values()
-        ]
-        risk_rates = [
-            r.overall_risk_foresight for r in self._reports.values()
-        ]
+        catalyst_rates = [r.overall_catalyst_rate for r in self._reports.values()]
+        risk_rates = [r.overall_risk_foresight for r in self._reports.values()]
 
         return {
             "total_assessed": len(self._reports),
             "avg_catalyst_realization_rate": (
                 round(sum(catalyst_rates) / len(catalyst_rates), 4)
-                if catalyst_rates else 0.0
+                if catalyst_rates
+                else 0.0
             ),
             "avg_risk_foresight_rate": (
-                round(sum(risk_rates) / len(risk_rates), 4)
-                if risk_rates else 0.0
+                round(sum(risk_rates) / len(risk_rates), 4) if risk_rates else 0.0
             ),
             "agent_role_scores": {
-                role: score.to_dict()
-                for role, score in self._role_scores.items()
+                role: score.to_dict() for role, score in self._role_scores.items()
             },
         }
 

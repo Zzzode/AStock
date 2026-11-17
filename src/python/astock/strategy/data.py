@@ -40,9 +40,15 @@ async def build_public_domestic_futures_cta_input(
     master data.
     """
 
-    normalized_symbols = [str(symbol).strip().upper() for symbol in symbols if str(symbol).strip()]
-    if not normalized_symbols or len(set(normalized_symbols)) != len(normalized_symbols):
-        raise ValueError("symbols must contain unique non-empty continuous-futures identifiers")
+    normalized_symbols = [
+        str(symbol).strip().upper() for symbol in symbols if str(symbol).strip()
+    ]
+    if not normalized_symbols or len(set(normalized_symbols)) != len(
+        normalized_symbols
+    ):
+        raise ValueError(
+            "symbols must contain unique non-empty continuous-futures identifiers"
+        )
     _validate_date(start_date, "start_date")
     _validate_date(end_date, "end_date")
     if start_date > end_date:
@@ -53,7 +59,9 @@ async def build_public_domestic_futures_cta_input(
     timestamp = _normalize_timestamp(observed_at)
     frames = await asyncio.gather(
         *(
-            asyncio.to_thread(_fetch_sina_continuous_futures, symbol, start_date, end_date)
+            asyncio.to_thread(
+                _fetch_sina_continuous_futures, symbol, start_date, end_date
+            )
             for symbol in normalized_symbols
         )
     )
@@ -64,9 +72,9 @@ async def build_public_domestic_futures_cta_input(
         instrument_id = str(override.pop("instrument_id", symbol)).strip()
         if not instrument_id:
             raise ValueError(f"{symbol} requires an instrument_id")
-        requested_lifecycle_coverage = str(
-            override.pop("contract_lifecycle_coverage", "proxy")
-        ).strip().lower()
+        requested_lifecycle_coverage = (
+            str(override.pop("contract_lifecycle_coverage", "proxy")).strip().lower()
+        )
         if requested_lifecycle_coverage != "proxy":
             raise ValueError(
                 f"{symbol} is public continuous-series data and must retain "
@@ -90,11 +98,25 @@ async def build_public_domestic_futures_cta_input(
             "contract_lifecycle_coverage": "proxy",
         }
         if override:
-            raise ValueError(f"{symbol} contains unsupported instrument override fields: " + ", ".join(sorted(override)))
-        missing = [name for name in ("multiplier", "tick_size", "initial_margin_rate", "maintenance_margin_rate", "source_ref") if spec_value[name] is None or not str(spec_value[name]).strip()]
+            raise ValueError(
+                f"{symbol} contains unsupported instrument override fields: "
+                + ", ".join(sorted(override))
+            )
+        missing = [
+            name
+            for name in (
+                "multiplier",
+                "tick_size",
+                "initial_margin_rate",
+                "maintenance_margin_rate",
+                "source_ref",
+            )
+            if spec_value[name] is None or not str(spec_value[name]).strip()
+        ]
         if missing:
             raise ValueError(
-                f"{symbol} requires dated contract facts in instrument_overrides: " + ", ".join(missing)
+                f"{symbol} requires dated contract facts in instrument_overrides: "
+                + ", ".join(missing)
             )
         spec = FuturesInstrumentSpec.from_mapping(spec_value)
         market_data[instrument_id] = normalized_frame.to_dict(orient="records")
@@ -130,12 +152,12 @@ async def build_public_domestic_futures_cta_input(
                 "contract_facts": "caller_source_labelled",
             },
         },
-    "limitations": [
-        "Public continuous-contract histories are used as a research signal proxy, not proof of historical executable contract rolls.",
-        "Contract multiplier, tick, margin, position limits, expiry and broker eligibility must be dated caller-supplied facts before a proposal is produced.",
-        "The input does not provide licensed point-in-time contracts, exchange risk-control states, full curves, historical bid/ask, or fill-quality evidence.",
-        "The public continuous-series archive is intentionally blocked from P&L replay; it can only support source inspection until dated actual-contract roll coverage is supplied.",
-    ],
+        "limitations": [
+            "Public continuous-contract histories are used as a research signal proxy, not proof of historical executable contract rolls.",
+            "Contract multiplier, tick, margin, position limits, expiry and broker eligibility must be dated caller-supplied facts before a proposal is produced.",
+            "The input does not provide licensed point-in-time contracts, exchange risk-control states, full curves, historical bid/ask, or fill-quality evidence.",
+            "The public continuous-series archive is intentionally blocked from P&L replay; it can only support source inspection until dated actual-contract roll coverage is supplied.",
+        ],
         "research_only": True,
         "no_order_execution": True,
         "formal_decision_eligible": False,
@@ -157,11 +179,22 @@ async def build_public_domestic_futures_cta_input(
 def parse_public_domestic_futures_cta_input(value: Mapping[str, Any]) -> dict[str, Any]:
     """Verify an in-memory public CTA input before a deterministic replay."""
 
-    if not isinstance(value, Mapping) or str(value.get("schema_version") or "") != "public_domestic_futures_cta_input.v1":
-        raise ValueError("CTA replay input must use public_domestic_futures_cta_input.v1")
+    if (
+        not isinstance(value, Mapping)
+        or str(value.get("schema_version") or "")
+        != "public_domestic_futures_cta_input.v1"
+    ):
+        raise ValueError(
+            "CTA replay input must use public_domestic_futures_cta_input.v1"
+        )
     manifest = value.get("source_manifest")
-    if not isinstance(manifest, Mapping) or str(manifest.get("source") or "") != PUBLIC_DOMESTIC_FUTURES_SOURCE:
-        raise ValueError("CTA replay input requires the expected public source manifest")
+    if (
+        not isinstance(manifest, Mapping)
+        or str(manifest.get("source") or "") != PUBLIC_DOMESTIC_FUTURES_SOURCE
+    ):
+        raise ValueError(
+            "CTA replay input requires the expected public source manifest"
+        )
     market_data = value.get("market_data")
     instruments = value.get("instruments")
     raw_source_records = value.get("raw_source_records")
@@ -170,7 +203,9 @@ def parse_public_domestic_futures_cta_input(value: Mapping[str, Any]) -> dict[st
         or not isinstance(instruments, Mapping)
         or not isinstance(raw_source_records, Mapping)
     ):
-        raise TypeError("CTA replay input requires market_data, instruments, and raw_source_records mappings")
+        raise TypeError(
+            "CTA replay input requires market_data, instruments, and raw_source_records mappings"
+        )
     expected_archive_id = "sha256:" + _content_hash(
         {
             "schema_version": "market_data_frozen_archive.v1",
@@ -179,9 +214,16 @@ def parse_public_domestic_futures_cta_input(value: Mapping[str, Any]) -> dict[st
         }
     )
     if str(manifest.get("archive_id") or "") != expected_archive_id:
-        raise ValueError("CTA replay input archive_id does not match its raw source records")
-    if raw_source_records.get("market_data") != market_data or raw_source_records.get("instruments") != instruments:
-        raise ValueError("CTA replay input market_data or instruments do not match its raw source records")
+        raise ValueError(
+            "CTA replay input archive_id does not match its raw source records"
+        )
+    if (
+        raw_source_records.get("market_data") != market_data
+        or raw_source_records.get("instruments") != instruments
+    ):
+        raise ValueError(
+            "CTA replay input market_data or instruments do not match its raw source records"
+        )
     normalized_instruments = {
         str(instrument_id): _public_proxy_instrument(specification)
         for instrument_id, specification in instruments.items()
@@ -203,7 +245,9 @@ def _public_proxy_instrument(value: Any) -> dict[str, Any]:
     return normalized
 
 
-def _fetch_sina_continuous_futures(symbol: str, start_date: str, end_date: str) -> pd.DataFrame:
+def _fetch_sina_continuous_futures(
+    symbol: str, start_date: str, end_date: str
+) -> pd.DataFrame:
     import akshare as ak
 
     try:
@@ -213,9 +257,13 @@ def _fetch_sina_continuous_futures(symbol: str, start_date: str, end_date: str) 
             end_date=end_date.replace("-", ""),
         )
     except Exception as error:
-        raise ValueError(f"public continuous-futures fetch failed for {symbol}: {type(error).__name__}: {error}") from error
+        raise ValueError(
+            f"public continuous-futures fetch failed for {symbol}: {type(error).__name__}: {error}"
+        ) from error
     if not isinstance(frame, pd.DataFrame) or frame.empty:
-        raise ValueError(f"public continuous-futures source returned no bars for {symbol}")
+        raise ValueError(
+            f"public continuous-futures source returned no bars for {symbol}"
+        )
     return frame
 
 
@@ -228,18 +276,37 @@ def _normalize_public_frame(frame: pd.DataFrame, instrument_id: str) -> pd.DataF
         "成交量": "volume",
         "持仓量": "open_interest",
     }
-    normalized = frame.rename(columns={source: target for source, target in columns.items() if source in frame.columns})
+    normalized = frame.rename(
+        columns={
+            source: target
+            for source, target in columns.items()
+            if source in frame.columns
+        }
+    )
     required = {"date", "open", "close", "settlement", "volume", "open_interest"}
     missing = sorted(required.difference(normalized.columns))
     if missing:
-        raise ValueError(f"public continuous-futures source for {instrument_id} lacks: " + ", ".join(missing))
-    normalized = normalized[["date", "open", "close", "settlement", "volume", "open_interest"]].copy()
-    normalized["date"] = pd.to_datetime(normalized["date"], errors="coerce").dt.normalize()
+        raise ValueError(
+            f"public continuous-futures source for {instrument_id} lacks: "
+            + ", ".join(missing)
+        )
+    normalized = normalized[
+        ["date", "open", "close", "settlement", "volume", "open_interest"]
+    ].copy()
+    normalized["date"] = pd.to_datetime(
+        normalized["date"], errors="coerce"
+    ).dt.normalize()
     for name in ("open", "close", "settlement", "volume", "open_interest"):
         normalized[name] = pd.to_numeric(normalized[name], errors="coerce")
     normalized = normalized.dropna().sort_values("date", kind="stable")
-    if normalized.empty or normalized["date"].duplicated().any() or (normalized[["open", "close", "settlement"]] <= 0).any().any():
-        raise ValueError(f"public continuous-futures source contains invalid data for {instrument_id}")
+    if (
+        normalized.empty
+        or normalized["date"].duplicated().any()
+        or (normalized[["open", "close", "settlement"]] <= 0).any().any()
+    ):
+        raise ValueError(
+            f"public continuous-futures source contains invalid data for {instrument_id}"
+        )
     normalized["tradable"] = True
     normalized["execution_status"] = "tradable"
     # A caller must replace this proxy with exchange/broker expiry facts.  A
@@ -273,7 +340,9 @@ def _normalize_timestamp(value: str | datetime | None) -> str:
 
 
 def _content_hash(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
@@ -294,14 +363,22 @@ def _write_archive(
     return _write_content_addressed(directory, f"{digest}.json", payload)
 
 
-def _write_replay_input(directory: Path, archive_id: str, payload: Mapping[str, Any]) -> Path:
-    return _write_content_addressed(directory, f"{archive_id.removeprefix('sha256:')}.cta.replay.json", payload)
+def _write_replay_input(
+    directory: Path, archive_id: str, payload: Mapping[str, Any]
+) -> Path:
+    return _write_content_addressed(
+        directory, f"{archive_id.removeprefix('sha256:')}.cta.replay.json", payload
+    )
 
 
-def _write_content_addressed(directory: Path, filename: str, payload: Mapping[str, Any]) -> Path:
+def _write_content_addressed(
+    directory: Path, filename: str, payload: Mapping[str, Any]
+) -> Path:
     directory.mkdir(parents=True, exist_ok=True)
     target = directory / filename
-    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     if target.exists():
         if target.read_text(encoding="utf-8") != canonical:
             raise ValueError(f"frozen archive collision at {target}")

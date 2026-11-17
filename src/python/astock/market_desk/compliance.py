@@ -41,9 +41,13 @@ def assess_candidate_compliance(
         return ComplianceAssessment(
             ComplianceStatus.CONDITIONAL,
             ("Candidate lacks a structured compliance assessment.",),
-            ("Provide research-only, conflict, restricted-information, and suitability declarations.",),
+            (
+                "Provide research-only, conflict, restricted-information, and suitability declarations.",
+            ),
         )
-    targets = {str(item).strip() for item in candidate.get("targets", ()) if str(item).strip()}
+    targets = {
+        str(item).strip() for item in candidate.get("targets", ()) if str(item).strip()
+    }
     restricted = {str(item).strip() for item in restricted_targets if str(item).strip()}
     findings: list[str] = []
     remediation: list[str] = []
@@ -52,14 +56,18 @@ def assess_candidate_compliance(
         findings.append("Candidate is on a restricted list or marked restricted.")
         veto = True
     if bool(compliance.get("mnpi_or_inside_information")):
-        findings.append("Candidate is marked as involving material non-public or inside information.")
+        findings.append(
+            "Candidate is marked as involving material non-public or inside information."
+        )
         veto = True
     if compliance.get("restricted_list_current") is False:
         remediation.append(
             "Refresh the externally sourced restricted list and record a current compliance review."
         )
     if not bool(compliance.get("research_only_disclosure")):
-        remediation.append("Disclose that output is research and paper-plan support only, not order execution.")
+        remediation.append(
+            "Disclose that output is research and paper-plan support only, not order execution."
+        )
     if not bool(compliance.get("no_execution_instruction")):
         remediation.append("Remove execution, routing, or rule-evasion instructions.")
     if not bool(compliance.get("conflicts_disclosed")):
@@ -67,11 +75,19 @@ def assess_candidate_compliance(
     if not bool(compliance.get("suitability_disclosure")):
         remediation.append("Provide the required risk and suitability disclosure.")
     claims = compliance.get("prohibited_claims", ())
-    if isinstance(claims, Sequence) and not isinstance(claims, str) and any(str(item).strip() for item in claims):
+    if (
+        isinstance(claims, Sequence)
+        and not isinstance(claims, str)
+        and any(str(item).strip() for item in claims)
+    ):
         findings.append("Candidate declares prohibited or guaranteed-return claims.")
         veto = True
     if veto:
-        return ComplianceAssessment(ComplianceStatus.VETO, tuple(findings), tuple(remediation))
+        return ComplianceAssessment(
+            ComplianceStatus.VETO, tuple(findings), tuple(remediation)
+        )
     if remediation:
-        return ComplianceAssessment(ComplianceStatus.CONDITIONAL, tuple(findings), tuple(remediation))
+        return ComplianceAssessment(
+            ComplianceStatus.CONDITIONAL, tuple(findings), tuple(remediation)
+        )
     return ComplianceAssessment(ComplianceStatus.PASS, tuple(findings), ())

@@ -45,9 +45,15 @@ class DataCache:
             maxsize: Maximum cache entry count
             lock_cleanup_interval: Lock cleanup interval (seconds)
         """
-        self._realtime_cache: TTLCache[str, Any] = TTLCache(maxsize=maxsize, ttl=realtime_ttl)
-        self._daily_cache: TTLCache[str, Any] = TTLCache(maxsize=maxsize // 10, ttl=daily_ttl)
-        self._stock_list_cache: TTLCache[str, Any] = TTLCache(maxsize=10, ttl=stock_list_ttl)
+        self._realtime_cache: TTLCache[str, Any] = TTLCache(
+            maxsize=maxsize, ttl=realtime_ttl
+        )
+        self._daily_cache: TTLCache[str, Any] = TTLCache(
+            maxsize=maxsize // 10, ttl=daily_ttl
+        )
+        self._stock_list_cache: TTLCache[str, Any] = TTLCache(
+            maxsize=10, ttl=stock_list_ttl
+        )
         self._general_cache: TTLCache[str, Any] = TTLCache(maxsize=maxsize, ttl=60)
 
         # Use OrderedDict to track lock access time, supports LRU cleanup
@@ -87,7 +93,8 @@ class DataCache:
         """Clean up locks unused for over 5 minutes"""
         now = time.monotonic()
         expired_keys = [
-            k for k, t in self._lock_access_time.items()
+            k
+            for k, t in self._lock_access_time.items()
             if now - t > 300  # 5 minutes unused
         ]
         for key in expired_keys:

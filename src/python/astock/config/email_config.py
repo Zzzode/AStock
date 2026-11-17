@@ -17,10 +17,14 @@ class EmailConfig(BaseModel):
     # Sender information
     sender_email: str = Field(default="", description="Sender email address")
     sender_password: str = Field(default="", description="Sender password/auth code")
-    sender_name: str = Field(default="A股交易告警系统", description="Sender display name")
+    sender_name: str = Field(
+        default="A股交易告警系统", description="Sender display name"
+    )
 
     # Recipient list
-    recipients: list[str] = Field(default_factory=list, description="Recipient email list")
+    recipients: list[str] = Field(
+        default_factory=list, description="Recipient email list"
+    )
 
     # Email content settings
     subject_prefix: str = Field(default="[A股告警]", description="Email subject prefix")

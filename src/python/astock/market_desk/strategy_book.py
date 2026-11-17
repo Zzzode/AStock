@@ -30,9 +30,21 @@ class StrategyState(StrEnum):
 
 _ALLOWED_TRANSITIONS: dict[StrategyState, set[StrategyState]] = {
     StrategyState.OBSERVATION: {StrategyState.WATCH, StrategyState.REJECTED},
-    StrategyState.WATCH: {StrategyState.CONDITIONAL, StrategyState.REJECTED, StrategyState.EXPIRED},
-    StrategyState.CONDITIONAL: {StrategyState.ACTIVE, StrategyState.REJECTED, StrategyState.EXPIRED},
-    StrategyState.ACTIVE: {StrategyState.INVALIDATED, StrategyState.EXPIRED, StrategyState.CLOSED},
+    StrategyState.WATCH: {
+        StrategyState.CONDITIONAL,
+        StrategyState.REJECTED,
+        StrategyState.EXPIRED,
+    },
+    StrategyState.CONDITIONAL: {
+        StrategyState.ACTIVE,
+        StrategyState.REJECTED,
+        StrategyState.EXPIRED,
+    },
+    StrategyState.ACTIVE: {
+        StrategyState.INVALIDATED,
+        StrategyState.EXPIRED,
+        StrategyState.CLOSED,
+    },
     StrategyState.REJECTED: set(),
     StrategyState.INVALIDATED: set(),
     StrategyState.EXPIRED: set(),
@@ -60,14 +72,24 @@ class StrategyPlan:
     review_history: tuple[dict[str, Any], ...] = ()
 
     def __post_init__(self) -> None:
-        if not self.plan_id.strip() or not self.target.strip() or not self.thesis.strip():
+        if (
+            not self.plan_id.strip()
+            or not self.target.strip()
+            or not self.thesis.strip()
+        ):
             raise ValueError("strategy plan requires plan_id, target, and thesis")
         for label, value in (("as_of", self.as_of), ("review_at", self.review_at)):
             if _parse_iso(value) is None:
                 raise ValueError(f"strategy plan {label} must be an ISO-8601 timestamp")
-        if self.horizon in {StrategyHorizon.ULTRA_SHORT, StrategyHorizon.SHORT_TERM, StrategyHorizon.SWING}:
+        if self.horizon in {
+            StrategyHorizon.ULTRA_SHORT,
+            StrategyHorizon.SHORT_TERM,
+            StrategyHorizon.SWING,
+        }:
             if _parse_iso(self.time_stop_at) is None:
-                raise ValueError("ultra-short, short-term, and swing plans require an ISO-8601 time_stop_at")
+                raise ValueError(
+                    "ultra-short, short-term, and swing plans require an ISO-8601 time_stop_at"
+                )
         if not self.entry_condition.strip() or not self.invalidation_condition.strip():
             raise ValueError("strategy plan requires entry and invalidation conditions")
         if not self.evidence_refs:
@@ -107,10 +129,20 @@ class StrategyPlan:
             entry_condition=str(data.get("entry_condition") or ""),
             invalidation_condition=str(data.get("invalidation_condition") or ""),
             review_at=str(data.get("review_at") or ""),
-            time_stop_at=str(data["time_stop_at"]) if data.get("time_stop_at") else None,
-            evidence_refs=tuple(str(item) for item in data.get("evidence_refs", ()) if str(item).strip()),
-            playbook_id=str(data["playbook_id"]).strip() if data.get("playbook_id") is not None else None,
-            transition_history=tuple(dict(item) for item in history if isinstance(item, Mapping)),
+            time_stop_at=(
+                str(data["time_stop_at"]) if data.get("time_stop_at") else None
+            ),
+            evidence_refs=tuple(
+                str(item) for item in data.get("evidence_refs", ()) if str(item).strip()
+            ),
+            playbook_id=(
+                str(data["playbook_id"]).strip()
+                if data.get("playbook_id") is not None
+                else None
+            ),
+            transition_history=tuple(
+                dict(item) for item in history if isinstance(item, Mapping)
+            ),
             review_history=tuple(
                 dict(item)
                 for item in data.get("review_history", ())
@@ -137,11 +169,21 @@ def transition_strategy_plan(
     if not reason.strip():
         raise ValueError("strategy lifecycle transition requires a reason")
     if state not in _ALLOWED_TRANSITIONS[plan.state]:
-        raise ValueError(f"illegal strategy transition: {plan.state.value} -> {state.value}")
+        raise ValueError(
+            f"illegal strategy transition: {plan.state.value} -> {state.value}"
+        )
     if state == StrategyState.ACTIVE:
         _validate_ic_decision(plan, ic_decision)
         _validate_release_assurance(plan, ic_decision, release_assurance)
-    history = (*plan.transition_history, {"from": plan.state.value, "to": state.value, "reason": reason.strip(), "observed_at": timestamp})
+    history = (
+        *plan.transition_history,
+        {
+            "from": plan.state.value,
+            "to": state.value,
+            "reason": reason.strip(),
+            "observed_at": timestamp,
+        },
+    )
     return StrategyPlan(
         plan_id=plan.plan_id,
         horizon=plan.horizon,
@@ -181,7 +223,9 @@ def record_strategy_plan_review(
         StrategyState.CONDITIONAL,
         StrategyState.ACTIVE,
     }:
-        raise ValueError("only nonterminal strategy plans can receive a continuation review")
+        raise ValueError(
+            "only nonterminal strategy plans can receive a continuation review"
+        )
     timestamp_text = observed_at or datetime.now(timezone.utc).isoformat()
     timestamp = _parse_iso(timestamp_text)
     next_review = _parse_iso(next_review_at)
@@ -189,17 +233,25 @@ def record_strategy_plan_review(
         raise ValueError("strategy review timestamps must be ISO-8601")
     if not reviewer.strip() or not reason.strip():
         raise ValueError("strategy continuation review requires reviewer and reason")
-    normalized_refs = tuple(str(reference).strip() for reference in evidence_refs if str(reference).strip())
+    normalized_refs = tuple(
+        str(reference).strip() for reference in evidence_refs if str(reference).strip()
+    )
     if not normalized_refs:
         raise ValueError("strategy continuation review requires evidence references")
     if next_review <= timestamp:
-        raise ValueError("strategy continuation next_review_at must be later than observed_at")
+        raise ValueError(
+            "strategy continuation next_review_at must be later than observed_at"
+        )
     time_stop = _parse_iso(plan.time_stop_at)
     if time_stop is not None:
         if timestamp >= time_stop:
-            raise ValueError("strategy continuation is forbidden once time_stop_at is due; expire, close, or invalidate the plan")
+            raise ValueError(
+                "strategy continuation is forbidden once time_stop_at is due; expire, close, or invalidate the plan"
+            )
         if next_review >= time_stop:
-            raise ValueError("strategy continuation next_review_at must precede time_stop_at")
+            raise ValueError(
+                "strategy continuation next_review_at must precede time_stop_at"
+            )
     review = {
         "action": "continue",
         "reviewer": reviewer.strip(),
@@ -248,17 +300,24 @@ def _validate_ic_decision(
     if str(decision.get("decision") or "") != "approve":
         raise ValueError("active strategy plans require an approved IC decision")
     targets = decision.get("candidate_targets")
-    if not isinstance(targets, Sequence) or isinstance(targets, str) or plan.target not in {
-        str(item).strip() for item in targets if str(item).strip()
-    }:
-        raise ValueError("active strategy plans require an IC decision bound to the strategy target")
+    if (
+        not isinstance(targets, Sequence)
+        or isinstance(targets, str)
+        or plan.target
+        not in {str(item).strip() for item in targets if str(item).strip()}
+    ):
+        raise ValueError(
+            "active strategy plans require an IC decision bound to the strategy target"
+        )
     if not str(decision.get("decision_owner") or "").strip():
         raise ValueError("active strategy plans require an IC decision owner")
     if _parse_iso(str(decision.get("decided_at") or "")) is None:
         raise ValueError("active strategy plans require an IC decision timestamp")
     evidence_refs = decision.get("evidence_refs")
-    if not isinstance(evidence_refs, Sequence) or isinstance(evidence_refs, str) or not any(
-        str(reference).strip() for reference in evidence_refs
+    if (
+        not isinstance(evidence_refs, Sequence)
+        or isinstance(evidence_refs, str)
+        or not any(str(reference).strip() for reference in evidence_refs)
     ):
         raise ValueError("active strategy plans require IC evidence references")
     controls = decision.get("control_assessments")
@@ -266,8 +325,13 @@ def _validate_ic_decision(
         raise ValueError("active strategy plans require all IC control assessments")
     for role in REQUIRED_IC_CONTROL_ROLES:
         assessment = controls.get(role)
-        if not isinstance(assessment, Mapping) or str(assessment.get("status") or "") != "pass":
-            raise ValueError(f"active strategy plans require a passing IC assessment from {role}")
+        if (
+            not isinstance(assessment, Mapping)
+            or str(assessment.get("status") or "") != "pass"
+        ):
+            raise ValueError(
+                f"active strategy plans require a passing IC assessment from {role}"
+            )
     model_versions = decision.get("model_versions")
     if not isinstance(model_versions, Mapping) or not any(
         str(name).strip() and str(version).strip()
@@ -286,8 +350,17 @@ def _validate_release_assurance(
     if assurance.get("schema_version") != "market-desk-paper-assurance.v1":
         raise ValueError("active strategy plans require market-desk-paper-assurance.v1")
     if assurance.get("verdict") != "pass":
-        raise ValueError("active strategy plans require a passing release assurance report")
-    if str(assurance.get("plan_id") or "") != plan.plan_id or str(assurance.get("target") or "") != plan.target:
-        raise ValueError("release assurance must bind the active strategy plan and target")
-    if str(assurance.get("ic_candidate_id") or "") != str((decision or {}).get("candidate_id") or ""):
+        raise ValueError(
+            "active strategy plans require a passing release assurance report"
+        )
+    if (
+        str(assurance.get("plan_id") or "") != plan.plan_id
+        or str(assurance.get("target") or "") != plan.target
+    ):
+        raise ValueError(
+            "release assurance must bind the active strategy plan and target"
+        )
+    if str(assurance.get("ic_candidate_id") or "") != str(
+        (decision or {}).get("candidate_id") or ""
+    ):
         raise ValueError("release assurance must bind the active IC decision")

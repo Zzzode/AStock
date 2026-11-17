@@ -17,7 +17,11 @@ console = Console()
 PROJECT_ROOT = Path(__file__).resolve().parents[4]
 LEGACY_DB_PATH = Path(__file__).resolve().parents[3] / "data" / "stocks.db"
 CANONICAL_DB_PATH = PROJECT_ROOT / "data" / "stocks.db"
-DB_PATH = CANONICAL_DB_PATH if CANONICAL_DB_PATH.exists() or not LEGACY_DB_PATH.exists() else LEGACY_DB_PATH
+DB_PATH = (
+    CANONICAL_DB_PATH
+    if CANONICAL_DB_PATH.exists() or not LEGACY_DB_PATH.exists()
+    else LEGACY_DB_PATH
+)
 STRUCTURE_ALERT_TYPES = frozenset(
     {"price_dislocation", "range_expansion", "volume_spike"}
 )
@@ -45,9 +49,10 @@ def add_watch(
         help="Observable market-structure alert types to monitor",
     ),
     channels: str = typer.Option("terminal", "--channels", "-c", help="Alert channels"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Add a watch item"""
+
     async def _add() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
@@ -60,7 +65,7 @@ def add_watch(
             code=code,
             conditions=conditions,
             alert_channels=channels.split(","),
-            created_at=datetime.now()
+            created_at=datetime.now(),
         )
         await db.save_watch_item(item)
         await db.close()
@@ -77,18 +82,17 @@ def add_watch(
 @app.command("remove")
 def remove_watch(
     code: str = typer.Argument(..., help="Stock code"),
-    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Remove a watch item"""
+
     async def _remove() -> dict[str, Any]:
         db = Database(str(DB_PATH))
         await db.connect()
         conn = db._conn
         if conn is None:
             raise RuntimeError("Database not connected")
-        await conn.execute(
-            "UPDATE watch_items SET enabled = 0 WHERE code = ?", (code,)
-        )
+        await conn.execute("UPDATE watch_items SET enabled = 0 WHERE code = ?", (code,))
         await conn.commit()
         await db.close()
         return {"code": code, "removed": True}
@@ -102,8 +106,11 @@ def remove_watch(
 
 
 @app.command("list")
-def list_watch(json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")) -> None:
+def list_watch(
+    json_output: bool = typer.Option(False, "--json", "-j", help="JSON output")
+) -> None:
     """View watch list"""
+
     async def _list() -> list[dict[str, Any]]:
         db = Database(str(DB_PATH))
         await db.connect()
@@ -127,12 +134,16 @@ def list_watch(json_output: bool = typer.Option(False, "--json", "-j", help="JSO
         table.add_column("Channels")
 
         for item in items:
-            status = "[green]Enabled[/green]" if item.get("enabled") else "[red]Disabled[/red]"
+            status = (
+                "[green]Enabled[/green]"
+                if item.get("enabled")
+                else "[red]Disabled[/red]"
+            )
             table.add_row(
                 item["code"],
                 item.get("name") or "-",
                 status,
-                ",".join(item.get("alert_channels", []))
+                ",".join(item.get("alert_channels", [])),
             )
 
         console.print(table)

@@ -30,6 +30,7 @@ CACHE_TTL_HOURS = 24  # Cache validity period: 1 day
 
 def async_wrap(func: Callable[P, T]) -> Callable[P, Awaitable[T]]:
     """Wrap a synchronous function as async"""
+
     @wraps(func)
     async def wrapper(*args: P.args, **kwargs: P.kwargs) -> T:
         try:
@@ -37,17 +38,19 @@ def async_wrap(func: Callable[P, T]) -> Callable[P, Awaitable[T]]:
         except RuntimeError:
             loop = asyncio.get_event_loop()
         return cast(T, await loop.run_in_executor(None, lambda: func(*args, **kwargs)))
+
     return wrapper
 
 
 @dataclass
 class IndustryInfo:
     """Industry information"""
-    name: str                           # Industry name
-    code: Optional[str] = None          # Industry code
+
+    name: str  # Industry name
+    code: Optional[str] = None  # Industry code
     change_percent: Optional[float] = None  # Industry change percentage
-    stock_count: int = 0                # Number of stocks in the industry
-    updated_at: str = ""                # Update timestamp
+    stock_count: int = 0  # Number of stocks in the industry
+    updated_at: str = ""  # Update timestamp
 
     def to_dict(self) -> dict[str, Any]:
         return asdict(self)
@@ -66,9 +69,10 @@ class IndustryInfo:
 @dataclass
 class StockIndustry:
     """Stock industry information"""
-    code: str                           # Stock code
-    name: str                           # Stock name
-    industry: str                       # Industry name
+
+    code: str  # Stock code
+    name: str  # Stock name
+    industry: str  # Industry name
     industry_code: Optional[str] = None  # Industry code
     industry_change: Optional[float] = None  # Industry change percentage
 
@@ -89,15 +93,24 @@ class StockIndustry:
 @dataclass
 class IndustryCache:
     """Industry data cache structure"""
-    industries: dict[str, IndustryInfo] = field(default_factory=dict)  # Industry name -> industry info
-    stock_industries: dict[str, StockIndustry] = field(default_factory=dict)  # Stock code -> stock industry
-    industry_stocks: dict[str, list[str]] = field(default_factory=dict)  # Industry name -> stock code list
+
+    industries: dict[str, IndustryInfo] = field(
+        default_factory=dict
+    )  # Industry name -> industry info
+    stock_industries: dict[str, StockIndustry] = field(
+        default_factory=dict
+    )  # Stock code -> stock industry
+    industry_stocks: dict[str, list[str]] = field(
+        default_factory=dict
+    )  # Industry name -> stock code list
     cached_at: str = ""
 
     def to_dict(self) -> dict[str, Any]:
         return {
             "industries": {k: v.to_dict() for k, v in self.industries.items()},
-            "stock_industries": {k: v.to_dict() for k, v in self.stock_industries.items()},
+            "stock_industries": {
+                k: v.to_dict() for k, v in self.stock_industries.items()
+            },
             "industry_stocks": self.industry_stocks,
             "cached_at": self.cached_at,
         }
@@ -105,8 +118,14 @@ class IndustryCache:
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "IndustryCache":
         return cls(
-            industries={k: IndustryInfo.from_dict(v) for k, v in data.get("industries", {}).items()},
-            stock_industries={k: StockIndustry.from_dict(v) for k, v in data.get("stock_industries", {}).items()},
+            industries={
+                k: IndustryInfo.from_dict(v)
+                for k, v in data.get("industries", {}).items()
+            },
+            stock_industries={
+                k: StockIndustry.from_dict(v)
+                for k, v in data.get("stock_industries", {}).items()
+            },
             industry_stocks=data.get("industry_stocks", {}),
             cached_at=data.get("cached_at", ""),
         )
@@ -177,12 +196,14 @@ class IndustryService:
         """
         if os.getenv("ASTOCK_OFFLINE") == "1":
             # Offline mode returns mock data
-            return pd.DataFrame({
-                "板块名称": ["银行", "证券", "保险", "房地产", "汽车"],
-                "板块代码": ["BK0477", "BK0478", "BK0479", "BK0480", "BK0481"],
-                "涨跌幅": [0.5, 1.2, -0.3, 0.8, 2.1],
-                "总市值": [100000, 80000, 50000, 60000, 70000],
-            })
+            return pd.DataFrame(
+                {
+                    "板块名称": ["银行", "证券", "保险", "房地产", "汽车"],
+                    "板块代码": ["BK0477", "BK0478", "BK0479", "BK0480", "BK0481"],
+                    "涨跌幅": [0.5, 1.2, -0.3, 0.8, 2.1],
+                    "总市值": [100000, 80000, 50000, 60000, 70000],
+                }
+            )
 
         try:
             # Fetch industry sector market data
@@ -246,7 +267,11 @@ class IndustryService:
         if os.getenv("ASTOCK_OFFLINE") == "1":
             # Offline mode returns mock data
             offline_stocks = {
-                "银行": [("000001", "平安银行"), ("600000", "浦发银行"), ("600036", "招商银行")],
+                "银行": [
+                    ("000001", "平安银行"),
+                    ("600000", "浦发银行"),
+                    ("600036", "招商银行"),
+                ],
                 "房地产": [("000002", "万科A"), ("600048", "保利发展")],
                 "白酒": [("600519", "贵州茅台"), ("000858", "五粮液")],
             }
@@ -258,7 +283,9 @@ class IndustryService:
             df = ak.stock_board_industry_cons_em(symbol=industry_name)
             return df
         except Exception as e:
-            logger.error(f"Failed to fetch stock list for industry {industry_name}: {e}")
+            logger.error(
+                f"Failed to fetch stock list for industry {industry_name}: {e}"
+            )
             return pd.DataFrame()
 
     async def initialize(
@@ -306,7 +333,9 @@ class IndustryService:
                 industry_info = IndustryInfo(
                     name=name,
                     code=str(row.get("板块代码", "")) if "板块代码" in row else None,
-                    change_percent=float(row.get("涨跌幅", 0)) if "涨跌幅" in row else None,
+                    change_percent=(
+                        float(row.get("涨跌幅", 0)) if "涨跌幅" in row else None
+                    ),
                     stock_count=int(row.get("股票家数", 0)) if "股票家数" in row else 0,
                     updated_at=datetime.now().isoformat(),
                 )
@@ -317,7 +346,9 @@ class IndustryService:
 
             self._cache = cache
             self._initialized = True
-            logger.info(f"Industry data initialization complete, {len(cache.industries)} industries total")
+            logger.info(
+                f"Industry data initialization complete, {len(cache.industries)} industries total"
+            )
 
         except Exception as e:
             logger.error(f"Failed to initialize industry data: {e}")

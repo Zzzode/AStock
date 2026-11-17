@@ -120,139 +120,327 @@ PLAYBOOKS: dict[str, PlaybookDefinition] = {
         horizon="ultra_short",
         permitted_regimes=(MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
         evidence_requirements=(
-            _public("new_catalyst", "Timestamped public disclosure or policy catalyst."),
-            _public("theme_breadth", "Timestamped participation breadth across the named theme."),
-            _public("leader_identity", "Timestamped evidence that the candidate is a liquid thematic leader."),
-            _public("price_limit_ecology", "Timestamped price-limit hierarchy, breadth, and trading-status context."),
-            _public("next_session_plan", "Dated next-session entry, rejection, and review conditions."),
+            _public(
+                "new_catalyst", "Timestamped public disclosure or policy catalyst."
+            ),
+            _public(
+                "theme_breadth",
+                "Timestamped participation breadth across the named theme.",
+            ),
+            _public(
+                "leader_identity",
+                "Timestamped evidence that the candidate is a liquid thematic leader.",
+            ),
+            _public(
+                "price_limit_ecology",
+                "Timestamped price-limit hierarchy, breadth, and trading-status context.",
+            ),
+            _public(
+                "next_session_plan",
+                "Dated next-session entry, rejection, and review conditions.",
+            ),
         ),
         confirmation="Catalyst, breadth, leader identity, and the closing price-limit ecology agree before a conditional next-session plan is published.",
         invalidation="The catalyst is disproved, breadth fails, or the confirmed leader loses acceptance.",
         time_stop="Exit the paper thesis after two sessions without continuation.",
         risk_defaults=_ULTRA_SHORT_RISK,
-        required_team_roles=(*_CORE_ROLES, "ultra-short-tactical-trader", "sector-rotation-analyst", "event-driven-institutional-analyst", "execution-liquidity-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "ultra-short-tactical-trader",
+            "sector-rotation-analyst",
+            "event-driven-institutional-analyst",
+            "execution-liquidity-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
     "leader_continuation": PlaybookDefinition(
         name="leader_continuation",
         horizon="ultra_short",
         permitted_regimes=(MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
         evidence_requirements=(
-            _public("theme_breadth", "Timestamped theme breadth and continuation evidence."),
-            _public("leader_identity", "Timestamped market-wide leadership and liquidity evidence."),
-            _public("prior_session_acceptance", "Timestamped prior-session acceptance and turnover record."),
-            _public("price_limit_ecology", "Timestamped price-limit hierarchy, breadth, and trading-status context."),
-            _public("next_session_plan", "Dated next-session entry, rejection, and review conditions."),
+            _public(
+                "theme_breadth", "Timestamped theme breadth and continuation evidence."
+            ),
+            _public(
+                "leader_identity",
+                "Timestamped market-wide leadership and liquidity evidence.",
+            ),
+            _public(
+                "prior_session_acceptance",
+                "Timestamped prior-session acceptance and turnover record.",
+            ),
+            _public(
+                "price_limit_ecology",
+                "Timestamped price-limit hierarchy, breadth, and trading-status context.",
+            ),
+            _public(
+                "next_session_plan",
+                "Dated next-session entry, rejection, and review conditions.",
+            ),
         ),
         confirmation="The established leader retains theme leadership and closing acceptance before a conditional next-session plan is published.",
         invalidation="Theme breadth contracts materially or the leader fails its acceptance condition.",
         time_stop="Review daily; expire after two sessions without continuation.",
         risk_defaults=_ULTRA_SHORT_RISK,
-        required_team_roles=(*_CORE_ROLES, "ultra-short-tactical-trader", "sector-rotation-analyst", "execution-liquidity-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "ultra-short-tactical-trader",
+            "sector-rotation-analyst",
+            "execution-liquidity-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
     "leader_pullback_acceptance": PlaybookDefinition(
         name="leader_pullback_acceptance",
         horizon="short_term",
-        permitted_regimes=(MarketRegime.DEFENSIVE_ROTATION, MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
+        permitted_regimes=(
+            MarketRegime.DEFENSIVE_ROTATION,
+            MarketRegime.SELECTIVE_RISK_ON,
+            MarketRegime.TREND_RISK_ON,
+        ),
         evidence_requirements=(
-            _public("theme_breadth", "Timestamped evidence that the original theme remains active."),
+            _public(
+                "theme_breadth",
+                "Timestamped evidence that the original theme remains active.",
+            ),
             _public("leader_identity", "Timestamped liquid-leader identification."),
-            _public("pullback_context", "Timestamped pullback, turnover, and relative-strength context."),
-            _public("catalyst_validity", "Timestamped public evidence that the original catalyst remains valid."),
+            _public(
+                "pullback_context",
+                "Timestamped pullback, turnover, and relative-strength context.",
+            ),
+            _public(
+                "catalyst_validity",
+                "Timestamped public evidence that the original catalyst remains valid.",
+            ),
         ),
         confirmation="The pullback stabilizes while the leader and its theme retain relative acceptance.",
         invalidation="The catalyst or theme leadership breaks, or the stated pullback boundary fails.",
         time_stop="Expire after five sessions if acceptance is not reconfirmed.",
         risk_defaults=_SHORT_TERM_RISK,
-        required_team_roles=(*_CORE_ROLES, "sector-rotation-analyst", "short-term-trader", "execution-liquidity-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "sector-rotation-analyst",
+            "short-term-trader",
+            "execution-liquidity-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
     "emotion_repair_rebound": PlaybookDefinition(
         name="emotion_repair_rebound",
         horizon="ultra_short",
-        permitted_regimes=(MarketRegime.DEFENSIVE_ROTATION, MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
+        permitted_regimes=(
+            MarketRegime.DEFENSIVE_ROTATION,
+            MarketRegime.SELECTIVE_RISK_ON,
+            MarketRegime.TREND_RISK_ON,
+        ),
         evidence_requirements=(
-            _public("market_emotion_damage", "Timestamped breadth and price-limit ecology evidence of the prior damage."),
-            _public("repair_breadth", "Timestamped evidence of broad rather than isolated repair."),
-            _public("core_liquidity", "Timestamped liquidity and turnover evidence for the candidate."),
-            _public("catalyst_validity", "Timestamped catalyst or narrative validity evidence."),
-            _public("next_session_plan", "Dated next-session entry, rejection, and review conditions."),
+            _public(
+                "market_emotion_damage",
+                "Timestamped breadth and price-limit ecology evidence of the prior damage.",
+            ),
+            _public(
+                "repair_breadth",
+                "Timestamped evidence of broad rather than isolated repair.",
+            ),
+            _public(
+                "core_liquidity",
+                "Timestamped liquidity and turnover evidence for the candidate.",
+            ),
+            _public(
+                "catalyst_validity",
+                "Timestamped catalyst or narrative validity evidence.",
+            ),
+            _public(
+                "next_session_plan",
+                "Dated next-session entry, rejection, and review conditions.",
+            ),
         ),
         confirmation="Repair expands beyond a single name and the selected liquid core holds acceptance.",
         invalidation="Repair breadth fades, new downside damage appears, or the catalyst fails.",
         time_stop="Expire after three sessions without broad repair follow-through.",
         risk_defaults=_ULTRA_SHORT_RISK,
-        required_team_roles=(*_CORE_ROLES, "ultra-short-tactical-trader", "market-analyst", "execution-liquidity-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "ultra-short-tactical-trader",
+            "market-analyst",
+            "execution-liquidity-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
     "theme_follow_through": PlaybookDefinition(
         name="theme_follow_through",
         horizon="short_term",
         permitted_regimes=(MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
         evidence_requirements=(
-            _public("new_catalyst", "Timestamped public catalyst with source provenance."),
-            _public("theme_breadth", "Timestamped multi-name theme participation and persistence."),
-            _public("beneficiary_mapping", "Timestamped business exposure mapping, not merely a shared concept label."),
+            _public(
+                "new_catalyst", "Timestamped public catalyst with source provenance."
+            ),
+            _public(
+                "theme_breadth",
+                "Timestamped multi-name theme participation and persistence.",
+            ),
+            _public(
+                "beneficiary_mapping",
+                "Timestamped business exposure mapping, not merely a shared concept label.",
+            ),
             _public("liquidity_context", "Timestamped liquidity and turnover context."),
         ),
         confirmation="The catalyst persists, participation broadens, and the candidate has verified beneficiary status.",
         invalidation="Catalyst, beneficiary mapping, or theme persistence is invalidated.",
         time_stop="Expire after seven sessions without follow-through.",
         risk_defaults=_SHORT_TERM_RISK,
-        required_team_roles=(*_CORE_ROLES, "sector-rotation-analyst", "industry-analyst", "short-term-trader", "execution-liquidity-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "sector-rotation-analyst",
+            "industry-analyst",
+            "short-term-trader",
+            "execution-liquidity-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
     "event_repricing": PlaybookDefinition(
         name="event_repricing",
         horizon="short_term",
-        permitted_regimes=(MarketRegime.DEFENSIVE_ROTATION, MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
+        permitted_regimes=(
+            MarketRegime.DEFENSIVE_ROTATION,
+            MarketRegime.SELECTIVE_RISK_ON,
+            MarketRegime.TREND_RISK_ON,
+        ),
         evidence_requirements=(
-            _public("primary_event", "Timestamped primary filing, official release, or issuer announcement."),
-            _public("expectation_gap", "Timestamped comparison to the prior observable market expectation."),
-            _public("fundamental_bridge", "Reproducible revenue, margin, cash-flow, supply-demand, or capital-allocation bridge."),
+            _public(
+                "primary_event",
+                "Timestamped primary filing, official release, or issuer announcement.",
+            ),
+            _public(
+                "expectation_gap",
+                "Timestamped comparison to the prior observable market expectation.",
+            ),
+            _public(
+                "fundamental_bridge",
+                "Reproducible revenue, margin, cash-flow, supply-demand, or capital-allocation bridge.",
+            ),
             _public("liquidity_context", "Timestamped liquidity and turnover context."),
         ),
         confirmation="The event changes a verified expectation bridge and price acceptance persists after review.",
         invalidation="The event is superseded, the bridge fails, or the stated acceptance condition breaks.",
         time_stop="Expire after seven sessions unless a separate swing plan is approved.",
         risk_defaults=_SHORT_TERM_RISK,
-        required_team_roles=(*_CORE_ROLES, "event-driven-institutional-analyst", "fundamental-analyst", "valuation-specialist", "execution-liquidity-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "event-driven-institutional-analyst",
+            "fundamental-analyst",
+            "valuation-specialist",
+            "execution-liquidity-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
     "swing_trend_continuation": PlaybookDefinition(
         name="swing_trend_continuation",
         horizon="swing",
         permitted_regimes=(MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
         evidence_requirements=(
-            _public("relative_strength_context", "Timestamped relative-strength and turnover context."),
-            _public("industry_support", "Timestamped industry supply-demand or earnings support."),
+            _public(
+                "relative_strength_context",
+                "Timestamped relative-strength and turnover context.",
+            ),
+            _public(
+                "industry_support",
+                "Timestamped industry supply-demand or earnings support.",
+            ),
             _public("catalyst_validity", "Timestamped catalyst validity evidence."),
-            _public("liquidity_context", "Timestamped liquidity and trading-capacity context."),
+            _public(
+                "liquidity_context",
+                "Timestamped liquidity and trading-capacity context.",
+            ),
         ),
         confirmation="Relative strength persists with sector support and no deterioration in the stated catalyst.",
         invalidation="The relative-strength boundary, industry support, or catalyst validity fails.",
         time_stop="Expire after 30 sessions without a verified continuation review.",
         risk_defaults=_SWING_RISK,
-        required_team_roles=(*_CORE_ROLES, "swing-trend-analyst", "fundamental-analyst", "industry-analyst", "execution-liquidity-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "swing-trend-analyst",
+            "fundamental-analyst",
+            "industry-analyst",
+            "execution-liquidity-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
     "earnings_expectation_revision": PlaybookDefinition(
         name="earnings_expectation_revision",
         horizon="swing",
-        permitted_regimes=(MarketRegime.DEFENSIVE_ROTATION, MarketRegime.SELECTIVE_RISK_ON, MarketRegime.TREND_RISK_ON),
+        permitted_regimes=(
+            MarketRegime.DEFENSIVE_ROTATION,
+            MarketRegime.SELECTIVE_RISK_ON,
+            MarketRegime.TREND_RISK_ON,
+        ),
         evidence_requirements=(
-            _public("primary_earnings_source", "Timestamped issuer filing, earnings release, or official guidance."),
-            _public("earnings_bridge", "Reproducible earnings, cash-flow, and balance-sheet bridge."),
-            _public("expectation_gap", "Timestamped comparison to prior observable expectations."),
+            _public(
+                "primary_earnings_source",
+                "Timestamped issuer filing, earnings release, or official guidance.",
+            ),
+            _public(
+                "earnings_bridge",
+                "Reproducible earnings, cash-flow, and balance-sheet bridge.",
+            ),
+            _public(
+                "expectation_gap",
+                "Timestamped comparison to prior observable expectations.",
+            ),
             _public("valuation_context", "Timestamped valuation and scenario context."),
         ),
         confirmation="A verified earnings bridge changes expectations and remains intact after the scheduled review.",
         invalidation="The earnings bridge, guidance, cash conversion, or valuation premise fails.",
         time_stop="Expire after 30 sessions without a maintained earnings-revision thesis.",
         risk_defaults=_SWING_RISK,
-        required_team_roles=(*_CORE_ROLES, "growth-earnings-modeler", "fundamental-analyst", "valuation-specialist", "industry-analyst"),
-        decision_eligibility_conditions=("confirmation_observed", "invalidation_defined", "time_stop_defined", "risk_within_default"),
+        required_team_roles=(
+            *_CORE_ROLES,
+            "growth-earnings-modeler",
+            "fundamental-analyst",
+            "valuation-specialist",
+            "industry-analyst",
+        ),
+        decision_eligibility_conditions=(
+            "confirmation_observed",
+            "invalidation_defined",
+            "time_stop_defined",
+            "risk_within_default",
+        ),
     ),
 }
 
@@ -273,7 +461,9 @@ def list_playbooks() -> list[dict[str, Any]]:
         {
             "playbook_id": definition.name,
             "horizon": definition.horizon,
-            "permitted_regimes": [regime.value for regime in definition.permitted_regimes],
+            "permitted_regimes": [
+                regime.value for regime in definition.permitted_regimes
+            ],
             "evidence_requirements": [
                 {
                     "key": requirement.key,
@@ -292,7 +482,9 @@ def list_playbooks() -> list[dict[str, Any]]:
                 "overnight_risk_review": definition.risk_defaults.overnight_risk_review,
             },
             "required_team_roles": list(definition.required_team_roles),
-            "decision_eligibility_conditions": list(definition.decision_eligibility_conditions),
+            "decision_eligibility_conditions": list(
+                definition.decision_eligibility_conditions
+            ),
             "research_only": True,
             "no_order_execution": True,
         }
@@ -320,7 +512,9 @@ def evaluate_playbook(
     passed: list[str] = []
     failed: list[str] = []
     conditional: list[str] = []
-    reasons: list[str] = ["Result is research-only; no broker order or execution instruction is produced."]
+    reasons: list[str] = [
+        "Result is research-only; no broker order or execution instruction is produced."
+    ]
 
     if market_regime in {MarketRegime.INSUFFICIENT_DATA, MarketRegime.RISK_OFF}:
         return PlaybookEvaluation(
@@ -329,7 +523,12 @@ def evaluate_playbook(
             passed_requirements=(),
             failed_requirements=("market_regime",),
             conditional_requirements=(),
-            reasons=tuple(reasons + [f"{market_regime.value} does not permit new {definition.horizon} playbook risk."]),
+            reasons=tuple(
+                reasons
+                + [
+                    f"{market_regime.value} does not permit new {definition.horizon} playbook risk."
+                ]
+            ),
         ).to_dict()
     if market_regime not in definition.permitted_regimes:
         return PlaybookEvaluation(
@@ -338,7 +537,10 @@ def evaluate_playbook(
             passed_requirements=(),
             failed_requirements=("market_regime",),
             conditional_requirements=(),
-            reasons=tuple(reasons + [f"{definition.name} is not permitted in {market_regime.value}." ]),
+            reasons=tuple(
+                reasons
+                + [f"{definition.name} is not permitted in {market_regime.value}."]
+            ),
         ).to_dict()
     passed.append("market_regime")
 
@@ -347,7 +549,9 @@ def evaluate_playbook(
             passed.append(requirement.key)
         else:
             failed.append(requirement.key)
-            reasons.append(f"Missing or non-reproducible {requirement.level.value}: {requirement.key}.")
+            reasons.append(
+                f"Missing or non-reproducible {requirement.level.value}: {requirement.key}."
+            )
 
     if failed:
         return PlaybookEvaluation(
@@ -356,21 +560,38 @@ def evaluate_playbook(
             passed_requirements=tuple(passed),
             failed_requirements=tuple(failed),
             conditional_requirements=(),
-            reasons=tuple(reasons + ["Collect the missing evidence before considering a conditional paper plan."]),
+            reasons=tuple(
+                reasons
+                + [
+                    "Collect the missing evidence before considering a conditional paper plan."
+                ]
+            ),
         ).to_dict()
 
-    role_set = {str(role).strip() for role in roles if str(role).strip()} if isinstance(roles, Sequence) and not isinstance(roles, str) else set()
-    missing_roles = tuple(role for role in definition.required_team_roles if role not in role_set)
+    role_set = (
+        {str(role).strip() for role in roles if str(role).strip()}
+        if isinstance(roles, Sequence) and not isinstance(roles, str)
+        else set()
+    )
+    missing_roles = tuple(
+        role for role in definition.required_team_roles if role not in role_set
+    )
     if missing_roles:
         conditional.extend(f"team_role:{role}" for role in missing_roles)
-        reasons.append("Required desk roles have not completed this review: " + ", ".join(missing_roles) + ".")
+        reasons.append(
+            "Required desk roles have not completed this review: "
+            + ", ".join(missing_roles)
+            + "."
+        )
 
     for condition in definition.decision_eligibility_conditions:
         if isinstance(eligibility, Mapping) and eligibility.get(condition) is True:
             passed.append(condition)
         else:
             conditional.append(condition)
-            reasons.append(f"Decision eligibility condition is not confirmed: {condition}.")
+            reasons.append(
+                f"Decision eligibility condition is not confirmed: {condition}."
+            )
 
     if conditional:
         return PlaybookEvaluation(
@@ -387,19 +608,28 @@ def evaluate_playbook(
         passed_requirements=tuple(passed),
         failed_requirements=(),
         conditional_requirements=(),
-        reasons=tuple(reasons + ["All playbook gates passed; a separate IC process remains required for any active paper plan."]),
+        reasons=tuple(
+            reasons
+            + [
+                "All playbook gates passed; a separate IC process remains required for any active paper plan."
+            ]
+        ),
     ).to_dict()
 
 
 def _valid_evidence(value: Any, level: EvidenceLevel) -> bool:
     if not isinstance(value, Mapping):
         return False
-    if not str(value.get("source") or "").strip() or not _valid_timestamp(value.get("as_of")):
+    if not str(value.get("source") or "").strip() or not _valid_timestamp(
+        value.get("as_of")
+    ):
         return False
     if level == EvidenceLevel.TIMESTAMPED_PUBLIC:
         return True
     capture_reference = value.get("capture_ref") or value.get("sequence_ref")
-    return value.get("reproducible") is True and bool(str(capture_reference or "").strip())
+    return value.get("reproducible") is True and bool(
+        str(capture_reference or "").strip()
+    )
 
 
 def _valid_requirement(requirement: EvidenceRequirement, value: Any) -> bool:
@@ -419,6 +649,8 @@ def _valid_requirement(requirement: EvidenceRequirement, value: Any) -> bool:
 
 def _valid_timestamp(value: Any) -> bool:
     try:
-        return datetime.fromisoformat(str(value).replace("Z", "+00:00")).tzinfo is not None
+        return (
+            datetime.fromisoformat(str(value).replace("Z", "+00:00")).tzinfo is not None
+        )
     except ValueError:
         return False

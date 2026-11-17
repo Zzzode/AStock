@@ -14,7 +14,6 @@ from urllib.request import Request, urlopen
 import pandas as pd
 import requests
 
-
 EASTMONEY_A_SHARE_SPOT_SOURCE = "eastmoney.push2.a_share_spot"
 EASTMONEY_A_SHARE_SPOT_HOSTS = (
     "17.push2.eastmoney.com",
@@ -34,6 +33,7 @@ def fetch_eastmoney_a_share_spot() -> pd.DataFrame:
     formal decision-data eligibility.
     """
     last_error: Exception | None = None
+
     def fetch_page(page: int) -> tuple[list[Mapping[str, Any]], int]:
         nonlocal last_error
         query = urlencode(
@@ -56,27 +56,39 @@ def fetch_eastmoney_a_share_spot() -> pd.DataFrame:
                 headers={"User-Agent": "Mozilla/5.0"},
             )
             try:
-                with urlopen(request, timeout=4) as response:  # nosec B310 - fixed HTTPS hosts
-                    payload = json.loads(response.read().decode("utf-8", errors="replace"))
+                with urlopen(
+                    request, timeout=4
+                ) as response:  # nosec B310 - fixed HTTPS hosts
+                    payload = json.loads(
+                        response.read().decode("utf-8", errors="replace")
+                    )
                 data = payload.get("data") if isinstance(payload, Mapping) else None
                 rows = data.get("diff") if isinstance(data, Mapping) else None
                 total = data.get("total") if isinstance(data, Mapping) else None
                 if not isinstance(rows, list) or not rows:
                     raise ValueError(f"East Money A-share spot page {page} has no rows")
                 if not isinstance(total, int) or total < len(rows):
-                    raise ValueError("East Money A-share spot response has no valid total")
+                    raise ValueError(
+                        "East Money A-share spot response has no valid total"
+                    )
                 return [row for row in rows if isinstance(row, Mapping)], total
             except Exception as error:
                 last_error = error
-        raise RuntimeError(f"All East Money A-share spot mirrors failed for page {page}") from last_error
+        raise RuntimeError(
+            f"All East Money A-share spot mirrors failed for page {page}"
+        ) from last_error
 
     first_rows, expected_count = fetch_page(1)
     page_count = math.ceil(expected_count / 100)
     if page_count < 1 or page_count > 100:
-        raise ValueError("East Money A-share spot page count is outside the bounded adapter limit")
+        raise ValueError(
+            "East Money A-share spot page count is outside the bounded adapter limit"
+        )
     if page_count == 1:
         return _frame_from_eastmoney_a_share_rows(first_rows)
-    with ThreadPoolExecutor(max_workers=4, thread_name_prefix="eastmoney-a-share") as executor:
+    with ThreadPoolExecutor(
+        max_workers=4, thread_name_prefix="eastmoney-a-share"
+    ) as executor:
         remaining = list(executor.map(fetch_page, range(2, page_count + 1)))
     rows = [*first_rows, *(row for page_rows, _total in remaining for row in page_rows)]
     if len(rows) < expected_count:
@@ -143,12 +155,18 @@ def fetch_sina_a_share_spot() -> pd.DataFrame:
     page_size = 100
     page_count = math.ceil(expected_count / page_size)
     if page_count < 1 or page_count > 100:
-        raise ValueError("Sina A-share spot page count is outside the bounded adapter limit")
+        raise ValueError(
+            "Sina A-share spot page count is outside the bounded adapter limit"
+        )
 
     def fetch_page(page: int) -> list[Any]:
         response = requests.get(
             zh_sina_a_stock_url,
-            params={**zh_sina_a_stock_payload, "page": str(page), "num": str(page_size)},
+            params={
+                **zh_sina_a_stock_payload,
+                "page": str(page),
+                "num": str(page_size),
+            },
             timeout=8,
         )
         response.raise_for_status()
@@ -157,7 +175,9 @@ def fetch_sina_a_share_spot() -> pd.DataFrame:
             raise ValueError(f"Sina A-share spot page {page} has no rows")
         return raw_rows
 
-    with ThreadPoolExecutor(max_workers=4, thread_name_prefix="sina-a-share") as executor:
+    with ThreadPoolExecutor(
+        max_workers=4, thread_name_prefix="sina-a-share"
+    ) as executor:
         pages = list(executor.map(fetch_page, range(1, page_count + 1)))
     raw_rows = [row for page in pages for row in page]
     if len(raw_rows) < expected_count:

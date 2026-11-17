@@ -33,7 +33,9 @@ def test_factor_tilt_caps_industry_and_vetoes_locked_security() -> None:
     locked["limit_up_locked"] = True
     result = build_ashare_factor_tilt_proposal(
         [_security("000001", "bank", 4), _security("000002", "bank", 3), locked],
-        config=AShareFactorTiltConfig(max_positions=3, max_position_weight=0.20, max_industry_weight=0.20),
+        config=AShareFactorTiltConfig(
+            max_positions=3, max_position_weight=0.20, max_industry_weight=0.20
+        ),
         as_of="2026-08-14T07:00:00+00:00",
         source_refs=["fixture:universe"],
     )
@@ -86,7 +88,10 @@ def test_earnings_event_vetoes_missing_publish_timestamp() -> None:
 
 def test_factor_default_keeps_unallocated_cash_for_other_sleeves() -> None:
     result = build_ashare_factor_tilt_proposal(
-        [_security(f"0000{index:02d}", f"industry-{index}", 1) for index in range(1, 21)],
+        [
+            _security(f"0000{index:02d}", f"industry-{index}", 1)
+            for index in range(1, 21)
+        ],
         as_of="2026-08-14T07:00:00+00:00",
         source_refs=["fixture:universe"],
     )

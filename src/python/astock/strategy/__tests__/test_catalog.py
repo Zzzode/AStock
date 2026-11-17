@@ -3,7 +3,9 @@ import pytest
 from astock.strategy import PersonalAccessProfile, list_personal_strategy_catalog
 
 
-def _catalog_by_id(profile: PersonalAccessProfile | None = None) -> dict[str, dict[str, object]]:
+def _catalog_by_id(
+    profile: PersonalAccessProfile | None = None,
+) -> dict[str, dict[str, object]]:
     return {
         str(item["strategy_id"]): item
         for item in list_personal_strategy_catalog(profile)
@@ -45,22 +47,39 @@ def _crypto_profile() -> PersonalAccessProfile:
     )
 
 
-def test_catalog_allows_domestic_futures_cta_only_when_futures_eligibility_is_recorded() -> None:
+def test_catalog_allows_domestic_futures_cta_only_when_futures_eligibility_is_recorded() -> (
+    None
+):
     unavailable = _catalog_by_id(PersonalAccessProfile())
     available = _catalog_by_id(_futures_profile())
 
-    assert unavailable["domestic_futures_cta_tsmom"]["eligibility"]["status"] == "blocked"
-    assert available["domestic_futures_cta_tsmom"]["eligibility"]["status"] == "paper_eligible"
-    assert available["domestic_futures_calendar_relative_value"]["eligibility"]["status"] == "research_only"
-    assert available["global_market_neutral_stat_arb"]["eligibility"]["status"] == "blocked"
+    assert (
+        unavailable["domestic_futures_cta_tsmom"]["eligibility"]["status"] == "blocked"
+    )
+    assert (
+        available["domestic_futures_cta_tsmom"]["eligibility"]["status"]
+        == "paper_eligible"
+    )
+    assert (
+        available["domestic_futures_calendar_relative_value"]["eligibility"]["status"]
+        == "research_only"
+    )
+    assert (
+        available["global_market_neutral_stat_arb"]["eligibility"]["status"]
+        == "blocked"
+    )
     assert "institutional market structure" in " ".join(
         available["global_market_neutral_stat_arb"]["eligibility"]["blockers"]
     )
 
 
-def test_catalog_covers_the_expanded_taxonomy_without_claiming_institutional_portability() -> None:
+def test_catalog_covers_the_expanded_taxonomy_without_claiming_institutional_portability() -> (
+    None
+):
     default_catalog = _catalog_by_id()
-    globally_documented = _catalog_by_id(PersonalAccessProfile(lawful_global_market_access=True))
+    globally_documented = _catalog_by_id(
+        PersonalAccessProfile(lawful_global_market_access=True)
+    )
 
     assert {
         "global_macro_risk_balanced_allocation",
@@ -74,14 +93,45 @@ def test_catalog_covers_the_expanded_taxonomy_without_claiming_institutional_por
         "global_carry_relative_value",
         "volatility_dispersion",
     } <= set(default_catalog)
-    assert default_catalog["global_macro_risk_balanced_allocation"]["eligibility"]["status"] == "blocked"
-    assert globally_documented["global_macro_risk_balanced_allocation"]["eligibility"]["status"] == "research_only"
-    assert default_catalog["pe_style_public_market_underwriting"]["eligibility"]["status"] == "research_only"
-    assert default_catalog["private_credit_real_assets_underwriting"]["eligibility"]["status"] == "research_only"
-    assert default_catalog["public_merger_event_research"]["eligibility"]["status"] == "research_only"
-    assert default_catalog["domestic_futures_calendar_relative_value"]["eligibility"]["status"] == "blocked"
-    assert default_catalog["global_carry_relative_value"]["eligibility"]["status"] == "blocked"
-    assert default_catalog["volatility_dispersion"]["eligibility"]["status"] == "blocked"
+    assert (
+        default_catalog["global_macro_risk_balanced_allocation"]["eligibility"][
+            "status"
+        ]
+        == "blocked"
+    )
+    assert (
+        globally_documented["global_macro_risk_balanced_allocation"]["eligibility"][
+            "status"
+        ]
+        == "research_only"
+    )
+    assert (
+        default_catalog["pe_style_public_market_underwriting"]["eligibility"]["status"]
+        == "research_only"
+    )
+    assert (
+        default_catalog["private_credit_real_assets_underwriting"]["eligibility"][
+            "status"
+        ]
+        == "research_only"
+    )
+    assert (
+        default_catalog["public_merger_event_research"]["eligibility"]["status"]
+        == "research_only"
+    )
+    assert (
+        default_catalog["domestic_futures_calendar_relative_value"]["eligibility"][
+            "status"
+        ]
+        == "blocked"
+    )
+    assert (
+        default_catalog["global_carry_relative_value"]["eligibility"]["status"]
+        == "blocked"
+    )
+    assert (
+        default_catalog["volatility_dispersion"]["eligibility"]["status"] == "blocked"
+    )
 
 
 def test_catalog_has_a_non_mutable_market_translation_for_every_strategy() -> None:
@@ -98,19 +148,28 @@ def test_catalog_has_a_non_mutable_market_translation_for_every_strategy() -> No
 
     catalog = _catalog_by_id(_futures_profile())
     assert (
-        catalog["domestic_futures_cta_tsmom"]["market_translation"]["china_mainland"]["status"]
+        catalog["domestic_futures_cta_tsmom"]["market_translation"]["china_mainland"][
+            "status"
+        ]
         == "paper_implemented_if_account_and_contract_eligible"
     )
     assert (
         catalog["crypto_liquid_tsmom"]["market_translation"]["china_mainland"]["status"]
         == "not_a_personal_implementation_route"
     )
-    catalog["ashare_factor_tilt"]["market_translation"]["personal_protocol"].append("mutation")
+    catalog["ashare_factor_tilt"]["market_translation"]["personal_protocol"].append(
+        "mutation"
+    )
     fresh = _catalog_by_id(_futures_profile())
-    assert "mutation" not in fresh["ashare_factor_tilt"]["market_translation"]["personal_protocol"]
+    assert (
+        "mutation"
+        not in fresh["ashare_factor_tilt"]["market_translation"]["personal_protocol"]
+    )
 
 
-def test_crypto_catalog_requires_a_self_attested_access_fact_but_never_treats_it_as_legal_clearance() -> None:
+def test_crypto_catalog_requires_a_self_attested_access_fact_but_never_treats_it_as_legal_clearance() -> (
+    None
+):
     inferred = _catalog_by_id(
         PersonalAccessProfile(
             lawful_global_market_access=True,
@@ -131,12 +190,16 @@ def test_crypto_catalog_requires_a_self_attested_access_fact_but_never_treats_it
     assert "China mainland" in declared["eligibility"]["legal_access_notice"]
 
 
-def test_catalog_rejects_string_boolean_and_undocumented_futures_contract_access() -> None:
+def test_catalog_rejects_string_boolean_and_undocumented_futures_contract_access() -> (
+    None
+):
     with pytest.raises(ValueError, match="futures_eligible must be boolean"):
         PersonalAccessProfile.from_mapping({"futures_eligible": "false"})
 
     incomplete = _catalog_by_id(PersonalAccessProfile(futures_eligible=True))
-    assert incomplete["domestic_futures_cta_tsmom"]["eligibility"]["status"] == "blocked"
+    assert (
+        incomplete["domestic_futures_cta_tsmom"]["eligibility"]["status"] == "blocked"
+    )
     assert "dated broker/exchange instrument eligibility evidence" in " ".join(
         incomplete["domestic_futures_cta_tsmom"]["eligibility"]["blockers"]
     )

@@ -38,15 +38,24 @@ def _scheduler_status(*, running: bool) -> dict[str, object]:
         "jobs": {
             "audit_market_desk_operational_readiness": {
                 "dependency_blockers": [
-                    {"job": "record_public_market_desk_eod_observation", "reason": "never_successful"}
+                    {
+                        "job": "record_public_market_desk_eod_observation",
+                        "reason": "never_successful",
+                    }
                 ]
             }
         },
     }
 
 
-def test_maturity_reports_unexercised_controls_as_evidence_pending(tmp_path, monkeypatch) -> None:
-    monkeypatch.setattr(capabilities, "assess_market_desk_operational_readiness", lambda **_: _readiness())
+def test_maturity_reports_unexercised_controls_as_evidence_pending(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setattr(
+        capabilities,
+        "assess_market_desk_operational_readiness",
+        lambda **_: _readiness(),
+    )
 
     result = capabilities.assess_market_desk_operating_maturity(
         ledger_path=tmp_path / "ledger.json",
@@ -58,16 +67,32 @@ def test_maturity_reports_unexercised_controls_as_evidence_pending(tmp_path, mon
 
     assert result["maturity_status"] == "evidence_accumulating"
     assert result["requirements"]["whole_market_observation"]["status"] == "operational"
-    assert result["requirements"]["whole_market_discovery"]["status"] == "evidence_pending"
-    assert result["requirements"]["frozen_return_review"]["status"] == "evidence_pending"
-    assert result["requirements"]["runtime_and_eod_controls"]["status"] == "evidence_pending"
-    assert result["requirements"]["paper_portfolio_risk_control"]["status"] == "evidence_pending"
+    assert (
+        result["requirements"]["whole_market_discovery"]["status"] == "evidence_pending"
+    )
+    assert (
+        result["requirements"]["frozen_return_review"]["status"] == "evidence_pending"
+    )
+    assert (
+        result["requirements"]["runtime_and_eod_controls"]["status"]
+        == "evidence_pending"
+    )
+    assert (
+        result["requirements"]["paper_portfolio_risk_control"]["status"]
+        == "evidence_pending"
+    )
     assert result["requirements"]["formal_release_boundary"]["status"] == "not_enabled"
     assert result["no_order_execution"] is True
 
 
-def test_maturity_blocks_when_scheduler_runtime_is_not_running(tmp_path, monkeypatch) -> None:
-    monkeypatch.setattr(capabilities, "assess_market_desk_operational_readiness", lambda **_: _readiness())
+def test_maturity_blocks_when_scheduler_runtime_is_not_running(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setattr(
+        capabilities,
+        "assess_market_desk_operational_readiness",
+        lambda **_: _readiness(),
+    )
 
     result = capabilities.assess_market_desk_operating_maturity(
         ledger_path=tmp_path / "ledger.json",
@@ -81,8 +106,14 @@ def test_maturity_blocks_when_scheduler_runtime_is_not_running(tmp_path, monkeyp
     assert result["requirements"]["runtime_and_eod_controls"]["status"] == "blocked"
 
 
-def test_maturity_marks_eod_control_operational_only_after_dependencies_clear(tmp_path, monkeypatch) -> None:
-    monkeypatch.setattr(capabilities, "assess_market_desk_operational_readiness", lambda **_: _readiness())
+def test_maturity_marks_eod_control_operational_only_after_dependencies_clear(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setattr(
+        capabilities,
+        "assess_market_desk_operational_readiness",
+        lambda **_: _readiness(),
+    )
     scheduler_status = _scheduler_status(running=True)
     scheduler_status["jobs"] = {
         "audit_market_desk_operational_readiness": {"dependency_blockers": []}
@@ -102,7 +133,11 @@ def test_maturity_marks_eod_control_operational_only_after_dependencies_clear(tm
 def test_maturity_does_not_count_an_eod_discovery_source_outage_as_operating_evidence(
     tmp_path, monkeypatch
 ) -> None:
-    monkeypatch.setattr(capabilities, "assess_market_desk_operational_readiness", lambda **_: _readiness())
+    monkeypatch.setattr(
+        capabilities,
+        "assess_market_desk_operational_readiness",
+        lambda **_: _readiness(),
+    )
     monkeypatch.setattr(
         capabilities,
         "get_public_market_desk_discovery_history",
@@ -127,13 +162,31 @@ def test_maturity_does_not_count_an_eod_discovery_source_outage_as_operating_evi
         scheduler_status=_scheduler_status(running=True),
     )
 
-    assert result["requirements"]["whole_market_discovery"]["status"] == "evidence_pending"
-    assert result["requirements"]["whole_market_discovery"]["evidence"]["eod_valid_archive_count"] == 1
-    assert result["requirements"]["whole_market_discovery"]["evidence"]["usable_eod_valid_archive_count"] == 0
+    assert (
+        result["requirements"]["whole_market_discovery"]["status"] == "evidence_pending"
+    )
+    assert (
+        result["requirements"]["whole_market_discovery"]["evidence"][
+            "eod_valid_archive_count"
+        ]
+        == 1
+    )
+    assert (
+        result["requirements"]["whole_market_discovery"]["evidence"][
+            "usable_eod_valid_archive_count"
+        ]
+        == 0
+    )
 
 
-def test_maturity_blocks_duplicate_usable_eod_discovery_runs(tmp_path, monkeypatch) -> None:
-    monkeypatch.setattr(capabilities, "assess_market_desk_operational_readiness", lambda **_: _readiness())
+def test_maturity_blocks_duplicate_usable_eod_discovery_runs(
+    tmp_path, monkeypatch
+) -> None:
+    monkeypatch.setattr(
+        capabilities,
+        "assess_market_desk_operational_readiness",
+        lambda **_: _readiness(),
+    )
     monkeypatch.setattr(
         capabilities,
         "get_public_market_desk_discovery_history",
@@ -173,7 +226,9 @@ def test_maturity_requires_a_governed_paper_position_before_claiming_risk_contro
         "governed_count": 1,
         "exit_review_required_count": 0,
     }
-    monkeypatch.setattr(capabilities, "assess_market_desk_operational_readiness", lambda **_: readiness)
+    monkeypatch.setattr(
+        capabilities, "assess_market_desk_operational_readiness", lambda **_: readiness
+    )
 
     result = capabilities.assess_market_desk_operating_maturity(
         ledger_path=tmp_path / "ledger.json",
@@ -183,4 +238,7 @@ def test_maturity_requires_a_governed_paper_position_before_claiming_risk_contro
         scheduler_status=_scheduler_status(running=True),
     )
 
-    assert result["requirements"]["paper_portfolio_risk_control"]["status"] == "operational"
+    assert (
+        result["requirements"]["paper_portfolio_risk_control"]["status"]
+        == "operational"
+    )

@@ -195,7 +195,9 @@ class AkShareClient:
 
         # Third fallback: use stock list + Baidu valuation
         try:
-            logger.info("Trying stock list (valuation data will be fetched on demand)...")
+            logger.info(
+                "Trying stock list (valuation data will be fetched on demand)..."
+            )
             df_list = ak.stock_info_a_code_name()
             # Build minimal usable dataset
             df = df_list.rename(columns={"code": "代码", "name": "名称"})
@@ -227,9 +229,7 @@ class AkShareClient:
             details={"errors": errors},
         )
 
-    def _validate_realtime_columns(
-        self, df: pd.DataFrame, source: str
-    ) -> None:
+    def _validate_realtime_columns(self, df: pd.DataFrame, source: str) -> None:
         """Validate real-time quote data columns
 
         Args:
@@ -242,7 +242,9 @@ class AkShareClient:
         required_columns = ["代码", "名称", "最新价"]
         missing = [col for col in required_columns if col not in df.columns]
         if missing:
-            raise ValueError(f"Data source {source} is missing required columns: {missing}")
+            raise ValueError(
+                f"Data source {source} is missing required columns: {missing}"
+            )
 
     def _normalize_code(self, value: object) -> str:
         """Normalize stock code"""
@@ -442,7 +444,9 @@ class AkShareClient:
         ):
             single = _fetch(code)
             if single:
-                logger.debug(f"Single-stock quote fetched via {_fetch.__name__}: {code}")
+                logger.debug(
+                    f"Single-stock quote fetched via {_fetch.__name__}: {code}"
+                )
                 return single
 
         df = self._load_realtime_dataframe()

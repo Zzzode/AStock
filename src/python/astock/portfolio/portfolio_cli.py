@@ -83,7 +83,9 @@ def _resolve_trade_day(value: Optional[str]) -> date:
 def _exchange_trading_days() -> frozenset[date]:
     """Load the exchange calendar; lack of an authority blocks paper settlement."""
     frame = ak.tool_trade_date_hist_sina()
-    column = next((name for name in ("trade_date", "日期", "date") if name in frame.columns), None)
+    column = next(
+        (name for name in ("trade_date", "日期", "date") if name in frame.columns), None
+    )
     if column is None:
         raise ValueError("Exchange trading-calendar source has no date column")
     days = frozenset(
@@ -125,11 +127,16 @@ def _refresh_sellable_shares(position: dict[str, Any], trade_day: date) -> None:
         available_on = lot.get("available_on") if isinstance(lot, dict) else None
         lot_shares = int(lot.get("shares", 0)) if isinstance(lot, dict) else 0
         try:
-            settled = available_on is not None and date.fromisoformat(str(available_on)) <= trade_day
+            settled = (
+                available_on is not None
+                and date.fromisoformat(str(available_on)) <= trade_day
+            )
         except ValueError:
             settled = False
         if settled:
-            position["available_shares"] = int(position.get("available_shares", 0)) + lot_shares
+            position["available_shares"] = (
+                int(position.get("available_shares", 0)) + lot_shares
+            )
         else:
             remaining.append(lot)
     position["unsettled_lots"] = remaining
@@ -149,7 +156,9 @@ def portfolio_show(
     total_value = data["cash"] + total_market_value
     total_cost = sum(p["shares"] * p["cost_price"] for p in positions.values())
     total_pnl = total_market_value - total_cost
-    pnl_percent = (total_value - data["initial_capital"]) / data["initial_capital"] * 100
+    pnl_percent = (
+        (total_value - data["initial_capital"]) / data["initial_capital"] * 100
+    )
 
     result = {
         "name": data["name"],
@@ -203,7 +212,11 @@ def portfolio_positions(
 
         for code, pos in positions.items():
             pnl = (pos["current_price"] - pos["cost_price"]) * pos["shares"]
-            pnl_pct = (pos["current_price"] - pos["cost_price"]) / pos["cost_price"] * 100 if pos["cost_price"] > 0 else 0
+            pnl_pct = (
+                (pos["current_price"] - pos["cost_price"]) / pos["cost_price"] * 100
+                if pos["cost_price"] > 0
+                else 0
+            )
             pnl_color = "green" if pnl >= 0 else "red"
             table.add_row(
                 code,
@@ -221,14 +234,32 @@ def portfolio_positions(
 @app.command("buy")
 def portfolio_buy(
     code: str = typer.Argument(..., help="Stock code"),
-    shares: int = typer.Argument(..., help="Number of shares (must be multiple of 100)"),
-    price: Optional[float] = typer.Option(None, "--price", "-p", help="Buy price (default: latest quote)"),
-    stop_distance_pct: Optional[float] = typer.Option(None, "--stop-distance-pct", help="Planned loss distance from entry, e.g. 0.08"),
-    sector: Optional[str] = typer.Option(None, "--sector", help="Sector label for risk aggregation"),
-    theme: Optional[str] = typer.Option(None, "--theme", help="Theme label for risk aggregation"),
-    horizon: str = typer.Option("long_term", "--horizon", help="Risk horizon: short_term, swing, or long_term"),
-    overnight_stress_pct: Optional[float] = typer.Option(None, "--overnight-stress-pct", help="Worst planned overnight-gap loss percentage"),
-    limit_down_stress_pct: Optional[float] = typer.Option(None, "--limit-down-stress-pct", help="Worst planned limit-down loss percentage"),
+    shares: int = typer.Argument(
+        ..., help="Number of shares (must be multiple of 100)"
+    ),
+    price: Optional[float] = typer.Option(
+        None, "--price", "-p", help="Buy price (default: latest quote)"
+    ),
+    stop_distance_pct: Optional[float] = typer.Option(
+        None, "--stop-distance-pct", help="Planned loss distance from entry, e.g. 0.08"
+    ),
+    sector: Optional[str] = typer.Option(
+        None, "--sector", help="Sector label for risk aggregation"
+    ),
+    theme: Optional[str] = typer.Option(
+        None, "--theme", help="Theme label for risk aggregation"
+    ),
+    horizon: str = typer.Option(
+        "long_term", "--horizon", help="Risk horizon: short_term, swing, or long_term"
+    ),
+    overnight_stress_pct: Optional[float] = typer.Option(
+        None,
+        "--overnight-stress-pct",
+        help="Worst planned overnight-gap loss percentage",
+    ),
+    limit_down_stress_pct: Optional[float] = typer.Option(
+        None, "--limit-down-stress-pct", help="Worst planned limit-down loss percentage"
+    ),
     strategy_entry_id: Optional[str] = typer.Option(
         None,
         "--strategy-entry-id",
@@ -257,7 +288,9 @@ def portfolio_buy(
         "--restricted-list-path",
         help="Current signed restricted-list authority required at paper entry.",
     ),
-    trade_date: Optional[str] = typer.Option(None, "--trade-date", help="Paper trade date (YYYY-MM-DD) for T+1 settlement"),
+    trade_date: Optional[str] = typer.Option(
+        None, "--trade-date", help="Paper trade date (YYYY-MM-DD) for T+1 settlement"
+    ),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Record a buy trade"""
@@ -385,7 +418,8 @@ def portfolio_buy(
     for position in positions.values():
         _refresh_sellable_shares(position, trade_day)
     total_value = data["cash"] + sum(
-        position["shares"] * position["current_price"] for position in positions.values()
+        position["shares"] * position["current_price"]
+        for position in positions.values()
     )
     existing_position_value = (
         positions[code]["shares"] * positions[code]["current_price"]
@@ -410,11 +444,25 @@ def portfolio_buy(
                 if position_code == code and stop_distance_pct is not None
                 else position.get("stop_distance_pct")
             ),
-            "sector": sector if position_code == code and sector else position.get("sector"),
-            "theme": theme if position_code == code and theme else position.get("theme"),
-            "horizon": normalized_horizon if position_code == code else position.get("horizon"),
-            "overnight_stress_pct": overnight_stress_pct if position_code == code else position.get("overnight_stress_pct"),
-            "limit_down_stress_pct": limit_down_stress_pct if position_code == code else position.get("limit_down_stress_pct"),
+            "sector": (
+                sector if position_code == code and sector else position.get("sector")
+            ),
+            "theme": (
+                theme if position_code == code and theme else position.get("theme")
+            ),
+            "horizon": (
+                normalized_horizon if position_code == code else position.get("horizon")
+            ),
+            "overnight_stress_pct": (
+                overnight_stress_pct
+                if position_code == code
+                else position.get("overnight_stress_pct")
+            ),
+            "limit_down_stress_pct": (
+                limit_down_stress_pct
+                if position_code == code
+                else position.get("limit_down_stress_pct")
+            ),
         }
         for position_code, position in positions.items()
     ]
@@ -444,7 +492,11 @@ def portfolio_buy(
     blockers = ([position_message] if not position_ok else []) + risk_budget.blockers
     if blockers:
         msg = "Paper buy blocked by risk limits"
-        payload = {"error": msg, "blockers": blockers, "risk_budget": risk_budget.to_dict()}
+        payload = {
+            "error": msg,
+            "blockers": blockers,
+            "risk_budget": risk_budget.to_dict(),
+        }
         if json_output:
             _print_json(payload)
         else:
@@ -473,7 +525,9 @@ def portfolio_buy(
             pos["strategy_entry_id"] = governed_link["strategy_entry_id"]
             pos["strategy_plan_id"] = governed_link["strategy_plan_id"]
             pos["governance_status"] = "governed"
-            pos.setdefault("entry_evidence_history", []).append(governed_link["entry_evidence"])
+            pos.setdefault("entry_evidence_history", []).append(
+                governed_link["entry_evidence"]
+            )
         pos.setdefault("unsettled_lots", []).append(
             {"shares": shares, "available_on": available_on.isoformat()}
         )
@@ -523,19 +577,27 @@ def portfolio_buy(
     if json_output:
         _print_json(trade)
     else:
-        console.print(f"[green]Bought {shares} shares of {code} @ {price:.2f} (total: {required:,.0f})[/green]")
+        console.print(
+            f"[green]Bought {shares} shares of {code} @ {price:.2f} (total: {required:,.0f})[/green]"
+        )
 
 
 @app.command("sell")
 def portfolio_sell(
     code: str = typer.Argument(..., help="Stock code"),
     shares: int = typer.Argument(..., help="Number of shares to sell"),
-    price: Optional[float] = typer.Option(None, "--price", "-p", help="Sell price (default: latest quote)"),
+    price: Optional[float] = typer.Option(
+        None, "--price", "-p", help="Sell price (default: latest quote)"
+    ),
     exit_reason: Optional[str] = typer.Option(
-        None, "--exit-reason", help="Reason for a governed paper-position reduction or exit."
+        None,
+        "--exit-reason",
+        help="Reason for a governed paper-position reduction or exit.",
     ),
     exit_observed_at: Optional[str] = typer.Option(
-        None, "--exit-observed-at", help="Timezone-aware timestamp when the exit condition was observed."
+        None,
+        "--exit-observed-at",
+        help="Timezone-aware timestamp when the exit condition was observed.",
     ),
     exit_evidence_ref: Optional[list[str]] = typer.Option(
         None,
@@ -548,9 +610,13 @@ def portfolio_sell(
         help="Verified frozen market-data archive supporting the paper exit.",
     ),
     ledger_path: Optional[Path] = typer.Option(
-        None, "--ledger-path", help="Research ledger used to verify a governed paper-position exit."
+        None,
+        "--ledger-path",
+        help="Research ledger used to verify a governed paper-position exit.",
     ),
-    trade_date: Optional[str] = typer.Option(None, "--trade-date", help="Paper trade date (YYYY-MM-DD) for T+1 settlement"),
+    trade_date: Optional[str] = typer.Option(
+        None, "--trade-date", help="Paper trade date (YYYY-MM-DD) for T+1 settlement"
+    ),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Record a sell trade"""
@@ -648,11 +714,21 @@ def portfolio_sell(
             "price": price,
             "trade_date": trade_day.isoformat(),
             "observed_at": exit_evidence["observed_at"],
-            "observation_archive_id": exit_evidence["observation_archive"]["archive_id"],
+            "observation_archive_id": exit_evidence["observation_archive"][
+                "archive_id"
+            ],
         }
-        exit_evidence["exit_id"] = "paper-exit:sha256:" + hashlib.sha256(
-            json.dumps(exit_identity, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
-        ).hexdigest()
+        exit_evidence["exit_id"] = (
+            "paper-exit:sha256:"
+            + hashlib.sha256(
+                json.dumps(
+                    exit_identity,
+                    ensure_ascii=False,
+                    sort_keys=True,
+                    separators=(",", ":"),
+                ).encode("utf-8")
+            ).hexdigest()
+        )
         governed_exit["exit_evidence"] = exit_evidence
 
     proceeds = shares * price
@@ -662,7 +738,9 @@ def portfolio_sell(
     pos["current_price"] = price
     pos["updated_at"] = datetime.now().isoformat()
     if governed_exit:
-        pos.setdefault("exit_evidence_history", []).append(governed_exit["exit_evidence"])
+        pos.setdefault("exit_evidence_history", []).append(
+            governed_exit["exit_evidence"]
+        )
 
     position_closed = pos["shares"] <= 0
     if position_closed:
@@ -679,9 +757,21 @@ def portfolio_sell(
         "pnl": pnl,
         "trade_date": trade_day.isoformat(),
         "timestamp": datetime.now().isoformat(),
-        "strategy_entry_id": governed_exit["strategy_entry_id"] if governed_exit else strategy_entry_id or None,
-        "strategy_plan_id": governed_exit["strategy_plan_id"] if governed_exit else pos.get("strategy_plan_id"),
-        "governance_status": "governed_exit" if governed_exit else pos.get("governance_status", "unlinked_legacy"),
+        "strategy_entry_id": (
+            governed_exit["strategy_entry_id"]
+            if governed_exit
+            else strategy_entry_id or None
+        ),
+        "strategy_plan_id": (
+            governed_exit["strategy_plan_id"]
+            if governed_exit
+            else pos.get("strategy_plan_id")
+        ),
+        "governance_status": (
+            "governed_exit"
+            if governed_exit
+            else pos.get("governance_status", "unlinked_legacy")
+        ),
         "exit_evidence": governed_exit["exit_evidence"] if governed_exit else None,
         "position_closed": position_closed,
     }
@@ -692,7 +782,9 @@ def portfolio_sell(
         _print_json(trade)
     else:
         pnl_color = "green" if pnl >= 0 else "red"
-        console.print(f"[yellow]Sold {shares} shares of {code} @ {price:.2f} (proceeds: {proceeds:,.0f}, P/L: [{pnl_color}]{pnl:+,.0f}[/{pnl_color}])[/yellow]")
+        console.print(
+            f"[yellow]Sold {shares} shares of {code} @ {price:.2f} (proceeds: {proceeds:,.0f}, P/L: [{pnl_color}]{pnl:+,.0f}[/{pnl_color}])[/yellow]"
+        )
 
 
 @app.command("trades")
@@ -742,7 +834,9 @@ def portfolio_trades(
 
 @app.command("import")
 def portfolio_import(
-    file: str = typer.Argument(..., help="CSV file path (columns: date,code,action,shares,price)"),
+    file: str = typer.Argument(
+        ..., help="CSV file path (columns: date,code,action,shares,price)"
+    ),
     json_output: bool = typer.Option(False, "--json", "-j", help="JSON output"),
 ) -> None:
     """Import trade records from CSV"""
@@ -802,10 +896,14 @@ def portfolio_risk(
             console.print("[dim]No positions to assess[/dim]")
         return
 
-    total_market_value = sum(p["shares"] * p["current_price"] for p in positions.values())
+    total_market_value = sum(
+        p["shares"] * p["current_price"] for p in positions.values()
+    )
     total_value = data["cash"] + total_market_value
 
-    max_pos_value = max((p["shares"] * p["current_price"] for p in positions.values()), default=0)
+    max_pos_value = max(
+        (p["shares"] * p["current_price"] for p in positions.values()), default=0
+    )
     concentration = max_pos_value / total_value if total_value > 0 else 0
 
     risk_manager = RiskManager()
@@ -866,7 +964,9 @@ def portfolio_risk(
                         if isinstance(position_context.get(code), dict)
                         else {}
                     ),
-                    "factor_exposures": governed_factor_inputs.get("factor_exposures", {}).get(code, {}),
+                    "factor_exposures": governed_factor_inputs.get(
+                        "factor_exposures", {}
+                    ).get(code, {}),
                 }
             ),
         }
@@ -897,7 +997,8 @@ def portfolio_risk(
             "max_positions": risk_manager.limits.max_positions,
             "max_theme_exposure": risk_manager.limits.max_theme_exposure * 100,
             "stop_loss": risk_manager.limits.stop_loss_percent * 100,
-            "max_portfolio_stress_loss": risk_manager.limits.max_portfolio_stress_loss * 100,
+            "max_portfolio_stress_loss": risk_manager.limits.max_portfolio_stress_loss
+            * 100,
             "take_profit": risk_manager.limits.take_profit_percent * 100,
         },
         "risk_budget": risk_budget.to_dict(),

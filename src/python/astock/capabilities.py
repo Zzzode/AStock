@@ -207,7 +207,11 @@ def _validate_futures_access_profile(
         raise ValueError("CTA instruments must be a non-empty mapping")
     specs: list[FuturesInstrumentSpec] = []
     for key, raw_spec in instruments.items():
-        spec = raw_spec if isinstance(raw_spec, FuturesInstrumentSpec) else FuturesInstrumentSpec.from_mapping(raw_spec)
+        spec = (
+            raw_spec
+            if isinstance(raw_spec, FuturesInstrumentSpec)
+            else FuturesInstrumentSpec.from_mapping(raw_spec)
+        )
         if str(key).strip() != spec.instrument_id:
             raise ValueError("CTA instrument mapping keys must match instrument_id")
         specs.append(spec)
@@ -247,7 +251,9 @@ def build_crypto_time_series_momentum_proposal(
         elif hasattr(raw_asset, "to_dict"):
             value = raw_asset.to_dict()
             if not isinstance(value, Mapping):
-                raise TypeError("crypto asset specification must serialize to an object")
+                raise TypeError(
+                    "crypto asset specification must serialize to an object"
+                )
             asset_records.append(value)
         else:
             raise TypeError("crypto asset specification must be an object")
@@ -287,7 +293,11 @@ def _assert_crypto_target_integrity(result: Mapping[str, Any]) -> None:
     """Forbid waivable data controls on any target-bearing crypto proposal."""
 
     targets = result.get("targets")
-    if not isinstance(targets, Sequence) or isinstance(targets, (str, bytes)) or not targets:
+    if (
+        not isinstance(targets, Sequence)
+        or isinstance(targets, (str, bytes))
+        or not targets
+    ):
         return
     if str(result.get("data_quality") or "") != "point_in_time_verified":
         raise ValueError(
@@ -295,7 +305,9 @@ def _assert_crypto_target_integrity(result: Mapping[str, Any]) -> None:
         )
     blockers = result.get("blockers")
     if blockers:
-        raise ValueError("target-bearing crypto research cannot contain unresolved blockers")
+        raise ValueError(
+            "target-bearing crypto research cannot contain unresolved blockers"
+        )
     archive_ids = result.get("source_archive_ids")
     if (
         not isinstance(archive_ids, Sequence)
@@ -479,7 +491,9 @@ def run_frozen_public_domestic_futures_cta_backtest(
 
     return _run_frozen_public_domestic_futures_cta_backtest(
         replay_input,
-        source_archive_path=str(source_archive_path) if source_archive_path is not None else None,
+        source_archive_path=(
+            str(source_archive_path) if source_archive_path is not None else None
+        ),
         initial_capital=initial_capital,
         config=config,
         execution=execution,
@@ -704,11 +718,7 @@ def _enrich_quote_packet(quote: Mapping[str, Any]) -> dict[str, Any]:
         source=source,
         quality_label=quality_label,
         payload=result,
-        warnings=[
-            item
-            for item in timestamp_warnings
-            if item not in {"", "None"}
-        ],
+        warnings=[item for item in timestamp_warnings if item not in {"", "None"}],
         errors=_as_string_list(result.get("error")),
     )
     result["market_events"] = _safe_market_events(
@@ -1778,6 +1788,7 @@ async def initialize_database(
     resolved_db_path.parent.mkdir(parents=True, exist_ok=True)
 
     from .migrations import MigrationRunner
+
     runner = MigrationRunner(resolved_db_path)
     migration_result = await runner.run_pending()
 
@@ -1979,23 +1990,29 @@ async def run_signal_backtest(
                 "data_assurance": {
                     "status": "blocked",
                     "source": "local_cache",
-                    "failures": ["No local bars are available and network refresh is forbidden during backtest."],
+                    "failures": [
+                        "No local bars are available and network refresh is forbidden during backtest."
+                    ],
                 },
             }
-        df = pd.DataFrame(
-            [
-                {
-                    "date": quote.date,
-                    "open": quote.open,
-                    "high": quote.high,
-                    "low": quote.low,
-                    "close": quote.close,
-                    "volume": quote.volume,
-                    "amount": quote.amount,
-                }
-                for quote in quotes
-            ]
-        ).sort_values("date", kind="stable").reset_index(drop=True)
+        df = (
+            pd.DataFrame(
+                [
+                    {
+                        "date": quote.date,
+                        "open": quote.open,
+                        "high": quote.high,
+                        "low": quote.low,
+                        "close": quote.close,
+                        "volume": quote.volume,
+                        "amount": quote.amount,
+                    }
+                    for quote in quotes
+                ]
+            )
+            .sort_values("date", kind="stable")
+            .reset_index(drop=True)
+        )
 
         if "date" in df.columns:
             df["date"] = df["date"].apply(
@@ -2013,7 +2030,9 @@ async def run_signal_backtest(
             return {"error": "No data in the specified date range"}
 
         if (walk_forward_train_bars is None) != (walk_forward_test_bars is None):
-            return {"error": "walk-forward train and test bars must be supplied together"}
+            return {
+                "error": "walk-forward train and test bars must be supplied together"
+            }
         if candidate_parameter_sets is not None and walk_forward_train_bars is None:
             return {
                 "error": "candidate_parameter_sets requires walk-forward train and test bars"
@@ -2112,7 +2131,9 @@ async def freeze_local_signal_replay_input(
     result = packet.to_dict()
     if archive_directory is not None:
         target_directory = Path(archive_directory)
-        result["source_archive_path"] = str(packet.write_frozen_archive(target_directory))
+        result["source_archive_path"] = str(
+            packet.write_frozen_archive(target_directory)
+        )
         result["replay_input_path"] = str(packet.write_replay_input(target_directory))
     return result
 
@@ -2143,7 +2164,9 @@ def run_frozen_signal_backtest(
     if (walk_forward_train_bars is None) != (walk_forward_test_bars is None):
         raise ValueError("walk-forward train and test bars must be supplied together")
     if candidate_parameter_sets is not None and walk_forward_train_bars is None:
-        raise ValueError("candidate_parameter_sets requires walk-forward train and test bars")
+        raise ValueError(
+            "candidate_parameter_sets requires walk-forward train and test bars"
+        )
     if walk_forward_train_bars is not None and walk_forward_test_bars is not None:
         if candidate_parameter_sets is not None:
             result = run_rolling_model_selection(
@@ -2154,24 +2177,38 @@ def run_frozen_signal_backtest(
                 test_bars=walk_forward_test_bars,
                 selection_metric=selection_metric,
                 initial_capital=capital,
-                transfer_fee_rate=0.00001 if packet.code.startswith(("6", "9")) else 0.0,
+                transfer_fee_rate=(
+                    0.00001 if packet.code.startswith(("6", "9")) else 0.0
+                ),
             ).to_dict()
         else:
-            result = BacktestEngine().run_walk_forward(
+            result = (
+                BacktestEngine()
+                .run_walk_forward(
+                    packet.market_data,
+                    strategy_name=strategy,
+                    train_bars=walk_forward_train_bars,
+                    test_bars=walk_forward_test_bars,
+                    initial_capital=capital,
+                    transfer_fee_rate=(
+                        0.00001 if packet.code.startswith(("6", "9")) else 0.0
+                    ),
+                )
+                .to_dict()
+            )
+    else:
+        result = (
+            BacktestEngine()
+            .run(
                 packet.market_data,
                 strategy_name=strategy,
-                train_bars=walk_forward_train_bars,
-                test_bars=walk_forward_test_bars,
                 initial_capital=capital,
-                transfer_fee_rate=0.00001 if packet.code.startswith(("6", "9")) else 0.0,
-            ).to_dict()
-    else:
-        result = BacktestEngine().run(
-            packet.market_data,
-            strategy_name=strategy,
-            initial_capital=capital,
-            transfer_fee_rate=0.00001 if packet.code.startswith(("6", "9")) else 0.0,
-        ).to_dict()
+                transfer_fee_rate=(
+                    0.00001 if packet.code.startswith(("6", "9")) else 0.0
+                ),
+            )
+            .to_dict()
+        )
     result["code"] = packet.code
     result["data_assurance"] = {
         "status": "pass" if archive_assurance["status"] == "pass" else "blocked",
@@ -2387,7 +2424,9 @@ async def build_akshare_public_portfolio_review_evidence(
         max_participation_rate=max_participation_rate,
     )
     if replay["data_assurance"]["status"] != "pass":
-        raise ValueError("public portfolio review requires a verified frozen replay archive")
+        raise ValueError(
+            "public portfolio review requires a verified frozen replay archive"
+        )
     start = _parse_public_review_timestamp(evaluation_start, "evaluation_start")
     end = _parse_public_review_timestamp(evaluation_end, "evaluation_end")
     if end <= start:
@@ -2403,7 +2442,9 @@ async def build_akshare_public_portfolio_review_evidence(
         benchmark_frame, start.date().isoformat(), end.date().isoformat()
     )
     benchmark_source = str(
-        benchmark_frame.attrs.get("market_data_source", "akshare.stock_zh_index_daily_em")
+        benchmark_frame.attrs.get(
+            "market_data_source", "akshare.stock_zh_index_daily_em"
+        )
     )
     benchmark_fallback_path = list(
         benchmark_frame.attrs.get("market_data_fallback_path", [benchmark_source])
@@ -2477,7 +2518,9 @@ def _normalize_akshare_benchmark_id(benchmark_id: str) -> str:
         return "sh000852"
     if normalized.startswith(("sh", "sz", "csi", "bj")) and normalized[2:].isdigit():
         return normalized
-    raise ValueError("benchmark_id must identify a supported A-share index, such as 000300.SH")
+    raise ValueError(
+        "benchmark_id must identify a supported A-share index, such as 000300.SH"
+    )
 
 
 def _fetch_akshare_benchmark_daily(
@@ -2539,7 +2582,9 @@ def _public_benchmark_return(
     if not hasattr(frame, "columns") or not {"date", "close"}.issubset(frame.columns):
         raise ValueError("AkShare benchmark response requires date and close columns")
     normalized = frame[["date", "close"]].copy()
-    normalized["date"] = pd.to_datetime(normalized["date"], errors="coerce").dt.normalize()
+    normalized["date"] = pd.to_datetime(
+        normalized["date"], errors="coerce"
+    ).dt.normalize()
     normalized["close"] = pd.to_numeric(normalized["close"], errors="coerce")
     normalized = normalized.dropna().sort_values("date")
     normalized = normalized[
@@ -2547,7 +2592,9 @@ def _public_benchmark_return(
         & (normalized["date"] <= pd.Timestamp(end_date))
     ]
     if len(normalized) < 2 or (normalized["close"] <= 0).any():
-        raise ValueError("AkShare benchmark response lacks at least two valid closes for the review interval")
+        raise ValueError(
+            "AkShare benchmark response lacks at least two valid closes for the review interval"
+        )
     result = float(normalized.iloc[-1]["close"] / normalized.iloc[0]["close"] - 1)
     records = json.loads(normalized.to_json(orient="records", date_format="iso"))
     return result, records
@@ -2583,26 +2630,34 @@ def run_portfolio_backtest(
     for code, frame in market_data.items():
         if hasattr(frame, "columns"):
             normalized_frames[str(code)] = frame
-        elif isinstance(frame, Sequence) and not isinstance(frame, (str, bytes, bytearray)):
+        elif isinstance(frame, Sequence) and not isinstance(
+            frame, (str, bytes, bytearray)
+        ):
             normalized_frames[str(code)] = pd.DataFrame(list(frame))
         else:
-            raise ValueError("portfolio backtest market_data values must be DataFrame-like or record sequences")
-    return PortfolioBacktestEngine().run(
-        normalized_frames,
-        target_weights,
-        universe_references=universe_references,
-        universe_snapshots=universe_snapshots,
-        trading_calendar=trading_calendar,
-        coverage_manifest=coverage_manifest,
-        source_manifest=source_manifest,
-        source_archive_path=source_archive_path,
-        corporate_actions=corporate_actions,
-        delisting_status=delisting_status,
-        price_basis=price_basis,
-        slippage_bps=slippage_bps,
-        max_participation_rate=max_participation_rate,
-        initial_capital=initial_capital,
-    ).to_dict()
+            raise ValueError(
+                "portfolio backtest market_data values must be DataFrame-like or record sequences"
+            )
+    return (
+        PortfolioBacktestEngine()
+        .run(
+            normalized_frames,
+            target_weights,
+            universe_references=universe_references,
+            universe_snapshots=universe_snapshots,
+            trading_calendar=trading_calendar,
+            coverage_manifest=coverage_manifest,
+            source_manifest=source_manifest,
+            source_archive_path=source_archive_path,
+            corporate_actions=corporate_actions,
+            delisting_status=delisting_status,
+            price_basis=price_basis,
+            slippage_bps=slippage_bps,
+            max_participation_rate=max_participation_rate,
+            initial_capital=initial_capital,
+        )
+        .to_dict()
+    )
 
 
 def build_tushare_daily_replay_input(
@@ -2621,12 +2676,14 @@ def build_tushare_daily_replay_input(
     back to public aggregation because that would invalidate replay provenance.
     """
     require_licensed_market_data_mode(user_id=user_id)
-    packet = TushareProBacktestAdapter(token=token, data_owner=data_owner).build_daily_replay_packet(
-        codes, start_date=start_date, end_date=end_date
-    )
+    packet = TushareProBacktestAdapter(
+        token=token, data_owner=data_owner
+    ).build_daily_replay_packet(codes, start_date=start_date, end_date=end_date)
     result = packet.to_dict()
     if archive_directory is not None:
-        result["source_archive_path"] = str(packet.write_frozen_archive(Path(archive_directory)))
+        result["source_archive_path"] = str(
+            packet.write_frozen_archive(Path(archive_directory))
+        )
     return result
 
 
@@ -2640,12 +2697,14 @@ def build_tushare_listing_universe_snapshot(
 ) -> dict[str, Any]:
     """Build a frozen source-labelled listing-universe snapshot for a target day."""
     require_licensed_market_data_mode(user_id=user_id)
-    packet = TushareProBacktestAdapter(token=token, data_owner=data_owner).build_listing_universe_snapshot(
-        as_of_date=as_of_date
-    )
+    packet = TushareProBacktestAdapter(
+        token=token, data_owner=data_owner
+    ).build_listing_universe_snapshot(as_of_date=as_of_date)
     result = packet.to_dict()
     if archive_directory is not None:
-        result["source_archive_path"] = str(packet.write_frozen_archive(Path(archive_directory)))
+        result["source_archive_path"] = str(
+            packet.write_frozen_archive(Path(archive_directory))
+        )
     return result
 
 
@@ -2669,12 +2728,12 @@ def build_jqdata_minute_observation_input(
     require_licensed_market_data_mode(user_id=user_id)
     packet = JQDataMinuteAdapter(
         username=username, password=password, data_owner=data_owner
-    ).build_minute_observation_packet(
-        codes, start_time=start_time, end_time=end_time
-    )
+    ).build_minute_observation_packet(codes, start_time=start_time, end_time=end_time)
     result = packet.to_dict()
     if archive_directory is not None:
-        result["source_archive_path"] = str(packet.write_frozen_archive(Path(archive_directory)))
+        result["source_archive_path"] = str(
+            packet.write_frozen_archive(Path(archive_directory))
+        )
     return result
 
 
@@ -3043,6 +3102,7 @@ async def sync_research_monitor(
 ) -> dict[str, Any]:
     """Sync research entries to watch items."""
     from .scheduler.bridge import sync_research_to_monitor
+
     return await sync_research_to_monitor(
         db_path=db_path or DEFAULT_DB_PATH,
         ledger_path=ledger_path,
@@ -3191,7 +3251,10 @@ def verify_frozen_public_market_rotation_history_evidence(
             "schema_version": "market-rotation-frozen-history-assurance.v1",
             "status": "blocked",
             "source_archive_assurance": assurance,
-            "history_evidence": {"status": "not_checked", "failures": ["source archive is invalid"]},
+            "history_evidence": {
+                "status": "not_checked",
+                "failures": ["source archive is invalid"],
+            },
             "formal_decision_eligible": False,
             "research_only": True,
             "no_order_execution": True,
@@ -3203,21 +3266,33 @@ def verify_frozen_public_market_rotation_history_evidence(
             "schema_version": "market-rotation-frozen-history-assurance.v1",
             "status": "blocked",
             "source_archive_assurance": assurance,
-            "history_evidence": {"status": "not_checked", "failures": [f"archive cannot be read: {error}"]},
+            "history_evidence": {
+                "status": "not_checked",
+                "failures": [f"archive cannot be read: {error}"],
+            },
             "formal_decision_eligible": False,
             "research_only": True,
             "no_order_execution": True,
         }
-    raw_records = payload.get("raw_source_records") if isinstance(payload, Mapping) else None
-    rotation = raw_records.get("market_rotation") if isinstance(raw_records, Mapping) else None
+    raw_records = (
+        payload.get("raw_source_records") if isinstance(payload, Mapping) else None
+    )
+    rotation = (
+        raw_records.get("market_rotation") if isinstance(raw_records, Mapping) else None
+    )
     evidence = (
         verify_rotation_history_evidence(rotation)
         if isinstance(rotation, Mapping)
-        else {"status": "blocked", "failures": ["archive does not contain market_rotation"]}
+        else {
+            "status": "blocked",
+            "failures": ["archive does not contain market_rotation"],
+        }
     )
     return {
         "schema_version": "market-rotation-frozen-history-assurance.v1",
-        "status": "pass" if evidence.get("status") in {"pass", "not_requested"} else "blocked",
+        "status": (
+            "pass" if evidence.get("status") in {"pass", "not_requested"} else "blocked"
+        ),
         "source_archive_assurance": assurance,
         "history_evidence": evidence,
         "formal_decision_eligible": False,
@@ -3464,7 +3539,11 @@ def _attach_discovery_market_subject_context(
     mapped = 0
     enriched: list[dict[str, Any]] = []
     for candidate in candidates:
-        item = dict(candidate) if isinstance(candidate, Mapping) else {"raw_candidate": candidate}
+        item = (
+            dict(candidate)
+            if isinstance(candidate, Mapping)
+            else {"raw_candidate": candidate}
+        )
         context = store.resolve(str(item.get("code") or ""))
         source_refs = context.get("source_refs") if isinstance(context, Mapping) else []
         is_mapped = bool(
@@ -3563,14 +3642,30 @@ async def enrich_public_discovery_industry_context(
     try:
         payload = json.loads(archive_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
-        raise ValueError(f"unable to read verified discovery archive: {error}") from error
-    raw_records = payload.get("raw_source_records") if isinstance(payload, Mapping) else None
-    discovery = raw_records.get("market_desk_discovery") if isinstance(raw_records, Mapping) else None
+        raise ValueError(
+            f"unable to read verified discovery archive: {error}"
+        ) from error
+    raw_records = (
+        payload.get("raw_source_records") if isinstance(payload, Mapping) else None
+    )
+    discovery = (
+        raw_records.get("market_desk_discovery")
+        if isinstance(raw_records, Mapping)
+        else None
+    )
     candidates = discovery.get("candidates") if isinstance(discovery, Mapping) else None
-    if not isinstance(candidates, Sequence) or isinstance(candidates, (str, bytes, bytearray)):
+    if not isinstance(candidates, Sequence) or isinstance(
+        candidates, (str, bytes, bytearray)
+    ):
         raise ValueError("verified discovery archive lacks a candidate list")
-    selected = [item for item in candidates if isinstance(item, Mapping)][:candidate_limit]
-    observed_at = str(discovery.get("observed_at") or "") if isinstance(discovery, Mapping) else ""
+    selected = [item for item in candidates if isinstance(item, Mapping)][
+        :candidate_limit
+    ]
+    observed_at = (
+        str(discovery.get("observed_at") or "")
+        if isinstance(discovery, Mapping)
+        else ""
+    )
     service = get_industry_service()
     await service.initialize()
     lookups: list[dict[str, Any]] = []
@@ -3585,10 +3680,14 @@ async def enrich_public_discovery_industry_context(
                 service.get_stock_industry(code), timeout=15
             )
         except Exception as error:
-            failures.append({"code": code, "reason": f"industry lookup failed: {error}"})
+            failures.append(
+                {"code": code, "reason": f"industry lookup failed: {error}"}
+            )
             continue
         if stock_industry is None or not str(stock_industry.industry).strip():
-            failures.append({"code": code, "reason": "industry lookup returned no usable industry"})
+            failures.append(
+                {"code": code, "reason": "industry lookup returned no usable industry"}
+            )
             continue
         lookups.append(
             {
@@ -3677,7 +3776,9 @@ async def run_public_market_desk_eod_discovery(
     snapshot = overview.get("snapshot")
     session = snapshot.get("market_session") if isinstance(snapshot, Mapping) else None
     session_state = str(session.get("state") if isinstance(session, Mapping) else "")
-    calendar_basis = str(session.get("calendar_basis") if isinstance(session, Mapping) else "")
+    calendar_basis = str(
+        session.get("calendar_basis") if isinstance(session, Mapping) else ""
+    )
     if session_state != "after_close" or calendar_basis != "exchange_calendar":
         return {
             "schema_version": "market-desk-public-eod-discovery-job.v1",
@@ -3691,7 +3792,9 @@ async def run_public_market_desk_eod_discovery(
     destination = Path(
         archive_directory or PROJECT_ROOT / "data" / "market-desk-discovery-archives"
     )
-    observed_at = str(snapshot.get("observed_at") or "") if isinstance(snapshot, Mapping) else ""
+    observed_at = (
+        str(snapshot.get("observed_at") or "") if isinstance(snapshot, Mapping) else ""
+    )
     session_date = observed_at[:10]
     history = list_public_market_discovery_archives(destination)
     existing_ids = [
@@ -3766,36 +3869,62 @@ def promote_public_market_desk_discovery_candidate(
     )
     if assurance.get("status") != "pass":
         failures = assurance.get("failures")
-        detail = "; ".join(str(item) for item in failures) if isinstance(failures, list) else "unknown archive verification failure"
+        detail = (
+            "; ".join(str(item) for item in failures)
+            if isinstance(failures, list)
+            else "unknown archive verification failure"
+        )
         raise ValueError(f"public discovery archive is not verifiable: {detail}")
     try:
         archive = json.loads(archive_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
         raise ValueError(f"public discovery archive cannot be read: {error}") from error
-    records = archive.get("raw_source_records") if isinstance(archive, Mapping) else None
-    discovery = records.get("market_desk_discovery") if isinstance(records, Mapping) else None
+    records = (
+        archive.get("raw_source_records") if isinstance(archive, Mapping) else None
+    )
+    discovery = (
+        records.get("market_desk_discovery") if isinstance(records, Mapping) else None
+    )
     if not isinstance(discovery, Mapping):
         raise ValueError("archive does not contain a market_desk_discovery record")
     if discovery.get("schema_version") != "market-desk-public-discovery.v1":
         raise ValueError("archive contains an unsupported discovery schema")
-    if discovery.get("formal_decision_eligible") is not False or discovery.get("no_order_execution") is not True:
-        raise ValueError("discovery archive must retain research-only and no-order boundaries")
+    if (
+        discovery.get("formal_decision_eligible") is not False
+        or discovery.get("no_order_execution") is not True
+    ):
+        raise ValueError(
+            "discovery archive must retain research-only and no-order boundaries"
+        )
     candidates = discovery.get("candidates")
-    selected = next(
-        (
-            dict(candidate)
-            for candidate in candidates if isinstance(candidate, Mapping)
-            and str(candidate.get("candidate_id") or "") == str(candidate_id).strip()
-        ),
-        None,
-    ) if isinstance(candidates, Sequence) and not isinstance(candidates, (str, bytes)) else None
+    selected = (
+        next(
+            (
+                dict(candidate)
+                for candidate in candidates
+                if isinstance(candidate, Mapping)
+                and str(candidate.get("candidate_id") or "")
+                == str(candidate_id).strip()
+            ),
+            None,
+        )
+        if isinstance(candidates, Sequence) and not isinstance(candidates, (str, bytes))
+        else None
+    )
     if selected is None:
         raise ValueError("candidate_id was not found in the verified discovery archive")
-    if selected.get("formal_decision_eligible") is not False or selected.get("no_order_execution") is not True:
-        raise ValueError("selected discovery candidate has an invalid decision boundary")
+    if (
+        selected.get("formal_decision_eligible") is not False
+        or selected.get("no_order_execution") is not True
+    ):
+        raise ValueError(
+            "selected discovery candidate has an invalid decision boundary"
+        )
     code = str(selected.get("code") or "").strip()
     if len(code) != 6 or not code.isdigit():
-        raise ValueError("selected discovery candidate must contain a six-digit stock code")
+        raise ValueError(
+            "selected discovery candidate must contain a six-digit stock code"
+        )
     mapping_archive_assurance: Optional[dict[str, Any]] = None
     if selected.get("market_subject_mapping_status") != "source_mapped":
         if mapping_archive_path is None:
@@ -3803,10 +3932,12 @@ def promote_public_market_desk_discovery_candidate(
                 "selected discovery candidate requires a source-referenced market-subject mapping; "
                 "a later industry mapping requires its verified frozen mapping_archive_path"
             )
-        mapping_archive_assurance = _verify_public_discovery_industry_enrichment_archive(
-            mapping_archive_path,
-            discovery_archive_id=str(assurance["archive_id"]),
-            code=code,
+        mapping_archive_assurance = (
+            _verify_public_discovery_industry_enrichment_archive(
+                mapping_archive_path,
+                discovery_archive_id=str(assurance["archive_id"]),
+                code=code,
+            )
         )
         refreshed_context = MarketMapStore(
             _resolve_market_map_path(market_map_path)
@@ -3817,9 +3948,7 @@ def promote_public_market_desk_discovery_candidate(
             else None
         )
         discovery_ref = f"source-discovery:{assurance['archive_id']}"
-        enrichment_ref = (
-            f"public-industry-enrichment:{mapping_archive_assurance['archive_id']}:{code}"
-        )
+        enrichment_ref = f"public-industry-enrichment:{mapping_archive_assurance['archive_id']}:{code}"
         if (
             isinstance(refreshed_context, Mapping)
             and refreshed_context.get("found") is True
@@ -3831,7 +3960,9 @@ def promote_public_market_desk_discovery_candidate(
             selected["market_subject_mapping_status"] = "source_mapped"
     mapping_context = selected.get("market_subject_context")
     mapping_refs = (
-        mapping_context.get("source_refs") if isinstance(mapping_context, Mapping) else None
+        mapping_context.get("source_refs")
+        if isinstance(mapping_context, Mapping)
+        else None
     )
     if (
         selected.get("market_subject_mapping_status") != "source_mapped"
@@ -3912,7 +4043,9 @@ def promote_public_market_desk_discovery_candidate(
             "public_discovery": {
                 "candidate": selected,
                 "selection_rule": discovery.get("selection_rule", {}),
-                "source_manifest": source_manifest if isinstance(source_manifest, Mapping) else {},
+                "source_manifest": (
+                    source_manifest if isinstance(source_manifest, Mapping) else {}
+                ),
                 "source_archive_path": str(archive_path),
             }
         },
@@ -3952,7 +4085,9 @@ def _verify_public_discovery_industry_enrichment_archive(
         archive = json.loads(archive_path.read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as error:
         raise ValueError(f"industry mapping archive cannot be read: {error}") from error
-    records = archive.get("raw_source_records") if isinstance(archive, Mapping) else None
+    records = (
+        archive.get("raw_source_records") if isinstance(archive, Mapping) else None
+    )
     enrichment = (
         records.get("market_desk_public_industry_enrichment")
         if isinstance(records, Mapping)
@@ -3961,14 +4096,25 @@ def _verify_public_discovery_industry_enrichment_archive(
     if not isinstance(enrichment, Mapping):
         raise ValueError("industry mapping archive lacks a public enrichment record")
     if enrichment.get("schema_version") != "market-desk-public-industry-enrichment.v1":
-        raise ValueError("industry mapping archive has an unsupported enrichment schema")
+        raise ValueError(
+            "industry mapping archive has an unsupported enrichment schema"
+        )
     if str(enrichment.get("source_discovery_archive_id") or "") != discovery_archive_id:
-        raise ValueError("industry mapping archive does not link to the selected discovery archive")
+        raise ValueError(
+            "industry mapping archive does not link to the selected discovery archive"
+        )
     lookups = enrichment.get("industry_lookups")
-    if not isinstance(lookups, Sequence) or isinstance(lookups, (str, bytes, bytearray)):
+    if not isinstance(lookups, Sequence) or isinstance(
+        lookups, (str, bytes, bytearray)
+    ):
         raise ValueError("industry mapping archive lacks industry lookup records")
-    if not any(isinstance(item, Mapping) and str(item.get("code") or "") == code for item in lookups):
-        raise ValueError("industry mapping archive does not contain the selected discovery code")
+    if not any(
+        isinstance(item, Mapping) and str(item.get("code") or "") == code
+        for item in lookups
+    ):
+        raise ValueError(
+            "industry mapping archive does not contain the selected discovery code"
+        )
     return assurance
 
 
@@ -4021,7 +4167,9 @@ async def run_public_market_desk_observation(
     result = run.to_dict()
     result["rotation_archive_assurance"] = rotation_archive_assurance
     result["source_archive_path"] = str(
-        run.write(archive_directory or PROJECT_ROOT / "data" / "market-desk-observation-runs")
+        run.write(
+            archive_directory or PROJECT_ROOT / "data" / "market-desk-observation-runs"
+        )
     )
     return result
 
@@ -4049,8 +4197,12 @@ async def run_public_market_desk_eod_observation(
     )
     snapshot = overview.get("snapshot")
     session = snapshot.get("market_session") if isinstance(snapshot, Mapping) else None
-    session_state = str(session.get("state") if isinstance(session, Mapping) else "").strip()
-    calendar_basis = str(session.get("calendar_basis") if isinstance(session, Mapping) else "").strip()
+    session_state = str(
+        session.get("state") if isinstance(session, Mapping) else ""
+    ).strip()
+    calendar_basis = str(
+        session.get("calendar_basis") if isinstance(session, Mapping) else ""
+    ).strip()
     if session_state != "after_close" or calendar_basis != "exchange_calendar":
         return {
             "schema_version": "market-desk-public-eod-observation-job.v1",
@@ -4120,9 +4272,7 @@ async def run_public_market_desk_eod_observation(
         {
             "job_schema_version": "market-desk-public-eod-observation-job.v1",
             "status": "recorded",
-            "source_archive_path": str(
-                run.write(observation_directory)
-            ),
+            "source_archive_path": str(run.write(observation_directory)),
             "rotation_archive_assurance": rotation_archive_assurance,
         }
     )
@@ -4151,7 +4301,9 @@ def _verify_public_rotation_observation_archive(
             if isinstance(failures, Sequence) and not isinstance(failures, (str, bytes))
             else "unknown verification failure"
         )
-        raise ValueError(f"public desk observation requires a valid frozen rotation archive: {detail}")
+        raise ValueError(
+            f"public desk observation requires a valid frozen rotation archive: {detail}"
+        )
     return assurance
 
 
@@ -4192,7 +4344,9 @@ def resolve_public_market_desk_observation_duplicate(
     }
     submitted_ids = {str(value).strip() for value in archive_ids if str(value).strip()}
     if submitted_ids != valid_ids:
-        raise ValueError("exception review archive_ids must exactly match all valid records for session_date")
+        raise ValueError(
+            "exception review archive_ids must exactly match all valid records for session_date"
+        )
     review = create_public_desk_observation_exception_review(
         session_date=session_date,
         archive_ids=archive_ids,
@@ -4224,10 +4378,12 @@ def evaluate_market_desk_candidate(
     restricted_list_path: Optional[Path] = None,
 ) -> dict[str, Any]:
     """Evaluate the five mandatory paper-plan candidate gates."""
-    candidate_with_compliance, effective_restricted = _candidate_with_restricted_list_context(
-        candidate,
-        restricted_targets=restricted_targets,
-        restricted_list_path=restricted_list_path,
+    candidate_with_compliance, effective_restricted = (
+        _candidate_with_restricted_list_context(
+            candidate,
+            restricted_targets=restricted_targets,
+            restricted_list_path=restricted_list_path,
+        )
     )
     return evaluate_candidate_gate(
         candidate_with_compliance,
@@ -4266,10 +4422,12 @@ def decide_market_desk_investment_committee(
     This is a paper-desk record only. It validates mandatory control roles and
     emits no brokerage or order-execution action.
     """
-    candidate_with_compliance, effective_restricted = _candidate_with_restricted_list_context(
-        candidate,
-        restricted_targets=restricted_targets,
-        restricted_list_path=restricted_list_path,
+    candidate_with_compliance, effective_restricted = (
+        _candidate_with_restricted_list_context(
+            candidate,
+            restricted_targets=restricted_targets,
+            restricted_list_path=restricted_list_path,
+        )
     )
     return decide_investment_committee(
         candidate_with_compliance,
@@ -4289,9 +4447,16 @@ def upsert_market_desk_restricted_list_entry(
 ) -> dict[str, Any]:
     """Record an externally sourced restricted-list or clearance record."""
     resolved_path = restricted_list_path or DEFAULT_RESTRICTED_LIST_PATH
-    stored = RestrictedListStore(resolved_path).upsert(RestrictedListEntry.from_dict(entry))
+    stored = RestrictedListStore(resolved_path).upsert(
+        RestrictedListEntry.from_dict(entry)
+    )
     health = RestrictedListStore(resolved_path).health()
-    return {"success": True, "restricted_list_path": str(resolved_path), "entry": stored.to_dict(), "health": health}
+    return {
+        "success": True,
+        "restricted_list_path": str(resolved_path),
+        "entry": stored.to_dict(),
+        "health": health,
+    }
 
 
 def get_market_desk_restricted_list_health(
@@ -4299,7 +4464,10 @@ def get_market_desk_restricted_list_health(
 ) -> dict[str, Any]:
     """Return currency and active-target state for the restricted-list authority."""
     resolved_path = restricted_list_path or DEFAULT_RESTRICTED_LIST_PATH
-    return {"restricted_list_path": str(resolved_path), **RestrictedListStore(resolved_path).health()}
+    return {
+        "restricted_list_path": str(resolved_path),
+        **RestrictedListStore(resolved_path).health(),
+    }
 
 
 def import_signed_market_desk_restricted_list(
@@ -4308,7 +4476,11 @@ def import_signed_market_desk_restricted_list(
     """Import a compliance-authority payload only when its configured MAC verifies."""
     resolved_path = restricted_list_path or DEFAULT_RESTRICTED_LIST_PATH
     health = RestrictedListStore(resolved_path).import_signed_payload(payload)
-    return {"success": True, "restricted_list_path": str(resolved_path), "health": health}
+    return {
+        "success": True,
+        "restricted_list_path": str(resolved_path),
+        "health": health,
+    }
 
 
 def verify_market_desk_paper_release(
@@ -4363,8 +4535,16 @@ def _candidate_with_restricted_list_context(
     effective_targets = tuple(
         sorted(
             {
-                *(str(item).strip() for item in restricted_targets if str(item).strip()),
-                *(str(item).strip() for item in health["active_targets"] if str(item).strip()),
+                *(
+                    str(item).strip()
+                    for item in restricted_targets
+                    if str(item).strip()
+                ),
+                *(
+                    str(item).strip()
+                    for item in health["active_targets"]
+                    if str(item).strip()
+                ),
             }
         )
     )
@@ -4397,13 +4577,19 @@ def create_market_desk_strategy_plan(
         status=ResearchStatus.MONITORING,
         invalidation_conditions=[strategy_plan.invalidation_condition],
         tags=list(tags),
-        source_refs=[{"reference": reference} for reference in strategy_plan.evidence_refs],
+        source_refs=[
+            {"reference": reference} for reference in strategy_plan.evidence_refs
+        ],
         metadata={"strategy_plan": strategy_plan.to_dict()},
         created_by="market-desk",
     )
     resolved_path = _resolve_research_ledger_path(ledger_path)
     created = ResearchLedger(resolved_path).create(entry)
-    return {"success": True, "ledger_path": str(resolved_path), "entry": created.to_dict()}
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "entry": created.to_dict(),
+    }
 
 
 def get_market_desk_strategy_books(
@@ -4456,10 +4642,26 @@ def get_market_desk_strategy_books(
             "time_stop_due": time_stop_due,
             "attention": (
                 "time_stop_due"
-                if time_stop_due and plan.state in {StrategyState.OBSERVATION, StrategyState.WATCH, StrategyState.CONDITIONAL, StrategyState.ACTIVE}
-                else "review_due"
-                if review_due and plan.state in {StrategyState.OBSERVATION, StrategyState.WATCH, StrategyState.CONDITIONAL, StrategyState.ACTIVE}
-                else "none"
+                if time_stop_due
+                and plan.state
+                in {
+                    StrategyState.OBSERVATION,
+                    StrategyState.WATCH,
+                    StrategyState.CONDITIONAL,
+                    StrategyState.ACTIVE,
+                }
+                else (
+                    "review_due"
+                    if review_due
+                    and plan.state
+                    in {
+                        StrategyState.OBSERVATION,
+                        StrategyState.WATCH,
+                        StrategyState.CONDITIONAL,
+                        StrategyState.ACTIVE,
+                    }
+                    else "none"
+                )
             ),
         }
         books[plan.horizon.value].append(card)
@@ -4582,7 +4784,9 @@ def get_market_desk_postmortem_queue(
                 )
                 continue
             review_anchor = f"paper-review:{archive_id}"
-            if _has_postmortem_review_anchor(entry.observations[position + 1 :], review_anchor):
+            if _has_postmortem_review_anchor(
+                entry.observations[position + 1 :], review_anchor
+            ):
                 continue
             due.append(
                 {
@@ -4629,11 +4833,7 @@ def _has_postmortem_review_anchor(
             continue
         raw_refs = evidence.get("evidence_refs")
         extra_anchors = (
-            {
-                str(value).strip()
-                for value in raw_refs
-                if str(value).strip()
-            }
+            {str(value).strip() for value in raw_refs if str(value).strip()}
             if isinstance(raw_refs, Sequence)
             and not isinstance(raw_refs, (str, bytes, bytearray))
             else set()
@@ -4708,9 +4908,11 @@ def get_market_desk_discovery_research_queue(
         attention = (
             "source_integrity_failed"
             if assurance.get("status") != "pass"
-            else "research_review_due"
-            if not reviewed and reference_time >= review_due_at
-            else "none"
+            else (
+                "research_review_due"
+                if not reviewed and reference_time >= review_due_at
+                else "none"
+            )
         )
         if attention == "none":
             continue
@@ -4781,9 +4983,13 @@ def record_market_desk_discovery_triage(
         raise ValueError("action must be continue_research, invalidate, or close")
     normalized_reviewer = str(reviewer).strip()
     normalized_reason = str(reason).strip()
-    normalized_refs = [str(reference).strip() for reference in evidence_refs if str(reference).strip()]
+    normalized_refs = [
+        str(reference).strip() for reference in evidence_refs if str(reference).strip()
+    ]
     if not normalized_reviewer or not normalized_reason or not normalized_refs:
-        raise ValueError("triage requires reviewer, reason, and at least one evidence reference")
+        raise ValueError(
+            "triage requires reviewer, reason, and at least one evidence reference"
+        )
     reference_time = _parse_datetime(reviewed_at, datetime.now(timezone.utc))
     if reference_time.tzinfo is None:
         raise ValueError("reviewed_at must include a timezone")
@@ -4821,15 +5027,19 @@ def record_market_desk_discovery_triage(
     assurance = verify_public_market_discovery_archive(str(archive_path or ""))
     if normalized_action == "continue_research" and assurance.get("status") != "pass":
         failures = assurance.get("failures")
-        detail = "; ".join(str(item) for item in failures) if isinstance(failures, Sequence) else "unknown archive failure"
-        raise ValueError(f"continue_research requires a verified discovery archive: {detail}")
+        detail = (
+            "; ".join(str(item) for item in failures)
+            if isinstance(failures, Sequence)
+            else "unknown archive failure"
+        )
+        raise ValueError(
+            f"continue_research requires a verified discovery archive: {detail}"
+        )
 
     status_after = (
         ResearchStatus.INVALIDATED
         if normalized_action == "invalidate"
-        else ResearchStatus.CLOSED
-        if normalized_action == "close"
-        else None
+        else ResearchStatus.CLOSED if normalized_action == "close" else None
     )
     observation = ResearchObservation(
         observation_type="discovery_triage",
@@ -4839,7 +5049,9 @@ def record_market_desk_discovery_triage(
             "action": normalized_action,
             "reviewer": normalized_reviewer,
             "evidence_refs": normalized_refs,
-            "next_review_at": parsed_next_review.isoformat() if parsed_next_review else None,
+            "next_review_at": (
+                parsed_next_review.isoformat() if parsed_next_review else None
+            ),
             "source_archive_path": str(archive_path or ""),
             "source_archive_assurance": assurance,
         },
@@ -4957,9 +5169,7 @@ def assess_market_desk_operational_readiness(
         "warning"
         if observation_history["invalid_count"]
         or observation_history["unresolved_valid_duplicate_run_dates"]
-        else "pass"
-        if observation_history["valid_count"]
-        else "not_ready"
+        else "pass" if observation_history["valid_count"] else "not_ready"
     )
     checks = {
         "observation_data": {
@@ -4974,29 +5184,43 @@ def assess_market_desk_operational_readiness(
             "invalid_count": observation_history["invalid_count"],
             "latest_valid_observed_at": observation_history["latest_valid_observed_at"],
             "eod_valid_count": observation_history["eod_valid_count"],
-            "latest_valid_eod_observed_at": observation_history["latest_valid_eod_observed_at"],
+            "latest_valid_eod_observed_at": observation_history[
+                "latest_valid_eod_observed_at"
+            ],
             "duplicate_run_dates": observation_history["duplicate_run_dates"],
-            "resolved_duplicate_run_dates": observation_history["resolved_duplicate_run_dates"],
-            "unresolved_valid_duplicate_run_dates": observation_history["unresolved_valid_duplicate_run_dates"],
+            "resolved_duplicate_run_dates": observation_history[
+                "resolved_duplicate_run_dates"
+            ],
+            "unresolved_valid_duplicate_run_dates": observation_history[
+                "unresolved_valid_duplicate_run_dates"
+            ],
             "message": (
                 "Immutable public observation history is internally verified."
                 if observation_history_status == "pass"
-                else "No verified public observation run exists yet."
-                if observation_history_status == "not_ready"
-                else "Observation history has invalid or duplicate records; retain evidence and resolve the operating exception."
+                else (
+                    "No verified public observation run exists yet."
+                    if observation_history_status == "not_ready"
+                    else "Observation history has invalid or duplicate records; retain evidence and resolve the operating exception."
+                )
             ),
         },
         "formal_decision_data": {
-            "status": "not_enabled" if public_observation_mode else "pass" if formal_data_ready else "blocked",
+            "status": (
+                "not_enabled"
+                if public_observation_mode
+                else "pass" if formal_data_ready else "blocked"
+            ),
             "configured_decision_sources": configured_decision_sources,
             "configured_eod_sources": formal_eod_sources,
             "data_owner_attestation_configured": data_owner_configured,
             "message": (
                 "The user profile explicitly selects public-observation research; licensed EOD release is not enabled."
                 if public_observation_mode
-                else "An authorized decision-capable EOD source and accountable data owner are configured."
-                if formal_data_ready
-                else "Formal decisions require an authorized source with both EOD-bar and trading-calendar coverage, plus a data-owner attestation."
+                else (
+                    "An authorized decision-capable EOD source and accountable data owner are configured."
+                    if formal_data_ready
+                    else "Formal decisions require an authorized source with both EOD-bar and trading-calendar coverage, plus a data-owner attestation."
+                )
             ),
         },
         "compliance_authority": {
@@ -5017,9 +5241,7 @@ def assess_market_desk_operational_readiness(
             "status": (
                 "warning"
                 if invalid_quality_feedback_entry_ids
-                else "pass"
-                if quality_feedback_entry_ids
-                else "not_ready"
+                else "pass" if quality_feedback_entry_ids else "not_ready"
             ),
             "assessed_entry_count": len(quality_feedback_entry_ids),
             "invalid_entry_count": len(invalid_quality_feedback_entry_ids),
@@ -5027,26 +5249,28 @@ def assess_market_desk_operational_readiness(
             "message": (
                 "Research quality assessments are linked to their underlying ledger entries."
                 if quality_feedback_entry_ids and not invalid_quality_feedback_entry_ids
-                else "One or more quality assessments lacks a prior, persisted review or postmortem anchor."
-                if invalid_quality_feedback_entry_ids
-                else "No evidence-bound research quality feedback has been recorded yet."
+                else (
+                    "One or more quality assessments lacks a prior, persisted review or postmortem anchor."
+                    if invalid_quality_feedback_entry_ids
+                    else "No evidence-bound research quality feedback has been recorded yet."
+                )
             ),
         },
         "postmortem_control": {
             "status": (
                 "warning"
                 if postmortem_queue["due_count"]
-                else "pass"
-                if postmortem_queue["underperformance_review_count"]
-                else "not_ready"
+                else (
+                    "pass"
+                    if postmortem_queue["underperformance_review_count"]
+                    else "not_ready"
+                )
             ),
             "underperformance_review_count": postmortem_queue[
                 "underperformance_review_count"
             ],
             "due_count": postmortem_queue["due_count"],
-            "postmortem_required_count": postmortem_queue[
-                "postmortem_required_count"
-            ],
+            "postmortem_required_count": postmortem_queue["postmortem_required_count"],
             "review_evidence_repair_count": postmortem_queue[
                 "review_evidence_repair_count"
             ],
@@ -5054,9 +5278,11 @@ def assess_market_desk_operational_readiness(
                 "Every evidence-backed underperformance review has a later explicitly anchored postmortem."
                 if postmortem_queue["underperformance_review_count"]
                 and not postmortem_queue["due_count"]
-                else "One or more underperformance reviews needs evidence repair or an explicitly anchored postmortem."
-                if postmortem_queue["due_count"]
-                else "No underperformance review has been observed yet; postmortem control has no operational sample."
+                else (
+                    "One or more underperformance reviews needs evidence repair or an explicitly anchored postmortem."
+                    if postmortem_queue["due_count"]
+                    else "No underperformance review has been observed yet; postmortem control has no operational sample."
+                )
             ),
         },
         "paper_portfolio_governance": {
@@ -5068,17 +5294,25 @@ def assess_market_desk_operational_readiness(
             "portfolio_path": str(resolved_portfolio_path),
             "position_count": portfolio_governance.get("position_count"),
             "governed_count": portfolio_governance.get("governed_count", 0),
-            "unlinked_legacy_count": portfolio_governance.get("unlinked_legacy_count", 0),
+            "unlinked_legacy_count": portfolio_governance.get(
+                "unlinked_legacy_count", 0
+            ),
             "invalid_link_count": portfolio_governance.get("invalid_link_count", 0),
-            "entry_evidence_gap_count": portfolio_governance.get("entry_evidence_gap_count", 0),
-            "exit_review_required_count": portfolio_governance.get("exit_review_required_count", 0),
+            "entry_evidence_gap_count": portfolio_governance.get(
+                "entry_evidence_gap_count", 0
+            ),
+            "exit_review_required_count": portfolio_governance.get(
+                "exit_review_required_count", 0
+            ),
             "message": (
                 "Open paper positions and recorded exits satisfy the strategy-link, evidence, and lifecycle-review controls."
                 if portfolio_governance["governance_status"] == "pass"
-                else "No open paper position or governed exit is awaiting portfolio-governance review."
-                if portfolio_governance["governance_status"] == "not_ready"
-                else portfolio_governance.get("error")
-                or "Paper portfolio contains unlinked, invalid, evidence-gap, or unreviewed-exit records."
+                else (
+                    "No open paper position or governed exit is awaiting portfolio-governance review."
+                    if portfolio_governance["governance_status"] == "not_ready"
+                    else portfolio_governance.get("error")
+                    or "Paper portfolio contains unlinked, invalid, evidence-gap, or unreviewed-exit records."
+                )
             ),
         },
     }
@@ -5095,10 +5329,16 @@ def assess_market_desk_operational_readiness(
     return {
         "schema_version": "market-desk-operational-readiness.v1",
         "market_data_mode": market_data_mode,
-        "observation_desk_status": "ready" if checks["observation_data"]["status"] == "pass" else "blocked",
+        "observation_desk_status": (
+            "ready" if checks["observation_data"]["status"] == "pass" else "blocked"
+        ),
         "public_paper_desk_status": "ready" if public_paper_entry_ready else "blocked",
         "public_paper_entry_status": "ready" if public_paper_entry_ready else "blocked",
-        "formal_paper_desk_status": "not_enabled" if public_observation_mode else "ready" if formal_ready else "blocked",
+        "formal_paper_desk_status": (
+            "not_enabled"
+            if public_observation_mode
+            else "ready" if formal_ready else "blocked"
+        ),
         "checks": checks,
         "strategy_entry_count": strategy_entries,
         "active_strategy_entry_count": active_strategy_entries,
@@ -5141,7 +5381,9 @@ def assess_market_desk_operating_maturity(
     )
     books = get_market_desk_strategy_books(ledger_path=resolved_ledger_path)
     review_queue = get_market_desk_review_queue(ledger_path=resolved_ledger_path)
-    postmortem_queue = get_market_desk_postmortem_queue(ledger_path=resolved_ledger_path)
+    postmortem_queue = get_market_desk_postmortem_queue(
+        ledger_path=resolved_ledger_path
+    )
     runtime = dict(scheduler_status or get_scheduler_status())
     readiness_checks = readiness["checks"]
     review_counts = dict(readiness_checks["reproducible_reviews"]["counts"])
@@ -5158,25 +5400,36 @@ def assess_market_desk_operating_maturity(
     eod_control_status = (
         "blocked"
         if not scheduler_running
-        else "evidence_pending"
-        if eod_readiness_dependency_blockers
-        else "operational"
+        else "evidence_pending" if eod_readiness_dependency_blockers else "operational"
     )
     requirements = {
         "whole_market_observation": {
             "status": (
                 "operational"
                 if readiness_checks["observation_history"]["status"] == "pass"
-                and int(readiness_checks["observation_history"].get("eod_valid_count") or 0) > 0
-                else "blocked"
-                if readiness_checks["observation_history"]["status"] == "warning"
-                else "evidence_pending"
+                and int(
+                    readiness_checks["observation_history"].get("eod_valid_count") or 0
+                )
+                > 0
+                else (
+                    "blocked"
+                    if readiness_checks["observation_history"]["status"] == "warning"
+                    else "evidence_pending"
+                )
             ),
             "evidence": {
-                "valid_archive_count": readiness_checks["observation_history"]["valid_count"],
-                "latest_valid_observed_at": readiness_checks["observation_history"]["latest_valid_observed_at"],
-                "eod_valid_archive_count": readiness_checks["observation_history"].get("eod_valid_count", 0),
-                "latest_valid_eod_observed_at": readiness_checks["observation_history"].get("latest_valid_eod_observed_at"),
+                "valid_archive_count": readiness_checks["observation_history"][
+                    "valid_count"
+                ],
+                "latest_valid_observed_at": readiness_checks["observation_history"][
+                    "latest_valid_observed_at"
+                ],
+                "eod_valid_archive_count": readiness_checks["observation_history"].get(
+                    "eod_valid_count", 0
+                ),
+                "latest_valid_eod_observed_at": readiness_checks[
+                    "observation_history"
+                ].get("latest_valid_eod_observed_at"),
             },
             "message": "Whole-market public observation requires immutable, integrity-checked EOD archives.",
         },
@@ -5186,26 +5439,42 @@ def assess_market_desk_operating_maturity(
                 if int(discovery_history.get("usable_eod_valid_count") or 0) > 0
                 and int(discovery_history.get("invalid_count") or 0) == 0
                 and not discovery_history.get("usable_eod_duplicate_run_dates")
-                else "blocked"
-                if int(discovery_history.get("invalid_count") or 0) > 0
-                or discovery_history.get("usable_eod_duplicate_run_dates")
-                else "evidence_pending"
+                else (
+                    "blocked"
+                    if int(discovery_history.get("invalid_count") or 0) > 0
+                    or discovery_history.get("usable_eod_duplicate_run_dates")
+                    else "evidence_pending"
+                )
             ),
             "evidence": {
                 "valid_archive_count": discovery_history.get("valid_count", 0),
                 "eod_valid_archive_count": discovery_history.get("eod_valid_count", 0),
                 "invalid_archive_count": discovery_history.get("invalid_count", 0),
-                "latest_valid_observed_at": discovery_history.get("latest_valid_observed_at"),
-                "latest_valid_eod_observed_at": discovery_history.get("latest_valid_eod_observed_at"),
-                "usable_eod_valid_archive_count": discovery_history.get("usable_eod_valid_count", 0),
-                "latest_usable_eod_observed_at": discovery_history.get("latest_usable_eod_observed_at"),
-                "usable_eod_duplicate_run_dates": discovery_history.get("usable_eod_duplicate_run_dates", []),
+                "latest_valid_observed_at": discovery_history.get(
+                    "latest_valid_observed_at"
+                ),
+                "latest_valid_eod_observed_at": discovery_history.get(
+                    "latest_valid_eod_observed_at"
+                ),
+                "usable_eod_valid_archive_count": discovery_history.get(
+                    "usable_eod_valid_count", 0
+                ),
+                "latest_usable_eod_observed_at": discovery_history.get(
+                    "latest_usable_eod_observed_at"
+                ),
+                "usable_eod_duplicate_run_dates": discovery_history.get(
+                    "usable_eod_duplicate_run_dates", []
+                ),
                 "archive_directory": discovery_history.get("archive_directory"),
             },
             "message": "Whole-market discovery requires one verified EOD archive with an actual usable public cross-section; a duplicate usable EOD run is an operating exception. Discovery archives create research leads only, never candidates, recommendations, or orders.",
         },
         "strategy_lifecycle": {
-            "status": "operational" if strategy_count and not review_queue["due_count"] else "blocked" if review_queue["due_count"] else "evidence_pending",
+            "status": (
+                "operational"
+                if strategy_count and not review_queue["due_count"]
+                else "blocked" if review_queue["due_count"] else "evidence_pending"
+            ),
             "evidence": {
                 "strategy_plan_count": strategy_count,
                 "active_strategy_plan_count": readiness["active_strategy_entry_count"],
@@ -5219,17 +5488,34 @@ def assess_market_desk_operating_maturity(
                 "operational"
                 if readiness_checks["paper_portfolio_governance"]["status"] == "pass"
                 and (
-                    int(readiness_checks["paper_portfolio_governance"]["position_count"] or 0) > 0
-                    or int(readiness_checks["paper_portfolio_governance"]["governed_count"] or 0) > 0
+                    int(
+                        readiness_checks["paper_portfolio_governance"]["position_count"]
+                        or 0
+                    )
+                    > 0
+                    or int(
+                        readiness_checks["paper_portfolio_governance"]["governed_count"]
+                        or 0
+                    )
+                    > 0
                 )
-                else "evidence_pending"
-                if readiness_checks["paper_portfolio_governance"]["status"] == "pass"
-                else "blocked"
+                else (
+                    "evidence_pending"
+                    if readiness_checks["paper_portfolio_governance"]["status"]
+                    == "pass"
+                    else "blocked"
+                )
             ),
             "evidence": {
-                "position_count": readiness_checks["paper_portfolio_governance"]["position_count"],
-                "governed_count": readiness_checks["paper_portfolio_governance"]["governed_count"],
-                "exit_review_required_count": readiness_checks["paper_portfolio_governance"]["exit_review_required_count"],
+                "position_count": readiness_checks["paper_portfolio_governance"][
+                    "position_count"
+                ],
+                "governed_count": readiness_checks["paper_portfolio_governance"][
+                    "governed_count"
+                ],
+                "exit_review_required_count": readiness_checks[
+                    "paper_portfolio_governance"
+                ]["exit_review_required_count"],
             },
             "message": "The control is operational only after it has governed at least one paper position; an empty portfolio leaves the control available but unexercised.",
         },
@@ -5245,15 +5531,21 @@ def assess_market_desk_operating_maturity(
             "status": (
                 "blocked"
                 if postmortem_queue["due_count"]
-                else "operational"
-                if readiness_checks["quality_feedback"]["status"] == "pass"
-                and readiness_checks["postmortem_control"]["status"] == "pass"
-                and int(postmortem_queue["underperformance_review_count"] or 0) > 0
-                else "evidence_pending"
+                else (
+                    "operational"
+                    if readiness_checks["quality_feedback"]["status"] == "pass"
+                    and readiness_checks["postmortem_control"]["status"] == "pass"
+                    and int(postmortem_queue["underperformance_review_count"] or 0) > 0
+                    else "evidence_pending"
+                )
             ),
             "evidence": {
-                "quality_feedback_entry_count": readiness_checks["quality_feedback"]["assessed_entry_count"],
-                "underperformance_review_count": postmortem_queue["underperformance_review_count"],
+                "quality_feedback_entry_count": readiness_checks["quality_feedback"][
+                    "assessed_entry_count"
+                ],
+                "underperformance_review_count": postmortem_queue[
+                    "underperformance_review_count"
+                ],
                 "postmortem_due_count": postmortem_queue["due_count"],
             },
             "message": "A postmortem control is not proven until a frozen underperformance review and an anchored feedback/postmortem loop exist.",
@@ -5267,13 +5559,19 @@ def assess_market_desk_operating_maturity(
             "message": (
                 "The runtime is live, but the current session's ordered EOD dependency chain has not completed."
                 if eod_control_status == "evidence_pending"
-                else "The scheduler is not running, so EOD controls cannot be relied upon."
-                if eod_control_status == "blocked"
-                else "The live scheduler completed the current session's ordered EOD dependency chain."
+                else (
+                    "The scheduler is not running, so EOD controls cannot be relied upon."
+                    if eod_control_status == "blocked"
+                    else "The live scheduler completed the current session's ordered EOD dependency chain."
+                )
             ),
         },
         "formal_release_boundary": {
-            "status": "not_enabled" if readiness["market_data_mode"] == "public_observation" else readiness["formal_paper_desk_status"],
+            "status": (
+                "not_enabled"
+                if readiness["market_data_mode"] == "public_observation"
+                else readiness["formal_paper_desk_status"]
+            ),
             "evidence": {
                 "market_data_mode": readiness["market_data_mode"],
                 "formal_paper_desk_status": readiness["formal_paper_desk_status"],
@@ -5289,9 +5587,11 @@ def assess_market_desk_operating_maturity(
     maturity_status = (
         "blocked"
         if "blocked" in material_statuses
-        else "operating_proof_established"
-        if all(status == "operational" for status in material_statuses)
-        else "evidence_accumulating"
+        else (
+            "operating_proof_established"
+            if all(status == "operational" for status in material_statuses)
+            else "evidence_accumulating"
+        )
     )
     return {
         "schema_version": "market-desk-operating-maturity.v1",
@@ -5325,7 +5625,9 @@ def _audit_market_desk_portfolio_governance(
             raw_portfolio = json.loads(portfolio_path.read_text(encoding="utf-8"))
             if not isinstance(raw_portfolio, Mapping):
                 raise ValueError("portfolio root must be a JSON object")
-            return audit_paper_portfolio_governance(raw_portfolio, ledger_path=ledger_path)
+            return audit_paper_portfolio_governance(
+                raw_portfolio, ledger_path=ledger_path
+            )
         return audit_paper_portfolio_governance(
             {"positions": {}, "trades": []}, ledger_path=ledger_path
         )
@@ -5375,7 +5677,9 @@ def transition_market_desk_strategy_plan(
     if desired_state == StrategyState.ACTIVE:
         _validate_active_ic_before_release(current_plan, ic_decision)
         if not isinstance(release_inputs, Mapping):
-            raise ValueError("active strategy plans require authoritative release_inputs")
+            raise ValueError(
+                "active strategy plans require authoritative release_inputs"
+            )
         portfolio_governance = _audit_market_desk_portfolio_governance(
             portfolio_path=portfolio_path or DEFAULT_PORTFOLIO_PATH,
             ledger_path=resolved_path,
@@ -5386,32 +5690,46 @@ def transition_market_desk_strategy_plan(
             )
         prospective_plan = current_plan.to_dict()
         prospective_plan["state"] = StrategyState.ACTIVE.value
-        health = RestrictedListStore(restricted_list_path or DEFAULT_RESTRICTED_LIST_PATH).health()
+        health = RestrictedListStore(
+            restricted_list_path or DEFAULT_RESTRICTED_LIST_PATH
+        ).health()
         candidate_with_compliance = _candidate_with_restricted_list_context(
-                _required_release_packet(release_inputs, "candidate"),
-                restricted_targets=(),
-                restricted_list_path=restricted_list_path,
-            )[0]
+            _required_release_packet(release_inputs, "candidate"),
+            restricted_targets=(),
+            restricted_list_path=restricted_list_path,
+        )[0]
         frozen_release_package = {
             "schema_version": "market-desk-release-package.v1",
             "snapshot": dict(_required_release_packet(release_inputs, "snapshot")),
             "rotation": dict(_required_release_packet(release_inputs, "rotation")),
             "candidate": candidate_with_compliance,
-            "risk_budget": dict(_required_release_packet(release_inputs, "risk_budget")),
-            "structural_risk": dict(_required_release_packet(release_inputs, "structural_risk")),
+            "risk_budget": dict(
+                _required_release_packet(release_inputs, "risk_budget")
+            ),
+            "structural_risk": dict(
+                _required_release_packet(release_inputs, "structural_risk")
+            ),
             "restricted_list_health": health,
             "portfolio_governance": portfolio_governance,
-            "require_full_rotation": bool(release_inputs.get("require_full_rotation", False)),
+            "require_full_rotation": bool(
+                release_inputs.get("require_full_rotation", False)
+            ),
         }
         if isinstance(release_inputs.get("decision_review"), Mapping):
-            frozen_release_package["decision_review"] = dict(release_inputs["decision_review"])
+            frozen_release_package["decision_review"] = dict(
+                release_inputs["decision_review"]
+            )
         frozen_release_package["content_hashes"] = {
             key: _content_hash(value)
             for key, value in frozen_release_package.items()
             if key not in {"schema_version", "content_hashes"}
         }
         frozen_release_package["package_hash"] = _content_hash(
-            {key: value for key, value in frozen_release_package.items() if key != "package_hash"}
+            {
+                key: value
+                for key, value in frozen_release_package.items()
+                if key != "package_hash"
+            }
         )
         report = verify_paper_desk_release(
             snapshot=frozen_release_package["snapshot"],
@@ -5427,7 +5745,9 @@ def transition_market_desk_strategy_plan(
         )
         release_assurance = report.to_dict()
         if report.verdict != "pass":
-            raise ValueError(f"active strategy plan release assurance failed: {report.blockers[0]}")
+            raise ValueError(
+                f"active strategy plan release assurance failed: {report.blockers[0]}"
+            )
     transitioned = transition_strategy_plan(
         current_plan,
         next_state,
@@ -5459,7 +5779,11 @@ def transition_market_desk_strategy_plan(
         status_after=status_after,
     )
     updated = ledger.record_observation(entry_id, observation)
-    return {"success": True, "ledger_path": str(resolved_path), "entry": updated.to_dict()}
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "entry": updated.to_dict(),
+    }
 
 
 def record_market_desk_strategy_review(
@@ -5514,10 +5838,16 @@ def record_market_desk_strategy_review(
         },
     )
     updated = ledger.record_observation(entry_id, observation)
-    return {"success": True, "ledger_path": str(resolved_path), "entry": updated.to_dict()}
+    return {
+        "success": True,
+        "ledger_path": str(resolved_path),
+        "entry": updated.to_dict(),
+    }
 
 
-def _required_release_packet(release_inputs: Mapping[str, Any], name: str) -> Mapping[str, Any]:
+def _required_release_packet(
+    release_inputs: Mapping[str, Any], name: str
+) -> Mapping[str, Any]:
     packet = release_inputs.get(name)
     if not isinstance(packet, Mapping):
         raise ValueError(f"active strategy plans require release_inputs.{name}")
@@ -5525,16 +5855,22 @@ def _required_release_packet(release_inputs: Mapping[str, Any], name: str) -> Ma
 
 
 def _content_hash(value: Any) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
-def _validate_active_ic_before_release(plan: StrategyPlan, decision: Optional[Mapping[str, Any]]) -> None:
+def _validate_active_ic_before_release(
+    plan: StrategyPlan, decision: Optional[Mapping[str, Any]]
+) -> None:
     """Fail missing or malformed IC evidence before inspecting release attachments."""
     if not isinstance(decision, Mapping):
         raise ValueError("active strategy plans require an IC decision record")
     if str(decision.get("candidate_id") or "") != plan.plan_id:
-        raise ValueError("active strategy plans require an IC decision bound to the strategy plan")
+        raise ValueError(
+            "active strategy plans require an IC decision bound to the strategy plan"
+        )
 
 
 def record_market_desk_paper_decision_review(
@@ -5583,7 +5919,10 @@ def record_market_desk_paper_decision_review(
             f"active_return={review.active_return:+.2%} vs {review.benchmark_id}."
         ),
         observed_at=datetime.fromisoformat(review.evaluation_end),
-        evidence={"paper_decision_review": review.to_dict(), "ic_decision": dict(ic_decision)},
+        evidence={
+            "paper_decision_review": review.to_dict(),
+            "ic_decision": dict(ic_decision),
+        },
     )
     updated = ledger.record_observation(entry_id, observation)
     return {
@@ -5643,25 +5982,16 @@ def record_quality_feedback(
         catalyst_outcomes=[
             CatalystOutcome.from_dict(c) for c in (catalyst_outcomes or [])
         ],
-        risk_outcomes=[
-            RiskOutcome.from_dict(r) for r in (risk_outcomes or [])
-        ],
-        unpredicted_risks=[
-            RiskOutcome.from_dict(r) for r in (unpredicted_risks or [])
-        ],
-        agent_scores=[
-            AgentRoleScore.from_dict(a) for a in (agent_scores or [])
-        ],
+        risk_outcomes=[RiskOutcome.from_dict(r) for r in (risk_outcomes or [])],
+        unpredicted_risks=[RiskOutcome.from_dict(r) for r in (unpredicted_risks or [])],
+        agent_scores=[AgentRoleScore.from_dict(a) for a in (agent_scores or [])],
         notes=notes,
         evidence_refs=normalized_evidence_refs,
     )
     serialized_report = report.to_dict()
     observation = ResearchObservation(
         observation_type="quality_feedback",
-        note=(
-            "Research quality feedback recorded"
-            + (f": {notes}" if notes else ".")
-        ),
+        note=("Research quality feedback recorded" + (f": {notes}" if notes else ".")),
         observed_at=_parse_datetime(serialized_report["assessed_at"], datetime.now()),
         evidence={"quality_feedback": serialized_report},
     )
@@ -5707,9 +6037,7 @@ def _quality_feedback_evidence_anchors(
     return anchors
 
 
-def _quality_feedback_is_anchored(
-    feedback: Any, anchors: set[str]
-) -> bool:
+def _quality_feedback_is_anchored(feedback: Any, anchors: set[str]) -> bool:
     if not isinstance(feedback, Mapping) or not anchors:
         return False
     refs = feedback.get("evidence_refs")
@@ -5745,6 +6073,7 @@ async def get_earnings_calendar(
 ) -> dict[str, Any]:
     """Fetch earnings disclosure calendar."""
     from .financial.earnings_calendar import get_earnings_calendar as _get_cal
+
     return await _get_cal(
         period=period,
         codes=codes,

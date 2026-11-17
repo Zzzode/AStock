@@ -117,7 +117,10 @@ def test_crypto_proposal_generates_source_labelled_signed_paper_targets() -> Non
         market_data,
         assets,
         as_of=_as_of(),
-        funding_data={"BTC-PERP": _funding("BTC-PERP"), "SOL-PERP": _funding("SOL-PERP")},
+        funding_data={
+            "BTC-PERP": _funding("BTC-PERP"),
+            "SOL-PERP": _funding("SOL-PERP"),
+        },
         config=_config(),
         source_refs=["fixture:proposal-input"],
         source_archive_ids=["sha256:crypto-fixture"],
@@ -203,7 +206,9 @@ def test_crypto_proposal_applies_exchange_concentration_cap() -> None:
             "status": "capped",
         }
     ]
-    assert sum(abs(target["target_weight"]) for target in result["targets"]) <= 0.22 + 1e-8
+    assert (
+        sum(abs(target["target_weight"]) for target in result["targets"]) <= 0.22 + 1e-8
+    )
 
 
 def test_crypto_proposal_enforces_asset_point_in_time_eligibility() -> None:

@@ -73,17 +73,15 @@ async def run_verification_sweep(
                 verified.append(result.to_dict())
 
                 if prediction.research_entry_id:
-                    _update_research_entry(
-                        research_path, prediction, result
-                    )
+                    _update_research_entry(research_path, prediction, result)
             except Exception as e:
-                logger.warning(
-                    f"Failed to verify {prediction.prediction_id}: {e}"
+                logger.warning(f"Failed to verify {prediction.prediction_id}: {e}")
+                errors.append(
+                    {
+                        "prediction_id": prediction.prediction_id,
+                        "error": str(e),
+                    }
                 )
-                errors.append({
-                    "prediction_id": prediction.prediction_id,
-                    "error": str(e),
-                })
 
         return {
             "status": "ok",
@@ -117,19 +115,23 @@ async def _verify_single(
     if isinstance(quotes, list):
         for q in quotes:
             if hasattr(q, "date"):
-                price_series.append({
-                    "date": str(q.date),
-                    "close": float(q.close),
-                    "high": float(q.high),
-                    "low": float(q.low),
-                })
+                price_series.append(
+                    {
+                        "date": str(q.date),
+                        "close": float(q.close),
+                        "high": float(q.high),
+                        "low": float(q.low),
+                    }
+                )
             elif isinstance(q, dict):
-                price_series.append({
-                    "date": str(q.get("date", "")),
-                    "close": float(q.get("close", 0)),
-                    "high": float(q.get("high", q.get("close", 0))),
-                    "low": float(q.get("low", q.get("close", 0))),
-                })
+                price_series.append(
+                    {
+                        "date": str(q.get("date", "")),
+                        "close": float(q.get("close", 0)),
+                        "high": float(q.get("high", q.get("close", 0))),
+                        "low": float(q.get("low", q.get("close", 0))),
+                    }
+                )
 
     return verify_prediction(prediction, price_series)
 

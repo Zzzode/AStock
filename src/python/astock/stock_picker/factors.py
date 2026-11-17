@@ -268,10 +268,10 @@ def get_factor_keys_by_type(factor_type: FactorType) -> list[str]:
 
 # High dividend screening factor combination (reasonable valuation + growth)
 HIGH_DIVIDEND_FACTORS = [
-    "pe_positive",      # Profitable company
-    "pe_very_low",      # PE < 15, low valuation
-    "pb_very_low",      # PB < 1.5, low valuation
-    "volume_steady",    # Minimum liquidity
+    "pe_positive",  # Profitable company
+    "pe_very_low",  # PE < 15, low valuation
+    "pb_very_low",  # PB < 1.5, low valuation
+    "volume_steady",  # Minimum liquidity
 ]
 
 # Value investing factor combination

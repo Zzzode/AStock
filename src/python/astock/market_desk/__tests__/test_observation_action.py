@@ -24,7 +24,9 @@ def _candidate() -> dict[str, object]:
 
 
 def test_public_realtime_observation_can_issue_only_conditional_paper_action() -> None:
-    result = evaluate_observation_action(_candidate(), regime=MarketRegime.SELECTIVE_RISK_ON)
+    result = evaluate_observation_action(
+        _candidate(), regime=MarketRegime.SELECTIVE_RISK_ON
+    )
 
     assert result.action == ObservationAction.CONDITIONAL_PAPER_ENTRY
     assert result.formal_decision_eligible is False

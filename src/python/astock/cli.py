@@ -29,7 +29,14 @@ from .monitor.service_status import (
     get_uptime_info,
     format_duration,
 )
-from .config import ConfigManager, DecisionCadence, MarketDataMode, TradingStyle, RiskLevel, EmailConfig
+from .config import (
+    ConfigManager,
+    DecisionCadence,
+    MarketDataMode,
+    TradingStyle,
+    RiskLevel,
+    EmailConfig,
+)
 from .learning import StyleAnalyzer
 from .utils import DataSourceError, ValidationError
 
@@ -1403,7 +1410,9 @@ def strategy_catalog(
 @strategy_app.command("cta-proposal")
 def strategy_cta_proposal(
     market_data_path: Path = typer.Option(
-        ..., "--market-data-path", help="JSON mapping of instrument ids to dated futures bars."
+        ...,
+        "--market-data-path",
+        help="JSON mapping of instrument ids to dated futures bars.",
     ),
     instruments_path: Path = typer.Option(
         ..., "--instruments-path", help="JSON mapping of dated contract specifications."
@@ -1413,11 +1422,15 @@ def strategy_cta_proposal(
         "--access-profile-path",
         help="Required dated broker/exchange futures eligibility profile; it never authorises an order.",
     ),
-    capital: float = typer.Option(..., "--capital", min=0.01, help="Paper risk capital."),
+    capital: float = typer.Option(
+        ..., "--capital", min=0.01, help="Paper risk capital."
+    ),
     config_path: Optional[Path] = typer.Option(
         None, "--config-path", help="Optional predeclared CTA configuration JSON."
     ),
-    as_of: Optional[str] = typer.Option(None, "--as-of", help="Signal date YYYY-MM-DD."),
+    as_of: Optional[str] = typer.Option(
+        None, "--as-of", help="Signal date YYYY-MM-DD."
+    ),
     previous_contracts_path: Optional[Path] = typer.Option(
         None, "--previous-contracts-path", help="Optional signed paper holdings JSON."
     ),
@@ -1426,9 +1439,17 @@ def strategy_cta_proposal(
     """Generate a domestic-futures CTA paper target; no broker orders are created."""
     try:
         market_data = _load_json_object(market_data_path, label="market data")
-        instruments = _load_json_object(instruments_path, label="instrument specifications")
-        access_profile = _load_json_object(access_profile_path, label="futures access profile")
-        config = _load_json_object(config_path, label="CTA configuration") if config_path else None
+        instruments = _load_json_object(
+            instruments_path, label="instrument specifications"
+        )
+        access_profile = _load_json_object(
+            access_profile_path, label="futures access profile"
+        )
+        config = (
+            _load_json_object(config_path, label="CTA configuration")
+            if config_path
+            else None
+        )
         previous = (
             _load_json_object(previous_contracts_path, label="previous contracts")
             if previous_contracts_path
@@ -1448,22 +1469,28 @@ def strategy_cta_proposal(
     if json_output:
         _print_json(result)
         return
-    console.print(Panel(
-        f"As of: {result['as_of']}\n"
-        f"Targets: {len(result['targets'])}\n"
-        f"Gross margin: {result['gross_margin']:,.2f}\n"
-        "Research-only paper target; no order was created.",
-        title="Domestic Futures CTA Proposal",
-    ))
+    console.print(
+        Panel(
+            f"As of: {result['as_of']}\n"
+            f"Targets: {len(result['targets'])}\n"
+            f"Gross margin: {result['gross_margin']:,.2f}\n"
+            "Research-only paper target; no order was created.",
+            title="Domestic Futures CTA Proposal",
+        )
+    )
 
 
 @strategy_app.command("crypto-proposal")
 def strategy_crypto_proposal(
     market_data_path: Path = typer.Option(
-        ..., "--market-data-path", help="JSON mapping of crypto asset ids to dated OHLCV bars."
+        ...,
+        "--market-data-path",
+        help="JSON mapping of crypto asset ids to dated OHLCV bars.",
     ),
     assets_path: Path = typer.Option(
-        ..., "--assets-path", help="JSON mapping of dated crypto asset and venue eligibility facts."
+        ...,
+        "--assets-path",
+        help="JSON mapping of dated crypto asset and venue eligibility facts.",
     ),
     access_profile_path: Path = typer.Option(
         ...,
@@ -1471,16 +1498,24 @@ def strategy_crypto_proposal(
         help="Required dated non-Mainland jurisdiction, venue, custody and data-access research profile; it never establishes legality.",
     ),
     as_of: str = typer.Option(
-        ..., "--as-of", help="Timezone-aware signal cutoff, for example 2026-08-15T00:00:00Z."
+        ...,
+        "--as-of",
+        help="Timezone-aware signal cutoff, for example 2026-08-15T00:00:00Z.",
     ),
     funding_data_path: Optional[Path] = typer.Option(
-        None, "--funding-data-path", help="Optional JSON mapping of dated perpetual funding observations."
+        None,
+        "--funding-data-path",
+        help="Optional JSON mapping of dated perpetual funding observations.",
     ),
     config_path: Optional[Path] = typer.Option(
-        None, "--config-path", help="Optional predeclared crypto strategy configuration JSON."
+        None,
+        "--config-path",
+        help="Optional predeclared crypto strategy configuration JSON.",
     ),
     previous_weights_path: Optional[Path] = typer.Option(
-        None, "--previous-weights-path", help="Optional prior signed paper weights by asset id."
+        None,
+        "--previous-weights-path",
+        help="Optional prior signed paper weights by asset id.",
     ),
     source_refs: list[str] = typer.Option(
         [], "--source-ref", help="Proposal-level source reference; repeatable."
@@ -1494,13 +1529,19 @@ def strategy_crypto_proposal(
     try:
         market_data = _load_json_object(market_data_path, label="crypto market data")
         assets = _load_json_object(assets_path, label="crypto asset specifications")
-        access_profile = _load_json_object(access_profile_path, label="crypto access profile")
+        access_profile = _load_json_object(
+            access_profile_path, label="crypto access profile"
+        )
         funding_data = (
             _load_json_object(funding_data_path, label="crypto funding data")
             if funding_data_path
             else None
         )
-        config = _load_json_object(config_path, label="crypto strategy configuration") if config_path else None
+        config = (
+            _load_json_object(config_path, label="crypto strategy configuration")
+            if config_path
+            else None
+        )
         previous_weights = (
             _load_json_object(previous_weights_path, label="previous crypto weights")
             if previous_weights_path
@@ -1522,20 +1563,24 @@ def strategy_crypto_proposal(
     if json_output:
         _print_json(result)
         return
-    console.print(Panel(
-        f"As of: {result['as_of']}\n"
-        f"Paper targets: {len(result['targets'])}\n"
-        f"Data assurance: {result['data_quality']}\n"
-        f"Blockers: {len(result['blockers'])}\n"
-        "Research-only 24/7 paper proposal; no exchange, custody, wallet, or broker instruction was created.",
-        title="Crypto Time-Series Momentum Data Gate",
-    ))
+    console.print(
+        Panel(
+            f"As of: {result['as_of']}\n"
+            f"Paper targets: {len(result['targets'])}\n"
+            f"Data assurance: {result['data_quality']}\n"
+            f"Blockers: {len(result['blockers'])}\n"
+            "Research-only 24/7 paper proposal; no exchange, custody, wallet, or broker instruction was created.",
+            title="Crypto Time-Series Momentum Data Gate",
+        )
+    )
 
 
 @strategy_app.command("factor-proposal")
 def strategy_factor_proposal(
     universe_path: Path = typer.Option(
-        ..., "--universe-path", help="JSON array of source-labelled A-share universe records."
+        ...,
+        "--universe-path",
+        help="JSON array of source-labelled A-share universe records.",
     ),
     config_path: Optional[Path] = typer.Option(
         None, "--config-path", help="Optional predeclared factor configuration JSON."
@@ -1553,7 +1598,11 @@ def strategy_factor_proposal(
     """Generate a liquid long-only A-share factor-tilt paper proposal."""
     try:
         universe = _load_json_array(universe_path, label="factor universe")
-        config = _load_json_object(config_path, label="factor configuration") if config_path else None
+        config = (
+            _load_json_object(config_path, label="factor configuration")
+            if config_path
+            else None
+        )
         result = capabilities.build_ashare_factor_tilt_proposal(
             universe,
             config=config,
@@ -1565,19 +1614,23 @@ def strategy_factor_proposal(
     if json_output:
         _print_json(result)
         return
-    console.print(Panel(
-        f"As of: {result['as_of']}\n"
-        f"Paper targets: {len(result['targets'])}\n"
-        f"Hard vetoes: {len(result['hard_vetoes'])}\n"
-        "Long-only research proposal; no order was created.",
-        title="A-share Factor Tilt Proposal",
-    ))
+    console.print(
+        Panel(
+            f"As of: {result['as_of']}\n"
+            f"Paper targets: {len(result['targets'])}\n"
+            f"Hard vetoes: {len(result['hard_vetoes'])}\n"
+            "Long-only research proposal; no order was created.",
+            title="A-share Factor Tilt Proposal",
+        )
+    )
 
 
 @strategy_app.command("earnings-proposal")
 def strategy_earnings_proposal(
     announcements_path: Path = typer.Option(
-        ..., "--announcements-path", help="JSON array of timestamped public-announcement records."
+        ...,
+        "--announcements-path",
+        help="JSON array of timestamped public-announcement records.",
     ),
     config_path: Optional[Path] = typer.Option(
         None, "--config-path", help="Optional predeclared event configuration JSON."
@@ -1595,7 +1648,11 @@ def strategy_earnings_proposal(
     """Generate a public-announcement earnings repricing paper proposal."""
     try:
         announcements = _load_json_array(announcements_path, label="announcements")
-        config = _load_json_object(config_path, label="event configuration") if config_path else None
+        config = (
+            _load_json_object(config_path, label="event configuration")
+            if config_path
+            else None
+        )
         result = capabilities.build_earnings_event_repricing_proposal(
             announcements,
             config=config,
@@ -1607,13 +1664,15 @@ def strategy_earnings_proposal(
     if json_output:
         _print_json(result)
         return
-    console.print(Panel(
-        f"As of: {result['as_of']}\n"
-        f"Paper targets: {len(result['targets'])}\n"
-        f"Hard vetoes: {len(result['hard_vetoes'])}\n"
-        "Public-information research proposal; no order was created.",
-        title="Earnings Event Repricing Proposal",
-    ))
+    console.print(
+        Panel(
+            f"As of: {result['as_of']}\n"
+            f"Paper targets: {len(result['targets'])}\n"
+            f"Hard vetoes: {len(result['hard_vetoes'])}\n"
+            "Public-information research proposal; no order was created.",
+            title="Earnings Event Repricing Proposal",
+        )
+    )
 
 
 @strategy_app.command("allocate")
@@ -1632,8 +1691,16 @@ def strategy_allocate(
     """Combine source-labelled strategy proposals into segregated paper ledgers."""
     try:
         sleeves = _load_json_object(sleeves_path, label="sleeve proposals")
-        policy = _load_json_object(policy_path, label="allocation policy") if policy_path else None
-        risk_budget = _load_json_object(risk_budget_path, label="risk budget") if risk_budget_path else None
+        policy = (
+            _load_json_object(policy_path, label="allocation policy")
+            if policy_path
+            else None
+        )
+        risk_budget = (
+            _load_json_object(risk_budget_path, label="risk budget")
+            if risk_budget_path
+            else None
+        )
         result = capabilities.allocate_personal_strategy_sleeves(
             sleeves,
             policy=policy,
@@ -1644,22 +1711,29 @@ def strategy_allocate(
     if json_output:
         _print_json(result)
         return
-    console.print(Panel(
-        f"State: {result['state']}\n"
-        f"Security targets: {len(result['ledgers']['security']['targets'])}\n"
-        f"Futures targets: {len(result['ledgers']['futures']['targets'])}\n"
-        "Paper allocation only; no order was created.",
-        title="Personal Multi-sleeve Allocation",
-    ))
+    console.print(
+        Panel(
+            f"State: {result['state']}\n"
+            f"Security targets: {len(result['ledgers']['security']['targets'])}\n"
+            f"Futures targets: {len(result['ledgers']['futures']['targets'])}\n"
+            "Paper allocation only; no order was created.",
+            title="Personal Multi-sleeve Allocation",
+        )
+    )
 
 
 @strategy_app.command("freeze-public-cta")
 def strategy_freeze_public_cta(
-    symbols: str = typer.Argument(..., help="Comma-separated Sina continuous-futures identifiers, e.g. RB0,M0,AU0."),
+    symbols: str = typer.Argument(
+        ...,
+        help="Comma-separated Sina continuous-futures identifiers, e.g. RB0,M0,AU0.",
+    ),
     start_date: str = typer.Option(..., "--start-date", help="YYYY-MM-DD"),
     end_date: str = typer.Option(..., "--end-date", help="YYYY-MM-DD"),
     instruments_path: Path = typer.Option(
-        ..., "--instruments-path", help="JSON mapping of symbol to dated contract facts."
+        ...,
+        "--instruments-path",
+        help="JSON mapping of symbol to dated contract facts.",
     ),
     archive_directory: Path = typer.Option(
         DB_PATH.parent / "futures-cta-replay-archives",
@@ -1695,7 +1769,9 @@ def strategy_freeze_public_cta(
 @strategy_app.command("cta-backtest")
 def strategy_cta_backtest(
     market_data_path: Path = typer.Option(
-        ..., "--market-data-path", help="JSON mapping of instrument ids to dated futures bars."
+        ...,
+        "--market-data-path",
+        help="JSON mapping of instrument ids to dated futures bars.",
     ),
     instruments_path: Path = typer.Option(
         ..., "--instruments-path", help="JSON mapping of dated contract specifications."
@@ -1705,7 +1781,9 @@ def strategy_cta_backtest(
         "--access-profile-path",
         help="Required dated broker/exchange futures eligibility profile; it never authorises an order.",
     ),
-    capital: float = typer.Option(..., "--capital", min=0.01, help="Initial paper capital."),
+    capital: float = typer.Option(
+        ..., "--capital", min=0.01, help="Initial paper capital."
+    ),
     config_path: Optional[Path] = typer.Option(
         None, "--config-path", help="Optional predeclared CTA configuration JSON."
     ),
@@ -1717,10 +1795,22 @@ def strategy_cta_backtest(
     """Run a settlement-to-settlement domestic-futures CTA paper replay."""
     try:
         market_data = _load_json_object(market_data_path, label="market data")
-        instruments = _load_json_object(instruments_path, label="instrument specifications")
-        access_profile = _load_json_object(access_profile_path, label="futures access profile")
-        config = _load_json_object(config_path, label="CTA configuration") if config_path else None
-        execution = _load_json_object(execution_path, label="CTA execution assumptions") if execution_path else None
+        instruments = _load_json_object(
+            instruments_path, label="instrument specifications"
+        )
+        access_profile = _load_json_object(
+            access_profile_path, label="futures access profile"
+        )
+        config = (
+            _load_json_object(config_path, label="CTA configuration")
+            if config_path
+            else None
+        )
+        execution = (
+            _load_json_object(execution_path, label="CTA execution assumptions")
+            if execution_path
+            else None
+        )
         result = capabilities.run_domestic_futures_cta_backtest(
             market_data,
             instruments,
@@ -1734,19 +1824,25 @@ def strategy_cta_backtest(
     if json_output:
         _print_json(result)
         return
-    console.print(Panel(
-        f"Total return: {result['total_return']:.2%}\n"
-        f"Annualized volatility: {result['annualized_volatility']:.2%}\n"
-        f"Max drawdown: {result['max_drawdown']:.2%}\n"
-        "Research-only paper replay; no order was created.",
-        title="Domestic Futures CTA Backtest",
-    ))
+    console.print(
+        Panel(
+            f"Total return: {result['total_return']:.2%}\n"
+            f"Annualized volatility: {result['annualized_volatility']:.2%}\n"
+            f"Max drawdown: {result['max_drawdown']:.2%}\n"
+            "Research-only paper replay; no order was created.",
+            title="Domestic Futures CTA Backtest",
+        )
+    )
 
 
 @strategy_app.command("run-frozen-public-cta")
 def strategy_run_frozen_public_cta(
-    replay_input_path: Path = typer.Argument(..., help="Frozen .cta.replay.json input manifest."),
-    capital: float = typer.Option(..., "--capital", min=0.01, help="Initial paper capital."),
+    replay_input_path: Path = typer.Argument(
+        ..., help="Frozen .cta.replay.json input manifest."
+    ),
+    capital: float = typer.Option(
+        ..., "--capital", min=0.01, help="Initial paper capital."
+    ),
     config_path: Optional[Path] = typer.Option(
         None, "--config-path", help="Optional predeclared CTA configuration JSON."
     ),
@@ -1764,10 +1860,22 @@ def strategy_run_frozen_public_cta(
     try:
         replay_input = _load_json_object(replay_input_path, label="CTA replay input")
         manifest = replay_input.get("source_manifest")
-        archive_id = str(manifest.get("archive_id") or "") if isinstance(manifest, dict) else ""
-        archive = source_archive_path or replay_input_path.parent / (archive_id.removeprefix("sha256:") + ".json")
-        config = _load_json_object(config_path, label="CTA configuration") if config_path else None
-        execution = _load_json_object(execution_path, label="CTA execution assumptions") if execution_path else None
+        archive_id = (
+            str(manifest.get("archive_id") or "") if isinstance(manifest, dict) else ""
+        )
+        archive = source_archive_path or replay_input_path.parent / (
+            archive_id.removeprefix("sha256:") + ".json"
+        )
+        config = (
+            _load_json_object(config_path, label="CTA configuration")
+            if config_path
+            else None
+        )
+        execution = (
+            _load_json_object(execution_path, label="CTA execution assumptions")
+            if execution_path
+            else None
+        )
         result = capabilities.run_frozen_public_domestic_futures_cta_backtest(
             replay_input,
             source_archive_path=archive,
@@ -1780,13 +1888,17 @@ def strategy_run_frozen_public_cta(
     if json_output:
         _print_json(result)
         return
-    archive_status = result["data_assurance"].get("archive_assurance", {}).get("status", "unknown")
-    console.print(Panel(
-        f"Archive bytes: {archive_status}\n"
-        f"Replay eligibility: {result['data_assurance']['status']}\n"
-        "Public continuous-series P&L replay is blocked until dated actual-contract and roll data are supplied.",
-        title="Frozen Domestic Futures CTA Data Gate",
-    ))
+    archive_status = (
+        result["data_assurance"].get("archive_assurance", {}).get("status", "unknown")
+    )
+    console.print(
+        Panel(
+            f"Archive bytes: {archive_status}\n"
+            f"Replay eligibility: {result['data_assurance']['status']}\n"
+            "Public continuous-series P&L replay is blocked until dated actual-contract and roll data are supplied.",
+            title="Frozen Domestic Futures CTA Data Gate",
+        )
+    )
 
 
 # ============ Team Feedback Command ============
@@ -2309,11 +2421,10 @@ developer_instructions = """
         )
 
 
-
-
 # ---------------------------------------------------------------------------
 # New capability CLI commands
 # ---------------------------------------------------------------------------
+
 
 @app.command()
 def financials(
@@ -2322,6 +2433,7 @@ def financials(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Fetch structured financial statements with growth rates."""
+
     async def _run():
         return await capabilities.get_financial_statements(code, periods=periods)
 
@@ -2355,6 +2467,7 @@ def news(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Fetch corporate events (news, earnings, dividends)."""
+
     async def _run():
         return await capabilities.get_corporate_events(code, days=days)
 
@@ -2363,10 +2476,16 @@ def news(
         _print_json(result)
     else:
         events = result.get("events", [])
-        console.print(f"[bold]Corporate Events for {code} ({len(events)} events)[/bold]")
+        console.print(
+            f"[bold]Corporate Events for {code} ({len(events)} events)[/bold]"
+        )
         for event in events[:15]:
             severity = event.get("severity", "")
-            color = "red" if severity == "high" else "yellow" if severity == "medium" else "white"
+            color = (
+                "red"
+                if severity == "high"
+                else "yellow" if severity == "medium" else "white"
+            )
             date_str = (event.get("published_at") or "")[:10]
             console.print(
                 f"  [{color}]{date_str} [{event.get('event_type')}] {event.get('title', '')[:60]}[/{color}]"
@@ -2399,7 +2518,9 @@ def predict(
     if json_output:
         _print_json(result)
     else:
-        console.print(f"[green]✓ Prediction recorded: {result['prediction_id']}[/green]")
+        console.print(
+            f"[green]✓ Prediction recorded: {result['prediction_id']}[/green]"
+        )
         console.print(f"  {code} {direction} @ {entry_price}")
         if target_price:
             console.print(f"  Target: {target_price}")
@@ -2411,6 +2532,7 @@ def verify_predictions(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Run auto-verification on all pending predictions."""
+
     async def _run():
         return await capabilities.run_prediction_verification()
 
@@ -2493,6 +2615,7 @@ def migrate(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Run pending database migrations."""
+
     async def _run():
         return await capabilities.run_migrations()
 
@@ -2514,6 +2637,7 @@ def migration_status(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Check database migration status."""
+
     async def _run():
         return await capabilities.get_migration_status()
 
@@ -2558,6 +2682,7 @@ def sync_monitor(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Sync research entries to watch items."""
+
     async def _run():
         return await capabilities.sync_research_monitor()
 
@@ -2578,6 +2703,7 @@ def consistency_check(
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Run data consistency check across sources."""
+
     async def _run():
         return await capabilities.check_data_consistency(code)
 
@@ -2587,7 +2713,11 @@ def consistency_check(
     else:
         conflicts = result.get("conflicts", [])
         quality = result.get("data_quality", "unknown")
-        color = "green" if quality == "consistent" else "yellow" if quality == "partial" else "red"
+        color = (
+            "green"
+            if quality == "consistent"
+            else "yellow" if quality == "partial" else "red"
+        )
         console.print(f"[bold]Consistency Check: {code}[/bold]")
         console.print(f"  Quality: [{color}]{quality}[/{color}]")
         console.print(f"  Conflicts: {len(conflicts)}")
@@ -2678,17 +2808,31 @@ def market_data_sources(
     console.print("[bold]Market Data Source Governance[/bold]")
     for source in result["sources"]:
         status = "configured" if source["configured"] else "not configured"
-        eligibility = "decision/backtest eligible" if source["reproducible_backtest_eligible"] else "observation only"
+        eligibility = (
+            "decision/backtest eligible"
+            if source["reproducible_backtest_eligible"]
+            else "observation only"
+        )
         console.print(f"  {source['source_id']}: {eligibility}; {status}")
 
 
 @app.command("freeze-tushare-daily")
 def freeze_tushare_daily(
-    codes: list[str] = typer.Argument(..., help="Qualified Tushare codes, e.g. 600460.SH"),
-    start_date: str = typer.Option(..., "--start-date", help="Inclusive YYYYMMDD or ISO date"),
-    end_date: str = typer.Option(..., "--end-date", help="Inclusive YYYYMMDD or ISO date"),
-    archive_directory: Path = typer.Option(..., "--archive-directory", help="Immutable archive destination"),
-    user_id: str = typer.Option("default", "--user-id", help="Profile whose licensed-data policy is checked"),
+    codes: list[str] = typer.Argument(
+        ..., help="Qualified Tushare codes, e.g. 600460.SH"
+    ),
+    start_date: str = typer.Option(
+        ..., "--start-date", help="Inclusive YYYYMMDD or ISO date"
+    ),
+    end_date: str = typer.Option(
+        ..., "--end-date", help="Inclusive YYYYMMDD or ISO date"
+    ),
+    archive_directory: Path = typer.Option(
+        ..., "--archive-directory", help="Immutable archive destination"
+    ),
+    user_id: str = typer.Option(
+        "default", "--user-id", help="Profile whose licensed-data policy is checked"
+    ),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Freeze licensed Tushare daily replay inputs without exposing credentials."""
@@ -2716,8 +2860,12 @@ def freeze_tushare_daily(
 @app.command("freeze-tushare-universe")
 def freeze_tushare_universe(
     as_of_date: str = typer.Option(..., "--as-of-date", help="Historical listing date"),
-    archive_directory: Path = typer.Option(..., "--archive-directory", help="Immutable archive destination"),
-    user_id: str = typer.Option("default", "--user-id", help="Profile whose licensed-data policy is checked"),
+    archive_directory: Path = typer.Option(
+        ..., "--archive-directory", help="Immutable archive destination"
+    ),
+    user_id: str = typer.Option(
+        "default", "--user-id", help="Profile whose licensed-data policy is checked"
+    ),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Freeze a licensed Tushare historical listing-universe snapshot."""
@@ -2732,7 +2880,9 @@ def freeze_tushare_universe(
         if json_output:
             _print_json({"error": str(error)})
         else:
-            console.print(f"[red]Unable to freeze Tushare listing universe: {error}[/red]")
+            console.print(
+                f"[red]Unable to freeze Tushare listing universe: {error}[/red]"
+            )
         raise typer.Exit(1)
     if json_output:
         _print_json(result)
@@ -2981,7 +3131,9 @@ def market_desk_enrich_discovery_industry(
         help="Immutable archive destination for normalized public industry lookups.",
     ),
     market_map_path: Optional[Path] = typer.Option(
-        None, "--market-map-path", help="Persistent market relationship mapping JSON path"
+        None,
+        "--market-map-path",
+        help="Persistent market relationship mapping JSON path",
     ),
     candidate_limit: int = typer.Option(20, "--candidate-limit", min=1, max=100),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
@@ -3014,7 +3166,9 @@ def market_desk_promote_discovery(
     source_archive_path: Path = typer.Argument(
         ..., exists=True, readable=True, help="Verified public discovery source archive"
     ),
-    candidate_id: str = typer.Option(..., "--candidate-id", help="Candidate ID from the frozen archive"),
+    candidate_id: str = typer.Option(
+        ..., "--candidate-id", help="Candidate ID from the frozen archive"
+    ),
     ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
     market_map_path: Optional[Path] = typer.Option(
         None,
@@ -3170,12 +3324,28 @@ def market_desk_observation_history(
 
 @app.command("market-desk-observation-exception-review")
 def market_desk_observation_exception_review(
-    session_date: str = typer.Option(..., "--session-date", help="Exchange session date (YYYY-MM-DD)."),
-    archive_id: list[str] = typer.Option(..., "--archive-id", help="Repeat for every valid duplicate archive ID."),
-    canonical_archive_id: str = typer.Option(..., "--canonical-archive-id", help="Archive ID retained as the canonical session record."),
-    reviewer: str = typer.Option(..., "--reviewer", help="Named operations-control reviewer."),
-    reason: str = typer.Option(..., "--reason", help="Evidence-bound explanation for the duplicate run."),
-    evidence_ref: list[str] = typer.Option(..., "--evidence-ref", help="Repeat for supporting ticket or evidence references."),
+    session_date: str = typer.Option(
+        ..., "--session-date", help="Exchange session date (YYYY-MM-DD)."
+    ),
+    archive_id: list[str] = typer.Option(
+        ..., "--archive-id", help="Repeat for every valid duplicate archive ID."
+    ),
+    canonical_archive_id: str = typer.Option(
+        ...,
+        "--canonical-archive-id",
+        help="Archive ID retained as the canonical session record.",
+    ),
+    reviewer: str = typer.Option(
+        ..., "--reviewer", help="Named operations-control reviewer."
+    ),
+    reason: str = typer.Option(
+        ..., "--reason", help="Evidence-bound explanation for the duplicate run."
+    ),
+    evidence_ref: list[str] = typer.Option(
+        ...,
+        "--evidence-ref",
+        help="Repeat for supporting ticket or evidence references.",
+    ),
     archive_directory: Path = typer.Option(
         DB_PATH.parent / "market-desk-observation-runs",
         "--archive-directory",
@@ -3220,7 +3390,9 @@ def market_desk_observation_action(
     try:
         candidate = json.loads(candidate_file.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
-        raise typer.BadParameter(f"Observation candidate must be valid JSON: {exc}") from exc
+        raise typer.BadParameter(
+            f"Observation candidate must be valid JSON: {exc}"
+        ) from exc
     if not isinstance(candidate, dict):
         raise typer.BadParameter("Observation candidate must be a JSON object")
 
@@ -3246,7 +3418,9 @@ def market_desk_observation_action(
 
 @app.command("market-desk-playbooks")
 def market_desk_playbooks(
-    json_output: bool = typer.Option(False, "--json", help="Output the playbook catalog as JSON"),
+    json_output: bool = typer.Option(
+        False, "--json", help="Output the playbook catalog as JSON"
+    ),
 ) -> None:
     """List the desk's standard research-only discretionary playbooks."""
     result = capabilities.list_market_desk_playbooks()
@@ -3267,13 +3441,17 @@ def market_desk_evaluate_playbook(
         ..., exists=True, readable=True, help="Evidence JSON for the selected playbook"
     ),
     regime: str = typer.Option(..., "--regime", help="Current market-desk regime"),
-    json_output: bool = typer.Option(False, "--json", help="Output the evaluation as JSON"),
+    json_output: bool = typer.Option(
+        False, "--json", help="Output the evaluation as JSON"
+    ),
 ) -> None:
     """Evaluate a named playbook without creating any trade or order."""
     try:
         evidence = json.loads(evidence_file.read_text(encoding="utf-8"))
     except json.JSONDecodeError as exc:
-        raise typer.BadParameter(f"Playbook evidence must be valid JSON: {exc}") from exc
+        raise typer.BadParameter(
+            f"Playbook evidence must be valid JSON: {exc}"
+        ) from exc
     if not isinstance(evidence, dict):
         raise typer.BadParameter("Playbook evidence must be a JSON object")
     try:
@@ -3305,7 +3483,9 @@ def market_desk_books(
     if json_output:
         _print_json(result)
         return
-    console.print("[bold]Market Desk Strategy Books[/bold] (research-only; no order execution)")
+    console.print(
+        "[bold]Market Desk Strategy Books[/bold] (research-only; no order execution)"
+    )
     for horizon, cards in result["books"].items():
         console.print(f"  [bold]{horizon}[/bold]: {len(cards)}")
         for card in cards:
@@ -3320,10 +3500,15 @@ def market_desk_books(
 @app.command("market-desk-create-plan")
 def market_desk_create_plan(
     plan_file: Path = typer.Argument(
-        ..., exists=True, readable=True, help="Observation-stage strategy plan JSON file"
+        ...,
+        exists=True,
+        readable=True,
+        help="Observation-stage strategy plan JSON file",
     ),
     title: str = typer.Option(..., "--title", help="Research-ledger title"),
-    tag: Optional[list[str]] = typer.Option(None, "--tag", help="Optional ledger tag; repeat"),
+    tag: Optional[list[str]] = typer.Option(
+        None, "--tag", help="Optional ledger tag; repeat"
+    ),
     ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
@@ -3352,22 +3537,35 @@ def market_desk_create_plan(
 def market_desk_transition_plan(
     entry_id: str = typer.Argument(..., help="Research-ledger strategy-plan entry ID"),
     next_state: str = typer.Option(..., "--next-state", help="Target lifecycle state"),
-    reason: str = typer.Option(..., "--reason", help="Evidence-bound transition rationale"),
+    reason: str = typer.Option(
+        ..., "--reason", help="Evidence-bound transition rationale"
+    ),
     observed_at: Optional[str] = typer.Option(None, "--observed-at"),
     ic_decision_file: Optional[Path] = typer.Option(
-        None, "--ic-decision-file", exists=True, readable=True,
+        None,
+        "--ic-decision-file",
+        exists=True,
+        readable=True,
         help="IC decision JSON; mandatory for active state",
     ),
     release_inputs_file: Optional[Path] = typer.Option(
-        None, "--release-inputs-file", exists=True, readable=True,
+        None,
+        "--release-inputs-file",
+        exists=True,
+        readable=True,
         help="Release-inputs JSON; mandatory for active state",
     ),
     restricted_list: Optional[Path] = typer.Option(
-        None, "--restricted-list", exists=True, readable=True,
+        None,
+        "--restricted-list",
+        exists=True,
+        readable=True,
         help="Signed restricted-list authority required for active state",
     ),
     portfolio_path: Optional[Path] = typer.Option(
-        None, "--portfolio-path", help="Paper-portfolio JSON for active-state governance"
+        None,
+        "--portfolio-path",
+        help="Paper-portfolio JSON for active-state governance",
     ),
     ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
@@ -3445,17 +3643,25 @@ def market_desk_record_strategy_review(
 def market_desk_record_paper_review(
     entry_id: str = typer.Argument(..., help="Research-ledger strategy-plan entry ID"),
     ic_decision_file: Path = typer.Option(
-        ..., "--ic-decision-file", exists=True, readable=True,
+        ...,
+        "--ic-decision-file",
+        exists=True,
+        readable=True,
         help="IC decision JSON bound to the strategy plan",
     ),
     evaluation_start: str = typer.Option(..., "--evaluation-start"),
     evaluation_end: str = typer.Option(..., "--evaluation-end"),
     benchmark_id: str = typer.Option(..., "--benchmark-id"),
     gross_paper_return: float = typer.Option(..., "--gross-paper-return"),
-    implementation_cost_return: float = typer.Option(..., "--implementation-cost-return"),
+    implementation_cost_return: float = typer.Option(
+        ..., "--implementation-cost-return"
+    ),
     benchmark_return: float = typer.Option(..., "--benchmark-return"),
     return_evidence_file: Optional[Path] = typer.Option(
-        None, "--return-evidence-file", exists=True, readable=True,
+        None,
+        "--return-evidence-file",
+        exists=True,
+        readable=True,
         help="Frozen return-evidence JSON; absent evidence remains non-publishable",
     ),
     ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
@@ -3541,7 +3747,10 @@ def market_desk_discovery_research_queue(
         None, "--ledger-path", help="Research-ledger JSON path"
     ),
     review_sla_hours: int = typer.Option(
-        48, "--review-sla-hours", min=1, max=720,
+        48,
+        "--review-sla-hours",
+        min=1,
+        max=720,
         help="Maximum hours before a promoted public discovery needs a research review.",
     ),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
@@ -3566,7 +3775,9 @@ def market_desk_discovery_research_queue(
 
 @app.command("market-desk-triage-discovery")
 def market_desk_triage_discovery(
-    entry_id: str = typer.Argument(..., help="Public discovery research-ledger entry ID"),
+    entry_id: str = typer.Argument(
+        ..., help="Public discovery research-ledger entry ID"
+    ),
     action: str = typer.Option(
         ..., "--action", help="continue_research, invalidate, or close"
     ),
@@ -3624,7 +3835,9 @@ def market_desk_readiness(
         help="Paper-portfolio JSON path for linkage, entry-evidence, and exit-review readiness.",
     ),
     user_id: str = typer.Option(
-        "default", "--user", help="User profile that selects the market-data evidence lane"
+        "default",
+        "--user",
+        help="User profile that selects the market-data evidence lane",
     ),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
@@ -3653,13 +3866,17 @@ def market_desk_run(
     min_amount: float = typer.Option(200_000_000.0, "--min-amount", min=0.0),
     min_change_pct: float = typer.Option(3.0, "--min-change-pct"),
     market_map: Optional[Path] = typer.Option(
-        None, "--market-map", help="Optional source-referenced stock-to-sector mapping JSON"
+        None,
+        "--market-map",
+        help="Optional source-referenced stock-to-sector mapping JSON",
     ),
     ledger_path: Optional[Path] = typer.Option(None, "--ledger-path"),
     restricted_list: Optional[Path] = typer.Option(None, "--restricted-list"),
     portfolio_path: Optional[Path] = typer.Option(None, "--portfolio-path"),
     user_id: str = typer.Option("default", "--user"),
-    json_output: bool = typer.Option(False, "--json", help="Output the shared team packet as JSON"),
+    json_output: bool = typer.Option(
+        False, "--json", help="Output the shared team packet as JSON"
+    ),
 ) -> None:
     """Build one shared whole-market packet for the complete research desk."""
 
@@ -3686,13 +3903,17 @@ def market_desk_run(
     console.print(
         f"[bold]Whole-Market Research Desk[/bold] {result.get('observed_at') or 'unknown time'}"
     )
-    console.print(f"  Regime: {regime}; discovery observations: {counts.get('returned_candidates', 0)}")
+    console.print(
+        f"  Regime: {regime}; discovery observations: {counts.get('returned_candidates', 0)}"
+    )
     console.print(
         f"  Observation desk: {readiness['observation_desk_status']}; "
         f"governed public paper entry: {readiness['public_paper_entry_status']}; "
         f"formal release: {readiness['formal_paper_desk_status']}"
     )
-    console.print("  Output is a shared research packet only; no order execution is available.")
+    console.print(
+        "  Output is a shared research packet only; no order execution is available."
+    )
 
 
 @app.command("market-desk-maturity")
@@ -3719,7 +3940,9 @@ def market_desk_maturity(
         help="Paper-portfolio JSON path for lifecycle-governance evidence.",
     ),
     user_id: str = typer.Option(
-        "default", "--user", help="User profile that selects the market-data evidence lane"
+        "default",
+        "--user",
+        help="User profile that selects the market-data evidence lane",
     ),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
@@ -3745,12 +3968,22 @@ def market_desk_maturity(
 
 @app.command("market-desk-decision")
 def market_desk_decision(
-    candidate_file: Path = typer.Argument(..., exists=True, readable=True, help="Candidate JSON file"),
-    control_file: Path = typer.Argument(..., exists=True, readable=True, help="IC control-assessments JSON file"),
-    candidate_id: str = typer.Option(..., "--candidate-id", help="Stable candidate identifier"),
+    candidate_file: Path = typer.Argument(
+        ..., exists=True, readable=True, help="Candidate JSON file"
+    ),
+    control_file: Path = typer.Argument(
+        ..., exists=True, readable=True, help="IC control-assessments JSON file"
+    ),
+    candidate_id: str = typer.Option(
+        ..., "--candidate-id", help="Stable candidate identifier"
+    ),
     regime: str = typer.Option(..., "--regime", help="Market regime from market-desk"),
-    owner: str = typer.Option(..., "--owner", help="Investment-committee decision owner"),
-    evidence_ref: Optional[list[str]] = typer.Option(None, "--evidence-ref", help="Evidence reference; repeat for more than one"),
+    owner: str = typer.Option(
+        ..., "--owner", help="Investment-committee decision owner"
+    ),
+    evidence_ref: Optional[list[str]] = typer.Option(
+        None, "--evidence-ref", help="Evidence reference; repeat for more than one"
+    ),
     model_version: Optional[list[str]] = typer.Option(
         None,
         "--model-version",
@@ -3763,7 +3996,9 @@ def market_desk_decision(
         readable=True,
         help="Current externally sourced restricted-list JSON authority.",
     ),
-    decided_at: Optional[str] = typer.Option(None, "--decided-at", help="ISO-8601 decision timestamp"),
+    decided_at: Optional[str] = typer.Option(
+        None, "--decided-at", help="ISO-8601 decision timestamp"
+    ),
     json_output: bool = typer.Option(False, "--json", help="Output JSON"),
 ) -> None:
     """Create a non-bypassable market-desk IC decision record from JSON inputs."""
@@ -3773,7 +4008,9 @@ def market_desk_decision(
     except json.JSONDecodeError as exc:
         raise typer.BadParameter(f"Decision inputs must be valid JSON: {exc}") from exc
     if not isinstance(candidate, dict) or not isinstance(controls, dict):
-        raise typer.BadParameter("Candidate and control inputs must each be JSON objects")
+        raise typer.BadParameter(
+            "Candidate and control inputs must each be JSON objects"
+        )
     model_versions: dict[str, str] = {}
     for item in model_version or []:
         name, separator, version = item.partition("=")
@@ -3814,12 +4051,17 @@ def quality_stats(
     else:
         console.print("[bold]Research Quality Stats[/bold]")
         console.print(f"  Total assessed: {result['total_assessed']}")
-        if result['total_assessed'] > 0:
-            console.print(f"  Avg catalyst realization: {result['avg_catalyst_realization_rate']:.0%}")
-            console.print(f"  Avg risk foresight: {result['avg_risk_foresight_rate']:.0%}")
+        if result["total_assessed"] > 0:
+            console.print(
+                f"  Avg catalyst realization: {result['avg_catalyst_realization_rate']:.0%}"
+            )
+            console.print(
+                f"  Avg risk foresight: {result['avg_risk_foresight_rate']:.0%}"
+            )
             for role, score in result.get("agent_role_scores", {}).items():
-                console.print(f"  {role}: {score['accuracy']:.0%} ({score['correct_calls']}/{score['total_calls']})")
-
+                console.print(
+                    f"  {role}: {score['accuracy']:.0%} ({score['correct_calls']}/{score['total_calls']})"
+                )
 
 
 # ============ Scheduler Command Group ============
@@ -3830,7 +4072,9 @@ app.add_typer(scheduler_app, name="scheduler")
 
 @scheduler_app.command("start")
 def scheduler_start(
-    foreground: bool = typer.Option(True, "--foreground/--background", help="Run in foreground"),
+    foreground: bool = typer.Option(
+        True, "--foreground/--background", help="Run in foreground"
+    ),
     json_output: bool = typer.Option(False, "--json", help="Output JSON on start"),
 ) -> None:
     """Start the task scheduler daemon."""
@@ -3877,6 +4121,7 @@ def scheduler_show_status(
 ) -> None:
     """Show scheduler status from saved state."""
     from .scheduler import create_default_scheduler
+
     scheduler = create_default_scheduler()
     # Load persisted state to show last known status
     scheduler._load_state()
@@ -3889,11 +4134,11 @@ def scheduler_show_status(
         console.print(f"  Registered jobs: {status['job_count']}")
         for name, job in status.get("jobs", {}).items():
             last = job.get("last_run") or "never"
-            console.print(f"  • {name}: runs={job['run_count']}, errors={job['error_count']}, last={last}")
+            console.print(
+                f"  • {name}: runs={job['run_count']}, errors={job['error_count']}, last={last}"
+            )
             for blocker in job.get("dependency_blockers", []):
-                console.print(
-                    f"    waiting on {blocker['job']}: {blocker['reason']}"
-                )
+                console.print(f"    waiting on {blocker['job']}: {blocker['reason']}")
 
 
 @scheduler_app.command("launchd-plan")
@@ -3904,10 +4149,14 @@ def scheduler_launchd_plan(
         help="Workspace-local LaunchAgent plan path; generation never installs it.",
     ),
     python_executable: Path = typer.Option(
-        Path(sys.executable), "--python-executable", help="Project virtualenv Python executable"
+        Path(sys.executable),
+        "--python-executable",
+        help="Project virtualenv Python executable",
     ),
     project_root: Path = typer.Option(
-        Path(__file__).resolve().parents[3], "--project-root", help="AStock project root"
+        Path(__file__).resolve().parents[3],
+        "--project-root",
+        help="AStock project root",
     ),
     label: str = typer.Option("com.astock.scheduler", "--label"),
     logs_directory: Optional[Path] = typer.Option(None, "--logs-directory"),
@@ -3956,6 +4205,7 @@ def scheduler_run_job(
             console.print(f"[red]Error: {result['error']}[/red]")
         else:
             console.print(f"[green]✓ Job '{job_name}' completed[/green]")
+
 
 if __name__ == "__main__":
     app()

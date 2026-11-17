@@ -212,7 +212,9 @@ class PredictionLedger:
         self._ensure_loaded()
         return self._predictions.get(prediction_id)
 
-    def list_pending(self, *, before_date: Optional[date] = None) -> list[PricePrediction]:
+    def list_pending(
+        self, *, before_date: Optional[date] = None
+    ) -> list[PricePrediction]:
         """List predictions due for verification."""
         self._ensure_loaded()
         today = before_date or date.today()
@@ -239,9 +241,7 @@ class PredictionLedger:
             if code and p.code != code:
                 continue
             verification = self._verifications.get(p.prediction_id or "")
-            if outcome and (
-                not verification or verification.outcome != outcome
-            ):
+            if outcome and (not verification or verification.outcome != outcome):
                 continue
             record = p.to_dict()
             record["verification"] = verification.to_dict() if verification else None
@@ -254,9 +254,7 @@ class PredictionLedger:
         self._verifications[result.prediction_id] = result
         self._save()
 
-    def get_accuracy_stats(
-        self, *, code: Optional[str] = None
-    ) -> dict[str, Any]:
+    def get_accuracy_stats(self, *, code: Optional[str] = None) -> dict[str, Any]:
         """Compute accuracy statistics."""
         self._ensure_loaded()
         total = 0
@@ -337,7 +335,9 @@ def verify_prediction(
     hit_target = False
     if prediction.target_price and prediction.direction == PredictionDirection.BULLISH:
         hit_target = max_high >= prediction.target_price
-    elif prediction.target_price and prediction.direction == PredictionDirection.BEARISH:
+    elif (
+        prediction.target_price and prediction.direction == PredictionDirection.BEARISH
+    ):
         hit_target = min_low <= prediction.target_price
 
     hit_stop = False

@@ -59,10 +59,16 @@ def test_ultra_short_plan_tracks_its_playbook_and_requires_time_stop() -> None:
 
 def test_strategy_plan_has_a_one_way_auditable_lifecycle() -> None:
     watched = transition_strategy_plan(
-        _short_plan(), "watch", reason="Breadth and history confirmation pending.", observed_at="2026-07-28T15:10:00+08:00"
+        _short_plan(),
+        "watch",
+        reason="Breadth and history confirmation pending.",
+        observed_at="2026-07-28T15:10:00+08:00",
     )
     conditional = transition_strategy_plan(
-        watched, "conditional", reason="All setup prerequisites are explicit.", observed_at="2026-07-29T10:00:00+08:00"
+        watched,
+        "conditional",
+        reason="All setup prerequisites are explicit.",
+        observed_at="2026-07-29T10:00:00+08:00",
     )
     active = transition_strategy_plan(
         conditional,
@@ -71,8 +77,8 @@ def test_strategy_plan_has_a_one_way_auditable_lifecycle() -> None:
         observed_at="2026-07-29T15:00:00+08:00",
         ic_decision={
             "schema_version": "market-desk-ic-decision.v1",
-                "candidate_id": conditional.plan_id,
-                "candidate_targets": [conditional.target],
+            "candidate_id": conditional.plan_id,
+            "candidate_targets": [conditional.target],
             "decision": "approve",
             "decision_owner": "portfolio-manager",
             "decided_at": "2026-07-29T15:00:00+08:00",
@@ -88,17 +94,20 @@ def test_strategy_plan_has_a_one_way_auditable_lifecycle() -> None:
                     "compliance-officer",
                 )
             },
-            },
-            release_assurance={
-                "schema_version": "market-desk-paper-assurance.v1",
-                "verdict": "pass",
-                "plan_id": conditional.plan_id,
-                "target": conditional.target,
-                "ic_candidate_id": conditional.plan_id,
-            },
-        )
+        },
+        release_assurance={
+            "schema_version": "market-desk-paper-assurance.v1",
+            "verdict": "pass",
+            "plan_id": conditional.plan_id,
+            "target": conditional.target,
+            "ic_candidate_id": conditional.plan_id,
+        },
+    )
     invalidated = transition_strategy_plan(
-        active, "invalidated", reason="Risk level breached.", observed_at="2026-07-30T10:00:00+08:00"
+        active,
+        "invalidated",
+        reason="Risk level breached.",
+        observed_at="2026-07-30T10:00:00+08:00",
     )
 
     assert invalidated.state == StrategyState.INVALIDATED
@@ -120,7 +129,9 @@ def test_conditional_plan_cannot_activate_without_matching_ic_decision() -> None
         transition_strategy_plan(conditional, "active", reason="missing IC")
 
 
-def test_continuation_review_requires_evidence_and_cannot_extend_past_time_stop() -> None:
+def test_continuation_review_requires_evidence_and_cannot_extend_past_time_stop() -> (
+    None
+):
     reviewed = record_strategy_plan_review(
         _short_plan(),
         reviewer="portfolio-manager",

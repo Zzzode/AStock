@@ -55,14 +55,18 @@ def validate_factor_risk_context(
 ) -> FactorRiskContext:
     """Validate a factor-risk context before it may reach portfolio controls."""
     if str(context.get("schema_version") or "") != "portfolio-factor-risk-context.v1":
-        raise ValueError("factor risk context must use portfolio-factor-risk-context.v1")
+        raise ValueError(
+            "factor risk context must use portfolio-factor-risk-context.v1"
+        )
     taxonomy_version = _required_text(context, "taxonomy_version")
     approved_by = _required_text(context, "approved_by")
     approved_at = _required_timestamp(context, "approved_at")
     valid_until = _required_timestamp(context, "valid_until")
     current = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
     if valid_until.astimezone(timezone.utc) < current:
-        raise ValueError("factor risk context has expired and cannot be used for a new risk decision")
+        raise ValueError(
+            "factor risk context has expired and cannot be used for a new risk decision"
+        )
     if approved_at > valid_until:
         raise ValueError("factor risk context valid_until must not precede approved_at")
     classifications_raw = context.get("classifications")
@@ -74,10 +78,14 @@ def validate_factor_risk_context(
         payload = classifications_raw.get(code)
         if not isinstance(payload, Mapping):
             raise ValueError(f"factor risk context lacks a classification for {code}")
-        classifications[code] = _validate_classification(code, payload, taxonomy_version)
+        classifications[code] = _validate_classification(
+            code, payload, taxonomy_version
+        )
     scenarios_raw = context.get("stress_scenarios")
     if not isinstance(scenarios_raw, Mapping) or not scenarios_raw:
-        raise ValueError("factor risk context requires at least one approved stress scenario")
+        raise ValueError(
+            "factor risk context requires at least one approved stress scenario"
+        )
     known_factors = {
         factor
         for item in classifications.values()
@@ -103,20 +111,26 @@ def _validate_classification(
     code: str, payload: Mapping[str, Any], taxonomy_version: str
 ) -> dict[str, Any]:
     if str(payload.get("taxonomy_version") or "").strip() != taxonomy_version:
-        raise ValueError(f"factor classification {code} taxonomy_version does not match context")
+        raise ValueError(
+            f"factor classification {code} taxonomy_version does not match context"
+        )
     _required_timestamp(payload, "as_of")
     source_refs = _string_items(payload.get("source_refs"))
     if not source_refs:
         raise ValueError(f"factor classification {code} requires source_refs")
     raw_exposures = payload.get("factor_exposures")
     if not isinstance(raw_exposures, Mapping) or not raw_exposures:
-        raise ValueError(f"factor classification {code} requires non-empty factor_exposures")
+        raise ValueError(
+            f"factor classification {code} requires non-empty factor_exposures"
+        )
     exposures: dict[str, float] = {}
     for raw_factor, raw_exposure in raw_exposures.items():
         factor = str(raw_factor).strip()
         if not factor:
             raise ValueError(f"factor classification {code} has an empty factor name")
-        exposure = _bounded_number(raw_exposure, f"factor classification {code} {factor}")
+        exposure = _bounded_number(
+            raw_exposure, f"factor classification {code} {factor}"
+        )
         exposures[factor] = exposure
     return {
         "taxonomy_version": taxonomy_version,
@@ -139,10 +153,14 @@ def _validate_scenario(
     for raw_factor, raw_shock in shocks.items():
         factor = str(raw_factor).strip()
         if factor not in known_factors:
-            raise ValueError(f"stress scenario {name} references unclassified factor {factor!r}")
+            raise ValueError(
+                f"stress scenario {name} references unclassified factor {factor!r}"
+            )
         shock = _bounded_number(raw_shock, f"stress scenario {name} {factor}")
         if shock >= 0:
-            raise ValueError(f"stress scenario {name} shock for {factor} must be negative")
+            raise ValueError(
+                f"stress scenario {name} shock for {factor} must be negative"
+            )
         validated[factor] = shock
     return dict(sorted(validated.items()))
 

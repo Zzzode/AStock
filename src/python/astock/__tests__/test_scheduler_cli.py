@@ -7,7 +7,9 @@ from typer.testing import CliRunner
 from astock.cli import app
 
 
-def test_scheduler_background_mode_is_rejected_instead_of_reporting_a_dead_daemon() -> None:
+def test_scheduler_background_mode_is_rejected_instead_of_reporting_a_dead_daemon() -> (
+    None
+):
     result = CliRunner().invoke(app, ["scheduler", "start", "--background", "--json"])
 
     assert result.exit_code == 2

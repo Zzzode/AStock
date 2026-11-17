@@ -90,6 +90,7 @@ class ReportVectorStore:
         self._embedding_provider = None
         if embedding_backend != "tfidf":
             from .embeddings import get_embedding_provider
+
             self._embedding_provider = get_embedding_provider(
                 embedding_backend, **embedding_kwargs
             )
@@ -145,9 +146,7 @@ class ReportVectorStore:
         """
         self._ensure_loaded()
 
-        self._chunks = {
-            cid: c for cid, c in self._chunks.items() if c.doc_id != doc_id
-        }
+        self._chunks = {cid: c for cid, c in self._chunks.items() if c.doc_id != doc_id}
 
         chunks = _split_text(text, chunk_size=chunk_size, overlap=chunk_overlap)
         for i, chunk_text in enumerate(chunks):
@@ -207,13 +206,15 @@ class ReportVectorStore:
                 continue
             score = _cosine_similarity(query_vector, chunk.vector)
             if score >= min_score:
-                results.append(SearchResult(
-                    chunk_id=chunk.chunk_id,
-                    doc_id=chunk.doc_id,
-                    text=chunk.text,
-                    score=score,
-                    metadata=chunk.metadata,
-                ))
+                results.append(
+                    SearchResult(
+                        chunk_id=chunk.chunk_id,
+                        doc_id=chunk.doc_id,
+                        text=chunk.text,
+                        score=score,
+                        metadata=chunk.metadata,
+                    )
+                )
 
         results.sort(key=lambda r: r.score, reverse=True)
         return results[:top_k]
@@ -324,9 +325,7 @@ def _cosine_similarity(a: list[float], b: list[float]) -> float:
     return dot / (norm_a * norm_b)
 
 
-def _split_text(
-    text: str, *, chunk_size: int = 500, overlap: int = 100
-) -> list[str]:
+def _split_text(text: str, *, chunk_size: int = 500, overlap: int = 100) -> list[str]:
     """Split text into overlapping chunks by character count."""
     if chunk_size <= 0:
         raise ValueError("chunk_size must be positive")

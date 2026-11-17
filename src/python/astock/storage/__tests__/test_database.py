@@ -32,11 +32,7 @@ async def test_init_tables(db: Database) -> None:
 @pytest.mark.asyncio
 async def test_save_and_get_stock(db: Database) -> None:
     """Test saving and retrieving stock info"""
-    stock = Stock(
-        code="000001",
-        name="平安银行",
-        industry="银行"
-    )
+    stock = Stock(code="000001", name="平安银行", industry="银行")
     await db.save_stock(stock)
 
     # Verify that saving again works (upsert)
@@ -61,7 +57,7 @@ async def test_save_and_get_daily_quotes(db: Database) -> None:
             low=9.8,
             close=10.2,
             volume=1000000,
-            amount=10200000
+            amount=10200000,
         ),
         DailyQuote(
             code="000001",
@@ -71,8 +67,8 @@ async def test_save_and_get_daily_quotes(db: Database) -> None:
             low=10.1,
             close=10.6,
             volume=1200000,
-            amount=12720000
-        )
+            amount=12720000,
+        ),
     ]
     await db.save_daily_quotes(quotes)
 
@@ -90,7 +86,7 @@ async def test_save_and_get_watch_items(db: Database) -> None:
         conditions={"price_above": 10.0, "volume_ratio": 2.0},
         alert_channels=["terminal", "email"],
         enabled=True,
-        created_at=datetime(2024, 1, 1, 10, 0, 0)
+        created_at=datetime(2024, 1, 1, 10, 0, 0),
     )
     await db.save_watch_item(item)
 
@@ -118,7 +114,7 @@ async def test_update_watch_item(db: Database) -> None:
         code="000001",
         name="平安银行(更新)",
         conditions={"new_condition": True},
-        enabled=False
+        enabled=False,
     )
     await db.save_watch_item(updated_item)
 
@@ -152,7 +148,7 @@ async def test_save_and_get_alert_records(db: Database) -> None:
         level=2,
         triggered_at=datetime(2024, 1, 1, 10, 30, 0),
         status="pending",
-        channels=["terminal"]
+        channels=["terminal"],
     )
     record_id = await db.save_alert_record(record)
     assert record_id is not None
@@ -175,14 +171,14 @@ async def test_get_alert_records_by_code(db: Database) -> None:
         signal_type="technical",
         signal_name="信号1",
         message="消息1",
-        triggered_at=datetime(2024, 1, 1, 10, 0, 0)
+        triggered_at=datetime(2024, 1, 1, 10, 0, 0),
     )
     record2 = AlertRecord(
         code="000002",
         signal_type="technical",
         signal_name="信号2",
         message="消息2",
-        triggered_at=datetime(2024, 1, 1, 11, 0, 0)
+        triggered_at=datetime(2024, 1, 1, 11, 0, 0),
     )
     await db.save_alert_record(record1)
     await db.save_alert_record(record2)
@@ -202,7 +198,7 @@ async def test_get_alert_records_by_status(db: Database) -> None:
         signal_name="信号1",
         message="消息1",
         triggered_at=datetime(2024, 1, 1, 10, 0, 0),
-        status="pending"
+        status="pending",
     )
     record2 = AlertRecord(
         code="000001",
@@ -210,7 +206,7 @@ async def test_get_alert_records_by_status(db: Database) -> None:
         signal_name="信号2",
         message="消息2",
         triggered_at=datetime(2024, 1, 1, 11, 0, 0),
-        status="sent"
+        status="sent",
     )
     await db.save_alert_record(record1)
     await db.save_alert_record(record2)
@@ -230,7 +226,7 @@ async def test_update_alert_status(db: Database) -> None:
         signal_name="信号",
         message="消息",
         triggered_at=datetime(2024, 1, 1, 10, 0, 0),
-        status="pending"
+        status="pending",
     )
     record_id = await db.save_alert_record(record)
 

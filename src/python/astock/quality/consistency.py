@@ -53,7 +53,9 @@ class DataFreshnessReport:
     def to_dict(self) -> dict[str, Any]:
         return {
             "source": self.source,
-            "last_updated": self.last_updated.isoformat() if self.last_updated else None,
+            "last_updated": (
+                self.last_updated.isoformat() if self.last_updated else None
+            ),
             "age_seconds": self.age_seconds,
             "status": self.status,
         }
@@ -86,7 +88,9 @@ async def check_data_consistency(
 
     # Check quote freshness
     if quote_data:
-        quote_time = _parse_timestamp(quote_data.get("timestamp") or quote_data.get("trade_date"))
+        quote_time = _parse_timestamp(
+            quote_data.get("timestamp") or quote_data.get("trade_date")
+        )
         freshness.append(_freshness_report("quote", quote_time))
     else:
         freshness.append(DataFreshnessReport(source="quote", status="unavailable"))
@@ -144,16 +148,18 @@ def _check_eps_consistency(
         if fin_eps and fin_eps != 0:
             deviation = abs(implied_eps - fin_eps) / abs(fin_eps) * 100
             if deviation > 20:
-                conflicts.append(ConsistencyConflict(
-                    metric="eps",
-                    source_a="quote_pe_implied",
-                    value_a=round(implied_eps, 4),
-                    source_b="financial_statement",
-                    value_b=fin_eps,
-                    deviation_pct=round(deviation, 2),
-                    severity="warning" if deviation < 50 else "error",
-                    description=f"EPS deviation {deviation:.1f}%: PE-implied={implied_eps:.4f} vs reported={fin_eps}",
-                ))
+                conflicts.append(
+                    ConsistencyConflict(
+                        metric="eps",
+                        source_a="quote_pe_implied",
+                        value_a=round(implied_eps, 4),
+                        source_b="financial_statement",
+                        value_b=fin_eps,
+                        deviation_pct=round(deviation, 2),
+                        severity="warning" if deviation < 50 else "error",
+                        description=f"EPS deviation {deviation:.1f}%: PE-implied={implied_eps:.4f} vs reported={fin_eps}",
+                    )
+                )
 
     return conflicts
 
@@ -176,16 +182,18 @@ def _check_price_book_consistency(
         implied_bps = price / pb
         deviation = abs(implied_bps - bps) / abs(bps) * 100
         if deviation > 20:
-            conflicts.append(ConsistencyConflict(
-                metric="bps",
-                source_a="quote_pb_implied",
-                value_a=round(implied_bps, 4),
-                source_b="financial_statement",
-                value_b=bps,
-                deviation_pct=round(deviation, 2),
-                severity="warning",
-                description=f"BPS deviation {deviation:.1f}%",
-            ))
+            conflicts.append(
+                ConsistencyConflict(
+                    metric="bps",
+                    source_a="quote_pb_implied",
+                    value_a=round(implied_bps, 4),
+                    source_b="financial_statement",
+                    value_b=bps,
+                    deviation_pct=round(deviation, 2),
+                    severity="warning",
+                    description=f"BPS deviation {deviation:.1f}%",
+                )
+            )
 
     return conflicts
 
@@ -208,22 +216,26 @@ def _check_growth_claims(
         if change_ratio is not None and reported_profit_growth is not None:
             deviation = abs(change_ratio - reported_profit_growth)
             if deviation > 15:
-                conflicts.append(ConsistencyConflict(
-                    metric="profit_growth",
-                    source_a="earnings_forecast",
-                    value_a=change_ratio,
-                    source_b="financial_yoy",
-                    value_b=reported_profit_growth,
-                    deviation_pct=round(deviation, 2),
-                    severity="warning",
-                    description=f"Profit growth: forecast={change_ratio}% vs actual YoY={reported_profit_growth}%",
-                ))
+                conflicts.append(
+                    ConsistencyConflict(
+                        metric="profit_growth",
+                        source_a="earnings_forecast",
+                        value_a=change_ratio,
+                        source_b="financial_yoy",
+                        value_b=reported_profit_growth,
+                        deviation_pct=round(deviation, 2),
+                        severity="warning",
+                        description=f"Profit growth: forecast={change_ratio}% vs actual YoY={reported_profit_growth}%",
+                    )
+                )
             break
 
     return conflicts
 
 
-def _freshness_report(source: str, timestamp: Optional[datetime]) -> DataFreshnessReport:
+def _freshness_report(
+    source: str, timestamp: Optional[datetime]
+) -> DataFreshnessReport:
     if timestamp is None:
         return DataFreshnessReport(source=source, status="unknown")
     age = (datetime.now() - timestamp).total_seconds()

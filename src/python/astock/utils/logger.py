@@ -5,7 +5,6 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-
 # Log format
 LOG_FORMAT = "%(asctime)s | %(levelname)-8s | %(name)s:%(lineno)d | %(message)s"
 DATE_FORMAT = "%Y-%m-%d %H:%M:%S"

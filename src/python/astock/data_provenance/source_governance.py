@@ -13,7 +13,6 @@ from collections.abc import Mapping
 from dataclasses import dataclass
 from typing import Any
 
-
 SCHEMA_VERSION = "market_data_source_governance.v1"
 BACKTEST_REQUIRED_DOMAINS = (
     "trading_calendar",
@@ -40,9 +39,14 @@ class MarketDataSource:
     documentation_url: str = ""
 
     def to_dict(self) -> dict[str, Any]:
-        credential_values = [bool(os.environ.get(name, "").strip()) for name in self.credential_environment]
+        credential_values = [
+            bool(os.environ.get(name, "").strip())
+            for name in self.credential_environment
+        ]
         configured = not credential_values or (
-            all(credential_values) if self.credential_match_all else any(credential_values)
+            all(credential_values)
+            if self.credential_match_all
+            else any(credential_values)
         )
         return {
             "source_id": self.source_id,
@@ -73,7 +77,14 @@ MARKET_DATA_SOURCES: tuple[MarketDataSource, ...] = (
         source_id="tushare_pro",
         vendor="Tushare Pro",
         access_model="token-authorized data service",
-        domains=("trading_calendar", "eod_bars", "halts", "price_limits", "corporate_actions", "delistings"),
+        domains=(
+            "trading_calendar",
+            "eod_bars",
+            "halts",
+            "price_limits",
+            "corporate_actions",
+            "delistings",
+        ),
         decision_eligible=True,
         reproducible_backtest_eligible=True,
         credential_environment=("TUSHARE_TOKEN",),
@@ -83,7 +94,16 @@ MARKET_DATA_SOURCES: tuple[MarketDataSource, ...] = (
         source_id="jqdata",
         vendor="JoinQuant JQData",
         access_model="licensed research data service",
-        domains=("trading_calendar", "eod_bars", "minute_bars", "ticks", "halts", "price_limits", "corporate_actions", "delistings"),
+        domains=(
+            "trading_calendar",
+            "eod_bars",
+            "minute_bars",
+            "ticks",
+            "halts",
+            "price_limits",
+            "corporate_actions",
+            "delistings",
+        ),
         decision_eligible=True,
         reproducible_backtest_eligible=True,
         credential_environment=("JQDATA_USERNAME", "JQDATA_PASSWORD"),
@@ -94,7 +114,18 @@ MARKET_DATA_SOURCES: tuple[MarketDataSource, ...] = (
         source_id="wind_wds",
         vendor="Wind WDS",
         access_model="institutional licensed market-data service",
-        domains=("trading_calendar", "eod_bars", "minute_bars", "ticks", "order_book", "order_queue", "halts", "price_limits", "corporate_actions", "delistings"),
+        domains=(
+            "trading_calendar",
+            "eod_bars",
+            "minute_bars",
+            "ticks",
+            "order_book",
+            "order_queue",
+            "halts",
+            "price_limits",
+            "corporate_actions",
+            "delistings",
+        ),
         decision_eligible=True,
         reproducible_backtest_eligible=True,
         credential_environment=("WIND_API_PATH", "WIND_USERNAME"),
@@ -104,7 +135,13 @@ MARKET_DATA_SOURCES: tuple[MarketDataSource, ...] = (
         source_id="exchange_disclosures",
         vendor="SSE/SZSE/CNINFO issuer disclosures",
         access_model="primary public disclosure archive",
-        domains=("corporate_actions", "halts", "listing_status", "delistings", "announcements"),
+        domains=(
+            "corporate_actions",
+            "halts",
+            "listing_status",
+            "delistings",
+            "announcements",
+        ),
         decision_eligible=True,
         reproducible_backtest_eligible=False,
         documentation_url="https://www.cninfo.com.cn/",
@@ -170,7 +207,9 @@ def is_frozen_public_observation_reference(value: Mapping[str, Any] | object) ->
     )
 
 
-def assess_backtest_source_manifest(manifest: Mapping[str, Any] | None) -> dict[str, Any]:
+def assess_backtest_source_manifest(
+    manifest: Mapping[str, Any] | None,
+) -> dict[str, Any]:
     """Validate the source contract attached to a paper-portfolio replay.
 
     The check does not verify a vendor entitlement remotely.  It prevents the
@@ -184,12 +223,19 @@ def assess_backtest_source_manifest(manifest: Mapping[str, Any] | None) -> dict[
         return {
             "schema_version": SCHEMA_VERSION,
             "status": "blocked",
-            "failures": ["A portfolio backtest source manifest is required for a reproducibility claim."],
+            "failures": [
+                "A portfolio backtest source manifest is required for a reproducibility claim."
+            ],
             "warnings": [],
             "resolved_domains": {},
         }
-    if str(manifest.get("schema_version", "")).strip() != "portfolio_backtest_sources.v1":
-        failures.append("source manifest must use schema_version portfolio_backtest_sources.v1")
+    if (
+        str(manifest.get("schema_version", "")).strip()
+        != "portfolio_backtest_sources.v1"
+    ):
+        failures.append(
+            "source manifest must use schema_version portfolio_backtest_sources.v1"
+        )
     if not str(manifest.get("as_of", "")).strip():
         failures.append("source manifest requires an as_of timestamp")
     if not str(manifest.get("archive_id", "")).strip():
@@ -211,12 +257,17 @@ def assess_backtest_source_manifest(manifest: Mapping[str, Any] | None) -> dict[
             failures.append(f"{source_id} is not registered for {domain}")
             continue
         if not source.reproducible_backtest_eligible:
-            failures.append(f"{source_id} is observation-only and cannot substantiate a reproducible backtest")
+            failures.append(
+                f"{source_id} is observation-only and cannot substantiate a reproducible backtest"
+            )
             continue
         resolved[domain] = source_id
 
     attestation = manifest.get("license_attestation")
-    if not isinstance(attestation, Mapping) or attestation.get("authorized") is not True:
+    if (
+        not isinstance(attestation, Mapping)
+        or attestation.get("authorized") is not True
+    ):
         failures.append("source manifest requires license_attestation.authorized=true")
     elif not str(attestation.get("attested_by", "")).strip():
         failures.append("license_attestation requires an attested_by owner")
@@ -227,7 +278,13 @@ def assess_backtest_source_manifest(manifest: Mapping[str, Any] | None) -> dict[
             entry["source_id"]: bool(entry["configured"])
             for entry in list_market_data_source_governance()["sources"]
         }
-        unconfigured = sorted({source_id for source_id in resolved.values() if not configured_sources[source_id]})
+        unconfigured = sorted(
+            {
+                source_id
+                for source_id in resolved.values()
+                if not configured_sources[source_id]
+            }
+        )
         if unconfigured:
             warnings.append(
                 "Manifest is structurally complete but the current runtime has no configured credential for: "

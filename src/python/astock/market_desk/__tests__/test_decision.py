@@ -11,10 +11,15 @@ from astock.market_desk import (
 ASSESSMENT_NOW = datetime(2026, 7, 28, 2, 5, tzinfo=timezone.utc)
 
 
-def _snapshot(*, advances: int = 3000, declines: int = 1800, sh: float = 0.8, growth: float = 1.2):
+def _snapshot(
+    *, advances: int = 3000, declines: int = 1800, sh: float = 0.8, growth: float = 1.2
+):
     return {
         "observed_at": "2026-07-28T02:00:00+00:00",
-        "market_session": {"state": "continuous_morning", "calendar_basis": "exchange_calendar"},
+        "market_session": {
+            "state": "continuous_morning",
+            "calendar_basis": "exchange_calendar",
+        },
         "indices": [
             {"code": "sh000001", "change_pct": sh},
             {"code": "sz399006", "change_pct": growth},
@@ -42,11 +47,18 @@ def _candidate():
             "source": "tushare_pro",
             "quality": "realtime",
             "archive_id": "sha256:decision-packet",
-            "license_attestation": {"authorized": True, "attested_by": "research-data-owner"},
+            "license_attestation": {
+                "authorized": True,
+                "attested_by": "research-data-owner",
+            },
         },
         "edge": {"thesis": "test", "catalyst": "test", "invalidation": "test"},
         "risk": {"max_loss_pct": 0.01, "position_limit_pct": 0.1},
-        "execution": {"entry_condition": "test", "exit_condition": "test", "review_at": "close"},
+        "execution": {
+            "entry_condition": "test",
+            "exit_condition": "test",
+            "review_at": "close",
+        },
         "compliance": {
             "research_only_disclosure": True,
             "no_execution_instruction": True,
@@ -64,8 +76,14 @@ def _controls(*, override=None):
         "data-verifier": {"status": "pass", "reason": "sources current"},
         "risk-analyst": {"status": "pass", "reason": "risk budget available"},
         "quant-risk-modeler": {"status": "pass", "reason": "model limits reviewed"},
-        "execution-liquidity-analyst": {"status": "pass", "reason": "liquidity supports size"},
-        "compliance-officer": {"status": "pass", "reason": "research boundary disclosed"},
+        "execution-liquidity-analyst": {
+            "status": "pass",
+            "reason": "liquidity supports size",
+        },
+        "compliance-officer": {
+            "status": "pass",
+            "reason": "research boundary disclosed",
+        },
     }
     if override:
         controls.update(override)
@@ -82,7 +100,8 @@ def test_assess_market_regime_blocks_missing_breadth():
 
 def test_assess_market_regime_identifies_risk_off():
     assessment = assess_market_regime(
-        _snapshot(advances=1200, declines=3600, sh=-2.0, growth=-4.0), now=ASSESSMENT_NOW
+        _snapshot(advances=1200, declines=3600, sh=-2.0, growth=-4.0),
+        now=ASSESSMENT_NOW,
     )
     assert assessment.regime == MarketRegime.RISK_OFF
     assert assessment.allowed_horizons == ("risk_management",)
@@ -193,7 +212,10 @@ def test_candidate_gate_blocks_missing_control_assessment():
     )
 
     assert result.decision == DeskDecision.WATCH
-    assert "Missing required control assessment: compliance-officer." in result.control_blockers
+    assert (
+        "Missing required control assessment: compliance-officer."
+        in result.control_blockers
+    )
 
 
 def test_candidate_gate_rejects_binding_veto():
@@ -201,7 +223,9 @@ def test_candidate_gate_rejects_binding_veto():
         _candidate(),
         regime=MarketRegime.TREND_RISK_ON,
         control_assessments=_controls(
-            override={"execution-liquidity-analyst": {"status": "veto", "reason": "suspended"}}
+            override={
+                "execution-liquidity-analyst": {"status": "veto", "reason": "suspended"}
+            }
         ),
     )
 
@@ -249,13 +273,18 @@ def test_investment_committee_decision_requires_controls_and_evidence():
         control_assessments=_controls(),
         decision_owner="portfolio-manager",
         evidence_refs=("market_snapshot:2026-07-28T15:00:00+08:00",),
-        model_versions={"market_regime": "market-desk-regime.v1", "risk_policy": "risk-limits.v1"},
+        model_versions={
+            "market_regime": "market-desk-regime.v1",
+            "risk_policy": "risk-limits.v1",
+        },
         decided_at="2026-07-28T15:05:00+08:00",
     )
 
     assert result.decision == DeskDecision.APPROVE
     assert result.to_dict()["schema_version"] == "market-desk-ic-decision.v1"
-    assert result.to_dict()["model_versions"]["market_regime"] == "market-desk-regime.v1"
+    assert (
+        result.to_dict()["model_versions"]["market_regime"] == "market-desk-regime.v1"
+    )
 
 
 def test_investment_committee_decision_requires_named_model_versions() -> None:

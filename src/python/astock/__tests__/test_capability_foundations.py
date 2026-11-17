@@ -290,7 +290,13 @@ async def test_build_team_packet_attaches_foundation_context(
                     "analysis": {
                         "code": "000001",
                         "name": "Ping An Bank",
-                        "indicators": {"open": 15.0, "high": 15.8, "low": 14.9, "close": 15.5, "volume": 2_000_000},
+                        "indicators": {
+                            "open": 15.0,
+                            "high": 15.8,
+                            "low": 14.9,
+                            "close": 15.5,
+                            "volume": 2_000_000,
+                        },
                         "quote": {
                             "code": "000001",
                             "price": 15.5,
@@ -342,7 +348,9 @@ async def test_build_team_packet_attaches_foundation_context(
     assert packet["provenance"]["quality_tier"] == "delayed"
     assert packet["market_events"]
     assert packet["packet"]["quote"]["provenance"]["quality_tier"] == "realtime"
-    assert packet["packet"]["screen"]["market_events"][0]["event_type"] == "alert_trigger"
+    assert (
+        packet["packet"]["screen"]["market_events"][0]["event_type"] == "alert_trigger"
+    )
 
 
 def test_capability_research_ledger_round_trip(tmp_path: Path) -> None:
@@ -385,7 +393,9 @@ def test_capability_research_ledger_round_trip(tmp_path: Path) -> None:
     assert listed["entries"][0]["entry_id"] == entry_id
 
 
-def test_quality_feedback_is_bound_to_an_existing_research_entry(tmp_path: Path) -> None:
+def test_quality_feedback_is_bound_to_an_existing_research_entry(
+    tmp_path: Path,
+) -> None:
     ledger_path = tmp_path / "research-ledger.json"
     created = capabilities.create_research_entry(
         title="Quality feedback linkage",
@@ -417,8 +427,13 @@ def test_quality_feedback_is_bound_to_an_existing_research_entry(tmp_path: Path)
     linked = capabilities.get_research_entry(entry_id, ledger_path=ledger_path)["entry"]
     assert report["entry_id"] == entry_id
     assert linked["observations"][-1]["observation_type"] == "quality_feedback"
-    assert linked["observations"][-1]["evidence"]["quality_feedback"]["entry_id"] == entry_id
-    assert linked["observations"][-1]["evidence"]["quality_feedback"]["evidence_refs"] == [anchor]
+    assert (
+        linked["observations"][-1]["evidence"]["quality_feedback"]["entry_id"]
+        == entry_id
+    )
+    assert linked["observations"][-1]["evidence"]["quality_feedback"][
+        "evidence_refs"
+    ] == [anchor]
 
 
 def test_quality_feedback_requires_evidence_references(tmp_path: Path) -> None:
@@ -433,13 +448,17 @@ def test_quality_feedback_requires_evidence_references(tmp_path: Path) -> None:
     with pytest.raises(ValueError, match="evidence reference"):
         capabilities.record_quality_feedback(
             entry_id=created["entry"]["entry_id"],
-            agent_scores=[{"role": "risk-analyst", "correct_calls": 1, "total_calls": 1}],
+            agent_scores=[
+                {"role": "risk-analyst", "correct_calls": 1, "total_calls": 1}
+            ],
             store_path=tmp_path / "quality-feedback.json",
             ledger_path=ledger_path,
         )
 
 
-def test_quality_feedback_requires_a_prior_review_or_postmortem_anchor(tmp_path: Path) -> None:
+def test_quality_feedback_requires_a_prior_review_or_postmortem_anchor(
+    tmp_path: Path,
+) -> None:
     ledger_path = tmp_path / "research-ledger.json"
     created = capabilities.create_research_entry(
         title="Unanchored quality feedback",
@@ -451,7 +470,9 @@ def test_quality_feedback_requires_a_prior_review_or_postmortem_anchor(tmp_path:
     with pytest.raises(ValueError, match="prior persisted"):
         capabilities.record_quality_feedback(
             entry_id=created["entry"]["entry_id"],
-            agent_scores=[{"role": "risk-analyst", "correct_calls": 1, "total_calls": 1}],
+            agent_scores=[
+                {"role": "risk-analyst", "correct_calls": 1, "total_calls": 1}
+            ],
             evidence_refs=["review-packet:unlinked"],
             store_path=tmp_path / "quality-feedback.json",
             ledger_path=ledger_path,
@@ -610,14 +631,14 @@ def test_capability_quality_checks(tmp_path: Path) -> None:
     (case_dir / "gate_manifest.md").write_text("gate", encoding="utf-8")
     (case_dir / "gate_manifest.json").write_text(
         json.dumps(
-                {
-                    "report_type": "single-stock",
-                    "depth_gates": [
-                        "evidence_depth",
-                        "broker_consensus_depth",
-                        "model_depth",
-                        "valuation_depth",
-                        "ic_readiness",
+            {
+                "report_type": "single-stock",
+                "depth_gates": [
+                    "evidence_depth",
+                    "broker_consensus_depth",
+                    "model_depth",
+                    "valuation_depth",
+                    "ic_readiness",
                 ],
             }
         ),

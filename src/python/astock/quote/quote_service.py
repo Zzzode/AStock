@@ -35,9 +35,8 @@ def is_trading_hours() -> bool:
     if datetime.now().weekday() >= 5:
         return False
     # Trading session check
-    return (
-        (MORNING_OPEN <= now <= MORNING_CLOSE)
-        or (AFTERNOON_OPEN <= now <= AFTERNOON_CLOSE)
+    return (MORNING_OPEN <= now <= MORNING_CLOSE) or (
+        AFTERNOON_OPEN <= now <= AFTERNOON_CLOSE
     )
 
 
@@ -181,10 +180,7 @@ class QuoteService:
 
         Converts None to "all" for semantic consistency
         """
-        normalized_parts = [
-            "all" if p is None else str(p)
-            for p in parts
-        ]
+        normalized_parts = ["all" if p is None else str(p) for p in parts]
         return f"{prefix}:{':'.join(normalized_parts)}"
 
     def _classify_quote_data_quality(self, quote: dict[str, Any]) -> str:
@@ -245,7 +241,9 @@ class QuoteService:
                 logger.debug(f"AkShare quote fetched successfully: {code}")
                 return result
             except Exception as e:
-                logger.warning(f"AkShare quote fetch failed, switching to primary client: {e}")
+                logger.warning(
+                    f"AkShare quote fetch failed, switching to primary client: {e}"
+                )
 
             # Fallback to primary client (Baostock by default)
             try:
@@ -373,7 +371,9 @@ class QuoteService:
                     self.fallback_client.get_daily_quotes(code, start_date, end_date),
                     timeout=self._daily_source_timeout_seconds,
                 )
-                logger.debug(f"AkShare daily data fetched successfully: {code}, {len(df)} records")
+                logger.debug(
+                    f"AkShare daily data fetched successfully: {code}, {len(df)} records"
+                )
                 return df
             except asyncio.TimeoutError as error:
                 logger.error(

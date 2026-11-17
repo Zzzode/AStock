@@ -20,7 +20,9 @@ def verify_frozen_market_archive(
     evidence until the immutable bytes can be loaded and recomputed.
     """
     if path is None or not str(path).strip():
-        return _blocked("A frozen market-data archive path is required for a reproducibility claim.")
+        return _blocked(
+            "A frozen market-data archive path is required for a reproducibility claim."
+        )
     archive_path = Path(path)
     if not archive_path.is_file():
         return _blocked(f"Frozen market-data archive does not exist: {archive_path}")
@@ -36,11 +38,17 @@ def verify_frozen_market_archive(
     archive_id = str(payload.get("archive_id") or "").strip()
     raw_records = payload.get("raw_source_records")
     if not source or not archive_id or not isinstance(raw_records, Mapping):
-        return _blocked("Frozen market-data archive requires source, archive_id, and raw_source_records.")
+        return _blocked(
+            "Frozen market-data archive requires source, archive_id, and raw_source_records."
+        )
     if expected_archive_id and archive_id != expected_archive_id:
-        return _blocked("Frozen market-data archive ID does not match the supplied source manifest.")
+        return _blocked(
+            "Frozen market-data archive ID does not match the supplied source manifest."
+        )
     if expected_source and source != expected_source:
-        return _blocked("Frozen market-data archive source does not match the supplied source manifest.")
+        return _blocked(
+            "Frozen market-data archive source does not match the supplied source manifest."
+        )
     digest = archive_id.removeprefix("sha256:")
     if len(digest) != 64:
         return _blocked("Frozen market-data archive_id must be a sha256 digest.")
@@ -52,7 +60,9 @@ def verify_frozen_market_archive(
         }
     )
     if computed != digest:
-        return _blocked("Frozen market-data archive raw records do not match archive_id.")
+        return _blocked(
+            "Frozen market-data archive raw records do not match archive_id."
+        )
     return {
         "status": "pass",
         "archive_path": str(archive_path),
@@ -67,5 +77,7 @@ def _blocked(failure: str) -> dict[str, Any]:
 
 
 def _content_hash(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()

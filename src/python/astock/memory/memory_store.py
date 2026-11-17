@@ -14,11 +14,11 @@ from typing import Any, Optional
 class MemoryEntry:
     """Memory entry"""
 
-    agent_name: str           # Agent name
-    session_id: str           # Session ID
-    user_id: str              # User ID
-    key: str                  # Key
-    value: Any                # Value
+    agent_name: str  # Agent name
+    session_id: str  # Session ID
+    user_id: str  # User ID
+    key: str  # Key
+    value: Any  # Value
     created_at: datetime = field(default_factory=datetime.now)
     expires_at: Optional[datetime] = None
 
@@ -44,7 +44,11 @@ class MemoryEntry:
             key=data["key"],
             value=data["value"],
             created_at=datetime.fromisoformat(data["created_at"]),
-            expires_at=datetime.fromisoformat(data["expires_at"]) if data.get("expires_at") else None,
+            expires_at=(
+                datetime.fromisoformat(data["expires_at"])
+                if data.get("expires_at")
+                else None
+            ),
         )
 
 
@@ -166,8 +170,7 @@ class MemoryStore:
         # Filter expired entries
         now = datetime.now()
         valid_entries = [
-            e for e in entries
-            if e.expires_at is None or e.expires_at > now
+            e for e in entries if e.expires_at is None or e.expires_at > now
         ]
 
         # Sort by time descending
@@ -224,8 +227,7 @@ class MemoryStore:
         # Filter expired entries
         now = datetime.now()
         valid_entries = [
-            e for e in all_entries
-            if e.expires_at is None or e.expires_at > now
+            e for e in all_entries if e.expires_at is None or e.expires_at > now
         ]
 
         # Sort by time descending

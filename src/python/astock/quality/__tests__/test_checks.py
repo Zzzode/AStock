@@ -279,7 +279,9 @@ def test_evaluate_research_case_quality_blocks_pass_with_unusable_broker_values(
 ) -> None:
     case_dir = tmp_path / "broker-unusable-pass-case"
     _gate_runner_case(case_dir, industry=True)
-    packet = _broker_consensus_packet(source_quality="original_pdf", valuation_weight=0.0)
+    packet = _broker_consensus_packet(
+        source_quality="original_pdf", valuation_weight=0.0
+    )
     row = packet["rows"][0]
     row["target_price"] = "not disclosed"
     row["method"] = "not disclosed"
@@ -307,7 +309,9 @@ def test_evaluate_research_case_quality_blocks_third_party_consensus_anchor(
 ) -> None:
     case_dir = tmp_path / "broker-third-party-anchor-case"
     _gate_runner_case(case_dir, industry=True)
-    packet = _broker_consensus_packet(source_quality="original_pdf", valuation_weight=0.0)
+    packet = _broker_consensus_packet(
+        source_quality="original_pdf", valuation_weight=0.0
+    )
     row = packet["rows"][0]
     row["source_quality"] = "third_party_consensus_aggregate"
     row["valuation_weight"] = 0.0
@@ -330,7 +334,9 @@ def test_evaluate_research_case_quality_blocks_house_view_as_broker_anchor(
 ) -> None:
     case_dir = tmp_path / "house-view-as-broker-anchor-case"
     _gate_runner_case(case_dir)
-    packet = _broker_consensus_packet(source_quality="original_pdf", valuation_weight=1.0)
+    packet = _broker_consensus_packet(
+        source_quality="original_pdf", valuation_weight=1.0
+    )
     row = packet["rows"][0]
     row["broker"] = "AStock House View"
     row["source_quality"] = "house_model_auditable"
@@ -341,7 +347,8 @@ def test_evaluate_research_case_quality_blocks_house_view_as_broker_anchor(
 
     assert result["publishable"] is False
     assert any(
-        check["name"] == "broker/street external positive anchor covers valuation universe"
+        check["name"]
+        == "broker/street external positive anchor covers valuation universe"
         and check["passed"] is False
         for check in result["checks"]
     )
@@ -460,7 +467,12 @@ def test_evaluate_research_case_quality_accepts_research_only_strategic_signoff(
             ],
             "cash_ledger_and_accounting": {
                 "eligible_receipt_types": ["settled interest"],
-                "not_receipt_types": ["asset sale", "unrealized gain", "NAV accretion", "external contribution"],
+                "not_receipt_types": [
+                    "asset sale",
+                    "unrealized gain",
+                    "NAV accretion",
+                    "external contribution",
+                ],
                 "capital_repayment_like_component": "flag and exclude from investment return until resolved",
             },
             "total_return_measurement": {
@@ -504,7 +516,7 @@ def test_evaluate_research_case_quality_accepts_research_only_strategic_signoff(
                     "aggregate_cap": None,
                     "required_checks": ["liquidity"],
                     "inactive_behavior": "remain in protected liquidity",
-                }
+                },
             },
         },
     )
@@ -552,8 +564,7 @@ def test_evaluate_research_case_quality_accepts_research_only_strategic_signoff(
 
     assert result["publishable"] is True
     assert any(
-        check["name"]
-        == "strategic allocation research-framework sign-off status pass"
+        check["name"] == "strategic allocation research-framework sign-off status pass"
         and check["passed"] is True
         for check in result["checks"]
     )
@@ -634,7 +645,12 @@ def test_evaluate_research_case_quality_blocks_strategic_implementation_approval
             "active_base_core": [{"asset": "cash", "weight": 1.0}],
             "cash_ledger_and_accounting": {
                 "eligible_receipt_types": ["interest"],
-                "not_receipt_types": ["asset sale", "unrealized gain", "NAV accretion", "external contribution"],
+                "not_receipt_types": [
+                    "asset sale",
+                    "unrealized gain",
+                    "NAV accretion",
+                    "external contribution",
+                ],
                 "capital_repayment_like_component": "flag and exclude from investment return until resolved",
             },
             "total_return_measurement": {
@@ -1006,7 +1022,9 @@ def test_run_research_gates_blocks_original_pdf_without_target_price(
 ) -> None:
     case_dir = tmp_path / "gate-broker-unusable-case"
     _gate_runner_case(case_dir)
-    packet = _broker_consensus_packet(source_quality="original_pdf", valuation_weight=0.0)
+    packet = _broker_consensus_packet(
+        source_quality="original_pdf", valuation_weight=0.0
+    )
     row = packet["rows"][0]
     row["target_price"] = "not disclosed"
     row["method"] = "not disclosed"
@@ -1028,7 +1046,9 @@ def test_run_research_gates_blocks_original_pdf_without_target_price(
     )
 
     assert completed.returncode != 0
-    assert "broker/street consensus values usable for valuation anchor" in completed.stdout
+    assert (
+        "broker/street consensus values usable for valuation anchor" in completed.stdout
+    )
 
 
 def test_run_research_gates_blocks_third_party_zero_weight_anchor(
@@ -1036,7 +1056,9 @@ def test_run_research_gates_blocks_third_party_zero_weight_anchor(
 ) -> None:
     case_dir = tmp_path / "gate-broker-third-party-case"
     _gate_runner_case(case_dir)
-    packet = _broker_consensus_packet(source_quality="original_pdf", valuation_weight=0.0)
+    packet = _broker_consensus_packet(
+        source_quality="original_pdf", valuation_weight=0.0
+    )
     row = packet["rows"][0]
     row["source_quality"] = "third_party_consensus_aggregate"
     row["valuation_weight"] = 0.0
@@ -1171,7 +1193,9 @@ def _minimal_case(case_dir: Path) -> None:
     _write_json(case_dir / "data/claim_audit.json", {"claims": []})
     _write(case_dir / "analysis/valuation_audit.md", "Model Reproducibility: PASS")
     _write(case_dir / "analysis/valuation_model.md", _valuation_model_text())
-    _write_json(case_dir / "data/current_valuation_model_20260630.json", _valuation_packet())
+    _write_json(
+        case_dir / "data/current_valuation_model_20260630.json", _valuation_packet()
+    )
     _write(
         case_dir / "data/broker_street_consensus_20260630.md",
         "complete broker street consensus",
@@ -1228,7 +1252,12 @@ def _open_universe_strategic_return_model() -> dict[str, object]:
         "active_base_core": [{"asset": "eligible_protected_liquidity", "weight": 1.0}],
         "cash_ledger_and_accounting": {
             "eligible_receipt_types": ["settled interest"],
-            "not_receipt_types": ["asset sale", "unrealized gain", "NAV accretion", "external contribution"],
+            "not_receipt_types": [
+                "asset sale",
+                "unrealized gain",
+                "NAV accretion",
+                "external contribution",
+            ],
             "capital_repayment_like_component": "flag and exclude from investment return until resolved",
         },
         "total_return_measurement": {
@@ -1517,7 +1546,10 @@ def _valuation_model_text() -> str:
         "Growth Earnings Dependency",
         "Full-Chain Classification Dependency",
     ]
-    return "\n\n".join(f"## {section}\ncurrent share market cap broker Street market-implied weight target upside" for section in sections)
+    return "\n\n".join(
+        f"## {section}\ncurrent share market cap broker Street market-implied weight target upside"
+        for section in sections
+    )
 
 
 def _valuation_packet(*, row_count: int = 1) -> dict[str, object]:
@@ -1563,13 +1595,21 @@ def _broker_consensus_packet(
                 "ticker": f"{index:06d}",
                 "broker": "Fixture Securities",
                 "report_date": "2026-06-30",
-                "rating": "Buy" if source_quality == "original_pdf" else "not disclosed",
-                "target_price": 12.0 + index if source_quality == "original_pdf" else "not disclosed",
+                "rating": (
+                    "Buy" if source_quality == "original_pdf" else "not disclosed"
+                ),
+                "target_price": (
+                    12.0 + index
+                    if source_quality == "original_pdf"
+                    else "not disclosed"
+                ),
                 "revenue_E": {"2026E": 200.0 + index},
                 "net_profit_E": {"2026E": 20.0 + index},
                 "EPS_E": {"2026E": 0.2 + index / 100.0},
                 "method": "PE" if source_quality == "original_pdf" else "not disclosed",
-                "implied_upside": 0.2 if source_quality == "original_pdf" else "not disclosed",
+                "implied_upside": (
+                    0.2 if source_quality == "original_pdf" else "not disclosed"
+                ),
                 "source_quality": source_quality,
                 "source_path": "sources/broker-reports/2026-06-30/index.md",
                 "valuation_weight": valuation_weight,
@@ -1578,7 +1618,9 @@ def _broker_consensus_packet(
     return {"rows": rows}
 
 
-def _valuation_coverage_rows() -> tuple[list[dict[str, object]], list[dict[str, object]]]:
+def _valuation_coverage_rows() -> (
+    tuple[list[dict[str, object]], list[dict[str, object]]]
+):
     triage_rows: list[dict[str, object]] = []
     for index in range(1, 174):
         if index <= 58:
@@ -1595,12 +1637,16 @@ def _valuation_coverage_rows() -> tuple[list[dict[str, object]], list[dict[str, 
                 "chain_blocks": [f"block_{index % 8}"],
                 "subsegments": [f"segment_{index % 12}"],
                 "primary_classification": classification,
-                "target_price_status": "target_price_published"
-                if has_target
-                else "no_target_until_evidence_complete",
-                "valuation_disposition": "published_target_price_model"
-                if has_target
-                else "watchlist_until_evidence_complete",
+                "target_price_status": (
+                    "target_price_published"
+                    if has_target
+                    else "no_target_until_evidence_complete"
+                ),
+                "valuation_disposition": (
+                    "published_target_price_model"
+                    if has_target
+                    else "watchlist_until_evidence_complete"
+                ),
                 "candidate_method": "PE/SOTP with order and margin validation",
                 "evidence_gap": "customer/order/ASP evidence requires verification",
                 "next_verification_path": "collect official filings and broker evidence",
@@ -1624,9 +1670,7 @@ def _full_chain_universe_rows() -> list[dict[str, object]]:
                 "subsegment": f"segment_{index}",
                 "evidence_status": "verified",
                 "source_count": 1,
-                "classification": "core_valuation"
-                if index <= 4
-                else "satellite_watch",
+                "classification": "core_valuation" if index <= 4 else "satellite_watch",
                 "valuation_status": "conditional valuation",
                 "next_verification_path": "collect official filings",
             }

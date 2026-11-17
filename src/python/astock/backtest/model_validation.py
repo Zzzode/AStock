@@ -21,7 +21,6 @@ import pandas as pd
 from .engine import BacktestEngine, BacktestResult
 from .strategies import get_strategy
 
-
 _MAX_PARAMETER_CANDIDATES = 64
 _SELECTION_METRICS = {"total_return", "sharpe_ratio"}
 
@@ -49,7 +48,9 @@ class ModelSelectionFold:
             "testing_end": self.testing_end,
             "selected_parameters": dict(self.selected_parameters),
             "selection_metric": self.selection_metric,
-            "candidate_training_results": [dict(item) for item in self.candidate_training_results],
+            "candidate_training_results": [
+                dict(item) for item in self.candidate_training_results
+            ],
             "out_of_sample_result": self.out_of_sample_result.to_dict(),
         }
 
@@ -70,8 +71,12 @@ class RollingModelSelectionResult:
     warnings: list[str]
 
     def to_dict(self) -> dict[str, Any]:
-        returns = [fold.out_of_sample_result.total_return / 100.0 for fold in self.folds]
-        compounded = math.prod(1.0 + value for value in returns) - 1.0 if returns else 0.0
+        returns = [
+            fold.out_of_sample_result.total_return / 100.0 for fold in self.folds
+        ]
+        compounded = (
+            math.prod(1.0 + value for value in returns) - 1.0 if returns else 0.0
+        )
         return {
             "schema_version": "rolling_model_selection.v1",
             "strategy": self.strategy,
@@ -81,7 +86,9 @@ class RollingModelSelectionResult:
             "candidate_set_fingerprint": self.candidate_set_fingerprint,
             "strategy_implementation_fingerprint": self.strategy_implementation_fingerprint,
             "execution_engine_fingerprint": self.execution_engine_fingerprint,
-            "candidate_parameter_sets": [dict(item) for item in self.candidate_parameter_sets],
+            "candidate_parameter_sets": [
+                dict(item) for item in self.candidate_parameter_sets
+            ],
             "fold_count": len(self.folds),
             "mean_out_of_sample_return": (
                 sum(returns) / len(returns) if returns else 0.0
@@ -119,22 +126,35 @@ def run_rolling_model_selection(
     not a continuous portfolio return.
     """
     if train_bars < 20 or test_bars < 1:
-        raise ValueError("rolling model selection requires at least 20 train bars and one test bar")
+        raise ValueError(
+            "rolling model selection requires at least 20 train bars and one test bar"
+        )
     if len(df) <= train_bars:
-        raise ValueError("rolling model selection data does not contain an out-of-sample bar")
+        raise ValueError(
+            "rolling model selection data does not contain an out-of-sample bar"
+        )
     metric = str(selection_metric).strip().lower()
     if metric not in _SELECTION_METRICS:
-        raise ValueError("selection_metric must be one of: " + ", ".join(sorted(_SELECTION_METRICS)))
+        raise ValueError(
+            "selection_metric must be one of: " + ", ".join(sorted(_SELECTION_METRICS))
+        )
     candidates = _normalise_candidate_parameter_sets(candidate_parameter_sets)
-    candidate_set_fingerprint = "sha256:" + hashlib.sha256(
-        json.dumps(candidates, sort_keys=True, separators=(",", ":")).encode("utf-8")
-    ).hexdigest()
+    candidate_set_fingerprint = (
+        "sha256:"
+        + hashlib.sha256(
+            json.dumps(candidates, sort_keys=True, separators=(",", ":")).encode(
+                "utf-8"
+            )
+        ).hexdigest()
+    )
     strategy_implementation_fingerprint = _implementation_fingerprint(
         get_strategy(strategy_name).__class__
     )
     execution_engine_fingerprint = _implementation_fingerprint(BacktestEngine)
     folds: list[ModelSelectionFold] = []
-    for fold_index, test_start_index in enumerate(range(train_bars, len(df), test_bars), start=1):
+    for fold_index, test_start_index in enumerate(
+        range(train_bars, len(df), test_bars), start=1
+    ):
         test_end_index = min(test_start_index + test_bars, len(df))
         train_start_index = test_start_index - train_bars
         training_frame = df.iloc[train_start_index:test_start_index].copy()
@@ -151,7 +171,9 @@ def run_rolling_model_selection(
             )
             for parameters in candidates
         ]
-        chosen = min(candidate_results, key=lambda item: _selection_sort_key(item, metric))
+        chosen = min(
+            candidate_results, key=lambda item: _selection_sort_key(item, metric)
+        )
         selected_parameters = dict(chosen["parameters"])
         evaluation_frame = df.iloc[train_start_index:test_end_index].copy()
         out_of_sample = BacktestEngine().run(
@@ -200,9 +222,13 @@ def _normalise_candidate_parameter_sets(
     values: Sequence[Mapping[str, Any]],
 ) -> list[dict[str, Any]]:
     if isinstance(values, (str, bytes, bytearray)) or not isinstance(values, Sequence):
-        raise ValueError("candidate_parameter_sets must be a non-empty list of parameter objects")
+        raise ValueError(
+            "candidate_parameter_sets must be a non-empty list of parameter objects"
+        )
     if not values or len(values) > _MAX_PARAMETER_CANDIDATES:
-        raise ValueError(f"candidate_parameter_sets must contain between 1 and {_MAX_PARAMETER_CANDIDATES} entries")
+        raise ValueError(
+            f"candidate_parameter_sets must contain between 1 and {_MAX_PARAMETER_CANDIDATES} entries"
+        )
     normalized: list[dict[str, Any]] = []
     fingerprints: set[str] = set()
     for value in values:
@@ -210,11 +236,17 @@ def _normalise_candidate_parameter_sets(
             raise ValueError("every candidate parameter set must be an object")
         candidate = {str(key): item for key, item in value.items()}
         try:
-            fingerprint = json.dumps(candidate, sort_keys=True, separators=(",", ":"), allow_nan=False)
+            fingerprint = json.dumps(
+                candidate, sort_keys=True, separators=(",", ":"), allow_nan=False
+            )
         except (TypeError, ValueError) as error:
-            raise ValueError("candidate parameter sets must be JSON-serializable finite values") from error
+            raise ValueError(
+                "candidate parameter sets must be JSON-serializable finite values"
+            ) from error
         if fingerprint in fingerprints:
-            raise ValueError("candidate_parameter_sets must not contain duplicate parameter sets")
+            raise ValueError(
+                "candidate_parameter_sets must not contain duplicate parameter sets"
+            )
         fingerprints.add(fingerprint)
         normalized.append(json.loads(fingerprint))
     return normalized
@@ -250,7 +282,9 @@ def _candidate_training_result(
     }
 
 
-def _selection_sort_key(result: Mapping[str, Any], metric: str) -> tuple[float, float, float, str]:
+def _selection_sort_key(
+    result: Mapping[str, Any], metric: str
+) -> tuple[float, float, float, str]:
     # ``min`` chooses the highest metric, then lower drawdown, then higher
     # Sharpe, and finally a stable canonical parameter representation.
     return (

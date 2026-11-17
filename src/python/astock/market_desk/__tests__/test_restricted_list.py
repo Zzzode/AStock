@@ -33,7 +33,9 @@ def _entry(target: str, status: str = "restricted") -> RestrictedListEntry:
     )
 
 
-def test_store_reports_missing_stale_and_current_restricted_targets(tmp_path: Path) -> None:
+def test_store_reports_missing_stale_and_current_restricted_targets(
+    tmp_path: Path,
+) -> None:
     path = tmp_path / "restricted-list.json"
     store = RestrictedListStore(path)
     assert store.health()["status"] == "missing"
@@ -69,11 +71,28 @@ def test_signed_attestation_requires_matching_compliance_key(tmp_path: Path) -> 
         reviewed_at="2026-07-28T09:00:00+08:00",
         expires_at="2026-08-28T09:00:00+08:00",
     )
-    store.attest_signed(attestation, key_id="compliance-kms-v1", signing_key="test-secret")
+    store.attest_signed(
+        attestation, key_id="compliance-kms-v1", signing_key="test-secret"
+    )
 
-    assert store.health(signature_key="test-secret", signature_key_id="compliance-kms-v1")["signature_status"] == "verified"
-    assert store.health(signature_key="wrong-secret", signature_key_id="compliance-kms-v1")["signature_status"] == "invalid"
-    assert store.health(signature_key="test-secret", signature_key_id="wrong-key-id")["signature_status"] == "invalid"
+    assert (
+        store.health(signature_key="test-secret", signature_key_id="compliance-kms-v1")[
+            "signature_status"
+        ]
+        == "verified"
+    )
+    assert (
+        store.health(
+            signature_key="wrong-secret", signature_key_id="compliance-kms-v1"
+        )["signature_status"]
+        == "invalid"
+    )
+    assert (
+        store.health(signature_key="test-secret", signature_key_id="wrong-key-id")[
+            "signature_status"
+        ]
+        == "invalid"
+    )
     assert store.health()["signature_status"] == "unverified"
 
 

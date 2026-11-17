@@ -62,7 +62,9 @@ class StockScreener:
             return []
 
         # Get stock list
-        stock_codes = self._normalize_codes(codes) if codes else await self._get_all_codes()
+        stock_codes = (
+            self._normalize_codes(codes) if codes else await self._get_all_codes()
+        )
         logger.info(
             f"Starting screening, stock count: {len(stock_codes)}, factor count: {len(factor_list)}"
         )
@@ -86,7 +88,9 @@ class StockScreener:
 
             # Progress update (every 200 stocks)
             if (i + 1) % 200 == 0:
-                logger.info(f"Processed {i + 1}/{len(stock_codes)} stocks, valid: {len(valid_results)}")
+                logger.info(
+                    f"Processed {i + 1}/{len(stock_codes)} stocks, valid: {len(valid_results)}"
+                )
 
         if errors:
             logger.warning(f"Encountered {errors} errors during screening")
@@ -197,9 +201,7 @@ class StockScreener:
             # liquidity, volatility, and financial fields. It must not turn
             # MA/MACD/KDJ/RSI calculations into screening gates.
             latest = df.iloc[-1]
-            volatility_20 = (
-                df["close"].pct_change().rolling(20).std().iloc[-1]
-            )
+            volatility_20 = df["close"].pct_change().rolling(20).std().iloc[-1]
 
             # Get PE, PB from daily data (supported by Baostock)
             pe_value = latest.get("pe") if "pe" in latest else None
@@ -224,9 +226,15 @@ class StockScreener:
                 "low": low,
                 "volume": float(latest["volume"]),
                 "amount": float(latest["amount"]) if "amount" in latest else 0,
-                "pe": float(pe_value) if pe_value is not None and pe_value != 0 else None,
-                "pb": float(pb_value) if pb_value is not None and pb_value != 0 else None,
-                "turnover_rate": float(latest.get("turn", 0)) if latest.get("turn") else None,
+                "pe": (
+                    float(pe_value) if pe_value is not None and pe_value != 0 else None
+                ),
+                "pb": (
+                    float(pb_value) if pb_value is not None and pb_value != 0 else None
+                ),
+                "turnover_rate": (
+                    float(latest.get("turn", 0)) if latest.get("turn") else None
+                ),
                 "volatility_20": float(volatility_20),
                 "daily_range_pct": (high - low) / close if close > 0 else None,
                 "close_to_high_pct": close / high if high > 0 else None,
@@ -245,7 +253,9 @@ class StockScreener:
         for factor in factors:
             value = data.get(factor.field)
             reference_value = (
-                data.get(factor.threshold) if isinstance(factor.threshold, str) else factor.threshold
+                data.get(factor.threshold)
+                if isinstance(factor.threshold, str)
+                else factor.threshold
             )
             previous_value = data.get(f"prev_{factor.field}")
             previous_reference_value = (
@@ -326,31 +336,53 @@ class StockScreener:
             codes = [str(code) for code in df["code"].tolist()]
             # Filter out non-main-board stocks (NEEQ, STAR market, etc. can be adjusted as needed)
             # Keep main board, ChiNext, and STAR market
-            valid_codes = [
-                c for c in codes
-                if c.startswith(('0', '3', '6'))
-            ]
+            valid_codes = [c for c in codes if c.startswith(("0", "3", "6"))]
             return valid_codes
         except Exception as e:
             logger.warning(f"Failed to get stock list: {e}, using default list")
             # Return a more complete default list (partial CSI 300 constituents)
             return [
                 # Banks
-                "600036", "601166", "601398", "601288", "601988", "600000", "601328",
+                "600036",
+                "601166",
+                "601398",
+                "601288",
+                "601988",
+                "600000",
+                "601328",
                 # Insurance
-                "601318", "601601", "601628",
+                "601318",
+                "601601",
+                "601628",
                 # Securities
-                "600030", "601211", "600837",
+                "600030",
+                "601211",
+                "600837",
                 # Energy
-                "600028", "601088", "600019", "601857",
+                "600028",
+                "601088",
+                "600019",
+                "601857",
                 # Consumer
-                "600519", "000858", "000568", "600887",
+                "600519",
+                "000858",
+                "000568",
+                "600887",
                 # Technology
-                "000063", "002415", "300750", "600900",
+                "000063",
+                "002415",
+                "300750",
+                "600900",
                 # Pharmaceuticals
-                "000661", "600276", "300760",
+                "000661",
+                "600276",
+                "300760",
                 # Real Estate
-                "000002", "600048",
+                "000002",
+                "600048",
                 # Other blue chips
-                "600585", "600033", "601668", "600309",
+                "600585",
+                "600033",
+                "601668",
+                "600309",
             ]

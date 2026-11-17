@@ -112,12 +112,14 @@ def test_accuracy_stats(tmp_ledger):
         entry_price=10.0,
     )
     tmp_ledger.create(pred)
-    tmp_ledger.record_verification(VerificationResult(
-        prediction_id=pred.prediction_id or "",
-        outcome=PredictionOutcome.CORRECT,
-        actual_price=11.0,
-        price_change_pct=10.0,
-    ))
+    tmp_ledger.record_verification(
+        VerificationResult(
+            prediction_id=pred.prediction_id or "",
+            outcome=PredictionOutcome.CORRECT,
+            actual_price=11.0,
+            price_change_pct=10.0,
+        )
+    )
     stats = tmp_ledger.get_accuracy_stats()
     assert stats["total_verified"] == 1
     assert stats["correct"] == 1

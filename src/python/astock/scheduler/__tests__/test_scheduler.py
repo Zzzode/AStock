@@ -25,6 +25,7 @@ def scheduler(tmp_path):
 def _make_job(name: str, freq: JobFrequency) -> ScheduledJob:
     async def handler():
         return {"ok": True}
+
     return ScheduledJob(name=name, frequency=freq, handler=handler)
 
 
@@ -37,7 +38,9 @@ def test_register_and_status(scheduler):
     assert status["jobs"]["test_job"]["frequency"] == "hourly"
 
 
-def test_default_scheduler_exposes_the_same_control_topology_to_status_and_daemon(tmp_path) -> None:
+def test_default_scheduler_exposes_the_same_control_topology_to_status_and_daemon(
+    tmp_path,
+) -> None:
     scheduler = create_default_scheduler(state_path=tmp_path / "state.json")
 
     assert {
@@ -62,8 +65,14 @@ def test_default_scheduler_exposes_the_same_control_topology_to_status_and_daemo
     assert scheduler.get_status()["jobs"]["audit_market_desk_operating_maturity"][
         "depends_on"
     ] == ["audit_market_desk_operational_readiness"]
-    assert scheduler._jobs["record_public_market_desk_eod_observation"].completion_verifier is not None
-    assert scheduler._jobs["record_public_market_desk_eod_discovery"].completion_verifier is not None
+    assert (
+        scheduler._jobs["record_public_market_desk_eod_observation"].completion_verifier
+        is not None
+    )
+    assert (
+        scheduler._jobs["record_public_market_desk_eod_discovery"].completion_verifier
+        is not None
+    )
 
 
 def test_dependent_daily_control_reruns_when_predecessors_finish_later_same_session(
@@ -101,9 +110,12 @@ def test_dependent_daily_control_does_not_rerun_when_audit_is_newer_than_predece
     predecessor.last_run = datetime(2026, 7, 29, 15, 7, tzinfo=EXCHANGE_TIMEZONE)
     dependent.last_run = datetime(2026, 7, 29, 15, 9, tzinfo=EXCHANGE_TIMEZONE)
 
-    assert scheduler._should_run(
-        dependent, datetime(2026, 7, 29, 15, 10, tzinfo=EXCHANGE_TIMEZONE)
-    ) is False
+    assert (
+        scheduler._should_run(
+            dependent, datetime(2026, 7, 29, 15, 10, tzinfo=EXCHANGE_TIMEZONE)
+        )
+        is False
+    )
 
 
 def test_enable_disable(scheduler):
@@ -197,7 +209,9 @@ async def test_scheduler_persists_structured_last_result(tmp_path) -> None:
 
 
 @pytest.mark.asyncio
-async def test_scheduler_publishes_a_fresh_runtime_lease_to_status_readers(tmp_path) -> None:
+async def test_scheduler_publishes_a_fresh_runtime_lease_to_status_readers(
+    tmp_path,
+) -> None:
     state_path = tmp_path / "state.json"
     daemon = TaskScheduler(state_path=state_path)
     daemon.register(_make_job("control", JobFrequency.HOURLY))
@@ -224,7 +238,9 @@ async def test_scheduler_publishes_a_fresh_runtime_lease_to_status_readers(tmp_p
 
 
 @pytest.mark.asyncio
-async def test_loading_state_before_manual_run_preserves_other_job_history(tmp_path) -> None:
+async def test_loading_state_before_manual_run_preserves_other_job_history(
+    tmp_path,
+) -> None:
     state_path = tmp_path / "state.json"
     first = TaskScheduler(state_path=state_path)
     first.register(_make_job("first", JobFrequency.HOURLY))
@@ -324,7 +340,9 @@ async def test_eod_skip_without_archive_does_not_count_as_completion_or_unblock_
         return {"status": "ready"}
 
     observation = ScheduledJob(
-        name="observation", frequency=JobFrequency.DAILY_AFTER_CLOSE, handler=_skipped_observation
+        name="observation",
+        frequency=JobFrequency.DAILY_AFTER_CLOSE,
+        handler=_skipped_observation,
     )
     readiness = ScheduledJob(
         name="readiness",
@@ -341,9 +359,7 @@ async def test_eod_skip_without_archive_does_not_count_as_completion_or_unblock_
     assert observation.last_run is None
     assert observation.last_skip_at == attempted_at
     assert scheduler._should_run(observation, attempted_at) is False
-    assert scheduler._should_run(
-        observation, attempted_at + timedelta(days=1)
-    ) is True
+    assert scheduler._should_run(observation, attempted_at + timedelta(days=1)) is True
     assert scheduler._should_run(readiness, attempted_at) is False
     assert scheduler.get_status()["jobs"]["readiness"]["dependency_blockers"] == [
         {"job": "observation", "reason": "never_successful"}
@@ -365,7 +381,9 @@ async def test_eod_skip_with_verified_existing_archive_counts_as_completion(
         }
 
     job = ScheduledJob(
-        name="observation", frequency=JobFrequency.DAILY_AFTER_CLOSE, handler=_existing_observation
+        name="observation",
+        frequency=JobFrequency.DAILY_AFTER_CLOSE,
+        handler=_existing_observation,
     )
     scheduler.register(job)
 
@@ -454,7 +472,11 @@ async def test_failed_job_status_and_retry_are_visible_after_scheduler_restart(
 
     failed = TaskScheduler(state_path=state_path)
     failed.register(
-        ScheduledJob(name="eod_control", frequency=JobFrequency.DAILY_AFTER_CLOSE, handler=_handler)
+        ScheduledJob(
+            name="eod_control",
+            frequency=JobFrequency.DAILY_AFTER_CLOSE,
+            handler=_handler,
+        )
     )
     monkeypatch.setattr(
         "astock.scheduler._exchange_now",
@@ -493,12 +515,14 @@ def test_daily_after_close_schedule_uses_shanghai_exchange_time(scheduler) -> No
     job = _make_job("eod", JobFrequency.DAILY_AFTER_CLOSE)
     scheduler.register(job)
 
-    assert scheduler._should_run(
-        job, datetime(2026, 7, 28, 7, 4, tzinfo=timezone.utc)
-    ) is False
-    assert scheduler._should_run(
-        job, datetime(2026, 7, 28, 7, 5, tzinfo=timezone.utc)
-    ) is True
+    assert (
+        scheduler._should_run(job, datetime(2026, 7, 28, 7, 4, tzinfo=timezone.utc))
+        is False
+    )
+    assert (
+        scheduler._should_run(job, datetime(2026, 7, 28, 7, 5, tzinfo=timezone.utc))
+        is True
+    )
 
 
 def test_loading_legacy_naive_state_interprets_timestamps_in_shanghai(tmp_path) -> None:
@@ -518,10 +542,15 @@ def test_loading_legacy_naive_state_interprets_timestamps_in_shanghai(tmp_path) 
 @pytest.mark.asyncio
 async def test_default_jobs_include_nonexecuting_public_eod_desk_observation() -> None:
     job = next(
-        job for job in create_default_jobs()
+        job
+        for job in create_default_jobs()
         if job.name == "record_public_market_desk_eod_observation"
     )
-    expected = {"status": "recorded", "formal_decision_eligible": False, "no_order_execution": True}
+    expected = {
+        "status": "recorded",
+        "formal_decision_eligible": False,
+        "no_order_execution": True,
+    }
     with patch(
         "astock.capabilities.run_public_market_desk_eod_observation",
         new=AsyncMock(return_value=expected),
@@ -536,10 +565,15 @@ async def test_default_jobs_include_nonexecuting_public_eod_desk_observation() -
 @pytest.mark.asyncio
 async def test_default_jobs_include_nonexecuting_public_eod_discovery() -> None:
     job = next(
-        job for job in create_default_jobs()
+        job
+        for job in create_default_jobs()
         if job.name == "record_public_market_desk_eod_discovery"
     )
-    expected = {"status": "recorded", "formal_decision_eligible": False, "no_order_execution": True}
+    expected = {
+        "status": "recorded",
+        "formal_decision_eligible": False,
+        "no_order_execution": True,
+    }
     with patch(
         "astock.capabilities.run_public_market_desk_eod_discovery",
         new=AsyncMock(return_value=expected),
@@ -554,7 +588,8 @@ async def test_default_jobs_include_nonexecuting_public_eod_discovery() -> None:
 @pytest.mark.asyncio
 async def test_default_jobs_include_nonmutating_strategy_review_queue_audit() -> None:
     job = next(
-        job for job in create_default_jobs()
+        job
+        for job in create_default_jobs()
         if job.name == "audit_market_desk_strategy_reviews"
     )
     expected = {"due_count": 0, "research_only": True, "no_order_execution": True}
@@ -570,9 +605,12 @@ async def test_default_jobs_include_nonmutating_strategy_review_queue_audit() ->
 
 
 @pytest.mark.asyncio
-async def test_default_jobs_include_nonmutating_discovery_research_queue_audit() -> None:
+async def test_default_jobs_include_nonmutating_discovery_research_queue_audit() -> (
+    None
+):
     job = next(
-        job for job in create_default_jobs()
+        job
+        for job in create_default_jobs()
         if job.name == "audit_market_desk_discovery_research_queue"
     )
     expected = {"due_count": 0, "research_only": True, "no_order_execution": True}
@@ -590,7 +628,8 @@ async def test_default_jobs_include_nonmutating_discovery_research_queue_audit()
 @pytest.mark.asyncio
 async def test_default_jobs_include_nonmutating_operational_readiness_audit() -> None:
     job = next(
-        job for job in create_default_jobs()
+        job
+        for job in create_default_jobs()
         if job.name == "audit_market_desk_operational_readiness"
     )
     expected = {
@@ -612,7 +651,8 @@ async def test_default_jobs_include_nonmutating_operational_readiness_audit() ->
 @pytest.mark.asyncio
 async def test_default_jobs_include_nonmutating_operating_maturity_audit() -> None:
     job = next(
-        job for job in create_default_jobs()
+        job
+        for job in create_default_jobs()
         if job.name == "audit_market_desk_operating_maturity"
     )
     expected = {

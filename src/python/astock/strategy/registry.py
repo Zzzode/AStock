@@ -19,10 +19,25 @@ from typing import Any
 from .models import StrategyAvailability, StrategyDefinition, StrategyLifecycle
 
 _ALLOWED_TRANSITIONS: dict[str, tuple[str, ...]] = {
-    StrategyLifecycle.DRAFT.value: (StrategyLifecycle.PAPER.value, StrategyLifecycle.DISABLED.value, StrategyLifecycle.RETIRED.value),
-    StrategyLifecycle.PAPER.value: (StrategyLifecycle.REVIEW.value, StrategyLifecycle.DISABLED.value, StrategyLifecycle.RETIRED.value),
-    StrategyLifecycle.REVIEW.value: (StrategyLifecycle.PAPER.value, StrategyLifecycle.DISABLED.value, StrategyLifecycle.RETIRED.value),
-    StrategyLifecycle.DISABLED.value: (StrategyLifecycle.PAPER.value, StrategyLifecycle.RETIRED.value),
+    StrategyLifecycle.DRAFT.value: (
+        StrategyLifecycle.PAPER.value,
+        StrategyLifecycle.DISABLED.value,
+        StrategyLifecycle.RETIRED.value,
+    ),
+    StrategyLifecycle.PAPER.value: (
+        StrategyLifecycle.REVIEW.value,
+        StrategyLifecycle.DISABLED.value,
+        StrategyLifecycle.RETIRED.value,
+    ),
+    StrategyLifecycle.REVIEW.value: (
+        StrategyLifecycle.PAPER.value,
+        StrategyLifecycle.DISABLED.value,
+        StrategyLifecycle.RETIRED.value,
+    ),
+    StrategyLifecycle.DISABLED.value: (
+        StrategyLifecycle.PAPER.value,
+        StrategyLifecycle.RETIRED.value,
+    ),
     StrategyLifecycle.RETIRED.value: (),
 }
 
@@ -49,7 +64,9 @@ class StrategyRegistry:
         lifecycle = _validated_lifecycle(payload.get("lifecycle"))
         normalized_sources = _source_ids(source_ids)
         if not normalized_sources:
-            raise ValueError("strategy definition requires at least one source identifier")
+            raise ValueError(
+                "strategy definition requires at least one source identifier"
+            )
         timestamp = _timestamp(registered_at)
         fingerprint = _fingerprint(payload)
         with self._connection() as connection:
@@ -59,7 +76,9 @@ class StrategyRegistry:
             ).fetchone()
             if current is not None:
                 if str(current[0]) != fingerprint:
-                    raise ValueError("strategy id/version already exists with a different immutable definition")
+                    raise ValueError(
+                        "strategy id/version already exists with a different immutable definition"
+                    )
                 return self.get_definition(strategy_id, version)
             connection.execute(
                 "INSERT INTO strategy_definitions(strategy_id, version, lifecycle, definition_json, source_ids_json, fingerprint, registered_at, registered_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
@@ -76,7 +95,16 @@ class StrategyRegistry:
             )
             connection.execute(
                 "INSERT INTO strategy_events(strategy_id, version, event_type, from_lifecycle, to_lifecycle, evidence_json, occurred_at, actor) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
-                (strategy_id, version, "registered", None, lifecycle, _canonical_json({"source_ids": normalized_sources}), timestamp, str(registered_by).strip() or "agent"),
+                (
+                    strategy_id,
+                    version,
+                    "registered",
+                    None,
+                    lifecycle,
+                    _canonical_json({"source_ids": normalized_sources}),
+                    timestamp,
+                    str(registered_by).strip() or "agent",
+                ),
             )
         return self.get_definition(strategy_id, version)
 
@@ -89,15 +117,17 @@ class StrategyRegistry:
         if row is None:
             raise ValueError("strategy definition/version was not found")
         definition = json.loads(str(row[1]))
-        definition.update({
-            "lifecycle": str(row[0]),
-            "source_ids": json.loads(str(row[2])),
-            "fingerprint": str(row[3]),
-            "registered_at": str(row[4]),
-            "registered_by": str(row[5]),
-            "research_only": True,
-            "no_order_execution": True,
-        })
+        definition.update(
+            {
+                "lifecycle": str(row[0]),
+                "source_ids": json.loads(str(row[2])),
+                "fingerprint": str(row[3]),
+                "registered_at": str(row[4]),
+                "registered_by": str(row[5]),
+                "research_only": True,
+                "no_order_execution": True,
+            }
+        )
         return definition
 
     def list_definitions(self, *, lifecycle: str | None = None) -> list[dict[str, Any]]:
@@ -126,13 +156,17 @@ class StrategyRegistry:
             raise ValueError("lifecycle transition requires non-empty evidence")
         evidence_source_ids = _source_ids(_evidence_source_ids(evidence))
         if not evidence_source_ids:
-            raise ValueError("lifecycle transition evidence requires at least one source identifier")
+            raise ValueError(
+                "lifecycle transition evidence requires at least one source identifier"
+            )
         current = self.get_definition(strategy_id, version)
         origin = str(current["lifecycle"])
         if target == origin:
             raise ValueError("lifecycle transition must change state")
         if target not in _ALLOWED_TRANSITIONS[origin]:
-            raise ValueError(f"lifecycle transition {origin} -> {target} is not allowed")
+            raise ValueError(
+                f"lifecycle transition {origin} -> {target} is not allowed"
+            )
         timestamp = _timestamp(occurred_at)
         with self._connection() as connection:
             connection.execute(
@@ -147,7 +181,9 @@ class StrategyRegistry:
                     "lifecycle_transition",
                     origin,
                     target,
-                    _canonical_json({**dict(evidence), "source_ids": evidence_source_ids}),
+                    _canonical_json(
+                        {**dict(evidence), "source_ids": evidence_source_ids}
+                    ),
                     timestamp,
                     str(actor).strip() or "agent",
                 ),
@@ -174,12 +210,33 @@ class StrategyRegistry:
         timestamp = _timestamp(recorded_at)
         payload = dict(run)
         _validate_run_payload(payload, strategy_id=strategy_id, version=version)
-        fingerprint = _fingerprint({"strategy_id": strategy_id, "version": version, "run_type": normalized_run_type, "run": payload, "source_ids": normalized_sources})
-        run_id = "run_" + hashlib.sha256((fingerprint + timestamp).encode("utf-8")).hexdigest()[:20]
+        fingerprint = _fingerprint(
+            {
+                "strategy_id": strategy_id,
+                "version": version,
+                "run_type": normalized_run_type,
+                "run": payload,
+                "source_ids": normalized_sources,
+            }
+        )
+        run_id = (
+            "run_"
+            + hashlib.sha256((fingerprint + timestamp).encode("utf-8")).hexdigest()[:20]
+        )
         with self._connection() as connection:
             connection.execute(
                 "INSERT INTO strategy_runs(run_id, strategy_id, version, lifecycle_at_run, run_type, run_json, source_ids_json, fingerprint, recorded_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
-                (run_id, str(strategy_id).strip(), str(version).strip(), str(definition["lifecycle"]), normalized_run_type, _canonical_json(payload), _canonical_json(normalized_sources), fingerprint, timestamp),
+                (
+                    run_id,
+                    str(strategy_id).strip(),
+                    str(version).strip(),
+                    str(definition["lifecycle"]),
+                    normalized_run_type,
+                    _canonical_json(payload),
+                    _canonical_json(normalized_sources),
+                    fingerprint,
+                    timestamp,
+                ),
             )
         return self.get_run(run_id)
 
@@ -214,14 +271,20 @@ class StrategyRegistry:
                 (str(strategy_id).strip(), str(version).strip()),
             ).fetchall()
         return [
-            {"event_type": str(row[0]), "from_lifecycle": row[1], "to_lifecycle": row[2], "evidence": json.loads(str(row[3])), "occurred_at": str(row[4]), "actor": str(row[5])}
+            {
+                "event_type": str(row[0]),
+                "from_lifecycle": row[1],
+                "to_lifecycle": row[2],
+                "evidence": json.loads(str(row[3])),
+                "occurred_at": str(row[4]),
+                "actor": str(row[5]),
+            }
             for row in rows
         ]
 
     def _initialize(self) -> None:
         with self._connection() as connection:
-            connection.executescript(
-                """
+            connection.executescript("""
                 CREATE TABLE IF NOT EXISTS strategy_definitions (
                     strategy_id TEXT NOT NULL,
                     version TEXT NOT NULL,
@@ -255,8 +318,7 @@ class StrategyRegistry:
                     fingerprint TEXT NOT NULL,
                     recorded_at TEXT NOT NULL
                 );
-                """
-            )
+                """)
 
     def _connection(self) -> sqlite3.Connection:
         connection = sqlite3.connect(self.path)
@@ -264,16 +326,44 @@ class StrategyRegistry:
         return connection
 
 
-def register_definition(path: str | Path, definition: StrategyDefinition | Mapping[str, Any], *, source_ids: Sequence[str], registered_by: str = "agent") -> dict[str, Any]:
-    return StrategyRegistry(path).register_definition(definition, source_ids=source_ids, registered_by=registered_by)
+def register_definition(
+    path: str | Path,
+    definition: StrategyDefinition | Mapping[str, Any],
+    *,
+    source_ids: Sequence[str],
+    registered_by: str = "agent",
+) -> dict[str, Any]:
+    return StrategyRegistry(path).register_definition(
+        definition, source_ids=source_ids, registered_by=registered_by
+    )
 
 
-def record_run(path: str | Path, strategy_id: str, version: str, run: Mapping[str, Any], *, source_ids: Sequence[str], run_type: str = "paper") -> dict[str, Any]:
-    return StrategyRegistry(path).record_run(strategy_id, version, run, source_ids=source_ids, run_type=run_type)
+def record_run(
+    path: str | Path,
+    strategy_id: str,
+    version: str,
+    run: Mapping[str, Any],
+    *,
+    source_ids: Sequence[str],
+    run_type: str = "paper",
+) -> dict[str, Any]:
+    return StrategyRegistry(path).record_run(
+        strategy_id, version, run, source_ids=source_ids, run_type=run_type
+    )
 
 
-def transition_lifecycle(path: str | Path, strategy_id: str, version: str, to_lifecycle: str | StrategyLifecycle, *, evidence: Mapping[str, Any], actor: str = "agent") -> dict[str, Any]:
-    return StrategyRegistry(path).transition_lifecycle(strategy_id, version, to_lifecycle, evidence=evidence, actor=actor)
+def transition_lifecycle(
+    path: str | Path,
+    strategy_id: str,
+    version: str,
+    to_lifecycle: str | StrategyLifecycle,
+    *,
+    evidence: Mapping[str, Any],
+    actor: str = "agent",
+) -> dict[str, Any]:
+    return StrategyRegistry(path).transition_lifecycle(
+        strategy_id, version, to_lifecycle, evidence=evidence, actor=actor
+    )
 
 
 def _timestamp(value: str | datetime | None) -> str:
@@ -302,7 +392,11 @@ def _definition_payload(
 ) -> dict[str, Any]:
     """Remove access-profile and registry metadata before version hashing."""
 
-    payload = definition.to_dict() if isinstance(definition, StrategyDefinition) else dict(definition)
+    payload = (
+        definition.to_dict()
+        if isinstance(definition, StrategyDefinition)
+        else dict(definition)
+    )
     for name in (
         "eligibility",
         "fingerprint",
@@ -322,7 +416,10 @@ def _validate_definition_payload(payload: Mapping[str, Any]) -> None:
     """Require the immutable contract before a definition enters the registry."""
 
     schema_version = payload.get("schema_version")
-    if schema_version is not None and str(schema_version) != "personal_strategy_definition.v1":
+    if (
+        schema_version is not None
+        and str(schema_version) != "personal_strategy_definition.v1"
+    ):
         raise ValueError("strategy definition schema_version is invalid")
     for field_name in (
         "strategy_id",
@@ -349,9 +446,16 @@ def _validate_definition_payload(payload: Mapping[str, Any]) -> None:
         if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
             raise TypeError(f"strategy definition {field_name} must be a sequence")
         if not all(str(item).strip() for item in value):
-            raise ValueError(f"strategy definition {field_name} cannot contain empty values")
-    if payload.get("research_only") is not True or payload.get("no_order_execution") is not True:
-        raise ValueError("strategy definition must retain research_only and no_order_execution guards")
+            raise ValueError(
+                f"strategy definition {field_name} cannot contain empty values"
+            )
+    if (
+        payload.get("research_only") is not True
+        or payload.get("no_order_execution") is not True
+    ):
+        raise ValueError(
+            "strategy definition must retain research_only and no_order_execution guards"
+        )
 
 
 def _validate_run_payload(
@@ -363,12 +467,23 @@ def _validate_run_payload(
     """Bind a stored run to the immutable definition that owns it."""
 
     if str(payload.get("strategy_id") or "").strip() != str(strategy_id).strip():
-        raise ValueError("strategy run strategy_id does not match the registered definition")
-    payload_version = str(payload.get("strategy_version") or payload.get("version") or "").strip()
+        raise ValueError(
+            "strategy run strategy_id does not match the registered definition"
+        )
+    payload_version = str(
+        payload.get("strategy_version") or payload.get("version") or ""
+    ).strip()
     if payload_version != str(version).strip():
-        raise ValueError("strategy run version does not match the registered definition")
-    if payload.get("research_only") is not True or payload.get("no_order_execution") is not True:
-        raise ValueError("strategy run must retain research_only and no_order_execution guards")
+        raise ValueError(
+            "strategy run version does not match the registered definition"
+        )
+    if (
+        payload.get("research_only") is not True
+        or payload.get("no_order_execution") is not True
+    ):
+        raise ValueError(
+            "strategy run must retain research_only and no_order_execution guards"
+        )
 
 
 def _evidence_source_ids(evidence: Mapping[str, Any]) -> Sequence[str]:
@@ -395,8 +510,12 @@ def _required_text(value: Any, name: str) -> str:
 
 
 def _canonical_json(value: Any) -> str:
-    return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    return json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
 
 
 def _fingerprint(value: Any) -> str:
-    return "sha256:" + hashlib.sha256(_canonical_json(value).encode("utf-8")).hexdigest()
+    return (
+        "sha256:" + hashlib.sha256(_canonical_json(value).encode("utf-8")).hexdigest()
+    )

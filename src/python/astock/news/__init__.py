@@ -69,7 +69,9 @@ class CorporateEvent:
             "code": self.code,
             "title": self.title,
             "summary": self.summary,
-            "published_at": self.published_at.isoformat() if self.published_at else None,
+            "published_at": (
+                self.published_at.isoformat() if self.published_at else None
+            ),
             "severity": self.severity.value,
             "source": self.source,
             "url": self.url,
@@ -153,8 +155,7 @@ class NewsPipeline:
 
         cutoff = datetime.now() - timedelta(days=days)
         filtered = [
-            e for e in all_events
-            if e.published_at is None or e.published_at >= cutoff
+            e for e in all_events if e.published_at is None or e.published_at >= cutoff
         ]
         filtered.sort(
             key=lambda e: e.published_at or datetime.min,
@@ -189,17 +190,19 @@ class NewsPipeline:
             severity = _classify_news_severity(title, content)
             tags = _extract_news_tags(title, content)
 
-            events.append(CorporateEvent(
-                event_type=EventType.NEWS,
-                code=code,
-                title=title,
-                summary=content[:300] if content else "",
-                published_at=published,
-                severity=severity,
-                source=str(row.get("文章来源", "eastmoney")),
-                url=str(row.get("新闻链接", "")),
-                tags=tags,
-            ))
+            events.append(
+                CorporateEvent(
+                    event_type=EventType.NEWS,
+                    code=code,
+                    title=title,
+                    summary=content[:300] if content else "",
+                    published_at=published,
+                    severity=severity,
+                    source=str(row.get("文章来源", "eastmoney")),
+                    url=str(row.get("新闻链接", "")),
+                    tags=tags,
+                )
+            )
         return events
 
     def _fetch_earnings_forecast_sync(
@@ -246,31 +249,31 @@ class NewsPipeline:
                 severity = EventSeverity.HIGH
                 tags = ["earnings_forecast", forecast_type]
 
-                events.append(CorporateEvent(
-                    event_type=EventType.EARNINGS_FORECAST,
-                    code=code,
-                    title=f"业绩预告({quarter[:4]}Q{_quarter_from_date(quarter)}): {forecast_type}",
-                    summary=change_desc[:300],
-                    published_at=published,
-                    severity=severity,
-                    source="eastmoney",
-                    tags=tags,
-                    raw_data={
-                        "quarter": quarter,
-                        "forecast_type": forecast_type,
-                        "predicted_value": _safe_float(row.get("预测数值")),
-                        "change_ratio": _safe_float(row.get("业绩变动幅度")),
-                        "prev_year_value": _safe_float(row.get("上年同期值")),
-                        "reason": str(row.get("业绩变动原因", "")),
-                    },
-                ))
+                events.append(
+                    CorporateEvent(
+                        event_type=EventType.EARNINGS_FORECAST,
+                        code=code,
+                        title=f"业绩预告({quarter[:4]}Q{_quarter_from_date(quarter)}): {forecast_type}",
+                        summary=change_desc[:300],
+                        published_at=published,
+                        severity=severity,
+                        source="eastmoney",
+                        tags=tags,
+                        raw_data={
+                            "quarter": quarter,
+                            "forecast_type": forecast_type,
+                            "predicted_value": _safe_float(row.get("预测数值")),
+                            "change_ratio": _safe_float(row.get("业绩变动幅度")),
+                            "prev_year_value": _safe_float(row.get("上年同期值")),
+                            "reason": str(row.get("业绩变动原因", "")),
+                        },
+                    )
+                )
         return events
 
     def _fetch_dividends_sync(self, code: str) -> list[CorporateEvent]:
         try:
-            df = ak.stock_history_dividend_detail(
-                symbol=code, indicator="分红"
-            )
+            df = ak.stock_history_dividend_detail(symbol=code, indicator="分红")
         except Exception as e:
             logger.warning(f"stock_history_dividend_detail failed for {code}: {e}")
             return []
@@ -284,20 +287,22 @@ class NewsPipeline:
             ex_date = row.get("除权除息日")
             scheme = str(row.get("分红方案说明", row.get("方案", "")))
 
-            events.append(CorporateEvent(
-                event_type=EventType.DIVIDEND,
-                code=code,
-                title=f"分红: {scheme}",
-                summary=scheme,
-                published_at=announce_date,
-                severity=EventSeverity.MEDIUM,
-                source="cninfo",
-                tags=["dividend"],
-                raw_data={
-                    "scheme": scheme,
-                    "ex_dividend_date": str(ex_date) if ex_date else None,
-                },
-            ))
+            events.append(
+                CorporateEvent(
+                    event_type=EventType.DIVIDEND,
+                    code=code,
+                    title=f"分红: {scheme}",
+                    summary=scheme,
+                    published_at=announce_date,
+                    severity=EventSeverity.MEDIUM,
+                    source="cninfo",
+                    tags=["dividend"],
+                    raw_data={
+                        "scheme": scheme,
+                        "ex_dividend_date": str(ex_date) if ex_date else None,
+                    },
+                )
+            )
         return events
 
 
@@ -342,13 +347,35 @@ def _quarter_from_date(quarter_str: str) -> int:
 
 def _classify_news_severity(title: str, content: str) -> EventSeverity:
     high_keywords = [
-        "重大", "停牌", "退市", "违规", "立案", "处罚", "暴跌", "暴涨",
-        "收购", "并购", "重组", "增发", "配股", "减持", "增持",
-        "业绩预增", "业绩预减", "业绩亏损",
+        "重大",
+        "停牌",
+        "退市",
+        "违规",
+        "立案",
+        "处罚",
+        "暴跌",
+        "暴涨",
+        "收购",
+        "并购",
+        "重组",
+        "增发",
+        "配股",
+        "减持",
+        "增持",
+        "业绩预增",
+        "业绩预减",
+        "业绩亏损",
     ]
     medium_keywords = [
-        "分红", "股东", "董事", "高管", "机构调研", "回购",
-        "解禁", "质押", "担保",
+        "分红",
+        "股东",
+        "董事",
+        "高管",
+        "机构调研",
+        "回购",
+        "解禁",
+        "质押",
+        "担保",
     ]
     combined = title + content
     for kw in high_keywords:

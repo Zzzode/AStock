@@ -14,7 +14,6 @@ from dataclasses import dataclass
 from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
-
 _ASHARE_EXCHANGES = {"sse", "szse", "bse"}
 _ASHARE_MARKETS = {"ashare", "a_share", "a-share"}
 _MAX_TRADING_STATE_AGE = timedelta(hours=24)
@@ -33,7 +32,9 @@ def _as_of_timestamp(value: str | date | datetime | None) -> datetime:
         try:
             stamp = datetime.fromisoformat(normalized)
         except ValueError as error:
-            raise ValueError("as_of must be a timezone-aware ISO-8601 timestamp") from error
+            raise ValueError(
+                "as_of must be a timezone-aware ISO-8601 timestamp"
+            ) from error
     if stamp.tzinfo is None or stamp.utcoffset() is None:
         raise ValueError("as_of must be a timezone-aware ISO-8601 timestamp")
     return stamp.astimezone(UTC)
@@ -45,7 +46,9 @@ def _timestamp(value: Any, name: str) -> datetime:
     try:
         stamp = datetime.fromisoformat(normalized)
     except ValueError as error:
-        raise ValueError(f"{name} must be a timezone-aware ISO-8601 timestamp") from error
+        raise ValueError(
+            f"{name} must be a timezone-aware ISO-8601 timestamp"
+        ) from error
     if stamp.tzinfo is None or stamp.utcoffset() is None:
         raise ValueError(f"{name} must be a timezone-aware ISO-8601 timestamp")
     return stamp.astimezone(UTC)
@@ -112,9 +115,16 @@ class AShareFactorTiltConfig:
             raise ValueError("max_gross_weight cannot be below max_position_weight")
         if self.minimum_average_daily_turnover <= 0 or self.minimum_listing_days < 0:
             raise ValueError("liquidity and listing thresholds are invalid")
-        if len(self.required_factor_fields) != len(self.factor_weights) or not self.factor_weights:
-            raise ValueError("factor fields and weights must have the same non-zero length")
-        if any(weight < 0 or not math.isfinite(weight) for weight in self.factor_weights):
+        if (
+            len(self.required_factor_fields) != len(self.factor_weights)
+            or not self.factor_weights
+        ):
+            raise ValueError(
+                "factor fields and weights must have the same non-zero length"
+            )
+        if any(
+            weight < 0 or not math.isfinite(weight) for weight in self.factor_weights
+        ):
             raise ValueError("factor weights must be finite non-negative values")
         if not math.isclose(sum(self.factor_weights), 1.0, rel_tol=0.0, abs_tol=1e-9):
             raise ValueError("factor_weights must sum to one")
@@ -127,7 +137,8 @@ class AShareFactorTiltConfig:
             raise TypeError("factor configuration must be an object")
         default = cls()
         fields: dict[str, Any] = {
-            name: value.get(name, getattr(default, name)) for name in cls.__dataclass_fields__
+            name: value.get(name, getattr(default, name))
+            for name in cls.__dataclass_fields__
         }
         fields["strategy_id"] = str(fields["strategy_id"])
         fields["version"] = str(fields["version"])
@@ -145,8 +156,12 @@ class AShareFactorTiltConfig:
             if isinstance(raw, (str, bytes)) or not isinstance(raw, Sequence):
                 raise TypeError(f"{name} must be a sequence")
             fields[name] = tuple(raw)
-        fields["required_factor_fields"] = tuple(str(item) for item in fields["required_factor_fields"])
-        fields["factor_weights"] = tuple(float(item) for item in fields["factor_weights"])
+        fields["required_factor_fields"] = tuple(
+            str(item) for item in fields["required_factor_fields"]
+        )
+        fields["factor_weights"] = tuple(
+            float(item) for item in fields["factor_weights"]
+        )
         return cls(**fields)
 
 
@@ -182,14 +197,17 @@ class EarningsEventRepricingConfig:
             raise ValueError("minimum_average_daily_turnover must be positive")
 
     @classmethod
-    def from_mapping(cls, value: Mapping[str, Any] | None) -> EarningsEventRepricingConfig:
+    def from_mapping(
+        cls, value: Mapping[str, Any] | None
+    ) -> EarningsEventRepricingConfig:
         if value is None:
             return cls()
         if not isinstance(value, Mapping):
             raise TypeError("event configuration must be an object")
         default = cls()
         fields: dict[str, Any] = {
-            name: value.get(name, getattr(default, name)) for name in cls.__dataclass_fields__
+            name: value.get(name, getattr(default, name))
+            for name in cls.__dataclass_fields__
         }
         fields["strategy_id"] = str(fields["strategy_id"])
         fields["version"] = str(fields["version"])
@@ -237,7 +255,9 @@ class AShareFactorTiltStrategy:
         )
         warnings = _equity_warnings(source_refs)
         if not targets:
-            warnings.append("No security passed factor, liquidity, current trading-state, and A-share exit-risk gates.")
+            warnings.append(
+                "No security passed factor, liquidity, current trading-state, and A-share exit-risk gates."
+            )
         return _equity_proposal(
             strategy_id=self.config.strategy_id,
             version=self.config.version,
@@ -286,7 +306,9 @@ class PublicAnnouncementEarningsRepricingStrategy:
             ]
         )
         if not targets:
-            warnings.append("No announcement passed timestamp, surprise, liquidity, and current trading-state gates.")
+            warnings.append(
+                "No announcement passed timestamp, surprise, liquidity, and current trading-state gates."
+            )
         return _equity_proposal(
             strategy_id=self.config.strategy_id,
             version=self.config.version,
@@ -308,8 +330,14 @@ def build_ashare_factor_tilt_proposal(
     as_of: str | date | datetime | None = None,
     source_refs: Sequence[str] = (),
 ) -> dict[str, Any]:
-    resolved = config if isinstance(config, AShareFactorTiltConfig) else AShareFactorTiltConfig.from_mapping(config)
-    return AShareFactorTiltStrategy(resolved).generate_proposal(universe, as_of=as_of, source_refs=source_refs)
+    resolved = (
+        config
+        if isinstance(config, AShareFactorTiltConfig)
+        else AShareFactorTiltConfig.from_mapping(config)
+    )
+    return AShareFactorTiltStrategy(resolved).generate_proposal(
+        universe, as_of=as_of, source_refs=source_refs
+    )
 
 
 def build_earnings_event_repricing_proposal(
@@ -319,7 +347,11 @@ def build_earnings_event_repricing_proposal(
     as_of: str | date | datetime | None = None,
     source_refs: Sequence[str] = (),
 ) -> dict[str, Any]:
-    resolved = config if isinstance(config, EarningsEventRepricingConfig) else EarningsEventRepricingConfig.from_mapping(config)
+    resolved = (
+        config
+        if isinstance(config, EarningsEventRepricingConfig)
+        else EarningsEventRepricingConfig.from_mapping(config)
+    )
     return PublicAnnouncementEarningsRepricingStrategy(resolved).generate_proposal(
         announcements,
         as_of=as_of,
@@ -327,7 +359,9 @@ def build_earnings_event_repricing_proposal(
     )
 
 
-build_public_announcement_earnings_repricing_proposal = build_earnings_event_repricing_proposal
+build_public_announcement_earnings_repricing_proposal = (
+    build_earnings_event_repricing_proposal
+)
 
 
 def _factor_candidate(
@@ -352,7 +386,10 @@ def _factor_candidate(
             scores.append(_finite_fraction(raw.get(field), field))
     except ValueError as error:
         return None, {"code": code, "reason": str(error)}
-    score = sum(weight * value for weight, value in zip(config.factor_weights, scores, strict=True))
+    score = sum(
+        weight * value
+        for weight, value in zip(config.factor_weights, scores, strict=True)
+    )
     if score <= 0:
         return None, {"code": code, "reason": "composite factor score is not positive"}
     try:
@@ -405,15 +442,27 @@ def _event_candidate(
         return None, {"code": code, "reason": "available_at precedes published_at"}
     age = observation_time - available_at
     if age.total_seconds() < 0 or age > timedelta(days=config.maximum_event_age_days):
-        return None, {"code": code, "reason": "announcement is outside the configured public-information window"}
-    if not str(raw.get("announcement_id") or "").strip() or not str(raw.get("source_ref") or "").strip():
-        return None, {"code": code, "reason": "missing immutable announcement identifier or source reference"}
+        return None, {
+            "code": code,
+            "reason": "announcement is outside the configured public-information window",
+        }
+    if (
+        not str(raw.get("announcement_id") or "").strip()
+        or not str(raw.get("source_ref") or "").strip()
+    ):
+        return None, {
+            "code": code,
+            "reason": "missing immutable announcement identifier or source reference",
+        }
     try:
         surprise = _finite_fraction(raw.get("surprise_score"), "surprise_score")
     except ValueError as error:
         return None, {"code": code, "reason": str(error)}
     if surprise < config.minimum_surprise_score:
-        return None, {"code": code, "reason": "surprise score is below the configured threshold"}
+        return None, {
+            "code": code,
+            "reason": "surprise score is below the configured threshold",
+        }
     try:
         industry = _required_text(raw.get("industry"), "industry")
     except ValueError as error:
@@ -456,7 +505,9 @@ def _security_hard_veto(
         tradable = _strict_bool(raw.get("tradable"), "tradable")
         halted = _strict_bool(raw.get("halted"), "halted")
         limit_up_locked = _strict_bool(raw.get("limit_up_locked"), "limit_up_locked")
-        limit_down_locked = _strict_bool(raw.get("limit_down_locked"), "limit_down_locked")
+        limit_down_locked = _strict_bool(
+            raw.get("limit_down_locked"), "limit_down_locked"
+        )
         risk_warning = _strict_bool(raw.get("risk_warning"), "risk_warning")
         delisting_risk = _strict_bool(raw.get("delisting_risk"), "delisting_risk")
     except ValueError as error:
@@ -470,7 +521,9 @@ def _security_hard_veto(
     if risk_warning or delisting_risk:
         return "security has a risk-warning or delisting state"
     try:
-        turnover = _finite_fraction(raw.get("average_daily_turnover"), "average_daily_turnover")
+        turnover = _finite_fraction(
+            raw.get("average_daily_turnover"), "average_daily_turnover"
+        )
         listing_days = int(raw.get("listing_days"))
     except (TypeError, ValueError) as error:
         return f"missing or invalid liquidity/listing data: {error}"
@@ -492,8 +545,12 @@ def _allocate_equity_targets(
 ) -> list[dict[str, Any]]:
     selected: list[Mapping[str, Any]] = []
     industry_counts: dict[str, int] = {}
-    industry_max_positions = max(1, math.floor(max_industry_weight / max_position_weight))
-    for candidate in sorted(candidates, key=lambda item: (-float(item["score"]), str(item["code"]))):
+    industry_max_positions = max(
+        1, math.floor(max_industry_weight / max_position_weight)
+    )
+    for candidate in sorted(
+        candidates, key=lambda item: (-float(item["score"]), str(item["code"]))
+    ):
         industry = str(candidate["industry"])
         if industry_counts.get(industry, 0) >= industry_max_positions:
             continue
@@ -555,9 +612,13 @@ def _equity_proposal(
         "total_target_weight": round(total_weight, 8),
         "cash_weight": round(max(0.0, 1.0 - total_weight), 8),
         "hard_vetoes": [dict(item) for item in hard_vetoes],
-        "source_refs": list(dict.fromkeys(str(item) for item in source_refs if str(item).strip())),
+        "source_refs": list(
+            dict.fromkeys(str(item) for item in source_refs if str(item).strip())
+        ),
         "warnings": list(dict.fromkeys(str(item) for item in warnings)),
-        "data_quality": "source_labelled_research" if source_refs else "source_refs_required",
+        "data_quality": (
+            "source_labelled_research" if source_refs else "source_refs_required"
+        ),
         "research_only": True,
         "no_order_execution": True,
         "formal_decision_eligible": False,
@@ -571,5 +632,7 @@ def _equity_warnings(source_refs: Sequence[str]) -> list[str]:
         "New A-share purchases have T+1 exit risk; a stop level is not a guaranteed fill.",
     ]
     if not source_refs:
-        warnings.append("No proposal-level source references were supplied; this output is not decision-eligible.")
+        warnings.append(
+            "No proposal-level source references were supplied; this output is not decision-eligible."
+        )
     return warnings

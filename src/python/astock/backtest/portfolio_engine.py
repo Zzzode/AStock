@@ -104,28 +104,47 @@ class PortfolioBacktestEngine:
         if initial_capital <= 0:
             raise ValueError("initial_capital must be positive")
         if not target_weights:
-            raise ValueError("portfolio backtest requires at least one target-weight date")
+            raise ValueError(
+                "portfolio backtest requires at least one target-weight date"
+            )
         if not math.isfinite(slippage_bps) or slippage_bps < 0 or slippage_bps > 1_000:
-            raise ValueError("slippage_bps must be a finite value between zero and 1000")
+            raise ValueError(
+                "slippage_bps must be a finite value between zero and 1000"
+            )
         if max_participation_rate is not None and (
             not math.isfinite(max_participation_rate)
             or max_participation_rate <= 0
             or max_participation_rate > 1
         ):
-            raise ValueError("max_participation_rate must be a finite fraction in (0, 1]")
-        data = {str(code): _normalize_frame(str(code), frame) for code, frame in market_data.items()}
+            raise ValueError(
+                "max_participation_rate must be a finite fraction in (0, 1]"
+            )
+        data = {
+            str(code): _normalize_frame(str(code), frame)
+            for code, frame in market_data.items()
+        }
         if not data:
             raise ValueError("portfolio backtest requires market data")
         calendar = _normalize_trading_calendar(trading_calendar)
         if len(calendar) < 2:
-            raise ValueError("portfolio backtest requires at least two trading sessions")
+            raise ValueError(
+                "portfolio backtest requires at least two trading sessions"
+            )
         calendar_set = set(calendar)
         for code, frame in data.items():
             if any(day not in calendar_set for day in frame.index):
-                raise ValueError(f"market data for {code} includes dates outside the supplied exchange calendar")
-        targets = _normalize_targets(target_weights, data, universe_references, calendar_set)
-        normalized_universes = _normalize_universe_snapshots(universe_snapshots, calendar_set)
-        universe_assurance = _assess_universe_assurance(targets, universe_references, normalized_universes)
+                raise ValueError(
+                    f"market data for {code} includes dates outside the supplied exchange calendar"
+                )
+        targets = _normalize_targets(
+            target_weights, data, universe_references, calendar_set
+        )
+        normalized_universes = _normalize_universe_snapshots(
+            universe_snapshots, calendar_set
+        )
+        universe_assurance = _assess_universe_assurance(
+            targets, universe_references, normalized_universes
+        )
         assumptions = PortfolioExecutionAssumptions(
             commission_rate=commission_rate,
             stamp_duty_rate=stamp_duty_rate,
@@ -136,7 +155,9 @@ class PortfolioBacktestEngine:
         cash = float(initial_capital)
         shares = {code: 0 for code in data}
         sellable = {code: 0 for code in data}
-        settlements: dict[str, list[tuple[pd.Timestamp, int]]] = {code: [] for code in data}
+        settlements: dict[str, list[tuple[pd.Timestamp, int]]] = {
+            code: [] for code in data
+        }
         last_close: dict[str, float] = {}
         warnings: list[str] = [
             "Target weights observed on D execute no earlier than the next global session open.",
@@ -147,28 +168,60 @@ class PortfolioBacktestEngine:
         ]
         coverage = _normalize_coverage_manifest(coverage_manifest)
         source_assurance = assess_backtest_source_manifest(source_manifest)
-        if source_assurance["status"] == "pass" and universe_assurance["status"] != "pass":
+        if (
+            source_assurance["status"] == "pass"
+            and universe_assurance["status"] != "pass"
+        ):
             raise ValueError(
                 "a reproducible portfolio backtest requires frozen point-in-time universe snapshots: "
                 + "; ".join(universe_assurance["failures"])
             )
-        archive_assurance = _assess_source_archive(source_manifest, source_archive_path, source_assurance)
+        archive_assurance = _assess_source_archive(
+            source_manifest, source_archive_path, source_assurance
+        )
         normalized_price_basis = str(price_basis).strip().lower()
-        if coverage["corporate_actions"] == "covered" and normalized_price_basis != "raw":
-            raise ValueError("covered corporate actions require raw, unadjusted market prices")
-        if coverage["corporate_actions"] == "covered" and source_assurance["status"] != "pass":
-            raise ValueError("covered corporate actions require a passing frozen source manifest")
-        action_schedule = _normalize_corporate_actions(corporate_actions, data, calendar)
-        supplied_actions = [event for events in action_schedule.values() for event in events]
+        if (
+            coverage["corporate_actions"] == "covered"
+            and normalized_price_basis != "raw"
+        ):
+            raise ValueError(
+                "covered corporate actions require raw, unadjusted market prices"
+            )
+        if (
+            coverage["corporate_actions"] == "covered"
+            and source_assurance["status"] != "pass"
+        ):
+            raise ValueError(
+                "covered corporate actions require a passing frozen source manifest"
+            )
+        action_schedule = _normalize_corporate_actions(
+            corporate_actions, data, calendar
+        )
+        supplied_actions = [
+            event for events in action_schedule.values() for event in events
+        ]
         if supplied_actions and coverage["corporate_actions"] != "covered":
-            raise ValueError("supplied corporate actions require corporate_actions coverage=covered")
+            raise ValueError(
+                "supplied corporate actions require corporate_actions coverage=covered"
+            )
         if supplied_actions and normalized_price_basis != "raw":
-            raise ValueError("supplied corporate actions require raw, unadjusted market prices")
+            raise ValueError(
+                "supplied corporate actions require raw, unadjusted market prices"
+            )
         if supplied_actions and source_assurance["status"] != "pass":
-            raise ValueError("supplied corporate actions require a passing frozen source manifest")
-        if any(event["type"] == "cash_delisting" for event in supplied_actions) and coverage["delistings"] != "covered":
-            raise ValueError("cash delisting events require delistings coverage=covered")
-        normalized_delisting_status = _normalize_delisting_status(delisting_status, data)
+            raise ValueError(
+                "supplied corporate actions require a passing frozen source manifest"
+            )
+        if (
+            any(event["type"] == "cash_delisting" for event in supplied_actions)
+            and coverage["delistings"] != "covered"
+        ):
+            raise ValueError(
+                "cash delisting events require delistings coverage=covered"
+            )
+        normalized_delisting_status = _normalize_delisting_status(
+            delisting_status, data
+        )
         _validate_delisting_coverage(
             normalized_delisting_status,
             data,
@@ -196,7 +249,9 @@ class PortfolioBacktestEngine:
         excluded = [name for name, status in coverage.items() if status != "covered"]
         if excluded:
             warnings.append(
-                "Historical replay excludes or lacks verified coverage for: " + ", ".join(excluded) + "."
+                "Historical replay excludes or lacks verified coverage for: "
+                + ", ".join(excluded)
+                + "."
             )
         reproducibility_assurance = _assess_reproducibility(
             source_assurance,
@@ -210,9 +265,13 @@ class PortfolioBacktestEngine:
                 + "; ".join(reproducibility_assurance["failures"])
             )
         if max_participation_rate is None:
-            warnings.append("No volume participation cap was supplied; replay does not make a capacity claim.")
+            warnings.append(
+                "No volume participation cap was supplied; replay does not make a capacity claim."
+            )
         elif any("volume" not in frame.columns for frame in data.values()):
-            raise ValueError("max_participation_rate requires a volume column for every market-data frame")
+            raise ValueError(
+                "max_participation_rate requires a volume column for every market-data frame"
+            )
         trades: list[dict[str, Any]] = []
         corporate_action_events: list[dict[str, Any]] = []
         equity_curve: list[dict[str, Any]] = []
@@ -234,7 +293,21 @@ class PortfolioBacktestEngine:
                 sellable[code] += due
                 settlements[code] = remaining
             if pending is not None:
-                cash = self._rebalance(day, pending, data, shares, sellable, settlements, last_close, cash, assumptions, trades, warnings, calendar, day_index)
+                cash = self._rebalance(
+                    day,
+                    pending,
+                    data,
+                    shares,
+                    sellable,
+                    settlements,
+                    last_close,
+                    cash,
+                    assumptions,
+                    trades,
+                    warnings,
+                    calendar,
+                    day_index,
+                )
             pending = targets.get(day)
             equity = cash
             for code, frame in data.items():
@@ -242,9 +315,18 @@ class PortfolioBacktestEngine:
                     last_close[code] = float(frame.loc[day, "close"])
                 close = last_close.get(code)
                 if close is None and shares[code] > 0:
-                    raise ValueError(f"cannot mark holding {code}: no close is available")
+                    raise ValueError(
+                        f"cannot mark holding {code}: no close is available"
+                    )
                 equity += shares[code] * (close or 0.0)
-            equity_curve.append({"date": day.date().isoformat(), "equity": round(equity, 8), "cash": round(cash, 8), "positions": dict(shares)})
+            equity_curve.append(
+                {
+                    "date": day.date().isoformat(),
+                    "equity": round(equity, 8),
+                    "cash": round(cash, 8),
+                    "positions": dict(shares),
+                }
+            )
         final_capital = float(equity_curve[-1]["equity"])
         return PortfolioBacktestResult(
             initial_capital,
@@ -263,70 +345,146 @@ class PortfolioBacktestEngine:
             reproducibility_assurance,
         )
 
-    def _rebalance(self, day: pd.Timestamp, target: Mapping[str, float], data: Mapping[str, pd.DataFrame], shares: dict[str, int], sellable: dict[str, int], settlements: dict[str, list[tuple[pd.Timestamp, int]]], last_close: Mapping[str, float], cash: float, assumptions: PortfolioExecutionAssumptions, trades: list[dict[str, Any]], warnings: list[str], calendar: Sequence[pd.Timestamp], day_index: int) -> float:
+    def _rebalance(
+        self,
+        day: pd.Timestamp,
+        target: Mapping[str, float],
+        data: Mapping[str, pd.DataFrame],
+        shares: dict[str, int],
+        sellable: dict[str, int],
+        settlements: dict[str, list[tuple[pd.Timestamp, int]]],
+        last_close: Mapping[str, float],
+        cash: float,
+        assumptions: PortfolioExecutionAssumptions,
+        trades: list[dict[str, Any]],
+        warnings: list[str],
+        calendar: Sequence[pd.Timestamp],
+        day_index: int,
+    ) -> float:
         prices = {code: _tradable_open(data[code], day) for code in data}
-        equity = cash + sum(shares[code] * (prices[code] or last_close.get(code, 0.0)) for code in data)
+        equity = cash + sum(
+            shares[code] * (prices[code] or last_close.get(code, 0.0)) for code in data
+        )
         desired_values = {code: equity * target.get(code, 0.0) for code in data}
         for code in data:
             price = prices[code]
             if price is None or shares[code] <= 0:
                 continue
-            desired_shares = _lot_floor(desired_values[code] / price, assumptions.lot_size)
+            desired_shares = _lot_floor(
+                desired_values[code] / price, assumptions.lot_size
+            )
             quantity = min(max(0, shares[code] - desired_shares), sellable[code])
             quantity, capacity_limited = _cap_trade_quantity(
-                quantity, data[code], day, assumptions.max_participation_rate, assumptions.lot_size
+                quantity,
+                data[code],
+                day,
+                assumptions.max_participation_rate,
+                assumptions.lot_size,
             )
             if quantity <= 0:
                 if shares[code] > desired_shares and sellable[code] == 0:
-                    warnings.append(f"{day.date()} {code}: T+1 settlement blocked requested sale.")
+                    warnings.append(
+                        f"{day.date()} {code}: T+1 settlement blocked requested sale."
+                    )
                 continue
             if capacity_limited:
-                warnings.append(f"{day.date()} {code}: sell capped by volume participation limit.")
+                warnings.append(
+                    f"{day.date()} {code}: sell capped by volume participation limit."
+                )
             execution_price = _apply_slippage(price, "sell", assumptions.slippage_bps)
             value = quantity * execution_price
-            costs = value * (assumptions.commission_rate + assumptions.stamp_duty_rate + assumptions.transfer_fee_rate)
+            costs = value * (
+                assumptions.commission_rate
+                + assumptions.stamp_duty_rate
+                + assumptions.transfer_fee_rate
+            )
             cash += value - costs
             shares[code] -= quantity
             sellable[code] -= quantity
-            trades.append(_trade(day, code, "sell", quantity, execution_price, costs, capacity_limited=capacity_limited))
+            trades.append(
+                _trade(
+                    day,
+                    code,
+                    "sell",
+                    quantity,
+                    execution_price,
+                    costs,
+                    capacity_limited=capacity_limited,
+                )
+            )
         for code in data:
             price = prices[code]
             if price is None:
                 if target.get(code, 0.0) > 0:
-                    warnings.append(f"{day.date()} {code}: target could not trade because open/tradable data is unavailable.")
+                    warnings.append(
+                        f"{day.date()} {code}: target could not trade because open/tradable data is unavailable."
+                    )
                 continue
-            desired_shares = _lot_floor(desired_values[code] / price, assumptions.lot_size)
+            desired_shares = _lot_floor(
+                desired_values[code] / price, assumptions.lot_size
+            )
             quantity = max(0, desired_shares - shares[code])
             quantity, capacity_limited = _cap_trade_quantity(
-                quantity, data[code], day, assumptions.max_participation_rate, assumptions.lot_size
+                quantity,
+                data[code],
+                day,
+                assumptions.max_participation_rate,
+                assumptions.lot_size,
             )
             execution_price = _apply_slippage(price, "buy", assumptions.slippage_bps)
-            affordable = _lot_floor(cash / (execution_price * (1 + assumptions.commission_rate + assumptions.transfer_fee_rate)), assumptions.lot_size)
+            affordable = _lot_floor(
+                cash
+                / (
+                    execution_price
+                    * (1 + assumptions.commission_rate + assumptions.transfer_fee_rate)
+                ),
+                assumptions.lot_size,
+            )
             quantity = min(quantity, affordable)
             if quantity <= 0:
                 continue
             if capacity_limited:
-                warnings.append(f"{day.date()} {code}: buy capped by volume participation limit.")
+                warnings.append(
+                    f"{day.date()} {code}: buy capped by volume participation limit."
+                )
             value = quantity * execution_price
-            costs = value * (assumptions.commission_rate + assumptions.transfer_fee_rate)
+            costs = value * (
+                assumptions.commission_rate + assumptions.transfer_fee_rate
+            )
             cash -= value + costs
             shares[code] += quantity
-            settlements[code].append((calendar[min(day_index + 1, len(calendar) - 1)], quantity))
-            trades.append(_trade(day, code, "buy", quantity, execution_price, costs, capacity_limited=capacity_limited))
+            settlements[code].append(
+                (calendar[min(day_index + 1, len(calendar) - 1)], quantity)
+            )
+            trades.append(
+                _trade(
+                    day,
+                    code,
+                    "buy",
+                    quantity,
+                    execution_price,
+                    costs,
+                    capacity_limited=capacity_limited,
+                )
+            )
         return cash
 
 
 def _normalize_frame(code: str, frame: pd.DataFrame) -> pd.DataFrame:
     required = {"date", "open", "close", "tradable"}
     if not isinstance(frame, pd.DataFrame) or not required.issubset(frame.columns):
-        raise ValueError(f"market data for {code} requires date, open, close, and tradable columns")
+        raise ValueError(
+            f"market data for {code} requires date, open, close, and tradable columns"
+        )
     columns = list(required)
     if "volume" in frame.columns:
         columns.append("volume")
     if "execution_status" in frame.columns:
         columns.append("execution_status")
     normalized = frame[columns].copy()
-    normalized["date"] = pd.to_datetime(normalized["date"], errors="coerce").dt.normalize()
+    normalized["date"] = pd.to_datetime(
+        normalized["date"], errors="coerce"
+    ).dt.normalize()
     normalized["open"] = pd.to_numeric(normalized["open"], errors="coerce")
     normalized["close"] = pd.to_numeric(normalized["close"], errors="coerce")
     if "volume" in normalized:
@@ -336,41 +494,63 @@ def _normalize_frame(code: str, frame: pd.DataFrame) -> pd.DataFrame:
         raise ValueError(f"market data for {code} has duplicate trading dates")
     if (normalized["close"] <= 0).any():
         raise ValueError(f"market data for {code} has non-positive closes")
-    if "volume" in normalized and (normalized["volume"].isna() | (normalized["volume"] < 0)).any():
+    if (
+        "volume" in normalized
+        and (normalized["volume"].isna() | (normalized["volume"] < 0)).any()
+    ):
         raise ValueError(f"market data for {code} has invalid volume values")
     if "execution_status" not in normalized:
         normalized["execution_status"] = normalized["tradable"].map(
             lambda value: "tradable" if bool(value) else "halted"
         )
-    normalized["execution_status"] = normalized["execution_status"].astype(str).str.strip().str.lower()
+    normalized["execution_status"] = (
+        normalized["execution_status"].astype(str).str.strip().str.lower()
+    )
     allowed = {"tradable", "halted", "limit_up_locked", "limit_down_locked", "unknown"}
     if not normalized["execution_status"].isin(allowed).all():
         raise ValueError(f"market data for {code} has an invalid execution_status")
     return normalized.set_index("date")
 
 
-def _normalize_targets(value: Mapping[str, Mapping[str, float]], data: Mapping[str, pd.DataFrame], universe_references: Mapping[str, str], calendar: set[pd.Timestamp]) -> dict[pd.Timestamp, dict[str, float]]:
+def _normalize_targets(
+    value: Mapping[str, Mapping[str, float]],
+    data: Mapping[str, pd.DataFrame],
+    universe_references: Mapping[str, str],
+    calendar: set[pd.Timestamp],
+) -> dict[pd.Timestamp, dict[str, float]]:
     targets: dict[pd.Timestamp, dict[str, float]] = {}
     for raw_day, raw_weights in value.items():
         day = pd.Timestamp(raw_day).normalize()
         if day not in calendar:
-            raise ValueError(f"target date {day.date()} is absent from the supplied exchange calendar")
-        reference = str(universe_references.get(str(raw_day)) or universe_references.get(day.date().isoformat()) or "").strip()
+            raise ValueError(
+                f"target date {day.date()} is absent from the supplied exchange calendar"
+            )
+        reference = str(
+            universe_references.get(str(raw_day))
+            or universe_references.get(day.date().isoformat())
+            or ""
+        ).strip()
         if not reference:
-            raise ValueError(f"target date {day.date()} lacks a point-in-time universe reference")
+            raise ValueError(
+                f"target date {day.date()} lacks a point-in-time universe reference"
+            )
         if not isinstance(raw_weights, Mapping):
             raise ValueError(f"target date {day.date()} must map codes to weights")
         weights: dict[str, float] = {}
         for raw_code, raw_weight in raw_weights.items():
             code = str(raw_code)
             if code not in data:
-                raise ValueError(f"target date {day.date()} references unknown code {code}")
+                raise ValueError(
+                    f"target date {day.date()} references unknown code {code}"
+                )
             try:
                 weight = float(raw_weight)
             except (TypeError, ValueError) as exc:
                 raise ValueError(f"target weight for {code} must be numeric") from exc
             if not math.isfinite(weight) or weight < 0 or weight > 1:
-                raise ValueError(f"target weight for {code} must be between zero and one")
+                raise ValueError(
+                    f"target weight for {code} must be between zero and one"
+                )
             weights[code] = weight
         if sum(weights.values()) > 1 + 1e-9:
             raise ValueError(f"target weights on {day.date()} exceed 100%")
@@ -385,7 +565,9 @@ def _normalize_universe_snapshots(
     if value is None:
         return {}
     if not isinstance(value, Mapping):
-        raise ValueError("universe_snapshots must map target dates to frozen membership records")
+        raise ValueError(
+            "universe_snapshots must map target dates to frozen membership records"
+        )
     snapshots: dict[pd.Timestamp, dict[str, Any]] = {}
     for raw_day, raw_snapshot in value.items():
         day = pd.Timestamp(raw_day).normalize()
@@ -397,14 +579,22 @@ def _normalize_universe_snapshots(
             raise ValueError(f"universe snapshot for {day.date()} must be a mapping")
         as_of_date = pd.Timestamp(raw_snapshot.get("as_of_date")).normalize()
         if pd.isna(as_of_date) or as_of_date != day:
-            raise ValueError(f"universe snapshot for {day.date()} requires matching as_of_date")
+            raise ValueError(
+                f"universe snapshot for {day.date()} requires matching as_of_date"
+            )
         source_ref = str(raw_snapshot.get("source_ref") or "").strip()
         archive_id = str(raw_snapshot.get("archive_id") or "").strip()
         raw_members = raw_snapshot.get("members")
         if not source_ref or not archive_id:
-            raise ValueError(f"universe snapshot for {day.date()} requires source_ref and archive_id")
-        if not isinstance(raw_members, Sequence) or isinstance(raw_members, (str, bytes)):
-            raise ValueError(f"universe snapshot for {day.date()} requires a member sequence")
+            raise ValueError(
+                f"universe snapshot for {day.date()} requires source_ref and archive_id"
+            )
+        if not isinstance(raw_members, Sequence) or isinstance(
+            raw_members, (str, bytes)
+        ):
+            raise ValueError(
+                f"universe snapshot for {day.date()} requires a member sequence"
+            )
         members = {str(item).strip() for item in raw_members if str(item).strip()}
         if not members:
             raise ValueError(f"universe snapshot for {day.date()} cannot be empty")
@@ -426,17 +616,23 @@ def _assess_universe_assurance(
     resolved: dict[str, dict[str, str]] = {}
     for day, weights in targets.items():
         day_label = day.date().isoformat()
-        reference = str(references.get(day_label) or references.get(day.strftime("%Y-%m-%d")) or "").strip()
+        reference = str(
+            references.get(day_label) or references.get(day.strftime("%Y-%m-%d")) or ""
+        ).strip()
         snapshot = snapshots.get(day)
         if snapshot is None:
             failures.append(f"{day_label} lacks a frozen universe snapshot")
             continue
         if snapshot["source_ref"] != reference:
-            failures.append(f"{day_label} universe snapshot source_ref does not match its point-in-time reference")
+            failures.append(
+                f"{day_label} universe snapshot source_ref does not match its point-in-time reference"
+            )
             continue
         non_members = sorted(set(weights).difference(snapshot["members"]))
         if non_members:
-            failures.append(f"{day_label} targets are outside the frozen universe: {', '.join(non_members)}")
+            failures.append(
+                f"{day_label} targets are outside the frozen universe: {', '.join(non_members)}"
+            )
             continue
         resolved[day_label] = {
             "source_ref": str(snapshot["source_ref"]),
@@ -449,9 +645,13 @@ def _assess_universe_assurance(
     }
 
 
-def _normalize_trading_calendar(value: Sequence[str | pd.Timestamp]) -> list[pd.Timestamp]:
+def _normalize_trading_calendar(
+    value: Sequence[str | pd.Timestamp],
+) -> list[pd.Timestamp]:
     if isinstance(value, (str, bytes)):
-        raise ValueError("trading_calendar must be a sequence of exchange trading dates")
+        raise ValueError(
+            "trading_calendar must be a sequence of exchange trading dates"
+        )
     dates = [pd.Timestamp(item).normalize() for item in value]
     if any(pd.isna(day) for day in dates):
         raise ValueError("trading_calendar contains an invalid date")
@@ -463,9 +663,16 @@ def _normalize_trading_calendar(value: Sequence[str | pd.Timestamp]) -> list[pd.
 def _normalize_coverage_manifest(value: Mapping[str, str] | None) -> dict[str, str]:
     required = ("corporate_actions", "delistings", "price_limits", "halts")
     raw = value or {}
-    coverage = {name: str(raw.get(name) or "unverified").strip().lower() for name in required}
-    if any(status not in {"covered", "excluded", "unverified"} for status in coverage.values()):
-        raise ValueError("coverage_manifest values must be covered, excluded, or unverified")
+    coverage = {
+        name: str(raw.get(name) or "unverified").strip().lower() for name in required
+    }
+    if any(
+        status not in {"covered", "excluded", "unverified"}
+        for status in coverage.values()
+    ):
+        raise ValueError(
+            "coverage_manifest values must be covered, excluded, or unverified"
+        )
     return coverage
 
 
@@ -477,10 +684,18 @@ def _assess_source_archive(
     if source_assurance["status"] != "pass":
         return {
             "status": "blocked",
-            "failures": ["Source manifest is not structurally eligible; archive verification is unavailable."],
+            "failures": [
+                "Source manifest is not structurally eligible; archive verification is unavailable."
+            ],
         }
-    domains = source_manifest.get("domains") if isinstance(source_manifest, Mapping) else {}
-    source_ids = {str(value).strip() for value in domains.values()} if isinstance(domains, Mapping) else set()
+    domains = (
+        source_manifest.get("domains") if isinstance(source_manifest, Mapping) else {}
+    )
+    source_ids = (
+        {str(value).strip() for value in domains.values()}
+        if isinstance(domains, Mapping)
+        else set()
+    )
     expected_source = next(iter(source_ids)) if len(source_ids) == 1 else None
     return verify_frozen_market_archive(
         source_archive_path,
@@ -510,12 +725,16 @@ def _assess_reproducibility(
         failures.append("frozen source archive is unavailable or invalid")
     uncovered = sorted(name for name, status in coverage.items() if status != "covered")
     if uncovered:
-        failures.append("execution-critical coverage is not complete: " + ", ".join(uncovered))
+        failures.append(
+            "execution-critical coverage is not complete: " + ", ".join(uncovered)
+        )
     return {
         "status": "pass" if not failures else "blocked",
         "failures": failures,
         "source_status": source_assurance["status"],
-        "formal_evidence_eligible": bool(source_assurance.get("formal_evidence_eligible")),
+        "formal_evidence_eligible": bool(
+            source_assurance.get("formal_evidence_eligible")
+        ),
         "universe_status": universe_assurance["status"],
         "archive_status": archive_assurance["status"],
     }
@@ -550,8 +769,14 @@ def _normalize_corporate_actions(
             if not isinstance(raw_event, Mapping):
                 raise ValueError(f"corporate action for {code} must be a mapping")
             event_type = str(raw_event.get("type") or "").strip().lower()
-            if event_type not in {"cash_dividend", "share_distribution", "cash_delisting"}:
-                raise ValueError(f"unsupported corporate-action type for {code}: {event_type or 'missing'}")
+            if event_type not in {
+                "cash_dividend",
+                "share_distribution",
+                "cash_delisting",
+            }:
+                raise ValueError(
+                    f"unsupported corporate-action type for {code}: {event_type or 'missing'}"
+                )
             event_id = str(raw_event.get("event_id") or "").strip()
             if not event_id or event_id in seen_event_ids:
                 raise ValueError("every corporate action requires a unique event_id")
@@ -561,10 +786,14 @@ def _normalize_corporate_actions(
                 raise ValueError(f"corporate action {event_id} requires source_ref")
             effective_date = pd.Timestamp(raw_event.get("effective_date")).normalize()
             if pd.isna(effective_date) or effective_date not in calendar_set:
-                raise ValueError(f"corporate action {event_id} effective_date must be an exchange trading day")
+                raise ValueError(
+                    f"corporate action {event_id} effective_date must be an exchange trading day"
+                )
             sequence = raw_event.get("sequence", 0)
             if not isinstance(sequence, int):
-                raise ValueError(f"corporate action {event_id} sequence must be an integer")
+                raise ValueError(
+                    f"corporate action {event_id} sequence must be an integer"
+                )
             event: dict[str, Any] = {
                 "event_id": event_id,
                 "code": code,
@@ -574,19 +803,36 @@ def _normalize_corporate_actions(
                 "sequence": sequence,
             }
             if event_type in {"cash_dividend", "cash_delisting"}:
-                key = "cash_per_share" if event_type == "cash_dividend" else "cash_settlement_per_share"
-                value_per_share = _positive_finite(raw_event.get(key), f"corporate action {event_id} {key}")
+                key = (
+                    "cash_per_share"
+                    if event_type == "cash_dividend"
+                    else "cash_settlement_per_share"
+                )
+                value_per_share = _positive_finite(
+                    raw_event.get(key), f"corporate action {event_id} {key}"
+                )
                 event[key] = value_per_share
             else:
-                factor = _positive_finite(raw_event.get("share_factor"), f"corporate action {event_id} share_factor")
+                factor = _positive_finite(
+                    raw_event.get("share_factor"),
+                    f"corporate action {event_id} share_factor",
+                )
                 if factor <= 1:
-                    raise ValueError(f"corporate action {event_id} share_factor must exceed one")
+                    raise ValueError(
+                        f"corporate action {event_id} share_factor must exceed one"
+                    )
                 event["share_factor"] = factor
                 available_on = raw_event.get("sellable_on")
                 if available_on is not None:
                     available_day = pd.Timestamp(available_on).normalize()
-                    if pd.isna(available_day) or available_day not in calendar_set or available_day < effective_date:
-                        raise ValueError(f"corporate action {event_id} sellable_on must be a later exchange trading day")
+                    if (
+                        pd.isna(available_day)
+                        or available_day not in calendar_set
+                        or available_day < effective_date
+                    ):
+                        raise ValueError(
+                            f"corporate action {event_id} sellable_on must be a later exchange trading day"
+                        )
                     event["sellable_on"] = available_day
             schedule.setdefault(effective_date, []).append(event)
     for events in schedule.values():
@@ -607,7 +853,9 @@ def _normalize_delisting_status(
     if value is None:
         return {}
     if not isinstance(value, Mapping):
-        raise ValueError("delisting_status must map codes to source-labelled status records")
+        raise ValueError(
+            "delisting_status must map codes to source-labelled status records"
+        )
     normalized: dict[str, dict[str, Any]] = {}
     for raw_code, raw_record in value.items():
         code = str(raw_code).strip()
@@ -626,9 +874,13 @@ def _normalize_delisting_status(
         if raw_delist_date is not None and str(raw_delist_date).strip():
             delist_date = pd.Timestamp(raw_delist_date).normalize()
             if pd.isna(delist_date):
-                raise ValueError(f"delisting status for {code} has an invalid delist_date")
+                raise ValueError(
+                    f"delisting status for {code} has an invalid delist_date"
+                )
         if list_status == "D" and delist_date is None:
-            raise ValueError(f"delisting status for {code} requires delist_date when list_status=D")
+            raise ValueError(
+                f"delisting status for {code} requires delist_date when list_status=D"
+            )
         normalized[code] = {
             "code": code,
             "list_status": list_status,
@@ -652,7 +904,10 @@ def _validate_delisting_coverage(
         raise ValueError("covered delistings require a passing frozen source manifest")
     missing = sorted(set(data).difference(statuses))
     if missing:
-        raise ValueError("covered delistings require a source-labelled status record for every code: " + ", ".join(missing))
+        raise ValueError(
+            "covered delistings require a source-labelled status record for every code: "
+            + ", ".join(missing)
+        )
     end_day = calendar[-1]
     cash_events = {
         str(event["code"])
@@ -661,7 +916,11 @@ def _validate_delisting_coverage(
     }
     for code, record in statuses.items():
         delist_date = record["delist_date"]
-        if record["list_status"] == "D" and delist_date <= end_day and code not in cash_events:
+        if (
+            record["list_status"] == "D"
+            and delist_date <= end_day
+            and code not in cash_events
+        ):
             raise ValueError(
                 f"covered delisting for {code} requires a source-labelled cash_delisting settlement event; "
                 "list status alone cannot value a holding"
@@ -698,7 +957,9 @@ def _apply_corporate_actions(
         elif event_type == "share_distribution":
             resulting_shares = held * float(event["share_factor"])
             rounded_shares = round(resulting_shares)
-            if not math.isclose(resulting_shares, rounded_shares, rel_tol=0.0, abs_tol=1e-8):
+            if not math.isclose(
+                resulting_shares, rounded_shares, rel_tol=0.0, abs_tol=1e-8
+            ):
                 raise ValueError(
                     f"corporate action {event['event_id']} produces fractional shares; provide a dedicated event adapter"
                 )
@@ -711,7 +972,13 @@ def _apply_corporate_actions(
                 else calendar[min(day_index + 1, len(calendar) - 1)]
             )
             settlements[code].append((available_day, added))
-            record.update({"shares_added": added, "shares_after": shares[code], "sellable_on": available_day.date().isoformat()})
+            record.update(
+                {
+                    "shares_added": added,
+                    "shares_after": shares[code],
+                    "sellable_on": available_day.date().isoformat(),
+                }
+            )
         else:  # cash_delisting
             amount = held * float(event["cash_settlement_per_share"])
             cash += amount
@@ -753,7 +1020,9 @@ def _cap_trade_quantity(
         return quantity, False
     if day not in frame.index:
         return 0, quantity > 0
-    capacity = _lot_floor(float(frame.loc[day, "volume"]) * participation_rate, lot_size)
+    capacity = _lot_floor(
+        float(frame.loc[day, "volume"]) * participation_rate, lot_size
+    )
     capped = min(quantity, capacity)
     return capped, capped < quantity
 
@@ -767,9 +1036,15 @@ def _lot_floor(value: float, lot_size: int) -> int:
     return max(0, int(value // lot_size) * lot_size)
 
 
-def _settle_lots(lots: Sequence[tuple[pd.Timestamp, int]], day: pd.Timestamp) -> tuple[int, list[tuple[pd.Timestamp, int]]]:
+def _settle_lots(
+    lots: Sequence[tuple[pd.Timestamp, int]], day: pd.Timestamp
+) -> tuple[int, list[tuple[pd.Timestamp, int]]]:
     due = sum(quantity for available_on, quantity in lots if available_on <= day)
-    return due, [(available_on, quantity) for available_on, quantity in lots if available_on > day]
+    return due, [
+        (available_on, quantity)
+        for available_on, quantity in lots
+        if available_on > day
+    ]
 
 
 def _trade(

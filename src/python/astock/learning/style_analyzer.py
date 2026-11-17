@@ -229,9 +229,7 @@ class StyleAnalyzer:
 
         return float(round(sum(holding_days_list) / len(holding_days_list), 1))
 
-    def _calculate_profit_metrics(
-        self, df: pd.DataFrame
-    ) -> tuple[float, float, float]:
+    def _calculate_profit_metrics(self, df: pd.DataFrame) -> tuple[float, float, float]:
         """Calculate profit/loss metrics
 
         Args:

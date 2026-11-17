@@ -229,7 +229,9 @@ class Recommender:
             if options:
                 config = self._apply_options(config, options)
 
-            candidates, selection_context = await self.build_candidate_pool(config, limit)
+            candidates, selection_context = await self.build_candidate_pool(
+                config, limit
+            )
 
             return RecommendResult(
                 success=True,

@@ -30,14 +30,21 @@ def build_rotation_crowding_proxy(
     for observation in observations:
         normalized = _normalize_observation(observation)
         if normalized is None:
-            errors.append({"code": "invalid_flow_observation", "message": "Ignored flow observation missing required source, timestamp, subject, quality, or net flow."})
+            errors.append(
+                {
+                    "code": "invalid_flow_observation",
+                    "message": "Ignored flow observation missing required source, timestamp, subject, quality, or net flow.",
+                }
+            )
             continue
         grouped[(normalized["component"], normalized["name"])].append(normalized)
     records: list[dict[str, Any]] = []
     required_count = 0
     covered_count = 0
     for component, rows in rankings.items():
-        if component not in {"industries", "concepts"} or not isinstance(rows, Sequence):
+        if component not in {"industries", "concepts"} or not isinstance(
+            rows, Sequence
+        ):
             continue
         singular = "industry" if component == "industries" else "concept"
         for row in rows:
@@ -47,7 +54,9 @@ def build_rotation_crowding_proxy(
             if not name:
                 continue
             required_count += 1
-            history = sorted(grouped[(singular, name)], key=lambda item: item["observed_at"])[-lookback_observations:]
+            history = sorted(
+                grouped[(singular, name)], key=lambda item: item["observed_at"]
+            )[-lookback_observations:]
             if len(history) < lookback_observations:
                 continue
             covered_count += 1
@@ -61,12 +70,18 @@ def build_rotation_crowding_proxy(
                     "observation_count": len(history),
                     "net_flow_sum": round(net_flow_sum, 8),
                     "positive_flow_ratio": round(positive_days / len(history), 6),
-                    "turnover_attention_percentile": row.get("turnover_attention_percentile"),
+                    "turnover_attention_percentile": row.get(
+                        "turnover_attention_percentile"
+                    ),
                     "multi_horizon_return_pct": row.get("multi_horizon_return_pct"),
                 }
             )
-    for index, record in enumerate(sorted(records, key=lambda item: (item["net_flow_sum"], item["name"])), start=1):
-        record["net_flow_percentile"] = round(index / len(records), 6) if records else None
+    for index, record in enumerate(
+        sorted(records, key=lambda item: (item["net_flow_sum"], item["name"])), start=1
+    ):
+        record["net_flow_percentile"] = (
+            round(index / len(records), 6) if records else None
+        )
     for record in records:
         turnover = _float_or_none(record.get("turnover_attention_percentile"))
         return_5d = _float_or_none(
@@ -91,7 +106,9 @@ def build_rotation_crowding_proxy(
         "required_count": required_count,
         "covered_count": covered_count,
         "coverage_ratio": round(coverage, 6),
-        "records": sorted(records, key=lambda item: (item["subject_type"], item["name"])),
+        "records": sorted(
+            records, key=lambda item: (item["subject_type"], item["name"])
+        ),
         "decision_weight": 0,
         "limitations": [
             "This is repeated net-flow attention, not investor crowding or holder-position concentration.",
@@ -107,16 +124,29 @@ def _normalize_observation(value: Mapping[str, Any]) -> dict[str, Any] | None:
     name = str(value.get("name") or "").strip()
     source = str(value.get("source") or "").strip()
     quality = str(value.get("quality") or "").strip().lower()
-    if component not in {"industry", "concept"} or not name or not source or quality not in {"full", "realtime"}:
+    if (
+        component not in {"industry", "concept"}
+        or not name
+        or not source
+        or quality not in {"full", "realtime"}
+    ):
         return None
     try:
-        observed = datetime.fromisoformat(str(value.get("observed_at") or "").replace("Z", "+00:00"))
+        observed = datetime.fromisoformat(
+            str(value.get("observed_at") or "").replace("Z", "+00:00")
+        )
         flow = float(value.get("net_flow"))
     except (TypeError, ValueError):
         return None
     if observed.tzinfo is None or not math.isfinite(flow):
         return None
-    return {"component": component, "name": name, "source": source, "observed_at": observed, "net_flow": flow}
+    return {
+        "component": component,
+        "name": name,
+        "source": source,
+        "observed_at": observed,
+        "net_flow": flow,
+    }
 
 
 def _float_or_none(value: Any) -> float | None:

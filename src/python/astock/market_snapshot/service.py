@@ -149,7 +149,14 @@ class MarketSnapshotService:
         calendar_days: set[date] | None
         if isinstance(calendar_result, Exception):
             calendar_days = None
-            errors.append(self._issue("trading_calendar_unavailable", "Exchange trading-day calendar source was unavailable.", "akshare.tool_trade_date_hist_sina", error=calendar_result))
+            errors.append(
+                self._issue(
+                    "trading_calendar_unavailable",
+                    "Exchange trading-day calendar source was unavailable.",
+                    "akshare.tool_trade_date_hist_sina",
+                    error=calendar_result,
+                )
+            )
         else:
             calendar_days = calendar_result
 
@@ -157,9 +164,7 @@ class MarketSnapshotService:
         indices = self._select_instruments(
             requested_indices, instruments, "index", warnings
         )
-        etfs = self._select_instruments(
-            requested_etfs, instruments, "etf", warnings
-        )
+        etfs = self._select_instruments(requested_etfs, instruments, "etf", warnings)
         industries = self._select_instruments(
             requested_industries, instruments, "industry_proxy", warnings
         )
@@ -173,7 +178,10 @@ class MarketSnapshotService:
             else EASTMONEY_A_SHARE_SPOT_SOURCE
         )
         spot_fallback_path = (
-            tuple(str(value) for value in spot_frame.attrs.get("market_snapshot_fallback_path", ()))
+            tuple(
+                str(value)
+                for value in spot_frame.attrs.get("market_snapshot_fallback_path", ())
+            )
             if spot_frame is not None
             else ()
         )
@@ -223,7 +231,11 @@ class MarketSnapshotService:
             "trading_calendar": {
                 "source": "akshare.tool_trade_date_hist_sina",
                 "status": "available" if calendar_days is not None else "unavailable",
-                "quality_tier": QualityTier.REALTIME.value if calendar_days is not None else QualityTier.UNAVAILABLE.value,
+                "quality_tier": (
+                    QualityTier.REALTIME.value
+                    if calendar_days is not None
+                    else QualityTier.UNAVAILABLE.value
+                ),
                 "observed_at": observed_at,
             },
             "indices": index_health,
@@ -279,7 +291,9 @@ class MarketSnapshotService:
     ) -> list[str]:
         normalized: list[str] = []
         for raw_code in codes:
-            code = "".join(character for character in str(raw_code) if character.isdigit())
+            code = "".join(
+                character for character in str(raw_code) if character.isdigit()
+            )
             if len(code) != 6:
                 warnings.append(
                     {
@@ -303,7 +317,10 @@ class MarketSnapshotService:
     ) -> dict[str, Any]:
         issue: dict[str, Any] = {"code": code, "message": message, "source": source}
         if error is not None:
-            issue["details"] = {"error_type": type(error).__name__, "message": str(error)}
+            issue["details"] = {
+                "error_type": type(error).__name__,
+                "message": str(error),
+            }
         return issue
 
     @staticmethod
@@ -324,7 +341,8 @@ class MarketSnapshotService:
         self, codes: Sequence[str]
     ) -> list[dict[str, Any]]:
         secids = ",".join(
-            f"{1 if self._market_for_code(code) == 'sh' else 0}.{code}" for code in codes
+            f"{1 if self._market_for_code(code) == 'sh' else 0}.{code}"
+            for code in codes
         )
         query = urlencode(
             {
@@ -338,7 +356,9 @@ class MarketSnapshotService:
             headers={"User-Agent": "Mozilla/5.0"},
         )
         try:
-            with urlopen(request, timeout=8) as response:  # nosec B310 - fixed HTTPS host
+            with urlopen(
+                request, timeout=8
+            ) as response:  # nosec B310 - fixed HTTPS host
                 payload = json.loads(response.read().decode("utf-8", errors="replace"))
             rows = payload.get("data", {}).get("diff", [])
             if not isinstance(rows, list) or not rows:
@@ -383,13 +403,25 @@ class MarketSnapshotService:
         return [
             {
                 "code": str(row[code_column]).zfill(6),
-                "name": str(row.get(self._first_column(frame, "名称", "name") or "") or ""),
+                "name": str(
+                    row.get(self._first_column(frame, "名称", "name") or "") or ""
+                ),
                 "market": self._market_for_code(str(row[code_column]).zfill(6)),
-                "price": self._safe_float(row.get(self._first_column(frame, "最新价", "price") or "")),
-                "change_percent": self._safe_float(row.get(self._first_column(frame, "涨跌幅", "change_percent") or "")),
-                "change": self._safe_float(row.get(self._first_column(frame, "涨跌额", "change") or "")),
-                "volume": self._safe_float(row.get(self._first_column(frame, "成交量", "volume") or "")),
-                "amount": self._safe_float(row.get(self._first_column(frame, "成交额", "amount") or "")),
+                "price": self._safe_float(
+                    row.get(self._first_column(frame, "最新价", "price") or "")
+                ),
+                "change_percent": self._safe_float(
+                    row.get(self._first_column(frame, "涨跌幅", "change_percent") or "")
+                ),
+                "change": self._safe_float(
+                    row.get(self._first_column(frame, "涨跌额", "change") or "")
+                ),
+                "volume": self._safe_float(
+                    row.get(self._first_column(frame, "成交量", "volume") or "")
+                ),
+                "amount": self._safe_float(
+                    row.get(self._first_column(frame, "成交额", "amount") or "")
+                ),
                 "source": "akshare.stock_zh_index_spot_em",
             }
             for _, row in selected.iterrows()
@@ -401,9 +433,7 @@ class MarketSnapshotService:
         This source is observation-only: the surrounding health contract marks
         it as a fallback ``snapshot`` rather than a primary decision source.
         """
-        symbols = ",".join(
-            f"{self._market_for_code(code)}{code}" for code in codes
-        )
+        symbols = ",".join(f"{self._market_for_code(code)}{code}" for code in codes)
         request = Request(
             f"https://qt.gtimg.cn/q={symbols}",
             headers={"User-Agent": "Mozilla/5.0"},
@@ -412,7 +442,9 @@ class MarketSnapshotService:
             body = response.read().decode("gbk", errors="replace")
         rows = self._parse_tencent_instruments(body, codes)
         if not rows:
-            raise ValueError("Tencent instrument response has no usable requested quotes")
+            raise ValueError(
+                "Tencent instrument response has no usable requested quotes"
+            )
         return rows
 
     @classmethod
@@ -461,7 +493,9 @@ class MarketSnapshotService:
             try:
                 frame = await asyncio.to_thread(fetch_sina_a_share_spot)
                 frame.attrs["market_snapshot_source"] = SINA_A_SHARE_SPOT_SOURCE
-                frame.attrs["market_snapshot_fallback_path"] = (SINA_A_SHARE_SPOT_SOURCE,)
+                frame.attrs["market_snapshot_fallback_path"] = (
+                    SINA_A_SHARE_SPOT_SOURCE,
+                )
                 return frame
             except Exception as fallback_error:
                 raise RuntimeError(
@@ -481,10 +515,16 @@ class MarketSnapshotService:
     @staticmethod
     def _fetch_trading_days_sync() -> set[date]:
         frame = ak.tool_trade_date_hist_sina()
-        column = MarketSnapshotService._first_column(frame, "trade_date", "日期", "date")
+        column = MarketSnapshotService._first_column(
+            frame, "trade_date", "日期", "date"
+        )
         if column is None:
             raise ValueError("Trading calendar response has no date column")
-        days = {pd.to_datetime(value, errors="coerce").date() for value in frame[column] if not pd.isna(pd.to_datetime(value, errors="coerce"))}
+        days = {
+            pd.to_datetime(value, errors="coerce").date()
+            for value in frame[column]
+            if not pd.isna(pd.to_datetime(value, errors="coerce"))
+        }
         if not days:
             raise ValueError("Trading calendar response has no usable dates")
         return days
@@ -546,12 +586,20 @@ class MarketSnapshotService:
         status = (
             "not_requested"
             if requested_count == 0
-            else ("available" if returned_count == requested_count else ("partial" if returned_count else "unavailable"))
+            else (
+                "available"
+                if returned_count == requested_count
+                else ("partial" if returned_count else "unavailable")
+            )
         )
         quality = (
             QualityTier.REALTIME.value
             if status == "available" and not fallback_path
-            else (QualityTier.SNAPSHOT.value if returned_count else QualityTier.UNAVAILABLE.value)
+            else (
+                QualityTier.SNAPSHOT.value
+                if returned_count
+                else QualityTier.UNAVAILABLE.value
+            )
         )
         return {
             "component": component,
@@ -559,7 +607,9 @@ class MarketSnapshotService:
             "status": status,
             "requested_count": requested_count,
             "returned_count": returned_count,
-            "coverage_ratio": round(returned_count / requested_count, 6) if requested_count else 1.0,
+            "coverage_ratio": (
+                round(returned_count / requested_count, 6) if requested_count else 1.0
+            ),
             "quality_tier": quality,
             "observed_at": observed_at,
             "fallback_path": fallback_path,
@@ -578,7 +628,11 @@ class MarketSnapshotService:
         quality = (
             QualityTier.REALTIME.value
             if status == "available" and coverage >= 0.98 and not fallback_path
-            else (QualityTier.SNAPSHOT.value if status in {"available", "partial"} else QualityTier.UNAVAILABLE.value)
+            else (
+                QualityTier.SNAPSHOT.value
+                if status in {"available", "partial"}
+                else QualityTier.UNAVAILABLE.value
+            )
         )
         return {
             "component": "breadth",
@@ -591,7 +645,9 @@ class MarketSnapshotService:
         }
 
     @staticmethod
-    def _market_session(observed_at: datetime, trading_days: set[date] | None) -> dict[str, str]:
+    def _market_session(
+        observed_at: datetime, trading_days: set[date] | None
+    ) -> dict[str, str]:
         local = observed_at.astimezone(SHANGHAI_TZ)
         if trading_days is None:
             return {"state": "closed", "calendar_basis": "unavailable"}
@@ -669,7 +725,9 @@ class MarketSnapshotService:
             "advancers": int((valid_change > 0).sum()),
             "decliners": int((valid_change < 0).sum()),
             "unchanged": int((valid_change == 0).sum()),
-            "coverage_ratio": round(priced_count / universe_count, 6) if universe_count else 0.0,
+            "coverage_ratio": (
+                round(priced_count / universe_count, 6) if universe_count else 0.0
+            ),
             "limit_up": None,
             "limit_down": None,
         }
@@ -679,8 +737,12 @@ class MarketSnapshotService:
             lower = frame[lower_limit_column].map(self._safe_float_or_none)
             comparable_upper = price.notna() & upper.notna() & (upper > 0)
             comparable_lower = price.notna() & lower.notna() & (lower > 0)
-            breadth["limit_up"] = int((price[comparable_upper] >= upper[comparable_upper] - 0.0001).sum())
-            breadth["limit_down"] = int((price[comparable_lower] <= lower[comparable_lower] + 0.0001).sum())
+            breadth["limit_up"] = int(
+                (price[comparable_upper] >= upper[comparable_upper] - 0.0001).sum()
+            )
+            breadth["limit_down"] = int(
+                (price[comparable_lower] <= lower[comparable_lower] + 0.0001).sum()
+            )
         else:
             warnings.append(
                 {
@@ -746,7 +808,9 @@ class MarketSnapshotService:
         turnover["scope"] = "industry_constituent_counts_aggregated"
         return breadth, turnover
 
-    def _turnover(self, frame: pd.DataFrame, amount_column: str | None) -> dict[str, Any]:
+    def _turnover(
+        self, frame: pd.DataFrame, amount_column: str | None
+    ) -> dict[str, Any]:
         result: dict[str, Any] = {
             "status": "unavailable",
             "amount": None,
@@ -764,7 +828,9 @@ class MarketSnapshotService:
 
     @staticmethod
     def _first_column(frame: pd.DataFrame, *candidates: str) -> str | None:
-        return next((candidate for candidate in candidates if candidate in frame.columns), None)
+        return next(
+            (candidate for candidate in candidates if candidate in frame.columns), None
+        )
 
     @staticmethod
     def _safe_float(value: Any) -> float:
@@ -790,9 +856,8 @@ class MarketSnapshotService:
             and breadth_health.get("quality_tier") == QualityTier.REALTIME.value
         ):
             return QualityTier.REALTIME
-        if (
-            index_health.get("status") in {"available", "partial"}
-            or breadth_health.get("status") in {"available", "partial"}
-        ):
+        if index_health.get("status") in {"available", "partial"} or breadth_health.get(
+            "status"
+        ) in {"available", "partial"}:
             return QualityTier.SNAPSHOT
         return QualityTier.UNAVAILABLE

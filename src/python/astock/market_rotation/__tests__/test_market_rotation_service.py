@@ -5,15 +5,29 @@ from datetime import datetime, timezone
 import pandas as pd
 import pytest
 
-from astock.market_rotation import MarketRotationService, verify_rotation_history_evidence
+from astock.market_rotation import (
+    MarketRotationService,
+    verify_rotation_history_evidence,
+)
 from astock.market_rotation import service as rotation_service
-from astock.market_rotation.service import EASTMONEY_BOARD_SOURCE, _multi_horizon_returns
+from astock.market_rotation.service import (
+    EASTMONEY_BOARD_SOURCE,
+    _multi_horizon_returns,
+)
 
 
-def test_multi_horizon_returns_sorts_dates_deduplicates_and_rejects_future_rows() -> None:
+def test_multi_horizon_returns_sorts_dates_deduplicates_and_rejects_future_rows() -> (
+    None
+):
     frame = pd.DataFrame(
         {
-            "日期": ["2026-07-28", "2026-07-21", "2026-07-22", "2026-07-22", "2026-07-29"],
+            "日期": [
+                "2026-07-28",
+                "2026-07-21",
+                "2026-07-22",
+                "2026-07-22",
+                "2026-07-29",
+            ],
             "收盘": [110, 100, 101, 102, 999],
         }
     )
@@ -26,13 +40,36 @@ def test_multi_horizon_returns_sorts_dates_deduplicates_and_rejects_future_rows(
 
 
 @pytest.mark.asyncio
-async def test_cross_section_ranks_full_source_rows_and_keeps_observations_non_investable() -> None:
+async def test_cross_section_ranks_full_source_rows_and_keeps_observations_non_investable() -> (
+    None
+):
     async def industries() -> pd.DataFrame:
         return pd.DataFrame(
             [
-                {"板块名称": "电力", "板块代码": "BK100", "涨跌幅": 1.5, "上涨家数": 8, "下跌家数": 2, "换手率": 1.2},
-                {"板块名称": "创新药", "板块代码": "BK200", "涨跌幅": 3.2, "上涨家数": 7, "下跌家数": 3, "换手率": 2.4},
-                {"板块名称": "半导体", "板块代码": "BK300", "涨跌幅": -0.4, "上涨家数": 3, "下跌家数": 7, "换手率": 3.1},
+                {
+                    "板块名称": "电力",
+                    "板块代码": "BK100",
+                    "涨跌幅": 1.5,
+                    "上涨家数": 8,
+                    "下跌家数": 2,
+                    "换手率": 1.2,
+                },
+                {
+                    "板块名称": "创新药",
+                    "板块代码": "BK200",
+                    "涨跌幅": 3.2,
+                    "上涨家数": 7,
+                    "下跌家数": 3,
+                    "换手率": 2.4,
+                },
+                {
+                    "板块名称": "半导体",
+                    "板块代码": "BK300",
+                    "涨跌幅": -0.4,
+                    "上涨家数": 3,
+                    "下跌家数": 7,
+                    "换手率": 3.1,
+                },
             ]
         )
 
@@ -52,11 +89,18 @@ async def test_cross_section_ranks_full_source_rows_and_keeps_observations_non_i
 
     assert result["schema_version"] == "market_rotation.v1"
     assert result["data_quality"] == "realtime"
-    assert [row["name"] for row in result["rankings"]["industries"]] == ["创新药", "电力", "半导体"]
+    assert [row["name"] for row in result["rankings"]["industries"]] == [
+        "创新药",
+        "电力",
+        "半导体",
+    ]
     assert result["rankings"]["industries"][0]["rank"] == 1
     assert len(result["observation_pool"]) == 2
     assert {item["status"] for item in result["observation_pool"]} == {"observation"}
-    assert "multi-horizon relative strength" in result["observation_pool"][0]["promotion_requirements"]
+    assert (
+        "multi-horizon relative strength"
+        in result["observation_pool"][0]["promotion_requirements"]
+    )
     assert result["observation_pool"][0]["participation_ratio"] == 0.7
     assert result["observation_pool"][0]["breadth_status"] == "broad"
     assert result["provenance"]["components"]["industries"]["coverage_ratio"] == 1.0
@@ -114,7 +158,9 @@ async def test_industry_fetch_uses_tonghuashun_public_backup_when_direct_board_l
     monkeypatch.setattr(
         service,
         "_fetch_eastmoney_board_list",
-        lambda _expression: (_ for _ in ()).throw(ConnectionError("eastmoney unavailable")),
+        lambda _expression: (_ for _ in ()).throw(
+            ConnectionError("eastmoney unavailable")
+        ),
     )
     monkeypatch.setattr(
         rotation_service, "_fetch_tonghuashun_industry_summary", secondary
@@ -182,12 +228,15 @@ async def test_cross_section_normalizes_tonghuashun_industry_schema() -> None:
         )
         return frame
 
-    result = await MarketRotationService(industry_fetcher=industries).build_cross_section(
-        include_concepts=False
-    )
+    result = await MarketRotationService(
+        industry_fetcher=industries
+    ).build_cross_section(include_concepts=False)
 
     assert result["rankings"]["industries"][0]["name"] == "电力"
-    assert result["rankings"]["industries"][0]["source"] == rotation_service.THS_INDUSTRY_SOURCE
+    assert (
+        result["rankings"]["industries"][0]["source"]
+        == rotation_service.THS_INDUSTRY_SOURCE
+    )
     assert result["data_quality"] == "snapshot"
     assert result["observation_pool"][0]["subject_type"] == "industry"
 
@@ -210,7 +259,12 @@ async def test_cross_section_only_claims_history_for_rows_it_validates() -> None
     ) -> pd.DataFrame:
         assert component == "industry"
         assert name == "创新药"
-        return pd.DataFrame({"日期": pd.date_range(end="2026-07-28", periods=70), "收盘": list(range(100, 170))})
+        return pd.DataFrame(
+            {
+                "日期": pd.date_range(end="2026-07-28", periods=70),
+                "收盘": list(range(100, 170)),
+            }
+        )
 
     result = await MarketRotationService(
         industry_fetcher=industries,
@@ -268,11 +322,15 @@ async def test_history_evidence_rejects_return_tampering() -> None:
     evidence = verify_rotation_history_evidence(result)
 
     assert evidence["status"] == "blocked"
-    assert any("does not match source records" in failure for failure in evidence["failures"])
+    assert any(
+        "does not match source records" in failure for failure in evidence["failures"]
+    )
 
 
 @pytest.mark.asyncio
-async def test_full_history_scope_covers_every_row_before_claiming_full_cross_section() -> None:
+async def test_full_history_scope_covers_every_row_before_claiming_full_cross_section() -> (
+    None
+):
     async def industries() -> pd.DataFrame:
         return pd.DataFrame(
             [
@@ -287,7 +345,12 @@ async def test_full_history_scope_covers_every_row_before_claiming_full_cross_se
     async def history(
         _component: str, _name: str, _start: object, _end: object
     ) -> pd.DataFrame:
-        return pd.DataFrame({"日期": pd.date_range(end="2026-07-28", periods=70), "收盘": list(range(100, 170))})
+        return pd.DataFrame(
+            {
+                "日期": pd.date_range(end="2026-07-28", periods=70),
+                "收盘": list(range(100, 170)),
+            }
+        )
 
     result = await MarketRotationService(
         industry_fetcher=industries,
@@ -307,7 +370,12 @@ async def test_full_history_scope_covers_every_row_before_claiming_full_cross_se
         for row in rows
     )
     assert result["ranking_basis"]["crowding_evidence"]["decision_weight"] == 0
-    assert result["ranking_basis"]["turnover_attention"]["components"]["industries"]["coverage_ratio"] == 1.0
+    assert (
+        result["ranking_basis"]["turnover_attention"]["components"]["industries"][
+            "coverage_ratio"
+        ]
+        == 1.0
+    )
 
 
 @pytest.mark.asyncio
@@ -325,7 +393,12 @@ async def test_full_history_scope_stays_partial_when_any_universe_row_fails() ->
     ) -> pd.DataFrame:
         if name == "电力":
             raise ConnectionError("history unavailable")
-        return pd.DataFrame({"日期": pd.date_range(end="2026-07-28", periods=70), "收盘": list(range(100, 170))})
+        return pd.DataFrame(
+            {
+                "日期": pd.date_range(end="2026-07-28", periods=70),
+                "收盘": list(range(100, 170)),
+            }
+        )
 
     result = await MarketRotationService(
         industry_fetcher=industries,

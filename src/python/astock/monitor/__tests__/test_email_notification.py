@@ -168,12 +168,10 @@ class TestSendEmailNotification:
             _send_email_sync(sample_email_config, subject, html_content)
 
             mock_smtp.assert_called_once_with(
-                sample_email_config.smtp_host,
-                sample_email_config.smtp_port
+                sample_email_config.smtp_host, sample_email_config.smtp_port
             )
             mock_server.login.assert_called_once_with(
-                sample_email_config.sender_email,
-                sample_email_config.sender_password
+                sample_email_config.sender_email, sample_email_config.sender_password
             )
             mock_server.sendmail.assert_called_once()
 
@@ -198,10 +196,7 @@ class TestSendEmailNotification:
 
             _send_email_sync(config, subject, html_content)
 
-            mock_smtp.assert_called_once_with(
-                config.smtp_host,
-                config.smtp_port
-            )
+            mock_smtp.assert_called_once_with(config.smtp_host, config.smtp_port)
             mock_server.starttls.assert_called_once()
             mock_server.login.assert_called_once()
 
@@ -211,7 +206,9 @@ class TestSendEmailNotification:
 
         with patch("smtplib.SMTP_SSL") as mock_smtp:
             mock_server = MagicMock()
-            mock_server.login.side_effect = smtplib.SMTPAuthenticationError(535, b"Authentication failed")
+            mock_server.login.side_effect = smtplib.SMTPAuthenticationError(
+                535, b"Authentication failed"
+            )
             mock_smtp.return_value.__enter__.return_value = mock_server
 
             with pytest.raises(RuntimeError, match="Email authentication failed"):
@@ -240,7 +237,7 @@ class TestAlertEngineEmailIntegration:
 
         # Create test config file
         config_file = tmp_path / "config.json"
-        config_file.write_text('{}')
+        config_file.write_text("{}")
 
         engine = AlertEngine(config_path=config_file)
         engine.email_config = email_config

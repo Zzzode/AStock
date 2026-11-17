@@ -41,10 +41,15 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
             "Separate near-term liabilities and futures collateral from risk capital.",
             "Measure every sleeve against one common NAV and do not double-count cash.",
         ],
-        "reference_urls": ["https://www.bridgewater.com/research-and-insights/the-all-weather-story"],
+        "reference_urls": [
+            "https://www.bridgewater.com/research-and-insights/the-all-weather-story"
+        ],
     },
     "global_macro_risk_balanced_allocation": {
-        "institutional_archetypes": ["Bridgewater All Weather", "Citadel fixed income and macro"],
+        "institutional_archetypes": [
+            "Bridgewater All Weather",
+            "Citadel fixed income and macro",
+        ],
         "china_mainland": {
             "status": "conditional_research",
             "summary": "Global derivatives, FX, product, tax and funding access remain external gates.",
@@ -63,7 +68,10 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
         ],
     },
     "pe_style_public_market_underwriting": {
-        "institutional_archetypes": ["Blackstone private equity", "KKR/Carlyle-style public underwriting analogue"],
+        "institutional_archetypes": [
+            "Blackstone private equity",
+            "KKR/Carlyle-style public underwriting analogue",
+        ],
         "china_mainland": {
             "status": "research_framework",
             "summary": "Public-information underwriting can be used, but control rights, deal allocation and private diligence are absent.",
@@ -79,7 +87,10 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
         "reference_urls": ["https://www.blackstone.com/our-businesses/private-equity/"],
     },
     "private_credit_real_assets_underwriting": {
-        "institutional_archetypes": ["Apollo credit", "private real-assets underwriting"],
+        "institutional_archetypes": [
+            "Apollo credit",
+            "private real-assets underwriting",
+        ],
         "china_mainland": {
             "status": "research_framework",
             "summary": "Product terms, seniority, collateral, valuation policy and liquidity must be diligenced separately.",
@@ -92,10 +103,15 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
             "Check asset coverage, cash-flow waterfall, fees, redemption terms and default procedures.",
             "Never use stated yield as a substitute for loss, liquidity or valuation analysis.",
         ],
-        "reference_urls": ["https://www.apollo.com/institutional/strategies/asset-management/credit"],
+        "reference_urls": [
+            "https://www.apollo.com/institutional/strategies/asset-management/credit"
+        ],
     },
     "ashare_factor_tilt": {
-        "institutional_archetypes": ["AQR style premia", "systematic long-only equity factors"],
+        "institutional_archetypes": [
+            "AQR style premia",
+            "systematic long-only equity factors",
+        ],
         "china_mainland": {
             "status": "paper_implemented_if_eligible",
             "summary": "A-share long-only quality, value, momentum and investment tilt with liquidity and trade-state vetoes.",
@@ -130,7 +146,9 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
         "reference_urls": ["https://doi.org/10.1111/0022-1082.00401"],
     },
     "public_merger_event_research": {
-        "institutional_archetypes": ["event-driven merger and special-situations research"],
+        "institutional_archetypes": [
+            "event-driven merger and special-situations research"
+        ],
         "china_mainland": {
             "status": "research_framework",
             "summary": "A filing timeline and scenario process only; no short-spread or completion-profit claim is made.",
@@ -143,7 +161,9 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
             "Map consideration, approvals, financing, timeline and break scenarios from public documents.",
             "Treat halts, price limits and missing hedge access as central risks.",
         ],
-        "reference_urls": ["https://www.hfr.com/hfr-indices/hfr-hedge-fund-strategy-classifications/"],
+        "reference_urls": [
+            "https://www.hfr.com/hfr-indices/hfr-hedge-fund-strategy-classifications/"
+        ],
     },
     "domestic_futures_cta_tsmom": {
         "institutional_archetypes": ["Man AHL trend following", "managed futures CTA"],
@@ -167,7 +187,10 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
         ],
     },
     "domestic_futures_calendar_relative_value": {
-        "institutional_archetypes": ["futures curve relative value", "commodity carry research"],
+        "institutional_archetypes": [
+            "futures curve relative value",
+            "commodity carry research",
+        ],
         "china_mainland": {
             "status": "conditional_research",
             "summary": "Requires paired actual contracts, delivery rules, volume, margin, position-limit and price-limit facts; it is not a global-carry proxy.",
@@ -180,7 +203,9 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
             "Audit both legs, expiry calendar, delivery exposure, fees and worst-case combined margin before modelling a spread.",
             "Do not create a target from contango/backwardation alone.",
         ],
-        "reference_urls": ["https://www.czce.com.cn/cn/uploadfile/2021/03/01/20210301134917265.pdf"],
+        "reference_urls": [
+            "https://www.czce.com.cn/cn/uploadfile/2021/03/01/20210301134917265.pdf"
+        ],
     },
     "crypto_liquid_tsmom": {
         "institutional_archetypes": ["liquid crypto trend research"],
@@ -196,10 +221,15 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
             "Do not use a generic global-access claim, foreign venue or self-attestation as a Mainland workaround.",
             "For a lawful non-Mainland setting, verify timestamped data, venue, custody, funding and immutable archives before paper research.",
         ],
-        "reference_urls": ["https://www.csrc.gov.cn/csrc/c100028/c7614318/content.shtml?f_link_type=f_linkinlinenote"],
+        "reference_urls": [
+            "https://www.csrc.gov.cn/csrc/c100028/c7614318/content.shtml?f_link_type=f_linkinlinenote"
+        ],
     },
     "global_market_neutral_stat_arb": {
-        "institutional_archetypes": ["Two Sigma systematic investing", "market-neutral statistical arbitrage"],
+        "institutional_archetypes": [
+            "Two Sigma systematic investing",
+            "market-neutral statistical arbitrage",
+        ],
         "china_mainland": {
             "status": "not_economic_equivalent",
             "summary": "Borrow, neutral execution, global point-in-time data and capacity are structural requirements.",
@@ -212,7 +242,9 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
             "Do not label a correlation, grid or single-pair chart rule as institutional statistical arbitrage.",
             "Keep it blocked unless the full data, borrow, cost and execution assumptions can be verified.",
         ],
-        "reference_urls": ["https://www.twosigma.com/businesses/investment-management/"],
+        "reference_urls": [
+            "https://www.twosigma.com/businesses/investment-management/"
+        ],
     },
     "global_carry_relative_value": {
         "institutional_archetypes": ["cross-asset carry and relative value"],
@@ -230,7 +262,10 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
         "reference_urls": ["https://australia.aqr.com/funds/aqr-style-premia-trust/"],
     },
     "volatility_dispersion": {
-        "institutional_archetypes": ["index-component volatility dispersion", "volatility market making"],
+        "institutional_archetypes": [
+            "index-component volatility dispersion",
+            "volatility market making",
+        ],
         "china_mainland": {
             "status": "not_economic_equivalent",
             "summary": "Option surface, correlation, dynamic hedging, margin and tail-liquidity infrastructure are required.",
@@ -242,7 +277,9 @@ _MARKET_TRANSLATIONS: dict[str, dict[str, object]] = {
         "personal_protocol": [
             "Do not replace dispersion with naked option selling or one volatility indicator.",
         ],
-        "reference_urls": ["https://www.hfr.com/hfr-indices/hfr-hedge-fund-strategy-classifications/"],
+        "reference_urls": [
+            "https://www.hfr.com/hfr-indices/hfr-hedge-fund-strategy-classifications/"
+        ],
     },
 }
 
@@ -259,8 +296,13 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         required_data=("product_terms", "liquidity", "personal_cashflow_facts"),
         economic_engine="Liquidity matching and capital preservation, not alpha.",
         personal_translation="Keep near-term obligations outside risk sleeves and measure total return once.",
-        non_replicable_components=("insurance_balance_sheet", "institutional_ALM_capital_relief"),
-        risk_notes=("Product terms, duration, credit and liquidity must be dated and sourced.",),
+        non_replicable_components=(
+            "insurance_balance_sheet",
+            "institutional_ALM_capital_relief",
+        ),
+        risk_notes=(
+            "Product terms, duration, credit and liquidity must be dated and sourced.",
+        ),
     ),
     StrategyDefinition(
         strategy_id="global_macro_risk_balanced_allocation",
@@ -276,7 +318,10 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
             "commodities",
             "cash",
         ),
-        required_access=("lawful_global_market_access", "global_investment_product_access"),
+        required_access=(
+            "lawful_global_market_access",
+            "global_investment_product_access",
+        ),
         required_data=(
             "dated_multi_asset_returns",
             "currency_tax_and_product_terms",
@@ -347,7 +392,11 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         availability=StrategyAvailability.RESEARCH_ONLY,
         lifecycle=StrategyLifecycle.DRAFT,
         asset_scope=("private_credit", "private_real_assets", "public_disclosures"),
-        required_access=("qualified_investor_status", "lawful_product_access", "manager_due_diligence"),
+        required_access=(
+            "qualified_investor_status",
+            "lawful_product_access",
+            "manager_due_diligence",
+        ),
         required_data=(
             "dated_product_terms",
             "cashflow_waterfall",
@@ -386,11 +435,22 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         lifecycle=StrategyLifecycle.DRAFT,
         asset_scope=("a_shares", "domestic_equity_etfs"),
         required_access=("domestic_securities_account",),
-        required_data=("point_in_time_fundamentals", "listing_status", "liquidity", "price_limits"),
+        required_data=(
+            "point_in_time_fundamentals",
+            "listing_status",
+            "liquidity",
+            "price_limits",
+        ),
         economic_engine="Diversified long-only exposure to quality, value, investment and momentum characteristics.",
         personal_translation="A low-turnover long-only tilt with A-share T+1, halt and price-limit constraints.",
-        non_replicable_components=("borrow", "market_neutrality", "institutional_execution"),
-        risk_notes=("A historical factor premium is not a named-stock recommendation or guaranteed alpha.",),
+        non_replicable_components=(
+            "borrow",
+            "market_neutrality",
+            "institutional_execution",
+        ),
+        risk_notes=(
+            "A historical factor premium is not a named-stock recommendation or guaranteed alpha.",
+        ),
     ),
     StrategyDefinition(
         strategy_id="earnings_event_repricing",
@@ -401,11 +461,22 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         lifecycle=StrategyLifecycle.DRAFT,
         asset_scope=("a_shares", "domestic_equity_etfs"),
         required_access=("domestic_securities_account",),
-        required_data=("timestamped_announcements", "prior_expectations", "liquidity", "trading_status"),
+        required_data=(
+            "timestamped_announcements",
+            "prior_expectations",
+            "liquidity",
+            "trading_status",
+        ),
         economic_engine="Slow incorporation of verified earnings information after a public disclosure.",
         personal_translation="Long-only, evidence-led post-announcement research with explicit catalyst expiry and invalidation.",
-        non_replicable_components=("short_leg", "real_time_news_infrastructure", "guaranteed_gap_exit"),
-        risk_notes=("T+1, gaps, halts and limit locks must be modelled as exit risk rather than stop fills.",),
+        non_replicable_components=(
+            "short_leg",
+            "real_time_news_infrastructure",
+            "guaranteed_gap_exit",
+        ),
+        risk_notes=(
+            "T+1, gaps, halts and limit locks must be modelled as exit risk rather than stop fills.",
+        ),
     ),
     StrategyDefinition(
         strategy_id="public_merger_event_research",
@@ -453,11 +524,24 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         lifecycle=StrategyLifecycle.PAPER,
         asset_scope=("domestic_commodity_futures", "financial_futures"),
         required_access=("futures_eligible", "contract_eligibility"),
-        required_data=("dated_contract_master", "daily_settlements", "volume", "open_interest", "margin", "roll_facts"),
+        required_data=(
+            "dated_contract_master",
+            "daily_settlements",
+            "volume",
+            "open_interest",
+            "margin",
+            "roll_facts",
+        ),
         economic_engine="Diversified trend premia across independently traded futures markets, scaled by volatility.",
         personal_translation="A domestic futures CTA sub-strategy with signed positions, daily marking, margin and roll controls.",
-        non_replicable_components=("global_cross_currency_universe", "institutional_execution", "proprietary_data"),
-        risk_notes=("Trend signals are not forecasts; margin, contract roll and gap risk can dominate an individual signal.",),
+        non_replicable_components=(
+            "global_cross_currency_universe",
+            "institutional_execution",
+            "proprietary_data",
+        ),
+        risk_notes=(
+            "Trend signals are not forecasts; margin, contract roll and gap risk can dominate an individual signal.",
+        ),
     ),
     StrategyDefinition(
         strategy_id="domestic_futures_calendar_relative_value",
@@ -542,12 +626,29 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         availability=StrategyAvailability.NOT_REPLICABLE,
         lifecycle=StrategyLifecycle.DISABLED,
         asset_scope=("global_equities", "derivatives"),
-        required_access=("borrow", "prime_broker", "low_latency_execution", "global_data"),
-        required_data=("point_in_time_global_universe", "corporate_actions", "borrow", "transaction_cost_model"),
+        required_access=(
+            "borrow",
+            "prime_broker",
+            "low_latency_execution",
+            "global_data",
+        ),
+        required_data=(
+            "point_in_time_global_universe",
+            "corporate_actions",
+            "borrow",
+            "transaction_cost_model",
+        ),
         economic_engine="Relative mispricing harvested through neutral long-short portfolios and execution technology.",
         personal_translation="No economic-equivalent personal implementation is claimed.",
-        non_replicable_components=("borrow", "neutral_execution", "capacity", "latency"),
-        risk_notes=("Correlations and liquidity can fail together in stressed markets.",),
+        non_replicable_components=(
+            "borrow",
+            "neutral_execution",
+            "capacity",
+            "latency",
+        ),
+        risk_notes=(
+            "Correlations and liquidity can fail together in stressed markets.",
+        ),
     ),
     StrategyDefinition(
         strategy_id="global_carry_relative_value",
@@ -557,12 +658,29 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         availability=StrategyAvailability.NOT_REPLICABLE,
         lifecycle=StrategyLifecycle.DISABLED,
         asset_scope=("global_rates", "fx", "credit", "commodities"),
-        required_access=("global_derivatives", "funding", "fx", "institutional_counterparties"),
-        required_data=("forward_curves", "funding", "collateral", "fx", "transaction_cost_model"),
+        required_access=(
+            "global_derivatives",
+            "funding",
+            "fx",
+            "institutional_counterparties",
+        ),
+        required_data=(
+            "forward_curves",
+            "funding",
+            "collateral",
+            "fx",
+            "transaction_cost_model",
+        ),
         economic_engine="Compensation for bearing liquidity, funding, term and crash risk across curves.",
         personal_translation="No simple high-yield or futures-contango proxy is labelled as global carry.",
-        non_replicable_components=("cross_currency_funding", "otc_access", "global_hedging"),
-        risk_notes=("Carry losses can be correlated and discontinuous during deleveraging.",),
+        non_replicable_components=(
+            "cross_currency_funding",
+            "otc_access",
+            "global_hedging",
+        ),
+        risk_notes=(
+            "Carry losses can be correlated and discontinuous during deleveraging.",
+        ),
     ),
     StrategyDefinition(
         strategy_id="volatility_dispersion",
@@ -576,7 +694,11 @@ _CATALOG: tuple[StrategyDefinition, ...] = (
         required_data=("option_surface", "correlation", "greeks", "intraday_execution"),
         economic_engine="Trading implied correlation and volatility-risk transfer, not a directional view.",
         personal_translation="No economic-equivalent retail implementation is claimed.",
-        non_replicable_components=("surface_market_making", "continuous_delta_hedging", "tail_margin_capacity"),
+        non_replicable_components=(
+            "surface_market_making",
+            "continuous_delta_hedging",
+            "tail_margin_capacity",
+        ),
         risk_notes=("Correlation can jump precisely when option liquidity weakens.",),
     ),
 )
@@ -609,10 +731,14 @@ def strategy_catalog_entry(
     status = definition.availability.value
     if definition.availability == StrategyAvailability.NOT_REPLICABLE or blockers:
         decision = "blocked"
-    elif definition.availability == StrategyAvailability.RESEARCH_ONLY or definition.lifecycle in {
-        StrategyLifecycle.DRAFT,
-        StrategyLifecycle.DISABLED,
-    }:
+    elif (
+        definition.availability == StrategyAvailability.RESEARCH_ONLY
+        or definition.lifecycle
+        in {
+            StrategyLifecycle.DRAFT,
+            StrategyLifecycle.DISABLED,
+        }
+    ):
         decision = "research_only"
     else:
         decision = "paper_eligible"
@@ -665,7 +791,9 @@ def _access_blockers(
         blockers.append("licensed global data entitlement is not recorded")
     if (
         "lawful_global_market_access" in required
-        or any(token in required for token in ("global_derivatives", "global_data", "fx"))
+        or any(
+            token in required for token in ("global_derivatives", "global_data", "fx")
+        )
     ) and not profile.lawful_global_market_access:
         blockers.append("lawful documented global-market access is not recorded")
     if "lawful_crypto_market_access" in required:
@@ -675,7 +803,9 @@ def _access_blockers(
             )
         jurisdiction = (profile.residency_jurisdiction or "").strip().upper()
         if not jurisdiction:
-            blockers.append("residency jurisdiction is not recorded for crypto research gating")
+            blockers.append(
+                "residency jurisdiction is not recorded for crypto research gating"
+            )
         elif jurisdiction in {"CN", "CHN", "CHINA", "MAINLAND_CHINA", "CHINA_MAINLAND"}:
             blockers.append(
                 "this system does not present crypto as a personal implementation route for China-mainland residents"
@@ -685,7 +815,9 @@ def _access_blockers(
                 "dated crypto venue, custody and data-entitlement evidence is not recorded"
             )
     if definition.availability == StrategyAvailability.NOT_REPLICABLE:
-        blockers.append("strategy relies on institutional market structure that this system does not emulate")
+        blockers.append(
+            "strategy relies on institutional market structure that this system does not emulate"
+        )
     return list(dict.fromkeys(blockers))
 
 

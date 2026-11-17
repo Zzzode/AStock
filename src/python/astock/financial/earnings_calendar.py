@@ -103,15 +103,17 @@ def _fetch_sync(
 
         status = "disclosed" if actual_date and actual_date <= today else "scheduled"
 
-        entries.append({
-            "code": code,
-            "name": name,
-            "scheduled_date": first_date.isoformat() if first_date else None,
-            "actual_date": actual_date.isoformat() if actual_date else None,
-            "disclosure_date": disclosure_date.isoformat(),
-            "status": status,
-            "days_until": (disclosure_date - today).days,
-        })
+        entries.append(
+            {
+                "code": code,
+                "name": name,
+                "scheduled_date": first_date.isoformat() if first_date else None,
+                "actual_date": actual_date.isoformat() if actual_date else None,
+                "disclosure_date": disclosure_date.isoformat(),
+                "status": status,
+                "days_until": (disclosure_date - today).days,
+            }
+        )
 
     entries.sort(key=lambda x: x["disclosure_date"])
 

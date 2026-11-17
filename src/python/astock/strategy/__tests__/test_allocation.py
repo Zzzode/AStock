@@ -256,7 +256,9 @@ def test_allocator_blocks_crypto_without_external_trusted_validator() -> None:
     assert "external trusted artifact validator" in " ".join(result["blockers"])
 
 
-def test_allocator_preserves_crypto_legs_and_reports_gross_counterparty_exposure() -> None:
+def test_allocator_preserves_crypto_legs_and_reports_gross_counterparty_exposure() -> (
+    None
+):
     proposal = _crypto_proposal()
     targets = proposal["targets"]
     assert isinstance(targets, list)
@@ -289,7 +291,9 @@ def test_allocator_preserves_crypto_legs_and_reports_gross_counterparty_exposure
     assert abs(result["ledgers"]["crypto"]["total_gross_target_weight"] - 0.1) <= 2e-8
     assert result["ledgers"]["crypto"]["net_target_weight"] < 0
     legs = result["ledgers"]["crypto"]["exposure_by_venue_market_direction"]
-    assert {(item["venue"], item["market_type"], item["direction"]) for item in legs} == {
+    assert {
+        (item["venue"], item["market_type"], item["direction"]) for item in legs
+    } == {
         ("regulated-example-a", "spot", "long"),
         ("regulated-example-a", "perpetual", "short"),
         ("regulated-example-b", "perpetual", "short"),
@@ -297,7 +301,9 @@ def test_allocator_preserves_crypto_legs_and_reports_gross_counterparty_exposure
     counterparties = result["ledgers"]["crypto"]["counterparty_exposures"]
     assert len(counterparties) == 2
     assert all(item["gross_target_weight"] > 0 for item in counterparties)
-    venue_a = next(item for item in counterparties if item["venue"] == "regulated-example-a")
+    venue_a = next(
+        item for item in counterparties if item["venue"] == "regulated-example-a"
+    )
     assert venue_a["gross_target_weight"] > abs(venue_a["net_target_weight"])
 
 
@@ -311,14 +317,19 @@ def test_allocator_blocks_crypto_target_without_a_venue() -> None:
     result = allocate_multi_sleeve({"crypto": proposal}, crypto_ledger=ledger)
 
     assert result["state"] == "blocked"
-    assert "crypto targets require asset_id, symbol, venue, market_type, and source_ref" in result["blockers"][0]
+    assert (
+        "crypto targets require asset_id, symbol, venue, market_type, and source_ref"
+        in result["blockers"][0]
+    )
 
 
 def test_allocator_requires_a_common_nav_for_any_futures_sleeve() -> None:
     result = allocate_multi_sleeve({"cta": _futures_proposal()})
 
     assert result["state"] == "blocked"
-    assert result["blockers"] == ["futures allocation requires risk_budget.allocation_capital"]
+    assert result["blockers"] == [
+        "futures allocation requires risk_budget.allocation_capital"
+    ]
 
 
 def test_allocator_rejects_mismatched_futures_proposal_capital() -> None:
@@ -331,9 +342,15 @@ def test_allocator_rejects_mismatched_futures_proposal_capital() -> None:
     assert "does not match risk_budget.allocation_capital" in result["blockers"][0]
 
 
-def test_allocator_integer_sizes_futures_before_margin_and_drops_zero_contracts() -> None:
+def test_allocator_integer_sizes_futures_before_margin_and_drops_zero_contracts() -> (
+    None
+):
     result = allocate_multi_sleeve(
-        {"cta": _futures_proposal(capital=100.0, target_contracts=1, margin_per_contract=50.0)},
+        {
+            "cta": _futures_proposal(
+                capital=100.0, target_contracts=1, margin_per_contract=50.0
+            )
+        },
         risk_budget={"allocation_capital": 100.0},
     )
 
@@ -343,16 +360,25 @@ def test_allocator_integer_sizes_futures_before_margin_and_drops_zero_contracts(
     assert result["capital_waterfall"]["residual_cash_fraction"] == 1.0
 
 
-def test_allocator_recalculates_margin_from_per_contract_facts_not_declared_total() -> None:
-    proposal = _futures_proposal(capital=1_000.0, target_contracts=2, margin_per_contract=50.0)
+def test_allocator_recalculates_margin_from_per_contract_facts_not_declared_total() -> (
+    None
+):
+    proposal = _futures_proposal(
+        capital=1_000.0, target_contracts=2, margin_per_contract=50.0
+    )
     raw_target = proposal["targets"][0]
     assert isinstance(raw_target, dict)
     raw_target["margin_required"] = 1.0
 
-    result = allocate_multi_sleeve({"cta": proposal}, risk_budget={"allocation_capital": 1_000.0})
+    result = allocate_multi_sleeve(
+        {"cta": proposal}, risk_budget={"allocation_capital": 1_000.0}
+    )
 
     assert result["state"] == "blocked"
-    assert "does not equal integer contracts times point-in-time margin_per_contract" in result["blockers"][0]
+    assert (
+        "does not equal integer contracts times point-in-time margin_per_contract"
+        in result["blockers"][0]
+    )
 
 
 def test_allocator_reconciles_equity_crypto_and_futures_in_one_cash_waterfall() -> None:
@@ -376,7 +402,9 @@ def test_allocator_reconciles_equity_crypto_and_futures_in_one_cash_waterfall() 
         {
             "factor": equity,
             "crypto": crypto,
-            "cta": _futures_proposal(capital=100.0, target_contracts=1, margin_per_contract=25.0),
+            "cta": _futures_proposal(
+                capital=100.0, target_contracts=1, margin_per_contract=25.0
+            ),
         },
         crypto_ledger=ledger,
         risk_budget={"allocation_capital": 100.0},
@@ -400,7 +428,9 @@ def test_allocator_blocks_futures_without_dated_margin_facts() -> None:
     assert isinstance(target, dict)
     target.pop("contract_facts")
 
-    result = allocate_multi_sleeve({"cta": proposal}, risk_budget={"allocation_capital": 100.0})
+    result = allocate_multi_sleeve(
+        {"cta": proposal}, risk_budget={"allocation_capital": 100.0}
+    )
 
     assert result["state"] == "blocked"
     assert result["blockers"] == ["cta: futures target requires dated contract_facts"]

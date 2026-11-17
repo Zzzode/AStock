@@ -109,9 +109,7 @@ class TestIndustryCache:
 
     def test_is_expired_with_fresh_cache(self):
         """Test fresh cache"""
-        cache = IndustryCache(
-            cached_at=datetime.now().isoformat()
-        )
+        cache = IndustryCache(cached_at=datetime.now().isoformat())
         assert cache.is_expired() is False
 
     def test_to_dict_and_from_dict(self):
@@ -122,7 +120,9 @@ class TestIndustryCache:
                 "证券": IndustryInfo(name="证券", code="BK0478"),
             },
             stock_industries={
-                "000001": StockIndustry(code="000001", name="平安银行", industry="银行"),
+                "000001": StockIndustry(
+                    code="000001", name="平安银行", industry="银行"
+                ),
             },
             industry_stocks={
                 "银行": ["000001", "600000"],

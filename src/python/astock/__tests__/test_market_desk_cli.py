@@ -52,7 +52,14 @@ def test_market_desk_run_cli_emits_the_shared_team_packet(monkeypatch) -> None:
     monkeypatch.setattr(cli.capabilities, "build_market_desk_team_packet", _packet)
     result = runner.invoke(
         cli.app,
-        ["market-desk-run", "--candidate-limit", "12", "--min-amount", "100000000", "--json"],
+        [
+            "market-desk-run",
+            "--candidate-limit",
+            "12",
+            "--min-amount",
+            "100000000",
+            "--json",
+        ],
     )
 
     assert result.exit_code == 0, result.stdout
@@ -67,7 +74,9 @@ def test_market_desk_playbook_cli_uses_capability_kernel(monkeypatch) -> None:
         "research_only": True,
         "no_order_execution": True,
     }
-    monkeypatch.setattr(cli.capabilities, "list_market_desk_playbooks", lambda: expected)
+    monkeypatch.setattr(
+        cli.capabilities, "list_market_desk_playbooks", lambda: expected
+    )
 
     result = runner.invoke(cli.app, ["market-desk-playbooks", "--json"])
 
@@ -75,13 +84,21 @@ def test_market_desk_playbook_cli_uses_capability_kernel(monkeypatch) -> None:
     assert json.loads(result.stdout) == expected
 
 
-def test_market_desk_playbook_evaluation_cli_reads_evidence(tmp_path: Path, monkeypatch) -> None:
+def test_market_desk_playbook_evaluation_cli_reads_evidence(
+    tmp_path: Path, monkeypatch
+) -> None:
     runner = CliRunner()
-    evidence_path = _write_json(tmp_path / "evidence.json", {"primary_event": {"source": "fixture"}})
+    evidence_path = _write_json(
+        tmp_path / "evidence.json", {"primary_event": {"source": "fixture"}}
+    )
     received: dict[str, object] = {}
 
-    def _evaluate(playbook_id: str, evidence: dict[str, object], *, regime: str) -> dict[str, object]:
-        received.update({"playbook_id": playbook_id, "evidence": evidence, "regime": regime})
+    def _evaluate(
+        playbook_id: str, evidence: dict[str, object], *, regime: str
+    ) -> dict[str, object]:
+        received.update(
+            {"playbook_id": playbook_id, "evidence": evidence, "regime": regime}
+        )
         return {
             "playbook_id": playbook_id,
             "decision": "watch",
@@ -93,7 +110,14 @@ def test_market_desk_playbook_evaluation_cli_reads_evidence(tmp_path: Path, monk
     monkeypatch.setattr(cli.capabilities, "evaluate_market_desk_playbook", _evaluate)
     result = runner.invoke(
         cli.app,
-        ["market-desk-evaluate-playbook", "event_repricing", str(evidence_path), "--regime", "selective_risk_on", "--json"],
+        [
+            "market-desk-evaluate-playbook",
+            "event_repricing",
+            str(evidence_path),
+            "--regime",
+            "selective_risk_on",
+            "--json",
+        ],
     )
 
     assert result.exit_code == 0, result.stdout
@@ -105,7 +129,9 @@ def test_market_desk_playbook_evaluation_cli_reads_evidence(tmp_path: Path, monk
     assert json.loads(result.stdout)["decision"] == "watch"
 
 
-def test_strategy_plan_lifecycle_cli_uses_the_validated_capabilities(tmp_path: Path) -> None:
+def test_strategy_plan_lifecycle_cli_uses_the_validated_capabilities(
+    tmp_path: Path,
+) -> None:
     runner = CliRunner()
     ledger_path = tmp_path / "ledger.json"
     plan_path = _write_json(tmp_path / "plan.json", _strategy_plan())
@@ -166,7 +192,9 @@ def test_strategy_plan_lifecycle_cli_uses_the_validated_capabilities(tmp_path: P
         ],
     )
     assert reviewed.exit_code == 0, reviewed.stdout
-    plan = json.loads(reviewed.stdout)["entry"]["observations"][-1]["evidence"]["strategy_plan"]
+    plan = json.loads(reviewed.stdout)["entry"]["observations"][-1]["evidence"][
+        "strategy_plan"
+    ]
     assert plan["state"] == "watch"
     assert plan["review_at"] == "2026-07-30T15:00:00+08:00"
 
@@ -202,7 +230,9 @@ def test_paper_decision_review_cli_passes_structured_inputs_to_capability(
             "entry": {"entry_id": entry_id},
         }
 
-    monkeypatch.setattr(cli.capabilities, "record_market_desk_paper_decision_review", _record)
+    monkeypatch.setattr(
+        cli.capabilities, "record_market_desk_paper_decision_review", _record
+    )
     decision_path = _write_json(
         tmp_path / "decision.json",
         {"schema_version": "market-desk-ic-decision.v1", "candidate_id": "plan-1"},

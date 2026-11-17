@@ -16,12 +16,15 @@ from ..utils import get_logger
 logger = get_logger("service_status")
 
 # Default status file path - data directory under project root
-DEFAULT_STATUS_PATH = Path(__file__).parent.parent.parent.parent.parent / "data" / "service_status.json"
+DEFAULT_STATUS_PATH = (
+    Path(__file__).parent.parent.parent.parent.parent / "data" / "service_status.json"
+)
 
 
 @dataclass
 class ServiceInstance:
     """Single service instance status"""
+
     instance_id: str  # Instance identifier
     pid: int  # Process ID
     start_time: str  # ISO format time
@@ -42,6 +45,7 @@ class ServiceInstance:
 @dataclass
 class ServiceHistory:
     """Service history record"""
+
     instance_id: str
     pid: int
     start_time: str
@@ -56,6 +60,7 @@ class ServiceHistory:
 @dataclass
 class ServiceStatus:
     """Service status summary"""
+
     instances: list[ServiceInstance] = field(default_factory=list)
     history: list[ServiceHistory] = field(default_factory=list)
     max_history: int = 100  # Maximum history records
@@ -130,9 +135,7 @@ class ServiceStatusManager:
                 fcntl.flock(f.fileno(), fcntl.LOCK_UN)
         logger.debug(f"Service status saved to {self.status_path}")
 
-    def record_start(
-        self, instance_id: str, interval: int = 60
-    ) -> ServiceInstance:
+    def record_start(self, instance_id: str, interval: int = 60) -> ServiceInstance:
         """Record service start
 
         Args:
@@ -209,11 +212,13 @@ class ServiceStatusManager:
         # Limit history record count
         status.history.insert(0, history)
         if len(status.history) > status.max_history:
-            status.history = status.history[:status.max_history]
+            status.history = status.history[: status.max_history]
 
         self._save_status(status)
 
-        logger.info(f"Service stop recorded: {instance_id}, uptime: {format_duration(duration)}")
+        logger.info(
+            f"Service stop recorded: {instance_id}, uptime: {format_duration(duration)}"
+        )
         return history
 
     def get_running_instances(self) -> list[ServiceInstance]:

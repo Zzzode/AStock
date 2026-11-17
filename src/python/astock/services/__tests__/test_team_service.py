@@ -69,7 +69,14 @@ def mock_analysis_service() -> MagicMock:
         return_value={
             "code": "000001",
             "name": "平安银行",
-            "indicators": {"open": 10.2, "high": 10.7, "low": 10.0, "close": 10.5, "volume": 1_000_000, "amount": 10_500_000},
+            "indicators": {
+                "open": 10.2,
+                "high": 10.7,
+                "low": 10.0,
+                "close": 10.5,
+                "volume": 1_000_000,
+                "amount": 10_500_000,
+            },
             "data_quality": {"daily": "daily_only", "quote": "full_realtime"},
         }
     )
@@ -201,7 +208,11 @@ def test_team_cli_json_output() -> None:
         warnings=["实时行情已降级到最近交易日日线快照。"],
         orchestration={
             "strategy": "packet_only_agent_reasoning",
-            "active_agent_ids": ["market-analyst", "risk-analyst", "swing-trend-analyst"],
+            "active_agent_ids": [
+                "market-analyst",
+                "risk-analyst",
+                "swing-trend-analyst",
+            ],
         },
         packet={"recommended_roles": ["core", "swing"]},
         session_path="data/sessions/team-000001-20260327.md",

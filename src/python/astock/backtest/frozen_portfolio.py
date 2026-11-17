@@ -18,7 +18,6 @@ from typing import Any
 
 import pandas as pd
 
-
 PUBLIC_PORTFOLIO_SOURCE = "akshare_public"
 
 
@@ -84,7 +83,9 @@ class FrozenPortfolioReplayInput:
     def write_frozen_archive(self, directory: Path) -> Path:
         digest = self.archive_id.removeprefix("sha256:")
         if len(digest) != 64:
-            raise ValueError("frozen portfolio replay archive_id must be a sha256 digest")
+            raise ValueError(
+                "frozen portfolio replay archive_id must be a sha256 digest"
+            )
         payload = {
             "schema_version": "market_data_frozen_archive.v1",
             "source": self.source,
@@ -92,12 +93,16 @@ class FrozenPortfolioReplayInput:
             "raw_source_records": self.raw_source_records,
         }
         if _content_hash(_archive_hash_input(payload)) != digest:
-            raise ValueError("frozen portfolio replay archive_id does not match raw source records")
+            raise ValueError(
+                "frozen portfolio replay archive_id does not match raw source records"
+            )
         return _write_content_addressed(directory, f"{digest}.json", payload)
 
     def write_replay_input(self, directory: Path) -> Path:
         digest = self.archive_id.removeprefix("sha256:")
-        return _write_content_addressed(directory, f"{digest}.portfolio.replay.json", self.to_dict())
+        return _write_content_addressed(
+            directory, f"{digest}.portfolio.replay.json", self.to_dict()
+        )
 
 
 def build_frozen_portfolio_replay_input(
@@ -163,11 +168,16 @@ def parse_frozen_portfolio_replay_input(
 ) -> FrozenPortfolioReplayInput:
     """Validate an agent-safe frozen public portfolio input payload."""
     if str(value.get("schema_version") or "") != "frozen_portfolio_replay_input.v1":
-        raise ValueError("portfolio replay input must use frozen_portfolio_replay_input.v1")
+        raise ValueError(
+            "portfolio replay input must use frozen_portfolio_replay_input.v1"
+        )
     manifest = value.get("source_manifest")
     if not isinstance(manifest, Mapping):
         raise ValueError("portfolio replay input requires a source_manifest")
-    if str(manifest.get("schema_version") or "") != "frozen_portfolio_replay_sources.v1":
+    if (
+        str(manifest.get("schema_version") or "")
+        != "frozen_portfolio_replay_sources.v1"
+    ):
         raise ValueError("portfolio replay input has an unsupported source manifest")
     raw_data = value.get("market_data")
     if not isinstance(raw_data, Mapping):
@@ -178,16 +188,32 @@ def parse_frozen_portfolio_replay_input(
             for code, records in raw_data.items()
             if isinstance(records, list)
         },
-        value.get("target_weights") if isinstance(value.get("target_weights"), Mapping) else {},
-        trading_calendar=value.get("trading_calendar") if isinstance(value.get("trading_calendar"), list) else (),
-        universe_references=value.get("universe_references") if isinstance(value.get("universe_references"), Mapping) else {},
+        (
+            value.get("target_weights")
+            if isinstance(value.get("target_weights"), Mapping)
+            else {}
+        ),
+        trading_calendar=(
+            value.get("trading_calendar")
+            if isinstance(value.get("trading_calendar"), list)
+            else ()
+        ),
+        universe_references=(
+            value.get("universe_references")
+            if isinstance(value.get("universe_references"), Mapping)
+            else {}
+        ),
         source=str(manifest.get("source") or ""),
-        trading_calendar_source=str(value.get("trading_calendar_source") or "caller_supplied"),
+        trading_calendar_source=str(
+            value.get("trading_calendar_source") or "caller_supplied"
+        ),
         observed_at=manifest.get("as_of"),
     )
     archive_id = str(manifest.get("archive_id") or "").strip()
     if not archive_id or archive_id != packet.archive_id:
-        raise ValueError("portfolio replay input archive_id does not match exact replay inputs")
+        raise ValueError(
+            "portfolio replay input archive_id does not match exact replay inputs"
+        )
     return packet
 
 
@@ -206,23 +232,38 @@ def _normalize_market_frame(code: str, frame: pd.DataFrame) -> pd.DataFrame:
     if "volume" in frame.columns:
         columns.append("volume")
     normalized = frame[columns].copy()
-    normalized["date"] = pd.to_datetime(normalized["date"], errors="coerce").dt.normalize()
+    normalized["date"] = pd.to_datetime(
+        normalized["date"], errors="coerce"
+    ).dt.normalize()
     if normalized["date"].isna().any() or normalized["date"].duplicated().any():
-        raise ValueError(f"portfolio replay market data for {code} has invalid or duplicate dates")
+        raise ValueError(
+            f"portfolio replay market data for {code} has invalid or duplicate dates"
+        )
     for column in ("open", "close"):
         normalized[column] = pd.to_numeric(normalized[column], errors="coerce")
-    if normalized[["open", "close"]].isna().any().any() or (normalized[["open", "close"]] <= 0).any().any():
+    if (
+        normalized[["open", "close"]].isna().any().any()
+        or (normalized[["open", "close"]] <= 0).any().any()
+    ):
         raise ValueError(f"portfolio replay market data for {code} has invalid prices")
     if "volume" in normalized:
         normalized["volume"] = pd.to_numeric(normalized["volume"], errors="coerce")
         if normalized["volume"].isna().any() or (normalized["volume"] < 0).any():
-            raise ValueError(f"portfolio replay market data for {code} has invalid volume")
+            raise ValueError(
+                f"portfolio replay market data for {code} has invalid volume"
+            )
     normalized["tradable"] = normalized["tradable"].astype(bool)
-    normalized["execution_status"] = normalized["execution_status"].astype(str).str.strip().str.lower()
-    if not normalized["execution_status"].isin(
-        {"tradable", "halted", "limit_up_locked", "limit_down_locked", "unknown"}
-    ).all():
-        raise ValueError(f"portfolio replay market data for {code} has invalid execution_status")
+    normalized["execution_status"] = (
+        normalized["execution_status"].astype(str).str.strip().str.lower()
+    )
+    if (
+        not normalized["execution_status"]
+        .isin({"tradable", "halted", "limit_up_locked", "limit_down_locked", "unknown"})
+        .all()
+    ):
+        raise ValueError(
+            f"portfolio replay market data for {code} has invalid execution_status"
+        )
     return normalized.sort_values("date", kind="stable").reset_index(drop=True)
 
 
@@ -230,8 +271,14 @@ def _normalize_calendar(value: Sequence[str]) -> list[str]:
     if isinstance(value, (str, bytes)):
         raise ValueError("portfolio replay trading_calendar must be a sequence")
     parsed = [pd.Timestamp(day).normalize() for day in value]
-    if len(parsed) < 2 or any(pd.isna(day) for day in parsed) or len(set(parsed)) != len(parsed):
-        raise ValueError("portfolio replay trading_calendar requires at least two unique valid sessions")
+    if (
+        len(parsed) < 2
+        or any(pd.isna(day) for day in parsed)
+        or len(set(parsed)) != len(parsed)
+    ):
+        raise ValueError(
+            "portfolio replay trading_calendar requires at least two unique valid sessions"
+        )
     return [day.date().isoformat() for day in sorted(parsed)]
 
 
@@ -247,10 +294,16 @@ def _normalize_target_weights(
     for raw_date, raw_weights in value.items():
         day = pd.Timestamp(raw_date).normalize().date().isoformat()
         if day not in calendar_set or not isinstance(raw_weights, Mapping):
-            raise ValueError("portfolio replay target weights require calendar dates and code-weight mappings")
+            raise ValueError(
+                "portfolio replay target weights require calendar dates and code-weight mappings"
+            )
         weights = {str(code): float(weight) for code, weight in raw_weights.items()}
-        if any(code not in market_data for code in weights) or any(weight < 0 or weight > 1 for weight in weights.values()):
-            raise ValueError("portfolio replay target weights contain an unknown code or invalid weight")
+        if any(code not in market_data for code in weights) or any(
+            weight < 0 or weight > 1 for weight in weights.values()
+        ):
+            raise ValueError(
+                "portfolio replay target weights contain an unknown code or invalid weight"
+            )
         if sum(weights.values()) > 1 + 1e-9:
             raise ValueError("portfolio replay target weights exceed 100%")
         normalized[day] = weights
@@ -263,7 +316,9 @@ def _normalize_universe_references(
     references = {str(day): str(ref).strip() for day, ref in value.items()}
     missing = [day for day in target_weights if not references.get(day)]
     if missing:
-        raise ValueError("portfolio replay target dates require explicit universe_references")
+        raise ValueError(
+            "portfolio replay target dates require explicit universe_references"
+        )
     return {day: references[day] for day in sorted(target_weights)}
 
 
@@ -295,12 +350,18 @@ def _archive_hash_input(payload: Mapping[str, Any]) -> dict[str, Any]:
 
 
 def _content_hash(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
-def _write_content_addressed(directory: Path, filename: str, value: Mapping[str, Any]) -> Path:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+def _write_content_addressed(
+    directory: Path, filename: str, value: Mapping[str, Any]
+) -> Path:
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     target_directory = Path(directory)
     target_directory.mkdir(parents=True, exist_ok=True)
     target = target_directory / filename

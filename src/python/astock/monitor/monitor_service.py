@@ -124,7 +124,9 @@ class MonitorService:
                 logger.warning(f"Stream scan error for {item.code}: {e}")
 
         if signal_count:
-            logger.info(f"Stream cycle: {len(watch_items)} items, {signal_count} signals")
+            logger.info(
+                f"Stream cycle: {len(watch_items)} items, {signal_count} signals"
+            )
 
     def _is_trading_time(self) -> bool:
         """Check if current time is within trading hours

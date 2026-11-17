@@ -6,7 +6,12 @@ from dataclasses import dataclass
 from typing import Any, Mapping
 
 from ..market_data import verify_frozen_market_archive
-from .decision import REQUIRED_IC_CONTROL_ROLES, DeskDecision, assess_market_regime, evaluate_candidate_gate
+from .decision import (
+    REQUIRED_IC_CONTROL_ROLES,
+    DeskDecision,
+    assess_market_regime,
+    evaluate_candidate_gate,
+)
 from .strategy_book import StrategyPlan, StrategyState
 
 
@@ -63,28 +68,40 @@ def verify_paper_desk_release(
     regime = assess_market_regime(snapshot)
     if regime.regime.value == "insufficient_data":
         checks["market_snapshot"] = "fail"
-        blockers.append("Market snapshot is insufficient, stale, or outside a verified session.")
+        blockers.append(
+            "Market snapshot is insufficient, stale, or outside a verified session."
+        )
     else:
         checks["market_snapshot"] = "pass"
 
-    history = rotation.get("ranking_basis", {}).get("history_validation") if isinstance(rotation.get("ranking_basis"), Mapping) else None
+    history = (
+        rotation.get("ranking_basis", {}).get("history_validation")
+        if isinstance(rotation.get("ranking_basis"), Mapping)
+        else None
+    )
     if not isinstance(history, Mapping):
         checks["rotation"] = "fail"
         blockers.append("Rotation packet lacks history-validation coverage.")
     elif require_full_rotation and not bool(history.get("full_cross_section_ready")):
         checks["rotation"] = "fail"
-        blockers.append("Release requires full-universe multi-horizon rotation coverage, which is not ready.")
+        blockers.append(
+            "Release requires full-universe multi-horizon rotation coverage, which is not ready."
+        )
     else:
         checks["rotation"] = "pass"
         if not bool(history.get("full_cross_section_ready")):
-            warnings.append("Rotation history is selected or partial; it cannot support a full-universe claim.")
+            warnings.append(
+                "Rotation history is selected or partial; it cannot support a full-universe claim."
+            )
 
     if (
         str(restricted_list_health.get("status") or "") != "current"
         or str(restricted_list_health.get("signature_status") or "") != "verified"
     ):
         checks["restricted_list"] = "fail"
-        blockers.append("Restricted-list authority is missing, invalid, stale, unattested, or lacks a verified compliance signature.")
+        blockers.append(
+            "Restricted-list authority is missing, invalid, stale, unattested, or lacks a verified compliance signature."
+        )
     else:
         checks["restricted_list"] = "pass"
 
@@ -102,7 +119,9 @@ def verify_paper_desk_release(
             checks["strategy_plan"] = "pass"
 
     if plan is not None and plan.target in {
-        str(item).strip() for item in restricted_list_health.get("active_targets", ()) if str(item).strip()
+        str(item).strip()
+        for item in restricted_list_health.get("active_targets", ())
+        if str(item).strip()
     }:
         checks["restricted_target"] = "fail"
         blockers.append("Strategy-plan target is currently restricted.")
@@ -122,12 +141,17 @@ def verify_paper_desk_release(
         and bool(ic_decision.get("model_versions"))
         and plan is not None
         and str(ic_decision.get("candidate_id") or "") == plan.plan_id
-        and plan.target in {
-            str(item).strip() for item in ic_decision.get("candidate_targets", ()) if str(item).strip()
+        and plan.target
+        in {
+            str(item).strip()
+            for item in ic_decision.get("candidate_targets", ())
+            if str(item).strip()
         }
         and isinstance(ic_decision.get("restricted_list_snapshot"), Mapping)
-        and str(ic_decision["restricted_list_snapshot"].get("status") or "") == "current"
-        and str(ic_decision["restricted_list_snapshot"].get("signature_status") or "") == "verified"
+        and str(ic_decision["restricted_list_snapshot"].get("status") or "")
+        == "current"
+        and str(ic_decision["restricted_list_snapshot"].get("signature_status") or "")
+        == "verified"
         and str(ic_decision["restricted_list_snapshot"].get("version") or "")
         == str(restricted_list_health.get("version") or "")
         and control_ok
@@ -136,13 +160,19 @@ def verify_paper_desk_release(
         checks["investment_committee"] = "pass"
     else:
         checks["investment_committee"] = "fail"
-        blockers.append("IC decision is missing, unlinked, vetoed, or lacks required controls/model versions.")
+        blockers.append(
+            "IC decision is missing, unlinked, vetoed, or lacks required controls/model versions."
+        )
 
     recomputed_gate = evaluate_candidate_gate(
         candidate,
         regime=str(ic_decision.get("regime") or "insufficient_data"),
         control_assessments=controls if isinstance(controls, Mapping) else {},
-        restricted_targets=tuple(str(item) for item in restricted_list_health.get("active_targets", ()) if str(item).strip()),
+        restricted_targets=tuple(
+            str(item)
+            for item in restricted_list_health.get("active_targets", ())
+            if str(item).strip()
+        ),
     )
     candidate_snapshot = candidate.get("restricted_list_snapshot")
     candidate_gate_ok = (
@@ -150,19 +180,29 @@ def verify_paper_desk_release(
         and isinstance(candidate_snapshot, Mapping)
         and str(candidate_snapshot.get("status") or "") == "current"
         and str(candidate_snapshot.get("signature_status") or "") == "verified"
-        and str(candidate_snapshot.get("version") or "") == str(restricted_list_health.get("version") or "")
+        and str(candidate_snapshot.get("version") or "")
+        == str(restricted_list_health.get("version") or "")
         and plan is not None
-        and plan.target in {str(item).strip() for item in candidate.get("targets", ()) if str(item).strip()}
+        and plan.target
+        in {
+            str(item).strip()
+            for item in candidate.get("targets", ())
+            if str(item).strip()
+        }
         and dict(ic_decision.get("candidate_gate") or {}) == recomputed_gate.to_dict()
     )
     checks["candidate_gate_recheck"] = "pass" if candidate_gate_ok else "fail"
     if not candidate_gate_ok:
-        blockers.append("Candidate gate cannot be independently recomputed from the release package.")
+        blockers.append(
+            "Candidate gate cannot be independently recomputed from the release package."
+        )
 
     candidate_data = candidate.get("data")
     if not isinstance(candidate_data, Mapping):
         checks["candidate_data_archive"] = "fail"
-        blockers.append("Candidate lacks a source-labelled data packet and frozen archive reference.")
+        blockers.append(
+            "Candidate lacks a source-labelled data packet and frozen archive reference."
+        )
     else:
         archive_assurance = verify_frozen_market_archive(
             candidate_data.get("source_archive_path"),
@@ -213,10 +253,14 @@ def verify_paper_desk_release(
         )
         checks["decision_review"] = "pass" if review_ok else "fail"
         if not review_ok:
-            blockers.append("Decision-review packet lacks frozen return evidence or does not match the plan and IC model versions.")
+            blockers.append(
+                "Decision-review packet lacks frozen return evidence or does not match the plan and IC model versions."
+            )
     else:
         checks["decision_review"] = "not_applicable"
-        warnings.append("No post-outcome decision review is available for this active plan.")
+        warnings.append(
+            "No post-outcome decision review is available for this active plan."
+        )
 
     return PaperDeskAssuranceReport(
         verdict="pass" if not blockers else "fail",
@@ -226,5 +270,6 @@ def verify_paper_desk_release(
         plan_id=plan.plan_id if plan is not None else None,
         target=plan.target if plan is not None else None,
         ic_candidate_id=str(ic_decision.get("candidate_id") or "") or None,
-        restricted_list_version=str(restricted_list_health.get("version") or "") or None,
+        restricted_list_version=str(restricted_list_health.get("version") or "")
+        or None,
     )

@@ -87,9 +87,7 @@ async def sync_research_to_monitor(
         codes_to_remove = set()
         for entry in to_remove:
             for target_code in entry.targets:
-                still_active = any(
-                    target_code in e.targets for e in to_watch
-                )
+                still_active = any(target_code in e.targets for e in to_watch)
                 if not still_active and target_code in existing_codes:
                     codes_to_remove.add(target_code)
 

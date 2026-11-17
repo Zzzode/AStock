@@ -16,11 +16,13 @@ class FakeJQDataClient:
         self.last_arguments = _
         return pd.DataFrame(
             {
-                "date": pd.to_datetime([
-                    "2026-07-03 09:30:00",
-                    "2026-07-03 09:31:00",
-                    "2026-07-03 13:00:00",
-                ]),
+                "date": pd.to_datetime(
+                    [
+                        "2026-07-03 09:30:00",
+                        "2026-07-03 09:31:00",
+                        "2026-07-03 13:00:00",
+                    ]
+                ),
                 "open": [10.0, 10.1, 10.2],
                 "high": [10.1, 10.2, 10.3],
                 "low": [9.9, 10.0, 10.1],
@@ -51,18 +53,29 @@ def test_jqdata_adapter_builds_raw_source_frozen_minute_observation(tmp_path) ->
     assert client.last_arguments is not None
     assert client.last_arguments["skip_paused"] is False
     archive_path = packet.write_frozen_archive(tmp_path)
-    assert archive_path.name == packet.source_manifest["archive_id"].removeprefix("sha256:") + ".json"
+    assert (
+        archive_path.name
+        == packet.source_manifest["archive_id"].removeprefix("sha256:") + ".json"
+    )
     assert packet.write_frozen_archive(tmp_path) == archive_path
 
 
 def test_jqdata_adapter_fails_closed_without_authorized_access() -> None:
     with pytest.raises(ValueError, match="JQDATA_USERNAME"):
-        JQDataMinuteAdapter(username="", password="", data_owner="owner").build_minute_observation_packet(
-            ["600460.XSHG"], start_time="2026-07-03 09:30:00", end_time="2026-07-03 09:31:00"
+        JQDataMinuteAdapter(
+            username="", password="", data_owner="owner"
+        ).build_minute_observation_packet(
+            ["600460.XSHG"],
+            start_time="2026-07-03 09:30:00",
+            end_time="2026-07-03 09:31:00",
         )
     with pytest.raises(ValueError, match="ATTESTED_BY"):
-        JQDataMinuteAdapter(client=FakeJQDataClient(), data_owner="").build_minute_observation_packet(
-            ["600460.XSHG"], start_time="2026-07-03 09:30:00", end_time="2026-07-03 09:31:00"
+        JQDataMinuteAdapter(
+            client=FakeJQDataClient(), data_owner=""
+        ).build_minute_observation_packet(
+            ["600460.XSHG"],
+            start_time="2026-07-03 09:30:00",
+            end_time="2026-07-03 09:31:00",
         )
 
 
@@ -77,5 +90,7 @@ def test_jqdata_adapter_rejects_non_session_bars() -> None:
         JQDataMinuteAdapter(
             client=InvalidSessionClient(), data_owner="research-data-owner"
         ).build_minute_observation_packet(
-            ["600460.XSHG"], start_time="2026-07-03 09:30:00", end_time="2026-07-03 13:00:00"
+            ["600460.XSHG"],
+            start_time="2026-07-03 09:30:00",
+            end_time="2026-07-03 13:00:00",
         )

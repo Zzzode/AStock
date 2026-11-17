@@ -101,7 +101,9 @@ async def test_risk_input_builder_exposes_source_failure() -> None:
             raise ConnectionError("daily source down")
         return _history(1.0)
 
-    packet = await PortfolioRiskInputBuilder(daily_fetcher=fetch).build(["600460", "688001"])
+    packet = await PortfolioRiskInputBuilder(daily_fetcher=fetch).build(
+        ["600460", "688001"]
+    )
 
     assert packet["data_quality"] == "snapshot"
     assert packet["provenance"]["components"]["600460"]["status"] == "unavailable"

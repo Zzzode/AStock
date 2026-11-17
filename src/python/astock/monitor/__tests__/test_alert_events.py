@@ -46,7 +46,9 @@ def test_alert_record_like_payload_roundtrips_market_event() -> None:
     assert decoded.market_event["schema_version"] == "market_event.v1"
     assert decoded.market_event["event_type"] == "alert_trigger"
     assert decoded.market_event["subject"]["code"] == "000001"
-    assert decoded.market_event["context"]["message"] == "Daily price moved more than 7%."
+    assert (
+        decoded.market_event["context"]["message"] == "Daily price moved more than 7%."
+    )
     json.dumps(decoded.market_event, ensure_ascii=False)
 
 

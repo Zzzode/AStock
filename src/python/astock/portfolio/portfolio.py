@@ -144,7 +144,9 @@ class PortfolioManager:
         required = shares * price
         if required > portfolio.cash:
             # Insufficient funds, adjust by available funds
-            shares = int(portfolio.cash / price / 100) * 100  # A-share lot size: 100 shares
+            shares = (
+                int(portfolio.cash / price / 100) * 100
+            )  # A-share lot size: 100 shares
             if shares <= 0:
                 return None
             required = shares * price

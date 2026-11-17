@@ -131,9 +131,7 @@ class MarketStream:
                         try:
                             await callback(tick)
                         except Exception as e:
-                            logger.warning(
-                                f"Callback error for {tick.code}: {e}"
-                            )
+                            logger.warning(f"Callback error for {tick.code}: {e}")
 
                 await asyncio.sleep(self._poll_interval)
             except asyncio.CancelledError:
@@ -155,7 +153,9 @@ class MarketStream:
 
         try:
             async with aiohttp.ClientSession() as session:
-                async with session.get(url, headers=headers, timeout=aiohttp.ClientTimeout(total=10)) as resp:
+                async with session.get(
+                    url, headers=headers, timeout=aiohttp.ClientTimeout(total=10)
+                ) as resp:
                     if resp.status != 200:
                         return []
                     text = await resp.text(encoding="gbk")
@@ -217,9 +217,7 @@ def _parse_sina_response(text: str, original_codes: list[str]) -> list[MarketTic
                 continue
 
             change_pct = (
-                (price - prev_close) / prev_close * 100
-                if prev_close > 0
-                else 0.0
+                (price - prev_close) / prev_close * 100 if prev_close > 0 else 0.0
             )
 
             date_str = data[30] if len(data) > 30 else ""
@@ -229,19 +227,21 @@ def _parse_sina_response(text: str, original_codes: list[str]) -> list[MarketTic
             except (ValueError, IndexError):
                 ts = datetime.now()
 
-            ticks.append(MarketTick(
-                code=original_codes[code_idx],
-                name=name,
-                price=price,
-                open=open_price,
-                high=high,
-                low=low,
-                prev_close=prev_close,
-                volume=volume,
-                amount=amount,
-                change_pct=round(change_pct, 4),
-                timestamp=ts,
-            ))
+            ticks.append(
+                MarketTick(
+                    code=original_codes[code_idx],
+                    name=name,
+                    price=price,
+                    open=open_price,
+                    high=high,
+                    low=low,
+                    prev_close=prev_close,
+                    volume=volume,
+                    amount=amount,
+                    change_pct=round(change_pct, 4),
+                    timestamp=ts,
+                )
+            )
         except (ValueError, IndexError) as e:
             logger.debug(f"Parse error for code {original_codes[code_idx]}: {e}")
 

@@ -50,7 +50,9 @@ def _write_valid_run(
     return run.write(tmp_path / "runs")
 
 
-def test_verify_public_desk_observation_run_checks_record_and_source_hashes(tmp_path) -> None:
+def test_verify_public_desk_observation_run_checks_record_and_source_hashes(
+    tmp_path,
+) -> None:
     path = _write_valid_run(tmp_path)
 
     result = verify_public_desk_observation_run(path)

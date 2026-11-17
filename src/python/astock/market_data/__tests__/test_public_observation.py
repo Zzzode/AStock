@@ -23,11 +23,14 @@ def test_public_observation_freezes_exact_market_rotation_packet(tmp_path) -> No
 
     assert manifest["data_class"] == "public_observation"
     assert manifest["source"] == "akshare_public"
-    assert verify_frozen_market_archive(
-        archive_path,
-        expected_archive_id=packet.archive_id,
-        expected_source="akshare_public",
-    )["status"] == "pass"
+    assert (
+        verify_frozen_market_archive(
+            archive_path,
+            expected_archive_id=packet.archive_id,
+            expected_source="akshare_public",
+        )["status"]
+        == "pass"
+    )
     assert packet.write_frozen_archive(tmp_path) == archive_path
 
 

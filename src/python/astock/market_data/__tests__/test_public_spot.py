@@ -75,7 +75,12 @@ def test_eastmoney_fetch_collects_every_declared_page_before_returning(
         start = (page - 1) * 100
         end = min(start + 100, 101)
         rows = [
-            {"f12": f"{600000 + index:06d}", "f14": f"测试{index}", "f2": 10.0, "f3": 1.0}
+            {
+                "f12": f"{600000 + index:06d}",
+                "f14": f"测试{index}",
+                "f2": 10.0,
+                "f3": 1.0,
+            }
             for index in range(start, end)
         ]
         return Response({"data": {"total": 101, "diff": rows}})

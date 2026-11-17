@@ -4,13 +4,22 @@ from datetime import datetime, timezone
 
 import pytest
 
-from astock.market_desk import RestrictedListAttestation, RestrictedListEntry, RestrictedListStore
+from astock.market_desk import (
+    RestrictedListAttestation,
+    RestrictedListEntry,
+    RestrictedListStore,
+)
 from astock.portfolio.governance import (
     audit_paper_portfolio_governance,
     validate_governed_paper_entry,
     validate_governed_strategy_link,
 )
-from astock.research import ResearchEntry, ResearchLedger, ResearchObservation, ResearchStatus
+from astock.research import (
+    ResearchEntry,
+    ResearchLedger,
+    ResearchObservation,
+    ResearchStatus,
+)
 
 
 def _active_plan_entry(ledger_path):
@@ -42,14 +51,19 @@ def _active_plan_entry(ledger_path):
             observed_at=datetime.now(timezone.utc),
             evidence={
                 "strategy_plan": plan,
-                "release_assurance": {"verdict": "pass", "schema_version": "market-desk-paper-assurance.v1"},
+                "release_assurance": {
+                    "verdict": "pass",
+                    "schema_version": "market-desk-paper-assurance.v1",
+                },
             },
         )
     )
     return ResearchLedger(ledger_path).create(entry)
 
 
-def test_governance_audit_blocks_linked_positions_without_retained_entry_evidence(tmp_path):
+def test_governance_audit_blocks_linked_positions_without_retained_entry_evidence(
+    tmp_path,
+):
     ledger_path = tmp_path / "ledger.json"
     entry = _active_plan_entry(ledger_path)
     portfolio = {
@@ -69,7 +83,9 @@ def test_governance_audit_blocks_linked_positions_without_retained_entry_evidenc
     assert report["governed_count"] == 0
     assert report["unlinked_legacy_count"] == 1
     assert report["entry_evidence_gap_count"] == 1
-    assert report["entry_evidence_gap_positions"][0]["strategy_entry_id"] == entry.entry_id
+    assert (
+        report["entry_evidence_gap_positions"][0]["strategy_entry_id"] == entry.entry_id
+    )
 
 
 def test_governed_link_requires_active_assured_matching_target(tmp_path):
@@ -147,13 +163,19 @@ def test_governed_paper_entry_requires_frozen_entry_evidence_current_clearance_a
         validate_governed_paper_entry(
             entry_evidence_refs=[f"entry-observation:{archive_id}"],
             entry_observed_at="2026-07-29T15:00:00+08:00",
-            **{key: value for key, value in kwargs.items() if key != "entry_observed_at"},
+            **{
+                key: value
+                for key, value in kwargs.items()
+                if key != "entry_observed_at"
+            },
         )
 
     entry_check = validate_governed_paper_entry(
         entry_evidence_refs=[f"entry-observation:{archive_id}"], **kwargs
     )
-    assert entry_check["entry_evidence"]["observation_archive"]["archive_id"] == archive_id
+    assert (
+        entry_check["entry_evidence"]["observation_archive"]["archive_id"] == archive_id
+    )
     store.upsert(
         RestrictedListEntry(
             target="600460",

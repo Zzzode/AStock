@@ -33,7 +33,7 @@ class SignalScanner:
                 }
 
             latest = df.iloc[-1]
-            history = df.iloc[-(self._HISTORY_WINDOW + 1):-1]
+            history = df.iloc[-(self._HISTORY_WINDOW + 1) : -1]
             previous = df.iloc[-2]
 
             close = float(latest["close"])
@@ -43,9 +43,7 @@ class SignalScanner:
             volume = float(latest["volume"])
             amount = float(latest.get("amount", 0) or 0)
             change_pct = (
-                (close - previous_close) / previous_close
-                if previous_close > 0
-                else 0.0
+                (close - previous_close) / previous_close if previous_close > 0 else 0.0
             )
             range_pct = (high - low) / previous_close if previous_close > 0 else 0.0
             median_volume = float(history["volume"].median())

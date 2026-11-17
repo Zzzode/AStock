@@ -143,7 +143,9 @@ class TestBacktestEngine:
                 "close": [10.0, 10.0, 20.0],
             }
         )
-        with patch("astock.backtest.engine.get_strategy", return_value=BuyAndHoldStrategy()):
+        with patch(
+            "astock.backtest.engine.get_strategy", return_value=BuyAndHoldStrategy()
+        ):
             result = BacktestEngine().run(frame, "test", initial_capital=2_000)
 
         expected_cost = 100 * 20 * (0.0003 + 0.0005 + 0.00001)
@@ -153,7 +155,9 @@ class TestBacktestEngine:
         assert all(trade.signal != Signal.SELL for trade in result.trades)
         assert "includes modelled sell costs" in " ".join(result.warnings)
 
-    def test_walk_forward_reports_only_out_of_sample_folds(self, sample_df: pd.DataFrame) -> None:
+    def test_walk_forward_reports_only_out_of_sample_folds(
+        self, sample_df: pd.DataFrame
+    ) -> None:
         result = BacktestEngine().run_walk_forward(
             sample_df,
             "ma_cross",
@@ -164,10 +168,15 @@ class TestBacktestEngine:
         payload = result.to_dict()
         assert payload["schema_version"] == "walk_forward_backtest.v1"
         assert payload["fold_count"] == 5
-        assert all(fold.start_date >= sample_df.iloc[60]["date"].date() for fold in result.folds)
+        assert all(
+            fold.start_date >= sample_df.iloc[60]["date"].date()
+            for fold in result.folds
+        )
         assert "not a continuous multi-asset" in payload["warnings"][1]
 
-    def test_walk_forward_carries_explicit_cost_assumptions(self, sample_df: pd.DataFrame) -> None:
+    def test_walk_forward_carries_explicit_cost_assumptions(
+        self, sample_df: pd.DataFrame
+    ) -> None:
         result = BacktestEngine().run_walk_forward(
             sample_df,
             "ma_cross",

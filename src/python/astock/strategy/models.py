@@ -60,8 +60,12 @@ class FuturesAccessEvidence:
         if not isinstance(value, Mapping):
             raise TypeError("futures_access_evidence must be an object")
         return cls(
-            as_of=_required_iso_date(value.get("as_of"), "futures_access_evidence.as_of"),
-            source_ref=_required_text(value.get("source_ref"), "futures_access_evidence.source_ref"),
+            as_of=_required_iso_date(
+                value.get("as_of"), "futures_access_evidence.as_of"
+            ),
+            source_ref=_required_text(
+                value.get("source_ref"), "futures_access_evidence.source_ref"
+            ),
             data_entitlement_source_ref=_required_text(
                 value.get("data_entitlement_source_ref"),
                 "futures_access_evidence.data_entitlement_source_ref",
@@ -120,7 +124,9 @@ class CryptoAccessEvidence:
             as_of=_required_iso_timestamp(
                 value.get("as_of"), "crypto_access_evidence.as_of"
             ),
-            source_ref=_required_text(value.get("source_ref"), "crypto_access_evidence.source_ref"),
+            source_ref=_required_text(
+                value.get("source_ref"), "crypto_access_evidence.source_ref"
+            ),
             data_entitlement_source_ref=_required_text(
                 value.get("data_entitlement_source_ref"),
                 "crypto_access_evidence.data_entitlement_source_ref",
@@ -204,33 +210,48 @@ class PersonalAccessProfile:
         raw = value or {}
         markets = raw.get("permitted_markets") or ()
         if isinstance(markets, (str, bytes)) or not isinstance(markets, Sequence):
-            raise TypeError("permitted_markets must be a sequence of market identifiers")
+            raise TypeError(
+                "permitted_markets must be a sequence of market identifiers"
+            )
         risk_capital = raw.get("risk_capital")
         if risk_capital is not None:
             risk_capital = _positive_finite(risk_capital, "risk_capital")
         raw_futures_evidence = raw.get("futures_access_evidence")
         raw_crypto_evidence = raw.get("crypto_access_evidence")
-        if raw_futures_evidence is not None and not isinstance(raw_futures_evidence, Mapping):
+        if raw_futures_evidence is not None and not isinstance(
+            raw_futures_evidence, Mapping
+        ):
             raise TypeError("futures_access_evidence must be an object")
-        if raw_crypto_evidence is not None and not isinstance(raw_crypto_evidence, Mapping):
+        if raw_crypto_evidence is not None and not isinstance(
+            raw_crypto_evidence, Mapping
+        ):
             raise TypeError("crypto_access_evidence must be an object")
         return cls(
             profile_id=str(raw.get("profile_id") or "default").strip() or "default",
-            futures_eligible=_strict_bool(raw.get("futures_eligible", False), "futures_eligible"),
-            option_eligible=_strict_bool(raw.get("option_eligible", False), "option_eligible"),
+            futures_eligible=_strict_bool(
+                raw.get("futures_eligible", False), "futures_eligible"
+            ),
+            option_eligible=_strict_bool(
+                raw.get("option_eligible", False), "option_eligible"
+            ),
             margin_short_eligible=_strict_bool(
                 raw.get("margin_short_eligible", False), "margin_short_eligible"
             ),
-            licensed_eod_data=_strict_bool(raw.get("licensed_eod_data", False), "licensed_eod_data"),
+            licensed_eod_data=_strict_bool(
+                raw.get("licensed_eod_data", False), "licensed_eod_data"
+            ),
             lawful_global_market_access=_strict_bool(
-                raw.get("lawful_global_market_access", False), "lawful_global_market_access"
+                raw.get("lawful_global_market_access", False),
+                "lawful_global_market_access",
             ),
             lawful_crypto_market_access=_strict_bool(
                 raw.get("lawful_crypto_market_access", False),
                 "lawful_crypto_market_access",
             ),
             permitted_markets=tuple(
-                sorted({str(item).strip().lower() for item in markets if str(item).strip()})
+                sorted(
+                    {str(item).strip().lower() for item in markets if str(item).strip()}
+                )
             ),
             risk_capital=risk_capital,
             as_of=_optional_text(raw.get("as_of")),
@@ -310,7 +331,9 @@ class PersonalAccessProfile:
             raise ValueError("lawful_crypto_market_access must be explicitly recorded")
         jurisdiction = (self.residency_jurisdiction or "").strip().upper()
         if not jurisdiction:
-            raise ValueError("residency_jurisdiction is required for crypto research gating")
+            raise ValueError(
+                "residency_jurisdiction is required for crypto research gating"
+            )
         if jurisdiction in {"CN", "CHN", "CHINA", "MAINLAND_CHINA", "CHINA_MAINLAND"}:
             raise ValueError(
                 "this personal strategy system does not offer a crypto implementation route for China-mainland residents"
@@ -321,13 +344,17 @@ class PersonalAccessProfile:
                 "dated crypto_access_evidence with jurisdiction, venue, custody and data-entitlement records is required"
             )
         for asset in assets:
-            venue = str(asset.get("venue") or asset.get("exchange") or "").strip().lower()
+            venue = (
+                str(asset.get("venue") or asset.get("exchange") or "").strip().lower()
+            )
             market_type = str(asset.get("market_type") or "").strip().lower()
             if market_type == "perp":
                 market_type = "perpetual"
             target_weight = float(asset.get("target_weight", 0.0))
             if venue not in evidence.approved_venues:
-                raise ValueError(f"crypto access evidence does not permit venue {venue or 'unknown'}")
+                raise ValueError(
+                    f"crypto access evidence does not permit venue {venue or 'unknown'}"
+                )
             if market_type not in evidence.permitted_market_types:
                 raise ValueError(
                     f"crypto access evidence does not permit market type {market_type or 'unknown'}"
@@ -418,21 +445,34 @@ class FuturesInstrumentSpec:
             self.maintenance_margin_rate, "maintenance_margin_rate"
         )
         if maintenance_margin_rate > initial_margin_rate:
-            raise ValueError("maintenance_margin_rate cannot exceed initial_margin_rate")
+            raise ValueError(
+                "maintenance_margin_rate cannot exceed initial_margin_rate"
+            )
         if self.max_contracts is not None:
-            if isinstance(self.max_contracts, bool) or int(self.max_contracts) != self.max_contracts:
-                raise ValueError("max_contracts must be a positive integer when supplied")
+            if (
+                isinstance(self.max_contracts, bool)
+                or int(self.max_contracts) != self.max_contracts
+            ):
+                raise ValueError(
+                    "max_contracts must be a positive integer when supplied"
+                )
             if self.max_contracts <= 0:
-                raise ValueError("max_contracts must be a positive integer when supplied")
+                raise ValueError(
+                    "max_contracts must be a positive integer when supplied"
+                )
         if self.contract_lifecycle_coverage not in {"verified", "proxy", "unverified"}:
-            raise ValueError("contract_lifecycle_coverage must be verified, proxy, or unverified")
+            raise ValueError(
+                "contract_lifecycle_coverage must be verified, proxy, or unverified"
+            )
 
     @classmethod
     def from_mapping(cls, value: Mapping[str, Any]) -> FuturesInstrumentSpec:
         if not isinstance(value, Mapping):
             raise TypeError("futures instrument specification must be an object")
         instrument_id = _required_text(value.get("instrument_id"), "instrument_id")
-        active_contract = _required_text(value.get("active_contract"), "active_contract")
+        active_contract = _required_text(
+            value.get("active_contract"), "active_contract"
+        )
         exchange = _required_text(value.get("exchange"), "exchange").lower()
         group = _required_text(value.get("group"), "group").lower()
         currency = _required_text(value.get("currency"), "currency").upper()
@@ -447,19 +487,27 @@ class FuturesInstrumentSpec:
             value.get("maintenance_margin_rate"), "maintenance_margin_rate"
         )
         if maintenance_margin_rate > initial_margin_rate:
-            raise ValueError("maintenance_margin_rate cannot exceed initial_margin_rate")
+            raise ValueError(
+                "maintenance_margin_rate cannot exceed initial_margin_rate"
+            )
         raw_cap = value.get("max_contracts")
         max_contracts: int | None = None
         if raw_cap is not None:
             try:
                 max_contracts = int(raw_cap)
             except (TypeError, ValueError) as error:
-                raise ValueError("max_contracts must be a positive integer when supplied") from error
+                raise ValueError(
+                    "max_contracts must be a positive integer when supplied"
+                ) from error
             if max_contracts <= 0:
-                raise ValueError("max_contracts must be a positive integer when supplied")
-        contract_lifecycle_coverage = str(
-            value.get("contract_lifecycle_coverage") or "unverified"
-        ).strip().lower()
+                raise ValueError(
+                    "max_contracts must be a positive integer when supplied"
+                )
+        contract_lifecycle_coverage = (
+            str(value.get("contract_lifecycle_coverage") or "unverified")
+            .strip()
+            .lower()
+        )
         if contract_lifecycle_coverage not in {"verified", "proxy", "unverified"}:
             raise ValueError(
                 "contract_lifecycle_coverage must be verified, proxy, or unverified"
@@ -523,17 +571,28 @@ class CTAStrategyConfig:
 
     def __post_init__(self) -> None:
         if len(self.signal_windows) != 3 or len(self.signal_weights) != 3:
-            raise ValueError("CTA signal_windows and signal_weights must each contain three values")
-        if any(window <= 0 for window in self.signal_windows) or tuple(sorted(self.signal_windows)) != self.signal_windows:
+            raise ValueError(
+                "CTA signal_windows and signal_weights must each contain three values"
+            )
+        if (
+            any(window <= 0 for window in self.signal_windows)
+            or tuple(sorted(self.signal_windows)) != self.signal_windows
+        ):
             raise ValueError("CTA signal_windows must be ascending positive integers")
-        if any(weight < 0 or not math.isfinite(weight) for weight in self.signal_weights):
+        if any(
+            weight < 0 or not math.isfinite(weight) for weight in self.signal_weights
+        ):
             raise ValueError("CTA signal_weights must be finite non-negative numbers")
         if not math.isclose(sum(self.signal_weights), 1.0, rel_tol=0.0, abs_tol=1e-9):
             raise ValueError("CTA signal_weights must sum to one")
-        if self.volatility_lookback < 20 or self.minimum_history < max(self.signal_windows):
+        if self.volatility_lookback < 20 or self.minimum_history < max(
+            self.signal_windows
+        ):
             raise ValueError("CTA history and volatility lookbacks are insufficient")
         if not (0 <= self.exit_threshold < self.entry_threshold):
-            raise ValueError("CTA thresholds require 0 <= exit_threshold < entry_threshold")
+            raise ValueError(
+                "CTA thresholds require 0 <= exit_threshold < entry_threshold"
+            )
         for name, value in (
             ("annual_target_volatility", self.annual_target_volatility),
             ("max_margin_fraction", self.max_margin_fraction),
@@ -542,11 +601,15 @@ class CTAStrategyConfig:
         ):
             _fraction(value, name)
         if self.annual_target_volatility <= 0 or self.max_margin_fraction <= 0:
-            raise ValueError("CTA annual_target_volatility and max_margin_fraction must be positive")
+            raise ValueError(
+                "CTA annual_target_volatility and max_margin_fraction must be positive"
+            )
         if self.minimum_daily_volume < 0 or self.minimum_open_interest < 0:
             raise ValueError("CTA liquidity thresholds cannot be negative")
         if self.minimum_days_to_expiry < 0 or self.rebalance_buffer_contracts < 0:
-            raise ValueError("CTA days-to-expiry and rebalance buffers cannot be negative")
+            raise ValueError(
+                "CTA days-to-expiry and rebalance buffers cannot be negative"
+            )
         if self.slippage_bps < 0 or self.commission_per_contract < 0:
             raise ValueError("CTA execution costs cannot be negative")
 
@@ -746,7 +809,9 @@ def _required_iso_timestamp(value: Any, field_name: str) -> str:
 def _identifier_tuple(value: Any, field_name: str) -> tuple[str, ...]:
     if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
         raise TypeError(f"{field_name} must be a non-empty sequence of identifiers")
-    result = tuple(sorted({str(item).strip().lower() for item in value if str(item).strip()}))
+    result = tuple(
+        sorted({str(item).strip().lower() for item in value if str(item).strip()})
+    )
     if not result:
         raise ValueError(f"{field_name} must contain at least one identifier")
     return result
@@ -757,7 +822,9 @@ def _optional_identifier_tuple(value: Any, field_name: str) -> tuple[str, ...]:
         return ()
     if isinstance(value, (str, bytes)) or not isinstance(value, Sequence):
         raise TypeError(f"{field_name} must be a sequence of identifiers")
-    return tuple(sorted({str(item).strip().lower() for item in value if str(item).strip()}))
+    return tuple(
+        sorted({str(item).strip().lower() for item in value if str(item).strip()})
+    )
 
 
 def _strict_bool(value: Any, field_name: str) -> bool:

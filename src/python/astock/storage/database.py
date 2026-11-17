@@ -98,7 +98,7 @@ class Database:
             INSERT OR REPLACE INTO stocks (code, name, industry, list_date)
             VALUES (?, ?, ?, ?)
             """,
-            (stock.code, stock.name, stock.industry, stock.list_date)
+            (stock.code, stock.name, stock.industry, stock.list_date),
         )
         await self._conn.commit()
 
@@ -114,7 +114,7 @@ class Database:
             WHERE code = ?
             LIMIT 1
             """,
-            (code,)
+            (code,),
         )
         row = await cursor.fetchone()
         if row is None:
@@ -141,13 +141,11 @@ class Database:
             [
                 (q.code, q.date, q.open, q.high, q.low, q.close, q.volume, q.amount)
                 for q in quotes
-            ]
+            ],
         )
         await self._conn.commit()
 
-    async def get_daily_quotes(
-        self, code: str, limit: int = 100
-    ) -> list[DailyQuote]:
+    async def get_daily_quotes(self, code: str, limit: int = 100) -> list[DailyQuote]:
         """Get daily quotes"""
         if not self._conn:
             raise RuntimeError("Database not connected")
@@ -160,7 +158,7 @@ class Database:
             ORDER BY date DESC
             LIMIT ?
             """,
-            (code, limit)
+            (code, limit),
         )
         rows = await cursor.fetchall()
 
@@ -173,7 +171,7 @@ class Database:
                 low=row["low"],
                 close=row["close"],
                 volume=row["volume"],
-                amount=row["amount"]
+                amount=row["amount"],
             )
             for row in rows
         ]
@@ -189,6 +187,7 @@ class Database:
             raise RuntimeError("Database not connected")
 
         import json
+
         await self._conn.execute(
             """
             INSERT OR REPLACE INTO watch_items
@@ -201,8 +200,8 @@ class Database:
                 json.dumps(item.conditions),
                 json.dumps(item.alert_channels),
                 1 if item.enabled else 0,
-                item.created_at
-            )
+                item.created_at,
+            ),
         )
         await self._conn.commit()
 
@@ -212,14 +211,13 @@ class Database:
             raise RuntimeError("Database not connected")
 
         import json
+
         if enabled_only:
             cursor = await self._conn.execute(
                 "SELECT * FROM watch_items WHERE enabled = 1"
             )
         else:
-            cursor = await self._conn.execute(
-                "SELECT * FROM watch_items"
-            )
+            cursor = await self._conn.execute("SELECT * FROM watch_items")
         rows = await cursor.fetchall()
 
         return [
@@ -229,7 +227,7 @@ class Database:
                 conditions=json.loads(row["conditions"]),
                 alert_channels=json.loads(row["alert_channels"]),
                 enabled=bool(row["enabled"]),
-                created_at=row["created_at"]
+                created_at=row["created_at"],
             )
             for row in rows
         ]
@@ -239,10 +237,7 @@ class Database:
         if not self._conn:
             raise RuntimeError("Database not connected")
 
-        await self._conn.execute(
-            "DELETE FROM watch_items WHERE code = ?",
-            (code,)
-        )
+        await self._conn.execute("DELETE FROM watch_items WHERE code = ?", (code,))
         await self._conn.commit()
 
     # ==================== Alert record methods ====================
@@ -253,6 +248,7 @@ class Database:
             raise RuntimeError("Database not connected")
 
         import json
+
         cursor = await self._conn.execute(
             """
             INSERT INTO alert_records
@@ -267,23 +263,21 @@ class Database:
                 record.level,
                 record.triggered_at,
                 record.status,
-                json.dumps(record.channels)
-            )
+                json.dumps(record.channels),
+            ),
         )
         await self._conn.commit()
         return int(cursor.lastrowid or 0)
 
     async def get_alert_records(
-        self,
-        code: Optional[str] = None,
-        status: Optional[str] = None,
-        limit: int = 100
+        self, code: Optional[str] = None, status: Optional[str] = None, limit: int = 100
     ) -> list[AlertRecord]:
         """Get alert records"""
         if not self._conn:
             raise RuntimeError("Database not connected")
 
         import json
+
         conditions: list[str] = []
         params: list[object] = []
 
@@ -304,7 +298,7 @@ class Database:
             ORDER BY triggered_at DESC
             LIMIT ?
             """,
-            params
+            params,
         )
         rows = await cursor.fetchall()
 
@@ -318,7 +312,7 @@ class Database:
                 level=row["level"],
                 triggered_at=row["triggered_at"],
                 status=row["status"],
-                channels=json.loads(row["channels"])
+                channels=json.loads(row["channels"]),
             )
             for row in rows
         ]
@@ -329,7 +323,6 @@ class Database:
             raise RuntimeError("Database not connected")
 
         await self._conn.execute(
-            "UPDATE alert_records SET status = ? WHERE id = ?",
-            (status, record_id)
+            "UPDATE alert_records SET status = ? WHERE id = ?", (status, record_id)
         )
         await self._conn.commit()

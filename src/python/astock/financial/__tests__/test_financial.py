@@ -30,11 +30,15 @@ def test_safe_float():
 def test_compute_qoq():
     periods = [
         FinancialPeriod(
-            period="20240630", year=2024, quarter=2,
+            period="20240630",
+            year=2024,
+            quarter=2,
             metrics={"total_revenue": 200, "net_profit": 50},
         ),
         FinancialPeriod(
-            period="20240331", year=2024, quarter=1,
+            period="20240331",
+            year=2024,
+            quarter=1,
             metrics={"total_revenue": 180, "net_profit": 45},
         ),
     ]
@@ -46,15 +50,21 @@ def test_compute_qoq():
 def test_compute_yoy():
     periods = [
         FinancialPeriod(
-            period="20240630", year=2024, quarter=2,
+            period="20240630",
+            year=2024,
+            quarter=2,
             metrics={"total_revenue": 200, "net_profit": 50},
         ),
         FinancialPeriod(
-            period="20240331", year=2024, quarter=1,
+            period="20240331",
+            year=2024,
+            quarter=1,
             metrics={"total_revenue": 190, "net_profit": 48},
         ),
         FinancialPeriod(
-            period="20230630", year=2023, quarter=2,
+            period="20230630",
+            year=2023,
+            quarter=2,
             metrics={"total_revenue": 160, "net_profit": 40},
         ),
     ]
@@ -66,11 +76,15 @@ def test_compute_yoy():
 def test_compute_yoy_no_match():
     periods = [
         FinancialPeriod(
-            period="20240630", year=2024, quarter=2,
+            period="20240630",
+            year=2024,
+            quarter=2,
             metrics={"total_revenue": 200},
         ),
         FinancialPeriod(
-            period="20240331", year=2024, quarter=1,
+            period="20240331",
+            year=2024,
+            quarter=1,
             metrics={"total_revenue": 190},
         ),
     ]
@@ -84,7 +98,9 @@ def test_financial_statements_to_dict():
         name="平安银行",
         periods=[
             FinancialPeriod(
-                period="20240630", year=2024, quarter=2,
+                period="20240630",
+                year=2024,
+                quarter=2,
                 metrics={"total_revenue": 200},
             ),
         ],

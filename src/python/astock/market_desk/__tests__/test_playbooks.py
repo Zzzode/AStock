@@ -54,12 +54,22 @@ def test_exactly_eight_named_playbooks_have_complete_contracts() -> None:
     for definition in PLAYBOOKS.values():
         assert definition.horizon in {"ultra_short", "short_term", "swing", "long_term"}
         assert definition.evidence_requirements
-        assert definition.confirmation and definition.invalidation and definition.time_stop
-        assert definition.required_team_roles and definition.decision_eligibility_conditions
+        assert (
+            definition.confirmation and definition.invalidation and definition.time_stop
+        )
+        assert (
+            definition.required_team_roles
+            and definition.decision_eligibility_conditions
+        )
 
 
-@pytest.mark.parametrize("name", ["theme_ignition_first_board", "leader_continuation", "emotion_repair_rebound"])
-def test_ultra_short_daily_preplan_does_not_require_intraday_execution_data(name: str) -> None:
+@pytest.mark.parametrize(
+    "name",
+    ["theme_ignition_first_board", "leader_continuation", "emotion_repair_rebound"],
+)
+def test_ultra_short_daily_preplan_does_not_require_intraday_execution_data(
+    name: str,
+) -> None:
     result = evaluate_playbook(
         name,
         _evidence_for(name),
@@ -69,8 +79,13 @@ def test_ultra_short_daily_preplan_does_not_require_intraday_execution_data(name
     assert result["decision"] == PlaybookDecision.ALLOWED.value
 
 
-@pytest.mark.parametrize("name", ["theme_ignition_first_board", "leader_continuation", "emotion_repair_rebound"])
-def test_ultra_short_daily_preplan_requires_dated_next_session_conditions(name: str) -> None:
+@pytest.mark.parametrize(
+    "name",
+    ["theme_ignition_first_board", "leader_continuation", "emotion_repair_rebound"],
+)
+def test_ultra_short_daily_preplan_requires_dated_next_session_conditions(
+    name: str,
+) -> None:
     evidence = _evidence_for(name)
     del evidence["next_session_plan"]
 
@@ -80,11 +95,15 @@ def test_ultra_short_daily_preplan_requires_dated_next_session_conditions(name: 
     assert result["failed_requirements"] == ["next_session_plan"]
 
 
-def test_ultra_short_daily_preplan_requires_entry_rejection_and_review_conditions() -> None:
+def test_ultra_short_daily_preplan_requires_entry_rejection_and_review_conditions() -> (
+    None
+):
     evidence = _evidence_for("leader_continuation")
     del evidence["next_session_plan"]["rejection_condition"]
 
-    result = evaluate_playbook("leader_continuation", evidence, MarketRegime.TREND_RISK_ON)
+    result = evaluate_playbook(
+        "leader_continuation", evidence, MarketRegime.TREND_RISK_ON
+    )
 
     assert result["decision"] == PlaybookDecision.WATCH.value
     assert result["failed_requirements"] == ["next_session_plan"]

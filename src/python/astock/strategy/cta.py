@@ -141,10 +141,14 @@ class _DomesticFuturesCTAStrategy:
             raise ValueError("capital must be a positive finite number")
         normalized_specs = _normalize_specs(instruments)
         frames = _normalize_market_data(market_data, normalized_specs)
-        common_as_of = pd.Timestamp(as_of).normalize() if as_of else _latest_common_as_of(frames)
+        common_as_of = (
+            pd.Timestamp(as_of).normalize() if as_of else _latest_common_as_of(frames)
+        )
         if pd.isna(common_as_of):
             raise ValueError("CTA proposal cannot determine an as-of date")
-        previous = {str(key): int(value) for key, value in (previous_contracts or {}).items()}
+        previous = {
+            str(key): int(value) for key, value in (previous_contracts or {}).items()
+        }
         candidates: list[dict[str, Any]] = []
         warnings: list[str] = []
         errors: list[str] = []
@@ -164,7 +168,9 @@ class _DomesticFuturesCTAStrategy:
             assert candidate is not None
             candidates.append(candidate)
         if not candidates:
-            errors.append("No futures instrument passed dated history, liquidity, expiry, and contract-fact gates.")
+            errors.append(
+                "No futures instrument passed dated history, liquidity, expiry, and contract-fact gates."
+            )
             return StrategyProposal(
                 strategy_id=self.config.strategy_id,
                 strategy_version=self.config.version,
@@ -180,11 +186,19 @@ class _DomesticFuturesCTAStrategy:
                 errors=tuple(errors),
             )
         targets = _size_candidates(candidates, capital, self.config)
-        gross_notional = sum(abs(item.reference_price * item.target_contracts) * _spec_by_id(normalized_specs, item.instrument_id).multiplier for item in targets)
+        gross_notional = sum(
+            abs(item.reference_price * item.target_contracts)
+            * _spec_by_id(normalized_specs, item.instrument_id).multiplier
+            for item in targets
+        )
         gross_margin = sum(item.margin_required for item in targets)
-        estimated_daily_volatility = _estimate_target_portfolio_daily_volatility(targets, normalized_specs)
+        estimated_daily_volatility = _estimate_target_portfolio_daily_volatility(
+            targets, normalized_specs
+        )
         if gross_margin > capital * self.config.max_margin_fraction + 1e-7:
-            errors.append("CTA sizing breached the configured margin cap after risk allocation.")
+            errors.append(
+                "CTA sizing breached the configured margin cap after risk allocation."
+            )
         return StrategyProposal(
             strategy_id=self.config.strategy_id,
             strategy_version=self.config.version,
@@ -194,9 +208,15 @@ class _DomesticFuturesCTAStrategy:
             gross_notional=round(gross_notional, 8),
             gross_margin=round(gross_margin, 8),
             estimated_daily_volatility=round(estimated_daily_volatility, 10),
-            data_quality="public_observation" if not source_archive_ids else "source_frozen_research",
+            data_quality=(
+                "public_observation"
+                if not source_archive_ids
+                else "source_frozen_research"
+            ),
             source_archive_ids=tuple(source_archive_ids),
-            warnings=tuple(dict.fromkeys(warnings + _proposal_warnings(source_archive_ids))),
+            warnings=tuple(
+                dict.fromkeys(warnings + _proposal_warnings(source_archive_ids))
+            ),
             errors=tuple(errors),
         )
 
@@ -239,7 +259,9 @@ class _DomesticFuturesCTABacktestEngine:
         _validate_historical_replay_inputs(frames, specs, source_archive_ids)
         sessions = _union_sessions(frames)
         if len(sessions) < self.config.minimum_history + 2:
-            raise ValueError("CTA replay lacks enough sessions for its declared minimum_history")
+            raise ValueError(
+                "CTA replay lacks enough sessions for its declared minimum_history"
+            )
         strategy = _DomesticFuturesCTAStrategy(self.config)
         cash = float(initial_capital)
         positions = {instrument_id: 0 for instrument_id in specs}
@@ -305,15 +327,27 @@ class _DomesticFuturesCTABacktestEngine:
                 positions, mark_prices, contract_facts, cash
             )
             if margin > equity * self.config.max_margin_fraction + 1e-7:
-                warnings.append(f"{session.date()}: margin cap breach; next eligible target is forced to zero.")
+                warnings.append(
+                    f"{session.date()}: margin cap breach; next eligible target is forced to zero."
+                )
                 pending_targets = {
-                    instrument_id: {"target_contracts": 0, "active_contract": active_contracts.get(instrument_id)}
+                    instrument_id: {
+                        "target_contracts": 0,
+                        "active_contract": active_contracts.get(instrument_id),
+                    }
                     for instrument_id in specs
                 }
-            if margin > equity * (1 - self.execution.maintenance_margin_buffer_fraction):
-                warnings.append(f"{session.date()}: maintenance-buffer breach; next eligible target is forced to zero.")
+            if margin > equity * (
+                1 - self.execution.maintenance_margin_buffer_fraction
+            ):
+                warnings.append(
+                    f"{session.date()}: maintenance-buffer breach; next eligible target is forced to zero."
+                )
                 pending_targets = {
-                    instrument_id: {"target_contracts": 0, "active_contract": active_contracts.get(instrument_id)}
+                    instrument_id: {
+                        "target_contracts": 0,
+                        "active_contract": active_contracts.get(instrument_id),
+                    }
                     for instrument_id in specs
                 }
             curve.append(
@@ -341,7 +375,9 @@ class _DomesticFuturesCTABacktestEngine:
             equity_curve=curve,
             trades=trades,
             roll_events=roll_events,
-            warnings=list(dict.fromkeys(warnings + _proposal_warnings(source_archive_ids))),
+            warnings=list(
+                dict.fromkeys(warnings + _proposal_warnings(source_archive_ids))
+            ),
             data_assurance={
                 "status": "verified_contract_replay",
                 "source_archive_ids": list(source_archive_ids),
@@ -374,8 +410,14 @@ class _DomesticFuturesCTABacktestEngine:
             if abs(delta) <= self.execution.rebalance_buffer_contracts:
                 continue
             row = _session_row(frames[instrument_id], session)
-            if row is None or not bool(row["tradable"]) or str(row["execution_status"]) != "tradable":
-                warnings.append(f"{session.date()} {instrument_id}: target delta could not trade; market unavailable or locked.")
+            if (
+                row is None
+                or not bool(row["tradable"])
+                or str(row["execution_status"]) != "tradable"
+            ):
+                warnings.append(
+                    f"{session.date()} {instrument_id}: target delta could not trade; market unavailable or locked."
+                )
                 continue
             active_contract = str(row["active_contract"])
             expected_contract = str(raw_target.get("active_contract") or "").strip()
@@ -405,13 +447,19 @@ class _DomesticFuturesCTABacktestEngine:
                 )
             if abs(delta) <= self.execution.rebalance_buffer_contracts:
                 continue
-            capacity = math.floor(float(row["volume"]) * self.execution.max_volume_participation)
+            capacity = math.floor(
+                float(row["volume"]) * self.execution.max_volume_participation
+            )
             if capacity <= 0:
-                warnings.append(f"{session.date()} {instrument_id}: target delta could not trade; no conservative capacity.")
+                warnings.append(
+                    f"{session.date()} {instrument_id}: target delta could not trade; no conservative capacity."
+                )
                 continue
             executed = int(math.copysign(min(abs(delta), capacity), delta))
             reference = float(row["open"])
-            execution_price = reference * (1 + (self.execution.slippage_bps / 10_000) * (1 if executed > 0 else -1))
+            execution_price = reference * (
+                1 + (self.execution.slippage_bps / 10_000) * (1 if executed > 0 else -1)
+            )
             costs = abs(executed) * self.execution.commission_per_contract
             fill_to_settlement_pnl = (
                 executed
@@ -439,7 +487,9 @@ class _DomesticFuturesCTABacktestEngine:
                 }
             )
             if abs(executed) < abs(delta):
-                warnings.append(f"{session.date()} {instrument_id}: target delta capped by conservative volume participation.")
+                warnings.append(
+                    f"{session.date()} {instrument_id}: target delta capped by conservative volume participation."
+                )
         return cash
 
 
@@ -455,15 +505,23 @@ def _build_domestic_futures_cta_proposal(
 ) -> dict[str, Any]:
     """Convenience capability for an auditable domestic-futures CTA proposal."""
 
-    resolved = config if isinstance(config, CTAStrategyConfig) else CTAStrategyConfig.from_mapping(config)
-    result = _DomesticFuturesCTAStrategy(resolved).generate_proposal(
-        market_data,
-        instruments,
-        capital=capital,
-        as_of=as_of,
-        previous_contracts=previous_contracts,
-        source_archive_ids=source_archive_ids,
-    ).to_dict()
+    resolved = (
+        config
+        if isinstance(config, CTAStrategyConfig)
+        else CTAStrategyConfig.from_mapping(config)
+    )
+    result = (
+        _DomesticFuturesCTAStrategy(resolved)
+        .generate_proposal(
+            market_data,
+            instruments,
+            capital=capital,
+            as_of=as_of,
+            previous_contracts=previous_contracts,
+            source_archive_ids=source_archive_ids,
+        )
+        .to_dict()
+    )
     # Allocation must use a named risk-capital denominator rather than infer
     # it from notional or margin.  It remains a paper-target attribute only.
     result["capital"] = capital
@@ -481,7 +539,11 @@ def _run_domestic_futures_cta_backtest(
 ) -> dict[str, Any]:
     """Run a deterministic research-only domestic-futures CTA paper replay."""
 
-    resolved_config = config if isinstance(config, CTAStrategyConfig) else CTAStrategyConfig.from_mapping(config)
+    resolved_config = (
+        config
+        if isinstance(config, CTAStrategyConfig)
+        else CTAStrategyConfig.from_mapping(config)
+    )
     if execution is None or isinstance(execution, FuturesExecutionAssumptions):
         resolved_execution = execution
     elif isinstance(execution, Mapping):
@@ -497,12 +559,16 @@ def _run_domestic_futures_cta_backtest(
         resolved_execution = FuturesExecutionAssumptions(**values)
     else:
         raise ValueError("futures execution assumptions must be an object")
-    return _DomesticFuturesCTABacktestEngine(resolved_config, resolved_execution).run(
-        market_data,
-        instruments,
-        initial_capital=initial_capital,
-        source_archive_ids=source_archive_ids,
-    ).to_dict()
+    return (
+        _DomesticFuturesCTABacktestEngine(resolved_config, resolved_execution)
+        .run(
+            market_data,
+            instruments,
+            initial_capital=initial_capital,
+            source_archive_ids=source_archive_ids,
+        )
+        .to_dict()
+    )
 
 
 def run_frozen_public_domestic_futures_cta_backtest(
@@ -522,8 +588,12 @@ def run_frozen_public_domestic_futures_cta_backtest(
     )
 
     parsed = parse_public_domestic_futures_cta_input(replay_input)
-    manifest = replay_input.get("source_manifest") if isinstance(replay_input, Mapping) else {}
-    archive_id = str(manifest.get("archive_id") or "") if isinstance(manifest, Mapping) else ""
+    manifest = (
+        replay_input.get("source_manifest") if isinstance(replay_input, Mapping) else {}
+    )
+    archive_id = (
+        str(manifest.get("archive_id") or "") if isinstance(manifest, Mapping) else ""
+    )
     archive_assurance = verify_frozen_market_archive(
         source_archive_path,
         expected_archive_id=archive_id,
@@ -574,7 +644,11 @@ def _blocked_public_continuous_replay(
     supplied through the dated-contract input path.
     """
 
-    resolved_config = config if isinstance(config, CTAStrategyConfig) else CTAStrategyConfig.from_mapping(config)
+    resolved_config = (
+        config
+        if isinstance(config, CTAStrategyConfig)
+        else CTAStrategyConfig.from_mapping(config)
+    )
     if execution is None or isinstance(execution, FuturesExecutionAssumptions):
         resolved_execution = execution or FuturesExecutionAssumptions(
             slippage_bps=resolved_config.slippage_bps,
@@ -588,7 +662,10 @@ def _blocked_public_continuous_replay(
             rebalance_buffer_contracts=resolved_config.rebalance_buffer_contracts,
         )
         resolved_execution = FuturesExecutionAssumptions(
-            **{name: execution.get(name, getattr(defaults, name)) for name in FuturesExecutionAssumptions.__dataclass_fields__}
+            **{
+                name: execution.get(name, getattr(defaults, name))
+                for name in FuturesExecutionAssumptions.__dataclass_fields__
+            }
         )
     else:
         raise TypeError("futures execution assumptions must be an object")
@@ -641,10 +718,16 @@ def _normalize_specs(
         raise ValueError("CTA requires a non-empty instrument mapping")
     normalized: dict[str, FuturesInstrumentSpec] = {}
     for raw_key, raw_spec in instruments.items():
-        spec = raw_spec if isinstance(raw_spec, FuturesInstrumentSpec) else FuturesInstrumentSpec.from_mapping(raw_spec)
+        spec = (
+            raw_spec
+            if isinstance(raw_spec, FuturesInstrumentSpec)
+            else FuturesInstrumentSpec.from_mapping(raw_spec)
+        )
         key = str(raw_key).strip()
         if not key or key != spec.instrument_id:
-            raise ValueError("instrument mapping keys must match each specification instrument_id")
+            raise ValueError(
+                "instrument mapping keys must match each specification instrument_id"
+            )
         if spec.instrument_id in normalized:
             raise ValueError("CTA instrument ids must be unique")
         normalized[spec.instrument_id] = spec
@@ -684,7 +767,10 @@ def _normalize_market_data(
         }
         missing_columns = sorted(required.difference(frame.columns))
         if missing_columns:
-            raise ValueError(f"CTA market data for {instrument_id} lacks: " + ", ".join(missing_columns))
+            raise ValueError(
+                f"CTA market data for {instrument_id} lacks: "
+                + ", ".join(missing_columns)
+            )
         columns = [
             "date",
             "open",
@@ -703,11 +789,20 @@ def _normalize_market_data(
             "contract_facts_as_of",
             "contract_source_ref",
         ]
-        roll_columns = ["roll_from_contract", "roll_exit_price", "roll_entry_price", "roll_source_ref"]
-        frame = frame[columns + [column for column in roll_columns if column in frame.columns]].copy()
+        roll_columns = [
+            "roll_from_contract",
+            "roll_exit_price",
+            "roll_entry_price",
+            "roll_source_ref",
+        ]
+        frame = frame[
+            columns + [column for column in roll_columns if column in frame.columns]
+        ].copy()
         frame["date"] = pd.to_datetime(frame["date"], errors="coerce").dt.normalize()
         if frame["date"].isna().any() or frame["date"].duplicated().any():
-            raise ValueError(f"CTA market data for {instrument_id} has invalid or duplicate dates")
+            raise ValueError(
+                f"CTA market data for {instrument_id} has invalid or duplicate dates"
+            )
         frame = frame.sort_values("date", kind="stable").reset_index(drop=True)
         for column in (
             "open",
@@ -733,38 +828,76 @@ def _normalize_market_data(
             "position_limit",
         ]
         if frame[numeric].isna().any().any():
-            raise ValueError(f"CTA market data for {instrument_id} has non-numeric fields")
-        if (frame[["open", "close", "settlement"]] <= 0).any().any() or (frame[["volume", "open_interest"]] < 0).any().any():
-            raise ValueError(f"CTA market data for {instrument_id} has invalid prices or liquidity")
-        if (frame["contract_multiplier"] <= 0).any() or (frame["position_limit"] <= 0).any():
-            raise ValueError(f"CTA market data for {instrument_id} has invalid contract multiplier or position limit")
+            raise ValueError(
+                f"CTA market data for {instrument_id} has non-numeric fields"
+            )
+        if (frame[["open", "close", "settlement"]] <= 0).any().any() or (
+            frame[["volume", "open_interest"]] < 0
+        ).any().any():
+            raise ValueError(
+                f"CTA market data for {instrument_id} has invalid prices or liquidity"
+            )
+        if (frame["contract_multiplier"] <= 0).any() or (
+            frame["position_limit"] <= 0
+        ).any():
+            raise ValueError(
+                f"CTA market data for {instrument_id} has invalid contract multiplier or position limit"
+            )
         if (
             (frame["initial_margin_rate"] <= 0).any()
             or (frame["initial_margin_rate"] > 1).any()
             or (frame["maintenance_margin_rate"] <= 0).any()
             or (frame["maintenance_margin_rate"] > frame["initial_margin_rate"]).any()
         ):
-            raise ValueError(f"CTA market data for {instrument_id} has invalid dated margin facts")
+            raise ValueError(
+                f"CTA market data for {instrument_id} has invalid dated margin facts"
+            )
         if not np.allclose(frame["position_limit"], np.floor(frame["position_limit"])):
-            raise ValueError(f"CTA market data for {instrument_id} has a non-integer position limit")
+            raise ValueError(
+                f"CTA market data for {instrument_id} has a non-integer position limit"
+            )
         try:
             frame["tradable"] = [
                 _strict_bool(value, f"CTA market data {instrument_id} tradable")
                 for value in frame["tradable"]
             ]
         except ValueError as error:
-            raise ValueError(f"CTA market data for {instrument_id} has invalid tradable state") from error
-        frame["execution_status"] = frame["execution_status"].astype(str).str.strip().str.lower()
-        allowed = {"tradable", "halted", "limit_up_locked", "limit_down_locked", "unknown"}
+            raise ValueError(
+                f"CTA market data for {instrument_id} has invalid tradable state"
+            ) from error
+        frame["execution_status"] = (
+            frame["execution_status"].astype(str).str.strip().str.lower()
+        )
+        allowed = {
+            "tradable",
+            "halted",
+            "limit_up_locked",
+            "limit_down_locked",
+            "unknown",
+        }
         if not frame["execution_status"].isin(allowed).all():
-            raise ValueError(f"CTA market data for {instrument_id} has an invalid execution_status")
-        frame["days_to_expiry"] = pd.to_numeric(frame["days_to_expiry"], errors="coerce")
+            raise ValueError(
+                f"CTA market data for {instrument_id} has an invalid execution_status"
+            )
+        frame["days_to_expiry"] = pd.to_numeric(
+            frame["days_to_expiry"], errors="coerce"
+        )
         if frame["days_to_expiry"].isna().any() or (frame["days_to_expiry"] < 0).any():
-            raise ValueError(f"CTA market data for {instrument_id} has invalid days_to_expiry")
-        for field_name in ("active_contract", "contract_facts_as_of", "contract_source_ref"):
+            raise ValueError(
+                f"CTA market data for {instrument_id} has invalid days_to_expiry"
+            )
+        for field_name in (
+            "active_contract",
+            "contract_facts_as_of",
+            "contract_source_ref",
+        ):
             frame[field_name] = frame[field_name].astype(str).str.strip()
-            if (frame[field_name] == "").any() or (frame[field_name].str.lower() == "nan").any():
-                raise ValueError(f"CTA market data for {instrument_id} lacks dated {field_name}")
+            if (frame[field_name] == "").any() or (
+                frame[field_name].str.lower() == "nan"
+            ).any():
+                raise ValueError(
+                    f"CTA market data for {instrument_id} lacks dated {field_name}"
+                )
         for row_index, row in frame.iterrows():
             try:
                 fact_date = pd.Timestamp(str(row["contract_facts_as_of"])).normalize()
@@ -804,7 +937,9 @@ def _normalize_market_data(
                         f"CTA market data for {instrument_id} has invalid {field}"
                     ) from error
                 if not math.isfinite(value) or value <= 0:
-                    raise ValueError(f"CTA market data for {instrument_id} has invalid {field}")
+                    raise ValueError(
+                        f"CTA market data for {instrument_id} has invalid {field}"
+                    )
         normalized[instrument_id] = frame.set_index("date")
     return normalized
 
@@ -816,7 +951,9 @@ def _validate_historical_replay_inputs(
 ) -> None:
     """Block P&L replay unless immutable, actual-contract facts are present."""
 
-    archive_ids = [str(value).strip() for value in source_archive_ids if str(value).strip()]
+    archive_ids = [
+        str(value).strip() for value in source_archive_ids if str(value).strip()
+    ]
     if not archive_ids or any(not value.startswith("sha256:") for value in archive_ids):
         raise ValueError(
             "CTA historical P&L replay requires at least one immutable sha256 source archive id"
@@ -828,7 +965,9 @@ def _validate_historical_replay_inputs(
             )
         frame = frames[instrument_id]
         if frame.empty:
-            raise ValueError(f"CTA historical P&L replay has no dated rows for {instrument_id}")
+            raise ValueError(
+                f"CTA historical P&L replay has no dated rows for {instrument_id}"
+            )
         latest_contract = str(frame.iloc[-1]["active_contract"])
         if latest_contract != spec.active_contract:
             raise ValueError(
@@ -858,7 +997,12 @@ def _row_roll_facts(row: pd.Series, *, from_contract: str) -> dict[str, Any]:
         entry_price = float(row.get("roll_entry_price"))
     except (TypeError, ValueError) as error:
         raise ValueError("CTA active-contract roll has invalid prices") from error
-    if not math.isfinite(exit_price) or exit_price <= 0 or not math.isfinite(entry_price) or entry_price <= 0:
+    if (
+        not math.isfinite(exit_price)
+        or exit_price <= 0
+        or not math.isfinite(entry_price)
+        or entry_price <= 0
+    ):
         raise ValueError("CTA active-contract roll has invalid prices")
     return {
         "roll_exit_price": exit_price,
@@ -887,23 +1031,41 @@ def _instrument_candidate(
     if float(row["open_interest"]) < config.minimum_open_interest:
         return None, "latest open interest is below the configured threshold"
     if spec.contract_lifecycle_coverage != "verified":
-        return None, "contract lifecycle is not verified; continuous-series proxy cannot pass delivery/roll gate"
+        return (
+            None,
+            "contract lifecycle is not verified; continuous-series proxy cannot pass delivery/roll gate",
+        )
     if int(row["days_to_expiry"]) < config.minimum_days_to_expiry:
         return None, "contract is inside the configured delivery/roll safety buffer"
-    if enforce_current_spec_contract and str(row["active_contract"]) != spec.active_contract:
-        return None, "dated active contract does not match the supplied current contract specification"
+    if (
+        enforce_current_spec_contract
+        and str(row["active_contract"]) != spec.active_contract
+    ):
+        return (
+            None,
+            "dated active contract does not match the supplied current contract specification",
+        )
     settlement = history["settlement"].astype(float)
-    returns = np.log(settlement / settlement.shift(1)).replace([np.inf, -np.inf], np.nan).dropna()
+    returns = (
+        np.log(settlement / settlement.shift(1))
+        .replace([np.inf, -np.inf], np.nan)
+        .dropna()
+    )
     if len(returns) < max(config.volatility_lookback, max(config.signal_windows)):
         return None, "insufficient return history after normalization"
-    daily_vol = float(returns.iloc[-config.volatility_lookback:].std(ddof=1))
+    daily_vol = float(returns.iloc[-config.volatility_lookback :].std(ddof=1))
     if not math.isfinite(daily_vol) or daily_vol <= 0:
         return None, "non-positive realized daily volatility"
     components = []
     for window in config.signal_windows:
         raw_return = float(math.log(settlement.iloc[-1] / settlement.iloc[-1 - window]))
         components.append(raw_return / (daily_vol * math.sqrt(window)))
-    score = float(sum(weight * component for weight, component in zip(config.signal_weights, components, strict=True)))
+    score = float(
+        sum(
+            weight * component
+            for weight, component in zip(config.signal_weights, components, strict=True)
+        )
+    )
     direction = _direction_with_hysteresis(score, previous_contracts, config)
     return {
         "instrument_id": spec.instrument_id,
@@ -925,10 +1087,20 @@ def _instrument_candidate(
     }, None
 
 
-def _direction_with_hysteresis(score: float, previous_contracts: int, config: CTAStrategyConfig) -> int:
-    if previous_contracts > 0 and score >= -config.entry_threshold and score > config.exit_threshold:
+def _direction_with_hysteresis(
+    score: float, previous_contracts: int, config: CTAStrategyConfig
+) -> int:
+    if (
+        previous_contracts > 0
+        and score >= -config.entry_threshold
+        and score > config.exit_threshold
+    ):
         return 1
-    if previous_contracts < 0 and score <= config.entry_threshold and score < -config.exit_threshold:
+    if (
+        previous_contracts < 0
+        and score <= config.entry_threshold
+        and score < -config.exit_threshold
+    ):
         return -1
     if score >= config.entry_threshold:
         return 1
@@ -958,7 +1130,9 @@ def _size_candidates(
         allocation = group_budget / len(members)
         for candidate in members:
             score_scale = min(1.0, abs(float(candidate["signal_score"])))
-            risk_fraction = min(allocation * score_scale, config.max_instrument_risk_fraction)
+            risk_fraction = min(
+                allocation * score_scale, config.max_instrument_risk_fraction
+            )
             preliminary.append({**candidate, "risk_fraction": risk_fraction})
     total_fraction = sum(item["risk_fraction"] for item in preliminary)
     if total_fraction <= 0:
@@ -970,8 +1144,14 @@ def _size_candidates(
         risk_dollars = annual_risk_budget * item["risk_fraction"] * scale
         annual_vol = float(item["daily_volatility"]) * math.sqrt(_TRADING_DAYS_PER_YEAR)
         contract_multiplier = float(item["contract_multiplier"])
-        dollars_per_contract_at_annual_vol = item["reference_price"] * contract_multiplier * annual_vol
-        raw_contracts = risk_dollars / dollars_per_contract_at_annual_vol if dollars_per_contract_at_annual_vol > 0 else 0.0
+        dollars_per_contract_at_annual_vol = (
+            item["reference_price"] * contract_multiplier * annual_vol
+        )
+        raw_contracts = (
+            risk_dollars / dollars_per_contract_at_annual_vol
+            if dollars_per_contract_at_annual_vol > 0
+            else 0.0
+        )
         contracts = math.floor(raw_contracts) * int(item["direction"])
         contracts = int(
             math.copysign(
@@ -980,7 +1160,9 @@ def _size_candidates(
             )
         )
         if spec.max_contracts is not None:
-            contracts = int(math.copysign(min(abs(contracts), spec.max_contracts), contracts))
+            contracts = int(
+                math.copysign(min(abs(contracts), spec.max_contracts), contracts)
+            )
         if contracts == 0:
             continue
         notional = abs(contracts) * item["reference_price"] * contract_multiplier
@@ -1011,7 +1193,8 @@ def _size_candidates(
 
 
 def _apply_margin_cap(
-    targets: list[FuturesTarget], capital: float, config: CTAStrategyConfig) -> list[FuturesTarget]:
+    targets: list[FuturesTarget], capital: float, config: CTAStrategyConfig
+) -> list[FuturesTarget]:
     cap = capital * config.max_margin_fraction
     margin = sum(target.margin_required for target in targets)
     if margin <= cap + 1e-9:
@@ -1019,9 +1202,16 @@ def _apply_margin_cap(
     scale = cap / margin if margin else 0.0
     resized: list[FuturesTarget] = []
     for target in targets:
-        contracts = int(math.copysign(math.floor(abs(target.target_contracts) * scale), target.target_contracts))
+        contracts = int(
+            math.copysign(
+                math.floor(abs(target.target_contracts) * scale),
+                target.target_contracts,
+            )
+        )
         per_contract_margin = (
-            target.reference_price * target.contract_multiplier * target.initial_margin_rate
+            target.reference_price
+            * target.contract_multiplier
+            * target.initial_margin_rate
         )
         resized.append(
             FuturesTarget(
@@ -1123,7 +1313,11 @@ def _settle_existing_positions(
             mark_prices[instrument_id] = settlement
             continue
         if position != 0:
-            cash += position * (settlement - previous_mark) * float(facts["contract_multiplier"])
+            cash += (
+                position
+                * (settlement - previous_mark)
+                * float(facts["contract_multiplier"])
+            )
         contract_facts[instrument_id] = facts
         mark_prices[instrument_id] = settlement
     return cash
@@ -1143,23 +1337,52 @@ def _account_state(
             continue
         facts = contract_facts.get(instrument_id)
         if facts is None:
-            raise ValueError(f"{instrument_id} has no dated contract facts for account valuation")
+            raise ValueError(
+                f"{instrument_id} has no dated contract facts for account valuation"
+            )
         notional = abs(position) * price * float(facts["contract_multiplier"])
         gross_notional += notional
         margin += notional * float(facts["initial_margin_rate"])
     return cash, margin, gross_notional
 
 
-def _performance_metrics(curve: Sequence[Mapping[str, Any]], initial_capital: float) -> dict[str, float]:
+def _performance_metrics(
+    curve: Sequence[Mapping[str, Any]], initial_capital: float
+) -> dict[str, float]:
     equity = np.asarray([float(item["equity"]) for item in curve], dtype=float)
     if len(equity) < 2:
-        return {name: 0.0 for name in ("total_return", "annualized_return", "annualized_volatility", "sharpe_ratio", "max_drawdown")}
+        return {
+            name: 0.0
+            for name in (
+                "total_return",
+                "annualized_return",
+                "annualized_volatility",
+                "sharpe_ratio",
+                "max_drawdown",
+            )
+        }
     returns = equity[1:] / equity[:-1] - 1.0
     total_return = float(equity[-1] / initial_capital - 1.0)
-    annualized_volatility = float(np.std(returns, ddof=1) * math.sqrt(_TRADING_DAYS_PER_YEAR)) if len(returns) > 1 else 0.0
+    annualized_volatility = (
+        float(np.std(returns, ddof=1) * math.sqrt(_TRADING_DAYS_PER_YEAR))
+        if len(returns) > 1
+        else 0.0
+    )
     years = len(returns) / _TRADING_DAYS_PER_YEAR
-    annualized_return = float((equity[-1] / initial_capital) ** (1 / years) - 1.0) if years > 0 and equity[-1] > 0 else -1.0
-    sharpe = float(np.mean(returns) / np.std(returns, ddof=1) * math.sqrt(_TRADING_DAYS_PER_YEAR)) if len(returns) > 1 and np.std(returns, ddof=1) > 0 else 0.0
+    annualized_return = (
+        float((equity[-1] / initial_capital) ** (1 / years) - 1.0)
+        if years > 0 and equity[-1] > 0
+        else -1.0
+    )
+    sharpe = (
+        float(
+            np.mean(returns)
+            / np.std(returns, ddof=1)
+            * math.sqrt(_TRADING_DAYS_PER_YEAR)
+        )
+        if len(returns) > 1 and np.std(returns, ddof=1) > 0
+        else 0.0
+    )
     peaks = np.maximum.accumulate(equity)
     max_drawdown = float(np.max(1.0 - equity / peaks)) if len(peaks) else 0.0
     return {
@@ -1176,8 +1399,12 @@ def _latest_common_as_of(frames: Mapping[str, pd.DataFrame]) -> pd.Timestamp:
     return min(latest) if latest else pd.NaT
 
 
-def _next_effective_session(frames: Mapping[str, pd.DataFrame], as_of: pd.Timestamp) -> str | None:
-    candidates = sorted({day for frame in frames.values() for day in frame.index if day > as_of})
+def _next_effective_session(
+    frames: Mapping[str, pd.DataFrame], as_of: pd.Timestamp
+) -> str | None:
+    candidates = sorted(
+        {day for frame in frames.values() for day in frame.index if day > as_of}
+    )
     return candidates[0].date().isoformat() if candidates else None
 
 
@@ -1202,7 +1429,9 @@ def _strict_bool(value: Any, name: str) -> bool:
     raise ValueError(f"{name} must be boolean")
 
 
-def _spec_by_id(specs: Mapping[str, FuturesInstrumentSpec], instrument_id: str) -> FuturesInstrumentSpec:
+def _spec_by_id(
+    specs: Mapping[str, FuturesInstrumentSpec], instrument_id: str
+) -> FuturesInstrumentSpec:
     return specs[instrument_id]
 
 
@@ -1212,10 +1441,14 @@ def _proposal_warnings(source_archive_ids: Sequence[str]) -> list[str]:
         "A proposal is a paper research target only; verify current broker permissions, contract facts, margin, position limits, and liquidity before any manual action.",
     ]
     if not source_archive_ids:
-        base.append("No immutable source archive ids were supplied; result is public-observation research only.")
+        base.append(
+            "No immutable source archive ids were supplied; result is public-observation research only."
+        )
     return base
 
 
 def _implementation_fingerprint() -> str:
-    source = "domestic_futures_cta.v1|tsmom=21,63,126|vol=60|daily_settlement_mark_to_market"
+    source = (
+        "domestic_futures_cta.v1|tsmom=21,63,126|vol=60|daily_settlement_mark_to_market"
+    )
     return "sha256:" + hashlib.sha256(source.encode("utf-8")).hexdigest()

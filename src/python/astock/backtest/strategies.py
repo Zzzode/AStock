@@ -12,6 +12,7 @@ import numpy as np
 
 class Signal(Enum):
     """Trading signal"""
+
     BUY = "buy"
     SELL = "sell"
     HOLD = "hold"
@@ -20,6 +21,7 @@ class Signal(Enum):
 @dataclass
 class Trade:
     """Trade record"""
+
     date: date
     signal: Signal
     price: float
@@ -112,7 +114,7 @@ class MACrossStrategy(Strategy):
         """Simple moving average"""
         result = np.full(len(data), np.nan)
         for i in range(period - 1, len(data)):
-            result[i] = np.mean(data[i - period + 1:i + 1])
+            result[i] = np.mean(data[i - period + 1 : i + 1])
         return result
 
     def generate_signals(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -127,14 +129,14 @@ class MACrossStrategy(Strategy):
         for i in range(1, len(df)):
             if np.isnan(short_ma[i]) or np.isnan(long_ma[i]):
                 continue
-            if np.isnan(short_ma[i-1]) or np.isnan(long_ma[i-1]):
+            if np.isnan(short_ma[i - 1]) or np.isnan(long_ma[i - 1]):
                 continue
 
             # Short-term MA crosses above long-term MA -> Buy
-            if short_ma[i-1] <= long_ma[i-1] and short_ma[i] > long_ma[i]:
+            if short_ma[i - 1] <= long_ma[i - 1] and short_ma[i] > long_ma[i]:
                 signals[i] = Signal.BUY
             # Short-term MA crosses below long-term MA -> Sell
-            elif short_ma[i-1] >= long_ma[i-1] and short_ma[i] < long_ma[i]:
+            elif short_ma[i - 1] >= long_ma[i - 1] and short_ma[i] < long_ma[i]:
                 signals[i] = Signal.SELL
 
         df["signal"] = signals
@@ -195,18 +197,14 @@ class MACDStrategy(Strategy):
 
         for i in range(first_valid + 1, len(data)):
             if np.isnan(data[i]):
-                result[i] = result[i-1]
+                result[i] = result[i - 1]
             else:
-                result[i] = (data[i] - result[i-1]) * multiplier + result[i-1]
+                result[i] = (data[i] - result[i - 1]) * multiplier + result[i - 1]
 
         return result
 
     def _macd(
-        self,
-        data: np.ndarray,
-        fast: int,
-        slow: int,
-        signal: int
+        self, data: np.ndarray, fast: int, slow: int, signal: int
     ) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
         """Calculate MACD"""
         ema_fast = self._ema(data, fast)
@@ -224,14 +222,14 @@ class MACDStrategy(Strategy):
 
         # Find histogram crossover points
         for i in range(1, len(df)):
-            if np.isnan(hist[i]) or np.isnan(hist[i-1]):
+            if np.isnan(hist[i]) or np.isnan(hist[i - 1]):
                 continue
 
             # Histogram turns from negative to positive -> Buy
-            if hist[i-1] <= 0 and hist[i] > 0:
+            if hist[i - 1] <= 0 and hist[i] > 0:
                 signals[i] = Signal.BUY
             # Histogram turns from positive to negative -> Sell
-            elif hist[i-1] >= 0 and hist[i] < 0:
+            elif hist[i - 1] >= 0 and hist[i] < 0:
                 signals[i] = Signal.SELL
 
         df["signal"] = signals
@@ -296,7 +294,9 @@ def get_strategy(name: str, **kwargs: object) -> Strategy:
         ValueError: Invalid strategy name
     """
     if name not in STRATEGIES:
-        raise ValueError(f"Unknown strategy: {name}. Available: {list(STRATEGIES.keys())}")
+        raise ValueError(
+            f"Unknown strategy: {name}. Available: {list(STRATEGIES.keys())}"
+        )
 
     return STRATEGIES[name](**kwargs)
 

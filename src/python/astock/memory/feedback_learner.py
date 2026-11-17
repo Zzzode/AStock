@@ -22,13 +22,13 @@ def clamp(value: float, min_value: float, max_value: float) -> float:
 class FeedbackRecord:
     """Feedback record"""
 
-    code: str                               # Stock code
-    action: str                             # Suggested action
-    outcome: str                            # Feedback result: good/bad
-    strategy: Optional[str] = None          # Associated strategy/factor
-    note: Optional[str] = None              # Additional notes
-    signals: Optional[list[str]] = None     # Associated signals
-    confidence: Optional[float] = None      # Confidence at the time
+    code: str  # Stock code
+    action: str  # Suggested action
+    outcome: str  # Feedback result: good/bad
+    strategy: Optional[str] = None  # Associated strategy/factor
+    note: Optional[str] = None  # Additional notes
+    signals: Optional[list[str]] = None  # Associated signals
+    confidence: Optional[float] = None  # Confidence at the time
     created_at: datetime = field(default_factory=datetime.now)
 
 
@@ -50,7 +50,9 @@ class StrategyPerformance:
             self.good_count += 1
         else:
             self.bad_count += 1
-        self.success_rate = self.good_count / self.total_count if self.total_count > 0 else 0
+        self.success_rate = (
+            self.good_count / self.total_count if self.total_count > 0 else 0
+        )
         self.last_updated = datetime.now()
 
 
@@ -72,7 +74,9 @@ class SignalPerformance:
             self.good_count += 1
         else:
             self.bad_count += 1
-        self.success_rate = self.good_count / self.total_count if self.total_count > 0 else 0
+        self.success_rate = (
+            self.good_count / self.total_count if self.total_count > 0 else 0
+        )
         self.last_updated = datetime.now()
 
 
@@ -127,8 +131,11 @@ class FeedbackLearner:
                     note=record_data.get("note"),
                     signals=record_data.get("signals"),
                     confidence=record_data.get("confidence"),
-                    created_at=datetime.fromisoformat(record_data["created_at"])
-                    if record_data.get("created_at") else datetime.now(),
+                    created_at=(
+                        datetime.fromisoformat(record_data["created_at"])
+                        if record_data.get("created_at")
+                        else datetime.now()
+                    ),
                 )
                 self._records.append(record)
 
@@ -140,8 +147,11 @@ class FeedbackLearner:
                     good_count=perf_data.get("good_count", 0),
                     bad_count=perf_data.get("bad_count", 0),
                     success_rate=perf_data.get("success_rate", 0),
-                    last_updated=datetime.fromisoformat(perf_data["last_updated"])
-                    if perf_data.get("last_updated") else datetime.now(),
+                    last_updated=(
+                        datetime.fromisoformat(perf_data["last_updated"])
+                        if perf_data.get("last_updated")
+                        else datetime.now()
+                    ),
                 )
 
             # Load signal performance
@@ -152,8 +162,11 @@ class FeedbackLearner:
                     good_count=perf_data.get("good_count", 0),
                     bad_count=perf_data.get("bad_count", 0),
                     success_rate=perf_data.get("success_rate", 0),
-                    last_updated=datetime.fromisoformat(perf_data["last_updated"])
-                    if perf_data.get("last_updated") else datetime.now(),
+                    last_updated=(
+                        datetime.fromisoformat(perf_data["last_updated"])
+                        if perf_data.get("last_updated")
+                        else datetime.now()
+                    ),
                 )
 
         except Exception:
@@ -243,14 +256,18 @@ class FeedbackLearner:
         # Update strategy performance
         if strategy:
             if strategy not in self._strategy_performance:
-                self._strategy_performance[strategy] = StrategyPerformance(strategy=strategy)
+                self._strategy_performance[strategy] = StrategyPerformance(
+                    strategy=strategy
+                )
             self._strategy_performance[strategy].update(outcome)
 
         # Update signal performance
         if signals:
             for signal in signals:
                 if signal not in self._signal_performance:
-                    self._signal_performance[signal] = SignalPerformance(signal_type=signal)
+                    self._signal_performance[signal] = SignalPerformance(
+                        signal_type=signal
+                    )
                 self._signal_performance[signal].update(outcome)
 
         self._save()
@@ -271,7 +288,9 @@ class FeedbackLearner:
 
         weights = {}
         for strategy, perf in self._strategy_performance.items():
-            if perf.total_count >= 3:  # Require at least 3 feedback records to calculate weight
+            if (
+                perf.total_count >= 3
+            ):  # Require at least 3 feedback records to calculate weight
                 # Weight based on success rate, range 0.5-1.5
                 base_weight = 1.0
                 adjustment = (perf.success_rate - 0.5) * 0.5  # -0.25 to +0.25
@@ -316,7 +335,9 @@ class FeedbackLearner:
 
         total = len(records)
         buy_signal = (positive_buy - negative_buy) / total if total > 0 else 0.0
-        reduce_signal = (positive_reduce - negative_reduce) / total if total > 0 else 0.0
+        reduce_signal = (
+            (positive_reduce - negative_reduce) / total if total > 0 else 0.0
+        )
 
         return {
             "sample_count": total,
@@ -347,10 +368,12 @@ class FeedbackLearner:
                 risk_signal += -1 if record.outcome == "good" else 1
 
             if record.strategy and record.strategy.strip():
-                strategy_score[record.strategy] = strategy_score.get(record.strategy, 0) + (
-                    1 if record.outcome == "good" else -1
+                strategy_score[record.strategy] = strategy_score.get(
+                    record.strategy, 0
+                ) + (1 if record.outcome == "good" else -1)
+                strategy_count[record.strategy] = (
+                    strategy_count.get(record.strategy, 0) + 1
                 )
-                strategy_count[record.strategy] = strategy_count.get(record.strategy, 0) + 1
 
         strategy_weights: dict[str, float] = {}
         for strategy, score in strategy_score.items():

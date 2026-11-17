@@ -170,7 +170,9 @@ def assess_market_regime(
             evidence=(),
             warnings=tuple(
                 warnings
-                + ["Missing timestamped index changes or market breadth; regime is blocked."]
+                + [
+                    "Missing timestamped index changes or market breadth; regime is blocked."
+                ]
             ),
             data_quality=quality,
         )
@@ -207,7 +209,10 @@ def assess_market_regime(
             regime=MarketRegime.RISK_OFF,
             allowed_horizons=("risk_management",),
             evidence=tuple(evidence),
-            warnings=tuple(warnings + ["New short-term risk is blocked until the next validated snapshot."]),
+            warnings=tuple(
+                warnings
+                + ["New short-term risk is blocked until the next validated snapshot."]
+            ),
             data_quality=quality,
         )
 
@@ -231,7 +236,9 @@ def assess_market_regime(
             regime=MarketRegime.DEFENSIVE_ROTATION,
             allowed_horizons=("watch", "conditional"),
             evidence=tuple(evidence + ["defensive_relative_strength=true"]),
-            warnings=tuple(warnings + ["Defensive relative strength is not a trend confirmation."]),
+            warnings=tuple(
+                warnings + ["Defensive relative strength is not a trend confirmation."]
+            ),
             data_quality=quality,
         )
 
@@ -249,7 +256,9 @@ def assess_market_regime(
             regime=MarketRegime.SELECTIVE_RISK_ON,
             allowed_horizons=("ultra_short", "short_term", "swing", "watch"),
             evidence=tuple(evidence),
-            warnings=tuple(warnings + ["Risk-on is selective; candidate gates still apply."]),
+            warnings=tuple(
+                warnings + ["Risk-on is selective; candidate gates still apply."]
+            ),
             data_quality=quality,
         )
 
@@ -283,7 +292,8 @@ def evaluate_candidate_gate(
         candidate, restricted_targets=restricted_targets
     )
     gates = {
-        "universe": _valid_universe(candidate.get("universe")) and bool(_candidate_targets(candidate)),
+        "universe": _valid_universe(candidate.get("universe"))
+        and bool(_candidate_targets(candidate)),
         "data": _valid_data(candidate.get("data")),
         "edge": _valid_edge(candidate.get("edge")),
         "risk": _valid_risk(candidate.get("risk")),
@@ -313,7 +323,9 @@ def evaluate_candidate_gate(
             failed_gates=tuple(failed),
             control_statuses=parsed_controls,
             control_blockers=tuple(control_blockers),
-            warnings=("Candidate cannot enter the investment committee until every mandatory gate is explicit.",),
+            warnings=(
+                "Candidate cannot enter the investment committee until every mandatory gate is explicit.",
+            ),
         )
     if has_veto:
         return CandidateGateResult(
@@ -322,7 +334,9 @@ def evaluate_candidate_gate(
             failed_gates=(),
             control_statuses=parsed_controls,
             control_blockers=tuple(control_blockers),
-            warnings=("A required investment-committee control role issued a binding VETO.",),
+            warnings=(
+                "A required investment-committee control role issued a binding VETO.",
+            ),
         )
     if control_blockers:
         return CandidateGateResult(
@@ -331,7 +345,9 @@ def evaluate_candidate_gate(
             failed_gates=(),
             control_statuses=parsed_controls,
             control_blockers=tuple(control_blockers),
-            warnings=("Candidate is not eligible until every required control role supplies an auditable assessment.",),
+            warnings=(
+                "Candidate is not eligible until every required control role supplies an auditable assessment.",
+            ),
         )
     if market_regime in {MarketRegime.INSUFFICIENT_DATA, MarketRegime.RISK_OFF}:
         return CandidateGateResult(
@@ -340,7 +356,9 @@ def evaluate_candidate_gate(
             failed_gates=(),
             control_statuses=parsed_controls,
             control_blockers=(),
-            warnings=("Market regime does not permit new risk despite a complete candidate packet.",),
+            warnings=(
+                "Market regime does not permit new risk despite a complete candidate packet.",
+            ),
         )
     if market_regime == MarketRegime.DEFENSIVE_ROTATION or has_conditional:
         return CandidateGateResult(
@@ -349,7 +367,9 @@ def evaluate_candidate_gate(
             failed_gates=(),
             control_statuses=parsed_controls,
             control_blockers=(),
-            warnings=("Only staged, manually reviewed paper-plan exposure is permitted until all conditions clear.",),
+            warnings=(
+                "Only staged, manually reviewed paper-plan exposure is permitted until all conditions clear.",
+            ),
         )
     return CandidateGateResult(
         decision=DeskDecision.APPROVE,
@@ -382,17 +402,27 @@ def decide_investment_committee(
     normalized_candidate_id = str(candidate_id).strip()
     normalized_owner = str(decision_owner).strip()
     normalized_evidence_refs = tuple(
-        reference for reference in (str(item).strip() for item in evidence_refs) if reference
+        reference
+        for reference in (str(item).strip() for item in evidence_refs)
+        if reference
     )
     if not normalized_candidate_id:
-        raise ValueError("candidate_id is required for an investment-committee decision")
+        raise ValueError(
+            "candidate_id is required for an investment-committee decision"
+        )
     if not normalized_owner:
-        raise ValueError("decision_owner is required for an investment-committee decision")
+        raise ValueError(
+            "decision_owner is required for an investment-committee decision"
+        )
     if not normalized_evidence_refs:
-        raise ValueError("at least one evidence reference is required for an investment-committee decision")
+        raise ValueError(
+            "at least one evidence reference is required for an investment-committee decision"
+        )
     normalized_model_versions = _normalize_model_versions(model_versions)
     if not normalized_model_versions:
-        raise ValueError("at least one named model version is required for an investment-committee decision")
+        raise ValueError(
+            "at least one named model version is required for an investment-committee decision"
+        )
     timestamp = decided_at or datetime.now(timezone.utc).isoformat()
     if _parse_timestamp(timestamp) is None:
         raise ValueError("decided_at must be an ISO-8601 timestamp")
@@ -427,7 +457,9 @@ def decide_investment_committee(
 
 
 def _index_changes(value: Any) -> dict[str, float]:
-    rows: Sequence[Any] = value if isinstance(value, Sequence) and not isinstance(value, str) else ()
+    rows: Sequence[Any] = (
+        value if isinstance(value, Sequence) and not isinstance(value, str) else ()
+    )
     changes: dict[str, float] = {}
     for row in rows:
         if not isinstance(row, Mapping):
@@ -456,12 +488,28 @@ def _growth_change(indices: Mapping[str, float]) -> float | None:
 
 
 def _positive_defensive_observation(value: Any) -> bool:
-    rows: Sequence[Any] = value if isinstance(value, Sequence) and not isinstance(value, str) else ()
+    rows: Sequence[Any] = (
+        value if isinstance(value, Sequence) and not isinstance(value, str) else ()
+    )
     for row in rows:
         if not isinstance(row, Mapping):
             continue
-        labels = " ".join(str(row.get(name) or "") for name in ("name", "theme", "sector")).lower()
-        if any(word in labels for word in ("power", "electric", "utility", "bank", "dividend", "电力", "银行", "红利")):
+        labels = " ".join(
+            str(row.get(name) or "") for name in ("name", "theme", "sector")
+        ).lower()
+        if any(
+            word in labels
+            for word in (
+                "power",
+                "electric",
+                "utility",
+                "bank",
+                "dividend",
+                "电力",
+                "银行",
+                "红利",
+            )
+        ):
             change = _as_float(row.get("change_pct", row.get("change_percent")))
             if change is not None and change >= 0:
                 return True
@@ -469,7 +517,11 @@ def _positive_defensive_observation(value: Any) -> bool:
 
 
 def _valid_universe(value: Any) -> bool:
-    return isinstance(value, Mapping) and bool(value.get("eligible")) and bool(value.get("liquid"))
+    return (
+        isinstance(value, Mapping)
+        and bool(value.get("eligible"))
+        and bool(value.get("liquid"))
+    )
 
 
 def _candidate_targets(candidate: Mapping[str, Any]) -> tuple[str, ...]:
@@ -478,7 +530,9 @@ def _candidate_targets(candidate: Mapping[str, Any]) -> tuple[str, ...]:
         raw_targets = (raw_targets,)
     if not isinstance(raw_targets, Sequence):
         return ()
-    return tuple(dict.fromkeys(str(item).strip() for item in raw_targets if str(item).strip()))
+    return tuple(
+        dict.fromkeys(str(item).strip() for item in raw_targets if str(item).strip())
+    )
 
 
 def _valid_data(value: Any) -> bool:
@@ -534,7 +588,9 @@ def _valid_execution(value: Any) -> bool:
 def _quality_label(snapshot: Mapping[str, Any]) -> str:
     provenance = snapshot.get("provenance")
     if isinstance(provenance, Mapping):
-        return str(provenance.get("quality_tier") or provenance.get("quality") or "unknown")
+        return str(
+            provenance.get("quality_tier") or provenance.get("quality") or "unknown"
+        )
     return str(snapshot.get("data_quality") or "unknown")
 
 
@@ -543,7 +599,10 @@ def _snapshot_quality_state(
 ) -> tuple[str | None, bool]:
     observed_at = snapshot.get("observed_at")
     if not isinstance(observed_at, str) or not observed_at.strip():
-        return "Market snapshot lacks an observed_at timestamp; regime is blocked.", False
+        return (
+            "Market snapshot lacks an observed_at timestamp; regime is blocked.",
+            False,
+        )
     observed = _parse_timestamp(observed_at)
     if observed is None:
         return "Market snapshot observed_at is not ISO-8601; regime is blocked.", False
@@ -553,24 +612,47 @@ def _snapshot_quality_state(
         return "Market snapshot timestamp is in the future; regime is blocked.", False
     market_session = snapshot.get("market_session")
     if not isinstance(market_session, Mapping):
-        return "Market snapshot lacks market_session metadata; regime is blocked.", False
+        return (
+            "Market snapshot lacks market_session metadata; regime is blocked.",
+            False,
+        )
     session_state = str(market_session.get("state") or "").strip()
     if session_state in {"", "closed"}:
-        return "Market snapshot is outside a verified trading-day session; regime is blocked.", False
+        return (
+            "Market snapshot is outside a verified trading-day session; regime is blocked.",
+            False,
+        )
     if str(market_session.get("calendar_basis") or "").strip() != "exchange_calendar":
-        return "Market snapshot lacks an exchange-calendar trading-session classification; regime is blocked.", False
+        return (
+            "Market snapshot lacks an exchange-calendar trading-session classification; regime is blocked.",
+            False,
+        )
     provenance = snapshot.get("provenance")
-    components = provenance.get("components") if isinstance(provenance, Mapping) else None
-    calendar_component = components.get("trading_calendar") if isinstance(components, Mapping) else None
-    if not isinstance(calendar_component, Mapping) or calendar_component.get("status") != "available":
-        return "Market snapshot lacks a healthy trading-calendar source component; regime is blocked.", False
+    components = (
+        provenance.get("components") if isinstance(provenance, Mapping) else None
+    )
+    calendar_component = (
+        components.get("trading_calendar") if isinstance(components, Mapping) else None
+    )
+    if (
+        not isinstance(calendar_component, Mapping)
+        or calendar_component.get("status") != "available"
+    ):
+        return (
+            "Market snapshot lacks a healthy trading-calendar source component; regime is blocked.",
+            False,
+        )
     max_age = (
         MAX_CONTINUOUS_SNAPSHOT_AGE
-        if session_state in {"open_auction", "continuous_morning", "continuous_afternoon"}
+        if session_state
+        in {"open_auction", "continuous_morning", "continuous_afternoon"}
         else MAX_END_OF_DAY_SNAPSHOT_AGE
     )
     if current - observed_utc > max_age:
-        return "Market snapshot exceeds its permitted freshness window; regime is blocked.", False
+        return (
+            "Market snapshot exceeds its permitted freshness window; regime is blocked.",
+            False,
+        )
     breadth = snapshot.get("breadth")
     if not isinstance(breadth, Mapping):
         return "Market snapshot lacks breadth metadata; regime is blocked.", False
@@ -587,7 +669,11 @@ def _snapshot_quality_state(
 
 
 def _string_items(value: Any) -> list[str]:
-    return [str(item) for item in value] if isinstance(value, Sequence) and not isinstance(value, str) else []
+    return (
+        [str(item) for item in value]
+        if isinstance(value, Sequence) and not isinstance(value, str)
+        else []
+    )
 
 
 def _as_float(value: Any) -> float | None:
@@ -645,16 +731,23 @@ def _normalized_assessments(value: Mapping[str, Any]) -> dict[str, dict[str, Any
             normalized[role] = {
                 "status": str(raw_assessment.get("status") or "").strip().lower(),
                 "reason": str(raw_assessment.get("reason") or "").strip(),
-                "evidence_refs": [
-                    str(reference).strip()
-                    for reference in evidence_refs
-                    if str(reference).strip()
-                ]
-                if isinstance(evidence_refs, Sequence) and not isinstance(evidence_refs, str)
-                else [],
+                "evidence_refs": (
+                    [
+                        str(reference).strip()
+                        for reference in evidence_refs
+                        if str(reference).strip()
+                    ]
+                    if isinstance(evidence_refs, Sequence)
+                    and not isinstance(evidence_refs, str)
+                    else []
+                ),
             }
         else:
-            normalized[role] = {"status": str(raw_assessment).strip().lower(), "reason": "", "evidence_refs": []}
+            normalized[role] = {
+                "status": str(raw_assessment).strip().lower(),
+                "reason": "",
+                "evidence_refs": [],
+            }
     return normalized
 
 

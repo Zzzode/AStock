@@ -19,7 +19,10 @@ def _institutional_manifest() -> dict[str, object]:
             "corporate_actions": "tushare_pro",
             "delistings": "tushare_pro",
         },
-        "license_attestation": {"authorized": True, "attested_by": "research-data-owner"},
+        "license_attestation": {
+            "authorized": True,
+            "attested_by": "research-data-owner",
+        },
     }
 
 
@@ -31,7 +34,9 @@ def test_public_aggregation_is_observation_only() -> None:
     assert akshare["reproducible_backtest_eligible"] is False
 
 
-def test_jqdata_is_configured_only_when_both_login_credentials_exist(monkeypatch) -> None:
+def test_jqdata_is_configured_only_when_both_login_credentials_exist(
+    monkeypatch,
+) -> None:
     monkeypatch.delenv("JQDATA_USERNAME", raising=False)
     monkeypatch.delenv("JQDATA_PASSWORD", raising=False)
     sources = list_market_data_source_governance()["sources"]
@@ -39,10 +44,24 @@ def test_jqdata_is_configured_only_when_both_login_credentials_exist(monkeypatch
     assert jqdata["configured"] is False
 
     monkeypatch.setenv("JQDATA_USERNAME", "licensed-user")
-    assert next(item for item in list_market_data_source_governance()["sources"] if item["source_id"] == "jqdata")["configured"] is False
+    assert (
+        next(
+            item
+            for item in list_market_data_source_governance()["sources"]
+            if item["source_id"] == "jqdata"
+        )["configured"]
+        is False
+    )
 
     monkeypatch.setenv("JQDATA_PASSWORD", "licensed-password")
-    assert next(item for item in list_market_data_source_governance()["sources"] if item["source_id"] == "jqdata")["configured"] is True
+    assert (
+        next(
+            item
+            for item in list_market_data_source_governance()["sources"]
+            if item["source_id"] == "jqdata"
+        )["configured"]
+        is True
+    )
 
 
 def test_backtest_manifest_requires_frozen_institutional_source_coverage(

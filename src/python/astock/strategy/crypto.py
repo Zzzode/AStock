@@ -69,30 +69,44 @@ class CryptoAssetSpec:
             raise TypeError("crypto asset specification must be an object")
         asset_id = _required_text(value.get("asset_id"), "asset_id")
         symbol = _required_text(value.get("symbol"), "symbol")
-        venue = _required_text(value.get("venue") or value.get("exchange"), "venue").lower()
-        raw_market_type = _required_text(value.get("market_type"), "market_type").lower()
+        venue = _required_text(
+            value.get("venue") or value.get("exchange"), "venue"
+        ).lower()
+        raw_market_type = _required_text(
+            value.get("market_type"), "market_type"
+        ).lower()
         market_type = _MARKET_TYPE_ALIASES.get(raw_market_type)
         if market_type is None:
             raise ValueError("market_type must be spot or perpetual")
-        quote_currency = _required_text(value.get("quote_currency"), "quote_currency").upper()
+        quote_currency = _required_text(
+            value.get("quote_currency"), "quote_currency"
+        ).upper()
         source_ref = _required_text(value.get("source_ref"), "source_ref")
         metadata_as_of = _required_text(value.get("metadata_as_of"), "metadata_as_of")
-        data_quality = _normalise_data_quality(value.get("data_quality"), "data_quality")
+        data_quality = _normalise_data_quality(
+            value.get("data_quality"), "data_quality"
+        )
         point_in_time_coverage = _normalise_point_in_time_coverage(
             value.get("point_in_time_coverage"), "point_in_time_coverage"
         )
         if "eligible" not in value:
             raise ValueError("eligible is required")
         eligible = _strict_bool(value.get("eligible"), "eligible")
-        trading_status = _required_text(value.get("trading_status"), "trading_status").lower()
+        trading_status = _required_text(
+            value.get("trading_status"), "trading_status"
+        ).lower()
         if trading_status not in _TRADING_STATUSES:
             raise ValueError("trading_status is invalid")
-        short_eligible = _strict_bool(value.get("short_eligible", False), "short_eligible")
+        short_eligible = _strict_bool(
+            value.get("short_eligible", False), "short_eligible"
+        )
         is_stablecoin = _strict_bool(value.get("is_stablecoin", False), "is_stablecoin")
         try:
             listing_age_days = int(value.get("listing_age_days"))
         except (TypeError, ValueError) as error:
-            raise ValueError("listing_age_days must be a non-negative integer") from error
+            raise ValueError(
+                "listing_age_days must be a non-negative integer"
+            ) from error
         if listing_age_days < 0:
             raise ValueError("listing_age_days must be a non-negative integer")
         return cls(
@@ -175,27 +189,46 @@ class CryptoTimeSeriesMomentumConfig:
     cash_residual_source_ref: str = "derived:crypto-tsmom-unallocated-stablecoin-cash"
 
     def __post_init__(self) -> None:
-        if len(self.signal_windows) < 2 or len(self.signal_windows) != len(self.signal_weights):
-            raise ValueError("crypto signal_windows and signal_weights need matching multi-horizon values")
+        if len(self.signal_windows) < 2 or len(self.signal_windows) != len(
+            self.signal_weights
+        ):
+            raise ValueError(
+                "crypto signal_windows and signal_weights need matching multi-horizon values"
+            )
         if (
-            any(not isinstance(window, int) or window <= 0 for window in self.signal_windows)
+            any(
+                not isinstance(window, int) or window <= 0
+                for window in self.signal_windows
+            )
             or tuple(sorted(self.signal_windows)) != self.signal_windows
         ):
-            raise ValueError("crypto signal_windows must be ascending positive integers")
-        if any(weight < 0 or not math.isfinite(weight) for weight in self.signal_weights):
-            raise ValueError("crypto signal_weights must be finite non-negative numbers")
+            raise ValueError(
+                "crypto signal_windows must be ascending positive integers"
+            )
+        if any(
+            weight < 0 or not math.isfinite(weight) for weight in self.signal_weights
+        ):
+            raise ValueError(
+                "crypto signal_weights must be finite non-negative numbers"
+            )
         if not math.isclose(sum(self.signal_weights), 1.0, rel_tol=0.0, abs_tol=1e-9):
             raise ValueError("crypto signal_weights must sum to one")
         if self.bar_interval_hours <= 0 or not math.isfinite(self.bar_interval_hours):
             raise ValueError("bar_interval_hours must be a positive finite number")
         if self.volatility_lookback < 2:
             raise ValueError("volatility_lookback must be at least two bars")
-        required_history = max(max(self.signal_windows) + 1, self.volatility_lookback + 1)
+        required_history = max(
+            max(self.signal_windows) + 1, self.volatility_lookback + 1
+        )
         if self.minimum_history < required_history:
-            raise ValueError("minimum_history is insufficient for trend and volatility windows")
+            raise ValueError(
+                "minimum_history is insufficient for trend and volatility windows"
+            )
         if not (0 <= self.exit_threshold < self.entry_threshold):
             raise ValueError("thresholds require 0 <= exit_threshold < entry_threshold")
-        if self.annual_target_volatility <= 0 or not math.isfinite(self.annual_target_volatility):
+        if self.annual_target_volatility <= 0 or not math.isfinite(
+            self.annual_target_volatility
+        ):
             raise ValueError("annual_target_volatility must be positive and finite")
         for name, value in (
             ("max_single_asset_exposure", self.max_single_asset_exposure),
@@ -205,9 +238,13 @@ class CryptoTimeSeriesMomentumConfig:
             if not math.isfinite(value) or not 0 < value <= 1:
                 raise ValueError(f"{name} must be in (0, 1]")
         if self.max_single_asset_exposure > self.max_total_gross_exposure:
-            raise ValueError("max_single_asset_exposure cannot exceed max_total_gross_exposure")
+            raise ValueError(
+                "max_single_asset_exposure cannot exceed max_total_gross_exposure"
+            )
         if self.max_exchange_gross_exposure < self.max_single_asset_exposure:
-            raise ValueError("max_exchange_gross_exposure cannot be below max_single_asset_exposure")
+            raise ValueError(
+                "max_exchange_gross_exposure cannot be below max_single_asset_exposure"
+            )
         for name, value in (
             ("minimum_bar_quote_volume", self.minimum_bar_quote_volume),
             ("maximum_bar_age_hours", self.maximum_bar_age_hours),
@@ -219,44 +256,75 @@ class CryptoTimeSeriesMomentumConfig:
                 raise ValueError(f"{name} must be a non-negative finite number")
         if self.maximum_bar_age_hours <= 0 or self.maximum_metadata_age_hours <= 0:
             raise ValueError("bar and metadata age limits must be positive")
-        if self.maximum_bar_gap_multiple < 1 or not math.isfinite(self.maximum_bar_gap_multiple):
+        if self.maximum_bar_gap_multiple < 1 or not math.isfinite(
+            self.maximum_bar_gap_multiple
+        ):
             raise ValueError("maximum_bar_gap_multiple must be finite and at least one")
-        if self.minimum_listing_age_days < 0 or self.minimum_execution_delay_minutes < 0:
+        if (
+            self.minimum_listing_age_days < 0
+            or self.minimum_execution_delay_minutes < 0
+        ):
             raise ValueError("listing age and execution delay cannot be negative")
         if self.minimum_funding_observations <= 0:
             raise ValueError("minimum_funding_observations must be positive")
-        currencies = tuple(str(item).strip().upper() for item in self.accepted_quote_currencies if str(item).strip())
+        currencies = tuple(
+            str(item).strip().upper()
+            for item in self.accepted_quote_currencies
+            if str(item).strip()
+        )
         if not currencies:
             raise ValueError("accepted_quote_currencies cannot be empty")
         if len(set(currencies)) != len(currencies):
             raise ValueError("accepted_quote_currencies must be unique")
-        venues = tuple(str(item).strip().lower() for item in self.permitted_venues if str(item).strip())
+        venues = tuple(
+            str(item).strip().lower()
+            for item in self.permitted_venues
+            if str(item).strip()
+        )
         if len(set(venues)) != len(venues):
             raise ValueError("permitted_venues must be unique")
         _normalise_data_quality(self.minimum_data_quality, "minimum_data_quality")
-        _normalise_data_quality(self.minimum_funding_data_quality, "minimum_funding_data_quality")
+        _normalise_data_quality(
+            self.minimum_funding_data_quality, "minimum_funding_data_quality"
+        )
         _required_text(self.stablecoin_cash_asset_id, "stablecoin_cash_asset_id")
         _required_text(self.stablecoin_cash_symbol, "stablecoin_cash_symbol")
         _required_text(self.cash_residual_source_ref, "cash_residual_source_ref")
 
     @classmethod
-    def from_mapping(cls, value: Mapping[str, Any] | None) -> CryptoTimeSeriesMomentumConfig:
+    def from_mapping(
+        cls, value: Mapping[str, Any] | None
+    ) -> CryptoTimeSeriesMomentumConfig:
         if value is None:
             return cls()
         if not isinstance(value, Mapping):
             raise TypeError("crypto strategy configuration must be an object")
         defaults = cls()
         fields: dict[str, Any] = {
-            name: value.get(name, getattr(defaults, name)) for name in cls.__dataclass_fields__
+            name: value.get(name, getattr(defaults, name))
+            for name in cls.__dataclass_fields__
         }
-        for name in ("signal_windows", "signal_weights", "accepted_quote_currencies", "permitted_venues"):
+        for name in (
+            "signal_windows",
+            "signal_weights",
+            "accepted_quote_currencies",
+            "permitted_venues",
+        ):
             raw = fields[name]
             if isinstance(raw, (str, bytes)) or not isinstance(raw, Sequence):
                 raise TypeError(f"crypto {name} must be a sequence")
             fields[name] = tuple(raw)
         fields["signal_windows"] = tuple(int(item) for item in fields["signal_windows"])
-        fields["signal_weights"] = tuple(float(item) for item in fields["signal_weights"])
-        for name in ("volatility_lookback", "minimum_history", "minimum_listing_age_days", "minimum_execution_delay_minutes", "minimum_funding_observations"):
+        fields["signal_weights"] = tuple(
+            float(item) for item in fields["signal_weights"]
+        )
+        for name in (
+            "volatility_lookback",
+            "minimum_history",
+            "minimum_listing_age_days",
+            "minimum_execution_delay_minutes",
+            "minimum_funding_observations",
+        ):
             fields[name] = int(fields[name])
         for name in (
             "bar_interval_hours",
@@ -286,8 +354,12 @@ class CryptoTimeSeriesMomentumConfig:
             "cash_residual_source_ref",
         ):
             fields[name] = str(fields[name])
-        fields["accepted_quote_currencies"] = tuple(str(item).upper() for item in fields["accepted_quote_currencies"])
-        fields["permitted_venues"] = tuple(str(item).lower() for item in fields["permitted_venues"])
+        fields["accepted_quote_currencies"] = tuple(
+            str(item).upper() for item in fields["accepted_quote_currencies"]
+        )
+        fields["permitted_venues"] = tuple(
+            str(item).lower() for item in fields["permitted_venues"]
+        )
         return cls(**fields)
 
     def to_dict(self) -> dict[str, Any]:
@@ -340,11 +412,16 @@ class _CryptoTimeSeriesMomentumStrategy:
 
     def generate_proposal(
         self,
-        market_data: Mapping[str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]],
+        market_data: Mapping[
+            str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]
+        ],
         assets: Mapping[str, CryptoAssetSpec | Mapping[str, Any]],
         *,
         as_of: str | datetime,
-        funding_data: Mapping[str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]] | None = None,
+        funding_data: (
+            Mapping[str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]]
+            | None
+        ) = None,
         previous_weights: Mapping[str, float] | None = None,
         source_refs: Sequence[str] = (),
         source_archive_ids: Sequence[str] = (),
@@ -364,7 +441,9 @@ class _CryptoTimeSeriesMomentumStrategy:
         if not isinstance(assets, Mapping) or not assets:
             raise ValueError("crypto assets must be a non-empty asset mapping")
         if funding_data is not None and not isinstance(funding_data, Mapping):
-            raise TypeError("crypto funding_data must be an asset mapping when supplied")
+            raise TypeError(
+                "crypto funding_data must be an asset mapping when supplied"
+            )
         observation_time = _parse_utc_timestamp(as_of, "as_of")
         prior_weights = _normalise_previous_weights(previous_weights)
         proposal_sources = _unique_strings(source_refs)
@@ -397,22 +476,34 @@ class _CryptoTimeSeriesMomentumStrategy:
                 if spec.asset_id != mapping_key:
                     raise ValueError("asset mapping keys must match asset_id")
             except (TypeError, ValueError) as error:
-                blockers.append(_blocker(mapping_key or "unknown", "asset_specification", str(error)))
+                blockers.append(
+                    _blocker(
+                        mapping_key or "unknown", "asset_specification", str(error)
+                    )
+                )
                 degraded_input = True
                 continue
             proposal_sources = _unique_strings([*proposal_sources, spec.source_ref])
             issue = _asset_eligibility_issue(spec, observation_time, self.config)
             if issue is not None:
                 gate, reason = issue
-                blockers.append(_blocker(spec.asset_id, gate, reason, symbol=spec.symbol))
-                assurance_assets.append(_asset_assurance(spec, status="blocked", reason=reason))
+                blockers.append(
+                    _blocker(spec.asset_id, gate, reason, symbol=spec.symbol)
+                )
+                assurance_assets.append(
+                    _asset_assurance(spec, status="blocked", reason=reason)
+                )
                 if gate in {"data_quality", "point_in_time"}:
                     degraded_input = True
                 continue
             if spec.asset_id not in market_data:
                 reason = "missing OHLCV input for asset"
-                blockers.append(_blocker(spec.asset_id, "ohlcv_input", reason, symbol=spec.symbol))
-                assurance_assets.append(_asset_assurance(spec, status="blocked", reason=reason))
+                blockers.append(
+                    _blocker(spec.asset_id, "ohlcv_input", reason, symbol=spec.symbol)
+                )
+                assurance_assets.append(
+                    _asset_assurance(spec, status="blocked", reason=reason)
+                )
                 degraded_input = True
                 continue
             frame, bar_assurance, bar_sources, bar_issue = _normalise_bars(
@@ -424,30 +515,50 @@ class _CryptoTimeSeriesMomentumStrategy:
             proposal_sources = _unique_strings([*proposal_sources, *bar_sources])
             if bar_issue is not None or frame is None:
                 reason = bar_issue or "invalid OHLCV input"
-                blockers.append(_blocker(spec.asset_id, "point_in_time", reason, symbol=spec.symbol))
-                assurance_assets.append(_asset_assurance(spec, status="blocked", reason=reason))
+                blockers.append(
+                    _blocker(spec.asset_id, "point_in_time", reason, symbol=spec.symbol)
+                )
+                assurance_assets.append(
+                    _asset_assurance(spec, status="blocked", reason=reason)
+                )
                 degraded_input = True
                 continue
             funding_summary: dict[str, Any] | None = None
             if spec.market_type == "perpetual":
-                funding_raw = None if funding_data is None else funding_data.get(spec.asset_id)
+                funding_raw = (
+                    None if funding_data is None else funding_data.get(spec.asset_id)
+                )
                 funding_summary, funding_sources, funding_issue = _normalise_funding(
                     funding_raw,
                     spec.asset_id,
                     observation_time,
                     self.config,
                 )
-                proposal_sources = _unique_strings([*proposal_sources, *funding_sources])
+                proposal_sources = _unique_strings(
+                    [*proposal_sources, *funding_sources]
+                )
                 if funding_issue is not None:
                     if self.config.require_funding_for_perpetual:
                         blockers.append(
-                            _blocker(spec.asset_id, "funding_quality", funding_issue, symbol=spec.symbol)
+                            _blocker(
+                                spec.asset_id,
+                                "funding_quality",
+                                funding_issue,
+                                symbol=spec.symbol,
+                            )
                         )
                         assurance_assets.append(
-                            _asset_assurance(spec, status="blocked", reason=funding_issue, bars=bar_assurance)
+                            _asset_assurance(
+                                spec,
+                                status="blocked",
+                                reason=funding_issue,
+                                bars=bar_assurance,
+                            )
                         )
                         assurance_funding.append(
-                            _funding_assurance(spec.asset_id, status="blocked", reason=funding_issue)
+                            _funding_assurance(
+                                spec.asset_id, status="blocked", reason=funding_issue
+                            )
                         )
                         degraded_input = True
                         continue
@@ -478,15 +589,33 @@ class _CryptoTimeSeriesMomentumStrategy:
                 funding_summary,
             )
             if candidate_issue is not None or candidate is None:
-                gate = "liquidity" if candidate_issue and "liquidity" in candidate_issue else "trend_input"
-                blockers.append(_blocker(spec.asset_id, gate, candidate_issue or "invalid trend input", symbol=spec.symbol))
+                gate = (
+                    "liquidity"
+                    if candidate_issue and "liquidity" in candidate_issue
+                    else "trend_input"
+                )
+                blockers.append(
+                    _blocker(
+                        spec.asset_id,
+                        gate,
+                        candidate_issue or "invalid trend input",
+                        symbol=spec.symbol,
+                    )
+                )
                 assurance_assets.append(
-                    _asset_assurance(spec, status="blocked", reason=candidate_issue or "invalid trend input", bars=bar_assurance)
+                    _asset_assurance(
+                        spec,
+                        status="blocked",
+                        reason=candidate_issue or "invalid trend input",
+                        bars=bar_assurance,
+                    )
                 )
                 if gate == "trend_input":
                     degraded_input = True
                 continue
-            assurance_assets.append(_asset_assurance(spec, status="accepted", bars=bar_assurance))
+            assurance_assets.append(
+                _asset_assurance(spec, status="accepted", bars=bar_assurance)
+            )
             if candidate["direction"] == 0:
                 if candidate["unexpressed_short_signal"]:
                     warnings.append(
@@ -495,16 +624,24 @@ class _CryptoTimeSeriesMomentumStrategy:
                 continue
             candidates.append(candidate)
 
-        targets, concentration, sizing_warnings = _size_candidates(candidates, self.config)
+        targets, concentration, sizing_warnings = _size_candidates(
+            candidates, self.config
+        )
         warnings.extend(sizing_warnings)
-        gross_target_weight = sum(abs(float(target["target_weight"])) for target in targets)
-        long_target_weight = sum(max(0.0, float(target["target_weight"])) for target in targets)
-        short_target_weight = sum(max(0.0, -float(target["target_weight"])) for target in targets)
+        gross_target_weight = sum(
+            abs(float(target["target_weight"])) for target in targets
+        )
+        long_target_weight = sum(
+            max(0.0, float(target["target_weight"])) for target in targets
+        )
+        short_target_weight = sum(
+            max(0.0, -float(target["target_weight"])) for target in targets
+        )
         cash_weight = max(0.0, 1.0 - gross_target_weight)
         latest_available_at = _latest_available_at(assurance_assets)
-        earliest_rebalance_at = max(observation_time, latest_available_at or observation_time) + timedelta(
-            minutes=self.config.minimum_execution_delay_minutes
-        )
+        earliest_rebalance_at = max(
+            observation_time, latest_available_at or observation_time
+        ) + timedelta(minutes=self.config.minimum_execution_delay_minutes)
         data_quality = _proposal_data_quality(
             targets=targets,
             blockers=blockers,
@@ -512,11 +649,19 @@ class _CryptoTimeSeriesMomentumStrategy:
             config=self.config,
         )
         if not targets and not blockers:
-            warnings.append("No eligible asset has a trend signal above the configured entry threshold.")
+            warnings.append(
+                "No eligible asset has a trend signal above the configured entry threshold."
+            )
         if not proposal_sources:
             # This should be unreachable because every valid asset requires a source ref,
             # but it remains an explicit proposal-level protection for malformed inputs.
-            blockers.append(_blocker("proposal", "source_provenance", "no source references were retained"))
+            blockers.append(
+                _blocker(
+                    "proposal",
+                    "source_provenance",
+                    "no source references were retained",
+                )
+            )
             data_quality = "blocked"
         cash_residual = {
             "asset_class": "stablecoin_cash",
@@ -544,7 +689,9 @@ class _CryptoTimeSeriesMomentumStrategy:
             "execution_timing": {
                 "market_schedule": "24x7",
                 "signal_cutoff_at": observation_time.isoformat(),
-                "latest_input_available_at": latest_available_at.isoformat() if latest_available_at else None,
+                "latest_input_available_at": (
+                    latest_available_at.isoformat() if latest_available_at else None
+                ),
                 "minimum_execution_delay_minutes": self.config.minimum_execution_delay_minutes,
                 "earliest_paper_rebalance_at": earliest_rebalance_at.isoformat(),
                 "bar_interval_hours": self.config.bar_interval_hours,
@@ -573,12 +720,17 @@ class _CryptoTimeSeriesMomentumStrategy:
 
 
 def _build_crypto_time_series_momentum_proposal(
-    market_data: Mapping[str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]],
+    market_data: Mapping[
+        str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]
+    ],
     assets: Mapping[str, CryptoAssetSpec | Mapping[str, Any]],
     *,
     as_of: str | datetime,
     config: CryptoTimeSeriesMomentumConfig | Mapping[str, Any] | None = None,
-    funding_data: Mapping[str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]] | None = None,
+    funding_data: (
+        Mapping[str, pd.DataFrame | Sequence[Mapping[str, Any]] | Mapping[str, Any]]
+        | None
+    ) = None,
     previous_weights: Mapping[str, float] | None = None,
     source_refs: Sequence[str] = (),
     source_archive_ids: Sequence[str] = (),
@@ -613,14 +765,29 @@ def _asset_eligibility_issue(
     if spec.is_stablecoin:
         return "asset_eligibility", "stablecoins cannot be momentum risk targets"
     if spec.quote_currency not in config.accepted_quote_currencies:
-        return "asset_eligibility", "quote currency is outside the configured collateral/cash universe"
+        return (
+            "asset_eligibility",
+            "quote currency is outside the configured collateral/cash universe",
+        )
     if config.permitted_venues and spec.venue not in config.permitted_venues:
-        return "asset_eligibility", "venue is outside the configured permitted venue list"
+        return (
+            "asset_eligibility",
+            "venue is outside the configured permitted venue list",
+        )
     if spec.listing_age_days < config.minimum_listing_age_days:
-        return "asset_eligibility", "listing age is below the configured eligibility threshold"
-    if _DATA_QUALITY_RANKS[spec.data_quality] < _DATA_QUALITY_RANKS[config.minimum_data_quality]:
+        return (
+            "asset_eligibility",
+            "listing age is below the configured eligibility threshold",
+        )
+    if (
+        _DATA_QUALITY_RANKS[spec.data_quality]
+        < _DATA_QUALITY_RANKS[config.minimum_data_quality]
+    ):
         return "data_quality", "asset data_quality is below the configured minimum"
-    if config.require_point_in_time_coverage and spec.point_in_time_coverage != "verified":
+    if (
+        config.require_point_in_time_coverage
+        and spec.point_in_time_coverage != "verified"
+    ):
         return "point_in_time", "asset point-in-time coverage is not verified"
     try:
         metadata_at = _parse_utc_timestamp(spec.metadata_as_of, "metadata_as_of")
@@ -630,7 +797,10 @@ def _asset_eligibility_issue(
         return "point_in_time", "asset metadata_as_of is after the proposal cutoff"
     age_hours = _hours_between(metadata_at, observation_time)
     if age_hours > config.maximum_metadata_age_hours:
-        return "point_in_time", "asset metadata is older than the configured freshness limit"
+        return (
+            "point_in_time",
+            "asset metadata is older than the configured freshness limit",
+        )
     return None
 
 
@@ -652,15 +822,25 @@ def _normalise_bars(
         if not isinstance(raw, Mapping):
             return None, {}, sources, f"OHLCV row {index} is not an object"
         try:
-            timestamp = _parse_utc_timestamp(raw.get("timestamp"), f"OHLCV row {index} timestamp")
-            available_at = _parse_utc_timestamp(raw.get("available_at"), f"OHLCV row {index} available_at")
-            source_ref = _required_text(raw.get("source_ref"), f"OHLCV row {index} source_ref")
+            timestamp = _parse_utc_timestamp(
+                raw.get("timestamp"), f"OHLCV row {index} timestamp"
+            )
+            available_at = _parse_utc_timestamp(
+                raw.get("available_at"), f"OHLCV row {index} available_at"
+            )
+            source_ref = _required_text(
+                raw.get("source_ref"), f"OHLCV row {index} source_ref"
+            )
             if timestamp > observation_time:
                 raise ValueError("OHLCV timestamp is after the proposal cutoff")
             if available_at < timestamp:
-                raise ValueError("OHLCV available_at precedes its completed bar timestamp")
+                raise ValueError(
+                    "OHLCV available_at precedes its completed bar timestamp"
+                )
             if available_at > observation_time:
-                raise ValueError("OHLCV observation was not available at the proposal cutoff")
+                raise ValueError(
+                    "OHLCV observation was not available at the proposal cutoff"
+                )
             open_price = _positive_float(raw.get("open"), f"OHLCV row {index} open")
             high_price = _positive_float(raw.get("high"), f"OHLCV row {index} high")
             low_price = _positive_float(raw.get("low"), f"OHLCV row {index} low")
@@ -671,8 +851,12 @@ def _normalise_bars(
             if quote_volume is None:
                 quote_volume = volume * close_price
             else:
-                quote_volume = _non_negative_float(quote_volume, f"OHLCV row {index} quote_volume")
-            if low_price > min(open_price, close_price) or high_price < max(open_price, close_price):
+                quote_volume = _non_negative_float(
+                    quote_volume, f"OHLCV row {index} quote_volume"
+                )
+            if low_price > min(open_price, close_price) or high_price < max(
+                open_price, close_price
+            ):
                 raise ValueError("OHLCV high/low does not bound open and close")
         except ValueError as error:
             return None, {}, sources, str(error)
@@ -691,24 +875,54 @@ def _normalise_bars(
             }
         )
         sources.append(source_ref)
-    frame = pd.DataFrame(rows).sort_values("timestamp", kind="stable").reset_index(drop=True)
+    frame = (
+        pd.DataFrame(rows)
+        .sort_values("timestamp", kind="stable")
+        .reset_index(drop=True)
+    )
     if frame["timestamp"].duplicated().any():
         return None, {}, sources, f"{asset_id} OHLCV has duplicate timestamps"
     if len(frame) < config.minimum_history:
-        return None, {}, sources, (
-            f"OHLCV history is shorter than configured minimum ({len(frame)} < {config.minimum_history})"
+        return (
+            None,
+            {},
+            sources,
+            (
+                f"OHLCV history is shorter than configured minimum ({len(frame)} < {config.minimum_history})"
+            ),
         )
-    intervals = frame["timestamp"].diff().dropna().dt.total_seconds().to_numpy(dtype=float) / 3600.0
+    intervals = (
+        frame["timestamp"].diff().dropna().dt.total_seconds().to_numpy(dtype=float)
+        / 3600.0
+    )
     maximum_gap = config.bar_interval_hours * config.maximum_bar_gap_multiple
     if np.any(intervals > maximum_gap + 1e-9):
-        return None, {}, sources, "OHLCV cadence has a gap larger than the configured 24/7 tolerance"
+        return (
+            None,
+            {},
+            sources,
+            "OHLCV cadence has a gap larger than the configured 24/7 tolerance",
+        )
     if np.any(intervals < config.bar_interval_hours * 0.5 - 1e-9):
-        return None, {}, sources, "OHLCV cadence is materially shorter than the configured bar interval"
+        return (
+            None,
+            {},
+            sources,
+            "OHLCV cadence is materially shorter than the configured bar interval",
+        )
     latest = frame.iloc[-1]
     if not bool(latest["tradable"]):
         return None, {}, sources, "latest OHLCV state is not tradable"
-    if _hours_between(latest["timestamp"], observation_time) > config.maximum_bar_age_hours:
-        return None, {}, sources, "latest OHLCV bar is older than the configured 24/7 freshness limit"
+    if (
+        _hours_between(latest["timestamp"], observation_time)
+        > config.maximum_bar_age_hours
+    ):
+        return (
+            None,
+            {},
+            sources,
+            "latest OHLCV bar is older than the configured 24/7 freshness limit",
+        )
     assurance = {
         "asset_id": asset_id,
         "bars": len(frame),
@@ -740,20 +954,39 @@ def _normalise_funding(
         if not isinstance(raw, Mapping):
             return None, sources, f"funding row {index} is not an object"
         try:
-            timestamp = _parse_utc_timestamp(raw.get("timestamp"), f"funding row {index} timestamp")
-            available_at = _parse_utc_timestamp(raw.get("available_at"), f"funding row {index} available_at")
-            source_ref = _required_text(raw.get("source_ref"), f"funding row {index} source_ref")
-            quality = _normalise_data_quality(raw.get("data_quality"), f"funding row {index} data_quality")
-            funding_rate = _finite_float(raw.get("funding_rate"), f"funding row {index} funding_rate")
+            timestamp = _parse_utc_timestamp(
+                raw.get("timestamp"), f"funding row {index} timestamp"
+            )
+            available_at = _parse_utc_timestamp(
+                raw.get("available_at"), f"funding row {index} available_at"
+            )
+            source_ref = _required_text(
+                raw.get("source_ref"), f"funding row {index} source_ref"
+            )
+            quality = _normalise_data_quality(
+                raw.get("data_quality"), f"funding row {index} data_quality"
+            )
+            funding_rate = _finite_float(
+                raw.get("funding_rate"), f"funding row {index} funding_rate"
+            )
             if timestamp > observation_time:
                 raise ValueError("funding timestamp is after the proposal cutoff")
             if available_at < timestamp:
-                raise ValueError("funding available_at precedes its observation timestamp")
+                raise ValueError(
+                    "funding available_at precedes its observation timestamp"
+                )
             if available_at > observation_time:
-                raise ValueError("funding observation was not available at the proposal cutoff")
+                raise ValueError(
+                    "funding observation was not available at the proposal cutoff"
+                )
             if abs(funding_rate) > config.maximum_absolute_funding_rate:
-                raise ValueError("funding rate exceeds the configured data-quality sanity limit")
-            if _DATA_QUALITY_RANKS[quality] < _DATA_QUALITY_RANKS[config.minimum_funding_data_quality]:
+                raise ValueError(
+                    "funding rate exceeds the configured data-quality sanity limit"
+                )
+            if (
+                _DATA_QUALITY_RANKS[quality]
+                < _DATA_QUALITY_RANKS[config.minimum_funding_data_quality]
+            ):
                 raise ValueError("funding data_quality is below the configured minimum")
         except ValueError as error:
             return None, sources, str(error)
@@ -767,21 +1000,36 @@ def _normalise_funding(
             }
         )
         sources.append(source_ref)
-    frame = pd.DataFrame(rows).sort_values("timestamp", kind="stable").reset_index(drop=True)
+    frame = (
+        pd.DataFrame(rows)
+        .sort_values("timestamp", kind="stable")
+        .reset_index(drop=True)
+    )
     if frame["timestamp"].duplicated().any():
         return None, sources, f"{asset_id} funding has duplicate timestamps"
     latest = frame.iloc[-1]
-    if _hours_between(latest["timestamp"], observation_time) > config.maximum_funding_age_hours:
-        return None, sources, "latest funding observation is older than the configured freshness limit"
-    return {
-        "status": "verified",
-        "latest_funding_at": latest["timestamp"].isoformat(),
-        "latest_available_at": latest["available_at"].isoformat(),
-        "latest_funding_rate": float(latest["funding_rate"]),
-        "mean_funding_rate": float(frame["funding_rate"].mean()),
-        "observations": len(frame),
-        "source_ref": str(latest["source_ref"]),
-    }, _unique_strings(sources), None
+    if (
+        _hours_between(latest["timestamp"], observation_time)
+        > config.maximum_funding_age_hours
+    ):
+        return (
+            None,
+            sources,
+            "latest funding observation is older than the configured freshness limit",
+        )
+    return (
+        {
+            "status": "verified",
+            "latest_funding_at": latest["timestamp"].isoformat(),
+            "latest_available_at": latest["available_at"].isoformat(),
+            "latest_funding_rate": float(latest["funding_rate"]),
+            "mean_funding_rate": float(frame["funding_rate"].mean()),
+            "observations": len(frame),
+            "source_ref": str(latest["source_ref"]),
+        },
+        _unique_strings(sources),
+        None,
+    )
 
 
 def _trend_candidate(
@@ -809,9 +1057,16 @@ def _trend_candidate(
             return None, "insufficient OHLCV history for a configured trend window"
         raw_return = float(math.log(close[-1] / close[-1 - window]))
         trend_components[str(window)] = raw_return
-        standardised_components.append(raw_return / (daily_volatility * math.sqrt(window)))
+        standardised_components.append(
+            raw_return / (daily_volatility * math.sqrt(window))
+        )
     signal_score = float(
-        sum(weight * component for weight, component in zip(config.signal_weights, standardised_components, strict=True))
+        sum(
+            weight * component
+            for weight, component in zip(
+                config.signal_weights, standardised_components, strict=True
+            )
+        )
     )
     direction = _direction_with_hysteresis(signal_score, previous_weight, config)
     unexpressed_short_signal = False
@@ -870,7 +1125,9 @@ def _size_candidates(
     if not active:
         return [], [], []
     raw_total = sum(float(item["raw_weight"]) for item in active)
-    total_scale = min(1.0, config.max_total_gross_exposure / raw_total) if raw_total else 1.0
+    total_scale = (
+        min(1.0, config.max_total_gross_exposure / raw_total) if raw_total else 1.0
+    )
     preliminary = [
         {**dict(item), "preliminary_weight": float(item["raw_weight"]) * total_scale}
         for item in active
@@ -885,7 +1142,9 @@ def _size_candidates(
     for venue in sorted(by_venue):
         members = by_venue[venue]
         uncapped = sum(float(item["preliminary_weight"]) for item in members)
-        scale = min(1.0, config.max_exchange_gross_exposure / uncapped) if uncapped else 1.0
+        scale = (
+            min(1.0, config.max_exchange_gross_exposure / uncapped) if uncapped else 1.0
+        )
         venue_scales[venue] = scale
         final_gross = uncapped * scale
         concentration.append(
@@ -904,7 +1163,10 @@ def _size_candidates(
     targets: list[dict[str, Any]] = []
     for candidate in sorted(
         preliminary,
-        key=lambda item: (-abs(float(item["signal_score"])), str(item["spec"].asset_id)),
+        key=lambda item: (
+            -abs(float(item["signal_score"])),
+            str(item["spec"].asset_id),
+        ),
     ):
         spec: CryptoAssetSpec = candidate["spec"]
         gross_weight = min(
@@ -929,12 +1191,17 @@ def _size_candidates(
                 "direction": "long" if signed_weight > 0 else "short",
                 "signal_score": round(float(candidate["signal_score"]), 8),
                 "trend_returns": {
-                    key: round(float(value), 8) for key, value in candidate["trend_returns"].items()
+                    key: round(float(value), 8)
+                    for key, value in candidate["trend_returns"].items()
                 },
                 "daily_volatility": round(float(candidate["daily_volatility"]), 10),
-                "annualized_volatility": round(float(candidate["annualized_volatility"]), 10),
+                "annualized_volatility": round(
+                    float(candidate["annualized_volatility"]), 10
+                ),
                 "reference_price": round(float(candidate["reference_price"]), 8),
-                "latest_quote_volume": round(float(candidate["latest_quote_volume"]), 8),
+                "latest_quote_volume": round(
+                    float(candidate["latest_quote_volume"]), 8
+                ),
                 "market_data_source_ref": candidate["market_data_source_ref"],
                 "funding": funding,
                 "source_ref": spec.source_ref,
@@ -949,7 +1216,9 @@ def _size_candidates(
         # apparently unbounded proposal.
         final_scale = config.max_total_gross_exposure / total
         for target in targets:
-            target["target_weight"] = round(float(target["target_weight"]) * final_scale, 8)
+            target["target_weight"] = round(
+                float(target["target_weight"]) * final_scale, 8
+            )
             target["gross_weight"] = round(abs(float(target["target_weight"])), 8)
         warnings.append("A defensive portfolio gross-exposure rescale was applied.")
     return targets, concentration, warnings
@@ -1034,12 +1303,18 @@ def _records_from_value(
         return list(value.to_dict(orient="records"))
     raw: Any = value
     if isinstance(value, Mapping):
-        for key in (("bars", "records", "data") if kind == "bars" else ("funding", "records", "data")):
+        for key in (
+            ("bars", "records", "data")
+            if kind == "bars"
+            else ("funding", "records", "data")
+        ):
             if key in value:
                 raw = value[key]
                 break
         else:
-            raise ValueError(f"{kind} input object must contain an explicit record sequence")
+            raise ValueError(
+                f"{kind} input object must contain an explicit record sequence"
+            )
     if isinstance(raw, (str, bytes)) or not isinstance(raw, Sequence):
         raise TypeError(f"{kind} input must be a sequence of records")
     return list(raw)
@@ -1059,7 +1334,9 @@ def _normalise_previous_weights(value: Mapping[str, float] | None) -> dict[str, 
     return normalized
 
 
-def _blocker(asset_id: str, gate: str, reason: str, *, symbol: str | None = None) -> dict[str, str]:
+def _blocker(
+    asset_id: str, gate: str, reason: str, *, symbol: str | None = None
+) -> dict[str, str]:
     result = {"asset_id": asset_id, "gate": gate, "reason": reason}
     if symbol:
         result["symbol"] = symbol
@@ -1134,11 +1411,15 @@ def _non_negative_float(value: Any, name: str) -> float:
 
 def _parse_utc_timestamp(value: Any, name: str) -> pd.Timestamp:
     if value is None or not str(value).strip():
-        raise ValueError(f"{name} is required and must be a timezone-aware ISO-8601 timestamp")
+        raise ValueError(
+            f"{name} is required and must be a timezone-aware ISO-8601 timestamp"
+        )
     try:
         timestamp = pd.Timestamp(value)
     except (TypeError, ValueError) as error:
-        raise ValueError(f"{name} must be a timezone-aware ISO-8601 timestamp") from error
+        raise ValueError(
+            f"{name} must be a timezone-aware ISO-8601 timestamp"
+        ) from error
     if pd.isna(timestamp) or timestamp.tzinfo is None:
         raise ValueError(f"{name} must be a timezone-aware ISO-8601 timestamp")
     return timestamp.tz_convert("UTC")
@@ -1151,7 +1432,9 @@ def _hours_between(earlier: pd.Timestamp, later: pd.Timestamp) -> float:
 def _unique_strings(values: Sequence[Any]) -> list[str]:
     if isinstance(values, (str, bytes)):
         values = (values,)
-    return list(dict.fromkeys(str(value).strip() for value in values if str(value).strip()))
+    return list(
+        dict.fromkeys(str(value).strip() for value in values if str(value).strip())
+    )
 
 
 __all__ = [

@@ -42,7 +42,9 @@ def _frame(
             "initial_margin_rate": [0.12] * periods,
             "maintenance_margin_rate": [0.10] * periods,
             "position_limit": [500] * periods,
-            "contract_facts_as_of": [timestamp.date().isoformat() for timestamp in dates],
+            "contract_facts_as_of": [
+                timestamp.date().isoformat() for timestamp in dates
+            ],
             "contract_source_ref": ["fixture:dated-contract-facts"] * periods,
         }
     )
@@ -185,37 +187,48 @@ def test_cta_backtest_blocks_unevidenced_historical_contract_data() -> None:
 
 def test_cta_backtest_books_fill_to_settlement_slippage() -> None:
     frame = _frame(direction=1.0, periods=175)
-    zero_slippage = _DomesticFuturesCTABacktestEngine(
-        _config(),
-        FuturesExecutionAssumptions(
-            slippage_bps=0.0,
-            commission_per_contract=0.0,
-            rebalance_buffer_contracts=0,
-            max_volume_participation=0.10,
-        ),
-    ).run(
-        {"UP": frame},
-        {"UP": _spec("UP", "metals")},
-        initial_capital=1_000_000,
-        source_archive_ids=["sha256:fixture-contract-history"],
-    ).to_dict()
-    expensive_slippage = _DomesticFuturesCTABacktestEngine(
-        _config(),
-        FuturesExecutionAssumptions(
-            slippage_bps=100.0,
-            commission_per_contract=0.0,
-            rebalance_buffer_contracts=0,
-            max_volume_participation=0.10,
-        ),
-    ).run(
-        {"UP": frame},
-        {"UP": _spec("UP", "metals")},
-        initial_capital=1_000_000,
-        source_archive_ids=["sha256:fixture-contract-history"],
-    ).to_dict()
+    zero_slippage = (
+        _DomesticFuturesCTABacktestEngine(
+            _config(),
+            FuturesExecutionAssumptions(
+                slippage_bps=0.0,
+                commission_per_contract=0.0,
+                rebalance_buffer_contracts=0,
+                max_volume_participation=0.10,
+            ),
+        )
+        .run(
+            {"UP": frame},
+            {"UP": _spec("UP", "metals")},
+            initial_capital=1_000_000,
+            source_archive_ids=["sha256:fixture-contract-history"],
+        )
+        .to_dict()
+    )
+    expensive_slippage = (
+        _DomesticFuturesCTABacktestEngine(
+            _config(),
+            FuturesExecutionAssumptions(
+                slippage_bps=100.0,
+                commission_per_contract=0.0,
+                rebalance_buffer_contracts=0,
+                max_volume_participation=0.10,
+            ),
+        )
+        .run(
+            {"UP": frame},
+            {"UP": _spec("UP", "metals")},
+            initial_capital=1_000_000,
+            source_archive_ids=["sha256:fixture-contract-history"],
+        )
+        .to_dict()
+    )
 
     assert zero_slippage["trades"]
-    assert zero_slippage["trades"][0]["fill_to_settlement_pnl"] > expensive_slippage["trades"][0]["fill_to_settlement_pnl"]
+    assert (
+        zero_slippage["trades"][0]["fill_to_settlement_pnl"]
+        > expensive_slippage["trades"][0]["fill_to_settlement_pnl"]
+    )
     assert zero_slippage["final_equity"] > expensive_slippage["final_equity"]
 
 
@@ -228,21 +241,29 @@ def test_cta_backtest_requires_and_uses_dated_actual_contract_roll_facts() -> No
     frame["roll_entry_price"] = None
     frame["roll_source_ref"] = None
     frame.loc[roll_index, "roll_from_contract"] = "UP0"
-    frame.loc[roll_index, "roll_exit_price"] = float(frame.loc[roll_index - 1, "settlement"])
+    frame.loc[roll_index, "roll_exit_price"] = float(
+        frame.loc[roll_index - 1, "settlement"]
+    )
     frame.loc[roll_index, "roll_entry_price"] = float(frame.loc[roll_index, "open"])
     frame.loc[roll_index, "roll_source_ref"] = "fixture:verified-roll"
     raw_spec = _spec("UP", "metals").to_dict()
     raw_spec["active_contract"] = "UP1"
 
-    result = _DomesticFuturesCTABacktestEngine(
-        _config(),
-        FuturesExecutionAssumptions(rebalance_buffer_contracts=0, max_volume_participation=0.10),
-    ).run(
-        {"UP": frame},
-        {"UP": raw_spec},
-        initial_capital=1_000_000,
-        source_archive_ids=["sha256:fixture-contract-history"],
-    ).to_dict()
+    result = (
+        _DomesticFuturesCTABacktestEngine(
+            _config(),
+            FuturesExecutionAssumptions(
+                rebalance_buffer_contracts=0, max_volume_participation=0.10
+            ),
+        )
+        .run(
+            {"UP": frame},
+            {"UP": raw_spec},
+            initial_capital=1_000_000,
+            source_archive_ids=["sha256:fixture-contract-history"],
+        )
+        .to_dict()
+    )
 
     assert result["roll_events"]
     roll = result["roll_events"][0]

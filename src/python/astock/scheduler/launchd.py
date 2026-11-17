@@ -8,7 +8,6 @@ import re
 from pathlib import Path
 from typing import Any
 
-
 DEFAULT_LAUNCHD_LABEL = "com.astock.scheduler"
 _LABEL_PATTERN = re.compile(r"^[A-Za-z0-9][A-Za-z0-9._-]*$")
 
@@ -23,7 +22,9 @@ def build_launch_agent_definition(
     """Build a deterministic LaunchAgent property list without installing it."""
     normalized_label = label.strip()
     if not _LABEL_PATTERN.fullmatch(normalized_label):
-        raise ValueError("launchd label may contain only letters, numbers, dots, dashes, and underscores")
+        raise ValueError(
+            "launchd label may contain only letters, numbers, dots, dashes, and underscores"
+        )
 
     python_path = python_executable.expanduser().resolve()
     root_path = project_root.expanduser().resolve()

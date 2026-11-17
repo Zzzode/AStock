@@ -10,6 +10,7 @@ from pydantic import BaseModel
 
 class RiskLevel(str, Enum):
     """Risk level"""
+
     CONSERVATIVE = "conservative"  # Conservative
     MODERATE = "moderate"  # Moderate
     AGGRESSIVE = "aggressive"  # Aggressive
@@ -17,6 +18,7 @@ class RiskLevel(str, Enum):
 
 class TradingStyle(str, Enum):
     """Trading style"""
+
     DAY_TRADING = "day_trading"  # Day Trading
     SWING = "swing"  # Swing Trading
     TREND_FOLLOWING = "trend_following"  # Trend Following
@@ -115,7 +117,9 @@ class ConfigManager:
             with open(config_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
                 # Convert time strings to time objects
-                if "alert_time_start" in data and isinstance(data["alert_time_start"], str):
+                if "alert_time_start" in data and isinstance(
+                    data["alert_time_start"], str
+                ):
                     parts = data["alert_time_start"].split(":")
                     h, m = int(parts[0]), int(parts[1])
                     data["alert_time_start"] = time(h, m)

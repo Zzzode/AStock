@@ -113,17 +113,25 @@ def review_paper_decision(
     if not benchmark:
         raise ValueError("benchmark_id is required for a paper-decision review")
     gross = _return_value(gross_paper_return, "gross_paper_return", allow_negative=True)
-    costs = _return_value(implementation_cost_return, "implementation_cost_return", allow_negative=False)
-    benchmark_value = _return_value(benchmark_return, "benchmark_return", allow_negative=True)
-    threshold = _return_value(in_line_threshold, "in_line_threshold", allow_negative=False)
+    costs = _return_value(
+        implementation_cost_return, "implementation_cost_return", allow_negative=False
+    )
+    benchmark_value = _return_value(
+        benchmark_return, "benchmark_return", allow_negative=True
+    )
+    threshold = _return_value(
+        in_line_threshold, "in_line_threshold", allow_negative=False
+    )
     net = gross - costs
     active = net - benchmark_value
     outcome = (
         ReviewOutcome.OUTPERFORMED
         if active > threshold
-        else ReviewOutcome.UNDERPERFORMED
-        if active < -threshold
-        else ReviewOutcome.IN_LINE
+        else (
+            ReviewOutcome.UNDERPERFORMED
+            if active < -threshold
+            else ReviewOutcome.IN_LINE
+        )
     )
     versions = dict(decision["model_versions"])
     components = {
@@ -168,13 +176,17 @@ def review_paper_decision(
     )
 
 
-def _validate_ic_decision(plan: StrategyPlan, value: Mapping[str, Any]) -> Mapping[str, Any]:
+def _validate_ic_decision(
+    plan: StrategyPlan, value: Mapping[str, Any]
+) -> Mapping[str, Any]:
     if str(value.get("schema_version") or "") != "market-desk-ic-decision.v1":
         raise ValueError("paper-decision review requires market-desk-ic-decision.v1")
     if str(value.get("candidate_id") or "") != plan.plan_id:
         raise ValueError("IC decision candidate_id must match strategy plan_id")
     if str(value.get("decision") or "") not in {"approve", "conditional"}:
-        raise ValueError("paper-decision review requires an approved or conditional IC decision")
+        raise ValueError(
+            "paper-decision review requires an approved or conditional IC decision"
+        )
     versions = value.get("model_versions")
     if not isinstance(versions, Mapping) or not any(
         str(name).strip() and str(version).strip() for name, version in versions.items()
@@ -201,7 +213,13 @@ def _return_value(value: float, field_name: str, *, allow_negative: bool) -> flo
 
 
 def _decision_fingerprint(decision: Mapping[str, Any]) -> str:
-    canonical = json.dumps(dict(decision), ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        dict(decision),
+        ensure_ascii=False,
+        sort_keys=True,
+        separators=(",", ":"),
+        default=str,
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()[:16]
 
 
@@ -220,7 +238,9 @@ def _normalize_return_evidence(
         return (
             {},
             "blocked",
-            ("Return and benchmark inputs are user-supplied values without a frozen source packet; this review cannot support a publishable performance claim.",),
+            (
+                "Return and benchmark inputs are user-supplied values without a frozen source packet; this review cannot support a publishable performance claim.",
+            ),
         )
     evidence = dict(value)
     required_refs = ("paper_return_ref", "benchmark_return_ref")
@@ -232,7 +252,9 @@ def _normalize_return_evidence(
         return (
             evidence,
             "blocked",
-            ("Return evidence lacks an eligible source, frozen archive, authorization attestation, or matched paper/benchmark references.",),
+            (
+                "Return evidence lacks an eligible source, frozen archive, authorization attestation, or matched paper/benchmark references.",
+            ),
         )
     archive_id = str(evidence["archive_id"])
     if archive_id not in str(evidence["paper_return_ref"]) or archive_id not in str(
@@ -241,7 +263,9 @@ def _normalize_return_evidence(
         return (
             evidence,
             "blocked",
-            ("Paper and benchmark return references must both bind the declared frozen archive ID.",),
+            (
+                "Paper and benchmark return references must both bind the declared frozen archive ID.",
+            ),
         )
     if (
         str(evidence.get("evaluation_start") or "") != evaluation_start
@@ -263,7 +287,9 @@ def _normalize_return_evidence(
         return (
             evidence,
             "blocked",
-            ("Return evidence archive is missing, unreadable, or does not match its declared source/hash.",),
+            (
+                "Return evidence archive is missing, unreadable, or does not match its declared source/hash.",
+            ),
         )
     value_assurance = _verify_archived_return_values(
         evidence,
@@ -314,12 +340,22 @@ def _verify_archived_return_values(
     return-calculation records rather than an arbitrary market-data snapshot.
     """
     try:
-        payload = json.loads(Path(str(evidence["source_archive_path"])).read_text(encoding="utf-8"))
+        payload = json.loads(
+            Path(str(evidence["source_archive_path"])).read_text(encoding="utf-8")
+        )
     except (KeyError, OSError, json.JSONDecodeError) as error:
-        return {"status": "blocked", "failures": [f"Unable to read frozen return archive: {error}"]}
-    raw_records = payload.get("raw_source_records") if isinstance(payload, Mapping) else None
+        return {
+            "status": "blocked",
+            "failures": [f"Unable to read frozen return archive: {error}"],
+        }
+    raw_records = (
+        payload.get("raw_source_records") if isinstance(payload, Mapping) else None
+    )
     if not isinstance(raw_records, Mapping):
-        return {"status": "blocked", "failures": ["Frozen return archive lacks raw source records."]}
+        return {
+            "status": "blocked",
+            "failures": ["Frozen return archive lacks raw source records."],
+        }
 
     public = str(evidence.get("source") or "") == "akshare_public"
     record = (
@@ -328,46 +364,91 @@ def _verify_archived_return_values(
         else raw_records.get("formal_paper_return_review")
     )
     if not isinstance(record, Mapping):
-        expected = "frozen_public_portfolio_review" if public else "formal_paper_return_review"
+        expected = (
+            "frozen_public_portfolio_review" if public else "formal_paper_return_review"
+        )
         return {
             "status": "blocked",
-            "failures": [f"Frozen return archive lacks the required {expected} record."],
+            "failures": [
+                f"Frozen return archive lacks the required {expected} record."
+            ],
         }
 
     if public:
         portfolio = record.get("portfolio_replay")
         benchmark = record.get("benchmark")
         observed_values = {
-            "gross_paper_return": portfolio.get("total_return") if isinstance(portfolio, Mapping) else None,
-            "implementation_cost_return": portfolio.get("implementation_cost_return") if isinstance(portfolio, Mapping) else None,
-            "benchmark_return": benchmark.get("return") if isinstance(benchmark, Mapping) else None,
-            "benchmark_id": benchmark.get("benchmark_id") if isinstance(benchmark, Mapping) else None,
-            "evaluation_start": benchmark.get("evaluation_start") if isinstance(benchmark, Mapping) else None,
-            "evaluation_end": benchmark.get("evaluation_end") if isinstance(benchmark, Mapping) else None,
+            "gross_paper_return": (
+                portfolio.get("total_return")
+                if isinstance(portfolio, Mapping)
+                else None
+            ),
+            "implementation_cost_return": (
+                portfolio.get("implementation_cost_return")
+                if isinstance(portfolio, Mapping)
+                else None
+            ),
+            "benchmark_return": (
+                benchmark.get("return") if isinstance(benchmark, Mapping) else None
+            ),
+            "benchmark_id": (
+                benchmark.get("benchmark_id")
+                if isinstance(benchmark, Mapping)
+                else None
+            ),
+            "evaluation_start": (
+                benchmark.get("evaluation_start")
+                if isinstance(benchmark, Mapping)
+                else None
+            ),
+            "evaluation_end": (
+                benchmark.get("evaluation_end")
+                if isinstance(benchmark, Mapping)
+                else None
+            ),
         }
-        replay_assurance = portfolio.get("data_assurance") if isinstance(portfolio, Mapping) else None
-        if not isinstance(replay_assurance, Mapping) or replay_assurance.get("status") != "pass":
+        replay_assurance = (
+            portfolio.get("data_assurance") if isinstance(portfolio, Mapping) else None
+        )
+        if (
+            not isinstance(replay_assurance, Mapping)
+            or replay_assurance.get("status") != "pass"
+        ):
             return {
                 "status": "blocked",
-                "failures": ["Public return record lacks a verified frozen portfolio replay."],
+                "failures": [
+                    "Public return record lacks a verified frozen portfolio replay."
+                ],
             }
     else:
         if record.get("schema_version") != "formal_paper_return_review.v1":
             return {
                 "status": "blocked",
-                "failures": ["Formal return record must use formal_paper_return_review.v1."],
+                "failures": [
+                    "Formal return record must use formal_paper_return_review.v1."
+                ],
             }
         portfolio = record.get("portfolio_replay")
         benchmark = record.get("benchmark")
         observed_values = {
             "gross_paper_return": record.get("gross_paper_return"),
             "implementation_cost_return": record.get("implementation_cost_return"),
-            "benchmark_return": benchmark.get("return") if isinstance(benchmark, Mapping) else None,
-            "benchmark_id": benchmark.get("benchmark_id") if isinstance(benchmark, Mapping) else None,
+            "benchmark_return": (
+                benchmark.get("return") if isinstance(benchmark, Mapping) else None
+            ),
+            "benchmark_id": (
+                benchmark.get("benchmark_id")
+                if isinstance(benchmark, Mapping)
+                else None
+            ),
             "evaluation_start": record.get("evaluation_start"),
             "evaluation_end": record.get("evaluation_end"),
         }
-        reproducibility = portfolio.get("reproducibility_assurance") if isinstance(portfolio, Mapping) else None
+        reproducibility = (
+            portfolio.get("reproducibility_assurance")
+            if isinstance(portfolio, Mapping)
+            else None
+        )
         if (
             not isinstance(portfolio, Mapping)
             or not str(portfolio.get("input_archive_id") or "").strip()
@@ -420,12 +501,16 @@ def _return_value_mismatches(
             failures.append(f"Frozen return record lacks a numeric {field}.")
             continue
         if not math.isclose(actual, expected, rel_tol=0.0, abs_tol=1e-10):
-            failures.append(f"Frozen return record {field} does not match the submitted review value.")
+            failures.append(
+                f"Frozen return record {field} does not match the submitted review value."
+            )
     for field, expected in (
         ("benchmark_id", benchmark_id),
         ("evaluation_start", evaluation_start),
         ("evaluation_end", evaluation_end),
     ):
         if str(observed.get(field) or "") != expected:
-            failures.append(f"Frozen return record {field} does not match the submitted review value.")
+            failures.append(
+                f"Frozen return record {field} does not match the submitted review value."
+            )
     return failures

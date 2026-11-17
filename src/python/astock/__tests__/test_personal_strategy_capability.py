@@ -5,7 +5,9 @@ import pytest
 from astock import capabilities
 
 
-def test_crypto_capability_fails_closed_without_explicit_legal_access_attestation() -> None:
+def test_crypto_capability_fails_closed_without_explicit_legal_access_attestation() -> (
+    None
+):
     with pytest.raises(ValueError, match="lawful_crypto_market_access"):
         capabilities.build_crypto_time_series_momentum_proposal(
             {},
@@ -36,13 +38,17 @@ def test_crypto_capability_rejects_a_china_mainland_personal_route() -> None:
         )
 
 
-def test_crypto_capability_preserves_the_non_inference_access_gate(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_crypto_capability_preserves_the_non_inference_access_gate(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     def _proposal(*args: object, **kwargs: object) -> dict[str, object]:
         assert args == ({}, {"BTC": {"venue": "venue-a", "market_type": "spot"}})
         assert kwargs["as_of"] == "2026-08-15T00:00:00Z"
         return {"warnings": [], "research_only": True, "no_order_execution": True}
 
-    monkeypatch.setattr(capabilities, "_build_crypto_time_series_momentum_proposal", _proposal)
+    monkeypatch.setattr(
+        capabilities, "_build_crypto_time_series_momentum_proposal", _proposal
+    )
 
     result = capabilities.build_crypto_time_series_momentum_proposal(
         {},

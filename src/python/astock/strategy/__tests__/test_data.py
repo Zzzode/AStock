@@ -27,7 +27,9 @@ def _raw_frame() -> pd.DataFrame:
 
 
 @pytest.mark.asyncio
-async def test_public_cta_input_freezes_and_detects_tampering(monkeypatch: pytest.MonkeyPatch, tmp_path: Path) -> None:
+async def test_public_cta_input_freezes_and_detects_tampering(
+    monkeypatch: pytest.MonkeyPatch, tmp_path: Path
+) -> None:
     monkeypatch.setattr(
         "astock.strategy.data._fetch_sina_continuous_futures",
         lambda *_: _raw_frame(),
@@ -113,7 +115,8 @@ def test_public_cta_parser_downcasts_legacy_verified_instrument_to_proxy() -> No
 
     packet["source_manifest"] = {
         "source": "akshare_public_sina_continuous_futures",
-        "archive_id": "sha256:" + _content_hash(
+        "archive_id": "sha256:"
+        + _content_hash(
             {
                 "schema_version": "market_data_frozen_archive.v1",
                 "source": "akshare_public_sina_continuous_futures",
@@ -125,7 +128,9 @@ def test_public_cta_parser_downcasts_legacy_verified_instrument_to_proxy() -> No
     assert parsed["instruments"]["RB0"]["contract_lifecycle_coverage"] == "proxy"
 
 
-def test_frozen_public_cta_replay_is_blocked_without_actual_contract_roll_data(tmp_path: Path) -> None:
+def test_frozen_public_cta_replay_is_blocked_without_actual_contract_roll_data(
+    tmp_path: Path,
+) -> None:
     packet = {
         "schema_version": "public_domestic_futures_cta_input.v1",
         "market_data": {"RB0": [{"date": "2026-01-01"}]},

@@ -185,7 +185,8 @@ class FinancialStatementService:
             )
 
         period_columns = [
-            col for col in df.columns
+            col
+            for col in df.columns
             if col not in ("选项", "指标") and col.isdigit() and len(col) == 8
         ]
         period_columns = sorted(period_columns, reverse=True)[:max_periods]
@@ -208,12 +209,14 @@ class FinancialStatementService:
                 raw_value = row.get(period_col)
                 metrics[en_name] = _safe_float(raw_value)
 
-            periods_list.append(FinancialPeriod(
-                period=period_col,
-                year=year,
-                quarter=quarter,
-                metrics=metrics,
-            ))
+            periods_list.append(
+                FinancialPeriod(
+                    period=period_col,
+                    year=year,
+                    quarter=quarter,
+                    metrics=metrics,
+                )
+            )
 
         yoy = _compute_yoy(periods_list)
         qoq = _compute_qoq(periods_list)
@@ -294,8 +297,12 @@ def _growth_between(
 ) -> dict[str, Optional[float]]:
     """Compute growth rates between two periods for key absolute metrics."""
     growth_metrics = [
-        "total_revenue", "net_profit", "net_profit_parent",
-        "net_profit_deducted", "operating_cash_flow", "equity",
+        "total_revenue",
+        "net_profit",
+        "net_profit_parent",
+        "net_profit_deducted",
+        "operating_cash_flow",
+        "equity",
     ]
     result: dict[str, Optional[float]] = {}
     for metric in growth_metrics:

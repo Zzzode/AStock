@@ -10,8 +10,12 @@ def test_new_and_reset_profiles_default_to_public_observation(tmp_path) -> None:
     manager = ConfigManager(config_dir=str(tmp_path))
 
     assert UserConfig().market_data_mode is MarketDataMode.PUBLIC_OBSERVATION
-    assert manager.load("new-user").market_data_mode is MarketDataMode.PUBLIC_OBSERVATION
-    assert manager.reset("new-user").market_data_mode is MarketDataMode.PUBLIC_OBSERVATION
+    assert (
+        manager.load("new-user").market_data_mode is MarketDataMode.PUBLIC_OBSERVATION
+    )
+    assert (
+        manager.reset("new-user").market_data_mode is MarketDataMode.PUBLIC_OBSERVATION
+    )
 
 
 def test_new_and_reset_profiles_default_to_eod_preplanned_decisions(tmp_path) -> None:

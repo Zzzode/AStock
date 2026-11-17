@@ -7,7 +7,12 @@ from typer.testing import CliRunner
 from astock import capabilities
 from astock.market_desk import RestrictedListAttestation, RestrictedListStore
 from astock.portfolio import portfolio_cli
-from astock.research import ResearchEntry, ResearchLedger, ResearchObservation, ResearchStatus
+from astock.research import (
+    ResearchEntry,
+    ResearchLedger,
+    ResearchObservation,
+    ResearchStatus,
+)
 
 
 def _active_assured_strategy_entry(ledger_path, *, code="600460"):
@@ -121,10 +126,15 @@ def _entry_options(archive_path, archive_id, restricted_list_path):
 
 def test_portfolio_cli_uses_canonical_project_data_paths():
     assert portfolio_cli.DB_PATH == capabilities.DEFAULT_DB_PATH
-    assert portfolio_cli.DEFAULT_RESEARCH_LEDGER_PATH == capabilities.DEFAULT_RESEARCH_LEDGER_PATH
+    assert (
+        portfolio_cli.DEFAULT_RESEARCH_LEDGER_PATH
+        == capabilities.DEFAULT_RESEARCH_LEDGER_PATH
+    )
 
 
-def test_portfolio_cli_reads_legacy_portfolio_only_when_canonical_file_is_absent(monkeypatch, tmp_path):
+def test_portfolio_cli_reads_legacy_portfolio_only_when_canonical_file_is_absent(
+    monkeypatch, tmp_path
+):
     canonical_path = tmp_path / "data" / "portfolio.json"
     legacy_path = tmp_path / "src" / "data" / "portfolio.json"
     legacy_path.parent.mkdir(parents=True)
@@ -153,23 +163,50 @@ def test_paper_buy_blocks_risk_limit_and_persists_explicit_stop(monkeypatch, tmp
     restricted_list_path = _attest_restricted_list(monkeypatch, tmp_path)
     entry_options = _entry_options(archive_path, archive_id, restricted_list_path)
     monkeypatch.setattr(portfolio_cli, "PORTFOLIO_PATH", portfolio_path)
-    monkeypatch.setattr(portfolio_cli, "_exchange_trading_days", lambda: frozenset({date(2026, 7, 28), date(2026, 7, 29)}))
+    monkeypatch.setattr(
+        portfolio_cli,
+        "_exchange_trading_days",
+        lambda: frozenset({date(2026, 7, 28), date(2026, 7, 29)}),
+    )
     runner = CliRunner()
 
     ungoverned = runner.invoke(
         portfolio_cli.app,
-        ["buy", "600460", "100", "--price", "100", "--trade-date", "2026-07-28", "--json"],
+        [
+            "buy",
+            "600460",
+            "100",
+            "--price",
+            "100",
+            "--trade-date",
+            "2026-07-28",
+            "--json",
+        ],
     )
 
     assert ungoverned.exit_code == 1
-    assert "require an active, independently assured" in json.loads(ungoverned.stdout)["error"]
+    assert (
+        "require an active, independently assured"
+        in json.loads(ungoverned.stdout)["error"]
+    )
     assert not portfolio_path.exists()
 
     blocked = runner.invoke(
         portfolio_cli.app,
         [
-            "buy", "600460", "300", "--price", "100", "--trade-date", "2026-07-28",
-            "--strategy-entry-id", entry.entry_id, "--ledger-path", str(ledger_path), *entry_options, "--json",
+            "buy",
+            "600460",
+            "300",
+            "--price",
+            "100",
+            "--trade-date",
+            "2026-07-28",
+            "--strategy-entry-id",
+            entry.entry_id,
+            "--ledger-path",
+            str(ledger_path),
+            *entry_options,
+            "--json",
         ],
     )
 
@@ -203,7 +240,10 @@ def test_paper_buy_blocks_risk_limit_and_persists_explicit_stop(monkeypatch, tmp
     assert saved["positions"]["600460"]["stop_distance_pct"] == 0.05
     assert saved["positions"]["600460"]["governance_status"] == "governed"
     assert saved["positions"]["600460"]["strategy_entry_id"] == entry.entry_id
-    assert saved["trades"][0]["entry_evidence"]["observation_archive"]["archive_id"] == archive_id
+    assert (
+        saved["trades"][0]["entry_evidence"]["observation_archive"]["archive_id"]
+        == archive_id
+    )
     assert saved["trades"][0]["amount"] == 10_000
     governance = runner.invoke(
         portfolio_cli.app,
@@ -216,7 +256,9 @@ def test_paper_buy_blocks_risk_limit_and_persists_explicit_stop(monkeypatch, tmp
 def test_paper_portfolio_governance_cli_marks_unlinked_positions(monkeypatch, tmp_path):
     portfolio_path = tmp_path / "portfolio.json"
     portfolio_path.write_text(
-        json.dumps({"positions": {"600460": {"code": "600460"}}, "cash": 90_000, "trades": []}),
+        json.dumps(
+            {"positions": {"600460": {"code": "600460"}}, "cash": 90_000, "trades": []}
+        ),
         encoding="utf-8",
     )
     monkeypatch.setattr(portfolio_cli, "PORTFOLIO_PATH", portfolio_path)
@@ -249,32 +291,71 @@ def test_paper_portfolio_enforces_t_plus_one_sellability(monkeypatch, tmp_path):
         str(ledger_path),
     ]
     monkeypatch.setattr(portfolio_cli, "PORTFOLIO_PATH", portfolio_path)
-    monkeypatch.setattr(portfolio_cli, "_exchange_trading_days", lambda: frozenset({date(2026, 7, 28), date(2026, 7, 29)}))
+    monkeypatch.setattr(
+        portfolio_cli,
+        "_exchange_trading_days",
+        lambda: frozenset({date(2026, 7, 28), date(2026, 7, 29)}),
+    )
     runner = CliRunner()
 
     buy = runner.invoke(
         portfolio_cli.app,
         [
-            "buy", "600460", "100", "--price", "100", "--trade-date", "2026-07-28",
-            "--strategy-entry-id", entry.entry_id, "--ledger-path", str(ledger_path), *entry_options, "--json",
+            "buy",
+            "600460",
+            "100",
+            "--price",
+            "100",
+            "--trade-date",
+            "2026-07-28",
+            "--strategy-entry-id",
+            entry.entry_id,
+            "--ledger-path",
+            str(ledger_path),
+            *entry_options,
+            "--json",
         ],
     )
     same_day_sell = runner.invoke(
         portfolio_cli.app,
-        ["sell", "600460", "100", "--price", "100", "--trade-date", "2026-07-28", "--json"],
+        [
+            "sell",
+            "600460",
+            "100",
+            "--price",
+            "100",
+            "--trade-date",
+            "2026-07-28",
+            "--json",
+        ],
     )
     missing_evidence_sell = runner.invoke(
         portfolio_cli.app,
         [
-            "sell", "600460", "100", "--price", "100", "--trade-date", "2026-07-29",
-            "--ledger-path", str(ledger_path), "--json",
+            "sell",
+            "600460",
+            "100",
+            "--price",
+            "100",
+            "--trade-date",
+            "2026-07-29",
+            "--ledger-path",
+            str(ledger_path),
+            "--json",
         ],
     )
     next_day_sell = runner.invoke(
         portfolio_cli.app,
         [
-            "sell", "600460", "100", "--price", "100", "--trade-date", "2026-07-29",
-            *exit_options, "--json",
+            "sell",
+            "600460",
+            "100",
+            "--price",
+            "100",
+            "--trade-date",
+            "2026-07-29",
+            *exit_options,
+            "--json",
         ],
     )
 
@@ -314,7 +395,9 @@ def test_paper_portfolio_enforces_t_plus_one_sellability(monkeypatch, tmp_path):
     assert resolved_payload["resolved_exit_review_count"] == 1
 
 
-def test_paper_sell_rejects_nonpositive_share_count_without_mutating_portfolio(monkeypatch, tmp_path):
+def test_paper_sell_rejects_nonpositive_share_count_without_mutating_portfolio(
+    monkeypatch, tmp_path
+):
     portfolio_path = tmp_path / "portfolio.json"
     initial = {
         "cash": 90_000,
@@ -339,7 +422,16 @@ def test_paper_sell_rejects_nonpositive_share_count_without_mutating_portfolio(m
 
     result = CliRunner().invoke(
         portfolio_cli.app,
-        ["sell", "600460", "0", "--price", "100", "--trade-date", "2026-07-28", "--json"],
+        [
+            "sell",
+            "600460",
+            "0",
+            "--price",
+            "100",
+            "--trade-date",
+            "2026-07-28",
+            "--json",
+        ],
     )
 
     assert result.exit_code == 1

@@ -6,7 +6,9 @@ import pytest
 from astock.backtest import PortfolioBacktestEngine
 
 
-def _frame(opens: list[float], closes: list[float], tradable: list[bool] | None = None) -> pd.DataFrame:
+def _frame(
+    opens: list[float], closes: list[float], tradable: list[bool] | None = None
+) -> pd.DataFrame:
     return pd.DataFrame(
         {
             "date": pd.date_range("2026-07-01", periods=len(opens), freq="B"),
@@ -30,11 +32,16 @@ def _source_manifest() -> dict[str, object]:
             "corporate_actions": "tushare_pro",
             "delistings": "tushare_pro",
         },
-        "license_attestation": {"authorized": True, "attested_by": "research-data-owner"},
+        "license_attestation": {
+            "authorized": True,
+            "attested_by": "research-data-owner",
+        },
     }
 
 
-def _universe_snapshot(date: str, codes: list[str], source_ref: str = "universe:test") -> dict[str, object]:
+def _universe_snapshot(
+    date: str, codes: list[str], source_ref: str = "universe:test"
+) -> dict[str, object]:
     return {
         date: {
             "as_of_date": date,
@@ -45,7 +52,9 @@ def _universe_snapshot(date: str, codes: list[str], source_ref: str = "universe:
     }
 
 
-def test_portfolio_engine_executes_target_at_next_open_and_sells_after_t_plus_one() -> None:
+def test_portfolio_engine_executes_target_at_next_open_and_sells_after_t_plus_one() -> (
+    None
+):
     data = {
         "600460": _frame([10, 10, 10, 10], [10, 10, 10, 10]),
         "688001": _frame([20, 20, 20, 20], [20, 20, 20, 20]),
@@ -57,7 +66,10 @@ def test_portfolio_engine_executes_target_at_next_open_and_sells_after_t_plus_on
             dates[0]: {"600460": 0.5},
             dates[1]: {"600460": 0.0, "688001": 0.5},
         },
-        universe_references={dates[0]: "universe:2026-07-01", dates[1]: "universe:2026-07-02"},
+        universe_references={
+            dates[0]: "universe:2026-07-01",
+            dates[1]: "universe:2026-07-02",
+        },
         trading_calendar=dates,
     )
 
@@ -72,7 +84,12 @@ def test_portfolio_engine_requires_point_in_time_universe_and_skips_halts() -> N
     data = {"600460": _frame([10, 10, 10], [10, 10, 10], [True, False, True])}
     dates = data["600460"]["date"].dt.strftime("%Y-%m-%d").tolist()
     with pytest.raises(ValueError, match="universe reference"):
-        PortfolioBacktestEngine().run(data, {dates[0]: {"600460": 0.5}}, universe_references={}, trading_calendar=dates)
+        PortfolioBacktestEngine().run(
+            data,
+            {dates[0]: {"600460": 0.5}},
+            universe_references={},
+            trading_calendar=dates,
+        )
 
     result = PortfolioBacktestEngine().run(
         data,
@@ -104,8 +121,10 @@ def test_portfolio_engine_discloses_unverified_company_action_coverage() -> None
     frame = _frame([10, 10, 10], [10, 10, 10])
     dates = frame["date"].dt.strftime("%Y-%m-%d").tolist()
     result = PortfolioBacktestEngine().run(
-        {"600460": frame}, {dates[0]: {"600460": 0.5}},
-        universe_references={dates[0]: "universe:test"}, trading_calendar=dates,
+        {"600460": frame},
+        {dates[0]: {"600460": 0.5}},
+        universe_references={dates[0]: "universe:test"},
+        trading_calendar=dates,
     )
     assert result.coverage["corporate_actions"] == "unverified"
     assert any("corporate_actions" in warning for warning in result.warnings)
@@ -127,7 +146,10 @@ def test_portfolio_engine_records_institutional_source_contract(monkeypatch) -> 
 
     assert result.source_assurance["status"] == "pass"
     assert result.source_assurance["formal_evidence_eligible"] is False
-    assert result.to_dict()["source_assurance"]["resolved_domains"]["halts"] == "tushare_pro"
+    assert (
+        result.to_dict()["source_assurance"]["resolved_domains"]["halts"]
+        == "tushare_pro"
+    )
     assert result.archive_assurance["status"] == "blocked"
     assert result.reproducibility_assurance["status"] == "blocked"
     assert any(
@@ -136,7 +158,9 @@ def test_portfolio_engine_records_institutional_source_contract(monkeypatch) -> 
     )
 
 
-def test_portfolio_engine_applies_sourced_dividend_share_distribution_and_delisting() -> None:
+def test_portfolio_engine_applies_sourced_dividend_share_distribution_and_delisting() -> (
+    None
+):
     frame = _frame([10, 10, 10, 10, 10], [10, 10, 10, 10, 10])
     dates = frame["date"].dt.strftime("%Y-%m-%d").tolist()
     result = PortfolioBacktestEngine().run(
@@ -225,7 +249,9 @@ def test_covered_delisting_requires_status_and_explicit_cash_settlement() -> Non
         PortfolioBacktestEngine().run(**arguments)
 
 
-def test_reproducible_source_contract_requires_matching_frozen_universe_membership() -> None:
+def test_reproducible_source_contract_requires_matching_frozen_universe_membership() -> (
+    None
+):
     frame = _frame([10, 10, 10], [10, 10, 10])
     dates = frame["date"].dt.strftime("%Y-%m-%d").tolist()
     arguments = {
@@ -247,7 +273,9 @@ def test_reproducible_source_contract_requires_matching_frozen_universe_membersh
     assert result.universe_assurance["status"] == "pass"
 
 
-def test_portfolio_engine_rejects_covered_actions_with_adjusted_prices_or_unknown_events() -> None:
+def test_portfolio_engine_rejects_covered_actions_with_adjusted_prices_or_unknown_events() -> (
+    None
+):
     frame = _frame([10, 10, 10], [10, 10, 10])
     dates = frame["date"].dt.strftime("%Y-%m-%d").tolist()
     with pytest.raises(ValueError, match="raw, unadjusted"):

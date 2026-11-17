@@ -47,8 +47,12 @@ def mock_industry_service() -> AsyncMock:
 
     async def get_stock_industry(code: str):
         mapping = {
-            "000001": type("StockIndustry", (), {"industry": "银行", "industry_change": 1.2})(),
-            "600519": type("StockIndustry", (), {"industry": "白酒", "industry_change": -0.8})(),
+            "000001": type(
+                "StockIndustry", (), {"industry": "银行", "industry_change": 1.2}
+            )(),
+            "600519": type(
+                "StockIndustry", (), {"industry": "白酒", "industry_change": -0.8}
+            )(),
         }
         return mapping.get(code)
 

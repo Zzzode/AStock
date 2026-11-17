@@ -39,7 +39,9 @@ def test_risk_budget_warns_when_stop_distance_is_missing():
 
 def test_risk_budget_blocks_single_name_exposure():
     report = RiskManager().assess_risk_budget(
-        positions=[{"code": "600460", "market_value": 30_000, "stop_distance_pct": 0.02}],
+        positions=[
+            {"code": "600460", "market_value": 30_000, "stop_distance_pct": 0.02}
+        ],
         cash=70_000,
     )
 
@@ -62,9 +64,24 @@ def test_risk_budget_blocks_position_count_and_theme_exposure():
     )
     report = manager.assess_risk_budget(
         positions=[
-            {"code": "000001", "market_value": 20_000, "stop_distance_pct": 0.02, "theme": "AI"},
-            {"code": "000002", "market_value": 20_000, "stop_distance_pct": 0.02, "theme": "AI"},
-            {"code": "000003", "market_value": 20_000, "stop_distance_pct": 0.02, "theme": "AI"},
+            {
+                "code": "000001",
+                "market_value": 20_000,
+                "stop_distance_pct": 0.02,
+                "theme": "AI",
+            },
+            {
+                "code": "000002",
+                "market_value": 20_000,
+                "stop_distance_pct": 0.02,
+                "theme": "AI",
+            },
+            {
+                "code": "000003",
+                "market_value": 20_000,
+                "stop_distance_pct": 0.02,
+                "theme": "AI",
+            },
         ],
         cash=40_000,
     )
@@ -86,7 +103,10 @@ def test_short_horizon_risk_requires_gap_and_limit_down_stress():
         cash=90_000,
     )
 
-    assert any("requires overnight and limit-down stress" in blocker for blocker in report.blockers)
+    assert any(
+        "requires overnight and limit-down stress" in blocker
+        for blocker in report.blockers
+    )
 
 
 def test_risk_budget_blocks_strategy_sleeve_exposure_independently_of_single_name_limits():

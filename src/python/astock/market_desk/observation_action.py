@@ -83,7 +83,10 @@ def evaluate_observation_action(
             formal_decision_eligible=False,
             passed_checks=tuple(passed),
             failed_checks=tuple(failed),
-            warnings=tuple(warnings + ["Missing observation controls prevent a conditional paper action."]),
+            warnings=tuple(
+                warnings
+                + ["Missing observation controls prevent a conditional paper action."]
+            ),
         )
     if market_regime == MarketRegime.INSUFFICIENT_DATA:
         return ObservationActionResult(
@@ -91,7 +94,12 @@ def evaluate_observation_action(
             formal_decision_eligible=False,
             passed_checks=tuple(passed),
             failed_checks=(),
-            warnings=tuple(warnings + ["Market regime is insufficient_data; refresh the broad-market packet first."]),
+            warnings=tuple(
+                warnings
+                + [
+                    "Market regime is insufficient_data; refresh the broad-market packet first."
+                ]
+            ),
         )
     if market_regime == MarketRegime.RISK_OFF:
         return ObservationActionResult(
@@ -99,7 +107,10 @@ def evaluate_observation_action(
             formal_decision_eligible=False,
             passed_checks=tuple(passed),
             failed_checks=(),
-            warnings=tuple(warnings + ["Risk-off permits only paper risk reduction or observation."]),
+            warnings=tuple(
+                warnings
+                + ["Risk-off permits only paper risk reduction or observation."]
+            ),
         )
     if market_regime == MarketRegime.DEFENSIVE_ROTATION:
         return ObservationActionResult(
@@ -107,14 +118,22 @@ def evaluate_observation_action(
             formal_decision_eligible=False,
             passed_checks=tuple(passed),
             failed_checks=(),
-            warnings=tuple(warnings + ["Defensive rotation does not confirm broad new-risk permission."]),
+            warnings=tuple(
+                warnings
+                + ["Defensive rotation does not confirm broad new-risk permission."]
+            ),
         )
     return ObservationActionResult(
         action=ObservationAction.CONDITIONAL_PAPER_ENTRY,
         formal_decision_eligible=False,
         passed_checks=tuple(passed),
         failed_checks=(),
-        warnings=tuple(warnings + ["Execute the stated condition only in a separately maintained paper record; reassess at review_at."]),
+        warnings=tuple(
+            warnings
+            + [
+                "Execute the stated condition only in a separately maintained paper record; reassess at review_at."
+            ]
+        ),
     )
 
 
@@ -122,7 +141,9 @@ def _valid_observation_data(value: Any) -> bool:
     if not isinstance(value, Mapping):
         return False
     source = str(value.get("source") or "").strip()
-    quality = str(value.get("quality") or value.get("quality_tier") or "").strip().lower()
+    quality = (
+        str(value.get("quality") or value.get("quality_tier") or "").strip().lower()
+    )
     as_of = value.get("as_of")
     if not source or quality not in {"realtime", "delayed", "snapshot", "partial"}:
         return False
@@ -136,7 +157,10 @@ def _valid_observation_data(value: Any) -> bool:
 def _valid_technical_conditions(value: Any) -> bool:
     if not isinstance(value, Mapping):
         return False
-    return all(str(value.get(field) or "").strip() for field in ("entry_condition", "invalidation_condition"))
+    return all(
+        str(value.get(field) or "").strip()
+        for field in ("entry_condition", "invalidation_condition")
+    )
 
 
 def _valid_risk_bounds(value: Any) -> bool:
@@ -147,7 +171,12 @@ def _valid_risk_bounds(value: Any) -> bool:
         position = float(value.get("position_limit_pct"))
     except (TypeError, ValueError):
         return False
-    return math.isfinite(loss) and math.isfinite(position) and 0 < loss <= 1 and 0 < position <= 1
+    return (
+        math.isfinite(loss)
+        and math.isfinite(position)
+        and 0 < loss <= 1
+        and 0 < position <= 1
+    )
 
 
 def _valid_review_time(value: Any) -> bool:

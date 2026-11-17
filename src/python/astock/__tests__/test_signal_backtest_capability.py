@@ -86,14 +86,18 @@ def test_frozen_signal_replay_verifies_exact_archived_input(tmp_path) -> None:
     assert result["research_only"] is True
 
 
-def test_frozen_signal_replay_binds_rolling_model_selection_to_archive(tmp_path) -> None:
+def test_frozen_signal_replay_binds_rolling_model_selection_to_archive(
+    tmp_path,
+) -> None:
     frame = pd.DataFrame(
         {
             "date": pd.date_range("2026-01-02", periods=100, freq="B"),
             "open": [10.0 + index * 0.03 for index in range(100)],
             "high": [10.2 + index * 0.03 for index in range(100)],
             "low": [9.8 + index * 0.03 for index in range(100)],
-            "close": [10.0 + index * 0.03 + ((index % 7) - 3) * 0.1 for index in range(100)],
+            "close": [
+                10.0 + index * 0.03 + ((index % 7) - 3) * 0.1 for index in range(100)
+            ],
             "volume": [1_000.0] * 100,
         }
     )

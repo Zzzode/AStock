@@ -178,12 +178,18 @@ class TaskScheduler:
                 name: {
                     "frequency": job.frequency.value,
                     "depends_on": list(job.depends_on),
-                    "dependency_blockers": self._dependency_blockers(job, reference_time),
+                    "dependency_blockers": self._dependency_blockers(
+                        job, reference_time
+                    ),
                     "enabled": job.enabled,
                     "status": job.status.value,
                     "last_run": job.last_run.isoformat() if job.last_run else None,
-                    "last_skip_at": job.last_skip_at.isoformat() if job.last_skip_at else None,
-                    "next_retry_at": job.next_retry_at.isoformat() if job.next_retry_at else None,
+                    "last_skip_at": (
+                        job.last_skip_at.isoformat() if job.last_skip_at else None
+                    ),
+                    "next_retry_at": (
+                        job.next_retry_at.isoformat() if job.next_retry_at else None
+                    ),
                     "run_count": job.run_count,
                     "error_count": job.error_count,
                     "last_error": job.last_error,
@@ -278,7 +284,9 @@ class TaskScheduler:
         """Require successful predecessor completion before a dependent control."""
         return not self._dependency_blockers(job, now)
 
-    def _dependency_blockers(self, job: ScheduledJob, now: datetime) -> list[dict[str, str]]:
+    def _dependency_blockers(
+        self, job: ScheduledJob, now: datetime
+    ) -> list[dict[str, str]]:
         """Explain why a dependent control cannot yet run."""
         blockers: list[dict[str, str]] = []
         for dependency_name in job.depends_on:
@@ -296,7 +304,9 @@ class TaskScheduler:
                 dependency.frequency == JobFrequency.DAILY_AFTER_CLOSE
                 and _as_exchange_time(dependency.last_run).date() != now.date()
             ):
-                blockers.append({"job": dependency_name, "reason": "not_completed_for_session"})
+                blockers.append(
+                    {"job": dependency_name, "reason": "not_completed_for_session"}
+                )
         return blockers
 
     async def _execute_job(self, job: ScheduledJob) -> dict[str, Any]:
@@ -306,9 +316,15 @@ class TaskScheduler:
         try:
             result = await job.handler()
             completion_assurance = self._verify_completion(job, result)
-            if completion_assurance is not None and completion_assurance.get("status") != "pass":
+            if (
+                completion_assurance is not None
+                and completion_assurance.get("status") != "pass"
+            ):
                 failures = completion_assurance.get("failures", [])
-                detail = "; ".join(str(item) for item in failures) or "unknown verifier failure"
+                detail = (
+                    "; ".join(str(item) for item in failures)
+                    or "unknown verifier failure"
+                )
                 raise ValueError(f"completion verification failed: {detail}")
             if self._is_noncompletion_skip(result):
                 job.last_skip_at = attempted_at
@@ -338,9 +354,7 @@ class TaskScheduler:
             return {"error": str(e)}
 
     @staticmethod
-    def _verify_completion(
-        job: ScheduledJob, result: Any
-    ) -> Optional[dict[str, Any]]:
+    def _verify_completion(job: ScheduledJob, result: Any) -> Optional[dict[str, Any]]:
         """Run an EOD evidence verifier before recording scheduler completion."""
         if job.completion_verifier is None:
             return None
@@ -348,7 +362,10 @@ class TaskScheduler:
             return {"status": "blocked", "failures": ["job result is not a mapping"]}
         assurance = job.completion_verifier(result)
         if not isinstance(assurance, dict):
-            return {"status": "blocked", "failures": ["completion verifier returned an invalid result"]}
+            return {
+                "status": "blocked",
+                "failures": ["completion verifier returned an invalid result"],
+            }
         return assurance
 
     @staticmethod
@@ -420,8 +437,12 @@ class TaskScheduler:
             "jobs": {
                 name: {
                     "last_run": job.last_run.isoformat() if job.last_run else None,
-                    "last_skip_at": job.last_skip_at.isoformat() if job.last_skip_at else None,
-                    "next_retry_at": job.next_retry_at.isoformat() if job.next_retry_at else None,
+                    "last_skip_at": (
+                        job.last_skip_at.isoformat() if job.last_skip_at else None
+                    ),
+                    "next_retry_at": (
+                        job.next_retry_at.isoformat() if job.next_retry_at else None
+                    ),
                     "run_count": job.run_count,
                     "error_count": job.error_count,
                     "last_error": job.last_error,
@@ -465,8 +486,10 @@ class TaskScheduler:
             and heartbeat_age_seconds <= RUNTIME_HEARTBEAT_MAX_AGE.total_seconds()
         )
         declared_running = runtime.get("status") == "running"
-        status = "running" if declared_running and same_host and pid_alive and fresh else (
-            "stale" if declared_running else "stopped"
+        status = (
+            "running"
+            if declared_running and same_host and pid_alive and fresh
+            else ("stale" if declared_running else "stopped")
         )
         return {
             "status": status,
@@ -534,7 +557,9 @@ def _verify_eod_archive_completion(
         if not archive_path or not archive_id:
             return {
                 "status": "blocked",
-                "failures": ["recorded EOD result lacks source_archive_path or archive_id"],
+                "failures": [
+                    "recorded EOD result lacks source_archive_path or archive_id"
+                ],
             }
         verification = archive_verifier(archive_path)
         if (
@@ -545,17 +570,28 @@ def _verify_eod_archive_completion(
         ):
             return {
                 "status": "blocked",
-                "failures": ["recorded EOD archive failed integrity, identity, or close-session verification"],
+                "failures": [
+                    "recorded EOD archive failed integrity, identity, or close-session verification"
+                ],
             }
         return {"status": "pass", "archive_ids": [archive_id]}
     if status != "skipped":
-        return {"status": "blocked", "failures": ["EOD result has no recorded or idempotent-skip status"]}
+        return {
+            "status": "blocked",
+            "failures": ["EOD result has no recorded or idempotent-skip status"],
+        }
     archive_ids = result.get("existing_archive_ids")
     if not isinstance(archive_ids, list) or not archive_ids:
-        return {"status": "blocked", "failures": ["idempotent EOD skip lacks archive IDs"]}
+        return {
+            "status": "blocked",
+            "failures": ["idempotent EOD skip lacks archive IDs"],
+        }
     expected_ids = {str(value).strip() for value in archive_ids if str(value).strip()}
     if len(expected_ids) != len(archive_ids):
-        return {"status": "blocked", "failures": ["idempotent EOD skip has malformed archive IDs"]}
+        return {
+            "status": "blocked",
+            "failures": ["idempotent EOD skip has malformed archive IDs"],
+        }
     history = history_reader()
     records = history.get("records") if isinstance(history, dict) else None
     if not isinstance(records, list):
@@ -572,7 +608,9 @@ def _verify_eod_archive_completion(
     if missing_ids:
         return {
             "status": "blocked",
-            "failures": [f"idempotent EOD skip references unverified archives: {', '.join(missing_ids)}"],
+            "failures": [
+                f"idempotent EOD skip references unverified archives: {', '.join(missing_ids)}"
+            ],
         }
     return {"status": "pass", "archive_ids": sorted(expected_ids)}
 
@@ -607,7 +645,9 @@ def _verify_public_eod_discovery_completion(result: dict[str, Any]) -> dict[str,
     if not isinstance(records, list):
         return {
             "status": "blocked",
-            "failures": ["public discovery history is unavailable for coverage verification"],
+            "failures": [
+                "public discovery history is unavailable for coverage verification"
+            ],
         }
     unusable = [
         archive_id
@@ -656,7 +696,9 @@ async def evaluate_research_triggers(
 
     ledger = ResearchLedger(ledger_path)
     active_entries = ledger.list_entries(status=ResearchStatus.ACTIVE, limit=100)
-    monitoring_entries = ledger.list_entries(status=ResearchStatus.MONITORING, limit=100)
+    monitoring_entries = ledger.list_entries(
+        status=ResearchStatus.MONITORING, limit=100
+    )
     all_entries = active_entries + monitoring_entries
 
     if not all_entries:
@@ -688,14 +730,16 @@ async def evaluate_research_triggers(
                 for trigger in entry.monitoring_triggers:
                     fired = _evaluate_single_trigger(trigger, current_price)
                     if fired:
-                        triggered.append({
-                            "entry_id": entry.entry_id,
-                            "target": target_code,
-                            "trigger_name": trigger.name,
-                            "condition": trigger.condition,
-                            "current_price": current_price,
-                            "threshold": trigger.threshold,
-                        })
+                        triggered.append(
+                            {
+                                "entry_id": entry.entry_id,
+                                "target": target_code,
+                                "trigger_name": trigger.name,
+                                "condition": trigger.condition,
+                                "current_price": current_price,
+                                "threshold": trigger.threshold,
+                            }
+                        )
                         observation = ResearchObservation(
                             observation_type="trigger_fired",
                             note=f"Trigger '{trigger.name}' fired: price={current_price}, condition='{trigger.condition}'",
@@ -747,6 +791,7 @@ def create_default_jobs() -> list[ScheduledJob]:
 
     async def _verify_predictions() -> dict[str, Any]:
         from ..capabilities import run_prediction_verification
+
         return await run_prediction_verification()
 
     async def _evaluate_triggers() -> dict[str, Any]:
@@ -754,34 +799,42 @@ def create_default_jobs() -> list[ScheduledJob]:
 
     async def _check_earnings_calendar() -> dict[str, Any]:
         from ..capabilities import get_earnings_calendar
+
         return await get_earnings_calendar(upcoming_only=True, days_ahead=7)
 
     async def _record_public_market_desk_eod_observation() -> dict[str, Any]:
         from ..capabilities import run_public_market_desk_eod_observation
+
         return await run_public_market_desk_eod_observation()
 
     async def _record_public_market_desk_eod_discovery() -> dict[str, Any]:
         from ..capabilities import run_public_market_desk_eod_discovery
+
         return await run_public_market_desk_eod_discovery()
 
     async def _audit_market_desk_strategy_reviews() -> dict[str, Any]:
         from ..capabilities import get_market_desk_review_queue
+
         return get_market_desk_review_queue()
 
     async def _audit_market_desk_discovery_research_queue() -> dict[str, Any]:
         from ..capabilities import get_market_desk_discovery_research_queue
+
         return get_market_desk_discovery_research_queue()
 
     async def _audit_market_desk_postmortem_queue() -> dict[str, Any]:
         from ..capabilities import get_market_desk_postmortem_queue
+
         return get_market_desk_postmortem_queue()
 
     async def _audit_market_desk_operational_readiness() -> dict[str, Any]:
         from ..capabilities import assess_market_desk_operational_readiness
+
         return assess_market_desk_operational_readiness()
 
     async def _audit_market_desk_operating_maturity() -> dict[str, Any]:
         from ..capabilities import assess_market_desk_operating_maturity
+
         return assess_market_desk_operating_maturity()
 
     return [

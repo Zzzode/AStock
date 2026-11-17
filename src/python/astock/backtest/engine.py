@@ -31,6 +31,7 @@ class AShareExecutionAssumptions:
 @dataclass
 class BacktestResult:
     """Backtest result"""
+
     code: str
     strategy: str
     start_date: date
@@ -95,7 +96,9 @@ class WalkForwardResult:
             "test_bars": self.test_bars,
             "fold_count": len(self.folds),
             "mean_out_of_sample_return": float(np.mean(returns)) if returns else 0.0,
-            "positive_fold_ratio": sum(value > 0 for value in returns) / len(returns) if returns else 0.0,
+            "positive_fold_ratio": (
+                sum(value > 0 for value in returns) / len(returns) if returns else 0.0
+            ),
             "folds": [fold.to_dict() for fold in self.folds],
             "warnings": self.warnings,
         }
@@ -148,9 +151,7 @@ class BacktestEngine:
         required_columns = {"open", "close", "date"}
         missing_columns = sorted(required_columns - set(df.columns))
         if missing_columns:
-            raise ValueError(
-                "Backtest requires columns: " + ", ".join(missing_columns)
-            )
+            raise ValueError("Backtest requires columns: " + ", ".join(missing_columns))
         if evaluation_start_index < 0 or evaluation_start_index >= len(df):
             raise ValueError("evaluation_start_index must select an in-range bar")
 
@@ -178,8 +179,10 @@ class BacktestEngine:
             current_date = row["date"]
             if isinstance(current_date, str):
                 current_date = date.fromisoformat(current_date)
-            signal = Signal.HOLD if row_index == 0 else df.iloc[row_index - 1].get(
-                "signal", Signal.HOLD
+            signal = (
+                Signal.HOLD
+                if row_index == 0
+                else df.iloc[row_index - 1].get("signal", Signal.HOLD)
             )
             close_price = row["close"]
             execution_price = row["open"]
@@ -195,26 +198,26 @@ class BacktestEngine:
             # Execute trade
             if signal == Signal.BUY and self.position == 0:
                 # Buy with full position
-                unit_cost = execution_price * (
-                    1 + commission_rate + transfer_fee_rate
-                )
+                unit_cost = execution_price * (1 + commission_rate + transfer_fee_rate)
                 shares = int(self.capital / unit_cost / 100) * 100
                 if shares > 0:
                     trade_value = shares * execution_price
                     commission = trade_value * commission_rate
                     transfer_fee = trade_value * transfer_fee_rate
-                    self.capital -= (trade_value + commission + transfer_fee)
+                    self.capital -= trade_value + commission + transfer_fee
                     self.position = shares
 
-                    self.trades.append(Trade(
-                        date=current_date,
-                        signal=Signal.BUY,
-                        price=execution_price,
-                        shares=shares,
-                        value=trade_value,
-                        commission=commission,
-                        transfer_fee=transfer_fee,
-                    ))
+                    self.trades.append(
+                        Trade(
+                            date=current_date,
+                            signal=Signal.BUY,
+                            price=execution_price,
+                            shares=shares,
+                            value=trade_value,
+                            commission=commission,
+                            transfer_fee=transfer_fee,
+                        )
+                    )
 
             elif signal == Signal.SELL and self.position > 0:
                 # Sell entire position
@@ -224,28 +227,36 @@ class BacktestEngine:
                 transfer_fee = trade_value * transfer_fee_rate
                 self.capital += trade_value - commission - stamp_duty - transfer_fee
 
-                self.trades.append(Trade(
-                    date=current_date,
-                    signal=Signal.SELL,
-                    price=execution_price,
-                    shares=self.position,
-                    value=trade_value,
-                    commission=commission,
-                    stamp_duty=stamp_duty,
-                    transfer_fee=transfer_fee,
-                ))
+                self.trades.append(
+                    Trade(
+                        date=current_date,
+                        signal=Signal.SELL,
+                        price=execution_price,
+                        shares=self.position,
+                        value=trade_value,
+                        commission=commission,
+                        stamp_duty=stamp_duty,
+                        transfer_fee=transfer_fee,
+                    )
+                )
 
                 self.position = 0
 
             # Record equity curve
             equity = self.capital + self.position * close_price
-            self.equity_curve.append({
-                "date": current_date.isoformat() if isinstance(current_date, date) else current_date,
-                "equity": equity,
-                "cash": self.capital,
-                "position": self.position,
-                "price": close_price,
-            })
+            self.equity_curve.append(
+                {
+                    "date": (
+                        current_date.isoformat()
+                        if isinstance(current_date, date)
+                        else current_date
+                    ),
+                    "equity": equity,
+                    "cash": self.capital,
+                    "position": self.position,
+                    "price": close_price,
+                }
+            )
 
         # Calculate final equity. An open position is valued as though it were
         # liquidated at the final close, including the stated A-share sell
@@ -258,7 +269,11 @@ class BacktestEngine:
             terminal_liquidation_cost = terminal_value * (
                 commission_rate + stamp_duty_rate + transfer_fee_rate
             )
-        final_capital = self.capital + self.position * float(final_price) - terminal_liquidation_cost
+        final_capital = (
+            self.capital
+            + self.position * float(final_price)
+            - terminal_liquidation_cost
+        )
         if self.equity_curve:
             self.equity_curve[-1]["equity"] = final_capital
         if terminal_liquidation_cost > 0:
@@ -303,7 +318,9 @@ class BacktestEngine:
     ) -> WalkForwardResult:
         """Evaluate fixed strategy parameters in rolling out-of-sample folds."""
         if train_bars < 20 or test_bars < 1:
-            raise ValueError("walk-forward requires at least 20 train bars and one test bar")
+            raise ValueError(
+                "walk-forward requires at least 20 train bars and one test bar"
+            )
         if len(df) <= train_bars:
             raise ValueError("walk-forward data does not contain an out-of-sample bar")
         folds: list[BacktestResult] = []
@@ -357,10 +374,7 @@ class BacktestEngine:
         return (final - initial) / initial * 100
 
     def _calc_annual_return(
-        self,
-        initial: float,
-        final: float,
-        df: pd.DataFrame
+        self, initial: float, final: float, df: pd.DataFrame
     ) -> float:
         """Calculate annualized return"""
         start = self._get_start_date(df)
@@ -405,8 +419,8 @@ class BacktestEngine:
         returns = []
 
         for i in range(1, len(equities)):
-            if equities[i-1] > 0:
-                r = (equities[i] - equities[i-1]) / equities[i-1]
+            if equities[i - 1] > 0:
+                r = (equities[i] - equities[i - 1]) / equities[i - 1]
                 returns.append(r)
 
         if not returns:

@@ -138,9 +138,7 @@ class FTSReportStore:
     def remove_document(self, doc_id: str) -> int:
         """Remove all chunks for a document."""
         conn = self._ensure_connected()
-        cursor = conn.execute(
-            "SELECT COUNT(*) FROM chunks WHERE doc_id = ?", (doc_id,)
-        )
+        cursor = conn.execute("SELECT COUNT(*) FROM chunks WHERE doc_id = ?", (doc_id,))
         count = cursor.fetchone()[0]
         conn.execute("DELETE FROM chunks WHERE doc_id = ?", (doc_id,))
         conn.commit()
@@ -192,13 +190,15 @@ class FTSReportStore:
 
         results: list[FTSSearchResult] = []
         for row in cursor.fetchall():
-            results.append(FTSSearchResult(
-                chunk_id=row["chunk_id"],
-                doc_id=row["doc_id"],
-                text=row["text"],
-                score=-float(row["score"]),  # FTS5 rank is negative (lower=better)
-                metadata=json.loads(row["metadata"]),
-            ))
+            results.append(
+                FTSSearchResult(
+                    chunk_id=row["chunk_id"],
+                    doc_id=row["doc_id"],
+                    text=row["text"],
+                    score=-float(row["score"]),  # FTS5 rank is negative (lower=better)
+                    metadata=json.loads(row["metadata"]),
+                )
+            )
 
         return results
 

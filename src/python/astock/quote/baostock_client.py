@@ -245,7 +245,21 @@ class BaostockClient:
                 df["amount"] = df["amount"] * 1000
 
             logger.debug(f"Fetched daily data for {code}: {len(df)} records")
-            return df[["date", "open", "high", "low", "close", "volume", "amount", "pe", "pb", "ps", "pcf"]]
+            return df[
+                [
+                    "date",
+                    "open",
+                    "high",
+                    "low",
+                    "close",
+                    "volume",
+                    "amount",
+                    "pe",
+                    "pb",
+                    "ps",
+                    "pcf",
+                ]
+            ]
 
         except DataSourceError:
             raise
@@ -359,7 +373,9 @@ class BaostockClient:
             return pd.DataFrame()
 
         result = pd.concat(all_data, ignore_index=True)
-        logger.info(f"Batch daily data fetched: {len(codes)} stocks, {len(result)} records")
+        logger.info(
+            f"Batch daily data fetched: {len(codes)} stocks, {len(result)} records"
+        )
         return result
 
     def logout(self) -> None:

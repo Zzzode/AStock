@@ -54,17 +54,23 @@ class TestStockScreener:
     """Stock screener tests"""
 
     @pytest.mark.asyncio
-    async def test_screen_basic(self, screener: StockScreener, mock_quote_service: AsyncMock) -> None:
+    async def test_screen_basic(
+        self, screener: StockScreener, mock_quote_service: AsyncMock
+    ) -> None:
         """Basic screening test"""
         results = await screener.screen(codes=["000001"], limit=10)
 
         assert isinstance(results, list)
         # Verify calls
         mock_quote_service.get_daily.assert_called()
-        mock_quote_service.get_stock_info.assert_called_with("000001", allow_remote=False)
+        mock_quote_service.get_stock_info.assert_called_with(
+            "000001", allow_remote=False
+        )
 
     @pytest.mark.asyncio
-    async def test_screen_with_factors(self, screener: StockScreener, mock_quote_service: AsyncMock) -> None:
+    async def test_screen_with_factors(
+        self, screener: StockScreener, mock_quote_service: AsyncMock
+    ) -> None:
         """Screening with factors test"""
         results = await screener.screen(
             factors=["pe_low", "pb_low"], codes=["000001"], limit=10
@@ -122,7 +128,9 @@ class TestStockScreener:
         }
 
         assert set(FACTORS).isdisjoint(prohibited_keys)
-        assert {factor.field for factor in FACTORS.values()}.isdisjoint(prohibited_fields)
+        assert {factor.field for factor in FACTORS.values()}.isdisjoint(
+            prohibited_fields
+        )
         for preset in ("high_dividend", "value", "growth"):
             assert set(get_preset_factors(preset)).isdisjoint(
                 {"ma20_above", "ma5_cross_ma20", "ma_trend_up", "macd_golden_cross"}

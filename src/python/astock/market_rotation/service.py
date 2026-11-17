@@ -29,7 +29,11 @@ EASTMONEY_BOARD_SOURCE = "eastmoney.push2.board_list"
 INDUSTRY_SOURCE = EASTMONEY_BOARD_SOURCE
 CONCEPT_SOURCE = EASTMONEY_BOARD_SOURCE
 THS_INDUSTRY_SOURCE = "akshare.stock_board_industry_summary_ths"
-EASTMONEY_BOARD_HOSTS = ("17.push2.eastmoney.com", "79.push2.eastmoney.com", "push2.eastmoney.com")
+EASTMONEY_BOARD_HOSTS = (
+    "17.push2.eastmoney.com",
+    "79.push2.eastmoney.com",
+    "push2.eastmoney.com",
+)
 _AKSHARE_TQDM_LOCK = Lock()
 
 
@@ -114,7 +118,10 @@ class MarketRotationService:
             errors=errors,
             requested=include_concepts,
         )
-        components = {"industries": industries["health"], "concepts": concepts["health"]}
+        components = {
+            "industries": industries["health"],
+            "concepts": concepts["health"],
+        }
         quality = self._quality_tier(components, include_concepts=include_concepts)
         rankings = {
             "industries": industries["rows"],
@@ -253,8 +260,12 @@ class MarketRotationService:
                 headers={"User-Agent": "Mozilla/5.0"},
             )
             try:
-                with urlopen(request, timeout=5) as response:  # nosec B310 - fixed hosts
-                    payload = json.loads(response.read().decode("utf-8", errors="replace"))
+                with urlopen(
+                    request, timeout=5
+                ) as response:  # nosec B310 - fixed hosts
+                    payload = json.loads(
+                        response.read().decode("utf-8", errors="replace")
+                    )
                 rows = payload.get("data", {}).get("diff", [])
                 if not isinstance(rows, list) or not rows:
                     raise ValueError("East Money board response has no rows")
@@ -277,10 +288,14 @@ class MarketRotationService:
                 )
             except Exception as error:
                 last_error = error
-        raise RuntimeError("All configured East Money board mirrors failed") from last_error
+        raise RuntimeError(
+            "All configured East Money board mirrors failed"
+        ) from last_error
 
     @staticmethod
-    def _frame_source(result: object, default_source: str) -> tuple[str, tuple[str, ...]]:
+    def _frame_source(
+        result: object, default_source: str
+    ) -> tuple[str, tuple[str, ...]]:
         if not isinstance(result, pd.DataFrame):
             return default_source, ()
         return (
@@ -347,9 +362,7 @@ class MarketRotationService:
             requests.extend((component, row) for row in requested_rows)
         semaphore = asyncio.Semaphore(concurrency)
 
-        async def validate_one(
-            component: str, row: dict[str, Any]
-        ) -> tuple[
+        async def validate_one(component: str, row: dict[str, Any]) -> tuple[
             str,
             dict[str, Any],
             dict[str, float | None] | None,
@@ -358,7 +371,9 @@ class MarketRotationService:
         ]:
             try:
                 async with semaphore:
-                    history_component = "industry" if component == "industries" else "concept"
+                    history_component = (
+                        "industry" if component == "industries" else "concept"
+                    )
                     frame = await self._history_fetcher(
                         history_component,
                         str(row["name"]),
@@ -401,7 +416,9 @@ class MarketRotationService:
                         "message": f"History validation failed for {component} {row['name']}.",
                         "source": row["source"],
                         "details": {
-                            "error_type": type(error).__name__ if error else "UnknownError",
+                            "error_type": (
+                                type(error).__name__ if error else "UnknownError"
+                            ),
                             "message": str(error) if error else "unknown error",
                         },
                     }
@@ -428,7 +445,9 @@ class MarketRotationService:
             "verified_count": verified,
             "verified_60d_count": verified_60d,
             "coverage_ratio": round(verified / requested, 6) if requested else 0.0,
-            "coverage_60d_ratio": round(verified_60d / requested, 6) if requested else 0.0,
+            "coverage_60d_ratio": (
+                round(verified_60d / requested, 6) if requested else 0.0
+            ),
             "full_cross_section_ready": normalized_scope == "full" and fully_verified,
             "components": by_component,
             "cutoff_date": cutoff.isoformat(),
@@ -451,59 +470,130 @@ class MarketRotationService:
         requested: bool = True,
     ) -> dict[str, Any]:
         if not requested:
-            return {"rows": [], "health": {"component": component, "source": source, "status": "not_requested", "coverage_ratio": 1.0, "quality_tier": "unavailable", "observed_at": observed_at}}
+            return {
+                "rows": [],
+                "health": {
+                    "component": component,
+                    "source": source,
+                    "status": "not_requested",
+                    "coverage_ratio": 1.0,
+                    "quality_tier": "unavailable",
+                    "observed_at": observed_at,
+                },
+            }
         if isinstance(result, Exception):
-            errors.append({"code": f"{component}_unavailable", "message": f"{component.title()} source was unavailable.", "source": source, "details": {"error_type": type(result).__name__, "message": str(result)}})
-            return {"rows": [], "health": {"component": component, "source": source, "status": "unavailable", "coverage_ratio": 0.0, "quality_tier": "unavailable", "observed_at": observed_at}}
+            errors.append(
+                {
+                    "code": f"{component}_unavailable",
+                    "message": f"{component.title()} source was unavailable.",
+                    "source": source,
+                    "details": {
+                        "error_type": type(result).__name__,
+                        "message": str(result),
+                    },
+                }
+            )
+            return {
+                "rows": [],
+                "health": {
+                    "component": component,
+                    "source": source,
+                    "status": "unavailable",
+                    "coverage_ratio": 0.0,
+                    "quality_tier": "unavailable",
+                    "observed_at": observed_at,
+                },
+            }
         if not isinstance(result, pd.DataFrame) or result.empty:
-            warnings.append({"code": f"{component}_empty", "message": f"{component.title()} source returned no rows.", "source": source})
-            return {"rows": [], "health": {"component": component, "source": source, "status": "unavailable", "coverage_ratio": 0.0, "quality_tier": "unavailable", "observed_at": observed_at}}
+            warnings.append(
+                {
+                    "code": f"{component}_empty",
+                    "message": f"{component.title()} source returned no rows.",
+                    "source": source,
+                }
+            )
+            return {
+                "rows": [],
+                "health": {
+                    "component": component,
+                    "source": source,
+                    "status": "unavailable",
+                    "coverage_ratio": 0.0,
+                    "quality_tier": "unavailable",
+                    "observed_at": observed_at,
+                },
+            }
         name_column = _first_column(result, "板块名称", "板块", "名称", "name")
         code_column = _first_column(result, "板块代码", "代码", "code")
         change_column = _first_column(result, "涨跌幅", "change_percent", "change_pct")
         if name_column is None or change_column is None:
-            warnings.append({"code": f"{component}_schema_incomplete", "message": f"{component.title()} source lacks a name or change-percent column.", "source": source})
-            return {"rows": [], "health": {"component": component, "source": source, "status": "unavailable", "coverage_ratio": 0.0, "quality_tier": "unavailable", "observed_at": observed_at}}
+            warnings.append(
+                {
+                    "code": f"{component}_schema_incomplete",
+                    "message": f"{component.title()} source lacks a name or change-percent column.",
+                    "source": source,
+                }
+            )
+            return {
+                "rows": [],
+                "health": {
+                    "component": component,
+                    "source": source,
+                    "status": "unavailable",
+                    "coverage_ratio": 0.0,
+                    "quality_tier": "unavailable",
+                    "observed_at": observed_at,
+                },
+            }
         normalized: list[dict[str, Any]] = []
         for _, row in result.iterrows():
             change = _float_or_none(row.get(change_column))
             name = str(row.get(name_column) or "").strip()
             if not name or change is None:
                 continue
-            normalized.append({
-                "name": name,
-                "code": str(row.get(code_column) or "").strip() if code_column else None,
-                "change_pct": change,
-                "turnover_rate_pct": _float_or_none(
-                    row.get(_first_column(result, "换手率", "turnover_rate") or "")
-                ),
-                "market_cap": _float_or_none(
-                    row.get(_first_column(result, "总市值", "market_cap") or "")
-                ),
-                "advances": _int_or_none(
-                    row.get(_first_column(result, "上涨家数", "advances") or "")
-                ),
-                "declines": _int_or_none(
-                    row.get(_first_column(result, "下跌家数", "declines") or "")
-                ),
-                "leading_stock": str(
-                    row.get(_first_column(result, "领涨股票", "leading_stock") or "")
-                ).strip() or None,
-                "leading_stock_change_pct": _float_or_none(
-                    row.get(
-                        _first_column(
-                            result, "领涨股票-涨跌幅", "leading_stock_change_pct"
+            normalized.append(
+                {
+                    "name": name,
+                    "code": (
+                        str(row.get(code_column) or "").strip() if code_column else None
+                    ),
+                    "change_pct": change,
+                    "turnover_rate_pct": _float_or_none(
+                        row.get(_first_column(result, "换手率", "turnover_rate") or "")
+                    ),
+                    "market_cap": _float_or_none(
+                        row.get(_first_column(result, "总市值", "market_cap") or "")
+                    ),
+                    "advances": _int_or_none(
+                        row.get(_first_column(result, "上涨家数", "advances") or "")
+                    ),
+                    "declines": _int_or_none(
+                        row.get(_first_column(result, "下跌家数", "declines") or "")
+                    ),
+                    "leading_stock": str(
+                        row.get(
+                            _first_column(result, "领涨股票", "leading_stock") or ""
                         )
-                        or ""
-                    )
-                ),
-                "source": source,
-            })
+                    ).strip()
+                    or None,
+                    "leading_stock_change_pct": _float_or_none(
+                        row.get(
+                            _first_column(
+                                result, "领涨股票-涨跌幅", "leading_stock_change_pct"
+                            )
+                            or ""
+                        )
+                    ),
+                    "source": source,
+                }
+            )
             advances = normalized[-1]["advances"]
             declines = normalized[-1]["declines"]
             normalized[-1]["participation_ratio"] = (
                 round(advances / (advances + declines), 6)
-                if advances is not None and declines is not None and advances + declines > 0
+                if advances is not None
+                and declines is not None
+                and advances + declines > 0
                 else None
             )
         normalized.sort(key=lambda item: (-item["change_pct"], item["name"]))
@@ -512,9 +602,7 @@ class MarketRotationService:
         coverage = round(len(normalized) / len(result), 6) if len(result) else 0.0
         status = "available" if coverage >= 0.98 else "partial"
         quality_tier = (
-            "realtime"
-            if status == "available" and not fallback_path
-            else "snapshot"
+            "realtime" if status == "available" and not fallback_path else "snapshot"
         )
         return {
             "rows": normalized,
@@ -533,7 +621,7 @@ class MarketRotationService:
 
     @staticmethod
     def _annotate_turnover_attention(
-        rankings: Mapping[str, list[dict[str, Any]]]
+        rankings: Mapping[str, list[dict[str, Any]]],
     ) -> None:
         """Annotate observable turnover percentiles without calling them crowding."""
         for rows in rankings.values():
@@ -551,7 +639,7 @@ class MarketRotationService:
 
     @staticmethod
     def _turnover_attention_summary(
-        rankings: Mapping[str, list[dict[str, Any]]]
+        rankings: Mapping[str, list[dict[str, Any]]],
     ) -> dict[str, Any]:
         components: dict[str, dict[str, Any]] = {}
         for component, rows in rankings.items():
@@ -566,46 +654,69 @@ class MarketRotationService:
         return {"components": components, "decision_weight": 0}
 
     @staticmethod
-    def _observation_pool(rankings: Mapping[str, list[dict[str, Any]]], *, limit: int) -> list[dict[str, Any]]:
+    def _observation_pool(
+        rankings: Mapping[str, list[dict[str, Any]]], *, limit: int
+    ) -> list[dict[str, Any]]:
         selected: list[dict[str, Any]] = []
         for component, rows in rankings.items():
-            for row in rows[:max(0, limit)]:
+            for row in rows[: max(0, limit)]:
                 participation = row["participation_ratio"]
-                selected.append({
-                    "subject_type": "industry" if component == "industries" else "concept",
-                    "name": row["name"],
-                    "code": row["code"],
-                    "rank": row["rank"],
-                    "change_pct": row["change_pct"],
-                    "participation_ratio": participation,
-                    "turnover_rate_pct": row["turnover_rate_pct"],
-                    "turnover_attention_percentile": row[
-                        "turnover_attention_percentile"
-                    ],
-                    "breadth_status": (
-                        "broad" if participation is not None and participation >= 0.60
-                        else ("narrow_or_mixed" if participation is not None else "unavailable")
-                    ),
-                    "multi_horizon_return_pct": row.get("multi_horizon_return_pct"),
-                    "history_validation_status": row.get(
-                        "history_validation_status", "not_requested"
-                    ),
-                    "status": "observation",
-                    "promotion_requirements": [
-                        "multi-horizon relative strength",
-                        "constituent breadth and liquidity",
-                        "source-verified catalyst",
-                        "independent risk and execution gates",
-                    ],
-                })
+                selected.append(
+                    {
+                        "subject_type": (
+                            "industry" if component == "industries" else "concept"
+                        ),
+                        "name": row["name"],
+                        "code": row["code"],
+                        "rank": row["rank"],
+                        "change_pct": row["change_pct"],
+                        "participation_ratio": participation,
+                        "turnover_rate_pct": row["turnover_rate_pct"],
+                        "turnover_attention_percentile": row[
+                            "turnover_attention_percentile"
+                        ],
+                        "breadth_status": (
+                            "broad"
+                            if participation is not None and participation >= 0.60
+                            else (
+                                "narrow_or_mixed"
+                                if participation is not None
+                                else "unavailable"
+                            )
+                        ),
+                        "multi_horizon_return_pct": row.get("multi_horizon_return_pct"),
+                        "history_validation_status": row.get(
+                            "history_validation_status", "not_requested"
+                        ),
+                        "status": "observation",
+                        "promotion_requirements": [
+                            "multi-horizon relative strength",
+                            "constituent breadth and liquidity",
+                            "source-verified catalyst",
+                            "independent risk and execution gates",
+                        ],
+                    }
+                )
         return selected
 
     @staticmethod
-    def _quality_tier(components: Mapping[str, Mapping[str, Any]], *, include_concepts: bool) -> QualityTier:
+    def _quality_tier(
+        components: Mapping[str, Mapping[str, Any]], *, include_concepts: bool
+    ) -> QualityTier:
         required = [components["industries"]]
         if include_concepts:
             required.append(components["concepts"])
-        return QualityTier.REALTIME if all(item.get("quality_tier") == "realtime" for item in required) else (QualityTier.SNAPSHOT if any(item.get("status") in {"available", "partial"} for item in required) else QualityTier.UNAVAILABLE)
+        return (
+            QualityTier.REALTIME
+            if all(item.get("quality_tier") == "realtime" for item in required)
+            else (
+                QualityTier.SNAPSHOT
+                if any(
+                    item.get("status") in {"available", "partial"} for item in required
+                )
+                else QualityTier.UNAVAILABLE
+            )
+        )
 
 
 async def _empty_frame() -> pd.DataFrame:
@@ -613,7 +724,9 @@ async def _empty_frame() -> pd.DataFrame:
 
 
 def _first_column(frame: pd.DataFrame, *candidates: str) -> str | None:
-    return next((candidate for candidate in candidates if candidate in frame.columns), None)
+    return next(
+        (candidate for candidate in candidates if candidate in frame.columns), None
+    )
 
 
 def _float_or_none(value: object) -> float | None:
@@ -649,10 +762,14 @@ def _multi_horizon_returns(
         if day <= cutoff:
             series[day] = close
     if not series:
-        raise ValueError("Historical board data has no usable observations at or before cutoff")
+        raise ValueError(
+            "Historical board data has no usable observations at or before cutoff"
+        )
     latest_day = max(series)
     if latest_day < cutoff - timedelta(days=7):
-        raise ValueError("Historical board data is stale relative to the requested cutoff")
+        raise ValueError(
+            "Historical board data is stale relative to the requested cutoff"
+        )
     closes = [series[day] for day in sorted(series)]
     if not closes:
         raise ValueError("Historical board data has no usable closes")
@@ -695,9 +812,13 @@ def verify_rotation_history_evidence(rotation: Mapping[str, Any]) -> dict[str, A
         return _history_evidence_blocked("history validation cutoff_date is invalid")
     source_records = validation.get("source_records")
     if not isinstance(source_records, list):
-        return _history_evidence_blocked("history validation source_records must be a list")
+        return _history_evidence_blocked(
+            "history validation source_records must be a list"
+        )
     if int(validation.get("source_record_count") or 0) != len(source_records):
-        return _history_evidence_blocked("history validation source_record_count does not match records")
+        return _history_evidence_blocked(
+            "history validation source_record_count does not match records"
+        )
     rankings = rotation.get("rankings")
     if not isinstance(rankings, Mapping):
         return _history_evidence_blocked("rotation packet lacks rankings")
@@ -733,30 +854,37 @@ def verify_rotation_history_evidence(rotation: Mapping[str, Any]) -> dict[str, A
             None,
         )
         if row is None:
-            failures.append(f"history source record cannot be matched to ranking {component}:{name}")
+            failures.append(
+                f"history source record cannot be matched to ranking {component}:{name}"
+            )
             continue
         try:
             recomputed = _multi_horizon_returns(pd.DataFrame(records), cutoff=cutoff)
         except (TypeError, ValueError) as error:
-            failures.append(f"history source record cannot be recomputed for {component}:{name}: {error}")
+            failures.append(
+                f"history source record cannot be recomputed for {component}:{name}: {error}"
+            )
             continue
         reported = row.get("multi_horizon_return_pct")
         if not isinstance(reported, Mapping) or any(
             reported.get(label) != value for label, value in recomputed.items()
         ):
-            failures.append(f"reported history return does not match source records for {component}:{name}")
+            failures.append(
+                f"reported history return does not match source records for {component}:{name}"
+            )
             continue
         if recomputed["5d"] is not None:
             recomputed_with_5d += 1
 
     reported_verified = int(validation.get("verified_count") or 0)
     if reported_verified != recomputed_with_5d:
-        failures.append("history validation verified_count does not match recomputed source records")
+        failures.append(
+            "history validation verified_count does not match recomputed source records"
+        )
     return {
         "status": "pass" if not failures else "blocked",
-        "verified_source_record_count": len(source_records) - sum(
-            1 for failure in failures if failure.startswith("history source record")
-        ),
+        "verified_source_record_count": len(source_records)
+        - sum(1 for failure in failures if failure.startswith("history source record")),
         "recomputed_verified_count": recomputed_with_5d,
         "failures": failures,
     }
@@ -786,7 +914,11 @@ def _source_json_value(value: Any) -> Any:
 
 
 def _history_evidence_blocked(failure: str) -> dict[str, Any]:
-    return {"status": "blocked", "verified_source_record_count": 0, "failures": [failure]}
+    return {
+        "status": "blocked",
+        "verified_source_record_count": 0,
+        "failures": [failure],
+    }
 
 
 def _fetch_tonghuashun_industry_summary() -> pd.DataFrame:

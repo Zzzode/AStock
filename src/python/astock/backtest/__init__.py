@@ -12,7 +12,12 @@ from .strategies import (
     STRATEGIES,
     get_strategy,
 )
-from .engine import AShareExecutionAssumptions, BacktestEngine, BacktestResult, WalkForwardResult
+from .engine import (
+    AShareExecutionAssumptions,
+    BacktestEngine,
+    BacktestResult,
+    WalkForwardResult,
+)
 from .frozen_signal import (
     FrozenSignalReplayInput,
     build_frozen_signal_replay_input,

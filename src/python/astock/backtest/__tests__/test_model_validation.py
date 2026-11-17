@@ -9,7 +9,9 @@ from astock.backtest.model_validation import run_rolling_model_selection
 @pytest.fixture
 def daily_bars() -> pd.DataFrame:
     dates = pd.date_range("2025-01-01", periods=100, freq="B")
-    close = [10 + index * 0.04 + ((index % 9) - 4) * 0.15 for index in range(len(dates))]
+    close = [
+        10 + index * 0.04 + ((index % 9) - 4) * 0.15 for index in range(len(dates))
+    ]
     return pd.DataFrame(
         {
             "date": dates,

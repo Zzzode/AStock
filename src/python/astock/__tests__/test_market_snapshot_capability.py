@@ -58,8 +58,13 @@ async def test_build_market_rotation_v1_delegates_to_service() -> None:
 
 
 @pytest.mark.asyncio
-async def test_public_market_discovery_combines_whole_market_context_but_never_releases_a_decision() -> None:
-    overview = {"schema_version": "market_desk_overview.v1", "regime": {"regime": "risk_off"}}
+async def test_public_market_discovery_combines_whole_market_context_but_never_releases_a_decision() -> (
+    None
+):
+    overview = {
+        "schema_version": "market_desk_overview.v1",
+        "regime": {"regime": "risk_off"},
+    }
     rotation = {"schema_version": "market_rotation.v1"}
     universe = {"schema_version": "market-desk-public-universe-snapshot.v1"}
     discovery = {
@@ -68,10 +73,22 @@ async def test_public_market_discovery_combines_whole_market_context_but_never_r
         "no_order_execution": True,
     }
     with (
-        patch("astock.capabilities.build_market_desk_overview", new=AsyncMock(return_value=overview)),
-        patch("astock.capabilities.build_market_rotation_v1", new=AsyncMock(return_value=rotation)),
-        patch("astock.capabilities.PublicMarketDiscoveryService.build_universe_snapshot", new=AsyncMock(return_value=universe)),
-        patch("astock.capabilities.PublicMarketDiscoveryService.discover", return_value=discovery) as discover,
+        patch(
+            "astock.capabilities.build_market_desk_overview",
+            new=AsyncMock(return_value=overview),
+        ),
+        patch(
+            "astock.capabilities.build_market_rotation_v1",
+            new=AsyncMock(return_value=rotation),
+        ),
+        patch(
+            "astock.capabilities.PublicMarketDiscoveryService.build_universe_snapshot",
+            new=AsyncMock(return_value=universe),
+        ),
+        patch(
+            "astock.capabilities.PublicMarketDiscoveryService.discover",
+            return_value=discovery,
+        ) as discover,
     ):
         result = await capabilities.discover_public_market_desk_opportunities(
             include_concepts=False,
@@ -94,7 +111,9 @@ async def test_public_market_discovery_combines_whole_market_context_but_never_r
 
 
 @pytest.mark.asyncio
-async def test_public_discovery_attaches_only_source_referenced_market_context(tmp_path) -> None:
+async def test_public_discovery_attaches_only_source_referenced_market_context(
+    tmp_path,
+) -> None:
     market_map_path = tmp_path / "market-map.json"
     capabilities.upsert_market_subject_mapping(
         {
@@ -113,18 +132,37 @@ async def test_public_discovery_attaches_only_source_referenced_market_context(t
         "warnings": [],
     }
     with (
-        patch("astock.capabilities.build_market_desk_overview", new=AsyncMock(return_value={})),
-        patch("astock.capabilities.build_market_rotation_v1", new=AsyncMock(return_value={})),
-        patch("astock.capabilities.PublicMarketDiscoveryService.build_universe_snapshot", new=AsyncMock(return_value={})),
-        patch("astock.capabilities.PublicMarketDiscoveryService.discover", return_value=discovery),
+        patch(
+            "astock.capabilities.build_market_desk_overview",
+            new=AsyncMock(return_value={}),
+        ),
+        patch(
+            "astock.capabilities.build_market_rotation_v1",
+            new=AsyncMock(return_value={}),
+        ),
+        patch(
+            "astock.capabilities.PublicMarketDiscoveryService.build_universe_snapshot",
+            new=AsyncMock(return_value={}),
+        ),
+        patch(
+            "astock.capabilities.PublicMarketDiscoveryService.discover",
+            return_value=discovery,
+        ),
     ):
         result = await capabilities.discover_public_market_desk_opportunities(
             include_concepts=False, market_map_path=market_map_path
         )
 
     assert result["candidates"][0]["market_subject_mapping_status"] == "source_mapped"
-    assert result["candidates"][0]["market_subject_context"]["relationships"]["industry"]["name"] == "Semiconductor"
-    assert result["candidates"][1]["market_subject_mapping_status"] == "mapping_required"
+    assert (
+        result["candidates"][0]["market_subject_context"]["relationships"]["industry"][
+            "name"
+        ]
+        == "Semiconductor"
+    )
+    assert (
+        result["candidates"][1]["market_subject_mapping_status"] == "mapping_required"
+    )
     assert result["market_subject_mapping_coverage"] == {
         "mapped_candidate_count": 1,
         "unmapped_candidate_count": 1,
@@ -134,7 +172,9 @@ async def test_public_discovery_attaches_only_source_referenced_market_context(t
 
 
 @pytest.mark.asyncio
-async def test_record_public_discovery_freezes_exact_research_only_queue(tmp_path) -> None:
+async def test_record_public_discovery_freezes_exact_research_only_queue(
+    tmp_path,
+) -> None:
     discovery = {
         "schema_version": "market-desk-public-discovery.v1",
         "observed_at": "2026-07-28T15:00:00+08:00",
@@ -154,11 +194,14 @@ async def test_record_public_discovery_freezes_exact_research_only_queue(tmp_pat
     assert result["operation"] == "record_public_discovery_only"
     assert result["formal_decision_eligible"] is False
     assert result["no_order_execution"] is True
-    assert capabilities.verify_frozen_market_data_archive(
-        result["source_archive_path"],
-        expected_archive_id=result["source_manifest"]["archive_id"],
-        expected_source="akshare_public",
-    )["status"] == "pass"
+    assert (
+        capabilities.verify_frozen_market_data_archive(
+            result["source_archive_path"],
+            expected_archive_id=result["source_manifest"]["archive_id"],
+            expected_source="akshare_public",
+        )["status"]
+        == "pass"
+    )
 
 
 @pytest.mark.asyncio
@@ -205,11 +248,14 @@ async def test_public_discovery_industry_enrichment_requires_frozen_discovery_an
     assert result["mapped_count"] == 1
     assert result["formal_decision_eligible"] is False
     assert result["no_order_execution"] is True
-    assert capabilities.verify_frozen_market_data_archive(
-        result["mapping_archive_path"],
-        expected_archive_id=result["mapping_archive_id"],
-        expected_source="akshare_public",
-    )["status"] == "pass"
+    assert (
+        capabilities.verify_frozen_market_data_archive(
+            result["mapping_archive_path"],
+            expected_archive_id=result["mapping_archive_id"],
+            expected_source="akshare_public",
+        )["status"]
+        == "pass"
+    )
     mapping = capabilities.resolve_market_subject_context(
         "600460", market_map_path=tmp_path / "market-map.json"
     )
@@ -273,12 +319,17 @@ async def test_frozen_public_rotation_history_assurance_recomputes_embedded_reco
 
 
 @pytest.mark.asyncio
-async def test_scheduled_eod_discovery_skips_before_close_and_is_idempotent(tmp_path) -> None:
+async def test_scheduled_eod_discovery_skips_before_close_and_is_idempotent(
+    tmp_path,
+) -> None:
     overview = {
         "schema_version": "market_desk_overview.v1",
         "snapshot": {
             "observed_at": "2026-07-28T15:10:00+08:00",
-            "market_session": {"state": "after_close", "calendar_basis": "exchange_calendar"},
+            "market_session": {
+                "state": "after_close",
+                "calendar_basis": "exchange_calendar",
+            },
         },
     }
     history = {
@@ -293,9 +344,17 @@ async def test_scheduled_eod_discovery_skips_before_close_and_is_idempotent(tmp_
         ]
     }
     with (
-        patch("astock.capabilities.build_market_desk_overview", new=AsyncMock(return_value=overview)),
-        patch("astock.capabilities.list_public_market_discovery_archives", return_value=history),
-        patch("astock.capabilities.record_public_market_desk_discovery", new=AsyncMock()) as record,
+        patch(
+            "astock.capabilities.build_market_desk_overview",
+            new=AsyncMock(return_value=overview),
+        ),
+        patch(
+            "astock.capabilities.list_public_market_discovery_archives",
+            return_value=history,
+        ),
+        patch(
+            "astock.capabilities.record_public_market_desk_discovery", new=AsyncMock()
+        ) as record,
     ):
         result = await capabilities.run_public_market_desk_eod_discovery(
             archive_directory=tmp_path
@@ -308,12 +367,17 @@ async def test_scheduled_eod_discovery_skips_before_close_and_is_idempotent(tmp_
 
 
 @pytest.mark.asyncio
-async def test_scheduled_eod_discovery_binds_verified_close_metadata_to_the_archive(tmp_path) -> None:
+async def test_scheduled_eod_discovery_binds_verified_close_metadata_to_the_archive(
+    tmp_path,
+) -> None:
     overview = {
         "schema_version": "market_desk_overview.v1",
         "snapshot": {
             "observed_at": "2026-07-28T15:10:00+08:00",
-            "market_session": {"state": "after_close", "calendar_basis": "exchange_calendar"},
+            "market_session": {
+                "state": "after_close",
+                "calendar_basis": "exchange_calendar",
+            },
         },
     }
     recorded = {
@@ -324,8 +388,14 @@ async def test_scheduled_eod_discovery_binds_verified_close_metadata_to_the_arch
         "no_order_execution": True,
     }
     with (
-        patch("astock.capabilities.build_market_desk_overview", new=AsyncMock(return_value=overview)),
-        patch("astock.capabilities.list_public_market_discovery_archives", return_value={"records": []}),
+        patch(
+            "astock.capabilities.build_market_desk_overview",
+            new=AsyncMock(return_value=overview),
+        ),
+        patch(
+            "astock.capabilities.list_public_market_discovery_archives",
+            return_value={"records": []},
+        ),
         patch(
             "astock.capabilities.record_public_market_desk_discovery",
             new=AsyncMock(return_value=recorded),
@@ -345,7 +415,9 @@ async def test_scheduled_eod_discovery_binds_verified_close_metadata_to_the_arch
 
 
 @pytest.mark.asyncio
-async def test_market_desk_team_packet_reuses_one_shared_whole_market_input(monkeypatch, tmp_path) -> None:
+async def test_market_desk_team_packet_reuses_one_shared_whole_market_input(
+    monkeypatch, tmp_path
+) -> None:
     overview = {
         "schema_version": "market_desk_overview.v1",
         "snapshot": {"observed_at": "2026-07-28T15:10:00+08:00"},
@@ -361,38 +433,74 @@ async def test_market_desk_team_packet_reuses_one_shared_whole_market_input(monk
         "warnings": [],
         "errors": [],
     }
+
     class _DiscoveryService:
         async def build_universe_snapshot(self):
             return universe
+
         def discover(self, *, market_overview, rotation, universe_snapshot, **_):
             assert market_overview is overview
             assert rotation is rotation_packet
             assert universe_snapshot is universe
-            return {"schema_version": "market-desk-public-discovery.v1", "candidates": [], "warnings": []}
+            return {
+                "schema_version": "market-desk-public-discovery.v1",
+                "candidates": [],
+                "warnings": [],
+            }
+
     rotation_packet = rotation
     monkeypatch.setattr(capabilities, "PublicMarketDiscoveryService", _DiscoveryService)
-    monkeypatch.setattr(capabilities, "build_market_desk_overview", AsyncMock(return_value=overview))
-    monkeypatch.setattr(capabilities, "build_market_rotation_v1", AsyncMock(return_value=rotation))
-    monkeypatch.setattr(capabilities, "_attach_discovery_market_subject_context", lambda value, **_: dict(value))
-    monkeypatch.setattr(capabilities, "assess_market_desk_operational_readiness", lambda **_: {"market_data_mode": "public_observation"})
-    monkeypatch.setattr(capabilities, "get_market_desk_strategy_books", lambda **_: {"book_counts": {}})
-    monkeypatch.setattr(capabilities, "get_market_desk_review_queue", lambda **_: {"due_count": 0})
-    monkeypatch.setattr(capabilities, "get_market_desk_postmortem_queue", lambda **_: {"due_count": 0})
+    monkeypatch.setattr(
+        capabilities, "build_market_desk_overview", AsyncMock(return_value=overview)
+    )
+    monkeypatch.setattr(
+        capabilities, "build_market_rotation_v1", AsyncMock(return_value=rotation)
+    )
+    monkeypatch.setattr(
+        capabilities,
+        "_attach_discovery_market_subject_context",
+        lambda value, **_: dict(value),
+    )
+    monkeypatch.setattr(
+        capabilities,
+        "assess_market_desk_operational_readiness",
+        lambda **_: {"market_data_mode": "public_observation"},
+    )
+    monkeypatch.setattr(
+        capabilities, "get_market_desk_strategy_books", lambda **_: {"book_counts": {}}
+    )
+    monkeypatch.setattr(
+        capabilities, "get_market_desk_review_queue", lambda **_: {"due_count": 0}
+    )
+    monkeypatch.setattr(
+        capabilities, "get_market_desk_postmortem_queue", lambda **_: {"due_count": 0}
+    )
 
-    result = await capabilities.build_market_desk_team_packet(ledger_path=tmp_path / "ledger.json")
+    result = await capabilities.build_market_desk_team_packet(
+        ledger_path=tmp_path / "ledger.json"
+    )
 
     assert result["observed_at"] == "2026-07-28T15:10:00+08:00"
     assert result["market_overview"] is overview
     assert result["rotation"] is rotation
-    assert result["whole_market_discovery"]["schema_version"] == "market-desk-public-discovery.v1"
+    assert (
+        result["whole_market_discovery"]["schema_version"]
+        == "market-desk-public-discovery.v1"
+    )
     assert result["team_orchestration"]["binding_veto_roles"] == [
-        "data-verifier", "risk-analyst", "quant-risk-modeler", "execution-liquidity-analyst", "compliance-officer"
+        "data-verifier",
+        "risk-analyst",
+        "quant-risk-modeler",
+        "execution-liquidity-analyst",
+        "compliance-officer",
     ]
     assert result["formal_decision_eligible"] is False
     assert result["no_order_execution"] is True
 
 
-def test_promote_frozen_discovery_candidate_creates_monitoring_entry_once(tmp_path) -> None:
+def test_promote_frozen_discovery_candidate_creates_monitoring_entry_once(
+    tmp_path,
+) -> None:
     discovery = {
         "schema_version": "market-desk-public-discovery.v1",
         "observed_at": "2026-07-28T15:00:00+08:00",
@@ -442,7 +550,12 @@ def test_promote_frozen_discovery_candidate_creates_monitoring_entry_once(tmp_pa
     assert created["formal_decision_eligible"] is False
     assert created["entry"]["source_refs"][0]["archive_id"] == packet.archive_id
     assert duplicate["status"] == "already_promoted"
-    assert capabilities.get_research_ledger_index(ledger_path=ledger_path)["index"]["entry_count"] == 1
+    assert (
+        capabilities.get_research_ledger_index(ledger_path=ledger_path)["index"][
+            "entry_count"
+        ]
+        == 1
+    )
 
 
 def test_promote_public_discovery_blocks_unmapped_candidate(tmp_path) -> None:
@@ -478,7 +591,9 @@ def test_promote_public_discovery_blocks_unmapped_candidate(tmp_path) -> None:
         )
 
 
-def test_discovery_research_queue_requires_timely_review_and_verifies_source(tmp_path) -> None:
+def test_discovery_research_queue_requires_timely_review_and_verifies_source(
+    tmp_path,
+) -> None:
     discovery = {
         "schema_version": "market-desk-public-discovery.v1",
         "observed_at": "2026-07-28T15:00:00+08:00",
@@ -513,7 +628,11 @@ def test_discovery_research_queue_requires_timely_review_and_verifies_source(tmp
         ledger_path=ledger_path,
     )
     created_at = datetime.fromisoformat(promoted["entry"]["created_at"])
-    reference_time = (created_at.replace(tzinfo=timezone.utc) if created_at.tzinfo is None else created_at) + timedelta(hours=49)
+    reference_time = (
+        created_at.replace(tzinfo=timezone.utc)
+        if created_at.tzinfo is None
+        else created_at
+    ) + timedelta(hours=49)
 
     queue = capabilities.get_market_desk_discovery_research_queue(
         ledger_path=ledger_path, now=reference_time
@@ -561,11 +680,14 @@ async def test_freeze_public_market_rotation_binds_the_packet_to_a_content_archi
 
     assert result["source_manifest"]["source"] == "akshare_public"
     assert result["source_archive_path"]
-    assert capabilities.verify_frozen_market_data_archive(
-        result["source_archive_path"],
-        expected_archive_id=result["source_manifest"]["archive_id"],
-        expected_source="akshare_public",
-    )["status"] == "pass"
+    assert (
+        capabilities.verify_frozen_market_data_archive(
+            result["source_archive_path"],
+            expected_archive_id=result["source_manifest"]["archive_id"],
+            expected_source="akshare_public",
+        )["status"]
+        == "pass"
+    )
 
 
 @pytest.mark.asyncio
@@ -574,7 +696,10 @@ async def test_public_market_desk_observation_records_frozen_rotation_and_never_
 ) -> None:
     overview = {
         "schema_version": "market_desk_overview.v1",
-        "snapshot": {"observed_at": "2026-07-28T15:00:00+08:00", "data_quality": "snapshot"},
+        "snapshot": {
+            "observed_at": "2026-07-28T15:00:00+08:00",
+            "data_quality": "snapshot",
+        },
         "regime": {"regime": "selective_risk_on"},
     }
     rotation = {
@@ -582,12 +707,27 @@ async def test_public_market_desk_observation_records_frozen_rotation_and_never_
         "source_manifest": {"source": "akshare_public", "archive_id": "sha256:abc"},
         "source_archive_path": str(tmp_path / "rotation.json"),
     }
-    readiness = {"observation_desk_status": "ready", "formal_paper_desk_status": "blocked"}
+    readiness = {
+        "observation_desk_status": "ready",
+        "formal_paper_desk_status": "blocked",
+    }
     with (
-        patch("astock.capabilities.build_market_desk_overview", new=AsyncMock(return_value=overview)),
-        patch("astock.capabilities.freeze_public_market_rotation_observation", new=AsyncMock(return_value=rotation)),
-        patch("astock.capabilities.assess_market_desk_operational_readiness", return_value=readiness),
-        patch("astock.capabilities.verify_frozen_market_data_archive", return_value={"status": "pass"}),
+        patch(
+            "astock.capabilities.build_market_desk_overview",
+            new=AsyncMock(return_value=overview),
+        ),
+        patch(
+            "astock.capabilities.freeze_public_market_rotation_observation",
+            new=AsyncMock(return_value=rotation),
+        ),
+        patch(
+            "astock.capabilities.assess_market_desk_operational_readiness",
+            return_value=readiness,
+        ),
+        patch(
+            "astock.capabilities.verify_frozen_market_data_archive",
+            return_value={"status": "pass"},
+        ),
     ):
         result = await capabilities.run_public_market_desk_observation(
             include_concepts=False,
@@ -599,8 +739,12 @@ async def test_public_market_desk_observation_records_frozen_rotation_and_never_
     assert result["formal_decision_eligible"] is False
     assert result["no_order_execution"] is True
     assert result["rotation_archive_assurance"]["status"] == "pass"
-    archived = json.loads((tmp_path / f"{result['archive_id'].removeprefix('sha256:')}.json").read_text())
-    assert archived["rotation_observation"]["source_archive_assurance"]["status"] == "pass"
+    archived = json.loads(
+        (tmp_path / f"{result['archive_id'].removeprefix('sha256:')}.json").read_text()
+    )
+    assert (
+        archived["rotation_observation"]["source_archive_assurance"]["status"] == "pass"
+    )
     assert (tmp_path / f"{result['archive_id'].removeprefix('sha256:')}.json").exists()
 
 
@@ -610,13 +754,22 @@ async def test_scheduled_eod_observation_skips_outside_verified_after_close() ->
         "schema_version": "market_desk_overview.v1",
         "snapshot": {
             "observed_at": "2026-07-28T10:00:00+08:00",
-            "market_session": {"state": "closed", "calendar_basis": "exchange_calendar"},
+            "market_session": {
+                "state": "closed",
+                "calendar_basis": "exchange_calendar",
+            },
         },
         "regime": {"regime": "insufficient_data"},
     }
     with (
-        patch("astock.capabilities.build_market_desk_overview", new=AsyncMock(return_value=overview)),
-        patch("astock.capabilities.freeze_public_market_rotation_observation", new=AsyncMock()) as freeze,
+        patch(
+            "astock.capabilities.build_market_desk_overview",
+            new=AsyncMock(return_value=overview),
+        ),
+        patch(
+            "astock.capabilities.freeze_public_market_rotation_observation",
+            new=AsyncMock(),
+        ) as freeze,
     ):
         result = await capabilities.run_public_market_desk_eod_observation()
 
@@ -635,7 +788,10 @@ async def test_scheduled_eod_observation_is_idempotent_for_a_verified_session_da
         "schema_version": "market_desk_overview.v1",
         "snapshot": {
             "observed_at": "2026-07-28T15:10:00+08:00",
-            "market_session": {"state": "after_close", "calendar_basis": "exchange_calendar"},
+            "market_session": {
+                "state": "after_close",
+                "calendar_basis": "exchange_calendar",
+            },
         },
         "regime": {"regime": "defensive_rotation"},
     }
@@ -650,9 +806,18 @@ async def test_scheduled_eod_observation_is_idempotent_for_a_verified_session_da
         ],
     }
     with (
-        patch("astock.capabilities.build_market_desk_overview", new=AsyncMock(return_value=overview)),
-        patch("astock.capabilities.list_public_desk_observation_runs", return_value=history),
-        patch("astock.capabilities.freeze_public_market_rotation_observation", new=AsyncMock()) as freeze,
+        patch(
+            "astock.capabilities.build_market_desk_overview",
+            new=AsyncMock(return_value=overview),
+        ),
+        patch(
+            "astock.capabilities.list_public_desk_observation_runs",
+            return_value=history,
+        ),
+        patch(
+            "astock.capabilities.freeze_public_market_rotation_observation",
+            new=AsyncMock(),
+        ) as freeze,
     ):
         result = await capabilities.run_public_market_desk_eod_observation(
             archive_directory=tmp_path
@@ -741,7 +906,9 @@ def test_market_data_sources_cli_exposes_eligibility_without_credentials() -> No
     assert '"source_id": "akshare_public"' in result.stdout
 
 
-def test_market_desk_observe_cli_delegates_to_observation_only_capability(tmp_path) -> None:
+def test_market_desk_observe_cli_delegates_to_observation_only_capability(
+    tmp_path,
+) -> None:
     archive = tmp_path / "desk.json"
     packet = {
         "schema_version": "market-desk-public-observation-run.v1",
@@ -802,7 +969,9 @@ def test_market_desk_discover_cli_exposes_research_only_market_queue() -> None:
     }
 
 
-def test_market_desk_record_and_promote_discovery_cli_delegate_without_execution(tmp_path) -> None:
+def test_market_desk_record_and_promote_discovery_cli_delegate_without_execution(
+    tmp_path,
+) -> None:
     record_packet = {
         "schema_version": "market-desk-public-discovery.v1",
         "source_archive_path": str(tmp_path / "discovery.json"),
@@ -848,10 +1017,14 @@ def test_market_desk_record_and_promote_discovery_cli_delegate_without_execution
     assert record.await_args.kwargs["include_concepts"] is False
     assert promoted.exit_code == 0
     assert '"formal_decision_eligible": false' in promoted.stdout
-    assert promote.call_args.kwargs["candidate_id"] == "public-discovery:600460:2026-07-28"
+    assert (
+        promote.call_args.kwargs["candidate_id"] == "public-discovery:600460:2026-07-28"
+    )
 
 
-def test_market_desk_discovery_history_cli_delegates_to_integrity_audit(tmp_path) -> None:
+def test_market_desk_discovery_history_cli_delegates_to_integrity_audit(
+    tmp_path,
+) -> None:
     packet = {
         "schema_version": "market-desk-public-discovery-history.v1",
         "run_count": 1,
@@ -865,7 +1038,12 @@ def test_market_desk_discovery_history_cli_delegates_to_integrity_audit(tmp_path
     ) as history:
         result = CliRunner().invoke(
             cli.app,
-            ["market-desk-discovery-history", "--archive-directory", str(tmp_path), "--json"],
+            [
+                "market-desk-discovery-history",
+                "--archive-directory",
+                str(tmp_path),
+                "--json",
+            ],
         )
 
     assert result.exit_code == 0
@@ -887,12 +1065,19 @@ def test_market_desk_discovery_research_queue_cli_is_read_only(tmp_path) -> None
     ) as queue:
         result = CliRunner().invoke(
             cli.app,
-            ["market-desk-discovery-research-queue", "--ledger-path", str(tmp_path / "ledger.json"), "--json"],
+            [
+                "market-desk-discovery-research-queue",
+                "--ledger-path",
+                str(tmp_path / "ledger.json"),
+                "--json",
+            ],
         )
 
     assert result.exit_code == 0
     assert '"no_order_execution": true' in result.stdout
-    queue.assert_called_once_with(ledger_path=tmp_path / "ledger.json", review_sla_hours=48)
+    queue.assert_called_once_with(
+        ledger_path=tmp_path / "ledger.json", review_sla_hours=48
+    )
 
 
 def test_market_desk_triage_discovery_cli_cannot_be_an_execution_path(tmp_path) -> None:
@@ -911,11 +1096,16 @@ def test_market_desk_triage_discovery_cli_cannot_be_an_execution_path(tmp_path) 
             [
                 "market-desk-triage-discovery",
                 "research-1",
-                "--action", "continue_research",
-                "--reviewer", "researcher",
-                "--reason", "evidence reviewed",
-                "--evidence-ref", "official:1",
-                "--next-review-at", "2026-07-30T15:00:00+08:00",
+                "--action",
+                "continue_research",
+                "--reviewer",
+                "researcher",
+                "--reason",
+                "evidence reviewed",
+                "--evidence-ref",
+                "official:1",
+                "--next-review-at",
+                "2026-07-30T15:00:00+08:00",
                 "--json",
             ],
         )
@@ -945,7 +1135,9 @@ def test_market_desk_review_queue_cli_never_changes_a_strategy_plan() -> None:
     queue.assert_called_once_with(ledger_path=None)
 
 
-def test_market_desk_observation_history_cli_delegates_to_integrity_audit(tmp_path) -> None:
+def test_market_desk_observation_history_cli_delegates_to_integrity_audit(
+    tmp_path,
+) -> None:
     packet = {
         "schema_version": "market-desk-public-observation-history.v1",
         "run_count": 1,
@@ -960,15 +1152,24 @@ def test_market_desk_observation_history_cli_delegates_to_integrity_audit(tmp_pa
     ) as history:
         result = CliRunner().invoke(
             cli.app,
-            ["market-desk-observation-history", "--archive-directory", str(tmp_path), "--json"],
+            [
+                "market-desk-observation-history",
+                "--archive-directory",
+                str(tmp_path),
+                "--json",
+            ],
         )
 
     assert result.exit_code == 0
     assert '"valid_count": 1' in result.stdout
-    history.assert_called_once_with(archive_directory=tmp_path, exception_directory=None)
+    history.assert_called_once_with(
+        archive_directory=tmp_path, exception_directory=None
+    )
 
 
-def test_market_desk_observation_exception_review_cli_requires_a_bounded_review_packet(tmp_path) -> None:
+def test_market_desk_observation_exception_review_cli_requires_a_bounded_review_packet(
+    tmp_path,
+) -> None:
     packet = {
         "success": True,
         "review_path": str(tmp_path / "review.json"),
@@ -982,15 +1183,24 @@ def test_market_desk_observation_exception_review_cli_requires_a_bounded_review_
             cli.app,
             [
                 "market-desk-observation-exception-review",
-                "--session-date", "2026-07-28",
-                "--archive-id", "sha256:first",
-                "--archive-id", "sha256:second",
-                "--canonical-archive-id", "sha256:first",
-                "--reviewer", "operations-control",
-                "--reason", "Controlled duplicate replay.",
-                "--evidence-ref", "ops-ticket:fixture",
-                "--archive-directory", str(tmp_path / "runs"),
-                "--exception-directory", str(tmp_path / "exceptions"),
+                "--session-date",
+                "2026-07-28",
+                "--archive-id",
+                "sha256:first",
+                "--archive-id",
+                "sha256:second",
+                "--canonical-archive-id",
+                "sha256:first",
+                "--reviewer",
+                "operations-control",
+                "--reason",
+                "Controlled duplicate replay.",
+                "--evidence-ref",
+                "ops-ticket:fixture",
+                "--archive-directory",
+                str(tmp_path / "runs"),
+                "--exception-directory",
+                str(tmp_path / "exceptions"),
                 "--json",
             ],
         )
@@ -1002,37 +1212,54 @@ def test_market_desk_observation_exception_review_cli_requires_a_bounded_review_
 
 def test_tushare_freeze_cli_delegates_without_exposing_credentials(tmp_path) -> None:
     runner = CliRunner()
-    daily_packet = {"source_archive_path": str(tmp_path / "daily.json"), "market_data": {}}
-    universe_packet = {"source_archive_path": str(tmp_path / "universe.json"), "members": ["600460.SH"]}
-    with patch(
-        "astock.cli.capabilities.require_licensed_market_data_mode",
-    ) as require_licensed, patch(
-        "astock.cli.capabilities.build_tushare_daily_replay_input",
-        return_value=daily_packet,
-    ) as freeze_daily:
+    daily_packet = {
+        "source_archive_path": str(tmp_path / "daily.json"),
+        "market_data": {},
+    }
+    universe_packet = {
+        "source_archive_path": str(tmp_path / "universe.json"),
+        "members": ["600460.SH"],
+    }
+    with (
+        patch(
+            "astock.cli.capabilities.require_licensed_market_data_mode",
+        ) as require_licensed,
+        patch(
+            "astock.cli.capabilities.build_tushare_daily_replay_input",
+            return_value=daily_packet,
+        ) as freeze_daily,
+    ):
         daily = runner.invoke(
             cli.app,
             [
                 "freeze-tushare-daily",
                 "600460.SH",
-                "--start-date", "2026-07-01",
-                "--end-date", "2026-07-03",
-                "--archive-directory", str(tmp_path),
+                "--start-date",
+                "2026-07-01",
+                "--end-date",
+                "2026-07-03",
+                "--archive-directory",
+                str(tmp_path),
                 "--json",
             ],
         )
-    with patch(
-        "astock.cli.capabilities.require_licensed_market_data_mode",
-    ) as require_licensed_universe, patch(
-        "astock.cli.capabilities.build_tushare_listing_universe_snapshot",
-        return_value=universe_packet,
-    ) as freeze_universe:
+    with (
+        patch(
+            "astock.cli.capabilities.require_licensed_market_data_mode",
+        ) as require_licensed_universe,
+        patch(
+            "astock.cli.capabilities.build_tushare_listing_universe_snapshot",
+            return_value=universe_packet,
+        ) as freeze_universe,
+    ):
         universe = runner.invoke(
             cli.app,
             [
                 "freeze-tushare-universe",
-                "--as-of-date", "2026-07-01",
-                "--archive-directory", str(tmp_path),
+                "--as-of-date",
+                "2026-07-01",
+                "--archive-directory",
+                str(tmp_path),
                 "--json",
             ],
         )
@@ -1059,18 +1286,28 @@ def test_tushare_freeze_cli_delegates_without_exposing_credentials(tmp_path) -> 
 
 def test_tushare_freeze_cli_blocks_public_observation_profiles(tmp_path) -> None:
     runner = CliRunner()
-    with patch(
-        "astock.cli.capabilities.require_licensed_market_data_mode",
-        side_effect=ValueError("Licensed market-data capability is disabled for this profile"),
-    ), patch("astock.cli.capabilities.build_tushare_daily_replay_input") as freeze_daily:
+    with (
+        patch(
+            "astock.cli.capabilities.require_licensed_market_data_mode",
+            side_effect=ValueError(
+                "Licensed market-data capability is disabled for this profile"
+            ),
+        ),
+        patch(
+            "astock.cli.capabilities.build_tushare_daily_replay_input"
+        ) as freeze_daily,
+    ):
         result = runner.invoke(
             cli.app,
             [
                 "freeze-tushare-daily",
                 "600460.SH",
-                "--start-date", "2026-07-01",
-                "--end-date", "2026-07-03",
-                "--archive-directory", str(tmp_path),
+                "--start-date",
+                "2026-07-01",
+                "--end-date",
+                "2026-07-03",
+                "--archive-directory",
+                str(tmp_path),
                 "--json",
             ],
         )
@@ -1080,7 +1317,9 @@ def test_tushare_freeze_cli_blocks_public_observation_profiles(tmp_path) -> None
     freeze_daily.assert_not_called()
 
 
-def test_market_desk_observation_action_cli_never_emits_execution_instruction(tmp_path) -> None:
+def test_market_desk_observation_action_cli_never_emits_execution_instruction(
+    tmp_path,
+) -> None:
     candidate = {
         "data": {
             "source": "akshare_public",
@@ -1118,10 +1357,23 @@ def test_market_desk_ic_capability_and_cli_emit_structured_decision(tmp_path) ->
     candidate = {
         "targets": ["600460"],
         "universe": {"eligible": True, "liquid": True},
-        "data": {"as_of": "2026-07-28T15:00:00+08:00", "source": "tushare_pro", "quality": "realtime", "archive_id": "sha256:ic-packet", "license_attestation": {"authorized": True, "attested_by": "research-data-owner"}},
+        "data": {
+            "as_of": "2026-07-28T15:00:00+08:00",
+            "source": "tushare_pro",
+            "quality": "realtime",
+            "archive_id": "sha256:ic-packet",
+            "license_attestation": {
+                "authorized": True,
+                "attested_by": "research-data-owner",
+            },
+        },
         "edge": {"thesis": "test", "catalyst": "test", "invalidation": "test"},
         "risk": {"max_loss_pct": 0.01, "position_limit_pct": 0.1},
-        "execution": {"entry_condition": "test", "exit_condition": "test", "review_at": "close"},
+        "execution": {
+            "entry_condition": "test",
+            "exit_condition": "test",
+            "review_at": "close",
+        },
         "compliance": {
             "research_only_disclosure": True,
             "no_execution_instruction": True,

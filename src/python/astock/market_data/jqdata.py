@@ -19,7 +19,6 @@ from typing import Any
 
 import pandas as pd
 
-
 _REQUIRED_BAR_COLUMNS = {"date", "open", "high", "low", "close", "volume"}
 
 
@@ -36,7 +35,9 @@ class JQDataMinuteObservationPacket:
         """Return an agent-safe JSON representation of the packet."""
         return {
             "schema_version": "jqdata_minute_observation.v1",
-            "market_data": {code: _records(frame) for code, frame in self.market_data.items()},
+            "market_data": {
+                code: _records(frame) for code, frame in self.market_data.items()
+            },
             "source_manifest": self.source_manifest,
             "price_basis": self.price_basis,
             "limitations": [
@@ -59,14 +60,22 @@ class JQDataMinuteObservationPacket:
             }
         )
         if digest != expected_digest:
-            raise ValueError("JQData source manifest archive_id does not match raw source records")
+            raise ValueError(
+                "JQData source manifest archive_id does not match raw source records"
+            )
         payload = {
             "schema_version": "market_data_frozen_archive.v1",
             "source": "jqdata",
             "archive_id": archive_id,
             "raw_source_records": self.raw_source_records,
         }
-        canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+        canonical = json.dumps(
+            payload,
+            ensure_ascii=False,
+            sort_keys=True,
+            separators=(",", ":"),
+            default=str,
+        )
         target_directory = Path(directory)
         target_directory.mkdir(parents=True, exist_ok=True)
         target = target_directory / f"{digest}.json"
@@ -92,10 +101,16 @@ class JQDataMinuteAdapter:
         client: Any | None = None,
         now: Callable[[], datetime] | None = None,
     ) -> None:
-        self._username = (username if username is not None else os.environ.get("JQDATA_USERNAME", "")).strip()
-        self._password = (password if password is not None else os.environ.get("JQDATA_PASSWORD", "")).strip()
+        self._username = (
+            username if username is not None else os.environ.get("JQDATA_USERNAME", "")
+        ).strip()
+        self._password = (
+            password if password is not None else os.environ.get("JQDATA_PASSWORD", "")
+        ).strip()
         self._data_owner = (
-            data_owner if data_owner is not None else os.environ.get("MARKET_DATA_ATTESTED_BY", "")
+            data_owner
+            if data_owner is not None
+            else os.environ.get("MARKET_DATA_ATTESTED_BY", "")
         ).strip()
         self._client = client
         self._now = now or (lambda: datetime.now(timezone.utc))
@@ -149,7 +164,10 @@ class JQDataMinuteAdapter:
                 "as_of": observed_at,
                 "archive_id": archive_id,
                 "domains": {"minute_bars": "jqdata"},
-                "license_attestation": {"authorized": True, "attested_by": self._data_owner},
+                "license_attestation": {
+                    "authorized": True,
+                    "attested_by": self._data_owner,
+                },
             },
             price_basis="raw",
             raw_source_records=raw_components,
@@ -158,16 +176,24 @@ class JQDataMinuteAdapter:
     def _resolve_client(self) -> Any:
         if self._client is not None:
             if not self._data_owner:
-                raise ValueError("MARKET_DATA_ATTESTED_BY is required for licensed JQData observations")
+                raise ValueError(
+                    "MARKET_DATA_ATTESTED_BY is required for licensed JQData observations"
+                )
             return self._client
         if not self._username or not self._password:
-            raise ValueError("JQDATA_USERNAME and JQDATA_PASSWORD are required for licensed JQData observations")
+            raise ValueError(
+                "JQDATA_USERNAME and JQDATA_PASSWORD are required for licensed JQData observations"
+            )
         if not self._data_owner:
-            raise ValueError("MARKET_DATA_ATTESTED_BY is required for licensed JQData observations")
+            raise ValueError(
+                "MARKET_DATA_ATTESTED_BY is required for licensed JQData observations"
+            )
         try:
             import jqdatasdk  # type: ignore[import-not-found]
         except ImportError as error:
-            raise RuntimeError("Install the optional JQData dependency before requesting minute observations") from error
+            raise RuntimeError(
+                "Install the optional JQData dependency before requesting minute observations"
+            ) from error
         authenticated = jqdatasdk.auth(self._username, self._password)
         if authenticated is False:
             raise RuntimeError("JQData authentication was rejected")
@@ -179,13 +205,17 @@ def _normalize_codes(codes: Sequence[str]) -> list[str]:
     for raw_code in codes:
         code = str(raw_code).strip().upper()
         if not code or not code.endswith((".XSHG", ".XSHE")):
-            raise ValueError("JQData minute codes must be qualified, e.g. 600460.XSHG or 000001.XSHE")
+            raise ValueError(
+                "JQData minute codes must be qualified, e.g. 600460.XSHG or 000001.XSHE"
+            )
         if code not in normalized:
             normalized.append(code)
     return normalized
 
 
-def _normalize_timestamp(value: str | datetime | pd.Timestamp, name: str) -> pd.Timestamp:
+def _normalize_timestamp(
+    value: str | datetime | pd.Timestamp, name: str
+) -> pd.Timestamp:
     timestamp = pd.Timestamp(value)
     if pd.isna(timestamp):
         raise ValueError(f"{name} must be an ISO timestamp")
@@ -200,24 +230,36 @@ def _as_frame(value: Any, name: str) -> pd.DataFrame:
     return value.copy()
 
 
-def _normalize_minute_bars(code: str, bars: pd.DataFrame, start: pd.Timestamp, end: pd.Timestamp) -> pd.DataFrame:
+def _normalize_minute_bars(
+    code: str, bars: pd.DataFrame, start: pd.Timestamp, end: pd.Timestamp
+) -> pd.DataFrame:
     missing = _REQUIRED_BAR_COLUMNS.difference(bars.columns)
     if missing:
-        raise ValueError(f"JQData get_bars:{code} response lacks columns: {', '.join(sorted(missing))}")
+        raise ValueError(
+            f"JQData get_bars:{code} response lacks columns: {', '.join(sorted(missing))}"
+        )
     normalized = bars.copy()
     normalized["date"] = pd.to_datetime(normalized["date"], errors="coerce")
     if normalized["date"].isna().any():
         raise ValueError(f"JQData get_bars:{code} contains invalid minute timestamps")
     normalized = normalized[(normalized["date"] >= start) & (normalized["date"] <= end)]
     if normalized.empty:
-        raise ValueError(f"JQData get_bars:{code} contains no bars in the requested interval")
+        raise ValueError(
+            f"JQData get_bars:{code} contains no bars in the requested interval"
+        )
     if normalized["date"].duplicated().any():
         raise ValueError(f"JQData get_bars:{code} contains duplicate minute timestamps")
     if not normalized["date"].is_monotonic_increasing:
         normalized = normalized.sort_values("date", kind="stable")
-    invalid_sessions = [timestamp for timestamp in normalized["date"] if not _is_a_share_continuous_session(timestamp)]
+    invalid_sessions = [
+        timestamp
+        for timestamp in normalized["date"]
+        if not _is_a_share_continuous_session(timestamp)
+    ]
     if invalid_sessions:
-        raise ValueError(f"JQData get_bars:{code} contains bars outside A-share continuous sessions")
+        raise ValueError(
+            f"JQData get_bars:{code} contains bars outside A-share continuous sessions"
+        )
     for column in ("open", "high", "low", "close", "volume"):
         normalized[column] = pd.to_numeric(normalized[column], errors="coerce")
     if normalized[["open", "high", "low", "close", "volume"]].isna().any().any():
@@ -241,5 +283,7 @@ def _records(frame: pd.DataFrame) -> list[dict[str, Any]]:
 
 
 def _content_hash(value: Mapping[str, Any]) -> str:
-    canonical = json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str)
+    canonical = json.dumps(
+        value, ensure_ascii=False, sort_keys=True, separators=(",", ":"), default=str
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()

@@ -30,7 +30,9 @@ def _frames() -> dict[str, pd.DataFrame]:
     }
 
 
-def test_frozen_public_portfolio_replay_verifies_exact_archive_but_blocks_formal_claims(tmp_path) -> None:
+def test_frozen_public_portfolio_replay_verifies_exact_archive_but_blocks_formal_claims(
+    tmp_path,
+) -> None:
     frames = _frames()
     dates = frames["600460"]["date"].dt.strftime("%Y-%m-%d").tolist()
     packet = build_frozen_portfolio_replay_input(
@@ -123,7 +125,10 @@ async def test_akshare_builder_freezes_daily_bars_with_explicit_execution_assump
     assert result["coverage_manifest"]["halts"] == "unverified"
     assert result["execution_assumption"] == "daily_bar_presence_assumed_tradable"
     assert result["trading_calendar_source"] == "akshare.tool_trade_date_hist_sina"
-    assert (tmp_path / (result["source_manifest"]["archive_id"].removeprefix("sha256:") + ".json")).exists()
+    assert (
+        tmp_path
+        / (result["source_manifest"]["archive_id"].removeprefix("sha256:") + ".json")
+    ).exists()
     client.get_daily_quotes.assert_awaited_once()
 
 
@@ -131,8 +136,8 @@ async def test_akshare_builder_freezes_daily_bars_with_explicit_execution_assump
 async def test_akshare_builder_uses_exchange_calendar_not_security_date_union(
     monkeypatch: pytest.MonkeyPatch,
 ) -> None:
-    frame = _frames()["600460"].iloc[[0, 2]].drop(
-        columns=["tradable", "execution_status"]
+    frame = (
+        _frames()["600460"].iloc[[0, 2]].drop(columns=["tradable", "execution_status"])
     )
     client = MagicMock()
     client.get_daily_quotes = AsyncMock(return_value=frame)
@@ -172,7 +177,13 @@ def test_frozen_portfolio_cli_runs_archived_input(tmp_path) -> None:
 
     result = CliRunner().invoke(
         backtest_cli.app,
-        ["run-frozen-portfolio", str(replay_path), "--source-archive-path", str(archive_path), "--json"],
+        [
+            "run-frozen-portfolio",
+            str(replay_path),
+            "--source-archive-path",
+            str(archive_path),
+            "--json",
+        ],
     )
 
     assert result.exit_code == 0, result.output
@@ -193,9 +204,7 @@ async def test_public_portfolio_review_evidence_binds_replayed_return_and_benchm
         observed_at="2026-07-28T15:00:00+08:00",
     )
     source_archive_path = packet.write_frozen_archive(tmp_path)
-    benchmark = pd.DataFrame(
-        {"date": dates, "close": [4_000.0, 4_040.0, 4_080.0]}
-    )
+    benchmark = pd.DataFrame({"date": dates, "close": [4_000.0, 4_040.0, 4_080.0]})
     monkeypatch.setattr(
         capabilities,
         "_fetch_akshare_benchmark_daily",
@@ -214,7 +223,10 @@ async def test_public_portfolio_review_evidence_binds_replayed_return_and_benchm
     assert result["evidence_status"] == "public_frozen"
     assert result["review_inputs"]["benchmark_return"] == pytest.approx(0.02)
     assert result["return_evidence"]["source"] == "akshare_public"
-    assert result["return_evidence"]["archive_id"] in result["return_evidence"]["paper_return_ref"]
+    assert (
+        result["return_evidence"]["archive_id"]
+        in result["return_evidence"]["paper_return_ref"]
+    )
     assert result["formal_decision_eligible"] is False
 
     review = review_paper_decision(
@@ -243,14 +255,18 @@ async def test_public_portfolio_review_evidence_binds_replayed_return_and_benchm
         evaluation_end="2026-07-03T15:00:00+08:00",
         benchmark_id="000300.SH",
         gross_paper_return=result["review_inputs"]["gross_paper_return"],
-        implementation_cost_return=result["review_inputs"]["implementation_cost_return"],
+        implementation_cost_return=result["review_inputs"][
+            "implementation_cost_return"
+        ],
         benchmark_return=result["review_inputs"]["benchmark_return"],
         return_evidence=result["return_evidence"],
     )
     assert review.evidence_status == "public_frozen"
 
 
-def test_akshare_benchmark_fetcher_uses_sina_only_after_eastmoney_retries_fail() -> None:
+def test_akshare_benchmark_fetcher_uses_sina_only_after_eastmoney_retries_fail() -> (
+    None
+):
     fallback = pd.DataFrame(
         {"date": ["2026-07-01", "2026-07-02"], "close": [4_000.0, 4_040.0]}
     )

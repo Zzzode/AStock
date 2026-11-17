@@ -29,12 +29,32 @@ def _rotation() -> dict:
 
 
 @pytest.mark.asyncio
-async def test_public_discovery_uses_one_market_snapshot_and_only_creates_research_queue() -> None:
+async def test_public_discovery_uses_one_market_snapshot_and_only_creates_research_queue() -> (
+    None
+):
     frame = pd.DataFrame(
         [
-            {"代码": "600001", "名称": "甲公司", "涨跌幅": 4.0, "成交额": 300_000_000, "换手率": 2.1},
-            {"代码": "300002", "名称": "乙公司", "涨跌幅": 5.0, "成交额": 250_000_000, "换手率": 3.2},
-            {"代码": "920005", "名称": "北交所公司", "涨跌幅": 6.0, "成交额": 220_000_000, "换手率": 4.0},
+            {
+                "代码": "600001",
+                "名称": "甲公司",
+                "涨跌幅": 4.0,
+                "成交额": 300_000_000,
+                "换手率": 2.1,
+            },
+            {
+                "代码": "300002",
+                "名称": "乙公司",
+                "涨跌幅": 5.0,
+                "成交额": 250_000_000,
+                "换手率": 3.2,
+            },
+            {
+                "代码": "920005",
+                "名称": "北交所公司",
+                "涨跌幅": 6.0,
+                "成交额": 220_000_000,
+                "换手率": 4.0,
+            },
             {"代码": "000003", "名称": "*ST 丙", "涨跌幅": 7.0, "成交额": 500_000_000},
             {"代码": "900005", "名称": "B股公司", "涨跌幅": 9.0, "成交额": 500_000_000},
             {"代码": "600004", "名称": "丁公司", "涨跌幅": 2.9, "成交额": 500_000_000},
@@ -56,7 +76,11 @@ async def test_public_discovery_uses_one_market_snapshot_and_only_creates_resear
     )
 
     assert universe["coverage"]["eligible_a_share_count"] == 4
-    assert [candidate["code"] for candidate in result["candidates"]] == ["920005", "300002", "600001"]
+    assert [candidate["code"] for candidate in result["candidates"]] == [
+        "920005",
+        "300002",
+        "600001",
+    ]
     assert result["screening_counts"] == {
         "eligible_public_rows": 4,
         "liquid_rows": 4,
@@ -65,8 +89,13 @@ async def test_public_discovery_uses_one_market_snapshot_and_only_creates_resear
     }
     assert result["formal_decision_eligible"] is False
     assert result["no_order_execution"] is True
-    assert {candidate["discovery_status"] for candidate in result["candidates"]} == {"prepare_research"}
-    assert result["rotation_context"]["mapping_status"] == "not_mapped_to_discovery_candidates"
+    assert {candidate["discovery_status"] for candidate in result["candidates"]} == {
+        "prepare_research"
+    }
+    assert (
+        result["rotation_context"]["mapping_status"]
+        == "not_mapped_to_discovery_candidates"
+    )
 
 
 @pytest.mark.asyncio
@@ -106,7 +135,9 @@ async def test_public_discovery_blocks_when_universe_source_is_unavailable() -> 
 
 
 @pytest.mark.asyncio
-async def test_public_discovery_uses_degraded_whole_market_fallback_without_upgrading_permission() -> None:
+async def test_public_discovery_uses_degraded_whole_market_fallback_without_upgrading_permission() -> (
+    None
+):
     def fail() -> pd.DataFrame:
         raise ConnectionError("East Money unavailable")
 
@@ -134,7 +165,9 @@ async def test_public_discovery_uses_degraded_whole_market_fallback_without_upgr
     assert any("Degradation note" in warning for warning in result["warnings"])
 
 
-def test_discovery_archive_history_detects_boundary_tampering_and_duplicates(tmp_path) -> None:
+def test_discovery_archive_history_detects_boundary_tampering_and_duplicates(
+    tmp_path,
+) -> None:
     discovery = {
         "schema_version": "market-desk-public-discovery.v1",
         "observed_at": "2026-07-28T15:00:00+08:00",
@@ -155,13 +188,20 @@ def test_discovery_archive_history_detects_boundary_tampering_and_duplicates(tmp
     assert history["duplicate_run_dates"] == []
 
     altered = archive_path.with_name("altered.json")
-    altered.write_text(archive_path.read_text(encoding="utf-8").replace("research_only", "not_research_only", 1), encoding="utf-8")
+    altered.write_text(
+        archive_path.read_text(encoding="utf-8").replace(
+            "research_only", "not_research_only", 1
+        ),
+        encoding="utf-8",
+    )
     tampered_history = list_public_market_discovery_archives(tmp_path)
     assert tampered_history["valid_count"] == 1
     assert tampered_history["invalid_count"] == 1
 
 
-def test_discovery_archive_with_source_outage_is_not_usable_eod_evidence(tmp_path) -> None:
+def test_discovery_archive_with_source_outage_is_not_usable_eod_evidence(
+    tmp_path,
+) -> None:
     discovery = {
         "schema_version": "market-desk-public-discovery.v1",
         "observed_at": "2026-07-28T15:00:00+08:00",
@@ -212,7 +252,10 @@ def test_discovery_history_only_flags_duplicate_usable_eod_runs(tmp_path) -> Non
             "source": {
                 "universe_snapshot": {
                     "data_quality": data_quality,
-                    "coverage": {"source_row_count": rows, "eligible_a_share_count": rows},
+                    "coverage": {
+                        "source_row_count": rows,
+                        "eligible_a_share_count": rows,
+                    },
                 }
             },
             "candidates": [],
@@ -225,7 +268,9 @@ def test_discovery_history_only_flags_duplicate_usable_eod_runs(tmp_path) -> Non
         observed_at="2026-07-28T15:05:00+08:00", data_quality="unavailable", rows=0
     )
     write_discovery(
-        observed_at="2026-07-28T15:10:00+08:00", data_quality="public_snapshot", rows=5000
+        observed_at="2026-07-28T15:10:00+08:00",
+        data_quality="public_snapshot",
+        rows=5000,
     )
     history = list_public_market_discovery_archives(tmp_path)
 

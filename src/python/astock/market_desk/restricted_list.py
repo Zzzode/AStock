@@ -40,7 +40,9 @@ class RestrictedListEntry:
                 raise ValueError(f"restricted-list entry requires {key}")
         effective = _parse_timestamp(self.effective_at, "effective_at")
         reviewed = _parse_timestamp(self.reviewed_at, "reviewed_at")
-        expires = _parse_timestamp(self.expires_at, "expires_at") if self.expires_at else None
+        expires = (
+            _parse_timestamp(self.expires_at, "expires_at") if self.expires_at else None
+        )
         if reviewed < effective:
             raise ValueError("restricted-list reviewed_at cannot precede effective_at")
         if expires is not None and expires < reviewed:
@@ -69,7 +71,9 @@ class RestrictedListEntry:
             effective_at=str(value.get("effective_at") or "").strip(),
             reviewed_by=str(value.get("reviewed_by") or "").strip(),
             reviewed_at=str(value.get("reviewed_at") or "").strip(),
-            expires_at=(str(value["expires_at"]).strip() if value.get("expires_at") else None),
+            expires_at=(
+                str(value["expires_at"]).strip() if value.get("expires_at") else None
+            ),
             notes=str(value.get("notes") or "").strip(),
         )
 
@@ -96,7 +100,9 @@ class RestrictedListAttestation:
         reviewed = _parse_timestamp(self.reviewed_at, "reviewed_at")
         expires = _parse_timestamp(self.expires_at, "expires_at")
         if expires < reviewed:
-            raise ValueError("restricted-list attestation expires_at cannot precede reviewed_at")
+            raise ValueError(
+                "restricted-list attestation expires_at cannot precede reviewed_at"
+            )
 
     def to_dict(self) -> dict[str, str]:
         return {
@@ -147,7 +153,9 @@ class RestrictedListStore:
         self._save(entries.values(), attestation)
         return entry
 
-    def attest(self, attestation: RestrictedListAttestation) -> RestrictedListAttestation:
+    def attest(
+        self, attestation: RestrictedListAttestation
+    ) -> RestrictedListAttestation:
         self._save(self.list_entries(), attestation.to_dict())
         return attestation
 
@@ -165,9 +173,13 @@ class RestrictedListStore:
         """
         normalized_key_id = str(key_id).strip()
         if not normalized_key_id or not str(signing_key):
-            raise ValueError("signed restricted-list attestation requires key_id and signing_key")
+            raise ValueError(
+                "signed restricted-list attestation requires key_id and signing_key"
+            )
         entries = self.list_entries()
-        signature = _sign_payload(entries, attestation.to_dict(), normalized_key_id, signing_key)
+        signature = _sign_payload(
+            entries, attestation.to_dict(), normalized_key_id, signing_key
+        )
         self._save(entries, attestation.to_dict(), signature=signature)
         return attestation
 
@@ -180,19 +192,35 @@ class RestrictedListStore:
     ) -> dict[str, Any]:
         """Accept only a complete externally signed compliance-list payload."""
         if str(payload.get("schema_version") or "") != "market-desk-restricted-list.v1":
-            raise ValueError("signed restricted-list payload has an invalid schema_version")
+            raise ValueError(
+                "signed restricted-list payload has an invalid schema_version"
+            )
         try:
             RestrictedListAttestation.from_dict(payload.get("attestation", {}))
         except ValueError as error:
-            raise ValueError(f"signed restricted-list payload has an invalid attestation: {error}") from error
+            raise ValueError(
+                f"signed restricted-list payload has an invalid attestation: {error}"
+            ) from error
         if self._entries_from_payload(payload) is None:
             raise ValueError("signed restricted-list payload has invalid entries")
-        key = signature_key if signature_key is not None else os.environ.get("RESTRICTED_LIST_SIGNING_KEY")
-        key_id = signature_key_id if signature_key_id is not None else os.environ.get("RESTRICTED_LIST_SIGNING_KEY_ID")
+        key = (
+            signature_key
+            if signature_key is not None
+            else os.environ.get("RESTRICTED_LIST_SIGNING_KEY")
+        )
+        key_id = (
+            signature_key_id
+            if signature_key_id is not None
+            else os.environ.get("RESTRICTED_LIST_SIGNING_KEY_ID")
+        )
         if _signature_status(payload, key, key_id) != "verified":
-            raise ValueError("signed restricted-list payload signature cannot be verified")
+            raise ValueError(
+                "signed restricted-list payload signature cannot be verified"
+            )
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        self.path.write_text(json.dumps(dict(payload), ensure_ascii=False, indent=2), encoding="utf-8")
+        self.path.write_text(
+            json.dumps(dict(payload), ensure_ascii=False, indent=2), encoding="utf-8"
+        )
         return self.health(signature_key=key, signature_key_id=key_id)
 
     def list_entries(self) -> list[RestrictedListEntry]:
@@ -224,24 +252,57 @@ class RestrictedListStore:
         current = (now or datetime.now(timezone.utc)).astimezone(timezone.utc)
         payload = self._load_payload()
         if payload is None:
-            return {"status": "missing", "signature_status": "missing", "active_targets": [], "stale_targets": [], "version": None}
+            return {
+                "status": "missing",
+                "signature_status": "missing",
+                "active_targets": [],
+                "stale_targets": [],
+                "version": None,
+            }
         try:
-            attestation = RestrictedListAttestation.from_dict(payload.get("attestation", {}))
+            attestation = RestrictedListAttestation.from_dict(
+                payload.get("attestation", {})
+            )
         except ValueError:
-            return {"status": "invalid_or_unattested", "signature_status": "invalid", "active_targets": [], "stale_targets": [], "version": None}
+            return {
+                "status": "invalid_or_unattested",
+                "signature_status": "invalid",
+                "active_targets": [],
+                "stale_targets": [],
+                "version": None,
+            }
         signature_status = _signature_status(
             payload,
-            signature_key if signature_key is not None else os.environ.get("RESTRICTED_LIST_SIGNING_KEY"),
-            signature_key_id if signature_key_id is not None else os.environ.get("RESTRICTED_LIST_SIGNING_KEY_ID"),
+            (
+                signature_key
+                if signature_key is not None
+                else os.environ.get("RESTRICTED_LIST_SIGNING_KEY")
+            ),
+            (
+                signature_key_id
+                if signature_key_id is not None
+                else os.environ.get("RESTRICTED_LIST_SIGNING_KEY_ID")
+            ),
         )
         attestation_expires = _parse_timestamp(attestation.expires_at, "expires_at")
         if attestation_expires < current:
-            return {"status": "stale", "signature_status": signature_status, "active_targets": [], "stale_targets": [], "entry_count": 0, "version": _payload_version(payload)}
+            return {
+                "status": "stale",
+                "signature_status": signature_status,
+                "active_targets": [],
+                "stale_targets": [],
+                "entry_count": 0,
+                "version": _payload_version(payload),
+            }
         entries = self.list_entries()
         active: list[str] = []
         stale: list[str] = []
         for entry in entries:
-            expires = _parse_timestamp(entry.expires_at, "expires_at") if entry.expires_at else None
+            expires = (
+                _parse_timestamp(entry.expires_at, "expires_at")
+                if entry.expires_at
+                else None
+            )
             if expires is not None and expires < current:
                 stale.append(entry.target)
             elif entry.status == "restricted":
@@ -262,7 +323,11 @@ class RestrictedListStore:
             payload = json.loads(self.path.read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError):
             return {}
-        return payload if payload.get("schema_version") == "market-desk-restricted-list.v1" else {}
+        return (
+            payload
+            if payload.get("schema_version") == "market-desk-restricted-list.v1"
+            else {}
+        )
 
     def _save(
         self,
@@ -276,7 +341,9 @@ class RestrictedListStore:
             "schema_version": "market-desk-restricted-list.v1",
             "updated_at": datetime.now(timezone.utc).isoformat(),
             "attestation": dict(attestation),
-            "entries": [item.to_dict() for item in sorted(entries, key=lambda item: item.target)],
+            "entries": [
+                item.to_dict() for item in sorted(entries, key=lambda item: item.target)
+            ],
         }
         if signature is not None:
             payload["signature"] = dict(signature)
@@ -297,7 +364,9 @@ def _parse_timestamp(value: str | None, field_name: str) -> datetime:
 
 
 def _payload_version(payload: Mapping[str, Any]) -> str:
-    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    canonical = json.dumps(
+        payload, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+    )
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
@@ -309,7 +378,9 @@ def _sign_payload(
 ) -> dict[str, str]:
     content = _signature_content(entries, attestation)
     content_hash = hashlib.sha256(content.encode("utf-8")).hexdigest()
-    value = hmac.new(signing_key.encode("utf-8"), content.encode("utf-8"), hashlib.sha256).hexdigest()
+    value = hmac.new(
+        signing_key.encode("utf-8"), content.encode("utf-8"), hashlib.sha256
+    ).hexdigest()
     return {
         "algorithm": "hmac-sha256",
         "key_id": key_id,
@@ -328,7 +399,10 @@ def _signature_status(
         return "unsigned"
     if str(signature.get("algorithm") or "") != "hmac-sha256":
         return "invalid"
-    if not str(signature.get("key_id") or "").strip() or not str(signature.get("value") or "").strip():
+    if (
+        not str(signature.get("key_id") or "").strip()
+        or not str(signature.get("value") or "").strip()
+    ):
         return "invalid"
     if not signing_key or not signing_key_id:
         return "unverified"
@@ -339,7 +413,9 @@ def _signature_status(
         return "invalid"
     content = _signature_content(entries, payload.get("attestation", {}))
     content_hash = hashlib.sha256(content.encode("utf-8")).hexdigest()
-    expected = hmac.new(signing_key.encode("utf-8"), content.encode("utf-8"), hashlib.sha256).hexdigest()
+    expected = hmac.new(
+        signing_key.encode("utf-8"), content.encode("utf-8"), hashlib.sha256
+    ).hexdigest()
     return (
         "verified"
         if hmac.compare_digest(str(signature.get("content_hash") or ""), content_hash)
@@ -348,11 +424,15 @@ def _signature_status(
     )
 
 
-def _signature_content(entries: list[RestrictedListEntry], attestation: Mapping[str, Any]) -> str:
+def _signature_content(
+    entries: list[RestrictedListEntry], attestation: Mapping[str, Any]
+) -> str:
     return json.dumps(
         {
             "attestation": dict(attestation),
-            "entries": [item.to_dict() for item in sorted(entries, key=lambda item: item.target)],
+            "entries": [
+                item.to_dict() for item in sorted(entries, key=lambda item: item.target)
+            ],
         },
         ensure_ascii=False,
         sort_keys=True,

@@ -12,14 +12,37 @@ from astock.market_snapshot import MarketSnapshotService
 def spot_frame() -> pd.DataFrame:
     return pd.DataFrame(
         [
-            {"代码": "000001", "最新价": 10.0, "涨跌幅": 1.0, "成交额": 100.0, "涨停价": 10.0, "跌停价": 8.0},
-            {"代码": "000002", "最新价": 9.0, "涨跌幅": -1.0, "成交额": 200.0, "涨停价": 11.0, "跌停价": 9.0},
-            {"代码": "000003", "最新价": 8.0, "涨跌幅": 0.0, "成交额": 300.0, "涨停价": 9.0, "跌停价": 7.0},
+            {
+                "代码": "000001",
+                "最新价": 10.0,
+                "涨跌幅": 1.0,
+                "成交额": 100.0,
+                "涨停价": 10.0,
+                "跌停价": 8.0,
+            },
+            {
+                "代码": "000002",
+                "最新价": 9.0,
+                "涨跌幅": -1.0,
+                "成交额": 200.0,
+                "涨停价": 11.0,
+                "跌停价": 9.0,
+            },
+            {
+                "代码": "000003",
+                "最新价": 8.0,
+                "涨跌幅": 0.0,
+                "成交额": 300.0,
+                "涨停价": 9.0,
+                "跌停价": 7.0,
+            },
         ]
     )
 
 
-async def _instrument_rows(codes: list[str] | tuple[str, ...]) -> list[dict[str, object]]:
+async def _instrument_rows(
+    codes: list[str] | tuple[str, ...],
+) -> list[dict[str, object]]:
     names = {
         "000001": "上证指数",
         "399001": "深证成指",
@@ -47,7 +70,9 @@ async def _trading_days() -> set[date]:
     return {date(2026, 7, 28)}
 
 
-def test_tencent_fallback_parser_preserves_observation_source_and_requested_codes() -> None:
+def test_tencent_fallback_parser_preserves_observation_source_and_requested_codes() -> (
+    None
+):
     def line(
         symbol: str,
         name: str,
@@ -59,14 +84,40 @@ def test_tencent_fallback_parser_preserves_observation_source_and_requested_code
     ) -> str:
         fields = ["1", name, code, price, "1", "1", "100"]
         fields.extend(["0"] * 22)
-        fields.extend(["", "20260728161420", change, change_pct, "1", "1", f"{price}/100/{amount}"])
+        fields.extend(
+            [
+                "",
+                "20260728161420",
+                change,
+                change_pct,
+                "1",
+                "1",
+                f"{price}/100/{amount}",
+            ]
+        )
         assert len(fields) == 36
         return f'v_{symbol}="{"~".join(fields)}";'
 
     body = "\n".join(
         [
-            line("sh000001", "上证指数", "000001", "3813.31", "-44.94", "-1.16", "949683080126"),
-            line("sz399001", "深证成指", "399001", "13509.68", "-639.05", "-4.52", "1076097521112"),
+            line(
+                "sh000001",
+                "上证指数",
+                "000001",
+                "3813.31",
+                "-44.94",
+                "-1.16",
+                "949683080126",
+            ),
+            line(
+                "sz399001",
+                "深证成指",
+                "399001",
+                "13509.68",
+                "-639.05",
+                "-4.52",
+                "1076097521112",
+            ),
         ]
     )
 
@@ -149,7 +200,9 @@ async def test_build_snapshot_returns_stable_full_market_contract(
 async def test_build_snapshot_degrades_when_index_source_fails(
     spot_frame: pd.DataFrame,
 ) -> None:
-    async def failing_index_fetcher(_: list[str] | tuple[str, ...]) -> list[dict[str, object]]:
+    async def failing_index_fetcher(
+        _: list[str] | tuple[str, ...],
+    ) -> list[dict[str, object]]:
         raise ConnectionError("index feed offline")
 
     async def fetch_spot() -> pd.DataFrame:
@@ -169,7 +222,9 @@ async def test_build_snapshot_degrades_when_index_source_fails(
 
 
 @pytest.mark.asyncio
-async def test_build_snapshot_uses_industry_count_breadth_when_stock_spot_fails() -> None:
+async def test_build_snapshot_uses_industry_count_breadth_when_stock_spot_fails() -> (
+    None
+):
     async def failing_spot() -> pd.DataFrame:
         raise ConnectionError("stock spot unavailable")
 
@@ -218,10 +273,17 @@ async def test_build_snapshot_marks_fallback_components_as_snapshot(
 ) -> None:
     fallback_spot = spot_frame.copy()
     fallback_spot.attrs["market_snapshot_source"] = "sina.market_center.a_share_spot"
-    fallback_spot.attrs["market_snapshot_fallback_path"] = ("sina.market_center.a_share_spot",)
+    fallback_spot.attrs["market_snapshot_fallback_path"] = (
+        "sina.market_center.a_share_spot",
+    )
 
-    async def fallback_instruments(codes: list[str] | tuple[str, ...]) -> list[dict[str, object]]:
-        return [{**row, "source": "akshare.stock_zh_index_spot_em"} for row in await _instrument_rows(codes)]
+    async def fallback_instruments(
+        codes: list[str] | tuple[str, ...],
+    ) -> list[dict[str, object]]:
+        return [
+            {**row, "source": "akshare.stock_zh_index_spot_em"}
+            for row in await _instrument_rows(codes)
+        ]
 
     async def fetch_spot() -> pd.DataFrame:
         return fallback_spot
@@ -243,7 +305,9 @@ async def test_build_snapshot_marks_fallback_components_as_snapshot(
 
 
 @pytest.mark.asyncio
-async def test_build_snapshot_marks_price_limits_unavailable_when_source_omits_them() -> None:
+async def test_build_snapshot_marks_price_limits_unavailable_when_source_omits_them() -> (
+    None
+):
     async def fetch_spot() -> pd.DataFrame:
         return pd.DataFrame(
             [{"代码": "000001", "最新价": 10.0, "涨跌幅": 1.0, "成交额": 100.0}]
@@ -281,4 +345,7 @@ async def test_exchange_calendar_closes_a_weekday_holiday_and_blocks_unavailable
         now=lambda: datetime(2026, 7, 28, 2, 0, tzinfo=timezone.utc),
     ).build_snapshot()
 
-    assert result["market_session"] == {"state": "closed", "calendar_basis": "exchange_calendar"}
+    assert result["market_session"] == {
+        "state": "closed",
+        "calendar_basis": "exchange_calendar",
+    }

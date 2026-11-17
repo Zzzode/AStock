@@ -14,9 +14,7 @@ from astock.market_desk import RestrictedListAttestation, RestrictedListStore
 def _write_candidate_data_archive(tmp_path, candidate: dict[str, object]) -> None:
     """Bind a release candidate to reproducible, content-addressed data."""
     source = "tushare_pro"
-    raw_records = {
-        "strategy_candidate": {"code": "600460", "trade_date": "20260728"}
-    }
+    raw_records = {"strategy_candidate": {"code": "600460", "trade_date": "20260728"}}
     digest = hashlib.sha256(
         json.dumps(
             {
@@ -86,26 +84,40 @@ def test_strategy_plan_playbook_must_match_horizon(tmp_path) -> None:
         ultra_plan, title="leader continuation", ledger_path=tmp_path / "ledger.json"
     )
 
-    assert created["entry"]["metadata"]["strategy_plan"]["playbook_id"] == "leader_continuation"
+    assert (
+        created["entry"]["metadata"]["strategy_plan"]["playbook_id"]
+        == "leader_continuation"
+    )
 
 
-def test_persisted_strategy_plan_requires_ic_record_before_active(tmp_path, monkeypatch) -> None:
+def test_persisted_strategy_plan_requires_ic_record_before_active(
+    tmp_path, monkeypatch
+) -> None:
     created = capabilities.create_market_desk_strategy_plan(
         _plan(), title="600460 short-term plan", ledger_path=tmp_path / "ledger.json"
     )
     entry_id = created["entry"]["entry_id"]
     watched = capabilities.transition_market_desk_strategy_plan(
-        entry_id, next_state="watch", reason="Verification pending.", ledger_path=tmp_path / "ledger.json"
+        entry_id,
+        next_state="watch",
+        reason="Verification pending.",
+        ledger_path=tmp_path / "ledger.json",
     )
     conditional = capabilities.transition_market_desk_strategy_plan(
-        entry_id, next_state="conditional", reason="Prerequisites stated.", ledger_path=tmp_path / "ledger.json"
+        entry_id,
+        next_state="conditional",
+        reason="Prerequisites stated.",
+        ledger_path=tmp_path / "ledger.json",
     )
     assert watched["entry"]["status"] == "monitoring"
     assert conditional["entry"]["status"] == "monitoring"
 
     with pytest.raises(ValueError, match="IC decision"):
         capabilities.transition_market_desk_strategy_plan(
-            entry_id, next_state="active", reason="No decision record.", ledger_path=tmp_path / "ledger.json"
+            entry_id,
+            next_state="active",
+            reason="No decision record.",
+            ledger_path=tmp_path / "ledger.json",
         )
 
     restricted_list_path = tmp_path / "restricted-list.json"
@@ -126,19 +138,58 @@ def test_persisted_strategy_plan_requires_ic_record_before_active(tmp_path, monk
     candidate = {
         "targets": ["600460"],
         "universe": {"eligible": True, "liquid": True},
-        "data": {"as_of": datetime.now(timezone.utc).isoformat(), "source": "tushare_pro", "quality": "realtime", "archive_id": "sha256:strategy-packet", "license_attestation": {"authorized": True, "attested_by": "research-data-owner"}},
+        "data": {
+            "as_of": datetime.now(timezone.utc).isoformat(),
+            "source": "tushare_pro",
+            "quality": "realtime",
+            "archive_id": "sha256:strategy-packet",
+            "license_attestation": {
+                "authorized": True,
+                "attested_by": "research-data-owner",
+            },
+        },
         "edge": {"thesis": "test", "catalyst": "test", "invalidation": "test"},
         "risk": {"max_loss_pct": 0.01, "position_limit_pct": 0.1},
-        "execution": {"entry_condition": "test", "exit_condition": "test", "review_at": "close"},
-        "compliance": {"research_only_disclosure": True, "no_execution_instruction": True, "conflicts_disclosed": True, "suitability_disclosure": True},
+        "execution": {
+            "entry_condition": "test",
+            "exit_condition": "test",
+            "review_at": "close",
+        },
+        "compliance": {
+            "research_only_disclosure": True,
+            "no_execution_instruction": True,
+            "conflicts_disclosed": True,
+            "suitability_disclosure": True,
+        },
     }
     _write_candidate_data_archive(tmp_path, candidate)
-    controls = {role: {"status": "pass", "reason": "verified"} for role in ("data-verifier", "risk-analyst", "quant-risk-modeler", "execution-liquidity-analyst", "compliance-officer")}
-    decision = capabilities.decide_market_desk_investment_committee(candidate, candidate_id="short-600460-20260728", regime="trend_risk_on", control_assessments=controls, decision_owner="portfolio-manager", evidence_refs=["market_snapshot:test"], model_versions={"market_regime": "market-desk-regime.v1"}, restricted_list_path=restricted_list_path)
+    controls = {
+        role: {"status": "pass", "reason": "verified"}
+        for role in (
+            "data-verifier",
+            "risk-analyst",
+            "quant-risk-modeler",
+            "execution-liquidity-analyst",
+            "compliance-officer",
+        )
+    }
+    decision = capabilities.decide_market_desk_investment_committee(
+        candidate,
+        candidate_id="short-600460-20260728",
+        regime="trend_risk_on",
+        control_assessments=controls,
+        decision_owner="portfolio-manager",
+        evidence_refs=["market_snapshot:test"],
+        model_versions={"market_regime": "market-desk-regime.v1"},
+        restricted_list_path=restricted_list_path,
+    )
     release_inputs = {
         "snapshot": {
             "observed_at": datetime.now(timezone.utc).isoformat(),
-            "market_session": {"state": "after_close", "calendar_basis": "exchange_calendar"},
+            "market_session": {
+                "state": "after_close",
+                "calendar_basis": "exchange_calendar",
+            },
             "indices": [{"code": "sh000001", "change_pct": 1.0}],
             "breadth": {"advances": 3000, "declines": 1000, "coverage_ratio": 1.0},
             "provenance": {
@@ -146,7 +197,9 @@ def test_persisted_strategy_plan_requires_ic_record_before_active(tmp_path, monk
                 "components": {"trading_calendar": {"status": "available"}},
             },
         },
-        "rotation": {"ranking_basis": {"history_validation": {"full_cross_section_ready": True}}},
+        "rotation": {
+            "ranking_basis": {"history_validation": {"full_cross_section_ready": True}}
+        },
         "candidate": candidate,
         "risk_budget": {
             "schema_version": "market-desk-plan-risk-budget.v1",
@@ -193,14 +246,26 @@ def test_persisted_strategy_plan_requires_ic_record_before_active(tmp_path, monk
         portfolio_path=tmp_path / "clean-portfolio.json",
     )
     assert active["entry"]["status"] == "active"
-    assert active["entry"]["observations"][-1]["evidence"]["strategy_plan"]["state"] == "active"
+    assert (
+        active["entry"]["observations"][-1]["evidence"]["strategy_plan"]["state"]
+        == "active"
+    )
     release_package = active["entry"]["observations"][-1]["evidence"]["release_package"]
     assert release_package["schema_version"] == "market-desk-release-package.v1"
     assert len(release_package["package_hash"]) == 64
-    assert set(release_package["content_hashes"]) >= {"snapshot", "rotation", "candidate", "risk_budget", "structural_risk", "portfolio_governance"}
+    assert set(release_package["content_hashes"]) >= {
+        "snapshot",
+        "rotation",
+        "candidate",
+        "risk_budget",
+        "structural_risk",
+        "portfolio_governance",
+    }
 
 
-def test_strategy_books_group_horizons_and_flag_due_review_without_mutation(tmp_path) -> None:
+def test_strategy_books_group_horizons_and_flag_due_review_without_mutation(
+    tmp_path,
+) -> None:
     ledger_path = tmp_path / "ledger.json"
     short = capabilities.create_market_desk_strategy_plan(
         _plan(), title="600460 short-term plan", ledger_path=ledger_path
@@ -223,7 +288,12 @@ def test_strategy_books_group_horizons_and_flag_due_review_without_mutation(tmp_
     )
 
     assert books["schema_version"] == "market-desk-strategy-books.v1"
-    assert books["book_counts"] == {"ultra_short": 0, "short_term": 1, "swing": 0, "long_term": 1}
+    assert books["book_counts"] == {
+        "ultra_short": 0,
+        "short_term": 1,
+        "swing": 0,
+        "long_term": 1,
+    }
     assert books["books"]["short_term"][0]["attention"] == "review_due"
     assert books["books"]["long_term"][0]["attention"] == "review_due"
     assert books["no_order_execution"] is True
@@ -258,11 +328,16 @@ def test_persisted_strategy_review_records_evidence_and_reschedules(tmp_path) ->
 
     observation = result["entry"]["observations"][-1]
     assert observation["observation_type"] == "strategy_lifecycle_review"
-    assert observation["evidence"]["strategy_plan"]["review_at"] == "2026-07-30T15:00:00+08:00"
+    assert (
+        observation["evidence"]["strategy_plan"]["review_at"]
+        == "2026-07-30T15:00:00+08:00"
+    )
     assert observation["evidence"]["no_order_execution"] is True
 
 
-def test_operational_readiness_separates_public_observation_from_formal_release(tmp_path, monkeypatch) -> None:
+def test_operational_readiness_separates_public_observation_from_formal_release(
+    tmp_path, monkeypatch
+) -> None:
     monkeypatch.delenv("TUSHARE_TOKEN", raising=False)
     monkeypatch.delenv("JQDATA_USERNAME", raising=False)
     monkeypatch.delenv("JQDATA_PASSWORD", raising=False)
@@ -293,7 +368,9 @@ def test_operational_readiness_separates_public_observation_from_formal_release(
     assert readiness["no_order_execution"] is True
 
 
-def test_public_observation_profile_keeps_observation_ready_but_blocks_governed_entry_without_compliance_authority(tmp_path, monkeypatch) -> None:
+def test_public_observation_profile_keeps_observation_ready_but_blocks_governed_entry_without_compliance_authority(
+    tmp_path, monkeypatch
+) -> None:
     monkeypatch.setattr(
         capabilities,
         "load_user_config",
@@ -352,7 +429,9 @@ def test_public_observation_profile_allows_governed_paper_entry_only_with_signed
     assert readiness["checks"]["compliance_authority"]["status"] == "pass"
 
 
-def test_operational_readiness_blocks_portfolio_governance_gaps(tmp_path, monkeypatch) -> None:
+def test_operational_readiness_blocks_portfolio_governance_gaps(
+    tmp_path, monkeypatch
+) -> None:
     monkeypatch.delenv("TUSHARE_TOKEN", raising=False)
     monkeypatch.delenv("JQDATA_USERNAME", raising=False)
     monkeypatch.delenv("JQDATA_PASSWORD", raising=False)
@@ -367,7 +446,9 @@ def test_operational_readiness_blocks_portfolio_governance_gaps(tmp_path, monkey
         json.dumps(
             {
                 "cash": 90_000,
-                "positions": {"600460": {"code": "600460", "strategy_entry_id": "missing-plan"}},
+                "positions": {
+                    "600460": {"code": "600460", "strategy_entry_id": "missing-plan"}
+                },
                 "trades": [],
             }
         ),
@@ -412,7 +493,9 @@ def test_operational_readiness_does_not_treat_disclosure_only_source_as_eod_deci
     assert data["configured_eod_sources"] == []
 
 
-def test_operational_readiness_flags_unanchored_quality_feedback(tmp_path, monkeypatch) -> None:
+def test_operational_readiness_flags_unanchored_quality_feedback(
+    tmp_path, monkeypatch
+) -> None:
     monkeypatch.delenv("TUSHARE_TOKEN", raising=False)
     monkeypatch.delenv("JQDATA_USERNAME", raising=False)
     monkeypatch.delenv("JQDATA_PASSWORD", raising=False)
