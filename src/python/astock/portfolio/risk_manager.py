@@ -422,8 +422,8 @@ class RiskManager:
                 )
             stressed_loss += value * stress_distance
 
-            for field, exposures in (("sector", sector_exposure), ("theme", theme_exposure)):
-                label = str(item.get(field) or "unclassified").strip() or "unclassified"
+            for field_name, exposures in (("sector", sector_exposure), ("theme", theme_exposure)):
+                label = str(item.get(field_name) or "unclassified").strip() or "unclassified"
                 exposures[label] = exposures.get(label, 0.0) + value / total_value
 
             if value / total_value > self.limits.max_position_size:

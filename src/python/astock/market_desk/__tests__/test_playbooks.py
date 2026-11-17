@@ -4,7 +4,6 @@ import pytest
 
 from astock.market_desk.decision import MarketRegime
 from astock.market_desk.playbooks import (
-    EvidenceLevel,
     PLAYBOOKS,
     PlaybookDecision,
     evaluate_playbook,

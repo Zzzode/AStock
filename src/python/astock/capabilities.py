@@ -3863,7 +3863,6 @@ def promote_public_market_desk_discovery_candidate(
         }
 
     source_manifest = discovery.get("source_manifest")
-    observation = selected.get("observation")
     name = str(selected.get("name") or code).strip()
     entry = ResearchEntry(
         title=f"Public discovery monitoring: {name} ({code})",
